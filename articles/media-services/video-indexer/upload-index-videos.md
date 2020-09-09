@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
-ms.openlocfilehash: 245eabdf4d77682c87062c2581239a554112d748
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6f8181568e5996bfb3c99ae25fb801fa62f3af1
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77468764"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904260"
 ---
 # <a name="upload-and-index-your-videos"></a>ビデオのアップロードとインデックス作成  
 
@@ -23,7 +23,7 @@ Video Indexer API でビデオをアップロードする場合、次のアッ�
 
 * URL からビデオをアップロードする方法 (推奨) と、
 * 要求本文のバイト配列としてビデオ ファイルを送信する方法です。
-* [アセット ID](https://docs.microsoft.com/azure/media-services/latest/assets-concept) (有料アカウントでのみサポート) を指定して、既存の Azure Media Services アセットを使用します。
+* [アセット ID](../latest/assets-concept.md) (有料アカウントでのみサポート) を指定して、既存の Azure Media Services アセットを使用します。
 
 ビデオがアップロードされると、Video Indexer は (必要に応じて) ビデオをエンコードします (後述)。 Video Indexer アカウントを作成する場合、無料試用アカウント (一定分数の無料インデックス作成を利用可能) または有料オプション (クォータによる制限がありません) を選択できます。 無料試用アカウントで Video Indexer 使用すると、Web サイト ユーザーは最大 600 分間の無料インデックス作成、API ユーザーは最大 2,400 分間の無料インデックス作成を利用できます。 有料オプションでは、[ご使用の Azure サブスクリプションと Azure Media Services アカウントに接続される](connect-to-azure.md) Video Indexer アカウントを作成します。 Media アカウント関連の料金と同様に、インデックス作成時間 (分単位) の料金がかかります。 
 
@@ -58,7 +58,14 @@ Video Indexer API でビデオをアップロードする場合、次のアッ�
 
 Video Indexer で使用できるファイル形式の一覧については、「[入力コンテナー/ファイル形式](../latest/media-encoder-standard-formats.md#input-containerfile-formats)」を参照してください。
 
-## <a name="upload-and-index-a-video-using-the-video-indexer-website"></a><a id="website"/>Video Indexer Web サイトを使用したビデオのアップロードとインデックス作成
+## <a name="video-files-storage"></a>ビデオ ファイルのストレージ
+
+- Video Indexer の有料アカウントでは、ご使用の Azure サブスクリプションと Azure Media Services アカウントに接続される Video Indexer アカウントを作成します。 詳細については、「[Azure に接続された Video Indexer アカウントを作成する](connect-to-azure.md)」を参照してください。
+- ビデオ ファイルは、Azure Media Services によって Azure storage に格納されます。 時間に制限はありません。
+- ビデオ ファイルやオーディオ ファイルだけでなく、Video Indexer によってそれらのファイルから抽出されたメタデータや分析情報も削除することができます。 Video Indexer からファイルを削除すると、そのファイルとそのメタデータおよび分析情報は Video Indexer から完全に削除されます。 ただし、Azure ストレージに独自のバックアップ ソリューションを実装している場合、ファイルは Azure ストレージに残ります。
+- アップロードが Video Indexer Web サイトで行われるか、Upload API を使用して行われるかに関係なく、ビデオの永続性は同じです。
+   
+## <a name="upload-and-index-a-video-using-the-video-indexer-website"></a><a name="website"></a>Video Indexer Web サイトを使用したビデオのアップロードとインデックス作成
 
 > [!NOTE]
 > ビデオの名前は、80 文字以下にする必要があります。
@@ -74,7 +81,7 @@ Video Indexer で使用できるファイル形式の一覧については、「
 
     Video Indexer が分析を完了すると、ビデオへのリンクとビデオの内容の簡単な説明を含んだ通知が表示されます。 たとえば、人物、トピックス、OCR などが表示されます。
 
-## <a name="upload-and-index-with-api"></a><a id="apis"/>API を使用したアップロードとインデックス作成
+## <a name="upload-and-index-with-api"></a><a name="apis"></a>API を使用したアップロードとインデックス作成
 
 [Upload Video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API を使用して、URL に基づいてビデオのアップロードとインデックス作成を行います。 後述のコード サンプルには、バイト配列をアップロードする方法を示すコメント アウトされたコードが含まれています。 
 
@@ -142,7 +149,10 @@ Video Indexer で使用できるファイル形式の一覧については、「
 
 [Upload video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API または [Re-Index Video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) API を使用するときの省略可能なパラメーターの 1 つに、`streamingPreset` があります。 `streamingPreset` を `Default`、`SingleBitrate`、または `AdaptiveBitrate` に設定すると、エンコード プロセスがトリガーされます。 インデックス作成ジョブとエンコード ジョブが完了すると、ビデオが公開され、ビデオをストリームできるようになります。 ビデオのストリーム元のストリーミング エンドポイントは、**実行中**状態である必要があります。
 
-インデックス作成ジョブとエンコード ジョブを実行するには、[Video Indexer アカウントに接続されている Azure Media Services アカウント](connect-to-azure.md)に予約ユニットが必要です。 詳細については、[メディア処理のスケール設定](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview)に関するページを参照してください。 これらはコンピューティング集中型のジョブであるため、ユニットの種類は S3 にすることを強くお勧めします。 RU の数によって、並列で実行できるジョブの最大数が定義されます。 ベースラインの推奨設定は、10 個の S3 RU です。 
+SingleBitrate の場合、出力ごとに Standard Encoder コストが適用されます。 ビデオの高さが 720 以上の場合、Video Indexer によって 1280 x 720 としてエンコードされます。 それ以外の場合は、640 x 468 と指定されます。
+既定の設定は、[コンテンツに対応したエンコード](../latest/content-aware-encoding.md)です。
+
+インデックス作成ジョブとエンコード ジョブを実行するには、[Video Indexer アカウントに接続されている Azure Media Services アカウント](connect-to-azure.md)に予約ユニットが必要です。 詳細については、[メディア処理のスケール設定](../previous/media-services-scale-media-processing-overview.md)に関するページを参照してください。 これらはコンピューティング集中型のジョブであるため、ユニットの種類は S3 にすることを強くお勧めします。 RU の数によって、並列で実行できるジョブの最大数が定義されます。 ベースラインの推奨設定は、10 個の S3 RU です。 
 
 ビデオのインデックス作成のみを行い、エンコードは行わない場合は、`streamingPreset` を `NoStreaming` に設定します。
 

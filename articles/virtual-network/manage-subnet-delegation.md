@@ -7,17 +7,17 @@ documentationcenter: na
 author: KumudD
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
-ms.openlocfilehash: 6f767abdf8673e3adffc6c4e3748733054ba723d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2db8eb5b93d84a5ece182fffbca5870762ee89e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77201868"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84703895"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>サブネットの委任を追加または削除する
 

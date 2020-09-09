@@ -1,7 +1,7 @@
 ---
 title: Microsoft Security Code Analysis ドキュメントの FAQ
-description: この記事には、Microsoft Security Code Analysis 拡張機能に関する FAQ が記載されています。
-author: vharindra
+description: Microsoft Security Code Analysis の拡張機能についてよく寄せられる質問 (FAQ) をご確認ください。
+author: sukhans
 manager: sukhans
 ms.author: terrylan
 ms.date: 07/31/2019
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: cb04a8e5a6d8c982a35cb5c448e4b6d93825bf73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f872159e538dc85121a7a6d4d6503fd18a263628
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460224"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543046"
 ---
 # <a name="frequently-asked-questions"></a>よく寄せられる質問
 ご不明な点がある場合は、 詳細については、次の FAQ を参照してください。
@@ -106,15 +106,17 @@ ms.locfileid: "81460224"
 
 次の例に示すように、CredScan 出力ファイルのシークレットのハッシュ キーが必要です。
 
-        {
-            "tool": "Credential Scanner",
-            "suppressions": [
-            {
-                "hash": "CLgYxl2FcQE8XZgha9/UbKLTkJkUh3Vakkxh2CAdhtY=",
-                "_justification": "Secret used by MSDN sample, it is fake."
-            }
-          ]
-        }
+```js
+{
+    "tool": "Credential Scanner",
+    "suppressions": [
+    {
+        "hash": "CLgYxl2FcQE8XZgha9/UbKLTkJkUh3Vakkxh2CAdhtY=",
+        "_justification": "Secret used by MSDN sample, it is fake."
+    }
+  ]
+}
+```
 
 >[!WARNING]
 > ハッシュ キーは、照合対象の値またはファイル コンテンツの一部から生成されます。 ソース コードを編集するとハッシュ キーが変更され、抑制ルールが無効になる可能性があります。
@@ -133,19 +135,21 @@ ms.locfileid: "81460224"
 - \lib\angular.js
 - angular.js - 同名の全ファイルを抑制する
 
-        {
-            "tool": "Credential Scanner",
-            "suppressions": [
-            {
-                "file": "\\files\\AdditonalSearcher.xml", 
-                "_justification": "Additional CredScan searcher specific to my team"
-            },
-            {
-                "file": "\\files\\unittest.pfx", 
-                "_justification": "Legitimate UT certificate file with private key"
-            }
-          ]
-        }      
+```js
+{
+    "tool": "Credential Scanner",
+    "suppressions": [
+    {
+        "file": "\\files\\AdditonalSearcher.xml", 
+        "_justification": "Additional CredScan searcher specific to my team"
+    },
+    {
+        "file": "\\files\\unittest.pfx", 
+        "_justification": "Legitimate UT certificate file with private key"
+    }
+  ]
+}
+```
 
 >[!WARNING] 
 > 今後、ファイルに追加されたシークレットもすべて自動的に抑制されます。
@@ -155,7 +159,7 @@ ms.locfileid: "81460224"
 次のリソースは、機密情報を安全に管理し、アプリケーション内からシークレットにアクセスするために役立ちます。
 
  - [Azure Key Vault](../../key-vault/index.yml)
- - [Azure Active Directory (Azure AD)](../../sql-database/sql-database-aad-authentication.md)
+ - [Azure Active Directory (Azure AD)](../../azure-sql/database/authentication-aad-overview.md)
  - [Azure AD マネージド サービス ID (MSI)](https://azure.microsoft.com/blog/keep-credentials-out-of-code-introducing-azure-ad-managed-service-identity/)
  - [Azure リソースのマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md)
  - [Azure App Service および Azure Functions でのマネージド ID](../../app-service/overview-managed-identity.md)
@@ -173,7 +177,7 @@ Credential Scanner では、通常は buildsearchers.xml ファイルで定義�
 - **Name**:Credential Scanner の出力ファイルで使用される、検索ツールのわかりやすい名前。 検索ツール名には、キャメルケース形式の名前付け規則を使用することをお勧めします。
 - **RuleId**:不変的で不明瞭な検索ツールの ID。
     - Credential Scanner の既定の検索ツールには、CSCAN0010、CSCAN0020、CSCAN0030 などの **RuleId** 値が割り当てられます。 最後の桁は、正規表現 (regex) を使用して検索ツール グループを結合または分割するために予約されています。
-    - カスタマイズされた検索ツールの **RuleId** 値には、独自の名前空間が必要です。 たとえば、CSCAN-\<Namespace\>0010、CSCAN-\<Namespace\>0020、CSCAN-\<Namespace\>0030 などです。
+    - カスタマイズされた検索ツールの **RuleId** 値には、独自の名前空間が必要です。 例としては、CSCAN-\<Namespace\>0010、CSCAN-\<Namespace\>0020、CSCAN-\<Namespace\>0030 などがあります。
     - 検索ツールの完全修飾名は、**RuleId** 値と検索ツール名を組み合わせたものです。 たとえば、CSCAN0010.KeyStoreFiles、CSCAN0020.Base64EncodedCertificate などです。
 - **ResourceMatchPattern**:検索ツールに対してチェックするファイル拡張子の正規表現。
 - **ContentSearchPatterns**:照合する regex ステートメントを含む文字列の配列。 検索パターンが定義されていない場合は、**ResourceMatchPattern** 値と一致するすべてのファイルが返されます。

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/17/2020
-ms.openlocfilehash: 388f43fec9242f6a4b448483d9486aa4413d2612
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 52f333a8e39dfd8f68666e6438a7d40414b6f958
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228083"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701421"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream Analytics に入力としてデータをストリーム配信する
 
@@ -134,7 +134,7 @@ Stream Analytics の Blob Storage イベントの既定のタイムスタンプ�
 
 13:00 に BLOB がストレージ アカウント コンテナーにアップロードされ、13:00 またはそれ以前に *[Custom Time]\(ユーザー設定時刻\)* を使用して Azure Stream Analytics ジョブが開始された場合、変更された時間がジョブの実行期間内であるため、BLOB は選択されます。
 
-13:00 に *[Now]\(今すぐ\)* を使用して Azure Stream Analytics ジョブが開始され、13:01 に BLOB がストレージ アカウント コンテナーにアップロードされた場合、Azure Stream Analytics は BLOB を選択します。
+13:00 に *[Now]\(今すぐ\)* を使用して Azure Stream Analytics ジョブが開始され、13:01 に BLOB がストレージ アカウント コンテナーにアップロードされた場合、Azure Stream Analytics は BLOB を選択します。 各 BLOB に割り当てられたタイムスタンプは `BlobLastModifiedTime` のみに基づいています。 BLOB が含まれているフォルダーは、割り当てられたタイムスタンプとは関係がありません。 たとえば、*2019/10-01/00/b1.txt* という BLOB の `BlobLastModifiedTime` が 2019-11-11 である場合、この BLOB に割り当てられるタイムスタンプは 2019-11-11 です。
 
 イベント ペイロードのタイムスタンプを利用してデータをストリームとして処理するには、[TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) キーワードを使用する必要があります。 Stream Analytics ジョブは、BLOB ファイルが使用可能な場合に、毎秒 Azure Blob Storage 入力からデータをプルします。 BLOB ファイルが使用不可能な場合は、最大で 90 秒の時間遅延がある指数関数的バックオフがあります。
 
@@ -143,7 +143,7 @@ CSV 形式の入力では、データ セットに対してフィールドを定
 > [!NOTE]
 > Stream Analytics では、既存の BLOB ファイルにコンテンツを追加できません。 Stream Analytics は各ファイルを 1 回だけ表示します。ジョブがデータを読み取った後にファイルで発生した変更は処理されません。 ベスト プラクティスとして、すべての BLOB ファイルのデータを一度にアップロードし、追加の新しいイベントを、別の新しい BLOB ファイルに追加することをお勧めします。
 
-一度に非常に多数の BLOB をアップロードすると、まれなケースですが、Stream Analytics がいくつかの BLOB の読み取りをスキップすることがあります。 2 秒以上間をあけて BLOB を BLOB ストレージにアップロードすることをお勧めします。 このオプションが実行可能でない場合は、Event Hubs を使用して大量のイベントをストリーミングできます。 
+多くの BLOB が継続的に追加され、追加されるにつれて BLOB が Stream Analytics で処理されるシナリオでは、`BlobLastModifiedTime` の細分性のため、まれに一部の BLOB がスキップされる可能性があります。 これは、2 秒以上の間隔で BLOB をアップロードすることで軽減できます。 このオプションが実行可能でない場合は、Event Hubs を使用して大量のイベントをストリーミングできます。
 
 ### <a name="configure-blob-storage-as-a-stream-input"></a>ストリーム入力として Blob Storage を構成する 
 
@@ -157,7 +157,7 @@ CSV 形式の入力では、データ セットに対してフィールドを定
 | **ストレージ アカウント キー** | ストレージ アカウントに関連付けられている秘密キー。 Blob Storage の設定を手動で入力するオプションを選択しない限り、このオプションは自動的に事前設定されます。 |
 | **コンテナー** | BLOB 入力のコンテナーです。 コンテナーにより、Microsoft Azure Blob service に格納される BLOB が論理的にグループ化されます。 BLOB を Azure Blob Storage サービスにアップロードするとき、その BLOB のコンテナーを指定する必要があります。 コンテナーには、 **[既存のものを使用]** を選択できるほか、 **[新規作成]** を選択して新しいコンテナーを作成することもできます。|
 | **パス パターン** (省略可能) | 指定されたコンテナー内に BLOB を配置するために使用されるファイル パス。 コンテナーのルートから BLOB を読み取る場合は、パス パターンを設定しないでください。 このパス内に、3 つの変数 (`{date}`、`{time}`、`{partition}`) の 1 つ以上のインスタンスを指定できます。<br/><br/>例 1: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>例 2: `cluster1/logs/{date}`<br/><br/>`*` 文字はパス プレフィックスの許容値ではありません。 許容値は、有効な <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure BLOB 文字</a>のみです。 コンテナー名またはファイル名を含めないでください。 |
-| **日付形式** (省略可能) | パスで日付変数を使用する場合は、ファイルを編成する日付形式です。 例: `YYYY/MM/DD` |
+| **日付形式** (省略可能) | パスで日付変数を使用する場合は、ファイルを編成する日付形式です。 例: `YYYY/MM/DD` <br/><br/> BLOB 入力のパスに `{date}` または `{time}` が含まれている場合、フォルダーは時間の昇順に検索されます。|
 | **時刻形式** (省略可能) |  パスで時刻変数を使用する場合は、ファイルを編成する時刻形式です。 現在唯一サポートされている値は `HH` (時) です。 |
 | **パーティション キー** | 入力がプロパティでパーティション分割される場合、このプロパティの名前を追加できます。 パーティション キーは省略可能で、このプロパティに PARTITION BY 句または GROUP BY 句が含まれている場合、クエリのパフォーマンスを向上させるために使用されます。 |
 | **イベントのシリアル化の形式** | 受信データ ストリームのシリアル化形式 (JSON、CSV、Avro、または[その他 (Protobuf、XML、プロプライエタリ...)](custom-deserializer.md))。  JSON 形式が仕様に準拠しており、10 進数の先頭に 0 が含まれていないことを確認します。 |

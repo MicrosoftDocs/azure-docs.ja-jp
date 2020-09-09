@@ -2,7 +2,7 @@
   items:
     - name: 概要
       items:
-        - name: はじめに
+        - name: 作業開始
           href: overview.md
         - name: ワークロード
           href: partner-workloads.md
@@ -18,6 +18,8 @@
           href: microfocus/get-started.md
         - name: Enterprise Server をインストールする
           href: microfocus/set-up-micro-focus-azure.md
+        - name: Enterprise Server を AKS にデプロイする
+          href: microfocus/deploy-micro-focus-enterprise-server.md
         - name: CICS BankDemo を実行する
           href: microfocus/demo.md
         - name: コンテナー内の Enterprise Server
@@ -37,9 +39,9 @@
         - name: ZD&T で ADCD を設定する
           href: ibm/demo.md
         - name: IBM DB2 pureScale
-          href: /azure/virtual-machines/linux/ibm-db2-purescale-azure?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
+          href: ../../linux/ibm-db2-purescale-azure.md?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
         - name: IBM DB2 pureScale のデプロイ
-          href: /azure/virtual-machines/linux/deploy-ibm-db2-purescale-azure?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
+          href: ../../linux/deploy-ibm-db2-purescale-azure.md?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
     - name: リソース
       items:
         - name: ホワイト ペーパー

@@ -8,15 +8,15 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 9496173ee006c6ca3cab557f4e63ec21647ad0fd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ebf687716c8898acffb5e081fbf2f6217fe0f943
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82105575"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503125"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>チュートリアル:Azure Key Vault に証明書をインポートする
 
@@ -28,6 +28,7 @@ Azure Key Vault は、シークレットのセキュリティで保護された�
 > * Key Vault を作成します。
 > * ポータルを使用して Key Vault に証明書をインポートします。
 > * CLI を使用して Key Vault に証明書をインポートします。
+> * PowerShell を使用して Key Vault に証明書をインポートします。
 
 
 始める前に、[Key Vault の基本的な概念](../general/basic-concepts.md)を確認してください。 
@@ -102,7 +103,8 @@ az keyvault certificate import --file
                                [--subscription]
                                [--tags]
 ```
-パラメーターの詳細については、[こちら](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import)を参照してください
+
+[パラメーター](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import)の詳細を参照してください。
 
 証明書のインポート後は、[certificate show](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show) を使用して証明書を表示できます。
 
@@ -116,9 +118,25 @@ az keyvault certificate show [--id]
                              [--version]
 ```
 
-
-
 以上で終了です。キー コンテナーを作成して、証明書をインポートし、証明書のプロパティを確認しました。
+
+## <a name="import-a-certificate-using-azure-powershell"></a>Azure PowerShell を使用して証明書をインポートする
+
+```
+Import-AzureKeyVaultCertificate
+      [-VaultName] <String>
+      [-Name] <String>
+      -FilePath <String>
+      [-Password <SecureString>]
+      [-Tag <Hashtable>]
+      [-DefaultProfile <IAzureContextContainer>]
+      [-WhatIf]
+      [-Confirm]
+      [<CommonParameters>]
+```
+
+[パラメーター](https://docs.microsoft.com/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0)の詳細を参照してください。
+
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

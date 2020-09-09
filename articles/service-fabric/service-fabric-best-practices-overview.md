@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: pepogors
-ms.openlocfilehash: 46601fd91fccb5bd0866bd999cc7643c37c6d582
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 86a02fd489ca0eec61b798db7136f963277f6c82
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75551779"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261081"
 ---
 # <a name="azure-service-fabric-application-and-cluster-best-practices"></a>Azure Service Fabric のアプリケーションとクラスターに関するベスト プラクティス
 
@@ -27,7 +27,7 @@ ms.locfileid: "75551779"
 ## <a name="compute-planning-and-scaling"></a>コンピューティングの計画とスケーリング
 
 * [コンピューティングのスケーリングに関するベスト プラクティス](service-fabric-best-practices-capacity-scaling.md)
-* [コンピューティング能力の計画](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)
+* [コンピューティング能力の計画](./service-fabric-cluster-capacity.md)
 
 ## <a name="infrastructure-as-code"></a>コードとしてのインフラストラクチャ
 
@@ -44,7 +44,7 @@ ms.locfileid: "75551779"
 ## <a name="checklist"></a>チェック リスト
 
 前のセクションで推奨されたプラクティスを実装した後は、運用環境の準備状況チェックリストのすべてのベスト プラクティスを統合したことを確認します。
-* [Azure Service Fabric の運用環境の準備状況チェックリスト](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)
+* [Azure Service Fabric の運用環境の準備状況チェックリスト](./service-fabric-production-readiness-checklist.md)
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,131 +1,120 @@
 ---
 title: テンプレートを使用した Web アプリのデプロイ - Azure Cosmos DB
-description: Azure Resource Manager テンプレートを使用して、Azure Cosmos DB アカウント、Azure App Service Web Apps、サンプル Web アプリケーションをデプロイする方法について説明します。
-author: SnehaGunda
+description: Azure Resource Manager テンプレートを使用して、Azure Cosmos アカウント、Azure App Service Web Apps、サンプル Web アプリケーションをデプロイする方法について説明します。
+author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 03/11/2019
-ms.author: sngun
-ms.openlocfilehash: 2306dbe234e171ac613c33458df1990b767637df
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.date: 06/19/2020
+ms.author: mjbrown
+ms.openlocfilehash: 5038d9968e37b956774d1c5f8abdb14865422e8b
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79128377"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027748"
 ---
-# <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用した Azure Cosmos DB と Azure App Service Web Apps のデプロイ
-このチュートリアルでは、Azure Resource Manager テンプレートを使用して、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)、[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) Web アプリ、サンプル Web アプリケーションをデプロイおよび統合する方法について説明します。
+# <a name="deploy-azure-cosmos-db-and-azure-app-service-with-a-web-app-from-github-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して、Azure Cosmos DB と Azure App Service および GitHub の Web アプリをデプロイする
 
-Azure Resource Manager テンプレートを使用して、Azure リソースのデプロイと構成を簡単に自動化できます。  このチュートリアルでは、Web アプリケーションをデプロイし、Azure Cosmos DB アカウントの接続情報を自動的に構成する方法を説明します。
+このチュートリアルでは、最初の実行で Azure Cosmos DB に接続する Web アプリケーションを "ノー タッチで" デプロイする方法について説明します。Azure Cosmos DB の接続情報を切り取って `appsettings.json` に貼り付けたり、Azure portal で Azure App Services のアプリケーション設定に貼り付ける必要はありません。 これらの操作はすべて、Azure Resource Manager テンプレートを使用して、1 回の操作で行われます。 この例では、[Web アプリのチュートリアル](sql-api-dotnet-application.md)の [Azure Cosmos DB ToDo サンプル](https://github.com/Azure-Samples/cosmos-dotnet-core-todo-app)をデプロイします。
 
-このチュートリアルを完了すると、次の項目について説明できるようになります。  
+Resource Manager テンプレートは非常に柔軟であり、Azure の任意のサービスにわたる複雑なデプロイを構成できます。 これには、GitHub からのアプリケーションのデプロイや、Azure portal での Azure App Service のアプリケーション設定への接続情報の挿入などの高度なタスクが含まれます。 このチュートリアルでは、1 つの Resource Manager テンプレートを使用して次の操作を行う方法について説明します。
 
-* Azure Resource Manager テンプレートを使用して、Azure Cosmos DB アカウントと Azure App Service の Web アプリをデプロイおよび統合する方法
-* Azure Resource Manager テンプレートを使用して、Azure Cosmos DB アカウント、App Service Web Apps の Web アプリ、WebDeploy アプリケーションをデプロイおよび統合する方法
+* Azure Cosmos アカウントをデプロイする。
+* Azure App Service ホスティング プランをデプロイする。
+* Azure App Service をデプロイする。
+* Azure Cosmos アカウントのエンドポイントとキーを、Azure portal の App Service アプリケーション設定に挿入する。
+* GitHub リポジトリから App Service に Web アプリケーションをデプロイする。
 
-<a id="Prerequisites"></a>
+結果のデプロイには、Azure Cosmos DB のエンドポイント URL または認証キーを Azure portal から切り取って貼り付ける必要なく Azure Cosmos DB に接続できる、完全に機能する Web アプリケーションが含まれます。
 
 ## <a name="prerequisites"></a>前提条件
+
 > [!TIP]
 > このチュートリアルは、Azure Resource Manager テンプレートや JSON の使用経験があるユーザーを対象にしているわけではありませんが、参照するテンプレートやデプロイメント オプションに変更を加える場合は、これらの領域に関する知識が必要になります。
-> 
-> 
 
-このチュートリアルの手順を実行する前に、Azure サブスクリプションを取得する必要があります。 Azure はサブスクリプション方式のプラットフォームです。  サブスクリプションの入手方法の詳細については、[購入オプション](https://azure.microsoft.com/pricing/purchase-options/)、[メンバー オファー](https://azure.microsoft.com/pricing/member-offers/)、または[無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。
+## <a name="step-1-deploy-the-template"></a>手順 1:テンプレートのデプロイ
 
-## <a name="step-1-download-the-template-files"></a><a id="CreateDB"></a>手順 1:テンプレート ファイルをダウンロードする
-このチュートリアルに必要なサンプル ファイルをダウンロードすることから始めましょう。
+最初に、以下の **[Azure に配置する]** ボタンを選択して Azure portal を開き、カスタム デプロイを作成します。 Azure リソース管理テンプレートは、[Azure クイックスタート テンプレート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-webapp)から表示することもできます
 
-1. [Azure Cosmos DB アカウント と Web Apps の作成およびデモ アプリケーションのデプロイのサンプル](https://portalcontent.blob.core.windows.net/samples/DocDBWebsiteTodo.json) テンプレートを、ローカル フォルダー (C:\Azure Cosmos DBTemplates など) にダウンロードします。 このテンプレートでは、Azure Cosmos DB アカウント、App Service Web アプリ、Web アプリケーションをデプロイします。  また、Azure Cosmos DB アカウントに接続するように Web アプリケーションを自動的に構成します。
-2. [Azure Cosmos DB アカウントと Web Apps の作成のサンプル](https://portalcontent.blob.core.windows.net/samples/DocDBWebSite.json) テンプレートを、ローカル フォルダー (C:\Azure Cosmos DBTemplates など) にダウンロードします。 このテンプレートでは、Azure Cosmos DB アカウントと App Service Web アプリをデプロイし、サイトのアプリケーション設定を変更して Azure Cosmos DB の接続情報を簡単に表示できるようにします。ただし、Web アプリケーションは含まれていません。  
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Azure へのデプロイ":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-webapp%2Fazuredeploy.json)
 
-<a id="Build"></a>
+Azure portal で、デプロイ先のサブスクリプションを選択し、新しいリソース グループを選択または作成します。 次に、以下の値を入力します。
 
-## <a name="step-2-deploy-the-azure-cosmos-db-account-app-service-web-app-and-demo-application-sample"></a>手順 2:Azure Cosmos DB アカウント、App Service Web アプリ、デモ アプリケーションのサンプルをデプロイする
-では、最初のテンプレートをデプロイしましょう。
+:::image type="content" source="./media/create-website/template-deployment.png" alt-text="テンプレートのデプロイメント UI のスクリーンショット":::
 
-> [!TIP]
-> このテンプレートでは、次のテンプレートで入力する Web アプリ名と Azure Cosmos DB アカウント名が a) 有効であり、b) 使用可能であることを検証しません。  デプロイメントの送信前に、指定する予定の名前の可用性を確認しておくことを強くお勧めします。
-> 
-> 
+* **[リージョン]** - Resource Manager に必要です。 リソースが配置される場所のパラメーターで使用されているものと同じリージョンを入力します。
+* **[アプリケーション名]** - この名前は、このデプロイのすべてのリソースで使用されます。 既存の Azure Cosmos DB および App Service アカウントとの競合を避けるために、必ず一意の名前を選択してください。
+* **[場所]** - リソースがデプロイされるリージョン。
+* **[App Service Plan Tier]\(App Service プラン レベル\)** - App Service プランの価格レベルです。
+* **[App Service Plan Instances]\(App Service プラン インスタンス\)** - App Service プランのワーカーの数。
+* **[リポジトリの URL]** - GitHub 上の Web アプリケーションに対するリポジトリ。
+* **[ブランチ]** - GitHub リポジトリのブランチ。
+* **[データベース名]** - Azure Cosmos データベース名。
+* **[コンテナー名]** - Azure Cosmos コンテナー名。
 
-1. [Azure Portal](https://portal.azure.com) にログインし、[New] (新規) をクリックし、「テンプレートのデプロイ」を検索します。
-    ![テンプレートのデプロイメント UI のスクリーンショット](./media/create-website/TemplateDeployment1.png)
-2. [テンプレートのデプロイ] を選択し、 **[作成]** ![テンプレートのデプロイ UI のスクリーンショット](./media/create-website/TemplateDeployment2.png) をクリックします
-3. **[テンプレートの編集]** をクリックし、DocDBWebsiteTodo.json テンプレート ファイルの内容を貼り付けて、 **[保存]** をクリックします。
-   ![テンプレートのデプロイメント UI のスクリーンショット](./media/create-website/TemplateDeployment3.png)
-4. **[パラメーターの編集]** をクリックし、必須パラメーターの値を指定して、 **[OK]** をクリックします。  パラメーターは、次のとおりです。
-   
-   1. SITENAME: App Service Web アプリの名前を指定します。これは、Web アプリへのアクセスに使用する URL を作成するときに使用されます (たとえば、"mydemodocdbwebapp" を指定した場合、Web アプリへのアクセスに使用する URL は `mydemodocdbwebapp.azurewebsites.net` になります)。
-   2. HOSTINGPLANNAME: 作成する App Service ホスティング プランの名前を指定します。
-   3. LOCATION: Azure Cosmos DB リソースと Web アプリ リソースを作成する Azure の場所を指定します。
-   4. DATABASEACCOUNTNAME: 作成する Azure Cosmos DB アカウントの名前を指定します。   
-      
-      ![テンプレートのデプロイメント UI のスクリーンショット](./media/create-website/TemplateDeployment4.png)
-5. 既存のリソース グループを選択するか、名前を指定して新しいリソース グループを作成し、リソース グループの場所を選択します。
-
-    ![テンプレートのデプロイメント UI のスクリーンショット](./media/create-website/TemplateDeployment5.png)
-6. **[法律条項を確認してください]** 、 **[購入]** 、 **[作成]** の順にクリックして、デプロイを開始します。  **[ダッシュボードにピン留めする]** を選択すると、Azure ポータルのホーム ページで生成されたデプロイメントが見つけやすくなります。
-   ![テンプレートのデプロイメント UI のスクリーンショット](./media/create-website/TemplateDeployment6.png)
-7. デプロイメントが完了したら、リソース グループ ウィンドウが開きます。
-   ![リソース グループ ウィンドウのスクリーンショット](./media/create-website/TemplateDeployment7.png)  
-8. アプリケーションを使用するには、その Web アプリの URL にアクセスします (上の例では URL は `http://mydemodocdbwebapp.azurewebsites.net`)。  次のような Web アプリケーションが表示されます。
-   
-   ![Todo アプリケーションのサンプル](./media/create-website/image2.png)
-9. ここで、Web アプリでいくつかのタスクを作成してから、Azure ポータルのリソース グループ ウィンドウに戻ります。 リソースの一覧で Azure Cosmos DB アカウント リソースをクリックし、**データ エクスプローラー**をクリックします。
-10. 既定のクエリである "SELECT * FROM c" を実行し、その結果を調べます。  このクエリでは、前の手順 7. で作成した Todo 項目の JSON 表現を取得しました。  クエリを自由に試してください。たとえば、SELECT * FROM c WHERE c.isComplete = true を実行してみると、完了としてマークされているすべての Todo 項目が返されます。
-11. Azure Cosmos DB ポータルの操作やサンプル Todo アプリケーションの変更を自由に試してください。  準備ができたら、別のテンプレートをデプロイしましょう。
-
-<a id="Build"></a> 
-
-## <a name="step-3-deploy-the-document-account-and-web-app-sample"></a>手順 3:Document アカウントと Web アプリのサンプルのデプロイ
-では、2 番目のテンプレートをデプロイしましょう。  このテンプレートは、アカウント エンドポイントやマスター キーなどの Azure Cosmos DB 接続情報を、アプリケーション設定またはカスタム接続文字列として Web アプリに挿入する方法を理解するのに役立ちます。 たとえば、Azure Cosmos DB アカウントを使用してデプロイする独自の Web アプリケーションがあり、デプロイ時に接続情報を自動的に設定する場合があります。
+値を入力したら、 **[作成]** ボタンを選択してデプロイを開始します。 この手順は完了するまでに 5 分から 10 分かかります。
 
 > [!TIP]
-> このテンプレートでは、ここで入力する Web アプリ名と Azure Cosmos DB アカウント名が a) 有効であり、b) 使用可能であることを検証しません。  デプロイメントの送信前に、指定する予定の名前の可用性を確認しておくことを強くお勧めします。
-> 
-> 
+> このテンプレートでは、テンプレートに入力された Azure App Service アプリ名と Azure Cosmos アカウント名が有効かつ使用可能であることが検証されません。 デプロイメントの送信前に、指定する予定の名前の可用性を確認しておくことを強くお勧めします。
 
-1. [Azure Portal](https://portal.azure.com) で、[新規] をクリックし、「テンプレートのデプロイ」を検索します。
-    ![テンプレートのデプロイメント UI のスクリーンショット](./media/create-website/TemplateDeployment1.png)
-2. [テンプレートのデプロイ] を選択し、 **[作成]** ![テンプレートのデプロイ UI のスクリーンショット](./media/create-website/TemplateDeployment2.png) をクリックします
-3. **[テンプレートの編集]** をクリックし、DocDBWebSite.json テンプレート ファイルの内容を貼り付けて、 **[保存]** をクリックします。
-   ![テンプレートのデプロイメント UI のスクリーンショット](./media/create-website/TemplateDeployment3.png)
-4. **[パラメーターの編集]** をクリックし、必須パラメーターの値を指定して、 **[OK]** をクリックします。  パラメーターは、次のとおりです。
-   
-   1. SITENAME: App Service Web アプリの名前を指定します。これは、Web アプリへのアクセスに使用する URL を作成するときに使用されます (たとえば、"mydemodocdbwebapp" を指定した場合、Web アプリへのアクセスに使用する URL は mydemodocdbwebapp.azurewebsites.net になります)。
-   2. HOSTINGPLANNAME: 作成する App Service ホスティング プランの名前を指定します。
-   3. LOCATION: Azure Cosmos DB リソースと Web アプリ リソースを作成する Azure の場所を指定します。
-   4. DATABASEACCOUNTNAME: 作成する Azure Cosmos DB アカウントの名前を指定します。   
-      
-      ![テンプレートのデプロイメント UI のスクリーンショット](./media/create-website/TemplateDeployment4.png)
-5. 既存のリソース グループを選択するか、名前を指定して新しいリソース グループを作成し、リソース グループの場所を選択します。
 
-    ![テンプレートのデプロイメント UI のスクリーンショット](./media/create-website/TemplateDeployment5.png)
-6. **[法律条項を確認してください]** 、 **[購入]** 、 **[作成]** の順にクリックして、デプロイを開始します。  **[ダッシュボードにピン留めする]** を選択すると、Azure ポータルのホーム ページで生成されたデプロイメントが見つけやすくなります。
-   ![テンプレートのデプロイメント UI のスクリーンショット](./media/create-website/TemplateDeployment6.png)
-7. デプロイメントが完了したら、リソース グループ ウィンドウが開きます。
-   ![リソース グループ ウィンドウのスクリーンショット](./media/create-website/TemplateDeployment7.png)  
-8. リソースの一覧で Web アプリのリソースをクリックし、 **[アプリケーション設定]** ![リソース グループのスクリーンショット](./media/create-website/TemplateDeployment9.png) をクリックします  
-9. Azure Cosmos DB エンドポイントとそれぞれの Azure Cosmos DB マスター キーに関するアプリケーション設定がどのように表示されているのかを確認します。
+## <a name="step-2-explore-the-resources"></a>手順 2:リソースを調べる
 
-    ![アプリケーションの設定のスクリーンショット](./media/create-website/TemplateDeployment10.png)  
-10. Azure Portal の操作を引き続き確認したり、Azure Cosmos DB の[サンプル](https://go.microsoft.com/fwlink/?LinkID=402386)に従って独自の Azure Cosmos DB アプリケーションを作成したり、自由に試してみてください。
+### <a name="view-the-deployed-resources"></a>デプロイされたリソースを表示する
 
-<a name="NextSteps"></a>
+テンプレートによってリソースがデプロイされると、リソース グループ内でそれぞれを確認できるようになります。
+
+:::image type="content" source="./media/create-website/resource-group.png" alt-text="リソース グループ":::
+
+### <a name="view-cosmos-db-endpoint-and-keys"></a>Cosmos DB エンドポイントとキーを表示する
+
+次に、ポータルで Azure Cosmos アカウントを開きます。 次のスクリーンショットは、Azure Cosmos アカウントのエンドポイントとキーを示しています。
+
+:::image type="content" source="./media/create-website/cosmos-keys.png" alt-text="Cosmos キー":::
+
+### <a name="view-the-azure-cosmos-db-keys-in-application-settings"></a>アプリケーション設定で Azure Cosmos DB キーを表示する
+
+次に、リソース グループ内の Azure App Service に移動します。 [構成] タブをクリックして、App Service の [アプリケーション設定] を表示します。 [アプリケーション設定] には、Cosmos DB に接続するために必要な Cosmos DB アカウントと主キーの値、およびテンプレート デプロイから渡されたデータベース名とコンテナー名が含まれています。
+
+:::image type="content" source="./media/create-website/application-settings.png" alt-text="アプリケーション設定":::
+
+### <a name="view-web-app-in-deployment-center"></a>[デプロイ センター] で Web アプリを表示する
+
+次に、App Service の [デプロイ センター] に移動します。 ここには、テンプレートに渡された GitHub リポジトリを指す [リポジトリ] が表示されます。 また、下の [状態] は [Success(Active)]\(成功 (アクティブ)\) を示しています。これはアプリケーションが正常にデプロイされ、開始されたことを意味します。
+
+:::image type="content" source="./media/create-website/deployment-center.png" alt-text="デプロイ センター":::
+
+### <a name="run-the-web-application"></a>Web アプリケーションの実行
+
+[デプロイ センター] の上部にある **[参照]** をクリックして、Web アプリケーションを開き ます。 Web アプリケーションのホーム画面が表示されます。 **[新規作成]** をクリックし、フィールドにデータを入力して、[保存] をクリックします。 結果の画面には Cosmos DB に保存されたデータが表示されます。
+
+:::image type="content" source="./media/create-website/app-home-screen.png" alt-text="ホーム画面":::
+
+## <a name="step-3-how-does-it-work"></a>手順 3:動作のしくみ
+
+これを機能させるには、3 つの要素が必要です。
+
+### <a name="reading-app-settings-at-runtime"></a>実行時のアプリ設定の読み取り
+
+まず、アプリケーションでは、ASP.NET MVC Web アプリケーションの `Startup` クラスで、Cosmos DB エンドポイントとキーを要求する必要があります。 [Cosmos DB To Do サンプル](https://github.com/Azure-Samples/cosmos-dotnet-core-todo-app)はローカルで実行でき、お客様が appsettings.json に接続情報を入力できます。 しかし、デプロイする場合、このファイルはアプリと共にデプロイされます。 赤で囲まれた以下の行で appsettings.json の設定にアクセスできない場合は、Azure App Service のアプリケーション設定から試行されます。
+
+:::image type="content" source="./media/create-website/startup.png" alt-text="Startup":::
+
+### <a name="using-special-azure-resource-management-functions"></a>特殊な Azure リソース管理関数の使用
+
+デプロイされたアプリケーションでこれらの値を使用できるようにするために、Azure Resource Manager テンプレートでは、[reference](../azure-resource-manager/templates/template-functions-resource.md#reference) や [listKeys](../azure-resource-manager/templates/template-functions-resource.md#listkeys) などの特殊な Azure リソース管理関数を使用して、Cosmos DB アカウントからこれらの値を要求できます。これらの関数を使うと、Cosmos DB アカウントから値を取得し、'{section:key}' 形式で、上のアプリケーションで使用されているものと一致するキー名を使用して、アプリケーション設定の値に挿入できます。 たとえば、「 `CosmosDb:Account` 」のように入力します。
+
+:::image type="content" source="./media/create-website/template-keys.png" alt-text="テンプレート キー":::
+
+### <a name="deploying-web-apps-from-github"></a>GitHub からの Web アプリのデプロイ
+
+最後に、GitHub から App Service に Web アプリケーションをデプロイする必要があります。 これは、以下の JSON を使用して行います。 2 点注意しなければならないのは、このリソースの種類と名前です。 `"type": "sourcecontrols"` と `"name": "web"` の両方のプロパティ値はハードコーディングされているため、変更しないでください。
+
+:::image type="content" source="./media/create-website/deploy-from-github.png" alt-text="GitHub からのデプロイ":::
 
 ## <a name="next-steps"></a>次のステップ
-お疲れさまでした。 Azure Resource Manager テンプレートを使用して、Azure Cosmos DB、App Service Web アプリ、サンプル Web アプリケーションをデプロイしました。
 
-* Azure Cosmos DB の詳細については、[こちら](https://azure.microsoft.com/services/cosmos-db/)をご覧ください。
-* Azure App Service Web Apps の詳細については、 [ここ](https://go.microsoft.com/fwlink/?LinkId=325362)をクリックしてください。
-* Azure リソース マネージャーのテンプレートの詳細については、 [ここ](https://msdn.microsoft.com/library/azure/dn790549.aspx)をクリックしてください。
+お疲れさまでした。 Azure Cosmos DB、Azure App Service、および Cosmos DB への接続に必要な接続情報を自動的に取得するサンプル Web アプリケーションを、すべて 1 回の操作で、機密情報の切り取りと貼り付けを行う必要なくデプロイできました。 このテンプレートを出発点として使用し、変更を加えることで、独自の Web アプリケーションを同じ方法でデプロイできます。
 
-## <a name="whats-changed"></a>変更内容
-* Web サイトから App Service に変更するためのガイドについては、次を参照してください。[Azure App Service と既存の Azure サービス](https://go.microsoft.com/fwlink/?LinkId=529714)
-
-> [!NOTE]
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
-> 
-> 
-
+* このサンプル用の Azure Resource Manager テンプレートについては、[Azure クイックスタート テンプレート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-webapp)にアクセスしてください
+* サンプル アプリのソース コードについては、[GitHub 上の Cosmos DB To Do アプリ](https://github.com/Azure-Samples/cosmos-dotnet-core-todo-app)にアクセスしてください。

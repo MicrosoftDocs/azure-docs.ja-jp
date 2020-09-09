@@ -12,12 +12,12 @@ ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: 5495aa6fda189897985ed2f198f6e92c996f6fef
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: d513dbd8449dad1d34117e06970f0c0881462aa3
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81868379"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263229"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意
 
@@ -68,7 +68,9 @@ Microsoft ID プラットフォームでは、**委任されたアクセス許�
 
 ## <a name="openid-connect-scopes"></a>OpenID Connect のスコープ
 
-OpenID Connect の Microsoft ID プラットフォーム実装には、特定のリソースには適用されない、適切に定義されたスコープ `openid`、`email`、`profile`、`offline_access` があります。 `address` と `phone` の OpenID Connect スコープはサポートされていません。
+OpenID Connect の Microsoft ID プラットフォーム実装には、Microsoft Graph にもホストされている適切に定義されたスコープ `openid`、`email`、`profile`、`offline_access` があります。 `address` と `phone` の OpenID Connect スコープはサポートされていません。
+
+OIDC スコープとトークンを要求すると、[UserInfo エンドポイント](userinfo.md)を呼び出すためのトークンが付与されます。
 
 ### <a name="openid"></a>openid
 

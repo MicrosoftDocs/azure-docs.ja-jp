@@ -6,18 +6,18 @@ documentationcenter: ''
 author: damendo
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2017
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: 39f81731f20566d1a39f3f0931ff52c4e8b43ec0
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 938315dac80ae51984851083753a9cb8f77662b2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521393"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737905"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>特定の場所から Azure リージョンへの相対待機時間を確認する
 

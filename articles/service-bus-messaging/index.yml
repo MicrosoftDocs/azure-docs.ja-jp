@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: spelluru
   ms.author: spelluru
-  ms.date: 10/22/2019
-  ms.openlocfilehash: 36b82d96f4bfbc3eac6d5ca7f961386224171268
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 06/23/2020
+  ms.openlocfilehash: 7f2cab376320b51cbc4d420b6e5bc63c1df8f675
+  ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "74666292"
+  ms.lasthandoff: 08/11/2020
+  ms.locfileid: "88067377"
 landingContent:
 - title: Service Bus メッセージングについて
   linkLists:
@@ -36,7 +36,7 @@ landingContent:
   - linkListType: architecture
     links:
     - text: キューとイベント向けの参照アーキテクチャ
-      url: https://docs.microsoft.com/azure/architecture/reference-architectures/enterprise-integration/queues-events
+      url: /azure/architecture/reference-architectures/enterprise-integration/queues-events
 - title: Service Bus キューを作成する
   linkLists:
   - linkListType: quickstart

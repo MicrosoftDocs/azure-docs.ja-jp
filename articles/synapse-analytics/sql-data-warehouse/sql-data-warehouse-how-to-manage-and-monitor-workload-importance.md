@@ -5,18 +5,18 @@ services: synapse-analytics
 author: ronortloff
 manager: craigg
 ms.service: synapse-analytics
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.topic: conceptual
 ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 3efd8a776542616a9ceefba331b06406540905a8
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 43006456142728287ddf4adba1fbb9b45f5ccc89
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633320"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85211971"
 ---
 # <a name="manage-and-monitor-workload-importance-in-azure-synapse-analytics"></a>Azure Synapse Analytics でワークロードの重要度の管理と監視を行う
 

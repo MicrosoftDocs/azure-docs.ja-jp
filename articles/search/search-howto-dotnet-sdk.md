@@ -1,26 +1,30 @@
 ---
-title: .NET で Azure Cognitive Search を使用する
+title: .NET で Microsoft.Azure.Search (v10) を使用する
 titleSuffix: Azure Cognitive Search
-description: C# と .NET SDK使用して、.NET アプリケーションで Azure Cognitive Search を使用する方法について説明します。 コード ベースのタスクには、サービスへの接続、コンテンツのインデックス作成、およびインデックスの照会が含まれます。
+description: C# および .Net SDK のバージョン 10 を使用して .NET アプリケーションの検索オブジェクトを作成および管理する方法について説明します。 コード スニペットには、サービスへの接続、インデックスの作成、およびクエリの例を示します。
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
 ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: b31a4e40c1e9095499faf265673ab4213ad6bde0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 08/05/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 394c87bcd3e4580289fbccc6a31b164f914dc8a3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236883"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020798"
 ---
-# <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>.NET アプリケーションから Azure Cognitive Search を使用する方法
+# <a name="how-to-use-microsoftazuresearch-v10-in-a-net-application"></a>.NET アプリケーションで Microsoft.Azure.Search (v10) を使用する方法
 
-この記事では、[Azure Cognitive Search .NET SDK](https://aka.ms/search-sdk) を使用する手順について説明します。 .NET SDK を使用すると、Azure Cognitive Search を使用してアプリケーションにリッチな検索エクスペリエンスを実装できます。
+この記事では、C# および [Azure Cognitive Search (v10) .NET SDK](/dotnet/api/overview/azure/search) を使用して検索オブジェクトを作成および管理する方法について説明します。 バージョン 10 は、最新バージョンの Microsoft.Azure.Search パッケージです。 今後、新機能は Azure SDK チームによって [Azure.Search.Documents](/dotnet/api/overview/azure/search.documents-readme) でロールアウトされます。
 
-## <a name="whats-in-the-azure-cognitive-search-sdk"></a>Azure Cognitive Search SDK の内容
+既存の、または開発途中のプロジェクトがある場合は、引き続きバージョン 10 を使用してください。 新しいプロジェクトの場合、または新しい機能を使用する場合は、既存の検索ソリューションを新しいライブラリに移行する必要があります。
+
+## <a name="whats-in-version-10"></a>バージョン 10 の機能
+
 この SDK は､HTTP や JSON に関する詳しい知識がなくても､インデックスやデータ ソース､インデクサー､シノニム マップの管理､ドキュメントのアップロードと管理､クエリの実行を行うことを可能にするいくつかのクライアント ライブラリから構成されています｡ これらのクライアント ライブラリはすべて､NuGet パッケージとして配布されます｡
 
 メインの NuGet パッケージは `Microsoft.Azure.Search` です｡このパッケージは､依存関係がある他のすべてのパッケージを含むメタパッケージです｡ 初めて取り組む場合、あるいはアプリケーションに Azure Cognitive Search の全機能が必要と分かっている場合は、このパッケージを使用します｡
@@ -33,14 +37,14 @@ SDK のその他の NuGet パッケージとしては以下があります｡
 
 各種クライアント ライブラリには、`Index`、`Field`、`Document` などのクラスや、 `SearchServiceClient` や `SearchIndexClient` クラスに対する `Indexes.Create` や `Documents.Search` などの操作が定義されています。 これらのクラスは、次の名前空間にまとめられています。
 
-* [Microsoft.Azure.Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search)
-* [Microsoft.Azure.Search.Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models)
+* [Microsoft.Azure.Search](/dotnet/api/microsoft.azure.search)
+* [Microsoft.Azure.Search.Models](/dotnet/api/microsoft.azure.search.models)
 
 SDK の今後の更新プログラムについてフィードバックを提供する場合は、[フィードバック ページ](https://feedback.azure.com/forums/263029-azure-search/) を参照するか、[GitHub](https://github.com/azure/azure-sdk-for-net/issues) でイシューを作成し、イシューのタイトルに "Azure Cognitive Search" を含めます。
 
-.NET SDK は、バージョン `2019-05-06` の [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/) をサポートします。 このバージョンには、Azure BLOB にインデックスを付ける際の、[複合型](search-howto-complex-data-types.md)、[AI エンリッチメント](cognitive-search-concept-intro.md)、[オートコンプリート](https://docs.microsoft.com/rest/api/searchservice/autocomplete)、[JsonLines 分析モード](search-howto-index-json-blobs.md)に対するサポートが含まれます。 
+.NET SDK は、バージョン `2019-05-06` の [Azure Cognitive Search REST API](/rest/api/searchservice/) を対象としています。 このバージョンには、Azure BLOB にインデックスを付ける際の、[複合型](search-howto-complex-data-types.md)、[AI エンリッチメント](cognitive-search-concept-intro.md)、[オートコンプリート](/rest/api/searchservice/autocomplete)、[JsonLines 分析モード](search-howto-index-json-blobs.md)に対するサポートが含まれます。 
 
-この SDK では、Search サービスの作成とスケーリングや API キーの管理などの[管理操作](https://docs.microsoft.com/rest/api/searchmanagement/)はサポートされていません。 .NET アプリケーションから Search リソースを管理する必要がある場合は、[Azure Cognitive Search .NET Management SDK](https://aka.ms/search-mgmt-sdk) を使用できます。
+この SDK では、Search サービスの作成とスケーリングや API キーの管理などの[管理操作](/rest/api/searchmanagement/)はサポートされていません。 .NET アプリケーションから Search リソースを管理する必要がある場合は、[Azure Cognitive Search .NET Management SDK](https://aka.ms/search-mgmt-sdk) を使用できます。
 
 ## <a name="upgrading-to-the-latest-version-of-the-sdk"></a>最新バージョンの SDK へのアップグレード
 古いバージョンの Azure Cognitive Search .NET SDK を既に使用しており、一般公開されている最新のバージョンにアップグレードする場合、[この記事](search-dotnet-sdk-migration-version-9.md)に方法が説明されています。
@@ -135,7 +139,7 @@ ISearchIndexClient indexClient = serviceClient.Indexes.GetClient(indexName);
 ```
 
 > [!NOTE]
-> 一般的な検索アプリケーションでは、インデックスの管理とインデックスの設定は、検索クエリとは別のコンポーネントによって処理される場合があります。 `Indexes.GetClient` は、追加の `SearchCredentials` を指定する手間を省くため、インデックスを作成するのに便利です。 そのためには、`SearchServiceClient` を作成するときに使用した管理者キーを新しい `SearchIndexClient` に渡します。 ただし、アプリケーションのクエリを実行する部分では、管理者キーではなく、データの読み取りのみを可能にするクエリ キーを渡すことができるように、`SearchIndexClient` を直接作成する方が適しています。 これは、最小権限の原則にも適合しており、アプリケーションのセキュリティ強化に役立ちます。 管理者キーとクエリ キーの詳細については、 [こちら](https://docs.microsoft.com/rest/api/searchservice/#authentication-and-authorization)を参照してください。
+> 一般的な検索アプリケーションでは、インデックスの管理とインデックスの設定は、検索クエリとは別のコンポーネントによって処理される場合があります。 `Indexes.GetClient` は、追加の `SearchCredentials` を指定する手間を省くため、インデックスを作成するのに便利です。 そのためには、`SearchServiceClient` を作成するときに使用した管理者キーを新しい `SearchIndexClient` に渡します。 ただし、アプリケーションのクエリを実行する部分では、管理者キーではなく、データの読み取りのみを可能にするクエリ キーを渡すことができるように、`SearchIndexClient` を直接作成する方が適しています。 これは、最小権限の原則にも適合しており、アプリケーションのセキュリティ強化に役立ちます。 管理者キーとクエリ キーの詳細については、 [こちら](/rest/api/searchservice/#authentication-and-authorization)を参照してください。
 > 
 > 
 
@@ -171,46 +175,49 @@ private static SearchIndexClient CreateSearchIndexClient(string indexName, IConf
 
 有効なサービス名と API キーを使用してこのアプリケーションを実行すると、出力は次の例のようになります。(一部のコンソール出力は、説明のため "..." で置き換えられています。)
 
-    Deleting index...
+```output
 
-    Creating index...
+Deleting index...
 
-    Uploading documents...
+Creating index...
 
-    Waiting for documents to be indexed...
+Uploading documents...
 
-    Search the entire index for the term 'motel' and return only the HotelName field:
+Waiting for documents to be indexed...
 
-    Name: Secret Point Motel
+Search the entire index for the term 'motel' and return only the HotelName field:
 
-    Name: Twin Dome Motel
+Name: Secret Point Motel
 
-
-    Apply a filter to the index to find hotels with a room cheaper than $100 per night, and return the hotelId and description:
-
-    HotelId: 1
-    Description: The hotel is ideally located on the main commercial artery of the city in the heart of New York. A few minutes away is Times Square and the historic centre of the city, as well as other places of interest that make New York one of America's most attractive and cosmopolitan cities.
-
-    HotelId: 2
-    Description: The hotel is situated in a  nineteenth century plaza, which has been expanded and renovated to the highest architectural standards to create a modern, functional and first-class hotel in which art and unique historical elements coexist with the most modern comforts.
+Name: Twin Dome Motel
 
 
-    Search the entire index, order by a specific field (lastRenovationDate) in descending order, take the top two results, and show only hotelName and lastRenovationDate:
+Apply a filter to the index to find hotels with a room cheaper than $100 per night, and return the hotelId and description:
 
-    Name: Triple Landscape Hotel
-    Last renovated on: 9/20/2015 12:00:00 AM +00:00
+HotelId: 1
+Description: The hotel is ideally located on the main commercial artery of the city in the heart of New York. A few minutes away is Times Square and the historic centre of the city, as well as other places of interest that make New York one of America's most attractive and cosmopolitan cities.
 
-    Name: Twin Dome Motel
-    Last renovated on: 2/18/1979 12:00:00 AM +00:00
+HotelId: 2
+Description: The hotel is situated in a  nineteenth century plaza, which has been expanded and renovated to the highest architectural standards to create a modern, functional and first-class hotel in which art and unique historical elements coexist with the most modern comforts.
 
 
-    Search the hotel names for the term 'hotel':
+Search the entire index, order by a specific field (lastRenovationDate) in descending order, take the top two results, and show only hotelName and lastRenovationDate:
 
-    HotelId: 3
-    Name: Triple Landscape Hotel
-    ...
+Name: Triple Landscape Hotel
+Last renovated on: 9/20/2015 12:00:00 AM +00:00
 
-    Complete.  Press any key to end application... 
+Name: Twin Dome Motel
+Last renovated on: 2/18/1979 12:00:00 AM +00:00
+
+
+Search the hotel names for the term 'hotel':
+
+HotelId: 3
+Name: Triple Landscape Hotel
+...
+
+Complete.  Press any key to end application... 
+```
 
 アプリケーションの完全なソース コードは、この記事の最後で提供します。
 
@@ -258,7 +265,7 @@ private static void CreateIndex(string indexName, SearchServiceClient serviceCli
 >
 > 
 
-フィールドに加えて、スコアリング プロファイル、サジェスター、または CORS オプションも Index に追加できます (簡潔にするために、これらのパラメーターはサンプルから省略されています)。 Index オブジェクトとその構成要素の詳細については、[SDK リファレンス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index)および [Azure Cognitive Search REST API リファレンス](https://docs.microsoft.com/rest/api/searchservice/)をご覧ください。
+フィールドに加えて、スコアリング プロファイル、サジェスター、または CORS オプションも Index に追加できます (簡潔にするために、これらのパラメーターはサンプルから省略されています)。 Index オブジェクトとその構成要素の詳細については、[SDK リファレンス](/dotnet/api/microsoft.azure.search.models.index)および [Azure Cognitive Search REST API リファレンス](/rest/api/searchservice/)をご覧ください。
 
 ### <a name="populating-the-index"></a>インデックスの設定
 `Main` の次の手順では、新しく作成したインデックスを設定します。 このインデックス設定は、次のメソッドで実行されます。(説明のため "..." で置き換えられた一部のコード。  完全なデータ生成コードに対する完全なサンプル ソリューションを参照してください。)
@@ -389,7 +396,7 @@ private static void UploadDocuments(ISearchIndexClient indexClient)
 このメソッドの 3 番目の部分は、インデックス作成の重要なエラー ケースを処理する catch ブロックです。 Azure Cognitive Search がバッチ内の一部のドキュメントのインデックス作成に失敗した場合、`Documents.Index` は `IndexBatchException` をスローします。 この例外は、サービスの負荷が高いときにドキュメントのインデックスを作成していると発生する場合があります。 **コードでこのケースを明示的に処理することを強くお勧めします。** しばらく待ってから失敗したドキュメントのインデックス作成を再試行したり、サンプルと同じようにログに記録してから続けることができます。または、アプリケーションのデータ整合性要件に応じて他の処理を行うこともできます。
 
 > [!NOTE]
-> [`FindFailedActionsToRetry`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception.findfailedactionstoretry) メソッドを使用して、`Index` の前回の呼び出しで失敗したアクションだけを含む新しいバッチを作成できます。 このメソッドの適切な使用方法については、[StackOverflow](https://stackoverflow.com/questions/40012885/azure-search-net-sdk-how-to-use-findfailedactionstoretry) をご覧ください。
+> [`FindFailedActionsToRetry`](/dotnet/api/microsoft.azure.search.indexbatchexception.findfailedactionstoretry) メソッドを使用して、`Index` の前回の呼び出しで失敗したアクションだけを含む新しいバッチを作成できます。 このメソッドの適切な使用方法については、[StackOverflow](https://stackoverflow.com/questions/40012885/azure-search-net-sdk-how-to-use-findfailedactionstoretry) をご覧ください。
 >
 >
 
@@ -464,7 +471,7 @@ public partial class Hotel
 
 次に注目すべき点は、各プロパティが `IsFilterable`、`IsSearchable`、`Key`、`Analyzer` などの属性で装飾されていることです。 これらの属性は、[Azure Cognitive Search インデックス内の対応するフィールド属性](/rest/api/searchservice/create-index)に直接マップされます。 `FieldBuilder` クラスは、これらのプロパティを使用してインデックスのフィールド定義を構築します。
 
-`Hotel` クラスに関する 3 番目の重要な点は、パブリック プロパティのデータ型です。 これらのプロパティの .NET 型は、インデックス定義でそれらと同等のフィールド型にマップします。 たとえば、`Category` 文字列プロパティは、`Edm.String` 型の `category` フィールドにマップします。 `bool?`、`Edm.Boolean`、`DateTimeOffset?`、`Edm.DateTimeOffset` などの間にも、同じような型のマッピングがあります。 型のマッピングの具体的なルールについては、[Azure Cognitive Search .NET SDK リファレンス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get)で `Documents.Get` メソッドを参照してください。 `FieldBuilder` クラスは、このマッピングに自動的に対処しますが、シリアル化の問題のトラブルシューティングを行う必要がある場合に、マッピングを理解しておくと役立ちます。
+`Hotel` クラスに関する 3 番目の重要な点は、パブリック プロパティのデータ型です。 これらのプロパティの .NET 型は、インデックス定義でそれらと同等のフィールド型にマップします。 たとえば、`Category` 文字列プロパティは、`Edm.String` 型の `category` フィールドにマップします。 `bool?`、`Edm.Boolean`、`DateTimeOffset?`、`Edm.DateTimeOffset` などの間にも、同じような型のマッピングがあります。 型のマッピングの具体的なルールについては、[Azure Cognitive Search .NET SDK リファレンス](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get)で `Documents.Get` メソッドを参照してください。 `FieldBuilder` クラスは、このマッピングに自動的に対処しますが、シリアル化の問題のトラブルシューティングを行う必要がある場合に、マッピングを理解しておくと役立ちます。
 
 `SmokingAllowed` プロパティを見つけてしまいましたか?
 
@@ -475,7 +482,7 @@ public bool? SmokingAllowed => (Rooms != null) ? Array.Exists(Rooms, element => 
 
 このプロパティの `JsonIgnore` 属性によって、フィールドとしてインデックスにシリアル化しないよう、`FieldBuilder` に指示が与えられます。  これは、ご利用のアプリケーションでヘルパーとして使用できる、クライアント側の計算されたプロパティを作成する優れた方法です。  この場合、`SmokingAllowed` プロパティは、`Rooms` コレクション内に喫煙可能な `Room` があるかどうかを反映します。  すべて false の場合、ホテル全館で喫煙できないことを示します。
 
-`Address` や `Rooms` など、いくつかのプロパティは、.NET クラスのインスタンスです。  これらのプロパティは、さらに複雑なデータ構造を表し、インデックス内で[複合データ型](https://docs.microsoft.com/azure/search/search-howto-complex-data-types)を備えたフィールドを必要とします。
+`Address` や `Rooms` など、いくつかのプロパティは、.NET クラスのインスタンスです。  これらのプロパティは、さらに複雑なデータ構造を表し、インデックス内で[複合データ型](./search-howto-complex-data-types.md)を備えたフィールドを必要とします。
 
 `Address` プロパティは、以下に定義された `Address` クラス内の複数の値のセットを表します。
 
@@ -556,7 +563,7 @@ namespace AzureSearch.SDKHowTo
 インデックス内でドキュメントの操作を行うために独自のクラスを使用するこの機能は、次のセクションで説明するように、検索結果の取得、および SDK による任意の型への自動逆シリアル化という両方向で動作します。
 
 > [!NOTE]
-> Azure Cognitive Search .NET SDK は、`Document` クラスを使用して動的に型指定されたドキュメントもサポートします。これは、フィールドの値に対するフィールド名のキー/値マッピングです。 この機能は、設計時にインデックス スキーマがわからない場合、または特定のモデル クラスにバインドすると不都合な場合に便利です。 ドキュメントを処理する SDK のすべてのメソッドには、`Document` クラスを使用するオーバーロード、およびジェネリック型パラメーターを使用する厳密な型指定のオーバーロードがあります。 このチュートリアルのサンプル コードでは、後者のみを使用しています。 [`Document` クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.document)は `Dictionary<string, object>` から継承します。
+> Azure Cognitive Search .NET SDK は、`Document` クラスを使用して動的に型指定されたドキュメントもサポートします。これは、フィールドの値に対するフィールド名のキー/値マッピングです。 この機能は、設計時にインデックス スキーマがわからない場合、または特定のモデル クラスにバインドすると不都合な場合に便利です。 ドキュメントを処理する SDK のすべてのメソッドには、`Document` クラスを使用するオーバーロード、およびジェネリック型パラメーターを使用する厳密な型指定のオーバーロードがあります。 このチュートリアルのサンプル コードでは、後者のみを使用しています。 [`Document` クラス](/dotnet/api/microsoft.azure.search.models.document)は `Dictionary<string, object>` から継承します。
 > 
 >
 
@@ -566,7 +573,9 @@ Azure Cognitive Search インデックスにマップする独自のモデル �
 
 これは単なる仮定上の問題ではありません。`Edm.Int32` 型の既存のインデックスに新しいフィールドを追加する場合を考えてみてください。 インデックスの定義を更新した後、(Azure Cognitive Search ではすべての型が null を許容するので) すべてのドキュメントでその新しいフィールドの値が null になります。 その後、そのフィールドが null 非許容型の `int` プロパティであるモデル クラスを使用した場合、ドキュメントを取得しようとすると、次のような `JsonSerializationException` が発生します。
 
-    Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
+```output
+Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
+```
 
 このため、ベスト プラクティスとして、モデル クラスでは null 許容型を使用することをお勧めします。
 
@@ -641,12 +650,12 @@ private static void RunQueries(ISearchIndexClient indexClient)
 }
 ```
 
-クエリを実行するたびに、このメソッドはまず新しい `SearchParameters` オブジェクトを作成します。 このオブジェクトは、並べ替え、フィルター処理、ページング、ファセットなどの、クエリへの追加オプションを指定するために使用されます。 このメソッドでは、さまざまなクエリの `Filter`、`Select`、`OrderBy`、`Top` の各プロパティを設定します。 `SearchParameters` のすべてのプロパティについては、[こちら](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters)をご覧ください。
+クエリを実行するたびに、このメソッドはまず新しい `SearchParameters` オブジェクトを作成します。 このオブジェクトは、並べ替え、フィルター処理、ページング、ファセットなどの、クエリへの追加オプションを指定するために使用されます。 このメソッドでは、さまざまなクエリの `Filter`、`Select`、`OrderBy`、`Top` の各プロパティを設定します。 `SearchParameters` のすべてのプロパティについては、[こちら](/dotnet/api/microsoft.azure.search.models.searchparameters)をご覧ください。
 
 次の手順では、検索クエリを実際に実行します。 この検索は、`Documents.Search` メソッドを使用して実行されます。 各クエリでは、使用する検索テキストを文字列として渡し (検索テキストがない場合は `"*"`)、以前に作成した検索パラメーターも渡します。 また、`Documents.Search` に対する型パラメーターとして `Hotel` も指定します。これは、検索結果のドキュメントを `Hotel` 型のオブジェクトに逆シリアル化するように SDK に指示します。
 
 > [!NOTE]
-> 検索クエリ式の構文の詳細については、[こちら](https://docs.microsoft.com/rest/api/searchservice/Simple-query-syntax-in-Azure-Search)をご覧ください。
+> 検索クエリ式の構文の詳細については、[こちら](/rest/api/searchservice/Simple-query-syntax-in-Azure-Search)をご覧ください。
 > 
 > 
 
@@ -680,9 +689,11 @@ WriteDocuments(results);
 
 この例では、検索可能なあらゆるフィールドで "motel" という単語のインデックス全体を検索し、`Select` パラメーターによって指定されるとおり、ホテル名だけを返します。 結果は次のようになります。
 
-    Name: Secret Point Motel
+```output
+Name: Secret Point Motel
 
-    Name: Twin Dome Motel
+Name: Twin Dome Motel
+```
 
 次のクエリは、さらに興味深いものです。  1 泊 100 ドル未満の部屋があるホテルを検索し、ホテル ID と説明だけを返します。
 
@@ -699,15 +710,17 @@ results = indexClient.Documents.Search<Hotel>("*", parameters);
 WriteDocuments(results);
 ```
 
-このクエリでは、OData の `$filter` 式 (`Rooms/any(r: r/BaseRate lt 100)`) を使用して、インデックス内のドキュメントをフィルター処理します。 ここでは、[あらゆる演算子](https://docs.microsoft.com/azure/search/search-query-odata-collection-operators)を使用して、'BaseRate lt 100' をルーム コレクションのすべての項目に適用します。 Azure Cognitive Search がサポートする OData 構文の詳細については、[こちら](https://docs.microsoft.com/azure/search/query-odata-filter-orderby-syntax)を参照してください。
+このクエリでは、OData の `$filter` 式 (`Rooms/any(r: r/BaseRate lt 100)`) を使用して、インデックス内のドキュメントをフィルター処理します。 ここでは、[あらゆる演算子](./search-query-odata-collection-operators.md)を使用して、'BaseRate lt 100' をルーム コレクションのすべての項目に適用します。 Azure Cognitive Search がサポートする OData 構文の詳細については、[こちら](./query-odata-filter-orderby-syntax.md)を参照してください。
 
 クエリの結果は次のとおりです。
 
-    HotelId: 1
-    Description: The hotel is ideally located on the main commercial artery of the city in the heart of New York...
+```output
+HotelId: 1
+Description: The hotel is ideally located on the main commercial artery of the city in the heart of New York...
 
-    HotelId: 2
-    Description: The hotel is situated in a nineteenth century plaza, which has been expanded and renovated to...
+HotelId: 2
+Description: The hotel is situated in a nineteenth century plaza, which has been expanded and renovated to...
+```
 
 次に、最近改装された上位 2 つのホテルを検索し、ホテル名と最終改装日を表示します。 次にコードを示します。 
 
@@ -729,8 +742,10 @@ WriteDocuments(results);
 
 結果は次のようになります。
 
-    Name: Fancy Stay        Last renovated on: 6/27/2010 12:00:00 AM +00:00
-    Name: Roach Motel       Last renovated on: 4/28/1982 12:00:00 AM +00:00
+```output
+Name: Fancy Stay        Last renovated on: 6/27/2010 12:00:00 AM +00:00
+Name: Roach Motel       Last renovated on: 4/28/1982 12:00:00 AM +00:00
+```
 
 最後に、"hotel" という単語に一致するすべてのホテル名を検索します。
 
@@ -746,13 +761,15 @@ WriteDocuments(results);
 
 結果は次のとおりです。`Select` プロパティを指定しなかったので、この結果にはすべてのフィールドが含まれています。
 
+```output
     HotelId: 3
     Name: Triple Landscape Hotel
     ...
+```
 
 チュートリアルはここまでですが、ここで止めないでください。 **次のステップでは、Azure Cognitive Search をさらに学習するための他のリソースを提供します。
 
 ## <a name="next-steps"></a>次のステップ
-* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) と [REST API](https://docs.microsoft.com/rest/api/searchservice/) のリファレンスを参照してください。
-* [名前付け規則](https://docs.microsoft.com/rest/api/searchservice/Naming-rules) で、さまざまなオブジェクトに名前を付けるときの規則を学習してください。
-* Azure Cognitive Search で[サポートされるデータ型](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)を確認してください。
+* [.NET SDK](/dotnet/api/microsoft.azure.search) と [REST API](/rest/api/searchservice/) のリファレンスを参照してください。
+* [名前付け規則](/rest/api/searchservice/Naming-rules) で、さまざまなオブジェクトに名前を付けるときの規則を学習してください。
+* Azure Cognitive Search で[サポートされるデータ型](/rest/api/searchservice/Supported-data-types)を確認してください。

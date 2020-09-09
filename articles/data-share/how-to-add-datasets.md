@@ -1,17 +1,17 @@
 ---
 title: 既存の Azure Data Share にデータセットを追加する
 description: Azure Data Share で既存のデータ共有にデータセットを追加し、同じ受信者と共有する方法について説明します。
-author: joannapea
-ms.author: joanpo
+author: jifems
+ms.author: jife
 ms.service: data-share
-ms.topic: conceptual
-ms.date: 07/10/2019
-ms.openlocfilehash: 00c96950565b077e65f84e2d8b4977092df5e317
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.date: 07/30/2020
+ms.openlocfilehash: 540cdc2948cbcd97bf7c8872f3aace2862280434
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73490538"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513491"
 ---
 # <a name="how-to-add-datasets-to-an-existing-share-in-azure-data-share"></a>Azure Data Share で既存の共有にデータセットを追加する方法
 

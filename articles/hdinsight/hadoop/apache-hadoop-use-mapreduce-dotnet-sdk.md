@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
-ms.custom: hdinsightactive
+ms.topic: how-to
+ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/15/2020
-ms.openlocfilehash: e50510f2420d69be37af584a2648a794e1561ee3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3de7101eb998d0f9b3b57afba6d19595738cbb63
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76157052"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020407"
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>HDInsight .NET SDK を使用して MapReduce ジョブを実行する
 

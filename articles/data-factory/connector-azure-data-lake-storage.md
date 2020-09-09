@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/08/2020
-ms.openlocfilehash: 2e4e554bb6564adb8c6722533e127a758e5a9c24
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 08/18/2020
+ms.openlocfilehash: 9eed71f5a264a6308a49ac594563c746bb8ea5b7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415393"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544776"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Data Lake Storage Gen2 でのデータのコピーと変換
 
@@ -133,6 +133,7 @@ Azure Data Lake Storage Gen2 コネクタでは、次の認証の種類がサポ
 | servicePrincipalId | アプリケーションのクライアント ID を取得します。 | はい |
 | servicePrincipalKey | アプリケーションのキーを取得します。 Data Factory に安全に格納するには、このフィールドを `SecureString` としてマークします。 また、[Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 | はい |
 | tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 これは、Azure portal の右上隅をマウスでポイントすることで取得できます。 | はい |
+| azureCloudType | サービス プリンシパル認証の場合は、Azure Active Directory アプリケーションの登録先である Azure クラウド環境の種類を指定します。 <br/> 指定できる値は、**AzurePublic**、**AzureChina**、**AzureUsGovernment**、および **AzureGermany** です。 既定では、データ ファクトリのクラウド環境が使用されます。 | いいえ |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
 **例:**
@@ -176,7 +177,7 @@ Azure リソースのマネージド ID 認証を使用するには、次の手�
 >Data Factory の UI を使用して作成する場合で、なおかつ IAM でマネージド ID に "ストレージ BLOB データ閲覧者またはストレージ BLOB データ共同作成者" ロールが設定されていない場合、テスト接続時またはフォルダーの参照 (または移動) 時は、[Test connection to file path]\(ファイル パスへのテスト接続\) または [Browse from specified path]\(指定したパスから参照\) を選択し、**読み取りおよび実行**アクセス許可のあるパスを指定して続行してください。
 
 >[!IMPORTANT]
->PolyBase を使用して Data Lake Storage Gen2 から SQL Data Warehouse にデータを読み込む場合、Data Lake Storage Gen2 にマネージド ID 認証を使用しているときは、[こちらのガイダンス](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)の手順 1. と 2. に従って、1) SQL Database サーバーを Azure Active Directory (Azure AD) に登録し、2) SQL Database サーバーにストレージ BLOB データ共同作成者ロールを割り当てます。残りの部分は Data Factory によって処理されます。 Data Lake Storage Gen2 が Azure Virtual Network エンドポイントで構成されている場合、PolyBase を使用してそこからデータを読み込むには、PolyBase で要求されるマネージド ID 認証を使用する必要があります。
+>PolyBase を使用して Data Lake Storage Gen2 から SQL Data Warehouse にデータを読み込むときに、Data Lake Storage Gen2 にマネージド ID 認証を使用する場合は、[こちらのガイダンス](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)の手順 1 と 2 に従って、1) Azure Active Directory (Azure AD) に登録し、2) お使いのサーバーにストレージ BLOB データ共同作成者ロールを割り当てます。残りは Data Factory によって処理されます。 Data Lake Storage Gen2 が Azure Virtual Network エンドポイントで構成されている場合、PolyBase を使用してそこからデータを読み込むには、PolyBase で要求されるマネージド ID 認証を使用する必要があります。
 
 リンクされたサービスでは、次のプロパティがサポートされています。
 
@@ -254,15 +255,26 @@ Data Lake Storage Gen2 では、形式ベースのデータセットの `locatio
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
+ADLS Gen2 からデータをコピーするには、いくつかのオプションがあります。
+
+- データセットに指定されている特定のパスからコピーします。
+- フォルダー パスまたはファイル名に対するワイルドカード フィルターについては、`wildcardFolderPath` および `wildcardFileName` を確認してください。
+- 特定のテキスト ファイルで定義されているファイルをファイル セットとしてコピーします。`fileListPath` を確認してください。
+
 Data Lake Storage Gen2 では、形式ベースのコピー ソースの `storeSettings` 設定で次のプロパティがサポートされています。
 
 | プロパティ                 | 説明                                                  | 必須                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | `storeSettings` の type プロパティは **AzureBlobFSReadSettings** に設定する必要があります。 | はい                                           |
-| recursive                | データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 recursive が true に設定されていて、シンクがファイル ベースのストアである場合、空のフォルダーまたはサブフォルダーはシンクでコピーも作成もされません。 使用可能な値: **true** (既定値) および **false**。 | いいえ                                            |
-| wildcardFolderPath       | ソース フォルダーをフィルター処理するためにデータセットで構成されている、特定のファイル システムの下のワイルドカード文字を含むフォルダーのパス。 <br>使用できるワイルドカードは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。 実際のフォルダー名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 <br>「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の他の例をご覧ください。 | いいえ                                            |
-| wildcardFileName         | ソース ファイルをフィルター処理するための、特定のファイル システム + folderPath/wildcardFolderPath の下のワイルドカード文字を含むファイル名。 <br>使用できるワイルドカードは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。 実際のフォルダー名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の他の例をご覧ください。 | はい (データセットで `fileName` が指定されていない場合) |
-| modifiedDatetimeStart    | 最終変更日時属性に基づくファイル フィルター。 最終変更日時が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の範囲内にあるファイルが選択されます。 時刻は "2018-12-01T05:00:00Z" の形式で UTC タイム ゾーンに適用されます。 <br> 各プロパティには NULL を指定できます。これは、ファイル属性フィルターをデータセットに適用しないことを意味します。 `modifiedDatetimeStart` に datetime 値が設定されており、`modifiedDatetimeEnd` が NULL の場合は、最終変更日時属性が datetime 値以上であるファイルが選択されます。 `modifiedDatetimeEnd` に datetime 値が設定されており、`modifiedDatetimeStart` が NULL の場合は、最終変更日時属性が datetime 値以下であるファイルが選択されます。 | いいえ                                            |
+| ***コピーするファイルを特定する:*** |  |  |
+| オプション 1: 静的パス<br> | データセットに指定されている特定のファイル システムまたはフォルダーかファイル パスからコピーします。 ファイル システムまたはフォルダーからすべてのファイルをコピーする場合は、さらに `*` として `wildcardFileName` を指定します。 |  |
+| オプション 2: ワイルドカード<br>- wildcardFolderPath | ソース フォルダーをフィルター処理するためにデータセットで構成されている、特定のファイル システムの下のワイルドカード文字を含むフォルダーのパス。 <br>使用できるワイルドカーは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。実際のフォルダー名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 <br>「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の他の例をご覧ください。 | いいえ                                            |
+| オプション 2: ワイルドカード<br>- wildcardFileName | ソース ファイルをフィルター処理するための、特定のファイル システム + folderPath/wildcardFolderPath の下のワイルドカード文字を含むファイル名。 <br>使用できるワイルドカーは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。実際のフォルダー名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。  「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の他の例をご覧ください。 | はい |
+| オプション 3: ファイルの一覧<br>- fileListPath | 指定されたファイル セットをコピーすることを示します。 コピーするファイルの一覧を含むテキスト ファイルをポイントします。データセットで構成されているパスへの相対パスであるファイルを 1 行につき 1 つずつ指定します。<br/>このオプションを使用する場合は、データ セットにファイル名を指定しないでください。 その他の例については、[ファイル リストの例](#file-list-examples)を参照してください。 |いいえ |
+| ***追加の設定:*** |  | |
+| recursive | データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 recursive が true に設定され、シンクがファイル ベースのストアである場合、空のフォルダーおよびサブフォルダーはシンクでコピーも作成もされないことに注意してください。 <br>使用可能な値: **true** (既定値) および **false**。<br>`fileListPath` を構成する場合、このプロパティは適用されません。 |いいえ |
+| deleteFilesAfterCompletion | 宛先ストアに正常に移動した後、バイナリ ファイルをソース ストアから削除するかどうかを示します。 ファイルの削除はファイルごとに行われるので、コピー操作が失敗した場合、一部のファイルが既に宛先にコピーされソースからは削除されているが、他のファイルはまだソース ストアに残っていることがわかります。 <br/>このプロパティは、データ ソース ストアが Blob、ADLS Gen1、ADLS Gen2、S3、Google Cloud Storage、ファイル、Azure ファイル、SFTP、または FTP であるバイナリ コピー シナリオでのみ有効です。 既定値: false。 |いいえ |
+| modifiedDatetimeStart    | ファイルはフィルター処理され、元になる属性は最終更新時刻です。 <br>最終変更時刻が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の間に含まれる場合は、ファイルが選択されます。 時刻は "2018-12-01T05:00:00Z" の形式で UTC タイム ゾーンに適用されます。 <br> プロパティは、ファイル属性フィルターをデータセットに適用しないことを意味する NULL にすることができます。  `modifiedDatetimeStart` に datetime 値を設定し、`modifiedDatetimeEnd` を NULL にした場合は、最終更新時刻属性が datetime 値以上であるファイルが選択されることを意味します。  `modifiedDatetimeEnd` に datetime 値を設定し、`modifiedDatetimeStart` を NULL にした場合は、最終更新時刻属性が datetime 値以下であるファイルが選択されることを意味します。<br/>`fileListPath` を構成する場合、このプロパティは適用されません。 | いいえ                                            |
 | modifiedDatetimeEnd      | 上記と同じです。                                               | いいえ                                            |
 | maxConcurrentConnections | ストレージ ストアに同時に接続する接続の数。 データ ストアへのコンカレント接続を制限する場合にのみ指定します。 | いいえ                                            |
 
@@ -309,7 +321,7 @@ Data Lake Storage Gen2 では、形式ベースのコピー ソースの `storeS
 
 ### <a name="azure-data-lake-storage-gen2-as-a-sink-type"></a>シンクの種類としての Azure Data Lake Storage Gen2
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-sink-formats](../../includes/data-factory-v2-file-sink-formats.md)]
 
 Data Lake Storage Gen2 では、形式ベースのコピー シンクの `storeSettings` 設定で次のプロパティがサポートされます。
 
@@ -317,7 +329,7 @@ Data Lake Storage Gen2 では、形式ベースのコピー シンクの `storeS
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | `storeSettings` の type プロパティは **AzureBlobFSWriteSettings** に設定する必要があります。 | はい      |
 | copyBehavior             | ソースがファイル ベースのデータ ストアのファイルの場合は、コピー動作を定義します。<br/><br/>使用できる値は、以下のとおりです。<br/><b>- PreserveHierarchy (既定値)</b>:ターゲット フォルダー内でファイル階層を保持します。 ソース フォルダーへのソース ファイルの相対パスはターゲット フォルダーへのターゲット ファイルの相対パスと同じになります。<br/><b>- FlattenHierarchy</b>:ソース フォルダーのすべてのファイルをターゲット フォルダーの第一レベルに配置します。 ターゲット ファイルは、自動生成された名前になります。 <br/><b>- MergeFiles</b>:ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。 ファイル名を指定した場合、マージされたファイル名は指定した名前になります。 それ以外は自動生成されたファイル名になります。 | いいえ       |
-| blockSizeInMB | ADLS Gen2 にデータを書き込むために使用するブロック サイズを MB 単位で指定します。 詳細は、[ブロック BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) に関するページを参照してください。 <br/>指定できる値は、**4 から 100 MB** です。 <br/>既定では、ソース ストアの種類とデータに基づいて、ADF によってブロック サイズが自動的に決定されます。 ADLS Gen2 への非バイナリ コピーの場合、既定のブロック サイズは 100 MB なので、最大 4.95 TB のデータに収まります。 データが大きくない場合、特に、ネットワークが不十分な状態でセルフホステッド統合ランタイムを使用し、操作のタイムアウトやパフォーマンスの問題が発生する場合は、最適ではない可能性があります。 ブロック サイズは明示的に指定できますが、blockSizeInMB*50000 が確実にデータを格納するのに十分な大きさであるようにします。そうしないと、コピー アクティビティの実行は失敗します。 | いいえ |
+| blockSizeInMB | ADLS Gen2 にデータを書き込むために使用するブロック サイズを MB 単位で指定します。 詳細は、[ブロック BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) に関するページを参照してください。 <br/>指定できる値は、**4 MB から 100 MB** です。 <br/>既定では、ソース ストアの種類とデータに基づいて、ADF によってブロック サイズが自動的に決定されます。 ADLS Gen2 への非バイナリ コピーの場合、既定のブロック サイズは 100 MB なので、最大 4.95 TB のデータに収まります。 データが大きくない場合、特に、ネットワークが不十分な状態でセルフホステッド統合ランタイムを使用し、操作のタイムアウトやパフォーマンスの問題が発生する場合は、最適ではない可能性があります。 ブロック サイズは明示的に指定できますが、blockSizeInMB*50000 が確実にデータを格納するのに十分な大きさであるようにします。そうしないと、コピー アクティビティの実行は失敗します。 | いいえ |
 | maxConcurrentConnections | データ ストアに同時に接続する接続の数。 データ ストアへのコンカレント接続を制限する場合にのみ指定します。 | いいえ       |
 
 **例:**
@@ -366,6 +378,17 @@ Data Lake Storage Gen2 では、形式ベースのコピー シンクの `storeS
 | `Folder*` | `*.csv` | false | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 | `Folder*` | `*.csv` | true | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 
+### <a name="file-list-examples"></a>ファイル リストの例
+
+このセクションでは、コピー アクティビティのソースでファイル リスト パスを使用した結果の動作について説明します。
+
+次のソース フォルダー構造があり、太字のファイルをコピーするとします。
+
+| サンプルのソース構造                                      | FileListToCopy.txt のコンテンツ                             | ADF 構成                                            |
+| ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------ |
+| filesystem<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Metadata<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy.txt | File1.csv<br>Subfolder1/File3.csv<br>Subfolder1/File5.csv | **データセット内:**<br>- ファイル システム: `filesystem`<br>- フォルダー パス: `FolderA`<br><br>**コピー アクティビティ ソース内:**<br>- ファイル リストのパス: `filesystem/Metadata/FileListToCopy.txt` <br><br>ファイル リストのパスは、コピーするファイルの一覧を含む同じデータ ストア内のテキスト ファイルをポイントします。データセットで構成されているパスへの相対パスで 1 行につき 1 つのファイルを指定します。 |
+
+
 ### <a name="some-recursive-and-copybehavior-examples"></a>recursive と copyBehavior の例
 
 このセクションでは、recursive 値と copyBehavior 値のさまざまな組み合わせでのコピー操作の動作について説明します。
@@ -392,7 +415,16 @@ Azure Data Lake Storage Gen1/Gen2 から Gen2 にファイルをコピーする�
 
 ## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
 
-マッピング データ フローでデータを変換するときに、JSON、Avro、区切りテキスト、または Parquet 形式で Azure Data Lake Storage Gen2 からファイルを読み取ること、および書き込むことができます。 詳細については、マッピング データ フロー機能の[ソース変換](data-flow-source.md)と[シンク変換](data-flow-sink.md)に関するページを参照してください。
+マッピング データ フローでデータを変換するときには、Azure Data Lake Storage Gen2 にある次の形式のファイルの読み取りと書き込みが可能です。
+* [Avro](format-avro.md#mapping-data-flow-properties)
+* [Common Data Model (プレビュー)](format-common-data-model.md#mapping-data-flow-properties)
+* [区切りテキスト](format-delimited-text.md#mapping-data-flow-properties)
+* [Delta](format-delta.md#mapping-data-flow-properties)
+* [Excel](format-excel.md#mapping-data-flow-properties)
+* [JSON](format-json.md#mapping-data-flow-properties)
+* [Parquet](format-parquet.md#mapping-data-flow-properties)
+
+形式固有の設定は、各形式のドキュメントに記載されています。 詳細については、「[マッピング データ フローのソース変換](data-flow-source.md)」および「[マッピング データ フローでのシンク変換](data-flow-sink.md)」を参照してください。
 
 ### <a name="source-transformation"></a>ソース変換
 

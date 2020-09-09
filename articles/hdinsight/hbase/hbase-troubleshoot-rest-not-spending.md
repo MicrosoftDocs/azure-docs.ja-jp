@@ -31,7 +31,7 @@ System.Net.WebException : Unable to connect to the remote server --->
 System.Net.Sockets.SocketException : A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 10.0.0.19:8090
 ```
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決策
 
 ホストに SSH で接続した後、次のコマンドを使用して HBase REST を再起動します。 また、スクリプト アクションを使用して、すべてのワーカー ノード上でこのサービスを再開することもできます。
 

@@ -5,19 +5,21 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: article
-ms.date: 04/30/2020
+ms.topic: troubleshooting
+ms.date: 07/08/2020
 ms.author: alkohli
-ms.openlocfilehash: 12ca4df6e5dd4ba86ece8469255195e2fa1c155e
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: a632e753426def52bb260d7bf01875ec24e2ea9e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628897"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200142"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box と Azure Data Box Heavy に関連する問題のトラブルシューティング
 
-この記事では、Azure Data Box または Azure Data Box Heavy の使用時に見られる問題をトラブルシューティングする方法について説明します。 Data Box にデータがコピーされるとき、または Data Box からデータがアップロードされるときに、発生する可能性があるエラーの一覧が含まれます。
+この記事では、Azure Data Box または Azure Data Box Heavy の使用時にインポート注文に関して発生する問題をトラブルシューティングする方法について説明します。 Data Box にデータがコピーされるとき、または Data Box からデータがアップロードされるときに、インポート注文に関して発生する可能性があるエラーの一覧が含まれます。
+
+この記事の情報は、Data Box に対して作成されるエクスポート注文には当てはまりません。
 
 ## <a name="error-classes"></a>エラーのクラス
 

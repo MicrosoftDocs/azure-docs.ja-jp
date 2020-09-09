@@ -1,6 +1,6 @@
 ---
 title: Azure App Configuration の使用方法を学習するためのクイックスタート
-description: Java Spring アプリで Azure App Configuration を使用する場合のクイック スタートです。
+description: このクイックスタートでは、Azure App Configuration でコードとは別にアプリケーション設定のストレージと管理を一元化して、Java Spring アプリを作成します。
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
@@ -9,13 +9,14 @@ editor: ''
 ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 04/18/2020
+ms.custom: devx-track-java
 ms.author: lcozzens
-ms.openlocfilehash: 69b9733f4d79f5fc42fe86ca0f8a97305205aeef
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 10b38d5c5802ec4f6bc33b15b3ddef12e8256a78
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085061"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586455"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して Java Spring アプリを作成する
 
@@ -68,7 +69,7 @@ ms.locfileid: "82085061"
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
-        <version>1.1.2</version>
+        <version>1.1.5</version>
     </dependency>
     ```
 
@@ -78,7 +79,7 @@ ms.locfileid: "82085061"
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
-        <version>1.2.2</version>
+        <version>1.2.7</version>
     </dependency>
     ```
 

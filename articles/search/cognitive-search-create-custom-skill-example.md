@@ -8,12 +8,13 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2994c55b39d30ff16a0ca135e93a116784feb201
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5755e14e53d359fd8b322939bf1325d21536d593
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74113818"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020186"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>例:Bing Entity Search API を使用してカスタム スキルを作成する
 
@@ -35,7 +36,7 @@ ms.locfileid: "74113818"
 
 1. Visual Studio で、[ファイル] メニューから **[新規]**  >  **[プロジェクト]** の順に選択します。
 
-1. [新しいプロジェクト] ダイアログで、 **[インストール済み]** を選択し、 **[Visual C#]**  >  **[クラウド]** の順に展開して **[Azure Functions]** を選択します。プロジェクトの名前を入力して、 **[OK]** を選択します。 Functions アプリ名は、C# 名前空間として有効である必要があります。そのため、アンダースコア、ハイフン、その他の英数字以外の文字は使用しないでください。
+1. [新しいプロジェクト] ダイアログで、 **[インストール済み]** を選択し、 **[Visual C#]**  >  **[クラウド]** の順に展開して **[Azure Functions]** を選択します。プロジェクトの名前を入力して、 **[OK]** を選択します。 Functions アプリ名は、C# 名前空間として有効である必要があります。 そのため、アンダースコア、ハイフン、その他の英数字以外の文字は使用しないでください。
 
 1. **[Azure Functions v2 (.NET Core)]** を選択します。 バージョン 1 でも同様の手順を実行できますが、以下に記述したコードは、v2 テンプレートに基づいています。
 
@@ -47,7 +48,7 @@ ms.locfileid: "74113818"
 
 ### <a name="modify-the-code-to-call-the-bing-entity-search-service"></a>Bing Entity Search サービスを呼び出すコードを変更する
 
-Visual Studio によってプロジェクトが作成されます。その中には、選択した Functions の種類のスケルトン コードが含まれているクラスがあります。 メソッドの *FunctionName* 属性は、Functions の名前を設定します。 *HttpTrigger* 属性は、Functions が HTTP 要求によってトリガーされることを指定します。
+Visual Studio によってプロジェクトが作成されます。その中には、選択した Functions の種類のスケルトン コードが含まれているクラスがあります。 メソッドの *FunctionName* 属性は、Functions の名前を設定します *HttpTrigger* 属性は、Functions が HTTP 要求によってトリガーされることを指定します。
 
 次に、*Function1.cs* ファイルのすべての内容を次のコードに置き換えます。
 
@@ -481,5 +482,5 @@ POST https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?co
 + [Power Skills: カスタム スキルのリポジトリ](https://github.com/Azure-Samples/azure-search-power-skills)
 + [AI エンリッチメント パイプラインにカスタム スキルを追加する方法](cognitive-search-custom-skill-interface.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
-+ [スキルセットを作成する (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [スキルセットを作成する (REST)](/rest/api/searchservice/create-skillset)
 + [エンリッチされたフィールドをマップする方法](cognitive-search-output-field-mapping.md)

@@ -8,21 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 12/12/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: ce1ef2b6c586ddd688bacb755d7c6f2ffd16a0a5
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: ad52116e11f9d89bf55a23692ae4e27f53b51319
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448546"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873415"
 ---
 # <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>クイック スタート:Ruby と Bing News Search REST API を使用してニュース検索を実行する
 
-このクイック スタートを使用すると、Bing News Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。 このシンプルな JavaScript アプリケーションは、検索クエリを API に送信し、その結果を処理します。
+このクイックスタートを使用して、Bing News Search API を呼び出してみましょう。 このシンプルな Ruby アプリケーションは、検索クエリを API に送信し、JSON 応答を表示します。
 
-このアプリケーションは Python で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingNewsSearchv7.rb) で入手できます。
+このアプリケーションは Ruby で記述されていますが、この API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 
+
+このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingNewsSearchv7.rb) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,7 +42,7 @@ ms.locfileid: "75448546"
     require 'json'
     ```
 
-2. API エンドポイント、ニュース検索の URL、サブスクリプション キー、および検索語句の変数を作成します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
+2. API エンドポイント、ニュース検索の URL、サブスクリプション キー、および検索語句の変数を作成します。 次のコードのグローバル エンドポイントを使用するか、Azure portal に表示される、対象のリソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用することができます。
 
     ```ruby
     accessKey = "enter key here"
@@ -51,7 +53,7 @@ ms.locfileid: "75448546"
 
 ## <a name="format-and-make-an-api-request"></a>API 要求の書式を設定して要求を実行する
 
-最後の手順の変数を使用して、API 要求の検索 URL の書式を設定します。 次に要求を送信します。
+前の手順の変数を使用して、API 要求の検索 URL の書式を設定します。 次に、その要求を送信します。
 
 ```ruby
 uri = URI(uri + path + "?q=" + URI.escape(term))
@@ -64,7 +66,7 @@ end
 
 ## <a name="process-and-print-the-json-response"></a>JSON 応答を処理して出力する
 
-応答の受信後、JSON を解析して、応答本文とそのヘッダーの両方を出力することができます。
+応答の受信後、JSON を解析して、応答本文とそのヘッダーの両方を出力します。
 
 ```ruby
 puts "\nRelevant Headers:\n\n"
@@ -78,7 +80,7 @@ puts "\nJSON Response:\n\n"
 puts JSON::pretty_generate(JSON(response.body))
 ```
 
-## <a name="json-response"></a>JSON 応答
+## <a name="example-json-response"></a>JSON の応答例
 
 成功した応答は、次の例に示すように JSON で返されます。
 
@@ -177,4 +179,4 @@ puts JSON::pretty_generate(JSON(response.body))
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [単一ページのアプリを作成する](tutorial-bing-news-search-single-page-app.md)
+> [単一ページの Web アプリの作成](tutorial-bing-news-search-single-page-app.md)

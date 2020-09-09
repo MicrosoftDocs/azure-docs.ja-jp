@@ -8,20 +8,24 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d8e453336005f3389f67e9571fac438bfc340c1b
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: ea0dac74d4f995e41513b3451dd28d177040e672
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80549023"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935026"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>マルチテナント SaaS アプリケーションと Azure Cognitive Search の設計パターン
+
 マルチテナント アプリケーションとは、他のテナントのデータを表示したり共有したりできない多数のテナントに同じサービスと機能を提供するアプリケーションです。 このドキュメントでは、Azure Cognitive Search を使用して構築されたマルチテナント アプリケーションのテナント分離戦略について説明します。
 
 ## <a name="azure-cognitive-search-concepts"></a>Azure Cognitive Search の概念
-Search-as-a-service (サービスとしての検索) ソリューションである Azure Cognitive Search を使用すると、開発者はインフラストラクチャを管理したり、情報取得のエキスパートになったりしなくても、豊富な検索機能をアプリケーションに追加できます。 データはこのサービスにアップロードされた後、クラウドに保存されます。 Azure Cognitive Search API への簡単な要求を使用して、データの変更や検索を行うことができます。 このサービスの概要については、 [こちらの記事](https://aka.ms/whatisazsearch)をご覧ください。 設計パターンについて説明する前に、Azure Cognitive Search のいくつかの概念を理解しておく必要があります。
+Search-as-a-service (サービスとしての検索) ソリューションである [Azure Cognitive Search](search-what-is-azure-search.md) を使用すると、開発者はインフラストラクチャを管理したり、情報取得のエキスパートになったりしなくても、豊富な検索機能をアプリケーションに追加できます。 データはこのサービスにアップロードされた後、クラウドに保存されます。 Azure Cognitive Search API への簡単な要求を使用して、データの変更や検索を行うことができます。 
 
 ### <a name="search-services-indexes-fields-and-documents"></a>検索サービス、インデックス、フィールド、ドキュメント
+
+設計パターンについて説明する前に、いくつかの基本的な概念を理解しておく必要があります。
+
 Azure Cognitive Search を使用する場合、" *検索サービス*" にサブスクライブします。 データは、Azure Cognitive Search にアップロードされると、検索サービス内の " *インデックス* " に格納されます。 1 つのサービス内に多数のインデックスを作成できます。 データベースのなじみのある概念に照らし合わせた場合、検索サービスはデータベースに例えることができ、サービス内のインデックスはデータベース内のテーブルに例えることができます。
 
 検索サービス内の各インデックスは、カスタマイズ可能な多数の " *フィールド*" によって定義された独自のスキーマを持ちます。 データは、個々の " *ドキュメント*" の形で Azure Cognitive Search インデックスに追加されます。 各ドキュメントは特定のインデックスにアップロードする必要があり、そのインデックスのスキーマに適合する必要があります。 Azure Cognitive Search を使用してデータを検索するときは、特定のインデックスに対してフルテキスト検索クエリが発行されます。  これらの概念をデータベースの概念と照らし合わせた場合、フィールドはテーブル内の列に例えることができ、ドキュメントは行に例えることができます。
@@ -39,12 +43,12 @@ Azure Cognitive Search には数種類の[価格レベル](https://azure.microso
 
 |  | Basic | Standard1 | Standard2 | Standard3 | Standard3 HD |
 | --- | --- | --- | --- | --- | --- |
-| サービスあたりの最大レプリカ数 |3 |12 |12 |12 |12 |
-| サービスあたりの最大パーティション数 |1 |12 |12 |12 |3 |
-| サービスあたりの最大検索ユニット数 (レプリカ * パーティション) |3 |36 |36 |36 |36 (最大 3 個のパーティション) |
-| サービスあたりの最大ストレージ容量 |2 GB |300 GB |1.2 TB |2.4 TB |600 GB |
-| パーティションあたりの最大ストレージ容量 |2 GB |25 GB |100 GB |200 GB |200 GB |
-| サービスあたりの最大インデックス数 |5 |50 |200 |200 |3000 (最大 1000 個のインデックス/パーティション) |
+| **サービスあたりの最大レプリカ数** |3 |12 |12 |12 |12 |
+| **サービスあたりの最大パーティション数** |1 |12 |12 |12 |3 |
+| **サービスあたりの最大検索ユニット数 (レプリカ * パーティション)** |3 |36 |36 |36 |36 (最大 3 個のパーティション) |
+| **サービスあたりの最大ストレージ容量** |2 GB |300 GB |1.2 TB |2.4 TB |600 GB |
+| **パーティションあたりの最大ストレージ容量** |2 GB |25 GB |100 GB |200 GB |200 GB |
+| **サービスあたりの最大インデックス数** |5 |50 |200 |200 |3000 (最大 1000 個のインデックス/パーティション) |
 
 #### <a name="s3-high-density"></a>S3 高密度
 Azure Cognitive Search の S3 価格レベルには、マルチテナント シナリオ専用に設計された高密度 (HD) モードのオプションがあります。 多くの場合、1 つのサービスで小さなテナントを多数サポートして、簡潔性とコスト効率のメリットを実現する必要があります。
@@ -115,7 +119,7 @@ Azure Cognitive Search でマルチテナント シナリオをモデル化す�
 
 テナントごとのサービス モデルとテナントごとのインデックス モデルが十分に小さなスコープではない場合は、さらに細かい粒度を実現するインデックスをモデル化することができます。
 
-1 つのインデックスの動作をクライアント エンドポイントごとに異なるものにするには、考えられるクライアントごとに特定の値を指定したフィールドをインデックスに追加します。 クライアントが Azure Cognitive Search を呼び出してインデックスを照会したり、変更したりするたびに、クライアント アプリケーションのコードでクエリ時に Azure Cognitive Search の[フィルター](https://msdn.microsoft.com/library/azure/dn798921.aspx)機能を使用して、そのフィールドに適切な値を指定します。
+1 つのインデックスの動作をクライアント エンドポイントごとに異なるものにするには、考えられるクライアントごとに特定の値を指定したフィールドをインデックスに追加します。 クライアントが Azure Cognitive Search を呼び出してインデックスを照会したり、変更したりするたびに、クライアント アプリケーションのコードでクエリ時に Azure Cognitive Search の[フィルター](./query-odata-filter-orderby-syntax.md)機能を使用して、そのフィールドに適切な値を指定します。
 
 この方法を使用すると、個別のユーザー アカウント、個別のアクセス許可レベル、完全に別個のアプリケーションの機能を実現できます。
 
@@ -128,4 +132,3 @@ Azure Cognitive Search でマルチテナント シナリオをモデル化す�
 Azure Cognitive Search は、多くのアプリケーションにとって魅力的な選択肢です。 マルチテナント アプリケーションの各種設計パターンを評価するときは、[さまざまな価格レベル](https://azure.microsoft.com/pricing/details/search/)とそれぞれの[サービスの制限](search-limits-quotas-capacity.md)を検討して、あらゆる規模のアプリケーション ワークロードやアーキテクチャに合わせて Azure Cognitive Search を最適に調整してください。
 
 Azure Cognitive Search とマルチテナント シナリオに関するご質問があれば、azuresearch_contact@microsoft.com までお問い合わせください。
-

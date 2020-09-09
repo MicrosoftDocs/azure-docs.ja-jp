@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/17/2020
+ms.date: 07/31/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c61378510fbfc8bdc13f35ba1063a0d9316d88e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc2393cfe87e2639ce40e66e6053d4d430518719
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066213"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87515362"
 ---
 ## <a name="1-download-the-file"></a>1.ファイルをダウンロードする
 
@@ -31,7 +31,7 @@ zip ファイルを解凍します。 このファイルには、次のフォル
 
 * AzureVPN
 * ジェネリック
-* OpenVPN (ゲートウェイで OpenVPN および Azure AD の認証設定を有効にした場合)。 VPN Gateway については、[テナントの作成](../articles/vpn-gateway/openvpn-azure-ad-tenant.md)に関する記事をご覧ください。 Virtual WAN については、[テナントの作成 - VWAN](../articles/virtual-wan/openvpn-azure-ad-tenant.md) に関する記事をご覧ください。
+* OpenVPN (ゲートウェイで OpenVPN と **Azure 証明書**または **RADIUS 認証**の設定を有効にした場合)。 VPN Gateway については、[テナントの作成](../articles/vpn-gateway/openvpn-azure-ad-tenant.md)に関する記事をご覧ください。 Virtual WAN については、[テナントの作成 - VWAN](../articles/virtual-wan/openvpn-azure-ad-tenant.md) に関する記事をご覧ください。
 
 ## <a name="3-retrieve-information"></a>3.情報を取得する
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: apimpm
-ms.openlocfilehash: d0fbdcb877e91a703306f15fdc7507fd19d534f4
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 3bbfd167e89ae1b5f9b7de1df5fd1cb72c720cb6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204840"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254532"
 ---
 # <a name="configure-cloud-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Azure API Management のセルフホステッド ゲートウェイにクラウド メトリックとログを構成する
 
@@ -57,14 +57,12 @@ ms.locfileid: "82204840"
 
 ## <a name="logs"></a>ログ
 
-セルフホステッド ゲートウェイは現在、[診断ログ](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs)をクラウドに送信しません。 ただし、セルフホステッド ゲートウェイがデプロイされている場所に[ローカルにログを構成して永続化する](how-to-configure-local-metrics-logs.md)ことができます。 
+セルフホステッド ゲートウェイは現在、[診断ログ](./api-management-howto-use-azure-monitor.md#activity-logs)をクラウドに送信しません。 ただし、セルフホステッド ゲートウェイがデプロイされている場所に[ローカルにログを構成して永続化する](how-to-configure-local-metrics-logs.md)ことができます。 
 
-ゲートウェイが [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/) にデプロイされている場合は、[コンテナーに対する Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) を有効にして、コンテナーからログを収集し、Log Analytics でログを表示することができます。 
+ゲートウェイが [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/) にデプロイされている場合は、[コンテナーに対する Azure Monitor](../azure-monitor/insights/container-insights-overview.md) を有効にして、コンテナーからログを収集し、Log Analytics でログを表示することができます。 
 
 
 ## <a name="next-steps"></a>次のステップ
 
 * セルフホステッド ゲートウェイの詳細については、[Azure API Management のセルフホステッド ゲートウェイの概要](self-hosted-gateway-overview.md)に関する記事を参照してください
 * [ローカルでのログの構成と永続化](how-to-configure-local-metrics-logs.md)について学習する
-
-

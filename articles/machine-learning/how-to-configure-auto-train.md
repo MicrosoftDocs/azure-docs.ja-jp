@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 自動機械学習は、アルゴリズムを自動的に選択して、デプロイできる状態のモデルを生成します。 自動機械学習の実験の構成に使用できるオプションについて説明します。
 author: cartacioS
 ms.author: sacartac
-ms.reviewer: sgilley
+ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
+ms.date: 08/10/2020
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.custom: seodec18
-ms.openlocfilehash: 3c917912e50c864f49abd5afcd28df4633702f0f
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.custom: how-to, devx-track-python,contperfq1
+ms.openlocfilehash: 6a37aaa2eee3151087ce33815d37bf5537578329
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993709"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782755"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python で自動 ML の実験を構成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,35 +37,22 @@ ms.locfileid: "82993709"
 
 コードを使用しないエクスペリエンスを希望する場合は、[Azure Machine Learning Studio で自動化された機械学習の実験を作成する](how-to-use-automated-ml-for-ml-models.md)こともできます。
 
+## <a name="prerequisites"></a>前提条件
+
+この記事では、以下が必要です。 
+* Azure Machine Learning ワークスペース。 ワークスペースを作成するには、[Azure Machine Learning ワークスペース](how-to-manage-workspace.md)の作成に関するページを参照してください。
+
+* Azure Machine Learning Python SDK がインストールされていること。
+    SDK をインストールするには、次のいずれかを行います。 
+    * コンピューティング インスタンスを作成します。これにより、SDK が自動的にインストールされ、ML ワークフロー用に事前構成されます。 詳細については、「[Azure Machine Learning コンピューティング インスタンスとは](concept-compute-instance.md#managing-a-compute-instance)」を参照してください。 
+
+    * [SDK をご自分でインストールしてください](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。 必ず extra の `automl` を含めるようにしてください。 
+
 ## <a name="select-your-experiment-type"></a>実験の種類を選択する
 
-実験を始める前に、解決する機械学習の問題の種類を決める必要があります。 自動機械学習でサポートされるタスクの種類は、分類、回帰、予測です。 [タスクの種類](how-to-define-task-type.md)についての詳細情報を参照してください。
+実験を始める前に、解決する機械学習の問題の種類を決める必要があります。 自動機械学習によって、`classification`、`regression`、`forecasting` というタスクの種類がサポートされています。 [タスクの種類](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast)についての詳細情報を参照してください。
 
-自動機械学習では、自動化とチューニングのプロセス中に次のアルゴリズムがサポートされています。 ユーザーは、アルゴリズムを指定する必要はありません。
-
-> [!NOTE]
-> 自動 ML で作成されたモデルを [ONNX モデル](concept-onnx.md)にエクスポートする予定がある場合は、* で示されたアルゴリズムのみを ONNX 形式に変換できます。 [モデルの ONNX への変換](concept-automated-ml.md#use-with-onnx)の詳細についてご確認ください。 <br> <br> また、ONNX では現在、分類と回帰のタスクのみがサポートされていることにもご注意ください。 
-
-分類 | 回帰 | 時系列予測
-|-- |-- |--
-[ロジスティック回帰](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)* | [Elastic Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)* | [Elastic Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
-[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)* |[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)*|[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
-[勾配ブースティング](https://scikit-learn.org/stable/modules/ensemble.html#classification)* |[勾配ブースティング](https://scikit-learn.org/stable/modules/ensemble.html#regression)* |[勾配ブースティング](https://scikit-learn.org/stable/modules/ensemble.html#regression)
-[デシジョン ツリー](https://scikit-learn.org/stable/modules/tree.html#decision-trees)* |[デシジョン ツリー](https://scikit-learn.org/stable/modules/tree.html#regression)* |[デシジョン ツリー](https://scikit-learn.org/stable/modules/tree.html#regression)
-[K ニアレスト ネイバー](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K ニアレスト ネイバー](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K ニアレスト ネイバー](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
-[Linear SVC](https://scikit-learn.org/stable/modules/svm.html#classification)* |[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)* |[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
-[サポート ベクター分類 (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)* |[確率的勾配降下法 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)* |[確率的勾配降下法 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
-[ランダム フォレスト](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[ランダム フォレスト](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[ランダム フォレスト](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
-[Extremely Randomized Trees](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Extremely Randomized Trees](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Extremely Randomized Trees](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
-[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* |[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* | [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
-[DNN 分類子](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier) |[DNN リグレッサー](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN リグレッサー](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
-[DNN 線形分類子](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[線形リグレッサー](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor) |[線形リグレッサー](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
-[単純ベイズ](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[高速線形リグレッサー](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[自動 ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
-[確率的勾配降下法 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* |[オンライン勾配降下リグレッサー](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
-|[平均化パーセプトロン分類子](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest)||ForecastTCN
-|[Linear SVM Classifier](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)* ||
-
-`AutoMLConfig` コンストラクターで `task` パラメーターを使用して、実験の種類を指定します。
+次のコードでは、`AutoMLConfig` コンストラクターで `task` パラメーターが使用され、実験の種類が `classification` として指定されています。
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -76,26 +63,27 @@ automl_config = AutoMLConfig(task = "classification")
 
 ## <a name="data-source-and-format"></a>データ ソースと形式
 
-自動機械学習では、ローカル デスクトップ上またはクラウド (Azure Blob Storage など) に存在するデータがサポートされます。 データは、**Pandas DataFrame** または **Azure Machine Learning TabularDataset** に読み込むことができます。  [データセットの詳細情報](how-to-create-register-datasets.md).
+自動機械学習では、ローカル デスクトップ上またはクラウド (Azure Blob Storage など) に存在するデータがサポートされます。 データは、**Pandas DataFrame** または **Azure Machine Learning TabularDataset** に読み込むことができます。 [データセットの詳細情報](how-to-create-register-datasets.md).
 
 トレーニング データの要件:
 - データは表形式である必要があります。
 - 予測する値、ターゲット列は、データ内にある必要があります。
 
-次のコード例は、これらの形式でデータを格納する方法を示しています。
+**リモート実験の場合**、トレーニング データにリモート コンピューティングからアクセスできる必要があります。 AutoML により、リモート コンピューティングでの作業時に [Azure Machine Learning TabularDatasets](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) のみが受け入れられます。 
 
-* TabularDataset
+Azure Machine Learning のデータセットによって、次の機能が公開されます。
 
-  ```python
-  from azureml.core.dataset import Dataset
-  from azureml.opendatasets import Diabetes
-  
-  tabular_dataset = Diabetes.get_tabular_dataset()
-  train_dataset, test_dataset = tabular_dataset.random_split(percentage=0.1, seed=42)
-  label = "Y"
+* 静的ファイルまたは URL ソースからワークスペースにデータを簡単に転送する。
+* クラウド コンピューティング リソースでの実行時にデータをトレーニング スクリプトで使用できるようにする。 `Dataset` クラスを使用してコンピューティング ターゲットにデータをマウントする例については、[データセットを使ってトレーニングする方法](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets)を参照してください。
+
+次のコードにより、Web URL から TabularDataset が作成されます。 ローカル ファイルやデータストアなどの他のソースからデータセットを作成する方法のコード例については、「[TabularDatasets を作成する](how-to-create-register-datasets.md#create-a-tabulardataset)」を参照してください。
+
+```python
+from azureml.core.dataset import Dataset
+data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"
+dataset = Dataset.Tabular.from_delimited_files(data)
   ```
-
-* Pandas データフレーム
+**ローカル コンピューティングの実験の場合**、より高速な処理時間を実現するために、pandas dataframes をお勧めします。
 
   ```python
   import pandas as pd
@@ -106,42 +94,30 @@ automl_config = AutoMLConfig(task = "classification")
   label = "label-col-name"
   ```
 
-## <a name="fetch-data-for-running-experiment-on-remote-compute"></a>リモート コンピューティング上で実行している実験にデータをフェッチする
+## <a name="training-validation-and-test-data"></a>トレーニング、検証、テストのデータ
 
-リモート実行の場合、トレーニング データにリモート コンピューティングからアクセスできる必要があります。 SDK のクラス [`Datasets`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) では、次の機能を公開しています。
+`AutoMLConfig` コンストラクターでは、個別の**トレーニングおよび検証セット**を直接指定できます。 AutoML 実験用に[データの分割とクロス検証を構成する方法](how-to-configure-cross-validation-data-splits.md)に関するページをご確認ください。 
 
-* 静的ファイルまたは URL ソースからワークスペースにデータを簡単に転送する
-* クラウド コンピューティング リソースでの実行時にデータをトレーニング スクリプトで使用できるようにする
+`validation_data` または `n_cross_validation` パラメーターを明示的に指定しなかった場合、AutoML で検証の実行方法を決定するための既定の手法が適用されます。 この決定は、`training_data` パラメーターに割り当てられたデータセット内の行の数によって異なります。 
 
-`Dataset` クラスを使用してコンピューティング ターゲットにデータをマウントする例については、[方法](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets)の記事を参照してください。
+|トレーニング&nbsp;データ&nbsp;のサイズ| 検証の方法 |
+|---|-----|
+|**20,000&nbsp;行&nbsp;より&nbsp;多い**| トレーニング/検証データの分割が適用されます。 既定では、初期トレーニング データ セットの 10% が検証セットとして取得されます。 次に、その検証セットがメトリックの計算に使用されます。
+|**20,000&nbsp;行&nbsp;より&nbsp;少ない**| クロス検証アプローチが適用されます。 フォールドの既定の数は行数によって異なります。 <br> **データセットが 1,000 行より少ない場合は**、10 個のフォールドが使用されます。 <br> **行が 1,000 から 20,000 の間の場合は**、3 つのフォールドが使用されます。
 
-## <a name="train-and-validation-data"></a>データをトレーニングして検証する
-
-`AutoMLConfig` コンストラクターでは、個別のトレーニングおよび検証セットを直接指定できます。
-
-### <a name="k-folds-cross-validation"></a>K フォールド クロス検証
-
-`n_cross_validations` の設定を使用して、クロス検証の数を指定します。 トレーニング データ セットは、等しいサイズの `n_cross_validations` 個のフォールドにランダムに分割されます。 各クロス検証ラウンドの間に、フォールドの 1 つが、残りのフォールドでトレーニングされたモデルの検証に使用されます。 各フォールドが検証セットとして 1 回使用されるまで、このプロセスが `n_cross_validations` ラウンドに対して繰り返されます。 すべての `n_cross_validations` ラウンドの平均スコアがレポートされ、対応するモデルがトレーニング データ セット全体で再トレーニングされます。
-
-### <a name="monte-carlo-cross-validation-repeated-random-sub-sampling"></a>モンテカルロ クロス検証 (反復ランダム サブサンプリング)
-
-`validation_size` を使用して検証に使用する必要があるトレーニング データセットの割合を指定し、`n_cross_validations` を使用してクロス検証の数を指定します。 各クロス検証ラウンドの間に、サイズ `validation_size` のサブセットが、残りのデータでトレーニングされたモデルの検証にランダムに選択されます。 最後に、すべての `n_cross_validations` ラウンドの平均スコアが報告されて、対応するモデルがトレーニング データ セットが全体で再トレーニングされます。 モンテカルロは時系列予測ではサポートされていません。
-
-### <a name="custom-validation-dataset"></a>カスタム検証データセット
-
-ランダムな分割が受け入れられない場合は (通常は、時系列データまたは不均衡なデータ)、カスタム検証データセットを使用します。 独自の検証データセットを指定できます。 モデルは、ランダムなデータセットではなく、指定された検証データセットに対して評価されます。
+現時点では、モデルの評価用に独自の**テストデータ**を提供する必要があります。 モデル評価のために独自のテスト データを取り込むコード例については、[この Jupyter ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)の**テスト**に関するセクションを参照してください。
 
 ## <a name="compute-to-run-experiment"></a>実験を実行するために計算する
 
-次に、モデルをトレーニングする場所を決定します。 自動機械学習のトレーニング実験は、次のコンピューティング オプションで実行できます。
-* ローカル デスクトップやラップトップなどのローカル コンピューター – 一般に、データセットが小さく、まだ探索ステージにいる場合。
-* クラウド上のリモート マシン – [Azure Machine Learning Managed Compute](concept-compute-target.md#amlcompute) は、Azure 仮想マシンのクラスター上で機械学習モデルをトレーニングできるようにするマネージド サービスです。
+次に、モデルをトレーニングする場所を決定します。 自動機械学習のトレーニング実験は、次のコンピューティング オプションで実行できます。 [ローカルおよびリモートのコンピューティングの長所と短所](concept-automated-ml.md#local-remote)のオプションについて説明します。 
 
-  ローカルとリモートのコンピューティング先を使用したノートブックの例については、こちらの [GitHub サイト](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)をご覧ください。
+* ローカル デスクトップやノート PC などの**ローカル** コンピューター – 一般に、データセットが小さく、まだ探索ステージにいる場合。 ローカル コンピューティングの例については、[このノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/local-run-classification-credit-card-fraud/auto-ml-classification-credit-card-fraud-local.ipynb)を参照してください。 
+ 
+* クラウド上の**リモート** マシン – [Azure Machine Learning Managed Compute](concept-compute-target.md#amlcompute) は、Azure 仮想マシンのクラスター上で機械学習モデルをトレーニングできるようにするマネージド サービスです。 
 
-* Azure サブスクリプション内の Azure Databricks クラスター。 詳細については、[自動 ML のための Azure Databricks クラスターの構成](how-to-configure-environment.md#azure-databricks)に関する記事を参照してください
+    Azure Machine Learning Managed Compute を使用したリモートの例については、[このノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)を参照してください。 
 
-  Azure Databricks でのノートブックの例については、こちらの [GitHub サイト](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl)をご覧ください。
+* Azure サブスクリプション内の **Azure Databricks クラスター**。 詳細については、[自動 ML のための Azure Databricks クラスターの構成](how-to-configure-environment.md#azure-databricks)に関する記事を参照してください。 Azure Databricks でのノートブックの例については、こちらの [GitHub サイト](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl)をご覧ください。
 
 <a name='configure-experiment'></a>
 
@@ -158,108 +134,130 @@ automl_config = AutoMLConfig(task = "classification")
        task='classification',
        primary_metric='AUC_weighted',
        experiment_timeout_minutes=30,
-       blacklist_models=['XGBoostClassifier'],
+       blocked_models=['XGBoostClassifier'],
        training_data=train_data,
        label_column_name=label,
        n_cross_validations=2)
    ```
-2. 次の例は、60 分後、クロス検証フォールドが 5 つで終了するように設定された回帰実験です。
+1. 次の例は、60 分後に、検証交差の分割を 5 つ使って終了するよう設定された回帰実験です。
 
    ```python
       automl_regressor = AutoMLConfig(
       task='regression',
       experiment_timeout_minutes=60,
-      whitelist_models=['KNN'],
+      allowed_models=['KNN'],
       primary_metric='r2_score',
       training_data=train_data,
       label_column_name=label,
       n_cross_validations=5)
    ```
 
-3 つの異なる `task` パラメーター値 (3 つ目の task-type は `forecasting` であり、`regression` タスクと類似のアルゴリズム プールを使用します) によって、適用するモデルの一覧が決まります。 使用可能なモデルを包含または除外してさらにイテレーションを変更するには、`whitelist` または `blacklist` パラメーターを使用します。 サポートされているモデルの一覧については、 ([分類](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification)、[予測](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting)、[回帰](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression)用の) [SupportedModels クラス](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels)を参照してください。
 
-実験のタイムアウト エラーを回避するため、自動化された ML の検証サービスで、`experiment_timeout_minutes` を 15 分以上に設定する必要があります (行と列を掛けたサイズが 1000 万を超える場合は 60 分)。
+1. 予測タスクには、追加の設定が必要です。詳細については、「[時系列予測モデルを自動トレーニングする](how-to-auto-train-forecast.md)」の記事を参照してください。 
+
+    ```python
+    time_series_settings = {
+        'time_column_name': time_column_name,
+        'time_series_id_column_names': time_series_id_column_names,
+        'drop_column_names': ['logQuantity'],
+        'forecast_horizon': n_test_periods
+    }
+    
+    automl_config = AutoMLConfig(task = 'forecasting',
+                                 debug_log='automl_oj_sales_errors.log',
+                                 primary_metric='normalized_root_mean_squared_error',
+                                 experiment_timeout_minutes=20,
+                                 training_data=train_data,
+                                 label_column_name=label,
+                                 n_cross_validations=5,
+                                 path=project_folder,
+                                 verbosity=logging.INFO,
+                                 **time_series_settings)
+    ```
+    
+### <a name="supported-models"></a>サポートされているモデル
+
+自動機械学習によって、自動化とチューニングのプロセス中にさまざまなモデルとアルゴリズムが試行されます。 ユーザーは、アルゴリズムを指定する必要はありません。 
+
+3 つの異なる `task` パラメーター値 (3 つ目の task-type は `forecasting` であり、`regression` タスクと類似のアルゴリズム プールを使用します) によって、適用するアルゴリズム、モデルの一覧が決まります。 使用可能なモデルを包含または除外してさらにイテレーションを変更するには、`allowed_models` または `blocked_models` パラメーターを使用します。 サポートされているモデルの一覧については、([分類](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification)、[予測](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting)、[回帰](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression)用の) [SupportedModels クラス](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels)を参照してください。
+
 
 ### <a name="primary-metric"></a>主要メトリック
-主要メトリックによって、モデルのトレーニング中に最適化のために使用されるメトリックが決まります。 選択できるメトリックは、選択したタスクの種類によって決まります。次の表に、各タスクの種類に有効な主要メトリックを示します。
+`primary metric` パラメーターによって、モデルのトレーニング中に最適化のために使用されるメトリックが決まります。 選択できるメトリックは、選択したタスクの種類によって決まります。次の表に、各タスクの種類に有効な主要メトリックを示します。
+
+これらのメトリックの具体的な定義については、「[自動化機械学習の結果の概要](how-to-understand-automated-ml.md)」を参照してください。
 
 |分類 | 回帰 | 時系列予測
-|-- |-- |--
+|--|--|--
 |accuracy| spearman_correlation | spearman_correlation
 |AUC_weighted | normalized_root_mean_squared_error | normalized_root_mean_squared_error
 |average_precision_score_weighted | r2_score | r2_score
 |norm_macro_recall | normalized_mean_absolute_error | normalized_mean_absolute_error
 |precision_score_weighted |
 
-これらのメトリックの具体的な定義については、「[自動化機械学習の結果の概要](how-to-understand-automated-ml.md)」を参照してください。
-
 ### <a name="data-featurization"></a>データの特徴付け
 
-すべての自動機械学習実験では、さまざまなスケールの特徴を検知できる*特定の*アルゴリズムをサポートできるように、データが[自動的にスケーリングおよび正規化](concept-automated-ml.md#preprocess)されます。  ただし、不足値の代入、エンコード、変換などの特徴付けも追加で有効にできます。 含まれる特徴付けに関する詳細は[こちら](how-to-use-automated-ml-for-ml-models.md#featurization)から参照してください。
+すべての自動機械学習実験では、さまざまなスケールの特徴を検知できる特定のアルゴリズムをサポートできるように、データが*自動的にスケーリングおよび正規化*されます。 このスケーリングと正規化は特徴量化と呼ばれます。 詳細とコード例については、[AutoML での特徴量化](how-to-configure-auto-features.md#)に関するページを参照してください。 
 
-実験を構成するときに、詳細設定の `featurization` を有効にすることができます。 次の表は、[AutoMLConfig クラス](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)の特徴付けで許可されている設定です。
+`AutoMLConfig` オブジェクトで実験を構成するときに、設定 `featurization` の有効と無効を切り替えることができます。 次の表は、[AutoMLConfig プロジェクト](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)の特徴量化で許可されている設定です。 
 
 |特徴付けの構成 | 説明 |
 | ------------- | ------------- |
-|`"featurization":`&nbsp;`'FeaturizationConfig'`| カスタマイズされた特徴付け手順を使用する必要があることを示します。 [特徴付けをカスタマイズする方法の詳細](how-to-configure-auto-train.md#customize-feature-engineering)。|
-|`"featurization": 'off'`| 特徴付け手順が自動的に実行されないことを示します。|
-|`"featurization": 'auto'`| 前処理の一環として、[データ ガードレールと特徴付けの手順](how-to-use-automated-ml-for-ml-models.md#advanced-featurization-options)が自動的に実行されることを示します。|
+|`"featurization": 'auto'`| 前処理の一環として、[データ ガードレールと特徴付けの手順](how-to-configure-auto-features.md#featurization)が自動的に実行されることを示します。 **既定の設定**です。|
+|`"featurization": 'off'`| 特徴量化の手順が自動的には実行されないことを示します。|
+|`"featurization":`&nbsp;`'FeaturizationConfig'`| カスタマイズされた特徴付け手順を使用する必要があることを示します。 [特徴付けをカスタマイズする方法の詳細](how-to-configure-auto-features.md#customize-featurization)。|
 
 > [!NOTE]
 > 自動化された機械学習の特徴付け手順 (機能の正規化、欠損データの処理、テキストから数値への変換など) は、基になるモデルの一部になります。 このモデルを予測に使用する場合、トレーニング中に適用されたのと同じ特徴付けの手順がご自分の入力データに自動的に適用されます。
 
-### <a name="time-series-forecasting"></a>時系列予測
-時系列 `forecasting` タスクでは、構成オブジェクトに追加のパラメーターが必要です。
+<a name="ensemble"></a>
 
-1. `time_column_name`:有効な時系列を含むトレーニング データ内の列の名前を定義する必須のパラメーターです。
-1. `max_horizon`:トレーニング データの周期性に基づいて予測する時間の長さを定義します。 たとえば、1 日の時間グレインのトレーニング データがある場合は、モデルをトレーニングする日数を定義します。
-1. `grain_column_names`:トレーニング データ内の個々の時系列データを含む列の名前を定義します。 たとえば、店舗ごとに特定のブランドの売上を予測している場合は、店舗とブランドの列をグレインの列として定義します。 グレインやグループごとに個別の時系列と予測が作成されます。 
+### <a name="ensemble-configuration"></a> アンサンブル構成
 
-以下で使用されている設定の例については、[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)のページを参照してください。
+アンサンブル モデルは既定で有効になっており、AutoML の実行での最終実行イテレーションとして表示されます。 現在は **VotingEnsemble** と **StackEnsemble** がサポートされています。 
 
-```python
-# Setting Store and Brand as grains for training.
-grain_column_names = ['Store', 'Brand']
-nseries = data.groupby(grain_column_names).ngroups
+投票は、加重平均を使用したソフト投票を実装します。 スタッキング実装は 2 層の実装を使用します。ここでは、第 1 層は投票アンサンブルと同じモデルを持ち、第 2 層のモデルは、第 1 層からのモデルの最適な組み合わせを見つけるために使用されます。 
 
-# View the number of time series data with defined grains
-print('Data contains {0} individual time-series.'.format(nseries))
-```
+ONNX モデルを使用している場合、**または**モデルの説明を有効にしている場合、スタッキングは無効になり、投票だけが使用されます。
+
+アンサンブル トレーニングは、`enable_voting_ensemble` および `enable_stack_ensemble` のブール型パラメーターを使用して無効にすることができます。
 
 ```python
-time_series_settings = {
-    'time_column_name': time_column_name,
-    'grain_column_names': grain_column_names,
-    'drop_column_names': ['logQuantity'],
-    'max_horizon': n_test_periods
-}
-
-automl_config = AutoMLConfig(task = 'forecasting',
-                             debug_log='automl_oj_sales_errors.log',
-                             primary_metric='normalized_root_mean_squared_error',
-                             experiment_timeout_minutes=20,
-                             training_data=train_data,
-                             label_column_name=label,
-                             n_cross_validations=5,
-                             path=project_folder,
-                             verbosity=logging.INFO,
-                             **time_series_settings)
+automl_classifier = AutoMLConfig(
+        task='classification',
+        primary_metric='AUC_weighted',
+        experiment_timeout_minutes=30,
+        training_data=data_train,
+        label_column_name=label,
+        n_cross_validations=5,
+        enable_voting_ensemble=False,
+        enable_stack_ensemble=False
+        )
 ```
 
-### <a name="ensemble-configuration"></a><a name="ensemble"></a> アンサンブル構成
+既定のアンサンブル動作を変更するために、`AutoMLConfig` オブジェクトに `kwargs` として提供できる既定の引数が複数あります。
 
-アンサンブル モデルは既定で有効になっており、自動化された機械学習の実行での最終実行イテレーションとして表示されます。 現在サポートされているアンサンブル法は、投票とスタッキングです。 投票は加重平均を使用したソフト投票として実装され、スタッキング実装は 2 層の実装を使用します。ここでは、第 1 層は投票アンサンブルと同じモデルを持ち、第 2 層のモデルは、第 1 層からのモデルの最適な組み合わせを見つけるために使用されます。 ONNX モデルを使用している場合、**または**モデルの説明を有効にしている場合、スタッキングは無効になり、投票だけが使用されます。
+> [!IMPORTANT]
+>  次のパラメーターは、AutoMLConfig クラスの明示的なパラメーターではありません。 
 
-既定のスタッキング アンサンブル動作を変更するために、`AutoMLConfig` オブジェクトに `kwargs` として提供できる既定の引数が複数あります。
+* `ensemble_download_models_timeout_sec`:**VotingEnsemble** と **StackEnsemble** モデルの生成中に、以前の子実行の複数の適合モデルがダウンロードされます。 `AutoMLEnsembleException: Could not find any models for running ensembling` のエラーが発生した場合は、モデルのダウンロードにより長い時間が必要になることがあります。 既定値は、これらのモデルを並列でダウンロードする場合は 300 秒で、タイムアウトの上限はありません。 より長い時間が必要な場合は、このパラメーターを 300 秒より大きい値に設定します。 
+
+  > [!NOTE]
+  >  タイムアウトに達し、ダウンロードしたモデルがある場合は、アンサンブルはダウンロードしたモデルと同じ数だけ処理を続行します。 そのタイムアウト以内にすべてのモデルのダウンロードを終える必要はありません。
+
+次のパラメーターは、**StackEnsemble** モデルにのみ適用されます。 
 
 * `stack_meta_learner_type`: メタ学習器は、個々の異種モデルの出力でトレーニングされたモデルです。 既定のメタ学習器は、分類タスクには `LogisticRegression` (またはクロス検証が有効になっている場合は `LogisticRegressionCV`) で、回帰/予測タスクには `ElasticNet` (またはクロス検証が有効になっている場合は `ElasticNetCV`) です。 このパラメーターは、`LogisticRegression`、`LogisticRegressionCV`、`LightGBMClassifier`、`ElasticNet`、`ElasticNetCV`、`LightGBMRegressor`、または `LinearRegression` のいずれかの文字列になります。
-* `stack_meta_learner_train_percentage`: メタ学習器のトレーニング用に予約されるトレーニング セットの割合を指定します。(トレーニングと、トレーニングの検証の種類を選択する場合)。 既定値は `0.2` です。
+
+* `stack_meta_learner_train_percentage`: メタ学習器のトレーニング用に予約されるトレーニング セットの割合を指定します。(トレーニングと、トレーニングの検証の種類を選択する場合)。 既定値は `0.2` です。 
+
 * `stack_meta_learner_kwargs`: メタ学習器の初期化子に渡す省略可能なパラメーター。 これらのパラメーターとパラメーターの型は、対応するモデル コンストラクターからのパラメーターとパラメーターの型を反映しており、モデル コンストラクターに転送されます。
 
 次のコードは、`AutoMLConfig` オブジェクトでカスタムのアンサンブル動作を指定する例を示します。
 
 ```python
 ensemble_settings = {
+    "ensemble_download_models_timeout_sec": 600
     "stack_meta_learner_type": "LogisticRegressionCV",
     "stack_meta_learner_train_percentage": 0.3,
     "stack_meta_learner_kwargs": {
@@ -279,21 +277,6 @@ automl_classifier = AutoMLConfig(
         label_column_name=label,
         n_cross_validations=5,
         **ensemble_settings
-        )
-```
-
-既定でアンサンブル トレーニングが有効になっていますが、`enable_voting_ensemble` および `enable_stack_ensemble` のブール型パラメーターを使用して無効にすることができます。
-
-```python
-automl_classifier = AutoMLConfig(
-        task='classification',
-        primary_metric='AUC_weighted',
-        experiment_timeout_minutes=30,
-        training_data=data_train,
-        label_column_name=label,
-        n_cross_validations=5,
-        enable_voting_ensemble=False,
-        enable_stack_ensemble=False
         )
 ```
 
@@ -323,198 +306,30 @@ run = experiment.submit(automl_config, show_output=True)
 >最初に依存関係が新しいマシンにインストールされます。  出力が表示されるまで、最大で 10 分間かかる場合があります。
 >`show_output` を `True` に設定すると、コンソールに出力が表示されます。
 
-### <a name="exit-criteria"></a><a name="exit"></a> 終了基準
+ <a name="exit"></a> 
+
+### <a name="exit-criteria"></a>終了基準
 
 実験を終了するために定義できるオプションがいくつかあります。
-1. 基準なし:終了パラメーターを定義しない場合、実験は、主なメトリックでそれ以上の進歩が見られなくなるまで続けられます。
-1. 一定の時間が経過したら終了する:設定で `experiment_timeout_minutes` を使用すると、実験の実行を継続する時間 (分) を定義できます。
-1. スコアに達した後に終了する:`experiment_exit_score` を使用すると、主要メトリックのスコアに達した後に実験が完了します。
 
-### <a name="explore-model-metrics"></a>モデル メトリックを探索する
+|条件| description
+|----|----
+基準なし | 終了パラメーターを定義しない場合、実験は、主なメトリックでそれ以上の進歩が見られなくなるまで続けられます。
+一定時間が経過した後| 設定で `experiment_timeout_minutes` を使用すると、実験の実行を継続する時間を分単位で定義できます。 <br><br> 実験のタイムアウト エラーを回避するため、最小値は 15 分です (行と列を掛けたサイズが 1,000 万を超える場合は 60 分)。
+スコアに達した後| `experiment_exit_score` を使用すると、指定した主要メトリックのスコアに達した後に実験が完了します。
 
-トレーニング結果をウィジェットで、またはノートブックの場合はインラインで、表示できます。 詳細については、[モデルの追跡と評価](how-to-track-experiments.md#view-run-details)に関するセクションをご覧ください。
+## <a name="explore-models-and-metrics"></a>モデルとメトリックを探索する
 
-## <a name="understand-automated-ml-models"></a>自動化された ML モデルを理解する
+トレーニング結果をウィジェットで、またはノートブックの場合はインラインで、表示できます。 詳細については、[モデルの追跡と評価](how-to-monitor-view-training-logs.md#monitor-automated-machine-learning-runs)に関するセクションをご覧ください。
 
-自動化された ML を使用して生成されたモデルには、次の手順が含まれます。
-+ 自動化された特徴エンジニア リング (`"featurization": 'auto'` の場合)
-+ ハイパーパラメーター値を使用したスケーリング/正規化とアルゴリズム
+実行のたびに提供されるパフォーマンス グラフおよびメトリックの定義と例については、「[自動化機械学習の結果の概要](how-to-understand-automated-ml.md)」を参照してください。 
 
-透過的に処理して、自動化された ML の fitted_model 出力からこの情報を取得します。
+特徴量化の概要を確認し、特定のモデルに追加された機能を理解するには、「[特徴量化の透過性](how-to-configure-auto-features.md#featurization-transparency)」を参照してください。 
 
-```python
-automl_config = AutoMLConfig(…)
-automl_run = experiment.submit(automl_config …)
-best_run, fitted_model = automl_run.get_output()
-```
+## <a name="register-and-deploy-models"></a>モデルを登録してデプロイする
 
-### <a name="automated-feature-engineering"></a>自動化された特徴エンジニア リング
+Web サービスにデプロイするためのモデルをダウンロードまたは登録する方法の詳細については、[モデルをデプロイする方法と場所](how-to-deploy-and-where.md)に関するページを参照してください。
 
-`"featurization": 'auto'` の場合に実行される前処理および[自動化された特徴エンジニアリング](concept-automated-ml.md#preprocess)の一覧を参照してください。
-
-次の例を考えてみましょう。
-+ 次の 4 つの入力特徴があります。A (数値)、B (数値)、C (数値)、D (日時)
-+ 数値の特徴 C は、すべて一意の値を持つ ID 列であるためドロップされます
-+ 数値の特徴 A と B には欠損値があるため、平均値で補完されます
-+ 日時の特徴 D は、11 の異なるエンジニアリングされた特徴に特徴付けされます
-
-適合モデルの最初のステップで次の 2 つの API を使用して、詳細を確認します。  [こちらのサンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)を参照してください。
-
-+ API 1: `get_engineered_feature_names()` はエンジニアリングされた特徴の名前の一覧を返します。
-
-  用途:
-  ```python
-  fitted_model.named_steps['timeseriestransformer']. get_engineered_feature_names ()
-  ```
-
-  ```
-  Output: ['A', 'B', 'A_WASNULL', 'B_WASNULL', 'year', 'half', 'quarter', 'month', 'day', 'hour', 'am_pm', 'hour12', 'wday', 'qday', 'week']
-  ```
-
-  このリストには、すべてのエンジニアリングされた特徴の名前が含まれます。
-
-  >[!Note]
-  >task='forecasting' に 'timeseriestransformer' を使用するか、'regression' または 'classification' タスクに 'datatransformer' を使用します。
-
-+ API 2: `get_featurization_summary()` は、すべての入力特徴について、特徴付けの概要を返します。
-
-  用途:
-  ```python
-  fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
-  ```
-
-  >[!Note]
-  >task='forecasting' に 'timeseriestransformer' を使用するか、'regression' または 'classification' タスクに 'datatransformer' を使用します。
-
-  出力:
-  ```
-  [{'RawFeatureName': 'A',
-    'TypeDetected': 'Numeric',
-    'Dropped': 'No',
-    'EngineeredFeatureCount': 2,
-    'Tranformations': ['MeanImputer', 'ImputationMarker']},
-   {'RawFeatureName': 'B',
-    'TypeDetected': 'Numeric',
-    'Dropped': 'No',
-    'EngineeredFeatureCount': 2,
-    'Tranformations': ['MeanImputer', 'ImputationMarker']},
-   {'RawFeatureName': 'C',
-    'TypeDetected': 'Numeric',
-    'Dropped': 'Yes',
-    'EngineeredFeatureCount': 0,
-    'Tranformations': []},
-   {'RawFeatureName': 'D',
-    'TypeDetected': 'DateTime',
-    'Dropped': 'No',
-    'EngineeredFeatureCount': 11,
-    'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
-  ```
-
-   各値の説明:
-
-   |出力|定義|
-   |----|--------|
-   |RawFeatureName|指定されたデータセットの入力特徴/列の名前。|
-   |TypeDetected|検出された入力特徴のデータ型。|
-   |Dropped|入力特徴がドロップされたか、または使用されたかを示す。|
-   |EngineeringFeatureCount|自動化された特徴エンジニアリングの変換によって生成された特徴の数。|
-   |変換|エンジニアリングされた特徴を生成するために入力特徴に適用される変換の一覧。|
-   
-### <a name="customize-feature-engineering"></a>特徴エンジニアリングをカスタマイズする
-特徴エンジニアリングをカスタマイズするには、 `"featurization": FeaturizationConfig` を指定します。
-
-サポートされているカスタマイズは次のとおりです。
-
-|カスタマイズ|定義|
-|--|--|
-|列の目的の更新|指定した列の特徴の種類をオーバーライドします。|
-|トランスフォーマー パラメーターの更新 |指定したトランスフォーマーのパラメーターを更新します。 現在、Imputer (平均値、最頻値、中央値) と HashOneHotEncoder がサポートされています。|
-|列の削除 |特徴付けされない列です。|
-|ブロック トランスフォーマー| 特徴付けプロセスで使用されるトランスフォーマーをブロックします。|
-
-API 呼び出しを使用して、FeaturizationConfig オブジェクトを作成します。
-```python
-featurization_config = FeaturizationConfig()
-featurization_config.blocked_transformers = ['LabelEncoder']
-featurization_config.drop_columns = ['aspiration', 'stroke']
-featurization_config.add_column_purpose('engine-size', 'Numeric')
-featurization_config.add_column_purpose('body-style', 'CategoricalHash')
-#default strategy mean, add transformer param for for 3 columns
-featurization_config.add_transformer_params('Imputer', ['engine-size'], {"strategy": "median"})
-featurization_config.add_transformer_params('Imputer', ['city-mpg'], {"strategy": "median"})
-featurization_config.add_transformer_params('Imputer', ['bore'], {"strategy": "most_frequent"})
-featurization_config.add_transformer_params('HashOneHotEncoder', [], {"number_of_bits": 3})
-```
-
-### <a name="scalingnormalization-and-algorithm-with-hyperparameter-values"></a>ハイパーパラメーター値を使用したスケーリング/正規化とアルゴリズム:
-
-パイプラインのスケーリング/正規化およびアルゴリズム/ハイパーパラメーター値を理解するには、fitted_model.steps を使用します。 [スケーリング/正規化の詳細については、こちらを参照してください](concept-automated-ml.md#preprocess)。 出力例を次に示します。
-
-```
-[('RobustScaler', RobustScaler(copy=True, quantile_range=[10, 90], with_centering=True, with_scaling=True)), ('LogisticRegression', LogisticRegression(C=0.18420699693267145, class_weight='balanced', dual=False, fit_intercept=True, intercept_scaling=1, max_iter=100, multi_class='multinomial', n_jobs=1, penalty='l2', random_state=None, solver='newton-cg', tol=0.0001, verbose=0, warm_start=False))
-```
-
-詳細情報を取得するには、次のヘルパー関数を使用します。 
-
-```python
-from pprint import pprint
-
-
-def print_model(model, prefix=""):
-    for step in model.steps:
-        print(prefix + step[0])
-        if hasattr(step[1], 'estimators') and hasattr(step[1], 'weights'):
-            pprint({'estimators': list(
-                e[0] for e in step[1].estimators), 'weights': step[1].weights})
-            print()
-            for estimator in step[1].estimators:
-                print_model(estimator[1], estimator[0] + ' - ')
-        else:
-            pprint(step[1].get_params())
-            print()
-
-
-print_model(model)
-```
-
-次のサンプル出力は、特定のアルゴリズム (この例では、LogisticRegression with RobustScalar) を使用したパイプラインのものです。
-
-```
-RobustScaler
-{'copy': True,
-'quantile_range': [10, 90],
-'with_centering': True,
-'with_scaling': True}
-
-LogisticRegression
-{'C': 0.18420699693267145,
-'class_weight': 'balanced',
-'dual': False,
-'fit_intercept': True,
-'intercept_scaling': 1,
-'max_iter': 100,
-'multi_class': 'multinomial',
-'n_jobs': 1,
-'penalty': 'l2',
-'random_state': None,
-'solver': 'newton-cg',
-'tol': 0.0001,
-'verbose': 0,
-'warm_start': False}
-```
-
-### <a name="predict-class-probability"></a>クラスの確率を予測する
-
-自動 ML を使用して生成されたモデルにはすべて、オープンソースの元のクラスの機能をミラー化するラッパー オブジェクトがあります。 自動 ML によって返されるほとんどの分類モデル ラッパー オブジェクトは、`predict_proba()` 関数を実装しています。これは特徴 (X 値) の配列に似た、または疎行列のデータ サンプルを受け入れ、各サンプルの n 次元配列と、それぞれのクラスの確率を返します。
-
-上記と同じ呼び出しを使用して最適な実行済みの適合モデルを取得したことを前提として、適合モデルから直接 `predict_proba()` を呼び出して、モデルの種類に応じて適切な形式で `X_test` サンプルを指定することができます。
-
-```python
-best_run, fitted_model = automl_run.get_output()
-class_prob = fitted_model.predict_proba(X_test)
-```
-
-基になるモデルが `predict_proba()` 関数をサポートしていない場合、または形式が正しくない場合は、モデル クラス固有の例外がスローされます。 さまざまな種類のモデルに対してこの関数を実装する方法の例については、[RandomForestClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier.predict_proba) と [XGBoost](https://xgboost.readthedocs.io/en/latest/python/python_api.html) のリファレンス ドキュメントを参照してください。
 
 <a name="explain"></a>
 
@@ -526,8 +341,13 @@ class_prob = fitted_model.predict_proba(X_test)
 
 自動機械学習ではない SDK の他の領域で、モデルの説明と特徴の重要度を有効にする方法の一般情報については、解釈可能性の[概念](how-to-machine-learning-interpretability.md)に関する記事を参照してください。
 
+> [!NOTE]
+> 現在、ForecastTCN モデルは説明クライアントではサポートされていません。 このモデルが最適なモデルとして返された場合、説明ダッシュボードは返されず、オンデマンドでの説明の実行はサポートされません。
+
 ## <a name="next-steps"></a>次のステップ
 
-[モデルをデプロイする方法と場所](how-to-deploy-and-where.md)についてさらに詳しく学習する。
++ [モデルをデプロイする方法と場所](how-to-deploy-and-where.md)についてさらに詳しく学習する。
 
-[自動機械学習を使用して回帰モデルをトレーニングする方法](tutorial-auto-train-models.md)または[リモート リソースに対して自動機械学習を使用してトレーニングする方法](how-to-auto-train-remote.md)についてさらに詳しく学習する。
++ [自動機械学習を使用して回帰モデルをトレーニングする方法](tutorial-auto-train-models.md)または[リモート リソースに対して自動機械学習を使用してトレーニングする方法](how-to-auto-train-remote.md)についてさらに詳しく学習する。
+
++ [多数モデル ソリューション アクセラレータ](https://aka.ms/many-models)で AutoML を使用して複数のモデルをトレーニングする方法について学習する。

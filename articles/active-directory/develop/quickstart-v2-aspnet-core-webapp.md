@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: db488e4a9ec9aa0f4f12c8de45f123dba1a93cdf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
+ms.openlocfilehash: fdc1f0db956d0f64938b6a0433fda21dc4462ced
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82112713"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691328"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>クイック スタート:ASP.NET Core Web アプリに Microsoft サインインを追加する
 このクイックスタートでは、ASP.NET Core Web アプリで、(hotmail.com、outlook.com などの) 個人アカウント、また職場や学校のアカウントを任意の Azure Active Directory (Azure AD) インスタンスからサインインさせる方法を、コード サンプルを使用して学びます。 (図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください)。
@@ -62,10 +62,10 @@ ms.locfileid: "82112713"
 #### <a name="step-2-download-your-aspnet-core-project"></a>手順 2:ASP.NET Core プロジェクトのダウンロード
 
 > [!div renderon="docs"]
-> [Visual Studio 2019 ソリューションのダウンロード](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
+> [ASP.NET Core ソリューションをダウンロード](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)します。
 
 > [!div class="sxs-lookup" renderon="portal"]
-> Visual Studio 2019 を使用してプロジェクトを実行します。
+> プロジェクトを実行します。
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
 > [コード サンプルをダウンロードします](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
 
@@ -76,9 +76,9 @@ ms.locfileid: "82112713"
 > > [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
 > [!div renderon="docs"]
-> #### <a name="step-3-run-your-visual-studio-project"></a>手順 3:Visual Studio プロジェクトを実行する
+> #### <a name="step-3-run-your-aspnet-core-project"></a>手順 3:ASP.NET Core プロジェクトの実行
 > 1. ルート フォルダー内のローカル フォルダー (例: **C:\Azure-Samples**) に ZIP ファイルを展開します。
-> 1. Visual Studio でソリューションを開きます。
+> 1. IDE でソリューションを開きます。
 > 1. **appsettings.json** ファイルを編集します。 `ClientId` を探し、`ClientId` の値を、登録済みのアプリケーションの**アプリケーション (クライアント) ID** 値で更新します。
 >
 >    ```json
@@ -145,10 +145,10 @@ public void ConfigureServices(IServiceCollection services)
 
 `.AddAzureAd` を含む行によって、Microsoft ID プラットフォーム認証がアプリケーションに追加されます。 次に、Microsoft ID プラットフォーム エンドポイントを使用してサインインするように構成されます。
 
-> |Where  |  |
+> |Where | 説明 |
 > |---------|---------|
 > | ClientId  | Azure portal に登録されているアプリケーションのアプリケーション (クライアント) ID。 |
-> | Authority | ユーザーが認証するための STS エンドポイント。 パブリック クラウドでは、通常は <https://login.microsoftonline.com/{tenant}/v2.0>。{tenant} はテナントの名前、テナント ID、または共通エンドポイントへの参照を表す *common* (マルチテナント アプリケーションで使用) です |
+> | Authority | ユーザーが認証するための STS エンドポイント。 パブリック クラウドでは、通常は `https://login.microsoftonline.com/{tenant}/v2.0`。{tenant} はテナントの名前、テナント ID、または共通エンドポイントへの参照を表す *common* (マルチテナント アプリケーションで使用) です |
 > | TokenValidationParameters | トークン検証のためのパラメーター リスト。 ここでは、`ValidateIssuer` は `false` に設定され、任意の個人、あるいは職場または学校のアカウント タイプからのサインインを受け付け可能であることを示しています。 |
 
 
@@ -156,7 +156,7 @@ public void ConfigureServices(IServiceCollection services)
 > `ValidateIssuer = false` の設定は、このクイック スタートを単純にするためのものです。 実際のアプリケーションでは、発行者を検証する必要があります。
 > その方法については、サンプルを参照してください。
 >
-> また、`app.UserCookiePolicy()` と `app.UseAuthentication()` という 2 つの重要なメソッドを含んだ `Configure` メソッドにも注目してください。
+> また、`app.UseCookiePolicy()` と `app.UseAuthentication()` という 2 つの重要なメソッドを含んだ `Configure` メソッドにも注目してください。
 
 ```csharp
 // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

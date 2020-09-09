@@ -5,16 +5,16 @@ services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5e725df5c875f23d82da1fda19bcdf28db548fc8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 93c975bbbc69a43f1bd47bd4b1e7b857338ac1c0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426627"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089245"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Visual Studio と SSDT を使用して Synapse SQL に接続する
 > [!div class="op_single_selector"]
@@ -28,20 +28,19 @@ ms.locfileid: "81426627"
 
 Visual Studio と Azure Synapse Analytics を使用して、SQL プールに対してクエリを実行します。 この方法では、Visual Studio 2019 の SQL Server Data Tools (SSDT) 拡張機能が使用されます。 
 
-### <a name="supported-tools-for-sql-on-demand-preview"></a>SQL オンデマンド (プレビュー) でサポートされるツール
-
-Visual Studio は現在、SQL オンデマンド (プレビュー) ではサポートされていません。 ただし、Azure Data Studio (プレビュー) は完全にサポートされているツールです。 SQL Server Management Studio はバージョン 18.4 から部分的にサポートされており、接続やクエリなどの機能に制限があります。
+> [!NOTE]
+> SQL オンデマンド (プレビュー) は、SSDT ではサポートされていません。
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを使用するには、次のコンポーネントが必要です。
 
 * 既存の SQL プール。 ない場合は、「[SQL プールを作成する](../sql-data-warehouse/create-data-warehouse-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)」を参照して、この前提条件を完了してください。
 * Visual Studio 用の SSDT。 Visual Studio をお持ちの方は既にこのコンポーネントを所有していると思われます。 インストールの手順とオプションの詳細については、 [Visual Studio と SSDT のインストール](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照してください。
-* 完全修飾 SQL サーバー名。 調べる方法については、「[SQL プールに接続する](connect-overview.md)」を参照してください。
+* 完全修飾 SQL サーバー名。 このサーバー名を特定するには、「[SQL プールに接続する](connect-overview.md)」を参照してください。
 
 ## <a name="1-connect-to-sql-pool"></a>1.SQL プールに接続する
 1. Visual Studio 2019 を開きます。
-2. SQL Server オブジェクト エクスプローラーを開きます。 これを行うには、 **[表示]**  >  **[SQL Server オブジェクト エクスプローラー]** の順に選択します。
+2. **[表示]**  >  **[SQL Server オブジェクト エクスプローラー]** の順に選択して、SQL Server オブジェクト エクスプローラーを開きます。
    
     ![[SQL Server オブジェクト エクスプローラー]](./media/get-started-visual-studio/open-ssdt.png)
 3. **[SQL Server の追加]** アイコンをクリックします。
@@ -71,7 +70,7 @@ Visual Studio は現在、SQL オンデマンド (プレビュー) ではサポ�
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. クエリを実行します。 そのためには、緑色の矢印をクリックするか、 `CTRL`+`SHIFT`+`E`のショートカット キーを使用します。
+4. 緑色の矢印をクリックしてクエリを実行するか、ショートカット キー `CTRL`+`SHIFT`+`E` を使用します。
    
     ![Run query](./media/get-started-visual-studio/run-query.png)
 5. クエリ結果を確認します。 この例では、FactInternetSales テーブルに 60,398 行が含まれています。

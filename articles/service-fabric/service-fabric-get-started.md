@@ -3,14 +3,14 @@ title: Windows 開発環境を設定します
 description: ランタイム、SDK、およびツールをインストールし、ローカル開発クラスターを作成します。 このセットアップを完了すると、Windows でアプリケーションを構築する準備が整います。
 author: peterpogorski
 ms.topic: conceptual
-ms.date: 04/20/2020
-ms.custom: sfrev
-ms.openlocfilehash: 1b43c838537e46ffbaf6c4adcfb117f6718bd046
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/16/2020
+ms.custom: sfrev, devx-track-azurepowershell
+ms.openlocfilehash: 57e5fe236e117932c3cbc2fcf2479f89aaa261d9
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731752"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069071"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Windows で開発環境を準備する
 
@@ -42,7 +42,7 @@ Windows 開発コンピューターで [Azure Service Fabric アプリケーシ�
 
 ## <a name="install-the-sdk-and-tools"></a>SDK とツールのインストール
 
-SDK とツールをインストールするには、Web Platform Installer (Web PI) を使用することをお勧めします。 Web PI を使用してランタイム エラーが発生した場合は、特定の Service Fabric リリースのリリース ノートで、インストーラーへの直接リンクを検索することもできます。 リリース ノートは、[Service Fabric チーム ブログ](https://blogs.msdn.microsoft.com/azureservicefabric/)の各種リリースの発表で見つけることができます。
+SDK とツールをインストールするには、Web Platform Installer (Web PI) を使用することをお勧めします。 Web PI を使用してランタイム エラーが発生した場合は、特定の Service Fabric リリースのリリース ノートで、インストーラーへの直接リンクを検索することもできます。 リリース ノートは、[Service Fabric チーム ブログ](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)の各種リリースの発表で見つけることができます。
 
 > [!NOTE]
 > ローカルな Service Fabric 開発クラスターのアップグレードはサポートされていません。
@@ -68,8 +68,8 @@ SDK のみが必要な場合は、次のパッケージをインストールす�
 
 現在のバージョンは次のとおりです。
 
-* Service Fabric SDK および Tools 4.1.409
-* Service Fabric ランタイム 7.1.409
+* Service Fabric SDK および Tools 4.1.456
+* Service Fabric ランタイム 7.1.456
 
 サポートされているバージョンの一覧については、[Service Fabric のバージョン](service-fabric-versions.md)に関するページを参照してください
 

@@ -1,24 +1,22 @@
 ---
-title: Windows Virtual Desktop のサービス アラートを設定する - Azure
-description: Windows Virtual Desktop のサービス通知を受信するように Azure Service Health を設定する方法。
-services: virtual-desktop
+title: Windows Virtual Desktop (クラシック) のサービス アラートを設定する - Azure
+description: Windows Virtual Desktop (クラシック) のサービス通知を受信する Azure Service Health の設定方法。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 03/30/2020
+ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ca0e5cedfda1446f86b469501746e87c340b4103
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 3f2171d3271a4ffc4770dd0c9faea16c23e44d02
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82613828"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005504"
 ---
-# <a name="tutorial-set-up-service-alerts"></a>チュートリアル:サービス アラートを設定する
+# <a name="tutorial-set-up-service-alerts-for-windows-virtual-desktop-classic"></a>チュートリアル:Windows Virtual Desktop (クラシック) のサービス アラートを設定する
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースを対象としています。 Spring 2020 更新プログラムで導入された Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../set-up-service-alerts.md)を参照してください。
+>これは、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしない Windows Virtual Desktop (クラシック) を対象としたコンテンツです。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../set-up-service-alerts.md)を参照してください。
 
 Azure Service Health を使用すると、Windows Virtual Desktop のサービスの問題と正常性に関するアドバイザリを監視できます。 Azure Service Health によって、さまざまな種類のアラート (メールや SMS など) の通知を受け取り、問題の影響を把握し、問題が解決したときに最新の情報を得ることができます。 さらに、Azure Service Health は、ダウンタイムを軽減し、お使いのリソースの可用性に影響を与える可能性がある計画的なメンテナンスや変更に備えるためにも役立ちます。
 
@@ -61,4 +59,4 @@ Azure Service Health の詳細については、[Azure Health のドキュメン
 このチュートリアルでは、Azure Service Health を設定および使用して Windows Virtual Desktop のサービスの問題と正常性に関するアドバイザリを監視する方法について学習しました。 Windows Virtual Desktop にサインインする方法について詳しくは、引き続き Windows Virtual Desktop への接続方法に関するページを参照してください。
 
 > [!div class="nextstepaction"]
-> [Windows 7 および Windows 10 上でリモート デスクトップ クライアントに接続する](../connect-windows-7-and-10.md)
+> [Windows 7 および Windows 10 上でリモート デスクトップ クライアントに接続する](connect-windows-7-10-2019.md)

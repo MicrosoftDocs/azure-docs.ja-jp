@@ -3,27 +3,29 @@ title: Standard Encoder の形式およびコーデック - Azure
 description: この記事では、StandardEncoderPreset で使用できる一般的なインポートおよびエクスポート ファイル形式の一覧を示しています。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/10/2019
-ms.author: juliako
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.reviewer: anilmur
-ms.openlocfilehash: f1d4d4f4006702ebe0d057e56cf24a022e73b83e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f6e9c0a3d9100bc447314f5874107363c6bf5d8a
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227127"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289445"
 ---
 # <a name="standard-encoder-formats-and-codecs"></a>Standard Encoder の形式およびコーデック
 
-この記事では、[StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) で使用できる一般的なインポートおよびエクスポート ファイル形式の一覧を示しています。 **StandardEncoderPreset** を使用してカスタム プリセットを作成する方法については、「[カスタム プリセットを使用して変換を作成する](customize-encoder-presets-how-to.md)」を参照してください。
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
+この記事では、[StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) で使用できる一般的なインポートおよびエクスポート ファイル形式の一覧を示しています。 **StandardEncoderPreset** を使用してカスタム プリセットを作成する方法については、「[カスタム プリセットを使用して変換を作成する](customize-encoder-presets-how-to.md)」を参照してください。
 
 ## <a name="input-containerfile-formats"></a>入力コンテナー/ファイル形式
 
@@ -36,7 +38,7 @@ ms.locfileid: "79227127"
 | Windows Media Video (WMV)/ASF (.wmv、.asf) |はい |
 | AVI (非圧縮 8-bit/10-bit) (.avi) |はい |
 | MP4 (.mp4、.m4a、.m4v)/ISMV (.isma、.ismv) |はい |
-| [Microsoft Digital Video Recording (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) (.dvr-ms) |はい |
+| [Microsoft Digital Video Recording (DVR-MS)](/previous-versions/windows/desktop/mstv/about-the-dvr-ms-file-format) (.dvr-ms) |はい |
 | Matroska/WebM (.mkv) |はい |
 | WAVE/WAV (.wav) |はい |
 | QuickTime (.mov) |はい |

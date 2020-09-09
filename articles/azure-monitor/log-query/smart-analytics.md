@@ -6,17 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/15/2019
-ms.openlocfilehash: 51584ccf5f845be8a06b1e049cae11e636edef11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82960845e357579b82c493958287cb602d75182e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77659834"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067399"
 ---
 # <a name="log-analytics-smart-analytics-examples"></a>Log Analytics のスマート分析の例
 この記事では、Log Analytics のスマート分析機能を使用してユーザー アクティビティの分析を実行する例を紹介しています。 これらの例を利用して、Application Insights によって監視されているお客様のアプリケーションを分析することができます。また、これらのクエリの概念を使用して、他のデータを同様に分析することもできます。 
 
-これらのサンプルで使用されるさまざまなキーワードの詳細については、[Kusto 言語リファレンス](https://docs.microsoft.com/azure/kusto/query/)を参照してください。 Log Analytics を利用するのが初めてであれば、[クエリの作成に関するレッスン](get-started-queries.md)をご覧ください。
+これらのサンプルで使用されるさまざまなキーワードの詳細については、[Kusto 言語リファレンス](/azure/kusto/query/)を参照してください。 Log Analytics を利用するのが初めてであれば、[クエリの作成に関するレッスン](get-started-queries.md)をご覧ください。
 
 ## <a name="cohorts-analytics"></a>コーホート分析
 

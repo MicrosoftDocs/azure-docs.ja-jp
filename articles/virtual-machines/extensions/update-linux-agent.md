@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: mimckitt
-ms.openlocfilehash: ab846eeb09c4f3d2db71abf58ef5d55dc74962a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0b13dca7f4a33a7fb9ea55a1505c26a97160d0d8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112050"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502947"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>VM で Azure Linux エージェントを更新する方法
 
@@ -31,7 +31,7 @@ Azure 上の Linux VM の [Azure Linux エージェント](https://github.com/Az
 まずは常に Linux ディストリビューション リポジトリでパッケージを確認することをお勧めします。 使用できるパッケージが最新のバージョンでない可能性もありますが、自動更新を有効にすると Linux エージェントが常に最新の更新プログラムを入手します。 パッケージ マネージャーからのインストールに問題がある場合は、ディストリビューション ベンダーにサポートを依頼してください。
 
 > [!NOTE]
-> 詳細については、「[Azure で動作保証済みの Linux ディストリビューション](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)」を参照してください。
+> 詳細については、「[Azure で動作保証済みの Linux ディストリビューション](../linux/endorsed-distros.md)」を参照してください。
 
 ## <a name="minimum-virtual-machine-agent-support-in-azure"></a>Azure での仮想マシン エージェントの最小バージョンのサポート
 先に進む前に、[Azure での仮想マシン エージェントの最小バージョンのサポート](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)を確認してください。

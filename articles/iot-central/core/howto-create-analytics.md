@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 40460b58ede0ca0da8fe25475906bdbe41bfffe0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 29605fc2a9094f70c26487691e74a4dd72a85813
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158284"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147275"
 ---
 # <a name="how-to-use-analytics-to-analyze-device-data"></a>分析を使用してデバイス データを分析する方法
 
@@ -89,6 +89,8 @@ Azure IoT Central では、履歴の傾向を分析し、デバイスからの�
 省略記号の下には、データを操作するための他のグラフ コントロールがあります。
 
 - **[グリッドの表示]:** 結果が表形式で表示され、各データ ポイントの特定の値を見ることができます。
+
+- **[CSV としてダウンロードする]** : 結果は、コンマ区切り値 (CSV) ファイルとしてエクスポートできます。 CSV ファイルには、各デバイスのデータが含まれています。 結果は、指定された間隔と期間を使用してエクスポートされます。 
 
 - **[Drop a Marker]\(マーカーのドロップ\):** [Drop Marker]\(マーカーのドロップ\) コントロールでは、グラフ上の特定のデータ ポイントを固定できます。 この機能は、異なる期間の複数の線のデータを比較する際に役立ちます。
 

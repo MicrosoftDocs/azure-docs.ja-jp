@@ -3,21 +3,21 @@ title: ポータルを使用してピア ASN を Azure サブスクリプショ�
 titleSuffix: Azure
 description: ポータルを使用してピア ASN を Azure サブスクリプションに関連付ける
 services: internet-peering
-author: prmitiki
+author: derekolo
 ms.service: internet-peering
-ms.topic: article
-ms.date: 11/27/2019
-ms.author: prmitiki
-ms.openlocfilehash: cee548aff49cd5e4a57eed994b8ade2d157c6313
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.date: 5/18/2020
+ms.author: derekol
+ms.openlocfilehash: 57c38d3b6eeb26a38a36fb67da25bcf960cee2dc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75912126"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710849"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>ポータルを使用してピア ASN を Azure サブスクリプションに関連付ける
 
-ピアリング要求を送信する前にまず、次の手順に従って、ASN を Azure サブスクリプションに関連付ける必要があります。
+インターネット サービス プロバイダーまたはインターネット エクスチェンジ プロバイダーは、ピアリング要求を送信する前に、次の手順に従って、最初に ASN を Azure サブスクリプションに関連付ける必要があります。
 
 必要に応じて、[PowerShell](howto-subscription-association-powershell.md) を使用してこのガイドを完了することもできます。
 
@@ -55,22 +55,7 @@ ms.locfileid: "75912126"
     > ![登録完了](./media/rp-register-completed.png)
 
 ### <a name="create-peerasn"></a>PeerAsn を作成する
-自律システム番号 (ASN) を Azure サブスクリプションに関連付けるために、新しい PeerAsn リソースを作成することができます。 関連付ける必要がある ASN ごとに **PeerAsn** を作成することにより、複数の ASN を 1 つのサブスクリプションに関連付けることができます。
-
-1. **[リソースの作成]**  >  **[すべて表示]** をクリックします。
-
-    > [!div class="mx-imgBorder"]
-    > ![PeerAsn を検索する](./media/peerasn-seeall.png)
-
-1. 検索ボックスで「*PeerAsn*」を検索し、キーボードの *Enter* キーを押します。 結果から、**PeerAsn** リソースをクリックします。
-
-    > [!div class="mx-imgBorder"]
-    > ![PeerAsn を起動する](./media/peerasn-launch.png)
-
-1. **PeerAsn** が起動したら、 **[作成]** をクリックします。
-
-    > [!div class="mx-imgBorder"]
-    > ![PeerAsn を作成する](./media/peerasn-create.png)
+インターネット サービス プロバイダーまたはインターネット エクスチェンジ プロバイダーは、[[Associate a Peer ASN]\(ピア ASN の関連付け)](https://go.microsoft.com/fwlink/?linkid=2129592) ページで、Azure サブスクリプションに自律システム番号 (ASN) を関連付けるための新しい PeerAsn リソースを作成できます。 関連付ける必要がある ASN ごとに **PeerAsn** を作成することにより、複数の ASN を 1 つのサブスクリプションに関連付けることができます。
 
 1. **[Associate a Peer ASN]\(ピア ASN の関連付け\)** ページの **[基本]** タブで、次に示すようにフィールドを設定します。
 
@@ -103,10 +88,10 @@ PeerAsn リソースが正常にデプロイされたら、Microsoft で関連�
 > [!IMPORTANT]
 > ValidationState が "Approved" になるのを待ってから、ピアリング要求を送信します。 この承認には、最大で 12 時間かかる場合があります。
 
-## <a name="modify-peerasn"></a>PeerAsn を変更する
+## <a name="modify-peerasn"></a>PeerASN を変更する
 現在、PeerAsn の変更はサポートされていません。 変更する必要がある場合は、[Microsoft ピアリング](mailto:peering@microsoft.com)にお問い合わせください。
 
-## <a name="delete-peerasn"></a>PeerAsn を削除する
+## <a name="delete-peerasn"></a>PeerASN を削除する
 現在、PeerAsn の削除はサポートされていません。 PeerAsn を削除する必要がある場合は、[Microsoft ピアリング](mailto:peering@microsoft.com)にお問い合わせください。
 
 ## <a name="next-steps"></a>次のステップ
@@ -114,8 +99,8 @@ PeerAsn リソースが正常にデプロイされたら、Microsoft で関連�
 * [ポータルを使用して Direct ピアリングを作成または変更する](howto-direct-portal.md)
 * [ポータルを使用して従来の Direct ピアリングを Azure リソースに変換する](howto-legacy-direct-portal.md)
 * [ポータルを使用して Exchange ピアリングを作成または変更する](howto-exchange-portal.md)
-* [ポータルを使用して従来の Exchange ピアリングを Azure リソースに変換する](howto-legacy-exchange-portal.md)
+* [ポータルを使用してレガシの Exchange ピアリングを Azure リソースに変換する](howto-legacy-exchange-portal.md)
 
 ## <a name="additional-resources"></a>その他のリソース
 
-詳細については、「[インターネット ピアリングのよくあるご質問](faqs.md)」を参照してください。
+詳細については、「[インターネット ピアリングのよくあるご質問](faqs.md)」を参照してください

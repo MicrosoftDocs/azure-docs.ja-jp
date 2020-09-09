@@ -1,18 +1,14 @@
 ---
 title: Event Grid ソースとしての Azure Service Bus
 description: Azure Event Grid で Service Bus イベント用に提供されているプロパティについて説明します
-services: event-grid
-author: banisadr
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: babanisa
-ms.openlocfilehash: 141a0e96071014dc3705d30f72b1a9257737298a
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.date: 07/07/2020
+ms.openlocfilehash: 81293321b3a8fb989023a231c905996b4059bd81
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393236"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121136"
 ---
 # <a name="azure-service-bus-as-an-event-grid-source"></a>Event Grid ソースとしての Azure Service Bus
 

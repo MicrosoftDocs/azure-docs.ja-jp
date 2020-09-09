@@ -14,12 +14,12 @@ ms.date: 04/29/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/28/2020
-ms.openlocfilehash: a87f3563b995081de8e7cbb4b4499718f77b02ff
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 87a3627d7820f9f456ac08e2f20b70af961f817e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583256"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084247"
 ---
 # <a name="transport-layer-security-tls"></a>トランスポート層セキュリティ (TLS)
 
@@ -35,7 +35,7 @@ SSLSocket インスタンスを使用する Android アプリケーションの�
 
 [TLS プロトコルの互換性](https://support.globalsign.com/customer/portal/articles/2934392-tls-protocol-compatibility)サポート ページの表は、オペレーティング システムと互換性のある TLS バージョンのマッピングに役立ちます。
 
-詳細については、[Windows での TLS プロトコルのサポート](https://docs.microsoft.com/archive/blogs/kaushal/support-for-ssltls-protocols-on-windows)の概要を参照してください。
+詳細については、[Windows での TLS プロトコルのサポート](/archive/blogs/kaushal/support-for-ssltls-protocols-on-windows)の概要を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

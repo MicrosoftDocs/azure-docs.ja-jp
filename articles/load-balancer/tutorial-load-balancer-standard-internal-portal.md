@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 918a7700df6b5be3ebca7949875127e42f8d3a91
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f7f16093074b48610c1db8fec7f05ee01e7ab1ed
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75780697"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078767"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-standard-load-balancer-in-the-azure-portal"></a>チュートリアル:Azure portal の Standard ロードバランサーを使用して内部トラフィックの負荷を分散する
 
@@ -32,25 +32,23 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このチュートリアルを使用してこの手順を実行するには、[https://portal.azure.com](https://portal.azure.com) の Azure portal にサインインします。
 
-## <a name="create-a-vnet-back-end-servers-and-a-test-vm"></a>VNet、バックエンド サーバー、およびテスト VM を作成する
+## <a name="virtual-network-and-parameters"></a>仮想ネットワークとパラメーター
+このセクションの手順では、各パラメーターを次のように置き換える必要があります。
 
-まず仮想ネットワーク (VNet) を作成します。 VNet では、Standard ロードバランサーのバックエンド プールに使用する 2 つの VM と、ロード バランサーのテストに使用する 3 つ目の VM を作成します。 
+| パラメーター                   | 値                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupSLB |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | 米国東部 2      |
+| **\<IPv4-address-space>**   | 10.3.0.0\16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.3.0.0\24          |
 
-### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
-
-1. ポータルの画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[仮想ネットワーク]** の順に選択します。
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
    
-1. **[仮想ネットワークの作成]** ウィンドウで、以下の値を入力または選択します。
-   
-   - **Name**:「**MyVNet**」と入力します。
-   - **ResourceGroup**: **[新規作成]** を選択してから「**MyResourceGroupLB**」と入力し、 **[OK]** を選択します。 
-   - **[サブネット]**  >  **[名前]** : 「**MyBackendSubnet**」と入力します。
-   
-1. **［作成］** を選択します
 
-   ![仮想ネットワークの作成](./media/tutorial-load-balancer-basic-internal-portal/2-load-balancer-virtual-network.png)
 
-### <a name="create-virtual-machines"></a>仮想マシンを作成する
+## <a name="create-virtual-machines"></a>仮想マシンを作成する
 
 1. ポータルの左上で、 **[リソースの作成]**  >  **[Compute]**  >  **[Windows Server 2016 Datacenter]** の順に選択します。 
    
@@ -92,7 +90,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    
 2. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[確認と作成]** を選択します。
 
-    | 設定                 | Value                                              |
+    | 設定                 | [値]                                              |
     | ---                     | ---                                                |
     | サブスクリプション               | サブスクリプションを選択します。    |    
     | Resource group         | **[新規作成]** を選択して、テキスト ボックスに「*MyResourceGroupLB*」と入力します。|
@@ -180,6 +178,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    - **[バックエンド プール]** : **[MyBackendPool]** を選択します。
    - **[正常性プローブ]** : **[MyHealthProbe]** を選択します。 
    
+Azure portal を使用して[高可用性ポート](load-balancer-ha-ports-overview.md)を構成するには、 **[HA ポート]** チェック ボックスをオンにします。 このオプションを選択すると、関連するポートとプロトコルの構成が自動的に設定されます。 
+
 1. **[OK]** を選択します。
    
    ![ロード バランサー規則の追加](./media/tutorial-load-balancer-basic-internal-portal/5-load-balancing-rules.png)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 7bc2c0f472a03c3f069a889c360bea9017a780f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d424cccc0a50198f3ca8c6c040afb87f44282d47
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77918208"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508901"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>VM がセーフ モードで起動するため VM に RDP 接続できない
 
@@ -47,7 +47,9 @@ RDP サービスは、セーフ モードでは使用できません。 VM が�
    )。 VM 上でシリアル コンソールが有効になっていない場合は、「[VM をオフライン修復する](#repair-the-vm-offline)」をご覧ください。
 2. ブート構成データを確認します。
 
-        bcdedit /enum
+    ```console
+    bcdedit /enum
+    ```
 
     VM がセーフ モードで起動するように構成されている場合、 **[Windows ブート ローダー]** セクションに **[safeboot]** という追加のフラグが表示されます。 **[safeboot]** フラグが表示されない場合、VM はセーフ モードではありません。 そのシナリオには、この記事の内容は当てはまりません。
 
@@ -61,11 +63,15 @@ RDP サービスは、セーフ モードでは使用できません。 VM が�
 
 3. **[safemoade]** フラグを削除すると、VM が通常モードで起動します。
 
-        bcdedit /deletevalue {current} safeboot
+    ```console
+    bcdedit /deletevalue {current} safeboot
+    ```
 
 4. ブート構成データをチェックして、 **[safeboot]** フラグが削除されていることを確認します。
 
-        bcdedit /enum
+    ```console
+    bcdedit /enum
+    ```
 
 5. VM を再起動し、問題が解決されているかどうかを確認します。
 
@@ -73,7 +79,7 @@ RDP サービスは、セーフ モードでは使用できません。 VM が�
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>復旧 VM に OS ディスクを接続する
 
-1. [復旧 VM に OS ディスクを接続します](../windows/troubleshoot-recovery-disks-portal.md)。
+1. [復旧 VM に OS ディスクを接続します](./troubleshoot-recovery-disks-portal-windows.md)。
 2. 復旧 VM へのリモート デスクトップ接続を開始します。
 3. ディスクが [ディスクの管理] コンソールで **[オンライン]** になっていることを確認します。 接続された OS ディスクに割り当てられたドライブ文字をメモします。
 
@@ -115,7 +121,10 @@ RDP サービスは、セーフ モードでは使用できません。 VM が�
 1. 管理者特権のコマンド プロンプト セッション ( **[管理者として実行]** ) を開きます。
 2. ブート構成データを確認します。 次のコマンドでは、接続されている OS ディスクに割り当てられているドライブ文字が F であると想定しています。このドライブ文字を実際の VM の適切な値で置き換えてください。
 
-        bcdedit /store F:\boot\bcd /enum
+    ```console
+    bcdedit /store F:\boot\bcd /enum
+    ```
+
     **\windows** フォルダーが含まれるパーティションの識別子名をメモしておきます。 既定では、識別子名は "Default" です。
 
     VM がセーフ モードで起動するように構成されている場合、 **[Windows ブート ローダー]** セクションに **[safeboot]** という追加のフラグが表示されます。 **safeboot** フラグが表示されない場合、この記事の内容は目的のシナリオに当てはまりません。
@@ -124,8 +133,14 @@ RDP サービスは、セーフ モードでは使用できません。 VM が�
 
 3. **safeboot** フラグを削除すると、VM が通常モードで起動します。
 
-        bcdedit /store F:\boot\bcd /deletevalue {Default} safeboot
+    ```console
+    bcdedit /store F:\boot\bcd /deletevalue {Default} safeboot
+    ```
+
 4. ブート構成データをチェックして、 **[safeboot]** フラグが削除されていることを確認します。
 
-        bcdedit /store F:\boot\bcd /enum
-5. [OS ディスクを切断して、VM を再作成します](../windows/troubleshoot-recovery-disks-portal.md)。 その後、問題が解決されているかどうかを確認します。
+    ```console
+    bcdedit /store F:\boot\bcd /enum
+    ```
+
+5. [OS ディスクを切断して、VM を再作成します](./troubleshoot-recovery-disks-portal-windows.md)。 その後、問題が解決されているかどうかを確認します。

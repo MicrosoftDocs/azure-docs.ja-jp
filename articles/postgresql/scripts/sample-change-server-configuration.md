@@ -6,14 +6,14 @@ ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: sample
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 02/28/2018
-ms.openlocfilehash: d2b54d1173b9591de2482f4b3368d3dde8b8c766
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 097b7692c5088a0860b8778fe8f315a84cf6b147
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "71947788"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496561"
 ---
 # <a name="list-and-update-configurations-of-an-azure-database-for-postgresql-server-using-azure-cli"></a>Azure CLI を使用して Azure Database for PostgreSQL サーバーの構成を一覧表示および更新する
 このサンプル CLI スクリプトは、Azure Database for PostgreSQL サーバーのすべての利用可能な構成パラメーターと、許容値を一覧表示し、*log_retention_days* を既定値以外の値に設定します。
@@ -44,5 +44,5 @@ CLI をローカルで実行する場合、この記事では、Azure CLI バー
 
 ## <a name="next-steps"></a>次のステップ
 - Azure CLI に関する詳細を読む: [Azure CLI ドキュメント](/cli/azure)
-- 他のスクリプトを試す: [Azure Database for PostgreSQL の Azure CLI サンプル](../sample-scripts-azure-cli.md)
+- さらに他のスクリプトも試す: [Azure Database for PostgreSQL 用 Azure CLI サンプル](../sample-scripts-azure-cli.md)
 - サーバー パラメーターについて詳しくは、[Azure Portal でサーバー パラメータを構成する方法](../howto-configure-server-parameters-using-portal.md)についての記事をご覧ください。

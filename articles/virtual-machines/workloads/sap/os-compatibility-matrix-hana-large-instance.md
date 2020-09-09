@@ -10,15 +10,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/03/2020
+ms.date: 08/21/2020
 ms.author: sasarava
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aa19433ef6446932da3509694ccccd08538b964f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 18e97aea5c556c4f8e6ff1fb1b91a82da6de1b59
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78675641"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749362"
 ---
 # <a name="compatible-operating-systems-for-hana-large-instances"></a>HANA L インスタンスと互換性があるオペレーティング システム
 
@@ -28,6 +28,10 @@ ms.locfileid: "78675641"
   | SLES 12 SP2      | 提供終了 | S72、S72m、S96、S144、S144m、S192、S192m、S192xm              |
   | SLES 12 SP3      | 利用可能           | S72、S72m、S96、S144、S144m、S192、S192m、S192xm              |
   | SLES 12 SP4      | 利用可能           | S72、S72m、S96、S144、S144m、S192、S192m、S192xm、S224、S224m |
+  | SLES 12 SP5      | 利用可能           | S72、S72m、S96、S144、S144m、S192、S192m、S192xm、S224、S224m |
+  | SLES 15 SP1      | 利用可能           | S72、S72m、S96、S144、S144m、S192、S192m、S192xm、S224、S224m |
+  | RHEL 7.6         | 利用可能           | S72、S72m、S96、S144、S144m、S192、S192m、S192xm、S224、S224m |
+
   
 ### <a name="persistent-memory-skus"></a>永続メモリ SKU
   | オペレーティング システム | 可用性 | SKU                             |
@@ -39,6 +43,9 @@ ms.locfileid: "78675641"
   |-------------------------|---------------------|-------------------------------------------------------------------|
   | SLES 12 SP2             | 提供終了 | S384、S384m、S384xm、S384xxm、S576m、S576xm、S768m、S768xm、S960m |
   | SLES 12 SP3             | 利用可能           | S384、S384m、S384xm、S384xxm、S576m、S576xm、S768m、S768xm、S960m |
+  | SLES 12 SP4             | 利用可能           | S384、S384m、S384xm、S384xxm、S576m、S576xm、S768m、S768xm、S960m |
+  | SLES 12 SP5             | 利用可能           | S384、S384m、S384xm、S384xxm、S576m、S576xm、S768m、S768xm、S896m、S960m |
+  | SLES 15 SP1             | 利用可能           | S384、S384m、S384xm、S384xxm、S576m、S576xm、S768m、S768xm、S896m、S960m |
   
 ## <a name="related-documents"></a>関連ドキュメント
 

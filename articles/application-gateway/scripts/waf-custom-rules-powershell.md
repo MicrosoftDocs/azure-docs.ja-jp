@@ -6,14 +6,15 @@ ms.service: application-gateway
 ms.topic: sample
 ms.date: 6/7/2019
 ms.author: victorh
-ms.openlocfilehash: ffdde80598322222e2a8f000eee8be269becdd11
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8bf19052c11301412a299c31a2cd73ed2f9ffc7d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "66743329"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079899"
 ---
-# <a name="create-waf-custom-rules-with-azure-powershell"></a>Azure PowerShell での WAF カスタム ルールの作成
+# <a name="create-web-application-firewall-waf-custom-rules-with-azure-powershell"></a>Azure PowerShell を使用して Web アプリケーション ファイアウォール (WAF) のカスタム規則を作成する
 
 このスクリプトは、カスタム ルールを使用する Application Gateway の Web アプリケーション ファイアウォールを作成します。 要求ヘッダーに User-Agent *evilbot* が含まれている場合、カスタム規則はトラフィックをブロックします。
 
@@ -70,5 +71,5 @@ Remove-AzResourceGroup -Name CustomRulesTest
 ## <a name="next-steps"></a>次のステップ
 
 - WAF のカスタム ルールの詳細については、[Web アプリケーション ファイアウォールのカスタム ルール](../custom-waf-rules-overview.md)に関するページを参照してください。
-- Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
+- Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。
 - 追加のアプリケーション ゲートウェイの PowerShell スクリプトのサンプルは、[Azure Application Gateway のドキュメント](../powershell-samples.md)にあります。

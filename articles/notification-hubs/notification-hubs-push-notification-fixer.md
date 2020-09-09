@@ -16,12 +16,13 @@ ms.date: 02/25/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/04/2019
-ms.openlocfilehash: 1f3c16e6fe1855cf7882d83e620c70d15ce3cb92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b5139f75084eb0646db2fc8b05b04aaf3ddb2a12
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77657585"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010785"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Azure Notification Hubs での欠落した通知の診断
 
@@ -104,7 +105,7 @@ Notification Hubs は、"最大 1 回" のメッセージ配信モデルに最�
 
 この場合、エラーが発生した登録はデータベースから削除されます。 その後、そのバッチで残りのデバイスに通知の配信が再試行されます。
 
-登録デバイスに対して試行された配信が失敗したときのエラー情報の詳細は、Azure Notification Hubs REST API を使用して取得できます。「[Per Message Telemetry: Get Notification Message Telemetry (メッセージごとのテレメトリ: 通知メッセージのテレメトリを取得する)](https://docs.microsoft.com/rest/api/notificationhubs/get-notification-message-telemetry)」と「[PNS Feedback (PNS フィードバック)](https://msdn.microsoft.com/library/azure/mt705560.aspx)」をご覧ください。 サンプル コードについては、[REST の送信例](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/)に関する記事をご覧ください。
+登録デバイスに対して試行された配信が失敗したときのエラー情報の詳細は、Azure Notification Hubs REST API を使用して取得できます。「[Per Message Telemetry: Get Notification Message Telemetry (メッセージごとのテレメトリ: 通知メッセージのテレメトリを取得する)](/rest/api/notificationhubs/get-notification-message-telemetry)」と「[PNS Feedback (PNS フィードバック)](/previous-versions/azure/reference/mt705560(v=azure.100))」をご覧ください。 サンプル コードについては、[REST の送信例](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/)に関する記事をご覧ください。
 
 ## <a name="push-notification-service-issues"></a>プッシュ通知サービスの問題
 
@@ -126,7 +127,7 @@ Notification Hubs では、汎用 SendNotification API を使用することで�
 
 #### <a name="push-notification-service-developer-portal"></a>プッシュ通知サービス開発者ポータル
 
-各プッシュ通知サービス開発者ポータル (APNs、FCM, Windows Notification Service など) で資格情報を確認します。 詳細については、「[チュートリアル:Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム アプリに通知を送信する](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification)」で作成したソリューションを開きます。
+各プッシュ通知サービス開発者ポータル (APNs、FCM, Windows Notification Service など) で資格情報を確認します。 詳細については、「[チュートリアル:Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム アプリに通知を送信する](./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)」で作成したソリューションを開きます。
 
 #### <a name="azure-portal"></a>Azure portal
 
@@ -163,7 +164,7 @@ Visual Studio では、サーバー エクスプローラーから Azure に接�
 ![Visual Studio:送信をテストします。](./media/notification-hubs-push-notification-fixer/test-send-vs.png)
 
 > [!NOTE]
-> Visual Studio を使用した登録の編集は開発またはテスト中にのみ可能ですが、編集できる登録の数には制限があります。 登録を一括で修正する必要が生じた場合は、「[方法:登録の一括エクスポートと変更](https://msdn.microsoft.com/library/dn790624.aspx)」に説明されている、登録のエクスポートとインポート機能を使用することを検討してください。
+> Visual Studio を使用した登録の編集は開発またはテスト中にのみ可能ですが、編集できる登録の数には制限があります。 登録を一括で修正する必要が生じた場合は、「[方法:登録の一括エクスポートと変更](/previous-versions/azure/azure-services/dn790624(v=azure.100))」に説明されている、登録のエクスポートとインポート機能を使用することを検討してください。
 
 #### <a name="service-bus-explorer"></a>サービス バス Explorer
 
@@ -185,7 +186,7 @@ Visual Studio からテスト通知を送信することもできます。
 
 Visual Studio サーバー エクスプローラーでの Notification Hubs の使用に関する詳細については、次の記事をご覧ください。
 
-* [通知ハブのデバイス登録の表示方法](https://docs.microsoft.com/previous-versions/windows/apps/dn792122(v=win.10))
+* [通知ハブのデバイス登録の表示方法](/previous-versions/windows/apps/dn792122(v=win.10))
 * [詳細:Visual Studio 2013 Update 2 RC および Azure SDK 2.3]
 * [Visual Studio 2013 Update 3 および Azure SDK 2.4 のリリースの発表]
 
@@ -266,7 +267,7 @@ The Token obtained from the Token Provider is wrong
 
 #### <a name="programmatic-access"></a>プログラムによるアクセス
 
-プログラムによるアクセスの詳細については、「[プログラムによるアクセス](https://docs.microsoft.com/previous-versions/azure/azure-services/dn458823(v=azure.100))」をご覧ください。
+プログラムによるアクセスの詳細については、「[プログラムによるアクセス](/previous-versions/azure/azure-services/dn458823(v=azure.100))」をご覧ください。
 
 > [!NOTE]
 > 登録のエクスポートおよびインポートや、API を使用したテレメトリへのアクセスなど、テレメトリに関連する一部の機能は、Standard サービス レベルでのみ使用できます。 Free または Basic サービス レベルでこれらの機能を使用しようとすると、SDK を使用している場合は例外メッセージが表示されます。 REST API から直接これらの機能を使用している場合は、HTTP 403 (アクセス不可) エラーが表示されます。
@@ -288,13 +289,13 @@ The Token obtained from the Token Provider is wrong
 <!-- LINKS -->
 [Notification Hubs の概要]: notification-hubs-push-notification-overview.md
 [Azure Notification Hubs の使用]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
-[テンプレート]: https://msdn.microsoft.com/library/dn530748.aspx
+[テンプレート]: /previous-versions/azure/azure-services/dn530748(v=azure.100)
 [APNs の概要]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html
 [FCM メッセージについて]: https://firebase.google.com/docs/cloud-messaging/concept-options
-[Export and modify registrations in bulk]: https://msdn.microsoft.com/library/dn790624.aspx
+[Export and modify registrations in bulk]: /previous-versions/azure/azure-services/dn790624(v=azure.100)
 [Service Bus Explorer code]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Explorer-f2abca5a
-[View device registrations for notification hubs]: https://msdn.microsoft.com/library/windows/apps/xaml/dn792122.aspx
+[View device registrations for notification hubs]: /previous-versions/windows/apps/dn792122(v=win.10)
 [詳細:Visual Studio 2013 Update 2 RC および Azure SDK 2.3]: https://azure.microsoft.com/blog/2014/04/09/deep-dive-visual-studio-2013-update-2-rc-and-azure-sdk-2-3/#NotificationHubs
 [Visual Studio 2013 Update 3 および Azure SDK 2.4 のリリースの発表]: https://azure.microsoft.com/blog/2014/08/04/announcing-release-of-visual-studio-2013-update-3-and-azure-sdk-2-4/
-[EnableTestSend]: https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.enabletestsend?view=azure-dotnet
-[Programmatic telemetry access]: https://msdn.microsoft.com/library/azure/dn458823.aspx
+[EnableTestSend]: /dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.enabletestsend?view=azure-dotnet
+[Programmatic telemetry access]: /previous-versions/azure/azure-services/dn458823(v=azure.100)

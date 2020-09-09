@@ -1,19 +1,19 @@
 ---
 title: Logic Apps と Power Automate を使用した Video Indexer コネクタに関するチュートリアル。
 description: このチュートリアルでは、Logic Apps と Power Automate を使用して Video Indexer コネクタの新しいエクスペリエンスと収益化の可能性を開く方法について説明します。
-author: anikaz
+author: anzaman
 manager: johndeu
-ms.author: anzaman
+ms.author: alzam
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 05/01/2020
-ms.openlocfilehash: 932f52aa694c13fd3696d82872135304a4e41bdc
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 5f29e616c0643914ca28921eee481105a5feb0c5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801129"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047100"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>チュートリアル: Logic Apps および Power Automate と共に Video Indexer コネクタを使用する
 
@@ -64,7 +64,7 @@ Video Indexer コネクタの使用をすぐに開始できるように、設定
 
 ![パスを使用した SAS URI](./media/logic-apps-connector-tutorial/sas-uri-by-path.jpg)
 
-[自分のアカウントの場所と ID](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-use-apis#location) を入力して、Video Indexer のアカウント トークンを取得します。
+[自分のアカウントの場所と ID](./video-indexer-use-apis.md#account-id) を入力して、Video Indexer のアカウント トークンを取得します。
 
 ![アカウントのアクセス トークンを取得する](./media/logic-apps-connector-tutorial/account-access-token.png)
 
@@ -90,7 +90,7 @@ Video Indexer コネクタの使用をすぐに開始できるように、設定
 
 トリガーには、[HTTP POST の URL] フィールドが表示されます。 この URL はフローを保存するまで生成されませんが、最終的にこの URL が必要になります。 ここにはもう一度戻ってきます。 
 
-[自分のアカウントの場所と ID](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-use-apis#location) を入力して、Video Indexer のアカウント トークンを取得します。  
+[自分のアカウントの場所と ID](./video-indexer-use-apis.md#account-id) を入力して、Video Indexer のアカウント トークンを取得します。  
 
 [Get Video Index]\(ビデオ インデックスの取得\) アクションに移動し、必須パラメーターを入力します。 [ビデオ ID] には、次の式を入力します: triggerOutputs()['queries']['id'] 
 

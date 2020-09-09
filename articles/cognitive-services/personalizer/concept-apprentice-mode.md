@@ -3,12 +3,12 @@ title: 見習いモード - Personalizer
 description: ''
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 2697ab4b32edbd4841f2b11725fda46e90e7ae7e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 5ee8242fbc9ab5bed4e3eed8997feb122b131062
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599307"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087199"
 ---
 # <a name="use-apprentice-mode-to-train-personalizer-without-affecting-your-existing-application"></a>見習いモードを使用して、既存のアプリケーションに影響を与えずに Personalizer をトレーニングする
 
@@ -30,7 +30,7 @@ Personalizer が一定のレベルの理解を学習して獲得すると、開�
 
 見習いモードを使用する主な理由は、次の 2 つです。
 
-* **コールド スタート**の軽減: 見習いモードは、最良のアクションが返されず、75 - 85% 前後の十分なレベルの効果が得られない場合に、"新しい" モデルの学習時間を管理および評価するのに役立ちます。
+* **コールド スタート**の軽減: 見習いモードは、最良のアクションが返されず、60 - 80% 前後の十分なレベルの効果が得られない場合に、"新しい" モデルの学習時間を管理および評価するのに役立ちます。
 * **アクションとコンテキストの特徴の検証**: アクションとコンテキストで送信される特徴は、少なすぎる、多すぎる、正しくない、詳細すぎるなど、理想的な有効度を達成するために Personalizer をトレーニングするのに不適切または不正確である場合があります。 特徴に関する問題を見つけて修正するには、[特徴評価](concept-feature-evaluation.md)を使用します。
 
 ## <a name="when-should-you-use-apprentice-mode"></a>どのようなときに見習いモードを使用する必要があるか
@@ -68,7 +68,7 @@ Personalizer が一定のレベルの理解を学習して獲得すると、開�
 見習いモードの有効性に関する注意事項:
 
 * 見習いモードでの Personalizer の有効性は、アプリケーションのベースラインの 100% 近くを達成することはほとんどなく、それを超えることはありません。
-* ベスト プラクティスは、100% の達成を試みないようにすることです。ただし、ユース ケースによっては、75 から 85% の範囲を対象にする必要があります。
+* ベスト プラクティスは、100% の達成を試みないようにすることです。ただし、ユース ケースによっては、60 から 80% の範囲を対象にする必要があります。
 
 ## <a name="using-apprentice-mode-to-train-with-historical-data"></a>見習いモードを使用して履歴データでトレーニングを行う
 

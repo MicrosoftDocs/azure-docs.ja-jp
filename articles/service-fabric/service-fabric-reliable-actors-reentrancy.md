@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 46ce91e607341e2fbdc0b6a3018e74cb24e76839
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 75512633dae8d9a9f61c37bbc795d8e8d20c4ff1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75645533"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007810"
 ---
 # <a name="reliable-actors-reentrancy"></a>Reliable Actors の再入
 Reliable Actors ランタイムは、論理呼び出しコンテキスト ベースの再入を既定で許可します。 これにより、アクターは、同じ呼び出しコンテキストのチェーンにある場合は再入可能になります。 たとえば、アクター A がアクター C にメッセージを送信するアクター B にメッセージを送信するとします。メッセージ処理の一環として、アクター C がアクター A を呼び出した場合、メッセージは再入可能であるため、再入が許可されます。 処理が完了するまで、アクター A では別の呼び出しコンテキストの一部である他のメッセージがブロックされます。
@@ -102,4 +103,4 @@ static class Program
 
 
 ## <a name="next-steps"></a>次のステップ
-* [Actor API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)で再入についてさらに学習してください
+* [Actor API リファレンス ドキュメント](/previous-versions/azure/dn971626(v=azure.100))で再入についてさらに学習してください

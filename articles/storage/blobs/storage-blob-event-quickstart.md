@@ -3,17 +3,18 @@ title: Azure Blob Storage イベントを Web エンドポイントに送信す�
 description: Blob Storage のイベントをサブスクライブするには、Azure Event Grid を使用します。 Webhook にイベントを送信します。 Web アプリケーションでイベントを処理します。
 author: normesta
 ms.author: normesta
-ms.reviewer: cbrooks
+ms.reviewer: dineshm
 ms.date: 03/05/2020
 ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: ad5662a722db764d09c1ead528a98c09c1d3df7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: c670c011f911e9b27f1280800508124d32e696cb
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80745516"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489845"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>クイック スタート:Azure CLI を使用してストレージ イベントを Web エンドポイントにルーティングする
 

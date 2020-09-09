@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: steveesp
-ms.openlocfilehash: 00efc2754948d53d4f80a6261dbd4041b358185b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 77ea14097538f722569acb5a0371674776aac8e5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74896358"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84687805"
 ---
 # <a name="test-vm-network-latency"></a>VM ネットワークの待ち時間のテスト
 

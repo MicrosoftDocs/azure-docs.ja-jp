@@ -2,25 +2,21 @@
 title: チュートリアル:Juno Journey を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure AD から Juno Journey に対してユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除する方法を学習します。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: 79813b19-c96e-4459-a4e5-636a6b6f5041
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 41a6cc3a4fd604c4272783f528ed3d37372044fb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 96dd5c617eb643ce8db5058bca238f5c3a83e756
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647750"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546887"
 ---
 # <a name="tutorial-configure-juno-journey-for-automatic-user-provisioning"></a>チュートリアル:Juno Journey を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -40,7 +36,7 @@ ms.locfileid: "83647750"
 
 * [Azure AD テナント](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
 * プロビジョニングを構成するための[アクセス許可](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。 
-*  [Juno Journey テナント](https://www.junojourney.com/blank)。
+*  [Juno Journey テナント](https://www.junojourney.com/getstarted)。
 *  管理者アクセス許可がある Juno Journey のユーザー アカウント。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>手順 1. プロビジョニングのデプロイを計画する
@@ -151,7 +147,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 プロビジョニングを構成したら、次のリソースを使用してデプロイを監視します。
 
 * [プロビジョニング ログ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
-* [進行状況バー](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
+* [進行状況バー](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
 * プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース

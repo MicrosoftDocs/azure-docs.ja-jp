@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b73598da2b34847a38485db9952302f7c5b33c98
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d902258c80467380518df3b55583cea1efa76609
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82185032"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119312"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>チュートリアル:ARM テンプレートでの条件の使用
 
@@ -41,14 +41,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-* Visual Studio Code と Resource Manager ツール拡張機能。 [Visual Studio Code を使って ARM テンプレートを作成する方法](use-vs-code-to-create-template.md)に関するページを参照してください。
+* Visual Studio Code と Resource Manager ツール拡張機能。 「[クイック スタート:Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
 * セキュリティを向上させるには、生成されたパスワードを仮想マシンの管理者アカウントに対して使用します。 パスワードを生成するためのサンプルを次に示します。
 
     ```console
     openssl rand -base64 32
     ```
 
-    Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、「[チュートリアル:ARM テンプレートのデプロイで Azure Key Vault を統合する](./template-tutorial-use-key-vault.md)」を参照してください。 パスワードは 3 か月ごとに更新することをお勧めします。
+    Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、[ARM テンプレートのデプロイで Azure Key Vault を統合する](./template-tutorial-use-key-vault.md)」を参照してください。 パスワードは 3 か月ごとに更新することをお勧めします。
 
 ## <a name="open-a-quickstart-template"></a>クイック スタート テンプレートを開く
 
@@ -178,7 +178,7 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-Azure リソースが不要になったら、リソース グループを削除して、デプロイしたリソースをクリーンアップします。 リソース グループを削除するには、 **[Try it]/(試してみる/)** を選択し Cloud Shell を開きます。 PowerShell スクリプトを貼り付けるには、シェル ウィンドウを右クリックし、 **[貼り付け]** を選択します。
+Azure リソースが不要になったら、リソース グループを削除して、デプロイしたリソースをクリーンアップします。 リソース グループを削除するには、 **[Try it]\(使ってみる\)** を選択し Cloud Shell を開きます。 PowerShell スクリプトを貼り付けるには、シェル ウィンドウを右クリックし、 **[貼り付け]** を選択します。
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name you used in the last procedure"

@@ -1,6 +1,6 @@
 ---
 title: Azure Data Box Disk を開梱、接続、ロック解除するチュートリアル | Microsoft Docs
-description: このチュートリアルでは、Azure Data Box Disk を設定する方法について説明します。
+description: このチュートリアルでは、Azure Data Box Disk の開梱、ディスクへの接続、パスキーの取得、Windows クライアントと Linux クライアントにおけるディスクのロック解除の方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 1fbd99e8233b068efda4d0fb87e87788f49835cf
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 570653d620c5e314db9e6a0bc56d731f8acf9296
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79214362"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925653"
 ---
 ::: zone target="docs"
 

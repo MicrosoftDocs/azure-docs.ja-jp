@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 05/29/2019
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a237ad35d9d5d8abee784926563d972d0ee95f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9971eb554825a968f8cfa72d6a0cf78d7c0bcb76
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78672648"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025882"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>プライマリ更新トークンとは
 
@@ -65,7 +65,7 @@ PRT は Windows 10 デバイス上でのユーザー認証中に発行され、2
 Azure AD 登録済みデバイスのシナリオでは、この Azure AD アカウントで Windows ログオンは発生しないため、Azure AD WAM プラグインが PRT のプライマリ機関です。
 
 > [!NOTE]
-> サード パーティの ID プロバイダーは、Windows 10 デバイスで PRT 発行を有効にするために、WS-Trust プロトコルをサポートする必要があります。 WS-Trust がサポートされていない場合、Hybrid Azure AD 参加済みデバイスまたは Azure AD 参加済みデバイスでユーザーに PRT を発行することはできません。
+> サード パーティの ID プロバイダーは、Windows 10 デバイスで PRT 発行を有効にするために、WS-Trust プロトコルをサポートする必要があります。 WS-Trust がない場合、Hybrid Azure AD 参加済みまたは Azure AD 参加済みデバイスでユーザーに PRT を発行することはできません。 ADFS では、usernamemixed エンドポイントのみが必要です。 adfs/services/trust/2005/windowstransport と adfs/services/trust/13/windowstransport はどちらも、イントラネットに接続するエンドポイントとしてのみ有効にする必要があります。Web アプリケーション プロキシを介してエクストラネットに接続するエンドポイントとしては**公開しないでください**。
 
 ## <a name="what-is-the-lifetime-of-a-prt"></a>PRT の有効期間はどれくらいですか?
 
@@ -76,7 +76,7 @@ Azure AD 登録済みデバイスのシナリオでは、この Azure AD アカ�
 Windows で、PRT は 2 つの主要コンポーネントによって使用されます。
 
 * **Azure AD CloudAP プラグイン**: Windows サインイン中に、Azure AD CloudAP プラグインが、ユーザーから提供された資格情報を使用して Azure AD から PRT を要求します。 また、PRT をキャッシュして、ユーザーがインターネット接続にアクセスできないときのキャッシュ サインインを有効にします。
-* **Azure AD WAM プラグイン**: ユーザーがアプリケーションにアクセスしようとすると、Azure AD WAM プラグインが PRT を使用して Windows 10 で SSO を有効にします。 Azure AD WAM プラグインは PRT を使用して、トークン要求を WAM に依存するアプリケーションについて更新トークンとアクセス トークンを要求します。 また、ブラウザーの要求に PRT を挿入して、ブラウザー上で SSO を有効にします。 Windows 10 でのブラウザー SSO は、Microsoft Edge (ネイティブ) および Chrome (Windows 10 アカウントまたは Office Online 拡張機能を経由) でサポートされています。
+* **Azure AD WAM プラグイン**: ユーザーがアプリケーションにアクセスしようとすると、Azure AD WAM プラグインが PRT を使用して Windows 10 で SSO を有効にします。 Azure AD WAM プラグインは PRT を使用して、トークン要求を WAM に依存するアプリケーションについて更新トークンとアクセス トークンを要求します。 また、ブラウザーの要求に PRT を挿入して、ブラウザー上で SSO を有効にします。 Windows 10 でのブラウザー SSO は、Microsoft Edge (ネイティブ) および Chrome ([Windows 10 アカウント](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji?hl=en)または [Office Online](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb?hl=en) 拡張機能を経由) でサポートされています。
 
 ## <a name="how-is-a-prt-renewed"></a>PRT はどのように更新されますか?
 
@@ -167,6 +167,9 @@ Windows 10 では、PRT のパーティション分割されたリストを資�
 | E | CloudAP プラグインは、ユーザーの資格情報、nonce、および既存の PRT を使用して認証要求を構築し、セッション キーを使用して要求に署名し、それを Azure AD に送信します。 フェデレーション環境では、CloudAP プラグインはユーザーの資格情報の代わりに、フェデレーション プロバイダーから返された SAML トークンを使用します。 |
 | F | Azure AD は、PRT に埋め込まれたセッション キーと比較することによってセッション キーの署名を検証し、nonce を検証し、デバイスがテナント内で有効であることを確認し、新しい PRT を発行します。 前述のように、PRT はやはり、トランスポート キー (tkpub) によって暗号化されたセッション キーを伴います。 |
 | G | CloudAP プラグインは、暗号化された PRT とセッション キーを CloudAP に渡します。 トランスポート キー (tkpriv) を使用してセッション キーを復号化し、TPM 自身のキーを使用してそれを再暗号化するよう、CloudAP が TPM に要求します。 CloudAP は、暗号化されたセッション キーをそのキャッシュに PRT と共に保存します。 |
+
+> [!NOTE]
+> usernamemixed エンドポイントが外部で有効になっている場合、VPN 接続を必要とせずに、PRT を外部で更新できます。
 
 ### <a name="prt-usage-during-app-token-requests"></a>アプリ トークン要求中の PRT 使用状況
 

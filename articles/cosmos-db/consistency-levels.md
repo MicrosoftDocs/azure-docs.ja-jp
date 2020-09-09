@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: e5966f142ece32f148c56edb5b0ef5dfd88603aa
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 5ba3fc70a2ccfbe342e222dbb475658629ec60a4
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81380074"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851699"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB の整合性レベル
 
@@ -21,7 +21,7 @@ Azure Cosmos DB では、2 つの両極端ではなく、幅広い選択肢を�
 
 Azure Cosmos DB では、開発者は、整合性の程度に応じて明確に定義された 5 種類の整合性レベルから選択することができます。 これらの整合性レベルは、*強固*、*有界整合性制約*、*セッション*、*一貫性のあるプレフィックス*、および*最終的*です。 これらのレベルは適切に定義されていて直感的であり、具体的な実際のシナリオに使用することができます。 どのレベルにも[可用性とパフォーマンスのトレードオフ](consistency-levels-tradeoffs.md)があり、SLA によって支えられています。 次の図では、さまざまな整合性レベルの範囲内での位置づけを示します。
 
-![範囲としての整合性](./media/consistency-levels/five-consistency-levels.png)
+:::image type="content" source="./media/consistency-levels/five-consistency-levels.png" alt-text="範囲としての整合性" border="false" :::
 
 読み取りと書き込みが行われるリージョン、Azure Cosmos アカウントに関連付けられているリージョン数、またはアカウントの構成に使用されている書き込みリージョンが 1 つか複数かには関係なく、Azure Cosmos アカウントの整合性レベルはリージョンに依存せず、すべての操作で保証されています。
 
@@ -31,7 +31,7 @@ Azure Cosmos DB では、開発者は、整合性の程度に応じて明確に�
 
 ## <a name="configure-the-default-consistency-level"></a>既定の整合性レベルを構成する
 
-Azure Cosmos アカウントの既定の整合性レベルはいつでも構成できます。 自分のアカウントに構成されている既定の整合性レベルは、そのアカウントのすべての Azure Cosmos データベースおよびコンテナーに適用されます。 コンテナーまたはデータベースに対して発行されるすべての読み取りとクエリでは、指定された整合性レベルが既定で使用されます。 詳しくは、[既定の整合性レベルを構成する](how-to-manage-consistency.md#configure-the-default-consistency-level)方法についての記事をご覧ください。
+Azure Cosmos アカウントの既定の整合性レベルはいつでも構成できます。 自分のアカウントに構成されている既定の整合性レベルは、そのアカウントのすべての Azure Cosmos データベースおよびコンテナーに適用されます。 コンテナーまたはデータベースに対して発行されるすべての読み取りとクエリでは、指定された整合性レベルが既定で使用されます。 詳しくは、[既定の整合性レベルを構成する](how-to-manage-consistency.md#configure-the-default-consistency-level)方法についての記事をご覧ください。 また、特定の要求に対して既定の整合性レベルをオーバーライドすることもできます。詳細については、「[既定の整合性レベルをオーバーライドする](how-to-manage-consistency.md?#override-the-default-consistency-level)」を参照してください。
 
 ## <a name="guarantees-associated-with-consistency-levels"></a>整合性レベルに関連付けられた保証
 
@@ -43,9 +43,9 @@ Azure Cosmos DB によって提供される包括的 SLA では、読み取り�
 
   次のグラフィックでは、音符の厳密な一貫性を図解しています。 データが "米国西部 2" リージョンに書き込まれると、他のリージョンからデータを読み取るとき、最新の値が取得されます。
 
-  ![video](media/consistency-levels/strong-consistency.gif)
+  :::image type="content" source="media/consistency-levels/strong-consistency.gif" alt-text="video":::
 
-- **有界整合性制約**:読み取りでは、整合性のあるプレフィックスの優先が保証されます。 読み取りが書き込みよりも遅れますが、最大でアイテムの *"K"* 個のバージョン (更新) の分、あるいは期間 *"T"* の分だけです。 つまり、有界整合性制約を選択する場合、"整合性制約" は 2 つの方法で構成できます。
+- **有界整合性制約**:読み取りでは、整合性のあるプレフィックスの優先が保証されます。 読み取りは、最大でアイテムの *"K"* 個のバージョン (更新)、あるいは期間 *"T"* のどちらか早く達した方の分だけ書き込みよりも遅れる場合があります。 つまり、有界整合性制約を選択する場合、"整合性制約" は 2 つの方法で構成できます。
 
 - アイテムのバージョンの数 (*K*)
 - 書き込みに対して読み取りが遅れる期間 (*T*)
@@ -61,7 +61,7 @@ Azure Cosmos DB によって提供される包括的 SLA では、読み取り�
 
   世界中に分散されているアプリケーションで、書き込み時の待ち時間が短く、全体のグローバルな順序保証が求められるとき、有界整合性制約が頻繁に選ばれています。 有界整合性制約は、グループの共同作業と共有、株式相場表示器、発行とサブスクライブまたはキューなどを特徴とするアプリケーションに最適です。次のグラフィックでは、音符の有界整合性制約整合性を図解しています。 データが "米国西部 2" リージョンに書き込まれた後、"米国東部 2" リージョンと "オーストラリア東部" リージョンでは、構成された最大遅延時間または最大操作に基づき、書き込まれた値を読み取ります。
 
-  ![video](media/consistency-levels/bounded-staleness-consistency.gif)
+  :::image type="content" source="media/consistency-levels/bounded-staleness-consistency.gif" alt-text="video":::
 
 - **セッション**:単一のクライアント セッション内の読み取りでは、整合性のあるプレフィックス、単調読み取り、単調書き込み、自己書き込みの読み取り、読み取り後の書き込みの優先が保証されます。 これは、単一の「ライター」セッションを使用するか、複数のライターのセッション トークンを共有することを前提としています。
 
@@ -74,11 +74,11 @@ Azure Cosmos DB によって提供される包括的 SLA では、読み取り�
 
   セッション整合性は、1 つのリージョンのアプリケーションと世界中に分散されたアプリケーションの両方で最も広く使用されている整合性レベルです。 書き込みの待機時間、可用性、読み取りスループットは最終的整合性レベルと同等ですが、ユーザーのコンテキスト内で動作するよう作成されたアプリケーションのニーズに適した整合性保証が提供されます。 次のグラフィックでは、音符のセッション整合性を図解しています。 「米国西部 2 ライター」と「米国東部 2 リーダー」は同じセッション (セッション A) を使用しているため、どちらも同時に同じデータを読み取ります。 一方、"オーストラリア東部" リージョンでは "セッション B" が使用されているため、後でデータを受け取るとき、書き込みと同じ順序になります。
 
-  ![video](media/consistency-levels/session-consistency.gif)
+  :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="video":::
 
 - **整合性のあるプレフィックス**:返される更新には、それ以外の全更新の一部のプレフィックスが含まれます (ギャップなし)。 整合性のあるプレフィックスの整合性レベルでは、読み取りの際、書き込みを順序どおりに参照することが保証されます。
 
-書き込みが `A, B, C` の順で実行された場合、クライアントでは `A`、`A,B`、または `A,B,C` が確認されますが、`A,C` または `B,A,C` などの順不同が確認されることはありません。 整合性のあるプレフィックスでは、書き込み待機時間、可用性、読み取りスループットは最終的整合性と同等ですが、順序が重要となるシナリオのニーズに合わせて順序も保証されます。 
+書き込みが `A, B, C` の順で実行された場合、クライアントでは `A`、`A,B`、または `A,B,C` が確認されますが、`A,C` または `B,A,C` などの順不同の順列が確認されることはありません。 整合性のあるプレフィックスでは、書き込み待機時間、可用性、読み取りスループットは最終的整合性と同等ですが、順序が重要となるシナリオのニーズに合わせて順序も保証されます。 
 
 一貫性のあるプレフィックスの整合性の保証は次のとおりです。
 
@@ -89,12 +89,12 @@ Azure Cosmos DB によって提供される包括的 SLA では、読み取り�
 
 次のグラフィックでは、音符の整合性のあるプレフィックスの整合性を図解しています。 すべてのリージョンで、読み取りで順序が乱れた書き込みに遭遇することはありません。
 
-  ![video](media/consistency-levels/consistent-prefix.gif)
+  :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="video":::
 
 - **Eventual**:読み取りの順序の保証はありません。 さらに書き込みがない場合、レプリカが最終的に収束します。  
 クライアントが以前に読み取ったものより古い値を読み取ることがあるため、最終的整合性は最も弱い形態の整合性です。 最終的整合性は、順序保証がアプリケーションで要求されないときに最適です。 たとえば、リツイート、いいね、スレッド化されていないコメントなどです。 次のグラフィックでは、音符の最終的整合性を図解しています。
 
-  ![video](media/consistency-levels/eventual-consistency.gif)
+  :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="video":::
 
 ## <a name="additional-reading"></a>その他の情報
 

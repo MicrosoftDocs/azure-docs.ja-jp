@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: f3220a363025d80fd7636dbfc3af3d2d9d7bc040
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73b6029dfe52a4b32c9a8ce092fcd284ac1ec0e7
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77658286"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965047"
 ---
 # <a name="workbook-drop-down-parameters"></a>ブックのドロップダウン パラメーター
 
@@ -48,7 +48,9 @@ ms.locfileid: "77658286"
     ![静的なドロップダウンの作成を示す画像](./media/workbook-dropdowns/dropdown-create.png)
 
 ## <a name="creating-a-static-dropdown-with-groups-of-items"></a>項目のグループを使用した静的ドロップダウンの作成
+
 クエリ結果または JSON に "group" フィールドが含まれている場合は、ドロップダウンに値のグループが表示されます。 上記のサンプルに従ったうえで、代わりに次の JSON を使用します。
+
 ```json
 [
     { "value":"dev", "label":"Development", "group":"Development" },
@@ -59,7 +61,8 @@ ms.locfileid: "77658286"
     { "value":"prod2", "label":"Prod 2", "group":"Production" }
 ]
 ```
-    ![Image showing an example of a grouped dropdown](./media/workbook-dropdowns/grouped-dropDown.png)
+
+![グループ化されたドロップダウンの例を示す画像](./media/workbook-dropdowns/grouped-dropDown.png)
 
 
 ## <a name="creating-a-dynamic-drop-down-parameter"></a>動的ドロップダウン パラメーターの作成
@@ -86,6 +89,7 @@ ms.locfileid: "77658286"
     ![動的なドロップダウンの作成を示す画像](./media/workbook-dropdowns/dropdown-dynamic.png)
 
 ## <a name="referencing-drop-down-parameter"></a>ドロップダウン パラメーターの参照
+
 ### <a name="in-kql"></a>KQL 内
 1. クエリ コントロールをブックに追加し、Application Insights リソースを選択します。
 2. KQL エディターで、このスニペットを入力します
@@ -122,7 +126,8 @@ dependencies
 | serialize Rank = row_number()
 | project value = name, label = strcat('🌐 ', name), selected = iff(Rank == 1, true, false), group = operation_Name
 ```
-    ![Image showing a drop-down parameter using value, label, selection and group options](./media/workbook-dropdowns/dropdown-more-options.png)
+
+![値、ラベル、選択、グループのオプションが使用されているドロップダウン パラメーターを示す画像](./media/workbook-dropdowns/dropdown-more-options.png)
 
 
 ## <a name="drop-down-parameter-options"></a>ドロップダウン パラメーターのオプション

@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: caa6a26b-b7ba-4a05-b092-1a79450225cf
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 2dbbe6bcd4957a108cc3eae4d41816b130cf8f07
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 734dc55cbcd9c7b5eaf6455d63bcb773b7d85367
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633864"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513991"
 ---
 # <a name="use-storsimple-device-manager-service-to-manage-volumes-on-the-storsimple-virtual-array"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple Virtual Array でボリュームを管理する
 

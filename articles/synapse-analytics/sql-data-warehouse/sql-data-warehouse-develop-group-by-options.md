@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5d8d4c6d47e33ca365415542c2da9779b4d7d1dd
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 260bd7cc6402a7cb4ed17d004d0f61b7462c51d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81416196"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213450"
 ---
 # <a name="group-by-options-in-synapse-sql-pool"></a>Synapse SQL プールの GROUP BY オプション
 

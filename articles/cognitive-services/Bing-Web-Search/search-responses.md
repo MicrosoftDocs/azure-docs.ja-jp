@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 95ebfaef863a1fa05e8a5d3b46fca9659c61f6b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 284f8c8432d732fdfa7e16b43a47578437bcf0ba
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74110617"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202246"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Web Search API の応答の構造と答えの種類  
 
@@ -224,7 +224,7 @@ news 回答と newsarticle について詳しくは、[News Search API](../bing-
 
 単位変換クエリとは、ある単位を別の単位に変換するクエリをいいます。 たとえば、"*How many feet in 10 meters? (10 メートルは何フィート?)* " や "*How many tablespoons in a 1/4 cup? (1/4 カップは大さじ何杯?)* " といったクエリが考えられます。
 
-次に示したのは、"*How many feet in 10 meters? (10 メートルは何フィート?)*" に対する `computation` 回答です。
+次に示したのは、"*How many feet in 10 meters? (10 メートルは何フィート?)* " に対する `computation` 回答です。
 
 ```json
 "computation": {
@@ -300,7 +300,7 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 |!|階乗|
 |。|Decimal|
 |()|優先順位のグループ化|
-|[]|Function|
+|[]|機能|
 
 数式には、次の定数を含めることができます。
 
@@ -435,7 +435,7 @@ Query: What time is it in the U.S.
 
 Bing Web Search API からの応答には、以下のヘッダーが含まれることがあります。
 
-|||
+| ヘッダー | 説明 |
 |-|-|
 |`X-MSEdge-ClientID`|Bing がユーザーに割り当てた一意の ID|
 |`BingAPIs-Market`|要求を満たすために使用された市場|
@@ -449,15 +449,18 @@ Bing Web Search API からの応答には、以下のヘッダーが含まれる
 
 CORS プロキシをインストールして[チュートリアル アプリ](tutorial-bing-web-search-single-page-app.md)が省略可能なクライアント ヘッダーにアクセスできるようにするのは簡単です。 まず、[Node.js をインストールします](https://nodejs.org/en/download/) (まだインストールしていない場合)。 その後、コマンド プロンプトで次のコマンドを入力します。
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
 次に、HTML ファイル内の Bing Web Search API エンドポイントを次のように変更します。
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 最後に、次のコマンドを使用して、CORS プロキシを開始します。
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 チュートリアル アプリを使用している間はコマンド ウィンドウを開いたままにしておいてください。ウィンドウを閉じるとプロキシが停止します。 検索結果の下の展開可能な HTTP ヘッダー セクションに、`X-MSEdge-ClientID` ヘッダー (など) が表示され、各要求で同じであることを確認できます。
 
@@ -477,6 +480,6 @@ Bing による修正候補の例を次に示します。
 
 * [要求のスロットル](throttling-requests.md)に関するドキュメントをご覧ください。  
 
-## <a name="see-also"></a>参照  
+## <a name="see-also"></a>関連項目  
 
 * [Bing Web Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)

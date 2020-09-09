@@ -9,12 +9,12 @@ ms.subservice: powershell
 ms.date: 11/08/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 999a869ec30316a330413f309e1e7431d92fac9f
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: e783f7f0a9be413679e509e4d6124d50bb811821
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195925"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059280"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用した仮想マシン スケール セットへのアプリケーションのインストール
 
@@ -35,7 +35,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="what-is-the-azure-custom-script-extension"></a>Azure カスタム スクリプト拡張機能とは
 カスタム スクリプト拡張機能は、Azure VM でスクリプトをダウンロードし、実行します。 この拡張機能は、デプロイ後の構成、ソフトウェアのインストール、その他の構成や管理タスクに役立ちます。 スクリプトは、Azure ストレージや GitHub からダウンロードできます。また、拡張機能の実行時に Azure Portal に提供することもできます。
 
-カスタム スクリプト拡張機能は Azure Resource Manager テンプレートと統合します。 Azure CLI、Azure PowerShell、Azure portal、REST API と組み合わせて使用することもできます。 詳細については、「[Windows のカスタム スクリプト拡張機能](../virtual-machines/windows/extensions-customscript.md)」を参照してください。
+カスタム スクリプト拡張機能は Azure Resource Manager テンプレートと統合します。 Azure CLI、Azure PowerShell、Azure portal、REST API と組み合わせて使用することもできます。 詳細については、「[Windows のカスタム スクリプト拡張機能](../virtual-machines/extensions/custom-script-windows.md)」を参照してください。
 
 カスタム スクリプト拡張機能が動作していることを確認するには、IIS Web サーバーをインストールしてスケール セット VM インスタンスのホスト名を出力する機能を備えたスケール セットを作成します。 カスタム スクリプト拡張機能の定義によって、GitHub からサンプル スクリプトがダウンロードされ、必要なパッケージがインストールされた後、VM インスタンスのホスト名が基本的な HTML ページに書き込まれます。
 

@@ -4,14 +4,14 @@ description: この記事では、Azure Stream Analytics で、参照データ�
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2018
-ms.openlocfilehash: 94fdddf11acb6763ed98a4b7e17304fbde0e25dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 215835bf7f1e6676adba6541da70dcb86fc3500c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75369713"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039043"
 ---
 # <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Azure Stream Analytics での、設定可能なしきい値に基づいたルールの処理
 この記事では、Azure Stream Analytics で、参照データを使用して、設定可能なしきい値に基づいたルールを含むアラート ソリューションを実現する方法について説明します。

@@ -4,14 +4,14 @@ description: この記事では、Azure portal を使用して Azure Database fo
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: ed95304807a1a03880cc824c1a58f010203d418d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 369d19d98946f8309c7f2053f4453e09a7ed902f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79534713"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121063"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-azure-portal"></a>Azure portal を使用した Azure Database for MariaDB サーバーの再起動
 このトピックでは、Azure Database for MariaDB サーバーを再起動する方法について説明します。 メンテナンス上の理由でサーバーの再起動が必要な場合があります。これを行うと、サーバーが操作を実行しているときに短時間の停止が発生します。

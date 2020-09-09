@@ -1,20 +1,20 @@
 ---
-title: パートナー センターで商業マーケットプレース ポータルのサポートを受ける
+title: パートナー センターでコマーシャル マーケットプレース ポータルのサポートを受ける
 description: パートナー センターでのサポート リクエストの提出方法など、サポート オプションについて学習します。
-author: qianw211
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 03/07/2020
-ms.openlocfilehash: fd7582877a74aa998de3a6d0a0f38e56c3c3af91
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 01c93c046a78db70a237ddf1d4514938fd4e40ac
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81733114"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109095"
 ---
-# <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>パートナー センターでの商業マーケットプレース プログラムのサポート
+# <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>パートナー センターでのコマーシャル マーケットプレース プログラムのサポート
 
 マイクロソフトでは、さまざまな製品やサービスについてサポートを提供します。 適切でタイムリーな回答を得るには、正しいサポート チームを見つけることが重要です。 次のシナリオを検討して、お問い合わせを適切なチームに送るのに役立ててください。 
 
@@ -40,7 +40,7 @@ ms.locfileid: "81733114"
 
 5. 他の Microsoft の発行元の知識を活用して質問に対する回答を見つけるには、 **[[Marketplace パートナー コミュニティ フォーラム]](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** を選択します。 
 
-6. **新しいサポート リクエスト** チケットを開くには、 **[[追加のヘルプ]](https://partner.microsoft.com/support/v2/?stage=1)** を選択します。  
+6. **新しいサポート リクエスト** チケットを開くには、 **[[追加のヘルプ]](https://aka.ms/marketplacepublishersupport)** を選択します。  
 
 ## <a name="how-to-open-a-support-ticket"></a>サポート チケットを開く方法
 

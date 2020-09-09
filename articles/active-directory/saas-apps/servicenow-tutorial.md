@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と ServiceNow の統合 | Microsoft Docs
 description: Azure Active Directory と ServiceNow の間のシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: a5a1a264-7497-47e7-b129-a1b5b1ebff5b
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/25/2020
+ms.date: 06/19/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fe6c857e5b0c2f48f27c167c177dbf1f4651986
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 9748c772466db73fc49b1291ffe2ce7d13da1d8c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384111"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540218"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ServiceNow の統合
 
@@ -43,6 +39,9 @@ ms.locfileid: "80384111"
 * ServiceNow のテナントで [Multiple Provider Single Sign On プラグイン](https://wiki.servicenow.com/index.php?title=Multiple_Provider_Single_Sign-On#gsc.tab=0)が有効になっている必要があります。 これを行うには、[サービス要求を送信してください](https://hi.service-now.com)。
 * 自動構成のために、ServiceNow の Multi-Provider プラグインを有効にします。
 * ServiceNow Classic (モバイル) アプリケーションをインストールするには、適切なストアに移動して ServiceNow Classic アプリケーションを検索します。 その後、ダウンロードします。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -101,8 +100,8 @@ ServiceNow で Azure AD SSO を構成してテストするには、次の構成�
 
     c. **[応答 URL]** に、次のいずれかの URL を入力します。
 
-    |||
-    |-|-|
+    | [応答 URL]|
+    |----------|
     | `https://instancename.service-now.com/navpage.do` |
     | `https://instancename.service-now.com/customer.do` | 
 
@@ -173,8 +172,8 @@ ServiceNow で Azure AD SSO を構成してテストするには、次の構成�
 
     c. **[応答 URL]** に、次のいずれかの URL を入力します。
 
-    |||
-    |-|-|
+    | [応答 URL] |
+    |-----------|
     | `https://instancename.service-now.com/navpage.do` |
     | `https://instancename.service-now.com/customer.do` |
 

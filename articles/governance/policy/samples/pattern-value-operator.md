@@ -1,14 +1,14 @@
 ---
 title: パターン:ポリシー定義の value 演算子
 description: この Azure Policy パターンでは、ポリシー定義内で value 演算子を使用する方法の例を示します。
-ms.date: 01/31/2020
+ms.date: 06/29/2020
 ms.topic: sample
-ms.openlocfilehash: ace7b7cd4a765cdb8c7aa764b52b180c60508ab2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e246e3a5e2517fa80626081227070bcb2f967784
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77170150"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "85565666"
 ---
 # <a name="azure-policy-pattern-the-value-operator"></a>Azure Policy pattern: value 演算子
 

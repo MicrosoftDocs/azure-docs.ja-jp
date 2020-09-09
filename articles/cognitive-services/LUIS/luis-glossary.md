@@ -3,12 +3,12 @@ title: 用語集 - LUIS
 description: 用語集では、LUIS API サービスの使用中に目にする可能性のある用語について説明します。
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: eb823e65acc55dd9d739b31e506ad27f6af9095a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 44749648559994d986e4d84b06f38369850de6ca
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589671"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836413"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>一般的な用語や概念に関する Language Understanding の用語集
 Language Understanding (LUIS) 用語集では、LUIS サービスの使用中に目にする可能性のある用語について説明します。
@@ -38,11 +38,11 @@ HR ボットを構築している場合は、"休暇の予定を立てる"、"�
 
 ### <a name="authoring-key"></a>オーサリング キー
 
-[オーサリング キー](luis-concept-keys.md)はアプリの作成に使用されます。 運用レベルのエンドポイント クエリでは使用されません。 詳細については、「[キーの制限](luis-limits.md#key-limits)」を参照してください。
+[オーサリング キー](luis-how-to-azure-subscription.md)はアプリの作成に使用されます。 運用レベルのエンドポイント クエリでは使用されません。 詳細については、「[キーの制限](luis-limits.md#key-limits)」を参照してください。
 
 ### <a name="authoring-resource"></a>作成リソース
 
-LUIS の[作成リソース](luis-concept-keys.md#azure-resources-for-luis)は、Azure を通じて利用できる管理可能な項目です。 リソースは、Azure サービスの関連する作成、トレーニング、および公開機能に対するアクセスです。 リソースには、関連する Azure サービスにアクセスするために必要な認証、承認、セキュリティ情報が含まれています。
+LUIS の[作成リソース](luis-how-to-azure-subscription.md#azure-resources-for-luis)は、Azure を通じて利用できる管理可能な項目です。 リソースは、Azure サービスの関連する作成、トレーニング、および公開機能に対するアクセスです。 リソースには、関連する Azure サービスにアクセスするために必要な認証、承認、セキュリティ情報が含まれています。
 
 作成 リソースには、`LUIS-Authoring` という Azure の "種類" があります。
 
@@ -94,11 +94,11 @@ LUIS の[作成リソース](luis-concept-keys.md#azure-resources-for-luis)は�
 
 ## <a name="collaborator"></a>コラボレーター
 
-コラボレーターは、概念的には[共同作成者](#contributor)と同じです。 所有者がロールベースのアクセス (RBAC) で制御されていないアプリにコラボレーターのメール アドレスを追加すると、コラボレーターにアクセスが許可されます。 引き続きコラボレーターを使用している場合は、LUIS アカウントを移行し、LUIS 作成リソースを使用して RBAC で共同作成者を管理する必要があります。
+コラボレーターは、概念的には[共同作成者](#contributor)と同じです。 所有者が Azure ロールベースのアクセス制御 (Azure RBAC) で制御されていないアプリにコラボレーターのメール アドレスを追加すると、コラボレーターにアクセスが許可されます。 引き続きコラボレーターを使用している場合は、LUIS アカウントを移行し、LUIS 作成リソースを使用して RBAC で共同作成者を管理する必要があります。
 
 ## <a name="contributor"></a>Contributor
 
-共同作成者はアプリの[所有者](#owner)ではありませんが、意図を追加、編集、および削除するための同様のアクセス許可を持っています。 共同作成者は、LUIS アプリへのロールベースのアクセス (RBAC) を提供します。
+共同作成者はアプリの[所有者](#owner)ではありませんが、意図を追加、編集、および削除するための同様のアクセス許可を持っています。 共同作成者は、LUIS アプリへの Azure ロールベースのアクセス制御 (Azure RBAC) を提供します。
 
 関連項目:
 * 共同作成者の追加[方法](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource)
@@ -141,7 +141,7 @@ LUIS 予測エンドポイント URL は、[LUIS アプリ](#application-app)が
 
 サブエンティティは、機械学習エンティティの子エンティティです。
 
-### <a name="non-machine-learned-entity"></a>機械学習されていないエンティティ
+### <a name="non-machine-learning-entity"></a>非機械学習エンティティ
 
 テキストのマッチングを使用してデータを抽出するエンティティ:
 * リスト エンティティ
@@ -200,6 +200,10 @@ LUIS では、エンティティを含む意図の例の発話に含まれる単
 
 [リスト](#list-entity) エンティティに値を追加します。 これらの各値には、1 つ以上のシノニムのリストを含めることができます。 応答では、正規化された値のみが返されます。
 
+## <a name="overfitting"></a>オーバーフィット
+
+オーバーフィットは、モデルが特定の例に固定されていて、適切に一般化できない場合に発生します。
+
 ## <a name="owner"></a>所有者
 
 各アプリに、そのアプリを作成した所有者が 1 人います。 所有者は、Azure portal でアプリケーションへのアクセス許可を管理します。
@@ -230,7 +234,7 @@ LUIS では、エンティティを含む意図の例の発話に含まれる単
 
 ### <a name="prediction-key"></a>予測キー
 
-[予測キー](luis-concept-keys.md) (旧称はサブスクリプション キー) は、予測エンドポイントの使用を承認する、Azure で作成した LUIS サービスに関連付けられたキーです。
+[予測キー](luis-how-to-azure-subscription.md) (旧称はサブスクリプション キー) は、予測エンドポイントの使用を承認する、Azure で作成した LUIS サービスに関連付けられたキーです。
 
 このキーはオーサリング キーではありません。 予測エンドポイント キーがある場合は、それをオーサリング キーの代わりに、すべてのエンドポイント要求に対して使用してください。 現在の予測キーは、LUIS Web サイトの Azure リソース ページの下部にあるエンドポイント URL 内に表示されます。 これは、subscription-key の名前/値ペアの値です。
 
@@ -260,7 +264,7 @@ LUIS クォータとは、Azure サブスクリプション レベルの制限�
 
 ## <a name="schema"></a>スキーマ
 
-スキーマには、意図とエンティティがサブエンティティと共に含まれています。 スキーマは最初に計画され、その後、長期にわたって反復処理されます。 スキーマには、アプリの設定、特徴、発話の例は含まれていません。 
+スキーマには、意図とエンティティがサブエンティティと共に含まれています。 スキーマは最初に計画され、その後、長期にわたって反復処理されます。 スキーマには、アプリの設定、特徴、発話の例は含まれていません。
 
 ## <a name="sentiment-analysis"></a>感情分析
 感情分析では、[Text Analytics](../text-analytics/overview.md) によって得られる発話の正または負の値が提供されます。

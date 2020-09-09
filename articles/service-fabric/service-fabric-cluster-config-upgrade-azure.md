@@ -5,19 +5,19 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: c2973428354f101b5b546128b08bf67587923a8e
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 010f2b5d6dee3a5985c421e468bcd28b18148e5a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793076"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247729"
 ---
 # <a name="upgrade-the-configuration-of-a-cluster-in-azure"></a>Azure でクラスターの構成をアップグレードする 
 
 この記事では、Service Fabric クラスターのさまざまなファブリックの設定をカスタマイズする方法について説明します。 Azure でホストされているクラスターの場合、[Azure portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使って設定をカスタマイズできます。
 
 > [!NOTE]
-> すべての設定をポータルで使用できるとは限りません。[ベスト プラクティスは、Azure Resource Manager テンプレートを使用して設定をカスタマイズすること](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)です。ポータルは Service Fabric の開発とテストのシナリオ専用です。
+> すべての設定をポータルで使用できるとは限りません。[ベスト プラクティスは、Azure Resource Manager テンプレートを使用して設定をカスタマイズすること](./service-fabric-best-practices-infrastructure-as-code.md)です。ポータルは Service Fabric の開発とテストのシナリオ専用です。
 > 
 
 
@@ -27,7 +27,7 @@ ms.locfileid: "82793076"
 Azure クラスターは、JSON の Resource Manager テンプレートを使って構成できます。 さまざまな設定の詳細については、[クラスターの構成設定](service-fabric-cluster-fabric-settings.md)に関する記事をご覧ください。 例として、次の手順はで、Azure Resource Explorer を使って *MaxDiskQuotaInMB* という新しい設定を *Diagnostics* セクションに追加する方法を示します。
 
 1. [https://resources.azure.com](https://resources.azure.com ) に移動します
-2. **[サブスクリプション]**  ->  **\<ご使用のサブスクリプション>**  ->  **[resourceGroups]**  ->  **\<ご使用のリソース グループ>**  ->  **[プロバイダー]**  ->  **[Microsoft.ServiceFabric]**  ->  **[クラスター]**  ->  **\<ご使用のクラスター名 >** の順に展開して、サブスクリプションに移動します
+2. **[サブスクリプション]**  ->  **\<Your Subscription>**  ->  **[resourceGroups]**  ->  **\<Your Resource Group>**  ->  **[プロバイダー]**  ->  **[Microsoft.ServiceFabric]**  ->  **[クラスター]**  ->  **\<Your Cluster Name>** の順に展開してサブスクリプションに移動します
 3. 右上隅の **[読み取り/書き込み]** を選択します。
 4. **[編集]** を選択して `fabricSettings` JSON 要素を更新し、新しい要素を追加します。
 
@@ -45,11 +45,11 @@ Azure クラスターは、JSON の Resource Manager テンプレートを使っ
 
 Azure Resource Manager を使用して次の方法のいずれかでクラスターの設定をカスタマイズすることもできます。
 
-- [Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template) を使用し、Resource Manager テンプレートをエクスポートして更新します。
-- [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell) を使用し、Resource Manager テンプレートをエクスポートして更新します。
-- [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli) を使用し、Resource Manager テンプレートをエクスポートして更新します。
-- 設定を直接変更するには、Azure PowerShell [Set-AzServiceFabricSetting](https://docs.microsoft.com/powershell/module/az.servicefabric/Set-azServiceFabricSetting) および [Remove-AzServiceFabricSetting](https://docs.microsoft.com/powershell/module/az.servicefabric/Remove-azServiceFabricSetting) コマンドを使います。
-- 設定を直接変更するには、Azure CLI の [az sf cluster setting](https://docs.microsoft.com/cli/azure/sf/cluster/setting) コマンドを使います。
+- [Azure portal](../azure-resource-manager/templates/export-template-portal.md) を使用し、Resource Manager テンプレートをエクスポートして更新します。
+- [PowerShell](../azure-resource-manager/management/manage-resources-powershell.md) を使用し、Resource Manager テンプレートをエクスポートして更新します。
+- [Azure CLI](../azure-resource-manager/management/manage-resources-cli.md) を使用し、Resource Manager テンプレートをエクスポートして更新します。
+- 設定を直接変更するには、Azure PowerShell [Set-AzServiceFabricSetting](/powershell/module/az.servicefabric/set-azservicefabricsetting) および [Remove-AzServiceFabricSetting](/powershell/module/az.servicefabric/remove-azservicefabricsetting) コマンドを使います。
+- 設定を直接変更するには、Azure CLI の [az sf cluster setting](/cli/azure/sf/cluster/setting) コマンドを使います。
 
 ## <a name="next-steps"></a>次のステップ
 * [Service Fabric クラスターの設定](service-fabric-cluster-fabric-settings.md)について学習します。

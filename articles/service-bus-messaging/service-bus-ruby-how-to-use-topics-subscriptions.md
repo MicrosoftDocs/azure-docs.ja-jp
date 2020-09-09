@@ -3,23 +3,15 @@ title: クイック スタート:Service Bus トピックの使用方法 (Ruby)
 description: クイック スタート:Azure での Service Bus のトピックとサブスクリプションの使用方法について説明します。 コード サンプルは Ruby アプリケーション向けに作成されています。
 services: service-bus-messaging
 documentationcenter: ruby
-author: axisc
-manager: timlt
-editor: ''
-ms.assetid: 3ef2295e-7c5f-4c54-a13b-a69c8045d4b6
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: quickstart
-ms.date: 11/05/2019
-ms.author: aschhab
-ms.openlocfilehash: b5401eae844ed2113a9fbc07c8b3ad8601709d43
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 06/23/2020
+ms.openlocfilehash: aba326a63558632bee3bf0c48d34e471bbe30886
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73718933"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067564"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>クイック スタート:Ruby で Service Bus のトピックとサブスクリプションを使用する方法
  
@@ -70,7 +62,7 @@ topic = azure_service_bus_service.create_topic(topic)
 
 既定では、サブスクリプションは永続的です。 サブスクリプションは、サブスクリプションが削除されるか、サブスクリプションが関連付けられているトピックが削除されるまで保持されます。 アプリケーションにサブスクリプションを作成するロジックが含まれている場合は、最初に getSubscription メソッドを使用して、サブスクリプションが既に存在しているかどうかを確認する必要があります。
 
-[AutoDeleteOnIdle プロパティ](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle)を設定することで、サブスクリプションを自動的に削除できます。
+[AutoDeleteOnIdle プロパティ](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle)を設定することで、サブスクリプションを自動的に削除できます。
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>既定の (MatchAll) フィルターを適用したサブスクリプションの作成
 新しいサブスクリプションの作成時にフィルターが指定されていない場合は､**MatchAll** フィルター (既定) が使用されます｡ **MatchAll** フィルターを使用すると、トピックに発行されたすべてのメッセージがサブスクリプションの仮想キューに置かれます。 次の例では、"all-messages" という名前のサブスクリプションを作成し、既定の **MatchAll** フィルターを使用します。
@@ -158,7 +150,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 メッセージが処理された後、`delete_subscription_message()` メソッドが呼び出される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。 このプロセスは､しばしば "*1 回以上の処理*" と呼ばれます。つまり、すべてのメッセージが 1 回以上処理されますが、状況によっては、同じメッセージが再配信される可能性があります。 重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。 通常、このロジックはメッセージの `message_id` プロパティを使用して実現され､配信の試行のたびにメッセージが変わることはありません｡
 
 ## <a name="delete-topics-and-subscriptions"></a>トピックとサブスクリプションを削除する
-トピックとサブスクリプションは、[AutoDeleteOnIdle プロパティ](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle)が設定されている場合を除き、永続的です。 これらは [Azure portal][Azure portal] を通じて、またはプログラムで削除できます。 次の例では、`test-topic` という名前のトピックを削除する方法を示しています。
+トピックとサブスクリプションは、[AutoDeleteOnIdle プロパティ](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle)が設定されている場合を除き、永続的です。 これらは [Azure portal][Azure portal] を通じて、またはプログラムで削除できます。 次の例では、`test-topic` という名前のトピックを削除する方法を示しています。
 
 ```ruby
 azure_service_bus_service.delete_topic("test-topic")

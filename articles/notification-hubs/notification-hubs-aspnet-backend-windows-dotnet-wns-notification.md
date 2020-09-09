@@ -12,17 +12,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-csharp
 ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: 914ccc2ac74048abb2a66b61aa65b771f8141d5e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 865aaf748fd8fad5f10350cb5b57d31b3eadf7a0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "71212056"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018044"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して特定のユーザーに通知を送信する
 
@@ -51,7 +51,7 @@ ms.locfileid: "71212056"
 このチュートリアルは、「[チュートリアル: Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム アプリに通知を送信する](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)」のチュートリアルで完成したプロジェクト内のコードを更新します。 そのため、このチュートリアルを開始する前に、それを完了してください。
 
 > [!NOTE]
-> バックエンド サービスとして Azure App Service で Mobile Apps を使用している場合は、このチュートリアルの [Mobile Apps バージョン](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md)に関するページをご覧ください。
+> バックエンド サービスとして Azure App Service で Mobile Apps を使用している場合は、このチュートリアルの [Mobile Apps バージョン](/previous-versions/azure/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push)に関するページをご覧ください。
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
@@ -224,7 +224,7 @@ ms.locfileid: "71212056"
     ```
 13. **[WindowsApp]** プロジェクトを右クリックし、 **[追加]** をクリックしてから、 **[クラス]** をクリックします。 クラスに `RegisterClient.cs` という名前を付け、 **[OK]** をクリックしてクラスを生成します。
 
-    このクラスは、プッシュ通知用に登録するために、アプリ バックエンドに接続するために必要な REST 呼び出しをラップします。 「 *アプリ バックエンドからの登録* 」で説明しているとおり、Notification Hubs によって作成された [registrationIds](https://msdn.microsoft.com/library/dn743807.aspx)もローカルに格納されます。 **[ログインして登録]** ボタンをクリックすると、ローカル ストレージに格納されている承認トークンが使用されます。
+    このクラスは、プッシュ通知用に登録するために、アプリ バックエンドに接続するために必要な REST 呼び出しをラップします。 「 *アプリ バックエンドからの登録* 」で説明しているとおり、Notification Hubs によって作成された [registrationIds](/previous-versions/azure/azure-services/dn743807(v=azure.100))もローカルに格納されます。 **[ログインして登録]** ボタンをクリックすると、ローカル ストレージに格納されている承認トークンが使用されます。
 14. 次の `using` ステートメントを、RegisterClient.cs file ファイルの先頭に追加します。
 
     ```csharp
@@ -331,11 +331,11 @@ ms.locfileid: "71212056"
 2. 下の画面に示すように、 **[ユーザー名]** と **[パスワード]** を入力します。 Windows Phone で入力するユーザー名とパスワードとは異なるユーザー名とパスワードを入力する必要があります。
 3. **[ログインして登録]** をクリックし、ログインしたことを示すダイアログを確認します。 このコードにより、 **[プッシュを送信する]** ボタンも有効になります。
 
-    ![][14]
+    ![ユーザー名とパスワードが入力された Notification Hubs アプリケーションのスクリーンショット。][14]
 5. 次に、 **[受信ユーザー タグ]** フィールドに、登録されているユーザー名を入力します。 通知メッセージを入力し、 **[プッシュを送信する]** をクリックします。
 6. 一致するユーザー名タグが登録されているデバイスだけが通知メッセージを受信します。
 
-    ![][15]
+    ![プッシュされたメッセージが表示された Notification Hubs アプリケーションのスクリーンショット。][15]
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -357,4 +357,4 @@ ms.locfileid: "71212056"
 [Get started with Notification Hubs]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [Secure Push]: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)

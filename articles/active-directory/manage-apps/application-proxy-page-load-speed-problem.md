@@ -3,25 +3,25 @@ title: アプリケーション プロキシのアプリケーション読み込
 description: Azure AD アプリケーション プロキシによるページ読み込みパフォーマンスの問題をトラブルシューティングする
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ac1182d719d7c90129115e1fadf94f4f86a28e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1dc1b14a917786e124775a4505c53f63238a383
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65782644"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203867"
 ---
 # <a name="an-application-proxy-application-takes-too-long-to-load"></a>アプリケーション プロキシのアプリケーション読み込みに時間がかかりすぎる
 
@@ -31,8 +31,6 @@ ms.locfileid: "65782644"
 アプリケーションが動作していても、待ち時間が長いことがあります。 ネットワーク トポロジを調整すれば、待ち時間を短縮できることがあります。 さまざまなトポロジの評価については、[ネットワークに関する考慮事項のマニュアル](application-proxy-network-topology.md)をご覧ください。
 
 ネットワーク トポロジの他には、パフォーマンス調整のために推奨できることは現在ありません。 アプリケーション プロキシ サービスが拡大されるにつれ、データ センターに物理的に近くなることがあります。 近くなることで待ち時間が改善されることがあります。 Azure データ センターの一覧については、[待機時間テスト ページ](http://www.azurespeed.com/Azure/Latency)をご覧ください。 
-
-アプリケーション プロキシ サービスを使用したデータ センターは、[コネクタ ポート テスト ツール](https://aadap-portcheck.connectorporttest.msappproxy.net/)で見つけることができます。 
 
 ## <a name="feedback-on-application-proxy-data-center-locations"></a>アプリケーション プロキシ データ センターの場所に関するフィードバック 
 今のところはアプリケーション プロキシが含まれていないがお客様にとって待機時間の大幅な短縮につながる Azure データ センターがあるかもしれません。 データ センターの場所を aadapfeedback@microsoft.com に送信します。 Microsoft は皆様からのフィードバックを拡張計画に利用します。

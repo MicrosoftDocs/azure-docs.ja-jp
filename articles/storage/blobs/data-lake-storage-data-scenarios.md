@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: b0ebe6cb505fa2a145dd3cbb94398912f2933a4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e183a1e8cac8eec2806a35603c40a44aadac502
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77369719"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193507"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Data Lake Storage Gen2 を使用してビッグ データの要件に対応する
 
@@ -129,7 +129,7 @@ Data Lake Storage Gen2 に格納されたデータを視覚的に表現するに
 
 次のようなシナリオでは、Azure Data Lake Storage Gen2 からデータをダウンロードしたり、移動したりすることもできます。
 
-* 既存のデータ処理パイプラインとのインターフェイスとなる他のリポジトリにデータを移動する。 たとえば、Data Lake Storage Gen2 から Azure SQL Database またはオンプレミスの SQL Server にデータを移動できます。
+* 既存のデータ処理パイプラインとのインターフェイスとなる他のリポジトリにデータを移動する。 たとえば、Data Lake Storage Gen2 から Azure SQL Database または SQL Server インスタンスにデータを移動できます。
 
 * アプリケーション プロトタイプの作成中に IDE 環境で処理するために、ローカル コンピューターにデータをダウンロードする。
 
@@ -141,5 +141,5 @@ Data Lake Storage Gen2 からのデータのダウンロードに使用できる
 |---|--|
 |Azure Data Factory | [Azure Data Factory の Copy アクティビティ](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
 |Apache DistCp | [Distcp を使用して Azure Storage Blob と Azure Data Lake Storage Gen2 の間でデータをコピーする](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |
-|Azure ストレージ エクスプローラー|[Azure Storage Explorer を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-explorer.md)|
+|Azure Storage Explorer |[Azure Storage Explorer を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-explorer.md)|
 |AzCopy ツール|[AzCopy と Blob Storage でデータを転送する](../common/storage-use-azcopy-blobs.md)|

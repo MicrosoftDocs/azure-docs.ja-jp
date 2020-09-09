@@ -7,12 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 77b4dd4c0efbe6d03e64865f18c2c87614aaecb5
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 4b1b8a0cfa98d48d7cb92474c1572f17c79ffd0d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632519"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498954"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware から Azure へのディザスター リカバリー アーキテクチャ
 
@@ -30,10 +30,25 @@ ms.locfileid: "80632519"
 **VMware サーバー** | VMware VM は、オンプレミス vSphere ESXi サーバーでホストされています。 ホストの管理には vCenter サーバーをお勧めします。 | Site Recovery のデプロイ中には、VMware サーバーを Recovery Services コンテナーに追加します。
 **レプリケートされたマシン** | レプリケートする各 VMware VM にモビリティ サービスがインストールされます。 | プロセス サーバーから自動的にインストールできるようにすることをお勧めします。 また、サービスを手動でインストールしたり、Configuration Manager などの自動デプロイ方法を使用したりすることができます。
 
-**VMware から Azure へのアーキテクチャ**
+![VMware から Azure へのレプリケーション アーキテクチャの関係を示す図。](./media/vmware-azure-architecture/arch-enhanced.png)
 
-![Components](./media/vmware-azure-architecture/arch-enhanced.png)
+## <a name="set-up-outbound-network-connectivity"></a>送信ネットワーク接続を設定する
 
+Site Recovery を期待どおりに動作させるためには、環境でレプリケートが可能になるように、送信ネットワーク接続を変更する必要があります。
+
+> [!NOTE]
+> Site Recovery では、ネットワーク接続を制御するための認証プロキシの使用をサポートしていません。
+
+### <a name="outbound-connectivity-for-urls"></a>URL に対する送信接続
+
+アウトバウンド接続を制御するために URL ベースのファイアウォール プロキシを使用している場合、以下の URL へのアクセスを許可してください。
+
+| **名前**                  | **商用**                               | **政府**                                 | **説明** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| ストレージ                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | ソース リージョンのキャッシュ ストレージ アカウントに、VM からデータが書き込まれるよう許可します。 |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Site Recovery サービス URL に対する承認と認証を提供します。 |
+| レプリケーション               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | VM と Site Recovery サービスの通信を許可します。 |
+| Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | VM による Site Recovery の監視および診断データの書き込みを許可します。 |
 
 ## <a name="replication-process"></a>レプリケーション プロセス
 
@@ -54,9 +69,7 @@ ms.locfileid: "80632519"
     - プロセス サーバーは、レプリケーション データを受信し、データを最適化して暗号化し、アウトバウンド ポート 443 経由で Azure ストレージに送信します。
 5. レプリケーション データ ログは、まず Azure のキャッシュ ストレージ アカウントに記録されます。 これらのログは処理され、データは Azure マネージド ディスク (asr シード ディスクと呼ばれます) に格納されます。 復旧ポイントはこのディスク上に作成されます。
 
-**VMware から Azure へのレプリケーション プロセス**
-
-![レプリケーション プロセス](./media/vmware-azure-architecture/v2a-architecture-henry.png)
+![VMware から Azure へのレプリケーション プロセスを示す図。](./media/vmware-azure-architecture/v2a-architecture-henry.png)
 
 ## <a name="resynchronization-process"></a>再同期プロセス
 
@@ -91,9 +104,8 @@ ms.locfileid: "80632519"
     - ステージ 3:ワークロードがフェールバックしたら、オンプレミス VM のレプリケーションを再び有効にします。
     
  
-**Azure からの VMware フェールバック**
 
-![フェールバック](./media/vmware-azure-architecture/enhanced-failback.png)
+![Azure からの VMware フェールバックを示す図。](./media/vmware-azure-architecture/enhanced-failback.png)
 
 
 ## <a name="next-steps"></a>次のステップ

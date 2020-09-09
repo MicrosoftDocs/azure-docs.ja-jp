@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 6cb83a87f2e96eb62696e5d92095ef2b8d7c7def
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1ddcdfd9efddd050f996e5c2b953baba242967fa
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81677323"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640584"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure Migrate アプライアンスと検出のトラブルシューティング
 
@@ -27,7 +27,7 @@ ms.locfileid: "81677323"
 
 "The provided manifest file is invalid: Invalid OVF manifest entry" (指定されたマニフェスト ファイルが無効です: 無効な OVF マニフェスト エントリ) というエラーを受け取る場合は、次のようにします。
 
-1. Azure Migrate アプライアンスの OVA ファイルが正常にダウンロードされていることを、そのハッシュ値をチェックして確認します。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware)。 ハッシュ値が一致しない場合は、OVA ファイルをもう一度ダウンロードしてデプロイを再試行してください。
+1. Azure Migrate アプライアンスの OVA ファイルが正常にダウンロードされていることを、そのハッシュ値をチェックして確認します。 [詳細については、こちらを参照してください](./tutorial-prepare-vmware.md)。 ハッシュ値が一致しない場合は、OVA ファイルをもう一度ダウンロードしてデプロイを再試行してください。
 2. それでもデプロイが失敗する場合で、VMware vSphere クライアントを使って OVF ファイルをデプロイしている場合は、vSphere Web クライアントでデプロイしてみてください。 展開がそれでも失敗する場合は、別の Web ブラウザーをお試しください。
 3. vSphere Web クライアントを使用しており、vCenter Server 6.5 または 6.7 にそれをデプロイしようとしている場合は、ESXi ホストに直接 OVA をデプロイしてみてください。
    - Web クライアント (https://<*ホスト IP アドレス*>/ui) を使用して (vCenter Server ではなく) ESXi ホストに直接接続します。
@@ -40,7 +40,7 @@ ms.locfileid: "81677323"
 
 - プロキシに承認資格情報が必要な場合は、それを提供します。
 - URL ベースのファイアウォール プロキシを使用して送信接続を制御している場合は、[以下の URL](migrate-appliance.md#url-access) を許可リストに追加します。
-- インターネットへの接続にインターセプト プロキシを使用している場合は、[こちらの手順](https://docs.microsoft.com/azure/migrate/concepts-collector)を使用して、プロキシの証明書をアプライアンス VM にインポートします。
+- インターネットへの接続にインターセプト プロキシを使用している場合は、[こちらの手順](./migrate-appliance.md)を使用して、プロキシの証明書をアプライアンス VM にインポートします。
 
 ## <a name="cant-sign-into-azure-from-the-appliance-web-app"></a>アプライアンス Web アプリから Azure にサインインできない
 
@@ -64,7 +64,7 @@ Azure へのサインインに正しくない Azure アカウントを使用し�
 
 この接続エラーを受け取る場合、vCenter Server <*サーバー名*>.com:9443 に接続できない可能性があります。 エラーの詳細では、`https://\*servername*.com:9443/sdk` でリッスンしているエンドポイントで、メッセージを受け入れることができるものがないことが示されています。
 
-- 最新バージョンのアプライアンスを実行しているかどうかを確認します。 そうでない場合は、アプライアンスを[最新バージョン](https://docs.microsoft.com/azure/migrate/concepts-collector)にアップグレードします。
+- 最新バージョンのアプライアンスを実行しているかどうかを確認します。 そうでない場合は、アプライアンスを[最新バージョン](./migrate-appliance.md)にアップグレードします。
 - 最新バージョンでも引き続き問題が発生する場合は、指定された vCenter Server 名をアプライアンスで解決できないか、または指定されたポートが間違っている可能性があります。 ポートが指定されていない場合、コレクターでは既定でポート番号 443 への接続が試みられます。
 
     1. アプライアンスから <*サーバー名*>.com に対して ping を実行します。
@@ -77,10 +77,10 @@ Azure へのサインインに正しくない Azure アカウントを使用し�
 
 - エラー 60052 "The appliance might not be registered successfully to the Azure Migrate project" (アプライアンスが Azure Migrate プロジェクトに正常に登録されていない可能性があります) は、アプライアンスの登録に使用された Azure アカウントに十分な権限がない場合に発生します。
     - アプライアンスの登録に使用する Azure ユーザー アカウントに、少なくともサブスクリプションの共同作成者アクセス許可があることを確認します。
-    - 必要な Azure ロールとアクセス許可の[詳細を参照](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware)してください。
+    - 必要な Azure ロールとアクセス許可の[詳細を参照](./migrate-appliance.md#appliance---vmware)してください。
 - エラー 60039 "The appliance might not be registered successfully to the Azure Migrate project" (アプライアンスが Azure Migrate プロジェクトに正常に登録されていない可能性があります) は、アプライアンスの登録に使用された Azure Migrate プロジェクトが見つからない場合に発生する可能性があります。
     - Azure portal で、リソース グループにプロジェクトが存在するかどうかを確認してください。
-    - プロジェクトが存在しない場合は、ご利用のリソース グループに新しい Azure Migrate プロジェクトを作成して、アプライアンスをもう一度登録してください。 新しいプロジェクトを作成する[方法を参照](https://docs.microsoft.com/azure/migrate/how-to-add-tool-first-time#create-a-project-and-add-a-tool)してください。
+    - プロジェクトが存在しない場合は、ご利用のリソース グループに新しい Azure Migrate プロジェクトを作成して、アプライアンスをもう一度登録してください。 新しいプロジェクトを作成する[方法を参照](./how-to-add-tool-first-time.md#create-a-project-and-add-a-tool)してください。
 
 ## <a name="error-6003060031-key-vault-management-operation-failed"></a>エラー 60030/60031: Key Vault の管理操作が失敗した
 
@@ -88,22 +88,22 @@ Azure へのサインインに正しくない Azure アカウントを使用し�
 - アプライアンスの登録に使用する Azure ユーザー アカウントに、少なくともサブスクリプションの共同作成者アクセス許可があることを確認します。
 - エラー メッセージで指定されているキー コンテナーへのアクセス権がアカウントにあることを確認した後、操作を再試行します。
 - 引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。
-- 必要な Azure ロールとアクセス許可の[詳細を参照](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware)してください。
+- 必要な Azure ロールとアクセス許可の[詳細を参照](./migrate-appliance.md#appliance---vmware)してください。
 
 ## <a name="error-60028-discovery-couldnt-be-initiated"></a>エラー 60028: 検出を開始できなかった
 
-エラー 60028: "Discovery couldn't be initiated because of an error.  The operation failed for the specified list of hosts or clusters" (エラーが発生したため、検出を開始できませんでした。指定されたホストまたはクラスターのリストに対する操作に失敗しました) は、VM 情報のアクセスまたは取得で問題が発生したため、エラーで示されているホストで検出を開始できなかったことを示します。 残りのホストは正常に追加されました。
+エラー 60028: "Discovery couldn't be initiated because of an error. The operation failed for the specified list of hosts or clusters" (エラーが発生したため、検出を開始できませんでした。指定されたホストまたはクラスターのリストに対する操作に失敗しました) は、VM 情報のアクセスまたは取得で問題が発生したため、エラーで示されているホストで検出を開始できなかったことを示します。 残りのホストは正常に追加されました。
 
 - **[ホストの追加]** オプションを使用して、エラーで示されているホストをもう一度追加します。
 - 検証エラーが発生している場合は、修復のガイダンスを確認してエラーを修正し、 **[保存して検出を開始]** オプションをもう一度試します。
 
 ## <a name="error-60025-azure-ad-operation-failed"></a>エラー 60025: Azure AD operation failed (Azure AD の操作が失敗しました) 
-エラー 60025: "An Azure AD operation failed.  The error occurred while creating or updating the Azure AD application" (Azure AD の操作が失敗しました。Azure AD アプリケーションを作成または更新しているときにエラーが発生しました) は、検出を開始するために使用された Azure ユーザー アカウントが、アプライアンスの登録に使用されたアカウントと異なる場合に発生します。 次のいずれかの操作を行います。
+エラー 60025: "An Azure AD operation failed. The error occurred while creating or updating the Azure AD application" (Azure AD の操作が失敗しました。Azure AD アプリケーションを作成または更新しているときにエラーが発生しました) は、検出を開始するために使用された Azure ユーザー アカウントが、アプライアンスの登録に使用されたアカウントと異なる場合に発生します。 次のいずれかの操作を行います。
 
 - 検出を開始するユーザー アカウントが、アプライアンスの登録に使用するものと同じであることを確認します。
 - 検出操作が失敗しているユーザー アカウントに、Azure Active Directory アプリケーションのアクセス許可を提供します。
 - Azure Migrate プロジェクト用に以前に作成したリソース グループを削除します。 別のリソース グループを作成して、もう一度開始します。
-- Azure Active Directory アプリケーションのアクセス許可に関する[詳細を参照](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware)してください。
+- Azure Active Directory アプリケーションのアクセス許可に関する[詳細を参照](./migrate-appliance.md#appliance---vmware)してください。
 
 
 ## <a name="error-50004-cant-connect-to-host-or-cluster"></a>エラー 50004: ホストまたはクラスターに接続できない
@@ -117,6 +117,28 @@ Azure へのサインインに正しくない Azure アカウントを使用し�
     3. IP アドレスとホスト名を 1 行で追加します。 このエラーが見られるホストまたはクラスターごとに繰り返します。
     4. hosts ファイルを保存して閉じます。
     5. アプライアンス管理アプリを使用して、アプライアンスからホストに接続できるかどうかを確認します。 30 分後、これらのホストの最新情報が Azure portal に表示されるようになるはずです。
+
+
+## <a name="error-60001-unable-to-connect-to-server"></a>Error 60001:サーバーに接続できない 
+
+- アプライアンスからサーバーへの接続があることを確認します
+- Linux サーバーの場合は、次の手順に従ってパスワード ベースの認証が有効になっていることを確認します。
+    1. Linux マシンにログインし、コマンド 'vi /etc/ssh/sshd_config' を使用して SSH 構成ファイルを開きます
+    2. "PasswordAuthentication" オプションを [はい] に設定します。 ファイルを保存します。
+    3. "service sshd restart" を実行して SSH サービスを再起動します
+- Windows サーバーの場合は、リモート WMI 呼び出しを許可するため、ポート 5985 が開かれていることを確認します。
+- GCP Linux サーバーを検出中で、ルート ユーザーを使用している場合は、次のコマンドを使用して、ルート ログインの既定の設定を変更します
+    1. Linux マシンにログインし、コマンド 'vi /etc/ssh/sshd_config' を使用して SSH 構成ファイルを開きます
+    2. "PermitRootLogin" オプションを [はい] に設定します。
+    3. "service sshd restart" を実行して SSH サービスを再起動します
+
+## <a name="error-no-suitable-authentication-method-found"></a>エラー:適切な認証方法が見つからない
+
+次の手順に従って、Linux サーバーでパスワード ベースの認証が有効になっていることを確認します。
+    1. Linux マシンにログインし、コマンド 'vi /etc/ssh/sshd_config' を使用して SSH 構成ファイルを開きます
+    2. "PasswordAuthentication" オプションを [はい] に設定します。 ファイルを保存します。
+    3. "service sshd restart" を実行して SSH サービスを再起動します
+
 
 ## <a name="discovered-vms-not-in-portal"></a>ポータルで VM が検出されない
 
@@ -144,6 +166,30 @@ Azure へのサインインに正しくない Azure アカウントを使用し�
 
 VM を削除してもまだポータルに表示されている場合は、30 分待ってください。 まだ表示されている場合は、前述の説明に従って最新の情報に更新してください。
 
+## <a name="i-do-not-see-performance-data-for-some-network-adapters-on-my-physical-servers"></a>物理サーバー上の一部のネットワーク アダプターのパフォーマンス データが表示されない
+
+これは、物理サーバーで Hyper-V 仮想化が有効になっている場合に発生する可能性があります。 製品のギャップのため、検出された仮想ネットワーク アダプターでネットワーク スループットがキャプチャされます。
+
+## <a name="error-the-file-uploaded-is-not-in-the-expected-format"></a>エラー:アップロードされたファイルの形式が正しくありません
+一部のツールの地域設定によって、セミコロンが区切り記号として使用される CSV ファイルが作成されます。 設定を変更して、区切り記号をコンマにしてください。
+
+## <a name="i-imported-a-csv-but-i-see-discovery-is-in-progress"></a>CSV をインポートしましたが、"検出が進行中です" と表示されます
+この状態は、検証の失敗が原因で CSV のアップロードに失敗した場合に表示される可能性があります。 CSV をもう一度インポートしてみてください。 以前のアップロードのエラー レポートをダウンロードし、ファイルの修復ガイダンスに従って、エラーを修正できます。 エラー レポートは、[マシンの検出] ページの [インポートの詳細] セクションからダウンロードできます。
+
+## <a name="do-not-see-application-details-even-after-updating-guest-credentials"></a>ゲストの資格情報を更新した後でもアプリケーションの詳細が表示されない
+アプリケーションの検出は 24 時間ごとに実行されます。 詳細をすぐに確認するには、次のように更新します。 検出された VM 数によっては、 この実行に数分かかることがあります。
+
+1. **[サーバー]**  >  **[Azure Migrate Server Assessment]\(Azure Migrate Server Assessment\)** で、 **[概要]** を選択します。
+2. **[管理]** の下で、 **[Agent Health]\(エージェントの正常性\)** を選択します。
+3. **[エージェントを更新する]** を選択します。
+4. 更新操作が完了するまで待ちます。 これで、最新の情報が表示されるはずです。
+
+## <a name="unable-to-export-application-inventory"></a>アプリケーション インベントリのエクスポートができない
+ポータルからインベントリをダウンロードするユーザーに、サブスクリプションに対する共同作成者権限があることを確認します。
+
+## <a name="no-suitable-authentication-method-found-to-complete-authentication-publickey"></a>認証を完了するための適切な認証方法が見つからない (publickey)
+キーベースの認証は機能しません。パスワード認証を使用してください。
+
 ## <a name="common-app-discovery-errors"></a>一般的なアプリ検出エラー
 
 Azure Migrate は、Azure Migrate を使用してアプリケーション、ロール、および機能の検出をサポートします。Server Assessment を使用して作成する方法について説明します。 現在、アプリ検出は VMware でのみサポートされています。 アプリ検出を設定するための要件と手順についての[詳細をご覧ください](how-to-discover-applications.md)。
@@ -151,38 +197,54 @@ Azure Migrate は、Azure Migrate を使用してアプリケーション、ロ�
 一般的なアプリ検出エラーを表にまとめています。 
 
 **Error** | **原因** | **操作**
---- | --- | --- | ---
-10000: "Unable to discover the applications installed on the server".(サーバーにインストールされているアプリケーションを検出できません。) | これは、マシンのオペレーティング システムが Windows でも Linux でもない場合に発生する可能性があります。 | アプリ検出は、Windows/Linux にのみ使用してください。
-10001: "Unable to retrieve the applications installed the server". (サーバーにインストールされているアプリケーションを取得できません。) | 内部エラー - アプライアンスでいくつかのファイルが不足しています。 | Microsoft サポートにお問い合わせください。
-10002: "Unable to retrieve the applications installed the server". (サーバーにインストールされているアプリケーションを取得できません。) | アプライアンス上の検出エージェントが正常に動作していない可能性があります。 | 24 時間以内に問題が自動的に解決しない場合は、サポートにお問い合わせください。
-10003: "Unable to retrieve the applications installed the server". (サーバーにインストールされているアプリケーションを取得できません。) | アプライアンス上の検出エージェントが正常に動作していない可能性があります。 | 24 時間以内に問題が自動的に解決しない場合は、サポートにお問い合わせください。
-10004: "Unable to discover installed applications for <Windows/Linux> machines." (<Windows/Linux> マシンにインストールされているアプリケーションを検出できません。) |  <Windows/Linux> マシンにアクセスするための資格情報がアプライアンスで提供されていません。| <Windows/Linux> マシンにアクセスできる資格情報をアプライアンスに追加してください。
-10005: "Unable to access the on-premises server". (オンプレミスのサーバーにアクセスできません。) | アクセス資格情報が間違っている可能性があります。 | アプライアンスの資格情報を更新し、それを使用して関連するマシンにアクセスできることを確認してください。 
-10006: "Unable to access the on-premises server". (オンプレミスのサーバーにアクセスできません。) | これは、マシンのオペレーティング システムが Windows でも Linux でもない場合に発生する可能性があります。|  アプリ検出は、Windows/Linux にのみ使用してください。
-10007:"Unable to process the metadata retrieved" (取得されたメタデータを処理できません) | この内部エラーは、JSON を逆シリアル化しようとしている間に発生しました | Microsoft サポートに解決方法をお問い合わせください
-9000/9001/9002: "Unable to discover the applications installed on the server".(サーバーにインストールされているアプリケーションを検出できません。) | VMware ツールがインストールされていないか、破損している可能性があります。 | 関連するマシンに VMware ツールをインストール/再インストールし、実行されていることを確認します。
-9003: "Unable to discover the applications installed on the server".サーバーにインストールされているアプリケーションを検出できません。 | これは、マシンのオペレーティング システムが Windows でも Linux でもない場合に発生する可能性があります。 | アプリ検出は、Windows/Linux にのみ使用してください。
-9004: "Unable to discover the applications installed on the server".(サーバーにインストールされているアプリケーションを検出できません。) | これは、VM の電源がオフになっている場合に発生する可能性があります。 | 検出を行うには、VM がオンになっていることを確認します。
-9005: "Unable to discover the applications installed on the VM." (VM にインストールされているアプリケーションを検出できません。) | これは、マシンのオペレーティング システムが Windows でも Linux でもない場合に発生する可能性があります。 | アプリ検出は、Windows/Linux にのみ使用してください。
-9006/9007: "Unable to retrieve the applications installed the server". (サーバーにインストールされているアプリケーションを取得できません。) | アプライアンス上の検出エージェントが正常に動作していない可能性があります。 | 24 時間以内に問題が自動的に解決しない場合は、サポートにお問い合わせください。
-9008: "Unable to retrieve the applications installed the server". (サーバーにインストールされているアプリケーションを取得できません。) | 内部エラーの可能性があります。  | 24 時間以内に問題が自動的に解決しない場合は、サポートにお問い合わせください。
-9009: "Unable to retrieve the applications installed the server". (サーバーにインストールされているアプリケーションを取得できません。) | サーバーの Windows ユーザー アカウント制御 (UAC) の設定の制限により、インストールされているアプリケーションの検出が妨げられている場合に発生します。 | サーバーで [ユーザーアカウント制御] の設定を探し、サーバーの UAC のレベル設定が下位の 2 つのいずれかになるように構成します。
-9010: "Unable to retrieve the applications installed the server". (サーバーにインストールされているアプリケーションを取得できません。) | 内部エラーの可能性があります。  | 24 時間以内に問題が自動的に解決しない場合は、サポートにお問い合わせください。
-9011:"File to download from guest is not found on the guest VM" (ゲストからダウンロードするファイルがゲスト VM に見つかりません) | この問題は、内部エラーのために発生します。 | この問題は、24 時間以内に自動的に解決されます。 問題が解決しない場合は、Microsoft サポートにお問い合わせください。
-9012:"Result file contents are empty." (結果ファイルの内容が空です。) | この問題は、内部エラーのために発生します。 | この問題は、24 時間以内に自動的に解決されます。 問題が解決しない場合は、Microsoft サポートにお問い合わせください。
-9013:"A new temporary profile is created for every login to the VMware VM" (VMware VM へのログインごとに新しい一時プロファイルが作成されます) | VM へのログインごとに新しい一時プロファイルが作成されます | ゲスト VM の資格情報で指定されたユーザー名が UPN 形式であることを確認してください。
-9015:"Unable to connect to VMware VMs due to insufficient privileges on vCenter" (vCenter の特権が不足しているため VMware VM に接続できません) | vCenter ユーザー アカウントでゲスト操作ロールが有効になっていません | vCenter ユーザー アカウントでゲスト操作ロールが有効になっていることを確認してください。
-9016:"Unable to connect to VMware VMs as the guest operations agent is out of data" (ゲスト操作エージェントのデータが不足しているため VMware VM に接続できません) | VMware ツールが正しくインストールされていないか、最新の状態ではありません。 | VMware ツールが正しくインストールされ、最新の状態になっていることを確認してください。
-9017:"File with discovered metadata is not found on the VM." (検出されたメタデータを含むファイルが VM 上に見つかりません。) | この問題は、内部エラーのために発生します。 | Microsoft サポートに解決方法をお問い合わせください。
-9018:"PowerShell is not installed in the Guest VMs." (PowerShell がゲスト VM にインストールされていません。) | PowerShell がゲスト VM で利用できません。 | ゲスト VM に PowerShell をインストールしてください。
-9019:"Unable to discover due to guest VM operation failures" (ゲスト VM 操作エラーのため、検出できませんでした) | VM で VMware ゲスト操作が失敗しました。 | VM の資格情報が有効であること、およびゲスト VM の資格情報で指定されたユーザー名が UPN 形式であることを確認してください。
-9020:"File creation permission is denied." (ファイル作成のアクセス許可が拒否されました。) | ユーザーまたはグループ ポリシーに関連付けられているロールにより、ユーザーがフォルダー内にファイルを作成することが制限されています | 指定されたゲスト ユーザーが、フォルダー内のファイルの作成アクセス許可を持っているかどうかを確認してください。 フォルダーの名前については、Server Assessment の **[Notifications]\(通知\)** を参照してください。
-9021:"File create permission is denied in folder System Temp Path." (System Temp Path フォルダーのファイル作成アクセス許可が拒否されました。) | VM 上の VMware ツール バージョンがサポートされていません | VMware ツール バージョンを 10.2.0 より上にアップグレードしてください。
-9022:"Get WMI object access is denied." (WMI オブジェクトの取得アクセスが拒否されました。) | ユーザーまたはグループ ポリシーに関連付けられているロールにより、ユーザーが WMI オブジェクトにアクセスすることが制限されています。 | Microsoft サポートにお問い合わせください。
-9023:"SystemRoot environment variable value is empty." (SystemRoot 環境変数の値が空です。) | 不明 | Microsoft サポートにお問い合わせください。
-9024:"TEMP environment variable value is empty." (TEMP 環境変数の値が空です。) | 不明 | Microsoft サポートにお問い合わせください。
-9025:"PowerShell is corrupt in the Guest VMs." (PowerShell がゲスト VM で破損しています。) | 不明 | PowerShell をゲスト VM に再インストールし、ゲスト VM で PowerShell を実行できるかどうかを確認してください。
-8084: "Unable to discover applications due to VMware error: <Exception from VMware>" (次の VMware エラーのため、アプリケーションを検出できません:) | Azure Migrate アプライアンスは、アプリケーションの検出に VMware API を使用しています。 この問題は、アプリケーションを検出しようとしている時に vCenter Server から例外がスローされた場合に発生することがあります。 VMware からのエラー メッセージは、ポータルに表示されるエラー メッセージに表示されます。 | [VMware ドキュメント](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html)でメッセージを検索し、修正手順に従ってください。 修正できない場合は、Microsoft サポートにお問い合わせください。
+--- | --- | ---
+9000: VMware ツールの状態を検出できません。     |   VMware ツールがインストールされていないか、破損している可能性があります。    |   VMware ツールが VM にインストールされ、実行されていることを確認します。
+9001: VMware ツールがインストールされていません。     |   VMware ツールがインストールされていないか、破損している可能性があります。    |   VMware ツールが VM にインストールされ、実行されていることを確認します。
+9002: VMware ツールが実行されていません。   |   VMware ツールがインストールされていないか、破損している可能性があります。    |   VMware ツールが VM にインストールされ、実行されていることを確認します。
+9003: オペレーティング システムの種類がゲスト VM の検出でサポートされていません。    |   サーバーで実行されているオペレーティング システムが Windows でも Linux でもありません。    |   サポートされているオペレーティング システムの種類は、Windows と Linux のみです。 サーバーが実際に Windows または Linux の場合は、vCenter Server で指定されているオペレーティング システムの種類を確認します。
+9004: VM が実行されていません。     |   VM の電源がオフになっています。  |   VM の電源がオンか確認します。
+9005: オペレーティング システムの種類がゲスト VM の検出でサポートされていません。    |   オペレーティング システムの種類がゲスト VM の検出でサポートされていません。     |   サポートされているオペレーティング システムの種類は、Windows と Linux のみです。
+9006: ゲストからメタデータ ファイルをダウンロードするための URL が空です。     |   これは、検出エージェントが予期したとおりに動作していない場合に発生することがあります。    |   この問題は、24 時間以内に自動的に解決されます。 引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。
+9007: ゲスト VM で検出タスクを実行しているプロセスが見つかりません。   |   これは、検出エージェントが正常に動作していない場合に発生する可能性があります。   |   この問題は、24 時間以内に自動的に解決されます。 引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。
+9008: ゲスト VM のプロセスの状態を取得できません。   |   この問題は、内部エラーのために発生します。   |   この問題は、24 時間以内に自動的に解決されます。 引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。
+9009: Windows UAC により、サーバーでの検出タスクの実行が妨げられました。  |   サーバーの Windows ユーザー アカウント制御 (UAC) の設定の制限により、インストールされているアプリケーションの検出が妨げられています。  |   サーバーの [ユーザー アカウント制御] の設定で、UAC のレベル設定が下位の 2 つのいずれかになるように構成します。
+9010: VM の電源がオフになっています。     |   VM の電源がオフになっています。  |   VM の電源がオンか確認します。
+9011:検出されたメタデータ ファイルがゲスト VM のファイル システムに見つかりません。    |   この問題は、内部エラーのために発生します。   |   この問題は、24 時間以内に自動的に解決されます。 引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。
+9012:検出されたメタデータ ファイルが空です。     |   この問題は、内部エラーのために発生します。   |   この問題は、24 時間以内に自動的に解決されます。 引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。
+9013:ログインのたびに新しい一時プロファイルが作成されます。    |   VMware VM へのログインごとに新しい一時プロファイルが作成されます。    |   Microsoft サポートに解決方法をお問い合わせください。
+9014:ゲスト VM ファイル システムからメタデータを取得できません。     |   ESXi ホストへの接続がありません    |   VM を実行している ESXi ホスト上のポート 443 にアプライアンスが接続できることを確認します
+9015:vCenter ユーザー アカウントでゲスト操作ロールが有効になっていません   |   vCenter ユーザー アカウントでゲスト操作ロールが有効になっていません。   |   vCenter ユーザー アカウントでゲスト操作ロールが有効になっていることを確認してください。
+9016:ゲスト操作エージェントが古くなっているため、検出できません。   |   VMware ツールが正しくインストールされていないか、最新の状態ではありません。    |   VMware ツールが正しくインストールされ、最新の状態になっていることを確認してください。
+9017:検出されたメタデータを含むファイルが VM 上に見つかりません。  |   この問題は、内部エラーのために発生します。   |   Microsoft サポートに解決方法をお問い合わせください。
+9018:PowerShell がゲスト VM にインストールされていません。  |   PowerShell がゲスト VM で利用できません。    |   ゲスト VM に PowerShell をインストールしてください。
+9019:ゲスト VM 操作エラーのため、検出できませんでした。     |   VM で VMware ゲスト操作が失敗しました。    |   VM の資格情報が有効であること、およびゲスト VM の資格情報で指定されたユーザー名が UPN 形式であることを確認してください。
+9020:ファイル作成のアクセス許可が拒否されました。    |   ユーザーまたはグループ ポリシーに関連付けられているロールにより、ユーザーがフォルダー内にファイルを作成することが制限されています    |   指定されたゲスト ユーザーが、フォルダー内のファイルの作成アクセス許可を持っているかどうかを確認します。 フォルダーの名前については、Server Assessment の **[Notifications]\(通知\)** を参照してください。
+9021:システムの一時パスにファイルを作成できません。     |   VMware ツールで、ユーザー一時パスではなくシステム一時パスが報告されます。    |   VMware ツールのバージョンを 10287 (NGC/VI クライアント形式) より上にアップグレードします。
+9022:WMI オブジェクトへのアクセスが拒否されました。    |   ユーザーまたはグループ ポリシーに関連付けられているロールにより、ユーザーが WMI オブジェクトにアクセスすることが制限されています。  |   Microsoft サポートにお問い合わせください。
+9023:SystemRoot 環境変数の値が空であるため、PowerShell を実行できません。    |   SystemRoot 環境変数の値が、ゲスト VM の場合に空です。     |   Microsoft サポートに解決方法をお問い合わせください。
+9024:TEMP 環境変数の値が空であるため、検出できません。    |   TEMP 環境変数の値が、ゲスト VM の場合に空です。   |   Microsoft サポートにお問い合わせください。
+9025:PowerShell がゲスト VM で破損しています。  |   ゲスト VM で PowerShell が破損しています。    |   PowerShell をゲスト VM に再インストールし、ゲスト VM で PowerShell を実行できるかどうかを確認します。
+9026: VM でゲスト操作を実行できません。  |   VM の状態のため、VM でゲスト操作を実行できません。   |   Microsoft サポートに解決方法をお問い合わせください。
+9027: ゲスト操作エージェントが VM で実行されていません。   |   仮想マシン内で実行されているゲスト操作エージェントに接続できませんでした。    |   Microsoft サポートに解決方法をお問い合わせください。
+9028: VM のディスク ストレージが不足しているため、ファイルを作成できません。     |   ディスクに十分な領域がありません。   |   VM のディスク ストレージに十分な領域があることを確認します。
+9029: 指定されたゲスト VM の資格情報では PowerShell にアクセスできません。   |   PowerShell へのアクセスはユーザーに許可されていません。     |   アプライアンスで追加されたユーザーが、ゲスト VM 上の PowerShell にアクセスできることを確認します。
+9030: ESXi ホストが切断されているため、検出されたメタデータを収集できません。     |   ESXi ホストは切断状態です。   |   VM を実行している ESXi ホストが接続されていることを確認します。
+9031: ESXi ホストが応答しないため、検出されたメタデータを収集できません。   |   リモート ホストの状態が無効です。    |   VM を実行している ESXi ホストが実行されていて、接続されていることを確認します。
+9032: 内部エラーのため、検出できません。   |   この問題は、内部エラーのために発生します。   |   Microsoft サポートに解決方法をお問い合わせください。
+9033: VM のユーザー名に無効な文字が含まれているため、検出できません。     |   ユーザー名で無効な文字が検出されました。   |   無効な文字がないことを確認して、VM の資格情報をもう一度指定します。
+9034: 指定されたユーザー名は UPN 形式ではありません。    |   ユーザー名が UPN 形式ではありません。  |   ユーザー名がユーザー プリンシパル名 (UPN) 形式であることを確認します。
+9035: Powershell の言語モードが "完全言語" に設定されていないため、検出できません。  |   ゲスト VM の Powershell の言語モードが完全言語に設定されていません。   |   PowerShell の言語モードが "完全言語" に設定されていることを確認します。
+10000: オペレーティング システムの種類がサポートされていません。   |   サーバーで実行されているオペレーティング システムが Windows でも Linux でもありません。    |   サポートされているオペレーティング システムの種類は、Windows と Linux のみです。
+10001: サーバー検出用のスクリプトがアプライアンスに見つかりません。    |   検出が正常に機能していません。   |   Microsoft サポートに解決方法をお問い合わせください。
+10002: 検出タスクが時間内に完了しませんでした。     |   検出エージェントが正常に機能していません。     |   この問題は、24 時間以内に自動的に解決されます。 引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。
+10003: 検出タスクを実行するプロセスがエラーで終了しました。    |   検出タスクを実行するプロセスがエラーで終了しました。  |   この問題は、24 時間以内に自動的に解決されます。 問題が解決しない場合は、Microsoft サポートにお問い合わせください。
+10004: ゲスト オペレーティング システムの種類に対する資格情報が提供されていません。  |   この OS の種類のマシンにアクセスするための資格情報が、Azure Migrate アプライアンスで指定されていません。    |   アプライアンスでマシンの資格情報を追加します
+10005: 指定された資格情報が無効です。   |   アプライアンスがサーバーにアクセスするために指定された資格情報が正しくありません。  |   アプライアンスに指定した資格情報を更新して、サーバーがその資格情報を使用してアクセスできることを確認します。
+10006: ゲスト OS の種類は、資格情報ストアでサポートされていません。  |   サーバーで実行されているオペレーティング システムが Windows でも Linux でもありません。    |   サポートされているオペレーティング システムの種類は、Windows と Linux のみです。
+10007:検出されたメタデータを処理できません。    |   JSON を逆シリアル化しようとしている間にエラーが発生しました。    |   Microsoft サポートに解決方法をお問い合わせください。
+10008: サーバーでファイルを作成できません。    |  この問題は、内部エラーのために発生する可能性があります。    |   Microsoft サポートに解決方法をお問い合わせください。
+10009: 検出されたメタデータをサーバー上のファイルに書き込めません。  |   この問題は、内部エラーのために発生します。   |   Microsoft サポートに解決方法をお問い合わせください。
+
 
 
 

@@ -16,19 +16,19 @@ ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdc7c9dba49bf37db1f039d43b0450c65884c74b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02490839a9e35695ae2e8b3f750e139ad7413aa4
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60245499"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280215"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect Sync: 宣言型のプロビジョニングの式について
 Azure AD Connect Sync は、Forefront Identity Manager 2010 で初めて導入された宣言型のプロビジョニングに基づいています。 これにより、コンパイル済みコードを記述することなく完全な ID 統合ビジネス ロジックを実装できます。
 
 宣言型のプロビジョニングの不可欠な要素は、属性フローに使用される式言語です。 使用される言語は、Microsoft ® Visual Basic ® for Applications (VBA) のサブセットです。 この言語は、Microsoft Office で使用され、VBScript の経験を持つユーザーも理解できます。 宣言型のプロビジョニングの式言語は、関数を使用するだけであり、構造化言語ではありません。 メソッドやステートメントはありません。 代わりに、関数を入れ子にして、プログラム フローを記述します。
 
-詳細については、「 [Office 2013 Visual Basic for Applications 言語リファレンスへようこそ](https://msdn.microsoft.com/library/gg264383.aspx)」を参照してください。
+詳細については、「 [Office 2013 Visual Basic for Applications 言語リファレンスへようこそ](/office/vba/api/overview/language-reference)」を参照してください。
 
 属性は厳密に型指定されます。 関数は、正しい型の属性のみを受け取ります。 また、大文字と小文字が区別されます。 関数名と属性名のいずれも、適切に大文字と小文字を使用する必要があります。そのようにしない場合、エラーがスローされます。
 
@@ -100,4 +100,3 @@ Active Directory Connector は、受信同期ルールについて次のパラ�
 **参照トピック**
 
 * [Azure AD Connect Sync: 関数リファレンス](reference-connect-sync-functions-reference.md)
-

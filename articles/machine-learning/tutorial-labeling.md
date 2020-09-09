@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: d960c8225cbb22c221ecaec1b7c49b5bb20c1429
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 60dd9631df0b997ce39134002bdb6ed9f69336ed
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203643"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319271"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>チュートリアル:多クラス画像分類のラベル付けプロジェクトを作成する 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -77,13 +77,13 @@ Azure Machine Learning データストアは、サブスクリプション ID �
 
 ### <a name="create-a-labeling-project"></a>ラベル付けプロジェクトを作成する
 
-ラベラーのリストが完成し、ラベルを付けるデータにアクセスできるようになったので、ラベル付けプロジェクトを作成します。
+ラベルを付けるデータにアクセスできるようになったので、ラベル付けプロジェクトを作成します。
 
 1. ページの上部で **[プロジェクト]** を選択します。
 
 1. **[+ プロジェクトの追加]** を選択します。
 
-    ![プロジェクトの作成](media/tutorial-labeling/create-project.png)
+    :::image type="content" source="media/tutorial-labeling/create-project.png" alt-text="プロジェクトの作成":::
 
 ### <a name="project-details"></a>プロジェクトの詳細
 
@@ -110,6 +110,12 @@ Azure Machine Learning データストアは、サブスクリプション ID �
 
 1. **[次へ]** を選択してプロジェクトの作成を続けます。
 
+### <a name="incremental-refresh"></a>増分更新
+
+新しい画像をデータセットに追加する予定がある場合、増分更新によって、それらの新しい画像が検出されてプロジェクトに追加されます。  この機能を有効にすると、新しい画像がないかプロジェクトによって定期的にチェックされます。  このチュートリアルでは新しい画像をデータストアに追加する予定はないので、この機能はオフにしておきます。
+
+**[次へ]** をクリックして続行します。
+
 ### <a name="label-classes"></a>ラベル クラス
 
 1. **[ラベル クラス]** フォームで、ラベル名を入力し、 **[+ ラベルの追加]** を選択して次のラベルを入力します。  このプロジェクトで使用するラベルは、**Cat** (猫)、**Dog** (犬)、**Uncertain** (不明) です。
@@ -124,7 +130,7 @@ Azure Machine Learning データストアは、サブスクリプション ID �
 
 1. **[次へ]** を選択します。
 
-1. **[ML によるラベル付け]** フォームで、チェックボックスをオフのままにします。 ML によるラベル付けでは、このチュートリアルで使用するものよりも多くのデータが必要です。
+1. Enterprise ワークスペースを使用している場合は、 **[ML によるラベル付け]** セクションが表示されます。  チェック ボックスはオフのままにします。 ML によるラベル付けでは、このチュートリアルで使用するものよりも多くのデータが必要です。
 
 1. **[プロジェクトの作成]** を選択します。
 
@@ -140,9 +146,7 @@ Azure Machine Learning データストアは、サブスクリプション ID �
 
 1. [Machine Learning Studio](https://ml.azure.com) で、左側にある **[データのラベル付け]** を選択してプロジェクトを特定します。  
 
-1. 一覧でプロジェクト名を選択します。
-
-1. プロジェクト名の下の **[ラベル データ]** を選択します。
+1. プロジェクトの **[ラベル リンク]** を選択します。
 
 1. 指示を読み、 **[タスク]** を選択します。
 

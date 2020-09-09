@@ -1,5 +1,5 @@
 ---
-title: Go を使用して接続する - Azure Database for PostgreSQL - Single Server
+title: クイック スタート:Go を使用して接続する - Azure Database for PostgreSQL - Single Server
 description: このクイックスタートでは、Azure Database for PostgreSQL - Single Server に接続してデータを照会するために使用できる、Go プログラミング言語のサンプルを紹介します。
 author: rachel-msft
 ms.author: raagyema
@@ -8,14 +8,15 @@ ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: b44759ce4e65e55a3d143fd178764e8ae6e16e89
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e8a44de5b6da4c9a125b5c035d0344115930cfe2
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74767927"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182903"
 ---
-# <a name="azure-database-for-postgresql---single-server-use-go-language-to-connect-and-query-data"></a>Azure Database for PostgreSQL - Single Server: Go 言語を使った接続とデータの照会
+# <a name="quickstart-use-go-language-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>クイック スタート:Go 言語を使用して Azure Database for PostgreSQL - Single Server に接続してデータを照会する
+
 このクイックスタートでは、[Go](https://golang.org/) 言語 (golang) で記述されたコードを使用して、Azure Database for PostgreSQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 この記事では、Go を使用した開発には慣れているものの、Azure Database for PostgreSQL の使用は初めてであるユーザーを想定しています。
 
 ## <a name="prerequisites"></a>前提条件
@@ -31,7 +32,7 @@ ms.locfileid: "74767927"
 2. スタート メニューからコマンド プロンプトを起動します。
 3. プロジェクト用のフォルダーを作成します (例: `mkdir  %USERPROFILE%\go\src\postgresqlgo`)。
 4. ディレクトリをプロジェクト フォルダーに変更します (例: `cd %USERPROFILE%\go\src\postgresqlgo`)。
-5. GOPATH の環境変数がソース コード ディレクトリをポイントするように設定します。 `set GOPATH=%USERPROFILE%\go`
+5. GOPATH の環境変数がソース コード ディレクトリをポイントするように設定します。 `set GOPATH=%USERPROFILE%\go`.
 6. `go get github.com/lib/pq` コマンドを実行して、[純粋な Go Postgres ドライバー (pq)](https://github.com/lib/pq) をインストールします。
 
    まとめると、Go をインストールしてから、コマンド プロンプトで以下のコマンドを実行します。

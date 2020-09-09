@@ -5,16 +5,17 @@ author: haroldwongms
 manager: mdotson
 ms.service: virtual-machines-linux
 ms.subservice: workloads
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 8d76588ae9124d34902659cc0149063400b6e766
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.custom: devx-track-ansible
+ms.openlocfilehash: 8e34f73f1c403e3a7d21c6c30844f8b9073b3113
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81759523"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373574"
 ---
 # <a name="post-deployment-tasks"></a>デプロイ後タスク
 
@@ -159,7 +160,7 @@ OpenShift に Log Analytics エージェントを追加するには 3 つの方�
 - OpenShift の各ノードで Azure Monitor VM 拡張機能を有効にする
 - Log Analytics エージェントを OpenShift デーモン セットとしてインストールする
 
-詳細については、[手順](https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift)全体を参照してください。
+詳細については、[手順](../../azure-monitor/insights/containers.md#configure-a-log-analytics-agent-for-red-hat-openshift)全体を参照してください。
 
 ## <a name="configure-metrics-and-logging"></a>メトリックとログを構成する
 

@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/03/2020
+ms.date: 08/27/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d2cf1a2e2ab9cf2d6e35aa12b5b0f8ddc04ad0e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 517acc5137d70c722d8defade1e218a3b2e78f86
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78301950"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89052453"
 ---
 VNet は、Resource Manager デプロイ モデルと Azure portal を使用し、以下の手順に従って作成できます。 仮想ネットワークの詳細については、[Virtual Network の概要](../articles/virtual-network/virtual-networks-overview.md)に関するページを参照してください。
 
@@ -46,7 +46,6 @@ VNet は、Resource Manager デプロイ モデルと Azure portal を使用し�
 
    ![[IP アドレス] タブ](./media/vpn-gateway-basic-vnet-rm-portal-include/addresses.png "[IP アドレス] タブ")  
    - **[IPv4 アドレス空間]** : 既定では、アドレス空間が自動的に作成されます。 アドレス空間をクリックして、独自の値が反映されるように調整できます。 また、新しいアドレス空間を追加することもできます。
-   - **[IPv6]** : 構成に IPv6 アドレス空間が必要な場合、 **[IPv6 アドレス空間の追加]** ボックスをオンにし、その情報を入力します。
    - **サブネット**:既定のアドレス空間を使用すると、既定のサブネットが自動的に作成されます。 アドレス空間を変更する場合は、サブネットを追加する必要があります。 **[+ サブネットの追加]** を選択して、 **[サブネットの追加]** ウィンドウを開きます。 次の設定を構成し、 **[追加]** を選択して値を追加します。
       - **[サブネット名]** : この例では、サブネットに "FrontEnd" という名前が付いています。
       - **[サブネットのアドレス範囲]** : このサブネットのアドレス範囲です。

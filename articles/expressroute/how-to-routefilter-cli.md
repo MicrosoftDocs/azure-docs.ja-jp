@@ -2,17 +2,18 @@
 title: ExpressRoute:ルート フィルター - Microsoft ピアリング:Azure CLI
 description: この記事では、Azure CLI を使って Microsoft ピアリングにルート フィルターを構成する方法について説明します
 services: expressroute
-author: anzaman
+author: kumudD
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/07/2018
-ms.author: anzaman
-ms.openlocfilehash: c3c50a005e119890fb17fcf7b3114a747bbe34bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: kumud
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e4098d0f0e81ae2abe8146f0f8d5119173a04d8c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74033414"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504553"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>Microsoft ピアリングにルート フィルターを構成する:Azure CLI
 

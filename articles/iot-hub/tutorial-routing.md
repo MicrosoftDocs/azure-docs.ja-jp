@@ -8,13 +8,17 @@ services: iot-hub
 ms.topic: tutorial
 ms.date: 03/12/2019
 ms.author: robinsh
-ms.custom: mvc
-ms.openlocfilehash: 38a40d628b883c0e7ada824d47d3fdf3d29caf93
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom:
+- mvc
+- 'Role: Cloud Development'
+- 'Role: Data Analytics'
+- devx-track-azurecli
+ms.openlocfilehash: 892dad3963e9da3560acc2c782c3d14db246ea78
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74084380"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500591"
 ---
 # <a name="tutorial-use-the-azure-cli-and-azure-portal-to-configure-iot-hub-message-routing"></a>チュートリアル:Azure CLI と Azure portal を使用して IoT Hub のメッセージ ルーティングを構成する
 

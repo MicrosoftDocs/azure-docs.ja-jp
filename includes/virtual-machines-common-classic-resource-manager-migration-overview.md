@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: 4e07334e859f2c1401547cc3f88988830b71c5e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b874cefc2521089da02b90b9241be93e80836d6e
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77192937"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507514"
 ---
 この記事では、サービスとしてのインフラストラクチャ (IaaS) のリソースをクラシック デプロイ モデルから Resource Manager デプロイ モデルに移行する方法と、サブスクライブ内で共存する 2 つのデプロイ モデルから仮想ネットワークのサイト間ゲートウェイを使用してリソースに接続する方法の詳細を説明します。 [Azure Resource Manager の機能と利点](../articles/azure-resource-manager/management/overview.md)の詳細を参照してください。 
 
@@ -22,9 +22,9 @@ Resource Manager では、テンプレートを使用して複雑なアプリケ
 
 機能面について言うと、クラシック デプロイ モデルの計算、ネットワーク、およびストレージ機能のほとんどが、Azure Resource Manager でもサポートされています。 Azure Resource Manager の新機能を活用するには、クラシック デプロイ モデルから既存のデプロイを移行します。
 
-## <a name="supported-resources-for-migration"></a>移行がサポートされているリソース
-次のクラシック IaaS リソースは、移行中にサポートされます。
+## <a name="supported-resources--configurations-for-migration"></a>移行がサポートされているリソースと構成
 
+### <a name="supported-resources-for-migration"></a>移行がサポートされているリソース
 * Virtual Machines
 * 可用性セット
 * ストレージ アカウント
@@ -34,6 +34,13 @@ Resource Manager では、テンプレートを使用して複雑なアプリケ
 * ネットワーク セキュリティ グループ
 * ルート テーブル
 * 予約済み IP
+
+## <a name="supported-configurations-for-migration"></a>移行がサポートされている構成
+次のクラシック IaaS リソースは、移行中にサポートされます。
+
+| サービス | 構成 |
+| --- | --- |
+| Azure AD Domain Services | [Azure AD ドメイン サービスを含む仮想ネットワーク](https://docs.microsoft.com/azure/active-directory-domain-services/migrate-from-classic-vnet) |
 
 ## <a name="supported-scopes-of-migration"></a>移行のサポート対象範囲
 コンピューティング リソース、ネットワーク リソース、ストレージ リソースの移行を完了するには、4 つの方法があります。
@@ -74,12 +81,12 @@ Resource Manager デプロイ モデルでは、既定でアプリケーショ�
 > Resource Manager デプロイ モデルには、従来のイメージおよびディスクという概念がありません。 クラシック イメージやディスクは、ストレージ アカウントを移行すると Resource Manager スタックには表示されなくなりますが、バッキング VHD はストレージ アカウントに残ります。
 
 次のスクリーンショットは、Azure portal を使用してクラシック ストレージ アカウントを Azure Resource Manager ストレージ アカウントにアップグレードする方法を示しています。
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. ストレージ アカウントに移動します。
-3. **[設定]** セクションで、 **[ARM への移行]** をクリックします。
+3. **[設定]** セクションで、**[ARM への移行]** をクリックします。
 4. **[検証]** をクリックして、移行が可能かどうかを確かめます。
-5. 検証に合格したら、 **[準備]** をクリックして移行済みのストレージ アカウントを作成します。
-6. **yes** と入力して移行を確定し、 **[コミット]** をクリックして移行を完了します。
+5. 検証に合格したら、**[準備]** をクリックして移行済みのストレージ アカウントを作成します。
+6. **yes** と入力して移行を確定し、**[コミット]** をクリックして移行を完了します。
 
     ![ストレージ アカウントの検証](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-1.png)
     
@@ -129,5 +136,4 @@ Resource Manager デプロイ モデルでは、既定でアプリケーショ�
 | Azure App Service |App Service 環境を含む仮想ネットワーク |現在これはサポートされていません。 |
 | Azure HDInsight |HDInsight サービスを含む仮想ネットワーク |現在これはサポートされていません。 |
 | Microsoft Dynamics Lifecycle Services |Dynamics Lifecycle Services によって管理される仮想マシンを含む仮想ネットワーク |現在これはサポートされていません。 |
-| Azure AD Domain Services |Azure AD ドメイン サービスを含む仮想ネットワーク |現在これはサポートされていません。 |
 | Azure API Management |Azure API Management デプロイを含む仮想ネットワーク |現在これはサポートされていません。 IaaS VNET を移行するには、API Management デプロイの VNET を変更します。この操作では停止時間は発生しません。 |

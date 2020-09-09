@@ -3,25 +3,27 @@ title: Azure AD Domain Services を使用して SMB 経由でファイル デー
 description: Azure Active Directory Domain Services を使用して Azure Files に対する Server Message Block (SMB) 経由の ID ベースの認証を有効にする方法について説明します。 ドメインに参加している Windows 仮想マシン (VM) は、Azure AD の資格情報を使用して Azure ファイル共有にアクセスできます。
 author: roygara
 ms.service: storage
-ms.topic: conceptual
-ms.date: 02/21/2020
+ms.topic: how-to
+ms.date: 04/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: cb173bcbf7cd163dca16c211d45018e0fe056edd
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.custom: contperfq1
+ms.openlocfilehash: f87d8c32902cfcde3207909da16fae17cc6ff68f
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80666847"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294171"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Azure Files に対する Azure Active Directory Domain Services 認証を有効にする
 
-[!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
+[Azure Files](storage-files-introduction.md)  では、オンプレミスの Active Directory Domain Services (AD DS) と Azure Active Directory Domain Services (Azure AD DS) という 2 種類のドメイン サービスを介した、サーバー メッセージ ブロック (SMB) 経由の ID ベースの認証がサポートされます。[「しくみ」セクション](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works)を参照して、認証用の適切なドメイン サービスを選択することを強くお勧めします。 選択するドメイン サービスによって設定は異なります。 この記事では、Azure ファイル共有での認証用に Azure AD DS を有効にして構成する方法に重点を置いて説明します。
 
-SMB を使用した Azure ファイル共有への Azure AD 認証の概要については、[SMB を使用した Azure Files への Azure Active Directory 認証の概要](storage-files-active-directory-overview.md)に関する記事を参照してください。 この記事では、Azure Files で Azure Active Directory Domain Services (Azure AD DS) を使用して認証を有効にする方法に焦点を当てています。
+Azure ファイル共有を初めて使用する場合は、次の一連の記事を読む前に、[計画ガイド](storage-files-planning.md)に目を通すことをお勧めします。
 
 > [!NOTE]
 > Azure Files では、Azure AD DS と RC4-HMAC 暗号化を使用した Kerberos 認証がサポートされています。 AES Kerberos 暗号化はまだサポートされていません。
+> Azure Files では、Azure AD と完全に同期する Azure AD DS の認証がサポートされています。 Azure AD DS で範囲指定された同期を有効にし、Azure AD から限定された ID のセットのみを同期する場合、認証と承認はサポートされていません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -55,6 +57,10 @@ Azure ファイル共有への SMB 経由の Azure AD を有効にする前に�
 
     VM とファイル共有が正しく構成されていることを確認するには、ストレージ アカウント キーを使用してファイル共有をマウントします。 詳細については、「[Windows で Azure ファイル共有をマウントして共有にアクセスする](storage-how-to-use-files-windows.md)」を参照してください。
 
+## <a name="regional-availability"></a>リージョン別の提供状況
+
+Azure AD DS を使用した Azure Files 認証は、[すべての Azure パブリック リージョン](https://azure.microsoft.com/global-infrastructure/locations/)で利用できます。
+
 ## <a name="overview-of-the-workflow"></a>ワークフローの概要
 
 SMB を使用した Azure ファイル共有への Azure AD DS 認証を有効にする前に、Azure AD と Azure Storage 環境が正しく構成されていることを確認してください。 [前提条件](#prerequisites)を参照して、必要な手順をすべて完了したことを確認することをお勧めします。
@@ -70,13 +76,13 @@ SMB を使用した Azure ファイル共有への Azure AD DS 認証を有効�
 
 ![SMB を使用した Azure Files への Azure AD ワークフローを示す図](media/storage-files-active-directory-enable/azure-active-directory-over-smb-workflow.png)
 
-## <a name="1-enable-azure-ad-ds-authentication-for-your-account"></a>1.アカウントへの Azure AD DS 認証を有効にする
+## <a name="enable-azure-ad-ds-authentication-for-your-account"></a>アカウントへの Azure AD DS 認証を有効にする
 
 Azure Files への SMB 経由の Azure AD DS 認証を有効にするには、Azure portal、Azure PowerShell、または Azure CLI を使用して、ストレージ アカウントでプロパティを設定できます。 このプロパティを設定すると、関連付けられている Azure AD DS のデプロイにより、ストレージ アカウントが暗黙的に "ドメイン参加" します。 その後、ストレージ アカウント内のすべての新規および既存のファイル共有に対する、SMB を使用した Azure AD DS 認証が有効になります。
 
 SMB を使用した Azure AD DS 認証を有効にするには、Azure AD テナントに Azure AD DS が正常にデプロイされている必要があることに注意してください。 詳細については、[前提条件](#prerequisites)を参照してください。
 
-### <a name="azure-portal"></a>Azure portal
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 [Azure portal](https://portal.azure.com) を使用して SMB 経由の Azure AD DS 認証を有効にするには、次の手順に従います。
 
@@ -89,7 +95,7 @@ SMB を使用した Azure AD DS 認証を有効にするには、Azure AD テナ
 
 ![Azure portal で SMB 経由の Azure AD DS 認証を有効にする](media/storage-files-active-directory-enable/portal-enable-active-directory-over-smb.png)
 
-### <a name="powershell"></a>PowerShell  
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Azure PowerShell を使用して SMB 経由で Azure AD DS 認証を有効にするには、最新の Az モジュール (2.4 以降) または Az.Storage モジュール (1.5 以降) をインストールします。 PowerShell のインストールの詳細については、[PowerShellGet を使用した Windows への Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/install-Az-ps)に関する記事を参照してください。
 
@@ -115,7 +121,7 @@ Set-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
 ```
 
 
-### <a name="azure-cli"></a>Azure CLI
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure CLI を使用して SMB 経由の Azure AD 認証を有効にするには、最新バージョンの CLI (バージョン2.0.70 以降) をインストールします。 Azure CLI のインストール方法については、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)」を参照してください。
 
@@ -132,10 +138,11 @@ az storage account create -n <storage-account-name> -g <resource-group-name> --e
 # Update a new storage account
 az storage account update -n <storage-account-name> -g <resource-group-name> --enable-files-aadds $true
 ```
+---
 
 [!INCLUDE [storage-files-aad-permissions-and-mounting](../../../includes/storage-files-aad-permissions-and-mounting.md)]
 
-これで、SMB を使用した Azure AD DS 認証が有効になり、Azure ファイル共有へのアクセスを提供するカスタム ロールが Azure AD の ID に割り当てられました。 ファイル共有へのアクセスを他のユーザーに許可する場合は、ID を使用するための[アクセス許可の割り当て](#2-assign-access-permissions-to-an-identity)に関する指示と、「[SMB 経由の NTFS アクセス許可を構成する](#3-configure-ntfs-permissions-over-smb)」のセクションの手順に従ってください。
+これで、SMB を使用した Azure AD DS 認証が有効になり、Azure ファイル共有へのアクセスを提供するカスタム ロールが Azure AD の ID に割り当てられました。 ファイル共有へのアクセスを他のユーザーに許可する場合は、ID を使用するための[アクセス許可の割り当て](#assign-access-permissions-to-an-identity)に関する指示と、「[SMB 経由の NTFS アクセス許可を構成する](#configure-ntfs-permissions-over-smb)」のセクションの手順に従ってください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,17 +8,17 @@ manager: twooley
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/19/2019
 ms.author: alkohli
-ms.openlocfilehash: b46e9ee8fc3e14981a01cc2425a8ce55d06c5a9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5d656fd8757580b8ce96acf168e92fc847d400ca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65150737"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514070"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>StorSimple 5000-7000 シリーズのデータを Azure File Sync に移行する
 

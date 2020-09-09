@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/02/2020
 ms.author: rajanaki
-ms.openlocfilehash: 67298ecf0c17feee2d36bb8774cae37b1ca81381
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 43b74db0059c003d64558f5b61f1c5cc2bf52759
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618973"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038054"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure から Azure へのレプリケーションに使用されるモビリティ サービスの自動更新
 
@@ -79,16 +79,13 @@ Site Recovery で拡張機能の更新を管理するには、いくつかの方
 param(
     [Parameter(Mandatory=$true)]
     [String] $VaultResourceId,
-
     [Parameter(Mandatory=$true)]
     [ValidateSet("Enabled",'Disabled')]
     [Alias("Enabled or Disabled")]
     [String] $AutoUpdateAction,
-
     [Parameter(Mandatory=$false)]
     [String] $AutomationAccountArmId
 )
-
 $SiteRecoveryRunbookName = "Modify-AutoUpdateForVaultForPatner"
 $TaskId = [guid]::NewGuid().ToString()
 $SubscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -99,7 +96,6 @@ $AadAuthority = "https://login.windows.net/"
 $AadAudience = "https://management.core.windows.net/"
 $AzureEnvironment = "AzureCloud"
 $Timeout = "160"
-
 function Throw-TerminatingErrorMessage
 {
         Param
@@ -108,10 +104,8 @@ function Throw-TerminatingErrorMessage
         [String]
         $Message
         )
-
     throw ("Message: {0}, TaskId: {1}.") -f $Message, $TaskId
 }
-
 function Write-Tracing
 {
         Param
@@ -120,19 +114,14 @@ function Write-Tracing
         [ValidateSet("Informational", "Warning", "ErrorLevel", "Succeeded", IgnoreCase = $true)]
                 [String]
         $Level,
-
         [Parameter(Mandatory=$true)]
         [String]
         $Message,
-
             [Switch]
         $DisplayMessageToUser
         )
-
     Write-Output $Message
-
 }
-
 function Write-InformationTracing
 {
         Param
@@ -141,10 +130,8 @@ function Write-InformationTracing
         [String]
         $Message
         )
-
     Write-Tracing -Message $Message -Level Informational -DisplayMessageToUser
 }
-
 function ValidateInput()
 {
     try
@@ -154,20 +141,17 @@ function ValidateInput()
             $ErrorMessage = "The vault resource id should start with /subscriptions."
             throw $ErrorMessage
         }
-
         $Tokens = $VaultResourceId.SubString(1).Split("/")
         if(!($Tokens.Count % 2 -eq 0))
         {
             $ErrorMessage = ("Odd Number of tokens: {0}." -f $Tokens.Count)
             throw $ErrorMessage
         }
-
         if(!($Tokens.Count/2 -eq 4))
         {
             $ErrorMessage = ("Invalid number of resource in vault ARM id expected:4, actual:{0}." -f ($Tokens.Count/2))
             throw $ErrorMessage
         }
-
         if($AutoUpdateAction -ieq "Enabled" -and [string]::IsNullOrEmpty($AutomationAccountArmId))
         {
             $ErrorMessage = ("The automation account ARM id should not be null or empty when AutoUpdateAction is enabled.")
@@ -181,13 +165,11 @@ function ValidateInput()
         Throw-TerminatingErrorMessage -Message $ErrorMessage
     }
 }
-
 function Initialize-SubscriptionId()
 {
     try
     {
         $Tokens = $VaultResourceId.SubString(1).Split("/")
-
         $Count = 0
                 $ArmResources = @{}
         while($Count -lt $Tokens.Count)
@@ -195,7 +177,6 @@ function Initialize-SubscriptionId()
             $ArmResources[$Tokens[$Count]] = $Tokens[$Count+1]
             $Count = $Count + 2
         }
-
                 return $ArmResources["subscriptions"]
     }
     catch
@@ -204,7 +185,6 @@ function Initialize-SubscriptionId()
         throw
     }
 }
-
 function Invoke-InternalRestMethod($Uri, $Headers, [ref]$Result)
 {
     $RetryCount = 0
@@ -225,12 +205,10 @@ function Invoke-InternalRestMethod($Uri, $Headers, [ref]$Result)
             {
                 throw
             }
-
             Start-Sleep -Milliseconds 2000
         }
     }while($true)
 }
-
 function Invoke-InternalWebRequest($Uri, $Headers, $Method, $Body, $ContentType, [ref]$Result)
 {
     $RetryCount = 0
@@ -252,12 +230,10 @@ function Invoke-InternalWebRequest($Uri, $Headers, $Method, $Body, $ContentType,
             {
                 throw
             }
-
             Start-Sleep -Milliseconds 2000
         }
     }while($true)
 }
-
 function Get-Header([ref]$Header, $AadAudience, $AadAuthority, $RunAsConnectionName){
     try
     {
@@ -270,7 +246,6 @@ function Get-Header([ref]$Header, $AadAudience, $AadAuthority, $RunAsConnectionN
         $ClientCredential = New-Object Microsoft.IdentityModel.Clients.ActiveDirectory.ClientAssertionCertificate(
                 $ApplicationId,
                 $Secret)
-
         # Trim the forward slash from the AadAuthority if it exist.
         $AadAuthority = $AadAuthority.TrimEnd("/")
         $AuthContext = New-Object Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext(
@@ -287,21 +262,17 @@ function Get-Header([ref]$Header, $AadAudience, $AadAuthority, $RunAsConnectionN
         Throw-TerminatingErrorMessage -Message $ErrorMessage
     }
 }
-
 function Get-ProtectionContainerToBeModified([ref] $ContainerMappingList)
 {
     try
     {
         Write-InformationTracing ("Get protection container mappings : {0}." -f $VaultResourceId)
         $ContainerMappingListUrl = $ArmEndPoint + $VaultResourceId + "/replicationProtectionContainerMappings" + "?api-version=" + $AsrApiVersion
-
         Write-InformationTracing ("Getting the bearer token and the header.")
         Get-Header ([ref]$Header) $AadAudience $AadAuthority $RunAsConnectionName
-
         $Result = @()
         Invoke-InternalRestMethod -Uri $ContainerMappingListUrl -Headers $header -Result ([ref]$Result)
         $ContainerMappings = $Result[0]
-
         Write-InformationTracing ("Total retrieved container mappings: {0}." -f $ContainerMappings.Value.Count)
         foreach($Mapping in $ContainerMappings.Value)
         {
@@ -311,18 +282,15 @@ function Get-ProtectionContainerToBeModified([ref] $ContainerMappingList)
                 Write-InformationTracing ("Ignoring container mapping: {0} as the provider does not match." -f ($Mapping.Id))
                 continue;
             }
-
             if($Mapping.Properties.State -ine "Paired")
             {
                 Write-InformationTracing ("Ignoring container mapping: {0} as the state is not paired." -f ($Mapping.Id))
                 continue;
             }
-
             Write-InformationTracing ("Provider specific details {0}." -f ($Mapping.properties.providerSpecificDetails))
             $MappingAutoUpdateStatus = $Mapping.properties.providerSpecificDetails.agentAutoUpdateStatus
             $MappingAutomationAccountArmId = $Mapping.properties.providerSpecificDetails.automationAccountArmId
             $MappingHealthErrorCount = $Mapping.properties.HealthErrorDetails.Count
-
             if($AutoUpdateAction -ieq "Enabled" -and
                 ($MappingAutoUpdateStatus -ieq "Enabled") -and
                 ($MappingAutomationAccountArmId -ieq $AutomationAccountArmId) -and
@@ -332,7 +300,6 @@ function Get-ProtectionContainerToBeModified([ref] $ContainerMappingList)
                 Write-InformationTracing ("Ignoring container mapping: {0} as the auto update is already enabled and is healthy." -f ($Mapping.Id))
                 continue;
             }
-
             ($ContainerMappingList.Value).Add($Mapping.id)
         }
     }
@@ -343,7 +310,6 @@ function Get-ProtectionContainerToBeModified([ref] $ContainerMappingList)
         Throw-TerminatingErrorMessage -Message $ErrorMessage
     }
 }
-
 $OperationStartTime = Get-Date
 $ContainerMappingList = New-Object System.Collections.Generic.List[System.String]
 $JobsInProgressList = @()
@@ -352,22 +318,18 @@ $JobsCompletedFailedList = @()
 $JobsFailedToStart = 0
 $JobsTimedOut = 0
 $Header = @{}
-
 $AzureRMProfile = Get-Module -ListAvailable -Name AzureRM.Profile | Select Name, Version, Path
 $AzureRmProfileModulePath = Split-Path -Parent $AzureRMProfile.Path
 Add-Type -Path (Join-Path $AzureRmProfileModulePath "Microsoft.IdentityModel.Clients.ActiveDirectory.dll")
-
 $Inputs = ("Tracing inputs VaultResourceId: {0}, Timeout: {1}, AutoUpdateAction: {2}, AutomationAccountArmId: {3}." -f $VaultResourceId, $Timeout, $AutoUpdateAction, $AutomationAccountArmId)
 Write-Tracing -Message $Inputs -Level Informational -DisplayMessageToUser
 $CloudConfig = ("Tracing cloud configuration ArmEndPoint: {0}, AadAuthority: {1}, AadAudience: {2}." -f $ArmEndPoint, $AadAuthority, $AadAudience)
 Write-Tracing -Message $CloudConfig -Level Informational -DisplayMessageToUser
 $AutomationConfig = ("Tracing automation configuration RunAsConnectionName: {0}." -f $RunAsConnectionName)
 Write-Tracing -Message $AutomationConfig -Level Informational -DisplayMessageToUser
-
 ValidateInput
 $SubscriptionId = Initialize-SubscriptionId
 Get-ProtectionContainerToBeModified ([ref]$ContainerMappingList)
-
 $Input = @{
   "properties"= @{
     "providerSpecificInput"= @{
@@ -378,15 +340,12 @@ $Input = @{
   }
 }
 $InputJson = $Input |  ConvertTo-Json
-
 if ($ContainerMappingList.Count -eq 0)
 {
     Write-Tracing -Level Succeeded -Message ("Exiting as there are no container mappings to be modified.") -DisplayMessageToUser
     exit
 }
-
 Write-InformationTracing ("Container mappings to be updated has been retrieved with count: {0}." -f $ContainerMappingList.Count)
-
 try
 {
     Write-InformationTracing ("Start the modify container mapping jobs.")
@@ -395,16 +354,13 @@ try
     try {
             $UpdateUrl = $ArmEndPoint + $Mapping + "?api-version=" + $AsrApiVersion
             Get-Header ([ref]$Header) $AadAudience $AadAuthority $RunAsConnectionName
-
             $Result = @()
             Invoke-InternalWebRequest -Uri $UpdateUrl -Headers $Header -Method 'PATCH' `
                 -Body $InputJson  -ContentType "application/json" -Result ([ref]$Result)
             $Result = $Result[0]
-
             $JobAsyncUrl = $Result.Headers['Azure-AsyncOperation']
             Write-InformationTracing ("The modify container mapping job invoked with async url: {0}." -f $JobAsyncUrl)
             $JobsInProgressList += $JobAsyncUrl;
-
             # Rate controlling the set calls to maximum 60 calls per minute.
             # ASR throttling for set calls is 200 in 1 minute.
             Start-Sleep -Milliseconds 1000
@@ -415,7 +371,6 @@ try
             $JobsFailedToStart++
         }
     }
-
     Write-InformationTracing ("Total modify container mappings has been initiated: {0}." -f $JobsInProgressList.Count)
 }
 catch
@@ -424,7 +379,6 @@ catch
     Write-Tracing -Level ErrorLevel -Message $ErrorMessage -DisplayMessageToUser
     Throw-TerminatingErrorMessage -Message $ErrorMessage
 }
-
 try
 {
     while($JobsInProgressList.Count -ne 0)
@@ -458,18 +412,14 @@ try
             catch
             {
                 Write-InformationTracing ("The get job failed with: {0}. Ignoring the exception and retrying the next job." -f $_.Exception)
-
                 # The job on which the tracking failed, will be considered in progress and tried again later.
                 $JobsInProgressListInternal += $JobAsyncUrl
             }
-
             # Rate controlling the get calls to maximum 120 calls each minute.
             # ASR throttling for get calls is 10000 in 60 minutes.
             Start-Sleep -Milliseconds 500
         }
-
         Write-InformationTracing ("Jobs remaining {0}." -f $JobsInProgressListInternal.Count)
-
         $CurrentTime = Get-Date
         if($CurrentTime -gt $OperationStartTime.AddMinutes($Timeout))
         {
@@ -477,7 +427,6 @@ try
             $JobsTimedOut = $JobsInProgressListInternal.Count
             $JobsInProgressListInternal = @()
         }
-
         $JobsInProgressList = $JobsInProgressListInternal
     }
 }
@@ -487,13 +436,11 @@ catch
     Write-Tracing -Level ErrorLevel -Message $ErrorMessage  -DisplayMessageToUser
     Throw-TerminatingErrorMessage -Message $ErrorMessage
 }
-
 Write-InformationTracing ("Tracking modify cloud pairing jobs completed.")
 Write-InformationTracing ("Modify cloud pairing jobs success: {0}." -f $JobsCompletedSuccessList.Count)
 Write-InformationTracing ("Modify cloud pairing jobs failed: {0}." -f $JobsCompletedFailedList.Count)
 Write-InformationTracing ("Modify cloud pairing jobs failed to start: {0}." -f $JobsFailedToStart)
 Write-InformationTracing ("Modify cloud pairing jobs timedout: {0}." -f $JobsTimedOut)
-
 if($JobsTimedOut -gt  0)
 {
     $ErrorMessage = "One or more modify cloud pairing jobs has timedout."
@@ -506,7 +453,6 @@ elseif($JobsCompletedSuccessList.Count -ne $ContainerMappingList.Count)
     Write-Tracing -Level ErrorLevel -Message ($ErrorMessage)
     Throw-TerminatingErrorMessage -Message $ErrorMessage
 }
-
 Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -DisplayMessageToUser
 ```
 
@@ -529,7 +475,7 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 
 - **Error**: Azure 実行アカウント (サービス プリンシパル) を作成し、サービス プリンシパルに共同作成者ロールを付与するためのアクセス許可がありません。
 
-  **推奨される操作:** サインインしたアカウントが共同作成者に割り当てられていることを確認してから、再試行します。 アクセス許可の割り当ての詳細については、「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions)」のガイダンスに従って、サービス プリンシパルを作成します。
+  **推奨される操作:** サインインしたアカウントが共同作成者に割り当てられていることを確認してから、再試行します。 アクセス許可の割り当ての詳細については、「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)」のガイダンスに従って、サービス プリンシパルを作成します。
 
   自動更新を有効にした後に発生する問題の大半を修正するには、 **[修復]** を選択します。 [修復] ボタンが使用できない場合は、拡張機能の更新設定ウィンドウに表示されているエラー メッセージを確認してください。
 
@@ -537,11 +483,11 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 
 - **Error**: 実行アカウントに Recovery Services リソースにアクセスするためのアクセス許可がありません。
 
-  **推奨される操作:** 実行アカウントを削除してから[再作成](/azure/automation/automation-create-runas-account)します。 または、Automation 実行アカウントの Azure Active Directory アプリケーションが Recovery Services リソースにアクセスできることを確認します。
+  **推奨される操作:** 実行アカウントを削除してから[再作成](../automation/manage-runas-account.md)します。 または、Automation 実行アカウントの Azure Active Directory アプリケーションが Recovery Services リソースにアクセスできることを確認します。
 
 - **Error**: 実行アカウントが見つかりません。 Azure Active Directory アプリケーション、サービス プリンシパル、ロール、Automation 証明書資産、Automation 接続資産のいずれかが削除されたか、作成されていません。または、証明書と接続の拇印が一致しません。
 
-  **推奨される操作:** 実行アカウントを削除してから[再作成](/azure/automation/automation-create-runas-account)します。
+  **推奨される操作:** 実行アカウントを削除してから[再作成](../automation/manage-runas-account.md)します。
 
 - **Error**: Automation アカウントで使用されている Azure 実行証明書の有効期限がまもなく切れます。
 

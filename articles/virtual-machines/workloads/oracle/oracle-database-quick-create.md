@@ -3,23 +3,23 @@ title: Azure VM での Oracle データベースの作成 | Microsoft Docs
 description: Azure 環境で Oracle Database 12c データベースをすばやく起動して実行します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: BorisB2015
-manager: gwallace
+author: rgardler
+manager: ''
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/02/2018
-ms.author: borisb
-ms.openlocfilehash: 77a374a83c178639052e8db6fc85c31e366ac0e6
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.date: 08/28/2020
+ms.author: rogardle
+ms.openlocfilehash: fb4403747a3681abd6023cdb9b5e62fd50af12c3
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81683638"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179642"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Azure VM での Oracle データベースの作成
 
@@ -82,10 +82,10 @@ ssh azureuser@<publicIpAddress>
 
 Oracle ソフトウェアは、既に Marketplace イメージにインストールされています。 次のようにサンプル データベースを作成します。 
 
-1.  *oracle* スーパーユーザーに切り替え、ログ用にリスナーを初期化します。
+1.  *oracle* ユーザーに切り替えて、Oracle リスナーを起動します。
 
     ```bash
-    $ sudo su - oracle
+    $ sudo -su oracle
     $ lsnrctl start
     ```
 
@@ -116,8 +116,13 @@ Oracle ソフトウェアは、既に Marketplace イメージにインストー
     The listener supports no services
     The command completed successfully
     ```
+2. Oracle データ ファイル用のデータ ディレクトリを作成します。
 
-2.  データベースを作成します。
+    ```bash
+        mkdir /u01/app/oracle/oradata
+    ```
+
+3.  データベースを作成します。
 
     ```bash
     dbca -silent \
@@ -136,28 +141,58 @@ Oracle ソフトウェアは、既に Marketplace イメージにインストー
            -databaseType MULTIPURPOSE \
            -automaticMemoryManagement false \
            -storageType FS \
+           -datafileDestination "/u01/app/oracle/oradata/"
            -ignorePreReqs
     ```
 
     データベースの作成には数分かかります。
 
-3. Oracle 変数の設定
+    次のような出力が表示されます。
 
-接続する前に、次の 2 つの環境変数を設定する必要があります:*ORACLE_HOME* と *ORACLE_SID*。
+    ```output
+        Copying database files
+        1% complete
+        2% complete
+        8% complete
+        13% complete
+        19% complete
+        27% complete
+        Creating and starting Oracle instance
+        29% complete
+        32% complete
+        33% complete
+        34% complete
+        38% complete
+        42% complete
+        43% complete
+        45% complete
+        Completing Database Creation
+        48% complete
+        51% complete
+        53% complete
+        62% complete
+        70% complete
+        72% complete
+        Creating Pluggable Databases
+        78% complete
+        100% complete
+        Look at the log file "/u01/app/oracle/cfgtoollogs/dbca/cdb1/cdb1.log" for further details.
+    ```
 
-```bash
-ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
-ORACLE_SID=cdb1; export ORACLE_SID
-```
+4. Oracle 変数の設定
 
-また、.bashrc ファイルに ORACLE_HOME と ORACLE_SID 変数を追加することもできます。 これにより、これらの環境変数が将来のサインインのために保存されます。任意のエディターを使用して、次のステートメントが `~/.bashrc` ファイルに追加されたことを確認してください。
+    接続する前に、次の 2 つの環境変数を設定する必要があります:*ORACLE_HOME* と *ORACLE_SID*。
 
-```bash
-# Add ORACLE_HOME. 
-export ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1 
-# Add ORACLE_SID. 
-export ORACLE_SID=cdb1 
-```
+    ```bash
+        ORACLE_SID=cdb1; export ORACLE_SID
+    ```
+
+    また、.bashrc ファイルに ORACLE_HOME と ORACLE_SID 変数を追加することもできます。 これにより、これらの環境変数が将来のサインインのために保存されます。任意のエディターを使用して、次のステートメントが `~/.bashrc` ファイルに追加されたことを確認してください。
+
+    ```bash
+    # Add ORACLE_SID. 
+    export ORACLE_SID=cdb1 
+    ```
 
 ## <a name="oracle-em-express-connectivity"></a>Oracle EM Express への接続
 
@@ -325,6 +360,6 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>次のステップ
 
-他の [Azure 上での Oracle ソリューション](oracle-considerations.md)について学習します。 
+他の [Azure 上での Oracle ソリューション](./oracle-overview.md)について学習します。 
 
 [Oracle Automated Storage Management のインストールと構成](configure-oracle-asm.md)チュートリアルに挑戦します。

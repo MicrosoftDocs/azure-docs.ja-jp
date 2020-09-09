@@ -4,14 +4,15 @@ description: Azure Database for MariaDB サーバーに対する予約割引の�
 author: kummanish
 ms.author: manishku
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: b7d258f88212c8c97e3b0dbb8e803d1c767c51d0
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: be2dd4235883601b0b13c5783e4c7c7c106c20e9
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509450"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88682027"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-mariadb"></a>Azure Database for MariaDB に対する予約割引の適用方法
 

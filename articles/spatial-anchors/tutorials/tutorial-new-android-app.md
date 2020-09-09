@@ -5,15 +5,15 @@ author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
-ms.date: 04/03/2019
+ms.date: 06/22/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e1773ef81a5b727187a9a69ccc7ce7ad0421fb2c
-ms.sourcegitcommit: 940e16ff194d5163f277f98d038833b1055a1a3e
+ms.openlocfilehash: 3ef24e29e5dde90aa829c46d789256e6e5f3233b
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80246774"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296204"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>チュートリアル:Azure Spatial Anchors を使用して新しい Android アプリを作成する手順
 
@@ -117,7 +117,7 @@ dependencies {
 
 最後に、すべてをまとめる次の `handleTap()` メソッド追加します。 これにより球体が作成されて、タップされた位置に配置されます。 `this.recommendedSessionProgress` は現在 0 に設定されているので、最初は球体が黒くなります。 この値は後で調整されます。
 
-[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=150-158,170-171,174-182,198-199)]
+[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=151-159,171-172,175-183,199-200)]
 
 お使いのデバイスにアプリを[再デプロイ](#trying-it-out)して、もう一度検証します。 今回は、ARCore が環境の認識を開始するようにお使いのデバイスを移動できます。 次に、画面をタップして黒い球体を作成し、任意のサーフェス上に配置します。
 
@@ -169,7 +169,7 @@ import com.microsoft.CloudServices;
 
 次に、以下の `initializeSession()` メソッドを `mainActivity` クラス内に追加しましょう。 これが呼び出されると、Azure Spatial Anchors セッションが作成され、アプリの起動時に適切に初期化されます。
 
-[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=89-97,146)]
+[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=89-97,147)]
 
 次に、`initializeSession()` メソッドを `onCreate()` メソッドにフックしましょう。 また、カメラ フィードからのフレームが処理のために Azure Spatial Anchors SDK に送信されるようにします。
 
@@ -177,17 +177,17 @@ import com.microsoft.CloudServices;
 
 最後に、以下のコードを `handleTap()` メソッドに追加します。 これにより、現実世界に配置している黒い球体にローカルの Azure 空間アンカーがアタッチされます。
 
-[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=150-158,170-182,198-199&highlight=12-13)]
+[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=151-159,171-183,199-200&highlight=12-13)]
 
 アプリをもう一度[再デプロイ](#trying-it-out)します。 お使いのデバイスを移動し、画面をタップして黒い球体を配置します。 ただし今回は、コードによりローカルの Azure 空間アンカーが作成されて球体にアタッチされます。
 
-先に進む前に、Azure Spatial Anchors アカウント識別子とキーがまだない場合はこれらを作成します。 次のセクションに従ってこれらを取得します。
+先に進む前に、アカウント識別子、キー、ドメインがまだない場合は、Azure Spatial Anchors アカウントを作成してこれらを取得する必要があります。 次のセクションに従ってこれらを取得します。
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
 ## <a name="upload-your-local-anchor-into-the-cloud"></a>クラウドへのローカル アンカーのアップロード
 
-自分の Azure Spatial Anchors アカウント識別子とキーを作成したら、`app\java\<PackageName>\MainActivity` に戻り、そこに以下の import を追加できます。
+自分の Azure Spatial Anchors アカウント識別子、キー、ドメインを作成したら、`app\java\<PackageName>\MainActivity` に戻り、そこに以下の import を追加できます。
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=40-45&highlight=3-6)]
 
@@ -195,9 +195,9 @@ import com.microsoft.CloudServices;
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=60-65&highlight=3-6)]
 
-次に、以下のコードを `initializeSession()` メソッドに追加します。 まず、このコードにより、Azure Spatial Anchors SDK によってカメラ フィードからフレームが収集される際の進行状況をアプリで監視できます。 その際、球体の色が当初の黒から灰色に変化し始めます。 さらに、アンカーをクラウドに送信するための十分なフレームが収集されると、白に変わります。 次に、このコードでは、クラウド バックエンドとの通信に必要な資格情報が提供されます。 ここでは、アカウント識別子とキーを使用するようにアプリを構成します。 これらの情報は、[Spatial Anchors リソースを設定](#create-a-spatial-anchors-resource)するときにテキスト エディターにコピーしました。
+次に、以下のコードを `initializeSession()` メソッドに追加します。 まず、このコードにより、Azure Spatial Anchors SDK によってカメラ フィードからフレームが収集される際の進行状況をアプリで監視できます。 その際、球体の色が当初の黒から灰色に変化し始めます。 さらに、アンカーをクラウドに送信するための十分なフレームが収集されると、白に変わります。 次に、このコードでは、クラウド バックエンドとの通信に必要な資格情報が提供されます。 ここでは、アカウント識別子、キー、ドメインを使用するようにアプリを構成します。 これらの情報は、[Spatial Anchors リソースを設定](#create-a-spatial-anchors-resource)するときにテキスト エディターにコピーしました。
 
-[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=89-120,142-146&highlight=11-36)]
+[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=89-120,142-148&highlight=11-37)]
 
 次に、以下の `uploadCloudAnchorAsync()` メソッドを `mainActivity` クラスに追加します。 呼び出されると、このメソッドは、お使いのデバイスから十分なフレームが収集されるまで非同期的に待機します。 この状況が発生するとすぐに、球体の色が黄色に切り替わってから、クラウドへのローカル Azure 空間アンカーのアップロードが開始されます。 アップロードが完了すると、コードによってアンカー識別子が返されます。
 
@@ -205,7 +205,7 @@ import com.microsoft.CloudServices;
 
 最後に、すべてをつなげましょう。 `handleTap()` メソッドに次のコードを追加します。 これにより、球体が作成されるとすぐに `uploadCloudAnchorAsync()` メソッドが呼び出されます。 メソッドから戻ると、次のコードによって球体への最終的な更新が実行され、色が青色に変わります。
 
-[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=150-158,170-199&highlight=24-37)]
+[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=151-159,171-200&highlight=24-37)]
 
 アプリをもう一度[再デプロイ](#trying-it-out)します。 お使いのデバイスを移動し、画面をタップして球体を配置します。 ただし今回は、カメラ フレームの収集時に球体の色が黒から白に向かって変化します。 十分なフレームを取得すると、球体が黄色に変わり、クラウドのアップロードが開始されます。 アップロードの完了後に、球体は青色になります。 必要に応じて、Android Studio 内の `Logcat` ウィンドウを使用して、アプリによって送信されているログ メッセージを監視することもできます。 たとえば、フレーム キャプチャ中のセッションの進行状況や、アップロードが完了した後にクラウドから返されるアンカー識別子などです。
 

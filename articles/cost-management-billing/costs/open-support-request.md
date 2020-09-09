@@ -6,13 +6,14 @@ ms.author: banders
 ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 38efc86d1bdc185f39d3ea502a64d0f3cf7edcc0
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: a989167a2073a22350a16ab58cb0127b3056150a
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80408247"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689084"
 ---
 # <a name="create-a-support-request-for-cloudyn"></a>Cloudyn のサポート リクエストを作成する
 
@@ -38,7 +39,7 @@ ms.locfileid: "80408247"
 
 コスト管理のための課金サポート チケットを作成する場合は、 **[問題の種類]** で **[Azure Cost Management]** を選択します。
 
-提出したインシデントの状態を確認するには、[すべてのサポート要求](../../azure-portal/supportability/how-to-create-azure-support-request.md#all-support-requests)に関するセクションを参照してください。
+提出したインシデントの状態を確認するには、[すべてのサポート要求](../../azure-portal/supportability/how-to-manage-azure-support-request.md#view-support-requests)に関するセクションを参照してください。
 
 Azure アカウントを持たない従来の Cloudyn ユーザーは、 https://support.microsoft.com/oas/default.aspx?prid=16451 でサポート要求を開くことができます。
 

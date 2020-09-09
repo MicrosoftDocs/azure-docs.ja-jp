@@ -10,19 +10,20 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: amishu
-zone_pivot_groups: programming-languages-set-twelve
-ms.openlocfilehash: 13cb35ffa650661da2855787279c4bdc37126ac9
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.custom: devx-track-csharp
+zone_pivot_groups: programming-languages-set-twenty-two
+ms.openlocfilehash: 4585538e552e73f8f7a4b7b105153a9d26eeb4c4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585023"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934100"
 ---
 # <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>Speech SDK でコーデック圧縮オーディオを使用する
 
 Speech サービス SDK の **圧縮オーディオ入力ストリーム** API では、`PullStream` または `PushStream` を使用して、圧縮オーディオを Speech Services にストリーミングする方法を提供します。
 
-現在、圧縮入力オーディオのストリーミングは、Windows (UWP アプリケーションはサポートされていません) と Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 7/8、CentOS 7/8) では C#、C++、Java でサポートされています。 また、Android プラットフォームでは Java、iOS プラットフォームでは Objective-C でもサポートされています。
+現在、圧縮入力オーディオのストリーミングは、Windows (UWP アプリケーションはサポートされていません) と Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 7/8、CentOS 7/8) では C#、C++、Java、および Python でサポートされています。 Android の Java でもサポートされています。
 * RHEL 8 と CentOS 8 では、Speech SDK バージョン 1.10.0 以降が必要です
 * Windows では、Speech SDK バージョン 1.11.0 以降が必要です。
 
@@ -42,8 +43,8 @@ Speech サービス SDK の **圧縮オーディオ入力ストリーム** API �
 [!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/java/prerequisites.md)]
 ::: zone-end
 
-::: zone pivot="programming-language-objectivec"
-[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/objectivec/prerequisites.md)]
+::: zone pivot="programming-language-python"
+[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/python/prerequisites.md)]
 ::: zone-end
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>コーデック圧縮オーディオ入力を使用するコード例
@@ -60,8 +61,8 @@ Speech サービス SDK の **圧縮オーディオ入力ストリーム** API �
 [!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/java/examples.md)]
 ::: zone-end
 
-::: zone pivot="programming-language-objectivec"
-[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/objectivec/examples.md)]
+::: zone pivot="programming-language-python"
+[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/python/examples.md)]
 ::: zone-end
 
 ## <a name="next-steps"></a>次のステップ

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
-ms.openlocfilehash: 3fd0a8bf6bacfec5e2be6dfa52ca51e46c7025f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c336fe9a65d7bcc44790a4bfb02bed44f028733
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443595"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500924"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Azure VM での Windows 再起動ループ
 この記事では、Microsoft Azure の Windows 仮想マシン (VM) で発生する可能性がある再起動ループについて説明します。
@@ -50,7 +50,7 @@ ms.locfileid: "75443595"
 
 ## <a name="solution"></a>解決策
 
-この問題を解決するには、[OS ディスクをバックアップ](../windows/snapshot-copy-managed-disk.md)し、[OS ディスクを復旧用の VM に接続](../windows/troubleshoot-recovery-disks-portal.md)してから、該当する解決方法に従うか、解決方法を 1 つずつ試してみます。
+この問題を解決するには、[OS ディスクをバックアップ](../windows/snapshot-copy-managed-disk.md)し、[OS ディスクを復旧用の VM に接続](./troubleshoot-recovery-disks-portal-windows.md)してから、該当する解決方法に従うか、解決方法を 1 つずつ試してみます。
 
 ### <a name="solution-for-cause-1"></a>原因 1 の解決策
 
@@ -94,7 +94,7 @@ ms.locfileid: "75443595"
 
 16. [OS ディスクから新しい VM を作成します](../windows/create-vm-specialized.md)。
 
-17. この問題が修正されたとき、場合によっては [RDAgent](https://blogs.msdn.microsoft.com/mast/2014/04/07/install-the-vm-agent-on-an-existing-azure-vm/) (WaAppAgent.exe) を再インストールする必要があります。
+17. この問題が修正されたとき、場合によっては [RDAgent](/archive/blogs/mast/install-the-vm-agent-on-an-existing-azure-vm) (WaAppAgent.exe) を再インストールする必要があります。
 
 ### <a name="solution-for-cause-2"></a>原因 2 の解決策
 
@@ -113,5 +113,3 @@ VM を前回正常起動時の構成に復元してから、「[Azure Windows VM
 4. トラブルシューティング用 VM からディスクを取り出し、Azure がこのディスクを解放するまで約 2 分待ちます。
 
 5. [OS ディスクから新しい VM を作成します](../windows/create-vm-specialized.md)。
-
-

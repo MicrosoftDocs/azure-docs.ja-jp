@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: windows
 ms.date: 11/30/2018
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: 14777b85fdc531b96c61882d5f244ca40ed28fa6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: mimckitt, devx-track-azurepowershell
+ms.openlocfilehash: b3853ddc71d1a9be26b2492764a9b341446e0eeb
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197983"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078743"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows-with-azure-powershell"></a>チュートリアル:Azure PowerShell で仮想マシン スケール セットを作成して Windows に高可用性アプリをデプロイする
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM 数は、手動でスケーリングすることができます。 また、CPU の使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケーリングするルールを定義することもできます。 このチュートリアルでは、仮想マシン スケール セットを Azure にデプロイします。次の方法について説明します。
@@ -37,11 +37,11 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 
 スケール セットには必要に応じて VM が作成されます。 スケール セットの VM を追加または削除する方法とタイミングを制御するには、自動スケール ルールを定義します。 これらのルールは、CPU の負荷、メモリの使用量、ネットワーク トラフィックなどのメトリックに基づいて発動できます。
 
-Azure プラットフォーム イメージを使う場合、スケール セットは最大 1,000 個の VM をサポートします。 大量のインストールが必要なワークロードや、VM に大幅なカスタマイズが必要なワークロードについては、[カスタム VM イメージを作成する](tutorial-custom-images.md)という方法もあります。 カスタム イメージを使うと、最大 300 個の VM をスケール セットに作成できます。
+Azure プラットフォーム イメージを使う場合、スケール セットは最大 1,000 個の VM をサポートします。 大量のインストールが必要なワークロードや、VM に大幅なカスタマイズが必要なワークロードについては、[カスタム VM イメージを作成する](tutorial-custom-images.md)という方法もあります。 カスタム イメージを使うと、最大 600 個の VM をスケール セットに作成できます。
 
 
 ## <a name="create-a-scale-set"></a>スケール セットを作成する
-[New-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) を使用して仮想マシン スケール セットを作成します。 次の例では、*Windows Server 2016 Datacenter* プラットフォーム イメージを使用する *myScaleSet* という名前のスケール セットを作成します。 仮想ネットワーク用の Azure ネットワーク リソース、パブリック IP アドレス、およびロード バランサーが自動的に作成されます。 メッセージが表示されたら、スケール セット内の VM インスタンス用の自分の管理者資格情報を設定できます。
+[New-AzVmss](/powershell/module/az.compute/new-azvmss) を使用して仮想マシン スケール セットを作成します。 次の例では、*Windows Server 2016 Datacenter* プラットフォーム イメージを使用する *myScaleSet* という名前のスケール セットを作成します。 仮想ネットワーク用の Azure ネットワーク リソース、パブリック IP アドレス、およびロード バランサーが自動的に作成されます。 メッセージが表示されたら、スケール セット内の VM インスタンス用の自分の管理者資格情報を設定できます。
 
 ```azurepowershell-interactive
 New-AzVmss `
@@ -59,7 +59,7 @@ New-AzVmss `
 
 
 ## <a name="deploy-sample-application"></a>サンプル アプリケーションをデプロイする
-スケール セットをテストするには、基本的な Web アプリケーションをインストールします。 VM インスタンスに IIS をインストールするスクリプトをダウンロードして実行するために、Azure カスタム スクリプト拡張機能が使用されます。 この拡張機能は、デプロイ後の構成、ソフトウェアのインストール、その他の構成や管理タスクに役立ちます。 詳細については、「[Windows のカスタム スクリプト拡張機能](extensions-customscript.md)」を参照してください。
+スケール セットをテストするには、基本的な Web アプリケーションをインストールします。 VM インスタンスに IIS をインストールするスクリプトをダウンロードして実行するために、Azure カスタム スクリプト拡張機能が使用されます。 この拡張機能は、デプロイ後の構成、ソフトウェアのインストール、その他の構成や管理タスクに役立ちます。 詳細については、「[Windows のカスタム スクリプト拡張機能](../extensions/custom-script-windows.md)」を参照してください。
 
 カスタム スクリプト拡張機能を使用して、基本的な IIS Web サーバーをインストールします。 次のように、IIS をインストールするカスタム スクリプト拡張機能を適用します。
 
@@ -92,7 +92,7 @@ Update-AzVmss `
 
 ## <a name="allow-traffic-to-application"></a>アプリケーションへのトラフィックを許可する
 
-基本的な Web アプリケーションへのアクセスを許可するには、[New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) と [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) を使用してネットワーク セキュリティ グループを作成します。 詳細については、「[Azure 仮想マシン スケール セットのネットワーク](../../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md)」を参照してください。
+基本的な Web アプリケーションへのアクセスを許可するには、[New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) と [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) を使用してネットワーク セキュリティ グループを作成します。 詳細については、「[Azure 仮想マシン スケール セットのネットワーク](../../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md)」を参照してください。
 
 ```azurepowershell-interactive
 # Get information about the scale set
@@ -141,7 +141,7 @@ Update-AzVmss `
 ```
 
 ## <a name="test-your-scale-set"></a>スケール セットのテスト
-スケール セットの動作を確認するには、[Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) を使用してロード バランサーのパブリック IP アドレスを取得します。 以下の例では、スケール セットの一部として作成された *myPublicIP* の IP アドレスを表示します。
+スケール セットの動作を確認するには、[Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) を使用してロード バランサーのパブリック IP アドレスを取得します。 以下の例では、スケール セットの一部として作成された *myPublicIP* の IP アドレスを表示します。
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress `
@@ -160,7 +160,7 @@ Get-AzPublicIPAddress `
 スケール セットのライフサイクルを通じて、1 つ以上の管理タスクを実行する必要がある場合があります。 さらに、各種ライフサイクルのタスクを自動化するスクリプトを作成するほうが便利な場合もあります。 Azure PowerShell には、これらのタスクを簡単に実行するための方法が用意されています。 一般的なタスクには、次のようなものがあります。
 
 ### <a name="view-vms-in-a-scale-set"></a>スケール セットの VM を表示する
-スケール セット内の VM インスタンスの一覧を表示するには、次のように [Get-AzVmssVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm) を使用します。
+スケール セット内の VM インスタンスの一覧を表示するには、次のように [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) を使用します。
 
 ```azurepowershell-interactive
 Get-AzVmssVM `
@@ -177,7 +177,7 @@ MYRESOURCEGROUPSCALESET   myScaleSet_0   eastus Standard_DS1_v2          0      
 MYRESOURCEGROUPSCALESET   myScaleSet_1   eastus Standard_DS1_v2          1         Succeeded
 ```
 
-特定の VM インスタンスに関する追加情報を表示するには、[Get-AzVmssVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm) に `-InstanceId` パラメーターを追加します。 次の例では、VM インスタンス *1* に関する情報を表示しています。
+特定の VM インスタンスに関する追加情報を表示するには、[Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) に `-InstanceId` パラメーターを追加します。 次の例では、VM インスタンス *1* に関する情報を表示しています。
 
 ```azurepowershell-interactive
 Get-AzVmssVM `
@@ -188,7 +188,7 @@ Get-AzVmssVM `
 
 
 ### <a name="increase-or-decrease-vm-instances"></a>VM インスタンスを増減させる
-現時点でスケール セットに存在するインスタンスの数を確認するには、[Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) と *sku.capacity* に対するクエリを使います。
+現時点でスケール セットに存在するインスタンスの数を確認するには、[Get-AzVmss](/powershell/module/az.compute/get-azvmss) と *sku.capacity* に対するクエリを使います。
 
 ```azurepowershell-interactive
 Get-AzVmss -ResourceGroupName "myResourceGroupScaleSet" `
@@ -196,7 +196,7 @@ Get-AzVmss -ResourceGroupName "myResourceGroupScaleSet" `
   Select -ExpandProperty Sku
 ```
 
-インスタンスの数が表示されたら、[Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) を使用して、スケール セット内の仮想マシンの数を手動で増やしたり減らしたりできます。 次の例では、スケール セット内の VM の数を *3* に設定します。
+インスタンスの数が表示されたら、[Update-AzVmss](/powershell/module/az.compute/update-azvmss) を使用して、スケール セット内の仮想マシンの数を手動で増やしたり減らしたりできます。 次の例では、スケール セット内の VM の数を *3* に設定します。
 
 ```azurepowershell-interactive
 # Get current scale set

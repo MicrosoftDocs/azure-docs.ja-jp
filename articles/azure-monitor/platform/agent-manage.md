@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
 ms.openlocfilehash: 4d0ceacd37748e9761903d02fd7e052d70b10e15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79234431"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Windows および Linux での Log Analytics エージェントの管理とメンテナンス
@@ -28,7 +28,7 @@ Windows および Linux 用 Log Analytics エージェントは、配置のシ�
 
 ### <a name="upgrade-windows-agent"></a>Windows エージェントをアップグレードする 
 
-Windows VM 上のエージェントを、Log Analytics VM 拡張機能を使用してインストールされない最新バージョンに更新するには、コマンド プロンプト、スクリプト、またはその他の自動ソリューションから実行するか、または MMASetup-\<プラットフォーム\>.msi セットアップ ウィザードを使用して実行します。  
+Windows VM 上のエージェントを、Log Analytics VM 拡張機能を使用してインストールされない最新バージョンに更新するには、コマンド プロンプト、スクリプト、またはその他の自動ソリューションから実行するか、または MMASetup-\<platform\>.msi セットアップ ウィザードを使用して実行します。  
 
 Windows エージェントの最新バージョンは、次の手順を実行することによって、Log Analytics ワークスペースからダウンロードできます。
 
@@ -50,7 +50,7 @@ Windows エージェントの最新バージョンは、次の手順を実行す
 
 1. 管理者権限を持つアカウントでコンピューターにサインオンします。
 
-2. **MMASetup-\<プラットフォーム\>.exe** を実行して、セットアップ ウィザードを開始します。
+2. **MMASetup-\<platform\>.exe** を実行して、セットアップ ウィザードを開始します。
 
 3. セットアップ ウィザードの最初のページで、 **[次へ]** をクリックします。
 
@@ -236,7 +236,7 @@ Linux コンピューターがプロキシ サーバーまたは Log Analytics �
 3. **[プログラムと機能]** で、 **[Microsoft Monitoring Agent]** をクリックし、 **[アンインストール]** をクリックし、 **[はい]** をクリックします。
 
 >[!NOTE]
->**MMASetup-\<platform\>.exe** をダブルクリックして、エージェント セットアップ ウィザードを実行することもできます。このファイルは、Azure portal でワークスペースからダウンロードできます。
+>**MMASetup-\<platform\>.exe** をダブルクリックして、エージェント セットアップ ウィザードを実行することもできます。このファイルは、Azure ポータルでワークスペースからダウンロードできます。
 
 #### <a name="uninstall-from-the-command-line"></a>コマンドラインからアンインストールする
 ダウンロードしたエージェント ファイルは、IExpress で作成された自己完結型インストール パッケージです。 パッケージにはエージェントとサポート ファイルのセットアップ プログラムが含まれており、次の例に示すようにコマンドラインを使用して正しくアンインストールするためには、それらを抽出する必要があります。

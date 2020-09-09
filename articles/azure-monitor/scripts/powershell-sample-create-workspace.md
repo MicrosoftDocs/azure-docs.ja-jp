@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 09/07/2017
-ms.openlocfilehash: 62b02de5d1c08f6047052d71e3be420cceb1c5c0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f6bfb3a244874f6160d34c174b6d10b9a03ca437
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80054640"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024131"
 ---
 # <a name="create-a-log-analytics-workspace-with-powershell"></a>PowerShell を使用して Log Analytics ワークスペースを作成する
 
@@ -39,5 +39,5 @@ ms.locfileid: "80054640"
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
+Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。
 

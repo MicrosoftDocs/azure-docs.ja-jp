@@ -4,13 +4,14 @@ description: Eclipse とローカル開発クラスターを使用してサー�
 author: suhuruli
 ms.topic: conceptual
 ms.date: 11/02/2017
+ms.custom: devx-track-java
 ms.author: suhuruli
-ms.openlocfilehash: 15448a9bd8998a99e8fce578b05130694ecd5fd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 32472c6caafe62d629ee3a5ffb8c758624228efd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75614487"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87316615"
 ---
 # <a name="debug-your-java-service-fabric-application-using-eclipse"></a>Eclipse を使用して Java Service Fabric アプリケーションをデバッグする
 > [!div class="op_single_selector"]
@@ -41,5 +42,5 @@ ms.locfileid: "75614487"
 
 ### <a name="next-steps"></a>次のステップ
 
-* [Linux Azure Diagnostics でログを収集する方法](service-fabric-diagnostics-how-to-setup-lad.md)。
+* [Linux Azure Diagnostics でログを収集する方法](./service-fabric-diagnostics-event-aggregation-lad.md)。
 * [ローカルでのサービスの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)。

@@ -5,12 +5,12 @@ ms.assetid: 4444dbf7-363c-47e2-b24a-dbd45cb08491
 ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 1295080d0eec7a4e88029cdadd85863f5f40d034
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1b0ce62905424032c2100a1a032fa43ba97578f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74689243"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084859"
 ---
 # <a name="restore-an-app-in-azure"></a>Azure でのアプリの復元
 この記事では、[Azure App Service](../app-service/overview.md) でアプリをバックアップから復元する方法を示します (バックアップについては「[Azure App Service での Web アプリのバックアップ](manage-backup.md)」を参照してください)。 リンクされたデータベースをオンデマンドで使用してアプリを以前の状態に戻したり、元のアプリのいずれかのバックアップに基づいて新しいアプリを作成したりできます。 Azure App Service では、次のデータベースのバックアップと復元がサポートされます。
@@ -29,14 +29,14 @@ ms.locfileid: "74689243"
     ![今すぐ復元の選択][ChooseRestoreNow]
 2. **[復元]** ページで、最初にバックアップ ソースを選択します。
    
-    ![](./media/web-sites-restore/021ChooseSource1.png)
+    ![どこでバックアップ ソースを選択するかを示したスクリーンショット。](./media/web-sites-restore/021ChooseSource1.png)
    
     **[アプリのバックアップ]** オプションには、現在のアプリの既存のバックアップがすべて表示されるので、バックアップを簡単に選択することができます。
     **[ストレージ]** オプションを使用すると、サブスクリプションに含まれる既存の Azure Storage アカウントとコンテナーから、任意のバックアップ ZIP ファイルを選択できます。
     別のアプリのバックアップを復元する場合は、 **[ストレージ]** オプションを使用します。
 3. 次に、 **[復元先]** でアプリの復元先を指定します。
    
-    ![](./media/web-sites-restore/022ChooseDestination1.png)
+    ![どこでアプリの復元先を指定するのかを示したスクリーンショット。](./media/web-sites-restore/022ChooseDestination1.png)
    
    > [!WARNING]
    > **[上書き]** を選択した場合、現在のアプリの既存のデータはすべて消去され上書きされます。 **[OK]** をクリックする前に、実行する操作内容が正しいことを確認します。
@@ -77,7 +77,7 @@ ms.locfileid: "74689243"
 
 ## <a name="automate-with-scripts"></a>スクリプトで自動化する
 
-[Azure CLI](/cli/azure/install-azure-cli) または [Azure PowerShell](/powershell/azure/overview) を使用すると、バックアップ管理をスクリプトで自動化できます。
+[Azure CLI](/cli/azure/install-azure-cli) または [Azure PowerShell](/powershell/azure/) を使用すると、バックアップ管理をスクリプトで自動化できます。
 
 サンプルについては、以下を参照してください。
 

@@ -1,22 +1,25 @@
 ---
-title: Azure SQL データベースに対する予約割引について | Microsoft Docs
-description: 実行中の Azure SQL データベースに予約割引がどのように適用されるかについて説明します。
+title: Azure SQL Database に対する予約割引について | Microsoft Docs
+description: 実行中の Azure SQL Database に予約割引がどのように適用されるかについて説明します。 割引は、これらのデータベースに時間単位で適用されます。
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 06/11/2020
 ms.author: banders
-ms.openlocfilehash: f0b093950b7f8fbbfbb0ca8ceb48cb0aa6341e10
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1df60eedfb776164be7e78f2994027b8d111828b
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200284"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88681959"
 ---
-# <a name="how-a-reservation-discount-is-applied-to-azure-sql-databases"></a>Azure SQL データベースに対する予約割引の適用方法
+# <a name="how-a-reservation-discount-is-applied-to-azure-sql-database"></a>Azure SQL Database に対する予約割引の適用方法
 
 Azure SQL Database の予約容量を購入すると、予約の属性や数量に合致する SQL データベースに対して予約割引が自動的に適用されます。 予約購入分は、ご利用の SQL データベースの計算コストに充当されます。 ソフトウェア、ストレージ、ネットワークについては、通常料金が適用されます。 [Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を SQL データベースのライセンス コストに充当することができます。
+
+予約割引は Azure SQL Database サーバーレスには適用されないことに注意してください。
 
 予約仮想マシン インスタンスについては、「[Azure 予約 VM インスタンスの割引について](../manage/understand-vm-reservation-charges.md)」を参照してください。
 
@@ -26,13 +29,13 @@ Azure SQL Database の予約容量を購入すると、予約の属性や数量�
 
 リソースをシャットダウンすると、予約割引は、指定されたスコープ内の別の一致するリソースに自動的に適用されます。 指定したスコープ内に一致するリソースが見つからない場合、予約済み時間は "*失われます*"。
 
-## <a name="discount-applied-to-sql-databases"></a>SQL データベースに適用される割引
+## <a name="discount-applied-to-running-sql-databases"></a>SQL データベースの実行に適用される割引
 
  SQL Database の予約容量割引は、実行中の SQL データベースに 1 時間単位で適用されます。 購入した予約は、実行中の SQL データベースによる計算の使用量と照合されます。 実行時間が 1 時間に満たない SQL データベースの場合、その予約は予約の属性に一致する他の SQL データベースに自動的に適用されます。 この割引は、同時に実行されている SQL データベースに適用されます。 予約の属性に一致する SQL データベースのうち、実行時間が 1 時間を超える SQL データベースがない場合は、その時間について予約割引の特典を完全に活用することができません。
 
 次の例は、購入したコア数と実行する時間に応じて、SQL Database の予約容量割引がどのように適用されるかを示しています。
 
-- シナリオ 1: 8 コア SQL データベース用に SQL Database の予約容量を購入します。 予約の他の属性と一致する 16 コア SQL データベースを実行しています。 SQL データベースの計算使用量のうち 8 コア分には従量課金制の料金が適用されます。 8 コア SQL データベースの計算使用量の 1 時間分には予約割引が適用されます。
+- シナリオ 1:8 コア SQL データベース用に SQL Database の予約容量を購入します。 予約の他の属性と一致する 16 コア SQL データベースを実行しています。 SQL データベースの計算使用量のうち 8 コア分には従量課金制の料金が適用されます。 8 コア SQL データベースの計算使用量の 1 時間分には予約割引が適用されます。
 
 以降の例では、購入する SQL Database の予約容量は、16 コア SQL データベース用であり、残りの予約の属性は実行中の SQL データベースと一致するものとします。
 
@@ -52,7 +55,7 @@ Azure の予約の詳細については、次の記事を参照してくださ�
 
 - [Azure の予約とは](save-compute-costs-reservations.md)
 - [Azure Reserved VM Instances による仮想マシンの前払い](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い](../../sql-database/sql-database-reserved-capacity.md)
+- [Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い](../../azure-sql/database/reserved-capacity-overview.md)
 - [Azure の予約の管理](manage-reserved-vm-instance.md)
 - [従量課金制サブスクリプションの予約使用量について](understand-reserved-instance-usage.md)
 - [エンタープライズ加入契約の予約使用量について](understand-reserved-instance-usage-ea.md)

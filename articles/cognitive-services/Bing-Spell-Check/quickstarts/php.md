@@ -8,18 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: 816f2692a71d5d4281248405cc84102cfa881f66
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 44dc3f16128913f76369ad645a32e91f38272546
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382882"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869862"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-php"></a>クイック スタート:Bing Spell Check REST API と PHP を使用してスペルをチェックする
 
-このクイック スタートを使用して、Bing Spell Check の REST API を呼び出してみましょう。 このシンプルな PHP アプリケーションは、API に要求を送信して、一連の修正候補を返します。 このアプリケーションは PHP で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
+このクイック スタートを使用して、Bing Spell Check の REST API を呼び出してみましょう。 このシンプルな PHP アプリケーションは、API に要求を送信して、一連の修正候補を返します。 
+
+このアプリケーションは PHP で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -28,12 +30,12 @@ ms.locfileid: "75382882"
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
 
-## <a name="get-spell-check-results"></a>スペル チェックの結果を取得する
+## <a name="get-bing-spell-check-rest-api-results"></a>Bing Spell Check REST API の結果を取得
 
 1. 適切な IDE で新しい PHP プロジェクトを作成します。
 2. 次に示すコードを追加します。
 3. `subscriptionKey` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-4. 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
+4. 次のコードのグローバル エンドポイントを使用するか、Azure portal に表示される、対象のリソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用することができます。
 5. プログラムを実行します。
     
     ```php
@@ -140,7 +142,7 @@ Web サーバーを起動し、目的のファイルに移動してアプリケ�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [シングル ページ Web アプリを作成する](../tutorials/spellcheck.md)
+> [単一ページの Web アプリの作成](../tutorials/spellcheck.md)
 
 - [Bing Spell Check API とは](../overview.md)
 - [Bing Spell Check API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

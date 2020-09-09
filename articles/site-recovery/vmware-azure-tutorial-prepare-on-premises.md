@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4969a1f14e53aabf79495e179213f9763d4c8803
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b8fd34c8f1e3a32a8252074941a49d61aa540207
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222629"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "86134906"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Azure へのディザスター リカバリーのためにオンプレミス VMware サーバーを準備する
 
@@ -103,7 +103,7 @@ VMware サーバーと VM が要件に準拠していることを確認します
 - フェールオーバーする前に、オンプレミスのマシンで、システム起動時に Secure Shell サービスが自動的に開始するように設定されていることを確認します。
 - ファイアウォール規則で SSH 接続が許可されていることを確認します。
 - フェールオーバー後の Azure VM で、フェールオーバーされた VM とその接続先の Azure サブネットのネットワーク セキュリティ グループの規則について、SSH ポートへの受信接続を許可します。
-- VM の[パブリック IP アドレスを追加](site-recovery-monitoring-and-troubleshooting.md)します。
+- VM の[パブリック IP アドレスを追加](./site-recovery-monitor-and-troubleshoot.md)します。
 - **[ブート診断]** をオンにすると、VM のスクリーンショットを確認できます。
 
 

@@ -2,22 +2,22 @@
 title: Azure シングル サインアウトの SAML プロトコル
 description: この記事では、Azure Active Directory でのシングル サインアウト SAML プロトコルについて説明します。
 services: active-directory
-author: rwike77
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/19/2017
-ms.author: ryanwi
+ms.author: kenwith
 ms.custom: aaddev
-ms.reviewer: hirsin
-ms.openlocfilehash: dbe21d020d5d01f24913b95587721403fa218cc8
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.reviewer: paulgarn
+ms.openlocfilehash: 1d09355993af96e9e0cd334c57174cdaa771b388
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80881267"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118265"
 ---
 # <a name="single-sign-out-saml-protocol"></a>シングル サインアウトの SAML プロトコル
 
@@ -42,7 +42,7 @@ Azure AD に送信される `LogoutRequest` 要素には、次の属性が必要
 
 * `ID` - サインアウト要求を示します。 `ID` の値は、数字以外で始まっている必要があります。 一般的な方法としては、GUID の文字列表現の前に **id** を付加します。
 * `Version` - この要素の値は **2.0**に設定します。 この値は必須です。
-* `IssueInstant` - 世界協定時刻 (UTC) の値と[ラウンドトリップ書式 ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx) を含む `DateTime` 文字列です。 Azure AD ではこの型の値が期待されますが、必須ではありません。
+* `IssueInstant` - 世界協定時刻 (UTC) の値と[ラウンドトリップ書式 ("o")](/dotnet/standard/base-types/standard-date-and-time-format-strings) を含む `DateTime` 文字列です。 Azure AD ではこの型の値が期待されますが、必須ではありません。
 
 ### <a name="issuer"></a>発行者
 `LogoutRequest` の `Issuer` 要素は、Azure AD でのクラウド サービスの **ServicePrincipalNames** のいずれかと厳密に一致する必要があります。 通常、これはアプリケーション登録時に指定される **App ID URI** に設定されます。

@@ -4,12 +4,12 @@ description: Azure App Service の継続的なデプロイ機能を使用して�
 ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.topic: conceptual
 ms.date: 09/25/2019
-ms.openlocfilehash: cc1e100a0c2e652ab081869409fd24dbf88017a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e49c235e11eea17fdd1a7ff7751cc0493934d725
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235023"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123681"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions の継続的なデプロイ
 
@@ -36,46 +36,30 @@ Azure の関数のデプロイの単位は関数アプリです。 関数アプ�
 
 既存の関数アプリの継続的なデプロイを構成するには、次の手順を実行します。 この手順は GitHub リポジトリとの統合を示しますが、Azure Repos またはその他のソース コード リポジトリに対しても同様の手順が適用されます。
 
-1. [Azure portal](https://portal.azure.com) の関数アプリで、 **[プラットフォーム機能]**  >  **[管理者用センター]** を選択します。
+1. [Azure portal](https://portal.azure.com) の関数アプリで、 **[管理者用センター]** を選択し、 **[GitHub]** を選択してから、 **[承認]** を選択します。 GitHub が既に承認済みの場合は、 **[続行]** を選択し、次のステップをスキップします。 
 
-    ![デプロイ センターを開く](./media/functions-continuous-deployment/platform-features.png)
+    :::image type="content" source="./media/functions-continuous-deployment/github.png" alt-text="Azure App Service 管理者用センター":::
 
-2. **[管理者用センター]** で、 **[GitHub]** 、 **[承認]** の順に選択します。 または、GitHub を既に承認した場合は、 **[続行]** を選択します。 
+3. GitHub で、 **[Authorize AzureAppService]\(AzureAppService を承認する\)** を選択します。
 
-    ![Azure App Service デプロイ センター](./media/functions-continuous-deployment/github.png)
+    :::image type="content" source="./media/functions-continuous-deployment/authorize.png" alt-text="Azure App Service を承認する":::
 
-3. GitHub で、 **[AzureAppService の承認]** ボタンを選択します。 
-
-    ![Azure App Service を承認する](./media/functions-continuous-deployment/authorize.png)
-    
-    Azure portal の **[管理者用センター]** で、 **[続行]** を選択します。
+    GitHub パスワードを入力し、 **[続行]** を選択します。
 
 4. 次のビルド プロバイダーのいずれかを選択します。
 
     * **App Service のビルド サービス**:ビルドが不要な場合、または汎用ビルドが必要な場合に最適です。
     * **Azure Pipelines (プレビュー)** :ビルドをより細かく制御する必要がある場合に最適です。 このプロバイダーは現在プレビュー段階です。
 
-    ![ビルド プロバイダーを選択する](./media/functions-continuous-deployment/build.png)
+    **[続行]** をクリックします。
 
 5. 指定したソース管理オプションに固有の情報を構成します。 GitHub では、 **[Organization]\(組織\)** 、 **[Repository]\(リポジトリ\)** 、および **[Branch]\(ブランチ\)** の値を入力または選択する必要があります。 値は、お客様のコードの場所によって決まります。 その後、 **[続行]** を選択します。
 
-    ![GitHub を構成する](./media/functions-continuous-deployment/github-specifics.png)
+    :::image type="content" source="./media/functions-continuous-deployment/github-specifics.png" alt-text="GitHub を構成する":::
 
 6. すべての詳細を確認し、 **[完了]** を選択してデプロイ構成を完了します。
 
-    ![まとめ](./media/functions-continuous-deployment/summary.png)
-
 プロセスが完了すると、指定されたソースからのすべてのコードがアプリにデプロイされます。 その時点で、デプロイ ソースの変更により、Azure 内の関数アプリにそれらの変更をデプロイする処理がトリガーされます。
-
-## <a name="deployment-scenarios"></a>デプロイメント シナリオ
-
-<a name="existing"></a>
-
-### <a name="move-existing-functions-to-continuous-deployment"></a>継続的なデプロイへの既存の関数の移動
-
-既に [Azure portal](https://portal.azure.com) で関数を作成していて、アプリのコンテンツをダウンロードしてから継続的なデプロイに切り替える場合は、関数アプリの **[概要]** タブに移動します。 **[アプリのコンテンツのダウンロード]** ボタンを選択します。
-
-![アプリのコンテンツのダウンロード](./media/functions-continuous-deployment/download.png)
 
 > [!NOTE]
 > 継続的インテグレーションを構成した後は、Functions のポータルでソース ファイルを編集することはできなくなります。

@@ -7,19 +7,19 @@ author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
 ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6df593909c3ae5962e413eb84e64196fade0326b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf1113f7b2f396deed849fa46108537f290b53a1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74022150"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84742098"
 ---
 # <a name="multi-factor-authentication-and-privileged-identity-management"></a>多要素認証と Privileged Identity Management
 

@@ -1,29 +1,30 @@
 ---
-title: Azure Synapse Studio (プレビュー) を使用してパイプラインの実行を監視する
-description: Azure Synapse Studio を使用してワークスペースのパイプラインの実行を監視します。
+title: Synapse Studio を使用してパイプラインの実行を監視する
+description: Synapse Studio を使用して、ワークスペースのパイプラインの実行を監視します。
 services: synapse-analytics
 author: matt1883
 ms.service: synapse-analytics
 ms.topic: how-to
+ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 712dc62e29229f03dec12afdf18edbf55667dbdf
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7676f4aeeb9485ce5e3a702027884bc54d79a863
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427311"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387321"
 ---
-# <a name="use-azure-synapse-studio-to-monitor-your-workspace-pipeline-runs"></a>Azure Synapse Studio を使用してワークスペースのパイプラインの実行を監視する
+# <a name="use-synapse-studio-to-monitor-your-workspace-pipeline-runs"></a>Synapse Studio を使用してワークスペースのパイプラインの実行を監視する
 
-Azure Synapse Analytics では、ソリューション内のデータ移動、データ変換、コンピューティングのアクティビティを自動化および調整する複雑なパイプラインを作成できます。 これらのパイプラインを作成して監視するには、Azure Synapse Studio (プレビュー) を使用します。
+Azure Synapse Analytics では、ソリューション内のデータ移動、データ変換、コンピューティングのアクティビティを自動化および調整する複雑なパイプラインを作成できます。 これらのパイプラインを作成して監視するには、Synapse Studio (プレビュー) を使用します。
 
 この記事では、パイプラインの実行を監視する方法を説明します。これにより、パイプラインの最新の状態、問題、進捗状況を監視することができます。
 
-## <a name="access-the-list-of-pipeline-runs"></a>パイプラインの実行の一覧にアクセスする
+## <a name="access-pipeline-runs-list"></a>パイプラインの実行リストにアクセスする
 
-ワークスペースでパイプラインの実行の一覧を表示するには、最初に [Azure Synapse Studio を開き](https://web.azuresynapse.net/)、ワークスペースを選択します。
+ワークスペースでパイプラインの実行の一覧を表示するには、最初に [Synapse Studio を開き](https://web.azuresynapse.net/)、ワークスペースを選択します。
 
 ![ワークスペースへのログイン](./media/common/login-workspace.png)
 
@@ -35,7 +36,7 @@ Azure Synapse Analytics では、ソリューション内のデータ移動、�
 
 ![[パイプラインの実行] を選択する](./media/how-to-monitor-pipeline-runs/monitor-hub-nav-pipelineruns.png)
 
-## <a name="filtering-your-pipeline-runs"></a>パイプラインの実行のフィルター処理
+## <a name="filter-your-pipeline-runs"></a>パイプラインの実行をフィルター処理する
 
 パイプラインの実行の一覧をフィルター処理して、関心のあるものだけに絞り込むことができます。 画面の上部にあるフィルターを使用して、フィルター処理を行うフィールドを指定できます。
 
@@ -45,7 +46,7 @@ Azure Synapse Analytics では、ソリューション内のデータ移動、�
 
 ![サンプルのフィルター](./media/how-to-monitor-pipeline-runs/filter-example.png)
 
-## <a name="viewing-details-about-a-specific-pipeline-run"></a>特定のパイプラインの実行の詳細を表示する
+## <a name="view-details-about-a-specific-pipeline-run"></a>特定のパイプラインの実行の詳細を表示する
 
 パイプラインの実行の詳細を表示するには、そのパイプラインの実行を選択します。 パイプラインの実行に関連付けられたアクティビティの実行が表示されます。 パイプラインがまだ実行中であれば、進捗状況を監視することができます。 
   

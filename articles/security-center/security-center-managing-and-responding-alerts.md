@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 8e44ce594375deeac47f037515d96c57d15c8359
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: f8b09c71e9ad55528788f97fb986606f21e8b0ec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398403"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84769781"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Azure Security Center でのセキュリティ アラートの管理と対応
 
@@ -58,21 +58,26 @@ Security Center は、真の脅威を検出し、偽陽性を減らすために�
 
 1. この情報を確認した後、攻撃を受けたリソースをクリックします。
 
+    セキュリティ アラート ページの左側のウィンドウには、セキュリティ アラートに関する概要情報 (タイトル、重要度、状態、アクティビティ時間、疑わしいアクティビティの説明、影響を受けるリソース) が表示されます。 影響を受けるリソースと共に、リソースに関連する Azure タグがあります。 これらを使用して、アラートを調査するときにリソースの組織コンテキストを推測します。
+
+    右側のペインには、問題の調査に役立つアラートの詳細が含まれている **[アラートの詳細]** タブがあります。IP アドレス、ファイル、プロセスなど。
+     
     ![セキュリティのアラートに対処する方法の推奨事項](./media/security-center-managing-and-responding-alerts/security-center-alert-remediate.png)
 
-    **[一般情報]** セクションには、セキュリティ アラートを始動させたものに関する分析情報があります。 ターゲット リソース、発信元 IP アドレス (該当する場合)。アラートが現在もアクティブかどうか、推奨修復方法などの情報が表示されます。  
+    また、右側のペインには **[アクションの実行]** タブがあります。このタブを使用して、セキュリティ アラートに関するその他のアクションを実行します。 次のようなアクションがあります。
+    - *[Mitigate the threat]\(脅威の軽減\)* - このセキュリティ アラートに対する手動の修復手順を提供します
+    - *[Prevent future attacks]\(将来の攻撃防止\)* - セキュリティに関する推奨事項を提供して、攻撃対象を減らし、セキュリティ体制を強化し、将来の攻撃を防ぐことができるようにします
+    - *[Trigger automated response]\(自動応答のトリガー\)* - このセキュリティ アラートへの応答としてロジック アプリをトリガーするオプションを提供します
+    - *[Suppress similar alerts]\(類似のアラートの抑制\)* - 組織に関連しないアラートの場合、同様の特性を持つ今後のアラートを抑制するオプションを提供します
 
-    > [!NOTE]
-    >一部の Windows セキュリティ イベント ログには IP アドレスが含まれていないため、発生元の IP アドレスが利用不可の場合もあります。
+    ![[アクションの実行] タブ](./media/security-center-managing-and-responding-alerts/alert-take-action.png)
 
-1. Security Center から提案される修復手順は、セキュリティ アラートによって異なります。 各アラートに従います。 
 
-    場合によっては、セキュリティ アラートを軽減するために、他の Azure コントロールやサービスを使用して、推奨される修復を実装することが必要になる場合があります。 
+
 
 ## <a name="see-also"></a>関連項目
 
-このドキュメントでは、セキュリティ センターでのセキュリティ ポリシーの構成方法について説明しました。 セキュリティ センターの詳細については、次を参照してください。
+このドキュメントでは、セキュリティ アラートを表示する方法について説明しました。 関連資料については、次のページを参照してください。
 
-- [Azure Security Center のアラート機能を使用して脅威を監視したり、それらの脅威に対応したりする方法に関する Microsoft Learn モジュール](https://docs.microsoft.com/learn/modules/resolve-threats-with-azure-security-center/)
-* [Azure Security Center のセキュリティ アラート](security-center-alerts-overview.md)。
-* [セキュリティ インシデントの処理](security-center-incident.md)
+- [アラートの抑制ルールを構成する](alerts-suppression-rules.md)
+- [ワークフローの自動化でアラートや推奨事項に対する応答を自動化する](workflow-automation.md)

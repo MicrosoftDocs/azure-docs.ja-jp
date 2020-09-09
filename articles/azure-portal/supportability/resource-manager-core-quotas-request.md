@@ -4,15 +4,15 @@ description: Azure Resource Manager の vCPU クォータを増やす要求
 author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
-ms.topic: article
+ms.topic: how-to
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: cdbf7364a275eb246615f398044456645a96d1a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fd04428edc28315e714b9e81af0bea0e9344e52
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76843669"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763807"
 ---
 # <a name="quota-increase-requests"></a>クォータの引き上げのリクエスト
 

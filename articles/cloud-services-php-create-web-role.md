@@ -3,8 +3,8 @@ title: PHP 用の Azure Web ロールと worker ロールの作成
 description: Azure クラウド サービスで PHP Web ロールおよび worker ロールを作成し、PHP ランタイムを構成するためのガイド。
 services: ''
 documentationcenter: php
-author: msangapu
-manager: cfowler
+author: msangapu-msft
+manager: gwallace
 ms.assetid: 9f7ccda0-bd96-4f7b-a7af-fb279a9e975b
 ms.service: cloud-services
 ms.workload: tbd
@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 54410e1e70a2ec0d3a9e2f853dc9556cd05996ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1bf0ea35c51b063a7720a1542a23a49fbcdbc557
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79297256"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892985"
 ---
 # <a name="create-php-web-and-worker-roles"></a>PHP Web ロールと worker ロールの作成
 
@@ -32,7 +32,7 @@ Azure にはアプリケーションを実行するためのコンピューテ�
 
 ## <a name="download-the-azure-sdk-for-php"></a>Azure SDK for PHP をダウンロードする
 
-[Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php) は、いくつかのコンポーネントで構成されています。 この記事では、そのうち Azure PowerShell と Azure エミュレーターの 2 つを使用します。 これら 2 つのコンポーネントは、Microsoft Web Platform Installer を使用してインストールできます。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。
+[Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php) は、いくつかのコンポーネントで構成されています。 この記事では、そのうち Azure PowerShell と Azure エミュレーターの 2 つを使用します。 これら 2 つのコンポーネントは、Microsoft Web Platform Installer を使用してインストールできます。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/)」を参照してください。
 
 ## <a name="create-a-cloud-services-project"></a>Cloud Services プロジェクトを作成する
 
@@ -40,7 +40,9 @@ PHP Web ロールまたは worker ロールを作成するための最初のス�
 
 新しい Azure サービス プロジェクトを作成するには、Azure PowerShell を管理者として実行し、次のコマンドを実行します。
 
-    PS C:\>New-AzureServiceProject myProject
+```powershell
+PS C:\>New-AzureServiceProject myProject
+```
 
 このコマンドを実行すると、Web ロールおよび worker ロールを追加できる新しいディレクトリ (`myProject`) が作成されます。
 
@@ -48,11 +50,15 @@ PHP Web ロールまたは worker ロールを作成するための最初のス�
 
 PHP Web ロールをプロジェクトに追加するには、プロジェクトのルート ディレクトリで次のコマンドを実行します。
 
-    PS C:\myProject> Add-AzurePHPWebRole roleName
+```powershell
+PS C:\myProject> Add-AzurePHPWebRole roleName
+```
 
 worker ロールについては、次のコマンドを使用します。
 
-    PS C:\myProject> Add-AzurePHPWorkerRole roleName
+```powershell
+PS C:\myProject> Add-AzurePHPWorkerRole roleName
+```
 
 > [!NOTE]
 > `roleName` パラメーターは省略可能です。 省略した場合、ロール名は自動的に生成されます。 最初に作成された Web ロールは `WebRole1`、2 番目は `WebRole2` などとなります。 最初に作成された worker ロールは `WorkerRole1`、2 番目は `WorkerRole2` などとなります。
@@ -71,7 +77,10 @@ worker ロールについては、次のコマンドを使用します。
 2. Web ロールのルート ディレクトリにある `bin` フォルダー内に `php` フォルダーを作成し、この `php` フォルダーに PHP ランタイム (すべてのバイナリ、構成ファイル、サブフォルダーなど) を追加します。
 3. (省略可能) PHP ランタイムに [Microsoft Drivers for PHP for SQL Server][sqlsrv drivers] が使用されている場合は、Web ロールを構成して、プロビジョニング時に [SQL Server Native Client 2012][sql native client] がインストールされるように指定する必要があります。 これを行うには、Web ロールのルート ディレクトリにある `bin` フォルダーに、[sqlncli.msi x64 インストーラー]を追加します。 次のステップで説明するスタートアップ スクリプトでは、ロールのプロビジョニング時にインストーラーが自動的に実行されます。 PHP ランタイムに Microsoft Drivers for PHP for SQL Server が使用されていない場合は、次のステップで示すスクリプトから、この行を削除できます。
 
-        msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
+   ```console
+   msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
+   ```
+
 4. `.php` ページに対する要求を処理する PHP ランタイムが使用されるように[インターネット インフォメーション サービス (IIS)][iis.net] を構成するスタートアップ タスクを定義します。 これを行うには、`setup_web.cmd` ファイル (Web ロールのルート ディレクトリにある `bin` フォルダー内) をテキスト エディターで開き、内容を次のスクリプトに置き換えます。
 
     ```cmd
@@ -107,7 +116,10 @@ worker ロールについては、次のコマンドを使用します。
 2. worker ロールのルート ディレクトリに `php` フォルダーを作成し、この `php` フォルダーに PHP ランタイム (すべてのバイナリ、構成ファイル、サブフォルダーなど) を追加します。
 3. (省略可能) PHP ランタイムに [Microsoft Drivers for PHP for SQL Server][sqlsrv drivers] が使用されている場合は、worker ロールを構成して、プロビジョニング時に [SQL Server Native Client 2012][sql native client] がインストールされるように指定する必要があります。 これを行うには、worker ロールのルート ディレクトリに、 [ フォルダーに、] を追加します。 次のステップで説明するスタートアップ スクリプトでは、ロールのプロビジョニング時にインストーラーが自動的に実行されます。 PHP ランタイムに Microsoft Drivers for PHP for SQL Server が使用されていない場合は、次のステップで示すスクリプトから、この行を削除できます。
 
-        msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
+   ```console
+   msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
+   ```
+
 4. ロールのプロビジョニング時に worker ロールの PATH 環境変数に `php.exe` 実行可能ファイルを追加するスタートアップ タスクを定義します。 これを行うには、 `setup_worker.cmd` ファイル (worker ロールのルート ディレクトリ内) をテキスト エディターで開き、内容を次のスクリプトに置き換えます。
 
     ```cmd
@@ -147,24 +159,30 @@ Azure エミュレーターは、Azure アプリケーションをクラウド�
 
 エミュレーターでプロジェクトを実行するには、プロジェクトのルート ディレクトリで次のコマンドを実行します。
 
-    PS C:\MyProject> Start-AzureEmulator
+```powershell
+PS C:\MyProject> Start-AzureEmulator
+```
 
 出力は以下のようになります。
 
-    Creating local package...
-    Starting Emulator...
-    Role is running at http://127.0.0.1:81
-    Started
+```output
+Creating local package...
+Starting Emulator...
+Role is running at http://127.0.0.1:81
+Started
+```
 
 Web ブラウザーを開き、出力に示されているローカル アドレス (上の出力例では`http://127.0.0.1:81` ) に移動すると、アプリケーションがエミュレーターで実行されていることを確認できます。
 
 エミュレーターを停止するには、次のコマンドを実行します。
 
-    PS C:\MyProject> Stop-AzureEmulator
+```powershell
+PS C:\MyProject> Stop-AzureEmulator
+```
 
 ## <a name="publish-your-application"></a>アプリケーションの発行
 
-アプリケーションを発行するには、まず、 [Import-AzurePublishSettingsFile](https://docs.microsoft.com/powershell/module/servicemanagement/azure/import-azurepublishsettingsfile) コマンドレットを使用して発行設定をインポートする必要があります。 次に [Publish-AzureServiceProject](https://docs.microsoft.com/powershell/module/servicemanagement/azure/publish-azureserviceproject) コマンドレットを使用して、アプリケーションを発行できます。 サインインの詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」を参照してください。
+アプリケーションを発行するには、まず、 [Import-AzurePublishSettingsFile](/powershell/module/servicemanagement/azure.service/import-azurepublishsettingsfile) コマンドレットを使用して発行設定をインポートする必要があります。 次に [Publish-AzureServiceProject](/powershell/module/servicemanagement/azure.service/publish-azureserviceproject) コマンドレットを使用して、アプリケーションを発行できます。 サインインの詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

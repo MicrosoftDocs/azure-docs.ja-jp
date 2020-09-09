@@ -14,15 +14,15 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: tutorial
 ms.date: 01/17/2020
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 300b497765dd1081fbad36292c01c56da5bb5e38
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: e04f6120f7d9a5646a3b30553b5083c5259acae2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76277261"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499638"
 ---
-# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>チュートリアル: Azure CLI を使用して高可用性仮想マシンを作成して展開する
+# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用して高可用性仮想マシンを作成して展開する
 
 このチュートリアルでは、可用性セットと呼ばれる機能を使用して、Azure で仮想マシン ソリューションの可用性と信頼性を向上させる方法を学習します。 可用性セットは、Azure にデプロイする VM を、複数の分離されたハードウェア クラスターに分散します。 これにより、Azure 内でハードウェアまたはソフトウェアの障害が発生した場合に影響を受けるのは VM のサブセットに限定され、ソリューション全体は引き続き利用可能であり、運用可能であることが保証されます。
 
@@ -33,7 +33,7 @@ ms.locfileid: "76277261"
 > * 可用性セットに VM を作成する
 > * 使用可能な VM のサイズを確認する
 
-このチュートリアルでは、[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) で CLI を使用します。このバージョンは常に更新され最新になっています。 Cloud Shell を開くには、コード ブロックの上部にある **[使ってみる]** を選択します。
+このチュートリアルでは、[Azure Cloud Shell](../../cloud-shell/overview.md) で CLI を使用します。このバージョンは常に更新され最新になっています。 Cloud Shell を開くには、コード ブロックの上部にある **[試してみる]** を選択します。
 
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.30 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 

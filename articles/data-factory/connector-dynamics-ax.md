@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/01/2019
-ms.openlocfilehash: 4dd82eea0a80ef81a0f972d1964a62e6c17a80c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/12/2020
+ms.openlocfilehash: 23a486dfe1256cea46f6722873950ffcb1bde084
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417363"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84982698"
 ---
 # <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory"></a>Azure Data Factory を使用して Dynamics AX からデータをコピーする
 
@@ -142,7 +142,8 @@ Dynamics AX からデータをコピーするは、コピー アクティビテ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの **type** プロパティは **DynamicsAXSource** に設定する必要があります | はい |
-| query | データをフィルター処理するための OData クエリ オプション。 例: `"?$select=Name,Description&$top=5"`.<br/><br/>**注**: コネクタは、次の結合された URL からデータをコピーします。`[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]` 詳細については、[OData の URL コンポーネント](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)に関するページを参照してください。 | いいえ |
+| query | データをフィルター処理するための OData クエリ オプション。 例: `"?$select=Name,Description&$top=5"`.<br/><br/>**注**:コネクタは、次の結合された URL からデータをコピーします。`[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]` 詳細については、[OData の URL コンポーネント](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)に関するページを参照してください。 | いいえ |
+| httpRequestTimeout | HTTP 要求が応答を取得する際のタイムアウト (**TimeSpan** 値)。 この値は、応答データの読み取りのタイムアウトではなく、応答の取得のタイムアウトです。 指定しない場合は、既定値の **00:30:00** (30 分) が使用されます。 | いいえ |
 
 **例**
 

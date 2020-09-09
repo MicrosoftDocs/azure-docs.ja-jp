@@ -2,24 +2,24 @@
 title: ユーザーのパスワードをリセットする - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory を使用してユーザーのパスワードをリセットする方法について説明します。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.assetid: fad5624b-2f13-4abc-b3d4-b347903a8f16
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/05/2018
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4fdbbd4d71a9c97259678413cd9e59ee8aeae6b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 69da6aa0253f92f9242a988c6b46de873df0677e
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69032662"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797205"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>Azure Active Directory を使用してユーザーのパスワードをリセットする
 

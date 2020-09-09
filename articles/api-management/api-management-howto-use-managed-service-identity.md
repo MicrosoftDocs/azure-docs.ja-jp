@@ -1,6 +1,6 @@
 ---
 title: Azure API Management でマネージド ID を使用する | Microsoft Docs
-description: API Management でマネージド ID を使用する方法
+description: Azure portal、PowerShell、および Resource Manager テンプレートを使用して、API Management でシステム割り当て ID とユーザー割り当て ID を作成する方法について説明します。
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -9,32 +9,66 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 10/18/2017
+ms.date: 06/12/2020
 ms.author: apimpm
-ms.openlocfilehash: 49576b805e6c6d01340e663bfb5d8e9013917625
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a7fa295bdc8881c0c1ba58c95872a9380231b81
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226595"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85558024"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Azure API Management でマネージド ID を使用する
 
-この記事では、API Management サービス インスタンスのマネージド ID を作成する方法と、その他のリソースにアクセスする方法について説明します。 Azure Active Directory (Azure AD) によって生成されたマネージド ID によって、API Management インスタンスは、Azure AD で保護された他のリソース (Azure Key Vault など) に簡単かつ安全にアクセスすることができます。 この ID は Azure によって管理され、ユーザーがシークレットをプロビジョニングしたりローテーションしたりする必要はありません。 マネージド ID の詳細については、「[Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。
+この記事では、Azure API Management インスタンスのマネージド ID を作成する方法と、その他のリソースにアクセスする方法について説明します。 Azure Active Directory (Azure AD) によって生成されたマネージド ID によって、API Management インスタンスは、Azure AD で保護された他のリソース (Azure Key Vault など) に簡単かつ安全にアクセスすることができます。 この ID は Azure によって管理されるため、シークレットをプロビジョニングしたりローテーションしたりする必要はありません。 マネージド ID の詳細については、「[Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。
 
-## <a name="create-a-managed-identity-for-an-api-management-instance"></a>API Management インスタンスのマネージド ID を作成する
+API Management インスタンスには、次の 2 種類の ID を与えることができます。
 
-### <a name="using-the-azure-portal"></a>Azure ポータルの使用
+- *システム割り当て ID* はサービスに関連付けられ、サービスが削除されると削除されます。 サービスでは、システム割り当て ID を 1 つだけ設定できます。
+- *ユーザー割り当て ID* は、サービスに割り当てることができるスタンドアロン Azure リソースです。 サービスでは、複数のユーザー割り当て ID を設定できます。
 
-ポータルでマネージド ID を設定するには、最初に通常の方法で API Management インスタンスを作成した後、機能を有効にします。
+## <a name="create-a-system-assigned-managed-identity"></a>システム割り当てマネージド ID を作成する
 
-1. ポータルを使って通常の方法で API 管理インスタンスを作成します。 ポータルでアプリに移動します。
-2. **[マネージド サービス ID]** を選びます。
-3. [Azure Active Directory に登録する] を [オン] に切り替えます。 [保存] をクリックします。
+### <a name="azure-portal"></a>Azure portal
 
-![MSI を有効化する](./media/api-management-msi/enable-msi.png)
+Azure portal でマネージド ID を設定するには、まず API Management インスタンスを作成し、その後、この機能を有効にします。
 
-### <a name="using-the-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
+1. ポータルを使って通常の方法で API 管理インスタンスを作成します。 ポータルでそれに移動します。
+2. **[マネージド ID]** を選択します。
+3. **[システム割り当て済み]** タブで、 **[状態]** を **[オン]** に切り替えます。 **[保存]** を選択します。
+
+    :::image type="content" source="./media/api-management-msi/enable-system-msi.png" alt-text="システム割り当てマネージド ID を有効化するための選択項目" border="true":::
+
+
+### <a name="azure-powershell"></a>Azure PowerShell
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+次の手順では、Azure PowerShell を使用して、API Management インスタンスを作成し、それに対して ID を割り当てる方法について説明します。 
+
+1. 必要に応じて、[Azure PowerShell ガイド](/powershell/azure/install-az-ps)の手順を使用して、Azure PowerShell をインストールします。 その後、`Connect-AzAccount` を実行して、Azure との接続を作成します。
+
+2. 次のコードを使用して、インスタンスを作成します。 API Management インスタンスで Azure PowerShell を使用する方法の他の例については、「[API Management 用の Azure PowerShell サンプル](powershell-samples.md)」を参照してください。
+
+    ```azurepowershell-interactive
+    # Create a resource group.
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+    # Create an API Management Consumption Sku service.
+    New-AzApiManagement -ResourceGroupName $resourceGroupName -Name consumptionskuservice -Location $location -Sku Consumption -Organization contoso -AdminEmail contoso@contoso.com -SystemAssignedIdentity
+    ```
+
+3. 既存のインスタンスを更新して、ID を作成する:
+
+    ```azurepowershell-interactive
+    # Get an API Management instance
+    $apimService = Get-AzApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
+
+    # Update an API Management instance
+    Set-AzApiManagement -InputObject $apimService -SystemAssignedIdentity
+    ```
+
+### <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
 
 ID を持った API Management インスタンスは、リソース定義に次のプロパティを含めることによって作成できます。
 
@@ -44,7 +78,7 @@ ID を持った API Management インスタンスは、リソース定義に次�
 }
 ```
 
-これは、API Management インスタンスの ID を作成して管理するよう Azure に命令するものです。
+このプロパティは、API Management インスタンスの ID を作成して管理するよう Azure に命令するものです。
 
 たとえば、Azure Resource Manager テンプレート全体は次のようになります。
 
@@ -53,7 +87,7 @@ ID を持った API Management インスタンスは、リソース定義に次�
     "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
     "contentVersion": "0.9.0.0",
     "resources": [{
-        "apiVersion": "2017-03-01",
+        "apiVersion": "2019-01-01",
         "name": "contoso",
         "type": "Microsoft.ApiManagement/service",
         "location": "[resourceGroup().location]",
@@ -72,36 +106,33 @@ ID を持った API Management インスタンスは、リソース定義に次�
     }]
 }
 ```
-## <a name="use-the-managed-service-identity-to-access-other-resources"></a>管理されたサービス ID を使用してその他のリソースにアクセスする
 
-> [!NOTE]
-> 現時点では、マネージド ID を使用して、API Management のカスタム ドメイン名用に Azure Key Vault から証明書を取得できます。 より多くのシナリオがまもなくサポートされます。
->
->
+インスタンスが作成されると、次の追加のプロパティが設定されます。
 
-
-### <a name="obtain-a-certificate-from-azure-key-vault"></a>Azure Key Vault から証明書を取得する
-
-#### <a name="prerequisites"></a>前提条件
-1. pfx 証明書を含む Key Vault は、API Management サービスと同じ Azure サブスクリプション、同じリソース グループに属している必要があります。 これは Azure Resource Manager テンプレートの要件です。
-2. シークレットのコンテンツ タイプは *application/x-pkcs12* にする必要があります。 証明書をアップロードするには、次のスクリプトを使用します。
-
-```powershell
-$pfxFilePath = "PFX_CERTIFICATE_FILE_PATH" # Change this path 
-$pwd = "PFX_CERTIFICATE_PASSWORD" # Change this password 
-$flag = [System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::Exportable 
-$collection = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2Collection 
-$collection.Import($pfxFilePath, $pwd, $flag) 
-$pkcs12ContentType = [System.Security.Cryptography.X509Certificates.X509ContentType]::Pkcs12 
-$clearBytes = $collection.Export($pkcs12ContentType) 
-$fileContentEncoded = [System.Convert]::ToBase64String($clearBytes) 
-$secret = ConvertTo-SecureString -String $fileContentEncoded -AsPlainText –Force 
-$secretContentType = 'application/x-pkcs12' 
-Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -SecretValue $Secret -ContentType $secretContentType
+```json
+"identity": {
+    "type": "SystemAssigned",
+    "tenantId": "<TENANTID>",
+    "principalId": "<PRINCIPALID>"
+}
 ```
 
+`tenantId` プロパティは、ID が属している Azure AD テナントを識別します。 `principalId` プロパティは、インスタンスの新しい ID の一意識別子です。 Azure AD 内では、サービス プリンシパルの名前は、お使いの API Management インスタンスに指定したものと同じになります。
+
+
+> [!NOTE]
+> API Management インスタンスには、システム割り当て ID とユーザー割り当て ID の両方を同時に設定することができます。 この場合、`type` プロパティは `SystemAssigned,UserAssigned` になります。
+
+### <a name="supported-scenarios"></a>サポートされるシナリオ
+
+#### <a name="obtain-a-custom-tlsssl-certificate-for-the-api-management-instance-from-azure-key-vault"></a><a name="use-ssl-tls-certificate-from-azure-key-vault"></a>API Management インスタンスのカスタム TLS/SSL 証明書を Azure Key Vault から取得する
+API Management インスタンスのシステム割り当て ID を使用して、Azure Key Vault に格納されているカスタム TLS/SSL 証明書を取得できます。 その後、これらの証明書を API Management インスタンスのカスタム ドメインに割り当てることができます。 以下の考慮事項に留意してください。
+
+- シークレットのコンテンツ タイプは *application/x-pkcs12* である必要があります。
+- シークレットが含まれている Key Vault 証明書のシークレット エンドポイントを使用します。
+
 > [!Important]
-> 証明書のオブジェクト バージョンを指定しなかった場合、より新しいバージョンの証明書が Key Vault にアップロードされると、その後 API Management によって自動的に取得されます。
+> 証明書のオブジェクト バージョンの指定がない場合は、より新しいバージョンの証明書が Key Vault にアップロードされた後、4 時間以内にそれが API Management によって自動的に取得されます。
 
 次の例では、次の手順を含む Azure Resource Manager テンプレートを示します。
 
@@ -136,14 +167,14 @@ Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -S
             "Premium"],
             "defaultValue": "Developer",
             "metadata": {
-                "description": "The pricing tier of this API Management service"
+                "description": "The pricing tier of this API Management instance"
             }
         },
         "skuCount": {
             "type": "int",
             "defaultValue": 1,
             "metadata": {
-                "description": "The instance size of this API Management service."
+                "description": "The instance size of this API Management instance."
             }
         },
         "keyVaultName": {
@@ -161,7 +192,7 @@ Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -S
         "keyVaultIdToCertificate": {
             "type": "string",
             "metadata": {
-                "description": "Reference to the KeyVault certificate. https://contoso.vault.azure.net/secrets/contosogatewaycertificate."
+                "description": "Reference to the Key Vault certificate. https://contoso.vault.azure.net/secrets/contosogatewaycertificate."
             }
         }
     },
@@ -170,7 +201,7 @@ Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -S
         "apimServiceIdentityResourceId": "[concat(resourceId('Microsoft.ApiManagement/service', variables('apiManagementServiceName')),'/providers/Microsoft.ManagedIdentity/Identities/default')]"
     },
     "resources": [{
-        "apiVersion": "2017-03-01",
+        "apiVersion": "2019-01-01",
         "name": "[variables('apiManagementServiceName')]",
         "type": "Microsoft.ApiManagement/service",
         "location": "[resourceGroup().location]",
@@ -230,6 +261,157 @@ Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -S
     }]
 }
 ```
+
+#### <a name="authenticate-to-the-back-end-by-using-an-api-management-identity"></a>API Management ID を使用してバックエンドに対する認証を行う
+
+システム割り当て ID を使用して、[authentication-managed-identity](api-management-authentication-policies.md#ManagedIdentity) ポリシーを通じて、バックエンドに対する認証を行うことができます。
+
+
+## <a name="create-a-user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID を作成する
+
+> [!NOTE]
+> API Management インスタンスは、最大 10 個のユーザー割り当てマネージド ID に関連付けることができます。
+
+### <a name="azure-portal"></a>Azure portal
+
+このポータルでマネージド ID を設定するには、まず API Management インスタンスを作成し、その後、この機能を有効にします。
+
+1. ポータルを使って通常の方法で API 管理インスタンスを作成します。 ポータルでそれに移動します。
+2. **[マネージド ID]** を選択します。
+3. **[ユーザー割り当て済み]** タブで、 **[追加]** を選択します。
+4. 先ほど作成した ID を検索して選択します。 **[追加]** を選択します。
+
+   :::image type="content" source="./media/api-management-msi/enable-user-assigned-msi.png" alt-text="ユーザー割り当てマネージド ID を有効化するための選択項目" border="true":::
+
+### <a name="azure-powershell"></a>Azure PowerShell
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+次の手順では、Azure PowerShell を使用して、API Management インスタンスを作成し、それに対して ID を割り当てる方法について説明します。 
+
+1. 必要に応じて、[Azure PowerShell ガイド](/powershell/azure/install-az-ps)の手順を使用して、Azure PowerShell をインストールします。 その後、`Connect-AzAccount` を実行して、Azure との接続を作成します。
+
+2. 次のコードを使用して、インスタンスを作成します。 API Management インスタンスで Azure PowerShell を使用する方法の他の例については、「[API Management 用の Azure PowerShell サンプル](powershell-samples.md)」を参照してください。
+
+    ```azurepowershell-interactive
+    # Create a resource group.
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+    # Create a user-assigned identity. This requires installation of the "Az.ManagedServiceIdentity" module.
+    $userAssignedIdentity = New-AzUserAssignedIdentity -Name $userAssignedIdentityName -ResourceGroupName $resourceGroupName
+
+    # Create an API Management Consumption Sku service.
+    $userIdentities = @($userAssignedIdentity.Id)
+
+    New-AzApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization contoso -AdminEmail admin@contoso.com -Sku Consumption -UserAssignedIdentity $userIdentities
+    ```
+
+3. 既存のサービスを更新してサービスに ID を割り当てる:
+
+    ```azurepowershell-interactive
+    # Get an API Management instance
+    $apimService = Get-AzApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
+
+    # Create a user-assigned identity. This requires installation of the "Az.ManagedServiceIdentity" module.
+    $userAssignedIdentity = New-AzUserAssignedIdentity -Name $userAssignedIdentityName -ResourceGroupName $resourceGroupName
+
+    # Update an API Management instance
+    $userIdentities = @($userAssignedIdentity.Id)
+    Set-AzApiManagement -InputObject $apimService -UserAssignedIdentity $userIdentities
+    ```
+
+### <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
+
+ID を持った API Management インスタンスは、リソース定義に次のプロパティを含めることによって作成できます。
+
+```json
+"identity": {
+    "type": "UserAssigned",
+    "userAssignedIdentities": {
+        "<RESOURCEID>": {}
+    }
+}
+```
+
+ユーザー割り当ての種類を追加すると、インスタンスに対して指定されたユーザー割り当て ID を使用するように Azure に指示されます。
+
+たとえば、Azure Resource Manager テンプレート全体は次のようになります。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "contentVersion": "0.9.0.0",
+    "resources": [{
+        "apiVersion": "2019-12-01",
+        "name": "contoso",
+        "type": "Microsoft.ApiManagement/service",
+        "location": "[resourceGroup().location]",
+        "tags": {},
+        "sku": {
+            "name": "Developer",
+            "capacity": "1"
+        },
+        "properties": {
+            "publisherEmail": "admin@contoso.com",
+            "publisherName": "Contoso"
+        },
+        "identity": {
+            "type": "UserAssigned",
+             "userAssignedIdentities": {
+                "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]": {}
+             }
+        },
+        "dependsOn": [       
+          "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]"
+        ]
+    }]
+}
+```
+
+サービスが作成されると、次の追加のプロパティが設定されます。
+
+```json
+"identity": {
+    "type": "UserAssigned",
+    "userAssignedIdentities": {
+        "<RESOURCEID>": {
+            "principalId": "<PRINCIPALID>",
+            "clientId": "<CLIENTID>"
+        }
+    }
+}
+```
+
+`principalId` プロパティは、Azure AD の管理に使用される ID の一意識別子です。 `clientId` プロパティは、ランタイム呼び出し中に使用される ID を指定するために使用される、アプリケーションの新しい ID の一意識別子です。
+
+> [!NOTE]
+> API Management インスタンスには、システム割り当て ID とユーザー割り当て ID の両方を同時に設定することができます。 この場合、`type` プロパティは `SystemAssigned,UserAssigned` になります。
+
+### <a name="supported-scenarios"></a>サポートされるシナリオ
+
+#### <a name="authenticate-to-the-back-end-by-using-a-user-assigned-identity"></a>ユーザー割り当て ID を使用してバックエンドに対する認証を行う
+
+ユーザー割り当て ID を使用して、[authentication-managed-identity](api-management-authentication-policies.md#ManagedIdentity) ポリシーを通じて、バックエンドに対する認証を行うことができます。
+
+
+## <a name="remove-an-identity"></a><a name="remove"></a>ID を削除する
+
+ポータルまたは Azure Resource Manager テンプレートを使用して、作成したのと同じ方法で機能を無効にすることで、システム割り当て ID を削除できます。 ユーザー割り当て ID は個別に削除することはできません。 すべての ID を削除するには、ID の種類を `"None"` に設定します。
+
+この方法でシステム割り当て ID を削除すると、それは Azure AD からも削除されます。 API Management インスタンスが削除されると、システム割り当て ID も Azure AD から自動的に削除されます。
+
+Azure Resource Manager テンプレートを使用してすべての ID を削除するには、次のセクションを更新します。
+
+```json
+"identity": {
+    "type": "None"
+}
+```
+
+> [!Important]
+> API Management インスタンスが Key Vault からのカスタム SSL 証明書を使用して構成されているときに、マネージド ID を無効にしようとすると、その要求は失敗します。
+>
+> Azure Key Vault 証明書からインラインでエンコードされた証明書に切り替えて自分のブロックを解除した後、マネージド ID を無効にします。 詳細については、「[カスタム ドメイン名を構成する](configure-custom-domain.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

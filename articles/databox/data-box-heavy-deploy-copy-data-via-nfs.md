@@ -1,6 +1,6 @@
 ---
 title: Azure Data Box Heavy に NFS 経由でデータをコピーするチュートリアル | Microsoft Docs
-description: Azure Data Box Heavy に NFS 経由でデータをコピーする方法について学習します
+description: このチュートリアルでは、ローカル Web UI から NFS を使用して Azure Data Box Heavy に接続し、ホスト コンピューターからデータをコピーする方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 4361cee3d07408c3abb5031d2ab18c15c92c5e0a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a8199039ea803d5919e168edccaaa03c18985725
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222809"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921029"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-heavy-via-nfs"></a>チュートリアル:NFS 経由で Azure Data Box Heavy にデータをコピーする
 
@@ -55,7 +55,7 @@ Azure Files の共有の場合:
 
 次の表は、Data Box Heavy 上の共有への UNC パスと、データのアップロード先である Azure Storage のパスの URL を示しています。 Azure Storage の最終的なパスの URL は、UNC 共有パスから導き出すことができます。
  
-|                   |                                                            |
+| ストレージ           | UNC パス                                                                       |
 |-------------------|--------------------------------------------------------------------------------|
 | Azure ブロック BLOB | <li>共有への UNC パス: `//<DeviceIPAddress>/<StorageAccountName_BlockBlob>/<ContainerName>/files/a.txt`</li><li>Azure Storage の URL: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
 | Azure ページ BLOB  | <li>共有への UNC パス: `//<DeviceIPAddres>/<StorageAccountName_PageBlob>/<ContainerName>/files/a.txt`</li><li>Azure Storage の URL: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  

@@ -6,17 +6,17 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 52391ffc8eb6b6879e5fd90df26d9ccacbfacebb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9d9cc377ead0c297e8334d34255bd2c7c7cd39fc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188928"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499411"
 ---
 # <a name="configure-application-insights-profiler"></a>Application Insights Profiler を構成する
 
 ## <a name="updated-profiler-agent"></a>更新された Profiler エージェント
-トリガー機能は、バージョン 2.6 以降のプロファイラー エージェントでのみ動作します。 Azure App Service を実行している場合、エージェントは自動的に更新されます。 Web サイトの Kudu URL にアクセスし、 `https://yourwebsite.scm.azurewebsites.net/diagnosticservices` のように末尾に /diagnosticservices 追加すると、実行しているエージェントのバージョンを確認できます。 Application Insights Profiler の Web ジョブはバージョン 2.6 以降である必要があります。 Web アプリを再起動することで、強制的にアップグレードすることができます。 
+トリガー機能は、バージョン 2.6 以降のプロファイラー エージェントでのみ動作します。 Azure App Service を実行している場合、エージェントは自動的に更新されます。 Web サイトの Kudu URL にアクセスし、`https://yourwebsite.scm.azurewebsites.net/diagnosticservices` のように末尾に /diagnosticservices 追加すると、実行しているエージェントのバージョンを確認できます。 Application Insights Profiler の Web ジョブはバージョン 2.6 以降である必要があります。 Web アプリを再起動することで、強制的にアップグレードすることができます。 
 
 プロファイラーを VM またはクラウド サービスで実行している場合は、Windows Azure Diagnostics (WAD) 拡張機能バージョン 16.0.4 以降がインストールされている必要があります。 WAD のバージョンを確認するには、VM にログオンし、次のディレクトリを参照します。C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.16.0.4。 ディレクトリ名が、インストールされている WAD のバージョンです。 新しいバージョンが利用可能になると、Azure VM エージェントは WAD を自動的に更新します。
 
@@ -32,7 +32,7 @@ Azure Application Insights Profiler の設定ウィンドウを開くには、Ap
 
 **[Application Insights Profiler の構成]** ページには以下の機能があります。
 
-| | |
+| 特徴量 | 説明 |
 |-|-|
 今すぐプロファイル | Application Insights のこのインスタンスにリンクされているすべてのアプリのプロファイリング セッションを開始します。
 トリガー | プロファイラーを実行するトリガーを構成できます。 
@@ -41,14 +41,14 @@ Azure Application Insights Profiler の設定ウィンドウを開くには、Ap
 ## <a name="profile-now"></a>今すぐプロファイル
 このオプションを使用すると、必要に応じてプロファイリング セッションを開始できます。 このリンクをクリックすると、この Application Insights インスタンスにデータを送信しているすべてのプロファイラー エージェントがプロファイルのキャプチャを開始します。 5 分から 10 分後に、プロファイル セッションが下の一覧に表示されます。
 
-プロファイラー セッションをユーザーが手動でトリガーするためには、そのロールに最低でも、Application Insights コンポーネントの "書き込み" アクセス権が必要です。 ほとんどの場合、このアクセス権は自動的に与えられており、追加の作業は必要ありません。 問題が発生している場合、追加するサブスクリプション スコープ ロールは "Application Insights コンポーネント共同作成者" ロールになります。 [Azure Monitoring でのロール アクセス制御に関する詳細情報を参照してください](https://docs.microsoft.com/azure/azure-monitor/app/resources-roles-access-control)。
+プロファイラー セッションをユーザーが手動でトリガーするためには、そのロールに最低でも、Application Insights コンポーネントの "書き込み" アクセス権が必要です。 ほとんどの場合、このアクセス権は自動的に与えられており、追加の作業は必要ありません。 問題が発生している場合、追加するサブスクリプション スコープ ロールは "Application Insights コンポーネント共同作成者" ロールになります。 [Azure Monitoring でのロール アクセス制御に関する詳細情報を参照してください](./resources-roles-access-control.md)。
 
 ## <a name="trigger-settings"></a>トリガーの設定
 ![[トリガーの設定] のポップアップ][trigger-settings-flyout]
 
 メニュー バーの [トリガー] ボタンをクリックすると、[トリガーの設定] ボックスが開きます。 CPU またはメモリの使用率が設定したレベルに達したときに、プロファイルを開始するようにトリガーを設定できます。
 
-| | |
+| 設定 | 説明 |
 |-|-|
 オン/オフ ボタン | オン: このトリガーによってプロファイラーを開始できます。オフ: プロファイラーはこのトリガーによって開始されません。
 メモリのしきい値 | メモリの使用率がこの割合になると、プロファイラーが開始されます。
@@ -58,7 +58,7 @@ Duration | プロファイラーがトリガーされたときに実行される
 ## <a name="recent-profiling-sessions"></a>最近のプロファイリング セッション
 ページのこのセクションには、最近のプロファイル セッションに関する情報が表示されます。 プロファイル セッションは、プロファイラー エージェントがアプリケーションをホストしているコンピューターの 1 つでプロファイルを取得していた期間を表します。 いずれかの行をクリックすると、セッションからプロファイルを開くことができます。 各セッションについて、以下が表示されます。
 
-| | |
+| 設定 | 説明 |
 |-|-|
 トリガー元 | トリガー、[今すぐプロファイル]、既定のサンプリングのいずれによってセッションが開始されたか。 
 アプリケーション名 | プロファイルされたアプリケーションの名前。

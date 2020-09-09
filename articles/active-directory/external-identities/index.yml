@@ -1,0 +1,101 @@
+### YamlMime:Landing
+title: External Identities のドキュメント
+summary: External Identities は、組織が顧客やパートナーなどの外部ユーザーをセキュリティで保護して管理できるようにする一連の機能です。 B2B コラボレーションを基盤とする External Identities は、組織外のユーザーとやり取りして接続するための追加機能を提供します。
+metadata:
+  title: External Identities のドキュメント
+  description: External Identities は、組織が顧客やパートナーなどの外部ユーザーをセキュリティで保護して管理できるようにする一連の機能です。 B2B コラボレーションを基盤とする External Identities は、組織外のユーザーとやり取りして接続するための追加機能を提供します。
+  ms.service: active-directory
+  ms.subservice: B2B
+  ms.workload: identity
+  ms.topic: landing-page
+  ms.date: 05/19/2020
+  author: msmimart
+  ms.author: mimart
+  manager: celested
+  ms.openlocfilehash: 694b5fee19a1c0dca752e02259e3cc398ae6e55e
+  ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/06/2020
+  ms.locfileid: "87906760"
+landingContent:
+- title: External Identities について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: External Identities ソリューションの比較
+      url: compare-with-b2c.md
+    - text: B2B ゲスト ユーザー アクセスとは
+      url: what-is-b2b.md
+- title: セルフサービス サインアップ (プレビュー)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: セルフサービス サインアップとは
+      url: self-service-sign-up-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: セルフサービス サインアップのユーザー フローを追加する
+      url: self-service-sign-up-user-flow.md
+    - text: ユーザー フローのカスタム属性を定義する
+      url: user-flow-add-custom-attributes.md
+- title: B2B ゲスト ユーザーの招待
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: B2B ゲスト ユーザーが招待に応じる方法
+      url: redemption-experience.md
+  - linkListType: quickstart
+    links:
+    - text: ゲスト ユーザーをディレクトリに追加する
+      url: b2b-quickstart-add-guest-users-portal.md
+    - text: PowerShell を使用してゲスト ユーザーを追加する
+      url: b2b-quickstart-invite-powershell.md
+  - linkListType: how-to-guide
+    links:
+    - text: 管理者がゲストを招待する方法
+      url: add-users-administrator.md
+    - text: ユーザーがゲストを招待する方法
+      url: add-users-information-worker.md
+- title: B2B コラボレーションのカスタマイズ
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: B2B コラボレーションの有効化
+      url: delegate-invitations.md
+  - linkListType: deploy
+    links:
+    - text: 直接フェデレーションの設定 (プレビュー)
+      url: direct-federation.md
+    - text: Google フェデレーションの設定
+      url: google-federation.md
+    - text: ワンタイム パスコード認証の設定 (プレビュー)
+      url: one-time-passcode.md
+  - linkListType: tutorial
+    links:
+    - text: 多要素認証を適用する
+      url: b2b-tutorial-require-mfa.md
+  - linkListType: reference
+    links:
+    - text: B2B コラボレーション コードと PowerShell サンプル
+      url: code-samples.md
+- title: ゲスト ユーザーの管理
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: B2B ゲスト ユーザーについて
+      url: user-properties.md
+    - text: 動的グループと B2B ゲスト
+      url: use-dynamic-groups.md
+  - linkListType: how-to-guide
+    links:
+    - text: B2B ゲスト ユーザーの監査とレポート
+      url: auditing-and-reporting.md
+    - text: B2B ゲストに対するアクセス許可の付与
+      url: add-guest-to-role.md
+    - text: 組織の許可またはブロック
+      url: allow-deny-list.md
+  - linkListType: deploy
+    links:
+    - text: B2B コラボレーション用の SaaS アプリの構成
+      url: configure-saas-apps.md

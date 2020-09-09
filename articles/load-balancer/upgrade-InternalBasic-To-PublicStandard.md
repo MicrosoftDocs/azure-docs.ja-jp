@@ -1,18 +1,18 @@
 ---
-title: Basic Public から Standard Public へのアップグレード - Azure Load Balancer
+title: Basic Internal から Standard Public へのアップグレード - Azure Load Balancer
 description: このアーティクルでは、Azure Basic Internal Load Balancer を Standard Public Load Balancer にアップグレードする方法について説明します
 services: load-balancer
 author: irenehua
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: df7b8e6243bc45b5d5bdd8a9a72e81b0946454ff
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 225252f2cd47c36de2c7eed4ed1e5dae3ebd81b2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858416"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078754"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Azure Internal Load Balancer のアップグレード - 送信接続が必要
 [Azure Standard Load Balancer](load-balancer-overview.md) では、豊富な機能とゾーンの冗長性による高可用性が提供されます。 Load Balancer SKU の詳細については、[比較表](https://docs.microsoft.com/azure/load-balancer/skus#skus)を参照してください。 Standard Internal Load Balancer は送信接続を提供しないため、代わりに標準のPublic Load Balancer を作成するためのソリューションを提供します。

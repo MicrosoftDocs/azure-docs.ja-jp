@@ -38,7 +38,7 @@
 - name: サンプル
   items:
     - name: ポリシー
-      href: policy-samples.md
+      href: ./policies/index.md
     - name: Azure PowerShell
       href: powershell-samples.md
 - name: 概念
@@ -51,7 +51,7 @@
           href: api-management-howto-policies.md
         - name: ポリシー リファレンスのインデックス
           href: api-management-policies.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -59,6 +59,10 @@
           href: api-management-security-controls.md
     - name: サブスクリプション
       href: api-management-subscriptions.md
+    - name: バージョン
+      href: api-management-versions.md
+    - name: リビジョン
+      href: api-management-revisions.md
     - name: Automation を使用して管理する
       href: automation-manage-api-management.md
     - name: エラー処理
@@ -67,6 +71,8 @@
       href: api-management-api-import-restrictions.md
     - name: セルフホステッド ゲートウェイの概要
       href: self-hosted-gateway-overview.md
+    - name: 可観測性
+      href: observability.md
 - name: 操作方法ガイド
   items:
     - name: API の定義
@@ -83,7 +89,7 @@
           href: import-api-app-as-api.md
         - name: 関数アプリのインポート
           href: import-function-app-as-api.md
-        - name: Logic Apps のインポート
+        - name: ロジック アプリのインポート
           href: import-logic-app-as-api.md
         - name: Service Fabric アプリのインポート
           href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
@@ -255,6 +261,9 @@
       href: /rest/api/apimanagement/ApiManagementREST/api-management-REST
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.apimanagement/allversions
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: よく寄せられる質問
@@ -270,12 +279,12 @@
     - name: ビデオ
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=api-management'
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-api-management.html'
+      href: /answers/topics/azure-api-management.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-api-management'
     - name: API 設計ガイダンス
-      href: 'https://docs.microsoft.com/azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json'
+      href: /azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json
     - name: API 実装ガイダンス
-      href: 'https://docs.microsoft.com/azure/architecture/best-practices/api-implementation?toc=%2Fazure%2Fapi-management%2Ftoc.json'
+      href: /azure/architecture/best-practices/api-implementation?toc=%2Fazure%2Fapi-management%2Ftoc.json
     - name: '"ホスト名の更新の失敗" エラーに関するトラブルシューティング'
       href: api-management-troubleshoot-cannot-add-custom-domain.md

@@ -4,30 +4,32 @@ titleSuffix: Azure Media Services
 description: Azure Media Services の用語と概念について説明します。
 services: media-servicesgit
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 02/18/2020
-ms.author: juliako
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 02d0897774261a25a2fccb70a31d0f264c458740
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dec0503ec369ae473fb592db958c0e30a27a4268
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79500093"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297435"
 ---
 # <a name="media-services-terminology-and-concepts"></a>Media Services の用語と概念
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 このトピックでは、Azure Media Services の用語と概念について簡単に説明します。 また、この記事では、Media Services v3 の概念と機能を詳細に説明する記事へのリンクを提供します。
 
 開発を始める前に、これらのトピックで説明されている基本的な概念を確認する必要があります。
 
 > [!NOTE]
-> 現在、[Azure portal](https://portal.azure.com/) を使用して、Media Services v3 の[ライブ イベント](live-events-outputs-concept.md)の管理、v3 の[資産](assets-concept.md)の表示 (管理ではない)、[API へのアクセスに関する情報の取得](access-api-portal.md)を行うことができます。
+> 現在、[Azure portal](https://portal.azure.com/) を使用して、Media Services v3 の[ライブ イベント](live-events-outputs-concept.md)の管理、v3 の[資産](assets-concept.md)の表示 (管理ではない)、[API へのアクセスに関する情報の取得](./access-api-howto.md)を行うことができます。
 > 他のすべての管理タスク ([変換とジョブ](transforms-jobs-concept.md)や[コンテンツ保護](content-protection-overview.md)など) については、[REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -45,7 +47,7 @@ ms.locfileid: "79500093"
 |---|---|---|
 |アセットとコンテンツのアップロード|Azure でメディア コンテンツの管理、暗号化、エンコード、分析、およびストリーミングを開始するには、Media Services アカウントを作成し、デジタル ファイルを**アセット**にアップロードする必要があります。|[クラウドのアップロードとストレージ](storage-account-concept.md)<br/><br/>[アセットの概念](assets-concept.md)|
 |コンテンツのエンコード|高品質なデジタル メディア ファイルをアセットにアップロードすると、さまざまなブラウザーやデバイスで再生できる形式にエンコードできます。 <br/><br/>Media Services v3 でエンコードするには、**変換**と**ジョブ**を作成する必要があります。|[Transform と Job](transforms-jobs-concept.md)<br/><br/>[Media Services でのエンコード](encoding-concept.md)|
-|コンテンツの分析 (Video Indexer)|Media Services v3 では Media Services v3 プリセットを使用して、ビデオ ファイルとオーディオ ファイルから分析情報を抽出できます。 Media Services v3 プリセットを使用してコンテンツを分析するには **変換** と **ジョブ** を作成する必要があります。<br/><br/>より詳細な分析情報が必要な場合は [Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) を直接使用します。|[ビデオおよびオーディオ ファイルの分析](analyzing-video-audio-files-concept.md)|
+|コンテンツの分析 (Video Indexer)|Media Services v3 では Media Services v3 プリセットを使用して、ビデオ ファイルとオーディオ ファイルから分析情報を抽出できます。 Media Services v3 プリセットを使用してコンテンツを分析するには **変換** と **ジョブ** を作成する必要があります。<br/><br/>より詳細な分析情報が必要な場合は [Video Indexer](../video-indexer/index.yml) を直接使用します。|[ビデオおよびオーディオ ファイルの分析](analyzing-video-audio-files-concept.md)|
 |パッケージと配信|コンテンツがエンコードされたら、**ダイナミック パッケージ**を活用できます。 Media Services では、 **ストリーミング エンドポイント** は、メディア コンテンツをクライアント プレーヤーに配信するために使用するダイナミック パッケージ サービスです。 出力アセット内のビデオをクライアントが再生できるようにするには、**ストリーミング ロケーター**を作成し、ストリーミング URL をビルドする必要があります。 <br/><br/>**ストリーミング ロケーター**を作成するときに、アセット名に加えて、**ストリーミング ポリシー**を指定する必要があります。 **ストリーミング ポリシー**を使用して、**ストリーミング ロケーター**のためのストリーミング プロトコルと暗号化オプション (該当する場合) を定義できます。 ダイナミック パッケージは、コンテンツのストリーミングがライブの場合でもオンデマンドの場合でも使用されます。 <br/><br/>Media Services **動的マニフェスト**を使用し、動画を特定の方法でストリーミングしたり、サブクリップのみをストリーミングしたりできます。|[ダイナミック パッケージ](dynamic-packaging-overview.md)<br/><br/>[ストリーミング エンドポイント](streaming-endpoint-concept.md)<br/><br/>[ストリーミング ロケーター](streaming-locators-concept.md)<br/><br/>[ストリーミング ポリシー](streaming-policy-concept.md)<br/><br/>[動的マニフェスト](filters-dynamic-manifest-overview.md)<br/><br/>[フィルター](filters-concept.md)|
 |コンテンツの保護|Media Services では、Advanced Encryption Standard (AES-128) または主要な 3 つの DRM システム (Microsoft PlayReady、Google Widevine、Apple FairPlay) によって動的に暗号化されたライブまたはオンデマンドのコンテンツを配信できます。 Media Services では、承認されたクライアントに AES キーと DRM (PlayReady、Widevine、FairPlay) ライセンスを配信するためのサービスも提供しています。 <br/><br/>ストリームで暗号化オプションを指定するには、**コンテンツ キー ポリシー**を作成し、それを**ストリーミング ロケーター**に関連付けます。 **クライアント キー ポリシー**では、エンド クライアントにコンテンツ キーを配信する方法を構成できます。<br/><br/> 同じオプションが必要な場合は常に、既存のポリシーを再利用するようにしてください。| [コンテンツ キー ポリシー](content-key-policy-concept.md)<br/><br/>[コンテンツ保護](content-protection-overview.md)|
 |ライブ ストリーミング|Media Services では、Azure クラウドで顧客にライブ イベントを配信することができます。 **ライブ イベント**は、ライブ ビデオ フィードの取り込みと処理を担当します。 **ライブ イベント**を作成するときに、リモートのエンコーダーからライブ信号を送信するために使用できる入力エンドポイントが作成されます。 ストリームが**ライブ イベント**に流れ始めると、**アセット**、**ライブ出力**、**ストリーミング ロケーター**を作成することにより、ストリーミング イベントを開始できます。 **ライブ出力**により、ストリームが**アセット**にアーカイブされ、**ストリーミング エンドポイント**を介して視聴者がストリームを使用できるようになります。 ライブ イベントは、*パススルー* (オンプレミスのライブ エンコーダーによって複数のビットレート ストリームが送信される) または *ライブ エンコード* (オンプレミスのライブ エンコーダーによってシングル ビットレート ストリームが送信される) のいずれかに設定できます。 |[ライブ ストリーミングの概要](live-streaming-overview.md)<br/><br/>[ライブ イベントとライブ出力](live-events-outputs-concept.md)|

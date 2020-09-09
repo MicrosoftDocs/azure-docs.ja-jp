@@ -35,7 +35,7 @@ ms.locfileid: "83744447"
 
 セキュリティ情報の方法は、2 要素セキュリティ認証とパスワードのリセットの両方に使用されます。 ただし、すべてのメソッドを両方に使用できるわけではありません。
 
-| 方法 | 使用目的 |
+| Method | 使用目的 |
 | ------ | -------- |
 | Authenticator アプリ | 2 要素認証とパスワードのリセット認証。 |
 | テキスト メッセージ | 2 要素認証とパスワードのリセット認証。 |
@@ -102,11 +102,11 @@ ms.locfileid: "83744447"
 
     ![既定のサインイン方法の変更リンク](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
 
-2. 利用可能なメソッドのドロップダウン リストから **[Phone - call ( *_your_phone_number_* )]\(電話 - 呼び出し (<ユーザーの電話番号>)\)** を選択して、 **[確認]** を選択します。
+2. 利用可能なメソッドのドロップダウン リストから **[Phone - call (*_your_phone_number_*)]\(電話 - 呼び出し (<ユーザーの電話番号>)\)** を選択して、 **[確認]** を選択します。
 
     ![既定のサインインのメソッドを選択する](media/security-info/securityinfo-myprofile-phonecall-changeddefault.png)
 
-    サインインに使用される既定のメソッドが、 **[Phone - call ( *_your_phone_number_* )]\(電話 - 呼び出し (<ユーザーの電話番号>)\)** に変更されます。
+    サインインに使用される既定のメソッドが、 **[Phone - call (*_your_phone_number_*)]\(電話 - 呼び出し (<ユーザーの電話番号>)\)** に変更されます。
 
 ## <a name="additional-security-info-methods"></a>追加のセキュリティ情報メソッド
 

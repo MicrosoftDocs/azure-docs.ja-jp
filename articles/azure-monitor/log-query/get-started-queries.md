@@ -6,17 +6,17 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: f56abe2bf6ccea1f55f9b3fe94b75016d449b46b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 345d4fe218f5eed433204622bd47481628ec810f
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77670181"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874063"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Azure Monitor でログ クエリの使用を開始する
 
 > [!NOTE]
-> 少なくとも 1 つの仮想マシンからデータを収集する場合は、独自の環境でこの演習を行うことができます。 それ以外の場合は、サンプル データが多数含まれている Microsoft の[デモ環境](https://portal.loganalytics.io/demo)を使用してください。
+> 少なくとも 1 つの仮想マシンからデータを収集する場合は、独自の環境でこの演習を行うことができます。 それ以外の場合は、サンプル データが多数含まれている Microsoft の[デモ環境](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade)を使用してください。  KQL でクエリを実行する方法がわかっていて、リソースの種類に応じて便利なクエリをすぐに作成したい場合は、[保存済みサンプル クエリ ペイン](saved-queries.md)に関するページを参照してください。
 
 このチュートリアルでは、Azure Monitor でログ クエリを記述する方法について説明します。 以下の方法について説明します。
 
@@ -36,12 +36,14 @@ Azure Monitor でのログ クエリの詳細については、[Azure Monitor �
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE42pGX]
 
 ## <a name="writing-a-new-query"></a>新しいクエリの記述
+
 クエリは、テーブル名または *search* コマンドから始めることができます。 まずテーブル名から始めます。これは、テーブル名でクエリの明確な範囲が定義され、クエリのパフォーマンスと結果の関連性の両方が向上するためです。
 
 > [!NOTE]
 > Azure Monitor によって使用される Kusto クエリ言語では、大文字と小文字が区別されます。 通常、言語のキーワードは小文字で記述されます。 クエリ内でテーブルまたは列の名前を使用する場合は、スキーマ ウィンドウの表示に従って大文字と小文字を正しく指定します。
 
 ### <a name="table-based-queries"></a>テーブルベースのクエリ
+
 Azure Monitor では、ログ データはテーブルに編成され、各テーブルは複数の列で構成されます。 Analytics ポータルでは、すべてのテーブルと列は Log Analytics のスキーマ ウィンドウに表示されます。 目的のテーブルを指定子、データの一部を見てみます。
 
 ```Kusto
@@ -58,6 +60,7 @@ SecurityEvent
 実際は `| take 10` を追加しなくてもクエリを実行できます。この方法は有効ですが、最大 10,000 件の結果が返される可能性があります。
 
 ### <a name="search-queries"></a>検索クエリ
+
 検索クエリはあまり構造化されていないため、一般的に、任意の列に特定の値が含まれるレコードを検索する場合に適しています。
 
 ```Kusto
@@ -132,12 +135,14 @@ SecurityEvent
 ## <a name="specify-a-time-range"></a>時間の範囲を指定する
 
 ### <a name="time-picker"></a>時刻の選択ツール
+
 時刻の選択ツールは [実行] ボタンの横にあります。これは、過去 24 時間のレコードのみのクエリを実行していることを示しています。 これは、すべてのクエリに適用される既定の時間範囲です。 過去 1 時間のレコードのみを取得するには、 _[過去 1 時間]_ を選択してクエリを再度実行します。
 
 ![時刻の選択](media/get-started-queries/timepicker.png)
 
 
 ### <a name="time-filter-in-query"></a>クエリの時間フィルター
+
 また、時間フィルターをクエリに追加して、独自の時間の範囲を定義することもできます。 テーブル名の直後に時間フィルターを配置することをお勧めします。 
 
 ```Kusto
@@ -150,6 +155,7 @@ SecurityEvent
 
 
 ## <a name="project-and-extend-select-and-compute-columns"></a>プロジェクトと拡張: 列の選択と計算
+
 結果に含める特定の列を選択するには、**project** を使用します。
 
 ```Kusto

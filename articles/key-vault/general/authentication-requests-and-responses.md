@@ -1,6 +1,6 @@
 ---
 title: 認証、要求、応答
-description: Key Vault を使用するために AD に対する認証を行います
+description: Azure Key Vault で JSON 形式の要求と応答が使用されるしくみとキー コンテナーを使用するために必要な認証について説明します。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 33e3bc13e67e268b82bf517033b4b1c7c51c361f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b4c8ad666efa32d98e78a0bc2544d0f8851be5e
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81427343"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191796"
 ---
 # <a name="authentication-requests-and-responses"></a>認証、要求、応答
 

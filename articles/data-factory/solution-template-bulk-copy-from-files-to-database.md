@@ -55,7 +55,7 @@ ms.locfileid: "82629118"
     ![パイプラインのレビュー](media/solution-template-bulk-copy-from-files-to-database/new-pipeline.png)
 
     > [!NOTE]
-    > 前述の **手順 2** のデータのコピー先として **Azure Synapse Analytics (旧称 SQL DW)** を選択した場合、SQL Data Warehouse Polybase で必要とされる、ステージングのための Azure BLOB ストレージへの接続を入力する必要があります。 次のスクリーンショットに示すように、このテンプレートは BLOB ストレージの "*ストレージ パス*" を自動的に生成します。 パイプラインの実行後は、コンテナーが作成されているかどうかを確認します。
+    > 前述の **手順 2** のデータのコピー先として **Azure Synapse Analytics (旧称 SQL DW)** を選択した場合、SQL Data Warehouse Polybase で必要とされる、ステージングのための Azure BLOB ストレージへの接続を入力する必要があります。 次のスクリーンショットに示すように、このテンプレートは BLOB ストレージの "*ストレージ パス*" を自動的に生成します。 パイプラインの実行後、コンテナーが作成されているかどうかを確認してください。
         
     ![Polybase 設定](media/solution-template-bulk-copy-from-files-to-database/staging-account.png)
 

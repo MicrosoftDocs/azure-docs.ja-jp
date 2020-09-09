@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 7125559dd39e1626634dae7c45b0744bfff57d8c
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: 73303d64d7ebeb94290819226e5e5944f95f6e42
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82652652"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165704"
 ---
 # <a name="considerations-for-using-xamarin-ios-with-msalnet"></a>MSAL.NET と共に Xamarin iOS を使用する際の考慮事項
 Xamarin iOS で Microsoft Authentication Library for .NET (MSAL.NET) を使用する場合は、次のことを行う必要があります。 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 13496a18f4c99b69a5b8095caf5b74a04d1bba88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b0aff8298ac2335e5216252eb2cbd5a393cc37d5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869300"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524998"
 ---
 # <a name="manage-private-cloud-resources-and-activity"></a>プライベート クラウドのリソースとアクティビティを管理する
 
@@ -21,7 +21,7 @@ ms.locfileid: "81869300"
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 
 ## <a name="access-the-cloudsimple-portal"></a>CloudSimple ポータルにアクセスする
 
@@ -37,13 +37,13 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 ## <a name="private-cloud-summary"></a>プライベート クラウドの概要
 
-選択したプライベート クラウドの包括的な概要を表示します。  概要ページには、プライベート クラウドにデプロイされている DNS サーバーが含まれます。  オンプレミスの DNS サーバーからプライベート クラウドの DNS サーバーへの DNS 転送を設定できます。  DNS 転送の詳細については、[プライベート クラウド vCenter の名前解決用 DNS をオンプレミスから構成する方法](https://docs.microsoft.com/azure/vmware-cloudsimple/on-premises-dns-setup/)に関するページを参照してください。
+選択したプライベート クラウドの包括的な概要を表示します。  概要ページには、プライベート クラウドにデプロイされている DNS サーバーが含まれます。  オンプレミスの DNS サーバーからプライベート クラウドの DNS サーバーへの DNS 転送を設定できます。  DNS 転送の詳細については、[プライベート クラウド vCenter の名前解決用 DNS をオンプレミスから構成する方法](./on-premises-dns-setup.md)に関するページを参照してください。
 
 ![プライベート クラウドの概要](media/private-cloud-summary.png)
 
 ### <a name="available-actions"></a>使用可能なアクション
 
-* [vSphere クライアントの起動](https://docs.microsoft.com/azure/vmware-cloudsimple/vcenter-access)。 このプライベート クラウドの vCenter にアクセスします。
+* [vSphere クライアントの起動](./vcenter-access.md)。 このプライベート クラウドの vCenter にアクセスします。
 * [ノードの購入](create-nodes.md)。 このプライベート クラウドにノードを追加します。
 * [拡大](expand-private-cloud.md)。 このプライベート クラウドにノードを追加します。
 * **更新する**。 このページの情報を更新します。
@@ -58,10 +58,10 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 ### <a name="available-actions"></a>使用可能なアクション
 
-* [VLAN/サブネットの追加](https://docs.microsoft.com/azure/vmware-cloudsimple/create-vlan-subnet/)。 VLAN/サブセットをこのプライベート クラウドに追加します。
+* [VLAN/サブネットの追加](./create-vlan-subnet.md)。 VLAN/サブセットをこのプライベート クラウドに追加します。
 
 以下のアクションのために VLAN/サブネットを選択します
-* [ファイアウォール テーブルのアタッチ](https://docs.microsoft.com/azure/vmware-cloudsimple/firewall/)。 ファイアウォール テーブルをこのプライベート クラウドにアタッチします。
+* [ファイアウォール テーブルのアタッチ](./firewall.md)。 ファイアウォール テーブルをこのプライベート クラウドにアタッチします。
 * **[編集]**
 * **削除** (ユーザー定義の VLAN/サブネットのみ)
 

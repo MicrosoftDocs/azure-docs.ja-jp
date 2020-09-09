@@ -1,36 +1,46 @@
 ---
 title: Azure Cosmos DB:SQL Async Java API、SDK、およびリソース
 description: リリース日、提供終了日、Azure Cosmos DB SQL Async Java SDK の各バージョン間の変更など、SQL Async Java API と SDK に関するあらゆる詳細を提供します。
-author: moderakh
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 07/01/2019
-ms.author: moderakh
-ms.openlocfilehash: 7dad1e929c2beb32605f67219ed30d2fd9a3a394
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 08/12/2020
+ms.author: anfeldma
+ms.custom: devx-track-java
+ms.openlocfilehash: b8f45fe07b825008b673534bcc3b28b9364c4cae
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985475"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587295"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB Async Java SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
-> * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET Change Feed](sql-api-sdk-dotnet-changefeed.md)
-> * [.NET Core](sql-api-sdk-dotnet-core.md)
+> * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
+> * [.NET SDK v2](sql-api-sdk-dotnet.md)
+> * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
+> * [.NET Change Feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Async Java](sql-api-sdk-async-java.md)
-> * [Java](sql-api-sdk-java.md)
+> * [Java SDK v4](sql-api-sdk-java-v4.md)
+> * [Async Java SDK v2](sql-api-sdk-async-java.md)
+> * [Sync Java SDK v2](sql-api-sdk-java.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
+> * [Spark コネクタ](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
-> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
-> * [REST リソース プロバイダー](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
+> * [REST](/rest/api
+> * [REST リソース プロバイダー](/azure/azure-resource-manager/management/azure-services-resource-providers)
 > * [SQL](sql-api-query-reference.md)
-> * [Bulk executor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Bulk Executor - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk Executor - Java](sql-api-sdk-bulk-executor-java.md)
 
 SQL API Async Java SDK は、[Netty ライブラリ](https://netty.io/)をサポートした非同期操作が可能であるという点で、SQL API Java SDK とは異なります。 既存の [SQL API Java SDK](sql-api-sdk-java.md) では、非同期操作はサポートされません。 
+
+> [!IMPORTANT]  
+> これは Azure Cosmos DB 用の最新の Java SDK では "*ありません*"。 プロジェクトには [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md) を使用することを検討してください。 アップグレードするには、[Azure Cosmos DB Java SDK v4 への移行](migrate-java-v4-sdk.md)に関するガイド、および[ Reactor と RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) に関するガイドの手順に従ってください。 
+>
 
 | |  |
 |---|---|

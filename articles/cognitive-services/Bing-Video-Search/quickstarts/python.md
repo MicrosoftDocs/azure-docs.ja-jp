@@ -8,20 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: fbf20c2d54506b0f314697d6df34f9a430e7c016
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-python
+ms.openlocfilehash: e6f132db9b4c0f0310496b2e22579e18359e1573
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382686"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847229"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-python"></a>クイック スタート:Bing Video Search REST API と Python を使用して動画を検索する
 
-このクイック スタートを使用すると、Bing Video Search API への最初の呼び出しを行い、JSON 応答の検索結果を表示することができます。 このシンプルな Python アプリケーションは、HTTP 動画検索クエリを API に送信してその応答を表示します。 このアプリケーションは Python で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このサンプルのソース コードは、追加のエラー処理とコードの注釈を含め、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingVideoSearchv7.py) で入手できます。
+このクイックスタートを使用して、Bing Video Search API を呼び出してみましょう。 このシンプルな Python アプリケーションでは、HTTP 動画検索クエリを API に送信して、その JSON 応答を表示します。 このアプリケーションは Python で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 
 
-この例は、起動 Binder バッジ上でクリックすることで、[MyBinder](https://mybinder.org) の Jupyter Notebook として実行できます。 
+このサンプルのソース コードは、追加のエラー処理とコードの注釈を含め、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingVideoSearchv7.py) で入手できます。
+
+この例は、**起動バインダー** バッジを選択することで、[MyBinder](https://mybinder.org) の Jupyter Notebook として実行できます。 
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingVideoSearchAPI.ipynb)
 
@@ -34,13 +37,13 @@ ms.locfileid: "75382686"
 
 ## <a name="initialize-the-application"></a>アプリケーションを初期化する
 
-1. 任意の IDE またはエディターで新しい Python ファイルを作成し、次のライブラリをインポートします。
+1. 好みの IDE またはエディターで新しい Python ファイルを作成し、次のライブラリをインポートします。
 
     ```python
     import requests
     from IPython.display import HTML
     ```
-2.  サブスクリプション キー、検索のエンドポイント、検索語句の変数を作成します。 `search_url` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。
+2.  サブスクリプション キー、検索のエンドポイント、検索語句の変数を作成します。 `search_url` 値には、次のコードのグローバル エンドポイントを使用するか、Azure portal に表示される、お使いのリソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
     
     ```python
     subscription_key = None
@@ -57,7 +60,7 @@ ms.locfileid: "75382686"
 
 ## <a name="send-your-request"></a>要求を送信する
 
-1. `params` という名前のディクショナリを作成して要求にパラメーターを追加します。 `q` パラメーターに検索語句を追加します。また、動画のカウントには 5 を、取得する動画の価格には `free` を、動画の長さには `short` を追加してください。
+1. `params` という名前のディクショナリを作成して要求にパラメーターを追加します。 `q` パラメーターに検索語句を追加します。動画のカウントには 5 を、返された動画の価格には `free` を、動画の長さには `short` を指定します。
 
     ```python
     params  = {"q": search_term, "count":5, "pricing": "free", "videoLength":"short"}

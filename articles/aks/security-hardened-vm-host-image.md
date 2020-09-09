@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 09/11/2019
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: b7552fc083c5ed340dc54c2a31160b0c8b4bd076
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 84b826ce33b5395db5bd38e883b3a0fb3425725b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80420900"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244040"
 ---
 # <a name="security-hardening-for-aks-agent-node-host-os"></a>AKS エージェント ノード ホスト OS のセキュリティ強化
 
-Azure Kubernetes Service (AKS) は、SOC、ISO、PCI DSS、HIPAA の各標準に準拠する、セキュリティで保護されたサービスです。 この記事では、AKS 仮想マシン ホストに適用されるセキュリティ強化について説明します。 AKS のセキュリティについて詳しくは、「[Azure Kubernetes Service (AKS) でのアプリケーションとクラスターに対するセキュリティの概念](https://docs.microsoft.com/azure/aks/concepts-security)」をご覧ください。
+Azure Kubernetes Service (AKS) は、SOC、ISO、PCI DSS、HIPAA の各標準に準拠する、セキュリティで保護されたサービスです。 この記事では、AKS 仮想マシン ホストに適用されるセキュリティ強化について説明します。 AKS のセキュリティについて詳しくは、「[Azure Kubernetes Service (AKS) でのアプリケーションとクラスターに対するセキュリティの概念](./concepts-security.md)」をご覧ください。
 
 > [!Note]
 > このドキュメントの対象範囲は、AKS の Linux エージェントだけです。
@@ -32,7 +32,7 @@ AKS クラスターは、AKS で実行されているコンテナーに使用さ
 
 * AKS では、セキュリティが最適化されたホスト OS が既定で提供されます。 代わりのオペレーティング システムを選択するオプションはありません。
 
-* Azure では、AKS 仮想マシン ホストに対して更新プログラム (セキュリティ更新プログラムを含む) が毎日適用されます。 これらの修正プログラムには、再起動が必要なものもあれば、そうでないものもあります。 お客様は、必要に応じて、AKS VM ホストの再起動をスケジュールする必要があります。 AKS への修正プログラムの適用を自動化する方法のガイダンスについては、[AKS ノードへの修正プログラムの適用](https://docs.microsoft.com/azure/aks/node-updates-kured)に関する記事をご覧ください。
+* Azure では、AKS 仮想マシン ホストに対して更新プログラム (セキュリティ更新プログラムを含む) が毎日適用されます。 これらの修正プログラムには、再起動が必要なものもあれば、そうでないものもあります。 お客様は、必要に応じて、AKS VM ホストの再起動をスケジュールする必要があります。 AKS への修正プログラムの適用を自動化する方法のガイダンスについては、[AKS ノードへの修正プログラムの適用](./node-updates-kured.md)に関する記事をご覧ください。
 
 ## <a name="what-is-configured"></a>構成内容
 
@@ -85,8 +85,8 @@ AKS クラスターは、AKS で実行されているコンテナーに使用さ
 
 AKS のセキュリティについて詳しくは、次の記事をご覧ください。 
 
-[Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/intro-kubernetes)
+[Azure Kubernetes Service (AKS)](./intro-kubernetes.md)
 
-[AKS のセキュリティに関する考慮事項](https://docs.microsoft.com/azure/aks/concepts-security)
+[AKS のセキュリティに関する考慮事項](./concepts-security.md)
 
-[AKS のベスト プラクティス](https://docs.microsoft.com/azure/aks/best-practices)
+[AKS のベスト プラクティス](./best-practices.md)

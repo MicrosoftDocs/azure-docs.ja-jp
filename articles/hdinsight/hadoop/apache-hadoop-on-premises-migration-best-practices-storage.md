@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: f19d4adad675cdf95f59aca0f752f46211b75e8f
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 0394a7db6776e00ea031a2f40ab4de01540982a6
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80436906"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080212"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行
 

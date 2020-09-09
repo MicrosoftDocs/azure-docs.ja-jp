@@ -3,12 +3,12 @@ title: Azure リソース - QnA Maker
 description: QnA Maker では、それぞれ異なる目的で複数の Azure ソースを使用します。 それらが個別にどのように使用されるかを理解すると、正しい価格レベルを計画して選択し、価格レベルを変更する時期を把握できるようになります。 これらを組み合わせて使用する方法を理解すると、発生した問題を見つけて修正できるようになります。
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 581029d2372f7a2ef704dcf02f266b66440aa246
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 06731c97217e3b6a5c498743b83f1d16bab791eb
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80873907"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548431"
 ---
 # <a name="azure-resources-for-qna-maker"></a>QnA Maker 用の Azure リソース
 
@@ -44,11 +44,11 @@ QnA Maker では、それぞれ異なる目的で複数の Azure ソースを使
 
 次の表は、いくつかの基本的なガイドラインを示したものです。
 
-|                        | QnA Maker 管理 | App Service | Azure Cognitive Search | 制限事項                      |
-| ---------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
-| 実験        | 無料の SKU             | Free レベル   | Free レベル    | 発行できる KB は 2 つまで (最大サイズ 50 MB)  |
-| 開発/テスト環境   | Standard SKU         | 共有      | Basic        | 発行できる KB は 14 個まで (最大サイズ 2 GB)    |
-| 運用環境 | Standard SKU         | Basic       | Standard     | 発行できる KB は 49 個まで (最大サイズ 25 GB) |
+|                            | QnA Maker 管理 | App Service | Azure Cognitive Search | 制限事項                      |
+| -------------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
+| **実験**        | 無料の SKU             | Free レベル   | Free レベル    | 発行できる KB は 2 つまで (最大サイズ 50 MB)  |
+| **Dev/Test 環境**   | Standard SKU         | 共有      | Basic        | 発行できる KB は 14 個まで (最大サイズ 2 GB)    |
+| **運用環境** | Standard SKU         | Basic       | Standard     | 発行できる KB は 49 個まで (最大サイズ 25 GB) |
 
 ## <a name="recommended-settings"></a>推奨設定
 
@@ -174,7 +174,7 @@ QnA Maker サービスでは、App Service でホストされるランタイム�
 
 |名前|場所|目的|
 |--|--|--|
-|オーサリング キー|[Azure Portal](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|これらのキーは、[QnA Maker 管理サービス API](https://go.microsoft.com/fwlink/?linkid=2092179) へのアクセスに使用されます。 これらの API を使用して、ナレッジ ベース内の質問と回答を編集したり、ナレッジ ベースを公開したりできます。 これらのキーは、新しい QnA Maker サービスを作成するときに作成されます。<br><br>これらのキーは、 **[キー]** ページの **Cognitive Services** リソースで確認できます。|
+|オーサリング キー|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|これらのキーは、[QnA Maker 管理サービス API](https://go.microsoft.com/fwlink/?linkid=2092179) へのアクセスに使用されます。 これらの API を使用して、ナレッジ ベース内の質問と回答を編集したり、ナレッジ ベースを公開したりできます。 これらのキーは、新しい QnA Maker サービスを作成するときに作成されます。<br><br>これらのキーは、 **[キー]** ページの **Cognitive Services** リソースで確認できます。|
 |クエリ エンドポイント キー|[QnA Maker ポータル](https://www.qnamaker.ai)|これらのキーは、公開されたナレッジ ベースのエンドポイントにクエリを実行して、ユーザーの質問に対する回答を取得する目的で使用されます。 通常、このクエリ エンドポイントは、QnA Maker サービスに接続するチャット ボットまたはクライアント アプリケーション コードで使用されます。 これらのキーは、QnA Maker ナレッジ ベースを公開するときに作成されます。<br><br>これらのキーは、 **[サービスの設定]** ページで確認できます。 このページは、ページの右上にあるドロップダウン メニュー内のユーザーのメニューに含まれています。|
 
 ### <a name="subscription-keys"></a>サブスクリプション キー
@@ -182,6 +182,14 @@ QnA Maker サービスでは、App Service でホストされるランタイム�
 オーサリングおよびクエリ エンドポイント キーという用語は修正用語です。 以前の用語は**サブスクリプション キー**でした。 他のドキュメントにサブスクリプション キーと書かれている場合、それらは (ランタイムで使用される) オーサリングおよびクエリ エンドポイント キーに相当します。
 
 どのキーを見つける必要があるかを知るには、キーが何にアクセスしているか (ナレッジ ベースの管理またはナレッジ ベースのクエリ) を把握する必要があります。
+
+## <a name="recommended-settings-for-network-isolation"></a>ネットワーク分離の推奨設定
+
+* [仮想ネットワークを構成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)して、Cognitive Services リソースをパブリック アクセスから保護します。
+* App Service (QnA Runtime) をパブリック アクセスから保護します。
+    * Cognitive Services IP からのトラフィックのみを許可します。 これらは、既にサービス タグ "CognitiveServicesManagement" に含まれています。 これは、オーサリング API シリーズ (KB の作成/更新) で App Service を起動し、それに応じて Azure Search Service を更新するために必要です。
+    * Bot Service、QnA Maker ポータル (ご使用の企業ネットワークなど) のような他のエントリポイントも予測 "GenerateAnswer" API アクセスを許可していることを確認します。
+    * [サービス タグに関する詳細](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)を確認します。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 06/13/2019
 ms.author: alkohli
-ms.openlocfilehash: 760f5c6c929aa082993683d7a466a71c6484289a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5d977fe0b7459af35f678e77681d3b27c31431cc
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67148135"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849182"
 ---
 # <a name="troubleshoot-data-copy-issues-in-azure-data-box-disk"></a>Azure Data Box Disk でのデータのコピーに関する問題のトラブルシューティング
 
@@ -32,7 +32,9 @@ ms.locfileid: "67148135"
 
 Data Box Disk でドライブを読み取り/書き込み用として再マウントできません。 このシナリオは、dislocker によって暗号化解除されたドライブではサポートされていません。 次のコマンドを使用して、デバイスを正常に再マウントできた可能性があります。
 
-    `# mount -o remount, rw /mnt/DataBoxDisk/mountVol1`
+```
+# mount -o remount, rw /mnt/DataBoxDisk/mountVol1
+```
 
 ただし、再マウントが成功しても、データは保持されません。
 

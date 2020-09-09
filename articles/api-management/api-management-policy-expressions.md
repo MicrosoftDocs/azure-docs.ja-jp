@@ -1,6 +1,6 @@
 ---
 title: Azure API Management ポリシー式 | Microsoft Docs
-description: Azure API Management 内のポリシー式について説明します。
+description: Azure API Management 内のポリシー式について説明します。 サンプルを参照し、使用可能なその他のリソースを確認します。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 6614e70d130abe46067c657bda3ccdd7000caddc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7117ffcbaf4eba8d83a6e968f4fed7422673610b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79224863"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844242"
 ---
 # <a name="api-management-policy-expressions"></a>API Management ポリシー式
 この記事では、C# 7 のポリシー式の構文について説明します。 それぞれの式は、暗黙的に指定された[コンテキスト](api-management-policy-expressions.md#ContextVariables)変数と、許可されている .NET Framework の型の[サブセット](api-management-policy-expressions.md#CLRTypes)にアクセスできます。
 
-詳細:
+詳細情報:
 
 - バックエンド サービスにコンテキスト情報を指定する方法をご覧ください。 この情報を指定するには、[クエリ文字列パラメーターの設定](api-management-transformation-policies.md#SetQueryStringParameter)ポリシーおよび [HTTP ヘッダーの設定](api-management-transformation-policies.md#SetHTTPheader)ポリシーを使用します。
 - [JWT を検証する](api-management-access-restriction-policies.md#ValidateJWT)ポリシーを使用して、トークン クレームに基づいて操作へのアクセスを事前に承認する方法を示します。
-- [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) トレースによってポリシーの評価方法と評価結果を確認する方法を示します。
+- [API Inspector](./api-management-howto-api-inspector.md) トレースによってポリシーの評価方法と評価結果を確認する方法を示します。
 - [キャッシュから取得](api-management-caching-policies.md#GetFromCache)ポリシーおよび[キャッシュに格納](api-management-caching-policies.md#StoreToCache)ポリシーの式を使用して、API Management 応答のキャッシュを構成する方法をご覧ください。 バックエンド サービスの `Cache-Control` ディレクティブによって指定されたバックエンド サービスの応答キャッシュ時間と一致するように設定しています。
 - コンテンツのフィルター処理を実行する方法をご覧ください。 [制御フロー](api-management-advanced-policies.md#choose) ポリシーおよび[本文設定](api-management-transformation-policies.md#SetBody)ポリシーを使用して、バックエンドから受信した応答からデータ要素を削除しています。
 - ポリシー ステートメントをダウンロードするには、[api-management-samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies) GitHub リポジトリをご覧ください。
@@ -235,7 +235,7 @@ ms.locfileid: "79224863"
 |BasicAuthCredentials|Password: 文字列<br /><br /> UserId: 文字列|
 |Jwt AsJwt(input: this string)|input: 文字列<br /><br /> 入力パラメーターに有効な JWT トークン値が含まれている場合、メソッドは `Jwt` 型のオブジェクトを返します。それ以外の場合、メソッドは `null` を返します。|
 |bool TryParseJwt(input: this string, result: out Jwt)|input: 文字列<br /><br /> result: out Jwt<br /><br /> 入力パラメーターに有効な JWT トークン値が含まれている場合、メソッドは `true` を返し、結果パラメーターには `Jwt` 型の値が含まれます。それ以外の場合、メソッドは `false` を返します。|
-|Jwt|Algorithm: 文字列<br /><br /> Audience:IEnumerable<string\><br /><br /> Claims:IReadOnlyDictionary<string, string[]><br /><br /> ExpirationTime:DateTime?<br /><br /> Id: 文字列<br /><br /> Issuer: 文字列<br /><br /> IssuedAt:DateTime?<br /><br /> NotBefore:DateTime?<br /><br /> Subject: 文字列<br /><br /> Type: 文字列|
+|Jwt|Algorithm: 文字列<br /><br /> 対象ユーザー:IEnumerable<string\><br /><br /> Claims:IReadOnlyDictionary<string, string[]><br /><br /> ExpirationTime:DateTime?<br /><br /> Id: 文字列<br /><br /> Issuer: 文字列<br /><br /> IssuedAt:DateTime?<br /><br /> NotBefore:DateTime?<br /><br /> Subject: 文字列<br /><br /> Type: 文字列|
 |string Jwt.Claims.GetValueOrDefault(claimName: string, defaultValue: string)|claimName: 文字列<br /><br /> defaultValue: 文字列<br /><br /> コンマ区切りの要求値、またはヘッダーが見つからない場合は `defaultValue` を返します。|
 |byte[] Encrypt(input: this byte[], alg: string, key:byte[], iv:byte[])|input - 暗号化対象のプレーンテキスト<br /><br />alg - 対称暗号化アルゴリズムの名前<br /><br />key - 暗号化キー<br /><br />iv - 初期化ベクター<br /><br />暗号化されたプレーンテキストを返します。|
 |byte[] Encrypt(input: this byte[], alg:System.Security.Cryptography.SymmetricAlgorithm)|input - 暗号化対象のプレーンテキスト<br /><br />alg - 暗号化アルゴリズム<br /><br />暗号化されたプレーンテキストを返します。|
@@ -252,5 +252,5 @@ ms.locfileid: "79224863"
 
 + [API Management のポリシー](api-management-howto-policies.md)
 + [API を変換する](transform-api.md)
-+ ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](api-management-policy-reference.md)
++ ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](./api-management-policies.md)
 + [ポリシーのサンプル](policy-samples.md)

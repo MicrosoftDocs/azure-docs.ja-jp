@@ -2,25 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と ZenQMS の統合 | Microsoft Docs'
 description: Azure Active Directory と ZenQMS の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 72857c30-8896-438d-90c9-aeb21bf5fec0
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 2104768f8842910bf83239e86106d288d7ad9baf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1b4f4d801a5bbc3342b203a402f5921265630944
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67086345"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546187"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zenqms"></a>チュートリアル: Azure Active Directory と ZenQMS の統合
 
@@ -115,11 +111,8 @@ ZenQMS で Azure AD シングル サインオンを構成するには、次の�
 
     **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
 
-    | |
-    |-|-|
-    | `https://<INSTANCE>.zenqms.com/<ID>`|
-    | `https://<INSTANCE>.zenqms.com/<EMAIL DOMAIN>/`|
-    | |
+    - `https://<INSTANCE>.zenqms.com/<ID>`
+    - `https://<INSTANCE>.zenqms.com/<EMAIL DOMAIN>/`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 この値を取得するには、[ZenQMS クライアント サポート チーム](mailto:help@zenqms.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

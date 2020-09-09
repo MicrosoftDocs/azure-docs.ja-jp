@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 7cb80b54c75d637842c5f50d9336629dedf758fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b2ac4bbf1457144d23a91c4e83b554b3ee806119
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100126"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337230"
 ---
 # <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>Azure IoT Central でルールに対する Webhook アクションを作成する
 
@@ -143,7 +143,7 @@ Webhook を使用すると、IoT Central アプリを他のアプリケーショ
     }],
     "application": {
         "id": "<id>",
-        "displayName": "x - Store Analytics Checkout---PnP",
+        "displayName": "x - Store Analytics Checkout",
         "subdomain": "<subdomain>",
         "host": "<host>"
     }

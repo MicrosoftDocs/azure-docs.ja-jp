@@ -3,19 +3,20 @@ title: トリガーとアクションの種類のスキーマ リファレンス
 description: Azure Logic Apps でのワークフロー定義言語トリガーとアクションの種類のスキーマ リファレンス ガイド
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 01/19/2020
-ms.openlocfilehash: 7e14cc00d1bd716b3e4880e585b05447d2e55e2b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.date: 06/10/2020
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 7e809c1990f31687acb559b5ecd6684bfec52483
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257438"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423271"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Azure Logic Apps でのトリガーとアクションの種類のスキーマ リファレンス ガイド
 
-このリファレンスでは、ロジック アプリの基となるワークフロー定義でトリガーとアクションを識別するために使用される一般的な種類について説明します。ワークフロー定義については、[ワークフロー定義言語](../logic-apps/logic-apps-workflow-definition-language.md)で説明および検証されています。 ロジック アプリで使用できる特定のコネクターのトリガーおよびアクションを見つけるには、[コネクタの概要](https://docs.microsoft.com/connectors/)にある一覧を参照してください。
+このリファレンスでは、ロジック アプリの基となるワークフロー定義でトリガーとアクションを識別するために使用される一般的な種類について説明します。ワークフロー定義については、[ワークフロー定義言語](../logic-apps/logic-apps-workflow-definition-language.md)で説明および検証されています。 ロジック アプリで使用できる特定のコネクターのトリガーおよびアクションを見つけるには、[コネクタの概要](/connectors/)にある一覧を参照してください。
 
 <a name="triggers-overview"></a>
 
@@ -73,7 +74,7 @@ ms.locfileid: "81257438"
 
 | トリガーの種類 | 説明 | 
 |--------------|-------------| 
-| [**HTTP**](#http-trigger) | エンドポイントをチェックまたは*ポーリング*します。 このエンドポイントは特定のトリガー コントラクトに準拠する必要があり、そのためには、"202" 非同期パターンを使用するか、配列を返す必要があります。 | 
+| [**HTTP**](#http-trigger) | エンドポイントをチェックまたは*ポーリング*します。 このエンドポイントは特定のトリガー コントラクトに準拠する必要があり、そのためには、`202` 非同期パターンを使用するか、配列を返す必要があります。 | 
 | [**HTTPWebhook**](#http-webhook-trigger) | ロジック アプリ用の呼び出し可能なエンドポイントを作成しますが、登録または登録解除を行うために指定された URL を呼び出します。 |
 | [**Recurrence**](#recurrence-trigger) | 定義されているスケジュールに基づいて呼び出されます。 今後このトリガーを呼び出す日時を設定できます。 頻度に基づいて、ワークフローを実行する時間数および日数を指定することもできます。 | 
 | [**Request**](#request-trigger)  | ロジック アプリ用の呼び出し可能なエンドポイントを作成します。"手動" トリガーとも呼ばれます。 例として、「[HTTP エンドポイントを通じてワークフローを呼び出し、トリガーし、入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」をご覧ください。 | 
@@ -224,15 +225,15 @@ ms.locfileid: "81257438"
 |-------|------|-------------| 
 | <*connection-name*> | String | ワークフローに使用するマネージド API への接続の名前 | 
 | <*body-content*> | JSON オブジェクト | マネージド API にペイロードとして送信するメッセージの内容 | 
-|||| 
+||||
 
 *省略可能*
 
-| 値 | Type | 説明 | 
-|-------|------|-------------| 
-| <*retry-behavior*> | JSON オブジェクト | 状態コード 408、429、5XX の断続的なエラーと接続の例外に対する再試行ビヘイビアーをカスタマイズします。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md#retry-policies)」をご覧ください。 | 
-| <*query-parameters*> | JSON オブジェクト | API 呼び出しに含める任意のクエリ パラメーター <p>たとえば、`"queries": { "api-version": "2018-01-01" }` オブジェクトでは `?api-version=2018-01-01` を呼び出しに追加します。 | 
-| <*max-runs*> | Integer | 既定では、ワークフロー インスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでは (同時にまたは並行して) 実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」を参照してください。 | 
+| 値 | Type | 説明 |
+|-------|------|-------------|
+| <*retry-behavior*> | JSON オブジェクト | 状態コード 408、429、5XX の断続的なエラーと接続の例外に対する再試行ビヘイビアーをカスタマイズします。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md#retry-policies)」をご覧ください。 |
+| <*query-parameters*> | JSON オブジェクト | API 呼び出しに含める任意のクエリ パラメーター <p>たとえば、`"queries": { "api-version": "2018-01-01" }` オブジェクトでは `?api-version=2018-01-01` を呼び出しに追加します。 |
+| <*max-runs*> | Integer | 既定では、ワークフロー インスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでは (同時にまたは並行して) 実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」を参照してください。 |
 | <*max-runs-queue*> | Integer | ワークフローで既に最大数のインスタンスが実行されている場合 (最大数は `runtimeConfiguration.concurrency.runs` プロパティに基づいて変更可能)、新たな実行は、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでこのキューに入れられます。 既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | 
 | <*splitOn-expression*> | String | 配列を返すトリガーの場合、使用する配列をこの式で参照すると、"for each" ループを使わずに、配列の項目ごとにワークフローを作成して実行することができます。 <p>たとえば、`@triggerbody()?['value']` という式は、トリガー本文の内容の中に返される配列の項目を表します。 |
 | <*operation-option*> | String | `operationOptions` プロパティを設定して既定のビヘイビアーを変更できます。 詳細については、「[操作のオプション](#operation-options)」を参照してください。 | 
@@ -269,7 +270,7 @@ ms.locfileid: "81257438"
 
 ### <a name="http-trigger"></a>HTTP トリガー
 
-このトリガーからは、指定の繰り返しスケジュールに基づき、指定の HTTP または HTTPS エンドポイントに要求が送信されます。 その後、トリガーにより応答が確認され、ワークフローの実行状況が判断されます。
+このトリガーからは、指定の繰り返しスケジュールに基づき、指定の HTTP または HTTPS エンドポイントに要求が送信されます。 その後、トリガーにより応答が確認され、ワークフローの実行状況が判断されます。 詳細については、「[Azure Logic Apps から HTTP または HTTPS でサービス エンドポイントを呼び出す](../connectors/connectors-native-http.md)」を参照してください。
 
 ```json
 "HTTP": {
@@ -326,21 +327,21 @@ ms.locfileid: "81257438"
 *出力*
 
 | 要素 | Type | 説明 |
-|---------|------|-------------| 
-| headers | JSON オブジェクト | 応答のヘッダー | 
-| body | JSON オブジェクト | 応答の本文 | 
-| status code | Integer | 応答の状態コード | 
-|||| 
+|---------|------|-------------|
+| `headers` | JSON オブジェクト | 応答のヘッダー |
+| `body` | JSON オブジェクト | 応答の本文 |
+| `status code` | Integer | 応答の状態コード |
+||||
 
 *受信要求の要件*
 
-エンドポイントがロジック アプリと適切に連携するためには、特定のトリガー パターンまたはコントラクトに準拠し、以下のプロパティを認識する必要があります。  
-  
-| Response | 必須 | 説明 | 
-|----------|----------|-------------| 
-| status code | はい | 状態コード "200 OK" によって実行が開始されます。 その他のすべての状態コードでは実行は開始されません。 | 
-| Retry-after ヘッダー | いいえ | ロジック アプリがエンドポイントを再度ポーリングするまでの秒数 | 
-| Location ヘッダー | いいえ | 次のポーリング間隔で呼び出す URL です。 指定されていない場合は、元の URL が使われます。 | 
+エンドポイントがロジック アプリと適切に連携するためには、特定のトリガー パターンまたはコントラクトに準拠し、以下の応答プロパティを認識する必要があります。
+
+| プロパティ | 必須 | 説明 |
+|----------|----------|-------------|
+| status code | はい | 状態コード "200 OK" によって実行が開始されます。 その他のすべての状態コードでは実行は開始されません。 |
+| Retry-after ヘッダー | いいえ | ロジック アプリがエンドポイントを再度ポーリングするまでの秒数 |
+| Location ヘッダー | いいえ | 次のポーリング間隔で呼び出す URL です。 指定されていない場合は、元の URL が使われます。 |
 |||| 
 
 *さまざまな要求の動作の例*
@@ -569,7 +570,7 @@ ms.locfileid: "81257438"
 
 このトリガーを使用すると、受信要求を受け入れることができるエンドポイントを作成して、ロジック アプリを呼び出し可能にすることができます。 このトリガーには、トリガーが受信要求から受信するペイロード、つまり入力を記述および検証する JSON スキーマを指定します。 そのスキーマを使用すると、ワークフロー内の後続のアクションから、より簡単にトリガーのプロパティを参照することもできます。
 
-このトリガーを呼び出すには、`listCallbackUrl` API を使用する必要があります。このトリガーについては、[Workflow Service REST API](https://docs.microsoft.com/rest/api/logic/workflows) の説明を参照してください。 このトリガーを HTTP エンドポイントとして使用する方法については、「[HTTP エンドポイントを通じてワークフローを呼び出し、トリガーし、入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」をご覧ください。
+このトリガーを呼び出すには、`listCallbackUrl` API を使用する必要があります。このトリガーについては、[Workflow Service REST API](/rest/api/logic/workflows) の説明を参照してください。 このトリガーを HTTP エンドポイントとして使用する方法については、「[HTTP エンドポイントを通じてワークフローを呼び出し、トリガーし、入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」をご覧ください。
 
 ```json
 "manual": {
@@ -1201,7 +1202,7 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
 
 ### <a name="http-action"></a>HTTP アクション
 
-指定の HTTP または HTTPS エンドポイントに要求を送信し、応答を調べてワークフローの実行状況を判断するアクションです。
+指定の HTTP または HTTPS エンドポイントに要求を送信し、応答を調べてワークフローの実行状況を判断するアクションです。 詳細については、「[Azure Logic Apps から HTTP または HTTPS でサービス エンドポイントを呼び出す](../connectors/connectors-native-http.md)」を参照してください。
 
 ```json
 "HTTP": {
@@ -1637,7 +1638,7 @@ HTTP 要求に対する応答のペイロードを作成するアクションで
 
 | 値 | Type | 説明 | 
 |-------|------|-------------| 
-| \<CSV *または* HTML>| String | 作成するテーブルの形式 | 
+| \<CSV *or* HTML>| String | 作成するテーブルの形式 | 
 | <*array*> | Array | テーブルのソース項目を渡す配列または式 <p>**注**:ソース配列が空の場合、アクションによって空のテーブルが作成されます。 | 
 |||| 
 
@@ -2395,7 +2396,7 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 | 操作オプション | Type | 説明 | トリガーまたはアクション | 
 |------------------|------|-------------|-------------------| 
-| `DisableAsyncPattern` | String | HTTP ベースのアクションを非同期に実行するのではなく、同期的に実行します。 <p><p>このオプションを設定するには、「[アクションを同期的に実行する](#asynchronous-patterns)」を参照してください。 | アクション: <p>[ApiConnection](#apiconnection-action), <br>[HTTP](#http-action)、 <br>[Response](#response-action) | 
+| `DisableAsyncPattern` | String | HTTP ベースのアクションを非同期に実行するのではなく、同期的に実行します。 <p><p>このオプションを設定するには、「[アクションを同期的に実行する](#disable-asynchronous-pattern)」を参照してください。 | アクション: <p>[ApiConnection](#apiconnection-action), <br>[HTTP](#http-action)、 <br>[Response](#response-action) | 
 | `OptimizedForHighThroughput` | String | 5 分あたりのアクション実行回数に対する[既定の制限](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)を[上限](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)に変更します。 <p><p>このオプションを設定するには、「[高スループット モードで実行する](#run-high-throughput-mode)」を参照してください。 | すべてのアクション | 
 | `Sequential` | String | "for each" ループの反復処理を、すべて同時に並行して実行するのではなく、一度に 1 つずつ実行します。 <p>このオプションは、`runtimeConfiguration.concurrency.repetitions` プロパティを `1` に設定したのと同じように機能します。 いずれか一方のプロパティを設定できます。両方を設定することはできません。 <p><p>このオプションを設定するには、「["for each" ループを順次実行する](#sequential-for-each)」を参照してください。| アクション: <p>[Foreach](#foreach-action) | 
 | `SingleInstance` | String | 各ロジック アプリ インスタンスのトリガーを順次実行し、直前のアクティブな実行が終了するまで待機してから、次のロジック アプリ インスタンスをトリガーします。 <p><p>このオプションは、`runtimeConfiguration.concurrency.runs` プロパティを `1` に設定したのと同じように機能します。 いずれか一方のプロパティを設定できます。両方を設定することはできません。 <p>このオプションを設定するには、「[インスタンスを順次トリガーする](#sequential-trigger)」を参照してください。 | すべてのトリガー | 
@@ -2653,13 +2654,52 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 1. **[並列処理の次数]** スライダーをドラッグして数値 `1` に設定します。
 
-<a name="asynchronous-patterns"></a>
+<a name="disable-asynchronous-pattern"></a>
 
-### <a name="run-actions-synchronously"></a>アクションを同期的に実行する
+### <a name="run-actions-in-a-synchronous-operation-pattern"></a>同期操作パターンでアクションを実行する
 
-既定では、HTTP ベースのすべてのアクションは、標準的な非同期操作パターンに従います。 このパターンは、HTTP ベースのアクションから指定したエンドポイントに要求を送信するときに、リモート サーバーから "202 ACCEPTED" 応答が返されることを指定します。 この応答は、処理の要求がサーバーで受け付けられたことを意味します。 Logic Apps エンジンは、処理が停止する (202 以外の応答) まで、応答の場所ヘッダーに指定された URL を継続的にチェックします。
+既定では、Azure Logic Apps の HTTP アクションと APIConnection アクションは、標準的な[*非同期操作パターン*](/azure/architecture/patterns/async-request-reply)に従いますが、Response アクションは*同期操作パターン*に従います。 非同期パターンは、アクションによって指定されたエンドポイント、サービス、システム、または API へ要求が呼び出される、または送信された後、受信側が直ちに ["202 ACCEPTED"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3) 応答を返すことを指定します。 このコードは、受信側が要求を受け入れたが、処理が完了していないことを確認します。 応答には、受信側が処理を停止し、["200 OK"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) の成功応答またはその他の非 202 応答が返されるまで、呼び出し元が非同期要求の状態を継続的にポーリングまたは確認するために使用できる URL および更新 ID を指定する `location` ヘッダーを含めることができます。 詳細については、「[マイクロサービスの非同期統合によるマイクロサービスの自律性の強制](/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging)」を参照してください。
 
-ただし、要求にはタイムアウト制限があるため、長時間実行しているアクションについては、非同期ビヘイビアーを無効にすることができます。そのためには、アクションの入力において、`operationOptions` プロパティを追加して `DisableAsyncPattern` に設定します。
+* ロジック アプリ デザイナーでは、HTTP アクション、APIConnection アクション、および Response アクションの**非同期パターン**設定があります。 この設定を有効にした場合、呼び出し元は処理が終了するのを待たず、次のアクションに進むことができますが、処理が停止するまで状態のチェックは続行されます。 無効にした場合、この設定は次のアクションに進む前に、呼び出し元が処理の終了を待機することを指定します。 この設定を見つけるには、次の手順を実行します。
+
+  1. HTTP アクションのタイトル バーで、省略記号 ( **...** ) ボタンを選択します。これにより、アクションの設定が開きます。
+
+  1. **[非同期パターン]** 設定を探します。
+
+     !["非同期パターン" 設定](./media/logic-apps-workflow-actions-triggers/asynchronous-pattern-setting.png)
+
+* アクションの基になる JavaScript Object Notation (JSON) 定義では、HTTP アクションと APIConnection アクションは暗黙的に非同期操作パターンに従います。
+
+シナリオによっては、代わりに同期パターンに従うアクションが必要になることがあります。 たとえば、HTTP アクションを使用する際に、以下を行いたい場合があるとします。
+
+* [長時間実行されるタスクで HTTP タイムアウトを回避](../connectors/connectors-native-http.md#avoid-http-timeouts)
+* [場所ヘッダーの確認の無効化](../connectors/connectors-native-http.md#disable-location-header-check)
+
+このような場合は、以下のオプションを使用してアクションを同期的に実行することができます。
+
+* 使用可能な場合は、そのアクションのポーリングバージョンを Webhook バージョンに置き換えます。
+
+* 次のいずれかのオプションを使用して、アクションの非同期動作を無効にします。
+
+  * ロジック アプリ デザイナーで、[**非同期パターン**設定をオフにします](#turn-off-asynchronous-pattern-setting)。
+
+  * アクションの基になる JSON 定義で、[`"DisableAsyncPattern"` 操作オプションを追加](#add-disable-async-pattern-option)します。
+
+<a name="turn-off-asynchronous-pattern-setting"></a>
+
+#### <a name="turn-off-asynchronous-pattern-setting"></a>**[非同期パターン]** 設定をオフにします
+
+1. ロジック アプリ デザイナーのアクションのタイトル バーで、省略記号 ( **...** ) ボタンを選択します。これにより、アクションの設定が開きます。
+
+1. **[非同期パターン]** 設定を探し、有効にした場合は設定を **[オフ]** にし、 **[完了]** を選択します。
+
+   !["非同期パターン" 設定をオフにする](./media/logic-apps-workflow-actions-triggers/disable-asynchronous-pattern-setting.png)
+
+<a name="add-disable-async-pattern-option"></a>
+
+#### <a name="disable-asynchronous-pattern-in-actions-json-definition"></a>アクションの JSON 定義で非同期パターンを無効にする
+
+アクションの基になる JSON 定義で、アクションの `"inputs"` セクションの `"DisableAsyncPattern"` に ["operationOptions" プロパティ](#operation-options)を追加して設定します。次に例を示します。
 
 ```json
 "<some-long-running-action>": {
@@ -2669,8 +2709,6 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
    "runAfter": {}
 }
 ```
-
-詳細については、「[操作のオプション](#operation-options)」を参照してください。
 
 <a name="run-high-throughput-mode"></a>
 

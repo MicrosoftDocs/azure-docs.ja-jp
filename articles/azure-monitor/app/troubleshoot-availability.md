@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 04/28/2020
 ms.reviewer: sdash
-ms.openlocfilehash: 8f03099cf2890882a1c1d4ba9d69fcb64d0db600
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0ac8dd189bee1c1d4f5a7a4d0f7de68b085fbc56
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233960"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318149"
 ---
 # <a name="troubleshooting"></a>トラブルシューティング
 
@@ -35,7 +35,7 @@ ms.locfileid: "82233960"
 |----|---------|
 |接続済みの呼び出し先が一定の時間を過ぎても正しく応答しなかったため、接続できませんでした  | 特定の場所のテスト エージェントがファイアウォールによってブロックされています。|
 |    |Load Balancer、Geo Traffic Manager、Azure Express Route を介して特定の IP アドレスの再ルーティングが生じています。 
-|    |Azure ExpressRoute を使用している場合、[非対称ルーティングが発生](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing)してパケットがドロップしている状況が考えられます。|
+|    |Azure ExpressRoute を使用している場合、[非対称ルーティングが発生](../../expressroute/expressroute-asymmetric-routing.md)してパケットがドロップしている状況が考えられます。|
 
 ## <a name="test-failure-with-a-protocol-violation-error"></a>プロトコル違反エラーでのテスト失敗
 
@@ -66,11 +66,11 @@ ms.locfileid: "82233960"
 
 ### <a name="i-did-not-receive-the-webhook-notification"></a>Webhook 通知が届きませんでした。
 
-Web hook 通知を受信するアプリケーションが利用可能であること、さらにそのアプリケーションによって Web hook 要求が適切に処理されることを確認します。 詳細については、[こちら](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook)をご覧ください。
+Web hook 通知を受信するアプリケーションが利用可能であること、さらにそのアプリケーションによって Web hook 要求が適切に処理されることを確認します。 詳細については、[こちら](../platform/alerts-log-webhook.md)をご覧ください。
 
 ### <a name="i-am-getting--403-forbidden-errors-what-does-this-mean"></a>403 Forbidden エラーが発生しました。これはどういう意味でしょうか。
 
-このエラーは、可用性エージェントがお客様のターゲット URL をテストできるように、お客様の方でファイアウォールの例外を追加する必要があることを示しています。 許可するエージェント IP アドレスの完全な一覧については、[IP の例外に関する記事](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses#availability-tests)を参照してください。
+このエラーは、可用性エージェントがお客様のターゲット URL をテストできるように、お客様の方でファイアウォールの例外を追加する必要があることを示しています。 許可するエージェント IP アドレスの完全な一覧については、[IP の例外に関する記事](./ip-addresses.md#availability-tests)を参照してください。
 
 ### <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>プロトコル違反エラーでテストが断続的に失敗します。
 
@@ -81,7 +81,7 @@ Web hook 通知を受信するアプリケーションが利用可能である�
 
 ### <a name="i-dont-see-any-related-server-side-telemetry-to-diagnose-test-failures"></a>テストの失敗を診断するためのサーバー側の関連するテレメトリが表示されません。*
 
-サーバー側のアプリケーションに対して Application Insights を設定している場合は、[サンプリング](../../azure-monitor/app/sampling.md)操作中のためである可能性があります。 別の可用性の結果を選択します。
+サーバー側のアプリケーションに対して Application Insights を設定している場合は、[サンプリング](./sampling.md)操作中のためである可能性があります。 別の可用性の結果を選択します。
 
 ### <a name="can-i-call-code-from-my-web-test"></a>Web テストからコードを呼び出すことはできますか。
 
@@ -96,8 +96,8 @@ Web hook 通知を受信するアプリケーションが利用可能である�
 
    この解決方法には、次の 2 つが挙げられます。
 
-   * [Web テスト エージェントの IP アドレス](../../azure-monitor/app/ip-addresses.md)からの受信要求を許可するようにファイアウォールを構成します。
-   * 内部サーバーを定期的にテストする独自のコードを作成します。 このコードを、バック グラウンド プロセスとして、ファイアウォールの内側のテスト サーバーで実行します。 テスト プロセスは、コア SDK パッケージ内の [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) API を使用して、その結果を Application Insights に送信できます。 この方法では、テスト サーバーに Application Insights のインジェスト エンドポイントへの送信アクセスが必要となりますが、受信要求を許可する代替方法と比べて、セキュリティのリスクは大幅に小さくなります。 結果は可用性 Web テストブレードに表示されますが、エクスペリエンスはポータルによって作成されたテストに対して使用できるものより少し簡単になります。 カスタム可用性テストは、分析、検索、およびメトリックにも可用性の結果として表示されます。
+   * [Web テスト エージェントの IP アドレス](./ip-addresses.md)からの受信要求を許可するようにファイアウォールを構成します。
+   * 内部サーバーを定期的にテストする独自のコードを作成します。 このコードを、バック グラウンド プロセスとして、ファイアウォールの内側のテスト サーバーで実行します。 テスト プロセスは、コア SDK パッケージ内の [TrackAvailability()](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) API を使用して、その結果を Application Insights に送信できます。 この方法では、テスト サーバーに Application Insights のインジェスト エンドポイントへの送信アクセスが必要となりますが、受信要求を許可する代替方法と比べて、セキュリティのリスクは大幅に小さくなります。 結果は可用性 Web テストブレードに表示されますが、エクスペリエンスはポータルによって作成されたテストに対して使用できるものより少し簡単になります。 カスタム可用性テストは、分析、検索、およびメトリックにも可用性の結果として表示されます。
 
 ### <a name="uploading-a-multi-step-web-test-fails"></a>複数ステップの Web テストのアップロードが失敗します。
 
@@ -134,3 +134,4 @@ Web hook 通知を受信するアプリケーションが利用可能である�
 
 * [複数ステップ Web テスト](availability-multistep.md)
 * [URL の ping テスト](monitor-web-app-availability.md)
+

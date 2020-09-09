@@ -9,18 +9,18 @@ editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87f5b1ec02400c5cd9d26cc324ddbafdf8d76537
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 468b874ae4a19b8b5ea2a9a91a258722cef60e3a
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582591"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798603"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>Azure Active Directory での管理の委任
 
@@ -38,7 +38,7 @@ ms.locfileid: "82582591"
 
 Azure AD ポータルでは、[任意のロールのメンバー全員を表示](directory-manage-roles-portal.md)できます。これは、ご自身のデプロイを確認したり、アクセス許可の委任したりするうえで役立ちます。
 
-Azure AD における管理アクセスではなく、Azure リソースへのアクセス委任について興味がある場合は、[ロールベースのアクセス制御 (RBAC) ロールの割り当て](../../role-based-access-control/role-assignments-portal.md)に関するページをご覧ください。
+Azure AD における管理アクセスではなく、Azure リソースへのアクセス委任について興味がある場合は、[Azure ロールの割り当て](../../role-based-access-control/role-assignments-portal.md)に関するページをご覧ください。
 
 ## <a name="delegation-planning"></a>計画の委任
 
@@ -60,7 +60,7 @@ Azure AD における管理アクセスではなく、Azure リソースへの�
 各タスクの頻度、重要度、および難易度を評価する必要があります。 これらの条件はタスクの定義には欠かせません。これによりアクセス許可を委任するかどうかが左右されるためです。
 
 * 定期的に実行され、リスクが限られており、簡単に完了できるタスクが、委任に適しています。
-* ほとんど実行されないにもかかわらず、組織全体に大きな影響を及ぼし、高いスキルを必要とするタスクは、委任する前に慎重に検討する必要があります。 代わりに、[必要なロールにアカウントを一時的に昇格](../active-directory-privileged-identity-management-configure.md)させるか、タスクを再割り当てすることができます。
+* ほとんど実行されないにもかかわらず、組織全体に大きな影響を及ぼし、高いスキルを必要とするタスクは、委任する前に慎重に検討する必要があります。 代わりに、[必要なロールにアカウントを一時的に昇格](../privileged-identity-management/pim-configure.md)させるか、タスクを再割り当てすることができます。
 
 ## <a name="delegate-app-administration"></a>アプリの管理を委任する
 
@@ -110,7 +110,7 @@ Azure AD には、Azure AD 管理者ロールに関するセキュリティ プ�
 
 ## <a name="elevate-privilege-temporarily"></a>特権を一時的に昇格させる
 
-ほとんどの日常的アクティビティでは、すべてのユーザーがグローバル管理者権限を必要とするわけではなく、必ずしもすべてのユーザーをグローバル管理者ロールに永続的に割り当てる必要はありません。 ユーザーがグローバル管理者のアクセス許可を必要とするときは、ユーザー自身のアカウントまたは別の管理者アカウントで、Azure AD [Privileged Identity Management](../active-directory-privileged-identity-management-configure.md) のロール割り当てをアクティブ化する必要があります。
+ほとんどの日常的アクティビティでは、すべてのユーザーがグローバル管理者権限を必要とするわけではなく、必ずしもすべてのユーザーをグローバル管理者ロールに永続的に割り当てる必要はありません。 ユーザーがグローバル管理者のアクセス許可を必要とするときは、ユーザー自身のアカウントまたは別の管理者アカウントで、Azure AD [Privileged Identity Management](../privileged-identity-management/pim-configure.md) のロール割り当てをアクティブ化する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

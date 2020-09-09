@@ -1,6 +1,6 @@
 ---
 title: Azure Sentinel に Fortinet データを接続する | Microsoft Docs
-description: Azure Sentinel に Fortinet データを接続する方法について説明します。
+description: Fortinet アプライアンスを Azure Sentinel に接続して、ダッシュボードの表示、カスタム アラートの作成、および調査の改善を行います。 
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: aabc95fcb8d3b32b89bb83f4f6892c3d40b03417
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8aa8599cbaab6af00d7b4122b94c9e24870881f3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588197"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511332"
 ---
 # <a name="connect-fortinet-to-azure-sentinel"></a>Azure Sentinel に Fortinet を接続する
 
@@ -36,12 +36,14 @@ Syslog エージェントを介して、CEF 形式で Syslog メッセージを 
 
 1. お使いの Fortinet アプライアンスで CLI を開き、次のコマンドを実行します。
 
-        config log syslogd setting
-        set format cef
-        set port 514
-        set server <ip_address_of_Receiver>
-        set status enable
-        end
+    ```console
+    config log syslogd setting
+    set format cef
+    set port 514
+    set server <ip_address_of_Receiver>
+    set status enable
+    end
+    ```
 
     - サーバーの **IP アドレス**を、エージェントの IP アドレスに置き換えます。
     - **syslog のポート**を **514** に設定するか、エージェントに設定されているポートに設定します。

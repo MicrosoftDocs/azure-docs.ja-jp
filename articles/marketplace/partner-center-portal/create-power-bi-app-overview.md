@@ -1,18 +1,18 @@
 ---
 title: Power BI アプリの作成の概要 - Microsoft AppSource
 description: この記事では、Power BI アプリを Microsoft AppSource に公開するためのおおまかな手順について説明します。 商用マーケットプレースに公開するために Power BI アプリで満たす必要がある技術的およびビジネス要件も記載されています。
-author: anbene
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: navits09
+ms.author: navits
 ms.date: 04/02/2020
-ms.openlocfilehash: c40ea07fc4224052aa2474ebd61ef7838ba2cedf
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: f3699892471a1535cda5fc182a4c9121fd3c250c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837840"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317605"
 ---
 # <a name="power-bi-app-creation-overview"></a>Power BI アプリの作成の概要
 
@@ -66,16 +66,16 @@ Power BI アプリをビルドできるのは、[Power BI](https://powerbi.micro
 2. Power BI でアプリを作成してテストします。
 3. アプリのインストール Web アドレスを受け取ったら、パートナー センターの **[技術的な構成]** ページに追加します。
 
-Power BI でアプリが作成され、テストされた後、アプリケーションのインストール Web アドレスを保存します。これは [Power BI アプリ オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)際に必要になるためです。
+Power BI でアプリが作成され、テストされた後、アプリケーションのインストール Web アドレスを保存します。これは [Power BI アプリ オファーを作成する](create-power-bi-app-offer.md)際に必要になるためです。
 
 ### <a name="business-requirements"></a>ビジネス要件
 
 ビジネス要件には、手続き、契約、法律に関する義務が含まれます。 次の手順が必要です。
 
-- 登録済みの商用マーケットプレース パブリッシャーになります。 登録していない場合は、[商用マーケットプレース パブリッシャーになる](https://docs.microsoft.com/azure/marketplace/become-publisher)ための手順に従ってください。
+- 登録済みの商用マーケットプレース パブリッシャーになります。 登録していない場合は、「[パートナー センターでコマーシャル マーケットプレース アカウントを作成する](create-account.md)」の手順に従ってください。
 - AppSource にオファーが掲載されるための条件を満たすコンテンツを提供します。 詳細については、[AppSource にアプリを掲載する方法](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how)に関するページをご覧ください。
 - [Microsoft のプライバシーに関する声明](https://privacy.microsoft.com/privacystatement)に同意して従います。
 
 ## <a name="next-step"></a>次のステップ
 
-- [パートナー センターで Power BI アプリ オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)
+- [パートナー センターで Power BI アプリ オファーを作成する](create-power-bi-app-offer.md)

@@ -1,18 +1,18 @@
 ---
 title: Azure VPN Gateway で OpenVPN を構成する方法:PowerShell
-description: Azure VPN Gateway 用に OpenVPN を構成する手順
+description: PowerShell を使用して、ポイント対サイト環境用に Azure VPN Gateway で OpenVPN プロトコルを有効にする方法について学習します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: cherylmc
-ms.openlocfilehash: 7505420cc31fe751ecc0c114a89fea0734cbc6cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c13d14ad2d06cbc43d80c05258bdbd3303da4838
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162409"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036829"
 ---
 # <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway"></a>Azure ポイント対サイト VPN Gateway 用に OpenVPN を構成する
 

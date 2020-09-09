@@ -4,14 +4,14 @@ description: PostgreSQL データベースをスクリプト ファイルに抽�
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2019
-ms.openlocfilehash: f7cf5d245383b8a58f03e2e3610750866a2f4b5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5d97f7b976ef1dfcf0493a8bef6ddcdd2cd63960
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74770205"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116370"
 ---
 # <a name="migrate-your-postgresql-database-using-export-and-import"></a>エクスポートとインポートを使用した PostgreSQL データベースの移行
 [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) を使用することで、PostgreSQL データベースをスクリプト ファイルに抽出できます。また、[psql](https://www.postgresql.org/docs/current/static/app-psql.html) を使用することで、そのファイルから対象のデータベースにデータをインポートできます。

@@ -4,19 +4,19 @@ description: Azure Resource Manager テンプレートで仮想マシン リソ�
 author: cynthn
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: 04dba192488744d1b54b0a0e2d885c0b1766bdc6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e420fe81941352d1002ed2c25c04fc686115c7c2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100534"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827454"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの仮想マシン
 
-この記事では、仮想マシンに適用される、Azure Resource Manager テンプレートの側面について説明します。 仮想マシンを作成するための完全なテンプレートについては、この記事では説明しません。完全なテンプレートには、ストレージ アカウント、ネットワーク インターフェイス、パブリック IP アドレス、および仮想ネットワークのリソース定義が必要です。 これらのリソースをまとめて定義できる方法の詳細については、「[Resource Manager テンプレートのチュートリアル](../../azure-resource-manager/resource-manager-template-walkthrough.md)」を参照してください。
+この記事では、仮想マシンに適用される、Azure Resource Manager テンプレートの側面について説明します。 仮想マシンを作成するための完全なテンプレートについては、この記事では説明しません。完全なテンプレートには、ストレージ アカウント、ネットワーク インターフェイス、パブリック IP アドレス、および仮想ネットワークのリソース定義が必要です。 これらのリソースをまとめて定義できる方法の詳細については、「[Resource Manager テンプレートのチュートリアル](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)」を参照してください。
 
 VM リソースを含め、[ギャラリーにはテンプレート](https://azure.microsoft.com/documentation/templates/?term=VM)が多数あります。 テンプレートに含めることができるすべての要素をここで説明するわけではありません。
 
@@ -156,14 +156,14 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
 
 最新の API バージョンを取得するには、次の方法を使用してください。
 
-- REST API - [すべてのリソース プロバイダーの一覧を表示する](https://docs.microsoft.com/rest/api/resources/providers)
-- PowerShell - [Get AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/get-azresourceprovider)
-- Azure CLI - [az provider show](https://docs.microsoft.com/cli/azure/provider)
+- REST API - [すべてのリソース プロバイダーの一覧を表示する](/rest/api/resources/providers)
+- PowerShell - [Get AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider)
+- Azure CLI - [az provider show](/cli/azure/provider)
 
 
 ## <a name="parameters-and-variables"></a>パラメーターと変数
 
-[パラメーター](../../resource-group-authoring-templates.md)を使用すると、テンプレートの実行時にテンプレートに値を指定することが簡単になります。 この例では、次の parameters セクションが使用されています。
+[パラメーター](../../azure-resource-manager/templates/template-syntax.md)を使用すると、テンプレートの実行時にテンプレートに値を指定することが簡単になります。 この例では、次の parameters セクションが使用されています。
 
 ```json
 "parameters": {
@@ -175,7 +175,7 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
 
 サンプル テンプレートをデプロイするときに、各 VM の管理者アカウントの名前とパスワード、作成する VM の数の値を入力します。 テンプレートと共に管理される別のファイルでパラメーター値を指定したり、要求時に値を指定したりすることもできます。
 
-[変数](../../resource-group-authoring-templates.md)を使用すると、テンプレート全体で繰り返し使用される値や時間の経過と共に変化する可能性がある値を、テンプレートで簡単に設定できます。 この例では、次の variables セクションが使用されています。
+[変数](../../azure-resource-manager/templates/template-syntax.md)を使用すると、テンプレート全体で繰り返し使用される値や時間の経過と共に変化する可能性がある値を、テンプレートで簡単に設定できます。 この例では、次の variables セクションが使用されています。
 
 ```json
 "variables": { 
@@ -208,7 +208,7 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
 }, 
 ```
 
-サンプル テンプレートをデプロイすると、以前に作成したストレージ アカウントの名前と識別子に変数の値が使用されています。 変数は、診断拡張機能の設定の指定にも使用されています。 [Azure Resource Manager テンプレートを作成するためのベスト プラクティス](../../resource-manager-template-best-practices.md)に関する記事を参照すると、テンプレートでパラメーターと変数をどのように構成するかを決めるのに役立ちます。
+サンプル テンプレートをデプロイすると、以前に作成したストレージ アカウントの名前と識別子に変数の値が使用されています。 変数は、診断拡張機能の設定の指定にも使用されています。 [Azure Resource Manager テンプレートを作成するためのベスト プラクティス](../../azure-resource-manager/templates/template-best-practices.md)に関する記事を参照すると、テンプレートでパラメーターと変数をどのように構成するかを決めるのに役立ちます。
 
 ## <a name="resource-loops"></a>リソース ループ
 
@@ -247,7 +247,7 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
 
 ## <a name="dependencies"></a>依存関係
 
-ほとんどのリソースは、正常に動作するために他のリソースに依存しています。 仮想マシンは仮想ネットワークに関連付ける必要があり、そのためにはネットワーク インターフェイスが必要です。 [dependsOn](../../resource-group-define-dependencies.md) 要素は、VM が作成される前にネットワーク インターフェイスを使用できるようするために使用されます。
+ほとんどのリソースは、正常に動作するために他のリソースに依存しています。 仮想マシンは仮想ネットワークに関連付ける必要があり、そのためにはネットワーク インターフェイスが必要です。 [dependsOn](../../azure-resource-manager/templates/define-resource-dependency.md) 要素は、VM が作成される前にネットワーク インターフェイスを使用できるようするために使用されます。
 
 ```json
 "dependsOn": [
@@ -274,10 +274,10 @@ Resource Manager は、デプロイ中の他のリソースに依存していな
 
 いくつかのプロファイル要素は、仮想マシン リソースを定義する際に使用されます。 必須のものもあれば、省略可能なものもあります。 たとえば、hardwareProfile、osProfile、storageProfile、networkProfile 要素は必須で、diagnosticsProfile 要素は省略可能です。 これらのプロファイルは、次のような設定を定義します。
    
-- [size](sizes.md)
+- [size](../sizes.md)
 - [名前](/azure/architecture/best-practices/resource-naming)と資格情報
 - ディスクと[オペレーティング システムの設定](cli-ps-findimage.md)
-- [ネットワーク インターフェイス](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md) 
+- [ネットワーク インターフェイス](/previous-versions/azure/virtual-network/virtual-network-deploy-multinic-classic-ps) 
 - ブート診断
 
 ## <a name="disks-and-images"></a>ディスクとイメージ
@@ -353,7 +353,7 @@ Linux オペレーティング システムを作成する場合は、次の定�
 
 ### <a name="attach-data-disks"></a>データ ディスクを接続する
 
-必要に応じて、VM にデータ ディスクを追加することができます。 [ディスク数](sizes.md)は、使用するオペレーティング システム ディスクのサイズによって異なります。 VM のサイズが Standard_DS1_v2 に設定されている場合、VM に追加できるデータ ディスクの最大数は 2 です。 次の例では、各 VM に 1 つのマネージド データ ディスクが追加されます。
+必要に応じて、VM にデータ ディスクを追加することができます。 [ディスク数](../sizes.md)は、使用するオペレーティング システム ディスクのサイズによって異なります。 VM のサイズが Standard_DS1_v2 に設定されている場合、VM に追加できるデータ ディスクの最大数は 2 です。 次の例では、各 VM に 1 つのマネージド データ ディスクが追加されます。
 
 ```json
 "dataDisks": [
@@ -369,7 +369,7 @@ Linux オペレーティング システムを作成する場合は、次の定�
 
 ## <a name="extensions"></a>拡張機能
 
-[拡張機能](extensions-features.md)は個別のリソースですが、VM に密接に関係しています。 拡張機能は、VM の子リソース、または個別のリソースとして追加できます。 次の例は、VM に追加される[診断の拡張機能](extensions-diagnostics-template.md)を示しています。
+[拡張機能](../extensions/features-windows.md)は個別のリソースですが、VM に密接に関係しています。 拡張機能は、VM の子リソース、または個別のリソースとして追加できます。 次の例は、VM に追加される[診断の拡張機能](../extensions/diagnostics-template.md)を示しています。
 
 ```json
 { 
@@ -404,7 +404,7 @@ Linux オペレーティング システムを作成する場合は、次の定�
 
 この拡張機能リソースは、storageName 変数と診断変数を使用して値を指定します。 この拡張機能で収集するデータを変更する場合は、wadperfcounters 変数にさらに多くのパフォーマンス カウンターを追加できます。 また、VM ディスクの格納場所とは異なるストレージ アカウントに診断データを格納することもできます。
 
-VM にインストールできる拡張機能は多数ありますが、最も便利なのは、おそらく[カスタム スクリプト拡張機能](extensions-customscript.md)でしょう。 次の例では、start.ps1 という名前の PowerShell スクリプトが、各 VM で起動時に実行されます。
+VM にインストールできる拡張機能は多数ありますが、最も便利なのは、おそらく[カスタム スクリプト拡張機能](../extensions/custom-script-windows.md)でしょう。 次の例では、start.ps1 という名前の PowerShell スクリプトが、各 VM で起動時に実行されます。
 
 ```json
 {
@@ -447,11 +447,11 @@ start.ps1 スクリプトは、多くの構成タスクを実行できます。 
 
 ![デプロイ情報の取得](./media/template-description/virtual-machines-deployment-info.png)
     
-リソースの作成や既存のリソースの更新に同じテンプレートを使用しても問題はありません。 コマンドを使用してテンプレートをデプロイする際は、使用する[モード](../../resource-group-template-deploy.md)を指定することができます。 モードは、**Complete** または **Incremental** に設定することができます。 既定では、増分更新が実行されます。 **Complete** モードを使用する場合は、誤ってリソースを削除することがあるため、注意してください。 モードを **Complete** に設定すると、Resource Manager は、テンプレートに含まれていない、リソース グループ内のリソースすべてを削除します。
+リソースの作成や既存のリソースの更新に同じテンプレートを使用しても問題はありません。 コマンドを使用してテンプレートをデプロイする際は、使用する[モード](../../azure-resource-manager/templates/deploy-powershell.md)を指定することができます。 モードは、**Complete** または **Incremental** に設定することができます。 既定では、増分更新が実行されます。 **Complete** モードを使用する場合は、誤ってリソースを削除することがあるため、注意してください。 モードを **Complete** に設定すると、Resource Manager は、テンプレートに含まれていない、リソース グループ内のリソースすべてを削除します。
 
 ## <a name="next-steps"></a>次の手順
 
-- 「[Azure Resource Manager のテンプレートの作成](../../resource-group-authoring-templates.md)」を使用して、独自のテンプレートを作成します。
+- 「[Azure Resource Manager のテンプレートの作成](../../azure-resource-manager/templates/template-syntax.md)」を使用して、独自のテンプレートを作成します。
 - 「[Resource Manager テンプレートで Windows 仮想マシンを作成する](ps-template.md)」を使用して作成したテンプレートをデプロイします。
 - 作成した VM を管理する方法については、「[Azure PowerShell モジュールを使用して Windows VM を作成および管理する](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 - テンプレート内のリソースの種類の JSON 構文とプロパティについては、[Azure Resource Manager テンプレート リファレンス](/azure/templates/)を参照してください。

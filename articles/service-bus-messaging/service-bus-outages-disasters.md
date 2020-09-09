@@ -1,20 +1,14 @@
 ---
 title: 障害と災害に対する Azure Service Bus アプリケーションの保護
 description: この記事では、発生する可能性がある Azure Service Bus の障害からアプリケーションを保護するために使用できる手法について説明します。
-services: service-bus-messaging
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 01/27/2020
-ms.author: aschhab
-ms.openlocfilehash: 29eb0625ceebf4fee75d0c1accef7ae03b5f61b9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 06/23/2020
+ms.openlocfilehash: 4f3ff89e3ec59ad4445ab0b7ee7eeb45d18fa3b8
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208382"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065626"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Service Bus の障害および災害に対するアプリケーションの保護のベスト プラクティス
 
@@ -78,7 +72,7 @@ Standard メッセージング価格レベルが使用されているときに�
 [Service Bus Standard レベルの geo レプリケーション][Geo-replication with Service Bus Standard Tier]のサンプルで、メッセージング エンティティのパッシブ レプリケーションが説明されています。
 
 ## <a name="protecting-relay-endpoints-against-datacenter-outages-or-disasters"></a>データセンターの障害や災害からリレー エンドポイントを保護する
-[Azure Relay](../service-bus-relay/relay-what-is-it.md) エンドポイントの geo レプリケーションにより、Service Bus 障害発生時にリレー エンドポイントを公開するサービスにアクセスできるようになります。 geo レプリケーションを実現するには、異なる名前空間内に 2 つのリレー エンドポイントを作成する必要があります。 これらの名前空間が異なるデータセンターに存在し、2 つのエンドポイントに異なる名前が付けられている必要があります。 たとえば、プライマリ エンドポイントは **contosoPrimary.servicebus.windows.net/myPrimaryService** を使用してアクセスでき、セカンダリ側は **contosoSecondary.servicebus.windows.net/mySecondaryService** を使用してアクセスできます。
+[Azure Relay](../azure-relay/relay-what-is-it.md) エンドポイントの geo レプリケーションにより、Service Bus 障害発生時にリレー エンドポイントを公開するサービスにアクセスできるようになります。 geo レプリケーションを実現するには、異なる名前空間内に 2 つのリレー エンドポイントを作成する必要があります。 これらの名前空間が異なるデータセンターに存在し、2 つのエンドポイントに異なる名前が付けられている必要があります。 たとえば、プライマリ エンドポイントは **contosoPrimary.servicebus.windows.net/myPrimaryService** を使用してアクセスでき、セカンダリ側は **contosoSecondary.servicebus.windows.net/mySecondaryService** を使用してアクセスできます。
 
 その後、サービスは、両方のエンドポイント上でリッスンし、クライアントはどちらかのエンドポイントを介してサービスを呼び出すことができます。 クライアント アプリケーションは、いずれかのリレー エンドポイントをプライマリ エンドポイントとしてランダムに選択して、アクティブなエンドポイントに要求を送信します。 操作が失敗してエラー コードが表示された場合、このエラーは、リレー エンドポイントを使用できないことを示します。 アプリケーションは、バックアップ エンドポイントへのチャネルを開き、要求を再び発行します。 この時点で、アクティブなエンドポイントとバックアップ エンドポイントの役割が切り替わります。クライアント アプリケーションは、前のアクティブなエンドポイントを新しいバックアップ エンドポイントと見なし、前のバックアップ エンドポイントを新しいアクティブなエンドポイントと見なします。 両方の送信操作が失敗した場合、2 つのエンティティの役割は変更されず、エラーが返されます。
 
@@ -95,7 +89,7 @@ Standard メッセージング価格レベルが使用されているときに�
 [BrokeredMessage.MessageId]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 [BrokeredMessage.Label]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 [Geo-replication with Service Bus Standard Tier]: https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoReplication
-[Azure SQL Database Business Continuity]: ../sql-database/sql-database-business-continuity.md
+[Azure SQL Database Business Continuity]:../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md
 [Azure resiliency technical guidance]: /azure/architecture/resiliency
 
 [1]: ./media/service-bus-outages-disasters/az.png

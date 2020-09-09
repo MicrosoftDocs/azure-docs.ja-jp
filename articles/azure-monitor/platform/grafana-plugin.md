@@ -4,12 +4,12 @@ description: Grafana で表示できるように Azure Monitor および Applica
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/06/2017
-ms.openlocfilehash: 142e3e19c13710963d239a75bc237b63713c29cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 23bba091628eee767fbf292a8a8d772ffab674cb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77672210"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073473"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Grafana での Azure サービスの監視
 [Azure Monitor データ ソース プラグイン](https://grafana.com/plugins/grafana-azure-monitor-datasource)を使用して [Grafana](https://grafana.com/) から Azure のサービスとアプリケーションを監視できるようになりました。 このプラグインを使用して、Azure Monitor によって収集されたアプリケーションのパフォーマンス データ (さまざまなログやメトリックなど) を一か所にまとめることができます。 その後、このデータを Grafana ダッシュボードで表示できます。
@@ -42,7 +42,7 @@ Grafana サーバーをローカルにセットアップするには、[Grafana 
 
 ## <a name="sign-in-to-grafana"></a>Grafana にサインインする
 
-1. ブラウザーで、サーバーの IP アドレスを使用して [ログイン] ページを開きます (*http://\<IP アドレス\>:3000* または *\<ドメイン名>\:3000*)。 3000 は既定のポートです。セットアップ中にご自身で別のポートを選択している場合があることに注意してください。 構築した Grafana サーバーのログイン ページが表示されます。
+1. ブラウザーで、サーバーの IP アドレスを使用して [ログイン] ページを開きます (*http://\<IP address\>:3000* または *\<DNSName>\:3000*)。 3000 は既定のポートです。セットアップ中にご自身で別のポートを選択している場合があることに注意してください。 構築した Grafana サーバーのログイン ページが表示されます。
 
     ![Grafana ログイン画面](./media/grafana-plugin/grafana-login-screen.png)
 
@@ -59,9 +59,9 @@ Grafana サーバーをローカルにセットアップするには、[Grafana 
 2. データ ソースの名前を選択し、種類としてドロップダウンから **[Azure Monitor]** を選択します。
 
 3. サービス プリンシパルを作成します。Grafana では、Azure Active Directory サービス プリンシパルを使用して Azure Monitor API に接続してメトリック データを収集します。 Azure リソースへのアクセスを管理するには、サービス プリンシパルを作成するか、既存のものを使用する必要があります。
-    * サービス プリンシパルを作成するには、[この手順](../../azure-resource-manager/resource-group-create-service-principal-portal.md)を参照してください。 ご自分のテナント ID (ディレクトリ ID)、クライアント ID (アプリケーション ID)、およびクライアント シークレット (アプリケーション キー値) をコピーして保存します。
-    * [アプリケーションへのロールの割り当て](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)に関する記事を参照して、監視するサブスクリプション内の Azure Active Directory アプリケーション、リソース グループ、またはリソースに閲覧者ロールを割り当てます。 
-    Log Analytics API には、閲覧者ロールのアクセス許可を含む[Log Analytics 閲覧者ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader)が必要なので、それを追加します。
+    * サービス プリンシパルを作成するには、[この手順](../../active-directory/develop/howto-create-service-principal-portal.md)を参照してください。 ご自分のテナント ID (ディレクトリ ID)、クライアント ID (アプリケーション ID)、およびクライアント シークレット (アプリケーション キー値) をコピーして保存します。
+    * [アプリケーションへのロールの割り当て](../../active-directory/develop/howto-create-service-principal-portal.md)に関する記事を参照して、監視するサブスクリプション内の Azure Active Directory アプリケーション、リソース グループ、またはリソースに閲覧者ロールを割り当てます。 
+    Log Analytics API には、閲覧者ロールのアクセス許可を含む[Log Analytics 閲覧者ロール](../../role-based-access-control/built-in-roles.md#log-analytics-reader)が必要なので、それを追加します。
 
 4. 使用する API への接続の詳細を指定します。 それらのすべてまたは一部に接続できます。 
     * Azure Monitor のメトリックとログの両方に接続する場合は、 **[Same details as Azure Monitor API]\(Azure Monitor API の詳細と同じ\)** を選択することで、同じ資格情報を再利用できます。
@@ -104,7 +104,7 @@ Grafana サーバーをローカルにセットアップするには、[Grafana 
     ![Grafana の 2 つのグラフの例](media/grafana-plugin/grafana6.png)
 
 
-## <a name="optional-monitor-your-custom-metrics-in-the-same-grafana-server"></a>省略可能: 同じ Grafana サーバーでカスタム メトリックを監視する
+## <a name="optional-monitor-your-custom-metrics-in-the-same-grafana-server"></a>省略可能:同じ Grafana サーバーでカスタム メトリックを監視する
 
 Telegraf と InfluxDB をインストールして、同じ Grafana インスタンスでカスタム メトリックとエージェント ベースのメトリックの両方を収集してプロットすることもできます。 これらのメトリックをダッシュボードにまとめて表示するために使用できる多くのデータ ソース プラグインがあります。
 
@@ -120,7 +120,7 @@ Azure Monitor および Application Insights からのメトリックを含む�
 
 ## <a name="advanced-grafana-features"></a>Grafana の高度な機能
 
-### <a name="variables"></a>変数:
+### <a name="variables"></a>変数
 いくつかのクエリの値は、UI のドロップダウン リストから選択してクエリ内で更新できます。 例として次のクエリを検討します。
 ```
 Usage 
@@ -159,4 +159,3 @@ Azure 上に Grafana 環境をセットアップした場合、VM を使用し�
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Monitor メトリックの概要](data-platform.md)
-

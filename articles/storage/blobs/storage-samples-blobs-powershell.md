@@ -1,24 +1,24 @@
 ---
 title: Azure Blob Storage の Azure PowerShell サンプル | Microsoft Docs
-description: Azure Blob Storage を使用する場合の Azure PowerShell サンプル
+description: ストレージ アカウントの作成、アカウント間での BLOB の移行など、Azure Blob Storage を操作するための Azure PowerShell スクリプト サンプルへのリンクを参照してください。
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 11/07/2017
 ms.service: storage
 ms.subservice: blobs
 ms.topic: sample
-ms.openlocfilehash: c4e8608c0d5c8dc79fa299d5d814f33cd6c8da2d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 05f02fe5bd6d106e7187eea7600ffe0c7fc7e955
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68726323"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828168"
 ---
 # <a name="azure-powershell-samples-for-azure-blob-storage"></a>Azure Blob Storage の Azure PowerShell サンプル
 
 次の表は、Azure Storage を作成および管理する PowerShell サンプル スクリプトへのリンク一覧です。
 
-| | |
+| スクリプト | 説明 |
 |---|---|
 |**ストレージ アカウント**||
 | [Create a storage account and retrieve/rotate the access keys](../scripts/storage-common-rotate-account-keys-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) (ストレージ アカウントを作成し、アクセス キーの取得とローテーションを行う)| Azure Storage アカウントを作成し、アクセス キーのいずれかを取得し、ローテーションを行います。 |

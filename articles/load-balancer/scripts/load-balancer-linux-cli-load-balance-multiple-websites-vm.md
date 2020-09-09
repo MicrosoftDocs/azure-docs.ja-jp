@@ -9,14 +9,15 @@ ms.topic: sample
 ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: allensu
-ms.openlocfilehash: 80ec18ca722b9833307fc270c710abd93c6fb6f9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 8be0dd6e68d6d50ef80c75ffa87974a63d2e0b36
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76274623"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501765"
 ---
-# <a name="azure-cli-script-example-load-balance-multiple-websites"></a>Azure CLI スクリプトの例: 複数の Web サイトを負荷分散する
+# <a name="azure-cli-script-example-load-balance-multiple-websites"></a>Azure CLI スクリプトの例: 複数の Web サイトの負荷分散
 
 この Azure CLI スクリプトのサンプルでは、可用性セットのメンバーである 2 つの仮想マシン (VM) による仮想ネットワークを作成します。 ロード バランサーが、2 つの独立した IP アドレスのトラフィックを 2 つの VM に送信します。 スクリプトを実行した後は、Web サーバー ソフトウェアの VM へのデプロイ、および複数の Web サイトのホストを、それぞれ独自の IP アドレスで行うことができます。
 
@@ -41,7 +42,7 @@ az group delete --name myResourceGroup --yes
 
 このスクリプトでは、次のコマンドを使用して、リソース グループ、仮想ネットワーク、ロード バランサー、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| コマンド | Notes |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az-network-vnet-create) | Azure 仮想ネットワークとサブネットを作成します。 |

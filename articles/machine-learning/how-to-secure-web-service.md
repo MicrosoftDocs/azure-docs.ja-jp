@@ -5,18 +5,18 @@ description: Azure Machine Learning でデプロイされた Web サービスを
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 03/05/2020
-ms.custom: seodec18
-ms.openlocfilehash: a58b0120feaba907c62bc646f4f85d9185227fed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: 3e10841852b8a89b344d3bfd9311db8abe15642a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80287341"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319543"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -87,7 +87,7 @@ AKS にデプロイする場合、新しい AKS クラスターを作成する�
 
 **enable_ssl** メソッドは、Microsoft によって提供される証明書でも、購入する証明書を使用することもできます。
 
-  * Microsoft 提供の証明書を使用する場合、*leaf_domain_label* パラメーターを使用する必要があります。 このパラメーターは、サービスの DNS 名を生成します。 たとえば、"contoso" の値は、"contoso\<six-random-characters>.\<azureregion>.cloudapp.azure.com" のドメイン名を作成します。ここで、\<azureregion> は、サービスを格納する領域です。 必要に応じて、*overwrite_existing_domain* パラメーターを使用して既存の *leaf_domain_label* を上書きできます。
+  * Microsoft 提供の証明書を使用する場合、*leaf_domain_label* パラメーターを使用する必要があります。 このパラメーターは、サービスの DNS 名を生成します。 たとえば、"contoso" という値を使用すると "contoso\<six-random-characters>.\<azureregion>.cloudapp.azure.com" というドメイン名が作成されます。この場合の \<azureregion> は、サービスが含まれるリージョンを意味しています。 必要に応じて、*overwrite_existing_domain* パラメーターを使用して既存の *leaf_domain_label* を上書きできます。
 
     TLS が有効なサービスをデプロイ (または再デプロイ) するには、"*ssl_enabled*" パラメーターを "True" に設定します (該当する場合は必ず)。 *ssl_certificate* パラメーターを *certificate* ファイルの値に設定します。 *ssl_key* を *key* ファイルの値に設定します。
 
@@ -172,6 +172,10 @@ TLS/SSL 証明書には有効期限切れがあるため、更新する必要が
 
 証明書が元は Microsoft によって (*leaf_domain_label* を使用してサービスを作成するときに) 生成されたものである場合、次のいずれかの例を使用して証明書を更新します。
 
+> [!IMPORTANT]
+> * 既存の証明書がまだ有効な場合は、`renew=True` (SDK) か `--ssl-renew` (CLI) を使用して、構成によってこれを強制的に更新します。 たとえば、既存の証明書があと 10 日間有効で、`renew=True` を使用しない場合、証明書は更新されない可能性があります。
+> * サービスが最初にデプロイされたとき、`leaf_domain_label` が使用されて、`<leaf-domain-label>######.<azure-region>.cloudapp.azure.net` というパターンで DNS 名が作成されました。 既存の名前 (最初に生成された 6 桁を含む) を維持するには、元の `leaf_domain_label` 値を使用します。 生成された 6 桁の数字は含めないでください。
+
 **SDK の使用**
 
 ```python
@@ -183,7 +187,7 @@ from azureml.core.compute.aks import SslConfiguration
 aks_target = AksCompute(ws, clustername)
 
 # Update the existing certificate by referencing the leaf domain label
-ssl_configuration = SslConfiguration(leaf_domain_label="myaks", overwrite_existing_domain=True)
+ssl_configuration = SslConfiguration(leaf_domain_label="myaks", overwrite_existing_domain=True, renew=True)
 update_config = AksUpdateConfiguration(ssl_configuration)
 aks_target.update(update_config)
 ```
@@ -191,7 +195,7 @@ aks_target.update(update_config)
 **CLI の使用**
 
 ```azurecli
-az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-leaf-domain-label "myaks" --ssl-overwrite-domain True
+az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-leaf-domain-label "myaks" --ssl-overwrite-domain True --ssl-renew
 ```
 
 詳細については、次のドキュメントを参照してください。

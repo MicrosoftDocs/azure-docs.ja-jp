@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: e5dc290a40342e0797001dde6cab90e12dd5cf39
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dba058dce09e958a2ae769d927a5569fb3e42113
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77662180"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324558"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリの高度な集計
 
@@ -184,7 +184,8 @@ Azure Monitor ログ データと共に [Kusto クエリ言語](/azure/kusto/que
 - [文字列操作](string-operations.md)
 - [日付と時刻の操作](datetime-operations.md)
 - [集計関数](aggregations.md)
-- [高度な集計](advanced-aggregations.md)
+- [高度な集計]()
 - [JSON とデータ構造](json-data-structures.md)
 - [結合](joins.md)
 - [グラフ](charts.md)
+

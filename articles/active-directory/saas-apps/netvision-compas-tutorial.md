@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Netvision Compas の統合 | Microsoft Docs
 description: Azure Active Directory と Netvision Compas の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: a56f44c5-dc08-4c7c-ad20-b6e7127deb2c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/16/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3015ea26d81505c4f058846dbcb3b7858f79267
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 8f92ff60dacd78687207c7523504182521700a7b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520054"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554500"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netvision-compas"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Netvision Compas の統合
 

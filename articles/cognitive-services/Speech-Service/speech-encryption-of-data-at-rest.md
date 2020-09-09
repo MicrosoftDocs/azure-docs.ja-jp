@@ -7,14 +7,14 @@ manager: venkyv
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 05/11/2020
 ms.author: egeaney
-ms.openlocfilehash: 3ccc9820f38a8c32d0b390663eb6b4430b42e8f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c2e52fbab8d984f7442d8a336e90e9f22c0bf061
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79372084"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198664"
 ---
 # <a name="speech-service-encryption-of-data-at-rest"></a>Speech サービスによる保存データの暗号化
 
@@ -22,7 +22,7 @@ ms.locfileid: "79372084"
 
 ## <a name="about-cognitive-services-encryption"></a>Cognitive Services の暗号化について
 
-データは、[FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) に準拠する [256 ビット AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 暗号化を使用して暗号化および暗号化解除されます。 暗号化と暗号化解除は透過的であり、暗号化とアクセスはユーザーによって管理されます。 データは既定でセキュリティ保護され、暗号化を利用するためにコードやアプリケーションを変更する必要はありません。
+データは、[FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) に準拠する [256 ビット AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 暗号化を使用して暗号化および暗号化解除されます。 暗号化と暗号化解除は透過的であり、暗号化とアクセスはユーザーによって管理されます。 データは既定でセキュリティ保護され、暗号化を利用するためにコードまたはアプリケーションを変更する必要はありません。
 
 ## <a name="about-encryption-key-management"></a>暗号化キーの管理について
 
@@ -42,13 +42,10 @@ Custom Speech とカスタム音声を使用すると、Speech サービスに�
 > [!IMPORTANT]
 > システム割り当てのマネージド ID を無効にすると、ストレージ アカウントへのアクセス権が削除されます。 これにより、ストレージ アカウントへのアクセスを必要とする Speech サービスの部分は動作を停止します。  
 
-## <a name="regional-availability"></a>リージョン別の提供状況
+Speech サービスでは、現在、カスタマー ロックボックスはサポートされていません。 ただし、BYOS を使用すれば顧客データを格納することができるため、[カスタマー ロックボックス](../../security/fundamentals/customer-lockbox-overview.md)と類似のデータ管理を実現できます。 Speech サービスのデータは保持され、Speech リソースが作成されたリージョンで処理されることに注意してください。 これは、保存データと転送中のデータに適用されます。 Custom Speech や Custom Voice などのカスタマイズ機能を使用する場合、顧客データはすべて、BYOS (使用されている場合) と Speech サービス リソースが存在しているのと同じリージョンで転送、格納、および処理されます。
 
-現在、BYOS は次のリージョンで利用できます。
-
-* 米国中南部
-* 米国西部 2
-* 米国東部
+> [!IMPORTANT]
+> Microsoft では、Speech モデルを改善するためにお客様のデータを**使用するということはありません**。 また、エンドポイントのログ記録が無効になっていて、カスタマイズが使用されていない場合、顧客データは格納されません。 
 
 ## <a name="next-steps"></a>次のステップ
 

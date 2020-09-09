@@ -5,21 +5,21 @@ description: この記事では、TLS/SSL 証明書を、Azure Application Gatew
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 11/14/2019
+ms.topic: how-to
+ms.date: 06/17/2020
 ms.author: absha
-ms.openlocfilehash: 20f588639c54b0a8b7cd304f33b5a9d633a73be6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 125da04c9fafe33c7f3de3a5849e4238b3b45d6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80133046"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84976542"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Azure Application Gateway でバックエンドを許可する証明書を作成する
 
 エンド ツー エンド TLS を実行するために、Application Gateway では、認証証明書または信頼されたルート証明書をアップロードしてバックエンド インスタンスを許可する必要があります。 証明書を許可するために、v1 SKU の場合は認証証明書が必要ですが、v2 SKU の場合は信頼されたルート証明書が必要です。
 
-この記事では、次のことについて説明します。
+この記事では、次の方法について説明します。
 
 > [!div class="checklist"]
 >
@@ -74,11 +74,11 @@ TLS/SSL 証明書から公開キー .cer ファイルをエクスポートしま
 
 ## <a name="export-trusted-root-certificate-for-v2-sku"></a>信頼されたルート証明書をエクスポートする (V2 SKU の場合)
 
-信頼されたルート証明書は、Application Gateway v2 SKU でバックエンド インスタンスをホワイトリスト登録するために必要です。 このルート証明書は､バックエンド サーバー証明書からの Base-64 エンコード X.509(.CER) 形式のルート証明書です。 この例では、バックエンド証明書に TLS/SSL 証明書を使用し、その公開キーをエクスポートし、base64 エンコード形式の公開キーから信頼された CA のルート証明書をエクスポートして、信頼されたルート証明書を取得します。 中間証明書は、サーバー証明書とバンドルして、バックエンド サーバーにインストールする必要があります。
+信頼されたルート証明書は、Application Gateway v2 SKU でバックエンド インスタンスを許可するために必要です。 このルート証明書は､バックエンド サーバー証明書からの Base-64 エンコード X.509(.CER) 形式のルート証明書です。 この例では、バックエンド証明書に TLS/SSL 証明書を使用し、その公開キーをエクスポートし、base64 エンコード形式の公開キーから信頼された CA のルート証明書をエクスポートして、信頼されたルート証明書を取得します。 中間証明書は、サーバー証明書とバンドルして、バックエンド サーバーにインストールする必要があります。
 
 次の手順で、証明書のための .cer ファイルをエクスポートします。
 
-1. 前述の「**バックエンド証明書から認証証明書をエクスポートする (v1 SKU の場合)** 」セクションの手順 1 - 9 に従って、バックエンド証明書から公開キーをエクスポートします。
+1. 前述の「[認証証明書をエクスポートする (v1 SKU の場合)](#export-authentication-certificate-for-v1-sku)」セクションの手順 1 - 8 に従って、バックエンド証明書から公開キーをエクスポートします。
 
 2. 公開キーがエクスポートされたらファイルを開きます。
 
@@ -106,5 +106,5 @@ TLS/SSL 証明書から公開キー .cer ファイルをエクスポートしま
 
 ## <a name="next-steps"></a>次のステップ
 
-Base-64 エンコード X.509(.CER) 形式の認証証明書/信頼されたルート証明書を入手しました。 これをアプリケーション ゲートウェイに追加して、エンド ツー エンド TLS 暗号化に対してバックエンド サーバーをホワイトリストに登録できます。 [Application Gateway での PowerShell を使用したエンド ツー エンド TLS の構成](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)に関する記事を参照してください。
+Base-64 エンコード X.509(.CER) 形式の認証証明書/信頼されたルート証明書を入手しました。 これをアプリケーション ゲートウェイに追加して、エンド ツー エンド TLS 暗号化に対してバックエンド サーバーを許可できます。 [Application Gateway での PowerShell を使用したエンド ツー エンド TLS の構成](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)に関する記事を参照してください。
 

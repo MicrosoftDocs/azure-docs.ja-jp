@@ -1,19 +1,14 @@
 ---
 title: トピックとイベント サブスクリプションの監視 - Azure Event Grid IoT Edge | Microsoft Docs
 description: トピックとイベント サブスクリプションを監視する
-author: banisadr
-ms.author: babanisa
-ms.reviewer: spelluru
-ms.date: 01/09/2020
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: ce7c92f121fb458d528d63d0af0aad025b377386
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d230be4f74abd61ad7b7f0fdb3facb32ee63da73
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77086677"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171535"
 ---
 # <a name="monitor-topics-and-event-subscriptions"></a>トピックとイベント サブスクリプションを監視する
 

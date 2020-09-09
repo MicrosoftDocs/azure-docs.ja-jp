@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 507afad294e8233ea4de4130795f29925870fcdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9d0bfdf4719b4c3a92a0632a1edda63324d700e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74888055"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072030"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure Media Services の Fragmented MP4 ライブ インジェスト仕様 
 
@@ -48,7 +48,7 @@ Azure Media Services にライブ インジェストを適用する特殊形式�
 1. [1] のセクション 3.3.2 では、**StreamManifestBox** と呼ばれるオプションのボックスをライブ インジェストに定義します。 Azure ロード バランサーのルーティング ロジックにより、このボックスの使用は非推奨になりました。 このボックスは Media Services へのインジェスト時に存在すべきではありません。 このボックスが存在しても、Media Services は何も行わずに無視します。
 1. [1] の 3.2.3.2 で定義された **TrackFragmentExtendedHeaderBox** ボックスは、各フラグメントに存在しなければなりません。
 1. **TrackFragmentExtendedHeaderBox**ボックスのバージョン 2 は、複数のデータセンターで同一の URL を使用するメディア セグメントを生成するために使用する必要があります。 フラグメントのインデックス フィールドは、Apple HLS や インデックス ベースの MPEG DASH などのインデックス ベースのストリーミング形式のデータセンター間のフェールオーバーで必要です。 データセンター間のフェールオーバーを有効にするには、フラグメントのインデックスを複数のエンコーダー間で同期しなければなりません。また、エンコーダーが再起動または失敗した場合でも、連続するメディア フラグメントごとにフラグメントのインデックスを 1 ずつ増やさなければなりません。
-1. [1] のセクション 3.3.6 では、チャネルに EOS (ストリームの終わり) を示すためにライブ インジェストの最後に送信される場合がある、**MovieFragmentRandomAccessBox** (**mfra**) というボックスを定義します。 Media Services のインジェスト ロジックにより、EOS (ストリームの終わり) の使用は非推奨になりました。ライブ インジェストの **mfra** ボックスを送信すべきではありません。 送信されても、Media Services は何も行わずに無視します。 取り込みポイントの状態をリセットするには、[Channel のリセット](https://docs.microsoft.com/rest/api/media/operations/channel#reset_channels)の使用をお勧めします。 また、プレゼンテーションとストリームを終了するには、[Program の停止](https://msdn.microsoft.com/library/azure/dn783463.aspx#stop_programs)の使用をお勧めします。
+1. [1] のセクション 3.3.6 では、チャネルに EOS (ストリームの終わり) を示すためにライブ インジェストの最後に送信される場合がある、**MovieFragmentRandomAccessBox** (**mfra**) というボックスを定義します。 Media Services のインジェスト ロジックにより、EOS (ストリームの終わり) の使用は非推奨になりました。ライブ インジェストの **mfra** ボックスを送信すべきではありません。 送信されても、Media Services は何も行わずに無視します。 取り込みポイントの状態をリセットするには、[Channel のリセット](/rest/api/media/operations/channel#reset_channels)の使用をお勧めします。 また、プレゼンテーションとストリームを終了するには、[Program の停止](/rest/api/media/operations/program#stop_programs)の使用をお勧めします。
 1. MP4 フラグメントの継続時間は、クライアント マニフェストのサイズを小さくするために定数にする必要があります。 MP4 フラグメントの継続時間を定数にすることで、繰り返しタグの使用によりクライアントのダウンロードのヒューリスティックも改善されます。 整数以外のフレーム レートを補正するため、継続時間は変動する場合があります。
 1. MP4 フラグメントの継続時間は約 2 ～ 6 秒間にする必要があります。
 1. MP4 フラグメントのタイムスタンプとインデックス (**TrackFragmentExtendedHeaderBox** `fragment_ absolute_ time` と `fragment_index`) は昇順で配信される必要があります。 Media Services は、重複フラグメントに対する回復力はありますが、メディア タイムラインに従ってフラグメントの順序を変更するには機能が限定されています。
@@ -56,7 +56,7 @@ Azure Media Services にライブ インジェストを適用する特殊形式�
 ## <a name="4-protocol-format--http"></a>4.プロトコル形式 - HTTP
 Media Services 用 ISO Fragmented MP4 ベースのライブ インジェストは、標準の長期間実行される HTTP POST 要求を使用して、Fragmented MP4 形式でパッケージ化されたエンコード済みメディア データをサービスに送信します。 各 HTTP POST は完全な Fragmented MP4 ビットストリーム ("stream") を送信します。これは、ヘッダー ボックス (**ftyp**、**Live Server Manifest Box**、**moov** ボックス) で開始し、フラグメント (**moof** ボックスと **mdat** ボックス) のシーケンスで継続します。 HTTP POST 要求の URL 構文については、[1] のセクション 9.2 をご覧ください。 POST URL の例は次のとおりです。 
 
-    http://customer.channel.mediaservices.windows.net/ingest.isml/streams(720p)
+`http://customer.channel.mediaservices.windows.net/ingest.isml/streams(720p)`
 
 ### <a name="requirements"></a>必要条件
 要件の詳細を以下に示します。
@@ -70,7 +70,7 @@ Media Services 用 ISO Fragmented MP4 ベースのライブ インジェスト�
 1. ストリームが終了する前に HTTP POST 要求が終了するか、TCP エラーを伴ってタイムアウトが発生する場合、エンコーダーは、新しい接続を使用して新しい POST 要求を発行し、前述の要件に従わなければなりません。 さらに、エンコーダーは、ストリームの各トラックに対する前回の 2 つの MP4 フラグメントを再送信し、メディア タイムラインに不連続性を発生させずに再開しなければなりません。 トラックごとに最後の 2 つの MP4 フラグメントを再送信することで、データが失われることはなくなります。 つまり、オーディオとビデオ トラックの両方が含まれるストリームで現在の POST 要求が失敗した場合、データが失われないように、エンコーダーは再接続して、前回正常に送信されたオーディオ トラックとビデオ トラックの最後の 2 つのフラグメントをぞれぞれ再送信しなければなりません。 エンコーダーは、再接続時に再送するメディア フラグメントの「早送り」バッファーを維持しなければなりません。
 
 ## <a name="5-timescale"></a>5.タイムスケール
-[[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) に関するページでは、**SmoothStreamingMedia** (セクション 2.2.2.1)、**StreamElement** (セクション 2.2.2.3)、**StreamFragmentElement**(セクション 2.2.2.6)、**LiveSMIL** (セクション 2.2.7.3.1) のタイムスケールの使用方法について説明します。 タイムスケールの値が存在しない場合、使用される既定値は 10,000, 000 (10 MHz) です。 その他のタイムスケール値の使用は Smooth Streaming 形式の仕様によってブロックされませんが、ほとんどのエンコーダーの実装ではこの既定値 (10 MHz) を使用して Smooth Streaming のインジェスト データを生成します。 [Azure Media ダイナミック パッケージ](media-services-dynamic-packaging-overview.md)機能により、ビデオ ストリームには 90 kHz、オーディオ ストリームには 44.1 kHz または 48.1 kHz のタイムスケールを使用することをお勧めします。 ストリームによって異なるタイムスケールの値を使用すると、ストリーム レベルのタイムスケールを送信しなければなりません。 詳細については、[[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) に関するページを参照してください。     
+[[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) に関するページでは、**SmoothStreamingMedia** (セクション 2.2.2.1)、**StreamElement** (セクション 2.2.2.3)、**StreamFragmentElement**(セクション 2.2.2.6)、**LiveSMIL** (セクション 2.2.7.3.1) のタイムスケールの使用方法について説明します。 タイムスケールの値が存在しない場合、使用される既定値は 10,000, 000 (10 MHz) です。 その他のタイムスケール値の使用は Smooth Streaming 形式の仕様によってブロックされませんが、ほとんどのエンコーダーの実装ではこの既定値 (10 MHz) を使用して Smooth Streaming のインジェスト データを生成します。 [Azure Media ダイナミック パッケージ](./previous/media-services-dynamic-packaging-overview.md)機能により、ビデオ ストリームには 90 kHz、オーディオ ストリームには 44.1 kHz または 48.1 kHz のタイムスケールを使用することをお勧めします。 ストリームによって異なるタイムスケールの値を使用すると、ストリーム レベルのタイムスケールを送信しなければなりません。 詳細については、[[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) に関するページを参照してください。     
 
 ## <a name="6-definition-of-stream"></a>6.「ストリーム」の定義
 「ストリーム」とは、ライブ プレゼンテーションを構成するためのライブ インジェスト操作の基本単位です。ストリーム フェールオーバーや冗長性シナリオを処理します。 「ストリーム」は、1 つ以上のトラックが含まれる 1 つの固有の Fragmented MP4 ビットストリームとして定義されます。 完全なライブ プレゼンテーションには、ライブ エンコーダーの構成に応じて 1 つ以上のストリームが含まれます。 次の例では、ストリームを使用して完全なライブ プレゼンテーションを構成するさまざまなオプションについて説明します。

@@ -3,18 +3,18 @@ title: Azure Notebooks プレビュー上で Jupyter Notebook をスライドシ
 description: Jupyter ノートブックのスライドショー モードにセルを構成してから、RISE 拡張機能を使ってスライドショーを表示する方法を説明します。
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: 05dd3d9c5580e208ecf6f9e6d762476b0b493a6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2fe337361436ecfc8eabf2855ad633b891db69d8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75647120"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85834048"
 ---
 # <a name="run-a-notebook-slideshow-in-azure-notebooks-preview"></a>Azure Notebooks プレビューでノートブックのスライドショーを実行する
 
-Azure Notebooks は、Jupyter/IPython Slideshow Extension (RISE) を使って事前に構成されており、ノートブックをスライドショーとして直接表示できます。 スライドショー機能では、通常、セルが 1 つずつ大画面での表示に適したフォント サイズで表示され、別個のデモ用コンピューターに切り替えることなく引き続きコードを実行することが可能です。
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Azure Notebooks は、Jupyter/IPython Slideshow Extension (RISE) を使って事前に構成されており、ノートブックをスライドショーとして直接表示できます。 スライドショー機能では、通常、セルが 1 つずつ大画面での表示に適したフォント サイズで表示され、別個のデモ用コンピューターに切り替えることなく引き続きコードを実行することが可能です。
 
 次の画像は、Markdown とコード セルをまとめて確認できる標準的なノートブック ビューを示しています。
 

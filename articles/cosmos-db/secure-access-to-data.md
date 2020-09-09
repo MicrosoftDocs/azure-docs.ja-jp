@@ -6,12 +6,13 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: f62ad6952170f22fe0f94a792a137f991a0e5026
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4714ec9773b98887de483b7353eea9f4416eec19
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208722"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017755"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Azure Cosmos DB のデータへのアクセスをセキュリティで保護する
 
@@ -41,7 +42,7 @@ Cosmos DB アカウント用の 2 つのマスター キーに加えて、2 つ�
 
 プライマリ、セカンダリ、読み取り専用、および読み取り/書き込みのマスター キーは、Azure Portal で取得と再生成を行うことができます。 手順については、「[アクセス キーを表示、コピー、および再生成する](manage-with-cli.md#regenerate-account-key)」を参照してください。
 
-![Azure Portal でのアクセス制御 (IAM) - NoSQL データベースのセキュリティ](./media/secure-access-to-data/nosql-database-security-master-key-portal.png)
+:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="Azure portal でのアクセス制御 (IAM) - NoSQL データベースのセキュリティのデモ":::
 
 ### <a name="key-rotation"></a>キーのローテーション<a id="key-rotation"></a>
 
@@ -53,7 +54,7 @@ Cosmos DB アカウント用の 2 つのマスター キーに加えて、2 つ�
 4. 新しいプライマリ キーがすべてのリソースに対して動作することを検証します。 キーのローテーション プロセスには、Cosmos DB アカウントのサイズに応じて、1 分未満から数時間かかる場合があります。
 5. セカンダリ キーを新しいプライマリ キーに置き換えます。
 
-![Azure Portal でのマスター キーのローテーション - NoSQL データベースのセキュリティ](./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png)
+:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png" alt-text="Azure portal でのマスター キーのローテーション - NoSQL データベースのセキュリティのデモ" border="false":::
 
 ### <a name="code-sample-to-use-a-master-key"></a>マスター キーを使用するコード サンプル
 
@@ -69,6 +70,10 @@ private static readonly string authorizationKey = ConfigurationManager.AppSettin
 
 CosmosClient client = new CosmosClient(endpointUrl, authorizationKey);
 ```
+
+次のコード サンプルは、Azure Cosmos DB アカウントのエンドポイントとマスター キーを使用して、`CosmosClient` オブジェクトのインスタンス化を行う方法を示しています。
+
+:::code language="python" source="~/cosmosdb-python-sdk/sdk/cosmos/azure-cosmos/samples/access_cosmos_with_resource_token.py" id="configureConnectivity":::
 
 ## <a name="resource-tokens"></a>リソース トークン <a id="resource-tokens"></a>
 
@@ -97,9 +102,9 @@ Cosmos DB リソース トークンにより、付与されたアクセス許可
 7. 電話アプリはリソース トークンを引き続き使用し、リソース トークンによって定義されたアクセス許可を使用して、リソース トークンによって許可された間隔で Cosmos DB リソースに直接アクセスすることができます。
 8. リソース トークンの期限が切れると、それ以降の要求は、401 (承認されていない例外) を受け取ります。  この時点で、電話アプリは ID を再度確立し、新しいリソース トークンを要求します。
 
-    ![Azure Cosmos DB リソース トークンのワークフロー](./media/secure-access-to-data/resourcekeyworkflow.png)
+    :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Azure Cosmos DB リソース トークンのワークフロー" border="false":::
 
-リソース トークンの生成と管理は、ネイティブ Cosmos DB クライアント ライブラリによって処理されます。ただし、REST を使用する場合は、要求/認証ヘッダーを構築する必要があります。 REST 用の認証ヘッダーの作成については、[Cosmos DB リソースのアクセス制御](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources)に関するページや、[.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/AuthorizationHelper.cs) または [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts) のソース コードを参照してください。
+リソース トークンの生成と管理は、ネイティブ Cosmos DB クライアント ライブラリによって処理されます。ただし、REST を使用する場合は、要求/認証ヘッダーを構築する必要があります。 REST 用の認証ヘッダーの作成については、[Cosmos DB リソースのアクセス制御](/rest/api/cosmos-db/access-control-on-cosmosdb-resources)に関するページや、[.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/AuthorizationHelper.cs) または [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts) のソース コードを参照してください。
 
 ブローカー リソース トークンを生成するために使用する中間層サービスの例については、[ResourceTokenBroker アプリ](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers)に関するページを参照してください。
 
@@ -176,5 +181,5 @@ Azure Cosmos DB では、データベースまたはコレクションにある�
 ## <a name="next-steps"></a>次のステップ
 
 - Cosmos データベースのセキュリティの詳細については、[Cosmos DB: データベースのセキュリティ](database-security.md)に関する記事を参照してください。
-- Azure Cosmos DB 認証トークンを作成する方法については、[Azure Cosmos DB リソースのアクセス制御](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources)に関するページをご覧ください。
+- Azure Cosmos DB 認証トークンを作成する方法については、[Azure Cosmos DB リソースのアクセス制御](/rest/api/cosmos-db/access-control-on-cosmosdb-resources)に関するページをご覧ください。
 - ユーザーとアクセス許可を使用したユーザー管理サンプルについては、[.NET SDK v3 ユーザー管理サンプル](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement/UserManagementProgram.cs)を参照してください

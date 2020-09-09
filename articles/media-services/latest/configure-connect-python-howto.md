@@ -3,24 +3,27 @@ title: Azure Media Services v3 API に接続する - Python
 description: この記事では、Python を使用して Media Services v3 API に接続する方法を示します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 04/15/2019
-ms.author: juliako
-ms.openlocfilehash: 98a8cdf4120cf56184eb5735249640e3423acdf4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: devx-track-python
+ms.openlocfilehash: 68620b644ef85f7b627b7b6380c16959b25299f0
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74888463"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297333"
 ---
 # <a name="connect-to-media-services-v3-api---python"></a>Media Services v3 API に接続する - Python
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 この記事では、サービス プリンシパルによるサインイン方式を使用して Azure Media Services v3 Python SDK に接続する方法を説明します。
 
@@ -28,8 +31,8 @@ ms.locfileid: "74888463"
 
 - [python.org](https://www.python.org/downloads/) から Python をダウンロードします
 - `PATH` 環境変数を必ず設定します
-- [Media Services アカウントを作成する](create-account-cli-how-to.md) リソース グループ名と Media Services アカウント名を覚えておいてください。
-- [API へのアクセス](access-api-cli-how-to.md)に関するトピックの手順を実行します。 後の手順で必要になるので、サブスクリプション ID、アプリケーション ID (クライアント ID)、認証キー (シークレット)、テナント ID を控えておきます。
+- [Media Services アカウントを作成する](./create-account-howto.md) リソース グループ名と Media Services アカウント名を覚えておいてください。
+- [API へのアクセス](./access-api-howto.md)に関するトピックの手順を実行します。 後の手順で必要になるので、サブスクリプション ID、アプリケーション ID (クライアント ID)、認証キー (シークレット)、テナント ID を控えておきます。
 
 > [!IMPORTANT]
 > [命名規則](media-services-apis-overview.md#naming-conventions)を確認してください。
@@ -54,7 +57,7 @@ pip3 install azure-mgmt-media==1.1.1
 1. 使い慣れたエディターでファイルを開きます
 1. 次のコードをファイルに追加します。 このコードによって、必要なモジュールがインポートされ、Media Services への接続に必要な Active Directory 資格情報オブジェクトが作成されます。
 
-      変数の値を、[API へのアクセス](access-api-cli-how-to.md)の手順で取得した値に設定します
+      変数の値を、[API へのアクセス](./access-api-howto.md)の手順で取得した値に設定します
 
       ```
       import adal

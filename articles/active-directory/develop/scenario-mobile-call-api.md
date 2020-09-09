@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 05/18/2020
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 28f57c5657ce2f8537a654a7f67ed4481fab2c91
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 781406a1bfd253f0ab3eb333f23917be4aeb3ba9
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80882694"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771742"
 ---
 # <a name="call-a-web-api-from-a-mobile-app"></a>モバイル アプリから Web API を呼び出す
 
@@ -138,7 +138,7 @@ result = await app.AcquireTokenSilent("scopeApi2")
 対話は、次の場合に必要です。
 
 - ユーザーが最初の API については同意したが、より多くのスコープについて同意する必要が生じた。 この場合は、増分同意を使用します。
-- 最初の API は多要素認証を必要としなかったが、次の API は多要素認証を必要とする。
+- 最初の API は[多要素認証](../authentication/concept-mfa-howitworks.md)を必要としなかったが、次の API は多要素認証を必要とする。
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")

@@ -6,19 +6,16 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: ab5c16995a2d2bad6e44f0f9d1187ca3d66be1b6
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 5e811e487856ea38f96b669ccb12cabda655a8cd
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81114263"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852125"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>自主的移行ツールを使用してクラシック アラート ルールを移行する
 
-[以前発表された](monitoring-classic-retirement.md)ように、Azure Monitor のクラシック アラートは 2019 年 9 月に廃止される予定です (当初は 2019 年 7 月に廃止予定でした)。 Azure portal には、クラシック アラート ルールを使用しているお客様と移行を自分でトリガーしたいと思っているお客様を対象に、移行ツールが用意されています。 この記事では、2019 年 9 月に自動移行が始まる前に、移行ツールを使用してクラシック アラート ルールを自主的に移行する方法について説明します。
-
-> [!NOTE]
-> 移行ツールの展開が遅れたことで、クラシック アラート移行の提供終了日が、最初に発表された 2019 年 6 月 30 日から [2019 年 8 月 31 日に延長](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/)されました。
+[以前に発表された](monitoring-classic-retirement.md)ように、Azure Monitor のクラシック アラートは廃止されましたが、新しいアラートがまだサポートされていないリソースでは、引き続き制限付きで使用できます。 クラシック アラート ルールを使用しているお客様と、移行を自分でトリガーしたいと考えているお客様を対象に、Azure portal では移行ツールが用意されていました。 この記事では、その移行ツールを使用する方法について説明します。このツールは、その他の発表が保留されているアラートにも使用されます。
 
 ## <a name="benefits-of-new-alerts"></a>新しいアラートの利点
 
@@ -37,7 +34,7 @@ ms.locfileid: "81114263"
 
 - 新しいアラート ルールを作成および管理するための通知ペイロード形式と API は両方とも、クラシック アラート ルールの場合とは異なります。より多くの機能がサポートされているからです。 [移行のための準備を行う方法について](alerts-prepare-migration.md)。
 
-- 一部のクラシック アラート ルールは、ツールを使用して移行できません。 [移行することができないルールと、それらの対処方法について](alerts-understand-migration.md#classic-alert-rules-that-will-not-be-migrated)。
+- 一部のクラシック アラート ルールは、ツールを使用して移行できません。 [移行することができないルールと、それらの対処方法について](alerts-understand-migration.md#manually-migrating-classic-alerts-to-newer-alerts)。
 
     > [!NOTE]
     > 移行プロセスは、ご利用のクラシック アラート ルールの評価に影響ありません。 移行されて新しいアラート ルールが有効になるまで、それらは引き続き実行され、アラートを送信します。

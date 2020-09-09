@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: curtand
 ms.reviewer: yukarppa
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84e081f62949f4cf3f7ae375b2c60ee5b032d974
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: cbbe37938249ee02c7deb4081a96aa1be2d8b7cb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115649"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84728506"
 ---
 # <a name="validate-a-dynamic-group-membership-rule-preview-in-azure-active-directory"></a>Azure Active Directory で動的グループ メンバーシップ ルールを検証する (プレビュー)
 

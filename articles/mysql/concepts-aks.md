@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 9e020d34b6cfb8117ccff1114cc938c966126b77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/14/2020
+ms.openlocfilehash: 712bf702ba355ec3b2ca6184c33da8489f8a178e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79537280"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519866"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>Azure Kubernetes Service と Azure Database for MySQL を接続する
 
@@ -40,12 +40,6 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query "nodeRe
 ```azurecli
 az network nic list --resource-group nodeResourceGroup -o table
 ```
-
-## <a name="open-service-broker-for-azure"></a>Open Service Broker for Azure 
-[Open Service Broker for Azure](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (OSBA) を使用すると、Kubernetes または Cloud Foundry から Azure サービスを直接プロビジョニングできます。 これは Azure 用の [Open Service Broker API](https://www.openservicebrokerapi.org/) 実装です。
-
-OSBA を使用すると、Azure Database for MySQL サーバーを作成し、Kubernetes のネイティブ言語で AKS クラスターにそれをバインドできます。 OSBA と Azure Database for MySQL を併用する方法については、[OSBA GitHub ページ](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/mysql.md)で確認できます。 
-
 
 
 ## <a name="next-steps"></a>次のステップ

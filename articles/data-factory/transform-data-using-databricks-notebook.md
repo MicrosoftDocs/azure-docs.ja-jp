@@ -12,10 +12,10 @@ ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 03/12/2018
 ms.openlocfilehash: e63180a3c4b8de06ab9e26afc8fff322188291cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "81418985"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Azure Data Factory で Databricks Notebook アクティビティを使用して Databricks ノートブックを実行する
@@ -54,7 +54,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1.  **[新しいデータ ファクトリ]** ウィンドウで、 **[名前]** に「**ADFTutorialDataFactory**」と入力します。
 
-    Azure データ ファクトリの名前は *グローバルに一意*にする必要があります。 次のエラーが発生した場合は、データ ファクトリの名前を変更してください ( **\<yourname\>ADFTutorialDataFactory** など)。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](https://docs.microsoft.com/azure/data-factory/naming-rules)に関する記事を参照してください。
+    Azure データ ファクトリの名前は *グローバルに一意*にする必要があります。 次のエラーが発生した場合は、データ ファクトリの名前を変更してください (たとえば、 **\<yourname\>ADFTutorialDataFactory** を使用します)。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](https://docs.microsoft.com/azure/data-factory/naming-rules)に関する記事を参照してください。
 
     ![新しいデータ ファクトリの名前を指定する](media/transform-data-using-databricks-notebook/new-azure-data-factory.png)
 

@@ -6,19 +6,19 @@ ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: sample
-ms.custom: sample, mvc
+ms.custom: sample, mvc, devx-track-azurecli
 ms.date: 5/6/2019
-ms.openlocfilehash: 154dc8b8569162992f4fc231caee2a43682db456
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: aca37ea3d3d1509a6866d4febcdc9a4eb3f9bdb4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74774722"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496544"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 単一サーバーの Azure CLI サンプル
 次の表には、Azure Database for PostgreSQL の Azure CLI スクリプトのサンプルへのリンクが含まれています。
 
-| |  |
+| サンプル リンク | 説明 |
 |---|---|
 |**サーバーの作成**||
 | [サーバーとファイアウォール規則の作成](scripts/sample-create-server-and-firewall-rule.md?toc=%2fcli%2fazure%2ftoc.json) | Azure Database for PostgreSQL サーバーを作成して、サーバー レベルのファイアウォール規則を構成する Azure CLI スクリプトです。 |

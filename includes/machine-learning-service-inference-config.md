@@ -4,12 +4,12 @@ ms.service: machine-learning
 ms.topic: include
 ms.date: 01/28/2020
 ms.author: larryfr
-ms.openlocfilehash: 5102e8f75da14c58e948e81aaa418539dd18869a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f500df6a592769928470d22468ff2fdff18293a5
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80159415"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88748774"
 ---
 `inferenceconfig.json` ドキュメント内のエントリは、[InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) クラスのパラメーターにマップされます。 次の表は、JSON ドキュメントのエントリとメソッド用パラメーターの間のマッピングについてまとめたものです。
 
@@ -49,7 +49,7 @@ Azure Machine Learning [環境](https://docs.microsoft.com/python/api/azureml-co
                         "pip": [
                             "azureml-defaults",
                             "azureml-telemetry",
-                            "scikit-learn",
+                            "scikit-learn==0.22.1",
                             "inference-schema[numpy-support]"
                         ]
                     }

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/19/2020
-ms.openlocfilehash: 9606768288cc74afc24491149eb471944f45e2dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 08/04/2020
+ms.openlocfilehash: 94a2c9bf3f65897809edaf94fc01b442e02b46d9
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77921166"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553004"
 ---
 # <a name="module-k-means-clustering"></a>モジュール:K-Means クラスタリング
 
@@ -62,7 +62,7 @@ K-Means は、最も単純であり、よく知られている "*教師なし*" 
   
 3.  **[Number of centroids]\(重心の数\)** には、アルゴリズムを開始するクラスターの数を入力します。  
   
-     このモデルは、この数のクラスターを正確に生成することが保証されていません。 このアルゴリズムは、この数のデータ ポイントから開始し、反復処理で最適な構成を見つけます。  
+     このモデルは、この数のクラスターを正確に生成することが保証されていません。 このアルゴリズムは、この数のデータ ポイントから開始し、反復処理で最適な構成を見つけます。 [sklearn のソース コード](https://github.com/scikit-learn/scikit-learn/blob/fd237278e/sklearn/cluster/_kmeans.py#L1069)を参照できます。
   
 4.  プロパティ **[Initialization]\(初期化\)** は、初期クラスター構成の定義に使用されるアルゴリズムを指定するために使用されます。  
   

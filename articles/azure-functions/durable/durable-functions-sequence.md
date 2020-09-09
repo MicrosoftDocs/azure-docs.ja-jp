@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/29/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8da4ce7801cc98f9ffb32eb7b506eaf1ccd877dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b117fca23b26919f3c404dd32ba64c0c89d66ae7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77562065"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033566"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Durable Functions での関数チェーン - Hello シーケンス サンプル
 
@@ -60,7 +60,7 @@ Visual Studio Code または Azure Portal を開発に使用する場合は、�
 
 すべての JavaScript オーケストレーション関数に、[`durable-functions` module](https://www.npmjs.com/package/durable-functions) モジュールが含まれている必要があります。 それは、Durable Functions を JavaScript で記述することができるライブラリです。 オーケストレーション関数と他の JavaScript 関数には、次の 3 つの大きな違いがあります。
 
-1. この関数は [ジェネレーター関数](https://docs.microsoft.com/scripting/javascript/advanced/iterators-and-generators-javascript) です。
+1. この関数は [ジェネレーター関数](/scripting/javascript/advanced/iterators-and-generators-javascript) です。
 2. この関数は、`durable-functions` モジュールの `orchestrator` メソッドの呼び出しにラップされます (ここでは `df`)。
 3. この関数は同期的であることが必要です。 "orchestrator" メソッドは呼び出し元の "context.done" を処理するため、この関数は単に "制御を戻す" 必要があります。
 

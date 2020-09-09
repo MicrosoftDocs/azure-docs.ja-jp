@@ -4,12 +4,12 @@ description: Azure Service Fabric アプリケーションのリバース プロ
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pepogors
-ms.openlocfilehash: 6e3edb0fe238dcaddb7d99cc68660591f081581c
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: f8a9025a50b2815f0e6030e7baf317b261c8c462
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80476672"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256347"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric でリバース プロキシを設定して構成する
 オプションの Azure Service Fabric サービスであるリバース プロキシは、Service Fabric クラスターで実行されているマイクロサービスが HTTP エンドポイントのある他のサービスを検出してそのサービスと通信するのに役立ちます。 詳しくは、「[Azure Service Fabric のリバース プロキシ](service-fabric-reverseproxy.md)」をご覧ください。 この記事では、クラスターでリバース プロキシを設定して構成する方法を示します。 
@@ -37,7 +37,7 @@ Azure のクラスターでは、Azure Resource Manager テンプレートを使
 
 Azure クラスター用のセキュリティ保護されたリバース プロキシの構成に役立つ Resource Manager テンプレートのサンプルは、GitHub の[セキュリティ保護されたリバース プロキシのサンプル テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample)のページにあります。 証明書によるセキュリティ保護されたリバース プロキシの構成と証明書のロールオーバーの処理の手順とそれに使用するテンプレートについては、README の「[Configure HTTPS Reverse Proxy in a secure cluster](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample/README.md#configure-https-reverse-proxy-in-a-secure-cluster)」(セキュリティ保護されたクラスターで HTTPS リバース プロキシを構成する) をご覧ください。
 
-既存のクラスターの場合、[Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template)、[PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell)、または [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli) を使用して、クラスターのリソース グループの Resource Manager テンプレートをエクスポートすることができます。
+既存のクラスターの場合、[Azure portal](../azure-resource-manager/templates/export-template-portal.md)、[PowerShell](../azure-resource-manager/management/manage-resources-powershell.md)、または [Azure CLI](../azure-resource-manager/management/manage-resources-cli.md) を使用して、クラスターのリソース グループの Resource Manager テンプレートをエクスポートすることができます。
 
 Resource Manager テンプレートを用意した後、次の手順でリバース プロキシを有効にできます。
 
@@ -52,7 +52,7 @@ Resource Manager テンプレートを用意した後、次の手順でリバー
         }
     },
     ```
-2. [**Microsoft.ServiceFabric/clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) の[リソースの種類セクション](../azure-resource-manager/templates/template-syntax.md)で、nodeType オブジェクトごとにポートを指定します。
+2. [**Microsoft.ServiceFabric/clusters**](/azure/templates/microsoft.servicefabric/clusters) の[リソースの種類セクション](../azure-resource-manager/templates/template-syntax.md)で、nodeType オブジェクトごとにポートを指定します。
 
     ポートは、reverseProxyEndpointPort というパラメーター名で識別されます。
 
@@ -74,7 +74,7 @@ Resource Manager テンプレートを用意した後、次の手順でリバー
         ...
     }
     ```
-3. リバース プロキシのポートで TLS/SSL 証明書を構成するには、**Microsoft.ServiceFabric/clusters** の[リソースの種類セクション](../resource-group-authoring-templates.md)で ***reverseProxyCertificate*** プロパティに証明書を追加します。
+3. リバース プロキシのポートで TLS/SSL 証明書を構成するには、**Microsoft.ServiceFabric/clusters** の[リソースの種類セクション](../azure-resource-manager/templates/template-syntax.md)で ***reverseProxyCertificate*** プロパティに証明書を追加します。
 
     ```json
     {
@@ -98,7 +98,7 @@ Resource Manager テンプレートを用意した後、次の手順でリバー
     ```
 
 ### <a name="supporting-a-reverse-proxy-certificate-thats-different-from-the-cluster-certificate"></a>クラスター証明書とは異なるリバース プロキシ証明書のサポート
- リバース プロキシ証明書が、クラスターをセキュリティで保護する証明書とは異なる場合、前に指定した証明書を仮想マシンにインストールし、Service Fabric がアクセスできるようにアクセス制御リスト (ACL) に追加する必要があります。 これは、[**Microsoft.Compute/virtualMachineScaleSets**](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets) の[リソースの種類セクション](../resource-group-authoring-templates.md)で実行できます。 インストールで、証明書を osProfile に追加します。 テンプレートの extensions セクションで、ACL 内の証明書を更新できます。
+ リバース プロキシ証明書が、クラスターをセキュリティで保護する証明書とは異なる場合、前に指定した証明書を仮想マシンにインストールし、Service Fabric がアクセスできるようにアクセス制御リスト (ACL) に追加する必要があります。 これは、[**Microsoft.Compute/virtualMachineScaleSets**](/azure/templates/microsoft.compute/virtualmachinescalesets) の[リソースの種類セクション](../azure-resource-manager/templates/template-syntax.md)で実行できます。 インストールで、証明書を osProfile に追加します。 テンプレートの extensions セクションで、ACL 内の証明書を更新できます。
 
   ```json
   {
@@ -252,50 +252,50 @@ Azure クラスターの外部からリバース プロキシのアドレス指�
 
 ### <a name="expose-the-reverse-proxy-via-resource-manager-templates"></a>Resource Manager テンプレートを使用してリバース プロキシを公開する
 
-次の JSON では、「[Azure Resource Manager テンプレートでリバース プロキシを有効にする](#enable-reverse-proxy-via-azure-resource-manager-templates)」で使われているものと同じテンプレートを参照します。 Resource Manager テンプレートを作成する方法または既存のクラスターのテンプレートをエクスポートする方法については、そちらのセクションをご覧ください。  [**Microsoft.Network/loadBalancers**](https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers) の[リソースの種類セクション](../resource-group-authoring-templates.md)を変更します。
+次の JSON では、「[Azure Resource Manager テンプレートでリバース プロキシを有効にする](#enable-reverse-proxy-via-azure-resource-manager-templates)」で使われているものと同じテンプレートを参照します。 Resource Manager テンプレートを作成する方法または既存のクラスターのテンプレートをエクスポートする方法については、そちらのセクションをご覧ください。  [**Microsoft.Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers) の[リソースの種類セクション](../azure-resource-manager/templates/template-syntax.md)を変更します。
 
-    ```json
-    {
-        "apiVersion": "[variables('lbApiVersion')]",
-        "type": "Microsoft.Network/loadBalancers",
+```json
+{
+    "apiVersion": "[variables('lbApiVersion')]",
+    "type": "Microsoft.Network/loadBalancers",
+    ...
+    ...
+    "loadBalancingRules": [
         ...
-        ...
-        "loadBalancingRules": [
-            ...
-            {
-                "name": "LBSFReverseProxyRule",
-                "properties": {
-                    "backendAddressPool": {
-                        "id": "[variables('lbPoolID0')]"
-                    },
-                    "backendPort": "[parameters('SFReverseProxyPort')]",
-                    "enableFloatingIP": "false",
-                    "frontendIPConfiguration": {
-                        "id": "[variables('lbIPConfig0')]"
-                    },
-                    "frontendPort": "[parameters('SFReverseProxyPort')]",
-                    "idleTimeoutInMinutes": "5",
-                    "probe": {
-                        "id": "[concat(variables('lbID0'),'/probes/SFReverseProxyProbe')]"
-                    },
-                    "protocol": "tcp"
-                }
+        {
+            "name": "LBSFReverseProxyRule",
+            "properties": {
+                "backendAddressPool": {
+                    "id": "[variables('lbPoolID0')]"
+                },
+                "backendPort": "[parameters('SFReverseProxyPort')]",
+                "enableFloatingIP": "false",
+                "frontendIPConfiguration": {
+                    "id": "[variables('lbIPConfig0')]"
+                },
+                "frontendPort": "[parameters('SFReverseProxyPort')]",
+                "idleTimeoutInMinutes": "5",
+                "probe": {
+                    "id": "[concat(variables('lbID0'),'/probes/SFReverseProxyProbe')]"
+                },
+                "protocol": "tcp"
             }
-        ],
-        "probes": [
-            ...
-            {
-                "name": "SFReverseProxyProbe",
-                "properties": {
-                    "intervalInSeconds": 5,
-                    "numberOfProbes": 2,
-                    "port":     "[parameters('SFReverseProxyPort')]",
-                    "protocol": "tcp"
-                }
-            }  
-        ]
-    }
-    ```
+        }
+    ],
+    "probes": [
+        ...
+        {
+            "name": "SFReverseProxyProbe",
+            "properties": {
+                "intervalInSeconds": 5,
+                "numberOfProbes": 2,
+                "port":     "[parameters('SFReverseProxyPort')]",
+                "protocol": "tcp"
+            }
+        }  
+    ]
+}
+```
 
 
 ## <a name="customize-reverse-proxy-behavior-using-fabric-settings"></a>ファブリックの設定を使用してリバース プロキシの動作をカスタマイズする

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 06/03/2019
+ms.date: 07/22/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: e6b752eab3f6a8f40fad8b2f947a82f86a8ccfe5
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c8f64bc81afb941e13dd310a7efd9432639ec281
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652067"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131839"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge"></a>チュートリアル:Azure Stack Edge の配置を準備する  
 
@@ -57,32 +57,35 @@ Azure Stack Edge を配置するには、以下の順序どおりにチュート
 
 * Azure Stack Edge/Data Box Gateway、IoT Hub、および Azure Storage のリソースに対してリソース グループ レベルで所有者または共同作成者のアクセス許可を持っていること。
 
-  * Azure Stack Edge/Data Box Gateway のリソースを作成するには、リソース グループ レベルにスコープ指定された共同作成者 (以上) のアクセス許可を持っている必要があります。 また、`Microsoft.DataBoxEdge` プロバイダーが登録されていることも確認する必要があります。 登録方法の詳細については、「[リソース プロバイダーの登録](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)」をお読みください。
+  * 共同作成者アクセス権を付与するには、サブスクリプション レベルで**所有者**である必要があります。 他のユーザーに共同作成者アクセス権を付与するには、Azure portal で、 **[すべてのサービス]**  >  **[サブスクリプション]**  >  **[アクセス制御 (IAM)]**  >  **[+ 追加]**  >  **[ロールの割り当ての追加]** に移動します。 詳細については、[Azure portal を使用して Azure リソースへのアクセス権をユーザーに付与する](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)」を参照してください。
+
+  * Azure Stack Edge/Data Box Gateway のリソースを作成するには、リソース グループ レベルにスコープ指定された共同作成者 (以上) のアクセス許可を持っている必要があります。 また、`Microsoft.DataBoxEdge` リソースプロバイダーが登録されていることを確認する必要もあります。 リソースプロバイダーの登録方法については、「[リソースプロバイダーを登録する](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)」を参照してください。
   * IoT Hub リソースを作成するには、Microsoft.Devices プロバイダーが登録されていることを確認します。 登録方法の詳細については、「[リソース プロバイダーの登録](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)」をお読みください。
   * Storage アカウントのリソースを作成するには、ここでも、リソース グループ レベルにスコープ指定された共同作成者以上のアクセス許可が必要になります。 Azure Storage は、既定で、登録されたリソース プロバイターになっています。
 * Azure Active Directory Graph API に対して管理者またはユーザーのアクセス権を持っていること。 詳細については、[Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-) に関するページをご覧ください。
 * アクセスの資格情報を持つ Microsoft Azure のストレージ アカウントがあること。
+* システム管理者が設定した Azure ポリシーによってブロックされていない。 ポリシーの詳細については、「[クイックスタート: 準拠していないリソースを識別するためのポリシー割り当てを作成する](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal)」を参照してください。
 
 ### <a name="for-the-azure-stack-edge-device"></a>Azure Stack Edge デバイスの前提条件
 
 物理デバイスを配置する前に次の点を確認します。
 
-- 配送パッケージに同梱されている安全性情報を確認済みであること。
-- デバイスをラック マウントするため、データセンターの標準 19 インチ ラックに空いている 1U スロットが 1 つあること。
-- デバイスを安全に置くことができる、平らで安定した水平の作業面が用意されていること。
-- デバイスをセットアップする予定の場所に、独立した電源からの標準 AC 電源、または無停電電源装置 (UPS) を備えたラック配電ユニット (PDU) があること。
-- 物理デバイスにアクセスできること。
+* 配送パッケージに同梱されている安全性情報を確認済みであること。
+* デバイスをラック マウントするため、データセンターの標準 19 インチ ラックに空いている 1U スロットが 1 つあること。
+* デバイスを安全に置くことができる、平らで安定した水平の作業面が用意されていること。
+* デバイスをセットアップする予定の場所に、独立した電源からの標準 AC 電源、または無停電電源装置 (UPS) を備えたラック配電ユニット (PDU) があること。
+* 物理デバイスにアクセスできること。
 
 ### <a name="for-the-datacenter-network"></a>データセンター ネットワークの前提条件
 
 開始する前に次の点を確認します。
 
-- Azure Stack Edge デバイスのネットワーク要件に従ってデータセンターのネットワークが構成されていること。 詳しくは、「[Azure Stack Edge のシステム要件](azure-stack-edge-system-requirements.md)」を参照してください。
+* Azure Stack Edge デバイスのネットワーク要件に従ってデータセンターのネットワークが構成されていること。 詳しくは、「[Azure Stack Edge のシステム要件](azure-stack-edge-system-requirements.md)」を参照してください。
 
-- Azure Stack Edge の通常の動作条件下における帯域幅は次のとおりです。
+* Azure Stack Edge の通常の動作条件下における帯域幅は次のとおりです。
 
-    - デバイスが常に最新の状態に保たれるように最低 10 Mbps のダウンロード帯域幅。
-    - ファイル転送用に最低 20 Mbps の専用のアップロード/ダウンロード帯域幅。
+  * デバイスが常に最新の状態に保たれるように最低 10 Mbps のダウンロード帯域幅。
+  * ファイル転送用に最低 20 Mbps の専用のアップロード/ダウンロード帯域幅。
 
 ## <a name="create-a-new-resource"></a>新しいリソースを作成
 
@@ -106,7 +109,7 @@ Azure Stack Edge リソースを作成するには、Azure portal で次の手�
 
 3. **[基本]** タブで、次の**プロジェクト情報**を入力または選択します。
     
-    |設定  |値  |
+    |設定  |[値]  |
     |---------|---------|
     |サブスクリプション    |事前に選択した内容に応じて自動的に設定されます。 サブスクリプションは、課金アカウントにリンクされます。 |
     |Resource group  |既存のグループを選択するか、新しいグループを作成します。<br>Azure リソース グループの詳細については[こちら](../azure-resource-manager/resource-group-overview.md)をご覧ください。     |
@@ -173,6 +176,3 @@ Azure Stack Edge リソースが起動して実行中になったら、アクテ
 
 > [!div class="nextstepaction"]
 > [Azure Stack Edge を設置する](./azure-stack-edge-deploy-install.md)
-
-
-

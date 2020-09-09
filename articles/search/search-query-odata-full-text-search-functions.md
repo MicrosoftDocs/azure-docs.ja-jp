@@ -19,19 +19,19 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 06eb29f2f3245d3f4fd047fb86b2b57fb1f0989e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 78f9e4d8fa80fdf74bdb5cd79f4489d12696fcc2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72793350"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935791"
 ---
 # <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>Azure Cognitive Search での OData フルテキスト検索関数 - `search.ismatch` および `search.ismatchscoring`
 
-Azure Cognitive Search では、`search.ismatch` および `search.ismatchscoring` 関数を介して [OData フィルター式](query-odata-filter-orderby-syntax.md)のコンテキストでのフルテキスト検索がサポートされています。 これらの関数を使用すると、[Search API](https://docs.microsoft.com/rest/api/searchservice/search-documents) の最上位の `search` パラメーターを使用しただけでは不可能な方法で、フルテキスト検索と厳密なブール値フィルタリングを組み合わせることができます。
+Azure Cognitive Search では、`search.ismatch` および `search.ismatchscoring` 関数を介して [OData フィルター式](query-odata-filter-orderby-syntax.md)のコンテキストでのフルテキスト検索がサポートされています。 これらの関数を使用すると、[Search API](/rest/api/searchservice/search-documents) の最上位の `search` パラメーターを使用しただけでは不可能な方法で、フルテキスト検索と厳密なブール値フィルタリングを組み合わせることができます。
 
 > [!NOTE]
-> `search.ismatch` および `search.ismatchscoring` 関数は、[Search API](https://docs.microsoft.com/rest/api/searchservice/search-documents) のフィルター内でのみサポートされます。 これらは、[Suggest](https://docs.microsoft.com/rest/api/searchservice/suggestions) API または [Autocomplete](https://docs.microsoft.com/rest/api/searchservice/autocomplete) API ではサポートされていません。
+> `search.ismatch` および `search.ismatchscoring` 関数は、[Search API](/rest/api/searchservice/search-documents) のフィルター内でのみサポートされます。 これらは、[Suggest](/rest/api/searchservice/suggestions) API または [Autocomplete](/rest/api/searchservice/autocomplete) API ではサポートされていません。
 
 ## <a name="syntax"></a>構文
 
@@ -76,7 +76,7 @@ search_mode ::= "'any'" | "'all'"
 | `queryType` | `Edm.String` | `'simple'` または `'full'`。既定値は `'simple'` です。 `search` パラメーターで使用されたクエリ言語を指定します。 |
 | `searchMode` | `Edm.String` | `'all'` または `'any'`。既定値は `'any'` です。 ドキュメントを一致としてカウントするために、`search` パラメーター内の任意の検索語句またはすべての検索語句が一致する必要があるかどうかが示されます。 `search` パラメーター内で [Lucene ブール演算子](query-lucene-syntax.md#bkmk_boolean)を使用すると、それらはこのパラメーターよりも優先されます。 |
 
-上記のパラメーターはすべて、それに対応する[Search API の検索要求パラメーター](https://docs.microsoft.com/rest/api/searchservice/search-documents)に等しくなります。
+上記のパラメーターはすべて、それに対応する[Search API の検索要求パラメーター](/rest/api/searchservice/search-documents)に等しくなります。
 
 `search.ismatch` 関数からは `Edm.Boolean` 型の値が返されます。このため、ブール[論理演算子](search-query-odata-logical-operators.md)を使用して、それを他のフィルター サブ式と組み合わせることができます。
 
@@ -96,31 +96,41 @@ search_mode ::= "'any'" | "'all'"
 
 ## <a name="examples"></a>例
 
-"waterfront" という言葉の付いたドキュメントを探します。 このフィルターは `search=waterfront` を指定した[検索要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)と同じになります。
+"waterfront" という言葉の付いたドキュメントを探します。 このフィルターは `search=waterfront` を指定した[検索要求](/rest/api/searchservice/search-documents)と同じになります。
 
+```odata-filter-expr
     search.ismatchscoring('waterfront')
+```
 
 "hostel" という言葉を含み、評価が 4 以上のドキュメントを探すか、"motel" という言葉を含み、評価が 5 のドキュメントを探します。 この要求は `search.ismatchscoring` 関数なしでは表現できないことに注意してください。
 
+```odata-filter-expr
     search.ismatchscoring('hostel') and Rating ge 4 or search.ismatchscoring('motel') and Rating eq 5
+```
 
 "luxury" という言葉のないドキュメントを探します。
 
+```odata-filter-expr
     not search.ismatch('luxury')
+```
 
 "ocean view" というフレーズを含むか、評価が 5 のドキュメントを探します。 `search.ismatchscoring` クエリは `HotelName` フィールドと `Rooms/Description` フィールドに対してのみ実行されます。
 
 論理和演算の 2 つ目の句にのみ一致するドキュメントも返されることに注意してください。`Rating` が 5 のホテルです。 式のスコア部分にこれらのドキュメントが一致しなかったことをはっきりさせるため、スコア 0 で返されます。
 
+```odata-filter-expr
     search.ismatchscoring('"ocean view"', 'Rooms/Description,HotelName') or Rating eq 5
+```
 
 "hotel" という言葉と "airport" という言葉がホテルの説明で互いに 5 単語以内にあり、少なくとも一部の部屋で喫煙が許可されていないドキュメントを探します。 このクエリでは、[完全 Lucene クエリ言語](query-lucene-syntax.md)が使用されます。
 
+```odata-filter-expr
     search.ismatch('"hotel airport"~5', 'Description', 'full', 'any') and Rooms/any(room: not room/SmokingAllowed)
+```
 
 ## <a name="next-steps"></a>次のステップ  
 
 - [Azure Cognitive Search のフィルター](search-filters.md)
 - [Azure Cognitive Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)
 - [Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)
-- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)

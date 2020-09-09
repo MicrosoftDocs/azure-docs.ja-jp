@@ -1,17 +1,18 @@
 ---
 title: Azure Cosmos DB で一貫性を管理する
-description: Azure portal、.Net SDK、Java SDK など各種の SDK を使用して、Azure Cosmos DB に一貫性レベルを構成、管理する方法について説明します。
-author: markjbrown
+description: Azure portal、.NET SDK、Java SDK など各種の SDK を使用して、Azure Cosmos DB に整合性レベルを構成、管理する方法について説明します
+author: anfeldma-ms
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 12/02/2019
-ms.author: mjbrown
-ms.openlocfilehash: 651daa0af8188b386220d97390e7a61615f94120
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.date: 06/10/2020
+ms.author: anfeldma
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 85c99892a225de933da337e748ebde3370b6f7a3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79369405"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019608"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB で一貫性レベルを管理する
 
@@ -21,55 +22,52 @@ ms.locfileid: "79369405"
 
 ## <a name="configure-the-default-consistency-level"></a>既定の整合性レベルを構成する
 
-[既定の整合性レベル](consistency-levels.md)は、クライアントによって既定で使用される整合性レベルです。 クライアントはいつでもこれをオーバーライドできます。
+[既定の整合性レベル](consistency-levels.md)は、クライアントによって既定で使用される整合性レベルです。
 
-### <a name="cli"></a>CLI
-
-```azurecli
-# create with a default consistency
-az cosmosdb create --name <name of Cosmos DB Account> --resource-group <resource group name> --default-consistency-level Session
-
-# update an existing account's default consistency
-az cosmosdb update --name <name of Cosmos DB Account> --resource-group <resource group name> --default-consistency-level Eventual
-```
-
-### <a name="powershell"></a>PowerShell
-
-この例では、複数の書き込みリージョン (米国東部リージョンと米国西部リージョン) を有効にした、新しい Azure Cosmos アカウントを作成します。 既定の整合性レベルは、*セッション*整合性に設定されています。
-
-```azurepowershell-interactive
-$locations = @(@{"locationName"="East US"; "failoverPriority"=0},
-             @{"locationName"="West US"; "failoverPriority"=1})
-
-$iprangefilter = ""
-
-$consistencyPolicy = @{"defaultConsistencyLevel"="Session"}
-
-$CosmosDBProperties = @{"databaseAccountOfferType"="Standard";
-                        "locations"=$locations;
-                        "consistencyPolicy"=$consistencyPolicy;
-                        "ipRangeFilter"=$iprangefilter;
-                        "enableMultipleWriteLocations"="true"}
-
-New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
-  -ApiVersion "2015-04-08" `
-  -ResourceGroupName "myResourceGroup" `
-  -Location "East US" `
-  -Name "myCosmosDbAccount" `
-  -Properties $CosmosDBProperties
-```
-
-### <a name="azure-portal"></a>Azure portal
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 既定の一貫性レベルを表示または変更するには、Azure portal にサインインします。 Azure Cosmos アカウントを見つけて、 **[既定の整合性]** ウィンドウを開きます。 目的の一貫性レベルを新しい既定として選択し、 **[保存]** を選択します。 Azure portal では、音符によるさまざまな一貫性レベルの視覚化も提供しています。 
 
-![Azure portal の一貫性メニュー](./media/how-to-manage-consistency/consistency-settings.png)
+:::image type="content" source="./media/how-to-manage-consistency/consistency-settings.png" alt-text="Azure portal の一貫性メニュー":::
+
+# <a name="cli"></a>[CLI](#tab/cli)
+
+セッションの整合性を持つ Cosmos アカウントを作成し、既定の整合性を更新します。
+
+```azurecli
+# Create a new account with Session consistency
+az cosmosdb create --name $accountName --resource-group $resourceGroupName --default-consistency-level Session
+
+# update an existing account's default consistency
+az cosmosdb update --name $accountName --resource-group $resourceGroupName --default-consistency-level Strong
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+セッションの整合性を持つ Cosmos アカウントを作成し、既定の整合性を更新します。
+
+```azurepowershell-interactive
+# Create a new account with Session consistency
+New-AzCosmosDBAccount -ResourceGroupName $resourceGroupName `
+  -Location $locations -Name $accountName -DefaultConsistencyLevel "Session"
+
+# Update an existing account's default consistency
+Update-AzCosmosDBAccount -ResourceGroupName $resourceGroupName `
+  -Name $accountName -DefaultConsistencyLevel "Strong"
+```
+
+---
 
 ## <a name="override-the-default-consistency-level"></a>既定の一貫性レベルを上書きする
 
 クライアントは、サービスによって設定された既定の一貫性レベルを上書きできます。 整合性レベルは要求ごとに設定できます。この設定によって、アカウント レベルで設定される既定の整合性レベルがオーバーライドされます。
 
-### <a name="net-sdk-v2"></a><a id="override-default-consistency-dotnet"></a>.NET SDK V2
+> [!TIP]
+> 整合性は、要求レベルでのみ **緩和**されます。 弱い整合性からより強い整合性に移行するには、Cosmos アカウントの既定の整合性を更新します。
+
+### <a name="net-sdk"></a><a id="override-default-consistency-dotnet"></a>.NET SDK
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
 ```csharp
 // Override consistency at the client level
@@ -81,7 +79,7 @@ RequestOptions requestOptions = new RequestOptions { ConsistencyLevel = Consiste
 var response = await client.CreateDocumentAsync(collectionUri, document, requestOptions);
 ```
 
-### <a name="net-sdk-v3"></a><a id="override-default-consistency-dotnet-v3"></a>.NET SDK V3
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
 ```csharp
 // Override consistency at the request level via request options
@@ -89,12 +87,33 @@ ItemRequestOptions requestOptions = new ItemRequestOptions { ConsistencyLevel = 
 
 var response = await client.GetContainer(databaseName, containerName)
     .CreateItemAsync(
-        item, 
-        new PartitionKey(itemPartitionKey), 
+        item,
+        new PartitionKey(itemPartitionKey),
         requestOptions);
 ```
+---
 
-### <a name="java-async-sdk"></a><a id="override-default-consistency-java-async"></a>Java Async SDK
+### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java V4 SDK
+
+# <a name="async"></a>[非同期](#tab/api-async)
+
+   Java SDK V4 (Maven com.azure::azure-cosmos) 非同期 API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ManageConsistencyAsync)]
+
+# <a name="sync"></a>[同期](#tab/api-sync)
+
+   Java SDK V4 (Maven com.azure::azure-cosmos) 同期 API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=ManageConsistencySync)]
+
+--- 
+
+### <a name="java-v2-sdks"></a><a id="override-default-consistency-javav2"></a> Java V2 SDK
+
+# <a name="async"></a>[非同期](#tab/api-async)
+
+Async Java V2 SDK (Maven com.microsoft.azure::azure-cosmosdb)
 
 ```java
 // Override consistency at the client level
@@ -108,13 +127,16 @@ AsyncDocumentClient client =
                 .withConnectionPolicy(policy).build();
 ```
 
-### <a name="java-sync-sdk"></a><a id="override-default-consistency-java-sync"></a>Java Sync SDK
+# <a name="sync"></a>[同期](#tab/api-sync)
+
+Sync Java V2 SDK (Maven com.microsoft.azure::azure-documentdb)
 
 ```java
 // Override consistency at the client level
 ConnectionPolicy connectionPolicy = new ConnectionPolicy();
 DocumentClient client = new DocumentClient(accountEndpoint, accountKey, connectionPolicy, ConsistencyLevel.Eventual);
 ```
+---
 
 ### <a name="nodejsjavascripttypescript-sdk"></a><a id="override-default-consistency-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
@@ -144,7 +166,9 @@ Azure Cosmos DB の整合性レベルの 1 つとして、"*セッション*" �
 
 セッション トークンを手動で管理するには、応答からセッション トークンを取得し、それらを要求ごとに設定します。 セッション トークンを手動で管理する必要がない場合は、これらのサンプルを使用する必要はありません。 SDK では、セッション トークンが自動的に追跡されます。 セッション トークンを手動で設定しなかった場合、既定では、SDK によって直近のセッション トークンが使用されます。
 
-### <a name="net-sdk-v2"></a><a id="utilize-session-tokens-dotnet"></a>.NET SDK V2
+### <a name="net-sdk"></a><a id="utilize-session-tokens-dotnet"></a>.NET SDK
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
 ```csharp
 var response = await client.ReadDocumentAsync(
@@ -157,7 +181,7 @@ var response = await client.ReadDocumentAsync(
                 UriFactory.CreateDocumentUri(databaseName, collectionName, "SalesOrder1"), options);
 ```
 
-### <a name="net-sdk-v3"></a><a id="utilize-session-tokens-dotnet-v3"></a>.NET SDK V3
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
 ```csharp
 Container container = client.GetContainer(databaseName, collectionName);
@@ -168,8 +192,29 @@ ItemRequestOptions options = new ItemRequestOptions();
 options.SessionToken = sessionToken;
 ItemResponse<SalesOrder> response = await container.ReadItemAsync<SalesOrder>(salesOrder.Id, new PartitionKey(salesOrder.PartitionKey), options);
 ```
+---
 
-### <a name="java-async-sdk"></a><a id="utilize-session-tokens-java-async"></a>Java Async SDK
+### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java V4 SDK
+
+# <a name="async"></a>[非同期](#tab/api-async)
+
+   Java SDK V4 (Maven com.azure::azure-cosmos) 非同期 API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ManageConsistencySessionAsync)]
+
+# <a name="sync"></a>[同期](#tab/api-sync)
+
+   Java SDK V4 (Maven com.azure::azure-cosmos) 同期 API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=ManageConsistencySessionSync)]
+
+--- 
+
+### <a name="java-v2-sdks"></a><a id="utilize-session-tokens-javav2"></a>Java V2 SDK
+
+# <a name="async"></a>[非同期](#tab/api-async)
+
+Async Java V2 SDK (Maven com.microsoft.azure::azure-cosmosdb)
 
 ```java
 // Get session token from response
@@ -191,7 +236,9 @@ requestOptions.setSessionToken(sessionToken);
 Observable<ResourceResponse<Document>> readObservable = client.readDocument(document.getSelfLink(), options);
 ```
 
-### <a name="java-sync-sdk"></a><a id="utilize-session-tokens-java-sync"></a>Java Sync SDK
+# <a name="sync"></a>[同期](#tab/api-sync)
+
+Sync Java V2 SDK (Maven com.microsoft.azure::azure-documentdb)
 
 ```java
 // Get session token from response
@@ -203,6 +250,7 @@ RequestOptions options = new RequestOptions();
 options.setSessionToken(sessionToken);
 ResourceResponse<Document> response = client.readDocument(documentLink, options);
 ```
+---
 
 ### <a name="nodejsjavascripttypescript-sdk"></a><a id="utilize-session-tokens-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
@@ -233,8 +281,7 @@ item = client.ReadItem(doc_link, options)
 
 最終的な整合性は、どのくらい最終的でしょうか。 平均的なケースでは、バージョン履歴と時刻に関して、古さの限度を提示できます。 [**確率的有界整合性制約 (PBS)** ](https://pbs.cs.berkeley.edu/) メトリックは、古さの可能性を定量化し、それをメトリックとして表示します。 PBS メトリックを表示するには、Azure portal で Azure Cosmos アカウントに移動します。 **[メトリック]** ウィンドウを開き、 **[整合性]** タブを選択します。**Probability of strongly consistent reads based on your workload (see PBS) (ワークロードに基づいた、強固な一貫性がある読み取りの確率 (PBS を参照))** という名前のグラフを確認します。
 
-![Azure portal の PBS グラフ](./media/how-to-manage-consistency/pbs-metric.png)
-
+:::image type="content" source="./media/how-to-manage-consistency/pbs-metric.png" alt-text="Azure portal の PBS グラフ":::
 
 ## <a name="next-steps"></a>次のステップ
 

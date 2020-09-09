@@ -8,14 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
-ms.date: 02/10/2020
+ms.date: 06/25/2020
 ms.author: erhopf
-ms.openlocfilehash: a83ed5c9cec994c1bc4cadd5cf6208c159823658
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 52e4271fca02dc9b0eab45ca98581ecd85119b59
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77469019"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934482"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>チュートリアル:テナント モデルを作成する (プレビュー)
 
@@ -24,7 +25,7 @@ ms.locfileid: "77469019"
 > [!IMPORTANT]
 > テナント モデル サービスを使用して登録した場合、Speech Service は、貴社の言語モデルにアクセスすることができます。 このモデルは、組織内のだれでも見ることができる Office 365 パブリック グループのメールやドキュメントから生成されます。 組織の Office 365 管理者は、Office 365 管理ポータルから組織全体の言語モデルの使用をオンにしたりオフにしたりすることができます。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Microsoft 365 管理センターを使用してテナント モデルに登録する

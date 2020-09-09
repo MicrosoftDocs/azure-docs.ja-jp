@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル:モデルのトレーニングとデプロイ: VS Code'
+title: 'チュートリアル:モデルのトレーニングとデプロイ: VS Code (プレビュー)'
 titleSuffix: Azure Machine Learning
 description: TensorFlow と Azure Machine Learning Visual Studio Code 拡張機能を使用して、画像分類モデルをトレーニングおよびデプロイする方法について説明します
 services: machine-learning
@@ -8,16 +8,16 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 04/13/2020
+ms.date: 07/09/2020
 ms.custom: contperfq4
-ms.openlocfilehash: 05857641df22e03362eeee1590fef62fa3a45530
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 7d209b3434eae20b4c9a7b328f5c15032315b178
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857714"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203554"
 ---
-# <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension"></a>Azure Machine Learning Visual Studio Code 拡張機能を使用して画像分類 TensorFlow モデルをトレーニングおよびデプロイする
+# <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension-preview"></a>Azure Machine Learning Visual Studio Code 拡張機能 (プレビュー) を使用して画像分類 TensorFlow モデルをトレーニングおよびデプロイする
 
 TensorFlow と Azure Machine Learning Visual Studio Code 拡張機能を使用して、手書きの数字を認識する画像分類モデルをトレーニングおよびデプロイする方法について説明します。
 
@@ -72,7 +72,7 @@ Azure Machine Learning でアプリケーションを作成する際に最初に
 1. Visual Studio Code アクティビティ バーで、**Azure** アイコンを選択します。 Azure Machine Learning ビューが表示されます。
 1. ご利用のサブスクリプションのノードを展開します。
 1. **TeamWorkspace** ノードを展開します。 
-1. **[Experiment]\(実験\)** ノードを右クリックします。
+1. **[実験]** ノードを右クリックします。
 1. コンテキスト メニューから **[Create Experiment]\(実験の作成\)** を選択します。
 
     > [!div class="mx-imgBorder"]
@@ -91,7 +91,7 @@ Azure Machine Learning でアプリケーションを作成する際に最初に
 1. Visual Studio Code アクティビティ バーで、**Azure** アイコンを選択します。 Azure Machine Learning ビューが表示されます。 
 1. ご利用のサブスクリプションのノードを展開します。 
 1. **TeamWorkspace** ノードを展開します。 
-1. ワークスペース ノードの下の **[コンピューティング]** ノードを右クリックし、 **[Create Compute]\(コンピューティングの作成)** を選択します。 
+1. ワークスペース ノードの **[Compute clusters]\(コンピューティング クラスター\)** ノードを右クリックし、 **[Create Compute]\(コンピューティングの作成)** を選択します。 
 
     > [!div class="mx-imgBorder"]
     > ![コンピューティング先を作成する](./media/tutorial-train-deploy-image-classification-model-vscode/create-compute.png)
@@ -115,17 +115,8 @@ Azure Machine Learning でアプリケーションを作成する際に最初に
                 "scaleSettings": {
                     "maxNodeCount": 4,
                     "minNodeCount": 0,
-                    "nodeIdleTimeBeforeScaleDown": 120
-                },
-                "userAccountCredentials": {
-                    "adminUserName": "",
-                    "adminUserPassword": "",
-                    "adminUserSshPublicKey": ""
-                },
-                "subnetName": "",
-                "vnetName": "",
-                "vnetResourceGroupName": "",
-                "remoteLoginPortPublicAccess": ""
+                    "nodeIdleTimeBeforeScaleDown": "PT120S"
+                }
             }
         }
     }
@@ -138,7 +129,7 @@ Azure Machine Learning でアプリケーションを作成する際に最初に
     Azure ML: Save and Continue
     ```
 
-数分後、ワークスペースの *[コンピューティング]* ノードに新しいコンピューティング先が表示されます。
+数分後、ワークスペースの *[Compute clusters]\(コンピューティング クラスター\)* ノードに新しいコンピューティング先が表示されます。
 
 ## <a name="create-a-run-configuration"></a>実行構成を作成する
 
@@ -148,7 +139,7 @@ Azure Machine Learning でアプリケーションを作成する際に最初に
 
 1. Visual Studio Code アクティビティ バーで、**Azure** アイコンを選択します。 Azure Machine Learning ビューが表示されます。 
 1. ご利用のサブスクリプションのノードを展開します。 
-1. **[TeamWorkspace]、[Compute]** ノードの順に展開します。 
+1. **[TeamWorkspace]、[Compute clusters]\(コンピューティング クラスター\)** ノードの順に展開します。 
 1. コンピューティング ノードの下にある **TeamWkspc-com** コンピューティング ノードを右クリックし、 **[実行構成の作成]** を選択します。
 
     > [!div class="mx-imgBorder"]
@@ -214,6 +205,7 @@ Azure Machine Learning でアプリケーションを作成する際に最初に
     Azure ML: Save and Continue
     ```
 
+1. このサンプルでは、Azure Machine Learning に登録されたデータセットは使用していません。 データセットは、*train.py* が実行されたときに読み込まれます。 トレーニング実行用のデータ参照を作成するように求められたら、プロンプトに「n」を入力して **Enter** キーを押してください。
 1. **Enter** キーを押して、コンピューティングで実行するスクリプト ファイルを参照します。 この場合、モデルをトレーニングするためのスクリプトは、`vscode-tools-for-ai/mnist-vscode-docs-sample` ディレクトリ内にある `train.py` ファイルです。
 
     次のような内容を含む `MNIST-rc.runconfig` というファイルが VS Code に表示されます。
@@ -221,6 +213,7 @@ Azure Machine Learning でアプリケーションを作成する際に最初に
     ```json
     {
         "script": "train.py",
+        "arguments": [],
         "framework": "Python",
         "communicator": "None",
         "target": "TeamWkspc-com",
@@ -293,7 +286,7 @@ Azure Machine Learning 実験を実行するには:
 
 1. Visual Studio Code アクティビティ バーで、**Azure** アイコンを選択します。 Azure Machine Learning ビューが表示されます。 
 1. ご利用のサブスクリプションのノードを展開します。 
-1. **[TeamWorkspace]、[Experiment]** ノードの順に展開します。 
+1. **[TeamWorkspace]、[実験]** ノードの順に展開します。 
 1. **MNIST** 実験を右クリックします。
 1. **[Run Experiment]\(実験を実行する)** を選択します。
 

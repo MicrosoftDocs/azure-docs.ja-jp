@@ -1,20 +1,20 @@
 ---
 title: Blob (オブジェクト) Storage の概要
 titleSuffix: Azure Storage
-description: Azure Blob Storage は、テキスト データやバイナリ データなどの大量の非構造化オブジェクト データを格納します。 Azure Blob Storage は、高度にスケーラブルな高可用性のストレージです。 クライアントは、PowerShell または Azure CLI から Azure Storage クライアント ライブラリまたは REST を使用して、Blob Storage 内のデータ オブジェクトにプログラムによってアクセスできます。
+description: Azure Blob Storage を使用して、テキスト データやバイナリ データなどの大量の非構造化オブジェクト データを格納します。 Azure Blob Storage は、高度にスケーラブルな高可用性のストレージです。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: overview
-ms.date: 03/18/2020
+ms.date: 06/24/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f28b660a2afc97cf9faf0f601e247a97e99098cd
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 55059f4edea19a1e559ea1ad99d9e7e60756cc96
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82853367"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836379"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob Storage の概要
 
@@ -55,7 +55,7 @@ http://mystorageaccount.blob.core.windows.net
 
 Azure Storage では、3 種類の BLOB がサポートされています。
 
-- **ブロック BLOB** には、約 4.7 TB までのテキストとバイナリ データが格納されます。 ブロック BLOB は、個別に管理できるデータ ブロックで構成されます。
+- **ブロック BLOB** には、テキストとバイナリ データが格納されます。 ブロック BLOB は、個別に管理できるデータ ブロックで構成されます。 ブロック BLOB には、最大約 4.75 TiB のデータが格納されます。 プレビューではもっと大きなブロック BLOB を利用できます。最大約 190.7 TiB です。
 - **追加 BLOB** は、ブロック BLOB と同様にブロックで構成されますが、追加操作用に最適化されています。 追加 BLOB は、仮想マシンのデータのログ記録などのシナリオに最適です。
 - **ページ BLOB** には、最大 8 TB のランダム アクセス ファイルが格納されます。 ページ BLOB は、仮想ハード ドライブ (VHD) ファイルを格納し、Azure 仮想マシン用のディスクとして機能します。 ページ BLOB について詳しくは、「[Azure ページ BLOB の概要](storage-blob-pageblob-overview.md)」をご覧ください
 

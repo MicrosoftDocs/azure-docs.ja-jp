@@ -2,23 +2,21 @@
 title: Azure サポート要求を作成する方法 | Microsoft Docs
 description: サポートが必要なお客様は、Azure portal を使用して、セルフサービス ソリューションを見つけたり、サポート リクエストを作成および管理したりできます。
 services: Azure Supportability
-author: ganganarayanan
+author: mgblythe
 manager: scotthit
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.service: azure-supportability
-ms.topic: article
-ms.date: 03/31/2020
-ms.author: kfollis
-ms.openlocfilehash: 2b68b6ddf19d6b07475e7009b47e162bfb2d0d2f
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.topic: how-to
+ms.date: 06/25/2020
+ms.author: mblythe
+ms.openlocfilehash: d8a480481e47995f9f819122a3e8cc0b0a21a254
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478990"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851905"
 ---
-# <a name="how-to-create-an-azure-support-request"></a>Azure サポート要求を作成する方法
-
-## <a name="overview"></a>概要
+# <a name="create-an-azure-support-request"></a>Azure サポート要求を作成する
 
 Azure では、サポート要求 (サポート チケットとも呼ばれる) を作成して管理できます。 この記事で説明するように、[Azure portal ](https://portal.azure.com)上で要求を作成して管理することができます。 [Azure サポート チケット REST API ](/rest/api/support)を使用して、プログラムによって要求を作成して管理することもできます。
 
@@ -28,14 +26,14 @@ Azure では、サポート要求 (サポート チケットとも呼ばれる) 
 >* 商用利用の Azure portal は次のとおりです。[https://portal.azure.com](https://portal.azure.com)
 >* ドイツの Azure portal は次のとおりです: [https://portal.microsoftazure.de](https://portal.microsoftazure.de)
 >* 米国政府機関向けの Azure portal は次のとおりです: [https://portal.azure.us](https://portal.azure.us)
->
->
 
-お客様からいただいたご意見とご要望に基づき、サポート要求のシステムを改善しました。大きな目標として次の 3 つに取り組んでいます。
+サポート リクエスト エクスペリエンスでは、主に次の 3 つの目標に重点を置いています。
 
 * **合理化**:サポートとトラブルシューティングを見つけやすくして、サポート リクエストの送信方法を簡略化します。
 * **統合**:Azure リソースに関する問題のトラブルシューティングを行う際に、コンテキストを切り替えずに、サポート リクエストを容易に開くことができます。
-* **効率性**: 問題を効率的に解決するために、お客様のサポート エージェントが必要とする重要な情報を集めます。
+* **効率性**: 問題を効率的に解決するためにサポート エンジニアが必要とする重要な情報を集めます。
+
+Azure は、サブスクリプション管理 (請求、割り当て調整、アカウント振り替えなど) に無制限のサポートを提供します。 技術的なサポートについては、サポート プランが必要になります。 詳細については、「[サポート プランの比較](https://azure.microsoft.com/support/plans)」を参照してください。
 
 ## <a name="getting-started"></a>作業の開始
 
@@ -43,7 +41,7 @@ Azure portal で **[ヘルプとサポート]** にアクセスできます。 �
 
 ### <a name="role-based-access-control"></a>ロールベースのアクセス制御
 
-サポート リクエストを作成するには、[所有者](../../role-based-access-control/built-in-roles.md#owner)か、[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)か、またはサブスクリプション レベルで[サポート リクエスト共同作成者](../../role-based-access-control/built-in-roles.md#support-request-contributor)ロールが割り当てられている必要があります。 Azure Active Directory (AAD) シナリオなどのサブスクリプションを使用せずにサポート リクエストを作成するには、[管理者](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)である必要があります。
+サポート リクエストを作成するには、[所有者](../../role-based-access-control/built-in-roles.md#owner)か、[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)か、またはサブスクリプション レベルで[サポート リクエスト共同作成者](../../role-based-access-control/built-in-roles.md#support-request-contributor)ロールが割り当てられている必要があります。 Azure Active Directory シナリオなどのサブスクリプションを使用せずにサポート リクエストを作成するには、[管理者](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)である必要があります。
 
 ### <a name="go-to-help--support-from-the-global-header"></a>グローバル ヘッダーから [ヘルプとサポート] にアクセスする
 
@@ -53,7 +51,7 @@ Azure portal 内の任意の場所からサポート リクエストを開始す
 
    ![ヘルプとサポート](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
 
-2. **[新しいサポート リクエスト]** を選択します。 画面の指示に従って、発生している問題に関する情報を Microsoft に提供します。 Microsoft は考えられる解決策をいくつか提案し、問題の詳細を収集し、サポート リクエストの送信と追跡を支援します。
+1. **[新しいサポート リクエスト]** を選択します。 画面の指示に従って、発生している問題に関する情報を提供します。 Microsoft は考えられる解決策をいくつか提案し、問題の詳細を収集し、サポート リクエストの送信と追跡を支援します。
 
    ![新しいサポート要求](./media/how-to-create-azure-support-request/newsupportrequest2lower.png)
 
@@ -65,7 +63,7 @@ Azure portal 内の任意の場所からサポート リクエストを開始す
 
    ![コンテキストで](./media/how-to-create-azure-support-request/incontext2lower.png)
 
-2. 画面の指示に従って、発生している問題に関する情報を Microsoft に提供します。 リソースからサポート リクエスト プロセスを開始すると、いくつかのオプションがあらかじめ自動的に選択されています。
+1. 画面の指示に従って、発生している問題に関する情報を Microsoft に提供します。 リソースからサポート リクエスト プロセスを開始すると、いくつかのオプションがあらかじめ自動的に選択されています。
 
 ## <a name="create-a-support-request"></a>サポート要求の作成
 
@@ -75,14 +73,9 @@ Microsoft は、発生している問題について情報を収集してその�
 
 サポート要求プロセスの最初の手順は、ユーザーが抱える問題とそのサポート プランに必要な基本情報を集めることです。
 
-**[新しいサポート リクエスト]** の **[基本]** タブで、セレクターを使用して、Microsoft への問題の説明を開始します。 まず、問題の種類の一般的なカテゴリを特定し、関連するサブスクリプションを選択します。 **Windows を実行する仮想マシン**など、サービスを選択します。 仮想マシンの名前などのリソースを選択します。 ご自分の言葉で問題を説明してから、 **[問題の種類を選択してください]** を選択して、より具体的に示します。
+**[新しいサポート リクエスト]** の **[基本]** タブで、セレクターを使用して、Microsoft への問題の説明を開始します。 まず、問題の種類の一般的なカテゴリを特定し、関連するサブスクリプションを選択します。 **Windows を実行する仮想マシン**など、サービスを選択します。 仮想マシンの名前などのリソースを選択します。 ご自分の言葉で問題を記述してから、 **[問題の種類]** と **[問題のサブタイプ]** を選択して、より具体的にご説明下さい。
 
 ![[基本] ブレード](./media/how-to-create-azure-support-request/basics2lower.png)
-
-> [!NOTE]
-> Azure は、サブスクリプション管理 (請求、割り当て調整、アカウント振り替えなど) に無制限のサポートを提供します。 技術的なサポートについては、サポート プランが必要になります。 [サポート プランについて詳しく見る](https://azure.microsoft.com/support/plans)。
->
->
 
 ### <a name="solutions"></a>ソリューション
 
@@ -90,43 +83,36 @@ Microsoft は基本的な情報を収集できたら、次にユーザーにソ�
 
 ### <a name="details"></a>詳細
 
-次に、Microsoft は問題に関する追加の詳細を収集します。 この手順で徹底的かつ詳細な情報が提供されれば、Microsoft はお客様のサポート リクエストを適切なエージェントに転送します。
+次に、Microsoft は問題に関する追加の詳細を収集します。 この手順で徹底的かつ詳細な情報が提供していただくことで、Microsoft はお客様のサポート リクエストを適切なエンジニアに転送することができます。
 
-可能であれば、問題が発生した時期と、再現手順をお知らせください。 ログ ファイルや診断からの出力などのファイルをアップロードできます。
+1. 可能であれば、問題が発生した時期と、再現手順をお知らせください。 ログ ファイルや診断からの出力などのファイルをアップロードできます。 ファイルのアップロードの詳細については、「[ファイルのアップロードのガイドライン](how-to-manage-azure-support-request.md#file-upload-guidelines)」を参照してください。
 
-問題に関するすべての情報を記入したら、サポートを受ける方法を選択します。 **[詳細]** の **[サポート方法]** セクションで、影響の重大度を選択します。 ご自分の希望する連絡方法、連絡のための都合のよいタイミング、およびサポート言語を指定します。
+1. 問題に関するすべての情報を記入したら、サポートを受ける方法を選択します。 **[詳細]** の **[サポート方法]** セクションで、影響の重大度を選択します。 最高重大度は[サポート プラン](https://azure.microsoft.com/support/plans)ごとに異なります。
 
-次に、 **[連絡先情報]** セクションに入力して、ご自分への連絡方法をお知らせください。
+    既定では、 **[診断情報の共有]** オプションが選択されています。 これにより、Azure サポートが Azure リソースから[診断情報](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)を収集できるようになります。 場合によっては、仮想マシンのメモリへのアクセスを要求するなど、既定では選択されていない 2 つ目の質問があります。
+
+1. ご自分の希望する連絡方法、連絡のための都合のよいタイミング、およびサポート言語を指定します。
+
+1. 次に、 **[連絡先情報]** セクションに入力して、ご自分への連絡方法をお知らせください。
 
 ### <a name="review--create"></a>確認と作成
 
 各タブですべての必須情報を入力して、 **[確認および作成]** を選択します。 サポートに送信する詳細情報を確認します。 必要に応じて、任意のタブに戻り、変更を行います。 完了したサポート リクエストが適切であれば、 **[作成]** を選択します。
 
-サポート エージェントが、指定された方法を使用してお客様に連絡します。 初回の応答時間については、「[サポート内容と応答性](https://azure.microsoft.com/support/plans/response/)」を参照してください。
+サポート エンジニアが、指定された方法を使用してお客様に連絡します。 初回の応答時間については、「[サポート内容と応答性](https://azure.microsoft.com/support/plans/response/)」を参照してください。
 
-## <a name="all-support-requests"></a>すべてのサポート リクエスト
 
-サポート リクエストの詳細と状態を表示するには、 **[ヘルプとサポート]**  >   **[すべてのサポート リクエスト]** の順に移動します。
+## <a name="next-steps"></a>次のステップ
 
-![すべてのサポート リクエスト](./media/how-to-create-azure-support-request/allrequestslower.png)
-
-このページでは、 **[サブスクリプション]** 、 **[作成**日 (UTC)]、および **[状態]** によってサポート リクエストをフィルター処理することができます。 また、このページでサポート要求を並べ替えたり検索したりすることもできます。
-
-サポート リクエストを選択すると、重大度やサポート エージェントが応答するまでの予想時間など、詳細が表示されます。
-
-リクエストの重大度を変更する場合は、 **[事業影響度]** を選択します。 割り当てる重大度を一覧から選択します。
-
-> [!NOTE]
-> 最高重大度はサポート プランごとに異なります。 [サポート プランについて詳しく見る](https://azure.microsoft.com/support/plans)。
->
->
 Azure のセルフヘルプ サポート オプションの詳細については、次のビデオをご覧ください。
 
 > [!VIDEO https://www.youtube.com/embed/gNhzR5FE9DY]
 
-## <a name="next-steps"></a>次のステップ
+詳細については、次のリンクを参照してください。
 
+* [Azure サポート リクエストを管理する方法](how-to-manage-azure-support-request.md)
+* [Azure サポート チケット REST API](/rest/api/support)
 * [お客様からのフィードバックとご提案の送信](https://feedback.azure.com/forums/266794-support-feedback)
 * [Twitter](https://twitter.com/azuresupport) でのご協力
-* [MSDN フォーラムで同僚からのヘルプを得る](https://social.msdn.microsoft.com/Forums/azure)
+* [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/products/azure)で同僚からのヘルプを得る
 * [Azure サポートに関する FAQ で詳細を確認する](https://azure.microsoft.com/support/faq)

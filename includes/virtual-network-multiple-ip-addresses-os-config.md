@@ -8,51 +8,55 @@ ms.topic: include
 ms.date: 05/10/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: a9473f69d600a86ff71da69c7efe0dea3f2b0a08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93caf39216ef0479ec2799267a9ba8181f37f802
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76159338"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194221"
 ---
 ## <a name="add-ip-addresses-to-a-vm-operating-system"></a><a name="os-config"></a>VM オペレーティング システムに IP アドレスを追加する
 
 複数のプライベート IP アドレスを構成して作成した VM に接続し、サインインします。 VM に追加したプライベート IP アドレスは、プライマリも含め、すべて手動で追加する必要があります。 お使いの VM オペレーティング システムに応じて手順を実行します。
 
-### <a name="windows"></a>Windows
+### <a name="windows-server"></a>Windows Server
+<details>
+  <summary>expand</summary>
 
 1. コマンド プロンプトで、「 *ipconfig /all*」と入力します。  *プライマリ* の IP アドレス (DHCP 経由) のみを表示できます。
 2. コマンド プロンプトで「*ncpa.cpl*」と入力して、 **[ネットワーク接続]** ウィンドウを開きます。
-3. 適切なアダプターの **[ローカル エリア接続]** のプロパティを開きます。
+3. 適切なアダプターのプロパティを開きます: **イーサネット**。
 4. インターネット プロトコル バージョン 4 (IPv4) をダブルクリックします。
 5. **[次の IP アドレスを使う]** を選択して、次の値を入力します。
 
-    * **IP アドレス**: *プライマリ* のプライベート IP アドレスを入力します。
-    * **サブネット マスク**: 自分のサブネットに基づいて設定します。 たとえば、たとえば、サブネットが/24 サブネットであれば、サブネット マスクは 255.255.255.0 になります。
-    * **デフォルト ゲートウェイ**: サブネット内の最初の IP アドレスです。 サブネットが 10.0.0.0/24 の場合、ゲートウェイの IP アドレスは 10.0.0.1 になります。
+    * **IP アドレス**: "*プライマリ*" のプライベート IP アドレスを入力します
+    * **[サブネット マスク]** : 自分のサブネットに基づいて設定します。 たとえば、たとえば、サブネットが/24 サブネットであれば、サブネット マスクは 255.255.255.0 になります。
+    * **[デフォルト ゲートウェイ]** : サブネット内の最初の IP アドレスです。 サブネットが 10.0.0.0/24 の場合、ゲートウェイの IP アドレスは 10.0.0.1 になります。
     * **[次の DNS サーバーのアドレスを使う]** を選択して、次の値を入力します。
-        * **[優先 DNS サーバー]** : 独自の DNS サーバーを使用していない場合は、「168.63.129.16」と入力します。  独自の DNS サーバーを使用している場合は、そのサーバーの IP アドレスを入力します。
+        * **[優先 DNS サーバー]** : 独自の DNS サーバーを使用していない場合は、「168.63.129.16」と入力します。  独自の DNS サーバーを使用している場合は、そのサーバーの IP アドレスを入力します。  (代替 DNS サーバーの場合、任意の無料パブリック DNS サーバー アドレスを選択できます)
     * **[詳細]** ボタンを選択して、他の IP アドレスを追加します。 前の手順で Azure ネットワーク インターフェイスに追加した、各セカンダリ プライベート IP アドレスを、Azure ネットワーク インターフェイスに割り当てられたプライマリ IP アドレスが割り当てられている Windows ネットワーク インターフェイスに追加します。
 
         仮想マシンのオペレーティング システム内で Azure の仮想マシンに割り当てられているパブリック IP アドレスを手動で割り当てないでください。 オペレーティング システム内で IP アドレスを手動で設定する場合は、Azure [ネットワーク インターフェイス](../articles/virtual-network/virtual-network-network-interface-addresses.md#change-ip-address-settings)に割り当てられているプライベート IP アドレスと同じアドレスであることを確認してください。そうしないと、仮想マシンへの接続が失われる可能性があります。 詳細については、[プライベート IP アドレス](../articles/virtual-network/virtual-network-network-interface-addresses.md#private)設定に関するページを参照してください。 オペレーティング システム内で Azure パブリック IP アドレスを割り当てないでください。
 
     * **[OK]** をクリックして TCP/IP 設定を閉じ、もう一度 **[OK]** をクリックしてアダプター設定を閉じます。 これで RDP 接続が再確立されます。
 
-6. コマンド プロンプトで、「 *ipconfig /all*」と入力します。 追加したすべての IP アドレスが表示され、DHCP が無効になります。
+6. コマンド プロンプトで、「 *ipconfig /all*」と入力します。 追加したすべての IP アドレスが表示されており、DHCP がオフになっていることを確認します。
 7. Azure のプライマリ IP 構成のプライベート IP アドレスが、Windows 用プライマリ IP アドレスとして使用されるように Windows を構成します。 詳細については、「[No Internet access from Azure Windows VM that has multiple IP addresses (複数の IP アドレスを持つ Azure Windows VM からインターネット アクセスできない)](https://support.microsoft.com/help/4040882/no-internet-access-from-azure-windows-vm-that-has-multiple-ip-addresse)」を参照してください。 
 
-### <a name="validation-windows"></a>検証 (Windows)
+### <a name="validation-windows-server"></a>検証 (Windows Server)
 
-関連付けたパブリック IP を使用してセカンダリ IP 構成からインターネットに接続できることを確認するには、上記の手順を使用してパブリック IP を正しく追加した後で、次のコマンドを使用します。
+関連付けたパブリック IP を使用してセカンダリ IP 構成からインターネットに接続できることを確認するには、上記の手順を使用してパブリック IP を正しく追加した後で、次のコマンドを使用します (10.0.0.7 をセカンダリ プライベート IP アドレスに変更します)。
 
 ```bash
-ping -S 10.0.0.5 hotmail.com
+ping -S 10.0.0.7 outlook.com
 ```
 >[!NOTE]
 >セカンダリ IP 構成でインターネットに ping を実行できるのは、その構成にパブリック IP アドレスが関連付けられている場合だけです。 プライマリ IP 構成では、インターネットに ping を実行するためにパブリック IP アドレスは必要ありません。
+</details>
 
 ### <a name="linux-ubuntu-1416"></a>Linux (Ubuntu 14/16)
-
+<details>
+  <summary>expand</summary>
 Linux ディストリビューションの最新ドキュメントを調べることをお勧めします。 
 
 1. ターミナル ウィンドウを開きます。
@@ -112,8 +116,33 @@ Linux ディストリビューションの最新ドキュメントを調べる�
 
    追加した IP アドレスが、リストの一部として表示されます。
 
-### <a name="linux-ubuntu-1804"></a>Linux (Ubuntu 18.04+)
+### <a name="validation-ubuntu-1416"></a>検証 (Ubuntu 14/16)
 
+関連付けたパブリック IP を使用してセカンダリ IP 構成からインターネットに接続できることを確認するには、次のコマンドを使用します。
+
+```bash
+ping -I 10.0.0.5 outlook.com
+```
+>[!NOTE]
+>セカンダリ IP 構成でインターネットに ping を実行できるのは、その構成にパブリック IP アドレスが関連付けられている場合だけです。 プライマリ IP 構成では、インターネットに ping を実行するためにパブリック IP アドレスは必要ありません。
+
+Linux VM の場合、セカンダリ NIC からの送信接続を検証しようとしたときに、適切なルートの追加が必要になることがあります。 これを行うには多くの方法があります。 Linux ディストリビューションに応じて適切なドキュメントを参照してください。 これを行う方法の 1 つを以下に示します。
+
+```bash
+echo 150 custom >> /etc/iproute2/rt_tables 
+
+ip rule add from 10.0.0.5 lookup custom
+ip route add default via 10.0.0.1 dev eth2 table custom
+
+```
+- 必ず以下の置き換えを行ってください。
+    - **10.0.0.5** を、パブリック IP アドレスが関連付けられているプライベート IP アドレスに
+    - **10.0.0.1** をデフォルト ゲートウェイに
+    - **eth2** をセカンダリ NIC の名前に </details>
+
+### <a name="linux-ubuntu-1804"></a>Linux (Ubuntu 18.04+)
+<details>
+  <summary>expand</summary>
 OS ネットワーク管理のために、Ubuntu 18.04 以降が `netplan` に変更されました。 Linux ディストリビューションの最新ドキュメントを調べることをお勧めします。 
 
 1. ターミナル ウィンドウを開きます。
@@ -185,8 +214,33 @@ OS ネットワーク管理のために、Ubuntu 18.04 以降が `netplan` に�
         inet6 fe80::20d:3aff:fe8c:14a5/64 scope link
         valid_lft forever preferred_lft forever
     ```
-    
+### <a name="validation-ubuntu-1804"></a>検証 (Ubuntu 18.04+)
+
+関連付けたパブリック IP を使用してセカンダリ IP 構成からインターネットに接続できることを確認するには、次のコマンドを使用します。
+
+```bash
+ping -I 10.0.0.5 outlook.com
+```
+>[!NOTE]
+>セカンダリ IP 構成でインターネットに ping を実行できるのは、その構成にパブリック IP アドレスが関連付けられている場合だけです。 プライマリ IP 構成では、インターネットに ping を実行するためにパブリック IP アドレスは必要ありません。
+
+Linux VM の場合、セカンダリ NIC からの送信接続を検証しようとしたときに、適切なルートの追加が必要になることがあります。 これを行うには多くの方法があります。 Linux ディストリビューションに応じて適切なドキュメントを参照してください。 これを行う方法の 1 つを以下に示します。
+
+```bash
+echo 150 custom >> /etc/iproute2/rt_tables 
+
+ip rule add from 10.0.0.5 lookup custom
+ip route add default via 10.0.0.1 dev eth2 table custom
+
+```
+- 必ず以下の置き換えを行ってください。
+    - **10.0.0.5** を、パブリック IP アドレスが関連付けられているプライベート IP アドレスに
+    - **10.0.0.1** をデフォルト ゲートウェイに
+    - **eth2** をセカンダリ NIC の名前に </details>
+
 ### <a name="linux-red-hat-centos-and-others"></a>Linux (Red Hat、CentOS、その他)
+<details>
+  <summary>expand</summary>
 
 1. ターミナル ウィンドウを開きます。
 2. 自身がルート ユーザーになっていることを確認します。 ルート ユーザーでない場合は、次のコマンドを入力します。
@@ -246,12 +300,12 @@ OS ネットワーク管理のために、Ubuntu 18.04 以降が `netplan` に�
 
     返されるリストに、追加した IP アドレス「 *eth0:0*」が表示されることを確認します。
 
-### <a name="validation-linux"></a>検証 (Linux)
+### <a name="validation-red-hat-centos-and-others"></a>検証 (Red Hat、CentOS、その他)
 
 関連付けたパブリック IP を使用してセカンダリ IP 構成からインターネットに接続できることを確認するには、次のコマンドを使用します。
 
 ```bash
-ping -I 10.0.0.5 hotmail.com
+ping -I 10.0.0.5 outlook.com
 ```
 >[!NOTE]
 >セカンダリ IP 構成でインターネットに ping を実行できるのは、その構成にパブリック IP アドレスが関連付けられている場合だけです。 プライマリ IP 構成では、インターネットに ping を実行するためにパブリック IP アドレスは必要ありません。
@@ -268,4 +322,4 @@ ip route add default via 10.0.0.1 dev eth2 table custom
 - 必ず以下の置き換えを行ってください。
     - **10.0.0.5** を、パブリック IP アドレスが関連付けられているプライベート IP アドレスに
     - **10.0.0.1** をデフォルト ゲートウェイに
-    - **eth2** をセカンダリ NIC の名前に
+    - **eth2** をセカンダリ NIC の名前に </details>

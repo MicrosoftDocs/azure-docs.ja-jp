@@ -5,18 +5,19 @@ description: 自分の機械学習の実験を、開始、状態設定、タグ�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
 ms.author: roastala
 author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 01/09/2020
-ms.openlocfilehash: d6dc2eeb572eeed17281677945c93067bbadee94
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.topic: conceptual
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: dba64761d5df9bcf27cc903f84750a767478000a
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628573"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846685"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python でのトレーニングの実行の開始、監視、およびキャンセル
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

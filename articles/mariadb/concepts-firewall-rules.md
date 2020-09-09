@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 743e3f50d747993250399493d97fc2becab19319
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 7/17/2020
+ms.openlocfilehash: 4b5898629c373e31d94ad09ca4af66de0428a7a2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79532044"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047616"
 ---
 # <a name="azure-database-for-mariadb-server-firewall-rules"></a>Azure Database for MariaDB サーバーのファイアウォール規則
 ファイアウォールは、どのコンピューターに権限を持たせるかを指定するまで、データベース サーバーへのすべてのアクセスを遮断します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてサーバーへのアクセス権を付与します。
@@ -67,6 +67,11 @@ Microsoft Azure Database for MariaDB サーバー サービスに期待どおり
    * 動的 IP アドレスの代わりに、静的 IP アドレスを取得し、ファイアウォール規則として、IP アドレス範囲を追加してください。
 
 * **サーバーの IP がパブリックのように見える:** Azure Database for MariaDB サーバーへの接続は、パブリックにアクセス可能な Azure ゲートウェイ経由でルーティングされます。 しかし、実際のサーバー IP は、ファイアウォールによって保護されています。 詳細については、[接続アーキテクチャに関する記事](concepts-connectivity-architecture.md)をご覧ください。 
+
+* **許可されている IP を使用して Azure リソースから接続できない:** 接続元のサブネットに対して、**Microsoft.Sql** サービス エンドポイントが有効になっているかどうかを確認します。 サブネットで **Microsoft.Sql** が有効になっている場合は、そのサブネットで [VNet サービス エンドポイント規則](concepts-data-access-security-vnet.md)のみを使用することを指定します。
+
+   たとえば、**Microsoft.Sql** 有効になっていても、対応する VNet ルールがないサブネット内の Azure VM から接続している場合、次のエラーが表示されることがあります: `FATAL: Client from Azure Virtual Networks is not allowed to access the server`
+
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure portal を使用した Azure Database for MariaDB ファイアウォール規則の作成と管理](./howto-manage-firewall-portal.md)

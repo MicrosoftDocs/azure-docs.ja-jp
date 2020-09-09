@@ -5,12 +5,13 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f95efbaedc2718c968062c47427ab7765756bde7
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 4042ed29b143ab160883ca46ecb1cc17d2e0c761
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80408566"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497156"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>チュートリアル:Azure portal からエクスポートしたテンプレートを使用する
 

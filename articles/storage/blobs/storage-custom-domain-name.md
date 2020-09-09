@@ -4,28 +4,28 @@ titleSuffix: Azure Storage
 description: カスタム ドメインを Azure ストレージ アカウントの Blob Storage または Web エンドポイントにマップします。
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 9d05677ec47851557594ef47499da653accad141
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 903413b6ca00600e15ac3af0a93b98a8d67a1c28
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79370476"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053628"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>カスタム ドメインを Azure Blob Storage エンドポイントにマップする
 
 カスタム ドメインは、BLOB サービス エンドポイントまたは[静的な Web サイト](storage-blob-static-website.md)のエンドポイントにマップできます。 
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE] 
 > このマッピングは、サブドメイン (例: `www.contoso.com`) に対してのみ機能します。 Web エンドポイントをルート ドメイン (例: `contoso.com`) で使用できるようにする場合、Azure CDN を使用する必要があります。 ガイダンスについては、この記事の「[HTTPS が有効になっているカスタム ドメインをマップする](#enable-https)」セクションを参照してください。 この記事のそのセクションに移動してカスタム ドメインのルート ドメインを有効にするため、そのセクション内の HTTPS を有効にする手順は省略可能です。 
 
-<a id="enable-http" />
+<a id="enable-http"></a>
 
 ## <a name="map-a-custom-domain-with-only-http-enabled"></a>HTTP のみが有効になっているカスタム ドメインをマップする
 
@@ -33,7 +33,7 @@ ms.locfileid: "79370476"
 
 HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効になっているカスタム ドメインをマップする](#enable-https)」セクションを参照してください。 
 
-<a id="map-a-domain" />
+<a id="map-a-domain"></a>
 
 ### <a name="map-a-custom-domain"></a>カスタム ドメインをマップする
 
@@ -50,7 +50,7 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
 
 :heavy_check_mark:手順 4:カスタム ドメインをテストする。
 
-<a id="endpoint" />
+<a id="endpoint"></a>
 
 #### <a name="step-1-get-the-host-name-of-your-storage-endpoint"></a>手順 1:ストレージ エンドポイントのホスト名を取得する 
 
@@ -71,7 +71,7 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
   
    この値は、後で使用するために取っておいてください。
 
-<a id="create-cname-record" />
+<a id="create-cname-record"></a>
 
 #### <a name="step-2-create-a-canonical-name-cname-record-with-your-domain-provider"></a>手順 2:ドメイン プロバイダーで正規名 (CNAME) レコードを作成する
 
@@ -91,7 +91,7 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
       
    - この記事の前半で既に説明した「[ストレージ エンドポイントのホスト名を取得する](#endpoint)」セクションで取得したホスト名。 
 
-<a id="register" />
+<a id="register"></a>
 
 #### <a name="step-3-register-your-custom-domain-with-azure"></a>手順 3:カスタム ドメインを Azure に登録する
 
@@ -117,7 +117,7 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
 
 たとえば、*photos.contoso.com* カスタム サブドメインにある *myforms* コンテナー内の Web フォームにアクセスするには、次の URI を使用します。`http://photos.contoso.com/myforms/applicationform.htm`
 
-<a id="zero-down-time" />
+<a id="zero-down-time"></a>
 
 ### <a name="map-a-custom-domain-with-zero-downtime"></a>ダウンタイムなしでカスタム ドメインをマップする
 
@@ -136,7 +136,7 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
 
 :heavy_check_mark:手順 5:カスタム ドメインをテストする。
 
-<a id="endpoint-2" />
+<a id="endpoint-2"></a>
 
 #### <a name="step-1-get-the-host-name-of-your-storage-endpoint"></a>手順 1:ストレージ エンドポイントのホスト名を取得する 
 
@@ -295,7 +295,7 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
   ```
 ---
 
-<a id="enable-https" />
+<a id="enable-https"></a>
 
 ## <a name="map-a-custom-domain-with-https-enabled"></a>HTTPS が有効になっているカスタム ドメインをマップする
 

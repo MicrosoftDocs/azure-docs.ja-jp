@@ -2,57 +2,53 @@
 title: チュートリアル:15Five を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: 15Five に対してユーザー アカウントの自動的なプロビジョニングとプロビジョニング解除を実行するように Azure Active Directory を構成する方法について説明します。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: a276c004-9f71-4efc-8cca-1f615760249f
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: f1f66a7b69048180bc41c8f2fa432598f00f7f09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b42833056d6c9c0e6053dbf34c7de17b4136a797
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77059268"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88539183"
 ---
 # <a name="tutorial-configure-15five-for-automatic-user-provisioning"></a>チュートリアル:15Five を構成し、自動ユーザー プロビジョニングに対応させる
 
-このチュートリアルの目的は、Azure AD が自動的にユーザーまたはグループを 15Five にプロビジョニングまたは 15Five からプロビジョニング解除するように構成するために、15Five と Azure Active Directory (Azure AD) で実行される手順を示すことです。
+このチュートリアルの目的は、Azure AD が自動的にユーザーまたはグループを 15Five にプロビジョニングまたは [15Five](https://www.15five.com/pricing/) からプロビジョニング解除するように構成するために、15Five と Azure Active Directory (Azure AD) で実行される手順を示すことです。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化」を参照してください。
 
 > [!NOTE]
-> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。
->
 > 現在、このコネクタはパブリック プレビュー段階にあります。 プレビュー機能を使用するための一般的な Microsoft Azure 使用条件の詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
+
+## <a name="capabilities-supported"></a>サポートされる機能
+> [!div class="checklist"]
+> * 15Five でユーザーを作成する
+> * アクセスが不要になった場合に 15Five のユーザーを削除する
+> * Azure AD と 15Five の間でユーザー属性の同期を維持する
+> * 15Five でグループとグループ メンバーシップをプロビジョニングする
+> * 15Five への[シングル サインオン](https://docs.microsoft.com/azure/active-directory/saas-apps/15five-tutorial) (推奨)
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
 
-* Azure AD テナント。
+* [Azure AD テナント](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)。
+* プロビジョニングを構成するための[アクセス許可](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。
 * [15Five テナント](https://www.15five.com/pricing/)。
 * Admin アクセス許可がある 15Five のユーザー アカウント
 
-## <a name="assigning-users-to-15five"></a>15Five へのユーザーの割り当て
+## <a name="step-1-plan-your-provisioning-deployment"></a>手順 1. プロビジョニングのデプロイを計画する
+1. [プロビジョニング サービスのしくみ](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)を確認します。
+2. [プロビジョニングの対象](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)となるユーザーを決定します。
+3. [Azure AD と 15Five の間でマップする](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)データを決定します。 
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
-
-自動ユーザー プロビジョニングを構成して有効にする前に、15Five へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順に従って、これらのユーザーやグループを 15Five に割り当てることができます。
-* [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
-
-## <a name="important-tips-for-assigning-users-to-15five"></a>ユーザーを 15Five に割り当てる際の重要なヒント
-
-* 単一の Azure AD ユーザーを 15Five に割り当てて、自動ユーザー プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
-
-* 15Five にユーザーを割り当てるときは、有効なアプリケーション固有ロール (使用可能な場合) を割り当てダイアログで選択する必要があります。 **既定のアクセス** ロールのユーザーは、プロビジョニングから除外されます。
-
-## <a name="setup-15five-for-provisioning"></a>プロビジョニングのために 15Five を設定する
+## <a name="step-2-configure-15five-to-support-provisioning-with-azure-ad"></a>手順 2. Azure AD でのプロビジョニングをサポートするように 15Five を構成する
 
 Azure AD での自動ユーザー プロビジョニング用に 15Five を構成する前に、15Five 上で SCIM プロビジョニングを有効にする必要があります。
 
@@ -72,34 +68,21 @@ Azure AD での自動ユーザー プロビジョニング用に 15Five を構�
     
     ![15Five での SCIM の追加](media/15five-provisioning-tutorial/image03.png)
 
-## <a name="add-15five-from-the-gallery"></a>ギャラリーからの 15Five の追加
+## <a name="step-3-add-15five-from-the-azure-ad-application-gallery"></a>手順 3. Azure AD アプリケーション ギャラリーから 15Five を追加する
 
-Azure AD で自動ユーザー プロビジョニング用に 15Five を構成するには、Azure AD アプリケーション ギャラリーから 15Five をマネージド SaaS アプリケーションの一覧に追加する必要があります。
+Azure AD アプリケーション ギャラリーから 15Five を追加して、15Five へのプロビジョニングの管理を開始します。 SSO のために 15Five を以前に設定している場合は、その同じアプリケーションを使用することができます。 ただし、統合を初めてテストするときは、別のアプリを作成することをお勧めします。 ギャラリーからアプリケーションを追加する方法の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)を参照してください。 
 
-**Azure AD アプリケーション ギャラリーから 15Five を追加するには、次の手順を実行します。**
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>手順 4. プロビジョニングの対象となるユーザーを定義する 
 
-1. **[Azure portal](https://portal.azure.com)** の左側のナビゲーション パネルで、 **[Azure Active Directory]** を選択します。
+Azure AD プロビジョニング サービスを使用すると、アプリケーションへの割り当て、ユーザーまたはグループの属性に基づいてプロビジョニングされるユーザーのスコープを設定できます。 割り当てに基づいてアプリにプロビジョニングされるユーザーのスコープを設定する場合、以下の[手順](../manage-apps/assign-user-or-group-access-portal.md)を使用して、ユーザーとグループをアプリケーションに割り当てることができます。 ユーザーまたはグループの属性のみに基づいてプロビジョニングされるユーザーのスコープを設定する場合、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)で説明されているスコープ フィルターを使用できます。 
 
-    ![Azure Active Directory のボタン](common/select-azuread.png)
+* 15Five にユーザーとグループを割り当てるときは、**既定のアクセス**以外のロールを選択する必要があります。 既定のアクセス ロールを持つユーザーは、プロビジョニングから除外され、プロビジョニング ログで実質的に資格がないとマークされます。 アプリケーションで使用できる唯一のロールが既定のアクセス ロールである場合は、[アプリケーション マニフェストを更新](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)してロールを追加することができます。 
 
-2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+* 小さいところから始めましょう。 全員にロールアウトする前に、少数のユーザーとグループでテストします。 プロビジョニングのスコープが割り当て済みユーザーとグループに設定される場合、これを制御するには、1 つまたは 2 つのユーザーまたはグループをアプリに割り当てます。 スコープがすべてのユーザーとグループに設定されている場合は、[属性ベースのスコープ フィルター](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)を指定できます。
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
-
-3. 新しいアプリケーションを追加するには、ウィンドウの上部にある **[新しいアプリケーション]** ボタンを選びます。
-
-    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
-
-4. 検索ボックスに「**15Five**」と入力し、結果パネルで **[15Five]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
-
-    ![結果一覧の 15Five](common/search-new-app.png)
-
-## <a name="configuring-automatic-user-provisioning-to-15five"></a>15Five への自動ユーザー プロビジョニングを構成する 
+## <a name="step-5-configure-automatic-user-provisioning-to-15five"></a>手順 5. 15Five への自動ユーザー プロビジョニングを構成する 
 
 このセクションでは、Azure AD プロビジョニング サービスを構成し、Azure AD でのユーザーやグループの割り当てに基づいて 15Five のユーザーやグループを作成、更新、無効化する手順について説明します。
-
-> [!TIP]
-> 15Five では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[15Five シングル サインオンのチュートリアル](15five-tutorial.md)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
 ### <a name="to-configure-automatic-user-provisioning-for-15five-in-azure-ad"></a>Azure AD で 15Five の自動ユーザー プロビジョニングを構成するには、次の操作を実行します。
 
@@ -119,7 +102,7 @@ Azure AD で自動ユーザー プロビジョニング用に 15Five を構成�
 
     ![[プロビジョニング] タブ](common/provisioning-automatic.png)
 
-5.  [管理者資格情報] セクションの **[テナント URL]** および **[シークレット トークン]** に、先ほど取得した **SCIM 2.0 ベース URL およびアクセス トークン**の値をそれぞれ入力します。 **[Test Connection]\(テスト接続\)** をクリックして、Azure AD から 15Five に接続できることを確認します。 接続できない場合は、その 15Five アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5.  [管理者資格情報] セクションの **[テナント URL]** フィールドと **[シークレット トークン]** フィールドに、先ほど取得した **SCIM 2.0 ベース URL と [アクセス トークン]** の値をそれぞれ入力します。 **[Test Connection]\(テスト接続\)** をクリックして、Azure AD から 15Five に接続できることを確認します。 接続できない場合は、その 15Five アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -131,19 +114,32 @@ Azure AD で自動ユーザー プロビジョニング用に 15Five を構成�
 
 8. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to 15Five]\(Azure Active Directory ユーザーを 15Five に同期する\)** を選択します。
 
-    ![15Five のユーザー マッピング](media/15five-provisioning-tutorial/usermapping.png)
-
 9. **[属性マッピング]** セクションで、Azure AD から 15Five に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で 15Five のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![15Five のユーザー属性](media/15five-provisioning-tutorial/userattribute.png)
+
+   |属性|Type|
+   |---|---|
+   |active|Boolean|
+   |title|String|
+   |emails[type eq "work"].value|String|
+   |userName|String|
+   |name.givenName|String|
+   |name.familyName|String|
+   |externalId|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|リファレンス|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|String|
+   |urn:ietf:params:scim:schemas:extension:15Five:2.0:User:location|String|
+   |urn:ietf:params:scim:schemas:extension:15Five:2.0:User:startDate|String|
 
 10. **[マッピング]** セクションの **[Synchronize Azure Active Directory Groups to 15Five]\(Azure Active Directory グループを 15Five に同期する\)** を選択します。
 
-    ![15Five のグループ マッピング](media/15five-provisioning-tutorial/groupmapping.png)
-
 11. **[属性マッピング]** セクションで、Azure AD から 15Five に同期されるグループ属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で 15Five のグループとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![15Five のグループ属性](media/15five-provisioning-tutorial/groupattribute.png)
+      |属性|Type|
+      |---|---|
+      |externalId|String|
+      |displayName|String|
+      |members|リファレンス|
 
 12. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
@@ -159,13 +155,22 @@ Azure AD で自動ユーザー プロビジョニング用に 15Five を構成�
 
     ![プロビジョニング構成の保存](common/provisioning-configuration-save.png)
 
-    これにより、 **[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって 15Five に対して実行されたすべてのアクションが記載されています。
+    これにより、 **[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。
 
-    Azure AD プロビジョニング ログの読み方について詳しくは、「[自動ユーザー アカウント プロビジョニングについてのレポート](../app-provisioning/check-status-user-account-provisioning.md)」をご覧ください。
+## <a name="step-6-monitor-your-deployment"></a>手順 6. デプロイを監視する
+プロビジョニングを構成したら、次のリソースを使用してデプロイを監視します。
+
+1. [プロビジョニング ログ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
+2. [進行状況バー](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
+3. プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)を参照してください。  
     
 ## <a name="connector-limitations"></a>コネクタの制限事項
 
-* 15Five では、ユーザーのハード削除はサポートされていません。
+* 15Five では、ユーザー向けに論理的な削除はサポートされていません。
+
+## <a name="change-log"></a>ログの変更
+
+* 2020/06/16 - ユーザー向けにエンタープライズ拡張属性 "Manager" とカスタム属性 "Location" と"Start Date" のサポートが追加されました。
 
 ## <a name="additional-resources"></a>その他のリソース
 

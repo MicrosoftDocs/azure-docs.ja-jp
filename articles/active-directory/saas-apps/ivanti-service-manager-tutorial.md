@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Ivanti Service Manager (ISM) の統合 | Microsoft Docs'
 description: Azure Active Directory と Ivanti Service Manager (ISM) の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 14297c74-0d57-4146-97fa-7a055fb73057
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e45903bfc54f2c685abea0a8e2924274a21e07b3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: db7838224b004d50234586d14e43e77a9c2ce26b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73157979"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552749"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ivanti-service-manager-ism"></a>チュートリアル: Azure Active Directory と Ivanti Service Manager (ISM) の統合
 
@@ -109,11 +104,11 @@ Ivanti Service Manager (ISM) で Azure AD シングル サインオンを構成�
 
     a. **[識別子]** ボックスに、次の形式で URL を入力します。
     
-    | |
-    |--|
-    | `https://<customer>.saasit.com/` |
-    | `https://<customer>.saasiteu.com/` |
-    | `https://<customer>.saasitau.com/` |
+    ```http
+    https://<customer>.saasit.com/
+    https://<customer>.saasiteu.com/
+    https://<customer>.saasitau.com/
+    ```
 
     b. **[応答 URL]** ボックスに、`https://<customer>/handlers/sso/SamlAssertionConsumerHandler.ashx` のパターンを使用して URL を入力します
 

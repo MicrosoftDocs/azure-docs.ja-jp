@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services ジョブの (エンコードおよび分析) エラー コード | Microsoft Docs
 description: この記事では、ジョブ エラー コードの参照トピックへのリンクを掲載し、関連トピックへの便利なリンクを提供しています。
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -10,23 +10,25 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 04/28/2019
-ms.author: juliako
-ms.openlocfilehash: d66347bc5510189b1d947b4c6b00345b0a56c3f7
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.topic: error-reference
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 272f32ebdba04009a67bf03d5e830ad8f9e649f3
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582214"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289564"
 ---
 # <a name="media-services-job-error-codes"></a>Media Services ジョブのエラー コード
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 このトピックでは、[ジョブ](transforms-jobs-concept.md) エラー コードとメッセージを詳細に説明する REST 参照ドキュメントへのリンクを提供しています。
 
 ## <a name="job-error-codes"></a>ジョブ エラー コード
 
-次の REST ドキュメントでは、[ジョブ エラー コード](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)に関して詳細に説明しています。
+次の REST ドキュメントでは、[ジョブ エラー コード](/rest/api/media/jobs/get#joberrorcode)に関して詳細に説明しています。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの送信、最新情報の入手
 

@@ -3,13 +3,14 @@ title: ApplicationInsights.config リファレンス - Azure | Microsoft Docs
 description: データ コレクション モジュールを有効または無効にし、パフォーマンス カウンターとその他のパラメーターを追加します。
 ms.topic: conceptual
 ms.date: 05/22/2019
+ms.custom: devx-track-csharp
 ms.reviewer: olegan
-ms.openlocfilehash: 3375c24739da8663aa6a40deeb53e02e65d1f9bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c0759e78b1adc1704acb602daa12cf9cabbe153
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537561"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934805"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>ApplicationInsights.config または .xml を使った Application Insights SDK の構成
 Application Insights .NET SDK は、いくつかの NuGet パッケージで構成されます。 [コア パッケージ](https://www.nuget.org/packages/Microsoft.ApplicationInsights) は、テレメトリを Application Insights に送信するための API を提供します。 [その他のパッケージ](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights)は、アプリケーションとそのコンテキストからテレメトリを自動的に追跡するためのテレメトリ *モジュール*と*初期化子*を提供します。 構成ファイルを調整することによって、テレメトリ モジュールと初期化子を有効または無効にしたり、その中のいくつかに対してパラメーターを設定したりできます。
@@ -21,7 +22,7 @@ Application Insights .NET SDK は、いくつかの NuGet パッケージで構�
 このドキュメントでは、構成ファイルの各セクション、SDK のコンポーネントの制御方法、それらのコンポーネントを読み込む NuGet パッケージについて説明します。
 
 > [!NOTE]
-> ApplicationInsights.config および .xml の手順は、.NET Core SDK には適用されません。 .NET Core アプリケーションを構成するには、[こちら](../../azure-monitor/app/asp-net-core.md)のガイドに従ってください。
+> ApplicationInsights.config および .xml の手順は、.NET Core SDK には適用されません。 .NET Core アプリケーションを構成するには、[こちら](./asp-net-core.md)のガイドに従ってください。
 
 ## <a name="telemetry-modules-aspnet"></a>テレメトリ モジュール (ASP.NET)
 各テレメトリ モジュールでは特定の種類のデータを収集し、コア API を利用してデータを送信します。 モジュールはさまざまな NuGet パッケージによりインストールされます。NuGet パッケージはまた、必要な行を .config ファイルに追加します。
@@ -29,9 +30,9 @@ Application Insights .NET SDK は、いくつかの NuGet パッケージで構�
 各モジュールの構成ファイルにノードが存在します。 モジュールを無効にするには、ノードを削除するか、コメント アウトします。
 
 ### <a name="dependency-tracking"></a>依存関係の追跡
-[依存関係の追跡](../../azure-monitor/app/asp-net-dependencies.md) により、アプリがデータベースと外部サービスに行った呼び出しに関するテレメトリが回収されます。 このモジュールを IIS サーバーで機能させるには、[Status Monitor をインストール][redfield]する必要があります。
+[依存関係の追跡](./asp-net-dependencies.md) により、アプリがデータベースと外部サービスに行った呼び出しに関するテレメトリが回収されます。 このモジュールを IIS サーバーで機能させるには、[Status Monitor をインストール][redfield]する必要があります。
 
-[TrackDependency API](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)を使用して、独自の依存関係追跡コードを記述することもできます。
+[TrackDependency API](./api-custom-events-metrics.md#trackdependency)を使用して、独自の依存関係追跡コードを記述することもできます。
 
 * `Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule`
 * [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) NuGet パッケージ
@@ -39,7 +40,7 @@ Application Insights .NET SDK は、いくつかの NuGet パッケージで構�
 エージェントベース (コードなし) アタッチを使用してコードを変更することなく、依存関係を自動収集できます。 これを Azure Web アプリで使用するには、[Application Insights 拡張機能](azure-web-apps.md)を有効にします。 Azure VM または Azure 仮想マシン スケール セットで使用するには、[VM と仮想マシン スケール セットのアプリケーション監視拡張](azure-vm-vmss-apps.md)を有効にします。
 
 ### <a name="performance-collector"></a>パフォーマンス コレクター
-CPU、メモリ、IIS インストールのネットワーク負荷など、[システム パフォーマンス カウンターを収集](../../azure-monitor/app/performance-counters.md)します。 自分で設定したパフォーマンス カウンターなど、回収するカウンターを指定できます。
+CPU、メモリ、IIS インストールのネットワーク負荷など、[システム パフォーマンス カウンターを収集](./performance-counters.md)します。 自分で設定したパフォーマンス カウンターなど、回収するカウンターを指定できます。
 
 * `Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule`
 * [Microsoft.ApplicationInsights.PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector) NuGet パッケージ
@@ -69,12 +70,12 @@ HTTP 要求の [応答時間と結果コード](../../azure-monitor/app/asp-net.
 
 * `Microsoft.ApplicationInsights.Web.ExceptionTrackingTelemetryModule`
 * [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet パッケージ
-* `Microsoft.ApplicationInsights.WindowsServer.UnobservedExceptionTelemetryModule` - [監視されていないタスクの例外](https://blogs.msdn.com/b/pfxteam/archive/2011/09/28/task-exception-handling-in-net-4-5.aspx)を追跡します。
+* `Microsoft.ApplicationInsights.WindowsServer.UnobservedExceptionTelemetryModule` - 監視されていないタスクの例外を追跡します
 * `Microsoft.ApplicationInsights.WindowsServer.UnhandledExceptionTelemetryModule` - worker ロール、Windows サービス、コンソール アプリケーションの未処理例外を追跡します。
 * [Application Insights Windows Server](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) NuGet パッケージ
 
 ### <a name="eventsource-tracking"></a>EventSource の追跡
-`EventSourceTelemetryModule` を使用すると、Application Insights にトレースとして送信される EventSource イベントを構成できます。 EventSource イベントの追跡については、「[EventSource イベントを使用する](../../azure-monitor/app/asp-net-trace-logs.md#use-eventsource-events)」をご覧ください。
+`EventSourceTelemetryModule` を使用すると、Application Insights にトレースとして送信される EventSource イベントを構成できます。 EventSource イベントの追跡については、「[EventSource イベントを使用する](./asp-net-trace-logs.md#use-eventsource-events)」をご覧ください。
 
 * `Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule`
 * [Microsoft.ApplicationInsights.EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener) 
@@ -86,7 +87,7 @@ HTTP 要求の [応答時間と結果コード](../../azure-monitor/app/asp-net.
 * [Microsoft.ApplicationInsights.EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector) 
 
 ### <a name="microsoftapplicationinsights"></a>Microsoft.ApplicationInsights
-Microsoft.ApplicationInsights パッケージには、SDK の[コア API](https://msdn.microsoft.com/library/mt420197.aspx) が含まれています。 その他のテレメトリ モジュールではこれが使用されると共に、[独自のテレメトリを定義するために使用する](../../azure-monitor/app/api-custom-events-metrics.md)ことも可能です。
+Microsoft.ApplicationInsights パッケージには、SDK の[コア API](/dotnet/api/microsoft.applicationinsights?view=azure-dotnet) が含まれています。 その他のテレメトリ モジュールではこれが使用されると共に、[独自のテレメトリを定義するために使用する](./api-custom-events-metrics.md)ことも可能です。
 
 * ApplicationInsights.config にエントリがありません。
 * [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) NuGet パッケージ この NuGet だけをインストールする場合、.config ファイルは生成されません。
@@ -100,7 +101,7 @@ Microsoft.ApplicationInsights パッケージには、SDK の[コア API](https:
 ## <a name="telemetry-initializers-aspnet"></a>テレメトリの初期化子 (ASP.NET)
 テレメトリの初期化子は、テレメトリのあらゆる項目と共に送信されるコンテキスト プロパティを設定します。
 
-[独自の初期化子を記述し](../../azure-monitor/app/api-filtering-sampling.md#add-properties) 、コンテキスト プロパティを設定できます。
+[独自の初期化子を記述し](./api-filtering-sampling.md#add-properties) 、コンテキスト プロパティを設定できます。
 
 標準の初期化子は Web または WindowsServer NuGet パッケージによりすべて設定されます。
 
@@ -120,11 +121,11 @@ Microsoft.ApplicationInsights パッケージには、SDK の[コア API](https:
 * `OperationNameTelemetryInitializer` は、HTTP メソッドのほか、ASP.NET MVC コントローラーの名前、要求の処理のために呼び出されるアクションに基づいて、すべてのテレメトリ項目の`RequestTelemetry` の `Name` プロパティと `Operation` コンテキストの `Name` プロパティを更新します。
 * `OperationIdTelemetryInitializer` または `OperationCorrelationTelemetryInitializer` は、追跡されたすべてのテレメトリ項目の `Operation.Id` コンテキスト プロパティを更新し、自動生成された `RequestTelemetry.Id` が付いた要求を処理します。
 * `SessionTelemetryInitializer` は、ユーザーのブラウザーで実行する Application Insights JavaScript インストルメンテーション コードが生成する `ai_session` Cookie から抽出された値を使用して、すべてのテレメトリ項目の `Session` コンテキストの `Id` プロパティを更新します。
-* `SyntheticTelemetryInitializer` または `SyntheticUserAgentTelemetryInitializer` は、可用性テストや検索エンジン ボットなど、合成ソースからの要求の処理時に追跡されるすべてのテレメトリ項目の `User`、`Session`、`Operation` コンテキスト プロパティを更新します。 既定では、 [メトリックス エクスプローラー](../../azure-monitor/platform/metrics-charts.md) には合成テレメトリは表示されません。
+* `SyntheticTelemetryInitializer` または `SyntheticUserAgentTelemetryInitializer` は、可用性テストや検索エンジン ボットなど、合成ソースからの要求の処理時に追跡されるすべてのテレメトリ項目の `User`、`Session`、`Operation` コンテキスト プロパティを更新します。 既定では、 [メトリックス エクスプローラー](../platform/metrics-charts.md) には合成テレメトリは表示されません。
 
     `<Filters>` は、要求の識別プロパティを設定します。
 * `UserTelemetryInitializer` は、ユーザーのブラウザーで実行する Application Insights JavaScript インストルメンテーション コードが生成する `ai_user` Cookie から抽出された値を使用して、すべてのテレメトリ項目の `User` コンテキストの `Id` および `AcquisitionDate` プロパティを更新します。
-* `WebTestTelemetryInitializer` は、[可用性テスト](../../azure-monitor/app/monitor-web-app-availability.md)からの HTTP 要求に対してユーザー ID、セッション ID、および合成ソース プロパティを設定します。
+* `WebTestTelemetryInitializer` は、[可用性テスト](./monitor-web-app-availability.md)からの HTTP 要求に対してユーザー ID、セッション ID、および合成ソース プロパティを設定します。
   `<Filters>` は、要求の識別プロパティを設定します。
 
 Service Fabric で実行されている .NET アプリケーションの場合、`Microsoft.ApplicationInsights.ServiceFabric` NuGet パッケージを含めることができます。 このパッケージには、Service Fabric のプロパティをテレメトリ項目に追加する `FabricTelemetryInitializer` が含まれています。 詳細については、この NuGet パッケージによって追加されるプロパティに関する [GitHub のページ](https://github.com/Microsoft/ApplicationInsights-ServiceFabric/blob/master/README.md)をご覧ください。
@@ -132,7 +133,7 @@ Service Fabric で実行されている .NET アプリケーションの場合�
 ## <a name="telemetry-processors-aspnet"></a>テレメトリ プロセッサ (ASP.NET)
 テレメトリ プロセッサは、SDK からポータルに送信される直前の各テレメトリ項目をフィルター処理して変更できます。
 
-[独自のテレメトリ プロセッサを記述](../../azure-monitor/app/api-filtering-sampling.md#filtering)できます。
+[独自のテレメトリ プロセッサを記述](./api-filtering-sampling.md#filtering)できます。
 
 #### <a name="adaptive-sampling-telemetry-processor-from-200-beta3"></a>アダプティブ サンプリング テレメトリ プロセッサー (2.0.0-beta3 以降)
 この機能は、既定では有効になっています。 アプリが多数のテレメトリを送信する場合、このプロセッサはその一部を削除します。
@@ -149,10 +150,10 @@ Service Fabric で実行されている .NET アプリケーションの場合�
 
 パラメーターは、アルゴリズムが実現しようとするターゲットを指定します。 SDK の各インスタンスは独立して機能するため、サーバーが複数のコンピューターのクラスターである場合、テレメトリの実際の量もそれに応じて増加します。
 
-[サンプリングの詳細についてはこちらを参照してください](../../azure-monitor/app/sampling.md)。
+[サンプリングの詳細についてはこちらを参照してください](./sampling.md)。
 
 #### <a name="fixed-rate-sampling-telemetry-processor-from-200-beta1"></a>固定レート サンプリング テレメトリ プロセッサー (2.0.0-beta1 以降)
-標準的な[サンプリング テレメトリ プロセッサ](../../azure-monitor/app/api-filtering-sampling.md)も用意されています (2.0.1 以降)。
+標準的な[サンプリング テレメトリ プロセッサ](./api-filtering-sampling.md)も用意されています (2.0.1 以降)。
 
 ```XML
 
@@ -289,11 +290,12 @@ API の詳細については、[こちら][api]をご覧ください。
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[client]: ../../azure-monitor/app/javascript.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[exceptions]: ../../azure-monitor/app/asp-net-exceptions.md
-[netlogs]: ../../azure-monitor/app/asp-net-trace-logs.md
-[new]: ../../azure-monitor/app/create-new-resource.md 
-[redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[api]: ./api-custom-events-metrics.md
+[client]: ./javascript.md
+[diagnostic]: ./diagnostic-search.md
+[exceptions]: ./asp-net-exceptions.md
+[netlogs]: ./asp-net-trace-logs.md
+[new]: ./create-new-resource.md
+[redfield]: ./monitor-performance-live-website-now.md
+[start]: ./app-insights-overview.md
+

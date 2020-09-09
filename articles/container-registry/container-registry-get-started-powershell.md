@@ -1,15 +1,15 @@
 ---
-title: クイックスタート - レジストリを作成する - Powershell
+title: クイック スタート - レジストリを作成する - PowerShell
 description: Azure Container Registry で PowerShell を使用してプライベート Docker レジストリを作成する方法を簡単に説明します
 ms.topic: quickstart
 ms.date: 01/22/2019
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 872b2a29444e5278db34ce44741e2ca90d885702
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: seodec18, mvc, devx-track-azurepowershell
+ms.openlocfilehash: 91d4209ccf558bf7c8038d8a753ec038428bc484
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74456381"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076465"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用してプライベート コンテナー レジストリを作成する
 
@@ -51,7 +51,7 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 $registry = New-AzContainerRegistry -ResourceGroupName "myResourceGroup" -Name "myContainerRegistry007" -EnableAdminUser -Sku Basic
 ```
 
-このクイック スタートでは、*Basic* レジストリを作成します。これは、Azure Container Registry について学習している開発者にとって、コストが最適なオプションです。 利用可能なサービス レベルの詳細については、[コンテナー レジストリの SKU][container-registry-skus] に関するページを参照してください。
+このクイック スタートでは、*Basic* レジストリを作成します。これは、Azure Container Registry について学習している開発者にとって、コストが最適なオプションです。 利用可能なサービス レベルの詳細については、[コンテナー レジストリのサービス レベル][container-registry-skus]に関するページを参照してください。
 
 ## <a name="log-in-to-registry"></a>レジストリへのログイン
 
@@ -86,7 +86,10 @@ Remove-AzResourceGroup -Name myResourceGroup
 このクイック スタートでは、Azure PowerShell を使って Azure Container Registry を作成し、コンテナー イメージをプッシュしてから、レジストリからイメージをプルして実行しました。 Azure Container Registry のチュートリアルに進んで、ACR についての理解を深めましょう。
 
 > [!div class="nextstepaction"]
-> [Azure Container Registry のチュートリアル][container-registry-tutorial-quick-task]
+> [Azure Container Registry のチュートリアル][container-registry-tutorial-prepare-registry]
+
+> [!div class="nextstepaction"]
+> [Azure Container Registry タスクのチュートリアル][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
@@ -105,3 +108,4 @@ Remove-AzResourceGroup -Name myResourceGroup
 [Remove-AzResourceGroup]: /powershell/module/az.resources/remove-azresourcegroup
 [container-registry-tutorial-quick-task]: container-registry-tutorial-quick-task.md
 [container-registry-skus]: container-registry-skus.md
+[container-registry-tutorial-prepare-registry]: container-registry-tutorial-prepare-registry.md

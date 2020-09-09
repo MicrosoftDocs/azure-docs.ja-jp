@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge for advanced deployment flow so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: eb7bb7933303aaf16f320e219ad3673bf1efde72
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 59983530d93885f28dfb1625ca6d58fe572609b8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82564660"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080483"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-for-advanced-deployment-flow"></a>チュートリアル:詳細なデプロイ フローのために Azure Stack Edge でデータを変換する
 
@@ -22,7 +22,7 @@ ms.locfileid: "82564660"
 
 コンピューティングは、デバイスでのシンプルまたは詳細なデプロイ フロー用に構成できます。
 
-|                  | 単純なデプロイ                                | 詳細なデプロイ                   |
+| 条件 | 単純なデプロイ                                | 詳細なデプロイ                   |
 |------------------|--------------------------------------------------|---------------------------------------|
 | 対象者     | IT 管理者                                | 開発者                            |
 | Type             | Azure Stack Edge サービスを使ってモジュールをデプロイする      | IoT Hub サービスを使ってモジュールをデプロイする |
@@ -215,9 +215,9 @@ Azure Stack Edge でコンピューティングを構成するために、IoT Hu
 
         ![カスタム モジュールを追加する](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-6.png)
  
-5.    **[ルートの指定]** で、モジュール間のルートを設定します。  
-    
-    ![ルートの指定](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-7.png)
+5. **[ルートの指定]** で、モジュール間のルートを設定します。  
+   
+   ![ルートの指定](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-7.png)
 
     *route* は、前にコピーした次のルート文字列に置き換えることができます。 この例では、クラウド共有にデータをプッシュするローカル共有の名前を入力します。 `modulename` は、モジュールの名前に置き換えます。 **[次へ]** を選択します。
         
@@ -227,9 +227,9 @@ Azure Stack Edge でコンピューティングを構成するために、IoT Hu
 
     ![[ルートの指定] セクション](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-8.png)
 
-6.    **[Review deployment]\(デプロイの確認\)** ですべての設定を確認してから **[送信]** を選択し、デプロイのためにモジュールを送信します。
+6. **[Review deployment]\(デプロイの確認\)** ですべての設定を確認してから **[送信]** を選択し、デプロイのためにモジュールを送信します。
 
-    ![[モジュールの設定] ページ](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-9.png)
+   ![[モジュールの設定] ページ](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-9.png)
  
     このアクションにより、モジュールのデプロイが始まります。 デプロイが完了すると、モジュールの **[ランタイムの状態]** は **[実行中]** になります。
 
@@ -241,13 +241,13 @@ Azure Stack Edge でコンピューティングを構成するために、IoT Hu
 
 データの変換を検証して Azure に転送するには、次の手順のようにします。
  
-1.    エクスプローラーで、先ほど作成した Edge ローカル共有と Edge 共有の両方に接続します。
+1. エクスプローラーで、先ほど作成した Edge ローカル共有と Edge 共有の両方に接続します。
 
-    ![データ変換を検証する](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-2.png)
+   ![データ変換を検証する](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-2.png)
  
-1.    データをローカル共有に追加します。
+1. データをローカル共有に追加します。
 
-    ![データ変換を検証する](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-3.png)
+   ![データ変換を検証する](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-3.png)
  
     そのデータはクラウド共有に移動されます。
 

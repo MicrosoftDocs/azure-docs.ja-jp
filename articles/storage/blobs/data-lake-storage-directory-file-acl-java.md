@@ -4,16 +4,17 @@ description: Java 用 Azure Storage ライブラリを使用して、階層型�
 author: normesta
 ms.service: storage
 ms.date: 03/20/2020
+ms.custom: devx-track-java
 ms.author: normesta
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 45870dd7d3035b6b49340fd6e8016794088e775a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f7dfda46c7a4af8143c33b1b45001a88d3bed88
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80061555"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319390"
 ---
 # <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Java を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する
 
@@ -105,11 +106,11 @@ static public DataLakeServiceClient GetDataLakeServiceClient
 > その他の例については、「[Java 用 Azure ID クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity)」のドキュメントを参照してください。
 
 
-## <a name="create-a-file-system"></a>ファイル システムを作成する
+## <a name="create-a-container"></a>コンテナーを作成する
 
-ファイル システムは、ファイルのコンテナーとして機能します。 これは、**DataLakeServiceClient.createFileSystem** メソッドを呼び出すことで作成できます。
+コンテナーは、ファイルのファイル システムとして機能します。 これは、**DataLakeServiceClient.createFileSystem** メソッドを呼び出すことで作成できます。
 
-この例では、`my-file-system` という名前のファイル システムを作成します。 
+この例では、`my-file-system` という名前のコンテナーを作成します。 
 
 ```java
 static public DataLakeFileSystemClient CreateFileSystem
@@ -123,7 +124,7 @@ static public DataLakeFileSystemClient CreateFileSystem
 
 **DataLakeFileSystemClient.createDirectory** メソッドを呼び出して、ディレクトリ参照を作成します。
 
-この例では、`my-directory` という名前のディレクトリをファイル システムに追加してから、`my-subdirectory` という名前のサブディレクトリを追加します。 
+この例では、`my-directory` という名前のディレクトリをコンテナーに追加してから、`my-subdirectory` という名前のサブディレクトリを追加します。 
 
 ```java
 static public DataLakeDirectoryClient CreateDirectory
@@ -192,7 +193,7 @@ static public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient){
 この例では、`my-directory` という名前のディレクトリの ACL を取得して設定します。 この例では、所有ユーザーには読み取り、書き込み、実行のアクセス許可を付与し、所有グループには読み取りと実行のアクセス許可のみを付与し、他のすべてのユーザーには読み取りアクセスを付与します。
 
 > [!NOTE]
-> アプリケーションが Azure Active Directory (Azure AD) を使用してアクセスを承認している場合は、アクセスを承認するためにアプリケーションで使用されているセキュリティ プリンシパルに、[ストレージ BLOB データ所有者ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)が割り当てられていることを確認します。 ACL アクセス許可の適用方法とその変更による影響の詳細については、「[Azure Data Lake Store Gen2 のアクセス制御](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)」を参照してください。
+> アプリケーションが Azure Active Directory (Azure AD) を使用してアクセスを承認している場合は、アクセスを承認するためにアプリケーションで使用されているセキュリティ プリンシパルに、[ストレージ BLOB データ所有者ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)が割り当てられていることを確認します。 ACL アクセス許可の適用方法とその変更による影響の詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)」を参照してください。
 
 ```java
 static public void ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient){
@@ -231,6 +232,8 @@ static public void ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient
 }
 
 ```
+
+また、コンテナのルート ディレクトリの ACL を取得して設定することもできます。 ルート ディレクトリを取得するには、**DataLakeFileSystemClient.getDirectoryClient** メソッドに空の文字列 (`""`) を渡します。
 
 ## <a name="upload-a-file-to-a-directory"></a>ファイルをディレクトリにアップロードする
 

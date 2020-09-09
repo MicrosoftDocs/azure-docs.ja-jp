@@ -4,15 +4,16 @@ description: Azure portal またはアカウント センターで Azure への�
 author: v-miegge
 ms.reviewer: judupont
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 02/13/2020
+ms.subservice: billing
+ms.topic: troubleshooting
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 0eeddc26ac1a1f286d8ed253f3fe097f0e7de91f
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 7e30d7a7b4636f256980927446108c78c2b8b480
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409395"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88686532"
 ---
 # <a name="troubleshoot-a-declined-card-at-azure-sign-up"></a>Azure へのサインアップ時にカードが拒否される問題のトラブルシューティング
 
@@ -20,9 +21,9 @@ Microsoft Azure portal または Azure アカウント センターで、Azure �
 
 この問題を解決するには、以下のトピックの中から、発生しているエラーに最も近いものを選択してください。
 
-## <a name="the-credit-card-provider-is-not-accepted-for-your-country"></a>お住まいの国でクレジット カード会社がサポートされていない
+## <a name="the-credit-card-provider-is-not-accepted-for-your-countryregion"></a>お住まいの国/地域でクレジット カード会社がサポートされていない
 
-カードを選択すると、選択した国で有効なカード オプションが表示されます。 ご利用の銀行またはカード発行会社に連絡して、クレジット カードが国際取引に対応しているかどうかを確認してください。 サポートされている国と通貨の詳細については、[Azure の購入に関する FAQ](https://azure.microsoft.com/pricing/faq/) を参照してください。
+カードを選択すると、選択した国/地域で有効なカード オプションが表示されます。 ご利用の銀行またはカード発行会社に連絡して、クレジット カードが国際取引に対応しているかどうかを確認してください。 サポートされている国/地域と通貨の詳細については、[Azure の購入に関する FAQ](https://azure.microsoft.com/pricing/faq/) を参照してください。
 
 >[!Note]
 >現在、インドでは、American Express クレジット カードが支払い方法としてサポートされていません。 支払形式として承認される時期は未定です。
@@ -47,7 +48,7 @@ Azure のサインアップに関する問題をトラブルシューティン�
 
 ## <a name="you-represent-a-business-that-doesnt-want-to-pay-by-card"></a>カードでの支払いを希望しない企業による
 
-法人のお客様は、Azure サブスクリプションの支払いに、小切手、オーバーナイト小切手、電信送金など、請求書による支払い方法を利用できます。 請求書で支払うようにアカウントを設定した後は、Microsoft 顧客契約を締結していて、Azure Web サイト経由で Azure にサインアップする場合を除き、別の支払オプションに変更することはできません。
+法人のお客様は、Azure サブスクリプションの支払いに、小切手、オーバーナイト小切手、電信送金など、請求書による支払い方法を利用できます。 請求書で支払うようにアカウントを設定した後は、Microsoft 顧客契約を締結していて、Azure Web サイト経由で Azure にサインアップしている場合を除き、別の支払オプションに変更することはできません。
 
 請求書による支払い方法の詳細については、[Azure サブスクリプションの支払いを請求書で行うための要求を送信する方法](pay-by-invoice.md)に関するページを参照してください。
 

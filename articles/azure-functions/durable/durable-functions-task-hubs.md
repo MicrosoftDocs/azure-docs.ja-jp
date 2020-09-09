@@ -3,14 +3,14 @@ title: Durable Functions におけるタスク ハブ - Azure
 description: Azure Functions の Durable Functions 拡張機能におけるタスク ハブについて説明します。 タスク ハブを構成する方法について説明します。
 author: cgillum
 ms.topic: conceptual
-ms.date: 11/03/2019
+ms.date: 07/14/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 427ab6c4e0e769ab881af0af3023d514c1b092c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 26234039c77601bc1d29beeebd3fcb8461d6d6c9
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81604612"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432697"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Durable Functions におけるタスク ハブ (Azure Functions)
 
@@ -110,12 +110,12 @@ ms.locfileid: "81604612"
 [FunctionName("HttpStart")]
 public static async Task<HttpResponseMessage> Run(
     [HttpTrigger(AuthorizationLevel.Function, methods: "post", Route = "orchestrators/{functionName}")] HttpRequestMessage req,
-    [OrchestrationClient(TaskHub = "%MyTaskHub%")] IDurableOrchestrationClient starter,
+    [DurableClient(TaskHub = "%MyTaskHub%")] IDurableOrchestrationClient starter,
     string functionName,
     ILogger log)
 {
     // Function input comes from the request content.
-    dynamic eventData = await req.Content.ReadAsAsync<object>();
+    object eventData = await req.Content.ReadAsAsync<object>();
     string instanceId = await starter.StartNewAsync(functionName, eventData);
 
     log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
@@ -128,6 +128,19 @@ public static async Task<HttpResponseMessage> Run(
 > 前記の C# の例は Durable Functions 2.x 用です。 Durable Functions 1.x の場合、`IDurableOrchestrationContext` の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+`function.json` ファイルのタスク ハブ プロパティは、アプリ設定を通じて設定されます。
+
+```json
+{
+    "name": "input",
+    "taskHub": "%MyTaskHub%",
+    "type": "orchestrationClient",
+    "direction": "in"
+}
+```
+
+# <a name="python"></a>[Python](#tab/python)
 
 `function.json` ファイルのタスク ハブ プロパティは、アプリ設定を通じて設定されます。
 

@@ -12,19 +12,23 @@ manager: daveba
 ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fceaa203944074b0c3fcf5cb6254f1e87ac16cba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 866fa7333565a1875984aa5640d2028b6e399df1
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79480982"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949543"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Azure MFA Server と Active Directory 間のディレクトリ統合
 
 Azure MFA Server を Active Directory や別の LDAP ディレクトリと統合するには、Azure MFA Server の [ディレクトリの統合] セクションを使用します。 そのディレクトリ スキーマに合わせて属性を構成したり、自動ユーザー同期を設定したりすることができます。
 
 > [!IMPORTANT]
-> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなります。 ユーザーからの多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication を使用していただく必要があります。 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、最新バージョンの今後の更新プログラムをダウンロードし、アクティブ化資格情報を通常どおり生成することができます。
+> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなりました。 サインイン イベント時に多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication (MFA) を使用していただく必要があります。
+>
+> クラウドベースの MFA の使用を開始するには、「[チュートリアル: Azure Multi-Factor Authentication を使用してユーザーのサインイン イベントのセキュリティを確保する](tutorial-enable-azure-mfa.md)」を参照してください。
+>
+> 2019 年 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、最新バージョンの今後の更新プログラムをダウンロードし、アクティブ化資格情報を通常どおり生成することができます。
 
 ## <a name="settings"></a>設定
 
@@ -35,7 +39,7 @@ Azure MFA Server を Active Directory や別の LDAP ディレクトリと統合
 > [!NOTE]
 > ディレクトリ統合では、Active Directory Domain Services 以外のディレクトリの操作は保証されません。
 
-| 機能 | 説明 |
+| 特徴量 | 説明 |
 | --- | --- |
 | Active Directory を使用する |インポートと同期のために Active Directory を使用するには、[Active Directory を使用する] オプションを選択します。  これが既定の設定です。 <br>注:Active Directory 統合が正しく機能するためには、対象のコンピューターをドメインに参加させ、ドメイン アカウントでサインインする必要があります。 |
 | 信頼できるドメインを含める |エージェントに、現在のドメイン、フォレスト内の別のドメイン、またはフォレストの信頼に関係するドメインによって信頼されているドメインへの接続を試行させるには、 **[信頼できるドメインを含める]** チェック ボックスをオンにします。  信頼できるドメインからユーザーをインポートしないまたは同期しない場合は、パフォーマンスを向上させるためにチェックボックスをオフにします。  既定値はオンです。 |
@@ -45,7 +49,7 @@ Azure MFA Server を Active Directory や別の LDAP ディレクトリと統合
 
 次の表で、LDAP 構成設定について説明します。
 
-| 機能 | 説明 |
+| 特徴量 | 説明 |
 | --- | --- |
 | サーバー |LDAP ディレクトリを実行するサーバーのホスト名または IP アドレスを入力します。  セミコロンで区切ることで、バックアップ サーバーも指定できます。 <br>注:バインドの種類が SSL (TLS) の場合、完全修飾ホスト名を指定する必要があります。 |
 | ベース DN |すべてのディレクトリ クエリの開始元となるベース ディレクトリ オブジェクトの識別名を入力します。  例: dc=abc、dc=com |
@@ -76,11 +80,11 @@ Azure Multi-Factor Authentication には、次の 3 つのフィルター オプ
 
 ![MFA Server でディレクトリ統合属性をカスタマイズする](./media/howto-mfaserver-dir-ad/dirint3.png)
 
-| 機能 | 説明 |
+| 特徴量 | 説明 |
 | --- | --- |
 | 一意識別子 |コンテナー、セキュリティ グループ、およびユーザー レコードの一意識別子として機能する属性の属性名を入力します。  Active Directory では、これは通常は objectGUID です。 その他の LDAP 実装では、entryUUID またはそれに類似する名前が使用されることがあります。  既定値は objectGUID です。 |
 | 一意識別子の型 |一意識別子属性の型を選択します。  Active Directory では、objectGUID 属性の型は GUID です。 その他の LDAP 実装では、ASCII バイト配列型または文字列型が使用されることがあります。  既定値は [GUID] です。 <br><br>同期項目はその一意識別子によって参照されるため、この型を正しく設定することが重要です。 ディレクトリから目的のオブジェクトを直接検索するときに一意識別子の型が使用されます。  ディレクトリに実際に保存されている値が ASCII 文字のバイト配列のときに型を [文字列] に設定すると、同期が正常に機能しなくなります。 |
-| 識別名 |各レコードの識別名を含む属性の属性名を入力します。  Active Directory では、これは通常は distinguishedName です。 その他の LDAP 実装では、entryDN またはそれに類似する名前が使用されることがあります。  既定値は distinguishedName です。 <br><br>識別名のみが含まれている属性が存在しない場合は、AD パス属性を使用できます。  パスの "LDAP://\<サーバー\>/" 部分は自動的に削除され、オブジェクトの識別名だけが残ります。 |
+| 識別名 |各レコードの識別名を含む属性の属性名を入力します。  Active Directory では、これは通常は distinguishedName です。 その他の LDAP 実装では、entryDN またはそれに類似する名前が使用されることがあります。  既定値は distinguishedName です。 <br><br>識別名のみが含まれている属性が存在しない場合は、AD パス属性を使用できます。  パスの "LDAP://\<server\>/" 部分は自動的に削除され、オブジェクトの識別名だけが残ります。 |
 | コンテナー名 |コンテナー レコード内の名前を含む属性の属性名を入力します。  この属性の値は、Active Directory からインポートするとき、または同期項目を追加するときに、コンテナー階層に表示されます。  既定値は name です。 <br><br>注: コンテナーごとに異なる属性をその名前に使用する場合は、複数のコンテナー名属性をセミコロンで区切って指定します。  コンテナー オブジェクトで見つかった最初のコンテナー名の属性が、名前を表示するために使用されます。 |
 | セキュリティ グループ名 |セキュリティ グループ レコード内の名前を含む属性の属性名を入力します。  この属性の値は、Active Directory からインポートするとき、または同期項目を追加するときに、セキュリティ グループ リストに表示されます。  既定値は name です。 |
 | ユーザー名 |ユーザー レコード内のユーザー名を含む属性の属性名を入力します。  この属性の値は、Multi-Factor Auth Server ユーザー名として使用されます。  2 つ目の属性を 1 つ目の属性のバックアップとして指定できます。  2 つ目の属性は、1 つ目の属性にユーザーの値が含まれていない場合にのみ使用されます。  既定値は userPrincipalName と sAMAccountName です。 |
@@ -121,7 +125,7 @@ LDAP ディレクトリが DirSync に対応していて、かつ DirSync を使
 
 [同期] タブの各設定については、以下の表でさらに詳しく説明します。
 
-| 機能 | 説明 |
+| 特徴量 | 説明 |
 | --- | --- |
 | Active Directory との同期を有効にする |オンにした場合、Multi-Factor Auth Server サービスは、Active Directory の変更を定期的にポーリングします。 <br><br>注:Multi-Factor Auth Server サービスで変更の処理を開始する前に、少なくとも 1 つの同期項目を追加し、[今すぐ同期] を実行する必要があります。 |
 | 同期間隔: |Multi-Factor Auth Server サービスが、ポーリングと変更の処理を実行するために待機する時間間隔を指定します。 <br><br> 注:指定する間隔は、各サイクルの先頭と先頭の間の時間です。  変更の処理時間が間隔時間を超過した場合、サービスは次のポーリングをすぐに実行します。 |

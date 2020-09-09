@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: シームレス シングル サインオン - クイック スタート| Microsoft Docs'
+title: Azure AD Connect:シームレス シングル サインオン - クイック スタート| Microsoft Docs
 description: この記事では、Azure Active Directory シームレス シングル サインオンの開始方法について説明します
 services: active-directory
 keywords: Azure AD Connect とは, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン
@@ -11,19 +11,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ec56d37ca2c0a199968707b3d93f4797be2beca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1387c8525ec14b1db330252b78474bba66db8b5b
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230155"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276135"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory シームレス シングル サインオン: クイック スタート
+# <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory シームレス シングル サインオン:クイック スタート
 
 ## <a name="deploy-seamless-single-sign-on"></a>シームレス シングル サインオンのデプロイ
 
@@ -31,31 +31,31 @@ Azure Active Directory (Azure AD) シームレス シングル サインオン (
 
 シームレス SSO をデプロイするには、以下の手順に従います。
 
-## <a name="step-1-check-the-prerequisites"></a>手順 1: 前提条件を確認する
+## <a name="step-1-check-the-prerequisites"></a>手順 1:前提条件を確認する
 
 次の前提条件が満たされていることを確認します。
 
-* **Azure AD Connect サーバーがセットアップされている**: サインイン方法として[パススルー認証](how-to-connect-pta.md)を使用する場合、他に確認すべき前提条件はありません。 サインイン方法として[パスワード ハッシュ同期](how-to-connect-password-hash-synchronization.md)を使用する場合や、Azure AD Connect と Azure AD の間にファイアウォールがある場合は、次の点を確認してください。
+* **Azure AD Connect サーバーがセットアップされている**:サインイン方法として[パススルー認証](how-to-connect-pta.md)を使用する場合、他に確認すべき前提条件はありません。 サインイン方法として[パスワード ハッシュ同期](how-to-connect-password-hash-synchronization.md)を使用する場合や、Azure AD Connect と Azure AD の間にファイアウォールがある場合は、次の点を確認してください。
    - Azure AD Connect バージョン 1.1.644.0 以降を使用している。 
-   - ファイアウォールまたはプロキシで DNS ホワイトリストを許可している場合は、 **\*.msappproxy.net** の URL に対するポート 443 での接続をホワイトリストに登録します。 そうでない場合は、毎週更新される [Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可します。 この前提条件は、その機能を有効にした場合にのみ適用されます。 実際のユーザー サインインに必要な条件ではありません。
+   - ファイアウォールまたはプロキシで許可している場合は、 **\*.msappproxy.net** の URL に対するポート 443 での許可リストへの接続を追加します。 そうでない場合は、毎週更新される [Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可します。 この前提条件は、その機能を有効にした場合にのみ適用されます。 実際のユーザー サインインに必要な条件ではありません。
 
     >[!NOTE]
-    >Azure AD Connect のバージョン 1.1.557.0、1.1.558.0、1.1.561.0、1.1.614.0 には、パスワード ハッシュ同期に関連する問題があります。 パスワード ハッシュ同期をパススルー認証と組み合わせて使用 _しない_ 場合の詳細については、[Azure AD Connect のリリース ノート](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470)をご覧ください。
+    >Azure AD Connect のバージョン 1.1.557.0、1.1.558.0、1.1.561.0、1.1.614.0 には、パスワード ハッシュ同期に関連する問題があります。 パスワード ハッシュ同期をパススルー認証と組み合わせて使用 _しない_ 場合の詳細については、[Azure AD Connect のリリース ノート](./reference-connect-version-history.md)をご覧ください。
 
-* **サポートされている Azure AD Connect トポロジを使用する**: 使用している Azure AD Connect トポロジが[こちら](plan-connect-topologies.md)で説明されているサポートされているトポロジの 1 つであることを確認してください。
+* **サポートされている Azure AD Connect トポロジを使用する**:使用している Azure AD Connect トポロジが[こちら](plan-connect-topologies.md)で説明されているサポートされているトポロジの 1 つであることを確認してください。
 
     >[!NOTE]
     >シームレス SSO では、AD フォレスト間に AD 信頼があるかどうかを問わず、複数の AD フォレストがサポートされます。
 
-* **ドメイン管理者の資格情報がセットアップされている**: 次の各 Active Directory フォレストについて、ドメイン管理者の資格情報が必要です。
+* **ドメイン管理者の資格情報がセットアップされている**:次の各 Active Directory フォレストについて、ドメイン管理者の資格情報が必要です。
     * Azure AD Connect を使用して Azure AD に同期している。
     * シームレス SSO を有効にさせたいユーザーが含まれている。
     
-* **先進認証を有効にする**: この機能を作動させるには、テナントで[先進認証](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016)を有効にする必要があります。
+* **先進認証を有効にする**:この機能を作動させるには、テナントで[先進認証](/office365/enterprise/modern-auth-for-office-2013-and-2016)を有効にする必要があります。
 
-* **Office 365 クライアントの最新版を使用する**: Office 365 クライアント (Outlook、Word、Excel、その他) でサイレント サインオンを利用するには、ユーザーは 16.0.8730.xxxx 以上のバージョンを使用している必要があります。
+* **Office 365 クライアントの最新版を使用する**:Office 365 クライアント (Outlook、Word、Excel、その他) でサイレント サインオンを利用するには、ユーザーは 16.0.8730.xxxx 以上のバージョンを使用している必要があります。
 
-## <a name="step-2-enable-the-feature"></a>手順 2: 機能を有効にする
+## <a name="step-2-enable-the-feature"></a>手順 2:機能を有効にする
 
 [Azure AD Connect](whatis-hybrid-identity.md) を使用してシームレス SSO を有効にします。
 
@@ -67,11 +67,11 @@ Azure Active Directory (Azure AD) シームレス シングル サインオン (
 >[!NOTE]
 > このオプションは、サインオンの方法が**パスワード ハッシュ同期**または**パススルー認証**の場合にのみ選択できます。
 
-![Azure AD Connect: [ユーザー サインイン]](./media/how-to-connect-sso-quick-start/sso8.png)
+![Azure AD Connect:ユーザーのサインイン](./media/how-to-connect-sso-quick-start/sso8.png)
 
 Azure AD Connect を既にインストールしている場合は、Azure AD Connect の **[ユーザー サインインの変更]** ページを選択して、 **[次へ]** を選択します。 Azure AD Connect バージョン 1.1.880.0 以降を使用している場合、既定で **[シングル サインオンを有効にする]** オプションが選択されています。 それ以前のバージョンの Azure AD Connect を使用している場合は、 **[シングル サインオンを有効にする]** オプションを選択します。
 
-![Azure AD Connect: [ユーザー サインインの変更]](./media/how-to-connect-sso-quick-start/changeusersignin.png)
+![Azure AD Connect:ユーザー サインインの変更](./media/how-to-connect-sso-quick-start/changeusersignin.png)
 
 **[シングル サインオンを有効にする]** ページが表示されるまで、ウィザードの手順を続行します。 次の各 Active Directory フォレストのドメイン管理者の資格情報を入力します。
 
@@ -90,7 +90,7 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 3. **[Azure AD Connect]** を選びます。
 4. **[シームレスなシングル サインオン]** 機能が **[有効]** になっていることを確認します。
 
-![Azure Portal: Azure AD Connect ウィンドウ](./media/how-to-connect-sso-quick-start/sso10.png)
+![Azure portal:[Azure AD Connect] ウィンドウ](./media/how-to-connect-sso-quick-start/sso10.png)
 
 >[!IMPORTANT]
 > シームレス SSO は、各 Active Directory (AD) フォレスト内のオンプレミスの AD に `AZUREADSSOACC` という名前のコンピューター アカウントを作成します。 `AZUREADSSOACC` コンピューター アカウントは、セキュリティ上の理由から強固に保護する必要があります。 ドメイン管理者だけがこのコンピューター アカウントを管理できるようにしてください。 コンピューター アカウント上で Kerberos 委任が無効になっていること、および Active Directory 内の他のどのアカウントにも、`AZUREADSSOACC` コンピューター アカウント上の委任のアクセス許可がないことを確認してください。 このコンピューター アカウントは、不注意で削除されるおそれがなく、ドメイン管理者のみがアクセスできる組織単位 (OU) に格納してください。
@@ -98,7 +98,7 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 >[!NOTE]
 > オンプレミス環境内で Pass-the-Hash および Credential Theft Mitigation アーキテクチャを使用している場合は、適切な変更を行って `AZUREADSSOACC` コンピューター アカウントが最終的に検疫コンテナー内にないことを確認します。 
 
-## <a name="step-3-roll-out-the-feature"></a>手順 3: 機能をロールアウトする
+## <a name="step-3-roll-out-the-feature"></a>手順 3:機能をロールアウトする
 
 以下の指示に従い、シームレス SSO をユーザーに徐々にロールアウトできます。 まず、Active Directory のグループ ポリシーを利用し、すべてのユーザー、または選択したユーザーのイントラネット ゾーン設定に次の Azure AD URL を追加します。
 
@@ -127,14 +127,14 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 3. **[ユーザーの構成]**  >  **[ポリシー]**  >  **[管理用テンプレート]**  >  **[Windows コンポーネント]**  >  **[Internet Explorer]**  >  **[インターネット コントロール パネル]**  >  **[セキュリティ ページ]** の順に移動します。 次に **[サイトとゾーンの割り当て一覧]** を選択します。
     ![シングル サインオン](./media/how-to-connect-sso-quick-start/sso6.png)
 4. ポリシーを有効にしてから、ダイアログ ボックスに次の値を入力します。
-   - **[値の名前]** : Kerberos チケットの転送先となる Azure AD URL。
-   - **[値]** (データ): **1** (イントラネット ゾーンを示す)
+   - **[値の名前]** :Kerberos チケットの転送先となる Azure AD URL。
+   - **[値]** (データ):**1** (イントラネット ゾーンを示す)。
 
      結果は次のようになります。
 
      値の名前: `https://autologon.microsoftazuread-sso.com`
   
-     値 (データ): 1
+     値 (データ):1
 
    >[!NOTE]
    > 一部のユーザーに対してシームレス SSO の使用を許可したくない場合 ( ユーザー共有キオスクでサインインする場合など) は、前述の値を **4** に設定します。 この操作により、Azure AD の URL が [制限付きゾーン] に追加され、シームレス SSO は常に失敗するようになります。
@@ -161,10 +161,10 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
     ![シングル サインオン](./media/how-to-connect-sso-quick-start/sso15.png)
 
 4. 次の値を該当するフィールドに入力し、 **[OK]** をクリックします。
-   - **キー パス**: ***Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-sso.com\autologon***
-   - **値の名前**: ***https***。
-   - **値の型**: ***REG_DWORD***。
-   - **値のデータ**: ***00000001***。
+   - **キー パス**:***Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-sso.com\autologon***
+   - **値の名前**: ***https***
+   - **値の型**:***REG_DWORD***
+   - **値のデータ**:***00000001***
  
      ![シングル サインオン](./media/how-to-connect-sso-quick-start/sso16.png)
  
@@ -187,11 +187,11 @@ macOS を実行しているコンピューターが AD に参加しているこ�
 
 #### <a name="microsoft-edge-based-on-chromium-all-platforms"></a>Chromium に基づく Microsoft Edge (すべてのプラットフォーム)
 
-お使いの環境の [AuthNegotiateDelegateAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authnegotiatedelegateallowlist) ポリシー設定または [AuthServerAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) ポリシー設定をオーバーライドした場合は、それらの設定に Azure AD の URL (`https://autologon.microsoftazuread-sso.com`) を確実に追加します。
+お使いの環境の [AuthNegotiateDelegateAllowlist](/DeployEdge/microsoft-edge-policies#authnegotiatedelegateallowlist) ポリシー設定または [AuthServerAllowlist](/DeployEdge/microsoft-edge-policies#authserverallowlist) ポリシー設定をオーバーライドした場合は、それらの設定に Azure AD の URL (`https://autologon.microsoftazuread-sso.com`) を確実に追加します。
 
 #### <a name="microsoft-edge-based-on-chromium-macos-and-other-non-windows-platforms"></a>Chromium に基づく Microsoft Edge (macOS および他の非 Windows プラットフォーム)
 
-Mac OS および他の Windows 以外のプラットフォームの Chromium に基づく Microsoft Edge の場合、統合認証用の Azure AD URL を許可一覧に追加する方法については、[Chromium に基づく Microsoft Edge のポリシー一覧](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist)を参照してください。
+macOS および他の Windows 以外のプラットフォームの Chromium に基づく Microsoft Edge の場合、統合認証用の Azure AD の URL を許可一覧に追加する方法については、[Chromium に基づく Microsoft Edge のポリシー一覧](/DeployEdge/microsoft-edge-policies#authserverallowlist)を参照してください。
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (すべてのプラットフォーム)
 
@@ -199,7 +199,7 @@ Mac OS および他の Windows 以外のプラットフォームの Chromium に
 
 #### <a name="google-chrome-macos-and-other-non-windows-platforms"></a>Google Chrome (macOS と Windows 以外のその他のプラットフォーム)
 
-Mac OS などの Windows 以外のプラットフォームで Google Chrome を使用し、統合認証で Azure AD の URL をホワイトリスト化する方法については、[Chromium プロジェクト ポリシー リスト](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist)に関する記事をご覧ください。
+macOS などの Windows 以外のプラットフォームで Google Chrome を使用し、統合認証用の Azure AD の URL の許可一覧を制御する方法については、[Chromium プロジェクト ポリシー リスト](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist)に関する記事をご覧ください。
 
 サード パーティの Active Directory グループ ポリシーの拡張機能を使用して、Mac 上で Firefox および Google Chrome を使用するユーザーに Azure AD の URL を ロールアウトする場合については、この記事では扱われません。
 
@@ -207,11 +207,11 @@ Mac OS などの Windows 以外のプラットフォームで Google Chrome を�
 
 シームレス SSO は、Firefox および Microsoft Edge ブラウザーのプライベート ブラウズ モードでは動作しません。 拡張保護モードで実行されている場合は、Internet Explorer ブラウザーでも機能しません。 Chromium に基づく Microsoft Edge の次期バージョンは、仕様により InPrivate モードと Guest モードでは機能しなくなります。
 
-## <a name="step-4-test-the-feature"></a>手順 4: 機能をテストする
+## <a name="step-4-test-the-feature"></a>手順 4:機能をテストする
 
 特定のユーザーについてこの機能をテストするには、次の条件がすべて満たされていることを確認してください。
   - ユーザーが会社のデバイスでサインインしている。
-  - デバイスが Active Directory ドメインに参加している。 デバイスは、[Azure AD 参加済み](../active-directory-azureadjoin-overview.md)である必要は _ありません_。
+  - デバイスが Active Directory ドメインに参加している。 デバイスは、[Azure AD 参加済み](../devices/overview.md)である必要は _ありません_。
   - デバイスが、企業のワイヤードまたはワイヤレス ネットワーク上や、VPN 接続などのリモート アクセス接続を介してドメイン コントローラー (DC) に直接接続している。
   - グループ ポリシーを使用して、このユーザーに[機能がロールアウト](#step-3-roll-out-the-feature)されている。
 
@@ -222,14 +222,14 @@ Mac OS などの Windows 以外のプラットフォームで Google Chrome を�
    - 新しいプライベート ブラウザー セッションで `https://myapps.microsoft.com/contoso.onmicrosoft.com` にサインインします。 *contoso* を自分のテナント名に置き換えます。
    - 新しいプライベート ブラウザー セッションで `https://myapps.microsoft.com/contoso.com` にサインインします。 *contoso.com* を、自分のテナントで検証されたドメイン (フェデレーション ドメインではなく) に置き換えます。
 
-## <a name="step-5-roll-over-keys"></a>手順 5: キーをロール オーバーする
+## <a name="step-5-roll-over-keys"></a>手順 5:キーをロール オーバーする
 
-手順 2 では、Azure AD Connect によって、シームレス SSO を有効にしたすべての Active Directory フォレスト内でコンピューター アカウント (Azure AD を表します) が作成されます。 詳細については、「[Azure Active Directory シームレス シングル サインオン: 技術的な詳細](how-to-connect-sso-how-it-works.md)」をご覧ください。
+手順 2 では、Azure AD Connect によって、シームレス SSO を有効にしたすべての Active Directory フォレスト内でコンピューター アカウント (Azure AD を表します) が作成されます。 詳細については、「[Azure Active Directory シームレス シングル サインオン: 技術的な詳細情報](how-to-connect-sso-how-it-works.md)」をご覧ください。
 
 >[!IMPORTANT]
 >コンピューター アカウントの Kerberos 解読キーが流出した場合、それを利用し、その AD フォレストのあらゆるユーザーに対して Kerberos チケットが生成されます。 悪意のあるアクターは、Azure AD サインインを偽装し、ユーザーを危険にさらすことがあります。 定期的に (少なくとも 30 日ごとに) Kerberos の解読キーをロールオーバーすることを強くお勧めします。
 
-キーのロールオーバー方法の詳細については、「[Azure Active Directory シームレス シングル サインオン: よく寄せられる質問](how-to-connect-sso-faq.md)」をご覧ください。 Microsoft はキーの自動ロールオーバーを導入する機能の開発に取り組んでいます。
+キーをロールオーバーする方法の詳細については、「[Azure Active Directory シームレス シングル サインオン: よく寄せられる質問](how-to-connect-sso-faq.md)」をご覧ください。 Microsoft はキーの自動ロールオーバーを導入する機能の開発に取り組んでいます。
 
 >[!IMPORTANT]
 >この機能を有効にした後に、"_直ちに_" この手順を実行する必要はありません。 少なくとも 30 日に 1 回は、Kerberos 暗号化の解除キーをロールオーバーしてください。
@@ -239,4 +239,4 @@ Mac OS などの Windows 以外のプラットフォームで Google Chrome を�
 - [技術的な詳細](how-to-connect-sso-how-it-works.md): シームレス シングル サインオン機能のしくみを理解します。
 - [よく寄せられる質問](how-to-connect-sso-faq.md): シームレス シングル サインオンに関してよく寄せられる質問への回答を示します。
 - [トラブルシューティング](tshoot-connect-sso.md): シームレス シングル サインオン機能に関する一般的な問題の解決方法を説明します。
-- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Azure Active Directory フォーラムで、新しい機能の要望を出します。
+- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Azure Active Directory フォーラムを使用して、新しい機能の要求を行います。

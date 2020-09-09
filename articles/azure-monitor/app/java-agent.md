@@ -3,12 +3,13 @@ title: Java Web アプリのパフォーマンスの監視 - Azure Application I
 description: Application Insights を使用した Java Web サイトのパフォーマンスおよび利用状況の監視拡張。
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.openlocfilehash: b047a8dd8c67679a5cc8a45e8be82f9ab5227aa4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-java
+ms.openlocfilehash: 9cce87fa742df2e623217b5b0f72ad19814fd3b7
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537544"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371364"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Java Web アプリでの依存関係、キャッチされた例外、メソッド実行時間の監視
 
@@ -120,19 +121,20 @@ Application Insights リソースでは、集計されたリモートの依存�
 
 依存関係、例外、メソッドのレポートの個々のインスタンスを検索するには、[[検索]][diagnostic] を開きます。
 
-「[依存関係の問題の診断](../../azure-monitor/app/asp-net-dependencies.md#diagnosis)」を参照してください。
+「[依存関係の問題の診断](./asp-net-dependencies.md#diagnosis)」を参照してください。
 
 ## <a name="questions-problems"></a>疑問がある場合 問題が発生した場合
-* データが表示されない場合 [ファイアウォール例外の設定](../../azure-monitor/app/ip-addresses.md)
+* データが表示されない場合 [ファイアウォール例外の設定](./ip-addresses.md)
 * [Java のトラブルシューティング](java-troubleshoot.md)
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[apiexceptions]: ../../azure-monitor/app/api-custom-events-metrics.md#track-exception
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
+[api]: ./api-custom-events-metrics.md
+[apiexceptions]: ./api-custom-events-metrics.md#track-exception
+[availability]: ./monitor-web-app-availability.md
+[diagnostic]: ./diagnostic-search.md
 [eclipse]: app-insights-java-eclipse.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../../azure-monitor/platform/metrics-charts.md
+[metrics]: ../platform/metrics-charts.md
+

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/13/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: fb44f217b7a940bc07a164e482b67ddb53835715
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 35997f57b0a66b4f7853ea117519273fd7b6f726
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440469"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84436062"
 ---
 | カテゴリ | データ ストア |
 |:--- |:--- |
@@ -27,7 +27,7 @@ ms.locfileid: "75440469"
 | &nbsp; |[Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |
 | &nbsp; |[Azure Files](../articles/data-factory/connector-azure-file-storage.md) |
 | &nbsp; |[Azure SQL Database](../articles/data-factory/connector-azure-sql-database.md) |
-| &nbsp; |[Azure SQL Database マネージド インスタンス](../articles/data-factory/connector-azure-sql-database-managed-instance.md) |
+| &nbsp; |[Azure SQL Managed Instance](../articles/azure-sql/managed-instance/sql-managed-instance-paas-overview.md) |
 | &nbsp; |[Azure Synapse Analytics (旧称 SQL Data Warehouse)](../articles/data-factory/connector-azure-sql-data-warehouse.md) |
 | &nbsp; |[Azure Table Storage](../articles/data-factory/connector-azure-table-storage.md) |
 | **[データベース]** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |
@@ -51,6 +51,7 @@ ms.locfileid: "75440469"
 | &nbsp; |[MDX を介した SAP Business Warehouse](../articles/data-factory/connector-sap-business-warehouse.md) |
 | &nbsp; |[SAP HANA](../articles/data-factory/connector-sap-hana.md) |
 | &nbsp; |[SAP テーブル](../articles/data-factory/connector-sap-table.md) |
+| &nbsp; |[Snowflake](../articles/data-factory/connector-snowflake.md) |
 | &nbsp; |[Spark](../articles/data-factory/connector-spark.md) |
 | &nbsp; |[SQL Server](../articles/data-factory/connector-sql-server.md) |
 | &nbsp; |[Sybase](../articles/data-factory/connector-sybase.md) |
@@ -90,6 +91,7 @@ ms.locfileid: "75440469"
 | &nbsp; |[SAP ECC](../articles/data-factory/connector-sap-ecc.md) |
 | &nbsp; |[ServiceNow](../articles/data-factory/connector-servicenow.md) |
 | &nbsp; |[Shopify (プレビュー)](../articles/data-factory/connector-shopify.md) |
+| &nbsp; |[SharePoint Online リスト](../articles/data-factory/connector-sharepoint-online-list.md) |
 | &nbsp; |[Square (プレビュー)](../articles/data-factory/connector-square.md) |
 | &nbsp; |[Web テーブル (HTML テーブル)](../articles/data-factory/connector-web-table.md) 
 | &nbsp; |[Xero](../articles/data-factory/connector-xero.md) |

@@ -1,18 +1,18 @@
 ---
 title: M シリーズ - Azure Virtual Machines
 description: M シリーズ VM の仕様。
-services: virtual-machines
 author: ayshakeen
 ms.service: virtual-machines
-ms.topic: article
+ms.subservice: sizes
+ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: 7b84537693b3ffc3f7398c6eb84615a96bf8e7df
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 2dea6ea292b4ed69d89a6e5e03c58f437446561d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744681"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654788"
 ---
 # <a name="m-series"></a>M シリーズ
 
@@ -30,24 +30,24 @@ Premium Storage キャッシュ:サポートされています
 
 メモリ保持更新: サポートされていません
 
-書き込みアクセラレータ:[サポートされています](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
+書き込みアクセラレータ:[サポートされています](./how-to-enable-write-accelerator.md)
 
-| サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合および一時ストレージの最大スループットIOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
-|---|---|---|---|---|---|---|---|
-| Standard_M8ms                    | 8   | 218.75 | 256   | 8  | 10000/100 (793)     | 5000/125   | 4/2000  |
-| Standard_M16ms                   | 16  | 437.5  | 512   | 16 | 20000/200 (1587)    | 10000/250  | 8/4000  |
-| Standard_M32ts                   | 32  | 192    | 1024  | 32 | 40000/400 (3174)    | 20000/500  | 8/8000  |
-| Standard_M32ls                   | 32  | 256    | 1024  | 32 | 40000/400 (3174)    | 20000/500  | 8/8000  |
-| Standard_M32ms                   | 32  | 875    | 1024  | 32 | 40000/400 (3174)    | 20000/500  | 8/8000  |
-| Standard_M64s <sup>1</sup>       | 64  | 1024   | 2048  | 64 | 80000/800 (6348)    | 40000/1000 | 8/16000 |
-| Standard_M64ls <sup>1</sup>      | 64  | 512    | 2048  | 64 | 80000/800 (6348)    | 40000/1000 | 8/16000 |
-| Standard_M64ms <sup>1</sup>      | 64  | 1792   | 2048  | 64 | 80000/800 (6348)    | 40000/1000 | 8/16000 |
-| Standard_M128s <sup>1</sup>    | 128 | 2048   | 4096  | 64 | 160000/1600 (12696) | 80000/2000 | 8/30000 |
-| Standard_M128ms <sup>1、2</sup>   | 128 | 3892   | 4096  | 64 | 160000/1600 (12696) | 80000/2000 | 8/30000 |
-| Standard_M64 <sup>1</sup>        | 64  | 1024   | 7168  | 64 | 80000/800 (1228)    | 40000/1000 | 8/16000 |
-| Standard_M64m <sup>1</sup>       | 64  | 1792   | 7168  | 64 | 80000/800 (1228)    | 40000/1000 | 8/16000 |
-| Standard_M128 <sup>1</sup>     | 128 | 2048   | 14336 | 64 | 250000/1600 (2456)  | 80000/2000 | 8/32000 |
-| Standard_M128m <sup>1</sup>    | 128 | 3892   | 14336 | 64 | 250000/1600 (2456)  | 80000/2000 | 8/32000 |
+| サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合および一時ストレージの最大スループットIOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数|必要なネットワーク帯域幅 (Mbps) |
+|---|---|---|---|---|---|---|---|---|
+| Standard_M8ms                    | 8   | 218.75 | 256   | 8  | 10000/100 (793)     | 5000/125   | 4|2000  |
+| Standard_M16ms                   | 16  | 437.5  | 512   | 16 | 20000/200 (1587)    | 10000/250  | 8|4000  |
+| Standard_M32ts                   | 32  | 192    | 1024  | 32 | 40000/400 (3174)    | 20000/500  | 8|8000  |
+| Standard_M32ls                   | 32  | 256    | 1024  | 32 | 40000/400 (3174)    | 20000/500  | 8|8000  |
+| Standard_M32ms                   | 32  | 875    | 1024  | 32 | 40000/400 (3174)    | 20000/500  | 8|8000  |
+| Standard_M64s <sup>1</sup>       | 64  | 1024   | 2048  | 64 | 80000/800 (6348)    | 40000/1000 | 8|16000 |
+| Standard_M64ls <sup>1</sup>      | 64  | 512    | 2048  | 64 | 80000/800 (6348)    | 40000/1000 | 8|16000 |
+| Standard_M64ms <sup>1</sup>      | 64  | 1792   | 2048  | 64 | 80000/800 (6348)    | 40000/1000 | 8|16000 |
+| Standard_M128s <sup>1</sup>    | 128 | 2048   | 4096  | 64 | 160000/1600 (12696) | 80000/2000 | 8|30000 |
+| Standard_M128ms <sup>1、2</sup>   | 128 | 3892   | 4096  | 64 | 160000/1600 (12696) | 80000/2000 | 8|30000 |
+| Standard_M64 <sup>1</sup>        | 64  | 1024   | 7168  | 64 | 80000/800 (1228)    | 40000/1000 | 8|16000 |
+| Standard_M64m <sup>1</sup>       | 64  | 1792   | 7168  | 64 | 80000/800 (1228)    | 40000/1000 | 8|16000 |
+| Standard_M128 <sup>1</sup>     | 128 | 2048   | 14336 | 64 | 250000/1600 (2456)  | 80000/2000 | 8|32000 |
+| Standard_M128m <sup>1</sup>    | 128 | 3892   | 14336 | 64 | 250000/1600 (2456)  | 80000/2000 | 8|32000 |
 
 <sup>1</sup> 64 個を超える vCPU では、Windows Server 2016、Ubuntu 16.04 LTS、SLES 12 SP2、および LIS 4.2.1 が付属する Red Hat Enterprise Linux、CentOS 7.3、または Oracle Linux 7.3 の、サポートされているゲスト OS のいずれかが必要です。
 
@@ -55,7 +55,7 @@ Premium Storage キャッシュ:サポートされています
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-## <a name="other-sizes"></a>その他のサイズ
+## <a name="other-sizes-and-information"></a>その他のサイズと情報
 
 - [汎用](sizes-general.md)
 - [メモリの最適化](sizes-memory.md)
@@ -63,6 +63,11 @@ Premium Storage キャッシュ:サポートされています
 - [GPU の最適化](sizes-gpu.md)
 - [ハイ パフォーマンス コンピューティング](sizes-hpc.md)
 - [旧世代](sizes-previous-gen.md)
+
+料金計算ツール:[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+
+ディスクの種類の詳細情報:[ディスクの種類](./disks-types.md#ultra-disk)
+
 
 ## <a name="next-steps"></a>次のステップ
 

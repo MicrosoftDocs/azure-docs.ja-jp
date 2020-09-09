@@ -1,35 +1,33 @@
 ---
-title: Azure Notification Hubs と Firebase を使用して Android にプッシュ通知を送信する | Microsoft Docs
+title: Azure Notification Hubs と Firebase SDK バージョン 0.6 を使用して Android にプッシュ通知を送信する | Microsoft Docs
 description: このチュートリアルでは、Azure Notification Hubs と Google Firebase Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する方法について学習します。
 services: notification-hubs
 documentationcenter: android
 keywords: プッシュ通知,プッシュ通知,android プッシュ通知,fcm,firebase cloud messaging
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 02298560-da61-4bbb-b07c-e79bd520e420
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
-ms.custom: mvc
-ms.date: 09/11/2019
+ms.custom: mvc, devx-track-java
+ms.date: 06/22/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: e6bc4ed94c8b8e62740f81497231a163283ebcb7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3b32a61dcf8dfe403a44af236afad830472d1b8d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80521549"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321464"
 ---
-# <a name="tutorial-send-push-notifications-to-android-devices-using-firebase"></a>チュートリアル:Firebase を使用して Android デバイスにプッシュ通知を送信する
+# <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-06"></a>チュートリアル:Firebase SDK バージョン 0.6 を使用して Android デバイスにプッシュ通知を送信する
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-このチュートリアルでは、Azure Notification Hubs と Firebase Cloud Messaging (FCM) を使用して Android アプリケーションにプッシュ通知を送信する方法を示します。 このチュートリアルでは、Firebase Cloud Messaging (FCM) を使用してプッシュ通知を受信する空の Android アプリケーションを作成します。
+このチュートリアルでは、Azure Notification Hubs と Firebase Cloud Messaging (FCM) SDK バージョン 0.6 を使用して Android アプリケーションにプッシュ通知を送信する方法について説明します。 このチュートリアルでは、Firebase Cloud Messaging (FCM) を使用してプッシュ通知を受信する空の Android アプリケーションを作成します。
 
 このチュートリアルの完成したコードは、[GitHub から](https://github.com/Azure/azure-notificationhubs-android/tree/master/FCMTutorialApp)ダウンロードできます。
 
@@ -259,7 +257,7 @@ ms.locfileid: "80521549"
                 }
 
                 // Check to see if the token has been compromised and needs refreshing.
-                else if ((storedToken=sharedPreferences.getString("FCMtoken", "")) != FCM_token) {
+               else if (!(storedToken = sharedPreferences.getString("FCMtoken", "")).equals(FCM_token)) {
 
                     NotificationHub hub = new NotificationHub(NotificationSettings.HubName,
                             NotificationSettings.HubListenConnectionString, this);
@@ -556,11 +554,13 @@ ms.locfileid: "80521549"
 [!INCLUDE [notification-hubs-sending-notifications-from-the-portal](../../includes/notification-hubs-sending-notifications-from-the-portal.md)]
 
 ### <a name="run-the-mobile-app-on-emulator"></a>エミュレーターでモバイル アプリを実行する
+
 エミュレーターの内部でプッシュ通知をテストする前に、エミュレーター イメージがアプリ用に選択した Google API レベルをサポートしていることを確認してください。 イメージでネイティブの Google API がサポートされていない場合、**SERVICE\_NOT\_AVAILABLE** 例外を受け取ることがあります。
 
 また、 **[設定]**  >  **[アカウント]** で、実行中のエミュレーターに Google アカウントを追加したことを確認してください。 そうでない場合、FCM で登録しようとすると、**AUTHENTICATION\_FAILED** 例外が発生する可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
+
 このチュートリアルでは、Firebase Cloud Messaging を使用して、このサービスに登録されたすべての Android デバイスに通知をブロードキャストしました。 特定のデバイスにプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]

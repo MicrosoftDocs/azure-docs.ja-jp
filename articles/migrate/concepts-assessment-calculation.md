@@ -1,16 +1,16 @@
 ---
-title: Azure Migrate Server Assessment での評価
+title: Azure Migrate Server Assessment での Azure VM の評価
 description: Azure Migrate Server Assessment での評価について説明します
 ms.topic: conceptual
-ms.date: 02/17/2020
-ms.openlocfilehash: 2f76ea5f195be2914cdcdb4de9e93af38504d66e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/27/2020
+ms.openlocfilehash: 1d9c887f42089611ce7402aa32174958cd8c0b07
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81769919"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88261856"
 ---
-# <a name="assessments-in-azure-migrate-server-assessment"></a>Azure Migrate:Server Assessment
+# <a name="server-assessment-overview-migrate-to-azure-vms"></a>サーバー評価の概要 (Azure VM への移行)
 
 この記事では、[Azure Migrate Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) ツールによる評価の概要について説明します。 このツールでは、Azure への移行について、オンプレミスの VMware 仮想マシン、Hyper-V VM、物理サーバーを評価できます。
 
@@ -23,7 +23,14 @@ Server Assessment ツールを使用した評価では、オンプレミスの�
 
 ## <a name="types-of-assessments"></a>評価の種類
 
-Server Assessment を使用して作成した評価は、特定の時点のデータのスナップショットです。 Server Assessment には、2 種類の評価が用意されています。
+Azure Migrate:Server Assessment を使用して作成する方法について説明します。
+
+**評価の種類** | **詳細**
+--- | --- 
+**Azure VM** | オンプレミスのサーバーを Azure 仮想マシンに移行するための評価。 <br/><br/> このタイプの評価を使用すると、Azure への移行について、オンプレミスの [VMware VM](how-to-set-up-appliance-vmware.md)、[Hyper-V VM](how-to-set-up-appliance-hyper-v.md)、[物理サーバー](how-to-set-up-appliance-physical.md)を評価できます。
+**Azure VMware Solution (AVS)** | オンプレミスのサーバーを [Azure VMware Solution (AVS)](../azure-vmware/introduction.md) に移行するための評価。 <br/><br/> このタイプの評価を使用すると、Azure VMware Solution (AVS) への移行について、オンプレミスの [VMware VM](how-to-set-up-appliance-vmware.md) を評価できます。[詳細情報](concepts-azure-vmware-solution-assessment-calculation.md)
+
+Server Assessment を使用して作成した評価は、特定の時点のデータのスナップショットです。 Server Assessment での Azure VM の評価には、2 つのサイズ設定条件オプションがあります。
 
 **評価の種類** | **詳細** | **データ**
 --- | --- | ---
@@ -45,7 +52,7 @@ Server Assessment を使用して作成した評価は、特定の時点のデ�
 1. 最初の評価では、Azure プロジェクトを作成し、それに Server Assessment ツールを追加します。
 1. 軽量の Azure Migrate アプライアンスをデプロイします。 アプライアンスは継続的にオンプレミスのマシンを検出し、マシンのメタデータとパフォーマンス データを Azure Migrate に送信します。 アプライアンスを VM または物理マシンとしてデプロイします。 評価対象のマシンには何もインストールする必要はありません。
 
-アプライアンスによるマシンの検出が開始されたら、評価対象のマシンをグループにまとめて、そのグループに対して評価を実行できます。
+アプライアンスによるマシンの検出が開始されたら、評価するマシンをグループにまとめて、評価の種類 **Azure VM** でそのグループに対する評価を実行できます。
 
 [VMware](tutorial-prepare-vmware.md)、[Hyper-V](tutorial-prepare-hyper-v.md)、または[物理サーバー](tutorial-prepare-physical.md)向けのチュートリアルに従って、これらの手順を試すことができます。
 
@@ -57,7 +64,7 @@ CSV ファイルを使用してサーバーを評価する場合、アプライ�
 1. 最初の評価では、Azure プロジェクトを作成し、それに Server Assessment ツールを追加します。
 1. CSV テンプレートをダウンロードし、それにサーバー データを追加します。
 1. テンプレートを Server Assessment にインポートします。
-1. インポートによって追加されたサーバーを検出し、それらをグループにまとめて、そのグループに対して評価を実行します。
+1. インポートによって追加されたサーバーを検出し、それらをグループにまとめて、評価の種類 **Azure VM** でグループに対して評価を実行します。
 
 ## <a name="what-data-does-the-appliance-collect"></a>アプライアンスはどのようなデータを収集しますか。
 
@@ -89,7 +96,7 @@ CSV ファイルを使用してサーバーを評価する場合、アプライ�
     - ディスク スループット (読み取りと書き込み)
     - ネットワーク スループット (入力と出力)
 
-## <a name="how-are-assessments-calculated"></a>評価の計算方法
+## <a name="how-are-azure-vm-assessments-calculated"></a>Azure VM 評価の計算方法
 
 Server Assessment では、オンプレミスのマシンのメタデータとパフォーマンス データを使用して評価値を計算します。 Azure Migrate アプライアンスをデプロイした場合、評価には、アプライアンスで収集されたデータが使用されます。 しかし、CSV ファイルを使用してインポートされた評価を実行する場合は、計算用のメタデータを指定します。
 
@@ -101,32 +108,34 @@ Server Assessment では、オンプレミスのマシンのメタデータと�
 
 計算は、上記の順序で行われます。 前の段階で合格したマシン サーバーだけが次の段階に進みます。 たとえば、Azure 対応性の段階に合格しなかったサーバーは、Azure に不適合とマークされます。 そのサーバーに対してサイズ設定とコストの計算は行われません。
 
-## <a name="whats-in-an-assessment"></a>評価の内容
+## <a name="whats-in-an-azure-vm-assessment"></a>Azure VM の評価の内容
 
-Server Assessment での評価に含まれる内容は次のとおりです。
+Server Assessment での Azure VM の評価に含まれる内容は次のとおりです。
 
-プロパティ | 詳細
+**プロパティ** | **詳細**
 --- | ---
 **ターゲットの場所** | 移行先となる場所。 Server Assessment でターゲットの場所として現在サポートされている Azure リージョンは次のとおりです。<br/><br/> オーストラリア東部、オーストラリア南東部、ブラジル南部、カナダ中部、カナダ東部、インド中部、米国中部、中国東部、中国北部、東アジア、米国東部、米国東部 2、ドイツ中部、ドイツ北東部、東日本、西日本、韓国中部、韓国南部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、インド南部、英国南部、英国西部、US Gov アリゾナ、US Gov テキサス、US Gov バージニア、米国中西部、西ヨーロッパ、インド西部、米国西部、米国西部 2。
 **ターゲットのストレージ ディスク (現状のサイズ設定)** | Azure のストレージに使用するディスクの種類。 <br/><br/> ターゲットのストレージ ディスクを Premium マネージド、Standard SSD マネージド、または Standard HDD マネージドとして指定します。
 **ターゲットのストレージ ディスク (パフォーマンスベースのサイズ設定)** | ターゲットのストレージ ディスクの種類を自動、Premium マネージド、Standard HDD マネージド、または Standard SSD マネージドとして指定します。<br/><br/> **自動**: ディスクに関する推奨事項は、ディスクのパフォーマンス データ (IOPS とスループット) に基づきます。<br/><br/>**Premium または Standard**: この評価では、選択したストレージの種類内のディスク SKU が推奨されます。<br/><br/> 単一インスタンス VM のサービス レベル アグリーメント (SLA) を 99.9% にする場合は、Premium マネージド ディスクの使用を検討してください。 これを使用することにより、評価に含まれるすべてのディスクが Premium マネージド ディスクとして推奨されるようになります。<br/><br/> Azure Migrate の移行評価では、マネージド ディスクのみがサポートされます。
-**Azure Reserved Virtual Machine Instances** | [予約インスタンス](https://azure.microsoft.com/pricing/reserved-vm-instances/)を指定します。これにより、評価でのコスト見積もりで考慮されます。<br/><br/> 現在、Azure Migrate では、従量課金制プランについてのみ Azure Reserved VM Instances がサポートされています。
+**Azure Reserved VM Instances** | [予約インスタンス](https://azure.microsoft.com/pricing/reserved-vm-instances/)を指定します。これにより、評価でのコスト見積もりで考慮されます。<br/><br/> [予約済みインスタンス] を選択すると、[割引 (%)] および [VM のアップタイム] プロパティは適用されません。<br/><br/> 現在、Azure Migrate では、従量課金制プランについてのみ Azure Reserved VM Instances がサポートされています。
 **サイズ変更の設定基準** | Azure VM のサイズ設定に使用されます。<br/><br/> 現状のサイズ設定またはパフォーマンスベースのサイズ設定を使用します。
 **パフォーマンス履歴** | パフォーマンスベースのサイズ設定で使用されます。 パフォーマンス履歴では、パフォーマンス データを評価するときに使用する期間を指定します。
 **百分位数の使用率** | パフォーマンスベースのサイズ設定で使用されます。 百分位の使用率では、サイズ設定に使用されるパフォーマンス サンプルのパーセンタイル値を指定します。
 **VM シリーズ** | サイズ設定を検討する Azure VM シリーズ。 たとえば、Azure 内に A シリーズの VM を必要とする運用環境がない場合、シリーズの一覧から A シリーズを除外することができます。
-**快適性係数** | 評価中に使用されるバッファー。 VM の CPU、RAM、ディスク、ネットワークの使用率データに適用されます。 季節ごとの使用量、短期間のパフォーマンス履歴、将来に使用量が増える可能性などの問題に相当します。<br/><br/> たとえば、使用率 20% の 10 コア VM の結果は、通常 2 コア VM になります。 快適性係数を 2.0 とした場合、結果は 4 コア VM になります。
+**快適性係数** | 評価中に使用されるバッファー。 これは、VM の CPU、RAM、ディスク、ネットワーク データに適用されます。 季節ごとの使用量、短期間のパフォーマンス履歴、将来に使用量が増える可能性などの問題に相当します。<br/><br/> たとえば、使用率 20% の 10 コア VM の結果は、通常 2 コア VM になります。 快適性係数を 2.0 とした場合、結果は 4 コア VM になります。
 **プラン** | 自分が登録されている [Azure プラン](https://azure.microsoft.com/support/legal/offer-details/)。 Server Assessment はそのプランのコストを見積もります。
 **通貨** | アカウントの請求通貨。
 **割引率 (%)** | Azure プランに適用される任意のサブスクリプション固有の割引。 既定の設定は 0% です。
 **VM のアップタイム** | Azure VM が継続して実行されない期間 (1 か月あたりの日数と 1 日あたりの時間数)。 コストの見積もりは、その期間に基づきます。<br/><br/> 既定値は、1 か月あたり 31 日、1 日あたり 24 時間です。
 **Azure ハイブリッド特典** | ソフトウェア アシュアランスがあり、かつ [Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-use-benefit/)を受ける資格があるかどうかを指定します。 既定値の [はい] に設定した場合、Windows VM には、Windows 以外のオペレーティング システムの Azure 価格が考慮されます。
+**EA サブスクリプション** | Enterprise Agreement (EA) サブスクリプションをコスト見積もりに使用することを指定します。 このサブスクリプションに適用される割引が考慮されます。 <br/><br/> 予約インスタンスの設定 (割引率 (%) および VM のアップタイムの各プロパティ) は、既定の設定のままにします。
+
 
 Server Assessment で評価を作成するための[ベスト プラクティスを確認](best-practices-assessment.md)してください。
 
 ## <a name="calculate-readiness"></a>対応性を計算する
 
-すべてのマシンが Azure での実行に適しているとはかぎりません。 Server Assessment は、オンプレミスのすべてのマシンを評価し、対応性カテゴリを割り当てます。
+すべてのマシンが Azure での実行に適しているとはかぎりません。 Azure VM の評価では、オンプレミスのすべてのマシンを評価し、対応性カテゴリを割り当てます。
 
 - **[Azure に対応]** : マシンをそのまま変更せずに Azure に移行できます。 Azure で起動し、Azure のフル サポートを受けます。
 - **Azure に条件付きで対応**:マシンは Azure で起動する可能性はありますが、Azure サポートの一部を受けられないことがあります。 たとえば、Azure では、古いバージョンの Windows Server を実行しているマシンはサポートされません。 これらのマシンを Azure に移行する前に注意する必要があります。 対応性に関する問題を修正するには、評価で提示された修復ガイダンスに従います。
@@ -137,22 +146,23 @@ Server Assessment で評価を作成するための[ベスト プラクティス
 
 ### <a name="machine-properties"></a>マシンのプロパティ
 
-Server Assessment は、オンプレミスの VM の次のプロパティを調べて、Azure で実行できるかどうかを判断します。
+Azure VM の評価では、Server Assessment によりオンプレミスの VM の次のプロパティが確認され、Azure で実行できるかどうかが判断されます。
 
 プロパティ | 詳細 | Azure 対応性の状態
 --- | --- | ---
 **ブートの種類** | Azure は、ブートの種類が UEFI ではなく BIOS として VM をサポートします。 | ブートの種類が UEFI の場合は条件付きで対応
-**コア** | 各マシンのコア数は、Azure VM でサポートされる最大コア数の 128 コア以下である必要があります。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されているコアの数が比較で考慮されます。 評価設定で快適性係数が指定されている場合、使用されているコアの数に快適性係数が乗算されます。<br/><br/> パフォーマンス履歴がない場合、Azure Migrate は快適性係数を適用せずに、割り当てられているコアの数を使用します。 | コア数が制限内であれば対応
-**RAM** | 各マシンの RAM のサイズは、Azure M シリーズ Standard_M128m&nbsp;<sup>2</sup> VM でサポートされる最大サイズの 3892 GB 以下である必要があります。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されている RAM が比較で考慮されます。 快適性係数が指定されている場合、使用されている RAM に快適性係数が乗算されます。<br/><br/> 履歴がない場合は、快適性係数は適用されず、割り当てられている RAM が使用されます。<br/><br/> | RAM の容量が制限内であれば対応
+**コア** | 各マシンのコア数は、Azure VM でサポートされる最大コア数の 128 コア以下である必要があります。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されているコアの数が比較で考慮されます。 評価設定で快適性係数が指定されている場合、使用されているコアの数に快適性係数が乗算されます。<br/><br/> パフォーマンス履歴がない場合、Azure Migrate によって割り当てられているコアの数を使用して快適性係数が適用されます。 | コア数が制限内であれば対応
+**RAM** | 各マシンの RAM のサイズは、Azure M シリーズ Standard_M128m&nbsp;<sup>2</sup> VM でサポートされる最大サイズの 3892 GB 以下である必要があります。 [詳細については、こちらを参照してください](../virtual-machines/sizes.md)。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されている RAM が比較で考慮されます。 快適性係数が指定されている場合、使用されている RAM に快適性係数が乗算されます。<br/><br/> 履歴がない場合、割り当てられている RAM を使用して快適性係数が適用されます。<br/><br/> | RAM の容量が制限内であれば対応
 **ストレージ ディスク** | ディスクの割り当てサイズは、32 TB 以下である必要があります。 Azure では、Azure Ultra SSD ディスクにより 64 TB のディスクがサポートされますが、Azure Migrate: Server Assessment では、Ultra SSD がまだサポートされていないため、現時点では、ディスク サイズの上限である 32 TB のチェックが行われます。 <br/><br/> マシンに接続されているディスクの数は、OS ディスクを含めて 65 個以下である必要があります。 | ディスクのサイズと数が制限内であれば対応
 **ネットワーク** | マシンに接続されているネットワーク インターフェイス (NIC) の数は 32 個以下である必要があります。 | NIC 数が制限内であれば対応
 
 ### <a name="guest-operating-system"></a>ゲスト オペレーティング システム
 
-Server Assessment は、VM のプロパティを確認するとともに、マシンのゲスト オペレーティング システムを調べて Azure で実行できるかどうかを判断します。
+Azure VM の評価では、VM のプロパティを確認するとともに、Server Assessment はマシンのゲスト オペレーティング システムを調べて Azure で実行できるかどうかを判断します。
 
 > [!NOTE]
-> VMware VM のゲスト分析を処理する場合、Server Assessment は、vCenter Server で VM に指定されているオペレーティング システムを使用します。 VMware 上で実行される Linux VM の場合、Server Assessment では、現在、ゲスト OS のカーネル バージョンが識別されません。
+> VMware VM のゲスト分析を処理する場合、Server Assessment は、vCenter Server で VM に指定されているオペレーティング システムを使用します。 ただし、vCenter Server は、Linux VM オペレーティング システムのカーネル バージョンを提供しません。 バージョンを検出するには、[アプリケーション検出](./how-to-discover-applications.md)を設定する必要があります。 その後、アプライアンスは、アプリ検出の設定時に指定したゲスト資格情報を使用してバージョン情報を検出します。
+
 
 Server Assessment で、オペレーティング システムに基づいて Azure 対応性を判定するには、次のロジックが使用されます。
 
@@ -165,8 +175,8 @@ Windows Server 2008 R2 および全 SP | Azure は完全サポートを提供し
 Windows Server 2008 (32 ビットおよび 64 ビット) | Azure は完全サポートを提供します。 | Azure に対応。
 Windows Server 2003 および Windows Server 2003 R2 | これらのオペレーティング システムはサポート終了日が過ぎているため、Azure でのサポートには[カスタム サポート契約 (CSA)](https://aka.ms/WSosstatement) が必要です。 | Azure に条件付きで対応。 Azure に移行する前に OS のアップグレードを検討してください。
 Windows 2000、Windows 98、Windows 95、Windows NT、Windows 3.1、MS-DOS | これらのオペレーティング システムは、サポート終了日を過ぎています。 マシンは Azure で起動する場合がありますが、OS は Azure ではサポートされていません。 | Azure に条件付きで対応。 Azure に移行する前に OS をアップグレードすることをお勧めします。
-Windows 7、Windows 8、Windows 10 | Azure は、[Visual Studio サブスクリプションにのみ](https://docs.microsoft.com/azure/virtual-machines/windows/client-images)サポートを提供します。 | Azure に条件付きで対応。
-Windows 10 Pro | Azure は、[マルチ テナント ホスティング権限](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment)にサポートを提供します。 | Azure に条件付きで対応。
+Windows 7、Windows 8、Windows 10 | Azure は、[Visual Studio サブスクリプションにのみ](../virtual-machines/windows/client-images.md)サポートを提供します。 | Azure に条件付きで対応。
+Windows 10 Pro | Azure は、[マルチ テナント ホスティング権限](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md)にサポートを提供します。 | Azure に条件付きで対応。
 Windows Vista および Windows XP Professional | これらのオペレーティング システムは、サポート終了日を過ぎています。 マシンは Azure で起動する場合がありますが、OS は Azure ではサポートされていません。 | Azure に条件付きで対応。 Azure に移行する前に OS をアップグレードすることをお勧めします。
 Linux | Azure がサポートする [Linux オペレーティング システム](../virtual-machines/linux/endorsed-distros.md)を参照してください。 その他の Linux オペレーティング システムも Azure で起動する可能性があります。 しかし、サポートされているバージョンに OS をアップグレードしてから Azure に移行することをお勧めします。 | Azure に対応 (バージョンがサポートされている場合)。<br/><br/>条件付きで対応 (バージョンがサポートされていない場合)。
 Oracle Solaris、Apple macOS、FreeBSD などのその他のオペレーティング システム | Azure では、これらのオペレーティング システムはサポートされません。 マシンは Azure で起動する場合がありますが、OS は Azure ではサポートされていません。 | Azure に条件付きで対応。 Azure に移行する前に、サポートする OS をインストールすることをお勧めします。  
@@ -175,11 +185,11 @@ vCenter Server で **[Other]\(その他\)** と指定された OS | この場合
 
 ## <a name="calculating-sizing"></a>サイズ設定の計算
 
-マシンが Azure に対応することが確認されると、Server Assessment によってサイズ設定の推奨事項が作成されます。 これらの推奨事項では、Azure VM とディスク SKU が特定されます。 サイズ設定の計算は、現状のオンプレミスのサイズ設定またはパフォーマンスベースのサイズ設定のどちらを使用するかによって異なります。
+マシンが Azure に対応することが確認されると、Server Assessment は、Azure VM の評価で推奨のサイズ設定を作成します。 これらの推奨事項では、Azure VM とディスク SKU が特定されます。 サイズ設定の計算は、現状のオンプレミスのサイズ設定またはパフォーマンスベースのサイズ設定のどちらを使用するかによって異なります。
 
 ### <a name="calculate-sizing-as-is-on-premises"></a>サイズ設定を計算する (現状のオンプレミス)
 
- オンプレミスのサイズ設定を使用する場合、Server Assessment は VM とディスクのパフォーマンス履歴を考慮しません。
+ 現状のオンプレミスのサイズ設定を使用する場合、Server Assessment では、Azure VM の評価で VM とディスクのパフォーマンス履歴が考慮されません。
 
 - **コンピューティングのサイズ設定**:Server Assessment は、オンプレミスで割り当てられたサイズに基づいて、Azure VM SKU を割り当てます。
 - **ストレージとディスクのサイズ設定**: Server Assessment は、評価プロパティで指定されたストレージの種類を調べて、それに応じたディスクの種類を推奨します。 推奨される可能性のあるストレージの種類は、Standard HDD、Standard SSD、Premium です。 既定のストレージの種類は Premium です。
@@ -187,7 +197,7 @@ vCenter Server で **[Other]\(その他\)** と指定された OS | この場合
 
 ### <a name="calculate-sizing-performance-based"></a>サイズを計算する (パフォーマンスベース)
 
-パフォーマンスベースのサイズ設定を使用する場合、Server Assessment はサイズ設定の推奨事項を次のように作成します。
+Azure VM の評価でパフォーマンスベースのサイズ設定を使用する場合、Server Assessment はサイズ設定の推奨事項を次のように作成します。
 
 - Server Assessment はマシンのパフォーマンス履歴を考慮して Azure での VM サイズとディスクの種類を特定します。
 - CSV ファイルを使用してサーバーをインポートする場合、指定する値が使用されます。 この方法は、オンプレミスのマシンを割り当て過ぎて使用率が低下したときに、Azure VM のサイズを適切に設定してコストを削減する必要がある場合に特に有用です。
@@ -195,9 +205,10 @@ vCenter Server で **[Other]\(その他\)** と指定された OS | この場合
 
 #### <a name="calculate-storage-sizing"></a>ストレージのサイズ設定を計算する
 
-ストレージのサイズ設定では、Azure Migrate は、マシンに接続されている各ディスクを Azure ディスクにマップしようとします。 サイズ設定は次のように行われます。
+Azure VM 評価のストレージのサイズ設定では、Azure Migrate は、マシンに接続されている各ディスクを Azure ディスクにマップしようとします。 サイズ設定は次のように行われます。
 
-1. Server Assessment では、必要な IOPS の合計を取得するために、ディスクの読み取りと書き込みの IOPS を追加します。 同様に、読み取りと書き込みのスループット値を追加して、各ディスクのスループットの合計を取得します。
+1. Server Assessment では、必要な IOPS の合計を取得するために、ディスクの読み取りと書き込みの IOPS を追加します。 同様に、読み取りと書き込みのスループット値を追加して、各ディスクのスループットの合計を取得します。 インポートベースの評価の場合、インポートされるファイルに、合計 IOPS、合計スループット、合計ディスク数を指定するオプションがあり、個別のディスク設定を指定する必要がありません 。 これを行うと、個々のディスクのサイズ設定はスキップされ、指定されたデータが直接コンピューティングのサイズ設定に使用されて、適切な VM SKU が選択されます。
+
 1. ストレージの種類を自動として指定した場合、選択される種類は、有効な IOPS 値とスループット値に基づきます。 Server Assessment は、ディスクを Azure 内の Standard HDD、Standard SSD、または Premium ディスクのいずれにマップするかを決定します。 ストレージの種類がこれらのディスクの種類のいずれかに設定されている場合、Server Assessment は、選択されたストレージの種類内でディスク SKU を見つけようとします。
 1. ディスクは次のように選択されます。
     - Server Assessment で必要な IOPS とスループットのディスクが見つからなかった場合は、そのマシンが Azure に不適合とマークされます。
@@ -207,7 +218,7 @@ vCenter Server で **[Other]\(その他\)** と指定された OS | この場合
 
 #### <a name="calculate-network-sizing"></a>ネットワークのサイズ設定を計算する
 
-Server Assessment は、オンプレミスのマシンに接続されたネットワーク アダプターの数と必要なパフォーマンスをサポートする Azure VM を見つけようとします。
+Azure VM の評価では、Server Assessment は、オンプレミスのマシンに接続されたネットワーク アダプターの数と必要なパフォーマンスをサポートする Azure VM を見つけようとします。
 
 - オンプレミス VM の有効なネットワーク パフォーマンスを取得するために、Server Assessment は、すべてのネットワーク アダプターについてマシンからのデータ送信速度 (ネットワーク出力) を集計します。 その後、快適性係数を適用します。 算出された数値を使用して、必要なネットワーク パフォーマンスをサポートできる Azure VM を見つけます。
 - Server Assessment は、ネットワーク パフォーマンスとともに、Azure VM が必要なネットワーク アダプター数をサポートできるかどうかも考慮します。
@@ -224,7 +235,7 @@ Server Assessment は、オンプレミスのマシンに接続されたネッ�
 
 ## <a name="confidence-ratings-performance-based"></a>信頼度レーティング (パフォーマンスベース)
 
-Azure Migrate でのパフォーマンスベースの各評価には、信頼度が関連付けられます。 信頼度の範囲は、星 1 つ (最も低い) から星 5 つ (最も高い) までです。 評価の信頼度は、Azure Migrate によって提示される推奨サイズの信頼性を評価する目安となります。
+Azure Migrate でのパフォーマンスベースの Azure VM の各評価には、信頼度が関連付けられます。 信頼度の範囲は、星 1 つ (最も低い) から星 5 つ (最も高い) までです。 評価の信頼度は、Azure Migrate によって提示される推奨サイズの信頼性を評価する目安となります。
 
 - 評価の信頼度は、評価に割り当てられます。 信頼度は、評価の計算に必要なデータ ポイントの可用性に基づいています。
 - パフォーマンス ベースのサイズ設定では、Server Assessment が以下を必要とします。
@@ -262,7 +273,7 @@ Azure Migrate でのパフォーマンスベースの各評価には、信頼度
 
 ## <a name="calculate-monthly-costs"></a>毎月のコストを計算する
 
-推奨サイズの設定が完了すると、Azure Migrate は移行後のコンピューティング コストとストレージ コストを計算します。
+サイズ設定の推奨が完了すると、Azure Migrate での Azure VM の評価では、移行後のコンピューティングとストレージのコストが計算されます。
 
 - **コンピューティング コスト**:Azure Migrate は、推奨される Azure VM サイズと Azure Billing API を使用して、VM の月間コストを計算します。
 

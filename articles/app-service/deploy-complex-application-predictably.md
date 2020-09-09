@@ -5,12 +5,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 62d0bf776b2d0c97d95b992ed6a1fd2a356e467a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c45d2da8658740b5e5e7e3dceb7478ea28d712c
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75967393"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962028"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Azure でマイクロサービスを予測どおりにデプロイする
 このチュートリアルでは、[Azure App Service](https://azure.microsoft.com/services/app-service/) の[マイクロサービス](https://en.wikipedia.org/wiki/Microservices)で構成されるアプリケーションを、JSON リソース グループ テンプレートと PowerShell スクリプトを使用して、1 つのユニットとして予測どおりにプロビジョニングしてデプロイする方法を示します。 
@@ -29,7 +29,7 @@ ms.locfileid: "75967393"
 このチュートリアルでは、次のツールを使用します。 ここはツールについて包括的に説明するための場所ではないため、簡単な説明と詳細情報へのリンクを紹介するにとどめて、エンド ツー エンドのシナリオに準拠します。 
 
 ### <a name="azure-resource-manager-templates-json"></a>Azure リソース マネージャー テンプレート (JSON)
-たとえば、Azure App Service でアプリを作成するたびに、Azure Resource Manager では、JSON テンプレートを使用して、リソース グループ全体とコンポーネント リソースが作成されます。 [Azure Marketplace](/azure/marketplace) の複雑なテンプレートには、データベース、ストレージ アカウント、App Service プラン、アプリ自体、アラート ルール、アプリ設定、自動スケールの設定などを含めることができます。また、これらのすべてのテンプレートは、PowerShell を介して利用できます。 Azure リソース マネージャー テンプレートの詳細については、 [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/templates/template-syntax.md)
+たとえば、Azure App Service でアプリを作成するたびに、Azure Resource Manager では、JSON テンプレートを使用して、リソース グループ全体とコンポーネント リソースが作成されます。 [Azure Marketplace](../marketplace/index.yml) の複雑なテンプレートには、データベース、ストレージ アカウント、App Service プラン、アプリ自体、アラート ルール、アプリ設定、自動スケールの設定などを含めることができます。また、これらのすべてのテンプレートは、PowerShell を介して利用できます。 Azure リソース マネージャー テンプレートの詳細については、 [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/templates/template-syntax.md)
 
 ### <a name="azure-sdk-26-for-visual-studio"></a>Azure SDK 2.6 for Visual Studio
 最新の SDK では、JSON エディターにおけるリソース マネージャー テンプレートのサポートが強化されました。 これを使用すると、リソース グループ テンプレートを一からすばやく作成したり、既存の JSON テンプレート (ダウンロードしたギャラリー テンプレートなど) を開いて変更したりできます。また、パラメーター ファイルを設定したり、Azure リソース グループのソリューションから直接リソース グループをデプロイしたりすることもできます。
@@ -39,7 +39,7 @@ ms.locfileid: "75967393"
 ### <a name="azure-powershell-080-or-later"></a>Azure PowerShell 0.8.0 以降
 Version 0.8.0 以降の Azure PowerShell のインストールには、Azure モジュールに加えて Azure リソース マネージャー モジュールが含まれています。 この新しいモジュールを使用して、リソース グループをデプロイするスクリプトを作成できます。
 
-詳細については、 [Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)
+詳細については、 [Azure リソース マネージャーでの Windows PowerShell の使用](../azure-resource-manager/management/manage-resources-powershell.md)
 
 ### <a name="azure-resource-explorer"></a>Azure Resource Explorer
 この[プレビュー ツール](https://resources.azure.com)を使用して、サブスクリプション内のすべてのリソース グループの JSON 定義と個々のリソースを調べることができます。 このツールでは、リソースの JSON 定義の編集、リソースの階層全体の削除、新しいリソースの作成を実行できます。  このツールですぐに利用できる情報は、特定の種類のリソースに設定する必要のあるプロパティ、適切な値などを示すため、テンプレートの作成に非常に役立ちます。[Azure Portal](https://portal.azure.com/) でリソース グループを作成し、エクスプローラー ツールで JSON 定義を調べてリソース グループのテンプレート化に利用できます。
@@ -54,19 +54,19 @@ Version 0.8.0 以降の Azure PowerShell のインストールには、Azure モ
 2. readme.md の **[Azure にデプロイ]** をクリックします。
 3. [deploy-to-azure](https://deploy.azure.com) サイトが表示され、デプロイメント パラメーターの入力が求められます。 ほとんどのフィールドにはリポジトリ名が設定されていますが、一部にランダムな文字列が設定されていることに注意してください。 必要に応じてすべてのフィールドを変更できますが、入力する必要があるのは SQL Server の管理用のログインとパスワードだけです。 **[次へ]** をクリックします。
    
-   ![](./media/app-service-deploy-complex-application-predictably/gettemplate-1-deploybuttonui.png)
+   ![deploy-to-azure サイトの入力デプロイ パラメーターが示されています。](./media/app-service-deploy-complex-application-predictably/gettemplate-1-deploybuttonui.png)
 4. 次に、 **[デプロイ]** をクリックしてデプロイメント プロセスを開始します。 プロセスの実行が完了したら、 http://todoapp*XXXX*.azurewebsites.net リンクをクリックし、デプロイされたアプリケーションを参照します。 
    
-   ![](./media/app-service-deploy-complex-application-predictably/gettemplate-2-deployprogress.png)
+   ![アプリケーションのデプロイ プロセスが示されています。](./media/app-service-deploy-complex-application-predictably/gettemplate-2-deployprogress.png)
    
    UI は、初めて参照するときに少し時間がかかります。これは、アプリがちょうど起動中であるためですが、十分な機能を備えたアプリケーションと考えてください。
 5. [デプロイ] ページに戻り、 **[管理]** リンクをクリックすると、Azure Portal に新しいアプリケーションが表示されます。
 6. **[要点]** ボックスの一覧で、リソース グループのリンクをクリックします。 **[外部プロジェクト]** で、アプリが既に GitHub リポジトリに接続されていることにも注意してください。 
    
-   ![](./media/app-service-deploy-complex-application-predictably/gettemplate-3-portalresourcegroup.png)
+   ![[要点] ボックスのセクションのリソース グループのリンクが示されています。](./media/app-service-deploy-complex-application-predictably/gettemplate-3-portalresourcegroup.png)
 7. リソース グループのブレードを見ると、リソース グループ内には 2 つのアプリと 1 つの SQL Database が既に存在します。
    
-   ![](./media/app-service-deploy-complex-application-predictably/gettemplate-4-portalresourcegroupclicked.png)
+   ![リソース グループで使用可能なリソースが示されています。](./media/app-service-deploy-complex-application-predictably/gettemplate-4-portalresourcegroupclicked.png)
 
 このわずか数分間に、2 つのマイクロサービス アプリケーションが完全にデプロイされ、コンポーネント、依存関係、設定、データベース、継続的な発行が、Azure リソース マネージャーで自動化されたオーケストレーションによって設定されることを確認しました。 これはすべて、次の 2 つで行われました。
 
@@ -80,10 +80,10 @@ Version 0.8.0 以降の Azure PowerShell のインストールには、Azure モ
 
 1. お気に入りの git ツールを使用して [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) リポジトリを複製します。 次のスクリーンショットでは、Visual Studio 2013 のチーム エクスプローラーでこれを実行します。
    
-   ![](./media/app-service-deploy-complex-application-predictably/examinejson-1-vsclone.png)
+   ![git ツールを使用して ToDoApp リポジトリを複製する方法が示されています。](./media/app-service-deploy-complex-application-predictably/examinejson-1-vsclone.png)
 2. リポジトリのルートから、azuredeploy.json を Visual Studio で開きます。 [JSON アウトライン] ウィンドウが表示されない場合は、Azure .NET SDK をインストールする必要があります。
    
-   ![](./media/app-service-deploy-complex-application-predictably/examinejson-2-vsjsoneditor.png)
+   ![Visual Studio の [JSON アウトライン] ウィンドウが示されています。](./media/app-service-deploy-complex-application-predictably/examinejson-2-vsjsoneditor.png)
 
 JSON 形式について詳しく説明する予定はありませんが、「 [その他のリソース](#resources) 」セクションには、リソース グループ テンプレートの言語を習得するためのリンクが用意されています。 ここでは、アプリをデプロイするための独自のカスタム テンプレートを作成するのに役立つ、興味深い機能のみについて説明します。
 
@@ -96,7 +96,7 @@ JSON 形式について詳しく説明する予定はありませんが、「 [�
 #### <a name="app-service-plan"></a>App Service プラン
 まず、JSON の単純なルート レベルのリソースから始めましょう。 [JSON アウトライン] で、 **[hostingPlanName]** という名前の App Service プランをクリックして、対応する JSON コードを強調表示します。 
 
-![](./media/app-service-deploy-complex-application-predictably/examinejson-3-appserviceplan.png)
+![JSON コードの [hostingPlanName] セクションが示されています。](./media/app-service-deploy-complex-application-predictably/examinejson-3-appserviceplan.png)
 
 `type` 要素で App Service プラン (かなり前にはサーバー ファームと呼ばれていました) の文字列を指定し、その他の要素とプロパティは、JSON ファイルで定義されているパラメーターを使用して設定されます。このリソースには、入れ子になったリソースは存在しません。
 
@@ -108,7 +108,7 @@ JSON 形式について詳しく説明する予定はありませんが、「 [�
 #### <a name="sql-server"></a>SQL Server
 次に、[JSON アウトライン] で **SQLServer** という名前の SQL Server リソースをクリックします。
 
-![](./media/app-service-deploy-complex-application-predictably/examinejson-4-sqlserver.png)
+![[JSON アウトライン] の SQLServer という名前の SQL Server リソースが示されています。](./media/app-service-deploy-complex-application-predictably/examinejson-4-sqlserver.png)
 
 強調表示された JSON コードに関して、次の点に注意してください。
 
@@ -128,12 +128,12 @@ JSON 形式について詳しく説明する予定はありませんが、「 [�
 ##### <a name="root-resource"></a>ルート リソース
 アプリは、2 つの異なるリソースに依存します。 つまり、Azure Resource Manager でアプリが作成されるのは、App Service プランと SQL Server インスタンスの両方が作成された後だけです。
 
-![](./media/app-service-deploy-complex-application-predictably/examinejson-5-webapproot.png)
+![App Service プランと SQL Server インスタンスのアプリの依存関係が示されています。](./media/app-service-deploy-complex-application-predictably/examinejson-5-webapproot.png)
 
 ##### <a name="app-settings"></a>アプリケーション設定
 アプリ設定は、入れ子になったリソースとしても定義されます。
 
-![](./media/app-service-deploy-complex-application-predictably/examinejson-6-webappsettings.png)
+![JSON コードで入れ子になったリソースとして定義されているアプリ設定が示されています。](./media/app-service-deploy-complex-application-predictably/examinejson-6-webappsettings.png)
 
 `config/appsettings` の `properties` 要素には、`"<name>" : "<value>"` 形式のアプリ設定が 2 つ含まれています。
 
@@ -143,7 +143,7 @@ JSON 形式について詳しく説明する予定はありませんが、「 [�
 ##### <a name="connection-strings"></a>Connection strings
 接続文字列は、入れ子になったリソースとしても定義されます。
 
-![](./media/app-service-deploy-complex-application-predictably/examinejson-7-webappconnstr.png)
+![接続文字列が JSON コードで入れ子になったリソースとしてどのように定義されるかが示されています。](./media/app-service-deploy-complex-application-predictably/examinejson-7-webappconnstr.png)
 
 `config/connectionstrings` の `properties` 要素では、各接続文字列が `"<name>" : {"value": "…", "type": "…"}` という特定の形式で、名前と値のペアとしても定義されています。 `type` 要素に指定できる値は、`MySql`、`SQLServer`、`SQLAzure`、および `Custom` です。
 
@@ -155,7 +155,7 @@ JSON 形式について詳しく説明する予定はありませんが、「 [�
 ##### <a name="source-control"></a>ソース管理
 ソース管理の設定は、入れ子になったリソースとしても定義されます。 Azure リソース マネージャーは、このリソースを使用して継続的な発行 (後で `IsManualIntegration` の注意点をご確認ください) を構成し、さらに、JSON ファイルの処理中にアプリケーション コードのデプロイメントを自動的に開始します。
 
-![](./media/app-service-deploy-complex-application-predictably/examinejson-8-webappsourcecontrol.png)
+![ソース管理の設定が、JSON コードで入れ子になったリソースとしてどのように定義されているかが示されています。](./media/app-service-deploy-complex-application-predictably/examinejson-8-webappsourcecontrol.png)
 
 `RepoUrl` と `branch` は、非常に直感的で、Git リポジトリと、発行元となる分岐の名前を指しています。 繰り返しになりますが、これらの情報は入力パラメーターで定義されています。 
 
@@ -171,11 +171,11 @@ JSON 形式について詳しく説明する予定はありませんが、「 [�
 
 たとえば、 [Azure リソース エクスプローラー](https://resources.azure.com) ツールに移動し、エクスプローラーでノードを展開すると、リソース グループと、それぞれのリソースの種類で収集されるルート レベルのリソースが表示されます。
 
-![](./media/app-service-deploy-complex-application-predictably/ARM-1-treeview.png)
+![展開された Azure リソース エクスプローラー ツールで、リソース グループとルート レベルのリソースを表示します。](./media/app-service-deploy-complex-application-predictably/ARM-1-treeview.png)
 
 アプリにドリルダウンすると、下のスクリーンショットのように、アプリの構成の詳細を表示できます。
 
-![](./media/app-service-deploy-complex-application-predictably/ARM-2-jsonview.png)
+![ドリルダウンして、アプリの構成の詳細を表示します。](./media/app-service-deploy-complex-application-predictably/ARM-2-jsonview.png)
 
 ここでも、入れ子になったリソースには、JSON テンプレート ファイルのリソースによく似た階層が必要です。また、JSON ウィンドウには、アプリ設定、接続文字列などが正しく反映されていることがわかります。 ここに設定が存在しない場合は、JSON ファイルに問題があることを示す可能性があり、JSON テンプレート ファイルのトラブルシューティングに役立ちます。
 
@@ -185,44 +185,44 @@ JSON 形式について詳しく説明する予定はありませんが、「 [�
 1. Visual Studio で、 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** をクリックします。
 2. **[Visual C#]**  >  **[クラウド]**  >  **[Azure リソース グループ]** をクリックした後、 **[OK]** をクリックします。
    
-   ![](./media/app-service-deploy-complex-application-predictably/deploy-1-vsproject.png)
+   ![Azure .NET SDK で Azure リソース グループとして新しいプロジェクトを作成します。](./media/app-service-deploy-complex-application-predictably/deploy-1-vsproject.png)
 3. **[Azure テンプレートの選択]** で、 **[空白のテンプレート]** を選択し、 **[OK]** をクリックします。
 4. azuredeploy.json を新しいプロジェクトの **[テンプレート]** フォルダーにドラッグします。
    
-   ![](./media/app-service-deploy-complex-application-predictably/deploy-2-copyjson.png)
+   ![azuredeploy.json ファイルをプロジェクトの [テンプレート] フォルダーにドラッグした結果が示されています。](./media/app-service-deploy-complex-application-predictably/deploy-2-copyjson.png)
 5. ソリューション エクスプローラーで、コピーした azuredeploy.json を開きます。
 6. デモで使用する目的のみで、 **[リソースの追加]** をクリックして、標準の Application Insights リソースをいくつか JSON ファイルに追加してみます。 JSON ファイルのデプロイのみに興味がある場合は、デプロイの手順に進んでください。
    
-   ![](./media/app-service-deploy-complex-application-predictably/deploy-3-newresource.png)
+   ![JSON ファイルに標準的な Application insights リソースを追加するために使用できる [リソースの追加] ボタンが示されています。](./media/app-service-deploy-complex-application-predictably/deploy-3-newresource.png)
 7. **[Web アプリの Application Insights]** を選択し、既存の App Service プランとアプリが選択されていることを確認して、 **[追加]** をクリックします。
    
-   ![](./media/app-service-deploy-complex-application-predictably/deploy-4-newappinsight.png)
+   ![Web アプリ、名前、App Service プラン、および Web アプリに対する Application Insights の選択が示されています。](./media/app-service-deploy-complex-application-predictably/deploy-4-newappinsight.png)
    
    リソースとその機能に応じて、App Service プランまたはアプリへの依存関係を持つ新しいリソースがいくつか表示されます。 これらのリソースは既存の定義では有効になっていないため、変更します。
    
-   ![](./media/app-service-deploy-complex-application-predictably/deploy-5-appinsightresources.png)
+   ![App Service プランまたはアプリに依存関係がある新しいリソースを表示します。](./media/app-service-deploy-complex-application-predictably/deploy-5-appinsightresources.png)
 8. [JSON アウトライン] で、 **appInsights AutoScale** をクリックし、その JSON コードを強調表示します。 これは App Service プランのスケーリング設定です。
 9. 強調表示された JSON コードで、`location` プロパティと `enabled` プロパティを見つけて次のように設定します。
    
-   ![](./media/app-service-deploy-complex-application-predictably/deploy-6-autoscalesettings.png)
+   ![appInsights の自動スケールの JSON コード内の location プロパティと enabled プロパティ、およびそれらに設定する必要がある値が示されています。](./media/app-service-deploy-complex-application-predictably/deploy-6-autoscalesettings.png)
 10. [JSON アウトライン] で、 **CPUHigh appInsights** をクリックし、その JSON コードを強調表示します。 これはアラートです。
 11. `location` プロパティと `isEnabled` プロパティを見つけて次のように設定します。 他の 3 つのアラート (紫色の電球) についても同様の操作を行います。
     
-    ![](./media/app-service-deploy-complex-application-predictably/deploy-7-alerts.png)
+    ![CPUHigh appInsights JSON コードの location プロパティと isEnabled プロパティ、およびそれらに設定する必要がある値が示されています。](./media/app-service-deploy-complex-application-predictably/deploy-7-alerts.png)
 12. これで、デプロイする準備が整いました。 プロジェクトを右クリックして **[デプロイ]**  > **New [デプロイ]ment**に関するページをご覧ください。
     
-    ![](./media/app-service-deploy-complex-application-predictably/deploy-8-newdeployment.png)
+    ![新しいプロジェクトをデプロイする方法が示されています。](./media/app-service-deploy-complex-application-predictably/deploy-8-newdeployment.png)
 13. ログインしていない場合は、Azure アカウントにログインします。
 14. サブスクリプション内の既存のリソース グループを選択するか、 **[azuredeploy.json]** を選択してから **[パラメーターの編集]** をクリックして新しいリソース グループを作成します。
     
-    ![](./media/app-service-deploy-complex-application-predictably/deploy-9-deployconfig.png)
+    ![azuredeploy.json ファイルのパラメーターを編集する方法が示されています。](./media/app-service-deploy-complex-application-predictably/deploy-9-deployconfig.png)
     
     これで、便利なテーブルで、テンプレート ファイルで定義されているすべてのパラメーターを編集できるようになりました。 既定値を定義するパラメーターには既定値が既に設定されています。また、使用できる値の一覧を定義するパラメーターはドロップダウン リストとして表示されます。
     
-    ![](./media/app-service-deploy-complex-application-predictably/deploy-10-parametereditor.png)
+    ![使用できる値のリストをドロップダウン リストとして定義するパラメーターが示されています。](./media/app-service-deploy-complex-application-predictably/deploy-10-parametereditor.png)
 15. 空のパラメーターすべてに値を設定します。 **[repoUrl]** には [GitHub リポジトリの ToDoApp](https://github.com/azure-appservice-samples/ToDoApp.git) のアドレスを使用します。 その後、 **[保存]** をクリックします。
     
-    ![](./media/app-service-deploy-complex-application-predictably/deploy-11-parametereditorfilled.png)
+    ![azuredeploy.json ファイルに新しく入力されたパラメーターが示されています。](./media/app-service-deploy-complex-application-predictably/deploy-11-parametereditorfilled.png)
     
     > [!NOTE]
     > 自動スケールは、**Standard** レベル以上で提供される機能です。プラン レベルのアラートは、**Basic** レベル以上で提供される機能です。AppInsights の新しいリソースすべてが点灯されたことがわかるように、**sku** パラメーターを **Standard** または **Premium** に設定する必要があります。
@@ -240,7 +240,7 @@ JSON 形式について詳しく説明する予定はありませんが、「 [�
 
 最後の手順は、PowerShell コマンドレットで簡単に実行されます。 Visual Studio でアプリケーションをデプロイしたときに実行された内容を確認するには、Scripts\Deploy-AzureResourceGroup.ps1 を開きます。 大量のコードが存在しますが、パラメーター ファイルを使用してテンプレート ファイルをデプロイするために必要な関連するすべてのコードのみを強調表示しています。
 
-![](./media/app-service-deploy-complex-application-predictably/deploy-12-powershellsnippet.png)
+![パラメーター ファイルを使用してテンプレート ファイルをデプロイするために使用する必要がある、スクリプト内の関連するコードが示されています。](./media/app-service-deploy-complex-application-predictably/deploy-12-powershellsnippet.png)
 
 最後のコマンドレット `New-AzureResourceGroup`で、実際にアクションが実行されます。 これまでの内容から、ツールを利用すれば、クラウド アプリケーションを予測どおりにデプロイするのは比較的簡単です。 同じパラメーター ファイルを使用して同じテンプレートでコマンドレットを実行するたびに、同じ結果が得られます。
 
@@ -254,7 +254,7 @@ DevOps では、反復性と予測可能性が、マイクロサービスで構�
 * [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/templates/template-syntax.md)
 * [Azure Resource Manager テンプレートの関数](../azure-resource-manager/templates/template-functions.md)
 * [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](../azure-resource-manager/templates/deploy-powershell.md)
-* [Azure リソース マネージャーでの Windows PowerShell の使用](../azure-resource-manager/powershell-azure-resource-manager.md)
+* [Azure リソース マネージャーでの Windows PowerShell の使用](../azure-resource-manager/management/manage-resources-powershell.md)
 * [Azure でのリソース グループのデプロイのトラブルシューティング](../azure-resource-manager/templates/common-deployment-errors.md)
 
 ## <a name="next-steps"></a>次のステップ

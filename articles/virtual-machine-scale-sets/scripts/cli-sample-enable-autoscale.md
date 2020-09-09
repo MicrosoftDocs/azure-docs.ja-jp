@@ -4,17 +4,18 @@ description: このスクリプトでは、Ubuntu を実行する仮想マシン
 author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
+ms.subservice: autoscale
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 03/27/2018
 ms.author: jushiman
-ms.custom: mvc
-ms.openlocfilehash: 3502fda1b924aa5351e7edab8e8b712fd0e6bf2c
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 8e8118a32da296d090ba22122b5188f941419e94
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701232"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502139"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Azure CLI を使用して仮想マシン スケール セットを自動的にスケールする
 このスクリプトでは、Ubuntu を実行する仮想マシン スケール セットを作成し、ホスト ベースのメトリックを使用して、CPU 負荷の変化に合わせて自動的にスケールします。
@@ -44,4 +45,4 @@ az group delete --name myResourceGroup
 | [az group delete](/cli/azure/ad/group) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次のステップ
-Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure/overview)のページをご覧ください。

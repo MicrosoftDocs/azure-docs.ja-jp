@@ -1,21 +1,14 @@
 ---
 title: クイック スタート:PowerShell を使用したイベント ハブの作成 - Azure Event Hubs
 description: このクイック スタートでは、Azure PowerShell を使用してイベント ハブを作成したうえで、.NET Standard SDK を使用してイベントの送受信を行う方法について説明します。
-services: event-hubs
-author: spelluru
-editor: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: quickstart
-ms.custom: seodec18
-ms.date: 11/05/2019
-ms.author: spelluru
-ms.openlocfilehash: 89ec1957e75fa45eef6c7939a77e5cc1b3cf7806
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 06/23/2020
+ms.openlocfilehash: 1c81024a9195e463eeaaf384d5cbbd1e0054c485
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77162125"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933955"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用したイベント ハブの作成
 
@@ -35,7 +28,7 @@ Azure Event Hubs はビッグ データ ストリーミング プラットフォ
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-ローカルで PowerShell を使用している場合、このクイック スタートを完了するには、最新バージョンの PowerShell を実行する必要があります。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストールと構成](https://docs.microsoft.com/powershell/azure/install-az-ps)に関するページを参照してください。
+ローカルで PowerShell を使用している場合、このクイック スタートを完了するには、最新バージョンの PowerShell を実行する必要があります。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストールと構成](/powershell/azure/install-az-ps)に関するページを参照してください。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -70,18 +63,18 @@ New-AzEventHub -ResourceGroupName myResourceGroup -NamespaceName namespace_name 
 
 この記事では、Event Hubs 名前空間を作成し、サンプル アプリケーションを使用してイベント ハブからイベントを送受信しました。 イベント ハブとの間でイベントを送信または受信するためのステップ バイ ステップの手順については、以下の**イベントの送受信**のチュートリアルを参照してください。 
 
-- [.NET Core](get-started-dotnet-standard-send-v2.md)
-- [Java](get-started-java-send-v2.md)
-- [Python](get-started-python-send-v2.md)
-- [JavaScript](get-started-java-send-v2.md)
+- [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+- [Java](event-hubs-java-get-started-send.md)
+- [Python](event-hubs-python-get-started-send.md)
+- [JavaScript](event-hubs-node-get-started-send.md)
 - [Go](event-hubs-go-get-started-send.md)
 - [C (送信のみ)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (受信のみ)](event-hubs-storm-getstarted-receive.md)
 
 
 [無料アカウントを作成]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
-[Install and Configure Azure PowerShell]: https://docs.microsoft.com/powershell/azure/install-az-ps
-[New-AzResourceGroup]: https://docs.microsoft.com/powershell/module/az.resources/new-Azresourcegroup
+[Install and Configure Azure PowerShell]: /powershell/azure/install-az-ps
+[New-AzResourceGroup]: /powershell/module/az.resources/new-azresourcegroup
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [3]: ./media/event-hubs-quickstart-powershell/sender1.png
 [4]: ./media/event-hubs-quickstart-powershell/receiver1.png

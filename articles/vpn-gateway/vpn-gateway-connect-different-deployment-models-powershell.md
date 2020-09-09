@@ -5,15 +5,15 @@ services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 1dc0eec6178420976181b05a059e9f8b4859ec2a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2c9b8a769dec1a2aa461a34203c98a228cf71d16
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77152008"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082054"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>異なるデプロイ モデルの仮想ネットワークを PowerShell を使用して接続する
 
@@ -37,7 +37,7 @@ ms.locfileid: "77152008"
 
 * 両方の VNet が既に作成されている。 リソース マネージャーの仮想ネットワークを作成する必要がある場合は「[リソース グループと仮想ネットワークを作成する](../virtual-network/quick-create-powershell.md#create-a-resource-group-and-a-virtual-network)」を参照してください。 クラシックの仮想ネットワークを作成するには、[クラシック VNet の作成](https://docs.microsoft.com/azure/virtual-network/create-virtual-network-classic)に関するページをご覧ください。
 * これらの VNet のアドレス範囲が互いに重複していない。また、ゲートウェイの接続先になる可能性のある他の接続の範囲と重複していない。
-* 最新の PowerShell コマンドレットがインストール済みである。 詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」ご覧ください。 必ずサービス管理 (SM) と Resource Manager (RM) のコマンドレットの両方をインストールしてください。 
+* 最新の PowerShell コマンドレットがインストール済みである。 詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/) 」ご覧ください。 必ずサービス管理 (SM) と Resource Manager (RM) のコマンドレットの両方をインストールしてください。 
 
 ### <a name="example-settings"></a><a name="exampleref"></a>設定例
 
@@ -99,44 +99,50 @@ Gateway IP addressing configuration = gwipconfig
 
 **例:**
 
-    <VirtualNetworkSites>
-      <VirtualNetworkSite name="ClassicVNet" Location="West US">
-        <AddressSpace>
-          <AddressPrefix>10.0.0.0/24</AddressPrefix>
-        </AddressSpace>
-        <Subnets>
-          <Subnet name="Subnet-1">
-            <AddressPrefix>10.0.0.0/27</AddressPrefix>
-          </Subnet>
-          <Subnet name="GatewaySubnet">
-            <AddressPrefix>10.0.0.32/29</AddressPrefix>
-          </Subnet>
-        </Subnets>
-      </VirtualNetworkSite>
-    </VirtualNetworkSites>
+```xml
+<VirtualNetworkSites>
+  <VirtualNetworkSite name="ClassicVNet" Location="West US">
+    <AddressSpace>
+      <AddressPrefix>10.0.0.0/24</AddressPrefix>
+    </AddressSpace>
+    <Subnets>
+      <Subnet name="Subnet-1">
+        <AddressPrefix>10.0.0.0/27</AddressPrefix>
+      </Subnet>
+      <Subnet name="GatewaySubnet">
+        <AddressPrefix>10.0.0.32/29</AddressPrefix>
+      </Subnet>
+    </Subnets>
+  </VirtualNetworkSite>
+</VirtualNetworkSites>
+```
 
 ### <a name="3-add-the-local-network-site"></a>3.ローカル ネットワーク サイトを追加する
 追加するローカル ネットワーク サイトは、接続先の RM VNet を表します。 まだ存在していない場合は、**LocalNetworkSites** 要素をファイルに追加します。 構成のこの時点では、Resource Manager の VNet のゲートウェイをまだ作成していないため、VPNGatewayAddress は任意の有効なパブリック IP アドレスにすることができます。 ゲートウェイを作成したら、このプレースホルダー IP アドレスを、RM ゲートウェイに割り当てられている正しいパブリック IP アドレスに置き換えます。
 
-    <LocalNetworkSites>
-      <LocalNetworkSite name="RMVNetLocal">
-        <AddressSpace>
-          <AddressPrefix>192.168.0.0/16</AddressPrefix>
-        </AddressSpace>
-        <VPNGatewayAddress>13.68.210.16</VPNGatewayAddress>
-      </LocalNetworkSite>
-    </LocalNetworkSites>
+```xml
+<LocalNetworkSites>
+  <LocalNetworkSite name="RMVNetLocal">
+    <AddressSpace>
+      <AddressPrefix>192.168.0.0/16</AddressPrefix>
+    </AddressSpace>
+    <VPNGatewayAddress>13.68.210.16</VPNGatewayAddress>
+  </LocalNetworkSite>
+</LocalNetworkSites>
+```
 
 ### <a name="4-associate-the-vnet-with-the-local-network-site"></a>4.VNet をローカル ネットワーク サイトに関連付ける
 このセクションでは、VNet の接続先のローカル ネットワーク サイトを指定します。 ここでは、先ほど参照した Resource Manager の VNet が該当します。 名前が一致することを確認します。 この手順では、ゲートウェイは作成しません。 ゲートウェイの接続先となるローカル ネットワークを指定します。
 
-        <Gateway>
-          <ConnectionsToLocalNetwork>
-            <LocalNetworkSiteRef name="RMVNetLocal">
-              <Connection type="IPsec" />
-            </LocalNetworkSiteRef>
-          </ConnectionsToLocalNetwork>
-        </Gateway>
+```xml
+<Gateway>
+  <ConnectionsToLocalNetwork>
+    <LocalNetworkSiteRef name="RMVNetLocal">
+      <Connection type="IPsec" />
+    </LocalNetworkSiteRef>
+  </ConnectionsToLocalNetwork>
+</Gateway>
+```
 
 ### <a name="5-save-the-file-and-upload"></a>5.ファイルを保存してアップロードする
 ファイルを保存してから、次のコマンドを実行して Azure にインポートします。 必要に応じて、ファイル パスを環境に合わせて変更してください。
@@ -147,9 +153,11 @@ Set-AzureVNetConfig -ConfigurationPath C:\AzureNet\NetworkConfig.xml
 
 インポートが成功したことを示す同様の結果が表示されます。
 
-        OperationDescription        OperationId                      OperationStatus                                                
-        --------------------        -----------                      ---------------                                                
-        Set-AzureVNetConfig        e0ee6e66-9167-cfa7-a746-7casb9    Succeeded 
+```output
+OperationDescription        OperationId                      OperationStatus                                                
+--------------------        -----------                      ---------------                                                
+Set-AzureVNetConfig        e0ee6e66-9167-cfa7-a746-7casb9    Succeeded 
+```
 
 ### <a name="6-create-the-gateway"></a>6.ゲートウェイを作成する
 

@@ -1,7 +1,7 @@
 ---
 title: Azure PowerShell スクリプトのサンプル - Standard Load Balancer を使用して IPv6 フロントエンドを構成する (プレビュー)
 titlesuffix: Azure Virtual Network
-description: Azure Virtual Network で PowerShell を使用して IPv6 エンドポイントを有効する
+description: Standard Load Balancer を使用して仮想ネットワーク スクリプトのサンプルで IPv6 フロントエンドを構成する方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -11,12 +11,13 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 24d25813a5cafc98f04d3daef2803aa44acc7f69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 61a9057a9bc65f6ee9ed68a84eac40ea6e0c7c61
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77201324"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89074187"
 ---
 # <a name="configure-ipv6-frontend-in-virtual-network-script-sample-with-standard-load-balancerpreview"></a>Standard Load Balancer を使用して仮想ネットワーク スクリプトのサンプルで IPv6 フロントエンドを構成する (プレビュー)
 
@@ -268,6 +269,6 @@ Remove-AzResourceGroup -Name <resourcegroupname> -Force
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/azure/overview)を参照してください。
+Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/azure/)を参照してください。
 
 その他のネットワーク PowerShell のサンプル スクリプトは、[Azure ネットワークの概要ドキュメント](../powershell-samples.md?toc=%2fazure%2fnetworking%2ftoc.json)で確認できます。

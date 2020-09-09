@@ -3,12 +3,13 @@ title: Azure CLI のサンプル スクリプト - Batch へのアプリケー�
 description: このサンプルでは、Azure Batch プールまたはタスクで使用するアプリケーションを追加する方法について説明します。
 ms.topic: sample
 ms.date: 01/29/2018
-ms.openlocfilehash: 792af55be17551d1635b6821456c6e8e53e9daea
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: fa4f273949e59c66292f5742501be9c2ad6a9fa4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681936"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494453"
 ---
 # <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>CLI の例: Azure Batch アカウントへのアプリケーションの追加
 
@@ -48,4 +49,4 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。

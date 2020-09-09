@@ -4,23 +4,19 @@ description: このクイックスタートでは、Visual Studio を使用し�
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
 ms.date: 03/06/2020
-ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: a4549bd2947332d7140f4f440a5344f417430554
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, 23113853-34f2-4f
+ms.openlocfilehash: d7cfcd02c5e6c9ff57241288bd79efb45d4ac7ab
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83122750"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213988"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>クイック スタート:Visual Studio を使用して Azure で初めての関数を作成する
 
-Azure Functions を使用すると、最初に VM を作成したり Web アプリケーションを発行したりしなくても、サーバーレス環境でコードを実行できます。
+この記事では、Visual Studio を使用して、HTTP 要求に応答する C# クラス ライブラリベースの関数を作成します。 コードをローカルでテストした後、Azure Functions のサーバーレス環境にデプロイします。  
 
-このクイックスタートでは、Visual Studio 2019 を使用して、"hello world" の HTTP によってトリガーされる C# 関数アプリをローカルで作成およびテストしてから、Azure に発行する方法を学習します。 
-
-![ブラウザーでの関数 localhost の応答](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local-final.png)
-
-このクイックスタートは、Visual Studio 2019 用に設計されています。 
+このクイックスタートを完了すると、ご利用の Azure アカウントでわずかな (数セント未満の) コストが発生します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,11 +30,19 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-Visual Studio によってプロジェクトとクラスが作成されます。クラスの中には、HTTP トリガー関数型のスケルトン コードが含まれています。 `FunctionName` メソッド属性は、関数の名前を設定します。これは、既定では `Function1` です。 `HttpTrigger`属性は、関数が HTTP 要求によってトリガーされることを指定します。 スケルトン コードは、要求本文またはクエリ文字列の値を含む HTTP 応答を送信します。
+Visual Studio によってプロジェクトとクラスが作成されます。クラスの中には、HTTP トリガー関数型のスケルトン コードが含まれています。 スケルトン コードは、要求本文またはクエリ文字列の値を含む HTTP 応答を送信します。 `HttpTrigger`属性は、関数が HTTP 要求によってトリガーされることを指定します。 
 
-メソッドに適切な属性を適用することによって、入力バインディングと出力バインディングを使用して関数の機能を拡張します。 詳細については、[Azure Functions C# 開発者向けリファレンス](functions-dotnet-class-library.md)の「[トリガーとバインド](functions-dotnet-class-library.md#triggers-and-bindings)」のセクションを参照してください。
+## <a name="rename-the-function"></a>フォルダーの名前を変更する
 
-関数プロジェクトと、HTTP トリガー関数を作成できたので、この関数をローカル コンピューターでテストすることができます。
+`FunctionName` メソッド属性は、関数の名前を設定します。これは、既定では `Function1` として生成されます。 このツールでは、プロジェクトを作成するときに既定の関数名をオーバーライドすることはできないため、ここで関数クラス、ファイル、およびメタデータに対してより適切な名前を指定します。
+
+1. **エクスプローラー**で Function1.cs ファイルを右クリックし、`HttpExample.cs` という名前に変更します。
+
+1. コードで Function1 クラスの名前を "HttpExample" に変更します。
+
+1. `Run` という名前の `HttpTrigger` メソッドで、`FunctionName` メソッド属性の名前を `HttpExample` に変更します。
+
+関数の名前の変更が済んだので、この関数をローカル コンピューターでテストできるようになりました。
 
 ## <a name="run-the-function-locally"></a>関数をローカルで実行する
 
@@ -56,19 +60,41 @@ Visual Studio によってプロジェクトとクラスが作成されます。
 
 ## <a name="test-your-function-in-azure"></a>Azure で関数をテストする
 
-1. **[発行]** プロファイル ページから関数アプリのベース URL をコピーします。 関数をローカルでテストするために使用した URL の `localhost:port` 部分を新しいベース URL に置き換えます。 この URL にクエリ文字列 `?name=<YOUR_NAME>` を追加して、要求を実行します。
+1. Cloud Explorer では、新しい関数アプリが選択されているはずです。 そうでない場合は、自分のサブスクリプション > **[App Services]** の順に展開して、新しい関数アプリを選択します。
+
+1. 関数アプリを右クリックし、 **[ブラウザーで開く]** を選択します。 これにより、関数アプリのルートが既定の Web ブラウザーで開かれ、関数アプリが実行されていることを示すページが表示されます。 
+
+    :::image type="content" source="media/functions-create-your-first-function-visual-studio/function-app-running-azure.png" alt-text="実行されている関数アプリ":::
+
+1. ブラウザーのアドレス バーで、ベース URL に文字列 `/api/HttpExample?name=Functions` を追加し、要求を実行します。
 
     HTTP トリガー関数を呼び出す URL は、次の形式になります。
 
-    `http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?name=<YOUR_NAME>`
+    `http://<APP_NAME>.azurewebsites.net/api/HttpExample?name=Functions`
 
-2. HTTP 要求のこの新しい URL をブラウザーのアドレス バーに貼り付けます。 次の画像で、関数によって返されたリモート GET 要求に対するブラウザーでの応答を示します。
+2. この URL に移動し、関数によって返されたリモート GET 要求に対する応答がブラウザーに表示されます。次の例のような内容です。
 
-    ![ブラウザーでの関数の応答](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png)
+    :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png" alt-text="ブラウザーでの関数の応答":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-[!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
+このコレクションの他のクイックスタートは、このクイックスタートに基づいています。 クイック スタート、チュートリアル、またはこのクイック スタートで作成したサービスのいずれかでの作業を引き続き行う場合は、リソースをクリーンアップしないでください。
+
+Azure の "*リソース*" とは、関数アプリ、関数、ストレージ アカウントなどのことを指します。 これらは "*リソース グループ*" に分類されており、グループを削除することでグループ内のすべてのものを削除できます。 
+
+これらのクイックスタートを完了するためにリソースを作成しました。 これらのリソースには、[アカウントの状態](https://azure.microsoft.com/account/)と[サービスの価格](https://azure.microsoft.com/pricing/)に応じて課金される場合があります。 リソースの必要がなくなった場合にそれらを削除する方法を、次に示します。
+
+1. Cloud Explorer で、自分のサブスクリプション > **[App Services]** の順に展開し、関数アプリを右クリックして、 **[ポータルで開く]** を選択します。 
+
+1. 関数アプリのページで、 **[概要]** タブを選択してから、 **[リソース グループ]** の下にあるリンクを選択します。
+
+   :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-app-delete-resource-group.png" alt-text="関数アプリのページで削除するリソース グループを選択する":::
+
+2. **[リソース グループ]** ページで、含まれているリソースの一覧を確認し、削除するものであることを確認します。
+ 
+3. **[リソース グループの削除]** を選択し、指示に従います。
+
+   削除には数分かかることがあります。 実行されると、通知が数秒間表示されます。 ページの上部にあるベルのアイコンを選択して、通知を表示することもできます。
 
 ## <a name="next-steps"></a>次のステップ
 

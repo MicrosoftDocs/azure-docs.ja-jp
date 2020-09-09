@@ -7,12 +7,12 @@ ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
-ms.openlocfilehash: 98c11a72b5aea0fac15d943977402289dc33a970
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9d3de5d4a88c782ad541ceb4916ec90a3bdd7b5
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74688308"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958254"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Azure App Service でのアプリのパフォーマンス低下に関する問題のトラブルシューティング
 この記事は、[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) でのアプリのパフォーマンス低下に関する問題のトラブルシューティングに役立ちます。
@@ -39,11 +39,11 @@ ms.locfileid: "74688308"
 
 [App Service](overview.md) ではステップごとにさまざまなオプションを使用できます。
 
-<a name="observe" />
+<a name="observe"></a>
 
 ### <a name="1-observe-and-monitor-application-behavior"></a>1.アプリケーションの動作を観察、監視する
 #### <a name="track-service-health"></a>サービス正常性を追跡する
-Microsoft Azure は、サービスの中断やパフォーマンスの低下があるたびに、毎回公表します。 サービスの正常性は、[Azure Portal](https://portal.azure.com/) で追跡できます。 詳細については、[サービスの正常性の追跡](../monitoring-and-diagnostics/insights-service-health.md)に関するページを参照してください。
+Microsoft Azure は、サービスの中断やパフォーマンスの低下があるたびに、毎回公表します。 サービスの正常性は、[Azure Portal](https://portal.azure.com/) で追跡できます。 詳細については、[サービスの正常性の追跡](../service-health/service-notifications.md)に関するページを参照してください。
 
 #### <a name="monitor-your-app"></a>アプリを監視する
 Web アプリに問題が発生しているかどうかは、アプリを監視することによって確認することができます。 アプリのブレードで **[要求とエラー]** タイルをクリックします。 **[メトリック]** ブレードには、追加できるすべてのメトリックが表示されます。
@@ -61,7 +61,7 @@ Web アプリに問題が発生しているかどうかは、アプリを監視�
 詳細については、次を参照してください。
 
 * [Azure App Service のアプリの監視](web-sites-monitor.md)
-* [アラート通知を受け取る](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
+* [アラート通知を受け取る](../azure-monitor/platform/alerts-overview.md)
 
 #### <a name="monitor-web-endpoint-status"></a>Web エンドポイントの状態を監視する
 アプリを **Standard** 価格レベルで実行している場合、App Service で 3 つの地域から 2 つのエンドポイントを監視することができます。
@@ -84,7 +84,7 @@ App Service アプリにはそれぞれ拡張可能な管理エンドポイン�
 
 [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) というパフォーマンス監視を目的としたサイト拡張機能も使用できます。 Application Insights を使用するには、SDK でコードをリビルドします。 追加データへのアクセスを提供する拡張機能をインストールすることもできます。 SDK では、アプリの使用状況とパフォーマンスをさらに詳細に監視するコードを記述できます。 詳細については、「[Web アプリケーションのパフォーマンスを監視する](../azure-monitor/app/web-monitor-performance.md)」を参照してください。
 
-<a name="collect" />
+<a name="collect"></a>
 
 ### <a name="2-collect-data"></a>2.データを収集する
 App Service は、Web サーバーと Web アプリケーションの両方のログ情報を診断する機能を備えています。 情報は Web サーバー診断とアプリケーション診断に分けられます。
@@ -139,7 +139,7 @@ Kudu にはもう 1 つ便利な機能があり、アプリケーションから
 
 Kudu で利用できる機能の詳細については、[知っておくべき Azure DevOps ツール](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/)に関するページを参照してください。
 
-<a name="mitigate" />
+<a name="mitigate"></a>
 
 ### <a name="3-mitigate-the-issue"></a>3.問題を緩和する
 #### <a name="scale-the-app"></a>アプリをスケーリングする
@@ -161,4 +161,4 @@ AutoHeal は、選択された設定 (構成の変更、要求、メモリに基
 
  ![パフォーマンスの問題を解決するためにアプリを再起動する](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
 
-アプリの管理には、Azure PowerShell を使用することもできます。 詳細については、 [リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)をご覧ください。
+アプリの管理には、Azure PowerShell を使用することもできます。 詳細については、 [リソース マネージャーでの Azure PowerShell の使用](../azure-resource-manager/management/manage-resources-powershell.md)をご覧ください。

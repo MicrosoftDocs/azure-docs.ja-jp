@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d7c137a75c0a021aa8bca3aec23da6c4d1ada300
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 14df0f131aaef8a4c24e2d1eb242a9b440e7c7b0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81868031"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507592"
 ---
 # <a name="quickstart---create-azure-vmware-solution-by-cloudsimple-service"></a>クイック スタート - Azure VMware Solution by CloudSimple の作成
 
@@ -87,4 +87,4 @@ CloudSimple プライベート クラウド環境に従量課金制の容量を�
 ## <a name="next-steps"></a>次のステップ
 
 * [プライベート クラウドを作成し、環境を構成します。](quickstart-create-private-cloud.md)
-* [CloudSimple サービス](https://docs.microsoft.com/azure/vmware-cloudsimple/cloudsimple-service)について説明します。
+* [CloudSimple サービス](./cloudsimple-service.md)について説明します。

@@ -3,12 +3,12 @@ title: クイックスタート - コンテナー イメージをビルドして
 description: Azure Container Registry を使用して、クラウド内で Docker コンテナー イメージをオンデマンドでビルドして実行するタスクを迅速に実行します。
 ms.topic: quickstart
 ms.date: 01/31/2020
-ms.openlocfilehash: f08f10dd170acaa8594ad5a47f5ef58e27288b10
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 610d82a0761f06338d04f0794d4141165d67d36c
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76986276"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753702"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>クイック スタート:Azure Container Registry タスクを使用したコンテナー イメージのビルドと実行
 
@@ -37,20 +37,21 @@ az group create --name myResourceGroup --location eastus
 [az acr create][az-acr-create] コマンドを使用してコンテナー レジストリを作成します。 レジストリの名前は Azure 内で一意にする必要があります。また、5 ～ 50 文字の英数字を含める必要があります。 次の例では、*myContainerRegistry008* を使用しています。 これを一意の値に更新します。
 
 ```azurecli-interactive
-az acr create --resource-group myResourceGroup --name myContainerRegistry008 --sku Basic
+az acr create --resource-group myResourceGroup \
+  --name myContainerRegistry008 --sku Basic
 ```
 
-この例では、Azure Container Registry について学習している開発者にとって、コストが最適なオプションである *Basic* レジストリを作成します。 利用可能なサービス レベルの詳細については、[コンテナー レジストリの SKU][container-registry-skus] に関するページを参照してください。
+この例では、Azure Container Registry について学習している開発者にとって、コストが最適なオプションである *Basic* レジストリを作成します。 利用可能なサービス レベルの詳細については、[コンテナー レジストリのサービス レベル][container-registry-skus]に関するページを参照してください。
 
-## <a name="build-an-image-from-a-dockerfile"></a>Dockerfile からのイメージのビルド
+## <a name="build-and-push-image-from-a-dockerfile"></a>Dockerfile からのイメージのビルドとプッシュ
 
-ここでは、Azure Container Registry を使用してイメージをビルドします。 まず、作業ディレクトリを作成してから、次のコンテンツを含む *Dockerfile* という名前の Dockerfile を作成します。 これは、Linux コンテナー イメージをビルドする単純な例ですが、独自の標準的な Dockerfile を作成して他のプラットフォーム用のイメージをビルドできます。 この記事のコマンド例は、Bash シェル形式で示してあります。
+ここでは、Azure Container Registry を使用してイメージをビルドし、プッシュします。 まず、作業ディレクトリを作成してから、`FROM hello-world` の 1 行だけが記述された *Dockerfile* という名前の Dockerfile を作成します。 これは、Docker Hub の `hello-world` イメージから Linux コンテナー イメージをビルドする単純な例です。 独自の標準的な Dockerfile を作成して他のプラットフォーム用のイメージをビルドすることができます。 Bash シェルで作業している場合は、次のコマンドで Dockerfile を作成してください。
 
 ```bash
 echo FROM hello-world > Dockerfile
 ```
 
-[az acr build][az-acr-build] コマンドを実行してイメージをビルドします。 正常にビルドされると、イメージがレジストリにプッシュされます。 次の例では、`sample/hello-world:v1` イメージをプッシュします。 コマンドの最後にある `.` では、Dockerfile の位置を設定します。この場合は現在のディレクトリです。
+[az acr build][az-acr-build] コマンドを実行してイメージをビルドし、正常にイメージがビルドされたら、それをレジストリにプッシュします。 次の例では、`sample/hello-world:v1` イメージをビルドしてプッシュします。 コマンドの最後にある `.` では、Dockerfile の位置を設定します。この場合は現在のディレクトリです。
 
 ```azurecli-interactive
 az acr build --image sample/hello-world:v1 \

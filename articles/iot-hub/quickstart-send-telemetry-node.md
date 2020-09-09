@@ -12,13 +12,15 @@ ms.custom:
 - mvc
 - seo-javascript-september2019
 - mqtt
+- 'Role: Cloud Development'
+- devx-track-javascript
 ms.date: 06/21/2019
-ms.openlocfilehash: 5c34dcc606e87e11a3a018df1b2d6bbedb262d04
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 16eb4e516581a2190fdb0a4aa1fdb829597a0005
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82209113"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89073422"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-nodejs"></a>クイック スタート:デバイスから IoT ハブに利用統計情報を送信してバックエンド アプリケーションで読み取る (Node.js)
 
@@ -77,7 +79,7 @@ az extension add --name azure-iot
    **YourIoTHubName**: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyNodeDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyNodeDevice --output table
     ```
 
     次のようなデバイス接続文字列をメモしておきます。

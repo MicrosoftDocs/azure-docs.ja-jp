@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/25/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 80bd1b65d04ea49fc742033e1850d95a85021c9f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5cbedad360e5270238225503e7802d571820c871
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78188173"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388155"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して LinkedIn アカウントでのサインインを設定する
 
@@ -136,7 +136,7 @@ LinkedIn 技術プロファイルでは、**ExtractGivenNameFromLinkedInResponse
 
 *TrustFrameworkExtensions.xml* ファイルの先頭付近に **BuildingBlocks** 要素を追加します。 例として、*TrustFrameworkBase.xml* を参照します。
 
-```XML
+```xml
 <BuildingBlocks>
   <ClaimsSchema>
     <!-- Claim type needed for LinkedIn claims transformations -->
@@ -197,7 +197,7 @@ LinkedIn 技術プロファイルでは、**ExtractGivenNameFromLinkedInResponse
 1. 作成したユーザー体験内で、`Order="1"` を含む **OrchestrationStep** 要素を見つけます。
 2. **ClaimsProviderSelections** の下に、次の要素を追加します。 **TargetClaimsExchangeId** の値を適切な値 (`LinkedInExchange` など) に設定します。
 
-    ```XML
+    ```xml
     <ClaimsProviderSelection TargetClaimsExchangeId="LinkedInExchange" />
     ```
 
@@ -208,7 +208,7 @@ LinkedIn 技術プロファイルでは、**ExtractGivenNameFromLinkedInResponse
 1. ユーザー体験内で、`Order="2"` を含む **OrchestrationStep** を見つけます。
 2. 次の **ClaimsExchange** 要素を追加します。ID には、**TargetClaimsExchangeId** に使用したのと同じ値を使用するようにしてください。
 
-    ```XML
+    ```xml
     <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAUTH" />
     ```
 
@@ -241,14 +241,14 @@ LinkedIn では最近、[API が v1.0 から v2.0 に更新](https://engineering
 
 **TechnicalProfile** の既存の **Metadata** 要素内で、次の **Item** 要素を変更します。
 
-```XML
+```xml
 <Item Key="ClaimsEndpoint">https://api.linkedin.com/v1/people/~:(id,first-name,last-name,email-address,headline)</Item>
 <Item Key="scope">r_emailaddress r_basicprofile</Item>
 ```
 
 変更後:
 
-```XML
+```xml
 <Item Key="ClaimsEndpoint">https://api.linkedin.com/v2/me</Item>
 <Item Key="scope">r_emailaddress r_liteprofile</Item>
 ```
@@ -257,7 +257,7 @@ LinkedIn では最近、[API が v1.0 から v2.0 に更新](https://engineering
 
 **TechnicalProfile** の **Metadata** 内に、次の **Item** 要素を追加します。
 
-```XML
+```xml
 <Item Key="external_user_identity_claim_id">id</Item>
 <Item Key="BearerTokenTransmissionMethod">AuthorizationHeader</Item>
 <Item Key="ResolveJsonPathsInJsonTokens">true</Item>
@@ -267,14 +267,14 @@ LinkedIn では最近、[API が v1.0 から v2.0 に更新](https://engineering
 
 **TechnicalProfile** の既存の **OutputClaims** 要素内で、次の **OutputClaim** 要素を変更します。
 
-```XML
+```xml
 <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="firstName" />
 <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="lastName" />
 ```
 
 変更後:
 
-```XML
+```xml
 <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="firstName.localized" />
 <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="lastName.localized" />
 ```
@@ -283,7 +283,7 @@ LinkedIn では最近、[API が v1.0 から v2.0 に更新](https://engineering
 
 **TechnicalProfile** の **OutputClaimsTransformations** 内に、次の **OutputClaimsTransformation** 要素を追加します。
 
-```XML
+```xml
 <OutputClaimsTransformation ReferenceId="ExtractGivenNameFromLinkedInResponse" />
 <OutputClaimsTransformation ReferenceId="ExtractSurNameFromLinkedInResponse" />
 ```
@@ -294,7 +294,7 @@ LinkedIn では最近、[API が v1.0 から v2.0 に更新](https://engineering
 
 **BuildingBlocks** 要素をファイルの先頭付近に追加する必要があります。 例として、*TrustframeworkBase.xml* を参照します。
 
-```XML
+```xml
 <BuildingBlocks>
   <ClaimsSchema>
     <!-- Claim type needed for LinkedIn claims transformations -->
@@ -338,7 +338,7 @@ LinkedIn の v1.0 から v2.0 への移行の一部として、メール アド�
 2. LinkedIn アクセス トークンを要求内に保存します。 [手順についてはこちらを参照してください](idp-pass-through-custom.md)。
 3. LinkedIn の `/emailAddress` API への要求を作成する次のクレーム プロバイダーを追加します。 この要求を承認するために、LinkedIn アクセス トークンが必要です。
 
-    ```XML
+    ```xml
     <ClaimsProvider>
       <DisplayName>REST APIs</DisplayName>
       <TechnicalProfiles>
@@ -366,7 +366,7 @@ LinkedIn の v1.0 から v2.0 への移行の一部として、メール アド�
 
 4. ユーザーが LinkedIn を使用してサインインするときに API クレーム プロバイダーがトリガーされるように、ユーザー体験に次のオーケストレーション手順を追加します。 `Order` 番号を適切に更新するようにしてください。 この手順を、LinkedIn 技術プロファイルをトリガーするオーケストレーション手順の直後に追加します。
 
-    ```XML
+    ```xml
     <!-- Extra step for LinkedIn to get the email -->
     <OrchestrationStep Order="3" Type="ClaimsExchange">
       <Preconditions>

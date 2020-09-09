@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory と Everbridge の統合 | Microsoft Docs
 description: Azure Active Directory と Everbridge の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 58d7cd22-98c0-4606-9ce5-8bdb22ee8b3e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 60463a00c6864bed7b3a18e816ef0143d3573782
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1da2fd879dbeac1836469d46567566769f6163a2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67103250"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555401"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>チュートリアル:Azure Active Directory と Everbridge の統合
 
@@ -152,21 +148,21 @@ Everbridge で Azure AD シングル サインオンを構成するには、次�
  
 1. 別の Web ブラウザー ウィンドウで、Everbridge に管理者としてサインインします。
 
-1. 上部のメニューで **[Settings]\(設定)\** タブを選択します。 **[Serucity]\(セキュリティ)\** の下で **[Single Sign-On]\(シングル サインオン)\** を選択します。
+1. 上部のメニューで **[Settings]\(設定)** タブを選択します。 **[Serucity]\(セキュリティ)** の下で **[Single Sign-On]\(シングル サインオン)** を選択します。
    
      ![Configure single sign-on](./media/everbridge-tutorial/tutorial_everbridge_002.png)
    
-     a. **[Name]\(名前)\** ボックスに、識別子プロバイダーの名前を入力します。 たとえば、自分の会社名などです。
+     a. **[Name]\(名前)** ボックスに、識別子プロバイダーの名前を入力します。 たとえば、自分の会社名などです。
    
-     b. **[API Name]\(API 名)\** ボックスに、API の名前を入力します。
+     b. **[API Name]\(API 名)** ボックスに、API の名前を入力します。
    
-     c. **[Choose File]\(ファイルの選択)\** を選択して、Azure portal からダウンロードしたメタデータ ファイルをアップロードします。
+     c. **[Choose File]\(ファイルの選択)** を選択して、Azure portal からダウンロードしたメタデータ ファイルをアップロードします。
    
      d. **[SAML Identity Location]\(SAML ID の場所\)** で、 **[Identity is in the NameIdentifier element of the Subject statement]\(ID を Subject ステートメントの NameIdentifier 要素にする\)** をオンにします。
    
      e. **[SSO Login URL]\(SSO ログイン URL\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
    
-     f. **[Service Provider initiated Request Binding]\(サービス プロバイダーが開始した要求のバインド)\** で **[HTTP Redirect]\(HTTP リダイレクト)\** を選択します。
+     f. **[Service Provider initiated Request Binding]\(サービス プロバイダーが開始した要求のバインド)** で **[HTTP Redirect]\(HTTP リダイレクト)** を選択します。
 
      g. **[保存]** を選択します。
 

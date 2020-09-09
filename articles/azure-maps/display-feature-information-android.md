@@ -1,6 +1,6 @@
 ---
 title: Azure Maps Android SDK でフィーチャー情報を表示する | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps Android SDK を使用して、マップにフィーチャー情報を表示する方法について説明します。
+description: ユーザーがマップ機能を操作するときに情報を表示する方法について説明します。 Azure Maps Android SDK を使用して、トースト メッセージや他の種類のメッセージを表示します。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/08/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 26f41a7fd88a3c2018592e89ae95e3b962c1a9e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 44c5f9f1a7c0d014d101ad45a80e1e53c42f69a3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75911688"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009037"
 ---
 # <a name="display-feature-information"></a>機能情報を表示する
 
@@ -74,7 +74,7 @@ map.events.add((OnFeatureClick) (features) -> {
 - 現在のアクティビティに[フラグメント](https://developer.android.com/guide/components/fragments)を追加します。
 - 別のアクティビティまたはビューに移動します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 マップにさらにデータを追加するには:
 

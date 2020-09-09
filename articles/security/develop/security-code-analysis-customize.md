@@ -2,7 +2,7 @@
 title: Microsoft Security Code Analysis タスクのカスタマイズ
 titleSuffix: Azure
 description: この記事では、Microsoft Security Code Analysis 拡張機能のタスクのカスタマイズについて説明します
-author: vharindra
+author: sukhans
 manager: sukhans
 ms.author: terrylan
 ms.date: 07/31/2019
@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6cdf892651407defc21f359a8e3b326b4af63b62
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c4c7f82b729355e59ff05d5513e22fa143d53a5e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77499997"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206860"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>ビルド タスクを構成およびカスタマイズする
 
@@ -41,7 +41,7 @@ Windows Defender は、Windows Update クライアントを使用してシグネ
 
 Windows Update のエラーとその軽減策について詳しくは、「[コンポーネント別の Windows Update エラーコード](https://docs.microsoft.com/windows/deployment/update/windows-update-error-reference)」および TechNet の記事「[Windows Update エージェント - エラーコード](https://social.technet.microsoft.com/wiki/contents/articles/15260.windows-update-agent-error-codes.aspx)」をご覧ください。
 
-このタスクの YAML 構成については、[Anti-Malware YAML オプション](yaml-configuration.md#anti-malware-scanner-task)に関するセクションを参照してください。
+このタスクの YAML 構成については、[Anti-Malware YAML オプション](yaml-configuration.md#anti-malware-scanner-task)に関するセクションを参照してください
 
 ## <a name="binskim-task"></a>BinSkim タスク
 
@@ -64,9 +64,11 @@ Windows Update のエラーとその軽減策について詳しくは、「[コ�
     - ディレクトリの指定は、常に \\* で終わる必要があります。
     - 例 :
 
+```binskim-targets
            *.dll;*.exe
            $(BUILD_STAGINGDIRECTORY)\*
            $(BUILD_STAGINGDIRECTORY)\*.dll;$(BUILD_STAGINGDIRECTORY)\*.exe;
+```
 
 - **[Type]\(種類\)** ボックスの一覧で **[Command Line]\(コマンド ライン\)** を選択した場合は、binskim.exe を実行する必要があります。
      - binskim.exe に対するの最初の引数では、動詞 **analyze** に続けて 1 つ以上のパスを指定する必要があります。 各パスには、完全なパスまたはソース ディレクトリを基準とした相対パスを指定できます。
@@ -74,15 +76,17 @@ Windows Update のエラーとその軽減策について詳しくは、「[コ�
      - **/o** または **/output** オプションは省略できます。 出力の値は自動的に追加または置換されます。
      - 標準のコマンドライン構成は次のようになります。
 
+```binskim-line-args
            analyze $(Build.StagingDirectory)\* --recurse --verbose
            analyze *.dll *.exe --recurse --verbose
+```
 
-          > [!NOTE]
-          > ターゲットに対してディレクトリを指定する場合、末尾の \\* は重要です。
+> [!NOTE]
+> ターゲットに対してディレクトリを指定する場合、末尾の \\* は重要です。
 
 BinSkim のコマンドライン引数、ID ごとのルール、終了コードについて詳しくは、[BinSkim のユーザー ガイド](https://github.com/Microsoft/binskim/blob/master/docs/UserGuide.md)を参照してください。
 
-このタスクの YAML 構成については、[BinSkim YAML オプション](yaml-configuration.md#binskim-task)に関するセクションを参照してください。
+このタスクの YAML 構成については、[BinSkim の YAML オプション](yaml-configuration.md#binskim-task)に関するセクションを参照してください
 
 ## <a name="credential-scanner-task"></a>Credential Scanner タスク
 
@@ -91,7 +95,8 @@ BinSkim のコマンドライン引数、ID ごとのルール、終了コード
 ![Credential Scanner ビルド タスクの構成](./media/security-tools/3-taskdetails.png)
 
 利用可能なオプションは、次のとおりです。
-
+  - **表示名**: Azure DevOps タスクの名前です。 既定値は、Run Credential Scanner です
+  - **[Tool Major Version]\(ツール メジャー バージョン\)** : 使用可能な値は、**CredScan V2** と **CredScan V1** です。 **CredScan V2** バージョンを使用することをお勧めします。
   - **[Output Format]\(出力形式\)** : 使用可能な値は、 **[TSV]** 、 **[CSV]** 、 **[SARIF]** 、 **[PREfast]** などです。
   - **[Tool Version]\(ツールのバージョン\)** : **[Latest]\(最新\)** を選択することをお勧めします。
   - **[Scan Folder]\(スキャン フォルダー\)** : スキャン対象のリポジトリ フォルダーです。
@@ -105,37 +110,7 @@ BinSkim のコマンドライン引数、ID ごとのルール、終了コード
   - **[Control Options]\(制御オプション\)**  >  **[Run this task]\(このタスクを実行する\)** : タスクをいつ実行するかを指定します。 さらに複雑な条件を指定するには、 **[Custom conditions]\(カスタム条件\)** を選択します。
   - **バージョン**:Azure DevOps 内でのビルド タスクのバージョンです。 このオプションを使用することはあまりありません。
 
-このタスクの YAML 構成については、[Credential Scanner YAML オプション](yaml-configuration.md#credential-scanner-task)に関するセクションを参照してください。
-
-## <a name="microsoft-security-risk-detection-task"></a>Microsoft Security Risk Detection タスク
-
-> [!NOTE]
-> Microsoft Security Risk Detection (MSRD) タスクを使用する前に、MSRD サービスでアカウントを作成して構成する必要があります。 このサービスは、個別のオンボード プロセスを必要とします。 この拡張機能の他のほとんどのタスクとは異なり、このタスクには MSRD での別のサブスクリプションが必要です。
->
-> その手順については、[Microsoft Security Risk Detection](https://aka.ms/msrddocs) に関するページと [Microsoft Security Risk Detection の使い方](https://docs.microsoft.com/security-risk-detection/how-to/)に関するページを参照してください。
-
-次の一覧ではこのタスクの構成の詳細を示します。 UI 要素については、その要素の上にマウスポインターを置くとヘルプが表示されます。
-
-   - **[Azure DevOps Service Endpoint Name for MSRD]\(MSRD 用 Azure DevOps サービス エンドポイント名\)** : Azure DevOps サービス エンドポイントのジェネリック型には、オンボードされた MSRD インスタンスの URL と REST API アクセス トークンが格納されます。 そのようなエンドポイントを作成してある場合は、ここで指定できます。 それ以外の場合は、 **[Manage]\(管理\)** リンクを選択して、この MSRD タスク用の新しいサービス エンドポイントを作成して構成します。
-   - **[アカウント ID]** : MSRD アカウントの URL から取得できる GUID です。
-   - **[URLs to Binaries]\(バイナリの URL\)** : パブリックに使用できる URL のセミコロン区切りリストです。 ファジー テスト マシンでは、これらの URL を使用してバイナリがダウンロードされます。
-   - **[URLs of the Seed Files]\(シード ファイルの URL\)** : パブリックに使用できる URL のセミコロン区切りリストです。 ファジー テスト マシンでは、これらの URL を使用してシードがダウンロードされます。 シード ファイルがバイナリと一緒にダウンロードされる場合、この値の指定は省略可能です。
-   - **[OS Platform Type]\(OS プラットフォーム タイプ\)** : ファジー テスト ジョブが実行されるマシンのオペレーティング システム (OS) プラットフォームです。 使用できる値は、**Windows** と **Linux** です。
-   - **[Windows Edition / Linux Edition]\(Windows エディション/Linux エディション\)** : ファジー テスト ジョブが実行されるマシンの OS エディションです。 マシンの OS エディションが既定値と異なる場合は、既定値を上書きできます。
-   - **[Package Installation Script]\(パッケージ インストール スクリプト\)** : テスト マシンで実行するスクリプトです。 このスクリプトでは、ファジー テスト ジョブが送信される前に、テスト ターゲット プログラムとその依存関係がインストールされます。
-   - **[Job Submission Parameters]\(ジョブ送信パラメーター\)** :
-       - **[Seed Directory]\(シード ディレクトリ\)** : シードが格納されるファジー テスト マシン上のディレクトリのパスです。
-       - **[Seed Extension]\(シード拡張子\)** : シードのファイル名拡張子です。
-       - **[Test Driver Executable]\(テスト ドライバー実行可能ファイル\)** : ファジー テスト マシン上のターゲット実行可能ファイルへのパスです。
-       - **[Test Driver Executable Architecture]\(テスト ドライバー実行可能ファイル アーキテクチャ\)** : ターゲット実行可能ファイルのアーキテクチャです。 使用できる値は **x86** と **amd64** です。
-       - **[Test Driver Arguments]\(テスト ドライバー引数\)** : テスト実行可能ファイルに渡されるコマンド ライン引数です。 引数 "%testfile%" (引用符を含む) は、ターゲット ファイルへの完全パスに自動的に置き換えられます。 このファイルは、テスト ドライバーによって解析され、必須です。
-       - **[Test Driver Process Exits Upon Test Completion]\(テストの完了時にテスト ドライバー プロセスを終了する\)** : 完了時にテスト ドライバーを終了する場合は、このチェック ボックスをオンにします。 テスト ドライバーを強制的に閉じる必要がある場合はオフにします。
-       - **[Maximum Duration (in seconds)]\(最大継続期間 (秒)\)** : ターゲット プログラムで入力ファイルを解析するのに必要であると合理的に考えられる最大推定時間です。 この推定の精度が高いほど、ファジー テスト アプリの実行効率が上がります。
-       - **[Test Driver Can Be Run Repeatedly]\(テスト ドライバーは繰り返し実行可能\)** : 永続化または共有されたグローバルな状態に依存することなくテスト ドライバーを繰り返し実行できる場合は、このチェック ボックスをオンにします。
-       - **[Test Driver Can Be Renamed]\(テスト ドライバーは名前の変更が可能\)** : テスト ドライバー実行可能ファイルの名前を変更しても正しく動作する場合は、このチェック ボックスをオンにします。
-       - **[The Fuzzing Application Runs as a Single OS Process]\(ファジー テスト アプリケーションが単一の OS プロセスとして動作する\)** : テスト ドライバーが 1 つの OS プロセスで実行される場合は、このチェック ボックスをオンにします。 テスト ドライバーによって追加のプロセスが生成される場合は、オフにします。
-
-このタスクの YAML 構成については、[Microsoft Security Risk Detection YAML オプション](yaml-configuration.md#microsoft-security-risk-detection-task)に関するセクションを参照してください。
+このタスクの YAML 構成については、[Credential Scanner の YAML オプション](yaml-configuration.md#credential-scanner-task)に関するセクションを参照してください
 
 ## <a name="roslyn-analyzers-task"></a>Roslyn Analyzers タスク
 
@@ -172,7 +147,7 @@ Roslyn Analyzers タスクに関するその他のリソースについては、
 
 このビルド タスクによってインストールされて使用されるアナライザー パッケージは、NuGet の [Microsoft.CodeAnalysis.FxCopAnalyzers](https://www.nuget.org/packages/Microsoft.CodeAnalysis.FxCopAnalyzers) ページで確認できます。
 
-このタスクの YAML 構成については、[Roslyn Analyzers YAML オプション](yaml-configuration.md#roslyn-analyzers-task)に関するセクションを参照してください。
+このタスクの YAML 構成については、[Roslyn Analyzers の YAML オプション](yaml-configuration.md#roslyn-analyzers-task)に関するセクションを参照してください
 
 ## <a name="tslint-task"></a>TSLint タスク
 
@@ -181,7 +156,7 @@ TSLint の詳細については、[GitHub の TSLint リポジトリ](https://gi
 >[!NOTE] 
 >ご存知かもしれませんが、[GitHub の TSLint リポジトリ](https://github.com/palantir/tslint)のホーム ページでは、2019 年に TSLint が非推奨になることが示されています。 Microsoft では、代わりのタスクとして [ESLint](https://github.com/eslint/eslint) を調査しています。
 
-このタスクの YAML 構成については、[TSLint YAML オプション](yaml-configuration.md#tslint-task)に関するページを参照してください。
+このタスクの YAML 構成については、[TSLint の YAML オプション](yaml-configuration.md#tslint-task)に関するセクションを参照してください
 
 ## <a name="publish-security-analysis-logs-task"></a>Publish Security Analysis Logs タスク
 
@@ -193,7 +168,7 @@ TSLint の詳細については、[GitHub の TSLint リポジトリ](https://gi
 - **[Artifact Type]\(成果物の種類\)** : 選択に応じて、ご利用の Azure DevOps Server に、またはビルド エージェントからアクセスできる共有ファイルに、ログを発行できます。
 - **[ツール]** :特定のツールのログを保持することも、 **[All Tools]\(すべてのツール\)** を選択してすべてのログを保持することもできます。
 
-このタスクの YAML 構成については、[Publish Security Logs YAML オプション](yaml-configuration.md#publish-security-analysis-logs-task)に関するセクションを参照してください。
+このタスクの YAML 構成については、[Publish Security Logs の YAML オプション](yaml-configuration.md#publish-security-analysis-logs-task)に関するセクションを参照してください
 
 ## <a name="security-report-task"></a>Security Report タスク
 
@@ -206,7 +181,7 @@ Security Report の構成の詳細については、次のスクリーンショ�
 - **[Advanced Options]\(詳細オプション\)** : 選択したツールのいずれかにログが存在しない場合、警告またはエラーをログに記録することを選択できます。 エラーをログに記録すると、タスクは失敗します。
 - **[Base Logs Folder]\(基本ログフォルダー\)** : ログの検索先となる基本ログ フォルダーをカスタマイズできます。 ただし、このオプションは通常は使用されません。
 
-このタスクの YAML 構成については、[Security Report YAML オプション](yaml-configuration.md#security-report-task)に関するセクションを参照してください。
+このタスクの YAML 構成については、[Security Report の YAML オプション](yaml-configuration.md#security-report-task)に関するセクションを参照してください
 
 ## <a name="post-analysis-task"></a>Post-Analysis タスク
 
@@ -218,7 +193,7 @@ Security Report の構成の詳細については、次のスクリーンショ�
 - **[Report]\(レポート\)** : 必要に応じて、ビルド中断の原因になっている結果を書き込むことができます。 結果は、Azure DevOps コンソール ウィンドウとログ ファイルに書き込まれます。
 - **[Advanced Options]\(詳細オプション\)** : 選択したツールのいずれかにログが存在しない場合、警告またはエラーをログに記録することを選択できます。 エラーをログに記録すると、タスクは失敗します。
 
-このタスクの YAML 構成については、[Post Analysis YAML オプション](yaml-configuration.md#post-analysis-task)に関するセクションを参照してください。
+このタスクの YAML 構成については、[Post Analysis の YAML オプション](yaml-configuration.md#post-analysis-task)に関するセクションを参照してください
 
 ## <a name="next-steps"></a>次のステップ
 

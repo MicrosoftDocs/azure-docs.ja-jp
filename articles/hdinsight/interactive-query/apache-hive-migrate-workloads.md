@@ -5,14 +5,14 @@ author: msft-tacox
 ms.author: tacox
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/13/2019
-ms.openlocfilehash: 14849dd1f68f281009808d1bd1dc1cae62927ab4
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 313b6afb8bd96f8ae507118cd552110d5f07ff78
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594238"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087521"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3.6 Hive ワークロードを Hive HDInsight 4.0 に移行する
 
@@ -34,7 +34,7 @@ Hive の利点の 1 つは、外部データベース (Hive Metastore と呼ば�
 HDInsight 3.6 と HDInsight 4.0 の ACID テーブルでは、ACID のデルタの解釈が異なります。 移行前に必要なアクションは、3.6 クラスター上の各 ACID テーブルに対して "主要な" 圧縮を実行することだけです。 圧縮の詳細については、[Hive 言語マニュアル](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-AlterTable/Partition/Compact)を参照してください。
 
 ### <a name="2-copy-sql-database"></a>2.SQL データベースをコピーする
-外部メタストアの新しいコピーを作成します。 外部メタストアを使用している場合、メタストアのコピーを作成する安全で簡単な方法の 1 つは、SQL Database の restore 関数を使用して、別の名前で[データベースを復元](../../sql-database/sql-database-recovery-using-backups.md#point-in-time-restore)することです。  HDInsight クラスターへの外部メタストアのアタッチについて詳しくは、「[Azure HDInsight での外部メタデータ ストアの使用](../hdinsight-use-external-metadata-stores.md)」をご覧ください。
+外部メタストアの新しいコピーを作成します。 外部メタストアを使用している場合、メタストアのコピーを作成する安全で簡単な方法の 1 つは、`RESTORE` 関数を使用して、別の名前で[データベースを復元](../../azure-sql/database/recovery-using-backups.md#point-in-time-restore)することです。  HDInsight クラスターへの外部メタストアのアタッチについて詳しくは、「[Azure HDInsight での外部メタデータ ストアの使用](../hdinsight-use-external-metadata-stores.md)」をご覧ください。
 
 ### <a name="3-upgrade-metastore-schema"></a>3.メタストア スキーマをアップグレードする
 メタストアの**コピー**が完了したら、既存の HDInsight 3.6 クラスター上の[スクリプト アクション](../hdinsight-hadoop-customize-cluster-linux.md)でスキーマ アップグレード スクリプトを実行して、新しいメタストアを Hive 3 スキーマにアップグレードします。 (この手順では、新しいメタストアがクラスターに接続されている必要はありません。)これにより、データベースを HDInsight 4.0 メタストアとして接続できるようになります。

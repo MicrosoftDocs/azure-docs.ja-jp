@@ -5,15 +5,16 @@ author: bandersmsft
 ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: enterprise
 ms.topic: tutorial
-ms.date: 05/07/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 4d39b487550fb8566faab428f55bd38572523587
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 5340d6124ae4fdc669a30458b9e58cf4c86d6746
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657481"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684662"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Azure Enterprise Agreement 請求書を理解する
 

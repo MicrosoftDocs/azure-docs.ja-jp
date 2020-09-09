@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2dcf706ea59657abc2718a69e59191604dc2849d
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 0cbadc10fb817c70bd259397c840aae68abc2d54
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633415"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213331"
 ---
 # <a name="assign-variables-in-synapse-sql-pool"></a>Synapse SQL プールに変数を割り当てる
 

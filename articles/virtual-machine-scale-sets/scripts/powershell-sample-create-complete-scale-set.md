@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: powershell
 ms.date: 05/29/2018
 ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: df2c1b10f0d63e3cafbd6f20805a296710219461
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.custom: mimckitt, devx-track-azurepowershell
+ms.openlocfilehash: d37f5f624459db6bc336884987a16c60503492a8
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83699552"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078505"
 ---
 # <a name="create-a-complete-virtual-machine-scale-set-with-powershell"></a>PowerShell を使用して完全な仮想マシン スケール セットを作成する
 
@@ -61,4 +61,4 @@ Remove-AzResourceGroup -Name $resourceGroupName
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | リソース グループと、それに含まれているすべてのリソースを削除します。 |
 
 ## <a name="next-steps"></a>次のステップ
-Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
+Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。

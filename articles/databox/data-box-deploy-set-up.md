@@ -1,24 +1,24 @@
 ---
 title: Azure Data Box のセットアップ方法のチュートリアル | Microsoft Docs
-description: ケーブルを配線して Azure Data Box を接続する方法を学習する
+description: このチュートリアルでは、Azure Data Box のケーブルを配線して Azure Data Box を接続し、その電源をオンにする方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 850144e4835b43e219fa059bbc1c92bb3ef412f4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 53309023a838f4b256327a37866408f556c81d29
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200497"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924158"
 ---
 ::: zone target="docs"
 
-# <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>チュートリアル: ケーブルを配線して Azure Data Box に接続する
+# <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>チュートリアル:ケーブルを配線して Azure Data Box に接続する
 
 ::: zone-end
 
@@ -42,17 +42,19 @@ ms.locfileid: "83200497"
 
 開始する前に次の点を確認します。
 
-1. [Azure Data Box の注文に関するチュートリアル](data-box-deploy-ordered.md)を完了していること。
-2. Data Box の受け取りが済んでいて、ポータルで注文の状態が **[配信済み]** に更新されていること。 
+1. Azure Data Box を注文済みであること。
+    - インポート注文の場合は、「[チュートリアル: Azure Data Box を注文する](data-box-deploy-ordered.md)を完了していること。
+    - エクスポート注文の場合は、「[チュートリアル: Azure Data Box を注文する](data-box-deploy-export-ordered.md)」を参照してください
+1. Data Box の受け取りが済んでいて、ポータルで注文の状態が **[配信済み]** に更新されていること。 
     - 現在のラベルの下にデバイスに貼付されているクリア ポーチに、配送先住所ラベルがあります。 このラベルは返品用に使用するため、安全に保管してください。
     - ヨーロッパの一部のリージョンについては、デバイスが箱に梱包されて発送されます。 デバイスを開梱し、箱は返送用に必ず保管しておいてください。
-3. [Data Box の安全性に関するガイドライン](data-box-safety.md)を確認していること。
-4. 100 TB ストレージ デバイスで使用するためのアース端子付き電源ケーブルを 1 本受け取っていること。
-5. Data Box にコピーするデータが格納されているホスト コンピューターがあること。 このホスト コンピューターは次の条件を満たしている必要があります。
+1. [Data Box の安全性に関するガイドライン](data-box-safety.md)を確認していること。
+1. 100 TB ストレージ デバイスで使用するためのアース端子付き電源ケーブルを 1 本受け取っていること。
+1. Data Box へのデータのコピー (インポート注文) または Data Box からのデータのコピー (エクスポート注文) に使用するホスト コンピューターがあること。 このホスト コンピューターは次の条件を満たしている必要があります。
     - [サポート対象のオペレーティング システム](data-box-system-requirements.md)が実行されていること。
     - 高速ネットワークに接続していること。 10 GbE 接続を少なくとも 1 つ利用することを強くお勧めします。 10 GbE 接続を利用できない場合は、1 GbE データ リンクを使用できますが、コピーの速度が影響を受けます。 
-6. Data Box を設置できる平らな場所があること。 デバイスを標準的なラック棚に設置しようとする場合は、データ センター ラックに 7U のスロットが必要です。 デバイスは平面に置くことも、ラックに立てて置くこともできます。
-7. Data Box をホスト コンピューターに接続するために以下のケーブルを用意していること。
+1. Data Box を設置できる平らな場所があること。 デバイスを標準的なラック棚に設置しようとする場合は、データ センター ラックに 7U のスロットが必要です。 デバイスは平面に置くことも、ラックに立てて置くこともできます。
+1. Data Box をホスト コンピューターに接続するために以下のケーブルを用意していること。
     - 1 本以上の 10 GbE SFP+ Twinax 銅線ケーブルまたは SFP+ 光ファイバー ケーブル (DATA 1、DATA 2 ネットワーク インターフェイスで使用)。 Data Box には、PCI Express 3.0 ネットワーク インターフェイスを備えた Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T アダプターが搭載されています。そのため、このインターフェイスと互換性のあるケーブルであれば正常に機能します。 たとえば、CISCO SFP-H10GB-CU3M 10GBASE-CU TWINAX SFP +3M ケーブルが社内テストに使用されました。 詳しくは、[Mellanox 社提供のサポートされているケーブルおよびスイッチの一覧](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf)をご覧ください。
     - RJ-45 CAT 6 ネットワーク ケーブル 1 本 (MGMT ネットワーク インターフェイスで使用)
     - RJ-45 CAT 6A OR ネットワーク ケーブル 1 本、RJ-45 CAT 6 ネットワーク ケーブル 1 本 (それぞれ 10 Gbps または 1 Gbps として構成されている DATA 3 ネットワーク インターフェイスで使用)
@@ -135,7 +137,7 @@ ms.locfileid: "83200497"
 
 データ ネットワーク インターフェイスが構成されると、DATA 1 から DATA 3 までのインターフェイスのいずれかの IP アドレスを使用して、ローカルの Web UI (`https://<IP address of a data network interface>`) にアクセスすることもできます。 
 
-デバイスの設定が完了したら、デバイス共有に接続し、コンピューターからデバイスにデータをコピーすることができます。 
+デバイスの設定が完了したら、デバイス共有に接続し、データをコピーすることができます。 
 
 ::: zone-end
 
@@ -143,7 +145,7 @@ ms.locfileid: "83200497"
 
 ## <a name="connect-your-device"></a>ご利用のデバイスを接続する
 
-1. デバイスのパスワードを取得するには、**Azure Portal** で [[全般] > [デバイスの詳細]](https://portal.azure.com) に移動します。
+1. デバイスのパスワードを取得するには、[Azure Portal](https://portal.azure.com) で **[全般] > [デバイスの詳細]** に移動します。
 2. Data Box に接続するために使用するコンピューターのイーサネット アダプターを、静的 IP アドレス 192.168.100.5、サブネット 255.255.255.0 で構成します。 `https://192.168.100.10` からデバイスのローカル Web UI にアクセスします。 デバイスを起動してから接続するまで最大 5 分かかることがあります。 
 3. Azure portal からパスワードを使用してサインインします。 Web サイトのセキュリティ証明書に問題があることを示すエラーが表示されます。 ブラウザー固有の手順に従い Web ページに進みます。
 4. 既定では、10 Gbps のデータ インターフェイス(または 1 Gbps) のネットワーク設定は、DHCP として構成されます。 必要に応じて、このインターフェイスを静的インターフェイスとして構成し、IP アドレスを入力することができます。 
@@ -161,10 +163,15 @@ ms.locfileid: "83200497"
 > * Data Box にケーブルを配線する
 > * Data Box に接続する
 
-次のチュートリアルに進み、Data Box にデータをコピーする方法を学習してください。
+次のチュートリアルに進み、データのコピー方法を確認してください。
 
 > [!div class="nextstepaction"]
-> [データを Data Box にコピーする](./data-box-deploy-copy-data.md)
+> [インポート注文用に Azure Data Box にデータをコピーする](./data-box-deploy-copy-data.md)
+
+または
+
+> [!div class="nextstepaction"]
+> [エクスポート注文用に Azure Data Box からデータをコピーする](./data-box-deploy-export-copy-data.md)
 
 ::: zone-end
 

@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 320723744e1366fdc73cd0593fb0ebece03367f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 645a0d21fc25cb45914eed02e023a0076c457ffb
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678101"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116295"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ポリシーを使用してマルチテナント Azure Active Directory を設定する
 
@@ -87,7 +87,7 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 1. **ClaimsProviders** 要素を見つけます。 存在しない場合は、それをルート要素の下に追加します。
 1. 新しい **ClaimsProvider** を次のように追加します。
 
-    ```XML
+    ```xml
     <ClaimsProvider>
       <Domain>commonaad</Domain>
       <DisplayName>Common AAD</DisplayName>
@@ -181,7 +181,7 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 1. *TrustFrameworkExtensions.xml* で、作成したユーザー体験内に `Order="1"` を含む **OrchestrationStep** 要素を見つけます。
 1. **ClaimsProviderSelects** の下に、次の要素を追加します。 **TargetClaimsExchangeId** の値を適切な値 (`AzureADExchange` など) に設定します。
 
-    ```XML
+    ```xml
     <ClaimsProviderSelection TargetClaimsExchangeId="AzureADExchange" />
     ```
 
@@ -192,7 +192,7 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 1. ユーザー体験内で、`Order="2"` を含む **OrchestrationStep** を見つけます。
 2. 次の **ClaimsExchange** 要素を追加します。**TargetClaimsExchangeId** に使用した **Id** と同じ値を必ずご使用ください。
 
-    ```XML
+    ```xml
     <ClaimsExchange Id="AzureADExchange" TechnicalProfileReferenceId="Common-AAD" />
     ```
 
@@ -215,7 +215,7 @@ Azure AD B2C との通信は、B2C テナントで登録したアプリケーシ
 1. **PublicPolicyUri** の値をポリシーの URI に更新します。 たとえば、「 `http://contoso.com/B2C_1A_signup_signin_contoso` 」のように入力します。
 1. **DefaultUserJourney** 内の **ReferenceId** 属性の値を、先ほど作成したユーザー体験の ID と一致するように更新します。 たとえば、*SignUpSignInContoso* とします。
 1. 変更内容を保存し、ファイルをアップロードします。
-1. **[カスタム ポリシー]** で、一覧から新しいポリシーを選択します。
+1. アップロードされた **[カスタム ポリシー]** の一覧から、新しく作成したポリシーを選択します。
 1. **[アプリケーションの選択]** ボックスの一覧で、前の手順で作成した Azure AD B2C アプリケーションを選択します  (例: *testapp1*)。
 1. **[今すぐ実行のエンドポイント]** をコピーし、プライベート ブラウザー ウィンドウ (Google のシークレット モード、Microsoft Edge の InPrivate ウィンドウなど) で開きます。 プライベート ブラウザー ウィンドウで開くと、現在キャッシュされている Azure AD の資格情報を使用せずに、ユーザー体験を全体的にテストできます。
 1. Azure AD のサインイン ボタン (たとえば、*Contoso Employee*) を選択し、いずれかの Azure AD 組織テナントのユーザーの資格情報を入力します。 アプリケーションを承認するように求められたら、プロファイルの情報を入力します。

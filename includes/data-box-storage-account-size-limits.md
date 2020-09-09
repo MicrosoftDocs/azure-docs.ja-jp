@@ -3,18 +3,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: include
-ms.date: 06/18/2019
+ms.date: 06/24/2020
 ms.author: alkohli
-ms.openlocfilehash: 3e1f9c225a57e7d41f85c2a92dac989453057c51
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 5c5732a825116d4762c3a27bcbf9eac195327afb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82736979"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85378449"
 ---
 ここでは、ストレージ アカウントにコピーするデータのサイズ制限を示します。 アップロードするデータがこれらの制限に準拠していることを確認してください。 これらの制限に関する最新情報については、「[BLOB ストレージのスケーラビリティとパフォーマンスのターゲット](../articles/storage/blobs/scalability-targets.md)」と「[Azure Files のスケーラビリティとパフォーマンスのターゲット](../articles/storage/files/storage-files-scale-targets.md)」を参照してください。
 
 | Azure ストレージ アカウントにコピーするデータのサイズ                      | 既定の制限          |
 |---------------------------------------------------------------------|------------------------|
-| ブロック BLOB とページ BLOB                                            | 米国およびヨーロッパでは 2 PB。<br>英国を含む他のすべてのリージョンでは 500 TB。  <br> これには、Data Box を含むすべてのソースのデータが含まれます。|
-| Azure Files                                                          | Standard ファイル共有の最大サイズ 100 TiB*、5 TB、Premium ファイル共有は共有あたり 100 TiB。<br> *StorageAccount_AzureFiles* の下のすべてのフォルダーはこの制限に従う必要があります。       |
+| ブロック BLOB とページ BLOB                                            | 上限は [Azure サブスクリプションに対して定義されているストレージの上限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#storage-limits)と同じであり、Data Box を含むすべてのソースのデータが含まれています。|
+| Azure Files                                                          | Standard ファイル共有の最大サイズは 5 TB です。 <br> Premium ファイル共有の最大サイズは、共有あたり 100 TiB です。<br> *StorageAccount_AzureFiles* の下のすべてのフォルダーはこの制限に従う必要があります。       |

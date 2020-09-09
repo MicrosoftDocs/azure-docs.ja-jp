@@ -1,6 +1,6 @@
 ---
 title: Azure VM 間の接続に関する問題のトラブルシューティング | Microsoft Docs
-description: Azure VM 間の接続に関する問題をトラブルシューティングする方法について説明します。
+description: Azure VM 間で発生することがある接続に関する問題を解決する方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: chadmath
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: ab3ae45081ecc481cb90af8961174e23c86e84b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb94b67b026ed108f31f6cd802010577665ec0d8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71056810"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286089"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Azure VM 間の接続に関する問題のトラブルシューティング
 
@@ -81,11 +81,15 @@ VM のアプリまたはサービスがポートをリッスンしているか�
 
 **Windows VM**
 
-    netstat –ano
+```console
+netstat –ano
+```
 
 **Linux VM**
 
-    netstat -l
+```console
+netstat -l
+```
 
 - 仮想マシン自体で **telnet** コマンドを実行して、ポートをテストします。 テストが失敗する場合は、アプリケーションまたはサービスがポートをリッスンするように構成されていません。
 

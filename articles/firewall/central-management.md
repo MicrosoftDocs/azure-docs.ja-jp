@@ -5,27 +5,25 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 07/13/2020
 ms.author: victorh
-ms.openlocfilehash: 58f670f3f55a63f0c1823adc13c98f5863d4d650
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 23a7682d8a64de57db4ff9ae785ada90d4a06944
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444860"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084672"
 ---
 # <a name="azure-firewall-central-management"></a>Azure Firewall 中央管理
 
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
-
 複数のファイアウォールを管理する場合、ファイアウォール規則を絶えず変更していると、規則の同期が難しくなります。中央の IT チームには、ファイアウォールの基本方針を定義し、複数の事業単位にそれを適用する方法を与える必要があります。 同時に、DevOps チームには、独自のローカルから派生したファイアウォール ポリシーを作成し、機敏性を上げることが求められます。
 
-Azure Firewall Manager Preview は以上のような問題の解決に役立ちます。
+Azure Firewall Manager は以上のような問題の解決に役立ちます。
 
 
-## <a name="azure-firewall-manager-preview"></a>Azure Firewall Manager Preview
+## <a name="azure-firewall-manager"></a>Azure Firewall Manager
 
-Azure Firewall Manager プレビューは、クラウドベースのセキュリティ境界に対して集約型セキュリティ ポリシーとルート管理を提供するネットワーク セキュリティ管理サービスです。 これにより、企業の IT チームは複数の Azure Firewall インスタンスを対象としてトラフィックにフィルターを適用するネットワークおよびアプリケーション レベルの規則を一箇所で簡単に定義できます。 トラフィックの統制と保護を目的とし、ハブ アンド スポークのアーキテクチャで、さまざまな Azure リージョンおよびサブスクリプションを対象範囲とすることができます。 また、派生したローカルのファイアウォール セキュリティ ポリシーを組織全体で実装することで DevOps の機敏性が上がります。
+Azure Firewall Manager は、クラウドベースのセキュリティ境界に対して集約型セキュリティ ポリシーとルート管理を提供するネットワーク セキュリティ管理サービスです。 これにより、企業の IT チームは複数の Azure Firewall インスタンスを対象としてトラフィックにフィルターを適用するネットワークおよびアプリケーション レベルの規則を一箇所で簡単に定義できます。 トラフィックの統制と保護を目的とし、ハブ アンド スポークのアーキテクチャで、さまざまな Azure リージョンおよびサブスクリプションを対象範囲とすることができます。 また、派生したローカルのファイアウォール セキュリティ ポリシーを組織全体で実装することで DevOps の機敏性が上がります。
 
 ### <a name="firewall-policy"></a>ファイアウォール ポリシー
 
@@ -48,4 +46,4 @@ Azure Firewall Manager でファイアウォール ポリシーと関連付け�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Firewall Manager Preview の詳細については、「[Azure Firewall Manager Preview とは](../firewall-manager/overview.md)」を参照してください。
+Azure Firewall Manager の詳細については、[Azure Firewall Manager の概要](../firewall-manager/overview.md)に関するページを参照してください

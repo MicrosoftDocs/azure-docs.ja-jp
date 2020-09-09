@@ -12,11 +12,11 @@ metadata:
   manager: philmea
   ms.date: 09/16/2019
   ms.openlocfilehash: cdad55cb8972e54f613319e890f052c26d94f0ef
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "74781628"
+  ms.lasthandoff: 06/11/2020
+  ms.locfileid: "84687040"
 landingContent:
 - title: IoT ソリューション アクセラレータについて
   linkLists:

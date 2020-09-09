@@ -5,43 +5,44 @@ description: Azure Active Directory と API Management で Web API バックエ�
 services: api-management
 documentationcenter: ''
 author: miaojiang
-manager: cfowler
+manager: dcscontentpm
 editor: ''
 ms.service: api-management
 ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 05/21/2019
+ms.date: 06/24/2020
 ms.author: apimpm
-ms.openlocfilehash: b212316970b77d325552956cfacded2dc570234f
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 455444fe78171e3e2b37a309fd5708f283121ed6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82778976"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243411"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Azure Active Directory と API Management で OAuth 2.0 を使用して API を保護する
 
 このガイドでは、Azure API Management インスタンスを構成して、Azure Active Directory (Azure AD) で OAuth 2.0 プロトコルを使用して API を保護する方法について説明します。 
 
 > [!NOTE]
-> この機能は、API Management の **Developer**、**Standard**、**Premium** レベルで使用できます。
+> この機能は、API Management の **Developer**、**Basic**、**Standard**、**Premium** の各レベルで使用できます。
 
 ## <a name="prerequisites"></a>前提条件
+
 この記事の手順を実行するには、以下が必要です。
-* API Management インスタンス
-* API Management インスタンスを使用する API が公開されている
-* Azure AD テナント
+
+- API Management インスタンス
+- API Management インスタンスを使用する API が公開されている
+- Azure AD テナント
 
 ## <a name="overview"></a>概要
 
 手順の概要は次のとおりです。
 
 1. API を表すアプリケーション (バックエンドアプリ) を Azure AD に登録します。
-2. API を呼び出す必要があるクライアント アプリケーションを表す別のアプリケーション (クライアントアプリ) を Azure AD に登録します。
-3. Azure AD で、クライアントアプリがバックエンドアプリを呼び出すことができるようにアクセス許可を付与します。
-4. OAuth 2.0 のユーザー承認を使用する API を呼び出すように Developer Console を設定します。
-5. **validate-jwt** ポリシーを追加して、すべての着信要求に対して OAuth トークンを検証します。
+1. API を呼び出す必要があるクライアント アプリケーションを表す別のアプリケーション (クライアントアプリ) を Azure AD に登録します。
+1. Azure AD で、クライアントアプリがバックエンドアプリを呼び出すことができるようにアクセス許可を付与します。
+1. OAuth 2.0 のユーザー承認を使用する API を呼び出すように Developer Console を設定します。
+1. **validate-jwt** ポリシーを追加して、すべての着信要求に対して OAuth トークンを検証します。
 
 ## <a name="register-an-application-in-azure-ad-to-represent-the-api"></a>API を表すアプリケーションを Azure AD に登録する
 
@@ -51,9 +52,10 @@ Azure AD で API を保護するには、まず API を表すアプリケーシ�
 
 1. **[新規登録]** を選択します。 
 
-1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。 
-    - **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: *backend-app*)。 
-    - **[サポートされているアカウントの種類]** セクションで、シナリオに適したオプションを選択します。 
+1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
+
+   - **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: *backend-app*)。 
+   - **[サポートされているアカウントの種類]** セクションで、シナリオに適したオプションを選択します。 
 
 1. **[リダイレクト URI]** セクションは空のままにします。
 
@@ -63,21 +65,28 @@ Azure AD で API を保護するには、まず API を表すアプリケーシ�
 
 1. **[API の公開]** を選択し、 **[アプリケーション ID URI]** に既定値を設定します。 この値は、後で使用するために記録しておきます。
 
-1. **[Scope の追加]** ボタンをクリックして、 **[Scope の追加]** ページを表示します。 次に、API でサポートされている新しいスコープを作成します (たとえば、`Files.Read`)。 最後に、 **[Scope の追加]** ボタンを選択してスコープを作成します。 この手順を繰り返して、API でサポートされるすべてのスコープを追加します。
+1. **[Scope の追加]** ボタンをクリックして、 **[Scope の追加]** ページを表示します。 次に、API でサポートされている新しいスコープを作成します (たとえば、`Files.Read`)。
+
+1. **[Scope の追加]** ボタンを選択してスコープを作成します。 この手順を繰り返して、API でサポートされるすべてのスコープを追加します。
 
 1. スコープが作成されたら、後の手順で使用するためにそれらを書き留めておきます。 
 
 ## <a name="register-another-application-in-azure-ad-to-represent-a-client-application"></a>クライアント アプリケーションを表す別のアプリケーションを Azure AD に登録する
 
-API を呼び出すすべてのクライアント アプリケーションも、Azure AD にアプリケーションとして登録する必要があります。 この例のクライアント アプリケーションは、API Management 開発者ポータルの Developer Console です。 Developer Console を表す別のアプリケーションを Azure AD に登録する方法は次のとおりです。
+API を呼び出すすべてのクライアント アプリケーションは、Azure AD にアプリケーションとして登録する必要があります。 この例のクライアント アプリケーションは、API Management 開発者ポータルの **Developer Console** です。 
 
-1. [Azure portal](https://portal.azure.com) にアクセスして、アプリケーションを登録します。 **[アプリの登録]** を検索して選択します。
+Developer Console を表すように別のアプリケーションを Azure AD に登録するには、次を実行します。
+
+1. [Azure portal](https://portal.azure.com) にアクセスして、アプリケーションを登録します。
+
+1.  **[アプリの登録]** を検索して選択します。
 
 1. **[新規登録]** を選択します。
 
-1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。 
-    - **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: *client-app*)。 
-    - **[サポートされているアカウントの種類]** で、 **[任意の組織ディレクトリ内のアカウント (任意の Azure AD ディレクトリ - マルチテナント)]** を選択します。 
+1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
+
+   - **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: *client-app*)。 
+   - **[サポートされているアカウントの種類]** で、 **[任意の組織ディレクトリ内のアカウント (任意の Azure AD ディレクトリ - マルチテナント)]** を選択します。 
 
 1. **[リダイレクト URI]** セクションで、[`Web`] を選択し、[URL] フィールドは今は空のままにします。
 
@@ -85,17 +94,17 @@ API を呼び出すすべてのクライアント アプリケーションも、
 
 1. アプリの **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値を見つけ、後で使用するために記録します。
 
-次に、以降の手順で使用するこのアプリケーションのクライアント シークレットを作成します。
+1. 以降の手順で使用するこのアプリケーションのクライアント シークレットを作成します。
 
-1. クライアント アプリのページの一覧から、 **[証明書とシークレット]** を選択し、 **[新しいクライアント シークレット]** を選択します。
+   1. クライアント アプリのページの一覧から、 **[証明書とシークレット]** を選択し、 **[新しいクライアント シークレット]** を選択します。
 
-1. **[クライアント シークレットの追加]** に **[説明]** を入力します。 キーの有効期限を選択し、 **[追加]** を選択します。
+   1. **[クライアント シークレットの追加]** に **[説明]** を入力します。 キーの有効期限を選択し、 **[追加]** を選択します。
 
 シークレットが作成されたら、後の手順で使用するために、そのキー値を書き留めておきます。 
 
 ## <a name="grant-permissions-in-azure-ad"></a>Azure AD でアクセス許可を付与する
 
-API と Developer Console を表す 2 つのアプリケーションを登録したら、次はクライアントアプリがバックエンドアプリを呼び出すことができるようにアクセス許可を付与する必要があります。  
+API と Developer Console を表す 2 つのアプリケーションを登録したら、クライアントアプリがバックエンドアプリを呼び出すことができるようにアクセス許可を付与します。  
 
 1. [Azure portal](https://portal.azure.com) にアクセスして、クライアント アプリケーションにアクセス許可を付与します。 **[アプリの登録]** を検索して選択します。
 
@@ -132,12 +141,12 @@ API と Developer Console を表す 2 つのアプリケーションを登録し
 
 1. **[OAuth 2.0 トークン エンドポイント]** をコピーし、 **[トークン エンドポイントの URL]** テキストボックスに貼り付けます。 
 
-    >[!IMPORTANT]
-    > **v1** または **v2** エンドポイントを使用できます。 ただし、選択するバージョンによって以下の手順は異なります。 v2 エンドポイントの使用をお勧めします。 
+   >[!IMPORTANT]
+   > **v1** エンドポイント、または **v2** エンドポイントを使用します。 ただし、選択するバージョンによって以下の手順は異なります。 v2 エンドポイントの使用をお勧めします。 
 
 1. **v1** エンドポイントを使用する場合は、**resource** という名前の本文パラメーターを追加します。 このパラメーターの値には、バックエンド アプリの**アプリケーション ID** を使用します。 
 
-1. **v2** エンドポイントを使用する場合は、 **[既定のスコープ]** フィールドでバックエンド アプリ用に作成したスコープを使用します。 また、必ず [アプリケーション マニフェスト](/azure/active-directory/develop/reference-app-manifest)で [`accessTokenAcceptedVersion`](/azure/active-directory/develop/reference-app-manifest#accesstokenacceptedversion-attribute) プロパティの値を `2` に設定します。
+1. **v2** エンドポイントを使用する場合は、 **[既定のスコープ]** フィールドでバックエンド アプリ用に作成したスコープを使用します。 また、必ず [アプリケーション マニフェスト](../active-directory/develop/reference-app-manifest.md)で [`accessTokenAcceptedVersion`](../active-directory/develop/reference-app-manifest.md#accesstokenacceptedversion-attribute) プロパティの値を `2` に設定します。
 
 1. 次に、クライアントの資格情報を指定します。 これらはクライアントアプリの資格情報です。
 
@@ -159,13 +168,13 @@ OAuth 2.0 承認サーバーを設定したので、Developer Console で Azure 
 
 1. API Management インスタンスに移動し、 **[API]** に移動します。
 
-2. 保護する API を選択します。 たとえば、`Echo API` を使用できます。
+1. 保護する API を選択します。 たとえば、「 `Echo API` 」のように入力します。
 
-3. **[設定]** に移動します。
+1. **[設定]** に移動します。
 
-4. **[セキュリティ]** で **[OAuth 2.0]** を選択し、先ほど構成した OAuth 2.0 サーバーを選択します。 
+1. **[セキュリティ]** で **[OAuth 2.0]** を選択し、先ほど構成した OAuth 2.0 サーバーを選択します。 
 
-5. **[保存]** を選択します。
+1. **[保存]** を選択します。
 
 ## <a name="successfully-call-the-api-from-the-developer-portal"></a>開発者ポータルから適切に API を呼び出す
 
@@ -176,18 +185,17 @@ OAuth 2.0 承認サーバーを設定したので、Developer Console で Azure 
 
 1. 開発者ポータルの API の下にある任意の操作に移動し、**試してみてください**。 この操作で Developer Console が表示されます。
 
-2. **[承認]** セクションの新しい項目は、先ほど追加した承認サーバーに対応しています。
+1. **[承認]** セクションの新しい項目は、先ほど追加した承認サーバーに対応しています。
 
-3. 承認ドロップダウン リストから **[承認コード]** を選択します。Azure AD テナントにサインインするように求められます。 既にアカウントでサインインしている場合、確認メッセージは表示されません。
+1. 承認ドロップダウン リストから **[承認コード]** を選択します。Azure AD テナントにサインインするように求められます。 既にアカウントでサインインしている場合、確認メッセージは表示されません。
 
-4. サインインに成功すると、Azure AD のアクセス トークンを使用する要求に `Authorization` ヘッダーが追加されます。 以下はサンプル トークン (Base64 エンコード) です。
+1. サインインに成功すると、Azure AD のアクセス トークンを使用する要求に `Authorization` ヘッダーが追加されます。 以下はサンプル トークン (Base64 エンコード) です。
 
    ```
    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IlNTUWRoSTFjS3ZoUUVEU0p4RTJnR1lzNDBRMCIsImtpZCI6IlNTUWRoSTFjS3ZoUUVEU0p4RTJnR1lzNDBRMCJ9.eyJhdWQiOiIxYzg2ZWVmNC1jMjZkLTRiNGUtODEzNy0wYjBiZTEyM2NhMGMiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC80NDc4ODkyMC05Yjk3LTRmOGItODIwYS0yMTFiMTMzZDk1MzgvIiwiaWF0IjoxNTIxMTUyNjMzLCJuYmYiOjE1MjExNTI2MzMsImV4cCI6MTUyMTE1NjUzMywiYWNyIjoiMSIsImFpbyI6IkFWUUFxLzhHQUFBQUptVzkzTFd6dVArcGF4ZzJPeGE1cGp2V1NXV1ZSVnd1ZXZ5QU5yMlNkc0tkQmFWNnNjcHZsbUpmT1dDOThscUJJMDhXdlB6cDdlenpJdzJLai9MdWdXWWdydHhkM1lmaDlYSGpXeFVaWk9JPSIsImFtciI6WyJyc2EiXSwiYXBwaWQiOiJhYTY5ODM1OC0yMWEzLTRhYTQtYjI3OC1mMzI2NTMzMDUzZTkiLCJhcHBpZGFjciI6IjEiLCJlbWFpbCI6Im1pamlhbmdAbWljcm9zb2Z0LmNvbSIsImZhbWlseV9uYW1lIjoiSmlhbmciLCJnaXZlbl9uYW1lIjoiTWlhbyIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0Ny8iLCJpcGFkZHIiOiIxMzEuMTA3LjE3NC4xNDAiLCJuYW1lIjoiTWlhbyBKaWFuZyIsIm9pZCI6IjhiMTU4ZDEwLWVmZGItNDUxMS1iOTQzLTczOWZkYjMxNzAyZSIsInNjcCI6InVzZXJfaW1wZXJzb25hdGlvbiIsInN1YiI6IkFGaWtvWFk1TEV1LTNkbk1pa3Z3MUJzQUx4SGIybV9IaVJjaHVfSEM1aGciLCJ0aWQiOiI0NDc4ODkyMC05Yjk3LTRmOGItODIwYS0yMTFiMTMzZDk1MzgiLCJ1bmlxdWVfbmFtZSI6Im1pamlhbmdAbWljcm9zb2Z0LmNvbSIsInV0aSI6ImFQaTJxOVZ6ODBXdHNsYjRBMzBCQUEiLCJ2ZXIiOiIxLjAifQ.agGfaegYRnGj6DM_-N_eYulnQdXHhrsus45QDuApirETDR2P2aMRxRioOCR2YVwn8pmpQ1LoAhddcYMWisrw_qhaQr0AYsDPWRtJ6x0hDk5teUgbix3gazb7F-TVcC1gXpc9y7j77Ujxcq9z0r5lF65Y9bpNSefn9Te6GZYG7BgKEixqC4W6LqjtcjuOuW-ouy6LSSox71Fj4Ni3zkGfxX1T_jiOvQTd6BBltSrShDm0bTMefoyX8oqfMEA2ziKjwvBFrOjO0uK4rJLgLYH4qvkR0bdF9etdstqKMo5gecarWHNzWi_tghQu9aE3Z3EZdYNI_ZGM-Bbe3pkCfvEOyA
    ```
 
-5. **[送信]** を選択すると、API を適切に呼び出すことができます。
-
+1. **[送信]** を選択して、API を適切に呼び出します。
 
 ## <a name="configure-a-jwt-validation-policy-to-pre-authorize-requests"></a>要求を事前承認する JWT 検証ポリシーを構成する
 
@@ -195,7 +203,8 @@ OAuth 2.0 承認サーバーを設定したので、Developer Console で Azure 
 
 ただし、誰かがトークンを使用せず、または無効なトークンを使用して API を呼び出すとどうなるでしょうか。 たとえば、API を `Authorization` ヘッダーなしで呼び出してみても、呼び出しは処理されます。 理由は、API Management がこの時点でアクセス トークンを検証していないためです。 `Authorization` ヘッダーはバックエンド API に渡されます。
 
-[JWT を検証する](api-management-access-restriction-policies.md#ValidateJWT)ポリシーを使用して、各受信要求のアクセス トークンを検証することで API Management で要求を事前承認できます。 要求に有効なトークンがない場合、API Management はその要求をブロックします。 たとえば、以下のポリシーを `Echo API` の `<inbound>` ポリシー セクションに追加します。 これは、アクセス トークンの受信者要求をチェックし、トークンが有効でない場合にエラー メッセージを返します。 ポリシーの構成方法については、[ポリシーの設定と編集](set-edit-policies.md)に関する記事をご覧ください。
+[JWT 検証](./api-management-access-restriction-policies.md#ValidateJWT)ポリシーを使用して、各受信要求のアクセス トークンを検証することで API Management で要求を事前承認します。 要求に有効なトークンがない場合、API Management はその要求をブロックします。 たとえば、以下のポリシーを `Echo API` の `<inbound>` ポリシー セクションに追加します。 これは、アクセス トークンの受信者要求をチェックし、トークンが有効でない場合にエラー メッセージを返します。 ポリシーの構成方法については、[ポリシーの設定と編集](./set-edit-policies.md)に関する記事をご覧ください。
+
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
@@ -207,18 +216,20 @@ OAuth 2.0 承認サーバーを設定したので、Developer Console で Azure 
     </required-claims>
 </validate-jwt>
 ```
+
 > [!NOTE]
-> この `openid-config` URL は、v1 エンドポイントに対応しています。 v2 `openid-config` エンドポイントの場合は、`https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration` を使用します。
+> この `openid-config` URL は、v1 エンドポイントに対応しています。 v2 `openid-config` エンドポイントについては、次の URL を使用します。
+>
+> `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration`.
 
 ## <a name="build-an-application-to-call-the-api"></a>アプリケーションをビルドして API を呼び出す
 
 このガイドでは、サンプル クライアント アプリケーションとして API Management で Developer Console を使用して、OAuth 2.0 によって保護された `Echo API` を呼び出します。 アプリケーションのビルドと OAuth 2.0 の実装の詳細については、「[Azure Active Directory のコード例](../active-directory/develop/sample-v2-code.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-* [Azure Active Directory と OAuth2.0](../active-directory/develop/authentication-scenarios.md) の詳細を確認します。
-* API Management についてのその他の [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=api-management) をご覧ください。
-* バックエンド サービスを保護するその他の方法については、「[相互証明書認証](api-management-howto-mutual-certificates.md)」を参照してください。
 
-* [API Management サービス インスタンスの作成](get-started-create-service-instance.md)。
-
-* [Azure API Management での最初の API の管理](import-and-publish.md)。
+- [Azure Active Directory と OAuth2.0](../active-directory/develop/authentication-vs-authorization.md) の詳細を確認します。
+- API Management についてのその他の [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=api-management) をご覧ください。
+- バックエンド サービスを保護するその他の方法については、「[相互証明書認証](./api-management-howto-mutual-certificates.md)」を参照してください。
+- [API Management サービス インスタンスの作成](./get-started-create-service-instance.md)。
+- [Azure API Management での最初の API の管理](./import-and-publish.md)。

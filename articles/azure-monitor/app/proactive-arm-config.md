@@ -6,12 +6,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7ca4df620739b2ab55b8ba986031cc48fe87f1fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aa8529abf3d7eea7d413c59ce62c93c7eb6c76d1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294912"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87309343"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Application Insights スマート検出ルールを管理する
 
@@ -22,7 +22,7 @@ Application Insights のスマート検出ルールは、[Azure Resource Manager
 
 スマート検出ルールに対して次の設定を構成できます。
 - ルールが有効になっているかどうか (既定値は **true**)。
-- 検出が見つかったときに、メールがサブスクリプションの [[閲覧者の監視]](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) ロールと [[共同作成者の監視]](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) ロールに関連付けられたユーザーに送信される必要がある場合 (既定値は **true**)。
+- 検出が見つかったときに、メールがサブスクリプションの [[閲覧者の監視]](../../role-based-access-control/built-in-roles.md#monitoring-reader) ロールと [[共同作成者の監視]](../../role-based-access-control/built-in-roles.md#monitoring-contributor) ロールに関連付けられたユーザーに送信される必要がある場合 (既定値は **true**)。
 - 検出が見つかったときに通知を受ける必要があるその他の電子メール受信者。
     -  メールの構成は、_プレビュー_ とマークされたスマート検出ルールで使用できません。
 
@@ -192,6 +192,7 @@ Azure Resource Manager テンプレートで使用する必要がある、ポー
 
 自動検出の詳細を確認します。
 
-- [失敗の異常](../../azure-monitor/app/proactive-failure-diagnostics.md)
-- [メモリ リーク](../../azure-monitor/app/proactive-potential-memory-leak.md)
-- [パフォーマンスの異常](../../azure-monitor/app/proactive-performance-diagnostics.md)
+- [失敗の異常](./proactive-failure-diagnostics.md)
+- [メモリ リーク](./proactive-potential-memory-leak.md)
+- [パフォーマンスの異常](./proactive-performance-diagnostics.md)
+

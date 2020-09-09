@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 3ad68438f5fc015b6a9150d67485b90a095f1a4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 545399e1d7941351ce861ac98d995d5e57006ea1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226735"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074371"
 ---
-# <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>SysRq および NMI 呼び出しにシリアル コンソールを使用する
+# <a name="use-the-azure-serial-console-for-sysrq-and-nmi-calls"></a>SysRq および NMI 呼び出しのための Azure シリアル コンソールを使用する
 
 ## <a name="system-request-sysrq"></a>システム要求 (SysRq)
 SysRq は Linux オペレーション システム カーネルによって解釈されるキーのシーケンスであり、事前定義済みの一連のアクションをトリガーできます。 これらのコマンドは通常、仮想マシンのトラブルシューティングまたは復旧が従来の管理では実行できない場合 (たとえば、VM が応答していない場合など) に使用されます。 Azure Serial Console の SysRq 機能を使用することは、SysRq キーを押すことや物理キーボード上に文字が入力されることと、同等の動作になります。
@@ -29,11 +29,11 @@ SysRq シーケンスが配信されると、以降は、カーネル構成に�
 
 Azure Serial Console は、以下に示すコマンド バーのキーボード アイコンを使用して、SysRq を Azure 仮想マシンに送信するために使用できます。
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
+![Azure シリアル コンソールのスクリーンショット。 キーボードのアイコンが強調表示され、そのメニューが表示されます。 そのメニューには、Send SysRq コマンド項目が含まれています。](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
 
 "Send SysRq Command"\(SysRq コマンドを送信する\) を選択するとダイアログが開き、一般的な SysRq オプションを指定したり、ダイアログに入力された SysRq コマンドのシーケンスを許可したりできます。  ｌこれにより、`REISUB` を使用して、一連の SysRq コマンドで安全な再起動などの高度な操作を実行できるようになります。
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
+![[ゲストへの SysRq コマンドの送信] ダイアログ ボックスのスクリーンショット。 コマンドを入力するためのオプションが選択されており、コマンド ボックスには REISUB が含まれています。](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
 
 SysRq コマンドは、停止している仮想マシン上や、カーネルが応答しない状態 (カーネル パニックなど) になった仮想マシン上では、使用できません。
 
@@ -102,7 +102,7 @@ SysRq に関するディストリビューション固有のドキュメント�
 
 シリアル コンソールは、以下に示すコマンド バーのキーボード アイコンを使用して、NMI を Azure 仮想マシンに送信するために使用できます。 NMI が配信されると、以降は、仮想マシン構成によってシステムの応答方法が制御されます。  Linux オペレーティング システムは、オペレーティング システムが NMI を受信した場合に、クラッシュしてメモリ ダンプを作成するように構成できます。
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
+![シリアル コンソールのスクリーンショット。 キーボードのアイコンが強調表示され、そのメニューが表示されます。 そのメニューには、マスク不可能割り込みを送信する項目が含まれています。](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
 
 ### <a name="enable-nmi"></a>NMI を有効にする
 カーネル パラーメーターを構成するための sysctl をサポートしている Linux システムの場合、次の手順を使用して、この NMI の受信時にパニック状態を有効にできます。

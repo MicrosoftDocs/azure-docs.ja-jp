@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
-ms.custom: hdinsightactive,seoapr2020
+ms.topic: how-to
+ms.custom: hdinsightactive, seoapr2020, devx-track-csharp
 ms.date: 04/28/2020
-ms.openlocfilehash: 28817489af535ee45a6cc06cc5fe9d4fde9da8eb
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 58f807a5a036f14af9baede604debe9d577cdbf6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996830"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000687"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop で C# と MapReduce ストリーミングを使用する
 
@@ -47,7 +47,7 @@ HDInsight クラスターでは、[Mono (https://mono-project.com)](https://mono
 
 * クラスターに .exe ファイルをアップロードする方法。 このドキュメントの手順では、Visual Studio の Data Lake ツールを使用して、クラスターのプライマリ ストレージにファイルをアップロードします。
 
-* PowerShell を使用している場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/overview)が必要になります。
+* PowerShell を使用している場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/)が必要になります。
 
 * HDInsight の Apache Hadoop クラスター。 [Linux での HDInsight の概要](../hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 

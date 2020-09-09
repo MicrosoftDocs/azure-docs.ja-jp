@@ -11,12 +11,14 @@ ms.date: 01/29/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: b984ee7ed662bf089e7bcb6fc7e948fb61ed1209
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: dd4f4ad7f84ebc1f5e254843e7afa4aa0f3f224f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81733225"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319135"
 ---
 # <a name="device-to-cloud-communications-guidance"></a>device-to-cloud 通信に関するガイダンス
 
@@ -32,11 +34,11 @@ ms.locfileid: "81733225"
 
 さまざまな device-to-cloud 通信オプションの詳細な比較を次に示します。
 
-|  | デバイスからクラウドへのメッセージ | デバイス ツインの報告されるプロパティ | ファイルのアップロード |
+| 要素 | デバイスからクラウドへのメッセージ | デバイス ツインの報告されるプロパティ | ファイルのアップロード |
 | ---- | ------- | ---------- | ---- |
 | シナリオ | テレメトリの時系列と警告。 たとえば、256 KB のセンサー データをひとまとめにして 5 分間隔で送信します。 | 利用できる機能や条件。 たとえば現在のデバイス接続モード (携帯ネットワークか WiFi かなど) を報告します。 構成やソフトウェア更新などの実行時間の長いワークフローと同期します。 | メディア ファイル。 大規模な (通常は圧縮された) テレメトリ バッチ。 |
 | 格納と取得 | IoT Hub によって、最大 7 日間、一時的に格納されます。 シーケンシャルな読み取りのみ可能です。 | IoT Hub によってデバイス ツインに格納されます。 [IoT Hub クエリ言語](iot-hub-devguide-query-language.md)を使用して取得できます。 | ユーザー指定の Azure Storage アカウントに格納されます。 |
-| Size | 最大 256 KB のメッセージ。 | レポートされるプロパティの最大サイズは 32 KB です。 | Azure Blob Storage によってサポートされるファイルの最大サイズ。 |
+| サイズ | 最大 256 KB のメッセージ。 | レポートされるプロパティの最大サイズは 32 KB です。 | Azure Blob Storage によってサポートされるファイルの最大サイズ。 |
 | 頻度 | 高。 詳細については、[IoT Hub の制限](iot-hub-devguide-quotas-throttling.md)に関するページを参照してください。 | 中。 詳細については、[IoT Hub の制限](iot-hub-devguide-quotas-throttling.md)に関するページを参照してください。 | 低。 詳細については、[IoT Hub の制限](iot-hub-devguide-quotas-throttling.md)に関するページを参照してください。 |
 | Protocol | すべてのプロトコルで使用できます。 | MQTT または AMQP を使用して利用できます。 | どのプロトコルでも使用できますが、デバイス上に HTTPS が必要です。 |
 

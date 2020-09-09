@@ -2,25 +2,24 @@
 title: Application Insights および Log Analytics によって使用される IP アドレス | Microsoft Docs
 description: Application Insights で必要なサーバー ファイアウォール例外
 ms.topic: conceptual
-author: lgayhardt
-ms.author: lagayhar
-ms.date: 05/01/2020
-ms.openlocfilehash: f6b35551af61c50a3db2d15b47d8f3910024b527
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+author: mrbullwinkle
+ms.author: mbullwin
+ms.date: 06/18/2020
+ms.openlocfilehash: 79b9442cb31ab326d3b556da9b2e3ef066f9bd41
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773738"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949866"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights および Log Analytics によって使用される IP アドレス
-[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) サービスは、多くの IP アドレスを使用します。 監視しているアプリがファイアウォールの背後でホストされている場合は、これらのアドレスを確認する必要があります。
+[Azure Application Insights](./app-insights-overview.md) サービスは、多くの IP アドレスを使用します。 監視しているアプリがファイアウォールの背後でホストされている場合は、これらのアドレスを確認する必要があります。
 
 > [!NOTE]
 > これらは静的アドレスですが、しばしば変更の必要が生じることがあります。 Application Insights のトラフィックは、受信ファイアウォール規則を必要とする可用性の監視と webhook を除き、すべて送信トラフィックです。
 
 > [!TIP]
-> Azure ネットワーク セキュリティ グループを使用している場合は、Azure [ネットワーク サービス タグ](https://docs.microsoft.com/azure/virtual-network/service-tags-overview
-)を使用してアクセスを管理できます。 ハイブリッド/オンプレミスのリソースのアクセスを管理している場合は、対応する IP アドレス リストを [JSON ファイル](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)としてダウンロードできます。これは毎週更新されます。 この記事のすべての例外に対応するには、次のサービス タグを使用する必要があります:'ActionGroup'、'ApplicationInsightsAvailability'、'AzureMonitor'。
+> Azure ネットワーク セキュリティ グループを使用している場合は、Azure [ネットワーク サービス タグ](../../virtual-network/service-tags-overview.md)を使用してアクセスを管理できます。 ハイブリッド/オンプレミスのリソースのアクセスを管理している場合は、対応する IP アドレス リストを [JSON ファイル](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)としてダウンロードできます。これは毎週更新されます。 この記事のすべての例外に対応するには、次のサービス タグを使用する必要があります:'ActionGroup'、'ApplicationInsightsAvailability'、'AzureMonitor'。
 
 または、 https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/azure-monitor/app/ip-addresses.md.atom をお気に入りの RSS/ATOM リーダーに追加してこのページを RSS フィードとしてサブスクライブすると、最新の変更に関する通知を受け取ることができます。
 
@@ -30,13 +29,8 @@ Application Insights SDK や Status Monitor がポータルにデータを送信
 
 | 目的 | URL | IP | Port |
 | --- | --- | --- | --- |
-| テレメトリ |dc.applicationinsights.azure.com<br/>dc.applicationinsights.microsoft.com<br/>dc.services.visualstudio.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7<br/>102.133.155.50<br/>52.162.110.67<br/>191.233.204.248<br/>13.69.66.140<br/>13.77.52.29<br/>51.107.59.180<br/>40.71.12.235<br/>20.44.8.10<br/>40.71.13.169<br/>13.66.141.156<br/>40.71.13.170<br/>13.69.65.23 | 443 |
-| Live Metrics Stream (米国東部) |use.rt.prod.applicationinsights.trafficmanager.net |23.96.28.38<br/>13.92.40.198<br/>40.112.49.101<br/>40.117.80.207 |443 |
-| Live Metrics Stream (米国中南部) |ussc.rt.prod.applicationinsights.trafficmanager.net |157.55.177.6<br/>104.44.140.84<br/>104.215.81.124<br/>23.100.122.113 |443 |
-| Live Metrics Stream (北ヨーロッパ) |eun.rt.prod.applicationinsights.trafficmanager.net |40.115.103.168<br/>40.115.104.31<br/>40.87.140.215<br/>40.87.138.220 |443 |
-| Live Metrics Stream (西ヨーロッパ) |euw.rt.prod.applicationinsights.trafficmanager.net |13.80.134.255<br/>40.68.61.229<br/>23.101.69.223<br/>52.232.106.242 |443 |
-| Live Metrics Stream (東アジア) |ase.rt.prod.applicationinsights.trafficmanager.net |23.100.90.7<br/>23.101.13.65<br/>23.101.0.142<br/>23.101.9.4 |443 |
-| Live Metrics Stream (東南アジア) |asse.rt.prod.applicationinsights.trafficmanager.net |207.46.224.101<br/>207.46.236.191<br/>137.116.151.139<br/>13.76.87.86 |443 |
+| テレメトリ |dc.applicationinsights.azure.com<br/>dc.applicationinsights.microsoft.com<br/>dc.services.visualstudio.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7<br/>102.133.155.50<br/>52.162.110.67<br/>191.233.204.248<br/>13.69.66.140<br/>13.77.52.29<br/>51.107.59.180<br/>40.71.12.235<br/>20.44.8.10<br/>40.71.13.169<br/>13.66.141.156<br/>40.71.13.170<br/>13.69.65.23<br/>20.44.17.0<br/>20.36.114.207 <br/>51.116.155.246 <br/>51.107.155.178 <br/>51.140.212.64 <br/>13.86.218.255  | 443 |
+| ライブ メトリック ストリーム | live.applicationinsights.azure.com<br/>rt.applicationinsights.microsoft.com<br/>rt.services.visualstudio.com|23.96.28.38<br/>13.92.40.198<br/>40.112.49.101<br/>40.117.80.207<br/>157.55.177.6<br/>104.44.140.84<br/>104.215.81.124<br/>23.100.122.113| 443 |
 
 ## <a name="status-monitor"></a>Status Monitor
 Status Monitor の構成 - 変更を加える場合にのみ必要です。
@@ -50,10 +44,10 @@ Status Monitor の構成 - 変更を加える場合にのみ必要です。
 | 構成 |`secure.aadcdn.microsoftonline-p.com` | |`443` |
 | 構成 |`auth.gfx.ms` | |`443` |
 | 構成 |`login.live.com` | |`443` |
-| インストール | `globalcdn.nuget.org`、`packages.nuget.org`、`api.nuget.org/v3/index.json` `nuget.org`、`api.nuget.org`、`dc.services.vsallin.net` | |`443` |
+| インストール | `globalcdn.nuget.org`, `packages.nuget.org` ,`api.nuget.org/v3/index.json` `nuget.org`, `api.nuget.org`, `dc.services.vsallin.net` | |`443` |
 
 ## <a name="availability-tests"></a>可用性テスト
-これは [可用性 Web テスト](../../azure-monitor/app/monitor-web-app-availability.md) の実行元のアドレスの一覧です。 アプリで Web テストを実行しようとするが、Web サーバーが特定のクライアントの処理に制限されている場合は、可用性テスト サーバーからの着信トラフィックを許可する必要があります。
+これは [可用性 Web テスト](./monitor-web-app-availability.md) の実行元のアドレスの一覧です。 アプリで Web テストを実行しようとするが、Web サーバーが特定のクライアントの処理に制限されている場合は、可用性テスト サーバーからの着信トラフィックを許可する必要があります。
 
 ### <a name="service-tag"></a>サービス タグ
 
@@ -225,7 +219,6 @@ Azure US Government (Not needed if you are an Azure Public cloud customer)
 | 目的 | URI | IP | Port |
 | --- | --- | --- | --- |
 | Application Insights JS SDK CDN | az416426.vo.msecnd.net | 動的 | 80,443 |
-| Application Insights Java SDK | aijavasdk.blob.core.windows.net | 動的 | 80,443 |
 
 ## <a name="action-group-webhooks"></a>アクション グループ Webhook
 
@@ -251,3 +244,4 @@ Azure US Government (Not needed if you are an Azure Public cloud customer)
 | エージェント | ppe.azureserviceprofiler.net<br/>*.ppe.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73<br/>191.232.214.6<br/>191.232.213.239 | 443
 | ポータル | ppe.gateway.azureserviceprofiler.net | 動的 | 443
 | ストレージ | *.core.windows.net | 動的 | 443
+

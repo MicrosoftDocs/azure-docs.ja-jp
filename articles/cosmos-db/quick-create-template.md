@@ -6,22 +6,24 @@ ms.author: sngun
 tags: azure-resource-manager
 ms.service: cosmos-db
 ms.topic: quickstart
-ms.date: 02/27/2020
+ms.date: 06/01/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: f524a1e1db426b9b9dafb2fb95d77538a34b04ec
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 249ff87813fe23505a09db020d4c6ad0f272796d
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605457"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483297"
 ---
-# <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用して Azure Cosmos DB とコンテナーを作成する
+# <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure Cosmos DB とコンテナーを作成する
 
-Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB を使用すると、キーと値のデータベース、ドキュメント データベース、グラフ データベースをすばやく作成し、クエリを実行できます。 このクイックスタートでは、Azure Cosmos データベースを作成してその中にコンテナーを作成する Resource Manager テンプレートのデプロイ プロセスについて重点的に取り上げます。 その後、そのコンテナーにデータを格納することができます。
+Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB を使用すると、キーと値のデータベース、ドキュメント データベース、グラフ データベースをすばやく作成し、クエリを実行できます。 このクイックスタートでは、Azure Cosmos データベースを作成してその中にコンテナーを作成する Azure Resource Manager テンプレート (ARM テンプレート) のデプロイ プロセスについて重点的に取り上げます。 その後、そのコンテナーにデータを格納することができます。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Azure へのデプロイ":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -31,13 +33,11 @@ Azure サブスクリプションまたは Azure Cosmos DB の無料試用版ア
 
 - [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-## <a name="create-an-azure-cosmos-account-database-container"></a>Azure Cosmos アカウント、データベース、コンテナーを作成する
+## <a name="review-the-template"></a>テンプレートを確認する
 
-### <a name="review-the-template"></a>テンプレートを確認する
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/)からのものです。
 
-このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-cosmosdb-create/)からのものです。
-
-:::code language="json" source="~/quickstart-templates/101-cosmosdb-create/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json":::
 
 テンプレートには、次の 3 つの Azure リソースが定義されています。
 
@@ -49,15 +49,15 @@ Azure サブスクリプションまたは Azure Cosmos DB の無料試用版ア
 
 その他の Azure Cosmos DB テンプレートのサンプルについては、[クイックスタート テンプレート ギャラリー](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Documentdb)をご覧ください。
 
-### <a name="deploy-the-template"></a>テンプレートのデプロイ
+## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
 1. Azure にサインインし、テンプレートを開くには次のイメージを選択します。 テンプレートによって Azure Cosmos アカウント、データベース、コンテナーが作成されます。
 
-   [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-create%2Fazuredeploy.json)
+   [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Azure へのデプロイ":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
 
 2. 次の値を選択または入力します。
 
-   ![Resource Manager テンプレート、Azure Cosmos DB 統合、デプロイ ポータル](./media/quick-create-template/create-cosmosdb-using-template-portal.png)
+   :::image type="content" source="./media/quick-create-template/create-cosmosdb-using-template-portal.png" alt-text="ARM テンプレート、Azure Cosmos DB 統合、デプロイ ポータル":::
 
     特に明記されていない場合は、既定値を使用して Azure Cosmos リソースを作成してください。
 
@@ -68,6 +68,9 @@ Azure サブスクリプションまたは Azure Cosmos DB の無料試用版ア
     * **場所**: Azure Cosmos アカウントの作成先となる場所を入力します。 Azure Cosmos アカウントは、リソース グループと同じ場所でかまいません。
     * **プライマリ リージョン**: Azure Cosmos アカウントのプライマリ レプリカのリージョン。
     * **セカンダリ リージョン**: Azure Cosmos アカウントのセカンダリ レプリカのリージョン。
+    * **既定の整合性レベル**: Azure Cosmos アカウントの既定の一貫性レベル。
+    * **最大整合性制約プレフィックス**: 整合性制約要求の最大数。 BoundedStaleness の場合に必須。
+    * **最大間隔秒数**: 最大ラグ時間。 BoundedStaleness の場合に必須。
     * **データベース名**: Azure Cosmos データベースの名前。
     * **コンテナー名**: Azure Cosmos コンテナーの名前。
     * **スループット**:コンテナーのスループット。最小スループット値は 400 RU/秒です。
@@ -75,7 +78,7 @@ Azure サブスクリプションまたは Azure Cosmos DB の無料試用版ア
 
 3. **[購入]** を選択します。 Azure Cosmos アカウントが正常にデプロイされると、次の通知が表示されます。
 
-   ![Resource Manager テンプレート、Cosmos DB 統合、デプロイ ポータル通知](./media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
+   :::image type="content" source="./media/quick-create-template/resource-manager-template-portal-deployment-notification.png" alt-text="ARM テンプレート、Cosmos DB 統合、デプロイ ポータル通知":::
 
 テンプレートをデプロイするには Azure portal を使用します。 Azure portal だけでなく、Azure PowerShell、Azure CLI、および REST API を使用することもできます。 他のデプロイ方法については、「[テンプレートのデプロイ](../azure-resource-manager/templates/deploy-powershell.md)」を参照してください。
 
@@ -105,8 +108,8 @@ $resourceGroupName = Read-Host -Prompt "Enter the resource group name where your
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-引き続き後続のチュートリアルに取り組む場合は、これらのリソースをそのまま残しておくことをお勧めします。
-不要になったら、リソース グループを削除します。これにより、Azure Cosmos アカウントおよび関連リソースが削除されます。 Azure CLI または Azure PowerShell を使用してリソース グループを削除するには次を実行します。
+後続のクイック スタートおよびチュートリアルを引き続き実行する場合は、これらのリソースをそのまま残しておくことができます。
+不要になったら、リソース グループを削除します。これにより、Azure Cosmos アカウントおよび関連リソースが削除されます。 Azure CLI または Azure PowerShell を使用してリソース グループを削除するには、次を実行します。
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -129,7 +132,7 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、Azure Resource Manager テンプレートを使用して Azure Cosmos アカウント、データベース、コンテナーを作成し、デプロイを検証しました。 Azure Cosmos DB と Azure Resource Manager の詳細については、引き続き以下の記事を参照してください。
+このクイックスタートでは、ARM テンプレートを使用して Azure Cosmos アカウント、データベース、コンテナーを作成し、デプロイを検証しました。 Azure Cosmos DB と Azure Resource Manager の詳細については、引き続き以下の記事を参照してください。
 
 - [Azure Cosmos DB の概要](introduction.md)を確認する
 - [Azure Resource Manager](../azure-resource-manager/management/overview.md) の詳細を確認する

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: c85eef1a5d035e23c7e63632ac92c21440b15cae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 40b5f4ee0c30e38c6cd5bd01c724ed783921670d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82101554"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077437"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>マルチテナント ホスティング権限を使用して Azure 上で Windows 10 をデプロイする方法 
 接続ユーザーごとに Windows 10 Enterprise E3/E5 または Windows Virtual Desktop Access (ユーザー サブスクリプション ライセンスまたはアドオン ユーザー サブスクリプション ライセンス) をご利用中のお客様は、Windows 10 のマルチテナント ホスティング権限により、他のライセンスを購入することなく、Windows 10 ライセンスをクラウドに移行し、Azure 上で Windows 10 Virtual Machines を実行することができます。 詳細については、[Windows 10 のマルチテナント ホスティング](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)に関するページを参照してください。
@@ -55,7 +55,7 @@ if($adminAccount.Disabled)
 
 
 ## <a name="deploying-windows-10-with-multitenant-hosting-rights"></a>マルチテナント ホスティング権限で Windows 10 をデプロイする
-[最新の Azure PowerShell がインストールおよび構成](/powershell/azure/overview)されていることを確認します。 VHD が準備できたら、次のように `Add-AzVhd` コマンドレットを使用して、その VHD を Azure Storage アカウントにアップロードします。
+[最新の Azure PowerShell がインストールおよび構成](/powershell/azure/)されていることを確認します。 VHD が準備できたら、次のように `Add-AzVhd` コマンドレットを使用して、その VHD を Azure Storage アカウントにアップロードします。
 
 ```powershell
 Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.vhd" `
@@ -63,7 +63,7 @@ Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.
 ```
 
 
-**Azure Resource Manager テンプレートを使用してデプロイする** Resource Manager テンプレートでは、`licenseType` の追加パラメーターを指定できます。 [Azure Resource Manager テンプレートの作成](../../resource-group-authoring-templates.md)で詳細を確認できます。 VHD を Azure にアップロードした後、コンピューティング プロバイダーの一部としてライセンスの種類を含めるように Resource Manager テンプレートを編集し、テンプレートを通常どおりデプロイします。
+**Azure Resource Manager テンプレートを使用してデプロイする** Resource Manager テンプレートでは、`licenseType` の追加パラメーターを指定できます。 [Azure Resource Manager テンプレートの作成](../../azure-resource-manager/templates/template-syntax.md)で詳細を確認できます。 VHD を Azure にアップロードした後、コンピューティング プロバイダーの一部としてライセンスの種類を含めるように Resource Manager テンプレートを編集し、テンプレートを通常どおりデプロイします。
 ```json
 "properties": {
     "licenseType": "Windows_Client",
@@ -106,7 +106,5 @@ LicenseType              :
 >
 
 ## <a name="next-steps"></a>次の手順
-- [Windows 10 の VDAの構成](https://docs.microsoft.com/windows/deployment/vda-subscription-activation)に関する詳細情報を確認します
+- [Windows 10 の VDAの構成](/windows/deployment/vda-subscription-activation)に関する詳細情報を確認します
 - [Windows 10 のマルチテナント ホスティング](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)に関する詳細情報を確認します
-
-

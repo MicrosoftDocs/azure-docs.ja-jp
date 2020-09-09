@@ -11,12 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 2143546e10b413d1492b8734d2594de42fd37cf3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3d0e608e1afae77afd44d7351b7c3f1f269bd8a8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684403"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998086"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Data Factory と Batch を使用して大規模なデータセットを処理する
 > [!NOTE]
@@ -38,8 +39,8 @@ Batch サービスでは、複数のアプリケーションを並列で大規�
 
  Batch に慣れていない場合は、次の記事を参照してください。この記事で説明されるソリューションのアーキテクチャや実装の理解に役立ちます。   
 
-* [Batch の基本](../../batch/batch-technical-overview.md)
-* [Batch 機能の概要](../../batch/batch-api-basics.md)
+* [Batch の基本](../../azure-sql/database/sql-database-paas-overview.md)
+* [Batch 機能の概要](../../batch/batch-service-workflow-features.md)
 
 必要な場合は、「[Batch のドキュメント](https://docs.microsoft.com/azure/batch/)」で Batch の詳細を確認してください。
 
@@ -144,7 +145,7 @@ Azure サブスクリプションをお持ちでない場合は、すぐに無�
 
 1. `customactivitycontainer` という名前の別のコンテナーを作成します。 カスタム アクティビティの zip ファイルを、このコンテナーにアップロードします。
 
-#### <a name="visual-studio"></a>Visual Studio
+#### <a name="visual-studio"></a>Visual Studio
 Visual Studio 2012 以降をインストールして、データ ファクトリ ソリューションで使用するカスタム Batch アクティビティを作成します。
 
 ### <a name="high-level-steps-to-create-the-solution"></a>ソリューションを作成する手順の概要
@@ -793,9 +794,9 @@ test custom activity Microsoft test custom activity Microsoft
 
    * パイプラインには 1 つのアクティビティのみがあり、種類は **DotNetActivity** です。
    * **AssemblyName** を DLL の名前 (**MyDotNetActivity.dll**) に設定します。
-   * **EntryPoint** を **MyDotNetActivityNS.MyDotNetActivity** に設定します。 基本的に、コード内の \<namespace\>.\<classname\> です。
+   * **EntryPoint** を **MyDotNetActivityNS.MyDotNetActivity** に設定します。 これは基本的に \<namespace\>.\<classname\> のようにコード内で示されます。
    * **PackageLinkedService** は **StorageLinkedService** に設定されます。これは、カスタム アクティビティの zip ファイルを含む Blob Storage を示します。 入力/出力ファイルとカスタム アクティビティ zip ファイルに別のストレージ アカウントを使用している場合、Storage のリンクされたサービスを別に作成する必要があります。 この記事では、同じストレージ アカウントを使用している前提で説明します。
-   * **PackageFile** を **customactivitycontainer/MyDotNetActivity.zip** に設定します。 形式は \<containerforthezip\>/\<nameofthezip.zip\> です。
+   * **PackageFile** を **customactivitycontainer/MyDotNetActivity.zip** に設定します。 これは \<containerforthezip\>/\<nameofthezip.zip\> という形式になっています。
    * カスタム アクティビティは入力として **InputDataset**、出力として **OutputDataset** を使用します。
    * カスタム アクティビティの **linkedServiceName** プロパティは、**AzureBatchLinkedService** を示します。これによって、Batch でカスタム アクティビティが実行する必要がある Data Factory がわかります。
    * **concurrency** の設定は重要です。 既定値を使用する場合は、Batch プールにコンピューティング ノードが複数ある場合でも、スライスは 1 つずつ処理されます。 そのため、Batch の並行処理機能を利用することはありません。 **concurrency** をより大きな値に設定した場合、2 とすると、つまり 2 つのスライス (Batch 内の 2 つのタスクに対応する) が、同時に処理できます。 この場合、Batch プール内の VM が両方利用されます。 concurrency プロパティを適切に設定します。
@@ -925,7 +926,7 @@ Data Factory サービスによって、Batch に `adf-poolname:job-xxx` とい�
    >
 1. このカスタム アクティビティでは、パッケージ内の **app.config** ファイルは使用されません。 そのためこの構成ファイルから接続文字列を読み取るようにコードを記述した場合、実行時に正しく機能しません。 Batch を使用する場合のベスト プラクティスは、Azure Key Vault のシークレットを保持することです。 次に、証明書ベースのサービス プリンシパルを使用してキー コンテナーを保護し、証明書を Batch プールに配布します。 こうすることで .NET カスタム アクティビティが実行時にキー コンテナー内のシークレットにアクセスすることができます。 これは一般的な手法であり、接続文字列に限らず、あらゆる種類のシークレットに応用できます。
 
-    さらに簡単な回避策もありますが、ベスト プラクティスではありません。 接続文字列の設定を使用して、SQL データベースにリンクされたサービスを作成できます。 これで、リンクされたサービスを使用するデータセットを作成し、データセットをダミーの入力データセットとしてカスタム .NET アクティビティに連結できます。 その後は、カスタム アクティビティのコードで、リンクされたサービスの接続文字列にアクセスできます。 これは実行時に問題なく動作します。  
+    さらに簡単な回避策もありますが、ベスト プラクティスではありません。 接続文字列の設定を使用して、SQL Database にリンクされたサービスを作成できます。 これで、リンクされたサービスを使用するデータセットを作成し、データセットをダミーの入力データセットとしてカスタム .NET アクティビティに連結できます。 その後は、カスタム アクティビティのコードで、リンクされたサービスの接続文字列にアクセスできます。 これは実行時に問題なく動作します。  
 
 #### <a name="extend-the-sample"></a>サンプルの拡張
 Data Factory および Batch の機能の詳細については、このサンプルを拡張することができます。 たとえば、異なる時間範囲でスライスを処理するには、次の手順を実行します。
@@ -972,8 +973,8 @@ Data Factory および Batch の機能の詳細については、このサンプ
   * [カスタム アクティビティを Data Factory パイプラインで使用する](data-factory-use-custom-activities.md)
 * [Azure Batch](https://azure.microsoft.com/documentation/services/batch/)
 
-  * [Batch の基本](../../batch/batch-technical-overview.md)
-  * [Azure Batch 機能の概要](../../batch/batch-api-basics.md)
+  * [Batch の基本](../../azure-sql/database/sql-database-paas-overview.md)
+  * [Azure Batch 機能の概要](../../batch/batch-service-workflow-features.md)
   * [Azure Portal で Batch アカウントを作成して管理する](../../batch/batch-account-create-portal.md)
   * [.NET 向け Batch クライアント ライブラリの概要](../../batch/quick-run-dotnet.md)
 

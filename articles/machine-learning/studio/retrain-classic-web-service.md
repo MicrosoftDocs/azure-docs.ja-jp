@@ -1,25 +1,25 @@
 ---
-title: 従来の Web サービスの再トレーニングを行う
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (classic): 従来の Web サービスの再トレーニング - Azure'
 description: Azure Machine Learning Studio (クラシック) でモデルの再トレーニングをして従来の Web サービスを更新し、新しくトレーニングを行ったモデルを使用する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: peterclu
 ms.author: peterlu
-ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
+ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT, devx-track-csharp
 ms.date: 02/14/2019
-ms.openlocfilehash: 0639a525384e751ac4441da5d2c03532618b801a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: dfc959984147d89ca5bfe68ed103a89b22f75501
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209453"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020689"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>従来の Studio (クラシック) Web サービスの再トレーニングとデプロイ
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+
 
 機械学習モデルの再トレーニングは、モデルが正確であり、利用できる最も関連性のあるデータに基づいていることを確認するための 1 つの方法です。 この記事では、従来の Studio (クラシック) Web サービスを再トレーニングする方法を示します。 新しい Studio (クラシック) Web サービスを再トレーニングする方法のガイドについては、[こちらのハウツー記事を参照](retrain-machine-learning-model.md)してください。
 
@@ -78,43 +78,45 @@ PATCH ヘルプ ページには、使用する必要のある PATCH URL が含�
 
 次のサンプル コードは、*BaseLocation*、*RelativeLocation*、*SasBlobToken*、および PATCH URL を使用して、エンドポイントを更新する方法を示しています。
 
-    private async Task OverwriteModel()
+```csharp
+private async Task OverwriteModel()
+{
+    var resourceLocations = new
     {
-        var resourceLocations = new
+        Resources = new[]
         {
-            Resources = new[]
+            new
             {
-                new
+                Name = "Census Model [trained model]",
+                Location = new AzureBlobDataReference()
                 {
-                    Name = "Census Model [trained model]",
-                    Location = new AzureBlobDataReference()
-                    {
-                        BaseLocation = "https://esintussouthsus.blob.core.windows.net/",
-                        RelativeLocation = "your endpoint relative location", //from the output, for example: "experimentoutput/8946abfd-79d6-4438-89a9-3e5d109183/8946abfd-79d6-4438-89a9-3e5d109183.ilearner"
-                        SasBlobToken = "your endpoint SAS blob token" //from the output, for example: "?sv=2013-08-15&sr=c&sig=37lTTfngRwxCcf94%3D&st=2015-01-30T22%3A53%3A06Z&se=2015-01-31T22%3A58%3A06Z&sp=rl"
-                    }
+                    BaseLocation = "https://esintussouthsus.blob.core.windows.net/",
+                    RelativeLocation = "your endpoint relative location", //from the output, for example: "experimentoutput/8946abfd-79d6-4438-89a9-3e5d109183/8946abfd-79d6-4438-89a9-3e5d109183.ilearner"
+                    SasBlobToken = "your endpoint SAS blob token" //from the output, for example: "?sv=2013-08-15&sr=c&sig=37lTTfngRwxCcf94%3D&st=2015-01-30T22%3A53%3A06Z&se=2015-01-31T22%3A58%3A06Z&sp=rl"
                 }
-            }
-        };
-
-        using (var client = new HttpClient())
-        {
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
-
-            using (var request = new HttpRequestMessage(new HttpMethod("PATCH"), endpointUrl))
-            {
-                request.Content = new StringContent(JsonConvert.SerializeObject(resourceLocations), System.Text.Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await client.SendAsync(request);
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    await WriteFailedResponse(response);
-                }
-
-                // Do what you want with a successful response here.
             }
         }
+    };
+
+    using (var client = new HttpClient())
+    {
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
+
+        using (var request = new HttpRequestMessage(new HttpMethod("PATCH"), endpointUrl))
+        {
+            request.Content = new StringContent(JsonConvert.SerializeObject(resourceLocations), System.Text.Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await client.SendAsync(request);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                await WriteFailedResponse(response);
+            }
+
+            // Do what you want with a successful response here.
+        }
     }
+}
+```
 
 この呼び出しの *apiKey* と *endpointUrl* は、エンドポイント ダッシュボードから取得できます。
 

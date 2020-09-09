@@ -9,11 +9,11 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 88f8188779c5fb6b3cd07c67e9f35a6b8f9ad97d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233387"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84687074"
 ---
 # <a name="run-the-opc-vault-certificate-management-service-securely"></a>OPC Vault 証明書管理サービスを安全に実行する
 

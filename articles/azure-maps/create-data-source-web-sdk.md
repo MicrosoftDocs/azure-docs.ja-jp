@@ -1,6 +1,6 @@
 ---
 title: マップのデータ ソースを作成する | Microsoft Azure Maps
-description: この記事では、データ ソースを作成し、Microsoft Azure Maps Web SDK を使用してマップに追加する方法を示します。
+description: マップのデータ ソースを作成する方法について説明します。 Azure Maps Web SDK で使用されるデータ ソースについて説明します。GeoJSON ソースとベクター タイル。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/08/2019
@@ -8,36 +8,43 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.custom: codepen
-ms.openlocfilehash: 1675d63fd3a65beda46042f4a78535bb4e066e62
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: fea2c4fab51db59c9159853e9b0bdaec0bcdbb56
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190229"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009088"
 ---
 # <a name="create-a-data-source"></a>データ ソースを作成する
 
 Azure Maps Web SDK では、データがデータ ソースに格納されます。 データ ソースを使用すると、クエリとレンダリングのデータ操作が最適化されます。 現在、次の 2 種類のデータ ソースがあります。
 
-**GeoJSON データ ソース**
+- **GeoJSON ソース**: 場所の生データを GeoJSON 形式でローカルに管理します。 小規模から中規模のデータ セット (数十万点を超える図形) に適しています。
+- **ベクター タイル ソース**: マップのタイル システムに基づいて、現在のマップ ビューのベクター タイルとして書式設定されたデータを読み込みます。 大規模から大規模なデータセット (数百万または数十億点の図形) に最適です。
 
-GeoJSON ベースのデータ ソースは、`DataSource` クラスを使用してローカルでデータを読み込んで格納します。 GeoJSON データは、[atlas.data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) 名前空間に、手動で作成するかヘルパー クラスを使用して作成できます。 `DataSource` クラスには、ローカルまたはリモートの GeoJSON ファイルをインポートするための関数が用意されています。 リモートの GeoJSON ファイルは、CORS が有効なエンドポイント上でホストされている必要があります。 `DataSource` クラスには、ポイント データをクラスター化するための機能があります。 データは、`DataSource` クラスを使用して、簡単に追加、削除、および更新できます。
+## <a name="geojson-data-source"></a>GeoJSON データ ソース
 
+GeoJSON ベースのデータ ソースは、`DataSource` クラスを使用してローカルでデータを読み込んで格納します。 GeoJSON データは、[atlas.data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) 名前空間に、手動で作成するかヘルパー クラスを使用して作成できます。 `DataSource` クラスには、ローカルまたはリモートの GeoJSON ファイルをインポートするための関数が用意されています。 リモートの GeoJSON ファイルは、CORS が有効なエンドポイント上でホストされている必要があります。 `DataSource` クラスには、ポイント データをクラスター化するための機能があります。 データは、`DataSource` クラスを使用して、簡単に追加、削除、および更新できます。 次のコードは、Azure Maps で GeoJSON データを作成する方法を示しています。
 
-> [!TIP]
-> `DataSource`内のすべてのデータを上書きするとします。 `clear` 関数を呼び出してから `add` 関数を呼び出すと、マップで再レンダリングが 2 回行われ、それによって少しの遅延が発生する場合があります。 代わりに、データ ソース内のすべてのデータを削除して置換する `setShapes` 関数を使用します。これにより、マップの再レンダリングが 1 回だけトリガーされます。
+```Javascript
+//Create raw GeoJSON object.
+var rawGeoJson = {
+     "type": "Feature",
+     "geometry": {
+         "type": "Point",
+         "coordinates": [-100, 45]
+     },
+     "properties": {
+         "custom-property": "value"
+     }
+};
 
-**ベクター タイル ソース**
-
-ベクター タイル ソースには、ベクター タイル レイヤーにアクセスする方法が記述されています。 ベクター タイル ソースをインスタンス化するには、[VectorTileSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.vectortilesource) クラスを使用します。 ベクター タイル レイヤーはタイル レイヤーに似ていますが、同じではありません。 タイル レイヤーはラスター イメージです。 ベクター タイル レイヤーは、PBF 形式の圧縮ファイルです。 この圧縮ファイルには、ベクター マップ データと 1 つ以上のレイヤーが含まれています。 このファイルは、各レイヤーのスタイルに基づいて、クライアントでレンダリングおよびスタイル設定できます。 ベクター タイルのデータには、ポイント、線、および多角形の形式で地理的特徴が含まれています。 ベクター タイル レイヤーの使用には、ラスター タイル レイヤーよりも優れている点がいくつかあります。
-
- - ベクター タイルのファイル サイズは、通常、同等のラスター タイルよりはるかに小さくなります。 そのため、使用される帯域幅が少なくなります。 つまり、待機時間の短縮、より高速なマップ、ユーザー エクスペリエンスの向上を意味します。
- - ベクター タイルはクライアント上でレンダリングされるため、表示されているデバイスの解像度に適応できます。 結果として、レンダリングされるマップはより明確に定義され、鮮明なラベルが表示されます。
- - ベクター マップ内のデータのスタイルを変更しても、クライアントに新しいスタイルを適用できるので、データを再度ダウンロードする必要はありません。 これに対し、ラスター タイル レイヤーのスタイルを変更するには、通常、タイルをサーバーから読み込み、新しいスタイルを適用する必要があります。
- - データはベクター形式で配信されるので、データを準備するために必要なサーバー側の処理が少なくなります。 つまり、新しいデータをより速く使用できるようになります。
-
-ベクター ソースを使用するすべてのレイヤーで `sourceLayer` 値を指定する必要があります。
+//Create GeoJSON using helper classes (less error prone and less typing).
+var geoJsonClass = new atlas.data.Feature(new atlas.data.Point([-100, 45]), {
+    "custom-property": "value"
+}); 
+```
 
 作成されたデータ ソースは、`map.sources` プロパティ ([SourceManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.sourcemanager)) を使用してマップに追加できます。 次のコードは、`DataSource` を作成してマップに追加する方法を示しています。
 
@@ -47,7 +54,89 @@ var dataSource = new atlas.source.DataSource();
 map.sources.add(dataSource);
 ```
 
-Azure Maps は、オープン スタンダードである [Mapbox Vector Tile 仕様](https://github.com/mapbox/vector-tile-spec)に準拠しています。
+次のコードは、GeoJSON データを `DataSource` に追加するさまざまな方法を示しています。
+
+```Javascript
+//GeoJsonData in the following code can be a single or array of GeoJSON features or geometries, a GeoJSON feature colleciton, or a single or array of atlas.Shape objects.
+
+//Add geoJSON object to data source. 
+dataSource.add(geoJsonData);
+
+//Load geoJSON data from URL. URL should be on a CORs enabled endpoint.
+dataSource.importDataFromUrl(geoJsonUrl);
+
+//Overwrite all data in data source.
+dataSource.setShapes(geoJsonData);
+```
+
+> [!TIP]
+> `DataSource`内のすべてのデータを上書きするとします。 `clear` 関数を呼び出してから `add` 関数を呼び出すと、マップで再レンダリングが 2 回行われ、それによって少しの遅延が発生する場合があります。 代わりに、データ ソース内のすべてのデータを削除して置換する `setShapes` 関数を使用します。これにより、マップの再レンダリングが 1 回だけトリガーされます。
+
+## <a name="vector-tile-source"></a>ベクター タイル ソース
+
+ベクター タイル ソースには、ベクター タイル レイヤーにアクセスする方法が記述されています。 ベクター タイル ソースをインスタンス化するには、[VectorTileSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.vectortilesource) クラスを使用します。 ベクター タイル レイヤーはタイル レイヤーに似ていますが、同じではありません。 タイル レイヤーはラスター イメージです。 ベクター タイル レイヤーは、**PBF** 形式の圧縮ファイルです。 この圧縮ファイルには、ベクター マップ データと 1 つ以上のレイヤーが含まれています。 このファイルは、各レイヤーのスタイルに基づいて、クライアントでレンダリングおよびスタイル設定できます。 ベクター タイルのデータには、ポイント、線、および多角形の形式で地理的特徴が含まれています。 ベクター タイル レイヤーの使用には、ラスター タイル レイヤーよりも優れている点がいくつかあります。
+
+ - ベクター タイルのファイル サイズは、通常、同等のラスター タイルよりはるかに小さくなります。 そのため、使用される帯域幅が少なくなります。 つまり、待機時間の短縮、より高速なマップ、ユーザー エクスペリエンスの向上を意味します。
+ - ベクター タイルはクライアント上でレンダリングされるため、表示されているデバイスの解像度に適応できます。 結果として、レンダリングされるマップはより明確に定義され、鮮明なラベルが表示されます。
+ - ベクター マップ内のデータのスタイルを変更しても、クライアントに新しいスタイルを適用できるので、データを再度ダウンロードする必要はありません。 これに対し、ラスター タイル レイヤーのスタイルを変更するには、通常、タイルをサーバーから読み込み、新しいスタイルを適用する必要があります。
+ - データはベクター形式で配信されるので、データを準備するために必要なサーバー側の処理が少なくなります。 つまり、新しいデータをより速く使用できるようになります。
+
+Azure Maps は、オープン スタンダードである [Mapbox Vector Tile 仕様](https://github.com/mapbox/vector-tile-spec)に準拠しています。 Azure Maps では、プラットフォームの一部として次のベクター タイル サービスが提供されます。
+
+- Road tiles [ドキュメント](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) | [データ形式の詳細](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
+- Traffic incidents [ドキュメント](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidenttile) | [データ形式の詳細](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
+- Traffic flow [ドキュメント](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowtile) | [データ形式の詳細](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
+- Azure Maps の作成者は、[Get Tile Render V2](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) を使用して、カスタム ベクター タイルを作成およびアクセスすることもできます
+
+> [!TIP]
+> Web SDK を使用して Azure Maps の Render Service からベクターまたはラスター イメージのタイルを使用する場合、`atlas.microsoft.com` をプレースホルダー `{azMapsDomain}` に置き換えることができます。 このプレースホルダーは、マップによって使用されるのと同じドメインに置き換えられ、同じ認証の詳細も自動的に追加されます。 これにより、Azure Active Directory 認証を使用するときに、Render Service での認証が大幅に簡単になります。
+
+マップにベクター タイル ソースからのデータを表示するには、ソースをいずれかのデータ レンダリング レイヤーに接続します。 ベクター ソースを使用するすべてのレイヤーでオプションの `sourceLayer` 値を指定する必要があります。 次のコードでは、Azure Maps のトラフィック フロー ベクター タイル サービスをベクター タイル ソースとして読み込み、その後、線レイヤーを使用してマップに表示します。 このベクター タイル ソースには、ソース レイヤーに "Traffic flow" という 1 つのデータ セットがあります。 このデータ セット内の行データには、`traffic_level` というプロパティがあります。これは、色を選択して線のサイズを拡大縮小するために、このコードで使用されます。
+
+```javascript
+//Create a vector tile source and add it to the map.
+var datasource = new atlas.source.VectorTileSource(null, {
+    tiles: ['https://{azMapsDomain}/traffic/flow/tile/pbf?api-version=1.0&style=relative&zoom={z}&x={x}&y={y}'],
+    maxZoom: 22
+});
+map.sources.add(datasource);
+
+//Create a layer for traffic flow lines.
+var flowLayer = new atlas.layer.LineLayer(datasource, null, {
+    //The name of the data layer within the data source to pass into this rendering layer.
+    sourceLayer: 'Traffic flow',
+
+    //Color the roads based on the traffic_level property. 
+    strokeColor: [
+        'interpolate',
+        ['linear'],
+        ['get', 'traffic_level'],
+        0, 'red',
+        0.33, 'orange',
+        0.66, 'green'
+    ],
+
+    //Scale the width of roads based on the traffic_level property. 
+    strokeWidth: [
+        'interpolate',
+        ['linear'],
+        ['get', 'traffic_level'],
+        0, 6,
+        1, 1
+    ]
+});
+
+//Add the traffic flow layer below the labels to make the map clearer.
+map.layers.add(flowLayer, 'labels');
+```
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Vector tile line layer" src="https://codepen.io/azuremaps/embed/wvMXJYJ?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen の "<a href='https://codepen.io/azuremaps/pen/wvMXJYJ'>Vector tile line layer</a>" を表示します。
+</iframe>
+
+<br/>
 
 ## <a name="connecting-a-data-source-to-a-layer"></a>レイヤーへのデータ ソースの接続
 

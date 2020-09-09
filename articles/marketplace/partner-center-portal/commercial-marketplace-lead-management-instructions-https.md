@@ -1,18 +1,18 @@
 ---
 title: HTTPS エンドポイントを使用したリード管理 - Microsoft コマーシャル マーケットプレース
 description: Power Automate と HTTPS エンドポイントを使用して、Microsoft AppSource および Azure Marketplace からリードを管理する方法について説明します。
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 03/30/2020
-ms.author: dsindona
-ms.openlocfilehash: 7a4fc57b3be8dd59997ef2bfc9624892cf726160
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 3cdbe1f3428418f082d53febca950a6a443fe5ff
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790985"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120372"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>HTTPS エンドポイントを使用してコマーシャル マーケットプレースのリードを管理する
 
@@ -223,14 +223,15 @@ Microsoft AppSource と Azure Marketplace のリードを受け取るために�
 
 ## <a name="configure-your-offer-to-send-leads-to-the-https-endpoint"></a>潜在顧客を HTTPS エンドポイントに送信するようにオファーを構成する
 
-発行ポータル内でオファー用にリード管理情報を構成する準備ができたら、これらの手順に従います。
+発行ポータル内でオファー用にリード管理情報を構成する準備ができたら、次の手順に従います。
 
 1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
 
 1. オファーを選択し、 **[Offer setup]\(オファーのセットアップ\)** タブにアクセスします。
 
-1. **[リード管理]** セクションで **[接続]** を選択します。 
-    ![[リード管理] の [接続] ボタン](./media/commercial-marketplace-lead-management-instructions-https/lead-management-connect.png)
+1. **[潜在顧客]** セクションで、 **[接続]** を選択します。
+
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-https/customer-leads.png" alt-text="[潜在顧客]":::
 
 1. **[接続の詳細]** ポップアップ ウィンドウで、 **[リードのターゲット]** として **[HTTPS エンドポイント]** を選択します。 前の手順に従って作成したフローから HTTP POST URL を **[HTTPS エンドポイントの URL]** フィールドに貼り付けます。
     ![[接続の詳細] の [連絡先の電子メール]](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)

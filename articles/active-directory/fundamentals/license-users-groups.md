@@ -2,24 +2,24 @@
 title: ライセンスの割り当てと削除 - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory ライセンスをユーザーまたはグループに割り当てたり、それらのライセンスを削除したりする手順を紹介します。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.assetid: f8b932bc-8b4f-42b5-a2d3-f2c076234a78
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/06/2018
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20ec1d1909a53a9de29e12be33957acfd1643698
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c69f2ce964d9171197771d783358dcef2ca60726
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128821"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319527"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルでのライセンスの割り当てと削除
 
@@ -35,7 +35,7 @@ Azure AD サービスには、次のようないくつかのライセンス プ�
 
 - Azure AD Premium P2
 
-各ライセンス プランと関連するライセンスの詳細に関する固有の情報については、「[必要なライセンス](https://azure.microsoft.com/pricing/details/active-directory/)」をご覧ください。
+各ライセンス プランと関連するライセンスの詳細に関する固有の情報については、「[必要なライセンス](https://azure.microsoft.com/pricing/details/active-directory/)」をご覧ください。 Azure AD Premium ライセンス プランにサインアップするには、[こちら](./active-directory-get-started-premium.md)をご覧ください。
 
 すべての Microsoft サービスが、すべての場所で利用できるわけではありません。 ライセンスをグループに割り当てる前に、お客様はすべてのメンバーに対して **[利用場所]** を指定しておく必要があります。 この値は Azure AD の **[Azure Active Directory] &gt; [ユーザー] &gt; [プロファイル] &gt; [設定]** 領域で設定できます。 利用場所が指定されていないユーザーは、Azure AD 組織の場所を継承します。
 
@@ -47,11 +47,11 @@ Azure AD サービスには、次のようないくつかのライセンス プ�
 
 1. Azure AD 組織のライセンス管理者アカウントを使用して [Azure portal](https://portal.azure.com/) にサインインします。
 
-1. **[Azure Active Directory]** を選択し、 **[ライセンス]** を選択します。
+1. **[Azure Active Directory]** を選択し、**[ライセンス]** を選択します。
 
     ![購入したサービス数と割り当てられたライセンスを示す [ライセンス] ページ](media/license-users-groups/license-details-blade.png)
 
-1. **[購入済み]** のリンクを選択して **[製品]** ページを表示し、ライセンス プランの **[割り当て済み]** 、 **[利用可能]** 、 **[まもなく有効期限切れ]** の数を確認します。
+1. **[購入済み]** のリンクを選択して **[製品]** ページを表示し、ライセンス プランの **[割り当て済み]**、**[利用可能]**、**[まもなく有効期限切れ]** の数を確認します。
 
     ![サービス ライセンス プランと関連付けられているライセンス情報を示すサービス ページ](media/license-users-groups/license-products-blade-with-products.png)
 
@@ -67,7 +67,7 @@ Azure AD サービスには、次のようないくつかのライセンス プ�
 
     ![サービス ライセンス プランが強調表示されたサービス ページ](media/license-users-groups/license-products-blade-with-product-highlight.png)
 
-1. ライセンス プランの概要ページで、 **[割り当て]** を選択します。
+1. ライセンス プランの概要ページで、**[割り当て]** を選択します。
 
     ![[割り当て] オプションが強調表示されているサービス ページ](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
 
@@ -75,7 +75,7 @@ Azure AD サービスには、次のようないくつかのライセンス プ�
 
     ![検索と [選択] オプションが強調表示されている [ライセンスの割り当て] ページ](media/license-users-groups/assign-license-blade-with-highlight.png)
 
-1. **[割り当てオプション]** を選択して、適切なライセンス オプションをオンにしていることを確認し、 **[OK]** を選択します。
+1. **[割り当てオプション]** を選択して、適切なライセンス オプションをオンにしていることを確認し、**[OK]** を選択します。
 
     ![ライセンス プランで利用可能なすべてのオプションを示している [ライセンス オプション] ページ](media/license-users-groups/license-option-blade-assignments.png)
 
@@ -96,7 +96,7 @@ Azure AD サービスには、次のようないくつかのライセンス プ�
 
     ![製品ライセンス プランが強調表示されている [製品] ブレード](media/license-users-groups/license-products-blade-with-product-highlight.png)
 
-1. **[Azure Active Directory Premium プラン 2]** ページで、 **[割り当て]** を選択します。
+1. **[Azure Active Directory Premium プラン 2]** ページで、**[割り当て]** を選択します。
 
     ![[割り当て] オプションが強調表示されている [製品] ページ](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
 
@@ -104,7 +104,7 @@ Azure AD サービスには、次のようないくつかのライセンス プ�
 
     ![検索と [選択] オプションが強調表示されている [ライセンスの割り当て] ページ](media/license-users-groups/assign-group-license-blade-with-highlight.png)
 
-1. **[割り当てオプション]** を選択して、適切なライセンス オプションをオンにしていることを確認し、 **[OK]** を選択します。
+1. **[割り当てオプション]** を選択して、適切なライセンス オプションをオンにしていることを確認し、**[OK]** を選択します。
 
     ![ライセンス プランで利用可能なすべてのオプションを示している [ライセンス オプション] ページ](media/license-users-groups/license-option-blade-group-assignments.png)
 

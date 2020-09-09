@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 05/06/2020
 ms.author: glenga
 ms.openlocfilehash: 5e0cff7bde6e80a776d694820ca7b69dafa7c0d9
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83648823"
 ---
 プライベート サイト アクセスとは、Azure 仮想ネットワークなどのプライベート ネットワークからのみアプリにアクセスできるようにすることです。

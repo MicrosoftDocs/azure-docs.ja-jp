@@ -4,15 +4,16 @@ description: Azure Cosmos DB 要求の SQL クエリの実行メトリックを�
 author: ginamr
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: girobins
-ms.openlocfilehash: 48b9a67de5c870a187ee008bd97265760ca6c341
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 71ebc90834083def5b82e16dc387a6e61943206d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70998361"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021750"
 ---
 # <a name="get-sql-query-execution-metrics-and-analyze-query-performance-using-net-sdk"></a>SQL クエリの実行メトリックを取得し、.NET SDK を使用してクエリのパフォーマンスを分析する
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 5b4d625d28584bb601905e9439c112c845219e54
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 281743268364b0e9d39c7bea28afc17d753db2f6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73954374"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130140"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>フェールバック用の Linux マスター ターゲット サーバーをインストールする
 仮想マシンを Azure にフェールオーバー後、仮想マシンをオンプレミス サイトにフェールバックできます。 フェールバックするには、Azure からオンプレミス サイトへの仮想マシンを再保護する必要があります。 このプロセスには、トラフィックを受信するオンプレミス マスター ターゲット サーバーが必要です。 
@@ -27,7 +27,7 @@ ms.locfileid: "73954374"
 ## <a name="overview"></a>概要
 この記事では、Linux のマスター ターゲットをインストールする手順について説明します。
 
-コメントや質問はこの記事の末尾、または [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)で投稿してください。
+コメントや質問はこの記事の末尾、または [Azure Recovery Services に関する Microsoft Q&A 質問ページ](/answers/topics/azure-site-recovery.html)で投稿してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,6 +37,9 @@ ms.locfileid: "73954374"
 * マスター ターゲットは、プロセス サーバーおよび構成サーバーと通信できるネットワーク上に存在する必要があります。
 * マスター ターゲットのバージョンは、プロセス サーバーおよび構成サーバーと同等か、それより前のバージョンにする必要があります。 たとえば、構成サーバーのバージョンが 9.4 である場合、マスター ターゲットのバージョンは 9.4 または 9.3 にすることができますが、9.5 にすることはできません。
 * マスター ターゲットは、VMware 仮想マシンにのみすることができますが、物理サーバーにすることはできません。
+
+> [!NOTE]
+> マスター ターゲットをはじめとする管理コンポーネントでは一切 Storage vMotion を有効にしないでください。 再保護に成功した後でマスター ターゲットが移動されると、仮想マシン ディスク (VMDK) を切断できません。 この場合、フェールバックは失敗します。
 
 ## <a name="sizing-guidelines-for-creating-master-target-server"></a>マスター ターゲット サーバーを作成するためのサイズに関するガイドライン
 
@@ -244,7 +247,7 @@ Linux を使用してこれをダウンロードするには、次のように�
 
     ![マルチパス ID](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. ドライブをフォーマットし、新しいドライブにファイル システムを作成します。**mkfs.ext4 /dev/mapper/\<リテンション ディスクのマルチパス ID>**
+3. ドライブをフォーマットし、**mkfs.ext4 /dev/mapper/\<Retention disk's multipath id>** の新しいドライブにファイル システムを作成します。
     
     ![ファイル システム](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
@@ -274,16 +277,22 @@ Linux を使用してこれをダウンロードするには、次のように�
 > [!NOTE]
 > マスター ターゲット サーバーをインストールする前に、仮想マシンの **/etc/hosts** ファイルに、ローカル ホスト名を、すべてのネットワーク アダプターに関連付けられた IP アドレスにマップするエントリが含まれることを確認します。
 
-1. 構成サーバーの **C:\ProgramData\Microsoft Azure Site Recovery\private\connection.passphrase** からパスフレーズをコピーします。 次のコマンドを実行して、同じローカル ディレクトリ内に **passphrase.txt** という名前で保存します。
+1. 次のコマンドを実行してマスター ターゲットをインストールします。
+
+    ```
+    ./install -q -d /usr/local/ASR -r MT -v VmWare
+    ```
+
+2. 構成サーバーの **C:\ProgramData\Microsoft Azure Site Recovery\private\connection.passphrase** からパスフレーズをコピーします。 次のコマンドを実行して、同じローカル ディレクトリ内に **passphrase.txt** という名前で保存します。
 
     `echo <passphrase> >passphrase.txt`
 
     例: 
 
-       `echo itUx70I47uxDuUVY >passphrase.txt`
+    `echo itUx70I47uxDuUVY >passphrase.txt`
     
 
-2. 構成サーバーの IP アドレスをメモします。 次のコマンドを実行してマスター ターゲット サーバーをインストールし、さらに構成サーバーに登録します。
+3. 構成サーバーの IP アドレスをメモします。 次のコマンドを実行して、サーバーを構成サーバーに登録します。
 
     ```
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
@@ -314,16 +323,10 @@ Linux を使用してこれをダウンロードするには、次のように�
 
 1. 構成サーバーの IP アドレスをメモします。 次の手順で必要になります。
 
-2. 次のコマンドを実行してマスター ターゲット サーバーをインストールし、さらに構成サーバーに登録します。
+2. 次のコマンドを実行して、サーバーを構成サーバーに登録します。
 
     ```
-    ./install -q -d /usr/local/ASR -r MT -v VmWare
-    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
-    ```
-    例: 
-
-    ```
-    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
+    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh
     ```
 
      スクリプトが完了するまで待機します。 マスター ターゲットが正常に登録されていれば、ポータルの **[Site Recovery インフラストラクチャ]** ページに表示されます。
@@ -348,9 +351,13 @@ VMware ツールまたは open-vm-tools は、データストアを検出でき�
 
 * マスター ターゲットの仮想マシンには、スナップショットが一切存在していないことが必要です。 スナップショットが存在するとフェールバックが失敗します。
 
-* 一部のカスタム NIC 構成のために、起動中にネットワーク インターフェイスが無効になり、マスター ターゲット エージェントを初期化できません。 以下のプロパティが正しく設定されていることを確認してください。 イーサネット カード ファイルの /etc/sysconfig/network-scripts/ifcfg-eth* で次のプロパティを確認します。
-    * BOOTPROTO=dhcp
-    * ONBOOT=yes
+* 一部のカスタム NIC 構成のために、起動中にネットワーク インターフェイスが無効になり、マスター ターゲット エージェントを初期化できません。 以下のプロパティが正しく設定されていることを確認してください。 イーサネット カード ファイルの /etc/network/interfaces で次のプロパティを確認します。
+    * auto eth0
+    * iface eth0 inet dhcp <br>
+
+    次のコマンドを使ってネットワーク サービスを再起動します。 <br>
+
+`sudo systemctl restart networking`
 
 
 ## <a name="next-steps"></a>次のステップ

@@ -3,21 +3,22 @@ title: Azure Application Insights におけるテレメトリ チャネル | Mic
 description: .NET および .NET Core 用の Azure Application Insights SDK でテレメトリ チャネルをカスタマイズする方法について説明します。
 ms.topic: conceptual
 ms.date: 05/14/2019
+ms.custom: devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9c292246f947e4d3a364f79b31fe7a1deebd33d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 41d2feefc5af1e795520d9b3d90809e625502fa6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234615"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918402"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Application Insights のテレメトリ チャネル
 
-テレメトリ チャネルは、[Azure Application Insights SDK](../../azure-monitor/app/app-insights-overview.md) の不可欠な要素です。 これにより、テレメトリのバッファー処理と Application Insights サービスへの送信が管理されます。 この SDK の .NET バージョンと .NET Core バージョンには、`InMemoryChannel` と `ServerTelemetryChannel` の 2 つのテレメトリ チャネルが組み込まれています。 この記事では、チャネルの動作をカスタマイズする方法も含め、各チャネルの詳細を説明します。
+テレメトリ チャネルは、[Azure Application Insights SDK](./app-insights-overview.md) の不可欠な要素です。 これにより、テレメトリのバッファー処理と Application Insights サービスへの送信が管理されます。 この SDK の .NET バージョンと .NET Core バージョンには、`InMemoryChannel` と `ServerTelemetryChannel` の 2 つのテレメトリ チャネルが組み込まれています。 この記事では、チャネルの動作をカスタマイズする方法も含め、各チャネルの詳細を説明します。
 
 ## <a name="what-are-telemetry-channels"></a>テレメトリ チャネルとは
 
-テレメトリ チャネルは、テレメトリ項目をバッファー処理し、Application Insights サービスに送信する役割を担うものです (テレメトリ項目は、クエリと解析のために Application Insights サービスに保存されます)。 [`Microsoft.ApplicationInsights.ITelemetryChannel`](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet) インターフェイスを実装するクラスはいずれも、テレメトリ チャネルです。
+テレメトリ チャネルは、テレメトリ項目をバッファー処理し、Application Insights サービスに送信する役割を担うものです (テレメトリ項目は、クエリと解析のために Application Insights サービスに保存されます)。 [`Microsoft.ApplicationInsights.ITelemetryChannel`](/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet) インターフェイスを実装するクラスはいずれも、テレメトリ チャネルです。
 
 テレメトリ チャネルの `Send(ITelemetry item)` メソッドは、テレメトリ初期化子とテレメトリ プロセッサがすべて呼び出された後に呼び出されます。 つまり、テレメトリ プロセッサによって削除された項目はチャネルに到達しません。 通常であれば、`Send()` が項目をすぐにバックエンドに送信することはありません。 通常はメモリ内でバッファー処理されてから、バッチ単位で効率的に送信されます。
 
@@ -31,7 +32,7 @@ Application Insights の .NET SDK と .NET Core SDK には、2 つのチャネ�
 
     このチャネルは、これよりも大きな Microsoft.ApplicationInsights NuGet パッケージの一部であり、他に何も構成されていないときに SDK が使用する既定のチャネルです。
 
-* `ServerTelemetryChannel`:再試行ポリシーとローカル ディスクへのデータ保存機能を備えたより高度なチャネルです。 このチャネルでは、一時的なエラーが発生すると、テレメトリの送信が再試行されます。 また、このチャネルは、ネットワーク障害時またはテレメトリが大量にある場合に、ローカル ディスク ストレージを使用してディスク上に項目を保持します。 このように再試行メカニズムとローカル ディスクへの保存機能を備えているため、このチャネルは信頼性が高いと考えられ、あらゆる運用環境のシナリオに推奨されています。 公式ドキュメントに従って構成した [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) および [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) アプリケーションでは、このチャネルが既定となっています。 このチャネルは、実行時間の長いプロセスがあるサーバーのシナリオに最適です。 このチャネルによって実装される [`Flush()`](#which-channel-should-i-use) メソッドは同期的ではありません。
+* `ServerTelemetryChannel`:再試行ポリシーとローカル ディスクへのデータ保存機能を備えたより高度なチャネルです。 このチャネルでは、一時的なエラーが発生すると、テレメトリの送信が再試行されます。 また、このチャネルは、ネットワーク障害時またはテレメトリが大量にある場合に、ローカル ディスク ストレージを使用してディスク上に項目を保持します。 このように再試行メカニズムとローカル ディスクへの保存機能を備えているため、このチャネルは信頼性が高いと考えられ、あらゆる運用環境のシナリオに推奨されています。 公式ドキュメントに従って構成した [ASP.NET](./asp-net.md) および [ASP.NET Core](./asp-net-core.md) アプリケーションでは、このチャネルが既定となっています。 このチャネルは、実行時間の長いプロセスがあるサーバーのシナリオに最適です。 このチャネルによって実装される [`Flush()`](#which-channel-should-i-use) メソッドは同期的ではありません。
 
     このチャネルは、Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel NuGet パッケージとして提供されるものであり、Microsoft.ApplicationInsights.Web または Microsoft.ApplicationInsights.AspNetCore NuGet パッケージを使用している場合には自動的に取得されます。
 
@@ -39,7 +40,7 @@ Application Insights の .NET SDK と .NET Core SDK には、2 つのチャネ�
 
 テレメトリ チャネルを構成するには、テレメトリ チャネルをアクティブなテレメトリ構成に設定します。 ASP.NET アプリケーションの構成では、テレメトリ チャネル インスタンスを `TelemetryConfiguration.Active` に設定するか、`ApplicationInsights.config` を変更します。 ASP.NET Core アプリケーションの構成では、依存関係挿入コンテナーにチャネルを追加します。
 
-以降のセクションでは、さまざまな種類のアプリケーションに存在するチャネルの `StorageFolder` 設定の構成例を示します。 `StorageFolder` は構成可能な設定の 1 つです。 構成設定の完全な一覧については、この記事の後の方にある[設定に関するセクション](telemetry-channels.md#configurable-settings-in-channels)を参照してください。
+以降のセクションでは、さまざまな種類のアプリケーションに存在するチャネルの `StorageFolder` 設定の構成例を示します。 `StorageFolder` は構成可能な設定の 1 つです。 構成設定の完全な一覧については、この記事の後の方にある[設定に関するセクション](#configurable-settings-in-channels)を参照してください。
 
 ### <a name="configuration-by-using-applicationinsightsconfig-for-aspnet-applications"></a>ApplicationInsights.config を使用した ASP.NET アプリケーションの構成
 
@@ -166,5 +167,6 @@ Application Insights の他の SDK と同じく、チャネルもオープン �
 
 ## <a name="next-steps"></a>次のステップ
 
-* [サンプリング](../../azure-monitor/app/sampling.md)
-* [SDK のトラブルシューティング](../../azure-monitor/app/asp-net-troubleshoot-no-data.md)
+* [サンプリング](./sampling.md)
+* [SDK のトラブルシューティング](./asp-net-troubleshoot-no-data.md)
+

@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: 31ef06104f57fd2ec1530c621bceab899921b8f8
-  ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+  ms.openlocfilehash: f37f876db15e2722907669cd1c1d8390f771034b
+  ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/22/2020
-  ms.locfileid: "82024644"
+  ms.lasthandoff: 08/11/2020
+  ms.locfileid: "88080645"
 landingContent:
 - title: 小売ソリューションを構築する
   linkLists:
@@ -37,6 +37,8 @@ landingContent:
       url: tutorial-iot-central-connected-logistics.md
     - text: デジタル流通センター アプリケーションを作成する
       url: tutorial-iot-central-digital-distribution-center.md
+    - text: ビデオ分析アプリケーションを作成する
+      url: tutorial-video-analytics-create-app.md
   - linkListType: how-to-guide
     links:
     - text: Rigado Cascade 500 を接続する
@@ -48,13 +50,9 @@ landingContent:
     - text: デバイス テンプレートを設定する
       url: ../core/howto-set-up-template.md
     - text: デバイスの接続
-      url: ../core/tutorial-connect-device-nodejs.md
-    - text: IoT プラグ アンド プレイ (プレビュー) デバイスを接続する
-      url: ../core/tutorial-connect-pnp-device.md
+      url: ../core/tutorial-connect-device.md
   - linkListType: how-to-guide
     links:
-    - text: MXChip IoT DevKit を準備して接続する
-      url: ../core/howto-connect-devkit.md
     - text: その他の IoT クラウドの接続
       url: ../core/howto-build-iotc-device-bridge.md
 - title: 接続を維持する

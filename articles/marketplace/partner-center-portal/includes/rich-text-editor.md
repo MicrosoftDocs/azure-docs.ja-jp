@@ -1,18 +1,18 @@
 ---
 title: インクルード ファイル
 description: file
-author: anbene
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: include
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 05/19/2020
-ms.openlocfilehash: d11589e34ac24cafe57d38d0eef25a1b44576b7c
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: b556f23abc54d607a168af256cefd4ba68c4d9d1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698402"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317726"
 ---
 オファーの説明をより魅力的なものにするには、リッチ テキスト エディターを使用して書式設定を適用してください。
 

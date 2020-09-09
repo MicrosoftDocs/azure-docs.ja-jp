@@ -6,17 +6,17 @@ ms.author: robb
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: 5a868167f80aaa735e4fbeab32fd1d308dd6da1f
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: d7d9f55bbd3d8060670008f321a77b2a28376e47
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81114424"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849021"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートを使用してクラシック メトリック アラートを作成する
+
 > [!WARNING]
-> 
-> この記事では、Resource Manager テンプレートを使用した**クラシック メトリック アラート**の作成方法について説明します。 クラシック アラートは 2019 年 8 月に廃止され、2020 年 6 月に完全に非推奨となるように設定されています。 新しいクラシック アラートをパブリック Azure で作成することはできません。 一部の Azure リージョンのバージョンでは引き続きこのオプションを使用できる場合がありますが、可能な限り、テンプレートを使用して[新しいメトリック アラート](../../azure-monitor/platform/alerts-metric-near-real-time.md)を作成することをお勧めします。 詳細については、[この記事](alerts-metric-create-templates.md)を参照してください。
+> この記事では、古いクラシック メトリック アラートの作成方法について説明します。 Azure Monitor では、[新しいほぼリアルタイムのメトリック アラートとアラート エクスペリエンス](./alerts-overview.md)がサポートされています。 従来のアラートは[廃止](./monitoring-classic-retirement.md)されますが、新しいアラートをまだサポートしていないリソースのために、引き続き限定的に使用されます。
 >
 
 この記事では、 [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)を使用して Azure クラシック メトリック アラートを構成する方法について説明します。 これによりリソースの作成時にアラートを自動的に設定して、すべてのリソースを確実かつ適切に監視できます。
@@ -176,7 +176,7 @@ Resource Manager テンプレートを使用してアラートを作成するに
 }
 ```
 
-アラート ルールのスキーマとプロパティについては、 [こちらをご覧ください](https://msdn.microsoft.com/library/azure/dn933805.aspx)。
+アラート ルールのスキーマとプロパティについては、 [こちらをご覧ください](/rest/api/monitor/alertrules)。
 
 ## <a name="resource-manager-template-for-a-resource-with-a-classic-metric-alert"></a>クラシック メトリック アラートを含むリソース向けの Resource Manager テンプレート
 Resource Manager テンプレートのアラートは、多くの場合、リソースを作成しながらアラートを作成するときに役に立ちます。 たとえば、仮想マシンをデプロイするたびに "CPU % > 80" ルールを設定する必要があるとします。 これを行うには、VM テンプレートのリソース配列にリソースとしてアラート ルールを追加し、 `dependsOn` プロパティを使用して依存関係を VM リソース ID に追加します。 次の例は、Windows VM を作成し、CPU 使用率が 80% を超えたときにサブスクリプション管理者に通知するアラートを追加しています。
@@ -400,6 +400,6 @@ Resource Manager テンプレートのアラートは、多くの場合、リソ
 
 ## <a name="next-steps"></a>次の手順
 * [アラートの詳細を確認します](alerts-overview.md)
-* [診断の設定を追加](../../azure-monitor/platform/diagnostic-settings-template.md) します
+* [診断の設定を追加](./diagnostic-settings-template.md) します
 * JSON の構文とプロパティについては、[Microsoft.Insights/alertrules](/azure/templates/microsoft.insights/alertrules) テンプレート リファレンスをご覧ください。
 

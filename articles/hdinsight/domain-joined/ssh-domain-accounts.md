@@ -5,14 +5,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/14/2020
-ms.openlocfilehash: 5529989384df75b592afa8f5e4960eb9817fb2d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5be992ef8375f98b3c5978d8b71dc92ce9f91123
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77473167"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081504"
 ---
 # <a name="manage-ssh-access-for-domain-accounts-in-azure-hdinsight"></a>Azure HDInsight でドメイン アカウントの SSH アクセスを管理する
 

@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: eef8174056be7e6be35cea56788c0a519d02944e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b719e866852d2e865c16c62fddd8c549ae505b7d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154442"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551562"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>OpenID Connect と Azure Active Directory を使用する Web アプリケーションへのアクセスの承認
 
@@ -108,7 +108,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &nonce=7362CAEA-9CA5-4B43-9BA3-34D7C303EBA7
 ```
 
-| パラメーター |  | 説明 |
+| パラメーター | Type | 説明 |
 | --- | --- | --- |
 | tenant |required |要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。 使用できる値はテナント ID です。たとえば、`8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.onmicrosoft.com` または `common` (テナント独立のトークンの場合) です |
 | client_id |required |Azure AD への登録時にアプリに割り当てられたアプリケーション ID。 これは、Azure Portal で確認できます。 **[Azure Active Directory]** 、 **[アプリの登録]** の順にクリックし、アプリケーションを選択して、アプリケーション ページでアプリケーション ID を特定します。 |
@@ -197,7 +197,7 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 ```
 
-| パラメーター |  | 説明 |
+| パラメーター | Type | 説明 |
 | --- | --- | --- |
 | post_logout_redirect_uri |推奨 |サインアウトの正常終了後にユーザーをリダイレクトする URL。この URL は、アプリ登録ポータルのアプリケーションに対する登録済みリダイレクト URI のいずれかと一致させる必要があります。  *post_logout_redirect_uri* が含まれていない場合、ユーザーに汎用メッセージが表示されます。 |
 

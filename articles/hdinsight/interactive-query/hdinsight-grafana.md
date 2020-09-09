@@ -5,14 +5,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/27/2019
-ms.openlocfilehash: cd515bfd1dc57e78a041ed96686e1ba692bf6d3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7750544367044cab2a0243577c200025bb9ff693
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79082865"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083034"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Azure HDInsight で Grafana にアクセスする
 

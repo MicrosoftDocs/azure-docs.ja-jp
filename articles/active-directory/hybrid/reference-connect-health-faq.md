@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0c6484f46731e0ff2d16d00cb0038202511d193
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d15b12b758adbf99ddabc88eb06be9daba1ece3e
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80331078"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276203"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health についてよく寄せられる質問
 この記事には、Azure Active Directory (Azure AD) Connect Health に関してよく寄せられる質問 (FAQ) に対する回答が記載されています。 これらの FAQ では、課金モデル、機能、制限、サポートなど、サービスの使用方法に関する質問を取り上げています。
@@ -37,9 +37,11 @@ Azure AD テナントを切り替えるには、現在サインインしてい�
 
 |Role| オペレーティング システム/バージョン|
 |--|--|
-|Active Directory フェデレーション サービス (AD FS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
+|Active Directory フェデレーション サービス (AD FS)| <ul><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> <li> Windows Server 2019  </li> </ul>|
 |Azure AD Connect | バージョン 1.0.9125 以上|
-|Active Directory Domain Services (AD DS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
+|Active Directory Domain Services (AD DS)| <ul><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> <li> Windows Server 2019  </li> </ul>|
+
+Windows Server Core インストールはサポートされません。
 
 サービスが提供する機能は、役割とオペレーティング システムによって異なる場合があることに注意してください。 つまり、すべての機能をすべてのオペレーティング システムのバージョンで利用できるとは限りません。 詳しくは、機能の説明をご覧ください。
 
@@ -135,7 +137,7 @@ Health エージェントの登録は、次の理由により失敗する可能�
 
 * ファイアウォールによってトラフィックがブロックされているため、エージェントが必要なエンドポイントと通信できません。 これは特に、Web アプリケーション プロキシ サーバーで起こりがちです。 必要なエンドポイントとポートへの発信通信が許可されていることを確認してください。 詳しくは、「[必要条件](how-to-connect-health-agent-install.md#requirements)」セクションをご覧ください。
 * 発信通信がネットワーク層による TLS 検査の対象になっています。 これが原因で、エージェントによって使われる証明書が検査サーバー/エンティティによって置き換えられ、エージェントの登録を完了する手順が失敗します。
-* ユーザーに、エージェントの登録を実行するためのアクセス権がありません。 グローバル管理者には、既定でアクセス権が与えられます。 [ロール ベースのアクセス制御](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)を使って、他のユーザーにアクセスを委任できます。
+* ユーザーに、エージェントの登録を実行するためのアクセス権がありません。 グローバル管理者には、既定でアクセス権が与えられます。 [Azure ロール ベースのアクセス制御 (Azure RBAC)](how-to-connect-health-operations.md#manage-access-with-azure-rbac) を使って、他のユーザーにアクセスを委任できます。
 
 **Q:"Health サービス データが最新ではありません。" というアラートが通知されます。この問題をトラブルシューティングする方法を教えてください。**
 
@@ -188,18 +190,18 @@ CheckForMS17-010
 
 **Q:PowerShell のコマンドレット <i>Get-MsolDirSyncProvisioningError</i> の場合、結果に表示される同期エラーが少ないのはなぜですか。**
 
-<i>Get MsolDirSyncProvisioningError</i> では DirSync プロビジョニング エラーのみが返されます。 また、Connect Health ポータルには、エクスポート エラーなどの他の種類の同期エラーも表示されます。 これは、Azure AD Connect の差分結果と一致します。 詳細については、[Azure AD Connect 同期エラー](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors)に関するページを参照してください。
+<i>Get MsolDirSyncProvisioningError</i> では DirSync プロビジョニング エラーのみが返されます。 また、Connect Health ポータルには、エクスポート エラーなどの他の種類の同期エラーも表示されます。 これは、Azure AD Connect の差分結果と一致します。 詳細については、[Azure AD Connect 同期エラー](./tshoot-connect-sync-errors.md)に関するページを参照してください。
 
 **Q:ADFS 監査が生成されていないのはなぜですか。**
 
-<i>Get-AdfsProperties -AuditLevel</i> PowerShell コマンドレットを使用して、監査ログが無効な状態になっていないことを確認してください。 詳しくは、[ADFS 監査ログ](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)に関する記事をご覧ください。 高度な監査設定が ADFS サーバーにプッシュされた場合、auditpol.exe でのすべての変更が上書きされることに注意してくださいます ("生成されたアプリケーション" が構成されていない場合のイベント)。 その場合は、ローカル セキュリティ ポリシーを "生成されたアプリケーション" の失敗と成功を記録するように設定してください。
+<i>Get-AdfsProperties -AuditLevel</i> PowerShell コマンドレットを使用して、監査ログが無効な状態になっていないことを確認してください。 詳しくは、[ADFS 監査ログ](/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)に関する記事をご覧ください。 高度な監査設定が ADFS サーバーにプッシュされた場合、auditpol.exe でのすべての変更が上書きされることに注意してくださいます ("生成されたアプリケーション" が構成されていない場合のイベント)。 その場合は、ローカル セキュリティ ポリシーを "生成されたアプリケーション" の失敗と成功を記録するように設定してください。
 
 **Q:エージェント認定資格証は有効期限が切れる前に自動更新されますか?**
 エージェント認定資格証は、有効期限日の **6 か月**前に自動更新されます。 更新されない場合は、エージェントのネットワーク接続が安定していることを確認してください。 エージェントのサービスを再起動する、または最新バージョンを更新してもこの問題を解決できる場合があります。
 
 
 ## <a name="related-links"></a>関連リンク
-* [Azure AD Connect Health](whatis-hybrid-identity-health.md)
+* [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Azure AD Connect Health エージェントのインストール](how-to-connect-health-agent-install.md)
 * [Azure AD Connect Health の操作](how-to-connect-health-operations.md)
 * [AD FS での Azure AD Connect Health の使用](how-to-connect-health-adfs.md)

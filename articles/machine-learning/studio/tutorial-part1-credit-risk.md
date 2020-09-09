@@ -1,6 +1,5 @@
 ---
-title: チュートリアル 1:信用リスクの予測
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio (classic) チュートリアル:信用リスクの予測 - Azure
 description: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning Studio (クラシック) で作成する方法を詳しく紹介したチュートリアルです。 このチュートリアルは、3 部構成のチュートリアル シリーズの第 1 部です。  ワークスペースの作成方法、データのアップロード方法、実験の作成方法について説明しています。
 keywords: 信用リスク, 予測分析ソリューション,リスク評価
 author: sdgilley
@@ -10,16 +9,17 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 6fd8573c78d80c950bdeb41ec01e2835def3979a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 556dc89d3f1d0fd42ab6d161a6d5ccb462f555db
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79204258"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431854"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>チュートリアル 1:信用リスクの予測 - Azure Machine Learning Studio (クラシック)
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -101,11 +101,15 @@ UCI Web サイト上のデータセットの説明では、個人の信用リス
 
 このデータを変換する方法は多数存在します。 1 つは、次の Windows PowerShell コマンドを使用する方法です。   
 
-    cat german.data | %{$_ -replace " ",","} | sc german.csv  
+```powershell
+cat german.data | %{$_ -replace " ",","} | sc german.csv  
+```
 
 他に、次の Unix の sed コマンドを使用する方法もあります。  
 
-    sed 's/ /,/g' german.data > german.csv  
+```console
+sed 's/ /,/g' german.data > german.csv
+```
 
 いずれの場合も、コンマ区切りに変換されたデータが、**german.csv** という名前のファイルに作成されます。このファイルは実験で使用できます。
 
@@ -258,21 +262,23 @@ Studio (クラシック) にアップロードしたデータセットは、Stud
 
 1. **[プロパティ]** ウィンドウの **[R スクリプト]** パラメーターの既定の文字列を削除し、以下のスクリプトを入力します。
    
-       dataset1 <- maml.mapInputPort(1)
-       data.set<-dataset1[dataset1[,21]==1,]
-       pos<-dataset1[dataset1[,21]==2,]
-       for (i in 1:5) data.set<-rbind(data.set,pos)
-       maml.mapOutputPort("data.set")
+    ```r
+    dataset1 <- maml.mapInputPort(1)
+    data.set<-dataset1[dataset1[,21]==1,]
+    pos<-dataset1[dataset1[,21]==2,]
+    for (i in 1:5) data.set<-rbind(data.set,pos)
+    maml.mapOutputPort("data.set")
+    ```
 
     ![R スクリプトの実行モジュール内の R スクリプト](./media/tutorial-part1-credit-risk/execute-r-script.png)
 
-[データの分割][split]モジュールの各出力について同様の重複操作を設定する必要があります。これによって、トレーニング データとテスト データのコスト調整が等しくなります。 これを実行する最も簡単方法は、作成したばかりの [R スクリプトの実行][execute-r-script]モジュールを複製して、データの[分割モジュール][split]のもう 1 つの出力ポートに接続することです。
+[データの分割][split]モジュールの各出力について同様の重複操作を設定する必要があります。これによって、トレーニング データとテスト データのコスト調整が等しくなります。 これを実行する最も簡単方法は、作成したばかりの [R スクリプトの実行][execute-r-script]モジュールを複製して、[データの分割][split]モジュールのもう 1 つの出力ポートに接続することです。
 
 1. [R スクリプトの実行][execute-r-script]モジュールを右クリックし、 **[コピー]** を選択します。
 
 1. 実験キャンバスを右クリックして **[貼り付け]** を選択します。
 
-1. 新しいモジュールを適切な位置にドラッグし、[データの分割][split]モジュールの右側の出力ポートを、この新しい [R スクリプトの実行][execute-r-script]モジュールの 1 つ目の入力ポートに接続します。 
+1. 新しいモジュールを適切な位置にドラッグし、[データの分割][split]モジュールの右側の出力ポートを、この新しい [ R スクリプトの実行][execute-r-script]モジュールの 1 つ目の入力ポートに接続します。 
 
 1. キャンバスの下部で、 **[実行]** をクリックします。 
 
@@ -307,6 +313,6 @@ Studio (クラシック) にアップロードしたデータセットは、Stud
 > [チュートリアル 2 - モデルをトレーニングして評価する](tutorial-part2-credit-risk-train.md)
 
 <!-- Module References -->
-[execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
-[edit-metadata]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
-[split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
+[execute-r-script]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/execute-r-script
+[edit-metadata]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/edit-metadata
+[split]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/split-data

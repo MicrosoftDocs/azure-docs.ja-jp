@@ -6,14 +6,14 @@ ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: sample
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 12/02/2019
-ms.openlocfilehash: c8781ec34cb54afc4040d858722b28e10d68bccd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 92200e76370b74ca150594b24f8f13cf984f9e94
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74765791"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495235"
 ---
 # <a name="list-and-update-configurations-of-an-azure-database-for-mysql-server-using-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL サーバーの構成を一覧表示および更新する
 このサンプル CLI スクリプトは、Azure Database for MySQL サーバーのすべての利用可能な構成パラメーターと、許容値を一覧表示し、*innodb_lock_wait_timeout* を既定値以外の値に設定します。
@@ -44,5 +44,5 @@ CLI をローカルで実行する場合、この記事では、Azure CLI バー
 
 ## <a name="next-steps"></a>次のステップ
 - Azure CLI に関する詳細を読む: [Azure CLI ドキュメント](/cli/azure)
-- 他のスクリプトを試す: [Azure Database for MySQL の Azure CLI サンプル](../sample-scripts-azure-cli.md)
+- さらに他のスクリプトも試す: [Azure Database for MySQL 用 Azure CLI サンプル](../sample-scripts-azure-cli.md)
 - サーバー パラメーターの詳細については、「[Azure ポータルを使用して Azure Database for MySQL サーバーのサーバー パラメータを構成する方法](../howto-server-parameters.md)」を参照してください。

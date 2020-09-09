@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 11/28/2019
-ms.openlocfilehash: 371c00fd63f7a89f4d50ce130e89f10e2a7a38bd
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 71f9bc75bc2b84708af54ba89918cd874099a2d4
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891090"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961899"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Azure HDInsight における Apache Hive メモリ不足エラーの解決
 
@@ -50,11 +50,14 @@ where (T1.KEY1 = T2.KEY1….
 
 この Hive クエリは、24 ノードの A3 HDInsight クラスターで完了までに 26 分かかりました。 ユーザーは、次の警告メッセージを確認しています。
 
+```output
     Warning: Map Join MAPJOIN[428][bigTable=?] in task 'Stage-21:MAPRED' is a cross product
     Warning: Shuffle Join JOIN[8][tables = [t1933775, t1932766]] in Stage 'Stage-4:MAPRED' is a cross product
+```
 
 Apache Tez 実行エンジンを使用したところ、 同じクエリの実行時間が 15 分となり、次のエラーがスローされました。
 
+```output
     Status: Failed
     Vertex failed, vertexName=Map 5, vertexId=vertex_1443634917922_0008_1_05, diagnostics=[Task failed, taskId=task_1443634917922_0008_1_05_000006, diagnostics=[TaskAttempt 0 failed, info=[Error: Failure while running task:java.lang.RuntimeException: java.lang.OutOfMemoryError: Java heap space
         at
@@ -78,6 +81,7 @@ Apache Tez 実行エンジンを使用したところ、 同じクエリの実�
         at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
         at java.lang.Thread.run(Thread.java:745)
     Caused by: java.lang.OutOfMemoryError: Java heap space
+```
 
 より大きな仮想マシン (D12 など) を使ってもエラーは解消されません。
 
@@ -112,8 +116,10 @@ Java ヒープ領域のメモリ不足エラーの原因は、おそらく Map J
 
 D12 コンピューターには 28 GB のメモリがあるので、10 GB (10,240 MB) のコンテナー サイズを使用し、80% を java.opts に割り当てることにしました。
 
-    SET hive.tez.container.size=10240
-    SET hive.tez.java.opts=-Xmx8192m
+```console
+SET hive.tez.container.size=10240
+SET hive.tez.java.opts=-Xmx8192m
+```
 
 この新しい設定では、クエリが 10 分間未満で正常に実行されました。
 

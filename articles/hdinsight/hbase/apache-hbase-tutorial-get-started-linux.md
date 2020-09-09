@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/14/2020
-ms.openlocfilehash: a601d54ebda074a25a988ac2a115f6418dd5c7ee
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: a19e2c6647f1ff072c61044e8e5777d5d3f8d2db
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81390259"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "85958363"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で Apache HBase を使用する
 
@@ -138,16 +138,25 @@ HBase では、いくつかの方法でテーブルにデータを読み込こ�
 
 サンプルのデータ ファイルは、パブリック BLOB コンテナー `wasb://hbasecontacts\@hditutorialdata.blob.core.windows.net/contacts.txt` にあります。  このデータ ファイルの内容は次のとおりです。
 
-    8396    Calvin Raji      230-555-0191    230-555-0191    5415 San Gabriel Dr.
-    16600   Karen Wu         646-555-0113    230-555-0192    9265 La Paz
-    4324    Karl Xie         508-555-0163    230-555-0193    4912 La Vuelta
-    16891   Jonn Jackson     674-555-0110    230-555-0194    40 Ellis St.
-    3273    Miguel Miller    397-555-0155    230-555-0195    6696 Anchor Drive
-    3588    Osa Agbonile     592-555-0152    230-555-0196    1873 Lion Circle
-    10272   Julia Lee        870-555-0110    230-555-0197    3148 Rose Street
-    4868    Jose Hayes       599-555-0171    230-555-0198    793 Crawford Street
-    4761    Caleb Alexander  670-555-0141    230-555-0199    4775 Kentucky Dr.
-    16443   Terry Chander    998-555-0171    230-555-0200    771 Northridge Drive
+`8396    Calvin Raji      230-555-0191    230-555-0191    5415 San Gabriel Dr.`
+
+`16600   Karen Wu         646-555-0113    230-555-0192    9265 La Paz`
+
+`4324    Karl Xie         508-555-0163    230-555-0193    4912 La Vuelta`
+
+`16891   Jonn Jackson     674-555-0110    230-555-0194    40 Ellis St.`
+
+`3273    Miguel Miller    397-555-0155    230-555-0195    6696 Anchor Drive`
+
+`3588    Osa Agbonile     592-555-0152    230-555-0196    1873 Lion Circle`
+
+`10272   Julia Lee        870-555-0110    230-555-0197    3148 Rose Street`
+
+`4868    Jose Hayes       599-555-0171    230-555-0198    793 Crawford Street`
+
+`4761    Caleb Alexander  670-555-0141    230-555-0199    4775 Kentucky Dr.`
+
+`16443   Terry Chander    998-555-0171    230-555-0200    771 Northridge Drive`
 
 必要に応じて、自分でテキスト ファイルを作成し、そのファイルを自分のストレージ アカウントにアップロードできます。 手順については、「[HDInsight で Apache Hadoop ジョブのデータをアップロードする](../hdinsight-upload-data.md)」を参照してください。
 
@@ -262,14 +271,14 @@ HBase Rest の詳細については、「 [Apache HBase reference guide (Apache 
 > Thrift は、HDInsight での HBase ではサポートされていません。
 >
 > Curl、または WebHCat を使用したその他の REST 通信を使用する場合は、HDInsight クラスター管理者のユーザー名とパスワードを指定して要求を認証する必要があります。 また、サーバーへの要求の送信に使用する Uniform Resource Identifier (URI) にクラスター名を含める必要があります。
-> 
->   
->        curl -u <UserName>:<Password> \
->        -G https://<ClusterName>.azurehdinsight.net/templeton/v1/status
->   
->    次のような応答が返されます。
->   
->        {"status":"ok","version":"v1"}
+>
+> `curl -u <UserName>:<Password> \`
+>
+> `-G https://<ClusterName>.azurehdinsight.net/templeton/v1/status`
+>
+> 次のような応答が返されます。
+>
+> `{"status":"ok","version":"v1"}`
 
 ## <a name="check-cluster-status"></a>クラスターの状態の確認
 

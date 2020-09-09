@@ -6,19 +6,19 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: sample
-ms.date: 9/25/2019
-ms.openlocfilehash: 3615157543d826050b8adf0e6ae59bf62ad9cb1b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 07/29/2020
+ms.openlocfilehash: 292ffb977ea729e87fc23bc94bb0153663f1d721
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71827297"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432325"
 ---
 # <a name="update-rus-for-a-cassandra-keyspace-and-table-using-azure-cli"></a>Azure CLI を使用して Cassandra のキースペースとテーブルの RU/秒を更新する
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用することを選択した場合、このトピックでは、Azure CLI バージョン 2.0.73 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+CLI をローカルにインストールして使用することを選択した場合、このトピックでは、Azure CLI のバージョン 2.9.1 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 

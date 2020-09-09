@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.author: mimart
 ms.date: 04/04/2020
-ms.custom: mvc, seo-javascript-september2019
+ms.custom: mvc, seo-javascript-september2019, devx-track-javascript
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: d7cd437f597fc34fe83904715fc2e459dfe4550f
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: c8aca82567de0b564aadc355b198502450dd7a5c
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80875567"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169805"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>チュートリアル:Azure AD B2C を使用してシングルページ アプリケーションで認証を有効にする
 
@@ -51,28 +51,28 @@ ms.locfileid: "80875567"
 
 前提条件の一環として完了した 2 番目のチュートリアルで、Azure AD B2C に Web アプリケーションを登録しました。 このチュートリアルのコード サンプルとの通信を可能にするには、アプリケーションの登録に応答 URL (リダイレクト URI とも呼ばれます) を追加します。
 
-現在の**アプリケーション** エクスペリエンス、または新しく統合された**アプリの登録 (プレビュー)** エクスペリエンスを使用して、アプリケーションを更新できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregintro)。
+Azure AD B2C テナントでアプリケーションを更新するには、Microsoft の新しい統合**アプリの登録**エクスペリエンスか以前の**アプリケーション (レガシ)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregtraining)。
 
-#### <a name="applications"></a>[アプリケーション](#tab/applications/)
-
-1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
-1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
-1. **[アプリケーション]** を選択し、*webapp1* アプリケーションを選択します。
-1. **[応答 URL]** に「`http://localhost:6420`」を追加します。
-1. **[保存]** を選択します。
-1. プロパティ ページで、**アプリケーション ID** をメモします。 このアプリ ID は、後の手順でシングル ページ Web アプリケーションのコードを更新する際に使用します。
-
-#### <a name="app-registrations-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
+#### <a name="app-registrations"></a>[アプリの登録](#tab/app-reg-ga/)
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
-1. **[アプリの登録 (プレビュー)]** 、 **[所有しているアプリケーション]** タブ、 *[webapp1]* アプリケーションの順に選択します。
-1. **[認証]** 、 **[新しいエクスペリエンスを試す]** (表示されている場合) の順に選択します。
-1. **[Web]** で **[URI の追加]** リンクを選択し、「`http://localhost:6420`」と入力して、 **[保存]** を選択します。
+1. **[アプリの登録]** 、 **[所有しているアプリケーション]** タブ、 *[webapp1]* アプリケーションの順に選択します。
+1. **[Web]** で **[URI の追加]** リンクを選択し、「`http://localhost:6420`」と入力します。
+1. **[暗黙の付与]** で、 **[アクセス トークン]** および **[ID トークン]** のチェックボックスをオンにし、 **[保存]** を選択します。
 1. **[概要]** を選択します。
 1. 単一ページの Web アプリケーションでコードを更新する場合は、後の手順で使用するために**アプリケーション (クライアント) ID** をメモしておきます。
+
+#### <a name="applications-legacy"></a>[アプリケーション (レガシ)](#tab/applications-legacy/)
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
+1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+1. **[アプリケーション (レガシ)]** を選択し、*webapp1* アプリケーションを選択します。
+1. **[応答 URL]** に「`http://localhost:6420`」を追加します。
+1. **[保存]** を選択します。
+1. プロパティ ページで、**アプリケーション ID** をメモします。 このアプリ ID は、後の手順でシングル ページ Web アプリケーションのコードを更新する際に使用します。
 
 * * *
 
@@ -98,14 +98,22 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
     ```javascript
     const msalConfig = {
         auth: {
-            clientId: "00000000-0000-0000-0000-000000000000", // Replace this value with your Application (client) ID
-            authority: "https://your-b2c-tenant.b2clogin.com/your-b2c-tenant.onmicrosoft.com/B2C_1_signupsignin1", // Update with your tenant and user flow names
-            validateAuthority: false
+          clientId: "00000000-0000-0000-0000-000000000000", // Replace this value with your Application (client) ID
+          authority: b2cPolicies.authorities.signUpSignIn.authority,
+          validateAuthority: false
         },
         cache: {
-            cacheLocation: "localStorage",
-            storeAuthStateInCookie: true
+          cacheLocation: "localStorage",
+          storeAuthStateInCookie: true
         }
+    };
+
+    const loginRequest = {
+       scopes: ["openid", "profile"],
+    };
+
+    const tokenRequest = {
+      scopes: apiConfig.b2cScopes // i.e. ["https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"]
     };
     ```
 

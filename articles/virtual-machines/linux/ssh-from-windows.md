@@ -1,126 +1,99 @@
 ---
-title: Windows での SSH キーを使用した Linux VM への接続
-description: Windows コンピューターで SSH キーを生成して使用し、Azure 上の Linux 仮想マシンに接続する方法について説明します。
+title: SSH キーを使用して Linux VM に接続する
+description: SSH キーを生成し、それを使用して Windows コンピューターから、Azure 上の Linux 仮想マシンに接続する方法について説明します。
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.topic: article
-ms.date: 11/26/2018
+ms.date: 07/09/2020
+ms.topic: how-to
 ms.author: cynthn
-ms.openlocfilehash: cdf901ca56c150cfed6ba3d462ce493d40bd2488
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 7e99c9191e93562211f6294cf671f431a5db455d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81757999"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825567"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Azure 上の Windows で SSH キーを使用する方法
 
-この記事では、Windows コンピューターで *Secure Shell* (SSH) キーを生成して使用し、Azure に Linux 仮想マシン (VM) を作成して接続する方法について説明します。 Linux または macOS のクライアントから SSH キーを使用する方法については、[クイック ガイダンス](mac-create-ssh-keys.md)または[詳細ガイダンス](create-ssh-keys-detailed.md)をご覧ください。
+この記事は、*secure shell* (SSH) キーを[作成](#create-an-ssh-key-pair)し、それを使用して Azure の Linux 仮想マシン (VM) に[接続](#connect-to-your-vm)する Windows ユーザーを対象としています。 また、[Azure portal で SSH キーを生成および保存](../ssh-keys-portal.md)して、このポータルで VM を作成するときに使用することもできます。
 
-[!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
+
+Linux または macOS クライアントから SSH キーを使用するには、[こちら](mac-create-ssh-keys.md)を参照してください。 SSH の詳細については、「[詳細な手順: Azure の Linux VM に対する認証用に SSH キーを作成して管理する](create-ssh-keys-detailed.md)」を参照してください。
+
+## <a name="overview-of-ssh-and-keys"></a>SSH とキーの概要
+
+[SSH](https://www.ssh.com/ssh/) は、セキュリティで保護されていない接続においてセキュリティで保護されたサインインを可能にする、暗号化された接続プロトコルです。 SSH は、Azure でホストされる Linux VM の既定の接続プロトコルです。 SSH 自体は暗号化された接続を提供しますが、SSH でパスワードを使用すると、VM はブルートフォース攻撃に対して脆弱になります。 SSH を介して VM に接続する場合は、公開/秘密キーの組を使用することをお勧めします。これは "*SSH キー*" とも呼ばれています。 
+
+公開/秘密キーの組は、ご利用のフロント ドアのロックに似ています。 ロックは **パブリック**に公開され、適切なキーを持つユーザーがドアを開くことができます。 キーは**非公開**であり、ドアのロックを解除するために使用できるため、信頼できるユーザーにのみ与えられます。 
+
+- "*公開キー*" は、Linux VM の作成時にその VM 上に配置されます。 
+
+- *秘密キー*は、ローカル システム上に残ります。 このキーは安全に保管してください。 このキーは共有しないようにしてください。
+
+ご利用の Linux VM に接続する場合、その VM によって SSH クライアントのテストが行われ、適切な秘密キーを持っているかどうかが確認されます。 クライアントに秘密キーがある場合、VM へのアクセス権が付与されます。 
+
+組織のセキュリティ ポリシーに応じて、単一のキーの組を再利用して複数の Azure VM およびサービスにアクセスできます。 VM ごとに異なるキーの組を用意する必要はありません。 
+
+ご自分の公開キーはだれとでも共有できますが、ご自分の秘密キーへのアクセス権を所有するのは自分 (またはローカル セキュリティ インフラストラクチャ) のみとする必要があります。
 
 [!INCLUDE [virtual-machines-common-ssh-support](../../../includes/virtual-machines-common-ssh-support.md)]
 
-## <a name="windows-packages-and-ssh-clients"></a>Windows パッケージと SSH クライアント
-Azure の Linux VM に接続して管理するには、*SSH クライアント*を使用します。 Linux または macOS を実行しているコンピューターには、通常、SSH キーを生成して管理し、SSH 接続を行うための、SSH コマンドのスイートがあります。 
+## <a name="ssh-clients"></a>SSH クライアント
 
-Windows コンピューターでは、それに相当する SSH コマンドが常にインストールされることはありません。 最近のバージョンの Windows 10 には、コマンド プロンプトから SSH キーを作成および管理し、SSH 接続を行うことができる [OpenSSH クライアント コマンド](https://blogs.msdn.microsoft.com/commandline/2018/03/07/windows10v1803/)が用意されています。 最近の Windows 10 バージョンには、SSH クライアントなどのユーティリティを Bash シェル内でネイティブに実行し、アクセスすることができる [Windows Subsystem for Linux](https://docs.microsoft.com/windows/wsl/about) も含まれています。 
+最近のバージョンの Windows 10 には、[OpenSSH クライアント コマンド](https://blogs.msdn.microsoft.com/commandline/2018/03/07/windows10v1803/)が用意されています。これを使用すれば、PowerShell またはコマンド プロンプトから SSH キーを作成および使用して、SSH 接続を行うことができます。 Windows コンピューターから Linux VM への SSH 接続を作成する方法としては、これが最も簡単です。 
 
-ローカルにインストールできるその他の一般的な Windows SSH クライアントは、次のパッケージに含まれています。
+また、[Azure Cloud Shell](../../cloud-shell/overview.md) 内の Bash を使用して VM に接続することもできます。 Cloud Shell は、[Azure portal](https://portal.azure.com) から、[Web ブラウザー](https://shell.azure.com/bash)内で使用することも、[Azure アカウント拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)を使用して Visual Studio Code のターミナルとして使用することもできます。
 
-* [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/)
-* [Git For Windows](https://git-for-windows.github.io/)
-* [MobaXterm](https://mobaxterm.mobatek.net/)
-* [Cygwin](https://cygwin.com/)
-
-また、[Azure Cloud Shell](../../cloud-shell/overview.md) の Bash で入手できる SSH ユーティリティを使用することもできます。 
-
-* Web ブラウザーで ([https://shell.azure.com](https://shell.azure.com))、または [Azure Portal](https://portal.azure.com) で、Cloud Shell にアクセスします。 
-* [Azure Account 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)をインストールすることにより、Visual Studio Code 内からターミナルとして Cloud Shell にアクセスします。
+また、[Linux 用 Windows サブシステム](/windows/wsl/about)をインストールして、SSH 経由で VM に接続し、Bash シェル内で他のネイティブ Linux ツールを使用することもできます。
 
 ## <a name="create-an-ssh-key-pair"></a>SSH キー ペアの作成
-以下のセクションでは、Windows で SSH キー ペアを作成する 2 つのオプションについて説明します。 シェル コマンド (`ssh-keygen`) または GUI ツール (PuTTYgen) を使用できます。 また、Powershell を使用してキーを作成している場合は、公開キーを ssh.com(SECSH) 形式でアップロードすることにも注意してください。 CLI を使用している場合は、アップロードの前にキーを OpenSSH 形式に変換します。 
 
-### <a name="create-ssh-keys-with-ssh-keygen"></a>ssh-keygen で SSH キーを作成する
+`ssh-keygen` コマンドを使用して、SSH キーの組を作成します。 ファイル名を入力するか、かっこで示されている既定値を使用します (`C:\Users\username/.ssh/id_rsa` など)。  ファイルのパスフレーズを入力します。パスフレーズを使用しない場合はパスフレーズを空白のままにします。 
 
-Windows で SSH クライアント ツールをサポートするコマンド シェルを実行する (または Azure Cloud Shell を使用する) 場合は、`ssh-keygen` コマンドを使用して SSH キーペアを作成します。 次のコマンドを入力して、プロンプトに答えます。 選択した場所に SSH キー ペアがある場合、それらのファイルは上書きされます。 
-
-```bash
-ssh-keygen -t rsa -b 2048
+```powershell
+ssh-keygen -m PEM -t rsa -b 4096
 ```
 
-背景情報と詳細情報については、`ssh-keygen` を使用して SSH キーを作成する手順の[概要](mac-create-ssh-keys.md)または[詳細](create-ssh-keys-detailed.md)を参照してください。
+## <a name="create-a-vm-using-your-key"></a>独自のキーを使用して VM を作成する
 
-### <a name="create-ssh-keys-with-puttygen"></a>PuTTYgen で SSH キーを作成する
+認証で SSH キーを使用する Linux VM を作成するには、VM を作成するときに、自分の SSH 公開キーを指定してください。
 
-GUI ベースのツールを使って SSH キーを作成する場合は、[PuTTY のダウンロード パッケージ](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)に含まれる PuTTYgen キー ジェネレーターを使うことができます。 
+Azure CLI を使用する場合は、`az vm create` および `--ssh-key-value` パラメーターを使用して、公開キーのパスとファイル名を指定します。
 
-PuTTYgen で SSH RSA キー ペアを作成するには:
+```azurecli
+az vm create \
+   --resource-group myResourceGroup \
+   --name myVM \
+   --image UbuntuLTS\
+   --admin-username azureuser \
+   --ssh-key-value ~/.ssh/id_rsa.pub
+```
 
-1. PuTTYgen を開始します。
+PowerShell では、`New-AzVM` を使用し、' を使用して SSH キーを VM 構成に追加します。 例については、「[クイックスタート: PowerShell を使用して Azure に Linux 仮想マシンを作成する](quick-create-powershell.md)」を参照してください。
 
-2. **[Generate]\(生成\)** をクリックします。 既定では、PuTTYgen は 2048 ビットの SSH-2 RSA キーを生成します。
-
-4. 空白領域内でマウスを動かすと、キーがランダムになります。
-
-5. 公開キーが生成された後、必要に応じて、パスフレーズを入力して確認します。 プライベート SSH キーを使用して VM の認証を受けると、パスフレーズの入力を求められます。 パスフレーズを使用しない場合、だれかが秘密キーを入手すると、その人物はそのキーを使用するすべての VM またはサービスにサインインできるようになります。 そのため、パスフレーズを作成することをお勧めします。 ただし、パスフレーズを忘れた場合、それを回復する方法はありません。
-
-6. 公開キーがウィンドウの上部に表示されます。 Linux VM を作成するときに、この公開キー全体をコピーし、Azure portal または Azure Resource Manager テンプレートに貼り付けます。 **[Save public key]\(公開キーの保存\)** をクリックして、公開キーを自分のコンピューターに保存することもできます。
-
-    ![PuTTY 公開キー ファイルの保存](./media/ssh-from-windows/save-public-key.png)
-
-7. PuTTy の秘密キー形式 (.ppk ファイル) で秘密キーを保存する必要がある場合は、 **[Save private key]\(秘密キーの保存\)** を選択します。 後で PuTTY を使用して VM への SSH 接続を行うときに .ppk ファイルが必要になります。
-
-    ![PuTTY 秘密キー ファイルを保存する](./media/ssh-from-windows/save-ppk-file.png)
-
-    多くの SSH クライアントによって使われる秘密キーの形式である OpenSSH 形式で秘密キーを保存する場合は、 **[変換]**  >  **[Export OpenSSH key]\(OpenSSH キーのエクスポート\)** を選択します。
-
-## <a name="provide-an-ssh-public-key-when-deploying-a-vm"></a>VM をデプロイするときに SSH 公開キーを提供する
-
-認証に SSH キーを使う Linux VM を作成するには、Azure Portal または他の方法を使って VM を作成するときに、SSH 公開キーを提供します。
-
-次の例は、Linux VM を作成するときにこの公開キーをコピーして Azure Portal に貼り付ける方法を示しています。 通常、公開キーは新しい VM 上の ~/.ssh/authorized_key ディレクトリに格納されます。
-
-   ![Azure Portal で VM を作成する際の公開キーの使用](./media/ssh-from-windows/use-public-key-azure-portal.png)
+ポータルを使用して多数のデプロイを実行する場合は、Azure に自分の公開キーをアップロードすることをお勧めします。そうすれば、ポータルから VM を作成するときに簡単に選択できます。 詳細については、「[SSH キーのアップロード](../ssh-keys-portal.md#upload-an-ssh-key)」を参照してください。
 
 
 ## <a name="connect-to-your-vm"></a>VM に接続する
 
-Windows から Linux VM に SSH 接続する方法の 1 つは、SSH クライアントを使うことです。 Windows システムに SSH クライアントがインストールされている場合、または Azure Cloud Shell の Bash で SSH ツールを使っている場合は、これが推奨される方法です。 GUI ベースのツールを使う場合は、PuTTY で接続することができます。  
-
-### <a name="use-an-ssh-client"></a>SSH クライアントを使用する
-公開キーを Azure VM に、秘密キーをローカル システム上に配置した状態で、VM の IP アドレスまたは DNS 名を使用して、VM に SSH 接続します。 次のコマンドの *azureuser* と *myvm.westus.cloudapp.azure.com* を、管理者のユーザー名と完全修飾ドメイン名 (または IP アドレス) に置き換えてください。
+公開キーを Azure VM に、秘密キーをローカル システム上に配置した状態で、VM の IP アドレスまたは DNS 名を使用して、VM に SSH 接続します。 次のコマンドの *azureuser* と *10.111.12.123* を、管理者のユーザー名、IP アドレス (または完全修飾ドメイン名)、および自分の秘密キーへのパスに置き換えてください。
 
 ```bash
-ssh azureuser@myvm.westus.cloudapp.azure.com
+ssh -i ~/.ssh/id_rsa.pub azureuser@10.111.12.123
 ```
 
-キー ペアを作成するときにパスフレーズを構成した場合は、サインイン プロセス中に入力を求められたら、そのパスフレーズを入力します。
+キーの組を作成したときにパスフレーズを構成してある場合、入力を求められたら、そのパスフレーズを入力します。
 
 VM が Just-In-Time アクセス ポリシーを使用している場合、VM に接続するにはアクセス権を要求する必要があります。 Just-In-Time ポリシーの詳細については、[Just in Time ポリシーを使用した仮想マシン アクセスの管理](../../security-center/security-center-just-in-time.md)に関するページを参照してください。
 
-### <a name="connect-with-putty"></a>PuTTY を使用して接続する
-
-[PuTTY のダウンロード パッケージ](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)をインストールし、前に PuTTY の秘密キー (.ppk) ファイルを生成した場合は、PuTTY を使って Linux VM に接続することができます。
-
-1. PuTTY を起動します。
-
-2. Azure Portal で取得した VM のホスト名と IP アドレスを入力します。
-
-    ![新しい PuTTY 接続の開始](./media/ssh-from-windows/putty-new-connection.png)
-
-3. **[接続]**  >  **[SSH]**  >  **[認証]** カテゴリを選択します。 PuTTY の秘密キー (.ppk ファイル) を参照して選択します。
-
-    ![認証用の PuTTY 秘密キーを選択する](./media/ssh-from-windows/putty-auth-dialog.png)
-
-4. **[Open]\(開く\)** をクリックして、VM に接続します。
 
 ## <a name="next-steps"></a>次のステップ
 
-* SSH キーの使用に関する詳細な手順、オプション、および高度な例については、[SSH キー ペアの詳細な作成手順](create-ssh-keys-detailed.md)に関するページを参照してください。
+- Azure portal での SSH キーの詳細については、ポータルで VM を作成するときに使用する「[Azure portal で SSH キーを生成して保存する](../ssh-keys-portal.md)」を参照してください。
 
-* Azure Cloud Shell 内で PowerShell を使用して SSH キーを生成し、Linux VM に SSH 接続することもできます。 [PowerShell のクイック スタート](../../cloud-shell/quickstart-powershell.md#ssh)に関するページをご覧ください。
+- SSH キーの使用に関する詳細な手順、オプション、および高度な例については、[SSH キー ペアの詳細な作成手順](create-ssh-keys-detailed.md)に関するページを参照してください。
 
-* Linux VM に対する SSH 接続に問題がある場合は、[Azure Linux VM に対する SSH 接続のトラブルシューティング](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するトピックを参照してください。
+- Azure Cloud Shell 内で PowerShell を使用して SSH キーを生成し、Linux VM に SSH 接続することもできます。 [PowerShell のクイック スタート](../../cloud-shell/quickstart-powershell.md#ssh)に関するページをご覧ください。
+
+- Linux VM に対する SSH 接続に問題がある場合は、[Azure Linux VM に対する SSH 接続のトラブルシューティング](../troubleshooting/troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json)に関するトピックを参照してください。

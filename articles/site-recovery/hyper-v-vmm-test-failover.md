@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery を使用し、セカンダリ サイトに Hyper-V ディザスター リカバリー ドリルを実行する
 description: Azure Site Recovery を使用して、セカンダリ オンプレミス データセンターに対して VMM クラウド内の Hyper-V VM の DR ドリルを実行する方法について説明します。
-author: rajani-janaki-ram
-manager: rochakm
+author: sideeksh
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: rajanaki
-ms.openlocfilehash: 0363911574a076b13cb72591fb2564364e096c76
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: sideeksh
+ms.openlocfilehash: 569af28f5773d843f49dd9c8143b45e308ae142e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229159"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420415"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>セカンダリサイトに対して Hyper-V VM の DR ドリルを実行する
 
@@ -103,17 +103,17 @@ VM がフェールオーバーできるかどうかのみを確認する場合�
 * **DHCP**: 仮想マシンが DHCP を使用する場合、テスト DHCP サーバーでテスト DNS の IP アドレスを更新する必要があります。 Windows ネットワーク仮想化のネットワーク タイプを使用している場合、VMM サーバーは DHCP サーバーとして機能します。 したがって、テスト フェールオーバー ネットワークの DNS の IP アドレスを更新する必要があります。 この場合、仮想マシンは関連する DNS サーバーに自身を登録します。
 * **静的アドレス**: 仮想マシンが静的 IP アドレスを使用する場合、テスト フェールオーバー ネットワークでテスト DNS サーバーの IP アドレスを更新する必要があります。 場合によっては、テスト仮想マシンの IP アドレスを DNS に反映することも必要です。 この目的のために、次のサンプル スクリプトを使用することができます。
 
-        Param(
-        [string]$Zone,
-        [string]$name,
-        [string]$IP
-        )
-        $Record = Get-DnsServerResourceRecord -ZoneName $zone -Name $name
-        $newrecord = $record.clone()
-        $newrecord.RecordData[0].IPv4Address  =  $IP
-        Set-DnsServerResourceRecord -zonename $zone -OldInputObject $record -NewInputObject $Newrecord
-
-
+  ```powershell
+  Param(
+  [string]$Zone,
+  [string]$name,
+  [string]$IP
+  )
+  $Record = Get-DnsServerResourceRecord -ZoneName $zone -Name $name
+  $newrecord = $record.clone()
+  $newrecord.RecordData[0].IPv4Address  =  $IP
+  Set-DnsServerResourceRecord -zonename $zone -OldInputObject $record -NewInputObject $Newrecord
+  ```
 
 ## <a name="run-a-test-failover"></a>テスト フェールオーバーの実行
 

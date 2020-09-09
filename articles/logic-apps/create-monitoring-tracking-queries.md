@@ -1,27 +1,27 @@
 ---
-title: Azure Monitor ログで Logic Apps のクエリを表示および作成する
+title: Azure Monitor ログでロジック アプリのクエリを表示および作成する
 description: Azure Logic Apps の Azure Monitor ログでクエリを表示および作成する
 services: logic-apps
 ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 46989ed2468469443d4e91a1834bc20b12c25a1e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb1af437fc663fcb95c768ec295862209a26064e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76907314"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090401"
 ---
 # <a name="view-and-create-queries-for-monitoring-and-tracking-in-azure-monitor-logs-for-azure-logic-apps"></a>Azure Logic Apps の Azure Monitor ログで監視と追跡を行うクエリを表示および作成します
 
-[Azure Monitor ログ](../log-analytics/log-analytics-overview.md)から結果を生成する基になるクエリを表示し、特定の条件に基づいて結果をフィルター処理するクエリを作成できます。 たとえば、特定のインターチェンジ制御番号に基づいてメッセージを検索できます。 クエリには [Kusto クエリ言語](https://aka.ms/LogAnalyticsLanguageReference)が使用されます。これは、他の結果を表示するために編集できます。 詳細については、「[Azure Monitor ログ クエリ](../azure-monitor/log-query/query-language.md)」を参照してください。
+[Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md)から結果を生成する基になるクエリを表示し、特定の条件に基づいて結果をフィルター処理するクエリを作成できます。 たとえば、特定のインターチェンジ制御番号に基づいてメッセージを検索できます。 クエリには [Kusto クエリ言語](https://aka.ms/LogAnalyticsLanguageReference)が使用されます。これは、他の結果を表示するために編集できます。 詳細については、「[Azure Monitor ログ クエリ](../azure-monitor/log-query/query-language.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Log Analytics ワークスペース。 Log Analytics ワークスペースがない場合は、[Log Analytics ワークスペースの作成方法](../azure-monitor/learn/quick-create-workspace.md)に関するページを参照してください。
 
-* Azure Monitor ログ記録が設定され、その情報を Log Analytics ワークスペースに送信する Logic Apps。 [Logic Apps の Azure Monitor ログを設定する方法](../logic-apps/monitor-logic-apps.md)を確認してください。
+* Azure Monitor ログ記録が設定され、その情報を Log Analytics ワークスペースに送信するロジック アプリ。 [ロジック アプリの Azure Monitor ログを設定する方法](../logic-apps/monitor-logic-apps.md)を確認してください。
 
 * 統合アカウントを使用している場合は、その情報を Log Analytics ワークスペースに送信するために、アカウントで Azure Monitor ログ記録が設定されていることを確認します。 [統合アカウントの Azure Monitor ログ記録を設定する方法](../logic-apps/monitor-b2b-messages-log-analytics.md)を確認してください。
 

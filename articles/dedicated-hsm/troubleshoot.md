@@ -1,5 +1,5 @@
 ---
-title: 専用 HSM とは - Azure Dedicated HSM | Microsoft Docs
+title: Dedicated HSM のトラブルシューティング - Azure Dedicated HSM |Microsoft Docs
 description: Azure Dedicated HSM の概要では、FIPS 140-2 レベル 3 認定を満たす Azure 内でのキーの保管機能について説明します
 services: dedicated-hsm
 author: msmbaldwin
@@ -9,23 +9,23 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: overview
+ms.topic: how-to
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: ad3c9d702384b8a32a9d4f0c8aebe44de4bb526e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 622ead2ab58075fe6edbe2c013f14391624fd2b7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80337221"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590457"
 ---
-# <a name="troubleshooting"></a>トラブルシューティング
+# <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>Azure Dedicated HSM サービスのトラブルシューティング
 
 Azure Dedicated HSM サービスには、明確に区別される 2 つの側面があります。 1 つは、HSM デバイスとその基になるネットワーク コンポーネントの Azure への登録とデプロイです。 もう 1 つは、特定のワークロードやアプリケーションでの使用またはそれらとの統合に備えた HSM デバイスの構成です。 Azure で使用される Thales Luna Network の HSM デバイスは、Thales から直接購入できる製品と同じですが、Azure ではリソースという位置付けになるため、独自の考慮事項がいくつか発生します。 ここでは、重要な情報への注目度を高め、周知徹底するために、それらの考慮事項とそれに伴うトラブルシューティングのための分析情報やベスト プラクティスについて取り上げています。 サービスの使用開始後は、Microsoft へのサポート リクエストか Thales への直接の問い合わせを通じて、信頼性の高い情報を入手できます。 
 
 > [!NOTE]
-> 新たにデプロイした HSM デバイスに対してなんらかの構成を行う際は、あらかじめ適切なパッチを使用して更新しておくようにしてください。 具体的に必要なパッチは、Thales サポート ポータルにある [KB0019789](https://supportportal.gemalto.com/csm?id=kb_article_view&sys_kb_id=19a81c8bdb9a1fc8d298728dae96197d&sysparm_article=KB0019789) で、再起動時に発生する異常停止の問題が解決されます。
+> 新たにデプロイした HSM デバイスに対してなんらかの構成を行う際は、あらかじめ適切なパッチを使用して更新しておくようにしてください。 Thales サポート ポータルの固有の必須パッチは、再起動中にシステムが応答しなくなる問題に対処する [KB0019789](https://supportportal.gemalto.com/csm?id=kb_article_view&sys_kb_id=19a81c8bdb9a1fc8d298728dae96197d&sysparm_article=KB0019789) です。
 
 ## <a name="hsm-registration"></a>HSM の登録
 
@@ -120,13 +120,13 @@ HSM 内のネットワークを構成する際は注意が必要です。  HSM �
 
 ### <a name="hsm-device-reboot"></a>HSM デバイスの再起動
 
-一部の構成変更では、HSM の電源を入れ直すか、再起動する必要があります。 Microsoft が Azure で HSM をテストしたところ、まれに再起動が異常停止することが確認されました。 その場合、ハード リブートを要求するサポート リクエストを Azure portal からご送信いただく必要があります。この作業は Azure データセンターにて手動で実施されるため、完了までに最大 48 時間かかります。  この状況を避けるために、Thales から直接入手できる再起動のパッチを必ずデプロイしておいてください。 再起動が異常停止する問題に推奨されるパッチについては、Thales Luna Network HSM 7.2 ダウンロード ページの [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789) を参照してください (注: ダウンロードするには Thales サポート ポータルへの登録が必要です)。
+一部の構成変更では、HSM の電源を入れ直すか、再起動する必要があります。 Microsoft が Azure で HSM をテストしたところ、まれに再起動が応答を停止することが確認されました。 その場合、ハード リブートを要求するサポート リクエストを Azure portal からご送信いただく必要があります。この作業は Azure データセンターにて手動で実施されるため、完了までに最大 48 時間かかります。  この状況を避けるために、Thales から直接入手できる再起動のパッチを必ずデプロイしておいてください。 再起動中にシステムが応答しなくなる問題に推奨されるパッチについては、Thales Luna Network HSM 7.2 ダウンロード ページの [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789) を参照してください (注: ダウンロードするには Thales サポート ポータルへの登録が必要です)。
 
 ### <a name="ntls-certificates-out-of-sync"></a>NTLS 証明書の非同期
 証明書が有効期限切れになったり、構成の更新によって上書きされたりすると、クライアントでは HSM への接続が失われることがあります。 各 HSM に対して、証明書の交換のクライアント構成を再適用する必要があります。
 無効な証明書に関する NTLS ログの例を次に示します。
 
-> NTLS[8508]: info :0 :Incoming connection request... :192.168.50.2/59415 NTLS[8508]:Error message from SSLAccept is : error:14094418:SSL routines:ssl3_read_bytes:tlsv1 alert unknown ca NTLS[8508]:Error during SSL accept ( RC_SSL_ERROR ) NTLS[8508]: info :0xc0000711 :Fail to establish a secure channel with client :192.168.50.2/59415 :RC_SSL_FAILED_HANDSHAKE NTLS[8508]: info :0 :NTLS Client "Unknown host name" Connection instance removed :192.168.50.2/59415 (NTLS[8508]: 情報: 0 : 受信接続要求... : 192.168.50.2/59415 NTLS[8508]: SSLAccept からのエラー メッセージ: エラー:14094418:SSL routines:ssl3_read_bytes:tlsv1 alert unknown ca NTLS[8508]: SSL Accept 時にエラーが発生しました ( RC_SSL_ERROR ) NTLS[8508]: 情報: 0xc0000711: クライアントと安全なチャネルを確立できません: 192.168.50.2/59415 : RC_SSL_FAILED_HANDSHAKE NTLS[8508]: 情報: 0 : NTLS クライアント "不明なホスト名" 接続インスタンスを削除しました: 192.168.50.2/59415)
+> NTLS[8508]: info :0 :Incoming connection request... :192.168.50.2/59415 NTLS[8508]:Error message from SSLAccept is : error:14094418:SSL routines:ssl3_read_bytes:tlsv1 alert unknown ca NTLS[8508]:Error during SSL accept ( RC_SSL_ERROR ) NTLS[8508]: info :0xc0000711 :Fail to establish a secure channel with client :192.168.50.2/59415 :RC_SSL_FAILED_HANDSHAKE NTLS[8508]: info :0 :NTLS Client "Unknown host name" Connection instance removed :192.168.50.2/59415
 
 ### <a name="failed-tcp-communication"></a>TCP 通信の失敗
 

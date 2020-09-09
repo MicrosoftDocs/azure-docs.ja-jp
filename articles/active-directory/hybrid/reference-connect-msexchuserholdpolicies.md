@@ -14,18 +14,18 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4c637a01825616334cda8faa594efd08f29de8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4950906e016b9e1915d18ecacc1edcfda8b4d09
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74213086"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279399"
 ---
 # <a name="azure-ad-connect---msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Azure AD Connect - msExchUserHoldPolicies と cloudMsExchUserHoldPolicies
 以下のリファレンス ドキュメントでは、Exchange で使用されるこれらの属性と、既定の同期ルールを編集するための適切な方法について説明します。
 
 ## <a name="what-are-msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>msExchUserHoldPolicies および cloudMsExchUserHoldPolicies とは
-Exchange Server では、次の 2 種類の[ホールド](https://docs.microsoft.com/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019)を使用できます: 訴訟ホールドとインプレース ホールド。 訴訟ホールドが有効になっている場合、すべてのメールボックスのすべてのアイテムがホールドに置かれます。  インプレース ホールドは、インプレース電子情報開示ツールを使用して定義した検索クエリの条件を満たすアイテムのみを保持するために使用されます。
+Exchange Server では、次の 2 種類の[ホールド](/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019)を使用できます: 訴訟ホールドとインプレース ホールド。 訴訟ホールドが有効になっている場合、すべてのメールボックスのすべてのアイテムがホールドに置かれます。  インプレース ホールドは、インプレース電子情報開示ツールを使用して定義した検索クエリの条件を満たすアイテムのみを保持するために使用されます。
 
 MsExchUserHoldPolcies 属性と cloudMsExchUserHoldPolicies 属性を使用すると、オンプレミスの AD と Azure AD で、オンプレミス Exchange または Exchange オンラインを使用しているかどうかに応じて、ホールド中のユーザーを特定できます。
 

@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: overview
+ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
-ms.openlocfilehash: 6ab1f7c97173021cc112a5f117469abd74ac954d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 953f74a18ae7874c8772cdc8179e5e5bdd1a86d2
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77062576"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738644"
 ---
 # <a name="set-up-an-authenticator-app-as-your-two-factor-verification-method"></a>認証アプリを 2 要素認証方法として設定する
 
@@ -29,7 +29,7 @@ ms.locfileid: "77062576"
 
 ## <a name="set-up-the-microsoft-authenticator-app-to-send-notifications"></a>通知を送信するように Microsoft Authenticator アプリを設定する
 
-1. **[追加のセキュリティ確認]** ページの **[手順 1: ご希望のご連絡方法をお知らせください]** 領域で **[モバイル アプリ]** を選択します。
+1. [[追加のセキュリティ確認]](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) ページの **[手順 1: ご希望のご連絡方法をお知らせください]** 領域で **[モバイル アプリ]** を選択します。
 
 2. **[モバイル アプリをどのような用途で使用されますか?]** 領域で **[確認のため通知を受け取る]** を選択し、 **[設定]** を選択します。
 

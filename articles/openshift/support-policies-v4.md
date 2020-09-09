@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 7bdcccee3270f9d2b611682a9a59505158a494d2
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: f496d0f38452fa7cf64bc9eef370bd0b2116cfa5
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204864"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049963"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Azure Red Hat OpenShift のサポート ポリシー
 
@@ -25,10 +25,11 @@ Azure Red Hat OpenShift 4 クラスターの一部の構成は、クラスター
 * すべての OpenShift Cluster オペレーターは、管理された状態のままである必要があります。 `oc get clusteroperators` を実行して、クラスター オペレーターの一覧を返すことができます。
 * クラスターの Prometheus および Alertmanager サービスを削除または変更しないでください。
 * Service Alertmanager ルールを削除しないでください。
-* OpenShift クラスターのバージョンを変更しないでください。
 * Azure Red Hat OpenShift サービス ログ (mdsd ポッド) を削除または変更しないでください。
 * 'arosvc.azurecr.io' クラスターのプル シークレットを削除または変更しないでください。
-* すべてのクラスター仮想マシンには、少なくとも Azure Resource Manager (ARM) とサービス ログ (Geneva) エンドポイントへの送信インターネット アクセスが必要です。
+* すべてのクラスター仮想マシンには、少なくとも Azure Resource Manager (ARM) とサービス ログ (Geneva) エンドポイントへの直接送信インターネット アクセスが必要です。  HTTPS プロキシの形式はサポートされていません。
+* クラスターの仮想ネットワークの DNS 構成は変更しないでください。 既定の Azure DNS リゾルバーを使用する必要があります。
+* クラスターの MachineConfig オブジェクト (kubelet 構成など) は、どのような方法でもオーバーライドしないでください。
 * Azure Red Hat OpenShift サービスからはプライベート リンク サービスを介してクラスターにアクセスします。  サービス アクセスを削除または変更しないでください。
 * 非 RHCOS コンピューティング ノードはサポートされていません。 たとえば、RHEL コンピューティング ノードを使用することはできません。
 
@@ -66,3 +67,11 @@ Azure Red Hat OpenShift 4 は、次の仮想マシン サイズのワーカー �
 |Fsv2|Standard_F8s_v2|8|16|
 |Fsv2|Standard_F16s_v2|16|32|
 |Fsv2|Standard_F32s_v2|32|64|
+
+### <a name="master-nodes"></a>マスター ノード
+
+|系列|サイズ|vCPU|メモリ:GiB|
+|-|-|-|-|
+|Dsv3|Standard_D8s_v3|8|32|
+|Dsv3|Standard_D16s_v3|16|64|
+|Dsv3|Standard_D32s_v3|32|128|

@@ -14,19 +14,24 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: 49fdfde402938ce8d0ee1b141a47e68c99c502e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c7fbe46d378d45f49a8510f9fdd01a9cae665d0b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73796201"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074383"
 ---
 # <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Azure 仮想マシンの修復コマンドを使用して Linux VM を修復する
 
 Azure の Linux 仮想マシン (VM) で起動エラーまたはディスク エラーが発生した場合は、ディスク自体で軽減策を実行する必要がある可能性があります。 一般的な例として、VM の正常な起動を妨げる失敗したアプリケーション更新が挙げられます。 この記事では、Azure 仮想マシンの修復コマンドを使用してディスクを別の Linux VM に接続してエラーを修正した後、元の VM をリビルドする方法について詳しく説明します。
 
 > [!IMPORTANT]
-> この記事のスクリプトは、[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) を使用している VM にのみ適用されます。
+> * この記事のスクリプトは、[Azure Resource Manager](../../azure-resource-manager/management/overview.md) を使用している VM にのみ適用されます。
+> * スクリプトを実行するには、VM からの送信接続 (ポート 443) が必要です。
+> * 実行できるスクリプトは一度に 1 つだけです。
+> * 実行中のスクリプトを取り消すことはできません。
+> * スクリプトを実行できる最大時間は 90 分であり、それを過ぎるとタイムアウトします。
+> * Azure Disk Encryption を使用する VM では、(KEK の有無にかかわらず) シングル パス暗号化で暗号化されたマネージド ディスクのみがサポートされます。
 
 ## <a name="repair-process-overview"></a>修復プロセスの概要
 
@@ -40,7 +45,7 @@ Azure 仮想マシンの修復コマンドを使用して VM の OS ディスク
 4. 軽減ステップを実行する
 5. az vm repair restore を実行する
 
-その他のドキュメントと手順については、「[az vm repair](https://docs.microsoft.com/cli/azure/ext/vm-repair/vm/repair)」をご覧ください。
+その他のドキュメントと手順については、「[az vm repair](/cli/azure/ext/vm-repair/vm/repair)」をご覧ください。
 
 ## <a name="repair-process-example"></a>修復プロセスの例
 
@@ -52,7 +57,9 @@ Azure 仮想マシンの修復コマンドを使用して VM の OS ディスク
 
    **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell にコード貼り付けてから、 **[入力]** を選択して実行します。
 
-   CLI をローカルにインストールして使用する場合、このクイック スタートでは、Azure CLI バージョン 2.0.30 以降が必要です。 バージョンを確認するには、``az --version`` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
+   CLI をローカルにインストールして使用する場合、このクイック スタートでは、Azure CLI バージョン 2.0.30 以降が必要です。 バージョンを確認するには、``az --version`` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
+   
+   現在 Azure portal にログインしているアカウントとは別のアカウントを使用して Cloud Shell にログインする必要がある場合は、``az login`` [az login reference](/cli/azure/reference-index?view=azure-cli-latest#az-login) を使用できます。  アカウントに関連付けられているサブスクリプションを切り替えるには、``az account set --subscription`` [az account set reference](/cli/azure/account?view=azure-cli-latest#az-account-set) を使用できます。
 
 2. `az vm repair` コマンドを初めて使用する場合は、VM 修復 CLI 拡張機能を追加します。
 
@@ -66,7 +73,7 @@ Azure 仮想マシンの修復コマンドを使用して VM の OS ディスク
    az extension update -n vm-repair
    ```
 
-3. `az vm repair create` を実行します。 このコマンドでは、機能していない VM の OS ディスクのコピーが作成され、修復 VM が作成されて、ディスクに接続されます。
+3. `az vm repair create` を実行します。 このコマンドでは、機能していない VM の OS ディスクのコピーが作成され、新しいリソース グループに修復 VM が作成されて、OS ディスクのコピーに接続されます。  修復 VM のサイズとリージョンは、指定された機能していない VM と同じになります。 すべての手順で使用されるリソース グループと VM の名前は、機能していない VM 用になります。 VM が Azure Disk Encryption を使用している場合、コマンドは、修復 VM に接続されているときにアクセスできるように、暗号化されたディスクのロックを解除しようとします。
 
    ```azurecli-interactive
    az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose
@@ -74,7 +81,7 @@ Azure 仮想マシンの修復コマンドを使用して VM の OS ディスク
 
 4. 必要に応じて作成した修復 VM で軽減ステップを実行し、ステップ 5 に進みます。
 
-5. `az vm repair restore` を実行します。 このコマンドでは、修復された OS ディスクが VM の元の OS ディスクとスワップされます。
+5. `az vm repair restore` を実行します。 このコマンドでは、修復された OS ディスクが VM の元の OS ディスクとスワップされます。 ここで使用されるリソース グループと VM の名前は、手順 3 で使用された機能していない VM 用です。
 
    ```azurecli-interactive
    az vm repair restore -g MyResourceGroup -n MyVM --verbose
@@ -92,6 +99,6 @@ az vm boot-diagnostics enable --name myVMDeployed --resource-group myResourceGro
 
 ## <a name="next-steps"></a>次のステップ
 
-* VM への接続の問題が発生した場合は、[Azure 仮想マシンへの RDP 接続のトラブルシューティング](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-connection)に関する記事をご覧ください。
-* VM で実行されているアプリケーションへのアクセスに関する問題については、「[Azure 上の仮想マシンにおけるアプリケーション接続に関する問題のトラブルシューティング](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-app-connection)」をご覧ください。
-* Resource Manager の使用方法の詳細については、「[Azure Resource Manager の概要](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)」をご覧ください。
+* VM への接続の問題が発生した場合は、[Azure 仮想マシンへの RDP 接続のトラブルシューティング](./troubleshoot-rdp-connection.md)に関する記事をご覧ください。
+* VM で実行されているアプリケーションへのアクセスに関する問題については、「[Azure 上の仮想マシンにおけるアプリケーション接続に関する問題のトラブルシューティング](./troubleshoot-app-connection.md)」をご覧ください。
+* Resource Manager の使用方法の詳細については、「[Azure Resource Manager の概要](../../azure-resource-manager/management/overview.md)」をご覧ください。

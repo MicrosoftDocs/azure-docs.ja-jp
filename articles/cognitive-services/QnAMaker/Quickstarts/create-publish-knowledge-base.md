@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:ナレッジ ベースの作成、トレーニング、発行 - QnA Maker
 description: QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マニュアルなど、独自のコンテンツから作成できます。 この記事には、単純な FAQ Web ページから QnA Maker ナレッジ ベースを作成して、QnA Maker に関する質問に答える例が含まれています。
-ms.topic: conceptual
-ms.date: 02/08/2020
-ms.openlocfilehash: 5a3cd4a66ae3a7148b517050c3d1a8c6c8e7a712
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.topic: quickstart
+ms.date: 05/26/2020
+ms.openlocfilehash: 77ddb2a0a149729af72066b53c17b1dcb08a2992
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756829"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540756"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>クイック スタート:QnA Maker ナレッジ ベースの作成、トレーニング、発行
 
@@ -17,7 +17,7 @@ QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マ
 ## <a name="prerequisites"></a>前提条件
 
 > [!div class="checklist"]
-> * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+> * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 > * Azure portal で作成された QnA Maker [リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)。 リソースを作成するしたに選択した Azure Active Directory ID、サブスクリプション、QnA リソース名を覚えておいてください。
 
 ## <a name="create-your-first-qna-maker-knowledge-base"></a>最初の QnA Maker ナレッジ ベースを作成する
@@ -34,7 +34,7 @@ QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マ
 
 1. **[Step 3]\(手順 3\)** で、Active Directory、サブスクリプション、サービス (リソース)、およびサービスで作成されたすべてのナレッジ ベースの言語を選択します。
 
-   ![QnA Maker サービス ナレッジ ベースの選択のスクリーン ショット](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/qnaservice-selection.png" alt-text="QnA Maker サービス ナレッジ ベースの選択のスクリーンショット":::
 
 1. **[Step 3]\(手順 3\)** で、自分のナレッジ ベースに **My Sample QnA KB** という名前を付けます。
 
@@ -64,7 +64,7 @@ QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マ
 
     ` * Azure QnA Maker service\n* Azure Cognitive Search\n* Azure web app\n* Azure app plan`
 
-    ![ 質問をテキストとして追加し、回答をマークダウンで書式設定して追加します。](../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png)
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png" alt-text="質問をテキストとして追加し、回答をマークダウンで書式設定して追加します。":::
 
     マークダウン記号 `*` は、箇条書きに使用されます。 `\n` は、改行に使用されます。
 
@@ -81,7 +81,7 @@ QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マ
 
     `How many Azure services are used by a knowledge base?`
 
-    ![ テキスト ボックスにユーザー クエリの例を入力します。 ](../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png)
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png" alt-text="テキスト ボックスにユーザー クエリの例を入力します。":::
 
 1. **[検査]** を選択し、詳細に応答を確認します。 テスト ウィンドウは、ナレッジ ベースへの変更を、発行前にテストする際に使用します。
 
@@ -131,7 +131,7 @@ QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マ
 
     チャット ボットが、ナレッジ ベースからの回答で応答します。
 
-    ![テスト Web チャットにユーザー クエリを入力します。](../media/qnamaker-create-publish-knowledge-base/test-web-chat.png)
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="テスト Web チャットにユーザー クエリを入力します。":::
 
 ## <a name="what-did-you-accomplish"></a>ここで行ったこと
 

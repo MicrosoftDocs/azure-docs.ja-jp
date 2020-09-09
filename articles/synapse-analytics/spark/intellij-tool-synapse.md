@@ -2,20 +2,21 @@
 title: チュートリアル - Azure Toolkit for IntelliJ (Spark アプリケーション)
 description: チュートリアル - Azure Toolkit for IntelliJ を使用して Scala で記述された Spark アプリケーションを開発し、Apache Spark プール (プレビュー) に送信します。
 services: synapse-analytics
-author: v-jiche
-ms.author: v-jiche
+author: hrasheed-msft
+ms.author: jejiang
 ms.reviewer: jrasnick, carlrab
 ms.service: synapse-analytics
 ms.topic: tutorial
+ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: fc7551c081d14a871c8ee96610ca7190f629901d
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: cd180996434463959cd6f40a115902db358a3091
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790968"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194946"
 ---
-# <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-spark-pools-preview"></a>チュートリアル:Azure Toolkit for IntelliJ を使用して Spark プール (プレビュー) 向けの Apache Spark アプリケーションを作成する
+# <a name="tutorial-create-an-apache-spark-applications-with-intellij-using-a-synapse-workspace"></a>チュートリアル:IntelliJ で Synapse ワークスペースを使用して Apache Spark アプリケーションを作成する
 
 このチュートリアルでは、Azure Toolkit for IntelliJ プラグインを使用して [Scala](https://www.scala-lang.org/) で記述された Apache Spark アプリケーションを開発してから、それを IntelliJ 統合開発環境 (IDE) から直接 Spark プール (プレビュー) に送信する方法を説明します。 このプラグインには、次のような使い方があります。
 
@@ -62,6 +63,7 @@ ms.locfileid: "82790968"
     |Project&nbsp;location (プロジェクトの場所)| プロジェクトを保存する場所を入力します。|
     |Project SDK (プロジェクト SDK)| IDEA を初めて使用するとき、これは空白の場合があります。 **[New]\(新規作成\)** を選択し、自分の JDK に移動します。|
     |Spark バージョン|作成ウィザードにより、Spark SDK と Scala SDK の適切なバージョンが統合されます。 Synapse でサポートされるのは **Spark 2.4.0** のみです。|
+    |||
 
     ![Apache Spark SDK を選択する](./media/intellij-tool-synapse/create-synapse-application02.png)
 
@@ -141,11 +143,11 @@ Scala アプリケーションを作成した後、これをリモートから�
     |Spark プール|アプリケーションを実行する Spark プールを選択します。|
     |送信するアーティファクトの選択|既定の設定のままにします。|
     |メイン クラス名|既定値は、選択したファイルのメイン クラスです。 クラスを変更するには、省略記号 ( **...** ) をクリックし、別のクラスを選択します。|
-    |ジョブの構成|既定のキーと値を変更できます。 詳細については、[Apache Livy REST API](https://livy.incubator.apache.org./docs/latest/rest-api.html) に関するページを参照してください。|
+    |ジョブの構成|既定のキーと値を変更できます。 詳細については、[Apache Livy REST API](http://livy.incubator.apache.org./docs/latest/rest-api.html) に関するページを参照してください。|
     |コマンド ライン引数|必要に応じて、main クラスの引数をスペースで区切って入力できます。|
-    |参照される JAR と参照されるファイル|参照されている Jar およびファイルのパスを入力できます (存在する場合)。 現在 ADLS Gen 2 クラスターのみをサポートする Azure 仮想ファイル システム内のファイルを参照することもできます。 詳細:[Apache Spark 構成](https://spark.apache.org/docs/latest/configuration.html#runtime-environment)および[リソースをクラスターにアップロードする方法](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。|
+    |参照される JAR と参照されるファイル|参照されている Jar およびファイルのパスを入力できます (存在する場合)。 現在 ADLS Gen2 クラスターのみをサポートする Azure 仮想ファイル システム内のファイルを参照することもできます。 詳細情報:[Apache Spark 構成](https://spark.apache.org/docs/latest/configuration.html#runtime-environment)および[リソースをクラスターにアップロードする方法](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。|
     |ジョブ アップロード ストレージ|展開して追加のオプションを表示します。|
-    |ストレージ型|ドロップダウン リストから **[Use Azure Blob to upload]\(Azure BLOB を使用してアップロード\)** を選択します。|
+    |ストレージ型|ドロップダウンリストから **[Use Azure Blob to upload]\(Azure BLOB を使用してアップロード\)** または **[Use cluster default storage account to upload]\(クラスターの既定のストレージ アカウントを使用してアップロード\)** を選択します。|
     |ストレージ アカウント|ストレージ アカウントを入力します。|
     |ストレージ キー|ストレージ キーを入力します。|
     |ストレージ コンテナー|**[ストレージ アカウント]** と **[ストレージ キー]** の入力後、ドロップダウン リストからストレージ コンテナーを選択します。|
@@ -176,7 +178,7 @@ Scala アプリケーションを作成した後、これをリモートから�
 
     ![Intellij の実行/デバッグ構成 (ローカル実行)](./media/intellij-tool-synapse/local-run-synapse01.png)
 
-3. ローカル実行が完了したら、スクリプトに出力が含まれている場合は、 **[data]**  > **[__default__]** から出力ファイルを確認できます。
+3. ローカル実行が完了したら、スクリプトに出力が含まれている場合は、 **[data]**  >  **[__default__]** から出力ファイルを確認できます。
 
     ![Intellij プロジェクトのローカル実行の結果](./media/intellij-tool-synapse/spark-local-run-result.png)
 
@@ -249,6 +251,7 @@ WINUTILS.EXE の前提条件を満たしていることを確認します。
 
     |プロパティ |値 |
     |----|----|
+    |メイン クラス名| Main クラス名を選択します。| 
     |Spark プール|アプリケーションを実行する Spark プールを選択します。|
     ||
 
@@ -270,4 +273,4 @@ WINUTILS.EXE の前提条件を満たしていることを確認します。
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Synapse Analytics](../overview-what-is.md)
-- [Azure Synapse Analytics ワークスペース用の新しい Apache Spark プールを作成する](../../synapse-analytics/quickstart-create-apache-spark-pool.md)
+- [Azure Synapse Analytics ワークスペース用の新しい Apache Spark プールを作成する](../../synapse-analytics/quickstart-create-apache-spark-pool-studio.md)

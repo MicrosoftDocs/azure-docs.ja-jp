@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: aeced8c4108760fc3e10dbf891a469792c210707
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 10cf06a829b991bfe15d7b24c4fc61d0fe22eaaf
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780064"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653717"
 ---
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Jupyter ノートブックを使用して Azure Machine Learning を探索する
 
@@ -29,7 +29,7 @@ ms.locfileid: "82780064"
 - [Data Science Virtual Machine](#dsvm)
 
 > [!NOTE]
-> リポジトリをクローンすると、**tutorials** フォルダー内にチュートリアル ノートブック、**how-to-use-azureml** フォルダー内に機能固有のノートブックがあることがわかります。
+> リポジトリを複製すると、**tutorials** フォルダー内にチュートリアル ノートブック、**how-to-use-azureml** フォルダー内に機能固有のノートブックがあることがわかります。
 
 <a name="notebookvm"></a>
 ## <a name="get-samples-on-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスでサンプルを取得する
@@ -49,13 +49,13 @@ ms.locfileid: "82780064"
 <a name="dsvm"></a>
 ## <a name="get-samples-on-dsvm"></a>DSVM 上でサンプルを入手する
 
-データ サイエンス仮想マシン (DSVM) とは、データ サイエンスの実行専用に構築されたカスタマイズ済み VM イメージです。 [DSVM を作成する](how-to-configure-environment.md#dsvm)と、SDK と Notebook サーバーがユーザーのためにインストールされて構成されます。 ただし、その場合も、ワークスペースの作成とサンプル リポジトリのクローンは必要になります。
+データ サイエンス仮想マシン (DSVM) とは、データ サイエンスの実行専用に構築されたカスタマイズ済み VM イメージです。 [DSVM を作成する](how-to-configure-environment.md#dsvm)と、SDK と Notebook サーバーがユーザーのためにインストールされて構成されます。 ただし、その場合も、ワークスペースの作成とサンプル リポジトリの複製は必要になります。
 
 [!INCLUDE [aml-dsvm-server](../../includes/aml-dsvm-server.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
-[サンプル ノートブック](https://aka.ms/aml-notebooks)を探索して、Azure Machine Learning で実行できることを把握します。
+[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks)を探索して、Azure Machine Learning で実行できることを把握します。
 
 他の GitHub サンプル プロジェクトと例については、次のサンプル リポジトリを参照してください。
 + [Microsoft/MLOps](https://github.com/Microsoft/MLOps)

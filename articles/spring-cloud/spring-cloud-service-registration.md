@@ -6,12 +6,13 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: brendm
-ms.openlocfilehash: 6c217096f0ba4200f49bd1fd8056768a6f6f6dbd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-java
+ms.openlocfilehash: c3e26b157630df6004292c93a0a0a47307d5949a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278853"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071018"
 ---
 # <a name="discover-and-register-your-spring-cloud-services"></a>Spring Cloud サービスを検出して登録する
 

@@ -5,15 +5,15 @@ description: この記事では、Azure Application Gateway に TLS ポリシー
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 3804059fdd818f10663d14bde72da2c6773fa53f
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 3109ada2c905a9f11169a462284d22b9e9604494
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312669"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808238"
 ---
 # <a name="configure-tls-policy-versions-and-cipher-suites-on-application-gateway"></a>Application Gateway に TLS ポリシーのバージョンと暗号スイートを構成する
 

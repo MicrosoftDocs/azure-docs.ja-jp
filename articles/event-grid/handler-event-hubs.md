@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid イベントに対するイベント ハンドラーとしてのイベント ハブ
 description: Azure Event Grid イベントのイベント ハンドラーとしてイベント ハブを使用する方法について説明します。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.author: spelluru
-ms.openlocfilehash: c9ce4e7da51005dcb06c9df420d80f4d2c7b93e9
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 07/07/2020
+ms.openlocfilehash: fa8fdd66eb153f6a972753eb359261100f19cd15
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596021"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105831"
 ---
 # <a name="event-hub-as-an-event-handler-for-azure-event-grid-events"></a>Azure Event Grid イベントに対するイベント ハンドラーとしてのイベント ハブ
 イベント ハンドラーは、イベントの送信先となる場所です。 ハンドラーでは、イベントを処理するアクションが実行されます。 一部の Azure サービスは、イベントを処理するように自動的に構成されます。**Azure Event Hubs** はその 1 つです。 
@@ -39,6 +35,52 @@ Event Grid からのイベントのイベント ハンドラーとして**イベ
 | aeg-data-version | <p>イベントのデータ バージョン。</p><p>例:"1"。</p><p>**Event Grid のイベント スキーマ**の場合、このプロパティはデータのバージョンを表し、**クラウド イベント スキーマ**の場合は適用されません。</p> |
 | aeg-output-event-id | Event Grid イベントの ID。 |
 
+## <a name="rest-examples-for-put"></a>REST の例 (PUT 用)
+
+
+### <a name="event-hub"></a>イベント ハブ
+
+```json
+{
+    "properties": 
+    {
+        "destination": 
+        {
+            "endpointType": "EventHub",
+            "properties": 
+            {
+                "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUBS NAMESPACE NAME>/eventhubs/<EVENT HUB NAME>"
+            }
+        },
+        "eventDeliverySchema": "EventGridSchema"
+    }
+}
+```
+
+### <a name="event-hub---delivery-with-managed-identity"></a>イベント ハブ - マネージド ID を使用した配信
+
+```json
+{
+    "properties": {
+        "deliveryWithResourceIdentity": 
+        {
+            "identity": 
+            {
+                "type": "SystemAssigned"
+            },
+            "destination": 
+            {
+                "endpointType": "EventHub",
+                "properties": 
+                {
+                    "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUBS NAMESPACE NAME>/eventhubs/<EVENT HUB NAME>"
+                }
+            }
+        },
+        "eventDeliverySchema": "EventGridSchema"
+    }
+}
+```
 
 ## <a name="next-steps"></a>次のステップ
 サポートされているイベント ハンドラーの一覧については、「[イベント ハンドラー](event-handlers.md)」を参照してください。 

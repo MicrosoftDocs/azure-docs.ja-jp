@@ -1,18 +1,14 @@
 ---
 title: Azure Event Hubs のネットワーク セキュリティ
-description: この記事では、プライベート エンドポイントからのアクセスを構成する方法について説明します。
-services: event-hubs
-author: spelluru
-ms.service: event-hubs
+description: この記事では、プライベート エンドポイントからのアクセスを構成する方法について説明します
 ms.topic: conceptual
-ms.date: 03/11/2020
-ms.author: spelluru
-ms.openlocfilehash: 46e6a9ecc2ed09aed1076f12c1f61a966485bdad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: ddb816e872625da06e370a7e130b4dd444de8de7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422779"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521855"
 ---
 # <a name="network-security-for-azure-event-hubs"></a>Azure Event Hubs のネットワーク セキュリティ 
 この記事では、Azure Event Hubs で次のセキュリティ機能を使用する方法について説明します。 
@@ -36,7 +32,7 @@ ms.locfileid: "80422779"
 ## <a name="ip-firewall"></a>IP ファイアウォール 
 既定では、要求に有効な認証と承認がある限り、Event Hubs 名前空間にはインターネットからアクセスできます。 これは IP ファイアウォールを使用して、さらに [CIDR (クラスレス ドメイン間ルーティング)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 表記の一連の IPv4 アドレスまたは IPv4 アドレス範囲のみに制限できます。
 
-この機能は、Azure Event Hubs へのアクセスを特定の既知のサイトからのみに制限したいシナリオで役立ちます。 ファイアウォール規則を使用すると、特定の IPv4 アドレスから送信されたトラフィックを受け入れる規則を構成できます。 たとえば、[Azure ExpressRoute](/azure/expressroute/expressroute-faqs#supported-services) で Event Hubs を使用する場合、オンプレミス インフラストラクチャ IP アドレスからのトラフィックのみ許可する**ファイアウォール規則**を作成できます。 
+この機能は、Azure Event Hubs へのアクセスを特定の既知のサイトからのみに制限したいシナリオで役立ちます。 ファイアウォール規則を使用すると、特定の IPv4 アドレスから送信されたトラフィックを受け入れる規則を構成できます。 たとえば、[Azure ExpressRoute](../expressroute/expressroute-faqs.md#supported-services) で Event Hubs を使用する場合、オンプレミス インフラストラクチャ IP アドレスからのトラフィックのみ許可する**ファイアウォール規則**を作成できます。 
 
 IP ファイアウォール規則は、Event Hubs 名前空間レベルで適用されます。 したがって、規則は、サポートされているプロトコルを使用するクライアントからのすべての接続に適用されます。 Event Hubs 名前空間上の許可 IP 規則に一致しない IP アドレスからの接続試行は、未承認として拒否されます。 IP 規則に関する記述は応答に含まれません。 IP フィルター規則は順に適用され、IP アドレスと一致する最初の規則に基づいて許可アクションまたは拒否アクションが決定されます。
 

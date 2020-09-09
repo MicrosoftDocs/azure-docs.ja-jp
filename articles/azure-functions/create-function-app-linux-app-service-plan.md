@@ -28,7 +28,7 @@ Linux での関数の実行をホストするための Function App が必要で
 
 1. Azure portal メニューまたは **[ホーム]** ページで、 **[リソースの作成]** を選択します。
 
-1. **[新規]** ページで、 **[計算]** 、 **[関数アプリ]** の順に選択します。
+1. **[新規]** ページで、 **[計算]** 、 >  **[関数アプリ]** の順に選択します。
 
     :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-flow.png" alt-text="Azure portal での関数アプリの作成":::
 
@@ -103,7 +103,7 @@ Linux での関数の実行をホストするための Function App が必要で
 
     ![[関数の URL の取得] の選択](./media/create-function-app-linux-app-service-plan/function-app-select-get-function-url.png)
 
-1. **[関数の URL の取得]** ダイアログ ボックスで、ドロップダウン リストから **[既定]** を選択し、 **[クリップボードにコピー]** を選択します。 
+1. **[関数の URL の取得]** ダイアログ ボックスで、ドロップダウン リストから **[既定]** を選択し、 **[クリップボードにコピー]** アイコンを選択します。 
 
     ![Azure Portal からの関数 URL のコピー](./media/create-function-app-linux-app-service-plan/function-app-develop-tab-testing.png)
 

@@ -4,15 +4,15 @@ description: MakeCert を使用して、自己署名ルート証明書の作成�
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
-ms.date: 09/05/2018
+ms.topic: how-to
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: ad2ab31e6771efc54238d5747863fa2a9bb2f356
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 926de9f3fd357cd9d9ca067e4f7beff7d03eec95
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75833968"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394190"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>MakeCert を使用したポイント対サイト接続の証明書の生成とエクスポート
 
@@ -27,7 +27,7 @@ ms.locfileid: "75833968"
 次の手順では、MakeCert を使用して自己署名証明書を作成する方法を説明します。 これらの手順は、デプロイ モデル固有のものではありません。 リソース マネージャーとクラシックの両方で有効です。
 
 1. [MakeCert](https://msdn.microsoft.com/library/windows/desktop/aa386968(v=vs.85).aspx) をダウンロードし、インストールします。
-2. インストール後、makecert.exe ユーティリティは通常、次のパスで見つかります: C:\Program Files (x86)\Windows Kits\10\bin\<arch>。 ただし、別の場所にインストールされている場合もあります。 管理者としてコマンド プロンプトを開き、MakeCert ユーティリティの場所に移動します。 次の例を使って、適切な場所に調整できます。
+2. インストール後、makecert.exe ユーティリティは通常、次のパスで見つかります: 'C:\Program Files (x86)\Windows Kits\10\bin\<arch>'。 ただし、別の場所にインストールされている場合もあります。 管理者としてコマンド プロンプトを開き、MakeCert ユーティリティの場所に移動します。 次の例を使って、適切な場所に調整できます。
 
    ```cmd
    cd C:\Program Files (x86)\Windows Kits\10\bin\x64

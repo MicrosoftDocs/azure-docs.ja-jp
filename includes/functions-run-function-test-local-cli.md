@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/09/2020
 ms.author: glenga
-ms.openlocfilehash: 749b733039e89421ac33ef76a11f3291b296e718
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 55c64048e0604987c5a4c26961e5617106358e76
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673164"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84436106"
 ---
 ## <a name="run-the-function-locally"></a>関数をローカルで実行する
 

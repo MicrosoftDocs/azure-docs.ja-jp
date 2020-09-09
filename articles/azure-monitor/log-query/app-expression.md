@@ -5,19 +5,20 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/25/2019
-ms.openlocfilehash: 5502df1cd119c0f63c65945d73431a17282ebc0c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/09/2019
+ms.openlocfilehash: 7cb8073d048118e704dafb0c70fe7cdb6774344a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670259"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324541"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>Azure Monitor クエリでの app() 式
 
 `app` 式は、同じリソース グループ、別のリソース グループ、または別のサブスクリプション内の特定の Application Insights アプリからデータを取得するために、Azure Monitor クエリで使用します。 これは、Azure Monitor ログ クエリにアプリケーション データを含めたり、Application Insights のクエリで複数のアプリケーションにわたるデータをクエリしたりする場合に便利です。
 
-
+> [!IMPORTANT]
+> ログ データは Log Analytics ワークスペースに格納されるため、[ワークスペースベースの Application Insights リソース](../app/create-workspace-resource.md)を使用している場合、app () 式は使用されません。 log () 式を使用して、複数のワークスペースにアプリケーションを含むクエリを記述します。 同じワークスペース内に複数のアプリケーションがある場合、クロス ワークスペース クエリは必要ありません。
 
 ## <a name="syntax"></a>構文
 
@@ -72,5 +73,6 @@ union
 ## <a name="next-steps"></a>次のステップ
 
 - [ワークスペースの式](workspace-expression.md)に関するページを見て、Log Analytics ワークスペースについて参照します。
-- [Azure Monitor データ](../../azure-monitor/log-query/log-query-overview.md)の格納方法を確認します。
+- [Azure Monitor データ](./log-query-overview.md)の格納方法を確認します。
 - [Kusto クエリ言語](/azure/kusto/query/)の完全なドキュメントにアクセスします。
+

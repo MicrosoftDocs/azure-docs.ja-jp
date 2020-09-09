@@ -4,16 +4,16 @@ description: Application Insights で Web テストを設定します。 Web サ
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 61358051a8ddc32bc01ec5e231f4c28ebfa18ee0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f9c5fa691456195943f97419c1175fd5b586878
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670034"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87310278"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>任意の Web サイトの可用性を監視する
 
-お使いの Web アプリ/Web サイトをデプロイした後、繰り返されるテストを設定して、可用性と応答性を監視できます。 [ Application Insights](../../azure-monitor/app/app-insights-overview.md) は、世界各地の複数のポイントから定期的にアプリケーションに Web 要求を送信します。 お使いのアプリケーションが応答していない場合、または応答が遅すぎる場合は、アラートを受信できます。
+お使いの Web アプリ/Web サイトをデプロイした後、繰り返されるテストを設定して、可用性と応答性を監視できます。 [ Application Insights](./app-insights-overview.md) は、世界各地の複数のポイントから定期的にアプリケーションに Web 要求を送信します。 お使いのアプリケーションが応答していない場合、または応答が遅すぎる場合は、アラートを受信できます。
 
 可用性テストは、パブリック インターネットからアクセスできる任意の HTTP または HTTPS エンドポイントに対して設定できます。 テストする Web サイトに対して、何らかの変更を行う必要はありません。 実際には、自分が所有しているサイトである必要もありません。 サービスが依存している REST API の可用性をテストできます。
 
@@ -23,7 +23,7 @@ ms.locfileid: "77670034"
 
 * [URL の Ping テスト](#create-a-url-ping-test): Azure Portal で作成できる簡単なテストです。
 * [複数ステップ Web テスト](availability-multistep.md):一連の Web 要求の記録であり、さらに複雑なシナリオをテストするために再生できます。 複数ステップ Web テストは Visual Studio Enterprise で作成され、ポータルにアップロードされて実行されます。
-* [カスタム可用性追跡テスト](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet):可用性テストを実行するカスタム アプリケーションを作成する場合は、`TrackAvailability()` メソッドを使用して Application Insights に結果を送信できます。
+* [カスタム可用性追跡テスト](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet):可用性テストを実行するカスタム アプリケーションを作成する場合は、`TrackAvailability()` メソッドを使用して Application Insights に結果を送信できます。
 
 **Application Insights リソースごとに最大 100 個の可用性テストを作成できます。**
 
@@ -51,7 +51,7 @@ Azure portal で、 **[リソースの作成]**  >  **[開発者ツール]**  > 
 |**テスト間隔**| 各テストの場所からテストを実行する頻度を設定します。 既定の間隔が 5 分で、テストの場所が 5 か所の場合、サイトは平均して毎分テストされます。|
 |**テストの場所**| 指定の URL にサーバーによって Web 要求が送信される送信元の場所です。 Web サイトの問題とネットワークの問題とを確実に区別するために、**最低でもテストの場所を 5 か所にすることが推奨されます**。 最大 16 個の場所を選択できます。
 
-**パブリック インターネットから指定の URL にアクセスできない場合は、テスト トランザクションのみが通過できるようにお使いのファイアウォールを選択的に開くことを選択できます**。 可用性テスト エージェント用のファイアウォールの例外について詳しくは、[IP アドレス ガイド](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses#availability-tests)を参照してください。
+**パブリック インターネットから指定の URL にアクセスできない場合は、テスト トランザクションのみが通過できるようにお使いのファイアウォールを選択的に開くことを選択できます**。 可用性テスト エージェント用のファイアウォールの例外について詳しくは、[IP アドレス ガイド](./ip-addresses.md#availability-tests)を参照してください。
 
 > [!NOTE]
 > 複数の場所 (**少なくとも 5 か所**) からテストを行うことを強くお勧めします。 これにより、特定の場所での一時的な問題による誤検知を防止します。 さらに、**テストの場所の数をアラートの場所のしきい値 + 2** にすると最適な構成になることがわかっています。
@@ -107,21 +107,21 @@ Azure portal で、 **[リソースの作成]**  >  **[開発者ツール]**  > 
 * 懸案や作業の項目を Git または Azure Boards に記録して問題を追跡する。 バグには、このイベントへのリンクが含まれます。
 * Visual Studio で Web テスト結果を開く。
 
-エンドツーエンドのトランザクションの診断エクスペリエンスの詳細については、[こちら](../../azure-monitor/app/transaction-diagnostics.md)を参照してください。
+エンドツーエンドのトランザクションの診断エクスペリエンスの詳細については、[こちら](./transaction-diagnostics.md)を参照してください。
 
-例外の行をクリックすると、代理可用性テストが失敗した原因であるサーバー側の例外の詳細が表示されます。 コード レベルの豊富な診断の [デバッグ スナップショット](../../azure-monitor/app/snapshot-debugger.md)を取得することもできます。
+例外の行をクリックすると、代理可用性テストが失敗した原因であるサーバー側の例外の詳細が表示されます。 コード レベルの豊富な診断の [デバッグ スナップショット](./snapshot-debugger.md)を取得することもできます。
 
 ![サーバー側診断](./media/monitor-web-app-availability/open-instance-4.png)
 
-生の結果に加えて、[メトリックス エクスプローラー](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)に 2 つの重要な可用性メトリックを表示することもできます。
+生の結果に加えて、[メトリックス エクスプローラー](../platform/metrics-getting-started.md)に 2 つの重要な可用性メトリックを表示することもできます。
 
 1. 可用性:すべてのテスト実行にわたる、成功したテストの割合 (%)。
 2. テスト期間:すべてのテスト実行にわたる平均のテスト期間。
 
 ## <a name="automation"></a>Automation
 
-* [PowerShell スクリプトを使用して、可用性テストを自動的に設定します](../../azure-monitor/app/powershell.md#add-an-availability-test)。
-* アラートが発生したときに呼び出される [webhook](../../azure-monitor/platform/alerts-webhooks.md) を設定する。
+* [PowerShell スクリプトを使用して、可用性テストを自動的に設定します](./powershell.md#add-an-availability-test)。
+* アラートが発生したときに呼び出される [webhook](../platform/alerts-webhooks.md) を設定する。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -131,5 +131,4 @@ Azure portal で、 **[リソースの作成]**  >  **[開発者ツール]**  > 
 
 * [可用性のアラート](availability-alerts.md)
 * [複数ステップ Web テスト](availability-multistep.md)
-
 

@@ -4,12 +4,12 @@ description: このチュートリアルでは、Azure Pipelines を使用して
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 11485d22abcf0b8e1eb13d8123ff21c7fe0079f8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 992d720d86fc2e7fedd8e7fd4b559220ff3c0512
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75614147"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260358"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>チュートリアル:CI/CD を使用して Service Fabric クラスターへアプリケーションをデプロイする
 
@@ -39,7 +39,7 @@ ms.locfileid: "75614147"
 * [Visual Studio 2019 をインストール](https://www.visualstudio.com/)し、**Azure 開発**ワークロードと **ASP.NET および Web 開発**ワークロードをインストールします。
 * [Service Fabric SDK をインストール](service-fabric-get-started.md)します。
 * [このチュートリアルに従って](service-fabric-tutorial-create-vnet-and-windows-cluster.md)、たとえば、Azure 上に Windows Service Fabric クラスターを作成します。
-* [Azure DevOps 組織](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student)を作成します。 これにより、Azure DevOps でプロジェクトを作成し、Azure Pipelines を使用することができます。
+* [Azure DevOps 組織](/azure/devops/organizations/accounts/create-organization-msa-or-work-student)を作成します。 これにより、Azure DevOps でプロジェクトを作成し、Azure Pipelines を使用することができます。
 
 ## <a name="download-the-voting-sample-application"></a>投票サンプル アプリケーションをダウンロードする
 

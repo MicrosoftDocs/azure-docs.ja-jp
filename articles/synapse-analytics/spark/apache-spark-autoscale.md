@@ -1,5 +1,5 @@
 ---
-title: Azure Synapse Apache Spark インスタンスの自動スケーリング
+title: Apache Spark インスタンスの自動スケーリング
 description: Azure Synapse の自動スケール機能を使用して、Apache Spark インスタンスを自動的にスケーリングします
 author: euangMS
 ms.author: euang
@@ -7,13 +7,14 @@ ms.reviewer: euang
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
+ms.subservice: spark
 ms.date: 03/31/2020
-ms.openlocfilehash: be7ac79b9429d2fc72c3b6bc2b6d92666b089dfb
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c043941543088d9bdbfd535f372e2335e1ba55a5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591966"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500353"
 ---
 # <a name="automatically-scale-azure-synapse-analytics-apache-spark-pools"></a>Azure Synapse Analytics Apache Spark プールの自動スケーリング
 
@@ -66,12 +67,12 @@ Apache Spark for Azure Synapse Analytics プールの自動スケーリング機
 
 スケーリング操作が完了するまでに、1 分から 5 分かかる場合があります。
 
-### <a name="preparation-for-scaling-down"></a>スケール ダウンの準備
+### <a name="prepare-for-scaling-down"></a>スケール ダウンを準備する
 
-インスタンスのスケールダウンの処理中には、自動スケーリングによってノードが使用停止状態になり、そのノードでは新しい実行プログラムが起動されなくなります。
+インスタンスのスケール ダウン処理中には、自動スケーリングによってノードが使用停止状態にされるため、そのノードでは新しい Executor を起動できなくなります。
 
 実行中のジョブは引き続き実行されて終了します。 保留中のジョブは、少ない数の使用可能ノードで通常どおりにスケジュールされるのを待ちます。
 
 ## <a name="next-steps"></a>次のステップ
 
-新しい Spark プールを設定する ([Spark プールの作成](..\quickstart-create-apache-spark-pool.md)に関するクイック スタート)
+新しい Spark プールを設定する ([Spark プールの作成](../quickstart-create-apache-spark-pool-portal.md)に関するクイック スタート)

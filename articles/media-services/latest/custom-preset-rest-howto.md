@@ -3,23 +3,25 @@ title: Media Services v3 REST を使用したカスタム変換のエンコー�
 description: このトピックでは、Azure Media Services v3 で REST を使用してカスタム変換をエンコードする方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: how-to
 ms.custom: ''
-ms.date: 05/14/2019
-ms.author: juliako
-ms.openlocfilehash: 30e22cb786e5dc2a667fe41ca8edf398cf0b7613
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 2656bf93cb9c29ded4b9dde49f0caba91c1654b7
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65761790"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295633"
 ---
 # <a name="how-to-encode-with-a-custom-transform---rest"></a>カスタム変換を使用してエンコードする方法 - REST
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services を使用してエンコードする場合、[ファイルのストリーム配信](stream-files-tutorial-with-rest.md#create-a-transform)に関するチュートリアルで示されている業界のベスト プラクティスに基づき、推奨される組み込みプリセットのいずれかを使用して速やかに作業を開始できます。 また、特定のシナリオやデバイス要件をターゲットとするカスタム プリセットを作成することもできます。
 
@@ -32,7 +34,7 @@ Azure Media Services を使用してエンコードする場合、[ファイル�
 
 ## <a name="prerequisites"></a>前提条件 
 
-- [Media Services アカウントを作成する](create-account-cli-how-to.md) <br/>リソース グループ名と Media Services アカウント名を覚えておいてください。 
+- [Media Services アカウントを作成する](./create-account-howto.md) <br/>リソース グループ名と Media Services アカウント名を覚えておいてください。 
 - [Azure Media Services REST API を呼び出すように Postman を構成します](media-rest-apis-with-postman.md)。<br/>トピック「[Azure AD トークンを取得する](media-rest-apis-with-postman.md#get-azure-ad-token)」の最後の手順を必ず実行してください。 
 
 ## <a name="define-a-custom-preset"></a>カスタム プリセットを定義する
@@ -133,7 +135,7 @@ Azure Media Services を使用してエンコードする場合、[ファイル�
 
 ## <a name="create-a-new-transform"></a>新しい変換を作成する  
 
-この例では、先ほど定義したカスタム プリセットに基づく**変換**を作成します。 変換を作成するときは、まず [Get](https://docs.microsoft.com/rest/api/media/transforms/get) を使用して、変換がすでに存在しているかどうかを確認する必要があります。 変換が存在する場合はそれを再利用します。 
+この例では、先ほど定義したカスタム プリセットに基づく**変換**を作成します。 変換を作成するときは、まず [Get](/rest/api/media/transforms/get) を使用して、変換がすでに存在しているかどうかを確認する必要があります。 変換が存在する場合はそれを再利用します。 
 
 ダウンロードした Postman のコレクションで、 **[Transforms and Jobs]\(変換とジョブ\)** -> **[Create or Update Transform]\(変換の作成または更新\)** を選択します。
 
@@ -151,4 +153,4 @@ Media Services が、指定されたビデオまたはオーディオに変換�
 
 ## <a name="next-steps"></a>次のステップ
 
-[他の REST 操作](https://docs.microsoft.com/rest/api/media/)を参照する
+[他の REST 操作](/rest/api/media/)を参照する

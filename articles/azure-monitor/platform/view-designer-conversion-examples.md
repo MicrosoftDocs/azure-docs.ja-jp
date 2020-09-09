@@ -7,11 +7,11 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: b50d8cfa4731c487997e2bf431a9c71eff08f5d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234143"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84702637"
 ---
 # <a name="view-designer-conversion-examples"></a>ビュー デザイナーの変換の例
 

@@ -1,6 +1,5 @@
 ---
-title: Net# カスタム ニューラル ネットワーク
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (classic): Net# カスタム ニューラル ネットワーク - Azure'
 description: Net# ニューラル ネットワーク仕様言語の構文ガイド。 Azure Machine Learning Studio (クラシック) でカスタム ニューラル ネットワーク モデルを作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
@@ -10,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: c1912e670a9cf1c178b58cefbd33171f15be2483
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4441c58838c3c44b01e57642e4433b12b2d1bc1
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218244"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432913"
 ---
-# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) での Net# ニューラル ネットワーク仕様言語について
+# <a name="guide-to-net-neural-network-specification-language-for-machine-learning-studio-classic"></a>Machine Learning Studio (クラシック) での Net# ニューラル ネットワーク仕様言語について
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 Net# は、ディープ ニューラル ネットワークや任意次元の畳み込みなどの複雑なニューラル ネットワーク アーキテクチャを定義するために使用される、Microsoft が開発した言語です。 複雑な構造体を使用して、イメージ、ビデオ、オーディオなどのデータに関する学習を強化できます。
 

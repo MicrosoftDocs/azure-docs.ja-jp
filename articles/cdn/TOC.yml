@@ -12,8 +12,9 @@
       href: cdn-create-a-storage-account-with-cdn.md
     - name: プロファイルとエンドポイントの作成
       href: cdn-create-new-endpoint.md
-    - name: Azure Resource Manager テンプレートを使用してプロファイルを作成する
-      href: create-profile-resource-manager-template.md
+    - name: プロファイルとエンドポイントの作成 - Resource Manager テンプレート
+      displayName: Resource Manager
+      href: create-profile-endpoint-template.md
 - name: チュートリアル
   items:
     - name: Web アプリに Azure CDN を追加する
@@ -67,6 +68,8 @@
           href: cdn-restrict-access-by-country.md
         - name: ファイル圧縮によるパフォーマンスの向上
           href: cdn-improve-performance.md
+        - name: エンドポイントのマルチオリジン
+          href: endpoint-multiorigin.md
         - name: キャッシュ動作の制御
           items:
             - name: キャッシュ規則を使用してキャッシュ動作を制御する

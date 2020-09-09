@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e429dce497411305964cb1ec5298228dc4093b1f
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 5a0804ae5ee2dbffaa57fc967fda29701562ab44
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81685950"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085703"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Pandas を使用して Azure BLOB ストレージのデータを探索する
 
@@ -51,7 +51,7 @@ ms.locfileid: "81685950"
     blob_service=BlockBlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)
     blob_service.get_blob_to_path(CONTAINERNAME,BLOBNAME,LOCALFILENAME)
     t2=time.time()
-    print(("It takes %s seconds to download "+blobname) % (t2 - t1))
+    print(("It takes %s seconds to download "+BLOBNAME) % (t2 - t1))
     ```
 
 1. ダウンロードしたファイルから、Pandas データ フレームにデータを読み込みます。

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: c0b1519992ba930382a1987aed185ef3c92eded4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9dafb702117a7e171ff88b3c77d7b8b79503636f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75453430"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066461"
 ---
 # <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Azure Logic Apps のワークフロー アクションに対して並列分岐を作成または結合する
 
@@ -183,7 +183,7 @@ ms.locfileid: "75453430"
 
 ## <a name="get-support"></a>サポートを受ける
 
-* 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
+* ご質問がある場合は、[Azure Logic Apps に関する Microsoft Q&A 質問ページ](/answers/topics/azure-logic-apps.html)を参照してください。
 * 機能や提案について投稿や投票を行うには、[Azure Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次のステップ

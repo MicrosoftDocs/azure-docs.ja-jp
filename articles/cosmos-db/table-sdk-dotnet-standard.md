@@ -8,12 +8,13 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: f7c6829d858e36b55f079f8ee03e431f67995e66
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: bf8563274d7aa677249335612d0156d6a5ecbd95
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272578"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018452"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET Standard API: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -36,51 +37,59 @@ ms.locfileid: "81272578"
 ## <a name="release-notes-for-200-series"></a>2\.0.0 シリーズのリリース ノート
 2.0.0 シリーズは [Microsoft.Azure.Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) に依存します。パフォーマンスが向上し、Cosmos DB エンドポイントに名前空間が統合されています。
 
-### <a name="200-preview"></a><a name="2.0.0-preview"/>2.0.0-preview
+### <a name="200-preview"></a><a name="2.0.0-preview"></a>2.0.0-preview
 * 2\.0.0 Table SDK の初期プレビューは [Microsoft.Azure.Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) に依存します。パフォーマンスが向上し、Cosmos DB エンドポイントに名前空間が統合されています。 パブリック API は変わりません。
 
 ## <a name="release-notes-for-100-series"></a>1\.0.0 シリーズのリリース ノート
 1.0.0 シリーズは [Microsoft.Azure.DocumentDB.Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/) に依存します。
 
-### <a name="107"></a><a name="1.0.7"/>1.0.7
+### <a name="108"></a><a name="1.0.8"></a>1.0.8
+* Cosmosdb エンドポイントの場合は、TTL プロパティを設定するためのサポートが追加されています 
+* タイムアウト時およびタスクが取り消される例外時に再試行ポリシーが優先されます
+* ASP.NET アプリケーションで断続的にタスクが取り消される例外が修正されています
+* セカンダリ エンドポイントのみのロケーション モードから取得される Azure Table Storage が修正されています
+* 断続的な null 参照の例外を修正する2.11.2 に `Microsoft.Azure.DocumentDB.Core` の依存関係バージョンが更新されています
+* Azure シェルとの互換性の競合を修正する 7.6.4 に `Odata.Core` の依存関係バージョンが更新されています
+
+### <a name="107"></a><a name="1.0.7"></a>1.0.7
 * Table SDK の既定のトレース レベルを SourceLevels.Off に設定することによるパフォーマンスの向上 (これは app.config を使用してオプトインできます)
 
-### <a name="105"></a><a name="1.0.5"/>1.0.5
+### <a name="105"></a><a name="1.0.5"></a>1.0.5
 * Rest Executor を使用して Cosmos DB Table API と通信するための新しい構成が TableClientConfiguration に導入されました
 
-### <a name="105-preview"></a><a name="1.0.5-preview"/>1.0.5-preview
+### <a name="105-preview"></a><a name="1.0.5-preview"></a>1.0.5-preview
 * バグの修正
 
-### <a name="104"></a><a name="1.0.4"/>1.0.4
-* バグの修正
-* RestExecutorConfiguration に対して HttpClientTimeout オプションが提供されます。
-
-### <a name="104-preview"></a><a name="1.0.4-preview"/>1.0.4-preview
+### <a name="104"></a><a name="1.0.4"></a>1.0.4
 * バグの修正
 * RestExecutorConfiguration に対して HttpClientTimeout オプションが提供されます。
 
-### <a name="101"></a><a name="1.0.1"/>1.0.1
+### <a name="104-preview"></a><a name="1.0.4-preview"></a>1.0.4-preview
+* バグの修正
+* RestExecutorConfiguration に対して HttpClientTimeout オプションが提供されます。
+
+### <a name="101"></a><a name="1.0.1"></a>1.0.1
 * バグの修正
 
-### <a name="100"></a><a name="1.0.0"/>1.0.0
+### <a name="100"></a><a name="1.0.0"></a>1.0.0
 * 一般公開リリース
 
-### <a name="0110-preview"></a><a name="0.11.0-preview"/>0.11.0-preview
+### <a name="0110-preview"></a><a name="0.11.0-preview"></a>0.11.0-preview
 * CloudTableClient を構成する方法が変更されました。 構築時に TableClientConfiguration オブジェクトを受け取るようになりました。 TableClientConfiguration では、対象のエンドポイントが Cosmos DB Table API であるかまたは Azure Storage Table API であるかによって、クライアントの動作を構成するさまざまなプロパティが提供されます。
 * カスタム列に並べ替えられた順序で結果を返すために TableQuery にサポートが追加されました。 この機能は、Cosmos DB テーブル エンドポイントでのみサポートされています。
 * さまざまな結果型で RequestCharges を公開するためのサポートが追加されました。 この機能は、Cosmos DB テーブル エンドポイントでのみサポートされています。
 
-### <a name="0101-preview"></a><a name="0.10.1-preview"/>0.10.1-preview
+### <a name="0101-preview"></a><a name="0.10.1-preview"></a>0.10.1-preview
 * Azure Storage Table エンドポイントに対する SAS トークン、TablePermissions、ServiceProperties、および ServiceStats の操作が追加されています。 
    > [!NOTE]
    > 以前の Azure Storage Table SDK の一部の機能はまだサポートされていません (クライアント側の暗号化など)。
 
-### <a name="0100-preview"></a><a name="0.10.0-preview"/>0.10.0-preview
+### <a name="0100-preview"></a><a name="0.10.0-preview"></a>0.10.0-preview
 * Azure Storage Table エンドポイントに対するコア CRUD、バッチ、およびクエリ操作のサポートが追加されています。 
    > [!NOTE]
    > 以前の Azure Storage Table SDK の一部の機能はまだサポートされていません (クライアント側の暗号化など)。
 
-### <a name="091-preview"></a><a name="0.9.1-preview"/>0.9.1-preview
+### <a name="091-preview"></a><a name="0.9.1-preview"></a>0.9.1-preview
 * Azure Cosmos DB Table .NET Standard SDK は、Cosmos DB 上の Table データ モデルに効率的にアクセスするためのクロスプラットフォーム対応 .NET ライブラリです。 この最初のリリースでは、テーブルおよびエンティティの CRUD とクエリの機能全体、および [Cosmos DB Table SDK For .NET Framework](table-sdk-dotnet.md) に類似する API がサポートされています。 
    > [!NOTE]
    >  Azure Storage Table のエンドポイントは、0.9.1-preview バージョンではまだサポートされていません。

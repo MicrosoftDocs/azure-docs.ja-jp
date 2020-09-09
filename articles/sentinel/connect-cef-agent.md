@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 5a8b97e5bef57b29f388c86628f0af5d05e1724a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a7d7c7b7236841835866ccb7786e7e4eab767c1f
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731657"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565589"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>手順 1:ログ フォワーダーをデプロイする
 
@@ -49,6 +49,16 @@ ms.locfileid: "81731657"
 
 1. スクリプトの実行中に、エラーまたは警告メッセージが表示されないことを確認してください。
 
+> [!NOTE]
+> **同じマシンを使用してプレーンな Syslog *と* CEF メッセージの両方を転送する**
+>
+> このログ フォワーダー マシンを使用して [Syslog メッセージ](connect-syslog.md)と CEF を転送する予定であれば、Syslog および CommonSecurityLog テーブルへのイベントの重複を回避するために、以下を実行します。
+>
+> 1. CEF 形式でフォワーダーにログを送信する各ソース マシンで、Syslog 構成ファイルを編集し、CEF メッセージの送信に使用されているファシリティを削除する必要があります。 これで、CEF で送信されるファシリティは、Syslog で送信されません。 この方法の詳細については、「[Linux エージェントでの Syslog の構成](../azure-monitor/platform/data-sources-syslog.md#configure-syslog-on-linux-agent)」を参照してください。
+>
+> 1. これらのマシンで次のコマンドを実行して、エージェントと Azure Sentinel の Syslog 構成との同期を無効にする必要があります。 これで、前の手順で構成に加えた変更が上書きされなくなります。<br>
+> `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
+
 [手順 2 に進みます:セキュリティソリューションを構成して、CEF メッセージを転送するようにします](connect-cef-solution-config.md) 。
 
 ## <a name="deployment-script-explained"></a>デプロイ スクリプトの説明
@@ -75,8 +85,10 @@ syslog デーモンを選択して、適切な説明を表示してください�
 
         `security-config-omsagent.conf` ファイルの内容は次のとおりです。
 
-            :rawmsg, regex, "CEF\|ASA" ~
-            *.* @@127.0.0.1:25226
+        ```console
+        :rawmsg, regex, "CEF"|"ASA"
+        *.* @@127.0.0.1:25226
+        ```
 
 1. **Syslog デーモンを再起動する**
 
@@ -107,9 +119,11 @@ syslog デーモンを選択して、適切な説明を表示してください�
 
         `security-config-omsagent.conf` ファイルの内容は次のとおりです。
 
-            filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
-            destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
-            log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
+        ```console
+        filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
+        destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
+        log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
+        ```
 
 1. **Syslog デーモンを再起動する**
 

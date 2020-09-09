@@ -3,17 +3,17 @@ title: Azure Image Builder を使用して、既存のイメージ バージョ�
 description: Azure Image Builder を使用して、既存のイメージ バージョンから新しい VM イメージ バージョンを作成します。
 author: cynthn
 ms.author: cynthn
-ms.date: 05/02/2019
+ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
-ms.openlocfilehash: 766e7d5c4151000a582bcf07d80b89af3b7d8a65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdae608d573bc411242b4bf66ea033a7df421cfc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869538"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005703"
 ---
-# <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder"></a>プレビュー:Azure Image Builder を使用して既存のイメージ バージョンから新しい VM イメージ バージョンを作成する
+# <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-windows"></a>プレビュー:Windows で Azure Image Builder を使用して既存のイメージ バージョンから新しい VM イメージ バージョンを作成する
 
 この記事では、[共有イメージ ギャラリー](shared-image-galleries.md)で既存のイメージ バージョンを取得し、それを更新し、新しいイメージ バージョンとしてギャラリーに公開する方法について説明します。
 
@@ -40,16 +40,18 @@ az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachine
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
-az provider show -n Microsoft.Storage | grep registrationState
+az provider show -n Microsoft.KeyVault | grep registrationState
 az provider show -n Microsoft.Compute | grep registrationState
+az provider show -n Microsoft.Storage | grep registrationState
 ```
 
 登録されていない場合、次のコマンドを実行します。
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
-az provider register -n Microsoft.Storage
 az provider register -n Microsoft.Compute
+az provider register -n Microsoft.KeyVault
+az provider register -n Microsoft.Storage
 ```
 
 
@@ -93,16 +95,15 @@ sigDefImgVersionId=$(az sig image-version list \
    --subscription $subscriptionID --query [].'id' -o json | grep 0. | tr -d '"' | tr -d '[:space:]')
 ```
 
-
-既に自身の共有イメージ ギャラリーがあり、以前の例に従わなかった場合、Image Builder がリソース グループにアクセスできるようにアクセス許可を割り当てる必要があります。これによりギャラリーにアクセスできます。
-
+## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>ユーザー割り当て ID を作成し、リソース グループにアクセス許可を設定する
+前の例でユーザー ID を設定したので、必要なのはそのリソース ID を取得することだけです。その後、それをテンプレートに追加します。
 
 ```azurecli-interactive
-az role assignment create \
-    --assignee cf32a0cc-373c-47c9-9156-0db11f6a6dfc \
-    --role Contributor \
-    --scope /subscriptions/$subscriptionID/resourceGroups/$sigResourceGroup
+#get identity used previously
+imgBuilderId=$(az identity list -g $sigResourceGroup --query "[?contains(name, 'aibBuiUserId')].id" -o tsv)
 ```
+
+既に自身の共有イメージ ギャラリーがあり、以前の例に従わなかった場合、Image Builder がリソース グループにアクセスできるようにアクセス許可を割り当てる必要があります。これによりギャラリーにアクセスできます。 [イメージを作成して Shared Image Gallery に配布する方法](image-builder-gallery.md)に関する例の手順をご確認ください。
 
 
 ## <a name="modify-helloimage-example"></a>helloImage の例の変更
@@ -121,6 +122,7 @@ sed -i -e "s%<sigDefImgVersionId>%$sigDefImgVersionId%g" helloImageTemplateforSI
 sed -i -e "s/<region1>/$location/g" helloImageTemplateforSIGfromWinSIG.json
 sed -i -e "s/<region2>/$additionalregion/g" helloImageTemplateforSIGfromWinSIG.json
 sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateforSIGfromWinSIG.json
+sed -i -e "s%<imgBuilderId>%$imgBuilderId%g" helloImageTemplateforSIGfromWinSIG.json
 ```
 
 ## <a name="create-the-image"></a>イメージの作成

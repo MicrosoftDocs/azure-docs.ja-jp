@@ -5,24 +5,24 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2019
-ms.openlocfilehash: 8353c0fba034022a79570d09b320b7b5c4c3e60a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 165b7d00c3cf307e7996e84a35bb2a202f448cc0
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74951855"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076880"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>HDInsight の Hadoop での Apache Sqoop の使用
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-HDInsight 内で Apache Sqoop を使用して、HDInsight クラスターと Azure SQL データベース間でデータのインポートとエクスポートを実行する方法について説明します。
+HDInsight 内で Apache Sqoop を使用して、HDInsight クラスターと Azure SQL Database 間でデータのインポートとエクスポートを行う方法について学習します。
 
 Apache Hadoop はログやファイルなどの非構造化データおよび半構造化データを処理する場合に自然な選択ですが、リレーショナル データベースに格納された構造化データを処理する必要が生じることもあります。
 
-[Apache Sqoop](https://sqoop.apache.org/docs/1.99.7/user.html) は、Hadoop クラスターとリレーショナル データベース間でデータを転送するためのツールです。 このツールを使用して、SQL、MySQL、Oracle などのリレーショナル データベース管理システム (RDBMS) から Hadoop 分散ファイル システム (HDFS) へデータをインポートしたり、MapReduce または Apache Hive を使用して Hadoop のデータを変換し、そのデータを RDBMS へ取り込んだりできます。 この記事では、リレーショナル データベースとして SQL Server データベースを使用します。
+[Apache Sqoop](https://sqoop.apache.org/docs/1.99.7/user.html) は、Hadoop クラスターとリレーショナル データベース間でデータを転送するためのツールです。 このツールを使用して、SQL、MySQL、Oracle などのリレーショナル データベース管理システム (RDBMS) から Hadoop 分散ファイル システム (HDFS) へデータをインポートしたり、MapReduce または Apache Hive を使用して Hadoop のデータを変換し、そのデータを RDBMS へ取り込んだりできます。 この記事では、リレーショナル データベースとして Azure SQL Database を使用します。
 
 > [!IMPORTANT]  
 > この記事では、データ転送を実行するテスト環境を設定します。 次に、後述の「[Sqoop ジョブの実行](#run-sqoop-jobs)」セクションにあるいずれかの方法から、この環境のデータ転送方法を選択します。
@@ -82,7 +82,7 @@ HDInsight クラスターにはサンプル データがいくつか付属して
     |---|---|
     |サブスクリプション |ドロップダウン リストから Azure サブスクリプションを選択します。|
     |Resource group |ドロップダウン リストからリソース グループを選択するか、新しいリソース グループを作成します。|
-    |Location |ドロップダウン リストからリージョンを選択します。|
+    |場所 |ドロップダウン リストからリージョンを選択します。|
     |クラスター名 |Hadoop クラスターの名前を入力します。 小文字のみを使用します。|
     |[Cluster Login User Name]\(クラスター ログイン ユーザー名\) |事前に設定されている値 `admin` のままにします。|
     |[クラスター ログイン パスワード] |パスワードを入力します。|
@@ -93,9 +93,9 @@ HDInsight クラスターにはサンプル データがいくつか付属して
     |_artifacts の場所 | 別の場所で独自の bacpac ファイルを使用する場合を除き、既定値を使用します。|
     |Sas トークンとしての _artifacts の場所 |空白のままにします。|
     |Bacpac ファイル名 |独自の bacpac ファイルを使用する場合を除き、既定値を使用します。|
-    |Location |既定値を使用します。|
+    |場所 |既定値を使用します。|
 
-    Azure SQL Server 名は `<ClusterName>dbserver` になります。 データベース名は `<ClusterName>db` になります。 既定のストレージ アカウント名は `e6qhezrh2pdqu` になります。
+    [論理 SQL サーバー](../../azure-sql/database/logical-servers.md)名は `<ClusterName>dbserver` になります。 データベース名は `<ClusterName>db` になります。 既定のストレージ アカウント名は `e6qhezrh2pdqu` になります。
 
 3. **[上記の使用条件に同意する]** を選択します。
 
@@ -113,7 +113,7 @@ HDInsight では、さまざまな方法を使用して Sqoop ジョブを実行
 
 ## <a name="limitations"></a>制限事項
 
-* 一括エクスポート - Linux ベースの HDInsight では、Microsoft SQL Server または Azure SQL Database にデータをエクスポートするために使用する Sqoop コネクタは、一括挿入を現在サポートしていません。
+* 一括エクスポート - Linux ベースの HDInsight では、Microsoft SQL Server または SQL Database にデータをエクスポートするために使用する Sqoop コネクタは、一括挿入を現在サポートしていません。
 * バッチ処理 - Linux ベースの HDInsight で、挿入処理実行時に `-batch` スイッチを使用すると、Sqoop は挿入操作をバッチ処理するのではなく、複数の挿入を実行します。
 
 ## <a name="next-steps"></a>次のステップ
@@ -121,5 +121,5 @@ HDInsight では、さまざまな方法を使用して Sqoop ジョブを実行
 ここでは Sqoop の使用方法を学習しました。 詳細については、次を参照してください。
 
 * [HDInsight での Apache Hive の使用](../hdinsight-use-hive.md)
-* [HDInsight へのデータのアップロード](../hdinsight-upload-data.md): HDInsight/Azure BLOB ストレージにデータをアップロードするその他の方法を説明します。
+* [HDInsight へのデータのアップロード](../hdinsight-upload-data.md):HDInsight/Azure Blob Storage にデータをアップロードするその他の方法を説明します。
 * [Apache Sqoop を使用して、HDInsight 上の Apache Hadoop と SQL Database の間でデータをインポートおよびエクスポートする](./apache-hadoop-use-sqoop-mac-linux.md)

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: e8917a0a5678c4c6b72352a0d4c1523bfea3c96d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d222eca76f020703f89dd1bdd5848cec4bc52ca
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79537212"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006535"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>Azure Database for MySQL に対する MySQL ドライバーと管理ツールの互換性
 この記事では、Azure Database for MySQL との、ドライバーと管理ツールの互換性について説明します。
@@ -34,7 +34,7 @@ Azure Database for MySQL では、MySQL データベースの世界で最も人�
 | C | MySQL コネクタ/C (libmysqlclient) | https://dev.mysql.com/doc/refman/5.7/en/c-api-implementations.html | 6.0.2 以降 | | |
 | C | MySQL コネクタ/ODBC (myodbc) | https://github.com/mysql/mysql-connector-odbc | 3.51.29 以降 | | |
 | C++ | MySQL コネクタ/C++ | https://github.com/mysql/mysql-connector-cpp | 1.1.9 以降 | 1.1.3 以下 | | 
-| C++ | MySQL++| https://tangentsoft.net/mysql++ | 3.2.3 以降 | | |
+| C++ | MySQL++| https://github.com/tangentsoft/mysqlpp | 3.2.3 以降 | | |
 | Ruby | mysql2 | https://github.com/brianmario/mysql2 | 0.4.10 以降 | | |
 | R | RMySQL | https://github.com/rstats-db/RMySQL | 0.10.16 以降 | | |
 | Swift | mysql-swift | https://github.com/novi/mysql-swift | 0.7.2 以降 | | |
@@ -45,14 +45,14 @@ Azure Database for MySQL では、MySQL データベースの世界で最も人�
 
 |                                     | **MySQL Workbench 6.x 以降** | **Navicat 12** | **PHPMyAdmin 4.x 以降** |
 | :---------------------------------- | :----------------------------- | :------------- | :-------------------------|
-| 作成、更新、読み取り、書き込み、削除 | X | X | X |
-| SSL 接続 | X | X | X |
-| SQL クエリのオート コンプリート | X | X |  |
-| データのインポートとエクスポート | X | X | X | 
-| 複数の形式へのエクスポート | X | X | X |
-| バックアップと復元 |  | X |  |
-| サーバー パラメーターの表示 | X | X | X |
-| クライアント接続の表示 | X | X | X |
+| **作成、更新、読み取り、書き込み、削除** | X | X | X |
+| **SSL 接続** | X | X | X |
+| **SQL クエリのオート コンプリート** | X | X |  |
+| **データのインポートとエクスポート** | X | X | X |
+| **複数の形式へのエクスポート** | X | X | X |
+| **バックアップと復元** |  | X |  |
+| **サーバー パラメーターの表示** | X | X | X |
+| **クライアント接続の表示** | X | X | X |
 
 ## <a name="next-steps"></a>次のステップ
 

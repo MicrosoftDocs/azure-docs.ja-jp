@@ -6,16 +6,16 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 04/19/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: fac33a01afc2efc1ab06c4783c11f7a089bb6208
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb82eb2d8e23daec0ddb8856b713c1aa051f25c5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "62114157"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85355949"
 ---
 # <a name="troubleshooting-source-anchor-issues-during-installation"></a>インストール時のソース アンカーに関する問題のトラブルシューティング
 この記事では、インストール時に発生する可能性のあるソース アンカーに関するさまざまな問題について説明し、これらの問題を解決する方法を示します。

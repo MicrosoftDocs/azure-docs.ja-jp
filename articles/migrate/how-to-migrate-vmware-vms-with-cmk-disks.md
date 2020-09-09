@@ -7,12 +7,12 @@ ms.manager: carmonm
 ms.topic: article
 ms.date: 03/12/2020
 ms.author: raynew
-ms.openlocfilehash: c6b791fda43a018a26204b2b43dc1e581ff3a945
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 01f30305529e7f142be0ca6ddffa0f5a12a235bb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232703"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260016"
 ---
 # <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>サーバー側暗号化とカスタマー マネージド キーを使用して VMware VM を Azure VM に移行する
 
@@ -27,7 +27,7 @@ Azure Migrate Server Migration ポータルでの操作によって、[エージ
 ## <a name="prerequisites"></a>前提条件
 
 - ツールの要件を理解するために、エージェントレス レプリケーションを使用した VMware VM から Azure への移行に関する[チュートリアルを確認してください](tutorial-migrate-vmware.md)。
-- [こちらの手順に従って](how-to-add-tool-first-time.md)、Azure Migrate プロジェクトを作成し、**Azure Migrate: Server Migration** ツールをプロジェクトに追加します。
+- [こちらの手順に従って](how-to-add-tool-first-time.md)、Azure Migrate プロジェクトを作成し、**Azure Migrate:Server Migration** ツールをプロジェクトに追加します。
 - [こちらの手順に従って](how-to-set-up-appliance-vmware.md)、オンプレミス環境で VMware 用の Azure Migrate アプライアンスを設定し、検出を完了します。
 
 ## <a name="prepare-for-replication"></a>レプリケーションの準備
@@ -58,7 +58,11 @@ Server Migration ポータルでの操作により、プロジェクトで VM �
 
 ディスク暗号化セット オブジェクトによって、SSE に使用する CMK を含む Key Vault にマネージド ディスクがマップされます。 CMK を使用して VM をレプリケートするには、ディスク暗号化セットを作成し、それを入力としてレプリケーション操作に渡します。
 
-Azure PowerShell を使用してディスク暗号化セットを作成するには、[こちら](../virtual-machines/windows/disk-encryption.md#powershell)の例に従ってください。 ディスク暗号化セットが、VM の移行先となるターゲット サブスクリプションと、移行のターゲット Azure リージョンに作成されていることを確認します。
+Azure PowerShell を使用してディスク暗号化セットを作成するには、[こちら](../virtual-machines/windows/disks-enable-customer-managed-keys-powershell.md)の例に従ってください。 ディスク暗号化セットが、VM の移行先となるターゲット サブスクリプションと、移行のターゲット Azure リージョンに作成されていることを確認します。
+
+ディスク暗号化セットは、カスタマー マネージド キーでマネージド ディスクを暗号化するように、またはカスタマー マネージド キーとプラットフォーム キーの両方で二重に暗号化するように構成できます。 保存時の二重暗号化オプションを使用するには、[こちら](../virtual-machines/windows/disks-enable-double-encryption-at-rest-powershell.md)で説明しているようにディスク暗号化セットを構成します。
+
+次に示す例では、カスタマー マネージド キーを使用するようにディスク暗号化セットを構成しています。
 
 ```azurepowershell
 $Location = "southcentralus"                           #Target Azure region for migration 

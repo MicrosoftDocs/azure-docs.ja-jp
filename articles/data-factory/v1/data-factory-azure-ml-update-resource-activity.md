@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: afc79badd19fa180e631f1f8fa9735567a0b1e33
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0204a2873b288dcb2082dbd5c9c984d29fa6d456
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74978715"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254924"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>更新リソース アクティビティを使って Azure Machine Learning モデルを更新する
 
@@ -44,10 +44,10 @@ ms.locfileid: "74978715"
 1. [Azure Machine Learning Studio (クラシック)](https://studio.azureml.net) で実験を作成します。
 2. モデルが準備できたら、Azure Machine Learning Studio (クラシック) を使用して、**トレーニング実験**とスコア付け/**予測実験**の両方の Web サービスを発行します。
 
-次の表で、この例で使用する Web サービスについて説明します。  詳細については、「 [プログラムによる Machine Learning のモデルの再トレーニング](../../machine-learning/machine-learning-retrain-models-programmatically.md) 」を参照してください。
+次の表で、この例で使用する Web サービスについて説明します。  詳細については、[プログラムによる Machine Learning Studio (classic) モデルの再トレーニング](../../machine-learning/studio/retrain-machine-learning-model.md)に関するページを参照してください。
 
 - **トレーニング Web サービス** - トレーニング データを受信し、トレーニング済みのモデルを作成します。 再トレーニングの出力は、Azure Blob Storage 内の .ilearner ファイルになります。 **既定のエンドポイント** が、トレーニング実験を Web サービスとして発行するときに自動的に作成されます。 エンドポイントは複数作成することができますが、この例では、既定のエンドポイントのみを使用します。
-- **スコア付け Web サービス** - ラベルの付いていないデータの例を受信し、予測を作成します。 予測の出力は、実験の構成に応じてさまざまな形式 (.csv ファイル、Azure SQL データベースの行など) をとります。 既定のエンドポイントが、予測実験を Web サービスとして発行するときに自動的に作成されます。 
+- **スコア付け Web サービス** - ラベルの付いていないデータの例を受信し、予測を作成します。 予測の出力は、実験の構成に応じてさまざまな形式 (.csv ファイル、Azure SQL Database の行など) をとります。 既定のエンドポイントが、予測実験を Web サービスとして発行するときに自動的に作成されます。 
 
 次の図は、Azure ML でのトレーニングとスコア付けのエンドポイントの関係を示しています。
 
@@ -58,7 +58,7 @@ ms.locfileid: "74978715"
 **scoring web service** を使用して、2 つ目の **Azure ML 更新リソース アクティビティ** を使用して、新しくトレーニングを行ったモデルで Web サービスを更新します。 次の例では、リンクされているサービスの定義を示します。 
 
 ## <a name="scoring-web-service-is-a-classic-web-service"></a>スコア付け Web サービスが従来の Web サービスである
-スコア付け Web サービスが**従来の Web サービス**の場合は、Azure Portal を使用して、2 つ目の**更新可能な既定以外のエンドポイント**を作成します。 手順については、「[エンドポイントを作成する](../../machine-learning/machine-learning-create-endpoint.md)」を参照してください。 更新可能な既定以外のエンドポイントを作成したら、次の手順を行います。
+スコア付け Web サービスが**従来の Web サービス**の場合は、Azure Portal を使用して、2 つ目の**更新可能な既定以外のエンドポイント**を作成します。 手順については、「[エンドポイントを作成する](../../machine-learning/studio/create-endpoint.md)」を参照してください。 更新可能な既定以外のエンドポイントを作成したら、次の手順を行います。
 
 * **[バッチ実行]** をクリックして、**mlEndpoint** JSON プロパティの URI の値を取得します。
 * **[リソースの更新]** リンクをクリックして、**updateResourceEndpoint** JSON プロパティの URI の値を取得します。 API キーは、エンドポイントのページにあります (右下隅)。

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 02/19/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: b1e7dce6f652d8c9e0fcf5974c3e72be9e1e7844
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b165741f9f7a4eb7af8424b9175aa5ec9261fbcc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77482184"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85602722"
 ---
 # <a name="azure-firewall-certifications"></a>Azure Firewall の認定資格
 
@@ -48,6 +48,8 @@ Azure Firewall は、Payment Card Industry (PCI)、Service Organization Controls
 - GLBA (米国)
 - ドイツの C5
 - GxP (FDA 21 CFR Part 11)
+- HIPPA
+- HITECH 法 (US)
 - HITRUST
 - ISO 20000-1:2011
 - ISO 22301:2012
@@ -91,6 +93,8 @@ Azure Firewall は、Payment Card Industry (PCI)、Service Organization Controls
 - EAR
 - FIPS 140-2
 - FedRAMP High
+- HIPAA
+- HITECH 法 (US)
 - HITRUST
 - IRS 1075
 - ITAR

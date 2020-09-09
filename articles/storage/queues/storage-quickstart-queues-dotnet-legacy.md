@@ -3,21 +3,25 @@ title: クイック スタート:.NET 用 Azure Storage v11 を使用してキ�
 description: このクイック スタートでは、.NET 用 Azure Storage クライアント ライブラリを使用して、キューを作成し、そこにメッセージを追加する方法について説明します。 次に、キューからメッセージを読み取って処理する方法について説明します。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 02/06/2018
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.reviewer: cbrooks
-ms.openlocfilehash: c327629f0c5e88520a8bb0b9c4ff68e6edc00c35
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.reviewer: dineshm
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 8e782dc632fe4100194015c3e0adb4ceb1ac30a6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79137341"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011465"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>クイック スタート:.NET 用 Azure Storage SDK v11 を使用してキューを管理する
 
 このクイックスタートでは、.NET 用 Azure Storage クライアント ライブラリ バージョン 11 を使用して、キューを作成し、そこにメッセージを追加する方法について説明します。 次に、キューからメッセージを読み取って処理する方法について説明します。 
+
+> [!NOTE]
+> このクイックスタートでは、Azure Queue storage クライアント ライブラリのレガシ バージョンを使用します。 最新バージョンで始めるには、「[クイックスタート: .NET 用 Azure Queue storage クライアント ライブラリ v12](storage-quickstart-queues-dotnet.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

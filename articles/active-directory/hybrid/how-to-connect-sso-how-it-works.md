@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: シームレス シングル サインオン - しくみ | Microsoft Docs'
+title: Azure AD Connect:シームレス シングル サインオン - しくみ | Microsoft Docs
 description: この記事では、Azure Active Directory シームレス シングル サインオン機能のしくみについて説明します。
 services: active-directory
 keywords: Azure AD Connect とは, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン
@@ -11,19 +11,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd4743bc38c3b2b4b9495b33535b4b73f48d1372
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bde937adba8d2469390a6cf404f6cce8c5008e87
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71176678"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144710"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory シームレス シングル サインオン: 技術的な詳細
+# <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory シームレス シングル サインオン:技術的な詳細情報
 
 この記事では、Azure Active Directory シームレス シングル サインオン (シームレス SSO) 機能の技術的なしくみについて説明します。
 
@@ -45,6 +45,9 @@ ms.locfileid: "71176678"
 
 >[!IMPORTANT]
 > `AZUREADSSOACC` コンピューター アカウントは、セキュリティ上の理由から強固に保護する必要があります。 ドメイン管理者だけがこのコンピューター アカウントを管理できるようにしてください。 コンピューター アカウント上で Kerberos 委任が無効になっていること、および Active Directory 内の他のどのアカウントにも、`AZUREADSSOACC` コンピューター アカウント上の委任のアクセス許可がないことを確認してください。 このコンピューター アカウントは、不注意で削除されるおそれがなく、ドメイン管理者のみがアクセスできる組織単位 (OU) に格納してください。 このコンピューター アカウントの Kerberos の復号化キーも機密として扱う必要があります。 少なくとも 30 日ごとに、`AZUREADSSOACC` コンピューター アカウントの [Kerberos の復号化キーをロールオーバーする](how-to-connect-sso-faq.md)ことを強くお勧めします。
+
+>[!IMPORTANT]
+> シームレス SSO では、Kerberos の AES256_HMAC_SHA1、AES128_HMAC_SHA1、および RC4_HMAC_MD5 暗号化の種類がサポートされます。 AzureADSSOAcc$ アカウントの暗号化の種類を AES256_HMAC_SHA1 に設定するか、AES タイプまたはRC4 のいずれかに設定してセキュリティを強化することをお勧めします。 暗号化の種類は、Active Directory 内のアカウントの属性の msDS-SupportedEncryptionTypes 属性に格納されます。  AzureADSSOAcc$ アカウントの暗号化の種類が RC4_HMAC_MD5 に設定されていて、それを AES 暗号化の種類のいずれかに変更する場合は、[FAQ ドキュメント](how-to-connect-sso-faq.md)の関連する質問に説明されているように、まず AzureADSSOAcc$ アカウントの Kerberos 復号化キーをロールオーバーするようにしてください。そうしないと、シームレス SSO は行われません。
 
 このセットアップが完了すると、シームレス SSO は、統合 Windows 認証 (IWA) を使用するその他のサインインと同様に機能します。
 

@@ -15,17 +15,20 @@ ms.topic: article
 ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 7ccc2d5956b44a8cd85f19e0905539c32f58bc5e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5665357474b392a413d2b70f9c321b5da3e0bfe5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78164000"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89256448"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Azure Media Indexer によるメディア ファイルのインデックス作成
 
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!NOTE]
-> **Azure Media Indexer** メディア プロセッサは廃止予定です。 提供終了日については、この[レガシ コンポーネント](legacy-components.md)に関するトピックを参照してください。 [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) が、この従来のメディア プロセッサに取って代わります。 詳細については、[Azure Media Indexer および Azure Media Indexer 2 から Azure Media Services Video Indexer への移行](migrate-indexer-v1-v2.md)に関する記事をご覧ください。
+> **Azure Media Indexer** メディア プロセッサは廃止予定です。 提供終了日については、この[レガシ コンポーネント](legacy-components.md)に関するトピックを参照してください。 [Azure Media Services Video Indexer](../video-indexer/index.yml) が、この従来のメディア プロセッサに取って代わります。 詳細については、[Azure Media Indexer および Azure Media Indexer 2 から Azure Media Services Video Indexer への移行](migrate-indexer-v1-v2.md)に関する記事をご覧ください。
 
 Azure Media Indexer を使用すると、メディア ファイルのコンテンツを検索対応にしたり、字幕やキーワード用にフルテキストのトランスクリプトを生成したりできます。 バッチ内の 1 つのメディア ファイルまたは複数のメディア ファイルを処理できます。  
 
@@ -45,7 +48,7 @@ Azure Media Indexer を使用すると、メディア ファイルのコンテ�
 
 マニフェスト ファイルを使用して一度に複数のメディア ファイルを処理できます。
 
-詳細については、「 [Azure Media Indexer 用のタスク プリセット](https://msdn.microsoft.com/library/dn783454.aspx)」をご覧ください。
+詳細については、「 [Azure Media Indexer 用のタスク プリセット](./media-services-analytics-overview.md)」をご覧ください。
 
 ## <a name="index-an-asset"></a>資産のインデックス作成
 次のメソッドは、資産としてメディア ファイルをアップロードし、ジョブを作成して資産のインデックスを作成します。
@@ -158,7 +161,7 @@ Azure Media Indexer を使用すると、メディア ファイルのコンテ�
 ## <a name="index-multiple-files"></a>複数のファイルのインデックス
 次のメソッドは、資産として複数のメディア ファイルをアップロードし、ジョブを作成してバッチ内のすべてのファイルのインデックスを作成します。
 
-".lst" 拡張子のマニフェスト ファイルが作成され、資産にアップロードします。 マニフェスト ファイルには、すべての資産ファイルの一覧が含まれています。 詳細については、「 [Azure Media Indexer 用のタスク プリセット](https://msdn.microsoft.com/library/dn783454.aspx)」をご覧ください。
+".lst" 拡張子のマニフェスト ファイルが作成され、資産にアップロードします。 マニフェスト ファイルには、すべての資産ファイルの一覧が含まれています。 詳細については、「 [Azure Media Indexer 用のタスク プリセット](./media-services-analytics-overview.md)」をご覧ください。
 
 ```csharp
     static bool RunBatchIndexingJob(string[] inputMediaFiles, string outputFolder)
@@ -278,4 +281,3 @@ Azure Media Indexer からの処理は、オプションのタスク プリセ�
 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)
 
 [Azure Media Indexer 2 プレビューによるメディア ファイルのインデックス作成](media-services-process-content-with-indexer2.md)
-

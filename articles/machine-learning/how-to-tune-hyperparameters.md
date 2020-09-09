@@ -8,15 +8,15 @@ ms.reviewer: sgilley
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
 ms.date: 03/30/2020
-ms.custom: seodec18
-ms.openlocfilehash: a58ea58ebf6fdc7d8521d204ac42fcbadeca39a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: conceptual
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: c1c11d16be6bd5eb7381a811216323680fe74c08
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189302"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849371"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>Azure Machine Learning でモデルのハイパーパラメーターを調整する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -109,6 +109,7 @@ Azure Machine Learning では、ハイパーパラメーター探索を効率的
 
 ```Python
 from azureml.train.hyperdrive import RandomParameterSampling
+from azureml.train.hyperdrive import normal, uniform, choice
 param_sampling = RandomParameterSampling( {
         "learning_rate": normal(10, 3),
         "keep_probability": uniform(0.05, 0.1),
@@ -123,6 +124,7 @@ param_sampling = RandomParameterSampling( {
 
 ```Python
 from azureml.train.hyperdrive import GridParameterSampling
+from azureml.train.hyperdrive import choice
 param_sampling = GridParameterSampling( {
         "num_hidden_layers": choice(1, 2, 3),
         "batch_size": choice(16, 32)
@@ -140,6 +142,7 @@ param_sampling = GridParameterSampling( {
 
 ```Python
 from azureml.train.hyperdrive import BayesianParameterSampling
+from azureml.train.hyperdrive import uniform, choice
 param_sampling = BayesianParameterSampling( {
         "learning_rate": uniform(0.05, 0.1),
         "batch_size": choice(16, 32, 64, 128)
@@ -376,7 +379,7 @@ RunDetails(hyperdrive_run).show()
 
 [![ハイパーパラメーター調整の並行座標](./media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
 
-Azure Web ポータルですべてのハイパーパラメーター調整実行を視覚化できます。 Web ポータルで実験を表示する方法について詳しくは、[実験の追跡方法](how-to-track-experiments.md#view-the-experiment-in-the-web-portal)に関するページをご覧ください。
+Azure Web ポータルですべてのハイパーパラメーター調整実行を視覚化できます。 Web ポータルで実験を表示する方法について詳しくは、[実験の追跡方法](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal)に関するページをご覧ください。
 
 ## <a name="find-the-best-model"></a>最高のモデルを見つける
 

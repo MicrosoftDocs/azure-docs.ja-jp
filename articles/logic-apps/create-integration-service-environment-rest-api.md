@@ -3,19 +3,19 @@ title: Logic Apps REST API を使用して統合サービス環境 (ISE) を作�
 description: Azure Logic Apps から Azure 仮想ネットワーク (VNET) にアクセスできるように、Logic Apps REST API を使用して統合サービス環境 (ISE) を作成します。
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 03/11/2020
-ms.openlocfilehash: 0670331d2338b4b6419ffbff1452b5fbac91029f
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.date: 05/29/2020
+ms.openlocfilehash: d33207639ebef912307a3c594ec274fd9609bd67
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478838"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84656548"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Logic Apps REST API を使用して統合サービス環境 (ISE) を作成する
 
-この記事では、ロジック アプリと統合アカウントで [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)にアクセスする必要があるシナリオ向けに、Logic Apps REST API を使用して[*統合サービス環境 (ISE)* ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成する方法を説明します。 ISE は、専用のストレージなど、"グローバル" なマルチテナント Logic Apps サービスとは別に確保されているリソースを使用する分離環境です。 この分離で、他の Azure テナントがご利用のアプリのパフォーマンスに与える可能性がある影響も軽減されます。 ISE には、独自の静的 IP アドレスも用意されています。 これらの IP アドレスは、パブリックのマルチテナント サービスのロジック アプリによって共有される静的 IP アドレスとは別のものです。
+この記事では、ロジック アプリと統合アカウントで [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)にアクセスする必要があるシナリオ向けに、Logic Apps REST API を使用して[*統合サービス環境 (ISE)* ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成する方法を説明します。 ISE は、専用のストレージと、"グローバル" なマルチテナント Logic Apps サービスとは別に確保されている他のリソースを使用する専用環境です。 この分離で、他の Azure テナントがご利用のアプリのパフォーマンスに与える可能性がある影響も軽減されます。 ISE には、独自の静的 IP アドレスも用意されています。 これらの IP アドレスは、パブリックのマルチテナント サービスのロジック アプリによって共有される静的 IP アドレスとは別のものです。
 
 [サンプル Azure Resource Manager クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment)を使用するか、[Azure portal](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) を使用して ISE を作成することもできます。
 
@@ -54,9 +54,11 @@ Logic Apps REST API を呼び出して ISE を作成するには、この HTTPS 
 
 * `Authorization`:このプロパティ値は、使用する Azure サブスクリプションまたはリソース グループにアクセスする顧客のベアラー トークンに設定します。
 
-### <a name="request-body-syntax"></a>要求本文の構文
+<a name="request-body"></a>
 
-ISE の作成時に使用するプロパティを記述する要求本文の構文を次に示します。
+## <a name="request-body"></a>要求本文
+
+ISE の作成時に使用するプロパティを記述する要求本文の構文を次に示します。 `TrustedRoot` の場所にインストールされている自己署名証明書の使用を許可する ISE を作成するには、ISE 定義の `properties` セクションに `certificates` オブジェクトを含めます。 既存の ISE の場合、`certificates` オブジェクトに対してのみ、PATCH 要求を送信できます。 自己署名証明書の使用の詳細については、「[HTTP コネクタ - 自己署名入り証明書](../connectors/connectors-native-http.md#self-signed)」も参照してください。
 
 ```json
 {
@@ -88,6 +90,13 @@ ISE の作成時に使用するプロパティを記述する要求本文の構�
                "id": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.Network/virtualNetworks/{virtual-network-name}/subnets/{subnet-4}",
             }
          ]
+      },
+      // Include `certificates` object to enable self-signed certificate support
+      "certificates": {
+         "testCertificate": {
+            "publicCertificate": "{base64-encoded-certificate}",
+            "kind": "TrustedRoot"
+         }
       }
    }
 }
@@ -127,7 +136,12 @@ ISE の作成時に使用するプロパティを記述する要求本文の構�
                "id": "/subscriptions/********************/resourceGroups/Fabrikam-RG/providers/Microsoft.Network/virtualNetworks/Fabrikam-VNET/subnets/subnet-4",
             }
          ]
-      }
+      },
+      "certificates": {
+         "testCertificate": {
+            "publicCertificate": "LS0tLS1CRUdJTiBDRV...",
+            "kind": "TrustedRoot"
+         }
    }
 }
 ```

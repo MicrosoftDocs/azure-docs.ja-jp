@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7652ab72fb972230d98913c2d7e2601737982532
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3f158bb4e8208d00fdfbc44b4afaf067183b6d2
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74924342"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087318"
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの HDFS からデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -367,76 +367,84 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
     Kerberos 領域は Windows ドメインとは異なるため、コンピューターをワークグループのメンバーとして構成する必要があります。 これは、次のように Kerberos 領域を設定し、KDC サーバーを追加することで実現できます。 *REALM.COM* は、必要に応じて実際の領域に置き換えます。
 
-            C:> Ksetup /setdomain REALM.COM
-            C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
+    ```cmd
+    C:> Ksetup /setdomain REALM.COM
+    C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
+    ```
 
     これら 2 つのコマンドを実行した後、コンピューターを**再起動**します。
 
 2.  **Ksetup** コマンドを実行して構成を確認します。 出力は次のようになります。
 
-            C:> Ksetup
-            default realm = REALM.COM (external)
-            REALM.com:
-                kdc = <your_kdc_server_address>
+    ```cmd
+    C:> Ksetup
+    default realm = REALM.COM (external)
+    REALM.com:
+        kdc = <your_kdc_server_address>
+        ```
 
-**Azure Data Factory で以下を実行します。**
+**In Azure Data Factory:**
 
-* Kerberos プリンシパル名とパスワードによる **Windows 認証** を行って HDFS データ ソースに接続するように HDFS コネクタを構成します。 構成の詳細については、「[HDFS のリンクされたサービスのプロパティ](#linked-service-properties)」セクションを参照してください。
+* Configure the HDFS connector using **Windows authentication** together with your Kerberos principal name and password to connect to the HDFS data source. Check [HDFS Linked Service properties](#linked-service-properties) section on configuration details.
 
-### <a name="option-2-enable-mutual-trust-between-windows-domain-and-kerberos-realm"></a><a name="kerberos-mutual-trust"></a>オプション 2: Windows ドメインと Kerberos 領域間の相互の信頼関係を有効にする
+### <a name="kerberos-mutual-trust"></a>Option 2: Enable mutual trust between Windows domain and Kerberos realm
 
-#### <a name="requirement"></a>要件:
-*   ゲートウェイ コンピューターは、Windows ドメインに参加している必要があります。
-*   ドメイン コントローラーの設定を更新するアクセス許可が必要です。
+#### Requirement:
+*   The gateway machine must join a Windows domain.
+*   You need permission to update the domain controller's settings.
 
-#### <a name="how-to-configure"></a>構成方法:
+#### How to configure:
 
 > [!NOTE]
-> 次のチュートリアルの REALM.COM と AD.COM を、必要に応じて実際の領域とドメイン コントローラーに置き換えます。
+> Replace REALM.COM and AD.COM in the following tutorial with your own respective realm and domain controller as needed.
 
-**KDC サーバーで以下を実行します。**
+**On KDC server:**
 
-1. **krb5.conf** ファイルの KDC 構成を編集して、KDC が次の構成テンプレートを参照している Windows ドメインを信頼するようにします。 既定で、この構成は **/etc/krb5.conf** にあります。
+1. Edit the KDC configuration in **krb5.conf** file to let KDC trust Windows Domain referring to the following configuration template. By default, the configuration is located at **/etc/krb5.conf**.
 
-           [logging]
-            default = FILE:/var/log/krb5libs.log
-            kdc = FILE:/var/log/krb5kdc.log
-            admin_server = FILE:/var/log/kadmind.log
+   ```config
+   [logging]
+   default = FILE:/var/log/krb5libs.log
+   kdc = FILE:/var/log/krb5kdc.log
+   admin_server = FILE:/var/log/kadmind.log
 
-           [libdefaults]
-            default_realm = REALM.COM
-            dns_lookup_realm = false
-            dns_lookup_kdc = false
-            ticket_lifetime = 24h
-            renew_lifetime = 7d
-            forwardable = true
+   [libdefaults]
+   default_realm = REALM.COM
+   dns_lookup_realm = false
+   dns_lookup_kdc = false
+   ticket_lifetime = 24h
+   renew_lifetime = 7d
+   forwardable = true
 
-           [realms]
-            REALM.COM = {
-             kdc = node.REALM.COM
-             admin_server = node.REALM.COM
-            }
-           AD.COM = {
-            kdc = windc.ad.com
-            admin_server = windc.ad.com
-           }
+   [realms]
+   REALM.COM = {
+       kdc = node.REALM.COM
+       admin_server = node.REALM.COM
+   }
+   AD.COM = {
+   kdc = windc.ad.com
+   admin_server = windc.ad.com
+   }
 
-           [domain_realm]
-            .REALM.COM = REALM.COM
-            REALM.COM = REALM.COM
-            .ad.com = AD.COM
-            ad.com = AD.COM
+   [domain_realm]
+   .REALM.COM = REALM.COM
+   REALM.COM = REALM.COM
+   .ad.com = AD.COM
+   ad.com = AD.COM
 
-           [capaths]
-            AD.COM = {
-             REALM.COM = .
-            }
+   [capaths]
+   AD.COM = {
+       REALM.COM = .
+   }
+   ```
 
    構成したら KDC サービスを**再起動**します。
 
 2. 次のコマンドを使用して、**krbtgt/REALM.COM\@AD.COM** という名前のプリンシパルを KDC サーバー内に準備します。
 
-           Kadmin> addprinc krbtgt/REALM.COM@AD.COM
+   ```cmd
+   Kadmin> addprinc krbtgt/REALM.COM@AD.COM
+   ```
 
 3. **hadoop.security.auth_to_local** HDFS サービス構成ファイルに、を追加します`RULE:[1:$1@$0](.*\@AD.COM)s/\@.*//`。
 
@@ -444,12 +452,16 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
 1.  次の **Ksetup** コマンドを実行して、領域のエントリを追加します。
 
-            C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
-            C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+    ```cmd
+    C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
+    C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+    ```
 
 2.  Windows ドメインから Kerberos 領域への信頼関係を確立します。 [password] は、**krbtgt/REALM.COM\@AD.COM** プリンシパルのパスワードです。
 
-            C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
+    ```cmd
+    C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
+    ```
 
 3.  Kerberos で使用される暗号化アルゴリズムを選択します。
 
@@ -463,7 +475,9 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
     4. **Ksetup** コマンドを使用して、特定の領域で使用される暗号化アルゴリズムを指定します。
 
-                C:> ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
+       ```cmd
+       C:> ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
+       ```
 
 4.  Windows ドメインで Kerberos プリンシパルを使用するために、ドメイン アカウントと Kerberos プリンシパル間のマッピングを作成します。
 
@@ -481,8 +495,10 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
 * 次の **Ksetup** コマンドを実行して、領域のエントリを追加します。
 
-            C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
-            C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+   ```cmd
+   C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
+   C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+   ```
 
 **Azure Data Factory で以下を実行します。**
 

@@ -11,12 +11,12 @@ metadata:
   author: markingmyname
   ms.author: maghan
   ms.date: 10/02/2019
-  ms.openlocfilehash: 5ab646f80296352bce30eedcbf9b0de670011118
-  ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+  ms.openlocfilehash: 8a9046a3f35401a279c4cd99ce5fee88bd67cb32
+  ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/27/2020
-  ms.locfileid: "84118746"
+  ms.lasthandoff: 09/04/2020
+  ms.locfileid: "89489274"
 landingContent:
 - title: Azure Data Factory について
   linkLists:
@@ -75,12 +75,12 @@ landingContent:
     - text: オンプレミスのデータをクラウドにコピーする
       url: /azure/data-factory/tutorial-hybrid-copy-data-tool
     - text: データを一括コピーする
-      url: /azure/data-factory/
+      url: /azure/data-factory/tutorial-bulk-copy-portal
     - text: データを増分コピーする
-      url: /azure/data-factory/tutorial-create-azure-ssis-runtime-portal
+      url: /azure/data-factory/tutorial-incremental-copy-overview
     - text: ADLS Gen2 を読み込む
       url: /azure/data-factory/load-azure-data-lake-storage-gen2
-    - text: SQL DW を読み込む
+    - text: Azure Synapse Analytics を読み込む
       url: /azure/data-factory/load-azure-sql-data-warehouse
     - text: SAP BW を読み込む
       url: /azure/data-factory/load-sap-bw-data

@@ -15,14 +15,18 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: cenkdin
-ms.openlocfilehash: c60b223f91a151bf63cabc5e95816f2545022503
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 8db58da092858a3f18b56b82d245b04f768b2e35
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69016603"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268699"
 ---
-# <a name="creating-filters-with-media-services-net-sdk"></a>Media Services .NET SDK を使用したフィルターの作成 
+# <a name="creating-filters-with-media-services-net-sdk"></a>Media Services .NET SDK を使用したフィルターの作成
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-dynamic-manifest.md)
 > * [REST](media-services-rest-dynamic-manifest.md)
@@ -40,10 +44,10 @@ Media Services のリリース 2.17 以降では、資産にフィルターを�
 ## <a name="types-used-to-create-filters"></a>フィルターの作成に使用する種類
 次の種類の REST API を使用してフィルターを作成します。 
 
-* **IStreamingFilter**。  この種類は次の REST API [Filter](https://docs.microsoft.com/rest/api/media/operations/filter)
-* **IStreamingAssetFilter**。 この種類は次の REST API [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
-* **PresentationTimeRange**。 この種類は次の REST API [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
-* **FilterTrackSelectStatement** と **IFilterTrackPropertyCondition**。 これらの種類は次の REST API [FilterTrackSelect と FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
+* **IStreamingFilter**。  この種類は次の REST API [Filter](/rest/api/media/operations/filter)
+* **IStreamingAssetFilter**。 この種類は次の REST API [AssetFilter](/rest/api/media/operations/assetfilter)
+* **PresentationTimeRange**。 この種類は次の REST API [PresentationTimeRange](/rest/api/media/operations/presentationtimerange)
+* **FilterTrackSelectStatement** と **IFilterTrackPropertyCondition**。 これらの種類は次の REST API [FilterTrackSelect と FilterTrackPropertyCondition](/rest/api/media/operations/filtertrackselect)
 
 ## <a name="createupdatereaddelete-global-filters"></a>グローバル フィルターの作成、更新、読み取り、削除
 次のコードは .NET を使用し、資産フィルターを作成、更新、読み取り、削除する方法を示しています。
@@ -114,19 +118,19 @@ Media Services のリリース 2.17 以降では、資産にフィルターを�
 
 **MPEG DASH** 
 
-    http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf, filter=MyFilter)
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf, filter=MyFilter)`
 
 **Apple HTTP Live Streaming (HLS) V4**
 
-    http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl, filter=MyFilter)
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl, filter=MyFilter)`
 
 **Apple HTTP Live Streaming (HLS) V3**
 
-    http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3, filter=MyFilter)
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3, filter=MyFilter)`
 
 **Smooth Streaming**
 
-    http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyFilter)
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyFilter)`
 
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
@@ -137,4 +141,3 @@ Media Services のリリース 2.17 以降では、資産にフィルターを�
 
 ## <a name="see-also"></a>参照
 [動的マニフェストの概要](media-services-dynamic-manifest-overview.md)
-

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: bc99a9c9e9ff985730ec97dbacd1d7c1de06a45e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2fa87e860d0f5f5117840b9e230e383cdd6aae7c
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74073653"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187559"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Azure Windows VM 拡張機能のエラーのトラブルシューティング
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -31,40 +31,46 @@ Azure リソース マネージャー テンプレートは、Azure Powershell �
 
 Azure PowerShell:
 
-      Get-AzVM -ResourceGroupName $RGName -Name $vmName -Status
+```azurepowershell
+Get-AzVM -ResourceGroupName $RGName -Name $vmName -Status
+```
 
 出力例を次に示します。
 
-      Extensions:  {
-      "ExtensionType": "Microsoft.Compute.CustomScriptExtension",
-      "Name": "myCustomScriptExtension",
-      "SubStatuses": [
-        {
-          "Code": "ComponentStatus/StdOut/succeeded",
-          "DisplayStatus": "Provisioning succeeded",
-          "Level": "Info",
-          "Message": "    Directory: C:\\temp\\n\\n\\nMode                LastWriteTime     Length Name
-              \\n----                -------------     ------ ----                              \\n-a---          9/1/2015   2:03 AM         11
-              test.txt                          \\n\\n",
-                      "Time": null
-          },
-        {
-          "Code": "ComponentStatus/StdErr/succeeded",
-          "DisplayStatus": "Provisioning succeeded",
-          "Level": "Info",
-          "Message": "",
-          "Time": null
-        }
+```output
+Extensions:  {
+  "ExtensionType": "Microsoft.Compute.CustomScriptExtension",
+  "Name": "myCustomScriptExtension",
+  "SubStatuses": [
+    {
+      "Code": "ComponentStatus/StdOut/succeeded",
+      "DisplayStatus": "Provisioning succeeded",
+      "Level": "Info",
+      "Message": "    Directory: C:\\temp\\n\\n\\nMode                LastWriteTime     Length Name
+          \\n----                -------------     ------ ----                              \\n-a---          9/1/2015   2:03 AM         11
+          test.txt                          \\n\\n",
+                  "Time": null
+      },
+    {
+      "Code": "ComponentStatus/StdErr/succeeded",
+      "DisplayStatus": "Provisioning succeeded",
+      "Level": "Info",
+      "Message": "",
+      "Time": null
     }
   ]
+}
+```
 
 ## <a name="troubleshooting-extension-failures"></a>拡張機能のエラーのトラブルシューティング
 ### <a name="rerun-the-extension-on-the-vm"></a>VM での拡張機能の再実行
 VM でカスタム スクリプト拡張機能を使用してスクリプトを実行している場合、VM は正常に作成されたがスクリプトは失敗するというエラーが発生することがあります。 このような状況でこのエラーから回復するためにお勧めする方法は、拡張機能を削除してもう一度テンプレートを実行することです。
-注: 将来的には、拡張機能のアンインストールが不要になるように機能強化が行われるる予定です。
+注:将来は、この機能が強化され、拡張機能をアンインストールする必要はなくなります。
 
 #### <a name="remove-the-extension-from-azure-powershell"></a>Azure Powershell から拡張機能を削除する
-    Remove-AzVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomScriptExtension"
+```azurepowershell
+Remove-AzVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomScriptExtension"
+```
 
 拡張機能を削除した後、テンプレートを再実行して、VM 上でスクリプトを実行できます。
 

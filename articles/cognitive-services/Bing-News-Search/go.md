@@ -8,29 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: aaeb905c9cdc1e7b74e21d3c191f6a24a94fcd7d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: e18605b75e4fcfcd8f2793e06801c309f9f23965
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80053802"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869280"
 ---
 # <a name="quickstart-get-news-results-using-the-bing-news-search-rest-api-and-go"></a>クイック スタート:Bing News Search REST API と Go を使用してニュースの結果を取得する
 
 このクイック スタートでは、Go 言語を使用して Bing News Search API を呼び出します。 結果には、クエリ文字列によって識別されるニュース ソースの名前と URL が含まれます。
 
 ## <a name="prerequisites"></a>前提条件
-* [Go バイナリ](https://golang.org/dl/)をインストールする
-* 結果を表示するためのプリティ プリンター用の go-spew ライブラリをインストールする
-    * このライブラリをインストールします: `$ go get -u https://github.com/davecgh/go-spew`
+* [Go バイナリ](https://golang.org/dl/)をインストールします。
+* 結果の表示には、go-spew ライブラリをインストールして、ディープ プリティ プリンターを使用します。 このコマンド (`$ go get -u https://github.com/davecgh/go-spew`) を使用して、ライブラリをインストールします。
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
 ## <a name="create-a-project-and-import-libraries"></a>プロジェクトの作成とライブラリのインポート
 
-お使いの IDE またはエディターで新しい Go プロジェクトを作成します。 次に、要求のための `net/http`、応答を読み取るための `ioutil`、結果の JSON テキストを処理するための `encoding/json` をインポートします。 go-spew ライブラリは JSON を解析するために必要です。 
+お使いの IDE またはエディターで新しい Go プロジェクトを作成します。 次に、要求のための `net/http`、応答を読み取るための `ioutil`、結果の JSON テキストを処理するための `encoding/json`、JSON 結果を解析するための `go-spew` ライブラリをインポートします。 
 
 ```go
 package main
@@ -47,7 +46,7 @@ import (
 
 ## <a name="create-a-struct-to-format-the-news-search-results"></a>ニュースの検索結果を書式設定する構造体を作成する
 
-`NewsAnswer` 構造体は、応答で提供されるデータを書式設定します。 応答の JSON はマルチレベルであり、非常に複雑です。  次の実装は、基本事項を示しています。
+`NewsAnswer` 構造体によって、応答 JSON で提供されるデータが書式設定されます。これは複数レベルで複雑になります。 次の実装には、基本事項が含まれています。
 
 ```go
 // This struct formats the answer provided by the Bing News Search API.
@@ -87,7 +86,7 @@ type NewsAnswer struct {
 
 ## <a name="declare-the-main-function-and-define-variables"></a>main 関数の宣言と変数の定義  
 
-次のコードは main 関数を宣言し、必要な変数を割り当てます。 エンドポイントが正しいことを確認し、`token` の値を Azure アカウントの有効なサブスクリプション キーに置き換えます。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
+次のコードは main 関数を宣言し、必要な変数を割り当てます。 エンドポイントが正しいことを確認し、`token` の値を Azure アカウントの有効なサブスクリプション キーに置き換えます。 次のコードのグローバル エンドポイントを使用するか、Azure portal に表示される、対象のリソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用することができます。
 
 ```go
 func main() {
@@ -108,7 +107,7 @@ func main() {
 
 ## <a name="query-and-header"></a>クエリとヘッダー
 
-クエリ文字列とアクセス キー ヘッダーを追加する
+クエリ文字列とアクセス キー ヘッダーを追加します。
 
 ```go
 // Add the query to the request.  
@@ -121,9 +120,9 @@ req.Header.Add("Ocp-Apim-Subscription-Key", token)
 
 ```
 
-## <a name="get-request"></a>Get 要求
+## <a name="get-request"></a>GET 要求
 
-クライアントを作成して Get 要求を送信する 
+クライアントを作成して GET 要求を送信します。 
 
 ```go
 // Instantiate a client.  
@@ -139,7 +138,7 @@ if err != nil {
 
 ## <a name="send-the-request"></a>要求を送信する
 
-`ioutil` を使用して要求を送信して応答を読み取ります。
+`ioutil` を使用することで、要求を送信して結果を読み取ります。
 
 ```go
 resp, err := client.Do(req)
@@ -160,7 +159,7 @@ if err != nil {
 
 ## <a name="handle-the-response"></a>応答の処理
 
-`Unmarshall` 関数は、News Search API から返された JSON テキストから情報を抽出します。  `go-spew` プリティ プリンターを使用して結果のノードを表示できます。
+`Unmarshall` 関数によって、Bing News Search API から返された JSON テキストの情報が抽出されます。 その後、`go-spew` プリティ プリンターを使用して結果のノードを表示します。
 
 ```go
 // Create a new answer object 
@@ -181,7 +180,7 @@ spew.Dump(result.Name, result.URL)
 
 ## <a name="results"></a>結果
 
-結果には、各結果の名前と URL が含まれます。
+次の出力には、各結果の名前と URL が含まれています。
 
 ```
 (string) (len=91) "Cognitive Services Market: Global Industry Analysis and Opportunity Assessment, 2019 - 2025"

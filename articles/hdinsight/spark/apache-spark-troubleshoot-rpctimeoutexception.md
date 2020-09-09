@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: b15ac80295a0113eb0c384e1cc3185f3304c39c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a29d36c5ba6fdd51de27afa3ab4dfe1258332200
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75894279"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85208418"
 ---
 # <a name="scenario-rpctimeoutexception-for-apache-spark-thrift-server-in-azure-hdinsight"></a>シナリオ:Azure HDInsight での Apache Spark Thrift サーバーの RpcTimeoutException
 
@@ -36,9 +36,9 @@ java.lang.OutOfMemoryError: GC overhead limit exceeded
 
 ## <a name="cause"></a>原因
 
-これらのエラーは、データ処理中のメモリ リソースの不足により発生します。 Java ガベージ コレクション プロセスが開始すると、Spark アプリケーションがハングする可能性があります。 クエリはタイムアウトし始め、処理を停止します。 `Futures timed out` エラーは、クラスターの負荷が重大であることを示しています。
+これらのエラーは、データ処理中のメモリ リソースの不足により発生します。 Java ガベージ コレクション プロセスが開始すると、Spark アプリケーションが応答しなくなる可能性があります。 クエリはタイムアウトし始め、処理を停止します。 `Futures timed out` エラーは、クラスターの負荷が重大であることを示しています。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決方法
 
 ワーカー ノードを追加するか、既存のクラスター ノードのメモリ容量を増やすことで、クラスターのサイズを大きくします。 データ パイプラインを調整して、一度に処理されるデータの量を減らすこともできます。
 

@@ -5,25 +5,25 @@ author: suchiagicha
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
-ms.openlocfilehash: 182b35194a647f5de706f9ada07b8e9db51bb4c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e3c20d86bd29d60eca328a44ab5d5d600bbf4da4
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75645584"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010938"
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Reliable Actors の FabricTransport 設定を構成する
 
 構成できる設定を以下に示します。
-- C#:[FabricTransportRemotingSettings](
-https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
-- Java:[FabricTransportRemotingSettings](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
+- C#:[FabricTransportRemotingSettings](/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
+- Java:[FabricTransportRemotingSettings](/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
 
 次の方法で FabricTransport の既定の構成を変更できます。
 
 ## <a name="assembly-attribute"></a>Assembly 属性
 
-[FabricTransportActorRemotingProvider](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute?redirectedfrom=MSDN)属性は、アクター クライアントおよびアクター サービス アセンブリに適用する必要があります。
+[FabricTransportActorRemotingProvider](/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute)属性は、アクター クライアントおよびアクター サービス アセンブリに適用する必要があります。
 
 次の例では、FabricTransport OperationTimeout 設定の既定値を変更する方法を示します。
 

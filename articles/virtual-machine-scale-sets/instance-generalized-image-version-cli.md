@@ -1,5 +1,5 @@
 ---
-title: 一般化されたイメージからスケール セットを作成する
+title: Azure CLI を使用して一般化されたイメージからスケール セットを作成する
 description: 共有イメージ ギャラリー内の一般化されたイメージを使用してスケール セットを作成します。
 author: cynthn
 ms.service: virtual-machine-scale-sets
@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 59e29be2aade993c8aeae64b4aa4918b36a26b26
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 3cde06b652befa8fbb655273c19f65bd2f38e850
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82794007"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069840"
 ---
-# <a name="create-a-scale-set-from-a-generalized-image"></a>一般化されたイメージからスケール セットを作成する
+# <a name="create-a-scale-set-from-a-generalized-image-with-azure-cli"></a>Azure CLI を使用して一般化されたイメージからスケール セットを作成する
 
 Azure CLI を使用して、[共有イメージ ギャラリー](shared-image-galleries.md)に格納されている一般化されたイメージ バージョンからスケール セットを作成します。 特殊化されたイメージ バージョンを使用してスケール セットを作成する場合は、[特殊化されたイメージからのスケール セット インスタンスの作成](instance-specialized-image-version-cli.md)に関する記事をご覧ください。
 

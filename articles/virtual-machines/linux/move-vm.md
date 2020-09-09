@@ -4,15 +4,15 @@ description: Azure CLI を使用して、VM を別の Azure サブスクリプ�
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: ebcd5f166fd1876f67121787c23d23860c9fa4b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db4c7e0126616e2d8bd120e7430c70b89c5cf36d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78944603"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291097"
 ---
 # <a name="move-a-vm-to-another-subscription-or-resource-group"></a>他のサブスクリプションまたはリソース グループへ VM を移動する
 この記事では、リソース グループまたはサブスクリプション間で仮想マシン (VM) を移動する方法について説明します。 サブスクリプション間での VM の移動は、個人のサブスクリプションで作成した VM を、会社のサブスクリプションに移動する場合に便利です。

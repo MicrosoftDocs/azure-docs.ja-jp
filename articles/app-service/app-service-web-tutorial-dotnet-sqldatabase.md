@@ -1,28 +1,29 @@
 ---
-title: チュートリアル:SQL Database を使用した ASP.NET アプリ
-description: C# ASP.NET アプリを SQL Server データベースと共に Azure にデプロイする方法について説明します。
+title: チュートリアル:Azure SQL Database を使用した ASP.NET アプリ
+description: C# ASP.NET アプリを Azure と Azure SQL Database にデプロイする方法について説明します
 ms.assetid: 03c584f1-a93c-4e3d-ac1b-c82b50c75d3e
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
-ms.custom: mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: a9acb55f0a03a6ec1ba0bb6bb38c665b059b672b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
+ms.openlocfilehash: 90becfb79973ba45851b0e30384b0f05a7b887e3
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80047018"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962249"
 ---
-# <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>チュートリアル:SQL Database を使用して Azure に ASP.NET アプリを作成する
+# <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>チュートリアル:Azure SQL Database を使用して Azure に ASP.NET アプリをデプロイする
 
-[Azure App Service](overview.md) は、非常にスケーラブルな、自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、App Service でデータ主導の ASP.NET アプリをデプロイし、それを [Azure SQL Database](../sql-database/sql-database-technical-overview.md) に接続する方法について説明します。 これが完了すると、ASP.NET アプリは Azure 内で実行され、SQL Database に接続された状態になります。
+[Azure App Service](overview.md) は、非常にスケーラブルな、自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、App Service でデータ主導の ASP.NET アプリをデプロイし、それを [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md) に接続する方法について説明します。 これが完了すると、ASP.NET アプリは Azure 内で実行され、SQL Database に接続された状態になります。
 
 ![Azure App Service に発行された ASP.NET アプリケーション](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * Azure で SQL データベースを作成する
+>
+> * Azure SQL Database でデータベースを作成する
 > * ASP.NET アプリを SQL Database に接続する
 > * Azure にアプリケーションをデプロイする
 > * データ モデルを更新し、アプリを再デプロイする
@@ -41,24 +42,24 @@ ms.locfileid: "80047018"
 
 ## <a name="download-the-sample"></a>サンプルのダウンロード
 
-- [サンプル プロジェクトをダウンロードします](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip)。
-- *dotnet-sqldb-tutorial-master.zip* ファイルを抽出 (解凍) します。
+* [サンプル プロジェクトをダウンロードします](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip)。
+* *dotnet-sqldb-tutorial-master.zip* ファイルを抽出 (解凍) します。
 
 このサンプル プロジェクトには、[Entity Framework Code First](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application) を使用した基本的な [ASP.NET MVC](https://www.asp.net/mvc) "作成、読み取り、更新、削除" (CRUD) アプリが含まれています。
 
 ### <a name="run-the-app"></a>アプリを実行する
 
-Visual Studio で *dotnet-sqldb-tutorial-master/DotNetAppSqlDb.sln* ファイルを開きます。 
+Visual Studio で *dotnet-sqldb-tutorial-master/DotNetAppSqlDb.sln* ファイルを開きます。
 
-デバッグせずにアプリを実行するには、`Ctrl+F5` キーを押します。 アプリが既定のブラウザーに表示されます。 **[新規作成]** リンクを選択し、いくつかの *To Do* アイテムを作成します。 
+デバッグせずにアプリを実行するには、`Ctrl+F5` キーを押します。 アプリが既定のブラウザーに表示されます。 **[新規作成]** リンクを選択し、いくつかの *To Do* アイテムを作成します。
 
 ![[新しい ASP.NET プロジェクト] ダイアログ ボックス](media/app-service-web-tutorial-dotnet-sqldatabase/local-app-in-browser.png)
 
 **[編集]** 、 **[詳細]** 、 **[削除]** リンクをテストします。
 
-アプリはデータベース コンテキストを使用してデータベースに接続します。 このサンプルでは、データベース コンテキストは `MyDbConnection` という接続文字列を使用します。 この接続文字列は *Web.config* ファイルで設定され、*Models/MyDatabaseContext.cs* ファイルで参照されます。 この接続文字列名は、このチュートリアルの後半で Azure アプリを Azure SQL Database に接続するために使用します。 
+アプリはデータベース コンテキストを使用してデータベースに接続します。 このサンプルでは、データベース コンテキストは `MyDbConnection` という接続文字列を使用します。 この接続文字列は *Web.config* ファイルで設定され、*Models/MyDatabaseContext.cs* ファイルで参照されます。 この接続文字列名は、このチュートリアルの後半で Azure アプリを Azure SQL Database に接続するために使用します。
 
-## <a name="publish-to-azure-with-sql-database"></a>SQL Database を使用して Azure に発行する
+## <a name="publish-aspnet-application-to-azure"></a>ASP.NET アプリケーションを Azure に発行する
 
 **ソリューション エクスプローラー**で **DotNetAppSqlDb** プロジェクトを右クリックし、 **[発行]** を選択します。
 
@@ -72,18 +73,16 @@ Visual Studio で *dotnet-sqldb-tutorial-master/DotNetAppSqlDb.sln* ファイル
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-**[App Service の作成]** ダイアログ ボックスで、 **[アカウントの追加]** をクリックし、Azure サブスクリプションにサインインします。 既に Microsoft アカウントにサインインしている場合は、アカウントが Azure サブスクリプションを保持していることを確認します。 サインインしている Microsoft アカウントが Azure サブスクリプションを備えていない場合は、正しいアカウントをクリックして追加します。 
+**[App Service の作成]** ダイアログ ボックスで、 **[アカウントの追加]** をクリックし、Azure サブスクリプションにサインインします。 既に Microsoft アカウントにサインインしている場合は、アカウントが Azure サブスクリプションを保持していることを確認します。 サインインしている Microsoft アカウントが Azure サブスクリプションを備えていない場合は、正しいアカウントをクリックして追加します。
 
 > [!NOTE]
 > 既にサインインしている場合は、まだ **[作成]** を選択しないでください。
->
->
-   
+
 ![Azure へのサインイン](./media/app-service-web-tutorial-dotnet-sqldatabase/sign-in-azure.png)
 
 ### <a name="configure-the-web-app-name"></a>Web アプリ名を構成する
 
-生成された Web アプリ名をそのまま使用するか、別の一意の名前に変更することができます (有効な文字は `a-z`、`0-9`、および `-` です)。 この Web アプリ名は、アプリの既定の URL の一部として使用されます (既定の URL は `<app_name>.azurewebsites.net` で、`<app_name>` が Web アプリ名です)。 この Web アプリ名は、Azure のすべてのアプリで一意である必要があります。 
+生成された Web アプリ名をそのまま使用するか、別の一意の名前に変更することができます (有効な文字は `a-z`、`0-9`、および `-` です)。 この Web アプリ名は、アプリの既定の URL の一部として使用されます (既定の URL は `<app_name>.azurewebsites.net` で、`<app_name>` が Web アプリ名です)。 この Web アプリ名は、Azure のすべてのアプリで一意である必要があります。
 
 ![[App Service の作成] ダイアログ](media/app-service-web-tutorial-dotnet-sqldatabase/wan.png)
 
@@ -91,66 +90,66 @@ Visual Studio で *dotnet-sqldb-tutorial-master/DotNetAppSqlDb.sln* ファイル
 
 [!INCLUDE [resource-group](../../includes/resource-group.md)]
 
-**[リソース グループ]** の横にある **[新規]** をクリックします。
+1. **[リソース グループ]** の横にある **[新規]** をクリックします。
 
-![[リソース グループ] の横にある [新規] をクリックする](media/app-service-web-tutorial-dotnet-sqldatabase/new_rg2.png)
+   ![[リソース グループ] の横にある [新規] をクリックする](media/app-service-web-tutorial-dotnet-sqldatabase/new_rg2.png)
 
-リソース グループに **myResourceGroup** という名前を付けます。
+2. リソース グループに **myResourceGroup** という名前を付けます。
 
 ### <a name="create-an-app-service-plan"></a>App Service プランを作成する
 
 [!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
-**[App Service プラン]** の横にある **[新規]** をクリックします。 
+1. **[App Service プラン]** の横にある **[新規]** をクリックします。
 
-**[App Service プランの構成]** ダイアログ ボックスで、新しい App Service プランを次の設定で構成します。
+2. **[App Service プランの構成]** ダイアログ ボックスで、新しい App Service プランを次の設定で構成します。
 
-![Create App Service plan](./media/app-service-web-tutorial-dotnet-sqldatabase/configure-app-service-plan.png)
+   ![Create App Service plan](./media/app-service-web-tutorial-dotnet-sqldatabase/configure-app-service-plan.png)
 
-| 設定  | 推奨値 | 詳細情報 |
-| ----------------- | ------------ | ----|
-|**App Service プラン**| myAppServicePlan | [App Service プラン](../app-service/overview-hosting-plans.md) |
-|**場所**| 西ヨーロッパ | [Azure リージョン](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |
-|**[サイズ]**| Free | [価格レベル](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)|
+   | 設定  | 推奨値 | 詳細情報 |
+   | ----------------- | ------------ | ----|
+   |**App Service プラン**| myAppServicePlan | [App Service プラン](../app-service/overview-hosting-plans.md) |
+   |**場所**| 西ヨーロッパ | [Azure リージョン](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |
+   |**[サイズ]**| Free | [価格レベル](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)|
 
-### <a name="create-a-sql-server-instance"></a>SQL Server インスタンスを作成する
+### <a name="create-a-server"></a>サーバーの作成
 
-データベースを作成する前に、[Azure SQL Database 論理サーバー](../sql-database/sql-database-features.md)が必要です。 論理サーバーには、ひとまとめにして管理される一連のデータベースが含まれています。
+データベースを作成するには、[論理 SQL サーバー](../azure-sql/database/logical-servers.md)が必要です。 論理 SQL サーバーは、1 つのグループとして管理される一連のデータベースを含む論理コンストラクトです。
 
-**[SQL Database の作成]** をクリックします。
+1. **[SQL Database の作成]** をクリックします。
 
-![SQL Database の作成](media/app-service-web-tutorial-dotnet-sqldatabase/web-app-name.png)
+   ![SQL Database の作成](media/app-service-web-tutorial-dotnet-sqldatabase/web-app-name.png)
 
-**[SQL Database の構成]** ダイアログで、 **[SQL Server]** の隣にある **[New (新規)]** をクリックします。 
+2. **[SQL Database の構成]** ダイアログで、 **[SQL Server]** の隣にある **[New (新規)]** をクリックします。
 
-一意のサーバー名が生成されます。 この名前は論理サーバーの既定の URL (`<server_name>.database.windows.net`) の一部として使用されます。 この名前は、Azure のすべての論理サーバー インスタンスで一意である必要があります。 サーバー名は変更できますが、このチュートリアルでは生成された名前をそのまま使用します。
+   一意のサーバー名が生成されます。 この名前はサーバーの既定の URL (`<server_name>.database.windows.net`) の一部として使用されます。 これは、Azure SQL のすべてのサーバーで一意である必要があります。 サーバー名は変更できますが、このチュートリアルでは生成された名前をそのまま使用します。
 
-管理者のユーザー名とパスワードを追加します。 パスワードの複雑さの要件については、「[パスワード ポリシー](/sql/relational-databases/security/password-policy)」をご覧ください。
+3. 管理者のユーザー名とパスワードを追加します。 パスワードの複雑さの要件については、「[パスワード ポリシー](/sql/relational-databases/security/password-policy)」をご覧ください。
 
-このユーザー名とパスワードを覚えておいてください。 後で、論理サーバー インスタンスを管理するために使用します。
+   このユーザー名とパスワードを覚えておいてください。 これらは、後でサーバーを管理する際に必要になります。
 
-> [!IMPORTANT]
-> (Visual Studio および App Service で) 接続文字列のパスワードがマスクされていても、それがどこかに保持されているのは事実であり、アプリの攻撃対象領域が増えることになります。 App Service では、[マネージド サービス ID](overview-managed-identity.md) を使用して、コードやアプリの構成にシークレットを保持する必要性をなくすことで、このリスクを排除できます。 詳細については、「[次のステップ](#next-steps)」を参照してください。
+   > [!IMPORTANT]
+   > (Visual Studio および App Service で) 接続文字列のパスワードがマスクされていても、それがどこかに保持されているのは事実であり、アプリの攻撃対象領域が増えることになります。 App Service では、[マネージド サービス ID](overview-managed-identity.md) を使用して、コードやアプリの構成にシークレットを保持する必要性をなくすことで、このリスクを排除できます。 詳細については、「[次のステップ](#next-steps)」を参照してください。
 
-![SQL Server インスタンスを作成する](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
+   ![Create server](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
 
-**[OK]** をクリックします。 **[SQL Database の構成]** ダイアログはまだ閉じないでください。
+4. **[OK]** をクリックします。 **[SQL Database の構成]** ダイアログはまだ閉じないでください。
 
-### <a name="create-a-sql-database"></a>SQL Database の作成
+### <a name="create-a-database-in-azure-sql-database"></a>Azure SQL Database でデータベースを作成する
 
-**[SQL Database の構成]** ダイアログで、次の操作を行います。 
+1. **[SQL Database の構成]** ダイアログで、次の操作を行います。
 
-* 生成された既定の **[データベース名]** をそのまま使用します。
-* **[接続文字列名]** に「*MyDbConnection*」と入力します。 この名前は、*Models/MyDatabaseContext.cs* で参照されている接続文字列と一致する必要があります。
-* **[OK]** を選択します。
+   * 生成された既定の **[データベース名]** をそのまま使用します。
+   * **[接続文字列名]** に「*MyDbConnection*」と入力します。 この名前は、*Models/MyDatabaseContext.cs* で参照されている接続文字列と一致する必要があります。
+   * **[OK]** を選択します。
 
-![SQL Database を構成する](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
+    ![データベースを構成する](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
-構成したリソースが **[App Service の作成]** ダイアログに表示されます。 **Create** をクリックしてください。 
+2. 構成したリソースが **[App Service の作成]** ダイアログに表示されます。 **Create** をクリックしてください。
 
-![作成したリソース](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
+   ![作成したリソース](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
 
-ウィザードで Azure リソースの作成が完了すると、ASP.NET アプリが Azure に発行されます。 既定のブラウザーが、デプロイされたアプリの URL を参照した状態で起動します。 
+ウィザードで Azure リソースの作成が完了すると、ASP.NET アプリが Azure に発行されます。 既定のブラウザーが、デプロイされたアプリの URL を参照した状態で起動します。
 
 いくつかの To Do アイテムを追加します。
 
@@ -158,9 +157,9 @@ Visual Studio で *dotnet-sqldb-tutorial-master/DotNetAppSqlDb.sln* ファイル
 
 お疲れさまでした。 データ主導の ASP.NET アプリケーションを Azure App Services でライブ実行することができました。
 
-## <a name="access-the-sql-database-locally"></a>SQL データベースにローカルでアクセスする
+## <a name="access-the-database-locally"></a>データベースにローカルでアクセスする
 
-Visual Studio では、**SQL Server オブジェクト エクスプローラー**を使用して、新しい SQL データベースの確認と管理を簡単に行うことができます。
+Visual Studio では、**SQL Server オブジェクト エクスプローラー**を使用して、新しいデータベースの確認と管理を簡単に行うことができます。
 
 ### <a name="create-a-database-connection"></a>データベース接続を作成する
 
@@ -172,7 +171,7 @@ Visual Studio では、**SQL Server オブジェクト エクスプローラー*
 
 **[接続]** ダイアログで、**Azure** ノードを展開します。 Azure 上のすべての SQL Database が一覧表示されます。
 
-前に作成した SQL データベースを選択します。 前に作成した接続が、一番下に自動的に入力されます。
+前に作成したデータベースを選択します。 前に作成した接続が、一番下に自動的に入力されます。
 
 前に作成したデータベース管理者のパスワードを入力し、 **[接続]** をクリックします。
 
@@ -180,19 +179,19 @@ Visual Studio では、**SQL Server オブジェクト エクスプローラー*
 
 ### <a name="allow-client-connection-from-your-computer"></a>コンピューターからのクライアント接続を許可する
 
-**[新しいファイアウォール規則の作成]** ダイアログが開かれています。 既定では、SQL データベース インスタンスはお使いの Azure アプリなどの Azure サービスからの接続のみを許可します。 データベースに接続するには、SQL データベース インスタンスでファイアウォール規則を作成します。 ファイアウォール規則で、ローカル コンピューターのパブリック IP アドレスを許可します。
+**[新しいファイアウォール規則の作成]** ダイアログが開かれています。 既定では、サーバーはお使いの Azure アプリなどの Azure サービスからデータベースへの接続のみを許可します。 Azure の外部からデータベースに接続するには、サーバー レベルでファイアウォール規則を作成します。 ファイアウォール規則で、ローカル コンピューターのパブリック IP アドレスを許可します。
 
 ダイアログには、既にコンピューターのパブリック IP アドレスが入力されています。
 
-**クライアント IP を追加**するための項目が選択されていることを確認し、 **[OK]** をクリックします。 
+**クライアント IP を追加**するための項目が選択されていることを確認し、 **[OK]** をクリックします。
 
-![SQL データベース インスタンスのファイアウォールを設定する](./media/app-service-web-tutorial-dotnet-sqldatabase/sql-set-firewall.png)
+![ファイアウォール規則の作成](./media/app-service-web-tutorial-dotnet-sqldatabase/sql-set-firewall.png)
 
 Visual Studio で SQL データベース インスタンスのファイアウォール設定の作成が完了すると、**SQL Server オブジェクト エクスプローラー**に接続が表示されます。
 
-ここでは、クエリの実行やビューとストアド プロシージャの作成など、最も一般的なデータベース操作を実行できます。 
+ここでは、クエリの実行やビューとストアド プロシージャの作成など、最も一般的なデータベース操作を実行できます。
 
-接続を展開し、 **[データベース]** 、 >  **[&lt;お使いのデータベース>]** 、 >  **[テーブル]** の順に選択します。 `Todoes` テーブルを右クリックし、 **[データの表示]** を選択します。 
+接続を展開し、 **[データベース]** 、 >  **[&lt;お使いのデータベース>]** 、 >  **[テーブル]** の順に選択します。 `Todoes` テーブルを右クリックし、 **[データの表示]** を選択します。
 
 ![SQL Database オブジェクトを確認する](./media/app-service-web-tutorial-dotnet-sqldatabase/explore-sql-database.png)
 
@@ -200,7 +199,7 @@ Visual Studio で SQL データベース インスタンスのファイアウォ
 
 Visual Studio の使い慣れたツールを使用して、Azure でデータベースとアプリを更新できます。 この手順では、Entity Framework の Code First Migrations を使用して、データベース スキーマに変更を加え、Azure に発行します。
 
-Entity Framework Code First Migrations の使用方法の詳細については、「[Getting Started with Entity Framework 6 Code First using MVC 5 (MVC 5 を使用した Entity Framework 6 Code First の概要)](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application)」をご覧ください。
+Entity Framework Code First Migrations の使用方法の詳細については、「[Getting Started with Entity Framework 6 Code First using MVC 5 (MVC 5 を使用した Entity Framework 6 Code First の概要)](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application)」をご覧ください。
 
 ### <a name="update-your-data-model"></a>データ モデルを更新する
 
@@ -212,7 +211,7 @@ public bool Done { get; set; }
 
 ### <a name="run-code-first-migrations-locally"></a>Code First Migrations をローカルで実行する
 
-いくつかのコマンドを実行して、ローカル データベースを更新します。 
+いくつかのコマンドを実行して、ローカル データベースを更新します。
 
 **[ツール]** メニューで、 **[NuGet パッケージ マネージャー]**  >  **[パッケージ マネージャー コンソール]** の順にクリックします。
 
@@ -236,7 +235,7 @@ Update-Database
 
 `Ctrl+F5` キーを押してアプリを実行します。 編集、詳細、作成のリンクをテストします。
 
-エラーが発生せずにアプリケーションが読み込まれたら、Code First Migrations は成功です。 ただし、ページはまだ変わっていないように見えます。これは、この新しいプロパティがまだアプリケーション ロジックで使用されていないためです。 
+エラーが発生せずにアプリケーションが読み込まれたら、Code First Migrations は成功です。 ただし、ページはまだ変わっていないように見えます。これは、この新しいプロパティがまだアプリケーション ロジックで使用されていないためです。
 
 ### <a name="use-the-new-property"></a>新しいプロパティを使用する
 
@@ -284,7 +283,7 @@ _Views\Todos\Index.cshtml_ を開きます。
 </td>
 ```
 
-これだけで、`Index` ビューと `Create` ビューの変更を確認できます。 
+これだけで、`Index` ビューと `Create` ビューの変更を確認できます。
 
 `Ctrl+F5` キーを押してアプリを実行します。
 
@@ -302,7 +301,7 @@ _Views\Todos\Index.cshtml_ を開きます。
 
 ウィザードで **[次へ]** をクリックします。
 
-SQL Database の接続文字列が **[MyDatabaseContext (MyDbConnection)]** に入力されていることを確認します。 ドロップダウン リストから **myToDoAppDb** データベースを選択する必要があります。 
+SQL Database の接続文字列が **[MyDatabaseContext (MyDbConnection)]** に入力されていることを確認します。 ドロップダウン リストから **myToDoAppDb** データベースを選択する必要があります。
 
 **[Code First Migrations を実行する (アプリケーション開始時に実行)]** チェック ボックスをオンにし、 **[保存]** をクリックします。
 
@@ -320,7 +319,6 @@ Azure アプリで Code First Migrations を有効にしたので、コードの
 
 既存のすべての To Do 項目がまだ表示されています。 ASP.NET アプリケーションを再発行しても、SQL データベースの既存のデータは消失しません。 また、Code First Migrations によって変更されるのはデータ スキーマのみであり、既存のデータはそのまま残されます。
 
-
 ## <a name="stream-application-logs"></a>アプリケーション ログをストリーミングする
 
 Azure アプリから Visual Studio に、トレース メッセージを直接ストリーム配信することができます。
@@ -331,7 +329,7 @@ _Controllers\TodosController.cs_ を開きます。
 
 ### <a name="open-server-explorer"></a>サーバー エクスプローラーを開く
 
-**[表示]** メニューで、 **[サーバー エクスプローラー]** を選択します。 **サーバー エクスプローラー**で、Azure アプリのログ記録を構成できます。 
+**[表示]** メニューで、 **[サーバー エクスプローラー]** を選択します。 **サーバー エクスプローラー**で、Azure アプリのログ記録を構成できます。
 
 ### <a name="enable-log-streaming"></a>ログ ストリーミングを有効にする
 
@@ -343,7 +341,7 @@ Azure アプリを右クリックし、 **[ストリーミング ログの表示
 
 ![ログ ストリーミングを有効にする](./media/app-service-web-tutorial-dotnet-sqldatabase/stream-logs.png)
 
-ログが **[出力]** ウィンドウにストリーミングされるようになりました。 
+ログが **[出力]** ウィンドウにストリーミングされるようになりました。
 
 ![出力ウィンドウでのログ ストリーミング](./media/app-service-web-tutorial-dotnet-sqldatabase/log-streaming-pane.png)
 
@@ -361,8 +359,6 @@ Azure アプリを再度右クリックし、 **[表示の設定]** を選択し
 
 > [!TIP]
 > 異なるトレース レベルを試しながら、各レベルでどのような種類のメッセージが表示されるかを確認することができます。 たとえば、 **[情報]** レベルを指定した場合、`Trace.TraceInformation()`、`Trace.TraceWarning()`、`Trace.TraceError()` で作成されたすべてのログが表示されますが、`Trace.WriteLine()` で作成されたログは除外されます。
->
->
 
 ブラウザーでアプリにもう一度アクセスし (*http://&lt;アプリ名>.azurewebsites.net*)、Azure の To Do リスト アプリケーションの周囲をクリックしてみます。 Visual Studio の **[出力]** ウィンドウにトレース メッセージがストリーミングされます。
 
@@ -373,8 +369,6 @@ Application: 2017-04-06T23:30:53  PID[8132] Verbose     POST /Todos/Create
 Application: 2017-04-06T23:30:54  PID[8132] Verbose     GET /Todos/Index
 ```
 
-
-
 ### <a name="stop-log-streaming"></a>ログ ストリーミングを停止する
 
 ログ ストリーミング サービスを停止するには、 **[出力]** ウィンドウの **[監視の停止]** ボタンをクリックします。
@@ -383,7 +377,7 @@ Application: 2017-04-06T23:30:54  PID[8132] Verbose     GET /Todos/Index
 
 ## <a name="manage-your-azure-app"></a>Azure アプリを管理する
 
-[Azure Portal](https://portal.azure.com) に移動して、Web アプリを管理します。 **[App Services]** を検索して選択します。 
+[Azure Portal](https://portal.azure.com) に移動して、Web アプリを管理します。 **[App Services]** を検索して選択します。
 
 ![Azure App Services を検索します](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-portal-navigate-app-services.png)
 
@@ -391,9 +385,9 @@ Application: 2017-04-06T23:30:54  PID[8132] Verbose     GET /Todos/Index
 
 ![Azure アプリへのポータル ナビゲーション](./media/app-service-web-tutorial-dotnet-sqldatabase/access-portal.png)
 
-アプリのページが表示されます。 
+アプリのページが表示されます。
 
-既定では、ポータルは **[概要]** ページを表示します。 このページでは、アプリの動作状態を見ることができます。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクも行うことができます。 ページの左側にあるタブは、開くことができるさまざまな構成ページを示しています。 
+既定では、ポータルは **[概要]** ページを表示します。 このページでは、アプリの動作状態を見ることができます。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクも行うことができます。 ページの左側にあるタブは、開くことができるさまざまな構成ページを示しています。
 
 ![Azure Portal の [App Service] ページ](./media/app-service-web-tutorial-dotnet-sqldatabase/web-app-blade.png)
 
@@ -404,7 +398,8 @@ Application: 2017-04-06T23:30:54  PID[8132] Verbose     GET /Todos/Index
 このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
-> * Azure で SQL データベースを作成する
+>
+> * Azure SQL Database でデータベースを作成する
 > * ASP.NET アプリを SQL Database に接続する
 > * Azure にアプリケーションをデプロイする
 > * データ モデルを更新し、アプリを再デプロイする
@@ -415,3 +410,13 @@ Application: 2017-04-06T23:30:54  PID[8132] Verbose     GET /Todos/Index
 
 > [!div class="nextstepaction"]
 > [Azure リソースのマネージド ID を使用して SQL データベースに安全にアクセスする](app-service-web-tutorial-connect-msi.md)
+
+その他のリソース:
+
+> [!div class="nextstepaction"]
+> [ASP.NET アプリの構成](configure-language-dotnet-framework.md)
+
+クラウドの支出を最適化して節約しますか?
+
+> [!div class="nextstepaction"]
+> [Cost Management を使用してコスト分析を開始する](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

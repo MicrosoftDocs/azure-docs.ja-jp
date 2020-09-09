@@ -13,11 +13,11 @@ ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d298c83c0c1a0f33f28644e2e467ad5035300221
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231611"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847609"
 ---
 # <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスのファイル システムとの間でデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]

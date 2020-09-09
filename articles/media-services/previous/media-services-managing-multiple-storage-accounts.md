@@ -13,14 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 252d5e551dad56108ad952eb0c7c3b39df0585d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b5b0b383cba45646a1e5a8f980b3a097767f9979
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69901275"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262602"
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>複数のストレージ アカウントでの Media Services 資産の管理  
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 1 つの Media Services アカウントに複数のストレージ アカウントをアタッチできます。 Media Services アカウントに複数のストレージ アカウントをアタッチする機能には、次のような利点があります。
 
@@ -48,19 +51,21 @@ Media Services は、ストリーミング コンテンツ (たとえば、 http
 
 ストレージ アカウントを AMS アカウントにアタッチするには、次の例に示すように、[Azure Resource Manager API](/rest/api/media/operations/azure-media-services-rest-api-reference) および [PowerShell](/powershell/module/az.media) を使用します。
 
-    $regionName = "West US"
-    $subscriptionId = " xxxxxxxx-xxxx-xxxx-xxxx- xxxxxxxxxxxx "
-    $resourceGroupName = "SkyMedia-USWest-App"
-    $mediaAccountName = "sky"
-    $storageAccount1Name = "skystorage1"
-    $storageAccount2Name = "skystorage2"
-    $storageAccount1Id = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccount1Name"
-    $storageAccount2Id = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccount2Name"
-    $storageAccount1 = New-AzMediaServiceStorageConfig -StorageAccountId $storageAccount1Id -IsPrimary
-    $storageAccount2 = New-AzMediaServiceStorageConfig -StorageAccountId $storageAccount2Id
-    $storageAccounts = @($storageAccount1, $storageAccount2)
+```azurepowershell
+$regionName = "West US"
+$subscriptionId = " xxxxxxxx-xxxx-xxxx-xxxx- xxxxxxxxxxxx "
+$resourceGroupName = "SkyMedia-USWest-App"
+$mediaAccountName = "sky"
+$storageAccount1Name = "skystorage1"
+$storageAccount2Name = "skystorage2"
+$storageAccount1Id = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccount1Name"
+$storageAccount2Id = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccount2Name"
+$storageAccount1 = New-AzMediaServiceStorageConfig -StorageAccountId $storageAccount1Id -IsPrimary
+$storageAccount2 = New-AzMediaServiceStorageConfig -StorageAccountId $storageAccount2Id
+$storageAccounts = @($storageAccount1, $storageAccount2)
     
-    Set-AzMediaService -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccounts $storageAccounts
+Set-AzMediaService -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccounts $storageAccounts
+```
 
 ### <a name="support-for-cool-storage"></a>クール ストレージのサポート
 

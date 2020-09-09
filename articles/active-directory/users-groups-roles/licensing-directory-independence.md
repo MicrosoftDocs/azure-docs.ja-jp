@@ -6,7 +6,7 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.topic: article
+ms.topic: overview
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.date: 04/29/2020
@@ -14,12 +14,12 @@ ms.author: curtand
 ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbe7b0211775e59504443d30fa253cfa14af13b1
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 1db812fb9c1503771bec0b1795ee8c15bb70014a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582746"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84727706"
 ---
 # <a name="understand-how-multiple-azure-active-directory-organizations-interact"></a>複数の Azure Active Directory 組織が対話する方法を理解する
 

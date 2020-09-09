@@ -9,73 +9,73 @@ metadata:
   ms.subservice: time-series-insights
   ms.topic: landing-page
   ms.collection: collection
-  author: KingdomOfEnds
-  ms.author: v-adgera
-  ms.date: 02/12/2020
-  ms.openlocfilehash: 34d7e9ad4f312576eb1e51961feb8364b99a967e
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  author: shreyasharmamsft
+  ms.author: shresha
+  ms.date: 07/09/2020
+  ms.openlocfilehash: 7419fed9084425f50eda4b504c2f3158873559a4
+  ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "77651323"
+  ms.lasthandoff: 08/15/2020
+  ms.locfileid: "88245691"
 landingContent:
 - title: Azure Time Series Insights について
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure Time Series Insights プレビューとは
-      url: time-series-insights-update-overview.md
-    - text: Azure Time Series Insights GA について
-      url: time-series-insights-overview.md
+    - text: Azure Time Series Insights Gen2 とは
+      url: overview-what-is-tsi.md
+    - text: 例
+      url: overview-use-cases.md
     - text: クライアント SDK のサンプルの視覚化
       url: https://tsiclientsample.azurewebsites.net/
   - linkListType: concept
     links:
-    - text: Time Series Insights エクスプローラーでデータを視覚化する (プレビュー)
-      url: time-series-insights-update-explorer.md
+    - text: Time Series Insights Explorer でデータを視覚化する
+      url: concepts-ux-panels.md
     - text: タイム シリーズ モデル
-      url: time-series-insights-update-tsm.md
+      url: concepts-model-overview.md
   - linkListType: video
     links:
-    - text: IoT アプリのための Time Series Insight。 (13:31)
-      url: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Time-Series-Insights-e2e-solution-for-industrial-IoT-analytics
-- title: プレビューの使用を開始する
+    - text: Time Series Insights Gen2 を使用したデータの分析
+      url: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Deep-Dive-Analyzing-IoT-data-using-Time-Series-Insights
+- title: はじめに
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Azure Time Series Insights プレビューを探索する
-      url: time-series-insights-update-quickstart.md
+    - text: Azure Time Series Insights Gen2 の探索
+      url: quickstart-explore-tsi.md
   - linkListType: tutorial
     links:
-    - text: Azure Time Series Insights プレビューのチュートリアル
-      url: time-series-insights-update-create-environment.md
+    - text: Azure Time Series Insights Gen2 のチュートリアル
+      url: tutorials-set-up-tsi-environment.md
   - linkListType: deploy
     links:
     - text: Event Hubs への接続
-      url: time-series-insights-how-to-add-an-event-source-eventhub.md
+      url: how-to-ingest-data-event-hub.md
     - text: IoT Hub への接続
-      url: time-series-insights-how-to-add-an-event-source-iothub.md
+      url: how-to-ingest-data-iot-hub.md
     - text: 環境を計画する
-      url: time-series-insights-update-plan.md
-    - text: データ ストレージとイングレス
-      url: time-series-insights-update-storage-ingress.md
+      url: how-to-plan-your-environment.md
+    - text: データ取り込みの概要
+      url: concepts-ingestion-overview.md
   - linkListType: how-to-guide
     links:
     - text: プロビジョニングと管理
       url: time-series-insights-update-how-to-manage.md
     - text: データ アクセスの許可
       url: time-series-insights-data-access.md
-    - text: イングレスとクエリに対する JSON の調整
-      url: time-series-insights-update-how-to-shape-events.md
+    - text: タイム シリーズ モデルの作成
+      url: how-to-edit-your-model.md
+    - text: クエリ データ
+      url: concepts-query-overview.md
 - title: API リファレンス
   linkLists:
   - linkListType: reference
     links:
-    - text: Azure Time Series Insights
-      url: /rest/api/time-series-insights/
-    - text: データ アクセスの概念のプレビュー
-      url: /rest/api/time-series-insights/preview
-    - text: データ アクセスの一般提供
-      url: /rest/api/time-series-insights/ga
+    - text: REST API の概要
+      url: https://docs.microsoft.com/rest/api/time-series-insights/
+    - text: データ アクセスの概念 Gen2
+      url: https://docs.microsoft.com/rest/api/time-series-insights/reference-data-access-overview
     - text: JavaScript クライアント SDK
       url: https://github.com/microsoft/tsiclient/blob/master/docs/API.md

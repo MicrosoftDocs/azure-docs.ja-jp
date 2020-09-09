@@ -6,17 +6,17 @@ author: ronortloff
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/24/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: synapse-analytics
-ms.openlocfilehash: 5360d91a17a7eee2dd0373ac311c79d22e085939
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7678fedeb3df3b9d27fba603db8f66b692729506
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416095"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85211699"
 ---
 # <a name="monitor-your-azure-synapse-analytics-sql-pool-workload-using-dmvs"></a>DMV を使用して Azure Synapse Analytics SQL プールのワークロードを監視する
 

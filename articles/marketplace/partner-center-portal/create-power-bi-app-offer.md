@@ -1,24 +1,24 @@
 ---
-title: Microsoft コマーシャル マーケットプレースで Power BI アプリ オファーを作成する
+title: Microsoft AppSource で Power BI アプリ オファーを作成する
 description: Power BI アプリ オファーを作成し、Microsoft AppSource に公開する方法について学習します。
-author: anbene
-ms.author: mingshen
+author: navits09
+ms.author: navits
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/01/2020
-ms.openlocfilehash: 17a6b7e46341ee0231ac88b849495cfc7e46ad88
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.date: 07/22/2020
+ms.openlocfilehash: ebc3ad6957890423314bb2d8623c7b4708aed10b
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839149"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815414"
 ---
-# <a name="create-a-power-bi-app-for-microsoft-appsource"></a>Microsoft AppSource 用の Power BI アプリを作成する
+# <a name="create-a-power-bi-app-offer"></a>Power BI アプリ オファーを作成する
 
 この記事では、Power BI アプリ オファーを作成し、Microsoft [AppSource](https://appsource.microsoft.com/) に公開する方法について説明します。
 
-開始する前に、[パートナー センターでコマーシャル マーケットプレース アカウントを作成します](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) (まだ作成していない場合)。 アカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
+開始する前に、[パートナー センターでコマーシャル マーケットプレース アカウントを作成します](create-account.md) (まだ作成していない場合)。 お使いのアカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
 
 ## <a name="create-a-new-offer"></a>新しいオファーを作成する
 
@@ -26,10 +26,10 @@ ms.locfileid: "82839149"
 2. 左側のナビゲーション メニューで、 **[商業マーケットプレース]**  >  **[概要]** の順に選択します。
 3. [概要] ページで、 **[+ 新しいオファー]**  >  **[Power BI サービス アプリ]** を選択します。
 
-   ![左側のナビゲーション メニューの画像。](./media/new-offer-pbi-app.png)
+   ![左側のナビゲーション メニューの画像。](./media/new-offer-power-bi-app.png)
 
 > [!NOTE]
-> オファーを公開した後にパートナー センターで編集した内容は、オファーの再公開後にのみネットショップに表示されます。 変更後は必ず再公開してください。
+> オファーが公開された後、それに対してパートナー センターで行われた編集内容は、そのオファーの再公開後にのみオンライン ストアに表示されます。 変更後は必ず再公開してください。
 
 > [!IMPORTANT]
 > **[Power BI サービス アプリ]** が表示されない場合、または有効にならない場合は、この種類のオファーを作成するためのアクセス許可がアカウントにありません。 開発者アカウントの登録など、この種類のオファーに対するすべての[要件](create-power-bi-app-overview.md)を満たしていることを確認してください。
@@ -55,25 +55,25 @@ ms.locfileid: "82839149"
 
 これには、選択した内容に基づき、このオファーで操作を実行するためのリンクが含まれています。 次に例を示します。
 
-- オファーがドラフトの場合 - [ドラフトのオファーを削除する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
-- オファーが発行中の場合 - [オファーの販売を停止する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
-- オファーがプレビューの場合 - [公開する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval)
-- 公開元のサインアウトを完了していない場合 - [公開を取り消す](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing)
+- オファーがドラフトの場合 - [ドラフトのオファーを削除する](update-existing-offer.md#delete-a-draft-offer)
+- オファーが公開中の場合 - [オファーの販売を停止する](update-existing-offer.md#stop-selling-an-offer-or-plan)
+- オファーがプレビュー段階である場合 - [一般公開する](publishing-status.md#publisher-approval)
+- 公開元のサインアウトを完了していない場合 - [公開を取り消す](update-existing-offer.md#cancel-publishing)
 
 ## <a name="offer-setup"></a>オファーのセットアップ
 
-### <a name="connect-lead-management"></a>リード管理の接続
+### <a name="customer-leads"></a>潜在顧客
 
 パートナー センターを使用してオファーをマーケットプレースに公開する場合、それを顧客関係管理 (CRM) システムに接続する必要があります。 これにより、自社の製品に顧客が関心を示したり、製品を使用したりした場合はすぐにその顧客の連絡先情報を受信できるようになります。
 
 1. 顧客リードの送信先となるリードのターゲットを選択します。 パートナー センターでは、次の CRM システムがサポートされています。
 
-    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) for Customer Engagement
-    - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+    - [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md) for Customer Engagement
+    - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
+    - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > ご利用の CRM システムが上記の一覧にない場合は、[Azure テーブル](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table)または [HTTPS エンドポイント](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https)を使用して顧客リードのデータを格納します。 その後、そのデータをご利用の CRM システムにエクスポートします。
+    > ご利用の CRM システムが上記の一覧にない場合は、[Azure テーブル](commercial-marketplace-lead-management-instructions-azure-table.md)または [HTTPS エンドポイント](commercial-marketplace-lead-management-instructions-https.md)を使用して顧客リードのデータを格納します。 その後、そのデータをご利用の CRM システムにエクスポートします。
 
 2. パートナー センターで発行する際は、オファーをリードの宛先に接続します。
 3. リードの宛先への接続が正しく構成されていることを確認します。 パートナー センターで公開すると、Microsoft で接続を検証して、テスト リードを送信します。 オファーの公開前に行うプレビュー中は、プレビュー環境でオファーを自分で購入してみることで、リードの接続をテストすることもできます。
@@ -81,9 +81,9 @@ ms.locfileid: "82839149"
 
 その他のリード管理リソースをいくつか次に示します。
 
-- [リード管理の概要](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
-- [リード管理に関する FAQ](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [一般的なリード構成エラー](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [リード管理の概要](commercial-marketplace-get-customer-leads.md)
+- [リード管理に関する FAQ](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)
+- [一般的なリード構成エラー](../lead-management-for-cloud-marketplace.md#publishing-config-errors)
 - [リード管理の概要](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (ポップアップ ブロックが無効になっていることを確認してください)
 
 続行する前に、 **[下書きの保存]** を選択します。
@@ -94,33 +94,16 @@ ms.locfileid: "82839149"
 
 ### <a name="category"></a>カテゴリ
 
-少なくとも 1 つ (最大 3 つ) のカテゴリを選択します。 これらのカテゴリは、オファーを適切なマーケットプレース検索領域に配置するために使用され、オファーの詳細ページに表示されます。 オファーの説明では、これらのカテゴリにオファーがどのように対応しているかを説明します。
+オファーを適切なマーケットプレース検索領域に配置するために、カテゴリとサブカテゴリを選択します。 オファーでこれらのカテゴリがどのようにサポートされるかを、必ずオファーの説明に記述してください。 選択:
+
+- 少なくとも 1 つ、最大で 2 つのカテゴリ。プライマリおよびセカンダリのカテゴリを 1 つずつ含めますが、セカンダリは省略できます。
+- プライマリまたはセカンダリのカテゴリごとに最大 2 つのサブカテゴリ。 オファーに適用できるサブカテゴリがない場合は、 **[該当なし]** を選択します。
+
+「[オファーの掲載のベスト プラクティス](../gtm-offer-listing-best-practices.md)」でカテゴリとサブカテゴリの完全な一覧を参照してください。
 
 ### <a name="industry"></a>業界
 
-必要に応じて、各業界で最大 2 つの業界と 2 つの業種を選択します。 カテゴリはオファーを表示するために使用されますが、業界および業種は検索フィルターで使用され、ネットショップで適用されます。 オファーのターゲットが特定の業界や業種である場合は、オファーの説明を使用して、選択された業界または業種がオファーでどのようにサポートされるかを説明します。 オファーが業界に固有でない場合は、このセクションを空白のままにします。
-
-> [!NOTE]
-> オファー検出エクスペリエンスを向上させるために新しい業界と業種の導入に取り組んでいるため、一部の業界や業種はまだネットショップでは表示されない場合があります。 (*) でマークされた業界と業種は、将来の日付で利用できるようになります。 公開されているすべてのオファーはキーワード検索を使用して検出できます。
-<p>&nbsp;
-
-| **業界** | **下位業界** |
-| --- | --- |
-| *自動車 | *自動車 |
-| 農業 | *その他 - 区分なし |
-| Distribution | *卸売<br>小包の発送 |
-| 教育 | *高等教育<br>* 初等および中等教育/K-12<br>*ライブラリと美術館 |
-| 金融サービス | *銀行と証券<br>* 保険 |
-| Government | *防御とインテリジェンス (以前の国家安全保障と公安)<br>* 公安と司法<br>*民間政府 |
-| 医療 (以前の "衛生") | *医療保険<br>* 医療サービス<br>*製薬 |
-| 製造と資源 (以前の製造) | *化学と農薬<br>* 個別製造<br>*エネルギー |
-| 小売と消費財 (以前の小売) | *消費財*<br>小売 |
-| *メディアと通信 (以前のメディアと娯楽) | *メディアと娯楽<br>* 電気通信 |
-| プロフェッショナル サービス | *司法<br>* パートナー専門サービス業 |
-| *建築と建設 (以前の建築と工学) | *その他 - 区分なし |
-| *接客と旅行 | *ホテルとレジャー<br>* 旅行と輸送<br>*レストランと食品サービス |
-| *その他の公共セクター産業 | *林業と漁業<br>* 非営利 |
-| *不動産 | *その他 - 区分なし |
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="legal"></a>法的情報
 
@@ -145,6 +128,24 @@ ms.locfileid: "82839149"
 > [!NOTE]
 > オファーの詳細が「このアプリケーションは、[英語以外の言語] でのみ利用可能です」という文言で始まっていれば英語である必要はありません。 また、オファー コンテンツへの役に立つリンクを、オファーのリスト登録で使用されているものとは異なる言語で提供することもできます。
 
+Microsoft AppSource でのオファー情報の表示例を次に示します (表示されている価格は例示のみを目的としており、実際のコストを反映することを意図していません)。
+
+:::image type="content" source="media/example-power-bi-app.png" alt-text="Microsoft AppSource でこのオファーが どのように表示されるかを示しています。":::
+
+#### <a name="call-out-descriptions"></a>コールアウトの説明
+
+1. ロゴ
+2. 製品
+3. Categories
+4. 業界
+5. サポートのアドレス (リンク)
+6. 使用条件
+7. プライバシー ポリシー
+8. プラン名
+9. まとめ
+10. 説明
+11. スクリーンショット/ビデオ
+
 ### <a name="name"></a>名前
 
 ここで入力する名前は、オファーのタイトルとして表示されます。 このフィールドには、オファーを作成したときに **[オファーの別名]** ボックスに入力したテキストがあらかじめ入力されています。 この名前は後で変更できます。
@@ -161,32 +162,11 @@ ms.locfileid: "82839149"
 
 ### <a name="description"></a>説明
 
-オファーの詳しい説明 (最大 3,000 文字) を入力します。 これは、マーケットプレースのリスト登録に関する概要で顧客に表示されます。
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-説明には、次の 1 つまたは複数を含めます。
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-- オファーによってもたらされる価値と主な利益。
-- カテゴリまたは業界のアソシエーション、あるいはその両方。
-- アプリ内購入の営業案件。
-- 必要な開示。
-
-説明を記述するためのいくつかのヒントを次に示します。
-
-- 説明の先頭のいくつかの文で、オファーの価値を明確に説明します。 次の項目を含めます。
-  - プランの説明。
-  - オファーから利益を得るユーザーの種類。
-  - 顧客は、オファーのアドレスを必要とします。またはそれを発行します。
-- 先頭のいくつかの文が検索結果に表示される場合があることに注意してください。
-- 特徴や機能に頼って製品を販売しないでください。 代わりに、オファーによって提供される価値に焦点を当てます。
-- 業界固有の語彙または利益に基づく表現を使用するようにしてください。
-
-オファーの説明をより魅力的なものにするには、リッチ テキスト エディターを使用して書式設定を適用してください。
-
-![リッチ テキスト エディターの使用](./media/rich-text-editor.png)
-
-| <center>テキスト形式を変更する | <center>箇条書きの黒丸または段落番号を追加する | <center>テキスト インデントを追加または削除する |
-| --- | --- | --- |
-| <center>![リッチ テキスト エディターを使用してテキスト形式を変更する](./media/text-editor3.png) |  <center>![リッチ テキスト エディターを使用してリストを追加する](./media/text-editor4.png) |  <center>![リッチ テキスト エディターを使用してインデントを設定する](./media/text-editor5.png) |
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
 ### <a name="search-keywords"></a>キーワード検索
 
@@ -220,30 +200,37 @@ ms.locfileid: "82839149"
 
 ### <a name="marketplace-images"></a>マーケットプレースの画像
 
-オファーで使用するロゴと画像を提供します。 画像はすべて .png 形式である必要があります。 ぼやけた画像は拒否されます。
+オファーで使用するロゴと画像を提供します。 画像はすべて PNG 形式である必要があります。 ぼやけた画像は拒否されます。
+
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
 
 >[!NOTE]
->ファイルのアップロードで問題が発生した場合は、パートナー センターで使用されている https://upload.xboxlive.com サービスがローカル ネットワークでブロックされていないことを確認してください。
+>ファイルのアップロードで問題が発生した場合は、パートナー センターで使用されている `https://upload.xboxlive.com` サービスがローカル ネットワークでブロックされていないことを確認してください。
 
 #### <a name="store-logos"></a>ストア ロゴ
 
-オファーのロゴの .png ファイルは、次の 2 つのピクセル サイズで提供します。
-- **小** (48 x 48)
-- **大** (216 x 216)
+**大**サイズのロゴに PNG ファイルを指定します。 パートナー センターでは、これを使用して、**小**サイズのロゴを作成します。 これは、必要に応じて、後で別の画像に置き換えることができます。
 
-両方のロゴが必要であり、マーケットプレースの登録情報のさまざまな場所で使用されます。
+- **大** (216 x 216 から 350 x 350 px、必須)
+- **小** (48 x 48 px、省略可能)
+
+これらのロゴは、リスト登録のさまざまな場所で使用されます。
+
+[!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
+
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Screenshots (スクリーンショット)
 
-オファーがどのように動作するかを示すスクリーンショットを 1 つ以上、最大 5 つ追加します。 それぞれを 1280 x 720 ピクセルのサイズおよび .png 形式とする必要があります。
+オファーがどのように動作するかを示すスクリーンショットを 1 つ以上、最大 5 つ追加します。 それぞれが 1280 x 720 ピクセルのサイズで PNG 形式である必要があります。
 
 #### <a name="videos-optional"></a>ビデオ (省略可能)
 
-オファーをデモンストレーションするビデオを最大 5 つ追加します。 ビデオの名前、Web アドレス、ビデオのサムネイル .png 画像 (サイズは 1280 x 720 ピクセル) を入力します。
+オファーをデモンストレーションするビデオを最大 5 つ追加します。 ビデオの名前、その Web アドレス、ビデオのサムネイル PNG 画像 (サイズは 1280 x 720 ピクセル) を入力します。
 
 #### <a name="additional-marketplace-listing-resources"></a>マーケットプレースのリスト登録に関するその他のリソース
 
-オファーのリスト登録の作成について詳しくは、「[オファーの掲載のベスト プラクティス](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)」を参照してください。
+オファーのリスト登録の作成について詳しくは、「[オファーの掲載のベスト プラクティス](../gtm-offer-listing-best-practices.md)」を参照してください。
 
 ## <a name="technical-configuration"></a>技術的な構成
 
@@ -273,4 +260,4 @@ Microsoft 検証チームでのアプリの構成、接続、テストに役立�
 
 オファーを送信して公開するには、 **[公開]** を選択します。
 
-オファーのプレビュー バージョンが確認および承認できるようになったら、その旨をお知らせするメールを Microsoft からお送りします。 オファーを一般に (プライベート オファーの場合は、プライベート対象ユーザーに) 公開するには、パートナー センターに移動して、 **[一般公開する]** を選択します。
+オファーのプレビュー バージョンが確認して承認できるようになったら、その旨をお知らせするメールを Microsoft からお送りします。 オファーを一般に公開するには、パートナー センターにアクセスし、 **[Go-live]\(一般公開する\)** を選択します。

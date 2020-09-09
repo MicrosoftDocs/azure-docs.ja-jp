@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: d56007e5a196a0857f3b69ac51f5e3b5a88c4f6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3af2e849aa6658e539b0b5bdbda4428cc28e5ce5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593491"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887238"
 ---
 # <a name="real-time-stats-in-microsoft-azure-cdn"></a>Microsoft Azure CDN でのリアルタイム統計情報
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]

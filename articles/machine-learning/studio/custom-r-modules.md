@@ -1,23 +1,24 @@
 ---
-title: カスタム R モジュールを作成し、デプロイする
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio (classic):カスタム R モジュールの作成とデプロイ - Azure
 description: ML Studio (クラシック) でカスタム R モジュールを作成してデプロイする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 5fb628b1730f0811debf0ff8a6cd517b96f8ef53
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2b050e8c70de4edc39c8ddad71d2169d5308607b
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208433"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429383"
 ---
-# <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) 用のカスタム R モジュールを定義する
+# <a name="define-custom-r-modules-for-machine-learning-studio-classic"></a>Machine Learning Studio (classic) 用のカスタム R モジュールを定義する
+
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 このトピックでは、カスタム R Studio (クラシック) を作成してデプロイする方法について説明します。 カスタム R モジュールの概要と、このモジュールの定義に使用するファイルについて説明します。 また、モジュールを定義するファイルを作成する方法と、Machine Learning ワークスペースにデプロイするためにモジュールを登録する方法も示します。 カスタム モジュールの定義で使用する要素および属性についてさらに詳しく説明します。 補助機能と補助ファイルおよび複数の出力を使用する方法についても説明します。 
 
@@ -39,55 +40,58 @@ ms.locfileid: "82208433"
 ## <a name="the-source-file"></a>ソース ファイル
 2 つのデータセット (データ フレーム) の行 (監視) を連結するために使用される **Add Rows** モジュールの標準実装を変更する **Custom Add Rows** モジュールの例について考えてみます。 標準の **Add Rows** モジュールは、`rbind` アルゴリズムを使用して、最初の入力データセットの末尾に、2 番目の入力データセットの行を追加します。 カスタマイズされた `CustomAddRows` 関数も 2 つのデータセットを同様に受け入れますが、追加の入力としてブール型スワップ パラメーターも受け取ります。 スワップ パラメーターが **FALSE** に設定されている場合は、標準実装と同じデータセットが返されますが、 **TRUE** の場合、関数は、最初の入力データセットの行を、2 番目のデータセットの末尾に追加します。 **Custom Add Rows** モジュールによって公開される R `CustomAddRows` 関数の実装が含まれる CustomAddRows.R ファイルには、次の R コードが含まれます。
 
-    CustomAddRows <- function(dataset1, dataset2, swap=FALSE) 
+```r
+CustomAddRows <- function(dataset1, dataset2, swap=FALSE) 
+{
+    if (swap)
     {
-        if (swap)
-        {
-            return (rbind(dataset2, dataset1));
-        }
-        else
-        {
-            return (rbind(dataset1, dataset2));
-        } 
+        return (rbind(dataset2, dataset1));
+    }
+    else
+    {
+        return (rbind(dataset1, dataset2));
     } 
+} 
+```
 
 ### <a name="the-xml-definition-file"></a>XML 定義ファイル
 この `CustomAddRows` 関数を Azure Machine Learning Studio (クラシック) モジュールとして公開するには、**Custom Add Rows** モジュールの外観や動作を指定するために XML 定義ファイルを作成する必要があります。 
 
-    <!-- Defined a module using an R Script -->
-    <Module name="Custom Add Rows">
-        <Owner>Microsoft Corporation</Owner>
-        <Description>Appends one dataset to another. Dataset 2 is concatenated to Dataset 1 when Swap is FALSE, and vice versa when Swap is TRUE.</Description>
+```xml
+<!-- Defined a module using an R Script -->
+<Module name="Custom Add Rows">
+    <Owner>Microsoft Corporation</Owner>
+    <Description>Appends one dataset to another. Dataset 2 is concatenated to Dataset 1 when Swap is FALSE, and vice versa when Swap is TRUE.</Description>
 
-    <!-- Specify the base language, script file and R function to use for this module. -->        
-        <Language name="R" 
-         sourceFile="CustomAddRows.R" 
-         entryPoint="CustomAddRows" />  
+<!-- Specify the base language, script file and R function to use for this module. -->        
+    <Language name="R" 
+        sourceFile="CustomAddRows.R" 
+        entryPoint="CustomAddRows" />  
 
-    <!-- Define module input and output ports -->
-    <!-- Note: The values of the id attributes in the Input and Arg elements must match the parameter names in the R Function CustomAddRows defined in CustomAddRows.R. -->
-        <Ports>
-            <Input id="dataset1" name="Dataset 1" type="DataTable">
-                <Description>First input dataset</Description>
-            </Input>
-            <Input id="dataset2" name="Dataset 2" type="DataTable">
-                <Description>Second input dataset</Description>
-            </Input>
-            <Output id="dataset" name="Dataset" type="DataTable">
-                <Description>The combined dataset</Description>
-            </Output>
-        </Ports>
+<!-- Define module input and output ports -->
+<!-- Note: The values of the id attributes in the Input and Arg elements must match the parameter names in the R Function CustomAddRows defined in CustomAddRows.R. -->
+    <Ports>
+        <Input id="dataset1" name="Dataset 1" type="DataTable">
+            <Description>First input dataset</Description>
+        </Input>
+        <Input id="dataset2" name="Dataset 2" type="DataTable">
+            <Description>Second input dataset</Description>
+        </Input>
+        <Output id="dataset" name="Dataset" type="DataTable">
+            <Description>The combined dataset</Description>
+        </Output>
+    </Ports>
 
-    <!-- Define module parameters -->
-        <Arguments>
-            <Arg id="swap" name="Swap" type="bool" >
-                <Description>Swap input datasets.</Description>
-            </Arg>
-        </Arguments>
-    </Module>
+<!-- Define module parameters -->
+    <Arguments>
+        <Arg id="swap" name="Swap" type="bool" >
+            <Description>Swap input datasets.</Description>
+        </Arg>
+    </Arguments>
+</Module>
+```
 
-
-XML ファイル内の **Input** 要素と **Arg** 要素の **id** 属性の値が、CustomAddRows.R ファイルの R コードの関数パラメーター名 (この例では、*dataset1*、*dataset2*、および *swap*) と正確に一致する必要があることに注意します。 同様に、**Language** 要素の **entryPoint** 属性の値が、R スクリプトの関数名と "完全に" 一致する必要があります (この例では *CustomAddRows*)。 
+XML ファイル内の **Input** 要素と **Arg** 要素の **id** 属性の値が、CustomAddRows.R ファイルの R コードの関数パラメーター名 (この例では、*dataset1*、*dataset2*、および *swap*) と正確に一致する必要があることに注意します。 同様に、**Language** 要素の **entryPoint** 属性の値が、R スクリプトの関数名 (この例では *CustomAddRows*) と正確に一致する必要があります。 
 
 これに対して、**Output** 要素の **id** 属性は、R スクリプトのどの変数にも対応していません。 複数の出力が必要な場合は、XML ファイルで *Outputs* 要素が宣言されている順序と " **同じ順序** " で結果が配置されたリストを R 関数から返します。
 
@@ -104,10 +108,11 @@ Machine Learning ワークスペースでそれらを登録するには、Azure 
 ### <a name="module-elements"></a>Module 要素
 **Module** 要素は、XML ファイルでカスタム モジュールを定義する際に使用します。 1 つの XML ファイルで複数の **Module** 要素を使用することで、複数のモジュールを定義できます。 ワークスペース内の各モジュールには、一意の名前が必要です。 既存のカスタム モジュールと同じ名前でカスタム モジュールを登録すると、既存のモジュールが新しいモジュールに置き換えられます。 ただし、既存の Azure Machine Learning Studio (クラシック) モジュールと同じ名前でカスタム モジュールを登録できます。 この場合、カスタム モジュールはモジュール パレットの **[カスタム]** カテゴリに表示されます。
 
-    <Module name="Custom Add Rows" isDeterministic="false"> 
-        <Owner>Microsoft Corporation</Owner>
-        <Description>Appends one dataset to another...</Description>/> 
-
+```xml
+<Module name="Custom Add Rows" isDeterministic="false"> 
+    <Owner>Microsoft Corporation</Owner>
+    <Description>Appends one dataset to another...</Description>/> 
+```
 
 **Module** 要素内では、2 つの追加要素をオプションで指定できます。
 
@@ -127,8 +132,9 @@ RAND、現在の日付または時刻を返す関数など、非確定的な関�
 ### <a name="language-definition"></a>言語定義
 XML 定義ファイル内の **Language** 要素は、カスタム モジュールの言語を指定するために使用します。 現在、サポートされている言語は R だけです。 **sourceFile** 属性の値には、モジュールの実行時に呼び出す関数が含まれた R ファイルの名前を指定する必要があります。 このファイルは zip パッケージに含める必要があります。 **entryPoint** 属性の値は呼び出される関数の名前であり、ソース ファイルで定義されている有効な関数と一致する必要があります。
 
-    <Language name="R" sourceFile="CustomAddRows.R" entryPoint="CustomAddRows" />
-
+```xml
+<Language name="R" sourceFile="CustomAddRows.R" entryPoint="CustomAddRows" />
+```
 
 ### <a name="ports"></a>Port
 カスタム モジュールの入力ポートと出力ポートは、XML 定義ファイルの **Ports** セクションの子要素で指定します。 これらの要素の順序によって、ユーザーに表示されるレイアウト (UX) が決まります。 XML ファイルの **Ports** 要素内に示される最初の子 **input** または **output** は、Machine Learning の UX で一番左の入力ポートになります。
@@ -143,18 +149,22 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
 
 **DataTable:** この型は、data.frame として R 関数に渡されます。 実際には、Machine Learning でサポートされている型および **DataTable** と互換性のある型 (CSV ファイルや ARFF ファイルなど) が data.frame に自動的に変換されます。 
 
-        <Input id="dataset1" name="Input 1" type="DataTable" isOptional="false">
-            <Description>Input Dataset 1</Description>
-           </Input>
+```xml
+<Input id="dataset1" name="Input 1" type="DataTable" isOptional="false">
+    <Description>Input Dataset 1</Description>
+</Input>
+```
 
 各 **DataTable** 入力ポートに関連付けられた **id** 属性には一意の値が必要です。この値は、R 関数の対応する名前付きパラメーターと一致する必要があります。
 実験で入力として渡されないオプションの **DataTable** ポートは、R 関数に渡される値として **NULL** を使用します。入力が接続されていない場合、オプションの Zip ポートは無視されます。 **DataTable** 型と **Zip** 型 のどちらについても、**IsOptional** 属性は省略可能です。この属性は、既定で *false* に設定されます。
 
 **Zip:** カスタム モジュールでは、zip ファイルを入力として受け取ることができます。 この入力は、関数の R 作業ディレクトリにアンパックされます。
 
-        <Input id="zippedData" name="Zip Input" type="Zip" IsOptional="false">
-            <Description>Zip files to be extracted to the R working directory.</Description>
-           </Input>
+```xml
+<Input id="zippedData" name="Zip Input" type="Zip" IsOptional="false">
+    <Description>Zip files to be extracted to the R working directory.</Description>
+</Input>
+```
 
 カスタム R モジュールでは、Zip ポートの ID は R 関数のどのパラメーターとも一致する必要はありません。 これは、zip ファイルは自動的に R 作業ディレクトリに展開されるためです。
 
@@ -168,49 +178,56 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
 * **Input** 要素の **IsOptional** 属性の値は省略可能です (指定されていない場合、既定で *false* に設定されます)。ただし、この値を指定する場合は、*true* または *false* を指定する必要があります。
 
 ### <a name="output-elements"></a>Output 要素
-**標準出力ポート:** 出力ポートは R 関数の戻り値にマップされ、後続のモジュールで使用できます。 現在サポートされている標準出力ポートの型は *DataTable* だけです  (*Learners* と *Transforms* がサポートされる予定です)。*DataTable* 出力は、次のように定義します。
+**標準出力ポート:** 出力ポートは R 関数の戻り値にマップされ、後続のモジュールで使用できます。 現在サポートされている標準出力ポートの型は *DataTable* だけです (*Learners* と *Transforms* がサポートされる予定です)。*DataTable* 出力は、次のように定義します。
 
-    <Output id="dataset" name="Dataset" type="DataTable">
-        <Description>Combined dataset</Description>
-    </Output>
+```xml
+<Output id="dataset" name="Dataset" type="DataTable">
+    <Description>Combined dataset</Description>
+</Output>
+```
 
 カスタム R モジュールの出力では、**id** 属性の値は R スクリプトの何かと対応する必要はありませんが、一意でなければなりません。 モジュールの出力が 1 つの場合、R 関数の戻り値は *data.frame* である必要があります。 サポート対象のデータ型の複数のオブジェクトを出力するために、適切な出力ポートを XML 定義ファイルで指定する必要があります。また、オブジェクトをリストとして返す必要があります。 返されたリストに配置されたオブジェクトの順序を反映して、左から右に、出力オブジェクトが出力ポートに割り当てられます。
 
 たとえば、新しい結合データセット (*dataset*) に加え、元の 2 つのデータセット (*dataset1* と *dataset2*) を (*dataset*、*dataset1*、*dataset2* の順に左から右に) 出力するように **Custom Add Rows** モジュールを変更する場合、CustomAddRows.xml ファイルで出力ポートを次のように定義します。
 
-    <Ports> 
-        <Output id="dataset" name="Dataset Out" type="DataTable"> 
-            <Description>New Dataset</Description> 
-        </Output> 
-        <Output id="dataset1_out" name="Dataset 1 Out" type="DataTable"> 
-            <Description>First Dataset</Description> 
-        </Output> 
-        <Output id="dataset2_out" name="Dataset 2 Out" type="DataTable"> 
-            <Description>Second Dataset</Description> 
-        </Output> 
-        <Input id="dataset1" name="Dataset 1" type="DataTable"> 
-            <Description>First Input Table</Description>
-        </Input> 
-        <Input id="dataset2" name="Dataset 2" type="DataTable"> 
-            <Description>Second Input Table</Description> 
-        </Input> 
-    </Ports> 
-
+```xml
+<Ports> 
+    <Output id="dataset" name="Dataset Out" type="DataTable"> 
+        <Description>New Dataset</Description> 
+    </Output> 
+    <Output id="dataset1_out" name="Dataset 1 Out" type="DataTable"> 
+        <Description>First Dataset</Description> 
+    </Output> 
+    <Output id="dataset2_out" name="Dataset 2 Out" type="DataTable"> 
+        <Description>Second Dataset</Description> 
+    </Output> 
+    <Input id="dataset1" name="Dataset 1" type="DataTable"> 
+        <Description>First Input Table</Description>
+    </Input> 
+    <Input id="dataset2" name="Dataset 2" type="DataTable"> 
+        <Description>Second Input Table</Description> 
+    </Input> 
+</Ports> 
+```
 
 "CustomAddRows.R" 内のリストの正しい順序で、オブジェクトのリストを返します。
 
-    CustomAddRows <- function(dataset1, dataset2, swap=FALSE) { 
-        if (swap) { dataset <- rbind(dataset2, dataset1)) } 
-        else { dataset <- rbind(dataset1, dataset2)) 
-        } 
-    return (list(dataset, dataset1, dataset2)) 
+```r
+CustomAddRows <- function(dataset1, dataset2, swap=FALSE) { 
+    if (swap) { dataset <- rbind(dataset2, dataset1)) } 
+    else { dataset <- rbind(dataset1, dataset2)) 
     } 
+    return (list(dataset, dataset1, dataset2)) 
+} 
+```
 
-**視覚化出力:** R グラフィックス デバイスからの出力とコンソール出力を表示する *Visualization* 型の出力ポートを指定することもできます。 このポートは R 関数の出力には含まれず、他の出力ポートの型の順序に干渉しません。 カスタム モジュールに視覚化ポートを追加するには、**type** 属性の値として *Visualization* を指定した **Output** 要素を追加します。
+**視覚化出力** : R グラフィックス デバイスからの出力とコンソール出力を表示する *Visualization*型の出力ポートを指定することもできます。 このポートは R 関数の出力には含まれず、他の出力ポートの型の順序に干渉しません。 カスタム モジュールに視覚化ポートを追加するには、**type** 属性の値として *Visualization* を指定した **Output** 要素を追加します。
 
-    <Output id="deviceOutput" name="View Port" type="Visualization">
-      <Description>View the R console graphics device output.</Description>
-    </Output>
+```xml
+<Output id="deviceOutput" name="View Port" type="Visualization">
+    <Description>View the R console graphics device output.</Description>
+</Output>
+```
 
 **出力の規則:**
 
@@ -229,51 +246,56 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
 
 **int** - 整数 (32 ビット) 型パラメーター。
 
-    <Arg id="intValue1" name="Int Param" type="int">
-        <Properties min="0" max="100" default="0" />
-        <Description>Integer Parameter</Description>
-    </Arg>
-
+```xml
+<Arg id="intValue1" name="Int Param" type="int">
+    <Properties min="0" max="100" default="0" />
+    <Description>Integer Parameter</Description>
+</Arg>
+```
 
 * *省略可能なプロパティ*: **min**、**max**、**default**、**isOptional**
 
 **double** - 倍精度浮動小数点型パラメーター。
 
-    <Arg id="doubleValue1" name="Double Param" type="double">
-        <Properties min="0.000" max="0.999" default="0.3" />
-        <Description>Double Parameter</Description>
-    </Arg>
-
+```xml
+<Arg id="doubleValue1" name="Double Param" type="double">
+    <Properties min="0.000" max="0.999" default="0.3" />
+    <Description>Double Parameter</Description>
+</Arg>
+```
 
 * *省略可能なプロパティ*: **min**、**max**、**default**、**isOptional**
 
 **bool** - UX のチェック ボックスで表されるブール型パラメーター。
 
-    <Arg id="boolValue1" name="Boolean Param" type="bool">
-        <Properties default="true" />
-        <Description>Boolean Parameter</Description>
-    </Arg>
-
-
+```xml
+<Arg id="boolValue1" name="Boolean Param" type="bool">
+    <Properties default="true" />
+    <Description>Boolean Parameter</Description>
+</Arg>
+```
 
 * *省略可能なプロパティ*: **default** - 設定されていない場合は false
 
 **string**- 標準的な文字列。
 
-    <Arg id="stringValue1" name="My string Param" type="string">
-        <Properties isOptional="true" />
-        <Description>String Parameter 1</Description>
-    </Arg>    
+```xml
+<Arg id="stringValue1" name="My string Param" type="string">
+    <Properties isOptional="true" />
+    <Description>String Parameter 1</Description>
+</Arg>    
+```
 
 * *省略可能なプロパティ*: **default**、**isOptional**
 
 **ColumnPicker** - 列選択パラメーター。 この型は、列の選択として UX に表示されます。 ここでは、**Properties** 要素を使用して、列が選択されたポートの ID を指定しています。この場合、ターゲット ポートの型は *DataTable* である必要があります。 列選択の結果は、選択された列名を含む文字列のリストとして R 関数に渡されます。 
 
-        <Arg id="colset" name="Column set" type="ColumnPicker">      
-          <Properties portId="datasetIn1" allowedTypes="Numeric" default="NumericAll"/>
-          <Description>Column set</Description>
-        </Arg>
-
+```xml
+<Arg id="colset" name="Column set" type="ColumnPicker">      
+    <Properties portId="datasetIn1" allowedTypes="Numeric" default="NumericAll"/>
+    <Description>Column set</Description>
+</Arg>
+```
 
 * *必須プロパティ*: **portId** - *DataTable* 型の Input 要素の ID と一致します。
 * *省略可能なプロパティ*:
@@ -281,11 +303,11 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
   * **allowedTypes** - 選択できる列の型をフィルター処理します。 有効な値は、次のとおりです。 
     
     * 数値
-    * Boolean
+    * ブール値
     * Categorical
     * String
     * Label
-    * 機能
+    * 特徴量
     * Score
     * All
   * **default** - 列の選択の有効な既定の選択内容は次のとおりです。 
@@ -314,14 +336,16 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
 
 **DropDown**: ユーザーが指定した列挙型 (ドロップダウン) リスト。 ドロップダウン項目は、**Properties** 要素内で **Item** 要素を使用して指定します。 各 **Item** の **id** は、一意で有効な R 変数である必要があります。 **Item** の **name** は、表示されるテキストであり、R 関数に渡される値でもあります。
 
-    <Arg id="color" name="Color" type="DropDown">
-      <Properties default="red">
+```xml
+<Arg id="color" name="Color" type="DropDown">
+    <Properties default="red">
         <Item id="red" name="Red Value"/>
         <Item id="green" name="Green Value"/>
         <Item id="blue" name="Blue Value"/>
-      </Properties>
-      <Description>Select a color.</Description>
-    </Arg>    
+    </Properties>
+    <Description>Select a color.</Description>
+</Arg>    
+```
 
 * *省略可能なプロパティ*:
   * **default** - 既定のプロパティの値は、**Item** 要素のいずれかの ID 値と一致する必要があります。
@@ -336,25 +360,30 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
 
 たとえば、CustomAddRows に出力する前に、データセットから NA を含む行を削除すると共に、重複する行も削除したい場合に、それを実行する R 関数が RemoveDupNARows.R ファイルに既に作成されているとします。
 
-    RemoveDupNARows <- function(dataFrame) {
-        #Remove Duplicate Rows:
-        dataFrame <- unique(dataFrame)
-        #Remove Rows with NAs:
-        finalDataFrame <- dataFrame[complete.cases(dataFrame),]
-        return(finalDataFrame)
-    }
+```r
+RemoveDupNARows <- function(dataFrame) {
+    #Remove Duplicate Rows:
+    dataFrame <- unique(dataFrame)
+    #Remove Rows with NAs:
+    finalDataFrame <- dataFrame[complete.cases(dataFrame),]
+    return(finalDataFrame)
+}
+```
+
 次のように、CustomAddRows 関数で補助ファイル RemoveDupNARows.R をソースとして参照できます。
 
-    CustomAddRows <- function(dataset1, dataset2, swap=FALSE) {
-        source("src/RemoveDupNARows.R")
-            if (swap) { 
-                dataset <- rbind(dataset2, dataset1))
-             } else { 
-                  dataset <- rbind(dataset1, dataset2)) 
-             } 
-        dataset <- removeDupNARows(dataset)
-        return (dataset)
-    }
+```r
+CustomAddRows <- function(dataset1, dataset2, swap=FALSE) {
+    source("src/RemoveDupNARows.R")
+        if (swap) { 
+            dataset <- rbind(dataset2, dataset1))
+        } else { 
+            dataset <- rbind(dataset1, dataset2)) 
+        } 
+    dataset <- removeDupNARows(dataset)
+    return (dataset)
+}
+```
 
 次に、'CustomAddRows.R'、'CustomAddRows.xml'、および 'RemoveDupNARows.R' を含む zip ファイルをカスタム R モジュールとしてアップロードします。
 

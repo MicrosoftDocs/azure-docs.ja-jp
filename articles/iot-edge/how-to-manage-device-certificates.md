@@ -4,16 +4,16 @@ description: テスト証明書を作成し、それらを Azure IoT Edge デバ
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/02/2020
+ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c18c3d560adb3c3cae54bda808ee5842c260fd6b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c49345f7036dfee7d1f37c15a4647202b3e5670
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79541503"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257835"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>IoT Edge デバイスで証明書を管理する
 
@@ -23,10 +23,10 @@ ms.locfileid: "79541503"
 
 初めて IoT Edge をインストールしてデバイスをプロビジョニングする場合、サービスをテストできるように、デバイスは一時的な証明書を使用して設定されます。
 これらの一時的な証明書は 90 日で有効期限が切れます。もしくは、マシンを再起動するとリセットされます。
-デバイスを運用環境に移行する準備ができたか、ゲートウェイ シナリオを作成したい場合は、独自の証明書を指定する必要があります。
+運用環境に移行した後、またはゲートウェイデバイスを作成する場合は、独自の証明書を指定する必要があります。
 この記事では、証明書を IoT Edge デバイスにインストールするステップを説明します。
 
-別の種類の証明書や、IoT Edge シナリオでのそれらの役割についての詳細は、「[Azure IoT Edge 証明書の使用方法の詳細](iot-edge-certs.md)」を参照してください。
+さまざまな種類の証明書や、それらの役割についての詳細は、「[Azure IoT Edge 証明書の使用方法の詳細](iot-edge-certs.md)」を参照してください。
 
 >[!NOTE]
 >この記事全体で使用される「ルート CA」という用語は、自分の IoT ソリューションの証明書チェーンのうち、最上位の公開証明機関を示しています。 シンジケート証明機関の証明書ルートや、組織の証明機関のルートを使用する必要はありません。 多くの場合、実際は中間 CA の公開証明書です。
@@ -47,6 +47,9 @@ ms.locfileid: "79541503"
 * デバイス CA 秘密キー
 
 この記事で*ルート CA* と呼ばれているものは、組織の最上位の証明機関ではありません。 これは IoT Edge シナリオの最上位の証明機関であり、IoT Edge ハブ モジュール、ユーザー モジュール、他のダウンストリームのデバイスはこれを利用してお互いの間で信頼関係を確立します。
+
+> [!NOTE]
+> 現時点では、libiothsm の制限により、2050 年 1 月 1 日以降に有効期限が切れる証明書は使用できません。
 
 これらの証明書の例を確認するには、「[サンプルとチュートリアルのためのテスト CA 証明書を管理する](https://github.com/Azure/iotedge/tree/master/tools/CACertificates)」にある、デモ証明書を作成するスクリプトをご確認ください。
 
@@ -69,24 +72,24 @@ ms.locfileid: "79541503"
    * Windows: `C:\ProgramData\iotedge\config.yaml`
    * Linux: `/etc/iotedge/config.yaml`
 
-1. config.yaml ファイル内の **certificate** プロパティを、IoT Edge デバイス上の証明書ファイルとキー ファイルの完全パスに設定します。 証明書プロパティの前の `#` 文字を削除して、4 行をコメント解除します。 **certificates:** の行に先行する空白文字がなく、入れ子になった項目が 2 つの空白でインデントされていることを確認します。 次に例を示します。
+1. config.yaml 内の **certificate** プロパティを、IoT Edge デバイス上の証明書ファイルとキー ファイルへのファイル URI パスに設定します。 証明書プロパティの前の `#` 文字を削除して、4 行をコメント解除します。 **certificates:** の行に先行する空白文字がなく、入れ子になった項目が 2 つの空白でインデントされていることを確認します。 次に例を示します。
 
    * Windows:
 
       ```yaml
       certificates:
-        device_ca_cert: "c:\\<path>\\device-ca.cert.pem"
-        device_ca_pk: "c:\\<path>\\device-ca.key.pem"
-        trusted_ca_certs: "c:\\<path>\\root-ca.root.ca.cert.pem"
+        device_ca_cert: "file:///C:/<path>/<device CA cert>"
+        device_ca_pk: "file:///C:/<path>/<device CA key>"
+        trusted_ca_certs: "file:///C:/<path>/<root CA cert>"
       ```
 
    * Linux:
 
       ```yaml
       certificates:
-        device_ca_cert: "<path>/device-ca.cert.pem"
-        device_ca_pk: "<path>/device-ca.key.pem"
-        trusted_ca_certs: "<path>/root-ca.root.ca.cert.pem"
+        device_ca_cert: "file:///<path>/<device CA cert>"
+        device_ca_pk: "file:///<path>/<device CA key>"
+        trusted_ca_certs: "file:///<path>/<root CA cert>"
       ```
 
 1. Linux デバイスでは、証明書を保持しているディレクトリの読み取り権限をユーザー **iotedge**が必ず保持しているようにします。
@@ -109,7 +112,7 @@ IoT Edge デバイスでのさまざまな証明書の機能の詳細につい�
 自動的に生成されたこれらの 2 つの証明書については、証明書の有効期間の日数を構成する **auto_generated_ca_lifetime_days** フラグを config.yaml で設定するオプションが用意されています。
 
 >[!NOTE]
->IoT Edge セキュリティ マネージャーによって自動生成される 3 つ目の証明書として、**IoT Edge ハブ サーバー証明書**があります。 この証明書は常に有効期間が 90 日ですが、有効期限が切れる前に自動的に更新されます。 **auto_generated_ca_lifetime_days** 値は、この証明書には影響しません。
+>IoT Edge セキュリティ マネージャーによって自動生成される 3 つ目の証明書として、**IoT Edge ハブ サーバー証明書**があります。 この証明書の有効期間は常に 90 日ですが、有効期限が切れる前に自動的に更新されます。 **auto_generated_ca_lifetime_days** 値は、この証明書には影響しません。
 
 証明書の有効期限を既定値の 90 日以外に構成するには、config. yaml ファイルの **certificates** セクションに日数の値を追加します。
 
@@ -120,6 +123,9 @@ certificates:
   trusted_ca_certs: "<ADD URI TO TRUSTED CA CERTIFICATES HERE>"
   auto_generated_ca_lifetime_days: <value>
 ```
+
+> [!NOTE]
+> 現時点では、libiothsm の制限により、2050 年 1 月 1 日以降に有効期限が切れる証明書は使用できません。
 
 自身のデバイス CA 証明書を指定した場合でも、設定した有効期間の値がデバイス CA 証明書の有効期間より短ければ、この値がワークロード CA 証明書に適用されます。
 

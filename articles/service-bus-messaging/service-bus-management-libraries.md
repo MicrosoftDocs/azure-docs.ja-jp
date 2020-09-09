@@ -1,25 +1,16 @@
 ---
 title: Azure Service Bus 管理ライブラリ | Microsoft Docs
 description: この記事では、Azure Service Bus 管理ライブラリを使用して、Service Bus の名前空間とエンティティを動的にプロビジョニングする方法について説明します。
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: d0e90d9278ede97de04ad8efeaa59d94a4567f66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 915606bffc2037c8fcd1a7d33218143f40c78f2c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76756268"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008048"
 ---
 # <a name="service-bus-management-libraries"></a>Service Bus 管理ライブラリ
 
@@ -36,11 +27,11 @@ Azure Service Bus 管理ライブラリは、Service Bus の名前空間とエ�
 
 Service Bus 管理ライブラリの使用を開始するには、Azure Active Directory (Azure AD) サービスで認証する必要があります。 Azure AD では、Azure リソースへのアクセスを提供するサービス プリンシパルとして認証する必要があります。 サービス プリンシパルを作成する方法については、次の記事のいずれかをご覧ください。  
 
-* [リソースにアクセスできる Active Directory アプリケーションとサービス プリンシパルを Azure Portal で作成する](/azure/azure-resource-manager/resource-group-create-service-principal-portal)
-* [リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](/azure/azure-resource-manager/resource-group-authenticate-service-principal)
-* [リソースにアクセスするためのサービス プリンシパルを Azure CLI で作成する](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
+* [リソースにアクセスできる Active Directory アプリケーションとサービス プリンシパルを Azure Portal で作成する](../active-directory/develop/howto-create-service-principal-portal.md)
+* [リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
+* [リソースにアクセスするためのサービス プリンシパルを Azure CLI で作成する](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)
 
-これらのチュートリアルでは、`AppId` (クライアント ID)、`TenantId`、`ClientSecret` (認証キー) が提供されます。これらはすべて管理ライブラリによって認証に使用されます。 実行するリソース グループに対する**所有者**のアクセス許可が必要です。
+これらのチュートリアルでは、`AppId` (クライアント ID)、`TenantId`、`ClientSecret` (認証キー) が提供されます。これらはすべて管理ライブラリによって認証に使用されます。 実行するリソース グループに対しては、少なくとも [**Azure Service Bus データ所有者**](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner)または[**共同作成者**](../role-based-access-control/built-in-roles.md#contributor)のアクセス許可が必要です。
 
 ## <a name="programming-pattern"></a>プログラミング パターン
 

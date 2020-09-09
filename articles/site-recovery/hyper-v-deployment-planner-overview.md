@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: mayg
-ms.openlocfilehash: 07c1f7f258dbea7bcf7a6e7ea51fdcfdfaa006aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4f1931aab056306ac5e9f9e9ef402ca26ec2d19
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79368725"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528946"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Azure Site Recovery Deployment Planner による Hyper-V から Azure へのディザスター リカバリー
 
@@ -70,7 +70,7 @@ Azure Site Recovery Deployment Planner は、Hyper-V から Azure へのディ�
 
 ## <a name="support-matrix"></a>サポート マトリックス
 
-| | **VMware から Azure** |**Hyper-V から Azure**|**Azure から Azure**|**Hyper-V からセカンダリ サイト**|**VMware からセカンダリ サイト**
+|**Categories (カテゴリ)** | **VMware から Azure** |**Hyper-V から Azure**|**Azure から Azure**|**Hyper-V からセカンダリ サイト**|**VMware からセカンダリ サイト**
 --|--|--|--|--|--
 サポートされるシナリオ |はい|はい|いいえ|はい*|いいえ
 サポートされているバージョン | vCenter 6.7、6.5、6.0、または 5.5| Windows Server 2016、Windows Server 2012 R2 | NA |Windows Server 2016、Windows Server 2012 R2|NA
@@ -90,19 +90,24 @@ Azure Site Recovery Deployment Planner の実行中のインスタンスごと�
  |
 
 ## <a name="steps-to-add-servers-into-trustedhosts-list"></a>TrustedHosts リストにサーバーを追加する手順
-1.  ツールがデプロイされる VM は、プロファイル対象のすべてのホストが含まれた TrustedHosts リストを備えている必要があります。 クライアントを Trustedhosts リストに追加するには、VM で 管理特権の PowerShell を使って次のコマンドを実行します。 VM には、Windows Server 2012 R2 または Windows Server 2016 を使用できます。 
+1. ツールがデプロイされる VM は、プロファイル対象のすべてのホストが含まれた TrustedHosts リストを備えている必要があります。 クライアントを Trustedhosts リストに追加するには、VM で 管理特権の PowerShell を使って次のコマンドを実行します。 VM には、Windows Server 2012 R2 または Windows Server 2016 を使用できます。 
 
-            set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
-
-1.  プロファイルが必要な各 Hyper-V ホストには、以下が必要です。
+   ```powershell
+   set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
+   ```
+1. プロファイルが必要な各 Hyper-V ホストには、以下が必要です。
 
     a. TrustedHosts リストに対する、ツールの実行先となる VM の追加。 Hyper-V ホストで管理特権の PowerShell セッションを使って次のコマンドを実行します。
 
-            set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
+      ```powershell
+      set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
+      ```
 
     b. PowerShell リモート処理の有効化。
 
-            Enable-PSRemoting -Force
+      ```powershell
+      Enable-PSRemoting -Force
+      ```
 
 ## <a name="download-and-extract-the-deployment-planner-tool"></a>Deployment Planner ツールのダウンロードと抽出
 
@@ -140,4 +145,4 @@ Azure Site Recovery Deployment Planner ツールの最新バージョンは 2.5 
 
 
 ## <a name="next-steps"></a>次のステップ
-* [Deployment Planner の実行](site-recovery-hyper-v-deployment-planner-run.md)。
+* [Deployment Planner の実行](./hyper-v-deployment-planner-run.md)。

@@ -3,25 +3,25 @@ title: Azure AD エンタイトルメント管理でのアクセス パッケー
 description: Azure Active Directory アクセス レビュー (プレビュー) で、エンタイトルメント管理アクセス パッケージのユーザー アクセス権を確認する方法について説明します。
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 11/01/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45da1170705bab1206a98c59e02c7616c25ce502
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 31c44f2423cdc5c43638fe2515757bcb11a9814c
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78967766"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798445"
 ---
 # <a name="self-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でのアクセス パッケージのセルフレビュー
 

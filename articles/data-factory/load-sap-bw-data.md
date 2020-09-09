@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/22/2019
-ms.openlocfilehash: 96b23696164514ad2f16de72f0f76aa237ffce2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5403abab0f93edf14237dcc73f29ffb00a6581f0
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81415834"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081293"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用して SAP Business Warehouse からデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -269,7 +269,7 @@ SAP オープン ハブ宛先は、(2015 年以降のすべて SAP BW サポー�
 
 差分 DTP の状態を**フェッチ済み**に設定するには、次のオプションを使用して手動で差分 DTP を実行できます。
 
-    *No Data Transfer; Delta Status in Source: Fetched*
+*No Data Transfer; Delta Status in Source:Fetched (データ転送なし。ソース内の差分状態: フェッチ済み)*
 
 ## <a name="next-steps"></a>次のステップ
 

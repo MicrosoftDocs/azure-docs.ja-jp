@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b0f15124c64e5cca54112987d486ddadaca79452
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d230bc8a1e9bf388e1cca4e3a3a691223146d734
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78187989"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387985"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して QQ アカウントでのサインアップおよびサインインを設定する
 

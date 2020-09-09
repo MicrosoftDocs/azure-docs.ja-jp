@@ -5,19 +5,19 @@ tags: azure-service-management
 ms.assetid: 5a927f23-8e70-45fd-9aae-980d4e7a007d
 ms.topic: sample
 ms.date: 03/20/2017
-ms.custom: mvc
-ms.openlocfilehash: 7355f2730cc54ca027e20c48e989e9f28dac7487
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 03d2f2d3928393f8a251640a03d82b5963140141
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74684837"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070294"
 ---
 # <a name="create-a-web-app-and-deploy-code-from-a-local-git-repository"></a>Web アプリを作成してローカル Git リポジトリからコードをデプロイする
 
 このサンプル スクリプトでは、App Service で Web アプリを関連リソースと合わせて作成し、ローカル Git リポジトリから Web アプリのコードをデプロイします。
 
-必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従い、Azure PowerShell を最新版に更新し、`Connect-AzAccount` を実行して、Azure との接続を作成します。 アプリケーション コードがローカル Git リポジトリにコミットしている必要もあります。
+必要に応じて、[Azure PowerShell ガイド](/powershell/azure/)の手順に従い、Azure PowerShell を最新版に更新し、`Connect-AzAccount` を実行して、Azure との接続を作成します。 アプリケーション コードがローカル Git リポジトリにコミットしている必要もあります。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -43,6 +43,6 @@ Remove-AzResourceGroup -Name $webappname -Force
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
+Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。
 
 その他の Azure App Service Web Apps 用 Azure PowerShell サンプル スクリプトは、[Azure PowerShell サンプル](../samples-powershell.md)のページにあります。

@@ -5,15 +5,15 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: d99920417f20034da1001a821c02376ac19274d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f078ab217a5c4911fbd132338883504897db899f
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75426481"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044602"
 ---
 # <a name="stop-or-delete-your-azure-stream-analytics-job"></a>Azure Stream Analytics ジョブを停止または削除する
 

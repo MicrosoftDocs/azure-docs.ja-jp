@@ -6,12 +6,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: e076128a5be453028635b1657bf3f90980863148
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a2687e9c943df8454ff42a17f44866dcdb7f4730
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75648939"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "86055887"
 ---
 # <a name="deploy-a-managed-application-for-a-service-catalog-with-powershell"></a>PowerShell を使用してサービス カタログのマネージド アプリケーションをデプロイする
 
@@ -33,10 +33,10 @@ ms.locfileid: "75648939"
 
 | command | メモ |
 |---|---|
-| [New-AzManagedApplication](https://docs.microsoft.com/powershell/module/az.resources/new-azmanagedapplication) | マネージド アプリケーションを作成します。 テンプレートの定義 ID とパラメーターを指定します。 |
+| [New-AzManagedApplication](/powershell/module/az.resources/new-azmanagedapplication) | マネージド アプリケーションを作成します。 テンプレートの定義 ID とパラメーターを指定します。 |
 
 
 ## <a name="next-steps"></a>次のステップ
 
 * マネージド アプリケーションの概要については、「[Azure マネージド アプリケーションの概要](../overview.md)」を参照してください。
-* PowerShell について詳しくは、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/azure/get-started-azureps)をご覧ください。
+* PowerShell について詳しくは、[Azure PowerShell のドキュメント](/powershell/azure/get-started-azureps)をご覧ください。

@@ -6,15 +6,16 @@ ms.author: banders
 ms.date: 03/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
+ms.subservice: cloudyn
 ms.custom: seodec18
 ms.reviewer: benshy
 ROBOTS: NOINDEX
-ms.openlocfilehash: a492f611ed5a785ae148894baf3f24c2df773df2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 52858b93c61de8ee3d6416915c1eba407622a1d3
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79474579"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88683557"
 ---
 # <a name="tutorial-manage-costs-by-using-cloudyn"></a>チュートリアル:Cloudyn を使用してコストを管理する
 

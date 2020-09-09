@@ -17,12 +17,13 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: ef5eedaa903480ae670f9bc48d0af89744a99d22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 56eedda7f79fedce1e34ad837c92006e5cd8f191
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71213006"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998273"
 ---
 # <a name="how-to-send-scheduled-notifications"></a>方法: スケジュール設定された通知の送信
 
@@ -30,7 +31,7 @@ ms.locfileid: "71213006"
 
 
 ## <a name="schedule-your-notifications"></a>通知をスケジュール設定する
-通知を送信する場合は、次の例に示すように Notification Hubs SDK の [`ScheduledNotification` クラス](https://msdn.microsoft.com/library/microsoft.azure.notificationhubs.schedulednotification.aspx)を使用します。
+通知を送信する場合は、次の例に示すように Notification Hubs SDK の [`ScheduledNotification` クラス](/dotnet/api/microsoft.azure.notificationhubs.schedulednotification?view=azure-dotnet#microsoft_azure_notificationhubs_schedulednotification)を使用します。
 
 ```csharp
 Notification notification = new AppleNotification("{\"aps\":{\"alert\":\"Happy birthday!\"}}");

@@ -4,12 +4,12 @@ description: メトリックおよび自動スケーリングのクラシック 
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: d9b6118bc165a9b0a78ae9c4da895719249b22b7
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 38a30f2adc0de7ccb9a9a3a4ba7ed53fd5fda3f7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81114225"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317384"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>メトリックおよび自動スケーリング用クラシック デプロイ モデル API の Azure Monitor での提供終了
 
@@ -21,7 +21,7 @@ Azure Monitor (最初のリリース時には Azure Insights という名前だ�
 
 Azure ポータル、[新しい Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)、PowerShell、CLI、または Resource Manager テンプレートを介して自動スケーリングを管理する場合、操作は必要ありません。  
 
-Azure ポータルまたはさまざまな[監視パートナー サービス](../../azure-monitor/platform/partners.md)を介してメトリックを使用する場合、操作は必要ありません。 Microsoft では監視パートナーと協力して、新しい API への移行を行っています。
+Azure ポータルまたはさまざまな[監視パートナー サービス](./partners.md)を介してメトリックを使用する場合、操作は必要ありません。 Microsoft では監視パートナーと協力して、新しい API への移行を行っています。
 
 ## <a name="who-is-affected"></a>影響を受けるユーザー
 
@@ -29,9 +29,9 @@ Azure ポータルまたはさまざまな[監視パートナー サービス](.
 
 - **クラシック Azure Insights SDK** - [クラシック Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) を使用している場合は、[.NET](https://github.com/azure/azure-libraries-for-net#download) または [Java](https://github.com/azure/azure-libraries-for-java#download) 用の新しい Azure Monitor SDK の使用に切り替えます。 [Azure Monitor SDK NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)をダウンロードします。
 
-- **クラシック自動スケーリング** - カスタム ビルド ツールから[クラシック自動スケーリング設定 API](https://msdn.microsoft.com/library/azure/mt348562.aspx) を呼び出している場合や、[クラシック Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) を使用している場合は、[Resource Manager Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/autoscalesettings) の使用に切り替える必要があります。
+- **クラシック自動スケーリング** - カスタム ビルド ツールから[クラシック自動スケーリング設定 API](/previous-versions/azure/reference/mt348562(v=azure.100)) を呼び出している場合や、[クラシック Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) を使用している場合は、[Resource Manager Azure Monitor REST API](/rest/api/monitor/autoscalesettings) の使用に切り替える必要があります。
 
-- **クラシック メトリック** - カスタム ビルド ツールの[クラシック REST API](https://msdn.microsoft.com/library/azure/dn510374.aspx) または[クラシック Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) を使ってメトリックを使用している場合は、[Resource Manager Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/autoscalesettings) の使用に切り替える必要があります。 
+- **クラシック メトリック** - カスタム ビルド ツールの[クラシック REST API](/previous-versions/azure/reference/dn510374(v=azure.100)) または[クラシック Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) を使ってメトリックを使用している場合は、[Resource Manager Azure Monitor REST API](/rest/api/monitor/autoscalesettings) の使用に切り替える必要があります。 
 
 コードまたはカスタム ツールでクラシック API を呼び出しているかどうかがわからない場合は、以下を参照してください。
 
@@ -43,11 +43,11 @@ Azure ポータルまたはさまざまな[監視パートナー サービス](.
 
 - 次のいずれかのリンクのドキュメントで参照されている呼び出しを使用している場合は、古いクラシック API を使っています。
 
-  - [Windows.Azure.Management.Monitoring クラス ライブラリ](https://docs.microsoft.com/previous-versions/azure/dn510414(v=azure.100))
+  - [Windows.Azure.Management.Monitoring クラス ライブラリ](/previous-versions/azure/dn510414(v=azure.100))
 
-  - [(クラシック) .NET の監視](https://docs.microsoft.com/previous-versions/azure/reference/mt348562(v%3dazure.100))
+  - [(クラシック) .NET の監視](/previous-versions/azure/reference/mt348562(v%3dazure.100))
 
-  - [IMetricOperations インターフェイス](https://docs.microsoft.com/previous-versions/azure/reference/dn802395(v%3dazure.100))
+  - [IMetricOperations インターフェイス](/previous-versions/azure/reference/dn802395(v%3dazure.100))
 
 ## <a name="why-you-should-switch"></a>切り替える必要がある理由
 
@@ -87,5 +87,6 @@ Azure サービスやそのワークロードに直接影響はありません�
 
 ## <a name="references"></a>References
 
-- [Azure Monitor の新しい REST API](https://docs.microsoft.com/rest/api/monitor/) 
+- [Azure Monitor の新しい REST API](/rest/api/monitor/) 
 - [新しい Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)
+

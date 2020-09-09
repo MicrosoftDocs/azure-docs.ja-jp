@@ -7,17 +7,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/25/2019
 ms.author: marsma
 ms.reviewer: lenalepa, keyam
 ms.custom: aaddev
-ms.openlocfilehash: a437d54dac50be7ddaad899a1cf0a3e93aade8f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f72e16afd61d364a2dad634f3502c801f1b99380
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154578"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478146"
 ---
 # <a name="new-azure-portal-app-registration-training-guide"></a>新しい Azure portal アプリの登録トレーニング ガイド
 

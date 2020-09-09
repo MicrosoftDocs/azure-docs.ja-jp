@@ -2,25 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と OnTrack の統合 | Microsoft Docs'
 description: Azure Active Directory と OnTrack の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d2cafba2-3b4a-4471-ba34-80f6a96ff2b9
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 371ad2a8530de7b20427327d939bf164d871ab74
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 14cb0d70e1c5ce2be0cf810e8a24d9bc596eeb6f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68944034"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544062"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ontrack"></a>チュートリアル: Azure Active Directory と OnTrack の統合
 

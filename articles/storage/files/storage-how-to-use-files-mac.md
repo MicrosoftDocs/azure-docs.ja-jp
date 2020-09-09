@@ -1,18 +1,18 @@
 ---
 title: macOS を使用して SMB 経由で Azure ファイル共有をマウントする | Microsoft Docs
-description: macOS を使用して SMB 経由で Azure ファイル共有をマウントする方法について説明します。
+description: macOS の Finder またはターミナルを使用して SMB 経由で Azure ファイル共有をマウントする方法について説明します。 Azure Files は、Microsoft の使いやすいクラウド ファイル システムです。
 author: RenaShahMSFT
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/19/2017
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: 0e3420e469b117d90efb2949dab828021bfedcb6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2cddf8a7d3dbc7abcc25fb76aba8a0af1790fe4d
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74924707"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034449"
 ---
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>macOS を使用して SMB 経由で Azure ファイル共有をマウントする
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、macOS El Capitan 10.11 以降で、業界標準の SMB 3 プロトコルを使ってマウントできます。 この記事では、Terminal を使用して macOS と Finder UI で Azure ファイル共有をマウントする、2 つの異なる方法を示します。
@@ -31,15 +31,15 @@ ms.locfileid: "74924707"
 
 * **ストレージ アカウント キー**: Azure ファイル共有をマウントするには、プライマリ (またはセカンダリ) ストレージ キーが必要です。 現時点では、SAS キーは、マウントではサポートされていません。
 
-* **ポート 445 が開いていることを確認する**: SMB は TCP ポート 445 経由で通信します。 クライアント マシン (Mac) で、ファイアウォールが TCP ポート 445 をブロックしていないことを確認します。
+* **ポート 445 が開いていることの確認**: SMB は TCP ポート 445 経由で通信します。 クライアント マシン (Mac) で、ファイアウォールが TCP ポート 445 をブロックしていないことを確認します。
 
 ## <a name="mount-an-azure-file-share-via-finder"></a>Finder による Azure ファイル共有のマウント
 1. **Finder を開きます**。macOS 上では既定で Finder が開かれていますが、ドック上の "macOS の顔アイコン" をクリックすると、Finder が現在選択されているアプリケーションであることを確認できます。  
     ![macOS の顔アイコン](./media/storage-how-to-use-files-mac/mount-via-finder-1.png)
 
-2. **[移動] メニューの [サーバーへ接続] を選択します**。前提条件の UNC パスを使用し、先頭の 2 つのバックスラッシュ (`\\`) は `smb://` に置き換え、他のすべてのバックスラッシュ (`\`) はスラッシュ (`/`) に置き換えます。 リンクは次のようになります。![[サーバーに接続] ダイアログ](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
+2. **[移動] メニューの [サーバーへ接続] を選択します**。前提条件の UNC パスを使用し、先頭の 2 つのバックスラッシュ (`\\`) は `smb://` に置き換え、他のすべてのバックスラッシュ (`\`) はスラッシュ (`/`) に置き換えます。 リンクは、次のようになります。![[サーバーへ接続] ダイアログ](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
 
-3. **ユーザー名とパスワードの入力を求められたら、共有名とストレージ アカウント キーを使用します**。[サーバーへ接続] ダイアログで [接続] をクリックすると、ユーザー名とパスワードの入力を求められます (macOS ユーザー名が自動的に設定されます)。 macOS キーチェーンにストレージ アカウント名/ストレージ アカウント キーを指定することもできます。
+3. **ユーザー名とパスワードの入力を求められたら、ストレージ アカウント名とストレージ アカウント キーを使用します**。[サーバーへ接続] ダイアログで [接続] をクリックすると、ユーザー名とパスワードの入力を求められます (macOS ユーザー名が自動的に設定されます)。 macOS キーチェーンにストレージ アカウント名/ストレージ アカウント キーを指定することもできます。
 
 4. **Azure ファイル共有を自由に使用します**。ユーザー名とパスワードを共有名とストレージ アカウント キーに置き換えた後、共有がマウントされます。 これを、通常のローカル フォルダー/ファイル共有を使用する場合のように使用することができます。たとえば、ファイル共有にファイルをドラッグ アンド ドロップすることができます。
 
@@ -56,7 +56,7 @@ ms.locfileid: "74924707"
 
     ![マウントされた Azure ファイル共有のスナップショット](./media/storage-how-to-use-files-mac/mount-via-terminal-1.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Files の詳細については、次のリンクをご覧ください。
 
 * [Apple サポート記事 - Mac 上のファイル共有に接続する方法](https://support.apple.com/HT204445)

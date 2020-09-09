@@ -9,20 +9,23 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: 74465bddb57c14af4d02c1d3bfdc46f3ac25bef3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 766af570c959ff2c49256058dfbfffdd1021295f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80878546"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548465"
 ---
 # <a name="install-and-run-face-containers-preview"></a>Face コンテナーのインストールと実行 (プレビュー)
 
+> [!IMPORTANT]
+> Face コンテナーのユーザー制限に達しました。 現在、Face コンテナーの新しいアプリケーションは受け付けていません。
+
 Azure Cognitive Services Face では、画像中の人の顔を検出する、標準化された Docker 用 Linux コンテナーが提供されます。 また、鼻や目などの顔のパーツ、性別、年齢のほか、マシンが予測するその他の顔の特徴など、さまざまな属性が識別されます。 検出に加えて、Face では、同じ画像または異なる画像中の 2 つの顏が同じかどうかを信頼スコアを使って確認できます。 また、Face では顔をデータベースと照合して、似ている顏や同一の顔が既に存在するかどうかを調べることもできます。 さらに、同じ視覚的特徴を使用して、似た顔をグループに整理することもできます。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,10 +38,6 @@ Face サービス コンテナーを使用する前に、次の前提条件を�
 |Face リソース |コンテナーを使用するには、以下が必要です。<br><br>Azure **Face** リソースとその関連する API キーおよびエンドポイント URI。 どちらの値も、対象リソースの **[概要]** ページと **[キー]** ページで確認できます。 これらは、コンテナーの起動に必要です。<br><br>**{API_KEY}** : **[キー]** ページにある 2 つの利用可能なリソース キーのどちらか<br><br>**{ENDPOINT_URI}** : **[概要]** ページに提示されているエンドポイント
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
-
-## <a name="request-access-to-the-private-container-registry"></a>プライベート コンテナー レジストリへのアクセスの要求
-
-[!INCLUDE [Request access to private container registry](../../../includes/cognitive-services-containers-request-access.md)]
 
 ### <a name="the-host-computer"></a>ホスト コンピューター
 

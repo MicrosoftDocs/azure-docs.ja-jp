@@ -6,12 +6,12 @@ ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: d40f5db65ce9ca90ae978bac4491bdebccc2a328
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: bb0765a1d7934d60f787ed277dd3bd1f9bc1359b
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811719"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962946"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Azure で App Service プランを管理する
 
@@ -82,7 +82,7 @@ ms.locfileid: "80811719"
 
 App Service プランの価格レベルをスケールアップする方法については、「[Azure でのアプリのスケールアップ](manage-scale-up.md)」を参照してください。
 
-アプリのインスタンスの数をスケールアウトする方法については、「[手動または自動によるインスタンス数のスケール変更](../monitoring-and-diagnostics/insights-how-to-scale.md)」をご覧ください。
+アプリのインスタンスの数をスケールアウトする方法については、「[手動または自動によるインスタンス数のスケール変更](../azure-monitor/platform/autoscale-get-started.md)」をご覧ください。
 
 <a name="delete"></a>
 

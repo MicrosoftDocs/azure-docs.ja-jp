@@ -1,25 +1,25 @@
 ---
-title: Azure Monitor for Storage (プレビュー) で Azure Storage サービスを監視する | Microsoft Docs
+title: Azure Monitor for Storage で Azure Storage サービスを監視する | Microsoft Docs
 description: この記事では、ストレージ管理者が Azure Storage アカウントのパフォーマンスと使用状況の問題をすばやく把握できる Azure Monitor for Storage の機能について説明します。
 ms.subservice: ''
 ms.topic: conceptual
-author: bwren
-ms.author: bwren
-ms.date: 08/15/2019
-ms.openlocfilehash: 497ea5a27a56ed5f8192b694fac1c52c8bf57ca6
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+author: mrbullwinkle
+ms.author: mbullwin
+ms.date: 05/11/2020
+ms.openlocfilehash: 7daba35b9247443c84cedad03f252ea6858da236
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691111"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327346"
 ---
-# <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>Azure Monitor for Storage (プレビュー) でストレージ サービスを監視する
+# <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Azure Monitor for Storage でストレージ サービスを監視する
 
-Azure Monitor for Storage (プレビュー) では、Azure Storage サービスのパフォーマンス、容量、可用性の統合されたビューが提供され、Azure Storage アカウントを包括的に監視できます。 ストレージの容量とパフォーマンスは、ストレージ アカウントから直接表示する方法と、Azure Monitor からストレージ アカウントのグループ全体を表示する方法の 2 つの方法で観察できます。 
+Azure Monitor for Storage では、Azure Storage サービスのパフォーマンス、容量、可用性の統合されたビューが提供され、Azure Storage アカウントを包括的に監視できます。 ストレージの容量とパフォーマンスは、ストレージ アカウントから直接表示する方法と、Azure Monitor からストレージ アカウントのグループ全体を表示する方法の 2 つの方法で観察できます。 
 
-この記事は、Azure Monitor for Storage (プレビュー) のエクスペリエンスを理解するのに役立ちます。規模に合わせたストレージ アカウントの正常性とパフォーマンスについての実用的な知識を引き出すことができ、ホットスポットに注目し、待機時間、スロットリング、可用性の問題を診断できる機能もあります。
+この記事は、Azure Monitor for Storage のエクスペリエンスを理解するのに役立ちます。規模に合わせたストレージ アカウントの正常性とパフォーマンスについての実用的な知識を引き出すことができ、ホットスポットに注目し、待ち時間、スロットリング、可用性の問題を診断できる機能もあります。
 
-## <a name="introduction-to-azure-monitor-for-storage-preview"></a>Azure Monitor for Storage (プレビュー) の概要
+## <a name="introduction-to-azure-monitor-for-storage"></a>Azure Monitor for Storage の概要
 
 エクスペリエンスについて詳しく調べる前に、情報が提供および視覚化される方法を理解する必要があります。 ストレージ機能をストレージ アカウントから直接選択するか、Azure Monitor から選択するかにかかわらず、Azure Monitor for Storage では一貫したエクスペリエンスが得られます。 
 
@@ -31,7 +31,7 @@ Azure Monitor for Storage (プレビュー) では、Azure Storage サービス�
 
 * **カスタマイズ可能**: 表示するメトリックの変更したり、制限に合わせたしきい値の変更または設定、独自のブックとして保存することができます。 ブック内のグラフは、Azure ダッシュボードにピン留めできます。  
 
-この機能を使用するために有効にしたり構成したりする必要があるものはなく、ストレージ メトリックはストレージ アカウントから既定で収集されます。 Azure Storage で使用できるメトリックについて詳しく理解したい場合は、[Azure Storage メトリック](../../storage/common/storage-metrics-in-azure-monitor.md)に関する記事で Azure Storage のメトリックの説明と定義を確認してください。
+この機能を使用するために有効にしたり構成したりする必要があるものはなく、ストレージ メトリックはストレージ アカウントから既定で収集されます。 Azure Storage で使用できるメトリックについて詳しく理解したい場合は、[Azure Storage メトリック](../../storage/common/monitor-storage.md)に関する記事で Azure Storage のメトリックの説明と定義を確認してください。
 
 >[!NOTE]
 >この機能へのアクセスに対して料金はかからず、構成または有効にした Azure Monitor の基本機能に対してのみ課金されます。[Azure Monitor の価格の詳細](https://azure.microsoft.com/pricing/details/monitor/)に関するページをご覧ください。
@@ -48,7 +48,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のス
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-2. Azure portal の左側のウィンドウで **[モニター]** を選択し、 **[分析情報]** セクションの **[ストレージ アカウント (プレビュー)]** を選択します。
+2. Azure portal の左側のペインで **[モニター]** を選択し、 **[分析情報]** セクションの **[ストレージ アカウント]** を選択します。
 
     ![複数のストレージ アカウントのビュー](./media/storage-insights-overview/multiple-storage-accounts-view-01.png)
 
@@ -92,7 +92,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のス
 
 1. Azure portal で [ストレージ アカウント] を選択します。
 
-2. 一覧からストレージ アカウントを選択します。 [監視] セクションで [インサイト (プレビュー)] を選択します。
+2. 一覧からストレージ アカウントを選択します。 [監視] セクションで、[分析情報] を選択します。
 
     ![選択されたストレージ アカウントの [概要] ページ](./media/storage-insights-overview/storage-account-direct-overview-01.png)
 
@@ -138,7 +138,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のス
 
 ![ブックのグリッド結果のエクスポートの例](./media/storage-insights-overview/workbook-export-example.png)
 
-## <a name="customize-azure-monitor-for-storage-preview"></a>Azure Monitor for Storage (プレビュー) をカスタマイズする
+## <a name="customize-azure-monitor-for-storage"></a>Azure Monitor for Storage をカスタマイズする
 
 このセクションでは、データ分析のニーズに合わせてブックを編集してカスタマイズする一般的なシナリオについて説明します。
 
@@ -155,7 +155,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のス
 
 複数サブスクリプションおよびストレージ アカウントの **[概要]** または **[容量]** ブックを、実行のたびに特定のサブスクリプションまたはストレージ アカウントを対象とするように構成できます。次の手順を行います。
 
-1. ポータルで **[モニター]** を選択し、左側のウィンドウで **[ストレージ アカウント (プレビュー)]** を選択します。
+1. ポータルで **[モニター]** を選択し、左側のペインで **[ストレージ アカウント]** を選択します。
 
 2. **[概要]** ブックで、コマンド バーから **[編集]** を選択します。
 
@@ -176,7 +176,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のス
 
 作成済みの **[Failures]\(エラー数\)** 、 **[パフォーマンス]** 、 **[可用性]** 、 **[容量]** のどのブックでも、同じ変更を実行できます。
 
-1. ポータルで **[モニター]** を選択し、左側のウィンドウで **[ストレージ アカウント (プレビュー)]** を選択します。
+1. ポータルで **[モニター]** を選択し、左側のペインで **[ストレージ アカウント]** を選択します。
 
 2. **[容量]** を選択して容量ブックに切り替え、コマンド バーから **[編集]** を選択します。
 
@@ -198,7 +198,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のス
 
 1. メトリック グリッドで **[列の設定]** を選択します。
 
-2. **[列の設定の編集]** ウィンドウの **[列]** セクションで **[microsoft.storage/storageaccounts-Capacity-UsedCapacity$|microsoft.storage/storageaccounts/blobservices-Capacity-BlobCapacity$|microsoft.storage/storageaccounts/fileservices-Capacity-FileCapacity$|microsoft.storage/storageaccounts/queueservices-Capacity-QueueCapacity$|microsoft.storage/storageaccounts/tableservices-Capacity-TableCapacity$]** を選択します。 **[カラー パレット]** ドロップダウン リストで、 **[緑]** を選択します。
+2. **[列の設定の編集]** ウィンドウの **[列]** セクションで **microsoft.storage/storageaccounts-Capacity-UsedCapacity$`|`microsoft.storage/storageaccounts/blobservices-Capacity-BlobCapacity$`|`microsoft.storage/storageaccounts/fileservices-Capacity-FileCapacity$`|`microsoft.storage/storageaccounts/queueservices-Capacity-QueueCapacity$`|`microsoft.storage/storageaccounts/tableservices-Capacity-TableCapacity$** を選択します。 **[カラー パレット]** ドロップダウン リストで、 **[緑]** を選択します。
 
 3. **[保存して閉じる]** を選択して、変更をコミットします。
 
@@ -210,7 +210,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のス
 
 1. ポータルから **[ストレージ アカウント]** を選択し、一覧からストレージ アカウントを選択します。
 
-2. 左側のウィンドウで **[インサイト (プレビュー)]** を選択します。
+2. 左側のペインで **[分析情報]** を選択します。
 
 3. ブックで、 **[可用性]** を選択して可用性ブックに切り替えてから、コマンド バーの **[編集]** を選択します。 
 
@@ -228,41 +228,25 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のス
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-このセクションは、Azure Monitor for Storage (プレビュー) を使用するときに発生する可能性があるいくつかの一般的な問題を診断し、トラブルシューティングするのに役立ちます。 以下のリストを使用して、特定の問題に関連する情報を見つけてください。
+一般的なトラブルシューティングのガイダンスについては、専用のブックベースの分析情報の[トラブルシューティングに関する記事](troubleshoot-workbooks.md)を参照してください。
+
+このセクションは、Azure Monitor for Storage を使用するときに発生する可能性があるいくつかの一般的な問題を診断し、トラブルシューティングするのに役立ちます。 以下のリストを使用して、特定の問題に関連する情報を見つけてください。
 
 ### <a name="resolving-performance-capacity-or-availability-issues"></a>パフォーマンス、容量、または可用性の問題の解決
 
-Azure Monitor for Storage (プレビュー) で発生するストレージ関連の問題のトラブルシューティングについては、Azure Storage の[トラブルシューティング ガイダンス](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance)に関する記事をご覧ください。  
+Azure Monitor for Storage で発生するストレージ関連の問題のトラブルシューティングについては、Azure Storage の[トラブルシューティング ガイダンス](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance)に関するページを参照してください。  
 
 ### <a name="why-can-i-only-see-200-storage-accounts"></a>200 個のストレージ アカウントしか表示できないのはなぜですか。
 
 選択されているサブスクリプションの数には関係なく、選択されるストレージ アカウントの数には 200 の制限があります。
 
-### <a name="what-happens-when-i-click-on-a-recently-pinned-tile-in-the-dashboard"></a>ダッシュボードの最近ピン留めされたタイルをクリックするとどうなりますか。
-
-* タイル上の任意の場所をクリックすると、そのタイルがピン留めされたときのタブが表示されます。 たとえば、[ストレージ アカウントの概要] タブでグラフをピン留めした場合は、ダッシュボードのそのタイルをクリックすると、その既定のビューが開きます。ただし、独自の保存されたコピーからグラフをピン留めした場合は、その保存されたコピーのビューが開きます。
-* タイトルの左上にあるフィルター アイコンをクリックすると、[タイル設定の構成] タブが開きます。
-* 右上にある省略記号アイコンをクリックすると、[Customize title data] (タイトル データのカスタマイズ) のオプションである [カスタマイズ]、[更新]、および [ダッシュボードから削除する] が表示されます。
-
-### <a name="what-happens-when-i-save-a-workbook"></a>ブックを保存するとどうなりますか。
-
-* ブックを保存すると、編集を使用してブックの新しいコピーを作成したり、タイトルを変更したりできるようになります。 保存してもブックは上書きされず、現在のブックは常に既定のビューになります。
-* **保存されていない**ブックは、単なる既定のビューです。
-
-
-### <a name="why-dont-i-see-all-my-subscriptions-in-the-portal"></a>ポータルに自分のすべてのサブスクリプションが表示されないのはなぜですか。
-
-ポータルには、ポータルの起動時に選択されたサブスクリプションのデータのみが表示されます。 選択されているサブスクリプションを変更するには、右上に移動し、フィルター アイコンを含むノートブックをクリックします。 これにより、[ディレクトリ + サブスクリプション] タブが表示されます。
-
-![[ディレクトリ + サブスクリプション]](./media/storage-insights-overview/fqa3.png)
-
 ### <a name="how-to-change-the-coloring-and-threshold-for-availability"></a>可用性の色としきい値を変更するにはどうしたらよいですか。
 
-可用性の色としきい値を変更する方法に関する詳細な手順については、「[可用性のしきい値を変更する](storage-insights-overview.md#modify-the-availability-threshold)」のセクションを参照してください。
+可用性の色としきい値を変更する方法に関する詳細な手順については、「[可用性のしきい値を変更する](#modify-the-availability-threshold)」のセクションを参照してください。
 
 ### <a name="how-to-analyze-and-troubleshoot-the-data-shown-in-azure-monitor-for-storage"></a>Azure Monitor for Storage に表示されているデータを分析およびトラブルシューティングするにはどうしたらよいですか。
 
- Azure Monitor for Storage に表示されている Azure Storage データを分析およびトラブルシューティングする方法の詳細については、「[Microsoft Azure Storage の監視、診断、およびトラブルシューティング](https://docs.microsoft.com/azure/storage/common/storage-monitoring-diagnosing-troubleshooting)」の記事を参照してください。
+ Azure Monitor for Storage に表示されている Azure Storage データを分析およびトラブルシューティングする方法の詳細については、「[Microsoft Azure Storage の監視、診断、およびトラブルシューティング](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)」の記事を参照してください。
 
 ### <a name="why-dont-i-see-all-the-types-of-errors-in-metrics"></a>メトリックにすべての種類のエラーが表示されないのはなぜですか。
 
@@ -273,7 +257,7 @@ Azure Monitor for Storage (プレビュー) で発生するストレージ関連
 
     ![メトリックに移動し、編集をクリックしてから、[Transactions, Sum] (トランザクション、合計) をクリックする](./media/storage-insights-overview/fqa7.png)
 
-1. 次に、[Number of Splits] (分割数) を変更します。
+3. 次に、[Number of Splits] (分割数) を変更します。
 
     ![[Select Metric Parameters] (メトリック パラメーターの選択)](./media/storage-insights-overview/fqa7-2.png)
 
@@ -283,41 +267,11 @@ n 種類のエラーを表示する場合は、splitByLimit を n+1 として指
 
 各ブックは、それを保存したときのストレージ アカウントに保存されます。 ユーザーがそのブックを保存した特定のストレージ アカウントを探してみてください。 それ以外に、リソース (ストレージ アカウント) がわからずに特定のブックを見つける方法はありません。
 
-### <a name="what-is-time-range"></a>時間範囲とはどのようなものですか。
-
-時間範囲は、特定の期間のデータを示します。 たとえば、時間範囲が 24 時間である場合は、過去 24 時間分のデータを示しています。
-
-### <a name="what-is-time-granularity-time-grain"></a>時間の粒度 (時間グレイン) とはどのようなものですか。
-
-時間の粒度は、2 つのデータ ポイント間の時間差です。 たとえば、時間グレインが 1 秒に設定されている場合は、メトリックが 1 秒ごとに収集されることを示します。
-
-### <a name="what-is-the-time-granularity-once-we-pin-any-part-of-the-workbooks-to-a-dashboard"></a>ブックのある部分をダッシュボードにピン留めした後の時間の粒度はどれだけですか。
-
-既定の時間の粒度は自動に設定されています。現時点で、それを変更することはできません。
-
-### <a name="how-do-i-change-the-timespan-time-range-of-the-workbook-step-on-my-dashboard"></a>ダッシュボード上のブック ステップの期間/時間範囲を変更するにはどうしたらよいですか。
-
-既定では、ダッシュボード タイルの期間/時間範囲は 24 時間に設定されています。これを変更するには、右上にある省略記号ボタンをクリックして **[タイル データをカスタマイズする]** を選択し、[override the dashboard time settings at the title level] (タイトル レベルでダッシュボードの時刻の設定をオーバーライドする) ボックスをオンにしてから、ドロップダウン メニューを使用して期間を選択します。  
-
-![タイルの右の隅にある省略記号ボタンを選択し、[Customize this data] (このデータをカスタマイズする) を選択します。](./media/storage-insights-overview/fqa-data-settings.png)
-
-![[タイル設定の構成] で、期間のドロップダウンを選択して期間/時間範囲を変更します。](./media/storage-insights-overview/fqa-timespan.png)
-
-### <a name="how-do-i-change-the-title-of-the-workbook-or-a-workbook-step-i-pinned-to-a-dashboard"></a>ダッシュボードにピン留めしたブックまたはブック ステップのタイトルを変更するにはどうしたらよいですか。
-
-ダッシュボードにピン留めされたブックまたはブック ステップのタイトルは、そのブックにあったものと同じ名前を保持します。 タイトルを変更するには、ブックの独自のコピーを保存する必要があります。 その後、[保存] を押す前に、ブックに名前を付けることができます。
-
-![上部にある [保存] を選択してブックのコピーを保存し、その名前を変更します。](./media/storage-insights-overview/fqa-change-workbook-name.png)
-
-保存されたブック内のステップの名前を変更するには、そのステップの下の [編集] を選択した後、[設定] の一番下にある歯車を選択します。
-
-![ブック ステップの下部にある [編集] を選択して [設定] を開く](./media/storage-insights-overview/fqa-edit.png)
-![[設定] の一番下にある歯車を選択すると、ステップ名を変更できる](./media/storage-insights-overview/fqa-change-name.png)
-
 ## <a name="next-steps"></a>次のステップ
 
-* [メトリック アラート](../platform/alerts-metric.md)と[サービス正常性通知](../../service-health/alerts-activity-log-service-notifications.md)を構成して、問題の検出に役立つ自動アラートを設定します。
+* [メトリック アラート](../platform/alerts-metric.md)と[サービス正常性通知](../../service-health/alerts-activity-log-service-notifications-portal.md)を構成して、問題の検出に役立つ自動アラートを設定します。
 
-* ブックがサポートするように設計されているシナリオ、新規レポートの作成方法と既存レポートのカスタマイズ方法などについては、「[Azure Monitor ブックを使用した対話型レポートの作成](../app/usage-workbooks.md)」で学習してください。
+* ブックがサポートするように設計されているシナリオ、新規レポートの作成方法と既存レポートのカスタマイズ方法などについては、「[Azure Monitor ブックを使用した対話型レポートの作成](../platform/workbooks-overview.md)」で学習してください。
 
 * Storage Analytics や他のツールを使用した Azure Storage 関連の問題の特定、診断、トラブルシューティングに関する詳しいガイドについては、「 [Microsoft Azure ストレージの監視、診断、およびトラブルシューティング](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)」をご覧ください。
+

@@ -6,16 +6,16 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 558b16fc348728c507af1fa0260a67ccacefed0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 40a9e5268b7fccc5c01775c10e55eee47f1aaf3d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416143"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213382"
 ---
 # <a name="use-transactions-in-synapse-sql-pool"></a>Synapse SQL プールでのトランザクションの使用
 

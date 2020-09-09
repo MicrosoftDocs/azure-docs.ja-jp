@@ -5,12 +5,12 @@ author: MS-Santi
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 7951f216143bef0d48a6b751beff3f8f4316b9bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1bddb6af777f36d04bae4a8b68c476789048be1b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75433330"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081782"
 ---
 # <a name="disaster-recovery-and-geo-distribution-in-azure-durable-functions"></a>Azure Durable Functions のディザスター リカバリーと地理的分散
 
@@ -83,4 +83,4 @@ Durable Functions の運用を続けるため、このシナリオでは、関�
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、「[RA-GRS を使用した高可用性アプリケーションの設計](../../storage/common/storage-designing-ha-apps-with-ragrs.md)」を参照してください。
+詳細については、「[RA-GRS を使用した高可用性アプリケーションの設計](../../storage/common/geo-redundant-design.md)」を参照してください。

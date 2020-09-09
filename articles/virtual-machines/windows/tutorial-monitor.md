@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 09/27/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: a021675632a093d41e2565f63f8bb4e844213628
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 154e4c9421d1c0a54b3d9b5f53424e7640fe62d8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101622"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323572"
 ---
 # <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>チュートリアル:Azure で Windows 仮想マシンを監視する
 
@@ -39,13 +39,13 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
 
-このチュートリアルで Azure の監視と更新管理を構成するには、Azure 内に Windows VM が必要です。 まず、[Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) を使用して、VM の管理者のユーザー名とパスワードを設定します。
+このチュートリアルで Azure の監視と更新管理を構成するには、Azure 内に Windows VM が必要です。 まず、[Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) を使用して、VM の管理者のユーザー名とパスワードを設定します。
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-次に、[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) を使用して VM を作成します。 次の例では、場所 *EastUS* に *myVM* という名前の VM を作成します。 これらが存在しない場合は、リソース グループ *myResourceGroupMonitorMonitor* と関連ネットワーク リソースが作成されます。
+次に、[New-AzVM](/powershell/module/az.compute/new-azvm) を使用して VM を作成します。 次の例では、場所 *EastUS* に *myVM* という名前の VM を作成します。 これらが存在しない場合は、リソース グループ *myResourceGroupMonitorMonitor* と関連ネットワーク リソースが作成されます。
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -61,7 +61,7 @@ New-AzVm `
 
 Windows 仮想マシンが起動すると、ブート診断エージェントは画面出力をキャプチャします。これをトラブルシューティングに使用することができます。 この機能は既定で有効になっています。 キャプチャしたスクリーンショットは、既定で作成される Azure Storage アカウントに格納されます。
 
-[Get-AzureRmVMBootDiagnosticsData](https://docs.microsoft.com/powershell/module/az.compute/get-azvmbootdiagnosticsdata) コマンドを使用してブートの診断データを取得できます。 次の例では、ブート診断は *c:\* ドライブのルートにダウンロードされています。
+[Get-AzureRmVMBootDiagnosticsData](/powershell/module/az.compute/get-azvmbootdiagnosticsdata) コマンドを使用してブートの診断データを取得できます。 次の例では、ブート診断は *c:\* ドライブのルートにダウンロードされています。
 
 ```powershell
 Get-AzVMBootDiagnosticsData -ResourceGroupName "myResourceGroupMonitor" -Name "myVM" -Windows -LocalPath "c:\"
@@ -93,7 +93,7 @@ Azure Monitor for VMs を使用した Azure VM の監視を有効にするには
     この一覧では、サブスクリプションで VM がデプロイされている既定のワークスペースと場所が事前に選択されています。 
 
     >[!NOTE]
-    >VM からの監視データを格納するための新しい Log Analytics ワークスペースを作成するには、[Log Analytics ワークスペースの作成](../../azure-monitor/learn/quick-create-workspace.md)に関するページを参照してください。 Log Analytics ワークスペースは、[サポートされているリージョン](../../azure-monitor/insights/vminsights-enable-overview.md#log-analytics)のいずれかに属している必要があります。
+    >VM からの監視データを格納するための新しい Log Analytics ワークスペースを作成するには、[Log Analytics ワークスペースの作成](../../azure-monitor/learn/quick-create-workspace.md)に関するページを参照してください。 ワークスペースは、[サポートされているリージョン](../../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions)のいずれかに属している必要があります。
 
 監視を有効にした後、VM のパフォーマンス メトリックが表示されるまでに数分かかることがあります。
 

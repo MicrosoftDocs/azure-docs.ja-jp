@@ -7,14 +7,14 @@ ms.service: firewall
 ms.topic: article
 ms.date: 04/10/2020
 ms.author: victorh
-ms.openlocfilehash: 93677b3e473ab825665fed5590ac345a8cfcc300
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 84110e749dac9267e994385aa5f6d05e3ba224a6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81113449"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087545"
 ---
-# <a name="azure-firewall-rule-processing-logic"></a>Azure Firewall ルール処理ロジック
+# <a name="configure-azure-firewall-rules"></a>Azure Firewall 規則を構成する
 Azure Firewall では、NAT 規則、ネットワーク ルール、およびアプリケーション ルールを構成できます。 ルール コレクションはルールの種類と優先順位に基づいて処理されます。優先順位は 100 から 65,000 までであり、数字の低い順から高い順に処理されます。 ルール コレクションの名前に使用できるのは、文字、数字、アンダースコア、ピリオド、ハイフンのみです。 先頭は文字または数字、末尾は文字、数字、またはアンダースコアでなければなりません。 名前の最大長は 80 文字です。
 
 ルール コレクションの優先順位数の間隔はまず、100 の増分にすることをお勧めします (100、200、300 など)。そうすることで、必要に応じてルール コレクションを追加する余地が与えられます。

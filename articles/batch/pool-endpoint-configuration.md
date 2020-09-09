@@ -1,14 +1,14 @@
 ---
 title: Azure Batch プールでノード エンドポイントを構成する
 description: Azure Batch プールの計算ノードで SSH ポートまたは RDP ポートへのアクセスを構成する方法と無効にする方法。
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/13/2018
-ms.openlocfilehash: 8b0ae4b80757bfa647cd5322668d793fa66ffca3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1713637a9aba937525e64e1c4146589fca443461
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82113852"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780290"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch プールの計算ノードへのリモート アクセスを構成する/無効にする
 
@@ -120,7 +120,5 @@ pool.network_configuration = batchmodels.NetworkConfiguration(
 
 ## <a name="next-steps"></a>次のステップ
 
+- [Batch サービスのワークフローと主要なリソース](batch-service-workflow-features.md) (プール、ノード、ジョブ、タスクなど) について学習します。
 - Azure の NSG ルールに関する詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](../virtual-network/security-overview.md)」をご覧ください。
-
-- Batch の詳細な概要については、「[Batch を使って大規模な並列コンピューティング ソリューションを開発する](batch-api-basics.md)」を参照してください。
-

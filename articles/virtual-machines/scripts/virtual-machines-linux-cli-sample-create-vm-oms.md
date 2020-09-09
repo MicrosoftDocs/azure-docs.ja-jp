@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 211d81b2ceec985844ed7abf7b8fc4d3e30dcca5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 25ea86fe1f9e479ad12cfd27ca54ffb01a9eee6b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81459935"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503618"
 ---
 # <a name="monitor-a-vm-with-azure-monitor"></a>Azure Monitor を使用して VM を監視する
 
@@ -48,13 +48,13 @@ az group delete --name myResourceGroup
 
 | command | メモ |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm) | 仮想マシンを作成し、作成したマシンをネットワーク カード、仮想ネットワーク、サブネット、およびNSG に接続します。 このコマンドでは、使用する仮想マシン イメージと管理者の資格情報も指定します。  |
-| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | 仮想マシンに対して VM 拡張機能を実行します。 このサンプルでは、Azure Monitor エージェント拡張機能を使用して、Log Analytics エージェントをインストールし Log Analytics ワークスペースに VM を登録します。 |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [az group create](/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az vm create](/cli/azure/vm) | 仮想マシンを作成し、作成したマシンをネットワーク カード、仮想ネットワーク、サブネット、およびNSG に接続します。 このコマンドでは、使用する仮想マシン イメージと管理者の資格情報も指定します。  |
+| [azure vm extension set](/cli/azure/vm/extension) | 仮想マシンに対して VM 拡張機能を実行します。 このサンプルでは、Azure Monitor エージェント拡張機能を使用して、Log Analytics エージェントをインストールし Log Analytics ワークスペースに VM を登録します。 |
+| [az group delete](/cli/azure/vm/extension) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
 その他の仮想マシン用の CLI サンプル スクリプトは、[Azure Linux VM のドキュメント](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)のページにあります。

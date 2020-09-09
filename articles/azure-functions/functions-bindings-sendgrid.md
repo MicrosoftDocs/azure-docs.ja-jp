@@ -3,14 +3,15 @@ title: Azure Functions における SendGrid のバインディング
 description: Azure Functions における SendGrid のバインディングのリファレンス
 author: craigshoemaker
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: 9ed2b81c12c698822b9542bb6903189c865b572b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 32734ff9df2e55d24789742cd49984d8da212a17
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235159"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212196"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions における SendGrid のバインディング
 

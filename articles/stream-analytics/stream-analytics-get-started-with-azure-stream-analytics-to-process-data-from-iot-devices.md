@@ -5,14 +5,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/26/2019
-ms.openlocfilehash: 0755131f7d8071e37eadc1339ebc5e122725fa71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a40f92e88d2d8e5ca253446b9c67ad30df538a5b
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75426243"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043429"
 ---
 # <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>Azure Stream Analytics を使用したリアルタイム IoT データ ストリームの処理
 

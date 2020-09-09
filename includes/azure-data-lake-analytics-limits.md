@@ -1,15 +1,15 @@
 ---
 author: rothja
-ms.service: cost-management-billing
+ms.service: data-lake-analytics
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 2f6cdda71c89041d954d8dbaf34a1fd874c5849a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 978131a6cdc27849ff1e9b922d37854f35ff374a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334896"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85838962"
 ---
 Azure Data Lake Analytics により、分散インフラストラクチャや複雑なコードの管理という複雑なタスクも簡単に行うことができます。 リソースを動的にプロビジョニングするので、これを使用してエクサバイト規模のデータも分析できます。 ジョブが完了するとリソースが自動的に縮小されます。 使用した処理能力の分だけの支払いですみます。 保存するデータのサイズや使用するコンピューティングの量を増やしたり減らしたりする際に、コードを書き直す必要はありません。 サブスクリプションの既定の制限を引き上げるには、サポートにお問い合わせください。
 

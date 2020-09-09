@@ -10,13 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: trbye
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 5fdca371e9188ef69068ddbcaa416cbb2b44054c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+zone_pivot_groups: programming-languages-set-two-with-js
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 29dcd3ddc32ac92f7543e5d7648680e36f50dcfb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402150"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934601"
 ---
 # <a name="choose-a-speech-recognition-mode"></a>音声認識モードを選択する
 
@@ -64,6 +65,17 @@ result = speech_recognizer.recognize_once()
 ```
 
 ::: zone-end
+
+::: zone pivot="programming-language-javascript"
+
+`recognizeOnceAsync`関数の使用方法の詳細については、[JavaScript の Speech SDK のドキュメント](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#recognizeonceasync--e--speechrecognitionresult-----void---e--string-----void-)を参照してください。
+
+```JavaScript
+recognizer.recognizeOnceAsync((result)=>{}, (error)=>{}));
+```
+
+::: zone-end
+
 ::: zone pivot="programming-language-more"
 
 その他の言語については、[Speech SDK リファレンス ドキュメント](speech-to-text.md#speech-sdk-reference-docs)を参照してください。
@@ -152,6 +164,26 @@ speech_recognizer.stop_continuous_recognition()
 ```
 
 ::: zone-end
+
+::: zone pivot="programming-language-javascript"
+
+```JavaScript
+recognizer.recognized = (s, e) => {
+    if (e.result.reason == ResultReason.RecognizedSpeech) {
+        // Do something with the recognized text
+        // e.getResult().getText()
+    }
+});
+
+// Start continuous speech recognition
+recognizer.startContinuousRecognitionAsync(()=>{}, (error)=>{});
+
+// Stop continuous speech recognition
+recognizer.stopContinuousRecognitionAsync(()=>{}, (error)=>{});
+```
+
+::: zone-end
+
 ::: zone pivot="programming-language-more"
 
 その他の言語については、[Speech SDK リファレンス ドキュメント](speech-to-text.md#speech-sdk-reference-docs)を参照してください。
@@ -202,6 +234,18 @@ SpeechConfig.enable_dictation()
 ```
 
 ::: zone-end
+
+::: zone pivot="programming-language-javascript"
+
+`enableDictation` 関数の使用方法の詳細については、[JavaScript の Speech SDK のドキュメント](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#enabledictation--)を参照してください。
+
+```JavaScript
+// Enable diction
+speechConfig.enableDictation();
+```
+
+::: zone-end
+
 ::: zone pivot="programming-language-more"
 
 その他の言語については、[Speech SDK リファレンス ドキュメント](speech-to-text.md#speech-sdk-reference-docs)を参照してください。

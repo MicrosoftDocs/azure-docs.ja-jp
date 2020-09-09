@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 124fc6035c1d0ad504a34b7db227f0f4675f24f7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8dd47d27f928cb33e5a2bbc3ba9a6ab2bc044852
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75613960"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245383"
 ---
 # <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>チュートリアル: Service Fabric スタンドアロン クラスターにアプリケーションをデプロイする
 
@@ -52,7 +52,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 4. ソリューション エクスプローラーで `Voting` アプリケーション プロジェクトを右クリックし、 **[発行]** を選択します。
 
-5. **[接続のエンドポイント]** のドロップダウンを選択し、クラスター内のいずれかのノードのパブリック DNS 名を入力します。  たとえば、「 `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000` 」のように入力します。 Azure では、完全修飾ドメイン名 (FQDN) は自動的には与えられませんが、[VM の [概要] ページで簡単に設定できる](https://docs.microsoft.com/azure/virtual-machines/linux/portal-create-fqdn)ことに注意してください。
+5. **[接続のエンドポイント]** のドロップダウンを選択し、クラスター内のいずれかのノードのパブリック DNS 名を入力します。  たとえば、「 `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000` 」のように入力します。 Azure では、完全修飾ドメイン名 (FQDN) は自動的には与えられませんが、[VM の [概要] ページで簡単に設定できる](../virtual-machines/linux/portal-create-fqdn.md)ことに注意してください。
 
 6. 任意のブラウザーを開き、クラスター アドレスを入力します。これが接続エンドポイントとなります。このアプリのデプロイ先は、ポート 8080 とします (例: ec2-34-215-183-77.us-west-2.compute.amazonaws.com:8080)。
 

@@ -4,14 +4,15 @@ description: Azure SignalR サービスの内部構造、アーキテクチャ�
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 8ba34edfc382f0f03abe080d78a6a47dcb65501b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3fc6971c66d06ae9f25584f5be28b051075bfa49
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82105762"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921972"
 ---
 # <a name="azure-signalr-service-internals"></a>Azure SignalR Service の内部
 
@@ -23,7 +24,7 @@ Azure SignalR Service は、ASP.NET Core SignalR フレームワーク上に構�
 
 セルフホステッド ASP.NET Core SignalR アプリケーションとの相違点についても説明します。
 
-![Architecture](./media/signalr-concept-internals/arch.png)
+![アーキテクチャ](./media/signalr-concept-internals/arch.png)
 
 ## <a name="server-connections"></a>サーバー接続
 
@@ -85,6 +86,8 @@ SignalR Service を使用する場合、クライアントはアプリケーシ�
 この時点で、アプリケーション サーバーは新しいクライアントからの情報を含むイベントを受け取ります。 クライアントへの論理接続がアプリケーション サーバーに作成されます。 SignalR Service 経由でクライアントからアプリケーション サーバーへのデータ チャネルが確立されます。
 
 SignalR Service により、クライアントからのデータはペアになっているアプリケーション サーバーに転送されます。 アプリケーション サーバーからのデータはマッピングされているクライアントに送信されます。
+
+SignalR Service によって顧客データが保存または格納されることはありません。受信されたすべての顧客データは、リアルタイムでターゲット サーバーまたはクライアントに送信されます。
 
 ご覧のように、Azure SignalR Service は基本的にアプリケーション サーバーとクライアント間の論理トランスポート層です。 すべての永続的な接続が SignalR Service にオフロードされます。
 アプリケーション サーバーでは、ハブ クラス内でビジネス ロジックの処理のみを行う必要があります。クライアント接続について心配することはありません。

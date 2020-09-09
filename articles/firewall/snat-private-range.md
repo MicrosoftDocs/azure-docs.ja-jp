@@ -1,28 +1,32 @@
 ---
 title: Azure Firewall の SNAT プライベート IP アドレス範囲
-description: ファイアウォールによって IP アドレスへのトラフィックの SNAT が行われないようなプライベート範囲を IP アドレスに構成することができます。
+description: SNAT の IP アドレス範囲を構成できます。
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: article
-ms.date: 03/20/2020
+ms.topic: how-to
+ms.date: 06/09/2020
 ms.author: victorh
-ms.openlocfilehash: ed8cef00b7de67458c607373c724a3717f14a7cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be2bf0f9590a23f9def44a1800338c80f69a782c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064803"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610525"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>Azure Firewall の SNAT プライベート IP アドレス範囲
 
-宛先 IP アドレスが [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) に従ったプライベート IP アドレス範囲内にある場合、Azure Firewall では、ネットワーク規則を使用した SNAT は行われません。 アプリケーション ルールは、宛先 IP アドレスに関係なく、[透過プロキシ](https://wikipedia.org/wiki/Proxy_server#Transparent_proxy)を使用して常に適用されます。
+Azure Firewall では、パブリック IP アドレスへのすべてのアウトバウンド トラフィックに対して自動 SNAT が提供されます。 既定では、宛先 IP アドレスが [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) に従ったプライベート IP アドレス範囲内にある場合、Azure Firewall では、ネットワーク規則を使用した SNAT は行われません。 アプリケーション ルールは、宛先 IP アドレスに関係なく、[透過プロキシ](https://wikipedia.org/wiki/Proxy_server#Transparent_proxy)を使用して常に適用されます。
+
+このロジックは、トラフィックをインターネットに直接ルーティングする場合に適しています。 ただし、[強制トンネリング](forced-tunneling.md)を有効にすると、SNAT によってインターネットへのトラフィックに AzureFirewallSubnet のいずれかのファイアウォール プライベート IP アドレスが適用され、対象のオンプレミスのファイアウォールからソースが隠されます。
 
 組織でプライベート ネットワークに対してパブリック IP アドレス範囲を使用している場合、Azure Firewall は、SNAT を使用して、トラフィックのアドレスを AzureFirewallSubnet のいずれかのファイアウォール プライベート IP アドレスに変換します。 ただし、パブリック IP アドレス範囲の SNAT が**行われない**ように、Azure Firewall を構成することができます。
 
-## <a name="configure-snat-private-ip-address-ranges"></a>SNAT のプライベート IP アドレス範囲を構成する
+宛先 IP アドレスに関係なく SNAT を行わないように Azure Firewall を構成するには、**0.0.0.0/0** をプライベート IP アドレス範囲として使用します。 この構成では、Azure Firewall がトラフィックをインターネットに直接ルーティングすることはできません。 宛先アドレスに関係なく常に SNAT を行うようにファイアウォールを構成するには、**255.255.255.255/32** をプライベート IP アドレス範囲として使用します。
 
-Azure PowerShell を使って、ファイアウォールで SNAT が行われない IP アドレスの範囲を指定できます。
+## <a name="configure-snat-private-ip-address-ranges---azure-powershell"></a>SNAT のプライベート IP アドレス範囲を構成する - Azure PowerShell
+
+Azure PowerShell を使用して、ファイアウォールのプライベート IP アドレス範囲を指定できます。
 
 ### <a name="new-firewall"></a>新しいファイアウォール
 
@@ -31,7 +35,7 @@ Azure PowerShell を使って、ファイアウォールで SNAT が行われな
 `New-AzFirewall -Name $GatewayName -ResourceGroupName $RG -Location $Location -VirtualNetworkName $vnet.Name -PublicIpName $LBPip.Name -PrivateRange @("IANAPrivateRanges","IPRange1", "IPRange2")`
 
 > [!NOTE]
-> IANAPrivateRanges は Azure Firewall の現在の既定値に拡張されますが、他の範囲は追加されます。
+> IANAPrivateRanges は Azure Firewall の現在の既定値に拡張されますが、他の範囲は追加されます。 プライベート範囲の指定で IANAPrivateRanges の既定値を維持するには、次の例に示すように、`PrivateRange` の指定に残す必要があります。
 
 詳細については、「[New-AzFirewall](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall?view=azps-3.3.0)」をご覧ください。
 
@@ -55,6 +59,20 @@ Set-AzFirewall -AzureFirewall $azfw
                 },
 ```
 
+## <a name="configure-snat-private-ip-address-ranges---azure-portal"></a>SNAT のプライベート IP アドレス範囲を構成する - Azure portal
+
+Azure portal を使用して、ファイアウォールのプライベート IP アドレス範囲を指定できます。
+
+1. 対象のリソース グループを選択し、ファイアウォールを選択します。
+2. **[概要]** ページの **[プライベート IP 範囲]** で、既定値 **[IANA RFC 1918]** を選択します。
+
+   **[Edit Private IP Prefixes]\(プライベート IP プレフィックスの編集\)** ページが開きます。
+
+   :::image type="content" source="media/snat-private-range/private-ip.png" alt-text="[Edit private IP prefixes]\(プライベート IP プレフィックスの編集\)":::
+
+1. 既定では、 **[IANAPrivateRanges]** が構成されています。
+2. お使いの環境に合わせてプライベート IP アドレス範囲を編集し、 **[保存]** を選択します。
+
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Firewall のデプロイおよび構成](tutorial-firewall-deploy-portal.md)方法について説明します。
+- [Azure Firewall の強制トンネリング](forced-tunneling.md)について学習します。

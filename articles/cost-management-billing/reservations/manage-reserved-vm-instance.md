@@ -1,18 +1,19 @@
 ---
 title: Azure の予約を管理する
-description: Azure の予約を管理する方法について説明します。
+description: Azure の予約を管理する方法について説明します。 予約スコープを変更し、予約を分割し、予約の使用を最適化するステップを参照してください。
 ms.service: cost-management-billing
+ms.subservice: reservations
 author: bandersmsft
 ms.reviewer: yashesvi
-ms.topic: conceptual
-ms.date: 02/18/2020
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 2dadcac3c776feed5ee521284f6b244a050e83e9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f67cbb70d7064b894b9042bba42f48e4fb6a6b5e
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79237940"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684781"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Azure リソースに対する予約を管理する
 
@@ -20,6 +21,7 @@ Azure の予約を購入した後、必要に応じて、別のサブスクリ�
 
 Azure Reserved Virtual Machine Instances を購入した場合は、予約の最適化設定を変更できます。 予約割引は、同じシリーズの VM に適用するか、特定の VM サイズのデータセンター容量を予約することもできます。 また、予約を最適化して、完全に使用されるようにする必要があります。
 
+"*予約を管理するために必要なアクセス許可は、サブスクリプションのアクセス許可とは異なります。* "
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -55,10 +57,9 @@ Azure Reserved Virtual Machine Instances を購入した場合は、予約の最
 
 予約注文または予約でのロールにユーザーを追加することで、予約管理を委任することができます。 既定では、予約注文を開設するユーザーとアカウント管理者が、その予約注文と予約に対する所有者ロールを保持します。
 
-予約注文および予約へのアクセス権は、その予約割引を取得したサブスクリプションとは別個に管理することができます。 予約注文または予約を管理するためのアクセス許可をだれかに与えても、サブスクリプションを管理するためのアクセス許可は与えられません。 同様に、予約のスコープ内のサブスクリプションを管理するアクセス許可をだれかに与えても、予約注文または予約を管理する権限は与えられません。
+予約注文および予約へのアクセス権は、その予約割引を取得した "*サブスクリプションとは別個に*" 管理することができます。 予約注文または予約を管理するためのアクセス許可をだれかに与えても、サブスクリプションを管理するためのアクセス許可は与えられません。 同様に、予約のスコープ内のサブスクリプションを管理するアクセス許可をだれかに与えても、予約注文または予約を管理する権限は与えられません。
 
 交換や返金を実行するには、ユーザーが予約注文へのアクセス権を保持している必要があります。 アクセス許可をだれかに付与するときは、予約ではなく予約注文へのアクセス許可を付与することをお勧めします。
-
 
 予約のアクセス管理を委任するには、次の手順に従います。
 
@@ -168,7 +169,7 @@ Azure の予約の詳細については、次の記事を参照してくださ�
 
 サービス プランの購入:
 - [Azure Reserved VM Instances による仮想マシンの前払い](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い](../../sql-database/sql-database-reserved-capacity.md)
+- [Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い](../../azure-sql/database/reserved-capacity-overview.md)
 - [Azure Cosmos DB の容量が予約された Azure Cosmos DB リソースの前払い](../../cosmos-db/cosmos-db-reserved-capacity.md)
 
 ソフトウェア プランの購入:

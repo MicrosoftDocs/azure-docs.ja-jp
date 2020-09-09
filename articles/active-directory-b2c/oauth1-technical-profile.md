@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7f734844859d44e66bddbc2ddd999659e52f9668
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d570ddbcf974936bbaa78be5799e7bd42fa6d514
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78184079"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204083"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OAuth1 技術プロファイルを定義する
 
@@ -28,7 +28,7 @@ Azure Active Directory B2C (Azure AD B2C) では、[OAuth 1.0 プロトコル](h
 
 **Protocol** 要素の **Name** 属性は `OAuth1` に設定する必要があります。 たとえば、**Twitter-OAUTH1** 技術プロファイル用のプロトコルは `OAuth1` です。
 
-```XML
+```xml
 <TechnicalProfile Id="Twitter-OAUTH1">
   <DisplayName>Twitter</DisplayName>
   <Protocol Name="OAuth1" />

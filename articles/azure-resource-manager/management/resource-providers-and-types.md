@@ -3,12 +3,13 @@ title: リソース プロバイダーとリソースの種類
 description: リソース マネージャーをサポートするリソース プロバイダー、そのスキーマと利用可能な API バージョン、およびリソースをホストできるリージョンについて説明します。
 ms.topic: conceptual
 ms.date: 08/29/2019
-ms.openlocfilehash: 82b8251006a1a2d4edd198eca843489d3720f8d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 581b653c6d4769f7777b0ca56f136d25443c1ae4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234087"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500012"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure リソース プロバイダーと種類
 

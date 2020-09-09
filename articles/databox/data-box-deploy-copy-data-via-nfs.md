@@ -1,19 +1,19 @@
 ---
 title: Azure Data Box に NFS 経由でデータをコピーするチュートリアル | Microsoft Docs
-description: Azure Data Box に NFS 経由でデータをコピーする方法について説明します
+description: このチュートリアルでは、ローカル Web UI から NFS を使用して Azure Data Box に接続し、ホスト コンピューターからデータをコピーする方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 06/25/2019
+ms.date: 07/02/2020
 ms.author: alkohli
-ms.openlocfilehash: f0a4bb23d8a868e7c11153748259eba23a0cca38
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 590a0a1ce474d48e95163081dcdcacb52233badf
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79501827"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926078"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>チュートリアル:Azure Data Box に NFS 経由でデータをコピーする
 
@@ -48,7 +48,7 @@ ms.locfileid: "79501827"
 
 次の表は、Data Box 上の共有への UNC パスと、データのアップロード先である Azure Storage のパスの URL を示しています。 Azure Storage の最終的なパスの URL は、UNC 共有パスから導き出すことができます。
  
-|                   |                                                            |
+| Azure Storage の種類| Data Box 共有                                       |
 |-------------------|--------------------------------------------------------------------------------|
 | Azure ブロック BLOB | <li>共有への UNC パス: `//<DeviceIPAddress>/<StorageAccountName_BlockBlob>/<ContainerName>/files/a.txt`</li><li>Azure Storage の URL: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
 | Azure ページ BLOB  | <li>共有への UNC パス: `//<DeviceIPAddres>/<StorageAccountName_PageBlob>/<ContainerName>/files/a.txt`</li><li>Azure Storage の URL: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
@@ -58,7 +58,7 @@ Linux ホスト コンピューターを使用している場合は、次の手�
 
 1. 共有にアクセスできる許可するクライアントの IP アドレスを指定します。 ローカル Web UI で、 **[接続とコピー]** ページに移動します。 **[NFS の設定]** で、 **[NFS のクライアント アクセス]** をクリックします。 
 
-    ![NFS のクライアント アクセスを構成する 1](media/data-box-deploy-copy-data/nfs-client-access.png)
+    ![NFS のクライアント アクセスを構成する 1](media/data-box-deploy-copy-data/nfs-client-access-1.png)
 
 2. NFS クライアントの IP アドレスを指定して、 **[追加]** をクリックします。 この手順を繰り返すことにより、複数の NFS クライアントに対するアクセスを構成できます。 **[OK]** をクリックします。
 
@@ -94,7 +94,9 @@ Data Box の共有に接続したら、次にデータをコピーします。 �
   * ファイルの大文字と小文字は区別されません。
 
     たとえば、`SampleFile.txt` と `Samplefile.Txt` をコピーする場合、Data Box にコピーされるときに名前の大文字と小文字の区別は保持されますが、2 番目のファイルによって最初のファイルは上書きされます。これは、同じファイルと見なされるためです。
-* Data Box によって Azure Storage にデータが転送されたことを確認できるまでは、ソース データのコピーを保持するようにしてください。
+
+> [!IMPORTANT]
+> Data Box によって Azure Storage にデータが転送されたことを確認できるまでは、ソース データのコピーを保持するようにしてください。
 
 Linux ホスト コンピューターを使用している場合は、Robocopy のようなコピー ユーティリティを使用します。 Linux で使用できる代替手段は、[rsync](https://rsync.samba.org/)、[FreeFileSync](https://www.freefilesync.org/)、[Unison](https://www.cis.upenn.edu/~bcpierce/unison/)、[Ultracopier](https://ultracopier.first-world.info/) などです。  
 
@@ -102,31 +104,31 @@ Linux ホスト コンピューターを使用している場合は、Robocopy �
 
 マルチスレッドのコピーに rsync オプションを使用する場合は、以下のガイドラインに従ってください。
 
- - Linux クライアントで使用されているファイル システムに応じて、**CIFS Utils** または **NFS Utils** パッケージをインストールします。
+* Linux クライアントで使用されているファイル システムに応じて、**CIFS Utils** または **NFS Utils** パッケージをインストールします。
 
     `sudo apt-get install cifs-utils`
 
     `sudo apt-get install nfs-utils`
 
- -  **Rsync** および **Parallel** をインストールします (Linux ディストリビューションのバージョンによって異なります)。
+* **Rsync** および **Parallel** をインストールします (Linux ディストリビューションのバージョンによって異なります)。
 
     `sudo apt-get install rsync`
    
     `sudo apt-get install parallel` 
 
- - マウント ポイントを作成します。
+* マウント ポイントを作成します。
 
     `sudo mkdir /mnt/databox`
 
- - ボリュームをマウントします。
+* ボリュームをマウントします。
 
     `sudo mount -t NFS4  //Databox IP Address/share_name /mnt/databox` 
 
- - フォルダーのディレクトリ構造をミラー化します。  
+* フォルダーのディレクトリ構造をミラー化します。  
 
     `rsync -za --include='*/' --exclude='*' /local_path/ /mnt/databox`
 
- - ファイルをコピーします。 
+* ファイルをコピーします。
 
     `cd /local_path/; find -L . -type f | parallel -j X rsync -za {} /mnt/databox/{}`
 
@@ -137,25 +139,35 @@ Linux ホスト コンピューターを使用している場合は、Robocopy �
 > [!IMPORTANT]
 > Linux ファイルの種類のうち、シンボリック リンク、文字ファイル、ブロック ファイル、ソケット、パイプはサポートされていません。 これらのファイルの種類を使用すると、**発送準備**手順でエラーが発生します。
 
-コピー先フォルダーを開いて、コピー済みのファイルを表示し、確認します。 コピー処理中にエラーが発生した場合は、トラブルシューティングのためにエラー ファイルをダウンロードします。 詳細については、「[View error logs during data copy to Data Box (Data Box へのデータのコピー中のエラー ログを表示する)](data-box-logs.md#view-error-log-during-data-copy)」を参照してください。 データのコピー中のエラーの詳細な一覧については、[Data Box の問題のトラブルシューティング](data-box-troubleshoot.md)に関するページを参照してください。
+コピー処理中にエラーが発生すると、通知が表示されます。
+
+![[接続とコピー] でエラーをダウンロードして表示する](media/data-box-deploy-copy-data/view-errors-1.png)
+
+**[問題の一覧をダウンロードする]** を選択します。
+
+![[接続とコピー] でエラーをダウンロードして表示する](media/data-box-deploy-copy-data/view-errors-2.png)
+
+一覧を開いてエラーの詳細を表示し、解決用 URL を選択して推奨される解決方法を確認します。
+
+![[接続とコピー] でエラーをダウンロードして表示する](media/data-box-deploy-copy-data/view-errors-3.png)
+
+詳細については、「[View error logs during data copy to Data Box (Data Box へのデータのコピー中のエラー ログを表示する)](data-box-logs.md#view-error-log-during-data-copy)」を参照してください。 データのコピー中のエラーの詳細な一覧については、[Data Box の問題のトラブルシューティング](data-box-troubleshoot.md)に関するページを参照してください。
 
 データの整合性を保証するため、データがコピーされるときにインラインでチェックサムが計算されます。 コピーが完了したら、デバイスで使用済み領域と空き領域を確認します。
-    
-   ![ダッシュボードで空き領域と使用済み領域を確認する](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
+   ![ダッシュボードで空き領域と使用済み領域を確認する](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
 ## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Data Box に関する次のようなトピックについて説明しました。
 
 > [!div class="checklist"]
+>
 > * 前提条件
 > * Data Box に接続する
 > * Data Box にデータをコピーする
-
 
 次のチュートリアルに進み、お客様の Data Box を Microsoft に返送する方法を学習してください。
 
 > [!div class="nextstepaction"]
 > [Azure Data Box を Microsoft に発送する](./data-box-deploy-picked-up.md)
-

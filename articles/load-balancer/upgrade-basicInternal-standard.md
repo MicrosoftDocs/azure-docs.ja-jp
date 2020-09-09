@@ -4,18 +4,18 @@ description: この記事では、Basic SKU から Standard SKU に Azure Intern
 services: load-balancer
 author: irenehua
 ms.service: load-balancer
-ms.topic: article
-ms.date: 02/23/2020
+ms.topic: how-to
+ms.date: 08/07/2020
 ms.author: irenehua
-ms.openlocfilehash: 239dc0f3133a5adf59a23d333131c91d3a655597
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10a0c186bb1a0d9f974d485e7d2d1d7326bd849c
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770386"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033157"
 ---
 # <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>Azure Internal Load Balancer のアップグレード - 送信接続は不要
-[Azure Standard Load Balancer](load-balancer-overview.md) では、豊富な機能とゾーンの冗長性による高可用性が提供されます。 Load Balancer SKU の詳細については、[比較表](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)を参照してください。
+[Azure Standard Load Balancer](load-balancer-overview.md) では、豊富な機能とゾーンの冗長性による高可用性が提供されます。 Load Balancer SKU の詳細については、[比較表](https://docs.microsoft.com/azure/load-balancer/skus#skus)を参照してください。
 
 この記事では、Basic Load Balancer と同じ構成で Standard Load Balancer を作成し、Basic Load Balancer から Standard Load Balancer にトラフィックを移行する PowerShell スクリプトについて説明します。
 
@@ -31,12 +31,24 @@ ms.locfileid: "81770386"
 ### <a name="caveatslimitations"></a>注意事項と制限事項
 
 * スクリプトでは、送信接続の必要がない Internal Load Balancer のアップグレードのみをサポートしています。 一部の VM に[送信接続](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)が必要な場合は、この[ページ](upgrade-InternalBasic-To-PublicStandard.md)の説明をご覧ください。 
+* Basic Load Balancer は、バックエンド VM および NIC と同じリソース グループに存在する必要があります。
 * Standard Load Balancer が別のリージョンに作成されている場合、以前のリージョンに存在する VM を新しく作成した Standard Load Balancer に関連付けることはできません。 この制限を回避するには、必ず新しいリージョンに新しい VM を作成してください。
 * Load Balancer にフロントエンド IP 構成またはバックエンド プールがない場合は、スクリプトの実行中にエラーが発生する可能性があります。 それらが空でないことを確認してください。
 
+## <a name="change-ip-allocation-method-to-static-for-frontend-ip-configuration-ignore-this-step-if-its-already-static"></a>フロントエンド IP 構成の IP 割り当て方法を静的に変更します (既に静的である場合は、この手順を無視します)
+
+1. 左側のメニューで **[すべてのサービス]** 、 **[すべてのリソース]** の順に選択し、リソースの一覧でお使いの Basic Load Balancer を選択します。
+
+2. **[設定]** で **[フロントエンド IP 構成]** を選択し、1 つ目のフロントエンド IP 構成を選択します。 
+
+3. **[割り当て]** で **[静的]** を選択します
+
+4. Basic Load Balancer のすべてのフロントエンド IP 構成について、ステップ 3 を繰り返します。
+
+
 ## <a name="download-the-script"></a>スクリプトのダウンロード
 
-[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureILBUpgrade/2.0)から移行スクリプトをダウンロードします。
+[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureILBUpgrade/4.0)から移行スクリプトをダウンロードします。
 ## <a name="use-the-script"></a>スクリプトの使用
 
 ローカルの PowerShell 環境のセットアップと設定に応じて、次の 2 つのオプションがあります。

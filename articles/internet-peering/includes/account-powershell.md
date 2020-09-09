@@ -50,4 +50,4 @@ ms.locfileid: "81678468"
 
 > [!NOTE]
 > リソース グループの場所は、ピアリングを設定するために選択する場所とは関係ありません。
-[https://github.com/mysqljs/mysql/](&nbsp;)
+&nbsp;

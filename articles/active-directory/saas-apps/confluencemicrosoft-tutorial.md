@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Confluence SAML SSO by Microsoft の統合 | Microsoft Docs
 description: Azure Active Directory と Confluence SAML SSO by Microsoft の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 1ad1cf90-52bc-4b71-ab2b-9a5a1280fb2d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6ea52474f3b352fabf19050f20012438e9d0c19
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d629e5d572f1e8fff05104a4a5004b7aaa8c7a0d
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76120592"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892951"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Confluence SAML SSO by Microsoft の統合
 
@@ -53,6 +48,9 @@ Confluence SAML SSO by Microsoft と Azure AD の統合を構成するには、�
 > [!NOTE]
 > このチュートリアルの手順をテストする場合、Confluence の運用環境を使用しないことをお勧めします。 最初にアプリケーションの開発環境またはステージング環境で統合をテストし、そのあとに運用環境を使用してください。
 
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
+
 開始するには、次が必要です。
 
 * 必要な場合を除き、運用環境は使用しないでください。
@@ -65,7 +63,7 @@ Confluence SAML SSO by Microsoft と Azure AD の統合を構成するには、�
 
 - Confluence: 5.0 から 5.10
 - Confluence: 6.0.1 から 6.15.9
-- Confluence: 7.0.1 から 7.1.0
+- Confluence: 7.0.1 から 7.7.2
 
 > [!NOTE]
 > Confluence プラグインは、Ubuntu Version 16.04 でも動作することに注意してください

@@ -1,24 +1,14 @@
 ---
 title: Azure Service Bus プリフェッチ メッセージ | Microsoft Docs
 description: Azure Service Bus メッセージをプリフェッチすることでパフォーマンスを向上します。 メッセージは、アプリケーションが要求する前に、ローカルですぐに取得できるようになっています。
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 80717ab940d27e9bf108b3740309bcd7d71668fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.openlocfilehash: 05e23b0590f0c04171efda8fb561b4c2664ed096
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76760659"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341054"
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>Azure Service Bus メッセージのプリフェッチ
 

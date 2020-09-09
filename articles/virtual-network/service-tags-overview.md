@@ -4,21 +4,21 @@ titlesuffix: Azure Virtual Network
 description: サービス タグについて確認します。 サービス タグを使用すると、セキュリティ規則の作成の複雑さを最小限に抑えることができます。
 services: virtual-network
 documentationcenter: na
-author: jispar
+author: allegradomel
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
-ms.author: jispar
+ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: bfeded391f582ab0ac6f3c15d2086789228f1494
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: fd44c07ea44e7487a22b0de67737dcc135c813b6
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660589"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038040"
 ---
 # <a name="virtual-network-service-tags"></a>仮想ネットワーク サービス タグ
 <a name="network-service-tags"></a>
@@ -62,7 +62,7 @@ ms.locfileid: "83660589"
 | **AzureDataExplorerManagement** | Azure Data Explorer 管理。 | 受信 | いいえ | いいえ |
 | **AzureDataLake** | Azure Data Lake Storage Gen1。 | 送信 | いいえ | はい |
 | **AzureDevSpaces** | Azure Dev Spaces。 | 送信 | いいえ | いいえ |
-| **AzureEventGrid** | Azure Event Grid。 <br/><br/>*注:* このタグは、米国中南部、米国東部、米国東部 2、米国西部 2、および米国中部の Azure Event Grid エンドポイントのみを対象としています。 | 両方 | いいえ | いいえ |
+| **AzureEventGrid** | Azure Event Grid。 | 両方 | いいえ | いいえ |
 | **AzureFrontDoor.Frontend** <br/> **AzureFrontDoor.Backend** <br/> **AzureFrontDoor.FirstParty**  | Azure Front Door。 | 両方 | いいえ | いいえ |
 | **AzureInformationProtection** | Azure Information Protection。<br/><br/>*注:* このタグは、**AzureActiveDirectory**、**AzureFrontDoor.Frontend**、および **AzureFrontDoor.FirstParty** タグに依存します。 | 送信 | いいえ | いいえ |
 | **AzureIoTHub** | Azure IoT Hub。 | 送信 | いいえ | いいえ |
@@ -96,7 +96,7 @@ ms.locfileid: "83660589"
 | **PowerQueryOnline** | Power Query Online。 | 両方 | いいえ | いいえ |
 | **ServiceBus** | Premium サービス レベルを使用する Azure Service Bus トラフィック。 | 送信 | はい | はい |
 | **ServiceFabric** | Azure Service Fabric。<br/><br/>*注:* このタグは、リージョンごとのコントロール プレーンの Service Fabric サービス エンドポイントを表します。 これにより、顧客は VNET から Service Fabric クラスターに対する管理操作を実行できるようになります (エンドポイントの例: https://westus.servicefabric.azure.com) | 両方 | いいえ | いいえ |
-| **Sql** | Azure SQL Database、Azure Database for MySQL、Azure Database for PostgreSQL、および Azure SQL Data Warehouse。<br/><br/>*注:* このタグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure SQL Database サービスを表しますが、特定の SQL データベースや SQL サーバーは表しません。 このタグは、SQL マネージド インスタンスには適用されません。 | 送信 | はい | はい |
+| **Sql** | Azure SQL Database、Azure Database for MySQL、Azure Database for PostgreSQL、および Azure SQL Data Warehouse。<br/><br/>*注:* このタグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure SQL Database サービスを表しますが、特定の SQL データベースや SQL サーバーは表しません。 このタグは、SQL Managed Instance には適用されません。 | 送信 | はい | はい |
 | **SqlManagement** | SQL 専用デプロイのための管理トラフィック。 | 両方 | いいえ | はい |
 | **Storage** | Azure Storage です。 <br/><br/>*注:* このタグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure Storage サービスを表しますが、特定の Azure Storage アカウントは表しません。 | 送信 | はい | はい |
 | **StorageSyncService** | ストレージ同期サービス。 | 両方 | いいえ | いいえ |
@@ -139,6 +139,8 @@ ms.locfileid: "83660589"
 - [Azure US Government](https://www.microsoft.com/download/details.aspx?id=57063)  
 - [Azure China](https://www.microsoft.com/download/details.aspx?id=57062) 
 - [Azure Germany](https://www.microsoft.com/download/details.aspx?id=57064)   
+
+これらのファイル内の IP アドレス範囲は CIDR 表記です。 
 
 > [!NOTE]
 >[Azure Public](https://www.microsoft.com/download/details.aspx?id=41653)、[Azure China](https://www.microsoft.com/download/details.aspx?id=42064)、および [Azure Germany](https://www.microsoft.com/download/details.aspx?id=54770) については、この情報のサブセットが XML ファイルで公開されています。 これらの XML ダウンロードは、2020 年 6 月 30 日に非推奨となり、その後は使用できなくなります。 前のセクションの説明に従って、Discovery API または JSON ファイルのダウンロードの使用に移行してください。

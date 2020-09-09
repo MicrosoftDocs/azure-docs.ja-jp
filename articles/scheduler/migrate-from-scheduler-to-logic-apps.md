@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 02/29/2020
-ms.openlocfilehash: 90c3cc2e096b9b58465987bc53f718c5d06c6203
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd61ac9751010d57cbf5b742a5081beb3ac560e9
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78899081"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826062"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Azure Scheduler ジョブを Azure Logic Apps に移行する
 
@@ -239,7 +239,7 @@ Azure サブスクリプションに有料サポート プランがある場合�
 
 **コミュニティ**
 
-* [Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)
+* [Azure Logic Apps に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-scheduler)
 
 ## <a name="next-steps"></a>次のステップ

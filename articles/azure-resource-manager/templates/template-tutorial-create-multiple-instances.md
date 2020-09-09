@@ -5,12 +5,13 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b62cca48323d4e12a92c89d64ab67bf5b783c36f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 5e662380c57d20a2e372669dce1bb4c44e75b067
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82183835"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496323"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-arm-templates"></a>チュートリアル:ARM テンプレートを使用した複数のリソース インスタンスの作成
 
@@ -31,7 +32,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-* Visual Studio Code と Resource Manager ツール拡張機能。 [Visual Studio Code を使って ARM テンプレートを作成する方法](use-vs-code-to-create-template.md)に関するページを参照してください。
+* Visual Studio Code と Resource Manager ツール拡張機能。 「[クイック スタート:Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
 
 ## <a name="open-a-quickstart-template"></a>クイック スタート テンプレートを開く
 
@@ -44,7 +45,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
 3. **[開く]** を選択して、ファイルを開きます。
-4. テンプレートで "Microsoft.Storage/storageAccounts" リソースが定義されています。 テンプレートを[テンプレート リファレンス](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)と比較します。 カスタマイズする前にテンプレートの基本をある程度理解することは役に立ちます。
+4. テンプレートで "Microsoft.Storage/storageAccounts" リソースが定義されています。 テンプレートを[テンプレート リファレンス](/azure/templates/Microsoft.Storage/storageAccounts)と比較します。 カスタマイズする前にテンプレートの基本をある程度理解することは役に立ちます。
 5. **[ファイル]** > **[名前を付けて保存]** を選択し、ファイルを **azuredeploy.json** としてご自身のローカル コンピューターに保存します。
 
 ## <a name="edit-the-template"></a>テンプレートの編集

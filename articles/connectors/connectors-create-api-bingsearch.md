@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: e547ae59f7b3260f46756825bca2bef1c10bcc97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 52bf42434640dc965999895549b4fa12a139dcce
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75665889"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284066"
 ---
 # <a name="find-results-in-bing-search-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Bing Search の結果を検索する
 
@@ -21,7 +21,7 @@ ms.locfileid: "75665889"
 たとえば、検索条件に基づいてニュース項目を検索し、その項目が Twitter のフィードにツイートとして投稿されるように指定できます。
 
 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」と「[クイックスタート: 初めてのロジック アプリ ワークフローの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)」を参照してください。
-コネクタ固有の技術情報については、[Bing Search コネクタ リファレンス](https://docs.microsoft.com/connectors/bingsearch/)に関する記事を参照してください。
+コネクタ固有の技術情報については、[Bing Search コネクタ リファレンス](/connectors/bingsearch/)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -168,3 +168,4 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 ## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。
+

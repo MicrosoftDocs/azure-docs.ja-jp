@@ -5,15 +5,15 @@ services: iot-central
 author: dominicbetts
 ms.service: iot-central
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 07/07/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 9717c76b42a63479c77f862057bfb141954eacff
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b32465091f82fec0aeae288ee9bfd5540bfe8b9d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673409"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002048"
 ---
 ## <a name="create-a-device-template"></a>デバイス テンプレートを作成する
 
@@ -21,7 +21,7 @@ ms.locfileid: "83673409"
 
 [環境センサー機能モデル](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/9004219bff1e958b7cd6ff2a52209f4b7ae19396/samples/EnvironmentalSensorInline.capabilitymodel.json)の JSON ファイルをダウンロードして `environmental-sensor` フォルダーに保存します。
 
-ダウンロードした `EnvironmentalSensorInline.capabilitymodel.json` ファイル内で 2 か所出現する `{YOUR_COMPANY_NAME_HERE}` を、テキスト エディターを使用して実際の会社名に置き換えます。
+ダウンロードした `EnvironmentalSensorInline.capabilitymodel.json` ファイル内で 2 か所出現する `{YOUR_COMPANY_NAME_HERE}` を、テキスト エディターを使用して実際の会社名に置き換えます。 英数字 (a から z、A から Z、0 から 9) とアンダースコアのみを使用してください。
 
 お使いの Azure IoT Central アプリケーションで、`EnvironmentalSensorInline.capabilitymodel.json` デバイス機能モデル ファイルをインポートして、"*環境センサー*" というデバイス テンプレートを作成します。
 
@@ -36,10 +36,10 @@ ms.locfileid: "83673409"
 | プロパティ (書き込み可能) | Brightness Level (明るさのレベル) | デバイスのライトに使用する明るさのレベル。 1 (高)、2 (中)、3 (低) を指定できます。 |
 | テレメトリ | 気温 | デバイスによって検出された現在の温度。 |
 | テレメトリ | 湿度    | デバイスによって検出された現在の湿度。 |
-| command | blink          | 指定された時間間隔でデバイスの LED の点滅を開始します。 |
-| command | turnon         | デバイスの LED をオンにします。 |
-| command | turnoff        | デバイスの LED をオフにします。 |
-| command | rundiagnostics | この非同期コマンドは、デバイスで実行される診断を開始します。 |
+| コマンド | blink          | 指定された時間間隔でデバイスの LED の点滅を開始します。 |
+| コマンド | turnon         | デバイスの LED をオンにします。 |
+| コマンド | turnoff        | デバイスの LED をオフにします。 |
+| コマンド | rundiagnostics | この非同期コマンドは、デバイスで実行される診断を開始します。 |
 
 IoT Central アプリケーションにおける **[デバイスの状態]** プロパティの表示方法をカスタマイズするには、デバイス テンプレートの **[カスタマイズ]** を選択します。 **[デバイスの状態]** エントリを展開し、 **[True の名前]** として「_Online_」、 **[False の名前]** として「_Offline_」を入力します。 変更を保存します。
 
@@ -79,12 +79,11 @@ Azure IoT Central アプリケーションで、前のセクションで作成�
 
 1. **[デバイス]** ページで、 **[環境センサー]** デバイス テンプレートを選択します。
 
-    > [!TIP]
-    > **[+ 新規]** を選択する前に必ず、使用するテンプレートを選択してください。そうしないと、関連付けられていないデバイスが作成されます。
-
 1. **[+新規]** を選択します。
 
-1. **[Simulated]\(シミュレート済み\)** が **[Off]\(オフ\)** になっていることを確認します。 **[作成]** を選択します。
+1. **[Create a new device]\(新しいデバイスの作成\)** ダイアログで、 **[環境センサー]** がテンプレート型であり、 **[Simulate this device?]\(このデバイスをシミュレートしますか?\)** が **[いいえ]** に設定されていることを確認します。
+
+1. **[作成]** を選択します。
 
 デバイス名をクリックし、 **[接続]** を選択します。 **[デバイスの接続]** ページで、デバイスの接続情報を書き留めておきます ( **[ID スコープ]** 、 **[デバイス ID]** 、 **[プライマリ キー]** )。 デバイス コードを作成する際に、これらの値が必要になります。
 

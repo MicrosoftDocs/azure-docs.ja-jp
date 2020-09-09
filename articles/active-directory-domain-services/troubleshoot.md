@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 01/21/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 84efe294533186fdcf2e0a3356a7d6b01eccaf5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7642a32ce69dbbbb5ddebbe56b74f3202b2e6422
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654405"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039570"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services の一般的なエラーとトラブルシューティングの手順
 
@@ -45,7 +45,7 @@ Azure AD DS の有効化で問題が発生した場合は、以下の一般的�
 
 同じ、またはピアリングされた仮想ネットワーク上に同じドメイン名の既存の AD DS 環境が存在しないことを確認します。 たとえば、Azure VM 上で実行されている *aaddscontoso.com* という名前の AD DS ドメインがあるとします。 その仮想ネットワーク上で *aaddscontoso.com* という同じ名前を持つ Azure AD DS のマネージド ドメインを有効にしようとすると、要求した操作は失敗します。
 
-このエラーは、仮想ネットワーク上のドメイン名での名前の競合が原因です。 DNS 参照では、既存の AD DS 環境が、要求されたドメイン名に対して応答するかどうかが確認されます。 このエラーを解決するには、別の名前を使用して Azure AD DS マネージド ドメインを設定するか、既存の AD DS ドメインのプロビジョニングを解除してから、Azure AD DS の有効化を再試行してください。
+このエラーは、仮想ネットワーク上のドメイン名での名前の競合が原因です。 DNS 参照では、既存の AD DS 環境が、要求されたドメイン名に対して応答するかどうかが確認されます。 このエラーを解決するには、別の名前を使用してマネージド ドメインを設定するか、既存の AD DS ドメインのプロビジョニングを解除してから、Azure AD DS の有効化を再試行してください。
 
 ### <a name="inadequate-permissions"></a>不適切なアクセス許可
 
@@ -126,7 +126,7 @@ if ($sp -ne $null)
 
 ## <a name="users-are-unable-to-sign-in-to-the-azure-ad-domain-services-managed-domain"></a>ユーザーが Azure AD Domain Services のマネージド ドメインにサインインできない
 
-Azure AD テナント内の 1 人以上のユーザーが Azure AD DS マネージド ドメインにサインインできない場合は、次のトラブルシューティングの手順を実行します。
+Azure AD テナント内の 1 人以上のユーザーがマネージド ドメインにサインインできない場合は、次のトラブルシューティング手順を実行します。
 
 * **資格情報の形式** - UPN 形式を使用して資格情報を指定してみます (例: `dee@aaddscontoso.onmicrosoft.com`)。 UPN 形式は、Azure AD DS で資格情報を指定するための推奨される方法です。 この UPN が Azure AD で正しく構成されていることを確認してください。
 
@@ -137,35 +137,35 @@ Azure AD テナント内の 1 人以上のユーザーが Azure AD DS マネー�
     
       * [Azure AD Connect の最新の推奨リリース](https://www.microsoft.com/download/details.aspx?id=47594)をデプロイまたは更新している。
       * [完全同期を実行する][hybrid-phs]ように Azure AD Connect を構成している。
-      * ディレクトリのサイズによっては、ユーザー アカウントと資格情報ハッシュが Azure AD DS で使用できるようになるまでに時間がかかる場合があります。 十分に時間を空けてから、マネージド ドメインに対して認証を試行してください。
-      * 前の手順を確認しても問題が解決しない場合は、"*Microsoft Azure AD Sync サービス*" を再起動してみてください。 Azure AD Connect サーバーから、コマンドプロンプトを開き、次のコマンドを実行します。
+      * ディレクトリのサイズによっては、ユーザー アカウントと資格情報ハッシュがマネージド ドメインで使用できるようになるまでに時間がかかる場合があります。 十分に時間を空けてから、マネージド ドメインに対して認証を試行してください。
+      * 前の手順を確認しても問題が解決しない場合は、"*Microsoft Azure AD Sync サービス*" を再起動してみてください。 Azure AD Connect サーバーから、コマンド プロンプトを開き、次のコマンドを実行します。
     
         ```console
         net stop 'Microsoft Azure AD Sync'
         net start 'Microsoft Azure AD Sync'
         ```
 
-    * **クラウド専用アカウント**: 影響を受けているユーザー アカウントがクラウド専用のユーザー アカウントである場合は、[Azure AD DS を有効にした後でユーザーが自分のパスワードを変更した][cloud-only-passwords]ことを確認します。 このパスワードのリセットによって、Azure AD Domain Services に必要な資格情報ハッシュが生成されます。
+    * **クラウド専用アカウント**: 影響を受けているユーザー アカウントがクラウド専用のユーザー アカウントである場合は、[Azure AD DS を有効にした後でユーザーが自分のパスワードを変更した][cloud-only-passwords]ことを確認します。 このパスワードのリセットによって、生成されるマネージド ドメインに必要な資格情報ハッシュが生成されます。
 
 * **ユーザー アカウントがアクティブであることを確認する**:既定では、マネージド ドメインで 2 分以内に無効なパスワードの試行が 5 回行われると、ユーザーのアカウントは、30 分間ロックアウトされます。 アカウントがロックアウトされている間、ユーザーはサインインできません。30 分後、ユーザー アカウントは、自動的にロック解除されます。
-  * Azure AD DS マネージド ドメインでの無効なパスワードの試行によって、Azure AD のユーザー アカウントがロックアウトされることはありません。 このユーザー アカウントは、マネージド ドメイン内だけでロックアウトされます。 [マネージド VM][management-vm] を使用して、Azure AD ではなく "*Active Directory 管理コンソール (ADAC)* " で、ユーザー アカウントの状態を確認します。
+  * マネージド ドメインでの無効なパスワードの試行によっては、Azure AD のユーザー アカウントはロックアウトされません。 このユーザー アカウントは、マネージド ドメイン内だけでロックアウトされます。 [マネージド VM][management-vm] を使用して、Azure AD ではなく "*Active Directory 管理コンソール (ADAC)* " で、ユーザー アカウントの状態を確認します。
   * 既定のロックアウトのしきい値と期間を変更するために[細かい設定が可能なパスワード ポリシーを構成する][password-policy]こともできます。
 
 * **外部アカウント:** 影響を受けているユーザー アカウントが Azure AD テナントの外部アカウントでないことを確認します。 外部アカウントの例として、`dee@live.com` のような Microsoft アカウントや、外部の Azure AD ディレクトリのユーザー アカウントなどがあります。 Azure AD DS には外部ユーザー アカウントの資格情報が格納されないため、それらのアカウントはマネージド ドメインにサインインできません。
 
 ## <a name="there-are-one-or-more-alerts-on-your-managed-domain"></a>マネージド ドメインに 1 つまたは複数のアラートがある
 
-Azure AD DS マネージド ドメイン上にアクティブなアラートがある場合は、認証プロセスが正常に機能しなくなる可能性があります。
+マネージド ドメイン上にアクティブなアラートがある場合は、認証プロセスが正常に機能しなくなる可能性があります。
 
-アクティブなアラートがあるかどうかを調べるには、[Azure AD DS マネージド ドメインの正常性状態を確認][check-health]します。 アラートが表示されている場合は、[それらをトラブルシューティングして解決][troubleshoot-alerts]します。
+アクティブなアラートがあるかどうかを調べるには、[マネージド ドメインの正常性状態を確認][check-health]します。 アラートが表示されている場合は、[それらをトラブルシューティングして解決][troubleshoot-alerts]します。
 
 ## <a name="users-removed-from-your-azure-ad-tenant-are-not-removed-from-your-managed-domain"></a>Azure AD テナントから削除されたユーザーがマネージド ドメインから削除されない
 
-Azure AD では、ユーザー オブジェクトが誤って削除されないように保護されています。 Azure AD テナントからユーザー アカウントを削除すると、対応するユーザー オブジェクトはごみ箱に移動されます。 この削除操作が Azure AD DS マネージド ドメインに同期されると、対応するユーザー アカウントは無効としてマークされます。 この機能は、ユーザー アカウントの復旧 (削除取り消し) に役立ちます。
+Azure AD では、ユーザー オブジェクトが誤って削除されないように保護されています。 Azure AD テナントからユーザー アカウントを削除すると、対応するユーザー オブジェクトはごみ箱に移動されます。 この削除操作がマネージド ドメインに同期されると、対応するユーザー アカウントは無効としてマークされます。 この機能は、ユーザー アカウントの復旧 (削除取り消し) に役立ちます。
 
-このユーザー アカウントは、Azure AD ディレクトリ内に同じ UPN のユーザー アカウントを作成し直した場合でも、Azure AD DS マネージド ドメイン内では無効な状態のまま残ります。 Azure AD DS マネージド ドメインからこのユーザー アカウントを削除するには、Azure AD テナントからユーザーを強制的に削除する必要があります。
+このユーザー アカウントは、Azure AD ディレクトリ内に同じ UPN のユーザー アカウントを作成し直した場合でも、マネージド ドメイン内に無効な状態のまま残ります。 マネージド ドメインからこのユーザー アカウントを削除するには、Azure AD テナントから強制的に削除する必要があります。
 
-Azure AD DS マネージド ドメインからユーザー アカウントを完全に削除するには、`-RemoveFromRecycleBin` パラメーターを指定した [Remove-MsolUser][Remove-MsolUser] PowerShell コマンドレットを使用して、Azure AD テナントからユーザーを完全に削除します。
+マネージド ドメインからユーザー アカウントを完全に削除するには、`-RemoveFromRecycleBin` パラメーターを指定した [Remove-MsolUser][Remove-MsolUser] PowerShell コマンドレットを使用して、Azure AD テナントからユーザーを完全に削除します。
 
 ## <a name="next-steps"></a>次のステップ
 

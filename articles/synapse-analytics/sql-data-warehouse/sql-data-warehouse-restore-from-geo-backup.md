@@ -6,17 +6,17 @@ author: anumjs
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7e0980a9142dc966916d5a4df898ea53b0ddeae5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c8d78c164cefbab03d9d3fa783c75ded9773d38
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80745080"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075821"
 ---
 # <a name="geo-restore-for-sql-pool"></a>SQL プールの geo リストア
 
@@ -26,7 +26,7 @@ ms.locfileid: "80745080"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-**DTU 容量を確認します。** 各 SQL プールは、既定の DTU クォータが割り当てられている SQL サーバー (例: myserver.database.windows.net) でホストされます。 データベースを復元するための十分な DTU クォータが SQL Server に残っていることを確認する必要があります。 必要な DTU を計算する方法と DTU を要求する方法については、 [DTU クォータの変更の要求](sql-data-warehouse-get-started-create-support-ticket.md)に関するトピックをご覧ください。
+**DTU 容量を確認します。** 各 SQL プールは、既定の DTU クォータが割り当てられている[論理 SQL サーバー](../../azure-sql/database/logical-servers.md) (例: myserver.database.windows.net) でホストされます。 データベースを復元するための十分な DTU クォータが SQL Server に残っていることを確認する必要があります。 必要な DTU を計算する方法と DTU を要求する方法については、 [DTU クォータの変更の要求](sql-data-warehouse-get-started-create-support-ticket.md)に関するトピックをご覧ください。
 
 ## <a name="restore-from-an-azure-geographical-region-through-powershell"></a>PowerShell を使用して Azure 地理的リージョンから復元する
 
@@ -36,7 +36,7 @@ Geo バックアップから復元するには、[Get-AzSqlDatabaseGeoBackup](/p
 > Gen2 への geo リストアを行うことができます。 そのためには、省略可能なパラメーターとして Gen2 の ServiceObjectiveName (例: DW1000**c**) を指定します。
 >
 
-1. 開始する前に、必ず [Azure PowerShell をインストール](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)してください。
+1. 開始する前に、必ず [Azure PowerShell をインストール](/powershell/azure/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)してください。
 2. PowerShell を開きます。
 3. Azure アカウントに接続して、アカウントに関連付けられているすべてのサブスクリプションを一覧表示します。
 4. 復元するデータ ウェアハウスを含むサブスクリプションを選択します。
@@ -49,7 +49,7 @@ Geo バックアップから復元するには、[Get-AzSqlDatabaseGeoBackup](/p
 $SubscriptionName="<YourSubscriptionName>"
 $ResourceGroupName="<YourResourceGroupName>"
 $ServerName="<YourServerNameWithoutURLSuffixSeeNote>"  # Without database.windows.net
-$TargetResourceGroupName="<YourTargetResourceGroupName>" # Restore to a different logical server.
+$TargetResourceGroupName="<YourTargetResourceGroupName>" # Restore to a different server.
 $TargetServerName="<YourtargetServerNameWithoutURLSuffixSeeNote>"  
 $DatabaseName="<YourDatabaseName>"
 $NewDatabaseName="<YourDatabaseName>"
@@ -81,7 +81,7 @@ $GeoRestoredDatabase.status
 
    ![新しい DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
 
-3. **[データベース]** をクリックしてから、**Azure Synapse Analytics (旧称 SQL DW)** をクリックします。
+3. **[データベース]** をクリックしてから、 **[Azure Synapse Analytics (以前の SQL DW)]** をクリックします。
 
    ![新しい DW 2](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new-02.png)
 

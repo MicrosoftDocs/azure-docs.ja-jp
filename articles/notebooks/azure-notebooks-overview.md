@@ -3,22 +3,22 @@ title: Azure Notebooks プレビューの概要
 description: 無料の Azure Notebooks プレビューサービスを使用して、クラウド上で Jupyter Notebook を実行します。セットアップも構成も不要です。
 ms.topic: overview
 ms.date: 04/05/2019
-ms.openlocfilehash: bd2355bdefcedca5026a25915dc1da55fdc33a36
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: d229e48e5c49a9a672c533fb24231e9329e524c0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75646332"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85831405"
 ---
 # <a name="overview-of-azure-notebooks-preview"></a>Azure Notebooks プレビューの概要
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Azure Notebooks は、インストールせずにクラウド上で Jupyter ノートブックを作成、実行するための無料でホストされているサービスです。 [Jupyter](https://jupyter.org/) (旧称 IPython) は、マークダウン テキスト、実行可能コード、永続データ、グラフィックス、およびグラフを組み合わせて "*ノートブック*" (画像提供: jupyter.org) と呼ばれる 1 つの共有可能なキャンバスを簡単に作成できるオープン ソース プロジェクトです。
 
 [![Jupyter Notebooks の例](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
 コード、グラフィックス、および説明テキストのこの強力な組み合わせにより、Jupyter は、データ サイエンス教育、データのクリーニングと変換、数値シミュレーション、統計モデリング、機械学習モデルの開発などを行う多数のユーザーの間で一般に使用されるようになっています。
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="hassle-free-experience"></a>手間のかからないエクスペリエンス
 
@@ -65,7 +65,7 @@ Notebook サーバーは、最大で 8 時間存在することが保証され�
 
 Azure Notebooks には、基本ディストリビューションの他に、追加のパッケージも含まれています。 たとえば、Python カーネルには、numpy、pandas、scikit-learn、matplotlib、および bokeh ライブラリが含まれています。
 
-プロジェクトをカスタマイズして、そのプロジェクトに含まれるすべてのノートブック用の環境を作成することもできます。 詳細については、「[Quickstart: Create a project with a custom environment](quickstart-create-jupyter-notebook-project-environment.md)」(クイックスタート: カスタム環境を使用するプロジェクトを作成する) を参照してください。
+プロジェクトをカスタマイズして、そのプロジェクトに含まれるすべてのノートブック用の環境を作成することもできます。 詳細については、「[クイック スタート: カスタム環境でのプロジェクトの作成](quickstart-create-jupyter-notebook-project-environment.md)」を参照してください。
 
 基本ディストリビューションに加え、Azure Notebooks には、データ サイエンティストにとって有用な多くのパッケージが事前インストールされています。 各言語の一般的なプロセスを使用して、ご自分のパッケージをインストールすることもできます。
 
@@ -74,7 +74,7 @@ Azure Notebooks には、基本ディストリビューションの他に、追�
 Azure Notebooks では、次の Jupyter の拡張機能が事前に構成されています。
 
 - [RISE](https://github.com/damianavila/RISE): Jupyter のスライド ショー拡張機能 (live_reveal とも呼ばれます)。 詳細については、「[Run a notebook slideshow](present-jupyter-notebooks-slideshow.md)」(ノートブックのスライドショーを実行する) を参照してください。
-- [JupyterLab](https://github.com/jupyterlab/jupyterlab): Jupyter ノートブックを操作するための完全なコンピューティング環境。
+- [JupyterLab](https://github.com/jupyterlab/jupyterlab): Jupyter Notebook を操作するための完全なコンピューティング環境。
 - [Altair](https://github.com/ellisonbg/altair): Python 用の宣言型統計可視化ライブラリです。
 - [BQPlot](https://github.com/bloomberg/bqplot): Jupyter Notebook 用の対話型プロット フレームワーク。
 - [IpyWidgets](https://github.com/jupyter-widgets/ipywidgets): Jupyter Notebook 用の対話型 HTML ウィジェット。

@@ -3,46 +3,75 @@ title: DropDown UI 要素
 description: Azure Portal の Microsoft.Common.DropDown UI 要素について説明します。 管理対象アプリケーションをデプロイするとき、利用できるオプションからユーザーが選択するために使用します。
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 06/27/2018
+ms.date: 07/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: a09f9695c18f368a585dbcd0d1e654dee4adfa03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cc50e49d4bc59235a147d114d86ecdff95dca797
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75649791"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474344"
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Microsoft.Common.DropDown UI 要素
 
-ドロップダウン リストを備えた選択コントロールです。
+ドロップダウン リストを備えた選択コントロールです。 1 つの項目のみ、または複数の項目の選択を許可できます。 必要に応じて、項目に説明を含めることもできます。
 
 ## <a name="ui-sample"></a>UI サンプル
 
-![Microsoft.Common.DropDown](./media/managed-application-elements/microsoft.common.dropdown.png)
+DropDown 要素には、ポータルでの外観を決定するさまざまなオプションがあります。
+
+1 つの項目のみの選択を許可した場合、コントロールは次のように表示されます。
+
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-1.png" alt-text="Microsoft.Common.DropDown の単一選択":::
+
+説明が含まれている場合、コントロールは次のように表示されます。
+
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-2.png" alt-text="Microsoft.Common.DropDown の説明付きの単一選択":::
+
+複数選択が有効になっている場合、コントロールにより **[すべて選択]** オプションと複数の項目を選択するためのチェックボックスが追加されます。
+
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-3.png" alt-text="Microsoft.Common.DropDown の複数選択":::
+
+複数選択を有効にしながら説明を含めることができます。
+
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-4.png" alt-text="Microsoft.Common.DropDown の説明付きの複数選択":::
+
+フィルター処理が有効になっている場合、コントロールには、フィルター処理の値を追加するためのテキスト ボックスが含まれます。
+
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-5.png" alt-text="Microsoft.Common.DropDown の説明付きの複数選択":::
 
 ## <a name="schema"></a>スキーマ
 
 ```json
 {
-  "name": "element1",
-  "type": "Microsoft.Common.DropDown",
-  "label": "Example drop down",
-  "defaultValue": "Value two",
-  "toolTip": "",
-  "constraints": {
-    "allowedValues": [
-      {
-        "label": "Value one",
-        "value": "one"
-      },
-      {
-        "label": "Value two",
-        "value": "two"
-      }
-    ],
-    "required": true
-  },
-  "visible": true
+    "name": "element1",
+    "type": "Microsoft.Common.DropDown",
+    "label": "Example drop down",
+    "placeholder": "",
+    "defaultValue": "Value two",
+    "toolTip": "",
+    "multiselect": true,  
+    "selectAll": true,  
+    "filter": true,  
+    "filterPlaceholder": "Filter items ...",  
+    "multiLine": true,  
+    "defaultDescription": "A value for selection",  
+    "constraints": {
+        "allowedValues": [
+            {
+                "label": "Value one",
+                "description": "The value to select for option 1.",
+                "value": "one"
+            },
+            {
+                "label": "Value two",
+                "description": "The value to select for option 2.",
+                "value": "two"
+            }
+        ],
+        "required": true
+    },
+    "visible": true
 }
 ```
 
@@ -54,10 +83,15 @@ ms.locfileid: "75649791"
 
 ## <a name="remarks"></a>解説
 
+- ユーザーが複数の項目を選択できるかどうかを指定するには、`multiselect` を使用します。
+- 既定では、複数選択を有効にすると、`selectAll` が `true` になります。
+- `filter` プロパティを指定すると、ユーザーがオプションの長い一覧を検索できるようになります。
 - `constraints.allowedValues` のラベルは項目の表示テキストであり、その値は要素が選択された際の出力値です。
 - 指定する場合、既定値は `constraints.allowedValues` 内に存在するラベルである必要があります。 指定しない場合、`constraints.allowedValues` 内の最初の項目が選択されます。 既定値は **null** です。
 - `constraints.allowedValues` には、少なくとも 1 つの項目が必要です。
 - 必須ではない値をエミュレートするには、ラベルと `""` という値 (空の文字列) を持つ項目を `constraints.allowedValues` に追加します。
+- 説明が指定されていない項目では、`defaultDescription` プロパティが使用されます。
+- `placeholder` プロパティは、ユーザーが編集を開始したときに消えるヘルプ テキストです。 `placeholder` と `defaultValue` の両方が定義されている場合は、`defaultValue` が優先され、表示されます。
 
 ## <a name="next-steps"></a>次のステップ
 

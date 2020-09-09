@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 783b479dd3e5f429516799d7d3ea82f363cac2ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7abff8c33ea276b8b8aaeffd010d5f5e09440d9b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226747"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526641"
 ---
-# <a name="how-to-use-perfinsights"></a>PerfInsights を使用する方法
+# <a name="how-to-use-perfinsights-in-azure"></a>Azure で PerfInsights を使用する方法
 
 [PerfInsights](https://aka.ms/perfinsightsdownload) は、診断データを収集および解析するセルフヘルプ診断ツールで、Azure での Windows 仮想マシンのパフォーマンス問題をトラブルシューティングする際に役立ちます。 PerfInsights は、仮想マシンでスタンドアロン ツールとして実行できます。または [Azure 仮想マシンのパフォーマンス診断](performance-diagnostics.md)を使用するか [Azure パフォーマンス診断 VM 拡張機能](performance-diagnostics-vm-extension.md)をインストールすることで、ポータルから直接実行できます。
 
@@ -65,7 +65,7 @@ PerfInsights は、いくつかの種類の情報を収集して分析できま�
 
 ### <a name="performance-analysis"></a>パフォーマンス分析
 
-このシナリオでは、RuleEngineConfig.json ファイルで指定されているカウンターを使用して、[パフォーマンス カウンター](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx) トレースを実行します。 VM が、SQL Server を実行しているサーバーとして識別された場合は、パフォーマンス カウンター トレースを実行します。 これは RuleEngineConfig.json ファイルに含まれているカウンターを使用して実行します。 このシナリオには、パフォーマンス診断データも含まれます。
+このシナリオでは、RuleEngineConfig.json ファイルで指定されているカウンターを使用して、[パフォーマンス カウンター](/windows/win32/perfctrs/performance-counters-portal) トレースを実行します。 VM が、SQL Server を実行しているサーバーとして識別された場合は、パフォーマンス カウンター トレースを実行します。 これは RuleEngineConfig.json ファイルに含まれているカウンターを使用して実行します。 このシナリオには、パフォーマンス診断データも含まれます。
 
 ### <a name="azure-files-analysis"></a>Azure Files 分析
 
@@ -101,9 +101,8 @@ PerfInsights は、いくつかの種類の情報を収集して分析できま�
 
 Windows VM、ディスクまたは記憶域プールの構成、パフォーマンス カウンター、ログ、およびさまざまなトレースに関する情報が収集されます。 これは、使用しているパフォーマンス シナリオによって異なります。 次の表で詳細に説明します。
 
-|収集されるデータ                              |  |  | パフォーマンス シナリオ |  |  | |
-|----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|----------------------|
-|                               | パフォーマンスのクイック分析 | ベンチマーク | パフォーマンス分析 | Azure Files 分析 | 高度なパフォーマンス分析 |
+| 収集されるデータ | パフォーマンスのクイック分析 | ベンチマーク | パフォーマンス分析 | Azure Files 分析 | 高度なパフォーマンス分析 |
+|----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|
 | イベント ログの情報       | はい                        | はい                                | はい                      | はい                  | はい                  |
 | システム情報                | はい                        | はい                                | はい                      | はい                  | はい                  |
 | ボリューム マップ                        | はい                        | はい                                | はい                      | はい                  | はい                  |
@@ -301,7 +300,7 @@ Diskspd は、Microsoft からのストレージ ロード ジェネレーター
 
 ### <a name="xperf"></a>Xperf
 
-Xperf は、Windows パフォーマンス ツールキットからのトレースをキャプチャするためのコマンドライン ツールです。 詳細については、「[Windows Performance Toolkit – Xperf (Windows パフォーマンス ツールキット - Xperf)](https://blogs.msdn.microsoft.com/ntdebugging/2008/04/03/windows-performance-toolkit-xperf/)」を参照してください。
+Xperf は、Windows パフォーマンス ツールキットからのトレースをキャプチャするためのコマンドライン ツールです。 詳細については、「[Windows Performance Toolkit – Xperf (Windows パフォーマンス ツールキット - Xperf)](/archive/blogs/ntdebugging/windows-performance-toolkit-xperf)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -314,4 +313,3 @@ Xperf は、Windows パフォーマンス ツールキットからのトレー�
 メッセージ内の指示に従って、ファイル転送ワークスペースにアクセスします。 セキュリティを強化するために、最初の使用時にパスワードを変更する必要があります。
 
 サインインすると、PerfInsights によって収集された **PerformanceDiagnostics\_yyyy-MM-dd\_hh-mm-ss-fff.zip** ファイルをアップロードするためのダイアログ ボックスが表示されます。
-

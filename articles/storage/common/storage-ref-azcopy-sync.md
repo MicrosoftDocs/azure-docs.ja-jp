@@ -4,16 +4,16 @@ description: この記事では、azcopy sync コマンドに関する参照情�
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: d855019be7f357a35a26d14e68ba3d427d984e17
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 16ee2f01e1b7771e71afe49c4b69b1fb39e43f37
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086030"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869441"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -33,7 +33,7 @@ sync コマンドは、いくつかの点で copy コマンドと異なります
 
 1. 既定では、再帰フラグは true で、sync によってすべてのサブディレクトリがコピーされます。 再帰フラグが false の場合、sync はディレクトリ内の最上位レベルのファイルのみがコピーされます。
 2. 仮想ディレクトリ間で同期する際に仮想ディレクトリの 1 つと同じ名前の BLOB がある場合は、パスの末尾にスラッシュ (例を参照) を追加します。
-3. 'DeleteDestination' フラグが true または prompt に設定されている場合、sync を実行するとソースに存在しないファイルと BLOB を削除します。
+3. `deleteDestination` フラグが true または prompt に設定されている場合、sync を実行すると、同期元に存在しないファイルと BLOB が同期先で削除されます。
 
 ## <a name="related-conceptual-articles"></a>関連する概念に関する記事
 
@@ -66,16 +66,13 @@ azcopy sync <source> <destination> [flags]
 azcopy sync "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
 ```
 
-> [!NOTE]
-> 同期先の BLOB が存在している*必要があります*。 同期先にまだ存在しない単一のファイルをコピーするには、`azcopy copy` を使用します。 そうでないと、次のエラーが発生します: `Cannot perform sync due to error: sync must happen between source and destination of the same type, e.g. either file <-> file, or directory/container <-> directory/container`。
-
-上記と同じですが、今度はファイル コンテンツの MD5 ハッシュも計算し、BLOB の Content-MD5 プロパティとして保存します。
+上記と同じですが、ファイル コンテンツの MD5 ハッシュも計算し、その MD5 ハッシュを BLOB の Content-MD5 プロパティとして保存します。 
 
 ```azcopy
 azcopy sync "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]" --put-md5
 ```
 
-サブディレクトリを含むディレクトリ全体を同期します (再帰は既定でオンになっていることに注意してください)。
+サブディレクトリを含むディレクトリ全体を同期します (再帰は既定でオンであることに注意してください)。
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]"
@@ -87,22 +84,22 @@ or
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --put-md5
 ```
 
-ディレクトリ内の上位のファイルのみを同期しますが、サブディレクトリは同期しません。
+ディレクトリ内のファイルだけを同期し、サブディレクトリやサブディレクトリ内のファイルは同期しません。
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --recursive=false
 ```
 
-ディレクトリ内のファイルのサブセットを削除します (例: jpg ファイルおよび pdf ファイルのみ、またはファイル名が "exactName" の場合)。
+ディレクトリ内のファイルのサブセットを同期します (例: jpg ファイルと pdf ファイルのみ、またはファイル名が `exactName` の場合)。
 
 ```azcopy
-azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --include="*.jpg;*.pdf;exactName"
+azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --include-pattern="*.jpg;*.pdf;exactName"
 ```
 
-ディレクトリ全体を同期しますが、スコープから特定のファイルを除外します (たとえば、foo で始まるすべてのファイルや、bar で終わるすべてのファイル)。
+ディレクトリ全体を同期しますが、スコープから特定のファイルを除外します (例: foo で始まるすべてのファイルや bar で終わるすべてのファイル)。
 
 ```azcopy
-azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --exclude="foo*;*bar"
+azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --exclude-pattern="foo*;*bar"
 ```
 
 1 つの BLOB を同期する:
@@ -134,29 +131,35 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 ## <a name="options"></a>Options
 
-**--block-size-mb** float         Azure Storage にアップロードする場合、または Azure Storage からダウンロードする場合に、このブロック サイズ (MiB で指定) を使用します。 既定値は、ファイル サイズに基づいて自動的に計算されます。 小数を使用できます (例:0.25)。
+**--block-size-mb** float    Azure Storage へのアップロード時または Azure Storage からのダウンロード時に、このブロック サイズ (MiB で指定) を使用します。 既定値は、ファイル サイズに基づいて自動的に計算されます。 小数を使用できます (例: `0.25`)。
 
-**--check-md5** string            ダウンロード時に MD5 ハッシュを検証する厳密さを指定します。 このオプションはダウンロード時にのみ使用できます。 指定できる値は、次のとおりです。NoCheck、LogOnly、FailIfDifferent、FailIfDifferentOrMissing です。 (既定値は "FailIfDifferent")。 (既定値は "FailIfDifferent")
+**--check-md5** string   ダウンロード時に MD5 ハッシュをどれだけ厳密に検証する必要があるかを指定します。 このオプションはダウンロード時にのみ使用できます。 指定できる値には、`NoCheck`、`LogOnly`、`FailIfDifferent`、`FailIfDifferentOrMissing` が含まれます。 (既定値は `FailIfDifferent` です。) (既定値は `FailIfDifferent`)
 
-**--delete-destination** string   同期元に存在しない余分なファイルを同期先から削除するかどうかを定義します。 true、false、または prompt に設定できます。 prompt に設定すると、ファイルと BLOB の削除をスケジュールする前に、ユーザーに質問が表示されます。 (既定値は 'false')。 (既定値は "false")
+**--delete-destination** string   同期元に存在しない余分なファイルを同期先から削除するかどうかを定義します。 `true`、`false`、または `prompt` に設定できます。 `prompt` に設定した場合は、ファイルと BLOB の削除をスケジュールする前に、ユーザーに質問が表示されます。 (既定値は `false` です。) (既定値は `false`)
 
-**--exclude-attributes**  string   (Windows のみ) 属性が属性の一覧と一致するファイルを除外します。 次に例を示します。A;S;R
+**--exclude-attributes**  string   (Windows のみ) 属性が属性の一覧と一致するファイルを除外します。 例: `A;S;R`
 
-**--exclude-path** string コピーするときにこれらのパスを除外します。 このオプションでは、ワイルドカード文字 (*) はサポートされていません。 相対パスのプレフィックスを確認します (例: myFolder;myFolder/subDirName/file.pdf)。 アカウント トラバーサルと組み合わせて使用する場合、パスにはコンテナー名は含まれません。
+**--exclude-path** string    同期元と同期先を比較するときに、これらのパスを除外します。 このオプションでは、ワイルドカード文字 (*) はサポートされていません。 相対パスのプレフィックスを調べます (例: `myFolder;myFolder/subDirName/file.pdf`)。
 
-**--exclude-pattern** string      名前がパターンの一覧と一致するファイルを除外します。 例: \*.jpg;\*.pdf;exactName
+**--exclude-pattern** string   名前がパターンの一覧と一致するファイルを除外します。 例: `*.jpg;*.pdf;exactName`
 
-**-h, --help**                sync のヘルプ コンテンツを表示します
+**--help**    sync のヘルプ。
 
-**--include-attributes**  string   (Windows のみ) 属性が属性の一覧と一致するファイルのみを含めます。 次に例を示します。A;S;R
+**--include-attributes** string   (Windows のみ) 属性が属性の一覧と一致するファイルのみを含めます。 例: `A;S;R`
 
-**--include-pattern** string      名前がパターンの一覧と一致するファイルをのみを含めます。 例: \*.jpg;\*.pdf;exactName
+**--include-pattern** string   名前がパターンの一覧と一致するファイルをのみを含めます。 例: `*.jpg;*.pdf;exactName`
 
-**--log-level** string            ログ ファイルのログの詳細度を定義します。使用できるレベルは次のとおりです。INFO(すべての要求と応答)、WARNING(遅い応答)、ERROR(失敗した要求のみ)、および NONE(出力ログなし)。 (既定値は INFO)。 (既定値は "INFO")
+**--log-level** string     ログ ファイルのログ詳細度を定義します。指定可能なレベルは、`INFO` (すべての要求と応答)、`WARNING` (低速な応答)、`ERROR` (失敗した要求のみ)、`NONE` (出力ログなし) です。 (既定値は `INFO` です。) 
 
-**--put-md5**                     各ファイルの MD5 ハッシュを作成し、ハッシュを同期先の BLOB またはファイルの Content-MD5 プロパティとして保存します。 (既定では、ハッシュは作成されません)。アップロード時にのみ使用できます。
+**--preserve-smb-info**   既定では false です。SMB 対応リソース (Windows と Azure Files) 間の SMB プロパティ情報 (最終書き込み時刻、作成時刻、属性ビット) を保持します。ファイルのみのフィルターが指定されている場合を除き、このフラグはファイルとフォルダーの両方に適用されます (例: include-pattern)。 フォルダーの場合に保持されない最終書き込み時刻を除き、フォルダーについて転送される情報はファイルの情報と同じです。
 
-**--recursive**                   既定では true で、ディレクトリ間で同期するときにサブディレクトリを再帰的に検索します。 (既定値は true)。 (既定値は true)
+**--preserve-smb-permissions**   既定では false です。認識されるリソース (Windows と Azure Files) 間で SMB ACL を保持します。 ファイルのみのフィルターが指定されている場合を除き、このフラグはファイルとフォルダーの両方に適用されます (例:  `include-pattern`)。
+
+**--put-md5**     各ファイルの MD5 ハッシュを作成し、ハッシュを同期先の BLOB またはファイルの Content-MD5 プロパティとして保存します。 (既定では、ハッシュは作成されません)。アップロード時にのみ使用できます。
+
+**--recursive**    既定では `True` で、ディレクトリ間で同期するときに、サブディレクトリ内を再帰的に調べます。 (既定値は `True` です。) 
+
+**--s2s-preserve-access-tier**  サービス間のコピー中にアクセス層を保持します。 「[Azure Blob Storage: ホット、クール、アーカイブ アクセス層](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)」を参照して、同期先のストレージ アカウントで、アクセス層の設定がサポートされていることを確認してください。 アクセス層の設定がサポートされていない場合は、s2sPreserveAccessTier = false を使用してアクセス層のコピーをバイパスしてください。 (既定値は `true` です。) 
 
 ## <a name="options-inherited-from-parent-commands"></a>親コマンドから継承されるオプション
 
@@ -164,6 +167,7 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 |---|---|
 |--cap-mbps uint32|転送速度の上限を設定します (メガビット/秒)。 瞬間的なスループットは、上限と若干異なる場合があります。 このオプションを 0 に設定した場合や省略した場合、スループットは制限されません。|
 |--output-type string|コマンドの出力形式。 選択肢には、text、json などがあります。 既定値は "text" です。|
+|--trusted-microsoft-suffixes string   |Azure Active Directory ログイン トークンを送信できる追加のドメイン サフィックスを指定します。  既定値は " *.core.windows.net;* .core.chinacloudapi.cn; *.core.cloudapi.de;* .core.usgovcloudapi.net" です。 ここに記載されているすべてが既定値に追加されます。 セキュリティのために、Microsoft Azure のドメインのみをここに入力してください。 複数のエンティティは、セミコロンで区切ります。|
 
 ## <a name="see-also"></a>関連項目
 

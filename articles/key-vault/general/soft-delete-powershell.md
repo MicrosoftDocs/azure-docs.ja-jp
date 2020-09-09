@@ -1,20 +1,21 @@
 ---
 title: Azure Key Vault - PowerShell で論理的な削除を使用する方法
-description: PowerShell コード スニペットを使用した論理的な削除のユース ケースの例
+description: Azure PowerShell を使用して、キー コンテナーとキー コンテナー オブジェクトの回復を可能にする Azure Key Vault の論理的な削除機能を使用する方法について説明します。
 services: key-vault
-author: msmbaldwin
-manager: rkarlin
+author: ShaneBala-keyvault
+manager: ravijan
 ms.service: key-vault
 ms.subservice: general
-ms.topic: tutorial
-ms.date: 08/12/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 79d8cb4b09ef547bf1c0b01f48872ddcb4f964ee
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.topic: how-to
+ms.date: 08/11/2020
+ms.author: sudbalas
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 251159c4fcf27ceb4d8b0dddeecbe501c7346e9e
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81616539"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89073235"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>PowerShell で Key Vault の論理的な削除を使用する方法
 
@@ -27,7 +28,7 @@ Azure Key Vault の論理的な削除機能を使用すると、削除された�
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-- Azure PowerShell 1.0.0 以上: まだセットアップしていない場合は、Azure PowerShell をインストールしてお使いの Azure サブスクリプションに関連付けます。詳しくは、「[Azure PowerShell のインストールおよび構成方法](https://docs.microsoft.com/powershell/azure/overview)」をご覧ください。 
+- Azure PowerShell 1.0.0 以上: まだセットアップしていない場合は、Azure PowerShell をインストールしてお使いの Azure サブスクリプションに関連付けます。詳しくは、「[Azure PowerShell のインストールおよび構成方法](https://docs.microsoft.com/powershell/azure/)」をご覧ください。 
 
 >[!NOTE]
 > Key Vault PowerShell 出力書式設定ファイルには古いバージョンがあり、正しいバージョンではなく、これが環境に読み込まれる**可能性があります**。 PowerShell の更新バージョンには出力書式設定に必要な修正が含まれることを想定しており、このトピックはその時点で更新されます。 この出力書式設定に関する問題が発生した場合の現在の対処法は次のとおりです。
@@ -40,7 +41,7 @@ PowerShell における Key Vault の具体的な参照情報については、[
 
 Key Vault の操作は、次のようにロールベースのアクセス制御 (RBAC) のアクセス許可で別個に管理されます。
 
-| Operation | 説明 | ユーザーのアクセス許可 |
+| 操作 | 説明 | ユーザーのアクセス許可 |
 |:--|:--|:--|
 |List|削除されたキー コンテナーの一覧を示します。|Microsoft.KeyVault/deletedVaults/read|
 |復旧|削除されたキー コンテナーを復元します。|Microsoft.KeyVault/vaults/write|
@@ -67,11 +68,7 @@ Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
 
 ### <a name="new-key-vault"></a>新しいキー コンテナー
 
-新しいキー コンテナーの論理的な削除は、作成時に create コマンドに論理的な削除を有効にするフラグを追加することで有効にできます。
-
-```powershell
-New-AzKeyVault -Name "ContosoVault" -ResourceGroupName "ContosoRG" -Location "westus" -EnableSoftDelete
-```
+論理的な削除は、すべての新しいキー コンテナーで既定で自動的に有効になります。 2020 年 12 月 31 日までに、どのキー コンテナーでも論理的な削除を無効にすることはできなくなります。 
 
 ### <a name="verify-soft-delete-enablement"></a>論理的な削除が有効になっていることを確認する
 
@@ -206,7 +203,7 @@ Set-AzKeyVaultAccessPolicy -VaultName ContosoVault -UserPrincipalName user@conto
 
 証明書は、以下のコマンドを使用して管理できます。
 
-- SQLPassword という名前の証明書を削除します。 
+- 証明書を削除します。 
   ```powershell
   Remove-AzKeyVaultCertificate -VaultName ContosoVault -Name 'MyCert'
   ```
@@ -265,9 +262,9 @@ Remove-AzKeyVault -VaultName ContosoVault -InRemovedState -Location westus
 
 ## <a name="enabling-purge-protection"></a>消去保護を有効にする
 
-消去保護をオンにすると、削除状態のコンテナーまたはオブジェクトは、90 日間の保持期間が経過するまで消去できません。 このようなコンテナーまたはオブジェクトは回復することもできます。 この機能は、保持期間が経過するまでコンテナーまたはオブジェクトを完全には削除できないことの追加保証を与えます。
+消去保護をオンにすると、削除状態のコンテナーまたはオブジェクトは、保持期間が経過するまで消去できません。 このようなコンテナーまたはオブジェクトは回復することもできます。 この機能は、保持期間が経過するまでコンテナーまたはオブジェクトを完全には削除できないことの追加保証を与えます。 既定の保有期間は 90 日ですが、キー コンテナーの作成時に、リテンション期間ポリシーの間隔を 7 日から 90 日の値に設定することができます。 保護の削除のアイテム保持ポリシーでは、同じ間隔が使用されます。 設定した場合、保持ポリシーの間隔は変更できません。
 
-論理的な削除も有効にする場合にのみ、消去保護を有効にできます。 
+論理的な削除も有効にする場合にのみ、消去保護を有効にできます。 消去保護を無効にすることはサポートされていません。 
 
 コンテナーの作成時、論理的な削除と消去保護の両方をオンにするには、[New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault?view=azps-1.5.0) コマンドレットを使用します。
 
@@ -285,5 +282,5 @@ Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
 
 ## <a name="other-resources"></a>その他のリソース
 
-- Key Vault の論理的な削除機能の概要については、「[Azure Key Vault の論理的な削除機能の概要](overview-soft-delete.md)」をご覧ください。
+- Key Vault の論理的な削除機能の概要については、「[Azure Key Vault の論理的な削除機能の概要](soft-delete-overview.md)」をご覧ください。
 - Azure Key Vault の使用方法の概要については、「[Azure Key Vault とは](overview.md)」をご覧ください。

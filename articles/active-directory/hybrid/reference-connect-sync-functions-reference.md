@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c3102480e316c634930c356ae02f769767b7d08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6d8ec8eec28d66cf93608393ddca45f78460d831
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69900040"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279773"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect 同期: 関数参照
 Azure AD Connect では、同期時の属性値を操作するために関数を使用します。  
@@ -52,42 +52,100 @@ Azure AD Connect では、同期時の属性値を操作するために関数を
 
 ## <a name="functions-reference"></a>関数参照
 
-| 関数の一覧 |  |  |  |  |
-| --- | --- | --- | --- | --- |
-| **[MSSQLSERVER のプロトコルのプロパティ]** | | | | |
-| [CertExtensionOids](#certextensionoids) |[CertFormat](#certformat) |[CertFriendlyName](#certfriendlyname) |[CertHashString](#certhashstring) | |
-| [CertIssuer](#certissuer) |[CertIssuerDN](#certissuerdn) |[CertIssuerOid](#certissueroid) |[CertKeyAlgorithm](#certkeyalgorithm) | |
-| [CertKeyAlgorithmParams](#certkeyalgorithmparams) |[CertNameInfo](#certnameinfo) |[CertNotAfter](#certnotafter) |[CertNotBefore](#certnotbefore) | |
-| [CertPublicKeyOid](#certpublickeyoid) |[CertPublicKeyParametersOid](#certpublickeyparametersoid) |[CertSerialNumber](#certserialnumber) |[CertSignatureAlgorithmOid](#certsignaturealgorithmoid) | |
-| [CertSubject](#certsubject) |[CertSubjectNameDN](#certsubjectnamedn) |[CertSubjectNameOid](#certsubjectnameoid) |[CertThumbprint](#certthumbprint) | |
-[CertVersion](#certversion) |[IsCert](#iscert) | | | |
-| **変換** | | | | |
-| [CBool](#cbool) |[CDate](#cdate) |[CGuid](#cguid) |[ConvertFromBase64](#convertfrombase64) | |
-| [ConvertToBase64](#converttobase64) |[ConvertFromUTF8Hex](#convertfromutf8hex) |[ConvertToUTF8Hex](#converttoutf8hex) |[CNum](#cnum) | |
-| [CRef](#cref) |[CStr](#cstr) |[StringFromGuid](#stringfromguid) |[StringFromSid](#stringfromsid) | |
-| **日付/時刻** | | | | |
-| [DateAdd](#dateadd) |[DateFromNum](#datefromnum) |[FormatDateTime](#formatdatetime) |[Now](#now) | |
-| [NumFromDate](#numfromdate) | | | | |
-| **ディレクトリ** | | | | |
-| [DNComponent](#dncomponent) |[DNComponentRev](#dncomponentrev) |[EscapeDNComponent](#escapedncomponent) | | |
-| **評価** | | | | |
-| [IsBitSet](#isbitset) |[IsDate](#isdate) |[IsEmpty](#isempty) |[IsGuid](#isguid) | |
-| [IsNull](#isnull) |[IsNullOrEmpty](#isnullorempty) |[IsNumeric](#isnumeric) |[IsPresent](#ispresent) | |
-| [IsString](#isstring) | | | | |
-| **算術** | | | | |
-| [BitAnd](#bitand) |[BitOr](#bitor) |[RandomNum](#randomnum) | | |
-| **複数値** | | | | |
-| [Contains](#contains) |[Count](#count) |[Item](#item) |[ItemOrNull](#itemornull) | |
-| [Join](#join) |[RemoveDuplicates](#removeduplicates) |[Split](#split) | | |
-| **プログラム フロー** | | | | |
-| [Error](#error) |[IIF](#iif) |[Select](#select) |[スイッチ](#switch) | |
-| [Where](#where) |[With](#with) | | | |
-| **[テキスト]** | | | | |
-| [GUID](#guid) |[InStr](#instr) |[InStrRev](#instrrev) |[LCase](#lcase) | |
-| [Left](#left) |[Len](#len) |[LTrim](#ltrim) |[Mid](#mid) | |
-| [PadLeft](#padleft) |[PadRight](#padright) |[PCase](#pcase) |[Replace](#replace) | |
-| [ReplaceChars](#replacechars) |[Right](#right) |[RTrim](#rtrim) |[Trim](#trim) | |
-| [UCase](#ucase) |[Word](#word) | | | |
+* **[MSSQLSERVER のプロトコルのプロパティ]**
+  * [CertExtensionOids](#certextensionoids)
+  * [CertFormat](#certformat)
+  * [CertFriendlyName](#certfriendlyname)
+  * [CertHashString](#certhashstring)
+  * [CertIssuer](#certissuer)
+  * [CertIssuerDN](#certissuerdn)
+  * [CertIssuerOid](#certissueroid)
+  * [CertKeyAlgorithm](#certkeyalgorithm)
+  * [CertKeyAlgorithmParams](#certkeyalgorithmparams)
+  * [CertNameInfo](#certnameinfo)
+  * [CertNotAfter](#certnotafter)
+  * [CertNotBefore](#certnotbefore)
+  * [CertPublicKeyOid](#certpublickeyoid)
+  * [CertPublicKeyParametersOid](#certpublickeyparametersoid)
+  * [CertSerialNumber](#certserialnumber)
+  * [CertSignatureAlgorithmOid](#certsignaturealgorithmoid)
+  * [CertSubject](#certsubject)
+  * [CertSubjectNameDN](#certsubjectnamedn)
+  * [CertSubjectNameOid](#certsubjectnameoid)
+  * [CertThumbprint](#certthumbprint)
+  * [CertVersion](#certversion)
+  * [IsCert](#iscert)
+* **変換**
+  * [CBool](#cbool)
+  * [CDate](#cdate)
+  * [CGuid](#cguid)
+  * [ConvertFromBase64](#convertfrombase64)
+  * [ConvertToBase64](#converttobase64)
+  * [ConvertFromUTF8Hex](#convertfromutf8hex)
+  * [ConvertToUTF8Hex](#converttoutf8hex)
+  * [CNum](#cnum)
+  * [CRef](#cref)
+  * [CStr](#cstr)
+  * [StringFromGuid](#stringfromguid)
+  * [StringFromSid](#stringfromsid)
+* **日付/時刻**
+  * [DateAdd](#dateadd)
+  * [DateFromNum](#datefromnum)
+  * [FormatDateTime](#formatdatetime)
+  * [Now](#now)
+  * [NumFromDate](#numfromdate)
+* **ディレクトリ**
+  * [DNComponent](#dncomponent)
+  * [DNComponentRev](#dncomponentrev)
+  * [EscapeDNComponent](#escapedncomponent)
+* **評価**
+  * [IsBitSet](#isbitset)
+  * [IsDate](#isdate)
+  * [IsEmpty](#isempty)
+  * [IsGuid](#isguid)
+  * [IsNull](#isnull)
+  * [IsNullOrEmpty](#isnullorempty)
+  * [IsNumeric](#isnumeric)
+  * [IsPresent](#ispresent)
+  * [IsString](#isstring)
+* **算術**
+  * [BitAnd](#bitand)
+  * [BitOr](#bitor)
+  * [RandomNum](#randomnum)
+* **Multi*valued**
+  * [Contains](#contains)
+  * [Count](#count)
+  * [Item](#item)
+  * [ItemOrNull](#itemornull)
+  * [Join](#join)
+  * [RemoveDuplicates](#removeduplicates)
+  * [Split](#split)
+* **プログラム フロー**
+  * [Error](#error)
+  * [IIF](#iif)
+  * [Select](#select)
+  * [スイッチ](#switch)
+  * [Where](#where)
+  * [With](#with)
+* **[テキスト]**
+  * [GUID](#guid)
+  * [InStr](#instr)
+  * [InStrRev](#instrrev)
+  * [LCase](#lcase)
+  * [Left](#left)
+  * [Len](#len)
+  * [LTrim](#ltrim)
+  * [Mid](#mid)
+  * [PadLeft](#padleft)
+  * [PadRight](#padright)
+  * [PCase](#pcase)
+  * [Replace](#replace)
+  * [ReplaceChars](#replacechars)
+  * [Right](#right)
+  * [RTrim](#rtrim)
+  * [Trim](#trim)
+  * [UCase](#ucase)
+  * [Word](#word)
 
 ---
 ### <a name="bitand"></a>BitAnd
@@ -602,7 +660,7 @@ FormatDateTime 関数は、DateTime を指定した形式の文字列に設定�
 * format: 変換する形式を表す文字列。
 
 **備考:**  
-形式で有効な値については、「[Custom date and time formats for the FORMAT function](https://docs.microsoft.com/dax/custom-date-and-time-formats-for-the-format-function)」(FORMAT 関数用のカスタム日付/時刻形式) を参照してください。
+形式で有効な値については、「[Custom date and time formats for the FORMAT function](/dax/custom-date-and-time-formats-for-the-format-function)」(FORMAT 関数用のカスタム日付/時刻形式) を参照してください。
 
 **例:**  
 

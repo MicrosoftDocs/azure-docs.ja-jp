@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 06/23/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,19 +19,19 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f4c3330b23b8b724cdbf5d7e09eec8a8dd5b8cfa
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 6ea8bc2551df4f85e4b856dc9cf1c06a9bd571fd
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81258985"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923451"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure Cognitive Search での Lucence クエリ構文
 
 特殊なクエリ形式 (ワイルドカード、あいまい検索、近接検索、正規表現などその他多数) に対し、高度な [Lucene Query Parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) 構文に基づいて Azure Cognitive Search に対するクエリを作成できます。 Lucene Query Parser 構文の多くは、[Azure Cognitive Search でそのまま実装](search-lucene-query-architecture.md)されています。ただし、*範囲検索*は例外で、これは Azure Cognitive Search では `$filter` 式を介して構築されます。 
 
 > [!NOTE]
-> 完全な Lucene 構文は、[Search Documents](https://docs.microsoft.com/rest/api/searchservice/search-documents) API の **search** パラメーターで渡されるクエリ式に使用されます。その API の [$filter](search-filters.md) パラメーターで使用される [OData 構文](query-odata-filter-orderby-syntax.md)と混同しないでください。 これらのさまざまな構文には、クエリの作成や文字列のエスケープなどを行うための独自の規則があります。
+> 完全な Lucene 構文は、[Search Documents](/rest/api/searchservice/search-documents) API の **search** パラメーターで渡されるクエリ式に使用されます。その API の [$filter](search-filters.md) パラメーターで使用される [OData 構文](query-odata-filter-orderby-syntax.md)と混同しないでください。 これらのさまざまな構文には、クエリの作成や文字列のエスケープなどを行うための独自の規則があります。
 
 ## <a name="invoke-full-parsing"></a>完全な解析の呼び出し
 
@@ -46,13 +46,13 @@ ms.locfileid: "81258985"
 `searchMode=all` パラメーターは、この例で関連しています。 クエリに演算子があるときは、通常 `searchMode=all` を設定して、*すべて*の条件が確実に一致するようにします。
 
 ```
-GET /indexes/hotels/docs?search=category:budget AND \"recently renovated\"^3&searchMode=all&api-version=2019-05-06&querytype=full
+GET /indexes/hotels/docs?search=category:budget AND \"recently renovated\"^3&searchMode=all&api-version=2020-06-30&querytype=full
 ```
 
  または、次のように POST を使用します。  
 
 ```
-POST /indexes/hotels/docs/search?api-version=2019-05-06
+POST /indexes/hotels/docs/search?api-version=2020-06-30
 {
   "search": "category:budget AND \"recently renovated\"^3",
   "queryType": "full",
@@ -60,7 +60,7 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 }
 ```
 
-その他の例については、[Azure Cognitive Search でクエリを作成するための Lucene クエリ構文例](search-query-lucene-examples.md)に関する記事を参照してください。 すべての可能なクエリ パラメーターの指定に関する詳細については、「[ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)」を参照してください。
+その他の例については、[Azure Cognitive Search でクエリを作成するための Lucene クエリ構文例](search-query-lucene-examples.md)に関する記事を参照してください。 すべての可能なクエリ パラメーターの指定に関する詳細については、「[ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)」を参照してください。
 
 > [!NOTE]  
 >  Azure Cognitive Search では、簡潔なキーワード検索に使用できる単純で堅牢なクエリ言語である、[単純なクエリ構文](query-simple-syntax.md)もサポートされます。  
@@ -119,9 +119,9 @@ AND 演算子は、アンパサンドまたはプラス記号です。 たとえ
 
 ### <a name="not-operator-not--or--"></a>NOT 演算子 `NOT`、`!`、または `-`
 
-NOT 演算子はマイナス記号です。 たとえば、`wifi –luxury` を指定すると、`wifi` という用語を含む、および/または `luxury` を含まないドキュメントが検索されます。
+NOT 演算子はマイナス記号です。 たとえば、`wifi –luxury` を指定すると、`wifi` という用語を含む、または `luxury` を含まないドキュメントが検索されます。
 
-クエリ要求の **searchMode** パラメーターは、NOT 演算子がついた用語を、クエリ内の他の用語と AND 演算するか OR 演算するかどうかを制御します (他の用語に `+` または `|` 演算子がないと仮定します)。 有効な値は、`any` または `all` です。
+クエリ要求の **searchMode** パラメーターでは、NOT 演算子がついた用語を、クエリ内の他の用語と AND 演算するか OR 演算するかどうかが制御されます (他の用語に `+` または `|` 演算子がないと仮定します)。 有効な値は、`any` または `all` です。
 
 `searchMode=any` にすると、より多くの結果を含めることによりクエリの再現率が増加し、既定で `-` は "OR NOT" と解釈されます。 たとえば、`wifi -luxury` は、`wifi` という用語を含むドキュメント、または `luxury` という用語を含まないドキュメントのどちらにも一致します。
 
@@ -139,7 +139,7 @@ NOT 演算子はマイナス記号です。 たとえば、`wifi –luxury` を�
 
 複数の文字列を 1 つのエンティティとして評価する場合は、必ず両方の文字列を引用符で囲んでください。この場合は、`artists` フィールドで 2 人の異なるアーティストを検索します。  
 
-`fieldName:searchExpression` に指定されるフィールドは、`searchable` フィールドでなければなりません。  フィールド定義におけるインデックス属性の利用方法の詳細については、「[インデックスの作成](https://docs.microsoft.com/rest/api/searchservice/create-index)」を参照してください。  
+`fieldName:searchExpression` に指定されるフィールドは、`searchable` フィールドでなければなりません。  フィールド定義におけるインデックス属性の利用方法の詳細については、「[インデックスの作成](/rest/api/searchservice/create-index)」を参照してください。  
 
 > [!NOTE]
 > 各フィールド検索式にはフィールド名が明示的に指定されるため、フィールド検索式を使用する際は `searchFields` パラメーターを使用する必要はありません。 ただし、いくつかの部分で特定のフィールドをスコープにし、他の部分は複数のフィールドに適用できるクエリを実行する場合は、`searchFields` パラメーターを引き続き使用できます。 たとえば、クエリ `search=genre:jazz NOT history&searchFields=description` は、`genre` フィールドの `jazz` のみと一致し、`description` フィールドの `NOT history` と一致します。 `fieldName:searchExpression` に指定されたフィールド名は常に `searchFields` パラメーターに優先するため、この例では `searchFields` パラメーターに `genre` を含める必要はありません。
@@ -166,22 +166,33 @@ NOT 演算子はマイナス記号です。 たとえば、`wifi –luxury` を�
  用語をブーストするには、キャレット記号 "^" とブースト係数 (数字) を、検索する用語の終わりに使用します。 語句をブーストすることもできます。 ブースト係数が高ければ高いほど、その語句の関連性が他の検索語句に比べて大きくなります。 既定のブースト係数は 1 です。 ブースト係数は正数にする必要がありますが、1 未満 (0.20 など) の数字にすることができます。  
 
 ##  <a name="regular-expression-search"></a><a name="bkmk_regex"></a> 正規表現検索  
- 正規表現検索では、スラッシュ "/" の間のコンテンツに基づいて一致が検索されます。[RegExp](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html) クラスに詳細があります。  
+ 正規表現検索では、[RegExp クラス](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html)に関するページで説明されているように、Apache Lucene で有効なパターンに基づいて一致が検出されます。 Azure Cognitive Search では、正規表現はスラッシュ `/` で囲まれます。
 
  たとえば、"motel" または "hotel" を含むドキュメントを検索するには、`/[mh]otel/` を指定します。 正規表現検索では、単一の単語に対して照合が行われます。
 
 一部のツールと言語では、追加のエスケープ文字要件が適用されます。 JSON の場合、スラッシュを含む文字列は、バック スラッシュでエスケープされます。たとえば "microsoft.com/azure/" は、`search=/.*microsoft.com\/azure\/.*/` になります。この場合、正規の式を設定するのは `search=/.* <string-placeholder>.*/` で、`microsoft.com\/azure\/` はエスケープされたスラッシュを含む文字列です。
 
-##  <a name="wildcard-search"></a><a name="bkmk_wildcard"></a> ワイルドカード検索  
+##  <a name="wildcard-search"></a><a name="bkmk_wildcard"></a> ワイルドカード検索
 
-複数 (*) または単数 (?) の文字のワイルドカード検索で、一般に認識されている構文を使用できます。 Lucene Query Parser では、これらの文字を語句ではなく 1 つの用語に利用することにご注意ください。
+複数 (`*`) または単数 (`?`) の文字のワイルドカード検索で、一般に認識されている構文を使用できます。 たとえば、`search=alpha*` のクエリ式では、"alphanumeric" または "alphabetical" が返されます。 Lucene Query Parser では、これらの文字を語句ではなく 1 つの用語に利用することにご注意ください。
 
-プレフィックス検索では、アスタリスク (`*`) 文字も使用されます。 たとえば、`search=note*` のクエリ式では、"notebook" または "notepad" が返されます。 プレフィックス検索には、完全な Lucene 構文は必要ありません。 単純な構文によって、このシナリオはサポートされています。
+完全な Lucene 構文では、プレフィックス、挿入辞、およびサフィックスの一致がサポートされています。 ただし、プレフィックスの一致だけが必要な場合は、単純な構文を使用できます (プレフィックスの一致は両方でサポートされています)。
 
-文字列の前に `*` または `?` が付くサフィックス検索では、完全な Lucene 構文と正規の式が必要です (* や ? の記号は、 検索の最初の文字には使用できません)。 たとえば "alphanumeric" という用語の場合、(`search=/.*numeric.*/`) のクエリ式で一致が検出されます。
+文字列の前に `*` や `?` がある場合 (`search=/.*numeric./` など) のサフィックスの一致や挿入辞の一致では、Lucene の完全な構文と正規表現のスラッシュ `/` 区切り記号が必要になります。 検索の最初の文字として * または ? を `/` なしで、用語の最初の文字として、または用語内で使用することはできません。 
 
 > [!NOTE]  
-> クエリの解析中には、プレフィックス、サフィックス、ワイルドカードとして定式化されたクエリ、または正規の式は、[語彙分析](search-lucene-query-architecture.md#stage-2-lexical-analysis)をバイパスして、クエリ ツリーにそのまま渡されます。 クエリで指定した形式の文字列がインデックスに含まれている場合に限って、一致が検出されます。 部分一致やパターンをうまく検出するためには、ほとんどの場合、文字列の整合性を維持するインデックスの作成時に代替アナライザーが必要になります。 詳細については、「[Azure Cognitive Search クエリでの部分一致検索](search-query-partial-matching.md)」を参照してください。
+> 原則として、パターン マッチングは低速であるため、用語内の文字シーケンスのトークンを作成するエッジ n-gram トークン化など、別の方法を検討することもできます。 インデックスのサイズは大きくなりますが、パターンの構成やインデックスを作成する文字列の長さによっては、クエリの実行速度が速くなる場合があります。
+>
+
+### <a name="impact-of-an-analyzer-on-wildcard-queries"></a>ワイルドカード クエリに対するアナライザーの影響
+
+クエリの解析中には、プレフィックス、サフィックス、ワイルドカードとして定式化されたクエリ、または正規の式は、[語彙分析](search-lucene-query-architecture.md#stage-2-lexical-analysis)をバイパスして、クエリ ツリーにそのまま渡されます。 クエリで指定した形式の文字列がインデックスに含まれている場合に限って、一致が検出されます。 部分一致やパターンをうまく検出するためには、ほとんどの場合、文字列の整合性を維持するインデックスの作成時にアナライザーが必要になります。 詳細については、「[Azure Cognitive Search クエリでの部分一致検索](search-query-partial-matching.md)」を参照してください。
+
+"terminat*" という検索クエリで "terminate"、"termination"、"terminates" などの用語を含む結果を返す状況を考えてください。
+
+en.lucene (English Lucene) アナライザーを使用する場合、各用語の語幹処理が積極的に適用されます。 たとえば、"terminate"、"termination"、"terminates" はすべて、インデックスではトークン "termi" にトークン化されます。 一方、ワイルドカードやあいまい検索を使用するクエリの用語はまったく分析されません。そのため、"terminat*" クエリに一致する結果はありません。
+
+一方、Microsoft analyzers (この場合、en.microsoft アナライザー) はもう少し高度であり、語幹処理の代わりに見出し語選定が使用されます。 つまり、生成されたトークンはすべて正しい英単語になります。 たとえば、"terminate"、"terminates"、"termination" はほとんどの場合、インデックスに全体として残り、ワイルドカードやあいまい検索に多く依存するシナリオに最適です。
 
 ##  <a name="scoring-wildcard-and-regex-queries"></a><a name="bkmk_searchscoreforwildcardandregexqueries"></a> ワイルドカード クエリと正規表現クエリのスコアリング
 
@@ -191,6 +202,6 @@ Azure Cognitive Search は、テキスト クエリで、頻度に基づいた�
 
 + [単純な検索のクエリ例](search-query-simple-examples.md)
 + [完全な Lucene 検索のクエリ例](search-query-lucene-examples.md)
-+ [ドキュメントの検索](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
++ [ドキュメントの検索](/rest/api/searchservice/Search-Documents)
 + [フィルターと並べ替えの OData 式の構文](query-odata-filter-orderby-syntax.md)   
-+ [Azure Cognitive Search でのシンプルなクエリ構文](query-simple-syntax.md)   
++ [Azure Cognitive Search でのシンプルなクエリ構文](query-simple-syntax.md)

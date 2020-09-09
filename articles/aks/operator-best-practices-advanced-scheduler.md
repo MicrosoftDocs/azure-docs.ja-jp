@@ -5,12 +5,12 @@ description: テイントと容認、ノード セレクターとアフィニテ
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: d0d13a699d2559c6b4360c807721e0b748959382
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b8077a772d6fdc4b911fabdfa893a15dcd7615db
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617519"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530063"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での高度なスケジューラ機能に関するベスト プラクティス
 
@@ -71,8 +71,6 @@ spec:
 
 テイントを適用するときは、アプリケーションの開発者や所有者と協力して、デプロイで必要な容認を定義できるようにします。
 
-テイントと容認について詳しくは、[テイントと容認の適用][k8s-taints-tolerations]に関する記事をご覧ください。
-
 AKS での複数のノード プールの使用方法の詳細については、[AKS でのクラスターの複数のノード プールの作成と管理][use-multiple-node-pools]に関する記事をご覧ください。
 
 ### <a name="behavior-of-taints-and-tolerations-in-aks"></a>AKS でのテイントと容認の動作
@@ -80,6 +78,7 @@ AKS での複数のノード プールの使用方法の詳細については、
 AKS でノード プールをアップグレードすると、テイントと容認は新しいノードに適用されるときに、次のように設定されたパターンに従います。
 
 - **仮想マシン スケール セットを使用する既定のクラスター**
+  - AKS API から[ノード プールのテイントを設定][taint-node-pool]して、新たにスケールアウトされたノードが API で指定されたノードのテイントを受け取るようにすることができます。
   - 2 つのノード クラスター *node1* と *node2* があると仮定します。 ノード プールをアップグレードします。
   - 2 つの追加ノード *node3* と *node4* が作成されて、それぞれにテイントが渡されます。
   - 元の *node1* と *node2* は削除されます。
@@ -101,7 +100,7 @@ AKS でノード プールをスケーリングするとき、テイントと容
 大容量メモリを装備したノードの例を見てみましょう。 これらのノードでは、大量のメモリを要求するポッドを優先させることができます。 リソースがアイドル状態で放置されないように、他のポッドの実行も許可します。
 
 ```console
-kubectl label node aks-nodepool1 hardware:highmem
+kubectl label node aks-nodepool1 hardware=highmem
 ```
 
 ポッドの仕様に、ノードで設定されているラベルと一致するノード セレクターを定義する `nodeSelector` プロパティを追加します。
@@ -122,7 +121,7 @@ spec:
       limits:
         cpu: 4.0
         memory: 16Gi
-    nodeSelector:
+  nodeSelector:
       hardware: highmem
 ```
 
@@ -198,3 +197,4 @@ Kubernetes スケジューラでワークロードを論理的に分離する最
 [aks-best-practices-cluster-isolation]: operator-best-practices-cluster-isolation.md
 [aks-best-practices-identity]: operator-best-practices-identity.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
+[taint-node-pool]: use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool

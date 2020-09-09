@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.date: 04/01/2020
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 6547bcf2061213cd01550367171d432900693ea5
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 74870d10348421bf726b9bdc58504a74cf4105a9
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584147"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129927"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Azure への VMware VM のレプリケーションを有効にする
 
@@ -106,9 +106,9 @@ VMware 仮想マシンをレプリケートする場合、次の点に注意し�
    :::image type="content" source="./media/vmware-azure-enable-replication/vmproperties.png" alt-text="[コンピューティングとネットワークのプロパティ] ウィンドウ":::
 
    - **Azure VM 名**:必要に応じて、Azure の要件を満たすように名前を変更します。
-   - **ターゲット VM のサイズまたは VM の種類**:既定の VM サイズは、ターゲットとなる Azure リージョン内のディスク数、NIC 数、CPU コア数、メモリ、利用可能な VM ロール サイズを含むパラメーターに基づいて選択されます。 Azure Site Recovery では、すべての条件を満たす最初の使用可能な VM サイズが選択されます。 必要に応じて、フェールオーバーの前にいつでも、別の VM サイズを選択することができます。 VM ディスクのサイズは、ソース ディスクのサイズにも基づいており、フェールオーバー後にしか変更できません。 ディスク サイズと IOPS レートの詳細については、「[Windows 上の VM ディスクのスケーラビリティおよびパフォーマンスの目標](/azure/virtual-machines/windows/disk-scalability-targets)」をご覧ください。
-   - **[リソース グループ]** :フェールオーバー後に仮想マシンが属する[リソース グループ](/azure/azure-resource-manager/management/overview#resource-groups)を選択できます。 この設定は、フェールオーバー前であればいつでも変更できます。 フェールオーバー後に、仮想マシンを別のリソース グループに移行すると、その仮想マシンの保護設定が解除されます。
-   - **可用性セット**:仮想マシンがフェールオーバー後に[可用性セット](/azure/virtual-machines/windows/tutorial-availability-sets)に属する必要がある場合は、可用性セットを選択できます。 可用性セットを選択するときは、以下のことに注意してください。
+   - **ターゲット VM のサイズまたは VM の種類**:既定の VM サイズは、ターゲットとなる Azure リージョン内のディスク数、NIC 数、CPU コア数、メモリ、利用可能な VM ロール サイズを含むパラメーターに基づいて選択されます。 Azure Site Recovery では、すべての条件を満たす最初の使用可能な VM サイズが選択されます。 必要に応じて、フェールオーバーの前にいつでも、別の VM サイズを選択することができます。 VM ディスクのサイズは、ソース ディスクのサイズにも基づいており、フェールオーバー後にしか変更できません。 ディスク サイズと IOPS レートの詳細については、「[Windows 上の VM ディスクのスケーラビリティおよびパフォーマンスの目標](../virtual-machines/windows/disk-scalability-targets.md)」をご覧ください。
+   - **[リソース グループ]** :フェールオーバー後に仮想マシンが属する[リソース グループ](../azure-resource-manager/management/overview.md#resource-groups)を選択できます。 この設定は、フェールオーバー前であればいつでも変更できます。 フェールオーバー後に、仮想マシンを別のリソース グループに移行すると、その仮想マシンの保護設定が解除されます。
+   - **可用性セット**:仮想マシンがフェールオーバー後に[可用性セット](../virtual-machines/windows/tutorial-availability-sets.md)に属する必要がある場合は、可用性セットを選択できます。 可用性セットを選択するときは、以下のことに注意してください。
      - 指定されたリソース グループに属している可用性セットだけが一覧表示されます。
      - 異なる仮想ネットワーク上にある VM が同じ可用性セットに属することはできません。
      - 同じサイズの仮想マシンだけが同じ可用性セットに属することができます。

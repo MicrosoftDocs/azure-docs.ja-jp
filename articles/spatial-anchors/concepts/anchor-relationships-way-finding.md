@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f2fd8f4b7d03be8822c3ec12e2be589054942ce3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 13c85dff40e266287d893d9e45b32a66a33f027e
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74270598"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006015"
 ---
 # <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>Azure Spatial Anchors でのアンカーのリレーションシップとウェイファインディング
 
@@ -73,7 +73,7 @@ ms.locfileid: "74270598"
 
 ### <a name="verify-anchor-connections"></a>アンカーの接続を検証する
 
-このアプリは、近くのアンカーへのクエリを発行することによって、2 つのアンカーが接続されていることを検証できます。 そのクエリの結果にターゲットのアンカーが含まれている場合は、アンカーの接続が検証されました。 アンカーが接続されていない場合、アプリは再度その接続を試みることができます。
+このアプリでは、近くのアンカーへのクエリを発行することによって、2 つのアンカーが接続されていることを検証できます。これを行うには、`CloudSpatialAnchorWatcher` で `NearAnchorCriteria` を設定します。 そのクエリの結果にターゲットのアンカーが含まれている場合は、アンカーの接続が検証されました。 アンカーが接続されていない場合、アプリは再度その接続を試みることができます。
 
 アンカーが接続に失敗する可能性のあるいくつかの理由を次に示します。
 

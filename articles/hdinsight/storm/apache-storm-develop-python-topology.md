@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
-ms.custom: hdinsightactive,hdiseo17may2017
+ms.topic: how-to
+ms.custom: hdinsightactive,hdiseo17may2017, devx-track-python
 ms.date: 12/16/2019
-ms.openlocfilehash: 20e4827b1a86bff338646ef71f0dd732255c09c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1f062a8f358ac311b53e657fb5714583458bd9b5
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77460026"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87872584"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>HDInsight での Python を使用した Apache Storm トポロジの開発
 

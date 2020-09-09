@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory と GitHub の統合 | Microsoft Docs
 description: Azure Active Directory と GitHub の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 8761f5ca-c57c-4a7e-bf14-ac0421bd3b5e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 08/07/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e812e1b03637a3ecd7a45f02664c4e3547f1aef1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7153a1279785cfe79d23b2b5ba843ec9f5cd4965
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79138979"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550746"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と GitHub の統合
 
@@ -45,7 +41,7 @@ GitHub と Azure AD の統合を構成するには、次のものが必要です
 * GitHub では、**SP** によって開始される SSO がサポートされます
 
 * GitHub では、[**自動化された**ユーザー プロビジョニング (組織の招待)](github-provisioning-tutorial.md) がサポートされます
-* GitHub を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
+* GitHub を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 ## <a name="adding-github-from-the-gallery"></a>ギャラリーからの GitHub の追加
 
@@ -57,7 +53,6 @@ Azure AD への GitHub の統合を構成するには、ギャラリーから管
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**GitHub**」と入力します。
 1. 結果のパネルから **[GitHub]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-github"></a>GitHub の Azure AD シングル サインオンの構成とテスト
 
@@ -84,14 +79,17 @@ GitHub で Azure AD SSO を構成してテストするには、次の構成要�
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-   a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://github.com/orgs/<entity-id>/sso`
+   a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://github.com/orgs/<Organization ID>/sso`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://github.com/orgs/<entity-id>`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://github.com/orgs/<Organization ID>`
+
+    c. **[応答 URL]** ボックスに、`https://github.com/orgs/<Organization ID>/saml/consume` のパターンを使用して URL を入力します
+
 
     > [!NOTE]
-    > これは実際の値ではないので注意してください。 実際のサインオン URL と識別子で、これらの値を更新する必要があります。 ここでは、識別子に一意の文字列値を使用することをお勧めします。 これらの値を取得するには、GitHub 管理者セクションに移動します。
+    > これは実際の値ではないので注意してください。 実際のサインオン URL、識別子、および応答 URL で値を更新する必要があります。 ここでは、識別子に一意の文字列値を使用することをお勧めします。 これらの値を取得するには、GitHub 管理者セクションに移動します。
 
-5. GitHub アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 GitHub アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+5. GitHub アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **[Unique User Identifier (Name ID)]\(一意のユーザー ID (名前 ID)\)** は **user.userprincipalname** にマップされています。 GitHub アプリケーションでは、 **[Unique User Identifier (Name ID)]\(一意のユーザー ID (名前 ID)\)** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![image](common/edit-attribute.png)
 
@@ -137,27 +135,37 @@ GitHub で Azure AD SSO を構成してテストするには、次の構成要�
 
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
-1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
+
+    ![ユーザー ロール](./media/github-tutorial/user-role.png)
+
+    > [!NOTE]
+    > **[ロールの選択]** オプションは無効になります。選択したユーザーの既定のロールは "ユーザー" です。
+
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ## <a name="configure-github-sso"></a>GitHub の SSO の構成
 
-1. 別の Web ブラウザー ウィンドウで、GitHub 組織サイトに管理者としてログインします。
+1. 別の Web ブラウザー ウィンドウで、GitHub 組織サイトに管理者としてサインインします。
 
-2. **[設定]** に移動し、 **[セキュリティ]** をクリックします。
+2. **[Settings]\(設定\)** に移動し、 **[Security]\(セキュリティ\)** をクリックします。
 
-    ![設定](./media/github-tutorial/tutorial_github_config_github_03.png)
+    ![設定](./media/github-tutorial/security.png)
 
-3. **[Enable SAML authentication (SAML 認証を有効にする)]** チェック ボックスをオンにして、シングル サインオンの構成フィールドを表示します。 次に、シングル サインオン URL 値を使用して、Azure AD 構成でシングル サインオン URL を更新します。
+3. **[Enable SAML authentication (SAML 認証を有効にする)]** チェック ボックスをオンにして、シングル サインオンの構成フィールドを表示します。 次の手順に従います。
 
-    ![設定](./media/github-tutorial/tutorial_github_config_github_13.png)
+    ![設定](./media/github-tutorial/saml-sso.png)
+
+    a. **シングル サインオン URL** の値をコピーして、この値を、Azure portal の **[基本的な SAML 構成]** の **[サインオン URL]** テキスト ボックスに貼り付けます。
+    
+    b. **アサーション コンシューマー サービス URL** の値をコピーして、この値を、Azure portal の **[基本的な SAML 構成]** にある **[返信 URL]** テキスト ボックスに貼り付けます。
 
 4. 次のフィールドを構成します。
 
-    ![設定](./media/github-tutorial/tutorial_github_config_github_051.png)
+    ![設定](./media/github-tutorial/configure.png)
 
-    a. **[シングル サインオン URL]** テキストボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    a. **[Sign on URL]\(シングル サインオン URL\)** テキストボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
-    b. **[発行者]** テキストボックスに、Azure portal からコピーした、**Azure AD ID** の値を貼り付けます。
+    b. **[Issuer](発行者\)** テキストボックスに、Azure portal からコピーした、**Azure AD ID** の値を貼り付けます。
 
     c. Azure Portal からダウンロードした証明書 をメモ帳で開き、その内容を **[Public Certificate]\(公開証明書\)** ボックスに貼り付けます。
 
@@ -169,9 +177,9 @@ GitHub で Azure AD SSO を構成してテストするには、次の構成要�
 
 5. **[Test SAML configuration (SAML 構成のテスト)]** をクリックして、SSO の際に検証の失敗やエラーがないことを確認します。
 
-    ![設定](./media/github-tutorial/tutorial_github_config_github_06.png)
+    ![設定](./media/github-tutorial/test.png)
 
-6. **[保存]**
+6. **[Save]\(保存\)**
 
 > [!NOTE]
 > GitHub でのシングル サインオンは GitHub で特定の組織を認証するものです。GitHub そのものの認証に取って代わることはできません。 つまり、ユーザーの github.com セッションの有効期限が切れた場合は、シングル サインオン プロセス中に GitHub の ID とパスワードで認証するように求められることがあります。
@@ -184,23 +192,23 @@ GitHub で Azure AD SSO を構成してテストするには、次の構成要�
 
 1. GitHub 企業サイトに管理者としてログインします。
 
-2. **[ユーザー]** をクリックします。
+2. **[People]\(ユーザー\)** をクリックします。
 
-    ![ユーザー](./media/github-tutorial/tutorial_github_config_github_08.png "ユーザー")
+    ![ユーザー](./media/github-tutorial/people.png "ユーザー")
 
-3. **[メンバーの招待]** をクリックします。
+3. **[Invite member]\(メンバーの招待\)** をクリックします。
 
-    ![ユーザーの招待](./media/github-tutorial/tutorial_github_config_github_09.png "ユーザーの招待")
+    ![ユーザーの招待](./media/github-tutorial/invite-member.png "ユーザーの招待")
 
-4. **[メンバーの招待]** ダイアログ ページで、次の手順を実行します。
+4. **[Invite member]\(メンバーの招待\)** ダイアログ ページで、次の手順を実行します。
 
-    a. **[Email (電子メール)]** ボックスに、Britta Simon アカウントの電子メール アドレスを入力します。
+    a. **[Email]\(電子メール\)** ボックスに、Britta Simon アカウントの電子メール アドレスを入力します。
 
-    ![ユーザーの招待](./media/github-tutorial/tutorial_github_config_github_10.png "[ユーザーの招待]")
+    ![ユーザーの招待](./media/github-tutorial/email-box.png "[ユーザーの招待]")
 
-    b. **[Send Invitation (招待状の送信)]** をクリックします。
+    b. **[Send Invitation]\(招待状の送信\)** をクリックします。
 
-    ![ユーザーの招待](./media/github-tutorial/tutorial_github_config_github_11.png "[ユーザーの招待]")
+    ![ユーザーの招待](./media/github-tutorial/send-invitation.png "[ユーザーの招待]")
 
     > [!NOTE]
     > Azure Active Directory アカウント所有者がメールを受信し、リンクに従ってアカウントを確認するとそのアカウントがアクティブになります。

@@ -1,5 +1,5 @@
 ---
-title: SAP NetWeaver のための Azure Virtual Machines 高可用性 | Microsoft Docs
+title: SAP NetWeaver のための Azure Virtual Machines 高可用性
 description: Azure Virtual Machines (VM) 上の SAP NetWeaver の高可用性ガイド
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8a881f1cbc93d4774e25833a5c57b4727cc2e4be
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: dbdbae3d310d6e4c3224663dd523cb124744dfbd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594833"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080184"
 ---
-# <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines 高可用性
+# <a name="high-availability-azure-virtual-machines-for-sap-netweaver"></a>SAP NetWeaver のための高可用性 Azure Virtual Machines
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -36,7 +36,7 @@ ms.locfileid: "82594833"
 [azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 [azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
-[dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
+[dbms-guide]:dbms-guide.md
 
 [deployment-guide]:deployment-guide.md
 
@@ -171,7 +171,7 @@ Azure Virtual Machines は、最短時間で、時間のかかる調達サイク
 ## <a name="prerequisites"></a><a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a> 前提条件
 始める前に、次のセクションで説明されている前提条件が満たされていることを確認してください。 また、「[リソース][sap-ha-guide-2]」セクションに一覧表示されているすべてのリソースをご確認ください。
 
-この記事では、[Managed Disks を使用した 3 層 SAP NetWeaver](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md/) 用の Azure Resource Manager テンプレートを使用します。 SAP Azure Resource Manager テンプレートの概要については、「[Running SAP Applications on the Microsoft Platform](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/)」(Microsoft プラットフォームでの SAP アプリケーションの実行) を参照してください。
+この記事では、[Managed Disks を使用した 3 層 SAP NetWeaver](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md/) 用の Azure Resource Manager テンプレートを使用します。 SAP Azure Resource Manager テンプレートの概要については、「[Running SAP Applications on the Microsoft Platform](/archive/blogs/saponsqlserver/azure-quickstart-templates-for-sap)」(Microsoft プラットフォームでの SAP アプリケーションの実行) を参照してください。
 
 ## <a name="resources"></a><a name="42b8f600-7ba3-4606-b8a5-53c4f026da08"></a> リソース
 Azure での SAP のデプロイについては、以下の記事で説明されています。
@@ -238,7 +238,7 @@ Windows Server フェールオーバー クラスタリングを使用すると�
 * **ノードおよびディスク マジョリティ**。 各ノードとクラスター記憶域の指定されたディスク (ディスク監視) が投票できます。ただし、これらが使用可能であり、通信している必要があります。 クラスターは、投票数が過半数の場合にのみ機能します。 このモードは、ノード数が偶数のクラスター環境で有効です。 半数のノードとディスクがオンラインの場合、クラスターは正常な状態を維持します。
 * **ノードおよびファイル共有マジョリティ**。 各ノードと、管理者が作成した指定ファイル共有 (ファイル共有監視) が投票できます。ノードとファイル共有が使用可能であるかどうかや、通信しているかどうかは問いません。 クラスターは、投票数が過半数の場合にのみ機能します。 このモードは、ノード数が偶数のクラスター環境で有効です。 ノードおよびディスク マジョリティ モードと似ていますが、監視ディスクではなく監視ファイル共有を使用します。 このモードは、実装は簡単ですが、ファイル共有自体が高可用性でない場合、単一障害点になる可能性があります。
 * **マジョリティなし:ディスクのみ**。 1 つのノードが使用可能であり、クラスター記憶域内の特定のディスクと通信していれば、クラスターはクォーラムを獲得します。 また、そのディスクと通信しているノードだけがクラスターに参加できます。 このモードは使用しないことをお勧めします。
- 
+
 
 ## <a name="windows-server-failover-clustering-on-premises"></a><a name="fdfee875-6e66-483a-a343-14bbaee33275"></a> Windows Server フェールオーバー クラスタリング オンプレミス
 図 1 は、2 ノードのクラスターを示しています。 ノード間のネットワーク接続で障害が発生し、ノードは両方とも稼働している場合、クォーラム ディスクまたはファイル共有により、クラスターのアプリケーションとサービスの提供を続けるノードが決まります。 クォーラム ディスクまたはファイル共有にアクセスできるノードが、サービスを維持するノードです。
@@ -320,7 +320,7 @@ SAP アプリケーション サーバー インスタンスをホストする�
 * すべての仮想マシンは、同じアップグレード ドメインの一部になります。 たとえば、アップグレード ドメインでは、計画的メンテナンス ダウンタイムの間に仮想マシンが同時に更新されないことが保証されます。
 * すべての仮想マシンは、同じ障害ドメインの一部になります。 たとえば、障害ドメインでは、単一障害点によってすべての仮想マシンの可用性が影響を受けないように仮想マシンがデプロイされることが保証されます。
 
-[仮想マシンの可用性を管理][virtual-machines-manage-availability]する方法の詳細を参照してください。
+[仮想マシンの可用性の管理][../manage-availability.md] 方法を参照してください。
 
 アンマネージド ディスクのみ:Azure ストレージ アカウントが単一障害点になる可能性があるため、少なくとも 2 つの Azure ストレージ アカウントを用意し、それぞれにおいて少なくとも 2 つの仮想マシンに分散させることが重要です。 理想的な設定としては、SAP ダイアログ インスタンスを実行する各仮想マシンのディスクを、異なるストレージ アカウントにデプロイします。
 
@@ -771,7 +771,7 @@ SAP ASCS/SCS インスタンスの両方のクラスター ノードでレジス
 | 変数名 |`KeepAliveTime` |
 | 変数の型 |REG_DWORD (Decimal) |
 | 値 |120000 |
-| ドキュメントへのリンク |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
+| ドキュメントへのリンク |[https://technet.microsoft.com/library/cc957549.aspx](/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10)) |
 
 _**表 3:** 第 1 の TCP/IP パラメーターを変更する_
 
@@ -782,7 +782,7 @@ _**表 3:** 第 1 の TCP/IP パラメーターを変更する_
 | 変数名 |`KeepAliveInterval` |
 | 変数の型 |REG_DWORD (Decimal) |
 | 値 |120000 |
-| ドキュメントへのリンク |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
+| ドキュメントへのリンク |[https://technet.microsoft.com/library/cc957548.aspx](/previous-versions/windows/it-pro/windows-2000-server/cc957548(v=technet.10)) |
 
 _**表 4:** 第 2 の TCP/IP パラメーターを変更する_
 

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: a385d3ed7ef46389f96de72c98ffc29cebf60ec4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c51e67dcc3536a3083179451743b1c97cf618dae
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235487"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004870"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Azure PowerShell を使用した Azure Cache for Redis の管理
 > [!div class="op_single_selector"]
@@ -31,22 +31,29 @@ ms.locfileid: "79235487"
 ## <a name="prerequisites"></a>前提条件
 Azure PowerShell をインストール済みである場合、Azure PowerShell Version 1.0.0 以降であることが必要です。 インストールした Azure PowerShell のバージョンは、Azure PowerShell コマンド プロンプトで次のコマンドを使用して確認できます。
 
+```azurepowershell
     Get-Module Az | format-table version
-
+```
 
 まず、次のコマンドで Azure にログインする必要があります。
 
+```azurepowershell
     Connect-AzAccount
+```
 
 Microsoft Azure のサインイン ダイアログで、Azure アカウントの電子メール アドレスとそのパスワードを指定します。
 
 次に、Azure サブスクリプションが複数ある場合は、使用する Azure サブスクリプションを設定する必要があります。 現在のサブスクリプションを一覧表示するには、次のコマンドを実行します。
 
+```azurepowershell
     Get-AzSubscription | sort SubscriptionName | Select SubscriptionName
+```
 
 サブスクリプションを指定するには、次のコマンドを実行します。 次の例では、サブスクリプション名は `ContosoSubscription`です。
 
+```azurepowershell
     Select-AzSubscription -SubscriptionName ContosoSubscription
+```
 
 Azure リソース マネージャーで Windows PowerShell を使用するには、以下が必要です。
 
@@ -54,11 +61,15 @@ Azure リソース マネージャーで Windows PowerShell を使用するに�
 
 このチュートリアルに表示されているコマンドレットの詳しいヘルプを確認には、Get-Help コマンドレットを使用します。
 
+```azurepowershell
     Get-Help <cmdlet-name> -Detailed
+```
 
 たとえば、 `New-AzRedisCache` コマンドレットについてのヘルプを確認するには、次のように入力します。
 
+```azurepowershell
     Get-Help New-AzRedisCache -Detailed
+```
 
 ### <a name="how-to-connect-to-other-clouds"></a>他のクラウドに接続する方法
 既定では、Azure 環境はグローバル Azure クラウド インスタンスを表す `AzureCloud`です。 別のインスタンスに接続するには、`Connect-AzAccount` コマンドと `-Environment` または -`EnvironmentName` コマンド ライン スイッチを使用し、任意の環境または環境名を指定します。
@@ -68,11 +79,15 @@ Azure リソース マネージャーで Windows PowerShell を使用するに�
 ### <a name="to-connect-to-the-azure-government-cloud"></a>Azure Government Cloud に接続するには
 Azure Government Cloud に接続するには、次のいずれかのコマンドを使用します。
 
+```azurepowershell
     Connect-AzAccount -EnvironmentName AzureUSGovernment
+```
 
 or
 
+```azurepowershell
     Connect-AzAccount -Environment (Get-AzEnvironment -Name AzureUSGovernment)
+```
 
 Azure Government Cloud でキャッシュを作成するには、次のいずれかの場所を使用します。
 
@@ -84,11 +99,15 @@ Azure Government Cloud の詳細については、「[Microsoft Azure Government
 ### <a name="to-connect-to-the-azure-china-cloud"></a>Azure China Cloud に接続するには
 Azure China Cloud に接続するには、次のいずれかのコマンドを使用します。
 
+```azurepowershell
     Connect-AzAccount -EnvironmentName AzureChinaCloud
+```
 
 or
 
+```azurepowershell
     Connect-AzAccount -Environment (Get-AzEnvironment -Name AzureChinaCloud)
+```
 
 Azure China Cloud でキャッシュを作成するには、次のいずれかの場所を使用します。
 
@@ -100,12 +119,15 @@ Azure China Cloud の詳細については、 [中国の 21Vianet が運営し�
 ### <a name="to-connect-to-microsoft-azure-germany"></a>Microsoft Azure Germany に接続するには
 Microsoft Azure Germany に接続するには、次のいずれかのコマンドを使用します。
 
+```azurepowershell
     Connect-AzAccount -EnvironmentName AzureGermanCloud
-
+```
 
 or
 
+```azurepowershell
     Connect-AzAccount -Environment (Get-AzEnvironment -Name AzureGermanCloud)
+```
 
 Microsoft Azure Germany でキャッシュを作成するには、次のいずれかの場所を使用します。
 
@@ -161,6 +183,7 @@ Azure Cache for Redis インスタンスを新規作成するには、[New-AzRed
 
 `New-AzRedisCache`で使用可能なパラメーターとその説明の一覧を表示するには、次のコマンドを実行します。
 
+```azurepowershell
     PS C:\> Get-Help New-AzRedisCache -detailed
 
     NAME
@@ -232,27 +255,36 @@ Azure Cache for Redis インスタンスを新規作成するには、[New-AzRed
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+```
 
 既定のパラメーターを使用してキャッシュを作成するには、次のコマンドを実行します。
 
+```azurepowershell
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US"
+```
 
 `ResourceGroupName`、`Name`、`Location` は必須のパラメーターですが、他のパラメーターは省略可能で、それぞれに既定値があります。 前述のコマンドを実行すると、Standard SKU の Azure Cache for Redis インスタンスが作成され、指定した名前、場所、リソース グループが設定されます。サイズは 1 GB に設定され、非 SSL ポートは無効になっています。
 
 Premium キャッシュを作成する場合は、P1 (6 GB ～ 60 GB)、P2 (13 GB ～ 130 GB)、P3 (26 GB ～ 260 GB)、P4 (53 GB ～ 530 GB) のいずれかのサイズを指定します。 クラスタリングを有効にする場合は、`ShardCount` パラメーターを使用してシャード数を指定します。 次の例では、3 つのシャードを指定して P1 の Premium キャッシュを作成しています。 P1 Premium キャッシュはサイズが 6 GB です。3 つのシャードを指定したため、合計サイズは 18 GB (3 x 6 GB) です。
 
+```azurepowershell
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -Sku Premium -Size P1 -ShardCount 3
+```
 
 `RedisConfiguration` の値を指定する場合は、`@{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}` のように、キー/値のペアとして値を `{}` で囲みます。 次の例では、`allkeys-random` に設定された maxmemory ポリシーと `KEA` に設定されたキースペース通知を使用して、Standard の 1 GB のキャッシュを作成しています。 詳細については、「[キースペース通知 (詳細設定)](cache-configure.md#keyspace-notifications-advanced-settings)」および「[メモリ ポリシー](cache-configure.md#memory-policies)」をご覧ください。
 
+```azurepowershell
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -RedisConfiguration @{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}
+```
 
 <a name="databases"></a>
 
 ## <a name="to-configure-the-databases-setting-during-cache-creation"></a>キャッシュの作成時にデータベースの設定を構成するには
 `databases` の設定は、キャッシュの作成中にのみ構成することができます。 次の例では、[New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/New-azRedisCache) コマンドレットを使用して、48 のデータベースを持つ Premium P3 (26 GB) のキャッシュを作成します。
 
+```azurepowershell
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -Sku Premium -Size P3 -RedisConfiguration @{"databases" = "48"}
+```
 
 `databases` プロパティの詳細については、「[Default Azure Cache for Redis server configuration](cache-configure.md#default-redis-server-configuration)」 (既定の Azure Cache for Redis サーバー構成) をご覧ください。 [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache) コマンドレットを使用してキャッシュを作成する方法の詳細については、上記の「Azure Cache for Redis を作成するには」のセクションをご覧ください。
 
@@ -261,6 +293,7 @@ Azure Cache for Redis インスタンスを更新するには、[Set-AzRedisCach
 
 `Set-AzRedisCache`で使用可能なパラメーターとその説明の一覧を表示するには、次のコマンドを実行します。
 
+```azurepowershell
     PS C:\> Get-Help Set-AzRedisCache -detailed
 
     NAME
@@ -312,12 +345,15 @@ Azure Cache for Redis インスタンスを更新するには、[Set-AzRedisCach
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+```
 
 `Set-AzRedisCache` コマンドレットを使用して、`Size`、`Sku`、`EnableNonSslPort`、`RedisConfiguration` の値などのプロパティを更新できます。 
 
 次のコマンドを実行すると、myCache という名前の Azure Cache for Redis の maxmemory-policy が更新されます。
 
+```azurepowershell
     Set-AzRedisCache -ResourceGroupName "myGroup" -Name "myCache" -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"}
+```
 
 <a name="scale"></a>
 
@@ -340,10 +376,13 @@ Azure Cache for Redis インスタンスを更新するには、[Set-AzRedisCach
 
 次の例は、 `myCache` という名前のキャッシュを 2.5 GB のキャッシュにスケーリングする方法を示しています。 このコマンドは、Basic と Standard の両方のキャッシュで使用できます。
 
+```azurepowershell
     Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
+```
 
 このコマンドが発行されると、キャッシュの状態が返されます ( `Get-AzRedisCache`の呼び出しと同様です)。 `ProvisioningState` が `Scaling` である点に注目してください。
 
+```azurepowershell
     PS C:\> Set-AzRedisCache -Name myCache -ResourceGroupName myGroup -Size 2.5GB
 
 
@@ -370,16 +409,20 @@ Azure Cache for Redis インスタンスを更新するには、[Set-AzRedisCach
     StaticIP           :
     TenantSettings     : {}
     ShardCount         :
+```
 
 スケーリング処理が完了すると、`ProvisioningState` は `Succeeded` に変わります。 Basic から Standard に変更した後にサイズを変更するなど、前の操作に続けてスケーリング操作の実行が必要になる場合は、前の操作が完了するまで待つ必要があります。そうでないと、次のようなエラーが表示されます。
 
+```azurepowershell
     Set-AzRedisCache : Conflict: The resource '...' is not in a stable state, and is currently unable to accept the update request.
+```
 
 ## <a name="to-get-information-about-an-azure-cache-for-redis"></a>Azure Cache for Redis についての情報を取得するには
 [Get-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/get-azrediscache) コマンドレットを使用してキャッシュに関する情報を取得できます。
 
 `Get-AzRedisCache`で使用可能なパラメーターとその説明の一覧を表示するには、次のコマンドを実行します。
 
+```azurepowershell
     PS C:\> Get-Help Get-AzRedisCache -detailed
 
     NAME
@@ -416,17 +459,23 @@ Azure Cache for Redis インスタンスを更新するには、[Set-AzRedisCach
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+```
 
 現在のサブスクリプションのすべてのキャッシュに関する情報を取得するには、パラメーターを指定せずに `Get-AzRedisCache` を実行します。
 
+```azurepowershell
     Get-AzRedisCache
+```
 
 特定のリソース グループのすべてのキャッシュに関する情報を取得するには、`ResourceGroupName` パラメーターを指定して `Get-AzRedisCache` を実行します。
 
+```azurepowershell
     Get-AzRedisCache -ResourceGroupName myGroup
+```
 
 特定のキャッシュに関する情報を取得するには、キャッシュの名前を `Name` パラメーターに設定し、そのキャッシュが含まれているリソース グループを `ResourceGroupName` パラメーターに設定して、`Get-AzRedisCache` を実行します。
 
+```azurepowershell
     PS C:\> Get-AzRedisCache -Name myCache -ResourceGroupName myGroup
 
     Name               : mycache
@@ -450,12 +499,14 @@ Azure Cache for Redis インスタンスを更新するには、[Set-AzRedisCach
     StaticIP           :
     TenantSettings     : {}
     ShardCount         :
+```
 
 ## <a name="to-retrieve-the-access-keys-for-an-azure-cache-for-redis"></a>Azure Cache for Redis インスタンスのアクセス キーを取得するには
 キャッシュのアクセス キーを取得するには、 [Get-AzRedisCacheKey](https://docs.microsoft.com/powershell/module/az.rediscache/Get-azRedisCacheKey) コマンドレットを使用します。
 
 `Get-AzRedisCacheKey`で使用可能なパラメーターとその説明の一覧を表示するには、次のコマンドを実行します。
 
+```azurepowershell
     PS C:\> Get-Help Get-AzRedisCacheKey -detailed
 
     NAME
@@ -483,19 +534,23 @@ Azure Cache for Redis インスタンスを更新するには、[Set-AzRedisCach
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+```
 
 キャッシュのキーを取得するには、 `Get-AzRedisCacheKey` コマンドレットを呼び出し、キャッシュの名前と、そのキャッシュが含まれているリソース グループの名前を渡します。
 
+```azurepowershell
     PS C:\> Get-AzRedisCacheKey -Name myCache -ResourceGroupName myGroup
 
     PrimaryKey   : b2wdt43sfetlju4hfbryfnregrd9wgIcc6IA3zAO1lY=
     SecondaryKey : ABhfB757JgjIgt785JgKH9865eifmekfnn649303JKL=
+```
 
 ## <a name="to-regenerate-access-keys-for-your-azure-cache-for-redis"></a>Azure Cache for Redis インスタンスのアクセス キーを生成するには
 キャッシュのアクセス キーを再生成するには、 [New-AzRedisCacheKey](https://docs.microsoft.com/powershell/module/az.rediscache/New-azRedisCacheKey) コマンドレットを使用します。
 
 `New-AzRedisCacheKey`で使用可能なパラメーターとその説明の一覧を表示するには、次のコマンドを実行します。
 
+```azurepowershell
     PS C:\> Get-Help New-AzRedisCacheKey -detailed
 
     NAME
@@ -528,9 +583,11 @@ Azure Cache for Redis インスタンスを更新するには、[Set-AzRedisCach
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+```
 
 キャッシュのプライマリ キーまたはセカンダリ キーを再生成するには、`New-AzRedisCacheKey` コマンドレットを呼び出し、名前とリソース グループを渡して、`KeyType` パラメーターに `Primary` または `Secondary` を指定します。 次の例では、キャッシュのセカンダリ アクセス キーが再生成されます。
 
+```azurepowershell
     PS C:\> New-AzRedisCacheKey -Name myCache -ResourceGroupName myGroup -KeyType Secondary
 
     Confirm
@@ -540,12 +597,14 @@ Azure Cache for Redis インスタンスを更新するには、[Set-AzRedisCach
 
     PrimaryKey   : b2wdt43sfetlju4hfbryfnregrd9wgIcc6IA3zAO1lY=
     SecondaryKey : c53hj3kh4jhHjPJk8l0jji785JgKH9865eifmekfnn6=
+```
 
 ## <a name="to-delete-an-azure-cache-for-redis"></a>Azure Cache for Redis を削除するには
 Azure Cache for Redis を削除するには、[Remove-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/remove-azrediscache) コマンドレットを使用します。
 
 `Remove-AzRedisCache`で使用可能なパラメーターとその説明の一覧を表示するには、次のコマンドを実行します。
 
+```azurepowershell
     PS C:\> Get-Help Remove-AzRedisCache -detailed
 
     NAME
@@ -579,26 +638,30 @@ Azure Cache for Redis を削除するには、[Remove-AzRedisCache](https://docs
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+```
 
 次の例では、 `myCache` という名前のキャッシュが削除されます。
 
+```azurepowershell
     PS C:\> Remove-AzRedisCache -Name myCache -ResourceGroupName myGroup
 
     Confirm
     Are you sure you want to remove Azure Cache for Redis 'myCache'?
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
+```
 
 
 ## <a name="to-import-an-azure-cache-for-redis"></a>Azure Cache for Redis をインポートするには
 Azure Cache for Redis インスタンスにデータをインポートするには、`Import-AzRedisCache` コマンドレットを使用します。
 
 > [!IMPORTANT]
-> インポート/エクスポートは、 [Premium レベル](cache-premium-tier-intro.md) のキャッシュでのみ使用できます。 インポート/エクスポートの詳細については、「[Import and Export data in Azure Cache for Redis](cache-how-to-import-export-data.md)」 (Azure Cache for Redis でデータをインポートおよびエクスポートする) をご覧ください。
+> Import/Export は、[Premium レベル](cache-overview.md#service-tiers)のキャッシュでのみ使用できます。 インポート/エクスポートの詳細については、「[Import and Export data in Azure Cache for Redis](cache-how-to-import-export-data.md)」 (Azure Cache for Redis でデータをインポートおよびエクスポートする) をご覧ください。
 > 
 > 
 
 `Import-AzRedisCache`で使用可能なパラメーターとその説明の一覧を表示するには、次のコマンドを実行します。
 
+```azurepowershell
     PS C:\> Get-Help Import-AzRedisCache -detailed
 
     NAME
@@ -643,22 +706,26 @@ Azure Cache for Redis インスタンスにデータをインポートするに�
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+```
 
 
 次のコマンドは、SAS URI で指定された BLOB から Azure Cache for Redis にデータをインポートします。
 
+```azurepowershell
     PS C:\>Import-AzRedisCache -ResourceGroupName "resourceGroupName" -Name "cacheName" -Files @("https://mystorageaccount.blob.core.windows.net/mycontainername/blobname?sv=2015-04-05&sr=b&sig=caIwutG2uDa0NZ8mjdNJdgOY8%2F8mhwRuGNdICU%2B0pI4%3D&st=2016-05-27T00%3A00%3A00Z&se=2016-05-28T00%3A00%3A00Z&sp=rwd") -Force
+```
 
 ## <a name="to-export-an-azure-cache-for-redis"></a>Azure Cache for Redis をエクスポートするには
 Azure Cache for Redis インスタンスからデータをエクスポートするには、`Export-AzRedisCache` コマンドレットを使用します。
 
 > [!IMPORTANT]
-> インポート/エクスポートは、 [Premium レベル](cache-premium-tier-intro.md) のキャッシュでのみ使用できます。 インポート/エクスポートの詳細については、「[Import and Export data in Azure Cache for Redis](cache-how-to-import-export-data.md)」 (Azure Cache for Redis でデータをインポートおよびエクスポートする) をご覧ください。
+> Import/Export は、[Premium レベル](cache-overview.md#service-tiers)のキャッシュでのみ使用できます。 インポート/エクスポートの詳細については、「[Import and Export data in Azure Cache for Redis](cache-how-to-import-export-data.md)」 (Azure Cache for Redis でデータをインポートおよびエクスポートする) をご覧ください。
 > 
 > 
 
 `Export-AzRedisCache`で使用可能なパラメーターとその説明の一覧を表示するには、次のコマンドを実行します。
 
+```azurepowershell
     PS C:\> Get-Help Export-AzRedisCache -detailed
 
     NAME
@@ -702,24 +769,28 @@ Azure Cache for Redis インスタンスからデータをエクスポートす�
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+```
 
 
 次のコマンドは、Azure Cache for Redis インスタンスから、SAS URI で指定されたコンテナーにデータをエクスポートします。
 
-        PS C:\>Export-AzRedisCache -ResourceGroupName "resourceGroupName" -Name "cacheName" -Prefix "blobprefix"
-        -Container "https://mystorageaccount.blob.core.windows.net/mycontainer?sv=2015-04-05&sr=c&sig=HezZtBZ3DURmEGDduauE7
-        pvETY4kqlPI8JCNa8ATmaw%3D&st=2016-05-27T00%3A00%3A00Z&se=2016-05-28T00%3A00%3A00Z&sp=rwdl"
+```azurepowershell
+    PS C:\>Export-AzRedisCache -ResourceGroupName "resourceGroupName" -Name "cacheName" -Prefix "blobprefix"
+    -Container "https://mystorageaccount.blob.core.windows.net/mycontainer?sv=2015-04-05&sr=c&sig=HezZtBZ3DURmEGDduauE7
+    pvETY4kqlPI8JCNa8ATmaw%3D&st=2016-05-27T00%3A00%3A00Z&se=2016-05-28T00%3A00%3A00Z&sp=rwdl"
+```
 
 ## <a name="to-reboot-an-azure-cache-for-redis"></a>Azure Cache for Redis を再起動するには
 Azure Cache for Redis インスタンスを再起動するには、`Reset-AzRedisCache` コマンドレットを使用します。
 
 > [!IMPORTANT]
-> 再起動は、 [Premium レベル](cache-premium-tier-intro.md) のキャッシュでのみ使用できます。 キャッシュの再起動の詳細については、 [キャッシュ管理 - 再起動](cache-administration.md#reboot)に関するセクションをご覧ください。
+> 再起動は、[Premium レベル](cache-overview.md#service-tiers)のキャッシュでのみ使用できます。 キャッシュの再起動の詳細については、 [キャッシュ管理 - 再起動](cache-administration.md#reboot)に関するセクションをご覧ください。
 > 
 > 
 
 `Reset-AzRedisCache`で使用可能なパラメーターとその説明の一覧を表示するには、次のコマンドを実行します。
 
+```azurepowershell
     PS C:\> Get-Help Reset-AzRedisCache -detailed
 
     NAME
@@ -763,12 +834,15 @@ Azure Cache for Redis インスタンスを再起動するには、`Reset-AzRedi
             ErrorAction, ErrorVariable, WarningAction, WarningVariable,
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+```
 
 
 次のコマンドは、指定されたキャッシュの両方のノードを再起動します。
 
-        PS C:\>Reset-AzRedisCache -ResourceGroupName "resourceGroupName" -Name "cacheName" -RebootType "AllNodes"
-        -Force
+```azurepowershell
+    PS C:\>Reset-AzRedisCache -ResourceGroupName "resourceGroupName" -Name "cacheName" -RebootType "AllNodes"
+    -Force
+```
 
 
 ## <a name="next-steps"></a>次のステップ
@@ -778,6 +852,6 @@ Azure での Windows PowerShell の使用の詳細については、次のリソ
 * [Azure Resource Manager コマンドレットに関するページ](https://go.microsoft.com/fwlink/?LinkID=394765): Azure Resource Manager モジュールのコマンドレットを使用する方法について説明します。
 * [リソース グループを使用した Azure リソースの管理](../azure-resource-manager/templates/deploy-portal.md): Azure ポータルでリソース グループを作成して管理する方法について説明します。
 * [Azure blog (Azure のブログ)](https://azure.microsoft.com/blog/): Azure の新機能について説明します。
-* [Windows PowerShell blog (Windows PowerShell ブログ)](https://blogs.msdn.com/powershell): Windows PowerShell の新機能について説明します。
-* ["Hey, Scripting Guy!" ブログ](https://blogs.technet.com/b/heyscriptingguy/): 実践で使えるヒントとテクニックを Windows PowerShell コミュニティから得られます。
+* [Windows PowerShell blog (Windows PowerShell ブログ)](https://devblogs.microsoft.com/powershell/): Windows PowerShell の新機能について説明します。
+* ["Hey, Scripting Guy!" ブログ](https://blogs.technet.microsoft.com/heyscriptingguy/author/the-scripting-guys/): 実践で使えるヒントとテクニックを Windows PowerShell コミュニティから得られます。
 

@@ -2,13 +2,13 @@
 title: '[Azure にデプロイ] ボタン'
 description: Azure Resource Manager テンプレートを GitHub リポジトリからデプロイするためのボタンを使用する。
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: e403d095f7419ed13742dcfa8e8407a92ad10be0
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.date: 07/20/2020
+ms.openlocfilehash: 9fe69eba2a91bf19e0662ae071c222905c348666
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744088"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079463"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>デプロイ ボタンを使用して GitHub リポジトリからテンプレートをデプロイする
 
@@ -28,7 +28,11 @@ Web ページまたはリポジトリにボタンを追加するには、次の�
 
 ## <a name="create-url-for-deploying-template"></a>テンプレートをデプロイするための URL を作成する
 
-テンプレートの URL を作成するには、リポジトリ内のテンプレートの未加工の URL から開始します。
+テンプレートの URL を作成するには、リポジトリ内のテンプレートの未加工の URL から開始します。 未加工の URL を表示するには **[Raw]\(未フォーマット\)** を選択します。
+
+:::image type="content" source="./media/deploy-to-azure-button/select-raw.png" alt-text="[Raw]\(未フォーマット\) の選択":::
+
+URL の形式は、次のようになります。
 
 ```html
 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json

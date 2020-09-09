@@ -7,13 +7,13 @@ ms.service: mysql
 ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 04/28/2020
-ms.custom: mvc
-ms.openlocfilehash: 2e12da29a8388bf4a232930c3737be7ddce80d12
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: f32f6c4366aac1a39dbc1bc4af3b945e259b3280
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611944"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543539"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-powershell"></a>クイック スタート:PowerShell を使用して Azure Database for MySQL サーバーを作成する
 
@@ -139,7 +139,7 @@ mydemoserver.mysql.database.azure.com       myadmin
 
 ## <a name="connect-to-the-server-using-the-mysql-command-line-tool"></a>mysql コマンドライン ツールを使用してサーバーに接続する
 
-`mysql` コマンドライン ツールを使用してサーバーに接続します。 コマンドライン ツールをダウンロードしてインストールするには、「[MySQL コミュニティ ダウンロード](https://dev.mysql.com/downloads/shell/)」を参照してください。 また、この記事のコード サンプルにある **[試してみる]** ボタンを選択することにより、Azure Cloud Shell の `mysql` コマンドライン ツールのプレインストール バージョンにアクセスすることもできます。 Azure Cloud Shell にアクセスするその他の方法として、Azure portal の右上のツール バーにある **[>_]** を選択するか、[shell.azure.com](https://shell.azure.com/) にアクセスします。
+`mysql` コマンドライン ツールを使用してサーバーに接続します。 コマンドライン ツールをダウンロードしてインストールするには、「[MySQL コミュニティ ダウンロード](https://dev.mysql.com/downloads/shell/)」を参照してください。 また、この記事のコード サンプルにある **[使ってみる]** ボタンを選択することにより、Azure Cloud Shell の `mysql` コマンドライン ツールのプレインストール バージョンにアクセスすることもできます。 Azure Cloud Shell にアクセスするその他の方法として、Azure portal の右上のツール バーにある **[>_]** を選択するか、[shell.azure.com](https://shell.azure.com/) にアクセスします。
 
 1. `mysql` コマンドライン ツールを使用してサーバーに接続します。
 
@@ -237,4 +237,4 @@ Remove-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [PowerShell を使用して Azure Database for MySQL を設計する](tutorial-design-database-using-powershell.md)
+> [PowerShell を使用して接続文字列を生成する - Azure Database for MySQL](connect-powershell.md)

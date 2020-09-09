@@ -14,15 +14,15 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: c91d42f3445bb2ffc02366e6cb9ae49ec2db1be4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7a4655b20fabcc72e02037de05dd0ef7c4671e52
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75442750"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254913"
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>リビジョンを使用して互換性に影響しない変更を安全に行う
-API の準備が整って開発者に使用され始めると、その API の変更が必要になることがありますが、API の呼び出し元を混乱させないように注意する必要もあります。 また、行った変更内容を開発者に知らせると有効です。 Azure API Management で**リビジョン**を使用することで、これを実現できます。 詳細については、「[Versions & revisions (バージョンとリビジョン)](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/)」と「[API Versioning with Azure API Management (Azure API Management での API のバージョン管理)](https://blogs.msdn.microsoft.com/apimanagement/2017/09/13/api-versioning-with-azure-api-management/)」を参照してください。
+API の準備が整って開発者に使用され始めると、その API の変更が必要になることがありますが、API の呼び出し元を混乱させないように注意する必要もあります。 また、行った変更内容を開発者に知らせると有効です。 Azure API Management で**リビジョン**を使用することで、これを実現できます。 詳細については、「[Versions & revisions (バージョンとリビジョン)](https://azure.microsoft.com/blog/versions-revisions/)」と「[API Versioning with Azure API Management (Azure API Management での API のバージョン管理)](https://azure.microsoft.com/blog/api-versioning-with-azure-api-management/)」を参照してください。
 
 このチュートリアルでは、以下の内容を学習します。
 

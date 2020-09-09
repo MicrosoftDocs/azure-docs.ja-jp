@@ -6,22 +6,22 @@ author: cynthn
 ms.service: virtual-machines-windows
 ms.subservice: disks
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/02/2018
 ms.author: cynthn
-ms.openlocfilehash: 15df3178f2860fa066a82cb1429e0c1a6e5c2b08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cae29954211e62601debb35d76f938fb6a92779e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82083424"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284610"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>Windows VM のデータ ドライブとしての D: ドライブの使用
 D ドライブを使用してデータを格納する必要があるアプリケーションの場合、次の手順に従って一時ディスク用の別のドライブ文字を使用します。 維持する必要があるデータは、一時ディスクに格納しないでください。
 
 仮想マシンをサイズ変更する、または **停止 (割り当て解除)** する場合、新しいハイパーバイザーに対するその仮想マシンの配置がトリガーされる可能性があります。 計画済みまたは計画外メンテナンス イベントでも、この配置がトリガーされる可能性があります。 このシナリオで、一時ディスクに最初に利用可能なドライブ文字が再割り当てされます。 D: ドライブを使用する必要があるアプリケーションがある場合、次の手順を実行して pagefile.sys を一時的に移動し、新しいデータ ディスクをアタッチし、文字 D を割り当ててから、一時ドライブに pagefile.sys を戻す必要があります。 この手順を完了すると、VM が別のハイパーバイザーに移動した場合に Azure は D: を取り消さなくなります。
 
-Azure が一時ディスクを使用する方法については、 [Microsoft Azure Virtual Machines の一時ドライブの概要](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
+Azure が一時ディスクを使用する方法については、 [Microsoft Azure Virtual Machines の一時ドライブの概要](/archive/blogs/mast/understanding-the-temporary-drive-on-windows-azure-virtual-machines)
 
 ## <a name="attach-the-data-disk"></a>データ ディスクのアタッチ
 最初に、仮想マシンにデータ ディスクをアタッチする必要があります。 ポータルでこれを行う方法については、[Azure Portal でマネージド データ ディスクを接続する方法](attach-managed-disk-portal.md)に関する記事をご覧ください。
@@ -59,4 +59,3 @@ Azure が一時ディスクを使用する方法については、 [Microsoft Az
 
 ## <a name="next-steps"></a>次のステップ
 * [追加のデータ ディスクをアタッチする](attach-managed-disk-portal.md)ことで、仮想マシンに使用できるストレージを増やすことができます。
-

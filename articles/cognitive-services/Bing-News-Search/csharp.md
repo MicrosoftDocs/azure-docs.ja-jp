@@ -8,27 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 12/12/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: e6911c51ecfe1c8f6924bf403e9ad00e14558a09
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: seodec2018, devx-track-csharp
+ms.openlocfilehash: 36e4889100a1902b77791f5a437b539bee1ea84f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448476"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922176"
 ---
 # <a name="quickstart-search-for-news-using-c-and-the-bing-news-search-rest-api"></a>クイック スタート:C# と Bing News Search REST API を使用してニュースを検索する
 
-このクイック スタートを使用すると、Bing News Search API への最初の呼び出しを行い、JSON 応答を表示することができます。 このシンプルな C# アプリケーションは、新しい検索クエリを API に送信してその応答を表示します。 このサンプルのコード全体は、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingNewsSearchv7.cs) にあります。
+このクイックスタートを使用して、Bing News Search API を呼び出してみましょう。 このシンプルな C# アプリケーションは、ニュース検索クエリを API に送信して JSON 応答を表示します。 
 
-このアプリケーションは C# で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
+このアプリケーションは C# で記述されていますが、この API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
+
+このサンプルのコード全体は、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingNewsSearchv7.cs) にあります。
 
 ## <a name="prerequisites"></a>前提条件
 
 * [Visual Studio 2017 またはそれ以降](https://www.visualstudio.com/downloads/)の任意のエディション。
 * NuGet パッケージとして入手できる [Json.NET](https://www.newtonsoft.com/json) フレームワーク。
-* Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
+* Linux または MacOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
@@ -44,30 +46,33 @@ ms.locfileid: "75448476"
     using System.Collections.Generic;
     ```
 
-2. API エンドポイント、サブスクリプション キー、および検索用語の変数を作成します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
+2. API エンドポイント、サブスクリプション キー、および検索用語の変数を作成します。 次のコードのグローバル エンドポイントを使用するか、Azure portal に表示される、対象のリソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用することができます。
 
     ```csharp
     const string accessKey = "enter key here";
     const string uriBase = "https://api.cognitive.microsoft.com/bing/v7.0/news/search";
     const string searchTerm = "Microsoft";
     ```
-   ## <a name="create-a-struct-to-format-the-bing-news-search-response"></a>Bing News Search 応答の書式を設定する構造体の作成
+   
+## <a name="create-a-struct-to-format-the-bing-news-search-response"></a>Bing News Search 応答の書式を設定する構造体の作成
 
-1. 画像の検索結果と JSON ヘッダー情報を含む `SearchResult` 構造体を定義します。
+ニュースの検索結果と JSON ヘッダー情報を含む `SearchResult` 構造体を定義します。
 
-    ```csharp
-    struct SearchResult
-    {
-        public String jsonResult;
-        public Dictionary<String, String> relevantHeaders;
-    }
-    ```
+```csharp
+struct SearchResult
+{
+    public String jsonResult;
+    public Dictionary<String, String> relevantHeaders;
+}
+```
 
 ## <a name="create-and-handle-a-news-search-request"></a>ニュース検索要求の作成と処理
 
-`BingNewsSearch` という名前のメソッドを作成して API に対する呼び出しを実行し、以前に作成した`SearchResult` 構造体に戻り値の型を設定します。 このメソッドで次の手順を実行します。
+1. API に対する呼び出しを実行するための `BingNewsSearch()` という名前のメソッドを作成し、前に作成した `SearchResult` 構造体に戻り値の型を設定します。 
 
-1. 検索要求の URI を構築します。 文字列に追加する前に、検索用語 `toSearch` の書式を設定する必要がある点に注意してください。
+   次の手順で、このメソッドにコードを追加します。
+
+1. 検索要求の URI を構築します。 検索語句 `toSearch` は、書式を設定したうえで文字列に追加する必要があります。
 
     ```csharp
     static SearchResult BingNewsSearch(string toSearch){
@@ -76,7 +81,7 @@ ms.locfileid: "75448476"
     //...
     ```
 
-2. Web 要求を実行し、応答を JSON 文字列として取得します。
+1. Web 要求を実行し、応答を JSON 文字列として取得します。
 
     ```csharp
     WebRequest request = WebRequest.Create(uriQuery);
@@ -85,7 +90,7 @@ ms.locfileid: "75448476"
     string json = new StreamReader(response.GetResponseStream()).ReadToEnd();
     ```
 
-3. 検索結果オブジェクトを作成し、Bing HTTP ヘッダーを抽出します。 次に `searchResult` を返します。
+1. 検索結果オブジェクトを作成し、Bing HTTP ヘッダーを抽出します。 次に `searchResult` を返します。
 
     ```csharp
     // Create the result object for return
@@ -106,16 +111,16 @@ ms.locfileid: "75448476"
 
 ## <a name="process-the-response"></a>応答の処理
 
-1. メイン メソッドで `BingNewsSearch()` を呼び出し、返された応答を格納します。 次に、JSON をオブジェクトに逆シリアル化します。 その後、応答の値を表示することができます。
+メイン メソッドで `BingNewsSearch()` を呼び出し、返された応答を格納します。 次に、JSON をオブジェクトに逆シリアル化して、応答の値を表示できるようにします。
 
-    ```csharp
-    SearchResult result = BingNewsSearch(searchTerm);
-    //deserialize the JSON response
-    dynamic jsonObj = Newtonsoft.Json.JsonConvert.DeserializeObject(result.jsonResult);
-    Console.WriteLine(jsonObj["value"][0])
-    ```
+```csharp
+SearchResult result = BingNewsSearch(searchTerm);
+//deserialize the JSON response
+dynamic jsonObj = Newtonsoft.Json.JsonConvert.DeserializeObject(result.jsonResult);
+Console.WriteLine(jsonObj["value"][0])
+```
 
-## <a name="json-response"></a>JSON 応答
+## <a name="example-json-response"></a>JSON の応答例
 
 成功した応答は、次の例に示すように JSON で返されます。
 

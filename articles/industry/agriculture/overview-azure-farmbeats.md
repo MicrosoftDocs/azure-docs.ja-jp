@@ -5,19 +5,19 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 6f0a782309edc33a8a5ce661652922494ead2ec0
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 12bb0b0098b5108bf780b88fc42b86861ea6fcdc
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80667302"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439560"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Azure FarmBeats (プレビュー) の概要
 
 Azure FarmBeats は、Azure Marketplace で入手できる企業間オファリングです。 これにより、複数のプロバイダーにわたる農業データ セットを集約できます。 Azure FarmBeats を使用すると、合成したデータ セットに基づいて人工知能 (AI) または機械学習 (ML) モデルを構築できます。 Azure FarmBeats を使用することによって、農業関連産業は、Data Engineering という差別化につながらない煩雑な作業ではなく、核となる付加価値に注力できます。
 
 > [!NOTE]
-> 現在、Azure FarmBeats はパブリック プレビュー段階にあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 Azure FarmBeats は、サービス レベル アグリーメントなしに提供されます。 サポートについては、[Azure FarmBeats フォーラム](https://aka.ms/FarmBeatsMSDN )をご利用ください。
+> 現在、Azure FarmBeats はパブリック プレビュー段階にあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 Azure FarmBeats は、サービス レベル アグリーメントなしに提供されます。 サポートについては、[Azure FarmBeats サポート フォーラム](https://aka.ms/farmbeatssupport)をご利用ください。
 
 ![プロジェクト (Farm Beats)](./media/architecture-for-farmbeats/farmbeats-architecture-1.png)
 

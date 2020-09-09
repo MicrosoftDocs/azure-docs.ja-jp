@@ -3,7 +3,7 @@ title: Azure Media Services v3 コミュニティ概要
 description: この Azure Media Services コミュニティに関するページでは、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法について説明します。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/22/2020
-ms.author: juliako
-ms.openlocfilehash: ab775e8d93111f7494d2bf321216e2725c438fc8
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 5c54c3702dabf254e50068aadeac0992e3a20cb2
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828501"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262466"
 ---
-# <a name="azure-media-services-v3-community"></a>Azure Media Services v3 コミュニティ  
+# <a name="azure-media-services-v3-community"></a>Azure Media Services v3 コミュニティ
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]  
 
 この Azure Media Services コミュニティに関するページでは、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法について説明します。
 
@@ -40,7 +42,7 @@ ms.locfileid: "83828501"
 
 現在、Media Services チームの主要なコミュニティ フォーラムは MSDN です。
 
-[![MSDN](./media/media-services-community/msdn.png)](https://docs.microsoft.com/answers/topics/azure-media-services.html) 
+[![MSDN](./media/media-services-community/msdn.png)](/answers/topics/azure-media-services.html) 
 
 また同チームでは、Stack Overflow に "azure-media-services" タグで投稿された質問をモニタリングしています。
 

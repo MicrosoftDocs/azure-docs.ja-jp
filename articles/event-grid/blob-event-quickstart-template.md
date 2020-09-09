@@ -1,30 +1,28 @@
 ---
 title: BLOB ストレージ イベントを Web エンドポイントに送信する - テンプレート
 description: Azure Event Grid と Azure Resource Manager テンプレートを使用して BLOB ストレージ アカウントを作成し、そのイベントをサブスクライブします。 Webhook にイベントを送信します。
-services: event-grid
-keywords: ''
-author: spelluru
-ms.author: spelluru
-ms.date: 02/27/2020
+ms.date: 07/07/2020
 ms.topic: quickstart
-ms.service: event-grid
-ms.custom: subject-armqs
-ms.openlocfilehash: 86dc7a4ed05ceae5c7a641ffef23bd75ec48ceea
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 32fc17d1af552afa5a81fbc4a5973d69006742b9
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605550"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661267"
 ---
-# <a name="route-blob-storage-events-to-web-endpoint-by-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して BLOB ストレージ イベントを Web エンドポイントにルーティングする
+# <a name="route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>ARM テンプレートを使用して BLOB ストレージ イベントを Web エンドポイントにルーティングする
 
-Azure Event Grid は、クラウドのイベント処理サービスです。 この記事では、**Azure Resource Manager テンプレート**を使用して BLOB ストレージ アカウントを作成し、その BLOB ストレージのイベントをサブスクライブします。次に、イベントをトリガーして結果を表示します。 通常は、イベント データを処理し、アクションを実行するエンドポイントにイベントを送信します。 ただし、この記事では、単純化するために、メッセージを収集して表示する Web アプリにイベントを送信します。
+Azure Event Grid は、クラウドのイベント処理サービスです。 この記事では、Azure Resource Manager テンプレート (ARM テンプレート) を使用して BLOB ストレージ アカウントを作成し、その BLOB ストレージのイベントをサブスクライブします。次に、イベントをトリガーして結果を表示します。 通常は、イベント データを処理し、アクションを実行するエンドポイントにイベントを送信します。 ただし、この記事では、単純化するために、メッセージを収集して表示する Web アプリにイベントを送信します。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-event-grid-subscription-and-storage%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 
 ### <a name="create-a-message-endpoint"></a>メッセージ エンドポイントの作成
 
@@ -39,20 +37,19 @@ BLOB ストレージのイベントをサブスクライブする前に、イベ
 
    ![新しいサイトを表示する](./media/blob-event-quickstart-portal/view-site.png)
 
-## <a name="create-a-storage-account-with-an-event-grid-subscription"></a>Event Grid サブスクリプションを持つストレージ アカウントを作成する
+## <a name="review-the-template"></a>テンプレートを確認する
 
-### <a name="review-the-template"></a>テンプレートを確認する
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-event-grid-subscription-and-storage/)からのものです。
 
-このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage)からのものです。
-
-[!code-json[<Azure Resource Manager template create Blob storage Event Grid subscription>](~/quickstart-templates/101-event-grid-subscription-and-storage/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-event-grid-subscription-and-storage/azuredeploy.json":::
 
 テンプレートでは、次の 2 つの Azure リソースが定義されています。
 
 * [**Microsoft.Storage/storageAccounts**](/azure/templates/microsoft.storage/storageaccounts): Azure のストレージ アカウントを作成します。
-* [ **"Microsoft.Storage/storageAccounts/providers/eventSubscriptions**](/azure/templates/microsoft.eventgrid/eventsubscriptions): ストレージ アカウントの Azure Event Grid サブスクリプションを作成します。
+* [**Microsoft.EventGrid/systemTopics**](/azure/templates/microsoft.eventgrid/systemtopics): 指定されたストレージ アカウント名でシステム トピックを作成します。
+* [**Microsoft.EventGrid/systemTopics/eventSubscriptions**](/azure/templates/microsoft.eventgrid/systemtopics/eventsubscriptions): システム トピックの Azure Event Grid サブスクリプションを作成します。
 
-### <a name="deploy-the-template"></a>テンプレートのデプロイ
+## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
 1. Azure にサインインして、テンプレートを開くには、次のリンクを選択します。 このテンプレートを使用すると、キー コンテナーとシークレットが作成されます。
 
@@ -64,7 +61,7 @@ BLOB ストレージのイベントをサブスクライブする前に、イベ
   テンプレートをデプロイするために、ここでは Azure portal を使用します。 Azure PowerShell、Azure CLI、および REST API を使用することもできます。 他のデプロイ方法については、「[テンプレートのデプロイ](../azure-resource-manager/templates/deploy-powershell.md)」を参照してください。
 
 > [!NOTE]
-> その他の Azure Event Grid テンプレートのサンプルについては、[こちら](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid)を参照してください。
+> その他の Azure Event Grid テンプレートのサンプルについては、[こちら](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid&pageNumber=1&sort=Popular)を参照してください。
 
 ## <a name="validate-the-deployment"></a>デプロイの検証
 
@@ -89,7 +86,7 @@ BLOB ストレージのイベントをトリガーするには、ファイルを
 
 Azure Resource Manager テンプレートの詳細については、次の記事を参照してください。
 
-* [Azure Resource Manager のドキュメント](/azure/azure-resource-manager)
+* [Azure Resource Manager のドキュメント](../azure-resource-manager/index.yml)
 * [Azure Resource Manager テンプレートのリソースを定義する](/azure/templates/)
 * [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)
 * [Azure Event Grid テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid)。

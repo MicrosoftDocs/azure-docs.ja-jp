@@ -12,14 +12,15 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
-ms.openlocfilehash: 05581114ce54ed8e92c6457c95f73b20304e419e
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: a349f8160e8ab5b6459b2085e21e7368570c57db
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521521"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503839"
 ---
-# <a name="route-traffic-through-a-network-virtual-appliance"></a>ネットワーク仮想アプライアンス経由のトラフィックのルーティング
+# <a name="use-an-azure-cli-script-to-route-traffic-through-a-network-virtual-appliance"></a>Azure CLI スクリプトを使用して、ネットワーク仮想アプライアンス経由でトラフィックをルーティングする
 
 このスクリプト サンプルは、フロントエンド サブネットとバックエンド サブネットを含む仮想ネットワークを作成します。 2 つのサブネット間でトラフィックをルーティングするために、IP 転送を有効にした VM も作成します。 スクリプトの実行後には、ファイアウォール アプリケーションなどのネットワーク ソフトウェアを VM にデプロイできます。
 
@@ -45,7 +46,7 @@ az group delete --name MyResourceGroup --yes
 
 このスクリプトでは、次のコマンドを使用して、リソース グループ、仮想ネットワーク、およびネットワーク セキュリティ グループを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | Notes |
+| command | メモ |
 |---|---|
 | [az group create](/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az network vnet create](/cli/azure/network/vnet) | Azure 仮想ネットワークとフロントエンド サブネットを作成します。 |

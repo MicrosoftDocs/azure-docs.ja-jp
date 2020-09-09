@@ -6,13 +6,13 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 03/19/2020
 ms.author: victorh
-ms.topic: conceptual
-ms.openlocfilehash: c577859f6e8a44dd3573537aecadba638a5f6fa6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.openlocfilehash: 7a0e29d3fc90d50f23247a9c11cd4846aa4fb158
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80059385"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84806025"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-redirection-using-azure-powershell"></a>Azure PowerShell を使用して URL パスベースのリダイレクトのあるアプリケーション ゲートウェイを作成する
 

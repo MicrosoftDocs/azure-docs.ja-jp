@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 06/06/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: b16c60130836cf0e3b38092b894129f503ee6e83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b18717b78a271bd390bc221e9ed0723cb02079ce
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82141682"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84484298"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の推奨事項とベスト プラクティス
 
@@ -24,7 +24,7 @@ ms.locfileid: "82141682"
 
 ## <a name="fundamentals"></a>基礎
 
-|  |  |
+| ベスト プラクティス | 説明 |
 |--|--|
 | ほとんどのシナリオでユーザー フローを選択する | Azure AD B2C の Identity Experience Framework は、サービスの中核となる強みです。 ポリシーには、サインアップ、サインイン、プロファイル編集などの ID エクスペリエンスが完全に記述されています。 最も一般的な ID タスクを設定しやすくするために、Azure AD B2C ポータルには、ユーザー フローという事前定義済みで構成できるポリシーが用意されています。 ユーザー フローを使用すると、数回クリックするだけで、非常に優れたユーザー エクスペリエンスを数分で作成できます。 [ユーザー フローとカスタム ポリシーを使用するタイミングについて確認してください](custom-policy-overview.md#comparing-user-flows-and-custom-policies)。|
 | アプリの登録 | セキュリティで保護するすべてのアプリケーション (Web、ネイティブ) と API を Azure AD B2C に登録する必要があります。 アプリに iOS および Android の Web バージョンとネイティブ バージョンの両方が含まれている場合は、同じクライアント ID を使用して Azure AD B2C に 1 つのアプリケーションとして登録できます。 [OIDC、SAML、Web、ネイティブの各アプリを登録](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-applications?tabs=applications)する方法について確認してください。 [Azure AD B2C で使用できるアプリケーションの種類](https://docs.microsoft.com/azure/active-directory-b2c/application-types)の詳細について確認してください。 |
@@ -34,7 +34,7 @@ ms.locfileid: "82141682"
 
 使用するアプリケーションとサービスのアーキテクチャを定義し、現在のシステムのインベントリを実行し、Azure AD B2C への移行を計画します。
 
-|  |  |
+| ベスト プラクティス | 説明 |
 |--|--|
 | エンドツーエンド ソリューションを設計する | Azure AD B2C 統合を計画するときには、ご利用のアプリケーションのすべての依存関係を含めます。 ご利用の環境内に現在存在している、またはソリューションに追加することが必要と考えられるすべてのサービスおよび製品 (Azure Functions、カスタマー リレーションシップ マネジメント (CRM) システム、Azure API Management ゲートウェイ、ストレージ サービスなど) について検討してください。 すべてのサービスについてセキュリティとスケーラビリティを考慮してください。 |
 | ユーザーのエクスペリエンスをドキュメント化する | お客様のアプリケーションでお客様の顧客が体験できるすべてのユーザー体験を詳細に説明します。 お客様のアプリケーションの ID およびプロファイルの側面を顧客が操作する際に表示される可能性のあるすべての画面と分岐フローを記載します。 使いやすさ、アクセシビリティ、およびローカライズを計画に含めます。 |
@@ -49,7 +49,7 @@ ms.locfileid: "82141682"
 
 実装フェーズでは、次の推奨事項を検討します。
 
-|  |  |
+| ベスト プラクティス | 説明 |
 |--|--|
 | Visual Studio Code 用 Azure AD B2C 拡張機能を使用してカスタム ポリシーを編集する | Visual Studio Code と、このコミュニティによって構築された[拡張機能を Visual Studio Code Marketplace から](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c)ダウンロードします。 Microsoft の公式製品ではありませんが、Visual Studio Code 用の Azure AD B2C 拡張機能には、カスタム ポリシーの操作をより簡単にするのに役立つ機能がいくつか含まれています。 |
 | Azure AD B2C のトラブルシューティングを行う方法について確認する | 開発時に[カスタム ポリシーのトラブルシューティング](https://docs.microsoft.com/azure/active-directory-b2c/troubleshoot-custom-policies?tabs=applications)を行う方法について確認してください。 通常の認証フローとはどのようになるか確認し、異常やエラーを検出するためのツールを使用します。 たとえば、[Application Insights](troubleshoot-with-application-insights.md) を使用して、ユーザー体験の出力ログを確認します。 |
@@ -60,7 +60,7 @@ ms.locfileid: "82141682"
 
 使用する Azure AD B2C 実装をテストして自動化します。
 
-|  |  |
+| ベスト プラクティス | 説明 |
 |--|--|
 | グローバル トラフィックを考慮する | 異なるグローバル アドレスからのトラフィック ソースを使用して、パフォーマンスとローカライズの要件をテストします。 すべての HTML、CSS、および依存関係がパフォーマンスのニーズを満たしていることを確認します。 |
 | 機能および UI のテスト | ユーザー フローをエンドツーエンドでテストします。 Selenium、VS Web Test などを使用して、数分ごとに合成テストを追加します。 |
@@ -74,7 +74,7 @@ ms.locfileid: "82141682"
 
 ご利用の Azure AD B2C 環境を管理する
 
-|  |  |
+| ベスト プラクティス | 説明 |
 |--|--|
 | 複数の環境を作成する | 操作とデプロイのロールアウトをより簡単に行えるように、開発、テスト、実稼働前、運用向けに個別の環境を作成します。 それぞれのために Azure AD B2C テナントを作成します。 |
 | カスタム ポリシーにバージョン管理を使用する | Azure AD B2C カスタム ポリシーに対して、GitHub、Azure Repos、またはその他のクラウドベースのバージョン管理システムの使用を検討してください。 |
@@ -88,7 +88,7 @@ ms.locfileid: "82141682"
 
 サービスの最新の状態を把握し、サポート オプションを見つけてください。
 
-|  |  |
+| ベスト プラクティス | 説明 |
 |--|--|
 | [サービスの更新情報](https://azure.microsoft.com/updates/?product=active-directory-b2c) |  Azure AD B2C 製品の最新の更新プログラムとお知らせを入手します。 |
 | [Microsoft サポート](support-options.md) | Azure AD B2C の技術的な問題に対するサポート リクエストを提出します。 課金とサブスクリプション管理のサポートは無料で提供されます。 |

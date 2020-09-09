@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 12/20/2019
 ms.author: mblythe
 ms.openlocfilehash: ad0d3a1bf2c293039df3bba3aa18da7d6e7dd0a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81459221"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Azure ダッシュボードの構造

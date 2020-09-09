@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: e287da94a71fccabddb90f3f5a3699f4c4cf22a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fcd7a0fe60639bbb17661a906d15136996b325e4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472607"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005448"
 ---
-# <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Azure Front Door のドメインに対する geo フィルタリングとは
+# <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door-service"></a>Azure Front Door Service のドメインに対する geo フィルタリングとは
 
 既定では、Azure Front Door Service は、要求を行っているユーザーの場所に関係なくユーザーの要求に応答します。 ただし、場合によっては、国/リージョンごとに Web アプリケーションへのアクセスを制限しなければならないことも考えられます。 Front Door の Web アプリケーション ファイアウォール (WAF) では、エンドポイントの特定のパスに対するカスタム アクセス ルールを使用してポリシーを定義することにより、指定した国/リージョンからのアクセスを許可したりブロックしたりすることができます。 
 
-WAF ポリシーには通常、一連のカスタム ルールが含まれています。 ルールは、一致条件、アクション、優先順位で構成されます。 一致条件には、一致の変数、演算子、一致の値を定義します。  geo フィルタリング ルールの場合、一致変数は REMOTE_ADDR で、演算子は GeoMatch、値は対象となる 2 文字の国別コードです。 GeoMatch 条件と REQUEST_URI 文字列の一致条件を組み合わせて、パス ベースの geo フィルタリング ルールを作成することができます。
+WAF ポリシーには通常、一連のカスタム ルールが含まれています。 ルールは、一致条件、アクション、優先順位で構成されます。 一致条件には、一致の変数、演算子、一致の値を定義します。  geo フィルタリング ルールの場合、一致変数は REMOTE_ADDR、演算子は GeoMatch、値は対象となる 2 文字の国/地域コードです。 GeoMatch 条件と REQUEST_URI 文字列の一致条件を組み合わせて、パス ベースの geo フィルタリング ルールを作成することができます。
 
 Front Door の geo フィルタリング ポリシーは、[Azure PowerShell](waf-front-door-tutorial-geo-filtering.md) を使用するか、または Microsoft から提供されている[クイック スタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)を使用して構成できます。
 
-## <a name="country-code-reference"></a>国別コード リファレンス
+## <a name="countryregion-code-reference"></a>国/地域コード リファレンス
 
-|国番号 | 国名 |
+|国/地域コード | 国/地域名 |
 | ----- | ----- |
 | AD | アンドラ |
 | AE | アラブ首長国連邦|
@@ -57,7 +57,7 @@ Front Door の geo フィルタリング ポリシーは、[Azure PowerShell](wa
 | BW | ボツワナ|
 | BY | ベラルーシ|
 | BZ | ベリーズ|
-| CA | カナダ|
+| CA | Canada|
 | CD | コンゴ民主共和国|
 | CF | 中央アフリカ共和国|
 | CH | スイス|
@@ -193,7 +193,7 @@ Front Door の geo フィルタリング ポリシーは、[Azure PowerShell](wa
 | TZ | タンザニア|
 | UA | ウクライナ|
 | UG | ウガンダ|
-| US | 米国|
+| US | United States|
 | UY | ウルグアイ|
 | UZ | ウズベキスタン|
 | VC | セントビンセント及びグレナディーン諸島|

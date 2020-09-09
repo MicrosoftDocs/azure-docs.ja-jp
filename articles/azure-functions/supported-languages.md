@@ -1,26 +1,25 @@
 ---
 title: Azure Functions でサポートされている言語
-description: どの言語がサポートされているか (GA) と、どの言語が試験段階またはプレビューの段階であるかを説明します。
+description: サポートされている言語 (GA) とプレビュー段階の言語、および Functions の開発を他の言語に拡張する方法について説明します。
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: 029ea753439dca3093bf214a5adfb6d58a1fe567
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 91a6ea886c3828678771b24d69bb7987af1fb105
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74942258"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994903"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Azure Functions でサポートされている言語
 
-この記事では、Azure Functions で使用できる言語のサポートのレベルについて説明します。
+この記事では、Azure Functions で使用できる言語のサポートのレベルについて説明します。 また、ネイティブでサポートされていない言語を使用して関数を作成する方法についても説明します。
 
 ## <a name="levels-of-support"></a>サポートのレベル
 
-サポートのレベルは、次の 3 つです。
+次の 2 つのレベルのサポートがあります。
 
 * **一般公開 (GA)** - 完全にサポートされ、運用環境用に承認されています。
 * **プレビュー** - まだサポートされていませんが、今後 GA 状態に達すると想定されています。
-* **試験段階** - サポートされておらず、今後廃止される可能性があります。最終的にプレビューまたは GA 状態になる保証はありません。
 
 ## <a name="languages-by-runtime-version"></a>言語 (ランタイム バージョン別) 
 
@@ -28,15 +27,11 @@ ms.locfileid: "74942258"
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
-### <a name="experimental-languages"></a>試験段階の言語
+## <a name="custom-handlers-preview"></a>カスタム ハンドラー (プレビュー) 
 
-バージョン 1.x の試験段階の言語は、スケーリングが適切に行われず、一部のバインドがサポートされていません。
+カスタム ハンドラーは、Azure Functions ホストからイベントを受信する軽量の Web サーバーです。 HTTP プリミティブをサポートするすべての言語で、カスタム ハンドラーを実装できます。 つまり、カスタム ハンドラーを使用して、正式にサポートされていない言語の関数を作成できることを意味します。 詳細については、「[Azure Functions のカスタム ハンドラー (プレビュー)](functions-custom-handlers.md)」を参照してください。
 
-信頼性が大切である場合には、試験段階の機能は使用しないでください。それらの言語には公式なサポートがありません。 実験段階の言語で発生した問題については、サポート ケースを開かないでください。 
-
-以降のバージョンのランタイムでは、試験段階の言語はサポートされません。 新しい言語のサポートは、運用環境でその言語をサポートできる場合にのみ追加されます。 
-
-### <a name="language-extensibility"></a>言語拡張
+## <a name="language-extensibility"></a>言語拡張
 
 2\.x 以降、ランタイムは、[言語拡張](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility)を提供するように設計されています。 2\.x ランタイムの JavaScript および Java 言語は、この拡張機能で構築されています。
 

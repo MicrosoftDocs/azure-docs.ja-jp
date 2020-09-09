@@ -1,24 +1,22 @@
 ---
-title: Windows Virtual Desktop ホスト プール サービスの更新プログラム - Azure
+title: Windows Virtual Desktop (クラシック) ホスト プール サービスの更新プログラム - Azure
 description: 運用環境に更新プログラムを展開する前にサービスの更新プログラムを監視する検証ホスト プールを作成する方法。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 03/30/2020
+ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 21c3e3c7ae515f5a740384d202451f61291bc05b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: f5a8d925a9875187358dc96b1770916974d1c6bd
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82613848"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007133"
 ---
-# <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>チュートリアル:サービスの更新プログラムを検証するためのホスト プールを作成する
+# <a name="tutorial-create-a-host-pool-to-validate-service-updates-in-windows-virtual-desktop-classic"></a>チュートリアル:サービスの更新プログラムを検証する Windows Virtual Desktop (クラシック) のホスト プールを作成する
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースを対象としています。 Spring 2020 更新プログラムで導入された Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../create-validation-host-pool.md)を参照してください。
+>これは、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしない Windows Virtual Desktop (クラシック) を対象としたコンテンツです。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../create-validation-host-pool.md)を参照してください。
 
 ホスト プールは、Windows Virtual Desktop テナント環境内にある 1 つまたは複数の同一の仮想マシンをコレクションとしてまとめたものです。 ホスト プールを運用環境にデプロイする前に、検証ホスト プールを作成することを強くお勧めします。 更新プログラムは最初に検証ホスト プールに適用されるので、運用環境に展開する前にサービスの更新プログラムを監視できます。 検証ホスト プールがない場合、運用環境でユーザーにダウンタイムをもたらす可能性のあるエラーを招く変更を検出できないことがあります。
 
@@ -60,12 +58,12 @@ Get-RdsHostPool -TenantName $myTenantName -Name "contosoHostPool"
 コマンドレットの結果は、次の出力のようになります。
 
 ```
-    TenantName          : contoso 
+    TenantName          : contoso
     TenantGroupName     : Default Tenant Group
     HostPoolName        : contosoHostPool
     FriendlyName        :
     Description         :
-    Persistent          : False 
+    Persistent          : False
     CustomRdpProperty    : use multimon:i:0;
     MaxSessionLimit     : 10
     LoadBalancerType    : BreadthFirst
@@ -79,7 +77,7 @@ Get-RdsHostPool -TenantName $myTenantName -Name "contosoHostPool"
 
 ## <a name="next-steps"></a>次のステップ
 
-検証ホスト プールを作成したので、Azure Service Health を使用して Windows Virtual Desktop のデプロイを監視する方法を学習できます。 
+検証ホスト プールを作成したので、Azure Service Health を使用して Windows Virtual Desktop のデプロイを監視する方法を学習できます。
 
 > [!div class="nextstepaction"]
-> [サービス アラートを設定する](../set-up-service-alerts.md)
+> [サービス アラートを設定する](set-up-service-alerts-2019.md)

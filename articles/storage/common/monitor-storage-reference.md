@@ -9,12 +9,12 @@ ms.date: 05/01/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: e9abb2ded5465d4b245f4c9bcfab921444d41fa2
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 28a127b4debeacd2562867008bc594897558d50d
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684910"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446837"
 ---
 # <a name="azure-storage-monitoring-data-reference"></a>Azure Storage 監視データのリファレンス
 
@@ -32,20 +32,27 @@ Azure Storage は、Azure Monitor で次の容量メトリックを提供しま�
 
 #### <a name="account-level"></a>アカウント レベル
 
+この表は、[アカウントレベルのメトリック](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccounts)を示しています。
+
 | メトリック | 説明 |
 | ------------------- | ----------------- |
 | UsedCapacity | ストレージ アカウントによって使用されているストレージの量。 Standard ストレージ アカウントについては、Blob、Table、File、および Queue で使用される容量の合計です。 Premium ストレージ アカウントと BLOB ストレージ アカウントについては、BlobCapacity と同じです。 <br/><br/> 単位:バイト <br/> 集計の種類:Average <br/> 値の例:1024 |
 
 #### <a name="blob-storage"></a>BLOB ストレージ
 
+この表は、[BLOB ストレージのメトリック](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsblobservices)を示しています。
+
 | メトリック | 説明 |
 | ------------------- | ----------------- |
 | BlobCapacity | ストレージ アカウントで使用されている Blob Storage の合計。 <br/><br/> 単位:バイト <br/> 集計の種類:Average <br/> 値の例:1024 <br/> 寸法: **BlobType**、および **BlobTier** ([定義](#metrics-dimensions)) |
 | BlobCount    | ストレージ アカウントに格納されている BLOB オブジェクトの数。 <br/><br/> 単位:Count <br/> 集計の種類:Average <br/> 値の例:1024 <br/> 寸法: **BlobType**、および **BlobTier** ([定義](#metrics-dimensions)) |
+| BlobProvisionedSize | ストレージ アカウントでプロビジョニングされたストレージの総量。 このメトリックは、Premium Storage アカウントのみに適用されます。 <br/><br/> 単位: バイト <br/> 集計の種類:Average |
 | ContainerCount    | ストレージ アカウントのコンテナーの数。 <br/><br/> 単位:Count <br/> 集計の種類:Average <br/> 値の例:1024 |
 | IndexCapacity     | ADLS Gen2 階層構造のインデックスで使用される記憶域の量 <br/><br/> 単位:バイト <br/> 集計の種類:Average <br/> 値の例:1024 |
 
 #### <a name="table-storage"></a>テーブル ストレージ
+
+この表は、[Table ストレージのメトリック](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountstableservices)を示しています。
 
 | メトリック | 説明 |
 | ------------------- | ----------------- |
@@ -55,19 +62,24 @@ Azure Storage は、Azure Monitor で次の容量メトリックを提供しま�
 
 #### <a name="queue-storage"></a>ストレージ
 
+この表は、[Queue storage のメトリック](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsfileservices)を示しています。
+
 | メトリック | 説明 |
 | ------------------- | ----------------- |
 | QueueCapacity | ストレージ アカウントによって使用されている Queue ストレージの量。 <br/><br/> 単位:バイト <br/> 集計の種類:Average <br/> 値の例:1024 |
 | QueueCount   | ストレージ アカウントのキューの数。 <br/><br/> 単位:Count <br/> 集計の種類:Average <br/> 値の例:1024 |
-| QueueMessageCount | ストレージ アカウントの期限が切れていないキュー メッセージの数。 <br/><br/>単位:Count <br/> 集計の種類:Average <br/> 値の例:1024 |
+| QueueMessageCount | ストレージ アカウントの Queue サービス内のキュー メッセージの概数。 <br/><br/>単位:Count <br/> 集計の種類:Average <br/> 値の例:1024 |
 
 #### <a name="file-storage"></a>File Storage
+
+この表は、[File Storage のメトリック](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsqueueservices)を示しています。
 
 | メトリック | 説明 |
 | ------------------- | ----------------- |
 | FileCapacity | ストレージ アカウントによって使用されている File ストレージの量。 <br/><br/> 単位:バイト <br/> 集計の種類:Average <br/> 値の例:1024 |
 | FileCount   | ストレージ アカウントのファイルの数。 <br/><br/> 単位:Count <br/> 集計の種類:Average <br/> 値の例:1024 |
 | FileShareCount | ストレージ アカウントのファイル共有の数。 <br/><br/> 単位:Count <br/> 集計の種類:Average <br/> 値の例:1024 |
+| FileShareProvisionedIOPS | ファイル共有でプロビジョニングされた IOPS の数。 このメトリックは、Premium ファイル ストレージにのみ適用されます。 <br/><br/> 単位: バイト <br/> 集計の種類:Average |
 
 ### <a name="transaction-metrics"></a>トランザクション メトリック
 
@@ -84,7 +96,7 @@ Azure Storage は、Azure Monitor で次のトランザクション メトリッ
 | SuccessE2ELatency | ストレージ サービスまたは指定された API 操作に対して行われた成功した要求の平均エンド ツー エンド待機時間。 この値には、要求の読み取り、応答の送信、および応答の受信確認を受け取るために Azure Storage 内で必要な処理時間が含まれます。 <br/><br/> 単位:ミリ秒 <br/> 集計の種類:Average <br/> 適用可能なディメンション:GeoType、ApiName、Authentication ([定義](#metrics-dimensions)) <br/> 値の例:1024 |
 | 可用性 | ストレージ サービスまたは指定された API 操作の可用性の割合。 可用性は、合計課金対象要求数の値を取得し、それを該当する要求の数 (予期しないエラーになった要求を含む) で割ることによって、計算されます。 予期しないエラーすべてが、ストレージ サービスまたは指定された API 操作の可用性の低下をもたらします。 <br/><br/> 単位:Percent <br/> 集計の種類:Average <br/> 適用可能なディメンション:GeoType、ApiName、Authentication ([定義](#metrics-dimensions)) <br/> 値の例:99.99 |
 
-<a id="metrics-dimensions" />
+<a id="metrics-dimensions"></a>
 
 ## <a name="metrics-dimensions"></a>メトリックのディメンション
 
@@ -92,7 +104,7 @@ Azure Storage では、Azure Monitor の次のメトリック ディメンショ
 
 | ディメンション名 | 説明 |
 | ------------------- | ----------------- |
-| **BlobType** | BLOB メトリックの BLOB の種類のみ。 サポートされる値は、**BlockBlob**、**PageBlob**、**Azure Data Lake Storage** です。 BlockBlob には Append Blob が含まれます。 |
+| **BlobType** | BLOB メトリックの BLOB の種類のみ。 サポートされる値は、**BlockBlob**、**PageBlob**、**Azure Data Lake Storage** です。 追加 BLOB は **BlockBlob** に含まれます。 |
 | **BlobTier** | Azure Storage からはさまざまなアクセス層が提供され、最もコスト効果の高い方法で BLOB オブジェクト データを格納できます。 詳細については、[Azure Storage の BLOB 層](../blobs/storage-blob-storage-tiers.md)に関する記事を参照してください。 サポートされる値は次のとおりです。 <br/> <li>**Hot**:ホット層</li> <li>**Cool**:クール層</li> <li>**アーカイブ**: アーカイブ層</li> <li>**Premium**:ブロック BLOB 用 Premium 層</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**:Premium ページ BLOB 用の層の種類</li> <li>**Standard**:Standard ページ BLOB 用の層の種類</li> <li>**Untiered**:汎用 v1 ストレージ アカウントの層の種類</li> |
 | **GeoType** | プライマリ クラスターまたはセカンダリ クラスターからのトランザクション。 使用できる値には、**Primary** と **Secondary** が含まれています。 セカンダリ テナントからオブジェクトを読み取るときに、読み取りアクセス geo 冗長ストレージ (RA-GRS) に適用されます。 |
 | **ResponseType** | トランザクション応答の種類。 次の値をご利用いただけます。 <br/><br/> <li>**ServerOtherError**:記述されていない、その他すべてのサーバー側エラー </li> <li>**ServerBusyError**:HTTP 503 ステータス コードを返した認証済み要求。 </li> <li>**ServerTimeoutError**:HTTP 500 ステータス コードを返した、タイムアウトした認証済み要求。 タイムアウトは、サーバー エラーが原因で発生しました。 </li> <li>**AuthorizationError**:データの不正アクセスまたは承認エラーが原因で失敗した認証済み要求。 </li> <li>**NetworkError**:ネットワーク エラーが原因で失敗した認証済み要求。 クライアントがタイムアウト期限が切れる前に途中で接続を終了したときによく発生します。 </li><li>**ClientAccountBandwidthThrottlingError**:この要求は、[ストレージ アカウントのスケーラビリティの制限を超えた](scalability-targets-standard-account.md)ため、帯域幅が調整されます。</li><li>**ClientAccountRequestThrottlingError**:この要求は、[ストレージ アカウントのスケーラビリティの制限を超えた](scalability-targets-standard-account.md)ため、要求レートが調整されます。<li>**ClientThrottlingError**:その他のクライアント側の調整エラー。 ClientAccountBandwidthThrottlingError と ClientAccountRequestThrottlingError は除外されます。</li> <li>**ClientTimeoutError**:HTTP 500 ステータス コードを返した、タイムアウトした認証済み要求。 クライアントのネットワーク タイムアウトまたは要求タイムアウトが、ストレージ サービスで予期される値よりも低く設定されている場合、これは予期されるタイムアウトです。 それ以外の場合は、ServerTimeoutError としてレポートされます。 </li> <li>**ClientOtherError**:記述されていない、その他すべてのクライアント側エラー。 </li> <li>**成功**:成功した要求</li> <li> **SuccessWithThrottling**: 最初に試みたときは SMB クライアントが調整されたが再試行後に成功したときの、成功した要求。</li> |

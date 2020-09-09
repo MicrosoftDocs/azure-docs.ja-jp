@@ -7,18 +7,18 @@ author: navyasric
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/24/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 778e89655019a49a30904fbe8d8e6aedf1833e9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 85f5269c3c2616070b826ecc38735c31617db537
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76695978"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85477551"
 ---
 # <a name="prompt-behavior-in-msaljs-interactive-requests"></a>MSAL.js の対話型要求におけるプロンプト動作
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/29/2019
 ms.author: memildin
-ms.openlocfilehash: dcf7df501665ea3885d00b9f7668a95cbbf02428
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a9541eb3b7c662b43de0d3a609ecec4fe2621ca
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78208544"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519407"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Azure Security Center での Endpoint Protection の評価と推奨事項
 
@@ -59,25 +59,19 @@ Azure Security Center は、Endpoint Protection ソリューションの[サポ�
 
 * Security Center は、**Get-MprotComputerStatus** が実行され、次のいずれかが発生した場合に、 **"マシンの Endpoint Protection の正常性の問題を解決する"** ことを推奨します。
 
-    * 次のプロパティの少なくとも 1 つが false である。
+  * 次のプロパティの少なくとも 1 つが false である。
 
-            **AMServiceEnabled**
+    * **AMServiceEnabled**
+    * **AntispywareEnabled**
+    * **RealTimeProtectionEnabled**
+    * **BehaviorMonitorEnabled**
+    * **IoavProtectionEnabled**
+    * **OnAccessProtectionEnabled**
 
-            **AntispywareEnabled**
-    
-            **RealTimeProtectionEnabled**
-    
-            **BehaviorMonitorEnabled**
-    
-            **IoavProtectionEnabled**
-    
-            **OnAccessProtectionEnabled**
-          
-    * 次のシグネチャの更新のいずれかまたは両方が 7 以上である場合。 
+  * 次のシグネチャの更新のいずれかまたは両方が 7 以上である場合。 
 
-            **AntispywareSignatureAge**
-    
-            **AntivirusSignatureAge**
+    * **AntispywareSignatureAge**
+    * **AntivirusSignatureAge**
 
 ## <a name="trend-micro"></a>Trend Micro
 

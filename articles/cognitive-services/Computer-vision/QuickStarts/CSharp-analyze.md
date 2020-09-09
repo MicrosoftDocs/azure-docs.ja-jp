@@ -8,38 +8,41 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.custom: seodec18
-ms.openlocfilehash: d8002530120eee4a3613f2310c4a59cc18612cad
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: e086f0a02849b568c932aab0b01e6168631422e9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81405161"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928294"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-c"></a>クイック スタート:Computer Vision の REST API と C# を使用してローカル画像を分析する
 
 このクイックスタートでは、Computer Vision の REST API を使用して、ローカルに格納されている画像を分析し、視覚的特徴を抽出します。 [画像分析](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)メソッドを使うと、画像の内容から視覚的特徴情報を抽出できます。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) を作成してください。
-
 ## <a name="prerequisites"></a>前提条件
 
-- [Visual Studio 2015 ](https://visualstudio.microsoft.com/downloads/)以降が必要です。
-- Computer Vision のサブスクリプション キーが必要です。 無料試用版のキーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Computer Vision をサブスクライブし、キーを取得します。 次に、キーとサービス エンドポイント文字列用に、それぞれ `COMPUTER_VISION_SUBSCRIPTION_KEY` と `COMPUTER_VISION_ENDPOINT` という名前の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
+* [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) 以降が必要です
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Computer Vision リソースを作成"  target="_blank">Computer Vision リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
+    * 対象のアプリケーションを Computer Vision サービスに接続するには、作成したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
+    * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
+* キーとエンドポイント URL 用に、それぞれ `COMPUTER_VISION_SUBSCRIPTION_KEY` と `COMPUTER_VISION_ENDPOINT` という名前の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。
 
 ## <a name="create-and-run-the-sample-application"></a>サンプル アプリケーションを作成して実行する
 
 Visual Studio でサンプルを作成するには、次の手順を実行します。
 
-1. Visual C# コンソール アプリ (.NET Framework) テンプレートを使用して、Visual Studio で新しい Visual Studio ソリューションを作成します。
+1. Visual C# コンソール アプリ (.NET Core Framework) テンプレートを使用して、Visual Studio で新しい Visual Studio ソリューションまたはプロジェクトを作成します。
 1. Newtonsoft.Json NuGet パッケージをインストールします。
     1. メニューの **[ツール]** で **[NuGet パッケージ マネージャー]** を選択し、 **[ソリューションの NuGet パッケージの管理]** を選択します。
-    1. **[参照]** タブをクリックし、 **[検索]** ボックスに「Newtonsoft.Json」と入力します。
-    1. **[Newtonsoft.Json]** が表示されたら選択し、対象のプロジェクト名の横のチェック ボックスをオンにして、 **[インストール]** をクリックします。
+    1. **[参照]** タブをクリックし、(まだ表示されていない場合は) **[検索]** ボックスに「Newtonsoft.Json」と入力します。
+    1. **[Newtonsoft.Json]** を選択し、対象のプロジェクト名の横のチェック ボックスをオンにして、 **[インストール]** をクリックします。
+1. 以下のサンプル コード スニペットをコピーして Program.cs ファイルに貼り付けます。 名前空間の名前が作成したものと異なる場合は、それを調整します。
+1. 選択したイメージを bin/debug/netcoreappX.X フォルダーに追加し、イメージ名 (拡張子付き) を 'imageFilePath' 変数に追加します。
 1. プログラムを実行します。
-1. プロンプトで、ローカル画像のパスを入力します。
 
 ```csharp
 using Newtonsoft.Json.Linq;
@@ -59,26 +62,18 @@ namespace CSHttpClientSample
         static string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
         
         // the Analyze method endpoint
-        static string uriBase = endpoint + "vision/v2.1/analyze";
+        static string uriBase = endpoint + "vision/v3.0/analyze";
 
-        static async Task Main()
+        // Image you want analyzed (add to your bin/debug/netcoreappX.X folder)
+        // For sample images, download one from here (png or jpg):
+        // https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/ComputerVision/Images
+        static string imageFilePath = @"my-sample-image";
+
+        public static void Main()
         {
-            // Get the path and filename to process from the user.
-            Console.WriteLine("Analyze an image:");
-            Console.Write(
-                "Enter the path to the image you wish to analyze: ");
-            string imageFilePath = Console.ReadLine();
+            // Call the API
+            MakeAnalysisRequest(imageFilePath).Wait();
 
-            if (File.Exists(imageFilePath))
-            {
-                // Call the REST API method.
-                Console.WriteLine("\nWait for the results to appear.\n");
-                await MakeAnalysisRequest(imageFilePath);
-            }
-            else
-            {
-                Console.WriteLine("\nInvalid file path");
-            }
             Console.WriteLine("\nPress Enter to exit...");
             Console.ReadLine();
         }
@@ -167,7 +162,7 @@ namespace CSHttpClientSample
 
 ## <a name="examine-the-response"></a>結果の確認
 
-成功応答が JSON で返されます。 サンプル アプリケーションによって成功応答が解析され、次の例のようにコンソール ウィンドウに表示されます。
+正常な応答は、次の例のように、(使用される独自のイメージに基づいて) JSON でコンソール ウィンドウに返されます。
 
 ```json
 {

@@ -93,7 +93,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```powershell
     $selfHostedIntegrationRuntimeName = "MySelfHostedIR09142017" 
     ```
-2. **PowerShell**を起動します。 Azure PowerShell は、このクイックスタートが終わるまで開いたままにしておいてください。 Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。 現在 Data Factory が利用できる Azure リージョンの一覧については、「**リージョン別の利用可能な製品**」ページで目的のリージョンを選択し、 **[分析]** を展開して [[Data Factory]](https://azure.microsoft.com/global-infrastructure/services/) を探してください。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+2. **PowerShell**を起動します。 Azure PowerShell は、このクイックスタートが終わるまで開いたままにしておいてください。 Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、 **[分析]** を展開して **[Data Factory]** を探してください。[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/) データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
     次のコマンドを実行して、Azure Portal へのサインインに使用するユーザー名とパスワードを入力します。
         
@@ -110,7 +110,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
     ```  
-3. サブスクリプションにまだリソース グループ ADFTutorialResourceGroup が存在しない場合は、作成します。 
+3. リソース グループを作成します。サブスクリプションにまだ ADFTutorialResourceGroup が存在しない場合は作成します。 
 
     ```powershell
     New-AzResourceGroup -Name $resourceGroupName -Location "East Us" 

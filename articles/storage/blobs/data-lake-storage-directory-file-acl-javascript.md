@@ -5,15 +5,16 @@ author: normesta
 ms.service: storage
 ms.date: 03/20/2020
 ms.author: normesta
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 04d0d23bdbdaeda6a4823c900badb3133ba9eeae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 648a47b451e8857c1cd84c2bcecdaae7fcaa065d
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80061551"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430537"
 ---
 # <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>JavaScript を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する
 
@@ -48,7 +49,7 @@ const AzureStorageDataLake = require("@azure/storage-file-datalake");
 
 ### <a name="connect-by-using-an-account-key"></a>アカウント キーを使用して接続する
 
-これは最も簡単にアカウントに接続する方法です。 
+これはアカウントに接続する最も簡単な方法です。 
 
 この例では、アカウント キーを使用して **DataLakeServiceClient** インスタンスを作成します。
 
@@ -90,11 +91,11 @@ function GetDataLakeServiceClientAD(accountName, clientID, clientSecret, tenantI
 > [!NOTE]
 > その他の例については、[JS 用 Azure ID クライアント ライブラリ](https://www.npmjs.com/package/@azure/identity)のドキュメントを参照してください。
 
-## <a name="create-a-file-system"></a>ファイル システムを作成する
+## <a name="create-a-container"></a>コンテナーを作成する
 
-ファイル システムは、ファイルのコンテナーとして機能します。 これは、**FileSystemClient** インスタンスを取得し、次に **FileSystemClient.Create** メソッドを呼び出すことで作成できます。
+コンテナーは、ファイルのファイル システムとして機能します。 これは、**FileSystemClient** インスタンスを取得し、次に **FileSystemClient.Create** メソッドを呼び出すことで作成できます。
 
-この例では、`my-file-system` という名前のファイル システムを作成します。 
+この例では、`my-file-system` という名前のコンテナーを作成します。 
 
 ```javascript
 async function CreateFileSystem(datalakeServiceClient) {
@@ -112,7 +113,7 @@ async function CreateFileSystem(datalakeServiceClient) {
 
 ディレクトリ参照は、**DirectoryClient** インスタンスを取得し、次に **DirectoryClient.create** メソッドを呼び出すことによって作成します。
 
-この例では、`my-directory` という名前のディレクトリをファイル システムに追加します。 
+この例では、`my-directory` という名前のディレクトリをコンテナーに追加します。 
 
 ```javascript
 async function CreateDirectory(fileSystemClient) {
@@ -218,6 +219,8 @@ async function ManageDirectoryACLs(fileSystemClient) {
   await directoryClient.setAccessControl(acl);
 }
 ```
+
+また、コンテナのルート ディレクトリの ACL を取得して設定することもできます。 ルート ディレクトリを取得するには、**DataLakeFileSystemClient.getDirectoryClient** メソッドに空の文字列 (`/`) を渡します。
 
 ## <a name="upload-a-file-to-a-directory"></a>ファイルをディレクトリにアップロードする
 

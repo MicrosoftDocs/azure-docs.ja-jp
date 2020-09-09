@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/01/2020
 ms.author: memildin
-ms.openlocfilehash: 85460724071347a768a924f34290a75d2383b4c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 539b663366cd2820eec62a18d1fc2989c6b3c9b0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78209262"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042358"
 ---
 # <a name="feature-coverage-for-azure-paas-services"></a><a name="paas-services">Azure PaaS サービスを対象とする機能</a>
 
@@ -45,7 +45,8 @@ ms.locfileid: "78209262"
 |Azure Kubernetes Service|✔|✔|-|
 |Azure Load Balancer|✔|-|-|
 |Azure Logic Apps|✔|-|-|
-|Azure SQL Databases|✔|✔|✔|
+|Azure SQL データベース|✔|✔|✔|
+|Azure SQL Managed Instance|✔|✔|✔|
 |Azure Service Bus 名前空間|✔|-|-|
 |Azure Service Fabric アカウント|✔|-|-|
 |Azure Storage アカウント|✔|-|-|

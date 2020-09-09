@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 9bb22b12a7b3e972ff144bd121db4288801e2488
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 07b5ae99b98c6c6bbf4dc903cd1b583eb655a825
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81732952"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041408"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Application Insights Agent (旧称 Status Monitor v2) のトラブルシューティング
 
@@ -55,7 +55,7 @@ ms.locfileid: "81732952"
 
 ### <a name="conflict-with-iis-shared-configuration"></a>IIS 共有構成との競合
 
-Web サーバーのクラスターがある場合、[共有構成](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)を使っている可能性があります。
+Web サーバーのクラスターがある場合、[共有構成](/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)を使っている可能性があります。
 HttpModule をこの共有構成に挿入することはできません。
 各 Web サーバー上で Enable コマンドを実行して、各サーバーの GAC に DLL をインストールします。
 

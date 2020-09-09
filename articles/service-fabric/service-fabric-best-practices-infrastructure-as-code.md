@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 1c044d5fd973d3c577088a887f2fac413d2ab79d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c381c6e7d692eda32fea2033779bacddafc267bb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75551830"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253679"
 ---
 # <a name="infrastructure-as-code"></a>コードとしてのインフラストラクチャ
 
@@ -44,7 +44,7 @@ New-AzResourceGroupDeployment -Name $ResourceGroupName -TemplateFile $Template -
 
 ## <a name="azure-service-fabric-resources"></a>Azure Service Fabric のリソース
 
-Azure Resource Manager を使用して、Service Fabric クラスターにアプリケーションとサービスを デプロイできます。 詳しくは、「[アプリケーションとサービスを Azure Resource Manager のリソースとして管理する](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-arm-resource)」をご覧ください。 以下に示すのは、Resource Manager テンプレートのリソースに含める Service Fabric アプリケーション固有のリソースのベスト プラクティスです。
+Azure Resource Manager を使用して、Service Fabric クラスターにアプリケーションとサービスを デプロイできます。 詳しくは、「[アプリケーションとサービスを Azure Resource Manager のリソースとして管理する](./service-fabric-application-arm-resource.md)」をご覧ください。 以下に示すのは、Resource Manager テンプレートのリソースに含める Service Fabric アプリケーション固有のリソースのベスト プラクティスです。
 
 ```json
 {
@@ -73,7 +73,7 @@ Azure Resource Manager を使用して、Service Fabric クラスターにアプ
 }
 ```
 
-Azure Resource Manager を使用してアプリケーションをデプロイするには、最初に Service Fabric アプリケーション パッケージ [sfpkg を作成する](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps#create-an-sfpkg)必要があります。 次の Python スクリプトは、sfpkg を作成する方法の例です。
+Azure Resource Manager を使用してアプリケーションをデプロイするには、最初に Service Fabric アプリケーション パッケージ [sfpkg を作成する](./service-fabric-package-apps.md#create-an-sfpkg)必要があります。 次の Python スクリプトは、sfpkg を作成する方法の例です。
 
 ```python
 # Create SFPKG that needs to be uploaded to Azure Storage Blob Container
@@ -91,7 +91,7 @@ microservices_sfpkg.close()
 ```
 
 ## <a name="azure-virtual-machine-operating-system-automatic-upgrade-configuration"></a>Azure Virtual Machine オペレーティング システムの自動アップグレード構成 
-仮想マシンのアップグレードは、ユーザーによって開始される操作です。Azure Service Fabric クラスター ホストの更新プログラム管理には、[仮想マシン スケール セットによる自動オペレーティング システム アップグレード](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)を使用することをお勧めします。パッチ オーケストレーション アプリケーションを Azure で使用することはできますが、Azure で POA をホストするオーバーヘッドのために、一般的には POA よりも仮想マシン オペレーティング システム自動アップグレードが選ばれるので、POA は Azure の外部でホストする場合の代替ソリューションです。 以下は、自動 OS アップグレードを有効にするための、コンピューティング仮想マシン スケール セット Resource Manager テンプレートのプロパティです。
+仮想マシンのアップグレードは、ユーザーによって開始される操作です。Azure Service Fabric クラスター ホストの更新プログラム管理には、[仮想マシン スケール セットによる自動オペレーティング システム アップグレード](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)を使用することをお勧めします。パッチ オーケストレーション アプリケーションを Azure で使用することはできますが、Azure で POA をホストするオーバーヘッドのために、一般的には POA よりも仮想マシン オペレーティング システム自動アップグレードが選ばれるので、POA は Azure の外部でホストする場合の代替ソリューションです。 以下は、自動 OS アップグレードを有効にするための、コンピューティング仮想マシン スケール セット Resource Manager テンプレートのプロパティです。
 
 ```json
 "upgradePolicy": {

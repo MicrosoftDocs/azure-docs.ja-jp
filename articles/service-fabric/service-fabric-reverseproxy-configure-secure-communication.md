@@ -1,28 +1,26 @@
 ---
 title: Azure Service Fabric のリバース プロキシによる安全な通信
 description: Azure Service Fabric アプリケーションにリバース プロキシを構成して、安全なエンド ツー エンド通信を実現します。
-author: kavyako
 ms.topic: conceptual
 ms.date: 08/10/2017
-ms.author: kavyako
-ms.openlocfilehash: 61a8d1e766ea576f7d2984add239b0da7e2e8183
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: b01ce559b3c790164992d6618149afa9df069466
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80617106"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256137"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>リバース プロキシを使用したセキュリティで保護されたサービスへの接続
 
 この記事では、リバース プロキシとサービス間で安全な通信を確立し、セキュリティで保護されたエンド ツー エンドのチャネルを実現する方法について説明します。 リバース プロキシに関する詳細については、「[Azure Service Fabric のリバース プロキシ](service-fabric-reverseproxy.md)」を参照してください。
 
-セキュリティで保護されたサービスへの接続は、リバース プロキシが HTTPS をリッスンするように構成されている場合にのみサポートされます。 この記事では、そのような構成を前提にしています。
-Service Fabric でリバース プロキシを構成するには、「[Setup reverse proxy in Azure Service Fabric](service-fabric-reverseproxy-setup.md)」 (Azure Service Fabric でリバース プロキシを設定する) を参照してください。
+> [!IMPORTANT]
+> セキュリティで保護されたサービスへの接続は、リバース プロキシが HTTPS をリッスンするように構成されている場合にのみサポートされます。 この記事では、そのような構成を前提にしています。 Service Fabric でリバース プロキシを構成するには、「[Setup reverse proxy in Azure Service Fabric](service-fabric-reverseproxy-setup.md)」 (Azure Service Fabric でリバース プロキシを設定する) を参照してください。
 
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>リバース プロキシとサービス間の安全な通信の確立 
 
 ### <a name="reverse-proxy-authenticating-to-services"></a>リバース プロキシによるサービスの認証:
-リバース プロキシでは、その証明書を利用してサービスにその ID を証明します。 Azure クラスターの場合は、Resource Manager テンプレートの [**Microsoft.ServiceFabric/clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) の「[リソースの種類](../azure-resource-manager/templates/template-syntax.md)」セクションにある ***reverseProxyCertificate*** プロパティで証明書が指定されます。 スタンドアロン クラスターの場合、証明書は ClusterConfig.json の **[セキュリティ]** セクションの ***ReverseProxyCertificate*** または ***ReverseProxyCertificateCommonNames*** プロパティで指定されます。 詳細については、「[スタンドアロン クラスターでリバース プロキシを有効にする](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters)」を参照してください。 
+リバース プロキシでは、その証明書を利用してサービスにその ID を証明します。 Azure クラスターの場合は、Resource Manager テンプレートの [**Microsoft.ServiceFabric/clusters**](/azure/templates/microsoft.servicefabric/clusters) の「[リソースの種類](../azure-resource-manager/templates/template-syntax.md)」セクションにある ***reverseProxyCertificate*** プロパティで証明書が指定されます。 スタンドアロン クラスターの場合、証明書は ClusterConfig.json の **[セキュリティ]** セクションの ***ReverseProxyCertificate*** または ***ReverseProxyCertificateCommonNames*** プロパティで指定されます。 詳細については、「[スタンドアロン クラスターでリバース プロキシを有効にする](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters)」を参照してください。 
 
 サービスにロジックを実装して、リバース プロキシによって提示される証明書を検証できます。 サービスでは、構成パッケージの構成設定として、許容されるクライアント証明書の詳細事項を指定できます。 これは実行時に読み込まれ、リバース プロキシによって提示される証明書の検証に使用されます。 構成設定を追加するには、[アプリケーション パラメーターの管理](service-fabric-manage-multiple-environment-app-configuration.md)に関する記事を参照してください。 
 
@@ -180,10 +178,10 @@ Service Fabric では、1 つのサービスに複数のエンドポイントを
 
 2. **ForwardClientCertificate** を **true** に設定すると、リバース プロキシのクライアントとの TLS ハンドシェイク時にクライアント証明書が要求されます。
 **X-Client-Certificate** という名前のカスタム HTTP ヘッダーに、クライアント証明書のデータが転送されます。 ヘッダーの値は、クライアント証明書のデータが Base64 でエンコードされた PEM 形式の文字列です。 サービスで証明書のデータが調査された後に、要求が成功または失敗し、該当する状態コードが表示されます。
-クライアントが証明書を提示しない場合、リバース プロキシは空のヘッダーを転送し、サービスによって処理されます。
+クライアントが証明書を提示しない場合、リバース プロキシにより空のヘッダーが転送され、サービスによって処理されます。
 
 > [!NOTE]
-> リバース プロキシは単なるフォワーダーに過ぎず、 クライアント証明書の検証は実行しません。
+> リバース プロキシは、転送サービスとしてのみ機能します。 クライアント証明書の検証は実行しません。
 
 
 ## <a name="next-steps"></a>次のステップ
@@ -191,5 +189,5 @@ Service Fabric では、1 つのサービスに複数のエンドポイントを
 * 「[セキュリティで保護されたサービスに接続するためのリバース プロキシの構成](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample#configure-reverse-proxy-to-connect-to-secure-services)」を参照します。
 * [GitHub のサンプル プロジェクト](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)で、サービス間の HTTP 通信の例を確認します。
 * [Reliable Services のリモート処理によるリモート プロシージャ コール](service-fabric-reliable-services-communication-remoting.md)
-* [Reliable Services の OWIN を使用する Web API](service-fabric-reliable-services-communication-webapi.md)
+* [Reliable Services の OWIN を使用する Web API](./service-fabric-reliable-services-communication-aspnetcore.md)
 * [クラスター証明書の管理](service-fabric-cluster-security-update-certs-azure.md)

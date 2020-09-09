@@ -4,21 +4,21 @@ description: 環境内に Azure AD 参加済みデバイスを実装するため
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6bbecf0e365ba7a8424da775245181fa64c21f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f0863a782b7f4531b900bc3c005a39387c83d983
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78672693"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268229"
 ---
-# <a name="how-to-plan-your-azure-ad-join-implementation"></a>方法: Azure AD 参加の実装を計画する
+# <a name="how-to-plan-your-azure-ad-join-implementation"></a>方法:Azure AD Join の実装を計画する
 
 Azure AD 参加により、ユーザーの生産性とセキュリティを維持しながら、デバイスをオンプレミスの Active Directory に参加させる必要なしに Azure AD に直接参加させることができます。 Azure AD 参加は、大規模デプロイとスコープ付きのデプロイの両方についてエンタープライズ対応になっています。   
 
@@ -26,21 +26,20 @@ Azure AD 参加により、ユーザーの生産性とセキュリティを維�
  
 ## <a name="prerequisites"></a>前提条件
 
-この記事では、[Azure Active Directory でのデバイス管理の概要](../device-management-introduction.md)を理解していることを前提とします
+この記事では、[Azure Active Directory でのデバイス管理の概要](./overview.md)を理解していることを前提とします
 
 ## <a name="plan-your-implementation"></a>実装の計画
 
 Azure AD 参加の実装を計画するには、以下を理解する必要があります。
 
-|   |   |
-|---|---|
-|![○][1]|シナリオをレビューする|
-|![○][1]|ID インフラストラクチャをレビューする|
-|![○][1]|デバイス管理を評価する|
-|![○][1]|アプリケーションとリソースに関する考慮事項を把握する|
-|![○][1]|プロビジョニングのオプションを把握する|
-|![○][1]|企業の状態ローミングを構成する|
-|![○][1]|条件付きアクセスを構成する|
+> [!div class="checklist"]
+> - シナリオをレビューする
+> - ID インフラストラクチャをレビューする
+> - デバイス管理を評価する
+> - アプリケーションとリソースに関する考慮事項を把握する
+> - プロビジョニングのオプションを把握する
+> - 企業の状態ローミングを構成する
+> - 条件付きアクセスを構成する
 
 ## <a name="review-your-scenarios"></a>シナリオをレビューする 
 
@@ -59,7 +58,7 @@ Azure AD 参加は、マネージド環境とフェデレーション環境の�
 
 ### <a name="managed-environment"></a>マネージド環境
 
-マネージド環境は、[パスワード ハッシュ同期](/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization)または[パススルー認証](/azure/active-directory/hybrid/how-to-connect-pta-quick-start)のいずれかとシームレス シングル サインオンを使用してデプロイできます。
+マネージド環境は、[パスワード ハッシュ同期](../hybrid/how-to-connect-password-hash-synchronization.md)または[パススルー認証](../hybrid/how-to-connect-pta-quick-start.md)のいずれかとシームレス シングル サインオンを使用してデプロイできます。
 
 これらのシナリオでは、フェデレーション サーバーを認証用に構成する必要はありません。
 
@@ -67,7 +66,7 @@ Azure AD 参加は、マネージド環境とフェデレーション環境の�
 
 フェデレーション環境には、WS-Trust と Ws-Fed の両方のプロトコルをサポートしている ID プロバイダーが必要です。
 
-- **Ws-Fed:** このプロトコルは、デバイスを Azure AD に参加させるために必要です。
+- **WS-Fed:** このプロトコルは、デバイスを Azure AD に参加させるために必要です。
 - **WS-Trust:** このプロトコルは、Azure AD 参加済みデバイスにサインインするために必要です。
 
 AD FS を使用している場合は、次の WS-Trust エンドポイントを有効にする必要があります。`/adfs/services/trust/2005/usernamemixed`
@@ -91,7 +90,7 @@ ID プロバイダーによってこれらのプロトコルがサポートさ�
 
 ユーザーを以下の場所に作成する場合:
 
-- **オンプレミスの Active Directory**: [Azure AD Connect](/azure/active-directory/hybrid/how-to-connect-sync-whatis) を使用して Azure AD と同期する必要があります。 
+- **オンプレミスの Active Directory**: [Azure AD Connect](../hybrid/how-to-connect-sync-whatis.md) を使用して Azure AD と同期する必要があります。 
 - **Azure AD**: 追加のセットアップは不要です。
 
 Azure AD の UPN とは異なるオンプレミスの UPN は、Azure AD 参加済みデバイスでサポートされていません。 お客様のユーザーがオンプレミスの UPN を使用している場合は、Azure AD 内でプライマリ UPN を使用するように切り替えることを計画してください。
@@ -104,7 +103,7 @@ Azure AD 参加:
 
 - Windows 10 デバイスに対してのみ適用されます。 
 - 以前のバージョンの Windows や他のオペレーティング システムには適用されません。 Windows 7/8.1 デバイスを使用している場合は、Windows 10 にアップグレードして Azure AD 参加をデプロイする必要があります。
-- FIPS モードの TPM のデバイスではサポートされていません。
+- FIPS 準拠の TPM 2.0 でサポートされていますが、TPM 1.2 ではサポートされていません。 FIPS 準拠の TPM 1.2 がデバイスにある場合は、Azure AD 参加を進める前に、それらを無効にする必要があります。 TPM の FIPS モードを無効にするためのツールは、TPM の製造元に依存するため、Microsoft では用意していません。 サポートが必要な場合は、お使いのハードウェアの OEM にお問い合わせください。
  
 **推奨事項:** 更新された機能を利用するために、常に最新の Windows 10 リリースを使用してください。
 
@@ -163,7 +162,7 @@ AD FS を使用する場合は、「[AD FS によるシングル サインオン
 
 デバイスがドメイン コントローラーへのアクセス権を持つ場合、ユーザーは Azure AD 参加済みデバイスから SSO を取得します。 
 
-**推奨事項:** [Azure AD アプリのプロキシ](/azure/active-directory/manage-apps/application-proxy)をデプロイして、これらのアプリケーションへのアクセスをセキュリティで保護できるようにします。
+**推奨事項:** [Azure AD アプリのプロキシ](../manage-apps/application-proxy.md)をデプロイして、これらのアプリケーションへのアクセスをセキュリティで保護できるようにします。
 
 ### <a name="on-premises-network-shares"></a>オンプレミスのネットワーク共有
 
@@ -185,17 +184,19 @@ Azure AD 参加済みデバイスでは、マシンの認証に依存するオ�
 
 Azure AD 参加済みデバイスにリモート デスクトップ接続を行うには、ホスト マシンが Azure AD 参加済みまたは Hybrid Azure AD 参加済みである必要があります。 参加していないデバイスまたは Windows 以外のデバイスからのリモート デスクトップはサポートされていません。 詳しくは、[Azure AD に参加しているリモート PC への接続](/windows/client-management/connect-to-remote-aadj-pc)に関する記事をご覧ください
 
+Windows 10 2004 更新プログラムを開始すると、ユーザーは Azure AD 登録済み Windows 10 デバイスから Azure AD 参加済みデバイスへのリモート デスクトップも使用できるようになります。 
+
 ## <a name="understand-your-provisioning-options"></a>プロビジョニングのオプションを把握する
 
 次のアプローチを使用して Azure AD 参加をプロビジョニングできます。
 
-- **OOBE/設定内でのセルフサービス** - セルフサービス モードでは、ユーザーは Windows Out of Box Experience (OOBE) の実行中に、または Windows 設定から、Azure AD 参加のプロセスを実行します。 詳しくは、「[職場のデバイスを組織のネットワークに参加させる](/azure/active-directory/user-help/user-help-join-device-on-network)」をご覧ください。 
+- **OOBE/設定内でのセルフサービス** - セルフサービス モードでは、ユーザーは Windows Out of Box Experience (OOBE) の実行中に、または Windows 設定から、Azure AD 参加のプロセスを実行します。 詳しくは、「[職場のデバイスを組織のネットワークに参加させる](../user-help/user-help-join-device-on-network.md)」をご覧ください。 
 - **Windows Autopilot** - Windows Autopilot により、Azure AD 参加を実行する OOBE のエクスペリエンスを円滑にするためにデバイスの事前構成を行うことができます。 詳しくは、「[Windows Autopilot の概要](/windows/deployment/windows-autopilot/windows-10-autopilot)」をご覧ください。 
 - **一括登録** - 一括登録により、一括プロビジョニング ツールを使用してデバイスを構成することで、管理者主導の Azure AD 参加が可能になります。 詳しくは、「[Windows デバイスの一括登録](/intune/windows-bulk-enroll)」をご覧ください。
  
 この 3 つのアプローチの比較を次に示します 
  
-|   | セルフサービス セットアップ | Windows Autopilot | 一括登録 |
+| 要素 | セルフサービス セットアップ | Windows Autopilot | 一括登録 |
 | --- | --- | --- | --- |
 | セットアップにユーザーの操作が必要 | はい | はい | いいえ |
 | IT 部門の作業が必要 | いいえ | はい | はい |
@@ -259,8 +260,8 @@ MDM プロバイダーを選択して関連設定を構成します。
 
 スコープに基づいて、次のいずれかのようになります。 
 
-- **ユーザーが MDM のスコープ内にいる**: Azure AD Premium のサブスクリプションがある場合は、Azure AD 参加と共に MDM の登録が自動化されます。 スコープ内のすべてのユーザーには、MDM に対する適切なライセンスが必要です。 このシナリオで MDM の登録に失敗した場合は、Azure AD 参加もロールバックされます。
-- **ユーザーが MDM のスコープ内にいない**: ユーザーが MDM のスコープ内にいない場合、Azure AD 参加は MDM 登録なしで完了します。 その結果、アンマネージド デバイスが生じます。
+- **ユーザーが MDM のスコープ内にいる**:Azure AD Premium のサブスクリプションがある場合は、Azure AD 参加と共に MDM の登録が自動化されます。 スコープ内のすべてのユーザーには、MDM に対する適切なライセンスが必要です。 このシナリオで MDM の登録に失敗した場合は、Azure AD 参加もロールバックされます。
+- **ユーザーが MDM のスコープ内にいない**:ユーザーが MDM のスコープ内にいない場合、Azure AD 参加は MDM 登録なしで完了します。 その結果、アンマネージド デバイスが生じます。
 
 ### <a name="mdm-urls"></a>MDM URL
 
@@ -282,7 +283,7 @@ MAM は、Azure AD 参加に適用されません。
 
 Azure AD に対して状態ローミングを有効にして、ユーザーがデバイス間で設定を同期できるようにするには、「[Azure Active Directory の Enterprise State Roaming を有効にする](enterprise-state-roaming-enable.md)」をご覧ください。 
 
-**推奨事項**: この設定は、ハイブリッド Azure AD 参加済みデバイスに対しても有効にしてください。
+**推奨事項**:この設定は、ハイブリッド Azure AD 参加済みデバイスに対しても有効にしてください。
 
 ## <a name="configure-conditional-access"></a>条件付きアクセスを構成する
 
@@ -296,7 +297,7 @@ Azure AD 参加済みデバイスに対して MDM プロバイダーが構成さ
 
 > [!div class="nextstepaction"]
 > [最初の実行中に新しい Windows 10 デバイスを Azure AD に参加させる](azuread-joined-devices-frx.md)
-> [職場のデバイスを組織のネットワークに参加させる](/azure/active-directory/user-help/user-help-join-device-on-network)
+> [職場のデバイスを組織のネットワークに参加させる](../user-help/user-help-join-device-on-network.md)
 
 <!--Image references-->
 [1]: ./media/azureadjoin-plan/12.png

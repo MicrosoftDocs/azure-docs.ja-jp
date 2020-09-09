@@ -3,15 +3,15 @@ title: Azure Container Registry からコンテナー イメージをデプロ�
 description: Azure コンテナー レジストリからコンテナー イメージをプルして、Azure Container Instances にコンテナーをデプロイする方法について説明します。
 services: container-instances
 ms.topic: article
-ms.date: 02/18/2020
+ms.date: 07/02/2020
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 212624b857d65297830995018603c2627f83369b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a997733e015a9f65b59ffc99cc137dae3d2d62a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81453525"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927438"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Azure Container Registry から Azure Container Instances へのデプロイ
 
@@ -25,7 +25,7 @@ ms.locfileid: "81453525"
 
 ## <a name="configure-registry-authentication"></a>レジストリの認証を構成する
 
-"ヘッドレス" サービスとアプリケーションへのアクセスを提供する運用シナリオでは、[サービス プリンシパル](../container-registry/container-registry-auth-service-principal.md)を使用して、レジストリ アクセスを構成することをお勧めします。 サービス プリンシパルを使用すると、コンテナー イメージに[ロールベースのアクセス制御](../container-registry/container-registry-roles.md)を提供できます。 たとえば、レジストリに対するプルのみのアクセス権を持つサービス プリンシパルを設定できます。
+"ヘッドレス" サービスとアプリケーションへのアクセスを提供する運用シナリオでは、[サービス プリンシパル](../container-registry/container-registry-auth-service-principal.md)を使用して、レジストリ アクセスを構成することをお勧めします。 サービス プリンシパルを使用すると、コンテナー イメージに [Azure ロールベースのアクセス制御 (Azure RBAC)](../container-registry/container-registry-roles.md) を提供できます。 たとえば、レジストリに対するプルのみのアクセス権を持つサービス プリンシパルを設定できます。
 
 Azure Container Registry は、追加の[認証オプション](../container-registry/container-registry-authentication.md)を提供します。
 
@@ -136,7 +136,7 @@ az container create \
 [...]
 ```
 
-コンテナー グループ設定の詳細については、[Resource Manager テンプレート リファレンス](/azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups)を参照してください。    
+コンテナー グループ設定の詳細については、[Resource Manager テンプレート リファレンス](/azure/templates/Microsoft.ContainerInstance/2019-12-01/containerGroups)を参照してください。    
 
 Resource Manager テンプレートでの Azure キー コンテナーシークレットの参照については、「[デプロイ時に Azure キー コンテナーを使用して、セキュリティで保護されたパラメーター値を渡す](../azure-resource-manager/templates/key-vault-parameter.md)」を参照してください。
 

@@ -2,18 +2,16 @@
 title: データ スキューを解決する - Azure Data Lake Tools for Visual Studio
 description: Azure Data Lake Tools for Visual Studio を使用して、データ スキュー問題の解決策をトラブルシューティングします。
 services: data-lake-analytics
-author: yanancai
-ms.author: yanacai
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/16/2016
-ms.openlocfilehash: 9ff7ba5f04a8c1862f8ef136f8f3f6900f00a431
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e9359582c07a78feb2d04b2ea87f046887238a1
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71802548"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129935"
 ---
 # <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>Azure Data Lake Tools for Visual Studio を使用してデータ スキュー問題を解決する
 
@@ -54,7 +52,9 @@ U-SQL では、CREATE STATISTICS ステートメントをテーブルで提供�
 
 コード例:
 
-    CREATE STATISTICS IF NOT EXISTS stats_SampleTable_date ON SampleDB.dbo.SampleTable(date) WITH FULLSCAN;
+```usql
+CREATE STATISTICS IF NOT EXISTS stats_SampleTable_date ON SampleDB.dbo.SampleTable(date) WITH FULLSCAN;
+```
 
 >[!NOTE]
 >統計情報は自動的には更新されません。 テーブル内のデータを更新しても、統計を再作成しなければ、クエリ パフォーマンスが低下することがあります。
@@ -65,62 +65,66 @@ U-SQL では、CREATE STATISTICS ステートメントをテーブルで提供�
 
 通常、パラメーターを 0.5 および 1 に設定できます。0.5 は微量の傾斜、1 は激しい傾斜を意味します。 ヒントは、現在のステートメント、およびすべてのダウンストリーム ステートメントの実行プランの最適化に影響を与えるため、傾斜キーの集計があり得る場合は、必ず事前にヒントを追加しておいてください。
 
-    SKEWFACTOR (columns) = x
+```usql
+SKEWFACTOR (columns) = x
+```
 
-    Provides a hint that the given columns have a skew factor x from 0 (no skew) through 1 (very heavy skew).
+特定の列の傾斜係数 x が 0 (傾斜なし) から 1 (非常に大きい傾斜) であることを示すヒントを提供します。
 
 コード例:
 
-    //Add a SKEWFACTOR hint.
-    @Impressions =
-        SELECT * FROM
-        searchDM.SML.PageView(@start, @end) AS PageView
-        OPTION(SKEWFACTOR(Query)=0.5)
-        ;
+```usql
+//Add a SKEWFACTOR hint.
+@Impressions =
+    SELECT * FROM
+    searchDM.SML.PageView(@start, @end) AS PageView
+    OPTION(SKEWFACTOR(Query)=0.5)
+    ;
+//Query 1 for key: Query, ClientId
+@Sessions =
+    SELECT
+        ClientId,
+        Query,
+        SUM(PageClicks) AS Clicks
+    FROM
+        @Impressions
+    GROUP BY
+        Query, ClientId
+    ;
+//Query 2 for Key: Query
+@Display =
+    SELECT * FROM @Sessions
+        INNER JOIN @Campaigns
+            ON @Sessions.Query == @Campaigns.Query
+    ;
+```
 
-    //Query 1 for key: Query, ClientId
-    @Sessions =
-        SELECT
-            ClientId,
-            Query,
-            SUM(PageClicks) AS Clicks
-        FROM
-            @Impressions
-        GROUP BY
-            Query, ClientId
-        ;
-
-    //Query 2 for Key: Query
-    @Display =
-        SELECT * FROM @Sessions
-            INNER JOIN @Campaigns
-                ON @Sessions.Query == @Campaigns.Query
-        ;   
-
-### <a name="option-3-use-rowcount"></a>オプション 3:ROWCOUNT を使用する  
+### <a name="option-3-use-rowcount"></a>オプション 3:ROWCOUNT を使用する
 SKEWFACTOR に加えて、特定の傾斜キー結合については、結合された一方の行セットが小さいことがわかっている場合、JOIN の前に U-SQL ステートメントに ROWCOUNT のヒントを追加してオプティマイザーに認識させることができます。 これによりオプティマイザーは、ブロードキャストの結合方法を選択してパフォーマンスを改善することができます。 ただし、ROWCOUNT はデータ スキュー問題の対処にある程度役立ちますが、問題を解決するわけではありません。
 
-    OPTION(ROWCOUNT = n)
+```usql
+OPTION(ROWCOUNT = n)
+```
 
-    Identify a small row set before JOIN by providing an estimated integer row count.
+推定の整数行数を指定して、JOIN の前の小さな行セットを識別します。
 
 コード例:
 
-    //Unstructured (24-hour daily log impressions)
-    @Huge   = EXTRACT ClientId int, ...
-                FROM @"wasb://ads@wcentralus/2015/10/30/{*}.nif"
-                ;
-
-    //Small subset (that is, ForgetMe opt out)
-    @Small  = SELECT * FROM @Huge
-                WHERE Bing.ForgetMe(x,y,z)
-                OPTION(ROWCOUNT=500)
-                ;
-
-    //Result (not enough information to determine simple broadcast JOIN)
-    @Remove = SELECT * FROM Bing.Sessions
-                INNER JOIN @Small ON Sessions.Client == @Small.Client
-                ;
+```usql
+//Unstructured (24-hour daily log impressions)
+@Huge   = EXTRACT ClientId int, ...
+            FROM @"wasb://ads@wcentralus/2015/10/30/{*}.nif"
+            ;
+//Small subset (that is, ForgetMe opt out)
+@Small  = SELECT * FROM @Huge
+            WHERE Bing.ForgetMe(x,y,z)
+            OPTION(ROWCOUNT=500)
+            ;
+//Result (not enough information to determine simple broadcast JOIN)
+@Remove = SELECT * FROM Bing.Sessions
+            INNER JOIN @Small ON Sessions.Client == @Small.Client
+            ;
+```
 
 ## <a name="solution-3-improve-the-user-defined-reducer-and-combiner"></a>解決策 3: ユーザー定義レジューサーおよびコンバイナーを改善する
 
@@ -136,19 +140,23 @@ SKEWFACTOR に加えて、特定の傾斜キー結合については、結合さ
 
 再帰的なレジューサーの属性:
 
-    [SqlUserDefinedReducer(IsRecursive = true)]
+```usql
+[SqlUserDefinedReducer(IsRecursive = true)]
+```
 
 コード例:
 
-    [SqlUserDefinedReducer(IsRecursive = true)]
-    public class TopNReducer : IReducer
+```usql
+[SqlUserDefinedReducer(IsRecursive = true)]
+public class TopNReducer : IReducer
+{
+    public override IEnumerable<IRow>
+        Reduce(IRowset input, IUpdatableRow output)
     {
-        public override IEnumerable<IRow>
-            Reduce(IRowset input, IUpdatableRow output)
-        {
-            //Your reducer code goes here.
-        }
+        //Your reducer code goes here.
     }
+}
+```
 
 ### <a name="option-2-use-row-level-combiner-mode-if-possible"></a>オプション 2:可能な限り行レベルのコンバイナー モードを使用する
 
@@ -175,12 +183,14 @@ SKEWFACTOR に加えて、特定の傾斜キー結合については、結合さ
 
 コード例:
 
-    [SqlUserDefinedCombiner(Mode = CombinerMode.Right)]
-    public class WatsonDedupCombiner : ICombiner
+```usql
+[SqlUserDefinedCombiner(Mode = CombinerMode.Right)]
+public class WatsonDedupCombiner : ICombiner
+{
+    public override IEnumerable<IRow>
+        Combine(IRowset left, IRowset right, IUpdatableRow output)
     {
-        public override IEnumerable<IRow>
-            Combine(IRowset left, IRowset right, IUpdatableRow output)
-        {
-        //Your combiner code goes here.
-        }
+    //Your combiner code goes here.
     }
+}
+```

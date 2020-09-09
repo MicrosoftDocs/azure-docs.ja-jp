@@ -1,6 +1,6 @@
 ---
 title: Security recommendations in Azure Security Center
-description: このドキュメントでは、Azure Security Center での推奨事項に従ってご使用の Azure のリソースを保護し、セキュリティ ポリシーを使用してコンプライアンスを順守する方法について説明します。
+description: このドキュメントでは、Azure セキュリティ センターでの推奨事項に従ってご使用の Azure のリソースを保護し、セキュリティ ポリシーを使用してコンプライアンスを順守する方法について説明します。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/29/2019
 ms.author: memildin
-ms.openlocfilehash: 408b0f020be72b8e6b10dd6c97298afda1b91360
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6363100c844d071a3bb47521cec6ff7e988f6af8
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225263"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263226"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Security recommendations in Azure Security Center 
-このトピックでは、Azure Security Center で推奨事項を確認し、理解し、Azure リソースの保護に役立てる方法について説明します。
+このトピックでは、Azure セキュリティ センターで推奨事項を確認し、理解し、Azure リソースの保護に役立てる方法について説明します。
 
 > [!NOTE]
 > このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。  このドキュメントはステップ バイ ステップ ガイドではありません。
@@ -31,14 +31,13 @@ ms.locfileid: "79225263"
 
 推奨事項とは、リソースを保護するために実行する操作です。
 
-Security Center は Azure リソースのセキュリティの状態を定期的に分析して、潜在的なセキュリティ脆弱性を特定します。 その後、それらを削除する方法の推奨事項を提供します。
+Security Center では、Azure リソースのセキュリティの状態が定期的に分析されて、潜在的なセキュリティ脆弱性が特定されます。 その後、これらの脆弱性を修正する方法に関する推奨事項が提供されます。
 
 それぞれの推奨事項の内容は次のとおりです。
 
-- 推奨されている内容の簡単な説明。
-- 推奨事項を実装するために実行する修復手順。 <!-- In some cases, Quick Fix remediation is available. -->
-- 推奨される操作を実行するために必要なリソース。
-- **セキュリティ スコアの影響**。これは、この推奨事項を実装した場合に、セキュリティ スコアが上昇する量です。
+- 問題の簡単な説明。
+- 推奨事項を実装するために実行する修復手順。
+- 影響を受けるリソース。
 
 ## <a name="monitor-recommendations"></a>推奨事項の監視<a name="monitor-recommendations"></a>
 
@@ -48,29 +47,31 @@ Security Center はリソースのセキュリティの状態を分析して、�
 
 1. **[概要]** で **[推奨事項]** タイルを選択します。 **[推奨事項]** リストが開きます。
 
-      ![推奨事項の表示](./media/security-center-recommendations/view-recommendations.png)
+1. 推奨事項は、セキュリティ コントロールにグループ化されています。
 
-    推奨事項をフィルター処理できます。 推奨事項をフィルター処理するには、 **[推奨事項]** ブレードで **[フィルター]** を選択します。 **[フィルター]** ブレードが開いたら、確認する重要度と状態の値を選択します。
+      ![セキュリティ コントロールにグループ化された推奨事項](./media/security-center-recommendations/view-recommendations.png)
 
-   * **[推奨事項]** : 推奨事項。
-   * **[セキュリティ スコアの影響]** : セキュリティに関する推奨事項を使用し、各推奨事項の重要度を判断する高度なアルゴリズムを適用することで Security Center で生成されるスコア。 詳細については、「[セキュリティ スコアの計算](security-center-secure-score.md#secure-score-calculation)」をご覧ください。
-   * **リソース**: この推奨事項が適用されるリソースの一覧を表示します。
-   * **ステータス バー**: 特定の推奨事項の重要度を示します。
-       * **高 (赤)** : 重要なリソース (アプリケーション、VM、ネットワーク セキュリティ グループなど) に脆弱性が存在しており、注意が必要です。
-       * **中 (オレンジ)** : 脆弱性が存在しており、脆弱性を排除するかプロセスを完了するには重大ではない手順または追加の手順が必要です。
-       * **低 (青)** : 対処する必要はあるが、早急な注意を必要としない脆弱性が存在します (既定では、重要度の低い推奨事項は表示されないが、重要度の低い推奨事項にフィルターを適用すると表示できる)。 
-       * **正常 (緑)** :
-       * **(灰色)** :
+1. コントロールを展開し、特定の推奨事項を選択して、推奨事項ページを表示します。
 
-1. 各推奨事項の詳細を表示するには、推奨事項をクリックします。
+    :::image type="content" source="./media/security-center-recommendations/recommendation-details-page.png" alt-text="推奨事項の詳細ページ。" lightbox="./media/security-center-recommendations/recommendation-details-page.png":::
 
-    ![推奨事項の詳細](./media/security-center-recommendations/recommendation-details.png)
+    このページには次の項目が含まれています。
 
->[!NOTE] 
-> Azure リソースの詳細については、[クラシック デプロイ モデルと Resource Manager デプロイ モデル](../azure-classic-rm.md)に関するページを参照してください。
+    - **重大度インジケーター**
+    - **更新間隔** (該当する場合) 
+    - **説明** - 問題の簡単な説明
+    - **修正手順** - 影響を受けるリソースのセキュリティの問題を修正するために必要な手動の手順の説明。 "クイック修正" を含む推奨事項の場合は、推奨される修正プログラムをリソースに適用する前に、 **[修正ロジックを表示]** を選択することができます。 
+    - **影響を受けるリソース** - リソースはタブにグループ化されています。
+        - **正常なリソース** - 影響を受けていないか、既に問題を修正した関連するリソース。
+        - **異常なリソース** – 特定された問題の影響を受けているリソース。
+        - **適用されないリソース** – 推奨事項で明確な回答を得ることができないリソース。 [適用されないリソース] タブには、各リソースの理由も含まれています。 
+
+            :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="理由が表示されている [適用されないリソース] タブ。":::
+
+
  
 ## <a name="next-steps"></a>次のステップ
 
-このドキュメントでは、Security Center のセキュリティに関する推奨事項について説明しました。 推奨事項を修正する方法については、次を参照してください。
+このドキュメントでは、セキュリティ センターのセキュリティに関する推奨事項について説明しました。 推奨事項を修正する方法については、次を参照してください。
 
 * [推奨事項の修正](security-center-remediate-recommendations.md) -- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明します。

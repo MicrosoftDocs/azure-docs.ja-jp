@@ -4,16 +4,16 @@ description: BLOB (オブジェクト) ストレージの WORM (Write Once Read 
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/26/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 539154135c35e034c889294d911fb53b3d45daa4
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: a09dbd7d778a4f7ea2a9aac9ca07b9e6d06bc1ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83771011"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84463622"
 ---
 # <a name="set-and-manage-immutability-policies-for-blob-storage"></a>BLOB ストレージの不変ポリシーを設定および管理する
 

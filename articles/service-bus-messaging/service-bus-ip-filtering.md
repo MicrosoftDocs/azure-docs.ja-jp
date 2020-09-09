@@ -1,24 +1,16 @@
 ---
 title: Azure Service Bus の IP ファイアウォール規則を構成する
 description: ファイアウォール ルールを使用して、特定の IP アドレスから Azure Service Bus への接続を許可する方法です。
-services: service-bus
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus
-ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2019
-ms.author: aschhab
-ms.openlocfilehash: 9601689bbce9566b52664058911e9c45647152d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 699ece2e78ff0605ff4076b09c023d14e289b1f7
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116820"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064640"
 ---
-# <a name="configure-ip-firewall-rules-for-azure-service-bus"></a>Azure Service Bus の IP ファイアウォール規則を構成する
+# <a name="allow-access-to-azure-service-bus-namespace-from-specific-ip-addresses-or-ranges"></a>特定の IP アドレスまたは範囲から Azure Service Bus への接続を許可します
 既定では、要求が有効な認証と承認を受けている限り、Service Bus 名前空間にはインターネットからアクセスできます。 これは IP ファイアウォールを使用して、さらに [CIDR (クラスレス ドメイン間ルーティング)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 表記の一連の IPv4 アドレスまたは IPv4 アドレス範囲のみに制限できます。
 
 この機能は、Azure Service Bus へのアクセスを特定の既知のサイトからのみに制限したいシナリオで役立ちます。 ファイアウォール規則を使用すると、特定の IPv4 アドレスから送信されたトラフィックを受け入れる規則を構成できます。 たとえば、[Azure Express Route][express-route] で Service Bus を使用する場合、お使いのオンプレミスのインフラストラクチャ IP アドレスまたは会社の NAT ゲートウェイのアドレスからのトラフィックのみ許可する**ファイアウォール規則**を作成できます。 
@@ -42,21 +34,37 @@ ms.locfileid: "82116820"
 > 仮想ネットワーク上には、次の Microsoft サービスが必要です
 > - Azure App Service
 > - Azure Functions
+> - Azure Monitor (診断設定)
 
 ## <a name="use-azure-portal"></a>Azure Portal の使用
 このセクションでは、Azure portal を使用して、Service Bus 名前空間の IP ファイアウォール規則を作成する方法について説明します。 
 
 1. [Azure portal](https://portal.azure.com) で、ご利用の **Service Bus 名前空間**に移動します。
-2. 左側のメニューで、 **[ネットワーク]** オプションを選択します。 既定では、 **[すべてのネットワーク]** オプションが選択されています。 Service Bus 名前空間では、すべての IP アドレスからの接続を受け入れます。 この既定の設定は、IP アドレス範囲 0.0.0.0/0 を受け入れる規則と同じです。 
+2. 左側のメニューで、 **[設定]** の下にある **[ネットワーク]** オプションを選択します。  
+
+    > [!NOTE]
+    > **[ネットワーク]** タブは **premium** 名前空間に対してのみ表示されます。  
+    
+    既定では、 **[選択されたネットワーク]** オプションが選択されています。 このページで 1 つ以上の IP ファイアウォール規則または仮想ネットワークを追加しない場合は、パブリック インターネット経由で (アクセス キーを使用して) 名前空間にアクセスできます。
+
+    :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="[ネットワーク] ページ - 既定" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
+    
+    **[すべてのネットワーク]** オプションを選択した場合、すべての IP アドレスからの接続が Service Bus 名前空間によって受け入れられます。 この既定の設定は、IP アドレス範囲 0.0.0.0/0 を受け入れる規則と同じです。 
 
     ![ファイアウォールで [すべてのネットワーク] のオプションが選択されている](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
-1. ページの上部で、 **[選択されたネットワーク]** オプションを選択します。 **[ファイアウォール]** セクションで、次の手順のようにします。
+1. 指定した IP アドレスからのアクセスのみを許可するには、 **[選択されたネットワーク]** オプションを選択します (まだ選択されていない場合)。 **[ファイアウォール]** セクションで、次の手順のようにします。
     1. 現在のクライアント IP にその名前空間へのアクセスを許可するには、 **[クライアント IP アドレスを追加する]** オプションを選択します。 
     2. **[アドレス範囲]** に、特定の IPv4 アドレスまたは IPv4 アドレスの範囲を CIDR 表記で入力します。 
     3. **信頼された Microsoft サービスがこのファイアウォールをバイパスすることを許可する**かどうかを指定します。 
 
-        ![ファイアウォールで [すべてのネットワーク] のオプションが選択されている](./media/service-bus-ip-filtering/firewall-selected-networks-trusted-access-disabled.png)
+        > [!WARNING]
+        > **[選択されたネットワーク]** オプションを選び、IP アドレスまたはアドレス範囲を指定しなかった場合、サービスではすべてのネットワークからのトラフィックが許可されます。 
+
+        ![[ファイアウォール] - [すべてのネットワーク] オプションが選択されている](./media/service-bus-ip-filtering/firewall-selected-networks-trusted-access-disabled.png)
 3. ツール バーの **[保存]** を選択して設定を保存します。 ポータルの通知に確認が表示されるまで、数分間お待ちください。
+
+    > [!NOTE]
+    > 特定の仮想ネットワークへのアクセスを制限するには、[特定のネットワークからのアクセスの許可](service-bus-service-endpoints.md)に関する記事をご覧ください。
 
 ## <a name="use-resource-manager-template"></a>Resource Manager テンプレートの使用
 このセクションには、仮想ネットワークとファイアウォール規則を作成するサンプル Azure Resource Manager テンプレートが含まれています。
@@ -76,7 +84,7 @@ ms.locfileid: "82116820"
 > ```json
 > "defaultAction": "Allow"
 > ```
-> から
+> to
 > ```json
 > "defaultAction": "Deny"
 > ```
@@ -156,4 +164,4 @@ Service Bus へのアクセスを Azure 仮想ネットワークに 制約する
 
 [lnk-deploy]: ../azure-resource-manager/templates/deploy-powershell.md
 [lnk-vnet]: service-bus-service-endpoints.md
-[express-route]:  /azure/expressroute/expressroute-faqs#supported-services
+[express-route]:  ../expressroute/expressroute-faqs.md#supported-services

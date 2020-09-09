@@ -6,16 +6,17 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/13/2019
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5b3af812b2b78c276b5345b9b19226e6e1dba80b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d378e1526d5b253853fd306c8a1b7a8982436b8d
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78185762"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87115905"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での言語のカスタマイズ
 
@@ -84,7 +85,7 @@ Azure Active Directory B2C (Azure AD B2C) の言語のカスタマイズを使�
 
 カスタム ユーザー属性の文字列を変更する場合や、JSON に追加する場合は、次の形式を使います。
 
-```JSON
+```json
 {
   "LocalizedStrings": [
     {
@@ -106,7 +107,7 @@ Azure Active Directory B2C (Azure AD B2C) の言語のカスタマイズを使�
 
 応答の値セットの一覧を指定する場合は、`LocalizedCollections` 属性を作成する必要があります。 `LocalizedCollections` は、`Name` と `Value` のペアの配列です。 項目の順序は、表示される順序になります。 `LocalizedCollections` を追加するには、次の形式を使います。
 
-```JSON
+```json
 {
   "LocalizedStrings": [...],
   "LocalizedCollections": [{

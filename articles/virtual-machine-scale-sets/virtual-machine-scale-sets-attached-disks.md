@@ -9,15 +9,15 @@ ms.subservice: disks
 ms.date: 4/25/2017
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: e5bdb30929b4d93b05d850a56c9a6baf32f9856b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 9e4bdf868d3f8ddf3a049509ead30a4b1ba341b7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125011"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527440"
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Azure 仮想マシン スケール セットと接続されたデータ ディスク
-[Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/) では、使用できるストレージを拡張するために、データ ディスクをアタッチした VM インスタンスがサポートされています。 新たに作成するスケール セットや既存のスケール セットにデータ ディスクをアタッチすることができます。
+[Virtual Machine Scale Sets](./index.yml) では、使用できるストレージを拡張するために、データ ディスクをアタッチした VM インスタンスがサポートされています。 新たに作成するスケール セットや既存のスケール セットにデータ ディスクをアタッチすることができます。
 
 > [!NOTE]
 > データ ディスクがアタッチされたスケール セットを作成する場合、(スタンドアロン型の Azure VM と同様に) ディスクを使用する VM 内からディスクをマウントおよびフォーマットする必要があります。 このプロセスを完了するには、スクリプトを呼び出して VM 上のすべてのデータ ディスクをパーティション化およびフォーマットするカスタム スクリプト拡張機能を使用する方法が便利です。 これの例については、[Azure CLI](tutorial-use-disks-cli.md#prepare-the-data-disks) または [Azure PowerShell](tutorial-use-disks-powershell.md#prepare-the-data-disks) を参照してください。
@@ -33,7 +33,7 @@ ms.locfileid: "83125011"
 
 
 ## <a name="create-a-service-fabric-cluster-with-attached-data-disks"></a>データ ディスクをアタッチして Service Fabric クラスターを作成する
-Azure で実行されている [Service Fabric](/azure/service-fabric) クラスター内の各[ノード タイプ](../service-fabric/service-fabric-cluster-nodetypes.md)は、仮想マシン スケール セットによって提供されます。 Azure Resource Manager テンプレートを使用して、Service Fabric クラスターを構成するスケール セットにデータ ディスクを接続できます。 [既存のテンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates)を出発点として使用できます。 テンプレートで _Microsoft.Compute/virtualMachineScaleSets_ リソースの _storageProfile_ 内に _dataDisks_ セクションを追加して、そのテンプレートをデプロイします。 次の例では、128 GB のデータ ディスクがアタッチされます。
+Azure で実行されている [Service Fabric](../service-fabric/index.yml) クラスター内の各[ノード タイプ](../service-fabric/service-fabric-cluster-nodetypes.md)は、仮想マシン スケール セットによって提供されます。 Azure Resource Manager テンプレートを使用して、Service Fabric クラスターを構成するスケール セットにデータ ディスクを接続できます。 [既存のテンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates)を出発点として使用できます。 テンプレートで _Microsoft.Compute/virtualMachineScaleSets_ リソースの _storageProfile_ 内に _dataDisks_ セクションを追加して、そのテンプレートをデプロイします。 次の例では、128 GB のデータ ディスクがアタッチされます。
 
 ```json
 "dataDisks": [
@@ -94,5 +94,3 @@ Linux クラスターでデータ ディスクを自動的に準備するには�
 Azure マネージド ディスクと、スケール セットに接続されたデータ ディスクのサポートは、Microsoft.Compute API のバージョン [_2016-04-30-preview_](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/compute/resource-manager/Microsoft.Compute/preview/2016-04-30-preview/compute.json) 以降で使用できます。
 
 スケール セット内の接続されたデータ ディスクに対する Microsoft Azure Portal でのサポートは限定的です。 要件に応じて、Azure テンプレート、CLI、PowerShell、SDK、および REST API を使用して、接続されたディスクを管理できます。
-
-

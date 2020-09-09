@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
-ms.date: 05/07/2020
+ms.topic: how-to
+ms.date: 05/18/2020
 ms.author: diberry
-ms.openlocfilehash: fc9f44739cd57eb46179ff17eba1d4f73d968799
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 304e76a2bf8bae3e6ee2120b892ef97d89c3decc
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585625"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144405"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>LUIS ポータルでの新しい LUIS アプリの作成
 LUIS アプリを作成するにはいくつかの方法があります。 LUIS ポータル内または LUIS オーサリング [API](developer-reference-resource.md) を使用して LUIS アプリを作成できます。
@@ -45,10 +45,10 @@ LUIS アプリを作成するにはいくつかの方法があります。 LUIS 
 
 ## <a name="create-new-app-in-luis"></a>LUIS で新しいアプリを作成する
 
-1. **[マイ アプリ]** ページで、自分のサブスクリプション、作成リソース、 **[+ 作成]** の順に選択します。 無料試用版キーを使用している場合、[作成リソースの作成方法](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal)について学習してください。
+1. **[マイ アプリ]** ページ上で、ご自身の **[サブスクリプション]** 、 **[作成リソース]** 、 **[+ 作成]** の順に選択します。 
 
-    ![LUIS アプリの一覧](./media/create-app-in-portal.png)
-
+> [!div class="mx-imgBorder"]
+> ![LUIS アプリの一覧](./media/create-app-in-portal.png)
 
 1. ダイアログ ボックスに、`Pizza Tutorial` など、アプリケーションの名前を入力します。
 
@@ -64,7 +64,7 @@ LUIS アプリを作成するにはいくつかの方法があります。 LUIS 
     > [!div class="mx-imgBorder"]
     > ![None 意図が作成されており、サンプル発話のない意図リスト](media/pizza-tutorial-new-app-empty-intent-list.png)
 
-## <a name="other-actions-available"></a>利用できるアクションはありません
+## <a name="other-actions-available-on-my-apps-page"></a>[マイ アプリ] ページで利用可能なその他のアクション
 
 コンテキスト ツール バーに他のアクションがあります。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: f09f5010c18f5ea064b02f0fbbae107bf473e1f8
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: a3382f93990612b0ab34eb0848cbf3d6577c44ff
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313679"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087936"
 ---
 # <a name="how-to-manually-fix-servicenow-sync-problems"></a>ServiceNow の同期に関する問題を手動で修正する方法
 
@@ -38,7 +38,7 @@ Azure Monitor は、サードパーティの IT Service Management (ITSM) プロ
     1. 構成するにはコネクタ名をクリックします
     1. 使用されなくなったコネクタを削除します
 
-    1. パートナーの種類に基づいて、[これらの定義](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-connections)に従ってフィールドを更新します
+    1. パートナーの種類に基づいて、[これらの定義](./itsmc-connections.md)に従ってフィールドを更新します
 
     1. [同期] をクリックします
 

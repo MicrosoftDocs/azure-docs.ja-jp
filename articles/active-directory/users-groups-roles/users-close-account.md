@@ -1,28 +1,28 @@
 ---
-title: アンマネージド Azure AD 組織の職場または学校アカウントを削除する
+title: アンマネージド Azure AD の組織で職場または学校アカウントを閉鎖する
 description: アンマネージド Azure Active Directory のご自身の職場または学校アカウントを削除する方法。
 services: active-directory
 author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 05/20/2019
 ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11c337f4838279771523a1f375b7349387d68f45
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 87e03214e2a00a16064763f35f38bdd3ea0e6123
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582541"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798331"
 ---
 # <a name="close-your-work-or-school-account-in-an-unmanaged-azure-ad-organization"></a>アンマネージド Azure AD 組織の職場または学校アカウントを削除する
 
-ご自身がアンマネージド Azure Active 組織 (Azure AD) 組織のユーザーで、その組織のアプリを利用する必要がなくなった場合、または関連付けを維持する必要がなくなった場合、お使いのアカウントはいつでも削除できます。 アンマネージド組織には、グローバル管理者がいません。 アンマネージド組織のユーザーは自分のアカウントをご自身で削除できます。その際、管理者に連絡する必要はありません。
+ご自身がアンマネージド Azure Active Directory (Azure AD) 組織のユーザーで、その組織のアプリを利用する必要がなくなった場合、または関連付けを維持する必要がなくなった場合、お使いのアカウントはいつでも削除できます。 アンマネージド組織には、グローバル管理者がいません。 アンマネージド組織のユーザーは自分のアカウントをご自身で削除できます。その際、管理者に連絡する必要はありません。
 
 アンマネージド組織のユーザーは、多くの場合、セルフサービス サインアップ中に作成されます。 たとえば、無料サービスにサインアップした組織のインフォメーション ワーカーが、このユーザーに該当する可能性があります。 セルフサービス サインアップの詳細については、 ("バイラル") サインアップの詳細については、「[Azure Active Directory のセルフサービス サインアップについて](directory-self-service-signup.md)」を参照してください。
 
@@ -32,9 +32,9 @@ ms.locfileid: "82582541"
 
 ご自身のアカウントを削除するには、事前に次の項目を確認しておく必要があります。
 
-* ご自身がアンマネージド Azure AD 組織のユーザーであることを確認してください。 マネージド組織のユーザーの場合、自分のアカウントを削除することはできません。 マネージド組織のユーザーがアカウントを削除する必要がある場合は、管理者に連絡する必要があります。 ご自身がアンマネージド組織のユーザーかどうかを確認する方法については、「[アンマネージド テナントからユーザーを削除する](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)」を参照してください。
+* ご自身がアンマネージド Azure AD 組織のユーザーであることを確認してください。 マネージド組織のユーザーの場合、自分のアカウントを削除することはできません。 マネージド組織のユーザーがアカウントを削除する必要がある場合は、管理者に連絡する必要があります。 ご自身がアンマネージド組織のユーザーかどうかを確認する方法については、「[アンマネージド テナントからユーザーを削除する](/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)」を参照してください。
 
-* 保持する必要があるすべてのデータを保存します。 エクスポート要求を送信する方法については、「[Accessing and exporting system-generated logs for Unmanaged Tenants (アンマネージド テナントのシステム生成ログへのアクセスとエクスポート)](https://docs.microsoft.com/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants)」を参照してください。
+* 保持する必要があるすべてのデータを保存します。 エクスポート要求を送信する方法については、「[Accessing and exporting system-generated logs for Unmanaged Tenants (アンマネージド テナントのシステム生成ログへのアクセスとエクスポート)](/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants)」を参照してください。
 
 > [!WARNING]
 > 一度アカウントを削除すると、元に戻すことはできません。 ご自身のアカウントを削除すると、すべての個人データが削除され、 ご自身のアカウントやそのアカウントに関連付けられているデータにアクセスできなくなります。
@@ -56,5 +56,5 @@ ms.locfileid: "82582541"
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Active Directory のセルフサービス サインアップについて](directory-self-service-signup.md)
-- [アンマネージド テナントからユーザーを削除する](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)
-- [アンマネージド テナントのシステム生成ログへのアクセスとエクスポート](https://docs.microsoft.com/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants)
+- [アンマネージド テナントからユーザーを削除する](/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)
+- [アンマネージド テナントのシステム生成ログへのアクセスとエクスポート](/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants)

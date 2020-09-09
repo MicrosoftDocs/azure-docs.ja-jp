@@ -11,12 +11,13 @@ ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 03/12/2020
 ms.author: aahi
-ms.openlocfilehash: fcfd12455ceabf6c705cd1949205f680e427f5bc
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 113c1e367fccbbc6c6db2d963b35896675a0d635
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79503535"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936845"
 ---
 # <a name="quickstart-use-the-bing-news-search-client-library"></a>クイック スタート:Bing News Search クライアント ライブラリを使用する
 

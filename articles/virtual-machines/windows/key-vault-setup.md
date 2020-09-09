@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 01/24/2017
 ms.author: mimckitt
-ms.openlocfilehash: e4bff4d1826d9586495207095eccf8f6c66164a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d5e4bb1d3f62685c90e95eebf5f8f07720a23b82
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81870009"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086995"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Azure Resource Manager の仮想マシンの Key Vault を設定する
 
@@ -33,36 +33,46 @@ PowerShell を使用して Key Vault を作成するには、「[PowerShell を�
 
 新しい Key Vault の場合は、次の PowerShell コマンドレットを使用することができます。
 
-    New-AzKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia' -EnabledForDeployment
+```azurepowershell
+New-AzKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia' -EnabledForDeployment
+```
 
 既存の Key Vault の場合は、次の PowerShell コマンドレットを使用することができます。
 
-    Set-AzKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
+```azurepowershell
+Set-AzKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
+```
 
 ## <a name="use-cli-to-set-up-key-vault"></a>CLI を使用して Key Vault を設定する
 コマンド ライン インターフェイス (CLI) を使用して Key Vault を作成するには、「 [CLI を使用した Key Vault の管理](../../key-vault/general/manage-with-cli2.md#create-a-key-vault)」を参照してください。
 
 CLI の場合、デプロイ ポリシーを割り当てる前に、Key Vault を作成する必要があります。 この処理には、次のコマンドを使用できます。
 
-    az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --location "EastAsia"
-    
+```azurecli
+az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --location "EastAsia"
+```
+
 さらに、テンプレートのデプロイで使用するために Key Vault を有効にするには、次のコマンドを実行します。
 
-    az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-deployment "true"
+```azurecli
+az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-deployment "true"
+```
 
 ## <a name="use-templates-to-set-up-key-vault"></a>テンプレートを使用して Key Vault を設定する
 テンプレートを使用する場合、Key Vault リソースの `enabledForDeployment` プロパティを `true` に設定する必要があります。
 
-    {
-      "type": "Microsoft.KeyVault/vaults",
-      "name": "ContosoKeyVault",
-      "apiVersion": "2015-06-01",
-      "location": "<location-of-key-vault>",
-      "properties": {
-        "enabledForDeployment": "true",
-        ....
-        ....
-      }
-    }
+```config
+{
+  "type": "Microsoft.KeyVault/vaults",
+  "name": "ContosoKeyVault",
+  "apiVersion": "2015-06-01",
+  "location": "<location-of-key-vault>",
+  "properties": {
+    "enabledForDeployment": "true",
+    ....
+    ....
+  }
+}
+```
 
 テンプレートを使用して、Key Vault の作成時に構成できるその他のオプションについては、「 [Create a Key Vault](https://azure.microsoft.com/documentation/templates/101-key-vault-create/)」を参照してください。

@@ -6,19 +6,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 07/27/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
-ms.openlocfilehash: 8bcc919aee7548e8596d1f44c8a357d3f84dfb14
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: b1a0425fba7dc8c6fb87f03305062f61fc431ca9
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82095909"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87451158"
 ---
 <a name="HOLTop"></a>
 
-#### <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
+#### <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
 [v3 リファレンス ドキュメント](https://aka.ms/azsdk-js-textanalytics-ref-docs) | [v3 ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics) | [v3 パッケージ (NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics) | [v3 サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
 
@@ -31,7 +32,7 @@ ms.locfileid: "82095909"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services)
 * 最新バージョンの [Node.js](https://nodejs.org/)。
 * Azure サブスクリプションを入手したら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Text Analytics リソースを作成"  target="_blank">Text Analytics リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
     * アプリケーションを Text Analytics API に接続するには、作成するリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
@@ -56,12 +57,12 @@ npm init
 ```
 ### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする
 
-#### <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
+#### <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
 `@azure/ai-text-analytics` NPM パッケージをインストールします。
 
 ```console
-npm install --save @azure/ai-text-analytics@1.0.0-preview.4
+npm install --save @azure/ai-text-analytics@5.0.0
 ```
 
 > [!TIP]
@@ -83,7 +84,7 @@ npm install --save @azure/cognitiveservices-textanalytics
 アプリの `package.json` ファイルが依存関係によって更新されます。
 `index.js` という名前のファイルを作成し、以下を追加します。
 
-#### <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
+#### <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
 ```javascript
 "use strict";
@@ -128,7 +129,7 @@ Text Analytics クライアントは、キーを使用して Azure に対して�
 
 ## <a name="client-authentication"></a>クライアント認証
 
-#### <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
+#### <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
 キーとエンドポイントをパラメーターとして使用して、新しい `TextAnalyticsClient` オブジェクトを作成します。
 
@@ -146,7 +147,7 @@ const textAnalyticsClient = new TextAnalyticsClient(endpoint,  new AzureKeyCrede
 
 ## <a name="sentiment-analysis"></a>センチメント分析
 
-#### <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
+#### <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
 分析するドキュメントを含む文字列の配列を作成します。 クライアントの `analyzeSentiment()` メソッドを呼び出し、返される `SentimentBatchResult` オブジェクトを取得します。 結果の一覧を反復処理し、各ドキュメントの ID、ドキュメント レベルのセンチメントと信頼度スコアを出力します。 各ドキュメントの結果には、文レベルのセンチメントと、オフセット、長さ、および信頼度スコアが含まれます。
 
@@ -213,7 +214,7 @@ ID: 0
 
 ## <a name="language-detection"></a>言語検出
 
-#### <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
+#### <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
 分析するドキュメントを含む文字列の配列を作成します。 クライアントの `detectLanguage()` メソッドを呼び出し、返される `DetectLanguageResultCollection` を取得します。 次に、結果を反復処理して、各ドキュメントの ID とそれぞれの第一言語を出力します。
 
@@ -262,10 +263,10 @@ Document ID: 3 , Language: Chinese_Simplified
 
 ## <a name="named-entity-recognition-ner"></a>名前付きエンティティの認識 (NER)
 
-#### <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
+#### <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
 > [!NOTE]
-> バージョン `3.0-preview`:
+> バージョン `3.0`:
 > * エンティティ リンク設定は、NER から切り離された要求です。
 
 分析するドキュメントを含む文字列の配列を作成します。 クライアントの `recognizeEntities()` メソッドを呼び出し、`RecognizeEntitiesResult` オブジェクトを取得します。 結果の一覧を反復処理し、エンティティ名、タイプ、サブタイプ、オフセット、長さ、およびスコアを出力します。
@@ -283,7 +284,7 @@ async function entityRecognition(client){
         console.log(`Document ID: ${document.id}`);
         document.entities.forEach(entity => {
             console.log(`\tName: ${entity.text} \tCategory: ${entity.category} \tSubcategory: ${entity.subCategory ? entity.subCategory : "N/A"}`);
-            console.log(`\tScore: ${entity.score}`);
+            console.log(`\tScore: ${entity.confidenceScore}`);
         });
     });
 }
@@ -297,26 +298,20 @@ entityRecognition(textAnalyticsClient);
 ```console
 Document ID: 0
         Name: Microsoft         Category: Organization  Subcategory: N/A
-        Score: 1
+        Score: 0.29
         Name: Bill Gates        Category: Person        Subcategory: N/A
-        Score: 0.67
+        Score: 0.78
         Name: Paul Allen        Category: Person        Subcategory: N/A
-        Score: 0.81
+        Score: 0.82
         Name: April 4, 1975     Category: DateTime      Subcategory: Date
         Score: 0.8
-        Name: interpreters      Category: PersonType    Subcategory: N/A
-        Score: 0.6
         Name: 8800      Category: Quantity      Subcategory: Number
         Score: 0.8
 Document ID: 1
-        Name: Microsoft         Category: Organization  Subcategory: N/A
-        Score: 0.96
-        Name: Redmond   Category: Location      Subcategory: GPE
-        Score: 0.09
         Name: 21        Category: Quantity      Subcategory: Number
         Score: 0.8
         Name: Seattle   Category: Location      Subcategory: GPE
-        Score: 0.31
+        Score: 0.25
 ```
 
 ## <a name="entity-linking"></a>Entity Linking
@@ -337,8 +332,8 @@ async function linkedEntityRecognition(client){
             console.log(`\tName: ${entity.name} \tID: ${entity.dataSourceEntityId} \tURL: ${entity.url} \tData Source: ${entity.dataSource}`);
             console.log(`\tMatches:`)
             entity.matches.forEach(match => {
-                console.log(`\t\tText: ${match.text} \tScore: ${match.score.toFixed(2)}`);
-            });
+                console.log(`\t\tText: ${match.text} \tScore: ${match.confidenceScore.toFixed(2)}`);
+        })
         });
     });
 }
@@ -353,24 +348,24 @@ linkedEntityRecognition(textAnalyticsClient);
 Document ID: 0
         Name: Altair 8800       ID: Altair 8800         URL: https://en.wikipedia.org/wiki/Altair_8800  Data Source: Wikipedia
         Matches:
-                Text: Altair 8800       Score: 0.78
+                Text: Altair 8800       Score: 0.88
         Name: Bill Gates        ID: Bill Gates  URL: https://en.wikipedia.org/wiki/Bill_Gates   Data Source: Wikipedia
         Matches:
-                Text: Bill Gates        Score: 0.55
-                Text: Gates     Score: 0.55
+                Text: Bill Gates        Score: 0.63
+                Text: Gates     Score: 0.63
         Name: Paul Allen        ID: Paul Allen  URL: https://en.wikipedia.org/wiki/Paul_Allen   Data Source: Wikipedia
         Matches:
-                Text: Paul Allen        Score: 0.53
+                Text: Paul Allen        Score: 0.60
         Name: Microsoft         ID: Microsoft   URL: https://en.wikipedia.org/wiki/Microsoft    Data Source: Wikipedia
         Matches:
-                Text: Microsoft         Score: 0.47
-                Text: Microsoft         Score: 0.47
+                Text: Microsoft         Score: 0.55
+                Text: Microsoft         Score: 0.55
         Name: April 4   ID: April 4     URL: https://en.wikipedia.org/wiki/April_4      Data Source: Wikipedia
         Matches:
-                Text: April 4   Score: 0.25
+                Text: April 4   Score: 0.32
         Name: BASIC     ID: BASIC       URL: https://en.wikipedia.org/wiki/BASIC        Data Source: Wikipedia
         Matches:
-                Text: BASIC     Score: 0.28
+                Text: BASIC     Score: 0.33
 ```
 
 #### <a name="version-21"></a>[バージョン 2.1](#tab/version-2)
@@ -418,7 +413,7 @@ Document ID: 2
 
 ## <a name="key-phrase-extraction"></a>キー フレーズの抽出
 
-#### <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
+#### <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
 分析するドキュメントを含む文字列の配列を作成します。 クライアントの `extractKeyPhrases()` メソッドを呼び出し、返される `ExtractKeyPhrasesResult` オブジェクトを取得します。 結果を反復処理し、各ドキュメントの ID と検出されたすべてのキー フレーズを出力します。
 

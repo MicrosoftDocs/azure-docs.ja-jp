@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 05/15/2019
 ms.author: aahi
 ms.openlocfilehash: 36719fc8370c04e9c2d01422536502f90e124c12
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82735251"
 ---
 # <a name="bing-web-search-sdk-samples"></a>Bing Web Search SDK のサンプル

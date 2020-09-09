@@ -5,14 +5,14 @@ author: luisbosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: quickstart
-ms.date: 07/23/2019
+ms.date: 07/10/2020
 ms.author: lbosq
-ms.openlocfilehash: c3e6524f8e43036c4b4c28c679c281c143731471
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e1ce632a04269704b498a69e1a0dd4fe72e00c87
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81450209"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543777"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>クイック スタート:Gremlin コンソールを使用して Azure Cosmos DB グラフ データベースを作成、クエリ、および走査する
 
@@ -29,7 +29,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 このクイックスタートでは、Azure portal を使用して Azure Cosmos DB [Gremlin API](graph-introduction.md) アカウント、データベース、グラフ (コンテナー) を作成してから、[Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) で [Gremlin コンソール](https://tinkerpop.apache.org)を使用して Gremlin API データを操作する方法を説明します。 このチュートリアルでは、頂点プロパティを更新しながら頂点と辺を作成およびクエリし、頂点をクエリし、グラフを走査し、頂点を削除します。
 
-![Apache Gremlin コンソールからの Azure Cosmos DB](./media/create-graph-gremlin-console/gremlin-console.png)
+:::image type="content" source="./media/create-graph-gremlin-console/gremlin-console.png" alt-text="Apache Gremlin コンソールからの Azure Cosmos DB":::
 
 Gremlin コンソールは Groovy/Java ベースであり、Linux、Mac、および Windows 上で実行します。 これは [Apache TinkerPop サイト](https://tinkerpop.apache.org/downloads.html)からダウンロードできます。
 
@@ -63,26 +63,31 @@ Gremlin コンソールは Groovy/Java ベースであり、Linux、Mac、およ
     connectionPool|{enableSsl: true}|TLS 用の接続プールの設定です。
     serializer|{ className: org.apache.tinkerpop.gremlin.<br>driver.ser.GraphSONMessageSerializerV2d0,<br> config: { serializeResultToString: true }}|この値に設定します。改行 (`\n`) を削除して値を貼り付けてください。
 
-    hosts の値には、 **[概要]** ページから **[Gremlin URI]** の値をコピーします。![Azure Portal の [概要] ページで Gremlin URI の値を表示してコピー](./media/create-graph-gremlin-console/gremlin-uri.png)
+   hosts の値には、 **[概要]** ページから **[Gremlin URI]** の値をコピーします。
 
-    パスワードの値には、 **[キー]** ページから **[主キー]** をコピーします。![Azure portal の [キー] ページでプライマリ キーを表示してコピーする](./media/create-graph-gremlin-console/keys.png)
+   :::image type="content" source="./media/create-graph-gremlin-console/gremlin-uri.png" alt-text="Azure Portal の [概要] ページで Gremlin URI の値を表示してコピー":::
 
-remote secure.yaml ファイルは、次のようになります。
+   パスワードの値には、 **[キー]** ページから **[主キー]** をコピーします。
 
-```
-hosts: [your_database_server.gremlin.cosmos.azure.com] 
-port: 443
-username: /dbs/your_database_account/colls/your_collection
-password: your_primary_key
-connectionPool: {
-  enableSsl: true
-}
-serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessageSerializerV2d0, config: { serializeResultToString: true }}
-```
+   :::image type="content" source="./media/create-graph-gremlin-console/keys.png" alt-text="Azure portal の [キー] ページでプライマリ キーを表示してコピーする":::
 
-hosts パラメーターの値は、必ず角かっこ ([]) で囲んでください。 
+   remote secure.yaml ファイルは、次のようになります。
+
+   ```yaml
+   hosts: [your_database_server.gremlin.cosmos.azure.com] 
+   port: 443
+   username: /dbs/your_database_account/colls/your_collection
+   password: your_primary_key
+   connectionPool: {
+     enableSsl: true
+   }
+   serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessageSerializerV2d0, config: { serializeResultToString: true }}
+   ```
+
+   hosts パラメーターの値は、必ず角かっこ ([]) で囲んでください。 
 
 1. ご使用のターミナルで、`bin/gremlin.bat` または `bin/gremlin.sh` を実行して [Gremlin コンソール](https://tinkerpop.apache.org/docs/3.2.5/tutorials/getting-started/)を起動します。
+
 1. ご使用のターミナルで、`:remote connect tinkerpop.server conf/remote-secure.yaml` を実行して目的の App Service に接続します。
 
     > [!TIP]
@@ -97,7 +102,7 @@ hosts パラメーターの値は、必ず角かっこ ([]) で囲んでくだ�
 
 単純な count() コマンドを試します。 コンソールのプロンプトに次のように入力します。
 
-```
+```java
 g.V().count()
 ```
 
@@ -107,63 +112,64 @@ g.V().count()
 
 入力 (Thomas):
 
-```
+```java
 g.addV('person').property('firstName', 'Thomas').property('lastName', 'Andersen').property('age', 44).property('userid', 1).property('pk', 'pk')
 ```
 
 出力:
 
-```
+```bash
 ==>[id:796cdccc-2acd-4e58-a324-91d6f6f5ed6d,label:person,type:vertex,properties:[firstName:[[id:f02a749f-b67c-4016-850e-910242d68953,value:Thomas]],lastName:[[id:f5fa3126-8818-4fda-88b0-9bb55145ce5c,value:Andersen]],age:[[id:f6390f9c-e563-433e-acbf-25627628016e,value:44]],userid:[[id:796cdccc-2acd-4e58-a324-91d6f6f5ed6d|userid,value:1]]]]
 ```
+
 入力 (Mary Kay):
 
-```
+```java
 g.addV('person').property('firstName', 'Mary Kay').property('lastName', 'Andersen').property('age', 39).property('userid', 2).property('pk', 'pk')
 
 ```
 
 出力:
 
-```
+```bash
 ==>[id:0ac9be25-a476-4a30-8da8-e79f0119ea5e,label:person,type:vertex,properties:[firstName:[[id:ea0604f8-14ee-4513-a48a-1734a1f28dc0,value:Mary Kay]],lastName:[[id:86d3bba5-fd60-4856-9396-c195ef7d7f4b,value:Andersen]],age:[[id:bc81b78d-30c4-4e03-8f40-50f72eb5f6da,value:39]],userid:[[id:0ac9be25-a476-4a30-8da8-e79f0119ea5e|userid,value:2]]]]
 
 ```
 
 入力 (Robin):
 
-```
+```java
 g.addV('person').property('firstName', 'Robin').property('lastName', 'Wakefield').property('userid', 3).property('pk', 'pk')
 ```
 
 出力:
 
-```
+```bash
 ==>[id:8dc14d6a-8683-4a54-8d74-7eef1fb43a3e,label:person,type:vertex,properties:[firstName:[[id:ec65f078-7a43-4cbe-bc06-e50f2640dc4e,value:Robin]],lastName:[[id:a3937d07-0e88-45d3-a442-26fcdfb042ce,value:Wakefield]],userid:[[id:8dc14d6a-8683-4a54-8d74-7eef1fb43a3e|userid,value:3]]]]
 ```
 
 入力 (Ben):
 
-```
+```java
 g.addV('person').property('firstName', 'Ben').property('lastName', 'Miller').property('userid', 4).property('pk', 'pk')
 
 ```
 
 出力:
 
-```
+```bash
 ==>[id:ee86b670-4d24-4966-9a39-30529284b66f,label:person,type:vertex,properties:[firstName:[[id:a632469b-30fc-4157-840c-b80260871e9a,value:Ben]],lastName:[[id:4a08d307-0719-47c6-84ae-1b0b06630928,value:Miller]],userid:[[id:ee86b670-4d24-4966-9a39-30529284b66f|userid,value:4]]]]
 ```
 
 入力 (Jack):
 
-```
+```java
 g.addV('person').property('firstName', 'Jack').property('lastName', 'Connor').property('userid', 5).property('pk', 'pk')
 ```
 
 出力:
 
-```
+```bash
 ==>[id:4c835f2a-ea5b-43bb-9b6b-215488ad8469,label:person,type:vertex,properties:[firstName:[[id:4250824e-4b72-417f-af98-8034aa15559f,value:Jack]],lastName:[[id:44c1d5e1-a831-480a-bf94-5167d133549e,value:Connor]],userid:[[id:4c835f2a-ea5b-43bb-9b6b-215488ad8469|userid,value:5]]]]
 ```
 
@@ -172,37 +178,37 @@ g.addV('person').property('firstName', 'Jack').property('lastName', 'Connor').pr
 
 入力 (Thomas -> Mary Kay):
 
-```
+```java
 g.V().hasLabel('person').has('firstName', 'Thomas').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Mary Kay'))
 ```
 
 出力:
 
-```
+```bash
 ==>[id:c12bf9fb-96a1-4cb7-a3f8-431e196e702f,label:knows,type:edge,inVLabel:person,outVLabel:person,inV:0d1fa428-780c-49a5-bd3a-a68d96391d5c,outV:1ce821c6-aa3d-4170-a0b7-d14d2a4d18c3]
 ```
 
 入力 (Thomas -> Robin):
 
-```
+```java
 g.V().hasLabel('person').has('firstName', 'Thomas').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Robin'))
 ```
 
 出力:
 
-```
+```bash
 ==>[id:58319bdd-1d3e-4f17-a106-0ddf18719d15,label:knows,type:edge,inVLabel:person,outVLabel:person,inV:3e324073-ccfc-4ae1-8675-d450858ca116,outV:1ce821c6-aa3d-4170-a0b7-d14d2a4d18c3]
 ```
 
 入力 (Robin -> Ben):
 
-```
+```java
 g.V().hasLabel('person').has('firstName', 'Robin').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Ben'))
 ```
 
 出力:
 
-```
+```bash
 ==>[id:889c4d3c-549e-4d35-bc21-a3d1bfa11e00,label:knows,type:edge,inVLabel:person,outVLabel:person,inV:40fd641d-546e-412a-abcc-58fe53891aab,outV:3e324073-ccfc-4ae1-8675-d450858ca116]
 ```
 
@@ -211,12 +217,12 @@ g.V().hasLabel('person').has('firstName', 'Robin').addE('knows').to(g.V().hasLab
 *Thomas* の頂点を *45* の新しい年齢で更新しましょう。
 
 次の内容を入力します。
-```
+```java
 g.V().hasLabel('person').has('firstName', 'Thomas').property('age', 45)
 ```
 出力:
 
-```
+```bash
 ==>[id:ae36f938-210e-445a-92df-519f2b64c8ec,label:person,type:vertex,properties:[firstName:[[id:872090b6-6a77-456a-9a55-a59141d4ebc2,value:Thomas]],lastName:[[id:7ee7a39a-a414-4127-89b4-870bc4ef99f3,value:Andersen]],age:[[id:a2a75d5a-ae70-4095-806d-a35abcbfe71d,value:45]]]]
 ```
 
@@ -228,13 +234,13 @@ g.V().hasLabel('person').has('firstName', 'Thomas').property('age', 45)
 
 入力 (フィルター クエリ):
 
-```
+```java
 g.V().hasLabel('person').has('age', gt(40))
 ```
 
 出力:
 
-```
+```bash
 ==>[id:ae36f938-210e-445a-92df-519f2b64c8ec,label:person,type:vertex,properties:[firstName:[[id:872090b6-6a77-456a-9a55-a59141d4ebc2,value:Thomas]],lastName:[[id:7ee7a39a-a414-4127-89b4-870bc4ef99f3,value:Andersen]],age:[[id:a2a75d5a-ae70-4095-806d-a35abcbfe71d,value:45]]]]
 ```
 
@@ -242,13 +248,13 @@ g.V().hasLabel('person').has('age', gt(40))
 
 入力 (フィルター + プロジェクション クエリ):
 
-```
+```java
 g.V().hasLabel('person').has('age', gt(40)).values('firstName')
 ```
 
 出力:
 
-```
+```bash
 ==>Thomas
 ```
 
@@ -258,13 +264,13 @@ Thomas のすべての友人を返すようにグラフを走査してみまし�
 
 入力 (Thomas の友人):
 
-```
+```java
 g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel('person')
 ```
 
 出力: 
 
-```
+```bash
 ==>[id:f04bc00b-cb56-46c4-a3bb-a5870c42f7ff,label:person,type:vertex,properties:[firstName:[[id:14feedec-b070-444e-b544-62be15c7167c,value:Mary Kay]],lastName:[[id:107ab421-7208-45d4-b969-bbc54481992a,value:Andersen]],age:[[id:4b08d6e4-58f5-45df-8e69-6b790b692e0a,value:39]]]]
 ==>[id:91605c63-4988-4b60-9a30-5144719ae326,label:person,type:vertex,properties:[firstName:[[id:f760e0e6-652a-481a-92b0-1767d9bf372e,value:Robin]],lastName:[[id:352a4caa-bad6-47e3-a7dc-90ff342cf870,value:Wakefield]]]]
 ```
@@ -273,12 +279,12 @@ g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel
 
 入力 (Thomas の友人の友人):
 
-```
+```java
 g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel('person').outE('knows').inV().hasLabel('person')
 ```
 出力:
 
-```
+```bash
 ==>[id:a801a0cb-ee85-44ee-a502-271685ef212e,label:person,type:vertex,properties:[firstName:[[id:b9489902-d29a-4673-8c09-c2b3fe7f8b94,value:Ben]],lastName:[[id:e084f933-9a4b-4dbc-8273-f0171265cf1d,value:Miller]]]]
 ```
 
@@ -288,7 +294,7 @@ g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel
 
 入力 (Jack 頂点を削除):
 
-```
+```java
 g.V().hasLabel('person').has('firstName', 'Jack').drop()
 ```
 
@@ -298,7 +304,7 @@ g.V().hasLabel('person').has('firstName', 'Jack').drop()
 
 次の内容を入力します。
 
-```
+```java
 g.E().drop()
 g.V().drop()
 ```

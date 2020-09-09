@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: mikhegn
 ms.openlocfilehash: 4e96a732cffd70b0a5c24e7ebafe214297a72720
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75644632"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Service Fabric で構成ファイルをパラメーター化する方法

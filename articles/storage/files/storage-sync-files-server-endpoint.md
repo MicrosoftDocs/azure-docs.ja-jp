@@ -1,18 +1,18 @@
 ---
 title: Azure File Sync サーバー エンドポイントの追加/削除 | Microsoft Docs
-description: Azure Files のデプロイを計画するときの考慮事項について説明します。
+description: Azure File Sync でサーバー エンドポイントを追加または削除する方法について説明します。サーバー エンドポイントは、サーバー ボリュームのフォルダーなど、登録済みサーバー上の特定の場所です。
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 684b30a24e049722cb531cbc84e3a2cd90912ec8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9273ca66c0304afc5df58ace5dd584c20c90abfd
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228279"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905059"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>Azure File Sync サーバー エンドポイントの追加/削除
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。

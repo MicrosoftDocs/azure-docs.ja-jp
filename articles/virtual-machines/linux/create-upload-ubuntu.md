@@ -1,38 +1,35 @@
 ---
 title: Azure 上での Ubuntu Linux VHD の作成とアップロード
 description: Ubuntu Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。
-author: gbowerman
+author: danielsollondon
 ms.service: virtual-machines-linux
-ms.topic: article
-ms.date: 06/24/2019
-ms.author: guybo
-ms.openlocfilehash: 5fa3415d8663f358bf0ae48be46ac52b8f8b4b06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.date: 06/06/2020
+ms.author: danis
+ms.openlocfilehash: 8b34e266214285f6483acca59050780810e62345
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066729"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373353"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Azure 用の Ubuntu 仮想マシンの準備
 
 
 Ubuntu は、現在、公式の Azure VHD を公開しており、[https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/) でダウンロードできます。 Azure 用に特殊な Ubuntu イメージを独自に構築する必要がある場合は、以下の手動の手順を使用するのではなく、このように動作している既知の VHD を基にして、必要に応じてカスタマイズすることをお勧めします。 最新のイメージ リリースは、常に次の場所にあります。
 
-* Ubuntu 12.04/Precise: [ubuntu-12.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-amd64-disk1.vhd.zip)
-* Ubuntu 14.04/Trusty: [ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/releases/trusty/release/ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip)
 * Ubuntu 16.04/Xenial: [ubuntu-16.04-server-cloudimg-amd64-disk1.vmdk](https://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.vmdk)
 * Ubuntu 18.04/Bionic: [bionic-server-cloudimg-amd64.vmdk](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vmdk)
-* Ubuntu 18.10/Cosmic: [cosmic-server-cloudimg-amd64.vhd.zip](http://cloud-images.ubuntu.com/releases/cosmic/release/ubuntu-18.10-server-cloudimg-amd64.vhd.zip)
 
 ## <a name="prerequisites"></a>前提条件
-この記事では、既に Ubuntu Linux オペレーティング システムを仮想ハード ディスクにインストールしていることを前提にしています。 .vhd ファイルを作成するツールは、Hyper-V のような仮想化ソリューションなど複数あります。 詳細については、「 [Hyper-V の役割のインストールと仮想マシンの構成](https://technet.microsoft.com/library/hh846766.aspx)」を参照してください。
+この記事では、既に Ubuntu Linux オペレーティング システムを仮想ハード ディスクにインストールしていることを前提にしています。 .vhd ファイルを作成するツールは、Hyper-V のような仮想化ソリューションなど複数あります。 詳細については、「 [Hyper-V の役割のインストールと仮想マシンの構成](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))」を参照してください。
 
 **Ubuntu のインストールに関する注記**
 
 * Azure で Linux を準備する際のその他のヒントについては、「 [Linux のインストールに関する注記](create-upload-generic.md#general-linux-installation-notes) 」も参照してください。
-* VHDX 形式は Azure ではサポートされていません。サポートされるのは **固定 VHD** のみです。  Hyper-V マネージャーまたは convert-vhd コマンドレットを使用して、ディスクを VHD 形式に変換できます。
+* VHDX 形式は Azure ではサポートされていません。サポートされるのは **固定 VHD** のみです。  Hyper-V マネージャーまたは `Convert-VHD` コマンドレットを使用して、ディスクを VHD 形式に変換できます。
 * Linux システムをインストールする場合は、LVM (通常、多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。 これにより、特に OS ディスクをトラブルシューティングのために別の VM に接続する必要がある場合に、LVM 名と複製された VM の競合が回避されます。 必要な場合は、[LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) または [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) をデータ ディスク上で使用できます。
-* OS ディスクにスワップ パーティションを構成しないでください。 Linux エージェントは、一時的なリソース ディスク上にスワップ ファイルを作成するよう構成できます。  このことに関する詳細については、次の手順を参照してください。
+* OS ディスクにスワップ パーティションまたはスワップ ファイルを構成しないでください。 cloud-init プロビジョニング エージェントを構成して、一時リソース ディスク上にスワップ ファイルまたはスワップ パーティションを作成できます。 このことに関する詳細については、次の手順を参照してください。
 * Azure の VHD の仮想サイズはすべて、1 MB にアラインメントさせる必要があります。 未フォーマット ディスクから VHD に変換するときに、変換する前の未フォーマット ディスクのサイズが 1 MB の倍数であることを確認する必要があります。 詳細については、[Linux のインストールに関する注記](create-upload-generic.md#general-linux-installation-notes)のセクションを参照してください。
 
 ## <a name="manual-steps"></a>手動の手順
@@ -45,97 +42,142 @@ Ubuntu は、現在、公式の Azure VHD を公開しており、[https://cloud
 
 2. **[接続]** をクリックすると、仮想マシンのウィンドウが開きます。
 
-3. イメージ内の現在のリポジトリを置き換えて、Ubuntu の Azure リポジトリを使用します。 この手順は、Ubuntu のバージョンによって多少異なります。
-   
+3. イメージ内の現在のリポジトリを置き換えて、Ubuntu の Azure リポジトリを使用します。
+
     `/etc/apt/sources.list` を編集する前にバックアップを作成することをお勧めします。
-   
-        # sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
 
-    Ubuntu 12.04:
-   
-        # sudo sed -i 's/[a-z][a-z].archive.ubuntu.com/azure.archive.ubuntu.com/g' /etc/apt/sources.list
-        # sudo apt-get update
+    ```console
+    # sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+    ```
 
-    Ubuntu 14.04:
-   
-        # sudo sed -i 's/[a-z][a-z].archive.ubuntu.com/azure.archive.ubuntu.com/g' /etc/apt/sources.list
-        # sudo apt-get update
+    Ubuntu 16.04 および Ubuntu 18.04:
 
-    Ubuntu 16.04:
-   
-        # sudo sed -i 's/[a-z][a-z].archive.ubuntu.com/azure.archive.ubuntu.com/g' /etc/apt/sources.list
-        # sudo apt-get update
+    ```console
+    # sudo sed -i 's/http:\/\/archive\.ubuntu\.com\/ubuntu\//http:\/\/azure\.archive\.ubuntu\.com\/ubuntu\//g' /etc/apt/sources.list
+    # sudo sed -i 's/http:\/\/[a-z][a-z]\.archive\.ubuntu\.com\/ubuntu\//http:\/\/azure\.archive\.ubuntu\.com\/ubuntu\//g' /etc/apt/sources.list
+    # sudo apt-get update
+    ```
 
-4. Ubuntu Azure イメージは、 *HardWare Enablement* (HWE) カーネルに従うようになりました。 次のコマンドを実行してオペレーティング システムを最新のカーネルに更新します。
+4. Ubuntu Azure イメージでは、[Azure 向けに調整されたカーネル](https://ubuntu.com/blog/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)が使用されるようになりました。 次のコマンドを実行して、オペレーティング システムを Azure 向けに調整された最新カーネルに更新し、Azure Linux ツール (Hyper-V の依存関係を含む) をインストールします。
 
-    Ubuntu 12.04:
-   
-        # sudo apt-get update
-        # sudo apt-get install linux-image-generic-lts-trusty linux-cloud-tools-generic-lts-trusty
-        # sudo apt-get install hv-kvp-daemon-init
-        (recommended) sudo apt-get dist-upgrade
-   
-        # sudo reboot
-   
-    Ubuntu 14.04:
-   
-        # sudo apt-get update
-        # sudo apt-get install linux-image-virtual-lts-vivid linux-lts-vivid-tools-common
-        # sudo apt-get install hv-kvp-daemon-init
-        (recommended) sudo apt-get dist-upgrade
-   
-        # sudo reboot
+    Ubuntu 16.04 および Ubuntu 18.04:
 
-    Ubuntu 16.04:
-   
-        # sudo apt-get update
-        # sudo apt-get install linux-generic-hwe-16.04 linux-cloud-tools-generic-hwe-16.04
-        (recommended) sudo apt-get dist-upgrade
+    ```console
+    # sudo apt update
+    # sudo apt install linux-azure linux-image-azure linux-headers-azure linux-tools-common linux-cloud-tools-common linux-tools-azure linux-cloud-tools-azure
+    (recommended) # sudo apt full-upgrade
 
-        # sudo reboot
-    
-    Ubuntu 18.04.04:
-    
-        # sudo apt-get update
-        # sudo apt-get install --install-recommends linux-generic-hwe-18.04 xserver-xorg-hwe-18.04
-        # sudo apt-get install --install-recommends linux-cloud-tools-generic-hwe-18.04
-        (recommended) sudo apt-get dist-upgrade
-
-        # sudo reboot
-    
-    **関連項目:**
-    - [https://wiki.ubuntu.com/Kernel/LTSEnablementStack](https://wiki.ubuntu.com/Kernel/LTSEnablementStack)
-    - [https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack](https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack)
-
+    # sudo reboot
+    ```
 
 5. Grub のカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 これを行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX_DEFAULT` という変数を探して (または、必要であれば追加して)、次のパラメーターが含まれるように編集します。
-   
-        GRUB_CMDLINE_LINUX_DEFAULT="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300"
+
+    ```text
+    GRUB_CMDLINE_LINUX_DEFAULT="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300 quiet splash"
+    ```
 
     このファイルを保存して閉じてから、`sudo update-grub` を実行します。 これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。
 
 6. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。  通常これが既定です。
 
-7. Azure Linux エージェントをインストールします。
-   
-        # sudo apt-get update
-        # sudo apt-get install walinuxagent
+7. cloud-init (プロビジョニング エージェント) と Azure Linux エージェント (ゲスト拡張機能ハンドラー) をインストールします。 cloud-init では、netplan を使用して、プロビジョニングおよびその後の各ブート中にシステム ネットワークが構成されます。
+
+    ```console
+    # sudo apt update
+    # sudo apt install cloud-init netplan.io walinuxagent && systemctl stop walinuxagent
+    ```
 
    > [!Note]
    >  `NetworkManager` パッケージおよび `NetworkManager-gnome` パッケージがインストールされている場合、`walinuxagent` パッケージによってこれらのパッケージが削除されます。
 
+8. Azure での cloud-init のプロビジョニングと競合する可能性のある、cloud-init の既定の構成と残った netplan 成果物を削除します。
 
-1. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
-   
-        # sudo waagent -force -deprovision
-        # export HISTSIZE=0
-        # logout
+    ```console
+    # rm -f /etc/cloud/cloud.cfg.d/50-curtin-networking.cfg /etc/cloud/cloud.cfg.d/curtin-preserve-sources.cfg
+    # rm -f /etc/cloud/ds-identify.cfg
+    # rm -f /etc/netplan/*.yaml
+    ```
 
-1. Hyper-V マネージャーで **[アクション]、[シャットダウン]** の順にクリックします。 これで、Linux VHD を Azure にアップロードする準備が整いました。
+9. cloud-init を構成して、Azure データソースを使用してシステムをプロビジョニングするようにします。
 
-## <a name="references"></a>References
-[Ubuntu HardWare Enablement (HWE) カーネル](https://wiki.ubuntu.com/Kernel/LTSEnablementStack)
+    ```console
+    # cat > /etc/cloud/cloud.cfg.d/90_dpkg.cfg << EOF
+    datasource_list: [ Azure ]
+    EOF
+
+    # cat > /etc/cloud/cloud.cfg.d/90-azure.cfg << EOF
+    system_info:
+       package_mirrors:
+         - arches: [i386, amd64]
+           failsafe:
+             primary: http://archive.ubuntu.com/ubuntu
+             security: http://security.ubuntu.com/ubuntu
+           search:
+             primary:
+               - http://azure.archive.ubuntu.com/ubuntu/
+             security: []
+         - arches: [armhf, armel, default]
+           failsafe:
+             primary: http://ports.ubuntu.com/ubuntu-ports
+             security: http://ports.ubuntu.com/ubuntu-ports
+    EOF
+
+    # cat > /etc/cloud/cloud.cfg.d/10-azure-kvp.cfg << EOF
+    reporting:
+      logging:
+        type: log
+      telemetry:
+        type: hyperv
+    EOF
+    ```
+
+10. Azure Linux エージェントを構成して、プロビジョニングを実行するために cloud-init に依存するようにします。 これらのオプションの詳細については、[WALinuxAgent プロジェクト](https://github.com/Azure/WALinuxAgent)を参照してください。
+
+    ```console
+    sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
+    sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
+    sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
+    sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
+
+    cat >> /etc/waagent.conf << EOF
+    # For Azure Linux agent version >= 2.2.45, this is the option to configure,
+    # enable, or disable the provisioning behavior of the Linux agent.
+    # Accepted values are auto (default), waagent, cloud-init, or disabled.
+    # A value of auto means that the agent will rely on cloud-init to handle
+    # provisioning if it is installed and enabled, which in this case it will.
+    Provisioning.Agent=auto
+    EOF
+    ```
+
+11. cloud-init と Azure Linux エージェントのランタイム成果物およびログを消去します。
+
+    ```console
+    # sudo cloud-init clean --logs --seed
+    # sudo rm -rf /var/lib/cloud/
+    # sudo systemctl stop walinuxagent.service
+    # sudo rm -rf /var/lib/waagent/
+    # sudo rm -f /var/log/waagent.log
+    ```
+
+12. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
+
+    > [!NOTE]
+    > `sudo waagent -force -deprovision+user` コマンドは、システムをクリーンアップし、再プロビジョニングに適した状態にしようとします。 `+user` オプションを指定すると、前回プロビジョニングされたユーザー アカウントおよび関連付けられたデータも削除されます。
+
+    > [!WARNING]
+    > 上記のコマンドを使用したプロビジョニング解除により、イメージからすべての機密情報が削除され、イメージが再配布に適した状態になることが保証されるわけではありません。
+
+    ```console
+    # sudo waagent -force -deprovision+user
+    # rm -f ~/.bash_history
+    # export HISTSIZE=0
+    # logout
+    ```
+
+13. Hyper-V マネージャーで **[アクション]、[シャットダウン]** の順にクリックします。
+
+14. Azure では、固定サイズの VHD のみが許容されます。 VM の OS ディスクが固定サイズの VHD でない場合は、`Convert-VHD` PowerShell コマンドレットを使用して `-VHDType Fixed` オプションを指定します。 `Convert-VHD` については、次のドキュメントを参照してください:「[Convert-VHD](/powershell/module/hyper-v/convert-vhd?view=win10-ps)」。
+
 
 ## <a name="next-steps"></a>次のステップ
 これで、Ubuntu Linux 仮想ハード ディスク を使用して、Azure に新しい仮想マシンを作成する準備が整いました。 .vhd ファイルを Azure に初めてアップロードする場合は、「[Create a Linux VM from a custom disk (カスタム ディスクから Linux VM を作成する)](upload-vhd.md#option-1-upload-a-vhd)」を参照してください。
-

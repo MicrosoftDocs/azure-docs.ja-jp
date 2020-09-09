@@ -1,89 +1,73 @@
 ---
-title: 条件付きアクセス - リスクベースの条件付きアクセス - Azure Active Directory
-description: 条件付きアクセス ポリシーを作成して、ポリシーに対する ID 保護強化を有効にします
+title: サインイン リスクベースの条件付きアクセス - Azure Active Directory
+description: Identity Protection サインイン リスクを使用して条件付きアクセス ポリシーを作成する
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 03/25/2020
+ms.topic: how-to
+ms.date: 07/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8054d8985596095db32d9262322d7fb0f4aab8c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0c6e3316afc09992d16e17d9d2e2afe6b92dcd22
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295150"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049045"
 ---
-# <a name="conditional-access-risk-based-conditional-access"></a>条件付きアクセス:リスクベースの条件付きアクセス
+# <a name="conditional-access-sign-in-risk-based-conditional-access"></a>条件付きアクセス:サインイン リスクベースの条件付きアクセス
 
-Azure AD Premium P2 のライセンスを所持する組織では、Azure AD Identity Protection の検出を組み込んだ条件付きアクセス ポリシーを作成できます。 最初から有効にできる 3 つの既定のポリシーがあります。 
+ほとんどのユーザーは、追跡できる正常な動作をしています。この規範から外れた場合は、そのユーザーにサインインを許可すると危険であることがあります。 そのユーザーをブロックしたり、多要素認証を実行してユーザーが本人であることを証明するように求めたりすることが必要な場合もあります。 
 
-* すべてのユーザーに対して Azure Multi-Factor Authentication への登録を必須にする。
-* リスクの高いユーザーに対してパスワードの変更を必須にする。
-* サインインのリスクが中以上のユーザーに対して多要素認証を必須にする。
+サインイン リスクは、特定の認証要求が ID 所有者によって承認されていない可能性があることを表します。 Azure AD Premium P2 のライセンスを所持する組織では、[Azure AD Identity Protection のサインイン リスク検出](../identity-protection/concept-identity-protection-risks.md#sign-in-risk)を組み込んだ条件付きアクセス ポリシーを作成できます。
 
-## <a name="require-all-users-to-register-for-azure-multi-factor-authentication"></a>すべてのユーザーに対して Azure Multi-Factor Authentication への登録を必須にする
+このポリシーを割り当てることができる場所は 2 つあります。 組織は、セキュリティで保護されたパスワードの変更を必要とするサインイン リスクベースの条件付きアクセス ポリシーを有効にするために、次のいずれかのオプションを選択する必要があります。
 
-このポリシーを有効にすると、すべてのユーザーが 14 日以内に Azure Multi-Factor Authentication に登録することを求められます。 
+## <a name="enable-with-conditional-access-policy"></a>条件付きアクセス ポリシーを有効にする
 
-1. **Azure portal** にサインインします。
-1. **[すべてのサービス]** をクリックし、 **[Azure AD Identity Protection]** に移動します。
-1. **[MFA 登録]** をクリックします。
-1. **[割り当て]** で、 **[ユーザー]** を選択します。
+1. **Azure portal** にグローバル管理者、セキュリティ管理者、または条件付きアクセス管理者としてサインインします。
+1. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[条件付きアクセス]** の順に移動します。
+1. **[新しいポリシー]** を選択します。
+1. ポリシーに名前を付けます。 ポリシーの名前に対する意味のある標準を組織で作成することをお勧めします。
+1. **[割り当て]** で、 **[ユーザーとグループ]** を選択します。
    1. **[Include]\(含める\)** で、 **[すべてのユーザー]** を選択します。
-   1. **[除外]** で、 **[対象外とするユーザーの選択]** を選択し、組織の緊急アクセス用または非常用アカウントを選択して、 **[選択]** を選びます。 
+   1. **[除外]** で、 **[ユーザーとグループ]** を選択し、組織の緊急アクセス用または非常用アカウントを選択します。 
    1. **[Done]** を選択します。
-1. **[ポリシーの適用]** を **[オン]** に設定します。
-1. **[保存]** をクリックします。
+1. **[Cloud apps or actions]\(クラウド アプリまたはアクション\)**  >  **[Include]\(含める\)** で、 **[すべてのクラウド アプリ]** を選択します。
+1. **[条件]**  >  **[ユーザー リスク]** で、 **[構成]** を **[はい]** に設定します。 **[このポリシーを適用するサインイン リスク レベルを選択します]** で、以下の操作を実行します。 
+   1. **[高]** と **[中]** を選択します。
+   1. **[Done]** を選択します。
+1. **[アクセス制御]**  >  **[許可]** で、 **[アクセス権の付与]** 、 **[Require multi-factor authentication]\(多要素認証を要求する\)** の順に選択し、 **[Select]\(選択する\)** を選択します。
+1. 設定を確認し、 **[Enable policy]\(ポリシーの有効化\)** を **[オン]** に設定します。
+1. **[作成]** を選択して、ポリシーを作成および有効化します。
 
-## <a name="require-a-password-change-high-risk-users"></a>リスクの高いユーザーに対してパスワードの変更を必須にする
-
-Microsoft では、研究者、法執行機関、Microsoft のさまざまなセキュリティ チーム、その他の信頼できる情報源と協力して、ユーザー名とパスワードのペアを調査しています。 それらのペアのいずれかが環境内のアカウントに一致すると、次のポリシーを使用して、リスクベースのパスワード変更がトリガーされます。
+## <a name="enable-through-identity-protection"></a>Identity Protection を有効にする
 
 1. **Azure portal** にサインインします。
-1. **[すべてのサービス]** をクリックし、 **[Azure AD Identity Protection]** に移動します。
-1. **[ユーザーのリスク ポリシー]** をクリックします。
-1. **[割り当て]** で、 **[ユーザー]** を選択します。
-   1. **[Include]\(含める\)** で、 **[すべてのユーザー]** を選択します。
-   1. **[除外]** で、 **[対象外とするユーザーの選択]** を選択し、組織の緊急アクセス用または非常用アカウントを選択して、 **[選択]** を選びます。
-   1. **[Done]** を選択します。
-1. **[条件]** の下の **[ユーザーのリスク]** を選択し、 **[高]** を選択します。
-   1. **[選択]** 、 **[完了]** の順にクリックします。
-1. **[Controls]\(制御\)**  >  **[アクセス]** で、 **[アクセスを許可]** を選択し、 **[パスワードの変更を必須とする]** を選択します。
-   1. **[選択]** をクリックします。
-1. **[ポリシーの適用]** を **[オン]** に設定します。
-1. **[保存]** をクリックします。
-
-## <a name="require-mfa-medium-or-high-sign-in-risk-users"></a>サインインのリスクが中以上のユーザーに対して MFA を必須にする
-
-ほとんどのユーザーは、追跡できる正常な動作をしています。この規範から外れた場合は、そのユーザーにサインインを許可すると危険であることがあります。 そのユーザーをブロックしたり、多要素認証を実行してユーザーが本人であることを証明するように求めたりすることが必要な場合もあります。 危険なサインインが検出されたときに MFA を必要とするポリシーを有効にするには、次のポリシーを有効にします。
-
-1. **Azure portal** にサインインします。
-1. **[すべてのサービス]** をクリックし、 **[Azure AD Identity Protection]** に移動します。
-1. **[サインインのリスク ポリシー]** をクリックします。
+1. **[すべてのサービス]** を選択し、 **[Azure AD Identity Protection]** に移動します。
+1. **[サインインのリスク ポリシー]** を選択します。
 1. **[割り当て]** で、 **[ユーザー]** を選択します。
    1. **[Include]\(含める\)** で、 **[すべてのユーザー]** を選択します。
    1. **[除外]** で、 **[対象外とするユーザーの選択]** を選択し、組織の緊急アクセス用または非常用アカウントを選択して、 **[選択]** を選びます。
    1. **[Done]** を選択します。
 1. **[条件]** の下の **[Sign-in risk]\(サインインのリスク\)** を選択し、 **[中以上]** を選択します。
-   1. **[選択]** 、 **[完了]** の順にクリックします。
+   1. **[選択]** 、 **[完了]** の順に選択します。
 1. **[Controls]\(制御\)**  >  **[アクセス]** で、 **[アクセスを許可]** を選択し、 **[Require multi-factor authentication]\(多要素認証を要求する\)** を選択します。
-   1. **[選択]** をクリックします。
+   1. **[選択]** を選択します。
 1. **[ポリシーの適用]** を **[オン]** に設定します。
-1. **[保存]** をクリックします。
+1. **[保存]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 
 [Conditional Access common policies](concept-conditional-access-policy-common.md) (条件付きアクセスの一般的なポリシー)
 
-[条件付きアクセスのレポート専用モードを使用した影響を判断する](howto-conditional-access-report-only.md)
+[ユーザー リスクベースの条件付きアクセス](howto-conditional-access-policy-risk-user.md)
+
+[条件付きアクセスのレポート専用モードを使用した影響を判断する](howto-conditional-access-insights-reporting.md)
 
 [Simulate sign in behavior using the Conditional Access What If tool](troubleshoot-conditional-access-what-if.md) (条件付きアクセスの What If ツールを使用したサインイン動作のシミュレート)
 
-[動作のしくみ: Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)」を参照してください。
-
-[Azure Active Directory Identity Protection とは](../identity-protection/overview.md)
+[Azure Active Directory Identity Protection とは](../identity-protection/overview-identity-protection.md)

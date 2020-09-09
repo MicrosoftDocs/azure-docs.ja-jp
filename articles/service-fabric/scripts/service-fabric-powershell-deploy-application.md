@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 207f2a4e8173aa1e5009435665532973045d9198
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 145372fa872c481ec1a7c3de016c35fdc0f9d960
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75610303"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083805"
 ---
 # <a name="deploy-an-application-to-a-service-fabric-cluster"></a>Service Fabric クラスターへのアプリケーションのデプロイ
 
@@ -49,6 +49,6 @@ ms.locfileid: "75610303"
 
 ## <a name="next-steps"></a>次のステップ
 
-Service Fabric PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/service-fabric/?view=azureservicefabricps)を参照してください。
+Service Fabric PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/service-fabric/overview?view=azureservicefabricps)を参照してください。
 
 その他の Azure Service Fabric 用 PowerShell サンプルは、[Azure PowerShell サンプル](../service-fabric-powershell-samples.md)のページにあります。

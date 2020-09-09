@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.custom: ''
-ms.openlocfilehash: bdbf2a975cbdc3d06745b9375c1e6f8e751ddfd6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-javascript
+ms.openlocfilehash: b33c0b98a39347efeaaabbb86f6ee3e6b5f5d912
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77914090"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288213"
 ---
 # <a name="migrate-a-web-app-from-google-maps"></a>Google Maps から Web アプリを移行する
 
@@ -194,7 +194,7 @@ Web アプリで Azure Maps マップ コントロールを設定して使用す
 
 ### <a name="localizing-the-map"></a>マップのローカライズ
 
-対象ユーザーが複数の国に分散している場合や、使用されている言語が異なる場合は、ローカライズが重要になります。
+対象ユーザーが複数の国または地域に分散している場合や、使用されている言語が異なる場合は、ローカライズが重要になります。
 
 **前: Google Maps**
 

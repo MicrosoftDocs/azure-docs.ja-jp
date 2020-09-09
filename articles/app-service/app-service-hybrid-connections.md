@@ -4,27 +4,24 @@ description: Azure App Service でハイブリッド接続を作成し、それ�
 author: ccompy
 ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
 ms.topic: article
-ms.date: 06/06/2019
+ms.date: 06/08/2020
 ms.author: ccompy
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: ec842530f3cae26b869a649617f279d204b98fcc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8c8b71e4be11a886da3e0889add0a3cdc19a56c3
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80047771"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962419"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Services からのハイブリッド接続
 
 ハイブリッド接続は、Azure のサービスであり、Azure App Service の機能でもあります。 サービスとして使用した場合、その用途と機能は、Azure App Service の用途と機能を上回ります。 ハイブリッド接続の詳細と Azure App Service では提供されない使用方法については、[Azure Relay ハイブリッド接続][HCService]に関するページを参照してください。
 
-Azure App Service 内では、ハイブリッド接続を使用して、他のネットワークのアプリケーション リソースにアクセスできます。 アプリからアプリケーション エンドポイントにアクセスできます。 アプリケーションにアクセスするために別の機能を有効にすることはありません。 App Service で使用されるとき、各ハイブリッド接続は、単一の TCP ホストとポートの組み合わせに相互に関連付けられます。 つまり、TCP リッスン ポートにアクセスしている限り、任意のオペレーティング システムの任意のアプリケーションがハイブリッド接続エンドポイントになることができます。 ハイブリッド接続では、アプリケーション プロトコルやアクセス先は認識されません。 それは、ネットワーク アクセスを提供するだけです。  
-
+App Service 内では、任意のネットワークに含まれていて、443 ポートから Azure に発信呼び出しができるアプリケーション リソースにアクセスするため、ハイブリッド接続が使用できます。 ハイブリッド接続によって、アプリから TCP エンドポイントへのアクセスができるようになりますが、アプリにアクセスするための新しい方法が有効になるわけではありません。 App Service で使用されるとき、各ハイブリッド接続は、単一の TCP ホストとポートの組み合わせに相互に関連付けられます。 その結果、リソースが TCP エンドポイントである限り、それがどの OS 上にあろうとアプリからアクセスできるようになります。 ハイブリッド接続では、アプリケーション プロトコルやアクセス先は認識されません。 それは、ネットワーク アクセスを提供するだけです。  
 
 ## <a name="how-it-works"></a>しくみ ##
-ハイブリッド接続機能は、Service Bus Relay に対する 2 つの発信呼び出しで構成されます。 App Service でアプリが実行されているホストにライブラリから接続されます。 また、ハイブリッド接続マネージャー (HCM) から Service Bus Relay へも接続します。 HCM は、アクセスしようとしているネットワーク ホスト内にデプロイされるリレー サービスです。 
-
-この 2 つの結合された接続を通して、HCM の他方の側の固定されたホストとポートの組み合わせに至るアプリの TCP トンネルが設定されます。 接続では、セキュリティには TLS 1.2 が、認証/承認には Shared Access Signature (SAS) キーが使用されます。    
+ハイブリッド接続を使用するには、対象のエンドポイントと Azure の両方に到達できる場所にリレー エージェントをデプロイする必要があります。 リレー エージェント (ハイブリッド接続マネージャー (HCM)) では、443 ポートを介して Azure Relay への呼び出しが行われます。 Web アプリのサイトからも、App Service インフラストラクチャにより、アプリケーションに代わって Azure Relay への接続が行われます。 このように組み合わされた接続により、アプリから対象のエンドポイントにアクセスできるようになります。 接続では、セキュリティには TLS 1.2 が、認証/承認には Shared Access Signature (SAS) キーが使用されます。    
 
 ![ハイブリッド接続のフローの概要図][1]
 
@@ -40,11 +37,12 @@ Azure App Service 内では、ハイブリッド接続を使用して、他の�
 
 - アプリは、オンプレミスのシステムとサービスへセキュリティで保護されたアクセスを実行できます。
 - インターネットにアクセス可能なエンドポイントは必要ありません。
-- すばやく簡単に設定できます。 
+- すばやく簡単に設定できます。 ゲートウェイは必要ありません。
 - 各ハイブリッド接続が単一のホストとポートの組み合わせに照合されるため、セキュリティ面で優れています。
 - 通常はファイアウォールに穴を開ける必要はありません。 接続はすべて、標準的な Web ポート経由の発信です。
 - ネットワーク レベルの機能であるため、アプリで使用される言語とエンドポイントで使用されるテクノロジに依存しません。
 - 単一のアプリから複数のネットワークにアクセスするために使用できます。 
+- Windows アプリ向けには GA でサポートされており、Linux アプリ向けにはプレビュー段階です。
 
 ### <a name="things-you-cannot-do-with-hybrid-connections"></a>ハイブリッド接続で実行できないこと ###
 
@@ -54,10 +52,7 @@ Azure App Service 内では、ハイブリッド接続を使用して、他の�
 - UDP の使用
 - FTP パッシブ モードや拡張パッシブ モードなどの動的ポートを使用する TCP ベースのサービスへのアクセス
 - LDAP のサポート (UDP が必要な場合があるため)
-- Active Directory のサポート (App Service worker にドメイン参加できないため)
-
-### <a name="prerequisites"></a>前提条件 ###
- - Windows アプリ サービスが必要です。 Windows でのみ使用できます。  
+- Active Directory のサポート (App Service worker にドメイン参加できないため) 
 
 ## <a name="add-and-create-hybrid-connections-in-your-app"></a>アプリでハイブリッド接続を追加または作成する ##
 
@@ -99,10 +94,10 @@ App Service ハイブリッド接続は、Basic、Standard、Premium、および
 
 | 料金プラン | プランで使用できるハイブリッド接続の数 |
 |----|----|
-| Basic | 5 |
-| Standard | 25 |
-| Premium | 200 |
-| Isolated | 200 |
+| Basic | プランあたり 5 |
+| Standard | プランあたり 25 |
+| PremiumV2 | アプリあたり 200 |
+| Isolated | アプリあたり 200 |
 
 App Service プランの UI には、使用されているハイブリッド接続の数と、それを使用するアプリが表示されます。  
 
@@ -171,54 +166,38 @@ HCM はそれぞれ、複数のハイブリッド接続をサポートできま�
 
 ## <a name="adding-a-hybrid-connection-to-your-app-programmatically"></a>ハイブリッド接続をプログラミングによってアプリに追加する ##
 
-次に示す API を直接使用して、アプリに接続するハイブリッド接続を管理できます。 
+ハイブリッド接続は、Azure CLI でサポートされています。 提供されているコマンドは、アプリおよび App Service プランの両方のレベルで動作します。  アプリ レベルのコマンドは次のとおりです。
 
-    /subscriptions/[subscription name]/resourceGroups/[resource group name]/providers/Microsoft.Web/sites/[app name]/hybridConnectionNamespaces/[relay namespace name]/relays/[hybrid connection name]?api-version=2016-08-01
+```azurecli
+az webapp hybrid-connection
 
-ハイブリッド接続に関連付けられた JSON オブジェクトは次のようになります。
+Group
+    az webapp hybrid-connection : Methods that list, add and remove hybrid-connections from webapps.
+        This command group is in preview. It may be changed/removed in a future release.
+Commands:
+    add    : Add a hybrid-connection to a webapp.
+    list   : List the hybrid-connections on a webapp.
+    remove : Remove a hybrid-connection from a webapp.
+```
 
-    {
-      "name": "[hybrid connection name]",
-      "type": "Microsoft.Relay/Namespaces/HybridConnections",
-      "location": "[location]",
-      "properties": {
-        "serviceBusNamespace": "[namespace name]",
-        "relayName": "[hybrid connection name]",
-        "relayArmUri": "/subscriptions/[subscription id]/resourceGroups/[resource group name]/providers/Microsoft.Relay/namespaces/[namespace name]/hybridconnections/[hybrid connection name]",
-        "hostName": "[endpoint host name]",
-        "port": [port],
-        "sendKeyName": "defaultSender",
-        "sendKeyValue": "[send key]"
-      }
-    }
+App Service プランのコマンドでは、特定のハイブリッド接続で使用するキーを設定することができます。 各ハイブリッド接続では、プライマリとセカンダリの 2 つのキーが設定されます。 次のコマンドにより、プライマリ キーとセカンダリ キーのどちらを使用するかを選択できます。 これにより、キーを定期的に再生成する際にキーを切り替えることができます。 
 
-この情報を使用する方法の 1 つとして、[ARMClient][armclient] GitHub プロジェクトから取得できる armclient があります。 既存のハイブリッド接続をアプリに接続する例を次に示します。 上記のスキーマに対して次の JSON ファイルを作成します。
+```azurecli
+az appservice hybrid-connection --help
 
-    {
-      "name": "relay-demo-hc",
-      "type": "Microsoft.Relay/Namespaces/HybridConnections",
-      "location": "North Central US",
-      "properties": {
-        "serviceBusNamespace": "demo-relay",
-        "relayName": "relay-demo-hc",
-        "relayArmUri": "/subscriptions/ebcidic-asci-anna-nath-rak1111111/resourceGroups/myrelay-rg/providers/Microsoft.Relay/namespaces/demo-relay/hybridconnections/relay-demo-hc",
-        "hostName": "my-wkstn.home",
-        "port": 1433,
-        "sendKeyName": "defaultSender",
-        "sendKeyValue": "Th9is3is8a82lot93of3774stu887ff122235="
-      }
-    }
-
-この API を使用するには、キーの送信とリレー リソース ID が必要です。 ファイル名 hctest.json として情報を保存した場合は、次のコマンドを発行してハイブリッド接続をアプリに接続します。 
-
-    armclient login
-    armclient put /subscriptions/ebcidic-asci-anna-nath-rak1111111/resourceGroups/myapp-rg/providers/Microsoft.Web/sites/myhcdemoapp/hybridConnectionNamespaces/demo-relay/relays/relay-demo-hc?api-version=2016-08-01 @hctest.json
+Group
+    az appservice hybrid-connection : A method that sets the key a hybrid-connection uses.
+        This command group is in preview. It may be changed/removed in a future release.
+Commands:
+    set-key : Set the key that all apps in an appservice plan use to connect to the hybrid-
+                connections in that appservice plan.
+```
 
 ## <a name="secure-your-hybrid-connections"></a>ハイブリッド接続をセキュリティで保護する ##
 
 基になる Azure Service Bus Relay に対する十分なアクセス許可を持つユーザーは、既存のハイブリッド接続を他の App Service Web Apps に追加できます。 これは、他のユーザーが同じハイブリッド接続を再利用できないようにする必要がある場合 (たとえば、ターゲット リソースが、未承認のアクセスを防ぐための追加のセキュリティ対策が取られていないサービスである場合)、Azure Service Bus Relay へのアクセスをロックダウンする必要があることを意味します。
 
-Relay への `Reader` アクセス権を持つユーザーは、Azure portal で自分の Web アプリにハイブリッド接続を追加しようとしているときに、その接続を "_確認_" することはできますが、リレー接続の確立に使用される接続文字列を取得するためのアクセス許可がないため、"_追加_" することはできませ ん。 ハイブリッド接続を正常に追加するには、`listKeys` アクセス許可 (`Microsoft.Relay/namespaces/hybridConnections/authorizationRules/listKeys/action`) が必要です。 Relay に対するこのアクセス許可を含む `Contributor` ロールまたはその他のロールにより、ユーザーはハイブリッド接続を使用し、独自の Web Apps にそれを追加することが許可されます。
+Relay への `Reader` アクセス権限を持つユーザーは誰でも、Azure portal でハイブリッド接続を自分の Web アプリに追加しようとするときにそれを "_表示_" することはできますが、リレー接続の確立に使用される接続文字列を取得するためのアクセス許可がないため、"_追加_" することはできません。 ハイブリッド接続を正常に追加するには、`listKeys` アクセス許可 (`Microsoft.Relay/namespaces/hybridConnections/authorizationRules/listKeys/action`) が必要です。 Relay に対するこのアクセス許可を含む `Contributor` ロールまたはその他のロールにより、ユーザーはハイブリッド接続を使用し、独自の Web Apps にそれを追加することが許可されます。
 
 ## <a name="troubleshooting"></a>トラブルシューティング ##
 
@@ -229,12 +208,6 @@ Relay への `Reader` アクセス権を持つユーザーは、Azure portal で
 App Service では、Advanced Tools (Kudu) コンソールから **tcpping** ツールを呼び出すことができます。 このツールは、TCP エンドポイントにアクセスできるかどうかを通知できますが、ハイブリッド接続エンドポイントにアクセスできるかどうは通知しません。 コンソールで、ハイブリッド接続エンドポイントに対してツールを使用している場合は、host:port の組み合わせが使用されていることのみを確認できます。  
 
 お使いのエンドポイント用のコマンドライン クライアントがある場合は、アプリ コンソールから接続をテストできます。 たとえば、curl を使用して、Web サーバーのエンドポイントへのアクセスをテストできます。
-
-## <a name="biztalk-hybrid-connections"></a>BizTalk ハイブリッド接続 ##
-
-以前、この機能は BizTalk ハイブリッド接続と呼ばれていました。 これは 2018 年 5 月 31 日で終了となり、運用が停止されました。 BizTalk ハイブリッド接続は、すべてのアプリから削除され、ポータルや API からアクセスできなくなっています。 このような古い接続がまだハイブリッド接続マネージャーに構成されている場合、[中止] というステータスが表示され、一番下には有効期間が終了したという説明が表示されます。
-
-![HCM での BizTalk ハイブリッド接続][12]
 
 
 <!--Image references-->
@@ -252,8 +225,8 @@ App Service では、Advanced Tools (Kudu) コンソールから **tcpping** ツ
 [12]: ./media/app-service-hybrid-connections/hybridconn-bt.png
 
 <!--Links-->
-[HCService]: https://docs.microsoft.com/azure/service-bus-relay/relay-hybrid-connections-protocol/
+[HCService]: /azure/service-bus-relay/relay-hybrid-connections-protocol/
 [portal]: https://portal.azure.com/
-[oldhc]: https://docs.microsoft.com/azure/biztalk-services/integration-hybrid-connection-overview/
+[oldhc]: /azure/biztalk-services/integration-hybrid-connection-overview/
 [sbpricing]: https://azure.microsoft.com/pricing/details/service-bus/
 [armclient]: https://github.com/projectkudu/ARMClient/

@@ -4,15 +4,16 @@ description: コスト削減のために容量が予約された Azure Databrick
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 02/12/2020
+ms.subservice: reservations
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: b000934bb218c21a454ed04afe4e9a4495e808ab
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 699b3d9c9799b9d3a4ec148cbf395b212715f536
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200386"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88686090"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>事前購入を利用して Azure Databricks のコストを最適化する
 

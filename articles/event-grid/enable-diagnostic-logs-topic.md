@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid - トピックまたはドメインの診断ログを有効にする
 description: この記事では、Azure Event Grid トピックの診断ログを有効にする手順について説明します。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: how-to
-ms.date: 04/27/2020
-ms.author: spelluru
-ms.openlocfilehash: 13a2168c854475b841b0ebc52bb678c7ca22a1bb
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.date: 07/07/2020
+ms.openlocfilehash: 7811c2eef4379b7e3d5ed07dbd0df8e2a52dba85
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82626464"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114705"
 ---
 #  <a name="enable-diagnostic-logs-for-azure-event-grid-topics-or-domains"></a>Azure Event Grid のトピックまたはドメインの診断ログを有効にする
 Event Grid ユーザーは、診断設定を使用して、ストレージ アカウント、イベント ハブ、または Log Analytics ワークスペースのいずれかで**発行および配信エラー** ログをキャプチャして表示することができます。 この記事では、これらの設定を Event Grid トピックで有効にする手順について説明します。
@@ -25,15 +21,19 @@ Event Grid ユーザーは、診断設定を使用して、ストレージ ア�
     - イベント ハブ
     - Log Analytics ワークスペース
 
-## <a name="steps-for-enabling-diagnostic-logs-for-a-topic"></a>トピックの診断ログを有効にする手順
+## <a name="enable-diagnostic-logs-for-a-custom-topic"></a>カスタム トピックの診断ログを有効にする
 
 > [!NOTE]
 > 次の手順では、トピックの診断ログを有効にする手順について説明します。 ドメインの診断ログを有効にする手順もよく似ています。 手順 2 で、Azure portal 内の Event Grid **ドメイン** に移動します。  
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 診断ログ設定を有効にするイベント グリッド トピックに移動します。 
-3. 左側のメニューの **[監視]** の下にある **[診断設定]** を選択します。
-4. **[診断設定]** ページで、 **[Add New Diagnostic Setting]\(新しい診断設定の追加\)** を選択します。 
+    1. 上部の検索バーで、「**Event Grid Topics (Event Grid トピック)** 」を検索します。 
+    
+        ![カスタム トピックを検索する](./media/enable-diagnostic-logs-topic/search-custom-topics.png)
+    1. 診断設定を構成するリストから、 **[トピック]** を選択します。 
+1. 左側のメニューの **[監視]** の下にある **[診断設定]** を選択します。
+1. **[診断設定]** ページで、 **[Add New Diagnostic Setting]\(新しい診断設定の追加\)** を選択します。 
     
     ![[診断設定を追加する] ボタン](./media/enable-diagnostic-logs-topic/diagnostic-settings-add.png)
 5. 診断設定の **[名前]** を指定します。 
@@ -52,6 +52,38 @@ Event Grid ユーザーは、診断設定を使用して、ストレージ ア�
     ![一覧の診断設定](./media/enable-diagnostic-logs-topic/diagnostic-setting-list.png)
 
      また、トピックのすべてのメトリックの収集を有効にすることもできます。 
+
+## <a name="enable-diagnostic-logs-for-a-system-topic"></a>システム トピックの診断ログを有効にする
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+2. 診断ログ設定を有効にするイベント グリッド トピックに移動します。 
+    1. 上部の検索バーで、「**Event Grid System Topics (Event Grid システム トピック)** 」を検索します。 
+    
+        ![システム トピックの検索](./media/enable-diagnostic-logs-topic/search-system-topics.png)
+    1. 診断設定を構成する **[システム トピック]** を選択します。 
+    
+        ![システム トピックを選択する](./media/enable-diagnostic-logs-topic/select-system-topic.png)
+3. 左側のペインで **[監視]** の下の **[診断設定]** を選択してから、 **[Add diagnostic setting]\(診断設定の追加\)** を選択します。 
+
+    ![診断設定の追加 - ボタン](./media/enable-diagnostic-logs-topic/system-topic-add-diagnostic-settings-button.png)
+4. 診断設定の **[名前]** を指定します。 
+7. **[ログ]** セクションで、 **[DeliveryFailures]\(配信エラー\)** を選択します。 
+    ![配信エラーを選択する](./media/enable-diagnostic-logs-topic/system-topic-select-delivery-failures.png)
+6. ログの 1 つまたは複数のキャプチャ先を有効にしてから、前に作成したキャプチャ リソースを選択して構成します。 
+    - **[Log Analytics への送信]** を選択した場合は、Log Analytics ワークスペースを選択します。
+        ![Log Analytics への送信](./media/enable-diagnostic-logs-topic/system-topic-select-log-workspace.png) 
+    - **[ストレージ アカウントへのアーカイブ]** を選択した場合は、 **[ストレージ アカウント - 構成]** を選択してから、Azure サブスクリプションのストレージ アカウントを選択します。 
+
+        ![Azure ストレージ アカウントにアーカイブする](./media/enable-diagnostic-logs-topic/system-topic-select-storage-account.png)
+    - **[イベント ハブへのストリーム]** を選択した場合は、 **[イベント ハブ - 構成]** を選択してから、Event Hubs 名前空間、イベント ハブ、およびアクセス ポリシーを選択します。 
+        ![イベント ハブへのストリーム](./media/enable-diagnostic-logs-topic/system-topic-select-event-hub.png)
+8. **[保存]** を選択します。 次に、右上隅にある **[X]** を選択して、ページを閉じます。 
+9. 次に **[診断設定]** ページに戻り、 **[診断設定]** テーブルに新しいエントリが表示されていることを確認します。 
+    ![一覧の診断設定](./media/enable-diagnostic-logs-topic/system-topic-diagnostic-settings-targets.png)
+
+     また、システム トピックのすべての**メトリック**の収集を有効にすることもできます。
+
+    ![システム トピック - すべてのメトリックを有効にする](./media/enable-diagnostic-logs-topic/system-topics-metrics.png)
 
 ## <a name="view-diagnostic-logs-in-azure-storage"></a>Azure Storage アカウントの診断ログの表示 
 

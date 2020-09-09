@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3262841efb9109b1de24fe501ea0a7bea0dd612d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e661485e58c7e00c4eee41d808f727153a7761c9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77025131"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525043"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Veeam B&R を使用して CloudSimple プライベート クラウド上のワークロード VM をバックアップする
 
@@ -195,7 +195,7 @@ Veeam によって使用されるポートのネットワーク トラフィッ�
 ### <a name="configure-azure-blob-storage-for-long-term-data-retention"></a>長期的なデータ保持のために Azure BLOB ストレージを構成する
 
 1. [Azure Storage の基本](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)に関する Microsoft のビデオで説明されているように、標準タイプの汎用ストレージ アカウント (GPv2) と、BLOB コンテナーを作成します。
-2. [コンテナーの作成](https://docs.microsoft.com/rest/api/storageservices/create-container)に関するリファレンスで説明されているように、Azure ストレージ コンテナーを作成します。
+2. [コンテナーの作成](/rest/api/storageservices/create-container)に関するリファレンスで説明されているように、Azure ストレージ コンテナーを作成します。
 2. Linux 用の `azcopy` コマンド ライン ユーティリティを Microsoft からダウンロードします。 CentOS 7.5 の bash シェルでは、次のコマンドを使用できます。
 
     ```
@@ -206,7 +206,7 @@ Veeam によって使用されるポートのネットワーク トラフィッ�
     sudo yum -y install icu
     ```
 
-3. BLOB コンテナーとの間でバックアップ ファイルをコピーするには、`azcopy` コマンドを使用します。  詳細なコマンドについては、「[AzCopy on Linux を使ったデータの転送](../storage/common/storage-use-azcopy-linux.md)」を参照してください。
+3. BLOB コンテナーとの間でバックアップ ファイルをコピーするには、`azcopy` コマンドを使用します。  詳細なコマンドについては、「[AzCopy on Linux を使ったデータの転送](../storage/common/storage-use-azcopy-v10.md)」を参照してください。
 
 ### <a name="vcenter-console-of-private-cloud-install-veeam-br"></a>プライベート クラウドの vCenter コンソール:Veeam B&R をインストールする
 
@@ -291,8 +291,8 @@ Veeam バックアップおよび復旧サーバーのパブリック IP アド�
 * [Azure portal で Linux 仮想マシンを作成する](../virtual-machines/linux/quick-create-portal.md)
 * [Azure portal で Windows VM にマネージド データ ディスクを接続する方法](../virtual-machines/windows/attach-managed-disk-portal.md)
 * [Azure Storage の基本 - ビデオ](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)
-* [コンテナーの作成](https://docs.microsoft.com/rest/api/storageservices/create-container)
-* [AzCopy on Linux を使ったデータの転送](../storage/common/storage-use-azcopy-linux.md)
+* [コンテナーの作成](/rest/api/storageservices/create-container)
+* [AzCopy on Linux を使ったデータの転送](../storage/common/storage-use-azcopy-v10.md)
 
 ### <a name="vmware-references"></a>VMware リファレンス
 

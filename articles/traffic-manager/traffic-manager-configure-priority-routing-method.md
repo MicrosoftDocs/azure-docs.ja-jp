@@ -3,21 +3,20 @@ title: チュートリアル - Azure Traffic Manager を使用した優先順位
 description: このチュートリアルでは、Traffic Manager で優先順位によるトラフィック ルーティング方法を構成する方法について説明します
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
-manager: kumudD
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
-ms.author: rohink
-ms.openlocfilehash: ca223a19ff7ddeae95878f941f3cf295664e62b4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.author: duau
+ms.openlocfilehash: 404338c3e36216833d39c3551ae2dee0be304d24
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76938723"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401012"
 ---
 # <a name="tutorial-configure-priority-traffic-routing-method-in-traffic-manager"></a>チュートリアル:Traffic Manager での優先順位によるトラフィック ルーティング方法の構成
 

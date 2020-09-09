@@ -13,22 +13,22 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: a28d4d96f643c12eeb6aa542db2c6af06f4fd954
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 793ddb8c99a4e21c176374f7cb3445d1a7d8fca0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78244637"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090061"
 ---
 # <a name="live-event-types-comparison"></a>ライブ イベントの種類の比較
 
-Azure Media Services では、[ライブ イベント](https://docs.microsoft.com/rest/api/media/liveevents)は、"*パススルー*" (オンプレミスのライブ エンコーダーによって複数のビットレート ストリームが送信される) または "*ライブ エンコード*" (オンプレミスのライブ エンコーダーによってシングル ビットレート ストリームが送信される) のいずれかに設定できます。 
+Azure Media Services では、[ライブ イベント](/rest/api/media/liveevents)は、"*パススルー*" (オンプレミスのライブ エンコーダーによって複数のビットレート ストリームが送信される) または "*ライブ エンコード*" (オンプレミスのライブ エンコーダーによってシングル ビットレート ストリームが送信される) のいずれかに設定できます。 
 
 この記事では、ライブ イベントの種類の機能を比較します。
 
 ## <a name="types-comparison"></a>種類の比較 
 
-次の表は、ライブ イベントの種類の機能を比較したものです。 これらの種類は、[LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype) を使って作成中に設定されます。
+次の表は、ライブ イベントの種類の機能を比較したものです。 これらの種類は、[LiveEventEncodingType](/rest/api/media/liveevents/create#liveeventencodingtype) を使って作成中に設定されます。
 
 * **LiveEventEncodingType.None** - オンプレミス ライブ エンコーダーは、マルチ ビットレート ストリームを送信します。 取り込まれたストリームは、追加の処理なしでライブ イベントを通過します。 パススルー ライブ イベントとも呼ばれています。
 * **LiveEventEncodingType.Standard** - オンプレミス ライブ エンコーダーは、ライブ イベントにシングル ビットレート ストリームを送信し、Media Services がマルチ ビットレート ストリームを作成します。 コントリビューション フィードの解像度が 720p 以上である場合、**Default720p** プリセットは 6 つの解像度とビットレートのペアのセットをエンコードします (詳細については、この記事で後に説明)。
@@ -65,7 +65,7 @@ Azure Media Services では、[ライブ イベント](https://docs.microsoft.co
 
 ## <a name="system-presets"></a>システム プリセット
 
-ライブ エンコーダーからの出力に含まれている解像度とビットレートは、[presetName](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencoding) によって決定されます。 **Standard** ライブ エンコーダー (LiveEventEncodingType.Standard) を使用している場合、*Default720p* プリセットは、以下で説明する 6 つの解像度とビットレートのペアのセットを指定します。 それ以外で **Premium1080p** ライブ エンコーダー (LiveEventEncodingType.Premium1080p) を使用している場合、*Default1080p* プリセットは、解像度とビットレートのペアの出力セットを指定します。
+ライブ エンコーダーからの出力に含まれている解像度とビットレートは、[presetName](/rest/api/media/liveevents/create#liveeventencoding) によって決定されます。 **Standard** ライブ エンコーダー (LiveEventEncodingType.Standard) を使用している場合、*Default720p* プリセットは、以下で説明する 6 つの解像度とビットレートのペアのセットを指定します。 それ以外で **Premium1080p** ライブ エンコーダー (LiveEventEncodingType.Premium1080p) を使用している場合、*Default1080p* プリセットは、解像度とビットレートのペアの出力セットを指定します。
 
 > [!NOTE]
 > Default1080p プリセットが Standard ライブ エンコード用に設定されている場合、それをライブ イベントに適用することはできません。そうするとエラーを受け取ります。 また、Default720p プリセットを Premium1080p ライブ エンコーダーに適用しようとした場合もエラーを受け取ります。

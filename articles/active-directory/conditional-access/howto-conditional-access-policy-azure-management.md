@@ -4,19 +4,19 @@ description: カスタムの条件付きアクセス ポリシーを作成して
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 04/02/2020
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b92d833e6f32821ad907ff966771bbba8bbb77ce
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 717e81a1385b04d3152beac39105c56754c55c40
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80755171"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049283"
 ---
 # <a name="conditional-access-require-mfa-for-azure-management"></a>条件付きアクセス:Azure 管理のために MFA を必須にする
 
@@ -34,12 +34,12 @@ ms.locfileid: "80755171"
 
 * **緊急アクセス用**アカウントまたは**非常用**アカウント。テナント全体でアカウントがロックアウトされるのを防ぎます。 発生する可能性は低いシナリオですが、すべての管理者がテナントからロックアウトされた場合に、ご自身の緊急アクセス用管理アカウントを使用してテナントにログインし、アクセスを復旧する手順を実行できます。
    * 詳細については、「[Azure AD で緊急アクセス用アカウントを管理する](../users-groups-roles/directory-emergency-access.md)」を参照してください。
-* **サービス アカウント**と**サービス プリンシパル** (Azure AD Connect 同期アカウントなど)。 サービス アカウントは、特定のユーザーに関連付けられていない非対話型のアカウントです。 これらは通常、アプリケーションへのプログラムによるアクセスを可能にするバックエンド サービスによって使用されますが、管理目的でシステムにサインインするためにも使用されます。 プログラムでは MFA を完了できないため、これらのようなサービス アカウントは対象外とする必要があります。 サービス プリンシパルによって行われた呼び出しは、条件付きアクセスによってブロックされることはありません。
+* **サービス アカウント**と**サービス プリンシパル** (Azure AD Connect 同期アカウントなど)。 サービス アカウントは、特定のユーザーに関連付けられていない非対話型のアカウントです。 これらは通常、アプリケーションへのプログラムによるアクセスを可能にするバックエンド サービスによって使用されますが、管理目的でシステムにサインインする場合にも使用されます。 プログラムでは MFA を完了できないため、このようなサービス アカウントは対象外とする必要があります。 サービス プリンシパルによって行われた呼び出しは、条件付きアクセスによってブロックされることはありません。
    * 組織のスクリプトまたはコードでこれらのアカウントが使用されている場合は、それを[マネージド ID](../managed-identities-azure-resources/overview.md) に置き換えることを検討してください。 これらの特定のアカウントは、一時的な回避策として、ベースライン ポリシーの対象外にすることができます。
 
 ## <a name="create-a-conditional-access-policy"></a>条件付きアクセス ポリシーを作成する
 
-次の手順では、割り当てられた管理者ロールに対して、多要素認証の実行を必須にする条件付きアクセス ポリシーを作成します。
+次の手順では、[Microsoft Azure の管理](concept-conditional-access-cloud-apps.md#microsoft-azure-management)アプリへのアクセス権を持つユーザーに対して、多要素認証の実行を必須にする条件付きアクセス ポリシーを作成します。
 
 1. **Azure portal** にグローバル管理者、セキュリティ管理者、または条件付きアクセス管理者としてサインインします。
 1. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[条件付きアクセス]** の順に移動します。
@@ -50,7 +50,7 @@ ms.locfileid: "80755171"
    1. **[除外]** で、 **[ユーザーとグループ]** を選択し、組織の緊急アクセス用または非常用アカウントを選択します。 
    1. **[Done]** を選択します。
 1. **[Cloud apps or actions]\(クラウド アプリまたはアクション\)**  >  **[Include]\(含める\)** で、 **[アプリを選択]** を選択し、 **[Microsoft Azure Management]\(Microsoft Azure の管理\)** を選択し、 **[Select]\(選択する\)** 、 **[Done]\(完了\)** の順に選択します。
-1. **[条件]**  >  **[クライアント アプリ (プレビュー)]** で、 **[構成する]** を **[はい]** に設定し、 **[完了]** を選択します。
+1. **[条件]**  >  **[クライアント アプリ (プレビュー)]** の **[このポリシーを適用するクライアント アプリを選択します]** で、すべてを既定値が選択された状態のままにして、 **[完了]** を選択します。
 1. **[アクセス制御]**  >  **[許可]** で、 **[アクセス権の付与]** 、 **[Require multi-factor authentication]\(多要素認証を要求する\)** の順に選択し、 **[Select]\(選択する\)** を選択します。
 1. 設定を確認し、 **[Enable policy]\(ポリシーの有効化\)** を **[オン]** に設定します。
 1. **[作成]** を選択して、ポリシーを作成および有効化します。
@@ -59,6 +59,6 @@ ms.locfileid: "80755171"
 
 [Conditional Access common policies](concept-conditional-access-policy-common.md) (条件付きアクセスの一般的なポリシー)
 
-[条件付きアクセスのレポート専用モードを使用した影響を判断する](howto-conditional-access-report-only.md)
+[条件付きアクセスのレポート専用モードを使用した影響を判断する](howto-conditional-access-insights-reporting.md)
 
 [Simulate sign in behavior using the Conditional Access What If tool](troubleshoot-conditional-access-what-if.md) (条件付きアクセスの What If ツールを使用したサインイン動作のシミュレート)

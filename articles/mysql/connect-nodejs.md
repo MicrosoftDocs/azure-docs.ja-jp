@@ -1,19 +1,19 @@
 ---
-title: Node.js を使用して接続する - Azure Database for MySQL
+title: クイック スタート:Node.js を使用して接続する - Azure Database for MySQL
 description: このクイックスタートでは、Azure Database for MySQL に接続してデータを照会するために使用できる、Node.js コード サンプルをいくつか紹介します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 3/18/2020
-ms.openlocfilehash: a8c4f84fe958c1b2762509432596fea772e39d7e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 5/26/2020
+ms.openlocfilehash: 1f8f4dee2ed1e6dc5cdf6985c1149db0dcaed7c2
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80067929"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185929"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>クイック スタート:Node.js を使用して Azure Database for MySQL に接続してデータを照会する
 
@@ -26,11 +26,14 @@ ms.locfileid: "80067929"
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - Azure Database for MySQL サーバー。 [Azure portal を使用して Azure Database for MySQL サーバーを作成](quickstart-create-mysql-server-database-using-azure-portal.md)するか、[Azure CLI を使用して Azure Database for MySQL サーバーを作成](quickstart-create-mysql-server-database-using-azure-cli.md)してください。
 
+> [!IMPORTANT] 
+> [Azure portal](./howto-manage-firewall-using-portal.md) または [Azure CLI](./howto-manage-firewall-using-cli.md) を使用して、接続元の IP アドレスにサーバーのファイアウォール規則が追加されていることを確認します。
+
 ## <a name="install-nodejs-and-the-mysql-connector"></a>Node.js と MySQL コネクタのインストール
 
 プラットフォームに応じて、該当するセクションの手順に従って [Node.js](https://nodejs.org) をインストールしてください。 npm を使用して [mysql](https://www.npmjs.com/package/mysql) パッケージとその依存関係をプロジェクト フォルダーにインストールしてください。
 
-### <a name="windows"></a>**Windows**
+### <a name="windows"></a>Windows
 
 1. [Node.js ダウンロード ページ](https://nodejs.org/en/download/)にアクセスし、必要な Windows インストーラー オプションを選択します。
 2. ローカル プロジェクト フォルダーを作成します (例: `nodejsmysql`)。 
@@ -45,7 +48,7 @@ ms.locfileid: "80067929"
 
 5. `npm list` の出力テキストを確認してインストール結果を検証します。 バージョン番号は、新しいパッチのリリースに伴って変わる場合があります。
 
-### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
+### <a name="linux-ubuntu"></a>Linux (Ubuntu)
 
 1. 次のコマンドを実行して、**Node.js** と、Node.js 用のパッケージ マネージャー **npm** をインストールします。
 
@@ -63,7 +66,7 @@ ms.locfileid: "80067929"
    ```
 3. npm list の出力テキストを確認してインストール結果を検証します。 バージョン番号は、新しいパッチのリリースに伴って変わる場合があります。
 
-### <a name="mac-os"></a>**Mac OS**
+### <a name="mac-os"></a>Mac OS
 
 1. 次のコマンドを入力して **brew** をインストールします。これは、Mac OS X と **Node.js** に対応する使いやすいパッケージ マネージャーです。
 

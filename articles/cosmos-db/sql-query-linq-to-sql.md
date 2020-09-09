@@ -4,18 +4,18 @@ description: サポートされている LINQ 演算子と、Azure Cosmos DB の
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 7/29/2020
 ms.author: tisande
-ms.openlocfilehash: d43f95b91df7d0c9c442339de51936200f4688e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2a7570b7ebed26a06e1bd075c2904bc29061c21
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75441249"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498856"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ から SQL への変換
 
-Azure Cosmos DB クエリ プロバイダーは、LINQ クエリから Cosmos DB SQL クエリへのマッピングをベスト エフォートで実行します。 以下の説明では、LINQ の基本的知識を前提としています。
+Azure Cosmos DB クエリ プロバイダーは、LINQ クエリから Cosmos DB SQL クエリへのマッピングをベスト エフォートで実行します。 LINQ から変換される SQL クエリを取得する場合、生成された `IQueryable` オブジェクトで `ToString()` メソッドを使用します。 以下の説明では、[LINQ](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries) の基本的知識を前提としています。
 
 クエリ プロバイダーの型システムでは、JSON プリミティブ型 (数値型、ブール値、文字列、null) のみがサポートされます。
 
@@ -32,7 +32,7 @@ Azure Cosmos DB クエリ プロバイダーは、LINQ クエリから Cosmos DB
     family.children[n].grade; //n is an int variable
   ```
   
-- 算術式。数値およびブール値に対する共通の算術式を含みます。 完全な一覧については、[Azure Cosmos DB SQL の仕様](https://go.microsoft.com/fwlink/p/?LinkID=510612)に関するページを参照してください。
+- 算術式。数値およびブール値に対する共通の算術式を含みます。 完全な一覧については、[Azure Cosmos DB SQL の仕様](sql-query-system-functions.md)に関するページを参照してください。
   
   ```
     2 * family.children[0].grade;
@@ -54,31 +54,52 @@ Azure Cosmos DB クエリ プロバイダーは、LINQ クエリから Cosmos DB
     new int[] { 3, child.grade, 5 };
   ```
 
+## <a name="using-linq"></a>LINQ を使用する
+
+`GetItemLinqQueryable` を使用して LINQ クエリを作成できます。 この例では、`FeedIterator` を使用した LINQ クエリの生成と非同期実行を示します。
+
+```csharp
+using (FeedIterator<Book> setIterator = container.GetItemLinqQueryable<Book>()
+                      .Where(b => b.Title == "War and Peace")
+                      .ToFeedIterator<Book>())
+ {
+     //Asynchronous query execution
+     while (setIterator.HasMoreResults)
+     {
+         foreach(var item in await setIterator.ReadNextAsync()){
+         {
+             Console.WriteLine(item.cost);
+         }
+       }
+     }
+ }
+```
+
 ## <a name="supported-linq-operators"></a><a id="SupportedLinqOperators"></a>サポートされている LINQ 演算子
 
 SQL .NET SDK に含まれる LINQ プロバイダーでは、次の演算子がサポートされています。
 
-- **Select**:オブジェクトの構築など、プロジェクションによって SQL SELECT に変換します。
-- **Where**:フィルターによって SQL WHERE に変換します。また、`&&`、`||`、および `!` から SQL 演算子への変換をサポートしています
-- **SelectMany**:SQL JOIN 句に対して配列をアンワインドできます。 配列要素に関してフィルターする式を連結または入れ子にするために使用します。
-- **OrderBy** と **OrderByDescending**:ASC または DESC で ORDER BY に変換します。
-- 集計のための **Count**、**Sum**、**Min**、**Max**、**Average** 演算子と非同期でそれに相当する **CountAsync**、**SumAsync**、**MinAsync**、**MaxAsync**、**AverageAsync** 演算子。
-- **CompareTo**:範囲比較に変換します。 .NET では文字列を比較できないので、一般的に文字列に使用されます。
-- **Skip** と **Take**:クエリからの結果を制限して改ページ位置の自動修正を実行するために、SQL OFFSET および LIMIT に変換されます。
-- **数学関数**:.NET `Abs`、`Acos`、`Asin`、`Atan`、`Ceiling`、`Cos`、`Exp`、`Floor`、`Log`、`Log10`、`Pow`、`Round`、`Sign`、`Sin`、`Sqrt`、`Tan`、および `Truncate` から同等の SQL 組み込み関数への変換をサポートします。
-- **文字列関数**:.NET `Concat`、`Contains`、`Count`、`EndsWith`、`IndexOf`、`Replace`、`Reverse`、`StartsWith`、`SubString`、`ToLower`、`ToUpper`、`TrimEnd`、および `TrimStart` から同等の SQL 組み込み関数への変換をサポートします。
-- **配列関数**:.NET `Concat`、`Contains`、および `Count` から同等の SQL 組み込み関数への変換をサポートします。
-- **地理空間の拡張関数**:スタブ メソッド `Distance`、`IsValid`、`IsValidDetailed`、および `Within` から同等の SQL 組み込み関数への変換をサポートします。
-- **ユーザー定義関数の拡張関数**:スタブ メソッドの `UserDefinedFunctionProvider.Invoke` から、対応するユーザー定義関数への変換をサポートします。
-- **その他**:`Coalesce` 演算子と条件演算子の変換をサポートします。 コンテキストに応じて、`Contains` から、文字列 CONTAINS、ARRAY_CONTAINS、または SQL IN に変換できます。
+- **Select**:オブジェクトの構築など、プロジェクションによって [SELECT](sql-query-select.md) に変換します。
+- **Where**:フィルターによって [WHERE](sql-query-where.md) に変換します。また、`&&`、`||`、および `!` から SQL 演算子への変換をサポートしています
+- **SelectMany**:[JOIN](sql-query-join.md) 句に対して配列をアンワインドできます。 配列要素に関してフィルターする式を連結または入れ子にするために使用します。
+- **OrderBy** と **OrderByDescending**:ASC または DESC で [ORDER BY](sql-query-order-by.md) に変換します。
+- [集計](sql-query-aggregates.md)のための **Count**、**Sum**、**Min**、**Max**、**Average** 演算子と非同期でそれに相当する **CountAsync**、**SumAsync**、**MinAsync**、**MaxAsync**、**AverageAsync** 演算子。
+- **CompareTo**:範囲比較に変換します。 .NET では比較できないので、一般的に文字列に使用されます。
+- **Skip** と **Take**:クエリからの結果を制限して改ページ位置の自動修正を実行するために、[OFFSET および LIMIT](sql-query-offset-limit.md) に変換されます。
+- **数学関数**:.NET `Abs`、`Acos`、`Asin`、`Atan`、`Ceiling`、`Cos`、`Exp`、`Floor`、`Log`、`Log10`、`Pow`、`Round`、`Sign`、`Sin`、`Sqrt`、`Tan`、および `Truncate` から同等の[組み込み数学関数](sql-query-mathematical-functions.md)への変換をサポートします。
+- **文字列関数**:.NET `Concat`、`Contains`、`Count`、`EndsWith`,`IndexOf`、`Replace`、`Reverse`、`StartsWith`、`SubString`、`ToLower`、`ToUpper`、`TrimEnd`、および `TrimStart` から同等の[組み込み文字列関数](sql-query-string-functions.md)への変換をサポートします。
+- **配列関数**:.NET `Concat`、`Contains`、および `Count` から同等の[組み込み配列関数](sql-query-array-functions.md)への変換をサポートします。
+- **地理空間の拡張関数**:スタブ メソッド `Distance`、`IsValid`、`IsValidDetailed`、および `Within` から同等の[組み込み地理空間関数](sql-query-geospatial-query.md)への変換をサポートします。
+- **ユーザー定義関数の拡張関数**:スタブ メソッド `UserDefinedFunctionProvider.Invoke` から、対応する[ユーザー定義関数](sql-query-udfs.md)への変換をサポートします。
+- **その他**:`Coalesce` と条件[演算子](sql-query-operators.md)の変換をサポートします。 コンテキストに応じて、`Contains` から、文字列 CONTAINS、ARRAY_CONTAINS、または IN に変換できます。
 
 ## <a name="examples"></a>例
 
-一部の標準 LINQ クエリ演算子が Cosmos DB クエリにどのように変換されるかを以下の例で示します。
+一部の標準 LINQ クエリ演算子が Azure Cosmos DB のクエリにどのように変換されるかを以下の例で示します。
 
 ### <a name="select-operator"></a>Select 演算子
 
-構文は `input.Select(x => f(x))` です。`f` はスカラー式です。
+構文は `input.Select(x => f(x))` です。`f` はスカラー式です。 この場合、`input` は `IQueryable` オブジェクトになります。
 
 **Select 演算子、例 1:**
 
@@ -95,7 +116,7 @@ SQL .NET SDK に含まれる LINQ プロバイダーでは、次の演算子が�
       FROM Families f
     ```
   
-**Select 演算子、例 2:** 
+**Select 演算子、例 2:**
 
 - **LINQ ラムダ式**
   
@@ -122,7 +143,7 @@ SQL .NET SDK に含まれる LINQ プロバイダーでは、次の演算子が�
     });
   ```
   
-- **SQL** 
+- **SQL**
   
   ```sql
       SELECT VALUE {"name":f.children[0].familyName,
@@ -320,7 +341,6 @@ SQL .NET SDK に含まれる LINQ プロバイダーでは、次の演算子が�
       JOIN c IN f.children
       WHERE c.familyName = f.parents[0].familyName
   ```
-
 
 ## <a name="next-steps"></a>次のステップ
 

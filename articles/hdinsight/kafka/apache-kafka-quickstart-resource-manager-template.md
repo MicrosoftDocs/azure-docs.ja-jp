@@ -8,41 +8,45 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: f5f92044a0274b809388eeb164be9f1587013e0b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5c518d544f4d4d7f712e640c7e846afa7457077d
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80064613"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641995"
 ---
-# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-resource-manager-template"></a>クイック スタート:Resource Manager テンプレートを使用して Azure HDInsight 内に Apache Kafka クラスターを作成する
+# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure HDInsight 内に Apache Kafka クラスターを作成する
 
-このクイックスタートでは、Azure Resource Manager テンプレートを使用して、Azure HDInsight に [Apache Kafka](./apache-kafka-introduction.md) クラスターを作成します。 Kafka は、オープンソースの分散ストリーミング プラットフォームです。 発行/サブスクライブ メッセージ キューと同様の機能を備えているため、メッセージ ブローカーとして多く使われています。
+このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Azure HDInsight に [Apache Kafka](./apache-kafka-introduction.md) クラスターを作成します。 Kafka は、オープンソースの分散ストリーミング プラットフォームです。 発行/サブスクライブ メッセージ キューと同様の機能を備えているため、メッセージ ブローカーとして多く使われています。
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
 Kafka API は、同じ仮想ネットワーク内のリソースによってのみアクセスできます。 このクイック スタートでは、SSH を使って直接クラスターにアクセスします。 他のサービス、ネットワーク、または仮想マシンを Kafka に接続するには、まず、仮想ネットワークを作成してから、ネットワーク内にリソースを作成する必要があります。 詳しくは、[仮想ネットワークを使用した Apache Kafka への接続](apache-kafka-connect-vpn-gateway.md)に関するドキュメントをご覧ください。
 
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+
+[![Azure へのデプロイ](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-kafka%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>前提条件
+
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="create-an-apache-kafka-cluster"></a>Apache Kafka クラスターを作成する
+## <a name="review-the-template"></a>テンプレートを確認する
 
-### <a name="review-the-template"></a>テンプレートを確認する
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-hdinsight-kafka/)からのものです。
 
-このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-kafka)からのものです。
-
-:::code language="json" source="~/quickstart-templates/101-hdinsight-kafka/azuredeploy.json" range="1-150":::
+:::code language="json" source="~/quickstart-templates/101-hdinsight-kafka/azuredeploy.json":::
 
 テンプレートでは、次の 2 つの Azure リソースが定義されています。
 
-* [Microsoft.Storage/storageAccounts](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts): Azure のストレージ アカウントを作成します。
-* [Microsoft.HDInsight/cluster](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/clusters): HDInsight クラスターを作成します。
+* [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts): Azure のストレージ アカウントを作成します。
+* [Microsoft.HDInsight/cluster](/azure/templates/microsoft.hdinsight/clusters): HDInsight クラスターを作成します。
 
-### <a name="deploy-the-template"></a>テンプレートのデプロイ
+## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-1. 下の **[Azure へのデプロイ]** ボタンを選択して Azure にサインインし、Resource Manager テンプレートを開きます。
+1. 下の **[Azure に配置する]** ボタンを選択して Azure にサインインし、ARM テンプレートを開きます。
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-kafka-java-get-started%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="./media/apache-kafka-quickstart-resource-manager-template/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
+   [![Azure へのデプロイ](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-kafka%2Fazuredeploy.json)
 
 1. 次の値を入力または選択します。
 
@@ -226,7 +230,7 @@ Azure portal からお使いのクラスターに移動し、 **[削除]** を�
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、Resource Manager テンプレートを使用して HDInsight で Apache Kafka クラスターを作成する方法を学習しました。 次の記事では、Apache Kafka Streams API を使用するアプリケーションを作成し、HDInsight 上の Kafka でそれを実行する方法を説明します。
+このクイックスタートでは、ARM テンプレートを使用して HDInsight で Apache Kafka クラスターを作成する方法を学習しました。 次の記事では、Apache Kafka Streams API を使用するアプリケーションを作成し、HDInsight 上の Kafka でそれを実行する方法を説明します。
 
 > [!div class="nextstepaction"]
 > [Azure HDInsight で Apache Kafka Streams API を使用する](./apache-kafka-streams-api.md)

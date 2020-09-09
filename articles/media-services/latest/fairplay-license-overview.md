@@ -1,7 +1,7 @@
 ---
 title: Media Services および Apple FairPlay ライセンスのサポート - Azure | Microsoft Docs
 description: このトピックでは、Apple FairPlay ライセンスの要件と構成の概要について説明します。
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -10,18 +10,20 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 12/08/2018
-ms.author: juliako
-ms.custom: seodec18
-ms.openlocfilehash: d348f2696ef865616669af311477cb3a90a59a50
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 09068064f24594ef35a8a1bf64213b48d83873ca
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995858"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296865"
 ---
-# <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay ライセンスの要件と構成 
+# <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay ライセンスの要件と構成
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services では、**Apple FairPlay** (AES-128 CBC) を使用して HLS コンテンツを暗号化することができます。 Media Services も FairPlay ライセンスを提供するサービスを提供しています。 プレーヤーが FairPlay の保護されたコンテンツを再生しようとすると、ライセンスを取得する要求がライセンス配信サービスに送信されます。 ライセンス サービスはその要求を承認した後、ライセンスを発行します。このライセンスはクライアントに送信され、指定されたコンテンツの暗号化解除と再生に用いられます。
 
@@ -61,6 +63,9 @@ Media Services を使用した **Apple FairPlay** での HLS コンテンツの�
   * .der ファイル
   * .pfx ファイル
   * .pfx のパスワード
+  
+> [!NOTE]
+> Azure Media Services は、パッケージ化やキー配信の際に証明書の有効期限を確認しません。 証明書の有効期限が切れた後も、引き続き機能します。
 
 ## <a name="fairplay-and-player-apps"></a>FairPlay とプレーヤー アプリ
 
@@ -81,7 +86,7 @@ FairPlay ライセンスを構成するには、Media Services API を使用し�
 > [!NOTE]
 > 通常、証明書と ASK は 1 組だけなので、FairPlay ポリシー オプションを構成する必要があるのは 1 回のみです。
 
-次の例では、[Media Services .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) が使用されてライセンスが構成されています。
+次の例では、[Media Services .NET SDK](/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) が使用されてライセンスが構成されています。
 
 ```csharp
 private static ContentKeyPolicyFairPlayConfiguration ConfigureFairPlayPolicyOptions()

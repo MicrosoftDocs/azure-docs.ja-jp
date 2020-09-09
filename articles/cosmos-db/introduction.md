@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: 6292c3c2d928581d0564fe457342ea7b1e17111c
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: bfac783fcb8ce88977fc8d97f821a7350f57aab8
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983026"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118578"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB の概要
 
@@ -24,7 +24,7 @@ Azure サブスクリプション、課金、契約がなくても [Azure Cosmos
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)
 
-![Azure Cosmos DB は世界規模で分散される Microsoft のデータベース サービスであり、柔軟なスケールアウト、短い待ち時間の保証、5 つの整合性モデル、充実した保証を提供する SLA を特徴としています](./media/introduction/azure-cosmos-db.png)
+:::image type="content" source="./media/introduction/azure-cosmos-db.png" alt-text="Azure Cosmos DB は世界規模で分散される Microsoft のデータベース サービスであり、柔軟なスケールアウト、短い待ち時間の保証、5 つの整合性モデル、充実した保証を提供する SLA を特徴としています" border="false":::
 
 ## <a name="key-benefits"></a>主な利点
 

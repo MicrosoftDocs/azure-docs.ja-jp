@@ -1,17 +1,17 @@
 ---
 title: Microsoft Azure StorSimple Data Manager の UI
-description: StorSimple Data Manager サービスの UI を使う方法について説明します
+description: StorSimple Data Manager UI を使用し、StorSimple 8000 シリーズ デバイス上にあるデータを変換する方法について説明します。
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 85be49ad88ac62d90235c3da6b89b0da6a11487c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5d6273cbef1664984d466fb15c7f02ca505b18e2
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78933754"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184539"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>Azure Portal で StorSimple Data Manager サービスを管理する
 
@@ -42,7 +42,7 @@ StorSimple データ マネージャー サービスを作成するには、次�
 
    2. ドロップダウン リストから **[サブスクリプション]** を選びます。 サブスクリプションは、課金アカウントにリンクされます。 持っているサブスクリプションが 1 つだけの場合、このフィールドは自動的に設定されます (選択不可)。
 
-   3. 既存のリソース グループを選ぶか、新しいリソース グループを作成します。 詳細については、[Azure のリソース グループ](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/)に関する記事をご覧ください。
+   3. 既存のリソース グループを選ぶか、新しいリソース グループを作成します。 詳細については、[Azure のリソース グループ](/azure/azure-resource-manager/management/manage-resource-groups-portal)に関する記事をご覧ください。
 
    4. ストレージ アカウントを含むサービスと StorSimple Data Manager サービスの **[場所]** を指定します。 StorSimple Device Manager サービス、Data Manager サービス、および関連するストレージ アカウントはすべて、サポートされているリージョンに存在する必要があります。
     

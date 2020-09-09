@@ -8,19 +8,19 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: 93b150d47f1703662ebda5b017e1824cf74b7ab0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e40eb9cc22cdc071381cc847b49a01d4d713653d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233705"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85318626"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-starter"></a>チュートリアル:Azure DevOps Starter を使用して ASP.NET アプリと Azure SQL Database コードをデプロイする
 
 Azure DevOps Starter によって提供される簡略化されたエクスペリエンスを使用すると、既存のコードと Git リポジトリを使用するか、サンプル アプリケーションを選択して、Azure への継続的インテグレーション (CI) と継続的デリバリー (CD) のパイプラインを作成することができます。 
 
 DevOps Starter では次のこともできます。
-* Azure SQL データベースなどの Azure リソースを自動的に作成する。
+* Azure SQL Database のデータベースなどの Azure リソースを自動的に作成する。
 * CI 用のビルド パイプラインを含むリリース パイプラインを Azure Pipelines に作成し、構成する。
 * CD 用のリリース パイプラインをセットアップする。 
 * 監視のために Azure Application Insights リソースを作成する。
@@ -33,16 +33,16 @@ DevOps Starter では次のこともできます。
 > * CI パイプライン を確認する
 > * CD パイプライン を確認する
 > * 変更を Azure Repos にコミットし、Azure に自動的にデプロイする
-> * Azure SQL データベースに接続する 
+> * Azure SQL Database に接続する 
 > * リソースをクリーンアップする
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション。 [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) を通じて無料で取得できます。
 
-## <a name="create-a-project-in-devops-projects-for-an-aspnet-app-and-an-azure-sql-database"></a>ASP.NET アプリと Azure SQL データベース用のプロジェクトを DevOps Projects で作成する
+## <a name="create-a-project-in-devops-projects-for-an-aspnet-app-and-azure-sql-database"></a>ASP.NET アプリと Azure SQL Database 用のプロジェクトを DevOps Projects で作成する
 
-DevOps Starter によって、Azure Pipelines に CI/CD パイプラインが作成されます。 新しい Azure DevOps 組織を作成するか、既存の組織を使用できます。 DevOps Starter では、選択した Azure サブスクリプションに Azure SQL データベースなどの Azure リソースも作成されます。
+DevOps Starter によって、Azure Pipelines に CI/CD パイプラインが作成されます。 新しい Azure DevOps 組織を作成するか、既存の組織を使用できます。 DevOps Starter では、選択した Azure サブスクリプションに Azure SQL Database などの Azure リソースも作成されます。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
@@ -140,11 +140,11 @@ Web サイトに最新の作業を自動的にデプロイする CI/CD プロセ
 
 1. リリースが完了したら、アプリケーションを更新して、変更を確認します。
 
-## <a name="connect-to-the-azure-sql-database"></a>Azure SQL データベースに接続する
+## <a name="connect-to-azure-sql-database"></a>Azure SQL Database に接続する
 
-Azure SQL データベースに接続するには、適切なアクセスを許可が必要です。
+Azure SQL Database に接続するには、適切なアクセス許可が必要です。
 
-1. DevOps Starter ダッシュボードで **[SQL データベース]** を選択し、SQL データベースの管理ページに移動します。
+1. DevOps Starter ダッシュボードで **[SQL データベース]** を選択し、SQL Database の管理ページに移動します。
    
 1. **[サーバー ファイアウォールの設定]** を選択し、 **[クライアント IP の追加]** を選択します。 
 
@@ -156,7 +156,7 @@ Azure SQL データベースに接続するには、適切なアクセスを許�
 
 1. **[パスワードのリセット]** を選択し、SQL Server 管理者ログインのパスワードを入力して、 **[保存]** を選択します。 必ずこのパスワードを記録しておいてください。このチュートリアルの後の方で使用します。
 
-    これで、必要に応じて、SQL Server Management Studio や Visual Studio などのクライアント ツールを使用して、SQL Server と Azure SQL データベースに接続できるようになりました。 **[サーバー名]** プロパティを使用して接続します。
+    これで、必要に応じて、SQL Server Management Studio や Visual Studio などのクライアント ツールを使用して、SQL Server と Azure SQL Database に接続できるようになりました。 **[サーバー名]** プロパティを使用して接続します。
 
     DevOps Projects のプロジェクトの初期構成の際にデータベース ユーザー名を変更しなかった場合、ユーザー名はメール アドレスのローカル部分です。 たとえば、メール アドレスが *johndoe\@microsoft.com* の場合、ユーザー名は *johndoe* です。
 
@@ -165,7 +165,7 @@ Azure SQL データベースに接続するには、適切なアクセスを許�
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-テストを行っている場合は、リソースをクリーンアップすることによって、課金を回避することができます。 このチュートリアルで作成した Azure SQL データベースと関連リソースが必要なくなったら、削除してかまいません。 そうするには、DevOps Starter ダッシュボードで**削除**機能を使用します。
+テストを行っている場合は、リソースをクリーンアップすることによって、課金を回避することができます。 このチュートリアルで作成した Azure SQL Database と関連リソースが必要なくなったら、削除してかまいません。 そうするには、DevOps Starter ダッシュボードで**削除**機能を使用します。
 
 > [!IMPORTANT]
 > 次の手順で、リソースが完全に削除されます。 "*削除*" 機能では、DevOps Starter のプロジェクトによって作成されたデータが Azure と Azure DevOps の両方で破棄され、取得できなくなります。 画面に表示される説明を慎重に読んでから、この手順を行ってください。
@@ -184,7 +184,7 @@ Azure SQL データベースに接続するには、適切なアクセスを許�
 > * CI パイプライン を確認する
 > * CD パイプライン を確認する
 > * 変更を Azure Repos にコミットし、Azure に自動的にデプロイする
-> * Azure SQL データベースに接続する 
+> * Azure SQL Database に接続する 
 > * リソースをクリーンアップする
 
 CI/CD パイプラインの詳細については、以下を参照してください。

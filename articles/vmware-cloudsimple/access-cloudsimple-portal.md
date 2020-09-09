@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 91d3dd2eee6f771df23b72eae7a33122c42f1690
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ea178655646f7f130476acaffc35c60181968ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869326"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058702"
 ---
 # <a name="access-the-vmware-solution-by-cloudsimple-portal-from-the-azure-portal"></a>Azure portal から VMware Solution by CloudSimple にアクセスする
 
@@ -21,9 +21,9 @@ CloudSimple ポータルへのアクセスにはシングル サインオンが�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-組み込みの**所有者**ロールを持っているユーザーと、組み込みの**共同作成者**ロールを持っているユーザーが、CloudSimple ポータルにアクセスできます。  ロールは、CloudSimple サービスがデプロイされているリソース グループに対して構成されている必要があります。  CloudSimple サービス オブジェクトに対してロールを構成することもできます。  ご自身のロールの確認について詳しくは、「[ロールの割り当てを表示する](https://docs.microsoft.com/azure/role-based-access-control/check-access)」の記事を参照してください。 組み込みの**所有者**または**共同作成者**ロールが与えられているユーザーだけが CloudSimple ポータルにアクセスできます。  ロールはサブスクリプションで構成する必要があります。  ご自身のロールの確認について詳しくは、「[ロールの割り当てを表示する](https://docs.microsoft.com/azure/role-based-access-control/check-access)」の記事を参照してください。
+組み込みの**所有者**ロールを持っているユーザーと、組み込みの**共同作成者**ロールを持っているユーザーが、CloudSimple ポータルにアクセスできます。  ロールは、CloudSimple サービスがデプロイされているリソース グループに対して構成されている必要があります。  CloudSimple サービス オブジェクトに対してロールを構成することもできます。  ご自身のロールの確認について詳しくは、「[ロールの割り当てを表示する](../role-based-access-control/check-access.md)」の記事を参照してください。 組み込みの**所有者**または**共同作成者**ロールが与えられているユーザーだけが CloudSimple ポータルにアクセスできます。  ロールはサブスクリプションで構成する必要があります。  ご自身のロールの確認について詳しくは、「[ロールの割り当てを表示する](../role-based-access-control/check-access.md)」の記事を参照してください。
 
-カスタム ロールを使用している場合、そのロールの ```Actions``` に次のいずれかの操作が必要です。  カスタム ロールの詳細については、「[Azure リソースのカスタム ロール](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)」を参照してください。  いずれかの操作が ```NotActions``` に含まれている場合、ユーザーは CloudSimple ポータルにアクセスできません。
+カスタム ロールを使用している場合、そのロールの ```Actions``` に次のいずれかの操作が必要です。  カスタム ロールの詳細については、「[Azure カスタム ロール](../role-based-access-control/custom-roles.md)」を参照してください。  いずれかの操作が ```NotActions``` に含まれている場合、ユーザーは CloudSimple ポータルにアクセスできません。
 
 ```
 Microsoft.VMwareCloudSimple/*
@@ -71,5 +71,5 @@ Azure portal から CloudSimple ポータルを初めて起動するには、Clo
 
 ## <a name="next-steps"></a>次のステップ
 
-* [プライベート クラウドを作成する](https://docs.microsoft.com/azure/vmware-cloudsimple/create-private-cloud/)方法を学習する
+* [プライベート クラウドを作成する](./create-private-cloud.md)方法を学習する
 * [プライベート クラウドの環境を構成する](quickstart-create-private-cloud.md)方法を学習する

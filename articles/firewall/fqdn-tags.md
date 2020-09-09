@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 04/24/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: f4fcadb6d930f7863c733dad105432a64127b59b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e29e568786881f663414dcdf3eff72d4d72ab181
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232651"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610610"
 ---
 # <a name="fqdn-tags-overview"></a>FQDN タグの概要
 
@@ -36,7 +36,8 @@ FQDN タグは、よく知られている Microsoft サービスに関連付け�
 |App Service Environment (ASE)|ASE プラットフォーム トラフィックへの発信アクセスを許可します。 このタグの対象には、ASE によって作成されたお客様固有のストレージ エンドポイントおよび SQL エンドポイントは含まれません。 これらは、[サービス エンドポイント](../virtual-network/tutorial-restrict-network-access-to-resources.md)を使用して有効にするか、手動で追加する必要があります。<br><br>Azure Firewall と ASE の統合の詳細については、「[App Service 環境をロックする](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase)」を参照してください。|
 |Azure Backup|Azure Backup サービスへの発信アクセスを許可します。|
 |Azure HDInsight|HDInsight プラットフォーム トラフィックへの発信アクセスを許可します。 このタグでは、HDInsight からのお客様固有のストレージ トラフィックまたは SQL トラフィックは対象になりません。 [サービス エンドポイント](../virtual-network/tutorial-restrict-network-access-to-resources.md)を使用してこれらを有効にするか、手動で追加します。|
-|WindowsVirtualDesktop (WVD)|Windows Virtual Desktop プラットフォームの送信トラフィックを許可します。 このタグの対象には、WVD によって作成されたデプロイ固有のストレージと Service Bus エンドポイントは含まれません。 また、DNS および KMS ネットワーク ルールが必要です。 Azure Firewall と WVD の統合の詳細については、[Azure Firewall を使用して Window Virtual Desktop のデプロイを保護する](protect-windows-virtual-desktop.md)方法に関する記事を参照してください。 
+|WindowsVirtualDesktop (WVD)|Windows Virtual Desktop プラットフォームの送信トラフィックを許可します。 このタグの対象には、WVD によって作成されたデプロイ固有のストレージと Service Bus エンドポイントは含まれません。 また、DNS および KMS ネットワーク ルールが必要です。 Azure Firewall と WVD の統合の詳細については、[Azure Firewall を使用して Window Virtual Desktop のデプロイを保護する](protect-windows-virtual-desktop.md)方法に関する記事を参照してください。|
+|Azure Kubernetes Service (AKS)|AKS への発信アクセスを許可します。 詳細については、「[Azure Firewall を使用して Azure Kubernetes Service (AKS) のデプロイを保護する](protect-azure-kubernetes-service.md)」を参照してください。|
 
 > [!NOTE]
 > アプリケーション ルールで FQDN タグを選択する場合は、[プロトコル:ポート] フィールドを **[https]** に設定する必要があります。

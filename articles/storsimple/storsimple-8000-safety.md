@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
-ms.openlocfilehash: 3c880cd18e7227a728d7e276e72a5ea8c1e421de
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 556a84acb3461fb39b3eb0390b54878254bafabf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396635"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514537"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>StorSimple デバイスを安全にインストールして操作する
 ![警告アイコン](./media/storsimple-safety/IC740879.png)
@@ -32,18 +32,18 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 
 | アイコン | 説明 |
 |:--- |:--- |
-| ![危険のアイコン](./media/storsimple-safety/IC740879.png) **危険！** |回避しなければ、死亡事故または重大な負傷を招く危険な状況を示します。 この記号の文字は、最も重大な状況の場合にのみ使用されます。 |
-| ![警告アイコン](./media/storsimple-safety/IC740879.png) **警告！** |回避しなければ、死亡事故または重大な負傷を招く可能性のある危険な状況を示します。 |
-| ![警告アイコン](./media/storsimple-safety/IC740879.png) **注意！** |回避しなければ、軽度または中程度の負傷を招く可能性のある危険な状況を示します。 |
-| ![通知のアイコン](./media/storsimple-safety/IC740881.png) **通知：** |重要だが、危険に関連するものではない情報を示します。 |
+| ![危険アイコン](./media/storsimple-safety/IC740879.png) **危険!** |回避しなければ、死亡事故または重大な負傷を招く危険な状況を示します。 この記号の文字は、最も重大な状況の場合にのみ使用されます。 |
+| ![警告アイコン](./media/storsimple-safety/IC740879.png) **警告!** |回避しなければ、死亡事故または重大な負傷を招く可能性のある危険な状況を示します。 |
+| ![警告アイコン](./media/storsimple-safety/IC740879.png) **注意!** |回避しなければ、軽度または中程度の負傷を招く可能性のある危険な状況を示します。 |
+| ![通知のアイコン](./media/storsimple-safety/IC740881.png) **通知:** |重要だが、危険に関連するものではない情報を示します。 |
 | ![感電のアイコン](./media/storsimple-safety/IC740882.png) **感電の危険あり** |高電圧 |
 | ![重量物のアイコン](./media/storsimple-safety/IC740883.png) **重量物注意** | |
-| ![ユーザーによる保守が不可能なパーツのアイコン](./media/storsimple-safety/IC740879.png) **ユーザーによる保守が不可能なパーツ** |適切な訓練を受けている場合を除き、触らないでください。 |
+| ![ユーザーによる保守不可能な部品のアイコン](./media/storsimple-safety/IC740879.png) **ユーザーによる保守不可能な部品** |適切な訓練を受けている場合を除き、触らないでください。 |
 | ![安全上の注意の確認を促すアイコン](./media/storsimple-safety/IC740885.png)**最初にすべての指示を確認してください** | |
 | ![転倒の危険のアイコン](./media/storsimple-safety/IC740886.png) **転倒の危険あり** | |
 
 ## <a name="handling-precautions"></a>使用上の注意事項
-![警告アイコン](./media/storsimple-safety/IC740879.png) ![重量物のアイコン](./media/storsimple-safety/IC740883.png) **警告！** 
+![警告アイコン](./media/storsimple-safety/IC740879.png) ![重量物のアイコン](./media/storsimple-safety/IC740883.png) **警告!** 
 
 けがの危険性を低減する方法
 
@@ -52,7 +52,7 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 * ユニットの背面にある電源冷却モジュール (PCM) のハンドルでエンクロージャを持ち上げないでください。 これらは、エンクロージャの重量に堪えられるようには設計されていません。
 
 ## <a name="connection-precautions"></a>接続の注意事項
-![警告アイコン](./media/storsimple-safety/IC740879.png) ![感電のアイコン](./media/storsimple-safety/IC740882.png) **警告！**
+![警告アイコン](./media/storsimple-safety/IC740879.png) ![感電のアイコン](./media/storsimple-safety/IC740882.png) **警告!**
 
 けが、感電、または死亡事故を招く可能性を低減する方法
 
@@ -62,7 +62,7 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 * エンクロージャから PCM を取り外す前に、電源の接続が切断されていることを必ず確認してください。
 * 電源コードのプラグが主な切断装置である場合、壁コンセントが装置の近くにあり、簡単に使用できることを確認してください。
 
-![警告アイコン](./media/storsimple-safety/IC740879.png) ![感電のアイコン](./media/storsimple-safety/IC740882.png) **警告！**
+![警告アイコン](./media/storsimple-safety/IC740879.png) ![感電のアイコン](./media/storsimple-safety/IC740882.png) **警告!**
 
 電気接続部からの加熱または出火の可能性を低減する方法
 
@@ -71,7 +71,7 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 * 該当する安全、排出、および温度要件に準拠するために、カバーは取り外さず、プラグイン モジュールまたはドライブ ブランクにすべてのベイを装着してください。
 * 製造元によって指定された方法で機器を使用してください。 製造元によって指定されていない方法でこの機器を使用すると、機器によって提供される保護が損なわれる可能性があります。
 
-![通知のアイコン](./media/storsimple-safety/IC740881.png) **通知：**
+![通知のアイコン](./media/storsimple-safety/IC740881.png) **通知:**
 
 機器を適切に操作し、製品の破損を回避する方法
 
@@ -82,7 +82,7 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 ## <a name="rack-system-precautions"></a>ラック システムの注意事項
 ラック キャビネットに装置を組み込むときは、次の安全上の要件を考慮する必要があります。
 
-![警告アイコン](./media/storsimple-safety/IC740879.png) ![転倒の危険性のアイコン](./media/storsimple-safety/IC740886.png) **警告！**
+![警告アイコン](./media/storsimple-safety/IC740879.png) ![転倒の危険のアイコン](./media/storsimple-safety/IC740886.png) **警告!**
 
 転倒によるけがの可能性を低減する方法
 
@@ -90,32 +90,33 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 * ラックに機材を積み込むときは下から上に入れ、取り除くときは上から下に外します。
 * ラックが転倒する危険性を回避するために、複数のエンクロージャをラックから一度に取り外さないでください。
 
-![警告アイコン](./media/storsimple-safety/IC740879.png) ![感電のアイコン](./media/storsimple-safety/IC740882.png) **警告！**
+![警告アイコン](./media/storsimple-safety/IC740879.png) ![感電のアイコン](./media/storsimple-safety/IC740882.png) **警告!**
 
 けが、感電、または死亡事故を招く可能性を低減する方法
 
 * ラックには、安全な配電システムが用意されている必要があります。 エンクロージャに過電流保護機能が搭載されている必要があります。また、取り付けられているエンクロージャの総数によって過剰搭載の状態になってはなりません。 ネームプレートに記載されている電力消費定格を順守する必要があります。
 * 配電システムによって、ラック内のエンクロージャごとに信頼性のある接地を行う必要があります。
-* 配電システムの設計では、すべてのエンクロージャ内のすべての電源からの合計漏電電流を考慮する必要があります。 各エンクロージャ内の各電源装置には、60 Hz、264 ボルトで最大 1.0 mA の漏電電流があることに気を付けてください。 ラックには、「高流出電流。 電源に接続する前に、必ず接地（アース）を接続してください」のラベルが必要になる場合があります。
+* 配電システムの設計では、すべてのエンクロージャ内のすべての電源からの合計漏電電流を考慮する必要があります。 各エンクロージャ内の各電源装置には、60 Hz、264 ボルトで最大 1.0 mA の漏電電流があることに気を付けてください。 ラックには、「高流出電流。 電源に接続する前に、必ず接地 (アース) を接続してください」のラベルが必要になる場合があります。
 * エンクロージャで構成する場合、ラックは UL 60950-1 および IEC 60950-1/EN 60950-1 の安全要件を満たす必要があります。
 
-![通知のアイコン](./media/storsimple-safety/IC740881.png) **通知：**
+![通知のアイコン](./media/storsimple-safety/IC740881.png) **通知:**
 
 ラック システムを適切に冷却する方法
 
-* ラック設計では、摂氏 35 度 (華氏 95 度) の最大エンクロージャ動作周囲温度が考慮されていることを確認します。
+* ラック設計では、摂氏 35 度 (華氏 95 度) の最大エンクロージャ動作周囲温度が考慮されていることを確認します。 ラック システムがある部屋を涼しく維持し、データセンターの AC 通気口から十分な通気があることを確認します。
 * システムは圧力をあまり受けず、背面から排気可能な取り付け状態で動作します (ラック ドアや障害物によって生じる背面圧力が 5 パスカル (0.5 mm 水位計) を超えない)。
 
 ## <a name="power-cooling-module-pcm-precautions"></a>電源冷却モジュール (PCM) の注意事項
+
 この装置は 2 つの PCM で動作するように設計されています。 各 PCM には電源とデュアル軸ファンが備わっています。 危機的な状況になると、システムは 1 つの電源で障害が発生しても、通常の動作を続行できます。 必ず、2 つの PCM (電源) を取り付ける必要があります。 単一の PCM では、冗長電源は提供されません。 その場合、1 つの PCM で障害が発生すると、ダウンタイムが発生したり、データが失われたりする可能性があります。
 
-![警告アイコン](./media/storsimple-safety/IC740879.png) ![感電のアイコン](./media/storsimple-safety/IC740882.png) **警告！**
+![警告アイコン](./media/storsimple-safety/IC740879.png) ![感電のアイコン](./media/storsimple-safety/IC740882.png) **警告!**
 
 けが、感電、または死亡事故を招く可能性を低減する方法
 
 * PCM からカバーを取り外さないでください。 内部で感電する危険性があります。 PCM を返却して交換品を受け取るには、 [Microsoft サポートに連絡](storsimple-contact-microsoft-support.md)してください。
 
-![通知のアイコン](./media/storsimple-safety/IC740881.png) **通知：**
+![通知のアイコン](./media/storsimple-safety/IC740881.png) **通知:**
 
 機器を適切に操作し、製品の破損を回避する方法
 
@@ -123,7 +124,8 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 * 交換品をすぐに取り付けることができない場合、PCM を取り外さないでください。 すべてのモジュールが適切に配置されていなければ、エンクロージャを動作させてはなりません。
 
 ## <a name="electrostatic-discharge-esd-precautions"></a>静電気 (ESD) に関する注意事項
-![通知のアイコン](./media/storsimple-safety/IC740881.png) **通知：**
+
+![通知のアイコン](./media/storsimple-safety/IC740881.png) **通知:**
 
 次の ESD に関する注意事項を守ってください。
 
@@ -133,9 +135,10 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 * ESD の破損は保証に含まれていません。
 
 ## <a name="battery-disposal-precautions"></a>バッテリ廃棄の注意事項
+
 電源装置には、一時的、短期的な停電時にメモリの内容を保護するための特別なバッテリが使用されています。 このバッテリは PCM に取り付けられています。 バッテリに関する次の情報に注意してください。
 
-![警告アイコン](./media/storsimple-safety/IC740879.png) **警告！**
+![警告アイコン](./media/storsimple-safety/IC740879.png) **警告!**
 
 ショート、火災、爆発、けが、または死亡事故のリスクを低減する方法
 
@@ -143,13 +146,13 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 * 分解、破砕、または摂氏 60 度 (華氏 140 度) 以上に熱したり、焼却したりしないでください。 PCM のバッテリを交換するときは、指定されたバッテリのみを使用してください。 別のバッテリを使用すると、火災または爆発の危険があります。
 * 電源からバッテリを取り外す場合は、バッテリの保護エンド キャップを使用してください。
 
-![通知のアイコン](./media/storsimple-safety/IC740881.png) **通知：**
+![通知のアイコン](./media/storsimple-safety/IC740881.png) **通知:**
 
 バッテリを船舶または飛行機で輸送する場合は、[https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx) にある IATA Lithium Battery Guidance のドキュメントに従ってください
 
 これらの安全上の注意を確認した後、装置を開梱し、ラックに積み込み、ケーブルを接続するステップに進みます。
 
 ## <a name="next-steps"></a>次のステップ
+
 * 8100 デバイスの場合は、「 [StorSimple 8100 デバイスの取り付け](storsimple-8100-hardware-installation.md)」をご覧ください。
 * 8600 デバイスの場合は、「 [StorSimple 8600 デバイスの取り付け](storsimple-8600-hardware-installation.md)」をご覧ください。
-

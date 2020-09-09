@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: d9c6062e7106f764058d6c96c6f730d235b2ef0c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 82c45919892721d689bd90b7480158c4eea16c03
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673035"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374905"
 ---
 MacOS 用に開発する場合は、3つの音声Sdk を利用できます。
 
@@ -43,7 +43,7 @@ platform :ios, '9.3'
 use_frameworks!
 
 target 'MyApp' do
-  pod 'MicrosoftCognitiveServicesSpeech', '~> 1.12.0'
+  pod 'MicrosoftCognitiveServicesSpeech', '~> 1.13.0'
 end
 ```
 

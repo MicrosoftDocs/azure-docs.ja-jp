@@ -5,15 +5,15 @@ description: リソース マネージャーで PowerShell を使用して、App
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 11/14/2019
+ms.topic: how-to
+ms.date: 07/09/2020
 ms.author: victorh
-ms.openlocfilehash: f720a94d3467ce15ea5d58a8ece6de2a669f6258
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 2a269137508feb8a2d2cc0710986e1b74b91c0ea
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312582"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186743"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Azure リソース マネージャーで PowerShell を使用して Azure Application Gateway のカスタム プローブを作成する
 

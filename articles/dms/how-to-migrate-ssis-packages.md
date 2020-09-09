@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 90a39b8fe3604a05f1d35a875ae4e34491b47d72
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 483f60138dcaa6252999b9d15e846fbd1c68e9a2
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77648531"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021519"
 ---
 # <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>Azure Database Migration Service を使用して SSIS パッケージを Azure SQL Database に再配置する
 
@@ -26,9 +26,9 @@ SQL Server Integration Services (SSIS) を使用していて、その SSIS プ�
 2012 より前のバージョンの SSIS を使用している場合は、ご利用の SSIS プロジェクト/パッケージをプロジェクト デプロイ モデルに再デプロイする前に、まず、Integration Services プロジェクトの変換ウィザードを使用してそれらを変換する必要があります。このウィザードは、SSMS から起動することもできます。 詳細については、[プロジェクト デプロイ モデルへのプロジェクトの変換](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert)に関する記事を参照してください。
 
 > [!NOTE]
-> Azure Database Migration Service (DMS) では現在、配置元の SSISDB の Azure SQL Database サーバーへの移行はサポートされていませんが、次のプロセスを使用すれば、ご利用の SSIS プロジェクト/パッケージを再デプロイできます。
+> Azure Database Migration Service (DMS) では現在、配置元の SSISDB の Azure SQL Database への移行はサポートされていませんが、次のプロセスを使用すれば、ご利用の SSIS プロジェクトまたはパッケージを再デプロイできます。
 
-この記事では、次のことについて説明します。
+この記事では、次の方法について説明します。
 > [!div class="checklist"]
 >
 > * 配置元の SSIS プロジェクト/パッケージを評価する。
@@ -39,20 +39,20 @@ SQL Server Integration Services (SSIS) を使用していて、その SSIS プ�
 これらの手順を完了するには、以下が必要です。
 
 * SSMS バージョン 17.2 以降。
-* SSISDB をホストするご利用のターゲット データベース サーバーのインスタンス。 Azure SQL Database サーバー (データベースなし) がまだない場合は、Azure portal を使用し、SQL Server (論理サーバーのみ) [フォーム](https://ms.portal.azure.com/#create/Microsoft.SQLServer)に移動して作成します。
-* 配置先の SSISDB が Azure SQL Database サーバーのインスタンスでホストされている場合は、Azure-SSIS Integration Runtime (IR) を含む Azure Data Factory (ADF) で SSIS をプロビジョニングする必要があります (「[Azure Data Factory に Azure-SSIS 統合ランタイムをプロビジョニングする](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure)」の記事に記載されています)。
+* SSISDB をホストするご利用のターゲット データベース サーバーのインスタンス。 [論理 SQL サーバー](../azure-sql/database/logical-servers.md) (データベースなし) がまだない場合は、Azure portal を使用し、SQL Server (論理サーバーのみ) [フォーム](https://ms.portal.azure.com/#create/Microsoft.SQLServer)に移動して作成します。
+* 配置先の SSISDB が SQL Database でホストされている場合は、Azure-SSIS Integration Runtime (IR) を含む Azure Data Factory (ADF) で SSIS をプロビジョニングする必要があります (「[Azure Data Factory に Azure-SSIS Integration Runtime をプロビジョニングする](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure)」の記事に記載されています)。
 
 ## <a name="assess-source-ssis-projectspackages"></a>配置元の SSIS プロジェクト/パッケージを評価する
 
-配置元の SSISDB の評価が Database Migration Assistant (DMA) または Azure Database Migration Service (DMS) にまだ統合されていない場合でも、ご利用の SSIS プロジェクト/パッケージは、Azure SQL Database サーバー上でホストされている配置先の SSISDB に再デプロイされるときに評価/検証されます。
+配置元の SSISDB の評価が Database Migration Assistant (DMA) または Azure Database Migration Service (DMS) にまだ統合されていない場合でも、ご利用の SSIS プロジェクトまたはパッケージは、Azure SQL Database 上でホストされている配置先の SSISDB に再デプロイされるときに評価または検証されます。
 
 ## <a name="migrate-ssis-projectspackages"></a>SSIS プロジェクト/パッケージを移行する
 
-Azure SQL Database サーバーに SSIS プロジェクト/パッケージを移行するには、次の手順を行います。
+Azure SQL Database に SSIS プロジェクトまたはパッケージを移行するには、次の手順を行います。
 
 1. SSMS を開き、 **[オプション]** を選択して、 **[サーバーに接続]** ダイアログ ボックスを表示します。
 
-2. **[ログイン]** タブで、配置先の SSISDB をホストする Azure SQL Database サーバーに接続するために必要な情報を指定します。
+2. **[ログイン]** タブで、配置先の SSISDB をホストするサーバーに接続するために必要な情報を指定します。
 
     ![SSIS の [ログイン] タブ](media/how-to-migrate-ssis-packages/dms-ssis-login-tab.png)
 
@@ -81,7 +81,7 @@ Azure SQL Database サーバーに SSIS プロジェクト/パッケージを移
 8. **[次へ]** を選択します。
 9. **[配置先の選択]** ページで、使用するプロジェクトの配置先を指定します。
 
-    a. [サーバー名] テキスト ボックスに、Azure SQL Database サーバーの完全修飾名 (<server_name>.database.windows.net) を入力します。
+    a. [サーバー名] テキスト ボックスに、サーバーの完全修飾名 (<server_name>.database.windows.net) を入力します。
 
     b. 認証情報を提供して、 **[接続]** を選択します。
 

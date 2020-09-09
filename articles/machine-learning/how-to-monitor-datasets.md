@@ -5,34 +5,41 @@ description: Azure Machine Learning データセット モニター (プレビ�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.reviewer: nibaccam
+ms.reviewer: sgilley
 ms.author: copeters
 author: lostmygithubaccount
-ms.date: 11/04/2019
-ms.openlocfilehash: e49c621d92a8aa604b5f95291c5d80c0141f41dd
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.date: 06/25/2020
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: 270e93302a90c458ccbdfdc4d2ced8f0d3c263af
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81682720"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319679"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>データセットでデータ ドリフトを検出する (プレビュー)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-この記事では、Azure Machine Learning データセット モニター (プレビュー) を作成する方法、データセットのデータ ドリフトと統計的変化を監視する方法、およびアラートを設定する方法について説明します。
+> [!IMPORTANT]
+> データセットでデータ ドリフトを検出する機能は、現在パブリック プレビュー段階にあります。
+> プレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-Azure Machine Learning データセット モニターを使用すると、次のことを実行できます。
+データ ドリフトを監視し、ドリフトが大きい場合のアラートを設定する方法について説明します。  
+
+Azure Machine Learning データセット モニター (プレビュー) を使用すると、次のことを実行できます。
 * **データのドリフトを分析**して、時間の経過と共にどのように変化するかを把握する。
-* **モデル データを監視**して、トレーニング用データセットと供給データセットの違いを確認する。
+* **モデル データを監視**して、トレーニング用データセットと供給データセットの違いを確認する。  [デプロイされたモデルからモデル データを収集すること](how-to-enable-data-collection.md)から始めます。
 * **新しいデータを監視**して、ベースライン データセットとターゲット データセットの違いを確認する。
 * **データの特徴をプロファイリング**して、時間の経過と共に統計的な特性がどのように変化するかを追跡する。
 * **データ ドリフトに関するアラートを設定**して、潜在的な問題を早期に警告する。 
 
-メトリックと分析情報は、Azure Machine Learning ワークスペースに関連付けられている [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) リソースを通じて利用できます。
+モニターの作成には、[Azure Machine Learning のデータセット](how-to-create-register-datasets.md)が使用されます。 データセットには timestamp 列が含まれている必要があります。
+
+データ ドリフト メトリックは、Python SDK または Azure Machine Learning Studio を使用して確認できます。  その他のメトリックと分析情報は、Azure Machine Learning ワークスペースに関連付けられている [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) リソースを通じて利用できます。
 
 > [!Important]
-> SDK を使用したデータ ドリフトの監視は、すべてのエディションで利用できることに注意してください。一方、Web で Studio を介してデータ ドリフトを監視できるのは Enterprise エディションだけです。
+> SDK を使用したデータ ドリフトの監視は、すべてのエディションで使用できます。 ただし、Studio を使用した Web 上でのデータ ドリフトの監視は Enterprise エディションのみです。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,40 +51,61 @@ Azure Machine Learning データセット モニターを使用すると、次�
 
 ## <a name="what-is-data-drift"></a>データの誤差とは
 
-機械学習においてデータの誤差とは、モデルのパフォーマンスの低下につながるモデルの入力データの変更のことです。 これはモデルの精度が時間の経過と共に低下する主な理由の 1 つであるため、データ ドリフトの監視はモデルのパフォーマンスに関する問題の検出に役立ちます。
+データ ドリフトは、モデルの精度が時間の経過と共に低下する主な理由の 1 つです。  機械学習モデルの場合、データ ドリフトとは、モデルのパフォーマンスの低下につながるモデルの入力データの変更のことです。  データ ドリフトを監視すると、このようなモデルのパフォーマンスの問題を検出するために役立ちます。
 
-データ ドリフトは、次のようなことが原因で発生します。 
+データ ドリフトは、次のようなことが原因で発生します。
 
 - 上流プロセスの変更 (センサーを交換したため測定単位がインチからセンチメートルに変更された場合など)。 
 - データ品質の問題 (センサーが破損しているため読み取り値が常に 0 になっている場合など)。
 - データの自然なドリフト (平均気温が季節と共に変化する場合など)。
 - 特徴間の関係の変化 (共変量シフト)。 
 
-Azure Machine Learning データセット モニターを使用すると、時間の経過と共にデータセット内に発生するデータ ドリフトの検出に役立つアラートを設定することができます。 
+Azure Machine Learning を使用すると、比較されるデータセットの複雑さを抽象化する単一のメトリックを計算することにより、ドリフト検出を簡略化することができます。  このようなデータセットには、数百単位の特徴と数万行が含まれている場合があります。 ドリフトが検出されたら、ドリフトを引き起こしている特徴までドリルダウンします。  次に、特徴レベルのメトリックを調べて、ドリフトの根本原因をデバッグし、特定します。
 
+このトップ ダウン アプローチを使用すると、従来のルールベースの手法よりもデータの監視が簡単になります。 許可されたデータ範囲や許可された一意の値などのルールベースの手法では、時間がかかり、エラーが発生しやすくなります。
+
+Azure Machine Learning では、データセット モニターを使用し、データ ドリフトを検出して警告します。
+  
 ### <a name="dataset-monitors"></a>データセット モニター 
 
-データセット モニターを作成すると、データセット内の新しいデータのデータ ドリフトを検出してアラートを生成したり、履歴データからドリフトを分析したり、時間の経過に沿って新しいデータをプロファイリングしたりすることが可能になります。 データ ドリフトに関するアルゴリズムは、データの変化を総合的に測定するだけでなく、どの特徴に詳細な調査が必要であるかがわかるようになっています。 データセット モニターでは、`timeseries` データセット内の新しいデータをプロファイリングすることによって、ほかにも多数のメトリックが生成されます。 [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) を使用することで、モニターによって生成されるすべてのメトリックについてカスタム アラートを設定できます。 データセット モニターを使用すると、データの問題を迅速に検出し、考えられる原因を特定することによって問題のデバッグ時間を短縮できます。  
+データセット モニターを使用すると、次のことができます。
+
+* データセット内の新しいデータに対してデータ ドリフトを検出して警告する。
+* 履歴データのドラフトを分析する。
+* 時系列で新しいデータをプロファイルする。
+
+データ ドリフトに関するアルゴリズムは、データの変化を総合的に測定するだけでなく、どの特徴に詳細な調査が必要であるかがわかるようになっています。 データセット モニターでは、`timeseries` データセット内の新しいデータをプロファイリングすることによって、ほかにも多数のメトリックが生成されます。 
+
+[Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) を使用することで、モニターによって生成されるすべてのメトリックについてカスタム アラートを設定できます。 データセット モニターを使用すると、データの問題を迅速に検出し、考えられる原因を特定することによって問題のデバッグ時間を短縮できます。  
 
 概念的には、Azure Machine Learning でデータセット モニターを設定するシナリオは主に 3 つあります。
 
 シナリオ | 説明
 ---|---
-モデルの供給データを監視して、モデルのトレーニング データからのドリフトを調べる | 供給データがトレーニング データからドリフトする場合にモデルの精度が低下すると考えた場合、このシナリオの結果は、代用品を監視してモデルの精度を調べたものと解釈できます。
-時系列データセットを監視して、以前の期間からのドリフトを調べる。 | このシナリオはより一般的なものであり、モデル構築の上流または下流に関係するデータセットを監視するために使用できます。  ターゲット データセットにはタイムスタンプ列が必要ですが、ベースライン データセットにはターゲット データセットと共通の特徴が含まれる任意の表形式データセットを使用できます。
-過去のデータに基づいて分析を実行する。 | このシナリオは、履歴データを解釈し、データセット モニターを設定する際の意思決定に反映させるために使用できます。
+トレーニング データのドラフトに対してモデルのサービス データを監視する | 供給データがトレーニング データからドリフトすると、モデルの精度が低下するので、このシナリオの結果は、代用品を監視してモデルの精度を調べたものと解釈できます。
+時系列データセットを監視して、以前の期間からのドリフトを調べる。 | このシナリオはより一般的なものであり、モデル構築の上流または下流に関係するデータセットを監視するために使用できます。  対象のデータセットには timestamp 列が必要です。 ベースライン データセットは、ターゲットのデータセットと共通の特徴を持つ表形式のデータセットです。
+過去のデータに対して分析を実行する。 | このシナリオは、履歴データを解釈し、データセット モニターを設定する際の意思決定に反映させるために使用できます。
 
-## <a name="how-dataset-can-monitor-data"></a>データセットによるデータの監視
+データセット モニターは、次の Azure サービスによって変わります。
 
-Azure Machine Learning を使用すると、データセットを通じてデータ ドリフトが監視されます。 データの誤差を監視するには、基準データセット (通常は、モデルのトレーニング データセット) を指定します。 ターゲット データセット (通常はモデルの入力データ) は、時間の経過に沿ってベースライン データセットと比較されます。 この比較は、ターゲット データセットにはタイムスタンプ列が指定されている必要があるということを意味します。
+|Azure サービス  |説明  |
+|---------|---------|
+| *データセット* | ドリフトでは、Machine Learning データセットを使用してトレーニング データが取得され、モデルのトレーニングのためにデータが比較されます。  データのプロファイル生成を使用して、最小値、最大値、個別値、個別値カウントなどのレポートされたメトリックの一部を生成します。 |
+| *Azureml のパイプラインとコンピューティング* | ドリフト計算ジョブは azureml パイプラインでホストされます。  このジョブは、オンデマンドまたはスケジュールによってトリガーされ、ドリフト モニターの作成時に構成されたコンピューティングで実行されます。
+| *Application Insights*| ドリフトによって、機械学習ワークスペースに属する Application Insights にメトリックが送信されます。
+| *Azure Blob Storage*| ドリフトによって、メトリックが JSON 形式で Azure BLOB Storage に送信されます。
 
-### <a name="set-the-timeseries-trait-in-the-target-dataset"></a>ターゲット データセットでの `timeseries` 特性の設定
+## <a name="how-dataset-monitors-data"></a>データセットでデータを監視する方法
 
-ターゲット データセットには、データ内の列またはファイルのパス パターンから派生した仮想列のいずれかにタイムスタンプ列を指定することにより、`timeseries` 特性が設定されている必要があります。 これは、Python SDK または Azure Machine Learning Studio を使用して行うことができます。 `timeseries` 特性をデータセットに追加するには、"狭間隔" のタイムスタンプを表す列を指定する必要があります。 データが "{yyyy/MM/dd}" などの時刻情報を含むフォルダー構造に分割されている場合は、パス パターン設定を使用して仮想列を作成して、"広間隔" のタイムスタンプとして設定し、時系列機能の重要度を向上させることができます。 
+Machine Learning データセットを使用して、データ ドリフトを監視します。 ベースライン データセット (通常はモデルのトレーニング データセット) を指定します。 ターゲット データセット (通常はモデルの入力データ) は、時間の経過に沿ってベースライン データセットと比較されます。 この比較は、ターゲット データセットにはタイムスタンプ列が指定されている必要があるということを意味します。
 
-#### <a name="python-sdk"></a>Python SDK
+## <a name="create-target-dataset"></a>ターゲット データセットを作成する
 
-[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) クラスの [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) メソッドによって、データセットのタイムスタンプ列が定義されます。 
+ターゲット データセットには、データ内の列またはファイルのパス パターンから派生した仮想列のいずれかにタイムスタンプ列を指定することにより、`timeseries` 特性が設定されている必要があります。 [Python SDK](#sdk-dataset) または [Azure Machine Learning Studio](#studio-dataset) を使用して、タイムスタンプを持つデータセットを作成します。 `timeseries` 特性をデータセットに追加するには、"タイムスタンプ" を表す列を指定する必要があります。 データが "{yyyy/MM/dd}" などの時刻情報を含むフォルダー構造に分割されている場合は、パス パターン設定を使用して仮想列を作成して、"パーティションのタイムスタンプ" として設定し、時系列機能の重要度を向上させます。
+
+### <a name="python-sdk"></a><a name="sdk-dataset"></a>Python SDK
+
+[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) クラスの [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) メソッドによって、データセットのタイムスタンプ列が定義されます。
 
 ```python 
 from azureml.core import Workspace, Dataset, Datastore
@@ -106,78 +134,29 @@ dset = dset.register(ws, 'target')
 
 データセットの `timeseries` 特性を使用する完全な例については、[ノートブックの例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb)または [Datasets SDK のドキュメント](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)を参照してください。
 
-#### <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
+### <a name="azure-machine-learning-studio"></a><a name="studio-dataset"></a>Azure Machine Learning Studio
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku-inline.md)]
 
-Azure Machine Learning Studio を使用してデータセットを作成する場合は、データへのパスにタイムスタンプ情報が含まれていることを確認し、データが存在するすべてのサブフォルダーを含め、パーティション形式を設定します。 
+Azure Machine Learning Studio を使用してデータセットを作成する場合は、データへのパスにタイムスタンプ情報が含まれていることを確認し、データが存在するすべてのサブフォルダーを含め、パーティション形式を設定します。
 
-次の例では、サブフォルダー *NoaaIsdFlorida/2019* のすべてのデータが取得され、パーティション形式でタイムスタンプの年、月、日が指定されています。 
+次の例では、サブフォルダー *NoaaIsdFlorida/2019* のすべてのデータが取得され、パーティション形式でタイムスタンプの年、月、日が指定されています。
 
 [![パーティション形式](./media/how-to-monitor-datasets/partition-format.png)](media/how-to-monitor-datasets/partition-format-expand.png)
 
 **スキーマ**設定では、指定されたデータセットの仮想または実際の列からタイムスタンプ列を指定します。
 
-![Timestamp](./media/how-to-monitor-datasets/timestamp.png)
+:::image type="content" source="media/how-to-monitor-datasets/timestamp.png" alt-text="タイムスタンプを設定する":::
 
-## <a name="dataset-monitor-settings"></a>データセット モニターの設定
+この場合のように、データが日付でパーティション分割されている場合は、partition_timestamp も指定できます。  こうすることで、より効率的に日付を処理できます。
 
-指定されたタイムスタンプ設定を使用してデータセットを作成したら、データセット モニターの構成に進むことができまあす。
+:::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="パーティションのタイムスタンプ":::
 
-データセット モニターの各種設定は、次の 3 つのグループに分類されます: **基本情報、モニターの設定、** および**バックフィルの設定**。
 
-### <a name="basic-info"></a>基本情報
+## <a name="create-dataset-monitors"></a>データセット モニターを作成する
 
-次の表に、データセット モニターに使用される基本的な設定を示します。
+新しいデータセットのデータ ドリフトを検出して警告するデータセット モニターを作成します。  [Python SDK](#sdk-monitor) または [Azure Machine Learning Studio](#studio-monitor) のいずれかを使用します。
 
-| 設定 | 説明 | ヒント | 変更可能 | 
-| ------- | ----------- | ---- | ------- | 
-| 名前 | データセット モニターの名前。 | | いいえ |
-| ベースライン データセット | 時間の経過に沿ってターゲット データセットと比較するベースラインとして使用される表形式のデータセット。 | ベースライン データセットには、ターゲット データセットと共通の特徴が含まれている必要があります。 一般に、ベースラインは、モデルのトレーニング データセットか、ターゲット データセットのスライスに設定する必要があります。 | いいえ |
-| ターゲット データセット | データ ドリフトの分析対象となる、タイムライン列が指定された表形式のデータセット。 | ターゲット データセットは、ベースライン データセットと共通の特徴を備え、かつ、新しいデータが追加される `timeseries` データセットである必要があります。 ターゲット データセット内の履歴データを分析することも、新しいデータを監視することもできます。 | いいえ | 
-| 頻度 | バックフィルを実行する場合にパイプライン ジョブをスケジュールし、履歴データを分析するために使用される頻度。 オプションには、毎日、毎週、毎月があります。 | この設定を調整して、比較可能なデータ サイズをベースラインに含めます。 | いいえ | 
-| 特徴 | 時間の経過に沿ってデータ ドリフトが分析される特徴の一覧。 | 概念ドリフトが測定されるように、モデルで出力される特徴に設定します。 時間の経過と共に自然にドリフトする特徴 (月、年、インデックスなど) は含めないでください。 特徴の一覧を調整したら、既存のデータ ドリフト モニターをバックフィルできます。 | はい | 
-| コンピューティング ターゲット | データセット モニター ジョブを実行する Azure Machine Learning コンピューティング ターゲット。 | | はい | 
-
-### <a name="monitor-settings"></a>モニターの設定
-
-以下は、スケジュールされたデータセット モニター パイプラインを作成する場合の設定です。 
-
-| 設定 | 説明 | ヒント | 変更可能 | 
-| ------- | ----------- | ---- | ------- |
-| 有効化 | データセット モニター パイプラインのスケジュールを有効または無効にします | バックフィル設定を使用して履歴データを分析する場合は、スケジュールを無効にします。 これは、データセット モニターの作成後に有効にできます。 | はい | 
-| Latency | データがデータセットに到達するのにかかる時間 (時間単位)。 たとえば、データが、データセットをカプセル化している SQL DB に到達するのに 3 日かかる場合は、待ち時間を 72 に設定します。 | データセット モニターの作成後に変更することはできません | いいえ | 
-| メール アドレス | データ ドリフトのしきい値違反 (パーセンテージ単位) に基づいてアラートを送信するメール アドレス。 | メールは Azure Monitor 経由で送信されます。 | はい | 
-| Threshold | メール アラートが送信される、データ ドリフトのしきい値 (パーセンテージ単位)。 | さらに、Application Insights リソースに関連付けられているワークスペース内の他のさまざまなメトリックについても、アラートやイベントを設定できます。 | はい | 
-
-### <a name="backfill-settings"></a>バックフィルの設定
-
-ここに挙げた設定は、データ ドリフトの各種メトリックについて過去のデータに対してバックフィルを実行するためのものです。
-
-| 設定 | 説明 | ヒント |
-| ------- | ----------- | ---- |
-| 開始日 | バックフィル ジョブの開始日。 | | 
-| 終了日 | バックフィル ジョブの終了日。 | 終了日は、開始日から 31* を超える頻度の時間単位には設定できません。 既存のデータセット モニターでメトリックをバックフィルすることで、履歴データを分析したり、更新した設定でメトリックを置き換えたりできます。 |
-
-## <a name="create-dataset-monitors"></a>データセット モニターを作成する 
-
-新しいデータセットでデータ ドリフトを検出してアラートを生成できるように、Azure Machine Learning Studio または Python SDK を使用してデータセット モニターを作成します。 
-
-### <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku-inline.md)]
-
-データセット モニターにアラートを設定するには、モニターを作成するデータセットを含むワークスペースに Enterprise Edition の機能が必要です。 
-
-ワークスペースの機能を確認したら、Studio のホームページに移動し、左側の [データセット] タブを選択します。 データセット モニターを選択します。
-
-![モニターの一覧](./media/how-to-monitor-datasets/monitor-list.png)
-
-**[+ モニターの作成]** をクリックし、 **[次へ]** をクリックしてウィザードの手順を続行します。
-
-![ウィザード](./media/how-to-monitor-datasets/wizard.png)
-
-結果のデータセット モニターが一覧に表示されます。 それを選択して、このモニターの詳細ページに移動します。
-
-### <a name="from-python-sdk"></a>Python SDK
+### <a name="python-sdk"></a><a name="sdk-monitor"></a>Python SDK
 
 詳細については、[データ ドリフトに関する Python SDK リファレンス ドキュメント](/python/api/azureml-datadrift/azureml.datadrift)を参照してください。 
 
@@ -229,65 +208,104 @@ monitor = monitor.enable_schedule()
 
 `timeseries` データセットとデータ ドリフト検出機能を設定する完全な例については、[サンプルのノートブック](https://aka.ms/datadrift-notebook)を参照してください。
 
-## <a name="understanding-data-drift-results"></a>データ ドリフトの結果の解釈
+### <a name="azure-machine-learning-studio"></a><a name="studio-monitor"></a> Azure Machine Learning studio
+[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku-inline.md)]
 
-データ モニターでは、次の 2 つのグループの結果が生成されます。ドリフトの概要と特徴の詳細。 次のアニメーションは、選択した特徴とメトリックに基づいて利用可能なドリフト モニターのグラフを示しています。 
+データセット モニターにアラートを設定するには、モニターを作成するデータセットを含むワークスペースに Enterprise Edition の機能が必要です。
 
-![デモ ビデオ](./media/how-to-monitor-datasets/video.gif)
+ワークスペースの機能を確認したら、[Studio のホームページ](https://ml.azure.com)に移動し、左側の **[データセット]** タブを選択します。 **データセット モニター**を選択します。
 
-### <a name="drift-overview"></a>ドリフトの概要
+![モニターの一覧](./media/how-to-monitor-datasets/monitor-list.png)
 
-**[ドリフトの概要]** セクションには、データ ドリフトの大きさに関する概略的な分析情報と、より詳細な調査が必要な特徴が記載されています。 
+**[+ モニターの作成]** をクリックし、 **[次へ]** をクリックしてウィザードの手順を続行します。  
 
-| メトリック | 説明 | ヒント | 
-| ------ | ----------- | ---- | 
-| データ ドリフトの大きさ | 時間の経過と共に生じるベースラインとターゲットのデータセット間のドリフトがパーセンテージとして示されます。 0 から 100 までの範囲で示され、0 はデータセットが同一であることを表し、100 は Azure Machine Learning データ ドリフト機能によって 2 つのデータセットが完全に識別可能であることを表します。 | この大きさを生成するために使用されている機械学習の手法が原因で、測定されたパーセンテージの数値にはノイズの混入が想定されます。 | 
-| 特徴ごとのドリフトへの影響 | ターゲット データセット内の各特徴が、測定されたドリフトの大きさに与える影響。 |  共変量シフトがあるため、基盤となる特徴の分布が特徴として比較的高い重要度になるように変更する必要は必ずしもありません。 | 
+:::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="[モニターの作成] ウィザード":::
 
-次の図は、Azure Machine Learning Studio の **[ドリフトの概要]** の結果に表示されたグラフの例です。これは、[NOAA Integrated Surface Data](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/) のバックフィルに起因するものです。 データは `stationName contains 'FLORIDA'` に対してサンプリングされました。2019 年 1 月をベースライン データセットとして使用し、2019 年の全データをターゲットとして使用しています。
- 
-![ドリフトの概要](./media/how-to-monitor-datasets/drift-overview.png)
+* **ターゲット データセットを選択します**。  ターゲット データセットは、データ ドリフトの分析対象となる、タイムライン列が指定された表形式のデータセットです。 ターゲット データセットは、ベースライン データセットと共通の特徴を備え、かつ、新しいデータが追加される `timeseries` データセットである必要があります。 ターゲット データセット内の履歴データを分析することも、新しいデータを監視することもできます。
+
+* **ベースライン データセットを選択します。**  時間の経過に沿ってターゲット データセットと比較するベースラインとして使用される表形式のデータセットを選択します。  ベースライン データセットには、ターゲット データセットと共通の特徴が含まれている必要があります。  ターゲット データセットのスライスを使用する時間範囲を選択するか、ベースラインとして使用する別のデータセットを指定します。
+
+* **モニターの設定**。  以下は、スケジュールされたデータセット モニター パイプラインを作成する場合の設定です。 
+
+    | 設定 | 説明 | ヒント | 変更可能 | 
+    | ------- | ----------- | ---- | ------- |
+    | 名前 | データセット モニターの名前。 | | いいえ |
+    | 特徴 | 時間の経過に沿ってデータ ドリフトが分析される特徴の一覧。 | 概念ドリフトが測定されるように、モデルで出力される特徴に設定します。 時間の経過と共に自然にドリフトする特徴 (月、年、インデックスなど) は含めないでください。 特徴の一覧を調整したら、既存のデータ ドリフト モニターをバックフィルできます。 | はい | 
+    | コンピューティング ターゲット | データセット モニター ジョブを実行する Azure Machine Learning コンピューティング ターゲット。 | | はい | 
+    | 有効化 | データセット モニター パイプラインのスケジュールを有効または無効にします | バックフィル設定を使用して履歴データを分析する場合は、スケジュールを無効にします。 これは、データセット モニターの作成後に有効にできます。 | はい | 
+    | 頻度 | バックフィルを実行する場合にパイプライン ジョブをスケジュールし、履歴データを分析するために使用される頻度。 オプションには、毎日、毎週、毎月があります。 | 実行ごとに、頻度に従ってターゲット データセットのデータが比較されます。 <li>毎日:ターゲット データセットの直近の丸 1 日をベースラインと比較します <li>毎週:ターゲット データセットの直近の 1 週間 (月曜日から日曜日) をベースラインと比較します <li>毎月:ターゲット データセットの直近の 1 か月間をベースラインと比較します | いいえ | 
+    | Latency | データがデータセットに到達するのにかかる時間 (時間単位)。 たとえば、データが、データセットをカプセル化している SQL DB に到達するのに 3 日かかる場合は、待ち時間を 72 に設定します。 | データセット モニターの作成後に変更することはできません | いいえ | 
+    | メール アドレス | データ ドリフトのしきい値違反 (パーセンテージ単位) に基づいてアラートを送信するメール アドレス。 | メールは Azure Monitor 経由で送信されます。 | はい | 
+    | Threshold | メール アラートが送信される、データ ドリフトのしきい値 (パーセンテージ単位)。 | さらに、Application Insights リソースに関連付けられているワークスペース内の他のさまざまなメトリックについても、アラートやイベントを設定できます。 | はい |
+
+ウィザードを完了すると、結果のデータセット モニターが一覧に表示されます。 それを選択して、このモニターの詳細ページに移動します。
+
+## <a name="understand-data-drift-results"></a>データ ドリフトの結果の概要
+
+このセクションでは、Azure Studio の **[データセット]**  /  **[データセット モニター]** ページに表示されるデータセットの監視結果について説明します。  このページでは、設定を更新するだけでなく、特定の期間の既存のデータを分析することができます。  
+
+データ ドリフトの規模に関する最上位レベルの分析情報と、さらに調査すべき特徴の見所から始めます。
+
+:::image type="content" source="media/how-to-monitor-datasets/drift-overview.png" alt-text="ドリフトの概要":::
+
+
+| メトリック | 説明 | 
+| ------ | ----------- | 
+| データ ドリフトの大きさ | 時間の経過と共に生じるベースラインとターゲットのデータセット間のドリフトのパーセンテージ。 0 から 100 までの範囲で示され、0 はデータセットが同一であることを表し、100 は Azure Machine Learning データ ドリフト モデルによって 2 つのデータセットが完全に識別可能であることを表します。 この大きさを生成するために使用されている機械学習の手法が原因で、測定されたパーセンテージの数値にはノイズの混入が想定されます。 | 
+| ドリフトが発生している主な特徴 | データセット内の機能のうち最も多くドリフトが発生し、ドリフトの規模指標に最も関与しているものを示します。 共変量シフトがあるため、基盤となる特徴の分布が特徴として比較的高い重要度になるように変更する必要は必ずしもありません。 |
+| Threshold | データ ドリフトの規模が設定されたしきい値を超えると、アラートがトリガーされます。 これは、モニターの設定で構成できます。 | 
+
+### <a name="drift-magnitude-trend"></a>ドリフトの規模の傾向
+
+指定した期間内のデータセットとターゲット データセットの違いを確認します。  100% に近いほど、2 つのデータセットの違いは大きくなります。
+
+:::image type="content" source="media/how-to-monitor-datasets/drift-magnitude.png" alt-text="ドリフトの規模の傾向":::
+
+### <a name="drift-magnitude-by-features"></a>特徴ごとのドリフトの規模
+
+このセクションには、選択した特徴の分布の経時的変化に対する特徴レベルの分析情報と、その他の統計情報が含まれています。
+
+ターゲット データセットも時間の経過に沿ってプロファイリングされます。 各特徴のベースライン分布間の統計的な距離は、ターゲット データセットの時間の経過と比較されます。  概念的には、これはデータ ドリフトの規模と似ています。  ただし、この統計的な距離は、すべての特徴ではなく、個々の特徴に対するものです。 最小値、最大値、平均値も取得できます。
+
+Azure Machine Learning Studio で、グラフ内のバーをクリックすると、その日付の特徴レベルの詳細が表示されます。 既定では、同じ特徴について、ベースライン データセットの分布と最近の実行時の分布が表示されます。
+
+:::image type="content" source="media/how-to-monitor-datasets/drift-by-feature.gif" alt-text="特徴ごとのドリフトの規模":::
+
+これらのメトリックは、Python SDK で、`DataDriftDetector` オブジェクトに `get_metrics()` メソッドを実行して取得することもできます。
 
 ### <a name="feature-details"></a>特徴の詳細
 
-**[Feature details]\(特徴の詳細\)** セクションには、選択した特徴の分布の経時的変化に対する特徴レベルの分析情報と、その他の統計情報が含まれています。 
+最後に、下にスクロールして、個々の特徴の詳細を確認します。  グラフの上にあるプルダウンを使用して特徴を選択し、詳細を確認するメトリックを選択します。
 
-ターゲット データセットも時間の経過に沿ってプロファイリングされます。 各特徴のベースラインの分布間の統計的距離が、時間の経過と共にターゲット データセットと比較されます。これは、この統計的距離が個々の特徴を対象としているという点を除いて、データ ドリフトの大きさと概念的に似ています。 最小値、最大値、平均値も取得できます。 
+:::image type="content" source="media/how-to-monitor-datasets/numeric-feature.gif" alt-text="数値の特徴グラフと比較":::
 
-Azure Machine Learning Studio では、グラフ内のデータ ポイントをクリックすると、表示されている特徴の分布がそれに応じて調整されます。 既定では、同じ特徴について、ベースライン データセットの分布と最近の実行時の分布が表示されます。 
+グラフのメトリックは、特徴の種類によって異なります。
 
-これらのメトリックは、Python SDK で、`DataDriftDetector` オブジェクトに `get_metrics()` メソッドを実行して取得することもできます。 
+* 数値の特徴
 
-#### <a name="numeric-features"></a>数値の特徴 
+    | メトリック | 説明 |  
+    | ------ | ----------- |  
+    | ワッサースタイン距離 | ベースライン分布をターゲット分布に変換するための最小限の作業量。 |
+    | 平均値 | 特徴量の平均値。 |
+    | 最小値 | 特徴量の最小値。 |
+    | 最大値 | 特徴量の最大値。 |
 
-数値の特徴は、データセット モニターの実行ごとにプロファイリングされます。 Azure Machine Learning Studio では、次のものが公開されています。 分布の確率密度が表示されます。
+* カテゴリ別の特徴
+    
+    | メトリック | 説明 |  
+    | ------ | ----------- |  
+    | ユークリッド距離     |  カテゴリ列に対して計算されます。 ユークリッド距離は 2 つのベクトルに対して計算され、2 つのデータセットからの同じカテゴリ列の経験的分布から生成されます。 0 は、経験的分布に差がないことを示します。  0 から外れるほど、この列のドリフトは大きくなります。 傾向は、このメトリックの時系列プロットから観察でき、ドリフトが生じている特徴を明らかにするために役立ちます。  |
+    | 一意の値の数 | 特徴の一意の値 (カーディナリティ) の数。 |
 
-| メトリック | 説明 |  
-| ------ | ----------- |  
-| ワッサースタイン距離 | ベースライン分布をターゲット分布に変換するための最小限の作業量。 |
-| 平均値 | 特徴量の平均値。 |
-| 最小値 | 特徴量の最小値。 |
-| 最大値 | 特徴量の最大値。 |
+このグラフで、1 つの日付を選択して、表示された特徴のターゲットとこの日付の間の特徴の分布を比較します。 数値の特徴の場合、これは 2 つの確率分布を示します。  特徴が数値の場合、横棒グラフが表示されます。
 
-![特徴の詳細の数値](./media/how-to-monitor-datasets/feature-details.png)
-
-#### <a name="categorical-features"></a>カテゴリ別の特徴 
-
-数値の特徴は、データセット モニターの実行ごとにプロファイリングされます。 Azure Machine Learning Studio では、次のものが公開されています。 分布のヒストグラムが表示されます。
-
-| メトリック | 説明 |  
-| ------ | ----------- |  
-| ユークリッド距離 | ベースラインとターゲットの分布間の幾何学的距離。 |
-| 一意の値の数 | 特徴の一意の値 (カーディナリティ) の数。 |
-
-
-![特徴の詳細のカテゴリ](./media/how-to-monitor-datasets/feature-details2.png)
+:::image type="content" source="media/how-to-monitor-datasets/select-date-to-compare.gif" alt-text="ターゲットと比較する日付を選択する":::
 
 ## <a name="metrics-alerts-and-events"></a>メトリック、アラート、イベント
 
-メトリックは、Machine Learning ワークスペースに関連付けられている [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) リソースで照会できます。 そこから、カスタム アラート ルールの設定や、アクション (メール、SMS、プッシュ、音声、Azure 関数など) をトリガーするためのアクション グループの設定など、Application Insights のすべての機能にアクセスすることができます。 詳細については、Application Insights の包括的ドキュメントを参照してください。 
+メトリックは、Machine Learning ワークスペースに関連付けられている [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) リソースで照会できます。 カスタム アラート ルールの設定や、アクション (メール、SMS、プッシュ、音声、Azure 関数など) をトリガーするためのアクション グループの設定など、Application Insights のすべての機能にアクセスすることができます。 詳細については、Application Insights の包括的ドキュメントを参照してください。 
 
-最初に、Azure portal に移動し、ワークスペースの **[概要]** ページを選択します。  関連付けられている Application Insights リソースが右端に表示されます。
+最初に、[Azure portal](https://portal.azure.com) に移動し、ワークスペースの **[概要]** ページを選択します。  関連付けられている Application Insights リソースが右端に表示されます。
 
 [![Azure portal の概要](./media/how-to-monitor-datasets/ap-overview.png)](media/how-to-monitor-datasets/ap-overview-expanded.png)
 
@@ -307,25 +325,9 @@ Azure Machine Learning Studio では、グラフ内のデータ ポイントを�
 
 ![新しいアクション グループ](./media/how-to-monitor-datasets/action-group.png)
 
-## <a name="troubleshooting"></a>トラブルシューティング
-
-制限事項と既知の問題:
-
-* バックフィル ジョブの時間の範囲は、モニターの頻度設定である 31 サイクル間隔に制限されます。 
-* 特徴一覧が指定されていない (すべての特徴を使用する) 場合、200 の特徴に制限されます。
-* コンピューティング サイズは、データを処理できる十分な大きさにする必要があります。 
-* 特定のモニターの実行について、開始日と終了日の範囲に該当するデータがデータセットに存在することを確認します。
-* データセット モニターは、50 行以上を含むデータセットでのみ機能します。 
-
-データセット内の列、つまり特徴は、次の表の条件に基づいてカテゴリまたは数値として分類されます。 特徴がこれらの条件を満たしていない場合 (たとえば、string 型の列に一意の値が 100 個以上含まれる場合)、その特徴はデータ ドリフト アルゴリズムから削除されますが、プロファイリングは引き続き行われます。 
-
-| 特徴の種類 | データ型 | 条件 | 制限事項 | 
-| ------------ | --------- | --------- | ----------- |
-| Categorical | string、bool、int、float | 特徴内の一意の値の数は、100 個未満であり、かつ行数の 5% 未満であること。 | null 値は独自のカテゴリとして扱われます。 | 
-| 数値 | int、float | 特徴内の値は数値データ型で、カテゴリの特徴の条件を満たしていません。 | 値の数の 15% を超える null が含まれる場合、その特徴は削除されます。 | 
-
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Machine Learning Studio](https://ml.azure.com) または [Python ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datadrift-tutorial/datadrift-tutorial.ipynb)に移動して、データセット モニターを設定する。
 * [Azure Kubernetes Service にデプロイされたモデル](how-to-monitor-data-drift.md)でデータ ドリフトを設定する方法を確認する。
 * [Event Grid](how-to-use-event-grid.md) を使用してデータセット ドリフト モニターを設定する。 
+* 問題が発生している場合は、[一般的なトラブルシューティングのヒント](resource-known-issues.md#data-drift)に関するページを参照してください。

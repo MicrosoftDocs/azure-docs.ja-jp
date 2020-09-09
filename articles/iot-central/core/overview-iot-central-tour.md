@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: b905b1e86810b25c4c94072d6cd414b993e2a883
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1792f158ac59e2b80a037621be2c2ce2556e1097
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77426196"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799787"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>ツアー: Azure IoT Central の UI
 
@@ -103,7 +103,7 @@ IoT アプリケーション内では、左側のウィンドウを使用して�
 * デバイス テンプレートやデバイスを検索するには、 **[検索]** に値を入力します。
 * UI の言語またはテーマを変更するには、 **[設定]** アイコンを選択します。 詳細については、「[アプリケーションのユーザー設定を管理する](howto-manage-preferences.md)」を参照してください。
 * アプリケーションからサインアウトするには、 **[アカウント]** アイコンを選択します。
-* ヘルプやサポートを利用するには、 **[ヘルプ]** ドロップダウンを選択するとリソースが一覧表示されます。 無料料金プランのアプリケーションでは、サポート リソースに[ライブ チャット](howto-show-hide-chat.md)へのアクセスが含まれています。
+* ヘルプやサポートを利用するには、 **[ヘルプ]** ドロップダウンを選択するとリソースが一覧表示されます。 **[About your app]\(アプリのバージョン情報\)** リンクから[アプリに関する情報を取得する](./howto-get-app-info.md)ことができます。 無料料金プランのアプリケーションでは、サポート リソースに[ライブ チャット](howto-show-hide-chat.md)へのアクセスが含まれています。
 
 UI 用に淡色テーマまたは濃色テーマを選ぶことができます。
 

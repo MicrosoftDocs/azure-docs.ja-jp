@@ -12,12 +12,12 @@ ms.date: 09/05/2019
 ms.author: marsma
 ms.reviewer: shoatman, brianmel, hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 4f1b3fc5b60069cfa47d437e4341ded141204418
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 83a33fa3891e01c484f298f22d67467bc54a7618
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77085337"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551972"
 ---
 # <a name="authorization-agents-android"></a>承認エージェント (Android)
 
@@ -76,7 +76,7 @@ MSAL では、デバイスにインストールされているブラウザーの
 
 次のブラウザーは、構成ファイルで指定されている `"redirect_uri"` に正しくリダイレクトされるかどうかがテスト済みです。
 
-| | 組み込みブラウザー | Chrome | Opera  | Microsoft Edge | UC ブラウザー | Firefox |
+| Device | 組み込みブラウザー | Chrome | Opera  | Microsoft Edge | UC ブラウザー | Firefox |
 | -- |:-------------:| -----:|-----:|-----:|-----:|-----:|
 | Nexus 4 (API 17) | 合格 | 合格 |適用外 |適用外 |適用外 |適用外 |
 | Samsung S7 (API 25) | 合格* | 合格 | 合格 | 合格 | 不合格 |合格 |

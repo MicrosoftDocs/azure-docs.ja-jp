@@ -1,45 +1,41 @@
 ---
-title: 仮想ネットワークを使用してアクセスを制限する
-description: Azure コンテナー レジストリへは、Azure 仮想ネットワーク内のリソースから、またはパブリック IP アドレス範囲からのみアクセスできます。
+title: サービス エンドポイントを使用してアクセスを制限する
+description: Azure 仮想ネットワークのサービス エンドポイントを使用して Azure コンテナー レジストリへのアクセスを制限します。 サービス エンドポイント アクセスは、Premium サービス レベルの機能です。
 ms.topic: article
-ms.date: 07/01/2019
-ms.openlocfilehash: a6b89b074c25ea0948597ede7e5681b100c7f429
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/04/2020
+ms.openlocfilehash: a6a0702019cd11f26ea9fcdba8a74bf3e71df94b
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74454332"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371432"
 ---
-# <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Azure 仮想ネットワークまたはファイアウォール規則を使用して Azure コンテナー レジストリへのアクセスを制限する
+# <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Azure 仮想ネットワークのサービス エンドポイントを使用してコンテナー レジストリへのアクセスを制限する
 
-[Azure Virtual Network](../virtual-network/virtual-networks-overview.md) では、Azure リソースやオンプレミス リソースのセキュアなプライベート ネットワーキングが提供されます。 Azure 仮想ネットワークからプライベート Azure コンテナー レジストリへのアクセスを制限することで、仮想ネットワーク内のリソースのみがレジストリにアクセスするようにすることができます。 クロスプレミスのシナリオでは、特定の IP アドレスからのレジストリ アクセスだけを許可するファイアウォール規則を構成することもできます。
+[Azure Virtual Network](../virtual-network/virtual-networks-overview.md) では、Azure リソースやオンプレミス リソースのセキュアなプライベート ネットワーキングが提供されます。 [サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を使用すると、コンテナー レジストリのパブリック IP アドレスへのアクセスを仮想ネットワークのみに制限することで保護できます。 このエンドポイントでは、Azure バックボーン ネットワーク上のリソースへの最適なルートがトラフィックに提供されます。 仮想ネットワークとサブネットの ID も、各要求と一緒に転送されます。
 
-この記事では、コンテナー レジストリで受信ネットワーク アクセス規則を構成する 2 つのシナリオ (仮想ネットワークにデプロイされている仮想マシンから、または VM のパブリック IP アドレスから) を示します。
+この記事では、仮想ネットワークでコンテナー レジストリのサービス エンドポイント (プレビュー) を構成する方法について説明します。 
 
 > [!IMPORTANT]
-> この機能は現在プレビュー段階であり、一定の[制限事項が適用されます](#preview-limitations)。 プレビュー版は、[追加使用条件][terms-of-use]に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
->
+> Azure Container Registry で [Azure Private Link](container-registry-private-link.md) がサポートされ、仮想ネットワークからプライベート エンドポイントをレジストリにデプロイできるようになりました。 プライベート エンドポイントには、プライベート IP アドレスを使用して仮想ネットワーク内からアクセスできます。 ほとんどのネットワーク シナリオでは、サービス エンドポイントの代わりにプライベート エンドポイントを使用することをお勧めします。
 
-代わりに、ファイアウォールの内側からコンテナー レジストリにアクセスするためのリソースのアクセス規則を設定する必要がある場合は、「[ファイアウォールの内側の Azure コンテナー レジストリにアクセスするための規則を構成する](container-registry-firewall-access-rules.md)」を参照してください。
-
+レジストリ サービス エンドポイントの構成は、**Premium** コンテナー レジストリ サービス レベルで利用できます。 レジストリ サービスのレベルと制限については、「[Azure Container Registry のサービス レベル](container-registry-skus.md)」を参照してください。
 
 ## <a name="preview-limitations"></a>プレビューの制限事項
 
-* ネットワーク アクセス規則で構成できるのは **Premium** コンテナー レジストリだけです。 レジストリ サービス レベルについては、[「Azure Container Registry SKU」](container-registry-skus.md)をご覧ください。 
-
-* 仮想ネットワーク内のコンテナー レジストリにアクセスするためのホストとして使用できるのは、[Azure Kubernetes Service](../aks/intro-kubernetes.md) クラスターまたは Azure [仮想マシン](../virtual-machines/linux/overview.md)だけです。 *Azure Container Instances を含むその他の Azure サービスは現在サポートされていません。*
-
-* [ACR タスク](container-registry-tasks-overview.md)操作は、仮想ネットワークでアクセスされるコンテナー レジストリでは現在サポートされていません。
-
-* 各レジストリでは、最大 100 個の仮想ネットワーク規則がサポートされます。
+* 現在、Azure Container Registry のサービス エンドポイントの今後の開発は計画されていません。 代わりに、[プライベート エンドポイント](container-registry-private-link.md)を使用することをお勧めします。
+* Azure portal を使用してレジストリにサービス エンドポイントを構成することはできません。
+* サービス エンドポイントを使用してコンテナー レジストリにアクセスするためのホストとして使用できるのは、[Azure Kubernetes Service](../aks/intro-kubernetes.md) クラスターまたは Azure [仮想マシン](../virtual-machines/linux/overview.md)だけです。 "*Azure Container Instances を含むその他の Azure サービスはサポートされていません。* "
+* 各レジストリでは、最大 100 個のネットワーク アクセス規則がサポートされます。
+* Azure Container Registry のサービス エンドポイントは、Azure US Government Cloud または Azure China Cloud ではサポートされていません。
 
 ## <a name="prerequisites"></a>前提条件
 
 * この記事の Azure CLI 手順を使用するには、Azure CLI バージョン 2.0.58 以降が必要です。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
 
-* コンテナー レジストリがまだない場合は、1 つ作成し (Premium SKU が必要)、Docker Hub から `hello-world` などのサンプル イメージをプッシュします。 たとえば、[Azure portal][quickstart-portal] または [Azure CLI][quickstart-cli] を使用してレジストリを作成します。 
+* コンテナー レジストリがまだない場合は、1 つ作成し (Premium レベルが必要)、Docker Hub から `hello-world` などのサンプル イメージをプッシュします。 たとえば、[Azure portal][quickstart-portal] または [Azure CLI][quickstart-cli] を使用してレジストリを作成します。 
 
-* 別の Azure サブスクリプションの仮想ネットワークを使用してレジストリ アクセスを制限する場合、そのサブスクリプションで Azure Container Registry のリソース プロバイダーを登録する必要があります。 次に例を示します。
+* 別の Azure サブスクリプションのサービス エンドポイントを使用してレジストリ アクセスを制限する場合、そのサブスクリプションで Azure Container Registry のリソースプロバイダーを登録する必要があります。 次に例を示します。
 
   ```azurecli
   az account set --subscription <Name or ID of subscription of virtual network>
@@ -47,80 +43,9 @@ ms.locfileid: "74454332"
   az provider register --namespace Microsoft.ContainerRegistry
   ``` 
 
-## <a name="about-network-rules-for-a-container-registry"></a>コンテナー レジストリのネットワーク規則について
+[!INCLUDE [Set up Docker-enabled VM](../../includes/container-registry-docker-vm-setup.md)]
 
-既定では、Azure コンテナー レジストリは、任意のネットワーク上のホストからのインターネット経由の接続を受け入れます。 仮想ネットワークを使用すると、AKS クラスターや Azure VM などの Azure リソースのみが、ネットワーク境界を越えずにレジストリに安全にアクセスできます。 特定のパブリック インターネット IP アドレスの範囲だけを許可するように、ネットワーク ファイアウォール規則を構成することもできます。 
-
-レジストリへのアクセスを制限するには、最初にレジストリの既定のアクションを変更して、すべてのネットワーク接続が拒否されるようにします。 次に、ネットワーク アクセス規則を追加します。 ネットワーク規則を介してアクセス権を付与されているクライアントは、引き続き[コンテナー レジストリに対して認証](https://docs.microsoft.com/azure/container-registry/container-registry-authentication)され、データへのアクセスを承認される必要があります。
-
-### <a name="service-endpoint-for-subnets"></a>サブネットのサービス エンドポイント
-
-仮想ネットワーク内のサブネットからのアクセスを許可するには、Azure Container Registry サービスの[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を追加する必要があります。 
-
-Azure Container Registry のようなマルチ テナント サービスでは、すべての顧客に対して 1 セットの IP アドレスを使用します。 サービス エンドポイントでは、レジストリにアクセスするためのエンドポイントが割り当てられます。 このエンドポイントでは、Azure バックボーン ネットワーク上のリソースへの最適なルートがトラフィックに提供されます。 仮想ネットワークとサブネットの ID も、各要求と一緒に転送されます。
-
-### <a name="firewall-rules"></a>ファイアウォール規則
-
-IP ネットワーク規則では、許可するインターネット アドレスの範囲は、*16.17.18.0/24* などの CIDR 表記法または *16.17.18.19* のような個々の IP アドレスを使用して指定します。 IP ネットワーク規則は、*パブリック* インターネット IP アドレスに対してのみ許可されます。 プライベート ネットワーク用に予約されている IP アドレス範囲 (RFC 1918 で定義) は、IP 規則では許可されません。
-
-## <a name="create-a-docker-enabled-virtual-machine"></a>Docker 対応仮想マシンの作成
-
-この記事では、Docker 対応の Ubuntu VM を使用して Azure コンテナー レジストリにアクセスします。 レジストリに Azure Active Directory 認証を使用するには、VM に [Azure CLI][azure-cli] もインストールします。 既に Azure 仮想マシンがある場合は、この作成手順を省略します。
-
-仮想マシンとコンテナー レジストリに同じリソース グループを使用できます。 このセットアップでは最終的にクリーンアップが簡素化されますが、必須ではありません。 仮想マシンと仮想ネットワークに別々のリソース グループを作成することを選択する場合は、[az group create][az-group-create] を実行します。 次の例では、*myResourceGroup* という名前のリソース グループを場所 *westcentralus* に作成します。
-
-```azurecli
-az group create --name myResourceGroup --location westus
-```
-
-ここで、[az vm create][az-vm-create] を使用して、既定の Ubuntu Azure 仮想マシンをデプロイします。 次の例では、*myDockerVM* という名前の VM を作成します。
-
-```azurecli
-az vm create \
-    --resource-group myResourceGroup \
-    --name myDockerVM \
-    --image UbuntuLTS \
-    --admin-username azureuser \
-    --generate-ssh-keys
-```
-
-VM が作成されるまで､数分間かかります｡ コマンドが完了したら、Azure CLI によって表示された `publicIpAddress` をメモします。 このアドレスは、VM への SSH 接続の確立と、オプションで後のファイアウォール規則のセットアップに使用します。
-
-### <a name="install-docker-on-the-vm"></a>VM に Docker をインストールする
-
-VM が実行されたら、VM への SSH 接続を作成します。 *publicIpAddress* を VM のパブリック IP アドレスに置き換えます。
-
-```bash
-ssh azureuser@publicIpAddress
-```
-
-次のコマンドを実行して、Ubuntu VM に Docker をインストールします。
-
-```bash
-sudo apt install docker.io -y
-```
-
-インストールの後、次のコマンドを実行して、VM 上で Docker が正しく実行されていることを確認します。
-
-```bash
-sudo docker run -it hello-world
-```
-
-出力:
-
-```
-Hello from Docker!
-This message shows that your installation appears to be working correctly.
-[...]
-```
-
-### <a name="install-the-azure-cli"></a>Azure CLI のインストール
-
-Ubuntu 仮想マシンに Azure CLI をインストールするには、「[apt での Azure CLI のインストール](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)」の手順に従います。 この記事の場合は、バージョン 2.0.58 以降をインストールするようにしてください。
-
-SSH 接続を終了します。
-
-## <a name="allow-access-from-a-virtual-network"></a>仮想ネットワークからのアクセスの許可
+## <a name="configure-network-access-for-registry"></a>レジストリへのネットワーク アクセスを構成する
 
 このセクションでは、Azure 仮想ネットワーク内のサブネットからのアクセスを許可するようにコンテナー レジストリを構成します。 Azure CLI と Azure portal を使用した同等の手順が提供されます。
 
@@ -131,7 +56,9 @@ SSH 接続を終了します。
 VM を作成するときに、既定では Azure によって仮想ネットワークが同じリソース グループに作成されます。 仮想ネットワークの名前は仮想マシンの名前に基づいています。 たとえば、仮想マシンに *myDockerVM* という名前を付ける場合、既定の仮想ネットワーク名は *myDockerVMVNET* で、サブネット名は *myDockerVMSubnet* です。 これは、Azure portal で、または [az network vnet list][az-network-vnet-list] コマンドを使用して確認します。
 
 ```azurecli
-az network vnet list --resource-group myResourceGroup --query "[].{Name: name, Subnet: subnets[0].name}"
+az network vnet list \
+  --resource-group myResourceGroup \
+  --query "[].{Name: name, Subnet: subnets[0].name}"
 ```
 
 出力:
@@ -185,117 +112,10 @@ az acr update --name myContainerRegistry --default-action Deny
 [az acr network-rule add][az-acr-network-rule-add] コマンドを使用して、VM のサブネットからのアクセスを許可するネットワーク規則をレジストリに追加します。 次のコマンドでは、コンテナー レジストリの名前とサブネットのリソース ID に置き換えます。 
 
  ```azurecli
-az acr network-rule add --name mycontainerregistry --subnet <subnet-resource-id>
+az acr network-rule add \
+  --name mycontainerregistry \
+  --subnet <subnet-resource-id>
 ```
-
-「[レジストリへのアクセスの検証](#verify-access-to-the-registry)」に進みます。
-
-### <a name="allow-access-from-a-virtual-network---portal"></a>仮想ネットワークからのアクセスの許可 - ポータル
-
-#### <a name="add-service-endpoint-to-subnet"></a>サブネットにサービス エンドポイントを追加する
-
-VM を作成するときに、既定では Azure によって仮想ネットワークが同じリソース グループに作成されます。 仮想ネットワークの名前は仮想マシンの名前に基づいています。 たとえば、仮想マシンに *myDockerVM* という名前を付ける場合、既定の仮想ネットワーク名は *myDockerVMVNET* で、サブネット名は *myDockerVMSubnet* です。
-
-Azure Container Registry のサービス エンドポイントをサブネットに追加するには:
-
-1. [Azure portal][azure-portal] の上部にある検索ボックスに、「*仮想ネットワーク*」と入力します。 検索結果に **[仮想ネットワーク]** が表示されたら、それを選択します。
-1. 仮想ネットワークの一覧から、*myDockerVMVNET* など、仮想マシンがデプロイされる仮想ネットワークを選択します。
-1. **[設定]** で、 **[サブネット]** を選択します。
-1. *myDockerVMSubnet* など、仮想マシンがデプロイされるサブネットを選択します。
-1. **[サービス エンドポイント]** で、**Microsoft.ContainerRegistry** を選択します。
-1. **[保存]** を選択します。
-
-![サブネットにサービス エンドポイントを追加する][acr-subnet-service-endpoint] 
-
-#### <a name="configure-network-access-for-registry"></a>レジストリへのネットワーク アクセスを構成する
-
-既定では、Azure コンテナー レジストリは、任意のネットワーク上のホストからの接続を許可します。 仮想ネットワークへのアクセスを制限するには:
-
-1. ポータルで、自分のコンテナー レジストリに移動します。
-1. **[設定]** で、 **[ファイアウォールと仮想ネットワーク]** を選択します。
-1. 既定でアクセスを拒否するには、 **[選択されたネットワーク]** からのアクセスを許可するように選択します。 
-1. **[既存の仮想ネットワークを追加]** を選択し、サービス エンドポイントで構成した仮想ネットワークとサブネットを選択します。 **[追加]** を選択します。
-1. **[保存]** を選択します。
-
-![コンテナー レジストリの仮想ネットワークの構成][acr-vnet-portal]
-
-「[レジストリへのアクセスの検証](#verify-access-to-the-registry)」に進みます。
-
-## <a name="allow-access-from-an-ip-address"></a>IP アドレスからのアクセスの許可
-
-このセクションでは、特定の IP アドレスまたは範囲からのアクセスを許可するようにコンテナー レジストリを構成します。 Azure CLI と Azure portal を使用した同等の手順が提供されます。
-
-### <a name="allow-access-from-an-ip-address---cli"></a>IP アドレスからのアクセスの許可 - CLI
-
-#### <a name="change-default-network-access-to-registry"></a>レジストリへの既定のネットワーク アクセスを変更する
-
-まだ行っていない場合は、既定でアクセスを拒否するようにレジストリ構成を更新します。 次の [az acr update][az-acr-update] コマンドでは、自分のレジストリの名前に置き換えます。
-
-```azurecli
-az acr update --name myContainerRegistry --default-action Deny
-```
-
-#### <a name="remove-network-rule-from-registry"></a>レジストリからネットワーク規則を削除する
-
-以前に、VM のサブネットからのアクセスを許可するネットワーク規則を追加した場合は、サブネットのサービス エンドポイントとネットワーク規則を削除します。 [az acr network-rule remove][az-acr-network-rule-remove] コマンドでは、以前の手順で取得したコンテナー レジストリの名前とサブネットのリソース ID に置き換えます。 
-
-```azurecli
-# Remove service endpoint
-
-az network vnet subnet update \
-  --name myDockerVMSubnet \
-  --vnet-name myDockerVMVNET \
-  --resource-group myResourceGroup \
-  --service-endpoints ""
-
-# Remove network rule
-
-az acr network-rule remove --name mycontainerregistry --subnet <subnet-resource-id>
-```
-
-#### <a name="add-network-rule-to-registry"></a>レジストリにネットワーク規則を追加する
-
-[az acr network-rule add][az-acr-network-rule-add] コマンドを使用して、VM の IP アドレスからのアクセスを許可するネットワーク規則をレジストリに追加します。 次のコマンドでは、コンテナー レジストリの名前と VM のパブリック IP アドレスに置き換えます。
-
-```azurecli
-az acr network-rule add --name mycontainerregistry --ip-address <public-IP-address>
-```
-
-「[レジストリへのアクセスの検証](#verify-access-to-the-registry)」に進みます。
-
-### <a name="allow-access-from-an-ip-address---portal"></a>IP アドレスからのアクセスの許可 - ポータル
-
-#### <a name="remove-existing-network-rule-from-registry"></a>レジストリから既存のネットワーク規則を削除する
-
-以前に、VM のサブネットからのアクセスを許可するネットワーク規則を追加した場合は、既存の規則を削除します。 別の VM からレジストリにアクセスする場合は、このセクションをスキップします。
-
-* Azure Container Registry のサブネットのサービス エンドポイントを削除するようにサブネット設定を更新します。 
-
-  1. [Azure portal][azure-portal] で、仮想マシンがデプロイされている仮想ネットワークに移動します。
-  1. **[設定]** で、 **[サブネット]** を選択します。
-  1. 仮想マシンがデプロイされているサブネットを選択します。
-  1. **[サービス エンドポイント]** で、**Microsoft.ContainerRegistry** のチェックボックスをオフにします。 
-  1. **[保存]** を選択します。
-
-* サブネットにレジストリへのアクセスを許可するネットワーク規則を削除します。
-
-  1. ポータルで、自分のコンテナー レジストリに移動します。
-  1. **[設定]** で、 **[ファイアウォールと仮想ネットワーク]** を選択します。
-  1. **[仮想ネットワーク]** で、仮想ネットワークの名前を選択し、 **[削除]** を選択します。
-  1. **[保存]** を選択します。
-
-#### <a name="add-network-rule-to-registry"></a>レジストリにネットワーク規則を追加する
-
-1. ポータルで、自分のコンテナー レジストリに移動します。
-1. **[設定]** で、 **[ファイアウォールと仮想ネットワーク]** を選択します。
-1. まだ行っていない場合は、 **[選択されたネットワーク]** からのアクセスを許可することを選択します。 
-1. **[仮想ネットワーク]** で、ネットワークが選択されていないことを確認します。
-1. **[ファイアウォール]** で、VM のパブリック IP アドレスを入力します。 または、VM の IP アドレスを含むアドレス範囲を CIDR 表記法で入力します。
-1. **[保存]** を選択します。
-
-![コンテナー レジストリのファイアウォール規則の構成][acr-vnet-firewall-portal]
-
-「[レジストリへのアクセスの検証](#verify-access-to-the-registry)」に進みます。
 
 ## <a name="verify-access-to-the-registry"></a>レジストリへのアクセスの検証
 
@@ -313,7 +133,7 @@ docker pull mycontainerregistry.azurecr.io/hello-world:v1
 
 Docker によってイメージが VM に正常にプルされます。
 
-この例では、ネットワーク アクセス規則を通じてプライベート コンテナー レジストリにアクセスできることを示します。 ただし、ネットワーク アクセス規則が構成されていない別のログイン ホストからレジストリにアクセスすることはできません。 `az acr login` コマンドまたは `docker login` コマンドを使用して別のホストからログインしようとした場合、出力は次のようになります。
+この例では、ネットワーク アクセス規則を通じてプライベート コンテナー レジストリにアクセスできることを示します。 ただし、ネットワーク アクセス規則が構成されていないログイン ホストからレジストリにアクセスすることはできません。 `az acr login` コマンドまたは `docker login` コマンドを使用して別のホストからログインしようとした場合、出力は次のようになります。
 
 ```Console
 Error response from daemon: login attempt to https://xxxxxxx.azurecr.io/v2/ failed with status: 403 Forbidden
@@ -330,7 +150,7 @@ Error response from daemon: login attempt to https://xxxxxxx.azurecr.io/v2/ fail
 レジストリに対して構成されているネットワーク規則の一覧を表示するには、次の [az acr network-rule list][az-acr-network-rule-list] コマンドを実行します。
 
 ```azurecli
-az acr network-rule list--name mycontainerregistry 
+az acr network-rule list --name mycontainerregistry 
 ```
 
 構成されている規則ごとに [az acr network-rule remove][az-acr-network-rule-remove] コマンドを実行して、各規則を削除します。 次に例を示します。
@@ -342,12 +162,6 @@ az acr network-rule remove \
   --name mycontainerregistry \
   --subnet /subscriptions/ \
   xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myDockerVMVNET/subnets/myDockerVMSubnet
-
-# Remove a rule that allows access for an IP address or CIDR range such as 23.45.1.0/24.
-
-az acr network-rule remove \
-  --name mycontainerregistry \
-  --ip-address 23.45.1.0/24
 ```
 
 #### <a name="allow-access"></a>アクセスを許可
@@ -356,15 +170,6 @@ az acr network-rule remove \
 ```azurecli
 az acr update --name myContainerRegistry --default-action Allow
 ```
-
-### <a name="restore-default-registry-access---portal"></a>既定のレジストリ アクセスの復元 - ポータル
-
-
-1. ポータルで、コンテナー レジストリに移動し、 **[ファイアウォールと仮想ネットワーク]** を選択します。
-1. **[仮想ネットワーク]** で、各仮想ネットワークを選択し、 **[削除]** を選択します。
-1. **[ファイアウォール]** で、各アドレス範囲を選択し、[削除] アイコンを選択します。
-1. **[許可するアクセス元]** で **[すべてのネットワーク]** を選択します。 
-1. **[保存]** を選択します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -378,17 +183,14 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、仮想ネットワークのいくつかのリソースと機能について簡潔に説明しました。 これらのトピックについては、Azure Virtual Network のドキュメントで詳しく説明しています。
+* 仮想ネットワーク内のプライベート エンドポイントを使用してレジストリへのアクセスを制限するには、「[Azure コンテナー レジストリ用に Azure Private Link を構成する](container-registry-private-link.md)」を参照してください。
+* クライアント ファイアウォールの内側からレジストリ アクセス規則を設定する必要がある場合は、「[ファイアウォールの内側から Azure コンテナー レジストリにアクセスする規則を構成する](container-registry-firewall-access-rules.md)」を参照してください。
 
-* [Virtual Network](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network)
-* [サブネット](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet)
-* [サービス エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)
 
 <!-- IMAGES -->
 
 [acr-subnet-service-endpoint]: ./media/container-registry-vnet/acr-subnet-service-endpoint.png
-[acr-vnet-portal]: ./media/container-registry-vnet/acr-vnet-portal.png
-[acr-vnet-firewall-portal]: ./media/container-registry-vnet/acr-vnet-firewall-portal.png
+
 
 <!-- LINKS - External -->
 [aci-helloworld]: https://hub.docker.com/r/microsoft/aci-helloworld/

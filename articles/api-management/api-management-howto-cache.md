@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: bf8d8a2c11962467300ae8d65fe5bbbe9a65cf92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a3aa0c26ddb515b8096cce909ca074f6f24a333
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75708357"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250483"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>キャッシュを追加して Azure API Management のパフォーマンスを向上させる
 
@@ -62,15 +62,19 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 
 8. **inbound** 要素で、次のポリシーを追加します。
 
-        <cache-lookup vary-by-developer="false" vary-by-developer-groups="false">
-            <vary-by-header>Accept</vary-by-header>
-            <vary-by-header>Accept-Charset</vary-by-header>
-            <vary-by-header>Authorization</vary-by-header>
-        </cache-lookup>
+   ```
+   <cache-lookup vary-by-developer="false" vary-by-developer-groups="false">
+       <vary-by-header>Accept</vary-by-header>
+       <vary-by-header>Accept-Charset</vary-by-header>
+       <vary-by-header>Authorization</vary-by-header>
+   </cache-lookup>
+   ```
 
 9. **outbound** 要素で、次のポリシーを追加します。
 
-        <cache-store duration="20" />
+   ```
+   <cache-store duration="20" />
+   ```
 
     **[期間]** は、キャッシュに入れられた応答の有効期間を指定します。 この例では、間隔は **20** 秒です。
 
@@ -104,15 +108,15 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 [api-management-console]: ./media/api-management-howto-cache/api-management-console.png
 
 
-[How to add operations to an API]: api-management-howto-add-operations.md
+[How to add operations to an API]: ./mock-api-responses.md
 [How to add and publish a product]: api-management-howto-add-products.md
 [Monitoring and analytics]: api-management-monitoring.md
 [Add APIs to a product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
 [Get started with Azure API Management]: get-started-create-service-instance.md
 
-[API Management policy reference]: https://msdn.microsoft.com/library/azure/dn894081.aspx
-[Caching policies]: https://msdn.microsoft.com/library/azure/dn894086.aspx
+[API Management policy reference]: ./api-management-policies.md
+[Caching policies]: ./api-management-caching-policies.md
 
 [Create an API Management service instance]: get-started-create-service-instance.md
 

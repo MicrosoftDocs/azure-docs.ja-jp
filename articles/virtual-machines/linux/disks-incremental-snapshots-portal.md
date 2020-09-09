@@ -3,16 +3,16 @@ title: 増分スナップショットの作成 - Azure portal
 description: Azure portal を使用した作成方法など、マネージド ディスクの増分スナップショットについて説明します。
 author: roygara
 ms.service: virtual-machines-linux
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 9baf600cd1f0185c80c1ad2d9e860959596cdf98
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: a5b00676210b372cc4d9c1f8138684c255436513
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631974"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84658899"
 ---
 # <a name="creating-an-incremental-snapshot-for-managed-disks-in-the-azure-portal"></a>Azure portal でのマネージド ディスクの増分スナップショットの作成
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-portal](../../../includes/virtual-machines-disks-incremental-snapshots-portal.md)]

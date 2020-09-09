@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 67af4eae03b773fad9cf38964152c1fb9d623bd5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55eb9a0bca3f142c1065f867cebd840cc7958b7e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72025943"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499921"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Azure で IBM zD&T 開発/テスト環境をインストールする
 
@@ -56,13 +56,13 @@ zD&T のすべてのエディションが Windows Server ではなく、x86 Linu
 
 ## <a name="create-the-base-image-and-connect"></a>基本イメージおよび接続を作成する
 
-1. Azure Portal で、必要なオペレーティング システム構成を備えた [VM を作成](/azure/virtual-machines/linux/quick-create-portal)します。 この記事では、Ubuntu 16.04 を実行している B4ms VM (4 つの vCPU と 16 GB のメモリを装備) を前提にしています。
+1. Azure Portal で、必要なオペレーティング システム構成を備えた [VM を作成](../../../linux/quick-create-portal.md)します。 この記事では、Ubuntu 16.04 を実行している B4ms VM (4 つの vCPU と 16 GB のメモリを装備) を前提にしています。
 
 2. VM が作成されたら、SSH の場合は 22、FTP の場合は 21、Web サーバーの場合は 9443 の受信ポートを開きます。
 
 3. **[接続]** ボタンを使用して、VM の **[概要]** ブレードに表示されている SSH 資格情報を取得します。 **[SSH]** タブを選択し、SSH ログオン コマンドをクリップボードにコピーします。
 
-4. ローカル PC から [Bash シェル](/azure/cloud-shell/quickstart)にログオンし、コマンドを貼り付けます。 これは、**ssh\<ユーザー ID\>\@\<IP アドレス\>** という形式になります。 資格情報の入力を求められたら、それを入力してホーム ディレクトリへの接続を確立します。
+4. ローカル PC から [Bash シェル](../../../../cloud-shell/quickstart.md)にログオンし、コマンドを貼り付けます。 これは、**ssh\<user id\>\@\<IP Address\>** という形式になります。 資格情報の入力を求められたら、それを入力してホーム ディレクトリへの接続を確立します。
 
 ## <a name="copy-the-installation-file-to-the-server"></a>インストール ファイルをサーバーにコピーする
 

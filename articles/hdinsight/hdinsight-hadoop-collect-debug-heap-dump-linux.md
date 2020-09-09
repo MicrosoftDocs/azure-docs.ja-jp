@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 9134eb6922b0ed37bbe6051b138da2c7c082b175
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1ef52d74f7ae6e7e0d8c58e3b1972a0a1227c6b5
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75658799"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962205"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Linux ベースの HDInsight で Apache Hadoop サービスのヒープ ダンプを有効にする
 
@@ -51,7 +51,7 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 
 次のオプションは、OutOfMemoryError が発生したときに、ヒープ ダンプを有効にします。
 
-    -XX:+HeapDumpOnOutOfMemoryError
+`-XX:+HeapDumpOnOutOfMemoryError`
 
 **+** は、このオプションが有効になっていることを示します。 既定では無効になっています。
 
@@ -62,7 +62,7 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 
 ダンプ ファイルの既定の場所は、現在の作業ディレクトリです。 次のオプションを使用して、ファイルの保存先を制御できます。
 
-    -XX:HeapDumpPath=/path
+`-XX:HeapDumpPath=/path`
 
 たとえば、`-XX:HeapDumpPath=/tmp` を使用すると、ダンプは /tmp ディレクトリに保存されます。
 
@@ -70,7 +70,7 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 
 **OutOfMemoryError** が発生したときに、スクリプトをトリガーすることもできます。 たとえば、通知をトリガーすると、エラーが発生したことがわかります。 __OutOfMemoryError__ に対してスクリプトをトリガーするには、次のオプションを使用します。
 
-    -XX:OnOutOfMemoryError=/path/to/script
+`-XX:OnOutOfMemoryError=/path/to/script`
 
 > [!NOTE]  
 > Apache Hadoop は分散システムなので、使用するスクリプトは、サービスを実行しているクラスター内のすべてのノードに配置する必要があります。

@@ -1,6 +1,6 @@
 ---
 title: Azure Automation で変数を管理する
-description: 変数アセットとは、Azure Automation のすべての Runbook と DSC 構成に使用できる値です。  この記事では、変数の詳細およびテキスト作成とグラフィカル作成の両方で変数を使用する方法について説明します。
+description: この記事では、Runbook および DSC 構成内の変数を操作する方法について説明します。
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bf7840daad02f679cad4c3b798d2add02c863a15
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: ee49ae905622b4b76d782f6a31e0c2333b6d54be
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82651964"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055294"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Azure Automation で変数を管理する
 
@@ -30,13 +30,10 @@ Automation 変数は、次のシナリオで役立ちます。
 
 Azure Automation では、変数が保存されるので、Runbook または DSC 構成が失敗した場合でも使用できます。 この動作により、ある Runbook または DSC 構成で設定した値を、別の Runbook で使用したり、次の実行時に同じ Runbook または DSC 構成で使用したりすることができます。
 
-Azure Automation では、暗号化された各変数を安全に保存します。 変数の作成時に、Azure Automation を使用して、セキュリティで保護された資産となるようにその変数の暗号化とストレージを指定できます。 
+Azure Automation では、暗号化された各変数を安全に保存します。 変数の作成時に、Azure Automation を使用して、セキュリティで保護された資産となるようにその変数の暗号化とストレージを指定できます。 変数を作成した後は、変数を再作成せずにその暗号化の状態を変更することはできません。 Azure Security Center の推奨事項は、「[Automation アカウント変数は、暗号化する必要がある](../../security-center/recommendations-reference.md#recs-computeapp)」で説明されているように、すべての Azure Automation 変数を暗号化することです。 
 
 >[!NOTE]
->Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。 これらの資産は、各 Automation アカウント用に生成された一意のキーを使って暗号化され、Azure Automation に保存されます。 Azure Automation では、キーはシステムによって管理されるキー コンテナーに格納されます。 セキュリティで保護された資産を保存する前に、Automation ではキー コンテナーからキーを読み込み、それを使用して資産を暗号化します。 
-
->[!NOTE]
->この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation の Azure PowerShell モジュールを更新する方法](../automation-update-azure-modules.md)」に従って、モジュールを最新バージョンに更新できます。
+>Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。 これらの資産は、各 Automation アカウント用に生成された一意のキーを使って暗号化され、Azure Automation に保存されます。 Azure Automation では、キーはシステムによって管理される Key Vault に格納されます。 セキュリティで保護された資産を保存する前に、Automation によって Key Vault からキーが読み込まれ、それを使用して資産が暗号化されます。 
 
 ## <a name="variable-types"></a>変数の型
 
@@ -48,14 +45,14 @@ Azure portal を使用して変数を作成する場合、変数値を入力す�
 * Boolean
 * [Null]
 
-変数は、指定されているデータ型に限定されません。 別の型の値を指定する場合は、Windows PowerShell を使用して変数を設定する必要があります。 `Not defined` を指定した場合、変数の値は Null に設定されます。 [Set-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0) コマンドレットまたは内部 `Set-AutomationVariable` コマンドレットを使用して値を設定する必要があります。
+変数は、指定されているデータ型に限定されません。 別の型の値を指定する場合は、Windows PowerShell を使用して変数を設定する必要があります。 `Not defined` を指定した場合、変数の値は Null に設定されます。 [Set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0) コマンドレットまたは内部 `Set-AutomationVariable` コマンドレットを使用して値を設定する必要があります。
 
 Azure portal を使用して、複合型の変数の値を作成したり変更したりすることはできません。 ただし、Windows PowerShell を使用すると、任意の型の値を指定できます。 複合型は [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject) として取得されます。
 
 配列またはハッシュ テーブルを作成し、それを変数に保存することによって、複数の値を 1 つの変数に格納することができます。
 
 >[!NOTE]
->VM 名の変数に使用できる文字数は最大 80 文字です。 リソース グループの変数には最大 90 文字まで使用できます。 「[Azure リソースの名前付け規則と制限事項](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)」を参照してください。
+>VM 名の変数に使用できる文字数は最大 80 文字です。 リソース グループの変数には最大 90 文字まで使用できます。 「[Azure リソースの名前付け規則と制限事項](../../azure-resource-manager/management/resource-name-rules.md)」を参照してください。
 
 ## <a name="powershell-cmdlets-to-access-variables"></a>変数にアクセスするための PowerShell コマンドレット
 
@@ -63,10 +60,10 @@ PowerShell を使用して Automation 変数を作成および管理するため
 
 | コマンドレット | 説明 |
 |:---|:---|
-|[Get-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationvariable?view=azps-3.5.0) | 既存の変数の値を取得します。 値が単純型である場合、その同じ型が取得されます。 それが複合型の場合は、`PSCustomObject` 型が取得されます。 <br>**注:** 暗号化された変数の値を取得するために、このコマンドレットを使用することはできません。 それを行う唯一の方法は、Runbook または DSC 構成で内部 `Get-AutomationVariable` コマンドレットを使用することです。 「[変数にアクセスするための内部コマンドレット](#internal-cmdlets-to-access-variables)」を参照してください。 |
-|[New-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationvariable?view=azps-3.5.0) | 新しい変数を作成し、その値を設定します。|
-|[Remove-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationvariable?view=azps-3.5.0)| 既存の変数を削除します。|
-|[Set-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0)| 既存の変数の値を設定します。 |
+|[Get-AzAutomationVariable](/powershell/module/az.automation/get-azautomationvariable?view=azps-3.5.0) | 既存の変数の値を取得します。 値が単純型である場合、その同じ型が取得されます。 それが複合型の場合は、`PSCustomObject` 型が取得されます。 <br>**注:** 暗号化された変数の値を取得するために、このコマンドレットを使用することはできません。 それを行う唯一の方法は、Runbook または DSC 構成で内部 `Get-AutomationVariable` コマンドレットを使用することです。 「[変数にアクセスするための内部コマンドレット](#internal-cmdlets-to-access-variables)」を参照してください。 |
+|[New-AzAutomationVariable](/powershell/module/az.automation/new-azautomationvariable?view=azps-3.5.0) | 新しい変数を作成し、その値を設定します。|
+|[Remove-AzAutomationVariable](/powershell/module/az.automation/remove-azautomationvariable?view=azps-3.5.0)| 既存の変数を削除します。|
+|[Set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0)| 既存の変数の値を設定します。 |
 
 ## <a name="internal-cmdlets-to-access-variables"></a>変数にアクセスするための内部コマンドレット
 
@@ -130,7 +127,7 @@ $string = (Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
 –AutomationAccountName "MyAutomationAccount" –Name 'MyStringVariable').Value
 ```
 
-次の例は、複合型の変数を作成してから、そのプロパティを取得する方法を示しています。 ここでは、[Get-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Get-AzVM?view=azps-3.5.0) の仮想マシン オブジェクトが使用されます。
+次の例は、複合型の変数を作成してから、そのプロパティを取得する方法を示しています。 ここでは、[Get-AzVM](/powershell/module/Az.Compute/Get-AzVM?view=azps-3.5.0) の仮想マシン オブジェクトが使用されます。
 
 ```powershell
 $vm = Get-AzVM -ResourceGroupName "ResourceGroup01" –Name "VM01"
@@ -191,7 +188,7 @@ except AutomationAssetNotFound:
 
 ![キャンバスへの変数の追加](../media/variables/runbook-variable-add-canvas.png)
 
-次の図は、グラフィカルな Runbook で変数を単純な値で更新するサンプル アクティビティを示しています。 この例では、`Get-AzVM` のアクティビティによって 1 つの Azure 仮想マシンが取得され、そのコンピューター名が既存の Automation の文字列型の変数に保存されます。 このコードでは出力に 1 つのオブジェクトのみが含まれると予期されるため、[リンクがパイプラインとシーケンス](../automation-graphical-authoring-intro.md#links-and-workflow)のいずれであっても関係ありません。
+次の図は、グラフィカルな Runbook で変数を単純な値で更新するサンプル アクティビティを示しています。 この例では、`Get-AzVM` のアクティビティによって 1 つの Azure 仮想マシンが取得され、そのコンピューター名が既存の Automation の文字列型の変数に保存されます。 このコードでは出力に 1 つのオブジェクトのみが含まれると予期されるため、[リンクがパイプラインとシーケンス](../automation-graphical-authoring-intro.md#use-links-for-workflow)のいずれであっても関係ありません。
 
 ![単純変数の設定](../media/variables/runbook-set-simple-variable.png)
 
@@ -199,4 +196,4 @@ except AutomationAssetNotFound:
 
 * 変数にアクセスするためのコマンドレットの詳細については、「[Azure Automation でモジュールを管理する](modules.md)」を参照してください。
 * Runbook の一般的な情報については、「[Azure Automation での Runbook の実行](../automation-runbook-execution.md)」を参照してください。
-* DSC 構成の詳細については、「[State Configuration の概要](../automation-dsc-overview.md)」を参照してください。
+* DSC 構成の詳細については、「[Azure Automation State Configuration の概要](../automation-dsc-overview.md)」を参照してください。

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: c213b0089af0af295d44afd38bbc5c17b6db159d
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: a0f081e0f8df00bbc99d2163fb54a2f15d92a159
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535232"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006434"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight でエンドツーエンドのデータ パイプラインを作成して売上の分析情報を導き出す
 
@@ -33,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * [Azure の組み込みロールである所有者](../role-based-access-control/built-in-roles.md)のメンバー。
 
-* PowerShell を使用して Data Factory パイプラインをトリガーしている場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/overview)が必要になります。
+* PowerShell を使用して Data Factory パイプラインをトリガーしている場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/)が必要になります。
 
 * [Power BI Desktop](https://aka.ms/pbiSingleInstaller)。このチュートリアルの最後に、ビジネスの分析情報を視覚化する目的で使用します。
 

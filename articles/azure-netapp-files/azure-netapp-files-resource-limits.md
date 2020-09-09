@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/03/2020
+ms.date: 08/21/2020
 ms.author: b-juche
-ms.openlocfilehash: ac660b20d519e49e832e979603f763fa672757a5
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 9facbc1629b8e1330c6bbafb4444d5bfc237d16f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637402"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752295"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files のリソース制限
 
@@ -33,6 +33,7 @@ Azure NetApp Files のリソース制限を理解すると、ボリュームの�
 |----------------|---------------------|--------------------------------------|
 |  Azure リージョンあたりの NetApp アカウントの数   |  10    |  はい   |
 |  NetApp アカウントあたりの容量プールの数   |    25     |   はい   |
+|  サブスクリプションあたりのボリュームの数   |    500     |   はい   |
 |  容量プールあたりのボリュームの数     |    500   |    はい     |
 |  ボリュームあたりのスナップショット数       |    255     |    いいえ        |
 |  Azure Virtual Network あたりの Azure NetApp Files (Microsoft.NetApp/volumes) に委任されたサブネットの数    |   1   |    いいえ    |
@@ -42,7 +43,7 @@ Azure NetApp Files のリソース制限を理解すると、ボリュームの�
 |  単一のボリュームの最小サイズ    |    100 GiB    |    いいえ    |
 |  単一のボリュームの最大サイズ     |    100 TiB    |    いいえ    |
 |  1 つのファイルの最大サイズ     |    16 TiB    |    いいえ    |    
-|  1 つのディレクトリの最大サイズ      |    320 MB    |    いいえ    |    
+|  1 つのディレクトリ内のディレクトリ メタデータの最大サイズ      |    320 MB    |    いいえ    |    
 |  ボリュームあたりのファイルの最大数 ([maxfiles](#maxfiles))     |    1 億    |    はい    |    
 
 詳細については、「[容量管理に関する FAQ](azure-netapp-files-faqs.md#capacity-management-faqs)」を参照してください。
@@ -61,7 +62,7 @@ Azure NetApp Files ボリュームには、*maxfiles* という制限があり�
 |    3 TiB 以上、4 TiB 未満    |    8,000 万     |
 |    4 TiB 以上                |    1 億    |
 
-任意のボリューム サイズに対し、[サポート リクエスト](#limit_increase)を開始し、1 億より大きい値に maxfiles 制限を増やすことができます。
+ボリュームに対して 4 TiB 以上のクォータを既に割り当てている場合は、[サポート リクエスト](#limit_increase)を開始して、maxfiles の制限を 1 億より大きい値に増やすことができます。
 
 ## <a name="request-limit-increase"></a>上限の引き上げを要求する<a name="limit_increase"></a> 
 

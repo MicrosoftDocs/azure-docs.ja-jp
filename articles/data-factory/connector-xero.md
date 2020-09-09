@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 08/03/2020
 ms.author: jingwang
-ms.openlocfilehash: 8a704c3891c687edbb7c5aac206f4b6c7766fa8c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 14b3857211eca39ebe09a3a0752ca1d8eee17bc0
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81409983"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529995"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>Azure Data Factory を使用して Xero からデータをコピーする
 
@@ -35,8 +35,9 @@ Xero から、サポートされている任意のシンク データ ストア�
 
 具体的には、この Xero コネクタは以下をサポートします。
 
-- Xero [プライベート アプリケーション](https://developer.xero.com/documentation/getting-started/api-application-types) (パブリック アプリケーションは非サポート)。
-- "Reports" を除くすべて Xero テーブル (API エンドポイント)。 
+- Xero [プライベート アプリケーション](https://developer.xero.com/documentation/getting-started/getting-started-guide) (パブリック アプリケーションは非サポート)。
+- "Reports" を除くすべて Xero テーブル (API エンドポイント)。
+- OAuth 1.0 および OAuth 2.0 認証。
 
 Azure Data Factory では接続を有効にする組み込みのドライバーが提供されるので、このコネクタを使用してドライバーを手動でインストールする必要はありません。
 
@@ -53,14 +54,19 @@ Xero のリンクされたサービスでは、次のプロパティがサポー
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**Xero** | はい |
+| connectionProperties | Xero への接続方法を定義するプロパティ グループ。 | はい |
+| ***`connectionProperties` の下:*** | | |
 | host | Xero サーバーのエンドポイント (`api.xero.com`)。  | はい |
+| authenticationType | 使用できる値は `OAuth_2.0` と `OAuth_1.0` です。 | はい |
 | consumerKey | Xero アプリケーションに関連付けられているコンシューマー キー。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
-| privateKey | Xero プライベート アプリケーション用に生成された .pem ファイルの秘密キー (「[Create a public/private key pair (公開/秘密キー ペアの作成)](https://developer.xero.com/documentation/api-guides/create-publicprivate-key)」を参照してください)。 `openssl genrsa -out privatekey.pem 512` を使用し、numbits に 512 を指定して、**privatekey.pem を生成します。** 1024 はサポートされていません。 Unix の改行文字 (\n) も含め、.pem ファイルのすべてのテキストを含めます (以下のサンプルを参照してください)。<br/><br/>このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| privateKey | Xero プライベート アプリケーション用に生成された .pem ファイルの秘密キー (「[Create a public/private key pair (公開/秘密キー ペアの作成)](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key)」を参照してください)。 `openssl genrsa -out privatekey.pem 512` を使用し、numbits に 512 を指定して、**privatekey.pem を生成します。** 1024 はサポートされていません。 Unix の改行文字 (\n) も含め、.pem ファイルのすべてのテキストを含めます (以下のサンプルを参照してください)。<br/>このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| tenantId | Xero アプリケーションに関連付けられているテナント ID。 OAuth 2.0 認証に適用されます。<br>[アクセスを許可されているテナントの確認](https://developer.xero.com/documentation/oauth2/auth-flow)セクションで、テナント ID の取得方法を確認してください。 | OAuth 2.0 認証の場合、はい |
+| refreshToken | Xero アプリケーションに関連付けられている OAuth 2.0 更新トークン。アクセス トークンの有効期限が切れるときに、アクセス トークンを更新するために使用されます。 OAuth 2.0 認証に適用されます。 更新トークンの取得方法については、[こちらの記事](https://developer.xero.com/documentation/oauth2/auth-flow)を参照してください。<br>更新トークンは期限切れになりません。 更新トークンを取得するには、[offline_access スコープ](https://developer.xero.com/documentation/oauth2/scopes)を要求する必要があります。<br/>このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | OAuth 2.0 認証の場合、はい |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は、true です。  | いいえ |
 | useHostVerification | TLS 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は、true です。  | いいえ |
 | usePeerVerification | TLS 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は、true です。  | いいえ |
 
-**例:**
+**例:OAuth 2.0 認証**
 
 ```json
 {
@@ -68,15 +74,54 @@ Xero のリンクされたサービスでは、次のプロパティがサポー
     "properties": {
         "type": "Xero",
         "typeProperties": {
-            "host" : "api.xero.com",
-            "consumerKey": {
-                 "type": "SecureString",
-                 "value": "<consumerKey>"
-            },
-            "privateKey": {
-                 "type": "SecureString",
-                 "value": "<privateKey>"
-            }
+            "connectionProperties": { 
+                "host": "api.xero.com",
+                "authenticationType":"OAuth_2.0", 
+                "consumerKey": {
+                    "type": "SecureString",
+                    "value": "<consumer key>"
+                },
+                "privateKey": {
+                    "type": "SecureString",
+                    "value": "<private key>"
+                },
+                "tenantId": "<tenant ID>", 
+                "refreshToken": {
+                    "type": "SecureString",
+                    "value": "<refresh token>"
+                }, 
+                "useEncryptedEndpoints": true, 
+                "useHostVerification": true, 
+                "usePeerVerification": true
+            }            
+        }
+    }
+}
+```
+
+**例:OAuth 1.0 認証**
+
+```json
+{
+    "name": "XeroLinkedService",
+    "properties": {
+        "type": "Xero",
+        "typeProperties": {
+            "connectionProperties": {
+                "host": "api.xero.com", 
+                "authenticationType":"OAuth_1.0", 
+                "consumerKey": {
+                    "type": "SecureString",
+                    "value": "<consumer key>"
+                },
+                "privateKey": {
+                    "type": "SecureString",
+                    "value": "<private key>"
+                }, 
+                "useEncryptedEndpoints": true,
+                "useHostVerification": true,
+                "usePeerVerification": true
+            }
         }
     }
 }

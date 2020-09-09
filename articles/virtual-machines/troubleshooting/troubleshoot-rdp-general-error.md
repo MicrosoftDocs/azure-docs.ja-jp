@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 7fc0fbf3362d18284ad6a80afa6396b6be1270a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2a1a5f3eaf79a345b0d33f43d260fe6aa15236b
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71057996"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439254"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>Azure VM での RDP 一般エラーのトラブルシューティング
 
@@ -60,13 +60,13 @@ RDP リスナーの構成が正しくありません。
 
 ## <a name="solution"></a>解決策
 
-この問題を解決するには、[オペレーティング システム ディスクをバックアップ](../windows/snapshot-copy-managed-disk.md)し、[オペレーティング システム ディスクを復旧 VM に接続](troubleshoot-recovery-disks-portal-windows.md)し、以下の手順に従います。
+これらの手順を実行する前に、バックアップとして、影響を受ける VM の OS ディスクのスナップショットを取得します。 この問題を解決するにはシリアル コントロールを使用するか、VM をオフラインで修復します。
 
 ### <a name="serial-console"></a>シリアル コンソール
 
 #### <a name="step-1-open-cmd-instance-in-serial-console"></a>手順 1:Serial console で CMD インスタンスを開く
 
-1. **[サポートとトラブルシューティング]** > **[Serial console (Preview)]\(シリアル コンソール (プレビュー))** を選択して [[シリアル コンソール]](serial-console-windows.md) にアクセスします。 VM で機能が有効な場合、VM を正常に接続できます。
+1. **[サポートとトラブルシューティング]**  >  **[Serial console (Preview)]\(シリアル コンソール (プレビュー))** を選択して [[シリアル コンソール]](serial-console-windows.md) にアクセスします。 VM で機能が有効な場合、VM を正常に接続できます。
 
 2. CMD インスタンス用の新しいチャネルを作成します。 **CMD** と入力してチャネルを開始し、チャネル名を取得します。
 
@@ -78,29 +78,37 @@ RDP リスナーの構成が正しくありません。
 
 #### <a name="step-2-check-the-values-of-rdp-registry-keys"></a>手順 2:RDP レジストリ キーの値を確認する
 
-1. ポリシーによって RDP が無効になっていることを確認します。
+1. グループ ポリシーによって RDP が無効になっていることを確認します。
 
-      ```
-      REM Get the local policy 
-      reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server " /v fDenyTSConnections
+    ```
+    REM Get the group policy setting
+    reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections
+    ```
+    RDP が無効であることがグループ ポリシーによって示されている場合 (fDenyTSConnections 値が 0x1)、次のコマンドを実行して TermService サービスを有効にします。 レジストリ キーが見つからない場合、RDP を無効にするよう構成されているグループ ポリシーはありません。 次の手順に進むことができます。
 
-      REM Get the domain policy if any
-      reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections
-      ```
+    ```
+    REM update the fDenyTSConnections value to enable TermService service
+    reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+    ```
+    > [!NOTE]
+    > この手順では、TermService サービスを一時的に有効にします。 この変更は、グループ ポリシー設定が更新されるときにリセットされます。 この問題を解決するには、TermService サービスがローカル グループ ポリシーまたはドメイン グループ ポリシーによって無効にされているかどうかを確認し、それに応じてポリシー設定を更新する必要があります。
+    
+2. 現在のリモート接続の構成を確認します。
+    ```
+    REM Get the local remote connection setting
+    reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections
+    ```
+    このコマンドによって 0x1 が返される場合、VM ではリモート接続が許可されていません。 その場合、次のコマンドを使用してリモート接続を許可します。
+     ```
+     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+     ```
+    
+1. ターミナル サーバーの現在の構成を確認します。
 
-      - ドメイン ポリシーが存在する場合、ローカル ポリシー上の設定は上書きされます。
-      - ドメイン ポリシーによって RDP が無効 (1) と定められている場合、ドメイン コントローラーから AD ポリシーを更新します。
-      - ドメイン ポリシーによって RDP が有効 (0) と定められている場合、更新は必要ありません。
-      - ドメイン ポリシーが存在せず、ローカル ポリシーによって RDP が無効 (1) と定められている場合、次のコマンドを使用して RDP を有効にします。 
-      
-            reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
-                  
-
-2. ターミナル サーバーの現在の構成を確認します。
-
-      ```
-      reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSEnabled
-      ```
+    ```
+    REM Get the local remote connection setting
+    reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSEnabled
+    ```
 
       このコマンドで 0 が返される場合、ターミナル サーバーが無効です。 そのときは、次のようにターミナル サーバーを有効にします。
 
@@ -175,7 +183,7 @@ RDP リスナーの構成が正しくありません。
 
 #### <a name="step-1-turn-on-remote-desktop"></a>手順 1:リモート デスクトップをオンにする
 
-1. [復旧 VM に OS ディスクを接続します](../windows/troubleshoot-recovery-disks-portal.md)。
+1. [復旧 VM に OS ディスクを接続します](./troubleshoot-recovery-disks-portal-windows.md)。
 2. 復旧 VM へのリモート デスクトップ接続を開始します。
 3. ディスクが [ディスクの管理] コンソールで **[オンライン]** になっていることを確認します。 接続された OS ディスクに割り当てられたドライブ文字をメモします。
 4. 復旧 VM へのリモート デスクトップ接続を開始します。

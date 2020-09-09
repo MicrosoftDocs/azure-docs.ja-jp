@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 084083a704a007e6675234883c62350d1d9a0849
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
+ms.openlocfilehash: 0fc31fd397f8206f7c6f0509dd03495631dde609
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536150"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165636"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>クイック スタート:Microsoft ID プラットフォームによって保護されている ASP.NET Web API を呼び出す
 
@@ -30,7 +30,7 @@ ms.locfileid: "81536150"
 
 * Visual Studio 2017 または 2019。  [Visual Studio を無料で](https://www.visualstudio.com/downloads/)ダウンロードします。
 
-* [Microsoft アカウント](https://www.outlook.com)または [Office 365 Developer Program](/office/developer-program/office-365-developer-program)
+* [Microsoft アカウント](https://www.outlook.com)または [Microsoft 365 Developer Program](/office/developer-program/office-365-developer-program)
 
 ## <a name="download-or-clone-this-sample"></a>このサンプルをダウンロードまたは複製する
 
@@ -82,13 +82,14 @@ ms.locfileid: "81536150"
 
 ### <a name="add-the-new-scope-to-the-todolistclients-appconfig"></a>*TodoListClient* の app.config に新しいスコープを追加する
 
-1. **TodoListClient** プロジェクトのルート フォルダーにある **app.config** ファイルを開き、`TodoListServiceScope` パラメーターで *TodoListService* に登録したアプリケーションの**アプリケーション ID** を貼り付けて、文字列 `{Enter the Application ID of your TodoListService from the app registration portal}` を置き換えます。
+* **TodoListClient** プロジェクトのルート フォルダーにある **app.config** ファイルを開き、`TodoListServiceScope` パラメーターで *TodoListService* に登録したアプリケーションの**アプリケーション ID** を貼り付けて、文字列 `{Enter the Application ID of your TodoListService from the app registration portal}` を置き換えます。
 
-   > 注:次の形式が使用されていることを確認します。
-   >
-   > `api://{TodoListService-Application-ID}/access_as_user`
-   >
-   >({TodoListService-Application-ID} は、TodoListService のアプリケーション ID を表す GUID です)。
+  > [!NOTE]
+  > 次の形式が使用されていることを確認します。
+  >
+  > `api://{TodoListService-Application-ID}/access_as_user`
+  >
+  >({TodoListService-Application-ID} は、TodoListService のアプリケーション ID を表す GUID です)。
 
 ## <a name="register-the-client-app-todolistclient"></a>クライアント アプリを登録する (TodoListClient)
 
@@ -102,15 +103,28 @@ ms.locfileid: "81536150"
    - **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: `NativeClient-DotNet-TodoListClient`)。
    - **[サポートされているアカウントの種類]** を **[任意の組織のディレクトリ内のアカウント]** に変更します。
    - **[登録]** を選択して、アプリケーションを作成します。
+   
+   > [!NOTE]
+   > *TodoListClient* プロジェクトの **app.config** で、`ida:Tenant` の既定値は `common` に設定されています。
+   >
+   > `common` は、職場または学校アカウントを使用するか、Microsoft の個人用アカウントを使用してサインインできることを意味します ( **[任意の組織のディレクトリ内のアカウント]** を選択したため)。
+   >
+   > `organizations` は、職場または学校アカウントを使用してサインインできることを意味します。
+   >
+   > `consumers` は、Microsoft の個人用アカウントを使用してのみサインインできることを意味します。
+   >
+   
 1. アプリの [概要] ページで、 **[認証]** セクションを選択します。
-   - **[リダイレクト URI]**  |  **[パブリック クライアント (モバイル、デスクトップ) に推奨されるリダイレクト URI]** セクションで、 **https://login.microsoftonline.com/common/oauth2/nativeclient** を確認します。
-   - **[保存]** を選択します。
+   1. **[プラットフォーム構成]** で **[プラットフォームを追加]** ボタンを選択します。
+   1. **[モバイル アプリケーションとデスクトップ アプリケーション]** で、 **[モバイル アプリケーションとデスクトップ アプリケーション]** を選択します。
+   1. **[リダイレクト URI]** で、 **https://login.microsoftonline.com/common/oauth2/nativeclient** のチェック ボックスをオンにします。
+   1. **[構成]** をクリックします。   
 1. **[API のアクセス許可]** セクションを選択します
-   - **[アクセス許可の追加]** をクリックします。さらに、
-   - **[自分の API]** タブを選択します。
-   - API の一覧で、`AppModelv2-NativeClient-DotNet-TodoListService API` または Web API に入力した名前を選択します。
-   - まだチェックしていない場合は、**access_as_user** アクセス許可をチェックします。 必要に応じて検索ボックスを使用します。
-   - **[アクセス許可の追加]** ボタンを選択します
+   1. **[アクセス許可の追加]** ボタンを選択します。
+   1. **[自分の API]** タブを選択します。
+   1. API の一覧で、`AppModelv2-NativeClient-DotNet-TodoListService API` または Web API に入力した名前を選択します。
+   1. まだチェックしていない場合は、**access_as_user** アクセス許可をチェックします。 必要に応じて検索ボックスを使用します。
+   1. **[アクセス許可の追加]** ボタンを選択します
 
 ### <a name="configure-your-todolistclient-project"></a>*TodoListClient* プロジェクトを構成する
 

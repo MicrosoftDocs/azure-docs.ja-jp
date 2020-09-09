@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
-ms.openlocfilehash: 13c640d25265b2663520ef7ab203b0b0a33829e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 867124a08bbad88b7dac5386ee6bc1c9c4d99c12
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68301699"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549925"
 ---
 # <a name="create-a-group-for-assessment"></a>評価用のグループを作成する
 
@@ -43,11 +43,11 @@ ms.locfileid: "68301699"
 
 2. **[グループ]** アイコンをクリックします。
 3. **[グループの作成]** でグループ名を指定し、 **[アプライアンス名]** でマシンの検出に使用している Azure Migrate アプライアンスを選択します。
-1. マシン一覧から、グループに追加するマシン > **[作成]** の順に選択します。
+4. マシン一覧から、グループに追加するマシン > **[作成]** の順に選択します。
 
     ![グループを作成する](./media/how-to-create-a-group/create-group.png)
 
-[評価を作成する](how-to-create-assessment.md)ときにこのグループを使用できるようになりました。
+これで、[Azure VM の評価を作成する](how-to-create-assessment.md)か[Azure VMware Solution (AVS) の評価](how-to-create-azure-vmware-solution-assessment.md)を作成するときに、このグループを使用できます。 グループに対する AVS の評価では、VMware VM のみを作成できることに注意してください。 
 
 ## <a name="refine-a-group-with-dependency-mapping"></a>依存関係マッピングを使用してグループを絞り込む
 

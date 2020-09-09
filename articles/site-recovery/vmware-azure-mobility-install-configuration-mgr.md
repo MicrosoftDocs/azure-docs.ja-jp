@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 2/5/2020
 ms.author: ramamill
 ms.openlocfilehash: f24d321e882024d324435498adf11694037547f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77252229"
 ---
 # <a name="automate-mobility-service-installation"></a>モビリティ サービスのインストールを自動化する
@@ -392,7 +392,7 @@ cd /tmp
    - 不要な再起動を避けるためには、月次のメンテナンス期間中またはソフトウェアの更新期間中にパッケージのインストールをスケジュールします。
 
 1. **[配布ポイント]** ページで、設定を構成し、ウィザードを完了します。
-1. Configuration Manager コンソールでデプロイの進行状況を監視します。 **監視** > **展開** >  _\<パッケージ名\>_ に移動します。
+1. Configuration Manager コンソールでデプロイの進行状況を監視します。 **[監視]**  >  **[デプロイ]**  >  _\<your package name\>_ に移動します。
 
 ### <a name="uninstall-the-mobility-service"></a>モビリティサービスをアンインストールする
 

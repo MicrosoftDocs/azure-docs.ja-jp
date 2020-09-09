@@ -8,14 +8,14 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jopapa
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-javascript
 ms.reviewer: sngun
-ms.openlocfilehash: fb0e08c9d85f4472a2fa13001e71edd12149d430
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 59acb2e851be69a9bb928d9b3aae73d8136493e0
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858740"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440917"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Azure Cosmos DB の MongoDB 用 API で Angular アプリを作成する - Mongoose を使用して Cosmos DB に接続する
 
@@ -114,7 +114,7 @@ Mongoose は、MongoDB および Node.js のためのオブジェクト デー�
 
 1. ターミナル ウィンドウで次の CLI コマンドを使って Azure Cosmos DB アカウントのプライマリ キーを取得します。 
 
-    ```azure-cli-interactive
+    ```azurecli-interactive
     az cosmosdb list-keys --name <cosmosdb-name> -g myResourceGroup
     ```    
     
@@ -230,11 +230,11 @@ Mongoose は、MongoDB および Node.js のためのオブジェクト デー�
 
 次に、以下の手順を使用してアプリを実行します。
 
-1. Visual Studio Code ですべての変更を保存します。 左側にある **[デバッグ]** ボタン ![Visual Studio Code のデバッグ アイコン](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png) を選択し、 **[デバッグ開始]** ボタン ![Visual Studio Code のデバッグ アイコン](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png) を選択します。
+1. Visual Studio Code ですべての変更を保存します。 左側で、 **[デバッグ]** ボタン (:::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png":::) を選択し、 **[デバッグの開始]** ボタン (:::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png":::) を選択します。
 
 1. ここでブラウザーに切り替えます。 **開発者ツール**を開き、 **[ネットワーク]** タブを開きます。`http://localhost:3000` に移動すると、このアプリケーションが表示されます。
 
-    ![Azure Portal の新しい Azure Cosmos DB アカウント](./media/tutorial-develop-mongodb-nodejs-part5/azure-cosmos-db-heroes-app.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part5/azure-cosmos-db-heroes-app.png" alt-text="Azure portal の新しい Azure Cosmos DB アカウント":::
 
 アプリにはヒーローがまだ格納されていません。 このチュートリアルの次のパートでは、プット、プッシュ、削除の機能を追加します。 そうすれば、Azure Cosmos データベースへの Mongoose 接続を使用して、UI からヒーローを追加、更新、削除することができます。 
 

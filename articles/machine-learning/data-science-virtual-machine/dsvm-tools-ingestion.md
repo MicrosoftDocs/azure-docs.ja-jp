@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: d86858f8d7f09628457b718ca3c481934d720081
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 736504febea16af53c2c05bc367513b2dde93ccf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232879"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012316"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>データ サイエンス仮想マシンのデータ取り込みツール
 
@@ -25,7 +25,7 @@ ms.locfileid: "79232879"
 
 ## <a name="adlcopy"></a>AdlCopy
 
-|    |           |
+| カテゴリ | 値 |
 | ------------- | ------------- |
 | 紹介   | Azure Blob Storage から Azure Data Lake Store にデータをコピーするツール。 2 つの Azure Data Lake Store アカウント間でデータをコピーすることもできます。      |
 | サポートされている DSVM バージョン      | Windows      |
@@ -36,7 +36,7 @@ ms.locfileid: "79232879"
 
 ## <a name="azure-cli"></a>Azure CLI
 
-|    |           |
+| カテゴリ | 値 |
 | ------------- | ------------- |
 | 紹介   | Azure の管理ツール。 Azure Blob Storage、Azure Data Lake Store などの Azure データ プラットフォームからデータを移動するためのコマンド動詞も含まれています。     |
 | サポートされている DSVM バージョン      | Windows、Linux     |
@@ -48,7 +48,7 @@ ms.locfileid: "79232879"
 
 ## <a name="azcopy"></a>AzCopy
 
-|    |           |
+| カテゴリ | 値 |
 | ------------- | ------------- |
 | 紹介   | ローカル ファイル、Azure Blob Storage、ファイル、およびテーブルとの間でデータをコピーするためのツール。      |
 | サポートされている DSVM バージョン      | Windows      |
@@ -60,7 +60,7 @@ ms.locfileid: "79232879"
 
 ## <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB データ移行ツール
 
-|    |           |
+| カテゴリ | 値 |
 | ------------- | ------------- |
 | 紹介   | さまざまなソースからクラウド内の NoSQL データベースである Azure Cosmos DB にデータをインポートするツール。 ソースは、JSON ファイル、CSV ファイル、SQL、MongoDB、Azure Table Storage、Amazon DynamoDB、Azure Cosmos DB SQL API コレクションなどです。      |
 | サポートされている DSVM バージョン      | Windows      |
@@ -69,9 +69,9 @@ ms.locfileid: "79232879"
 | サンプルへのリンク      | [CosmosDB インポート データ](https://docs.microsoft.com/azure/cosmos-db/import-data)      |
 | DSVM 上の関連ツール      | AzCopy、AdlCopy      |
 
-## <a name="azure-storage-explorer"></a>Azure ストレージ エクスプローラー
+## <a name="azure-storage-explorer"></a>Azure Azure Storage Explorer
 
-|    |           |
+| カテゴリ | 値 |
 | ------------- | ------------- |
 | 紹介   | Azure クラウドに格納されているファイルと対話するためのグラフィカル ユーザー インターフェイス。 |
 | サポートされている DSVM バージョン      | Windows      |
@@ -82,7 +82,7 @@ ms.locfileid: "79232879"
 
 ## <a name="bcp"></a>bcp
 
-|    |           |
+| カテゴリ | 値 |
 | ------------- | ------------- |
 | 紹介   | SQL Server とデータ ファイルの間でデータをコピーする SQL Server ツール。      |
 | サポートされている DSVM バージョン      | Windows      |
@@ -93,7 +93,7 @@ ms.locfileid: "79232879"
 
 ## <a name="blobfuse"></a>blobfuse
 
-|    |           |
+| カテゴリ | 値 |
 | ------------- | ------------- |
 | 紹介   | Linux ファイル システムで Azure Blob Storage コンテナーをマウントするツール。      |
 | サポートされている DSVM バージョン      | Linux      |

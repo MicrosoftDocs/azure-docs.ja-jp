@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 29d5213b8eecd94ed8c8ce565972c9f98872a362
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: ec5717135ec7bbf2236b5f5672dbf0b5d1413b44
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411426"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565725"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Azure Monitor でログ クエリを最適化する
 Azure Monitor ログでは、[Azure Data Explorer (ADX)](/azure/data-explorer/) を使用して、ログ データを格納し、そのデータを分析するためのクエリを実行します。 これにより、ADX クラスターが作成、管理、保持され、ログ分析ワークロードに合わせて最適化されます。 クエリを実行すると、クエリが最適化され、ワークスペース データを格納する適切な ADX クラスターにルーティングされます。 Azure Monitor ログと Azure Data Explorer のどちらにも、クエリの自動最適化メカニズムが多数使用されています。 自動最適化によって大幅に処理が促進される一方で、クエリのパフォーマンスを飛躍的に向上させることができるケースもいくつかあります。 この記事では、パフォーマンスに関する考慮事項とそれを調整するいくつかの手法について説明します。
@@ -73,8 +73,8 @@ SecurityEvent
 | extend Details = parse_xml(EventData)
 | extend FilePath = tostring(Details.UserData.RuleAndFileData.FilePath)
 | extend FileHash = tostring(Details.UserData.RuleAndFileData.FileHash)
-| summarize count() by FileHash, FilePath
 | where FileHash != "" and FilePath !startswith "%SYSTEM32"  // Problem: irrelevant results are filtered after all processing and parsing is done
+| summarize count() by FileHash, FilePath
 ```
 ```Kusto
 //more efficient
@@ -84,6 +84,7 @@ SecurityEvent
 | extend Details = parse_xml(EventData)
 | extend FilePath = tostring(Details.UserData.RuleAndFileData.FilePath)
 | extend FileHash = tostring(Details.UserData.RuleAndFileData.FileHash)
+| where FileHash != "" and FilePath !startswith "%SYSTEM32"  // exact removal of results. Early filter is not accurate enough
 | summarize count() by FileHash, FilePath
 | where FileHash != "" // No need to filter out %SYSTEM32 here as it was removed before
 ```
@@ -98,17 +99,17 @@ SecurityEvent
 Heartbeat 
 | extend IPRegion = iif(RemoteIPLongitude  < -94,"WestCoast","EastCoast")
 | where IPRegion == "WestCoast"
-| summarize count() by Computer
+| summarize count(), make_set(IPRegion) by Computer
 ```
 ```Kusto
 //more efficient
 Heartbeat 
 | where RemoteIPLongitude  < -94
 | extend IPRegion = iif(RemoteIPLongitude  < -94,"WestCoast","EastCoast")
-| summarize count() by Computer
+| summarize count(), make_set(IPRegion) by Computer
 ```
 
-### <a name="use-effective-aggregation-commands-and-dimmentions-in-summarize-and-join"></a>効果的な集計コマンドおよびディメンションを summarize と join で使用する
+### <a name="use-effective-aggregation-commands-and-dimensions-in-summarize-and-join"></a>効果的な集計コマンドおよびディメンションを summarize と join で使用する
 
 [max()](/azure/kusto/query/max-aggfunction)、[sum()](/azure/kusto/query/sum-aggfunction)、[count()](/azure/kusto/query/count-aggfunction)、[avg()](/azure/kusto/query/avg-aggfunction) などの集計コマンドには、そのロジックにより CPU への影響は小さくなるものもありますが、より複雑で、効率的な実行を可能にするヒューリスティックや推定が含まれるものもあります。 たとえば、[dcount ()](/azure/kusto/query/dcount-aggfunction) では、HyperLogLog アルゴリズムを使用することで、各値を実際にカウントすることなく、大規模なデータ セットの個別カウントに近い推定値が提供されます。また、パーセンタイル関数は、最も近いランク パーセンタイル アルゴリズムを使用して同様の概算を行います。 コマンドのいくつかには、影響を軽減するための省略可能なパラメーターが含まれています。 たとえば、[makeset ()](/azure/kusto/query/makeset-aggfunction) 関数には、CPU とメモリに大きく影響する、最大セット サイズを定義するための省略可能なパラメーターがあります。
 
@@ -157,7 +158,7 @@ Heartbeat
 > この指標は、直近のクラスターの CPU のみを示します。 複数リージョンのクエリでは、リージョンのうち 1 つだけが表示されます。 マルチワークスペース クエリでは、一部のワークスペースが含まれない場合があります。
 
 ### <a name="avoid-full-xml-and-json-parsing-when-string-parsing-works"></a>文字列解析が機能する場合は XML と JSON をフル解析しない
-XML または JSON オブジェクトのフル解析は、CPU およびメモリ リソースを多く消費する場合があります。 必要なパラメーターが 1 つか 2 つだけで、XML または JSON オブジェクトが単純である場合、[解析演算子](/azure/kusto/query/parseoperator)またはその他の[テキスト解析手法](/azure/azure-monitor/log-query/parse-text)を使い、文字列としてオブジェクトを解析した方が、多くの場合は簡単です。 XML または JSON オブジェクト内のレコード数が多いほど、パフォーマンスの向上が顕著になります。 レコード数が千万単位に達する場合、これは非常に重要です。
+XML または JSON オブジェクトのフル解析は、CPU およびメモリ リソースを多く消費する場合があります。 必要なパラメーターが 1 つか 2 つだけで、XML または JSON オブジェクトが単純である場合、[解析演算子](/azure/kusto/query/parseoperator)またはその他の[テキスト解析手法](./parse-text.md)を使い、文字列としてオブジェクトを解析した方が、多くの場合は簡単です。 XML または JSON オブジェクト内のレコード数が多いほど、パフォーマンスの向上が顕著になります。 レコード数が千万単位に達する場合、これは非常に重要です。
 
 たとえば次のクエリは、フル XML 解析を実行せずに上記のクエリとまったく同じ結果を返します。 FilePath 要素が FileHash の後にあってどちらの要素も属性を持たないなど、XML ファイルの構造にいくつかの前提条件があることに注意してください。 
 
@@ -219,6 +220,64 @@ SecurityEvent
 | where EventID == 4624 //Logon GUID is relevant only for logon event
 | summarize LoginSessions = dcount(LogonGuid) by Account
 ```
+
+### <a name="avoid-multiple-scans-of-same-source-data-using-conditional-aggregation-functions-and-materialize-function"></a>条件付き集計関数および materialize 関数を使用して同じソース データの複数スキャンを回避する
+join 演算子または union 演算子を使用してマージされた複数のサブクエリがクエリに含まれている場合、各サブクエリによってソース全体が個別にスキャンされ、結果がマージされます。 これにより、データがスキャンされる回数が倍増します。これは、非常に大きなデータセットにおいて重要な要素です。
+
+これを回避する方法としては、条件付き集計関数を使用します。 summary 演算子で使用される[集計関数](/azure/data-explorer/kusto/query/summarizeoperator#list-of-aggregation-functions)の大部分には、条件付きのバージョンがあります。これにより、複数の条件を持つ単一の summarize 演算子を使用できます。 
+
+たとえば、次のクエリは、ログイン イベントの数と各アカウントのプロセス実行イベントの数を示しています。 同じ結果が返されますが、前者ではデータが 2 回スキャンされ、後者では 1 回だけスキャンされます。
+
+```Kusto
+//Scans the SecurityEvent table twice and perform expensive join
+SecurityEvent
+| where EventID == 4624 //Login event
+| summarize LoginCount = count() by Account
+| join 
+(
+    SecurityEvent
+    | where EventID == 4688 //Process execution event
+    | summarize ExecutionCount = count(), ExecutedProcesses = make_set(Process) by Account
+) on Account
+```
+
+```Kusto
+//Scan only once with no join
+SecurityEvent
+| where EventID == 4624 or EventID == 4688 //early filter
+| summarize LoginCount = countif(EventID == 4624), ExecutionCount = countif(EventID == 4688), ExecutedProcesses = make_set_if(Process,EventID == 4688)  by Account
+```
+
+サブクエリが不要なもう 1 つのケースは、特定のパターンに一致するレコードのみを処理するように [parse 演算子](/azure/data-explorer/kusto/query/parseoperator?pivots=azuremonitor)を事前フィルター処理する場合です。 これは、パターンが一致しない場合、parse 演算子およびその他の同様の演算子によって空の結果が返されるため、不要です。 次の 2 つのクエリでは、まったく同じ結果が返されますが、2 番目のクエリではデータが 1 回だけスキャンされます。 2 番目のクエリでは、各 parse コマンドはそのイベントのみに関連しています。 その後の extend 演算子は、空のデータ状況を参照する方法を示しています。
+
+```Kusto
+//Scan SecurityEvent table twice
+union(
+SecurityEvent
+| where EventID == 8002 
+| parse EventData with * "<FilePath>" FilePath "</FilePath>" * "<FileHash>" FileHash "</FileHash>" *
+| distinct FilePath
+),(
+SecurityEvent
+| where EventID == 4799
+| parse EventData with * "CallerProcessName\">" CallerProcessName1 "</Data>" * 
+| distinct CallerProcessName1
+)
+```
+
+```Kusto
+//Single scan of the SecurityEvent table
+SecurityEvent
+| where EventID == 8002 or EventID == 4799
+| parse EventData with * "<FilePath>" FilePath "</FilePath>" * "<FileHash>" FileHash "</FileHash>" * //Relevant only for event 8002
+| parse EventData with * "CallerProcessName\">" CallerProcessName1 "</Data>" *  //Relevant only for event 4799
+| extend FilePath = iif(isempty(CallerProcessName1),FilePath,"")
+| distinct FilePath, CallerProcessName1
+```
+
+上の例でサブクエリの使用を回避できない場合は、別の方法として [materialize() 関数](/azure/data-explorer/kusto/query/materializefunction?pivots=azuremonitor)を使用して、それぞれに使用される単一のソース データが存在することについてクエリ エンジンにヒントを提供します。 これは、クエリ内で複数回使用される関数からソース データが取得される場合に便利です。
+
+
 
 ### <a name="reduce-the-number-of-columns-that-is-retrieved"></a>取得する列の数を減らす
 
@@ -375,7 +434,7 @@ Azure Monitor ログでは、Azure Data Explorer の大規模なクラスター�
 - シリアル化関数やウィンドウ関数 ([serialize 演算子](/azure/kusto/query/serializeoperator)、[next ()](/azure/kusto/query/nextfunction)、[prev ()](/azure/kusto/query/prevfunction)、[row](/azure/kusto/query/rowcumsumfunction) 関数など) の使用。 このようなケースのいくつかでは、時系列およびユーザー分析関数を使用できます。 また、[range](/azure/kusto/query/rangeoperator)、[sort](/azure/kusto/query/sortoperator)、[order](/azure/kusto/query/orderoperator)、[top](/azure/kusto/query/topoperator)、[top-hitters](/azure/kusto/query/tophittersoperator)、[getschema](/azure/kusto/query/getschemaoperator) 演算子がクエリの末尾以外で使用されている場合にも、非効率的なシリアル化が発生する可能性があります。
 -    [dcount ()](/azure/kusto/query/dcount-aggfunction) 集計関数を使用すると、システムでは個別の値の中央コピーが強制的に保持されます。 データのスケールが大きい場合は、dcount 関数の省略可能なパラメーターを使用して精度を下げることを検討してください。
 -    多くの場合、[join](/azure/kusto/query/joinoperator?pivots=azuremonitor) 演算子を使用すると全体的な並列処理が低下します。 パフォーマンスに問題がある場合は、代替手段としてシャッフル結合を試してください。
--    リソースのスコープが指定されたクエリで、非常に多くの RBAC 割り当てがある状況では、実行前の RBAC チェックに時間がかかることがあります。 その結果、チェックにかかる時間が長くなり、並列処理が低下する可能性があります。 たとえば、多数のリソースがあり、各リソースに、サブスクリプションやリソース グループのレベルではなくリソースレベルでロールの割り当てが多数存在するサブスクリプションに対してクエリが実行されます。
+-    リソースのスコープが指定されたクエリで、非常に多くの Azure のロールの割り当てがある状況では、実行前の RBAC チェックに時間がかかることがあります。 その結果、チェックにかかる時間が長くなり、並列処理が低下する可能性があります。 たとえば、多数のリソースがあり、各リソースに、サブスクリプションやリソース グループのレベルではなくリソースレベルでロールの割り当てが多数存在するサブスクリプションに対してクエリが実行されます。
 -    クエリで小さなデータ チャンクを処理している場合、システムがクエリを多数の計算ノードに分散させないため、その並列処理は少なくなります。
 
 

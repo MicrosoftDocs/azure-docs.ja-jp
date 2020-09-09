@@ -6,16 +6,16 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: 654dba968ba4efec1c30c94082726da04059adc0
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: f7f6155d3230d234e1163ee12cd7685817331b93
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797728"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323538"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Azure Application Insights による Web アプリケーションのユーザー リテンション期間分析
 
-[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) のリテンション期間機能を使用すると、アプリに戻るユーザーの数、およびそのユーザーが特定のタスクを実行したり目標を達成したりする頻度を分析できます。 たとえば、ゲームのサイトを運営する場合は、ゲームに負けた後にサイトに戻るユーザーの数と、勝った後に戻るユーザーの数を比較できます。 このデータによって、ユーザー エクスペリエンスとビジネス戦略の両方の強化に役立ちます。
+[Azure Application Insights](./app-insights-overview.md) のリテンション期間機能を使用すると、アプリに戻るユーザーの数、およびそのユーザーが特定のタスクを実行したり目標を達成したりする頻度を分析できます。 たとえば、ゲームのサイトを運営する場合は、ゲームに負けた後にサイトに戻るユーザーの数と、勝った後に戻るユーザーの数を比較できます。 このデータによって、ユーザー エクスペリエンスとビジネス戦略の両方の強化に役立ちます。
 
 ## <a name="get-started"></a>はじめに
 
@@ -54,16 +54,15 @@ Application Insights ポータルのリテンション期間ツールにデー�
    telemetry.TrackEvent("won game");
 ```
 
-カスタム イベントの記述について詳しくは、[こちら](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)をご覧ください。
+カスタム イベントの記述について詳しくは、[こちら](./api-custom-events-metrics.md#trackevent)をご覧ください。
 
 
 ## <a name="next-steps"></a>次のステップ
-- 使用状況を把握できるようにするには、[カスタム イベント](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent)または[ページ ビュー](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)の送信を開始します。
+- 使用状況を把握できるようにするには、[カスタム イベント](./api-custom-events-metrics.md#trackevent)または[ページ ビュー](./api-custom-events-metrics.md#page-views)の送信を開始します。
 - カスタム イベントまたはページ ビューを既に送信した場合は、使用状況ツールを見て、自分のサービスがユーザーにどのように使用されているかを把握します。
     - [ユーザー、セッション、イベント](usage-segmentation.md)
     - [ファネル](usage-funnels.md)
     - [ユーザー フロー](usage-flows.md)
-    - [ブック](../../azure-monitor/platform/workbooks-overview.md)
+    - [ブック](../platform/workbooks-overview.md)
     - [ユーザー コンテキストの追加](usage-send-user-context.md)
-
 

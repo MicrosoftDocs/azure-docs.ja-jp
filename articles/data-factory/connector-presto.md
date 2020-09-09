@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 261bdedee56bb4de2dfbbef27358fae5ae8fdc3e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 15f4133b03c1fe77548425500445937e86ed5a8e
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81416739"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372503"
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Presto からデータをコピーする (プレビュー)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

@@ -1,25 +1,15 @@
 ---
 title: Azure Relay Node API の概要 | Microsoft Docs
 description: この記事では、Azure Relay サービスの Node.js API の概要について説明します。 また、hyco-ws Node パッケージの使用方法についても説明します。
-services: service-bus-relay
-documentationcenter: na
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: b7d6e822-7c32-4cb5-a4b8-df7d009bdc85
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/21/2020
-ms.author: spelluru
-ms.openlocfilehash: 2877284c419da4999e23490fc986e5da44e5d92e
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 67d818a95d63b3097f81f799a287fb4c48a1cfb7
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83204590"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386250"
 ---
 # <a name="relay-hybrid-connections-node-api-overview"></a>Relay ハイブリッド接続 Node API の概要
 
@@ -195,7 +185,7 @@ var server = createRelayedServer([options], [connectCallback] )
  
 ##### <a name="relayedconnect"></a>relayedConnect
 
-`createRelayedServer` を使用して、単純に `relayedConnect` ヘルパーを関数でミラーリングすることにより、クライアント接続を作成し、結果のソケットでの "open" イベントをサブスクライブできます。
+`relayedConnect` を使用して、単純に `createRelayedServer` ヘルパーを関数でミラーリングすることにより、クライアント接続を作成し、結果のソケットでの "open" イベントをサブスクライブできます。
 
 ```JavaScript
 var uri = WebSocket.createRelaySendUri(ns, path);

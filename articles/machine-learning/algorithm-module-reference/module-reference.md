@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 04/13/2020
-ms.openlocfilehash: c46c21b5662b924552f850f226a12c7350b4625a
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.date: 05/19/2020
+ms.openlocfilehash: a588c58c74ab9632f3c3c61e223dd37704103714
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81458201"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048103"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナーのアルゴリズムとモジュールのリファレンス (プレビュー)
 
@@ -27,15 +27,15 @@ ms.locfileid: "81458201"
 * [Azure Machine Learning アルゴリズム チート シート](../algorithm-cheat-sheet.md)
 
 > [!TIP]
-> デザイナー内のパイプラインでは、特定のモジュールに関する情報を取得できます。 モジュールを選択し、 **[Quick Help]\(クイック ヘルプ\)** ウィンドウの **[more help]\(さらにヘルプを見る\)** リンクを選択します。
+> デザイナー内のパイプラインでは、特定のモジュールに関する情報を取得できます。 モジュールの一覧、またはモジュールの右側のウィンドウで、モジュールにカーソルを合わせ、モジュール カードの **[詳細情報]** リンクを選択します。
 
 ## <a name="data-preparation-modules"></a>データ準備モジュール
 
 
 | 機能 | 説明 | Module |
 | --- |--- | --- |
-| データの入力と出力 | クラウド ソースのデータをパイプラインに移動します。 パイプラインの実行中に、結果や中間データを Azure Storage、SQL データベース、または Hive に書き込みます。また、クラウド ストレージを使用して、パイプライン間でデータを交換します。  | [データの手動入力](enter-data-manually.md) <br/> [データのエクスポート](export-data.md) <br/> [データのインポート](import-data.md) |
-| データの変換 | 機械学習に固有のデータに対する操作 (データの正規化やビン分割、次元削減、さまざまなファイル形式の間でのデータの変換など)。| [列の追加](add-columns.md) <br/> [行の追加](add-rows.md) <br/> [算術演算の適用](apply-math-operation.md) <br/> [SQL 変換の適用](apply-sql-transformation.md) <br/> [見つからないデータのクリーンアップ](clean-missing-data.md) <br/> [クリップの値](clip-values.md) <br/> [CSV への変換](convert-to-csv.md) <br/> [データセットへの変換](convert-to-dataset.md) <br/> [インジケーター値への変換](convert-to-indicator-values.md) <br/> [メタデータの編集](edit-metadata.md) <br/> [データの結合](join-data.md) <br/> [データの正規化](normalize-data.md) <br/> [パーティションとサンプル](partition-and-sample.md)  <br/> [重複する行の削除](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [列変換の選択](select-columns-transform.md) <br/> [データセット内の列の選択](select-columns-in-dataset.md) <br/> [データの分割](split-data.md) |
+| データの入力と出力 | クラウド ソースのデータをパイプラインに移動します。 パイプラインの実行中に、結果や中間データを Azure Storage、SQL Database、または Hive に書き込みます。また、クラウド ストレージを使用して、パイプライン間でデータを交換します。  | [データの手動入力](enter-data-manually.md) <br/> [データのエクスポート](export-data.md) <br/> [データのインポート](import-data.md) |
+| [データの変換] | 機械学習に固有のデータに対する操作 (データの正規化やビン分割、次元削減、さまざまなファイル形式の間でのデータの変換など)。| [列の追加](add-columns.md) <br/> [行の追加](add-rows.md) <br/> [算術演算の適用](apply-math-operation.md) <br/> [SQL 変換の適用](apply-sql-transformation.md) <br/> [見つからないデータのクリーンアップ](clean-missing-data.md) <br/> [クリップの値](clip-values.md) <br/> [CSV への変換](convert-to-csv.md) <br/> [データセットへの変換](convert-to-dataset.md) <br/> [インジケーター値への変換](convert-to-indicator-values.md) <br/> [メタデータの編集](edit-metadata.md) <br/> [データをビンにグループ化する](group-data-into-bins.md) <br/> [データの結合](join-data.md) <br/> [データの正規化](normalize-data.md) <br/> [パーティションとサンプル](partition-and-sample.md)  <br/> [重複する行の削除](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [列変換の選択](select-columns-transform.md) <br/> [データセット内の列の選択](select-columns-in-dataset.md) <br/> [データの分割](split-data.md) |
 | 特徴選択 | 分析モデルの構築で使用する、関連する有用な特徴のサブセットを選択します。 | [フィルターに基づく特徴選択](filter-based-feature-selection.md) <br/> [順列の特徴量の重要度](permutation-feature-importance.md) |
 | 統計関数 | データ サイエンスに関連するさまざまな統計的方法を提供します。 | [データの集計](summarize-data.md)|
 
@@ -43,7 +43,7 @@ ms.locfileid: "81458201"
 
 | 機能 | 説明 | Module |
 | --- |--- | --- |
-| 回帰 | 値を予測します。 | [ブースト デシジョン ツリー回帰](boosted-decision-tree-regression.md) <br/> [デシジョン フォレスト回帰](decision-forest-regression.md) <br/> [線形回帰](linear-regression.md)  <br/> [ニューラル ネットワーク回帰](neural-network-regression.md)  <br/> |
+| 回帰 | 値を予測します。 | [ブースト デシジョン ツリー回帰](boosted-decision-tree-regression.md) <br/> [デシジョン フォレスト回帰](decision-forest-regression.md) <br/> [高速フォレスト分位点回帰](fast-forest-quantile-regression.md)  <br/> [線形回帰](linear-regression.md)  <br/> [ニューラル ネットワーク回帰](neural-network-regression.md)  <br/> [ポワソン回帰](poisson-regression.md)  <br/>|
 | クラスタリング | データをグループ化します。| [K-Means クラスタリング](k-means-clustering.md)
 | 分類 | クラスを予測します。  バイナリ (2 クラス) または多クラスのアルゴリズムを選択します。| [多クラスの増幅デシジョン ツリー](multiclass-boosted-decision-tree.md) <br/> [多クラス デシジョン フォレスト](multiclass-decision-forest.md) <br/> [多クラス ロジスティック回帰](multiclass-logistic-regression.md)  <br/> [多クラス ニューラル ネットワーク](multiclass-neural-network.md) <br/> [1 対全多クラス](one-vs-all-multiclass.md) <br/> [2 クラス平均化パーセプトロン](two-class-averaged-perceptron.md) <br/>  [2 クラス ブースト デシジョン ツリー](two-class-boosted-decision-tree.md)  <br/> [2 クラス デシジョン フォレスト](two-class-decision-forest.md) <br/>  [2 クラス ロジスティック回帰](two-class-logistic-regression.md) <br/> [2 クラス ニューラル ネットワーク](two-class-neural-network.md) <br/> [2 クラス サポート ベクター マシン](two-class-support-vector-machine.md) | 
 
@@ -51,12 +51,13 @@ ms.locfileid: "81458201"
 
 | 機能 | 説明 | Module |
 | --- |--- | --- |
-| モデル トレーニング | アルゴリズムを介してデータを実行します。 |  [クラスタリング モデルのトレーニング](train-clustering-model.md) <br/> [モデルのトレーニング](train-model.md)  <br/> [モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md) |
-| モデルのスコアリングと評価 | トレーニング済みモデルの正確性を測定します。 | [変換の適用](apply-transformation.md) <br/> [クラスターへのデータの割り当て](assign-data-to-clusters.md) <br/> [モデルのクロス検証](cross-validate-model.md) <br/> [モデルの評価](evaluate-model.md) <br/> [モデルのスコア付け](score-model.md) |
+| モデル トレーニング | アルゴリズムを介してデータを実行します。 |  [クラスタリング モデルのトレーニング](train-clustering-model.md) <br/> [モデルのトレーニング](train-model.md) <br/> [PyTorch モデルのトレーニング](train-pytorch-model.md) <br/> [モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md) |
+| モデルのスコアリングと評価 | トレーニング済みモデルの正確性を測定します。 | [変換の適用](apply-transformation.md) <br/> [クラスターへのデータの割り当て](assign-data-to-clusters.md) <br/> [モデルのクロス検証](cross-validate-model.md) <br/> [モデルの評価](evaluate-model.md) <br/> [画像モデルのスコア付け](score-image-model.md) <br/> [モデルのスコア付け](score-model.md) |
 | Python 言語 | コードを記述し、それをモジュール内に埋め込んで、Python をパイプラインと統合します。 | [Python モデルの作成](create-python-model.md) <br/> [Python スクリプトの実行](execute-python-script.md) |
 | R 言語 | コードを記述し、それをモジュール内に埋め込んで、R をパイプラインと統合します。 | [R スクリプトの実行](execute-r-script.md) |
-| Text Analytics | 構造化テキストと非構造化テキストの両方を操作するための特別な計算ツールを提供します。 | [テキストからの N Gram 特徴抽出](extract-n-gram-features-from-text.md) <br/> [特徴ハッシュ](feature-hashing.md) <br/> [テキストの前処理](preprocess-text.md) <br/> [Latent Dirichlet Allocation](latent-dirichlet-allocation.md) |
-| 推奨 | 推奨モデルを構築します。 | [レコメンダーの評価](evaluate-recommender.md) <br/> [SVD レコメンダーのスコア付け](score-svd-recommender.md) <br/> [SVD レコメンダーのトレーニング](train-SVD-recommender.md) |
+| Text Analytics | 構造化テキストと非構造化テキストの両方を操作するための特別な計算ツールを提供します。 |  [単語からベクトルへの変換](convert-word-to-vector.md) <br/> [テキストからの N Gram 特徴抽出](extract-n-gram-features-from-text.md) <br/> [特徴ハッシュ](feature-hashing.md) <br/> [テキストの前処理](preprocess-text.md) <br/> [Latent Dirichlet Allocation](latent-dirichlet-allocation.md) <br/> [Score Vowpal Wabbit Model (Vowpal Wabbit モデルのスコアリング)](score-vowpal-wabbit-model.md) <br/> [Train Vowpal Wabbit Model (Vowpal Wabbit モデルのトレーニング)](train-vowpal-wabbit-model.md)|
+| Computer Vision | 画像データの前処理と画像認識関連のモジュール。 |  [イメージ変換の適用](apply-image-transformation.md) <br/> [イメージ ディレクトリへの変換](convert-to-image-directory.md) <br/> [イメージ変換の初期化](init-image-transformation.md) <br/> [イメージ ディレクトリの分割](split-image-directory.md) <br/> [DenseNet](densenet.md) <br/> [ResNet](resnet.md) |
+| 推奨 | 推奨モデルを構築します。 | [レコメンダーの評価](evaluate-recommender.md) <br/> [SVD レコメンダーのスコア付け](score-svd-recommender.md) <br/> [ワイドかつディープなレコメンダーのスコア付け](score-wide-and-deep-recommender.md)<br/> [SVD レコメンダーのトレーニング](train-SVD-recommender.md) <br/> [ワイドかつディープなレコメンダーのトレーニング](train-wide-and-deep-recommender.md)|
 | 異常検出 | 異常検出モデルを構築します。 | [PCA ベースの異常検出](pca-based-anomaly-detection.md) <br/> [異常検出モデルのトレーニング](train-anomaly-detection-model.md) |
 
 

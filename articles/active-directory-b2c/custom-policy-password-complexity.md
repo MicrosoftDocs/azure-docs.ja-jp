@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b16790e288f6569f08ce14e5a7c751bbd8083faf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4ab196e894fc53b1243ac363f9863d5c7d4e328f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79138436"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389005"
 ---
 # <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してパスワードの複雑さを構成する
 
@@ -37,7 +37,7 @@ Azure Active Directory B2C (Azure AD B2C) では、アカウントの作成時�
 1. [ClaimsSchema](claimsschema.md) 要素を見つけます。 要素が存在しない場合は追加します。
 1. `newPassword` と `reenterPassword` の要求を **ClaimsSchema** 要素に追加します。
 
-    ```XML
+    ```xml
     <ClaimType Id="newPassword">
       <PredicateValidationReference Id="CustomPassword" />
     </ClaimType>
@@ -48,7 +48,7 @@ Azure Active Directory B2C (Azure AD B2C) では、アカウントの作成時�
 
 1. [述語](predicates.md)によって、要求の種類の値をチェックする基本的な検証が定義され、true または false が返されます。 検証は、指定されたメソッド要素と、そのメソッドに関連するパラメーターのセットを使用して行われます。 次の述語を **BuildingBlocks** 要素の `</ClaimsSchema>` 要素の直後に追加します。
 
-    ```XML
+    ```xml
     <Predicates>
       <Predicate Id="LengthRange" Method="IsLengthRange">
         <UserHelpText>The password must be between 6 and 64 characters.</UserHelpText>
@@ -86,7 +86,7 @@ Azure Active Directory B2C (Azure AD B2C) では、アカウントの作成時�
 
 1. 次の述語検証を **BuildingBlocks** 要素の `</Predicates>` 要素の直後に追加します。
 
-    ```XML
+    ```xml
     <PredicateValidations>
       <PredicateValidation Id="CustomPassword">
         <PredicateGroups>
@@ -111,7 +111,7 @@ Azure Active Directory B2C (Azure AD B2C) では、アカウントの作成時�
 
 1. 次の技術プロファイルは、Azure Active Directory へのデータの読み取りと書き込みを行う [Active Directory 技術プロファイル](active-directory-technical-profile.md)です。 拡張ファイル内のこれらの技術プロファイルをオーバーライドします。 `PersistedClaims` を使用して、強力なパスワード ポリシーを無効にします。 **ClaimsProviders** 要素を見つけます。  次の要求プロバイダーを以下のように追加します。
 
-    ```XML
+    ```xml
     <ClaimsProvider>
       <DisplayName>Azure Active Directory</DisplayName>
       <TechnicalProfiles>

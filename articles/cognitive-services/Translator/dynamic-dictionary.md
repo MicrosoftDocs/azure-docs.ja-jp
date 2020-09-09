@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 3ef881efc417a6c3816a92d9af7d77bba74355aa
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: de45867e717f001ab54e16c4b21f04494affd326
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592544"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996983"
 ---
 # <a name="how-to-use-a-dynamic-dictionary"></a>動的ディクショナリを使用する方法
 

@@ -5,12 +5,12 @@ author: hrushib
 ms.topic: conceptual
 ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: f56fcb7d1dde700d954c3b55bcf8cd7759893521
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9a99a936b3e6cf53c30c0264b70046008dab283c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229479"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261257"
 ---
 # <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>Azure Service Fabric クラスターでの定期的なバックアップと復元
 > [!div class="op_single_selector"]
@@ -304,7 +304,7 @@ Service Fabric Explorer でバックアップを表示するには、パーテ�
 
 ## <a name="next-steps"></a>次のステップ
 - [定期的なバックアップの構成について](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
-- [バックアップと復元用の REST API リファレンス](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+- [バックアップと復元用の REST API リファレンス](/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/partition-backedup-health-event-azure.png
 [1]: ./media/service-fabric-backuprestoreservice/enable-backup-restore-service-with-portal.png

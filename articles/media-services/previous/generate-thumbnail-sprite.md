@@ -9,16 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 08/31/2020
 ms.author: juliako
-ms.openlocfilehash: e5d32d1bc3bd704b03e58c62251a323ed3f4662c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d05e73bc9aa51bf20121790de94b1b6d0e26615
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61229052"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268572"
 ---
-# <a name="generate-a-thumbnail-sprite"></a>サムネイル スプライトを生成する  
+# <a name="generate-a-thumbnail-sprite"></a>サムネイル スプライトを生成する
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Media Encoder Standard を使用して、サムネイル スプライトを生成できます。サムネイル スプライトは、1 つの (大きい) 画像につなぎ合わされた複数の解像度の小さいサムネイルを含む JPEG ファイルと VTT ファイルがまとめられたものです。 この VTT ファイルでは、各サムネイルが表す入力ビデオでの時間範囲と、大きい JPEG ファイル内でのそのサムネイルのサイズと座標が指定されています。 ビデオ プレーヤーは、VTT ファイルとスプライト画像を使用して、"ビジュアル" なシークバーを表示し、ビデオのタイムライン上を前後に移動するときに視覚的なフィードバックを閲覧者に提供します。
 

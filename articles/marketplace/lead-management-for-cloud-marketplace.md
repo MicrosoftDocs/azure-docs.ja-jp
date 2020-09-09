@@ -1,20 +1,20 @@
 ---
 title: コマーシャル マーケットプレースのリード管理 | Azure Marketplace と AppSource
 description: Azure Marketplace と AppSource へのオファーや技術的成果物の公開に関連するさまざまなトピックについて概説します
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/14/2020
-ms.author: dsindona
-ms.openlocfilehash: f8b466dca9f3af55e3c11b39b3fbdac315af3675
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: b08324654a046b5a2296f6e533107c1b26a0e1fc
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798588"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606891"
 ---
-# <a name="lead-management-for-commercial-marketplace"></a>コマーシャル マーケットプレースのリード管理
+# <a name="lead-management-for-the-commercial-marketplace"></a>コマーシャル マーケットプレースのリード管理
 
 優れたビジネスの中心は顧客です。 今日の製品入手の変革において、マーケティング担当者は顧客と直接つながり、関係を築くことに注力する必要があります。 これが、良質の潜在顧客を創出することが販売サイクルにとって重要なツールである理由です。 [パートナー センター](https://partner.microsoft.com/)でオファーを一覧表示した後、顧客がマーケットプレース内の製品に関心を示すか、またはその製品をデプロイしたらすぐに、その顧客の連絡先情報をプログラムで受信できるようになるツールがあります。 
 
@@ -91,7 +91,7 @@ ms.locfileid: "83798588"
 **Marketplace でオファーを公開するには、リードの送信先を構成する必要がありますか?**
 
 はい (Contact Me SaaS アプリまたはコンサルティング サービスを公開する場合)。  
- 
+
 **リード構成が正しいことを確認するにはどうすればよいですか?**
 
 オファーを設定し、リードの送信先を設定したら、オファーを公開します。 Marketplace では、リードの検証時に、オファーで構成されたリードの送信先へテスト リードが送信されます。 
@@ -100,6 +100,7 @@ ms.locfileid: "83798588"
 
 リードの送信先から "MSFT_TEST" を検索します。次に示すのは、テスト リード データのサンプルです。 
 
+```text
 company = MSFT_TEST_636573304831318844 
 
 country = US 
@@ -123,57 +124,43 @@ oid = 00Do0000000ZHog
 phone = 1234567890 
 
 title = MSFT_TEST_636573304831318844 
+```
 
 **ライブ オファーがあるのですが、リードが表示されません。**
 
-各リードについては、選択したリード送信先のフィールドにデータが渡されます。リードは次の形式で送信されます:**Source-Action|Offer** 
+各リードについては、選択したリード送信先のフィールドにデータが渡されます。リードは次の形式で送信されます:**Source-Action|Offer**
 
-  *ソース:*
+- *ソース:*
+  - AzureMarketplace
+  - AzurePortal
+  - TestDrive  
+  - SPZA (AppSource の頭字語)
 
-    "AzureMarketplace", 
-    "AzurePortal", 
-    "TestDrive",  
-    "SPZA" (acronym for AppSource) 
+- *アクション:*
+  - "INS" - インストールを表します。 Azure Marketplace または AppSource で、顧客が製品を入手するボタンをクリックしたときに適用されます。
+  - "PLT" - パートナー主導の試用版 (Partner Led Trial) を表します。 AppSource で顧客が [Contact me (お問い合わせ)] をクリックしたときに適用されます。
+  - "DNC" - 連絡不要を表します。 AppSource で、アプリ ページにクロスリストされたパートナーへの問い合わせが要求されたときに適用されます。 この顧客がアプリでクロスリストされたことが通知されますが、顧客に連絡する必要はありません。
+  - "Create" - Azure portal 内でのみ適用されます。顧客がアカウントにプランを購入したときに適用されます。
+  - "StartTestDrive" - 体験版専用です。顧客が体験版を起動したときに適用されます。
 
-  *アクション:*
+- *オファー:*
+  - "checkpoint.check-point-r77-10sg-byol"、
+  - "bitnami.openedxcypress"、
+  - "docusign.3701c77e-1cfa-4c56-91e6-3ed0b622145a"
 
-    "INS" - Stands for Installation. This is on Azure Marketplace or AppSource whenever a customer hits the button to acquire your product. 
-    "PLT" - Stands for Partner Led Trial. This is on AppSource whenever a customer hits the Contact me button. 
+*次に示すのは、顧客情報のサンプル データです*
 
-    "DNC" - Stands for Do Not Contact. This is on AppSource whenever a Partner who was cross listed on your app page gets requested to be contacted. We are sharing the heads up that this customer was cross listed on your app, but they do not need to be contacted. 
-
-    "Create" - This is inside Azure portal only and is whenever a customer purchases your offer to their account. 
-
-    "StartTestDrive" - This is for Test Drives only and is whenever a customer starts their test drive. 
-
-
-  *オファー:*
-
-    "checkpoint.check-point-r77-10sg-byol", 
-    "bitnami.openedxcypress", 
-    "docusign.3701c77e-1cfa-4c56-91e6-3ed0b622145a" 
-
- 
-
-  *次に示すのは、顧客情報のサンプル データです*
-
-    { 
-
-    "FirstName":"John", 
-
-    "LastName":"Smith", 
-
-    "Email":"jsmith@microsoft.com", 
-
-    "Phone":"1234567890", 
-
-    "Country":"US", 
-
-    "Company":"Microsoft", 
-
-    "Title":"CTO" 
-
-    } 
+```json
+{ 
+"FirstName":"John",
+"LastName":"Smith",
+"Email":"jsmith@microsoft.com",
+"Phone":"1234567890",
+"Country":"US",
+"Company":"Microsoft",
+"Title":"CTO"
+}
+```
 
 詳しくは、[リード情報](./partner-center-portal/commercial-marketplace-get-customer-leads.md)をご覧ください。 
 

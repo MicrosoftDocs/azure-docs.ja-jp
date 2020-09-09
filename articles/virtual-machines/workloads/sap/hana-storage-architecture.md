@@ -10,15 +10,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/20/2020
+ms.date: 06/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a12c454906d6c6ff702b7f635a91361bbe3994c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aff1c8f68e3950b49a0a1bd8e99020b77e0f2019
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616885"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84677306"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>SAP HANA (Large Instances) のストレージ アーキテクチャ
 
@@ -36,8 +36,6 @@ Type I クラスの HANA L インスタンスは、ストレージ ボリュー�
 | S192 | 4,608 GB | 1,024 GB | 1,536 GB | 1,024 GB |
 | S192m | 11,520 GB | 1,536 GB | 1,792 GB | 1,536 GB |
 | S192xm |  11,520 GB |  1,536 GB |  1,792 GB |  1,536 GB |
-| S224 |  4,224 GB |  512 GB |  1,024 GB |  512 GB |
-| S224m |  8,448 GB |  512 GB |  1,024 GB |  512 GB |
 | S384 | 11,520 GB | 1,536 GB | 1,792 GB | 1,536 GB |
 | S384m | 12,000 GB | 2,050 GB | 2,050 GB | 2,040 GB |
 | S384xm | 16,000 GB | 2,050 GB | 2,050 GB | 2,040 GB |
@@ -47,6 +45,35 @@ Type I クラスの HANA L インスタンスは、ストレージ ボリュー�
 | S768m | 28,000 GB | 3,100 GB | 2,050 GB | 3,100 GB |
 | S768xm | 40,960 GB | 6,144 GB | 4,096 GB | 6,144 GB |
 | S960m | 36,000 GB | 4,100 GB | 2,050 GB | 4,100 GB |
+| S896m | 33,792 GB | 512 GB | 1,024 GB | 512 GB |
+
+HANA Large Instances の最近の SKU は次のようなストレージ構成で提供されています。
+
+| HANA L インスタンス SKU | hana/data | hana/log | hana/shared | hana/logbackups |
+| --- | --- | --- | --- | --- |
+| S224 | 4,224 GB | 512 GB | 1,024 GB | 512 GB |
+| S224oo | 6,336 GB | 512 GB | 1,024 GB | 512 GB |
+| S224m | 8,448 GB | 512 GB | 1,024 GB | 512 GB |
+| S224om | 8,448 GB | 512 GB | 1,024 GB | 512 GB |
+| S224ooo | 10,560 GB | 512 GB | 1,024 GB | 512 GB |
+| S224oom | 12,672 GB | 512 GB | 1,024 GB | 512 GB |
+| S448 | 8,448 GB | 512 GB | 1,024 GB | 512 GB |
+| S448oo | 12,672 GB | 512 GB | 1,024 GB | 512 GB |
+| S448m | 16,896 GB | 512 GB | 1,024 GB | 512 GB |
+| S448om | 16,896 GB | 512 GB | 1,024 GB | 512 GB |
+| S448ooo | 21,120 GB | 512 GB | 1,024 GB | 512 GB |
+| S448oom | 25,344 GB | 512 GB | 1,024 GB | 512 GB |
+| S672 | 12,672 GB | 512 GB | 1,024 GB | 512 GB |
+| S672oo | 19,008 GB | 512 GB | 1,024 GB | 512 GB |
+| S672m | 25,344 GB | 512 GB | 1,024 GB | 512 GB |
+| S672om | 25,344 GB | 512 GB | 1,024 GB | 512 GB |
+| S672ooo | 31,680 GB | 512 GB | 1,024 GB | 512 GB |
+| S672oom | 38,016 GB | 512 GB | 1,024 GB | 512 GB |
+| S896 | 16,896 GB | 512 GB | 1,024 GB | 512 GB |
+| S896oo | 25,344 GB | 512 GB | 1,024 GB | 512 GB |
+| S896om | 33,792 GB | 512 GB | 1,024 GB | 512 GB |
+| S896ooo | 42,240 GB | 512 GB | 1,024 GB | 512 GB |
+| S896oom | 50,688 GB | 512 GB | 1,024 GB | 512 GB |
 
 
 実際にデプロイされるボリュームは、デプロイと、ボリューム サイズの表示に使用するツールによって異なる場合があります。
@@ -74,9 +101,9 @@ HANA L インスタンス SKU を分割する場合、考えられる各分割�
 
 HANA L インスタンス ユニットで複数のアクティブな SAP HANA インスタンスをホストできます。 ストレージ スナップショットとディザスター リカバリーの機能を提供するために、このような構成ではインスタンスごとにボリューム セットが必要になります。 現時点では、HANA L インスタンス ユニットを次のように分けることができます。
 
-- **S72、S72m、S96、S144、S192**: 256 GB の最小ユニットから 256 GB ずつ増加。 256 GB、512 GB などの異なる増分値をユニットの最大メモリまで組み合わせることができます。
-- **S144m、S192m**: 512 GB の最小ユニットから 256 GB ずつ増加。 512 GB、768 GB などの異なる増分値をユニットの最大メモリまで組み合わせることができます。
-- **Type II クラス**: 2 TB の最小ユニットから 512 GB ずつ増加。 512 GB、1 TB、1.5 TB などの異なる増分値をユニットの最大メモリまで組み合わせることができます。
+- **S72、S72m、S96、S144、S192**:256 GB の最小ユニットから 256 GB ずつ増加。 256 GB、512 GB などの異なる増分値をユニットの最大メモリまで組み合わせることができます。
+- **S144m および S192m**:512 GB の最小ユニットから 256 GB ずつ増加。 512 GB、768 GB などの異なる増分値をユニットの最大メモリまで組み合わせることができます。
+- **Type II クラス**:2 TB の最小ユニットから 512 GB ずつ増加。 512 GB、1 TB、1.5 TB などの異なる増分値をユニットの最大メモリまで組み合わせることができます。
 
 複数の SAP HANA インスタンスの実行例は次のようになります。
 
@@ -96,7 +123,7 @@ HANA L インスタンスに使用されるストレージでは、2018 年末�
 Type I クラスの SKU では、ブート LUN が格納されているボリュームが暗号化されます。 Hana L インスタンスの SKU の Type II クラスを使用しているリビジョン 3 HANA L インスタンス スタンプでは、OS 方式でブート LUN を暗号化する必要があります。 Type II ユニットを使用しているリビジョン 4 HANA L インスタンス スタンプでは、ブート LUN が格納されているボリュームも、既定で保存時に暗号化されます。 
 
 ## <a name="required-settings-for-larger-hana-instances-on-hana-large-instances"></a>HANA L インスタンス上のさらに大きい HANA インスタンスに対する必要な設定
-HANA L インスタンスで使用されるストレージには、ファイル サイズの制限があります。 ファイルごとの[サイズの制限は 16 TB です](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html)。 EXT3 ファイル システムのファイル サイズ制限とは異なり、HANA は、HANA L インスタンスのストレージによって強制されるストレージ制限を暗黙的に認識しません。 そのため、HANA ではファイル サイズ制限の16 TB に達したときに新しいデータ ファイルが自動的に作成されません。 HANA は 16 TB を超えるサイズへファイルを拡大しようとするため、HANA でエラーが報告され、最終的にはインデックス サーバーがクラッシュします。
+HANA L インスタンスで使用されるストレージには、ファイル サイズの制限があります。 ファイルごとの[サイズの制限は 16 TB です](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html)。 EXT3 ファイル システムのファイル サイズ制限とは異なり、HANA は、HANA L インスタンスのストレージによって強制されるストレージ制限を暗黙的に認識しません。 そのため、HANA ではファイル サイズ制限の 16 TB に達したときに新しいデータ ファイルが自動的に作成されません。 HANA は 16 TB を超えるサイズへファイルを拡大しようとするため、HANA でエラーが報告され、最終的にはインデックス サーバーがクラッシュします。
 
 > [!IMPORTANT]
 > HANA L インスタンス ストレージの 16 TB のファイル サイズ制限を超えて、HANA がデータ ファイルの拡大を試行するのを防ぐには、HANA の global.ini 構成ファイルで以下のパラメーターを設定する必要があります

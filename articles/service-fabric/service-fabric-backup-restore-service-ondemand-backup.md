@@ -5,12 +5,12 @@ author: aagup
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: d5eada62bec49fe771373671e9438d2786d6b165
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 04d8bb4a9f8157a229751d073e8d351f5448fa68
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75458422"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247899"
 ---
 # <a name="on-demand-backup-in-azure-service-fabric"></a>Azure Service Fabric でのオンデマンド バックアップ
 
@@ -56,7 +56,7 @@ Backup-SFPartition -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22'
 
 #### <a name="rest-call-using-powershell"></a>PowerShell を使用した Rest の呼び出し
 
-[BackupPartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition) API を使用して、パーティション ID `974bd92a-b395-4631-8a7f-53bd4ae9cf22` のオンデマンド バックアップのトリガーを設定します。
+[BackupPartition](/rest/api/servicefabric/sfclient-api-backuppartition) API を使用して、パーティション ID `974bd92a-b395-4631-8a7f-53bd4ae9cf22` のオンデマンド バックアップのトリガーを設定します。
 
 ```powershell
 $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Partitions/974bd92a-b395-4631-8a7f-53bd4ae9cf22/$/Backup?api-version=6.4"
@@ -64,7 +64,7 @@ $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Partitions/9
 Invoke-WebRequest -Uri $url -Method Post -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ```
 
-[GetBackupProgress](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupprogress) API を使用して、[オンデマンド バックアップの進行状況](service-fabric-backup-restore-service-ondemand-backup.md#tracking-on-demand-backup-progress)の追跡を有効にします。
+[GetBackupProgress](/rest/api/servicefabric/sfclient-api-getpartitionbackupprogress) API を使用して、[オンデマンド バックアップの進行状況](service-fabric-backup-restore-service-ondemand-backup.md#tracking-on-demand-backup-progress)の追跡を有効にします。
 
 ### <a name="on-demand-backup-to-specified-storage"></a>指定したストレージへのオンデマンド バックアップ
 
@@ -81,7 +81,7 @@ Backup-SFPartition -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22' -AzureBlo
 
 #### <a name="rest-call-using-powershell"></a>PowerShell を使用した Rest の呼び出し
 
-[BackupPartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition) API を使用して、パーティション ID `974bd92a-b395-4631-8a7f-53bd4ae9cf22` のオンデマンド バックアップのトリガーを設定します。 次の Azure Storage 情報を含めます。
+[BackupPartition](/rest/api/servicefabric/sfclient-api-backuppartition) API を使用して、パーティション ID `974bd92a-b395-4631-8a7f-53bd4ae9cf22` のオンデマンド バックアップのトリガーを設定します。 次の Azure Storage 情報を含めます。
 
 ```powershell
 $StorageInfo = @{
@@ -100,7 +100,7 @@ $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Partitions/9
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ```
 
-[GetBackupProgress](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupprogress) API を使用して、[オンデマンド バックアップの進行状況](service-fabric-backup-restore-service-ondemand-backup.md#tracking-on-demand-backup-progress)の追跡を設定することができます。
+[GetBackupProgress](/rest/api/servicefabric/sfclient-api-getpartitionbackupprogress) API を使用して、[オンデマンド バックアップの進行状況](service-fabric-backup-restore-service-ondemand-backup.md#tracking-on-demand-backup-progress)の追跡を設定することができます。
 
 ### <a name="using-service-fabric-explorer"></a>Service Fabric Explorer の使用
 Service Fabric Explorer の設定で、詳細設定モードが有効になっていることを確認します。
@@ -170,7 +170,7 @@ $backupResponse
     LsnOfLastBackupRecord   : 0
     FailureError            : @{Code=FABRIC_E_BACKUPCOPIER_UNEXPECTED_ERROR; Message=An error occurred during this operation.  Please check the trace logs for more details.}
     ```
-  - **タイムアウト**:"_タイムアウト_" バックアップ状態は、パーティション状態のバックアップを指定された期間で作成できなかったことを示します。 既定のタイムアウト値は 10 分です。 このシナリオでは、さらに大きい [BackupTimeout](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout) を指定して新しいオンデマンド バックアップ要求を開始します。
+  - **タイムアウト**:"_タイムアウト_" バックアップ状態は、パーティション状態のバックアップを指定された期間で作成できなかったことを示します。 既定のタイムアウト値は 10 分です。 このシナリオでは、さらに大きい [BackupTimeout](/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout) を指定して新しいオンデマンド バックアップ要求を開始します。
     ```
     BackupState             : Timeout
     TimeStampUtc            : 0001-01-01T00:00:00Z
@@ -184,7 +184,7 @@ $backupResponse
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Service Fabric の定期バックアップ構成を理解する](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
-- [Compute REST API リファレンス](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+- [Compute REST API リファレンス](/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/trigger-partition-backup.png
 [1]: ./media/service-fabric-backuprestoreservice/trigger-backup-fileshare.png

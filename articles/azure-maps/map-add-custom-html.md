@@ -1,20 +1,20 @@
 ---
 title: マップに HTML マーカーを追加する | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps Web SDK を使用して、マップに HTML マーカーを追加する方法を示します。
-author: Philmea
-ms.author: philmea
+description: マップに HTML マーカーを追加する方法について説明します。 Azure Maps Web SDK を使用してマーカーをカスタマイズし、ポップアップとマウス イベントをマーカーに追加する方法について説明します。
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen
-ms.openlocfilehash: 30d9cf9848a8d99505bf9f9c97bef5aaa31065ee
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: 58954a98215fd353c5944486446dab5664e5349c
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83119273"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035435"
 ---
 # <a name="add-html-markers-to-the-map"></a>マップに HTML マーカーを追加する
 
@@ -56,7 +56,7 @@ map.events.add('click',marker, () => {
 
 <br/>
 
-<iframe height='500' scrolling='no' title='マップに HTML マーカーを追加する' src='//codepen.io/azuremaps/embed/MVoeVw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io/azuremaps/pen/MVoeVw/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>Add an HTML Marker to a map</a>」Pen を表示します。
+<iframe height='500' scrolling='no' title='マップに HTML マーカーを追加する' src='//codepen.io/azuremaps/embed/MVoeVw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/MVoeVw/'>Add an HTML Marker to a map</a>」Pen を表示します。
 </iframe>
 
 ## <a name="create-svg-templated-html-marker"></a>SVG テンプレート化された HTML マーカーを作成する
@@ -65,7 +65,7 @@ HTML マーカーの既定の `htmlContent` は、プレースホルダー `{col
 
 <br/>
 
-<iframe height='500' scrolling='no' title='カスタム SVG テンプレートを使用した HTML マーカー' src='//codepen.io/azuremaps/embed/LXqMWx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io/azuremaps/pen/LXqMWx/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>HTML Marker with Custom SVG Template</a>」Pen を表示します。
+<iframe height='500' scrolling='no' title='カスタム SVG テンプレートを使用した HTML マーカー' src='//codepen.io/azuremaps/embed/LXqMWx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/LXqMWx/'>HTML Marker with Custom SVG Template</a>」Pen を表示します。
 </iframe>
 
 > [!TIP]
@@ -77,7 +77,7 @@ HTML マーカーの利点の 1 つは、CSS を使用して達成できる優�
 
 <br/>
 
-<iframe height='500' scrolling='no' title='HTML DataSource' src='//codepen.io/azuremaps/embed/qJVgMx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io/azuremaps/pen/qJVgMx/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>HTML DataSource</a>」Pen を表示します。
+<iframe height='500' scrolling='no' title='HTML DataSource' src='//codepen.io/azuremaps/embed/qJVgMx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/qJVgMx/'>HTML DataSource</a>」Pen を表示します。
 </iframe>
 
 ## <a name="draggable-html-markers"></a>ドラッグ可能な HTML マーカー
@@ -86,7 +86,7 @@ HTML マーカーの利点の 1 つは、CSS を使用して達成できる優�
 
 <br/>
 
-<iframe height='500' scrolling='no' title='ドラッグ可能な HTML マーカー' src='//codepen.io/azuremaps/embed/wQZoEV/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io/azuremaps/pen/wQZoEV/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>Draggable HTML Marker</a>」Pen を表示します。
+<iframe height='500' scrolling='no' title='ドラッグ可能な HTML マーカー' src='//codepen.io/azuremaps/embed/wQZoEV/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/wQZoEV/'>Draggable HTML Marker</a>」Pen を表示します。
 </iframe>
 
 ## <a name="add-mouse-events-to-html-markers"></a>マウス イベントを HTML マーカーに追加する
@@ -95,7 +95,7 @@ HTML マーカーの利点の 1 つは、CSS を使用して達成できる優�
 
 <br/>
 
-<iframe height='500' scrolling='no' title='マウス イベントを HTML マーカーに追加する' src='//codepen.io/azuremaps/embed/RqOKRz/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io/azuremaps/pen/RqOKRz/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>Adding Mouse Events to HTML Markers</a>」Pen を表示します。
+<iframe height='500' scrolling='no' title='マウス イベントを HTML マーカーに追加する' src='//codepen.io/azuremaps/embed/RqOKRz/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/RqOKRz/'>Adding Mouse Events to HTML Markers</a>」Pen を表示します。
 </iframe>
 
 ## <a name="next-steps"></a>次のステップ

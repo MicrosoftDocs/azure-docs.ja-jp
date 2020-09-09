@@ -8,25 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 28c900adadf7d942c9e331e7b77a369db64acf55
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c69fec46a6d1c8b177e5602ae24a6cbf0654dc20
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382703"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929212"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-c"></a>クイック スタート:Bing Video Search REST API と C# を使用して動画を検索する
 
-このクイック スタートを使用すると、Bing Video Search API への最初の呼び出しを行い、JSON 応答の検索結果を表示することができます。 このシンプルな C# アプリケーションは、HTTP 動画検索クエリを API に送信してその応答を表示します。 このアプリケーションは C# で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
+このクイックスタートを使用して、Bing Video Search API を呼び出してみましょう。 このシンプルな C# アプリケーションでは、HTTP 動画検索クエリを API に送信して、その JSON 応答を表示します。 このアプリケーションは C# で記述されていますが、この API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
 このサンプルのソース コードは、追加のエラー処理と機能、コードの注釈を含め、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingVideoSearchv7.cs) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 * [Visual Studio 2017 またはそれ以降](https://www.visualstudio.com/downloads/)の任意のエディション。
 * NuGet パッケージとして入手できる [Json.NET](https://www.newtonsoft.com/json) フレームワーク。
-* Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
+* Linux または MacOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
@@ -42,7 +43,7 @@ ms.locfileid: "75382703"
     using System.Collections.Generic;
     ```
 
-2. サブスクリプション キー、エンドポイント、検索語句の変数を追加します。 `uriBase` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。
+2. サブスクリプション キー、エンドポイント、検索語句の変数を追加します。 `uriBase` 値には、次のコードのグローバル エンドポイントを使用するか、Azure portal に表示される、お使いのリソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 
     ```csharp
     const string accessKey = "enter your key here";
@@ -50,26 +51,27 @@ ms.locfileid: "75382703"
     const string searchTerm = "kittens";
     ```
 
-### <a name="create-a-struct-to-format-the-bing-video-search-api-response"></a>Bing Video Search API 応答の書式を設定する構造体の作成
+## <a name="create-a-struct-to-format-the-bing-video-search-api-response"></a>Bing Video Search API 応答の書式を設定する構造体の作成
 
-1. 画像の検索結果と JSON ヘッダー情報を含む `SearchResult` 構造体を定義します。
+画像の検索結果と JSON ヘッダー情報を含む `SearchResult` 構造体を定義します。
 
-    ```csharp
-    struct SearchResult
-        {
-            public String jsonResult;
-            public Dictionary<String, String> relevantHeaders;
-        }
-    ```
+```csharp
+struct SearchResult
+    {
+        public String jsonResult;
+        public Dictionary<String, String> relevantHeaders;
+    }
+```
 
 ## <a name="create-and-handle-a-video-search-request"></a>動画検索要求の作成と処理
 
-`BingVideoSearch` という名前のメソッドを作成して API に対する呼び出しを実行し、以前に作成した`SearchResult` 構造体に戻り値の型を設定します。 このメソッドで次の手順を実行します。
+1. API に対する呼び出しを実行する `BingVideoSearch` という名前のメソッドを作成し、戻り値の型を前に作成した `SearchResult` 構造体に設定します。 
 
-1. 検索要求の URI を構築します。 文字列に追加する前に、検索語句 toSearch の書式を設定する必要がある点に注意してください。
+   次の手順で、このメソッドにコードを追加します。
 
-    ```csharp
-    
+1. 検索要求の URI を構築します。 文字列に追加する前に、検索語句 `toSearch` を書式設定します。
+
+    ```csharp    
     static SearchResult BingVideoSearch(string toSearch){
     
         var uriQuery = uriBase + "?q=" + Uri.EscapeDataString(toSearch);
@@ -105,7 +107,7 @@ ms.locfileid: "75382703"
     return searchResult;
     ```
 
-2. これで応答を出力することができます。
+2. 応答を出力します。
 
     ```csharp
     Console.WriteLine(result.jsonResult);

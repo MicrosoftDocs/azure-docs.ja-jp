@@ -8,17 +8,17 @@ author: KumudD
 manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 3cfe80962c11e37c79549a74d7e4b19cd08f4684
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 6f51794c28c68b41bb715dcc23ae775151b6d93d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80420916"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84703063"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---powershell"></a>Basic Load Balancer を使用する IPv6 デュアル スタック アプリケーションをデプロイする - PowerShell
 

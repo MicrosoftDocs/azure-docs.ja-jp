@@ -1,26 +1,29 @@
 ---
-title: WhiteNoise パッケージを使用して差分プライバシーを実装する
+title: WhiteNoise パッケージを使用して差分プライバシーを実装する (プレビュー)
 titleSuffix: Azure Machine Learning
 description: 差分プライバシーとは何かについて説明すると共に、データのプライバシーを維持する差分プライバシー システムを実装するうえで、WhiteNoise パッケージがいかに役立つかについて説明します。
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 05/03/2020
+ms.date: 07/09/2020
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.openlocfilehash: 09ac31f31f42f5aed9e7dd464e1fce1436cfe581
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 9728bf2c86c0629b09e2325650ce288cf9b3cc7e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594991"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86199804"
 ---
-# <a name="preserve-data-privacy-by-using-differential-privacy-and-the-whitenoise-package"></a>差分プライバシーと WhiteNoise パッケージを使用してデータのプライバシーを維持する
+# <a name="preserve-data-privacy-by-using-differential-privacy-and-the-whitenoise-package-preview"></a>差分プライバシーと WhiteNoise パッケージを使用してデータのプライバシーを維持する (プレビュー)
 
 差分プライバシーとは何かについて説明すると共に、差分プライバシー システムを実装するうえで WhiteNoise パッケージがいかに役立つかについて説明します。
 
 組織では、分析用に収集/使用するデータの量が増えるにつれて、プライバシーとセキュリティについての懸念も増していきます。 分析にはデータが必要です。 通常、モデルのトレーニングに使用されるデータが多いほど、モデルの精度は高くなります。 これらの分析に個人情報が使用される場合には、データのプライバシーを維持したまま、それらのデータが使用されるようにすることが特に重要となります。
+
+> [!NOTE]
+> ツールキットの名前は変更予定で、今後数週間で新しい名前が導入されることにご注意ください。 
 
 ## <a name="how-differential-privacy-works"></a>差分プライバシーのしくみ
 
@@ -79,4 +82,6 @@ epsilon に直接関連付けられているもう 1 つの値が、**delta** �
 
 ## <a name="next-steps"></a>次のステップ
 
-WhiteNoise のコンポーネントの使用方法については、[WhiteNoise コア パッケージ](https://github.com/opendifferentialprivacy/whitenoise-core)、[WhiteNoise システム パッケージ](https://github.com/opendifferentialprivacy/whitenoise-system)および [WhiteNoise サンプル](https://github.com/opendifferentialprivacy/whitenoise-samples)の GitHub リポジトリを参照してください。
+Azure Machine Learning で[データのプライバシーを維持](how-to-differential-privacy.md)します。
+
+WhiteNoise のコンポーネントの詳細については、[WhiteNoise コア パッケージ](https://github.com/opendifferentialprivacy/whitenoise-core)、[WhiteNoise システム パッケージ](https://github.com/opendifferentialprivacy/whitenoise-system)および [WhiteNoise サンプル](https://github.com/opendifferentialprivacy/whitenoise-samples)の GitHub リポジトリを参照してください。

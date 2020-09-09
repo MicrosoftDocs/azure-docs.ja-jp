@@ -9,18 +9,19 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b241ac223fd1eb9df2b0a914726d8f37df5f4d88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: eb89f962251c8c83a0f01e67a1ae42203d7e69f9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74547371"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494640"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-using-azure-cli"></a>Azure CLI を使用して、リソースにマネージド ID アクセスを割り当てる
 
@@ -30,11 +31,11 @@ ms.locfileid: "74547371"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure リソースのマネージド ID の基本点な事柄については、[概要](overview.md)に関するセクションを参照してください。 **[システム割り当てマネージド ID とユーザー割り当てマネージド ID の違い](overview.md#how-does-the-managed-identities-for-azure-resources-work)を必ず確認してください**。
+- Azure リソースのマネージド ID の基本点な事柄については、[概要](overview.md)に関するセクションを参照してください。 **[システム割り当てマネージド ID とユーザー割り当てマネージド ID の違い](overview.md#managed-identity-types)を必ず確認してください**。
 - まだ Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
 - CLI スクリプトの例を実行するには、次の 3 つのオプションがあります。
     - Azure ポータルから [Azure Cloud Shell](../../cloud-shell/overview.md) を使用する (次のセクションを参照してください)。
-    - 各コード ブロックの右上隅にある「試してみる」ボタンを利用して、埋め込まれた Azure Cloud Shell シェルを使用します。
+    - 各コード ブロックの右上隅にある [使ってみる] ボタンを使用して、埋め込まれた Azure Cloud Shell を使用します。
     - ローカル CLI コンソールを使用する場合は、[最新バージョンの Azure CLI をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)します。 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]

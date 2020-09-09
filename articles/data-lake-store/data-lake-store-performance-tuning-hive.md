@@ -1,17 +1,17 @@
 ---
 title: パフォーマンス チューニング - Azure Data Lake Storage Gen1 での Hive
-description: HdInsight での Hive と Azure Data Lake Storage Gen1 のパフォーマンス チューニング ガイドライン。
+description: HdInsight での Hive と Azure Data Lake Storage Gen1 のパフォーマンス チューニングについて説明します。 I/O 集中型のクエリでは、パフォーマンスが向上するように Hive をチューニングします。
 author: stewu
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 2e44332ddab9387c05a45d15101ccd2bdec3ada4
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: d10b1811257e14238cb04a79ff184cee57aab471
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690517"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189957"
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight の Hive と Azure Data Lake Storage Gen1 のパフォーマンス チューニング ガイダンス
 
@@ -55,17 +55,15 @@ I/O 集中型のワークロードでは、Tez コンテナーのサイズの削
 
 実行される同時実行タスクの数または並列処理は、YARN メモリの総量によって制限されます。  YARN コンテナーの数は、実行できる同時実行タスクの数を決定します。  ノードごとの YARN メモリを確認するには、Ambari を参照することができます。  YARN に移動し、[Configs] \(構成) タブを表示します。YARN メモリは、このウィンドウに表示されます。  
 
-        Total YARN memory = nodes * YARN memory per node
-        # of YARN containers = Total YARN memory / Tez container size
+> 合計 YARN メモリ = ノード数 * ノードあたり YARN メモリ、YARN コンテナー数 = 合計 YARN メモリ / Tez コンテナー サイズ
+
 Data Lake Storage Gen1 を使用してパフォーマンスを向上させる鍵は、コンカレンシーをできるだけ高くすることです。  作成する必要があるタスクの数は Tez が自動的に計算するため、設定する必要はありません。   
 
 ## <a name="example-calculation"></a>計算例
 
 たとえば、8 ノードの D14 クラスターがあるとします。  
 
-    Total YARN memory = nodes * YARN memory per node
-    Total YARN memory = 8 nodes * 96GB = 768GB
-    # of YARN containers = 768GB / 3072MB = 256
+> 合計 YARN メモリ = ノード数 * ノードあたり YARN メモリ、合計 YARN メモリ = 8 ノード * 96 GB = 768 GB、YARN コンテナー数 = 768 GB / 3072 MB = 256
 
 ## <a name="limitations"></a>制限事項
 
@@ -83,5 +81,5 @@ Data Lake Storage Gen1 によって提供される帯域幅の制限に達した
 
 Hive クエリをチューニングする際に役立つ、いくつかのブログを次に示します。
 * [HDInsight の Hadoop に対する Hive クエリの最適化](https://azure.microsoft.com/documentation/articles/hdinsight-hadoop-optimize-hive-query/)
-* [Hive クエリ パフォーマンスのトラブルシューティング](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
+* [Azure HDInsight での Hive クエリ ファイルのエンコード](https://docs.microsoft.com/archive/blogs/bigdatasupport/encoding-the-hive-query-file-in-azure-hdinsight)
 * [HDInsight での Hive の最適化に関する刺激的なトーク](https://channel9.msdn.com/events/Machine-Learning-and-Data-Sciences-Conference/Data-Science-Summit-2016/MSDSS25)

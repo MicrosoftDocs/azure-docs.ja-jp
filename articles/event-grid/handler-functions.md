@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid イベントに対するイベント ハンドラーとしての Azure 関数
 description: Event Grid イベントのイベント ハンドラーとして Azure Functions を使用する方法について説明します。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.author: spelluru
-ms.openlocfilehash: 3ff3c0013cb7a373461b997b9922612763461b8d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 07/07/2020
+ms.openlocfilehash: 8e48949bb5fecdf370fdf23146209ad757ffa062
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595651"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105763"
 ---
 # <a name="azure-function-as-an-event-handler-for-event-grid-events"></a>Event Grid イベントに対するイベント ハンドラーとしての Azure 関数
 
@@ -31,6 +27,26 @@ ms.locfileid: "83595651"
 | [チュートリアル: ビッグ データをデータ ウェアハウスにストリーミングする](event-grid-event-hubs-integration.md) | Event Hubs によってキャプチャ ファイルが作成されると、Event Grid が関数アプリにイベントを送信します。 アプリは Capture ファイルを取得し、データ ウェアハウスにデータを移行します。 |
 | [チュートリアル:Azure Service Bus の Azure Event Grid への統合の例](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid では、Service Bus トピックからのメッセージが、関数アプリとロジック アプリに送信されます。 |
 
+## <a name="rest-example-for-put"></a>REST の例 (PUT 用)
+
+```json
+{
+    "properties": 
+    {
+        "destination": 
+        {
+            "endpointType": "AzureFunction",
+            "properties": 
+            {
+                "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Web/sites/<FUNCTION APP NAME>/functions/<FUNCTION NAME>",
+                "maxEventsPerBatch": 1,
+                "preferredBatchSizeInKilobytes": 64
+            }
+        },
+        "eventDeliverySchema": "EventGridSchema"
+    }
+}
+```
 
 ## <a name="next-steps"></a>次のステップ
 サポートされているイベント ハンドラーの一覧については、「[イベント ハンドラー](event-handlers.md)」を参照してください。 

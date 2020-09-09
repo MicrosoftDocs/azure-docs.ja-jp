@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 45aa49de51f42b26c653b15e79c865e3f5647c39
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b348f3f3684d580ca84eed9b9a094717c12cf849
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74931640"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85319086"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server ストアド プロシージャ アクティビティ
 > [!div class="op_single_selector" title1="変換アクティビティ"]
@@ -49,7 +49,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
 >
 > Azure SQL Database、SQL Server、または Azure SQL Data Warehouse からデータをコピーする場合、**sqlReaderStoredProcedureName** プロパティを使用して、ソース データベースからデータを読み取るストアド プロシージャを呼び出すように、コピー アクティビティで **SqlSource** を構成できます。 詳細については、[Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties)、[SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties)、[Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties) の各コネクタに関する記事をご覧ください。
 
-次のチュートリアルでは、ストアド プロシージャ アクティビティをパイプラインで使用して、Azure SQL データベースでストアド プロシージャを呼び出します。
+次のチュートリアルでは、ストアド プロシージャ アクティビティをパイプラインで使用して、Azure SQL Database でストアド プロシージャを呼び出します。
 
 ## <a name="walkthrough"></a>チュートリアル
 ### <a name="sample-table-and-stored-procedure"></a>サンプル テーブルとストアド プロシージャ
@@ -106,7 +106,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
    ![Data Factory ホーム ページ](media/data-factory-stored-proc-activity/data-factory-home-page.png)
 
 ### <a name="create-an-azure-sql-linked-service"></a>Azure SQL のリンク サービスを作成する
-データ ファクトリの作成後、sampletable テーブルと usp_sample ストアド プロシージャが格納された Azure SQL データベースをデータ ファクトリにリンクする、Azure SQL のリンクされたサービスを作成します。
+データ ファクトリの作成後、sampletable テーブルと usp_sample ストアド プロシージャが格納された Azure SQL Database 内のデータベースをデータ ファクトリにリンクする、Azure SQL のリンクされたサービスを作成します。
 
 1. **SProcDF** の **[Data Factory]** ブレードで、 **[作成およびデプロイ]** をクリックして Data Factory エディターを起動します。
 2. コマンド バーの **[新しいデータ ストア]** をクリックし、 **[Azure SQL Database]** を選択します。 Azure SQL のリンク サービスを作成するための JSON スクリプトがエディターに表示されます。
@@ -114,7 +114,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
    ![新しいデータ ストア](media/data-factory-stored-proc-activity/new-data-store.png)
 3. JSON スクリプトを次のように変更します。
 
-   1. `<servername>` を、Azure SQL Database サーバーの名前に置き換えます。
+   1. `<servername>` をご自分のサーバーの名前に置き換えます。
    2. `<databasename>` を、テーブルとストアド プロシージャを作成したデータベースの名前に置き換えます。
    3. `<username@servername>` を、データベースへのアクセス権を持つユーザー アカウントに置き換えます。
    4. `<password>` を、ユーザー アカウントのパスワードに置き換えます。
@@ -207,7 +207,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
 3. ダイアグラム ビューで、`sprocsampleout` データセットをダブルクリックします。 スライスが準備完了状態で表示されます。 スライスは、JSON の開始時刻から終了時刻までの間に 1 時間ごとに生成されるため、5 つのスライスがあります。
 
     ![[ダイアグラム] タイル](media/data-factory-stored-proc-activity/data-factory-slices.png)
-4. スライスが**準備完了**状態のときに、Azure SQL データベースに対して `select * from sampletable` クエリを実行して、ストアド プロシージャによってデータがテーブルに挿入されていることを確認します。
+4. スライスが**準備完了**状態のときに、データベースに対して `select * from sampletable` クエリを実行し、ストアド プロシージャによってデータがテーブルに挿入されたことを確認します。
 
    ![出力データ](./media/data-factory-stored-proc-activity/output.png)
 
@@ -310,7 +310,7 @@ JSON 形式のストアド プロシージャ アクティビティの定義を�
 | type | 次のように設定する必要があります。**SqlServerStoredProcedure** | はい |
 | inputs | 省略可能。 入力データセットを指定した場合、ストアド プロシージャ アクティビティの実行に使用できる ("準備完了" 状態である) 必要があります。 ストアド プロシージャで入力データセットをパラメーターとして使用することはできません。 入力データセットは、ストアド プロシージャ アクティビティを開始する前に、依存関係の確認にのみ使用されます。 |いいえ |
 | outputs | ストアド プロシージャ アクティビティの出力データセットを指定する必要があります。 出力データセットでは、ストアド プロシージャ アクティビティの**スケジュール** (毎時、毎週、毎月など) を指定します。 <br/><br/>出力データセットでは、ストアド プロシージャを実行する、Azure SQL Database、Azure SQL Data Warehouse、または SQL Server Database を表す**リンクされたサービス**を使用する必要があります。 <br/><br/>出力データセットは、パイプラインの別のアクティビティ ([連鎖するアクティビティ](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)) による後続処理のために、ストアド プロシージャの結果を渡す 1 つの方法として使用できます。 ただし、Data Factory では、ストアド プロシージャの出力をこのデータセットに自動的に書き込むわけではありません。 出力データセットが参照する SQL テーブルへの書き込みは、ストアド プロシージャが実行します。 <br/><br/>出力データセットに**ダミー データセット**を指定できる場合もあります。ダミー データセットは、ストアド プロシージャ アクティビティを実行するスケジュールの指定にのみ使用されます。 |はい |
-| storedProcedureName |出力テーブルで使用するリンクされたサービスで表される Azure SQL データベース、Azure SQL Data Warehouse、または SQL Server データベースのストアド プロシージャの名前を指定します。 |はい |
+| storedProcedureName |出力テーブルで使用するリンクされたサービスで表される Azure SQL Database、Azure SQL Data Warehouse、または SQL Server のストアド プロシージャ名を指定します。 |はい |
 | storedProcedureParameters |ストアド プロシージャのパラメーター値を指定します。 パラメーターで null を渡す必要がある場合は、構文として "param1": null (すべて小文字) を使用します。 このプロパティの使用方法については、次のサンプルをご覧ください。 |いいえ |
 
 ## <a name="passing-a-static-value"></a>静的な値を渡す

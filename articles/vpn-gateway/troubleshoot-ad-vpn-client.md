@@ -4,15 +4,15 @@ description: VPN Gateway P2S Azure AD 認証クライアントのトラブルシ
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: 8871e92f0911c4d3cbcc1772bef1daeb5c70b5d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56a8514fc2531ba0b18925427814e5bfef7d64bf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74151974"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84988102"
 ---
 # <a name="troubleshoot-an-azure-ad-authentication-vpn-client"></a>Azure AD 認証 VPN クライアントのトラブルシューティング
 

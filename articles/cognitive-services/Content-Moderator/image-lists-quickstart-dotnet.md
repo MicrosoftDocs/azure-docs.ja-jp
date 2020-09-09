@@ -10,12 +10,13 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: e650529f3adb998ce683354565acdeb3928b50c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: bec31f830adddfc7251ce36e13ef0bfaa0af7638
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "72931763"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88931711"
 ---
 # <a name="moderate-with-custom-image-lists-in-c"></a>C# でカスタム画像リストを使用してモデレートする
 
@@ -34,7 +35,7 @@ ms.locfileid: "72931763"
 
 このガイドのコンソール アプリケーションでは、Image List API で実行できるタスクの一部をシミュレートします。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。 
 
 ## <a name="sign-up-for-content-moderator-services"></a>Content Moderator サービスにサインアップする
 

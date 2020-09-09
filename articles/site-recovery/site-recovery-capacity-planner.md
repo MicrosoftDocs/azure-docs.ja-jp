@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 843d5da26d6791cea880e5dfb654fe27b74f5d9f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5764e44db31755110ac99a3e8e8e0984cdf9604
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73936043"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87490576"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Hyper-V VM のディザスター リカバリーの容量を計画する 
 
@@ -39,7 +39,7 @@ Site Recovery Capacity Planner は、ソース環境とワークロードの分�
 ## <a name="before-you-start"></a>開始する前に
 
 * VM、VM あたりのディスク数、ディスクあたりのストレージなど、環境の情報を収集します。
-* レプリケートされたデータの 1 日の変更 (チャーン) 率を識別します。 [Hyper-V 容量計画ツール](https://www.microsoft.com/download/details.aspx?id=39057)をダウンロードして変更率を得ます。 [こちら](site-recovery-capacity-planning-for-hyper-v-replication.md) を参照してください。 このツールは 1 週間にわたって実行して平均値を取り込むことをお勧めします。
+* レプリケートされたデータの 1 日の変更 (チャーン) 率を識別します。 [Hyper-V 容量計画ツール](https://www.microsoft.com/download/details.aspx?id=39057)をダウンロードして変更率を得ます。 [こちら](./hyper-v-deployment-planner-overview.md) を参照してください。 このツールは 1 週間にわたって実行して平均値を取り込むことをお勧めします。
 
 
 ## <a name="run-the-quick-planner"></a>クイック プランナーの実行
@@ -47,13 +47,13 @@ Site Recovery Capacity Planner は、ソース環境とワークロードの分�
 
 2. **[Select a planner type]\(プランナーの種類を選択する\)** リスト ボックスから **[Quick Planner]\(クイック プランナー\)** を選択します。
 
-   ![はじめに](./media/site-recovery-capacity-planner/getting-started.png)
+   ![[Quick Planner]\(クイック プランナー\) が選択された、[Select a planner type]\(プランナーの種類を選択する\) オプションのスクリーンショット。](./media/site-recovery-capacity-planner/getting-started.png)
 
 3. **Capacity Planner** ワークシートに、必要な情報を入力します。 以下のスクリーンショットの赤の丸が付いているすべてのフィールドに入力します。
 
    a. **[シナリオの選択]** で **[Hyper-V から Azure]** または **[VMware/物理から Azure]** を選択します。
 
-   b. **[Average daily data change rate (%)]\(1 日の平均データ変更率 (%)\)** に [Hyper-V 容量計画ツール](site-recovery-capacity-planning-for-hyper-v-replication.md)または [Site Recovery Deployment Planner](./site-recovery-deployment-planner.md) を使用して収集した情報を入力します。
+   b. **[Average daily data change rate (%)]\(1 日の平均データ変更率 (%)\)** に [Hyper-V 容量計画ツール](./hyper-v-deployment-planner-overview.md)または [Site Recovery Deployment Planner](./site-recovery-deployment-planner.md) を使用して収集した情報を入力します。
 
    c. **[Compression]\(圧縮\)** 設定は、Hyper-V VM を Azure にレプリケートする場合には使用されません。 圧縮する場合は、Riverbed などのサードパーティのアプライアンスを使用します。
 
@@ -61,7 +61,7 @@ Site Recovery Capacity Planner は、ソース環境とワークロードの分�
 
    e. **[Number of hours in which initial replication for the batch of virtual machines should complete]\(仮想マシンのバッチの初期レプリケーションを完了させる時間\)** と **[Number of virtual machines per initial replication batch]\(初期レプリケーションのバッチあたりの仮想マシンの数\)** には、初期レプリケーションの要件の計算に使用した設定を入力します。 Site Recovery をデプロイする際には、初期データ セット全体をアップロードします。
 
-   ![入力](./media/site-recovery-capacity-planner/inputs.png)
+   ![必要な入力情報が表示された、Capacity Planner ワークシートのスクリーンショット。](./media/site-recovery-capacity-planner/inputs.png)
 
 4. ソース環境の値を入力した後には、以下などが出力されます。
 
@@ -77,7 +77,7 @@ Site Recovery Capacity Planner は、ソース環境とワークロードの分�
    * **[Number of additional Process Servers required]\(必要なその他のプロセス サーバーの数\)** :既定で構成サーバーで実行しているプロセス サーバーの他に、追加のプロセス サーバーが必要かどうかを示します。
    * **[100% additional storage on the Source]\(ソースでの 100% 追加ストレージ\)** :ソースの場所に追加ストレージが必要かどうかを示します。
 
-      ![出力](./media/site-recovery-capacity-planner/output.png)
+      ![指定された入力に基づく、表示された出力のスクリーンショット。](./media/site-recovery-capacity-planner/output.png)
 
 ## <a name="run-the-detailed-planner"></a>詳細なプランナーの実行
 
@@ -85,7 +85,7 @@ Site Recovery Capacity Planner は、ソース環境とワークロードの分�
 
 2. **[Select a planner type (プランナーの種類を選択する]** リスト ボックスから **[Detailed Planner (詳細なプランナー)]** を選択します。
 
-   ![ファースト ステップ ガイド](./media/site-recovery-capacity-planner/getting-started-2.png)
+   ![[Detailed Planner]\(詳細なプランナー\) が選択された、[Select a planner type]\(プランナーの種類を選択する\) オプションのスクリーンショット。](./media/site-recovery-capacity-planner/getting-started-2.png)
 
 3. **Workload Qualification** ワークシートに、必要な情報を入力します。 マークが付いているフィールドはすべて入力する必要があります。
 
@@ -105,7 +105,7 @@ Site Recovery Capacity Planner は、ソース環境とワークロードの分�
 
    h. **[Mapping Azure VM size]\(マッピングする Azure VM サイズ\)** には、マップする Azure VM のサイズを入力します。 これを手動で行わない場合は、 **[Compute IaaS VMs]\(IaaS VM を計算する\)** を選択します。 手動で設定を入力した後、 **[Compute IaaS VMs]\(IaaS VM を計算する\)** を選択すると、手動で入力した設定が上書きされることがあります。 計算プロセスによって、最も一致する Azure VM のサイズが自動的に特定されます。
 
-   ![Workload Qualification ワークシート](./media/site-recovery-capacity-planner/workload-qualification.png)
+   ![必要な入力情報が表示された、Workload Qualification ワークシートのスクリーンショット。](./media/site-recovery-capacity-planner/workload-qualification.png)
 
 4. **[Compute IaaS VMs]\(IaaS VM を計算する\)** を選択すると、以下が実行されます。
 
@@ -117,12 +117,12 @@ Site Recovery Capacity Planner は、ソース環境とワークロードの分�
 
 AA から AE の列が出力され、各 VM の情報が示されます。
 
-![出力列 AA から AE](./media/site-recovery-capacity-planner/workload-qualification-2.png)
+![出力列 AA から AE を示すスクリーンショット。](./media/site-recovery-capacity-planner/workload-qualification-2.png)
 
 ### <a name="example"></a>例
 例として、テーブルに示した値を持つ 6 つの VM に最も一致する Azure VM および Azure ストレージ要件が、ツールによって計算されて割り当てられます。
 
-![Workload Qualification の割り当て](./media/site-recovery-capacity-planner/workload-qualification-3.png)
+![Workload Qualification の割り当てを示すスクリーンショット。](./media/site-recovery-capacity-planner/workload-qualification-3.png)
 
 * 出力例では、以下に注意してください。
 
@@ -144,7 +144,7 @@ AA から AE の列が出力され、各 VM の情報が示されます。
 
 2. 変更する場合、**Workload Qualification** ワークシートを変更する必要があります。 その後、 **[Submit data to the planner tool]\(データをプランナー ツールに送信\)** をもう一度選択します。
 
-   ![Capacity Planner](./media/site-recovery-capacity-planner/capacity-planner.png)
+   ![Capacity Planner ワークシート内の変更された入力と結果出力を示すスクリーンショット。](./media/site-recovery-capacity-planner/capacity-planner.png)
 
 ## <a name="next-steps"></a>次のステップ
-Capacity Planner ツールを[実行する方法について説明します](site-recovery-capacity-planning-for-hyper-v-replication.md)。
+Capacity Planner ツールを[実行する方法について説明します](./hyper-v-deployment-planner-overview.md)。

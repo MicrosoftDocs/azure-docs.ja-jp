@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: 4ec81ef69f21fc74864e437a3c6de46550a70c18
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: dc73b5b9f05d24de206b25095ea7eaf93f035298
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891657"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511162"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用した Desired State Configuration 拡張機能
 
-この記事では、[Desired State Configuration (DSC) 拡張機能ハンドラー](dsc-overview.md)の Azure Resource Manager テンプレートについて説明します。 多くの例で、Azure Automation を使用してオンボードするために、**RegistrationURL** (文字列として指定) と **RegistrationKey** ([PSCredential](/dotnet/api/system.management.automation.pscredential) として指定) を使用します。 それらの値の取得の詳細については、「[Azure Automation State Configuration による管理のためのマシンのオンボード - セキュリティで保護された登録](/azure/automation/automation-dsc-onboarding#onboarding-securely-using-registration)」を参照してください。
+この記事では、[Desired State Configuration (DSC) 拡張機能ハンドラー](dsc-overview.md)の Azure Resource Manager テンプレートについて説明します。 多くの例では、Azure Automation を使用してオンボードするために、**RegistrationURL** (String として指定) と **RegistrationKey** ([PSCredential](/dotnet/api/system.management.automation.pscredential) として指定) を使用しています。 それらの値の取得の詳細については、「[Azure Automation State Configuration による管理のためのマシンのオンボード - セキュリティで保護された登録](../../automation/automation-dsc-onboarding.md#enable-machines-securely-using-registration)」を参照してください。
 
 > [!NOTE]
 > スキーマの例に若干の違いがある可能性があります。 スキーマの変更は 2016 年 10 月 のリリースで発生しました。 詳しくは、[以前の形式からの更新](#update-from-a-previous-format)に関する記事をご覧ください。
@@ -177,7 +177,7 @@ DSC 拡張機能は、既定の拡張機能プロパティを継承します。
 
 ## <a name="details"></a>詳細
 
-| プロパティ名 | 種類 | 説明 |
+| プロパティ名 | Type | 説明 |
 | --- | --- | --- |
 | settings.wmfVersion |string |VM にインストールする Windows Management Framework (WMF) のバージョンを指定します。 このプロパティを **latest** に設定すると、WMF の最新バージョンがインストールされます。 現在、このプロパティに設定できる値は、**4.0**、**5.0**、**5.1**、**latest** のみです。 これらの設定できる値は更新される可能性があります。 既定値は **latest** です。 |
 | settings.configuration.url |string |DSC 構成 .zip ファイルのダウンロード元の URL の場所を指定します。 指定した URL にアクセスのための SAS トークンが必要な場合は、**protectedSettings.configurationUrlSasToken** プロパティに SAS トークンの値を設定します。 **settings.configuration.script** または **settings.configuration.function** を定義する場合、このプロパティは必須です。 これらのプロパティの値を指定しない場合、Location Configuration Manager (LCM) のメタデータを設定する既定の構成スクリプトが拡張機能から呼び出され、引数が指定されます。 |
@@ -196,7 +196,7 @@ DSC 拡張機能は、既定の拡張機能プロパティを継承します。
 次の値について詳しくは、[ローカル構成マネージャーの基本設定](/powershell/scripting/dsc/managing-nodes/metaConfig#basic-settings)に関するページをご覧ください。
 DSC 拡張機能の既定の構成スクリプトは、次の表に記載されている LCM プロパティの構成にのみ使用できます。
 
-| プロパティ名 | 種類 | 説明 |
+| プロパティ名 | Type | 説明 |
 | --- | --- | --- |
 | protectedSettings.configurationArguments.RegistrationKey |PSCredential |必須のプロパティです。 Azure Automation サービスに登録するためにノードで使用するキーを、PowerShell 資格情報オブジェクトのパスワードとして指定します。 この値は、Automation アカウントに対して **listkeys** メソッドを使用することで、自動的に検出できます。  [例](#example-using-referenced-azure-automation-registration-values)を参照してください。 |
 | settings.configurationArguments.RegistrationUrl |string |必須のプロパティです。 ノードが登録を試みる Automation エンドポイントの URL を指定します。 この値は、Automation アカウントに対して **reference** メソッドを使用することで、自動的に検出できます。 |
@@ -356,27 +356,27 @@ The only possible values are '', 'Enable', and 'Disable' (Privacy.dataCollection
 "WmfVersion is '{0}'.
 Only possible values are … and 'latest' (WmfVersion は '{0}' です。指定できる値は … および 'latest' のみです)"
 
-**問題点**: 指定した値が許可されていません。
+**問題点**:指定した値が許可されていません。
 
-**解決策**: 無効な値を有効な値に変更してください。
+**解決策**:無効な値を有効な値に変更してください。
 詳しくは、「[詳細](#details)」の表をご覧ください。
 
 ### <a name="invalid-url"></a>無効な URL
 
 "ConfigurationData.url is '{0}'. This is not a valid URL. (Configuration.url は '{0}' です。これは有効な URL ではありません。)" "DataBlobUri is '{0}'. これは有効な URL ではありません)" "Configuration.url is '{0}'.This is not a valid URL (Configuration.url は '{0}' です。 これは有効な URL ではありません)"
 
-**問題点**: 指定した URL が無効です。
+**問題点**:指定した URL が無効です。
 
-**解決策**: 指定した URL すべてを確認してください。
+**解決策**:指定した URL すべてを確認してください。
 拡張機能がリモート マシンにアクセスできるように、すべての URL が有効な場所に解決されていることを確認します。
 
 ### <a name="invalid-registrationkey-type"></a>無効な RegistrationKey の型
 
 "Invalid type for parameter RegistrationKey of type PSCredential. (型 PSCredential のパラメーター RegistrationKey の無効な型。)"
 
-**問題点**: protectedSettings.configurationArguments の *RegistrationKey* の値は、PSCredential 以外の型としては指定できません。
+**問題点**:protectedSettings.configurationArguments の *RegistrationKey* の値は、PSCredential 以外の型としては指定できません。
 
-**解決策**: RegistrationKey の protectedSettings.configurationArguments エントリを、次の形式を使用して PSCredential 型に変更してください。
+**解決策**:RegistrationKey の protectedSettings.configurationArguments エントリを、次の形式を使用して PSCredential 型に変更してください。
 
 ```json
 "configurationArguments": {
@@ -391,18 +391,18 @@ Only possible values are … and 'latest' (WmfVersion は '{0}' です。指定�
 
 "Invalid configurationArguments type {0} (無効な configurationArguments の型 {0})"
 
-**問題点**: *ConfigurationArguments* プロパティが**ハッシュ テーブル** オブジェクトに解決できません。
+**問題点**:*ConfigurationArguments* プロパティが**ハッシュ テーブル** オブジェクトに解決できません。
 
-**解決策**: *ConfigurationArguments* プロパティを**ハッシュ テーブル**にしてください。
+**解決策**:*ConfigurationArguments* プロパティを**ハッシュ テーブル**にしてください。
 前の例に示されている形式に従います。 引用符、コンマ、および中かっこに注意します。
 
 ### <a name="duplicate-configurationarguments"></a>ConfigurationArguments の重複
 
 "Found duplicate arguments '{0}' in both public and protected configurationArguments (パブリックと保護対象の両方の configurationArguments で重複する引数 '{0}' が見つかりました)"
 
-**問題点**: パブリック設定の *ConfigurationArguments* と保護された設定の *ConfigurationArguments* に同じ名前のプロパティが含まれています。
+**問題点**:パブリック設定の *ConfigurationArguments* と保護された設定の *ConfigurationArguments* に同じ名前のプロパティが含まれています。
 
-**解決策**: 重複するプロパティのいずれかを削除してください。
+**解決策**:重複するプロパティのいずれかを削除してください。
 
 ### <a name="missing-properties"></a>不足しているプロパティ
 
@@ -418,7 +418,7 @@ Only possible values are … and 'latest' (WmfVersion は '{0}' です。指定�
 
 "protectedSettings.ConfigurationDataUrlSasToken requires that settings.configurationData.url is specified (protectedSettings.ConfigurationDataUrlSasToken には settings.configurationData.url の指定が必要です)"
 
-**問題点**: 定義したプロパティには、不足している別のプロパティが必要です。
+**問題点**:定義したプロパティには、不足している別のプロパティが必要です。
 
 **解決策**:
 

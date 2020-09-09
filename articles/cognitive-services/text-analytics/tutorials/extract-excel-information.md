@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/27/2019
 ms.author: aahi
-ms.openlocfilehash: fd70fe14d3765fb7c21b92f62b4d73564176baa2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b9e6561c1ed9870b669ec5e9825a376f8bd03c4d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78201067"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145714"
 ---
 # <a name="extract-information-in-excel-using-text-analytics-and-power-automate"></a>Text Analytics と Power Automate を使用して Excel 内の情報を抽出する 
 
@@ -33,7 +33,7 @@ ms.locfileid: "78201067"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Microsoft Azure アカウント。 [無料試用版を開始する](https://azure.microsoft.com/free/)か、[サインイン](https://portal.azure.com/)します。
+- Microsoft Azure アカウント。 [無料アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)するか、[サインイン](https://portal.azure.com/)してください。
 - Text Analytics リソース。 お持ちでない場合は、[Azure portal で作成](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)し、Free レベルを使用してこのチュートリアルを完了することができます。
 - サインアップ時に生成された[キーとエンドポイント](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)。
 - テナントの問題を含むスプレッドシート。 サンプル データは GitHub で提供されています。
@@ -76,7 +76,7 @@ Excel ファイルに追加する情報を表す変数を作成します。 **[�
 
 作成した変数に次の情報を追加します。 これらは、Excel ファイルの列を表します。 折りたたまれている変数がある場合は、それらをクリックして展開できます。
 
-| アクション |Name   | 種類 | 値 |
+| アクション |名前   | Type | 値 |
 |---------|---------|---|---|
 | 変数を初期化する | var_person | String | Person |
 | 変数を初期化する 2 | var_phone | String | Phone_Number |
@@ -201,7 +201,7 @@ Excel の情報を入力し、 **[Key Column]\(キー列\)** 、 **[Key Value]\(
 > :::image type="content" source="../media/tutorials/excel/add-apply-action-4.png" alt-text="Text Analytics 資格情報をフローに追加する。":::
 
 
-次に、Excel テーブルの行の問題の説明に "plumbing" (配管工事) という語が含まれているかどうかがフローによって確認されます。 含まれている場合は、"plumbing" が [IssueType] 列に追加されます。 そうでない場合は、“other” (その他) と入力します。
+次に、Excel テーブルの行の問題の説明に "plumbing" (配管工事) という語が含まれているかどうかがフローによって確認されます。 含まれている場合は、"plumbing" が [IssueType] 列に追加されます。 そうでない場合は、「other」(その他) と入力します。
 
 **Apply to each 4** 内に、**条件**コントロールを追加します。 **条件 3** という名前になります。 動的コンテンツ ウィンドウを使用して、最初のテキスト ボックスで、Excel ファイルから **[Description]** を検索して追加します。 中央のボックスが **[を含む]** になっていることを確認します。 次に、右側のテキストボックスで、`var_plumbing` を見つけて選択します。 
 

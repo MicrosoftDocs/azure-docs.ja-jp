@@ -8,22 +8,22 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c5a483ff7a5a93a6908538fd237cb4cf2dacec6
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 230ccb3d10c7ba6f3abcac9d83309fd7fa3c5c3f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582676"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797685"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD でのグループベース ライセンスの PowerShell と Graph の例
 
-グループベースのライセンスの機能はすべて [Azure ポータル](https://portal.azure.com)を通じて利用できます。現在、PowerShell と Microsoft Graph のサポートは読み取り専用操作に制限されていますが、 既存の [MSOnline PowerShell コマンドレット](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) と Microsoft Graph を使用して実行できる便利なタスクがいくつかあります。 このドキュメントでは、利用できる機能のいくつかの例を示します。
+グループベースのライセンスの機能はすべて [Azure ポータル](https://portal.azure.com)を通じて利用できます。現在、PowerShell と Microsoft Graph のサポートは読み取り専用操作に制限されていますが、 既存の [MSOnline PowerShell コマンドレット](/powershell/module/msonline) と Microsoft Graph を使用して実行できる便利なタスクがいくつかあります。 このドキュメントでは、利用できる機能のいくつかの例を示します。
 
 > [!NOTE]
 > コマンドレットの実行を開始する前に、`Connect-MsolService` コマンドレットを実行して、組織に接続していることを最初に確認します。
@@ -445,7 +445,7 @@ HTTP/1.1 200 OK
 
 ## <a name="remove-direct-licenses-for-users-with-group-licenses"></a>グループ ライセンスを持つユーザーの直接付与されたライセンスを削除する
 
-このスクリプトの目的は、グループから既に同じライセンスを継承している (例: [グループベースのライセンスへの移行](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-migration-azure-portal)の一環として) ユーザーの不要な直接ライセンスを削除することです。
+このスクリプトの目的は、グループから既に同じライセンスを継承している (例: [グループベースのライセンスへの移行](./licensing-groups-migrate-users.md)の一環として) ユーザーの不要な直接ライセンスを削除することです。
 > [!NOTE]
 > まず、削除する直接ライセンスで、継承されたライセンスより多い数のサービス機能が有効にされないことを検証することが重要です。 そうしないと、直接付与されたライセンスを削除したときに、ユーザーのサービスおよびデータへのアクセスが無効になる可能性があります。 現在、継承されたライセンスまたは直接ライセンスによって有効になっているサービスを PowerShell で確認することはできません。 このスクリプトでは、グループから継承されることがわかっているサービスの最小レベルを指定し、それに照らして確認を行うことで、サービスに対するユーザーのアクセス権が予期せず失われないようにしています。
 

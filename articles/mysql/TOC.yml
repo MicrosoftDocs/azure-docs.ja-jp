@@ -28,6 +28,12 @@
           href: connect-php.md
         - name: Java
           href: connect-java.md
+        - name: Java と Spring Data JDBC
+          href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
+        - name: Java と Spring Data JPA
+          href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
+        - name: Java と Spring Data R2DBC
+          href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
         - name: .NET
           href: connect-csharp.md
         - name: Python
@@ -57,10 +63,10 @@
     - name: 2 - Web アプリの作成
       items:
         - name: コンテナーでの Wordpress と MySQL
-          href: ../app-service/containers/tutorial-multi-container-app.md
+          href: ../app-service/tutorial-multi-container-app.md
           maintainContext: true
         - name: PHP と MySQL
-          href: ../app-service/app-service-web-tutorial-php-mysql.md
+          href: ../app-service/tutorial-php-mysql-app.md
           maintainContext: true
 - name: サンプル
   items:
@@ -68,9 +74,6 @@
       href: sample-scripts-azure-cli.md
     - name: Java 接続プール
       href: sample-scripts-java-connection-pooling.md
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: DB とサーバー
@@ -87,7 +90,7 @@
           href: concepts-pricing-tiers.md
         - name: 予約容量の前払い
           href: concept-reserved-pricing.md
-        - name: 制限
+        - name: 制限事項
           href: concepts-limits.md
     - name: データ アクセスとセキュリティ
       items:
@@ -109,6 +112,11 @@
           href: concepts-data-encryption-mysql.md
         - name: Azure AD 認証
           href: concepts-azure-ad-authentication.md
+        - name: インフラストラクチャの二重暗号化
+          href: concepts-infrastructure-double-encryption.md
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
           href: security-baseline.md
     - name: ビジネス継続性
@@ -132,8 +140,12 @@
           href: concepts-query-performance-insight.md
         - name: パフォーマンスに関する推奨事項
           href: concepts-performance-recommendations.md
+        - name: サーバー パラメーター
+          href: concepts-server-parameters.md
     - name: 開発
       items:
+        - name: アプリケーションのベスト プラクティス
+          href: app-development-best-practices.md
         - name: ドライバーとツールの互換性
           href: concepts-compatibility.md
         - name: アプリケーション開発
@@ -144,10 +156,14 @@
           href: concepts-aks.md
         - name: Java
           items:
-            - name: Spring Data JDBC の構成
-              href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-mysql
-            - name: Spring Data JPA の構成
-              href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-mysql
+            - name: Java と JDBC の使用
+              href: connect-java.md
+            - name: Spring Data JDBC の使用
+              href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
+            - name: Spring Data JPA の使用
+              href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
+            - name: Spring Data R2DBC の使用
+              href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
     - name: レプリケーション
       items:
         - name: データイン レプリケーション
@@ -187,9 +203,15 @@
         - name: ユーザーの作成
           href: howto-create-users.md
         - name: Connection strings
-          href: howto-connection-string.md
+          items:
+            - name: アプリケーションの接続
+              href: howto-connection-string.md
+            - name: Azure PowerShell
+              href: howto-connection-string-powershell.md
         - name: SSL の構成
           href: howto-configure-ssl.md
+        - name: TLS の構成
+          href: howto-tls-configurations.md
         - name: Web Apps
           href: howto-connect-webapp.md
         - name: リダイレクトによる接続
@@ -240,6 +262,8 @@
           href: howto-read-replicas-powershell.md
     - name: トラブルシューティング
       items:
+        - name: 一般的なエラーのトラブルシューティング
+          href: howto-troubleshoot-common-errors.md
         - name: 接続エラーのトラブルシューティング
           href: howto-troubleshoot-common-connection-issues.md
         - name: クエリ パフォーマンスのトラブルシューティング
@@ -272,6 +296,10 @@
           href: howto-data-encryption-cli.md
         - name: データ暗号化の検証
           href: howto-data-encryption-validation.md
+    - name: インフラストラクチャの二重暗号化
+      items:
+        - name: インフラストラクチャの二重暗号化を構成する
+          href: howto-double-encryption.md
     - name: Azure AD との統合
       items:
         - name: Azure AD の統合の構成
@@ -290,6 +318,10 @@
           href: howto-restart-server-cli.md
         - name: Azure PowerShell
           href: howto-restart-server-powershell.md
+    - name: リージョン間の移動
+      items:
+        - name: Azure portal
+          href: howto-move-regions-portal.md
 - name: リファレンス
   items:
     - name: Azure CLI
@@ -300,6 +332,9 @@
       href: /azure/templates/microsoft.dbformysql/allversions
     - name: 管理ストアド プロシージャ
       href: reference-stored-procedures.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: デプロイ テンプレート

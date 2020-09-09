@@ -6,12 +6,13 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: c80ab4acd745717e2e68ae7d9dc818594ad1ce9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e1359fd2a59b49f10bb3b2daa4bcbadae921e188
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501466"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012451"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Azure Cosmos DB でプロビジョニング済みのスループット コストを最適化する
 
@@ -117,7 +118,7 @@ Azure Cosmos DB では既定で、すべてのレコードのすべてのプロ�
 
 プロビジョニングされた RU の総数、レート制限された要求の数、および消費された RU の数を、Azure portal で監視できます。 次の図では使用量メトリックの例を示します。
 
-![Azure portal で要求ユニットを監視する](./media/optimize-cost-throughput/monitoring.png)
+:::image type="content" source="./media/optimize-cost-throughput/monitoring.png" alt-text="Azure portal で要求ユニットを監視する":::
 
 レート制限された要求の数が特定のしきい値を超えたかどうかを確認するアラートを設定することもできます。 詳しくは、[Azure Cosmos DB の監視方法](use-metrics.md)に関する記事をご覧ください。 これらのアラートでは、アカウント管理者にメールを送ること、またはカスタム HTTP Webhook や Azure 関数を呼び出して自動的にプロビジョニング済みスループットを増やすことができます。 
 
@@ -155,7 +156,7 @@ Azure Cosmos DB では既定で、すべてのレコードのすべてのプロ�
 
 1. コンテナーやデータベースに大幅にオーバー プロビジョニングされたスループットがある場合は、プロビジョニングされた RU と消費された RU を確認して、ワークロードを微調整する必要があります。  
 
-2. アプリケーションに必要な予約済みスループットの量を推定するには、典型的な操作の実行に関連する要求ユニット (RU) の料金を記録し、アプリケーションが使用する代表的な Azure Cosmos コンテナーまたはデータベースに基づいて、1 秒ごとに実行される操作数を推定します。 さらに、通常のクエリとそれらの使用量も忘れずに測定し、考慮に入れます。 プログラムまたはポータルでクエリの RU コストを見積もる方法については、[クエリのコストの最適化](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)に関する記事をご覧ください。 
+2. アプリケーションに必要な予約済みスループットの量を推定するには、典型的な操作の実行に関連する要求ユニット (RU) の料金を記録し、アプリケーションが使用する代表的な Azure Cosmos コンテナーまたはデータベースに基づいて、1 秒ごとに実行される操作数を推定します。 さらに、通常のクエリとそれらの使用量も忘れずに測定し、考慮に入れます。 プログラムまたはポータルでクエリの RU コストを見積もる方法については、[クエリのコストの最適化](optimize-cost-queries.md)に関する記事をご覧ください。 
 
 3. 操作とその RU コストを取得するもう 1 つの方法は、Azure Monitor ログを有効にすることで、操作/継続時間と要求の料金の明細が提供されます。 Azure Cosmos DB では、すべての操作に対して要求の料金が提供されるので、すべての操作の料金を応答から保存して、分析に使用できます。 
 

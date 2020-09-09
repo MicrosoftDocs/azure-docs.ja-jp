@@ -5,22 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 07/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89431c2bf1838d3264b03c8a5f2ce62cd6df3631
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3959fc7df78a5c1f255f7551a018eec6b7279eb1
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127838"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717440"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Azure Active Directory でのセルフサービス パスワード リセットによる書き戻しのしくみ
 
 Azure Active Directory (Azure AD) のセルフサービス パスワード リセット (SSPR) を使用すると、ユーザーはクラウドでパスワードをリセットできますが、ほとんどの企業では、オンプレミスの Active Directory Domain Services (AD DS) 環境にもユーザーが存在します。 パスワード ライトバックは、[Azure AD Connect](../hybrid/whatis-hybrid-identity.md) で有効になっている機能で、クラウド内でのパスワード変更を既存のオンプレミスのディレクトリにリアルタイムで書き戻せるようにします。 この構成では、ユーザーがクラウドで SSPR を使用してパスワードを変更またはリセットすると、更新されたパスワードがオンプレミスの AD DS 環境にも書き戻されます
+
+> [!IMPORTANT]
+> 概念に関するこの記事では、セルフサービス パスワード リセットの書き戻しのしくみを管理者向けに説明します。 既にセルフサービス パスワード リセットの登録が済んでいて、自分のアカウントに戻る必要があるエンド ユーザーは、 https://aka.ms/sspr にアクセスしてください。
+>
+> ユーザーが自分でパスワードをリセットする機能が IT チームによって有効にされていない場合は、ヘルプデスクに連絡して追加のサポートを依頼してください。
 
 パスワード ライトバックは、以下のハイブリッド ID モデルを使用する環境でサポートされます。
 
@@ -37,7 +42,12 @@ Azure Active Directory (Azure AD) のセルフサービス パスワード リ�
 * **受信ファイアウォール規則は不要**: パスワード ライトバックは、基盤の通信チャネルとして Azure Service Bus リレーを使います。 すべての通信はポート 443 経由で送信されます。
 
 > [!NOTE]
-> オンプレミスの AD の保護グループ内に存在する管理者アカウントは、パスワード ライトバックに使用できます。 管理者はクラウドでパスワードを変更することはできますが、パスワードのリセットを使用して、忘れたパスワードをリセットすることはできません。 保護グループについて詳しくは、「[Protected Accounts and Groups in Active Directory (Active Directory の保護アカウントとグループ)](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory)」をご覧ください。
+> オンプレミスの AD の保護グループ内に存在する管理者アカウントは、パスワード ライトバックに使用できます。 管理者はクラウドでパスワードを変更することはできますが、パスワードのリセットを使用して、忘れたパスワードをリセットすることはできません。 保護グループの詳細については、[AD DS の保護アカウントとグループ](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory)に関する記事を参照してください。
+
+SSPR 書き戻しの使用を開始するには、次のチュートリアルをご覧ください。
+
+> [!div class="nextstepaction"]
+> [チュートリアル:セルフサービス パスワード リセット (SSPR) の書き戻しを有効にする](./tutorial-enable-sspr-writeback.md)
 
 ## <a name="how-password-writeback-works"></a>パスワード ライトバックのしくみ
 
@@ -53,14 +63,14 @@ Azure Active Directory (Azure AD) のセルフサービス パスワード リ�
 1. メッセージが Service Bus に到達した後、パスワード リセット エンドポイントが自動的にアクティブになり、保留中のリセット要求があるかどうかが確認されます。
 1. サービスは、クラウドのアンカー属性を使ってユーザーを探します。 この検索が成功するには、次の条件が満たされている必要があります。
 
-   * Active Directory コネクタ スペースにユーザー オブジェクトが存在している必要があります。
+   * AD DS コネクタ スペースにユーザー オブジェクトが存在している必要がある。
    * ユーザー オブジェクトが対応するメタバース (MV) オブジェクトにリンクされている必要があります。
-   * ユーザー オブジェクトが対応する Azure Active Directory コネクタ オブジェクトにリンクされている必要があります。
-   * Active Directory コネクタ オブジェクトから MC へのリンク上に、同期ルール `Microsoft.InfromADUserAccountEnabled.xxx` が存在する必要があります。
+   * ユーザー オブジェクトが対応する Azure AD コネクタ オブジェクトにリンクされている必要がある。
+   * AD DS コネクタ オブジェクトから MV へのリンク上に、同期ルール `Microsoft.InfromADUserAccountEnabled.xxx` が存在する必要があります。
 
-   クラウドからの呼び出しがあると、同期エンジンは **cloudAnchor** 属性を使って Azure Active Directory コネクタ スペース オブジェクトを検索します。 その後、リンクをたどって MV オブジェクトに戻り、さらにリンクをたどって Active Directory オブジェクトに戻ります。 同じユーザーに対して複数の Active Directory オブジェクト (マルチ フォレスト) がある可能性があるため、同期エンジンは `Microsoft.InfromADUserAccountEnabled.xxx` のリンクに基づいて正しいユーザー アカウントを選びます。
+   クラウドからの呼び出しがあると、同期エンジンは **cloudAnchor** 属性を使って Azure AD コネクタ スペース オブジェクトを検索します。 その後、リンクをたどって MV オブジェクトに戻り、さらにリンクをたどって AD DS オブジェクトに戻ります。 同じユーザーに対して複数の AD DS オブジェクト (マルチ フォレスト) がある可能性があるため、同期エンジンは `Microsoft.InfromADUserAccountEnabled.xxx` のリンクに依存して正しいユーザー アカウントを選択します。
 
-1. ユーザー アカウントが見つかると、適切な Active Directory フォレスト内で直接パスワードのリセットが試行されます。
+1. ユーザー アカウントが見つかると、適切な AD DS フォレスト内で直接パスワードのリセットが試行されます。
 1. パスワードの設定操作に成功すると、ユーザーにパスワードが変更されたことが通知されます。
 
    > [!NOTE]
@@ -69,7 +79,7 @@ Azure Active Directory (Azure AD) のセルフサービス パスワード リ�
 1. パスワード設定操作が失敗した場合、ユーザーにもう一度試すように求めるエラーが表示されます。 次の理由により、操作が失敗することがあります。
     * サービスがダウンしていた。
     * 選択したパスワードが組織のポリシーを満たしていない。
-    * ローカル Active Directory でユーザーが見つからない。
+    * ローカル AD DS 環境でユーザーが見つからない。
 
    エラー メッセージはユーザーにガイダンスを提供するので、ユーザーは管理者の介入なしに解決を試みることができます。
 
@@ -86,7 +96,7 @@ Azure Active Directory (Azure AD) のセルフサービス パスワード リ�
    1. 暗号化されたパスワードが HTTPS メッセージに配置され、Microsoft の TLS/SSL 証明書を使って暗号化されたチャネルを介して Service Bus Relay に送信されます。
    1. Service Bus にメッセージが到着すると、オンプレミスのエージェントが起動され、以前に生成された強力なパスワードを使用して Service Bus に認証します。
    1. オンプレミスのエージェントは、暗号化されたメッセージを取得し、秘密キーを使用して復号化します。
-   1. オンプレミスのエージェントは、AD DS SetPassword API を使用して、パスワードの設定を試行します。 この手順に従うと、クラウドで Active Directory のオンプレミスのパスワード ポリシー (複雑さ、年齢、履歴、フィルターなど) を適用できます。
+   1. オンプレミスのエージェントは、AD DS SetPassword API を使用して、パスワードの設定を試行します。 この手順に従うと、クラウドで AD DS のオンプレミスのパスワード ポリシー (複雑さ、年齢、履歴、フィルターなど) を適用できます。
 * **メッセージの有効期限ポリシー**
    * オンプレミスのサービスがダウンしているためメッセージが Service Bus に残っている場合はタイムアウトになり、数分後に削除されます。 タイムアウトとメッセージの削除により、セキュリティがさらに強化されます。
 
@@ -95,9 +105,9 @@ Azure Active Directory (Azure AD) のセルフサービス パスワード リ�
 ユーザーがパスワードのリセットを送信した後、リセット要求はオンプレミスの環境に届く前に、いくつかの暗号化ステップを通過します。 これらの暗号化ステップにより、サービスの最大限の信頼性とセキュリティが保証されます。 暗号化ステップの説明を次に示します。
 
 1. **2048 ビット RSA キーによるパスワードの暗号化**: ユーザーが、オンプレミスに書き戻すパスワードを送信すると、送信されたパスワードそのものが 2048 ビット RSA キーを使って暗号化されます。
-1. **AES-GCM によるパッケージ レベルの暗号化**: AES-GCM を使って、パッケージ全体 (パスワードと必要なメタデータ) が暗号化されます。 この暗号化により、ServiceBus チャネルに直接アクセスできる人物による内容の表示または改ざんを防止します。
-1. **すべての通信が TLS/SSL 経由で行われる**: ServiceBus でのすべての通信は、SSL/TLS チャネルで実行されます。 この暗号化により、権限がないサード パーティに対してコンテンツが保護されます。
-1. **半年ごとの自動キー ロールオーバー**: 半年ごとに、または Azure AD Connect でパスワード ライトバックが無効化されて再び有効化されるたびに、すべてのキーがロールオーバーされ、最大限のサービスのセキュリティと安全性が確保されます。
+1. **AES-GCM によるパッケージ レベルの暗号化**: AES-GCM を使って、パッケージ全体 (パスワードと必要なメタデータ) が暗号化されます。 この暗号化により、Service Bus チャネルに直接アクセスできる人物による内容の表示または改ざんを防止します。
+1. **すべての通信が TLS/SSL 経由で行われる**: Service Bus でのすべての通信は、SSL/TLS チャネルで実行されます。 この暗号化により、権限がないサード パーティに対してコンテンツが保護されます。
+1. **半年ごとの自動キー ロールオーバー**:半年ごとに、または Azure AD Connect でパスワード ライトバックが無効化されて再び有効化されるたびに、すべてのキーがロールオーバーされ、最大限のサービスのセキュリティと安全性が確保されます。
 
 ### <a name="password-writeback-bandwidth-usage"></a>パスワード ライトバックの帯域幅の使用
 
@@ -130,7 +140,7 @@ Azure Active Directory (Azure AD) のセルフサービス パスワード リ�
    * 管理者による強制的なパスワード変更 (パスワードの期限切れなど)。
    * 管理者により[パスワード リセット ポータル](https://passwordreset.microsoftonline.com)から実行された管理者によるセルフサービス パスワード リセット。
    * [Azure portal](https://portal.azure.com) から管理者が開始したエンドユーザーのパスワードのリセット。
-   * [Microsoft Graph API ベータ版](https://docs.microsoft.com/graph/api/passwordauthenticationmethod-resetpassword?view=graph-rest-beta&tabs=http)から管理者が開始したエンドユーザーのパスワードのリセット。
+   * [Microsoft Graph API ベータ版](/graph/api/passwordauthenticationmethod-resetpassword?tabs=http&view=graph-rest-beta)から管理者が開始したエンドユーザーのパスワードのリセット。
 
 ## <a name="unsupported-writeback-operations"></a>サポートされないライトバック操作
 
@@ -139,8 +149,9 @@ Azure Active Directory (Azure AD) のセルフサービス パスワード リ�
 * **サポートされないエンドユーザーの操作**
    * PowerShell バージョン 1、バージョン 2、または Microsoft Graph API を使った、エンド ユーザーによるパスワードのリセット。
 * **サポートされない管理者の操作**
-   * PowerShell バージョン 1、バージョン 2、または Microsoft Graph API ([Microsoft Graph API ベータ版](https://docs.microsoft.com/graph/api/passwordauthenticationmethod-resetpassword?view=graph-rest-beta&tabs=http)がサポートされています) から管理者が開始したエンド ユーザーのパスワードのリセット。
+   * PowerShell バージョン 1、バージョン 2、または Microsoft Graph API ([Microsoft Graph API ベータ版](/graph/api/passwordauthenticationmethod-resetpassword?tabs=http&view=graph-rest-beta)がサポートされています) から管理者が開始したエンド ユーザーのパスワードのリセット。
    * [Microsoft 365 管理センター](https://admin.microsoft.com)から管理者が開始したエンドユーザーのパスワードのリセット。
+   * すべての管理者は、パスワード リセット ツールを使用して自身のパスワード ライトバック用パスワードをリセットすることはできません。
 
 > [!WARNING]
 > [Active Directory ユーザーとコンピューター] や [Active Directory 管理センター] などのオンプレミスの AD DS 管理ツールでの [ユーザーは次回ログオン時にパスワードの変更が必要] チェックボックスの使用は、Azure AD Connect のプレビュー機能としてサポートされています。 詳細については、「[Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装](../hybrid/how-to-connect-password-hash-synchronization.md)」をご覧ください。
@@ -150,4 +161,4 @@ Azure Active Directory (Azure AD) のセルフサービス パスワード リ�
 SSPR 書き戻しの使用を開始するには、次のチュートリアルをご覧ください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:セルフサービス パスワード リセット (SSPR) の書き戻しを有効にする](tutorial-enable-writeback.md)
+> [チュートリアル:セルフサービス パスワード リセット (SSPR) の書き戻しを有効にする](./tutorial-enable-sspr-writeback.md)

@@ -6,12 +6,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 3/21/2019
 ms.author: rohink
-ms.openlocfilehash: 1543c0daae7d637730a5f8f9da2305423ba7f84e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: d59f166897674e9dcff8086b8f5c906605155ee3
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76932400"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924276"
 ---
 # <a name="what-is-azure-dns"></a>Azure DNS とは
 
@@ -29,7 +29,7 @@ Azure DNS 内の DNS ドメインは、DNS ネーム サーバーから成る Az
 
  Azure DNS は、Azure Resource Manager に基づいており、次のような機能が利用できます。
 
-* [ロールベースのアクセス制御](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview): 組織のユーザーがアクセスできるアクションを制御できます。
+* [Azure ロールベースのアクセス制御 (Azure RBAC)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview): 組織の特定のアクションにアクセスできるユーザーを制御できます。
 
 * [アクティビティ ログ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview): 組織のユーザーどのようにリソースを変更したかを監視したり、トラブルシューティング時にエラーを見つけたりできます。
 
@@ -70,4 +70,3 @@ Azure DNS では、エイリアス レコード セットをサポートしま�
 * Azure DNS 内にゾーンを作成する方法を学びます ([DNS ゾーンの作成](./dns-getstarted-create-dnszone-portal.md)に関するページを参照)。
 
 * Azure DNS に関してよく寄せられる質問については、「[Azure DNS に関する FAQ](dns-faq.md)」を参照してください。
-

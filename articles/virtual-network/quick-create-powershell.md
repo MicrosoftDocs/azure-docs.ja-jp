@@ -1,7 +1,7 @@
 ---
 title: 仮想ネットワークの作成 - クイック スタート - Azure PowerShell
 titlesuffix: Azure Virtual Network
-description: このクイック スタートでは、Azure Portal を使用した仮想ネットワークの作成について説明します。 仮想ネットワークによって、仮想マシンなどの Azure リソースが互いにプライベートな通信を行ったりインターネットと通信したりできるようになります。
+description: このクイックスタートでは、Azure portal を使用して仮想ネットワークを作成します。 仮想ネットワークを使用すると、Azure リソースが互いに通信を行ったり、インターネットと通信したりできるようになります。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -14,17 +14,19 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: kumud
-ms.openlocfilehash: 1d30b35264707c59c899cc3a224e4affa2a4696e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 93e459df96d444e71f4b6a15668f80e9d77db5fd
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79290230"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077881"
 ---
-# <a name="quickstart-create-a-virtual-network-using-powershell"></a>クイック スタート: PowerShell を使用して仮想ネットワークを作成する
+# <a name="quickstart-create-a-virtual-network-using-powershell"></a>クイック スタート:PowerShell を使用して仮想ネットワークを作成する
 
 仮想ネットワークによって、仮想マシン (VM) などの Azure リソースが互いにプライベートな通信を行ったりインターネットと通信したりできるようになります。 このクイック スタートでは、仮想ネットワークの作成方法について説明します。 仮想ネットワークを作成したら、2 つの VM を仮想ネットワークにデプロイします。 次にインターネットから VM に接続し、仮想ネットワークを介してプライベートで通信します。
 
+## <a name="prerequisites"></a>前提条件
 Azure サブスクリプションをお持ちでない場合は、ここで[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -219,6 +221,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、既定の仮想ネットワークと 2 つの VM を作成しました。 インターネットから 1 つの VM に接続し、その VM ともう 1 つの VM のプライベート通信を行いました。 仮想ネットワーク設定について詳しくは、[仮想ネットワークの管理](manage-virtual-network.md)に関する記事をご覧ください。
-
-Azure では、仮想マシン間で無制限のプライベート通信を実行できます。 既定で、Azure では、インターネットから Windows VM への受信リモート デスクトップ接続のみを許可しています。 さまざまな種類の VM ネットワーク通信の構成の詳細については、「[ネットワーク トラフィックをフィルター処理する](tutorial-filter-network-traffic.md)」チュートリアルを参照してください。
+このクイック スタートでは、既定の仮想ネットワークと 2 つの VM を作成しました。 インターネットから 1 つの VM に接続し、2 つの VM の間でプライベート通信を行いました。
+Azure では、VM 間で無制限のプライベート通信を実行できます。 既定で、Azure では、インターネットから Windows VM への受信リモート デスクトップ接続のみを許可しています。 各種 VM ネットワーク通信の構成の詳細については、次の記事に進んでください。
+> [!div class="nextstepaction"]
+> [ネットワーク トラフィックをフィルター処理する](tutorial-filter-network-traffic.md)

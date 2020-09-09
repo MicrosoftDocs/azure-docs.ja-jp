@@ -3,12 +3,12 @@ title: セキュリティ コントロール
 description: Azure Resource Manager サービスを評価するための組み込みセキュリティ コントロールのチェックリスト。
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: d0a0625153e428a0d261e52d40b31ef5142eddfd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bb8742c38fae88dc1fd1fd1ec175b248f30df3a0
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75476721"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054459"
 ---
 # <a name="security-controls-for-azure-resource-manager"></a>Azure Resource Manager のセキュリティ コントロール
 
@@ -47,7 +47,7 @@ ms.locfileid: "75476721"
 
 | セキュリティ コントロール | はい/いいえ | Notes|
 |---|---|--|
-| 認証| はい | [Azure Active Directory](/azure/active-directory) ベース。|
+| 認証| はい | [Azure Active Directory](../../active-directory/index.yml) ベース。|
 | 承認| はい | |
 
 ## <a name="configuration-management"></a>構成管理

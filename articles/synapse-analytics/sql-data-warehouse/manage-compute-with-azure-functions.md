@@ -6,17 +6,17 @@ author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: aa2cff552b49bceeaf6fd46510bf78384f0e7bfb
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 60e79ecd4148829c38b237c0e28d60796e84ac01
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631957"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543658"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Azure Synapse Analytics SQL プールで Azure Functions を使用してコンピューティング リソースを管理します
 
@@ -29,7 +29,7 @@ Azure Function App を SQL プールと組み合わせて使用するために�
 このテンプレートを展開するには、次の情報が必要です。
 
 - SQL プール インスタンスが存在するリソース グループの名前
-- SQL プール インスタンスが存在する論理サーバーの名前
+- SQL プール インスタンスが存在するサーバーの名前
 - SQL プール インスタンスの名前
 - Azure Active Directory のテナント ID (ディレクトリ ID)
 - サブスクリプション ID
@@ -38,9 +38,7 @@ Azure Function App を SQL プールと組み合わせて使用するために�
 
 以上の情報が揃ったら、次のテンプレートを展開します。
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwTimerScaler%2Fazuredeploy.json" target="_blank">
-<img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+[![[Azure に配置する] というラベルの付いたボタンが示されている画像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwTimerScaler%2Fazuredeploy.json)
 
 テンプレートを展開すると、3 つのリソースが新たに追加されていることがわかります。無料の Azure App Service プランと、使用量ベースの Function App プラン、そして、ログと操作キューを担うストレージ アカウントです。 デプロイされた関数を実際の要件に合わせて変更する方法については、引き続き他のセクションもご覧ください。
 
@@ -115,7 +113,7 @@ Azure Function App を SQL プールと組み合わせて使用するために�
 
 5. 次のように operation 変数を目的の動作に設定します。
 
-   ```javascript
+   ```JavaScript
    // Resume the SQL pool instance
    var operation = {
        "operationType": "ResumeDw"
@@ -141,7 +139,7 @@ Azure Function App を SQL プールと組み合わせて使用するために�
 
 毎日午前 8 時に DW600 にスケールアップし、午後 8 時に DW200 にスケールダウンします。
 
-| 機能  | スケジュール     | Operation                                |
+| 機能  | スケジュール     | 操作                                |
 | :-------- | :----------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW600"}` |
 | Function2 | 0 0 20 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200"}` |
@@ -150,7 +148,7 @@ Azure Function App を SQL プールと組み合わせて使用するために�
 
 毎日午前 8 時に DW1000 にスケールアップし、午後 4 時に DW600 にスケールダウンします。さらに、午後 10 時に DW200 にスケールダウンします。
 
-| 機能  | スケジュール     | Operation                                |
+| 機能  | スケジュール     | 操作                                |
 | :-------- | :----------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000"}` |
 | Function2 | 0 0 16 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |
@@ -160,7 +158,7 @@ Azure Function App を SQL プールと組み合わせて使用するために�
 
 平日の午前 8 時に DW1000 にスケールアップし、午後 4 時に 1 回 DW600 にスケールダウンします。 金曜日の午後 11 時に一時停止し、月曜朝の午前 7 時に再開します。
 
-| 機能  | スケジュール       | Operation                                |
+| 機能  | スケジュール       | 操作                                |
 | :-------- | :------------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * 1-5  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000"}` |
 | Function2 | 0 0 16 * * 1-5 | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 9a7aa512c636f700cf9c6d990814d9367007c942
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 76f73df01b34cb20be48aefa3b5b3a6392a35b8b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125776"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045189"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Azure Resource Manager テンプレートを使用して Windows 仮想マシン スケール セットのゲスト OS メトリックを Azure Monitor メトリック ストアに送信する
 
@@ -26,9 +26,9 @@ Resource Manager テンプレートを初めて利用する場合は、[テン�
 
 ## <a name="prerequisites"></a>前提条件
 
-- サブスクリプションを [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) に登録する必要があります 
+- サブスクリプションを [Microsoft.Insights](../../azure-resource-manager/management/resource-providers-and-types.md) に登録する必要があります 
 
-- [Azure PowerShell](/powershell/azure) がインストールされている必要があります。[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を使用することもできます。 
+- [Azure PowerShell](/powershell/azure) がインストールされている必要があります。[Azure Cloud Shell](../../cloud-shell/overview.md) を使用することもできます。 
 
 - お使いの VM リソースが、[カスタム メトリックをサポートするリージョン](metrics-custom-overview.md#supported-regions)に存在する必要があります。
 
@@ -293,5 +293,3 @@ Resource Manager テンプレートをデプロイするために、Azure PowerS
 
 ## <a name="next-steps"></a>次のステップ
 - [カスタム メトリック](metrics-custom-overview.md)の詳細を確認します。
-
-

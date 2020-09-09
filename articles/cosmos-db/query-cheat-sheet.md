@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 51660fb416aa9850381f515a3a31cc57519094b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb080858ff6be98846c542844810cf976eb3f264
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "66256974"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117983"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB クエリのチート シート
 
@@ -23,12 +23,12 @@ ms.locfileid: "66256974"
 
 レター サイズの用紙 (8.5 x 11 インチ) を印刷しようとしている場合は、[Azure Cosmos DB レター サイズ クエリ チート シート](https://go.microsoft.com/fwlink/?LinkId=623215)をダウンロードします。
 
-![Azure Cosmos DB クエリ チート シート - レター サイズ、SQL API、JavaScript、MongoDB、Gremlin、および Table API のクエリと関数を使用](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-letter.png)
+:::image type="content" source="./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-letter.png" alt-text="Azure Cosmos DB クエリ チート シート - レター サイズ、SQL API、JavaScript、MongoDB、Gremlin、および Table API のクエリと関数を使用" border="false":::
 
 ## <a name="oversized-cheat-sheets"></a>サイズの大きいチート シート
 プロッターまたは大版プリンターを使用して A3 サイズの用紙 (11.7 x 16.5 インチ) に印刷しようとしている場合は、[Azure Cosmos DB A3 サイズ クエリ チート シート](https://go.microsoft.com/fwlink/?linkid=870413)をダウンロードします。
 
-![Azure Cosmos DB クエリ チート シート - A3 サイズ、SQL API、JavaScript、MongoDB、Gremlin、および Table API のクエリと関数を使用](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png)
+:::image type="content" source="./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png" alt-text="Azure Cosmos DB クエリ チート シート - A3 サイズ、SQL API、JavaScript、MongoDB、Gremlin、および Table API のクエリと関数を使用" border="false":::
 
 ## <a name="next-steps"></a>次のステップ
 クエリの記述の詳細については、以下の記事を参照してください。

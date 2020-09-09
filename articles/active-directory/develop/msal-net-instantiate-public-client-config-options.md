@@ -7,18 +7,18 @@ author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 1dd06e139f931bbf8554f05f05c5d9b9ccf200e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: 349ec8c99bc9e6768e5ec2ded346893da95c1636
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77083601"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166146"
 ---
 # <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>MSAL.NET を使用して、構成オプションでパブリック クライアント アプリケーションをインスタンス化する
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 0383a512dfb7c2bb1ae2422b9ade1e3c7387a70c
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: b60a53b05c0d2c80c36c94e27e4d00952b5af954
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478307"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113073"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>構成サーバーの問題のトラブルシューティング
 
@@ -52,6 +52,8 @@ ms.locfileid: "80478307"
     b. Installation_Directory/Vx/bin/uninstall.sh ファイルを開き、**stop_services** 関数の呼び出しをコメントアウトします。
     c. Installation_Directory/Fx/uninstall.sh ファイルを開き、Fx サービスの停止を試行するセクション全体をコメントアウトします。
     d. モビリティ エージェントを[アンインストール](vmware-physical-manage-mobility-service.md#uninstall-mobility-service)します。 アンインストールが成功したら、システムを再起動して、モビリティ エージェントの再インストールを試みます。
+
+8. ユーザー アカウントの多要素認証が有効になっていないことを確認します。 Azure Site Recovery では現在のところ、ユーザー アカウントで多要素認証をサポートしていません。 多要素認証が有効になっているユーザー アカウントなしで構成サーバーを登録します。  
 
 ## <a name="installation-failure-failed-to-load-accounts"></a>インストールの失敗: アカウントを読み込めませんでした
 
@@ -160,16 +162,18 @@ Site Recovery の認証に必要な証明書を作成できません。 ロー�
 
 問題を特定するために、構成サーバーで C:\ProgramData\ASRSetupLogs\CX_TP_InstallLogFile に移動します。 次のエラーが見つかった場合、次の手順を使用して問題を解決します。 
 
-    2018-06-28 14:28:12.943   Successfully copied php.ini to C:\Temp from C:\thirdparty\php5nts
-    2018-06-28 14:28:12.943   svagents service status - SERVICE_RUNNING
-    2018-06-28 14:28:12.944   Stopping svagents service.
-    2018-06-28 14:31:32.949   Unable to stop svagents service.
-    2018-06-28 14:31:32.949   Stopping svagents service.
-    2018-06-28 14:34:52.960   Unable to stop svagents service.
-    2018-06-28 14:34:52.960   Stopping svagents service.
-    2018-06-28 14:38:12.971   Unable to stop svagents service.
-    2018-06-28 14:38:12.971   Rolling back the install changes.
-    2018-06-28 14:38:12.971   Upgrade has failed.
+```output
+2018-06-28 14:28:12.943   Successfully copied php.ini to C:\Temp from C:\thirdparty\php5nts
+2018-06-28 14:28:12.943   svagents service status - SERVICE_RUNNING
+2018-06-28 14:28:12.944   Stopping svagents service.
+2018-06-28 14:31:32.949   Unable to stop svagents service.
+2018-06-28 14:31:32.949   Stopping svagents service.
+2018-06-28 14:34:52.960   Unable to stop svagents service.
+2018-06-28 14:34:52.960   Stopping svagents service.
+2018-06-28 14:38:12.971   Unable to stop svagents service.
+2018-06-28 14:38:12.971   Rolling back the install changes.
+2018-06-28 14:38:12.971   Upgrade has failed.
+```
 
 この問題を解決するには:
 
@@ -191,7 +195,7 @@ Site Recovery の認証に必要な証明書を作成できません。 ロー�
 この問題を解決するには、Azure portal にサインインし、次のいずれかを行います。
 
 - AAD でアプリケーション開発者ロールを要求します。 アプリケーション開発者ロールの詳細については、「[Azure Active Directory での管理者ロールのアクセス許可](../active-directory/users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
-- AAD で **[User can create application]\(ユーザーがアプリケーションを作成できる\)** フラグが *true* に設定されていることを確認します。 詳細については、「[リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)」のガイダンスに従って、サービス プリンシパルを作成します。
+- AAD で **[User can create application]\(ユーザーがアプリケーションを作成できる\)** フラグが *true* に設定されていることを確認します。 詳細については、「[リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)」のガイダンスに従って、サービス プリンシパルを作成します。
 
 ## <a name="process-servermaster-target-are-unable-to-communicate-with-the-configuration-server"></a>プロセス サーバー/マスター ターゲットが構成サーバーと通信できない 
 
@@ -203,14 +207,16 @@ Site Recovery の認証に必要な証明書を作成できません。 ロー�
 
 マスター ターゲット エージェントが構成サーバー IP の TCP セッションを作成できるか確認するには、マスター ターゲット エージェントのログで次のようなトレースを探します。
 
-TCP \<ここで IP を CS IP に置き換える>:52739 \<ここで IP を CS IP に置き換える>:443 SYN_SENT 
+TCP \<Replace IP with CS IP here>:52739 \<Replace IP with CS IP here>:443 SYN_SENT 
 
 TCP    192.168.1.40:52739     192.168.1.40:443      SYN_SENT  // ここでは IP は CS IP に置き換えます
 
 MT エージェントのログで次のようなトレースが見つかった場合、MT エージェントはポート 443 でのエラーを報告しています。
 
-    #~> (11-20-2018 20:31:51):   ERROR  2508 8408 313 FAILED : PostToSVServer with error [at curlwrapper.cpp:CurlWrapper::processCurlResponse:212]   failed to post request: (7) - Couldn't connect to server
-    #~> (11-20-2018 20:31:54):   ERROR  2508 8408 314 FAILED : PostToSVServer with error [at curlwrapper.cpp:CurlWrapper::processCurlResponse:212]   failed to post request: (7) - Couldn't connect to server
+```output
+#~> (11-20-2018 20:31:51):   ERROR  2508 8408 313 FAILED : PostToSVServer with error [at curlwrapper.cpp:CurlWrapper::processCurlResponse:212]   failed to post request: (7) - Couldn't connect to server
+#~> (11-20-2018 20:31:54):   ERROR  2508 8408 314 FAILED : PostToSVServer with error [at curlwrapper.cpp:CurlWrapper::processCurlResponse:212]   failed to post request: (7) - Couldn't connect to server
+```
  
 このエラーは、他のアプリケーションもポート 443 を使用している場合、またはファイアウォール設定によってポートがブロックされている場合に発生する可能性があります。
 

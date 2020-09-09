@@ -6,19 +6,21 @@ ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
 ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
-ms.custom: ''
-ms.openlocfilehash: 566d6ccf43024692e19bcd6639fe5cfbbba0660d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 45f704afce28967237b2905ef068678ba05ae085
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80056402"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206654"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions のタイマー トリガー 
 
 この記事では、Azure Functions でタイマー トリガーを使用する方法について説明します。 タイマー トリガーを使用すると、スケジュールに基づいて関数を実行できます。 
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
+
+タイマーによってトリガーされる関数を手動で実行する方法については、「[HTTP によってトリガーされない関数を手動で実行する](./functions-manually-run-non-http.md)」を参照してください。
 
 ## <a name="packages---functions-1x"></a>パッケージ - Functions 1.x
 
@@ -111,7 +113,7 @@ module.exports = function (context, myTimer) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-次の例では、構成が *function.json* ファイルに記述されているタイマー トリガー バインディングを使用します。 このバインディングを使用する実際の [Python 関数](functions-reference-python.md)は、 *__init__.py* ファイルに記述されています。 関数に渡されるオブジェクトの型は、[azure.functions.TimerRequest オブジェクト](/python/api/azure-functions/azure.functions.timerrequest)です。 関数ロジックでは、現在の呼び出しがスケジュールのミスの発生によるものかどうかを示すログが書き込まれます。 
+次の例では、構成が *function.json* ファイルに記述されているタイマー トリガー バインディングを使用します。 このバインディングを使用する実際の [Python 関数](functions-reference-python.md)は、*__init__.py* ファイルに記述されています。 関数に渡されるオブジェクトの型は、[azure.functions.TimerRequest オブジェクト](/python/api/azure-functions/azure.functions.timerrequest)です。 関数ロジックでは、現在の呼び出しがスケジュールのミスの発生によるものかどうかを示すログが書き込まれます。 
 
 *function.json* ファイルのバインディング データを次に示します。
 
@@ -285,24 +287,7 @@ Azure Functions のタイマー トリガーに使用できる NCRONTAB 式の�
 
 CRON 式に出現する値は、時間間隔ではなく時刻と日付を示します。 たとえば、`hour` フィールドの 5 は、5 時間ごとではなく、午前 5 時 00 分を示します。
 
-CRON 式で使用する既定のタイム ゾーンは、協定世界時 (UTC) です。 別のタイム ゾーンに基づく CRON 式を使うには、Function App 用に `WEBSITE_TIME_ZONE` という名前のアプリ設定を作成します。 この値を、[Microsoft のタイム ゾーン インデックス](https://technet.microsoft.com/library/cc749073)に関するページに示されている目的のタイム ゾーンの名前に設定します。
-
-  > [!NOTE]
-  > Linux 従量課金プランでは、現在 `WEBSITE_TIME_ZONE` はサポートされていません。
-
-たとえば、"*東部標準時*" は UTC-05:00 です。 タイマー トリガーが毎日東部標準時の午前 10 時に発生するように設定するには、UTC タイム ゾーンを考慮した次の NCRONTAB 式を使用できます。
-
-```
-"0 0 15 * * *"
-``` 
-
-または、Function App のアプリ設定を `WEBSITE_TIME_ZONE` という名前で作成し、その値を "**東部標準時**" に設定します。  そして、次の NCRONTAB 式を使います。 
-
-```
-"0 0 10 * * *"
-``` 
-
-`WEBSITE_TIME_ZONE` を使用すると、夏時間などの特定のタイムゾーンでの時間変更に対応するように、時刻が調整されます。 
+[!INCLUDE [functions-timezone](../../includes/functions-timezone.md)]
 
 ## <a name="timespan"></a>TimeSpan
 

@@ -3,18 +3,19 @@ title: Azure Notebooks プレビューの構成と管理
 description: Azure Notebooks UI とターミナル直接アクセスの両方を使用し、プロジェクト メタデータ、プロジェクト ファイル、プロジェクトの環境を管理して、セットアップする方法について説明します。
 ms.topic: how-to
 ms.date: 02/28/2020
-ms.openlocfilehash: 1674effda2cb9bda45f49c91ca618225b0a75f0c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-python
+ms.openlocfilehash: 7674c2151922d26e069b5cd285cb311d7a18fa98
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236123"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852805"
 ---
 # <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" /> Azure Notebooks プレビューでプロジェクトを管理および構成する
 
-Azure Notebooks プレビューのプロジェクトは、基本的には、Jupyter ノートブックが実行される基になる Linux 仮想マシンと、ファイル フォルダーおよび記述メタデータで構成されます。 
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Azure Notebooks プレビューのプロジェクトは、基本的には、Jupyter ノートブックが実行される基になる Linux 仮想マシンと、ファイル フォルダーおよび記述メタデータで構成されます。 
 
 Azure Notebooks のプロジェクト ダッシュボードを使用すると、ファイルを管理できます。また、プロジェクトの特性を構成することもできます。
 

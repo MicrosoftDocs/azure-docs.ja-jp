@@ -4,19 +4,19 @@ description: Azure AD 条件付きアクセスを使用してレガシ認証を�
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 03/31/2020
+ms.topic: how-to
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 957aa77e18ea8f910f258d1dc59de0d093b0eab6
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: f72e477d332b33b7434663fb13cb3ca4f4c2069d
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80476661"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032193"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>方法:条件付きアクセスを使用して Azure AD へのレガシ認証をブロックする   
 
@@ -49,7 +49,7 @@ Azure AD では、レガシ認証を含め、最も広く使用されている�
 - 従来の Microsoft Office アプリ
 - POP、IMAP、SMTP などの電子メール プロトコルを使用するアプリ
 
-最近は、単一要素認証 (たとえば、ユーザー名とパスワード) では不十分です。 パスワードは、簡単に推測できるうえに、適切なパスワードの選定は難しいため、不十分です。 また、パスワードは、フィッシングやパスワード スプレーなどの幅広い攻撃に対しては脆弱です。 パスワードの脅威から保護できる最も簡単な方法の 1 つは、MFA を実装することです。 MFA を使用すれば、攻撃者がユーザーのパスワードを入手したとしても、認証に成功してデータにアクセスするには、パスワードだけでは不十分です。
+最近は、単一要素認証 (たとえば、ユーザー名とパスワード) では不十分です。 パスワードは、簡単に推測できるうえに、適切なパスワードの選定は難しいため、不十分です。 また、パスワードは、フィッシングやパスワード スプレーなどの幅広い攻撃に対しては脆弱です。 パスワードの脅威から保護するために実行できる最も簡単な方法の 1 つは、多要素認証 (MFA) を実装することです。 MFA を使用すれば、攻撃者がユーザーのパスワードを入手したとしても、認証に成功してデータにアクセスするには、パスワードだけでは不十分です。
 
 レガシ認証を使用しているアプリからはテナントのリソースにアクセスできないようにするには、どうしたらいいでしょうか。 条件付きアクセス ポリシーを使用して、それらのアプリをブロックすることをお勧めします。 必要に応じて、特定のユーザーと特定のネットワークの場所だけに、レガシ認証に基づいたアプリの使用を許可します。
 
@@ -65,6 +65,7 @@ Azure AD では、レガシ認証を含め、最も広く使用されている�
 
 - 認証済み SMTP - 電子メール メッセージを送信するために POP および IMAP クライアントで使用されます。
 - 自動検出 - Exchange Online でメールボックスを検索して接続するために Outlook および EAS のクライアントで使用されます。
+- Exchange ActiveSync (EAS) - Exchange Online のメールボックスに接続するために使用されます。
 - Exchange Online PowerShell - リモート PowerShell を使用して Exchange Online に接続するために使用されます。 Exchange Online PowerShell の基本認証をブロックする場合は、Exchange Online PowerShell モジュールを使用して接続する必要があります。 手順については、「[多要素認証を使用して Exchange Online PowerShell に接続する](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)」を参照してください。
 - Exchange Web サービス (EWS) - Outlook、Outlook for Mac、およびサードパーティ製アプリによって使用されるプログラミング インターフェイスです。
 - IMAP4 - IMAP 電子メール クライアントで使用されます。
@@ -84,52 +85,30 @@ Azure AD では、レガシ認証を含め、最も広く使用されている�
 
 1. **[Azure portal]**  >  **[Azure Active Directory]**  >  **[サインイン]** に移動します。
 1. [Client App] (クライアント アプリ) 列が表示されていない場合は、 **[列]**  >  **[Client App] (クライアント アプリ)** をクリックしてその列を追加します。
-1. **[フィルターの追加]**  >  **[クライアント アプリ]** > と進み、すべてのレガシ認証プロトコルを選択し、 **[適用]** をクリックします。
+1. **[フィルターの追加]** 、 **[クライアント アプリ]** の順に進み、すべてのレガシ認証プロトコルを選択します。 フィルター処理のダイアログ ボックスの外側を選択し、選択を適用し、ダイアログ ボックスを閉じます。
 
 フィルター処理によって、レガシ認証プロトコルによって行われたサインイン試行のみが表示されます。 個々のサインイン試行をクリックすると、追加の詳細が表示されます。 **[Basic Info] (基本情報)** タブの下の **[Client App] (クライアント アプリ)** フィールドには、どのレガシ認証プロトコルが使用されたかが表示されます。
 
 これらのログは、どのユーザーがまだレガシ認証に依存しているか、およびどのアプリケーションがレガシ プロトコルを使用して認証要求を行っているかを示しています。 これらのログに表示されず、レガシ認証を使用していないことが確認されたユーザーに対してのみ、条件付きアクセス ポリシーを実装します。
 
-### <a name="block-legacy-authentication"></a>レガシ認証をブロックする 
+## <a name="block-legacy-authentication"></a>レガシ認証をブロックする 
 
-条件付きアクセス ポリシーでは、リソースへのアクセスに使用するクライアント アプリに関連付ける条件を設定できます。 クライアント アプリの条件を使用すると、 **[モバイル アプリとデスクトップ クライアント]** で **[Exchange ActiveSync クライアント]** と **[その他のクライアント]** を選択して、レガシ認証を使用しているアプリに対象範囲を絞り込むことができます。
+条件付きアクセス ポリシーを使用してレガシ認証をブロックするには、2 つの方法があります。
 
-![その他のクライアント](./media/block-legacy-authentication/01.png)
-
-これらのアプリへのアクセスをブロックするには、 **[アクセスのブロック]** を選択する必要があります。
-
-![アクセスのブロック](./media/block-legacy-authentication/02.png)
-
-### <a name="select-users-and-cloud-apps"></a>ユーザーとクラウド アプリを選択する
-
-組織へのレガシ認証をブロックする場合、恐らくは、以下を選択してこれを行うことを検討するでしょう。
-
-- すべてのユーザー
-- すべてのクラウド アプリ
-- アクセスのブロック
-
-![代入](./media/block-legacy-authentication/03.png)
-
-この構成は、条件付きアクセス ポリシーの[ベスト プラクティス](best-practices.md)に違反するので、Azure には、このようなポリシーを作成しないための安全機能が用意されています。
+- [レガシ認証を直接ブロックする](#directly-blocking-legacy-authentication)
+- [レガシ認証を間接的にブロックする](#indirectly-blocking-legacy-authentication)
  
-![サポートされていないポリシー構成](./media/block-legacy-authentication/04.png)
+### <a name="directly-blocking-legacy-authentication"></a>レガシ認証を直接ブロックする
 
-"*すべてのユーザーとすべてのクラウド アプリのブロック*" では、組織全体をテナントへのサインオンからブロックする可能性があるため、安全機能が必要です。 ベスト プラクティスの最小要件を満たすには、少なくとも 1 人のユーザーを除外する必要があります。 ディレクトリ ロールを除外することもできます。
+組織全体でレガシ認証をブロックする最も簡単な方法は、レガシ認証クライアントに特化して適用され、アクセスをブロックする条件付きアクセス ポリシーを構成することです。 ユーザーとアプリケーションをポリシーに割り当てる際には、まだレガシ認証を使用してサインインする必要があるユーザーとサービス アカウントを必ず除外してください。 クライアント アプリの条件を構成するには、 **[Exchange ActiveSync クライアント]** と **[他のクライアント]** を選択します。 これらのクライアント アプリのアクセスをブロックするには、アクセスをブロックするようにアクセスの制御を構成します。
 
-![サポートされていないポリシー構成](./media/block-legacy-authentication/05.png)
+![レガシ認証をブロックするように構成されたクライアント アプリの条件](./media/block-legacy-authentication/client-apps-condition-configured-yes.png)
 
-1 人のユーザーをポリシーから除外することで、この安全機能を利用できます。 理想的には、数個の [Azure AD の緊急アクセス管理アカウント](../users-groups-roles/directory-emergency-access.md)を定義し、それらのアカウントをポリシーから除外します。
+### <a name="indirectly-blocking-legacy-authentication"></a>レガシ認証を間接的にブロックする
 
-ポリシーを有効にしてレガシ認証をブロックするときに[レポートのみのモード](concept-conditional-access-report-only.md)を使用すると、ポリシーの影響を監視する機会が組織に与えられます。
+組織において、組織全体でレガシ認証をブロックする準備ができていない場合でも、レガシ認証を使用するサインインで、多要素認証や Compliant/Hybrid Azure AD Join を使用したデバイスを要求するなどの許可コントロールを必要とするポリシーがバイパスされないようにする必要があります。 認証時、レガシ認証クライアントでは、Azure AD への MFA、デバイスのコンプライアンス、または参加状態の情報の送信はサポートされません。 したがって、すべてのクライアント アプリケーションに許可コントロールを含むポリシーを適用して、許可コントロールを満たすことができないレガシ認証ベースのサインインがブロックされるようにします。 2020 年 8 月にクライアント アプリの条件が一般提供されると、新しく作成された条件付きアクセス ポリシーは、既定ですべてのクライアント アプリに適用されます。
 
-## <a name="policy-deployment"></a>ポリシーのデプロイ
-
-ポリシーを運用環境に導入する前に、次の点に注意します。
- 
-- **サービス アカウント** -サービス アカウントとして使用されるユーザー アカウント、または会議室の電話などのデバイスによって使用されるユーザー アカウントを特定します。 これらのアカウントに必ず強固なパスワードを設定して、除外されるグループに追加します。
-- **サインイン レポート** - サインイン レポートを確認して、**その他のクライアント**のトラフィックを検索します。 最上位の使用率を特定して、なぜそれが使用されているのかを調査します。 通常、トラフィックは、最新の認証を使用していない従来の Office クライアント、またはサードパーティの電子メール アプリによって生成されています。 これらのアプリからの使用がなくなるように、計画を立てます。あるいは、影響が少ない場合は、これらのアプリを今後は使用できないことをユーザーに通知します。
- 
-詳細については、「[新しいポリシーはどのように展開する必要がありますか。](best-practices.md#how-should-you-deploy-a-new-policy)」を参照してください。
+![クライアント アプリの条件での既定の構成](./media/block-legacy-authentication/client-apps-condition-configured-no.png)
 
 ## <a name="what-you-should-know"></a>知っておくべきこと
 
@@ -141,16 +120,9 @@ Azure AD では、レガシ認証を含め、最も広く使用されている�
 
 **他のクライアント**条件には、利用可能なすべての制御の許可を選択できます。ただし、エンドユーザーのエクスペリエンスは常に同じ、つまり、アクセスがブロックされます。
 
-**他のクライアント**条件を使用してレガシ認証をブロックする場合は、デバイスのプラットフォームと場所の条件も設定できます。 たとえば、モバイル デバイスに対する従来の認証をブロックすることだけが必要な場合は、以下を選択して**デバイス プラットフォーム**の条件を設定します。
-
-- Android
-- iOS
-- Windows Phone
-
-![サポートされていないポリシー構成](./media/block-legacy-authentication/06.png)
-
 ## <a name="next-steps"></a>次のステップ
 
 - [条件付きアクセスのレポート専用モードを使用した影響を判断する](howto-conditional-access-report-only.md)
 - 条件付きアクセス ポリシー構成についてまだよくご存知でない場合は、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](app-based-mfa.md)」で例を参照してください。
 - 先進認証のサポートの詳細については、「[How modern authentication works for Office 2013 and Office 2016 client apps](/office365/enterprise/modern-auth-for-office-2013-and-2016)」 (Office 2013 クライアント アプリと Office 2016 クライアント アプリでの先進認証のしくみ) を参照してください 
+- [Office 365 および Microsoft 365 を使用して電子メールを送信するように多機能機器またはアプリケーションを設定する方法](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-office-3)

@@ -7,12 +7,12 @@ ms.topic: article
 services: web-application-firewall
 ms.date: 02/26/2020
 ms.author: victorh
-ms.openlocfilehash: b034159c3d12927f6425b3dc3c5b5609af9b0b76
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 29f50b2cf9523b9266de2f73607b0099f32852e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77649366"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005414"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Azure PowerShell を使用して Web アプリケーション ファイアウォールのレート制限ルールを構成する
 Azure Front Door 用の Azure Web アプリケーション ファイアウォール (WAF) のレート制限ルールでは、1 分間にクライアントから送信できる要求数を制御します。
@@ -25,7 +25,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="set-up-your-powershell-environment"></a>PowerShell 環境をセットアップする
 Azure PowerShell には、Azure リソースの管理に [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) モデルを使う一連のコマンドレットが用意されています。 
 
-[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) をローカル コンピューターにインストールして、すべての PowerShell セッションで使用することができます。 リンク先のページの手順に従って Azure の資格情報でサインインし、Az PowerShell モジュールをインストールします。
+[Azure PowerShell](https://docs.microsoft.com/powershell/azure/) をローカル コンピューターにインストールして、すべての PowerShell セッションで使用することができます。 リンク先のページの手順に従って Azure の資格情報でサインインし、Az PowerShell モジュールをインストールします。
 
 #### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>サインインのための対話型ダイアログを使用して Azure に接続する
 ```

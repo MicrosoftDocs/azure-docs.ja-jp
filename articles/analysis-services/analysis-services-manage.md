@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 28d7b2955c84833841760e441cd2919181e22bc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5dce5b53df817bd365d4ce9670ffd556ce365f7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73572790"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84015504"
 ---
 # <a name="manage-analysis-services"></a>Analysis Services を管理する
 Azure に Analysis Services サーバーを作成した後は、すぐに、または後で、管理タスクを行うことが必要になる場合があります。 たとえば、データ更新処理の実行、サーバー上のモデルにアクセスできるユーザーの制御、サーバーの正常性の監視などです。 Azure Portal または SQL Server Management Studio (SSMS) のどちらかでしか実行できないもの、またはどちらでも実行できるものがあります。
@@ -51,7 +51,7 @@ Azure のサーバーへの接続は、組織内のサーバー インスタン�
 
     **[Active Directory パスワード認証]** : 組織アカウントを使います。 たとえば、ドメイン参加非コンピューターから接続するときです。
 
-    **[Active Directory - MFA サポートで汎用]** : [非対話型認証または多要素認証](../sql-database/sql-database-ssms-mfa-authentication.md)を使います。 
+    **[Active Directory - MFA サポートで汎用]** : [非対話型認証または多要素認証](../azure-sql/database/authentication-mfa-ssms-overview.md)を使います。 
    
     ![SSMS で接続する](./media/analysis-services-manage/aas-manage-connect-ssms.png)
 

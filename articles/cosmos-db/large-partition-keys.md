@@ -3,15 +3,16 @@ title: 大きいパーティション キーを使用して Azure Cosmos コン�
 description: Azure portal と各種の SDK を使って大きいパーティション キーを持つコンテナーを Azure Cosmos DB で作成する方法について説明します。
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 7184a6b85e93c41dfe914813301a4b1a0c88f2cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 59781f9b86764d0982e1612f9671e8f0919ed490
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75887684"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89009510"
 ---
 # <a name="create-containers-with-large-partition-key"></a>大きいパーティション キーを持つコンテナーを作成する
 
@@ -23,7 +24,7 @@ Azure Cosmos DB では、データの水平方向のスケーリングを実現�
 
 Azure portal を使って新しいコンテナーを作成するときに、大きいパーティション キーを作成するには、 **[My partition key is larger than 100-bytes]\(100 バイトを超えるパーティション キー\)** オプションをオンにします。 大きいパーティション キーを使う必要がない場合、または 1.18 より前の SDK バージョンでアプリケーションを実行する場合は、チェック ボックスをオフにします。
 
-![Azure portal を使って大きいパーティション キーを作成する](./media/large-partition-keys/large-partition-key-with-portal.png)
+:::image type="content" source="./media/large-partition-keys/large-partition-key-with-portal.png" alt-text="Azure portal を使って大きいパーティション キーを作成する":::
 
 ## <a name="create-a-large-partition-key-powershell"></a>大きいパーティション キーを作成する (PowerShell)
 
@@ -35,7 +36,7 @@ Azure portal を使って新しいコンテナーを作成するときに、大�
 
 .NET SDK を使って大きいパーティション キーを持つコンテナーを作成するには、`PartitionKeyDefinitionVersion.V2` プロパティを指定します。 次の例では、PartitionKeyDefinition オブジェクト内で Version プロパティを指定し、それを PartitionKeyDefinitionVersion.V2 に設定する方法を示します。
 
-### <a name="v3-net-sdk"></a>v3 .NET SDK
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
 ```csharp
 await database.CreateContainerAsync(
@@ -45,7 +46,7 @@ await database.CreateContainerAsync(
     })
 ```
 
-### <a name="v2-net-sdk"></a>v2 .NET SDK
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
 ```csharp
 DocumentCollection collection = await newClient.CreateDocumentCollectionAsync(
@@ -61,6 +62,7 @@ database,
          },
       new RequestOptions { OfferThroughput = 400 });
 ```
+---
 
 ## <a name="supported-sdk-versions"></a>サポートされている SDK バージョン
 
@@ -71,8 +73,8 @@ database,
 |.NET     |    1.18     |
 |Java Sync     |   2.4.0      |
 |Java Async   |  2.5.0        |
-| REST API | `2017-05-03` 要求ヘッダーを使用する `x-ms-version` より後のバージョン。|
-| Resource Manager テンプレート | バージョン 2 (`"version":2` オブジェクト内の `partitionKey` プロパティを使用)。 |
+| REST API | `x-ms-version` 要求ヘッダーを使用する `2017-05-03` より後のバージョン。|
+| Resource Manager テンプレート | バージョン 2 (`partitionKey` オブジェクト内の `"version":2` プロパティを使用)。 |
 
 現在、Power BI と Azure Logic Apps 内に大きなパーティション キーがあるコンテナーは使用できません。 これらのアプリケーションから、大きなパーティション キーなしでコンテナーを使用できます。
 

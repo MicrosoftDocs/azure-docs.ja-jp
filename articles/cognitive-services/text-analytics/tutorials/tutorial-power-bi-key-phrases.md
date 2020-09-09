@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 12/19/2019
+ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 2398bfa2ce828e716831cc7ce438bd1c241ca5f8
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 2fb38fdfaace188936975c1cfdd8c86b44d5b0a5
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75378536"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231539"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>チュートリアル:Power BI を Text Analytics Cognitive Service と統合する
 
@@ -34,7 +34,7 @@ Microsoft Power BI Desktop は、データへの接続、データの変換、�
 <a name="Prerequisites"></a>
 
 - Microsoft Power BI Desktop。 [無料でダウンロードできます](https://powerbi.microsoft.com/get-started/)。
-- Microsoft Azure アカウント。 [無料試用版を開始する](https://azure.microsoft.com/free/)か、[サインイン](https://portal.azure.com/)します。
+- Microsoft Azure アカウント。 [無料アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)するか、[サインイン](https://portal.azure.com/)してください。
 - Text Analytics API を使用する Cognitive Services API アカウント。 ない場合は、[サインアップ](../../cognitive-services-apis-create-account.md)して、5,000 トランザクション/月の Free レベル ([価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)参照) を使用して、このチュートリアルを完了できます。
 - サインアップ時に生成された [Text Analytics アクセス キー](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)。
 - ユーザーのコメント。 [用意されているサンプル データ](https://aka.ms/cogsvc/ta)または自身のデータを使用できます。 このチュートリアルでは、サンプル データを使用することを前提としています。
@@ -91,7 +91,7 @@ Power BI Desktop で、 **[ホーム]** リボンを選択します。 **[外部
 
 Text Analytics サービスの [Key Phrases API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6) は、HTTP 要求ごとに最大 1,000 個のテキスト ドキュメントを処理できます。 Power BI では一度に 1 レコードずつ処理する方が好まれるため、このチュートリアルでは、API の各呼び出しには 1 つのドキュメントのみが含まれます。 Key Phrases API では、処理されるドキュメントごとに次のフィールドが必要です。
 
-| | |
+| フィールド | 説明 |
 | - | - |
 | `id`  | 要求内のこのドキュメントの一意の識別子。 応答にもこのフィールドが含まれます。 そのため、複数のドキュメントを処理する場合、抽出されたキー フレーズを元のドキュメントと簡単に関連付けることができます。 このチュートリアルでは、要求ごとに 1 つのドキュメントのみを処理するため、各要求の `id` 値が同じになるようにハード コーディングできます。|
 | `text`  | 処理されるテキスト。 このフィールドの値は、[前のセクション](#PreparingData)で作成した `Merged` 列に基づきます。それには、結合された subject の行と comment のテキストが含まれています。 Key Phrases API では、このデータの文字数の上限は約 5,120 文字です。|
@@ -121,7 +121,7 @@ Power BI Desktop で、クエリ エディター ウィンドウにいること�
 // Returns key phrases from the text in a comma-separated list
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics" & "/v2.1/keyPhrases",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics" & "/v3.0/keyPhrases",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { language: ""en"", id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -225,7 +225,7 @@ Microsoft Azure で提供されている Cognitive Services の 1 つである T
 // Returns the sentiment score of the text, from 0.0 (least favorable) to 1.0 (most favorable)
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v2.1/sentiment",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v3.0/sentiment",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { language: ""en"", id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -242,7 +242,7 @@ in  sentiment
 // Returns the two-letter language code (for example, 'en' for English) of the text
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v2.1/languages",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v3.0/languages",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -256,7 +256,7 @@ in  language
 // Returns the name (for example, 'English') of the language in which the text is written
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v2.1/languages",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v3.0/languages",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -276,7 +276,7 @@ in  language
 // Returns key phrases from the text as a list object
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v2.1/keyPhrases",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v3.0/keyPhrases",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { language: ""en"", id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -293,7 +293,7 @@ in  keyphrases
 Text Analytics サービス、Power Query M 式言語、または Power BI の詳細について学習します。
 
 > [!div class="nextstepaction"]
-> [Text Analytics API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6)
+> [Text Analytics API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0)
 
 > [!div class="nextstepaction"]
 > [Power Query M リファレンス](https://docs.microsoft.com/powerquery-m/power-query-m-reference)

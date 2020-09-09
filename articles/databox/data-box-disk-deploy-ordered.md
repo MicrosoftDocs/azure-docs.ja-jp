@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 7b27f10567816884b14a0a2c69e3bd8e85cb7a76
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: de481abd82b4fc7dd2eae3763f82b8dd96cc14a9
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81398697"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266527"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>チュートリアル:Azure Data Box Disk を注文する
 
@@ -23,6 +23,7 @@ Azure Data Box Disk は、迅速かつ簡単な信頼性の高い方法でオン
 このチュートリアルでは、Azure Data Box Disk を注文する方法について説明します。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
+>
 > * Data Box Disk を注文する
 > * 注文を追跡する
 > * 注文をキャンセルする
@@ -38,21 +39,22 @@ Azure Data Box Disk は、迅速かつ簡単な信頼性の高い方法でオン
 ### <a name="for-device"></a>デバイスでは
 
 開始する前に次の点を確認します。
-- データのコピー元として使用できるクライアント コンピューターがあること。 クライアント コンピューターの要件は以下のとおりです。
-    - [サポート対象のオペレーティング システム](data-box-disk-system-requirements.md#supported-operating-systems-for-clients)が実行されていること。
-    - Windows クライアントである場合は、その他の[必須ソフトウェア](data-box-disk-system-requirements.md#other-required-software-for-windows-clients)がインストールされていること。  
+
+* データのコピー元として使用できるクライアント コンピューターがあること。 クライアント コンピューターの要件は以下のとおりです。
+  * [サポート対象のオペレーティング システム](data-box-disk-system-requirements.md#supported-operating-systems-for-clients)が実行されていること。
+  * Windows クライアントである場合は、その他の[必須ソフトウェア](data-box-disk-system-requirements.md#other-required-software-for-windows-clients)がインストールされていること。  
 
 ## <a name="order-data-box-disk"></a>Data Box Disk を注文する
 
 サインイン先:
 
-- Data Box Disk を注文するための Azure portal (URL: https://portal.azure.com )。
-- または、Azure Government ポータル (URL: https://portal.azure.us )。 詳細については、[ポータルを使用して Azure Government に接続する](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal)方法に関するページを参照してください。
+* Data Box Disk を注文するための Azure portal (URL: https://portal.azure.com )。
+* または、Azure Government ポータル (URL: https://portal.azure.us )。 詳細については、[ポータルを使用して Azure Government に接続する](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal)方法に関するページを参照してください。
 
 次の手順に従って、Data Box Disk を注文します。
 
 1. ポータルの左上隅にある **[+ リソースの作成]** をクリックし、「*Azure Data Box*」を検索します。 **[Azure Data Box]** をクリックします。
-    
+
    ![Azure Data Box 1 を検索する](media/data-box-disk-deploy-ordered/search-data-box11.png)
 
 2. **Create** をクリックしてください。
@@ -65,15 +67,14 @@ Azure Data Box Disk は、迅速かつ簡単な信頼性の高い方法でオン
     |---|---|
     |サブスクリプション|Data Box サービスが有効になっているサブスクリプションを選択します。<br> サブスクリプションは、課金アカウントにリンクされます。 |
     |転送の種類| Azure へのインポート|
-    |ソースの国 | データが現在存在する国/地域を選択します。|
+    |ソースの国または地域 | データが現在存在する国/地域を選択します。|
     |宛先 Azure リージョン|データを転送する Azure リージョンを選択します。|
-
   
-5.  **[Data Box Disk]** を選択します。 1 つの注文 (5 台のディスク) でのソリューションの最大容量は 35 TB です。 データ サイズがこれより大きい場合は、複数の注文を作成できます。
+4. **[Data Box Disk]** を選択します。 1 つの注文 (5 台のディスク) でのソリューションの最大容量は 35 TB です。 データ サイズがこれより大きい場合は、複数の注文を作成できます。
 
      ![Data Box Disk オプションを選択する](media/data-box-disk-deploy-ordered/select-data-box-sku-zoom.png)
 
-6.  **[注文]** で**注文の詳細**を指定します。 次の情報を入力または選択します。
+5. **[注文]** で**注文の詳細**を指定します。 次の情報を入力または選択します。
 
     |設定|値|
     |---|---|
@@ -98,33 +99,34 @@ Azure Data Box Disk は、迅速かつ簡単な信頼性の高い方法でオン
 
     マネージド ディスクに指定されたストレージ アカウントは、ステージング ストレージ アカウントとして使用されます。 Data Box サービスで、VHD がステージング ストレージ アカウントにアップロードされ、マネージド ディスクに変換され、リソース グループに移動されます。 詳細については、「[Azure へのデータのアップロードを確認する](data-box-disk-deploy-upload-verify.md#verify-data-upload-to-azure)」を参照してください。
 
-13. **[次へ]** をクリックします。
+6. **[次へ]** をクリックします。
 
     ![注文の詳細を指定する](media/data-box-disk-deploy-ordered/data-box-order-details.png)
 
-14. **[配送先住所]** タブで、氏名、会社の名前と郵送先住所、有効な電話番号を入力します。 **[住所の確認]** をクリックします。 配送先住所でサービスが利用可能かどうかが確認されます。 指定した配送先住所でサービスを利用できる場合は、その旨が通知されます。 
+7. **[配送先住所]** タブで、氏名、会社の名前と郵送先住所、有効な電話番号を入力します。 **[住所の確認]** をクリックします。 配送先住所でサービスが利用可能かどうかが確認されます。 指定した配送先住所でサービスを利用できる場合は、その旨が通知されます。
+
+   注文が処理されると、電子メール通知が届きます。 自己管理の出荷を選択した場合、[自己管理の出荷の使用](data-box-disk-portal-customer-managed-shipping.md)に関するページをご覧ください。
 
     ![配送先住所を指定する](media/data-box-disk-deploy-ordered/data-box-shipping-address.png)
-15. **[通知の詳細]** で、電子メール アドレスを指定します。 指定した電子メール アドレスに、注文の状態の更新に関する電子メール通知が送信されます。 
+8. **[通知の詳細]** で、電子メール アドレスを指定します。 指定した電子メール アドレスに、注文の状態の更新に関する電子メール通知が送信されます。
 
     グループの管理者が辞めた場合も引き続き通知を受け取ることができるように、グループ メールを使用することをお勧めします。
 
-16. 注文、連絡先、通知、プライバシー条項に関する情報の**概要**を確認します。 プライバシー条項への同意に対応するボックスをオンにします。
+9. 注文、連絡先、通知、プライバシー条項に関する情報の**概要**を確認します。 プライバシー条項への同意に対応するボックスをオンにします。
 
-17. **[注文]** をクリックします。 注文が作成されるまで数分かかります。
+10. **[注文]** をクリックします。 注文が作成されるまで数分かかります。
 
- 
 ## <a name="track-the-order"></a>注文を追跡する
 
 注文後、Azure portal から注文の状態を追跡できます。 目的の注文に移動し、 **[概要]** に移動して状態を表示します。 ポータルに、**注文済み**状態のジョブが表示されます。
 
-![注文済み状態の Data Box Disk](media/data-box-disk-deploy-ordered/data-box-portal-ordered.png) 
+![注文済み状態の Data Box Disk](media/data-box-disk-deploy-ordered/data-box-portal-ordered.png)
 
 ディスクが使用できない場合は通知されます。 ディスクが使用可能な場合、Microsoft は出荷用のディスクを特定し、ディスク パッケージを準備します。 ディスクの準備中に、次のアクションが実行されます。
 
-- BitLocker の AES-128 方式でディスクが暗号化されます。  
-- ディスクへの未承認のアクセスを防ぐために、ディスクがロックされます。
-- このプロセス中に、ディスクのロックを解除するパスキーが生成されます。
+* BitLocker の AES-128 方式でディスクが暗号化されます。  
+* ディスクへの未承認のアクセスを防ぐために、ディスクがロックされます。
+* このプロセス中に、ディスクのロックを解除するパスキーが生成されます。
 
 ディスクの準備が完了すると、ポータルに**処理済み**状態の注文が表示されます。
 
@@ -134,18 +136,18 @@ Azure Data Box Disk は、迅速かつ簡単な信頼性の高い方法でオン
 
 この注文をキャンセルするには、Azure portal で **[概要]** に移動し、コマンド バーの **[キャンセル]** をクリックします。
 
-ディスクが注文され、出荷に向けて注文が処理されている途中にのみキャンセルできます。 注文が処理された後は、注文をキャンセルすることはできなくなります。
+キャンセルが可能なのは、ディスクの注文後、出荷に向けて注文が処理されている間のみです。 注文が処理された後は、注文をキャンセルすることはできなくなります。
 
 ![注文をキャンセルする](media/data-box-disk-deploy-ordered/cancel-order1.png)
 
 キャンセルされた注文を削除するには、 **[概要]** に移動し、コマンド バーの **[削除]** をクリックします。
-
 
 ## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Data Box に関する次のようなトピックについて説明しました。
 
 > [!div class="checklist"]
+>
 > * Data Box Disk を注文する
 > * 注文を追跡する
 > * 注文をキャンセルする

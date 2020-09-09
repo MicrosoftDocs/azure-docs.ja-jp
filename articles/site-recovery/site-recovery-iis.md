@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: dfed398124ca20771e169f6f9e7d08d4d799ee1e
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 7a4408b54b663b2cd8abc22772ac1b799ea50de0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478296"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083771"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>多層 IIS ベース Web アプリケーションのディザスター リカバリーの設定
 
@@ -31,7 +31,7 @@ ms.locfileid: "80478296"
 この記事の内容を学習するには、次のタスクの実行方法を知っている必要があります。
 
 * [仮想マシンを Azure にレプリケートする](vmware-azure-tutorial.md)
-* [復旧ネットワークを設計する](site-recovery-network-design.md)
+* [復旧ネットワークを設計する](./concepts-on-premises-to-azure-networking.md)
 * [Azure へのテスト フェールオーバーを実行する](site-recovery-test-failover-to-azure.md)
 * [Azure へのフェールオーバーを実行する](site-recovery-failover.md)
 * [ドメイン コントローラーをレプリケートする](site-recovery-active-directory.md)
@@ -92,7 +92,7 @@ Azure|NA|はい
 
 
 ### <a name="add-a-script-to-the-recovery-plan"></a>復旧計画へのスクリプトの追加
-IIS Web ファームを正常に機能させるには、フェールオーバー後、またはテスト フェールオーバー時に、Azure の仮想マシンに対して一定の操作を実行することが必要な場合があります。 フェールオーバー後の操作は一部自動化することもできます。 たとえば、対応するスクリプトを復旧計画に追加することで、DNS エントリを更新したり、サイトのバインドを変更したり、接続文字列を変更したりすることができます。 スクリプトを使用して自動化タスクを設定する方法については、「[Add a VMM script to a recovery plan (復旧計画に VMM スクリプトを追加する)](site-recovery-how-to-add-vmmscript.md)」で説明されています。
+IIS Web ファームを正常に機能させるには、フェールオーバー後、またはテスト フェールオーバー時に、Azure の仮想マシンに対して一定の操作を実行することが必要な場合があります。 フェールオーバー後の操作は一部自動化することもできます。 たとえば、対応するスクリプトを復旧計画に追加することで、DNS エントリを更新したり、サイトのバインドを変更したり、接続文字列を変更したりすることができます。 スクリプトを使用して自動化タスクを設定する方法については、「[Add a VMM script to a recovery plan (復旧計画に VMM スクリプトを追加する)](./hyper-v-vmm-recovery-script.md)」で説明されています。
 
 #### <a name="dns-update"></a>DNS の更新
 DNS が動的 DNS 更新用に構成されている場合、仮想マシンは通常、その起動後に新しい IP アドレスで DNS を更新します。 仮想マシンの新しい IP アドレスで DNS を更新するための明示的な手順を追加する場合は、[DNS の IP を更新するためのスクリプト](https://aka.ms/asr-dns-update)を、復旧計画グループのフェールオーバー後のアクションとして追加します。  
@@ -102,12 +102,14 @@ DNS が動的 DNS 更新用に構成されている場合、仮想マシンは�
 
 接続文字列が IP アドレスを使用してデータベース仮想マシンを参照する場合は、フェールオーバー後に接続文字列を更新する必要があります。 たとえば、次の接続文字列では、IP アドレス 127.0.1.2 でデータベースを参照しています。
 
-        <?xml version="1.0" encoding="utf-8"?>
-        <configuration>
-        <connectionStrings>
-        <add name="ConnStringDb1" connectionString="Data Source= 127.0.1.2\SqlExpress; Initial Catalog=TestDB1;Integrated Security=False;" />
-        </connectionStrings>
-        </configuration>
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+<connectionStrings>
+<add name="ConnStringDb1" connectionString="Data Source= 127.0.1.2\SqlExpress; Initial Catalog=TestDB1;Integrated Security=False;" />
+</connectionStrings>
+</configuration>
+```
 
 Web 層の接続文字列を更新するには、復旧計画のグループ 3 の後に、[IIS 接続更新スクリプト](https://gallery.technet.microsoft.com/Update-IIS-connection-2579aadc)を追加します。
 

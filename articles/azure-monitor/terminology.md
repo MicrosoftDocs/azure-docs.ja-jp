@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 0c5e1096b0780d2f9e50389f772e63344935012b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 819ef7e61045c0ed4205eeaf0094fec706b0b9da
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79234135"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498612"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitor の名称と用語の変更
 最近、Azure Monitor に大きな変更が加えられ、Azure のお客様が監視を簡単に行えるようにするためにさまざまなサービスが統合されました。 この記事では、Azure Monitor のドキュメント内で最近行われた名称と用語の変更について説明します。
@@ -59,4 +59,4 @@ Operations Management Suite (OMS) は、ライセンス目的で以下の Azure 
 ## <a name="next-steps"></a>次のステップ
 
 - さまざまなコンポーネントと機能については、[Azure Monitor の 概要](overview.md)に関するページを参照してください。
-- [OMS ポータルの移行](../log-analytics/log-analytics-oms-portal-transition.md)に関するページを参照してください。
+- [OMS ポータルの移行](./platform/oms-portal-transition.md)に関するページを参照してください。

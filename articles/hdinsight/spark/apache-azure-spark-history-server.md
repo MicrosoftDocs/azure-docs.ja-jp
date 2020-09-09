@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/25/2019
-ms.openlocfilehash: 5cf1986711479f7330b0cd477744d9f4e2ac6459
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8dd9aaeaadf13fa48577cf2853e7bcf58badb41
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76548936"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079294"
 ---
 # <a name="use-the-extended-features-of-the-apache-spark-history-server-to-debug-and-diagnose-spark-applications"></a>Apache Spark History Server の拡張機能を使用して Spark アプリケーションのデバッグと診断を行う
 
@@ -328,6 +328,6 @@ Spark History Server でエラーが発生した場合は、次の手順を実�
 + [HDInsight 上の Apache Spark クラスターのリソースを管理する](apache-spark-resource-manager.md)
 + [Apache Spark の設定を構成する](apache-spark-settings.md)
 
-## <a name="feedback"></a>フィードバック
+## <a name="suggestions"></a>検索候補
 
 フィードバックがある場合やこのツールの使用中に問題が発生した場合は、[hdivstool@microsoft.com](mailto:hdivstool@microsoft.com) にメールをお送りください。

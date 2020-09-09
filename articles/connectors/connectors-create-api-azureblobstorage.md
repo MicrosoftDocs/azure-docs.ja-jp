@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: eb943bfe36be10d1e95d569a5c1bf48563e909c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34608a085c0d60e0ce07e5d198622f80a43f8b38
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225895"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284083"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Azure Blob Storage に BLOB を作成して管理する
 
@@ -20,7 +20,7 @@ ms.locfileid: "79225895"
 
 更新されるツールが Azure Web サイト上にあるとします。 それはロジック アプリのトリガーとして機能します。 そのイベントが発生したときに、BLOB ストレージ コンテナー内のいくつかのファイルをロジック アプリに更新させることができます。更新はロジック アプリで実行されるアクションです。
 
-ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」と[クイック スタートの初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。 コネクタ固有の技術情報については、[Azure Blob Storage コネクタ リファレンス](https://docs.microsoft.com/connectors/azureblobconnector/)に関する記事を参照してください。
+ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」と[クイック スタートの初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。 コネクタ固有の技術情報については、[Azure Blob Storage コネクタ リファレンス](/connectors/azureblobconnector/)に関する記事を参照してください。
 
 > [!IMPORTANT]
 > 同じリージョンにある場合、ロジック アプリはファイア ウォールの背後にあるストレージ アカウントに直接アクセスできません。 回避策として、お使いのロジック アプリとストレージアカウントを別のリージョンに格納してください。 Azure Logic Apps からファイアウォールの背後にあるストレージ アカウントへのアクセスを有効にする方法の詳細については、このトピックの後半の「[ファイアウォールの背後にあるストレージ アカウントにアクセスする](#storage-firewalls)」を参照してください。
@@ -137,7 +137,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-コネクタの Swagger ファイルに記述される、トリガー、アクション、制限などのこのコネクタの技術的詳細については、[コネクタの参照ページ](https://docs.microsoft.com/connectors/azureblobconnector/)を参照してください。
+コネクタの Swagger ファイルに記述される、トリガー、アクション、制限などのこのコネクタの技術的詳細については、[コネクタの参照ページ](/connectors/azureblobconnector/)を参照してください。
 
 > [!NOTE]
 > [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリの場合、このコネクタの ISE のラベルが付いたバージョンでは、代わりに [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)が使用されます。
@@ -194,7 +194,7 @@ Microsoft の信頼されたサービスがファイアウォールを介して�
 1. 自分のロジック アプリのワークフローで、ストレージ アカウントまたはエンティティにアクセスするための HTTP アクションまたはトリガーを追加および設定します。
 
    > [!IMPORTANT]
-   > Azure ストレージ アカウントへの発信 HTTP アクションまたはトリガー呼び出しの場合は、要求ヘッダーに `x-ms-version` プロパティと、ストレージ アカウントで実行したい操作の API バージョンが含まれていることを確認します。 詳細については、「[マネージド ID を使用してアクセスを認証する](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)」と「[Azure Storage サービスのバージョン管理](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests)」を参照してください。
+   > Azure ストレージ アカウントへの発信 HTTP アクションまたはトリガー呼び出しの場合は、要求ヘッダーに `x-ms-version` プロパティと、ストレージ アカウントで実行したい操作の API バージョンが含まれていることを確認します。 詳細については、「[マネージド ID を使用してアクセスを認証する](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)」と「[Azure Storage サービスのバージョン管理](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests)」を参照してください。
 
 1. そのアクションで、認証に使用する[マネージド ID を選択](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)します。
 
@@ -207,3 +207,4 @@ Microsoft の信頼されたサービスがファイアウォールを介して�
 ## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。
+

@@ -4,13 +4,14 @@ description: ステートレス サービスとステートフル サービス�
 author: suhuruli
 ms.topic: conceptual
 ms.date: 11/02/2017
+ms.custom: devx-track-java
 ms.author: suhuruli
-ms.openlocfilehash: 7855b92c90a9ccd208a25080c260437e6808d1b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 30797e68081e346ee0f31f77da15f820776337a0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82184148"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324507"
 ---
 # <a name="get-started-with-reliable-services-in-java"></a>Java で Reliable Services の使用を開始する
 > [!div class="op_single_selector"]
@@ -190,7 +191,7 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ReliableHashMap<String,Long> map = this.stateManager.<String, Long>getOrAddReliableHashMapAsync("myHashMap")
 ```
 
-[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections.reliablehashmap) は、サービスに状態を確実に格納するために使用できるディクショナリ実装です。 Service Fabric と Reliable HashMap を使用すると、データをサービスに直接格納できるため、外部の永続ストアが必要ありません。 Reliable HashMap により、データの可用性が向上します。 Service Fabric では、サービスの複数の *レプリカ* を作成して管理することでこれを実現します。 また、これらのレプリカとその状態遷移の管理の複雑さを取り除く API も提供します。
+[ReliableHashMap](/java/api/microsoft.servicefabric.data.collections.reliablehashmap) は、サービスに状態を確実に格納するために使用できるディクショナリ実装です。 Service Fabric と Reliable HashMap を使用すると、データをサービスに直接格納できるため、外部の永続ストアが必要ありません。 Reliable HashMap により、データの可用性が向上します。 Service Fabric では、サービスの複数の *レプリカ* を作成して管理することでこれを実現します。 また、これらのレプリカとその状態遷移の管理の複雑さを取り除く API も提供します。
 
 Reliable Collection にはカスタム型を含むすべての Java 型を格納できます。ただし次の点にご注意ください。
 

@@ -6,15 +6,16 @@ ms.author: banders
 ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: cloudyn
 ms.reviewer: benshy
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5d4f8e26aef5fbfb20c1721d1851a4940863121b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9f42359cc843a934cf1258576d13eec8af2279cc
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79474545"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88687656"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>Cloudyn コスト管理レポートの概要
 

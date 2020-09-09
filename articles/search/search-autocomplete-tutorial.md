@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 60e9a435d705ee0fee6509e92cdcb056ac7ab609
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: c0031b09dbb3335113cb52c9b3ec5e4fd4fa2758
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81758116"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011581"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>クライアント アプリにオートコンプリートと検索候補を追加する
 
@@ -22,7 +23,7 @@ ms.locfileid: "81758116"
 これらのエクスペリエンスを Azure Cognitive Search に実装するには、次のものが必要です。
 
 + バック エンドでの *suggester*。
-+ 要求で[オートコンプリート](https://docs.microsoft.com/rest/api/searchservice/autocomplete)または[検索候補](https://docs.microsoft.com/rest/api/searchservice/suggestions)の API を指定する "*クエリ*"。
++ 要求で[オートコンプリート](/rest/api/searchservice/autocomplete)または[検索候補](/rest/api/searchservice/suggestions)の API を指定する "*クエリ*"。
 + クライアント アプリで入力と並行した検索操作を処理するための "*UI コントロール*"。 このために既存の JavaScript ライブラリを使用することをお勧めします。
 
 Azure Cognitive Search では、オートコンプリートされたクエリと候補となる結果が、検索インデックスと、suggester に登録した選択フィールドから取得されます。 suggester はインデックスの一部であり、クエリを補完するか、結果を提示するか、その両方を行うコンテンツを提供するフィールドを指定します。 インデックスが作成されて読み込まれると、suggester のデータ構造が内部で作成され、部分的なクエリに対する照合に使用されるプレフィックスが格納されます。 検索候補については、一意であるか、少なくとも反復しない適切なフィールドを選択することが、このエクスペリエンスにとって重要です。 詳細については、[suggester の作成](index-add-suggesters.md)に関するページを参照してください。
@@ -34,7 +35,7 @@ Azure Cognitive Search では、オートコンプリートされたクエリと
 要求の要素には、入力と並行した検索の API の 1 つ、部分クエリ、suggester が含まれます。 次のスクリプトでは、例としてオートコンプリート REST API を使用して、要求のコンポーネントを示します。
 
 ```http
-POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
+POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 {
   "search": "minecraf",
   "suggesterName": "sg"
@@ -53,16 +54,16 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
 
 REST および .NET SDK のリファレンス ページについては、以下のリンク先を参照してください。
 
-+ [検索候補 REST API](https://docs.microsoft.com/rest/api/searchservice/suggestions) 
-+ [オートコンプリート REST API](https://docs.microsoft.com/rest/api/searchservice/autocomplete) 
-+ [SuggestWithHttpMessagesAsync メソッド](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet)
-+ [AutocompleteWithHttpMessagesAsync メソッド](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
++ [検索候補 REST API](/rest/api/searchservice/suggestions) 
++ [オートコンプリート REST API](/rest/api/searchservice/autocomplete) 
++ [SuggestWithHttpMessagesAsync メソッド](/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet)
++ [AutocompleteWithHttpMessagesAsync メソッド](/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
 
 ## <a name="structure-a-response"></a>応答の構造化
 
-オートコンプリートと検索候補の応答は、次のように、パターンに対して想定されるものです。[オートコンプリート](https://docs.microsoft.com/rest/api/searchservice/autocomplete#response)の場合は用語のリストが返され、[検索候補](https://docs.microsoft.com/rest/api/searchservice/suggestions#response)の場合は用語とドキュメント ID が返されるため、ドキュメントを取得できます (特定のドキュメントの詳細ページを取得するには、[Lookup Document](https://docs.microsoft.com/rest/api/searchservice/lookup-document) API を使用します)。
+オートコンプリートと検索候補の応答は、次のように、パターンに対して想定されるものです。[オートコンプリート](/rest/api/searchservice/autocomplete#response)の場合は用語のリストが返され、[検索候補](/rest/api/searchservice/suggestions#response)の場合は用語とドキュメント ID が返されるため、ドキュメントを取得できます (特定のドキュメントの詳細ページを取得するには、[Lookup Document](/rest/api/searchservice/lookup-document) API を使用します)。
 
-応答は、要求のパラメーターによって形成されます。 オートコンプリートの場合は、[**autocompleteMode**](https://docs.microsoft.com/rest/api/searchservice/autocomplete#autocomplete-modes) を設定して、テキスト補完が 1 つの用語で行われるか 2 つの用語で行われるかを指定します。 検索候補の場合は、選択したフィールドによって応答の内容が決まります。
+応答は、要求のパラメーターによって形成されます。 オートコンプリートの場合は、[**autocompleteMode**](/rest/api/searchservice/autocomplete#autocomplete-modes) を設定して、テキスト補完が 1 つの用語で行われるか 2 つの用語で行われるかを指定します。 検索候補の場合は、選択したフィールドによって応答の内容が決まります。
 
 検索候補については、応答をさらに絞り込んで、重複や、関連性がないように見える結果を回避する必要があります。 結果を制御するには、要求により多くのパラメーターを含めます。 次のパラメーターは、オートコンプリートと検索候補の両方に適用されますが、特に suggester に複数のフィールドが含まれている場合には、検索候補での必要性が高くなる可能性があります。
 
@@ -140,7 +141,7 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 C# と MVC アプリケーションを使用している場合は、Controllers ディレクトリにある **HomeController.cs** ファイルで、候補の結果用のクラスを作成できます。 .NET の場合、Suggest 関数は [DocumentsOperationsExtensions.Suggest メソッド](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet)に基づいています。
 
-`InitSearch` メソッドにより、Azure Cognitive Search サービスに対して認証済みの HTTP インデックス クライアントが作成されます。 .NET SDK の詳細については、「[.NET アプリケーションから Azure Cognitive Search を使用する方法](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)」を参照してください。
+`InitSearch` メソッドにより、Azure Cognitive Search サービスに対して認証済みの HTTP インデックス クライアントが作成されます。 .NET SDK の詳細については、「[.NET アプリケーションから Azure Cognitive Search を使用する方法](./search-howto-dotnet-sdk.md)」を参照してください。
 
 ```csharp
 public ActionResult Suggest(bool highlights, bool fuzzy, string term)
@@ -174,7 +175,7 @@ public ActionResult Suggest(bool highlights, bool fuzzy, string term)
 }
 ```
 
-Suggest 関数は、ヒットの強調表示が返されるかどうか、および入力された検索用語に加えてあいまい一致も使用するかどうかを決定する 2 つのパラメーターを使用します。 このメソッドは、検索候補 API に渡される [SuggestParameters](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggestparameters?view=azure-dotnet) オブジェクトを作成します。 結果は、クライアントに表示できるように JSON に変換されます。
+Suggest 関数は、ヒットの強調表示が返されるかどうか、および入力された検索用語に加えてあいまい一致も使用するかどうかを決定する 2 つのパラメーターを使用します。 このメソッドは、検索候補 API に渡される [SuggestParameters](/dotnet/api/microsoft.azure.search.models.suggestparameters?view=azure-dotnet) オブジェクトを作成します。 結果は、クライアントに表示できるように JSON に変換されます。
 
 ## <a name="autocomplete"></a>オートコンプリート
 
@@ -217,7 +218,7 @@ $(function () {
 
 ### <a name="autocomplete-function"></a>Autocomplete 関数
 
-オートコンプリートは、[DocumentsOperationsExtensions.Autocomplete メソッド](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete?view=azure-dotnet)に基づいています。 検索候補と同様に、このコード ブロックは **HomeController.cs** ファイル内にあります。
+オートコンプリートは、[DocumentsOperationsExtensions.Autocomplete メソッド](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete?view=azure-dotnet)に基づいています。 検索候補と同様に、このコード ブロックは **HomeController.cs** ファイル内にあります。
 
 ```csharp
 public ActionResult AutoComplete(string term)
@@ -242,7 +243,7 @@ public ActionResult AutoComplete(string term)
 }
 ```
 
-Autocomplete 関数は、検索用語の入力を取得します。 このメソッドは、[AutoCompleteParameters オブジェクト](https://docs.microsoft.com/rest/api/searchservice/autocomplete)を作成します。 結果は、クライアントに表示できるように JSON に変換されます。
+Autocomplete 関数は、検索用語の入力を取得します。 このメソッドは、[AutoCompleteParameters オブジェクト](/rest/api/searchservice/autocomplete)を作成します。 結果は、クライアントに表示できるように JSON に変換されます。
 
 ## <a name="next-steps"></a>次のステップ
 

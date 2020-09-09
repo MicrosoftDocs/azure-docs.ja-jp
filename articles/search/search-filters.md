@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 03333e853a2ab7606ebe60cc3f68bcb5facfbdb4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4d1e120073e5bf4306c89628fc4e2e9c9f7ed2cf
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77191011"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002421"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Azure Cognitive Search のフィルター 
 
@@ -61,7 +62,7 @@ ms.locfileid: "77191011"
 フィルターは検索と並行して実行され、ドキュメントの取得と関連性のスコア付けのためにダウンストリーム処理に含めるドキュメントを特定します。 フィルターを検索文字列と組み合わせて使用すると、以降の検索操作での再指定を効果的に減らすことができます。 フィルターを単独で使用すると (たとえば、`search=*` ではクエリ文字列が空です)、フィルター条件が唯一の入力になります。 
 
 ## <a name="defining-filters"></a>フィルターを定義する
-フィルターは [Azure Cognitive Search でサポートされている OData V4 構文のサブセット](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)を使用して記述される OData 式です。 
+フィルターは [Azure Cognitive Search でサポートされている OData V4 構文のサブセット](/rest/api/searchservice/odata-expression-syntax-for-azure-search)を使用して記述される OData 式です。 
 
 各**検索**操作に 1 つのフィルターを指定できますが、フィルター自体には複数のフィールド、複数の条件、および複数のフルテキスト検索式 (**ismatch** 関数を使用する場合) を含めることができます。 マルチパートのフィルター式では、任意の順序で述語を指定できます (演算子の優先順位の規則に従います)。 特定の順序で述語を並べ替えても、感知できるほどパフォーマンスが向上することはありません。
 
@@ -71,10 +72,10 @@ ms.locfileid: "77191011"
 
 ```http
 # Option 1:  Use $filter for GET
-GET https://[service name].search.windows.net/indexes/hotels/docs?api-version=2019-05-06&search=*&$filter=Rooms/any(room: room/BaseRate lt 150.0)&$select=HotelId, HotelName, Rooms/Description, Rooms/BaseRate
+GET https://[service name].search.windows.net/indexes/hotels/docs?api-version=2020-06-30&search=*&$filter=Rooms/any(room: room/BaseRate lt 150.0)&$select=HotelId, HotelName, Rooms/Description, Rooms/BaseRate
 
 # Option 2: Use filter for POST and pass it in the request body
-POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2019-05-06
+POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2020-06-30
 {
     "search": "*",
     "filter": "Rooms/any(room: room/BaseRate lt 150.0)",
@@ -95,7 +96,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 ## <a name="filter-usage-patterns"></a>フィルターの使用パターン
 
-以下に、フィルター シナリオの使用パターン例をいくつか紹介します。 その他のアイデアについては、[「OData expression syntax」(OData 式の構文) > 「Examples」(例)](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples) を参照してください。
+以下に、フィルター シナリオの使用パターン例をいくつか紹介します。 その他のアイデアについては、[「OData expression syntax」(OData 式の構文) > 「Examples」(例)](./search-query-odata-filter.md#examples) を参照してください。
 
 + クエリ文字列がないスタンドアロンの **$filter**。関係があるドキュメントをフィルター式で完全に修飾できる場合に役立ちます。 クエリ文字列がない場合、字句または言語の分析、スコア付け、優先度付けはありません。 検索文字列がアスタリスクのみであることに注意してください。これは、"すべてのドキュメントを照合する" ことを意味しています。
 
@@ -135,9 +136,9 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 ## <a name="field-requirements-for-filtering"></a>フィルターのフィールド要件
 
-REST API では、フィルター可能の設定は単純型フィールドの場合は既定で "*オン*" です。 フィルター可能なフィールドはインデックス サイズが大きくなります。実際にフィルターで使用する予定がないフィールドの場合は、`"filterable": false` を設定してください。 フィールド定義の設定の詳細については、「[Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index)」(インデックスの作成) を参照してください。
+REST API では、フィルター可能の設定は単純型フィールドの場合は既定で "*オン*" です。 フィルター可能なフィールドはインデックス サイズが大きくなります。実際にフィルターで使用する予定がないフィールドの場合は、`"filterable": false` を設定してください。 フィールド定義の設定の詳細については、「[Create Index](/rest/api/searchservice/create-index)」(インデックスの作成) を参照してください。
 
-.NET SDK では、フィルター可能の設定は既定で*オフ*です。 対応する [Field](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) オブジェクトの [IsFilterable プロパティ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) を `true` に設定することで、フィールドをフィルター可能にすることができます。 また、これは、[IsFilterable 属性](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute)を使用して宣言によって行うこともできます。 次の例では、属性は、インデックス定義にマップされるモデル クラスの `BaseRate` プロパティで設定されています。
+.NET SDK では、フィルター可能の設定は既定で*オフ*です。 対応する [Field](/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) オブジェクトの [IsFilterable プロパティ](/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) を `true` に設定することで、フィールドをフィルター可能にすることができます。 また、これは、[IsFilterable 属性](/dotnet/api/microsoft.azure.search.isfilterableattribute)を使用して宣言によって行うこともできます。 次の例では、属性は、インデックス定義にマップされるモデル クラスの `BaseRate` プロパティで設定されています。
 
 ```csharp
     [IsFilterable, IsSortable, IsFacetable]
@@ -193,12 +194,12 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=city gt 'Seattle'
 ```
 
-その他の例については、[「OData Filter Expression Syntax」(OData フィルター式の構文) > 「Examples」(例)](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples) を参照してください。
+その他の例については、[「OData Filter Expression Syntax」(OData フィルター式の構文) > 「Examples」(例)](./search-query-odata-filter.md#examples) を参照してください。
 
 ## <a name="see-also"></a>参照
 
 + [Azure Cognitive Search でのフルテキスト検索のしくみ](search-lucene-query-architecture.md)
-+ [Search Documents REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
-+ [単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
-+ [Lucene クエリ構文](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
-+ [サポートされているデータ型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)
++ [Search Documents REST API](/rest/api/searchservice/search-documents)
++ [単純なクエリ構文](/rest/api/searchservice/simple-query-syntax-in-azure-search)
++ [Lucene クエリ構文](/rest/api/searchservice/lucene-query-syntax-in-azure-search)
++ [サポートされているデータ型](/rest/api/searchservice/supported-data-types)

@@ -2,23 +2,29 @@
 title: クイック スタート:Azure Blob Storage ライブラリ v12 - Java
 description: このクイックスタートでは、Java 用 Azure Blob Storage クライアント ライブラリ バージョン 12 を使用して、BLOB (オブジェクト) ストレージ内にコンテナーと BLOB を作成する方法について説明します。 次に、ローカル コンピューターに BLOB をダウンロードする方法と、コンテナー内のすべての BLOB を一覧表示する方法について説明します。
 author: mhopkins-msft
+ms.custom: devx-track-java
 ms.author: mhopkins
-ms.date: 01/27/2020
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: d30260f8718d061473dfa4b29b7c35e33b27390d
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 7c0b8d6ea772d3d655eb6fbe39afa5ef9edafc11
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871374"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319815"
 ---
 # <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>クイック スタート:Java v12 SDK で BLOB を管理する
 
 このクイックスタートでは、Java を使用して BLOB を管理する方法について説明します。 BLOB は、大量のテキストやバイナリ データ (画像、ドキュメント、ストリーミング メディア、アーカイブ データなど) を保持できるオブジェクトです。 ここでは、BLOB のアップロード、ダウンロード、一覧表示のほか、コンテナーの作成と削除を行います。
 
-[API リファレンスのドキュメント](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob) | [パッケージ (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob) | [サンプル](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+その他のリソース:
+
+* [API リファレンス ドキュメント](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html)
+* [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob)
+* [パッケージ (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob)
+* [サンプル](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -26,9 +32,6 @@ ms.locfileid: "82871374"
 - Azure Storage のアカウント [ストレージ アカウントの作成](../common/storage-account-create.md)。
 - [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable) バージョン 8 以降。
 - [Apache Maven](https://maven.apache.org/download.cgi)。
-
-> [!NOTE]
-> 以前の SDK バージョンを使ってみるには、「[クイックスタート: Java v8 SDK で BLOB を管理する](storage-quickstart-blobs-java-legacy.md)」を参照してください。
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 

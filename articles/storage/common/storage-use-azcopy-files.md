@@ -1,18 +1,18 @@
 ---
 title: AzCopy v10 を使用して Azure Files をコピー先またはコピー元としてデータを転送する | Microsoft Docs
-description: AzCopy とファイル ストレージでデータを転送します。
+description: AzCopy とファイル ストレージでデータを転送します。 AzCopy は、ストレージ アカウントとの間で BLOB またはファイルをコピーするためのコマンドライン ツールです。 Azure Files で AzCopy を使用します。
 author: normesta
 ms.service: storage
-ms.topic: conceptual
-ms.date: 04/10/2020
+ms.topic: how-to
+ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 7f47dd05035772744fb212ef8914b25979af61e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 793f3869a9534c71d860cc8dea7a1995f5ee278d
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137163"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871243"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>AzCopy とファイル ストレージでデータを転送する 
 
@@ -101,7 +101,7 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 
 ### <a name="upload-specific-files"></a>特定のファイルをアップロードする
 
-完全なファイル名を指定することも、ワイルドカード文字 (*) を使用して名前の一部を使用することもできます。
+完全なファイル名、ワイルドカード文字 (*) を使用した部分的な名前、または日付と時刻を使用して、特定のファイルをアップロードすることができます。
 
 #### <a name="specify-multiple-complete-file-names"></a>複数の完全なファイル名を指定する
 
@@ -128,6 +128,17 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 `--exclude-pattern` オプションを使用してファイルを除外することもできます。 詳細については、「[azcopy copy](storage-ref-azcopy-copy.md)」リファレンス ドキュメントを参照してください。
 
 `--include-pattern` オプションと `--exclude-pattern` オプションは、パスではなくファイル名にのみ適用されます。  ディレクトリ ツリーに存在するテキスト ファイルをすべてコピーする場合は、`–recursive` オプションを使用してディレクトリ ツリー全体を取得し、次に `–include-pattern` を使用して `*.txt` を指定し、すべてのテキスト ファイルを取得します。
+
+#### <a name="upload-files-that-were-modified-after-a-date-and-time"></a>ある日時の後に変更されたファイルをアップロードする 
+
+[azcopy copy](storage-ref-azcopy-copy.md) コマンドを `--include-after` オプションと共に使用します。 日時を ISO 8601 形式で指定します (例: `2020-08-19T15:04:00Z`)。 
+
+|    |     |
+|--------|-----------|
+| **構文** | `azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.file.core.windows.net/<file-share-or-directory-name><SAS-token>'  --include-after <Date-Time-in-ISO-8601-format>` |
+| **例** | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --include-after '2020-08-19T15:04:00Z'` |
+
+詳細なリファレンスについては、[azcopy copy](storage-ref-azcopy-copy.md) リファレンス ドキュメントを参照してください。
 
 ## <a name="download-files"></a>ファイルのダウンロード
 
@@ -185,7 +196,7 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 
 ### <a name="download-specific-files"></a>特定のファイルをダウンロードする
 
-完全なファイル名を指定することも、ワイルドカード文字 (*) を使用して名前の一部を使用することもできます。
+完全なファイル名、ワイルドカード文字 (*) を使用した部分的な名前、または日付と時刻を使用して、特定のファイルをダウンロードすることができます。
 
 #### <a name="specify-multiple-complete-file-names"></a>複数の完全なファイル名を指定する
 
@@ -212,6 +223,18 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 `--exclude-pattern` オプションを使用してファイルを除外することもできます。 詳細については、「[azcopy copy](storage-ref-azcopy-copy.md)」リファレンス ドキュメントを参照してください。
 
 `--include-pattern` オプションと `--exclude-pattern` オプションは、パスではなくファイル名にのみ適用されます。  ディレクトリ ツリーに存在するテキスト ファイルをすべてコピーする場合は、`–recursive` オプションを使用してディレクトリ ツリー全体を取得し、次に `–include-pattern` を使用して `*.txt` を指定し、すべてのテキスト ファイルを取得します。
+
+#### <a name="download-files-that-were-modified-after-a-date-and-time"></a>ある日時の後に変更されたファイルをダウンロードする 
+
+[azcopy copy](storage-ref-azcopy-copy.md) コマンドを `--include-after` オプションと共に使用します。 日時を ISO-8601 形式で指定します (例: `2020-08-19T15:04:00Z`)。 
+
+|    |     |
+|--------|-----------|
+| **構文** | `azcopy copy 'https://<storage-account-name>.file.core.windows.net/<file-share-or-directory-name>/*<SAS-token>' '<local-directory-path>'  --include-after <Date-Time-in-ISO-8601-format>` |
+| **例** | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myfileshare/*?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'C:\myDirectory' --include-after '2020-08-19T15:04:00Z'` |
+
+
+詳細なリファレンスについては、[azcopy copy](storage-ref-azcopy-copy.md) リファレンス ドキュメントを参照してください。
 
 ## <a name="copy-files-between-storage-accounts"></a>ストレージ アカウント間でファイルをコピーする
 
@@ -283,7 +306,8 @@ AzCopy では、[サーバー間](https://docs.microsoft.com/rest/api/storageser
 >
 > |シナリオ|フラグ|
 > |---|---|
-> |ダウンロードの際に MD5 ハッシュを検証する厳密さを指定します。|**--check-md5**=\[NoCheck\|LogOnly\|FailIfDifferent\|FailIfDifferentOrMissing\]|
+> |ファイルと共にアクセス制御リスト (ACL) をコピーします。|**--preserve-smb-permissions**=\[true\|false\]|
+> |ファイルと共に SMB プロパティ情報をコピーします。|**--preserve-smb-info**=\[true\|false\]|
 > |パターンに基づいてファイルを除外します。|**--exclude-path**|
 > |同期に関連するログ エントリの詳細レベルを指定します。|**--log-level**=\[WARNING\|ERROR\|INFO\|NONE\]|
 > 

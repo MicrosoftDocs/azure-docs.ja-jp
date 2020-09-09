@@ -6,12 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/29/2020
-ms.openlocfilehash: 4dd91363cdebf18e6303238816e8269065a6a317
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 16fba1f036299a84db8301dbc09c7f4884d985f3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77672244"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305093"
 ---
 # <a name="windows-azure-diagnostics-extension-wad-configuration-schema-versions-and-history"></a>Windows Azure Diagnostics 拡張機能 (WAD) の構成スキーマのバージョンと履歴
 この記事では、Microsoft Azure SDK の一部として付属している、[Windows 用の Azure Diagnostics 拡張機能 (WAD)](diagnostics-extension-overview.md) スキーマ バージョンのバージョン履歴を提供します。  
@@ -46,8 +46,8 @@ ms.locfileid: "77672244"
 
 ### <a name="diagnostics-extension-111"></a>診断拡張機能 1.11
 Azure Monitor シンクに対応しました。 このシンクはパフォーマンス カウンターにのみ適用されます。 VM、VMSS、またはクラウド サービスで収集されたパフォーマンス カウンターを Azure Monitor にカスタム メトリックとして送信できるようになります。 Azure Monitor シンクは以下をサポートします。
-* [Azure Monitor メトリック API](https://docs.microsoft.com/rest/api/monitor/metrics/list) を使用して、Azure Monitor に送信されたすべてのパフォーマンス カウンターを取得します。
-* Azure Monitor の新しい[統合アラート エクスペリエンス](../../azure-monitor/platform/alerts-overview.md)を介して Azure Monitor に送信されたすべてのパフォーマンス カウンターに関して警告します
+* [Azure Monitor メトリック API](/rest/api/monitor/metrics/list) を使用して、Azure Monitor に送信されたすべてのパフォーマンス カウンターを取得します。
+* Azure Monitor の新しい[統合アラート エクスペリエンス](./alerts-overview.md)を介して Azure Monitor に送信されたすべてのパフォーマンス カウンターに関して警告します
 * パフォーマンス カウンターでワイルドカード演算子をメトリックの "Instance" ディメンションとして扱います。 たとえば、"LogicalDisk(\*)/DiskWrites/sec" カウンターを収集した場合、"Instance" ディメンションでフィルターして分割し、各論理ディスクのディスク書き込み回数/秒をプロットまたはアラートすることができます (C:、D: など)。
 
 診断拡張機能の構成で新しいシンクとして Azure Monitor を定義します
@@ -155,7 +155,7 @@ PublicConfig にストレージの種類が追加されました。 StorageType 
 EventHub にルーティングする機能が追加されました。
 
 ### <a name="diagnostics-extension-15"></a>診断拡張機能 1.5
-Sink 要素と、診断データを [Application Insights](../../azure-monitor/app/cloudservices.md) に送信することで、アプリケーションとシステムおよびインフラストラクチャのレベル全体の問題を診断しやすくする機能が追加されました。
+Sink 要素と、診断データを [Application Insights](../app/cloudservices.md) に送信することで、アプリケーションとシステムおよびインフラストラクチャのレベル全体の問題を診断しやすくする機能が追加されました。
 
 ### <a name="azure-sdk-26-and-diagnostics-extension-13"></a>Azure SDK 2.6 と診断拡張 1.3
 Visual Studio のクラウド サービス プロジェクトで、次の変更が行われました (これらの変更はそれ以降のバージョンの Azure SDK にも当てはまります)。

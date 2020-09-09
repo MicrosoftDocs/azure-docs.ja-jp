@@ -5,17 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/14/2019
-ms.openlocfilehash: ccc503e6718ee8f516920cfbea3ad86e7ed81d84
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/01/2020
+ms.openlocfilehash: 49eea969f987a72872cda58ae6a7c41e50a14c10
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74768267"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830283"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>クエリ ストアによるパフォーマンスの監視
 
-**適用対象:** Azure Database for PostgreSQL - 単一サーバー バージョン 9.6、10、11
+**適用対象:** Azure Database for PostgreSQL - 単一サーバー バージョン 9.6 以降
 
 Azure Database for PostgreSQL のクエリ ストア機能では、一定期間にわたってクエリ パフォーマンスを追跡する手段が提供されます。 クエリ ストアを使用すると、実行時間が最長のクエリおよびリソースを最も消費しているクエリを迅速に特定できるので、パフォーマンスのトラブルシューティングが簡単になります。 クエリ ストアでは、クエリおよびランタイム統計の履歴が自動的にキャプチャされて保持されるので、それらを確認できます。 データベースの使用パターンを確認できるように、データが時間枠で区切られます。 すべてのユーザー、データベース、クエリに関するデータが Azure Database for PostgreSQL インスタンス内の **azure_sys** という名前のデータベースに格納されます。
 
@@ -72,9 +72,6 @@ SELECT * FROM query_store.qs_view;
 SELECT * FROM query_store.pgms_wait_sampling_view;
 ```
 
-分析とアラート用の [Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md)、ストリーミング用の Event Hubs、アーカイブ用の Azure Storage にクエリ ストア データを出力することもできます。 構成するログ カテゴリは **QueryStoreRuntimeStatistics** と **QueryStoreWaitStatistics** です。 セットアップの詳細については、[Azure Monitor の診断設定](../azure-monitor/platform/diagnostic-settings.md)に関する記事を参照してください。
-
-
 ## <a name="finding-wait-queries"></a>待機クエリの検索
 待機イベントの種類では、類似性によってさまざまな待機イベントがバケットに結合されます。 クエリ ストアでは、待機イベントの種類、特定の待機イベント名、対象のクエリが提供されます。 この待機情報をクエリのランタイム統計に関連付けられることは、クエリのパフォーマンス特性に何が寄与しているかをより深く理解できることを意味します。
 
@@ -124,30 +121,30 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 |runtime_stats_entry_id |bigint | | runtime_stats_entries テーブルからの ID|
 |user_id    |oid    |pg_authid.oid  |ステートメントを実行したユーザーの OID|
 |db_id  |oid    |pg_database.oid    |ステートメントが実行されたデータベースの OID|
-|query_id   |bigint  || ステートメントの解析ツリーから計算される内部ハッシュ コード|
-|query_sql_text |Varchar(10000)  || 代表的なステートメントのテキスト。 同じ構造を持つ複数の異なるクエリがまとめてクラスター化されます。このテキストは、クラスター内の最初のクエリのテキストです。|
+|query_id   |bigint  || ステートメントの解析ツリーから計算される内部ハッシュ コード|
+|query_sql_text |Varchar(10000)  || 代表的なステートメントのテキスト。 同じ構造を持つ複数の異なるクエリがまとめてクラスター化されます。このテキストは、クラスター内の最初のクエリのテキストです。|
 |plan_id    |bigint |   |まだ使用できない、このクエリに対応するプランの ID|
 |start_time |timestamp  ||  クエリは、タイム バケットによって集計されます｡バケットの期間は既定で 15 分です。 これは、このエントリのタイム バケットに対応する開始時刻です。|
 |end_time   |timestamp  ||  このエントリのタイム バケットに対応する終了時刻。|
-|calls  |bigint  || クエリの実行回数|
-|total_time |double precision   ||  クエリの合計実行時間 (ミリ秒)|
+|calls  |bigint  || クエリの実行回数|
+|total_time |double precision   ||  クエリの合計実行時間 (ミリ秒)|
 |min_time   |double precision   ||  クエリの最小実行時間 (ミリ秒)|
 |max_time   |double precision   ||  クエリの最大実行時間 (ミリ秒)|
 |mean_time  |double precision   ||  クエリの平均実行時間 (ミリ秒)|
 |stddev_time|   double precision    ||  クエリ実行時間の標準偏差 (ミリ秒) |
-|rows   |bigint ||  ステートメントによって取得または影響された行の合計数|
-|shared_blks_hit|   bigint  ||  ステートメントによる共有ブロック キャッシュ ヒットの合計数|
+|rows   |bigint ||  ステートメントによって取得または影響された行の合計数|
+|shared_blks_hit|   bigint  ||  ステートメントによる共有ブロック キャッシュ ヒットの合計数|
 |shared_blks_read|  bigint  ||  ステートメントによって読み取られた共有ブロックの合計数|
-|shared_blks_dirtied|   bigint   || ステートメントによって使用された共有ブロックの合計数 |
-|shared_blks_written|   bigint  ||  ステートメントによって書き込まれた共有ブロックの合計数|
+|shared_blks_dirtied|   bigint   || ステートメントによって使用された共有ブロックの合計数 |
+|shared_blks_written|   bigint  ||  ステートメントによって書き込まれた共有ブロックの合計数|
 |local_blks_hit|    bigint ||   ステートメントによるローカル ブロック キャッシュ ヒットの合計数|
-|local_blks_read|   bigint   || ステートメントによって読み取られたローカル ブロックの合計数|
-|local_blks_dirtied|    bigint  ||  ステートメンによって使用されたローカル ブロックの合計数|
-|local_blks_written|    bigint  ||  ステートメントによって書き込まれたローカル ブロックの合計数|
-|temp_blks_read |bigint  || ステートメントによって読み取られた一時ブロックの合計数|
-|temp_blks_written| bigint   || ステートメントによって書き込まれた一時ブロックの合計数|
-|blk_read_time  |double precision    || ステートメントによってブロックの読み取りに費やされた時間の合計 (ミリ秒単位) (track_io_timing が有効になっている場合。それ以外の場合は 0)|
-|blk_write_time |double precision    || ステートメントによってブロックの書き込みに費やされた時間の合計 (ミリ秒単位) (track_io_timing が有効になっている場合。それ以外の場合は 0)|
+|local_blks_read|   bigint   || ステートメントによって読み取られたローカル ブロックの合計数|
+|local_blks_dirtied|    bigint  ||  ステートメンによって使用されたローカル ブロックの合計数|
+|local_blks_written|    bigint  ||  ステートメントによって書き込まれたローカル ブロックの合計数|
+|temp_blks_read |bigint  || ステートメントによって読み取られた一時ブロックの合計数|
+|temp_blks_written| bigint   || ステートメントによって書き込まれた一時ブロックの合計数|
+|blk_read_time  |double precision    || ステートメントによってブロックの読み取りに費やされた時間の合計 (ミリ秒単位) (track_io_timing が有効になっている場合。それ以外の場合は 0)|
+|blk_write_time |double precision    || ステートメントによってブロックの書き込みに費やされた時間の合計 (ミリ秒単位) (track_io_timing が有効になっている場合。それ以外の場合は 0)|
     
 ### <a name="query_storequery_texts_view"></a>query_store.query_texts_view
 このビューでは、クエリ ストア内のクエリ テキスト データが返されます。 個別の query_text ごとに 1 つの行があります。
@@ -155,7 +152,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 |**名前**|  **Type**|   **説明**|
 |---|---|---|
 |query_text_id  |bigint     |query_texts テーブルの ID|
-|query_sql_text |Varchar(10000)     |代表的なステートメントのテキスト。 同じ構造を持つ複数の異なるクエリがまとめてクラスター化されます。このテキストは、クラスター内の最初のクエリのテキストです。|
+|query_sql_text |Varchar(10000)     |代表的なステートメントのテキスト。 同じ構造を持つ複数の異なるクエリがまとめてクラスター化されます。このテキストは、クラスター内の最初のクエリのテキストです。|
 
 ### <a name="query_storepgms_wait_sampling_view"></a>query_store.pgms_wait_sampling_view
 このビューでは、クエリ ストア内の待機イベント データが返されます。 個別のデータベース ID、ユーザー ID、クエリ ID、イベントごとに 1 つの行があります。
@@ -164,8 +161,8 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 |---|---|---|---|
 |user_id    |oid    |pg_authid.oid  |ステートメントを実行したユーザーの OID|
 |db_id  |oid    |pg_database.oid    |ステートメントが実行されたデータベースの OID|
-|query_id   |bigint     ||ステートメントの解析ツリーから計算される内部ハッシュ コード|
-|event_type |text       ||バックエンドによって待機されているイベントの種類|
+|query_id   |bigint     ||ステートメントの解析ツリーから計算される内部ハッシュ コード|
+|event_type |text       ||バックエンドによって待機されているイベントの種類|
 |イベント  |text       ||バックエンドによって現在待機されている場合に、待機イベントの名前|
 |calls  |Integer        ||同じイベントがキャプチャされた回数|
 
@@ -173,11 +170,82 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 ### <a name="functions"></a>関数
 Query_store.qs_reset() returns void
 
-`qs_reset`  では、クエリ ストアによってこれまでに収集されたすべての統計が破棄されます。 この関数は、サーバー管理者ロールによってのみ実行できます。
+`qs_reset` では、クエリ ストアによってこれまでに収集されたすべての統計が破棄されます。 この関数は、サーバー管理者ロールによってのみ実行できます。
 
 Query_store.staging_data_reset() returns void
 
-`staging_data_reset`  では、クエリ ストアによってメモリ内で収集されたすべての統計 (つまり、データベースにまだフラッシュされていないメモリ内のデータ) が破棄されます。 この関数は、サーバー管理者ロールによってのみ実行できます。
+`staging_data_reset` では、クエリ ストアによってメモリ内で収集されたすべての統計 (つまり、データベースにまだフラッシュされていないメモリ内のデータ) が破棄されます。 この関数は、サーバー管理者ロールによってのみ実行できます。
+
+
+## <a name="azure-monitor"></a>Azure Monitor
+Azure Database for PostgreSQL は、[Azure Monitor の診断設定](../azure-monitor/platform/diagnostic-settings.md)に統合されています。 診断設定を使用すると、ご自分の Postgres ログを、分析とアラート用の [Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md)、ストリーミング用の Event Hubs、アーカイブ用の Azure Storage に JSON 形式で送信できます。
+
+>[!IMPORTANT]
+> この診断機能は、General Purpose 価格レベルとメモリ最適化価格レベルにのみあります。
+
+### <a name="configure-diagnostic-settings"></a>診断設定を構成する
+お使いの Postgres サーバーの診断設定を有効にするには、Azure portal、CLI、REST API、PowerShell を使用します。 構成するログ カテゴリは **QueryStoreRuntimeStatistics** と **QueryStoreWaitStatistics** です。 
+
+Azure portal を使用してリソース ログを有効にするには
+
+1. ポータルで、お使いの Postgres サーバーのナビゲーション メニューから [診断設定] に移動します。
+2. [診断設定を追加する] を選択します。
+3. この設定に名前を付けます。
+4. 任意の優先エンドポイント (ストレージ アカウント、イベント ハブ、ログ分析) を選択します。
+5. ログの種類として **QueryStoreRuntimeStatistics** と **QueryStoreWaitStatistics** を選択します。
+6. 設定を保存します。
+
+この設定を、PowerShell、CLI、または REST API を使用して有効にするには、[診断の設定](../azure-monitor/platform/diagnostic-settings.md)に関する記事をご覧ください。
+
+### <a name="json-log-format"></a>JSON ログの形式
+次の表では、2 つのログの種類のフィールドについて説明します。 選択した出力エンドポイントに応じて、含まれるフィールドとそれらが表示される順序が異なることがあります。
+
+#### <a name="querystoreruntimestatistics"></a>QueryStoreRuntimeStatistics
+|**フィールド** | **説明** |
+|---|---|
+| TimeGenerated [UTC] | ログが記録されたときのタイムスタンプ (UTC) |
+| ResourceId | Postgres サーバーの Azure リソース URI |
+| カテゴリ | `QueryStoreRuntimeStatistics` |
+| OperationName | `QueryStoreRuntimeStatisticsEvent` |
+| LogicalServerName_s | Postgres サーバー名 | 
+| runtime_stats_entry_id_s | runtime_stats_entries テーブルからの ID |
+| user_id_s | ステートメントを実行したユーザーの OID |
+| db_id_s | ステートメントが実行されたデータベースの OID |
+| query_id_s | ステートメントの解析ツリーから計算される内部ハッシュ コード |
+| end_time_s | このエントリのタイム バケットに対応する終了時刻 |
+| calls_s | クエリの実行回数 |
+| total_time_s | クエリの合計実行時間 (ミリ秒) |
+| min_time_s | クエリの最小実行時間 (ミリ秒) |
+| max_time_s | クエリの最大実行時間 (ミリ秒) |
+| mean_time_s | クエリの平均実行時間 (ミリ秒) |
+| ResourceGroup | リソース グループ | 
+| SubscriptionId | サブスクリプション ID |
+| ResourceProvider | `Microsoft.DBForPostgreSQL` | 
+| リソース | Postgres サーバー名 |
+| ResourceType | `Servers` | 
+
+
+#### <a name="querystorewaitstatistics"></a>QueryStoreWaitStatistics
+|**フィールド** | **説明** |
+|---|---|
+| TimeGenerated [UTC] | ログが記録されたときのタイムスタンプ (UTC) |
+| ResourceId | Postgres サーバーの Azure リソース URI |
+| カテゴリ | `QueryStoreWaitStatistics` |
+| OperationName | `QueryStoreWaitEvent` |
+| user_id_s | ステートメントを実行したユーザーの OID |
+| db_id_s | ステートメントが実行されたデータベースの OID |
+| query_id_s | クエリの内部ハッシュ コード |
+| calls_s | 同じイベントがキャプチャされた回数 |
+| event_type_s | バックエンドによって待機されているイベントの種類 |
+| event_s | バックエンドによって現在待機されている場合に、待機イベントの名前 |
+| start_time_t | イベントの開始時刻 |
+| end_time_s | イベントの終了時刻 | 
+| LogicalServerName_s | Postgres サーバー名 | 
+| ResourceGroup | リソース グループ | 
+| SubscriptionId | サブスクリプション ID |
+| ResourceProvider | `Microsoft.DBForPostgreSQL` | 
+| リソース | Postgres サーバー名 |
+| ResourceType | `Servers` | 
 
 ## <a name="limitations-and-known-issues"></a>制限事項と既知の問題
 - PostgreSQL サーバーのパラメーター default_transaction_read_only がオンの場合、クエリ ストアはデータをキャプチャできません。

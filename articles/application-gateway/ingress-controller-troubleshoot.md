@@ -4,15 +4,15 @@ description: この記事では、Application Gateway イングレス コント�
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
-ms.date: 11/4/2019
+ms.topic: troubleshooting
+ms.date: 06/18/2020
 ms.author: caya
-ms.openlocfilehash: a64a9ce5e080308674893273e90a0e83686e339e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0fdfa6265b81140fa6536082fe7ad4c5fa687fc4
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73795511"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207168"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>イングレス コントローラーに関する一般的な質問または問題のトラブルシューティング
 
@@ -249,55 +249,55 @@ Kubernetes コミュニティでは、[kubectl](https://kubernetes.io/docs/refer
 
 ### <a name="sample-helm-config-file"></a>サンプルの Helm 構成ファイル
 ```yaml
-    # This file contains the essential configs for the ingress controller helm chart
+# This file contains the essential configs for the ingress controller helm chart
 
-    # Verbosity level of the App Gateway Ingress Controller
-    verbosityLevel: 3
-    
-    ################################################################################
-    # Specify which application gateway the ingress controller will manage
-    #
-    appgw:
-        subscriptionId: <subscriptionId>
-        resourceGroup: <resourceGroupName>
-        name: <applicationGatewayName>
-    
-        # Setting appgw.shared to "true" will create an AzureIngressProhibitedTarget CRD.
-        # This prohibits AGIC from applying config for any host/path.
-        # Use "kubectl get AzureIngressProhibitedTargets" to view and change this.
-        shared: false
-    
-    ################################################################################
-    # Specify which kubernetes namespace the ingress controller will watch
-    # Default value is "default"
-    # Leaving this variable out or setting it to blank or empty string would
-    # result in Ingress Controller observing all acessible namespaces.
-    #
-    # kubernetes:
-    #   watchNamespace: <namespace>
-    
-    ################################################################################
-    # Specify the authentication with Azure Resource Manager
-    #
-    # Two authentication methods are available:
-    # - Option 1: AAD-Pod-Identity (https://github.com/Azure/aad-pod-identity)
-    armAuth:
-        type: aadPodIdentity
-        identityResourceID: <identityResourceId>
-        identityClientID:  <identityClientId>
-    
-    ## Alternatively you can use Service Principal credentials
-    # armAuth:
-    #    type: servicePrincipal
-    #    secretJSON: <<Generate this value with: "az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0" >>
-    
-    ################################################################################
-    # Specify if the cluster is RBAC enabled or not
-    rbac:
-        enabled: false # true/false
-    
-    # Specify aks cluster related information. THIS IS BEING DEPRECATED.
-    aksClusterConfiguration:
-        apiServerAddress: <aks-api-server-address>
-    ```
+# Verbosity level of the App Gateway Ingress Controller
+verbosityLevel: 3
+
+################################################################################
+# Specify which application gateway the ingress controller will manage
+#
+appgw:
+    subscriptionId: <subscriptionId>
+    resourceGroup: <resourceGroupName>
+    name: <applicationGatewayName>
+
+    # Setting appgw.shared to "true" will create an AzureIngressProhibitedTarget CRD.
+    # This prohibits AGIC from applying config for any host/path.
+    # Use "kubectl get AzureIngressProhibitedTargets" to view and change this.
+    shared: false
+
+################################################################################
+# Specify which kubernetes namespace the ingress controller will watch
+# Default value is "default"
+# Leaving this variable out or setting it to blank or empty string would
+# result in Ingress Controller observing all acessible namespaces.
+#
+# kubernetes:
+#   watchNamespace: <namespace>
+
+################################################################################
+# Specify the authentication with Azure Resource Manager
+#
+# Two authentication methods are available:
+# - Option 1: AAD-Pod-Identity (https://github.com/Azure/aad-pod-identity)
+armAuth:
+    type: aadPodIdentity
+    identityResourceID: <identityResourceId>
+    identityClientID:  <identityClientId>
+
+## Alternatively you can use Service Principal credentials
+# armAuth:
+#    type: servicePrincipal
+#    secretJSON: <<Generate this value with: "az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0" >>
+
+################################################################################
+# Specify if the cluster is RBAC enabled or not
+rbac:
+    enabled: false # true/false
+
+# Specify aks cluster related information. THIS IS BEING DEPRECATED.
+aksClusterConfiguration:
+    apiServerAddress: <aks-api-server-address>
+```
 

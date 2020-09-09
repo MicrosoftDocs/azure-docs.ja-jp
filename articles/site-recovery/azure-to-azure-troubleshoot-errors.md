@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: bbb2ddaa1fb84590f9dec1c84ac4bc87a8e03022
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.openlocfilehash: d3e70384a99e2dad3f19825cb85b83861e4647e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82738118"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083822"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Azure 間の VM レプリケーションに関するエラーのトラブルシューティング
 
@@ -36,7 +36,7 @@ Replication couldn't be enabled for the virtual machine <VmName>.
 
 ### <a name="fix-the-problem"></a>問題の解決
 
-[Azure 課金のサポート](/azure/azure-portal/supportability/resource-manager-core-quotas-request)に連絡して、サブスクリプションで、必要なサイズの VM をターゲットの場所に作成できるようにします。 その後、失敗した操作をやり直してください。
+[Azure 課金のサポート](../azure-portal/supportability/resource-manager-core-quotas-request.md)に連絡して、サブスクリプションで、必要なサイズの VM をターゲットの場所に作成できるようにします。 その後、失敗した操作をやり直してください。
 
 ターゲットの場所に容量の制約がある場合は、その場所へのレプリケーションを無効にします。 次に、必要なサイズの VM を作成できるだけのクォータがサブスクリプションに確保されている別の場所へのレプリケーションを有効にします。
 
@@ -202,7 +202,7 @@ Office 365 認証と ID IP4 エンドポイントへの接続を確立できま�
 #### <a name="fix-the-problem"></a>問題の解決
 
 Azure Site Recovery では、認証のために Office 365 の IP 範囲にアクセスする必要がありました。
-Azure ネットワーク セキュリティ グループ (NSG) 規則またはファイアウォール プロキシを使用して VM 上で発信ネットワーク接続を制御している場合、Azure Active Directory (AAD) へのアクセスを許可するには [AAD サービス タグ](/azure/virtual-network/security-overview#service-tags)に基づく NSG 規則を確実に使用してください。 IP アドレスベースの NSG 規則はサポートしなくなりました。
+Azure ネットワーク セキュリティ グループ (NSG) 規則またはファイアウォール プロキシを使用して VM 上で発信ネットワーク接続を制御している場合、Azure Active Directory (AAD) へのアクセスを許可するには [AAD サービス タグ](../virtual-network/security-overview.md#service-tags)に基づく NSG 規則を確実に使用してください。 IP アドレスベースの NSG 規則はサポートしなくなりました。
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>問題 3:Site Recovery の構成に失敗しました (151197)
 
@@ -260,8 +260,8 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 
 データ ディスクが初期化されていることを確認し、操作を再試行します。
 
-- **Windows**:[新しいディスクを接続し、初期化する](/azure/virtual-machines/windows/attach-managed-disk-portal)。
-- **Linux**:[Linux で新しいデータ ディスクを初期化する](/azure/virtual-machines/linux/add-disk)。
+- **Windows**:[新しいディスクを接続し、初期化する](../virtual-machines/windows/attach-managed-disk-portal.md)。
+- **Linux**:[Linux で新しいデータ ディスクを初期化する](../virtual-machines/linux/add-disk.md)。
 
 問題が解決しない場合は、サポートにお問い合わせください。
 
@@ -534,6 +534,44 @@ Site Recovery Mobility Service には多数のコンポーネントがありま�
 ### <a name="fix-the-problem"></a>問題の解決
 
 エラー メッセージに示されているレプリカ ディスクを削除し、失敗した保護ジョブを再度開始します。
+
+## <a name="enable-protection-failed-as-the-installer-is-unable-to-find-the-root-disk-error-code-151137"></a>インストーラーがルート ディスクを検出できないため、保護の有効化に失敗した (エラー コード 151137)
+
+このエラーは、Azure Disk Encryption (ADE) を使用して OS ディスクが暗号化されている Linux マシンで発生します。 この問題は、エージェント バージョン 9.35 でのみ有効です。
+
+### <a name="possible-causes"></a>考えられる原因
+
+インストーラーは、ルート ファイル システムをホストしているルート ディスクを検出できません。
+
+### <a name="fix-the-problem"></a>問題の解決
+
+この問題を解決するには、次の手順に従ってください。
+
+1. 次のコマンドを使用して、RHEL および CentOS マシンのディレクトリ _/var/lib/waagent_ の下にあるエージェント ファイルを検索します。 <br>
+
+    `# find /var/lib/ -name Micro\*.gz`
+
+   予想される出力:
+
+    `/var/lib/waagent/Microsoft.Azure.RecoveryServices.SiteRecovery.LinuxRHEL7-1.0.0.9139/UnifiedAgent/Microsoft-ASR_UA_9.35.0.0_RHEL7-64_GA_30Jun2020_release.tar.gz`
+
+2. 新しいディレクトリを作成し、ディレクトリをこの新しいディレクトリに変更します。
+3. 次のコマンドを使用して、最初の手順で見つかったエージェント ファイルを抽出します。
+
+    `tar -xf <Tar Ball File>`
+
+4. _prereq_check_installer.json_ ファイルを開き、次の行を削除します。 その後、ファイルを保存します。
+
+    ```
+       {
+          "CheckName": "SystemDiskAvailable",
+          "CheckType": "MobilityService"
+       },
+    ```
+5. 次のコマンドを使用して、インストーラーを起動します。 <br>
+
+    `./install -d /usr/local/ASR -r MS -q -v Azure`
+6. インストーラーが正常に完了したら、レプリケーションの有効化ジョブを再試行します。
 
 ## <a name="next-steps"></a>次のステップ
 

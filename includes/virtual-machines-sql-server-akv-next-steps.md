@@ -4,12 +4,12 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
-ms.openlocfilehash: 9df08151e4af6e82a775b3ee99dab88134a2f032
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: e0ff4e91ed55a37e710a5655e7da9ec76b7d1dd5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82784097"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84014700"
 ---
 ## <a name="next-steps"></a>次のステップ
 
@@ -17,9 +17,9 @@ Azure Key Vault 統合を有効にしたら、SQL VM で SQL Server 暗号化を
 
 次のような形式の暗号化を活用できます。
 
-* [透過的なデータ暗号化 (TDE)](https://msdn.microsoft.com/library/bb934049.aspx)
-* [暗号化バックアップ](https://msdn.microsoft.com/library/dn449489.aspx)
-* [列レベルの暗号化 (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)
+* [透過的なデータ暗号化 (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption)
+* [暗号化バックアップ](/sql/relational-databases/backup-restore/backup-encryption)
+* [列レベルの暗号化 (CLE)](/sql/t-sql/functions/cryptographic-functions-transact-sql)
 
 次の Transact-SQL スクリプトにはこれらの各領域の例があります。
 
@@ -146,4 +146,4 @@ CLOSE SYMMETRIC KEY DATA_ENCRYPTION_KEY;
 
 これらの暗号化機能の使用方法の詳細については、「 [SQL Server 暗号化機能で EKM を使用する](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM)」を参照してください。
 
-この記事の手順では、Azure 仮想マシンで SQL Server を既に実行していることを前提としています。 実行していない場合、[Azure での SQL Server 仮想マシンのプロビジョニング](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md)に関するページを参照してください。 Azure VM で SQL Server を実行する方法については、「[Azure Virtual Machines における SQL Server の概要](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
+この記事の手順では、Azure 仮想マシンで SQL Server を既に実行していることを前提としています。 実行していない場合、[Azure での SQL Server 仮想マシンのプロビジョニング](../articles/azure-sql/virtual-machines/windows/create-sql-vm-portal.md)に関するページを参照してください。 Azure VM で SQL Server を実行する方法については、「[Azure Virtual Machines における SQL Server の概要](../articles/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)」を参照してください。

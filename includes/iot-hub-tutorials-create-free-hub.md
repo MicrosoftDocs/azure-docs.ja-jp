@@ -9,15 +9,15 @@ ms.date: 04/19/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 367a0b1d17f8d5ebe4f46835ace963b00e75354e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68229220"
 ---
 Azure portal を使用して IoT ハブを作成するには:
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. **[リソースの作成]**  >  **[モノのインターネット]**  >  **[IoT Hub]** を選択します。
 
@@ -30,7 +30,7 @@ Azure portal を使用して IoT ハブを作成するには:
     | サブスクリプション | ドロップダウンから Azure サブスクリプションを選択します。 |
     | Resource group | 新規作成。 このチュートリアルでは、**tutorials-iot-hub-rg** という名前を使います。 |
     | リージョン | このチュートリアルでは、 **[米国西部]** を使います。 最も近いリージョンを選択できます。 |
-    | Name | 次のスクリーンショットでは、**tutorials-iot-hub** という名前を使っています。 ハブを作成するときは、独自の一意名を選ぶ必要があります。 |
+    | 名前 | 次のスクリーンショットでは、**tutorials-iot-hub** という名前を使っています。 ハブを作成するときは、独自の一意名を選ぶ必要があります。 |
 
     ![ハブの設定 1](media/iot-hub-tutorials-create-free-hub/hubdefinition-1.png)
 

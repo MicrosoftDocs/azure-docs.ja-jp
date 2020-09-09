@@ -9,18 +9,18 @@ Customer intent: I want to connect two virtual networks so that virtual machines
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
-ms.custom: ''
-ms.openlocfilehash: caa620c2389bb6e2387636bc262ceb2de99d8e34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6ec552ea525abe6a84bb5e34e00ad317cae038bf
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77201290"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077859"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-powershell"></a>PowerShell を使用して仮想ネットワーク ピアリングで仮想ネットワークを接続する
 

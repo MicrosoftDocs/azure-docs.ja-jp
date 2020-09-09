@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Freshworks の統合 | Microsoft Docs
 description: Azure Active Directory と Freshworks の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 697c3509-0e3a-4b05-9d5b-9ded4269eb60
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/11/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b73b8769b5f7360ba4ad778600b1000b8b3f7bc7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: eb59d7ecd6183d144fd275a50f3682a2b961df98
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72377234"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550966"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-freshworks"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Freshworks の統合
 
@@ -39,6 +34,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * Freshworks でのシングル サインオン (SSO) が有効なサブスクリプション
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 

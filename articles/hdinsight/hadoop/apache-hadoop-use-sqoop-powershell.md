@@ -5,25 +5,25 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 01/10/2020
-ms.openlocfilehash: f39b595adf249b7412cb9b6b48f86b6fbd2c5e1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 05/14/2020
+ms.openlocfilehash: 3f8a5bdc9e1240303216df1dec31c78a560c55eb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76263406"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086496"
 ---
-# <a name="run-apache-sqoop-jobs-by-using-azure-powershell-for-apache-hadoop-in-hdinsight"></a>HDInsight で Azure PowerShell for Apache Hadoop を使用して Apache Sqoop ジョブを実行する
+# <a name="run-apache-sqoop-jobs-with-azure-powershell-in-hdinsight"></a>HDInsight で Azure PowerShell を使用して Apache Sqoop ジョブを実行する
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Azure PowerShell を使用して、HDInsight クラスターと Azure SQL Database または SQL Server データベース間でデータのインポートとエクスポートを実行する Apache Sqoop ジョブを Azure HDInsight で実行する方法について説明します。  この記事は、「[HDInsight の Hadoop での Apache Sqoop の使用](./hdinsight-use-sqoop.md)」の続きです。
+Azure PowerShell を使用して、HDInsight クラスターと Azure SQL Database または SQL Server との間でデータのインポートとエクスポートを実行する Apache Sqoop ジョブを、Azure HDInsight で実行する方法について説明します。  この記事は、「[HDInsight の Hadoop での Apache Sqoop の使用](./hdinsight-use-sqoop.md)」の続きです。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure PowerShell [AZ モジュール](https://docs.microsoft.com/powershell/azure/overview)がインストールされているワークステーション。
+* Azure PowerShell [AZ モジュール](https://docs.microsoft.com/powershell/azure/)がインストールされているワークステーション。
 
 * 「[HDInsight の Hadoop での Apache Sqoop の使用](./hdinsight-use-sqoop.md)」の「[テスト環境のセットアップ](./hdinsight-use-sqoop.md#create-cluster-and-sql-database)」が完了していること。
 
@@ -31,9 +31,9 @@ Azure PowerShell を使用して、HDInsight クラスターと Azure SQL Databa
 
 ## <a name="sqoop-export"></a>Sqoop のエクスポート
 
-Hive から SQL Server へ
+Hive から SQL へ。
 
-この例では、`hivesampletable` のテーブルから SQL Database の `mobiledata` テーブルにデータをエクスポートします。 以下の変数に値を設定し、コマンドを実行します。
+この例では、Hive の `hivesampletable` テーブルから SQL の `mobiledata` テーブルにデータをエクスポートします。 以下の変数に値を設定し、コマンドを実行します。
 
 ```powershell
 $hdinsightClusterName = ""
@@ -96,7 +96,7 @@ New-AzHDInsightSqoopJobDefinition `
 
 ## <a name="sqoop-import"></a>Sqoop のインポート
 
-SQL Server から Azure Storage へ。 この例では、SQL Database の `mobiledata` テーブルから HDInsight の `wasb:///tutorials/usesqoop/importeddata` ディレクトリにデータをインポートします。 データ内のフィールドはタブ文字で区切られていて、行は改行文字で終わっています。 この例では、前の例を完了していることが前提になります。
+SQL から Azure Storage へ。 この例では、SQL の `mobiledata` テーブルから HDInsight の `wasb:///tutorials/usesqoop/importeddata` ディレクトリにデータをインポートします。 データ内のフィールドはタブ文字で区切られていて、行は改行文字で終わっています。 この例では、前の例を完了していることが前提になります。
 
 ```powershell
 $sqoopCommand = "import --connect $connectionString --table mobiledata --target-dir wasb:///tutorials/usesqoop/importeddata --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1"
@@ -128,7 +128,7 @@ Get-AzHDInsightJobOutput `
 
 この堅牢な例では、既定のストレージ アカウントの `/tutorials/usesqoop/data/sample.log` からデータをエクスポートし、SQL Server データベースの `log4jlogs` というテーブルにインポートします。 この例は前の例に依存しません。
 
-次の PowerShell スクリプトでは、ソース ファイルが前処理された後、Azure SQL Database のテーブル `log4jlogs` にエクスポートされます。 `CLUSTERNAME`、`CLUSTERPASSWORD`、および `SQLPASSWORD` を、前提条件で使った値に置き換えます。
+次の PowerShell スクリプトでは、ソース ファイルを前処理してから、それを `log4jlogs` というテーブルにエクスポートしています。 `CLUSTERNAME`、`CLUSTERPASSWORD`、および `SQLPASSWORD` を、前提条件で使った値に置き換えます。
 
 ```powershell
 <#------ BEGIN USER INPUT ------#>
@@ -219,7 +219,7 @@ $writeStream.Flush()
 $memStream.Seek(0, "Begin")
 $destBlob.UploadFromStream($memStream)
 
-#export the log file from the cluster to the SQL database
+#export the log file from the cluster to SQL
 Write-Host "Exporting the log file ..." -ForegroundColor Green
 
 $pw = ConvertTo-SecureString -String $httpPassword -AsPlainText -Force
@@ -271,7 +271,7 @@ Get-AzHDInsightJobOutput `
 
 Linux ベースの HDInsight には次の制限事項があります。
 
-* 一括エクスポート:Microsoft SQL Server または Azure SQL Database にデータをエクスポートするために使用する Sqoop コネクタでは、一括挿入は現在サポートされていません。
+* 一括エクスポート:SQL にデータをエクスポートするために使用する Sqoop コネクタでは、現在、一括挿入はサポートされていません。
 
 * バッチ処理:挿入処理実行時に `-batch` スイッチを使用すると、Sqoop は挿入操作をバッチ処理するのではなく、複数の挿入を実行します。
 

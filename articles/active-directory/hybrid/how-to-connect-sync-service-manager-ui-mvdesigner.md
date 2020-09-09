@@ -11,18 +11,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d08454a0ad87adb97037517579f11ab976280425
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5365619f0a68032a628d52b2aa6e8490d2299e38
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60381343"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357173"
 ---
 # <a name="sync-service-manager-metaverse-designer"></a>Sync Service Manager のメタバース デザイナー
 

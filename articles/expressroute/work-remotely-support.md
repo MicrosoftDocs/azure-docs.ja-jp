@@ -2,17 +2,17 @@
 title: Azure ExpressRoute を使用したリモート ユーザーのサポート
 description: このページでは、COVID-19 の世界的流行により、Azure ExpressRoute を利用してリモートで作業できるようにする方法について説明します。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/22/2020
-ms.author: ajitbhu
-ms.openlocfilehash: 2fe990fd9c5922dd2e059dbb212cd8bb1cd3726e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: duau
+ms.openlocfilehash: e783e80a1883f5aea7a266d3ec670ce2a898e735
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80336646"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89392958"
 ---
 # <a name="using-azure-expressroute-to-create-hybrid-connectivity-to-support-remote-users"></a>リモート ユーザーをサポートするためのハイブリッド接続を Azure ExpressRoute を使用して作成する
 
@@ -35,7 +35,7 @@ ms.locfileid: "80336646"
 * [非対称ルーティングに関する考慮事項](expressroute-asymmetric-routing.md)
 * [Azure portal でサポート リクエストをオープンする方法](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 
-## <a name="troubleshoot"></a>[トラブルシューティング]
+## <a name="troubleshoot"></a>トラブルシューティング
 
 * [ExpressRoute 接続を確認する](expressroute-troubleshooting-expressroute-overview.md)
 * [Resource Manager](expressroute-troubleshooting-arp-resource-manager.md) と [Classic](expressroute-troubleshooting-arp-classic.md) での ARP テーブルの取得

@@ -1,20 +1,20 @@
 ---
 title: チュートリアル:マップ上の近くの場所を検索する | Microsoft Azure Maps
-description: このチュートリアルでは、Microsoft Azure Maps を使用して、マップ上で目的地を検索する方法について学習します。
-author: philmea
-ms.author: philmea
+description: マップ上で目的地を検索する方法について説明します。 Azure Maps Web SDK を使用して、検索機能と対話型のポップアップ ボックスをマップに追加する方法をご覧ください。
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 1/15/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc
-ms.openlocfilehash: 0b0cb92cd6b4918e28e143178a5cdbbbb19ac9af
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: 8dc430febb25283ab5bd32496bb2f71ba19c895b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80333629"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035860"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>チュートリアル:Azure Maps を使用して近くの目的地を検索する
 
@@ -219,7 +219,7 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
 
    ![検索結果でのマップの表示](./media/tutorial-search-location/pins-map.png)
 
-4. ブラウザーに次の HTTPRequest を入力すると、マップがレンダリングしている生のデータを確認することができます。 \<Your Azure Maps Key\> は、実際の主キーに置き換えてください。
+4. ブラウザーに次の HTTPRequest を入力すると、マップがレンダリングしている生のデータを確認することができます。 \<Your Azure Maps Key\> をお使い主キーに置き換えます。
 
    ```http
    https://atlas.microsoft.com/search/poi/json?api-version=1.0&query=gasoline%20station&subscription-key=<subscription-key>&lat=47.6292&lon=-122.2337&radius=100000

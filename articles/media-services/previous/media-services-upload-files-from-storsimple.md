@@ -14,17 +14,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: c77b700cab4afd411c3a2df824ee8335cb394cda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 26a3f3ff600de4418ccf6f6b09dea4b091678065
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "64868309"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265730"
 ---
-# <a name="upload-files-into-an-azure-media-services-account-from-azure-storsimple"></a>Azure StorSimple から Azure Media Services アカウントへのファイルのアップロード  
+# <a name="upload-files-into-an-azure-media-services-account-from-azure-storsimple"></a>Azure StorSimple から Azure Media Services アカウントへのファイルのアップロード 
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 >
 > 
 > Azure StorSimple Data Manager は、現在、プライベート プレビュー段階にあります。 
@@ -34,7 +36,7 @@ ms.locfileid: "64868309"
 
 Media Services で、デジタル ファイルを資産にアップロードします。 資産には、ビデオ、オーディオ、画像、サムネイル コレクション、テキスト トラック、字幕ファイル (各ファイルのメタデータを含む) を追加できます。ファイルをアップロードすると、クラウドにコンテンツが安全に保存され、処理したりストリーミングしたりできるようになります。
 
-[Azure StorSimple](https://docs.microsoft.com/azure/storsimple/) では、クラウド ストレージがオンプレミス ソリューションの拡張機能として使用され、オンプレミス ストレージとクラウド ストレージをまたがってデータが自動的に階層化されます。 StorSimple デバイスは、データをクラウドに送信する前にデータの重複排除と圧縮を行うため、大きいファイルを非常に効率的にクラウドに送信できるようになります。 [StorSimple Data Manager](../../storsimple/storsimple-data-manager-overview.md) サービスで提供される API を使用すると、StorSimple からデータを抽出し、そのデータを AMS 資産として表示することができます。
+[Azure StorSimple](../../storsimple/index.yml) では、クラウド ストレージがオンプレミス ソリューションの拡張機能として使用され、オンプレミス ストレージとクラウド ストレージをまたがってデータが自動的に階層化されます。 StorSimple デバイスは、データをクラウドに送信する前にデータの重複排除と圧縮を行うため、大きいファイルを非常に効率的にクラウドに送信できるようになります。 [StorSimple Data Manager](../../storsimple/storsimple-data-manager-overview.md) サービスで提供される API を使用すると、StorSimple からデータを抽出し、そのデータを AMS 資産として表示することができます。
 
 ## <a name="get-started"></a>はじめに
 

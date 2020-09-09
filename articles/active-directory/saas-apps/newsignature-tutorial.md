@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Cloud Management Portal for Microsoft Azure の統合 | Microsoft Docs'
 description: Azure Active Directory と Cloud Management Portal for Microsoft Azure の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 4ea9f47c-25ca-42b0-a878-9e7aa6f34973
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e73a1f80e9fbca66bd58c65c45b299950315309d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d45a3ddda44922c70080a09447866a9a4c6997a7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73161247"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554426"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloud-management-portal-for-microsoft-azure"></a>チュートリアル: Azure Active Directory と Cloud Management Portal for Microsoft Azure の統合
 
@@ -108,25 +103,25 @@ Cloud Management Portal for Microsoft Azure との Azure AD シングル サイ�
 
     a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
 
-    | |
-    |--|
-    | `https://portal.newsignature.com/<instancename>` |   
-    | `https://portal.igcm.com/<instancename>` |
+    ```http
+    https://portal.newsignature.com/<instancename>
+    https://portal.igcm.com/<instancename>
+    ```
 
     b. **[識別子]** ボックスに、次のパターンを使用して URL を入力します。
 
-    | |
-    |--|
-    | `https://<subdomain>.igcm.com` |
-    | `https://<subdomain>.newsignature.com` |
+    ```http
+    https://<subdomain>.igcm.com
+    https://<subdomain>.newsignature.com
+    ```
 
     c. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
 
-    | |
-    |--|
-    | `https://<subdomain>.igcm.com/<instancename>` |
-    | `https://<subdomain>.newsignature.com` |
-    | `https://<subdomain>.newsignature.com/<instancename>` |
+    ```http
+    https://<subdomain>.igcm.com/<instancename>
+    https://<subdomain>.newsignature.com
+    https://<subdomain>.newsignature.com/<instancename>
+    ```
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 [Cloud Management Portal for Microsoft Azure クライアント サポート チーム](mailto:jczernuszka@newsignature.com)に問い合わせて値を取得します。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

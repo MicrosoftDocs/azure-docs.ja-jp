@@ -3,21 +3,21 @@ title: Azure で負荷分散サービスを使用する | Microsoft Docs
 description: このチュートリアルでは、Azure の負荷分散ポートフォリオであるTraffic Manager、Application Gateway、Load Balancer を使用したシナリオの作成方法を説明します。
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
-ms.author: rohink
-ms.openlocfilehash: cccd4a6b0b52608a6a17b73688e18f27088df5b0
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.author: duau
+ms.openlocfilehash: 431eaff9da95063648d3e80acb54be9cc5c25bc5
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80757189"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393068"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Azure で負荷分散サービスを使用する
 
@@ -154,7 +154,7 @@ Traffic Manager、Application Gateway、ロード バランサーを使用する
 
 このシナリオでは、ロード バランサーは Web 層から高可用性クラスター内のデータベースに接続を分散します。
 
-高可用性データベース クラスターが SQL Server AlwaysOn を使用している場合は、1 つまたは複数の [Always On 可用性グループ リスナーを構成する方法](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)をご覧ください。
+高可用性データベース クラスターが SQL Server AlwaysOn を使用している場合は、1 つまたは複数の [Always On 可用性グループ リスナーを構成する方法](../azure-sql/virtual-machines/windows/availability-group-listener-powershell-configure.md)をご覧ください。
 
 内部ロード バランサーの構成方法について詳しくは、「[Azure Portal での内部ロード バランサーの作成](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)」をご覧ください。
 

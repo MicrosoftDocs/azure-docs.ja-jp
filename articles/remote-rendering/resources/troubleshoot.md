@@ -5,16 +5,21 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: c1b807c6e4fa269ac2ab8d7eacd3ca1d4f81a1ca
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: f2c5b6ef0792e418d873d84341a0fffc356c799e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792617"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509282"
 ---
 # <a name="troubleshoot"></a>トラブルシューティング
 
 このページでは、Azure Remote Rendering に影響を及ぼす一般的な問題とその解決方法の一覧を示します。
+
+## <a name="cant-link-storage-account-to-arr-account"></a>ストレージアカウントを ARR アカウントにリンクできない
+
+[ストレージ アカウントのリンク](../how-tos/create-an-account.md#link-storage-accounts)中に、Remote Rendering アカウントが一覧に表示されない場合があります。 この問題を解決するには、Azure portal の ARR アカウントに移動し、左側の **[設定]** グループの下にある **[ID]** を選択します。 **[状態]** が **[オン]** に設定されていることを確認してください。
+![Unity のフレーム デバッガー](./media/troubleshoot-portal-identity.png)
 
 ## <a name="client-cant-connect-to-server"></a>クライアントがサーバーに接続できない
 
@@ -24,7 +29,7 @@ ms.locfileid: "82792617"
 * **8266 (TCP+UDP)** - データ転送に必要です
 * **5000 (TCP)** 、**5433 (TCP)** 、**8443 (TCP)** - [ArrInspector](tools/arr-inspector.md) に必要です
 
-## <a name="error-disconnected-videoformatnotavailable"></a>エラー '切断されました:VideoFormatNotAvailable'
+## <a name="error-disconnected-videoformatnotavailable"></a>エラー '`Disconnected: VideoFormatNotAvailable`'
 
 GPU でハードウェアによる動画のデコードがサポートされていることを確認します。 「[開発用 PC](../overview/system-requirements.md#development-pc)」をご覧ください。
 
@@ -32,7 +37,7 @@ GPU を 2 基搭載したノート パソコンで作業している場合、既
 
 ## <a name="h265-codec-not-available"></a>H265 コーデックが使用できない
 
-**コーデックが使用できない**というエラーでサーバーが接続を拒否する可能性のある理由は 2 つあります。
+`codec not available` というエラーでサーバーが接続を拒否する可能性のある理由は 2 つあります。
 
 **H265 コーデックがインストールされていない:**
 
@@ -100,9 +105,9 @@ GPU を 2 基搭載したノート パソコンで作業している場合、既
 
 **モデルで選択されている VM の制限、具体的には、ポリゴンの最大数を超えている:**
 
-特定の [VM サイズの制限](../reference/limits.md#overall-number-of-polygons)を参照してください。
+特定の[サーバー サイズの制限](../reference/limits.md#overall-number-of-polygons)を確認してください。
 
-**モデルがビューの視錐台の内側にない:**
+**モデルがカメラの視錐台の外側にある:**
 
 多くの場合、そのモデルは正しく表示されますが、カメラの視錐台の外側にあります。 一般的な理由の 1 つは、そのモデルが中心から外れた遠くのピボットを使用してエクスポートされたために、カメラの遠クリップ面で切り取られてしまうことです。 これは、モデルの境界ボックスに対してプログラムでクエリを実行し、Unity でそのボックスを線のボックスとして視覚化したり、その値をデバッグ ログに出力したりするのに役立ちます。
 
@@ -137,9 +142,19 @@ GPU を 2 基搭載したノート パソコンで作業している場合、既
 
 **Unity のレンダリング パイプラインにレンダリング フックが含まれていない:**
 
-Azure Remote Rendering では、動画を使用してフレーム合成を行ったり、再投影を行ったりするために、Unity のレンダリング パイプラインにフックします。 これらのフックが存在することを確認するには、メニューの *[Window] (ウィンドウ) > [Analysis] (分析) > [Frame debugger] (フレーム デバッガー)* を開きます。 これを有効にしてから、パイプライン内に `HolographicRemotingCallbackPass` のエントリが 2 つあることを確認します。
+Azure Remote Rendering では、動画を使用してフレーム合成を行ったり、再投影を行ったりするために、Unity のレンダリング パイプラインにフックします。 これらのフックが存在することを確認するには、メニュー *:::no-loc text="Window > Analysis > Frame debugger":::* を開きます。 これを有効にしてから、パイプライン内に `HolographicRemotingCallbackPass` のエントリが 2 つあることを確認します。
 
 ![Unity のフレーム デバッガー](./media/troubleshoot-unity-pipeline.png)
+
+## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>モデルの読み込み後にチェッカーボード パターンがレンダリングされる
+
+レンダリングされたイメージが次のように表示される場合:![チェッカーボード](../reference/media/checkerboard.png) レンダラーが[標準の構成サイズのポリゴンの制限](../reference/vm-sizes.md)に達しています。 解消するには、**Premium**  の構成サイズに切り替えるか、表示されるポリゴンの数を減らします。
+
+## <a name="the-rendered-image-in-unity-is-upside-down"></a>Unity でレンダリングされるイメージが上下反転している
+
+[Unity チュートリアル:リモート モデルを表示する](../tutorials/unity/view-remote-models/view-remote-models.md)に関するページの説明に正確に従っていることを確認します。 イメージが上下反転するのは、Unity がオフスクリーン レンダー ターゲットを作成する必要があることを示しています。 この動作は現在サポートされていないため、HoloLens 2 のパフォーマンスに大きな影響を与えます。
+
+この問題の原因は、MSAA、HDR、または後処理の有効化です。 低品質のプロファイルが選択されていることを確認し、Unity で既定値として設定します。 これを行うには、 *[Edit] > [Project Settings] > [Quality]* に移動します。
 
 ## <a name="unity-code-using-the-remote-rendering-api-doesnt-compile"></a>Remote Rendering API を使用する Unity コードがコンパイルされない
 
@@ -150,13 +165,17 @@ Unity ソリューションの*ビルドの種類*を **[デバッグ]** に切�
 ### <a name="compile-failures-when-compiling-unity-samples-for-hololens-2"></a>HoloLens 2 用の Unity サンプルをコンパイルするときにコンパイル エラーが発生する
 
 HoloLens 2 の Unity サンプル (quickstart、ShowCaseApp など) をコンパイルしようとすると、偽のエラーが発生することがあります。 Visual Studio には、ファイルが存在するにもかかわらず、ファイルがコピーできないという警告が表示されます。 この問題が発生した場合は、次を行います。
-* すべての一時 Unity ファイルをプロジェクトから削除してから、やり直してください。
+* すべての一時 Unity ファイルをプロジェクトから削除してから、やり直してください。 つまり、Unity を閉じて、プロジェクト ディレクトリ内の一時*ライブラリ*と *obj* フォルダーを削除してから、プロジェクトを再度読み込むかビルドしてください。
 * このコピー手順の問題はファイル名が長い場合に発生することがあるため、比較的パスが短いディスク上のディレクトリにプロジェクトが格納されていることを確認してください。
 * それでも問題が解決しない場合は、MS Sense によりコピー手順が妨げられている可能性があります。 例外を設定するには、コマンド ラインから次のレジストリ コマンドを実行します (管理者権限が必要です)。
     ```cmd
     reg.exe ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Advanced Threat Protection" /v groupIds /t REG_SZ /d "Unity”
     ```
     
+### <a name="arm64-builds-for-unity-projects-fail-because-audiopluginmshrtfdll-is-missing"></a>AudioPluginMsHRTF.dll が見つからないために Unity プロジェクトで Arm64 のビルドが失敗する
+
+Arm64 の `AudioPluginMsHRTF.dll` は、バージョン 3.0.1 の *Windows Mixed Reality* パッケージ *(com.unity.xr.windowsmr.metro)* に追加されました。 Unity パッケージ マネージャーを使用して、バージョン 3.0.1 以降がインストールされていることを確認します。 Unity のメニュー バーで、 *[Window] > [Package Manager]* に移動し、 *[Windows Mixed Reality]* パッケージを見つけます。
+
 ## <a name="unstable-holograms"></a>ホログラムが不安定である
 
 レンダリングされたオブジェクトが頭部の動きに連動して動くように見える場合は、*Late Stage Reprojection* (LSR) に関する問題が発生している可能性があります。 このような状況への対処方法のガイダンスについては、[Late Stage Reprojection](../overview/features/late-stage-reprojection.md) に関するセクションをご覧ください。
@@ -166,6 +185,56 @@ HoloLens 2 の Unity サンプル (quickstart、ShowCaseApp など) をコンパ
 確認すべきもう 1 つの値は `ARRServiceStats.LatencyPoseToReceiveAvg` です。 この値は、常に 100 ミリ秒未満である必要があります。 値がそれよりも大きい場合は、接続されているデータ センターが離れすぎていることを示しています。
 
 考えられる軽減策の一覧については、[ネットワーク接続のガイドライン](../reference/network-requirements.md#guidelines-for-network-connectivity)をご覧ください。
+
+## <a name="z-fighting"></a>Z ファイティング
+
+ARR には [Z ファイティングの軽減機能](../overview/features/z-fighting-mitigation.md)が用意されていますが、シーンでは Z ファイティングが引き続き表示されます。 このガイドは、これらの残りの問題のトラブルシューティングを目的としています。
+
+### <a name="recommended-steps"></a>推奨される手順
+
+次のワークフローを使用して、Z ファイティングを軽減します。
+
+1. ARR の既定の設定を使用してシーンをテストします (Z ファイティングの軽減が有効)
+
+1. [API](../overview/features/z-fighting-mitigation.md) を使用して Z ファイティングの軽減を無効にします 
+
+1. カメラの近くと遠くの面をより近い範囲に変更します
+
+1. 次の項でシーンのトラブルシューティングを行います
+
+### <a name="investigating-remaining-z-fighting"></a>残りの Z ファイティングを調査する
+
+上記の手順を実行しても、残りの Z ファイティングを許容できない場合は、Z ファイティングの根底にある原因を調査する必要があります。 [Z ファイティングの軽減機能](../overview/features/z-fighting-mitigation.md)に関するページに記載されているように、Z ファイティングには主に 2 つの原因があります。深度範囲の遠い側での深さの精度の損失と、同一平面で交差するサーフェスです。 深さの精度の損失は数学的な不測の事態であり、上記の手順 3 に従った場合にのみ軽減できます。 同一平面のサーフェスは、ソース アセットの欠陥を示し、ソース データではより適切に修正されています。
+
+ARR には、サーフェスが Z ファイティングになるかどうかを判断するための[チェッカーボードの強調表示](../overview/features/z-fighting-mitigation.md)という機能があります。 また、Z ファイティングの原因を視覚的に判断することもできます。 次の最初のアニメーションは、距離における深さの精度の損失の例を示しています。2 番目のアニメーションは、ほぼ同一平面のサーフェスの例を示しています。
+
+![深さの精度 - Z ファイティング](./media/depth-precision-z-fighting.gif)  ![同一平面 - Z ファイティング](./media/coplanar-z-fighting.gif)
+
+これらの例を実際の Z ファイティングと比較して原因を特定するか、必要に応じて次のステップバイステップのワークフローに従ってください。
+
+1. カメラを Z ファイティングのサーフェイスの上に配置して、サーフェイスを直接見ます。
+1. カメラをゆっくりと後ろに移動させて、サーフェイスから離します。
+1. Z ファイティングが常に表示される場合、サーフェスは完全に同一平面にあります。 
+1. Z ファイティングがほとんどの位置で表示される場合、サーフェスはほぼ同一平面にあります。
+1. Z ファイティングが遠くでのみ表示される場合は、原因は深さの精度の損失です。
+
+同一平面のサーフェスの場合は、次のようなさまざまな原因が考えられます。
+
+* エラーまたは異なるワークフロー アプローチが原因で、エクスポートしたアプリケーションによってオブジェクトが重複している。
+
+    それぞれのアプリケーションとアプリケーション サポートで、これらの問題を確認してください。
+
+* 表面または裏面のカリングを使用するレンダラーでは、サーフェスが重複し、反転して両面が表示される。
+
+    [モデル変換](../how-tos/conversion/model-conversion.md) を使用してインポートすると、モデルの基本の面が決まります。 既定値は両面です。 サーフェスは、両側からの物理的に正しい光源で、薄い壁としてレンダリングされます。 片面は、ソース アセットのフラグによって暗黙的に指定することも、[モデル変換](../how-tos/conversion/model-conversion.md)中に明示的に強制することもできます。 また、必要に応じて[片面モード](../overview/features/single-sided-rendering.md) を "標準" に設定することもできます。
+
+* ソース アセットでオブジェクトが交差している。
+
+     サーフェスの一部が重なり合うように変換されたオブジェクトでは、Z ファイティングも作成されます。 ARR にインポートされたシーンでシーン ツリーの一部を変換した場合も、この問題が発生することがあります。
+
+* サーフェスが、壁の図柄やテキストのように、タッチするために意図的に作成されている。
+
+
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
-ms.custom: seoapr2020
-ms.date: 04/24/2020
-ms.openlocfilehash: 41688792330214943eeb116dc4b5aaf7eebfeebf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.custom: seoapr2020, devx-track-azurecli, devx-track-azurepowershell
+ms.date: 05/13/2020
+ms.openlocfilehash: 9781369e862c74afe5a8a94cafafff7ef35e68e1
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192044"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078352"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor ログを使用して HDInsight クラスターを監視する
 
@@ -40,12 +40,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
   HDInsight クラスターの作成手順については、[Azure HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するページをご覧ください。  
 
-* Azure PowerShell Az モジュール。  「[新しい Azure PowerShell Az モジュールの概要](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)」を参照してください。 最新バージョンを使用していることを確認します。 必要であれば、`Update-Module -Name Az` を実行します。
+* PowerShell を使用している場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/)が必要になります。 最新バージョンを使用していることを確認します。 必要であれば、`Update-Module -Name Az` を実行します。
+
+* Azure CLI を使用したいが、まだインストールしていない場合は、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
 
 > [!NOTE]  
 > パフォーマンス向上のため、HDInsight クラスターと Log Analytics ワークスペースの両方を同じリージョンに配置することをお勧めします。 Azure Monitor ログは、すべての Azure リージョンで使用できるわけではありません。
 
-## <a name="enable-azure-monitor-logs-by-using-the-portal"></a>ポータルを使用した Azure Monitor ログの有効化
+## <a name="enable-azure-monitor-using-the-portal"></a>ポータルを使用して Azure Monitor を有効にする
 
 ここでは、ジョブやデバッグ ログなどを監視するために、Azure Log Analytics ワークスペースを使用するよう既存の HDInsight Hadoop クラスターを構成します。
 
@@ -61,7 +63,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![HDInsight クラスターの監視を有効にする](./media/hdinsight-hadoop-oms-log-analytics-tutorial/azure-portal-monitoring.png "HDInsight クラスターの監視を有効にする")
 
-## <a name="enable-azure-monitor-logs-by-using-azure-powershell"></a>Azure PowerShell を使用した Azure Monitor ログの有効化
+## <a name="enable-azure-monitor-using-azure-powershell"></a>Azure PowerShell を使用して Azure Monitor を有効にする
 
 Azure PowerShell Az モジュールの [Enable-AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/enable-azhdinsightmonitoring) コマンドレットを使用して Azure Monitor ログを有効にすることができます。
 
@@ -99,6 +101,29 @@ Get-AzHDInsightMonitoring `
 
 ```powershell
 Disable-AzHDInsightMonitoring -Name "<your-cluster>"
+```
+
+## <a name="enable-azure-monitor-using-azure-cli"></a>Azure CLI を使用して Azure Monitor を有効にする
+
+Azure CLI `[az hdinsight monitor enable`] (https://docs.microsoft.com/cli/azure/hdinsight/monitor?view=azure-cli-latest#az-hdinsight-monitor-enable) コマンドを使用して、Azure Monitor ログを有効にすることができます。
+
+```azurecli
+# set variables
+export resourceGroup=RESOURCEGROUPNAME
+export cluster=CLUSTERNAME
+export LAW=LOGANALYTICSWORKSPACENAME
+
+# Enable the Azure Monitor logs integration on an HDInsight cluster.
+az hdinsight monitor enable --name $cluster --resource-group $resourceGroup --workspace $LAW
+
+# Get the status of Azure Monitor logs integration on an HDInsight cluster.
+az hdinsight monitor show --name $cluster --resource-group $resourceGroup
+```
+
+無効にするには、[`az hdinsight monitor disable`](https://docs.microsoft.com/cli/azure/hdinsight/monitor?view=azure-cli-latest#az-hdinsight-monitor-disable) コマンドを使用します。
+
+```azurecli
+az hdinsight monitor disable --name $cluster --resource-group $resourceGroup
 ```
 
 ## <a name="install-hdinsight-cluster-management-solutions"></a>HDInsight クラスター管理ソリューションをインストールする

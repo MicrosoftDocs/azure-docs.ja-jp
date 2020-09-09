@@ -6,13 +6,13 @@ ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
-ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 694d2ae529202223869fcbb2a084e32bccaedbf1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
+ms.openlocfilehash: 17e01894ac3d26720b1e74be9d0fd7fc193c463f
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77660225"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077307"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>クイック スタート:Azure Application Insights で Node.js Web アプリケーションの監視を開始する
 
@@ -36,7 +36,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
    ![Azure Application Insights リソースを追加する](./media/nodejs-quick-start/azure-app-insights-create-resource.png)
 
    > [!NOTE]
-   >Application Insights リソースを初めて作成する場合は、「[Application Insights リソースの作成](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)」のドキュメントにアクセスして詳細を確認できます。
+   >Application Insights リソースを初めて作成する場合は、「[Application Insights リソースの作成](../app/create-new-resource.md)」のドキュメントにアクセスして詳細を確認できます。
 
    構成ページが表示されたら、次の表を使用して入力フィールドに入力します。 
 
@@ -60,7 +60,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
    npm install applicationinsights --save
    ```
 
-3. アプリの最初の *.js* ファイルを編集し、スクリプトの最上部の下に 2 つの行を追加します。 [Node.js のクイックスタート アプリ](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-nodejs)を使用している場合は、*index.js* ファイルを変更します。 `<instrumentation_key>` をアプリケーションのインストルメンテーション キーに置き換えます。 
+3. アプリの最初の *.js* ファイルを編集し、スクリプトの最上部の下に 2 つの行を追加します。 [Node.js のクイックスタート アプリ](../../app-service/quickstart-nodejs.md)を使用している場合は、*index.js* ファイルを変更します。 `<instrumentation_key>` をアプリケーションのインストルメンテーション キーに置き換えます。 
 
    ```JavaScript
    const appInsights = require('applicationinsights');
@@ -112,11 +112,11 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
    </script>
    ```
 
-5. 左側で、 **[メトリック]** を選択します。 メトリックス エクスプローラーを使用して、ご利用のソースの正常性と使用率を調べます。 **[Add new chart (新しいグラフを追加)]** を選択して追加のカスタム ビューを作成したり、 **[編集]** を選択して既存のグラフの種類、高さ、カラー パレット、グループ化、メトリックを変更したりできます。 たとえば、メトリックのドロップダウンの [ブラウザーのページ読み込み時間] を選択し、集計から [平均] を選択することで、ブラウザーの平均ページ読み込み時間を表示するグラフを作成できます。 Azure メトリックス エクスプローラーの詳細については、「[Azure メトリックス エクスプローラーの概要](../../azure-monitor/platform/metrics-getting-started.md)」を参照してください。
+5. 左側で、 **[メトリック]** を選択します。 メトリックス エクスプローラーを使用して、ご利用のソースの正常性と使用率を調べます。 **[Add new chart (新しいグラフを追加)]** を選択して追加のカスタム ビューを作成したり、 **[編集]** を選択して既存のグラフの種類、高さ、カラー パレット、グループ化、メトリックを変更したりできます。 たとえば、メトリックのドロップダウンの [ブラウザーのページ読み込み時間] を選択し、集計から [平均] を選択することで、ブラウザーの平均ページ読み込み時間を表示するグラフを作成できます。 Azure メトリックス エクスプローラーの詳細については、「[Azure メトリックス エクスプローラーの概要](../platform/metrics-getting-started.md)」を参照してください。
 
    ![Application Insights サーバーのメトリックのグラフ](./media/nodejs-quick-start/azure-app-insights-server-metrics.png)
 
-Node.js の監視に関する詳細については、[AppInsights Node.js の追加ドキュメント](../../azure-monitor/app/nodejs.md)を参照してください。
+Node.js の監視に関する詳細については、[AppInsights Node.js の追加ドキュメント](../app/nodejs.md)を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -131,4 +131,5 @@ Node.js の監視に関する詳細については、[AppInsights Node.js の追
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [パフォーマンスの問題の特定と診断](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)
+> [パフォーマンスの問題の特定と診断](../log-query/log-query-overview.md)
+

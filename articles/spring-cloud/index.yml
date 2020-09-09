@@ -11,12 +11,12 @@ metadata:
   author: bmitchell287
   ms.author: brendm
   ms.date: 09/26/2019
-  ms.openlocfilehash: fd012e58928b7844b122a826769167cb525f5ba1
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 277d058427cc9527e6ed71ed252a4930489353fd
+  ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77138190"
+  ms.lasthandoff: 08/28/2020
+  ms.locfileid: "89049895"
 landingContent:
 - title: Azure Spring Cloud について
   linkLists:
@@ -26,14 +26,14 @@ landingContent:
       url: spring-cloud-overview.md
     - text: Azure Spring Cloud のクォータと制限について
       url: spring-cloud-quotas.md
-- title: はじめに
+- title: 作業開始
   linkLists:
   - linkListType: quickstart
     links:
-    - text: ポータルを使用して Java Spring アプリを起動する
-      url: spring-cloud-quickstart-launch-app-portal.md
-    - text: Azure CLI を使用して Java Spring アプリを起動する
-      url: spring-cloud-quickstart-launch-app-cli.md
+    - text: クイックスタート - 初めての Azure Spring Cloud アプリケーションをデプロイする
+      url: spring-cloud-quickstart.md
+    - text: Piggy Metrics サンプル アプリの概要
+      url: spring-cloud-quickstart-sample-app-introduction.md
   - linkListType: tutorial
     links:
     - text: Java Spring アプリをデプロイ用に準備する

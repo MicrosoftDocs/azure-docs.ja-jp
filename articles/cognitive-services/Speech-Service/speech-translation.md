@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: f51288da6af3580ba7592950cde4f17d7adad529
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 670d7f160285283bd44371b893c63904b2685926
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80052618"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934499"
 ---
 # <a name="what-is-speech-translation"></a>音声翻訳とは何か
 

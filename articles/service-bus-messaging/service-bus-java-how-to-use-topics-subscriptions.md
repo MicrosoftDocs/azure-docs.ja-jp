@@ -1,26 +1,16 @@
 ---
 title: Java で Azure Service Bus のトピックとサブスクリプションを使用する
 description: このクイックスタートでは、Azure Service Bus トピックにメッセージを送信し、サブスクリプションからそのトピックにメッセージを受信する Java コードを記述します。
-services: service-bus-messaging
-documentationcenter: java
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: 63d6c8bd-8a22-4292-befc-545ffb52e8eb
-ms.service: service-bus-messaging
-ms.workload: tbd
-ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: e025adfd3d8a29bc07cf14803f572dcba1097fd6
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.date: 06/23/2020
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: b255c825e0576e983c821234c531a9442baf654b
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791070"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065762"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>クイック スタート:Java で Service Bus のトピックとサブスクリプションを使用する
 
@@ -461,8 +451,8 @@ Message sending: Id = 9
 ## <a name="next-steps"></a>次のステップ
 詳細については、「[Service Bus のキュー、トピック、サブスクリプション][Service Bus queues, topics, and subscriptions]」を参照してください。
 
-[Azure SDK for Java]: https://docs.microsoft.com/java/api/overview/azure/
-[Azure Toolkit for Eclipse]: https://docs.microsoft.com/azure/developer/java/toolkit-for-eclipse/installation
+[Azure SDK for Java]: /java/api/overview/azure/
+[Azure Toolkit for Eclipse]: /azure/developer/java/toolkit-for-eclipse/installation
 [Service Bus queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter]: /dotnet/api/microsoft.azure.servicebus.sqlfilter
 [SqlFilter.SqlExpression]: /dotnet/api/microsoft.azure.servicebus.sqlfilter.sqlexpression

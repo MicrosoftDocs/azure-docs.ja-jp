@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 45878ea947803b04cd5cd6e471f701c21f2c26fa
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 668bc645edd1be611fe71b8fc1fa81288572e843
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826351"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388070"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して Salesforce SAML プロバイダーでのサインインを設定する
 
@@ -109,7 +109,7 @@ Salesforce アカウントをクレーム プロバイダーとして定義す�
 1. **ClaimsProviders** 要素を見つけます。 存在しない場合は、それをルート要素の下に追加します。
 1. 新しい **ClaimsProvider** を次のように追加します。
 
-    ```XML
+    ```xml
     <ClaimsProvider>
       <Domain>salesforce</Domain>
       <DisplayName>Salesforce</DisplayName>
@@ -152,7 +152,7 @@ Salesforce アカウントをクレーム プロバイダーとして定義す�
 1. **StorageReferenceId** の両方のインスタンスの値を、署名証明書のキーの名前に更新します。 たとえば、B2C_1A_SAMLSigningCert です。
 1. `<ClaimsProviders>` セクションを見つけて、次の XML スニペットを追加します。 ポリシーに `SM-Saml-idp` 技術プロファイルが既に含まれている場合、次の手順に進みます。 詳細については、[シングル サインオン セッション管理](custom-policy-reference-sso.md)に関するページを参照してください。
 
-    ```XML
+    ```xml
     <ClaimsProvider>
       <DisplayName>Session Management</DisplayName>
       <TechnicalProfiles>
@@ -194,7 +194,7 @@ Salesforce アカウントをクレーム プロバイダーとして定義す�
 1. 作成したユーザー体験内で、`Order="1"` を含む **OrchestrationStep** 要素を見つけます。
 2. **ClaimsProviderSelects** の下に、次の要素を追加します。 **TargetClaimsExchangeId** の値を適切な値 (`SalesforceExchange` など) に設定します。
 
-    ```XML
+    ```xml
     <ClaimsProviderSelection TargetClaimsExchangeId="SalesforceExchange" />
     ```
 
@@ -205,7 +205,7 @@ Salesforce アカウントをクレーム プロバイダーとして定義す�
 1. ユーザー体験内で、`Order="2"` を含む **OrchestrationStep** を見つけます。
 2. 次の **ClaimsExchange** 要素を追加します。**ID** には、**TargetClaimsExchangeId** に使用したものと同じ値を使用します。
 
-    ```XML
+    ```xml
     <ClaimsExchange Id="SalesforceExchange" TechnicalProfileReferenceId="salesforce" />
     ```
 

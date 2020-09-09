@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: fc11c6932d625b119ad933f5d4d128b4355530c5
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 3fa2677f7c71b118ec3f7da717e29d5879ee982b
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804437"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961824"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Azure ExpressRoute を使用した PowerApps 用の App Service Environment のネットワーク構成の詳細
 
@@ -35,7 +35,7 @@ App Service Environment が正常に機能するには、次のネットワー�
 
 * Azure Files サービスに対するポート 445 での発信ネットワーク接続。
 
-* App Service Environment と同じリージョンにある Azure SQL Database エンドポイントに対する発信ネットワーク接続。 SQL Database エンドポイントは、database.windows.net ドメインで解決されます。これには、ポート 1433、11000 ～ 11999、および 14000 ～ 14999 へのオープン アクセスが必要です。 SQL Database V12 ポートの使用について詳しくは、「[ADO.NET 4.5 用の 1433 以外のポート](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md)」を参照してください。
+* App Service Environment と同じリージョンにある Azure SQL Database エンドポイントに対する発信ネットワーク接続。 SQL Database エンドポイントは、database.windows.net ドメインで解決されます。これには、ポート 1433、11000 ～ 11999、および 14000 ～ 14999 へのオープン アクセスが必要です。 SQL Database V12 ポートの使用について詳しくは、「[ADO.NET 4.5 用の 1433 以外のポート](../../azure-sql/database/adonet-v12-develop-direct-route-ports.md)」を参照してください。
 
 * Azure 管理プレーン エンドポイント (Azure クラシック デプロイ モデルと Azure Resource Manager の両方のエンドポイント) に対する発信ネットワーク接続。 これらのエンドポイントへの接続には、management.core.windows.net ドメインと management.azure.com ドメインが含まれます。 
 
@@ -146,15 +146,15 @@ PowerApps 用の App Service Environment の使用を開始するには、[App S
 [virtualnetwork]: https://azure.microsoft.com/services/virtual-network/ 
 [ExpressRoute]: https://azure.microsoft.com/services/expressroute/ 
 [requiredports]: app-service-app-service-environment-control-inbound-traffic.md 
-[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/ 
-[UDROverview]: https://azure.microsoft.com/documentation/articles/virtual-networks-udr-overview/ 
+[NetworkSecurityGroups]: ../../virtual-network/virtual-network-vnet-plan-design-arm.md
+[UDROverview]: ../../virtual-network/virtual-networks-udr-overview.md
 <!-- Old link -- [UDRHowTo]: https://azure.microsoft.com/documentation/articles/virtual-networks-udr-how-to/ -->
 
-[UDRHowTo]: https://docs.microsoft.com/azure/virtual-network/tutorial-create-route-table-powershell 
+[UDRHowTo]: ../../virtual-network/tutorial-create-route-table-powershell.md
 [HowToCreateAnAppServiceEnvironment]: app-service-web-how-to-create-an-app-service-environment.md 
 [AzureDownloads]: https://azure.microsoft.com/downloads/ 
 [DownloadCenterAddressRanges]: https://www.microsoft.com/download/details.aspx?id=41653 
-[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/ 
+[NetworkSecurityGroups]: ../../virtual-network/virtual-network-vnet-plan-design-arm.md
 [IntroToAppServiceEnvironment]:  app-service-app-service-environment-intro.md 
 [NewPortal]:  https://portal.azure.com 
 

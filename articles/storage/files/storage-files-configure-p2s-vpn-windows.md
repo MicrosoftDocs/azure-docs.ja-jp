@@ -3,16 +3,16 @@ title: Windows 上で Azure Files で使用するポイント対サイト (P2S) 
 description: Windows 上で Azure Files で使用するポイント対サイト (P2S) VPN を構成する方法
 author: roygara
 ms.service: storage
-ms.topic: overview
+ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 95386af4522adca1d65e04b01c2a349a80e9ab8a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: da49d1c94584393bfef066d61c1caf360b249c3b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81273479"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515322"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>Windows 上で Azure Files で使用するポイント対サイト (P2S) VPN を構成する
 ポイント対サイト (P2S) VPN 接続を使用すると、ポート 445 を開くことなく、Azure の外部から SMB 経由で Azure ファイル共有をマウントできます。 ポイント対サイト VPN 接続は、Azure と個々のクライアントの間の VPN 接続です。 Azure Files で P2S VPN 接続を使用するには、接続したいクライアントごとに P2S VPN 接続を構成する必要があります。 オンプレミス ネットワークから Azure ファイル共有に接続する必要のある多数のクライアントが存在する場合は、クライアントごとのポイント対サイト接続の代わりにサイト間 (S2S) VPN 接続を使用できます。 詳細については、「[Azure Files で使用するサイト間 VPN を構成する](storage-files-configure-s2s-vpn.md)」を参照してください。

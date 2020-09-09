@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 340017a121d12c95c7c04bbfe67b336638209e9c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4b291dcc95e0beecb1fd9fbf038055d8a77c7b79
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75439008"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254975"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>チュートリアル:Azure portal を使用した初めてのデータ ファクトリの作成
 > [!div class="op_single_selector"]
@@ -432,7 +432,7 @@ ms.locfileid: "75439008"
 * HDInsight Hive アクティビティを持つパイプラインを作成する。
 
 ## <a name="next-steps"></a>次のステップ
-この記事では、オンデマンド HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。 コピー アクティビティを使用して BLOB ストレージから SQL データベースにデータをコピーする方法については、[Blob Storage から SQL Database にデータをコピーする方法のチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
+この記事では、オンデマンド HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。 コピー アクティビティを使用して BLOB ストレージから Azure SQL Database にデータをコピーする方法については、[Blob Storage から SQL Database にデータをコピーする方法のチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 
 ## <a name="see-also"></a>関連項目
 | トピック | 説明 |

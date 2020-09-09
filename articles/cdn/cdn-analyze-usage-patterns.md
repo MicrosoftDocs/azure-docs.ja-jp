@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: d48ddafdc1ec30ae1533b3a3101582f33e7f4b5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3dc7547dbcf2bde7dd7db0d3f0db3f163a5910ef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67594154"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84888431"
 ---
 # <a name="core-reports-from-verizon"></a>Verizon からのコア レポート
 

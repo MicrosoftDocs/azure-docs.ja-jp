@@ -12,12 +12,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
-ms.openlocfilehash: f5639d1cf94c77d699dc6de9841698b045ac1f96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 52508a6820ce0cbbbe3a0341a99894f8b92b1645
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76543020"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831228"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>Azure で仮想マシンを管理するときに発生する一般的なエラー メッセージについて説明します
 
@@ -176,7 +176,7 @@ Azure VM では、エラー応答に次の JSON 形式を使用します。
 |  OSProvisioningClientError  |  VM に指定されたユーザー名は、この Linux ディストリビューションに関しては無効です。 エラーの詳細: {0}。  |
 |  OSProvisioningInternalError  |  内部エラーが発生したため、VM '{0}' の OS をプロビジョニングできませんでした。  |
 |  OSProvisioningTimedOut  |  割り当てられた時間内に VM '{0}' の OS のプロビジョニングが終了しませんでした。 まだプロビジョニングが正常に完了する可能性があります。 後でプロビジョニングの状態を確認してください。  |
-|  OSProvisioningTimedOut  |  割り当てられた時間内に VM '{0}' の OS のプロビジョニングが終了しませんでした。 まだプロビジョニングが正常に完了する可能性があります。 後でプロビジョニングの状態を確認してください。 また、イメージが適切に準備 (一般化) されていることも確認してください。   <ul><li>Windows 向けの手順: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Linux 向けの手順: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
+|  OSProvisioningTimedOut  |  割り当てられた時間内に VM '{0}' の OS のプロビジョニングが終了しませんでした。 まだプロビジョニングが正常に完了する可能性があります。 後でプロビジョニングの状態を確認してください。 また、イメージが適切に準備 (一般化) されていることも確認してください。   <ul><li>[Windows]( ../windows/upload-generalized-managed.md) 向けの手順。</li><li> [Linux](../linux/capture-image.md) 向けの手順</li></ul>  |
 |  OSProvisioningTimedOut  |  割り当てられた時間内に VM '{0}' の OS のプロビジョニングが終了しませんでした。 ただし、VM ゲスト エージェントが実行中であると検出されました。 これは、ゲスト OS を VM イメージとして使用する準備が正しく行われていないことを示しています (CreateOption=FromImage を使用)。 この問題を解決するには、CreateOption=Attach を指定して VHD をそのまま使用するか、イメージとして使用できるように正しく準備してください:   <ul><li>Windows 向けの手順: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Linux 向けの手順: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
 |  OverConstrainedAllocationRequest  |  選択した場所では、現在、必要な VM サイズを利用できません。  |
 |  ResourceUpdateBlockedOnPlatformUpdate  |  プラットフォームの更新が実行中であるため、現在はリソースを更新できません。 後でもう一度やり直してください。  |

@@ -7,12 +7,12 @@ ms.date: 08/08/2019
 ms.custom:
 - seodec18
 - fasttrack-edit
-ms.openlocfilehash: 6fe0e39584cbaa001e11f712bb2f60b45dba6914
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 68af882bf240b354bdad1afe322135c048576ed4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203490"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83772838"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-microsoft-account-login"></a>Microsoft アカウント ログインを使用するように App Service アプリまたは Azure Functions アプリを構成する
 
@@ -28,7 +28,7 @@ ms.locfileid: "82203490"
 1. Azure portal で [ **[アプリの登録]** ](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) に移動します。 必要であれば、Microsoft アカウントを使ってサインインします。
 1. **[New registration]\(新規登録\)** を選択し、アプリケーション名を入力します。
 1. **[サポートされているアカウントの種類]** で、 **[Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)]\(任意の組織ディレクトリ内のアカウント (任意の Azure AD ディレクトリ - マルチテナント) と、個人用の Microsoft アカウント (Skype、Xbox など)\)** を選択します。
-1. **[リダイレクト URI]** で **[Web]** を選択し、「`https://<app-domain-name>/.auth/login/aad/callback`」と入力します。 *\<app-domain-name>* をアプリのドメイン名に置き換えます。  たとえば、「 `https://contoso.azurewebsites.net/.auth/login/aad/callback` 」のように入力します。 URL には HTTPS スキームを必ず使用します。
+1. **[リダイレクト URI]** で **[Web]** を選択し、「`https://<app-domain-name>/.auth/login/aad/callback`」と入力します。 *\<app-domain-name>* をご自分のアプリのドメイン名に置き換えます。  たとえば、「 `https://contoso.azurewebsites.net/.auth/login/aad/callback` 」のように入力します。 URL には HTTPS スキームを必ず使用します。
 
 1. **[登録]** を選択します。
 1. **アプリケーション (クライアント) ID** をコピーします。 この情報は後で必要になります。
@@ -47,7 +47,7 @@ ms.locfileid: "82203490"
 
    App Service は認証を行いますが、サイトのコンテンツと API へのアクセス承認については制限を設けていません。 アプリケーション コードでユーザーを承認する必要があります。
 
-1. (省略可能) Microsoft アカウント ユーザーへのアクセスを制限するには、 **[要求が認証されない場合に実行するアクション]** を **[Azure Active Directory でのログイン]** に設定します。 この機能を設定すると、お使いのアプリでは、すべての要求を認証する必要があります。 また、認証されていない要求はすべて、AAD を使用した認証にリダイレクトされます。 Microsoft アカウント テナントを使用するように **[発行者の URL]** が構成されているため、個人用のアカウントのみが正常に認証されることに注意してください。
+1. (省略可能) Microsoft アカウント ユーザーへのアクセスを制限するには、 **[要求が認証されない場合に実行するアクション]** を **[Azure Active Directory でのログイン]** に設定します。 この機能を設定すると、お使いのアプリでは、すべての要求を認証する必要があります。 また、認証されていない要求はすべて、AAD を使用した認証にリダイレクトされます。 Microsoft アカウント テナントを使用するように**発行者の URL** を構成したため、個人用のアカウントのみが正常に認証されることに注意してください。
 
    > [!CAUTION]
    > この方法でのアクセスの制限は、アプリへのすべての呼び出しに適用されますが、これは、多くのシングルページ アプリケーションのように、一般公開されているホーム ページが与えられているアプリには適切でない場合があります。 このようなアプリケーションの場合は、アプリ自体が手動で認証を開始する、 **[匿名要求を許可する (操作不要)]** が推奨されることがあります。 詳細については、「[認証フロー](overview-authentication-authorization.md#authentication-flow)」をご覧ください。

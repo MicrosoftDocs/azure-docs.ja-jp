@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/15/2020
 ms.author: trbye
-ms.openlocfilehash: d91082ae3c0ae5e501675a06b02e2f55f20ce236
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 931fcd113f883f126c2f94e6f3d06684b9a0e772
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399545"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407636"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -17,40 +18,16 @@ ms.locfileid: "81399545"
 
 ## <a name="install-the-speech-sdk"></a>Speech SDK のインストール
 
-何らかの操作を行うには、事前に <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">JavaScript Speech SDK <span class="docon docon-navigate-external x-hidden-focus"></span></a> をインストールしておく必要があります。 ご利用のプラットフォームに応じて、次の手順を行います。
+何らかの操作を行うには、事前に <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">Speech SDK for JavaScript <span class="docon docon-navigate-external x-hidden-focus"></span></a> をインストールしておく必要があります。 ご利用のプラットフォームに応じて、次の手順を行います。
 - <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js <span 
 class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Web ブラウザー<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Web ブラウザー <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 また、ターゲット環境によっては、次のいずれかを使用します。
 
-# <a name="import"></a>[import](#tab/import)
-
-```javascript
-import { readFileSync } from "fs";
-import {
-    AudioConfig,
-    SpeechConfig,
-    SpeechSynthesisOutputFormat,
-    SpeechSynthesizer 
-} from "microsoft-cognitiveservices-speech-sdk";
-```
-
-`import` の詳細については、「<a href="https://javascript.info/import-export" target="_blank">export および import <span class="docon docon-navigate-external x-hidden-focus"></span></a>」を参照してください。
-
-# <a name="require"></a>[require](#tab/require)
-
-```javascript
-const readFileSync = require("fs").readFileSync;
-const sdk = require("microsoft-cognitiveservices-speech-sdk");
-```
-
-`require` の詳細については、「<a href="https://nodejs.org/en/knowledge/getting-started/what-is-require/" target="_blank">require とは<span class="docon docon-navigate-external x-hidden-focus"></span></a>」を参照してください。
-
-
 # <a name="script"></a>[script](#tab/script)
 
-<a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">JavaScript Speech SDK <span class="docon docon-navigate-external x-hidden-focus"></span></a> *microsoft.cognitiveservices.speech.sdk.bundle.js* ファイルをダウンロードして抽出し、HTML ファイルにアクセス可能なフォルダーに配置します。
+<a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">Speech SDK for JavaScript <span class="docon docon-navigate-external x-hidden-focus"></span></a> *microsoft.cognitiveservices.speech.sdk.bundle.js* ファイルをダウンロードして抽出し、HTML ファイルにアクセス可能なフォルダーに配置します。
 
 ```html
 <script src="microsoft.cognitiveservices.speech.sdk.bundle.js"></script>;
@@ -59,7 +36,24 @@ const sdk = require("microsoft-cognitiveservices-speech-sdk");
 > [!TIP]
 > Web ブラウザーを対象としていて、`<script>` タグを使用する場合は、`sdk` プレフィックスは必要ありません。 `sdk` プレフィックスは、`require` モジュールに名前を付けるために使用されるエイリアスです。
 
+# <a name="import"></a>[import](#tab/import)
+
+```javascript
+import * from "microsoft-cognitiveservices-speech-sdk";
+```
+
+`import` の詳細については、「<a href="https://javascript.info/import-export" target="_blank">export および import <span class="docon docon-navigate-external x-hidden-focus"></span></a>」を参照してください。
+
+# <a name="require"></a>[require](#tab/require)
+
+```javascript
+const sdk = require("microsoft-cognitiveservices-speech-sdk");
+```
+
+`require` の詳細については、「<a href="https://nodejs.org/en/knowledge/getting-started/what-is-require/" target="_blank">require とは<span class="docon docon-navigate-external x-hidden-focus"></span></a>」を参照してください。
+
 ---
+
 
 ## <a name="create-a-speech-configuration"></a>音声構成を作成する
 
@@ -111,12 +105,11 @@ function synthesizeSpeech() {
                 console.log(JSON.stringify(result));
             }
             synthesizer.close();
-        }
-    },
-    error => {
-        console.log(error);
-        synthesizer.close();
-    });
+        },
+        error => {
+            console.log(error);
+            synthesizer.close();
+        });
 }
 ```
 

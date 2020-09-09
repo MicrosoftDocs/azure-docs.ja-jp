@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/30/2018
 ms.author: kumud
-ms.openlocfilehash: 13d74fbb4a7c133ca2365fd2cbfce4b3d2bea72e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1c23244707179e05c63ed44b5915e58eefd3f4a3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75350597"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84705051"
 ---
 # <a name="diagnose-a-virtual-machine-routing-problem"></a>仮想マシンのルーティングに関する問題を診断する
 

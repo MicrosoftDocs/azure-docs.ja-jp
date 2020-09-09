@@ -6,14 +6,14 @@ ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 3eb23a3d8b1098110bd8b75faa22cc483637d183
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56899b7d81f17e678026b1aad7f3e2d9f8b9b0b0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75442121"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260526"
 ---
 # <a name="createinsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Spark から Azure Cosmos DB Cassandra API にデータを作成/挿入する
  

@@ -8,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: afcb676f68e7be9d3ebef11ea2c6876a86bbd062
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a955f035933955b88200e49e343f7dd0c257c89b
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281784"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816356"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>クイック スタート:Windows 用データ サイエンス仮想マシンを設定する
 
@@ -69,6 +69,5 @@ VM にインストールされて構成されたツールを使い始めるこ�
 
 * **[スタート]** メニューを開いて DSVM 上のツールを調べます。
 * Azure Machine Learning については、「[Azure Machine Learning とは](../overview-what-is-azure-ml.md)」を参照し、[チュートリアル](../index.yml)をお試しください。
-* [Data Science Virtual Machine でできる 10 のこと](https://aka.ms/dsvmtenthings)に関する記事を読みます。
-* Azure Machine Learning および関連する Azure 上のデータ サービスを使用した機械学習および Data Analytics については、[Azure AI Gallery](https://gallery.cortanaintelligence.com) をご覧ください。 仮想マシンのデスクトップと **[スタート]** メニューに、このギャラリーへのアイコンも用意されています。
+* [Azure での Windows Data Science Virtual Machine を使用したデータ サイエンス](./vm-do-ten-things.md)に関する記事を参照してください。
 

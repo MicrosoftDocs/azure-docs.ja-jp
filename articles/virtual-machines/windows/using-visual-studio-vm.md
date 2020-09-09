@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: cathys
 keywords: visualstudio
-ms.openlocfilehash: 134f0202b4b18e96b9f089460f4235c6b5c0fe4d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 5ec8e0f6448e725998628e41b917942966d3ef2a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652678"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836158"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure 上の Visual Studio のイメージ
 事前に構成済みの Azure 仮想マシン (VM) 上で Visual Studio を使用することは、ゼロから稼働状態の開発環境を構築するための簡単かつ迅速な方法です。 さまざまな Visual Studio 構成のシステム イメージは、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure) で入手できます。
@@ -23,7 +23,7 @@ ms.locfileid: "83652678"
 Azure を利用するのが初めてであれば、 [無料の Azure アカウントを作成します](https://azure.microsoft.com/free)。
 
 > [!NOTE]
-> 一部のサブスクリプションでは、Windows 10 イメージをデプロイすることはできません。 詳細については、「[Azure で Windows クライアントを開発/テスト シナリオに使用する](https://docs.microsoft.com/azure/virtual-machines/windows/client-images)」を参照してください。
+> 一部のサブスクリプションでは、Windows 10 イメージをデプロイすることはできません。 詳細については、「[Azure で Windows クライアントを開発/テスト シナリオに使用する](./client-images.md)」を参照してください。
 
 ## <a name="what-configurations-and-versions-are-available"></a>どんな構成とバージョンを使用できますか。
 最新のメジャー バージョン (Visual Studio 2019、Visual Studio 2017、Visual Studio 2015) のイメージは、Azure Marketplace で提供されています。  リリースされたメジャー バージョンごとに、最初に Web にリリースされたバージョン (RTW: Released To Web) と最新の更新バージョンが表示されます。  これらの各バージョンでは、Visual Studio Enterprise エディションと Visual Studio Community エディションが提供されます。  これらのイメージは、少なくとも月に 1 回は更新され、最新の Visual Studio と Windows の更新プログラムが適用されます。  イメージの名前は変わりませんが、各イメージの説明には、インストールされている製品のバージョンと、その時点のイメージの日付が記載されます。
@@ -77,9 +77,9 @@ Azure では、さまざまなサイズの仮想マシンが提供されてい�
    * Standard_D2S_v2
    * Standard_D3_v2
     
-最新のマシン サイズについては、「[ Azure の Windows 仮想マシンのサイズ](/azure/virtual-machines/windows/sizes)」をご覧ください。
+最新のマシン サイズについては、「[ Azure の Windows 仮想マシンのサイズ](../sizes.md)」をご覧ください。
 
-Azure では、VM サイズを変更して、最初の選択を再調整することもできます。 より適切なサイズで新しい VM をプロビジョニングすることもできますし、既存の VM のサイズを別の基本ハードウェアへと変更することもできます。 詳しくは、「[Windows VM のサイズ変更](/azure/virtual-machines/windows/resize-vm)」をご覧ください。
+Azure では、VM サイズを変更して、最初の選択を再調整することもできます。 より適切なサイズで新しい VM をプロビジョニングすることもできますし、既存の VM のサイズを別の基本ハードウェアへと変更することもできます。 詳しくは、「[Windows VM のサイズ変更](./resize-vm.md)」をご覧ください。
 
 ## <a name="after-the-vm-is-running-whats-next"></a>VM を実行したら、次に何をすればよいですか。
 Visual Studio は、Azure の "ライセンス持ち込み" モデルに従って動作します。 私有するハードウェア上のインストールと同様、まずは、Visual Studio インストールのラインセンス付与を行います。 Visual Studio のロックを解除するには、次のいずれかを行います。
@@ -96,7 +96,7 @@ Visual Studio は、Azure の "ライセンス持ち込み" モデルに従っ�
 
 <img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI" style="border:3px solid Silver; display: block; margin: auto;"><center> *(図 1) Azure portal の UI を使用してイメージをキャプチャする*</center>
 
-詳しくは、「[Azure で一般化された VM の管理対象イメージを作成する](/azure/virtual-machines/windows/capture-image-resource)」をご覧ください。
+詳しくは、「[Azure で一般化された VM の管理対象イメージを作成する](./capture-image-resource.md)」をご覧ください。
 
 > [!IMPORTANT]
 > 必ず、Sysprep を使用して VM を準備してください。 この手順を実行しなかった場合、Azure ではイメージから VM をプロビジョニングできません。
@@ -104,7 +104,7 @@ Visual Studio は、Azure の "ライセンス持ち込み" モデルに従っ�
 > [!NOTE]
 > イメージを保存する分のストレージ コストはかかりますが、VM を必要とするチーム メンバーごとに VM をゼロから再構築するコストに比べれば、追加されるコストは少額で済みます。 たとえば、チーム全体で再利用可能な 127 GB のイメージを作成して 1 か月間保管するには、数ドルのコストがかかります。 しかし、これらのコストは、各従業員が個別使用のために適切に構成した dev ボックスを作成して検証する時間に比べれば、少ないものです。
 
-また、開発タスクや使用するテクノロジによっては、より大規模な環境が必要になる場合があります (多様な開発構成や複数のマシン構成が必要になるなど)。 Azure DevTest Labs を使用すれば、"ゴールデン イメージ" の作成を自動化するための _"レシピ"_ を作成できます。 また、DevTest Labs では、チームで実行する VM のポリシーを管理することもできます。 DevTest Labs の詳細については、「[開発者のための Azure DevTest Labs の使用](/azure/devtest-lab/devtest-lab-developer-lab)」が最適な資料です。
+また、開発タスクや使用するテクノロジによっては、より大規模な環境が必要になる場合があります (多様な開発構成や複数のマシン構成が必要になるなど)。 Azure DevTest Labs を使用すれば、"ゴールデン イメージ" の作成を自動化するための _"レシピ"_ を作成できます。 また、DevTest Labs では、チームで実行する VM のポリシーを管理することもできます。 DevTest Labs の詳細については、「[開発者のための Azure DevTest Labs の使用](../../devtest-labs/devtest-lab-developer-lab.md)」が最適な資料です。
 
 ## <a name="next-steps"></a>次のステップ
 事前構成済みの Visual Studio イメージについて確認したので、次の手順では新しい VM を作成します。

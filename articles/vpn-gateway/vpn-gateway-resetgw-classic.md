@@ -1,18 +1,18 @@
 ---
 title: IPsec トンネルを再確立するための Azure VPN Gateway のリセット
-description: この記事では、Azure VPN Gateway をリセットして IPsec トンネルを再確立する方法を紹介します。 この記事は、クラシック デプロイ モデルと Resource Manager デプロイ モデルの両方の VPN ゲートウェイに適用されます。
+description: クラシック デプロイ モデルと Resource Manager デプロイ モデルの両方で VPN ゲートウェイの IPsec トンネルを再確立するには、Azure VPN Gateway をリセットします。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: e3a5807a0ccfa39cc80acacedaa5fb4d3afaaed3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f78b33a95001639abfeaecb381b597f5273c0fc
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79224991"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033055"
 ---
 # <a name="reset-a-vpn-gateway"></a>VPN Gateway のリセット
 
@@ -48,7 +48,7 @@ Azure Portal を使用して Resource Manager VPN Gateway をリセットでき�
 2. 仮想ネットワーク ゲートウェイのブレードで、[リセット] をクリックします。
 
    ![Reset VPN Gateway blade](./media/vpn-gateway-howto-reset-gateway/reset-vpn-gateway-portal.png)
-3. [リセット] ブレードで、 **[リセット]** ボタンをクリックします。
+3. [リセット] ブレードで、**[リセット]** ボタンをクリックします。
 
 ## <a name="powershell"></a><a name="ps"></a>PowerShell
 
@@ -65,7 +65,7 @@ Reset-AzVirtualNetworkGateway -VirtualNetworkGateway $gw
 
 結果:
 
-返された結果を受け取ったら、ゲートウェイのリセットが成功したとみなすことができます。 ただし、返された結果にはリセットが成功したことをはっきりと示すものは何もありません。 ゲートウェイのリセットが発生した正確な時間の履歴を詳細に調査したい場合は、[Azure Portal](https://portal.azure.com) でその情報を見ることができます。 ポータル上で、 **'GatewayName' から [リソース正常性]** に移動します。
+返された結果を受け取ったら、ゲートウェイのリセットが成功したとみなすことができます。 ただし、返された結果にはリセットが成功したことをはっきりと示すものは何もありません。 ゲートウェイのリセットが発生した正確な時間の履歴を詳細に調査したい場合は、[Azure Portal](https://portal.azure.com) でその情報を見ることができます。 ポータル上で、**'GatewayName' から [リソース正常性]** に移動します。
 
 ### <a name="classic-deployment-model"></a><a name="resetclassic"></a>クラシック デプロイ モデル
 
@@ -98,4 +98,4 @@ az network vnet-gateway reset -n VNet5GW -g TestRG5
 
 結果:
 
-返された結果を受け取ったら、ゲートウェイのリセットが成功したとみなすことができます。 ただし、返された結果にはリセットが成功したことをはっきりと示すものは何もありません。 ゲートウェイのリセットが発生した正確な時間の履歴を詳細に調査したい場合は、[Azure Portal](https://portal.azure.com) でその情報を見ることができます。 ポータル上で、 **'GatewayName' から [リソース正常性]** に移動します。
+返された結果を受け取ったら、ゲートウェイのリセットが成功したとみなすことができます。 ただし、返された結果にはリセットが成功したことをはっきりと示すものは何もありません。 ゲートウェイのリセットが発生した正確な時間の履歴を詳細に調査したい場合は、[Azure Portal](https://portal.azure.com) でその情報を見ることができます。 ポータル上で、**'GatewayName' から [リソース正常性]** に移動します。

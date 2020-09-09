@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 01/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 01ce1599f86082aef3ff53d298cc53896074af66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7aa71062c86d57cabe8579e13011956137804f74
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76277589"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079793"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>SAP アプリケーションで最適なネットワーク待ち時間を実現するための Azure 近接通信配置グループ
 SAP NetWeaver または SAP S/4HANA アーキテクチャを基盤とする SAP アプリケーションは、SAP アプリケーション層と SAP データベース層の間のネットワーク待ち時間の影響を受けます。 この影響は、アプリケーション レイヤーで実行されているほとんどのビジネス ロジックの結果です。 SAP アプリケーション レイヤーはビジネス ロジックを実行するため、データベース層に対して、1 秒あたり何千回または何万回という高い頻度でクエリを実行します。 これらのクエリの性質は、ほとんどの場合単純です。 多くの場合、データベース層で 500 マイクロ秒以内で実行できます。
@@ -29,7 +29,7 @@ SAP NetWeaver または SAP S/4HANA アーキテクチャを基盤とする SAP 
 
 多くの Azure リージョンで、データセンターの数が増加しています。 Availability Zones の導入もこの増加をもたらすきっかけとなっています。 同時に、お客様 (特にハイエンド SAP システムのお客様) は、M シリーズ ファミリ、または HANA Large Instances でより特別な VM SKU を使用しています。 これらの Azure 仮想マシンの種類は、特定の Azure リージョン内のすべてのデータセンターで利用可能なわけではありません。 この 2 つの傾向のために、お客様は、最適範囲内でないネットワーク待ち時間を経験しています。 場合によっては、この待ち時間のために、SAP システムのパフォーマンスが最適ではなくなることがあります。
 
-これらの問題を回避するために、Azure では[近接通信配置グループ](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)を提供しています。 この新しい機能は、さまざまな SAP システムをデプロイするために既に使用されています。 近接通信配置グループの制限については、この段落の冒頭で参照されている記事を参照してください。 この記事では、Azure 近接接続配置グループを使用できる、または使用すべき SAP シナリオについて説明しています。
+これらの問題を回避するために、Azure では[近接通信配置グループ](../../linux/co-location.md)を提供しています。 この新しい機能は、さまざまな SAP システムをデプロイするために既に使用されています。 近接通信配置グループの制限については、この段落の冒頭で参照されている記事を参照してください。 この記事では、Azure 近接接続配置グループを使用できる、または使用すべき SAP シナリオについて説明しています。
 
 ## <a name="what-are-proximity-placement-groups"></a>近接通信配置グループとは 
 Azure 近接通信配置グループとは、論理構造です。 定義されている場合、Azure リージョンと Azure リソース グループにバインドされます。 VM がデプロイされると、近接通信配置グループは次によって参照されます。
@@ -40,7 +40,7 @@ Azure 近接通信配置グループとは、論理構造です。 定義され�
 > [!NOTE]
 > 最初の VM が配置されたデータセンターに、特定の VM の種類を実行できるホスト ハードウェアがデプロイされていない場合、要求された VM の種類のデプロイは成功しません。 エラー メッセージが表示されます。
 
-1 つの [Azure リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/manage-resources-portal)には、複数の近接通信配置グループを割り当てることができます。 しかし、1 つの近接通信配置グループは、1 つの Azure リソース グループにしか割り当てることができません。
+1 つの [Azure リソース グループ](../../../azure-resource-manager/management/manage-resources-portal.md)には、複数の近接通信配置グループを割り当てることができます。 しかし、1 つの近接通信配置グループは、1 つの Azure リソース グループにしか割り当てることができません。
 
 近接通信配置グループを使用する場合は、次の点に注意してください。
 
@@ -49,9 +49,9 @@ Azure 近接通信配置グループとは、論理構造です。 定義され�
 - ハードウェアの使用停止により、Microsoft は、お客様が最初に使用されたものではなく、別のデータセンターに使用された VM の種類用の容量を増強する場合があります。 そのシナリオでは、すべての近接通信配置グループの VM を別のデータセンターに移動しなければならない場合があります。
 
 ## <a name="proximity-placement-groups-with-sap-systems-that-use-only-azure-vms"></a>Azure VM のみを使用する SAP システムの近接通信配置グループ
-Azure 上のほとんどの SAP NetWeaver および S/4HANA システム デプロイでは、[HANA Large Instances](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) は使用されません。 HANA Large Instances を使用しないデプロイでは、SAP アプリケーション レイヤーと DBMS 層の間で最適なパフォーマンスを提供することが重要です。 これを行うには、当該システムのためだけの Azure 近接通信配置グループを定義します。
+Azure 上のほとんどの SAP NetWeaver および S/4HANA システム デプロイでは、[HANA Large Instances](./hana-overview-architecture.md) は使用されません。 HANA Large Instances を使用しないデプロイでは、SAP アプリケーション レイヤーと DBMS 層の間で最適なパフォーマンスを提供することが重要です。 これを行うには、当該システムのためだけの Azure 近接通信配置グループを定義します。
 
-ほとんどのお客様のデプロイでは、お客様は、SAP システム用に 1 つの [Azure リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/manage-resources-portal)を作成します。 その場合は、たとえば、運用 ERP システム リソース グループとその近接通信配置グループの間に一対一のリレーションシップがあります。 また、お客様がリソース グループを水平方向に編成し、すべての運用システムを 1 つのリソース グループにまとめる場合もあります。 この場合は、運用 SAP システム用のリソース グループと、運用 SAP ERP、SAP BW などの複数の近接通信配置グループとの間に、一対多のリレーションシップがあります。
+ほとんどのお客様のデプロイでは、お客様は、SAP システム用に 1 つの [Azure リソース グループ](../../../azure-resource-manager/management/manage-resources-portal.md)を作成します。 その場合は、たとえば、運用 ERP システム リソース グループとその近接通信配置グループの間に一対一のリレーションシップがあります。 また、お客様がリソース グループを水平方向に編成し、すべての運用システムを 1 つのリソース グループにまとめる場合もあります。 この場合は、運用 SAP システム用のリソース グループと、運用 SAP ERP、SAP BW などの複数の近接通信配置グループとの間に、一対多のリレーションシップがあります。
 
 複数の SAP 運用システムまたは非運用システムを 1 つの近接通信配置グループにまとめることは避けてください。 少数の SAP システム、または 1 つの SAP システムといくつかの周辺アプリケーションで、低待機時間のネットワーク通信が必要な場合は、これらのシステムを 1 つの近接通信配置グループに移動することを検討してください。 1 つの近接通信配置グループ内にグループ化するシステムの数が増えるほど、次のようなことが起こる可能性が高くなるため、システムのバンドルは避ける必要があります。
 
@@ -65,11 +65,11 @@ Azure 上のほとんどの SAP NetWeaver および S/4HANA システム デプ�
 この場合、単一の SAP システムはそれぞれ 1 つのリソース グループにグループ化され、それぞれに 1 つの近接通信配置グループがあります。 HANA スケールアウト構成と DBMS スケールアップ構成のどちらを使用するかに依存することはありません。
 
 ## <a name="proximity-placement-groups-and-hana-large-instances"></a>近接通信配置グループと HANA Large Instances
-一部の SAP システムがアプリケーション レイヤーに関して [HANA Large Instances](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) に依存している場合、[リビジョン 4 の行またはスタンプ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance)にデプロイされた HANA Large Instance ユニットを使用しているときに、HANA Large Instance ユニットと Azure VM との間のネットワーク待ち時間が大幅に改善されます。 改善点の 1 つは、HANA Large Instances ユニットはデプロイされるときに、近接通信配置グループと共にデプロイされることです。 その近接通信配置グループを使用して、アプリケーション レイヤーの VM をデプロイすることができます。 その結果、それらの VM は、HANA Large Instances ユニットをホストする同じデータセンターにデプロイされます。
+一部の SAP システムがアプリケーション レイヤーに関して [HANA Large Instances](./hana-overview-architecture.md) に依存している場合、[リビジョン 4 の行またはスタンプ](./hana-network-architecture.md#networking-architecture-for-hana-large-instance)にデプロイされた HANA Large Instance ユニットを使用しているときに、HANA Large Instance ユニットと Azure VM との間のネットワーク待ち時間が大幅に改善されます。 改善点の 1 つは、HANA Large Instances ユニットはデプロイされるときに、近接通信配置グループと共にデプロイされることです。 その近接通信配置グループを使用して、アプリケーション レイヤーの VM をデプロイすることができます。 その結果、それらの VM は、HANA Large Instances ユニットをホストする同じデータセンターにデプロイされます。
 
-HANA Large Instances ユニットがリビジョン 4 のスタンプまたは行にデプロイされているかどうかを確認するには、「[Azure portal を介した Azure HANA Large Instances の制御](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal#look-at-attributes-of-single-hli-unit)」の記事を確認してください。 HANA Large Instance ユニットの属性の概要では、近接通信配置グループの名前も確認できます。これは、HANA Large Instance ユニットがデプロイされたときに作成されたためです。 属性の概要に表示される名前は、アプリケーション レイヤーの VM のデプロイ先である近接通信配置グループの名前です。
+HANA Large Instances ユニットがリビジョン 4 のスタンプまたは行にデプロイされているかどうかを確認するには、「[Azure portal を介した Azure HANA Large Instances の制御](./hana-li-portal.md#look-at-attributes-of-single-hli-unit)」の記事を確認してください。 HANA Large Instance ユニットの属性の概要では、近接通信配置グループの名前も確認できます。これは、HANA Large Instance ユニットがデプロイされたときに作成されたためです。 属性の概要に表示される名前は、アプリケーション レイヤーの VM のデプロイ先である近接通信配置グループの名前です。
 
-Azure 仮想マシンのみを使用する SAP システムと比べると、HANA Large Instances を使用する場合、使用する [Azure リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/manage-resources-portal)の数を決定する際の柔軟性は低くなります。 [HANA Large Instances テナント](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-know-terms)のすべての HANA Large Instance ユニットは、1 つのリソース グループにグループ化されます ([こちらの記事](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal#display-of-hana-large-instance-units-in-the-azure-portal)を参照)。 運用システムと非運用システム、または他のシステムなどを分離するために別々のテナントにデプロイする場合を除き、すべての HANA Large Instances ユニットは 1 つの HANA Large Instances テナントにデプロイされます。 このテナントには、リソース グループとの一対一のリレーションシップがあります。 ただし、単一のユニットごとに、別個の近接通信配置グループが定義されます。
+Azure 仮想マシンのみを使用する SAP システムと比べると、HANA Large Instances を使用する場合、使用する [Azure リソース グループ](../../../azure-resource-manager/management/manage-resources-portal.md)の数を決定する際の柔軟性は低くなります。 [HANA Large Instances テナント](./hana-know-terms.md)のすべての HANA Large Instance ユニットは、1 つのリソース グループにグループ化されます ([こちらの記事](./hana-li-portal.md#display-of-hana-large-instance-units-in-the-azure-portal)を参照)。 運用システムと非運用システム、または他のシステムなどを分離するために別々のテナントにデプロイする場合を除き、すべての HANA Large Instances ユニットは 1 つの HANA Large Instances テナントにデプロイされます。 このテナントには、リソース グループとの一対一のリレーションシップがあります。 ただし、単一のユニットごとに、別個の近接通信配置グループが定義されます。
 
 その結果、1 つのテナントの Azure リソース グループと近接通信配置グループ間のリレーションシップは次のようになります。
 
@@ -162,8 +162,7 @@ New-AzVm -ResourceGroupName "myfirstppgexercise" -Name "myppgavsetappvm" -Locati
 ## <a name="next-steps"></a>次のステップ
 次のドキュメントを参照してください。
 
-- [Azure での SAP ワークロードの計画とデプロイに関するチェックリスト](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)
-- [プレビュー:Azure CLI を使用して近接通信配置グループに VM をデプロイする](https://docs.microsoft.com/azure/virtual-machines/linux/proximity-placement-groups)
-- [プレビュー:PowerShell を使用して近接通信配置グループに VM をデプロイする](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups)
-- [SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
-
+- [Azure での SAP ワークロードの計画とデプロイに関するチェックリスト](./sap-deployment-checklist.md)
+- [プレビュー:Azure CLI を使用して近接通信配置グループに VM をデプロイする](../../linux/proximity-placement-groups.md)
+- [プレビュー:PowerShell を使用して近接通信配置グループに VM をデプロイする](../../windows/proximity-placement-groups.md)
+- [SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](./dbms_guide_general.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
-ms.openlocfilehash: 8be1f1161ac1c4611ddb2a5ec61592394014c488
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b1a0d646c05be0de83837b33e77e34969c9254c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548676"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287803"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS Protection - 回復性の高いソリューションの設計
 
@@ -48,7 +48,7 @@ Microsoft Azure で実行されるサービスを保護するには、お客様�
 
 スケーラビリティとは、負荷の増大に対するシステムの対応能力のことです。 [水平方向にスケーリングする](/azure/architecture/guide/design-principles/scale-out)ようにアプリケーションを設計し、増加した負荷の需要を満たす (特に、DDoS 攻撃の場合)。 アプリケーションがサービスの 1 つのインスタンスに依存する場合は、単一障害点が発生します。 複数のインスタンスをプロビジョニングすると、システムの回復力と拡張性が高まります。
 
-[Azure App Service](/azure/app-service/app-service-value-prop-what-is) の場合は、複数のインスタンスを提供する [App Service プラン](/azure/app-service/overview-hosting-plans)を選択してください。 Azure Cloud Services の場合は、[複数インスタンス](/azure/cloud-services/cloud-services-choose-me)を使用するように各ロールを構成してください。 [Azure Virtual Machines](/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) の場合は、仮想マシン (VM) アーキテクチャに 1 つ以上の VM が含まれていることと、[可用性セット](/azure/virtual-machines/virtual-machines-windows-manage-availability)に各 VM が含まれていることを確認してください。 自動スケーリング機能には[仮想マシン スケール セット](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview)を使うことをお勧めします。
+[Azure App Service](/azure/app-service/app-service-value-prop-what-is) の場合は、複数のインスタンスを提供する [App Service プラン](/azure/app-service/overview-hosting-plans)を選択してください。 Azure Cloud Services の場合は、[複数インスタンス](/azure/cloud-services/cloud-services-choose-me)を使用するように各ロールを構成してください。 [Azure Virtual Machines](../../virtual-machines/index.yml) の場合は、仮想マシン (VM) アーキテクチャに 1 つ以上の VM が含まれていることと、[可用性セット](../../virtual-machines/windows/tutorial-availability-sets.md)に各 VM が含まれていることを確認してください。 自動スケーリング機能には[仮想マシン スケール セット](../../virtual-machine-scale-sets/overview.md)を使うことをお勧めします。
 
 ### <a name="defense-in-depth"></a>多層防御
 
@@ -269,7 +269,5 @@ Application Gateway WAF SKU (禁止モード) を構成して、レイヤー 7 (
 ## <a name="next-steps"></a>次のステップ
 
 * [クラウドにおける共同責任](shared-responsibility.md)
-
 * [Azure DDoS Protection 製品のページ](https://azure.microsoft.com/services/ddos-protection/)
-
 * [Azure DDoS Protection のドキュメント](/azure/virtual-network/ddos-protection-overview)

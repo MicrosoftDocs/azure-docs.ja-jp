@@ -2,26 +2,32 @@
 title: 新機能 - Personalizer
 titleSuffix: Azure Cognitive Services
 description: この記事には、Personalizer に関するニュースが含まれています。
-author: diberry
 manager: nitinme
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: conceptual
-ms.date: 04/23/2020
-ms.author: diberry
-ms.openlocfilehash: 0c52771573c1df6a7a0efefbf950e88e1f1728f7
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.topic: overview
+ms.date: 07/17/2020
+ms.openlocfilehash: 5e3606ac04d5023e28bc2304aba79a8211c58881
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800624"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133080"
 ---
 # <a name="whats-new-in-personalizer"></a>Personalizer の新機能
 
 サービス内の新機能について説明します。 これらの項目には、リリース ノート、ビデオ、ブログの投稿、およびその他の種類の情報が含まれる可能性があります。 このページをブックマークして、常にサービスの最新情報を確認してください。
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="july-2020"></a>2020 年 7 月
+
+* 新しいチュートリアル - [チャット ボットでの Personalizer の使用](tutorial-use-personalizer-chat-bot.md)
+
+### <a name="june-2020"></a>2020 年 6 月
+
+* 新しいチュートリアル - [Web アプリでの Personalizer の使用](tutorial-use-personalizer-web-app.md)
 
 ### <a name="may-2020---build-conference"></a>2020 年 5 月 - //Build Conference
 

@@ -8,21 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 04/24/2020
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.custom: seodec18
-ms.openlocfilehash: 1a26b00a95b1b71993385e816d06d6686f89a5a1
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a9050b85c974a3c04ca717e8fe3d5188c1bf7a40
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599359"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244314"
 ---
 # <a name="how-to-sign-up-for-translator"></a>Translator にサインアップする方法
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-- アカウントをお持ちでない場合は、 [無料アカウント](https://azure.microsoft.com/free/)を作成して、無料で試すことができます。
+- アカウントをお持ちでない場合は、 [無料アカウント](https://azure.microsoft.com/free/cognitive-services)を作成して、無料で試すことができます。
 - アカウントはお持ちの場合は、 [サインイン](https://ms.portal.azure.com/)
 
 ## <a name="create-a-subscription-for-translator"></a>Translator のサブスクリプションを作成する

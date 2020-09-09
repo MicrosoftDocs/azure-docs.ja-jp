@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Data Warehouse へのデータの読み込み
-description: Azure Data Factory を使用して Azure SQL Data Warehouse にデータをコピーします
+title: Azure Synapse Analytics にデータを読み込む
+description: Azure Data Factory を使用して Azure Synapse Analytics にデータをコピーします
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -10,39 +10,39 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/16/2020
-ms.openlocfilehash: 1a764f392402acf9aa405468470d0fb6f680d755
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/08/2020
+ms.openlocfilehash: 8891c65707822abeb2bcca52280d9b56dc725e4f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461110"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85252000"
 ---
-# <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure SQL Data Warehouse へのデータの読み込み
+# <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Synapse Analytics へのデータの読み込み
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-[Azure SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) は、クラウドベースのスケールアウト データベースであり、リレーショナルか非リレーショナルかを問わず、大量のデータを処理できます。 SQL Data Warehouse は、企業のデータ ウェアハウスのワークロード向けに最適化された超並列処理 (MPP) アーキテクチャを基盤としています。 ストレージとコンピューティングを別々にスケールできる柔軟性によって、クラウドの弾力性を提供します。
+[Azure Synapse Analytics (旧称 SQL DW)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) は、クラウドベースのスケールアウト データベースであり、リレーショナルか非リレーショナルかを問わず、大量のデータを処理できます。 Azure Synapse Analytics は、企業のデータ ウェアハウスのワークロード向けに最適化された超並列処理 (MPP) アーキテクチャを基盤としています。 ストレージとコンピューティングを別々にスケールできる柔軟性によって、クラウドの弾力性を提供します。
 
-Azure SQL Data Warehouse は、Azure Data Factory を使用する場合にさらに使いやすくなっています。 Azure Data Factory は、フル マネージドのクラウドベースのデータ統合サービスです。 このサービスを使用して、既存のシステムのデータで SQL Data Warehouse を設定し、分析ソリューションを構築する際の時間を節約できます。
+Azure Synapse Analytics は、Azure Data Factory を使用する場合にさらに使いやすくなっています。 Azure Data Factory は、フル マネージドのクラウドベースのデータ統合サービスです。 このサービスを使用して、既存のシステムのデータで Azure Synapse Analytics を設定し、分析ソリューションを構築する際の時間を節約できます。
 
-Azure Data Factory には、Azure SQL Data Warehouse にデータを読み込む際に次の利点があります。
+Azure Data Factory には、Azure Synapse Analytics にデータを読み込む際に次の利点があります。
 
 * **簡単なセットアップ**: 直感的なウィザードが示す 5 つの手順に従うだけです。スクリプトは必要ありません。
 * **豊富なデータ ストアのサポート**:オンプレミスとクラウドベースのデータ ストアの豊富なセットに対するサポートが組み込まれています。 詳しい一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
 * **セキュリティとコンプライアンスへの準拠**:データは HTTPS または ExpressRoute 経由で転送されます。 グローバル サービスの存在により、データが地理的な境界を越えることはありません。
-* **PolyBase の使用による比類のないパフォーマンス**:PolyBase は、Azure SQL Data Warehouse にデータを移動するための最も効率的な方法です。 ステージング BLOB の機能を使用して、Azure Blob Storage と Data Lake Store を含むすべての種類のデータ ストアからデータを高速で読み込むことができます。 (PolyBase では Azure Blob Storage と Azure Data Lake Store が既定でサポートされます。)詳しくは、[コピー アクティビティのパフォーマンス](copy-activity-performance.md)に関する記事をご覧ください。
+* **PolyBase の使用による比類のないパフォーマンス**:PolyBase は、Azure Synapse Analytics にデータを移動するための最も効率的な方法です。 ステージング BLOB の機能を使用して、Azure Blob Storage と Data Lake Store を含むすべての種類のデータ ストアからデータを高速で読み込むことができます。 (PolyBase では Azure Blob Storage と Azure Data Lake Store が既定でサポートされます。)詳しくは、[コピー アクティビティのパフォーマンス](copy-activity-performance.md)に関する記事をご覧ください。
 
-この記事では、Data Factory のデータのコピー ツールを使用して "_Azure SQL Database から Azure SQL Data Warehouse にデータを読み込む_" 方法を示します。 その他の種類のデータ ストアからデータをコピーする場合も、同様の手順で実行できます。
+この記事では、Data Factory のデータのコピー ツールを使用して "_Azure SQL Database から Azure Synapse Analytics にデータを読み込む_" 方法を示します。 その他の種類のデータ ストアからデータをコピーする場合も、同様の手順で実行できます。
 
 > [!NOTE]
-> 詳しくは、「[Azure Data Factory を使用して Azure SQL Data Warehouse をコピー先またはコピー元としてデータをコピーする](connector-azure-sql-data-warehouse.md)」をご覧ください。
+> 詳しくは、[Azure Data Factory を使用して Azure Synapse Analytics をコピー先またはコピー元としてデータをコピーする](connector-azure-sql-data-warehouse.md)ことに関する記事をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
-* Azure SQL Data Warehouse: SQL データベースからコピーされたデータは、データ ウェアハウスに格納されます。 Azure SQL Data Warehouse がない場合は、[SQL Data Warehouse の作成](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md)に関する記事の手順をご覧ください。
-* Azure SQL Database:このチュートリアルでは、Adventure Works LT サンプル データを使って Azure SQL データベースからデータをコピーします。 SQL データベースを作成するには、[Azure SQL データベースの作成](../sql-database/sql-database-get-started-portal.md)に関する記事の手順に従います。
+* Azure Synapse Analytics:SQL データベースからコピーされたデータは、データ ウェアハウスに格納されます。 Azure Synapse Analytics がない場合は、[Azure Synapse Analytics インスタンスの作成](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md)の手順を参照してください。
+* Azure SQL Database:このチュートリアルでは、Azure SQL Database 内に Adventure Works LT サンプル データセットからのデータを コピーします。 SQL Database 内にこのサンプル データベースを作成するには、[Azure SQL Database でのサンプル データベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関する記事の手順に従います。
 * Azure ストレージ アカウント:Azure Storage は、一括コピー操作の_ステージング_ BLOB として使用されます。 Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md)」の手順をご覧ください。
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
@@ -51,7 +51,7 @@ Azure Data Factory には、Azure SQL Data Warehouse にデータを読み込む
 
 2. **[新しいデータ ファクトリ]** ページで、次の項目の値を指定します。
 
-    * **Name**:名前に「*LoadSQLDWDemo*」を入力します。 データ ファクトリの名前はグローバルに一意にする必要があります。 "データ ファクトリ名 'LoadSQLDWDemo' は利用できません" エラーが発生する場合は、データ ファクトリの別の名前を入力します。 たとえば、 _**yourname**_ **ADFTutorialDataFactory** という名前を使用できます。 データ ファクトリをもう一度作成してみます。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
+    * **Name**:名前に「*LoadSQLDWDemo*」を入力します。 データ ファクトリの名前はグローバルに一意にする必要があります。 "データ ファクトリ名 'LoadSQLDWDemo' は利用できません" エラーが発生する場合は、データ ファクトリの別の名前を入力します。 たとえば、_**yourname**_**ADFTutorialDataFactory** という名前を使用できます。 データ ファクトリをもう一度作成してみます。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
     * **サブスクリプション**:データ ファクトリを作成する Azure サブスクリプションを選択します。 
     * **リソース グループ**:ドロップダウン リストから既存のリソース グループを選択するか、 **[新規作成]** オプションを選択し、リソース グループの名前を入力します。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。  
     * **バージョン**: **[V2]** を選択します。
@@ -64,7 +64,7 @@ Azure Data Factory には、Azure SQL Data Warehouse にデータを読み込む
 
    **[作成と監視]** タイルを選択して、別のタブでデータ統合アプリケーションを起動します。
 
-## <a name="load-data-into-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse へのデータの読み込み
+## <a name="load-data-into-azure-synapse-analytics"></a>Azure Synapse Analytics にデータを読み込む
 
 1. **[Get started]\(開始\)** ページで、 **[データのコピー]** タイルを選択してデータのコピー ツールを起動します。
 
@@ -115,7 +115,7 @@ Azure Data Factory には、Azure SQL Data Warehouse にデータを読み込む
 1. **[テーブル マッピング]** ページで、コンテンツを確認し、 **[次へ]** を選択します。 インテリジェント テーブル マッピングが表示されます。 ソース テーブルは、テーブル名に基づくコピー先テーブルにマップされます。 コピー先にソース テーブルが存在しない場合、Azure Data Factory によって同名のコピー先テーブルが既定で作成されます。 既存のコピー先テーブルにソース テーブルをマップすることもできます。
 
    > [!NOTE]
-   > SQL Data Warehouse シンクに対するテーブルの自動作成は、SQL Server または Azure SQL Database がソースの場合に適用されます。 別のソース データ ストアからデータをコピーする場合は、データのコピーを実行する前にシンク Azure SQL Data Warehouse 内にスキーマを事前に作成しておく必要があります。
+   > Azure Synapse Analytics シンクに対するテーブルの自動作成は、SQL Server または Azure SQL Database がソースの場合に適用されます。 別のソース データ ストアからデータをコピーする場合は、データのコピーを実行する前にシンク Azure Synapse Analytics 内にスキーマを事前に作成しておく必要があります。
 
    ![[テーブル マッピング] ページ](./media/load-azure-sql-data-warehouse/table-mapping.png)
 
@@ -125,7 +125,7 @@ Azure Data Factory には、Azure SQL Data Warehouse にデータを読み込む
 
 1. **[設定]** ページで、次の手順を完了します。
 
-    a. **[Staging settings]\(ステージングの設定\)** セクションで、 **[+ 新規]** をクリックしてステージング ストレージを新規作成します。 このストレージは、PolyBase を使用して SQL Data Warehouse に読み込む前に、データをステージングするために使用されます。 コピーの完了後、Azure Blob Storage 内の暫定データは自動的にクリーンアップされます。
+    a. **[Staging settings]\(ステージングの設定\)** セクションで、 **[+ 新規]** をクリックしてステージング ストレージを新規作成します。 このストレージは、PolyBase を使用して Azure Synapse Analytics に読み込む前に、データをステージングするために使用されます。 コピーの完了後、Azure Blob Storage 内の暫定データは自動的にクリーンアップされます。
 
     b. **[New Linked Service]\(新しいリンクされたサービス\)** ページで、ストレージ アカウントを選択し、 **[作成]** を選択してリンクされたサービスをデプロイします。
 
@@ -136,11 +136,13 @@ Azure Data Factory には、Azure SQL Data Warehouse にデータを読み込む
 1. **[サマリー]** ページで設定を確認し、 **[次へ]** を選択します。
 
     ![概要ページ](./media/load-azure-sql-data-warehouse/summary-page.png)
-1. **[Deployment]\(デプロイ\)** ページで **[監視]** を選択してパイプライン (タスク) を監視します。
 
-1. 左側の **[監視]** タブが自動的に選択されたことがわかります。 パイプラインの実行が正常に完了したら、 **[パイプライン名]** 列の下の **[CopyFromSQLToSQLDW]** リンクを選択してアクティビティの実行の詳細を表示し、パイプラインを再実行します。
+1. **[Deployment]\(デプロイ\)** ページで **[監視]** を選択してパイプライン (タスク) を監視します。 
+ 
+1. 左側の **[監視]** タブが自動的に選択されたことがわかります。 パイプラインの実行が正常に完了したら、 **[パイプライン名]** 列の下の **[CopyFromSQLToSQLDW]** リンクを選択してアクティビティの実行の詳細を表示するか、またはパイプラインを再実行します。
 
     [![パイプラインの実行を監視する](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png)](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png#lightbox)
+
 1. パイプラインの実行ビューに戻るには、上部の **[すべてのパイプラインの実行]** リンクを選択します。 **[最新の情報に更新]** を選択して、一覧を更新します。
 
     ![アクティビティの実行を監視する](./media/load-azure-sql-data-warehouse/activity-monitoring.png)
@@ -152,7 +154,7 @@ Azure Data Factory には、Azure SQL Data Warehouse にデータを読み込む
 
 ## <a name="next-steps"></a>次のステップ
 
-次の資料に進んで、Azure SQL Data Warehouse のサポートを確認します。
+次の資料に進んで、Azure Synapse Analytics のサポートを確認します。
 
 > [!div class="nextstepaction"]
->[Azure SQL Data Warehouse コネクタ](connector-azure-sql-data-warehouse.md)
+>[Azure Synapse Analytics コネクタ](connector-azure-sql-data-warehouse.md)

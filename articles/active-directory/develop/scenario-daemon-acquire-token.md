@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d755573b53eb63d85165fb73fe4b97298dbeff09
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13000c5a61dc2c4d49aa395271beddef64d32245
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81868993"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119217"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Web API を呼び出すデーモン アプリ - トークンを取得する
 
@@ -234,16 +234,16 @@ Content: {
 # <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!div class="nextstepaction"]
-> [デーモン アプリ - Web API の呼び出し](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=dotnet)
+> [デーモン アプリ - Web API の呼び出し](./scenario-daemon-call-api.md?tabs=dotnet)
 
 # <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
-> [デーモン アプリ - Web API の呼び出し](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=python)
+> [デーモン アプリ - Web API の呼び出し](./scenario-daemon-call-api.md?tabs=python)
 
 # <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
-> [デーモン アプリ - Web API の呼び出し](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=java)
+> [デーモン アプリ - Web API の呼び出し](./scenario-daemon-call-api.md?tabs=java)
 
 ---

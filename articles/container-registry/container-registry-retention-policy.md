@@ -3,18 +3,20 @@ title: タグなしマニフェストを保持するポリシー
 description: Azure コンテナー レジストリで保持ポリシーを有効化して、指定期間後にタグなしマニフェストを自動で削除する方法について説明します。
 ms.topic: article
 ms.date: 10/02/2019
-ms.openlocfilehash: 912616b6ab95cdff91e70477c7d6de476ccfdfa7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5dda85934bb10cf16fd90381539b892df4f5445c
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74454821"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683447"
 ---
 # <a name="set-a-retention-policy-for-untagged-manifests"></a>タグなしマニフェストの保持ポリシーの設定
 
 Azure Container Registry では、タグが関連付けられていない格納済みのイメージ マニフェスト ("*タグなしマニフェスト*") に対して、"*保持ポリシー*" を設定できます。 保持ポリシーが有効な場合、レジストリ内にあるタグなしマニフェストは、設定日数の経過後に自動で削除されます。 この機能は、不要なアーティファクトでレジストリがいっぱいになることを防ぐほか、ストレージ コストの削減に役立ちます。 タグなしマニフェストの `delete-enabled` 属性が `false` に設定されている場合、そのマニフェストを削除することはできず、保持ポリシーは適用されません。
 
 この記事のサンプル コマンドは、Azure Cloud Shell または Azure CLI のローカル インストールを使用して実行できます。 これをローカルで使用したい場合は、バージョン 2.0.74 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
+
+保持ポリシーは、**Premium** コンテナー レジストリの機能です。 レジストリ サービス レベルについては、[Azure Container Registry のサービス レベル](container-registry-skus.md)に関するページをご覧ください。
 
 > [!IMPORTANT]
 > この機能は現在プレビュー段階であり、一定の[制限事項が適用されます](#preview-limitations)。 プレビュー版は、[追加使用条件][terms-of-use]に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
@@ -24,7 +26,6 @@ Azure Container Registry では、タグが関連付けられていない格納�
 
 ## <a name="preview-limitations"></a>プレビューの制限事項
 
-* 保持ポリシーを構成できるのは、**Premium** コンテナー レジストリだけです。 レジストリ サービス レベルについては、[「Azure Container Registry SKU」](container-registry-skus.md)をご覧ください。
 * 保持ポリシーは、タグなしマニフェストに対してのみ設定できます。
 * 現在、保持ポリシーは、ポリシーが有効になった*後に*タグが外されたマニフェストにのみ適用されます。 レジストリ内の既存のタグなしマニフェストは、ポリシーの対象になりません。 タグ付けされていない既存のマニフェストを削除するには、「[Azure Container Registry のコンテナー イメージを削除する](container-registry-delete.md)」の記事にある例を参照してください。
 

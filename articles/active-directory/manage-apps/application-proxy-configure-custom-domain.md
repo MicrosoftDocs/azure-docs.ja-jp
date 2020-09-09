@@ -1,27 +1,22 @@
 ---
-title: Azure AD アプリケーション プロキシでのカスタム ドメイン | Microsoft Docs
+title: Azure AD アプリケーション プロキシのカスタム ドメイン
 description: Azure AD アプリケーション プロキシでカスタム ドメインを構成して管理します。
 services: active-directory
-documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/24/2019
-ms.author: mimart
-ms.reviewer: harshja
-ms.custom: it-pro
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f35658a75adb4d4c6c279e45087e741b8117e65
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: kenwith
+ms.reviewer: japere
+ms.openlocfilehash: 6688875385d34fcbece964d43827c6d62ae7ced4
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481383"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587771"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシでカスタム ドメインを構成する
 
@@ -91,11 +86,11 @@ Azure Active Directory アプリケーション プロキシ経由でアプリ�
    
    ![カスタム ドメインを選択する](./media/application-proxy-configure-custom-domain/application-proxy.png)
    
-6. ドメインに既に証明書が存在する場合は、 **[証明書]** フィールドにその証明書の情報が表示されます。 それ以外の場合は、 **[証明書]** フィールドを選択します。 
+6. ドメインに既に証明書が存在する場合は、 **[証明書]** フィールドにその証明書の情報が表示されます。 それ以外の場合は、 **[証明書]** フィールドを選択します。
    
    ![クリックし、証明書をアップロードします。](./media/application-proxy-configure-custom-domain/certificate.png)
    
-7. **[SSL 証明書]** ページで、PFX 証明書ファイルを参照して選択します。 証明書のパスワードを入力し、 **[証明書のアップロード]** を選択します。 証明書の詳細については、「[カスタム ドメインの証明書](#certificates-for-custom-domains)」のセクションを参照してください。
+7. **[SSL 証明書]** ページで、PFX 証明書ファイルを参照して選択します。 証明書のパスワードを入力し、 **[証明書のアップロード]** を選択します。 証明書の詳細については、「[カスタム ドメインの証明書](#certificates-for-custom-domains)」のセクションを参照してください。 証明書が有効でない場合、またはパスワードに問題がある場合は、エラー メッセージが表示されます。 [アプリケーション プロキシに関してよく寄せられる質問](application-proxy-faq.md#application-configuration)のページに、試すことができるトラブルシューティング手順がいくつかあります。
    
    ![証明書のアップロード](./media/application-proxy-configure-custom-domain/ssl-certificate.png)
    
@@ -126,7 +121,7 @@ Azure Active Directory アプリケーション プロキシ経由でアプリ�
 
 必要なすべての中間証明書が必ず含まれるようにするには、PFX 証明書を使用する必要があります。 証明書には秘密キーが含まれている必要があります。
 
-証明書の署名方法に制限はありません。 楕円曲線暗号 (ECC)、サブジェクトの別名 (SAN)、およびその他の一般的な証明書の種類がサポートされています。 
+Subject Alternative Name (SAN) などの最も一般的な署名方法がサポートされています。 
 
 ワイルドカード証明書は、そのワイルドカードが外部 URL に一致する限り使用できます。 [ワイルドカード アプリケーション](application-proxy-wildcard.md)にはワイルドカード証明書を使用する必要があります。 証明書を使用してサブドメインにもアクセスする場合は、同じ証明書内にサブジェクトの別名としてサブドメイン ワイルドカードを追加する必要があります。 たとえば、サブジェクトの別名として *\*.apps.adventure-works.com* を追加しない限り、 *\*.adventure-works.com* の証明書は *\*.apps.adventure-works.com* に対して機能しません。 
 
@@ -138,11 +133,11 @@ Azure Active Directory アプリケーション プロキシ経由でアプリ�
 
 すべての証明書は、個々のアプリケーションのページを通して管理されます。 **[証明書]** フィールドにアクセスするには、アプリケーションの **[アプリケーション プロキシ]** ページに移動します。
 
-複数のアプリケーションに対して同じ証明書を使用できます。 アップロードされた証明書が別のアプリケーションで使用される場合は、その証明書が自動的に適用されます。 アプリを追加または構成しても、それを再度アップロードするよう求められることはありません。 
+アプリケーションの証明書がアップロードされると、同じ証明書を使用するように構成された新しい**アプリ**にも自動的に適用されます。 テナント内の既存のアプリ用には、証明書を再アップロードする必要があります。
 
 証明書の期限が切れると、別の証明書をアップロードするよう指示する警告が表示されます。 証明書が取り消された場合は、ユーザーがそのアプリにアクセスすると、セキュリティの警告が表示されることがあります。 アプリの証明書を更新するには、アプリの **[アプリケーション プロキシ]** ページに移動し、 **[証明書]** を選択して新しい証明書をアップロードします。 古い証明書が他のアプリによって使用されていない場合、その証明書は自動的に削除されます。 
 
 ## <a name="next-steps"></a>次のステップ
-* Azure AD 認証を使用して発行されたアプリに対する[シングル サインオンを有効にする](application-proxy-configure-single-sign-on-with-kcd.md)。
-* 発行されたアプリに対する[条件付きアクセスを有効にする](../conditional-access/overview.md)。
 
+* Azure AD 認証を使用して発行されたアプリに対する[シングル サインオンを有効にする](application-proxy-configure-single-sign-on-with-kcd.md)。
+* 発行されたクラウド アプリに対する[条件付きアクセス](../conditional-access/concept-conditional-access-cloud-apps.md)。

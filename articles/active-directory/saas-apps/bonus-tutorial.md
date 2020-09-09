@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Bonusly の統合 | Microsoft Docs'
 description: Azure Active Directory と Bonusly の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 29fea32a-fa20-47b2-9e24-26feb47b0ae6
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea9c88f8eb8ac7b72f11ff286d2294df8cb70860
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: fd82d3d2d2a76e0c0671c57d9254ff8c9030d3a3
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74232056"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548286"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>チュートリアル: Azure Active Directory と Bonusly の統合
 

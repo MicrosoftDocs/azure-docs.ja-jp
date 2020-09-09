@@ -30,6 +30,22 @@
       items:
         - name: マイクロフルフィルメント センター アプリケーションを作成する
           href: tutorial-micro-fulfillment-center.md
+    - name: ビデオ分析 - オブジェクトとモーションの検出
+      items:
+        - name: 0 - オブジェクトとモーションの検出アプリケーションの展開
+          href: tutorial-video-analytics-deploy.md
+        - name: 1 - ビデオ分析アプリケーションを作成する
+          href: tutorial-video-analytics-create-app.md
+        - name: 2 - IoT Edge デバイスの構成
+          items:
+            - name: エッジでのビデオ分析デバイスの作成 (Linux VM)
+              href: tutorial-video-analytics-iot-edge-vm.md
+            - name: エッジでのビデオ分析デバイスの作成 (Intel NUC)
+              href: tutorial-video-analytics-iot-edge-nuc.md
+        - name: 3 - ビデオ分析アプリケーションの監視と管理
+          href: tutorial-video-analytics-manage.md
+        - name: 4 - ライブ ビデオ分析ゲートウェイ モジュールの変更とビルド
+          href: tutorial-video-analytics-build-module.md
 - name: 概念
   items:
     - name: コネクテッド ロジスティクス アプリ テンプレートのアーキテクチャ
@@ -42,6 +58,8 @@
       href: store-analytics-architecture.md
     - name: マイクロフルフィルメント センター アプリ テンプレートのアーキテクチャ
       href: architecture-micro-fulfillment-center.md
+    - name: ビデオ分析アプリ テンプレートのアーキテクチャ
+      href: architecture-video-analytics.md
     - name: 接続
       href: ../core/concepts-get-connected.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
     - name: アプリケーション テンプレートとは
@@ -50,8 +68,6 @@
   items:
     - name: デバイスの接続
       items:
-        - name: MXChip IoT DevKit を準備して接続する
-          href: ../core/howto-connect-devkit.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
         - name: Rigado Cascade 500 を準備して接続する
           href: ../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
         - name: RuuviTag デバイスを準備して接続する
@@ -135,9 +151,9 @@
     - name: Azure IoT SDK
       items:
         - name: IoT サービスの SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT デバイス SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: 顧客データ要求
       href: ../core/iot-central-customer-data-requests.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
     - name: サポートされているブラウザー

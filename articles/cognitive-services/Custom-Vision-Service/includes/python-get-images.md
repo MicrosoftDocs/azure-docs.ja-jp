@@ -14,4 +14,4 @@ ms.locfileid: "76166604"
 ---
 ## <a name="get-the-sample-images"></a>サンプル画像を取得する
 
-この例では、GitHub の [Cognitive Services Python SDK Samples](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images) リポジトリにある画像を使用します。 このリポジトリをお使いの開発環境にクローンまたはダウンロードしてください。 後の手順のために、フォルダーの場所を覚えておいてください。
+この例では、GitHub の [Cognitive Services Python SDK Samples](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images) リポジトリにある画像を使用します。 このリポジトリをお使いの開発環境に複製またはダウンロードしてください。 後の手順のために、フォルダーの場所を覚えておいてください。

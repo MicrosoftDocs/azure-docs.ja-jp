@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
-ms.date: 03/04/2020
+ms.date: 08/26/2020
 ms.author: victorh
-ms.openlocfilehash: 4a4395801218409fe77d1081689ba80b495fcfad
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7ccc83a61ac4ffe6e1bb6767a9c611bd3fcc0edf
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78302578"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892781"
 ---
 # <a name="what-is-azure-application-gateway"></a>Azure Application Gateway とは
 
@@ -40,10 +40,14 @@ Application Gateway の価格情報については、「[Application Gateway の
 
 Application Gateway の SLA 情報については、「[Application Gateway の SLA](https://azure.microsoft.com/support/legal/sla/application-gateway/v1_2/)」を参照してください。
 
+## <a name="whats-new"></a>新機能
+
+Azure Application Gateway の新機能については、「[Azure の更新情報](https://azure.microsoft.com/updates/?category=networking&query=Application%20Gateway)」を参照してください。
+
 ## <a name="next-steps"></a>次のステップ
 
 要件と環境に応じて、Azure portal、Azure PowerShell、または Azure CLI のいずれかを使用してテスト アプリケーション ゲートウェイを作成できます。
 
 - [クイック スタート: Azure Application Gateway による Web トラフィックのルーティング - Azure portal](quick-create-portal.md)
-- [クイック スタート: Azure Application Gateway による Web トラフィックのルーティング - Azure PowerShell](quick-create-powershell.md)
-- [クイック スタート: Azure Application Gateway による Web トラフィックのルーティング - Azure CLI](quick-create-cli.md)
+- [クイック スタート - Azure Application Gateway による Web トラフィックのルーティング - Azure PowerShell](quick-create-powershell.md)
+- [クイック スタート:Azure Application Gateway による Web トラフィックの転送 - Azure CLI](quick-create-cli.md)

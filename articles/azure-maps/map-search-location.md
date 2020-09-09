@@ -1,30 +1,30 @@
 ---
 title: マップに検索結果を表示する | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps Web SDK を使用して検索要求を実行し、結果を地図上に表示する方法について説明します。
-author: Philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: da67c27f590e60c7ae4eecbe8e139c5519e39e31
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 678781ff4bade7484f28cc9ab14d960f2b24c323
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83123957"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130292"
 ---
 # <a name="show-search-results-on-the-map"></a>マップに検索結果を表示する
 
 この記事では、目的地を検索し、地図上に検索結果を表示する方法について説明します。
 
-目的地の検索には、2 つ方法があります。 1 つは、サービス モジュールを使用して検索要求を行う方法です。 もう 1 つの方法は、[Fetch API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) から [Azure Maps Fuzzy search API](https://fetch.spec.whatwg.org/) に対して検索要求を行うという方法です。 以下で両方の方法を説明します。
+目的地の検索には、2 つ方法があります。 1 つは、サービス モジュールを使用して検索要求を行う方法です。 もう 1 つの方法は、[Fetch API](https://fetch.spec.whatwg.org/) から [Azure Maps Fuzzy search API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) に対して検索要求を行うという方法です。 以下で両方の方法を説明します。
 
 ## <a name="make-a-search-request-via-service-module"></a>サービス モジュールを使用して検索要求を行う
 
-<iframe height='500' scrolling='no' title='マップに検索結果を表示する (サービス モジュール)' src='//codepen.io/azuremaps/embed/zLdYEB/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io/azuremaps/pen/zLdYEB/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>Show search results on a map (Service Module)</a>」Pen を表示します。
+<iframe height='500' scrolling='no' title='マップに検索結果を表示する (サービス モジュール)' src='//codepen.io/azuremaps/embed/zLdYEB/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/zLdYEB/'>Show search results on a map (Service Module)</a>」Pen を表示します。
 </iframe>
 
 上記のコードでは、最初のブロックでマップ オブジェクトが構築され、アクセス トークンを使用するための認証メカニズムが設定されます。 作成方法については、[マップの作成](./map-create.md)に関する記事を参照してください。
@@ -33,7 +33,7 @@ ms.locfileid: "83123957"
 
 2 つ目のコード ブロックでは、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) クラスを使用してデータ ソース オブジェクトが作成され、検索結果がそこに追加されます。 [シンボル レイヤー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)は、テキストまたはアイコンを使用して、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) にラップされたポイントベースのデータをシンボルとしてマップにレンダリングします。  シンボル レイヤーが作成されます。 データ ソースがシンボル レイヤーに追加され、それがマップに追加されます。
 
-4 番目のコード ブロックでは、[サーチ モジュール](/javascript/api/azure-maps-rest/atlas.service.models.searchgetsearchfuzzyoptionalparams)で [SearchFuzzy](how-to-use-services-module.md) メソッドが使用されます。 それにより、[Get Search Fuzzy rest API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) を介して自由形式のテキスト検索を実行して、POI を検索できます。 Get requests to the Search Fuzzy API では、どの組み合わせのあいまい入力も処理できます。 次に、`geojson.getFeatures()` メソッドを使用して応答から GeoJSON のフィーチャー コレクションが抽出されて、データ ソースに追加されます。それにより、シンボル レイヤーを介してマップ上でデータが自動的にレンダリングされます。
+4 番目のコード ブロックでは、[サーチ モジュール](how-to-use-services-module.md)で [SearchFuzzy](/javascript/api/azure-maps-rest/atlas.service.models.searchgetsearchfuzzyoptionalparams) メソッドが使用されます。 それにより、[Get Search Fuzzy rest API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) を介して自由形式のテキスト検索を実行して、POI を検索できます。 Get requests to the Search Fuzzy API では、どの組み合わせのあいまい入力も処理できます。 次に、`geojson.getFeatures()` メソッドを使用して応答から GeoJSON のフィーチャー コレクションが抽出されて、データ ソースに追加されます。それにより、シンボル レイヤーを介してマップ上でデータが自動的にレンダリングされます。
 
 最後のコード ブロックでは、マップの [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) プロパティを使用してマップのカメラ境界が調整されます。
 
@@ -42,7 +42,7 @@ ms.locfileid: "83123957"
 
 ## <a name="make-a-search-request-via-fetch-api"></a>Fetch API を使用して検索要求を行う
 
-<iframe height='500' scrolling='no' title='マップに検索結果を表示する' src='//codepen.io/azuremaps/embed/KQbaeM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io/azuremaps/pen/KQbaeM/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>Show search results on a map</a>」Pen を表示します。
+<iframe height='500' scrolling='no' title='マップに検索結果を表示する' src='//codepen.io/azuremaps/embed/KQbaeM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/KQbaeM/'>Show search results on a map</a>」Pen を表示します。
 </iframe>
 
 上記のコードの最初のコード ブロックでは、マップ オブジェクトが作成されます。 アクセス トークンを使用する認証メカニズムを設定します。 作成方法については、[マップの作成](./map-create.md)に関する記事を参照してください。

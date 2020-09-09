@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 1b9a1771ad498fa3fb9b8294adb8a6556a00863a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e73f53fe983c1ebe77044993a281847ad362a840
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190420"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496775"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mysql"></a>Azure Database for MySQL 用の Azure セキュリティ ベースライン
 
@@ -94,7 +94,7 @@ Traffic Analytics を有効にして使用する方法: https://docs.microsoft.c
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6:ネットワーク ベースの侵入検出/侵入防止システム (IDS/IPS) をデプロイする
 
-**ガイダンス**: Azure Database for MySQL の Advanced Threat Protection を使用します。 Advanced Threat Protection では、データベースにアクセスしたり、データベースを悪用したりしようとする、通常とは異なる、害を及ぼす可能性のある試行を示す異常なアクティビティを検出します。
+**ガイダンス**:Azure Database for MySQL の Advanced Threat Protection を使用します。 Advanced Threat Protection では、データベースにアクセスしたり、データベースを悪用したりしようとする、通常とは異なる、害を及ぼす可能性のある試行を示す異常なアクティビティを検出します。
 
 Azure Database for MySQL 用に Advanced Threat Protection を構成する方法: https://docs.microsoft.com/azure/mysql/howto-database-threat-protection-portal
 
@@ -112,7 +112,7 @@ Azure Database for MySQL 用に Advanced Threat Protection を構成する方法
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8:ネットワーク セキュリティ規則の複雑さと管理オーバーヘッドを最小限に抑える
 
-**ガイダンス**: Azure Database for MySQL インスタンスへのアクセスが必要なリソースについては、仮想ネットワーク サービス タグを使用して、ネットワーク セキュリティ グループまたは Azure Firewall に対するネットワーク アクセス制御を定義します。 セキュリティ規則を作成するときは、特定の IP アドレスの代わりにサービス タグを使うことができます。 規則の適切なソースまたはターゲット フィールドにサービス タグ名 (SQL.WestUs など) を指定することにより、対応するサービスのトラフィックを許可または拒否できます。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。
+**ガイダンス**:Azure Database for MySQL インスタンスへのアクセスが必要なリソースについては、仮想ネットワーク サービス タグを使用して、ネットワーク セキュリティ グループまたは Azure Firewall に対するネットワーク アクセス制御を定義します。 セキュリティ規則を作成するときは、特定の IP アドレスの代わりにサービス タグを使うことができます。 規則の適切なソースまたはターゲット フィールドにサービス タグ名 (SQL.WestUs など) を指定することにより、対応するサービスのトラフィックを許可または拒否できます。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。
 
 注:Azure Database for MySQL では、"Microsoft.Sql" サービス タグが使用されます。
 
@@ -218,7 +218,7 @@ Azure アクティビティ ログ用に診断設定を構成する方法: https
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5:セキュリティ ログのストレージ保持を構成する
 
-**ガイダンス**: Azure Monitor 内で、Azure Database for MySQL ログを保持するために使用される Log Analytics ワークスペースについて、組織のコンプライアンス規則に従って保有期間を設定します。 長期/アーカイブ ストレージには Azure Storage アカウントを使用します。
+**ガイダンス**:Azure Monitor 内で、Azure Database for MySQL ログを保持するために使用される Log Analytics ワークスペースについて、組織のコンプライアンス規則に従って保有期間を設定します。 長期/アーカイブ ストレージには Azure Storage アカウントを使用します。
 
 Log Analytics ワークスペースのログ保持パラメーターを設定する方法: https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
@@ -266,7 +266,7 @@ Azure Sentinel をオンボードする方法: https://docs.microsoft.com/azure/
 
 ### <a name="28-centralize-anti-malware-logging"></a>2.8:マルウェア対策のログ記録を一元管理する
 
-**ガイダンス**: 適用なし。Azure Database for MySQL では、マルウェア対策関連のログの処理や生成は行われません。
+**ガイダンス**:適用なし。Azure Database for MySQL では、マルウェア対策関連のログの処理や生成は行われません。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -352,7 +352,7 @@ Azure AD を使用した SSO について: https://docs.microsoft.com/azure/acti
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: すべての Azure Active Directory ベースのアクセスに多要素認証を使用する
 
-**ガイダンス**: Azure Active Directory の Multi-Factor Authentication (MFA) を有効にし、Azure Security Center ID とアクセス管理の推奨事項に従います。 Azure AD トークンを利用してデータベースにサインインする場合、データベースのサインインに対して多要素認証を要求することができます。
+**ガイダンス**:Azure Active Directory の Multi-Factor Authentication (MFA) を有効にし、Azure Security Center ID とアクセス管理の推奨事項に従います。 Azure AD トークンを利用してデータベースにサインインする場合、データベースのサインインに対して多要素認証を要求することができます。
 
 Azure で MFA を有効にする方法: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
@@ -378,7 +378,7 @@ Azure で MFA を有効にする方法: https://docs.microsoft.com/azure/active-
 
 ### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7: 管理者アカウントからの疑わしいアクティビティを記録してアラートを生成する
 
-**ガイダンス**: Azure Database for MySQL 用の Advanced Threat Protection を有効にして、疑わしいアクティビティに関するアラートを生成します。
+**ガイダンス**:Azure Database for MySQL 用の Advanced Threat Protection を有効にして、疑わしいアクティビティに関するアラートを生成します。
 
 さらに、Azure AD Privileged Identity Management (PIM) を使用して、環境内で疑わしいまたは安全でないアクティビティが発生したときにログとアラートを生成できます。
 
@@ -446,7 +446,7 @@ Azure Activity Logs を Azure Monitor に統合する方法: https://docs.micros
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: アカウント ログイン動作の偏差に関するアラートを生成する
 
-**ガイダンス**: Azure Database for MySQL 用の Advanced Threat Protection を有効にして、疑わしいアクティビティに関するアラートを生成します。
+**ガイダンス**:Azure Database for MySQL 用の Advanced Threat Protection を有効にして、疑わしいアクティビティに関するアラートを生成します。
 
 検出された疑わしいアクションに対する自動応答を構成するには、Azure Active Directory の Identity Protection とリスク検出機能を使用します。 Azure Sentinel で自動応答を有効にして、組織のセキュリティ対応を実装することができます。
 
@@ -547,7 +547,7 @@ Azure での顧客データの保護の概要: https://docs.microsoft.com/azure/
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Azure のロールベースのアクセス制御 (RBAC) を使用して、Azure Database for MySQL コントロール プレーン (Azure portal など) へのアクセスを制御します。 (データベース内の) データ プレーン アクセスの場合は、SQL クエリを使用してユーザーを作成し、ユーザーのアクセス許可を構成します。 RBAC は、データベース内のユーザーのアクセス許可には影響しません。
+**ガイダンス**: Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure Database for MySQL コントロール プレーン (Azure portal など) へのアクセスを制御します。 (データベース自体内の) データ プレーン アクセスの場合は、SQL クエリを使用してユーザーを作成し、ユーザーのアクセス許可を構成します。 RBAC は、データベース内のユーザーのアクセス許可には影響しません。
 
 Azure で RBAC を構成する方法: https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
@@ -635,7 +635,7 @@ Azure Security Center の Azure PaaS サービスを対象とする機能: https
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5:リスク評価プロセスを使用して、検出された脆弱性の修復に優先順位を付ける
 
-**ガイダンス**: Microsoft では、Azure Database for MySQL をサポートする基になるシステムで脆弱性の管理を行います。
+**ガイダンス**:Microsoft では、Azure Database for MySQL をサポートする基になるシステムで脆弱性の管理を行います。
 
 
 **Azure Security Center の監視**: 適用なし
@@ -672,7 +672,7 @@ Azure RBAC の概要: https://docs.microsoft.com/azure/role-based-access-control
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3:承認されていない Azure リソースを削除する
 
-**ガイダンス**: 必要に応じて、タグ付け、管理グループ、および個別のサブスクリプションを使用して、Azure Database for MySQL インスタンスと関連リソースの整理と追跡を行います。 定期的にインベントリを調整し、承認されていないリソースがサブスクリプションから適切なタイミングで削除されるようにします。
+**ガイダンス**:必要に応じて、タグ付け、管理グループ、および個別のサブスクリプションを使用して、Azure Database for MySQL インスタンスと関連リソースの整理と追跡を行います。 定期的にインベントリを調整し、承認されていないリソースがサブスクリプションから適切なタイミングで削除されるようにします。
 
 追加の Azure サブスクリプションを作成する方法: https://docs.microsoft.com/azure/billing/billing-create-subscription
 
@@ -686,7 +686,7 @@ Azure RBAC の概要: https://docs.microsoft.com/azure/role-based-access-control
 
 ### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4:承認された Azure リソースとソフトウェア タイトルのインベントリを管理する
 
-**ガイダンス**: 適用できません。この推奨事項は、コンピューティング リソースと Azure 全体を対象にしています。
+**ガイダンス**:適用できません。この推奨事項は、コンピューティング リソースと Azure 全体を対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -720,7 +720,7 @@ Azure Graph を使用してクエリを作成する方法: https://docs.microsof
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7:承認されていない Azure リソースとソフトウェア アプリケーションを削除する
 
-**ガイダンス**: 適用できません。この推奨事項は、コンピューティング リソースと Azure 全体を対象にしています。
+**ガイダンス**:適用できません。この推奨事項は、コンピューティング リソースと Azure 全体を対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -812,7 +812,7 @@ Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3:セキュリティで保護された Azure リソースの構成を維持する
 
-**ガイダンス**: Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
+**ガイダンス**:Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
 
 Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -832,7 +832,7 @@ Azure Policy の効果の概要: https://docs.microsoft.com/azure/governance/pol
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5:Azure リソースの構成を安全に格納する
 
-**ガイダンス**: Azure Database for MySQL インスタンスと関連リソースにカスタム Azure Policy 定義を使用する場合は、Azure Repos を使ってコードを安全に格納および管理します。
+**ガイダンス**:Azure Database for MySQL インスタンスと関連リソースにカスタム Azure Policy 定義を使用する場合は、Azure Repos を使ってコードを安全に格納および管理します。
 
 Azure DevOps でコードを格納する方法: https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
@@ -902,7 +902,7 @@ Azure マネージド ID と統合する方法: https://docs.microsoft.com/azure
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12:ID を安全かつ自動的に管理する
 
-**ガイダンス**: Azure Database for MySQL インスタンスでは、データベースにアクセスするための Azure Active Directory 認証 (プレビュー段階) がサポートされています。  Azure Database for MySQL インスタンスを作成するときに、管理者ユーザーの資格情報を指定します。 この管理者は、追加のデータベース ユーザーを作成するために使用できます。  
+**ガイダンス**:Azure Database for MySQL インスタンスでは、データベースにアクセスするための Azure Active Directory 認証がサポートされています。  Azure Database for MySQL インスタンスを作成するときに、管理者ユーザーの資格情報を指定します。 この管理者は、追加のデータベース ユーザーを作成するために使用できます。  
 
 Azure Database for MySQL インスタンスへのアクセスに使用される Azure App Service で実行されている Azure Virtual Machines または Web アプリケーションの場合は、Azure Key Vault と組み合わせてマネージド サービス ID を使用して、Azure Database for MySQL インスタンスの資格情報を格納および取得します。 Key Vault の論理的な削除を確実に有効にします。
 
@@ -966,7 +966,7 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Database for M
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的に自動バックアップを行う
 
-**ガイダンス**: Azure Database for MySQL では、データ ファイルとトランザクション ログのバックアップが作成されます。 サポートされている最大ストレージ サイズに応じて、完全バックアップと差分バックアップ (最大 4 TB のストレージ サーバー) またはスナップショット バックアップ (最大 16 TB のストレージ サーバー) を使用します。 これらのバックアップを使用すると、サーバーを、バックアップの構成済みリテンション期間内の任意の時点に復元できます。 バックアップの既定のリテンション期間は 7 日です。 これは、必要に応じて、最大 35 日に設定できます。 すべてのバックアップが、AES 256 ビット暗号化を使用して暗号化されます。
+**ガイダンス**:Azure Database for MySQL では、データ ファイルとトランザクション ログのバックアップが作成されます。 サポートされている最大ストレージ サイズに応じて、完全バックアップと差分バックアップ (最大 4 TB のストレージ サーバー) またはスナップショット バックアップ (最大 16 TB のストレージ サーバー) を使用します。 これらのバックアップを使用すると、サーバーを、バックアップの構成済みリテンション期間内の任意の時点に復元できます。 バックアップの既定のリテンション期間は 7 日です。 これは、必要に応じて、最大 35 日に設定できます。 すべてのバックアップが、AES 256 ビット暗号化を使用して暗号化されます。
 
 Azure Database for MySQL のバックアップを理解する: https://docs.microsoft.com/azure/mysql/concepts-backup
 
@@ -1057,7 +1057,7 @@ NIST の出版物を参照してください。IT の計画と機能に関する
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4:セキュリティ インシデントの連絡先の詳細を指定し、セキュリティ インシデントのアラート通知を構成します
 
-**ガイダンス**: セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。  事後にインシデントをレビューして、問題が解決されていることを確認します。
+**ガイダンス**:セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。  事後にインシデントをレビューして、問題が解決されていることを確認します。
 
 Azure Security Center のセキュリティ連絡先を設定する方法: https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 

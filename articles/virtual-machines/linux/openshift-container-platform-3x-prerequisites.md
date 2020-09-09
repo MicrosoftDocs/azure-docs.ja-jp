@@ -5,16 +5,16 @@ author: haroldwongms
 manager: mdotson
 ms.service: virtual-machines-linux
 ms.subservice: workloads
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: 26b190515819378309c2b0705efdbc349ecccbe2
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 68bd748e890659e4b79d76e4ccab038f251a937a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81759511"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87368185"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Azure に OpenShift Container Platform 3.11 をデプロイする一般的な前提条件 | Microsoft Docs
 
@@ -84,7 +84,7 @@ ssh-keygen -f ~/.ssh/openshift_rsa -t rsa -N ''
 > [!NOTE]
 > SSH キー ペアにパスワード/パスフレーズを指定することはできません。
 
-Windows の SSH キーの詳細については、「[Azure 上の Windows で SSH キーを使用する方法](/azure/virtual-machines/linux/ssh-from-windows)」を参照してください。 秘密キーは必ず OpenSSH 形式でエクスポートしてください。
+Windows の SSH キーの詳細については、「[Azure 上の Windows で SSH キーを使用する方法](./ssh-from-windows.md)」を参照してください。 秘密キーは必ず OpenSSH 形式でエクスポートしてください。
 
 ## <a name="store-the-ssh-private-key-in-azure-key-vault"></a>Azure Key Vault に SSH 秘密キーを格納する
 OpenShift のデプロイでは、OpenShift マスターに安全にアクセスするために作成した SSH キーが使用されます。 SSH キーを安全に取得するようにデプロイを有効にするには、次のコマンドを使用してキーを Key Vault に格納します。
@@ -134,7 +134,7 @@ az ad sp create-for-rbac --name openshiftsp \
  > [!WARNING] 
  > このパスワードは再度取得できないため、セキュリティで保護されたパスワードを必ず書き留めておいてください。
 
-サービス プリンシパルについて詳しくは、「[Azure CLI で Azure サービス プリンシパルを作成する](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)」をご覧ください。
+サービス プリンシパルについて詳しくは、「[Azure CLI で Azure サービス プリンシパルを作成する](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)」をご覧ください。
 
 ## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>Resource Manager テンプレートにのみ適用される前提条件
 

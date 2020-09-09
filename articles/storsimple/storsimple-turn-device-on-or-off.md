@@ -4,16 +4,16 @@ description: 新しい StorSimple デバイスの電源を入れる方法、シ�
 author: alkohli
 ms.assetid: 8e9c6e6c-965c-4a81-81bd-e1c523a14c82
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1319583569a8abc619ad902a87ee551b476f88eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c8f4269235c494ff9dd8d1bf8e0ef940562f8927
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228131"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515268"
 ---
 # <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスのオンとオフ
 
@@ -86,12 +86,12 @@ EBOD エンクロージャを備えていない主エンクロージャのみの
 * [主エンクロージャのみを備えるデバイス](#8100)
 * [EBOD エンクロージャを備えるデバイス](#8600)
 
-### <a name="device-with-primary-enclosure-only-a-name8100"></a>主エンクロージャのみを備えるデバイス <a name="8100">
+### <a name="device-with-primary-enclosure-only"></a>主エンクロージャのみを備えるデバイス <a name="8100"></a>
 1 つの電源で電力喪失が発生しても通常の操作を継続することができます。 ただし、デバイスの高可用性を確保するため、できるだけ早く電源を復旧してください。
 
 両方の電源で停止や瞬停が発生すると、システムは所定の制御手順でシャットダウンされます。 電源が復旧すると、システムは自動的に起動します。
 
-### <a name="device-with-ebod-enclosure-a-name8600"></a>EBOD エンクロージャを備えるデバイス <a name="8600">
+### <a name="device-with-ebod-enclosure"></a>EBOD エンクロージャを備えるデバイス <a name="8600"></a>
 #### <a name="power-loss-on-one-power-supply"></a>1 つの電源で電力喪失が発生
 主エンクロージャまたは EBOD エンクロージャの 1 つの電源で電力喪失が発生しても通常の操作を継続することができます。 ただし、デバイスの高可用性を確保するため、できるだけ早く電源を復旧してください。
 
@@ -140,7 +140,7 @@ StorSimple デバイスを移動する場合や廃棄する場合、不具合の
 * [主エンクロージャを備えるデバイス](#8100a)
 * [EBOD エンクロージャを備えるデバイス](#8600a)
 
-### <a name="device-with-primary-enclosure-a-name8100a"></a>主エンクロージャを備えるデバイス <a name="8100a">
+### <a name="device-with-primary-enclosure"></a>主エンクロージャを備えるデバイス <a name="8100a"></a>
 所定の制御手順でデバイスをシャットダウンするには、Azure Portal または StorSimple 用 Windows PowerShell を使用します。 
 
 > [!IMPORTANT]
@@ -152,7 +152,7 @@ StorSimple デバイスを移動する場合や廃棄する場合、不具合の
 
 StorSimple 用 Windows PowerShell または Azure Portal にアクセスしたら、「[StorSimple デバイスをシャットダウンする](storsimple-8000-manage-device-controller.md#shut-down-a-storsimple-device)」の手順に従ってください。 
 
-### <a name="device-with-ebod-enclosure-a-name8600a"></a>EBOD エンクロージャを備えるデバイス <a name="8600a">
+### <a name="device-with-ebod-enclosure"></a>EBOD エンクロージャを備えるデバイス <a name="8600a"></a>
 > [!IMPORTANT]
 > プライマリ エンクロージャと EBOD エンクロージャをシャットダウンする前に、すべてのデバイス コンポーネントが正常であることを確認してください。 Azure Portal で、 **[デバイス]**  >  **[監視]**  >  **[ハードウェアの正常性]** に移動し、すべてのコンポーネントが正常であることを確認します。
 

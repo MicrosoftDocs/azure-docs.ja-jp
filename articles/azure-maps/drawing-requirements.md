@@ -3,17 +3,17 @@ title: Azure Maps Creator の Drawing パッケージの要件
 description: Azure Maps Conversion サービスを使用して施設のデザイン ファイルをマップ データに変換するための Drawing パッケージの要件について説明します
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 5/18/2020
+ms.date: 6/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: c0c81f529dfc959916ff7c102b2b903a808b9672
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: af7238ca4229bac678061c742f13953299a96ba4
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681910"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290023"
 ---
 # <a name="drawing-package-requirements"></a>Drawing パッケージの要件
 
@@ -34,7 +34,7 @@ ms.locfileid: "83681910"
 | レイヤー | AutoCAD DWG レイヤー。|
 | Level | 設定した高度にある建物の領域。 たとえば、ビルのフロアなどです。 |
 | Xref  |外部参照としてプライマリ図面にアタッチされた AutoCAD DWG ファイル形式 (.dwg) のファイル。  |
-| 機能 | ジオメトリに追加のメタデータ情報を組み合わせたオブジェクト。 |
+| 特徴量 | ジオメトリに追加のメタデータ情報を組み合わせたオブジェクト。 |
 | 地物クラス | 地物の一般的なブループリント。 たとえば、ユニットは地物クラスであり、オフィスは地物です。 |
 
 ## <a name="drawing-package-structure"></a>Drawing パッケージの構造
@@ -169,12 +169,13 @@ Zonelabel レイヤーの例は、[サンプル Drawing パッケージ](https:/
 
 zip フォルダーには、ディレクトリのルート レベルにマニフェスト ファイルが格納されている必要があります。また、ファイル名は **manifest.json** にする必要があります。 これには、[Azure Maps Conversion サービス](https://docs.microsoft.com/rest/api/maps/conversion)でコンテンツを解析できる DWG ファイルについて記述されています。 マニフェストに指定されたファイルのみが取り込まれます。 zip フォルダー内にあっても、マニフェストに適切に登録されていないファイルは無視されます。
 
-マニフェスト ファイルの **buildingLevels** オブジェクト内のファイル パスは、zip フォルダーのルートからの相対パスにする必要があります。 DWG ファイル名は、施設レベルの名前と正確に一致している必要があります。 たとえば、"Basement" レベルの DWG ファイルは "Basement.dwg" にします。 level 2 の DWG ファイルは "level_2.dwg" です。 レベル名にスペースが含まれている場合は、アンダースコアを使用します。 
+マニフェスト ファイルの **buildingLevels** オブジェクト内のファイル パスは、zip フォルダーのルートからの相対パスにする必要があります。 DWG ファイル名は、施設レベルの名前と正確に一致している必要があります。 たとえば、"Basement" レベルの DWG ファイルは "Basement.dwg" にします。 level 2 の DWG ファイルは "level_2.dwg" です。 レベル名にスペースが含まれている場合は、アンダースコアを使用します。
 
 マニフェスト オブジェクトの使用には要件がありますが、すべてのオブジェクトが必要なわけではありません。 [Azure Maps Conversion サービス](https://docs.microsoft.com/rest/api/maps/conversion) バージョン 1.1 の必須オブジェクトと省略可能なオブジェクトを次に示します。
 
 | Object | 必須 | 説明 |
 | :----- | :------- | :------- |
+| version | true |マニフェスト スキーマのバージョン。 現時点では、バージョン 1.1 のみがサポートされています。|
 | directoryInfo | true | 施設の地理情報と連絡先情報の概要を示します。 また、居住者の地理情報と連絡先情報の概要を示すためにも使用できます。 |
 | buildingLevels | true | 建物のレベルと、レベルの設計を含むファイルを指定します。 |
 | georeference | true | 施設の図面の数値的な地理情報が含まれています。 |
@@ -188,14 +189,14 @@ zip フォルダーには、ディレクトリのルート レベルにマニフ
 
 | プロパティ  | type | 必須 | 説明 |
 |-----------|------|----------|-------------|
-| name      | string または int | true   |  建物の名前。 |
-| streetAddress|    string または int |    false    | 建物の住所。 |
-|unit     | string または int    |  false    |  建物内のユニット。 |
-| locality |    string または int |    false |    エリア、近隣、または地域の名前。 たとえば、"オーバーレイク" や "中心地区" などです。 locality は郵送先住所の一部ではありません。 |
+| name      | string | true   |  建物の名前。 |
+| streetAddress|    string |    false    | 建物の住所。 |
+|unit     | string    |  false    |  建物内のユニット。 |
+| locality |    string |    false |    エリア、近隣、または地域の名前。 たとえば、"オーバーレイク" や "中心地区" などです。 locality は郵送先住所の一部ではありません。 |
 | adminDivisions |    文字列の JSON 配列 |    false     | 住所表記 (国、州、市区町村) または (国、都道府県、市区町村、町) を含む配列。 ISO 3166 の国番号と ISO 3166-2 の州または領域番号を使用します。 |
-| postalCode |    string または int    | false    | 郵便物の仕分用番号。 |
+| postalCode |    string    | false    | 郵便物の仕分用番号。 |
 | hoursOfOperation |    string |     false | [OSM の Opening Hours](https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification) 形式に準拠しています。 |
-| phone    | string または int |    false |    建物に関連付けられている電話番号。 国番号を含める必要があります。 |
+| phone    | string |    false |    建物に関連付けられている電話番号。 国番号を含める必要があります。 |
 | Web サイト (website)    | string |    false    | 建物に関連付けられている Web サイト。 先頭に http または https を付ける必要があります。 |
 | nonPublic |    [bool]    | false | 建物が一般公開されているかどうかを指定するフラグ。 |
 | anchorLatitude | numeric |    false | 施設アンカー (画鋲) の緯度。 |
@@ -209,11 +210,11 @@ zip フォルダーには、ディレクトリのルート レベルにマニフ
 
 | プロパティ  | Type | 必須 | 説明 |
 |-----------|------|----------|-------------|
-|levelName    |string または int    |true |    わかりやすいレベル名。 次に例を示します。フロア 1、ロビー、ブルー パーキング、地下など。|
+|levelName    |string    |true |    わかりやすいレベル名。 次に例を示します。フロア 1、ロビー、ブルー パーキング、地下など。|
 |ordinal | 整数 (integer) |    true | ordinal は、レベルの垂直順序を決定するために使用されます。 すべての施設には、ordinal 0 のレベルが必要です。 |
-|heightAboveFacilityAnchor | numeric |    false |    1 階のレベルの高さ (メートル単位)。 |
+|heightAboveFacilityAnchor | numeric | false |    アンカーより上のレベルの高さ (メートル単位)。 |
 | verticalExtent | numeric | false | レベルの床から天井までの高さ (厚さ) (メートル単位)。 |
-|filename |    string または int |    true |    建物レベルの CAD 図面のファイル システム パス。 建物の zip ファイルのルートを基準とした相対パスにする必要があります。 |
+|filename |    string |    true |    建物レベルの CAD 図面のファイル システム パス。 建物の zip ファイルのルートを基準とした相対パスにする必要があります。 |
 
 ### <a name="georeference"></a>georeference
 
@@ -227,13 +228,13 @@ zip フォルダーには、ディレクトリのルート レベルにマニフ
 
 | プロパティ  | Type | 必須 | 説明 |
 |-----------|------|----------|-------------|
-|exterior    |string または int の配列|    true|    外装の建物プロファイルを定義するレイヤーの名前。|
-|unit|    string または int の配列|    true|    ユニットを定義するレイヤーの名前。|
-|wall|    string または int の配列    |false|    壁を定義するレイヤーの名前。|
-|door    |string または int の配列|    false   | ドアを定義するレイヤーの名前。|
-|unitLabel    |string または int の配列|    false    |ユニットの名前を定義するレイヤーの名前。|
-|ゾーン | string または int の配列    | false    | ゾーンを定義するレイヤーの名前。|
-|zoneLabel | string または int の配列 |     false |    ゾーンの名前を定義するレイヤーの名前。|
+|exterior    |文字列の配列|    true|    外装の建物プロファイルを定義するレイヤーの名前。|
+|unit|    文字列の配列|    true|    ユニットを定義するレイヤーの名前。|
+|wall|    文字列の配列    |false|    壁を定義するレイヤーの名前。|
+|door    |文字列の配列|    false   | ドアを定義するレイヤーの名前。|
+|unitLabel    |文字列の配列|    false    |ユニットの名前を定義するレイヤーの名前。|
+|ゾーン | 文字列の配列    | false    | ゾーンを定義するレイヤーの名前。|
+|zoneLabel | 文字列の配列 |     false |    ゾーンの名前を定義するレイヤーの名前。|
 
 ### <a name="unitproperties"></a>unitProperties
 
@@ -241,19 +242,19 @@ zip フォルダーには、ディレクトリのルート レベルにマニフ
 
 | プロパティ  | Type | 必須 | 説明 |
 |-----------|------|----------|-------------|
-|unitName    |string または int    |true    |この `unitProperty` レコードに関連付けるユニットの名前。 このレコードは、`unitName` と一致するラベルが `unitLabel` レイヤーで見つかった場合にのみ有効です。 |
-|categoryName|    string または int|    false    |カテゴリ名。 カテゴリの完全な一覧については、[categories](https://aka.ms/pa-indoor-spacecategories) を参照してください。 |
+|unitName    |string    |true    |この `unitProperty` レコードに関連付けるユニットの名前。 このレコードは、`unitName` と一致するラベルが `unitLabel` レイヤーで見つかった場合にのみ有効です。 |
+|categoryName|    string|    false    |カテゴリ名。 カテゴリの完全な一覧については、[categories](https://aka.ms/pa-indoor-spacecategories) を参照してください。 |
 |navigableBy| 文字列の配列 |    false    |ユニットを横断することができる移動エージェントの種類を示します。 たとえば、"歩道" などです。 このプロパティを使用して、経路探索機能に通知します。  使用できる値は、`pedestrian`、`wheelchair`、`machine`、`bicycle`、`automobile`、`hiredAuto`、`bus`、`railcar`、`emergency`、`ferry`、`boat`、および `disallowed` です。|
 |routeThroughBehavior|    string|    false    |ユニットのルート経由動作。 使用できる値は、`disallowed`、`allowed`、および `preferred` です。 既定値は `allowed` です。|
 |occupants    |directoryInfo オブジェクトの配列 |false    |ユニットの occupants の一覧。 |
-|nameAlt|    string または int|    false|    ユニットの代替名。 |
-|nameSubtitle|    string または int    |false|    ユニットのサブタイトル。 |
-|addressRoomNumber|    string または int|    false|    ユニットの部屋、ユニット、アパートメント、またはスイートの番号。|
-|verticalPenetrationCategory|    string または int|    false| このプロパティが定義されている場合、結果の地物はユニットではなく垂直貫入 (VRT) になります。 VRT を使用すると、その上のレベルまたは下のレベルにある他の VRT 地物に移動できます。 垂直貫入は[カテゴリ](https://aka.ms/pa-indoor-spacecategories)名です。 このプロパティが定義されている場合、categoryName プロパティは verticalPenetrationCategory でオーバーライドされます。 |
+|nameAlt|    string|    false|    ユニットの代替名。 |
+|nameSubtitle|    string    |false|    ユニットのサブタイトル。 |
+|addressRoomNumber|    string|    false|    ユニットの部屋、ユニット、アパートメント、またはスイートの番号。|
+|verticalPenetrationCategory|    string|    false| このプロパティが定義されている場合、結果の地物はユニットではなく垂直貫入 (VRT) になります。 VRT を使用すると、その上のレベルまたは下のレベルにある他の VRT 地物に移動できます。 垂直貫入は[カテゴリ](https://aka.ms/pa-indoor-spacecategories)名です。 このプロパティが定義されている場合、categoryName プロパティは verticalPenetrationCategory でオーバーライドされます。 |
 |verticalPenetrationDirection|    string|    false    |`verticalPenetrationCategory` が定義されている場合は、必要に応じて有効な移動方向を定義します。 使用できる値は、`lowToHigh`、`highToLow`、`both`、および `closed` です。 既定値は `both` です。|
 | nonPublic | [bool] | false | ユニットが一般公開されているかどうかを示します。 |
 | isRoutable | [bool] | false | `false` に設定されている場合は、ユニットを移動したり、経由したりすることはできません。 既定値は `true` です。 |
-| isOpenArea | [bool] | false | ユニットに開口部をアタッチすることなく、移動エージェントはユニットに入ることができます。 既定では、ユニットに開口部がない限り、この値は `true` に設定されます。 |
+| isOpenArea | [bool] | false | ユニットに開口部をアタッチすることなく、移動エージェントはユニットに入ることができます。 既定では、この値は開口部がないユニットでは `true` に設定され、開口部があるユニットでは `false` に設定されています。  開口部がないユニットで `isOpenArea` を手動で `false` に設定すると、警告が出されます。 これは、結果として得られるユニットに移動エージェントが到達できないためです。|
 
 ### <a name="the-zoneproperties-object"></a>zoneProperties オブジェクト
 
@@ -261,10 +262,11 @@ zip フォルダーには、ディレクトリのルート レベルにマニフ
 
 | プロパティ  | Type | 必須 | 説明 |
 |-----------|------|----------|-------------|
-|zoneName        |string または int    |true    |`zoneProperty` レコードに関連付けるゾーンの名前。 このレコードは、`zoneName` と一致するラベルがゾーンの `zoneLabel` レイヤーで見つかった場合にのみ有効です。  |
-|categoryName|    string または int|    false    |カテゴリ名。 カテゴリの完全な一覧については、[categories](https://aka.ms/pa-indoor-spacecategories) を参照してください。 |
-|zoneNameAlt|    string または int|    false    |ゾーンの代替名。  |
-|zoneNameSubtitle|    string または int |    false    |ゾーンのサブタイトル。 |
+|zoneName        |string    |true    |`zoneProperty` レコードに関連付けるゾーンの名前。 このレコードは、`zoneName` と一致するラベルがゾーンの `zoneLabel` レイヤーで見つかった場合にのみ有効です。  |
+|categoryName|    string|    false    |カテゴリ名。 カテゴリの完全な一覧については、[categories](https://aka.ms/pa-indoor-spacecategories) を参照してください。 |
+|zoneNameAlt|    string|    false    |ゾーンの代替名。  |
+|zoneNameSubtitle|    string |    false    |ゾーンのサブタイトル。 |
+|zoneSetId|    string |    false    | 複数のゾーン間の関係を確立して、それらがグループとしてクエリまたは選択できるようにするためのセット ID。 たとえば、複数のレベルにまたがるゾーンです。 |
 
 ### <a name="sample-drawing-package-manifest"></a>サンプル Drawing パッケージ マニフェスト
 
@@ -277,7 +279,7 @@ zip フォルダーには、ディレクトリのルート レベルにマニフ
     "version": "1.1", 
     "directoryInfo": { 
         "name": "Contoso Building", 
-        "streetAddresss": "Contoso Way", 
+        "streetAddress": "Contoso Way", 
         "unit": "1", 
         "locality": "Contoso eastside", 
         "postalCode": "98052", 
@@ -357,7 +359,6 @@ zip フォルダーには、ディレクトリのルート レベルにマニフ
             "nameAlt": "Basement01", 
             "nameSubtitle": "01", 
             "addressRoomNumber": "B01", 
-            "nonWheelchairAccessible": false, 
             "nonPublic": true, 
             "isRoutable": true, 
             "isOpenArea": true 

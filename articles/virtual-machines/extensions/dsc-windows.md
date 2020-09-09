@@ -14,11 +14,11 @@ ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
 ms.openlocfilehash: 592c731d1851ac36cf9b57864750df0603b6c3fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227927"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84689488"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC 拡張機能
 

@@ -6,15 +6,17 @@ ms.topic: quickstart
 ms.custom:
 - iot-send-telemetry-cli
 - iot-p0-scenario
+- 'Role: Cloud Development'
+- devx-track-azurecli
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: b8a057890d20fc233eae6f1636d83e73855305b7
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: e2b8eecc629e9da75ea15815ee38844c48abb019
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83727048"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499910"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>クイック スタート:デバイスから IoT ハブに利用統計情報を送信して Azure CLI で監視する
 

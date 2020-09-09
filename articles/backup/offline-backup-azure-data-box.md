@@ -3,16 +3,16 @@ title: Azure Data Box を使用したオフライン バックアップ
 description: Azure Data Box を使用して、MARS エージェントから Recovery Services コンテナーに、大規模な初期バックアップ データをオフラインでシード処理する方法について説明します。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: e45b8e26d332019b03ac41c3993e311480494040
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 6ad97ee60c3c7debea72357cf7fc8d483a3c1d46
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160957"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761561"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Azure Data Box を使用した Azure Backup のオフライン バックアップ
 
-[Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) を使うと、Microsoft Azure Recovery Services (MARS) の大規模な初期バックアップをオフラインで (ネットワークを使用せずに) Recovery Services コンテナーにシードできます。 このプロセスにより、待機時間の長いネットワークを介して大量のバックアップ データをオンラインで移動する場合に消費される時間とネットワーク帯域幅の両方を節約することができます。 この拡張機能は、現在プレビュー段階です。 Azure Data Box に基づくオフライン バックアップには、[Azure Import/Export サービスに基づくオフライン バックアップ](https://docs.microsoft.com/azure/backup/backup-azure-backup-import-export)に比べて、次の 2 つの利点があります。
+[Azure Data Box](../databox/data-box-overview.md) を使うと、Microsoft Azure Recovery Services (MARS) の大規模な初期バックアップをオフラインで (ネットワークを使用せずに) Recovery Services コンテナーにシードできます。 このプロセスにより、待機時間の長いネットワークを介して大量のバックアップ データをオンラインで移動する場合に消費される時間とネットワーク帯域幅の両方を節約することができます。 この拡張機能は、現在プレビュー段階です。 Azure Data Box に基づくオフライン バックアップには、[Azure Import/Export サービスに基づくオフライン バックアップ](./backup-azure-backup-import-export.md)に比べて、次の 2 つの利点があります。
 
 - Azure と互換性のある独自のディスクとコネクタを用意する必要がありません。 Azure Data Box では、選択された [Data Box SKU](https://azure.microsoft.com/services/databox/data/) に関連するディスクを発送します。
 - Azure Backup (MARS エージェント) は、Azure Data Box のサポートされている SKU に直接バックアップ データを書き込むことができます。 この機能を使うと、初期バックアップ データのステージング場所をプロビジョニングする必要がなくなります。 また、そのデータをフォーマットしてディスクにコピーするためのユーティリティも必要ありません。
@@ -47,8 +47,8 @@ Azure Data Box を使用して MARS エージェントからデータをシー�
 
 | サーバー 1 台あたりのバックアップ データ サイズ (MARS による圧縮後)* | サポートされている Azure Data Box SKU                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 7\.2 TB 以下                                                    | [Azure Data Box ディスク](https://docs.microsoft.com/azure/databox/data-box-disk-overview) |
-| 7\.2 TB 超かつ 80 TB 以下**                                      | [Azure Data Box (100 TB)](https://docs.microsoft.com/azure/databox/data-box-overview) |
+| 7\.2 TB 以下                                                    | [Azure Data Box ディスク](../databox/data-box-disk-overview.md) |
+| 7\.2 TB 超かつ 80 TB 以下**                                      | [Azure Data Box (100 TB)](../databox/data-box-overview.md) |
 
 \* 一般的な圧縮率は 10% から 20% の間になります <br>
 ** 1 台の MARS サーバーの初期バックアップ データが 80 TB を超えると予想される場合は、[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) にご連絡ください。
@@ -113,7 +113,7 @@ Azure PowerShell は、msi ファイルを使用してインストールされ�
 
 ### <a name="order-and-receive-the-data-box-device"></a>Data Box デバイスを注文して受け取る
 
-MARS と Azure Data Box を使用したオフライン バックアップ プロセスでは、MARS エージェントを使用してオフライン バックアップをトリガーする前に、Data Box デバイスが配送完了状態になっている必要があります。 要件に最も適した SKU を注文するには、「[バックアップ データ サイズとサポートされる Data Box SKU](#backup-data-size-and-supported-data-box-skus)」を参照してください。 「[チュートリアル: Azure Data Box Disk を注文する](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-ordered)」の手順に従って Data Box デバイスを注文して受け取ります。
+MARS と Azure Data Box を使用したオフライン バックアップ プロセスでは、MARS エージェントを使用してオフライン バックアップをトリガーする前に、Data Box デバイスが配送完了状態になっている必要があります。 要件に最も適した SKU を注文するには、「[バックアップ データ サイズとサポートされる Data Box SKU](#backup-data-size-and-supported-data-box-skus)」を参照してください。 「[チュートリアル: Azure Data Box Disk を注文する](../databox/data-box-disk-deploy-ordered.md)」の手順に従って Data Box デバイスを注文して受け取ります。
 
 > [!IMPORTANT]
 > **[アカウントの種類]** として *[BlobStorage]* を選択しないでください。 MARS エージェントには、ページ BLOB をサポートするアカウントが必要ですが、これは、 *[BlobStorage]* が選択されているとサポートされません。 Azure Data Box ジョブのターゲット ストレージ アカウントを作成するときに **[アカウントの種類]** として **[Storage V2 (general purpose v2)]\(Storage V2 (汎用 V2)\)** を選択します。
@@ -124,7 +124,7 @@ MARS と Azure Data Box を使用したオフライン バックアップ プロ
 
 1. 以前にインストールした MARS エージェントをすべてアンインストールします。
 1. [この Web サイト](https://aka.ms/azurebackup_agent)から最新の MARS エージェントをダウンロードします。
-1. *MARSAgentInstaller.exe* を実行し、[エージェントをインストールしてバックアップの格納先の Recovery Services コンテナーに登録する](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent)手順 "*のみ*" を実行します。
+1. *MARSAgentInstaller.exe* を実行し、[エージェントをインストールしてバックアップの格納先の Recovery Services コンテナーに登録する](./install-mars-agent.md#install-and-register-the-agent)手順 "*のみ*" を実行します。
 
    > [!NOTE]
    > Recovery Services コンテナーは、Azure Data Box ジョブと同じサブスクリプションに含まれている必要があります。
@@ -137,14 +137,14 @@ MARS と Azure Data Box を使用したオフライン バックアップ プロ
 
 ### <a name="set-up-azure-data-box-disks"></a>Azure Data Box ディスクを設定する
 
-1 つ以上の Azure Data Box ディスク (それぞれ最大 8 TB) を注文した場合は、ここに記載されている手順に従って、[Data Box ディスクを開梱、接続、ロック解除](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-set-up)してください。
+1 つ以上の Azure Data Box ディスク (それぞれ最大 8 TB) を注文した場合は、ここに記載されている手順に従って、[Data Box ディスクを開梱、接続、ロック解除](../databox/data-box-disk-deploy-set-up.md)してください。
 
 >[!NOTE]
 >MARS エージェントがあるサーバーに USB ポートがない可能性があります。 そのような状況では、Azure Data Box ディスクを別のサーバーまたはクライアントに接続し、デバイスのルートをネットワーク共有として公開することができます。
 
 ### <a name="set-up-azure-data-box"></a>Azure Data Box を設定する
 
-Azure Data Box インスタンス (最大 100 TB) を注文した場合は、この手順に従って [Data Box インスタンスを設定](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up)します。
+Azure Data Box インスタンス (最大 100 TB) を注文した場合は、この手順に従って [Data Box インスタンスを設定](../databox/data-box-deploy-set-up.md)します。
 
 #### <a name="mount-your-azure-data-box-instance-as-a-local-system"></a>Azure Data Box インスタンスをローカル システムとしてマウントする
 
@@ -153,15 +153,15 @@ MARS エージェントはローカル システム コンテキストで動作�
 NFS プロトコルを使用して Data Box デバイスをローカル システムとしてマウントできることを確認するには:
 
 1. MARS エージェントがインストールされている Windows サーバーで、NFS クライアント機能を有効にします。 代替ソース *WIM:D:\Sources\Install.wim:4* を指定します。
-1. <https://download.sysinternals.com/files/PSTools.zip> から MARS エージェントがインストールされているサーバーに PSExec をダウンロードします。
+1. MARS Agent がインストールされているサーバーに [Sysinternals](/sysinternals/downloads/psexec) ページから PsExec をダウンロードします。
 1. 管理者特権でのコマンド プロンプトを開き、*PSExec.exe* を含むディレクトリを現在のディレクトリとして次のコマンドを実行します。
 
     ```cmd
     psexec.exe  -s  -i  cmd.exe
     ```
 
-   上記のコマンドの結果として開かれるコマンド ウィンドウは、ローカル システム コンテキストにあります。 このコマンド ウィンドウを使用して、Azure ページ BLOB 共有をネットワーク ドライブとして Windows サーバーにマウントする手順を実行します。
-1. 「[Data Box に接続する](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-nfs#connect-to-data-box)」の手順に従って、NFS 経由で MARS エージェントがインストールされたサーバーを Data Box デバイスに接続します。 ローカル システムのコマンド プロンプトで次のコマンドを実行して、Azure ページ BLOB 共有をマウントします。
+   上のコマンドによって開かれるコマンド ウィンドウは、ローカル システム コンテキストにあります。 このコマンド ウィンドウを使用して、Azure ページ BLOB 共有をネットワーク ドライブとして Windows サーバーにマウントする手順を実行します。
+1. 「[Data Box に接続する](../databox/data-box-deploy-copy-data-via-nfs.md#connect-to-data-box)」の手順に従って、NFS 経由で MARS エージェントがインストールされたサーバーを Data Box デバイスに接続します。 ローカル システムのコマンド プロンプトで次のコマンドを実行して、Azure ページ BLOB 共有をマウントします。
 
     ```cmd
     mount -o nolock \\<DeviceIPAddress>\<StorageAccountName_PageBlob X:  
@@ -238,9 +238,9 @@ MARS エージェントによって、選択したデータの Azure Data Box �
 
 このセクションでは、Azure Data Box ディスクへのデータのバックアップが正常に完了した後に実行する手順について説明します。
 
-- こちらの記事の手順に従って、[Azure Data Box Disk を Azure に発送](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-picked-up)します。 Azure Data Box の 100 TB のデバイスを使用した場合は、こちらの手順に従って [Azure Data Box デバイスを Azure に発送](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up)してください。
+- こちらの記事の手順に従って、[Azure Data Box Disk を Azure に発送](../databox/data-box-disk-deploy-picked-up.md)します。 Azure Data Box の 100 TB のデバイスを使用した場合は、こちらの手順に従って [Azure Data Box デバイスを Azure に発送](../databox/data-box-deploy-picked-up.md)してください。
 
-- Azure portal で [Data Box ジョブを監視](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-upload-verify)します。 Azure Data Box ジョブが完了すると、MARS エージェントによって、次回のスケジュールされたバックアップ時に、ストレージ アカウントから Recovery Services コンテナーにデータが自動的に移動されます。 その後、回復ポイントが正常に作成されると、そのバックアップ ジョブは "*完了したジョブ*" としてマークされます。
+- Azure portal で [Data Box ジョブを監視](../databox/data-box-disk-deploy-upload-verify.md)します。 Azure Data Box ジョブが完了すると、MARS エージェントによって、次回のスケジュールされたバックアップ時に、ストレージ アカウントから Recovery Services コンテナーにデータが自動的に移動されます。 その後、回復ポイントが正常に作成されると、そのバックアップ ジョブは "*完了したジョブ*" としてマークされます。
 
     >[!NOTE]
     >MARS エージェントにより、ポリシー作成時にスケジュールされた時刻にバックアップがトリガーされます。 これらのジョブでは、ジョブが完了するまで "Azure Data Box ジョブの完了を待機中" というフラグが立ちます。
@@ -249,7 +249,7 @@ MARS エージェントによって、選択したデータの Azure Data Box �
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-Microsoft Azure Backup (MAB) エージェントによって、テナントに Azure Active Directory (Azure AD) アプリケーションが自動的に作成されます。 このアプリケーションには、オフライン シード処理ポリシーを構成しているときに作成およびアップロードされる認証用の証明書が必要です。 Azure PowerShell を使用して証明書を作成し、Azure AD アプリケーションにアップロードします。
+Microsoft Azure Recovery Services (MARS) エージェントによって、テナントに Azure Active Directory (Azure AD) アプリケーションが自動的に作成されます。 このアプリケーションには、オフライン シード処理ポリシーを構成しているときに作成およびアップロードされる認証用の証明書が必要です。 Azure PowerShell を使用して証明書を作成し、Azure AD アプリケーションにアップロードします。
 
 ### <a name="problem"></a>問題
 
@@ -259,13 +259,13 @@ Microsoft Azure Backup (MAB) エージェントによって、テナントに Az
 
 問題が前述のものと同じかどうかを確認するには、次のいずれかの手順を実行します。
 
-#### <a name="step-1"></a>手順 1
+#### <a name="step-1-of-verification"></a>検証の手順 1
 
 オフライン バックアップを構成したときに、MAB コンソールに次のエラー メッセージが表示されるかどうかを確認します。
 
 ![Unable to create Offline Backup policy for the current Azure account (現在の Azure アカウントのオフライン バックアップ ポリシーを作成できません)](./media/offline-backup-azure-data-box/unable-to-create-policy.png)
 
-#### <a name="step-2"></a>手順 2.
+#### <a name="step-2-of-verification"></a>検証の手順 2
 
 1. インストール パスの **Temp** フォルダーを開きます。 既定の一時フォルダーのパスは、*C:\Program Files\Microsoft Azure Recovery Services Agent\Temp* です。*CBUICurr* ファイルを探し、そのファイルを開きます。
 
@@ -275,11 +275,11 @@ Microsoft Azure Backup (MAB) エージェントによって、テナントに Az
 
 この問題を解決する回避策として、次の手順を実行し、ポリシーの構成を再試行します。
 
-#### <a name="step-1"></a>手順 1
+#### <a name="step-1-of-workaround"></a>回避策の手順 1
 
 インポートまたはエクスポート ジョブが作成されるサブスクリプションで、管理者アクセス権がある別のアカウントを使用して、MAB UI に表示される PowerShell にサインインします。
 
-#### <a name="step-2"></a>手順 2.
+#### <a name="step-2-of-workaround"></a>回避策の手順 2
 
 他のサーバーでオフライン シード処理が構成されておらず、他のサーバーが `AzureOfflineBackup_<Azure User Id>` アプリケーションに依存していない場合は、このアプリケーションを削除します。 **[Azure portal]**  >  **[Azure Active Directory]**  >  **[アプリの登録]** を選択します。
 

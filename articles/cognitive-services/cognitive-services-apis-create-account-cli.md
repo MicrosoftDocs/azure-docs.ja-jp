@@ -7,18 +7,18 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 10/04/2019
+ms.date: 07/27/2020
 ms.author: aahi
-ms.openlocfilehash: 72b00d78d19ed0e963b4dad01b82033c659e1efd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 36e21a131181831c2a87c0c6d2c24c9aa6e0acf7
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218665"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245011"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Azure コマンド ライン インターフェイス (CLI) を使用して Cognitive Services リソースを作成する
 
-このクイックスタートでは、[Azure コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を使用した Azure Cognitive Services の基本操作について説明します。 Cognitive Services は、ご利用の Azure サブスクリプションに作成した Azure [リソース](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)によって表されます。 リソースの作成後、自動的に生成されたキーとエンドポイントを使用して、自分のアプリケーションの認証を行います。 
+このクイックスタートでは、[Azure コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を使用した Azure Cognitive Services の基本操作について説明します。 Cognitive Services は、ご利用の Azure サブスクリプションに作成した Azure [リソース](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)によって表されます。 リソースの作成後、自動的に生成されたキーとエンドポイントを使用して、自分のアプリケーションの認証を行います。
 
 
 このクイックスタートでは、[Azure コマンドライン インターフェイス (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を使用して、Azure Cognitive Services にサインアップし、単一サービスまたはマルチサービスを持つアカウントを作成する方法を学習します。 これらのサービスは Azure [リソース](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)によって表され、Azure Cognitive Services APIs の中の 1 つ以上の API に接続できます。
@@ -27,10 +27,10 @@ ms.locfileid: "79218665"
 
 ## <a name="prerequisites"></a>前提条件
 
-* 有効な Azure サブスクリプション - 無料[アカウントを作成](https://azure.microsoft.com/free/)します。
+* 有効な Azure サブスクリプション - 無料[アカウントを作成](https://azure.microsoft.com/free/cognitive-services)します。
 * [Azure コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 
-## <a name="install-the-azure-cli-and-sign-in"></a>Azure CLI をインストールしてサインインする 
+## <a name="install-the-azure-cli-and-sign-in"></a>Azure CLI をインストールしてサインインする
 
 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) をインストールします。 CLI のローカル インストールにサインインするには、[az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) コマンドを実行します。
 
@@ -39,7 +39,7 @@ az login
 ```
 
 また、緑色の **[使ってみる]** ボタンを使用して、お使いのブラウザーでこれらのコマンドを実行することもできます。
- 
+
 ## <a name="create-a-new-azure-cognitive-services-resource-group"></a>新しい Azure Cognitive Services リソース グループを作成する
 
 Cognitive Services リソースを作成する前に、リソースを格納するための Azure リソース グループを用意する必要があります。 新しいリソースを作成するときに、新しいリソース グループを作成するか、既存のものを使用するかを選択できます。 この記事では、新しいリソース グループを作成する方法を示します。
@@ -60,7 +60,7 @@ az account list-locations \
 
 Azure の場所が決まったら、Azure CLI で [az group create](/cli/azure/group#az-group-create) コマンドを使用して新しいリソース グループを作成します。
 
-次の例では、Azure の場所 `westus2` を、サブスクリプションで使用できる Azure の場所の 1 つに置き換えます。
+次の例では、Azure の場所 `westus2` を、お使いのサブスクリプションで使用できる Azure の場所の 1 つに置き換えます。
 
 ```azurecli-interactive
 az group create \
@@ -151,6 +151,8 @@ az cognitiveservices account create \
     --location westus2 \
     --yes
 ```
+
+[!INCLUDE [Register Azure resource for subscription](./includes/register-resource-subscription.md)]
 
 ## <a name="get-the-keys-for-your-resource"></a>リソースのキーを取得する
 

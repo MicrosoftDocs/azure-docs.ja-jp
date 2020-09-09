@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: b7f0b77ba11a0c9c1670ec240caf45fcf61a934d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0309579a674533ebd056c8493b149cc78beef607
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74896017"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254071"
 ---
-#  <a name="use-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Media Encoder Standard を使用してビットレート ラダーを自動生成する  
+#  <a name="use-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Media Encoder Standard を使用してビットレート ラダーを自動生成する
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]  
 
 ## <a name="overview"></a>概要
 

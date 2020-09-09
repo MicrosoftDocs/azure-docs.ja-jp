@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 93f3820b7cf1db85b9ff4cd514fe22efc75a90d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd8dcbe136558e997ca16a2d9754cbf1c4e7620b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226475"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326105"
 ---
 # <a name="service-connectivity-monitor"></a>サービス接続モニター
 
@@ -57,7 +57,7 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 
     * HTTP/S 要求に応答するサービス (outlook.office365.com、bing.com など) への接続を監視するには、 **[Web]** を選びます。<br>
     * TCP 要求に応答し、HTTP/S 要求には応答しないサービス (SQL サーバー、FTP サーバー、SSH ポートなど) への接続を監視するには、 **[ネットワーク]** を選びます。 
-    * 次に例を示します。BLOB ストレージ アカウントに対する Web テストを作成するには、 **[Web]** を選択し、対象として「*yourstorageaccount*.blob.core.windows.net」と入力します。 同様に、[こちらのリンク](https://docs.microsoft.com/azure/storage/common/storage-account-overview#storage-account-endpoints)を使用して、他のテーブル ストレージ、キュー ストレージ、および Azure Files に対するテストを作成できます。
+    * 次に例を示します。BLOB ストレージ アカウントに対する Web テストを作成するには、 **[Web]** を選択し、対象として「*yourstorageaccount*.blob.core.windows.net」と入力します。 同様に、[こちらのリンク](../../storage/common/storage-account-overview.md#storage-account-endpoints)を使用して、他のテーブル ストレージ、キュー ストレージ、および Azure Files に対するテストを作成できます。
 4. ネットワーク待機時間、パケット損失、トポロジ検出などのネットワーク測定を実行したくない場合は、 **[ネットワークの測定を実行します]** チェック ボックスをオフにします。 この機能のメリットを最大限に得るには、オンにままにしておきます。 
 5. **[ターゲット]** に、ネットワーク接続を監視する URL/FQDN/IP アドレスを入力します。
 6. **[ポート番号]** に、ターゲット サービスのポート番号を入力します。 
@@ -133,4 +133,5 @@ Network Performance Monitor のダッシュボード ビューに移動します
 | MS Teams | gov.teams.microsoft.us | 
 
 ## <a name="next-steps"></a>次のステップ
-詳細なネットワーク パフォーマンスのデータ レコードを表示するために、[ログを検索](../../azure-monitor/log-query/log-query-overview.md)します。
+詳細なネットワーク パフォーマンスのデータ レコードを表示するために、[ログを検索](../log-query/log-query-overview.md)します。
+

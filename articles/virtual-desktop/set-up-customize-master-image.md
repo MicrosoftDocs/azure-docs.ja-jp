@@ -1,19 +1,17 @@
 ---
 title: マスター VHD イメージを準備してカスタマイズする - Azure
 description: Windows Virtual Desktop のマスター イメージを準備、カスタマイズし、Azure にアップロードする方法。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fc6eb22f81279003a5355993db231ffec8e31b7d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 2a10a32a98a240f740f48f7b25e6fa6ac3f2e873
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611961"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009513"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>マスター VHD イメージを準備してカスタマイズする
 
@@ -37,11 +35,13 @@ Windows 10 Enterprise マルチセッションは、Azure イメージ ギャラ
 
 2. [世代の指定] ページで、 **[第 1 世代]** を選択します。
 
-    ![[世代の指定] ページのスクリーンショット。 [第 1 世代] オプションが選択されています。](media/a41174fd41302a181e46385e1e701975.png)
+    > [!div class="mx-imgBorder"]
+    > ![[世代の指定] ページのスクリーンショット。 [第 1 世代] オプションが選択されている。](media/a41174fd41302a181e46385e1e701975.png)
 
 3. [チェックポイントの種類] で、チェック ボックスをオフにしてチェックポイントを無効にします。
 
-    ![[チェックポイント] ページの [チェックポイントの種類] セクションのスクリーンショット。](media/20c6dda51d7cafef33251188ae1c0c6a.png)
+    > [!div class="mx-imgBorder"]
+    > ![[チェックポイント] ページの [チェックポイントの種類] セクションのスクリーンショット。](media/20c6dda51d7cafef33251188ae1c0c6a.png)
 
 PowerShell で次のコマンドレットを実行してチェックポイントを無効にすることもできます。
 
@@ -53,7 +53,8 @@ Set-VM -Name <VMNAME> -CheckpointType Disabled
 
 既存の VHD から VM を作成する場合、既定ではダイナミック ディスクが作成されます。 次の図に示すように、 **[ディスクの編集]** を選択して固定ディスクに変更できます。 詳しい手順については、「[Azure にアップロードする Windows VHD または VHDX を準備する](../virtual-machines/windows/prepare-for-upload-vhd-image.md)」をご覧ください。
 
-![[ディスクの編集] オプションのスクリーンショット。](media/35772414b5a0f81f06f54065561d1414.png)
+> [!div class="mx-imgBorder"]
+> ![[ディスクの編集] オプションのスクリーンショット。](media/35772414b5a0f81f06f54065561d1414.png)
 
 次の PowerShell コマンドレットを実行して、ディスクを固定ディスクに変更することもできます。
 
@@ -63,9 +64,9 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
 
 ## <a name="software-preparation-and-installation"></a>ソフトウェアの準備とインストール
 
-このセクションでは、FSLogix と Windows Defender の準備とインストールのほか、アプリとイメージのレジストリについてのいくつかの基本的な構成オプションについて説明します。 
+このセクションでは、FSLogix と Windows Defender の準備とインストールのほか、アプリとイメージのレジストリについてのいくつかの基本的な構成オプションについて説明します。
 
-Office 365 ProPlus と OneDrive を VM にインストールする場合は、「[マスター VHD イメージに Office をインストールする](install-office-on-wvd-master-image.md)」に移動し、そこに記載されている手順に従ってアプリをインストールします。 完了したら、この記事に戻ります。
+エンタープライズ用 Microsoft 365 アプリと OneDrive を VM にインストールする場合は、「[マスター VHD イメージに Office をインストールする](install-office-on-wvd-master-image.md)」に移動し、そこに記載されている手順に従ってアプリをインストールします。 完了したら、この記事に戻ります。
 
 ユーザーが特定の LOB アプリケーションにアクセスする必要がある場合は、このセクションの手順を完了した後にそれらをインストールすることをお勧めします。
 
@@ -126,7 +127,8 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnab
 
 Windows 10 Enterprise または Windows 10 Enterprise マルチセッションを使用する Windows Virtual Desktop セッション ホストでは、ストレージ センサーを無効にすることをお勧めします。 次のスクリーンショットに示すように、[設定] メニューの **[ストレージ]** でストレージ センサーを無効にできます。
 
-![[設定] の [ストレージ] メニューのスクリーン ショット。 [ストレージ センサー] オプションはオフになっています。](media/storagesense.png)
+> [!div class="mx-imgBorder"]
+> ![[設定] の [ストレージ] メニューのスクリーン ショット。 [ストレージ センサー] オプションはオフになっている。](media/storagesense.png)
 
 次のコマンドを実行して、レジストリで設定を変更することもできます。
 
@@ -183,21 +185,24 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-s
 
 このセクションは、マスター イメージがローカルで作成された場合にのみ適用されます。
 
-次の手順では、マスター イメージを Azure ストレージ アカウントにアップロードする方法を説明します。 Azure ストレージ アカウントがまだない場合は、[こちらの記事](/azure/javascript/tutorial-vscode-static-website-node-03)の指示に従って作成します。
+次の手順では、マスター イメージを Azure ストレージ アカウントにアップロードする方法を説明します。 Azure ストレージ アカウントがまだない場合は、[こちらの記事](/azure/developer/javascript/tutorial-vscode-static-website-node-03)の指示に従って作成します。
 
 1. まだ行っていない場合は、VM イメージ (VHD) を固定に変換します。 イメージを固定に変換しない場合は、イメージを正常に作成できません。
 
 2. ストレージ アカウント内の BLOB コンテナーに VHD をアップロードします。 [Storage Explorer ツール](https://azure.microsoft.com/features/storage-explorer/)を使用して迅速にアップロードできます。 Storage Explorer ツールについて詳しくは、[こちらの記事](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)をご覧ください。
 
-    ![Microsoft Azure Storage Explorer ツールの検索ウィンドウのスクリーンショット。 [.vhd/vhdx ファイルをページ BLOB としてアップロードする (推奨)] チェック ボックスがオンになっています。](media/897aa9a9b6acc0aa775c31e7fd82df02.png)
+    > [!div class="mx-imgBorder"]
+    > ![Microsoft Azure Storage Explorer ツールの検索ウィンドウのスクリーンショット。 [.vhd/vhdx ファイルをページ BLOB としてアップロードする (推奨)] チェック ボックスがオンになっている。](media/897aa9a9b6acc0aa775c31e7fd82df02.png)
 
 3. 次に、ブラウザー上で Azure portal に移動し、"イメージ" を検索します。 次のスクリーンショットに示すように、検索すると **[イメージの作成]** ページが表示されます。
 
-    ![イメージの値の例が入力された、Azure portal の [イメージの作成] ページのスクリーン ショット。](media/d3c840fe3e2430c8b9b1f44b27d2bf4f.png)
+    > [!div class="mx-imgBorder"]
+    > ![イメージの値の例が入力された、Azure portal の [イメージの作成] ページのスクリーン ショット。](media/d3c840fe3e2430c8b9b1f44b27d2bf4f.png)
 
 4. イメージを作成すると、次のスクリーンショットに示すような通知が表示されます。
 
-    !["イメージが作成されました" 通知のスクリーンショット。](media/1f41b7192824a2950718a2b7bb9e9d69.png)
+    > [!div class="mx-imgBorder"]
+    > !["イメージが作成されました" 通知のスクリーンショット。](media/1f41b7192824a2950718a2b7bb9e9d69.png)
 
 ## <a name="next-steps"></a>次のステップ
 

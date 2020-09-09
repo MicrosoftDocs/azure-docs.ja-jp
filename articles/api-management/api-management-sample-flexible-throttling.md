@@ -9,17 +9,18 @@ editor: ''
 ms.assetid: fc813a65-7793-4c17-8bb9-e387838193ae
 ms.service: api-management
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
-ms.openlocfilehash: 467d9cee74567fc0d19031773415675ae7c51818
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7ef1c09b12d3c7e365f090391aa3fa8afa03749b
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71066767"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213998"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>Azure API Management を使用した高度な要求スロットル
 受信要求のスロットルは、Azure API Management の重要な役割の 1 つです。 要求のレートや転送される要求/データの合計を制御できるため、API プロバイダーは API Management を使用して、さまざまな API 成果物階層に対する値の不正使用や作成から API を保護できます。
@@ -32,7 +33,7 @@ ms.locfileid: "71066767"
 > [!NOTE]
 > `rate-limit-by-key` と `quota-by-key` のポリシーは、Azure API Management の従量課金レベルでは使用できません。 
 
-新しい [rate-limit-by-key](/azure/api-management/api-management-access-restriction-policies#LimitCallRateByKey) ポリシーと [quota-by-key](/azure/api-management/api-management-access-restriction-policies#SetUsageQuotaByKey) ポリシーを使用すると、トラフィック制御の柔軟性が向上します。 これらの新しいポリシーでは、トラフィックの使用状況を追跡するために使用されるキーを識別する式を定義できます。 このしくみを理解しやすいように、例を示します。 
+新しい [rate-limit-by-key](./api-management-access-restriction-policies.md#LimitCallRateByKey) ポリシーと [quota-by-key](./api-management-access-restriction-policies.md#SetUsageQuotaByKey) ポリシーを使用すると、トラフィック制御の柔軟性が向上します。 これらの新しいポリシーでは、トラフィックの使用状況を追跡するために使用されるキーを識別する式を定義できます。 このしくみを理解しやすいように、例を示します。 
 
 ## <a name="ip-address-throttling"></a>IP アドレスのスロットル
 次のポリシーは、1 つのクライアント IP アドレスに対して、呼び出し数を毎分最大 10 回に制限し、1 か月あたりの呼び出しの合計を 1,000,000 回に、帯域幅を 10,000 KB に制限します。 
@@ -62,10 +63,10 @@ ms.locfileid: "71066767"
 この例は、Authorization ヘッダーを抽出して `JWT` オブジェクトに変換し、トークンのサブジェクトを使用してユーザーを識別し、レートを制限するキーとして使用する方法を示しています。 `JWT` で他の要求の 1 つとしてユーザー ID が格納されている場合は、その値を代わりに使用できます。
 
 ## <a name="combined-policies"></a>ポリシーの組み合わせ
-新しいスロットル ポリシーでは、既存のスロットル ポリシーよりも詳細な制御ができますが、両方の機能を組み合わせることでも価値が得られます。 成果物サブスクリプション キー別のスロットル ([サブスクリプション別の呼び出しレート制限](/azure/api-management/api-management-access-restriction-policies#LimitCallRate)と[サブスクリプション別の使用量クォータの設定](/azure/api-management/api-management-access-restriction-policies#SetUsageQuota)) を用いて使用レベルに基づいて課金することで、API を収益化できます。 ユーザーごとにスロットルできる細やかな制御を補完的に使用すれば、あるユーザーの行為によって別のユーザーのエクスペリエンスの質が低下する事態を防ぐことができます。 
+新しいスロットル ポリシーでは、既存のスロットル ポリシーよりも詳細な制御ができますが、両方の機能を組み合わせることでも価値が得られます。 成果物サブスクリプション キー別のスロットル ([サブスクリプション別の呼び出しレート制限](./api-management-access-restriction-policies.md#LimitCallRate)と[サブスクリプション別の使用量クォータの設定](./api-management-access-restriction-policies.md#SetUsageQuota)) を用いて使用レベルに基づいて課金することで、API を収益化できます。 ユーザーごとにスロットルできる細やかな制御を補完的に使用すれば、あるユーザーの行為によって別のユーザーのエクスペリエンスの質が低下する事態を防ぐことができます。 
 
 ## <a name="client-driven-throttling"></a>クライアント主導のスロットル
-[ポリシー式](/azure/api-management/api-management-policy-expressions)を使用してスロットル キーを定義する場合、スロットルの適用範囲は API プロバイダーによって決定されます。 一方で、開発者が自分の顧客に対するレート制限の内容を制御したいと考える場合があります。 これを実現するために、API プロバイダーは、開発者のクライアント アプリケーションから API にキーを伝えるためのカスタム ヘッダーを導入できます。
+[ポリシー式](./api-management-policy-expressions.md)を使用してスロットル キーを定義する場合、スロットルの適用範囲は API プロバイダーによって決定されます。 一方で、開発者が自分の顧客に対するレート制限の内容を制御したいと考える場合があります。 これを実現するために、API プロバイダーは、開発者のクライアント アプリケーションから API にキーを伝えるためのカスタム ヘッダーを導入できます。
 
 ```xml
 <rate-limit-by-key calls="100"
@@ -80,4 +81,3 @@ Azure API Management では、レートとクォータのスロットルを通�
 
 ## <a name="next-steps"></a>次のステップ
 このトピックに関する GitHub イシューとしてフィードバックをお寄せください。 上記以外で、お客様のシナリオに適した選択肢となりそうなキーの値がありましたら、ぜひお聞かせください。
-

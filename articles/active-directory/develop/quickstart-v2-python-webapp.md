@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
-ms.custom: aaddev, scenarios:getting-started, languages:Python
-ms.openlocfilehash: b137f47ac2cfb8074320677419a6a34b7d8bba84
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.custom: aaddev, devx-track-python, scenarios:getting-started, languages:Python
+ms.openlocfilehash: 6b58e927952b2a51289c3017455cc7d66545fe86
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680318"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120322"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>クイック スタート: Python Web アプリに Microsoft でサインインを追加する
 
@@ -140,7 +140,7 @@ ms.locfileid: "83680318"
     python app.py
     ```
    > [!IMPORTANT]
-   > このクイック スタート アプリケーションは、クライアント シークレットを使用して、それ自体を機密クライアントとして識別します。 クライアント シークレットはプロジェクト ファイルにプレーン テキストとして追加されるため、セキュリティ上の理由から、アプリケーションを運用アプリケーションと見なす前に、クライアント シークレットの代わりに証明書を使用することをお勧めします。 証明書の使用方法の詳細については、[これらの手順](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials)を参照してください。
+   > このクイック スタート アプリケーションは、クライアント シークレットを使用して、それ自体を機密クライアントとして識別します。 クライアント シークレットはプロジェクト ファイルにプレーン テキストとして追加されるため、セキュリティ上の理由から、アプリケーションを運用アプリケーションと見なす前に、クライアント シークレットの代わりに証明書を使用することをお勧めします。 証明書の使用方法の詳細については、[これらの手順](./active-directory-certificate-credentials.md)を参照してください。
 
 ## <a name="more-information"></a>詳細情報
 

@@ -15,16 +15,16 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: cynthn
-ms.openlocfilehash: 2a636ae5609d9cb5c81782af5a419a27d7880106
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d0d86e1a9c40eb6860508cf136ab9d466cc28ecd
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80154374"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225905"
 ---
 # <a name="tutorial-install-a-lamp-web-server-on-a-linux-virtual-machine-in-azure"></a>チュートリアル:Azure 内の Linux 仮想マシンに LAMP Web サーバーをインストールする
 
-この記事では、Apache Web サーバー、MySQL、PHP (LAMP スタック) を Azure　上の Ubuntu VM にデプロイする方法について説明します。 NGINX Web サーバーを実行する場合は、[LEMP スタック](tutorial-lemp-stack.md)チュートリアルを参照してください。 LAMP サーバーの動作を確認するために、WordPress サイトをインストールし、構成することもできます。 このチュートリアルで学習する内容は次のとおりです。
+この記事では、Apache Web サーバー、MySQL、PHP (LAMP スタック) を Azure　上の Ubuntu VM にデプロイする方法について説明します。 LAMP サーバーの動作を確認するために、WordPress サイトをインストールし、構成することもできます。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
 > * Ubuntu 仮想マシン (LAMP スタックで 'L') を作成する
@@ -35,7 +35,7 @@ ms.locfileid: "80154374"
 
 このセットアップは、簡単なテストまたは概念実証のためのものです。 運用環境の推奨事項を含め、LAMP スタックの詳細については、[Ubuntu ドキュメント](https://help.ubuntu.com/community/ApacheMySQLPHP)を参照してください。
 
-このチュートリアルでは、[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) で CLI を使用します。このバージョンは常に更新され最新になっています。 Cloud Shell を開くには、コード ブロックの上部にある **[試してみる]** を選択します。
+このチュートリアルでは、[Azure Cloud Shell](../../cloud-shell/overview.md) で CLI を使用します。このバージョンは常に更新され最新になっています。 Cloud Shell を開くには、コード ブロックの上部にある **[使ってみる]** を選択します。
 
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.30 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
@@ -105,15 +105,15 @@ php -v
 sudo sh -c 'echo "<?php phpinfo(); ?>" > /var/www/html/info.php'
 ```
 
-ここで作成した PHP 情報ページを確認できます。 Web ブラウザーを開いて､`http://yourPublicIPAddress/info.php` に移動します。 IP アドレスは、実際の VM のパブリック IP アドレスに置き換えてください。 以下の画像のようなページが表示されます。
+ここで作成した PHP 情報ページを確認できます。 ブラウザーを開き、`http://yourPublicIPAddress/info.php` に移動します。 IP アドレスは、実際の VM のパブリック IP アドレスに置き換えてください。 以下の画像のようなページが表示されます。
 
 ![PHP 情報ページ][2]
 
 [!INCLUDE [virtual-machines-linux-tutorial-wordpress.md](../../../includes/virtual-machines-linux-tutorial-wordpress.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Azure に LAMP サーバーを展開しました。 以下の方法を学習しました。
+このチュートリアルでは、Azure に LAMP サーバーを展開しました。 以下の方法について学習しました。
 
 > [!div class="checklist"]
 > * Ubuntu VM を作成する

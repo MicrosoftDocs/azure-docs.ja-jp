@@ -2,19 +2,19 @@
 title: sys.external_job_streams (Transact-SQL) - Azure SQL Edge (プレビュー)
 description: Azure SQL Edge (プレビュー) での sys.external_job_streams の使用方法について説明します
 keywords: sys.external_job_streams、SQL Edge
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: reference
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
-ms.openlocfilehash: 7f26c87c0de09618b2d24413f7ff692fd764b4cf
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 2634128f4d431e4283f59032c6474a71f2af364d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594481"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84233096"
 ---
 # <a name="sysexternal_job_streams-transact-sql"></a>sys.external_job_streams (Transact-SQL)
 

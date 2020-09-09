@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: victorh
-ms.openlocfilehash: f021eed959ef88a1ef3671e1d0ace8080710c92a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 560d836f99f7a1be85007bb9d488f80a68d7999b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80810235"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067982"
 ---
 # <a name="azure-application-gateway-features"></a>Azure Application Gateway の機能
 
@@ -35,7 +35,7 @@ Application Gateway には、次のような機能があります。
 - [Websocket と HTTP/2 トラフィック](#websocket-and-http2-traffic)
 - [接続のドレイン](#connection-draining)
 - [カスタム エラー ページ](#custom-error-pages)
-- [HTTP ヘッダーを書き換える](#rewrite-http-headers)
+- [HTTP ヘッダーと URL の書き換え](#rewrite-http-headers-and-url)
 - [サイズ設定](#sizing)
 
 ## <a name="secure-sockets-layer-ssltls-termination"></a>Secure Sockets Layer (SSL/TLS) 終了
@@ -83,13 +83,13 @@ URL パス ベースのルーティングを使用すると、要求の URL パ�
 
 ## <a name="multiple-site-hosting"></a>複数サイトのホスティング
 
-複数サイトのホストにより、同じアプリケーション ゲートウェイ インスタンスで複数の Web サイトを構成することができます。 この機能を使用すると、最大で 100 の Web サイトを 1 つのアプリケーション ゲートウェイ (最適なパフォーマンスのため) に追加することによって、デプロイに効率的なトポロジを構成できます。 各 Web サイトは、独自のプールに送られるようにすることができます。 たとえば、アプリケーション ゲートウェイは、ContosoServerPool と FabrikamServerPool という 2 つのサーバー プールから `contoso.com` と `fabrikam.com` のトラフィックを処理できます。
+Application Gateway を使用すると、同じアプリケーション ゲートウェイ上の複数の Web アプリケーションに対して、ホスト名またはドメイン名に基づくルーティングを構成できます。 最大で 100 個以上の Web サイトを 1 つのアプリケーション ゲートウェイに追加することによって、デプロイに効率的なトポロジを構成できます。 各 Web サイトは、独自のバックエンド プールに送られるようにすることができます。 たとえば、contoso.com、fabrikam.com、adatum.com という 3 つのドメインで、アプリケーション ゲートウェイの IP アドレスが示されています。 マルチサイト リスナーを 3 つ作成し、リスナーごとにポートとプロトコル設定を構成します。 
 
-`http://contoso.com` の要求は ContosoServerPool にルーティングされ、`http://fabrikam.com` は FabrikamServerPool にルーティングされます。
+`http://contoso.com` に対する要求は ContosoServerPool にルーティングされ、`http://fabrikam.com` に対する FabrikamServerPool にルーティングされて、後も同様にルーティングされます。
 
-同様に、同じ親ドメインの 2 つのサブドメインも、同じアプリケーション ゲートウェイ デプロイでホストすることができます。 サブドメインを使用する例としては、単一のアプリケーション ゲートウェイ デプロイ上でホストされる `http://blog.contoso.com` 、 `http://app.contoso.com` などがあります。
+同様に、同じ親ドメインの 2 つのサブドメインも、同じアプリケーション ゲートウェイ デプロイでホストすることができます。 サブドメインを使用する例としては、単一のアプリケーション ゲートウェイ デプロイ上でホストされる `http://blog.contoso.com` 、 `http://app.contoso.com` などがあります。 詳細については、「[Application Gateway の複数サイトのホスト](multiple-site-overview.md)」を参照してください。
 
-詳細については、「[Application Gateway の複数サイトのホスト](multiple-site-overview.md)」を参照してください。
+マルチサイト リスナーでワイルドカードのホスト名を定義し、リスナー 1 つにつき最大 5 つのホスト名を定義することもできます。 詳細については、「[リスナーにおけるワイルドカードのホスト名 (プレビュー)](multiple-site-overview.md#wildcard-host-names-in-listener-preview)」を参照してください。
 
 ## <a name="redirection"></a>リダイレクト
 
@@ -131,7 +131,7 @@ Application Gateway では、既定のエラー ページを表示する代わ�
 
 詳細については、[カスタム エラー](custom-error.md)に関するページを参照してください。
 
-## <a name="rewrite-http-headers"></a>HTTP ヘッダーを書き換える
+## <a name="rewrite-http-headers-and-url"></a>HTTP ヘッダーと URL を書き換える
 
 クライアントとサーバーは、HTTP ヘッダーを使用して、要求または応答に追加の情報を渡すことができます。 これらの HTTP ヘッダーの書き換えによって、次のようないくつかの重要なシナリオを実現できます。
 
@@ -139,9 +139,11 @@ Application Gateway では、既定のエラー ページを表示する代わ�
 - 機密情報が漏れる可能性がある応答ヘッダー フィールドを削除する。
 - X-Forwarded-For ヘッダーからポート情報を削除する。
 
-Application Gateway では、要求/応答パケットがクライアントとバックエンド プールの間を移動する間に、HTTP 要求および応答ヘッダーを追加、削除、または更新する機能をサポートします。 また、条件を追加して、特定の条件が満たされた場合にのみ特定のヘッダーが書き換えられるようにする機能も提供されます。
+Application Gateway と WAF v2 SKU では、要求/応答パケットがクライアントとバックエンド プールの間を移動する間に、HTTP 要求および応答ヘッダーを追加、削除、または更新する機能をサポートします。 URL、クエリ文字列パラメーター、およびホスト名を書き換えることもできます。 URL の書き換えと URL パスベースのルーティングでは、パス マップの再評価オプションを使用して、元のパスまたは書き換えられたパスに基づいて、要求をバックエンド プールのいずれかにルーティングすることができます。 
 
-詳細については、[HTTP ヘッダーの書き換え](rewrite-http-headers.md)に関するページを参照してください。
+また、条件を追加して、特定の条件が満たされた場合にのみ特定のヘッダーまたは URL が書き換えられるようにする機能も提供されます。 これらの条件は、要求と応答の情報に基づいています。
+
+詳細については、[HTTP ヘッダーと URL の書き換え](rewrite-http-headers-url.md)に関するページを参照してください。
 
 ## <a name="sizing"></a>サイズ変更
 

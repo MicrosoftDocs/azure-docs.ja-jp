@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: 327aadbc2996e91ef0f7639da86a647ddd42247c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 937b836582cfcbf11564aa28b11cd8647afa835c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81410944"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84191103"
 ---
 # <a name="what-is-azure-data-factory"></a>Azure Data Factory とは何ですか。
 
@@ -83,7 +83,7 @@ Data Factory では、Azure DevOps と GitHub を使用したデータ パイプ
 
 Data Factory ではリンクされたサービスは 2 つの目的に使用されます。
 
-- オンプレミスの SQL Server データベース、Oracle データベース、ファイル共有、Azure Blob Storage アカウント、その他の "**データ ストア**" を表すため。 サポートされるデータ ストアの一覧については、「[コピー アクティビティ](copy-activity-overview.md)」を参照してください。
+- SQL Server データベース、Oracle データベース、ファイル共有、Azure Blob Storage アカウント、その他の**データ ストア**を表すため。 サポートされるデータ ストアの一覧については、「[コピー アクティビティ](copy-activity-overview.md)」を参照してください。
 
 - アクティビティの実行をホストできる **コンピューティング リソース** を表すため。 たとえば、HDInsightHive アクティビティは HDInsight Hadoop クラスターで実行されます。 変換アクティビティとサポートされているコンピューティング環境の一覧については、「[データの変換](transform-data.md)」を参照してください。
 

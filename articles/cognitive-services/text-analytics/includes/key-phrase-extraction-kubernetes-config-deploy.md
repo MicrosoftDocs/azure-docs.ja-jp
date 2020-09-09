@@ -95,7 +95,7 @@ ms.locfileid: "80877835"
     ```
 
 1. ファイルを保存して、テキスト エディターを閉じます。
-1. ターゲットとして `apply`keyphrase.yaml*ファイルを指定して Kubernetes* コマンドを実行します。
+1. ターゲットとして *keyphrase.yaml* ファイルを指定して Kubernetes `apply` コマンドを実行します。
 
     ```console
     kubectl apply -f keyphrase.yaml

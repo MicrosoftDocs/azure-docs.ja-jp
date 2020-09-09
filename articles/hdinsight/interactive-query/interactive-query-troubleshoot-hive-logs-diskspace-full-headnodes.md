@@ -37,7 +37,7 @@ ambari_agent - HostCheckReportFileHandler.py - [54697] - ambari_agent.HostCheckR
 
 Hive-log4j の詳細構成で、パラメーター *log4j.appender.RFA.MaxBackupIndex* が省略されています。 これにより、ログ ファイルが無限に生成されます。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決策
 
 1. Ambari ポータルの Hive コンポーネントの概要に移動し、[`Configs`] タブをクリックします。
 

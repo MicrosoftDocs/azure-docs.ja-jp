@@ -1,5 +1,5 @@
 ---
-title: PHP を使用して接続する - Azure Database for PostgreSQL - Single Server
+title: クイック スタート:PHP を使用して接続する - Azure Database for PostgreSQL - Single Server
 description: このクイックスタートでは、Azure Database for PostgreSQL - Single Server に接続してデータを照会するために使用できる、PHP コード サンプルを紹介します。
 author: rachel-msft
 ms.author: raagyema
@@ -8,14 +8,15 @@ ms.custom: mvc
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 2/28/2018
-ms.openlocfilehash: 6e453201eb499f65ee7f3b8c17cbf0e5127182b0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 000f3cd9598bc4bdffa896be47466d157c7df8c1
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74766380"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182716"
 ---
-# <a name="azure-database-for-postgresql---single-server-use-php-to-connect-and-query-data"></a>Azure Database for PostgreSQL - Single Server: PHP を使って接続とデータのクエリを実行する
+# <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>クイック スタート:PHP を使用して Azure Database for PostgreSQL - Single Server に接続してデータを照会する
+
 このクイックスタートでは、[PHP](https://secure.php.net/manual/intro-whatis.php) アプリケーションを使用して Azure Database for PostgreSQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 この記事の手順では、PHP を使用した開発には慣れているものの、Azure Database for PostgreSQL の使用は初めてであるユーザーを想定しています。
 
 ## <a name="prerequisites"></a>前提条件

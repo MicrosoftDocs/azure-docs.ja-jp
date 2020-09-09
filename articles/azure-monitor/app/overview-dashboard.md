@@ -3,12 +3,12 @@ title: Azure Application Insights の概要ダッシュボード | Microsoft Doc
 description: Azure の Application Insights と概要ダッシュボードの機能を使用してアプリケーションを監視します。
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: e5188972d9058b85a9765c7d33f6209b37245d7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8c8aa4460a545f032eaa60560de00efff27ae1ef
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77669898"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322535"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights の概要ダッシュボード
 
@@ -57,6 +57,7 @@ Application Insights では常に、アプリケーションの正常性とパ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [ファネル](../../azure-monitor/app/usage-funnels.md)
-- [保持](../../azure-monitor/app/usage-retention.md)
-- [ユーザー フロー](../../azure-monitor/app/usage-flows.md)
+- [ファネル](./usage-funnels.md)
+- [保持](./usage-retention.md)
+- [ユーザー フロー](./usage-flows.md)
+

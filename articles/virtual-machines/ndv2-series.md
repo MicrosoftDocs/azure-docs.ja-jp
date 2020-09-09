@@ -1,18 +1,18 @@
 ---
-title: NDv2 シリーズ - Azure Virtual Machines
+title: NDv2 シリーズ
 description: NDv2 シリーズ VM の仕様。
-services: virtual-machines
-author: vikancha
+author: vikancha-MSFT
 ms.service: virtual-machines
-ms.topic: article
+ms.subservice: sizes
+ms.topic: conceptual
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: 8a2d275501816dd504130b255b73a752c5615f0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: jushiman
+ms.openlocfilehash: e63cb73b726c495d4124447028b681a81b8fcca9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80247284"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286208"
 ---
 # <a name="updated-ndv2-series"></a>更新された NDv2 シリーズ
 
@@ -24,9 +24,9 @@ NDv2 インスタンスは、CUDA GPU 最適化計算カーネルと、GPU ア�
 
 特筆すべき点として、NDv2 は、計算量の多いワークロードのスケールアップ (VM あたり 8 個の GPU を使用) とスケールアウト (複数の VM を連携) の両方に対応するように構築されています。 NDv2 シリーズは現在、HB シリーズの HPC VM と同様の 100 Gigabit InfiniBand EDR バックエンド ネットワークをサポートしており、ハイパフォーマンスのクラスタリングによって、AI と ML の分散トレーニングを含む並列シナリオに対応します。 このバックエンド ネットワークは、NVIDIA の NCCL2 ライブラリで採用されているプロトコルも含め、主要な InfiniBand プロトコルをすべてサポートしているため、GPU のシームレスなクラスタリングが実現します。
 
-> ND40rs_v2 VM で [InfiniBand を有効](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband)にする際は、4.7-1.0.0.1 Mellanox OFED ドライバーを使用してください。
+> ND40rs_v2 VM で [InfiniBand を有効](./workloads/hpc/enable-infiniband.md)にする際は、4.7-1.0.0.1 Mellanox OFED ドライバーを使用してください。
 >
-> GPU メモリの増加により、新しい ND40rs_v2 VM では、[第 2 世代の VM](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) とマーケットプレース イメージを使用する必要があります。 
+> GPU メモリの増加により、新しい ND40rs_v2 VM では、[第 2 世代の VM](./windows/generation-2.md) とマーケットプレース イメージを使用する必要があります。 
 >
 > 注意:GPU あたり 16 GB のメモリを備えた ND40s_v2 のプレビュー提供は終了し、最新の ND40rs_v2 に置き換えられました。
 

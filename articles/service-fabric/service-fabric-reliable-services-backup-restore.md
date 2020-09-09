@@ -5,12 +5,13 @@ author: mcoskun
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: mcoskun
-ms.openlocfilehash: ac6bb14517b67a4b308460583e8c9fb99a2df9f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a60ebff06562c12415b2a106a9a11127feb94dab
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75922775"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021988"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Reliable Services と Reliable Actors をバックアップおよび復元する
 Azure Service Fabric は高可用性プラットフォームであり、複数のノードに状態を複製し、その高可用性を維持します。  つまり、クラスター内の 1 つのノードに障害が発生した場合でも、サービスは引き続き利用できます。 このプラットフォームに組み込まれている冗長性で十分と考えられますが、(外部ストアに) サービスのデータをバックアップすることが望ましい場合もあります。
@@ -149,7 +150,7 @@ protected override async Task<bool> OnDataLossAsync(RestoreContext restoreCtx, C
 > 
 
 ## <a name="deleted-or-lost-service"></a>サービスの削除または損失
-サービスが削除された場合、先にサービスを作成し直さないとデータを復元できません。  データを途切れなく復元するために、サービスを同じ構成 (パーティショニング スキームなど) で作成することが重要です。  サービスが起動したら、そのサービスのあらゆるパーティションで、データを復元する API (上記の `OnDataLossAsync`) を呼び出す必要があります。 その方法の 1 つは、すべてのパーティションで [FabricClient.TestManagementClient.StartPartitionDataLossAsync](https://msdn.microsoft.com/library/mt693569.aspx) を使用することです。  
+サービスが削除された場合、先にサービスを作成し直さないとデータを復元できません。  データを途切れなく復元するために、サービスを同じ構成 (パーティショニング スキームなど) で作成することが重要です。  サービスが起動したら、そのサービスのあらゆるパーティションで、データを復元する API (上記の `OnDataLossAsync`) を呼び出す必要があります。 その方法の 1 つは、すべてのパーティションで [FabricClient.TestManagementClient.StartPartitionDataLossAsync](/dotnet/api/system.fabric.fabricclient.testmanagementclient?view=azure-dotnet#System_Fabric_FabricClient_TestManagementClient_StartPartitionDataLossAsync_System_Guid_System_Fabric_PartitionSelector_System_Fabric_DataLossMode_) を使用することです。  
 
 この点から、実装は上記のシナリオと同じになります。 各パーティションで、外部ストアから最新の関連バックアップを復元する必要があります。 ここで注意する点は、ランタイムが動的にパーティション ID を作成するため、パーティション ID が変更されている可能性があることです。 そのため、各パーティションで復元する正しい最新のバックアップを識別するために、サービスでパーティション情報とサービス名を保存する必要があります。
 
@@ -258,6 +259,5 @@ Reliable State Manager には、`RestoreAsync` API を使用してバックア�
   - [Reliable Services の概要](service-fabric-reliable-services-quick-start.md)
   - [Reliable Services の通知](service-fabric-reliable-services-notifications.md)
   - [Reliable Services の構成](service-fabric-reliable-services-configuration.md)
-  - [Reliable Collection の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  - [Reliable Collection の開発者向けリファレンス](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
   - [Azure Service Fabric での定期的なバックアップと復元](service-fabric-backuprestoreservice-quickstart-azurecluster.md)
-

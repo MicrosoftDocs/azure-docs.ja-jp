@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/12/2019
-ms.openlocfilehash: 59bcb42edaf7d46498a3514b4f1c919c6e8cc0c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7bdb0ae813600f53df44ee1a61a4cbbb56bb0bfe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77660259"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067494"
 ---
 # <a name="simple-logs-experience-in-azure-monitor-preview"></a>Azure Monitor の簡易ログ エクスペリエンス (プレビュー)
 Azure Monitor には、KQL 言語を使用して[ログ クエリ](log-query-overview.md)を作成するための[充実したエクスペリエンス](get-started-portal.md)が備わっています。 ただし、基本的なクエリ要件には、KQL の機能が全部揃っている必要はなく、簡素化されたエクスペリエンスの方が好ましい場合もあります。 簡易ログ エクスペリエンスを使用すると、KQL を直接扱うことなく基本的なクエリを作成できます。 簡易ログは、必要なクエリが高度化していく中で、KQL の学習ツールとしても使用できます。
@@ -24,7 +24,7 @@ Azure Monitor には、KQL 言語を使用して[ログ クエリ](log-query-ove
 簡易ログ エクスペリエンスは、選択されたリソースについてのデータを *AzureDiagnostics*、*AzureMetrics*、*AzureActivity* の各テーブルから取得します。 
 
 ## <a name="using-simple-logs"></a>簡易ログを使用する
-[Log Analytics ワークスペースにログを収集するように診断設定が構成された](../platform/resource-logs-collect-storage.md) Azure サブスクリプションの Cosmos DB または Key Vault に移動します。 **[監視]** メニューの **[ログ]** をクリックすると、簡易ログ エクスペリエンスが表示されます。
+[Log Analytics ワークスペースにログを収集するように診断設定が構成された](../platform/resource-logs.md#send-to-azure-storage) Azure サブスクリプションの Cosmos DB または Key Vault に移動します。 **[監視]** メニューの **[ログ]** をクリックすると、簡易ログ エクスペリエンスが表示されます。
 
 ![メニュー](media/simple-logs/menu.png)
 

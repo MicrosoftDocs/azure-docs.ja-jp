@@ -7,111 +7,90 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/15/2020
-ms.openlocfilehash: 353e00f902a7314e5e5b7c8ee03e8b925a510b26
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/30/2020
+ms.openlocfilehash: d47f6c20246e3210b58dbc9c802a11c866ae305e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462328"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935009"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Azure Cognitive Search の操作とアクティビティを監視する
 
-この記事では、サービス (リソース) レベルとワークロード レベル (クエリやインデックス作成) での監視について説明し、ユーザー アクセスを監視するためのフレームワークを提案します。
+この記事では、Azure Cognitive Search の監視の概念とツールの概要について説明します。 総合的な監視を行うため、組み込みの機能と Azure Monitor のようなアドオン サービスを組み合わせて使用することができます。
 
-統計情報、カウント、状態を返すサービス API に加え、組み込みのインフラストラクチャと基本的なサービス (Azure Monitor など) を広く組み合わせて使用します。 一連の機能を把握しておくと、表面化した問題を解決できるようにフィードバック ループを構築する際に役立ちます。
+要するに、以下の追跡を行うことができます。
 
-## <a name="use-azure-monitor"></a>Azure Monitor の使用
+* サービス: 正常性または可用性とサービス構成の変更。
+* ストレージ: 使用済みと使用可能の両方、サービス層で許可されているクォータに対する各コンテンツの種類の数。
+* クエリ アクティビティ: ボリューム、待機時間、調整されたまたは削除されたクエリ。 ログに記録されるクエリ要求には、[Azure Monitor](#add-azure-monitor) が必要です。
+* インデックス作成アクティビティ: Azure Monitor を使用した[診断ログ](#add-azure-monitor)が必要。
 
-[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/) は、Azure Cognitive Search などの多くのサービスで、アラート、メトリック、診断データのログに活用されています。 Azure Cognitive Search では、組み込みの監視インフラストラクチャが主にリソースレベルの監視 (サービス正常性) と[クエリの監視](search-monitor-queries.md)に使用されます。
+検索サービスでは、ユーザー単位の認証がサポートされていないため、ログでは ID 情報は見つかりません。
 
-次のスクリーンショットは、ポータルで Azure Monitor 機能を見つける際に役立ちます。
+## <a name="built-in-monitoring"></a>組み込みの監視
 
-+ **[監査]** タブ: メインの概要ページにあり、主要なメトリックを一目で確認できます。
-+ **[アクティビティ ログ]** : [概要] のすぐ下にあります。リソースレベルのアクション (サービス正常性や API キー要求通知など) がレポートされます。
-+ **[監視]** : リストの下の方にあり、構成可能なアラート、メトリック、診断ログが表示されます。 これらは必要に応じて作成します。 データが収集されて保存されたら、その情報を照会したり視覚化したりすることで分析情報を得ることができます。
+組み込みの監視とは、検索サービスによってログに記録されるアクティビティを指します。 診断を除き、このレベルの監視には構成は必要ありません。
+
+Azure Cognitive Search は、サービスの正常性とクエリのメトリックに関するレポートを作成するために、30 日周期のスケジュールで内部データを保持します。このデータは、ポータルまたはこれらの [REST API](#monitoring-apis) を通じて見つけることができます。
+
+次のスクリーンショットは、ポータルで監視情報を見つけるのに役立ちます。 サービスの使用を開始するとすぐにデータが使用できるようになります。 ポータルのページは、数分ごとに更新されます。
+
+* **[監視]** タブの [概要] ページには、クエリのボリューム、待機時間、およびサービスに負荷がかかっているかどうかが表示されます。
+* 左側のナビゲーション ウィンドウの **[アクティビティ ログ]** は、Azure Resource Manager に接続されています。 アクティビティ ログでは、Resource Manager によって実行されたアクション (サービスの可用性と状態、容量 (レプリカとパーティション)、API キーに関連するアクティビティ) が報告されます。
+* 下の方にある **[監視]** 設定では、構成可能なアラート、メトリック、診断ログが提供されます。 これらは必要に応じて作成します。 データが収集されて保存されたら、その情報を照会したり視覚化したりすることで分析情報を得ることができます。
 
 ![Search Service への Azure Monitor の統合](./media/search-monitor-usage/azure-monitor-search.png
  "Search Service への Azure Monitor の統合")
 
-### <a name="precision-of-reported-numbers"></a>レポートされる数値の精度
+> [!NOTE]
+> ポータル ページは数分ごとに更新されるため、報告される数値は概算であり、システムが要求をどの程度適切に処理しているかを大まかに把握することを目的としています。 1 秒あたりのクエリ数 (QPS: Queries Per Second) など実際のメトリックは、ページに表示される値を上回る場合もあれば下回る場合もあります。 精度が必要な場合は、API の使用を検討してください。
 
-ポータルのページは、数分ごとに更新されます。 したがって、このポータルでレポートされる数値は概数であり、システムによる要求の処理状況の目安を示すことが意図されています。 1 秒あたりのクエリ数 (QPS: Queries Per Second) など実際のメトリックは、ページに表示される値を上回る場合もあれば下回る場合もあります。
+<a name="monitoring-apis"> </a>
 
-## <a name="activity-logs-and-service-health"></a>アクティビティ ログとサービス正常性
+### <a name="apis-useful-for-monitoring"></a>監視に役立つ API
 
-[**アクティビティ ログ**](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)は、Azure Resource Manager から情報を収集し、サービス正常性の変化をレポートします。 アクティビティ ログを監視して、サービス正常性に関連したクリティカル、エラー、警告の各状態を把握することができます。
+次の API を使用して、ポータルの [監視] タブと [使用状況] タブにあるのと同じ情報を取得できます。
 
-クエリ、インデックス作成、オブジェクトの作成など、進行中のタスクの場合は、各要求の "*管理者キーの取得*" や "*クエリ キーの取得*" など、情報提供を目的とした一般的な通知は表示されますが、具体的なアクション自体は表示されません。 この粒度の情報については、診断ログを構成する必要があります。
+* [サービス統計情報の取得](/rest/api/searchservice/get-service-statistics)
+* [インデックス統計の取得](/rest/api/searchservice/get-index-statistics)
+* [ドキュメント数の取得](/rest/api/searchservice/count-documents)
+* [インデクサーの状態の取得](/rest/api/searchservice/get-indexer-status)
+
+### <a name="activity-logs-and-service-health"></a>アクティビティ ログとサービス正常性
+
+ポータルの [ **[アクティビティ ログ]** ](../azure-monitor/platform/activity-log.md#view-the-activity-log) ページでは、Azure Resource Manager から情報を収集し、サービス正常性の変化をレポートします。 アクティビティ ログを監視して、サービス正常性に関連したクリティカル、エラー、警告の各状態を把握することができます。
+
+共通エントリには、API キー ("*管理者キーの取得*" や "*クエリ キーの取得*" など、情報提供を目的とした一般的な通知) への参照が含まれています。 これらのアクティビティは、クエリ キーまたは、管理者キーを使用して作成された要求 (オブジェクトの作成または削除) を示しますが、要求自体は表示されません。 この粒度の情報については、診断ログを構成する必要があります。
 
 **アクティビティ ログ**には、左側のナビゲーション ウィンドウ、上部ウィンドウのコマンド バーの通知、または **[問題の診断と解決]** ページからアクセスすることができます。
 
-## <a name="monitor-storage"></a>ストレージの監視
+### <a name="monitor-storage-in-the-usage-tab"></a>[Usage]\(使用状況\) タブでストレージを監視する
 
-概要ページに組み込まれたタブ ページには、リソース使用状況がレポートされます。 この情報は、サービスを使い始めるとすぐに表示され、構成は必要ありません。また、ページは数分おきに更新されます。 
-
-[運用環境のワークロードに使用するレベル](search-sku-tier.md)について、または[アクティブなレプリカとパーティションの数を調整する](search-capacity-planning.md)かどうかについて最終的に判断する場合、これらのメトリックを見ると、リソースが消費される速さや、現在の構成で既存の負荷がどの程度うまく処理されているかがわかるので、これらの決定を下すのに役立ちます。
-
-ストレージに関連したアラートは現在利用できません。ストレージ消費量は集計されず、Azure Monitor の **AzureMetrics** テーブルにも記録されません。 リソースに関連した通知を生成する[カスタム ソリューションを作成](https://docs.microsoft.com/azure/azure-monitor/insights/solutions-creating)する必要があります。そこでは、独自のコードでストレージ サイズを調べて応答を処理します。 ストレージのメトリックの詳細については、[サービス統計情報の取得](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics#response)に関するページを参照してください。
-
-ポータルで視覚的に監視できるように、 **[Usage]\(使用状況\)** タブには、リソースの空き状況が、サービス レベルによる現在の[制限](search-limits-quotas-capacity.md)と比較して表示されます。 
+ポータルで視覚的に監視できるように、 **[Usage]\(使用状況\)** タブには、リソースの空き状況が、サービス レベルによる現在の[制限](search-limits-quotas-capacity.md)と比較して表示されます。 [運用環境のワークロードに使用するレベル](search-sku-tier.md)について、または[アクティブなレプリカとパーティションの数を調整する](search-capacity-planning.md)かどうかについて最終的に判断する場合、これらのメトリックを見ると、リソースが消費される速さや、現在の構成で既存の負荷がどの程度うまく処理されているかがわかるので、これらの決定を下すのに役立ちます。
 
 次の図は、オブジェクトが種類ごとに 3 つ、ストレージが 50 MB に制限されている Free サービスを示したものです。 Basic または Standard サービスでは上限がこれより高く、パーティションの数を増やすと最大ストレージがそれに比例して増加します。
 
 ![レベルの制限を基準とした使用状況](./media/search-monitor-usage/usage-tab.png
  "レベルの制限を基準とした使用状況")
 
-## <a name="monitor-workloads"></a>ワークロードの監視
+> [!NOTE]
+> ストレージに関連したアラートは現在利用できません。ストレージ消費量は集計されず、Azure Monitor の **AzureMetrics** テーブルにも記録されません。 ストレージのアラートを取得するには、リソースに関連した通知を生成する[カスタム ソリューションを作成](../azure-monitor/insights/solutions.md)する必要があります。そこでは、独自のコードでストレージ サイズを調べて応答を処理します。
 
-ログに記録されるイベントには、インデックス作成やクエリに関連したイベントがあります。 クエリやインデックス作成に関連したオペレーショナル データは、Log Analytics の **AzureDiagnostics** テーブルに収集されます。
+<a name="add-azure-monitor"></a>
 
-ログに記録されるデータの大半は、読み取りのみの操作に関するものです。 ログにキャプチャされないその他の操作 (作成、更新、削除) については、Search Service でシステム情報を照会してください。
+## <a name="add-on-monitoring-with-azure-monitor"></a>Azure Monitor を使用したアドオンの監視
 
-| OperationName | 説明 |
-|---------------|-------------|
-| ServiceStats | この操作は、[サービス統計情報の取得](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics)に対するルーチン呼び出しです。直接呼び出されるか、またはポータル概要ページの内容を設定するために、その読み込み時または更新時に暗黙的に呼び出されます。 |
-| Query.Search |  インデックスに対するクエリ要求。ログに記録されるクエリについては、[クエリの監視](search-monitor-queries.md)に関するページを参照してください。|
-| Indexing.Index  | この操作は、[ドキュメントの追加、更新、削除](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)を行うための呼び出しです。 |
-| indexes.Prototype | これは、データ インポート ウィザードによって作成されるインデックスです。 |
-| Indexers.Create | データ インポート ウィザードを通じて暗黙的にまたは明示的にインデクサーを作成します。 |
-| Indexers.Get | インデクサーが実行されるたびにそのインデクサーの名前を返します。 |
-| Indexers.Status | インデクサーが実行されるたびにそのインデクサーの状態を返します。 |
-| DataSources.Get | インデクサーが実行されるたびにデータ ソースの名前を返します。|
-| Indexes.Get | インデクサーが実行されるたびにインデックスの名前を返します。 |
+Azure Cognitive Search を含む多くのサービスは、追加のアラート、メトリック、および診断データのログ記録のために、[Azure Monitor](../azure-monitor/index.yml) と統合されます。 
 
-### <a name="kusto-queries-about-workloads"></a>ワークロードに関する Kusto クエリ
+データの収集と保存を制御する場合は、検索サービスに[診断ログを有効](search-monitor-logs.md)にします。 Azure Monitor によってキャプチャされたログに記録されたイベントは、**AzureDiagnostics** テーブルに格納され、クエリとインデックス作成に関連する操作データで構成されます。
 
-ログを有効にした場合は、**AzureDiagnostics** にクエリを実行して、特定のサービスでいつどのような操作が実行されたかを照会できます。 また、アクティビティを関連付けて、パフォーマンスの変化を調べることもできます。
+Azure Monitor にはいくつかのストレージ オプションが用意されており、どれを選択するかによってデータの使用方法が決まります。
 
-#### <a name="example-list-operations"></a>例:操作の一覧表示 
+* Power BI レポートで[ログ データを視覚化](search-monitor-logs-powerbi.md)する場合は、[Azure Blob Storage] を選択します。
+* Kusto クエリを使用してデータを探索する場合は、[Log Analytics] を選択します。
 
-操作と各操作の回数のリストを取得します。
-
-```
-AzureDiagnostics
-| summarize count() by OperationName
-```
-
-#### <a name="example-correlate-operations"></a>例:操作の関連付け
-
-クエリ要求をインデックス作成操作に関連付け、時間グラフにデータ ポイントをレンダリングして同時に起こった操作を表示します。
-
-```
-AzureDiagnostics
-| summarize OperationName, Count=count()
-| where OperationName in ('Query.Search', 'Indexing.Index')
-| summarize Count=count(), AvgLatency=avg(DurationMs) by bin(TimeGenerated, 1h), OperationName
-| render timechart
-```
-
-### <a name="use-search-apis"></a>Search API の使用
-
-Azure Cognitive Search REST API および .NET SDK の両方を使用することにより、プログラムからサービス メトリック、インデックスとインデクサーの情報、ドキュメント数にアクセスできます。
-
-+ [サービス統計情報の取得](/rest/api/searchservice/get-service-statistics)
-+ [インデックス統計の取得](/rest/api/searchservice/get-index-statistics)
-+ [ドキュメント数の取得](/rest/api/searchservice/count-documents)
-+ [インデクサーの状態の取得](/rest/api/searchservice/get-indexer-status)
+Azure Monitor には独自の課金体系があり、このセクションで参照される診断ログには関連コストがあります。 詳細については、[Azure Monitor での使用量と推定コスト](../azure-monitor/platform/usage-estimated-costs.md)に関する記事を参照してください。
 
 ## <a name="monitor-user-access"></a>ユーザー アクセスの監視
 
@@ -128,4 +107,4 @@ $filter パラメーターを含んだクエリ文字列とは別に、この情
 Azure Cognitive Search などのリソースを含む Azure サービスを監視するうえで、Azure Monitor を使いこなすことが欠かせません。 Azure Monitor を十分に理解していない場合は、時間を取ってリソースに関連した記事を確認してください。 チュートリアルのほか、次の記事からお読みいただくことをお勧めします。
 
 > [!div class="nextstepaction"]
-> [Azure Monitor を使用した Azure リソースの監視](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource)
+> [Azure Monitor を使用した Azure リソースの監視](../azure-monitor/insights/monitor-azure-resource.md)

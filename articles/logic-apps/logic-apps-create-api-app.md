@@ -3,15 +3,15 @@ title: Azure Logic Apps の Web API と REST API の作成
 description: Azure Logic Apps でシステム統合のために API、サービス、またはシステムを呼び出す Web API と REST API を作成します
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, jehollan, logicappspm
-ms.topic: article
+ms.reviewer: jonfan, logicappspm
+ms.topic: conceptual
 ms.date: 05/26/2017
-ms.openlocfilehash: bb6c99ea12e5b53631d42a04b36b7bfef2337e42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0fc4fb91653f4a764540df0a7bc0cf0deee30fe6
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233027"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080832"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Azure Logic Apps から呼び出しできるカスタム API の作成
 
@@ -30,12 +30,12 @@ API は [Azure App Service](../app-service/overview.md) でホストできます
 > [!TIP] 
 > API は Web アプリとしてデプロイできますが、API アプリとしてデプロイすることを検討してください。クラウドやオンプレミスで API を構築、ホスト、利用するとき、作業が簡単になります。 API のコードを変更する必要はありません。コードを API アプリにデプロイするだけです。 たとえば、次の言語で作成された API アプリをビルドする方法について確認してください。 
 > 
-> * [ASP.NET](../app-service/app-service-web-get-started-dotnet.md)。 
-> * [Java](../app-service/app-service-web-get-started-java.md)
-> * [Node.js](../app-service/app-service-web-get-started-nodejs.md)
-> * [PHP](../app-service/app-service-web-get-started-php.md)
-> * [Python](../app-service/containers/quickstart-python.md)
-> * [Ruby](../app-service/containers/quickstart-ruby.md)
+> * [ASP.NET](../app-service/quickstart-dotnetcore.md)。 
+> * [Java](../app-service/quickstart-java.md)
+> * [Node.js](../app-service/quickstart-nodejs.md)
+> * [PHP](../app-service/quickstart-php.md)
+> * [Python](../app-service/quickstart-python.md)
+> * [Ruby](../app-service/quickstart-ruby.md)
 >
 > ロジック アプリ用の API アプリ サンプルについては、[Azure Logic Apps GitHub リポジトリ](https://github.com/logicappsio)または[ブログ](https://aka.ms/logicappsblog)をご覧ください。
 
@@ -54,8 +54,8 @@ API は [Azure App Service](../app-service/overview.md) でホストできます
 カスタム コネクタの詳細については、次のトピックを参照してください 
 
 * [カスタム コネクタの概要](../logic-apps/custom-connector-overview.md)
-* [Web API からのカスタム コネクタの作成](../logic-apps/custom-connector-build-web-api-app-tutorial.md)
-* [Register custom connectors in Azure Logic Apps (Azure Logic Apps でのカスタム コネクタの登録)](../logic-apps/logic-apps-custom-connector-register.md)
+* [Web API からのカスタム コネクタの作成](/connectors/custom-connectors/create-web-api-connector)
+* [Register custom connectors in Azure Logic Apps (Azure Logic Apps でのカスタム コネクタの登録)](/connectors/custom-connectors/)
 
 ## <a name="helpful-tools"></a>便利なツール
 
@@ -136,11 +136,13 @@ API がこのパターンに従うとき、ロジック アプリ ワークフ�
 
 ![webhook アクション パターン](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 
-> [!NOTE]
-> 現在のところ、ロジック アプリ デザイナーでは、Swagger で webhook エンドポイントを検出できません。 そこでこのパターンの場合、[**webhook** アクション](../connectors/connectors-native-webhook.md)を追加し、要求の URL、ヘッダー、本文を指定する必要があります。 「[ワークフローのアクションとトリガー](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action)」も参照してください。 コールバック URL を渡すために、必要に応じて、前のいずれかのフィールドで `@listCallbackUrl()` ワークフロー機能を利用できます。
+現在のところ、ロジック アプリ デザイナーでは、Swagger で webhook エンドポイントを検出できません。 そこでこのパターンの場合、[**webhook** アクション](../connectors/connectors-native-webhook.md)を追加し、要求の URL、ヘッダー、本文を指定する必要があります。 「[ワークフローのアクションとトリガー](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action)」も参照してください。 webhook パターンのサンプルについては、[ここ](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)で GitHub の webhook トリガー サンプルを参照してください。
 
-> [!TIP]
-> webhook パターンのサンプルについては、[ここ](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)で GitHub の webhook トリガー サンプルを参照してください。
+その他のヒントと注意事項のいくつかを次に示します。
+
+* コールバック URL を渡すために、必要に応じて、前のいずれかのフィールドで `@listCallbackUrl()` ワークフロー機能を利用できます。
+
+* ロジック アプリとサブスクライブしているサービスの両方を所有している場合、コールバック URL の呼び出し後に `unsubscribe` エンドポイントを呼び出す必要はありません。 それ以外の場合、Logic Apps ランタイムは `unsubscribe` エンドポイントを呼び出して、予定されている呼び出しがすべて終了したことを伝え、サーバー側でリソースをクリーンアップできるようにする必要があります。
 
 <a name="triggers"></a>
 
@@ -198,13 +200,15 @@ webhook トリガーはこのトピックの前半で説明した [webhook ア�
 
 ![webhook トリガー パターン](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
 
-> [!NOTE]
-> 現在のところ、ロジック アプリ デザイナーでは、Swagger で webhook エンドポイントを検出できません。 そこでこのパターンの場合、[**webhook** トリガー](../connectors/connectors-native-webhook.md)を追加し、要求の URL、ヘッダー、本文を指定する必要があります。 「[HTTPWebhook トリガー](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger)」もご覧ください。 コールバック URL を渡すために、必要に応じて、前のいずれかのフィールドで `@listCallbackUrl()` ワークフロー機能を利用できます。
->
-> 同じデータが複数回処理されることを防止するには、すでに読まれ、ロジック アプリに渡されたデータをトリガーは消去する必要があります。
+現在のところ、ロジック アプリ デザイナーでは、Swagger で webhook エンドポイントを検出できません。 そこでこのパターンの場合、[**webhook** トリガー](../connectors/connectors-native-webhook.md)を追加し、要求の URL、ヘッダー、本文を指定する必要があります。 「[HTTPWebhook トリガー](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger)」もご覧ください。 webhook パターンのサンプルについては、[ここ](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)で GitHub の webhook トリガー コントローラー サンプルを参照してください。
 
-> [!TIP]
-> webhook パターンのサンプルについては、[ここ](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)で GitHub の webhook トリガー コントローラー サンプルを参照してください。
+その他のヒントと注意事項のいくつかを次に示します。
+
+* コールバック URL を渡すために、必要に応じて、前のいずれかのフィールドで `@listCallbackUrl()` ワークフロー機能を利用できます。
+
+* 同じデータが複数回処理されることを防止するには、すでに読まれ、ロジック アプリに渡されたデータをトリガーは消去する必要があります。
+
+* ロジック アプリとサブスクライブしているサービスの両方を所有している場合、コールバック URL の呼び出し後に `unsubscribe` エンドポイントを呼び出す必要はありません。 それ以外の場合、Logic Apps ランタイムは `unsubscribe` エンドポイントを呼び出して、予定されている呼び出しがすべて終了したことを伝え、サーバー側でリソースをクリーンアップできるようにする必要があります。
 
 ## <a name="improve-security-for-calls-to-your-apis-from-logic-apps"></a>ロジック アプリからの API の呼び出しのセキュリティを強化する
 
@@ -224,7 +228,7 @@ Logic Apps、Power Automate、および Microsoft Power Apps のすべてのユ�
 
 * カスタム API に関するサポートが必要な場合、[customapishelp@microsoft.com](mailto:customapishelp@microsoft.com) にお問い合わせください。
 
-* 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
+* ご質問がある場合は、[Azure Logic Apps に関する Microsoft Q&A 質問ページ](/answers/topics/azure-logic-apps.html)を参照してください。
 
 * [Logic Apps ユーザー フィードバック サイト](https://aka.ms/logicapps-wish)でアイデアへの投票やアイデアの投稿を行って、Logic Apps の改善にご協力ください。 
 

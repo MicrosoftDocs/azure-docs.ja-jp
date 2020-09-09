@@ -5,15 +5,15 @@ description: この記事では、プライベート フロントエンド IP �
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/16/2020
 ms.author: victorh
-ms.openlocfilehash: df21a2c40dd532ac1ff321638099ceee8a2b3e53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7a0022c5cff405a993f30cdf2ab5900485c84a1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535589"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808126"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>内部ロード バランサー (ILB) エンドポイントでアプリケーション ゲートウェイを構成する
 

@@ -3,15 +3,15 @@ title: Azure PowerShell を使用して Azure 仮想ネットワークを別の 
 description: Resource Manager テンプレートと Azure PowerShell を使用して Azure 仮想ネットワークを Azure リージョン間で移動します。
 author: asudbring
 ms.service: virtual-network
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: dc316e5bbb88359ff8b1e8a4fc35a56541a577f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e13164c3ec6049a8ae3954528a02d20e313dd883
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75646712"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711461"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-azure-powershell"></a>Azure PowerShell を使用して Azure 仮想ネットワークを別のリージョンに移動する
 
@@ -60,7 +60,7 @@ Azure PowerShell を使用して仮想ネットワークをエクスポートし
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
    ```
 
-1. ダウンロードされたファイルの名前は、リソースのエクスポート元のリソース グループの名前と同じになります。 コマンドでエクスポートした *\<resource-group-name>.json*ファイルを見つけて、エディターで開きます。
+1. ダウンロードされたファイルの名前は、リソースのエクスポート元のリソース グループの名前と同じになります。 コマンドでエクスポートした *\<resource-group-name>.json* ファイルを見つけて、エディターで開きます。
    
    ```azurepowershell
    notepad <source-resource-group-name>.json
@@ -105,7 +105,7 @@ Azure PowerShell を使用して仮想ネットワークをエクスポートし
     Get-AzLocation | format-table
     ```
 
-1. (省略可能) 要件に応じて、 *\<resource-group-name>.json* ファイル内の次のような他のパラメーターも変更できます。
+1. (省略可能) 必要に応じて、 *\<resource-group-name>.json* ファイル内の他のパラメーターを変更することもできます。
 
     * **[アドレス空間]** : ファイルを保存する前に、仮想ネットワークのアドレス空間を変更できます。これを行うには、**resources** > **addressSpace** セクションを変更し、**addressPrefixes** プロパティを変更します。
 
@@ -201,7 +201,7 @@ Azure PowerShell を使用して仮想ネットワークをエクスポートし
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-1. 編集した *\<resource-group-name>.json* ファイルを、前の手順で [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) を使用して作成したリソース グループにデプロイします。
+1. 編集した *\<resource-group-name>.json* ファイルを、[New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) を使用して、前の手順で作成したリソース グループにデプロイします。
 
     ```azurepowershell-interactive
 

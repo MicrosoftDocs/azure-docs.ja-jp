@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/11/2020
-ms.openlocfilehash: bb3f22223bd64c06cfa4a5f6ffabe7b128dff1d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/26/2020
+ms.openlocfilehash: 6496e5c953b3dd5e387a79906b22645ba4a24b4f
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416467"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019981"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure Data Factory におけるデータ移動のセキュリティに関する考慮事項
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -51,8 +51,8 @@ Azure コンプライアンスと、Azure が独自のインフラストラク�
 
 この記事では、次の 2 つのデータ移動シナリオでセキュリティに関する考慮事項を確認します。 
 
-- **クラウド シナリオ**: このシナリオでは、ソースと移動先の両方にインターネットを通じてパブリックにアクセスできます。 これには、Azure Storage、Azure SQL Data Warehouse、Azure SQL Database、Azure Data Lake Store、Amazon S3、Amazon Redshift などの管理クラウド ストレージ サービス、Salesforce などの SaaS サービス、FTP や OData などの Web プロトコルが該当します。 サポートされているデータ ソースの完全な一覧については、「[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)」を参照してください。
-- **ハイブリッド シナリオ**: このシナリオでは、ソースまたは移動先のどちらかが、ファイアウォールの内側またはオンプレミスの企業ネットワーク内にあります。 あるいは、データ ストアがプライベート ネットワークまたは仮想ネットワーク内 (ほとんどの場合はソース) にあり、パブリックにアクセスできません。 仮想マシンでホストされているデータベース サーバーもこのシナリオに該当します。
+- **クラウド シナリオ**:このシナリオでは、ソースと移動先の両方にインターネットを通じてパブリックにアクセスできます。 これには、Azure Storage、Azure SQL Data Warehouse、Azure SQL Database、Azure Data Lake Store、Amazon S3、Amazon Redshift などの管理クラウド ストレージ サービス、Salesforce などの SaaS サービス、FTP や OData などの Web プロトコルが該当します。 サポートされているデータ ソースの完全な一覧については、「[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)」を参照してください。
+- **ハイブリッド シナリオ**:このシナリオでは、ソースまたは移動先のどちらかが、ファイアウォールの内側またはオンプレミスの企業ネットワーク内にあります。 あるいは、データ ストアがプライベート ネットワークまたは仮想ネットワーク内 (ほとんどの場合はソース) にあり、パブリックにアクセスできません。 仮想マシンでホストされているデータベース サーバーもこのシナリオに該当します。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -155,6 +155,12 @@ Azure Virtual Network は、クラウド内のユーザーのネットワーク�
 
 ### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-addresses"></a><a name="firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway"></a> IP アドレスに対するファイアウォールの構成と許可リストの設定
 
+> [!NOTE] 
+> 各データ ソースで必要な場合は、企業ファイアウォール レベルでドメインに対するポートを管理するか、許可リストを設定することが必要になる場合があります。 この表では、例として Azure SQL Database、Azure SQL Data Warehouse、Azure Data Lake Store のみを使用しています。
+
+> [!NOTE] 
+> Azure Data Factory によるデータ アクセス戦略の詳細については、[こちらの記事](https://docs.microsoft.com/azure/data-factory/data-access-strategies#data-access-strategies-through-azure-data-factory)を参照してください。
+
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>オンプレミス/プライベート ネットワークのファイアウォール要件    
 企業では、組織の中央ルーターで企業ファイアウォールが実行されています。 セルフホステッド統合ランタイムがインストールされているローカル コンピューターで Windows ファイアウォールがデーモンとして実行されています。 
 
@@ -178,7 +184,7 @@ Azure Virtual Network は、クラウド内のユーザーのネットワーク�
 
 以下のクラウド データ ストアでは、セルフホステッド統合ランタイム コンピューターの IP アドレスを許可する必要があります。 これらのデータ ストアの中には、既定では、許可する必要がないものもあります。 
 
-- [Azure SQL Database](../sql-database/sql-database-firewall-configure.md) 
+- [Azure SQL Database](../azure-sql/database/firewall-configure.md) 
 - [Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../cosmos-db/firewall-support.md)

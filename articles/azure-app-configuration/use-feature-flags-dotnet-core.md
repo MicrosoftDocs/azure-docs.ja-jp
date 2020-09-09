@@ -11,15 +11,15 @@ ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 04/19/2019
+ms.date: 08/12/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 3182961f928a9befc5a55fb6d58e22c74ba81089
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: 3f8a43a1ff28206a4bcc5fd059f69492c83eb34d
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79473440"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224715"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリ内で機能フラグを使用する
 
@@ -37,7 +37,7 @@ ms.locfileid: "79473440"
 
 ## <a name="set-up-feature-management"></a>機能管理を設定する
 
-.NET Core 機能マネージャーを利用するには、`Microsoft.FeatureManagement` NuGet パッケージへの参照を追加します。
+.NET Core 機能マネージャーを利用するには、`Microsoft.FeatureManagement.AspNetCore` および `Microsoft.FeatureManagement` の NuGet パッケージへの参照を追加します。
     
 .NET Core 機能マネージャー `IFeatureManager` は、フレームワークのネイティブ構成システムから機能フラグを取得します。 その結果、.NET Core がサポートする任意の構成ソース (ローカルの *appsettings.json* ファイルや環境変数など) を使用して、アプリケーションの機能フラグを定義できます。 `IFeatureManager` は、.NET Core の依存関係の挿入に依存します。 機能管理サービスは、標準の規則を使用して登録できます。
 
@@ -206,6 +206,8 @@ public class HomeController : Controller
 MVC コントローラーでは、`FeatureGate` 属性を使用して、コントローラー クラス全体を有効にするか、特定のアクションを有効にするかを制御できます。 次の `HomeController` コントローラーでは、コントローラー クラスに含まれるアクションを実行するには、`FeatureA` が "*オン*" になっている必要があります。
 
 ```csharp
+using Microsoft.FeatureManagement.Mvc;
+
 [FeatureGate(MyFeatureFlags.FeatureA)]
 public class HomeController : Controller
 {
@@ -216,6 +218,8 @@ public class HomeController : Controller
 次の `Index` アクションを実行するには、`FeatureA` が "*オン*" になっている必要があります。
 
 ```csharp
+using Microsoft.FeatureManagement.Mvc;
+
 [FeatureGate(MyFeatureFlags.FeatureA)]
 public IActionResult Index()
 {

@@ -4,12 +4,12 @@ description: Service Fabric のクラウド アプリケーションのカテゴ
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.custom: sfrev
-ms.openlocfilehash: 0aeb8ab2923915befdd11f96025687be3b3c4ff9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aaf8204158f720d8c69c98af758071cd91f6eff0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76024740"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248171"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric アプリケーションのシナリオ
 
@@ -17,7 +17,7 @@ Azure Service Fabric はさまざまな種類のビジネス アプリケーシ�
 
 Service Fabric 独自のアーキテクチャでは、リアルタイムに近いデータ分析、メモリ内のコンピューティング、並列トランザクション、アプリケーションでのイベント処理を実行できます。 リソース要件の変化に応じて、アプリケーションを簡単にスケールインまたはスケールアウトできます。
 
-アプリケーションの構築での設計のガイダンスについては、「[Azure Service Fabric でのマイクロサービス アーキテクチャ](https://docs.microsoft.com/azure/architecture/reference-architectures/microservices/service-fabric)」 および「[Service Fabric を使用したアプリケーションの設計に関するベスト プラクティス](service-fabric-best-practices-applications.md)」をご覧ください。
+アプリケーションの構築での設計のガイダンスについては、「[Azure Service Fabric でのマイクロサービス アーキテクチャ](/azure/architecture/reference-architectures/microservices/service-fabric)」 および「[Service Fabric を使用したアプリケーションの設計に関するベスト プラクティス](service-fabric-best-practices-applications.md)」をご覧ください。
 
 次の種類のアプリケーションに Service Fabric プラットフォームを使用することを検討してください。
 
@@ -25,7 +25,7 @@ Service Fabric 独自のアーキテクチャでは、リアルタイムに近�
 
     Service Fabric を利用して IoT サービスを構築されているお客様としては、[Honeywell](https://customers.microsoft.com/story/honeywell-builds-microservices-based-thermostats-on-azure)、[PCL Construction](https://customers.microsoft.com/story/pcl-construction-professional-services-azure)、[Crestron](https://customers.microsoft.com/story/crestron-partner-professional-services-azure)、[BMW](https://customers.microsoft.com/story/bmw-enables-driver-mobility-via-azure-service-fabric/)、[Schneider Electric](https://customers.microsoft.com/story/schneider-electric-powers-engergy-solutions-on-azure-service-fabric)、[Mesh Systems](https://customers.microsoft.com/story/mesh-systems-lights-up-the-market-with-iot-based-azure-solutions) などがあります。
 
-* **ゲームおよびセッション ベースの対話型アプリケーション**: オンライン ゲームやインスタント メッセージングなど、低待機時間の読み取りと書き込みが必要なアプリケーションの場合は、Service Fabric が有用です。 Service Fabric では、専用のストアやキャッシュを作成する必要なしに、対話型のステートフルなアプリケーションを構築できます。 [ゲーム サービスでの Service Fabric の使用](https://docs.microsoft.com/gaming/azure/reference-architectures/multiplayer-synchronous-sf)に関する設計ガイダンスについては、[Azure のゲーム ソリューション](https://azure.microsoft.com/solutions/gaming/)に関するページをご覧ください。
+* **ゲームおよびセッション ベースの対話型アプリケーション**: オンライン ゲームやインスタント メッセージングなど、低待機時間の読み取りと書き込みが必要なアプリケーションの場合は、Service Fabric が有用です。 Service Fabric では、専用のストアやキャッシュを作成する必要なしに、対話型のステートフルなアプリケーションを構築できます。 [ゲーム サービスでの Service Fabric の使用](/gaming/azure/reference-architectures/multiplayer-synchronous-sf)に関する設計ガイダンスについては、[Azure のゲーム ソリューション](https://azure.microsoft.com/solutions/gaming/)に関するページをご覧ください。
 
     ゲーム サービスを構築されているお客様としては、[Next Games](https://customers.microsoft.com/story/next-games-media-telecommunications-azure) や [Digamore](https://customers.microsoft.com/story/digamore-entertainment-scores-with-a-new-gaming-platform-based-on-azure-service-fabric/) などがあります。 対話型セッションを構築されているお客様としては、[Honeywell with Hololens](https://customers.microsoft.com/story/honeywell-manufacturing-hololens) などがあります
 
@@ -68,7 +68,7 @@ Service Fabric のステートフル サービスは、データベースや他�
 ## <a name="next-steps"></a>次のステップ
 
 * Service Fabric の [Reliable Services](service-fabric-reliable-services-quick-start.md) プログラミング モデルと [Reliable Actors](service-fabric-reliable-actors-get-started.md) プログラミング モデルで、ステートレス サービスとステートフル サービスの構築を始めます。
-* [Azure でのマイクロサービスの構築](https://docs.microsoft.com/azure/architecture/microservices/)に関するガイダンスについては、Azure アーキテクチャ センターをご覧ください。
+* [Azure でのマイクロサービスの構築](/azure/architecture/microservices/)に関するガイダンスについては、Azure アーキテクチャ センターをご覧ください。
 * アプリケーションの設計のガイダンスについては、「[Azure Service Fabric のアプリケーションとクラスターに関するベスト プラクティス](service-fabric-best-practices-overview.md)」をご覧ください。
 
 * 関連項目:

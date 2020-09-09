@@ -10,17 +10,17 @@ ms.service: role-based-access-control
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 03/18/2020
+ms.topic: troubleshooting
+ms.date: 07/28/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 09d5b7a126a1b8832bfe40e2e25dd4000d5d9155
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 839662e496a61ff9a90a6250b417688b91ccaed1
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548282"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87382578"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Azure RBAC のトラブルシューティング
 
@@ -28,7 +28,7 @@ ms.locfileid: "80548282"
 
 ## <a name="azure-role-assignments-limit"></a>Azure でのロールの割り当て制限
 
-Azure では、サブスクリプションあたり最大 **2,000** 個のロールの割り当てをサポートしています。 エラー メッセージ "ロールの割り当てはこれ以上作成できません (コード: RoleAssignmentLimitExceeded)" が、ロールを割り当てようとすると発生する場合は、サブスクリプションのロールの割り当て数を減らしてみます。
+Azure では、サブスクリプションあたり最大 **2,000** 個のロールの割り当てをサポートしています。 この制限には、サブスクリプション、リソース グループ、およびリソースのスコープでのロールの割り当てが含まれます。 エラー メッセージ "ロールの割り当てはこれ以上作成できません (コード: RoleAssignmentLimitExceeded)" が、ロールを割り当てようとすると発生する場合は、サブスクリプションのロールの割り当て数を減らしてみます。
 
 > [!NOTE]
 > **2,000** のサブスクリプション当たりのロール割り当ての制限は固定されており、増やすことはできません。
@@ -41,7 +41,7 @@ Azure では、サブスクリプションあたり最大 **2,000** 個のロー
 - Azure AD Premium P2 を使用している場合は、ロールを永続的に割り当てるのではなく、[Azure AD Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md) で割り当てます。 
 - 追加のサブスクリプションを追加します。 
 
-ロールの割り当ての数を取得するには、Azure portal の [アクセス制御 (IAM) ページのグラフ](role-assignments-list-portal.md#list-number-of-role-assignments)を表示します。 また、次の Azure PowerShell コマンドを使用することもできます。
+ロールの割り当ての数を取得するには、Azure portal の [アクセス制御 (IAM) ページのグラフを](role-assignments-list-portal.md#list-number-of-role-assignments)を表示します。 また、次の Azure PowerShell コマンドを使用することもできます。
 
 ```azurepowershell
 $scope = "/subscriptions/<subscriptionId>"
@@ -52,6 +52,22 @@ $ras.Count
 ## <a name="problems-with-azure-role-assignments"></a>Azure のロールの割り当てに関する問題
 
 - **[追加]**  >  **[ロール割り当ての追加]** オプションが無効になっているため、または "オブジェクト ID のクライアントは、アクションの実行を承認されていません" というアクセス許可エラーが発生するために、Azure portal の **[アクセス制御 (IAM)]** でロールの割り当てを追加できない場合は、ロールを割り当てようとしているスコープで `Microsoft.Authorization/roleAssignments/write` のアクセス許可を持っている[所有者](built-in-roles.md#owner)や[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)などのロールを割り当てられているユーザーで、現在サインインしていることを確認してください。
+- サービス プリンシパルを使用してロールを割り当てると、"この操作を完了するのに十分な特権がありません" というエラーが表示されることがあります。 たとえば、所有者ロールが割り当てられたサービス プリンシパルがあり、Azure CLI を使用して、次のロールの割り当てをサービスプリンシパルとして作成しようとするとします。
+
+    ```azurecli
+    az login --service-principal --username "SPNid" --password "password" --tenant "tenantid"
+    az role assignment create --assignee "userupn" --role "Contributor"  --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
+    ```
+
+    "この操作を完了するのに十分な特権がありません" というエラーが表示される場合は、Azure CLI が Azure AD で担当者 ID を参照しようとしていて、サービス プリンシパルが既定で Azure AD を読み取ることができないためである可能性があります。
+
+    このエラーを解決する可能性がある 2 つの方法があります。 最初の方法は、ディレクトリ内のデータを読み取ることができるように、[Directory Readers](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) ロールをサービス プリンシパルに割り当てることです。
+
+    このエラーを解決する 2 番目の方法は、`--assignee` ではなく `--assignee-object-id` パラメーターを使用して、ロールの割り当てを作成することです。 `--assignee-object-id` を使用すると、Azure CLI で Azure AD 検索がスキップされます。 ロールを割り当てるユーザー、グループ、またはアプリケーションのオブジェクト ID を取得する必要があります。 詳細については、「[Azure CLI を使用して Azure ロールの割り当てを追加または削除する](role-assignments-cli.md#new-service-principal)」を参照してください。
+
+    ```azurecli
+    az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
+    ```
 
 ## <a name="problems-with-custom-roles"></a>カスタム ロールに関する問題
 
@@ -66,7 +82,7 @@ $ras.Count
 - カスタム ロールの `AssignableScopes` に定義できる管理グループは 1 つだけです。 `AssignableScopes` への管理グループの追加は、現在プレビューの段階です。
 - `DataActions` が含まれるカスタム ロールを管理グループのスコープで割り当てることはできません。
 - ロールの定義の割り当て可能なスコープに管理グループが存在するかどうかは、Azure Resource Manager では確認されません。
-- カスタム ロールと管理グループについて詳しくは、「[Azure 管理グループでリソースを整理する](../governance/management-groups/overview.md#custom-rbac-role-definition-and-assignment)」をご覧ください。
+- カスタム ロールと管理グループについて詳しくは、「[Azure 管理グループでリソースを整理する](../governance/management-groups/overview.md#azure-custom-role-definition-and-assignment)」をご覧ください。
 
 ## <a name="transferring-a-subscription-to-a-different-directory"></a>サブスクリプションを別のディレクトリに譲渡する
 
@@ -76,20 +92,29 @@ $ras.Count
 
 ## <a name="issues-with-service-admins-or-co-admins"></a>サービス管理者または共同管理者に関する問題
 
-- サービス管理者または共同管理者に問題が発生した場合は、「[Azure サブスクリプション管理者を追加または変更する](../cost-management-billing/manage/add-change-subscription-administrator.md)」および「[従来のサブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD 管理者ロール](rbac-and-directory-admin-roles.md)」を参照してください。
+- サービス管理者または共同管理者に問題が発生した場合は、「[Azure サブスクリプション管理者を追加または変更する](../cost-management-billing/manage/add-change-subscription-administrator.md)」および「[従来のサブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD ロール](rbac-and-directory-admin-roles.md)」を参照してください。
 
 ## <a name="access-denied-or-permission-errors"></a>アクセス拒否またはアクセス許可エラー
 
-- アクセス許可エラー "オブジェクト ID のクライアントは、スコープに対するアクションの実行を承認されていません (コード: AuthorizationFailed)" が、リソースを作成しようとすると発生する場合は、選択したスコープでリソースへの書き込みアクセス許可を持つロールを割り当てられたユーザーで、現在サインインしていることを確認します。 たとえば、リソース グループ内の仮想マシンを管理するには、そのリソース グループ (または親スコープ) に対する[仮想マシン共同作成者](built-in-roles.md#virtual-machine-contributor)ロールを持っている必要があります。 各組み込みロールに対するアクセス許可の一覧については、「[Azure リソースの組み込みロール](built-in-roles.md)」を参照してください。
+- アクセス許可エラー "オブジェクト ID のクライアントは、スコープに対するアクションの実行を承認されていません (コード: AuthorizationFailed)" が、リソースを作成しようとすると発生する場合は、選択したスコープでリソースへの書き込みアクセス許可を持つロールを割り当てられたユーザーで、現在サインインしていることを確認します。 たとえば、リソース グループ内の仮想マシンを管理するには、そのリソース グループ (または親スコープ) に対する[仮想マシン共同作成者](built-in-roles.md#virtual-machine-contributor)ロールを持っている必要があります。 各組み込みロールに対するアクセス許可の一覧については、「[Azure 組み込みロール](built-in-roles.md)」を参照してください。
 - サポート チケットを作成または更新しようとすると "サポート要求を作成するためのアクセス許可がありません" というアクセス許可エラーが発生する場合は、現在サインインしているユーザーに、`Microsoft.Support/supportTickets/write` アクセス許可を持つロール ([サポート リクエスト共同作成者](built-in-roles.md#support-request-contributor)など) が割り当てられていることを確認します。
 
-## <a name="role-assignments-with-unknown-security-principal"></a>不明なセキュリティ プリンシパルがあるロールの割り当て
+## <a name="role-assignments-with-identity-not-found"></a>ID が見つからないロールの割り当て
 
-ロールをセキュリティ プリンシパル (ユーザー、グループ、サービス プリンシパル、またはマネージド ID) に割り当てた後、ロールの割り当てを削除せずにそのセキュリティ プリンシパルを削除した場合、ロールの割り当てのセキュリティ プリンシパルの種類は **[不明]** と表示されます。 Azure portal の次のスクリーンショットは一例です。 セキュリティ プリンシパル名は "**Identity deleted**" (ID は削除されました) および "**Identity no longer exists**" (ID はもう存在しません) と表示されます。 
+Azure portal のロールの割り当ての一覧で、セキュリティ プリンシパル (ユーザー、グループ、サービス プリンシパル、またはマネージド ID) が、**不明**な種類の**見つからない ID** として表示されている場合があります。
 
 ![Web アプリ リソース グループ](./media/troubleshooting/unknown-security-principal.png)
 
-Azure PowerShell を使用してこのロールの割り当てを一覧表示すると、空の `DisplayName` および `ObjectType` が "不明" に設定されています。 たとえば、[Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) では、次のようなロールの割り当てが返されます。
+ID は、次の 2 つの理由で見つからない可能性があります。
+
+- ロールの割り当てを作成するときに、ユーザーを最近招待した
+- ロールの割り当てを持つセキュリティ プリンシパルを削除した
+
+ロールの割り当てを作成するときに最近ユーザーを招待した場合、このセキュリティ プリンシパルはまだリージョン間のレプリケーション プロセス中である可能性があります。 その場合は、しばらく待ってから、ロールの割り当ての一覧を更新してください。
+
+ただし、このセキュリティ プリンシパルが最近招待されたユーザーでない場合は、削除されたセキュリティ プリンシパルである可能性があります。 ロールをセキュリティ プリンシパに割り当てた後、最初にロールの割り当てを削除せずにそのセキュリティ プリンシパルを削除した場合、そのセキュリティ プリンシパルは **ID が見つからない** **[不明]** な種類として表示されます。
+
+Azure PowerShell を使用してこのロールの割り当てを一覧表示すると、空の `DisplayName` と **Unknown**に設定された `ObjectType` が表示される場合があります。 たとえば、[Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) では、次の出力のようなロールの割り当てが返されます。
 
 ```
 RoleAssignmentId   : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222
@@ -103,7 +128,7 @@ ObjectType         : Unknown
 CanDelegate        : False
 ```
 
-同様に、Azure CLI を使用してこのロールの割り当てを一覧表示すると、空の `principalName` が表示されます。 たとえば、[az role assignment list](/cli/azure/role/assignment#az-role-assignment-list) では、次のようなロールの割り当てが返されます。
+同様に、Azure CLI を使用してこのロールの割り当てを一覧表示すると、空の `principalName` が表示される場合があります。 たとえば、[az role assignment list](/cli/azure/role/assignment#az-role-assignment-list) では、次の出力のようなロールの割り当てが返されます。
 
 ```
 {
@@ -119,9 +144,9 @@ CanDelegate        : False
 }
 ```
 
-これらのロールの割り当ては残しておいても問題ありませんが、他のロールの割り当てと同様の手順を使用して削除できます。 ロールの割り当てを削除する方法については、[Azure portal](role-assignments-portal.md#remove-a-role-assignment)、[Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)、または [Azure CLI](role-assignments-cli.md#remove-a-role-assignment) を参照してください
+セキュリティ プリンシパルが削除されているこれらのロールの割り当てを残しておくのは問題ではありません。 必要であれば、他のロールの割り当てと同様の手順を使用して、これらのロールの割り当てを削除できます。 ロールの割り当てを削除する方法については、[Azure portal](role-assignments-portal.md#remove-a-role-assignment)、[Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)、または [Azure CLI](role-assignments-cli.md#remove-a-role-assignment) を参照してください
 
-PowerShell では、オブジェクト ID とロール定義名を使ってロールの割り当てを削除しようとし、複数のロールの割り当てがパラメーターに一致する場合、次のエラー メッセージを受け取ります。"The provided information does not map to a role assignment" (指定された情報は、ロールの割り当てにマップされていません)。 エラー メッセージの例を次に示します。
+PowerShell では、オブジェクト ID とロール定義名を使ってロールの割り当てを削除しようとし、複数のロールの割り当てがパラメーターに一致する場合、次のエラー メッセージを受け取ります。"The provided information does not map to a role assignment" (指定された情報は、ロールの割り当てにマップされていません)。 次の出力は、エラー メッセージの例を示しています。
 
 ```
 PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -RoleDefinitionName "Storage Blob Data Contributor"
@@ -154,7 +179,7 @@ Azure Resource Manager は、パフォーマンスを高めるために構成や
 * 一般的な構成、スケール設定、バックアップ設定、監視設定などの設定の変更。
 * 発行資格情報およびその他の機密情報 (アプリケーション設定や接続文字列など) へのアクセス。
 * ストリーミング ログ
-* 診断ログの構成
+* リソース ログの構成
 * コンソール (コマンド プロンプト)
 * アクティブな最新のデプロイ (ローカル Git の継続的デプロイの場合)
 * 所要時間の見積もり
@@ -217,5 +242,5 @@ Web アプリと同様、仮想マシン ブレード上の機能にも、仮想
 ## <a name="next-steps"></a>次のステップ
 
 - [ゲスト ユーザーのトラブルシューティング](role-assignments-external-users.md#troubleshoot)
-- [RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する](role-assignments-portal.md)
-- [Azure リソースに対する RBAC の変更のアクティビティ ログを表示する](change-history-report.md)
+- [Azure portal を使用して Azure ロールの割り当てを追加または削除する](role-assignments-portal.md)
+- [Azure RBAC の変更のアクティビティ ログを表示する](change-history-report.md)

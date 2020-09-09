@@ -1,6 +1,6 @@
 ---
 title: Azure API Management で外部キャッシュを使用する | Microsoft Docs
-description: Azure API Management で外部キャッシュを構成し、使用する方法について説明します。
+description: Azure API Management で外部キャッシュを構成し、使用する方法について説明します。 外部キャッシュを使用すると、組み込みキャッシュに関するいくつかの制限事項を回避することができます。
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -11,12 +11,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: apimpm
-ms.openlocfilehash: f8ca0caedd438c4ce707a044bc7fa7dd035e8983
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: cfb7dd7a3831d90235b25af9598cfbc137ffcb3d
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203235"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904957"
 ---
 # <a name="use-an-external-redis-compatible-cache-in-azure-api-management"></a>Azure API Management で Redis と互換性がある外部キャッシュを使用する
 
@@ -56,7 +56,7 @@ Azure API Management では、組み込みのキャッシュを利用できる�
 
 キャッシュの場合、セルフホステッド ゲートウェイは外部キャッシュのみに依存します。 キャッシュを有効なセルフホステッド ゲートウェイにし、依存するキャッシュを互いに近接させて、参照と保存の待機時間を最小限にする必要があります。 Redis Cache を同じ Kubernetes クラスターまたは近くの別のクラスターにデプロイすることをお勧めします。 Redis Cache を Kubernetes クラスターにデプロイする方法については、次の[リンク](https://github.com/kubernetes/examples/tree/master/guestbook)を参照してください。
 
-## <a name="add-an-external-cache"></a><a name="add-external-cache"> </a>外部キャッシュを追加する
+## <a name="add-an-external-cache"></a><a name="add-external-cache"> </a>外部キャッシュの追加
 
 Azure API Management に外部の Azure Cache for Redis を追加するには、次の手順に従います。
 
@@ -73,7 +73,7 @@ Azure API Management に外部の Azure Cache for Redis を追加するには、
 2. 左側のメニューから **[External cache]\(外部キャッシュ\)** タブを選択します。
 3. **[+ 追加]** ボタンをクリックします。
 4. **[Cache instance]\(キャッシュ インスタンス\)** ドロップダウン フィールドでキャッシュを選択します。
-5. **[既定]** を選択するか、 **[Use from]\(使用元\)** ドロップダウン フィールドで目的のリージョンを指定します。
+5. **[既定]** を選択するか、**[Use from]\(使用元\)** ドロップダウン フィールドで目的のリージョンを指定します。
 6. **[保存]** をクリックします。
 
 ### <a name="add-an-azure-cache-for-redis-hosted-outside-of-the-current-azure-subscription-or-azure-in-general"></a>現在の Azure サブスクリプションまたは一般の Azure の外部でホストされている Azure Cache for Redis を追加します
@@ -82,7 +82,7 @@ Azure API Management に外部の Azure Cache for Redis を追加するには、
 2. 左側のメニューから **[External cache]\(外部キャッシュ\)** タブを選択します。
 3. **[+ 追加]** ボタンをクリックします。
 4. **[Cache instance]\(キャッシュ インスタンス\)** ドロップダウン フィールドで **[カスタム]** を選択します。
-5. **[既定]** を選択するか、 **[Use from]\(使用元\)** ドロップダウン フィールドで目的のリージョンを指定します。
+5. **[既定]** を選択するか、**[Use from]\(使用元\)** ドロップダウン フィールドで目的のリージョンを指定します。
 6. **[接続文字列]** フィールドで Azure Cache for Redis の接続文字列を指定します。
 7. **[保存]** をクリックします。
 
@@ -105,5 +105,5 @@ Azure API Management で外部キャッシュが構成されたら、キャッ�
 * キャッシュ ポリシーの詳細については、[Azure API Management ポリシー リファレンス][Caching policies]の「[Caching policies (キャッシュ ポリシー)][API Management policy reference]」を参照してください。
 * ポリシー式を使ってキーごとにアイテムをキャッシュする方法については、「 [Azure API Management のカスタム キャッシュ](api-management-sample-cache-by-key.md)」を参照してください。
 
-[API Management policy reference]: https://msdn.microsoft.com/library/azure/dn894081.aspx
-[Caching policies]: https://msdn.microsoft.com/library/azure/dn894086.aspx
+[API Management policy reference]: ./api-management-policies.md
+[Caching policies]: ./api-management-caching-policies.md

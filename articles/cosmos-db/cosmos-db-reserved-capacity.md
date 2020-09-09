@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 16e8f770445218e10ab7e7645a81325d11be55da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ea1fec022227aba1be09e988b5802f0c1ecd4e8e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77505969"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85118935"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Azure Cosmos DB の予約容量でコストを最適化する
 
@@ -52,7 +52,7 @@ Azure Cosmos DB の予約容量は、[Azure portal](https://portal.azure.com) �
 
 推奨の例を次に示します。
 
-![予約容量に関する推奨](./media/cosmos-db-reserved-capacity/reserved-capacity-recommendation.png)
+:::image type="content" source="./media/cosmos-db-reserved-capacity/reserved-capacity-recommendation.png" alt-text="予約容量に関する推奨事項":::
 
 30,000 RU/秒の予約を購入するこの推奨は、3 年の予約の中で、30,000 RU/秒の予約サイズにすると、節約が最大になることを示しています。 この場合、推奨は Azure Cosmos DB の過去 30 日間の使用量に基づいて計算されます。 このお客様は、Azure Cosmos DB の過去 30 日間の使用量が将来の使用量を表していると想定する場合、30,000 RU/秒の予約を購入すると、節約を最大になります。
 
@@ -66,7 +66,7 @@ Azure Cosmos DB の予約容量は、[Azure portal](https://portal.azure.com) �
 
 4. 次の表で説明するように、必須フィールドに入力します。
 
-   ![予約容量フォームに入力する](./media/cosmos-db-reserved-capacity/fill-reserved-capacity-form.png)
+   :::image type="content" source="./media/cosmos-db-reserved-capacity/fill-reserved-capacity-form.png" alt-text="予約容量フォームに入力する":::
 
    |フィールド  |説明  |
    |---------|---------|
@@ -82,7 +82,7 @@ Azure Cosmos DB の予約容量は、[Azure portal](https://portal.azure.com) �
 
 6. **[購入予約]** ウィンドウで、予約の割引と価格を確認します。 この予約価格は、すべてのリージョンでスループットがプロビジョニングされている Azure Cosmos DB リソースに適用されます。  
 
-   ![予約容量の概要](./media/cosmos-db-reserved-capacity/reserved-capacity-summary.png)
+   :::image type="content" source="./media/cosmos-db-reserved-capacity/reserved-capacity-summary.png" alt-text="予約容量の概要":::
 
 7. **[Review + buy]\(レビュー + 購入\)** 、 **[今すぐ購入]** の順に選択します。 購入が成功すると、次のようなページが表示されます。
 

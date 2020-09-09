@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 8ec4c87dc4f19c140c5ac02779c5551016dfb0b3
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: f202a9d616809d1f14366350d8d60ef2bc06b96b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714323"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934516"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>音声合成マークアップ言語 (SSML) を使用して合成を改善する
 
@@ -191,7 +192,7 @@ speechConfig!.setPropertyTo(
 > [!IMPORTANT]
 > ニューラル音声でのみ、話し方を調整できます。
 
-既定では、テキスト読み上げサービスは、標準の音声とニューラル音声の両方のニュートラルな話し方を使用してテキストを合成します。 ニューラル音声を使用すると、明るさ、共感、落ち着きなどのさまざまな感情を表現するように話し方を調整することや、<mstts:express-as> 要素を使用してカスタム サービス、ニュース放送、音声アシスタントなどのさまざまなシナリオに合わせて音声を最適化することができます。 これは、Speech Service に固有の省略可能な要素です。
+既定では、テキスト読み上げサービスは、標準の音声とニューラル音声の両方のニュートラルな話し方を使用してテキストを合成します。 ニューラル音声を使用すると、明るさ、共感、落ち着きなどのさまざまな感情を表現するように話し方を調整することや、 `mstts:express-as`  要素を使用してカスタム サービス、ニュース放送、音声アシスタントなどのさまざまなシナリオに合わせて音声を最適化することができます。 これは、Speech Service に固有の省略可能な要素です。
 
 現在、これらのニューラル音声では話し方の調整がサポートされています。
 * `en-US-AriaNeural`
@@ -216,7 +217,8 @@ speechConfig!.setPropertyTo(
 
 | 音声                   | Style                     | 説明                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
-| `en-US-AriaNeural`      | `style="newscast"`        | ニュースを読み上げる改まった職業的な語調を表します |
+| `en-US-AriaNeural`      | `style="newscast-formal"` | ニュースを配信するときの改まった、自信に満ちた、威厳のある語調|
+|                         | `style="newscast-casual"` | 一般的なニュースを配信するときの汎用的でカジュアルな語調       |
 |                         | `style="customerservice"` | カスタマー サポート向けのフレンドリーでわかりやすい語調を表します  |
 |                         | `style="chat"`            | カジュアルでリラックスした語調を表します                         |
 |                         | `style="cheerful"`        | 肯定的で幸せな語調を表します                         |
@@ -330,7 +332,7 @@ speechConfig!.setPropertyTo(
 
 | 属性 | 説明 | 必須/省略可能 |
 |-----------|-------------|---------------------|
-| `alphabet` | `ph` 属性の文字列の発音を合成するときに使用する音標文字を指定します。 アルファベット順を指定する文字列は、小文字で指定する必要があります。 指定できる可能性のあるアルファベットは次のとおりです。<ul><li>`ipa` &ndash; <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">国際音標文字 <span class="docon docon-navigate-external x-hidden-focus"></span></a></li><li>`sapi` &ndash; [Speech サービス発音アルファベット](speech-ssml-phonetic-sets.md)</li><li>`ups` &ndash; 汎用音素セット</li></ul><br>アルファベットは、要素内の `phoneme` にのみ適用されます。 | 省略可能 |
+| `alphabet` | `ph` 属性の文字列の発音を合成するときに使用する音標文字を指定します。 アルファベット順を指定する文字列は、小文字で指定する必要があります。 指定できる可能性のあるアルファベットは次のとおりです。<ul><li>`ipa` &ndash; <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">国際音標文字 <span class="docon docon-navigate-external x-hidden-focus"></span></a></li><li>`sapi` &ndash; [Speech サービス発音アルファベット](speech-ssml-phonetic-sets.md)</li><li>`ups` &ndash;<a href="https://documentation.help/Microsoft-Speech-Platform-SDK-11/17509a49-cae7-41f5-b61d-07beaae872ea.htm" target="_blank"> 汎用音素セット</a></li></ul><br>アルファベットは、要素内の `phoneme` にのみ適用されます。 | 省略可能 |
 | `ph` | `phoneme` 要素内の単語の発音を指定する音素を含む文字列。 指定した文字列に認識されない音素が含まれている場合、テキスト読み上げ (TTS) サービスは SSML ドキュメント全体を拒否し、ドキュメントに指定されている音声出力を生成しません。 | 音素を使用する場合は必須です。 |
 
 **使用例**
@@ -403,7 +405,7 @@ speechConfig!.setPropertyTo(
 
 `lexicon` 要素には、少なくとも 1 つの `lexeme` 要素が含まれています。 各 `lexeme` 要素には、少なくとも 1 つの `grapheme` 要素と、1 つ以上の `grapheme`、`alias`、および `phoneme` 要素が含まれています。 `grapheme` 要素には、<a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">正書法 <span class="docon docon-navigate-external x-hidden-focus"></span></a> を説明するテキストが含まれています。 `alias` 要素は、頭字語または短縮語の発音を示すために使用されます。 `phoneme` 要素には、`lexeme` の発音方法を説明するテキストを指定します。
 
-カスタム辞書を使用して単語の発音を直接設定することはできない点に注意してください。 発音を設定する必要がある場合は、まず `alias` を指定し、次に `phoneme` をその `alias` に関連付けます。 次に例を示します。
+カスタム辞書を使用して単語の発音を直接設定することはできない点に注意してください。 頭字語または短縮語の発音を設定する必要がある場合は、まず `alias` を指定し、次に `phoneme` をその `alias` に関連付けます。 次に例を示します。
 
 ```xml
   <lexeme>
@@ -491,7 +493,7 @@ IPA は覚えにくいため、Speech サービスでは、7 つの言語 (`en-U
 
 | 属性 | 説明 | 必須/省略可能 |
 |-----------|-------------|---------------------|
-| `pitch` | テキストのベースラインのピッチを示します。 ピッチは次のように表されます。<ul><li>絶対値。数字の後に "Hz" (ヘルツ) が付いて表されます。 たとえば、600 Hz。</li><li>相対値。前に "+" または "-" が付き、後にピッチの変更量を指定する "Hz" または "st" が付いた数字として表されます。 たとえば、+80 Hz、-2st。 "st" は、変更単位が半音 (標準の全音階での全音の半分) であることを示します。</li><li>定数値:<ul><li>x-low</li><li>low</li><li>中</li><li>high</li><li>x-high</li><li>default</li></ul></li></ul>。 | 省略可能 |
+| `pitch` | テキストのベースラインのピッチを示します。 ピッチは次のように表されます。<ul><li>絶対値。数字の後に "Hz" (ヘルツ) が付いて表されます。 たとえば、600 Hz。</li><li>相対値。前に "+" または "-" が付き、後にピッチの変更量を指定する "Hz" または "st" が付いた数字として表されます。 たとえば、+80 Hz、-2st。 "st" は、変更単位が半音 (標準の全音階での全音の半分) であることを示します。</li><li>定数値:<ul><li>x-low</li><li>low</li><li>中</li><li>high</li><li>x-high</li><li>default</li></ul></li></ul>. | 省略可能 |
 | `contour` |ニューラル音声と標準音声の両方で音調がサポートされるようになりました。 音調とは音の高さの変化です。 この変化は、音声出力において指定の時間位置にあるターゲットの配列として表わされます。 各ターゲットは、パラメーターのペアのセットによって定義されます。 次に例を示します。 <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>パラメーターの各セットの最初の値は、ピッチの変更位置をテキストの継続時間の割合として指定します。 2 番目の値は、ピッチの相対値または列挙値を使用して、ピッチを増減する量を指定します (`pitch` を参照)。 | 省略可能 |
 | `range` | テキストのピッチの範囲を表す値。 `range` は、`pitch` の記述に使用されるものと同じ絶対値、相対値、または列挙値を使用して表すことができます。 | 省略可能 |
 | `rate` | テキストの読み上げ速度を示します。 `rate` は次のように表されます。<ul><li>相対値。既定値の乗数として機能する数字で表されます。 たとえば、値 *1* では速度は変更されません。 値 *0.5* では、速度が半分になります。 値 *3* では、速度が 3 倍になります。</li><li>定数値:<ul><li>x-slow</li><li>slow</li><li>中</li><li>fast</li><li>x-fast</li><li>default</li></ul></li></ul> | 省略可能 |

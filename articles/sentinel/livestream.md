@@ -9,25 +9,20 @@ editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/06/2019
+ms.date: 06/14/2020
 ms.author: yelevin
-ms.openlocfilehash: b392644e504fa8187e637278bef8718c9c2caa3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 14928d3c94ced8d1cd0c12e76428be73b68b91d9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77582128"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84783165"
 ---
 # <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>Azure Sentinel でハンティング ライブストリームを使用して脅威を検出する
-
-> [!IMPORTANT]
-> Azure Sentinel のハンティング ライブストリームは現在、パブリック プレビュー段階であり、テナントへのロールアウトが徐々に進められています。
-> この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
 
 ハンティング ライブストリームを使用して、イベントの発生時に新たに作成したクエリをテストしたり、一致が見つかった場合にセッションから通知を取得したり、必要に応じて調査を開始したりできるようにする対話型セッションを作成します。 どのような Log Analytics クエリを使用したライブストリーム セッションでも、すばやく作成できます。
 
@@ -50,32 +45,32 @@ ms.locfileid: "77582128"
 
 1. Azure portal で、 **[Sentinel]**  >  **[脅威の管理]**  >  **[ハンティング]** の順に移動します。
 
-2. ハンティング クエリからライブストリーム セッションを作成するには、次のようにします。
+1. ハンティング クエリからライブストリーム セッションを作成するには、次のようにします。
     
     1. **[クエリ]** タブで、使用するハンティング クエリを見つけます。
-    2. クエリを右クリックし、 **[Add to Livestream]\(ライブストリームに追加\)** を選択します。 次に例を示します。
+    1. クエリを右クリックし、 **[Add to Livestream]\(ライブストリームに追加\)** を選択します。 次に例を示します。
     
     > [!div class="mx-imgBorder"]
     > ![Azure Sentinel ハンティング クエリからライブストリーム セッションを作成する](./media/livestream/livestream-from-query.png)
 
-3. ゼロからライブストリーム セッションを作成するには、次のようにします。 
+1. ゼロからライブストリーム セッションを作成するには、次のようにします。 
     
     1. **[Livestream]\(ライブストリーム\)** タブを選択します
-    2. **[Go to Livestream]\(ライブストリームに移動\)** を選択します。
+    1. **[+ 新しいライブストリーム]** をクリックします。
     
-4. **[Livestream]\(ライブストリーム\)** ウィンドウで、次を実行します。
+1. **[Livestream]\(ライブストリーム\)** ウィンドウで、次を実行します。
     
     - クエリからライブストリームを開始した場合は、クエリを確認し、必要があれば変更を加えてください。
     - ゼロからライブストリームの作成を開始した場合は、クエリを作成します。 
 
-5. コマンド バーで、 **[再生]** を選択します。
+1. コマンド バーで、 **[再生]** を選択します。
     
     コマンド バーの下にあるステータス バーに、ライブストリーム セッションが実行中であるか一時停止しているかが示されます。 次の例では、セッションが実行中です。
     
     > [!div class="mx-imgBorder"]
     > ![Azure Sentinel ハンティングからライブストリーム セッションを作成する](./media/livestream/livestream-session.png)
 
-6. コマンド バーで、 **[保存]** を選択します。
+1. コマンド バーで、 **[保存]** を選択します。
     
     **[一時停止]** を選択しない限り、Azure portal からサインアウトするまで、セッションの実行が継続されます。
 
@@ -83,7 +78,7 @@ ms.locfileid: "77582128"
 
 1. Azure portal で、 **[Sentinel]**  >  **[脅威の管理]**  >  **[Hunting]\(ハンティング\)**  >  **[Livestream]\(ライブストリーム\)** タブの順に移動します。
 
-2. 表示または編集するライブストリーム セッションを選択します。 次に例を示します。
+1. 表示または編集するライブストリーム セッションを選択します。 次に例を示します。
     
     > [!div class="mx-imgBorder"]
     > ![Azure Sentinel ハンティング クエリからライブストリーム セッションを作成する](./media/livestream/livestream-tab.png)

@@ -22,17 +22,13 @@
     - name: ブラウザーの使用
       href: luis-get-started-get-intent-from-browser.md
     - name: SDK の使用
-      items:
-        - name: 作成アプリ
-          href: sdk-authoring.md
-        - name: 予測エンドポイントに対するクエリの実行
-          href: sdk-query-prediction-endpoint.md
+      href: azure-sdk-quickstart.md
     - name: REST API の使用
       items:
         - name: 意図の取得
-          href: luis-get-started-get-intent-from-rest.md
+          href: luis-get-started-rest-get-intent.md
         - name: モデルの変更
-          href: get-started-get-model-rest-apis.md
+          href: luis-get-started-rest-get-model.md
 - name: チュートリアル
   items:
     - name: 分解可能なアプリの作成
@@ -52,7 +48,7 @@
           href: luis-tutorial-pattern.md
     - name: ボットで使用する
       items:
-        - name: 'C# の場合'
+        - name: C# の場合
           href: luis-csharp-tutorial-bf-v4.md
           displayName: 'bot framework, framework, sdk, abs'
         - name: Node.js の場合
@@ -60,6 +56,8 @@
           href: luis-nodejs-tutorial-bf-v4.md
 - name: 概念
   items:
+    - name: 人工知能
+      href: artificial-intelligence.md
     - name: 開発ライフサイクル
       href: luis-concept-app-iteration.md
     - name: アプリの計画
@@ -103,9 +101,6 @@
           href: luis-concept-test.md
         - name: バッチ テスト
           href: luis-concept-batch-test.md
-    - name: オーサリング キーとランタイム キー
-      displayName: 'shared, transfer, ownership, author, access, import'
-      href: luis-concept-keys.md
     - name: データ管理
       items:
         - name: データの変更
@@ -125,6 +120,14 @@
         - name: 設計戦略
           href: luis-concept-enterprise.md
           displayName: import
+    - name: LUIS を使用した DevOps プラクティスの適用
+      items:
+        - name: LUIS のソース管理およびブランチ戦略
+          href: luis-concept-devops-sourcecontrol.md
+        - name: DevOps のテスト
+          href: luis-concept-devops-testing.md
+        - name: CI/CD ワークフロー
+          href: luis-concept-devops-automation.md
 - name: 操作方法ガイド
   items:
     - name: 新しいアプリの開始
@@ -186,11 +189,7 @@
         - name: 複合エンティティからの移行
           href: migrate-from-composite-entity.md
         - name: 作成リソースへの移行
-          items:
-            - name: 概要
-              href: luis-migration-authoring.md
-            - name: 移行方法
-              href: luis-migration-authoring-steps.md
+          href: luis-migration-authoring.md
         - name: V3 API への移行
           href: luis-migration-api-v3.md
     - name: アプリの管理
@@ -201,11 +200,7 @@
         - name: アプリとバージョンの設定
           href: how-to-application-settings-portal.md
         - name: 作成リソースへの移行
-          items:
-            - name: 概要
-              href: luis-migration-authoring.md
-            - name: 移行方法
-              href: luis-migration-authoring-steps.md
+          href: luis-migration-authoring.md
         - name: 作成者とコラボレーター
           displayName: 'access, transfer, AAD, tenant, Azure AD, consent, RBAC, admin, role-based access control, ownership, import'
           href: luis-how-to-collaborate.md
@@ -226,6 +221,12 @@
           href: luis-migration-api-v3.md
         - name: V2 API への移行
           href: luis-migration-api-v1-to-v2.md
+    - name: REST API の使用
+      items:
+        - name: 意図の取得
+          href: luis-get-started-get-intent-from-rest.md
+        - name: モデルの変更
+          href: get-started-get-model-rest-apis.md
     - name: コンテナーの使用
       items:
         - name: コンテナーのインストールと実行
@@ -238,11 +239,13 @@
         - name: コンテナーの制限
           href: luis-container-limitations.md
           displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
+    - name: DevOps の使用
+      href: luis-how-to-devops-with-github.md
     - name: 関連サービス
       items:
         - name: Azure Bot Service
           href: 'https://dev.botframework.com/'
-        - name: 'Bot Builder 4.x SDK C#'
+        - name: Bot Builder 4.x SDK C#
           href: 'https://github.com/Microsoft/botbuilder-dotnet'
         - name: QnA Maker
           href: 'https://qnamaker.ai/'
@@ -284,7 +287,7 @@
               href: luis-reference-response-codes.md
         - name: SDK
           items:
-            - name: 'C#'
+            - name: C#
               items:
                 - name: NuGet - オーサリング
                   href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/'

@@ -8,13 +8,13 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 5036b433da39359ef61e87d9ec083056cf50a7ea
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: 301bedc75d243f427120c955bda539508ff43200
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701692"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323640"
 ---
 # <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>クイック スタート:Azure Cosmos DB の MongoDB API と Java を使ってコンソール アプリを作成する
 

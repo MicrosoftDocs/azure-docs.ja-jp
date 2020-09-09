@@ -8,35 +8,35 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: linux
 ms.date: 03/27/2020
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: f51bfa012c62e7acdd0aa2cd16279ec68702a72c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: mimckitt, subject-armqs
+ms.openlocfilehash: f6ab030b7f807a884b5d05487724fc9c66a6de87
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117330"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648634"
 ---
-# <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用して Linux 仮想マシン スケール セットを作成する
+# <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Linux 仮想マシン スケール セットを作成する
 
-仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM の数を手動で拡張したり、CPU などのリソースの使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケールする規則を定義したりすることができます。 その後、Azure ロード バランサーがトラフィックをスケール セット内の VM インスタンスに分散します。 このクイック スタートでは、Azure Resource Manager テンプレートを使用して、仮想マシン スケール セットを作成し、サンプル アプリケーションをデプロイします。
+仮想マシン スケール セットを使用すると、自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM の数を手動で拡張したり、CPU などのリソースの使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケールする規則を定義したりすることができます。 その後、Azure ロード バランサーがトラフィックをスケール セット内の VM インスタンスに分散します。 このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、仮想マシン スケール セットを作成し、サンプル アプリケーションをデプロイします。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+ARM テンプレートを使用して、関連するリソースのグループをデプロイできます。 1 つのテンプレートで、仮想マシン スケール セットの作成、アプリケーションのインストール、および自動スケール ルールの構成を実行できます。 変数やパラメーターを使用してこのテンプレートを再利用することで、既存のスケール セットを更新したり、追加のスケール セットを作成したりできます。 テンプレートは、Azure portal、Azure CLI、Azure PowerShell からデプロイすることも、継続的インテグレーション/継続的デリバリー (CI/CD) パイプラインから呼び出すこともできます。
+
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-vmss-bottle-autoscale%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
-[なし] :
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="create-a-scale-set"></a>スケール セットを作成する
+## <a name="review-the-template"></a>テンプレートを確認する
 
-Azure Resource Manager テンプレートを使用して、関連するリソースのグループをデプロイできます。 1 つのテンプレートで、仮想マシン スケール セットの作成、アプリケーションのインストール、および自動スケール ルールの構成を実行できます。 変数やパラメーターを使用してこのテンプレートを再利用することで、既存のスケール セットを更新したり、追加のスケール セットを作成したりできます。 テンプレートは、Azure portal、Azure CLI、Azure PowerShell からデプロイすることも、継続的インテグレーション/継続的デリバリー (CI/CD) パイプラインから呼び出すこともできます。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/201-vmss-bottle-autoscale/)からのものです。
 
-### <a name="review-the-template"></a>テンプレートを確認する
-
-このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/201-vmss-bottle-autoscale/)からのものです。
-
-:::code language="json" source="~/quickstart-templates/201-vmss-bottle-autoscale/azuredeploy.json" range="1-330" highlight="176-264":::
+:::code language="json" source="~/quickstart-templates/201-vmss-bottle-autoscale/azuredeploy.json":::
 
 テンプレートでは、次のリソースが定義されています。
 
@@ -46,9 +46,9 @@ Azure Resource Manager テンプレートを使用して、関連するリソー
 - [**Microsoft.Compute/virtualMachineScaleSets**](/azure/templates/microsoft.compute/virtualmachinescalesets)
 - [**Microsoft.Insights/autoscaleSettings**](/azure/templates/microsoft.insights/autoscalesettings)
 
-#### <a name="define-a-scale-set"></a>スケール セットを定義する
+### <a name="define-a-scale-set"></a>スケール セットを定義する
 
-強調表示されている部分が、スケール セット リソースの定義です。 テンプレートを使用してスケールを作成するには、適切なリソースを定義します。 仮想マシン スケール セットのリソースの種類のコア部分は次のとおりです。
+テンプレートを使用してスケールを作成するには、適切なリソースを定義します。 仮想マシン スケール セットのリソースの種類のコア部分は次のとおりです。
 
 | プロパティ                     | プロパティの説明                                  | テンプレート値の例                    |
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
@@ -65,7 +65,7 @@ Azure Resource Manager テンプレートを使用して、関連するリソー
 
 スケール セット テンプレートをカスタマイズするために、VM サイズや初期容量を変更することができます。 また、別のプラットフォームやカスタム イメージを使用することもできます。
 
-#### <a name="add-a-sample-application"></a>サンプル アプリケーションを追加する
+### <a name="add-a-sample-application"></a>サンプル アプリケーションを追加する
 
 スケール セットをテストするには、基本的な Web アプリケーションをインストールします。 スケール セットをデプロイするとき、VM 拡張機能によって、デプロイ後の構成とオートメーション タスク (アプリのインストールなど) を提供できます。 スクリプトは、Azure ストレージや GitHub からダウンロードできます。また、拡張機能の実行時に Azure Portal に提供することもできます。 拡張機能をスケール セットに適用するには、上記のリソース例に *extensionProfile* セクションを追加します。 拡張機能プロファイルは、通常、次のプロパティを定義します。
 
@@ -79,11 +79,11 @@ Azure Resource Manager テンプレートを使用して、関連するリソー
 
 **fileUris** には 2 つのスクリプト  - *installserver.sh*と *workserver.py*が定義されます。 これらのファイルが GitHub からダウンロードされた後、*commandToExecute* によって、アプリをインストールして構成する `bash installserver.sh` が実行されます。
 
-### <a name="deploy-the-template"></a>テンプレートのデプロイ
+## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
 テンプレートは、次の **[Deploy to Azure]\(Azure へのデプロイ\)** ボタンを選択することでデプロイできます。 このボタンは、Azure ポータルを開き、完全なテンプレートを読み込み、スケール セットの名前、インスタンス数、管理者の資格情報などのいくつかのパラメーターの入力を求めます。
 
-[![テンプレートを Azure にデプロイする](media/virtual-machine-scale-sets-create-template/deploy-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-vmss-bottle-autoscale%2Fazuredeploy.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-vmss-bottle-autoscale%2Fazuredeploy.json)
 
 Resource Manager テンプレートは、Azure CLI を使用してデプロイすることもできます。
 
@@ -99,7 +99,7 @@ az group deployment create \
 
 プロンプトに応答して、VM インスタンスのスケール セットの名前、インスタンスの数、および 管理者の資格情報を指定します。 スケール セットとサポート リソースを作成するのに数分かかります。
 
-## <a name="test-the-deployment"></a>展開をテスト
+## <a name="validate-the-deployment"></a>デプロイの検証
 
 動作中のスケール セットを表示するには、Web ブラウザーでサンプル Web アプリケーションにアクセスします。 次のように [az network public-ip list](/cli/azure/network/public-ip) を使用してロード バランサーのパブリック IP アドレスを取得します。
 
@@ -123,7 +123,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、Azure テンプレートを使用して Linux スケール セットを作成し、カスタム スクリプト拡張機能を使用して基本的な Python Web サーバーを VM インスタンスにインストールしました。 さらに学習するには、Azure 仮想マシン スケール セットを作成および管理する方法についてのチュートリアルに進んでください。
+このクイックスタートでは、ARM テンプレートを使用して Linux スケール セットを作成し、カスタム スクリプト拡張機能を使用して基本的な Python Web サーバーを VM インスタンスにインストールしました。 さらに学習するには、Azure 仮想マシン スケール セットを作成および管理する方法についてのチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [Azure 仮想マシン スケール セットの作成と管理](tutorial-create-and-manage-cli.md)

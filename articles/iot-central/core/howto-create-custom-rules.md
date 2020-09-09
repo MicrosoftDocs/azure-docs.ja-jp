@@ -7,14 +7,14 @@ ms.date: 12/02/2019
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.custom: mvc
+ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: 0e161cf83662df671b8cfb100ddc12c3b3e7359f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 572b5328a433839dafbfe23eb7207dfaeb9ea309
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158148"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017857"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Stream Analytics、Azure Functions、SendGrid を使用してカスタム ルールで Azure IoT Central を拡張する
 

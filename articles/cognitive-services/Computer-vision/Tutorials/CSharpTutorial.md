@@ -10,13 +10,13 @@ ms.subservice: computer-vision
 ms.topic: sample
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.custom: seodec18
-ms.openlocfilehash: b492d8e3bdcf6d9a41df3eb79ef159985cc715cf
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 522cf801e7c1bfdd3ed1f452c123a2db701c0c42
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76168877"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936352"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>サンプル:画像処理アプリの探索 (C#)
 
@@ -33,7 +33,10 @@ Computer Vision を使用して、光学文字認識 (OCR) を実行し、スマ
 サンプル アプリを調べる前に、次の前提条件を満たしていることを確認します。
 
 * [Visual Studio 2015 ](https://visualstudio.microsoft.com/downloads/)以降が必要です。
-* Computer Vision のサブスクリプション キーが必要です。 無料試用版のキーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Computer Vision をサブスクライブし、キーを取得します。 サービス エンドポイント URL もメモしておきます。
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Computer Vision リソースを作成"  target="_blank">Computer Vision リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
+    * 対象のアプリケーションを Computer Vision サービスに接続するには、作成したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
+    * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
 
 ## <a name="get-the-sample-app"></a>サンプル アプリを入手する
 
@@ -80,7 +83,6 @@ git clone --recurse-submodules https://github.com/Microsoft/Cognitive-Face-Windo
    ![[Subscription Key Management]\(サブスクリプション キーの管理\) ページ](../Images/Vision_UI_Subscription.PNG)  
 1. **[Subscription Key]\(サブスクリプション キー\)** にサブスクリプション キーを入力します。
 1. **[エンドポイント]** にエンドポイント URL を入力します。  
-   たとえば、Computer Vision 無料試用版のサブスクリプション キーを使用している場合は、次のエンドポイント URL を入力します: `https://westcentralus.api.cognitive.microsoft.com`  
    [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 1. 次にサンプル アプリを実行したときにサブスクリプション キーとエンドポイント URL を入力したくない場合は、 **[Save Setting]\(設定の保存\)** を選択して、サブスクリプション キーとエンドポイント URL をお使いのコンピューターに保存します。 以前に保存したサブスクリプション キーとエンドポイント URL を削除する場合は、 **[Delete Setting]\(設定の削除\)** を選択します。
 

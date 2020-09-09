@@ -2,17 +2,17 @@
 title: Azure ExpressRoute プライベート ピアリングのバックアップとしてのサイト間 VPN の使用 |Microsoft Docs
 description: このページでは、サイト間 VPN を使用して Azure ExpressRoute プライベート ピアリングをバックアップするためのアーキテクチャ上の推奨事項を示します。
 services: networking
-author: rambk
+author: duongau
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/05/2020
-ms.author: rambala
-ms.openlocfilehash: a6a22b667bc66d6ee69bfbd7ad1db88f72d8df0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: duau
+ms.openlocfilehash: 0ab74a14c16b7ea1d587cfcc82eea689e2f98c83
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687818"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393022"
 ---
 # <a name="using-s2s-vpn-as-a-backup-for-expressroute-private-peering"></a>ExpressRoute プライベート ピアリングのバックアップとしてのサイト間 VPN の使用
 
@@ -71,19 +71,23 @@ geo 冗長 ExpressRoute 回線とは異なり、ExpressRoute と VPN のディ�
 
 ExpressRoute 回線のプライマリ接続を介したプライマリ CE ルーターのオンプレミス ルートのアドバタイズを以下に示します (Junos コマンド):
 
-    user@SEA-MX03-01> show route advertising-protocol bgp 192.168.11.18 
+```console
+user@SEA-MX03-01> show route advertising-protocol bgp 192.168.11.18 
 
-    Cust11.inet.0: 8 destinations, 8 routes (7 active, 0 holddown, 1 hidden)
-      Prefix                  Nexthop              MED     Lclpref    AS path
-    * 10.1.11.0/25            Self                                    I
+Cust11.inet.0: 8 destinations, 8 routes (7 active, 0 holddown, 1 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+* 10.1.11.0/25            Self                                    I
+```
 
 ExpressRoute 回線のセカンダリ接続を介したセカンダリ CE ルーターのオンプレミス ルートのアドバタイズを以下に示します (Junos コマンド):
 
-    user@SEA-MX03-02> show route advertising-protocol bgp 192.168.11.22 
+```console
+user@SEA-MX03-02> show route advertising-protocol bgp 192.168.11.22 
 
-    Cust11.inet.0: 8 destinations, 8 routes (7 active, 0 holddown, 1 hidden)
-      Prefix                  Nexthop              MED     Lclpref    AS path
-    * 10.1.11.0/25            Self                                    I
+Cust11.inet.0: 8 destinations, 8 routes (7 active, 0 holddown, 1 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+* 10.1.11.0/25            Self                                    I
+```
 
 バックアップ接続の高可用性を向上させるために、サイト間 VPN もアクティブ/アクティブ モードで構成されます。 Azure VPN Gateway 構成を以下に示します。 VPN 構成の一部として、ゲートウェイの BGP ピア IP アドレス (10.17.11.76 と 10.17.11.77) も示されていることに注意してください。
 
@@ -91,18 +95,20 @@ ExpressRoute 回線のセカンダリ接続を介したセカンダリ CE ルー
 
 オンプレミス ルートは、ファイアウォールによって、VPN ゲートウェイのプライマリおよびセカンダリ BGP ピアにアドバタイズされます。 ルート アドバタイズは次のようになります (Junos)。
 
-    user@SEA-SRX42-01> show route advertising-protocol bgp 10.17.11.76 
+```console
+user@SEA-SRX42-01> show route advertising-protocol bgp 10.17.11.76 
 
-    Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
-      Prefix                  Nexthop              MED     Lclpref    AS path
-    * 10.1.11.0/25            Self                                    I
+Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+* 10.1.11.0/25            Self                                    I
 
-    {primary:node0}
-    user@SEA-SRX42-01> show route advertising-protocol bgp 10.17.11.77    
+{primary:node0}
+user@SEA-SRX42-01> show route advertising-protocol bgp 10.17.11.77    
 
-    Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
-      Prefix                  Nexthop              MED     Lclpref    AS path
-    * 10.1.11.0/25            Self                                    I
+Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+* 10.1.11.0/25            Self                                    I
+```
 
 >[!NOTE] 
 >サイト間 VPN をアクティブ/アクティブ モードで構成すると、ディザスター リカバリー バックアップ ネットワーク接続に高可用性が提供されるだけでなく、バックアップ接続のスループットも向上します。 言い換えると、アクティブ/アクティブ モードでのサイト間 VPN の構成は、基になる複数のトンネルが強制的に作成されるため、推奨されます。
@@ -116,66 +122,70 @@ ExpressRoute 回線のセカンダリ接続を介したセカンダリ CE ルー
 
 ExpressRoute 回線のプライマリ接続を終端させるプライマリ CE ルーターの BGP 構成を次に示します。 iBGP セッション経由でアドバタイズされたルートのローカル設定の値が 150 に構成されていることに注意してください。 同様に、ExpressRoute 回線のセカンダリ接続を終端させるセカンダリ CE ルーターのローカル設定も、150 に構成されていることを確認する必要があります。
 
-    user@SEA-MX03-01> show configuration routing-instances Cust11 
-    description "Customer 11 VRF";
-    instance-type virtual-router;
-    interface xe-0/0/0:0.110;
-    interface ae0.11;
-    protocols {
-      bgp {
-        group ibgp {
-            type internal;
-            local-preference 150;
-            neighbor 192.168.11.1;
-        }
-        group ebgp {
-            peer-as 12076;
-            bfd-liveness-detection {
-                minimum-interval 300;
-                multiplier 3;
-            }
-            neighbor 192.168.11.18;
-        }
-      }
+```console
+user@SEA-MX03-01> show configuration routing-instances Cust11
+description "Customer 11 VRF";
+instance-type virtual-router;
+interface xe-0/0/0:0.110;
+interface ae0.11;
+protocols {
+  bgp {
+    group ibgp {
+        type internal;
+        local-preference 150;
+        neighbor 192.168.11.1;
     }
+    group ebgp {
+        peer-as 12076;
+        bfd-liveness-detection {
+            minimum-interval 300;
+            multiplier 3;
+        }
+        neighbor 192.168.11.18;
+    }
+  }
+}
+```
 
 オンプレミス ファイアウォールのルーティング テーブルにより、Azure 宛てのオンプレミス トラフィックの優先パスが、定常状態で ExpressRoute 経由であることが裏付けられます (以下を参照)。
 
-    user@SEA-SRX42-01> show route table Cust11.inet.0 10.17.11.0/24    
+```console
+user@SEA-SRX42-01> show route table Cust11.inet.0 10.17.11.0/24
 
-    Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
-    + = Active Route, - = Last Active, * = Both
+Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
 
-    10.17.11.0/25      *[BGP/170] 2d 00:34:04, localpref 150
-                          AS path: 12076 I, validation-state: unverified
-                        > to 192.168.11.0 via reth1.11
-                          to 192.168.11.2 via reth2.11
-                        [BGP/170] 2d 00:34:01, localpref 150
-                          AS path: 12076 I, validation-state: unverified
-                        > to 192.168.11.2 via reth2.11
-                        [BGP/170] 2d 21:12:13, localpref 100, from 10.17.11.76
-                          AS path: 65515 I, validation-state: unverified
-                        > via st0.118
-                        [BGP/170] 2d 00:41:51, localpref 100, from 10.17.11.77
-                          AS path: 65515 I, validation-state: unverified
-                        > via st0.119
-    10.17.11.76/32     *[Static/5] 2d 21:12:16
-                        > via st0.118
-    10.17.11.77/32     *[Static/5] 2d 00:41:56
-                        > via st0.119
-    10.17.11.128/26    *[BGP/170] 2d 00:34:04, localpref 150
-                          AS path: 12076 I, validation-state: unverified
-                        > to 192.168.11.0 via reth1.11
-                          to 192.168.11.2 via reth2.11
-                        [BGP/170] 2d 00:34:01, localpref 150
-                          AS path: 12076 I, validation-state: unverified
-                        > to 192.168.11.2 via reth2.11
-                        [BGP/170] 2d 21:12:13, localpref 100, from 10.17.11.76
-                          AS path: 65515 I, validation-state: unverified
-                        > via st0.118
-                        [BGP/170] 2d 00:41:51, localpref 100, from 10.17.11.77
-                          AS path: 65515 I, validation-state: unverified
-                        > via st0.119
+10.17.11.0/25      *[BGP/170] 2d 00:34:04, localpref 150
+                      AS path: 12076 I, validation-state: unverified
+                    > to 192.168.11.0 via reth1.11
+                      to 192.168.11.2 via reth2.11
+                    [BGP/170] 2d 00:34:01, localpref 150
+                      AS path: 12076 I, validation-state: unverified
+                     > to 192.168.11.2 via reth2.11
+                    [BGP/170] 2d 21:12:13, localpref 100, from 10.17.11.76
+                       AS path: 65515 I, validation-state: unverified
+                    > via st0.118
+                    [BGP/170] 2d 00:41:51, localpref 100, from 10.17.11.77
+                       AS path: 65515 I, validation-state: unverified
+                     > via st0.119
+10.17.11.76/32     *[Static/5] 2d 21:12:16
+                     > via st0.118
+10.17.11.77/32     *[Static/5] 2d 00:41:56
+                    > via st0.119
+10.17.11.128/26    *[BGP/170] 2d 00:34:04, localpref 150
+                       AS path: 12076 I, validation-state: unverified
+                     > to 192.168.11.0 via reth1.11
+                       to 192.168.11.2 via reth2.11
+                    [BGP/170] 2d 00:34:01, localpref 150
+                      AS path: 12076 I, validation-state: unverified
+                     > to 192.168.11.2 via reth2.11
+                    [BGP/170] 2d 21:12:13, localpref 100, from 10.17.11.76
+                       AS path: 65515 I, validation-state: unverified
+                    > via st0.118
+                     [BGP/170] 2d 00:41:51, localpref 100, from 10.17.11.77
+                       AS path: 65515 I, validation-state: unverified
+                     > via st0.119
+```
 
 上記のルーティング テーブルで、ハブとスポークの VNet ルート (10.17.11.0/25 と 10.17.11.128/26) では、VPN 接続よりも ExpressRoute 回線が優先されることがわかります。 192.168.11.0 と192.168.11.2 は、CE ルーターに向かうファイアウォール インターフェイスの IP です。
 
@@ -183,49 +193,54 @@ ExpressRoute 回線のプライマリ接続を終端させるプライマリ CE 
 
 この記事の前半で、VPN ゲートウェイのプライマリおよびセカンダリ BGP ピアに対するファイアウォールのオンプレミス ルート アドバタイズを検証しました。 ここではさらに、VPN ゲートウェイのプライマリおよびセカンダリ BGP ピアからファイアウォールが受信した Azure ルートを確認します。
 
-    user@SEA-SRX42-01> show route receive-protocol bgp 10.17.11.76 table Cust11.inet.0 
+```console
+user@SEA-SRX42-01> show route receive-protocol bgp 10.17.11.76 table Cust11.inet.0 
 
-    Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
-      Prefix                  Nexthop              MED     Lclpref    AS path
-      10.17.11.0/25           10.17.11.76                             65515 I
-      10.17.11.128/26         10.17.11.76                             65515 I
+Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  10.17.11.0/25           10.17.11.76                             65515 I
+  10.17.11.128/26         10.17.11.76                             65515 I
 
-    {primary:node0}
-    user@SEA-SRX42-01> show route receive-protocol bgp 10.17.11.77 table Cust11.inet.0    
+{primary:node0}
+user@SEA-SRX42-01> show route receive-protocol bgp 10.17.11.77 table Cust11.inet.0    
 
-    Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
-      Prefix                  Nexthop              MED     Lclpref    AS path
-      10.17.11.0/25           10.17.11.77                             65515 I
-      10.17.11.128/26         10.17.11.77                             65515 I
+Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  10.17.11.0/25           10.17.11.77                             65515 I
+  10.17.11.128/26         10.17.11.77                             65515 I
+```
 
 同様に、Azure VPN ゲートウェイが受信したオンプレミスのネットワーク ルート プレフィックスを確認します。 
 
-    PS C:\Users\user> Get-AzVirtualNetworkGatewayLearnedRoute -ResourceGroupName SEA-Cust11 -VirtualNetworkGatewayName SEA-Cust11-VNet01-gw-vpn | where {$_.Network -eq "10.1.11.0/25"} | select Network, NextHop, AsPath, Weight
+```powershell
+PS C:\Users\user> Get-AzVirtualNetworkGatewayLearnedRoute -ResourceGroupName SEA-Cust11 -VirtualNetworkGatewayName SEA-Cust11-VNet01-gw-vpn | where {$_.Network -eq "10.1.11.0/25"} | select Network, NextHop, AsPath, Weight
 
-    Network      NextHop       AsPath      Weight
-    -------      -------       ------      ------
-    10.1.11.0/25 192.168.11.88 65020        32768
-    10.1.11.0/25 10.17.11.76   65020        32768
-    10.1.11.0/25 10.17.11.69   12076-65020  32769
-    10.1.11.0/25 10.17.11.69   12076-65020  32769
-    10.1.11.0/25 192.168.11.88 65020        32768
-    10.1.11.0/25 10.17.11.77   65020        32768
-    10.1.11.0/25 10.17.11.69   12076-65020  32769
-    10.1.11.0/25 10.17.11.69   12076-65020  32769
+Network      NextHop       AsPath      Weight
+-------      -------       ------      ------
+10.1.11.0/25 192.168.11.88 65020        32768
+10.1.11.0/25 10.17.11.76   65020        32768
+10.1.11.0/25 10.17.11.69   12076-65020  32769
+10.1.11.0/25 10.17.11.69   12076-65020  32769
+10.1.11.0/25 192.168.11.88 65020        32768
+10.1.11.0/25 10.17.11.77   65020        32768
+10.1.11.0/25 10.17.11.69   12076-65020  32769
+10.1.11.0/25 10.17.11.69   12076-65020  32769
+```
 
 前述のように、VPN ゲートウェイには、VPN ゲートウェイのプライマリおよびセカンダリの両方の BGP ピアによって受信されたルートがあります。 また、プライマリおよびセカンダリの ExpressRoute 接続を介して受信されたルートも確認できます (AS-path の前に 12076 が付加されたもの)。 VPN 接続を介して受信されたルートを確認するには、接続のオンプレミス BGP ピア IP を把握している必要があります。 検討対象のこのセットアップでは、これは 192.168.11.88 であり、そこから受信されたルートが表示されています。
 
 次に、Azure VPN ゲートウェイによってオンプレミスのファイアウォール BGP ピア (192.168.11.88) にアドバタイズされたルートを検証します。
 
-    PS C:\Users\user> Get-AzVirtualNetworkGatewayAdvertisedRoute -Peer 192.168.11.88 -ResourceGroupName SEA-Cust11 -VirtualNetworkGatewayName SEA-Cust11-VNet01-gw-vpn |  select Network, NextHop, AsPath, Weight
+```powershell
+PS C:\Users\user> Get-AzVirtualNetworkGatewayAdvertisedRoute -Peer 192.168.11.88 -ResourceGroupName SEA-Cust11 -VirtualNetworkGatewayName SEA-Cust11-VNet01-gw-vpn |  select Network, NextHop, AsPath, Weight
 
-    Network         NextHop     AsPath Weight
-    -------         -------     ------ ------
-    10.17.11.0/25   10.17.11.76 65515       0
-    10.17.11.128/26 10.17.11.76 65515       0
-    10.17.11.0/25   10.17.11.77 65515       0
-    10.17.11.128/26 10.17.11.77 65515       0
-
+Network         NextHop     AsPath Weight
+-------         -------     ------ ------
+10.17.11.0/25   10.17.11.76 65515       0
+10.17.11.128/26 10.17.11.76 65515       0
+10.17.11.0/25   10.17.11.77 65515       0
+10.17.11.128/26 10.17.11.77 65515       0
+```
 
 ルート交換が表示されない場合は、接続エラーを示しています。 VPN 接続のトラブルシューティングのヘルプについては、「[トラブルシューティング:Azure サイト間 VPN が動作を停止して接続できない][VPN Troubleshoot]」を参照してください。
 
@@ -239,43 +254,51 @@ VPN 接続を介した正常なルート交換 (コントロール プレーン)
 
 トラフィックの切り替えを行う前に、オンプレミスのテスト サーバーからスポーク VNet 内のテスト VM に至るセットアップ内の現在のパスをトレース ルートしてみましょう。
 
-    C:\Users\PathLabUser>tracert 10.17.11.132
+```console
+C:\Users\PathLabUser>tracert 10.17.11.132
 
-    Tracing route to 10.17.11.132 over a maximum of 30 hops
+Tracing route to 10.17.11.132 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.1.11.1
-      2    <1 ms    <1 ms    11 ms  192.168.11.0
-      3    <1 ms    <1 ms    <1 ms  192.168.11.18
-      4     *        *        *     Request timed out.
-      5     6 ms     6 ms     5 ms  10.17.11.132
+  1    <1 ms    <1 ms    <1 ms  10.1.11.1
+  2    <1 ms    <1 ms    11 ms  192.168.11.0
+  3    <1 ms    <1 ms    <1 ms  192.168.11.18
+  4     *        *        *     Request timed out.
+  5     6 ms     6 ms     5 ms  10.17.11.132
 
-    Trace complete.
+Trace complete.
+```
 
 このセットアップのプライマリおよびセカンダリの ExpressRoute ポイントツーポイント接続サブネットは、それぞれ 192.168.11.16/30 と 192.168.11.20/30 になります。 上記のトレース ルートでは、ステップ 3 で、プライマリ MSEE のインターフェイス IP である192.168.11.18 に到達していることがわかります。 MSEE インターフェイスが存在することにより、予想通り現在のパスが ExpressRoute 経由であることが裏付けられます。
 
 「[ExpressRoute 回線のピアリングをリセットする][RST]」で報告されているように、次の PowerShell コマンドを使用して、ExpressRoute 回線のプライマリとセカンダリの両方のピアリングを無効にします。
 
-    $ckt = Get-AzExpressRouteCircuit -Name "expressroute name" -ResourceGroupName "SEA-Cust11"
-    $ckt.Peerings[0].State = "Disabled"
-    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
+```powershell
+$ckt = Get-AzExpressRouteCircuit -Name "expressroute name" -ResourceGroupName "SEA-Cust11"
+$ckt.Peerings[0].State = "Disabled"
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
+```
 
 フェールオーバーの切り替え時間は BGP のコンバージェンス時間によって異なります。 このセットアップでは、フェールオーバーの切り替えにかかる時間は数秒 (10 秒未満) です。 切り替え後に traceroute を再び実行すると、次のパスが表示されます。
 
-    C:\Users\PathLabUser>tracert 10.17.11.132
+```console
+C:\Users\PathLabUser>tracert 10.17.11.132
 
-    Tracing route to 10.17.11.132 over a maximum of 30 hops
+Tracing route to 10.17.11.132 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.1.11.1
-      2     *        *        *     Request timed out.
-      3     6 ms     7 ms     9 ms  10.17.11.132
+  1    <1 ms    <1 ms    <1 ms  10.1.11.1
+  2     *        *        *     Request timed out.
+  3     6 ms     7 ms     9 ms  10.17.11.132
 
-    Trace complete.
+Trace complete.
+```
 
 traceroute の結果により、サイト間 VPN 経由のバックアップ接続がアクティブであり、プライマリとセカンダリの両方の ExpressRoute 接続に障害が発生した場合にサービスの継続性を確保できることが裏付けられます。 フェールオーバー テストを完了するには、次のコマンド セットを使用して、ExpressRoute 接続を有効に戻し、トラフィック フローを正常化します。
 
-    $ckt = Get-AzExpressRouteCircuit -Name "expressroute name" -ResourceGroupName "SEA-Cust11"
-    $ckt.Peerings[0].State = "Enabled"
-    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
+```powershell
+$ckt = Get-AzExpressRouteCircuit -Name "expressroute name" -ResourceGroupName "SEA-Cust11"
+$ckt.Peerings[0].State = "Enabled"
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
+```
 
 トラフィックが ExpressRoute に戻されたことを確認するには、traceroute を再び実行し、トラフィックが ExpressRoute プライベート ピアリングを通過することを確認します。
 

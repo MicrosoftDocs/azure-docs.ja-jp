@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: 前提条件'
 description: このページでは、Azure ExpressRoute 回線を注文する前に満たす必要がある要件を一覧します。 ここにはチェックリストが含まれています。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.author: cherylmc
-ms.openlocfilehash: a72eba9bde0745e66bdf8e7efd8eaec7d6a0b186
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: duau
+ms.openlocfilehash: df24544a1eb5b857e92e5be05bdbffdfc64a846d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74083366"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395045"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>ExpressRoute の前提条件とチェック リスト
 ExpressRoute を使用して Microsoft クラウド サービスに接続する場合は、次のセクションにある前提条件を満たしていることを確認する必要があります。

@@ -6,18 +6,18 @@ ms.service: signalr
 ms.topic: reference
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 3c28781362e60d22b0d9a4e3754daaa24e5b61ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99ebe9c078ef4775e8f0df0545fb0af4b3d1057b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74158132"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515242"
 ---
 # <a name="azure-cli-reference"></a>Azure CLI リファレンス
 
 次の表は、Azure CLI を使った Azure SignalR Service 用 Bash スクリプトへのリンクをまとめたものです。
 
-| | |
+| スクリプト | 説明 |
 |-|-|
 |**作成**||
 | [Create a new SignalR Service and resource group (新しい SignalR Service とリソース グループの作成)](scripts/signalr-cli-create-service.md) | ランダムな名前を使って、新しいリソース グループ内に新しい Azure SignalR Service リソースを作成します。  |

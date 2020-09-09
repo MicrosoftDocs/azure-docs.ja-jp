@@ -14,14 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: af6badda426f1bb81d8528cfda9b8c02d55712b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: df89acb7d3686a478c87c12bbf8a42962597dca6
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61463844"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269388"
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>方法:メディア プロセッサ インスタンスを取得する
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [.NET](media-services-get-media-processor.md)
 > * [REST](media-services-rest-get-media-processor.md)
@@ -42,16 +46,18 @@ ms.locfileid: "61463844"
 
 次のメソッドは、メディア プロセッサ インスタンスを取得する方法を示しています。 このコード例では、 **_context** という名前のモジュール レベルの変数の使用を前提にしてサーバー コンテキストを参照しています。これは、[Media Services にプログラムから接続する方法](media-services-use-aad-auth-to-access-ams-api.md)に関するセクションで説明されています。
 
-    private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
-    {
-        var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
-        ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
+```csharp
+private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
+{
+    var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
+    ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
 
-        if (processor == null)
-        throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
+    if (processor == null)
+    throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
 
-        return processor;
-    }
+    return processor;
+}
+```
 
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス

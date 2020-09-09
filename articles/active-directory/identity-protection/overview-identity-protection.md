@@ -5,20 +5,21 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: overview
-ms.date: 03/17/2020
+ms.date: 08/24/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
+ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2b1d9748b243dcc2104ce7b8e0e8735a7b7276f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0f6ec9c1fb5ae359ca88b48dea97c6a00c0f2b40
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79497679"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815183"
 ---
-# <a name="what-is-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection とは
+# <a name="what-is-identity-protection"></a>Identity Protection とは
 
 Identity Protection は、組織が次の 3 つの主要なタスクを実行できるツールです。
 
@@ -52,8 +53,9 @@ Identity Protection は、次の分類のリスクを識別します。
 | 匿名 IP アドレス | 匿名の IP アドレスからのサインイン (例:Tor Browser、Anonymizer VPN)。 |
 | 通常とは異なるサインイン プロパティ | 指定されたユーザーで最近観察されていないプロパティを使用したサインイン。 |
 | マルウェアにリンクした IP アドレス | マルウェアにリンクした IP アドレスからのサインイン |
-| 資格情報の漏洩 | このリスク検出は、ユーザーの有効な資格情報が漏洩したことを示します |
-| Azure AD 脅威インテリジェンス | Microsoft の内部および外部の脅威インテリジェンス ソースが既知の攻撃パターンを特定しました |
+| 資格情報の漏洩 | このリスク検出は、ユーザーの有効な資格情報が漏洩したことを示します。 |
+| パスワード スプレー | ブルート フォースを束ねた手法で、複数のユーザー名が共通のパスワードを使用して攻撃されていることを示します。 |
+| Azure AD 脅威インテリジェンス | Microsoft の内部および外部の脅威インテリジェンス ソースが既知の攻撃パターンを特定しました。 |
 
 これらのリスクとその計算方法の詳細については、「[リスクとは](concept-identity-protection-risks.md)」を説明する記事を参照してください。
 
@@ -68,6 +70,12 @@ Identity Protection は、次の分類のリスクを識別します。
 - リスク検出
 
 詳細については以下に関する記事を参照してください。[リスクを調査する方法](howto-identity-protection-investigate-risk.md)。
+
+### <a name="risk-levels"></a>リスク レベル
+
+Identity Protection では、リスクを低、中、高の 3 つのレベルに分類します。 
+
+Microsoft ではリスクの計算方法に関する具体的な詳細を公開していませんが、各レベルごとに、ユーザーまたはサインインが侵害されたという信頼度は高くなります。 たとえば、見慣れないサインイン プロパティのインスタンスが 1 つあるといったことは、資格情報の漏洩ほど脅威的ではない可能性があります。
 
 ## <a name="exporting-risk-data"></a>リスク データのエクスポート
 
@@ -86,13 +94,15 @@ Identity Protection にユーザーがにアクセスするためには、セキ
 | セキュリティ オペレーター | すべての Identity Protection レポートと [概要] ブレードを表示する <br><br> ユーザー リスクを無視し、安全なサインインを確認して、セキュリティ侵害を確認する | ポリシーを構成または変更する <br><br> ユーザーのパスワードをリセットする <br><br> アラートを構成する |
 | セキュリティ閲覧者 | すべての Identity Protection レポートと [概要] ブレードを表示する | ポリシーを構成または変更する <br><br> ユーザーのパスワードをリセットする <br><br> アラートを構成する <br><br> 検出に関するフィードバックを送信する |
 
+現在のところ、セキュリティ オペレーター ロールでは危険なサインイン レポートにアクセスできません。
+
 条件付きアクセス管理者は、条件としてサインイン リスクを考慮に入れるポリシーを作成することもできます。詳細については、「[条件付きアクセス: 条件](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk)」を参照してください。
 
 ## <a name="license-requirements"></a>ライセンスの要件
 
 [!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
-| 機能 | 詳細 | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Basic/Free |
+| 機能 | 詳細 | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Free / Office 365 アプリ |
 | --- | --- | --- | --- | --- |
 | リスク ポリシー | ユーザー リスク ポリシー (Identity Protection 経由) | はい | いいえ | いいえ |
 | リスク ポリシー | サインイン リスク ポリシー (Identity Protection または条件付きアクセス経由) | はい | いいえ | いいえ |

@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 01/09/2020
 ms.custom: designer
-ms.openlocfilehash: af676f128796c762b330d986836ea825a36cb246
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 5d91dc212eb2f856f0252261f2ddfc8a5a4d70ee
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83646290"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210370"
 ---
 # <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>キーボードを使用して Azure Machine Learning デザイナーを使用する (プレビュー)
 
@@ -79,5 +79,5 @@ ms.locfileid: "83646290"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [ハイコントラストの有効化またはテーマの変更](../azure-portal/azure-portal-change-theme-high-contrast.md)
+- [ハイコントラストの有効化またはテーマの変更](../azure-portal/set-preferences.md#choose-a-theme-or-enable-high-contrast)
 - [Microsoft のユーザー補助関連のツール](https://www.microsoft.com/accessibility)

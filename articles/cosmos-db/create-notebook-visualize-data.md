@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 45dd4e8dcfd74cdb5d96b935e239b9f4b5094a7c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9b2ef5ddb56e3d0422a2a876993ddda0bd97e4ff
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73720931"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961100"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>チュートリアル:Azure Cosmos DB でデータを分析して視覚化するノートブックを作成する
 
@@ -30,11 +30,11 @@ ms.locfileid: "73720931"
 
 1. **[Notebooks]** タブに移動し、 **[マイ ノートブック]** の横の [`…`] を選択して**新しいノートブック**を作成します。 既定のカーネルとして **[Python 3]** を選択します。
 
-   ![新しいノートブックを作成する](./media/create-notebook-visualize-data/create-new-notebook.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/create-new-notebook.png" alt-text="新しいノートブックを作成する":::
 
 1. 新しいノートブックが作成された後、その名前を変更できます (**VisualizeRetailData.ipynb** など)。
 
-1. 次に、小売データの格納先として、"RetailDemo" という名前のデータベースと "WebsiteData" という名前のコンテナーを作成します。 パーティション キーとしては /CardID を使用できます。 次のコードをコピーし、ノートブック内の新しいセルに貼り付けて実行します。
+1. 次に、小売データの格納先として、"RetailDemo" という名前のデータベースと "WebsiteData" という名前のコンテナーを作成します。 パーティション キーとしては /CartID を使用できます。 次のコードをコピーし、ノートブック内の新しいセルに貼り付けて実行します。
 
    ```python
    import azure.cosmos
@@ -49,7 +49,7 @@ ms.locfileid: "73720931"
 
    セルを実行するには、`Shift + Enter` を選択します。または、セルを選択して、Data Explorer のナビゲーション バーの **[Run Active Cell]\(アクティブ セルの実行\)** オプションを選択します。
 
-   ![アクティブ セルを実行する](./media/create-notebook-visualize-data/run-active-cell.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/run-active-cell.png" alt-text="アクティブ セルを実行する":::
 
    データベースとコンテナーは、現在の Azure Cosmos アカウントに作成されます。 コンテナーは、400 RU/秒でプロビジョニングされます。 データベースとコンテナーが作成された後、次の出力結果が表示されます。 
 
@@ -60,7 +60,7 @@ ms.locfileid: "73720931"
 
    **[データ]** タブを最新の情報に更新することによって、新しく作成されたリソースを確認することもできます。
 
-   ![[データ] タブを最新の情報に更新して新しいコンテナーを表示する](media/create-notebook-visualize-data/refresh-data-tab.png)
+   :::image type="content" source="media/create-notebook-visualize-data/refresh-data-tab.png" alt-text="[データ] タブを最新の情報に更新して新しいコンテナーを表示する":::
 
 1. 次に、サンプルの小売データを Azure Cosmos コンテナーにインポートします。 小売データの項目の形式は次のとおりです。
 
@@ -121,7 +121,7 @@ ms.locfileid: "73720931"
 {Query text}
 ```
 
-詳細については、[Azure Cosmos DB の組み込みのノートブック コマンドと機能](use-notebook-features-and-commands.md)に関する記事を参照してください。 クエリ `SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c` を実行します。 結果は、df_cosmos という名前の Pandas データフレームに保存されます。 新しいノートブック セルに次のコマンドを貼り付けて実行してください。
+詳細については、[Azure Cosmos DB の組み込みのノートブック コマンドと機能](use-python-notebook-features-and-commands.md)に関する記事を参照してください。 クエリ `SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c` を実行します。 結果は、df_cosmos という名前の Pandas データフレームに保存されます。 新しいノートブック セルに次のコマンドを貼り付けて実行してください。
 
 ```python
 %%sql --database RetailDemo --container WebsiteData --output df_cosmos
@@ -135,20 +135,20 @@ SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c
 df_cosmos.head(10)
 ```
 
-![クエリを実行して最初の 10 項目を取得する](./media/create-notebook-visualize-data/run-query-get-top10-items.png)
+:::image type="content" source="./media/create-notebook-visualize-data/run-query-get-top10-items.png" alt-text="クエリを実行して最初の 10 項目を取得する":::
 
 ## <a name="run-queries-and-analyze-your-data"></a>クエリを実行してデータを分析する
 
 このセクションでは、取得したデータに対して、いくつかのクエリを実行します。
 
-* **クエリ 1**: データフレームにグループ化クエリを実行して、国ごとの総売上収益の合計を取得し、結果から 5 項目を表示します。 新しいノートブック セルで、次のコードを実行します。
+* **クエリ 1**: データフレームにグループ化クエリを実行して、国または地域ごとの総売上収益の合計を取得し、結果から 5 項目を表示します。 新しいノートブック セルで、次のコードを実行します。
 
    ```python
    df_revenue = df_cosmos.groupby("Country").sum().reset_index()
    display(df_revenue.head(5))
    ```
 
-   ![総売上収益出力](./media/create-notebook-visualize-data/total-sales-revenue-output.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/total-sales-revenue-output.png" alt-text="総売上収益出力":::
 
 * **クエリ 2**:購入された項目の上位 5 件のリストを取得するために、新しいノートブック セルを開いて次のコードを実行します。
 
@@ -159,7 +159,7 @@ df_cosmos.head(10)
    pd.DataFrame(df_cosmos[df_cosmos['Action']=='Purchased'].groupby('Item').size().sort_values(ascending=False).head(5), columns=['Count'])
    ```
 
-   ![購入された項目の上位 5 件](./media/create-notebook-visualize-data/top5-purchased-items.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/top5-purchased-items.png" alt-text="購入された項目の上位 5 件":::
 
 ## <a name="visualize-your-data"></a>データを視覚化する  
 
@@ -170,16 +170,16 @@ df_cosmos.head(10)
    !{sys.executable} -m pip install bokeh --user
    ```
 
-1. 次に、地図上にデータをプロットするための準備を行います。 Azure Cosmos DB 内のデータと Azure Blob Storage に格納されている国情報とを結合し、結果を GeoJSON 形式に変換します。 新しいノートブック セルに次のコードをコピーして実行してください。
+1. 次に、地図上にデータをプロットするための準備を行います。 Azure Cosmos DB 内のデータと Azure Blob Storage に格納されている国または地域情報とを結合し、結果を GeoJSON 形式に変換します。 新しいノートブック セルに次のコードをコピーして実行してください。
 
    ```python
    import urllib.request, json
    import geopandas as gpd
 
-   # Load country information for mapping
+   # Load country/region information for mapping
    countries = gpd.read_file("https://cosmosnotebooksdata.blob.core.windows.net/notebookdata/countries.json")
 
-   # Merge the countries dataframe with our data in Azure Cosmos DB, joining on country code
+   # Merge the countries/regions dataframe with our data in Azure Cosmos DB, joining on country/region code
    df_merged = countries.merge(df_revenue, left_on = 'admin', right_on = 'Country', how='left')
 
    # Convert to GeoJSON so bokeh can plot it
@@ -187,7 +187,7 @@ df_cosmos.head(10)
    json_data = json.dumps(merged_json)
    ```
 
-1. 新しいノートブック セルで次のコードを実行し、世界地図上にさまざまな国の売上収益を視覚化します。
+1. 新しいノートブック セルで次のコードを実行し、世界地図上にさまざまな国または地域の売上収益を視覚化します。
 
    ```python
    from bokeh.io import output_notebook, show
@@ -233,9 +233,9 @@ df_cosmos.head(10)
    show(p)
    ```
 
-   出力には、世界地図がさまざまな色で表示されます。 色が濃いほど収益が高い国を、色が薄いほど収益が低い国を表します。
+   出力には、世界地図がさまざまな色で表示されます。 色が濃いほど収益が高い国または地域を、色が薄いほど収益が低い国または地域を表します。
 
-   ![各国での収益を視覚化した地図](./media/create-notebook-visualize-data/countries-revenue-map-visualization.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/countries-revenue-map-visualization.png" alt-text="各国または地域での収益を視覚化した地図":::
 
 1. データを視覚化するケースをもう 1 つ見てみましょう。 WebsiteData コンテナーには、項目を表示し、カートに追加し、購入したユーザーのレコードが含まれています。 購入された項目のコンバージョン率をプロットしてみましょう。 新しいセルで次のコードを実行すると、各項目のコンバージョン率が視覚化されます。
 
@@ -286,8 +286,8 @@ df_cosmos.head(10)
    show(p)
    ```
 
-   ![購入のコンバージョン率を視覚化する](./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png" alt-text="購入のコンバージョン率を視覚化する":::
 
 ## <a name="next-steps"></a>次のステップ
 
-* ノートブック コマンドについて詳しくは、[Azure Cosmos DB の組み込みのノートブック コマンドと機能](use-notebook-features-and-commands.md)に関する記事を参照してください。
+* Python ノートブック コマンドの詳細については、[Azure Cosmos DB の組み込みのノートブック コマンドと機能の使用方法](use-python-notebook-features-and-commands.md)に関する記事を参照してください。

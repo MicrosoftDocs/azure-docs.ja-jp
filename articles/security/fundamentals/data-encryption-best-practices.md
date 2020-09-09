@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: c5bf62f434b2095f7200b5562c38c252a0195c5b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1b6fcf38f9f69976e6ed8d64040cfbcf44f090e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79224707"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85124053"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure のデータ セキュリティと暗号化のベスト プラクティス
 この記事では、データ セキュリティと暗号化のベスト プラクティスについて説明します。
@@ -121,7 +121,7 @@ Azure VPN Gateway、SSL/TLS、および HTTPS の使用に固有のベスト プ
 
 データを保存する場所や共有する相手に関係なく、分類は常に識別可能です。 ラベルには、ヘッダー、フッター、透かしなどの視覚的なマーキングが含まれます。 ファイルと電子メールのヘッダーには、クリア テキストでメタデータが追加されます。 クリア テキストは、データ損失を防ぐソリューションなどの他のサービスが分類を識別し、適切なアクションを実行できることを保証します。
 
-保護テクノロジは、Azure Rights Management (Azure RMS) を使用しています。 このテクノロジは、他の Microsoft クラウド サービスと、Office 365 や Azure Active Directory などのアプリケーションと統合されています。 この保護テクノロジでは、暗号化、ID、および承認ポリシーが使用されます。 Azure RMS を使って適用された保護は、場所 (組織、ネットワーク、ファイル サーバー、およびアプリケーションの内外) に関係なくドキュメントや電子メールで保持されます。
+保護テクノロジは、Azure Rights Management (Azure RMS) を使用しています。 このテクノロジは、他の Microsoft クラウド サービスと、Microsoft 365 や Azure Active Directory などのアプリケーションと統合されています。 この保護テクノロジでは、暗号化、ID、および承認ポリシーが使用されます。 Azure RMS を使って適用された保護は、場所 (組織、ネットワーク、ファイル サーバー、およびアプリケーションの内外) に関係なくドキュメントや電子メールで保持されます。
 
 この情報保護ソリューションは、データが他のユーザーと共有されている場合でも、お客様によるデータの制御を維持します。 Azure RMS は、お客様の基幹業務アプリケーションと ソフトウェア ベンダーの情報保護ソリューションと共に使用することもできます。これらのアプリケーションとソリューションはオンプレミスであってもクラウド内にあってもかまいません。
 

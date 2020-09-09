@@ -6,18 +6,31 @@ author: Daya-Patil
 manager: carmonm
 ms.topic: article
 ms.service: site-recovery
-ms.date: 10/16/2019
+ms.date: 6/4/2020
 ms.author: dapatil
-ms.openlocfilehash: bf32809f426f3bfcabd08ec3bd95e76202aa8f84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: feb4f6a24653aca8da825af90341c8016255e8b6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72433417"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133800"
 ---
 # <a name="azure-site-recovery-deployment-planner-version-history"></a>Azure Site Recovery Deployment Planner のバージョン履歴
 
 この記事では、Azure Site Recovery Deployment Planner のすべてのバージョンの履歴と修正、それぞれの既知の制限とそのリリース日を紹介します。
+
+## <a name="version-252"></a>バージョン 2.52
+
+**リリース日:2020 年 6 月 4 日**
+
+**修正:**
+
+- vCenter 7.0 のサポートを追加しました
+- 次のオペレーティング システムのサポートが追加されました。
+
+    - SUSE Linux Enterprise 15 (すべてのマイナー バージョンを含む)
+    - Red Hat Enterprise Linux 8 (すべてのマイナー バージョンを含む)
+
 
 ## <a name="version-251"></a>バージョン 2.51
 
@@ -156,7 +169,7 @@ ms.locfileid: "72433417"
 
 **既知の制限事項:**
 
-- VMware から Azure へのディザスター リカバリー シナリオのみをサポートします。 Hyper-V から Azure へのディザスター リカバリーのシナリオについては、[Hyper-V Capacity Planner ツール](./site-recovery-capacity-planning-for-hyper-v-replication.md)を利用してください。
+- VMware から Azure へのディザスター リカバリー シナリオのみをサポートします。 Hyper-V から Azure へのディザスター リカバリーのシナリオについては、[Hyper-V Capacity Planner ツール](./hyper-v-deployment-planner-overview.md)を利用してください。
 - 米国政府と中国の Microsoft Azure リージョンの GetThroughput 操作はサポートしてません。
 - このツールでは、同じ名前または IP アドレスの複数の VM が異なる ESXi ホストにまたがって vCenter サーバーに存在する場合に、VM をプロファイルできません。
 このバージョンでは、VMListFile 内の重複する VM 名または IP アドレスに対するプロファイリングがスキップされます。 これを回避するには、vCenter サーバーを対象にするのではなく、ESXi ホストを対象にして VM をプロファイリングしてください。 ESXi ホストごとに 1 つのインスタンスを実行する必要があります。

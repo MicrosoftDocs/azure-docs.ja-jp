@@ -5,17 +5,18 @@ description: Azure Machine Learning を使用して Azure App Service の Web �
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 08/27/2019
-ms.openlocfilehash: 646254238f83166c53fe94a1821c68ff4dac8f04
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.date: 06/23/2020
+ms.topic: conceptual
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 04ae1788dfd3050fdd2042f88a8e1829e9063ad3
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82651924"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851360"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Azure App Service に機械学習モデルをデプロイする (プレビュー)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

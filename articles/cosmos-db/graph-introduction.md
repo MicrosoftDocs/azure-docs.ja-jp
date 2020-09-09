@@ -5,28 +5,28 @@ author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 07/18/2019
+ms.date: 07/10/2020
 ms.author: lbosq
-ms.openlocfilehash: 9151b54d7fa0b64a465aa8384cb4bfdb8e72c482
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3dc534d1cbb195cd93ede091503222b297b17059
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75500008"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523742"
 ---
-# <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB の概要:Gremlin API
+# <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Azure Cosmos DB での Gremlin API の概要
 
-[Azure Cosmos DB](introduction.md) は、ミッション クリティカルなアプリケーション向けの、Microsoft のグローバル分散マルチモデル データベース サービスです。 これはマルチモデル データベースであり、ドキュメント、キー値、グラフ、列ファミリのデータ モデルがサポートされています。 Azure Cosmos DB Gremlin API は、あらゆるスケール向けに設計されたフル マネージド データベース サービスで、グラフ データを格納および操作するために使用されます。  
+[Azure Cosmos DB](introduction.md) は、ミッション クリティカルなアプリケーション向けの、Microsoft のグローバル分散マルチモデル データベース サービスです。 これはマルチモデル データベースであり、ドキュメント、キー値、グラフ、列ファミリのデータ モデルがサポートされています。 Azure Cosmos DB は、あらゆる規模向けに設計されたフル マネージド データベース サービスで、Gremlin API を介してグラフ データ サービスを提供します。  
 
-![Azure Cosmos DB グラフ アーキテクチャ](./media/graph-introduction/cosmosdb-graph-architecture.png)
+:::image type="content" source="./media/graph-introduction/cosmosdb-graph-architecture.png" alt-text="Azure Cosmos DB グラフ アーキテクチャ" border="false":::
 
-この記事では、Azure Cosmos DB Gremlin API の概要と、これを使用して何十億もの頂点と辺のある大規模なグラフを保存する方法について説明します。 ミリ秒の待機時間でグラフを照会したり、グラフ構造を簡単に改善したりできます。 Azure Cosmos DB の Gremlin API は [Apache TinkerPop](https://tinkerpop.apache.org)  グラフ データベース標準に基づいており、Gremlin クエリ言語を使用します。 
+この記事では、Azure Cosmos DB Gremlin API の概要と、これを使用して何十億もの頂点と辺のある大規模なグラフを保存する方法について説明します。 ミリ秒の待機時間でグラフを照会したり、グラフ構造を簡単に改善したりできます。 Azure Cosmos DB の Gremlin API は、[Apache TinkerPop](https://tinkerpop.apache.org) というグラフ コンピューティング フレームワークに基づいて構築されています。 Azure Cosmos DB の Gremlin API では、Gremlin クエリ言語を使用します。
 
-Azure Cosmos DB の Gremlin API は、グラフ データベース アルゴリズムの機能を非常にスケーラブルなマネージド インフラストラクチャと結合して、柔軟性の不足に関連する最も一般的なデータの問題への一意で柔軟な解決策と、リレーショナル アプローチを提供します。 
+Azure Cosmos DB の Gremlin API は、グラフ データベース アルゴリズムの機能を非常にスケーラブルなマネージド インフラストラクチャと結合して、柔軟性の不足に関連する最も一般的なデータの問題への一意で柔軟な解決策と、リレーショナル アプローチを提供します。
 
-## <a name="features-of-azure-cosmos-db-graph-database"></a>Azure Cosmos DB グラフ データベースの機能
+## <a name="features-of-azure-cosmos-dbs-gremlin-api"></a>Azure Cosmos DB の Gremlin API の機能
  
-Azure Cosmos DB は、グローバル配布、ストレージとスループットのエラスティック スケーリング、自動インデックス作成とクエリ、調整可能な整合性レベルを提供し、TinkerPop 標準をサポートする、完全に管理されたグラフ データベースです。 
+Azure Cosmos DB は、グローバル配布、ストレージとスループットのエラスティック スケーリング、自動インデックス作成とクエリ、調整可能な整合性レベルを提供し、TinkerPop 標準をサポートする、完全に管理されたグラフ データベースです。
 
 Azure Cosmos DB Gremlin API で提供される差別化された機能は、次のとおりです。
 
@@ -36,11 +36,11 @@ Azure Cosmos DB Gremlin API で提供される差別化された機能は、次�
 
 * **複数リージョンのレプリケーション**
 
-  Azure Cosmos DB では、世界中の任意の Azure リージョンにグラフ データを自動的にレプリケートできます。 グローバル レプリケーションを使用すると、データへのグローバル アクセスを必要とするアプリケーションの開発を簡素化できます。 Azure Cosmos DB は、世界中の任意の場所で読み取りと書き込みの待機時間を最小化するだけでなく、リージョン内でサービスが中断するまれなケースにおいて、アプリケーションの継続性を確保できるリージョン内の自動リージョン内フェールオーバー メカニズムを提供します。 
+  Azure Cosmos DB では、世界中の任意の Azure リージョンにグラフ データを自動的にレプリケートできます。 グローバル レプリケーションを使用すると、データへのグローバル アクセスを必要とするアプリケーションの開発を簡素化できます。 Azure Cosmos DB は、世界中の任意の場所で読み取りと書き込みの待機時間を最小化するだけでなく、リージョン内でサービスが中断するまれなケースにおいて、アプリケーションの継続性を確保できるリージョン内の自動リージョン内フェールオーバー メカニズムを提供します。
 
 * **最も広く採用されているグラフ クエリ標準を使用した高速なクエリとトラバーサル**
 
-  異種の頂点と辺を格納し、使い慣れた Gremlin 構文を使用してこれらのクエリを実行します。 Gremlin は、一般的なグラフ アルゴリズムを実装するために豊富なインターフェイスを提供する命令型で関数型のクエリ言語です。 
+  異種の頂点と辺を格納し、使い慣れた Gremlin 構文を使用してこれらのクエリを実行します。 Gremlin は、一般的なグラフ アルゴリズムを実装するために豊富なインターフェイスを提供する命令型で関数型のクエリ言語です。
   
   Azure Cosmos DB では、スキーマのヒント、セカンダリ インデックス、またはビューを指定しなくても、豊富なリアルタイム クエリとトラバーサルが可能です。 詳細については、[Gremlin を使用したグラフの照会](gremlin-support.md)に関する記事を参照してください。
 
@@ -52,17 +52,18 @@ Azure Cosmos DB Gremlin API で提供される差別化された機能は、次�
 
 * **インデックスの自動作成**
 
-  既定では、Azure Cosmos DB はグラフのノードおよび辺内のすべてのプロパティのインデックスを自動的に作成するため、スキーマや、セカンダリ インデックスの作成は不要です。 詳細については、[Azure Cosmos DB のインデックス作成](https://docs.microsoft.com/azure/cosmos-db/index-overview)に関する記事をご覧ください。 
+  Azure Cosmos DB では、グラフのノード (頂点とも呼ばれます) や辺内のすべてのプロパティのインデックスが既定で自動的に作成されるため、スキーマや、セカンダリ インデックスの作成は不要です。 詳細については、[Azure Cosmos DB のインデックス作成](https://docs.microsoft.com/azure/cosmos-db/index-overview)に関する記事をご覧ください。
 
 * **Apache TinkerPop との互換性**
 
-  Azure Cosmos DB では、[オープン ソースの Apache TinkerPop 標準](https://tinkerpop.apache.org/)がサポートされています。 Tinkerpop 標準には、Azure Cosmos DB の Gremlin API と簡単に統合できるアプリケーションおよびライブラリの豊富なエコシステムがあります。 
+  Azure Cosmos DB では、[オープン ソースの Apache TinkerPop 標準](https://tinkerpop.apache.org/)がサポートされています。 Tinkerpop 標準には、Azure Cosmos DB の Gremlin API と簡単に統合できるアプリケーションおよびライブラリの豊富なエコシステムがあります。
 
 * **調整可能な整合性レベル**
 
   Azure Cosmos DB では、ご利用のアプリケーションに対する整合性とパフォーマンスの間の最適なトレードオフを実現するために、適切に定義された 5 つの整合性レベルが提供されます。 Azure Cosmos DB では、クエリと読み取り操作に関して、強固、有界整合性制約、セッション、一貫性のあるプレフィックス、最終的の 5 種類の整合性レベルを提供します。 明確に定義されたきめ細かな整合性レベルにより、整合性、可用性、待機時間の適切なトレードオフを行うことができます。 詳しくは、「[Azure Cosmos DB の調整可能なデータの一貫性レベル](consistency-levels.md)」をご覧ください。
 
-## <a name="scenarios-that-can-use-gremlin-api"></a>Gremlin API を使用できるシナリオ
+## <a name="scenarios-that-use-gremlin-api"></a>Gremlin API を使用するシナリオ
+
 Azure Cosmos DB のグラフ サポートが役立つ場合があるいくつかのシナリオを以下に示します。
 
 * **ソーシャル ネットワーク/Customer 365**
@@ -82,6 +83,7 @@ Azure Cosmos DB のグラフ サポートが役立つ場合があるいくつか
   ネットワークと、グラフとしてモデル化された IoT デバイス間の接続により、デバイスと資産の状態について理解を深めることができます。 さらに、ネットワークのある部分の変更が別の部分に及ぼす可能性のある影響についても学習できます。
 
 ## <a name="introduction-to-graph-databases"></a>グラフ データベースの概要
+
 実世界で出現するデータは、自然に結び付けられています。 従来のデータ モデリングでは、エンティティを個別に定義して、実行時にそれらのリレーションシップを計算することに焦点が当てられています。 このモデルにはその利点がありますが、緊密に接続されたデータをその制約の下で管理するのは困難な場合があります。  
 
 グラフ データベース アプローチは、代わりに、ストレージ層でリレーションシップを持続することに依存します。これで、グラフ取得の操作が非常に効率的になります。 Azure Cosmos DB の Gremlin API では、[プロパティ グラフ モデル](https://tinkerpop.apache.org/docs/current/reference/#intro)がサポートされています。
@@ -90,34 +92,39 @@ Azure Cosmos DB のグラフ サポートが役立つ場合があるいくつか
 
 プロパティ [グラフ](http://mathworld.wolfram.com/Graph.html)とは、[頂点](http://mathworld.wolfram.com/GraphVertex.html)と[辺](http://mathworld.wolfram.com/GraphEdge.html)で構成された構造です。 両方のオブジェクトで、プロパティとして任意の数のキーと値のペアを持つことができます。 
 
-* **頂点** - 頂点は、人、場所、イベントなどの個々のエンティティを表します。
+* **頂点 (ノード)** - 頂点は、人、場所、イベントなどの個々のエンティティを表します。
 
-* **辺** - 辺は、頂点間のリレーションシップを表します。 たとえば、あるユーザーは、別のユーザーと知り合いで、あるイベントに関連があり、ある場所に最近行ったような場合です。 
+* **辺 (関係)** - 辺は、頂点間の関係を表します。 たとえば、あるユーザーは、別のユーザーと知り合いで、あるイベントに関連があり、ある場所に最近行ったような場合です。
 
-* **プロパティ** - プロパティは頂点と辺に関する情報を表します。 頂点または辺のいずれかに任意の数のプロパティが存在する可能性があり、それらをクエリ内のオブジェクトの記述やフィルター処理に使用できます。 プロパティの例には、名前と年齢を持つ頂点、タイムスタンプや重みを持つことができる辺などがあります。 
+* **プロパティ** - プロパティは頂点と辺に関する情報を表します。 頂点または辺のいずれかに任意の数のプロパティが存在する可能性があり、それらをクエリ内のオブジェクトの記述やフィルター処理に使用できます。 プロパティの例には、名前と年齢を持つ頂点、タイムスタンプや重みを持つことができる辺などがあります。
 
-グラフ データベースは、スキーマまたは制約付きデータ モデルへの依存関係がないため、多くの場合、NoSQL または非リレーショナル データベース カテゴリ内に含まれています。 このようにスキーマが無いことにより、接続されている構造体を自然かつ効率的にモデリングして格納できます。 
+* **ラベル** - ラベルは、頂点や辺の名前 (識別子) です。 ラベルを使用すると、グループ内のすべての頂点または辺に特定のラベルを指定して、複数の頂点または辺をグループ化できます。 たとえば、グラフの複数の頂点に "person" という種類のラベルを指定できます。
 
-### <a name="gremlin-by-example"></a>Gremlin の例
+グラフ データベースは、スキーマまたは制約付きデータ モデルへの依存関係がないため、多くの場合、NoSQL または非リレーショナル データベース カテゴリ内に含まれています。 このようにスキーマが無いことにより、接続されている構造体を自然かつ効率的にモデリングして格納できます。
+
+### <a name="graph-database-by-example"></a>グラフ データベースの例
+
 サンプル グラフを使用して、Gremlin でクエリを表現する方法を理解しましょう。 次の図は、ユーザー、関心事、デバイスに関するデータを管理するビジネス アプリケーションをグラフの形で示しています。  
 
-![ユーザー、デバイス、関心事を示すサンプル データベース](./media/gremlin-support/sample-graph.png) 
+:::image type="content" source="./media/gremlin-support/sample-graph.png" alt-text="ユーザー、デバイス、関心事を示すサンプル データベース" border="false"::: 
 
-このグラフには、次の*頂点*の種類 (Gremlin では "ラベル" と呼ばれます) が含まれています。
+このグラフには、次の "*頂点*" の種類 (Gremlin では "ラベル" とも呼ばれます) が含まれています。
 
-- **ユーザー**: このグラフには、Robin、Thomas、Ben の 3 人のユーザーが含まれています。
-- **関心**: 各ユーザーの関心事。この例では、フットボールの試合です。
-- **[デバイス]** : ユーザーが使用しているデバイスです。
-- **オペレーティング システム**: 各デバイスが実行されているオペレーティング システムです。
+* **ユーザー**: このグラフには、Robin、Thomas、Ben の 3 人のユーザーが含まれています。
+* **関心**: 各ユーザーの関心事。この例では、フットボールの試合です。
+* **[デバイス]** : ユーザーが使用しているデバイスです。
+* **オペレーティング システム**: 各デバイスが実行されているオペレーティング システムです。
+* **場所**: デバイスにアクセスする場所です
 
-次の*辺*の種類/ラベルによって、これらのエンティティの関係を表しています。
+次の "*辺*" の種類によって、これらのエンティティの関係を表します。
 
-- **知り合い**: たとえば、"Thomas は Robin を知っている" ことが示されています。
-- **関心あり**: このグラフの各ユーザーの関心事を表します。たとえば、"Ben はフットボールに関心がある" ことが示されています。
-- **RunsOS**: ノート PC で Windows OS が実行されています。
-- **使用**: ユーザーが使用しているデバイスを表します。 たとえば、Robin はシリアル番号が 77 の Motorola Phone を使用しています。
+* **知り合い**: たとえば、"Thomas は Robin を知っている" ことが示されています。
+* **関心あり**: このグラフの各ユーザーの関心事を表します。たとえば、"Ben はフットボールに関心がある" ことが示されています。
+* **RunsOS**: ノート PC で Windows OS が実行されています。
+* **使用**: ユーザーが使用しているデバイスを表します。 たとえば、Robin はシリアル番号が 77 の Motorola Phone を使用しています。
+* **配置されている**: デバイスにアクセスする場所を表します
 
-[Gremlin コンソール](https://tinkerpop.apache.org/docs/3.3.2/reference/#gremlin-console)を使用して、このグラフに対していくつかの操作を実行しましょう。 これらの操作は、任意のプラットフォーム (Java、Node.js、Python、または .NET) で Gremlin ドライバーを使用して実行することもできます。  Azure Cosmos DB でサポートされているものを確認する前に、構文に慣れるために例をいくつか見てみましょう。
+Gremlin コンソールは Apache TinkerPop が提供する対話型ターミナルで、このターミナルを使用してグラフ データを操作します。 詳細については、[Gremlin コンソールの使用方法](create-graph-gremlin-console.md)に関するクイックスタート ドキュメントを参照してください。 これらの操作は、任意のプラットフォーム (Java、Node.js、Python、または .NET) で Gremlin ドライバーを使用して実行することもできます。 次の例は、Gremlin コンソールを使用して、このグラフ データに対してクエリを実行する方法を示しています。
 
 まず、CRUD を見てみます。 次の Gremlin ステートメントでは、グラフに "Thomas" 頂点を挿入します。
 
@@ -132,6 +139,7 @@ Azure Cosmos DB のグラフ サポートが役立つ場合があるいくつか
 ```
 
 次のクエリは、ユーザーの姓の降順で "person" 頂点を返します。
+
 ```java
 :> g.V().hasLabel('person').order().by('firstName', decr)
 ```
@@ -143,6 +151,7 @@ Azure Cosmos DB のグラフ サポートが役立つ場合があるいくつか
 ```
 
 ## <a name="next-steps"></a>次のステップ
+
 Azure Cosmos DB のグラフ サポートの詳細については、以下をご覧ください。
 
 * [Azure Cosmos DB グラフ チュートリアル](create-graph-dotnet.md)を開始する

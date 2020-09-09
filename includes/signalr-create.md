@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/17/2018
 ms.author: wesmc
 ms.custom: include file
-ms.openlocfilehash: 39bff26baea622e6c0ed524ca68c3c8bae4e770d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ba46d4dbe90b696398ed4c78383e127861c1a066
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76021008"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050314"
 ---
 1. Azure SignalR Service のリソースを作成するには、まず [Azure portal](https://portal.azure.com) にサインインします。 ページの左上にある **[+ リソースの作成]** を選択します。 **[Marketplace を検索]** テキスト ボックスに「**SignalR Service**」と入力します。
 
@@ -36,4 +36,4 @@ ms.locfileid: "76021008"
 
     接続文字列は、次の形式になります。
     
-        Endpoint=<service_endpoint>;AccessKey=<access_key>;
+    `Endpoint=<service_endpoint>;AccessKey=<access_key>;`

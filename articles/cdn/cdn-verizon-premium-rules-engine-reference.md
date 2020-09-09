@@ -5,14 +5,14 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: bda817712faf1f54287e880dc62ef2b08273ff42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 75633521474ec3bcbc35cea49ea7a2da6a271e01
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253392"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872499"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>Azure CDN from Verizon Premium ルール エンジンのリファレンス
 
@@ -26,20 +26,62 @@ ms.locfileid: "81253392"
 - 機密性の高いコンテンツに対する要求をセキュリティで保護するか拒否します。
 - 要求をリダイレクトします。
 - カスタム ログ データを保存します。
+## <a name="key-concepts"></a>主要な概念
+以下では、ルール エンジンの設定に関する主要な概念について説明します。
+### <a name="draft"></a>ドラフト
+ポリシーのドラフトは、要求とそれに適用される一連のアクションを識別するための 1 つまたは複数のルールで構成されます。 ドラフトとは、サイトのトラフィックに影響を与えることなく頻繁に構成を更新できるようにする、進行中の作業のことです。 ドラフトを完成させる準備ができたら、読み取り専用ポリシーに変換する必要があります。
 
-## <a name="terminology"></a>用語
+### <a name="rule"></a>ルール
+ルールでは、1 つまたは複数の種類の要求と、それらに適用される一連のアクションが示されます。
 
-ルールは、[**条件式**](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)、[**一致条件**](cdn-verizon-premium-rules-engine-reference-match-conditions.md)、および[**機能**](cdn-verizon-premium-rules-engine-reference-features.md)を使用して定義されます。 次の図では、これらの要素が強調表示されています。
+構成は次のとおりです。 
 
- ![CDN の一致条件](./media/cdn-rules-engine-reference/cdn-rules-engine-terminology.png)
+- 要求が識別されるロジックを定義する一連の条件式。
+- 要求を識別するために使用される条件を定義する一連の一致条件。
+- CDN による上記の要求の処理方法を定義する一連の機能。
+次の図では、これらの要素が示されています。
 
+![ポリシーのデプロイのワークフロー](./media/cdn-verizon-premium-rules-engine-reference/verizon-rules-engine-reference.png)
+
+### <a name="policy"></a>ポリシー
+一連の読み取り専用ルールで構成されるポリシーでは、以下のことのための手段が提供されます。
+
+- ルールの複数のバリエーションを作成、保存、管理する。
+- 以前にデプロイしたバージョンにロールバックする。
+- イベント固有のルールを事前に準備する (たとえば、顧客が開始したメンテナンスの結果としてトラフィックをリダイレクトするルール)。
+
+> [!NOTE]
+> 環境ごとに許可されるポリシーは 1 つだけですが、必要に応じてポリシーをデプロイできます。
+
+### <a name="deploy-request"></a>デプロイ要求
+デプロイ要求では、ステージング環境または運用環境にポリシーを迅速に適用できる、簡単で合理化された手順が提供されます。 これらの環境に適用された変更の追跡を容易にするため、デプロイ要求の履歴が提供されています。
+
+> [!NOTE]
+> 自動検証およびエラー検出システムを通過しない要求についてのみ、手動による確認と承認が必要になります。
+
+### <a name="rule-precedence"></a>ルールの優先順位
+ポリシーに含まれるルールは、通常、一覧の順序 (つまり、上から下) で処理されます。 要求が競合する複数のルールと一致した場合は、最後に処理されるルールが優先されます。
+
+### <a name="policy-deployment-workflow"></a>ポリシーのデプロイのワークフロー
+次の図では、運用環境またはステージング環境にポリシーを適用するワークフローを示します。
+
+![ポリシーのデプロイのワークフロー](./media/cdn-verizon-premium-rules-engine-reference/policy-deployment-workflow.png)
+
+|手順 |説明 |
+|---------|---------|
+|[ドラフトを作成する](https://docs.vdms.com/cdn/index.html#HRE/AdministeringDraftsandRules.htm#Create)    |    ドラフトは、コンテンツの要求を CDN で処理する方法が定義されている一連のルールで構成されます。     |
+|ドラフトをロックする   |     ドラフトが完成したら、ロックし、読み取り専用ポリシーに変換する必要があります。    |
+|[デプロイ要求を送信する](https://docs.vdms.com/cdn/index.html#HRE/DeployRequest.htm)   |   <br> デプロイ要求を使って、ポリシーをテスト トラフィックまたは運用トラフィックに適用できます。</br> <br>ステージング環境または運用環境のいずれかにデプロイ要求を送信します。</br>     |
+|デプロイ要求のレビュー   |    <br>デプロイ要求の自動検証とエラー検出が行われます。</br><br>デプロイ要求の大部分は自動的に承認されますが、より複雑なポリシーの場合は手動で確認する必要があります。</br>   |
+|ポリシーのデプロイ ([ステージング](https://docs.vdms.com/cdn/index.html#HRE/Environment.htm#Staging))   |  <br> ステージング環境へのデプロイ要求が承認されたら、ステージング環境にポリシーが適用されます。 この環境では、モック サイト トラフィックに対してポリシーをテストできます。</br><br>ポリシーをライブ サイト トラフィックに適用する準備ができたら、運用環境に対する新しいデプロイ要求を送信する必要があります。</br>      |
+|ポリシーのデプロイ ([運用](https://docs.vdms.com/cdn/index.html#HRE/Environment.htm#Producti))   |  運用環境へのデプロイ要求が承認されたら、運用環境にポリシーが適用されます。 この環境では、ポリシーは、CDN がライブ トラフィックを処理する方法を決定するための最後の証明機関として機能することができます。     |
 ## <a name="syntax"></a>構文
 
 特殊文字が扱われる方法は、一致条件または機能でテキスト値を処理する方法によって異なります。 一致条件または機能は、次のいずれかのようにテキストを解釈する場合があります。
 
-1. [**リテラル値**](#literal-values)
-2. [**ワイルドカード値**](#wildcard-values)
-3. [**正規表現**](#regular-expressions)
+- [**リテラル値**](#literal-values)
+- [**ワイルドカード値**](#wildcard-values)
+- [**正規表現**](#regular-expressions)
 
 ### <a name="literal-values"></a>リテラル値
 
@@ -66,12 +108,14 @@ Space | 空白文字は、指定した値またはパターンのいずれかで
 特殊文字 | 説明
 ------------------|------------
 \ | バックスラッシュは、その後の文字をエスケープします。これにより、その文字は、正規表現の意味としてではなく、リテラル値として扱われます。 たとえば、次の構文では、アスタリスクをエスケープします。`\*`
-% | パーセント記号の意味は、その使用法によって異なります。<br/><br/> `%{HTTPVariable}`: この構文では、HTTP 変数を識別します。<br/>`%{HTTPVariable%Pattern}`: この構文では、区切り記号として、また HTTP 変数を識別するために、パーセント記号を使用します。<br />`\%`: パーセント記号をエスケープすると、その記号をリテラル値として使用したり、URL エンコードを示したりすることができます (例: `\%20`)。
+% | パーセント記号の意味は、その使用法によって異なります。<br/><br/> `%{HTTPVariable}`:この構文では、HTTP 変数を識別します。<br/>`%{HTTPVariable%Pattern}`:この構文では、区切り記号として、また HTTP 変数を識別するために、パーセント記号を使用します。<br />`\%`:パーセント記号をエスケープすると、リテラル値として使用したり、URL エンコードを示したりすることができます (例: `\%20`)。
 \* | アスタリスクでは、直前の文字を 0 回以上一致すことができます。
 Space | 空白文字は一般的にリテラル文字として扱われます。
 '値' | 一重引用符は、リテラル文字として扱われます。 一重引用符のセットには、特別な意味はありません。
 
 正規表現をサポートする一致条件と機能は、Perl Compatible Regular Expressions (PCRE) で定義されているパターンを受け入れます。
+
+
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -2,19 +2,19 @@
 title: Azure Lighthouse のサンプルとテンプレート
 description: これらのサンプルと Azure Resource Manager テンプレートでは、Azure の委任されたリソース管理に顧客をオンボードする方法を示し、Azure Lighthouse のシナリオをサポートしています。
 ms.topic: sample
-ms.date: 03/30/2020
-ms.openlocfilehash: 9e0ba8175931e277357e5b65e7e9ebded908a675
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.date: 07/07/2020
+ms.openlocfilehash: 9a90923b43fa5afe59f6385e3f227cdc722b27f5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421145"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111665"
 ---
 # <a name="azure-lighthouse-samples"></a>Azure Lighthouse サンプル
 
 次の表は、Azure Lighthouse 用の主要な Azure Resource Manager テンプレートのリンク一覧です。 [Azure Lighthouse サンプル リポジトリ](https://github.com/Azure/Azure-Lighthouse-samples/)にはこれらのファイル以外にさらに多くのファイルが用意されています。
 
-## <a name="onboarding-customers-to-azure-delegated-resource-management"></a>Azure の委任されたリソース管理に顧客をオンボードする
+## <a name="onboarding-customers-to-azure-lighthouse"></a>Azure Lighthouse への顧客のオンボード
 
 [!INCLUDE [azure-lighthouse-samples-onboarding](../../../includes/azure-lighthouse-samples-onboarding.md)]
 

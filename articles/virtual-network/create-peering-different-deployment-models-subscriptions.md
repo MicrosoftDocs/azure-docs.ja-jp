@@ -7,18 +7,18 @@ documentationcenter: ''
 author: KumudD
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/15/2017
+ms.date: 06/25/2020
 ms.author: kumud
 ms.reviewer: anavin
-ms.openlocfilehash: 6823514e284f75f0580578dcabaa1b1bdcbe2f59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 88e576231e0231a105cd9ec303f63307b5eaff89
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239834"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051614"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>仮想ネットワーク ピアリングの作成 - 異なるデプロイメント モデルとサブスクリプション
 
@@ -34,7 +34,7 @@ ms.locfileid: "80239834"
 
 クラシック デプロイ モデルでデプロイされた 2 つの仮想ネットワークの間に、仮想ネットワーク ピアリングを作成することはできません。 このチュートリアルでは、同じリージョンに存在する仮想ネットワークを使用します。 このチュートリアルでは同じリージョンで複数の仮想ネットワークをピアリングします。 異なる[サポート対象リージョン](virtual-network-manage-peering.md#cross-region)間での仮想ネットワーク ピアリングも可能です。 仮想ネットワークのピアリングの前に、[ピアリングの要件と制約](virtual-network-manage-peering.md#requirements-and-constraints)をよく理解しておくことをお勧めします。
 
-異なるサブスクリプションの仮想ネットワークの間で仮想ネットワーク ピアリングを作成する場合、両方のサブスクリプションが同じ Azure Active Directory テナントに関連付けられている必要があります。 Azure Active Directory テナントがまだない場合は、簡単に[作成](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant)できます。 異なるサブスクリプションや異なる Azure Active Directory テナント内の仮想ネットワークは、Azure [VPN Gateway](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) を使って接続することができます。
+異なるサブスクリプションにある仮想ネットワーク間に仮想ネットワーク ピアリングを作成する場合、サブスクリプションは同じ Azure Active Directory テナントに関連付けることができます。 Azure Active Directory テナントがまだない場合は、簡単に[作成](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant)できます。
 
 仮想ネットワーク ピアリングは、[Azure Portal](#portal)、Azure [コマンド ライン インターフェイス](#cli) (CLI)、Azure [PowerShell](#powershell) のいずれかを使って作成できます。 いずれかのリンクをクリックすると、そのツールを使って仮想ネットワーク ピアリングを作成するための手順に直接移動します。
 
@@ -183,7 +183,7 @@ ms.locfileid: "80239834"
 
 このチュートリアルでは、サブスクリプションごとに異なるアカウントを使用します。 両方のサブスクリプションへのアクセス許可を持つアカウントを使用している場合は、すべての手順で同じアカウントを使用し、Azure からログアウトする手順をスキップして、ユーザー ロールの割り当てを作成するスクリプト行を削除できます。 次のすべてのスクリプトの UserA@azure.com と UserB@azure.com を、UserA と UserB で使用しているユーザー名に置き換えます。 
 
-1. PowerShell [Azure](https://www.powershellgallery.com/packages/Azure) および [Az](https://www.powershellgallery.com/packages/Az) モジュールの最新バージョンをインストールします。 Azure PowerShell を初めてお使いの方は、[Azure PowerShell の概要](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事を参照してください。
+1. PowerShell [Azure](https://www.powershellgallery.com/packages/Azure) および [Az](https://www.powershellgallery.com/packages/Az) モジュールの最新バージョンをインストールします。 Azure PowerShell を初めてお使いの方は、[Azure PowerShell の概要](/powershell/azure/?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事を参照してください。
 2. PowerShell セッションを開始します。
 3. PowerShell で、`Add-AzureAccount` コマンドを入力して、UserB のサブスクリプションに UserB としてログインします。 ログインに使用するアカウントには、仮想ネットワーク ピアリングを作成するためのアクセス許可が必要です。 アクセス許可の一覧については、[仮想ネットワークのピアリングのアクセス許可](virtual-network-manage-peering.md#permissions)に関するページをご覧ください。
 4. PowerShell で仮想ネットワーク (クラシック) を作成するには、ネットワーク構成ファイルを新しく作成するか、既存のものを変更する必要があります。 [ネットワーク構成ファイルをエクスポート、更新、およびインポートする](virtual-networks-using-network-configuration-file.md)方法を確認してください。 ファイルには、このチュートリアルで使用されている仮想ネットワークの次の **VirtualNetworkSite** 要素を含める必要があります。

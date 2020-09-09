@@ -5,18 +5,18 @@ services: synapse-analytics
 author: ronortloff
 manager: craigg
 ms.service: synapse-analytics
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 08/13/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5d73ba8f21fe7731fb751d42a8497ff8e1ebba7d
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: c61e8df05c4bc199c0d91b8ed0cbd73fa6f196cf
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383623"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192310"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>リソース クラスからワークロード グループへの変換
 
@@ -44,13 +44,13 @@ SELECT Request_min_resource_grant_percent = Effective_request_min_resource_grant
 
 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` が既知であれば、CREATE WORKLOAD GROUP <link> 構文を使用して、ワークロード グループを作成できます。  必要に応じて、0 より大きい `MIN_PERCENTAGE_RESOURCE` を指定して、ワークロード グループのリソースを分離することもできます。  また必要に応じて、ワークロード グループが使用できるリソースの量を制限するために、`CAP_PERCENTAGE_RESOURCE` を 100 未満に指定することもできます。  
 
-次の例では、`MIN_PERCENTAGE_RESOURCE` を設定して、システム リソースの 9.6% を `wgDataLoads` の専用にし、1 つのクエリが常に実行できるようにすることを保証します。  さらに、`CAP_PERCENTAGE_RESOURCE` は 38.4% に設定され、このワークロード グループは 4 個の同時要求に制限されます。  `QUERY_EXECUTION_TIMEOUT_SEC` パラメーターを 3600 に設定すると、1 時間以上実行されるすべてのクエリが自動的に取り消されます。
+次のコードでは、例の基礎として mediumrc を使用して `MIN_PERCENTAGE_RESOURCE` を設定して、システム リソースの 10% を `wgDataLoads` 専用にし、1 つのクエリが常に実行できるようにすることを保証します。  さらに、`CAP_PERCENTAGE_RESOURCE` は 40% に設定され、このワークロード グループは 4 個の同時要求に制限されます。  `QUERY_EXECUTION_TIMEOUT_SEC` パラメーターを 3600 に設定すると、1 時間以上実行されるすべてのクエリが自動的に取り消されます。
 
 ```sql
 CREATE WORKLOAD GROUP wgDataLoads WITH  
-( REQUEST_MIN_RESOURCE_GRANT_PERCENT = 9.6
- ,MIN_PERCENTAGE_RESOURCE = 9.6
- ,CAP_PERCENTAGE_RESOURCE = 38.4
+( REQUEST_MIN_RESOURCE_GRANT_PERCENT = 10
+ ,MIN_PERCENTAGE_RESOURCE = 10
+ ,CAP_PERCENTAGE_RESOURCE = 40
  ,QUERY_EXECUTION_TIMEOUT_SEC = 3600)
 ```
 

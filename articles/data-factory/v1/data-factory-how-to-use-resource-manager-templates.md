@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 73498b3537f4cf9313fc9e2464785f63c2af0d5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e94445a6cb16eacb496daedbec21379928a4dafd
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460734"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194457"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>テンプレートを使用して Azure Data Factory のエンティティを作成する
 > [!NOTE]
@@ -25,7 +25,7 @@ ms.locfileid: "81460734"
 ## <a name="overview"></a>概要
 データ統合のために Azure Data Factory を使用した場合、異なる環境間で同じパターンを何度も使用したり、同じソリューション内で同じタスクを繰り返し実装したりしていることに気づく場合があります。 テンプレートを使用すると、これらのシナリオを簡単に実装、管理することができます。 Azure Data Factory のテンプレートは、再利用や繰り返しを伴うシナリオに最適です。
 
-世界中に 10 の製造プラントを持つ企業について考えてみましょう。 各プラントからのログは、オンプレミスの個別の SQL Server データベースに格納されます。 企業は、アドホック分析用にクラウドに 1 つのデータ ウェアハウスを構築したいと考えています。 また、開発、テスト、および運用環境に同じロジックの異なる構成が必要でもあります。
+世界中に 10 の製造プラントを持つ企業について考えてみましょう。 各プラントからのログは、個別の SQL Server データベースに格納されます。 企業は、アドホック分析用にクラウドに 1 つのデータ ウェアハウスを構築したいと考えています。 また、開発、テスト、および運用環境に同じロジックの異なる構成が必要でもあります。
 
 この場合、同じ環境内でタスクを繰り返す必要がありますが、各製造プラントの 10 のデータ ファクトリ間で異なる値を使用する必要があります。 ここに**繰り返し**が伴います。 テンプレートでは、この一般的なフロー (つまり、各データ ファクトリに同じアクティビティを持つパイプライン) の抽象化が可能になり、各製造プラントに個別のパラメーター ファイルを使用できます。
 
@@ -37,8 +37,8 @@ ms.locfileid: "81460734"
 ## <a name="tutorials"></a>チュートリアル
 Resource Manager テンプレートを使用して Data Factory エンティティを作成する詳細な手順については、次のチュートリアルをご覧ください。
 
-* [チュートリアル: Azure Resource Manager テンプレートを使用してデータをコピーするパイプラインを作成する](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
-* [チュートリアル: Azure Resource Manager テンプレートを使用してデータを処理するパイプラインを作成する](data-factory-build-your-first-pipeline.md)
+* [チュートリアル:Azure Resource Manager テンプレートを使用してデータをコピーするパイプラインを作成する](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+* [チュートリアル:Azure Resource Manager テンプレートを使用してデータを処理するパイプラインを作成する](data-factory-build-your-first-pipeline.md)
 
 ## <a name="data-factory-templates-on-github"></a>GitHub の Data Factory テンプレート
 GitHub の次の Azure クイック スタート テンプレートもご覧ください。

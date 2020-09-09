@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-Windows
 ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 46f630dc1b700659d047a31b5aa5905ef99d9cd0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 778a5ecbea48be9f55fc3bfe51a144a2bd8cb86e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81459459"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501850"
 ---
 # <a name="quick-create-a-virtual-machine-with-the-azure-cli"></a>Azure CLI を使用した仮想マシンの簡易作成
 
@@ -48,12 +48,12 @@ az group delete --name myResourceGroup --yes
 
 | command | メモ |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm) | 仮想マシンを作成し、作成したマシンをネットワーク カード、仮想ネットワーク、サブネット、およびネットワーク セキュリティ グループに接続します。 このコマンドでは、使用する仮想マシン イメージと管理者の資格情報も指定します。  |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [az group create](/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az vm create](/cli/azure/vm) | 仮想マシンを作成し、作成したマシンをネットワーク カード、仮想ネットワーク、サブネット、およびネットワーク セキュリティ グループに接続します。 このコマンドでは、使用する仮想マシン イメージと管理者の資格情報も指定します。  |
+| [az group delete](/cli/azure/vm/extension) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
 その他の仮想マシン用の CLI サンプル スクリプトは、[Azure Windows VM のドキュメント](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)のページにあります。

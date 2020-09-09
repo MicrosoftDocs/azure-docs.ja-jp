@@ -13,21 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: juliako
-ms.openlocfilehash: 079094965775c140c0343da98e40fd008995d45a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b570efa54d99380f2beff5441dc40a3a10b902a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74901183"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269116"
 ---
 # <a name="dynamic-packaging"></a>動的パッケージ
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector" title1="使用している Media Services のバージョンを選択してください:"]
 > * [Version 3](../latest/dynamic-packaging-overview.md)
 > * [Version 2](media-services-dynamic-packaging-overview.md)
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 
 Microsoft Azure Media Services を使用して、多数のメディア ソース ファイルの形式、メディア ストリーミング形式、およびコンテンツ保護形式をさまざまなクライアント テクノロジ (iOS、XBOX、Silverlight、Windows 8 など) に配信できます。 これらのクライアントは異なるプロトコルを認識します。たとえば、iOS は HTTP Live Streaming (HLS) V4 形式が必要で、Silverlight および Xbox はスムーズ ストリーミングが必要です。 MPEG DASH、HLS またはスムーズ ストリーミングを認識するクライアントに提供する、一連のアダプティブ ビットレート (マルチビット レート) MP4 (ISO Base Media 14496-12) ファイルまたは一連のアダプティブ ビットレート スムーズ ストリーミング ファイルがある場合、Media Services の動的パッケージを活用する必要があります。
 
@@ -70,4 +72,3 @@ Microsoft Azure Media Services を使用して、多数のメディア ソース
 ## <a name="provide-feedback"></a>フィードバックの提供
 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

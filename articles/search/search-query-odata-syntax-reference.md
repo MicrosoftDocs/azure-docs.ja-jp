@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f3422fd10e062ae87bc165491e0d01ac2b4943d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 83e9ae4aa68bc0c819d02a0cc6c39758549811cb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72793226"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928855"
 ---
 # <a name="odata-expression-syntax-reference-for-azure-cognitive-search"></a>Azure Cognitive Search の OData 式構文リファレンス
 
@@ -217,6 +217,6 @@ Azure Cognitive Search でサポートされている OData 言語の文法を�
 ## <a name="see-also"></a>参照  
 
 - [Azure Cognitive Search のフィルター](search-filters.md)
-- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)
 - [Lucene クエリ構文](query-lucene-syntax.md)
 - [Azure Cognitive Search でのシンプルなクエリ構文](query-simple-syntax.md)

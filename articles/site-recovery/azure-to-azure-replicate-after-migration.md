@@ -8,17 +8,17 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 874c282ff878126297dc46ca0e7a4c19910e40a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a71e476a214c44514c7d57c54a09a38218ad6d2a
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74159116"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135665"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Azure への移行後に Azure VM のディザスター リカバリーをセットアップする 
 
 
-[Site Recovery](site-recovery-overview.md) サービスを使用して[オンプレミス マシンを Azure VM に移行](tutorial-migrate-on-premises-to-azure.md)し、VM にセカンダリ Azure リージョンへのディザスター リカバリーをセットアップさせる場合、この記事の手順に従ってください。 この記事では、Azure VM エージェントが移行済みの VM に インストールされていることを確認する方法と、移行後に不要になった Site Recovery モビリティ サービスを削除する方法について説明します。
+[Site Recovery](site-recovery-overview.md) サービスを使用して[オンプレミス マシンを Azure VM に移行](./migrate-tutorial-on-premises-azure.md)し、VM にセカンダリ Azure リージョンへのディザスター リカバリーをセットアップさせる場合、この記事の手順に従ってください。 この記事では、Azure VM エージェントが移行済みの VM に インストールされていることを確認する方法と、移行後に不要になった Site Recovery モビリティ サービスを削除する方法について説明します。
 
 
 
@@ -49,14 +49,14 @@ ms.locfileid: "74159116"
 2. このファイルを右クリックし、 **[プロパティ]** で **[詳細]** タブを選択します。
 3. **[製品バージョン]** フィールドに 2.6.1198.718 以上が表示されていることを確認します。
 
-Windows のエージェントのインストールについては、[こちら](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)をご覧ください。
+Windows のエージェントのインストールについては、[こちら](../virtual-machines/extensions/agent-windows.md)をご覧ください。
 
 ### <a name="install-the-agent-on-linux-vms"></a>Linux VM にエージェントをインストールする
 
 次のように手動で [Azure Linux VM](../virtual-machines/extensions/agent-linux.md) エージェントをインストールします。
 
 1. マシンの管理者アクセス許可があることを確認します。
-2. ディストリビューションのパッケージ リポジトリから RPM または DEB パッケージを使用して、Linux VM エージェントをインストールすることを強くお勧めします。 すべての[動作保証済みディストリビューション プロバイダー](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)Azure Linux エージェント パッケージをイメージとリポジトリに統合します。
+2. ディストリビューションのパッケージ リポジトリから RPM または DEB パッケージを使用して、Linux VM エージェントをインストールすることを強くお勧めします。 すべての[動作保証済みディストリビューション プロバイダー](../virtual-machines/linux/endorsed-distros.md)Azure Linux エージェント パッケージをイメージとリポジトリに統合します。
     - ディストリビューション リポジトリ経由でのみエージェントを更新することを強くお勧めします。
     - GitHub から直接 Linux VM エージェントをインストールしてそれを更新することはお勧めしません。
     -  最新のエージェントをディストリビューションで使用できない場合は、そのエージェントをインストールする方法をディストリビューション サポートにお問い合わせください。 
@@ -76,7 +76,7 @@ Windows のエージェントのインストールについては、[こちら](
         ```
         MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
         ```
-    - Linux の場合は、root ユーザーとしてサインインします。 ターミナルで、 **/user/local/ASR** に移動して、次のコマンドを実行します。
+    - Linux の場合は、root ユーザーとしてサインインします。 端末で、 **/user/local/ASR** に移動して、次のコマンドを実行します。
         ```
         ./uninstall.sh -Y
         ```

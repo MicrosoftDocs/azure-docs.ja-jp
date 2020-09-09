@@ -4,14 +4,14 @@ titleSuffix: Azure Kubernetes Service
 description: Kubernetes クラスターの作成、アプリケーションのデプロイ、および Azure Kubernetes Service (AKS) でのパフォーマンスの監視を、Azure portal を使用して迅速に行う方法について説明します。
 services: container-service
 ms.topic: quickstart
-ms.date: 01/21/2020
+ms.date: 08/18/2020
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: e4ac5a953b5d88d0074c3cfb7f1bd45331577238
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: cd3fd41d281708f4c1d9616db47f751f60e055cd
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392798"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589913"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Kubernetes Service (AKS) クラスターをデプロイする
 
@@ -43,11 +43,11 @@ AKS クラスターを作成するには、次の手順を実行します。
     
     ![AKS クラスターの作成 - 基本情報を入力する](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
-    **スケール** を完了後に選択します。
+    **[Next:スケール]** を完了後に選択します。
 
 4. **[スケール]** ページで、既定のオプションを維持します。 ページの下部にある **[Next:Authentication] (次: 認証)** をクリックします。
     > [!CAUTION]
-    > 新しい AAD サービス プリンシパルの作成は、伝達されて使用可能になるまでに数分かかる場合があり、それが原因でサービス プリンシパルが見つからないエラーや検証エラーが Azure portal で生じることがあります。 そのような場合の軽減策については、[こちら](troubleshooting.md#im-receiving-errors-that-my-service-principal-was-not-found-when-i-try-to-create-a-new-cluster-without-passing-in-an-existing-one)をご覧ください。
+    > 新しい AAD サービス プリンシパルの作成は、伝達されて使用可能になるまでに数分かかる場合があり、それが原因でサービス プリンシパルが見つからないエラーや検証エラーが Azure portal で生じることがあります。 そのような場合の軽減策については、[こちら](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster)をご覧ください。
 
 5. **[認証]** ページで、次のオプションを構成します。
     - **[サービス プリンシパル]** フィールドを **[(新規) 既定のサービス プリンシパル]** のままにして、新しいサービス プリンシパルを作成します。 または、 *[サービス プリンシパルを構成します]* を選択して、既存のものを使用することもできます。 既存のものを使用する場合、SPN クライアント ID とシークレットを指定する必要があります。
@@ -92,10 +92,7 @@ aks-agentpool-14693408-0   Ready     agent     15m       v1.11.5
 
 Kubernetes のマニフェスト ファイルでは、どのコンテナー イメージを実行するかなど、クラスターの望ましい状態を定義します。 このクイック スタートでは、マニフェストを使用して、Azure Vote アプリケーションを実行するために必要なすべてのオブジェクトを作成します。 このマニフェストには、 [Kubernetes デプロイ][kubernetes-deployment] が 2 つ含まれます。サンプル Azure Vote Python アプリケーション用と Redis インスタンス用です。 さらに、 [Kubernetes サービス][kubernetes-service] が 2 つ作成されます。Redis インスタンスに使用される内部サービスと、Azure Vote アプリケーションにインターネットからアクセスするための外部サービスです。
 
-> [!TIP]
-> このクイック スタートでは、アプリケーション マニフェストの作成と AKS クラスターへのデプロイを手動で行います。 より現実に即したシナリオでは、[Azure Dev Spaces][azure-dev-spaces] を使用して、AKS クラスター内で直接、コードの反復とデバッグを迅速に実行することができます。 Dev Spaces は、OS プラットフォームと開発環境の垣根を越えて使用でき、チーム内の他のメンバーと連携することができます。
-
-Cloud Shell から `nano azure-vote.yaml` または `vi azure-vote.yaml` コマンドを使用して、`azure-vote.yaml` という名前のファイルを作成します。 そこに次の YAML 定義をコピーします。
+Cloud Shell では、`code azure-vote.yaml`、`nano azure-vote.yaml`、`vi azure-vote.yaml` のような `azure-vote.yaml` という名前のファイルをエディターを使用して作成できます。 そこに次の YAML 定義をコピーします。
 
 ```yaml
 apiVersion: apps/v1
@@ -232,7 +229,7 @@ Azure Portal にこのデータが入力されるまで、数分かかる場合�
 
 1. 左側の **[監視]** の下で、 **[Insights]** を選択します
 1. 上部の **[+ フィルターの追加]** を選択します
-1. プロパティとして "*名前空間*" を選択し、 *\<All but kube-system (kube-system 以外のすべて)\>* を選択します
+1. プロパティとして "*名前空間*" を選択し、 *\<All but kube-system\>* を選択します。
 1. **コンテナー**の表示を選択します。
 
 次の例に示されているように、*azure-vote-back* コンテナーと *azure-vote-front* コンテナーが表示されます。
@@ -280,11 +277,11 @@ AKS の詳細を参照し、デプロイの例の完全なコードを確認す�
 [kubernetes-concepts]: concepts-clusters-workloads.md
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [az-aks-delete]: /cli/azure/aks#az-aks-delete
-[aks-monitor]: ../monitoring/monitoring-container-health.md
+[aks-monitor]: ../azure-monitor/insights/container-insights-overview.md
 [aks-network]: ./concepts-network.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 [http-routing]: ./http-application-routing.md
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
-[azure-dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
+[azure-dev-spaces]: ../dev-spaces/index.yml
 [kubernetes-deployment]: concepts-clusters-workloads.md#deployments-and-yaml-manifests
 [kubernetes-service]: concepts-network.md#services

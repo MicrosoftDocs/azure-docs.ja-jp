@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/06/2018
+ms.date: 06/09/2020
 ms.author: genli
-ms.openlocfilehash: 4edeea749ba22bef173c15f3a0855679b784ce33
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 8861e850e168169762d95c44a54b6a88a036f396
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668571"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84628528"
 ---
-# <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>App Service Environment で内部ロード バランサーを使用するアプリケーション ゲートウェイのホワイトリストにバックエンド サーバー証明書が登録されない
+# <a name="back-end-server-certificate-is-not-allow-listed-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>App Service Environment で内部ロード バランサーを使用するアプリケーション ゲートウェイの許可リストにバックエンド サーバー証明書が登録されない
 
-この記事でトラブルシューティングを行う問題: Azure 内でエンド ツー エンド TLS を使用するとき、内部ロード バランサー (ILB) と App Service Environment (ASE) を一緒にバックエンドで使用してアプリケーション ゲートウェイを作成すると、証明書がホワイトリストに登録されません。Azure 内でエンド ツー エンド SSL を使用するとき、内部ロード バランサー (ILB) と App Service Environment (ASE) を一緒にバックエンドで使用してアプリケーション ゲートウェイを作成すると、証明書がホワイトリストに登録されません。
+この記事でトラブルシューティングを行う問題: Azure 内でエンド ツー エンド TLS を使用するとき、内部ロード バランサー (ILB) と App Service Environment (ASE) を一緒にバックエンドで使用してアプリケーション ゲートウェイを作成すると、証明書が許可リストに登録されません。
 
 ## <a name="symptoms"></a>現象
 
@@ -41,7 +41,7 @@ ms.locfileid: "80668571"
 - **ポート:** 443
 - **カスタム プローブ:** ホスト名 – test.appgwtestase.com
 - **認証証明書:** test.appgwtestase.com の .cer
-- **バックエンドの正常性:** 異常 – バックエンド サーバーの証明書が Application Gateway に対してホワイトリストに登録されていません。
+- **バックエンドの正常性:** 異常 – バックエンド サーバー証明書が Application Gateway の許可リストに登録されていません。
 
 **ASE 構成:**
 
@@ -68,7 +68,7 @@ HTTPS Web サイトにアクセスするときにホスト名を使用しない�
 
 - ILB の IP アドレスを使用する場合は、アプリケーション ゲートウェイの **[App Service 用に使用します]** オプションをクリアします。
 
-オーバーヘッドを減らすため、HTTP 設定に ILB 証明書をアップロードしてプローブ パスが機能するようにします。 (この手順はホワイトリスト登録のためだけです。 TLS 通信では使用されません。)お使いのブラウザーから HTTPS の IP アドレスを使用して ILB にアクセスし、TLS/SSL 証明書を Base-64 エンコーディングされた CER 形式でエクスポートし、それぞれの HTTP 設定に証明書をアップロードすることで、ILB 証明書を取得できます。
+オーバーヘッドを減らすため、HTTP 設定に ILB 証明書をアップロードしてプローブ パスが機能するようにします。 (この手順は許可リスト登録のためだけです。 TLS 通信では使用されません。)お使いのブラウザーから HTTPS の IP アドレスを使用して ILB にアクセスし、TLS/SSL 証明書を Base-64 エンコーディングされた CER 形式でエクスポートし、それぞれの HTTP 設定に証明書をアップロードすることで、ILB 証明書を取得できます。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
 

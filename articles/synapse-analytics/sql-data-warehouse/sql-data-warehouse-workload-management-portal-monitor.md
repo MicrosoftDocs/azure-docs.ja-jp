@@ -6,17 +6,17 @@ author: ronortloff
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 31533eefbfae63e0eb4049d2eabaf6b853340636
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 4f46ed1890bb62acc92eea28c55bf9abd6153e8b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590249"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85208690"
 ---
 # <a name="azure-synapse-analytics--workload-management-portal-monitoring"></a>Azure Synapse Analytics - ワークロード管理ポータル監視
 

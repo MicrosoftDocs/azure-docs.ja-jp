@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.custom: mvc
-ms.openlocfilehash: 14340138a221dd00aa10651da9e209468b3c8550
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: ea889f48aaf3218ad9f3f286d1cda4f8a761a7ac
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891703"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069971"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-powershell"></a>クイック スタート:PowerShell を使用して Azure HDInsight 内に Apache Spark クラスターを作成する
 

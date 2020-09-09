@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Apex Portal の統合 | Microsoft Docs
 description: Azure Active Directory と Apex Portal の間のシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: db204a46-6460-4ace-bdbb-4353846723ad
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5225262304785cf3dd5a9c2346f338535c797332
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9879c20a376e3f5bac67d470c293d23f4927e92b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75659663"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544540"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-apex-portal"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Apex Portal の統合
 

@@ -8,18 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 05/22/2020
 ms.author: scottwhi
-ms.openlocfilehash: b56f6743b642904349797ac5b6167194f7916b45
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-python
+ms.openlocfilehash: 7c76ec8600ade26098206a5d18559e795db53178
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75446584"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853077"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-python"></a>クイック スタート:Bing Visual Search REST API と Python を使用して画像に関する分析情報を取得する
 
-このクイック スタートを使用すると、Bing Visual Search API への最初の呼び出しを行い、結果を表示することができます。 この Python アプリケーションは、API に画像をアップロードし、返された情報を表示するものです。 このアプリケーションは Python で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
+このクイックスタートを使用して、Bing Visual Search API を呼び出してみましょう。 この Python アプリケーションは、API に画像をアップロードし、返された情報を表示するものです。 このアプリケーションは Python で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,7 +36,7 @@ ms.locfileid: "75446584"
     import requests, json
     ```
 
-2. サブスクリプション キー、エンドポイント、およびアップロードしている画像へのパスのための変数を作成します。 `BASE_URI` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。
+2. サブスクリプション キー、エンドポイント、およびアップロードしている画像へのパスのための変数を作成します。 `BASE_URI` 値には、次のコードのグローバル エンドポイントを使用するか、Azure portal に表示される、お使いのリソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用することができます。
 
     ```python
 
@@ -44,7 +45,7 @@ ms.locfileid: "75446584"
     imagePath = 'your-image-path'
     ```
     
-    ローカルの画像をアップロードする際には、フォーム データに `Content-Disposition` ヘッダーが含まれている必要があります。 その `name` パラメーターは "image" に設定する必要があります。`filename` パラメーターは任意の文字列に設定できます。 フォームの内容には、画像のバイナリ データが含まれます。 アップロードできる画像の最大サイズは、1 MB です。
+3. ローカルの画像をアップロードする際には、フォーム データに `Content-Disposition` ヘッダーが含まれている必要があります。 その `name` パラメーターを "image" に設定して、`filename` パラメーターをお使いの画像のファイル名に設定します。 フォームの内容には、画像のバイナリ データが含まれます。 アップロードできる画像の最大サイズは、1 MB です。
     
     ```
     --boundary_1234-abcd
@@ -55,13 +56,13 @@ ms.locfileid: "75446584"
     --boundary_1234-abcd--
     ```
 
-3. 要求のヘッダー情報を保持するディクショナリ オブジェクトを作成します。 次に示すように、文字列 `Ocp-Apim-Subscription-Key` にサブスクリプション キーをバインドします。
+4. 要求のヘッダー情報を保持するディクショナリ オブジェクトを作成します。 お使いのサブスクリプション キーを `Ocp-Apim-Subscription-Key` 文字列とバインドします。
 
     ```python
     HEADERS = {'Ocp-Apim-Subscription-Key': SUBSCRIPTION_KEY}
     ```
 
-4. 画像を格納するための別のディクショナリを作成します。この画像は、要求を送信するときに開かれてアップロードされます。
+5. お使いの画像を格納する別のディクショナリを作成します。この画像は、要求を送信するときに開かれてアップロードされます。
 
     ```python
     file = {'image' : ('myfile', open(imagePath, 'rb'))}
@@ -69,27 +70,27 @@ ms.locfileid: "75446584"
 
 ## <a name="parse-the-json-response"></a>JSON 応答を解析します
 
-1. `print_json()` という名前のメソッドを作成します。このメソッドは、API 応答を取り込み、JSON を出力します。
+`print_json()` という名前のメソッドを作成します。このメソッドは、API 応答を受け取り、JSON を出力します。
 
-    ```python
-    def print_json(obj):
-        """Print the object as json"""
-        print(json.dumps(obj, sort_keys=True, indent=2, separators=(',', ': ')))
-    ```
+```python
+def print_json(obj):
+    """Print the object as json"""
+    print(json.dumps(obj, sort_keys=True, indent=2, separators=(',', ': ')))
+```
 
 ## <a name="send-the-request"></a>要求を送信する
 
-1. `requests.post()` を使用して、要求を Bing Visual Search API に送信します。 エンドポイント、ヘッダー、およびファイル情報の文字列を含めます。 `print_json()` を使用して `response.json()` を出力します
+`requests.post()` を使用して、要求を Bing Visual Search API に送信します。 エンドポイント、ヘッダー、およびファイル情報の文字列を含めます。 `print_json()` を使用して `response.json()` を出力します。
 
-    ```python
-    try:
-        response = requests.post(BASE_URI, headers=HEADERS, files=file)
-        response.raise_for_status()
-        print_json(response.json())
+```python
+try:
+    response = requests.post(BASE_URI, headers=HEADERS, files=file)
+    response.raise_for_status()
+    print_json(response.json())
     
-    except Exception as ex:
-        raise ex
-    ```
+except Exception as ex:
+    raise ex
+```
 
 ## <a name="next-steps"></a>次のステップ
 

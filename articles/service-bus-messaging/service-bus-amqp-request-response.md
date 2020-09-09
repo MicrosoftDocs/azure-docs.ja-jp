@@ -1,24 +1,14 @@
 ---
 title: Azure Service Bus での AMQP 1.0 要求/応答操作
 description: この記事では、Microsoft Azure Service Bus での AMQP 要求および応答ベースの操作の一覧を定義します。
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/23/2020
-ms.author: aschhab
-ms.openlocfilehash: 338b411eade35fa357f64131c64b8ef2034c92b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.openlocfilehash: b845f4086ee1ac4fe868571c1754caf6d29b9021
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76761085"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064416"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>Microsoft Azure Service Bus における AMQP 1.0: 要求/応答ベースの操作
 
@@ -706,4 +696,4 @@ AMQP と Service Bus の詳細については、次のリンクを参照して�
 
 [Service Bus AMQP の概要]: service-bus-amqp-overview.md
 [AMQP 1.0 プロトコル ガイド]: service-bus-amqp-protocol-guide.md
-[Windows Server 用 Service Bus の AMQP]: https://docs.microsoft.com/previous-versions/service-bus-archive/dn282144(v=azure.100)
+[Windows Server 用 Service Bus の AMQP]: /previous-versions/service-bus-archive/dn282144(v=azure.100)

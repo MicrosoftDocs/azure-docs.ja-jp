@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 6c77cd43231d4596535c11564313a0fe90633cdb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bb112e0b2d1c64e65ecaf6749a25707d8632c0cb
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60947808"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134955"
 ---
 # <a name="azure-traffic-manager-with-azure-site-recovery"></a>Azure Traffic Manager と Azure Site Recovery
 
@@ -30,7 +30,7 @@ Traffic Manager では、ドメイン ネーム システム (DNS) を使用し�
 **A 社**はパブリック エンドポイントでアプリケーションを実行しており、障害時にトラフィックを Azure にシームレスにリダイレクトする機能を必要としています。 Azure Traffic Manager の[優先順位](../traffic-manager/traffic-manager-configure-priority-routing-method.md)トラフィック ルーティング方法を使うと、A 社はこのフェールオーバー パターンを簡単に実装できます。
 
 セットアップは次のとおりです。
-- **A 社**は [Traffic Manager プロファイル](../traffic-manager/traffic-manager-create-profile.md)を作成します。
+- **A 社**は [Traffic Manager プロファイル](../traffic-manager/quickstart-create-traffic-manager-profile.md)を作成します。
 - **優先順位**ルーティング方法を利用して、**A 社**は、オンプレミス用の **Primary** と Azure 用の **Failover** の 2 つのエンドポイントを作成します。 **Primary** には優先順位 1 を割り当て、**Failover** には優先順位 2 を割り当てます。
 - **Primary** エンドポイントは Azure の外部でホストされているため、エンドポイントは[外部](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)エンドポイントとして作成されます。
 - Azure Site Recovery では、フェールオーバーの前に Azure サイトで仮想マシンまたはアプリケーションは実行していません。 そのため、**Failover** エンドポイントも**外部**エンドポイントとして作成されます。
@@ -65,7 +65,7 @@ Azure Traffic Manager の[加重](../traffic-manager/traffic-manager-configure-w
 **C 社**はパブリック エンドポイントでアプリケーションを実行しており、障害時にトラフィックを異なる Azure リージョンにシームレスにリダイレクトする機能を必要としています。 [優先順位](../traffic-manager/traffic-manager-configure-priority-routing-method.md)トラフィック ルーティング方法を使うと、**C 社**はこのフェールオーバー パターンを簡単に実装できます。
 
 セットアップは次のとおりです。
-- **C 社**は [Traffic Manager プロファイル](../traffic-manager/traffic-manager-create-profile.md)を作成します。
+- **C 社**は [Traffic Manager プロファイル](../traffic-manager/quickstart-create-traffic-manager-profile.md)を作成します。
 - **優先順位**ルーティング方法を利用して、**C 社**は、ソース リージョン (Azure 東アジア) 用の **Primary** と、リカバリー リージョン (Azure 東南アジア) 用の **Failover** の 2 つのエンドポイントを作成します。 **Primary** には優先順位 1 を割り当て、**Failover** には優先順位 2 を割り当てます。
 - **Primary** エンドポイントは Azure でホストされているので、エンドポイントは [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) エンドポイントにできます。
 - Azure Site Recovery では、フェールオーバーの前にリカバリー Azure サイトで仮想マシンまたはアプリケーションは実行していません。 そのため、**Failover** エンドポイントは[外部](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)エンドポイントとして作成できます。

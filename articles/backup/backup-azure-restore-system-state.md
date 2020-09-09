@@ -1,15 +1,14 @@
 ---
 title: Windows Server へのシステム状態の復元
 description: Azure のバックアップから Windows Server のシステム状態を復元する手順について説明します。
-ms.reviewer: saurse
 ms.topic: conceptual
-ms.date: 08/18/2017
-ms.openlocfilehash: 39cac84c4a33c1da209d0a0cc7b0f8ac8ee390a0
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.date: 06/30/2020
+ms.openlocfilehash: 9237d3d087da7f9e72813baa0056cd6b70f2c914
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610787"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892543"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Windows Server へのシステム状態の復元
 
@@ -19,7 +18,7 @@ ms.locfileid: "82610787"
    * バックアップが作成されたサーバーにシステム状態を復元する。または、
    * システム状態ファイルを別のサーバーに復元する。
 
-2. 復元されたシステム状態ファイルを Windows Server に適用します。
+2. Windows Server バックアップ ユーティリティを使用して、復元されたシステム状態ファイルを Windows Server に適用します。
 
 ## <a name="recover-system-state-files-to-the-same-server"></a>システム状態ファイルを同じサーバーに回復する
 
@@ -29,15 +28,15 @@ ms.locfileid: "82610787"
 
     デスクトップ アプリが検索結果に表示されます。
 
-2. **[データの回復]** をクリックして、ウィザードを開始します。
+2. **[データの回復]** を選択してウィザードを開始します。
 
     ![データの回復](./media/backup-azure-restore-windows-server/recover.png)
 
-3. 同じサーバーまたはコンピューターにデータを復元するには、 **[作業の開始]** ウィンドウで、 **[このサーバー] \ (`<server name>`)** を選択し、 **[次へ]** をクリックします。
+3. 同じサーバーまたはコンピューターにデータを復元するには、 **[作業の開始]** ウィンドウで、 **[このサーバー (`<server name>`)]** を選択し、 **[次へ]** を選択します。
 
     ![[このサーバー] オプションを選択すると、データが同じマシンに復元される](./media/backup-azure-restore-system-state/samemachine.png)
 
-4. **[回復モードの選択]** ウィンドウで、 **[システム状態]** を選択し、 **[次へ]** をクリックします。
+4. **[回復モードの選択]** ウィンドウで、 **[システム状態]** を選択し、 **[次へ]** を選択します。
 
     ![Browse files](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
@@ -47,21 +46,21 @@ ms.locfileid: "82610787"
 
     ![Volume and Date](./media/backup-azure-restore-system-state/select-date.png)
 
-6. 復元する回復ポイントを選択したら、 **[次へ]** をクリックします。
+6. 復元する回復ポイントを選択したら、 **[次へ]** を選択します。
 
     Azure Backup がローカルの回復ポイントをマウントし、回復ボリュームとして使用します。
 
-7. 次のウィンドウでは、システム状態ファイルの回復先を指定します。 **[参照]** をクリックして Windows エクスプローラーを開き、必要なファイルとフォルダーを見つけます。 **[コピーを作成して両方のバージョンを保持する]** を選択すると、システム状態アーカイブ全体のコピーが作成されるのではなく、既存のシステム状態ファイル アーカイブの個々のファイルのコピーが作成されます。
+7. 次のペインで、回復したシステム状態ファイルのコピー先を指定します。 **[参照]** を選択してエクスプローラーを開き、必要なファイルとフォルダーを見つけます。 **[コピーを作成して両方のバージョンを保持する]** を選択すると、システム状態アーカイブ全体のコピーが作成されるのではなく、既存のシステム状態ファイル アーカイブの個々のファイルのコピーが作成されます。
 
     ![Recovery options](./media/backup-azure-restore-system-state/recover-as-files.png)
 
-8. **[確認]** ウィンドウで回復の詳細を確認し、 **[回復]** をクリックします。
+8. **[確認]** ウィンドウで回復の詳細を確認し、 **[回復]** を選択します。
 
    ![[回復] をクリックして回復操作を承認する](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
 9. 回復先の *WindowsImageBackup* ディレクトリを、サーバーの重要ではないボリュームにコピーします。 通常は、Windows OS ボリュームが重要なボリュームです。
 
-10. 回復が正常に完了したら、「[復元されたシステム状態を Windows Server に適用する](backup-azure-restore-system-state.md)」の手順に従って、システム状態回復プロセスを完了します。
+10. 回復が正常に完了したら、「[復元されたシステム状態を Windows Server に適用する](#apply-restored-system-state-on-a-windows-server)」の手順に従って、システム状態の回復プロセスを完了します。
 
 ## <a name="recover-system-state-files-to-an-alternate-server"></a>システム状態ファイルを別のサーバーに回復する
 
@@ -71,7 +70,7 @@ Windows Server が破損したり、アクセス不能になったりしたと�
 
 * *ソース コンピューター* – バックアップが実行され、現在は使用できなくなっている元のコンピューター。
 * *ターゲット コンピューター* – データの回復先となるコンピューター。
-* "*サンプルのコンテナー*" – "*ソース コンピューター*" と "*ターゲット コンピューター*" が登録されている Recovery Services コンテナー。 <br/>
+* "*サンプルのコンテナー*" – "*ソース コンピューター*" と "*ターゲット コンピューター*" が登録されている Recovery Services コンテナー。
 
 > [!NOTE]
 > コンピューターのバックアップは、以前のバージョンのオペレーティング システムを実行しているコンピューターには復元できません。 たとえば、Windows Server 2016 コンピューターから作成されたバックアップを Windows Server 2012 R2 に復元することはできません。 ただし、逆は可能です。 Windows Server 2012 R2 のバックアップを使用して、Windows Server 2016 を復元できます。
@@ -79,7 +78,7 @@ Windows Server が破損したり、アクセス不能になったりしたと�
 
 1. **ターゲット コンピューター**で *Microsoft Azure Backup* スナップインを開きます。
 2. "*ターゲット コンピューター*" および "*ソース コンピューター*" が同じ Recovery Services コンテナーに登録されていることを確認します。
-3. **[データの回復]** をクリックして、ワークフローを開始します。
+3. **[データの回復]** を選択して、ワークフローを開始します。
 4. **[別のサーバー]**
 
     ![[別のサーバー]](./media/backup-azure-restore-system-state/anotherserver.png)
@@ -87,23 +86,23 @@ Windows Server が破損したり、アクセス不能になったりしたと�
 5. *サンプルの資格情報コンテナー*に対応するコンテナー資格情報ファイルを指定します。 コンテナー資格情報ファイルが無効である (または有効期限が切れている) 場合、Azure Portal の *サンプルの資格情報コンテナー*から、新しいコンテナー資格情報ファイルをダウンロードします。 コンテナー資格情報ファイルを指定すると、そのコンテナー資格情報ファイルに関連付けられている Recovery Services コンテナーが表示されます。
 
 6. [バックアップ サーバーの選択] ウィンドウで、表示されているコンピューターの一覧から*ソース コンピューター*を選択します。
-7. [回復モードの選択] ウィンドウで、 **[システム状態]** を選択し、 **[次へ]** をクリックします。
+7. [回復モードの選択] ウィンドウで、 **[システム状態]** を選択し、 **[次へ]** を選択します。
 
     ![検索](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
-8. **[ボリュームと日付の選択]** ウィンドウのカレンダーで回復ポイントを選択します。 任意の時点の回復ポイントから復元できます。 **太字**になっている日付では、少なくとも 1 つの回復ポイントを利用できます。 選択した日付で複数の回復ポイントを利用できる場合は、 **[時間]** ドロップダウン メニューから特定の回復ポイントを選択します。
+8. **[ボリュームと日付の選択]** ウィンドウのカレンダーで回復ポイントを選択します。 任意の時点の回復ポイントから復元できます。 **太字**になっている日付では、少なくとも 1 つの回復ポイントを利用できます。 選択した日付で複数の回復ポイントを利用できる場合は、 **[時間]** ドロップダウン メニューから、特定の回復ポイントを選択します。
 
     ![Search items](./media/backup-azure-restore-system-state/select-date.png)
 
-9. 復元する回復ポイントを選択したら、 **[次へ]** をクリックします。
+9. 復元する回復ポイントを選択したら、 **[次へ]** を選択します。
 
-10. **[システム状態の回復モードの選択]** ウィンドウで、システム状態ファイルの回復先を指定し、 **[次へ]** をクリックします。
+10. **[システム状態の回復モードの選択]** ウィンドウで、システム状態ファイルの回復先を指定し、 **[次へ]** を選択します。
 
     ![暗号化](./media/backup-azure-restore-system-state/recover-as-files.png)
 
     **[コピーを作成して両方のバージョンを保持する]** を選択すると、システム状態アーカイブ全体のコピーが作成されるのではなく、既存のシステム状態ファイル アーカイブの個々のファイルのコピーが作成されます。
 
-11. [確認] ウィンドウで回復の詳細を確認し、 **[回復]** をクリックします。
+11. [確認] ウィンドウで回復の詳細を確認し、 **[回復]** を選択します。
 
     ![[回復] をクリックして回復プロセスを確定する](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
@@ -115,6 +114,61 @@ Windows Server が破損したり、アクセス不能になったりしたと�
 
 Azure Recovery Services エージェントを使用してシステム状態をファイルとして回復したら、Windows Server バックアップ ユーティリティを使用して、回復したシステム状態を Windows Server に適用します。 Windows Server バックアップ ユーティリティは、サーバーで既に使用可能です。 次の手順では、回復したシステム状態を適用する方法を説明します。
 
+1. Windows Server バックアップ スナップインを開きます。 スナップインがインストールされている場所がわからない場合は、コンピューターまたはサーバーで **Windows Server バックアップ**を検索します。
+
+    デスクトップ アプリが検索結果に表示されます。 表示されない場合、またはアプリケーションを開くときにエラーが発生した場合は、**サーバー マネージャー**の**機能の追加ウィザード**から **Windows Server バックアップ機能**と、その依存コンポーネントをインストールする必要があります。
+
+1. スナップインで **[ローカル バックアップ]** を選択します。
+
+    ![復元元として [ローカル バックアップ] を選択する](./media/backup-azure-restore-system-state/win-server-backup-local-backup.png)
+
+1. [ローカル バックアップ] コンソールで、**操作ウィンドウ**の **[回復]** を選択して回復ウィザードを開きます。
+
+1. **[別の場所に保存されているバックアップ]** を選択し、 **[次へ]** を選択します。
+
+   ![別のサーバーへの回復を選択する](./media/backup-azure-restore-system-state/backup-stored-in-diff-location.png)
+
+1. 場所の種類を指定します。システム状態バックアップを別のサーバーに回復した場合は、 **[リモート共有フォルダー]** を選択します。 システム状態をローカルに回復した場合は、 **[ローカル ドライブ]** を選択します。
+
+    ![ローカル サーバーと別のサーバーのどちらから回復するかを選択する](./media/backup-azure-restore-system-state/ss-recovery-remote-shared-folder.png)
+
+1. Azure Recovery Services エージェントを使用したシステム状態ファイルの回復の一環として回復された、*WindowsImageBackup* ディレクトリのパスを入力するか、このディレクトリが格納されているローカル ドライブ (例: D:\WindowsImageBackup) を選択し、 **[次へ]** を選択します。
+
+    ![共有ファイルのパス](./media/backup-azure-restore-system-state/ss-recovery-remote-folder.png)
+
+1. 復元するシステム状態のバージョンを選択し、 **[次へ]** を選択します。
+
+1. [回復の種類の選択] ウィンドウで、 **[システム状態]** を選択し、 **[次へ]** を選択します。
+
+1. システム状態の回復の場所として、 **[元の場所]** を選択し、 **[次へ]** を選択します。
+
+    ドメイン コントローラーを復元している場合は、次の追加オプションが表示されます。
+
+    ![システム状態の回復の場所](./media/backup-azure-restore-system-state/location-for-system-state-recovery.png)
+
+    >[!NOTE]
+    >すべての Active Directory データの Authoritative Restore を明示的に実行する場合は、[Active Directory ファイルの Authoritative Restore を実行する] を選択する必要があります。
+
+1. [確認] で詳細を確認し、再起動設定を確認します。 **[回復]** を選択して、復元されたシステム状態ファイルを適用します。
+
+    ![システム状態ファイルの復元を開始する](./media/backup-azure-restore-system-state/launch-ss-recovery.png)
+
+    >[!NOTE]
+    >DSRM モードで復元を実行している場合は、 **[自動でサーバーを再起動する]** オプションを選択しないでください。
+
+1. 復元が正常に完了したら、通常モードでサーバーを再起動する必要があります。 コマンド プロンプトを開き、「`bcdedit /deletevalue safeboot`」と入力します。
+1. サーバーを再起動します。
+
+## <a name="special-considerations-for-system-state-recovery-on-a-domain-controller"></a>ドメイン コントローラーでのシステム状態の回復に関する特別な考慮事項
+
+システム状態バックアップには、Active Directory のデータが含まれています。 Active Directory Domain Services (AD DS) を現在の状態から以前の状態に復元するには、次の手順に従います。 この種の復元は、次の 2 つのシナリオで実行できます。
+
+* 機能するドメイン コントローラーがフォレストに残っていない場合に、すべての Active Directory データを復元する
+* オブジェクトが削除されているか破損している場合に、Active Directory データの一部を復元する
+
+この記事では 1 つ目シナリオについてのみ説明します。このシナリオでは、AD DS の非 Authoritative Restore と、sysvol フォルダーの Authoritative Restore が必要です。  2 つ目のシナリオ (ドメイン コントローラーがまだ機能しているが、特定の AD オブジェクトを復元する必要がある場合) を実行する必要があるときは、[こちらの手順](https://support.microsoft.com/help/840001/how-to-restore-deleted-user-accounts-and-their-group-memberships-in-ac)を参照してください。
+
+1. [こちらの手順](#recover-system-state-files-to-an-alternate-server)に従って、システム状態ファイルを別のサーバーに回復します。
 1. 次のコマンドを使用して、"*ディレクトリ サービスの修復モード*" でサーバーを再起動します。 管理者特権でのコマンド プロンプトで、次のように入力します。
 
     ```cmd
@@ -122,62 +176,49 @@ Azure Recovery Services エージェントを使用してシステム状態を�
     Shutdown /r /t 0
     ```
 
-2. 再起動後に、Windows Server バックアップ スナップインを開きます。 スナップインがインストールされている場所がわからない場合は、コンピューターまたはサーバーで **Windows Server バックアップ**を検索します。
+1. システム状態の復元の一環として Active Directory を回復するには、次の 2 つの方法のいずれかを選択できます。
 
-    デスクトップ アプリが検索結果に表示されます。 表示されない場合、またはアプリケーションを開くときにエラーが発生した場合は、 **[サーバー マネージャー]** の **[機能の追加ウィザード]** から **[Windows Server バックアップ機能]** と、その依存コンポーネントをインストールする必要があります。
+    * 上記の手順に従い Windows Server バックアップ ユーティリティを使用して、[復元されたシステム状態を Windows Server に適用します](#apply-restored-system-state-on-a-windows-server)。
 
-3. スナップインで **[ローカル バックアップ]** を選択します。
+        >[!NOTE]
+        >すべての Active Directory データを復元している (および、機能するドメイン コントローラーがフォレストに残っていない) 場合は、上記の手順 9. で **[Active Directory ファイルの Authoritative Restore を実行する]** を必ず選択してください。
 
-    ![復元元として [ローカル バックアップ] を選択する](./media/backup-azure-restore-system-state/win-server-backup-local-backup.png)
+    * [wbadmin](/windows-server/administration/windows-commands/wbadmin-start-systemstaterecovery) ユーティリティを使用して、コマンド ラインから復元を実行します。
 
-4. [ローカル バックアップ] コンソールで、**操作ウィンドウ**の **[回復]** をクリックして回復ウィザードを開きます。
+        使用するバックアップのバージョン識別子が必要になります。 次のコマンドを実行すると、バージョン識別子の一覧を取得できます。
 
-5. **[別の場所に保存されているバックアップ]** を選択し、 **[次へ]** をクリックします。
+        ```cmd
+        wbadmin get versions -backuptarget <servername\sharename>
+        ```
 
-   ![別のサーバーへの回復を選択する](./media/backup-azure-restore-system-state/backup-stored-in-diff-location.png)
+        次に、そのバージョン識別子を使用して復元を実行します。
 
-6. 場所の種類を指定します。システム状態バックアップを別のサーバーに回復した場合は、 **[リモート共有フォルダー]** を選択します。 システム状態をローカルに回復した場合は、 **[ローカル ドライブ]** を選択します。
+        たとえば、`server01` 用の共有リソース `\\servername\share` に格納されている、2020 年 4 月 30 日午前 9 時のバックアップを使用して、[AD DS の非 Authoritative Restore と sysvol フォルダーの Authoritative Restore](/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore) を実行するには、次のように入力します。
 
-    ![ローカル サーバーと別のサーバーのどちらから回復するかを選択する](./media/backup-azure-restore-system-state/ss-recovery-remote-shared-folder.png)
+        ```cmd
+        wbadmin start systemstaterecovery -version:04/30/2020-09:00 -backupTarget:\\servername\share -machine:server01 -authsysvol
+        ```
 
-7. Azure Recovery Services エージェントを使用したシステム状態ファイルの回復の一環として回復された、*WindowsImageBackup* ディレクトリのパスを入力するか、このディレクトリが格納されているローカル ドライブ (例: D:\WindowsImageBackup) を選択し、 **[次へ]** をクリックします。
-
-    ![共有ファイルのパス](./media/backup-azure-restore-system-state/ss-recovery-remote-folder.png)
-
-8. 復元するシステム状態のバージョンを選択し、 **[次へ]** をクリックします。
-
-9. [回復の種類の選択] ウィンドウで、 **[システム状態]** を選択し、 **[次へ]** をクリックします。
-
-10. システム状態の回復の場所として、 **[元の場所]** を選択し、 **[次へ]** をクリックします。
-
-11. [確認] で詳細を確認し、再起動設定を確認します。 **[回復]** をクリックして、復元されたシステム状態ファイルを適用します。
-
-    ![システム状態ファイルの復元を開始する](./media/backup-azure-restore-system-state/launch-ss-recovery.png)
-
-## <a name="special-considerations-for-system-state-recovery-on-active-directory-server"></a>Active Directory サーバーでのシステム状態の回復に関する特別な考慮事項
-
-システム状態バックアップには、Active Directory のデータが含まれています。 Active Directory Domain Services (AD DS) を現在の状態から以前の状態に復元するには、次の手順に従います。
-
-1. ディレクトリ サービス復元モード (DSRM) でドメイン コントローラーを再起動します。
-2. [ここ](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore)での手順に従い、Windows Server バックアップ コマンドレットを使用して、AD DS を回復します。
+1. 復元が正常に完了したら、通常モードでサーバーを再起動する必要があります。 コマンド プロンプトを開き、「`bcdedit /deletevalue safeboot`」と入力します。
+1. サーバーを再起動します。
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>システム状態の復元に失敗した場合のトラブルシューティング
 
-前述のシステム状態の適用プロセスが正常に完了しなかった場合は、Windows 回復環境 (Win RE) を使用して Windows Server を回復します。 次の手順では、Win RE を使用して回復する方法を説明します。 このオプションを使用するのは、システム状態の復元後に Windows Server が正常に起動しない場合だけです。 次のプロセスでは、システム データ以外のデータが消去されるので注意してください。
+前述のシステム状態の適用プロセスが正常に完了していない場合は、Windows 回復環境 (Win RE) を使用して Windows Server を回復します。 次の手順では、Win RE を使用して回復する方法を説明します。 このオプションを使用するのは、システム状態の復元後に Windows Server が正常に起動しない場合だけです。 次のプロセスでは、システム データ以外のデータが消去されるので注意してください。
 
 1. Windows Server を Windows 回復環境 (Win RE) で起動します。
 
 2. 3 つの使用可能なオプションの中から [トラブルシューティング] を選択します。
 
-    ![初期メニュー](./media/backup-azure-restore-system-state/winre-1.png)
+    ![[トラブルシューティング] の選択](./media/backup-azure-restore-system-state/winre-1.png)
 
 3. **[詳細オプション]** 画面で **[コマンド プロンプト]** を選択し、サーバー管理者のユーザー名とパスワードを入力します。
 
-   ![初期メニュー](./media/backup-azure-restore-system-state/winre-2.png)
+   ![[コマンド プロンプト] の選択](./media/backup-azure-restore-system-state/winre-2.png)
 
 4. サーバー管理者のユーザー名とパスワードを入力します。
 
-    ![初期メニュー](./media/backup-azure-restore-system-state/winre-3.png)
+    ![パスワードの入力](./media/backup-azure-restore-system-state/winre-3.png)
 
 5. コマンド プロンプトを管理者モードで開いたら、次のコマンドを実行して、システム状態バックアップのバージョンを取得します。
 
@@ -193,7 +234,7 @@ Azure Recovery Services エージェントを使用してシステム状態を�
     Wbadmin get items -version:<copy version from above step> -backuptarget:<Backup volume>
     ```
 
-    ![システム状態バックアップのバージョンを取得する](./media/backup-azure-restore-system-state/winre-5.png)
+    ![使用可能なすべてのボリュームを取得する](./media/backup-azure-restore-system-state/winre-5.png)
 
 7. 次のコマンドは、システム状態バックアップに含まれているすべてのボリュームを回復します。 この手順では、システム状態に含まれている重要なボリュームだけが回復されることに注意してください。 システム データ以外のデータはすべて消去されます。
 
@@ -201,7 +242,7 @@ Azure Recovery Services エージェントを使用してシステム状態を�
     Wbadmin start recovery -items:C: -itemtype:Volume -version:<Backupversion> -backuptarget:<backup target volume>
     ```
 
-     ![システム状態バックアップのバージョンを取得する](./media/backup-azure-restore-system-state/winre-6.png)
+     ![すべてのボリュームを回復する](./media/backup-azure-restore-system-state/winre-6.png)
 
 ## <a name="next-steps"></a>次のステップ
 

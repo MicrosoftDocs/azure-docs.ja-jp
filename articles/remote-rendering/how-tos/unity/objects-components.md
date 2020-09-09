@@ -5,12 +5,13 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/28/2020
 ms.topic: how-to
-ms.openlocfilehash: a34276c73211c1d9bea291f449cbc7041a3e78a2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 662c28196b06f5fbe49f69cb7145fdd33805e000
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81409872"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019047"
 ---
 # <a name="interact-with-unity-game-objects-and-components"></a>Unity のゲーム オブジェクトとコンポーネントを操作する
 
@@ -88,7 +89,7 @@ async void LoadModelWithAwait()
 
 Unity のゲーム オブジェクトを作成すると、`RemoteEntitySyncObject` コンポーネントが暗黙的にゲーム オブジェクトに追加されます。 このコンポーネントは、エンティティ変換をサーバーに同期するために使用されます。 既定では `RemoteEntitySyncObject` は、ローカルの Unity 状態をサーバーと同期するために、ユーザーが `SyncToRemote()` を明示的に呼び出す必要があります。 `SyncEveryFrame` を有効にすると、オブジェクトが自動的に同期されます。
 
-`RemoteEntitySyncObject` を持つオブジェクトでは、リモートの子をインスタンス化し、Unity エディターで **[子の表示]** ボタンを使用して表示できます。
+`RemoteEntitySyncObject` を持つオブジェクトでは、リモートの子をインスタンス化し、Unity エディターで **:::no-loc text="Show children":::** ボタンを使用して表示できます。
 
 ![RemoteEntitySyncObject](media/remote-entity-sync-object.png)
 
@@ -122,4 +123,4 @@ if (cutplane != null)
 ## <a name="next-steps"></a>次のステップ
 
 * [Unity 向けに Remote Rendering を設定する](unity-setup.md)
-* [チュートリアル:Unity でリモート エンティティを操作する](../../tutorials/unity/working-with-remote-entities.md)
+* [チュートリアル:Unity でリモート エンティティを操作する](../../tutorials/unity/manipulate-models/manipulate-models.md)

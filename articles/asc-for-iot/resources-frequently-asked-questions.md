@@ -98,7 +98,7 @@ Azure Security Center for IoT は、エージェントによって生成され�
 
 1. [エージェントがデバイス上で実行している](how-to-agent-configuration.md)ことを確認します。
 
-1. IoT Hub で[セキュリティ](quickstart-onboard-iot-hub.md)に対して**サービスが正常に有効になっている**ことを確認します。
+1. IoT Hub で**セキュリティ**に対して[サービスが正常に有効になっている](quickstart-onboard-iot-hub.md)ことを確認します。
 
 1. デバイスが [IoT Hub で Azure Security Center for IoT モジュールを使用して構成されている](quickstart-create-security-twin.md)ことを確認します。
 

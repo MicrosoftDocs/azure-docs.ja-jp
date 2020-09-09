@@ -10,12 +10,12 @@ ms.workload: identity
 ms.service: active-directory
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c748df10e432e3bebbce0dc8cb39dd2101d52e2
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: e105d4909705622a931c51bcb7cf0a9db4179525
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81680038"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279603"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Azure AD の UserPrincipalName の設定
 
@@ -56,7 +56,7 @@ Azure AD Connect を使用している場合、Azure AD との間で代替ログ
 
 ![未検証のドメイン](./media/plan-connect-userprincipalname/altloginid.png)  
 
-詳細については、[代替ログイン ID の構成](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)に関するページおよび「[Azure AD サインインの構成](how-to-connect-install-custom.md#azure-ad-sign-in-configuration)」を参照してください。
+詳細については、[代替ログイン ID の構成](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)に関するページおよび「[Azure AD サインインの構成](how-to-connect-install-custom.md#azure-ad-sign-in-configuration)」を参照してください。
 
 ## <a name="non-verified-upn-suffix"></a>未検証の UPN サフィックス
 Azure AD テナントに関して、オンプレミスの UserPrincipalName 属性/代替ログイン ID のサフィックスが検証されていない場合、Azure AD の UserPrincipalName 属性の値が MOERA に設定されます。 MOERA は、Azure AD の MailNickName 属性と Azure AD の初期ドメインから &lt;MailNickName&gt;&#64;&lt;initial domain&gt; として、Azure AD によって計算されます。

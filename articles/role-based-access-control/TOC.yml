@@ -26,17 +26,17 @@
       href: tutorial-custom-role-powershell.md
     - name: カスタム ロールの作成 - CLI
       href: tutorial-custom-role-cli.md
-- name: サンプル
-  items:
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: ベスト プラクティス
       href: best-practices.md
     - name: Azure 管理の条件付きアクセス
       href: conditional-access-azure-management.md
+    - name: セキュリティ
+      items:
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
 - name: 操作方法ガイド
   items:
     - name: ロール定義の一覧表示
@@ -92,12 +92,17 @@
           href: custom-roles-cli.md
         - name: REST API
           href: custom-roles-rest.md
+        - name: ARM テンプレート
+          displayName: Resource Manager
+          href: custom-roles-template.md
     - name: アクティビティ ログを表示する
       href: change-history-report.md
     - name: アクセス権を昇格する
       href: elevate-access-global-admin.md
     - name: 従来の管理者
       href: classic-administrators.md
+    - name: サブスクリプションを別のディレクトリに譲渡する (プレビュー)
+      href: transfer-subscription.md
     - name: トラブルシューティング
       href: troubleshooting.md
 - name: リファレンス
@@ -107,7 +112,7 @@
     - name: リソース プロバイダー操作
       href: resource-provider-operations.md
     - name: Azure RBAC の制限
-      href: '../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits'
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits
     - name: Azure PowerShell
       href: /powershell/module/az.resources
     - name: Azure CLI
@@ -121,6 +126,9 @@
           href: /azure/templates/microsoft.authorization/roleassignments
         - name: ロールの定義
           href: /azure/templates/microsoft.authorization/roledefinitions
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

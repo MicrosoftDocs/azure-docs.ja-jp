@@ -4,20 +4,20 @@ description: この記事では、Azure Database for MariaDB でデータイン 
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
-ms.date: 3/30/2020
-ms.openlocfilehash: 332feffead74174ba0b9b278d8de1c5957d5b9e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 6/11/2020
+ms.openlocfilehash: 623c072cb8cb2c7fb1b9b6ec7d3ea661302d5e6a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422465"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104675"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>Azure Database for MariaDB でのデータイン レプリケーションの構成
 
-この記事では、マスター サーバーとレプリカ サーバーを構成することによって、Azure Database for MariaDB でデータイン レプリケーションをセットアップする方法について説明します。 この記事は、MariaDB サーバーと MariaDB データベースに関して、ある程度の使用経験があることを前提としています。
+この記事では、マスター サーバーとレプリカ サーバーを構成することによって、Azure Database for MariaDB で[データイン レプリケーション](concepts-data-in-replication.md)をセットアップする方法について説明します。 この記事は、MariaDB サーバーと MariaDB データベースに関して、ある程度の使用経験があることを前提としています。
 
-データイン レプリケーションでは、Azure Database for MariaDB サービスでレプリカを作成するために、オンプレミス、仮想マシン (VM)、またはクラウド データベース サービスのマスター MariaDB サーバーからデータが同期されます。
+[データイン レプリケーション](concepts-data-in-replication.md)では、Azure Database for MariaDB サービスでレプリカを作成するために、オンプレミス、仮想マシン (VM)、またはクラウド データベース サービスのマスター MariaDB サーバーからデータが同期されます。 データイン レプリケーションは、MariaDB のネイティブなバイナリ ログ (binlog) ファイルの位置ベースのレプリケーションに基づいています。 binlog レプリケーションの詳細については、[binlog レプリケーションの概要](https://mariadb.com/kb/en/library/replication-overview/)に関する記事を参照してください。
 
 この記事の手順を実行する前に、データイン レプリケーションの[制限事項と要件](concepts-data-in-replication.md#limitations-and-considerations)を確認してください。
 
@@ -41,6 +41,12 @@ ms.locfileid: "80422465"
 3. マスター サーバーの IP アドレスをレプリカのファイアウォール規則に追加します。 
 
    [Azure portal](howto-manage-firewall-portal.md) または [Azure CLI](howto-manage-firewall-cli.md) を使用してファイアウォール規則を更新します。
+
+> [!NOTE]
+> バイアスフリーなコミュニケーション
+>
+> Microsoft は、多様性を尊重する環境をサポートします。 この記事には、"_スレーブ_" という単語への言及があります。 Microsoft の[バイアスフリーなコミュニケーションに関するスタイル ガイド](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)では、これを排他的な単語と認めています。 この単語は現在、ソフトウェアに表示される単語であるため、一貫性を保つためにこの記事で使用されています。 単語を削除するためにソフトウェアを更新するのに合わせて、この記事は更新されます。
+>
 
 ## <a name="configure-the-master-server"></a>マスター サーバーを構成する
 

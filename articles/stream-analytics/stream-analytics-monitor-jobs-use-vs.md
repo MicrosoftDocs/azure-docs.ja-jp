@@ -5,15 +5,15 @@ author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: e43a8d157baaf7e02ab7f8db4c777009d2a0abe9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79d677caf0c57fb36d211333b28be0eaa6528948
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75431686"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044126"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-visual-studio"></a>Visual Studio を使用して Stream Analytics ジョブを監視および管理する
 
@@ -41,7 +41,7 @@ ms.locfileid: "75431686"
 
 
 ## <a name="get-support"></a>サポートを受ける
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。 
+詳細については、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)

@@ -1,6 +1,6 @@
 ---
 title: Azure Automation のスケジュールを管理する
-description: 特定の時刻または定期的なスケジュールで自動的に Runbook を開始できるように Azure Automation でスケジュールを作成して管理する方法について説明します。
+description: この記事では、Azure Automation でスケジュールを作成して操作する方法について説明します。
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
@@ -9,22 +9,22 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4cd6d4236b95a17f404df13e8b50daf989cf6072
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: 8bd988029b8d78a29de38e995c36ee1860d8cda9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82652109"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187355"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Azure Automation のスケジュールを管理する
 
 指定の時刻に開始するように Azure Automation の Runbook をスケジュール設定するには、Runbook を 1 つ以上のスケジュールにリンクします。 Azure Portal の Runbook では、1 回だけ実行するようにスケジュールを構成することも、時間または日単位で繰り返すスケジュールを指定することもできます。 さらに、週単位、月単位、特定の曜日や日にち、または月の特定の日のスケジュールも指定できます。 1 つの Runbook を複数のスケジュールにリンクし、1 つのスケジュールを複数の Runbook にリンクすることができます。
 
 > [!NOTE]
-> スケジュールでは、現時点では Azure Automation DSC 構成はサポートされていません。
+> Azure Automation は、夏時間をサポートしており、オートメーション操作でこれを適切にスケジュールします。
 
->[!NOTE]
->この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 HybrID Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation の Azure PowerShell モジュールを更新する](../automation-update-azure-modules.md)」に従って、モジュールを最新バージョンに更新できます。
+> [!NOTE]
+> 現在、Azure Automation DSC 構成ではスケジュールを使用できません。
 
 ## <a name="powershell-cmdlets-used-to-access-schedules"></a>スケジュールへのアクセスに使用する PowerShell コマンドレット
 
@@ -32,13 +32,13 @@ PowerShell を使用して Automation スケジュールを作成して管理す
 
 | コマンドレット | 説明 |
 |:--- |:--- |
-| [Get-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationSchedule?view=azps-3.7.0) |スケジュールを取得します。 |
-| [Get-AzAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationscheduledrunbook?view=azps-3.7.0) |スケジュール済みの Runbook を取得します。 |
-| [New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) |新しいスケジュールを作成します。 |
-| [Register-AzAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0) |Runbook をスケジュールに関連付けます。 |
-| [Remove-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationSchedule?view=azps-3.7.0) |スケジュールを削除します。 |
-| [Set-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) |既存のスケジュールのプロパティを設定します。 |
-| [Unregister-AzAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Unregister-AzAutomationScheduledRunbook?view=azps-3.7.0) |Runbook とスケジュールの関連付けを解除します。 |
+| [Get-AzAutomationSchedule](/powershell/module/Az.Automation/Get-AzAutomationSchedule?view=azps-3.7.0) |スケジュールを取得します。 |
+| [Get-AzAutomationScheduledRunbook](/powershell/module/az.automation/get-azautomationscheduledrunbook?view=azps-3.7.0) |スケジュール済みの Runbook を取得します。 |
+| [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) |新しいスケジュールを作成します。 |
+| [Register-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0) |Runbook をスケジュールに関連付けます。 |
+| [Remove-AzAutomationSchedule](/powershell/module/Az.Automation/Remove-AzAutomationSchedule?view=azps-3.7.0) |スケジュールを削除します。 |
+| [Set-AzAutomationSchedule](/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) |既存のスケジュールのプロパティを設定します。 |
+| [Unregister-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Unregister-AzAutomationScheduledRunbook?view=azps-3.7.0) |Runbook とスケジュールの関連付けを解除します。 |
 
 ## <a name="create-a-schedule"></a>スケジュールを作成する
 
@@ -65,7 +65,7 @@ Runbook の新しいスケジュールは、Azure portal または PowerShell �
 
 ### <a name="create-a-new-schedule-with-powershell"></a>PowerShell で新しいスケジュールを作成する
 
-スケジュールを作成するには、[New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) コマンドレットを使用します。 スケジュールの開始時刻と実行の頻度を指定します。 次の例では、多くのさまざまなスケジュール シナリオを作成する方法を示します。
+スケジュールを作成するには、[New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) コマンドレットを使用します。 スケジュールの開始時刻と実行の頻度を指定します。 次の例では、多くのさまざまなスケジュール シナリオを作成する方法を示します。
 
 #### <a name="create-a-one-time-schedule"></a>1 回限りのスケジュールを作成する
 
@@ -128,7 +128,7 @@ New-AzAutomationSchedule -AutomationAccountName "TestAzureAuto" -Name "1st, 15th
 
 ### <a name="link-a-schedule-to-a-runbook-with-powershell"></a>PowerShell を使用してスケジュールを Runbook にリンクする
 
-[Register-AzAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0) コマンドレットを使用して、スケジュールをリンクします。 Parameters パラメーターを使用して、Runbook のパラメーターに値を指定できます。 パラメーター値を指定する方法について詳しくは、「[Azure Automation で Runbook を開始する](../automation-starting-a-runbook.md)」を参照してください。
+[Register-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0) コマンドレットを使用して、スケジュールをリンクします。 Parameters パラメーターを使用して、Runbook のパラメーターに値を指定できます。 パラメーター値を指定する方法について詳しくは、「[Azure Automation で Runbook を開始する](../start-runbooks.md)」を参照してください。
 次の例では、パラメーターを使用して Azure Resource Manager コマンドレットでスケジュールを Runbook にリンクする方法を示します。
 
 ```azurepowershell-interactive
@@ -164,7 +164,7 @@ Azure Automation のスケジュールを構成できる最も短い間隔は 1 
 
 ### <a name="disable-a-schedule-with-powershell"></a>PowerShell を使用してスケジュールを無効にする
 
-[Set-AzureRmAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) コマンドレットを使用して、既存のスケジュールのプロパティを変更します。 スケジュールを無効にするには、`IsEnabled` パラメーターに False を指定します。
+[Set-AzureRmAutomationSchedule](/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) コマンドレットを使用して、既存のスケジュールのプロパティを変更します。 スケジュールを無効にするには、`IsEnabled` パラメーターに False を指定します。
 
 次の例は、Azure Resource Manager コマンドレットを使用して Runbook のスケジュールを無効にする方法を示しています。
 

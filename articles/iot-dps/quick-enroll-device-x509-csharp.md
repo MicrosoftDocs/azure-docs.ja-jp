@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
-ms.custom: mvc
-ms.openlocfilehash: 64bc3921a606ab3211173b46b268ded53952c8bb
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: 89d98cdf6f635cab3b85462adf5c6695f7c4482e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75434653"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020934"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>クイック スタート: C# を使用して X.509 デバイスを Device Provisioning Service に登録する
 

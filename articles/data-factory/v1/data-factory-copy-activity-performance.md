@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c4ca328aa0ddc61d86a435b93fe775f294287b98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12deb51cb2c0efc1bef77a3ff2c8d5150ba13cde
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79527386"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196104"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>コピー アクティビティのパフォーマンスとチューニングに関するガイド
 
@@ -366,8 +366,8 @@ Microsoft のデータ ストアについては、データ ストアに特化�
 
 Data Factory が同じデータ ストアに同時に接続することを必要とするデータ セットの数とコピー アクティビティの数に注意してください。 同時コピー ジョブの数が多いと、データ ストアのスロットルが発生し、パフォーマンスの低下、コピー ジョブの内部的な再試行、場合によっては実行の失敗につながるおそれがあります。
 
-## <a name="sample-scenario-copy-from-an-on-premises-sql-server-to-blob-storage"></a>サンプル シナリオ: オンプレミス SQL Server から Blob Storage へのコピー
-**シナリオ**:オンプレミスの SQL Server から Blob Storage に CSV 形式でデータをコピーするパイプラインが構築されています。 コピー ジョブを高速にするために、CSV ファイルは bzip2 形式で圧縮されます。
+## <a name="sample-scenario-copy-from-a-sql-server-database-to-blob-storage"></a>サンプル シナリオ: SQL Server データベースから Blob Storage にコピーする
+**シナリオ**:SQL Server データベースから Blob Storage に CSV 形式でデータをコピーするパイプラインが構築されています。 コピー ジョブを高速にするために、CSV ファイルは bzip2 形式で圧縮されます。
 
 **テストと分析**: コピー アクティビティのスループットは 2 MBps 未満で、パフォーマンスのベンチマークをかなり下回っています。
 
@@ -385,7 +385,7 @@ Data Factory が同じデータ ストアに同時に接続することを必要
 
 * **ソース**:負荷が大きいため、SQL Server 自体のスループットが低くなっています。
 * **Data Management Gateway**:
-  * **LAN**: ゲートウェイは SQL Server マシンから離れた場所にあり、低帯域幅で接続されています。
+  * **LAN**: ゲートウェイは SQL Server コンピューターから離れた場所にあり、低帯域幅で接続されています。
   * **ゲートウェイ**: ゲートウェイは、以下の操作を実行して、負荷の上限に達しています。
     * **シリアル化**: CSV へのデータ ストリームのシリアル化で、スループットが低くなっています。
     * **圧縮**: 低速の圧縮コーデック (たとえば、Core i7 で 2.8 MBps の bzip2) を選択しました。

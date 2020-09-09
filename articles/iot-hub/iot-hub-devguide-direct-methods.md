@@ -10,12 +10,14 @@ ms.author: rezas
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 9fb2242f6e3f8ce78a0e5043a53ce3055819725b
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: 55472f16cefeca3b00bea79e71aee5d6588528d6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583683"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323062"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>IoT Hub からのダイレクト メソッドの呼び出しについて
 
@@ -33,7 +35,7 @@ IoT Hub で**サービス接続**のアクセス許可を持っていれば、�
 
 ## <a name="method-lifecycle"></a>メソッドのライフサイクル
 
-ダイレクト メソッドはデバイス上に実装され、正しくインスタンス化するには、メソッドのペイロードに 0 個以上の入力が必要になります。 ダイレクト メソッドは、サービス向け URI (`{iot hub}/twins/{device id}/methods/`) を通じて呼び出します。 デバイスは、デバイス固有の MQTT トピック (`$iothub/methods/POST/{method name}/`) または AMQP リンク (`IoThub-methodname` および `IoThub-status` アプリケーション プロパティ) を通じてダイレクト メソッドを受け取ります。 
+ダイレクト メソッドはデバイス上に実装され、正しくインスタンス化するには、メソッドのペイロードに 0 個以上の入力が必要になります。 ダイレクト メソッドは、サービス向け URI (`{iot hub}/twins/{device id}/methods/`) を通じて呼び出します。 デバイスは、デバイス固有の MQTT トピック (`$iothub/methods/POST/{method name}/`) または AMQP リンク (`IoThub-methodname` および `IoThub-status` アプリケーション プロパティ) を通じてダイレクト メソッドを受け取ります。
 
 > [!NOTE]
 > デバイス上のダイレクト メソッドを呼び出す場合、プロパティ名と値には ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}`` を除く US-ASCII 印刷可能英数字のみを使用できます。
@@ -41,7 +43,7 @@ IoT Hub で**サービス接続**のアクセス許可を持っていれば、�
 
 ダイレクト メソッドは同期型であり、タイムアウト期間後に成功または失敗します (既定では30 秒、5 - 300 秒の範囲で設定可能)。 ダイレクト メソッドは、デバイスがオンラインでコマンドを受け取っている場合のみデバイスを操作する対話型のシナリオで便利です。 たとえば、携帯電話からの照明を点灯させる場合です。 このようなシナリオでは、成功か失敗かを即座に確認し、クラウド サービスがその結果に対してできるだけ早く対応することが必要になります。 デバイスはメッセージの結果として何らかのメッセージ本文を返すことがありますが、メソッドにはその機能は必要ありません。 順番の保証や、メソッドの呼び出しのコンカレンシー セマンティクスはありません。
 
-ダイレクト メソッドは、クラウド側からは HTTPS のみに、デバイス側からは MQTT または AMQP になります。
+ダイレクト メソッドは、クラウド側からは HTTPS のみになります。また、デバイス側からは MQTT、AMQP、MQTT over WebSocket、または AMQP over WebSocket になります。
 
 メソッドの要求および応答のペイロードは、最大 128 KB の JSON ドキュメントになります。
 
@@ -80,12 +82,11 @@ IoT Hub で**サービス接続**のアクセス許可を持っていれば、�
 
 要求で `connectTimeoutInSeconds` として指定された値は、ダイレクト メソッドの呼び出し時に、IoT Hub サービスが接続されていないデバイスがオンラインになるまで待機する必要がある時間です。 既定値は 0 です。これは、ダイレクト メソッドの呼び出し時にデバイスが既にオンラインである必要があることを意味します。 `connectTimeoutInSeconds` の最大値は 300 秒です。
 
-
 #### <a name="example"></a>例
 
 この例では、Azure IoT Hub に登録されている IoT デバイス上でダイレクト メソッドを呼び出すための要求を安全に開始することができます。
 
-まず、[Azure CLI 用の Microsoft Azure IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)を使用して、SharedAccessSignature を作成します。 
+まず、[Azure CLI 用の Microsoft Azure IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)を使用して、SharedAccessSignature を作成します。
 
 ```bash
 az iot hub generate-sas-token -n <iothubName> -du <duration>
@@ -114,7 +115,7 @@ curl -X POST \
 > 上の例は、デバイスでダイレクト メソッドを呼び出す方法を示しています。  IoT Edge モジュールでダイレクト メソッドを呼び出す場合は、次に示すように URL 要求を変更する必要があります。
 
 ```bash
-https://<iothubName>.azure-devices.net/twins/<deviceId>/modules/<moduleName>/methods?api-version=2018-06
+https://<iothubName>.azure-devices.net/twins/<deviceId>/modules/<moduleName>/methods?api-version=2018-06-30
 ```
 ### <a name="response"></a>Response
 

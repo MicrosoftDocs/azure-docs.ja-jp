@@ -4,12 +4,13 @@ description: Azure Application Insights を Azure Functions とともに使用�
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 9997a44d14f5b4ca4de4e5b135efc453b12bff01
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.custom: devx-track-csharp, fasttrack-edit
+ms.openlocfilehash: 239d1da028a06d4272ed9b22b624413394aa142f
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82202415"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213002"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
@@ -21,7 +22,10 @@ Application Insights を使用することをお勧めします。これによ�
 
 ## <a name="application-insights-pricing-and-limits"></a>Application Insights の価格と制限
 
-Function App との Application Insights 統合は無料でお試しいただくことができます。 1 日に無料で処理できるデータ量には上限があります。 この上限には、テスト中に達する場合もあります。 1 日あたりの上限に近づいた場合は、ポータルと電子メール通知でお知らせします。 これらのアラートに気が付かず、上限に達してしまった場合は、新しいログが Application Insights クエリに表示されません。 不要なトラブルシューティングに時間を費やさずにすむように、上限には気を付けてください。 詳細については、「[Application Insights での価格とデータ ボリュームの管理](../azure-monitor/app/pricing.md)」を参照してください。
+Azure Functions との Application Insights 統合は無料でお試しいただくことができます。 1 日に無料で処理できるデータ量には上限があります。 この上限には、テスト中に達する場合もあります。 1 日あたりの上限に近づいた場合は、ポータルと電子メール通知でお知らせします。 これらのアラートに気が付かず、上限に達してしまった場合は、新しいログが Application Insights クエリに表示されません。 不要なトラブルシューティングに時間を費やさずにすむように、上限には気を付けてください。 詳細については、「[Application Insights での価格とデータ ボリュームの管理](../azure-monitor/app/pricing.md)」を参照してください。
+
+> [!IMPORTANT]
+> Application Insights には、負荷がピークのときに、完了した実行に関してテレメトリ データが生成されすぎないようにする[サンプリング](../azure-monitor/app/sampling.md)機能があります。 サンプリングは、既定で有効になっています。 データがないと思われる場合は、特定の監視シナリオに合わせてサンプリング設定を調整するだけで済みます。 詳細については、「[サンプリングを構成する](#configure-sampling)」を参照してください。
 
 関数アプリで使用できる Application Insights 機能の完全な一覧については、「[Azure Functions でサポートされる Application Insights の機能」 ](../azure-monitor/app/azure-functions-supported-features.md)を参照してください。
 
@@ -29,7 +33,7 @@ Function App との Application Insights 統合は無料でお試しいただく
 
 [Application Insights 統合が有効になっている](#enable-application-insights-integration)場合は、 **[監視]** タブでテレメトリ データを表示できます。
 
-1. 関数アプリのページで、Application Insights が構成されてから少なくとも 1 回実行された関数を選択します。 その後、 **[監視]** タブを選択します。関数呼び出しの一覧が表示されるまで、 **[更新]** を一定間隔で選択します。
+1. 関数アプリのページで、Application Insights が構成されてから少なくとも 1 回実行された関数を選択します。 次に、左側のウィンドウで **[監視]** を選択します。 関数呼び出しの一覧が表示されるまで、 **[更新]** を一定間隔で選択します。
 
    ![呼び出しリスト](media/functions-monitoring/monitor-tab-ai-invocations.png)
 
@@ -40,9 +44,9 @@ Function App との Application Insights 統合は無料でお試しいただく
 
    ![呼び出しの詳細](media/functions-monitoring/invocation-details-ai.png)
 
-1. **[Application Insights で実行する]** リンクを選択して、Azure Log で Azure Monitor ログ データを取得するクエリのソースを表示します。サブスクリプションで初めてAzure Log Analytics を使用する場合は、有効にするように求められます。
+1. **[Application Insights で実行する]** を選択して、Azure ログ内の Azure Monitor ログ データを取得するクエリのソースを表示します。 サブスクリプションで Azure Log Analytics を初めて使用する場合は、有効にするように求められます。
 
-1. そのリンクを選択し、Log Analytics を有効にするオプションを選択します。 次のクエリが表示されます。 クエリの結果が過去 30 日間 (`where timestamp > ago(30d)`) に制限されていることがわかります。 さらに、結果には 20 行以下しか表示されません (`take 20`)。 一方、関数の呼び出し詳細の一覧には、過去 30 日間のデータが無制限で表示されます。
+1. Log Analytics を有効にすると、次のクエリが表示されます。 クエリの結果が過去 30 日間 (`where timestamp > ago(30d)`) に制限されていることがわかります。 さらに、結果には 20 行以下しか表示されません (`take 20`)。 一方、関数の呼び出し詳細の一覧には、過去 30 日間のデータが無制限で表示されます。
 
    ![Application Insights Analytics 呼び出しの一覧](media/functions-monitoring/ai-analytics-invocation-list.png)
 
@@ -50,11 +54,11 @@ Function App との Application Insights 統合は無料でお試しいただく
 
 ## <a name="view-telemetry-in-application-insights"></a>Application Insights でテレメトリを表示する
 
-Azure portal で関数アプリから Application Insights を開くには、関数アプリの **[概要]** ページに移動します。 **[構成済みの機能]** で **[Application Insights]** を選択します。
+Azure portal で関数アプリから Application Insights を開くには、左側のページの **[設定]** で **[Application Insights]** を選択します。 サブスクリプションで Application Insights を初めて使用する場合は、有効にするように求められます。 **[Application Insights を有効にする]** をオンにして、次のページで **[適用]** を選択します。
 
 ![関数アプリの [概要] ページで Application Insights を開く](media/functions-monitoring/ai-link.png)
 
-Application Insights の使用方法については、「[Application Insights のドキュメント](https://docs.microsoft.com/azure/application-insights/)」をご覧ください。 このセクションでは、Application Insights でデータを表示する方法の例をいくつか示します。 Application Insights を既に使い慣れている場合は、[テレメトリ データの構成とカスタマイズの方法に関するセクション](#configure-categories-and-log-levels)に直接進んでかまいません。
+Application Insights の使用方法については、「[Application Insights のドキュメント](/azure/application-insights/)」をご覧ください。 このセクションでは、Application Insights でデータを表示する方法の例をいくつか示します。 Application Insights を既に使い慣れている場合は、[テレメトリ データの構成とカスタマイズの方法に関するセクション](#configure-categories-and-log-levels)に直接進んでかまいません。
 
 ![[Application Insights の概要] タブ](media/functions-monitoring/metrics-explorer.png)
 
@@ -64,12 +68,12 @@ Application Insights の次の領域は、関数の動作、パフォーマン�
 | ---- | ----------- |
 | **[障害](../azure-monitor/app/asp-net-exceptions.md)** |  関数の失敗やサーバーの例外に基づいてグラフやアラートを作成します。 **[操作名]** は関数名です。 依存関係に関するカスタム テレメトリを実装している場合を除き、依存関係のエラーは表示されません。 |
 | **[パフォーマンス](../azure-monitor/app/performance-counters.md)** | **クラウド ロール インスタンス**あたりのリソース使用率とスループットを表示して、パフォーマンスの問題を分析します。 このデータは、関数が原因で基本リソースの処理が遅延している場合のデバッグで役立つことがあります。 |
-| **[メトリック](../azure-monitor/app/metrics-explorer.md)** | メトリックに基づいたグラフやアラートを作成します。 メトリックには、関数呼び出しの数、実行時間、成功率が含まれます。 |
+| **[メトリック](../azure-monitor/platform/metrics-charts.md)** | メトリックに基づいたグラフやアラートを作成します。 メトリックには、関数呼び出しの数、実行時間、成功率が含まれます。 |
 | **[ライブ メトリック    ](../azure-monitor/app/live-stream.md)** | 作成されたメトリック データをほぼリアルタイムに表示します。 |
 
 ## <a name="query-telemetry-data"></a>テレメトリをクエリする
 
-[Application Insights Analytics](../azure-monitor/app/analytics.md) では、データベース内のテーブルの形式ですべてのテレメトリ データにアクセスできます。 Analytics では、データを抽出、操作、視覚化するためのクエリ言語が用意されています。 
+[Application Insights Analytics](../azure-monitor/log-query/log-query-overview.md) では、データベース内のテーブルの形式ですべてのテレメトリ データにアクセスできます。 Analytics では、データを抽出、操作、視覚化するためのクエリ言語が用意されています。 
 
 **[ログ]** を選択して、ログに記録されたイベントを探索または照会します。
 
@@ -134,12 +138,12 @@ Azure Functions ロガーでは、すべてのログに*ログ レベル*も含�
 |LogLevel    |コード|
 |------------|---|
 |Trace       | 0 |
-|デバッグ       | 1 |
+|Debug       | 1 |
 |Information | 2 |
-|警告     | 3 |
-|エラー       | 4 |
+|Warning     | 3 |
+|Error       | 4 |
 |Critical    | 5 |
-|なし        | 6 |
+|None        | 6 |
 
 ログ レベル `None` については、次のセクションで説明します。 
 
@@ -149,7 +153,7 @@ Azure Functions ロガーでは、すべてのログに*ログ レベル*も含�
 
 ### <a name="version-2x-and-higher"></a>バージョン 2.x 以降
 
-バージョン v2. x 以降のバージョンの Functions ランタイムでは、[.NET Core のログ記録フィルター階層](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)が使用されます。 
+バージョン v2. x 以降のバージョンの Functions ランタイムでは、[.NET Core のログ記録フィルター階層](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)が使用されます。 
 
 ```json
 {
@@ -242,7 +246,7 @@ Azure Functions ロガーでは、すべてのログに*ログ レベル*も含�
 
 ## <a name="configure-sampling"></a>サンプリングを構成する
 
-Application Insights には、負荷がピークのときに、完了した実行に関してテレメトリ データが生成されすぎないようにする[サンプリング](../azure-monitor/app/sampling.md)機能があります。 Application Insights では、受信実行の割合が指定されたしきい値を超えると、受信した実行の一部がランダムに無視され始めます。 1 秒あたりの最大実行数の既定の設定は 20 (バージョン 1.x では 5) です。 [host.json] でサンプリングを構成できます。  次に例を示します。
+Application Insights には、負荷がピークのときに、完了した実行に関してテレメトリ データが生成されすぎないようにする[サンプリング](../azure-monitor/app/sampling.md)機能があります。 Application Insights では、受信実行の割合が指定されたしきい値を超えると、受信した実行の一部がランダムに無視され始めます。 1 秒あたりの最大実行数の既定の設定は 20 (バージョン 1.x では 5) です。 [host.json](./functions-host-json.md#applicationinsights) でサンプリングを構成できます。  次に例を示します。
 
 ### <a name="version-2x-and-later"></a>バージョン 2.x 以降
 
@@ -252,12 +256,15 @@ Application Insights には、負荷がピークのときに、完了した実�
     "applicationInsights": {
       "samplingSettings": {
         "isEnabled": true,
-        "maxTelemetryItemsPerSecond" : 20
+        "maxTelemetryItemsPerSecond" : 20,
+        "excludedTypes": "Request"
       }
     }
   }
 }
 ```
+
+バージョン 2.x では、サンプリングから特定の種類のテレメトリを除外できます。 上の例では、`Request` 型のデータがサンプリングから除外されています。 これにより、"*すべての*" 関数実行 (要求) がログに記録される一方、他の種類のテレメトリはサンプリング対象のままとなります。
 
 ### <a name="version-1x"></a>バージョン 1.x 
 
@@ -272,18 +279,15 @@ Application Insights には、負荷がピークのときに、完了した実�
 }
 ```
 
-> [!NOTE]
-> [サンプリング](../azure-monitor/app/sampling.md)は、既定で有効になっています。 データがないと思われる場合は、特定の監視シナリオに合わせてサンプリング設定を調整するだけで済みます。
-
 ## <a name="write-logs-in-c-functions"></a>C# 関数でログを書き込む
 
 Application Insights で traces として表示されるログを、ご使用の関数コードで書き込むことができます。
 
 ### <a name="ilogger"></a>ILogger
 
-関数では、`TraceWriter` パラメーターではなく [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) パラメーターを使用します。 `TraceWriter` を使って作成されたログは Application Insights に送られますが、`ILogger` では[構造化ログ](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)を記録することができます。
+関数では、`TraceWriter` パラメーターではなく [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) パラメーターを使用します。 `TraceWriter` を使って作成されたログは Application Insights に送られますが、`ILogger` では[構造化ログ](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)を記録することができます。
 
-`ILogger` オブジェクトで、`Log<level>` [拡張メソッド (ILogger 上)](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) を呼び出して、ログを作成します。 次のコードでは、カテゴリが "Function.<YOUR_FUNCTION_NAME>.User" の `Information` ログが書き込まれます。
+`ILogger` オブジェクトで、`Log<level>` [拡張メソッド (ILogger 上)](/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) を呼び出して、ログを作成します。 次のコードでは、カテゴリが "Function.<YOUR_FUNCTION_NAME>.User" の `Information` ログが書き込まれます。
 
 ```cs
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger logger)
@@ -313,7 +317,7 @@ logger.LogInformation("partitionKey={partitionKey}, rowKey={rowKey}", partitionK
 
 ```json
 {
-  customDimensions: {
+  "customDimensions": {
     "prop__{OriginalFormat}":"C# Queue trigger function processed: {message}",
     "Category":"Function",
     "LogLevel":"Information",
@@ -533,7 +537,7 @@ namespace functionapp0915
 
 ## <a name="log-custom-telemetry-in-javascript-functions"></a>JavaScript 関数でカスタム テレメトリをログに記録する
 
-[Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js) でカスタム テレメトリを送信するサンプル コード スニペットを示します。
+[Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js) を使用してカスタム テレメトリを送信するサンプル コード スニペットを次に示します。
 
 ### <a name="version-2x-and-later"></a>バージョン 2.x 以降
 
@@ -549,7 +553,7 @@ module.exports = function (context, req) {
     var operationIdOverride = {"ai.operation.id":context.traceContext.traceparent};
 
     client.trackEvent({name: "my custom event", tagOverrides:operationIdOverride, properties: {customProperty2: "custom property value"}});
-    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride);
+    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride});
     client.trackMetric({name: "custom metric", value: 3, tagOverrides:operationIdOverride});
     client.trackTrace({message: "trace message", tagOverrides:operationIdOverride});
     client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:operationIdOverride});
@@ -573,7 +577,7 @@ module.exports = function (context, req) {
     var operationIdOverride = {"ai.operation.id":context.operationId};
 
     client.trackEvent({name: "my custom event", tagOverrides:operationIdOverride, properties: {customProperty2: "custom property value"}});
-    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride);
+    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride});
     client.trackMetric({name: "custom metric", value: 3, tagOverrides:operationIdOverride});
     client.trackTrace({message: "trace message", tagOverrides:operationIdOverride});
     client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:operationIdOverride});
@@ -593,6 +597,9 @@ Functions v2 により、HTTP 要求、ServiceBus、EventHub、SQL の依存関�
 
 ![アプリケーション マップ](./media/functions-monitoring/app-map.png)
 
+> [!NOTE]
+> 依存関係は情報レベルで記述されます。 警告以上でフィルターすると、このデータは表示されなくなります。 また、依存関係の自動収集は、非ユーザー スコープで行われます。 このため、これらの依存関係をキャプチャする場合は、host.json のユーザー スコープ外 (Function.<YOUR_FUNCTION_NAME>.User キー外) で、レベルが少なくとも**情報**に設定されていることを確認してください。
+
 ## <a name="enable-application-insights-integration"></a>Application Insights との統合を有効にする
 
 関数アプリでデータを Application Insights に送信するには、Application Insights リソースのインストルメンテーション キーについて知っておく必要があります。 キーは、**APPINSIGHTS_INSTRUMENTATIONKEY** という名前のアプリ設定に指定されている必要があります。
@@ -610,7 +617,7 @@ Functions v2 により、HTTP 要求、ServiceBus、EventHub、SQL の依存関�
 <a id="manually-connect-an-app-insights-resource"></a>
 ### <a name="add-to-an-existing-function-app"></a>既存の関数アプリに追加する 
 
-[Visual Studio](functions-create-your-first-function-visual-studio.md) を使用して関数アプリを作成する場合は、Application Insights リソースを作成する必要があります。 その後、関数アプリのアプリケーション設定として、そのリソースからインストルメンテーション キーを追加できます。
+[Visual Studio](functions-create-your-first-function-visual-studio.md) を使用して関数アプリを作成する場合は、Application Insights リソースを作成する必要があります。 その後、関数アプリの[アプリケーション設定](functions-how-to-use-azure-function-app-settings.md#settings)として、そのリソースからインストルメンテーション キーを追加できます。
 
 [!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 
@@ -675,13 +682,46 @@ az webapp log tail --resource-group <RESOURCE_GROUP_NAME> --name <FUNCTION_APP_N
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-[Azure PowerShell](/powershell/azure/overview) を使用して、ストリーミング ログを有効にすることができます。 PowerShell の場合は、次のコマンドを使用して Azure アカウントを追加し、サブスクリプションを選択して、ログ ファイルをストリーミングします。
+[Azure PowerShell](/powershell/azure/) を使用して、ストリーミング ログを有効にすることができます。 PowerShell の場合は、次のスニペットに示すように、[Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) コマンドを使用して、関数アプリでのログ記録を有効にします。 
 
-```powershell
-Add-AzAccount
-Get-AzSubscription
-Get-AzSubscription -SubscriptionName "<subscription name>" | Select-AzSubscription
-Get-AzWebSiteLog -Name <FUNCTION_APP_NAME> -Tail
+:::code language="powershell" source="~/powershell_scripts/app-service/monitor-with-logs/monitor-with-logs.ps1" range="19-20":::
+
+詳細については、[完全なコード例](../app-service/scripts/powershell-monitor.md#sample-script)を参照してください。 
+
+## <a name="scale-controller-logs-preview"></a>スケール コントローラーのログ (プレビュー)
+
+この機能はプレビュー段階にあります。 
+
+[Azure Functions スケール コントローラー](./functions-scale.md#runtime-scaling)は、アプリが実行されている Azure Functions ホストのインスタンスを監視します。 このコントローラーは、現在のパフォーマンスに基づいて、インスタンスを追加または削除するタイミングを決定します。 スケール コントローラーから Application Insights または BLOB ストレージにログを出力させることで、関数アプリに対してスケール コントローラーが行っている決定をより詳しく把握することができます。
+
+この機能を有効にするには、`SCALE_CONTROLLER_LOGGING_ENABLED` という名前の新しいアプリケーション設定を追加します。 この設定の値は `<DESTINATION>:<VERBOSITY>` の形式にし、以下に基づいて指定する必要があります。
+
+[!INCLUDE [functions-scale-controller-logging](../../includes/functions-scale-controller-logging.md)]
+
+たとえば、次の Azure CLI コマンドを実行すると、スケール コントローラーから Application Insights への詳細ログ記録が有効になります。
+
+```azurecli-interactive
+az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
+--settings SCALE_CONTROLLER_LOGGING_ENABLED=AppInsights:Verbose
+```
+
+この例では、`<FUNCTION_APP_NAME>` と `<RESOURCE_GROUP_NAME>` を実際の関数アプリの名前とリソース グループ名でそれぞれ置き換えます。 
+
+次の Azure CLI コマンドでは、詳細度が `None` に設定されているため、ログ記録が無効になります。
+
+```azurecli-interactive
+az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
+--settings SCALE_CONTROLLER_LOGGING_ENABLED=AppInsights:None
+```
+
+また、次の Azure CLI コマンドを使用して `SCALE_CONTROLLER_LOGGING_ENABLED` 設定を削除することで、ログ記録を無効にすることもできます。
+
+```azurecli-interactive
+az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
+--setting-names SCALE_CONTROLLER_LOGGING_ENABLED
 ```
 
 ## <a name="disable-built-in-logging"></a>組み込みログを無効にする

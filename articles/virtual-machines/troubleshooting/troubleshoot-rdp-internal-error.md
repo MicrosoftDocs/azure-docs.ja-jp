@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: 8046e4f42db50db15c840a13b95ae1f3620a8c7f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 299bbfa31584b260f85dfa7bafddea268084f876
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231915"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235164"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>リモート デスクトップを介して Azure VM に接続しようとするときに、内部エラーが発生する
 
@@ -55,51 +55,63 @@ ms.locfileid: "79231915"
 
 #### <a name="step-1-check-the-rdp-port"></a>手順 1: RDP ポートを確認する
 
-1. PowerShell インスタンスで、[NETSTAT](https://docs.microsoft.com/windows-server/administration/windows-commands/netstat
-) を使用してポート 8080 が他のアプリケーションによって使用されているかどうかを確認します。
+1. PowerShell インスタンスで、[NETSTAT](/windows-server/administration/windows-commands/netstat) を使用してポート 3389 が他のアプリケーションによって使用されているかどうかを確認します。
 
-        Netstat -anob |more
-2. Termservice.exe がポート 8080 を使用している場合は、手順 2 に進みます。 別のサービスまたは Termservice.exe 以外のアプリケーションがポート 8080 を使用している場合は、次の手順に従います。
+    ```powershell
+    Netstat -anob |more
+    ```
+
+2. Termservice.exe がポート 3389 を使用している場合は、手順 2 に進みます。 別のサービスまたは Termservice.exe 以外のアプリケーションがポート 3389 を使用している場合は、次の手順に従います。
 
     1. 3389 サービスを使用しているアプリケーションのサービスを停止します。
 
-            Stop-Service -Name <ServiceName> -Force
+        ```powershell
+        Stop-Service -Name <ServiceName> -Force
+        ```
 
     2. ターミナル サービスを開始します。
 
-            Start-Service -Name Termservice
+        ```powershell
+        Start-Service -Name Termservice
+        ```
 
 2. アプリケーションを停止できない場合、またはこの手法が適用できない場合は、RDP のポートを変更します。
 
     1. 次のようにポートを変更します。
 
-            Set-ItemProperty -Path 'HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name PortNumber -value <Hexportnumber>
+        ```powershell
+        Set-ItemProperty -Path 'HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name PortNumber -value <Hexportnumber>
 
-            Stop-Service -Name Termservice -Force
-            
-            Start-Service -Name Termservice 
+        Stop-Service -Name Termservice -Force
+
+        Start-Service -Name Termservice
+        ```
 
     2. 新しいポートのファイアウォールを次のように設定します。
 
-            Set-NetFirewallRule -Name "RemoteDesktop-UserMode-In-TCP" -LocalPort <NEW PORT (decimal)>
+        ```powershell
+        Set-NetFirewallRule -Name "RemoteDesktop-UserMode-In-TCP" -LocalPort <NEW PORT (decimal)>
+        ```
 
     3. Azure portal の RDP ポートで、[新しいポートのネットワーク セキュリティ グループを更新](../../virtual-network/security-overview.md)します。
 
 #### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>手順 2: RDP の自己署名証明書に適切なアクセス許可を設定する
 
-1.  PowerShell インスタンスで、次のコマンドを 1 つずつ実行して、RDP の自己署名証明書を更新します。
+1. PowerShell インスタンスで、次のコマンドを 1 つずつ実行して、RDP の自己署名証明書を更新します。
 
-        Import-Module PKI 
-    
-        Set-Location Cert:\LocalMachine 
-        
-        $RdpCertThumbprint = 'Cert:\LocalMachine\Remote Desktop\'+((Get-ChildItem -Path 'Cert:\LocalMachine\Remote Desktop\').thumbprint) 
-        
-        Remove-Item -Path $RdpCertThumbprint
+    ```powershell
+    Import-Module PKI
 
-        Stop-Service -Name "SessionEnv"
+    Set-Location Cert:\LocalMachine 
 
-        Start-Service -Name "SessionEnv"
+    $RdpCertThumbprint = 'Cert:\LocalMachine\Remote Desktop\'+((Get-ChildItem -Path 'Cert:\LocalMachine\Remote Desktop\').thumbprint) 
+
+    Remove-Item -Path $RdpCertThumbprint
+
+    Stop-Service -Name "SessionEnv"
+
+    Start-Service -Name "SessionEnv"
+    ```
 
 2. この手法を使用して証明書を更新できない場合は、リモートで RDP の自己署名証明書の更新を試してください。
 
@@ -109,56 +121,71 @@ ms.locfileid: "79231915"
     4. **Remote Desktop\Certificates** フォルダーに移動し、証明書を右クリックして **[削除]** を選択します。
     5. シリアル コンソールから PowerShell インスタンスで、リモート デスクトップ構成サービスを再開します。
 
-            Stop-Service -Name "SessionEnv"
+        ```powershell
+        Stop-Service -Name "SessionEnv"
 
-            Start-Service -Name "SessionEnv"
+        Start-Service -Name "SessionEnv"
+        ```
+
 3. MachineKeys フォルダーに対するアクセス許可をリセットします。
 
-        remove-module psreadline icacls
+    ```powershell
+    remove-module psreadline icacls
 
-        md c:\temp
+    md c:\temp
 
-        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\BeforeScript_permissions.txt 
-        
-        takeown /f "C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys" /a /r
+    icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\BeforeScript_permissions.txt 
 
-        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "NT AUTHORITY\System:(F)"
+    takeown /f "C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys" /a /r
 
-        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "NT AUTHORITY\NETWORK SERVICE:(R)"
+    icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "NT AUTHORITY\System:(F)"
 
-        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "BUILTIN\Administrators:(F)"
+    icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "NT AUTHORITY\NETWORK SERVICE:(R)"
 
-        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\AfterScript_permissions.txt 
-        
-        Restart-Service TermService -Force
+    icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "BUILTIN\Administrators:(F)"
+
+    icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\AfterScript_permissions.txt 
+
+    Restart-Service TermService -Force
+    ```
 
 4. VM を再起動し、VM へのリモート デスクトップ接続の開始を試行します。 エラーが引き続き発生する場合は、次の手順に移動します。
 
 #### <a name="step-3-enable-all-supported-tls-versions"></a>手順 3: サポートされているすべての TLS バージョンを有効にする
 
 RDP クライアントでは、既定のプロトコルとして TLS 1.0 が使用されます。 ただし、これは新しい標準となっている TLS 1.1 に変更できます。 VM で TLS 1.1 が無効になっている場合、接続は失敗します。
-1.  CMD インスタンスで、TLS プロトコルを有効にします。
 
-        reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f
+1. CMD インスタンスで、TLS プロトコルを有効にします。
 
-        reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" /v Enabled /t REG_DWORD /d 1 /f
+    ```console
+    reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f
 
-        reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled /t REG_DWORD /d 1 /f
-2.  AD ポリシーが変更を上書きすることを防ぐため、グループ ポリシーの更新を一時的に停止します。
+    reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" /v Enabled /t REG_DWORD /d 1 /f
 
-        REG add "HKLM\SYSTEM\CurrentControlSet\Services\gpsvc" /v Start /t REG_DWORD /d 4 /f
-3.  変更が反映されるように、VM を再起動します。 問題が解決された場合は、次のコマンドを実行してグループ ポリシーを再度有効にします。
+    reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled /t REG_DWORD /d 1 /f
+    ```
 
-        sc config gpsvc start= auto sc start gpsvc
+2. AD ポリシーが変更を上書きすることを防ぐため、グループ ポリシーの更新を一時的に停止します。
 
-        gpupdate /force
+    ```console
+    REG add "HKLM\SYSTEM\CurrentControlSet\Services\gpsvc" /v Start /t REG_DWORD /d 4 /f
+    ```
+
+3. 変更が反映されるように、VM を再起動します。 問題が解決された場合は、次のコマンドを実行してグループ ポリシーを再度有効にします。
+
+    ```console
+    sc config gpsvc start= auto sc start gpsvc
+
+    gpupdate /force
+    ```
+
     変更が元に戻された場合、それは会社のドメイン内に Active Directory ポリシーが存在していることを意味します。 この問題の発生を回避するには、そのポリシーを変更する必要があります。
 
 ### <a name="repair-the-vm-offline"></a>VM をオフライン修復する
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>復旧 VM に OS ディスクを接続する
 
-1. [復旧 VM に OS ディスクを接続します](../windows/troubleshoot-recovery-disks-portal.md)。
+1. [復旧 VM に OS ディスクを接続します](./troubleshoot-recovery-disks-portal-windows.md)。
 2. OS ディスクを復旧 VM に接続したら、[ディスクの管理] コンソールでそのディスクが **[オンライン]** になっていることを確認します。 接続された OS ディスクに割り当てられたドライブ文字をメモします。
 3. 復旧 VM へのリモート デスクトップ接続を開始します。
 
@@ -171,7 +198,7 @@ RDP クライアントでは、既定のプロトコルとして TLS 1.0 が使�
 
     このスクリプトでは、接続されている OS ディスクに割り当てられているドライブ文字が F であると想定しています。このドライブ文字を実際の VM の適切な値に置き換えてください。
 
-    ```
+    ```console
     reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
 
     REM Enable Serial Console
@@ -198,73 +225,77 @@ RDP クライアントでは、既定のプロトコルとして TLS 1.0 が使�
 1. 管理者特権のコマンド プロンプト セッション ( **[管理者として実行]** ) を開きます。
 2. 次のスクリプトを実行します。 このスクリプトでは、接続されている OS ディスクに割り当てられているドライブ文字が F であると想定しています。このドライブ文字を実際の VM の適切な値に置き換えてください。
 
-        Md F:\temp
+    ```console
+    Md F:\temp
 
-        icacls F:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\BeforeScript_permissions.txt
-        
-        takeown /f "F:\ProgramData\Microsoft\Crypto\RSA\MachineKeys" /a /r
+    icacls F:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\BeforeScript_permissions.txt
 
-        icacls F:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "NT AUTHORITY\System:(F)"
+    takeown /f "F:\ProgramData\Microsoft\Crypto\RSA\MachineKeys" /a /r
 
-        icacls F:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "NT AUTHORITY\NETWORK SERVICE:(R)"
+    icacls F:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "NT AUTHORITY\System:(F)"
 
-        icacls F:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "BUILTIN\Administrators:(F)"
+    icacls F:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "NT AUTHORITY\NETWORK SERVICE:(R)"
 
-        icacls F:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\AfterScript_permissions.txt
+    icacls F:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "BUILTIN\Administrators:(F)"
+
+    icacls F:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\AfterScript_permissions.txt
+    ```
 
 #### <a name="enable-all-supported-tls-versions"></a>サポートされているすべての TLS バージョンを有効にする
 
-1.  管理者特権のコマンド プロンプト セッション ( **[管理者として実行]** ) を開き、次のコマンドを使用します。 次のスクリプトでは、接続されている OS ディスクに割り当てられているドライブ文字が F であると想定しています。このドライブ文字を実際の VM の適切な値に置き換えてください。
-2.  どの TLS が有効になっているかを確認します。
+1. 管理者特権のコマンド プロンプト セッション ( **[管理者として実行]** ) を開き、次のコマンドを使用します。 次のスクリプトでは、接続されている OS ディスクに割り当てられているドライブ文字が F であると想定しています。このドライブ文字を実際の VM の適切な値に置き換えてください。
+2. どの TLS が有効になっているかを確認します。
 
-        reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
+    ```console
+    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
 
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f
 
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" /v Enabled /t REG_DWORD /d 1 /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" /v Enabled /t REG_DWORD /d 1 /f
 
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled /t REG_DWORD /d 1 /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled /t REG_DWORD /d 1 /f
 
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f
 
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" /v Enabled /t REG_DWORD /d 1 /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" /v Enabled /t REG_DWORD /d 1 /f
 
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled /t REG_DWO
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled /t REG_DWO
+    ```
 
-3.  キーが存在しないか、その値が **0** の場合、次のスクリプトを実行して、プロトコルを有効にします。
+3. キーが存在しないか、その値が **0** の場合、次のスクリプトを実行して、プロトコルを有効にします。
 
-        REM Enable TLS 1.0, TLS 1.1 and TLS 1.2
+    ```console
+    REM Enable TLS 1.0, TLS 1.1 and TLS 1.2
 
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f
 
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" /v Enabled /t REG_DWORD /d 1 /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" /v Enabled /t REG_DWORD /d 1 /f
 
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled /t REG_DWORD /d 1 /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled /t REG_DWORD /d 1 /f
 
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f
 
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" /v Enabled /t REG_DWORD /d 1 /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" /v Enabled /t REG_DWORD /d 1 /f
 
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled /t REG_DWORD /d 1 /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled /t REG_DWORD /d 1 /f
+    ```
 
-4.  NLA を有効にします。
+4. NLA を有効にします。
 
-        REM Enable NLA
+    ```console
+    REM Enable NLA
 
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\Terminal Server\WinStations\RDP-Tcp" /v SecurityLayer /t REG_DWORD /d 1 /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\Terminal Server\WinStations\RDP-Tcp" /v SecurityLayer /t REG_DWORD /d 1 /f
 
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\Terminal Server\WinStations\RDP-Tcp" /v UserAuthentication /t REG_DWORD /d 1 /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\Terminal Server\WinStations\RDP-Tcp" /v UserAuthentication /t REG_DWORD /d 1 /f
 
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\Terminal Server\WinStations\RDP-Tcp" /v fAllowSecProtocolNegotiation /t REG_DWORD /d 1 /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\Terminal Server\WinStations\RDP-Tcp" /v fAllowSecProtocolNegotiation /t REG_DWORD /d 1 /f
 
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v SecurityLayer /t REG_DWORD /d 1 /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v SecurityLayer /t REG_DWORD /d 1 /f
 
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v UserAuthentication /t REG_DWORD /d 1 /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v UserAuthentication /t REG_DWORD /d 1 /f
 
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v fAllowSecProtocolNegotiation /t REG_DWORD /d 1 /f reg unload HKLM\BROKENSYSTEM
-5.  [OS ディスクをデタッチして、VM を再作成](../windows/troubleshoot-recovery-disks-portal.md)してから、問題が解決されたかどうかを確認します。
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v fAllowSecProtocolNegotiation /t REG_DWORD /d 1 /f reg unload HKLM\BROKENSYSTEM
+    ```
 
-
-
-
-
+5. [OS ディスクをデタッチして、VM を再作成](./troubleshoot-recovery-disks-portal-windows.md)してから、問題が解決されたかどうかを確認します。

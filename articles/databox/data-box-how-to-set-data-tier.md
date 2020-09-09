@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 31178284313ad7dafb094b109a75d4550cabd39c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a68793d893d8eb8de681eb438de39afc212370c9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77560373"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84608708"
 ---
 # <a name="use-azure-data-box-or-azure-data-box-heavy-to-send-data-to-appropriate-azure-storage-blob-tier"></a>Azure Data Box または Azure Data Box Heavy を使用して適切な Azure Storage BLOB 層にデータを送信する
 

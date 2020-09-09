@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と RFPIO の統合 | Microsoft Docs'
 description: Azure Active Directory と RFPIO の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 87187076-7b50-4247-814f-f217b052703f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63d7b6af8ff76c890b98c29ded0e8bdc637b45dd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6732857e278285071c9d36c629920ad9e67368f2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67092842"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88528545"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>チュートリアル: Azure Active Directory と RFPIO の統合
 

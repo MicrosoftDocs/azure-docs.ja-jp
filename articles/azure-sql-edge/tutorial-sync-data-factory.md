@@ -2,19 +2,19 @@
 title: Azure Data Factory を使用して Azure SQL Edge (プレビュー) とデータを同期する
 description: Azure SQL Edge (プレビュー) と Azure Blob Storage の間でデータを同期する方法について説明します。
 keywords: SQL Edge,SQL Edge のデータの同期, SQL Edge データ ファクトリ
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: tutorial
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 1238505a10214c315bd5f2ceb428cf097b3ef5c6
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 91bf2ba0957104b7ccba330f914734a362c3e309
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593457"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255434"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>チュートリアル:Azure Data Factory を使用して SQL Edge と Azure Blob Storage のデータを同期する
 
@@ -25,7 +25,7 @@ ms.locfileid: "83593457"
 Azure SQL Edge デプロイでデータベースまたはテーブルをまだ作成していない場合、次のいずれかの方法で 1 つ作成してください。
 
 * [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms/) または [Azure Data Studio](/sql/azure-data-studio/download/) を使用して SQL Edge に接続します。 SQL スクリプトを実行して、データベースとテーブルを作成します。
-* SQL Edge モジュールに直接接続し、[SQLCMD](/sql/tools/sqlcmd-utility/) を使用して SQL データベースとテーブルを作成します。 詳細については、[sqlcmd を使用したデータベース エンジンへの接続](/sql/ssms/scripting/sqlcmd-connect-to-the-database-engine/)に関するページを参照してください。
+* SQL Edge モジュールに直接接続し、[SQLCMD](/sql/tools/sqlcmd-utility/) を使用してデータベースとテーブルを作成します。 詳細については、[sqlcmd を使用したデータベース エンジンへの接続](/sql/ssms/scripting/sqlcmd-connect-to-the-database-engine/)に関するページを参照してください。
 * SQLPackage.exe を使用して、DAC パッケージ ファイルを SQL Edge コンテナーにデプロイします。 このプロセスは、モジュールの必要なプロパティの構成の一環として SqlPackage ファイル URI を指定することで自動化できます。 また、SqlPackage.exe クライアント ツールを直接使用して DAC パッケージを SQL Edge にデプロイすることもできます。
 
     SqlPackage.exe をダウンロードする方法については、「[sqlpackage をダウンロードしてインストールする](/sql/tools/sqlpackage-download/)」を参照してください。 SqlPackage.exe 用のサンプル コマンドの一部を次に示します。 詳細については、SqlPackage.exe のドキュメントを参照してください。

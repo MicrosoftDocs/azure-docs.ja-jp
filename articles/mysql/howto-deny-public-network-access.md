@@ -4,14 +4,14 @@ description: Azure portal を使用して Azure Database for MySQL でパブリ�
 author: kummanish
 ms.author: manishku
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: b5f93f3a3583900810ca75f925c6a88df9102652
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f8156b01244012d78214f2ba8c49ed76dbceed6d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79372681"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118785"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-mysql-using-azure-portal"></a>Azure portal を使用して Azure Database for MySQL でパブリック ネットワーク アクセスを拒否する
 

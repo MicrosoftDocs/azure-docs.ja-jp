@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/16/2020
-ms.openlocfilehash: 0c7791d43ffbbc13ab151362c5c3026ebbdb0d34
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e68bd2d164e3a8de60a9061363b839c4dfd4777
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81531018"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074754"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>Azure HDInsight クラスターの仮想ネットワークの作成
 
@@ -27,7 +27,7 @@ Azure HDInsight での仮想ネットワークの使用に関する背景情報�
 
 この記事のサンプルに関するその他の前提条件には、次の項目があります。
 
-* PowerShell を使用する場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/overview)をインストールする必要があります。
+* PowerShell を使用する場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/)をインストールする必要があります。
 * Azure CLI を使用する予定で、まだインストールしていない場合は、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
 
 > [!IMPORTANT]  
@@ -50,7 +50,7 @@ Azure HDInsight での仮想ネットワークの使用に関する背景情報�
 > [!IMPORTANT]  
 > この例の `hdirule1` と `hdirule2` の IP アドレスを、使用している Azure のリージョンに合わせて変更してください。 この情報については、[HDInsight 管理 IP アドレス](hdinsight-management-ip-addresses.md)に関する記事を参照してください。
 
-```powershell
+```azurepowershell
 $vnetName = "Replace with your virtual network name"
 $resourceGroupName = "Replace with the resource group the virtual network is in"
 $subnetName = "Replace with the name of the subnet that you plan to use for HDInsight"
@@ -153,7 +153,7 @@ $vnet | Set-AzVirtualNetwork
 
 この例は、ルールを追加して、必要な IP アドレスの受信トラフィックを許可する方法を示しています。 この方法には、他のソースからの着信アクセスを制限するルールは含まれていません。 次のコードでは、インターネットからの SSH アクセスを可能にする方法を示します。
 
-```powershell
+```azurepowershell
 Get-AzNetworkSecurityGroup -Name hdisecure -ResourceGroupName RESOURCEGROUP |
 Add-AzNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 306 -Direction Inbound
 ```
@@ -192,7 +192,9 @@ Add-AzNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -So
 
     このコマンドにより、次のテキストのような値が返されます。
 
-        "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
+    ```output
+    "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
+    ```
 
 4. 次のコマンドを使用して、ネットワーク セキュリティ グループをサブネットに適用します。 `GUID` と `RESOURCEGROUP` の値を、前の手順で返された値に置き換えます。 `VNETNAME` と `SUBNETNAME` を、作成する仮想ネットワーク名とサブネット名に置き換えます。
 
@@ -228,7 +230,7 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
 
     `RESOURCEGROUP` を仮想ネットワークが含まれるリソース グループの名前に置き換えてから、コマンドを入力します。
 
-    ```powershell
+    ```azurepowershell
     $NICs = Get-AzNetworkInterface -ResourceGroupName "RESOURCEGROUP"
     $NICs[0].DnsSettings.InternalDomainNameSuffix
     ```
@@ -310,7 +312,7 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
 
     `RESOURCEGROUP` を仮想ネットワークが含まれるリソース グループの名前に置き換えてから、コマンドを入力します。
 
-    ```powershell
+    ```azurepowershell
     $NICs = Get-AzNetworkInterface -ResourceGroupName "RESOURCEGROUP"
     $NICs[0].DnsSettings.InternalDomainNameSuffix
     ```

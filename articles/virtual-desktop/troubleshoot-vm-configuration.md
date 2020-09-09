@@ -1,21 +1,22 @@
 ---
 title: Windows Virtual Desktop セッション ホストのトラブルシューティング - Azure
 description: Windows Virtual Desktop セッション ホスト仮想マシンを構成しているときに発生する問題を解決する方法。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 12/03/2019
+ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c7d9a5d576ceec301eba7436c1e0af34412ae854
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 31e9b4b065b2acb8378c2eeac332341f48b28165
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127591"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005218"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>セッション ホスト仮想マシンの構成
+
+>[!IMPORTANT]
+>このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop (classic) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/troubleshoot-vm-configuration-2019.md)を参照してください。
 
 この記事は、Windows Virtual Desktop セッション ホスト仮想マシン (VM) の構成中に発生する問題を解決するときにご利用ください。
 
@@ -25,10 +26,10 @@ Windows Virtual Desktop サービスに関して製品チームや活発なコ�
 
 ## <a name="vms-are-not-joined-to-the-domain"></a>VM がドメインに参加していません
 
-VM をドメインに参加させることができない場合、次の指示に従ってください。
+仮想マシン (VM) をドメインに参加させることができない場合は、次の手順に従ってください。
 
 - 「[Join a Windows Server virtual machine to a managed domain](../active-directory-domain-services/join-windows-vm.md)」(Windows Server 仮想マシンのマネージド ドメインへの参加) のプロセスを利用するか、[ドメイン参加テンプレート](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)を利用し、VM を手動で参加させます。
-- VM でコマンド ラインからドメイン名を ping してみます。
+- VM のコマンド ラインからドメイン名を ping してみます。
 - 「[Troubleshooting Domain Join Error Messages](https://social.technet.microsoft.com/wiki/contents/articles/1935.troubleshooting-domain-join-error-messages.aspx)」(ドメイン参加エラー メッセージのトラブルシューティング) でドメイン参加エラー メッセージの一覧を確認します。
 
 ### <a name="error-incorrect-credentials"></a>エラー:資格情報が間違っています
@@ -77,7 +78,7 @@ VM をドメインに参加させることができない場合、次の指示�
 
 ## <a name="windows-virtual-desktop-agent-and-windows-virtual-desktop-boot-loader-are-not-installed"></a>Windows Virtual Desktop Agent と Windows Virtual Desktop Boot Loader がインストールされていません
 
-VM の推奨プロビジョニング方法は、Azure Resource Manager の「**Create and provision Windows Virtual Desktop host pool**」 (Windows Virtual Desktop ホスト プールを作成し、プロビジョニングする) テンプレートを使用することです。 このテンプレートにより、Windows Virtual Desktop Agent と Windows Virtual Desktop Agent Boot Loader が自動的にインストールされます。
+推奨される VM のプロビジョニング方法は、Azure portal 作成テンプレートを使用することです。 このテンプレートにより、Windows Virtual Desktop Agent と Windows Virtual Desktop Agent Boot Loader が自動的にインストールされます。
 
 次の手順でコンポーネントがインストールされていることを確認し、エラー メッセージがないか確認します。
 
@@ -96,8 +97,8 @@ VM の推奨プロビジョニング方法は、Azure Resource Manager の「**C
 **解決策 2:** 次のリストにある項目を確認します。
 
 - アカウントに MFA が指定されていないことを確認します。
-- テナント名が正しく、テナントが Windows Virtual Desktop に存在することを確認します。
-- アカウントに少なくとも RDS 共同作成者のアクセス許可が与えられていることを確認します。
+- ホスト プールの名前が正しく、ホスト プールが Windows Virtual Desktop に存在することを確認します。
+- 少なくとも Azure サブスクリプションまたはリソース グループに対する共同作成者アクセス許可がアカウントに与えられていることを確認します。
 
 ### <a name="error-authentication-failed-error-in-cwindowstempscriptloglog"></a>エラー:認証失敗、C:\Windows\Temp\ScriptLog.log にエラー
 
@@ -106,16 +107,17 @@ VM の推奨プロビジョニング方法は、Azure Resource Manager の「**C
 **解決策:** 次のリストにある項目を確認します。
 
 - VM を Windows Virtual Desktop サービスに手動で登録します。
-- Windows Virtual Desktop への接続に使用されるアカウントに、テナントでホスト プールを作成するためのアクセス許可が与えられていることを確認します。
+- Azure サブスクリプションまたはリソース グループでホスト プールを作成するためのアクセス許可が、Windows Virtual Desktop への接続に使用されるアカウントに与えられていることを確認します。
 - アカウントに MFA が指定されていないことを確認します。
 
 ## <a name="windows-virtual-desktop-agent-is-not-registering-with-the-windows-virtual-desktop-service"></a>Windows Virtual Desktop Agent が Windows Virtual Desktop サービスに登録されません
 
-(手動か、Azure Resource Manager テンプレートと PowerShell DSC によって) Windows Virtual Desktop Agent が最初にセッション ホスト VM にインストールされたとき、登録トークンが与えられます。 次のセクションでは、Windows Virtual Desktop Agent とトークンに当てはまる問題の解決方法について説明します。
+(手動か、Azure Resource Manager テンプレートと PowerShell DSC によって) Windows Virtual Desktop Agent が最初にセッション ホスト VM にインストールされたとき、登録トークンが与えられます。 次のセクションでは、Windows Virtual Desktop Agent とトークンに適用される問題のトラブルシューティングについて説明します。
 
-### <a name="error-the-status-filed-in-get-rdssessionhost-cmdlet-shows-status-as-unavailable"></a>エラー:Get-RdsSessionHost コマンドレットで記録されたステータスに、ステータスが Unavailable (利用不可) と示されています
+### <a name="error-the-status-filed-in-get-azwvdsessionhost-cmdlet-shows-status-as-unavailable"></a>エラー:AzWvdSessionHost コマンドレットの状態フィールドに、状態が Unavailable (利用不可) と示されています
 
-![Get-RdsSessionHost コマンドレットでステータスが Unavailable (利用不可) と示されます。](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![Get-AzWvdSessionHost コマンドレットを実行すると状態が Unavailable (利用不可) と示される。](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 **原因:** エージェントを新しいバージョンに更新できません。
 
@@ -128,17 +130,17 @@ VM の推奨プロビジョニング方法は、Azure Resource Manager の「**C
 5. インストール ウィザードを完了します。
 6. タスク マネージャーを開き、RDAgentBootLoader サービスを開始します。
 
-## <a name="error--windows-virtual-desktop-agent-registry-entry-isregistered-shows-a-value-of-0"></a>エラー:Windows Virtual Desktop Agent のレジストリ エントリ IsRegistered に値 0 が表示されます
+## <a name="error-windows-virtual-desktop-agent-registry-entry-isregistered-shows-a-value-of-0"></a>エラー:Windows Virtual Desktop Agent のレジストリ エントリ IsRegistered に値 0 が表示されます
 
-**原因:** 登録トークンが期限切れになったか、有効期限値 999999 で生成されています。
+**原因:** 登録トークンの有効期限が切れています。
 
 **解決策:** 次の手順でエージェント レジストリ エラーを修正します。
 
-1. 登録トークンが既に存在する場合、Remove-RDSRegistrationInfo でそれを削除します。
-2. Rds-NewRegistrationInfo で新しいトークンを生成します。
-3. -ExpriationHours パラメーターが 72 に設定されていることを確認します (最大値は 99999 です)。
+1. 登録トークンが既に存在する場合は、Remove-AzWvdRegistrationInfo を使用してそれを削除します。
+2. **New-AzWvdRegistrationInfo** コマンドレットを実行して、新しいトークンを生成します。
+3. *-ExpriationTime* パラメーターが 3 日に設定されていることを確認します。
 
-### <a name="error-windows-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-rdssessionhost"></a>エラー:Get-RdsSessionHost を実行したとき、Windows Virtual Desktop Agent からハートビートが報告されません
+### <a name="error-windows-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-azwvdsessionhost"></a>エラー:Get-AzWvdSessionHost を実行したとき、Windows Virtual Desktop Agent からハートビートが報告されません
 
 **原因 1:** RDAgentBootLoader サービスが停止しました。
 
@@ -180,7 +182,7 @@ Windows Virtual Desktop サイドバイサイド スタックが Windows Server 
 
 サイドバイサイド スタックは主に 3 とおりの方法でセッション ホスト プール VM にインストールされるか、有効化されます。
 
-- Azure Resource Manager の **[Create and provision Windows Virtual Desktop host pool]\(Windows Virtual Desktop ホスト プールを作成し、プロビジョニングする\)** テンプレートを使用する
+- Azure portal 作成テンプレートを使用する
 - マスター イメージに含まれ、有効になっている
 - 各 VM に手動でインストールし、有効にする (あるいは、extensions/PowerShell を使用する)
 
@@ -188,7 +190,8 @@ Windows Virtual Desktop サイドバイサイド スタックに問題がある�
 
 サイドバイサイド スタックがインストールされ、有効になっている場合、**qwinsta** の出力には、**rdp-sxs** が一覧表示されます。
 
-![サイドバイサイド スタックは、出力に rdp-sxs として記載されている qwinsta でインストールされ、有効化されました。](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![サイドバイサイド スタックは、出力に rdp-sxs として記載されている qwinsta でインストールされ、有効化されました。](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 下に記載されているレジストリ エントリを調べ、その値が一致することを確認します。 レジストリ キーがないか、値が一致しない場合、「[PowerShell を使用してホスト プールを作成する](create-host-pools-powershell.md)」にあるサイドバイサイド スタックの再インストール方法を実行してください。
 
@@ -202,20 +205,15 @@ Windows Virtual Desktop サイドバイサイド スタックに問題がある�
 
 ### <a name="error-o_reverse_connect_stack_failure"></a>エラー:O_REVERSE_CONNECT_STACK_FAILURE
 
-![O_REVERSE_CONNECT_STACK_FAILURE エラー コード。](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![O_REVERSE_CONNECT_STACK_FAILURE エラー コード。](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 **原因:** サイドバイサイド スタックがセッション ホスト VM にインストールされていません。
 
 **解決策:** 次の手順で、セッション ホスト VM にサイドバイサイド スタックをインストールします。
 
 1. リモート デスクトップ プロトコル (RDP) を使用し、ローカル管理者としてセッション ホスト VM に直接入ります。
-2. まだ行っていない場合は、ご自分の PowerShell セッション内で使用する [Windows Virtual Desktop PowerShell モジュール](/powershell/windows-virtual-desktop/overview/)をダウンロードしてインポートし、次のコマンドレットを実行してご自分のアカウントにサインインします。
-
-    ```powershell
-    Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-    ```
-
-3. 「[PowerShell を使用してホスト プールを作成する](create-host-pools-powershell.md)」を参照してサイドバイサイド スタックをインストールします。
+2. 「[PowerShell を使用してホスト プールを作成する](create-host-pools-powershell.md)」を参照してサイドバイサイド スタックをインストールします。
 
 ## <a name="how-to-fix-a-windows-virtual-desktop-side-by-side-stack-that-malfunctions"></a>誤作動する Windows Virtual Desktop サイドバイサイド スタックの修正方法
 
@@ -244,19 +242,21 @@ Windows Virtual Desktop サイドバイサイド スタックに問題がある�
             psexec.exe \\<VMname> cmd
     ```
 
-    >[!Note]
+    >[!NOTE]
     >VMname は、サイドバイサイド スタックが誤作動する VM のマシン名です。
 
 7. [同意する] をクリックし、PsExec の使用許諾契約に同意します。
 
-    ![ソフトウェア使用許諾契約のスクリーンショット。](media/SoftwareLicenseTerms.png)
+    > [!div class="mx-imgBorder"]
+    > ![ソフトウェア使用許諾契約のスクリーンショット。](media/SoftwareLicenseTerms.png)
 
-    >[!Note]
+    >[!NOTE]
     >このダイアログは、PsExec の初回実行時にのみ表示されます。
 
 8. サイドバイサイド スタックが誤作動する VM でコマンド プロンプト セッションが開いたら、qwinsta を実行し、rdp-sxs という名前のエントリがあることを確認します。 エントリがない場合、サイドバイサイド スタックは VM 上にありません。そのため、問題はサイドバイサイド スタックに関連したものではありません。
 
-    ![管理者コマンド プロンプト](media/AdministratorCommandPrompt.png)
+    > [!div class="mx-imgBorder"]
+    > ![管理者コマンド プロンプト](media/AdministratorCommandPrompt.png)
 
 9. 次のコマンドを実行します。このコマンドによって、サイドバイサイドが誤作動する VM にインストールされている Microsoft コンポーネントが一覧表示されます。
 
@@ -303,7 +303,7 @@ Windows Virtual Desktop サイドバイサイド スタックに問題がある�
 
 制限時間が経過すると、「このコンピューターで利用できるリモート デスクトップ クライアント アクセス ライセンスがないため、リモート セッションは切断されました」というエラー メッセージが表示されます。
 
-これらのメッセージのいずれかが表示された場合は、イメージに最新の Windows 更新プログラムがインストールされていないか、グループ ポリシーでリモート デスクトップ ライセンス モードを設定していることを意味します。 次のセクションの手順に従って、グループ ポリシーの設定を確認し、Windows 10 Enterprise マルチセッションのバージョンを特定して、対応する更新プログラムをインストールしてください。  
+これらのメッセージのいずれかが表示された場合は、イメージに最新の Windows 更新プログラムがインストールされていないか、グループ ポリシーでリモート デスクトップ ライセンス モードを設定していることを意味します。 次のセクションの手順に従って、グループ ポリシーの設定を確認し、Windows 10 Enterprise マルチセッションのバージョンを特定して、対応する更新プログラムをインストールしてください。
 
 >[!NOTE]
 >Windows Virtual Desktop では、ホスト プールに Windows Server セッション ホストが含まれている場合は、RDS クライアント アクセス ライセンス (CAL) のみが必要です。 RDS CAL を構成する方法については、「[クライアント アクセス ライセンス (CAL) を使用して RDS 展開をライセンスする](/windows-server/remote/remote-desktop-services/rds-client-access-license/)」を参照してください。
@@ -324,7 +324,8 @@ Windows Virtual Desktop サイドバイサイド スタックに問題がある�
 3. **[PC 情報]** を選択します。
 4. "バージョン" の横の数字を確認します。 次の図に示すように、この数字は "1809" または "1903" のいずれかになります。
 
-    ![Windows の仕様ウィンドウのスクリーンショット。 バージョン番号が青色で強調表示されています。](media/windows-specifications.png)
+    > [!div class="mx-imgBorder"]
+    > ![Windows の仕様ウィンドウのスクリーンショット。 バージョン番号が青色で強調表示されています。](media/windows-specifications.png)
 
 バージョン番号がわかったら、該当するセクションに進んでください。
 
@@ -336,10 +337,16 @@ Windows Virtual Desktop サイドバイサイド スタックに問題がある�
 
 Azure ギャラリーから、最新バージョンの Windows 10 バージョン 1903 イメージを使用して、ホスト オペレーティング システムを再デプロイします。
 
+## <a name="we-couldnt-connect-to-the-remote-pc-because-of-a-security-error"></a>We couldn't connect to the remote PC because of a security error (セキュリティ エラーのため、リモート PC に接続できませんでした)
+
+「We couldn't connect to the remote PC because of a security error. (セキュリティ エラーのため、リモート PC に接続できませんでした。) If this keeps happening, ask your admin or tech support for help (この問題が引き続き発生する場合は、管理者または技術サポートにお問い合わせください)」というエラーがユーザーに表示された場合は、既定の RDP アクセス許可を変更する既存のポリシーを確認してください。 このエラーを発生させる可能性があるポリシーの 1 つは、"リモート デスクトップ サービスを使ったログオンを許可" セキュリティ ポリシーです。
+
+このポリシーの詳細については、「[リモート デスクトップ サービスを使ったログオンを許可](/windows/security/threat-protection/security-policy-settings/allow-log-on-through-remote-desktop-services)」を参照してください。
+
 ## <a name="next-steps"></a>次のステップ
 
 - Windows Virtual Desktop トラブルシューティングの概要とエスカレーション トラックについては、「[トラブルシューティングの概要、フィードバック、サポート](troubleshoot-set-up-overview.md)」を参照してください。
-- Windows Virtual Desktop 環境でテナント/ホスト プールを作成しているときに発生した問題を解決するには、「[Tenant and host pool creation](troubleshoot-set-up-issues.md)」 (テナントとホスト プールの作成) を参照してください。
+- Windows Virtual Desktop 環境でホスト プールを作成しているときに発生した問題のトラブルシューティングを行うには、[環境とホスト プールの作成](troubleshoot-set-up-issues.md)に関するページを参照してください。
 - Windows Virtual Desktop で仮想マシン (VM) の構成中に発生した問題を解決するには、[Session host virtual machine configuration (セッション ホスト仮想マシンの構成)](troubleshoot-vm-configuration.md) に関する記事を参照してください。
 - Windows Virtual Desktop クライアント接続の問題をトラブルシューティングするには、[Windows Virtual Desktop サービスの接続](troubleshoot-service-connection.md)に関するページを参照してください。
 - リモート デスクトップ クライアントの問題をトラブルシューティングするには、[リモート デスクトップ クライアントのトラブルシューティング](troubleshoot-client.md) に関するページを参照してください

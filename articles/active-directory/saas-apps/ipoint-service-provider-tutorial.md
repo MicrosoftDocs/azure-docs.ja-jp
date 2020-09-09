@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と iPoint Service Provider の統合 | Microsoft Docs
 description: Azure Active Directory と iPoint Service Provider の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9b3597cf-e7dc-47cb-b731-a95cddf49bb9
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10d9feb7f3cd369fcd13986ebd5f48a63905252e
-ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+ms.openlocfilehash: b7c1fa0f66a68f3ff87cec15018af3f2ec882ce1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80295591"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552885"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ipoint-service-provider"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と iPoint Service Provider の統合
 
@@ -86,11 +82,11 @@ iPoint Service Provider で Azure AD SSO を構成してテストするには、
 
     **[サインオン URL]** テキスト ボックスに、次のいずれかのパターンを使用して URL を入力します。
 
-    |||
-    |-|-|
-    | `https://<CUSTOMERNAME>.ipoint-systems.com/dashboard/`|
-    | `https://<CUSTOMERNAME>.ipoint-systems.com/ipca-web/`|
-    | `https://<CUSTOMERNAME>.ipoint-systems.com/authserver/saml/ssoLogin`|
+    ```https
+    https://<CUSTOMERNAME>.ipoint-systems.com/dashboard/
+    https://<CUSTOMERNAME>.ipoint-systems.com/ipca-web/
+    https://<CUSTOMERNAME>.ipoint-systems.com/authserver/saml/ssoLogin
+    ```
 
 1. **[保存]** をクリックします。
 

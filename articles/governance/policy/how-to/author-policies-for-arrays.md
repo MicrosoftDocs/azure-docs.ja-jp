@@ -1,14 +1,14 @@
 ---
 title: リソースの配列プロパティのポリシーを作成する
 description: Azure Policy 定義ルールを使用して、配列パラメーターおよび配列の言語式を処理し、[*] エイリアスを評価し、要素を付加する方法について説明します。
-ms.date: 05/20/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: f3d30f76d555386e5ab8041a0b8cc82b5b60e28e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 5b9392a943e264ae5eca989ee87eb9ff09b36972
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684260"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048484"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Azure リソースの配列プロパティのポリシーを作成する
 
@@ -95,7 +95,7 @@ Azure portal からポリシーを割り当てるときに、**type** _array_ �
 
 各 SDK でこの文字列を使用するには、次のコマンドを使用します。
 
-- Azure CLI:コマンド [az policy assignment create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) とパラメーター **params**
+- Azure CLI:コマンド [az policy assignment create](/cli/azure/policy/assignment#az-policy-assignment-create) とパラメーター **params**
 - Azure PowerShell:コマンドレット [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) とパラメーター **PolicyParameter**
 - REST API:要求本文の一部としての _PUT_ [作成](/rest/api/resources/policyassignments/create)操作において、**properties.parameters** プロパティの値として
 

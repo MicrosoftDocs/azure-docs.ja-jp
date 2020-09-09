@@ -1,23 +1,14 @@
 ---
 title: 複数のインスタンス間でパーティション負荷のバランスを取る - Azure Event Hubs |Microsoft Docs
 description: イベント プロセッサと Azure Event Hubs SDK を使用して、アプリケーションの複数のインスタンス間でパーティション負荷のバランスを取る方法について説明します。
-services: event-hubs
-documentationcenter: .net
-author: ShubhaVijayasarathy
-editor: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/16/2020
-ms.author: shvija
-ms.openlocfilehash: e7f17c589b043a055bd541a0850d9efc8e1d96be
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.date: 06/23/2020
+ms.openlocfilehash: 8bf3f05b823a784f4f3fc2074719ed346f769f5e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628863"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933795"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>アプリケーションの複数のインスタンス間でパーティション負荷のバランスを取る
 イベント処理アプリケーションをスケーリングするには、アプリケーションのインスタンスを複数実行し、それらのインスタンス間で負荷のバランスを取ります。 以前のバージョンでは、[EventProcessorHost](event-hubs-event-processor-host.md) を使用することで、プログラムの複数のインスタンス間での負荷と、受信時のチェックポイントイ ベントのバランスを取ることができました。 新しいバージョン (5.0 以降) では **EventProcessorClient** (.NET および Java) または **EventHubConsumerClient** (Python および JavaScript) を使用して、同じ処理を実行できます。 開発モデルは、イベントを使用することでより簡単に作成できます。 イベント ハンドラーを登録することによって、目的のイベントをサブスクライブします。
@@ -25,7 +16,7 @@ ms.locfileid: "82628863"
 この記事では、複数のインスタンスを使用してイベント ハブからイベントを読み取り、イベント プロセッサ クライアントの機能について詳しく説明するためのサンプル シナリオについて説明します。これによって、一度に複数のパーティションからイベントを受信し、同じイベント ハブとコンシューマー グループを使用する他のコンシューマーと負荷のバランスを取ることができます。
 
 > [!NOTE]
-> Event Hubs をスケーリングするための鍵となるのは、パーティション分割されたコンシューマーのアイデアです。 [競合コンシューマー](https://msdn.microsoft.com/library/dn568101.aspx) パターンとは対照的に、パーティション分割されたコンシューマー パターンは、競合のボトルネックを除去し、エンド ツー エンドの並列処理を容易にすることによって、高スケールを可能にします。
+> Event Hubs をスケーリングするための鍵となるのは、パーティション分割されたコンシューマーのアイデアです。 [競合コンシューマー](/previous-versions/msp-n-p/dn568101(v=pandp.10)) パターンとは対照的に、パーティション分割されたコンシューマー パターンは、競合のボトルネックを除去し、エンド ツー エンドの並列処理を容易にすることによって、高スケールを可能にします。
 
 ## <a name="example-scenario"></a>サンプル シナリオ
 
@@ -44,7 +35,7 @@ ms.locfileid: "82628863"
 
 ## <a name="event-processor-or-consumer-client"></a>イベント プロセッサまたはコンシューマー クライアント
 
-これらの要件を満たすために独自のソリューションを構築する必要はありません。 この機能は、Azure Event Hubs SDK によって提供されます。 .NET または Java SDK ではイベント プロセッサ クライアント (EventProcessorClient) を使用し、Python および Java Script SDK では EventHubConsumerClient を使用します。 以前のバージョンの SDK では、イベント プロセッサ ホスト (EventProcessorHost) がこれらの機能をサポートしていました。
+これらの要件を満たすために独自のソリューションを構築する必要はありません。 この機能は、Azure Event Hubs SDK によって提供されます。 .NET SDK または Java SDK ではイベント プロセッサ クライアント (EventProcessorClient) を使用し、Python SDK と JavaScript SDK では EventHubConsumerClient を使用します。 以前のバージョンの SDK では、イベント プロセッサ ホスト (EventProcessorHost) がこれらの機能をサポートしていました。
 
 大部分の運用環境では、イベントの読み取りと処理にイベント プロセッサ クライアントを使用することをお勧めします。 プロセッサ クライアントは、イベント ハブのすべてのパーティションにわたって、パフォーマンスが高く、フォールト トレラントな方法でイベントを処理しながら、その進行状況にチェックポイントを設定する手段を提供するための堅牢なエクスペリエンスを提供することを目的としています。 また、イベント プロセッサ クライアントは、特定のイベント ハブ用にコンシューマー グループのコンテキスト内で協調的に動作できます。 クライアントは、インスタンスがそのグループに対して使用可能または使用不可能になると、自動的に作業の配布と分散を管理します。
 
@@ -84,7 +75,7 @@ ms.locfileid: "82628863"
 イベントを処理済みとしてマークするためにチェックポイントが実行されると、チェックポイント ストア内のエントリが、イベントのオフセットとシーケンス番号で追加または更新されます。 ユーザーは、チェックポイントを更新する頻度を決定する必要があります。 正常に処理された各イベントの後に更新すると、基になっているチェックポイント ストアへの書き込み操作がトリガーされるため、パフォーマンスとコストへの影響が生じる可能性があります。 すべての単一イベントをチェックポイント処理することは、キューに格納されたメッセージング パターンを暗示しています。その場合は、イベント ハブよりも Service Bus キューの方がより適切なオプションになる可能性があります。 Event Hubs の背後にあるのは、"1 回以上" 大規模な配信を受ける、という考え方です。 ダウンストリームのシステムにべき等性を持たせることで、同じイベントが複数回受信される結果になるエラーまたは再起動から容易に復旧できます。
 
 > [!NOTE]
-> Azure で一般公開されているものとは異なるバージョンの Storage Blob SDK をサポートする環境で、チェックポイント ストアとして Azure Blob Storage を使用している場合は、コードを使用して、Storage Service API バージョンをその環境でサポートされている特定のバージョンに変更する必要があります。 たとえば、[Azure Stack Hub バージョン 2002 上で Event Hubs](https://docs.microsoft.com/azure-stack/user/event-hubs-overview) を実行している場合、Storage Service で利用可能な最も高いバージョンは 2017-11-09 です。 この場合は、コードを使用して、対象にする Storage Service API のバージョンを 2017-11-09 にする必要があります。 特定の Storage API バージョンを対象にする方法の例については、GitHub の次のサンプルを参照してください。 
+> Azure で一般公開されているものとは異なるバージョンの Storage Blob SDK をサポートする環境で、チェックポイント ストアとして Azure Blob Storage を使用している場合は、コードを使用して、Storage Service API バージョンをその環境でサポートされている特定のバージョンに変更する必要があります。 たとえば、[Azure Stack Hub バージョン 2002 上で Event Hubs](/azure-stack/user/event-hubs-overview) を実行している場合、Storage Service で利用可能な最も高いバージョンは 2017-11-09 です。 この場合は、コードを使用して、対象にする Storage Service API のバージョンを 2017-11-09 にする必要があります。 特定の Storage API バージョンを対象にする方法の例については、GitHub の次のサンプルを参照してください。 
 > - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs) 
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/)
 > - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript) または [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript)
@@ -92,12 +83,12 @@ ms.locfileid: "82628863"
 
 ## <a name="thread-safety-and-processor-instances"></a>スレッドの安全性とプロセッサのインスタンス
 
-既定では、イベント プロセッサまたはコンシューマーはスレッド セーフであり、同期的に動作します。 パーティションのイベントが到着すると、そのイベントを処理する関数が呼び出されます。 後続のメッセージとこの関数の呼び出しは、メッセージ ポンプが他のスレッドのバックグラウンドで引き続き実行されるため、バックグラウンドで待機します。 このスレッド セーフにより、スレッド セーフなコレクションが不要になり、パフォーマンスが大幅に向上します。
+既定では、イベントを処理する関数は、特定のパーティションに対して順番に呼び出されます。 後続のイベントと同じパーティションからのこの関数に対する呼び出しは、メッセージ ポンプが他のスレッドのバックグラウンドで引き続き実行されるため、バックグラウンドでキューに配置されます。 異なるパーティションからのイベントを同時に処理でき、パーティション間でアクセスされるすべての共有状態を同期する必要があることに注意してください。
 
 ## <a name="next-steps"></a>次のステップ
 次のクイック スタートを参照してください。
 
-- [.NET Core](get-started-dotnet-standard-send-v2.md)
+- [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
 - [Java](event-hubs-java-get-started-send.md)
-- [Python](get-started-python-send-v2.md)
-- [JavaScript](get-started-node-send-v2.md)
+- [Python](event-hubs-python-get-started-send.md)
+- [JavaScript](event-hubs-node-get-started-send.md)

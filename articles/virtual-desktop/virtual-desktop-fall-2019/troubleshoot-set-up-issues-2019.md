@@ -1,24 +1,22 @@
 ---
-title: Windows Virtual Desktop テナントのホスト プールの作成 - Azure
-description: Windows Virtual Desktop テナント環境のセットアップ中にテナントとホスト プールの問題をトラブルシューティングおよび解決する方法。
-services: virtual-desktop
+title: Windows Virtual Desktop (クラシック) テナントのホスト プールの作成 - Azure
+description: Windows Virtual Desktop (クラシック) テナント環境設定時のテナントおよびホスト プールの問題をトラブルシューティングし、解決する方法。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5825466c099a8c57477f2d9d0420da74ccb2e96d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: eed1b0e1b01d5d13330b927429eca9a28ff80658
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614260"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009258"
 ---
-# <a name="tenant-and-host-pool-creation"></a>テナントとホスト プールの作成
+# <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) でのテナントとホスト プールの作成
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースに適用されます。 Spring 2020 更新プログラムで導入された Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../troubleshoot-set-up-issues.md)をご覧ください。
+>この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../troubleshoot-set-up-issues.md)を参照してください。
 
 この記事では、Windows Virtual Desktop テナントと、関連するセッション ホスト プール インフラストラクチャの初期セットアップ中の問題について説明します。
 
@@ -30,15 +28,33 @@ Windows Virtual Desktop サービスに関して製品チームや活発なコ�
 
 Windows 10 Enterprise マルチセッションのイメージを使用するには、Azure Marketplace にアクセスし、 **[Get Started]\(開始する\)**  >  **[Microsoft Windows 10]** 、[[Windows 10 Enterprise for Virtual Desktops, Version 1809]](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice) を選択します。
 
-![Windows 10 Enterprise for Virtual Desktops, Version 1809 を選択するスクリーンショット。](../media/AzureMarketPlace.png)
+> [!div class="mx-imgBorder"]
+> ![Windows 10 Enterprise for Virtual Desktops, Version 1809 を選択するスクリーンショット。](../media/AzureMarketPlace.png)
 
 ## <a name="creating-windows-virtual-desktop-tenant"></a>Windows Virtual Desktop テナントの作成
 
 このセクションでは、Windows Virtual Desktop テナントを作成するときの潜在的な問題について説明します。
 
+### <a name="error-aadsts650052-the-app-needs-access-to-a-service"></a>エラー:AADSTS650052 アプリにはサービスへのアクセスが必要です。
+
+未処理エラーの例:
+
+```Error
+AADSTS650052 Message The app needs access to a service(\"{name}\") that your organization
+\"{organization}\" has not subscribed to or enabled. Contact your IT Admin to review the
+configuration of your service subscriptions.650052 Message The app needs access to a service
+(\"{name}\") that your organization \"{organization}\" has not subscribed to or enabled.
+Contact your IT Admin to review the configuration of your service subscriptions.
+```
+
+**原因:** Azure Active Directory インスタンスで、Windows Virtual Desktop への同意が付与されていません。
+
+**解決策:** [こちらのガイドに従って](https://docs.microsoft.com/azure/virtual-desktop/virtual-desktop-fall-2019/tenant-setup-azure-active-directory#grant-permissions-to-windows-virtual-desktop)、同意を付与してください。
+
 ### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>エラー:管理サービスに問い合わせる許可がユーザーに与えられていません
 
-![ユーザーが管理サービスのクエリを承認されていない PowerShell ウィンドウのスクリーンショット。](../media/UserNotAuthorizedNewTenant.png)
+> [!div class="mx-imgBorder"]
+> ![ユーザーが管理サービスのクエリを承認されていない PowerShell ウィンドウのスクリーンショット。](../media/UserNotAuthorizedNewTenant.png)
 
 未処理エラーの例:
 
@@ -59,7 +75,8 @@ Windows 10 Enterprise マルチセッションのイメージを使用するに�
 
 **解決策:** [Azure Active Directory テナント内のユーザーに TenantCreator アプリケーション ロールを割り当てる](tenant-setup-azure-active-directory.md#assign-the-tenantcreator-application-role)の指示に従います。 指示に従った後、ユーザーを TenantCreator ロールに割り当てます。
 
-![TenantCreator ロールを割り当てたスクリーンショット。](../media/TenantCreatorRoleAssigned.png)
+> [!div class="mx-imgBorder"]
+> ![TenantCreator ロールを割り当てたスクリーンショット。](../media/TenantCreatorRoleAssigned.png)
 
 ## <a name="creating-windows-virtual-desktop-session-host-vms"></a>Windows Virtual Desktop セッション ホスト VM の作成
 
@@ -71,7 +88,8 @@ Windows 10 Enterprise マルチセッションのイメージを使用するに�
 
 ### <a name="error-when-using-the-link-from-github-the-message-create-a-free-account-appears"></a>エラー:GitHub からのリンクを使用すると "無料アカウントの作成" メッセージが表示される
 
-![無料アカウントを作成するスクリーンショット。](../media/be615904ace9832754f0669de28abd94.png)
+> [!div class="mx-imgBorder"]
+> ![無料アカウントを作成するスクリーンショット。](../media/be615904ace9832754f0669de28abd94.png)
 
 **原因 1:** Azure へのサインインに使用されたアカウントにアクティブなサブスクリプションがないか、使用されたアカウントにサブスクリプションを表示するアクセス許可がありません。
 
@@ -94,7 +112,8 @@ Windows 10 Enterprise マルチセッションのイメージを使用するに�
 
 ### <a name="error-you-receive-template-deployment-is-not-valid-error"></a>エラー:"テンプレートのデプロイが有効ではありません"というエラーが表示される
 
-!["テンプレートのデプロイ... が有効ではありません"というエラーのスクリーンショットが表示される](../media/troubleshooting-marketplace-validation-error-generic.png)
+> [!div class="mx-imgBorder"]
+> !["テンプレートのデプロイ... が有効ではありません"というエラーのスクリーンショット](../media/troubleshooting-marketplace-validation-error-generic.png)
 
 特定のアクションを実行する前に、アクティビティ ログを確認して、失敗したデプロイの検証に関する詳細なエラーを確認する必要があります。
 
@@ -103,10 +122,14 @@ Windows 10 Enterprise マルチセッションのイメージを使用するに�
 1. 現在の Azure Marketplace デプロイ オファリングを終了します。
 2. 上部の検索バーで、**アクティビティ ログ** を検索して選択します。
 3. **[デプロイの検証]** という名前で状態が **[失敗]** のアクティビティを見つけて、そのアクティビティを選択します。
-   ![ **失敗** 状態での各々の "デプロイの検証" 操作スクリーンショット](../media/troubleshooting-marketplace-validation-error-activity-summary.png)
+
+   > [!div class="mx-imgBorder"]
+   > ![ **失敗** 状態での各々の "デプロイの検証" 操作スクリーンショット](../media/troubleshooting-marketplace-validation-error-activity-summary.png)
 
 4. [JSON] を選択し、"statusMessage" フィールドが表示されるまで、画面の一番下までスクロールします。
-   ![失敗したアクティビティのスクリーンショット。JSON テキストの statusMessage メッセージプロパティを囲む赤いボックスがあります。](../media/troubleshooting-marketplace-validation-error-json-boxed.png)
+
+   > [!div class="mx-imgBorder"]
+   > ![失敗したアクティビティのスクリーンショット。JSON テキストの statusMessage メッセージプロパティを囲む赤いボックスがあります。](../media/troubleshooting-marketplace-validation-error-json-boxed.png)
 
 操作テンプレートがクォータ制限を超えた場合は、次のいずれかの方法で修正できます:
 
@@ -122,9 +145,10 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 3. エラーが特定されたら、エラー メッセージと、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](../../azure-resource-manager/resource-manager-common-deployment-errors.md)」のリソースを使用して問題に対処します。
 4. 以前のデプロイ中に作成されたすべてのリソースを削除し、テンプレートのデプロイを再試行します。
 
-### <a name="error-your-deployment-failedhostnamejoindomain"></a>エラー:デプロイに失敗しました….\<ホスト名>/joindomain
+### <a name="error-your-deployment-failedhostnamejoindomain"></a>エラー:デプロイに失敗しました….\<hostname>/joindomain
 
-![デプロイ失敗のスクリーンショット。](../media/e72df4d5c05d390620e07f0d7328d50f.png)
+> [!div class="mx-imgBorder"]
+> ![デプロイ失敗のスクリーンショット。](../media/e72df4d5c05d390620e07f0d7328d50f.png)
 
 未処理エラーの例:
 
@@ -165,7 +189,8 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 
 ### <a name="error-vmextensionprovisioningerror"></a>エラー:VMExtensionProvisioningError
 
-![ターミナルのプロビジョニングの状態 (失敗) を示しているデプロイ失敗のスクリーンショット。](../media/7aaf15615309c18a984673be73ac969a.png)
+> [!div class="mx-imgBorder"]
+> ![ターミナルのプロビジョニングの状態 (失敗) を示しているデプロイ失敗のスクリーンショット。](../media/7aaf15615309c18a984673be73ac969a.png)
 
 **原因 1:** Windows Virtual Desktop 環境の一時的なエラーです。
 
@@ -175,7 +200,8 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 
 ### <a name="error-the-admin-username-specified-isnt-allowed"></a>エラー:指定した管理者のユーザー名は許可されません
 
-![指定した管理者が許可されないことを示しているデプロイ失敗のスクリーンショット。](../media/f2b3d3700e9517463ef88fa41875bac9.png)
+> [!div class="mx-imgBorder"]
+> ![指定した管理者が許可されないことを示しているデプロイ失敗のスクリーンショット。](../media/f2b3d3700e9517463ef88fa41875bac9.png)
 
 未処理エラーの例:
 
@@ -194,7 +220,8 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 
 ### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>エラー:拡張機能を処理しているときに VM がエラーを報告しました
 
-![リソース操作の完了とターミナルのプロビジョニングの状態を示している、デプロイ失敗のスクリーンショット。](../media/49c4a1836a55d91cd65125cf227f411f.png)
+> [!div class="mx-imgBorder"]
+> ![リソース操作の完了とターミナルのプロビジョニングの状態を示している、デプロイ失敗のスクリーンショット。](../media/49c4a1836a55d91cd65125cf227f411f.png)
 
 未処理エラーの例:
 
@@ -220,7 +247,8 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 
 ### <a name="error-deploymentfailed--powershell-dsc-configuration-firstsessionhost-completed-with-errors"></a>エラー:DeploymentFailed – PowerShell DSC 構成 'FirstSessionHost' がエラーで完了しました
 
-![PowerShell DSC 構成 'FirstSessionHost' がエラーで完了したデプロイ失敗のスクリーンショット。](../media/64870370bcbe1286906f34cf0a8646ab.png)
+> [!div class="mx-imgBorder"]
+> ![PowerShell DSC 構成 'FirstSessionHost' がエラーで完了したデプロイ失敗のスクリーンショット。](../media/64870370bcbe1286906f34cf0a8646ab.png)
 
 未処理エラーの例:
 
@@ -230,7 +258,7 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
    "message": "At least one resource deployment operation failed. Please list
  deployment operations for details. 4 Please see https://aka.ms/arm-debug for usage details.",
  "details": [
-         { "code": "Conflict",  
+         { "code": "Conflict",
          "message": "{\r\n \"status\": \"Failed\",\r\n \"error\": {\r\n \"code\":
          \"ResourceDeploymentFailure\",\r\n \"message\": \"The resource
          operation completed with terminal provisioning state 'Failed'.\",\r\n
@@ -349,7 +377,8 @@ New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDef
 
 ### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>エラー:ユーザーが Azure 多要素認証 (MFA) を要求する
 
-![多要素認証 (MFA) の欠如によるデプロイ失敗のスクリーンショット](../media/MFARequiredError.png)
+> [!div class="mx-imgBorder"]
+> ![多要素認証 (MFA) の欠如によるデプロイ失敗のスクリーンショット](../media/MFARequiredError.png)
 
 未処理エラーの例:
 
@@ -374,6 +403,12 @@ GitHub の Azure Resource Manager テンプレートを実行している場合�
 - テナント管理パスワード:サービス プリンシパル用に生成したパスワードのシークレット
 - IsServicePrincipal: **true**
 - AadTenantId:作成したサービス プリンシパルの Azure AD テナント ID
+
+### <a name="error-vmsubnet-not-available-when-configuring-virtual-networks"></a>エラー: 仮想ネットワークを構成するときに vmSubnet を使用できません
+
+**原因:** WVD Marketplace テンプレートでは、テンプレートに指定されている VM の合計数と同じ数以上の IP アドレスを持つサブネットのみが UI に表示されます。 サブネットで使用できる IP アドレスの実際の数は、デプロイされている新しい VM の数と同じであれば十分ですが、現在の UI ではこの数を計算できません。
+
+**解決策:** Marketplace UI を使用しないで、追加されている VM の数と同じ数以上の IP アドレスを持つサブネットを指定できます。これは、[既存のデプロイを再デプロイする](expand-existing-host-pool-2019.md#redeploy-from-azure)か、[GitHub から基になる ARM テンプレートを使用してデプロイする](create-host-pools-arm-template.md#run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool)ときに、"**existingSubnetName**" パラメーターでサブネット名を指定して実行できます。
 
 ## <a name="next-steps"></a>次のステップ
 

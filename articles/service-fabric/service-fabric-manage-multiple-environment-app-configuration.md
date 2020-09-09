@@ -5,12 +5,12 @@ author: mikkelhegn
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 0bca690fd585b288f15cbab21c1c951474390318
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6d6ff37024a3181a43b67d2af26b067225654fe
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78196981"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257486"
 ---
 # <a name="manage-applications-for-multiple-environments"></a>複数の環境向けのアプリケーションの管理
 
@@ -40,8 +40,8 @@ Azure Service Fabric クラスターは、1 台から数千台のコンピュー
 
 Service Fabric で名前付きアプリケーション インスタンスを作成するときは、パラメーターで渡すことができます。 その方法は、アプリケーション インスタンスの作成方法によって異なります。
 
-  - PowerShell では、[`New-ServiceFabricApplication`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) コマンドレットはハッシュテーブルとしてアプリケーション パラメーターを受け取ります。
-  - sfctl では、[`sfctl application create`](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) コマンドは JSON 文字列としてパラメーターを受け取ります。 install.sh スクリプトは sfctl を使います。
+  - PowerShell では、[`New-ServiceFabricApplication`](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) コマンドレットはハッシュテーブルとしてアプリケーション パラメーターを受け取ります。
+  - sfctl では、[`sfctl application create`](./service-fabric-sfctl-application.md#sfctl-application-create) コマンドは JSON 文字列としてパラメーターを受け取ります。 install.sh スクリプトは sfctl を使います。
   - Visual Studio では、アプリケーション プロジェクトの Parameters フォルダーにパラメーター ファイルのセットが用意されています。 これらのパラメーター ファイルは、Azure DevOps Services または Azure DevOps Server を使って、Visual Studio から発行するときに使われます。 Visual Studio では、パラメーター ファイルは Deploy-FabricApplication.ps1 スクリプトに渡されます。
 
 ## <a name="next-steps"></a>次のステップ

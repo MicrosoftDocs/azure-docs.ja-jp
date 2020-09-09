@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 86419811cdf2c11204caae0ca5bf6f65fba063d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 639764c9cae5e27e90a55da00b246807e49d2a20
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76288916"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652850"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>メインフレーム ストレージを Azure に移動する
 
@@ -45,7 +45,7 @@ Azure の [IaaS](https://azure.microsoft.com/overview/what-is-iaas/) (サービ�
 
 マイクロソフトは、Azure でホストされるアプリケーションのためにペタバイト相当のストレージを提供し、お客様には複数のストレージ オプションがあります。 これらは、ハイ パフォーマンスのための SSD ストレージから、大容量ストレージおよびアーカイブのための低コスト BLOB ストレージまで、多岐にわたります。 また Azure は、ストレージのデータ冗長性オプションを提供しますが、これはメインフレーム環境でのセットアップにはさらに手間がかかるものです。
 
-次の表にまとめるように、Azure ストレージは [Azure Disks](/azure/virtual-machines/windows/managed-disks-overview)、[Azure Files](/azure/storage/files/storage-files-introduction)、および [Azure Blobs](/azure/storage/blobs/storage-blobs-overview) として提供されます。 [それぞれを使用する状況](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)について詳しく説明します。
+次の表にまとめるように、Azure ストレージは [Azure Disks](../../../managed-disks-overview.md)、[Azure Files](../../../../storage/files/storage-files-introduction.md)、および [Azure Blobs](../../../../storage/blobs/storage-blobs-overview.md) として提供されます。 [それぞれを使用する状況](../../../../storage/common/storage-introduction.md)について詳しく説明します。
 
 <!-- markdownlint-disable MD033 -->
 
@@ -105,10 +105,10 @@ BLOB ストレージは、Azure 上で最大のストレージ容量を提供し
 ## <a name="next-steps"></a>次のステップ
 
 - [メインフレーム移行](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [Azure 仮想マシンでのメインフレーム リホスト](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
+- [Azure 仮想マシンでのメインフレーム リホスト](../overview.md)
 - [メインフレーム コンピューティングを Azure に移行する](mainframe-compute-Azure.md)
-- [Azure BLOB、Azure Files、Azure ディスクの使い分け](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)
-- [Azure VM ワークロード向けの Standard SSD マネージド ディスク](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd)
+- [Azure BLOB、Azure Files、Azure ディスクの使い分け](../../../../storage/common/storage-introduction.md)
+- [Azure VM ワークロード向けの Standard SSD マネージド ディスク](../../../disks-types.md#standard-ssd)
 
 ### <a name="ibm-resources"></a>IBM リソース
 

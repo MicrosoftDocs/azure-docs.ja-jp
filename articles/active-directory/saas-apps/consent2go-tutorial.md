@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Consent2Go の統合 | Microsoft Docs'
 description: Azure Active Directory と Consent2Go の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: ea93bc02-58ca-4468-84ff-359888fc6183
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4010119c17360353bb470b03c46e1bad906704b1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: def6ceb1d455a0a438235877acdb38313f862e50
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73158483"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544436"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-consent2go"></a>チュートリアル: Azure Active Directory と Consent2Go の統合
 

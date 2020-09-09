@@ -1,25 +1,14 @@
 ---
 title: Event Hubs - Azure portal を使用してストリーミング イベントをキャプチャする
 description: この記事では、Azure portal を使用し、Azure Event Hubs からストリーム配信されるイベントのキャプチャを有効にする方法について説明します。
-services: event-hubs
-documentationcenter: ''
-author: spelluru
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.custom: seodec18
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/12/2020
-ms.author: spelluru
-ms.openlocfilehash: 8a6d9456b00e5520e6f4fbb9ccb77b0260731ddd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.openlocfilehash: 103aa4e3da84e41275bec6310035c117fe780a18
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77187379"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85315741"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Azure Event Hubs からストリーム配信されるイベントのキャプチャを有効にする
 
@@ -61,7 +50,7 @@ Capture は、イベント ハブを作成するときに、 **[イベント ハ
     ![[作成] ボタンの選択](./media/event-hubs-capture-enable-through-portal/create-event-hub-data-lake-storage.png)
 
     > [!NOTE]
-    > このユーザー インターフェイス (UI) を使用して Azure Data Lake Storage Gen 2 で作成したコンテナーは、**ストレージ エクスプローラー**の **[ファイル システム]** に表示されます。 同様に、Data Lake Storage Gen 2 アカウントで作成したファイル システムは、この UI でコンテナーとして表示されます。 
+    > このユーザー インターフェイス (UI) を使用して Azure Data Lake Storage Gen 2 で作成したコンテナーは、**Storage Explorer** の **[ファイル システム]** に表示されます。 同様に、Data Lake Storage Gen 2 アカウントで作成したファイル システムは、この UI でコンテナーとして表示されます。 
 
 
 ## <a name="capture-data-to-azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage Gen 1 へのデータのキャプチャ 

@@ -1,14 +1,14 @@
 ---
 title: ブループリント デプロイのステージ
 description: ブループリント割り当ての作成時に Azure Blueprints サービスで行われるセキュリティとアーティファクト関連の手順について説明します。
-ms.date: 05/06/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9efc66baa262e004a8beea5295e8567f4ab119dd
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 73d5d67cf77d4ccc48517c895630b8299081e2e0
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82863996"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049776"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>ブループリント デプロイのステージ
 
@@ -27,7 +27,7 @@ ms.locfileid: "82863996"
 
 [システム割り当てマネージド ID](../../../active-directory/managed-identities-azure-resources/overview.md) マネージド ID が使用されるとき、Azure Blueprints サービス プリンシパルには、割り当てられた 1 つまたは複数のサブスクリプションに対する所有者権限が付与されます。 付与されたロールにより、Azure Blueprints では**システム割り当て**マネージド ID を作成し、その後、取り消すことができます。 **ユーザー割り当て**マネージド ID を使用している場合、Azure Blueprints サービス プリンシパルはサブスクリプションに対する所有者権限を取得せず、またその必要もありません。
 
-割り当てがポータル経由で行われる場合、権限は自動的に付与されます。 ただし、割り当てが REST API 経由で行われる場合、権限付与は個別の API 呼び出しによって行う必要があります。 Azure Blueprints AppId は `f71766dc-90d9-4b7d-bd9d-4499c4331c3f` ですが、サービス プリンシパルはテナントによって異なります。 [Azure Active Directory Graph API](../../../active-directory/develop/active-directory-graph-api.md) と REST エンドポイント [servicePrincipals](/graph/api/resources/serviceprincipal) を使用し、サービス プリンシパルを取得します。 次に、Azure Blueprints に "_所有者_" ロールを[ポータル](../../../role-based-access-control/role-assignments-portal.md)、[Azure CLI](../../../role-based-access-control/role-assignments-cli.md)、[Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md)、[REST API](../../../role-based-access-control/role-assignments-rest.md)、または [Resource Manager テンプレート](../../../role-based-access-control/role-assignments-template.md)経由で付与します。
+割り当てがポータル経由で行われる場合、権限は自動的に付与されます。 ただし、割り当てが REST API 経由で行われる場合、権限付与は個別の API 呼び出しによって行う必要があります。 Azure Blueprints AppId は `f71766dc-90d9-4b7d-bd9d-4499c4331c3f` ですが、サービス プリンシパルはテナントによって異なります。 [Azure Active Directory Graph API](../../../active-directory/develop/active-directory-graph-api.md) と REST エンドポイント [servicePrincipals](/graph/api/resources/serviceprincipal) を使用し、サービス プリンシパルを取得します。 次に、Azure Blueprints に "_所有者_" ロールを[ポータル](../../../role-based-access-control/role-assignments-portal.md)、[Azure CLI](../../../role-based-access-control/role-assignments-cli.md)、[Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md)、[REST API](../../../role-based-access-control/role-assignments-rest.md)、または [Azure Resource Manager テンプレート](../../../role-based-access-control/role-assignments-template.md)経由で付与します。
 
 Azure Blueprints サービスによって、直接リソースがデプロイされることはありません。
 
@@ -56,8 +56,8 @@ Azure Blueprints サービスによって、直接リソースがデプロイさ
 
 ## <a name="next-steps"></a>次のステップ
 
-- [静的および動的パラメーター](parameters.md)の使用方法を理解する。
-- [ブループリントの優先順位](sequencing-order.md)のカスタマイズを参照する。
-- [ブループリントのリソース ロック](resource-locking.md)の使用方法を調べる。
+- [静的および動的パラメーター](./parameters.md)の使用方法を理解する。
+- [ブループリントの優先順位](./sequencing-order.md)のカスタマイズを参照する。
+- [ブループリントのリソース ロック](./resource-locking.md)の使用方法を調べる。
 - [既存の割り当ての更新](../how-to/update-existing-assignments.md)方法を参照する。
 - ブループリントの割り当て時の問題を[一般的なトラブルシューティング](../troubleshoot/general.md)で解決する。

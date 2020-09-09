@@ -5,14 +5,14 @@ author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/10/2018
-ms.openlocfilehash: ad35ed342dfd40b98d61919749479ec5612cdd4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95abf403dfd4abd4c0533b6e8b4a2f83b33fa18b
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75369628"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045554"
 ---
 # <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>Visual Studio を使用して Azure Stream Analytics ジョブを表示する
 

@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 03/22/2020
+ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffa6f2fbdcde41d81e268779c3a0586bd8310792
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: d0b8e107fb377a30b35f0941b89c490e11fc458c
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437554"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783537"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でリソースのカタログを作成して管理する
 
@@ -53,11 +53,11 @@ ms.locfileid: "80437554"
 
 ### <a name="creating-a-catalog-programmatically"></a>プログラムによるカタログの作成
 
-Microsoft Graph を使用して、カタログを作成することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、API を呼び出して、[accessPackageCatalog を作成する](https://docs.microsoft.com/graph/api/accesspackagecatalog-post?view=graph-rest-beta)ことができます。
+Microsoft Graph を使用して、カタログを作成することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、API を呼び出して、[accessPackageCatalog を作成する](/graph/api/accesspackagecatalog-post?view=graph-rest-beta)ことができます。
 
 ## <a name="add-resources-to-a-catalog"></a>カタログにリソースを追加する
 
-アクセス パッケージにリソースを含めるには、リソースがカタログ内に存在している必要があります。 追加できるリソースの種類は、グループ、アプリケーション、および SharePoint Online サイトです。 追加できるグループは、クラウドで作成された Office 365 グループ、またはクラウドで作成された Azure AD セキュリティ グループです。 追加できるアプリケーションは Azure AD エンタープライズ アプリケーションで、これには SaaS アプリケーションと、Azure AD にフェデレーションされた独自アプリケーションの両方が含まれます。 追加できるサイトは、SharePoint Online サイトまたは SharePoint Online サイト コレクションです。
+アクセス パッケージにリソースを含めるには、リソースがカタログ内に存在している必要があります。 追加できるリソースの種類は、グループ、アプリケーション、および SharePoint Online サイトです。 追加できるグループは、クラウドで作成された Microsoft 365 グループ、またはクラウドで作成された Azure AD セキュリティ グループです。 追加できるアプリケーションは Azure AD エンタープライズ アプリケーションで、これには SaaS アプリケーションと、Azure AD にフェデレーションされた独自アプリケーションの両方が含まれます。 追加できるサイトは、SharePoint Online サイトまたは SharePoint Online サイト コレクションです。
 
 **事前に必要なロール:** [リソースをカタログに追加するために必要なロール](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)に関するページを参照
 
@@ -83,7 +83,7 @@ Microsoft Graph を使用して、カタログを作成することもできま�
 
 ### <a name="adding-a-resource-to-a-catalog-programmatically"></a>プログラムによるカタログへのリソースの追加
 
-Microsoft Graph を使用して、カタログにリソースを追加することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーまたはカタログおよびリソースの所有者は、API を呼び出して、[accessPackageResourceRequest を作成する](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta)ことができます。
+Microsoft Graph を使用して、カタログにリソースを追加することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーまたはカタログおよびリソースの所有者は、API を呼び出して、[accessPackageResourceRequest を作成する](/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta)ことができます。
 
 ## <a name="remove-resources-from-a-catalog"></a>カタログからリソースを削除する
 
@@ -155,7 +155,7 @@ Microsoft Graph を使用して、カタログにリソースを追加するこ�
 
 ### <a name="deleting-a-catalog-programmatically"></a>プログラムによるカタログの削除
 
-Microsoft Graph を使用して、カタログを削除することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、API を呼び出して、[accessPackageCatalog を削除する](https://docs.microsoft.com/graph/api/accesspackagecatalog-delete?view=graph-rest-beta)ことができます。
+Microsoft Graph を使用して、カタログを削除することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、API を呼び出して、[accessPackageCatalog を削除する](/graph/api/accesspackagecatalog-delete?view=graph-rest-beta)ことができます。
 
 ## <a name="next-steps"></a>次のステップ
 

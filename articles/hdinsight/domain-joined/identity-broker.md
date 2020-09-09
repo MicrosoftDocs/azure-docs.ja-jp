@@ -5,14 +5,14 @@ ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/12/2019
-ms.openlocfilehash: 1e7eaf49fb8b62259b8c619c89edffd629dfde7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ff7cb3c03edf9b421347815311796896caaffd70
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81685509"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086604"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>資格情報の管理に ID ブローカー (プレビュー) を使用する
 
@@ -90,6 +90,8 @@ ID ブローカー機能によって、クラスターに追加の VM が 1 つ�
 
 HDInsight [IntelliJ プラグイン](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#integrate-with-hdinsight-identity-broker-hib)は、OAuth をサポートするように更新されています。 このプラグインを使用して、クラスターに接続し、ジョブを送信できます。
 
+ノートブックを使用してジョブを送信するには、[Spark & Hive Tools for VS Code](https://docs.microsoft.com/azure/hdinsight/hdinsight-for-vscode) を使用することも可能です。
+
 ## <a name="ssh-access-without-a-password-hash-in-azure-ad-ds"></a>Azure AD DS でのパスワード ハッシュを使用しない SSH アクセス
 
 ID ブローカーを有効にした後も、ドメイン アカウントを使用する SSH シナリオ用に、Azure AD DS に格納されているパスワード ハッシュが必要になります。 ドメインに参加している VM に SSH 接続する場合、または `kinit` コマンドを実行する場合は、パスワードを入力する必要があります。 
@@ -100,7 +102,7 @@ SSH 認証を使用するには、Azure AD DS でハッシュを使用できる�
 
 ID ブローカーのセットアップでは、ゲートウェイに接続するカスタム アプリやクライアントを、必要な OAuth トークンを最初に取得するように更新できます。 この[ドキュメント](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app)の手順に従って、次の情報を含むトークンを取得できます。
 
-*   OAuth リソース URI: https://hib.azurehdinsight.net 
+*   OAuth リソース URI: `https://hib.azurehdinsight.net` 
 * アプリID: 7865c1d2-f040-46cc-875f-831a1ef6a28a
 *   アクセス許可: (名前: Cluster.ReadWrite、ID:8f89faa0-ffef-4007-974d-4989b39ad77d)
 

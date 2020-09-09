@@ -2,17 +2,18 @@
 title: 'Azure ExpressRoute: 回線の変更:PowerShell: クラシック'
 description: この記事では、ExpressRoute クラシック デプロイ モデル回線の状態確認、更新、または削除とプロビジョニング解除を行う手順について説明します。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/05/2019
-ms.author: cherylmc
-ms.openlocfilehash: e421a534b04f74d2a2eb0bc06aeffa52684ae17a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: duau
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: be45d49d3f445810c7ac6a38e3e12abe178a4bed
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74931979"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396286"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>PowerShell を使用した ExpressRoute 回線の変更 (クラシック)
 

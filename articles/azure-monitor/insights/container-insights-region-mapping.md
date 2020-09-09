@@ -3,12 +3,13 @@ title: Azure Monitor for containers のリージョン マッピング
 description: この記事では、Azure Monitor for containers、Log Analytics ワークスペース、およびカスタム メトリックの間でサポートされるリージョン マッピングについて説明します。
 ms.topic: conceptual
 ms.date: 06/26/2019
-ms.openlocfilehash: a058f9cac987bb5c7130019f50370c6a176b09ac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: references_regions
+ms.openlocfilehash: 3e8ead78c5e0e534e07c1e2ab0e25eb3f5a90c38
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75403423"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84194985"
 ---
 # <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>Azure Monitor for containers でサポートされるリージョン マッピング
 

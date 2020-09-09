@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 2b1dc7873140f885ec3efac11dec5fbf6aab7aa9
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732573"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>分散トレース (プレビュー) を使用して Azure IoT の cloud-to-device メッセージをトレースする

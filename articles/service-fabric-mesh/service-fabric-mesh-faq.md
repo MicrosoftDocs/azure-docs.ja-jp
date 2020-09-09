@@ -4,12 +4,12 @@ description: Azure Service Fabric Mesh に関してよく寄せられる質問�
 ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: 2a5c2ea63d162eb6fb78ab702e0519f8ac25dcc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 64eeb43d743d71d5acd456409445a4fadfe91aeb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252503"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260114"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Service Fabric Mesh に関してよく寄せられる質問
 
@@ -121,7 +121,7 @@ EXPOSE 80
 
 Azure Mesh では現在のところ、アプリケーション全体の DNS 解決に対応していません。
 
-Windows 10 で Service Fabric 開発クラスターを実行するときに発生するその他の DNS 問題については、[Windows コンテナーのデバッグ](/azure/service-fabric/service-fabric-how-to-debug-windows-containers)および[既知の DNS の問題](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues)に関するページを参照してください。
+Windows 10 で Service Fabric 開発クラスターを実行するときに発生するその他の DNS 問題については、[Windows コンテナーのデバッグ](../service-fabric/service-fabric-how-to-debug-windows-containers.md)および[既知の DNS の問題](../service-fabric/service-fabric-dnsservice.md#known-issues)に関するページを参照してください。
 
 ### <a name="networking"></a>ネットワーク
 

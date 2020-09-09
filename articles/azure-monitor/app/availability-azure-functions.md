@@ -1,29 +1,29 @@
 ---
 title: Azure Functions を使用してカスタム可用性テストを作成して実行する
-description: このドキュメントでは、TimerTrigger Functions で指定された構成に従って定期的に実行される Azure Functions を TrackAvailability() で作成する方法について説明します。 このテストの結果は、Application Insights リソースに送信されます。そこでは、可用性の結果データに対してクエリを実行し、アラートを生成することができます。 カスタマイズされたテストを使用すると、ポータル UI を使用してできるものより複雑な可用性テストを記述したり、Azure VNET 内のアプリを監視したり、エンドポイントのアドレスを変更したり、リージョンで利用できない場合に可用性テストを作成したりすることができます。
+description: このドキュメントでは、TimerTrigger 関数で指定された構成に従って定期的に実行される Azure 関数を TrackAvailability() で作成する方法について説明します。 このテストの結果は、Application Insights リソースに送信されます。そこでは、可用性の結果データに対してクエリを実行し、アラートを生成することができます。 カスタマイズされたテストを使用すると、ポータル UI を使用してできるものより複雑な可用性テストを記述したり、Azure VNET 内のアプリを監視したり、エンドポイントのアドレスを変更したり、リージョンで利用できない場合に可用性テストを作成したりすることができます。
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/04/2020
-ms.openlocfilehash: 81040adf6cfbb8820ec7f306c7d614830e3a2613
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: e2603d921973aefdcc1a6f4a76bdf70d69dcb68f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791113"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320631"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Azure Functions を使用してカスタム可用性テストを作成して実行する
 
-この記事では、独自のビジネス ロジックを使用して TimerTrigger Functions で指定された構成に従って定期的に実行される Azure Functions を TrackAvailability() で作成する方法について説明します。 このテストの結果は、Application Insights リソースに送信されます。そこでは、可用性の結果データに対してクエリを実行し、アラートを生成することができます。 これにより、ポータルでの[可用性の監視](../../azure-monitor/app/monitor-web-app-availability.md)を使用して実行できるものと同様のカスタマイズされたテストを作成できます。 カスタマイズされたテストを使用すると、ポータル UI を使用してできるものより複雑な可用性テストを記述したり、Azure VNET 内のアプリを監視したり、エンドポイントのアドレスを変更したり、リージョンでこの機能を利用できない場合でも可用性テストを作成したりすることができます。
+この記事では、独自のビジネス ロジックを使用して TimerTrigger 関数で指定された構成に従って定期的に実行される Azure 関数を TrackAvailability() で作成する方法について説明します。 このテストの結果は、Application Insights リソースに送信されます。そこでは、可用性の結果データに対してクエリを実行し、アラートを生成することができます。 これにより、ポータルでの[可用性の監視](./monitor-web-app-availability.md)を使用して実行できるものと同様のカスタマイズされたテストを作成できます。 カスタマイズされたテストを使用すると、ポータル UI を使用してできるものより複雑な可用性テストを記述したり、Azure VNET 内のアプリを監視したり、エンドポイントのアドレスを変更したり、リージョンでこの機能を利用できない場合でも可用性テストを作成したりすることができます。
 
 > [!NOTE]
-> この例は、Azure Functions 内で TrackAvailability () API 呼び出しが機能する仕組みを示すためだけに設計されています。 基になる HTTP テスト コード/ビジネス ロジックを記述する方法を示すものではありません (それは、これを完全に機能する可用性テストにする場合に必要になります)。 既定で、この例を実行すると、常にエラーを生成する可用性テストが作成されます。
+> この例は、Azure 関数内で TrackAvailability () API 呼び出しが機能する仕組みを示すためだけに設計されています。 基になる HTTP テスト コード/ビジネス ロジックを記述する方法を示すものではありません (それは、これを完全に機能する可用性テストにする場合に必要になります)。 既定で、この例を実行すると、常にエラーを生成する可用性テストが作成されます。
 
-## <a name="create-timer-triggered-function"></a>タイマーによってトリガーされる Functions を作成する
+## <a name="create-timer-triggered-function"></a>タイマーによってトリガーされる関数を作成する
 
 - Application Insights リソースがある場合:
     - Azure Functions では既定で Application Insights リソースが作成されますが、既に作成されているリソースのいずれかを使用したい場合は、作成時にそれを指定する必要があります。
-    - [Azure Functions リソースとタイマーによってトリガーされる Functions を作成する](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function)方法の手順に従い (クリーンアップの前で止めます)、次のように選択します。
+    - [Azure Functions リソースとタイマーによってトリガーされる関数を作成する](../../azure-functions/functions-create-scheduled-function.md)方法の手順に従い (クリーンアップの前で止めます)、次のように選択します。
         -  上部近くにある **[監視]** タブを選択します。
 
             ![ 独自の App Insights リソースを使用して Azure Functions アプリを作成する](media/availability-azure-functions/create-function-app.png)
@@ -33,19 +33,19 @@ ms.locfileid: "82791113"
             ![既存の Application Insights リソースの選択](media/availability-azure-functions/app-insights-resource.png)
 
         - **[確認と作成]** を選択します
-- タイマーによってトリガーされる Functions 用の Application Insights リソースをまだ作成していない場合:
+- タイマーによってトリガーされる関数用の Application Insights リソースをまだ作成していない場合:
     - 既定では、Azure Functions アプリケーションを作成するときに、Application Insights リソースが自動的に作成されます。
-    - [Azure Functions リソースとタイマーによってトリガーされる Functions を作成する](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function)方法の手順に従います (クリーンアップの前で止めます)。
+    - [Azure Functions リソースとタイマーによってトリガーされる関数を作成する](../../azure-functions/functions-create-scheduled-function.md)方法の手順に従います (クリーンアップの前で止めます)。
 
 ## <a name="sample-code"></a>サンプル コード
 
-次のコードを run.csx ファイルにコピーします (既存のコードを置き換えます)。 これを行うには、Azure Functions アプリケーションに移動し、左側のタイマー トリガー Functions を選択します。
+次のコードを run.csx ファイルにコピーします (既存のコードを置き換えます)。 これを行うには、Azure Functions アプリケーションに移動し、左側のタイマー トリガー関数を選択します。
 
 >[!div class="mx-imgBorder"]
->![Azure portal での Azure Functions の run.csx](media/availability-azure-functions/runcsx.png)
+>![Azure portal での Azure 関数の run.csx](media/availability-azure-functions/runcsx.png)
 
 > [!NOTE]
-> エンドポイント アドレスには、`EndpointAddress= https://dc.services.visualstudio.com/v2/track` を使用します。 リソースが Azure Government や Azure China などのリージョンにある場合は、[既定のエンド ポイントのオーバーライド](https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification)に関する記事を参考にして、お使いのリージョンに適したテレメトリ チャネル エンドポイントを選択してください。
+> エンドポイント アドレスには、`EndpointAddress= https://dc.services.visualstudio.com/v2/track` を使用します。 リソースが Azure Government や Azure China などのリージョンにある場合は、[既定のエンド ポイントのオーバーライド](./custom-endpoints.md#regions-that-require-endpoint-modification)に関する記事を参考にして、お使いのリージョンに適したテレメトリ チャネル エンドポイントを選択してください。
 
 ```C#
 #load "runAvailabilityTest.csx"
@@ -177,7 +177,7 @@ public async static Task RunAvailbiltyTestAsync(ILogger log)
 
 ## <a name="query-in-logs-analytics"></a>ログ (Analytics) でのクエリ
 
-ログ (Analytics) を使用して、可用性の結果、依存関係、その他を見ることができます。 ログの詳細については、[ログ クエリの概要](../../azure-monitor/log-query/log-query-overview.md)に関するページを参照してください。
+ログ (Analytics) を使用して、可用性の結果、依存関係、その他を見ることができます。 ログの詳細については、[ログ クエリの概要](../log-query/log-query-overview.md)に関するページを参照してください。
 
 >[!div class="mx-imgBorder"]
 >![可用性の結果](media/availability-azure-functions/availabilityresults.png)
@@ -187,5 +187,6 @@ public async static Task RunAvailbiltyTestAsync(ILogger log)
 
 ## <a name="next-steps"></a>次のステップ
 
-- [アプリケーション マップ](../../azure-monitor/app/app-map.md)
-- [トランザクションの診断](../../azure-monitor/app/transaction-diagnostics.md)
+- [アプリケーション マップ](./app-map.md)
+- [トランザクションの診断](./transaction-diagnostics.md)
+

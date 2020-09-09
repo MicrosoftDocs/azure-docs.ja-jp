@@ -4,15 +4,15 @@ description: ポータルを使用して Azure で実行されている仮想マ
 author: shants123
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 46fcc825ac49f0181ac74e9c3e2deaea577f3329
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 09693a09e35503a2a221f8de1903b4218b8766f4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77115744"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082445"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-portal"></a>ポータルを使用した計画済みメンテナンスの通知の処理
 
@@ -50,7 +50,7 @@ Azure Portal を使用して、VM のメンテナンス スケジュールを検
 
 ## <a name="notification-and-alerts-in-the-portal"></a>ポータルの通知とアラート
 
-Azure は、サブスクリプション所有者と共同所有者グループに電子メールを送信することで、計画メンテナンスのスケジュールを伝えます。 Azure アクティビティ ログ アラートを作成して、この通信にその他の受信者とチャネルを追加することができます。 詳細については、「[サービス通知のアクティビティ ログ アラートを作成する](../azure-monitor/platform/alerts-activity-log-service-notifications.md)」を参照してください。
+Azure は、サブスクリプション所有者と共同所有者グループに電子メールを送信することで、計画メンテナンスのスケジュールを伝えます。 Azure アクティビティ ログ アラートを作成して、この通信にその他の受信者とチャネルを追加することができます。 詳細については、「[サービス通知のアクティビティ ログ アラートを作成する](../service-health/alerts-activity-log-service-notifications-portal.md)」を参照してください。
 
 **[イベントの種類]** が **[計画済みメンテナンス]** に設定され、 **[サービス]** が **[Virtual Machine Scale Sets]** または **[Virtual Machines]** に設定されていることを確認します
 

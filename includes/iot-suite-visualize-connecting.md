@@ -9,10 +9,10 @@ ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 9b9e28f18208674609d0842b0e3a54e3fc661c9f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67181609"
 ---
 ## <a name="view-device-telemetry"></a>デバイス テレメトリを表示する

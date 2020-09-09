@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
-ms.openlocfilehash: ce49dcaa06288ba9e7a4d232338c727064d59685
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: baa035269f4a5b2f39263264f23183b308264ead
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232175"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513950"
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>StorSimple デバイス コントローラーを管理する
 

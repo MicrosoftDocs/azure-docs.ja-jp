@@ -9,7 +9,7 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: VM のバックアップ - ポータル
+    - name: VM のバックアップ - Portal
       href: quick-backup-vm-portal.md
     - name: VM のバックアップ - PowerShell
       href: quick-backup-vm-powershell.md
@@ -24,7 +24,7 @@
       href: tutorial-backup-vm-at-scale.md
     - name: PowerShell を使用して Azure VM をバックアップする
       href: tutorial-backup-azure-vm.md
-    - name: ディスクの復元
+    - name: Azure CLI を使用した VM の復元
       href: tutorial-restore-disk.md
     - name: 個々のファイルの復元
       href: tutorial-restore-files.md
@@ -44,11 +44,6 @@
           href: tutorial-sap-hana-restore-cli.md
         - name: バックアップされた SAP HANA データベースの管理 - CLI
           href: tutorial-sap-hana-manage-cli.md
-- name: サンプル
-  items:
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: サポート マトリックス
@@ -89,6 +84,8 @@
           href: backup-azure-monitor-alert-faq.md
     - name: Backup のアーキテクチャ
       href: backup-architecture.md
+    - name: ガイダンスとベスト プラクティス
+      href: guidance-best-practices.md
 - name: ハウツー ガイド
   items:
     - name: Recovery Services コンテナー
@@ -121,9 +118,13 @@
               href: backup-azure-vms-encryption.md
             - name: Linux を実行中の Azure VM のアプリ整合性バックアップを構成する
               href: backup-azure-linux-app-consistent.md
+            - name: 選択的ディスク バックアップ
+              href: selective-disk-backup-restore.md
         - name: 復元
           items:
-            - name: ポータルで Azure VM を復元する
+            - name: Azure VM の復元について
+              href: about-azure-vm-restore.md
+            - name: Portal で Azure VM を復元する
               href: backup-azure-arm-restore-vms.md
             - name: Azure VM のバックアップからのファイルの回復
               href: backup-azure-restore-files-from-vm.md
@@ -140,7 +141,11 @@
         - name: 概要
           href: backup-azure-sql-database.md
         - name: バックアップ
-          href: backup-sql-server-database-azure-vms.md
+          items:
+            - name: コンテナーから複数の SQL Server VM をバックアップする
+              href: backup-sql-server-database-azure-vms.md
+            - name: VM ペインから SQL Server VM をバックアップする
+              href: backup-sql-server-vm-from-vm-pane.md
         - name: 復元
           href: restore-sql-database-azure-vm.md
         - name: 管理する
@@ -217,8 +222,12 @@
           href: sap-hana-db-manage.md
     - name: Azure Backup Server (MABS)
       items:
-        - name: Azure Backup Server の保護マトリックス
-          href: backup-mabs-protection-matrix.md
+        - name: 保護マトリックス
+          items:
+            - name: MABS V3 UR1 の保護マトリックス
+              href: backup-mabs-protection-matrix.md
+            - name: MABS V3 RTM の保護マトリックス
+              href: microsoft-azure-backup-server-protection-v3.md
         - name: インストールまたはアップグレード
           items:
             - name: Azure Backup Server のインストール
@@ -227,7 +236,7 @@
               href: backup-mabs-add-storage.md
             - name: MABS の新機能
               href: backup-mabs-whats-new-mabs.md
-            - name: リリース ノート MABS V3
+            - name: MABS のリリース ノート
               href: backup-mabs-release-notes-v3.md
             - name: 自動実行インストール
               href: backup-mabs-unattended-install.md
@@ -277,17 +286,21 @@
       items:
         - name: 概要
           href: offline-backup-overview.md
-        - name: Azure Data Box を使用したオフライン バックアップ
+        - name: Azure Data Box を使用したオフライン バックアップ (MARS)
           href: offline-backup-azure-data-box.md
+        - name: Azure Data Box を使用したオフライン バックアップ (DPM/MABS)
+          href: offline-backup-azure-data-box-dpm-mabs.md
         - name: Import/Export を使用したオフライン バックアップ (MARS)
           href: backup-azure-backup-import-export.md
         - name: Import/Export を使用したオフライン バックアップ (DPM/MABS)
-          href: backup-azure-backup-server-import-export-.md
+          href: backup-azure-backup-server-import-export.md
+        - name: DPM と MABS のオフライン バックアップ (以前のバージョン)
+          href: offline-backup-server-previous-versions.md
     - name: 監視とアラート
       items:
         - name: バックアップ エクスプローラーの使用
           href: monitor-azure-backup-with-backup-explorer.md
-        - name: Azure ポータルの使用
+        - name: Azure Portal の使用
           href: backup-azure-monitoring-built-in-monitor.md
         - name: Azure Monitor の使用
           href: backup-azure-monitoring-use-azuremonitor.md
@@ -315,11 +328,11 @@
               href: azure-policy-configure-diagnostics.md
         - name: PowerShell
           items:
-            - name: Azure portal での Azure VM
+            - name: Azure VM
               href: backup-azure-vms-automation.md
-            - name: Azure portal での DPM
+            - name: Data Protection Manager (DPM)
               href: backup-dpm-automation.md
-            - name: Azure portal での Windows Server
+            - name: MARS エージェントを使用した Windows Server
               href: backup-client-automation.md
             - name: Azure VM バックアップ内の SQL
               href: backup-azure-sql-automation.md
@@ -341,7 +354,7 @@
               href: backup-azure-arm-userestapi-managejobs.md
         - name: Resource Manager テンプレート
           href: backup-rm-template-samples.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: 概要
           href: security-overview.md
@@ -361,10 +374,15 @@
           href: backup-azure-security-feature.md
         - name: プライベート エンドポイント
           href: private-endpoints.md
-        - name: 暗号化
+        - name: Azure Backup での暗号化
           href: backup-encryption.md
+        - name: カスタマー マネージド キーを使用した暗号化
+          href: encryption-at-rest-with-cmk.md
         - name: 組み込みのセキュリティ制御
           href: backup-security-controls.md
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
           href: security-baseline.md
     - name: トラブルシューティング
@@ -405,6 +423,9 @@
       href: /rest/api/recoveryservices/
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.recoveryservices/allversions
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: コンプライアンス
@@ -412,9 +433,9 @@
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-backup.html'
+      href: /answers/topics/azure-backup.html
     - name: 料金計算ツール
-      href: 'https://azure.microsoft.com/pricing/calculator/'
+      href: azure-backup-pricing.md
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=backup'
     - name: ビデオ

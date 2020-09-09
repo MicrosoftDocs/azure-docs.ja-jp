@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4a94b0b84290bbf796e951dfee8b3f35b80036ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 475933bcc9219808087671d49778cc3696d8c815
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183162"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500795"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL 単一サーバーの Azure セキュリティ ベースライン
 
@@ -82,7 +82,7 @@ DDoS 保護を構成する方法: https://docs.microsoft.com/azure/virtual-netwo
 
 ### <a name="15-record-network-packets-and-flow-logs"></a>1.5:ネットワーク パケットとフロー ログを記録する
 
-**ガイダンス**: Azure Database for PostgreSQL インスタンスがプライベート エンドポイントに対してセキュリティで保護されている場合は、同じ仮想ネットワークに仮想マシンをデプロイできます。 その後、データ流出のリスクを軽減するために、ネットワーク セキュリティ グループ (NSG) を構成することができます。 NSG フロー ログを有効にし、トラフィック監査のためにログをストレージ アカウントに送信します。 また、NSG フロー ログを Log Analytics ワークスペースに送信し、Traffic Analytics を使用して Azure クラウド内のトラフィック フローに関する分析情報を提供することもできます。 Traffic Analytics のいくつかの利点として、ネットワーク アクティビティを視覚化してホット スポットを特定したり、セキュリティの脅威を識別したり、トラフィック フロー パターンを把握したり、ネットワークの誤った構成の正確な場所を特定したりする機能が挙げられます。
+**ガイダンス**:Azure Database for PostgreSQL インスタンスがプライベート エンドポイントに対してセキュリティで保護されている場合は、同じ仮想ネットワークに仮想マシンをデプロイできます。 その後、データ流出のリスクを軽減するために、ネットワーク セキュリティ グループ (NSG) を構成することができます。 NSG フロー ログを有効にし、トラフィック監査のためにログをストレージ アカウントに送信します。 また、NSG フロー ログを Log Analytics ワークスペースに送信し、Traffic Analytics を使用して Azure クラウド内のトラフィック フローに関する分析情報を提供することもできます。 Traffic Analytics のいくつかの利点として、ネットワーク アクティビティを視覚化してホット スポットを特定したり、セキュリティの脅威を識別したり、トラフィック フロー パターンを把握したり、ネットワークの誤った構成の正確な場所を特定したりする機能が挙げられます。
 
 NSG フロー ログを有効にする方法: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
@@ -144,7 +144,7 @@ Azure Blueprint を作成する方法: https://docs.microsoft.com/azure/governan
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10:トラフィック構成規則を文書化する
 
-**ガイダンス**: Azure Database for PostgreSQL インスタンスのネットワーク セキュリティとトラフィック フローに関連するリソースにタグを使用すると、メタデータで論理的にリソースを整理することができます。
+**ガイダンス**:Azure Database for PostgreSQL インスタンスのネットワーク セキュリティとトラフィック フローに関連するリソースにタグを使用すると、メタデータで論理的にリソースを整理することができます。
 
 すべてのリソースが確実にタグ付きで作成され、既存のタグ付けされていないリソースがユーザーに通知されるようにするには、タグ付けに関連したいずれかの組み込みの Azure Policy 定義 ([タグとその値が必要] など) を使用します。
 
@@ -294,7 +294,7 @@ Azure Sentinel をオンボードする方法: https://docs.microsoft.com/azure/
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 管理アカウントのインベントリを維持する
 
-**ガイダンス**: Azure Database for PostgreSQL インスタンスのコントロール プレーン (Azure portal など) への管理アクセス権を持つユーザー アカウントのインベントリを保持します。 さらに、Azure Database for PostgreSQL インスタンスの (データベース自体内の) データ プレーンへのアクセス権を持つ管理アカウントのインベントリを保持します  (PostgreSQL サーバーを作成する場合は、管理者ユーザーの資格情報を指定します。 この管理者を使用して、追加の PostgreSQL ユーザーを作成することができます)。
+**ガイダンス**: Azure Database for PostgreSQL インスタンスのコントロール プレーン (Azure portal など) への管理アクセス権を持つユーザー アカウントのインベントリを保持します。 さらに、Azure Database for PostgreSQL インスタンスの (データベース自体内の) データ プレーンへのアクセス権を持つ管理アカウントのインベントリを保持します (PostgreSQL サーバーを作成する場合は、管理者ユーザーの資格情報を指定します。 この管理者を使用して、追加の PostgreSQL ユーザーを作成することができます)。
 
 Azure Database for PostgreSQL では、組み込みのロールベースのアクセス制御はサポートされませんが、特定のリソース プロバイダーの操作に基づいてカスタム ロールを作成することはできます。
 
@@ -337,7 +337,7 @@ Azure Database for PostgreSQL で管理者ユーザーを作成する方法に�
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: シングル サインオン (SSO) と Azure Active Directory を統合する
 
-**ガイダンス**: Azure Database for PostgreSQL へのサインインでは、データベースで直接構成されたユーザー名とパスワードの両方の使用がサポートされます。また、Azure Active Directory (AD) ID を使用することも、Azure AD トークンを利用して接続することもできます。 Azure AD トークンを使用する場合、Azure AD ユーザー、Azure AD グループ、データベースに接続している Azure AD アプリケーションなど、さまざまな方法がサポートされます。
+**ガイダンス**:Azure Database for PostgreSQL へのサインインでは、データベースで直接構成されたユーザー名とパスワードの両方の使用がサポートされます。また、Azure Active Directory (AD) ID を使用することも、Azure AD トークンを利用して接続することもできます。 Azure AD トークンを使用する場合、Azure AD ユーザー、Azure AD グループ、データベースに接続している Azure AD アプリケーションなど、さまざまな方法がサポートされます。
 
 これとは別に、PostgreSQL のコントロール プレーン アクセスは、REST API 経由で利用でき、SSO がサポートされます。 認証を行うには、Azure Active Directory から取得した要求の Authorization ヘッダーを JSON Web トークンに設定します。
 
@@ -353,7 +353,7 @@ Azure AD を使用した SSO について: https://docs.microsoft.com/azure/acti
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: すべての Azure Active Directory ベースのアクセスに多要素認証を使用する
 
-**ガイダンス**: Azure Active Directory の Multi-Factor Authentication (MFA) を有効にし、Azure Security Center ID とアクセス管理の推奨事項に従います。 Azure AD トークンを利用してデータベースにサインインする場合、データベースのサインインに対して多要素認証を要求することができます。
+**ガイダンス**:Azure Active Directory の Multi-Factor Authentication (MFA) を有効にし、Azure Security Center ID とアクセス管理の推奨事項に従います。 Azure AD トークンを利用してデータベースにサインインする場合、データベースのサインインに対して多要素認証を要求することができます。
 
 Azure で MFA を有効にする方法: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
@@ -367,7 +367,7 @@ Azure Security Center 内で ID とアクセスを監視する方法: https://do
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: すべての管理タスクに専用マシン (特権アクセス ワークステーション) を使用する
 
-**ガイダンス**: Multi-Factor Authentication (MFA) が構成された特権アクセス ワークステーション (PAW) を使用してログインし、Azure リソースを構成します。
+**ガイダンス**:Multi-Factor Authentication (MFA) が構成された特権アクセス ワークステーション (PAW) を使用してログインし、Azure リソースを構成します。
 
 特権アクセス ワークステーションについて: https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
 
@@ -483,7 +483,7 @@ Azure Sentinel をオンボードする方法: https://docs.microsoft.com/azure/
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 機密情報のインベントリを維持する
 
-**ガイダンス**: タグを使用すると、機密情報を格納または処理する Azure Database for PostgreSQL インスタンスや関連リソースの追跡に役立ちます。
+**ガイダンス**:タグを使用すると、機密情報を格納または処理する Azure Database for PostgreSQL インスタンスや関連リソースの追跡に役立ちます。
 
 タグを作成して使用する方法: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
@@ -525,7 +525,7 @@ Azure での顧客データの保護について: https://docs.microsoft.com/azu
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4:転送中のすべての機密情報を暗号化する
 
-**ガイダンス**: Azure Database for PostgreSQL では、以前は Secure Sockets Layer (SSL) と呼ばれていたトランスポート層セキュリティ (TLS) を使用した、PostgreSQL サーバーのクライアント アプリケーションへの接続がサポートされます。 お使いのデータベース サーバーとクライアント アプリケーション間に TLS 接続を強制すると、サーバーとアプリケーション間のデータ ストリームが暗号化され、中間者攻撃から保護するのに役立ちます。 Azure portal で、すべての Azure Database for PostgreSQL インスタンスに対して [SSL 接続を強制する] が既定で有効になっていることを確認します。
+**ガイダンス**:Azure Database for PostgreSQL では、以前は Secure Sockets Layer (SSL) と呼ばれていたトランスポート層セキュリティ (TLS) を使用した、PostgreSQL サーバーのクライアント アプリケーションへの接続がサポートされます。 お使いのデータベース サーバーとクライアント アプリケーション間に TLS 接続を強制すると、サーバーとアプリケーション間のデータ ストリームが暗号化され、中間者攻撃から保護するのに役立ちます。 Azure portal で、すべての Azure Database for PostgreSQL インスタンスに対して [SSL 接続を強制する] が既定で有効になっていることを確認します。
 
 現在、Azure Database for PostgreSQL でサポートされている TLS のバージョンは、TLS 1.0、TLS 1.1、TLS 1.2 です。
 
@@ -537,7 +537,7 @@ Azure Database for PostgreSQL 用に転送中の暗号化を構成する方法: 
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5:アクティブ検出ツールを使用して機密データを特定する
 
-**ガイダンス**: データの識別、分類、および損失防止機能は、Azure Database for PostgreSQL ではまだ使用できません。 コンプライアンスのために必要な場合は、サードパーティ ソリューションを実装します。
+**ガイダンス**:データの識別、分類、および損失防止機能は、Azure Database for PostgreSQL ではまだ使用できません。 コンプライアンスのために必要な場合は、サードパーティ ソリューションを実装します。
 
 Microsoft によって管理される基になるプラットフォームの場合、Microsoft は顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護するためにあらゆる手段を尽くします。 Azure 内の顧客データが確実にセキュリティで保護されるように、Microsoft では一連の堅牢なデータ保護制御および機能を実装して管理しています。
 
@@ -549,7 +549,7 @@ Azure での顧客データの保護の概要: https://docs.microsoft.com/azure/
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Azure のロールベースのアクセス制御 (RBAC) を使用して、Azure Database for PostgreSQL コントロール プレーン (Azure portal など) へのアクセスを制御します。 (データベース自体内の) データ プレーン アクセスの場合は、SQL クエリを使用してユーザーを作成し、ユーザーのアクセス許可を構成します。 RBAC は、データベース内のユーザーのアクセス許可には影響しません。
+**ガイダンス**: Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、Azure Database for PostgreSQL コントロール プレーン (Azure portal など) へのアクセスを制御します。 (データベース自体内の) データ プレーン アクセスの場合は、SQL クエリを使用してユーザーを作成し、ユーザーのアクセス許可を構成します。 RBAC は、データベース内のユーザーのアクセス許可には影響しません。
 
 Azure で RBAC を構成する方法: https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
@@ -577,7 +577,7 @@ Azure での顧客データの保護について: https://docs.microsoft.com/azu
 
 Azure Database for PostgreSQL 単一サーバーのカスタマー マネージド キー (CMK) によるデータ暗号化では、保存データの保護に Bring Your Own Key (BYOK) を使用できます。 現時点では、この機能を使用するにはアクセス権をリクエストする必要があります。 これを行う場合は、以下にお問い合わせください。
 
-AskAzureDBforPostgreSQL@service.microsoft.com
+AskAzureDBforPostgreSQL@service.microsoft.com.
 
 Azure Database for PostgreSQL の保存時の暗号化について: https://docs.microsoft.com/azure/postgresql/concepts-security
 
@@ -604,7 +604,7 @@ Azure アクティビティ ログ イベントのアラートを作成する方
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1:自動化された脆弱性スキャン ツールを実行する
 
-**ガイダンス**: 現在使用できません。Azure Security Center では、Azure Database for PostgreSQL の脆弱性評価はまだサポートされていません。
+**ガイダンス**:現在使用できません。Azure Security Center では、Azure Database for PostgreSQL の脆弱性評価はまだサポートされていません。
 
 Azure Security Center の Azure PaaS サービスを対象とする機能: https://docs.microsoft.com/azure/security-center/features-paas
 
@@ -688,7 +688,7 @@ Azure RBAC の概要: https://docs.microsoft.com/azure/role-based-access-control
 
 ### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4:承認された Azure リソースとソフトウェア タイトルのインベントリを管理する
 
-**ガイダンス**: 適用できません。この推奨事項は、コンピューティング リソースと Azure 全体を対象にしています。
+**ガイダンス**:適用できません。この推奨事項は、コンピューティング リソースと Azure 全体を対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -722,7 +722,7 @@ Azure Graph を使用してクエリを作成する方法: https://docs.microsof
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7:承認されていない Azure リソースとソフトウェア アプリケーションを削除する
 
-**ガイダンス**: 適用できません。この推奨事項は、コンピューティング リソースと Azure 全体を対象にしています。
+**ガイダンス**:適用できません。この推奨事項は、コンピューティング リソースと Azure 全体を対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -816,7 +816,7 @@ Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3:セキュリティで保護された Azure リソースの構成を維持する
 
-**ガイダンス**: Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
+**ガイダンス**:Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
 
 Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -836,7 +836,7 @@ Azure Policy の効果の概要: https://docs.microsoft.com/azure/governance/pol
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5:Azure リソースの構成を安全に格納する
 
-**ガイダンス**: Azure Database for PostgreSQL インスタンスと関連リソースにカスタム Azure Policy 定義を使用する場合は、Azure Repos を使ってコードを安全に格納および管理します。
+**ガイダンス**:Azure Database for PostgreSQL インスタンスと関連リソースにカスタム Azure Policy 定義を使用する場合は、Azure Repos を使ってコードを安全に格納および管理します。
 
 Azure DevOps でコードを格納する方法: https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
@@ -906,7 +906,7 @@ Azure マネージド ID と統合する方法: https://docs.microsoft.com/azure
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12:ID を安全かつ自動的に管理する
 
-**ガイダンス**: Azure Database for PostgreSQL サーバーでは、データベースにアクセスするための Azure Active Directory 認証 (プレビュー段階) がサポートされています。  Azure Database for PostgreSQL サーバーを作成するときに、管理者ユーザーの資格情報を指定します。 この管理者は、追加のデータベース ユーザーを作成するために使用できます。  
+**ガイダンス**: Azure Database for PostgreSQL サーバーでは、データベースにアクセスするための Azure Active Directory 認証がサポートされています。  Azure Database for PostgreSQL サーバーを作成するときに、管理者ユーザーの資格情報を指定します。 この管理者は、追加のデータベース ユーザーを作成するために使用できます。  
 
 Azure Database for PostgreSQL サーバーへのアクセスに使用される Azure App Service で実行されている Azure Virtual Machines または Web アプリケーションの場合は、Azure Key Vault と組み合わせてマネージド サービス ID を使用して、Azure Database for PostgreSQL サーバーの資格情報を格納および取得します。 Key Vault の論理的な削除が有効になっていることを確認します。
 
@@ -997,7 +997,7 @@ Key Vault のキーをバックアップする方法: https://docs.microsoft.com
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3:カスタマー マネージド キーを含むすべてのバックアップを検証する
 
-**ガイダンス**: Azure Database for PostgreSQL で復元を実行すると、元のサーバーのバックアップから新しいサーバーが作成されます。 使用できる復元には 2 つの種類があります。ポイントインタイム リストアと geo リストアです。 ポイントインタイム リストアは、いずれのバックアップ冗長オプションでも使用でき、元のサーバーと同じリージョンに新しいサーバーが作成されます。 geo リストアは、サーバーを geo 冗長ストレージ用に構成した場合にのみ使用でき、ご利用のサーバーを別のリージョンに復元できます。
+**ガイダンス**:Azure Database for PostgreSQL で復元を実行すると、元のサーバーのバックアップから新しいサーバーが作成されます。 使用できる復元には 2 つの種類があります。ポイントインタイム リストアと geo リストアです。 ポイントインタイム リストアは、いずれのバックアップ冗長オプションでも使用でき、元のサーバーと同じリージョンに新しいサーバーが作成されます。 geo リストアは、サーバーを geo 冗長ストレージ用に構成した場合にのみ使用でき、ご利用のサーバーを別のリージョンに復元できます。
 
 復旧の推定所要時間は、データベースのサイズ、トランザクション ログのサイズ、ネットワーク帯域幅、同じリージョン内で同時に復旧するデータベースの合計数など、複数の要因によって異なります。 通常は 12 時間もかかりません。
 
@@ -1061,7 +1061,7 @@ NIST の出版物を参照してください。IT の計画と機能に関する
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4:セキュリティ インシデントの連絡先の詳細を指定し、セキュリティ インシデントのアラート通知を構成します
 
-**ガイダンス**: セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。  事後にインシデントをレビューして、問題が解決されていることを確認します。
+**ガイダンス**:セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。  事後にインシデントをレビューして、問題が解決されていることを確認します。
 
 Azure Security Center のセキュリティ連絡先を設定する方法: https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b42c2a414333e7ed262441321a808fc45425fc3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 37df1a052a58271c239b8b3bcaa4808ab7c355f0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81756745"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204372"
 ---
 # <a name="json-claims-transformations"></a>JSON 要求変換
 
@@ -36,7 +36,7 @@ ms.locfileid: "81756745"
 
 次の例では、"email" と "otp" の要求値に基づいて JSON 文字列が生成され、さらに定数文字列が生成されます。
 
-```XML
+```xml
 <ClaimsTransformation Id="GenerateRequestBody" TransformationMethod="GenerateJson">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="personalizations.0.to.0.email" />
@@ -67,7 +67,7 @@ ms.locfileid: "81756745"
 - 出力要求：
   - **requestBody**:JSON 値
 
-```JSON
+```json
 {
   "personalizations": [
     {
@@ -102,7 +102,7 @@ JSON データから、指定された要素を取得します。
 
 次の例では、JSON データから要求変換によって`emailAddress`要素が抽出されます。`{"emailAddress": "someone@example.com", "displayName": "Someone"}`
 
-```XML
+```xml
 <ClaimsTransformation Id="GetEmailClaimFromJson" TransformationMethod="GetClaimFromJson">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="customUserData" TransformationClaimType="inputJson" />
@@ -141,11 +141,11 @@ Json データから、指定された要素の一覧を取得します。
 
 次の例では、要求変換によって、次の要求が JSON データから抽出されます。 email (文字列)、displayName (文字列)、membershipNum (int)、アクティブ (ブール値) 、および birthdate (datetime)。
 
-```JSON
+```json
 [{"key":"email","value":"someone@example.com"}, {"key":"displayName","value":"Someone"}, {"key":"membershipNum","value":6353399}, {"key":"active","value":true}, {"key":"birthdate","value":"1980-09-23T00:00:00Z"}]
 ```
 
-```XML
+```xml
 <ClaimsTransformation Id="GetClaimsFromJson" TransformationMethod="GetClaimsFromJsonArray">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="jsonSourceClaim" TransformationClaimType="jsonSource" />
@@ -192,7 +192,7 @@ JSON データから、指定した数値の (長) 要素を取得します。
 
 次の例では、JSON データから要求変換によって`id`要素が抽出されます。
 
-```JSON
+```json
 {
     "emailAddress": "someone@example.com",
     "displayName": "Someone",
@@ -200,7 +200,7 @@ JSON データから、指定した数値の (長) 要素を取得します。
 }
 ```
 
-```XML
+```xml
 <ClaimsTransformation Id="GetIdFromResponse" TransformationMethod="GetNumericClaimFromJson">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="exampleInputClaim" TransformationClaimType="inputJson" />
@@ -235,7 +235,7 @@ JSON データから最初の要素を取得します。
 
 次の例では、JSON データから要求変換によって最初の要素 (名) が抽出されます。
 
-```XML
+```xml
 <ClaimsTransformation Id="GetGivenNameFromResponse" TransformationMethod="GetSingleItemFromJson">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="json" TransformationClaimType="inputJson" />
@@ -267,7 +267,7 @@ JSON データの配列から最初の要素を取得します。
 
 次の例では、JSON 配列から要求変換によって最初の要素（メールアドレス）が抽出されます `["someone@example.com", "Someone", 6353399]`。
 
-```XML
+```xml
 <ClaimsTransformation Id="GetEmailFromJson" TransformationMethod="GetSingleValueFromJsonArray">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="userData" TransformationClaimType="inputJsonClaim" />
@@ -294,7 +294,7 @@ XML データを JSON 形式に変換します。
 | InputClaim | xml | string | データを XML から JSON 形式に変換する要求変換で使用される ClaimTypes。 |
 | OutputClaim | json | string | この ClaimsTransformation が呼び出された後に生成される ClaimType は、JSON 形式のデータであります。 |
 
-```XML
+```xml
 <ClaimsTransformation Id="ConvertXmlToJson" TransformationMethod="XmlStringToJsonString">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="intpuXML" TransformationClaimType="xml" />
@@ -310,7 +310,7 @@ XML データを JSON 形式に変換します。
 #### <a name="example"></a>例
 入力要求：
 
-```XML
+```xml
 <user>
   <name>Someone</name>
   <email>someone@example.com</email>
@@ -319,7 +319,7 @@ XML データを JSON 形式に変換します。
 
 出力要求：
 
-```JSON
+```json
 {
   "user": {
     "name":"Someone",

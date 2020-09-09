@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 2aeb2ab4cfb4ed5e8652638aaced320cc7119d3e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7700e151a49dbfbad452927ba4a308651a0b584a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77919483"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84782814"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Security Center でのテナント間の管理
 
@@ -46,7 +46,7 @@ ms.locfileid: "77919483"
 ビューとアクションは基本的に同じです。 次に例をいくつか示します。
 
 - **セキュリティ ポリシーの管理**:1 つのビューから、[ポリシー](tutorial-security-policy.md)を使用して多くのリソースのセキュリティ体制を管理し、セキュリティに関する推奨事項を使用してアクションを実行し、セキュリティに関連したデータを収集および管理します。
-- **セキュリティ スコアとコンプライアンス体制の向上**:テナント間の可視性を使用すると、すべてのテナントの全体的なセキュリティ体制を表示でき、また、それぞれの[セキュリティ スコア](security-center-secure-score.md)と[コンプライアンス体制](security-center-compliance-dashboard.md)を最も改善できる場所と方法を確認できます。
+- **セキュリティ スコアとコンプライアンス体制の向上**:テナント間の可視性を使用すると、すべてのテナントの全体的なセキュリティ体制を表示でき、また、それぞれの[セキュリティ スコア](secure-score-security-controls.md)と[コンプライアンス体制](security-center-compliance-dashboard.md)を最も改善できる場所と方法を確認できます。
 - **推奨事項の修復**:さまざまなテナントからの多くのリソースの[推奨事項](security-center-recommendations.md)を一度に監視して修復します。 そして、全テナントにわたって最も高いリスクを示す脆弱性にすぐに対処できます。
 - **アラートの管理**:さまざまなテナントにわたって[アラート](security-center-alerts-overview.md)を検出します。 実行可能な[修復の手順](security-center-managing-and-responding-alerts.md)に準拠していないリソースに対してアクションを実行します。
 

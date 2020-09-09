@@ -7,18 +7,18 @@ documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: 5c50186692438be5d0922cd329c28e665310e5c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6995073ba7d283a30f7580456cd61573752f7cc
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77023533"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051391"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Azure Load Balancer の分散モードを構成する
 
@@ -94,25 +94,27 @@ Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Pro
 
 次の設定を使用して、エンドポイント ロード バランサー分散モード構成を取得します。
 
-    PS C:\> Get-AzureVM –ServiceName MyService –Name MyVM | Get-AzureEndpoint
+```azurepowershell
+PS C:\> Get-AzureVM –ServiceName MyService –Name MyVM | Get-AzureEndpoint
 
-    VERBOSE: 6:43:50 PM - Completed Operation: Get Deployment
-    LBSetName : MyLoadBalancedSet
-    LocalPort : 80
-    Name : HTTP
-    Port : 80
-    Protocol : tcp
-    Vip : 65.52.xxx.xxx
-    ProbePath :
-    ProbePort : 80
-    ProbeProtocol : tcp
-    ProbeIntervalInSeconds : 15
-    ProbeTimeoutInSeconds : 31
-    EnableDirectServerReturn : False
-    Acl : {}
-    InternalLoadBalancerName :
-    IdleTimeoutInMinutes : 15
-    LoadBalancerDistribution : sourceIP
+VERBOSE: 6:43:50 PM - Completed Operation: Get Deployment
+LBSetName : MyLoadBalancedSet
+LocalPort : 80
+Name : HTTP
+Port : 80
+Protocol : tcp
+Vip : 65.52.xxx.xxx
+ProbePath :
+ProbePort : 80
+ProbeProtocol : tcp
+ProbeIntervalInSeconds : 15
+ProbeTimeoutInSeconds : 31
+EnableDirectServerReturn : False
+Acl : {}
+InternalLoadBalancerName :
+IdleTimeoutInMinutes : 15
+LoadBalancerDistribution : sourceIP
+```
 
 `LoadBalancerDistribution` 要素が存在しない場合、Azure Load Balancer は既定の 5 タプルのアルゴリズムを使用します。
 
@@ -158,41 +160,47 @@ Azure クラシック デプロイ モデルを使用して、既存のデプロ
 
 #### <a name="request"></a>Request
 
-    POST https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>?comp=UpdateLbSet   x-ms-version: 2014-09-01
-    Content-Type: application/xml
+```http
+POST https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>?comp=UpdateLbSet   x-ms-version: 2014-09-01
+Content-Type: application/xml
+```
 
-    <LoadBalancedEndpointList xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="https://www.w3.org/2001/XMLSchema-instance">
-      <InputEndpoint>
+```xml
+<LoadBalancedEndpointList xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="https://www.w3.org/2001/XMLSchema-instance">
+    <InputEndpoint>
         <LoadBalancedEndpointSetName> endpoint-set-name </LoadBalancedEndpointSetName>
         <LocalPort> local-port-number </LocalPort>
         <Port> external-port-number </Port>
         <LoadBalancerProbe>
-          <Port> port-assigned-to-probe </Port>
-          <Protocol> probe-protocol </Protocol>
-          <IntervalInSeconds> interval-of-probe </IntervalInSeconds>
-          <TimeoutInSeconds> timeout-for-probe </TimeoutInSeconds>
+            <Port> port-assigned-to-probe </Port>
+            <Protocol> probe-protocol </Protocol>
+            <IntervalInSeconds> interval-of-probe </IntervalInSeconds>
+            <TimeoutInSeconds> timeout-for-probe </TimeoutInSeconds>
         </LoadBalancerProbe>
         <Protocol> endpoint-protocol </Protocol>
         <EnableDirectServerReturn> enable-direct-server-return </EnableDirectServerReturn>
         <IdleTimeoutInMinutes>idle-time-out</IdleTimeoutInMinutes>
         <LoadBalancerDistribution>sourceIP</LoadBalancerDistribution>
-      </InputEndpoint>
-    </LoadBalancedEndpointList>
+    </InputEndpoint>
+</LoadBalancedEndpointList>
+```
 
 前述のとおり、`LoadBalancerDistribution` 要素を sourceIP (2 タプルのアフィニティ)、sourceIPProtocol (3 タプルのアフィニティ)、none (アフィニティなし、5 タプルのアフィニティ) に設定します。
 
 #### <a name="response"></a>Response
 
-    HTTP/1.1 202 Accepted
-    Cache-Control: no-cache
-    Content-Length: 0
-    Server: 1.0.6198.146 (rd_rdfe_stable.141015-1306) Microsoft-HTTPAPI/2.0
-    x-ms-servedbyregion: ussouth2
-    x-ms-request-id: 9c7bda3e67c621a6b57096323069f7af
-    Date: Thu, 16 Oct 2014 22:49:21 GMT
+```http
+HTTP/1.1 202 Accepted
+Cache-Control: no-cache
+Content-Length: 0
+Server: 1.0.6198.146 (rd_rdfe_stable.141015-1306) Microsoft-HTTPAPI/2.0
+x-ms-servedbyregion: ussouth2
+x-ms-request-id: 9c7bda3e67c621a6b57096323069f7af
+Date: Thu, 16 Oct 2014 22:49:21 GMT
+```
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure 内部ロード バランサーの概要](load-balancer-internal-overview.md)
-* [インターネットに接続するロード バランサーの構成の開始](quickstart-create-standard-load-balancer-powershell.md)
+* [インターネットに接続するロード バランサーの構成の開始](quickstart-load-balancer-standard-public-powershell.md)
 * [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)

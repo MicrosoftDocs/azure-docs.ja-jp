@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.date: 02/27/2020
-ms.openlocfilehash: 7e8dd69b7c58e090c30ea1aa59feddab610dd3c5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5e5f02b1684e56496778ab677aa9dc46e7dcd9aa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78244887"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086525"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Azure HDInsight の Apache Hadoop の概要
 
@@ -48,7 +48,7 @@ Java や Java 仮想マシンに基づく言語またはフレームワークは
 
 Hadoop ストリーミングは、STDIN と STDOUT 上で mapper や reducer と通信します。 mapper と reducer は、STDIN から一度に 1 行ずつデータを読み取り、STDOUT に出力を書き込みます。 mapper と reducer によって読み取りまたは出力が行われる各行は、以下のように、タブ文字で区切られたキーと値のペアの形式である必要があります。
 
-    [key]/t[value]
+`[key]\t[value]`
 
 詳細については、「 [Hadoop ストリーミング](https://hadoop.apache.org/docs/current/hadoop-streaming/HadoopStreaming.html)」を参照してください。
 

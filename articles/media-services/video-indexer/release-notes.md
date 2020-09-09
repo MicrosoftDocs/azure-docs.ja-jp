@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 08/05/2020
 ms.author: juliako
-ms.openlocfilehash: 8a9c1ba8e6316ea79941fbec1fbd339893afdb35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1b11dc0ee17fd0686776a7262c4bc99bd98bcc3e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131210"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837311"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer リリース ノート
 
@@ -29,6 +29,54 @@ ms.locfileid: "82131210"
 * 既知の問題
 * バグの修正
 * 非推奨の機能
+
+## <a name="july-2020"></a>2020 年 7 月
+
+### <a name="ga-for-multi-language-identification"></a>GA になった複数言語の識別
+
+複数言語の識別はプレビューから GA に移行され、運用環境で使用する準備ができています。
+
+"プレビューから GA" への移行に関連する価格への影響はありません。
+
+### <a name="video-indexer-website-improvements"></a>Video Indexer Web サイトの改善
+
+#### <a name="adjustments-in-the-video-gallery"></a>ビデオ ギャラリーでの調整
+
+詳細な分析情報の検索用に、追加のフィルター機能を備えた新しい検索バーが追加されました。 検索結果も拡張されています。
+
+複数のファイルを含むビデオ アーカイブの並べ替えと管理を行う機能を備えた新しいリスト ビュー。
+
+#### <a name="new-panel-for-easy-selection-and-configuration"></a>選択と構成が容易な新しいパネル
+
+選択とユーザーの構成が容易なサイド パネルが追加され、シンプルで迅速なアカウントの作成と共有や、構成の設定が可能になっています。
+
+サイド パネルは、ユーザー設定やヘルプにも使用されます。
+
+## <a name="june-2020"></a>2020 年 6 月
+
+### <a name="search-by-topics"></a>トピックで検索
+
+検索 API を使用して、特定のトピックでビデオを検索できるようになりました (API のみ)。
+
+トピックは、`textScope` (省略可能なパラメーター) の一部として追加されます。 詳細については [API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Search-Videos) を参照してください。  
+
+### <a name="labels-enhancement"></a>ラベルの機能強化
+
+ラベルのタグ付け機能がアップグレードされました。これにより、特定しやすいより視覚的なラベルが追加されます。
+
+## <a name="may-2020"></a>2020 年 5 月
+
+### <a name="video-indexer-deployed-in-the-east-us"></a>米国東部でデプロイされる Video Indexer
+
+Video Indexer 有料アカウントを米国東部リージョン作成できるようになりました。
+ 
+### <a name="video-indexer-url"></a>Video Indexer の URL
+
+Video Indexer のリージョン エンドポイントはすべて、www でのみ始まるように統一されました。 必要な操作はありません。
+
+今後は、ウィジェットを埋め込む場合も、Video Indexer Web アプリケーションにログインする場合も www.videoindexer.ai にアクセスします。
+
+また、wus.videoindexer.ai も www にリダイレクトされます。 詳細については、「[お使いのアプリに Video Indexer ウィジェットを埋め込む](video-indexer-embed-widgets.md)」を参照してください。
 
 ## <a name="april-2020"></a>2020 年 4 月
 
@@ -58,7 +106,7 @@ ms.locfileid: "82131210"
 数週間のうちに、Microsoft はこれを変更し、すべてのアカウント (試用版および有料版) に [Video Indexer Web サイト](https://www.videoindexer.ai/)の URL を返すようになります。
 
     内部 URL を使用しないでください。[Video Indexer パブリック API](https://api-portal.videoindexer.ai/) を使用する必要があります。
-* Video Indexer URL をアプリケーションに埋め込んでいて、URL が [Video Indexer Web サイト](https://www.videoindexer.ai/) または [Video Indexer API エンドポイント](https://api.videoindexer.ai)をポイントしておらず、リージョン エンドポイント (`https://wus2.videoindexer.ai` など) をポイントしている場合は、URL を再生成してください。
+* Video Indexer URL をアプリケーションに埋め込んでいて、URL が [Video Indexer Web サイト](https://www.videoindexer.ai/)も Video Indexer API エンドポイント (`https://api.videoindexer.ai`) もポイントしておらず、リージョン エンドポイント (`https://wus2.videoindexer.ai` など) をポイントしている場合は、URL を再生成してください。
 
    次のいずれかでこれを行うことができます。
 

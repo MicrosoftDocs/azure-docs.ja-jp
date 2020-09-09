@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 04a900c98311f4e7dcccbfca93ea41e212308759
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 777f3de8f2872e378fe30cc50ee0a5eb3823a625
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80882099"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900309"
 ---
 # <a name="single-page-application-move-to-production"></a>シングルページ アプリケーション：運用環境に移行する
 
@@ -40,7 +40,7 @@ MSAL.js を使用してユーザーをサインインし、Microsoft Graph API �
 MSAL.js を使用して独自のバックエンド Web API のトークンを取得する方法を示すサンプルを次に示します：
 
 > [!div class="nextstepaction"]
-> [ASP.NET バックエンドを使用する SPA](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2)
+> [ASP.NET バックエンドを使用する SPA](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi)
 
 MSAL を使用して Azure Active Directory B2C (Azure AD B2C) に登録されているアプリのユーザーにサインインする方法を示すサンプルです。
 

@@ -6,20 +6,20 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.topic: article
+ms.topic: overview
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 04/16/2020
+ms.date: 07/27/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12101b170066bc52e75f4aa281c6f1c21283c004
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5854ef57a08218fee4479eb9e075824f4a1ff781
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81406459"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376385"
 ---
 # <a name="administrative-units-management-in-azure-active-directory-preview"></a>Azure Active Directory での管理単位の管理 (プレビュー)
 
@@ -27,7 +27,7 @@ ms.locfileid: "81406459"
 
 管理単位を使用すると、定義した組織の部門、リージョン、またはその他のセグメントに制限されている管理者アクセス許可を付与できます。 管理単位を使用して、各地域の管理者に権限を委任したり、ポリシーを細かく設定したりできます。 たとえば、ユーザー アカウント管理者は、管理単位内のユーザーに対してのみ、プロファイル情報の更新、パスワードのリセット、およびライセンスの割り当てを実行できます。
 
- たとえば、リージョン サポート スペシャリストに委任すると、[ヘルプデスク管理者](directory-assign-admin-roles.md#helpdesk-administrator)の役割は、そのスペシャリストがサポートするリージョン内のユーザーのみの管理に制限されます。
+たとえば、リージョン サポート スペシャリストに委任すると、[ヘルプデスク管理者](directory-assign-admin-roles.md#helpdesk-administrator)の役割は、そのスペシャリストがサポートするリージョン内のユーザーのみの管理に制限されます。
 
 ## <a name="deployment-scenario"></a>デプロイ シナリオ
 
@@ -47,14 +47,14 @@ ms.locfileid: "81406459"
 このプレビュー リリースでは、Azure portal、PowerShell コマンドレットおよびスクリプト、または Microsoft Graph を使用して管理単位を管理できます。 詳細については、Microsoft のドキュメントをご覧ください。
 
 - [ロールを作成、削除、設定し、管理単位に追加する](roles-admin-units-manage.md):詳細な操作方法に関する手順
-- [管理単位を操作する](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0):PowerShell を使用して管理単位を操作する方法
-- [管理単位グラフのサポート](https://docs.microsoft.com/graph/api/resources/administrativeunit?view=graph-rest-beta):管理単位の Microsoft Graph に関する詳細なドキュメント。
+- [管理単位を操作する](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0):PowerShell を使用して管理単位を操作する方法
+- [管理単位グラフのサポート](/graph/api/resources/administrativeunit?view=graph-rest-beta):管理単位の Microsoft Graph に関する詳細なドキュメント。
 
 ### <a name="planning-your-administrative-units"></a>管理単位の計画
 
 管理単位を使用して、Azure AD リソースを論理的にグループ化することができます。 たとえば、IT 部門がグローバルに分散している組織では、地理的な境界を定義する管理単位を作成することが理にかなっている場合があります。 多国籍組織に、業務において半自律的な各種 "サブ組織" がある別のシナリオでは、各サブ組織を管理単位で表すことができます。
 
-管理単位を作成する条件は、組織の固有の要件に従って設定されます。 管理単位は、M365 サービスをまたがって構造を定義するための一般的な方法です。 M365 サービスをまたがる使用を考慮して管理単位を準備することをお勧めします。 管理単位の下にある M365 間で共通のリソースを関連付けることができる場合は、管理単位から最大の価値を得ることができます。
+管理単位を作成する条件は、組織の固有の要件に従って設定されます。 管理単位は、Microsoft 365 サービスをまたがって構造体を定義するための一般的な方法です。 Microsoft 365 サービスをまたがる使用を考慮して管理単位を準備することをお勧めします。 管理単位の下にある Microsoft 365 間で共通のリソースを関連付けることができる場合は、管理単位から最大の価値を得ることができます。
 
 次の段階に進むには、組織内の管理単位の作成が予想されます。
 
@@ -64,7 +64,7 @@ ms.locfileid: "81406459"
 
 ## <a name="currently-supported-scenarios"></a>現在サポートされているシナリオ
 
-全体管理者または特権ロール管理者は、Azure AD ポータルを使用して管理単位を作成し、ユーザーを管理単位のメンバーとして追加して、IT スタッフを管理単位スコープの管理者ロールに割り当てることができます。 管理単位スコープの管理者は、Office 365 ポータルを使用して、管理単位内のユーザーの基本的な管理を行うことができます。
+全体管理者または特権ロール管理者は、Azure AD ポータルを使用して管理単位を作成し、ユーザーを管理単位のメンバーとして追加して、IT スタッフを管理単位スコープの管理者ロールに割り当てることができます。 管理単位スコープの管理者は、Microsoft 365 管理センターを使用して、管理単位内のユーザーの基本的な管理を行うことができます。
 
 さらに、グループを管理単位のメンバーとして追加できます。また、管理単位スコープのグループ管理者は、PowerShell、Microsoft Graph、Azure AD ポータルを使用してそれらを管理できます。
 
@@ -99,7 +99,7 @@ ms.locfileid: "81406459"
 >
 > 管理単位スコープを持つ管理者は、動的なグループ メンバーシップ ルールを管理できません。
 
-管理単位では、管理アクセス許可にのみスコープが適用されます。 メンバーまたは管理者が[既定のユーザー アクセス許可](../fundamentals/users-default-permissions.md)を使用して管理単位外の他のユーザー、グループ、またはリソースを参照するのを防ぐことはありません。 Office 365 ポータルでは、スコープの管理者の管理単位外のユーザーはフィルターで除外されますが、Azure AD ポータル、PowerShell、およびその他の Microsoft サービス内で他のユーザーを参照することができます。
+管理単位では、管理アクセス許可にのみスコープが適用されます。 メンバーまたは管理者が[既定のユーザー アクセス許可](../fundamentals/users-default-permissions.md)を使用して管理単位外の他のユーザー、グループ、またはリソースを参照するのを防ぐことはありません。 Microsoft 365 管理センターでは、スコープの管理者の管理単位外のユーザーはフィルターで除外されますが、Azure AD ポータル、PowerShell、およびその他の Microsoft サービス内で他のユーザーを参照することができます。
 
 ## <a name="next-steps"></a>次のステップ
 

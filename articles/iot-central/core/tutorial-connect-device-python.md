@@ -3,16 +3,17 @@ title: チュートリアル - 汎用の Python クライアント アプリを 
 description: このチュートリアルでは、デバイス開発者を対象に、Python クライアント アプリが実行されているデバイスを Azure IoT Central アプリケーションに接続する方法を説明します。 デバイス機能モデルをインポートしてデバイス テンプレートを作成し、接続されているデバイスを対話的に操作できるビューを追加します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 03/24/2020
+ms.date: 07/07/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: d6c44c81db78fa76eeaf4b7181cca34fb8e81523
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.custom: devx-track-python
+ms.openlocfilehash: b79dce7755d6fab633a442839ae3ff8643d0b554
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758188"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876701"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-python"></a>チュートリアル:クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する (Python)
 
@@ -37,7 +38,7 @@ ms.locfileid: "81758188"
 
 この記事の手順を完了するには、次のものが必要です。
 
-* **カスタム アプリケーション** テンプレートを使用して作成された Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページをご覧ください。
+* **カスタム アプリケーション** テンプレートを使用して作成された Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページをご覧ください。 アプリケーションは、2020 年 7 月 14 日以降に作成されている必要があります。
 * [Python](https://www.python.org/) バージョン 3.7 以降がインストールされた開発用マシン。 コマンドラインで `python3 --version` を実行して、お使いのバージョンを確認できます。 Python は、さまざまなオペレーティング システムで使用できます。 このチュートリアルの手順では、Windows コマンド プロンプトで **python3** コマンドを実行していることを前提としています。
 
 [!INCLUDE [iot-central-add-environmental-sensor](../../../includes/iot-central-add-environmental-sensor.md)]
@@ -213,32 +214,32 @@ ms.locfileid: "81758188"
 
     オペレーターは、コマンド履歴で応答ペイロードを表示できます。
 
-1. IoT Central アプリケーションから送信されるプロパティの更新を処理するために、次の関数を `main` 関数内に追加します。
+1. IoT Central アプリケーションから送信されるプロパティの更新を処理するために、次の関数を `main` 関数内に追加します。 [書き込み可能なプロパティの更新](concepts-telemetry-properties-commands.md#writeable-property-types)に応答してデバイスから送信されるメッセージには、`av` フィールドと `ac` フィールドが含まれている必要があります。 `ad` フィールドは省略可能です。
 
     ```python
-        async def name_setting(value, version):
-          await asyncio.sleep(1)
-          print(f'Setting name value {value} - {version}')
-          await device_client.patch_twin_reported_properties({'name' : {'value': value['value'], 'status': 'completed', 'desiredVersion': version}})
+      async def name_setting(value, version):
+        await asyncio.sleep(1)
+        print(f'Setting name value {value} - {version}')
+        await device_client.patch_twin_reported_properties({'name' : {'value': value, 'ad': 'completed', 'ac': 200, 'av': version}})
 
-        async def brightness_setting(value, version):
-          await asyncio.sleep(5)
-          print(f'Setting brightness value {value} - {version}')
-          await device_client.patch_twin_reported_properties({'brightness' : {'value': value['value'], 'status': 'completed', 'desiredVersion': version}})
+      async def brightness_setting(value, version):
+        await asyncio.sleep(5)
+        print(f'Setting brightness value {value} - {version}')
+        await device_client.patch_twin_reported_properties({'brightness' : {'value': value, 'ad': 'completed', 'ac': 200, 'av': version}})
 
-        settings = {
-          'name': name_setting,
-          'brightness': brightness_setting
-        }
+      settings = {
+        'name': name_setting,
+        'brightness': brightness_setting
+      }
 
-        # define behavior for receiving a twin patch
-        async def twin_patch_listener():
-          while True:
-            patch = await device_client.receive_twin_desired_properties_patch() # blocking
-            to_update = patch.keys() & settings.keys()
-            await asyncio.gather(
-              *[settings[setting](patch[setting], patch['$version']) for setting in to_update]
-            )
+      # define behavior for receiving a twin patch
+      async def twin_patch_listener():
+        while True:
+          patch = await device_client.receive_twin_desired_properties_patch() # blocking
+          to_update = patch.keys() & settings.keys()
+          await asyncio.gather(
+            *[settings[setting](patch[setting], patch['$version']) for setting in to_update]
+          )
     ```
 
     オペレーターが IoT Central アプリケーションで書き込み可能なプロパティを設定すると、アプリケーションではデバイス ツインによって必要とされるプロパティを使用して、デバイスに値を送信します。 次に、デバイスによってデバイス ツインの reported プロパティが使用され、応答が行われます。 IoT Central は、reported プロパティの値を受け取ると、**同期済み**の状態でプロパティ ビューを更新します。
@@ -260,7 +261,7 @@ ms.locfileid: "81758188"
 
       if device_client is not None and device_client.connected:
         print('Send reported properties on startup')
-        await device_client.patch_twin_reported_properties({'state': 'true'})
+        await device_client.patch_twin_reported_properties({'state': 'true', 'processorArchitecture': 'ARM', 'swVersion': '1.0.0'})
         tasks = asyncio.gather(
           send_telemetry(),
           command_listener(),
@@ -303,12 +304,16 @@ python3 environmental_sensor.py
 
 ![クライアント アプリケーションを観察する](media/tutorial-connect-device-python/run-application-2.png)
 
+## <a name="view-raw-data"></a>生データを表示する
+
+[!INCLUDE [iot-central-monitor-environmental-sensor-raw-data](../../../includes/iot-central-monitor-environmental-sensor-raw-data.md)]
+
 ## <a name="next-steps"></a>次のステップ
 
-デバイス開発者として、Node.js を使用してデバイスを作成する方法の基本を学習しました。推奨される次の手順は以下のとおりです。
+デバイス開発者として、Python を使用してデバイスを作成する方法の基本を学習しました。推奨される次の手順は以下のとおりです。
 
-- 「[MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する](./howto-connect-devkit.md)」ハウツー記事で、実際のデバイスを IoT Central に接続する方法を確認します。
-- IoT Central にデバイスを登録する方法と IoT Central でデバイスの接続を保護する方法の詳細については、「[Azure IoT Central に接続する](./concepts-get-connected.md)」を参照してください。
+* デバイス コードを実装する際のデバイス テンプレートの役割について詳しくは、「[デバイス テンプレートとは](./concepts-device-templates.md)」をご覧ください。
+* IoT Central にデバイスを登録する方法と IoT Central でデバイスの接続を保護する方法の詳細については、「[Azure IoT Central に接続する](./concepts-get-connected.md)」を参照してください。
 
 一連の IoT Central チュートリアルを続行し、IoT Central ソリューションの構築方法の詳細を確認するには、次のページを参照してください。
 

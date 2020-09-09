@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory と ITRP の統合 | Microsoft Docs
 description: このチュートリアルでは、Azure Active Directory と ITRP の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: e09716a3-4200-4853-9414-2390e6c10d98
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: c4d0f753e23e42b1064fec3f56957dfe97c30ca4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d7a7c4f7d9a9ba2ef574519a41aae3dd6e28e4fb
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81261195"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552800"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>チュートリアル:Azure Active Directory と ITRP の統合
 
@@ -179,7 +175,7 @@ ITRP に対する Azure AD シングル サインオンを構成するには、�
 
     1. **[名前]** ボックスに「**BrittaSimon**」と入力します。
   
-    1. **[ユーザー名]** ボックスに、「**BrittaSimon@\<yourcompanydomain>.\<extension>** 」と入力します。 (例: BrittaSimon@contoso.com)。
+    1. **[ユーザー名]** ボックスに「**BrittaSimon@\<yourcompanydomain>.\<extension>** 」と入力します (例: BrittaSimon@contoso.com)。
 
     1. **[パスワードを表示]** を選択し、 **[パスワード]** ボックス内の値を書き留めます。
 

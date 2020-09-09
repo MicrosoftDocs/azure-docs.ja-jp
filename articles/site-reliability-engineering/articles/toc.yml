@@ -3,5 +3,7 @@
 - name: よく寄せられる質問
   expanded: true
   items:
+    - name: SRE とコーディング
+      href: code.md
     - name: SRE と DevOps
       href: devops.md

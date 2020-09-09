@@ -3,13 +3,12 @@ title: トラブルシューティング - QnA Maker
 description: QnA Maker サービスについてきわめて多く寄せられる質問を精選した一覧です。サービスの採用にかかる期間を短縮し、成果を上げるためにお役立てください。
 ms.topic: troubleshooting
 ms.date: 03/25/2020
-ms.author: diberry
-ms.openlocfilehash: 7847e21dbcf07f669d6802fffdd1e43623a72340
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 50823e29eb5c276c00a1c8f0e3227ec67999a703
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804352"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502581"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker のトラブルシューティング
 
@@ -88,7 +87,7 @@ QnA Maker サービスについてきわめて多く寄せられる質問を精�
 <details>
 <summary><b>ナレッジ ベースを変更するために、同じ AAD テナントに含まれない共同作成者とナレッジ ベースを共有できますか。</b></summary>
 
-**回答**: 共有は Azure ロールベースのアクセス制御 (RBAC) に基づきます。 Azure で他のユーザーと _任意の_ リソースを共有できる場合、QnA Maker を共有することもできます。
+**回答**: 共有は、Azure ロールベースのアクセス制御 (Azure RBAC) に基づきます。 Azure で他のユーザーと _任意の_ リソースを共有できる場合、QnA Maker を共有することもできます。
 
 </details>
 

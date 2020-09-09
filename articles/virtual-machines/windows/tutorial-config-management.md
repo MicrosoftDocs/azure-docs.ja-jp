@@ -8,16 +8,16 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ed36dc669c8b89ba4a2b7831c6eb6f8742e73730
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2b88c053e1f9029f916d9a180221a3bb58629608
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100415"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448863"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>チュートリアル:Azure で変更を監視し、Windows 仮想マシンを更新する
 
-Azure [Change Tracking](../../automation/change-tracking.md) と [Update Management](../../automation/automation-update-management.md) を使用すると、Azure の Windows 仮想マシンの変更を簡単に識別し、それらの VM のオペレーティング システムの更新を管理できます。
+Azure [Change Tracking](../../automation/change-tracking.md) と [Update Management](../../automation/update-management/update-mgmt-overview.md) を使用すると、Azure の Windows 仮想マシンの変更を簡単に識別し、それらの VM のオペレーティング システムの更新を管理できます。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -37,13 +37,13 @@ Cloud Shell でコード ブロックを開くには、そのコード ブロッ
 
 このチュートリアルで Azure の監視と更新管理を構成するには、Azure 内に Windows VM が必要です。
 
-まず、[Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) を使用して、VM の管理者のユーザー名とパスワードを設定します。
+まず、[Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) を使用して、VM の管理者のユーザー名とパスワードを設定します。
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-次に、[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) を使用して VM を作成します。 次の例では、`myVM` という名前の VM を `East US` の場所に作成します。 これらが存在しない場合は、リソース グループ `myResourceGroupMonitor` と関連ネットワーク リソースが作成されます。
+次に、[New-AzVM](/powershell/module/az.compute/new-azvm) を使用して VM を作成します。 次の例では、`myVM` という名前の VM を `East US` の場所に作成します。 これらが存在しない場合は、リソース グループ `myResourceGroupMonitor` と関連ネットワーク リソースが作成されます。
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -76,7 +76,7 @@ Update Management は、Azure Windows VM の更新プログラムとパッチの
 
 この VM で Update Management が有効になっているかを確認する検証が行われます。 この検証では、Log Analytics ワークスペースの確認、リンクされた Automation アカウントの確認、ソリューションがワークスペースにあるかどうかの確認が行われます。
 
-[Log Analytics](../../log-analytics/log-analytics-overview.md) ワークスペースを使用して、Update Management のような機能およびサービスによって生成されるデータを収集します。 ワークスペースには、複数のソースからのデータを確認および分析する場所が 1 つ用意されています。
+[Log Analytics](../../azure-monitor/log-query/log-query-overview.md) ワークスペースを使用して、Update Management のような機能およびサービスによって生成されるデータを収集します。 ワークスペースには、複数のソースからのデータを確認および分析する場所が 1 つ用意されています。
 
 更新を必要とする VM で追加のアクションを実行する場合、Azure Automation を使用して、VM に対して Runbook を実行することができます。 このような操作には、更新プログラムのダウンロードや適用が含まれます。
 
@@ -86,8 +86,8 @@ Update Management は、Azure Windows VM の更新プログラムとパッチの
 
 オンボード中に次の前提条件のいずれかを満たしていない場合、これらが自動的に追加されます。
 
-* [Log Analytics](../../log-analytics/log-analytics-overview.md) ワークスペース
-* [Automation](../../automation/automation-offering-get-started.md)
+* [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) ワークスペース
+* [Automation](../../automation/index.yml)
 * [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md) が VM で有効になっている
 
 ソリューションが有効になると、 **[更新の管理]** ウィンドウが開きます。 使用する場所、Log Analytics ワークスペース、Automation アカウントを構成し、 **[有効にする]** を選択します。 これらのオプションが淡色表示されている場合は、その VM で別の Automation ソリューションが有効になっているため、そのソリューションのワークスペースと Automation アカウントを使用する必要があることを示します。
@@ -112,10 +112,10 @@ VM の新しい更新プログラムの展開をスケジュールするには�
 | --- | --- |
 | **名前** |更新プログラムの展開を識別する一意の名前を入力します。 |
 |**オペレーティング システム**| **Linux** か **Windows** を選択します。|
-| **更新するグループ** |Azure でホストされている VM の場合は、サブスクリプション、リソース グループ、場所、およびタグの組み合わせに基づいてクエリを定義します。 このクエリは、展開に含めるための、Azure でホストされている VM の動的なグループを構築します。 </br></br>Azure でホストされていない VM の場合は、既存の保存された検索条件を選択します。 この検索では、展開に含めるこれらの VM のグループを選択できます。 </br></br> 詳しくは、[動的グループ](../../automation/automation-update-management-groups.md)に関するページをご覧ください。|
+| **更新するグループ** |Azure でホストされている VM の場合は、サブスクリプション、リソース グループ、場所、およびタグの組み合わせに基づいてクエリを定義します。 このクエリは、展開に含めるための、Azure でホストされている VM の動的なグループを構築します。 </br></br>Azure でホストされていない VM の場合は、既存の保存された検索条件を選択します。 この検索では、展開に含めるこれらの VM のグループを選択できます。 </br></br> 詳しくは、[動的グループ](../../automation/update-management/update-mgmt-groups.md)に関するページをご覧ください。|
 | **更新するマシン** |**[保存した検索条件]** 、 **[Imported group]\(インポートしたグループ\)** 、または **[マシン]** を選択します。<br/><br/>**[マシン]** を選択した場合は、ドロップダウン リストから個々のマシンを選択できます。 各マシンの準備状況は、表の **[エージェントの更新の準備]** 列に示されます。</br></br> Azure Monitor ログでコンピューター グループを作成するさまざまな方法については、[Azure Monitor ログのコンピューター グループ](../../azure-monitor/platform/computer-groups.md)に関するページを参照してください |
 |**更新プログラムの分類**|必要なすべての更新プログラムの分類を選択します。|
-|**更新プログラムの包含/除外**|このオプションを選択すると、 **[包含/除外]** ペインが開きます。 含める更新プログラムおよび除外する更新プログラムは別のタブに表示されます。 包含を処理する方法について詳しくは、「[更新プログラムのデプロイをスケジュールする](../../automation/automation-tutorial-update-management.md#schedule-an-update-deployment)」を参照してください。 |
+|**更新プログラムの包含/除外**|このオプションを選択すると、 **[包含/除外]** ペインが開きます。 含める更新プログラムおよび除外する更新プログラムは別のタブに表示されます。 包含を処理する方法について詳しくは、「[更新プログラムのデプロイをスケジュールする](../../automation/update-management/update-mgmt-deploy-updates.md#schedule-an-update-deployment)」を参照してください。 |
 |**スケジュール設定**|開始する時刻を選択し、 **[1 回]** または **[定期的]** のいずれかを選択します。|
 | **事前スクリプトと事後スクリプト**|展開の前後に実行するスクリプトを選択します。|
 | **メンテナンス期間** | 更新プログラムに対して設定された分数を入力します。 有効な値の範囲は 30 から 360 分です。 |

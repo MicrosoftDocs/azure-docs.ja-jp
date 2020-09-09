@@ -7,13 +7,13 @@ ms.assetid: 2b995dcd-e471-4355-9fda-00babcdb156e
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
-ms.custom: mvc, seodec18
-ms.openlocfilehash: 0f535e902bc86ba3c098dd2238766a3bd547781f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: mvc, seodec18, devx-track-azurecli
+ms.openlocfilehash: 6a84b6df5a47604cbceeb172597e955c478fe75f
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80057852"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959801"
 ---
 # <a name="create-an-app-service-app-and-deploy-code-to-a-staging-environment-using-azure-cli"></a>Azure CLI を使用した App Service アプリの作成とステージング環境へのコードのデプロイ
 
@@ -47,6 +47,6 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
 その他の App Service の CLI サンプル スクリプトは、[Azure App Service のドキュメント](../samples-cli.md)のページにあります。

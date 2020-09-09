@@ -7,16 +7,17 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 11/04/2019
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 403dbe6106cb7a1d277ba672112d2bc45dbc2987
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b5bc3f87296ea1af5de28178df6d8f27c965476
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78186269"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116083"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Application Insights を使用して Azure Active Directory B2C のログを収集する
 
@@ -45,7 +46,7 @@ ms.locfileid: "78186269"
 1. 証明書利用者 (RP) ファイルを開きます (例: *SignUpOrSignin.xml*).
 1. 次の属性を `<TrustFrameworkPolicy>` 要素に追加します:
 
-   ```XML
+   ```xml
    DeploymentMode="Development"
    UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
    ```
@@ -53,7 +54,7 @@ ms.locfileid: "78186269"
 1. まだ存在しない場合は、子ノード `<UserJourneyBehaviors>` を `<RelyingParty>` ノードに追加します。 `<DefaultUserJourney ReferenceId="UserJourney Id" from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />` の直後に配置する必要があります。
 1. 次のノードを `<UserJourneyBehaviors>` 要素の子として追加します。 必ず、`{Your Application Insights Key}` の部分を、前に記録した Application Insights の**インストルメンテーション キー**に置き換えます。
 
-    ```XML
+    ```xml
     <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
     ```
 
@@ -63,7 +64,7 @@ ms.locfileid: "78186269"
 
     次に例を示します。
 
-    ```XML
+    ```xml
     <TrustFrameworkPolicy
       ...
       TenantId="fabrikamb2c.onmicrosoft.com"

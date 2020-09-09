@@ -9,14 +9,15 @@ zone_pivot_groups: programming-languages-set-seventeen
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 04/16/2020
+ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: 7a48992ab5978824f1ffb4b2c3ac0670f40c1424
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 902a15f7186e49fe8b8e18ce3a152a5fa3cb8816
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81759805"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936913"
 ---
 # <a name="quickstart-use-the-anomaly-detector-client-library"></a>クイック スタート:Anomaly Detector クライアント ライブラリを使用する
 

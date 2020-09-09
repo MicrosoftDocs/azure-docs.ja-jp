@@ -5,15 +5,16 @@ services: synapse analytics
 author: filippopovic
 ms.service: synapse-analytics
 ms.topic: overview
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8d4de424d5d4d6da1ee80e04b35e63ae29df57c8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: fc306dbca3191f04a85f2c5cc88d41336c13e09c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421306"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496391"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics の SQL オンデマンド (プレビュー) 
 
@@ -28,9 +29,9 @@ SQL オンデマンドは、大規模なデータとコンピューティング�
 
 SQL オンデマンドはサーバーレスであるため、インフラストラクチャの設定やクラスターの管理は不要です。 このサービスの既定のエンドポイントはすべての Azure Synapse ワークスペース内で提供されるため、ワークスペースが作成されるとすぐにデータのクエリ実行を開始できます。 予約されているリソースには課金されません。実行するクエリによってスキャンされるデータに対してのみ課金されるため、このモデルはまさに従量課金制モデルになっています。  
 
-データ パイプラインで Spark を使用する場合は、データの準備、クレンジング、またはエンリッチメントのために、プロセスで作成した[任意の Spark テーブルに対してクエリ](develop-storage-files-spark-tables.md)を SQL オンデマンドから直接実行できます。 [Private Link](../security/how-to-connect-to-workspace-with-private-links.md) を使用して、SQL オンデマンド エンドポイントを[マネージド ワークスペース VNet](../security/synapse-workspace-managed-vnet.md) に組み込みます。  
+データ パイプラインで Apache Spark for Azure Synapse を使用する場合は、データの準備、クレンジング、またはエンリッチメントのために、プロセスで作成した [Spark 外部テーブルに対してクエリ](develop-storage-files-spark-tables.md)を SQL オンデマンドから直接実行できます。 [Private Link](../security/how-to-connect-to-workspace-with-private-links.md) を使用して、SQL オンデマンド エンドポイントを[マネージド ワークスペース VNet](../security/synapse-workspace-managed-vnet.md) に組み込みます。  
 
-## <a name="who-is-sql-on-demand-for"></a>SQL オンデマンドの対象ユーザー
+## <a name="sql-on-demand-benefits"></a>SQL オンデマンドのベネフィット
 
 データ レイク内のデータを探索したり、そこから分析情報を得たり、既存のデータ変換パイプラインを最適化したりする必要がある場合は、SQL オンデマンドを活用することができます。 これは、次のシナリオに適しています。
 
@@ -42,10 +43,10 @@ SQL オンデマンドは、さまざまな職務の役に立ちます。
 
 - データ エンジニアは、このサービスを使用してレイクの探索、データの変換、準備を行えるほか、データ変換パイプラインを簡素化できます。 詳細については、こちらの[チュートリアル](tutorial-data-analyst.md)をご覧ください。
 - データ サイエンティストは、OPENROWSET や自動スキーマ推論などの機能を利用して、レイク内のデータの内容と構造を迅速に把握することができます。
-- データ アナリストは、使い慣れた T-SQL 言語や、SQL オンデマンドに接続できるお気に入りのツールを使用して、データ サイエンティストまたはデータ エンジニアによって作成された[データと Spark テーブル](develop-storage-files-spark-tables.md)を探索できます。
+- データ アナリストは、使い慣れた T-SQL 言語や、SQL オンデマンドに接続できるお気に入りのツールを使用して、データ サイエンティストまたはデータ エンジニアによって作成された[データと Spark 外部テーブル](develop-storage-files-spark-tables.md)を探索できます。
 - BI プロフェッショナルは、レイク内のデータおよび Spark テーブルに基づいて [Power BI レポートをすばやく作成](tutorial-connect-power-bi-desktop.md)できます。
 
-## <a name="what-do-i-need-to-do-to-start-using-it"></a>使用を開始するために必要な作業
+## <a name="how-to-start-using-sql-on-demand"></a>SQL オンデマンドを使い始める方法
 
 SQL オンデマンド エンドポイントは、すべての Azure Synapse ワークスペース内で提供されます。 ワークスペースを作成し、使い慣れたツールを使用してすぐにデータのクエリ実行を開始できます。
 
@@ -53,7 +54,7 @@ SQL オンデマンド エンドポイントは、すべての Azure Synapse ワ
 
 SQL オンデマンドでは、既存の SQL アドホック クエリ実行およびビジネス インテリジェンス ツールをデータ レイクに利用できます。 使い慣れた T-SQL 構文を使えるため、SQL 製品との TDS 接続を確立できるツールであれば、[Synapse SQL オンデマンドに接続してクエリを実行](connect-overview.md)できます。 Azure Data Studio に接続してアドホック クエリを実行したり、Power BI に接続して数分で分析情報を得たりできます。
 
-## <a name="is-full-t-sql-supported"></a>T-SQL が完全にサポートされているか
+## <a name="t-sql-support"></a>T-SQL のサポート
 
 SQL オンデマンドでは T-SQL クエリの実行領域を提供します。これは、半構造化データと非構造化データのクエリ実行に関する機能に対応できるよう、いくつかの点でわずかに強化、拡張されています。 さらに、SQL オンデマンドの設計上の理由から、T-SQL 言語の一部の要素はサポートされていません。たとえば、DML 機能は現在サポートされていません。
 
@@ -88,21 +89,21 @@ SQL オンデマンドにはローカル ストレージがなく、メタデー
 
 SQL オンデマンドでは、データ レイク内のファイルに格納されているデータに対するインプレース クエリをスムーズに実行できるように、次の機能を追加して既存の [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 関数を拡張します。
 
-[複数のファイルまたはフォルダーに対するクエリの実行](develop-storage-files-overview.md#query-multiple-files-or-folders)
+[複数のファイルまたはフォルダーに対するクエリの実行](query-data-storage.md#query-multiple-files-or-folders)
 
-[PARQUET ファイル形式](develop-storage-files-overview.md#parquet-file-format)
+[PARQUET ファイル形式](query-data-storage.md#query-parquet-files)
 
-[区切りテキストを操作するための追加オプション (フィールド ターミネータ、行ターミネータ、エスケープ文字)](develop-storage-files-overview.md#additional-options-for-working-with-delimited-text)
+[区切りテキストを操作するための追加オプション (フィールド ターミネータ、行ターミネータ、エスケープ文字)](query-data-storage.md#query-csv-files)
 
-[選択した列のサブセットの読み取り](develop-storage-files-overview.md#read-a-chosen-subset-of-columns)
+[選択した列のサブセットの読み取り](query-data-storage.md#read-a-chosen-subset-of-columns)
 
-[スキーマ推論](develop-storage-files-overview.md#schema-inference)
+[スキーマ推論](query-data-storage.md#schema-inference)
 
-[filename 関数](develop-storage-files-overview.md#filename-function)
+[filename 関数](query-data-storage.md#filename-function)
 
-[filepath 関数](develop-storage-files-overview.md#filepath-function)
+[filepath 関数](query-data-storage.md#filepath-function)
 
-[複合型と入れ子または繰り返しのデータ構造の操作](develop-storage-files-overview.md#work-with-complex-types-and-nested-or-repeated-data-structures)
+[複合型と入れ子または繰り返しのデータ構造の操作](query-data-storage.md#work-with-complex-types-and-nested-or-repeated-data-structures)
 
 ## <a name="security"></a>Security
 
@@ -110,7 +111,7 @@ SQL オンデマンドには、データへのアクセスをセキュリティ�
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory との統合と多要素認証
 
-SQL オンデマンドでは、[Azure Active Directory との統合](../../sql-database/sql-database-Azure AD-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)によって、データベース ユーザーの ID とその他の Microsoft サービスを一元的に管理できます。 この機能は、アクセス許可の管理を簡略化し、セキュリティを強化します。 Azure Active Directory (Azure AD) では、[多要素認証](../../sql-database/sql-database-ssms-mfa-authentication-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA) をサポートしています。これにより、シングル サインオン プロセスをサポートすると同時に、データとアプリケーションのセキュリティが強化されます。
+SQL オンデマンドでは、[Azure Active Directory との統合](../../azure-sql/database/authentication-aad-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)によって、データベース ユーザーの ID とその他の Microsoft サービスを一元的に管理できます。 この機能は、アクセス許可の管理を簡略化し、セキュリティを強化します。 Azure Active Directory (Azure AD) では、[多要素認証](../../azure-sql/database/authentication-mfa-ssms-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA) をサポートしています。これにより、シングル サインオン プロセスをサポートすると同時に、データとアプリケーションのセキュリティが強化されます。
 
 #### <a name="authentication"></a>認証
 

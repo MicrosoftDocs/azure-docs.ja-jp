@@ -3,20 +3,20 @@ title: Azure Front Door - URL 書き換え | Microsoft Docs
 description: この記事では、Azure Front Door で構成されている場合に、ルートに対する URL 書き換えがどのように実行されるかについて説明します。
 services: front-door
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: 1e5bd565be7a1cabf08ddf33c65eb12b5294249f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: duau
+ms.openlocfilehash: 8f4a6283f762d9792f50651b9caee17795df6d55
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471474"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398939"
 ---
 # <a name="url-rewrite-custom-forwarding-path"></a>URL 書き換え (カスタム転送パス)
 Azure Front Door では、バックエンドに転送する要求を作成するときに使用するオプションの**カスタム転送パス**を構成できるようにすることで、URL 書き換えがサポートされています。 既定では、カスタム転送パスが指定されていない場合、Front Door により、転送された要求で使用される URL に受信 URL パスがコピーされます。 転送された要求で使用されるホスト ヘッダーは、選択されたバックエンド用に構成されています。 その機能と構成方法については、「[バックエンド ホスト ヘッダー](front-door-backend-pool.md#hostheader)」をご覧ください。
@@ -53,7 +53,7 @@ Azure Front Door では、バックエンドに転送する要求を作成する
 ## <a name="optional-settings"></a>オプション設定
 所定のルーティング規則設定に指定できる、追加のオプション設定もあります。
 
-* **[Cache Configuration]/(キャッシュ構成/)** - 無効になっているか、または指定されていない場合、このルーティング規則と一致する要求では、キャッシュされたコンテンツを使用しようとせず、代わりに常にバックエンドからフェッチします。 [Front Door でのキャッシュ](front-door-caching.md)に関する詳細をご覧ください。
+* **[Cache Configuration]\(キャッシュ構成\)** - 無効になっているか、または指定されていない場合、このルーティング規則と一致する要求では、キャッシュされたコンテンツを使用しようとせず、代わりに常にバックエンドからフェッチします。 [Front Door でのキャッシュ](front-door-caching.md)に関する詳細をご覧ください。
 
 
 

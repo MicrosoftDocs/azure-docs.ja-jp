@@ -8,18 +8,18 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/28/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a815446b79b3e5ec0a75e5d179953956643b16c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 92674ed9d39ea9e84d477d19aadbaeda6da6f32c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78206114"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84728267"
 ---
 # <a name="search-groups-and-members-preview-in-azure-active-directory"></a>Azure Active Directory でグループとメンバーを検索する (プレビュー)
 

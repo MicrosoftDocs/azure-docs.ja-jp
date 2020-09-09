@@ -1,18 +1,18 @@
 ---
 title: 概念 - ストレージ
-description: Azure VMware Solution (AVS) プレビューのプライベート クラウドの主なストレージ機能について説明します。
+description: Azure VMware Solution プレビューのプライベート クラウドの主なストレージ機能について説明します。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 7e58a829a40d590b7936a58ccdc866211a4f5cb4
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 91484c1baae9801684bc49b931fa2080db676a00
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82739783"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752220"
 ---
-# <a name="azure-vmware-solution-avs-preview-storage-concepts"></a>Azure VMware Solution (AVS) プレビューのストレージの概念
+# <a name="azure-vmware-solution-preview-storage-concepts"></a>Azure VMware Solution プレビューのストレージの概念
 
-AVS プライベート クラウドは、ネイティブのクラスター全体のストレージに VMware vSAN を提供します。 クラスター内の各ホストのローカル ストレージはすべて、vSAN データストアで使用されます。また、保存データの暗号化は既定で使用可能で、有効になっています。 Azure Storage のリソースを使用すると、プライベート クラウドのストレージ機能を拡張できます。
+Azure VMware Solution のプライベート クラウドは、ネイティブのクラスター全体のストレージに VMware vSAN を提供します。 クラスター内の各ホストのローカル ストレージはすべて、vSAN データストアで使用されます。また、保存データの暗号化は既定で使用可能で、有効になっています。 Azure Storage のリソースを使用すると、プライベート クラウドのストレージ機能を拡張できます。
 
 ## <a name="vsan-clusters"></a>vSAN クラスター
 
@@ -32,7 +32,7 @@ vSAN データストアでは、既定で保存データの暗号化が使用さ
 
 ## <a name="scaling"></a>Scaling
 
-ネイティブのクラスター ストレージ容量は、クラスターにホストを追加することでスケーリングされます。 HE ホストを使用するクラスターの場合、クラスター全体の生の容量は、ホストが追加されるごとに 15.4 TB ずつ増加します。 GP ホストを使用して構築されたクラスターでは、ホストが追加されるごとに生の容量が 7.7 TB ずつ増加します。 どちらの種類のクラスターでも、クラスターにホストを追加するには約 10 分かかります。 クラスターのスケーリング手順については、[プライベート クラウドのスケーリングに関するチュートリアル][tutorial-scale-private-cloud]を参照してください。
+ネイティブのクラスター ストレージ容量は、クラスターにホストを追加することでスケーリングされます。 HE ホストを使用するクラスターの場合、クラスター全体の生の容量は、ホストが追加されるごとに 15.4 TB ずつ増加します。 GP ホストを使用して構築されたクラスターでは、ホストが追加されるごとに生の容量が 7.7 TB ずつ増加します。 どちらの種類のクラスターでも、クラスターにホストを追加するには約 10 分かかります。 クラスターのスケーリング手順については、[プライベート クラウドのスケーリングに関するチュートリアル][tutorial-scale-private-cloud]のページを参照してください。
 
 ## <a name="azure-storage-integration"></a>Azure ストレージの統合
 
@@ -45,5 +45,5 @@ vSAN データストアでは、既定で保存データの暗号化が使用さ
 <!-- LINKS - external-->
 
 <!-- LINKS - internal -->
-[tutorials-scale-private-cloud]: ./tutorials-scale-private-cloud.md
+[tutorial-scale-private-cloud]: ./tutorial-scale-private-cloud.md
 [concepts-identity]: ./concepts-identity.md

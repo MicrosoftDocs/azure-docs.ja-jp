@@ -1,26 +1,29 @@
 ---
-title: SSPR と MFA のための統合された登録 - Azure Active Directory
-description: Azure AD Multi-Factor Authentication とセルフサービス パスワード リセットの登録
+title: SSPR と Azure Multi-Factor Authentication のための統合された登録 - Azure Active Directory
+description: ユーザーが Azure Multi-Factor Authentication とセルフサービス パスワード リセットの両方に登録できるようになる Azure Active Directory の統合された登録エクスペリエンスについて説明します。
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 07/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d4caaf8704f2ee49f8f094ad22065ae462154be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e4afc5e554e72fc2ab78173368930b2e5317bce7
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143919"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718919"
 ---
-# <a name="combined-security-information-registration-overview"></a>統合されたセキュリティ情報の登録の概要
+# <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Azure Active Directory での統合されたセキュリティ情報の登録の概要
 
 統合された登録の前、ユーザーは Azure Multi-Factor Authentication (MFA) とセルフサービス パスワード リセット (SSPR) の認証方法を別々に登録しました。 ユーザーは Multi-Factor Authentication と SSPR に同様の方法が使用されることに困惑しましたが、どちらの機能も登録する必要がありました。 現在では、統合された登録を使用することで、ユーザーは 1 回登録して Multi-Factor Authentication と SSPR の両方の利点を得ることができます。
+
+> [!NOTE]
+> 2020 年 8 月 15 日以降は、すべての新しい Azure AD テナントで、統合された登録が自動的に有効になります。
 
 この記事では、統合されたセキュリティ登録の概要について説明します。 統合されたセキュリティ登録の使用を開始するには、次の記事を参照してください。
 
@@ -29,16 +32,18 @@ ms.locfileid: "82143919"
 
 ![ユーザーの登録済みのセキュリティ情報を示しているマイ プロファイル](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
-新しいエクスペリエンスを有効にする前に、この管理者対象のドキュメントとユーザー対象のドキュメントを確認して、この機能とその影響を確実に理解するようにしてください。 [ユーザー ドキュメント](../user-help/user-help-security-info-overview.md)に基づいたトレーニングによってユーザーが新しいエクスペリエンスに対して準備できるようにし、ロールアウトの成功に役立ててください。
+新しいエクスペリエンスを有効にする前に、この管理者対象のドキュメントとユーザー対象のドキュメントを確認して、この機能とその影響を確実に理解するようにしてください。 [ユーザー ドキュメント](../user-help/security-info-setup-signin.md)に基づいたトレーニングによってユーザーが新しいエクスペリエンスに対して準備できるようにし、ロールアウトの成功に役立ててください。
 
 Azure AD の結合されたセキュリティ情報の登録は、Azure US Government、Azure Germany、Azure China 21Vianet などの各国のクラウドでは現在利用できません。
 
 > [!IMPORTANT]
-> 元のプレビューと拡張された統合された登録エクスペリエンスの両方に対して有効になっているユーザーには、新しいエクスペリエンスが表示されます。 両方のエクスペリエンスが有効になっているユーザーには、新しい [マイ プロファイル] エクスペリエンスのみが表示されます。 新しい [My Profile] (マイ プロファイル) は統合された登録の外観と統一されており、ユーザーにシームレスなエクスペリエンスを提供します。 ユーザーは、[https://myprofile.microsoft.com](https://myprofile.microsoft.com) に移動することによって [My Profile] (マイ プロファイル) を表示できます。
+> 元のプレビューと拡張版の両方の統合された登録エクスペリエンスが有効になっているユーザーには、新しい動作が示されます。 両方のエクスペリエンスが有効になっているユーザーには、新しい [マイ プロファイル] エクスペリエンスのみが表示されます。 新しい ”*マイ プロファイル*” は統合された登録の外観と統一されており、ユーザーにシームレスなエクスペリエンスを提供します。 ユーザーは、[https://myprofile.microsoft.com](https://myprofile.microsoft.com) に移動することによって [My Profile] (マイ プロファイル) を表示できます。
 >
-> セキュリティ情報オプションにアクセスしようとすると、エラー メッセージが表示される場合があります。 例: "申し訳ございません。サインインできませんでした"。 この場合は、サードパーティの Cookie をブロックする構成またはグループ ポリシー オブジェクトが Web ブラウザーに設定されていないことを確認します。
+> セキュリティ情報オプションにアクセスしようとすると、「申し訳ございません。サインインできませんでした」などのエラー メッセージが表示される場合があります。 サードパーティの Cookie をブロックする構成またはグループ ポリシー オブジェクトが Web ブラウザーに設定されていないことを確認します。
 
-[マイ プロファイル] ページは、そのページにアクセスしているコンピューターの言語設定に基づいてローカライズされます。 Microsoft は、ページへの以降のアクセスの試みが引き続き最後に使用された言語で描画されるように、利用された最新の言語をブラウザー キャッシュに格納します。 キャッシュをクリアすると、ページは再レンダリングされます。 強制的に特定の言語にする場合は、URL の末尾に `?lng=<language>` を追加することができます。`<language>` は、レンダリングする言語のコードです。
+”*マイ プロファイル*” ページは、そのページにアクセスしているコンピューターの言語設定に基づいてローカライズされます。 Microsoft は、ページへの以降のアクセスの試みが引き続き最後に使用された言語でレンダリングされるように、利用された最新の言語をブラウザー キャッシュに格納します。 キャッシュをクリアすると、ページは再レンダリングされます。
+
+強制的に特定の言語にする場合は、URL の末尾に `?lng=<language>` を追加することができます。`<language>` は、レンダリングする言語のコードです。
 
 ![SSPR またはその他のセキュリティ検証方法をセットアップする](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
 
@@ -46,7 +51,7 @@ Azure AD の結合されたセキュリティ情報の登録は、Azure US Gover
 
 統合された登録は、次の認証方法とアクションをサポートしています。
 
-|   | [登録] | Change | 削除 |
+| Method | [登録] | Change | 削除 |
 | --- | --- | --- | --- |
 | Microsoft Authenticator | はい (最大 5) | いいえ | はい |
 | その他の認証アプリ | はい (最大 5) | いいえ | はい |
@@ -84,24 +89,24 @@ Azure AD の結合されたセキュリティ情報の登録は、Azure US Gover
 
 統合された登録は、Multi-Factor Authentication と SSPR の両方のポリシーに従います (テナントで両方が有効になっている場合)。 これらのポリシーは、ユーザーがサインイン中に登録を中断されるかどうか、および登録にどの方法を使用できるかを制御します。
 
-ユーザーが自分のセキュリティ情報を登録または更新するよう求められる可能性があるいくつかのシナリオを次に示します。
+ユーザーが自分のセキュリティ情報を登録または更新するよう求められる可能性があるサンプル シナリオを次に示します。
 
-- Identity Protection によって Multi-Factor Authentication の登録が適用されている: ユーザーは、サインイン中に登録するよう求められます。 ユーザーは Multi-Factor Authentication 方法と SSPR 方法を登録します (ユーザーが SSPR に対して有効になっている場合)。
-- ユーザーごとの Multi-Factor Authentication によって Multi-Factor Authentication の登録が適用されている: ユーザーは、サインイン中に登録するよう求められます。 ユーザーは Multi-Factor Authentication 方法と SSPR 方法を登録します (ユーザーが SSPR に対して有効になっている場合)。
-- 条件付きアクセス ポリシーまたはその他のポリシーによって Multi-Factor Authentication の登録が適用されている: ユーザーは、Multi-Factor Authentication を必要とするリソースを使用するときに登録するよう求められます。 ユーザーは Multi-Factor Authentication 方法と SSPR 方法を登録します (ユーザーが SSPR に対して有効になっている場合)。
-- SSPR の登録が適用されている: ユーザーは、サインイン中に登録するよう求められます。 ユーザーは SSPR 方法のみを登録します。
-- SSPR の更新が適用されている: ユーザーは、管理者によって設定された間隔で自分のセキュリティ情報を確認する必要があります。ユーザーには自分の情報が表示され、現在の情報を確認するか、または必要に応じて変更を行うことができます。
+- *Identity Protection によって Multi-Factor Authentication の登録が強制されている:* ユーザーは、サインイン中に登録するよう求められます。 ユーザーは Multi-Factor Authentication 方法と SSPR 方法を登録します (ユーザーが SSPR に対して有効になっている場合)。
+- *ユーザーごとの Multi-Factor Authentication によって Multi-Factor Authentication の登録が強制されている:* ユーザーは、サインイン中に登録するよう求められます。 ユーザーは Multi-Factor Authentication 方法と SSPR 方法を登録します (ユーザーが SSPR に対して有効になっている場合)。
+- *条件付きアクセス ポリシーまたはその他のポリシーによって Multi-Factor Authentication の登録が強制されている:* ユーザーは、Multi-Factor Authentication を必要とするリソースを使用するときに登録するよう求められます。 ユーザーは Multi-Factor Authentication 方法と SSPR 方法を登録します (ユーザーが SSPR に対して有効になっている場合)。
+- *SSPR の登録が強制されている:* ユーザーは、サインイン中に登録するよう求められます。 ユーザーは SSPR 方法のみを登録します。
+- *SSPR の更新が強制されている:* ユーザーは、管理者によって設定された間隔で自分のセキュリティ情報を確認する必要があります。ユーザーには自分の情報が表示され、現在の情報を確認するか、または必要に応じて変更を行うことができます。
 
 登録が適用されると、ユーザーには、Multi-Factor Authentication と SSPR の両方のポリシーに準拠するために必要な最小数の方法が安全性の高い順に表示されます。
 
-次に例を示します。
+次のシナリオ例について考えてみます。
 
 - ユーザーが SSPR に対して有効になっています。 SSPR ポリシーはリセットするための 2 つの方法を必要とし、モバイル アプリ コード、電子メール、および電話を有効にしています。
-   - このユーザーは 2 つの方法を登録する必要があります。
-      - 既定では、ユーザーには認証アプリと電話が表示されます。
-      - ユーザーは、認証アプリまたは電話の代わりに電子メールを登録することを選択できます。
+- このユーザーは 2 つの方法を登録する必要があります。
+   - 既定では、ユーザーには認証アプリと電話が表示されます。
+   - ユーザーは、認証アプリまたは電話の代わりに電子メールを登録することを選択できます。
 
-このフローチャートは、サインイン中に登録を中断されたときにユーザーにどの方法が表示されるかを説明しています。
+次のフローチャートは、サインイン中に登録を中断されたときにユーザーにどの方法が表示されるかを示しています。
 
 ![結合されたセキュリティ情報のフローチャート](media/concept-registration-mfa-sspr-combined/combined-security-info-flow-chart.png)
 
@@ -125,7 +130,7 @@ SSPR ポリシーでユーザーが定期的に自分のセキュリティ情報
 
 管理者は登録を適用していません。
 
-必要なすべてのセキュリティ情報をまだ設定していないユーザーが [https://myprofile.microsoft.com](https://myprofile.microsoft.com) に移動します。 ユーザーは左側のウィンドウで **[セキュリティ情報]** を選択します。 そこから、ユーザーは方法を追加することを選択し、自分が使用できるいずれかの方法を選択した後、手順に従ってその方法を設定します。 完了すると、今設定された方法が [セキュリティ情報] ページに表示されます。
+必要なすべてのセキュリティ情報をまだ設定していないユーザーが [https://myprofile.microsoft.com](https://myprofile.microsoft.com) に移動します。 ユーザーは左側のウィンドウで **[セキュリティ情報]** を選択します。 そこから、ユーザーは方法を追加することを選択し、自分が使用できるいずれかの方法を選択した後、手順に従ってその方法を設定します。 完了すると、設定された方法が [セキュリティ情報] ページに表示されます。
 
 ### <a name="delete-security-info-from-my-profile"></a>[My Profile] (マイ プロファイル) からセキュリティ情報を削除する
 

@@ -15,16 +15,16 @@ ms.workload: infrastructure
 ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 25d911869c95baba6ac9db3b893292e702e9c0e9
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: ce13c3bce7cdeb0f3e6dcf1f731be22d93a65587
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273207"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654601"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための SAP ASE Azure Virtual Machines DBMS のデプロイ
 
-このドキュメントでは、Azure IaaS での SAP ASE をデプロイするときに考慮すべきいくつかの異なる領域について説明します。 このドキュメントの前提条件として、「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」ドキュメントと [Azure 上の SAP ワークロードに関するドキュメント](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)の中の他のガイドを読んでいる必要があります。 このドキュメントでは、Linux および Windows オペレーティング システムで実行されている SAP ASE について説明します。 Azure でサポートされている最小リリースは SAP ASE 16.0.02 (リリース 16 サポート パック 2) です。 最新バージョンの SAP と最新のパッチ レベルをデプロイすることをお勧めします。  SAP ASE 16.0.03.07 (リリース 16 サポート パック 3 パッチ レベル 7) 以降をお勧めします。  最新バージョンの SAP は、「[Targeted ASE 16.0 Release Schedule and CR list Information](https://wiki.scn.sap.com/wiki/display/SYBASE/Targeted+ASE+16.0+Release+Schedule+and+CR+list+Information)」 (対象の ASE 16.0 リリース スケジュールと CR リスト情報) にあります。
+このドキュメントでは、Azure IaaS での SAP ASE をデプロイするときに考慮すべきいくつかの異なる領域について説明します。 このドキュメントの前提条件として、「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」ドキュメントと [Azure 上の SAP ワークロードに関するドキュメント](./get-started.md)の中の他のガイドを読んでいる必要があります。 このドキュメントでは、Linux および Windows オペレーティング システムで実行されている SAP ASE について説明します。 Azure でサポートされている最小リリースは SAP ASE 16.0.02 (リリース 16 サポート パック 2) です。 最新バージョンの SAP と最新のパッチ レベルをデプロイすることをお勧めします。  SAP ASE 16.0.03.07 (リリース 16 サポート パック 3 パッチ レベル 7) 以降をお勧めします。  最新バージョンの SAP は、「[Targeted ASE 16.0 Release Schedule and CR list Information](https://wiki.scn.sap.com/wiki/display/SYBASE/Targeted+ASE+16.0+Release+Schedule+and+CR+list+Information)」 (対象の ASE 16.0 リリース スケジュールと CR リスト情報) にあります。
 
 SAP アプリケーションでサポートされるリリースやインストール メディアの場所に関する追加情報は、次の場所にある SAP 製品の可用性マトリックスにあります。
 
@@ -59,7 +59,7 @@ Linux VM では、プロファイル SAP-ASE Linux Huge Pages を使用した `s
 
 ## <a name="recommendations-on-vm-and-disk-structure-for-sap-ase-deployments"></a>SAP ASE デプロイのための VM とディスク構造に関する推奨事項
 
-SAP NetWeaver Applications 用の SAP ASE は、[SAP サポート ノート #1928533](https://launchpad.support.sap.com/#/notes/1928533) に記載されているすべての VM の種類でサポートされています。中規模の SAP ASE データベース サーバーに使用される一般的な VM の種類には、Esv3 が含まれています。  数テラバイトの大規模なデータベースでは、M シリーズの VM の種類を利用できます。 M シリーズの書き込みアクセラレータを有効にすると、SAP ASE のトランザクション ログのディスク書き込みパフォーマンスが向上する場合があります。 SAP ASE がログ書き込みを実行する方法により、SAP ASE で書き込みアクセラレータを慎重にテストする必要があります。  [SAP サポート ノート #2816580](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) を確認し、パフォーマンス テストを実行することを検討してください。  
+SAP NetWeaver Applications 用の SAP ASE は、[SAP サポート ノート #1928533](https://launchpad.support.sap.com/#/notes/1928533) に記載されているすべての VM の種類でサポートされています。中規模の SAP ASE データベース サーバーに使用される一般的な VM の種類には、Esv3 が含まれています。  数テラバイトの大規模なデータベースでは、M シリーズの VM の種類を利用できます。 M シリーズの書き込みアクセラレータを有効にすると、SAP ASE のトランザクション ログのディスク書き込みパフォーマンスが向上する場合があります。 SAP ASE がログ書き込みを実行する方法により、SAP ASE で書き込みアクセラレータを慎重にテストする必要があります。  [SAP サポート ノート #2816580](../../how-to-enable-write-accelerator.md) を確認し、パフォーマンス テストを実行することを検討してください。  
 書き込みアクセラレータは、トランザクション ログのディスク専用に設計されています。 ディスク レベルのキャッシュは "NONE" に設定する必要があります。 Azure 書き込みアクセラレータで他の DBMS と同様の機能強化が示されなくても、驚くことはありません。 SAP ASE がトランザクション ログに書き込む方法によっては、Azure 書き込みアクセラレータによる高速化がほとんどない場合があります。
 データ デバイス用とログ デバイス用に個別のディスクを使用することをお勧めします。  システム データベース sybsecurity と `saptools` には、専用のディスクは必要ありません。SAP データベースのデータとログ デバイスを含むディスクに配置できます。 
 
@@ -71,7 +71,7 @@ SAP ASE では、特に構成されていない限り、ディスク ストレ�
 「[Configuring Automatic Database Space Expansion in SAP Adaptive Server Enterprise](https://blogs.sap.com/2014/07/09/configuring-automatic-database-space-expansion-in-sap-adaptive-server-enterprise/)」 (SAP Adaptive Server Enterprise で Automatic Database Space Expansion を構成する) の記事および [SAP サポート ノート #1815695](https://launchpad.support.sap.com/#/notes/1815695) で説明されているように、Automatic Database Expansion を構成することをお勧めします。 
 
 ### <a name="sample-sap-ase-on-azure-virtual-machine-disk-and-file-system-configurations"></a>Azure 仮想マシン、ディスクおよびファイル システムでの SAP ASE のサンプル構成 
-以下のテンプレートは、Linux と Windows の両方のサンプル構成を示しています。 仮想マシンとディスクの構成を確認する前に、個々の VM のネットワークとストレージの帯域幅クォータがビジネス要件を満たすのに十分であることを確認してください。 また、Azure VM の種類によって、VM に接続できるディスクの最大数が異なることにも留意してください。 たとえば、E4s_v3 の VM には、48 MB/秒のストレージ IO スループットの制限があります。 データベース バックアップ アクティビティで 48 MB/秒を超えるストレージ スループットが必要な場合は、より多くのストレージ帯域幅スループットを持つより大きい VM の種類を使用することは避けられません。 Azure ストレージを構成する場合は、特に [Azure Premium ストレージ](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance)では、容量の GB あたりのスループットと IOPS が変化することにも留意する必要があります。 このトピックについて詳しくは、「[Azure で利用できるディスクの種類](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types)」の記事を参照してください。 Azure VM の特定の種類のクォータについては、「[メモリ最適化済み仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/sizes-memory)」の記事と、それにリンクされている記事に記載されています。 
+以下のテンプレートは、Linux と Windows の両方のサンプル構成を示しています。 仮想マシンとディスクの構成を確認する前に、個々の VM のネットワークとストレージの帯域幅クォータがビジネス要件を満たすのに十分であることを確認してください。 また、Azure VM の種類によって、VM に接続できるディスクの最大数が異なることにも留意してください。 たとえば、E4s_v3 の VM には、48 MB/秒のストレージ IO スループットの制限があります。 データベース バックアップ アクティビティで 48 MB/秒を超えるストレージ スループットが必要な場合は、より多くのストレージ帯域幅スループットを持つより大きい VM の種類を使用することは避けられません。 Azure ストレージを構成する場合は、特に [Azure Premium ストレージ](../../windows/premium-storage-performance.md)では、容量の GB あたりのスループットと IOPS が変化することにも留意する必要があります。 このトピックについて詳しくは、「[Azure で利用できるディスクの種類](../../disks-types.md)」の記事を参照してください。 Azure VM の特定の種類のクォータについては、「[メモリ最適化済み仮想マシンのサイズ](../../sizes-memory.md)」の記事と、それにリンクされている記事に記載されています。 
 
 > [!NOTE]
 >  DBMS システムがオンプレミスから Azure に移行されている場合は、VM での監視を実行し、CPU、メモリ、IOPS、およびストレージのスループットを評価することをお勧めします。 観察されたピーク時の値を、前述の記事に記載されている VM クォータの制限と比較します。
@@ -213,7 +213,7 @@ SAP Software Provisioning Manager (SWPM) には、インストール時にデー
 - 非常に大規模なシステムには UltraDisk の使用を検討する 
 - Linux OS で SAP-ASE `saptune` を実行する 
 - DB 暗号化を使用してデータベースをセキュリティで保護する。キーは Azure Key Vault に手動で格納する 
-- [SAP on Azure チェックリスト](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)を完成させる 
+- [SAP on Azure チェックリスト](./sap-deployment-checklist.md)を完成させる 
 - ログ バックアップと完全バックアップを構成する 
 - HA/DR のテスト、バックアップと復元、ストレスとボリューム テストを実行する 
 - データベースの自動拡張が機能していることを確認する 
@@ -310,5 +310,4 @@ SAP ASE の DBA Cockpit に関する詳細については、次の SAP Note で�
 
 
 ## <a name="next-steps"></a>次のステップ
-「[Azure での SAP ワークロード: 計画とデプロイに関するチェックリスト](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)」の記事を確認します。
-
+「[Azure での SAP ワークロード: 計画とデプロイに関するチェックリスト](./sap-deployment-checklist.md)」の記事を確認します。

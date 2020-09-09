@@ -1,6 +1,6 @@
 ---
-title: Azure portal、Azure PowerShell、Azure CLI または REST API を使用して、Azure RBAC のロールの定義を一覧表示する | Microsoft Docs
-description: Azure portal、Azure PowerShell、Azure CLI または REST API を使用して、Azure RBAC のビルトイン ロールとカスタム ロールを一覧表示する方法について説明します。
+title: Azure ロールの定義を一覧表示する - Azure RBAC
+description: Azure portal、Azure PowerShell、Azure CLI、または REST API を使用して、Azure の組み込みロールとカスタム ロールを一覧表示する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -8,22 +8,22 @@ manager: mtillman
 ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/19/2020
+ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: aa888eedc81ceb3188f801e273c70722207bf512
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9819b90ba390e8601cc33a17338ce9b16bf3b3cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062982"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84982494"
 ---
-# <a name="list-role-definitions-in-azure-rbac"></a>Azure AD のロールの定義の一覧表示
+# <a name="list-azure-role-definitions"></a>Azure ロールの定義を一覧表示する
 
-ロールの定義は、読み取り、書き込み、削除などの実行できるアクセス許可のコレクションです。 通常は単に "ロール" と呼ばれます。 [Azure のロールベースのアクセス制御 (RBAC)](overview.md) には、120 を超える[組み込みロール](built-in-roles.md)があります。また、独自のカスタム ロールを作成することもできます。 この記事では、Azure リソースへのアクセスを許可するために使用できる組み込みロールとカスタム ロールの一覧を表示する方法について説明します。
+ロールの定義は、読み取り、書き込み、削除などの実行できるアクセス許可のコレクションです。 通常は単に "ロール" と呼ばれます。 [Azure ロールベースのアクセス制御 (Azure RBAC)](overview.md) には、120 個を超える[組み込みロール](built-in-roles.md)があります。また、独自のカスタム ロールを作成することもできます。 この記事では、Azure リソースへのアクセスを許可するために使用できる組み込みロールとカスタム ロールの一覧を表示する方法について説明します。
 
 Azure Active Directory の管理者ロールを一覧表示するには、「[Azure Active Directory での管理者ロールのアクセス許可](../active-directory/users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
 
@@ -175,50 +175,56 @@ az role definition list
 次の例では、使用可能なすべてのロール定義の名前と説明を一覧表示します。
 
 ```azurecli
-az role definition list --output json | jq '.[] | {"roleName":.roleName, "description":.description}'
+az role definition list --output json --query '[].{roleName:roleName, description:description}'
 ```
 
-```Output
-{
-  "roleName": "API Management Service Contributor",
-  "description": "Can manage service and the APIs"
-}
-{
-  "roleName": "API Management Service Operator Role",
-  "description": "Can manage service but not the APIs"
-}
-{
-  "roleName": "API Management Service Reader Role",
-  "description": "Read-only access to service and APIs"
-}
+```json
+[
+  {
+    "description": "Can manage service and the APIs",
+    "roleName": "API Management Service Contributor"
+  },
+  {
+    "description": "Can manage service but not the APIs",
+    "roleName": "API Management Service Operator Role"
+  },
+  {
+    "description": "Read-only access to service and APIs",
+    "roleName": "API Management Service Reader Role"
+  },
 
-...
+  ...
+
+]
 ```
 
 次の例では、すべての組み込みのロールを一覧表示します。
 
 ```azurecli
-az role definition list --custom-role-only false --output json | jq '.[] | {"roleName":.roleName, "description":.description, "roleType":.roleType}'
+az role definition list --custom-role-only false --output json --query '[].{roleName:roleName, description:description, roleType:roleType}'
 ```
 
-```Output
-{
-  "roleName": "API Management Service Contributor",
-  "description": "Can manage service and the APIs",
-  "roleType": "BuiltInRole"
-}
-{
-  "roleName": "API Management Service Operator Role",
-  "description": "Can manage service but not the APIs",
-  "roleType": "BuiltInRole"
-}
-{
-  "roleName": "API Management Service Reader Role",
-  "description": "Read-only access to service and APIs",
-  "roleType": "BuiltInRole"
-}
+```json
+[
+  {
+    "description": "Can manage service and the APIs",
+    "roleName": "API Management Service Contributor",
+    "roleType": "BuiltInRole"
+  },
+  {
+    "description": "Can manage service but not the APIs",
+    "roleName": "API Management Service Operator Role",
+    "roleType": "BuiltInRole"
+  },
+  {
+    "description": "Read-only access to service and APIs",
+    "roleName": "API Management Service Reader Role",
+    "roleType": "BuiltInRole"
+  },
+  
+  ...
 
-...
+]
 ```
 
 ### <a name="list-a-role-definition"></a>ロール定義を一覧表示する
@@ -226,7 +232,7 @@ az role definition list --custom-role-only false --output json | jq '.[] | {"rol
 ロールの詳細を一覧表示するには、[az role definition list](/cli/azure/role/definition#az-role-definition-list) を使用します。
 
 ```azurecli
-az role definition list --name <role_name>
+az role definition list --name {roleName}
 ```
 
 次の例では、"*共同作成者*" ロール定義を一覧表示します。
@@ -235,27 +241,27 @@ az role definition list --name <role_name>
 az role definition list --name "Contributor"
 ```
 
-```Output
+```json
 [
   {
-    "additionalProperties": {},
     "assignableScopes": [
       "/"
     ],
     "description": "Lets you manage everything except access to resources.",
-    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
+    "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
     "name": "b24988ac-6180-42a0-ab88-20f7382dd24c",
     "permissions": [
       {
         "actions": [
           "*"
         ],
-        "additionalProperties": {},
         "dataActions": [],
         "notActions": [
           "Microsoft.Authorization/*/Delete",
           "Microsoft.Authorization/*/Write",
-          "Microsoft.Authorization/elevateAccess/Action"
+          "Microsoft.Authorization/elevateAccess/Action",
+          "Microsoft.Blueprint/blueprintAssignments/write",
+          "Microsoft.Blueprint/blueprintAssignments/delete"
         ],
         "notDataActions": []
       }
@@ -272,43 +278,54 @@ az role definition list --name "Contributor"
 次の例では、"*共同作成者*" ロールの *actions* および *notActions* を一覧表示します。
 
 ```azurecli
-az role definition list --name "Contributor" --output json | jq '.[] | {"actions":.permissions[0].actions, "notActions":.permissions[0].notActions}'
+az role definition list --name "Contributor" --output json --query '[].{actions:permissions[0].actions, notActions:permissions[0].notActions}'
 ```
 
-```Output
-{
-  "actions": [
-    "*"
-  ],
-  "notActions": [
-    "Microsoft.Authorization/*/Delete",
-    "Microsoft.Authorization/*/Write",
-    "Microsoft.Authorization/elevateAccess/Action"
-  ]
-}
+```json
+[
+  {
+    "actions": [
+      "*"
+    ],
+    "notActions": [
+      "Microsoft.Authorization/*/Delete",
+      "Microsoft.Authorization/*/Write",
+      "Microsoft.Authorization/elevateAccess/Action",
+      "Microsoft.Blueprint/blueprintAssignments/write",
+      "Microsoft.Blueprint/blueprintAssignments/delete"
+    ]
+  }
+]
 ```
 
 次の例では、"*仮想マシンの共同作成者*" ロールの動作を一覧表示します。
 
 ```azurecli
-az role definition list --name "Virtual Machine Contributor" --output json | jq '.[] | .permissions[0].actions'
+az role definition list --name "Virtual Machine Contributor" --output json --query '[].permissions[0].actions'
 ```
 
-```Output
+```json
 [
-  "Microsoft.Authorization/*/read",
-  "Microsoft.Compute/availabilitySets/*",
-  "Microsoft.Compute/locations/*",
-  "Microsoft.Compute/virtualMachines/*",
-  "Microsoft.Compute/virtualMachineScaleSets/*",
-  "Microsoft.Insights/alertRules/*",
-  "Microsoft.Network/applicationGateways/backendAddressPools/join/action",
-  "Microsoft.Network/loadBalancers/backendAddressPools/join/action",
+  [
+    "Microsoft.Authorization/*/read",
+    "Microsoft.Compute/availabilitySets/*",
+    "Microsoft.Compute/locations/*",
+    "Microsoft.Compute/virtualMachines/*",
+    "Microsoft.Compute/virtualMachineScaleSets/*",
+    "Microsoft.Compute/disks/write",
+    "Microsoft.Compute/disks/read",
+    "Microsoft.Compute/disks/delete",
+    "Microsoft.DevTestLab/schedules/*",
+    "Microsoft.Insights/alertRules/*",
+    "Microsoft.Network/applicationGateways/backendAddressPools/join/action",
+    "Microsoft.Network/loadBalancers/backendAddressPools/join/action",
 
-  ...
+    ...
 
-  "Microsoft.Storage/storageAccounts/listKeys/action",
-  "Microsoft.Storage/storageAccounts/read"
+    "Microsoft.Storage/storageAccounts/listKeys/action",
+    "Microsoft.Storage/storageAccounts/read",
+    "Microsoft.Support/*"
+  ]
 ]
 ```
 
@@ -344,6 +361,55 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
     > | `$filter=atScopeAndBelow()` | 指定されたスコープとすべてのサブ スコープのロールの定義を一覧表示します。 |
     > | `$filter=type+eq+'{type}'` | 指定されたタイプのロール定義を一覧表示します。 ロールのタイプは、`CustomRole` または `BuiltInRole` です。 |
 
+次の要求は、サブスクリプション スコープのカスタム ロール定義を一覧表示します。
+
+```http
+GET https://management.azure.com/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter=type+eq+'CustomRole'
+```
+
+出力例を次に示します。
+
+```json
+{
+    "value": [
+        {
+            "properties": {
+                "roleName": "Billing Reader Plus",
+                "type": "CustomRole",
+                "description": "Read billing data and download invoices",
+                "assignableScopes": [
+                    "/subscriptions/{subscriptionId1}"
+                ],
+                "permissions": [
+                    {
+                        "actions": [
+                            "Microsoft.Authorization/*/read",
+                            "Microsoft.Billing/*/read",
+                            "Microsoft.Commerce/*/read",
+                            "Microsoft.Consumption/*/read",
+                            "Microsoft.Management/managementGroups/read",
+                            "Microsoft.CostManagement/*/read",
+                            "Microsoft.Billing/invoices/download/action",
+                            "Microsoft.CostManagement/exports/*"
+                        ],
+                        "notActions": [
+                            "Microsoft.CostManagement/exports/delete"
+                        ]
+                    }
+                ],
+                "createdOn": "2020-02-21T04:49:13.7679452Z",
+                "updatedOn": "2020-02-21T04:49:13.7679452Z",
+                "createdBy": "{createdByObjectId1}",
+                "updatedBy": "{updatedByObjectId1}"
+            },
+            "id": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId1}",
+            "type": "Microsoft.Authorization/roleDefinitions",
+            "name": "{roleDefinitionId1}"
+        }
+    ]
+}
+```
+
 ### <a name="list-a-role-definition"></a>ロール定義を一覧表示する
 
 特定のロールの詳細を一覧表示するには、[ロールの定義 - 取得](/rest/api/authorization/roledefinitions/get)または[ロールの定義 - ID で取得](/rest/api/authorization/roledefinitions/getbyid) REST API を使用します。
@@ -372,9 +438,45 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
      
 1. *{roleDefinitionId}* を、ロールの定義の識別子に置き換えます。
 
+次の要求は、[閲覧者](built-in-roles.md#reader)ロール定義を一覧表示します。
+
+```http
+GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7?api-version=2015-07-01
+```
+
+出力例を次に示します。
+
+```json
+{
+    "properties": {
+        "roleName": "Reader",
+        "type": "BuiltInRole",
+        "description": "Lets you view everything, but not make any changes.",
+        "assignableScopes": [
+            "/"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "*/read"
+                ],
+                "notActions": []
+            }
+        ],
+        "createdOn": "2015-02-02T21:55:09.8806423Z",
+        "updatedOn": "2019-02-05T21:24:35.7424745Z",
+        "createdBy": null,
+        "updatedBy": null
+    },
+    "id": "/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7",
+    "type": "Microsoft.Authorization/roleDefinitions",
+    "name": "acdd72a7-3385-48ef-bd42-f606fba81ae7"
+}
+```
+
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure リソースの組み込みロール](built-in-roles.md)
-- [Azure リソースのカスタム ロール](custom-roles.md)
-- [Azure RBAC と Azure portal を使用してロールの割り当てを一覧表示する](role-assignments-list-portal.md)
-- [Azure RBAC と Azure Portal を使用してロールの割り当てを追加または削除する](role-assignments-portal.md)
+- [Azure 組み込みロール](built-in-roles.md)
+- [Azure カスタム ロール](custom-roles.md)
+- [Azure portal を使用して Azure ロールの割り当てを一覧表示する](role-assignments-list-portal.md)
+- [Azure portal を使用して Azure ロールの割り当てを追加または削除する](role-assignments-portal.md)

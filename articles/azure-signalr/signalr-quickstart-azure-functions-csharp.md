@@ -5,14 +5,15 @@ author: sffamily
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
+ms.custom: devx-track-csharp
 ms.date: 03/04/2019
 ms.author: zhshang
-ms.openlocfilehash: 75d9977546c2a085765310a5654897f739a271ae
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 54a4c9374c064073620f2679e7c7511e30c45de6
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "65595397"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050643"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-c"></a>クイック スタート:C\# を使用した Azure Functions と SignalR Service によるチャット ルームの作成
 
@@ -26,13 +27,21 @@ Visual Studio 2019 をまだインストールしていない場合は、**無�
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qscsharp)
+
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
 Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサインインします。
 
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qscsharp)
+
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qscsharp)
+
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
+
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qscsharp)
 
 ## <a name="configure-and-run-the-azure-function-app"></a>Azure Function アプリを構成して実行する
 
@@ -66,10 +75,15 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
         ```bash
         func start
         ```
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qscsharp)
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qscsharp)
+
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
+
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qscsharp)
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -77,3 +91,5 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 
 > [!div class="nextstepaction"]
 > [Visual Studio を使用する Azure Functions の開発](../azure-functions/functions-develop-vs.md)
+
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qscsharp)

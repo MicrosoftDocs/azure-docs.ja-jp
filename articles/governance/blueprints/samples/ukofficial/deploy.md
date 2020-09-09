@@ -1,14 +1,14 @@
 ---
 title: UK OFFICIAL および UK NHS ブループリント サンプルをデプロイする
 description: ブループリント アーティファクトのパラメーターの詳細を含む、UK OFFICIAL および UK NHS のブループリント サンプルのデプロイ手順。
-ms.date: 05/08/2020
+ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 7fa78eab463c9a3202b2ec08e1952e275e51b20d
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: a4512eb982943664afc8217c5332e5e3b6e62fc1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005597"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521447"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK OFFICIAL および UK NHS のブループリント サンプルのデプロイ
 
@@ -93,7 +93,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 アーティファクト名|アーティファクトの種類|パラメーター名|説明|
 |-|-|-|-|
-|UK OFFICIAL または UK NHS のブループリント イニシアチブ|ポリシー割り当て |診断ログを監査するリソースの種類 (ポリシー: UK OFFICIAL または UK NHS のブループリント イニシアチブ) |診断ログ設定が有効になっていない場合に監査するリソースの種類の一覧。  指定できる値については、「[Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ](../../../../azure-monitor/platform/diagnostic-logs-schema.md)」をご覧ください。 |
+|UK OFFICIAL または UK NHS のブループリント イニシアチブ|ポリシー割り当て |診断ログを監査するリソースの種類 (ポリシー: UK OFFICIAL または UK NHS のブループリント イニシアチブ) |診断ログ設定が有効になっていない場合に監査するリソースの種類の一覧。  指定できる値については、「[Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ](../../../../azure-monitor/platform/resource-logs-schema.md)」をご覧ください。 |
 |\[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ |ポリシー割り当て |省略可能:スコープに追加するため、サポートされている Linux OS を持つ VM イメージの一覧 (ポリシー: \[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ) |(省略可能) 既定値は "_なし_" です。 詳細については、「[Azure ポータルで Log Analytics ワークスペースを作成する](../../../../azure-monitor/learn/quick-create-workspace.md)」を参照してください。 |
 |\[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ |ポリシー割り当て |省略可能:スコープに追加するため、サポートされている Windows OS を持つ VM イメージの一覧 (ポリシー: \[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ) |(省略可能) 既定値は "_なし_" です。 詳細については、「[Azure ポータルで Log Analytics ワークスペースを作成する](../../../../azure-monitor/learn/quick-create-workspace.md)」を参照してください。 |
 

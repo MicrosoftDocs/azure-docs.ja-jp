@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: d74e28ce470c23bbc8ee2081532a198c260ccea5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 08e971e52f994ec5fa5663708fa9f173daf33d80
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74706362"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135401"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Azure Site Recovery を使用して多層 SharePoint アプリケーションのディザスター リカバリーを設定する
 
@@ -38,8 +38,8 @@ Microsoft SharePoint は、グループあるいは部署が情報を整理、�
 
 開始する前に、以下を理解していることを確認してください。
 
-1. [Azure への仮想マシンのレプリケート](site-recovery-vmware-to-azure.md)
-2. [復旧ネットワークの設計](site-recovery-network-design.md)方法
+1. [Azure への仮想マシンのレプリケート](./vmware-azure-tutorial.md)
+2. [復旧ネットワークの設計](./concepts-on-premises-to-azure-networking.md)方法
 3. [Azure へのテスト フェールオーバーの実行](site-recovery-test-failover-to-azure.md)
 4. [Azure へのフェールオーバーの実行](site-recovery-failover.md)
 5. [ドメイン コントローラーのレプリケート](site-recovery-active-directory.md)方法
@@ -47,7 +47,7 @@ Microsoft SharePoint は、グループあるいは部署が情報を整理、�
 
 ## <a name="sharepoint-architecture"></a>SharePoint のアーキテクチャ
 
-SharePoint は階層型トポロジーとサーバー ロールを使用して 1 つまたは複数のサーバーにデプロイすることで、特定の目標や目的に合ったファーム デザインを実現できます。 多数の同時ユーザー、大量のコンテンツ項目をサポートしている通常の大規模で高デマンドの SharePoint サーバー ファームは、そのスケーラビービリティ戦略の一環としてサービスのグループ化を利用します。 このアプローチでは、サービスを専用のサーバー上で実行します。それらサービスはグループにまとめられ、専用のサーバーが 1 つのグループとしてスケールアウトされます。 下記のトポロジは、3 層 SharePoint サーバー ファームに対するサービスとサーバーのグループ化を表しています。 さまざまな SharePoint トポロジについての詳細な指針については、SharePoint のマニュアルおよび製品系列のアーキテクチャを参照してください。 [本書](https://technet.microsoft.com/library/cc303422.aspx)でも、SharePoint 2013 のデプロイに関する詳細を説明しています。
+SharePoint は階層型トポロジーとサーバー ロールを使用して 1 つまたは複数のサーバーにデプロイすることで、特定の目標や目的に合ったファーム デザインを実現できます。 多数の同時ユーザー、大量のコンテンツ項目をサポートしている通常の大規模で高デマンドの SharePoint サーバー ファームは、そのスケーラビービリティ戦略の一環としてサービスのグループ化を利用します。 このアプローチでは、サービスを専用のサーバー上で実行します。それらサービスはグループにまとめられ、専用のサーバーが 1 つのグループとしてスケールアウトされます。 下記のトポロジは、3 層 SharePoint サーバー ファームに対するサービスとサーバーのグループ化を表しています。 さまざまな SharePoint トポロジについての詳細な指針については、SharePoint のマニュアルおよび製品系列のアーキテクチャを参照してください。 [本書](/SharePoint/sharepoint-server)でも、SharePoint 2013 のデプロイに関する詳細を説明しています。
 
 
 
@@ -74,7 +74,7 @@ Site Recovery はアプリケーションに依存しないため、サポート
 
 ## <a name="replicating-virtual-machines"></a>仮想マシンをレプリケートする
 
-[このガイダンス](site-recovery-vmware-to-azure.md)に従うことで、Azure に全仮想マシンをレプリケートすることができます。
+[このガイダンス](./vmware-azure-tutorial.md)に従うことで、Azure に全仮想マシンをレプリケートすることができます。
 
 * レプリケーションが完了したら、必ず、各階層の各仮想マシンに移動し、[Replicated item > Settings > Properties > Compute and Network] で同じ可用性セットを選択してください。 たとえば Web 階層に 3 台の仮想マシンがある場合は、必ず、その 3 台の仮想マシンのすべてが Azure の同じ可用性セットのメンバーになるように設定します。
 
@@ -99,7 +99,7 @@ Site Recovery はアプリケーションに依存しないため、サポート
 
 ### <a name="dns-and-traffic-routing"></a>DNS とトラフィックのルーティング
 
-インターネットに面しているサイトの場合は、Azure サブスクリプションで[[Priority] 型の Traffic Manager](../traffic-manager/traffic-manager-create-profile.md) プロファイルを作成します。 そして、次の方法で DNS と Traffic Managerプロファイル の設定をします。
+インターネットに面しているサイトの場合は、Azure サブスクリプションで[[Priority] 型の Traffic Manager](../traffic-manager/quickstart-create-traffic-manager-profile.md) プロファイルを作成します。 そして、次の方法で DNS と Traffic Managerプロファイル の設定をします。
 
 
 | **Where** | **ソース** | **移行先**|
@@ -163,7 +163,7 @@ Traffic Manager がフェールオーバー後に可用性ポストを自動的�
     * この手順では、重大イベントの前に Search Service Application のバックアップを実施済みで､かつそのバックアップが障害復旧サイトに存在していると仮定しています。
     * バックアップは､そのスケジュールを設定し (たとえば 1 日に 1 回)､コピー手順を使って DR サイトにバックアップを置くようにすることで簡単に行うことができます｡ コピー手順には､AzCopy (Azure Copy) などのスクリプト形式のプログラムや､DFSR (Distributed File Services Replication) の設定などを含めることができます｡
     * SharePoint ファームが稼働していますから､Central Administration に移動し､ [バックアップと復元] から [復元] を選択します｡ 復元では､指定していたバックアップ先の問い合わせがあります (値の更新が必要になることがあります)｡ 復元する Search Service Application のバックアップを選択します｡
-    * アプリケーションが復元されます｡ 復元では､同じトポロジ (サーバーが同数)で､それらサーバーに同じハードディスクドライブ文字が割り当てられていると想定していることに留意してください｡ 詳細は､[SharePoint 2013](https://technet.microsoft.com/library/ee748654.aspx) ドキュメントの｢Restore Search service application｣を参照してください｡
+    * アプリケーションが復元されます｡ 復元では､同じトポロジ (サーバーが同数)で､それらサーバーに同じハードディスクドライブ文字が割り当てられていると想定していることに留意してください｡ 詳細は､[SharePoint 2013](/SharePoint/administration/restore-a-search-service-application) ドキュメントの｢Restore Search service application｣を参照してください｡
 
 
 6. 新しい Search Service Application を使って開始する場合は､以下の手順に従います｡

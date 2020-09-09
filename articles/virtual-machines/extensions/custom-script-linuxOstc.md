@@ -1,5 +1,5 @@
 ---
-title: Azure で Linux VM のカスタム スクリプトを実行する
+title: Azure の Linux VM でカスタム スクリプト拡張機能バージョン 1 (非推奨) を実行する
 description: カスタム スクリプト拡張機能 v1 を使用して Linux VM 構成タスクを自動化します
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
-ms.openlocfilehash: 1ca20f2c8cda84c241391f67ac542faa4a1f5ecd
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 1fe915fd58f60e4ad5b1e28b51911678ef2f866c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594714"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085709"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Linux 仮想マシンで Azure カスタム スクリプト拡張機能 v1 を使用する
 

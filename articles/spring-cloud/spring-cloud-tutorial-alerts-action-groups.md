@@ -6,14 +6,15 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
-ms.openlocfilehash: cf7e075244a83190b83e629ef300a4903b114a6d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-java
+ms.openlocfilehash: 856bace0c67c5afedd6305158326af46037e7f21
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77920078"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299229"
 ---
-# <a name="tutorial-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>チュートリアル:アラートとアクション グループを使用して Spring Cloud のリソースを監視する
+# <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>チュートリアル:アラートとアクション グループを使用して Spring Cloud のリソースを監視する方法
 
 Azure Spring Cloud のアラートは、使用可能なストレージ、要求の速度、データ使用状況などの条件に基づくリソースの監視をサポートします。 速度や条件が定義済みの仕様を満たしたときにアラートから通知が送信されます。
 
@@ -22,12 +23,9 @@ Azure Spring Cloud のアラートは、使用可能なストレージ、要求�
 2. アラート ルールを設定します。 これらのルールによってメトリックのパターンが、ターゲット リソース、メトリック、条件、累計時間などに基づいてアクション グループにバインドされます。
 
 ## <a name="prerequisites"></a>前提条件
-Azure Spring の要件に加え、このチュートリアルでは、次のリソースを利用します。
 
-* デプロイされた Azure Spring Cloud インスタンス。  [クイックスタート](spring-cloud-quickstart-launch-app-cli.md)に従って始めてください。
+このチュートリアルの手順では、Azure Spring の要件に加え、デプロイされた Azure Spring Cloud インスタンスが必要となります。  [クイックスタート](spring-cloud-quickstart.md)に従って始めてください。
 
-* 監視する Azure リソース。 この例では、Spring Cloud インスタンスを監視します。
- 
 以降の手順では、Spring Cloud インスタンスの左側のナビゲーション ペインにある **[アラート]** オプションから **[アクション グループ]** と **[アラート]** の両方を初期化します (この手順は、Azure portal の **[Monitor Overview]\(監視の概要\)** ページから開始することもできます)。 
 
 リソース グループから自分の Spring Cloud インスタンスに移動します。 左側のペインで **[アラート]** を選択し、 **[アクションの管理]** を選択します。
@@ -78,11 +76,11 @@ Azure Spring の要件に加え、このチュートリアルでは、次のリ�
 
 1. 条件を選択します。 この例では、**システムの CPU 使用率**を使用します。
 
-   ![ポータルの [新しいアラート ルール] のスクリーンショット](media/alerts-action-groups/alerts-3-1.png)
+   ![ポータルの [新しいアラート ルール] のスクリーンショット 2](media/alerts-action-groups/alerts-3-1.png)
 
 1. **[シグナル ロジックの構成]** ペインを下にスクロールして、監視する**しきい値**を設定します。
 
-   ![ポータルの [新しいアラート ルール] のスクリーンショット](media/alerts-action-groups/alerts-3-2.png)
+   ![ポータルの [新しいアラート ルール] のスクリーンショット 3](media/alerts-action-groups/alerts-3-2.png)
 
 1. **[Done]** をクリックします。
 
@@ -90,7 +88,7 @@ Azure Spring の要件に加え、このチュートリアルでは、次のリ�
 
  **[アクション]** で、 **[アクション グループの選択]** をクリックします。 **[アクション]** ペインで、先ほど定義した**アクション グループ**を選択します。
 
-   ![ポータルの [新しいアラート ルール] のスクリーンショット](media/alerts-action-groups/alerts-3-3.png) 
+   ![ポータルの [新しいアラート ルール] のスクリーンショット 4](media/alerts-action-groups/alerts-3-3.png) 
 
 1. 下にスクロールし、 **[アラートの詳細]** で、アラート ルールに名前を付けます。
 
@@ -98,18 +96,22 @@ Azure Spring の要件に加え、このチュートリアルでは、次のリ�
 
 1. **[アラート ルールの作成]** をクリックします。
 
-   ![ポータルの [新しいアラート ルール] のスクリーンショット](media/alerts-action-groups/alerts-3-4.png)
+   ![ポータルの [新しいアラート ルール] のスクリーンショット 5](media/alerts-action-groups/alerts-3-4.png)
 
 新しいアラート ルールが有効になっていることを確認します。
 
-   ![ポータルの [新しいアラート ルール] のスクリーンショット](media/alerts-action-groups/alerts-4.png)
+   ![ポータルの [新しいアラート ルール] のスクリーンショット 6](media/alerts-action-groups/alerts-4.png)
 
 **[Metrics]\(メトリック\)** ページを使用してルールを作成することもできます。
 
-   ![ポータルの [新しいアラート ルール] のスクリーンショット](media/alerts-action-groups/alerts-5.png)
+   ![ポータルの [新しいアラート ルール] のスクリーンショット 7](media/alerts-action-groups/alerts-5.png)
 
 ## <a name="next-steps"></a>次のステップ
-* [ユーザー ポータルのメトリック オプション](spring-cloud-concept-metrics.md#user-metrics-options)
-* [Azure portal でのアクション グループの作成および管理](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
-* [アクション グループの SMS アラート動作](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)
-* [チュートリアル:Azure Spring Cloud で分散トレースを使用する](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)
+
+このチュートリアルでは、Azure Spring Cloud アプリケーションのアラートとアクション グループを設定する方法について学習しました。 アクション グループの詳細については、次の記事を参照してください。
+
+> [!div class="nextstepaction"]
+> [Azure portal でのアクション グループの作成および管理](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
+
+> [!div class="nextstepaction"]
+> [アクション グループの SMS アラート動作](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)

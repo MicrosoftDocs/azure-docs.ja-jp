@@ -5,18 +5,18 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/24/2020
-ms.openlocfilehash: 7165bab96d037f6782bc9aa6767cadd9b35f058c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99253aa2e7e2e1f3f58f2ab7d5c40a695c2b9690
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76764583"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654856"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Azure HDInsight の Apache HBase 用書き込みアクセラレータ
 
-この記事では、Azure HDInsight の Apache HBase 用**書き込みアクセラレータ**機能の背景情報と、書き込みパフォーマンスを向上させるために効果的に使用する方法を示します。 **書き込みアクセラレータ**では、[Azure Premium SSD マネージド ディスク](../../virtual-machines/linux/disks-types.md#premium-ssd)を使用して、Apache HBase のログ先行書き込み (WAL) のパフォーマンスを向上させます。 Apache HBase の詳細については、「[HDInsight の Apache HBase とは](apache-hbase-overview.md)」を参照してください。
+この記事では、Azure HDInsight の Apache HBase 用**書き込みアクセラレータ**機能の背景情報と、書き込みパフォーマンスを向上させるために効果的に使用する方法を示します。 **書き込みアクセラレータ**では、[Azure Premium SSD マネージド ディスク](../../virtual-machines/disks-types.md#premium-ssd)を使用して、Apache HBase のログ先行書き込み (WAL) のパフォーマンスを向上させます。 Apache HBase の詳細については、「[HDInsight の Apache HBase とは](apache-hbase-overview.md)」を参照してください。
 
 ## <a name="overview-of-hbase-architecture"></a>HBase アーキテクチャの概要
 
@@ -32,7 +32,7 @@ MemStore がフラッシュされる前に **RegionServer** がクラッシュ�
 
 ## <a name="accelerated-writes-feature-in-azure-hdinsight-for-apache-hbase"></a>Azure HDInsight の Apache HBase 用書き込みアクセラレータ機能
 
-書き込みアクセラレータ機能では、クラウド ストレージ内にあるログ先行書き込みを使用することで書き込み待機時間が長くなるという問題が解決されます。  HDInsight の Apache HBase クラスター用書き込みアクセラレータ機能では、Premium SSD マネージド ディスクをすべての RegionServer (ワーカー ノード) にアタッチします。 その後、ログ先行書き込みは、クラウド ストレージの代わりに、これらの Premium マネージド ディスクにマウントされている Hadoop ファイル システム (HDFS) に書き込まれます。  Premium マネージド ディスクでは、ソリッド ステート ディスク (SSD) を使用し、フォールト トレランスを備えた優れた I/O パフォーマンスを提供します。  アンマネージド ディスクとは異なり、1 つのストレージ ユニットがダウンしでも、同じ可用性セット内の他のストレージ ユニットには影響を与えません。  その結果、マネージド ディスクでは、書き込み待機時間が短縮され、アプリケーションの回復性が向上します。 Azure マネージド ディスクの詳細については、「[Azure マネージド ディスクの概要](../../virtual-machines/windows/managed-disks-overview.md)」を参照してください。
+書き込みアクセラレータ機能では、クラウド ストレージ内にあるログ先行書き込みを使用することで書き込み待機時間が長くなるという問題が解決されます。  HDInsight の Apache HBase クラスター用書き込みアクセラレータ機能では、Premium SSD マネージド ディスクをすべての RegionServer (ワーカー ノード) にアタッチします。 その後、ログ先行書き込みは、クラウド ストレージの代わりに、これらの Premium マネージド ディスクにマウントされている Hadoop ファイル システム (HDFS) に書き込まれます。  Premium マネージド ディスクでは、ソリッド ステート ディスク (SSD) を使用し、フォールト トレランスを備えた優れた I/O パフォーマンスを提供します。  アンマネージド ディスクとは異なり、1 つのストレージ ユニットがダウンしでも、同じ可用性セット内の他のストレージ ユニットには影響を与えません。  その結果、マネージド ディスクでは、書き込み待機時間が短縮され、アプリケーションの回復性が向上します。 Azure マネージド ディスクの詳細については、「[Azure マネージド ディスクの概要](../../virtual-machines/managed-disks-overview.md)」を参照してください。
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>HDInsight の HBase 用書き込みアクセラレータを有効にする方法
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: negoe
 ms.reviewer: negoe,celested
-ms.custom: aaddev
-ms.openlocfilehash: 9a8d9c5c0a24e59c8f6345666f8838aa4c41d0f9
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.custom: aaddev,references_regions
+ms.openlocfilehash: d27498748f03fb101d165351ec80c77d57f78f1a
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845187"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141501"
 ---
 # <a name="national-clouds"></a>各国のクラウド
 
@@ -67,7 +67,7 @@ ms.locfileid: "83845187"
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
-各国のクラウドの環境で Microsoft Graph API を呼び出す方法については、[各国のクラウドのデプロイでの Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/deployments)に関するページを参照してください。
+各国のクラウドの環境で Microsoft Graph API を呼び出す方法については、[各国のクラウドのデプロイでの Microsoft Graph](/graph/deployments)に関するページを参照してください。
 
 > [!IMPORTANT]
 > グローバル サービスの特定のリージョンにある特定のサービスや機能が、一部の各国のクラウドでは使用できない場合があります。 どのようなサービスが使用できるかを見つけるには、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia,china-non-regional,china-east,china-east-2,china-north,china-north-2,germany-non-regional,germany-central,germany-northeast)」を参照してください。
@@ -78,7 +78,7 @@ Microsoft ID プラットフォームを使用してアプリケーションを�
 
 各項目の詳細情報
 
-- [Azure Government](https://docs.microsoft.com/azure/azure-government/)
-- [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)
-- [Azure Germany](https://docs.microsoft.com/azure/germany/)
-- [Azure AD 認証の基本](authentication-scenarios.md)
+- [Azure Government](../../azure-government/index.yml)
+- [Azure China 21Vianet](/azure/china/)
+- [Azure Germany](../../germany/index.yml)
+- [Azure AD 認証の基本](./authentication-vs-authorization.md)

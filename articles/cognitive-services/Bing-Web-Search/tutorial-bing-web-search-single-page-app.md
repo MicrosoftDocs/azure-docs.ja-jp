@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: 単一ページの Web アプリを作成する - Bing Web Search API'
+title: チュートリアル:単一ページの Web アプリを作成する - Bing Web Search API
 titleSuffix: Azure Cognitive Services
 description: この単一ページのアプリは、Bing Web Search API を使用して、単一ページのアプリで関連する検索結果を取得、解析、および表示する方法を示しています。
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.subservice: bing-web-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: f692367ad431dc8f1623e1b3d5109c313e351934
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 251dbf6897f7efe56d968122c2ccad7093d39e44
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78943877"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300053"
 ---
-# <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>チュートリアル: Bing Web Search API を使用して単一ページの Web アプリを作成する
+# <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>チュートリアル:Bing Web Search API を使用して単一ページの Web アプリを作成する
 
 この単一ページのアプリは、Bing Web Search API から検索結果を取得、解析、および表示する方法を示しています。 このチュートリアルでは、定型の HTML と CSS を使用し、JavaScript コードに焦点を当てています。 HTML、CSS、および JS ファイルとクイック スタート手順は、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Web-Search) に掲載されています。
 
@@ -30,15 +31,16 @@ ms.locfileid: "78943877"
 > * サブスクリプション キーを管理する
 > * エラーを処理する
 
-このアプリを使用するには、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Bing Search API が必要です。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)を使用してサブスクリプション キーを取得できます。
+このアプリを使用するには、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Bing Search API が必要です。
 
 ## <a name="prerequisites"></a>前提条件
 
 アプリを実行するために必要なものを次に示します。
 
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Bing Search リソースを作成"  target="_blank">Bing Search リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
+
 * Node.js 8 以降
-* Bing Search API のサブスクリプション キー。 所有していない場合は、[Bing Search v7 リソースを作成](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7)してください。 [試用キー](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)を使用することもできます。
-## <a name="get-the-source-code-and-install-dependencies"></a>ソース コードを入手して依存関係をインストールする
 
 最初の手順は、サンプル アプリのソース コードを使用してリポジトリを複製することです。
 
@@ -441,7 +443,7 @@ Bing Search API からの応答には、`X-MSEdge-ClientID` ヘッダーが含�
 > [!NOTE]
 > 運用環境の Web アプリケーションでは、いずれにしても要求サーバー側を実行する必要があります。 そうしないと、Web ページに Bing Search API サブスクリプション キーを含める必要があり、ソースを表示した人ならだれでもキーを使用できるようになってしまいます。 権限のない者によって行われた要求であっても、すべての利用に対してユーザーの API サブスクリプション キーに基づいて料金が発生するため、キーは公開しないようにする必要があります。
 
-開発目的の場合は、CORS プロキシを介して要求を行うことができます。 このようなプロキシからの応答には、応答ヘッダーをホワイトリストに登録して JavaScript で使用できるようにする `Access-Control-Expose-Headers` ヘッダーが含まれています。
+開発目的の場合は、CORS プロキシを介して要求を行うことができます。 このようなプロキシからの応答には、応答ヘッダーをフィルター処理して JavaScript で使用できるようにする `Access-Control-Expose-Headers` ヘッダーが含まれています。
 
 CORS プロキシをインストールして、サンプル アプリがクライアント ID ヘッダーにアクセスできるようにするのは簡単です。 次のコマンドを実行します。
 

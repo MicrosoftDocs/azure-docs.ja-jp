@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 07/14/2020
 ms.author: apimpm
-ms.openlocfilehash: b72abf4e208c57987375a105865046f194460058
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99784e43130b70554c05ff79a10993f2b6eebbde
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231627"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499615"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies (API Management のクロス ドメイン ポリシー)
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。
@@ -58,7 +58,7 @@ ms.locfileid: "79231627"
 |cross-domain|ルート要素。 子要素は、[Adobe cross-domain ポリシー ファイルの仕様](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)に従う必要があります。|はい|
 
 ### <a name="usage"></a>使用法
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 - **ポリシー セクション:** inbound
 - **ポリシー スコープ:** すべてのスコープ
@@ -67,6 +67,8 @@ ms.locfileid: "79231627"
 `cors`ポリシーは、クロス オリジン リソース共有 (CORS) のサポートを操作または API に追加して、ブラウザーベースのクライアントからのドメイン間呼び出しを可能にします。
 
 CORS を使用すると、ブラウザーとサーバーは、やり取りを介して、特定のクロス オリジン要求 (たとえば、他のドメインに対して Web ページの JavaScript で実行された XMLHttpRequests 呼び出し) を許可するかどうかを決めることができます。 これにより、単に同一オリジンの要求を許可するよりも高い柔軟性が得られる一方、すべてのクロス オリジン要求を許可するよりも高いセキュリティを実現できます。
+
+開発者ポータルで対話型コンソールを有効にするには、CORS ポリシーを適用する必要があります。 詳細については、[開発者ポータルのドキュメント](./api-management-howto-developer-portal.md#cors)を参照してください。
 
 ### <a name="policy-statement"></a>ポリシー ステートメント
 
@@ -141,7 +143,7 @@ CORS を使用すると、ブラウザーとサーバーは、やり取りを介
 |preflight-result-max-age|事前応答内の `Access-Control-Max-Age` ヘッダーが、この属性の値に設定されます。これは、ユーザー エージェントが事前応答をキャッシュできるかどうかに影響します。|いいえ|0|
 
 ### <a name="usage"></a>使用法
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 - **ポリシー セクション:** inbound
 - **ポリシー スコープ:** すべてのスコープ
@@ -178,7 +180,7 @@ CORS を使用すると、ブラウザーとサーバーは、やり取りを介
 |callback-parameter-name|関数が含まれる完全修飾ドメイン名をプレフィックスとするクロスドメイン JavaScript 関数呼び出し。|はい|該当なし|
 
 ### <a name="usage"></a>使用法
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 - **ポリシー セクション:** outbound
 - **ポリシー スコープ:** すべてのスコープ
@@ -189,5 +191,5 @@ CORS を使用すると、ブラウザーとサーバーは、やり取りを介
 
 + [API Management のポリシー](api-management-howto-policies.md)
 + [API を変換する](transform-api.md)
-+ ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](api-management-policy-reference.md)
++ ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](./api-management-policies.md)
 + [ポリシーのサンプル](policy-samples.md)

@@ -5,30 +5,31 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 06/27/2019
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e4521cb67ae95a1cd4a3e728a13e43bfd5773ab
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 31374b851d90e43e7380024923c3ad025859b7a0
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737029"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923732"
 ---
 # <a name="azure-ad-joined-devices"></a>Azure AD 参加済みデバイス
 
 Azure AD 参加は、クラウド優先またはクラウド専用であることを望む組織を対象にしています。 すべての組織で、サイズや業界に関係なく、Azure AD 参加済みデバイスをデプロイすることができます。 Azure AD 参加は、ハイブリッド環境でも動作し、クラウドおよびオンプレミス アプリとリソースと両方にアクセスできます。
 
-|   | Azure AD Join |
+| Azure AD Join | 説明 |
 | --- | --- |
 | **定義** | デバイスにサインインするための組織アカウントを必要とする Azure AD にのみ参加します |
 | **主な対象** | クラウド専用およびハイブリッド組織の両方に適しています。 |
 |   | 組織内のすべてのユーザーに適用できます |
 | **デバイスの所有権** | Organization |
-| **オペレーティング システム** | すべての Windows 10 デバイス |
+| **オペレーティング システム** | Windows 10 Home を除くすべての Windows 10 デバイス |
+|   | [Azure で実行する Windows Server 2019 Virtual Machines](howto-vm-sign-in-azure-ad-windows.md) (Server Core はサポートされません) |
 | **プロビジョニング** | セルフサービス:Windows OOBE または設定 |
 |   | 一括登録 |
 |   | Windows Autopilot |
@@ -61,7 +62,7 @@ Azure AD への参加は、主にオンプレミスの Windows Server Active Dir
 - ユーザーのグループを Active Directory ではなく Azure AD で管理したい。 このシナリオは、季節従業員、請負業者、学生などに適用できます。
 - リモートの支店の作業員に制限のあるオンプレミスのインフラに対する参加機能を提供したい。
 
-Windows 10 デバイスで Azure AD 参加済みデバイスを構成できます。
+Windows 10 Home を除き、すべての Windows 10 デバイスで Azure AD 参加済みデバイスを構成できます。
 
 Azure AD 参加済みデバイスの目的は、次の操作を単純化することです。
 

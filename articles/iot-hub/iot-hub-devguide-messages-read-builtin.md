@@ -7,14 +7,16 @@ ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/08/2019
-ms.custom: amqp
-ms.openlocfilehash: fba22324a3c35b861d28ed9b84207ab3a6f9816b
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.date: 06/01/2020
+ms.custom:
+- amqp
+- 'Role: Cloud Development'
+ms.openlocfilehash: 941953c75c516a9eceff526a0ced0ec0910f1f1e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872701"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327703"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る
 
@@ -57,16 +59,16 @@ IoT Hub を認識しない Event Hubs SDK や製品統合を使用している�
 | hostname | abcd1234namespace.servicebus.windows.net |
 | 名前空間 | abcd1234namespace |
 
-この場合、指定したイベント ハブに接続するための **ServiceConnect** のアクセス許可を持つ、共有アクセス ポリシーを使用できます。
+上記のスクリーンショットに示されているように、ドロップダウンから任意の共有アクセス ポリシーを選択できます。 指定したイベント ハブに接続するための **ServiceConnect** のアクセス許可を持つポリシーのみが表示されます。
 
 IoT Hub が公開している組み込みのイベント ハブ互換エンドポイントに接続する際に使用できる SDK は次のとおりです。
 
 | Language | SDK | 例 |
 | -------- | --- | ------ |
-| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [クイックスタート](quickstart-send-telemetry-dotnet.md) |
- Java | https://mvnrepository.com/artifact/com.azure/azure-messaging-eventhubs | [クイックスタート](quickstart-send-telemetry-java.md) |
+| .NET | https://www.nuget.org/packages/Azure.Messaging.EventHubs | [クイックスタート](quickstart-send-telemetry-dotnet.md) |
+| Java | https://mvnrepository.com/artifact/com.azure/azure-messaging-eventhubs | [クイックスタート](quickstart-send-telemetry-java.md) |
 | Node.js | https://www.npmjs.com/package/@azure/event-hubs | [クイックスタート](quickstart-send-telemetry-node.md) |
-| Python | https://pypi.org/project/azure-eventhub/ | https://github.com/Azure-Samples/azure-iot-samples-python/tree/master/iot-hub/Quickstarts/read-d2c-messages |
+| Python | https://pypi.org/project/azure-eventhub/ | [クイックスタート](quickstart-send-telemetry-python.md) |
 
 IoT Hub が公開している組み込みのイベント ハブ互換エンドポイントで使用できる製品統合は次のとおりです。
 

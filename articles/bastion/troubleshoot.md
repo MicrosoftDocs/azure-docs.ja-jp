@@ -4,15 +4,15 @@ description: この記事では、Azure Bastion のトラブルシューティ�
 services: bastion
 author: charwen
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: 749d7125c013f419197ef8243d2475e612dc81b5
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: f3c142491363f30513877ae4368f291430aa3675
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619166"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831932"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Azure Bastion のトラブルシューティング
 
@@ -28,7 +28,7 @@ ms.locfileid: "80619166"
 2. 診断ログなど - 443 での AzureCloud への送信 (このサービス タグ内のリージョン タグはまだサポートされていません)。
 3. ターゲット VM - 3389 および 22 での VirtualNetwork への送信
 
-NSG 規則の例については、[クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion)を参照してください。
+NSG 規則の例については、[クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg)を参照してください。
 詳細については、[Azure Bastion の NSG のガイダンス](bastion-nsg.md)に関する記事を参照してください。
 
 ## <a name="unable-to-use-my-ssh-key-with-azure-bastion"></a><a name="sshkey"></a>Azure Bastion に SSH キーを使用できません

@@ -3,16 +3,16 @@ title: 複数の Azure サービスを使用したタスクの自動化
 description: チュートリアル - Azure Logic Apps、Azure Storage、および Azure Functions を使用してメールを処理する自動化ワークフローの作成
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-csharp
 ms.date: 02/27/2020
-ms.openlocfilehash: 332be9cb0f31119e7d2f2d9fe2d3dc1f73e6d3ab
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 79ce5125283a234530435891044ead3141665433
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82146721"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002778"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>チュートリアル:Azure Logic Apps、Azure Functions、Azure Storage を使用してメール処理のタスクを自動化する
 
@@ -38,22 +38,20 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
 
 * Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
-* Logic Apps がサポートするメール プロバイダー (Office 365 Outlook、Outlook.com、Gmail など) のメール アカウント。 その他のプロバイダーについては、[こちらのコネクタ一覧を参照](https://docs.microsoft.com/connectors/)してください。
+* Logic Apps がサポートするメール プロバイダー (Office 365 Outlook、Outlook.com、Gmail など) のメール アカウント。 その他のプロバイダーについては、[こちらのコネクタ一覧を参照](/connectors/)してください。
 
   このロジック アプリでは、Office 365 Outlook アカウントを使います。 別のメール アカウントを使う場合、おおよその手順は変わりませんが、UI の表示がやや異なることがあります。
 
   > [!IMPORTANT]
-  > Gmail コネクタの使用を希望する場合、ロジック アプリで制限なしにこのコネクタを使用できるのは、G-Suite ビジネス アカウントだけです。 Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のサービスのみでこのコネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 詳細については、「[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)」を参照してください。
+  > Gmail コネクタの使用を希望する場合、ロジック アプリで制限なしにこのコネクタを使用できるのは、G-Suite ビジネス アカウントだけです。 Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のサービスのみでこのコネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 詳細については、「[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)」を参照してください。
 
 * [無料の Microsoft Azure Storage Explorer](https://storageexplorer.com/) のダウンロードとインストール。 ストレージ コンテナーが正しく設定されているかどうかをこのツールでチェックすることができます。
-
-## <a name="sign-in-to-azure-portal"></a>Azure Portal にサインインする
-
-Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com) にサインインします。
 
 ## <a name="set-up-storage-to-save-attachments"></a>添付ファイルの保存先ストレージを設定する
 
 受信したメールと添付ファイルは、[Azure Storage コンテナー](../storage/common/storage-introduction.md)に BLOB として保存することができます。
+
+1. Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com) にサインインします。
 
 1. ストレージ コンテナーを作成する前に、Azure portal の **[基本]** タブで次の設定の[ストレージ アカウントを作成](../storage/common/storage-account-create.md)します。
 
@@ -65,7 +63,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
    | **場所** | <*Azure-region*> | ストレージ アカウントに関する情報の保存先となるリージョン。 この例では "米国西部" を使用します。 |
    | **パフォーマンス** | Standard | サポートされるデータの種類とデータの保存メディアは、この設定で指定します。 「[ストレージ アカウントの種類](../storage/common/storage-introduction.md#types-of-storage-accounts)」を参照してください。 |
    | **アカウントの種類** | 汎用 | [ストレージ アカウントの種類](../storage/common/storage-introduction.md#types-of-storage-accounts) |
-   | **レプリケーション** | ローカル冗長ストレージ (LRS) | データのコピー、保存、管理、同期の方法は、この設定で指定します。 「[ローカル冗長ストレージ (LRS): Azure Storage の低コストのデータ冗長性](../storage/common/storage-redundancy-lrs.md)」を参照してください。 |
+   | **レプリケーション** | ローカル冗長ストレージ (LRS) | データのコピー、保存、管理、同期の方法は、この設定で指定します。 「[ローカル冗長ストレージ (LRS): Azure Storage の低コストのデータ冗長性](../storage/common/storage-redundancy.md)」を参照してください。 |
    | **アクセス層 (既定)** | 現在の設定を保持します。 |
    ||||
 
@@ -76,7 +74,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
    | **安全な転送が必須** | 無効 | 接続先からの要求には、この設定でセキュリティを確保することができます。 [安全な転送の義務付け](../storage/common/storage-require-secure-transfer.md)に関するページを参照してください。 |
    ||||
 
-   ストレージ アカウントは、[Azure PowerShell](../storage/common/storage-quickstart-create-storage-account-powershell.md) または [Azure CLI](../storage/common/storage-quickstart-create-storage-account-cli.md) を使用して作成することもできます。
+   ストレージ アカウントは、[Azure PowerShell](../storage/common/storage-account-create.md?tabs=powershell) または [Azure CLI](../storage/common/storage-account-create.md?tabs=azure-cli) を使用して作成することもできます。
 
 1. 完了したら、 **[確認および作成]** を選択します。
 
@@ -88,7 +86,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
       ![ストレージ アカウントの名前とキーをコピーして保存](./media/tutorial-process-email-attachments-workflow/copy-save-storage-name-key.png)
 
-   ストレージ アカウントのアクセス キーは、[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccountkey) または [Azure CLI](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest.md#az-storage-account-keys-list) を使用して取得することもできます。
+   ストレージ アカウントのアクセス キーは、[Azure PowerShell](/powershell/module/az.storage/get-azstorageaccountkey) または [Azure CLI](/cli/azure/storage/account/keys?view=azure-cli-latest.md#az-storage-account-keys-list) を使用して取得することもできます。
 
 1. メールの添付ファイル用の Blob Storage コンテナーを作成します。
 
@@ -104,7 +102,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
       ![完成したストレージ コンテナー](./media/tutorial-process-email-attachments-workflow/created-storage-container.png)
 
-   ストレージ コンテナーは、[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontainer) または [Azure CLI](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) を使用して作成することもできます。
+   ストレージ コンテナーは、[Azure PowerShell](/powershell/module/az.storage/new-azstoragecontainer) または [Azure CLI](/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) を使用して作成することもできます。
 
 次に、このストレージ アカウントに Storage Explorer を接続します。
 
@@ -112,7 +110,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
 ロジック アプリによって添付ファイルが BLOB としてストレージ コンテナーに正しく保存されるかどうかを確認できるように、ストレージ アカウントに Storage Explorer を接続します。
 
-1. Microsoft Azure ストレージ エクスプローラーを起動します。
+1. Microsoft Azure Storage Explorer を起動します。
 
    Storage Explorer に、ストレージ アカウントへの接続を求めるメッセージが表示されます。
 
@@ -244,7 +242,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
    | **リソース グループ** | LA-Tutorial-RG | 先ほど使用したものと同じ Azure リソース グループ |
    | **ロジック アプリ名** | LA-ProcessAttachment | ロジック アプリの名前 |
    | **場所の選択** | 米国西部 | 先ほど使用したものと同じリージョン |
-   | **Log Analytics** | Off | このチュートリアルでは、 **[オフ]** 設定を選択します。 |
+   | **Log Analytics** | オフ | このチュートリアルでは、 **[オフ]** 設定を選択します。 |
    ||||
 
 1. Azure によってアプリがデプロイされた後、Azure ツール バーで通知アイコンを選択し、 **[リソースに移動]** を選択します。

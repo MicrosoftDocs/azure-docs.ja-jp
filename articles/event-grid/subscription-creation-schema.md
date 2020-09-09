@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid サブスクリプション スキーマ
 description: この記事では、Azure Event Grid でイベントにサブスクライブするためのプロパティについて説明します。 Event Grid サブスクリプション スキーマ。
-services: event-grid
-author: banisadr
-ms.service: event-grid
 ms.topic: reference
-ms.date: 01/23/2020
-ms.author: babanisa
-ms.openlocfilehash: 4bb04d22b762f31a02515549b698030a5267e4cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/07/2020
+ms.openlocfilehash: 21016627e545cc4935b4ac213df675e894c12d95
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76720760"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119074"
 ---
 # <a name="event-grid-subscription-schema"></a>Event Grid サブスクリプション スキーマ
 

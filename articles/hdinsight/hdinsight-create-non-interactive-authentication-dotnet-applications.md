@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
-ms.custom: hdinsightactive
+ms.topic: how-to
+ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/23/2019
-ms.openlocfilehash: 5e6a0586bc750f8972586920c15dbb297295aa20
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a696ba4f7bab85f2353e80d028220688531b3b69
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79371275"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021767"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>非対話型認証 .NET HDInsight アプリケーションを作成する
 
@@ -21,9 +21,9 @@ ms.locfileid: "79371275"
 
 非対話型 .NET アプリケーションでは、以下が必要です。
 
-* Azure サブスクリプションのテナント ID (別名: *ディレクトリ ID*)。 「[Get tenant ID](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)」 (テナント ID を取得する) を参照してください。
-* Azure Active Directory (Azure AD) アプリケーションのクライアント ID。 「[Azure Active Directory アプリケーションを作成する](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)」および「[アプリケーション ID と認証キーを取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)」をご覧ください。
-* Azure AD アプリケーションの秘密鍵。 「[アプリケーション ID と認証キーを取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)」をご覧ください。
+* Azure サブスクリプションのテナント ID (別名: *ディレクトリ ID*)。 「[Get tenant ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)」 (テナント ID を取得する) を参照してください。
+* Azure Active Directory (Azure AD) アプリケーションのクライアント ID。 「[Azure Active Directory アプリケーションを作成する](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)」および「[アプリケーション ID と認証キーを取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)」をご覧ください。
+* Azure AD アプリケーションの秘密鍵。 「[アプリケーション ID と認証キーを取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -47,9 +47,9 @@ Azure AD アプリケーションに[ロール](../role-based-access-control/bui
 1. C# コンソール アプリケーションを作成します。
 2. 次の [NuGet](https://www.nuget.org/) パッケージを追加します。
 
-        Install-Package Microsoft.Azure.Common.Authentication -Pre
-        Install-Package Microsoft.Azure.Management.HDInsight -Pre
-        Install-Package Microsoft.Azure.Management.Resources -Pre
+    * `Install-Package Microsoft.Azure.Common.Authentication -Pre`
+    * `Install-Package Microsoft.Azure.Management.HDInsight -Pre`
+    * `Install-Package Microsoft.Azure.Management.Resources -Pre`
 
 3. 次のコードを実行します。
 
@@ -123,4 +123,4 @@ Azure AD アプリケーションに[ロール](../role-based-access-control/bui
 
 * [Azure Portal で Azure Active Directory アプリケーションとサービス プリンシパルを作成する](../active-directory/develop/howto-create-service-principal-portal.md)。
 * [Azure Resource Manager でサービス プリンシパルを認証する](../active-directory/develop/howto-authenticate-service-principal-powershell.md)方法を学習する。
-* [Azure のロールベースのアクセス制御 (RBAC)](../role-based-access-control/role-assignments-portal.md) について学習する。
+* [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) について学習する。

@@ -1,6 +1,6 @@
 ---
 title: Azure API Management の高度なポリシー | Microsoft Docs
-description: Azure API Management で使用できる高度なポリシーについて説明します。
+description: Azure API Management で使用できる高度なポリシーについて説明します。 例を参照し、使用可能なその他のリソースを確認します。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 388f05c2af1516a0477392f37763a0480c7ad413
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6ac3457a22128f313084ab070a5a61c2d26d4b85
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128832"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851683"
 ---
 # <a name="api-management-advanced-policies"></a>API Management の高度なポリシー
 
@@ -38,7 +38,7 @@ ms.locfileid: "82128832"
 -   [要求メソッドを設定する](#SetRequestMethod) - 要求の HTTP メソッドを変更できます。
 -   [状態コードを設定する](#SetStatus) - HTTP 状態コードを指定された値に変更します。
 -   [変数の設定](api-management-advanced-policies.md#set-variable) - 名前付き[コンテキスト](api-management-policy-expressions.md#ContextVariables)変数の値を、後でアクセスできるように保持します。
--   [トレース](#Trace) - [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) 出力、Application Insights テレメトリ、リソース ログにカスタム トレースを追加します。
+-   [トレース](#Trace) - [API Inspector](./api-management-howto-api-inspector.md) 出力、Application Insights テレメトリ、リソース ログにカスタム トレースを追加します。
 -   [待機](#Wait) - 含まれている[要求を送信する](api-management-advanced-policies.md#SendRequest)、[キャッシュからの値の取得](api-management-caching-policies.md#GetFromCacheByKey)、または[制御フロー](api-management-advanced-policies.md#choose) ポリシーが完了するまで待機してから次に進みます。
 
 ## <a name="control-flow"></a><a name="choose"></a> 制御フロー
@@ -67,9 +67,9 @@ ms.locfileid: "82128832"
 
 #### <a name="example"></a><a name="ChooseExample"></a> 例
 
-次の例は、[set-variable](api-management-advanced-policies.md#set-variable) ポリシーと 2 つの制御フロー ポリシーを示しています。
+次の例は、[set-variable](api-management-advanced-policies.md#set-variable) ポリシーと 2 つの制御フローのポリシーを示しています。
 
-変数の設定ポリシーは inbound セクションにあり、`User-Agent` 要求ヘッダーにテキスト `iPad` または `iPhone` が含まれる場合に true に設定される `isMobile` ブール型[コンテキスト](api-management-policy-expressions.md#ContextVariables)変数を作成します。
+変数設定ポリシーは受信セクションにあり、`isMobile` 要求ヘッダーに `User-Agent` または `iPad` のテキストが含まれている場合に true に設定される `iPhone` ブール[コンテキスト](api-management-policy-expressions.md#ContextVariables)変数を作成します。
 
 最初の制御フロー ポリシーも inbound セクションにあり、`isMobile` コンテキスト変数の値に応じて 2 つの[クエリ文字列パラメーターの設定](api-management-transformation-policies.md#SetQueryStringParameter)ポリシーのうち 1 つを条件付きで適用します。
 
@@ -129,18 +129,18 @@ ms.locfileid: "82128832"
 | 要素   | 説明                                                                                                                                                                                                                                                               | 必須 |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | choose    | ルート要素。                                                                                                                                                                                                                                                             | はい      |
-| when      | `choose` ポリシーの `if` または `ifelse` の部分に使用する条件。 `choose` ポリシーに複数の `when` セクションがある場合、これらのセクションは順番に評価されます。 when 要素のいずれかの `condition` が `true` に評価されると、それ以降の `when` 条件は評価されません。 | はい      |
-| otherwise | `when` 条件のいずれも `true` に評価されない場合に使用されるポリシー スニペットが含まれます。                                                                                                                                                                               | いいえ       |
+| when      | `choose` ポリシーの `if` または `ifelse` の部分に使用する条件。 `choose` ポリシーに複数の `when` セクションがある場合、これらのセクションは順番に評価されます。 when 要素のいずれかの `condition` が `true` に評価されると、それ以降の `when` 条件は評価されません。 | Yes      |
+| otherwise | `when` 条件のいずれも `true` に評価されない場合に使用されるポリシー スニペットが含まれます。                                                                                                                                                                               | No       |
 
 ### <a name="attributes"></a>属性
 
 | 属性                                              | 説明                                                                                               | 必須 |
 | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- | -------- |
-| condition="ブール式 &#124; ブール型定数" | 含んでいる `when` ポリシー ステートメントが評価されるときに評価されるブール式または定数。 | はい      |
+| condition="ブール式 &#124; ブール型定数" | 含んでいる `when` ポリシー ステートメントが評価されるときに評価されるブール式または定数。 | Yes      |
 
 ### <a name="usage"></a><a name="ChooseUsage"></a> 使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound、backend、on-error
 
@@ -148,7 +148,7 @@ ms.locfileid: "82128832"
 
 ## <a name="forward-request"></a><a name="ForwardRequest"></a> 要求を転送する
 
-`forward-request` ポリシーは、要求[コンテキスト](api-management-policy-expressions.md#ContextVariables)に指定されたバックエンド サービスに要求を転送します。 バックエンド サービスの URL は API [設定](https://azure.microsoft.com/documentation/articles/api-management-howto-create-apis/#configure-api-settings)で指定され、[バックエンド サービスの設定](api-management-transformation-policies.md)ポリシーを使用して変更できます。
+`forward-request` ポリシーは、要求[コンテキスト](api-management-policy-expressions.md#ContextVariables)に指定されたバックエンド サービスに要求を転送します。 バックエンド サービスの URL は API [設定](./import-and-publish.md)で指定され、[バックエンド サービスの設定](api-management-transformation-policies.md)ポリシーを使用して変更できます。
 
 > [!NOTE]
 > このポリシーを削除すると、要求はバックエンド サービスに転送されず、inbound セクションのポリシーが正常に完了した時点で outbound セクションのポリシーが即座に評価されます。
@@ -259,7 +259,7 @@ ms.locfileid: "82128832"
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** backend
 -   **ポリシー スコープ:** すべてのスコープ
@@ -288,7 +288,7 @@ ms.locfileid: "82128832"
   <backend>
     <limit-concurrency key="@((string)context.Variables["connectionId"])" max-count="3">
       <forward-request timeout="120"/>
-    <limit-concurrency/>
+    </limit-concurrency>
   </backend>
   <outbound>…</outbound>
 </policies>
@@ -309,7 +309,7 @@ ms.locfileid: "82128832"
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound、backend、on-error
 
@@ -320,7 +320,7 @@ ms.locfileid: "82128832"
 `log-to-eventhub` ポリシーは、指定された形式のメッセージを Logger エンティティによって定義されたイベント ハブに送信します。 その名前が示すように、このポリシーは、オンラインまたはオフライン分析のために、選択された要求または応答コンテキスト情報を保存するために使用します。
 
 > [!NOTE]
-> イベント ハブの構成とイベントのログ記録に関する詳細な手順については、[Azure Event Hubs で API Management イベントを記録する方法](https://azure.microsoft.com/documentation/articles/api-management-howto-log-event-hubs/)に関するページを参照してください。
+> イベント ハブの構成とイベントのログ記録に関する詳細な手順については、[Azure Event Hubs で API Management イベントを記録する方法](./api-management-howto-log-event-hubs.md)に関するページを参照してください。
 
 ### <a name="policy-statement"></a>ポリシー ステートメント
 
@@ -357,13 +357,13 @@ ms.locfileid: "82128832"
 
 | 属性     | 説明                                                               | 必須                                                             |
 | ------------- | ------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| logger-id     | API Management サービスに登録されているロガーの ID。         | はい                                                                  |
+| logger-id     | API Management サービスに登録されているロガーの ID。         | Yes                                                                  |
 | partition-id  | メッセージが送信されるパーティションのインデックスを指定します。             | 省略可能。 `partition-key` を使用する場合はこの属性を使用できません。 |
 | partition-key | メッセージの送信時にパーティション割り当てに使用される値を指定します。 | 省略可能。 `partition-id` を使用する場合はこの属性を使用できません。  |
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound、backend、on-error
 
@@ -407,7 +407,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound、on-error
 
@@ -466,16 +466,16 @@ status code and media type. If no example or schema found, the content is empty.
 | interval         | 再試行の間の待機間隔を指定する正の数 (秒単位)。                                                                 | はい      | 該当なし     |
 | max-interval     | 再試行の間の最大待機間隔を指定する正の数 (秒単位)。 指数再試行アルゴリズムを実装するために使用されます。 | いいえ       | 該当なし     |
 | delta            | 待機間隔の増分値を指定する正の数 (秒単位)。 線形再試行アルゴリズムと指数再試行アルゴリズムを実装するために使用されます。             | いいえ       | 該当なし     |
-| first-fast-retry | `true` に設定した場合、最初の再試行がすぐに実行されます。                                                                                  | いいえ       | `false` |
+| first-fast-retry | `true` に設定した場合、最初の再試行がすぐに実行されます。                                                                                  | No       | `false` |
 
 > [!NOTE]
 > `interval` のみを指定した場合、再試行は**固定**間隔で実行されます。
 > `interval` と `delta` のみを指定した場合、**線形**間隔の再試行アルゴリズムが使用されます。この場合の再試行間の待機時間は、次の式に従って計算されます: `interval + (count - 1)*delta`。
 > `interval`、`max-interval`、および `delta` を指定した場合、**指数**間隔の再試行アルゴリズムが適用されます。この場合の再試行間の待機時間は、次の式に従って `interval` の値から値 `max-interval` まで指数的に大きくなります: `min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`。
 
-### <a name="usage"></a>使用法
+### <a name="usage"></a>使用
 
-このポリシーは、ポリシーの以下の[セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。 子ポリシーの使用に関する制限がこのポリシーに継承されることに注意してください。
+このポリシーは、ポリシーの以下の[セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。 子ポリシーの使用に関する制限がこのポリシーに継承されることに注意してください。
 
 -   **ポリシー セクション:** inbound、outbound、backend、on-error
 
@@ -513,9 +513,9 @@ status code and media type. If no example or schema found, the content is empty.
 | 要素         | 説明                                                                               | 必須 |
 | --------------- | ----------------------------------------------------------------------------------------- | -------- |
 | return-response | ルート要素。                                                                             | はい      |
-| set-header      | [set-header](api-management-transformation-policies.md#SetHTTPheader) ポリシー ステートメント。 | いいえ       |
-| set-body        | [set-body](api-management-transformation-policies.md#SetBody) ポリシー ステートメント。         | いいえ       |
-| set-status      | [set-status](api-management-advanced-policies.md#SetStatus) ポリシー ステートメント。           | いいえ       |
+| set-header      | [set-header](api-management-transformation-policies.md#SetHTTPheader) ポリシー ステートメント。 | No       |
+| set-body        | [set-body](api-management-transformation-policies.md#SetBody) ポリシー ステートメント。         | No       |
+| set-status      | [set-status](api-management-advanced-policies.md#SetStatus) ポリシー ステートメント。           | No       |
 
 ### <a name="attributes"></a>属性
 
@@ -525,7 +525,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound、backend、on-error
 
@@ -550,7 +550,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="example"></a>例
 
-このサンプル ポリシーでは、`send-one-way-request` ポリシーを使用して、HTTP 応答コードが 500 以上の場合に Slack チャット ルームにメッセージを送信します。 このサンプルの詳細については、「[Azure API Management サービスからの外部サービスの使用](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)」を参照してください。
+このサンプル ポリシーでは、`send-one-way-request` ポリシーを使用して、HTTP 応答コードが 500 以上の場合に Slack チャット ルームにメッセージを送信します。 このサンプルの詳細については、「[Azure API Management サービスからの外部サービスの使用](./api-management-sample-send-request.md)」を参照してください。
 
 ```xml
 <choose>
@@ -584,22 +584,22 @@ status code and media type. If no example or schema found, the content is empty.
 | -------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------- |
 | send-one-way-request       | ルート要素。                                                                                               | はい                             |
 | url                        | 要求の URL。                                                                                     | いいえ (mode=copy の場合)。はい (それ以外の場合)。 |
-| method                     | 要求の HTTP メソッド。                                                                            | いいえ (mode=copy の場合)。はい (それ以外の場合)。 |
-| header                     | 要求ヘッダー。 複数の要求ヘッダーには複数のヘッダー要素を使用します。                                  | いいえ                              |
-| body                       | 要求本文。                                                                                           | いいえ                              |
-| authentication-certificate | [クライアントの認証に使用する証明書](api-management-authentication-policies.md#ClientCertificate) | いいえ                              |
+| メソッド                     | 要求の HTTP メソッド。                                                                            | いいえ (mode=copy の場合)。はい (それ以外の場合)。 |
+| header                     | 要求ヘッダー。 複数の要求ヘッダーには複数のヘッダー要素を使用します。                                  | No                              |
+| body                       | 要求本文。                                                                                           | No                              |
+| authentication-certificate | [クライアントの認証に使用する証明書](api-management-authentication-policies.md#ClientCertificate) | No                              |
 
 ### <a name="attributes"></a>属性
 
 | 属性     | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 必須 | Default  |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
-| mode="文字列" | これが新しい要求であるか現在の要求のコピーであるかを判定します。 送信モードでの mode=copy の場合、要求本文は初期化されません。                                                                                                                                                                                                                                                                                                                                                                                                                                                                | いいえ       | 新規      |
+| mode="文字列" | これが新しい要求であるか現在の要求のコピーであるかを判定します。 送信モードでの mode=copy の場合、要求本文は初期化されません。                                                                                                                                                                                                                                                                                                                                                                                                                                                                | No       | 新規      |
 | name          | 設定するヘッダーの名前を指定します。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | はい      | 該当なし      |
 | exists-action | 対象のヘッダーが既に指定されている場合の操作を指定します。 この属性の値は次のいずれかに設定する必要があります。<br /><br /> - override - 既存のヘッダーの値を置き換えます。<br />- skip - 既存のヘッダーの値を置き換えません。<br />- append - 既存のヘッダーの値に値を追加します。<br />- delete - 要求からヘッダーを削除します。<br /><br /> `override` に設定した場合、同じ名前の複数のエントリを記載すると、すべてのエントリに従ってヘッダーが設定されます (複数回記載されます)。結果に設定されるのは記載した値のみです。 | いいえ       | override |
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound、backend、on-error
 
@@ -625,7 +625,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="example"></a>例
 
-この例は、承認サーバーを使用して参照トークンを検証する 1 つの方法を示しています。 このサンプルの詳細については、「[Azure API Management サービスからの外部サービスの使用](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)」を参照してください。
+この例は、承認サーバーを使用して参照トークンを検証する 1 つの方法を示しています。 このサンプルの詳細については、「[Azure API Management サービスからの外部サービスの使用](./api-management-sample-send-request.md)」を参照してください。
 
 ```xml
 <inbound>
@@ -668,25 +668,25 @@ status code and media type. If no example or schema found, the content is empty.
 | -------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------- |
 | send-request               | ルート要素。                                                                                               | はい                             |
 | url                        | 要求の URL。                                                                                     | いいえ (mode=copy の場合)。はい (それ以外の場合)。 |
-| method                     | 要求の HTTP メソッド。                                                                            | いいえ (mode=copy の場合)。はい (それ以外の場合)。 |
-| header                     | 要求ヘッダー。 複数の要求ヘッダーには複数のヘッダー要素を使用します。                                  | いいえ                              |
-| body                       | 要求本文。                                                                                           | いいえ                              |
-| authentication-certificate | [クライアントの認証に使用する証明書](api-management-authentication-policies.md#ClientCertificate) | いいえ                              |
+| メソッド                     | 要求の HTTP メソッド。                                                                            | いいえ (mode=copy の場合)。はい (それ以外の場合)。 |
+| header                     | 要求ヘッダー。 複数の要求ヘッダーには複数のヘッダー要素を使用します。                                  | No                              |
+| body                       | 要求本文。                                                                                           | No                              |
+| authentication-certificate | [クライアントの認証に使用する証明書](api-management-authentication-policies.md#ClientCertificate) | No                              |
 
 ### <a name="attributes"></a>属性
 
 | 属性                       | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 必須 | Default  |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
-| mode="文字列"                   | これが新しい要求であるか現在の要求のコピーであるかを判定します。 送信モードでの mode=copy の場合、要求本文は初期化されません。                                                                                                                                                                                                                                                                                                                                                                                                                                                                | いいえ       | 新規      |
+| mode="文字列"                   | これが新しい要求であるか現在の要求のコピーであるかを判定します。 送信モードでの mode=copy の場合、要求本文は初期化されません。                                                                                                                                                                                                                                                                                                                                                                                                                                                                | No       | 新規      |
 | response-variable-name="文字列" | 応答オブジェクトを受信するコンテキスト変数の名前。 この変数が存在しない場合は、ポリシーの正常な実行時に作成され、[`context.Variable`](api-management-policy-expressions.md#ContextVariables) コレクション経由でアクセス可能になります。                                                                                                                                                                                                                                                                                                                          | はい      | 該当なし      |
-| timeout="整数"               | URL の呼び出しが失敗するまでのタイムアウト間隔 (秒単位)。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | いいえ       | 60       |
+| timeout="整数"               | URL の呼び出しが失敗するまでのタイムアウト間隔 (秒単位)。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | No       | 60       |
 | ignore-error                    | true に設定され、要求の結果がエラーになった場合:<br /><br /> - response-variable-name が指定されている場合、null 値が格納されます。<br />- response-variable-name が指定されていない場合、context.Request は更新されません。                                                                                                                                                                                                                                                                                                                                                                                   | いいえ       | false    |
 | name                            | 設定するヘッダーの名前を指定します。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | はい      | 該当なし      |
 | exists-action                   | 対象のヘッダーが既に指定されている場合の操作を指定します。 この属性の値は次のいずれかに設定する必要があります。<br /><br /> - override - 既存のヘッダーの値を置き換えます。<br />- skip - 既存のヘッダーの値を置き換えません。<br />- append - 既存のヘッダーの値に値を追加します。<br />- delete - 要求からヘッダーを削除します。<br /><br /> `override` に設定した場合、同じ名前の複数のエントリを記載すると、すべてのエントリに従ってヘッダーが設定されます (複数回記載されます)。結果に設定されるのは記載した値のみです。 | いいえ       | override |
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound、backend、on-error
 
@@ -728,7 +728,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound
 
@@ -747,7 +747,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="example"></a>例
 
-このサンプル ポリシーでは、`set-method` ポリシーを使用して、HTTP 応答コードが 500 以上の場合に Slack チャット ルームにメッセージを送信します。 このサンプルの詳細については、「[Azure API Management サービスからの外部サービスの使用](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)」を参照してください。
+このサンプル ポリシーでは、`set-method` ポリシーを使用して、HTTP 応答コードが 500 以上の場合に Slack チャット ルームにメッセージを送信します。 このサンプルの詳細については、「[Azure API Management サービスからの外部サービスの使用](./api-management-sample-send-request.md)」を参照してください。
 
 ```xml
 <choose>
@@ -783,7 +783,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、on-error
 
@@ -802,7 +802,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="example"></a>例
 
-この例は、承認トークンが無効な場合に 401 応答を返す方法を示しています。 詳細については、「[Azure API Management サービスからの外部サービスの使用](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)」を参照してください。
+この例は、承認トークンが無効な場合に 401 応答を返す方法を示しています。 詳細については、「[Azure API Management サービスからの外部サービスの使用](./api-management-sample-send-request.md)」を参照してください。
 
 ```xml
 <choose>
@@ -833,7 +833,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** outbound、backend、on-error
 -   **ポリシー スコープ:** すべてのスコープ
@@ -850,7 +850,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="example"></a><a name="set-variableExample"></a> 例
 
-次の例は、inbound セクションの変数の設定ポリシーを示しています。 この変数の設定ポリシーは、`User-Agent` 要求ヘッダーにテキスト `iPad` または `iPhone` が含まれる場合に true に設定される `isMobile` ブール型[コンテキスト](api-management-policy-expressions.md#ContextVariables)引数を作成します。
+次の例は、inbound セクションの変数の設定ポリシーを示しています。 この変数設定ポリシーは、`isMobile` の要求ヘッダーに `User-Agent` または `iPad` のテキストが含まれている場合に true に設定される `iPhone` ブール [コンテキスト](api-management-policy-expressions.md#ContextVariables)変数を作成します。
 
 ```xml
 <set-variable name="IsMobile" value="@(context.Request.Headers["User-Agent"].Contains("iPad") || context.Request.Headers["User-Agent"].Contains("iPhone"))" />
@@ -871,7 +871,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound、backend、on-error
 -   **ポリシー スコープ:** すべてのスコープ
@@ -916,9 +916,9 @@ status code and media type. If no example or schema found, the content is empty.
 
 `trace` ポリシーによって、API Inspector の出力、Application Insights テレメトリ、リソース ログにカスタム トレースが追加されます。
 
--   トレースがトリガーされたときに、ポリシーによって [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) の出力にカスタム トレースが追加されます。つまり、`Ocp-Apim-Trace` 要求ヘッダーが存在し、true に設定され、`Ocp-Apim-Subscription-Key` 要求ヘッダーが存在し、トレースを許可する有効なキーが保持されます。
--   [Application Insights の統合](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights)が有効で、ポリシーに指定されている `severity` のレベルが診断設定に指定されている `verbosity` レベル以上である場合、このポリシーによって Application Insights に[トレース](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry) テレメトリが作成されます。
--   [リソース ログ](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs)が有効で、ポリシーに指定されている重大度レベルが診断設定に指定されている詳細レベル以上である場合、このポリシーによってログ エントリにプロパティが追加されます。
+-   トレースがトリガーされたときに、ポリシーによって [API Inspector](./api-management-howto-api-inspector.md) の出力にカスタム トレースが追加されます。つまり、`Ocp-Apim-Trace` 要求ヘッダーが存在し、true に設定され、`Ocp-Apim-Subscription-Key` 要求ヘッダーが存在し、トレースを許可する有効なキーが保持されます。
+-   [Application Insights の統合](./api-management-howto-app-insights.md)が有効で、ポリシーに指定されている `severity` のレベルが診断設定に指定されている `verbosity` レベル以上である場合、このポリシーによって Application Insights に[トレース](../azure-monitor/app/data-model-trace-telemetry.md) テレメトリが作成されます。
+-   [リソース ログ](./api-management-howto-use-azure-monitor.md#activity-logs)が有効で、ポリシーに指定されている重大度レベルが診断設定に指定されている詳細レベル以上である場合、このポリシーによってログ エントリにプロパティが追加されます。
 
 ### <a name="policy-statement"></a>ポリシー ステートメント
 
@@ -945,21 +945,21 @@ status code and media type. If no example or schema found, the content is empty.
 | 要素  | 説明                                                                                                                                          | 必須 |
 | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | trace    | ルート要素。                                                                                                                                        | はい      |
-| message  | ログに記録される文字列または式。                                                                                                                 | はい      |
-| metadata | カスタム プロパティを Application Insights の[トレース](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry) テレメトリに追加します。 | いいえ       |
+| message  | ログに記録される文字列または式。                                                                                                                 | Yes      |
+| metadata | カスタム プロパティを Application Insights の[トレース](../azure-monitor/app/data-model-trace-telemetry.md) テレメトリに追加します。 | No       |
 
 ### <a name="attributes"></a>属性
 
 | 属性 | 説明                                                                                                               | 必須 | Default |
 | --------- | ------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | source    | メッセージのソースを指定する、トレース ビューアーにとって意味のある文字列リテラル。                                   | はい      | 該当なし     |
-| severity  | トレースの重大度レベルを指定します。 使用できる値は、`verbose`、`information`、`error` (最低から最高) です。 | いいえ       | "詳細" |
-| name      | プロパティの名前。                                                                                                     | はい      | 該当なし     |
+| severity  | トレースの重大度レベルを指定します。 使用できる値は、`verbose`、`information`、`error` (最低から最高) です。 | No       | "詳細" |
+| name      | プロパティ名。                                                                                                     | はい      | 該当なし     |
 | value     | プロパティの値。                                                                                                    | はい      | 該当なし     |
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、ポリシーの以下の[セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、ポリシーの以下の[セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound、backend、on-error
 
@@ -1025,11 +1025,11 @@ status code and media type. If no example or schema found, the content is empty.
 
 | 属性 | 説明                                                                                                                                                                                                                                                                                                                                                                                                            | 必須 | Default |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| for       | `wait` ポリシーがすべての直接の子ポリシーが完了するまで待機するか、1 つが完了するまで待機するかを決定します。 使用できる値は、以下のとおりです。<br /><br /> - `all` - すべての直接の子ポリシーが完了するまで待機します。<br />- any - いずれかの直接の子ポリシーが完了するまで待機します。 最初の直接の子ポリシーが完了すると、`wait` ポリシーが完了し、他の直接の子ポリシーの実行が終了します。 | いいえ       | すべて     |
+| 対象       | `wait` ポリシーがすべての直接の子ポリシーが完了するまで待機するか、1 つが完了するまで待機するかを決定します。 使用できる値は、以下のとおりです。<br /><br /> - `all` - すべての直接の子ポリシーが完了するまで待機します。<br />- any - いずれかの直接の子ポリシーが完了するまで待機します。 最初の直接の子ポリシーが完了すると、`wait` ポリシーが完了し、他の直接の子ポリシーの実行が終了します。 | No       | all     |
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound、backend
 -   **ポリシー スコープ:** すべてのスコープ
@@ -1040,5 +1040,5 @@ status code and media type. If no example or schema found, the content is empty.
 
 -   [API Management のポリシー](api-management-howto-policies.md)
 -   [ポリシー式](api-management-policy-expressions.md)
--   ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](api-management-policy-reference.md)
+-   ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](./api-management-policies.md)
 -   [ポリシーのサンプル](policy-samples.md)

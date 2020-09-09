@@ -1,25 +1,16 @@
 ---
 title: Ruby で Azure Service Bus キューを使用する方法
 description: このチュートリアルでは、Ruby アプリケーションを作成して、Service Bus キューとの間でメッセージを送受信する方法を学習します。
-services: service-bus-messaging
 documentationcenter: ruby
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: 0a11eab2-823f-4cc7-842b-fbbe0f953751
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: quickstart
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: a699543bb442e7c57d57e72acb2cdf6ac40159c1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 06/23/2020
+ms.openlocfilehash: 16dda6fc4637f052514a0e78a0804bf4702ed20b
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76760591"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85336650"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-ruby"></a>クイック スタート:Ruby で Service Bus キューを使用する方法
 

@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 07/03/2019
-ms.openlocfilehash: 1a46cb537892d4255fd274b5754ab8e8c0278308
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 5468cfc733b037f6287e8536c8c85994f0840161
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774455"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231256"
 ---
 # <a name="use-cli-to-restore-a-managed-instance-database-to-another-geo-region"></a>CLI を使用して Managed Instance データベースを別の geo リージョンに復元する
 
@@ -28,7 +28,7 @@ CLI をローカルにインストールして使用する場合、この記事�
 
 ### <a name="prerequisites"></a>前提条件
 
-マネージド インスタンスのペアがあらかじめ存在すること。[Azure CLI を使用して Azure SQL Database マネージド インスタンスを作成する方法](sql-database-create-configure-managed-instance-cli.md)に関するページを参照してください。
+マネージド インスタンスのペアがあらかじめ存在すること。[Azure CLI を使用して Azure SQL Managed Instance を作成する方法](sql-database-create-configure-managed-instance-cli.md)に関するページを参照してください。
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -56,7 +56,7 @@ az sql midb restore -g $resource --mi $instance -n $managedDatabase --dest-name 
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| | |
+| スクリプト | 説明 |
 |---|---|
 | [az sql midb](/cli/azure/sql/midb) | Managed Instance のデータベース コマンド。 |
 
@@ -64,4 +64,4 @@ az sql midb restore -g $resource --mi $instance -n $managedDatabase --dest-name 
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
-その他の SQL Database 用の CLI サンプル スクリプトは、[Azure SQL Database のドキュメント](../sql-database-cli-samples.md)のページにあります。
+その他の SQL Database 用の CLI サンプル スクリプトは、[Azure SQL Database のドキュメント](../../azure-sql/database/az-cli-script-samples-content-guide.md)のページにあります。

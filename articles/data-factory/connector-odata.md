@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 08/05/2020
 ms.author: jingwang
-ms.openlocfilehash: c2fe6b6cc7b52dda9f2beffa444f1965723ea92a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10121243961d4c81ecc67d7453019c26743fe610
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416926"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845767"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Azure Data Factory を使用して OData ソースからデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -69,6 +69,7 @@ OData のリンクされたサービスでは、次のプロパティがサポ�
 | servicePrincipalEmbeddedCertPassword | 証明書がパスワードで保護されている場合は、証明書のパスワードを指定します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。  | いいえ|
 | tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure portal の右上隅にマウスを置くことで取得します。 | いいえ |
 | aadResourceId | 認可を要求する AAD リソースを指定します。| いいえ |
+| azureCloudType | サービス プリンシパル認証の場合は、ご自分の AAD アプリケーションの登録先である Azure クラウド環境の種類を指定します。 <br/> 指定できる値は、**AzurePublic**、**AzureChina**、**AzureUsGovernment**、および **AzureGermany** です。 既定では、データ ファクトリのクラウド環境が使用されます。 | いいえ |
 | connectVia | データ ストアに接続するために使用される [Integration Runtime](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
 **例 1: 匿名認証を使用する**
@@ -244,6 +245,7 @@ OData からデータをコピーする場合、コピー アクティビティ�
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの **type** プロパティは **ODataSource** に設定する必要があります。 | はい |
 | query | データをフィルター処理するための OData クエリ オプション。 例: `"$select=Name,Description&$top=5"`.<br/><br/>**注**:OData コネクタは、次の結合された URL からデータをコピーします。`[URL specified in linked service]/[path specified in dataset]?[query specified in copy activity source]` 詳細については、[OData の URL コンポーネント](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)に関するページを参照してください。 | いいえ |
+| httpRequestTimeout | HTTP 要求が応答を取得する際のタイムアウト (**TimeSpan** 値)。 この値は、応答データの読み取りのタイムアウトではなく、応答の取得のタイムアウトです。 指定しない場合は、既定値の **00:30:00** (30 分) が使用されます。 | いいえ |
 
 **例**
 

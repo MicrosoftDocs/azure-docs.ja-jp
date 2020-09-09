@@ -3,15 +3,16 @@ title: 変更フィード推定機能を使用する - Azure Cosmos DB
 description: 変更フィード推定機能を使用して、お使いの変更フィード プロセッサの進行状況を分析する方法について説明します。
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/15/2019
 ms.author: maquaran
-ms.openlocfilehash: 0023f68400b36b9abd3b9d4a789895e79f67aa03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 442e1c4facce076ce9eeacee772df9381fee6f71
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77585290"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997219"
 ---
 # <a name="use-the-change-feed-estimator"></a>変更フィード推定機能を使用する
 

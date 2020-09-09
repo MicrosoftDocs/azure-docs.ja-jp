@@ -13,14 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: ae1371a8f025fd5e5722d483323fbe937538eb15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 10976c91e781763264d73adcc54ba88ec8d07f54
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78939221"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89256533"
 ---
 # <a name="implement-failover-streaming-with-media-services-v2"></a>Media Services v2 でフェールオーバー ストリーミングを実装する
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 このチュートリアルでは、1 つの資産から別の資産にコンテンツ (BLOB) をコピーする、オンデマンド ストリーミングの冗長性対応の方法を示します。 このシナリオは、2 つのデータセンターのどちらか一方で障害が発生した場合に両者間でフェールオーバーを行うように Azure Content Delivery Network を設定する場合に利用できます。 このチュートリアルでは、Azure Media Services SDK、Azure Media Services REST API、Azure Storage SDK を使用して以下のタスクのデモンストレーションを行います。
 

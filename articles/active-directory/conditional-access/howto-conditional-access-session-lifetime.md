@@ -4,19 +4,19 @@ description: ユーザー サインインの頻度やブラウザー セッシ�
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 11/21/2019
+ms.topic: how-to
+ms.date: 06/29/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e9c0c88064c00c97de7dc58a500910e81c04eef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 28516482cf154c81912de0f8e3f35b9e54ef2f69
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230795"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948268"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>条件付きアクセスを使用して認証セッション管理を構成する
 
@@ -50,6 +50,14 @@ ms.locfileid: "79230795"
 - Teams Web クライアント
 - Dynamics CRM Online
 - Azure portal
+
+サインイン頻度設定は、独自の Cookie が削除されず、定期的に認証のために Azure AD にリダイレクトされる限り、SAML アプリケーションでも機能します。
+
+### <a name="user-sign-in-frequency-and-multi-factor-authentication"></a>ユーザーのサインイン頻度と多要素認証
+
+以前は、サインイン頻度は、Azure AD 参加済み、Hybrid Azure AD 参加済み、Azure AD 登録済みのデバイス上での第一要素認証のみに適用されていました。 お客様がこれらのデバイスに対して多要素認証 (MFA) を再適用する簡単な方法はありませんでした。 お客様からのフィードバックに基づいて、サインイン頻度が MFA にも適用されるようになります。
+
+[![サインインの頻度と MFA](media/howto-conditional-access-session-lifetime/conditional-access-flow-chart-small.png)](media/howto-conditional-access-session-lifetime/conditional-access-flow-chart.png#lightbox)
 
 ### <a name="user-sign-in-frequency-and-device-identities"></a>ユーザーサインインの頻度とデバイス ID
 
@@ -99,8 +107,6 @@ Azure AD 参加済み、ハイブリッド Azure AD 参加済み、または Azu
 
 Azure AD 登録済み Windows デバイスでは、デバイスへのサインインはプロンプトと見なされます。 たとえば、Office アプリのサインイン頻度を 24 時間に構成している場合、Azure AD 登録済み Windows デバイスのユーザーは、デバイスにサインインすることによって、サインイン頻度ポリシーを満たし、Office アプリを開いたときに再度プロンプトされることはありません。
 
-同じブラウザー セッションで実行している別の Web アプリに異なるサインイン頻度を構成している場合は、同じブラウザー セッションで実行しているすべてのアプリが単一のセッション トークンを共有するので、最も厳しいポリシーが両方のアプリに適用されます。
-
 ### <a name="policy-2-persistent-browser-session"></a>ポリシー 2:永続的ブラウザー セッション
 
 1. 新しいポリシーを作成します
@@ -130,5 +136,5 @@ What-If ツールを使用して、ポリシーをどのように構成するか
 
 ## <a name="next-steps"></a>次のステップ
 
-* 条件付きアクセス ポリシーを構成する方法については、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](app-based-mfa.md)」の記事を参照してください。
+* 条件付きアクセス ポリシーを構成する方法については、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](../authentication/tutorial-enable-azure-mfa.md)」の記事を参照してください。
 * 環境のための条件付きアクセス ポリシーを構成する準備ができている場合は、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](best-practices.md)」の記事を参照してください。

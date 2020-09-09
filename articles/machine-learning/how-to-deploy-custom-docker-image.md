@@ -5,17 +5,18 @@ description: Azure Machine Learning モデルをデプロイするときにカ�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 03/16/2020
-ms.openlocfilehash: a237beb72e35a236e353c58db520a8d611fdfdcd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/17/2020
+ms.topic: conceptual
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 76eed22052b8c9fe2cc849e68dd926ef2c85208a
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81618002"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843217"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>カスタム Docker ベース イメージを使用してモデルをデプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -48,7 +49,7 @@ Azure Machine Learning には既定の Docker ベース イメージが用意さ
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 * [Azure Machine Learning 用 CLI 拡張機能](reference-azure-machine-learning-cli.md)。
 * インターネット上でアクセスできる [Azure Container Registry](/azure/container-registry) またはその他の Docker レジストリ。
-* このドキュメントの手順は、モデルのデプロイの一部として __推論構成__ オブジェクトの作成と使用に慣れていることを前提としています。 詳細については、[デプロイ先と方法](how-to-deploy-and-where.md#prepare-to-deploy)に関するページの「デプロイを準備する」セクションを参照してください。
+* このドキュメントの手順は、モデルのデプロイの一部として __推論構成__ オブジェクトの作成と使用に慣れていることを前提としています。 詳細については、[デプロイする場所と方法](how-to-deploy-and-where.md)に関する記事を参照してください。
 
 ## <a name="create-a-custom-base-image"></a>カスタム ベース イメージを作成する
 
@@ -75,7 +76,7 @@ Azure Machine Learning には既定の Docker ベース イメージが用意さ
 
     * Ubuntu 16.04 以上
     * Conda 4.5.# 以上
-    * Python 3.5.# または 3.6.#
+    * Python 3.5.#、3.6.#、または 3.7.#
 
 <a id="getname"></a>
 
@@ -174,7 +175,7 @@ Azure Container Registry に既存のイメージをアップロードする詳�
 
 カスタム イメージを使用するには、次の情報が必要です。
 
-* __イメージ名__。 たとえば、`mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` は Microsoft が提供する基本的な Docker イメージへのパスです。
+* __イメージ名__。 たとえば、`mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda:latest` は Microsoft が提供する基本的な Docker イメージへのパスです。
 
     > [!IMPORTANT]
     > 作成したカスタム イメージに対しては、必ず、イメージに使用したタグを含めてください。 たとえば、`:v1`などの特定のタグを使ってイメージを作成した場合などです。 イメージの作成時に特定のタグを使用しなかった場合は、`:latest` のタグが適用済みになっています。
@@ -204,15 +205,7 @@ ONNX Runtime の基本イメージの詳細については、GitHub リポジト
 > [!TIP]
 > これらのイメージは一般公開されているため、使用するときにアドレス、ユーザー名、またはパスワードを入力する必要はありません。
 
-詳細については、[Azure Machine Learning コンテナー](https://github.com/Azure/AzureML-Containers)に関するページを参照してください。
-
-> [!TIP]
->__モデルを Azure Machine Learning コンピューティングでトレーニングする場合__、__バージョン 1.0.22 以降__ の Azure Machine Learning SDK を使用して、トレーニング時にイメージが作成されます。 このイメージの名前を見つけるには、`run.properties["AzureML.DerivedImageName"]` を使用します。 次の例は、このイメージを使用する方法を示しています。
->
-> ```python
-> # Use an image built during training with SDK 1.0.22 or greater
-> image_config.base_image = run.properties["AzureML.DerivedImageName"]
-> ```
+詳細については、GitHub 上の [Azure Machine Learning コンテナー](https://github.com/Azure/AzureML-Containers)のリポジトリを参照してください。
 
 ### <a name="use-an-image-with-the-azure-machine-learning-sdk"></a>Azure Machine Learning SDK でイメージを使用する
 
@@ -227,7 +220,7 @@ from azureml.core.environment import Environment
 myenv = Environment(name="myenv")
 # Enable Docker and reference an image
 myenv.docker.enabled = True
-myenv.docker.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
+myenv.docker.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda:latest"
 ```
 
 ご自分のワークスペース内にない __プライベート コンテナー レジストリ__ のイメージを使用するには、`docker.base_image_registry` でリポジトリのアドレスとユーザー名とパスワードを指定する必要があります。
@@ -288,7 +281,7 @@ Machine Learning CLI を使用してモデルをデプロイする前に、カ�
         "docker": {
             "arguments": [],
             "baseDockerfile": null,
-            "baseImage": "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda",
+            "baseImage": "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda:latest",
             "enabled": false,
             "sharedVolumes": true,
             "shmSize": null

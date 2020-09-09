@@ -3,12 +3,12 @@ title: テンプレート関数 - 文字列
 description: Azure Resource Manager テンプレートで、文字列を操作するために使用する関数について説明します。
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: c0517375b273384f263e8ba421995d4afb6c193b
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 42df0317658971b9e9bf3fb805c9a5ff44efaf45
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80982416"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962069"
 ---
 # <a name="string-functions-for-arm-templates"></a>ARM テンプレート用の文字列関数
 
@@ -69,7 +69,7 @@ base64 形式を含む文字列。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "stringData": {
@@ -134,7 +134,7 @@ JSON オブジェクト。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "stringData": {
@@ -199,7 +199,7 @@ base64 形式を文字列に変換します。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "stringData": {
@@ -267,7 +267,7 @@ base64 形式を文字列に変換します。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "prefix": {
@@ -295,24 +295,24 @@ base64 形式を文字列に変換します。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": { 
-        "firstArray": { 
-            "type": "array", 
-            "defaultValue": [ 
-                "1-1", 
-                "1-2", 
-                "1-3" 
-            ] 
+    "parameters": {
+        "firstArray": {
+            "type": "array",
+            "defaultValue": [
+                "1-1",
+                "1-2",
+                "1-3"
+            ]
         },
         "secondArray": {
-            "type": "array", 
-            "defaultValue": [ 
-                "2-1", 
+            "type": "array",
+            "defaultValue": [
+                "2-1",
                 "2-2",
-                "2-3" 
-            ] 
+                "2-3"
+            ]
         }
     },
     "resources": [
@@ -355,7 +355,7 @@ base64 形式を文字列に変換します。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "stringToTest": {
@@ -435,7 +435,7 @@ base64 形式を文字列に変換します。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "stringToTest": {
@@ -490,7 +490,7 @@ base64 形式を文字列に変換します。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "stringToTest": {
@@ -545,7 +545,7 @@ base64 形式を文字列に変換します。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testArray": {
@@ -611,7 +611,7 @@ base64 形式を文字列に変換します。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -676,7 +676,7 @@ base64 形式を文字列に変換します。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -730,7 +730,7 @@ base64 形式を文字列に変換します。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "greeting": {
@@ -812,7 +812,7 @@ base64 形式を文字列に変換します。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {},
     "variables": {},
@@ -857,7 +857,7 @@ base64 形式を文字列に変換します。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -917,7 +917,7 @@ base64 形式を文字列に変換します。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -970,7 +970,7 @@ base64 形式を文字列に変換します。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -1022,7 +1022,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="return-value"></a>戻り値
 
-整数。 
+整数。
 
 ### <a name="examples"></a>例
 
@@ -1030,7 +1030,7 @@ base64 形式を文字列に変換します。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -1114,7 +1114,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "guidValue": {
@@ -1143,7 +1143,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "guidValue": {
@@ -1205,11 +1205,11 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/padleft.json)では、文字の合計数に達するまでゼロ文字を追加することで、ユーザー指定のパラメーター値を埋め込む方法を示します。 
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/padleft.json)では、文字の合計数に達するまでゼロ文字を追加することで、ユーザー指定のパラメーター値を埋め込む方法を示します。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testString": {
@@ -1257,7 +1257,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testString": {
@@ -1309,7 +1309,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testArray": {
@@ -1377,7 +1377,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstString": {
@@ -1436,7 +1436,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -1501,7 +1501,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testObject": {
@@ -1576,7 +1576,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 "parameters": {
     "inputString": { "type": "string", "value": "1234567890" }
 },
-"variables": { 
+"variables": {
     "prefix": "[substring(parameters('inputString'), 0, 11)]"
 }
 ```
@@ -1587,7 +1587,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testString": {
@@ -1634,7 +1634,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testArray": {
@@ -1701,7 +1701,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testString": {
@@ -1752,7 +1752,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testString": {
@@ -1803,7 +1803,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testString": {
@@ -1831,7 +1831,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 `uniqueString (baseString, ...)`
 
-パラメーターとして渡された値に基づいて、決定論的ハッシュ文字列を作成します。 
+パラメーターとして渡された値に基づいて、決定論的ハッシュ文字列を作成します。
 
 ### <a name="parameters"></a>パラメーター
 
@@ -1842,11 +1842,11 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 ### <a name="remarks"></a>解説
 
-この関数は、リソースの一意の名前を作成する必要がある場合に便利です。 結果の一意性のスコープを制限するパラメーターの値を指定します。 サブスクリプション、リソース グループ、またはデプロイのレベルで名前が一意であるかどうかを指定できます。 
+この関数は、リソースの一意の名前を作成する必要がある場合に便利です。 結果の一意性のスコープを制限するパラメーターの値を指定します。 サブスクリプション、リソース グループ、またはデプロイのレベルで名前が一意であるかどうかを指定できます。
 
 返される値はランダムな文字列ではなく、ハッシュ関数の結果になります。 返される値は、13 文字です。 グローバルに一意ではありません。 命名規則にあるプレフィックスをこの値と組み合わせて、わかりやすい名前を作成することもできます。 次の例では、戻り値の形式を示します。 実際の値は、指定されたパラメーターによって異なります。
 
-    tcvhiyu5h2o5o
+`tcvhiyu5h2o5o`
 
 次の例は、uniqueString を使用して、よく使用されるレベルで一意の値を作成する方法を示しています。
 
@@ -1871,9 +1871,9 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 次の例は、リソース グループに基づいてストレージ アカウントの一意の名前を作成する方法を示しています。 リソース グループ内では、名前は、同じ方法で作成されると一意ではなくなります。
 
 ```json
-"resources": [{ 
-    "name": "[concat('storage', uniqueString(resourceGroup().id))]", 
-    "type": "Microsoft.Storage/storageAccounts", 
+"resources": [{
+    "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+    "type": "Microsoft.Storage/storageAccounts",
     ...
 ```
 
@@ -1889,7 +1889,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -1920,12 +1920,12 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 
 * **baseUri** の末尾がスラッシュで終わる場合、結果は単純に **baseUri** の後に **relativeUri** が続きます。
 
-* **baseUri** の末尾がスラッシュで終わっていない場合は、次の 2 つのいずれかが発生します。  
+* **baseUri** の末尾がスラッシュで終わっていない場合は、次の 2 つのいずれかが発生します。
 
    * **baseUri** にスラッシュが (先頭付近の "//" を除いて) まったく含まれていない場合、結果は単純に **baseUri** の後に **relativeUri** が続きます。
 
    * **baseUri** にスラッシュが含まれているが、末尾がスラッシュでない場合は、最後のスラッシュの後ろがすべて **baseUri** から削除され、結果は **baseUri** の後に **relativeUri** が続きます。
-     
+
 次に例をいくつか示します。
 
 ```
@@ -1952,11 +1952,11 @@ uri('http://contoso.org/firstpath/azuredeploy.json/', 'myscript.sh') -> http://c
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "variables": {
         "uriFormat": "[uri('http://contoso.com/resources/', 'nested/azuredeploy.json')]",
-        "uriEncoded": "[uriComponent(variables('uriFormat'))]" 
+        "uriEncoded": "[uriComponent(variables('uriFormat'))]"
     },
     "resources": [
     ],
@@ -2007,11 +2007,11 @@ URI エンコードされた値の文字列。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "variables": {
         "uriFormat": "[uri('http://contoso.com/resources/', 'nested/azuredeploy.json')]",
-        "uriEncoded": "[uriComponent(variables('uriFormat'))]" 
+        "uriEncoded": "[uriComponent(variables('uriFormat'))]"
     },
     "resources": [
     ],
@@ -2062,11 +2062,11 @@ URI エンコードされた値のデコード済み文字列。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "variables": {
         "uriFormat": "[uri('http://contoso.com/resources/', 'nested/azuredeploy.json')]",
-        "uriEncoded": "[uriComponent(variables('uriFormat'))]" 
+        "uriEncoded": "[uriComponent(variables('uriFormat'))]"
     },
     "resources": [
     ],

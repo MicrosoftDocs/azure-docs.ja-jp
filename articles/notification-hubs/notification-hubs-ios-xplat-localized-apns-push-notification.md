@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: a8614156be5d516d16aff698b604cf0e661d7311
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4bc392cb6d499d967656358e920f46e261af2906
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72385653"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030336"
 ---
 # <a name="tutorial-send-localized-push-notifications-to-ios-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して iOS にローカライズされたプッシュ通知を送信する
 
@@ -273,7 +273,7 @@ Visual Studio にアクセスできない場合でも、ローカライズされ
 [14]: ./media/notification-hubs-ios-send-localized-breaking-news/ios_localized2.png
 
 <!-- URLs. -->
-[How To: Service Bus Notification Hubs (iOS Apps)]: https://msdn.microsoft.com/library/jj927168.aspx
+[How To: Service Bus Notification Hubs (iOS Apps)]: /previous-versions/azure/reference/dn223264(v=azure.100)
 [Notification Hubs を使用したニュース速報の送信]: notification-hubs-ios-xplat-segmented-apns-push-notification.md
 [Mobile Service]: /develop/mobile/tutorials/get-started
 [Notify users with Notification Hubs: ASP.NET]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
@@ -290,5 +290,5 @@ Visual Studio にアクセスできない場合でも、ローカライズされ
 [JavaScript and HTML]: ../get-started-with-push-js.md
 [Windows Developer Preview registration steps for Mobile Services]: ../mobile-services-windows-developer-preview-registration.md
 [wns object]: https://go.microsoft.com/fwlink/p/?LinkId=260591
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-To for iOS]: https://msdn.microsoft.com/library/jj927168.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[Notification Hubs How-To for iOS]: /previous-versions/azure/reference/dn223264(v=azure.100)

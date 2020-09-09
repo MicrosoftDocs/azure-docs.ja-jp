@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 02/27/2020
-ms.openlocfilehash: 04469fa1bd0473710d9fa0bf0190c6459f1f8a07
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/22/2020
+ms.openlocfilehash: 29bdedd5ae40db57809c11500af404d308366ca7
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418781"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "86081640"
 ---
-# <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Azure Data Factory を使って複数のテーブルを一括コピーする
+# <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Azure portal で Azure Data Factory を使用して複数のテーブルを一括コピーする
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -33,7 +33,7 @@ ms.locfileid: "81418781"
 > * データ ファクトリを作成します。
 > * Azure SQL Database、Azure Synapse Analytics (旧称 SQL DW)、Azure Storage のリンクされたサービスを作成します。
 > * Azure SQL Database と Azure Synapse Analytics (旧称 SQL DW) のデータセットを作成します。
-> * コピーするテーブルを検索するためのパイプラインと実際のコピー操作を実行するためのパイプラインを作成します。 
+> * コピーするテーブルを検索するためのパイプラインと、実際のコピー操作を実行するためのもう 1 つのパイプラインを作成します。 
 > * パイプラインの実行を開始します。
 > * パイプラインとアクティビティの実行を監視します。
 
@@ -58,7 +58,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 **ソース Azure SQL Database の準備**:
 
-[Azure SQL データベースの作成](../sql-database/sql-database-get-started-portal.md)に関する記事に従い、Adventure Works LT サンプル データを使って Azure SQL データベースを作成します。 このチュートリアルでは、このサンプル データベースからすべてのテーブルを Azure Synapse Analytics (旧称 SQL DW) にコピーします。
+[Azure SQL Database のデータベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関する記事に従い、Adventure Works LT サンプル データを使って SQL Database にデータベースを作成します。 このチュートリアルでは、このサンプル データベースからすべてのテーブルを Azure Synapse Analytics (旧称 SQL DW) にコピーします。
 
 **シンク Azure Synapse Analytics (旧称 SQL DW) の準備**:
 
@@ -68,11 +68,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="azure-services-to-access-sql-server"></a>SQL サーバーにアクセスするための Azure サービス
 
-SQL Database と Azure Synapse Analytics (旧称 SQL DW) の両方について、SQL サーバーへのアクセスを Azure サービスに許可します。 ご自分の Azure SQL Server で **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** 設定を**オン**にしてください。 この設定により、Data Factory サービスが Azure SQL Database からデータを読み取ったり、Azure Synapse Analytics (旧称 SQL DW) にデータを書き込んだりすることができます。 
+SQL Database と Azure Synapse Analytics (旧称 SQL DW) の両方について、SQL サーバーへのアクセスを Azure サービスに許可します。 サーバーで **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** 設定を**オン**にしてください。 この設定により、Data Factory サービスが Azure SQL Database からデータを読み取ったり、Azure Synapse Analytics (旧称 SQL DW) にデータを書き込んだりすることができます。 
 
-この設定を確認して有効にするには、ご自分の Azure SQL サーバーで [セキュリティ] > [ファイアウォールと仮想ネットワーク] の順に移動して、 **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** を **[オン]** に設定します。
+この設定を確認して有効にするには、サーバーで [セキュリティ] > [ファイアウォールと仮想ネットワーク] の順に移動して、 **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** を **[オン]** に設定します。
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
+
 1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。 
 1. Azure portal のメニューの左側で、 **[リソースの作成]**  >  **[分析]**  >  **[Data Factory]** の順に選択します。 
@@ -81,7 +82,9 @@ SQL Database と Azure Synapse Analytics (旧称 SQL DW) の両方について�
  
    Azure データ ファクトリの名前は **グローバルに一意**にする必要があります。 [名前] フィールドで次のエラーが発生した場合は、データ ファクトリの名前を変更してください (yournameADFTutorialBulkCopyDF など)。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事を参照してください。
   
-       `Data factory name "ADFTutorialBulkCopyDF" is not available`
+    ```text
+    Data factory name "ADFTutorialBulkCopyDF" is not available
+    ```
 1. データ ファクトリを作成する Azure **サブスクリプション**を選択します。 
 1. **[リソース グループ]** について、次の手順のいずれかを行います。
      
@@ -105,24 +108,27 @@ SQL Database と Azure Synapse Analytics (旧称 SQL DW) の両方について�
 このチュートリアルでは、ご自分のデータ ファクトリに Azure SQL Database、Azure Synapse Analytics (旧称 SQL DW)、および Azure Blob Storage の各データ ストアをリンクします。 Azure SQL Database はソース データ ストアです。 Azure Synapse Analytics (旧称 SQL DW) はシンク (コピー先) データ ストアです。 データは、Azure Blob Storage にステージングされてから、PolyBase を使用して Azure Synapse Analytics (旧称 SQL DW) に読み込まれます。 
 
 ### <a name="create-the-source-azure-sql-database-linked-service"></a>ソース Azure SQL Database のリンクされたサービスを作成する
-この手順では、Azure SQL データベースをデータ ファクトリに接続するためのリンクされたサービスを作成します。 
+この手順では、Azure SQL Database のデータベースをデータ ファクトリに接続するためのリンクされたサービスを作成します。 
 
-1. ウィンドウの下部にある **[接続]** をクリックし、ツールバーの **[+ 新規]** をクリックします ( **[接続]** ボタンは、 **[Factory Resources]\(ファクトリ リソース\)** の左側の列の下部にあります)。 
+1. 左ペインから [[管理] タブ](https://docs.microsoft.com/azure/data-factory/author-management-hub)を開きます。
 
+1. [リンクされたサービス] ページの **[+ 新規]** を選択して、リンクされたサービスを新規作成します。
+
+   ![新規のリンクされたサービス](./media/doc-common-process/new-linked-service.png)
 1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで **[Azure SQL Database]** を選択し、 **[続行]** をクリックします。 
 1. **[New Linked Service (Azure SQL Database)]** \(新しいリンクされたサービス (Azure SQL Database)\) ウィンドウで、次の手順を実行します。 
 
     a. **[名前]** に「**AzureSqlDatabaseLinkedService**」と入力します。
+
+    b. **[サーバー名]** で、サーバーを選択します
     
-    b. **[サーバー名]** で、使用する Azure SQL Server を選択します。
+    c. **[データベース名]** で、データベースを選択します。 
     
-    c. **[データベース名]** で、使用する Azure SQL データベースを選択します。 
-    
-    d. **[ユーザー名]** に、Azure SQL データベースに接続するユーザーの名前を入力します。 
+    d. **[ユーザー名]** に、データベースに接続するユーザーの名前を入力します。 
     
     e. **[パスワード]** に、そのユーザーのパスワードを入力します。 
 
-    f. 指定した情報を使用して Azure SQL データベースへの接続をテストするために、 **[テスト接続]** をクリックします。
+    f. 指定した情報を使用してデータベースへの接続をテストするために、 **[テスト接続]** をクリックします。
   
     g. **[作成]** をクリックして、リンクされたサービスを保存します。
 
@@ -135,15 +141,15 @@ SQL Database と Azure Synapse Analytics (旧称 SQL DW) の両方について�
    
     a. **[名前]** に「**AzureSqlDWLinkedService**」と入力します。
      
-    b. **[サーバー名]** で、使用する Azure SQL Server を選択します。
+    b. **[サーバー名]** で、サーバーを選択します
      
-    c. **[データベース名]** で、使用する Azure SQL データベースを選択します。 
+    c. **[データベース名]** で、データベースを選択します。 
      
-    d. **[ユーザー名]** に、Azure SQL データベースに接続するユーザーの名前を入力します。 
+    d. **[ユーザー名]** に、データベースに接続するユーザーの名前を入力します。 
      
     e. **[パスワード]** に、そのユーザーのパスワードを入力します。 
      
-    f. 指定した情報を使用して Azure SQL データベースへの接続をテストするために、 **[テスト接続]** をクリックします。
+    f. 指定した情報を使用してデータベースへの接続をテストするために、 **[テスト接続]** をクリックします。
      
     g. **Create** をクリックしてください。
 
@@ -158,7 +164,6 @@ SQL Database と Azure Synapse Analytics (旧称 SQL DW) の両方について�
     b. **[ストレージ アカウント名]** で、使用する **Azure ストレージ アカウント**を選択します。
     
     c. **Create** をクリックしてください。
-
 
 ## <a name="create-datasets"></a>データセットを作成する
 このチュートリアルでは、データの格納場所を指定するための、ソースとシンクのデータセットを作成します。 
@@ -178,7 +183,7 @@ SQL Database と Azure Synapse Analytics (旧称 SQL DW) の両方について�
     
 1. **[Set properties]** \(プロパティの設定\) ウィンドウの **[名前]** の下に、「**AzureSqlDatabaseDataset**」と入力します。 **[リンクされたサービス]** の下で **[AzureSqlDatabaseLinkedService]** を選択します。 次に、 **[OK]** をクリックします
 
-1. **[接続]** タブに切り替えて、 **[テーブル]** で任意のテーブルを選択します。 このテーブルはダミーのテーブルです。 パイプラインを作成するときに、ソース データセットに対するクエリを指定します。 このクエリは Azure SQL データベースからデータを抽出するために使用します。 または、 **[編集]** チェック ボックスをオンにして、テーブル名として「**dbo.dummyName**」と入力してもかまいません。 
+1. **[接続]** タブに切り替えて、 **[テーブル]** で任意のテーブルを選択します。 このテーブルはダミーのテーブルです。 パイプラインを作成するときに、ソース データセットに対するクエリを指定します。 このクエリは、データベースからデータを抽出するために使用します。 または、 **[編集]** チェック ボックスをオンにして、テーブル名として「**dbo.dummyName**」と入力してもかまいません。 
  
 
 ### <a name="create-a-dataset-for-sink-azure-synapse-analytics-formerly-sql-dw"></a>シンク Azure Synapse Analytics (旧称 SQL DW) のデータセットを作成する
@@ -186,17 +191,18 @@ SQL Database と Azure Synapse Analytics (旧称 SQL DW) の両方について�
 1. 左ウィンドウで **[+]\(プラス記号\)** をクリックし、 **[データセット]** をクリックします。 
 1. **[新しいデータセット]** ウィンドウで **[Azure Synapse Analytics (旧称 SQL DW)]** を選択し、 **[続行]** をクリックします。
 1. **[Set properties]** \(プロパティの設定\) ウィンドウの **[名前]** の下に、「**AzureSqlDWDataset**」と入力します。 **[リンクされたサービス]** で **[AzureSqlDWLinkedService]** を選択します。 次に、 **[OK]** をクリックします
-1. **[パラメーター]** タブに切り替えて **[+ 新規]** をクリックし、パラメーター名として「**DWTableName**」と入力します。 ページからこの名前をコピーして貼り付ける場合は、**DWTableName** の末尾に**末尾空白文字**がないことを確認してください。
+1. **[パラメーター]** タブに切り替えて **[+ 新規]** をクリックし、パラメーター名として「**DWTableName**」と入力します。 **[+ 新規]** をもう一度クリックし、パラメーター名として「**DWSchema**」と入力します。 ページからこの名前をコピーして貼り付ける場合は、*DWTableName* および *DWSchema* の末尾に**末尾空白文字**がないことを確認してください。 
 1. **[接続]** タブに切り替えます。 
 
-    a. **[テーブル]** で、 **[編集]** オプションをオンにします。 先頭のテーブル名入力ボックスに「**dbo**」と入力します。 続けて 2 つ目の入力ボックスを選択し、下の **[動的なコンテンツの追加]** リンクをクリックします。 
+    1. **[テーブル]** で、 **[編集]** オプションをオンにします。 最初の入力ボックスを選択し、下の **[動的なコンテンツの追加]** リンクをクリックします。 **[動的なコンテンツの追加]** ページの **[パラメーター]** の下の **[DWSchema]** をクリックします。これで、自動的に上部の式テキストボックスに `@dataset().DWSchema` が入力されます。次に、 **[完了]** をクリックします。  
+    
+        ![データセット接続のテーブル名](./media/tutorial-bulk-copy-portal/dataset-connection-tablename.png)
 
-    ![データセット接続のテーブル名](./media/tutorial-bulk-copy-portal/dataset-connection-tablename.png)
+    1. 2 つ目の入力ボックスを選択し、下の **[動的なコンテンツの追加]** リンクをクリックします。 **[動的なコンテンツの追加]** ページの **[パラメーター]** の下の **[DWTAbleName]** をクリックします。これで、自動的に上部の式テキストボックスに `@dataset().DWTableName` が入力されます。次に、 **[完了]** をクリックします。 
+    
+    1. データセットの **tableName** プロパティに設定される値は、**DWSchema** および **DWTableName** パラメーターの引数として渡されます。 ForEach アクティビティによってテーブルのリストが反復処理され、コピー アクティビティに 1 つずつ渡されます。 
+    
 
-    b. **[動的なコンテンツの追加]** ページの **[パラメーター]** の下の **[DWTAbleName]** をクリックします。これで、自動的に上部の式テキストボックスに `@dataset().DWTableName` が入力されます。次に、 **[完了]** をクリックします。 データセットの **[tableName]** プロパティに設定される値は、**DWTableName** パラメーターの引数として渡されます。 ForEach アクティビティによってテーブルのリストが反復処理され、コピー アクティビティに 1 つずつ渡されます。 
-
-    ![データセット パラメーター ビルダー](./media/tutorial-bulk-copy-portal/dataset-parameter-builder.png)
- 
 ## <a name="create-pipelines"></a>パイプラインを作成する
 このチュートリアルでは、2 つのパイプラインを作成します。**IterateAndCopySQLTables** と **GetTableListAndTriggerCopyData** です。 
 
@@ -212,7 +218,8 @@ SQL Database と Azure Synapse Analytics (旧称 SQL DW) の両方について�
 1. 左ウィンドウで **[+]\(プラス記号\)** をクリックし、 **[パイプライン]** をクリックします。
 
     ![新しいパイプライン メニュー](./media/tutorial-bulk-copy-portal/new-pipeline-menu.png)
-1. **[全般]** タブで、名前に「**IterateAndCopySQLTables**」と指定します。 
+ 
+1. [全般] パネルの **[プロパティ]** の下で、 **[名前]** に「**IterateAndCopySQLTables**」と指定します。 次に、右上隅にある [プロパティ] アイコンをクリックしてパネルを折りたたみます。
 
 1. **[パラメーター]** タブに切り替えて、次の手順を実行します。 
 
@@ -253,7 +260,8 @@ SQL Database と Azure Synapse Analytics (旧称 SQL DW) の両方について�
 1. **[シンク]** タブに切り替えて、次の手順を実行します。 
 
     1. **[Sink Dataset]\(シンク データセット\)** で「**AzureSqlDWDataset**」を選択します。
-    1. DWTableName パラメーターの [値] の入力ボックスをクリックして、下の **[動的なコンテンツの追加]** を選択します。次に、`[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]` 式をスクリプトとして入力して、 **[完了]** を選択します。
+    1. DWTableName パラメーターの [値] の入力ボックスをクリックして、下の **[動的なコンテンツの追加]** を選択します。次に、`@item().TABLE_NAME` 式をスクリプトとして入力して、 **[完了]** を選択します。
+    1. DWSchema パラメーターの [値] の入力ボックスをクリックして、下の **[動的なコンテンツの追加]** を選択します。次に、`@item().TABLE_SCHEMA` 式をスクリプトとして入力して、 **[完了]** を選択します。
     1. [Copy method]\(コピー メソッド\) で **[PolyBase]** を選択します。 
     1. **[使用型の既定]** オプションをオフにします。 
     1. **[Pre-copy Script]\(コピー前スクリプト\)** 入力ボックスをクリックして、下の **[動的なコンテンツの追加]** を選択します。次に、以下の式をスクリプトとして入力し、 **[完了]** を選択します。 
@@ -278,12 +286,12 @@ SQL Database と Azure Synapse Analytics (旧称 SQL DW) の両方について�
 * パイプライン "IterateAndCopySQLTables" をトリガーして実際にデータのコピーを実行します。
 
 1. 左ウィンドウで **[+]\(プラス記号\)** をクリックし、 **[パイプライン]** をクリックします。
-1. **[全般]** タブで、パイプラインの名前を「**GetTableListAndTriggerCopyData**」に変更します。 
+1. **[プロパティ]** の下の [全般] パネルで、パイプラインの名前を「**GetTableListAndTriggerCopyData**」に変更します。 
 
 1. **[アクティビティ]** ツール ボックスで **[全般]** を展開し、パイプライン デザイナー画面に **[検索]** アクティビティをドラッグ アンド ドロップして、次のステップを実行します。
 
     1. **[名前]** に「**LookupTableList**」と入力します。 
-    1. **[説明]** に「**Azure SQL データベースからテーブル リストを取得する**」と入力します。
+    1. **[説明]** に「**データベースからテーブル リストを取得する**」と入力します。
 
 1. **[設定]** タブに切り替えて、次の手順を実行します。
 
@@ -306,10 +314,8 @@ SQL Database と Azure Synapse Analytics (旧称 SQL DW) の両方について�
 1. **[Execute Pipeline]\(パイプラインの実行\)** アクティビティの **[設定]** タブに切り替え、以下の手順を実行します。 
 
     1. **[Invoked pipeline]\(呼び出されたパイプライン\)** で **[IterateAndCopySQLTables]** を選択します。 
-    1. **[Advanced]\(詳細\)** セクションを展開し、 **[Wait on completion]\(完了時に待機\)** のチェック ボックスをオフにします。
-    1. **[パラメーター]** セクションで **[+ 新規]** をクリックします。 
-    1. **[名前]** に、パラメーター名として「**tableList**」と入力します。
-    1. [値] 入力ボックスをクリックして、下の **[動的なコンテンツの追加]** を選択します。次に、テーブル名の値として「`@activity('LookupTableList').output.value`」と入力し、 **[完了]** を選択します。 これで、2 つ目のパイプラインへの入力として検索アクティビティの結果一覧が設定されます。 結果一覧には、コピー先にコピーする必要があるデータが格納されたテーブルの一覧が含まれています。 
+    1. **[Wait on completion]\(完了時に待機\)** チェック ボックスをオフにします。
+    1. **[パラメーター]** セクションで、[値] の入力ボックスをクリックして、下の **[動的なコンテンツの追加]** を選択します。次に、「`@activity('LookupTableList').output.value`」をテーブル名の値として入力して、 **[完了]** を選択します。 これで、2 つ目のパイプラインへの入力として検索アクティビティの結果一覧が設定されます。 結果一覧には、コピー先にコピーする必要があるデータが格納されたテーブルの一覧が含まれています。 
 
         ![パイプラインの実行アクティビティ - [設定] ページ](./media/tutorial-bulk-copy-portal/execute-pipeline-settings-page.png)
 

@@ -15,12 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2019
 ms.author: mlottner
-ms.openlocfilehash: fb5c42ad490ed04f14ff150093a44b552434ed9e
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.custom: references_regions
+ms.openlocfilehash: 9ce903271accd3f63df7634dc5045932655ac2a7
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310574"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531151"
 ---
 # <a name="azure-security-center-for-iot-prerequisites"></a>Azure Security Center for IoT の前提条件
 
@@ -29,7 +30,7 @@ ms.locfileid: "81310574"
 ## <a name="minimum-requirements"></a>最小要件
 
 - IoT Hub Standard レベル
-  - RBAC ロールの**所有者**レベルの特権
+  - Azure ロールの**所有者**レベルの特権
 - [Log Analytics ワークスペース](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
 - Azure Security Center (推奨)
   - Azure Security Center の使用は推奨事項であり、必須ではありません。 Azure Security Center がない場合、IoT Hub 内の他の Azure リソースを表示することはできません。

@@ -5,16 +5,16 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: 514cc25e1959145c65fe60cd3054cec4ed28f44d
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 4338f4ce1fe60a3a9002be93feab134dd2601720
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80617419"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406505"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Azure Kubernetes Service から Azure Container Registry の認証を受ける
 
-Azure Kubernetes Service (AKS) で Azure Container Registry (ACR) を使用する場合は、認証メカニズムを確立する必要があります。 この記事では、これら 2 つの Azure サービス間の認証を構成する例を示します。 
+Azure Kubernetes Service (AKS) で Azure Container Registry (ACR) を使用する場合は、認証メカニズムを確立する必要があります。 この操作は、必要なアクセス許可を ACR に付与することで、CLI とポータルのエクスペリエンスの一部として実装されます。 この記事では、これら 2 つの Azure サービス間の認証を構成する例を示します。 
 
 Azure CLI を使用して、いくつかの単純なコマンドで AKS から ACR への統合を設定できます。 この統合により、AKS クラスターに関連付けられているサービス プリンシパルに AcrPull ロールが割り当てられます。
 
@@ -23,7 +23,7 @@ Azure CLI を使用して、いくつかの単純なコマンドで AKS から A
 これらの例には以下のものが必要です。
 
 * **Azure サブスクリプション**上の**所有者**または **Azure アカウント管理者**ロール。
-* Azure CLI バージョン 2.0.73 以降
+* Azure CLI バージョン 2.7.0 以降
 
 **所有者** または **Azure アカウント管理者** の役割を必要としないようにするには、サービス プリンシパルを手動で構成するか、既存のサービス プリンシパルを使用して AKS から ACR を認証します。 詳細については、[サービス プリンシパルによる ACR 認証](../container-registry/container-registry-auth-service-principal.md)または[プル シークレットを使用した Kubernetes からの認証](../container-registry/container-registry-auth-kubernetes.md)に関するページをご参照ください。
 
@@ -33,7 +33,7 @@ AKS クラスターの初期作成中に AKS と ACR の統合を設定できま
 
 ```azurecli
 # set this to the name of your Azure Container Registry.  It must be globally unique
-$MYACR=myContainerRegistry
+MYACR=myContainerRegistry
 
 # Run the following line to create an Azure Container Registry if you do not already have one
 az acr create -n $MYACR -g myContainerRegistryResourceGroup --sku basic
@@ -44,7 +44,10 @@ az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-ac
 
 または、ACR リソース ID を使用して ACR の名前を指定することもできます。その形式は次のようになります。
 
-`/subscriptions/\<subscription-id\>/resourceGroups/\<resource-group-name\>/providers/Microsoft.ContainerRegistry/registries/\<name\>` 
+`/subscriptions/\<subscription-id\>/resourceGroups/\<resource-group-name\>/providers/Microsoft.ContainerRegistry/registries/\<name\>`
+
+> [!NOTE]
+> AKS クラスターから別のサブスクリプションにある ACR を使用している場合は、AKS クラスターから接続または接続解除するときに ACR リソース ID を使用します。
 
 ```azurecli
 az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-acr /subscriptions/<subscription-id>/resourceGroups/myContainerRegistryResourceGroup/providers/Microsoft.ContainerRegistry/registries/myContainerRegistry
@@ -57,7 +60,7 @@ az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-ac
 下の **acr-name** または **acr-resource-id** に有効な値を指定することによって、既存の ACR と既存の AKS クラスターを統合します。
 
 ```azurecli
-az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acrName>
+az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-name>
 ```
 
 または、
@@ -69,7 +72,7 @@ az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-resource-id>
 次を使用して、ACR と AKS クラスター間の統合を削除することもできます。
 
 ```azurecli
-az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acrName>
+az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acr-name>
 ```
 
 or
@@ -86,7 +89,7 @@ az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acr-resource-id>
 
 
 ```azurecli
-az acr import  -n <myContainerRegistry> --source docker.io/library/nginx:latest --image nginx:v1
+az acr import  -n <acr-name> --source docker.io/library/nginx:latest --image nginx:v1
 ```
 
 ### <a name="deploy-the-sample-image-from-acr-to-aks"></a>ACR から AKS にサンプル イメージをデプロイする
@@ -97,7 +100,7 @@ az acr import  -n <myContainerRegistry> --source docker.io/library/nginx:latest 
 az aks get-credentials -g myResourceGroup -n myAKSCluster
 ```
 
-次を含む **acr-nginx.yaml** という名前のファイルを作成します。
+次を含む **acr-nginx.yaml** という名前のファイルを作成します。 レジストリのリソース名の代わりに **acr-name** を使用します。 例: *myContainerRegistry*。
 
 ```yaml
 apiVersion: apps/v1
@@ -118,7 +121,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: <replace this image property with you acr login server, image and tag>
+        image: <acr-name>.azurecr.io/nginx:v1
         ports:
         - containerPort: 80
 ```
@@ -143,5 +146,9 @@ nginx0-deployment-669dfc4d4b-x74kr   1/1     Running   0          20s
 nginx0-deployment-669dfc4d4b-xdpd6   1/1     Running   0          20s
 ```
 
+### <a name="troubleshooting"></a>トラブルシューティング
+* ACR 診断の詳細については、[こちら](../container-registry/container-registry-diagnostics-audit-logs.md)を参照してください。
+* ACR の正常性の詳細については、[こちら](../container-registry/container-registry-check-health.md)を参照してください。
+
 <!-- LINKS - external -->
-[AKS AKS CLI]:  https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-create
+[AKS AKS CLI]: /cli/azure/aks?view=azure-cli-latest#az-aks-create

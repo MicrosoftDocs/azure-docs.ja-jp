@@ -6,12 +6,12 @@ metadata:
   title: Microsoft Azure コンテナー サービスのドキュメント | Microsoft Docs
   description: Azure コンテナー サービスを使用して、クラウドベースのコンテナー アプリケーションを管理および開発する方法について説明します。
   ms.topic: hub-page
-  ms.openlocfilehash: f4d76c0f2ddbecd386a3e3b9d3de370f19b86fee
-  ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+  ms.openlocfilehash: a7b1480061a1482e5a7980fd89d9d28d89561d31
+  ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/13/2020
-  ms.locfileid: "81259019"
+  ms.lasthandoff: 08/11/2020
+  ms.locfileid: "88080849"
 highlightedContent:
   items:
   - itemType: whats-new
@@ -19,131 +19,128 @@ highlightedContent:
     url: https://azure.microsoft.com/updates/?category=containers
   - itemType: concept
     title: アプリケーションに対するマイクロサービスの手法
-    url: /azure/service-fabric/service-fabric-overview-microservices
+    url: ../service-fabric/service-fabric-overview-microservices.md
   - itemType: concept
     title: Kubernetes について
-    url: /azure/aks/concepts-clusters-workloads
+    url: ../aks/concepts-clusters-workloads.md
 conceptualContent:
   items:
   - title: Azure に Kubernetes をデプロイする
     links:
-    - url: /azure/aks/intro-kubernetes
+    - url: ../aks/intro-kubernetes.md
       itemType: overview
       text: Azure Kubernetes Service とは
-    - url: /azure/aks/tutorial-kubernetes-prepare-app
+    - url: ../aks/tutorial-kubernetes-prepare-app.md
       itemType: tutorial
       text: AKS 用にアプリケーションを準備する
-    - url: /azure/aks/kubernetes-walkthrough
+    - url: ../aks/kubernetes-walkthrough.md
       itemType: tutorial
       text: AKS クラスターの作成 (CLI)
     footerLink:
-      url: /azure/aks/
+      url: ../aks/index.yml
       text: 詳細情報
   - title: AKS アプリケーションのテストと開発
     links:
-    - url: /azure/dev-spaces/about
-      itemType: overview
-      text: Azure Dev Spaces とは
-    - url: /azure/dev-spaces/quickstart-netcore
-      itemType: quickstart
-      text: マイクロサービスを実行してデバッグする
-    - url: /azure/dev-spaces/quickstart-team-development
-      itemType: quickstart
-      text: 一連のマイクロサービスでチームと共同作業を行う
-    footerLink:
-      url: /azure/dev-spaces/
-      text: 詳細情報
+    - url: /visualstudio/containers/overview-local-process-kubernetes
+      itemType: concept
+      text: Local Process with Kubernetes のしくみ
+    - url: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
+      itemType: how-to-guide
+      text: Visual Studio Code を使用して Local Process with Kubernetes を利用する
+    - url: ../dev-spaces/how-to/local-process-kubernetes-visual-studio.md
+      itemType: how-to-guide
+      text: Visual Studio を使用して Local Process with Kubernetes を利用する
   - title: Web およびモバイル向けのクラウド アプリを作成する
     links:
-    - url: /azure/app-service/overview
+    - url: ../app-service/overview.md
       itemType: overview
       text: App Service とは
-    - url: /azure/app-service/app-service-web-tutorial-custom-domain
+    - url: ../app-service/app-service-web-tutorial-custom-domain.md
       itemType: get-started
       text: カスタム ドメインをアプリにマップする
-    - url: /azure/app-service/configure-ssl-bindings
+    - url: ../app-service/configure-ssl-bindings.md
       itemType: tutorial
       text: SSL バインディングを使用してカスタム ドメインをセキュリティで保護する
-    - url: /azure/app-service/app-service-web-get-started-windows-container
+    - url: ../app-service/quickstart-custom-container.md
       itemType: get-started
       text: カスタム Windows コンテナーを実行する
-    - url: /azure/app-service/containers/quickstart-docker
+    - url: ../app-service/containers/quickstart-docker.md
       itemType: quickstart
       text: カスタム Linux コンテナーを実行する
-    - url: /azure/app-service/containers/quickstart-multi-container
+    - url: ../app-service/containers/quickstart-multi-container.md
       itemType: quickstart
       text: Linux 複数コンテナー アプリを作成する
     footerLink:
-      url: /azure/app-service/
+      url: ../app-service/index.yml
       text: 詳細情報
   - title: Azure でコンテナーを実行する
     links:
-    - url: /azure/container-instances/container-instances-overview
+    - url: ../container-instances/container-instances-overview.md
       itemType: overview
       text: Container Instances の概要
-    - url: https://docs.microsoft.com/learn/modules/run-docker-with-azure-container-instances/
+    - url: /learn/modules/run-docker-with-azure-container-instances/
       itemType: learn
       text: Azure Container Instances で Docker を使用してコンテナー化されたアプリを実行する
-    - url: /azure/container-instances/container-instances-using-azure-container-registry
+    - url: ../container-instances/container-instances-using-azure-container-registry.md
       itemType: how-to-guide
       text: Azure Container Registry からのイメージのデプロイ
-    - url: /azure/container-registry/container-registry-quickstart-task-cli
+    - url: ../container-registry/container-registry-quickstart-task-cli.md
       itemType: get-started
       text: Azure CLI を使用したイメージのビルド、プッシュ、実行
     footerLink:
-      url: /azure/container-instances/
+      url: ../container-instances/index.yml
       text: 詳細情報
   - title: ジョブ スケジューリングとコンピューティング管理。
     links:
-    - url: /azure/batch/batch-technical-overview
+    - url: ../batch/batch-technical-overview.md
       itemType: overview
       text: Batch とは
-    - url: /azure/batch/quick-create-cli
+    - url: ../batch/quick-create-cli.md
       itemType: get-started
       text: Azure CLI で最初の Batch ジョブを実行する
-    - url: /azure/batch/tutorial-parallel-dotnet
+    - url: ../batch/tutorial-parallel-dotnet.md
       itemType: tutorial
       text: .NET API を使用して Azure Batch で並列ワークロードを実行する
     footerLink:
-      url: /azure/batch/
+      url: ../batch/index.yml
       text: 詳細情報
   - title: マイクロサービスの開発とコンテナーのオーケストレーション
     links:
-    - url: /azure/service-fabric/service-fabric-overview
+    - url: ../service-fabric/service-fabric-overview.md
       itemType: overview
       text: Azure Service Fabric とは
-    - url: /azure/service-fabric/service-fabric-quickstart-dotnet
+    - url: ../service-fabric/service-fabric-quickstart-dotnet.md
       itemType: quickstart
       text: Service Fabric に .NET Reliable Services アプリケーションをデプロイする
-    - url: /azure/service-fabric/service-fabric-cluster-creation-for-windows-server
+    - url: ../service-fabric/service-fabric-cluster-creation-for-windows-server.md
       itemType: how-to-guide
       text: Windows Server で実行されるスタンドアロン クラスターの作成
     footerLink:
-      url: /azure/service-fabric/
+      url: ../service-fabric/index.yml
       text: 詳細情報
   - title: コンテナー イメージの保存と管理
     links:
-    - url: /azure/container-registry/container-registry-intro
+    - url: ../container-registry/container-registry-intro.md
       itemType: overview
       text: Azure Container Registry とは
-    - url: /azure/container-registry/container-registry-get-started-azure-cli
+    - url: ../container-registry/container-registry-get-started-azure-cli.md
       itemType: get-started
       text: Azure CLI を使用したプライベート コンテナー レジストリの作成
-    - url: /azure/container-registry/container-registry-quickstart-task-cli
+    - url: ../container-registry/container-registry-quickstart-task-cli.md
       itemType: get-started
       text: Azure CLI を使用したイメージのビルド、プッシュ、実行
     footerLink:
-      url: /azure/container-registry/
+      url: ../container-registry/index.yml
       text: 詳細情報
   - title: マネージド OpenShift サービス
     links:
-    - url: /azure/openshift/intro-openshift
+    - url: ../openshift/intro-openshift.md
       itemType: overview
       text: Azure Red Hat Openshift とは
-    - url: /azure/openshift/howto-setup-environment
+    - url: ../openshift/howto-setup-environment.md
       itemType: how-to-guide
       text: Azure Red Hat OpenShift 開発環境の設定
-    - url: /azure/openshift/tutorial-create-cluster
+    - url: ../openshift/tutorial-create-cluster.md
       itemType: tutorial
       text: Azure Red Hat OpenShift クラスターを作成する
     footerLink:
@@ -151,15 +148,15 @@ conceptualContent:
       text: 詳細情報
   - title: サーバーレス アプリケーションの開発
     links:
-    - url: /azure/azure-functions/functions-overview
+    - url: ../azure-functions/functions-overview.md
       itemType: overview
       text: Azure Functions の概要
-    - url: /azure/azure-functions/functions-create-first-function-vs-code
+    - url: ../azure-functions/functions-create-first-function-vs-code.md
       itemType: quickstart
       text: 最初の関数を作成する
-    - url: /azure/azure-functions/functions-triggers-bindings
+    - url: ../azure-functions/functions-triggers-bindings.md
       itemType: overview
       text: 他の Azure サービスとの統合
     footerLink:
-      url: /azure/azure-functions/
+      url: ../azure-functions/index.yml
       text: 詳細情報

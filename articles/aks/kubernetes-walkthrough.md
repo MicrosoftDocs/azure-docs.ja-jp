@@ -1,9 +1,9 @@
 ---
-title: クイック スタート:Azure Kubernetes Service クラスターをデプロイする
+title: クイック スタート:Azure CLI を使用して AKS クラスターをデプロイする
 description: Kubernetes クラスターの作成、アプリケーションのデプロイ、および Azure Kubernetes Service (AKS) でのパフォーマンスの監視を、Azure CLI を使用して迅速に行う方法について説明します。
 services: container-service
 ms.topic: quickstart
-ms.date: 04/28/2020
+ms.date: 08/18/2020
 ms.custom:
 - H1Hack27Feb2017
 - mvc
@@ -11,12 +11,13 @@ ms.custom:
 - seo-javascript-september2019
 - seo-javascript-october2019
 - seo-python-october2019
-ms.openlocfilehash: 2b45154a0198fe0845649167d0fa35aabfd0625e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+- devx-track-azurecli
+ms.openlocfilehash: 863017797aa6872d7ac7a824e1d38f2dde4c6d1a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82207396"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589947"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Kubernetes Service クラスターをデプロイする
 
@@ -64,16 +65,31 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-aks-cluster"></a>AKS クラスターの作成
 
-AKS クラスターを作成するには、[az aks create][az-aks-create] コマンドを使用します。 次の例では、*myAKSCluster* という名前のクラスターを 1 つのノードで作成します。 コンテナーの Azure Monitor は、 *--enable-addons monitoring* パラメーターを使用して有効にすることもできます。  これは完了までに数分かかる場合があります。
+AKS クラスターを作成するには、[az aks create][az-aks-create] コマンドを使用します。 次の例では、*myAKSCluster* という名前のクラスターを 1 つのノードで作成します。 これは完了までに数分かかる場合があります。
 
 > [!NOTE]
-> AKS クラスターを作成すると、AKS リソースを保存するための 2 つ目のリソース グループが自動的に作成されます。 詳細については、「[AKS と一緒にリソース グループが 2 つ作成されるのはなぜでしょうか?](https://docs.microsoft.com/azure/aks/faq#why-are-two-resource-groups-created-with-aks)」を参照してください。
+> Azure Monitor for containers を有効にするには、 *--enable-addons monitoring* パラメーターを使用します。これには、*Microsoft.OperationsManagement* と *Microsoft.OperationalInsights* がサブスクリプションに登録されている必要があります。 登録状態を確認するには:
+> 
+> ```azurecli
+> az provider show -n Microsoft.OperationsManagement -o table
+> az provider show -n Microsoft.OperationalInsights -o table
+> ```
+> 
+> 登録されていない場合は、次のコマンドを使用して、*Microsoft.OperationsManagement* と *Microsoft.OperationalInsights* を登録します。
+> 
+> ```azurecli
+> az provider register --namespace Microsoft.OperationsManagement
+> az provider register --namespace Microsoft.OperationalInsights
+> ```
 
 ```azurecli-interactive
 az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --enable-addons monitoring --generate-ssh-keys
 ```
 
 数分後、コマンドが完了し、クラスターに関する情報が JSON 形式で返されます。
+
+> [!NOTE]
+> AKS クラスターを作成すると、AKS リソースを保存するための 2 つ目のリソース グループが自動的に作成されます。 詳細については、「[AKS と一緒にリソース グループが 2 つ作成されるのはなぜでしょうか?](./faq.md#why-are-two-resource-groups-created-with-aks)」を参照してください。
 
 ## <a name="connect-to-the-cluster"></a>クラスターに接続する
 
@@ -88,6 +104,9 @@ Kubernetes クラスターに接続するように `kubectl` を構成するに�
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
+
+> [!NOTE]
+> 上記のコマンドは、Kubernetes 構成ファイルの既定の場所 (`~/.kube/config`) を使用します。 *--file* を使用すると、Kubernetes 構成ファイルに対して別の場所を指定できます。
 
 クラスターへの接続を確認するには、クラスター ノードの一覧を返す [kubectl get][kubectl-get] コマンドを使用します。
 
@@ -106,10 +125,7 @@ aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.12.8
 
 Kubernetes のマニフェスト ファイルでは、どのコンテナー イメージを実行するかなど、クラスターの望ましい状態を定義します。 このクイック スタートでは、マニフェストを使用して、Azure Vote アプリケーションを実行するために必要なすべてのオブジェクトを作成します。 このマニフェストには、 [Kubernetes デプロイ][kubernetes-deployment] が 2 つ含まれます。サンプル Azure Vote Python アプリケーション用と Redis インスタンス用です。 さらに、 [Kubernetes サービス][kubernetes-service] が 2 つ作成されます。Redis インスタンスに使用される内部サービスと、Azure Vote アプリケーションにインターネットからアクセスするための外部サービスです。
 
-> [!TIP]
-> このクイック スタートでは、アプリケーション マニフェストの作成と AKS クラスターへのデプロイを手動で行います。 より現実に即したシナリオでは、[Azure Dev Spaces][azure-dev-spaces] を使用して、AKS クラスター内で直接、コードの反復とデバッグを迅速に実行することができます。 Dev Spaces は、OS プラットフォームと開発環境の垣根を越えて使用でき、チーム内の他のメンバーと連携することができます。
-
-`azure-vote.yaml` という名前のファイルを作成し、以下の YAML 定義をコピーします。 Azure Cloud Shell を使用する場合は、仮想システムまたは物理システムで作業するときと同じように、`vi` または `nano` を使用してこのファイルを作成できます。
+`azure-vote.yaml` という名前のファイルを作成し、以下の YAML 定義をコピーします。 Azure Cloud Shell を使用する場合は、仮想システムまたは物理システムで作業するときと同じように、`code`、`vi`、`nano` のいずれかを使用してこのファイルを作成できます。
 
 ```yaml
 apiVersion: apps/v1
@@ -271,7 +287,7 @@ AKS の詳細を参照し、デプロイの例の完全なコードを確認す�
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
-[azure-dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
+[azure-dev-spaces]: ../dev-spaces/index.yml
 
 <!-- LINKS - internal -->
 [kubernetes-concepts]: concepts-clusters-workloads.md

@@ -7,12 +7,13 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
-ms.openlocfilehash: c509d174787a58abeee33e039eb7bbbcbcb43f38
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 433b9ad0f86b84538163b142d762d4e2fb7e8159
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79531736"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430834"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>Azure Stream Analytics の JavaScript ユーザー定義集計
  
@@ -225,7 +226,7 @@ GROUP BY TumblingWindow(minute, 5)
 
 ## <a name="get-help"></a>ヘルプの参照
 
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)をご覧ください。
+更にヘルプが必要な場合は、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

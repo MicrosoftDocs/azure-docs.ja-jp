@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 73981cb0f124e1577690f893ead60e6375f16298
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b7a81357cc6ee2608d2acd3051dcac3e5d0e07e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133143"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023468"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub 用語集
 
@@ -64,7 +64,7 @@ Azure リソースのプロビジョニングと管理は、[Microsoft Azure Por
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-[Azure PowerShell](/powershell/azure/overview) は、Windows PowerShell で Azure を管理するために使用できるコマンドレットのコレクションです。 このコマンドレットを使用して、Azure Platform から配信されるソリューションやサービスを、作成、テスト、デプロイ、管理できます。
+[Azure PowerShell](/powershell/azure/) は、Windows PowerShell で Azure を管理するために使用できるコマンドレットのコレクションです。 このコマンドレットを使用して、Azure Platform から配信されるソリューションやサービスを、作成、テスト、デプロイ、管理できます。
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 
@@ -222,7 +222,7 @@ IoT Hub は、何百万ものデバイスとソリューションのバックエ
 
 ## <a name="iot-hub-query-language"></a>IoT Hub クエリ言語
 
-[IoT Hub クエリ言語](iot-hub-devguide-query-language.md)は SQL に似た言語であり、[](#job)とデバイス ツインにクエリを実行できます。
+[IoT Hub クエリ言語](iot-hub-devguide-query-language.md)は SQL に似た言語であり、[ジョブ](#job)とデバイス ツインのクエリを実行できます。
 
 ## <a name="iot-hub-resource-rest-api"></a>IoT Hub リソース REST API
 
@@ -343,7 +343,7 @@ Azure サブスクリプションでは、課金が発生します。 作成す�
 
 ## <a name="twin-queries"></a>ツイン クエリ
 
-[デバイスおよびモジュールのツイン クエリ](iot-hub-devguide-query-language.md)は、SQL に似た IoT Hub クエリ言語を使用して、デバイス ツインまたはモジュール ツインから情報を取得します。 同じ IoT Hub クエリ言語を使用して、IoT Hub で実行されている[](#job)に関する情報を取得できます。
+[デバイスおよびモジュールのツイン クエリ](iot-hub-devguide-query-language.md)は、SQL に似た IoT Hub クエリ言語を使用して、デバイス ツインまたはモジュール ツインから情報を取得します。 同じ IoT Hub クエリ言語を使用して、IoT Hub で実行されている[ジョブ](#job)に関する情報を取得できます。
 
 ## <a name="twin-synchronization"></a>ツインの同期
 

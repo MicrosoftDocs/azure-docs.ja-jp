@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: c5095efef5d4bef44993bdd9cd52dbdef17378a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9355482c26cabb96fc6292bab5d542f36aec6a8c
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156108"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509758"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>クラウドの一貫性を実現する ARM テンプレートを開発する
 
@@ -133,7 +133,7 @@ Azure Resource Manager は、実行時にメイン テンプレートを評価�
 "resources": [
   {
     "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2015-01-01",
+    "apiVersion": "2019-10-01",
     "name": "shared",
     "properties": {
       "mode": "Incremental",
@@ -301,7 +301,7 @@ Azure Stack に存在するすべての利用可能なリソース プロバイ�
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
@@ -342,7 +342,7 @@ API プロファイルのバージョンは、Azure と Azure Stack に共通す
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "apiProfile": "2018–03-01-hybrid",
     "parameters": {
@@ -384,7 +384,7 @@ API プロファイルは、テンプレートの必須要素ではありませ�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "apiProfile": "2018–03-01-hybrid",
     "parameters": {
@@ -570,11 +570,11 @@ Get-AzureRmVMSize -Location "West Europe"
 }
 ```
 
-同じ変更が、[データ ディスク](../../virtual-machines/windows/using-managed-disks-template-deployments.md)にも適用されます。
+同じ変更が、[データ ディスク](../../virtual-machines/using-managed-disks-template-deployments.md)にも適用されます。
 
 ### <a name="verify-that-vm-extensions-are-available-in-azure-stack"></a>VM 拡張機能が Azure Stack で使用できることを確認する
 
-クラウドの一貫性のためのもう 1 つの考慮事項は、VM の内部でリソースを構成するための[仮想マシン拡張機能](../../virtual-machines/windows/extensions-features.md)の使用です。 Azure Stack では使用できない VM 拡張機能があります。 テンプレートでは、VM 拡張機能に専用のリソースを指定して、テンプレート内に依存関係と条件を作成できます。
+クラウドの一貫性のためのもう 1 つの考慮事項は、VM の内部でリソースを構成するための[仮想マシン拡張機能](../../virtual-machines/extensions/features-windows.md)の使用です。 Azure Stack では使用できない VM 拡張機能があります。 テンプレートでは、VM 拡張機能に専用のリソースを指定して、テンプレート内に依存関係と条件を作成できます。
 
 たとえば、Microsoft SQL Server を実行する VM を構成する場合、VM 拡張機能はテンプレートの展開の一部として SQL Server を構成できます。 SQL Server を実行する VM 上にデータベースを作成するように構成されたアプリケーション サーバーも展開テンプレートに含まれる場合、何が起きるかを考慮します。 アプリケーション サーバーに対する VM 拡張機能の使用だけでなく、正常に返された SQL Server VM 拡張機能リソースに対してアプリケーション サーバーの依存関係を構成できます。 このアプローチは、SQL Server を実行する VM が構成され、アプリケーション サーバーがデータベースを作成するように指示されたときに使用できることを保証します。
 

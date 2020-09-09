@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: akjosh
-ms.openlocfilehash: 79991dad96742109817d579b951082d1a30e3951
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 529024256b8b3f6da7146787d3a37c59a13b5bd3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227911"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494753"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>VM 拡張機能を含むリソース グループのエクスポート
 
@@ -33,18 +33,7 @@ Azure リソース グループを、再デプロイ可能な新しい Resource 
 
 次の拡張機能は、Automation スクリプト機能を使用してエクスポートできます。
 
-| 拡張機能 ||||
-|---|---|---|---|
-| Acronis Backup | Datadog Windows Agent | Linux 用の OS の修正プログラム | VM スナップショット Linux
-| Acronis Backup Linux | Docker 拡張機能 | Puppet Agent |
-| BgInfo | DSC 拡張機能 | Site 24x7 APM インサイト |
-| BMC CTM Agent Linux | Dynatrace Linux | Site 24x7 Linux サーバー |
-| BMC CTM Agent Windows | Dynatrace Windows | Site 24x7 Windows サーバー |
-| Chef Client | HPE Security Application Defender | Trend Micro DSA |
-| カスタム スクリプト | IaaS マルウェア対策 | Trend Micro DSA Linux |
-| カスタム スクリプト拡張機能 | IaaS 診断 | Linux 用 VMAccess |
-| Linux 用のカスタム スクリプト | Linux Chef Client | Linux 用 VMAccess |
-| Datadog Linux Agent | Linux 診断 | VM スナップショット |
+> Acronis Backup、Acronis Backup Linux、Bg Info、BMC CTM Agent Linux、BMC CTM Agent Windows、Chef Client、Custom Script、Custom Script Extension、Custom Script for Linux、Datadog Linux Agent、Datadog Windows Agent、Docker Extension、DSC Extension、Dynatrace Linux、Dynatrace Windows、HPE Security Application Defender、IaaS Antimalware、IaaS Diagnostics、Linux Chef Client、Linux Diagnostic、OS Patching For Linux、Puppet Agent、Site 24x7 Apm Insight、Site 24x7 Linux Server、Site 24x7 Windows Server、Trend Micro DSA、Trend Micro DSA Linux、VM Access For Linux、VM Access For Linux、VM Snapshot、VM Snapshot Linux
 
 ## <a name="export-the-resource-group"></a>リソース グループをエクスポートする
 
@@ -148,7 +137,7 @@ Azure Resource Manager の Automation スクリプトは、Resource Manager テ�
 }
 ```
 
-テンプレート パラメーターを使用してプロパティ値を指定する場合は、これらを作成する必要があります。 保護された設定の値用のテンプレート パラメーターを作成するときは、機密性の高い値が保護されるように、`SecureString` パラメーター型を使用してください。 パラメーターの使用の詳細については、「[Azure Resource Manager のテンプレートの作成](../../resource-group-authoring-templates.md)」を参照してください。
+テンプレート パラメーターを使用してプロパティ値を指定する場合は、これらを作成する必要があります。 保護された設定の値用のテンプレート パラメーターを作成するときは、機密性の高い値が保護されるように、`SecureString` パラメーター型を使用してください。 パラメーターの使用の詳細については、「[Azure Resource Manager のテンプレートの作成](../../azure-resource-manager/templates/template-syntax.md)」を参照してください。
 
 この `IaasDiagnostic` 拡張機能の例では、Resource Manager テンプレートのパラメーター セクションに次のパラメーターが作成されます。
 

@@ -15,7 +15,7 @@
 - name: 操作方法ガイド
   items:
     - name: Azure Machine Learning のデータセット
-      href: ../machine-learning/how-to-create-register-datasets.md?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
+      href: how-to-create-azure-machine-learning-dataset-from-open-dataset.md
 - name: サンプル
   displayName: 'example, examples, Jupyter, azure notebooks, python, notebook, GitHub'
   href: samples.md
@@ -39,7 +39,7 @@
       href: 'https://azure.microsoft.com/pricing/details/open-datasets/'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/?products=open-datasets&regions=non-regional'
-    - name: ユーザー フォーラム
-      href: 'https://aka.ms/open-datasets-forum'
+    - name: Microsoft Q & A
+      href: 'https://docs.microsoft.com/answers/topics/azure-open-datasets.html'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-open-datasets'

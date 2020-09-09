@@ -10,12 +10,12 @@ metadata:
   author: genlin
   ms.author: genli
   ms.date: 09/09/2019
-  ms.openlocfilehash: 4111df079f6e4c0d49ab1381add835d493b3540a
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: df855334f91899ab23625f7161792d0bec416782
+  ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77519242"
+  ms.lasthandoff: 08/25/2020
+  ms.locfileid: "88816602"
 landingContent:
 - title: デプロイ エラーのトラブルシューティング
   linkLists:
@@ -28,65 +28,65 @@ landingContent:
     - text: 無効なテンプレートのエラーを解決する
       url: ../../azure-resource-manager/templates/error-invalid-template.md
     - text: SKU 利用不可エラーを解決する
-      url: https://docs.microsoft.com/azure/azure-resource-manager/templates/error-sku-not-available
+      url: ../../azure-resource-manager/templates/error-sku-not-available.md
 - title: VM デプロイ ガイダンス
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Azure にアップロードする Windows VHD または VHDX を準備する
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image
+      url: ../windows/prepare-for-upload-vhd-image.md
     - text: Azure に Windows クライアント オペレーティング システムをデプロイまたは作成する
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/client-images
+      url: ../windows/client-images.md
     - text: クォータに関連するエラーを解決する
-      url: https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors
+      url: ../../azure-resource-manager/templates/error-resource-quota.md
 - title: VM に接続できない
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: RDP 接続の一般的な問題に対処するための簡単な手順
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-rdp-connection
+      url: ./troubleshoot-rdp-connection.md
     - text: イベント ID を使用した、Azure VM の RDP 接続に関する問題のトラブルシューティング
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/event-id-troubleshoot-vm-rdp-connecton
+      url: ./event-id-troubleshoot-vm-rdp-connecton.md
     - text: RDP を使用して Azure VM に接続するときの認証エラーのトラブルシューティングについて説明します。
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-authentication-error-rdp-vm
+      url: ./troubleshoot-authentication-error-rdp-vm.md
     - text: VM ゲスト ネットワーク カードが無効になっている
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-nic-disabled
+      url: ./troubleshoot-rdp-nic-disabled.md
 - title: パスワードのリセット
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Windows VM でリモート デスクトップ サービスまたはそのログイン パスワードをリセットする方法
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/reset-rdp
+      url: ./reset-rdp.md
     - text: オフライン メソッドを使用して Azure VM のローカルの Windows パスワードをリセットする
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/reset-local-password-without-agent
+      url: ./reset-local-password-without-agent.md
     - text: Azure の Windows VM に対する特定の RDP エラー メッセージのトラブルシューティング
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-specific-rdp-errors
+      url: ./troubleshoot-specific-rdp-errors.md
     - text: Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-connection
+      url: ./troubleshoot-rdp-connection.md
 - title: VM が起動しない
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: ディスクのブート エラーを確認する
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-check-disk-boot-error
+      url: ./troubleshoot-check-disk-boot-error.md
     - text: BitLocker のブート エラー
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-bitlocker-boot-error
+      url: ./troubleshoot-bitlocker-boot-error.md
     - text: ブート構成の更新エラー
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-vm-boot-configure-update
+      url: ./troubleshoot-vm-boot-configure-update.md
     - text: 一般的なブルー スクリーン エラー
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-common-blue-screen-error
+      url: ./troubleshoot-common-blue-screen-error.md
 - title: VM を開始または停止できない
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: VM のデプロイに関する問題のトラブルシューティング
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/restart-resize-error-troubleshooting
+      url: ./restart-resize-error-troubleshooting.md
     - text: 割り当てエラーのトラブルシューティング (クラシック デプロイ モデル)
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/allocation-failure-classic
+      url: ./allocation-failure-classic.md
     - text: ブート構成の更新エラー
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-vm-boot-configure-update
+      url: ./troubleshoot-vm-boot-configure-update.md
     - text: VM のライフサイクルと状態
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/states-lifecycle
+      url: ../states-lifecycle.md
 - title: 予期しない VM の再起動
   linkLists:
   - linkListType: how-to-guide
@@ -96,50 +96,50 @@ landingContent:
     - text: 再起動後の起動エラーを診断し、エラーから回復する
       url: https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/
     - text: Azure での仮想マシンの計画メンテナンスについて
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates
+      url: ../maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
     - text: Azure VM の起動が Windows Update で停止する
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-stuck-updating-boot-error
+      url: ./troubleshoot-stuck-updating-boot-error.md
 - title: 仮想ディスクの管理の問題
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: 仮想ディスクの FAQ
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/faq-for-disks
+      url: ../faq-for-disks.md
     - text: VM のサイズを変更するときの割り当てエラーのトラブルシューティング
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/allocation-failure
+      url: ./allocation-failure.md
     - text: VM の一時ドライブについて
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#temporary-disk
+      url: ../managed-disks-overview.md#temporary-disk
     - text: Azure Managed Disks の概要
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview
+      url: ../managed-disks-overview.md
 - title: ディスクの暗号化の問題
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Azure Disk Encryption のトラブルシューティング
-      url: https://docs.microsoft.com/azure/security/azure-security-disk-encryption-tsg
+      url: ../../security/fundamentals/azure-disk-encryption-vms-vmss.md
     - text: Azure Disk Encryption に関する FAQ
-      url: https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq
+      url: ../../security/fundamentals/azure-disk-encryption-vms-vmss.md
     - text: Azure 拡張機能のトラブルシューティング方法
-      url: https://docs.microsoft.com/azure/virtual-machines/extensions/troubleshoot
+      url: ../extensions/troubleshoot.md
 - title: VM パフォーマンスの問題
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: 共有イメージ ギャラリーのトラブルシューティング - 複製が遅い
-      url: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/troubleshooting-shared-images#replication-is-slow
+      url: ../windows/troubleshooting-shared-images.md#replication-is-slow
 - title: VM 拡張機能の問題
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: 拡張機能の一般的なトラブルシューティングの手順
-      url: https://docs.microsoft.com/azure/virtual-machines/extensions/troubleshoot
+      url: ../extensions/troubleshoot.md
     - text: VM への拡張機能のインストール
-      url: https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/diagnostics-windows
+      url: ../extensions/diagnostics-windows.md
     - text: Windows でのカスタムのスクリプト拡張機能
-      url: https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/custom-script-windows#tips-and-tricks
+      url: ../extensions/custom-script-windows.md#tips-and-tricks
 - title: バックアップと復元
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Azure portal での Azure 仮想マシンのバックアップのトラブルシューティング
-      url: https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot
+      url: ../../backup/backup-azure-vms-troubleshoot.md

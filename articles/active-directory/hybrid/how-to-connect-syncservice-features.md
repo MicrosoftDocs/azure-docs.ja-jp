@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b23c2b81d281f787914e32818d768d2d531537f4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: db5dbef2b57fb89b33ea116d0373184cdade0ac5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682230"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356765"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Azure AD Connect 同期サービスの機能
 

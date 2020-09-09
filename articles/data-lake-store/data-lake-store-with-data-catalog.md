@@ -3,15 +3,15 @@ title: Azure Data Catalog に Data Lake Storage Gen1 を統合する
 description: ご自分の組織でデータを検出できるように、Azure Data Catalog に Data Lake Storage Gen1 のデータを登録する方法を説明します。
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 66191a52c6ef1f3d19afd2a47356487b07e9eff4
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 1484c4bf17d5f437d681e32559b7e6ed4115f5f5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692334"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515135"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Azure Data Catalog に Azure Data Lake Storage Gen1 のデータを登録する
 この記事では、Azure Data Lake Storage Gen1 と Azure Data Catalog を統合し、データを Data Catalog と統合することで組織内で検出できるようにする方法について説明します。 データのカタログ化の詳細については、「 [Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md)」を参照してください。 Data Catalog を使用できるシナリオを理解するには、「 [Azure Data Catalog の一般的なシナリオ](../data-catalog/data-catalog-common-scenarios.md)」を参照してください。

@@ -11,17 +11,17 @@ ms.assetid: ''
 ms.service: virtual-network
 ms.subservice: ip-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: allensu
-ms.openlocfilehash: 8ff958b7bab7be3124452c1206baf64d0f8ccb7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 265ed0f4cb58a321bde78714f36123bf197d42f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82142515"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711002"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Azure ネットワーク インターフェイスの IP アドレスの追加、変更、削除
 
@@ -62,7 +62,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 
 **コマンド**
 
-|ツール|command|
+|ツール|コマンド|
 |---|---|
 |CLI|[az network nic ip-config create](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Add-AzNetworkInterfaceIpConfig](/powershell/module/az.network/add-aznetworkinterfaceipconfig)|
@@ -83,7 +83,7 @@ IPv4 アドレスの割り当て方法の変更、静的 IPv4 アドレスの変
 
 **コマンド**
 
-|ツール|command|
+|ツール|コマンド|
 |---|---|
 |CLI|[az network nic ip-config update](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Set-AzNetworkInterfaceIpConfig](/powershell/module/az.network/set-aznetworkinterfaceipconfig)|
@@ -99,7 +99,7 @@ IPv4 アドレスの割り当て方法の変更、静的 IPv4 アドレスの変
 
 **コマンド**
 
-|ツール|command|
+|ツール|コマンド|
 |---|---|
 |CLI|[az network nic ip-config delete](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Remove-AzNetworkInterfaceIpConfig](/powershell/module/az.network/remove-aznetworkinterfaceipconfig)|
@@ -169,7 +169,7 @@ IPv4 アドレスの割り当て方法の変更、静的 IPv4 アドレスの変
 既定では、動的なプライベート IPv4 および IPv6 (オプション) アドレスが割り当てられます。
 
 - **パブリックのみ**:Azure により、各 Azure リージョンに固有の範囲からアドレスが割り当てられます。 各リージョンにどの範囲が割り当てられているかについて詳しくは、[Microsoft Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)に関するページをご覧ください。 仮想マシンがいったん停止した (割り当て解除された) 後に、再び始動すると、アドレスが変更になることがあります。 どちらの割り当て方法を使っても、パブリック IPv6 アドレスを IP 構成に割り当てることはできません。
-- **プライベートのみ**:各サブネット アドレス範囲の先頭から 4 つのアドレスは Azure によって予約されており、それらのアドレスが割り当てられることはありません。 サブネット アドレス範囲でその次に利用可能なアドレスが Azure によってリソースに割り当てられます。 たとえば、サブネットのアドレス範囲が 10.0.0.0/16 で、10.0.0.0.4 から 10.0.0.14 のアドレスが既に割り当て済みである場合 (.0 から.3 は予約済み)、リソースには 10.0.0.15 が Azure によって割り当てられます。 動的割り当てが既定の割り当て方法となります。 いったん割り当てられた動的 IP アドレスが解放されるのは、ネットワーク インターフェイスが削除されるか、同じ仮想ネットワーク内の別のサブネットに割り当てられた場合、または割り当て方法が "静的" に変更された際に異なる IP アドレスが指定された場合に限られます。 既定では、割り当て方法を "動的" から"静的" に変更すると、動的に割り当てられていた以前のアドレスが Azure によって静的アドレスとして割り当てられます。 
+- **プライベートのみ**:各サブネット アドレス範囲の先頭から 4 つのアドレスは Azure によって予約されており、それらのアドレスが割り当てられることはありません。 サブネット アドレス範囲でその次に利用可能なアドレスが Azure によってリソースに割り当てられます。 たとえば、サブネットのアドレス範囲が 10.0.0.0/16 であり、10.0.0.0.4 から 10.0.0.14 のアドレスが既に割り当て済みである場合 (.0 から .3 は予約済み)、Azure によってリソースに 10.0.0.15 が割り当てられます。 動的割り当てが既定の割り当て方法となります。 いったん割り当てられた動的 IP アドレスが解放されるのは、ネットワーク インターフェイスが削除されるか、同じ仮想ネットワーク内の別のサブネットに割り当てられた場合、または割り当て方法が "静的" に変更された際に異なる IP アドレスが指定された場合に限られます。 既定では、割り当て方法を "動的" から"静的" に変更すると、動的に割り当てられていた以前のアドレスが Azure によって静的アドレスとして割り当てられます。 
 
 ### <a name="static"></a>静的
 

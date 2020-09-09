@@ -1,24 +1,24 @@
 ---
-title: Functions 2.x の Azure Cosmos DB バインド
+title: Functions 2.x 以降での Azure Cosmos DB バインド
 description: Azure Functions で Azure Cosmos DB のトリガーとバインドを使用する方法について説明します。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2017
 ms.author: cshoe
-ms.openlocfilehash: f258a7aff52796a53540706bc8413575d63c9e7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2c6efd14bd974de1b01b1725b9810f153df74bf8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77605764"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482175"
 ---
-# <a name="azure-cosmos-db-trigger-and-bindings-for-azure-functions-2x-overview"></a>Azure Functions 2.x での Azure Cosmos DB のトリガーとバインドの概要
+# <a name="azure-cosmos-db-trigger-and-bindings-for-azure-functions-2x-and-higher-overview"></a>Azure Functions 2.x 以降での Azure Cosmos DB のトリガーとバインドの概要
 
 > [!div class="op_single_selector" title1="使用している Azure Functions ランタイムのバージョンを選択します。 "]
 > * [Version 1](functions-bindings-cosmosdb.md)
-> * [Version 2](functions-bindings-cosmosdb-v2.md)
+> * [バージョン 2 以降](functions-bindings-cosmosdb-v2.md)
 
-この一連の記事では、Azure Functions 2.x で [Azure Cosmos DB](../cosmos-db/serverless-computing-database.md) のバインドを操作する方法について説明します。 Azure Functions は、Azure Cosmos DB のトリガー、入力、出力のバインドをサポートしています。
+この一連の記事では、Azure Functions 2.x 以降で [Azure Cosmos DB](../cosmos-db/serverless-computing-database.md) のバインドを操作する方法について説明します。 Azure Functions は、Azure Cosmos DB のトリガー、入力、出力のバインドをサポートしています。
 
 | アクション | Type |
 |---------|---------|
@@ -27,9 +27,9 @@ ms.locfileid: "77605764"
 | Azure Cosmos DB ドキュメントに変更を保存する  |[出力バインド](./functions-bindings-cosmosdb-v2-output.md) |
 
 > [!NOTE]
-> このリファレンスでは、[Azure Functions のバージョン 2.x](functions-versions.md) を対象としています。  Functions 1.x でこれらのバインドを使用する方法については、[Azure Functions 1.x の Azure Cosmos DB のバインド](functions-bindings-cosmosdb.md)に関するページを参照してください。
+> このリファレンスは、[Azure Functions のバージョン 2.x 以降](functions-versions.md)を対象としています。  Functions 1.x でこれらのバインドを使用する方法については、[Azure Functions 1.x の Azure Cosmos DB のバインド](functions-bindings-cosmosdb.md)に関するページを参照してください。
 >
-> このバインドの元の名称は DocumentDB でした。 Functions バージョン 2.x では、トリガー、バインド、およびパッケージの名称はすべて、Cosmos DB になっています。
+> このバインドの元の名称は DocumentDB でした。 Functions バージョン 2.x 以降では、トリガー、バインド、およびパッケージの名称はすべて、Cosmos DB になっています。
 
 ## <a name="supported-apis"></a>サポート対象 API
 

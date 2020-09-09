@@ -4,20 +4,20 @@ description: App Service の一般的なシナリオをピックアップした 
 tags: azure-service-management
 ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
 ms.topic: sample
-ms.date: 03/08/2017
+ms.date: 07/07/2020
 ms.custom: mvc
-ms.openlocfilehash: f289bd453f2387282402394c807fe9700151f221
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: a1577d42de9a4452467a448a0de5cd5f9575a55f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81532427"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "86169427"
 ---
 # <a name="powershell-samples-for-azure-app-service"></a>Azure App Service の PowerShell サンプル
 
 次の表には、Azure PowerShell を使用して構築された PowerShell スクリプトへのリンクが含まれています。
 
-| | |
+| スクリプト | 説明 |
 |-|-|
 |**アプリの作成**||
 | [GitHub からのデプロイでアプリを作成する](./scripts/powershell-deploy-github.md?toc=%2fpowershell%2fmodule%2ftoc.json)| GitHub からコードをプルする App Service アプリを作成します。 |
@@ -25,6 +25,7 @@ ms.locfileid: "81532427"
 | [アプリを作成し、FTP を使用してコードをデプロイする](./scripts/powershell-deploy-ftp.md?toc=%2fpowershell%2fmodule%2ftoc.json) | App Service アプリを作成し、FTP を使用してローカル ディレクトリからファイルをアップロードします。 |
 | [アプリを作成してローカル Git リポジトリからコードをデプロイする](./scripts/powershell-deploy-local-git.md?toc=%2fpowershell%2fmodule%2ftoc.json) | App Service アプリを作成し、ローカル Git リポジトリからのコードのプッシュを構成します。 |
 | [アプリを作成してステージング環境にコードをデプロイする](./scripts/powershell-deploy-staging-environment.md?toc=%2fpowershell%2fmodule%2ftoc.json) | コードの変更をステージングするためのデプロイ スロットを備える App Service アプリを作成します。 |
+|  [アプリを作成してプライベート エンドポイントでアプリを公開する](./scripts/powershell-deploy-private-endpoint.md?toc=%2fpowershell%2fmodule%2ftoc.json) | プライベート エンドポイントを使用して App Service アプリを作成します。 |
 |**アプリケーションの構成**||
 | [アプリにカスタム ドメインをマップする](./scripts/powershell-configure-custom-domain.md?toc=%2fpowershell%2fmodule%2ftoc.json)| App Service アプリを作成し、カスタム ドメイン名をマップします。 |
 | [カスタム TLS/SSL 証明書をアプリにバインドする](./scripts/powershell-configure-ssl-certificate.md?toc=%2fpowershell%2fmodule%2ftoc.json)| App Service アプリを作成し、カスタム ドメイン名の TLS/SSL 証明書をバインドします。 |
@@ -32,7 +33,7 @@ ms.locfileid: "81532427"
 | [アプリを手動でスケーリングする](./scripts/powershell-scale-manual.md?toc=%2fpowershell%2fmodule%2ftoc.json) | App Service アプリを作成し、2 つのインスタンス間でスケーリングします。 |
 | [高可用性アーキテクチャを使用して世界規模でアプリをスケーリングする](./scripts/powershell-scale-high-availability.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 2 つの異なる地理的リージョンに 2 つの App Service アプリを作成し、Azure Traffic Manager を使用して、1 つのエンドポイントを介してそれらを利用できるようにします。 |
 |**アプリのリソースへの接続**||
-| [アプリを SQL Database に接続する](./scripts/powershell-connect-to-sql.md?toc=%2fpowershell%2fmodule%2ftoc.json)| App Service アプリと SQL データベースを作成し、データベース接続文字列をアプリ設定に追加します。 |
+| [アプリを SQL Database に接続する](./scripts/powershell-connect-to-sql.md?toc=%2fpowershell%2fmodule%2ftoc.json)| App Service アプリと Azure SQL Database のデータベースを作成し、データベース接続文字列をアプリ設定に追加します。 |
 | [アプリをストレージ アカウントに接続する](./scripts/powershell-connect-to-storage.md?toc=%2fpowershell%2fmodule%2ftoc.json)| App Service アプリとストレージ アカウントを作成し、ストレージ接続文字列をアプリ設定に追加します。 |
 |**アプリのバックアップと復元**||
 | [アプリをバックアップする](./scripts/powershell-backup-onetime.md?toc=%2fpowershell%2fmodule%2ftoc.json) | App Service アプリを作成し、そのアプリの 1 回限りのバックアップを作成します。 |

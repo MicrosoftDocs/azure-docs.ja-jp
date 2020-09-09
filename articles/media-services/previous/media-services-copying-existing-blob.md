@@ -13,17 +13,20 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: a1da207a295b40f8d455635d687083bf69e90fdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4ac981fb3aa17cbc242b5cc51cd579f926bad034
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67068891"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89257978"
 ---
 # <a name="copying-existing-blobs-into-a-media-services-asset"></a>既存の BLOB を Media Services 資産にコピーする
 
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 
 この記事では、[Azure Media Services .NET SDK Extensions](https://github.com/Azure/azure-sdk-for-media-services-extensions/) を使用して、ストレージ アカウントから新しい Azure Media Services (AMS) 資産に BLOB をコピーする方法について説明します。
 
@@ -386,4 +389,3 @@ namespace CopyExistingBlobsIntoAsset
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

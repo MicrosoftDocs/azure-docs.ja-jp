@@ -7,12 +7,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
-ms.openlocfilehash: 890fc381afe0146e721e084e2dcd7eae9215d004
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: devx-track-java
+ms.openlocfilehash: 544f200e749b1b125e8077ee65f20a06779fb13d
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77083205"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050575"
 ---
 # <a name="quickstart-use-java-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>クイック スタート:Java を使用した Azure Functions と SignalR Service によるチャット ルームの作成
 
@@ -36,13 +37,21 @@ Azure SignalR Service を使用すると、アプリケーションに対して�
 > [!NOTE]
 > このクイック スタートは、macOS、Windows、または Linux で実行できます。
 
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjava)
+
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
 Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサインインします。
 
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjava)
+
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjava)
+
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
+
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjava)
 
 ## <a name="configure-and-run-the-azure-function-app"></a>Azure Function アプリを構成して実行する
 
@@ -78,10 +87,15 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
     ```bash
     mvn azure-functions:run
     ```
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjava)
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjava)
+
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
+
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjava)
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -89,3 +103,5 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 
 > [!div class="nextstepaction"]
 > [Java と Maven を使用して初めての関数を作成する](../azure-functions/functions-create-first-java-maven.md)
+
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjava)

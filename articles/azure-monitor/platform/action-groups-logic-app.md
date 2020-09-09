@@ -6,12 +6,12 @@ ms.author: dukek
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.subservice: alerts
-ms.openlocfilehash: 655a3acc44a1418778b37fbef85e5df75d042317
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f6d5cbfc8d781e96a4d348f31f4a5d175ebd5a3d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78206238"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321889"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Azure Monitor アラートによって複雑なアクションをトリガーする方法
 
@@ -19,7 +19,7 @@ ms.locfileid: "78206238"
 
 ## <a name="overview"></a>概要
 
-Azure Monitor アラートは、トリガー時に[アクション グループ](../../azure-monitor/platform/action-groups.md)を呼び出します。 アクション グループを使用すると、アラートについて他ユーザーに通知したり、アラートを修復したりするための 1 つまたは複数のアクションをトリガーできます。
+Azure Monitor アラートは、トリガー時に[アクション グループ](./action-groups.md)を呼び出します。 アクション グループを使用すると、アラートについて他ユーザーに通知したり、アラートを修復したりするための 1 つまたは複数のアクションをトリガーできます。
 
 一般的なプロセスは次のとおりです:
 
@@ -128,7 +128,7 @@ Azure Monitor アラートは、トリガー時に[アクション グループ]
 
 14. **Logic Apps デザイナー**の上部にある **[保存]** を選択して、ロジック アプリを保存します。
 
-15. 既存のアクション グループを開き、ロジック アプリを参照するためのアクションを追加します。 既存のアクション グループがない場合は、「[Azure portal でのアクション グループの作成および管理](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)」を参照してアクション グループを作成します。 忘れずに変更を保存してください。
+15. 既存のアクション グループを開き、ロジック アプリを参照するためのアクションを追加します。 既存のアクション グループがない場合は、「[Azure portal でのアクション グループの作成および管理](./action-groups.md)」を参照してアクション グループを作成します。 忘れずに変更を保存してください。
 
     ![アクション グループの更新](media/action-groups-logic-app/update-action-group.png "アクション グループの更新")
 
@@ -294,7 +294,7 @@ Azure Service Health エントリは、アクティビティ ログの一部で�
 Logic Apps には、幅広いアプリケーションやデータベースのアクションをトリガーできるさまざまなコネクタがあります。 Slack、SQL Server、Oracle、Salesforce はその一例です。 コネクタの詳細については、[Logic Apps コネクタ](../../connectors/apis-list.md)に関するページを参照してください。  
 
 ## <a name="next-steps"></a>次のステップ
-* [Azure アクティビティ ログ アラートの概要](../../azure-monitor/platform/alerts-overview.md)を把握し、アラートを受信する方法について学習します。  
-* [Azure Service Health 通知の投稿に関するアラートを構成](../../azure-monitor/platform/alerts-activity-log-service-notifications.md)する方法について学習します。
-* [アクション グループ](../../azure-monitor/platform/action-groups.md)について学習します。
+* [Azure アクティビティ ログ アラートの概要](./alerts-overview.md)を把握し、アラートを受信する方法について学習します。  
+* [Azure Service Health 通知の投稿に関するアラートを構成](../../service-health/alerts-activity-log-service-notifications-portal.md)する方法について学習します。
+* [アクション グループ](./action-groups.md)について学習します。
 

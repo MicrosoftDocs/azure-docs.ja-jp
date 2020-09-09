@@ -4,41 +4,51 @@ description: この記事では、Azure Database for PostgreSQL - Single Server 
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
-ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 1917bd6744e100db54fe959292e29486f8a1784b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.date: 07/09/2020
+ms.openlocfilehash: a94afc1ab970c2cd3f509c86efba4e455d46fd13
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74770188"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274511"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server 上で自動バキュームを最適化する
+
 この記事では、Azure Database for PostgreSQL サーバー上で自動バキュームを効率的に最適化する方法について説明します。
 
 ## <a name="overview-of-autovacuum"></a>自動バキュームの概要
+
 PostgreSQL は、MVCC (MultiVersion Concurrency Control) を使用して、データベースの同時実行の強化を実現しています。 すべての更新は結果として挿入と削除になり、すべての削除は結果として、削除対象のためにソフト マークされている行になります。 ソフトマークによって、後で消去される使用不能タプルが識別されます。 このようなタスクを実行するために、PostgreSQL ではバキューム ジョブを実行します。
 
 バキューム ジョブは、手動または自動でトリガーできます。 データベースで更新や削除の操作が大量に発生している場合、使用不能タプルの数は多くなります。 データベースがアイドル状態の場合、使用不能タプルの数は少なくなります。 データベースの負荷が高くなると、バキュームを頻繁に実行する必要があります。このような場合、バキューム ジョブの "*手動*" 実行は不便になります。
 
 自動バキュームは、構成することが可能で、チューニングによるメリットがあります。 PostgreSQL 出荷時の既定値は、どのような種類のデバイスでも製品が確実に機能するように設定されています。 たとえば、Raspberry Pi などのデバイスです。 最適な構成値は、次の条件によって変わります。
+
 - SKU やストレージ サイズなど、使用可能な合計リソース。
 - リソースの使用状況。
 - 個々のオブジェクトの特性。
 
 ## <a name="autovacuum-benefits"></a>自動バキュームのメリット
+
 バキュームを随時実行しないと、使用不能タプルの蓄積によって、以下のような結果が生じる可能性があります。
+
 - データベースやテーブルの拡大など、データの肥大化。
 - 最適とはいえないインデックスの増大。
 - I/O の増加。
 
 ## <a name="monitor-bloat-with-autovacuum-queries"></a>自動バキューム クエリによる肥大化を監視する
+
 次のサンプル クエリは、XYZ という名前のテーブルで、使用不能タプルとライブ タプルの数を識別するために設計されています。
- 
-    'SELECT relname, n_dead_tup, n_live_tup, (n_dead_tup/ n_live_tup) AS DeadTuplesRatio, last_vacuum, last_autovacuum FROM pg_catalog.pg_stat_all_tables WHERE relname = 'XYZ' order by n_dead_tup DESC;'
+
+```sql
+SELECT relname, n_dead_tup, n_live_tup, (n_dead_tup/ n_live_tup) AS DeadTuplesRatio, last_vacuum, last_autovacuum FROM pg_catalog.pg_stat_all_tables WHERE relname = 'XYZ' order by n_dead_tup DESC;
+```
 
 ## <a name="autovacuum-configurations"></a>自動バキュームの構成
+
 自動バキュームを制御する構成パラメーターは、次の 2 つの重要な問いに基づいています。
+
 - いつ開始する必要があるか。
 - 開始後にどれだけ消去する必要があるか。
 
@@ -47,15 +57,16 @@ PostgreSQL は、MVCC (MultiVersion Concurrency Control) を使用して、デ�
 パラメーター|説明|既定値
 ---|---|---
 autovacuum_vacuum_threshold|任意の 1 つのテーブルでバキューム操作をトリガーするために必要な、更新または削除されたタプルの最小数を指定します。 既定値は 50 タプルです。 このパラメーターは、postgresql.conf ファイルまたはサーバーのコマンド ラインでのみ設定します。 個々のテーブルの設定をオーバーライドするには、テーブル ストレージのパラメーターを変更します。|50
-autovacuum_vacuum_scale_factor|バキューム操作をトリガーするかどうかを決定する際に、autovacuum_vacuum_threshold に追加するテーブル サイズの割合を指定します。 既定値は 0.2 (テーブル サイズの 20%) です。 このパラメーターは、postgresql.conf ファイルまたはサーバーのコマンド ラインでのみ設定します。 個々のテーブルの設定をオーバーライドするには、テーブル ストレージのパラメーターを変更します。|5%
+autovacuum_vacuum_scale_factor|バキューム操作をトリガーするかどうかを決定する際に、autovacuum_vacuum_threshold に追加するテーブル サイズの割合を指定します。 既定値は 0.2 (テーブル サイズの 20%) です。 このパラメーターは、postgresql.conf ファイルまたはサーバーのコマンド ラインでのみ設定します。 個々のテーブルの設定をオーバーライドするには、テーブル ストレージのパラメーターを変更します。|0.2
 autovacuum_vacuum_cost_limit|自動バキューム操作で使用されるコストの上限値を指定します。 -1 (既定値) が指定されている場合は、通常の vacuum_cost_limit 値が使用されます。 複数の worker がある場合、この値は実行中の自動バキューム worker 間で均等に配分されます。 各 worker での上限の合計は、この変数の値を超えません。 このパラメーターは、postgresql.conf ファイルまたはサーバーのコマンド ラインでのみ設定します。 個々のテーブルの設定をオーバーライドするには、テーブル ストレージのパラメーターを変更します。|-1
 autovacuum_vacuum_cost_delay|自動バキューム操作で使用されるコストの遅延値を指定します。 -1 が指定された場合は、通常の vacuum_cost_delay 値が使用されます。 既定値は 20 ミリ秒です。 このパラメーターは、postgresql.conf ファイルまたはサーバーのコマンド ラインでのみ設定します。 個々のテーブルの設定をオーバーライドするには、テーブル ストレージのパラメーターを変更します。|20 ミリ秒
-autovacuum_nap_time|特定のデータベースに対する自動バキューム実行の間隔の最小遅延を指定します。 各ラウンドで、デーモンがデータベースを調査し、そのデータベースのテーブルに対して、必要に応じて VACUUM コマンドと ANALYZE コマンドを発行します。 遅延は秒単位で測定され、既定値は 1 分 (1 min) です。 このパラメーターは、postgresql.conf ファイルまたはサーバーのコマンド ラインでのみ設定します。|15 s
-autovacuum_max_workers|任意の時点で実行できる (自動バキューム ランチャー以外の) 自動バキューム プロセスの最大数を指定します。 既定値は 3 です。 このパラメーターは、サーバー起動時にのみ設定します。|3
+autovacuum_naptime | 特定のデータベースに対する自動バキューム実行の間隔の最小遅延を指定します。 各ラウンドで、デーモンがデータベースを調査し、そのデータベースのテーブルに対して、必要に応じて VACUUM コマンドと ANALYZE コマンドを発行します。 遅延は秒単位で計測されます。 このパラメーターは、postgresql.conf ファイルまたはサーバーのコマンド ラインでのみ設定します。| 15 s
+autovacuum_max_workers | 任意の時点で実行できる (自動バキューム ランチャー以外の) 自動バキューム プロセスの最大数を指定します。 既定値は 3 です。 このパラメーターは、サーバー起動時にのみ設定します。|3
 
-個々のテーブルの設定をオーバーライドするには、テーブル ストレージのパラメーターを変更します。 
+個々のテーブルの設定をオーバーライドするには、テーブル ストレージのパラメーターを変更します。
 
 ## <a name="autovacuum-cost"></a>自動バキュームのコスト
+
 バキューム操作実行時の "コスト" を次に示します。
 
 - バキューム実行対象のデータ ページはロックされます。
@@ -64,6 +75,7 @@ autovacuum_max_workers|任意の時点で実行できる (自動バキューム 
 そのため、バキューム ジョブの実行頻度を極端に上げたり下げたりしないでください。 バキューム ジョブはワークロードに応じて調整する必要があります。 それぞれにトレードオフがあるため、すべての自動バキューム パラメーターの変更をテストしてください。
 
 ## <a name="autovacuum-start-trigger"></a>自動バキュームの開始トリガー
+
 自動バキュームは、使用不能タプルの数が、autovacuum_vacuum_threshold + autovacuum_vacuum_scale_factor * reltuples を超えるとトリガーされます。 この reltuples は定数です。
 
 自動バキュームからのクリーンアップは、データベースの負荷に合わせて実行する必要があります。 そうしないと、ストレージが不足し、クエリが全般的に遅くなる可能性があります。 時間の経過と共に調整を進めて、バキューム操作で使用不能タプルをクリーンアップする速度が、使用不能タプルが作られる速度と等しくなる必要があります。
@@ -75,12 +87,14 @@ autovacuum_max_workers|任意の時点で実行できる (自動バキューム 
 PostgreSQL では、テーブル レベルまたはインスタンス レベルでこれらのパラメーターを設定できます。 Azure Database for PostgreSQL では、現在、これらのパラメーターはテーブル レベルでのみ設定できます。
 
 ## <a name="estimate-the-cost-of-autovacuum"></a>自動バキュームのコストを見積もる
+
 自動バキュームの実行は "コスト高" で、バキューム操作の実行時間を制御するためのパラメーターがあります。 以下のパラメーターが、バキューム実行コストの見積りの際に役立ちます。
+
 - vacuum_cost_page_hit = 1
 - vacuum_cost_page_miss = 10
 - vacuum_cost_page_dirty = 20
 
-バキューム プロセスは、物理ページを読み取り、使用不能タプルがないか調べます。 shared_buffers 内のページはそれぞれ、コスト 1 (vacuum_cost_page_hit) であると見なされます。 その他のページはすべて、使用不能タプルが存在する場合はコスト 20 (vacuum_cost_page_dirty)、使用不能タプルが存在しない場合はコスト 10 (vacuum_cost_page_miss) と見なされます。 プロセスが autovacuum_vacuum_cost_limit を超過するとバキューム操作は停止されます。 
+バキューム プロセスは、物理ページを読み取り、使用不能タプルがないか調べます。 shared_buffers 内のページはそれぞれ、コスト 1 (vacuum_cost_page_hit) であると見なされます。 その他のページはすべて、使用不能タプルが存在する場合はコスト 20 (vacuum_cost_page_dirty)、使用不能タプルが存在しない場合はコスト 10 (vacuum_cost_page_miss) と見なされます。 プロセスが autovacuum_vacuum_cost_limit を超過するとバキューム操作は停止されます。
 
 上限に達すると、プロセスは autovacuum_vacuum_cost_delay パラメーターで指定された期間の間、スリープ状態になり、その後再度開始されます。 上限に達しない場合、自動バキュームは、autovacuum_nap_time パラメーターで指定された値の後に開始されます。
 
@@ -91,7 +105,9 @@ autovacuum_max_workers パラメーターは、同時に実行できる自動バ
 PostgreSQL では、テーブル レベルまたはインスタンス レベルでこれらのパラメーターを設定できます。 Azure Database for PostgreSQL では、現在、これらのパラメーターはテーブル レベルでのみ設定できます。
 
 ## <a name="optimize-autovacuum-per-table"></a>テーブルごとに自動バキュームを最適化する
+
 前述のすべての構成パラメーターは、テーブルごとに構成できます。 次に例を示します。
+
 ```sql
 ALTER TABLE t SET (autovacuum_vacuum_threshold = 1000);
 ALTER TABLE t SET (autovacuum_vacuum_scale_factor = 0.1);
@@ -102,7 +118,8 @@ ALTER TABLE t SET (autovacuum_vacuum_cost_delay = 10);
 自動バキュームは、テーブルごとの同期プロセスです。 テーブルにある使用不能タプルの割合が増えるにつれて、自動バキュームを行う "コスト" が高くなります。 更新と削除の頻度が高いテーブルは、複数のテーブルに分割できます。 テーブルを分割することで、自動バキュームを並列化し、1 つのテーブルで自動バキュームを完了するための "コスト" を削減できます。 並列の自動バキューム worker の数を増やし、worker が豊富にスケジュールされるようにすることもできます。
 
 ## <a name="next-steps"></a>次のステップ
+
 自動バキュームの使用方法と調整方法の詳細については、以下の PostgreSQL ドキュメントを参照してください。
 
- - [第 18 章、サーバー構成](https://www.postgresql.org/docs/9.5/static/runtime-config-autovacuum.html)
- - [第 24 章、日常のデータベース メンテナンス タスク](https://www.postgresql.org/docs/9.6/static/routine-vacuuming.html)
+- [第 18 章、サーバー構成](https://www.postgresql.org/docs/9.5/static/runtime-config-autovacuum.html)
+- [第 24 章、日常のデータベース メンテナンス タスク](https://www.postgresql.org/docs/9.6/static/routine-vacuuming.html)

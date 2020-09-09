@@ -4,17 +4,16 @@ description: この記事では、Azure Resource Manager を使って Azure VPN 
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: yushwang
-manager: rossort
 ms.service: vpn-gateway
-ms.topic: article
-ms.date: 01/09/2019
+ms.topic: how-to
+ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: f905e27f48a0bf9181625bbba07549a13d9420cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 70d9a8069979a299ad3031de37c525438ab0159d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162138"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394603"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>S2S VPN 接続用の VPN デバイス構成スクリプトをダウンロードする
 

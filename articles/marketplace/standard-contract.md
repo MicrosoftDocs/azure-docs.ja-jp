@@ -1,22 +1,22 @@
 ---
-title: 標準契約 | Azure Marketplace
-description: Azure Marketplace と AppSource の標準契約
-author: dsindona
+title: Microsoft コマーシャル マーケットプレースの標準契約
+description: パートナー センターでの Azure Marketplace と AppSource の標準契約
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.author: dsindona
-ms.openlocfilehash: facb500299f7196e0e1387c3a7267a917d13a3a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+author: keferna
+ms.author: keferna
+ms.date: 05/20/2020
+ms.openlocfilehash: f7327079e365bcd8a99a8274828f7c14e2337a34
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81681449"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121556"
 ---
-# <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Microsoft 商業マーケットプレースの標準契約
+# <a name="standard-contract-for-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースの標準契約
 
-お客様の調達プロセスを簡素化し、ソフトウェア ベンダーの法的な複雑さを軽減するために、Microsoft では、マーケットプレースでの取引の促進に役立つ Microsoft 商業マーケットプレースの標準契約を用意しています。 商業マーケットプレース パブリッシャーは、カスタムの使用条件を作成するのではなく、標準契約の下で各自のソフトウェアを提供することを選択でき、お客様はそれを詳細に調べて 1 回同意するだけで済みます。 標準契約はこちらで見つけることができます[https://go.microsoft.com/fwlink/?linkid=2041178](https://go.microsoft.com/fwlink/?linkid=2041178)。
+Microsoft では、Microsoft コマーシャル マーケットプレースの標準契約を提供しています。 これは、お客様の調達プロセスを簡素化し、ソフトウェア ベンダーにおける法務の複雑さを軽減し、マーケットプレースでのトランザクションを容易にするために役立ちます。 商業マーケットプレース パブリッシャーは、カスタムの使用条件を作成するのではなく、[標準契約](https://go.microsoft.com/fwlink/?linkid=2041178)の下で各自のソフトウェアを提供することを選択でき、お客様はそれを詳細に調べて 1 回同意するだけで済みます。
 
 オファーの使用条件は、パートナー センターでオファーを作成するときに定義されます。 独自のカスタムの使用条件を提供する代わりに、Microsoft 商業マーケットプレースの標準契約を使用することを選択できます。
 
@@ -36,7 +36,7 @@ Standard Contract Amendments (標準契約の修正) を使用すると、発行
 >[!Note]
 >これらの 2 種類の修正は、互いに重なり合っています。 カスタム修正の対象となるお客様には、購入中に標準契約へのユニバーサル修正も示されます。
 
-Microsoft 商業マーケットプレースの標準契約は、次のオファーの種類に対して利用できます。Azure アプリケーション (ソリューション テンプレートとマネージド アプリケーション)、仮想マシン、コンテナー、コンテナー アプリケーション、IoT Edge モジュール、および SaaS。
+Microsoft 商業マーケットプレースの標準契約は、次のオファーの種類に対して利用できます。Azure アプリケーション (ソリューション テンプレートとマネージド アプリケーション)、仮想マシン、および SaaS。
 
 ## <a name="customer-experience"></a>カスタマー エクスペリエンス
 

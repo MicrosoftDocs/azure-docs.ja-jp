@@ -9,12 +9,12 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: 808eef5424d678559ae94ffd04e41eacd0f16aee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 41e3f1ff430293ebc7b3828a0fd7090923fc209c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371103"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281482"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Azure Logic Apps と IBM 3270 コネクタを使用して IBM メインフレーム上の 3270 画面駆動型アプリを Azure と統合する
 
@@ -184,8 +184,8 @@ Design Tool では、Screen Recognition エディターを使用して、"*認�
 
    | プランの種類 | 説明 |
    |-----------|-------------|
-   | **Process** | スタンドアロン プランまたは結合プランの場合 |
-   | **Connect** | 接続プランの場合 |
+   | **処理** | スタンドアロン プランまたは結合プランの場合 |
+   | **のインスタンスに接続するときには、** | 接続プランの場合 |
    | **Disconnect (切断)** | 切断プランの場合 |
    |||
 
@@ -292,7 +292,7 @@ Design Tool では、Screen Recognition エディターを使用して、認識�
    |---------------|-----------------|
    | **[データ型]** | Byte、Date Time、Decimal、Int、Long、Short、String |
    | **Field Fill Technique (フィールドの入力方法)** | パラメーターでは次の入力方法がサポートされており、必要に応じて空白が埋められます。 <p><p>-  **[Type]\(入力\)** : フィールドに順番に文字を入力します。 <p>-  **[Fill]\(埋める\)** : フィールドの内容を文字で置き換え、必要に応じて空白で埋めます。 <p>-  **[EraseEofType]\(EOF を消去して入力\)** : フィールドをクリアしてから、フィールドに順番に文字を入力します。 |
-   | **Format String (書式設定文字列)** | 一部のパラメーターのデータ型では、書式設定文字列が使用されます。これは、画面から .NET データ型に変換する方法を 3270 コネクタに指示します。 <p><p>-  **[DateTime]\(日時\)** : DateTime 書式設定文字列は、[.NET カスタム日付/時刻の書式設定文字列](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)に従います。 たとえば、日付 `06/30/2019` では、書式設定文字列 `MM/dd/yyyy` を使用します。 <p>-  **[Decimal]\(10 進\)** : 10 進形式の文字列では、[COBOL Picture 句](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html)を使用します。 たとえば、数値 `100.35` では、書式設定文字列 `999V99` を使用します。 |
+   | **Format String (書式設定文字列)** | 一部のパラメーターのデータ型では、書式設定文字列が使用されます。これは、画面から .NET データ型に変換する方法を 3270 コネクタに指示します。 <p><p>-  **[DateTime]\(日時\)** : DateTime 書式設定文字列は、[.NET カスタム日付/時刻の書式設定文字列](/dotnet/standard/base-types/custom-date-and-time-format-strings)に従います。 たとえば、日付 `06/30/2019` では、書式設定文字列 `MM/dd/yyyy` を使用します。 <p>-  **[Decimal]\(10 進\)** : 10 進形式の文字列では、[COBOL Picture 句](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html)を使用します。 たとえば、数値 `100.35` では、書式設定文字列 `999V99` を使用します。 |
    |||
 
 ## <a name="save-and-view-metadata"></a>メタデータを保存して表示する
@@ -409,7 +409,7 @@ Design Tool では、Screen Recognition エディターを使用して、認識�
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-コネクタの Swagger ファイルに記述される、トリガー、アクション、制限などのこのコネクタの技術的詳細については、[コネクタの参照ページ](https://docs.microsoft.com/connectors/si3270/)を参照してください。
+コネクタの Swagger ファイルに記述される、トリガー、アクション、制限などのこのコネクタの技術的詳細については、[コネクタの参照ページ](/connectors/si3270/)を参照してください。
 
 > [!NOTE]
 > [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリの場合、このコネクタの ISE のラベルが付いたバージョンでは、代わりに [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)が使用されます。
@@ -417,3 +417,4 @@ Design Tool では、Screen Recognition エディターを使用して、認識�
 ## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。
+

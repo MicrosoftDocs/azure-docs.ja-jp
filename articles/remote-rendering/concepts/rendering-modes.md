@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7f2b1031659864ae338bb0aa320c048ea23c21f3
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6d7a895f3b565fdd4ec4659045034d0200355a60
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679357"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021869"
 ---
 # <a name="rendering-modes"></a>レンダリング モード
 
@@ -50,7 +51,7 @@ MSAA アーティファクトを次の図に示します。![DepthBasedCompositi
 
 ## <a name="setting-the-render-mode"></a>レンダリング モードの設定
 
-Remote Rendering VM で使用されるレンダリング モードは、`AzureSession.ConnectToRuntime` の間に `ConnectToRuntimeParams` を介して指定されます。
+Remote Rendering サーバーで使用されるレンダリング モードは、`AzureSession.ConnectToRuntime` の間に `ConnectToRuntimeParams` を介して指定されます。
 
 ```cs
 async void ExampleConnect(AzureSession session)

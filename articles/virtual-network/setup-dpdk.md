@@ -1,6 +1,6 @@
 ---
 title: Azure Linux VM の DPDK | Microsoft Docs
-description: Linux 仮想マシンで DPDK を設定する方法について説明します。
+description: Data Plane Development Kit (DPDK) の利点と、Linux 仮想マシンに DPDK を設定する方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: laxmanrb
@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: labattul
-ms.openlocfilehash: 79e06fe95b48468616dce913e19c430dc2818719
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 622b7e629a7f5fea77afc18ec5121fe3466716ed
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744876"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387559"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Linux 仮想マシンでの DPDK の設定
 
@@ -44,7 +44,7 @@ Azure Marketplace の次のディストリビューションがサポートさ�
 |--------------|---------------------------   |
 | Ubuntu 16.04 | 4.15.0-1014-azure+           | 
 | Ubuntu 18.04 | 4.15.0-1014-azure+           |
-| SLES 15 SP1  | 4.12.14-8.27-azure+          | 
+| SLES 15 SP1  | 4.12.14-8.19-azure+          | 
 | RHEL 7.5     | 3.10.0-862.11.6.el7.x86_64+  | 
 | CentOS 7.5   | 3.10.0-862.11.6.el7.x86_64+  | 
 

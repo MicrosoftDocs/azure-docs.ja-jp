@@ -3,38 +3,40 @@ title: Azure Media Services で CLI 使用してフィルターを作成する |
 description: この記事では、Azure Media Services v3 で CLI を使用してフィルターを作成する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/13/2019
-ms.author: juliako
+ms.topic: how-to
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 74516aa921e45917f327a193a1c972b021c9c8ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5ceff9eba0363ea2784c48e026807c53447f1e32
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74896070"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296904"
 ---
-# <a name="creating-filters-with-cli"></a>CLI を使用してフィルターを作成する 
+# <a name="creating-filters-with-cli"></a>CLI を使用してフィルターを作成する
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 コンテンツを顧客に配信 (ライブ イベントやビデオ オン デマンドをストリーム配信) する際、資産の既定のマニフェスト ファイルに記述された内容だけではクライアントのニーズに柔軟に対応できない場合があります。 Azure Media Services では、アカウント フィルターと、コンテンツのアセットフィルターを定義することができます。 
 
 この機能と、この機能が使用されているシナリオの詳細については、[動的マニフェスト](filters-dynamic-manifest-overview.md)と[フィルター](filters-concept.md)に関する記事を参照してください。
 
-このトピックでは、ビデオ オン デマンド資産用のフィルターを構成し、Media Services v3 用の CLI を使用して[アカウント フィルター](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)と[資産 フィルター](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)を作成する方法について説明します。 
+このトピックでは、ビデオ オン デマンド資産用のフィルターを構成し、Media Services v3 用の CLI を使用して[アカウント フィルター](/cli/azure/ams/account-filter?view=azure-cli-latest)と[資産 フィルター](/cli/azure/ams/asset-filter?view=azure-cli-latest)を作成する方法について説明します。 
 
 > [!NOTE]
 > [presentationTimeRange](filters-concept.md#presentationtimerange) を必ず確認してください。
 
 ## <a name="prerequisites"></a>前提条件 
 
-- [Media Services アカウントを作成する](create-account-cli-how-to.md) リソース グループ名と Media Services アカウント名を覚えておいてください。 
+- [Media Services アカウントを作成する](./create-account-howto.md) リソース グループ名と Media Services アカウント名を覚えておいてください。 
 
 [!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
@@ -80,7 +82,7 @@ ms.locfileid: "74896070"
 
 ## <a name="create-account-filters"></a>アカウント フィルターの作成
 
-次の [az ams account-filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) コマンドでは、[前に定義した](#define-a-filter)フィルター トラック選択を含むアカウント フィルターが作成されます。 
+次の [az ams account-filter](/cli/azure/ams/account-filter?view=azure-cli-latest) コマンドでは、[前に定義した](#define-a-filter)フィルター トラック選択を含むアカウント フィルターが作成されます。 
 
 このコマンドを使用すると、トラック選択を表す JSON を含むオプションの `--tracks` パラメーターを渡すことができます。  ファイルから JSON を読み込むには、@ {ファイル} を使用します。 Azure CLI をローカルで使用している場合は、ファイルのパス全体を指定します。
 
@@ -88,17 +90,17 @@ ms.locfileid: "74896070"
 az ams account-filter create -a amsAccount -g resourceGroup -n filterName --tracks @tracks.json
 ```
 
-[フィルターに関する JSON の例](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create-an-account-filter)も参照してください。
+[フィルターに関する JSON の例](/rest/api/media/accountfilters/createorupdate#create-an-account-filter)も参照してください。
 
 ## <a name="create-asset-filters"></a>アセットフィルターの作成
 
-次の [az ams asset-filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest) コマンドでは、[前に定義した](#define-a-filter)フィルター トラック選択を含む資産フィルターが作成されます。 
+次の [az ams asset-filter](/cli/azure/ams/asset-filter?view=azure-cli-latest) コマンドでは、[前に定義した](#define-a-filter)フィルター トラック選択を含む資産フィルターが作成されます。 
 
 ```azurecli
 az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-name assetName --tracks @tracks.json
 ```
 
-[フィルターに関する JSON の例](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create-an-asset-filter)も参照してください。
+[フィルターに関する JSON の例](/rest/api/media/assetfilters/createorupdate#create-an-asset-filter)も参照してください。
 
 ## <a name="associate-filters-with-streaming-locator"></a>フィルターをストリーミング ロケーターに関連付ける
 
@@ -132,4 +134,4 @@ az ams streaming-locator create -a amsAccount -g resourceGroup -n streamingLocat
 
 ## <a name="see-also"></a>参照
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+[Azure CLI](/cli/azure/ams?view=azure-cli-latest)

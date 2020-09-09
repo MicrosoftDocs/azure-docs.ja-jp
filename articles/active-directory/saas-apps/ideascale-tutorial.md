@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と IdeaScale の統合 | Microsoft Docs'
 description: Azure Active Directory と IdeaScale の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: e16dda6b-fdf9-43cc-9bbb-a523f085a8af
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81594e6a21372f2b4dacedbda638cc87bad966db
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ef388426584dc013d102b929627ce2ba45431d5c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74227561"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547498"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>チュートリアル: Azure Active Directory と IdeaScale の統合
 
@@ -110,10 +105,10 @@ IdeaScale で Azure AD シングル サインオンを構成するには、次�
 
     b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。
     
-    | |
-    |--|
-    | `http://<companyname>.ideascale.com`  |
-    | `https://<companyname>.ideascale.com` |
+    ```http
+    http://<companyname>.ideascale.com
+    https://<companyname>.ideascale.com
+    ```
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[IdeaScale クライアント サポート チーム](https://support.ideascale.com/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

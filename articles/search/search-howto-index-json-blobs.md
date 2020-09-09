@@ -8,13 +8,13 @@ ms.author: heidist
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 37fc78971124240077a59d4ad99aa06cc408dbae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/11/2020
+ms.openlocfilehash: 6a5a3634f1d5ddc7af2af2e27c2b1d7c8ce9a2af
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74533966"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88917994"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Azure Cognitive Search で BLOB インデクサーを使用して JSON BLOB のインデックスを作成する方法
 
@@ -37,7 +37,7 @@ JSON ドキュメントのインデックスを作成する最も簡単な方法
 
 ### <a name="1---prepare-source-data"></a>1 - ソース データを準備する
 
-[Azure portal にサインイン](https://portal.azure.com/)し、データを格納する [BLOB コンテナーを作成](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)します。 パブリック アクセス レベルは、有効な任意の値に設定できます。
+[Azure portal にサインイン](https://portal.azure.com/)し、データを格納する [BLOB コンテナーを作成](../storage/blobs/storage-quickstart-blobs-portal.md)します。 パブリック アクセス レベルは、有効な任意の値に設定できます。
 
 **インポート データ** ウィザードでデータを取得するには、ストレージ アカウント名、コンテナー名、アクセス キーが必要です。
 
@@ -77,7 +77,7 @@ JSON ドキュメントのインデックスを作成する最も簡単な方法
 
 属性列の上部にあるチェック ボックスをクリックすることで、属性を一括選択できます。 クライアント アプリに返してフル検索処理の対象にする必要があるすべてのフィールドで、 **[取得可能]** と **[検索可能]** を選択します。 整数はフルテキスト検索もあいまい検索もできないことに注意してください (数値は逐語的に評価され、多くの場合フィルターで役立ちます)。
 
-詳細については、[インデックス属性](https://docs.microsoft.com/rest/api/searchservice/create-index#bkmk_indexAttrib)と[言語アナライザー](https://docs.microsoft.com/rest/api/searchservice/language-support)の説明を参照してください。 
+詳細については、[インデックス属性](/rest/api/searchservice/create-index#bkmk_indexAttrib)と[言語アナライザー](/rest/api/searchservice/language-support)の説明を参照してください。 
 
 時間をかけて選択内容を確認します。 ウィザードを実行すると、物理データ構造が作成されて、すべてのオブジェクトを削除して再作成しない限り、これらのフィールドを編集することはできません。
 
@@ -110,9 +110,9 @@ REST API を使用して、Azure Cognitive Search のすべてのインデクサ
 
 コードベースの JSON インデックスでは、[Postman](search-get-started-postman.md) と REST API を使用して、次のオブジェクトが作成されます。
 
-+ [インデックス](https://docs.microsoft.com/rest/api/searchservice/create-index)
-+ [データ ソース](https://docs.microsoft.com/rest/api/searchservice/create-data-source)
-+ [インデクサー](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [インデックス](/rest/api/searchservice/create-index)
++ [データ ソース](/rest/api/searchservice/create-data-source)
++ [インデクサー](/rest/api/searchservice/create-indexer)
 
 オブジェクトを作成して呼び出す操作は、この順序で実行する必要があります。 ポータルを使用するワークフローとは異なり、コードを使用する方法では、**インデックス作成**要求を通して送信された JSON ドキュメントを受け取るために利用できるインデックスが必要です。
 
@@ -120,9 +120,9 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
 
 | JSON ドキュメント | parsingMode | 説明 | 可用性 |
 |--------------|-------------|--------------|--------------|
-| BLOB あたり 1 つ | `json` | JSON BLOB を 1 つのテキスト チャンクとして解析します。 各 JSON BLOB は、1 つの Azure Cognitive Search ドキュメントになります。 | [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API と [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK の両方で一般公開されています。 |
-| BLOB あたり複数 | `jsonArray` | 配列の各要素が別々の Azure Cognitive Search ドキュメントになる、BLOB 内の JSON 配列を解析します。  | [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API と [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK の両方で一般公開されています。 |
-| BLOB あたり複数 | `jsonLines` | 改行によって分離された複数の JSON エンティティ ("配列") を含む BLOB を解析します。各エンティティが独立した Azure Cognitive Search ドキュメントになります。 | [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API と [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK の両方で一般公開されています。 |
+| BLOB あたり 1 つ | `json` | JSON BLOB を 1 つのテキスト チャンクとして解析します。 各 JSON BLOB は、1 つの Azure Cognitive Search ドキュメントになります。 | [REST](/rest/api/searchservice/indexer-operations) API と [.NET](/dotnet/api/microsoft.azure.search.models.indexer) SDK の両方で一般公開されています。 |
+| BLOB あたり複数 | `jsonArray` | 配列の各要素が別々の Azure Cognitive Search ドキュメントになる、BLOB 内の JSON 配列を解析します。  | [REST](/rest/api/searchservice/indexer-operations) API と [.NET](/dotnet/api/microsoft.azure.search.models.indexer) SDK の両方で一般公開されています。 |
+| BLOB あたり複数 | `jsonLines` | 改行によって分離された複数の JSON エンティティ ("配列") を含む BLOB を解析します。各エンティティが独立した Azure Cognitive Search ドキュメントになります。 | [REST](/rest/api/searchservice/indexer-operations) API と [.NET](/dotnet/api/microsoft.azure.search.models.indexer) SDK の両方で一般公開されています。 |
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1 - 要求に対する入力をアセンブルする
 
@@ -149,7 +149,8 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
 
 サービス名、管理者キー、ストレージ アカウント、およびアカウント キーのプレースホルダーを有効な値を置き換えてください。
 
-    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+```http
+    POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key for Azure Cognitive Search]
 
@@ -159,6 +160,7 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
         "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
         "container" : { "name" : "my-container", "query" : "optional, my-folder" }
     }   
+```
 
 ### <a name="3---create-a-target-search-index"></a>3 - ターゲット検索インデックスを作成する 
 
@@ -166,9 +168,10 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
 
 インデックスには、Azure Cognitive Search の検索可能なコンテンツが格納されます。 インデックスを作成するには、検索エクスペリエンスを構成するドキュメント内のフィールド、属性、およびその他の構造が指定されているスキーマを提供します。 ソースと同じフィールド名とデータ型を持つインデックスを作成すると、インデクサーによってソースのフィールドとインデックスのフィールドが照合されるので、フィールドを明示的にマップする作業をしなくて済みます。
 
-[インデックス作成](https://docs.microsoft.com/rest/api/searchservice/create-index)要求の例を次に示します。 インデックスには、BLOB から抽出されたテキストを格納するための、検索可能な `content` フィールドが含まれます。   
+[インデックス作成](/rest/api/searchservice/create-index)要求の例を次に示します。 インデックスには、BLOB から抽出されたテキストを格納するための、検索可能な `content` フィールドが含まれます。   
 
-    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
+```http
+    POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key for Azure Cognitive Search]
 
@@ -179,13 +182,15 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
             { "name": "content", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": false, "facetable": false }
           ]
     }
+```
 
 
 ### <a name="4---configure-and-run-the-indexer"></a>4 - インデクサーを構成して実行する
 
 インデックスおよびデータ ソースと同様に、インデクサーも Azure Cognitive Search サービス上に作成して再利用する名前付きオブジェクトです。 インデクサーを作成するための完全に指定された要求は次のようになります。
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+```http
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key for Azure Cognitive Search]
 
@@ -196,6 +201,7 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
       "schedule" : { "interval" : "PT2H" },
       "parameters" : { "configuration" : { "parsingMode" : "json" } }
     }
+```
 
 インデクサーの構成は、要求の本文内にあります。 データ ソースと、Azure Cognitive Search に既に存在する空のターゲット インデックスが必要です。 
 
@@ -212,7 +218,8 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
 
 すべてのインデクサーには、既存のデータへの接続情報を提供するデータ ソース オブジェクトが必要です。 
 
-    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+```http
+    POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key for Azure Cognitive Search]
 
@@ -222,13 +229,14 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
         "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
         "container" : { "name" : "my-container", "query" : "optional, my-folder" }
     }  
-
+```
 
 ### <a name="index-request"></a>インデックス要求
 
 すべてのインデクサーには、データを受信するターゲット インデックスが必要です。 要求の本文には、検索可能なインデックスで目的の動作をサポートする属性が設定されたフィールドで構成されるインデックス スキーマを定義します。 インデクサーが実行される時点で、このインデックスは空である必要があります。 
 
-    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
+```http
+    POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key for Azure Cognitive Search]
 
@@ -239,7 +247,7 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
             { "name": "content", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": false, "facetable": false }
           ]
     }
-
+```
 
 ### <a name="indexer-request"></a>インデクサー要求
 
@@ -247,7 +255,8 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
 
 Azure Cognitive Search 上にインデクサーを作成すると、データのインポートがトリガーされます。 それはすぐに実行されます。スケジュールが指定されている場合は、スケジュールに従って実行されます。
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+```http
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key for Azure Cognitive Search]
 
@@ -263,7 +272,7 @@ Azure Cognitive Search 上にインデクサーを作成すると、データの
         { "sourceFieldName" : "/article/tags", "targetFieldName" : "tags" }
         ]
     }
-
+```
 
 <a name="json-indexer-dotnet"></a>
 
@@ -271,10 +280,10 @@ Azure Cognitive Search 上にインデクサーを作成すると、データの
 
 .NET SDK は REST API と完全に同等です。 前の REST API セクションを確認し、概念、ワークフロー、要件を理解することをお勧めします。 その後は、次の .NET API リファレンス ドキュメントを参照して、マネージド コードで JSON インデクサーを実装できます。
 
-+ [microsoft.azure.search.models.datasource](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
-+ [microsoft.azure.search.models.datasourcetype](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
-+ [microsoft.azure.search.models.index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
-+ [microsoft.azure.search.models.indexer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
++ [microsoft.azure.search.models.datasource](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
++ [microsoft.azure.search.models.datasourcetype](/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
++ [microsoft.azure.search.models.index](/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
++ [microsoft.azure.search.models.indexer](/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
 
 <a name="parsing-modes"></a>
 
@@ -302,6 +311,7 @@ JSON BLOB では、複数の形式を想定できます。 JSON インデクサ�
 
 [Azure Cognitive Search BLOB インデクサー](search-howto-indexing-azure-blob-storage.md) は、既定では JSON BLOB を 1 つのテキスト チャンクとして解析します。 多くの場合、JSON ドキュメントの構造はそのままに維持する必要があります。 たとえば、Azure Blob Storage に次の JSON ドキュメントがあると仮定します。
 
+```http
     {
         "article" : {
             "text" : "A hopefully useful article explaining how to parse JSON blobs",
@@ -309,6 +319,7 @@ JSON BLOB では、複数の形式を想定できます。 JSON インデクサ�
             "tags" : [ "search", "storage", "howto" ]    
         }
     }
+```
 
 BLOB インデクサーでは、JSON ドキュメントが 1 つの Azure Cognitive Search ドキュメントとして解析されます。 インデクサーでは、ソースの "text"、"datePublished"、"tags" が、同じ名前と型のターゲット インデックス フィールドと照合されて、インデックスが読み込まれます。
 
@@ -320,15 +331,18 @@ BLOB インデクサーでは、JSON ドキュメントが 1 つの Azure Cognit
 
 別の方法として、[JSON 配列] オプションを使用できます。 このオプションは、BLOB に "*JSON オブジェクトの配列*" が含まれ、各要素を個別の Azure Cognitive Search ドキュメントにする場合に役立ちます。 たとえば、次の JSON BLOB では、それぞれ "id" および "text" フィールドを持つ 3 つの独立したドキュメントで Azure Cognitive Search インデックスを作成できます。  
 
+```text
     [
         { "id" : "1", "text" : "example 1" },
         { "id" : "2", "text" : "example 2" },
         { "id" : "3", "text" : "example 3" }
     ]
+```
 
 JSON 配列の場合、インデクサーの定義は次の例のようになります。 parsingMode パラメーターで `jsonArray` パーサーが指定されていることに注意してください。 JSON BLOB のインデックスを作成するための配列に固有の要件は、適切なパーサーを指定することと、適切なデータを入力することの 2 つだけです。
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+```http
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -339,6 +353,7 @@ JSON 配列の場合、インデクサーの定義は次の例のようになり
       "schedule" : { "interval" : "PT2H" },
       "parameters" : { "configuration" : { "parsingMode" : "jsonArray" } }
     }
+```
 
 この場合も、フィールドのマッピングを省略できることに注意してください。 インデックスに同じ名前のフィールド "id" と "text" があるものとすると、フィールド マッピング リストを明示的に指定しなくても、BLOB インデクサーで正しいマッピングを推測できます。
 
@@ -347,6 +362,7 @@ JSON 配列の場合、インデクサーの定義は次の例のようになり
 ## <a name="parse-nested-arrays"></a>入れ子になった配列を解析する
 入れ子になった要素を持つ JSON 配列では、`documentRoot` を指定して、複数レベルの構造であることを指示することができます。 たとえば、次のような BLOB があるとします。
 
+```http
     {
         "level1" : {
             "level2" : [
@@ -356,26 +372,32 @@ JSON 配列の場合、インデクサーの定義は次の例のようになり
             ]
         }
     }
+```
 
 この構成を使用して、`level2` プロパティに格納されている配列にインデックスを付けます。
 
+```http
     {
         "name" : "my-json-array-indexer",
         ... other indexer properties
         "parameters" : { "configuration" : { "parsingMode" : "jsonArray", "documentRoot" : "/level1/level2" } }
     }
+```
 
 ## <a name="parse-blobs-separated-by-newlines"></a>改行で区切られた BLOB を解析する
 
 BLOB に改行で分離された複数の JSON エンティティが含まれ、各要素を独立した Azure Cognitive Search ドキュメントにする場合は、[JSON 行] オプションを選択できます。 たとえば、次の BLOB (3 つの異なる JSON があります) では、それぞれが "id" フィールドと "text" フィールドを持つ 3 つの独立したドキュメントを含む Azure Cognitive Search インデックスを作成できます。
 
-    { "id" : "1", "text" : "example 1" }
-    { "id" : "2", "text" : "example 2" }
-    { "id" : "3", "text" : "example 3" }
+```text
+{ "id" : "1", "text" : "example 1" }
+{ "id" : "2", "text" : "example 2" }
+{ "id" : "3", "text" : "example 3" }
+```
 
 JSON 行では、インデクサーの定義は次の例のようになります。 parsingMode パラメーターで `jsonLines` パーサーが指定されていることに注意してください。 
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+```http
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -386,6 +408,7 @@ JSON 行では、インデクサーの定義は次の例のようになります
       "schedule" : { "interval" : "PT2H" },
       "parameters" : { "configuration" : { "parsingMode" : "jsonLines" } }
     }
+```
 
 ここでも、`jsonArray` 解析モードのように、フィールド マッピングを省略できることに注意してください。
 
@@ -397,6 +420,7 @@ JSON 行では、インデクサーの定義は次の例のようになります
 
 JSON ドキュメントの例に戻りましょう。
 
+```http
     {
         "article" : {
             "text" : "A hopefully useful article explaining how to parse JSON blobs",
@@ -404,20 +428,25 @@ JSON ドキュメントの例に戻りましょう。
             "tags" : [ "search", "storage", "howto" ]    
         }
     }
+```
 
 `Edm.String` 型の `text` フィールド、`Edm.DateTimeOffset` 型の `date` フィールド、`Collection(Edm.String)` 型の `tags` フィールドを持つ検索インデックスがあるとします。 ソースの "datePublished" とインデックスの `date` フィールド間の違いに注目してください。 JSON を必要な形式にマッピングするには、次のフィールド マッピングを使用します。
 
+```http
     "fieldMappings" : [
         { "sourceFieldName" : "/article/text", "targetFieldName" : "text" },
         { "sourceFieldName" : "/article/datePublished", "targetFieldName" : "date" },
         { "sourceFieldName" : "/article/tags", "targetFieldName" : "tags" }
       ]
+```
 
 マッピング内のソース フィールド名は、 [JSON ポインター](https://tools.ietf.org/html/rfc6901) の表記を使用して指定されています。 スラッシュから始めて、JSON ドキュメントのルートを参照し、その後、スラッシュ区切りのパスを使用して、目的のプロパティ (任意の入れ子レベル) まで指定します。
 
 0 から始まるインデックスを使用して個々の配列要素を参照することもできます。 たとえば、上の例から "tags" 配列の最初の要素を選択するには、次のようなフィールド マッピングを使用します。
 
+```http
     { "sourceFieldName" : "/article/tags/0", "targetFieldName" : "firstTag" }
+```
 
 > [!NOTE]
 > フィールド マッピングのパス内のソース フィールド名が、JSON に存在しないプロパティを参照している場合、そのマッピングはエラーなしでスキップされます。 これは、異なるスキーマを使用したドキュメントをサポートできるようにするためです (一般的なユース ケースです)。 検証機能がないため、フィールド マッピングの仕様を入力するときは、入力ミスをしないように注意する必要があります。

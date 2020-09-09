@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 32117d4bfcf0c0af94eced095b94ab0c1b6f88af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d95b45b9be0893282a532bae9ec0278c3a141686
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78184353"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385928"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Microsoft Graph を使用して Azure AD B2C を管理する
 
@@ -36,15 +36,25 @@ Microsoft Graph API を使用して Azure AD B2C テナントのリソースを�
 
 * **対話型** - 一度だけ実行されるタスクに適切です。B2C テナントの管理者アカウントを使用して管理タスクを実行します。 このモードでは、Microsoft Graph API を呼び出す前に、管理者は自分の資格情報を使用してサインインする必要があります。
 
-* **自動** - スケジュールされた、または継続的に実行されるタスクの場合、この方法では、管理タスクを実行するために必要なアクセス許可で構成したサービス アカウントが使用されます。 Azure AD B2C に "サービスアカウント" を作成するには、アプリケーションとスクリプトが*アプリケーション (クライアント) ID* と OAuth 2.0 のクライアント資格情報付与を使用した認証に使用するアプリケーションを登録します。 この場合、アプリケーションは、前に説明した対話型の方法のように管理者ユーザーとしてではなく、それ自体として Microsoft Graph API を呼び出します。
+* **自動** - スケジュールされた、または継続的に実行されるタスクの場合、この方法では、管理タスクを実行するために必要なアクセス許可で構成したサービス アカウントが使用されます。 Azure AD B2C に "サービスアカウント" を作成するには、アプリケーションとスクリプトが "*アプリケーション (クライアント) ID*" と "**OAuth 2.0 のクライアント資格情報**" 付与を使用した認証に使用するアプリケーションを登録します。 この場合、アプリケーションは、前に説明した対話型の方法のように管理者ユーザーとしてではなく、それ自体として Microsoft Graph API を呼び出します。
 
 **自動**の相互作用シナリオを有効にするには、次のセクションで示すアプリケーション登録を作成します。
+
+OAuth 2.0 クライアント資格情報付与フローは現在 Azure AD B2C 認証サービスによって直接サポートされていませんが、Azure AD B2C テナント内のアプリケーション向けに Azure AD と Microsoft ID プラットフォーム/トークンエンド ポイントを使用して、クライアント資格情報フローを設定できます。 Azure AD B2C テナントは、Azure AD のエンタープライズ テナントと同じいくつかの機能を持っています。
 
 ## <a name="register-management-application"></a>管理アプリケーションを登録する
 
 スクリプトとアプリケーションが [Microsoft Graph API][ms-graph-api] と対話して Azure AD B2C リソースを管理できるようにするには、必要な API アクセス許可を付与するアプリケーション登録を Azure AD B2C テナントに作成する必要があります。
 
-[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
+1. **[アプリの登録]** を選択し、 **[新規登録]** を選択します。
+1. アプリケーションの**名前**を入力します。 たとえば、*managementapp1* と入力します。
+1. **[この組織のディレクトリ内のアカウントのみ]** を選択します。
+1. **[アクセス許可]** で、 *[openid と offline_access アクセス許可に対して管理者の同意を付与します]* チェック ボックスをオフにします。
+1. **[登録]** を選択します。
+1. アプリケーションの概要ページに表示されている **[アプリケーション (クライアント) ID]** を記録します。 この値は、後の手順で使用します。
 
 ### <a name="grant-api-access"></a>API アクセスの許可
 
@@ -73,9 +83,10 @@ Microsoft Graph API を使用して Azure AD B2C テナントのリソースを�
 1. **[追加]** を選択します。 アクセス許可が完全に反映されるまでに数分かかる場合があります。
 
 ## <a name="next-steps"></a>次のステップ
+管理アプリケーションを登録し、必要なアクセス許可を付与したので、お使いのアプリケーションとサービス (たとえば、Azure Pipelines) はその資格情報とアクセス許可を使用して、Microsoft Graph API と対話することができます。 
 
-管理アプリケーションを登録し、必要なアクセス許可を付与したので、お使いのアプリケーションとサービス (たとえば、Azure Pipelines) はその資格情報とアクセス許可を使用して、Microsoft Graph API と対話することができます。
-
+* [Azure AD からアクセス トークンを取得する](https://docs.microsoft.com/graph/auth-v2-service#4-get-an-access-token)
+* [アクセス トークンを使用して Microsoft Graph を呼び出す](https://docs.microsoft.com/graph/auth-v2-service#4-get-an-access-token)
 * [Microsoft Graph でサポートされている B2C 操作](microsoft-graph-operations.md)
 * [Microsoft Graph を使用して Azure AD B2C ユーザー アカウントを管理する](manage-user-accounts-graph-api.md)
 * [Azure AD Reporting API を使って監査ログを取得する](view-audit-logs.md#get-audit-logs-with-the-azure-ad-reporting-api)

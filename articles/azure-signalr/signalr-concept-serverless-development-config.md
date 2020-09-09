@@ -6,12 +6,13 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.openlocfilehash: e1157a695d34c75b237391427b37365421366ef8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 0b5056f221fdd6036e5f6dff3d69a21c3a2dc27e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77523172"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928566"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure SignalR Service を使用した Azure Functions の開発と構成
 
@@ -32,7 +33,7 @@ Azure portal で、SignalR Service リソースの *[設定]* ページを見つ
 Azure Functions および Azure SignalR Service で構築されたサーバーレスのリアルタイム アプリケーションは、通常、2 つの Azure Functions が必要です。
 
 * 有効な SignalR Service アクセス トークンおよびサービスエンドポイント URL を取得するためにクライアントが呼び出す「negotiate」関数
-* メッセージを送信し、グループ メンバーシップを管理する 1 つ以上の関数
+* SignalR Service からのメッセージを処理し、メッセージを送信したり、グループ メンバーシップを管理したりする 1 つ以上の関数
 
 ### <a name="negotiate-function"></a>negotiate 関数
 
@@ -40,9 +41,17 @@ Azure Functions および Azure SignalR Service で構築されたサーバー�
 
 HTTP によってトリガーされる Azure 関数と *SignalRConnectionInfo* 入力バインドを使用して、接続情報オブジェクトを生成します。 関数には、`/negotiate` で終わる HTTP ルートが必要です。
 
+C# の[クラス ベース モデル](#class-based-model)では、*SignalRConnectionInfo* 入力バインドは必要なく、カスタム要求をより簡単に追加できます。 「[クラス ベース モデルでの negotiate エクスペリエンス](#negotiate-experience-in-class-based-model)」を参照してください。
+
 negotiate 関数を作成する方法の詳細については、[*SignalRConnectionInfo* 入力バインドのリファレンス](../azure-functions/functions-bindings-signalr-service-input.md)に関するページを参照してください。
 
 認証トークンを作成する方法の詳細については、[App Service 認証の使用](#using-app-service-authentication)に関するページを参照してください。
+
+### <a name="handle-messages-sent-from-signalr-service"></a>SignalR Service から送信されたメッセージを処理する
+
+SignalR Service から送信されたメッセージを処理するには、"*SignalR トリガー*" バインドを使用します。 クライアントがメッセージを送信したり、クライアントが接続または切断されたりすると、トリガーされることがあります。
+
+詳細については、"[*SignalR トリガー*" バインドのリファレンス](../azure-functions/functions-bindings-signalr-service-trigger.md)を参照してください。
 
 ### <a name="sending-messages-and-managing-group-membership"></a>メッセージの送信とグループ メンバーシップの管理
 
@@ -55,6 +64,111 @@ negotiate 関数を作成する方法の詳細については、[*SignalRConnect
 ### <a name="signalr-hubs"></a>SignalR Hubs
 
 SignalR には「ハブ」の概念があります。 各クライアント接続と Azure Functions から送信される各メッセージは、特定のハブに範囲指定されます。 接続およびメッセージを論理名前空間に分割する方法としてハブを使用できます。
+
+## <a name="class-based-model"></a>クラス ベース モデル
+
+クラス ベース モデルは C# 専用です。 クラス ベース モデルでは、一貫性のある SignalR サーバー側プログラミング エクスペリエンスを得ることができます。 これには、次の機能があります。
+
+* 構成作業が少ない: クラス名は `HubName` として使用され、メソッド名は `Event` として使用され、`Category` はメソッド名にしたがって自動的に決定されます。
+* 自動パラメーター バインディング: `ParameterNames` も属性 `[SignalRParameter]` も必要ありません。 パラメーターは、Azure Function メソッドの引数に順番に自動的にバインドされます。
+* 便利な出力と negotiate エクスペリエンス。
+
+次のコードは、これらの機能を示しています。
+
+```cs
+public class SignalRTestHub : ServerlessHub
+{
+    [FunctionName("negotiate")]
+    public SignalRConnectionInfo Negotiate([HttpTrigger(AuthorizationLevel.Anonymous)]HttpRequest req)
+    {
+        return Negotiate(req.Headers["x-ms-signalr-user-id"], GetClaims(req.Headers["Authorization"]));
+    }
+
+    [FunctionName(nameof(OnConnected))]
+    public async Task OnConnected([SignalRTrigger]InvocationContext invocationContext, ILogger logger)
+    {
+        await Clients.All.SendAsync(NewConnectionTarget, new NewConnection(invocationContext.ConnectionId));
+        logger.LogInformation($"{invocationContext.ConnectionId} has connected");
+    }
+
+    [FunctionName(nameof(Broadcast))]
+    public async Task Broadcast([SignalRTrigger]InvocationContext invocationContext, string message, ILogger logger)
+    {
+        await Clients.All.SendAsync(NewMessageTarget, new NewMessage(invocationContext, message));
+        logger.LogInformation($"{invocationContext.ConnectionId} broadcast {message}");
+    }
+
+    [FunctionName(nameof(OnDisconnected))]
+    public void OnDisconnected([SignalRTrigger]InvocationContext invocationContext)
+    {
+    }
+}
+```
+
+クラス ベース モデルを利用するすべての関数は、**ServerlessHub** から継承するクラスのメソッドである必要があります。 サンプルのクラス名 `SignalRTestHub` はハブ名です。
+
+### <a name="define-hub-method"></a>ハブ メソッドを定義する
+
+すべてのハブ メソッドは、`[SignalRTrigger]` 属性を持っている**必要があり**、パラメーターなしのコンストラクターを使用する**必要があります**。 **メソッド名**は、パラメーター **イベント**として扱われます。
+
+既定では、メソッド名以外の `category=messages` は次のいずれかの名前になります。
+
+* **OnConnected**: `category=connections, event=connected` として扱われます
+* **OnDisconnected**: `category=connections, event=disconnected` として扱われます
+
+### <a name="parameter-binding-experience"></a>パラメーター バインディング エクスペリエンス
+
+クラス ベース モデルでは、次の状況を除き、すべての引数は既定で `[SignalRParameter]` としてマークされているため、`[SignalRParameter]` は必要ありません。
+
+* 引数が、バインド属性によって修飾されている。
+* 引数の型が `ILogger` または `CancellationToken` である。
+* 引数が属性 `[SignalRIgnore]` によって修飾されている。
+
+### <a name="negotiate-experience-in-class-based-model"></a>クラス ベース モデルでの negotiate エクスペリエンス
+
+SignalR の入力バインド `[SignalR]` を使用する代わりに、クラス ベース モデルでのネゴシエーションをより柔軟に行うことができます。 基底クラス `ServerlessHub` にはメソッドがあります。
+
+```cs
+SignalRConnectionInfo Negotiate(string userId = null, IList<Claim> claims = null, TimeSpan? lifeTime = null)
+```
+
+この機能のユーザーは、関数の実行中に `userId` または `claims` をカスタマイズします。
+
+## <a name="use-signalrfilterattribute"></a>`SignalRFilterAttribute` を使用します
+
+ユーザーは、抽象クラス `SignalRFilterAttribute` を継承して実装できます。 `FilterAsync` で例外がスローされると、`403 Forbidden` がクライアントに返されます。
+
+次のサンプルは、`admin` が `broadcast` を呼び出すことだけが許可される顧客フィルターを実装する方法を示しています。
+
+```cs
+[AttributeUsage(AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
+internal class FunctionAuthorizeAttribute: SignalRFilterAttribute
+{
+    private const string AdminKey = "admin";
+
+    public override Task FilterAsync(InvocationContext invocationContext, CancellationToken cancellationToken)
+    {
+        if (invocationContext.Claims.TryGetValue(AdminKey, out var value) &&
+            bool.TryParse(value, out var isAdmin) &&
+            isAdmin)
+        {
+            return Task.CompletedTask;
+        }
+
+        throw new Exception($"{invocationContext.ConnectionId} doesn't have admin role");
+    }
+}
+```
+
+属性を利用して関数を承認します。
+
+```cs
+[FunctionAuthorize]
+[FunctionName(nameof(Broadcast))]
+public async Task Broadcast([SignalRTrigger]InvocationContext invocationContext, string message, ILogger logger)
+{
+}
+```
 
 ## <a name="client-development"></a>クライアント開発
 

@@ -4,18 +4,18 @@ description: Azure でカスタム メトリックを使用してリソースを
 ms.topic: conceptual
 ms.date: 05/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 7758c440c75af5819099110dcbdaf5a86a1d2a04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8e744e6a91eb6fbe23a6b45f95c39b1acfdcb61f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77425121"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539586"
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Azure でのカスタム メトリックによる自動スケールの概要
 この記事では、Azure Portal でカスタム メトリックを使用してリソースをスケールする方法について説明します。
 
 Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[Cloud Services](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/)、[Azure Data Explorer クラスター](https://azure.microsoft.com/services/data-explorer/)、   
-統合サービス環境および [API Management サービス](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)のみに適用されます。
+統合サービス環境および [API Management サービス](../../api-management/api-management-key-concepts.md)のみに適用されます。
 
 ## <a name="lets-get-started"></a>作業の開始
 この記事では、Application Insights が構成されている Web アプリがあることを前提としています。 Web アプリをまだ所有していない場合は、[ASP.NET Web サイト向けに Application Insights を設定する][1]ことができます。
@@ -41,11 +41,10 @@ Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](http
 > 注:VMSS またはクラウド サービス ロールを使用する場合も同じ手順が適用されます。
 
 <!--Reference-->
-[1]: https://docs.microsoft.com/azure/application-insights/app-insights-asp-net
+[1]: ../app/asp-net.md
 [2]: https://portal.azure.com
 [3]: ./media/autoscale-custom-metric/azure-monitor-launch.png
 [4]: ./media/autoscale-custom-metric/discover-autoscale-azure-monitor.png
 [5]: ./media/autoscale-custom-metric/scale-setting-new-web-app.png
 [6]: ./media/autoscale-custom-metric/scale-by-custom-metric.png
 [7]: ./media/autoscale-custom-metric/autoscale-setting-custom-metrics-ai.png
-

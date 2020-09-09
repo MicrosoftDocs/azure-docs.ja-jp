@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/08/2020
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 217e48ab21439f03e0b52c894c9aace5b51b1502
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bfb42e0ba81eef145932db072c8a80a2f8e00932
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79086162"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87425210"
 ---
 Azure Data Factory は、お客様のサブスクリプションが互いのワークロードから保護されるように、次の既定の制限が設定されているマルチテナント サービスです。 サブスクリプションの上限まで制限を引き上げるには、サポートにお問い合わせください。
 
@@ -22,7 +22,7 @@ Azure Data Factory は、お客様のサブスクリプションが互いのワ�
 | リソース | 既定の制限 | 上限 |
 | -------- | ------------- | ------------- |
 | Azure サブスクリプション内の Data Factory | 800 | [サポートにお問い合わせください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
-| データ ファクトリ内のエンティティ (パイプライン、データセット、トリガー、リンクされたサービス、統合ランタイムなど) の合計数 | 5,000 | [サポートにお問い合わせください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
+| データ ファクトリ内のエンティティ (パイプライン、データセット、トリガー、リンクされたサービス、プライベート エンドポイント、統合ランタイムなど) の合計数 | 5,000 | [サポートにお問い合わせください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | 1 つのサブスクリプションでの Azure-SSIS Integration Runtime の CPU コア数の合計 | 256 | [サポートにお問い合わせください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | データ ファクトリあたりの同時実行パイプラインの実行数 (ファクトリ内のすべてのパイプライン間で共有) | 10,000  | [サポートにお問い合わせください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | [Azure Integration Runtime リージョン](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)あたり、サブスクリプションあたりの同時実行外部アクティビティの実行数<br><small>外部アクティビティは統合ランタイムで管理されますが、リンクされたサービスで実行されます (Databricks、ストアド プロシージャ、HDInsight、Web などを含む)。</small> | 3000 | [サポートにお問い合わせください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
@@ -46,7 +46,7 @@ Azure Data Factory は、お客様のサブスクリプションが互いのワ�
 | 1 分あたりの監視クエリ | 1,000 | [サポートにお問い合わせください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | 1 分あたりのエンティティ CRUD 操作 | 50 | [サポートにお問い合わせください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | データ フロー デバッグ セッションの最大時間 | 8 時間 | 8 時間 |
-| ファクトリごとのデータ フロー同時実行数 | 50 | [サポートにお問い合わせください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
+| 統合ランタイムごとのデータ フロー同時実行数 | 50 | [サポートにお問い合わせください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | ファクトリごと、かつユーザーごとのデータ フロー デバッグ セッションの同時実行数 | 3 | 3 |
 | Data Flow の Azure IR の TTL 制限 | 4 時間 | [サポートにお問い合わせください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 

@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 9962d4333e458243670d1005ad2ccfbc0bb7c92a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 92abfa9937c1ac3f7d4ba68e9228b29e0211e1af
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75348915"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007793"
 ---
 # <a name="reliable-actors-state-management"></a>Reliable Actors の状態管理
 Reliable Actors は、ロジックと状態の両方をカプセル化できるシングル スレッド オブジェクトです。 アクターは Reliable Services 上で実行されるため、同じ永続化およびレプリケーション メカニズムを使用して、状態を確実に保持することができます。 このため、エラー後やガベージ コレクションに続く再アクティベーション時、リソース分散またはアップグレードのためにクラスター内のノード間を移動されたときでも、アクターは状態を失いません。

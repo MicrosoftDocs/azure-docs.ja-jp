@@ -8,14 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 04/14/2020
+ms.date: 08/17/2020
 ms.author: pafarley
-ms.openlocfilehash: b4458920ec8b3e0c302f6e0654891b83ed07264f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 13bbb5e006f725ff0b75a5b86aee414f84a80dcf
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81402909"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936301"
 ---
 # <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>チュートリアル:画像内の顔データを表示する Windows Presentation Framework (WPF) アプリを作成する
 
@@ -34,13 +35,17 @@ ms.locfileid: "81402909"
 
 完全なサンプル コードは、GitHub 上の [Cognitive Face CSharp サンプル](https://github.com/Azure-Samples/Cognitive-Face-CSharp-sample) リポジトリにあります。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。 
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。 
 
 
 ## <a name="prerequisites"></a>前提条件
 
-- Face サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face サービスをサブスクライブし、キーを取得します。 次に、キーとサービス エンドポイント文字列用に、それぞれ `FACE_SUBSCRIPTION_KEY` と `FACE_ENDPOINT` という名前の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。
-- [Visual Studio 2015 または 2017](https://www.visualstudio.com/downloads/) の任意のエディション。
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="Face リソースを作成"  target="_blank">Face リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
+    * 対象のアプリケーションを Face API に接続するには、作成したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
+    * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
+* キーとサービス エンドポイント文字列用に、それぞれ `FACE_SUBSCRIPTION_KEY` と `FACE_ENDPOINT` という名前の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。
+- [Visual Studio](https://www.visualstudio.com/downloads/) のいずれかのエディション。
 
 ## <a name="create-the-visual-studio-project"></a>Visual Studio プロジェクトの作成
 
@@ -49,7 +54,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. Visual Studio で、[新しいプロジェクト] ダイアログを開きます。 **[インストール済み]** 、 **[Visual C#]** の順に展開し、 **[WPF アプリ (.NET Framework)]** を選択します。
 1. アプリケーションの名前を **FaceTutorial** に設定し、 **[OK]** をクリックします。
 1. 必須の NuGet パッケージを入手します。 ソリューション エクスプローラーでプロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。次のパッケージを見つけてインストールします。
-    - [Microsoft.Azure.CognitiveServices.Vision.Face 2.5.0-preview.1](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.5.0-preview.1)
+    - [Microsoft.Azure.CognitiveServices.Vision.Face 2.6.0-preview.1](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.6.0-preview.1)
 
 ## <a name="add-the-initial-code"></a>初期コードの追加
 

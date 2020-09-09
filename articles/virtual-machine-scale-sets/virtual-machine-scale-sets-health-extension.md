@@ -1,21 +1,23 @@
 ---
 title: アプリケーションの正常性拡張機能と Azure 仮想マシン スケール セットを使用する
 description: アプリケーションの正常性拡張機能を使用して、仮想マシン スケール セットにデプロイされたご自身のアプリケーションの正常性を監視する方法について説明します。
-author: mimckitt
-tags: azure-resource-manager
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.date: 01/30/2019
-ms.author: mimckitt
-ms.openlocfilehash: cb5f1d48bb1a95db004d9da553e19a35071c73b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.subservice: extensions
+ms.date: 05/06/2020
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: a38a715b45ab4d0810862ef4d016e4187ea507ab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273734"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84783046"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>アプリケーションの正常性拡張機能と仮想マシン スケール セットの使用
-お使いのアプリケーションの正常性の監視は、ご自身のデプロイを管理およびアップグレードするための重要なシグナルです。 Azure 仮想マシン スケール セットでは、[OS イメージの自動アップグレード](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)などの[ローリング アップグレード](virtual-machine-scale-sets-automatic-upgrade.md)がサポートされ、個々のインスタンスの正常性を監視することで、ご自身のデプロイをアップグレードします。
+お使いのアプリケーションの正常性の監視は、ご自身のデプロイを管理およびアップグレードするための重要なシグナルです。 Azure 仮想マシン スケール セットでは、[OS イメージの自動アップグレード](virtual-machine-scale-sets-automatic-upgrade.md)などの[ローリング アップグレード](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)がサポートされ、個々のインスタンスの正常性を監視することで、ご自身のデプロイをアップグレードします。 また、正常性拡張機能を使用して、スケールセット内にある各インスタンスのアプリケーションの正常性を監視し、[自動インスタンス修復](virtual-machine-scale-sets-automatic-instance-repairs.md)を使用して、インスタンスの修復を実行することもできます。
 
 この記事では、アプリケーションの正常性拡張機能を使用して、仮想マシン スケール セットにデプロイされたご自身のアプリケーションの正常性を監視する方法について説明します。
 
@@ -31,7 +33,7 @@ ms.locfileid: "81273734"
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 
-次の JSON は、アプリケーションの正常性拡張機能のスキーマを示しています。 拡張機能には、少なくとも "tcp" または "http" 要求が必要で、それぞれにポートまたは要求パスが関連付けられている必要があります。
+次の JSON は、アプリケーションの正常性拡張機能のスキーマを示しています。 拡張機能には、少なくとも "tcp"、"http"、または "https" 要求が必要で、それぞれにポートまたは要求パスが関連付けられている必要があります。
 
 ```json
 {
@@ -55,7 +57,7 @@ ms.locfileid: "81273734"
 
 ### <a name="property-values"></a>プロパティ値
 
-| Name | 値/例 | データ型
+| 名前 | 値/例 | データ型
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | date |
 | publisher | `Microsoft.ManagedServices` | string |
@@ -64,11 +66,11 @@ ms.locfileid: "81273734"
 
 ### <a name="settings"></a>設定
 
-| Name | 値/例 | データ型
+| 名前 | 値/例 | データ型
 | ---- | ---- | ----
-| protocol | `http` または `tcp` | string |
-| port | プロトコルが `http` の場合は省略可能、プロトコルが `tcp` の場合は必須 | INT |
-| requestPath | プロトコルが `http` の場合は必須、プロトコルが `tcp` の場合は許可されていません | string |
+| protocol | `http` または `https` または `tcp` | string |
+| port | プロトコルが `http` または `https`の場合は省略可能、またはプロトコルが `tcp` の場合は必須 | INT |
+| requestPath | プロトコルが `http` または `https` の場合は必須、プロトコルが `tcp` の場合は不可 | string |
 
 ## <a name="deploy-the-application-health-extension"></a>アプリケーションの正常性拡張機能をデプロイする
 次の例で詳しく示すように、アプリケーションの正常性拡張機能をお使いのスケール セットにデプロイする方法は複数あります。
@@ -163,7 +165,7 @@ extension.json ファイルの内容です。
 ```
 
 
-## <a name="troubleshoot"></a>[トラブルシューティング]
+## <a name="troubleshoot"></a>トラブルシューティング
 拡張機能の実行の出力は、次のディレクトリ内のファイルにログ記録されます。
 
 ```Windows
@@ -171,7 +173,8 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.ManagedServices.ApplicationHealthWindows\
 ```
 
 ```Linux
-/var/lib/waagent/apphealth
+/var/lib/waagent/Microsoft.ManagedServices.ApplicationHealthLinux-<extension_version>/status
+/var/log/azure/applicationhealth-extension
 ```
 
 ログには、アプリケーションの正常性状態も定期的にキャプチャされます。

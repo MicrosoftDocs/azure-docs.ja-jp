@@ -4,20 +4,20 @@ description: この記事では、Azure ポータルを使用して Azure Databa
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
-ms.date: 4/16/2020
-ms.openlocfilehash: bd0a867cce9b2a9ad793b491b9042034ef5810f5
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.topic: how-to
+ms.date: 6/11/2020
+ms.openlocfilehash: f592d6fb8fed3f15bd11d5e6ebe6ee358953748c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605153"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837230"
 ---
-# <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Azure ポータルを使用して Azure Database for MySQL のサーバー パラメーターを構成する方法
+# <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MySQL サーバーのサーバー パラメータを構成する
 
 Azure Database for MySQL では、いくつかのサーバー パラメーターの構成をサポートします。 この記事では、Azure Portal を使用してこれらのパラメーターを構成する方法について説明します。 すべてのサーバー パラメーターを調整できるわけではありません。
 
-## <a name="navigate-to-server-parameters-on-azure-portal"></a>Azure ポータルの [サーバー パラメーター] に移動する
+## <a name="configure-server-parameters"></a>サーバー パラメーターの構成
 
 1. Azure ポータルにサインインし、お使いの Azure Database for MySQL サーバーを探します。
 2. **[設定]** セクションの **[サーバー パラメーター]** をクリックして、Azure Database for MySQL サーバーの [サーバー パラメーター] ページを開きます。
@@ -29,41 +29,16 @@ Azure Database for MySQL では、いくつかのサーバー パラメーター
 5. パラメーターの新しい値を保存した場合は、 **[すべて既定値にリセット]** を選択していつでもすべてを既定値に戻すことができます。
 ![すべて既定値にリセット](./media/howto-server-parameters/5-reset_parameters.png)
 
-## <a name="list-of-configurable-server-parameters"></a>構成可能なサーバー パラメーターの一覧
+## <a name="setting-parameters-not-listed"></a>設定パラメーターが一覧に含まれていない
 
-サポートされるサーバー パラメーターの一覧は、拡大を続けています。 Azure ポータルのサーバー パラメーターのタブを使用して定義を取得し、お使いのアプリケーションの要件に基づいてサーバー パラメーターを構成します。
+更新するサーバー パラメーターが Azure portal に一覧表示されていない場合は、必要に応じて `init_connect` を使用して、接続レベルでパラメーターを設定できます。 これにより、サーバーに接続する各クライアントのサーバー パラメーターが設定されます。 
 
-## <a name="non-configurable-server-parameters"></a>構成不可能なサーバー パラメーター
+1. **[設定]** セクションの **[サーバー パラメーター]** をクリックして、Azure Database for MySQL サーバーの [サーバー パラメーター] ページを開きます。
+2. `init_connect` を検索します
+3. 値の列に `SET parameter_name=YOUR_DESIRED_VALUE` の形式でサーバー パラメーターを追加します。
 
-InnoDB バッファー プールのサイズは構成できず、ご自分の[価格レベル](concepts-service-tiers.md)に関連付けられています。
-
-|**価格レベル**|**仮想コア数**|**InnoDB バッファー プールのサイズ (MB) <br>(最大 4 TB のストレージをサポートするサーバー)**| **InnoDB バッファー プールのサイズ (MB) <br>(最大 16 TB のストレージをサポートするサーバー)**|
-|:---|---:|---:|---:|
-|Basic| 1| 832| |
-|Basic| 2| 2560| |
-|General Purpose| 2| 3584| 7168|
-|General Purpose| 4| 7680| 15360|
-|General Purpose| 8| 15360| 30720|
-|General Purpose| 16| 31232| 62464|
-|General Purpose| 32| 62976| 125952|
-|General Purpose| 64| 125952| 251904|
-|メモリ最適化| 2| 7168| 14336|
-|メモリ最適化| 4| 15360| 30720|
-|メモリ最適化| 8| 30720| 61440|
-|メモリ最適化| 16| 62464| 124928|
-|メモリ最適化| 32| 125952| 251904|
-
-次に示す追加のサーバー パラメーターは、システム内で構成できません。
-
-|**パラメーター**|**固定値**|
-| :------------------------ | :-------- |
-|Basic レベルの innodb_file_per_table|OFF|
-|innodb_flush_log_at_trx_commit|1|
-|sync_binlog|1|
-|innodb_log_file_size|256MB|
-|innodb_log_files_in_group|2|
-
-ここに表示されていないその他のサーバー パラメーターはすべて、バージョン [5.7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) および [5.6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html) の MySQL の既定値に設定されます。
+    たとえば、`init_connect` を `SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;` に設定すると、サーバーの文字セットを変更できます
+4. **[保存]** をクリックして変更を保存します。
 
 ## <a name="working-with-the-time-zone-parameter"></a>タイム ゾーン パラメーターを使用する
 

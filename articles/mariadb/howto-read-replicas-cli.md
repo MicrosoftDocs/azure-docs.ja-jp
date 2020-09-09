@@ -4,14 +4,15 @@ description: この記事では、Azure CLI と REST API を使用して Azure D
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
-ms.date: 4/21/2020
-ms.openlocfilehash: c5062bce572fbeda4143902ae6a04b31b9a89754
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.topic: how-to
+ms.date: 6/10/2020
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 0e63fe76c5ab5fe77f0dcb7f4903ee77dff208fd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82025052"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498907"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>Azure CLI と REST API を使用して Azure Database for MariaDB の読み取りレプリカを作成および管理する方法
 
@@ -29,6 +30,9 @@ Azure CLI を使用して、読み取りレプリカを作成して管理でき�
 > 読み取りレプリカ機能は、汎用またはメモリ最適化の価格レベルの Azure Database for MariaDB サーバーにのみ使用可能です。 マスター サーバーがこれらの価格レベルのいずれかを確認します。
 
 ### <a name="create-a-read-replica"></a>読み取りレプリカを作成します
+
+> [!IMPORTANT]
+> 既存のレプリカがないマスターのレプリカを作成すると、マスターは最初に、レプリケーションの準備をするために再起動します。 これを考慮して、これらの操作はオフピーク期間中に実行してください。
 
 読み取りレプリカ サーバーは、次のコマンドを使用して作成できます。
 

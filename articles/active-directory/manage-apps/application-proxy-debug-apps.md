@@ -2,21 +2,21 @@
 title: アプリケーション プロキシ アプリケーションのデバッグ - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory (Azure AD) アプリケーション プロキシ アプリケーションを使用して、問題をデバッグします。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 575891d99c077299f5e7abf008c1ebb2b158373f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e61ea30f01e8ae141d24c9bd91b08edef4dbe74e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74382069"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555065"
 ---
 # <a name="debug-application-proxy-application-issues"></a>アプリケーション プロキシ アプリケーションの問題をデバッグする 
 
@@ -39,7 +39,7 @@ ms.locfileid: "74382069"
 
 ![アプリケーションをデバッグする手順を示すフローチャート](media/application-proxy-debug-apps/application-proxy-apps-debugging-flowchart.png)
 
-|  | アクション | 説明 | 
+| 手順 | アクション | 説明 |
 |---------|---------|---------|
 |1 | ブラウザーを開き、アプリにアクセスして、資格情報を入力する | ご自分の資格情報を使用してアプリへのサインインを試し、任意のユーザーに関連するエラー ([この企業アプリケーションにアクセスできない](application-proxy-sign-in-bad-gateway-timeout-error.md)など) を確認します。 |
 |2 | アプリへのユーザーの割り当てを確認する | ユーザー アカウントに、企業ネットワーク内からアプリにアクセスするためのアクセス許可があることを確認してから、「[アプリケーションをテストする](application-proxy-add-on-premises-application.md#test-the-application)」の手順に従って、アプリへのサインインをテストします。 サインインに関する問題が解決しない場合は、[サインイン エラーのトラブルシューティング方法](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)に関するページを参照してください。  |

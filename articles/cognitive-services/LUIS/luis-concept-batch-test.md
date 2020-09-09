@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: e9ad7c52af20762633c710b39a64fbebf0cf6213
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5ebd9b05b2dea9e04d4c9745c13d692ea88fcb8
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218825"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680425"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>LUIS ポータルで 1000 件の発話をバッチ テストする
 
@@ -24,7 +24,7 @@ ms.locfileid: "79218825"
 
 ## <a name="group-data-for-batch-test"></a>バッチ テスト用のグループ データ
 
-バッチ テストに使用される発話が、LUIS にとって初めてであることが重要です。 発話のデータ セットがある場合は、発話を 3 つのセットに分割します。意図に追加されるサンプルの発話、公開されているエンドポイントから受信した発話、およびトレーニング後に LUIS をバッチ テストするために使用される発話です。 
+バッチ テストに使用される発話が、LUIS にとって初めてであることが重要です。 発話のデータ セットがある場合は、発話を 3 つのセットに分割します。意図に追加されるサンプルの発話、公開されているエンドポイントから受信した発話、およびトレーニング後に LUIS をバッチ テストするために使用される発話です。
 
 ## <a name="a-data-set-of-utterances"></a>発話のデータ セット
 
@@ -35,7 +35,7 @@ ms.locfileid: "79218825"
 |*重複する発話がない|
 |発話が 1000 以下|
 
-*重複は、最初にトークン化される一致項目ではなく、正確な文字列の一致だと見なされています。 
+*重複は、最初にトークン化される一致項目ではなく、正確な文字列の一致だと見なされています。
 
 ## <a name="entities-allowed-in-batch-tests"></a>バッチ テストで許可されるエンティティ
 
@@ -46,7 +46,7 @@ ms.locfileid: "79218825"
 
 ## <a name="batch-file-format"></a>バッチ ファイルの形式
 
-バッチ ファイルは、発話で構成されます。 各発話には、検出されると予期されている[機械学習によるエンティティ](luis-concept-entity-types.md#types-of-entities)すべてと共に、予期される意図の予測が必要です。 
+バッチ ファイルは、発話で構成されます。 各発話には、検出されると予期されている[機械学習によるエンティティ](luis-concept-entity-types.md#types-of-entities)すべてと共に、予期される意図の予測が必要です。
 
 ## <a name="batch-syntax-template-for-intents-with-entities"></a>エンティティがある意図のバッチ構文テンプレート
 
@@ -57,7 +57,7 @@ ms.locfileid: "79218825"
   {
     "text": "example utterance goes here",
     "intent": "intent name goes here",
-    "entities": 
+    "entities":
     [
         {
             "entity": "entity name 1 goes here",
@@ -74,7 +74,7 @@ ms.locfileid: "79218825"
 ]
 ```
 
-バッチ ファイルは、**startPos** および **endPos** プロパティを使用して、エンティティの開始と終了をメモします。 これらの値は 0 から始まり、スペースで開始または終了してはいけません。 これは、startIndex および endIndex プロパティを使用するクエリ ログとは異なります。 
+バッチ ファイルは、**startPos** および **endPos** プロパティを使用して、エンティティの開始と終了をメモします。 これらの値は 0 から始まり、スペースで開始または終了してはいけません。 これは、startIndex および endIndex プロパティを使用するクエリ ログとは異なります。
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
@@ -97,7 +97,7 @@ ms.locfileid: "79218825"
 
 ## <a name="common-errors-importing-a-batch"></a>バッチ インポートでの一般的なエラー
 
-一般的なエラーの理由は、次のとおりです。 
+一般的なエラーの理由は、次のとおりです。
 
 > * 発話数が 1,000 を超えている
 > * エンティティ プロパティがない発話 JSON オブジェクト。 プロパティは空の配列でもかまいません。
@@ -112,7 +112,7 @@ LUIS は、各データ セットの最後のテストの状態を追跡しま�
 
 ## <a name="batch-test-results"></a>バッチ テストの結果
 
-バッチ テストの結果は、エラー マトリックスと呼ばれる散布図です。 このグラフは、バッチ ファイル内の発話と、現在のモデルの予測された意図およびエンティティを 4 つの方法で比較したものです。 
+バッチ テストの結果は、エラー マトリックスと呼ばれる散布図です。 このグラフは、バッチ ファイル内の発話と、現在のモデルの予測された意図およびエンティティを 4 つの方法で比較したものです。
 
 **False Positive** セクション上と **False Negative** セクション上のデータ ポイントは、調査が必要なエラーを示しています。 すべてのデータ ポイントが **True Positive** セクション上と **True Negative** セクション上にある場合、アプリの精度はこのデータ セットに関しては理想的です。
 
@@ -124,13 +124,13 @@ LUIS は、各データ セットの最後のテストの状態を追跡しま�
 
 ## <a name="errors-in-the-results"></a>結果内のエラー
 
-バッチ テストのエラーは、バッチ ファイルに記載されているようには予測されていない意図を示しています。 エラーは、グラフの 2 つの赤い色のセクションに示されます。 
+バッチ テストのエラーは、バッチ ファイルに記載されているようには予測されていない意図を示しています。 エラーは、グラフの 2 つの赤い色のセクションに示されます。
 
-False Positive セクションは、そうであってはいけないときに、発話が意図またはエンティティと一致したことを示しています。 False Negative セクションは、そうであるべきときに、発話が意図またはエンティティと一致しなかったことを示しています。 
+False Positive セクションは、そうであってはいけないときに、発話が意図またはエンティティと一致したことを示しています。 False Negative セクションは、そうであるべきときに、発話が意図またはエンティティと一致しなかったことを示しています。
 
 ## <a name="fixing-batch-errors"></a>バッチのエラーの修正
 
-バッチ テストでエラーがある場合は、より多くの発話を意図に追加したり、LUIS が意図を区別する助けとなるエンティティを使用して、より多くの発話にラベル付けしたりできます。 発話を追加し、それらにラベル付けしてもバッチ テストで予測エラーが発生する場合は、LUIS がより迅速に学習する助けになるように、ドメイン固有のボキャブラリを含む[語句一覧](luis-concept-feature.md)機能を追加することを検討してください。 
+バッチ テストでエラーがある場合は、より多くの発話を意図に追加したり、LUIS が意図を区別する助けとなるエンティティを使用して、より多くの発話にラベル付けしたりできます。 発話を追加し、それらにラベル付けしてもバッチ テストで予測エラーが発生する場合は、LUIS がより迅速に学習する助けになるように、ドメイン固有のボキャブラリを含む[語句一覧](luis-concept-feature.md)機能を追加することを検討してください。
 
 ## <a name="next-steps"></a>次のステップ
 

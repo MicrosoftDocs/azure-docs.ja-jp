@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2019
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: df8f68e47776f46ae2d1331f85bd76d6cfe17b80
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d58341979b0bbe0699a5ca293b20394c43cde1d1
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869943"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962810"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Azure App Service 診断の概要
 
@@ -20,7 +20,7 @@ Web アプリケーションを実行するに当たっては、500 エラーが
 
 このエクスペリエンスはアプリの問題発生時刻が過去 24 時間以内である場合に最も役立ちますが、すべての診断グラフを常に分析に利用できます。
 
-App Service 診断は、Windows 上のアプリだけでなく、[Linux/コンテナー](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro)、[App Service 環境](https://docs.microsoft.com/azure/app-service/environment/intro)、および [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) 上のアプリに対しても機能します。
+App Service 診断は、Windows 上のアプリだけでなく、[Linux/コンテナー](./overview.md#app-service-on-linux)、[App Service 環境](./environment/intro.md)、および [Azure Functions](../azure-functions/functions-overview.md) 上のアプリに対しても機能します。
 
 ## <a name="open-app-service-diagnostics"></a>App Service 診断を開く
 
@@ -71,7 +71,7 @@ App Service 診断のホームページ上で、各ホームページ タイル�
 
 ### <a name="investigate-application-code-issues-only-for-windows-app"></a>アプリケーション コードの問題を調査する (Windows アプリのみ)
 
-多くのアプリの問題は、アプリケーション コードの問題に関連しているため、App Service 診断は、[Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) と統合して、選択されたダウンタイムと相関する例外と依存関係の問題を明らかにします。 Application Insights は、個別に有効化する必要があります。
+多くのアプリの問題は、アプリケーション コードの問題に関連しているため、App Service 診断は、[Application Insights](../azure-monitor/app/app-insights-overview.md) と統合して、選択されたダウンタイムと相関する例外と依存関係の問題を明らかにします。 Application Insights は、個別に有効化する必要があります。
 
 ![Application Insights](./media/app-service-diagnostics/application-insights-7.png)
 

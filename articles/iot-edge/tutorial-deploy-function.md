@@ -4,19 +4,19 @@ description: このチュートリアルでは、Azure 関数を IoT Edge モジ
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/25/2019
+ms.date: 07/29/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: f909ca12ce080fc5d1241bcc649c041361e405a7
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: 9526a1569a5d8320dd59272ca97f5b48ec1dac1c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421179"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999123"
 ---
-# <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>チュートリアル:Azure 関数を IoT Edge モジュールとして展開する
+# <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>チュートリアル:Azure Functions を IoT Edge モジュールとして展開する
 
 Azure Functions を使用して、ビジネス ロジックを実装するコードを Azure IoT Edge デバイスに直接展開できます。 このチュートリアルでは、シミュレートされた IoT Edge デバイス上のセンサー データをフィルター処理する Azure 関数の作成と展開について段階的に説明します。 [Windows](quickstart.md) または [Linux](quickstart-linux.md) のシミュレートされたデバイスに Azure IoT Edge をデプロイするクイック スタートで作成した、シミュレートされた IoT Edge デバイスを使用します。 このチュートリアルでは、以下の内容を学習します。
 
@@ -32,7 +32,7 @@ Azure Functions を使用して、ビジネス ロジックを実装するコー
 ![図 - チュートリアルのアーキテクチャ: 関数モジュールのステージとデプロイ](./media/tutorial-deploy-function/functions-architecture.png)
 </center>
 
-このチュートリアルで作成する Azure 関数は、デバイスによって生成される温度データをフィルター処理します。 この関数は、指定されたしきい値を温度が上回っているときにのみ、上流の Azure IoT Hub にメッセージを送信します。
+このチュートリアルでは、デバイスによって生成される温度データをフィルター処理する Azure 関数を作成します。 この関数では、指定されたしきい値を温度が上回っているときにのみ、上流の Azure IoT Hub にメッセージを送信します。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -71,13 +71,15 @@ Azure Functions を使用して IoT Edge モジュールを開発するには、
    | Provide a solution name (ソリューション名の指定) | **FunctionSolution** のように、ソリューションのわかりやすい名前を入力するか、既定値をそのまま使用します。 |
    | Select module template (モジュール テンプレートの選択) | **[Azure Functions - C#]** を選択します。 |
    | Provide a module name (モジュール名の指定) | モジュールに **CSharpFunction** という名前を付けます。 |
-   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、前の手順で事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリのログイン サーバーの値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 文字列は最終的に、\<レジストリ名\>.azurecr.io/CSharpFunction のようになります。 |
+   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、前の手順で事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリの**ログイン サーバー**の値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 文字列は最終的に、\<registry name\>.azurecr.io/CSharpFunction のようになります。 |
 
    ![Docker イメージ リポジトリを指定する](./media/tutorial-deploy-function/repository.png)
 
 ### <a name="add-your-registry-credentials"></a>レジストリ資格情報を追加する
 
 コンテナー レジストリの資格情報は、環境ファイルに格納され、IoT Edge ランタイムと共有されます。 ランタイムでご自身のプライベート イメージを IoT Edge デバイスにプルするとき、ランタイムではこれらの資格情報が必要になります。
+
+IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格情報をプルし、それらを環境ファイルに取り込もうとします。 資格情報が既に含まれているかどうかを確認します。 含まれていない場合は、次のようにして追加します。
 
 1. VS Code エクスプローラーで、.env ファイルを開きます。
 2. ご自身の Azure コンテナー レジストリからコピーした**ユーザー名**と**パスワード**の値を使用して、フィールドを更新します。
@@ -172,30 +174,25 @@ Azure Functions を使用して IoT Edge モジュールを開発するには、
 
 1. ファイルを保存します。
 
-## <a name="build-your-iot-edge-solution"></a>IoT Edge ソリューションのビルド
+## <a name="build-and-push-your-iot-edge-solution"></a>IoT Edge ソリューションをビルドしてプッシュする
 
 前のセクションでは、IoT Edge ソリューションを作成し、**CSharpFunction** を変更しました。これにより、レポートされたマシンの温度が許容可能なしきい値を下回るメッセージがフィルターで除外されます。 次は、ソリューションをコンテナー イメージとしてビルドして、それをコンテナー レジストリにプッシュする必要があります。
 
-このセクションでは、Visual Studio Code からレジストリにイメージをプッシュできるように、お使いの開発用マシンからローカルでサインインして、2 回目にはコンテナー レジストリの資格情報を指定します (最初は IoT Edge ソリューションの **.env**  ファイル内にありました)
-
 1. **[表示]**  >  **[ターミナル]** を選択して、VS Code 統合ターミナルを開きます。
 
-2. 統合ターミナルで次のコマンドを入力して、コンテナー レジストリにサインインします。 前に Azure Container Registry からコピーしたユーザー名とログイン サーバーを使用します。
+2. ターミナルで次のコマンドを入力して、Docker にサインインします。 自分の Azure コンテナー レジストリのユーザー名、パスワード、ログイン サーバーを使用してサインインします。 これらの値は、Azure portal でご自身のレジストリの **[アクセス キー]** セクションから取得できます。
 
-    ```csh/sh
-    docker login -u <ACR username> <ACR login server>
-    ```
+   ```bash
+   docker login -u <ACR username> -p <ACR password> <ACR login server>
+   ```
 
-    パスワードの入力を求めるメッセージが表示されたら、コンテナー レジストリのパスワード (ターミナル ウィンドウには表示されません) を貼り付けて **Enter** キーを押します。
+   `--password-stdin` の使用を推奨するセキュリティ警告が表示される場合があります。 このベスト プラクティスは、運用環境のシナリオを対象に推奨されていますが、それはこのチュートリアルの範囲外になります。 詳細については、[docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) のリファレンスをご覧ください。
 
-    ```csh/sh
-    Password: <paste in the ACR password and press enter>
-    Login Succeeded
-    ```
+3. VS Code エクスプローラーで、**deployment.template.json** ファイルを右クリックし、 **[Build and Push IoT Edge Solution]\(IoT Edge ソリューションのビルドとプッシュ\)** を選択します。
 
-3. VS Code エクスプローラーで、deployment.template.json ファイルを右クリックし、 **[Build and Push IoT Edge solution]\(IoT Edge ソリューションのビルドとプッシュ\)** を選択します。
+   ビルドおよびプッシュ コマンドでは、3 つの操作を開始します。 最初に、デプロイ テンプレートと他のソリューション ファイルの情報からビルドされた完全な配置マニフェストを保持する、**config** という新しいフォルダーをソリューション内に作成します。 次に、`docker build` を実行して、お使いのターゲット アーキテクチャ用の適切な Dockerfile に基づいてコンテナー イメージをビルドします。 そして、`docker push` を実行して、イメージ リポジトリをコンテナー レジストリにプッシュします。
 
-ソリューションのビルドを指示すると、最初に Visual Studio Code によって配置テンプレートの情報が読み取られて、**config** という名前の新しいフォルダーに deployment.json ファイルが生成されます。次に、`docker build` と `docker push` の 2 つのコマンドが統合ターミナルで実行されます。 build コマンドにより、コードがビルドされ、関数がコンテナー化されます。 次に、push コマンドにより、ソリューションを初期化したときに指定したコンテナー レジストリにコードがプッシュされます。
+   このプロセスは、初回は数分間かかる可能性がありますが、次回これらのコマンドを実行するときは、それより速くなります。
 
 ## <a name="view-your-container-image"></a>コンテナー イメージの表示
 
@@ -210,13 +207,15 @@ Azure Functions を使用して IoT Edge モジュールを開発するには、
 
 クイック スタートで行ったように、Azure portal を使用して関数モジュールを IoT Edge デバイスに展開できます。 また、Visual Studio Code 内からモジュールを配置して、監視することもできます。 以降のセクションでは、前提条件で示された VS Code 用の Azure IoT Tools を使用します。 この拡張機能をまだインストールしていない場合は、ここでインストールしてください。
 
-1. VS Code エクスプローラーで、 **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを展開します。
+1. Visual Studio Code エクスプローラーの **[Azure IoT Hub]** セクションで、 **[デバイス]** を展開して IoT デバイスの一覧を表示します。
 
-2. IoT Edge デバイスの名前を右クリックし、 **[単一デバイスの展開を作成する]** を選択します。
+2. IoT Edge デバイスの名前を右クリックし、 **[Create Deployment for Single Device]\(単一デバイスのデプロイの作成\)** を選択します。
 
-3. **CSharpFunction** が含まれているソリューション フォルダーの場所を参照します。 config フォルダーを開き、**deployment.json** ファイルを選択して、 **[Select Edge Deployment Manifest]\(Edge 配置マニフェストの選択\)** を選択します。
+3. **CSharpFunction** が含まれているソリューション フォルダーの場所を参照します。 config フォルダーを開き、**deployment.amd64.json** ファイルを選択して、 **[Select Edge Deployment Manifest]\(Edge 展開マニフェストの選択\)** を選択します。
 
-4. **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを更新します。 新しい **CSharpFunction** が、**SimulatedTemperatureSensor** モジュール、 **$edgeAgent** および **$edgeHub** と一緒に実行されていることがわかります。 新しいモジュールが表示されるまでに、数分かかる場合があります。 IoT Edge デバイスは、その新しいデプロイ情報を IoT Hub から取得し、新しいコンテナーを起動した後、その状態を IoT Hub にレポートする必要があります。
+4. お使いのデバイスの **[モジュール]** を展開し、デプロイされて実行中のモジュールの一覧を表示します。 更新ボタンをクリックします。 新しい **CSharpFunction** が、**SimulatedTemperatureSensor** モジュール、 **$edgeAgent** および **$edgeHub** と一緒に実行されていることがわかります。
+
+    新しいモジュールが表示されるまでに、数分かかる場合があります。 IoT Edge デバイスは、その新しいデプロイ情報を IoT Hub から取得し、新しいコンテナーを起動した後、その状態を IoT Hub にレポートする必要があります。
 
    ![VS Code での配置されたモジュールの表示](./media/tutorial-deploy-function/view-modules.png)
 
@@ -238,7 +237,7 @@ Azure Functions を使用して IoT Edge モジュールを開発するには、
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、IoT Edge デバイスによって生成された生データをフィルター処理するコードを含む Azure 関数モジュールを作成しました。 独自のモジュールをビルドする準備ができたら、[Visual Studio Code を使用した Azure IoT Edge 用の開発](how-to-vs-code-develop-module.md)方法の詳細をご覧ください。
+このチュートリアルでは、IoT Edge デバイスによって生成された生データをフィルター処理するコードが含まれる Azure 関数モジュールを作成しました。 独自のモジュールをビルドする準備ができたら、[Visual Studio Code を使用した Azure IoT Edge 用の開発](how-to-vs-code-develop-module.md)方法の詳細をご覧ください。
 
 引き続き次のチュートリアルを実行すると、Azure IoT Edge を利用して、エッジでデータをビジネス上の分析情報に変える他の方法について学習できます。
 

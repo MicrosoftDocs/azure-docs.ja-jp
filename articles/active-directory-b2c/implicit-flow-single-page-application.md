@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 37b59c2a23a8f00e8376be2ac4a7b35a6d58aa28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb1750996f40db6d76db30cd1c3bc07186660159
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399004"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201856"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での OAuth 2.0 暗黙的フローを使用したシングルページ サインイン
 
@@ -40,7 +40,7 @@ Azure AD B2C によって、標準の OAuth 2.0 暗黙的フローが、単純�
 
 この要求では、クライアントによって、ユーザーから取得する必要があるアクセス許可が `scope` パラメーターで示され、実行するユーザー フローが示されます。 各要求の動作を感覚的に理解するために、要求をブラウザーに貼り付け、実行してみてください。 `{tenant}`を Azure AD B2C テナントの名前に置き換えます。 `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` を、テナントに登録済みのアプリケーションのアプリ ID に置き換えます。 `{policy}` を、テナント内に作成したポリシーの名前に置き換えます (例: `b2c_1_sign_in`)。
 
-```HTTP
+```http
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &response_type=id_token+token
@@ -71,7 +71,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 ### <a name="successful-response"></a>成功応答
 `response_mode=fragment` と `response_type=id_token+token` を使用している成功応答は、次のようになります (読みやすいように改行してあります)。
 
-```HTTP
+```http
 GET https://aadb2cplayground.azurewebsites.net/#
 access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 &token_type=Bearer
@@ -93,7 +93,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 ### <a name="error-response"></a>エラー応答
 アプリ側でエラーを適切に処理できるように、エラー応答をリダイレクト URI に送信することもできます。
 
-```HTTP
+```http
 GET https://aadb2cplayground.azurewebsites.net/#
 error=access_denied
 &error_description=the+user+canceled+the+authentication
@@ -114,13 +114,13 @@ ID トークンを受信してもユーザーの認証には不十分です。 I
 
 Azure AD B2C には、OpenID Connect メタデータ エンドポイントがあります。 アプリはこのエンドポイントを使用して、実行時に Azure AD B2C に関する情報を取得できます。 この情報には、エンドポイント、トークンの内容、トークンの署名キーが含まれます。 Azure AD B2C テナントにはユーザー フロー別の JSON メタデータ ドキュメントがあります。 たとえば、fabrikamb2c.onmicrosoft.com テナントの b2c_1_sign_in ユーザー フローのメタデータ ドキュメントは、次の場所にあります。
 
-```HTTP
+```http
 https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/v2.0/.well-known/openid-configuration
 ```
 
 この構成ドキュメントのプロパティの 1 つは `jwks_uri` です。 同じユーザー フローの値は次のようになります。
 
-```HTTP
+```http
 https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/discovery/v2.0/keys
 ```
 
@@ -152,7 +152,7 @@ Web アプリで必要なのはユーザー フローを実行することだけ
 
 一般的な Web アプリ フローでは、`/token` エンドポイントに対して要求を行います。 ただし、エンドポイントでは CORS 要求はサポートされていないため、AJAX 呼び出しを行って更新トークンを取得することはできません。 代わりに、非表示の HTML iframe 要素で暗黙的フローを使用して、他の Web API 用の新しいトークンを取得できます。 次に例を示します (読みやすいように改行してあります)。
 
-```HTTP
+```http
 https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &response_type=token
@@ -184,7 +184,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 ### <a name="successful-response"></a>成功応答
 `response_mode=fragment` を使用した場合の成功応答は次の例のようになります。
 
-```HTTP
+```http
 GET https://aadb2cplayground.azurewebsites.net/#
 access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 &state=arbitrary_data_you_sent_earlier
@@ -204,7 +204,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 ### <a name="error-response"></a>エラー応答
 アプリ側でエラーを適切に処理できるように、エラー応答をリダイレクト URI に送信することもできます。  `prompt=none` の場合、予期されるエラーは次の例のようになります。
 
-```HTTP
+```http
 GET https://aadb2cplayground.azurewebsites.net/#
 error=user_authentication_required
 &error_description=the+request+could+not+be+completed+silently
@@ -225,7 +225,7 @@ ID トークンとアクセス トークンは、どちらも短時間で期限�
 
 ユーザーを単純に、「[ID トークンの検証](#validate-the-id-token)」で説明したのと同じ OpenID Connect メタデータ ドキュメントに列挙されている `end_session_endpoint` にリダイレクトすることができます。 次に例を示します。
 
-```HTTP
+```http
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
 ```
 

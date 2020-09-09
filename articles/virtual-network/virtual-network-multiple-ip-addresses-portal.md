@@ -8,17 +8,17 @@ manager: KumudD
 ms.service: virtual-network
 ms.subservice: ip-services
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: allensu
-ms.openlocfilehash: 97d78b5bc77fef30bf7e3ad082a70f16a2ec74d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 135504ad4956836614bfc0f2cb107e610de17c0c
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146611"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543488"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Azure Portal を使用して仮想マシンに複数の IP アドレスを割り当てる
 
@@ -30,7 +30,7 @@ ms.locfileid: "82146611"
 
 ## <a name="create-a-vm-with-multiple-ip-addresses"></a><a name = "create"></a>複数の IP アドレスを持つ VM を作成する
 
-複数の IP アドレスまたは静的プライベート IP アドレスを持つ VM を作成する場合は、PowerShell または Azure CLI を使用して VM を作成する必要があります。 その方法については、この記事の上部にある PowerShell または CLI オプションをクリックしてください。 単一の動的プライベート IP アドレスと (必要に応じて) 単一のパブリック IP アドレスを持つ VM を作成できます。 [Windows VM の作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)または [Linux VM の作成](../virtual-machines/linux/quick-create-portal.md)に関する記事の手順に従ってポータルを使用してください。 VM を作成したら、この記事の「[VM に IP アドレスを追加する](#add)」セクションの手順に従ってポータルを使用することにより、IP アドレス タイプを動的から静的に変更して、別の IP アドレスを追加できます。
+複数の IP アドレスまたは静的プライベート IP アドレスを持つ VM を作成する場合は、PowerShell または Azure CLI を使用して VM を作成する必要があります。 その方法については、この記事の上部にある PowerShell または CLI オプションをクリックしてください。 単一の動的プライベート IP アドレスと (必要に応じて) 単一のパブリック IP アドレスを持つ VM を作成できます。 [Windows VM の作成](../virtual-machines/windows/quick-create-portal.md)または [Linux VM の作成](../virtual-machines/linux/quick-create-portal.md)に関する記事の手順に従ってポータルを使用してください。 VM を作成したら、この記事の「[VM に IP アドレスを追加する](#add)」セクションの手順に従ってポータルを使用することにより、IP アドレス タイプを動的から静的に変更して、別の IP アドレスを追加できます。
 
 ## <a name="add-ip-addresses-to-a-vm"></a><a name="add"></a>VM に IP アドレスを追加する
 
@@ -48,12 +48,12 @@ ms.locfileid: "82146611"
 
 5. 選択した NIC について表示されるウィンドウで、 **[IP 構成]** をクリックします。 **[追加]** をクリックし、追加する IP アドレスのタイプに基づいて、以下のセクションのいずれかの手順を完了してから、 **[OK]** をクリックします。 
 
-### <a name="add-a-private-ip-address"></a>**プライベート IP アドレスを追加する**
+### <a name="add-a-private-ip-address"></a>プライベート IP アドレスを追加する
 
 新しいプライベート IP アドレスを追加するには、次の手順を完了します。
 
-1. この記事の「[主な手順](#coreadd)」で述べた手順を完了します。
-2. **[追加]** をクリックします。 表示された **[IP 構成の追加]** ウィンドウで、"*静的*" プライベート IP アドレスとして「*10.0.0.7*」を持つ「*IPConfig-4*」という名前の IP 構成を作成し、 **[OK]** をクリックします。
+1. この記事の「[コア ステップ](#coreadd)」セクションの手順を完了し、VM ネットワーク インターフェイスの **[IP 構成]** セクションにいることを確認します。  既定として表示されているサブネット (10.0.0.0/24 など) を確認します。
+2. **[追加]** をクリックします。 表示された **[IP 構成の追加]** ウィンドウで、「*IPConfig-4*」という名前の IP 構成を作成し、最終オクテットに新しい数値を選ぶことによって新しい*静的*プライベート IP アドレスを指定し、 **[OK]** をクリックします。  (10.0.0.0/24 のサブネットの場合、IP の例は *10.0.0.7* です。)
 
     > [!NOTE]
     > 静的 IP アドレスを追加するときは、NIC が接続されているサブネット上に未使用の有効なアドレスを指定する必要があります。 選択したアドレスが利用できない場合はポータルで IP アドレスに X が表示され、別のアドレスを選択する必要があります。

@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と EAB Navigate Strategic Care の統合 | Microsoft Docs
 description: Azure Active Directory と EAB Navigate Strategic Care の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 0c61fcfc-b89b-4f89-9b81-27098047cddb
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/20/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1185217d6b12d3efd5dedc9faf903f1b365481db
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e345fc89e3aa0f63ece1dd52afe0cc6fe4585533
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70013837"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555567"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eab-navigate-strategic-care"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と EAB Navigate Strategic Care の統合
 

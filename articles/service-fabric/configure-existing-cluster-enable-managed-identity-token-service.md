@@ -4,12 +4,12 @@ description: 既存の Azure Service Fabric クラスターでマネージド ID
 ms.topic: article
 ms.date: 03/11/2019
 ms.custom: sfrev
-ms.openlocfilehash: 73c890e960f26b8e0e3fa924d9ff6b7a4cd4a4dc
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 722c507300cc5766d162f336f77f60293c5c90dc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415688"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257608"
 ---
 # <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>既存の Service Fabric クラスターでマネージド ID のサポートを構成する
 
@@ -40,7 +40,7 @@ Service Fabric アプリケーションで [Azure リソースのマネージド
 ]
 ```
 
-また、変更を有効にするには、アップグレード ポリシーを変更し、クラスターでアップグレードが進行するのに合わせて各ノードで Service Fabric ランタイムを強制的に再起動するよう指定する必要があります。 この再起動により、新たに有効になったシステム サービスが各ノードで確実に開始および実行されます。 次のスニペットで、`forceRestart` は、再起動を有効にするための必須の設定です。 残りのパラメーターについては、以下で説明する値を使用するか、またはクラスター リソースに既に使用されている既存のカスタム値を使用します。 ファブリックのアップグレード ポリシー ('upgradeDescription') は、Azure portal で Service Fabric リソースの [ファブリックのアップグレード] を選択して表示するか、または resources.azure.com で表示することができます。 アップグレード ポリシー ('upgradeDescription') の既定のオプションは、PowerShell または resources.azure.com で表示することはできません。 詳細については、「[ClusterUpgradePolicy](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet)」 を参照してください。  
+また、変更を有効にするには、アップグレード ポリシーを変更し、クラスターでアップグレードが進行するのに合わせて各ノードで Service Fabric ランタイムを強制的に再起動するよう指定する必要があります。 この再起動により、新たに有効になったシステム サービスが各ノードで確実に開始および実行されます。 次のスニペットで、`forceRestart` は、再起動を有効にするための必須の設定です。 残りのパラメーターについては、以下で説明する値を使用するか、またはクラスター リソースに既に使用されている既存のカスタム値を使用します。 ファブリックのアップグレード ポリシー ('upgradeDescription') は、Azure portal で Service Fabric リソースの [ファブリックのアップグレード] を選択して表示するか、または resources.azure.com で表示することができます。 アップグレード ポリシー ('upgradeDescription') の既定のオプションは、PowerShell または resources.azure.com で表示することはできません。 詳細については、「[ClusterUpgradePolicy](/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet)」 を参照してください。  
 
 ```json
 "upgradeDescription": {

@@ -1,18 +1,18 @@
 ---
 title: AppSource でソフトウェアを購入する方法 | Azure Marketplace
 description: AppSource でソフトウェアを購入するための手順 | Azure Marketplace。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 03/20/2020
-ms.openlocfilehash: bc19246354bebd1ba2a827e7718cbad95b896e14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5c5f690fd5fefbd67180ea04d5ca1d269676f7b7
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284978"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180815"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>Microsoft AppSource でソフトウェアを購入する方法
 
@@ -29,11 +29,11 @@ SaaS のオファーを購入するには、以下のものが必要です。
 - オファーを購入する国や地域で有効なクレジット カード。
 
     > [!Note]
-    > クレジット カードの請求先の国は、Azure Active Directory インスタンスの場所にロックされている場合があります。
+    > クレジット カードの請求先の国/地域は、Azure Active Directory インスタンスの場所にロックされている場合があります。
 
 ## <a name="steps-for-making-purchases-on-appsource"></a>AppSource での購入の手順
 
-1. [AppSource](https://appsource.microsoft.com/) で請求先の国または地域を選択します。
+1. [AppSource](https://appsource.microsoft.com/) で請求先の国/地域を選択します。
 1. 購入するアプリケーションを探します。
 1. **[今すぐ入手する]** を選択します。
 1. 以下のように、プランを選択します。
@@ -65,4 +65,4 @@ Microsoft 365 管理センターを通じて、[サポート チケットを送�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 詳細については、[商業マーケットプレースのドキュメント](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview)を参照してください。
+- 詳細については、[商業マーケットプレースのドキュメント](partner-center-portal/commercial-marketplace-overview.md)を参照してください。

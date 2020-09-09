@@ -1,10 +1,10 @@
 ---
 title: 仮想ネットワーク用の Azure PowerShell サンプル
-description: 仮想ネットワーク用の Azure PowerShell サンプル。
+description: 多階層アプリケーション用に仮想ネットワークを作成するサンプルを含む、仮想ネットワークを管理するための Azure PowerShell のサンプルについて説明します。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: de752cdacf17193d5be95b2b9f887938ace2d50f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b3107d521fb79e3ea6cfe190abd2ec3fb7859cb3
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74091881"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288231"
 ---
 # <a name="azure-powershell-samples-for-virtual-network"></a>仮想ネットワーク用の Azure PowerShell サンプル
 
 次の表には、Azure PowerShell スクリプトへのリンクが含まれています。
 
-| | |
+| スクリプト | 説明 |
 |----|----|
 | [多層アプリケーション用の仮想ネットワークの作成](./scripts/virtual-network-powershell-sample-multi-tier-application.md) | フロントエンド サブネットとバックエンド サブネットを含む仮想ネットワークを作成します。 フロントエンド サブネットへのトラフィックは HTTP に制限され、バックエンド サブネットへのトラフィックは SQL、ポート 1433 に制限されます。 |
 | [2 つの仮想ネットワークのピアリング](./scripts/virtual-network-powershell-sample-peer-two-virtual-networks.md) | 同じリージョンに 2 つの仮想ネットワークを作成し、接続します。 |

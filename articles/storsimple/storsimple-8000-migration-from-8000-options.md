@@ -2,17 +2,17 @@
 title: StorSimple 8000 シリーズ デバイスからのデータ移行オプション
 description: StorSimple 8000 シリーズからデータを移行するためのオプションの概要を示します。
 services: storsimple
-author: priestlg
+author: twooley
 ms.service: storsimple
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2020
-ms.author: v-grpr
-ms.openlocfilehash: 974bcc657b811a10e28b41150439e83d26a208d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: twooley
+ms.openlocfilehash: 92ab570b3e06d67d7986a8103e9622e95eb57e7e
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767055"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783911"
 ---
 # <a name="options-to-migrate-data-from-storsimple-8000-series"></a>StorSimple 8000 シリーズからデータを移行するためのオプション
 
@@ -40,6 +40,12 @@ Azure File Sync にデータを移行する方法の詳細については、「[
 StorSimple 5000-7000 シリーズおよび StorSimple 8000 シリーズをご使用のお客様は、Azure でのデータを保持するために、Panzura Freedom NAS への移行を選択できます。 Panzura Freedom ソリューションには、データセンター、オフィス、パブリック クラウドおよびプライベート クラウドにまたがる NAS ソリューションが用意されています。 このソリューションにより、NFS、SMB、およびモバイル クライアントのローカル、ハイブリッド、およびクラウド内のデータ ワークフローが有効になります。
 
 この移行は Panzura によってサポートされており、お客様は [Panzura Web サイト](https://panzura.com/migrate-storsimple-panzura/)から移行サポートを要求することで開始することができます。
+
+#### <a name="migrate-to-nasuni"></a>Nasuni への移行
+
+Nasuni を使用すると、StorSimple 環境全体を、安定した安全なハイ パフォーマンスのファイル サービス プラットフォームに簡単に移行できます。 Nasuni は、オンプレミスのファイル ストレージのセキュリティとパフォーマンスを提供しながら、Azure のスケーラビリティおよび持続性と それを融合させます。  Nasuni は、有力な Azure 独立系ソフトウェア ベンダー (ISV) として、StorSimple データを最新のプラットフォームに移行するために必要なツールをすべて提供します。これにより、ファイルを複数の場所で共有し、共同作業を行うことができます。
+
+今すぐお試しください。[Nasuni の Web サイト](https://info.nasuni.com/storsimple8000-webinar)。
 
 <!-- 04/09/2020 v-grpr (priestlg) - As per request, commenting out this section because the information that will go into this section is forthcoming
 #### Migrate to Cohesity

@@ -10,19 +10,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
-ms.date: 01/11/2018
-ms.openlocfilehash: 78cb58bca9b06b6dcf8549eefa5ebf0eb2b4b01c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/10/2020
+ms.openlocfilehash: 10253b435461d62a4176164ea2a929843283f414
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81409329"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082660"
 ---
-# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Azure portal を使用して Azure SQL データベースから Azure Blob Storage にデータを増分読み込みする
+# <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Azure portal を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-このチュートリアルでは、Azure SQL データベース内のテーブルから Azure BLOB ストレージに差分データを読み込むパイプラインを使用して Azure Data Factory を作成します。
+このチュートリアルでは、Azure SQL Database 内のテーブルから Azure BLOB ストレージに差分データを読み込むパイプラインを使用して Azure Data Factory を作成します。
 
 このチュートリアルでは、以下の手順を実行します。
 
@@ -65,7 +65,7 @@ ms.locfileid: "81409329"
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="prerequisites"></a>前提条件
-* **Azure SQL データベース**。 ソース データ ストアとして使うデータベースです。 SQL データベースがない場合の作成手順については、「[Azure SQL データベースを作成する](../sql-database/sql-database-get-started-portal.md)」を参照してください。
+* **Azure SQL データベース**。 ソース データ ストアとして使うデータベースです。 Azure SQL Database のデータベースがない場合の作成手順については、[Azure SQL Database のデータベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関するページを参照してください。
 * **Azure Storage**。 シンク データ ストアとして使用する BLOB ストレージです。 Azure ストレージ アカウントがない場合の作成手順については、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md)」を参照してください。 adftutorial という名前のコンテナーを作成します。 
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>SQL データベースにデータ ソース テーブルを作成する
@@ -103,6 +103,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```
 
 ### <a name="create-another-table-in-your-sql-database-to-store-the-high-watermark-value"></a>高基準値の格納用としてもう 1 つテーブルを SQL データベースに作成する
+
 1. SQL データベースに対して次の SQL コマンドを実行し、基準値の格納先として `watermarktable` という名前のテーブルを作成します。  
 
     ```sql
@@ -160,7 +161,7 @@ END
 
    Azure データ ファクトリの名前は **グローバルに一意**にする必要があります。 赤い感嘆符と次のエラーが表示される場合は、データ ファクトリの名前を変更して (yournameADFIncCopyTutorialDF など)、作成し直してください。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事を参照してください。
 
-       `Data factory name "ADFIncCopyTutorialDF" is not available`
+    *データ ファクトリ名 "ADFIncCopyTutorialDF" は利用できません*
 4. データ ファクトリを作成する Azure **サブスクリプション**を選択します。
 5. **[リソース グループ]** について、次の手順のいずれかを行います。
 
@@ -169,7 +170,7 @@ END
          
         リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。  
 6. **バージョン**として **[V2]** を選択します。
-7. データ ファクトリの **場所** を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+7. データ ファクトリの **場所** を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database、Azure SQL Managed Instance など) とコンピューティング (HDInsight など) は他のリージョンに配置できます。
 8. **Create** をクリックしてください。      
 9. 作成が完了すると、図に示されているような **[Data Factory]** ページが表示されます。
 
@@ -182,7 +183,7 @@ END
 1. Data Factory UI の**開始**ページで **[Create pipeline]\(パイプラインの作成\)** タイルをクリックします。
 
    ![Data Factory UI の開始ページ](./media/doc-common-process/get-started-page.png)    
-3. パイプラインの **[プロパティ]** ウィンドウの **[全般]** ページで、名前として「**IncrementalCopyPipeline**」と入力します。
+3. [全般] パネルの **[プロパティ]** で、 **[名前]** に「**IncrementalCopyPipeline**」を指定します。 次に、右上隅にある [プロパティ] アイコンをクリックしてパネルを折りたたみます。
 
 4. 古い基準値を取得するための最初の検索アクティビティを追加します。 **[アクティビティ]** ツールボックスで **[General]\(一般\)** を展開し、パイプライン デザイナー画面に **[検索]** アクティビティをドラッグ アンド ドロップします。 アクティビティの名前を **LookupOldWaterMarkActivity** に変更します。
 
@@ -196,10 +197,10 @@ END
 8. **[リンクされたサービス]** で **[新規]** を選択して、次の手順を実行します。
 
     1. **[名前]** に「**AzureSqlDatabaseLinkedService**」と入力します。
-    2. **[サーバー名]** で、使用する Azure SQL Server を選択します。
+    2. **[サーバー名]** で、サーバーを選択します。
     3. ドロップダウン リストから **[データベース名]** を選択します。
     4. **[ユーザー名]**  &  **[パスワード]** の順に入力します。
-    5. Azure SQL データベースへの接続をテストするために、 **[テスト接続]** をクリックします。
+    5. SQL データベースへの接続をテストするために、 **[テスト接続]** をクリックします。
     6. **[完了]** をクリックします。
     7. **[リンクされたサービス]** で **AzureSqlDatabaseLinkedService** が選択されていることを確認します。
 
@@ -272,12 +273,12 @@ END
     1. **[ストアド プロシージャ名]** に **[usp_write_watermark]** を選択します。
     2. ストアド プロシージャのパラメーターの値を指定するには、 **[Import parameter]\(インポート パラメーター\)** をクリックし、各パラメーターに次の値を入力します。
 
-        | 名前 | Type | Value |
+        | 名前 | Type | 値 |
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | String | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
 
-    ![ストアド プロシージャ アクティビティ - ストアド プロシージャの設定](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
+        ![ストアド プロシージャ アクティビティ - ストアド プロシージャの設定](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
 27. パイプライン設定を検証するには、ツール バーの **[検証]** をクリックします。 検証エラーがないことを確認します。 [>>] をクリックして、 **[Pipeline Validation Report]\(パイプライン検証レポート\)** ウィンドウを閉じます。   
 
 28. **[すべて公開]** ボタンを選択して、エンティティ (リンクされたサービス、データセット、およびパイプライン) を Azure Data Factory サービスに発行します。 発行が成功したというメッセージが表示されるまで待機します。
@@ -290,9 +291,9 @@ END
 
 ## <a name="monitor-the-pipeline-run"></a>パイプラインの実行を監視します
 
-1. 左側で **[監視]** タブに切り替えます。 手動トリガーによってトリガーされたパイプラインの実行の状態を確認できます。 一覧を更新するには、 **[最新の情報に更新]** ボタンをクリックします。
+1. 左側で **[監視]** タブに切り替えます。 手動トリガーによってトリガーされたパイプラインの実行の状態を確認します。 **[パイプライン名]** 列のリンクを使用して、実行の詳細を表示したりパイプラインを再実行したりできます。
 
-2. このパイプラインの実行に関連付けられているアクティビティの実行を表示するには、 **[アクション]** 列にある最初のリンク ( **[View Activity Runs]\(アクティビティの実行の表示\)** ) をクリックします。 上部の **[パイプライン]** をクリックすると、前のビューに戻ることができます。 一覧を更新するには、 **[最新の情報に更新]** ボタンをクリックします。
+2. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、 **[パイプライン名]** 列のリンクを選択します。 アクティビティの実行の詳細を確認するには、 **[ACTIVITY NAME]\(アクティビティ名\)** 列の **[詳細]** リンク (眼鏡アイコン) を選択します。 再度パイプラインの実行ビューに移動するには、一番上にある **[すべてのパイプラインの実行]** を選択します。 表示を更新するには、 **[最新の情報に更新]** を選択します。
 
 
 ## <a name="review-the-results"></a>結果の確認
@@ -322,7 +323,7 @@ END
 
 ## <a name="add-more-data-to-source"></a>ソースにデータを追加する
 
-SQL データベース (データ ソース ストア) に新しいデータを挿入します。
+データベース (データ ソース ストア) に新しいデータを挿入します。
 
 ```sql
 INSERT INTO data_source_table
@@ -332,7 +333,7 @@ INSERT INTO data_source_table
 VALUES (7, 'newdata','9/7/2017 9:01:00 AM')
 ```
 
-SQL データベース内の更新されたデータは次のとおりです。
+データベース内の更新されたデータは次のとおりです。
 
 ```
 PersonID | Name | LastModifytime
@@ -346,8 +347,8 @@ PersonID | Name | LastModifytime
 7 | newdata | 2017-09-07 09:01:00.000
 ```
 
-
 ## <a name="trigger-another-pipeline-run"></a>もう一つのパイプラインの実行をトリガーする
+
 1. **[編集]** タブに切り替えます。デザイナーでパイプラインが開かれていない場合は、ツリー ビューでパイプラインをクリックします。
 
 2. ツール バーの **[トリガーの追加]** をクリックし、 **[Trigger Now]\(今すぐトリガー\)** をクリックします。
@@ -355,9 +356,9 @@ PersonID | Name | LastModifytime
 
 ## <a name="monitor-the-second-pipeline-run"></a>2 回目のパイプラインの実行を監視します
 
-1. 左側で **[監視]** タブに切り替えます。 手動トリガーによってトリガーされたパイプラインの実行の状態を確認できます。 一覧を更新するには、 **[最新の情報に更新]** ボタンをクリックします。
+1. 左側で **[監視]** タブに切り替えます。 手動トリガーによってトリガーされたパイプラインの実行の状態を確認します。 **[パイプライン名]** 列のリンクを使用して、アクティビティの詳細を表示したりパイプラインを再実行したりできます。
 
-2. このパイプラインの実行に関連付けられているアクティビティの実行を表示するには、 **[アクション]** 列にある最初のリンク ( **[View Activity Runs]\(アクティビティの実行の表示\)** ) をクリックします。 上部の **[パイプライン]** をクリックすると、前のビューに戻ることができます。 一覧を更新するには、 **[最新の情報に更新]** ボタンをクリックします。
+2. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、 **[パイプライン名]** 列のリンクを選択します。 アクティビティの実行の詳細を確認するには、 **[ACTIVITY NAME]\(アクティビティ名\)** 列の **[詳細]** リンク (眼鏡アイコン) を選択します。 再度パイプラインの実行ビューに移動するには、一番上にある **[すべてのパイプラインの実行]** を選択します。 表示を更新するには、 **[最新の情報に更新]** を選択します。
 
 
 ## <a name="verify-the-second-output"></a>2 つ目の出力を検証する
@@ -398,7 +399,7 @@ PersonID | Name | LastModifytime
 > * 2 回目のパイプラインの実行を監視します
 > * 2 回目の実行の結果を確認します
 
-このチュートリアルでは、パイプラインで SQL データベース内の単一のテーブルから BLOB ストレージにデータをコピーしました。 次のチュートリアルに進んで、オンプレミスの SQL Server データベースにある複数のテーブルから SQL データベースにデータをコピーする方法について学習しましょう。
+このチュートリアルでは、パイプラインで SQL Database 内の単一のテーブルから BLOB ストレージにデータをコピーしました。 次のチュートリアルに進んで、SQL Server データベースにある複数のテーブルから SQL Database にデータをコピーする方法について学習しましょう。
 
 > [!div class="nextstepaction"]
 >[SQL Server にある複数のテーブルから Azure SQL Database にデータを増分読み込みする](tutorial-incremental-copy-multiple-tables-portal.md)

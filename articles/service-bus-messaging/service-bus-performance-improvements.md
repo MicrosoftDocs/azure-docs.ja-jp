@@ -1,21 +1,15 @@
 ---
 title: Azure Service Bus を使用したパフォーマンス向上のためのベスト プラクティス
 description: Service Bus を使用して、ブローカー メッセージを交換する際のパフォーマンスを最適化する方法について説明します。
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 03/12/2020
-ms.author: aschhab
-ms.openlocfilehash: 267965ee41280a677050d1676285dda8734bc044
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2bd5a1598448722f46a91b889b0778e80ad4e140
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606050"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012060"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Service Bus メッセージングを使用したパフォーマンス向上のためのベスト プラクティス
 
@@ -47,7 +41,7 @@ AMQP は、Service Bus への接続を維持するため、最も効率的です
 | <a href="https://www.nuget.org/packages/Microsoft.Azure.ServiceBus" target="_blank">Microsoft.Azure.ServiceBus <span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.Azure.ServiceBus`<br>`Microsoft.Azure.ServiceBus.Management` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5.4<br>Xamarin.iOS 10.14<br>Xamarin.Mac 3.8<br>Xamarin.Android 8.0<br>ユニバーサル Windows プラットフォーム 10.0.16299 | AMQP<br>HTTP |
 | <a href="https://www.nuget.org/packages/WindowsAzure.ServiceBus" target="_blank">WindowsAzure.ServiceBus <span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.ServiceBus`<br>`Microsoft.ServiceBus.Messaging` | .NET Framework 4.6.1 | AMQP<br>SBMP<br>HTTP |
 
-.NET Standard プラットフォームの最小サポートの詳細については、「[.NET 実装サポート](https://docs.microsoft.com/dotnet/standard/net-standard#net-implementation-support)」を参照してください。
+.NET Standard プラットフォームの最小サポートの詳細については、「[.NET 実装サポート](/dotnet/standard/net-standard#net-implementation-support)」を参照してください。
 
 ## <a name="reusing-factories-and-clients"></a>ファクトリとクライアントの再利用
 
@@ -355,7 +349,7 @@ Service Bus には、開発専用に使用され、**運用環境の構成では
 
 目標: 送信側の数が多いキューまたはトピックのスループットを最大にします。 送信側はそれぞれ中程度のレートでメッセージを送信します。 受信側の数は小です。
 
-Service Bus によって、メッセージング エンティティに最大 1000 (または AMQP 使用で 5000) 件コンカレント接続できます。 この制限は名前空間レベルで適用され、キュー、トピック、サブスクリプションは名前空間あたりのコンカレント接続数の上限によって制限されます。 キューの場合、この数は送信側と受信側で共有されます。 1000 件の接続すべてが送信側で必要な場合は、キューをトピックと 1 つのサブスクリプションで置き換えます。 トピックは送信側から最大 1000 件のコンカレント接続を受け入れるのに対して、サブスクリプションは受信側からさらに 1000 件のコンカレント接続を受け入れます。 1000 件を超える同時接続が送信側で必要な場合は、送信側は HTTP 経由で Service Bus プロトコルにメッセージを送信する必要があります。
+Service Bus によって、メッセージング エンティティに最大 1000 件コンカレント接続できます。 この制限は名前空間レベルで適用され、キュー、トピック、サブスクリプションは名前空間あたりのコンカレント接続数の上限によって制限されます。 キューの場合、この数は送信側と受信側で共有されます。 1000 件の接続すべてが送信側で必要な場合は、キューをトピックと 1 つのサブスクリプションで置き換えます。 トピックは送信側から最大 1000 件のコンカレント接続を受け入れるのに対して、サブスクリプションは受信側からさらに 1000 件のコンカレント接続を受け入れます。 1000 件を超える同時接続が送信側で必要な場合は、送信側は HTTP 経由で Service Bus プロトコルにメッセージを送信する必要があります。
 
 スループットを最大化するには、次の手順を実行します。
 

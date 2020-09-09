@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 021e680a2ca5f7c00f113c4a17421b2648ca6230
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: dfaeee6a6e2a9728d7e63fb5681c487fbbd6139e
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159985"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959002"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure での Web アプリのアプリケーションパフォーマンスに関するよくあるご質問
 
@@ -32,15 +32,15 @@ ms.locfileid: "82159985"
 
 ## <a name="how-do-i-troubleshoot-a-high-cpu-consumption-scenario"></a>CPU 使用量が多いシナリオをトラブルシューティングするにはどうすればよいですか?
 
-CPU 使用量が多い一部のシナリオでは、アプリが実際により多くのコンピューティング リソースを必要としている可能性があります。 その場合は、アプリケーションが必要なすべてのリソースを取得できるように、より高いサービス階層へのスケーリングを検討してください。 その他の場合、CPU 使用量の多さは、不適切なループまたはコーディング方法によって発生している可能性があります。 CPU 使用量が増えている原因の調査は 2 つの部分からなるプロセスです。 最初にプロセス ダンプを作成し、次にプロセス ダンプを分析します。 詳細については、「[Capture and analyze a dump file for high CPU consumption for Web Apps (Web アプリの増加した CPU 使用量のためのダンプ ファイルの取得と分析)](https://blogs.msdn.microsoft.com/asiatech/2016/01/20/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app/)」を参照してください。
+CPU 使用量が多い一部のシナリオでは、アプリが実際により多くのコンピューティング リソースを必要としている可能性があります。 その場合は、アプリケーションが必要なすべてのリソースを取得できるように、より高いサービス階層へのスケーリングを検討してください。 その他の場合、CPU 使用量の多さは、不適切なループまたはコーディング方法によって発生している可能性があります。 CPU 使用量が増えている原因の調査は 2 つの部分からなるプロセスです。 最初にプロセス ダンプを作成し、次にプロセス ダンプを分析します。 詳細については、「[Capture and analyze a dump file for high CPU consumption for Web Apps (Web アプリの増加した CPU 使用量のためのダンプ ファイルの取得と分析)](/archive/blogs/asiatech/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app)」を参照してください。
 
 ## <a name="how-do-i-troubleshoot-a-high-memory-consumption-scenario"></a>メモリ使用量が多いシナリオをトラブルシューティングするにはどうすればよいですか?
 
-メモリ使用量が多い一部のシナリオでは、アプリが実際により多くのコンピューティング リソースを必要としている可能性があります。 その場合は、アプリケーションが必要なすべてのリソースを取得できるように、より高いサービス階層へのスケーリングを検討してください。 その他の場合、コード内のバグがメモリ リークの原因になることがあります。 また、コーディング方法によってもメモリ使用量が増えることがあります。 メモリ使用量が多い原因の調査は 2 つの部分からなるプロセスです。 最初にプロセス ダンプを作成し、次にプロセス ダンプを分析します。 Azure サイト拡張機能ギャラリーのクラッシュ診断は、これらの手順の両方を効率的に実行できます。 詳細については、「[Capture and analyze a dump file for intermittent high memory for Web Apps (Web アプリの断続的な増加したメモリ使用量のためのダンプ ファイルの取得と分析)](https://blogs.msdn.microsoft.com/asiatech/2016/02/02/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app/)」を参照してください。
+メモリ使用量が多い一部のシナリオでは、アプリが実際により多くのコンピューティング リソースを必要としている可能性があります。 その場合は、アプリケーションが必要なすべてのリソースを取得できるように、より高いサービス階層へのスケーリングを検討してください。 その他の場合、コード内のバグがメモリ リークの原因になることがあります。 また、コーディング方法によってもメモリ使用量が増えることがあります。 メモリ使用量が多い原因の調査は 2 つの部分からなるプロセスです。 最初にプロセス ダンプを作成し、次にプロセス ダンプを分析します。 Azure サイト拡張機能ギャラリーのクラッシュ診断は、これらの手順の両方を効率的に実行できます。 詳細については、「[Capture and analyze a dump file for intermittent high memory for Web Apps (Web アプリの断続的な増加したメモリ使用量のためのダンプ ファイルの取得と分析)](/archive/blogs/asiatech/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app)」を参照してください。
 
 ## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>PowerShell を使用して App Service Web アプリを自動化するにはどうすればよいですか?
 
-PowerShell コマンドレットを使用すると、App Service Web アプリを管理および維持できます。 ブログの投稿「[Automate web apps hosted in Azure App Service by using PowerShell (PowerShell を使用して Azure App Service でホストされた Web アプリを自動化する)](https://blogs.msdn.microsoft.com/puneetgupta/2016/03/21/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way/)」では、Azure Resource Manager ベースの PowerShell コマンドレットを使用して一般的なタスクを自動化する方法について説明しています。 このブログの投稿にはまた、さまざまな Web アプリ管理タスクのサンプル コードも含まれています。 すべての App Service Web アプリ コマンドレットの説明と構文については、「[Az.Websites](/powershell/module/az.websites)」を参照してください。
+PowerShell コマンドレットを使用すると、App Service Web アプリを管理および維持できます。 ブログの投稿「[Automate web apps hosted in Azure App Service by using PowerShell (PowerShell を使用して Azure App Service でホストされた Web アプリを自動化する)](/archive/blogs/puneetgupta/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way)」では、Azure Resource Manager ベースの PowerShell コマンドレットを使用して一般的なタスクを自動化する方法について説明しています。 このブログの投稿にはまた、さまざまな Web アプリ管理タスクのサンプル コードも含まれています。 すべての App Service Web アプリ コマンドレットの説明と構文については、「[Az.Websites](/powershell/module/az.websites)」を参照してください。
 
 ## <a name="how-do-i-view-my-web-apps-event-logs"></a>Web アプリのイベント ログを表示するにはどうすればよいですか?
 
@@ -81,7 +81,7 @@ Web アプリのプロセス レベルの情報を表示するには、次の 2 
 * ポータルで Web アプリが停止された。
 * Web アプリが、[無料] または [共有] スケール サービス プランに適用される可能性のあるリソースのクォータ制限に達した。
 
-エラーの原因を表示し、問題を解決するには、「[Web アプリ: "エラー 403 – この Web アプリが停止しています"](https://blogs.msdn.microsoft.com/waws/2016/01/05/azure-web-apps-error-403-this-web-app-is-stopped/)」の手順に従います。
+エラーの原因を表示し、問題を解決するには、「[Web アプリ: "エラー 403 – この Web アプリが停止しています"](/archive/blogs/waws/azure-web-apps-error-403-this-web-app-is-stopped)」の手順に従います。
 
 ## <a name="where-can-i-learn-more-about-quotas-and-limits-for-various-app-service-plans"></a>各種 App Service プランのクォータと制限に関する詳細情報はどこで得られますか?
 
@@ -159,15 +159,15 @@ Web worker ロールで使用可能な追加のメモリを利用できるよう
 
 ## <a name="why-does-my-request-time-out-after-230-seconds"></a>230 秒後に要求がタイムアウトになるのはなぜですか?
 
-Azure Load Balancer には、4 分という既定のアイドル タイムアウト設定があります。 これは一般に、Web 要求のための妥当な応答時間の制限です。 Web アプリにバックグラウンド処理が必要な場合は、Azure WebJobs を使用することをお勧めします。 Azure Web アプリは WebJobs を呼び出し、バックグラウンド処理の完了時に通知を受けることができます。 WebJobs を使用するための複数の方法 (キューやトリガーなど) から選択できます。
+Azure Load Balancer には、4 分という既定のアイドル タイムアウト設定があります。 これは一般に、Web 要求のための妥当な応答時間の制限です。 Web アプリにバックグラウンド処理が必要な場合は、Azure Web ジョブを使用することをお勧めします。 Azure Web アプリは Web ジョブを呼び出し、バックグラウンド処理の完了時に通知を受けることができます。 Web ジョブを使用するための複数の方法 (キューやトリガーなど) から選択できます。
 
-WebJobs は、バックグラウンド処理用に設計されています。 WebJobs では、バックグラウンド処理を必要なだけ実行できます。 WebJobs の詳細については、「[WebJobs でのバックグラウンド タスクの実行](webjobs-create.md)」を参照してください。
+Web ジョブは、バックグラウンド処理用に設計されています。 Web ジョブでは、バックグラウンド処理を必要なだけ実行できます。 Web ジョブの詳細については、「[Web ジョブでのバックグラウンド タスクの実行](webjobs-create.md)」を参照してください。
 
 ## <a name="aspnet-core-applications-that-are-hosted-in-app-service-sometimes-stop-responding-how-do-i-fix-this-issue"></a>App Service でホストされている ASP.NET Core アプリケーションが応答を停止する場合があります。 この問題を解決するにはどうすればよいですか?
 
 以前の [Kestrel バージョン](https://github.com/aspnet/KestrelHttpServer/issues/1182)での既知の問題により、App Service でホストされている ASP.NET Core 1.0 アプリが断続的に応答を停止することがあります。 また、"指定された CGI アプリケーションにエラーが発生し、サーバーがプロセスを停止しました" というメッセージが表示されることもあります。
 
-この問題は Kestrel バージョン 1.0.2 で修正されました。 このバージョンは ASP.NET Core 1.0.3 更新プログラムに含まれています。 この問題を解決するには、Kestrel 1.0.2 を使用するようにアプリの依存関係を更新するようにしてください。 あるいは、ブログの投稿「[ASP.NET Core 1.0 slow perf issues in App Service web apps (App Service Web アプリでの ASP.NET Core 1.0 の低速なパフォーマンスの問題)](https://blogs.msdn.microsoft.com/waws/2016/12/11/asp-net-core-slow-perf-issues-on-azure-websites)」で説明されている 2 つの対処法のいずれかを使用することもできます。
+この問題は Kestrel バージョン 1.0.2 で修正されました。 このバージョンは ASP.NET Core 1.0.3 更新プログラムに含まれています。 この問題を解決するには、Kestrel 1.0.2 を使用するようにアプリの依存関係を更新するようにしてください。 あるいは、ブログの投稿「[ASP.NET Core 1.0 slow perf issues in App Service web apps (App Service Web アプリでの ASP.NET Core 1.0 の低速なパフォーマンスの問題)](/archive/blogs/waws/asp-net-core-slow-perf-issues-on-azure-websites)」で説明されている 2 つの対処法のいずれかを使用することもできます。
 
 
 ## <a name="i-cant-find-my-log-files-in-the-file-structure-of-my-web-app-how-can-i-find-them"></a>Web アプリのファイル構造内にログ ファイルが見つかりません。 どのようにしたら見つけることができますか?
@@ -188,4 +188,4 @@ Web アプリでの送信接続の詳細については、[Azure Web サイト�
 
 ## <a name="how-do-i-use-visual-studio-to-remote-debug-my-app-service-web-app"></a>Visual Studio を使用して App Service Web アプリをリモート デバッグするにはどうすればよいですか?
 
-Visual Studio を使用して Web アプリをデバッグする方法を示す詳細なチュートリアルについては、「[Remote debug your App Service web app (App Service Web アプリのリモート デバッグ)](https://blogs.msdn.microsoft.com/benjaminperkins/2016/09/22/remote-debug-your-azure-app-service-web-app/)」を参照してください。
+Visual Studio を使用して Web アプリをデバッグする方法を示す詳細なチュートリアルについては、「[Remote debug your App Service web app (App Service Web アプリのリモート デバッグ)](/archive/blogs/benjaminperkins/remote-debug-your-azure-app-service-web-app)」を参照してください。

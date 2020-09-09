@@ -7,23 +7,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 07/14/2020
 ms.author: aahi
-ms.openlocfilehash: bc48c0ba23e73adec312adfeeb1fcd57dba6ceec
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 324b70fc810acc4faba4f488f821049f7eb0875e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80879158"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538005"
 ---
 # <a name="configure-form-recognizer-containers"></a>Form Recognizer コンテナーの構成
+
+[!INCLUDE [Form Recognizer containers limit](includes/container-limit.md)]
 
 Azure Form Recognizer コンテナーを使用することで、堅牢なクラウド機能とエッジのローカル性という両方のメリットを活用できるように最適化されたアプリケーション アーキテクチャを構築できます。
 
 Form Recognizer コンテナーのランタイム環境は、`docker run` コマンドの引数を使用することによって構成します。 このコンテナーには、いくつかの必須の設定と省略可能な設定があります。 いくつかの例については、「[docker run コマンドの例](#example-docker-run-commands)」セクションを参照してください。 このコンテナーに固有の設定は、課金設定です。
-
-> [!IMPORTANT]
-> Form Recognizer コンテナーでは、現在、Form Recognizer API バージョン 1.0 が使用されています。 代わりにマネージド サービスを使用することで、この API の最新バージョンにアクセスできます。
 
 ## <a name="configuration-settings"></a>構成設定
 
@@ -52,7 +51,7 @@ Form Recognizer コンテナーのランタイム環境は、`docker run` コマ
 |--|------|-----------|-------------|
 |はい| `Billing` | String | 課金エンドポイント URI。 課金 URI の取得の詳細については、「[必須パラメーターの収集](form-recognizer-container-howto.md#gathering-required-parameters)」を参照してください。 リージョンのエンドポイントの詳細および全一覧については、「[Cognitive Services のカスタム サブドメイン名](../cognitive-services-custom-subdomains.md)」を参照してください。 |
 
-## <a name="eula-setting"></a>Eula 設定
+## <a name="eula-setting"></a>Eula の設定
 
 [!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 

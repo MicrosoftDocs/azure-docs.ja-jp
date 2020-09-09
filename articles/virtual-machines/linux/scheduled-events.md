@@ -1,18 +1,19 @@
 ---
 title: Azure の Linux VM 向けのスケジュールされたイベント
 description: Linux 仮想マシンに Azure Metadata Service を使用してイベントをスケジュールします。
-author: mimckitt
-ms.service: virtual-machines-windows
-ms.topic: article
+author: EricRadzikowskiMSFT
+ms.service: virtual-machines-linux
+ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 02/22/2018
-ms.author: mimckitt
-ms.openlocfilehash: ee600d7524af27a0e9e2ce0176e7bd4d1f60bc3b
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.date: 06/01/2020
+ms.author: ericrad
+ms.reviewer: mimckitt
+ms.openlocfilehash: fee57efb3517131049f986c743125f17573fdc34
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758563"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816730"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Linux VM の Scheduled Events
 
@@ -38,10 +39,10 @@ Windows のスケジュールされたイベントの詳細については、[Wi
 
 スケジュールされたイベントは、次のユース ケースでイベントを提供します。
 
-- [プラットフォームで開始されるメンテナンス](https://docs.microsoft.com/azure/virtual-machines/linux/maintenance-and-updates) (例: VM の再起動、ライブ マイグレーション、ホストの更新を保持するメモリ)
+- [プラットフォームで開始されるメンテナンス](../maintenance-and-updates.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json) (例: VM の再起動、ライブ マイグレーション、ホストの更新を保持するメモリ)
 - 仮想マシンは、じきに故障することが予測されている[劣化したホスト ハードウェア](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events)で実行されています。
 - ユーザーが開始するメンテナンス (たとえば、ユーザーによる再起動や VM の再デプロイ)
-- [スポット VM](spot-vms.md) および[スポット スケール セット](../../virtual-machine-scale-sets/use-spot.md) インスタンスの削除。
+- [スポット VM](../spot-vms.md) および[スポット スケール セット](../../virtual-machine-scale-sets/use-spot.md) インスタンスの削除。
 
 ## <a name="the-basics"></a>基本操作  
 
@@ -53,14 +54,19 @@ Windows のスケジュールされたイベントの詳細については、[Wi
 - スタンドアロンの仮想マシン。
 - クラウド サービス内のすべての VM。
 - 可用性セット内のすべての VM。
+- 可用性ゾーン内のすべての VM。 
 - スケール セットの配置グループすべての VM。 
+
+> [!NOTE]
+> 可用性ゾーンの VM に固有ですが、スケジュール化されたイベントはゾーン内のシングル VM に進みます。
+> たとえば、ある可用性セット内に 100 の VM があるとき、そのうちの 1 つが更新されるなら、スケジュール化されたイベントは 100 すべてに進みます。一方で、あるゾーン内に 100 のシングル VM がある場合、イベントは、影響を受ける VM にのみ進みます。
 
 そのため、イベント内の `Resources` フィールドをチェックして、影響を受ける VM を特定する必要があります。
 
 ### <a name="endpoint-discovery"></a>エンドポイントの検出
 VNET が有効な VM の場合は、静的でルーティング不可能な IP アドレス `169.254.169.254` から Metadata Service を利用できます。 スケジュールされたイベントの最新バージョンのフル エンドポイントは次のとおりです。 
 
- > `http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01`
+ > `http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01`
 
 VM が仮想ネットワーク内で作成されていない場合 (クラウド サービスと従来の VM の既定のケース)、使用する IP アドレスを検出する追加のロジックが必要となります。 [ホスト エンドポイントの検出](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm)方法の詳細については、このサンプルを参照してください。
 
@@ -69,6 +75,8 @@ VM が仮想ネットワーク内で作成されていない場合 (クラウド
 
 | Version | リリースの種類 | リージョン | リリース ノート | 
 | - | - | - | - | 
+| 2019-08-01 | 一般公開 | All | <li> EventSource のサポートを追加しました |
+| 2019-04-01 | 一般公開 | All | <li> イベントの説明のサポートを追加しました |
 | 2019-01-01 | 一般公開 | All | <li> 仮想マシン スケール セットの EventType "Terminate" のサポートが追加されました |
 | 2017-11-01 | 一般公開 | All | <li> スポット VM 削除の EventType 「Preempt」のサポートを追加する<br> | 
 | 2017-08-01 | 一般公開 | All | <li> IaaS VM のリソース名から先頭のアンダースコアを削除<br><li>すべての要求にメタデータ ヘッダー要件を適用 | 
@@ -98,7 +106,7 @@ VM を再起動すると、型 `Reboot` のイベントがスケジュールさ�
 
 #### <a name="bash"></a>Bash
 ```
-curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01
+curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01
 ```
 
 応答には、スケジュールされたイベントの配列が含まれています。 空の配列は、現在スケジュールされているイベントがないことを意味します。
@@ -113,7 +121,9 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
             "ResourceType": "VirtualMachine",
             "Resources": [{resourceName}],
             "EventStatus": "Scheduled" | "Started",
-            "NotBefore": {timeInUTC},              
+            "NotBefore": {timeInUTC},       
+            "Description": {eventDescription},
+            "EventSource" : "Platform" | "User",
         }
     ]
 }
@@ -128,6 +138,8 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 | リソース| このイベントが影響を与えるリソースの一覧。 これには最大 1 つの[更新ドメイン](manage-availability.md)のマシンが含まれることが保証されますが、更新ドメインの一部のマシンは含まれない場合があります。 <br><br> 例: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | このイベントの状態。 <br><br> 値: <ul><li>`Scheduled`:このイベントは、`NotBefore` プロパティに指定された時間が経過した後で開始するようにスケジュールされています。<li>`Started`:このイベントは開始されています。</ul> `Completed` や類似の状態が提供されることはありません。 イベントが完了すると、イベントは返されなくなります。
 | NotBefore| このイベントが開始される時間。 <br><br> 例: <br><ul><li> Mon, 19 Sep 2016 18:29:47 GMT  |
+| 説明 | このイベントの説明。 <br><br> 例: <br><ul><li> ホスト サーバーのメンテナンス中です。 |
+| EventSource | イベントのイニシエーター。 <br><br> 例: <br><ul><li> `Platform`:このイベントは、プラットフォームによって開始されています。 <li>`User`:このイベントは、ユーザーによって開始されています。 |
 
 ### <a name="event-scheduling"></a>イベントのスケジューリング
 各イベントは、スケジュールされているイベントの種類に基づいて、将来の最小値の時間でスケジュールされます。 この時間は、イベントの `NotBefore` プロパティに反映されます。 
@@ -177,7 +189,7 @@ import json
 import socket
 import urllib2
 
-metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01"
+metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01"
 this_host = socket.gethostname()
 
 
@@ -197,9 +209,14 @@ def handle_scheduled_events(data):
         eventtype = evt['EventType']
         resourcetype = evt['ResourceType']
         notbefore = evt['NotBefore'].replace(" ", "_")
+    description = evt['Description']
+    eventSource = evt['EventSource']
         if this_host in resources:
             print("+ Scheduled Event. This host " + this_host +
-                " is scheduled for " + eventtype + " not before " + notbefore)
+                " is scheduled for " + eventtype + 
+        " by " + eventSource + 
+        " with description " + description +
+        " not before " + notbefore)
             # Add logic for handling events here
 
 
@@ -216,4 +233,4 @@ if __name__ == '__main__':
 - [Azure Friday でのスケジュールされたイベント](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance)のデモをご覧ください。 
 - スケジュールされたイベントのコード サンプルは、[Azure Instance Metadata Scheduled Events の GitHub リポジトリ](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm)をご覧ください。
 - 「[インスタンス メタデータ サービス](instance-metadata-service.md)」で使用可能な API の詳細についてご覧ください。
-- [Azure での Linux 仮想マシンの計画的メンテナンス](planned-maintenance.md)に関するページをご覧ください。
+- [Azure での Linux 仮想マシンの計画的メンテナンス](../maintenance-and-updates.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json)に関するページをご覧ください。

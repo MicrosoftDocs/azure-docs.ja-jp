@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 446beca9b8491fb252a1e3284a9ec9a0e6dabef5
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 49f944aa98bf0bf8090b10d2feeb50af4a2d42b2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82739366"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955490"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Azure Monitor での Windows および Linux のパフォーマンス データ ソース
 Windows および Linux のパフォーマンス カウンターから、ハードウェア コンポーネント、オペレーティング システム、およびアプリケーションのパフォーマンスに関する情報が得られます。  Azure Monitor は、長期的な分析とレポートのためにパフォーマンス データを集計することに加えて、ほぼリアルタイム (NRT) 分析のために頻繁な間隔でパフォーマンス カウンターを収集することができます。
@@ -62,13 +62,15 @@ Azure Portal を使用して Linux のパフォーマンス カウンターを�
 
 収集するパフォーマンス メトリックの各オブジェクト (カテゴリ) は、構成ファイルの中で単一の `<source>` 要素として定義する必要があります。 次の構文形式に従って記述してください。
 
-    <source>
-      type oms_omi  
-      object_name "Processor"
-      instance_regex ".*"
-      counter_name_regex ".*"
-      interval 30s
-    </source>
+```xml
+<source>
+    type oms_omi  
+    object_name "Processor"
+    instance_regex ".*"
+    counter_name_regex ".*"
+    interval 30s
+</source>
+```
 
 
 この要素のパラメーターを次の表に示します。
@@ -142,37 +144,39 @@ Azure Portal を使用して Linux のパフォーマンス カウンターを�
 
 パフォーマンス メトリックの既定の構成を次に示します。
 
-    <source>
-      type oms_omi
-      object_name "Physical Disk"
-      instance_regex ".*"
-      counter_name_regex ".*"
-      interval 5m
-    </source>
+```xml
+<source>
+    type oms_omi
+    object_name "Physical Disk"
+    instance_regex ".*"
+    counter_name_regex ".*"
+    interval 5m
+</source>
 
-    <source>
-      type oms_omi
-      object_name "Logical Disk"
-      instance_regex ".*
-      counter_name_regex ".*"
-      interval 5m
-    </source>
+<source>
+    type oms_omi
+    object_name "Logical Disk"
+    instance_regex ".*
+    counter_name_regex ".*"
+    interval 5m
+</source>
 
-    <source>
-      type oms_omi
-      object_name "Processor"
-      instance_regex ".*
-      counter_name_regex ".*"
-      interval 30s
-    </source>
+<source>
+    type oms_omi
+    object_name "Processor"
+    instance_regex ".*
+    counter_name_regex ".*"
+    interval 30s
+</source>
 
-    <source>
-      type oms_omi
-      object_name "Memory"
-      instance_regex ".*"
-      counter_name_regex ".*"
-      interval 30s
-    </source>
+<source>
+    type oms_omi
+    object_name "Memory"
+    instance_regex ".*"
+    counter_name_regex ".*"
+    interval 30s
+</source>
+```
 
 ## <a name="data-collection"></a>データ コレクション
 Azure Monitor は、カウンターがインストールされているすべてのエージェントについて、指定されたサンプル間隔ですべての指定されたパフォーマンス カウンターを収集します。  データは集計されず、Log Analytics ワークスペースで指定した期間、すべてのログ クエリ ビューで生データを利用できます。
@@ -184,7 +188,7 @@ Azure Monitor は、カウンターがインストールされているすべて
 |:--- |:--- |
 | Computer |イベントが収集されたコンピューター。 |
 | CounterName |パフォーマンス カウンターの名前 |
-| CounterPath |\\\\\<コンピューター>\\オブジェクト(インスタンス)\\カウンターの形式のカウンターの完全パス。 |
+| CounterPath |\\\\\<Computer>\\オブジェクト (インスタンス)\\カウンターの形式に従う、カウンターの完全なパス。 |
 | CounterValue |カウンターの数値。 |
 | InstanceName |イベント インスタンスの名前。  インスタンスがない場合は空白です。 |
 | ObjectName |パフォーマンス オブジェクトの名前 |
@@ -194,7 +198,7 @@ Azure Monitor は、カウンターがインストールされているすべて
 ## <a name="sizing-estimates"></a>サイズ見積もり
  10 秒間隔での特定のカウンターの収集量の大まかな見積もり値は、インスタンスごとに 1 日あたり約 1 MB です。  次の式で、特定のカウンターのストレージ要件を見積もることができます。
 
-    1 MB x (number of counters) x (number of agents) x (number of instances)
+> 1 MB x (カウンターの数) x (エージェントの数) x (インスタンスの数)
 
 ## <a name="log-queries-with-performance-records"></a>パフォーマンス レコードに対するログ クエリ
 次の表は、パフォーマンス レコードを取得するログ クエリのさまざまな例をまとめたものです。

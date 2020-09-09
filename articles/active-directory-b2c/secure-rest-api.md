@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1f1897a4f58276bbac2a7de673544e592a562562
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 206768604c6d08a32c0caaf9b53a1417cfa1344b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826674"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385333"
 ---
 # <a name="secure-your-restful-services"></a>お使いの RESTful サービスを保護する 
 
@@ -114,7 +114,7 @@ HTTP 基本認証を使用して構成された RESTful 技術プロファイル
 非運用環境では、証明書をまだ持っていない場合は、自己署名証明書を使用できます。 Windows では、PowerShell の [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) コマンドレットを使用して証明書を生成できます。
 
 1. この PowerShell コマンドを実行して、自己署名証明書を生成します。 アプリケーションと Azure AD B2C のテナント名に合わせて `-Subject` 引数を変更します。 また、証明書に別の有効期限を指定するように `-NotAfter` 日付を調整することもできます。
-    ```PowerShell
+    ```powershell
     New-SelfSignedCertificate `
         -KeyExportPolicy Exportable `
         -Subject "CN=yourappname.yourtenant.onmicrosoft.com" `
@@ -285,7 +285,7 @@ ServiceUrl で、your-tenant-name を Azure AD テナントの名前に置き換
 
 上記のスニペットを追加すると、技術プロファイルは次の XML コードのようになります。
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>REST APIs</DisplayName>
   <TechnicalProfiles>

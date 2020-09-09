@@ -1,6 +1,6 @@
 ---
 title: Azure Portal を使用して SOAP API をインポートする | Microsoft Docs
-description: API Management で SOAP API をインポートする方法について説明します。
+description: SOAP API の標準的な XML 表現をインポートし、この API を Azure portal と開発者ポータルでテストする方法について説明します。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 7b1fd34824bec9641edc94ce278fa21a1b57b2c0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 583179c4678b43bef25174835ec2701d571b37b6
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82202742"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905652"
 ---
 # <a name="import-soap-api"></a>SOAP API のインポート
 

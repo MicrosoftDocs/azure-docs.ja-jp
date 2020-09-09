@@ -3,15 +3,16 @@ title: 変更フィード プロセッサ ライブラリから Azure Cosmos DB 
 description: ご利用のアプリケーションを、変更フィード プロセッサ ライブラリの使用から、Azure Cosmos DB SDK V3 の使用に移行する方法について説明します。
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 9570a8512e3437b12ecce2ef0c708a74a8806482
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 7a15e5135cd89d7360a1357e3518b1253e80ee65
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588885"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019523"
 ---
 # <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>変更フィード プロセッサ ライブラリから Azure Cosmos DB .NET V3 SDK に移行する
 
@@ -46,10 +47,6 @@ ms.locfileid: "77588885"
 SDK V3 変更フィード プロセッサでは、移行されたアプリケーション コードの最初の実行時に、古いライブラリの状態が検出され、新しいスキーマに自動的に移行されます。 
 
 古いコードを使用するアプリケーションを安全に停止し、そのコードを新しいバージョンに移行し、移行されたアプリケーションを起動することができ、アプリケーションの停止中に発生した変更はいずれも新しいバージョンによって取得および処理されます。
-
-> [!NOTE]
-> ライブラリを使用するアプリケーションから .NET V3 SDK への移行は一方向となります。これは、状態 (リース) が新しいスキーマに移行されるため、 この移行に下位互換性はありません。
-
 
 ## <a name="additional-resources"></a>その他のリソース
 

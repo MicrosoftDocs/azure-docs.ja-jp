@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: ca88e42438c7cb48b062aa67d82053afbb9244bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6aaa02c2e14cfc31a11da260da38705ba064ba79
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418288"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523317"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Azure-SSIS 統合ランタイムを高パフォーマンス用に構成する
 
@@ -51,25 +51,25 @@ $AzureSSISNodeNumber = 2
 # Azure-SSIS IR edition/license info: Standard or Enterprise
 $AzureSSISEdition = "Standard" # Standard by default, while Enterprise lets you use advanced/premium features on your Azure-SSIS IR
 # Azure-SSIS IR hybrid usage info: LicenseIncluded or BasePrice
-$AzureSSISLicenseType = "LicenseIncluded" # LicenseIncluded by default, while BasePrice lets you bring your own on-premises SQL Server license with Software Assurance to earn cost savings from Azure Hybrid Benefit (AHB) option
+$AzureSSISLicenseType = "LicenseIncluded" # LicenseIncluded by default, while BasePrice lets you bring your existing SQL Server license with Software Assurance to earn cost savings from Azure Hybrid Benefit (AHB) option
 # For a Standard_D1_v2 node, up to 4 parallel executions per node are supported, but for other nodes, up to max(2 x number of cores, 8) are currently supported
 $AzureSSISMaxParallelExecutionsPerNode = 8
 # Custom setup info
 $SetupScriptContainerSasUri = "" # OPTIONAL to provide SAS URI of blob container where your custom setup script and its associated files are stored
 # Virtual network info: Classic or Azure Resource Manager
-$VnetId = "[your virtual network resource ID or leave it empty]" # REQUIRED if you use Azure SQL Database with virtual network service endpoints/Managed Instance/on-premises data, Azure Resource Manager virtual network is recommended, Classic virtual network will be deprecated soon
-$SubnetName = "[your subnet name or leave it empty]" # WARNING: Please use the same subnet as the one used with your Azure SQL Database with virtual network service endpoints or a different subnet than the one used for your Managed Instance
+$VnetId = "[your virtual network resource ID or leave it empty]" # REQUIRED if you use Azure SQL Database with virtual network service endpoints/SQL Managed Instance/on-premises data, Azure Resource Manager virtual network is recommended, Classic virtual network will be deprecated soon
+$SubnetName = "[your subnet name or leave it empty]" # WARNING: Please use the same subnet as the one used with your Azure SQL Database with virtual network service endpoints or a different subnet than the one used for your SQL Managed Instance
 
 ### SSISDB info
-$SSISDBServerEndpoint = "[your Azure SQL Database server name or Managed Instance name.DNS prefix].database.windows.net" # WARNING: Please ensure that there is no existing SSISDB, so we can prepare and manage one on your behalf
+$SSISDBServerEndpoint = "[your server name or managed instance name.DNS prefix].database.windows.net" # WARNING: Please ensure that there is no existing SSISDB, so we can prepare and manage one on your behalf
 # Authentication info: SQL or Azure Active Directory (AAD)
 $SSISDBServerAdminUserName = "[your server admin username for SQL authentication or leave it empty for AAD authentication]"
 $SSISDBServerAdminPassword = "[your server admin password for SQL authentication or leave it empty for AAD authentication]"
-$SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>) for Azure SQL Database or leave it empty for Managed Instance]"
+$SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>) for Azure SQL Database or leave it empty for SQL Managed Instance]"
 ```
 
 ## <a name="azuressislocation"></a>AzureSSISLocation
-**AzureSSISLocation** は、統合ランタイムの worker ノードの場所です。 worker ノードは、Azure SQL データベース上の SSIS カタログ データベース (SSISDB) への常時接続を維持します。 **AzureSSISLocation** は、SSISDB をホストする SQL Database サーバーと同じ場所に設定します。このようにすると、統合ランタイムの動作が可能な限り効率的になります。
+**AzureSSISLocation** は、統合ランタイムの worker ノードの場所です。 ワーカー ノードでは、Azure SQL Database 内の SSIS カタログ データベース (SSISDB) への常時接続が維持されます。 SSISDB をホストする [論理 SQL サーバー](../azure-sql/database/logical-servers.md)と同じ場所に **AzureSSISLocation** を設定します。このようにすると、統合ランタイムの動作が可能な限り効率的になります。
 
 ## <a name="azuressisnodesize"></a>AzureSSISNodeSize
 Data Factory (Azure-SSIS IR を含みます) は、以下のオプションをサポートします。
@@ -104,11 +104,15 @@ SSIS エンジニアリング チームによる非公式な社内テストで�
 
 このデータは、1 つの worker ノードでの 1 つのパッケージの実行を表します。 このパッケージは、Azure Blob Storage から名と姓の列を含むレコードを 300 万件読み込み、フル ネームの列を生成して、フル ネームが 20 文字より長いレコードを Azure Blob Storage に書き込みます。
 
+Y 軸は、1 時間に実行が完了したパッケージの数です。 これは、1 つのメモリを消費するパッケージのテスト結果であることに注意してください。 パッケージのスループットを知りたい場合は、自分でテストを実行することをお勧めします。
+
 ![SSIS 統合ランタイム パッケージの実行速度](media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speedV2.png)
 
 ### <a name="configure-for-overall-throughput"></a>全体的なスループットが上がるように構成する
 
 実行するパッケージの数が多く、全体的なスループットが最も重要な場合は、次の表の情報を使って、シナリオに適した仮想マシンの種類を選びます。
+
+Y 軸は、1 時間に実行が完了したパッケージの数です。 これは、1 つのメモリを消費するパッケージのテスト結果であることに注意してください。 パッケージのスループットを知りたい場合は、自分でテストを実行することをお勧めします。
 
 ![SSIS 統合ランタイムの全体的な最大スループット](media/configure-azure-ssis-integration-runtime-performance/ssisir-overall-throughputV2.png)
 
@@ -121,7 +125,7 @@ SSIS エンジニアリング チームによる非公式な社内テストで�
 既に強力な worker ノードを使ってパッケージを実行している場合、**AzureSSISMaxParallelExecutionsPerNode** の値を大きくすると、統合ランタイムの全体的なスループットが上がる可能性があります。 Standard_D1_v2 ノードでは、ノードあたり 1 ～ 4 の並列実行がサポートされています。 その他のすべての種類のノードでは、ノードあたり 1 から max(2 x コア数, 8) の並列実行がサポートされています。 サポートされている最大値を超える **AzureSSISMaxParallelExecutionsPerNode** を希望する場合は、サポート チケットを開いてください。Microsoft によって最大値が引き上げられた後、Azure PowerShell を使用して **AzureSSISMaxParallelExecutionsPerNode** を更新する必要があります。
 パッケージのコストと、worker ノードの次の構成に基づいて、適切な値を予測できます。 詳しくは、「[汎用仮想マシンのサイズ](../virtual-machines/windows/sizes-general.md)」をご覧ください。
 
-| Size             | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数/想定ネットワーク パフォーマンス (Mbps) |
+| サイズ             | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数/想定ネットワーク パフォーマンス (Mbps) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|
 | Standard\_D1\_v2 | 1    | 3.5         | 50                     | 3000/46/23                                             | 2 / 2x500                         | 2/750                                        |
 | Standard\_D2\_v2 | 2    | 7           | 100                    | 6000/93/46                                             | 4 / 4x500                         | 2/1,500                                       |
@@ -150,7 +154,7 @@ SSIS エンジニアリング チームによる非公式な社内テストで�
 
 ## <a name="ssisdbpricingtier"></a>SSISDBPricingTier
 
-**SSISDBPricingTier** は、Azure SQL データベースの SSIS カタログ データベース (SSISDB) の価格レベルです。 この設定は、IR インスタンス内の worker の最大数、パッケージの実行をキューに入れる速度、実行ログを読み込む速度に影響します。
+**SSISDBPricingTier** は、Azure SQL Database の SSIS カタログ データベース (SSISDB) の価格レベルです。 この設定は、IR インスタンス内の worker の最大数、パッケージの実行をキューに入れる速度、実行ログを読み込む速度に影響します。
 
 -   パッケージの実行をキューに入れる速度および実行ログを読み込む速度が重要でない場合は、最低のデータベース価格レベルを選んでかまいません。 Basic 価格レベルの Azure SQL Database は、1 つの統合ランタイム インスタンスで 8 個の worker をサポートします。
 

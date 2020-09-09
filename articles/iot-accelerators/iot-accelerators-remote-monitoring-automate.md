@@ -10,11 +10,11 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 676f1133a516174478a456a97bc467e7770fe6e7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223569"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "84712515"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>チュートリアル: 監視ソリューションに接続されているデバイスの問題の検出
 

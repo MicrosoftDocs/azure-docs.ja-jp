@@ -69,7 +69,7 @@ az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
 
 このチュートリアルの残りの部分では、この手順で選択したコンテナー レジストリ名のプレースホルダーとして `<acrName>` を使用します。
 
-## <a name="log-in-to-container-registry"></a>コンテナー レジストリへのログイン
+## <a name="log-in-to-container-registry"></a>コンテナー レジストへのにログイン
 
 イメージをプッシュする前に、Azure Container Registry インスタンスにログインする必要があります。 [az acr login][az-acr-login] コマンドを使用して、操作を完了します。 コンテナー レジストリの作成時に選んだ一意名を指定する必要があります。
 

@@ -5,19 +5,19 @@ tags: azure-service-management
 ms.assetid: 0f9c8bc5-3789-4eb3-8deb-ae6e2200795a
 ms.topic: sample
 ms.date: 03/20/2017
-ms.custom: mvc
-ms.openlocfilehash: 22b6a50b76c7d2e29f4705823db904e2c35f2717
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 303cb562d4489412cf16a3c064cdb7770c19bdd0
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74684861"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89073779"
 ---
 # <a name="create-a-web-app-and-deploy-code-from-github"></a>Web アプリを作成して GitHub からコードをデプロイする
 
 このサンプル スクリプトでは、App Service で Web アプリを関連リソースと合わせて作成し、(継続的なデプロイは行わずに) パブリックの GitHub リポジトリから Web アプリのコードをデプロイします。 継続的なデプロイを使用した GitHub でのデプロイについては、「[GitHub からの継続的なデプロイで Web アプリを作成する](powershell-continuous-deployment-github.md)」を参照してください。
 
-必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールし、`Connect-AzAccount` を実行して、Azure との接続を作成します。 また、Web アプリのコードを含む GitHub リポジトリへのリンクも必要です。
+必要に応じて、[Azure PowerShell ガイド](/powershell/azure/)の手順に従って Azure PowerShell をインストールし、`Connect-AzAccount` を実行して、Azure との接続を作成します。 また、Web アプリのコードを含む GitHub リポジトリへのリンクも必要です。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -46,6 +46,6 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
+Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。
 
 その他の Azure App Service Web Apps 用 Azure PowerShell サンプル スクリプトは、[Azure PowerShell サンプル](../samples-powershell.md)のページにあります。

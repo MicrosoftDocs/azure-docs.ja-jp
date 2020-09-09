@@ -3,12 +3,12 @@ title: テンプレート関数 - 論理
 description: Azure Resource Manager テンプレートで論理値を判定するために使用する関数について説明します。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 0072593e7d7830e75e2386bcfdd2907a873c7a87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8fe1c00240fc24c3c1454b118f9e0d9a9d54fe4e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192316"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84677391"
 ---
 # <a name="logical-functions-for-arm-templates"></a>ARM テンプレート用の論理関数
 
@@ -44,7 +44,7 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートで比�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [ ],
     "outputs": {
@@ -93,7 +93,7 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートで比�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -154,7 +154,7 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートで比�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [
     ],
@@ -187,7 +187,7 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートで比�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "vmName": {
@@ -253,7 +253,7 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートで比�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [ ],
     "outputs": {
@@ -285,7 +285,7 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートで比�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [
     ],
@@ -328,7 +328,7 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートで比�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [ ],
     "outputs": {

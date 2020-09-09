@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Azure DevTest Labs のドキュメント
-summary: Azure DevTest Labs を使用して、クラウド内にチームまたは学生用の開発、テスト、ハッカソン、クラスルーム ラボを簡単にセットアップする方法を説明します。
+title: Azure Lab Services のドキュメント
+summary: Azure Lab Services を使用して、クラウド内にチームまたは学生用の開発、テスト、ハッカソン、クラスルーム ラボを簡単にセットアップする方法を説明します。
 metadata:
-  title: Azure DevTest Labs のドキュメント
-  description: Azure DevTest Labs を使用して、クラウド内にチームまたは学生用の開発、テスト、ハッカソン、クラスルーム ラボを簡単にセットアップする方法を説明します。
+  title: Azure Lab Services のドキュメント
+  description: Azure Lab Services を使用して、クラウド内にチームまたは学生用の開発、テスト、ハッカソン、クラスルーム ラボを簡単にセットアップする方法を説明します。
   services: lab-services
   ms.service: lab-services
   ms.subservice: 
@@ -11,79 +11,69 @@ metadata:
   ms.collection: collection
   author: spelluru
   ms.author: spelluru
-  ms.date: 09/26/2019
-  ms.openlocfilehash: 1cfb86a37068d4cd928081446e6bf9ad381bbd86
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 06/26/2020
+  ms.openlocfilehash: 9101d40182f3321dbe791bd700a26a782f6c697c
+  ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "72790962"
+  ms.lasthandoff: 06/26/2020
+  ms.locfileid: "85445119"
 landingContent:
-- title: はじめに
+- title: 概要
   linkLists:
   - linkListType: overview
     links:
-    - text: DevTest ラボについて
-      url: devtest-lab-overview.md
-    - text: DevTest Labs と Lab Services について
-      url: lab-services-overview.md
+    - text: Lab Services と DevTest Labs について
+      url: ../devtest-labs/lab-services-overview.md?toc=%2fazure%2fevent-grid%2fclassroom-labs%2ftoc.json
+    - text: クラスルーム ラボについて
+      url: classroom-labs-overview.md
   - linkListType: concept
     links:
-    - text: DevTest ラボの概念
-      url: devtest-lab-concepts.md
-    - text: 人気のシナリオ
-      url: devtest-lab-guidance-get-started.md
+    - text: クラスルーム ラボの概念
+      url: classroom-labs-concepts.md
+- title: ラボ アカウント
+  linkLists:
   - linkListType: tutorial
     links:
-    - text: ラボを設定する
-      url: tutorial-create-custom-lab.md
-    - text: ラボにアクセスする
-      url: tutorial-use-custom-lab.md
-- title: アーティファクト
-  linkLists:
+    - text: ラボ アカウントを設定する
+      url: tutorial-setup-lab-account.md
   - linkListType: how-to-guide
     links:
-    - text: 成果物を VM に追加する
-      url: add-artifact-vm.md
-    - text: カスタム アーティファクトを作成する
-      url: devtest-lab-artifact-author.md
-    - text: 必須アーティファクトを指定する
-      url: devtest-lab-mandatory-artifacts.md
-    - text: アーティファクトの失敗に関するトラブルシューティング
-      url: devtest-lab-troubleshoot-artifact-failure.md
-- title: 環境
+    - text: ラボ アカウントを作成および管理する
+      url: how-to-manage-lab-accounts.md
+    - text: ラボ アカウントを構成する
+      url: how-to-configure-lab-accounts.md
+- title: クラスルーム ラボの設定
   linkLists:
+  - linkListType: tutorial
+    links:
+    - text: クラスルーム ラボを設定する
+      url: tutorial-setup-classroom-lab.md
   - linkListType: how-to-guide
     links:
-    - text: パブリックな環境の構成と使用
-      url: devtest-lab-configure-use-public-environments.md
-    - text: 環境の作成
-      url: devtest-lab-create-environment-from-arm.md
-    - text: サービスとしてのプラットフォーム サービスを使用する
-      url: use-paas-services.md
-    - text: ラボの仮想ネットワークに接続する
-      url: connect-environment-lab-virtual-network.md
-    - text: 環境の障害のトラブルシューティング
-      url: troubleshoot-vm-environment-creation-failures.md
+    - text: クラスルーム ラボを作成して管理する
+      url: how-to-manage-lab-accounts.md
+    - text: テンプレートを設定、カスタマイズ、公開する
+      url: how-to-create-manage-template.md
+    - text: 仮想マシン プールを設定および管理する
+      url: how-to-set-virtual-machine-passwords.md
+    - text: ラボ ユーザーを追加および管理する
+      url: how-to-configure-student-usage.md
+    - text: スケジュールの作成と管理
+      url: how-to-create-schedules.md
+- title: クラスルーム ラボの使用
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: クラスルーム ラボへのアクセス
+      url: tutorial-connect-virtual-machine-classroom-lab.md
+  - linkListType: how-to-guide
+    links:
+    - text: Linux VM にリモート デスクトップ接続を使用する
+      url: how-to-use-remote-desktop-linux-student.md
 - title: リファレンス コンテンツの確認
   linkLists:
   - linkListType: reference
     links:
-    - text: Azure CLI
-      url: /cli/azure/lab
-    - text: PowerShell
-      url: /powershell/module/az.devtestlabs/#devtest_labs
     - text: REST
-      url: /rest/api/dtl
-- title: テンプレート
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: カスタム イメージと[数式]
-      url: devtest-lab-comparing-vm-base-image-types.md
-  - linkListType: how-to-guide
-    links:
-    - text: VM からカスタム イメージを作成する
-      url: devtest-lab-create-custom-image-from-vm-using-portal.md
-    - text: 数式を管理する
-      url: devtest-lab-manage-formulas.md
+      url: /rest/api/labservices/

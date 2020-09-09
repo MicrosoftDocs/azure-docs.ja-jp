@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 07/29/2019
-ms.author: raymondl
-ms.openlocfilehash: ec5ff756d7e732430675676868bc754627a2a4a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/13/2020
+ms.author: aahi
+ms.openlocfilehash: c1ca14b8471ef6257c0603e61d78e789e846f0ae
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "72429029"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142403"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>例:Text Analytics を使用してキー フレーズを抽出する方法
 
-[キー フレーズ抽出](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) API は、非構造化テキストを評価し、各 JSON ドキュメントに対してキー フレーズのリストを返します。
+[キー フレーズ抽出](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases) API は、非構造化テキストを評価し、各 JSON ドキュメントに対してキー フレーズのリストを返します。
 
 この機能は、ドキュメントのコレクション内の要点をすばやく特定する必要がある場合に便利です。 たとえば、「食べ物はおいしくて、すばらしいスタッフがいた」というテキストを入力すると、このサービスは話題の中心として "食べ物" と "すばらしいスタッフ" を返します。
 
@@ -72,16 +72,16 @@ JSON ドキュメントは、次の形式である必要があります: ID、�
 
 要求定義の詳細については、[Text Analytics API の呼び出し方法](text-analytics-how-to-call-api.md)に関するページを参照してください。 確認に便利なように、以下に再度、要点を示します。
 
-+ **POST** 要求を作成します。 この要求については次の API ドキュメントを確認してください。[Key Phrases API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)。
++ **POST** 要求を作成します。 この要求については次の API ドキュメントを確認してください。[Key Phrases API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases)。
 
-+ Azure 上の Text Analytics リソースまたはインスタンス化された [Text Analytics コンテナー](text-analytics-how-to-install-containers.md)を使用して、キー フレーズ抽出用の HTTP エンドポイントを設定します。 URL に `/text/analytics/v2.1/keyPhrases` を含める必要があります (例: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v2.1/keyPhrases`)。
++ Azure 上の Text Analytics リソースまたはインスタンス化された [Text Analytics コンテナー](text-analytics-how-to-install-containers.md)を使用して、キー フレーズ抽出用の HTTP エンドポイントを設定します。 URL に `/text/analytics/v3.0/keyPhrases` を含める必要があります (例: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`)。
 
 + Text Analytics 操作用の[アクセス キー](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)が含まれるように要求ヘッダーを設定します。
 
 + 要求本文で、この分析のために準備した JSON ドキュメントのコレクションを提供します。
 
 > [!Tip]
-> [Postman](text-analytics-how-to-call-api.md) を使用するか、[ドキュメント](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)に記載されている **API テスト コンソール**を開き、要求を構造化して POST でサービスに投稿します。
+> [Postman](text-analytics-how-to-call-api.md) を使用するか、[ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases)に記載されている **API テスト コンソール**を開き、要求を構造化して POST でサービスに投稿します。
 
 ## <a name="step-2-post-the-request"></a>手順 2:要求を投稿する
 
@@ -152,7 +152,7 @@ JSON ドキュメントは、次の形式である必要があります: ID、�
 
 この記事では、Cognitive Services の Text Analytics を使用するキー フレーズ抽出の概念とワークフローについて説明しました。 要約すると:
 
-+ 選択した言語に対して、[キー フレーズ抽出 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) を使用できます。
++ 選択した言語に対して、[キー フレーズ抽出 API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases) を使用できます。
 + 要求本文内の JSON ドキュメントには、ID、テキスト、および言語のコードが含まれます。
 + POST 要求は、ユーザーのサブスクリプションで有効な、個人用に設定された[アクセス キーとエンドポイント](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)を使用して `/keyphrases` エンドポイントに対して行われます。
 + ドキュメント ID ごとのキーワードやキーフレーズで構成される応答出力は、Microsoft Office Excel や Power BI を含む JSON を受け取るすべてのアプリにストリーミングすることができます。
@@ -164,5 +164,6 @@ JSON ドキュメントは、次の形式である必要があります: ID、�
 
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
-> [Text Analytics API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6)
+* [Text Analytics の概要](../overview.md)
+* [Text Analytics クライアント ライブラリの使用](../quickstarts/text-analytics-sdk.md)
+* [新機能](../whats-new.md)

@@ -5,14 +5,15 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 11aa4a80deba4df14c239e69910ea38bac1b9c55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: d981bf66ef9c17fda031e66e12e18a2ad9c67cc3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80063510"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503057"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for MySQL ファイアウォール規則の作成と管理
 サーバーレベルのファイアウォール規則を使用して、特定の IP アドレスまたは IP アドレス範囲からの Azure Database for MySQL サーバーへのアクセスを管理できます。 便利な Azure CLI コマンドを使用すると、サーバーを管理するためのファイアウォール規則の作成、更新、削除、一覧化、表示などができます。 Azure Database for MySQL ファイアウォールの概要については、「[Azure Database for MySQL サーバーのファイアウォール規則](./concepts-firewall-rules.md)」をご覧ください。
@@ -27,11 +28,11 @@ ms.locfileid: "80063510"
 Azure CLI の **az mysql server firewall-rule** コマンドで、ファイアウォール規則を作成、削除、一覧表示、表示、更新します。
 
 コマンド:
-- **create**: Azure MySQL サーバーのファイアウォール規則を作成します。
-- **delete**: Azure MySQL サーバーのファイアウォール規則を削除します。
-- **list**: Azure MySQL サーバーのファイアウォール規則を一覧表示します。
-- **show**: Azure MySQL サーバーのファイアウォール規則の詳細を表示します。
-- **update**: Azure MySQL サーバーのファイアウォール規則を更新します。
+- **create**:Azure MySQL サーバーのファイアウォール規則を作成します。
+- **delete**:Azure MySQL サーバーのファイアウォール規則を削除します。
+- **list**:Azure MySQL サーバーのファイアウォール規則を一覧表示します。
+- **show**:Azure MySQL サーバーのファイアウォール規則の詳細を表示します。
+- **update**:Azure MySQL サーバーのファイアウォール規則を更新します。
 
 ## <a name="sign-in-to-azure-and-list-your-azure-database-for-mysql-servers"></a>Azure にサインインして Azure Database for MySQL サーバーを一覧表示する
 **az login** コマンドを使用して、ご利用の Azure アカウントで Azure CLI に安全に接続します。

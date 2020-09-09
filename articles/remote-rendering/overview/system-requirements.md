@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
-ms.openlocfilehash: 8573a88d5371bbde07a541c789f52e6c44f1e279
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81480bea735017d3fc59e9c6cf126c2146a0c968
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81411124"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798467"
 ---
 # <a name="system-requirements"></a>システム要件
 
@@ -24,7 +24,7 @@ ms.locfileid: "81411124"
 
 * Windows 10 バージョン 1903 以降。
 * 最新のグラフィックス ドライバー。
-* 省略可能:H265 ハードウェア ビデオ デコーダー。(たとえば、Unity で) リモートにレンダリングされるコンテンツのローカル プレビューを使用する場合。
+* 省略可能:[H265 ハードウェア ビデオ デコーダー](https://www.microsoft.com/p/hevc-video-extensions/9nmzlz57r3t7)。(たとえば、Unity で) リモートにレンダリングされるコンテンツのローカル プレビューを使用する場合。
 
 > [!IMPORTANT]
 > Windows Update では常に最新の GPU ドライバーが提供されるわけではありません。最新のドライバーについては、GPU 製造元の Web サイトを確認してください。
@@ -52,7 +52,7 @@ ms.locfileid: "81411124"
 1. **Microsoft Store** を起動します。
 1. 右上の **[...]** ボタンをクリックします。
 1. **[ダウンロードおよび更新]** を選択します。
-1. 一覧で **[デバイス製造元からの HEVC ビデオ拡張機能]** を検索します。
+1. 一覧で **[デバイス製造元からの HEVC ビデオ拡張機能]** を検索します。 この項目が [更新プログラム] の一覧に表示されていない場合は、最新のバージョンが既にインストールされています。
 1. 一覧表示されているコーデックのバージョンが **1.0.21821.0** 以上であることを確認します。
 1. **[更新プログラムの入手]** ボタンをクリックし、インストールされるまで待ちます。
 
@@ -69,9 +69,12 @@ ms.locfileid: "81411124"
 次のソフトウェアがインストールされている必要があります。
 
 * 最新バージョンの **Visual Studio 2019** [(ダウンロード)](https://visualstudio.microsoft.com/vs/older-downloads/)
+* [Visual Studio tools for Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/install-the-tools)。 特に、次の*ワークロード*のインストールは必須です。
+  * **C++ によるデスクトップ開発**
+  * **ユニバーサル Windows プラットフォーム (UWP) の開発**
 * **Windows SDK 10.0.18362.0** [(ダウンロード)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * **GIT** [(ダウンロード)](https://git-scm.com/downloads)
-* 省略可能:デスクトップ PC のサーバーからビデオ ストリームを表示するには、**HEVC ビデオ拡張機能** [(Microsoft Store リンク)](https://www.microsoft.com/p/hevc-video-extensions/9nmzlz57r3t7) が必要です。
+* 省略可能:デスクトップ PC のサーバーからビデオ ストリームを表示するには、**HEVC ビデオ拡張機能** [(Microsoft Store リンク)](https://www.microsoft.com/p/hevc-video-extensions/9nmzlz57r3t7) が必要です。 ストアの更新プログラムを確認して、最新バージョンがインストールされていることを確認します。
 
 ## <a name="unity"></a>Unity
 

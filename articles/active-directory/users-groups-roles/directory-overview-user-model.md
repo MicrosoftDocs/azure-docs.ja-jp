@@ -1,12 +1,12 @@
 ---
-title: ユーザー、グループ、ライセンス、およびロールの概要 - Azure AD | Microsoft Docs
+title: Azure Active Directory でのユーザー、グループ、ライセンス、およびロールの概要
 description: Azure Active Directory における割り当てライセンス、管理者ロール、グループ メンバーシップとユーザーとの関係
 keywords: ''
 author: curtand
 manager: daveba
 ms.author: curtand
 ms.reviewer: vincesm
-ms.date: 11/08/2019
+ms.date: 06/16/2020
 ms.topic: overview
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -14,16 +14,16 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8052bb44df6d29e17304763051fa2099009b9701
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: a752eb8f38c5a2ccc88d7ceed3d3b342d20d3f51
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583023"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795298"
 ---
-# <a name="users-groups-licensing-and-roles-for-large-organizations"></a>大規模組織のユーザー、グループ、ライセンス、ロール
+# <a name="what-is-enterprise-user-management"></a>エンタープライズ ユーザー管理の概要
 
-この記事では、Azure AD 管理者向けに、グループ、ライセンス、デプロイされているエンタープライズ アプリ、管理者ロールの観点から、ユーザーを対象とする主要な [ID 管理](/azure/active-directory/fundamentals/identity-fundamentals?context=azure/active-directory/users-groups-roles/context/ugr-context)タスク間の関係について説明します。 Azure AD のグループと管理者ロールを使うことにより、組織の規模の拡大に伴って次のことを行えます。
+この記事では、Azure AD 管理者向けに、グループ、ライセンス、デプロイされているエンタープライズ アプリ、管理者ロールの観点から、ユーザーを対象とする主要な [ID 管理](../fundamentals/active-directory-whatis.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)タスク間の関係について説明します。 Azure AD のグループと管理者ロールを使うことにより、組織の規模の拡大に伴って次のことを行えます。
 
 * ライセンスを個人ではなくグループに割り当てる
 * より権限が低いロールにアクセス許可を委任して Azure AD の管理作業を分散する
@@ -37,7 +37,7 @@ Azure AD のグループを使うと、ライセンスを多数のユーザー�
 
 ## <a name="assign-licenses-to-groups"></a>ライセンスをグループに割り当てる
 
-ライセンスの割り当てまたは削除を個々のユーザーに対して実施するためには、時間と注意が必要になることがあります。 代わりに[ライセンスをグループに割り当てる](/azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context)ことによって、大規模なライセンス管理の負荷を軽減することができます。
+ライセンスの割り当てまたは削除を個々のユーザーに対して実施するためには、時間と注意が必要になることがあります。 代わりに[ライセンスをグループに割り当てる](../fundamentals/license-users-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)ことによって、大規模なライセンス管理の負荷を軽減することができます。
 
 Azure AD では、ライセンスを付与されているグループにユーザーが参加すると、適切なライセンスがそのユーザーに自動的に割り当てられます。 ユーザーがグループから離脱すると、そのライセンスの割り当てが Azure AD によって解除されます。 Azure AD グループがない場合には、組織に参加するユーザーや組織から離脱するユーザーのライセンスを一括追加または一括削除するために、PowerShell スクリプトを作成するか、Graph API を使用する必要があります。
 
@@ -60,7 +60,7 @@ Azure AD では、ライセンスを付与されているグループにユー�
 
 ## <a name="assign-app-access"></a>アプリへのアクセス権を割り当てる
 
-Azure AD を使用すると、[Azure AD 組織にデプロイされたエンタープライズ アプリ](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups?context=azure/active-directory/users-groups-roles/context/ugr-context)へのグループ アクセス権を割り当てることができます。 アプリへのグループ割り当てと動的グループを組み合わせれば、組織の規模拡大に伴って、ユーザーに対するアプリへのアクセス権の割り当てを自動化することができます。 エンタープライズ アプリへのアクセス権を割り当てるには、Azure Active Directory Premium P1 または Premium P2 ライセンスが必要です。
+Azure AD を使用すると、[Azure AD 組織にデプロイされたエンタープライズ アプリ](../manage-apps/assign-user-or-group-access-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)へのグループ アクセス権を割り当てることができます。 アプリへのグループ割り当てと動的グループを組み合わせれば、組織の規模拡大に伴って、ユーザーに対するアプリへのアクセス権の割り当てを自動化することができます。 エンタープライズ アプリへのアクセス権を割り当てるには、Azure Active Directory Premium P1 または Premium P2 ライセンスが必要です。
 
 また、Azure AD では、アクセス権の割り当て先となるグループとアプリの間を行き来するデータをきめ細かく制御することができます。 [[エンタープライズ アプリケーション]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps) でアプリを開き、 **[プロビジョニング]** を選択して次の作業を実施できます。
 
@@ -72,6 +72,6 @@ Azure AD を使用すると、[Azure AD 組織にデプロイされたエンタ�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure AD 管理者としてまだ日が浅い方は、[Azure Active Directory の基礎](https://docs.microsoft.com/azure/active-directory/fundamentals/index)に関するドキュメントで基本的な事柄をマスターしてください。
+Azure AD 管理者としてまだ日が浅い方は、[Azure Active Directory の基礎](../fundamentals/index.yml)に関するドキュメントで基本的な事柄をマスターしてください。
 
-または、[グループの作成](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context)、[ライセンスの割り当て](/azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context)、[アプリのアクセス権の割り当て](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups?context=azure/active-directory/users-groups-roles/context/ugr-context)、[管理者ロールの割り当て](directory-assign-admin-roles.md)を始めることができます。
+または、[グループの作成](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)、[ライセンスの割り当て](../fundamentals/license-users-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)、[アプリのアクセス権の割り当て](../manage-apps/assign-user-or-group-access-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)、[管理者ロールの割り当て](directory-assign-admin-roles.md)を始めることができます。

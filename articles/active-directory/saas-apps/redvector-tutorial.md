@@ -2,25 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と RedVector の統合 | Microsoft Docs'
 description: Azure Active Directory と RedVector の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 99042f39-0ab2-475b-8df8-3016d7f875e9
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 4edee73e13c0490810706a0f7a028b54f37b287b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 69b699ed54778f4c65a0517ac60b6a4a9dc39783
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67093055"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548805"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-redvector"></a>チュートリアル: Azure Active Directory と RedVector の統合
 
@@ -107,7 +103,7 @@ RedVector で Azure AD シングル サインオンを構成するには、次�
 
     a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://sso2.redvector.com/adfs/<Companyname>`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<Companyname>.redvector.com/saml2`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://sso2.redvector.com/saml2`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[RedVector クライアント サポート チーム](mailto:sso@redvector.com)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

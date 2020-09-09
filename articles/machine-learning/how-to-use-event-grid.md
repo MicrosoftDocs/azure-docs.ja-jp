@@ -1,30 +1,30 @@
 ---
-title: イベント ドリブン Machine Learning ワークフローを作成する
+title: ML ワークフロー内でイベントをトリガーする (プレビュー)
 titleSuffix: Azure Machine Learning
-description: イベント ドリブン ソリューションを有効にするために、Azure Machine Learning でイベント グリッドを使用する方法について説明します。
+description: Azure Machine Learning で、イベント ドリブンなアプリケーション、プロセス、または CI/CD 機械学習ワークフローを設定します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
+ms.custom: how-to
 ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
-ms.date: 03/11/2020
-ms.openlocfilehash: fe6125682f669e453100488b7e0afc4c49409588
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/11/2020
+ms.openlocfilehash: 464d945708fba83877fe6cef9ec1b64ec444bd95
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79129740"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650419"
 ---
-# <a name="create-event-driven-machine-learning-workflows-preview"></a>イベント ドリブン Machine Learning ワークフローを作成する (プレビュー)
+# <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Azure Machine Learning イベントに基づいてアプリケーション、プロセス、または CI/CD ワークフローをトリガーする (プレビュー)
 
-[Azure Event Grid](https://docs.microsoft.com/azure/event-grid/) では、Azure Machine Learning イベントがサポートされています。 ワークスペースにおける実行状態の変更、実行の完了、モデルの登録、モデルのデプロイ、データ誤差の検出などのイベントをサブスクライブして使用できます。
+この記事では、[Azure Event Grid](https://docs.microsoft.com/azure/event-grid/) によって特定の条件が検出された場合に、Azure Machine Learning イベント (失敗通知メールや ML パイプラインの実行など) に基づいて、イベント ドリブンなアプリケーション、プロセス、または CI/CD ワークフローを設定する方法について説明します。
 
-イベントの種類について詳しくは、「[Azure Machine Learning と Event Grid の統合](concept-event-grid-integration.md)」および[Azure Machine Learning イベント グリッド スキーマ](/azure/event-grid/event-schema-machine-learning)に関する記事を参照してください。
+Azure Machine Learning は、モデルのトレーニング、モデルのデプロイ、監視など、機械学習プロセスのライフサイクル全体を管理します。 Event Grid を使用して、最新のサーバーレス アーキテクチャを使用することで、Azure Machine Learning イベント (トレーニングの実行の完了、モデルの登録とデプロイ、データ ドリフトの検出など) に対応できます。 その後、ワークスペースにおける実行状態の変更、実行の完了、モデルの登録、モデルのデプロイ、データ ドリフトの検出などのイベントをサブスクライブして使用できます。
 
-Event Grid を使用すると、次のような一般的なシナリオが有効になります。
-
+イベント ドリブン アクションに Event Grid を使用する場合:
 * 実行失敗および実行完了に関するメールを送信する
 * モデルの登録後に Azure 関数を使用する
 * Azure Machine Learning からさまざまなエンドポイントへのイベントのストリーミング
@@ -32,12 +32,87 @@ Event Grid を使用すると、次のような一般的なシナリオが有効
 
 > [!NOTE] 
 > 現在、runStatusChanged イベントは、実行状態が **failed** の場合にのみトリガーされます
->
 
 ## <a name="prerequisites"></a>前提条件
-* イベントを作成する Azure Machine Learning ワークスペースへの共同作成者または所有者アクセス。
+Event Grid を使用するには、イベントを作成する Azure Machine Learning ワークスペースへの共同作成者または所有者アクセスが必要です。
 
-### <a name="configure-eventgrid-using-the-azure-portal"></a>Azure portal を使用して EventGrid を構成する
+## <a name="the-event-model--types"></a>イベントのモデルと種類
+
+Azure Event Grid は、Azure Machine Learning やその他の Azure サービスなどのソースからイベントを読み取ります。 これらのイベントは、その後 Azure Event Hubs、Azure Functions、Logic Apps などのイベント ハンドラーに送信されます。 次の図は、Event Grid がソースとハンドラーをどのように接続するかを示すもので、サポートされる統合の包括的な一覧ではありません。
+
+![Azure Event Grid の機能モデル](./media/concept-event-grid-integration/azure-event-grid-functional-model.png)
+
+イベント ソースとイベント ハンドラーの詳細については、「[Event Grid とは](/azure/event-grid/overview)」を参照してください。
+
+### <a name="event-types-for-azure-machine-learning"></a>Azure Machine Learning のイベントの種類
+
+Azure Machine Learning は、機械学習のライフサイクルのさまざまな時点でイベントを提供します。 
+
+| イベントの種類 | 説明 |
+| ---------- | ----------- |
+| `Microsoft.MachineLearningServices.RunCompleted` | 機械学習実験の実行が完了したときに発生します |
+| `Microsoft.MachineLearningServices.ModelRegistered` | 機械学習モデルがワークスペースに登録されたときに発生します |
+| `Microsoft.MachineLearningServices.ModelDeployed` | 1 つ以上のモデルを持つ推論サービスのデプロイが完了したときに発生します |
+| `Microsoft.MachineLearningServices.DatasetDriftDetected` | 2 つのデータセットのデータ ドリフト検出ジョブが完了したときに発生します |
+| `Microsoft.MachineLearningServices.RunStatusChanged` | 実行状態が変更されたときに発生します。現時点では、実行状態が 'failed' の場合にのみ発生します |
+
+### <a name="filter--subscribe-to-events"></a>イベントをフィルター処理およびサブスクライブする
+
+これらのイベントは Azure Event Grid を通じて発行されます。 お客様は Azure portal、PowerShell、または Azure CLI を使用して、[1 つまたは複数のイベントの種類およびフィルター条件を指定する](/azure/event-grid/event-filtering)ことによってイベントを簡単にサブスクライブできます。 
+
+イベントを設定するときに、フィルターを適用して、特定のイベント データでのみトリガーするようにできます。 実行状態変更イベントについての次の例では、実行の種類でフィルター処理できます。 イベントは、条件が満たされた場合にのみトリガーされます。 フィルター処理できるイベン トデータの詳細については、[Azure Machine Learning イベント グリッド スキーマ](/azure/event-grid/event-schema-machine-learning)に関する記事を参照してください。 
+
+Azure Machine Learning イベントのサブスクリプションは、ロールベースのアクセス制御 (RBAC) によって保護されています。 ワークスペースの[共同作成者または所有者](how-to-assign-roles.md#default-roles)だけが、イベント サブスクリプションの作成、更新、削除を行うことができます。  イベント サブスクリプションの[作成](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest)中、または作成後に、イベント サブスクリプションをフィルター処理することができます。 
+
+
+1. Azure portal にアクセスし、新しいサブスクリプションまたは既存のサブスクリプションを選択します。 
+
+1. [フィルター] タブを選択し、下にスクロールして [高度なフィルター] に移動します。 **[キー]** と **[値]** で、フィルター処理するプロパティの型を指定します。 ここでは、実行の種類がパイプラインの実行またはパイプライン ステップの実行の場合にのみ、イベントがトリガーされることがわかります。  
+
+    :::image type="content" source="media/how-to-use-event-grid/select-event-filters.png" alt-text="イベントのフィルター処理":::
+
+
++ **イベントの種類でフィルター処理する:** イベント サブスクリプションでは、1 つまたは複数の Azure Machine Learning イベントの種類を指定できます。
+
++ **イベントの件名でフィルター処理する:** Azure Event Grid は、__次で始まる__ と __次で終わる__ という一致に基づく件名フィルターをサポートするため、件名が一致するイベントはサブスクライバーに配信されます。 機械学習イベントが異なると、件名の形式も異なります。
+
+  | イベントの種類 | 件名の形式 | 件名の例 |
+  | ---------- | ----------- | ----------- |
+  | `Microsoft.MachineLearningServices.RunCompleted` | `experiments/{ExperimentId}/runs/{RunId}` | `experiments/b1d7966c-f73a-4c68-b846-992ace89551f/runs/my_exp1_1554835758_38dbaa94` |
+  | `Microsoft.MachineLearningServices.ModelRegistered` | `models/{modelName}:{modelVersion}` | `models/sklearn_regression_model:3` |
+  | `Microsoft.MachineLearningServices.ModelDeployed` | `endpoints/{serviceId}` | `endpoints/my_sklearn_aks` |
+  | `Microsoft.MachineLearningServices.DatasetDriftDetected` | `datadrift/{data.DataDriftId}/run/{data.RunId}` | `datadrift/4e694bf5-712e-4e40-b06a-d2a2755212d4/run/my_driftrun1_1550564444_fbbcdc0f` |
+  | `Microsoft.MachineLearningServices.RunStatusChanged` | `experiments/{ExperimentId}/runs/{RunId}` | `experiments/b1d7966c-f73a-4c68-b846-992ace89551f/runs/my_exp1_1554835758_38dbaa94` | 
+
++ **高度なフィルター処理**:Azure Event Grid は、発行されたイベント スキーマに基づく高度なフィルター処理もサポートしています。 Azure Machine Learning のイベント スキーマの詳細については、「[Azure Machine Learning の Azure Event Grid イベント スキーマ](../event-grid/event-schema-machine-learning.md)」を参照してください。  実行できる高度なフィルター処理の例をいくつか次に示します。
+
+  `Microsoft.MachineLearningServices.ModelRegistered` イベントの場合、モデルのタグ値をフィルター処理するには、次のようにします。
+
+  ```
+  --advanced-filter data.ModelTags.key1 StringIn ('value1')
+  ```
+
+  フィルターを適用する方法の詳細については、「[Event Grid のイベントのフィルター処理](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)」をご覧ください。
+
+## <a name="consume-machine-learning-events"></a>Machine Learning イベントを使用する
+
+Machine Learning イベントを処理するアプリケーションは、いくつかの推奨される手法に従う必要があります。
+
+> [!div class="checklist"]
+> * 複数のサブスクリプションが同じイベント ハンドラーにイベントをルーティングするように構成される場合があるため、イベントが特定のソースからのものであると見なすのではなく、メッセージのトピックをチェックして、予測している Machine Learning ワークスペースから来ていることを確認することが重要です。
+> * 同様に、受信するすべてのイベントが予期した種類のものであると想定してはならず、イベントの種類が処理できるものであることを確認する必要があります。
+> * メッセージは順不同で到着したり、少し遅れて到着する可能性があるので、etag フィールドを使って、オブジェクトに関する情報がまだ最新の状態かどうかを確認します。  また、sequencer フィールドを使って、特定のオブジェクトに対するイベントの順序を確認します。
+> * わからないフィールドは無視します。 この手法に従うと、将来追加されるかもしれない新しい機能に弾力的に対応できます。
+> * 失敗またはキャンセルされた Azure Machine Learning 操作はイベントをトリガーしません。 たとえば、モデル デプロイが失敗した場合、Microsoft.MachineLearningServices.ModelDeployed はトリガーされません。 アプリケーションを設計するときは、このような障害モードを考慮してください。 Azure Machine Learning SDK、CLI、またはポータルをいつでも使用して、操作の状態を確認して失敗の詳しい理由を理解することができます。
+
+Azure Event Grid を使用すると、Azure Machine Learning イベントによってトリガー可能な、分離されたメッセージ ハンドラーを構築できます。 メッセージ ハンドラーの主要な例を次に示します。
+* Azure Functions
+* Azure Logic Apps
+* Azure Event Hubs
+* Azure Data Factory パイプライン
+* 汎用 Webhook (Azure プラットフォームまたは他の場所でホストされる場合があります)
+
+## <a name="set-up-in-azure-portal"></a>Azure Portal での設定
 
 1. [Azure portal](https://portal.azure.com) を開き、Azure Machine Learning ワークスペースに移動します。
 
@@ -56,7 +131,7 @@ Event Grid を使用すると、次のような一般的なシナリオが有効
 選択内容を確認したら、 __[作成]__ をクリックします。 構成の後、これらのイベントはエンドポイントにプッシュされます。
 
 
-### <a name="configure-eventgrid-using-the-cli"></a>CLI を使用して EventGrid を構成する
+### <a name="set-up-with-the-cli"></a>CLI を使用した設定
 
 最新の [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) をインストールするか、Azure サブスクリプションの一部として提供されている Azure Cloud Shell を使用することができます。
 
@@ -72,30 +147,20 @@ az add extension --name eventgrid
 # Select the Azure subscription that contains the workspace
 az account set --subscription "<name or ID of the subscription>"
 
-# Subscribe to the machine learning workspace.
-az eventgrid event-subscription create \
-  --name {eventGridFilterName} \
-  --source-resource-id "/subscriptions/{subId}/resourceGroups/{rgName}/ \providers/Microsoft.MachineLearningServices/workspaces/{wsName}" \
-  --endpoint {event handler endpoint} \
+# Subscribe to the machine learning workspace. This example uses EventHub as a destination. 
+az eventgrid event-subscription create --name {eventGridFilterName} \
+  --source-resource-id /subscriptions/{subId}/resourceGroups/{RG}/providers/Microsoft.MachineLearningServices/workspaces/{wsName} \
+  --endpoint-type eventhub \
+  --endpoint /subscriptions/{SubID}/resourceGroups/TestRG/providers/Microsoft.EventHub/namespaces/n1/eventhubs/EH1 \
   --included-event-types Microsoft.MachineLearningServices.ModelRegistered \
   --subject-begins-with "models/mymodelname"
 ```
 
-## <a name="filter-events"></a>イベントのフィルター処理
+## <a name="examples"></a>例
 
-イベントを設定するときに、フィルターを適用して、特定のイベント データでのみトリガーするようにできます。 実行状態変更イベントについての次の例では、実行の種類でフィルター処理できます。 イベントは、条件が満たされた場合にのみトリガーされます。 フィルター処理できるイベン トデータの詳細については、[Azure Machine Learning イベント グリッド スキーマ](/azure/event-grid/event-schema-machine-learning)に関する記事を参照してください。 
+### <a name="example-send-email-alerts"></a>例:メール アラートを送信する
 
-1. Azure portal にアクセスし、新しいサブスクリプションまたは既存のサブスクリプションを選択します。 
-
-1. [フィルター] タブを選択し、下にスクロールして [高度なフィルター] に移動します。 **[キー]** と **[値]** で、フィルター処理するプロパティの型を指定します。 ここでは、実行の種類がパイプラインの実行またはパイプライン ステップの実行の場合にのみ、イベントがトリガーされることがわかります。  
-
-    :::image type="content" source="media/how-to-use-event-grid/select-event-filters.png" alt-text="イベントのフィルター処理":::
-
-## <a name="sample-scenarios"></a>サンプル シナリオ
-
-### <a name="use-a-logic-app-to-send-email-alerts"></a>ロジック アプリを使用して電子メール アラートを送信する
-
-[Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) を活用して、すべてのイベントの電子メールを構成します。 条件を使用してカスタマイズし、共同作業を行うチーム全体でコラボレーションと意識を高める受信者を指定します。
+[Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) を使用して、すべてのイベントのメールを構成します。 条件を使用してカスタマイズし、共同作業を行うチーム全体でコラボレーションと意識を高める受信者を指定します。
 
 1. Azure portal で、Azure Machine Learning ワークスペースに移動し、左側のバーの [イベント] タブを選択します。 ここで、 __[ロジック アプリ]__ を選択します。 
 
@@ -126,7 +191,7 @@ az eventgrid event-subscription create \
     ![confirm-logic-app-create](./media/how-to-use-event-grid/confirm-logic-app-create.png)
 
 
-### <a name="use-a-logic-app-to-trigger-retraining-workflows-when-data-drift-occurs"></a>ロジック アプリを使用して、データ ドリフトが発生したときに再トレーニング ワークフローをトリガーする
+### <a name="example-data-drift-triggers-retraining"></a>例:データ ドリフトが再トレーニングをトリガーする
 
 モデルは時間の経過と共に古くなり、実行されているコンテキストでは役に立たなくなります。 モデルの再トレーニングを行う時期であることを通知する方法の 1 つは、データ ドリフトを検出することです。 
 
@@ -134,7 +199,7 @@ az eventgrid event-subscription create \
 
 開始する前に、次の操作を行います。
 
-* データセット モニターを設定して、ワークスペース内の[データの誤差を検出する]( https://aka.ms/datadrift)
+* データセット モニターを設定して、ワークスペース内の[データの誤差を検出する](how-to-monitor-datasets.md)
 * 発行される [Azure Data Factory パイプライン](https://docs.microsoft.com/azure/data-factory/)を作成する。
 
 この例では、単純な Data Factory パイプラインを使用してファイルを blob ストアにコピーし、発行された Machine Learning パイプラインを実行します。 このシナリオの詳細については、[Azure Data Factory の Machine Learning の手順](https://docs.microsoft.com/azure/data-factory/transform-data-machine-learning-service)を設定する方法を参照してください。
@@ -173,7 +238,7 @@ az eventgrid event-subscription create \
 
 ![view-in-workspace](./media/how-to-use-event-grid/view-in-workspace.png)
 
-### <a name="use-azure-functions-to-deploy-a-model-based-on-tags"></a>Azure Functions を使用してタグに基づくモデルをデプロイする
+### <a name="example-deploy-a-model-based-on-tags"></a>例:タグに基づいてモデルをデプロイする
 
 Azure Machine Learning モデルオブジェクトには、モデルの名前、バージョン、タグ、プロパティなど、デプロイをピボットできるパラメーターが含まれています。 モデル登録イベントはエンドポイントをトリガーでき、Azure 関数を使用して、これらのパラメーターの値に基づいてモデルを配置できます。
 
@@ -181,4 +246,9 @@ Azure Machine Learning モデルオブジェクトには、モデルの名前、
 
 ## <a name="next-steps"></a>次のステップ
 
-* 使用可能なイベントの詳細については、[Azure Machine Learning イベント スキーマ](/azure/event-grid/event-schema-machine-learning)に関する記事を参照してください。
+Event Grid の詳細について理解し、Azure Machine Learning のイベントを試してみてください。
+
+- [Event Grid について](../event-grid/overview.md)
+
+- [Azure Machine Learning 用のイベント スキーマ](../event-grid/event-schema-machine-learning.md)
+

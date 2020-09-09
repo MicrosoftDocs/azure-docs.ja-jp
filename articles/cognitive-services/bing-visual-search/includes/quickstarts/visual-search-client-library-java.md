@@ -7,13 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/26/2020
+ms.custom: devx-track-java, devx-track-csharp
 ms.author: aahi
-ms.openlocfilehash: 40432d4bad0070f9de21ec61020d976f0014e00c
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 5ac80cad20e89a7870c26960aedb58f34fa21380
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80573122"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934417"
 ---
 このクイックスタートを使用すると、Java クライアント ライブラリを使用して、Bing Visual Search サービスから画像に関する分析情報を取得することができます。 Bing Visual Search の REST API はほとんどのプログラミング言語に対応していますが、このクライアント ライブラリを使用すると、サービスをお使いのアプリケーションに簡単に統合することができます。 このクイック スタートのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingVisualSearch) にあります。
 
@@ -26,13 +27,13 @@ Java 用 Bing Visual Search クライアント ライブラリを使用して、
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
 * 最新バージョンの [Java Development Kit(JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [Gradle ビルド ツール](https://gradle.org/install/)、または別の依存関係マネージャー
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](~/includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
-試用版のサブスクリプションまたはリソースからキーを取得した後、`BING_SEARCH_V7_SUBSCRIPTION_KEY` という名前のキーの[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。
+リソースからキーを取得した後、`BING_SEARCH_V7_SUBSCRIPTION_KEY` という名前のキーの[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。
 
 ### <a name="create-a-new-gradle-project"></a>新しい Gradle プロジェクトを作成する
 

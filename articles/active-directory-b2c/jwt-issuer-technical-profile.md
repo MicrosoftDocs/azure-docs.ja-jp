@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fbadfb63b9f575053feca87bda2c3ad2e64e91eb
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: e8f5564f9e7e1176db1fed5fae38eee58874c2eb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926036"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204203"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで JWT トークン発行者用の技術プロファイルを定義する
 
@@ -30,7 +30,7 @@ Azure Active Directory B2C (Azure AD B2C) は、各認証フローを処理す�
 
 次の例は、`JwtIssuer` 用の技術プロファイルを示しています。
 
-```XML
+```xml
 <TechnicalProfile Id="JwtIssuer">
   <DisplayName>JWT Issuer</DisplayName>
   <Protocol Name="OpenIdConnect" />

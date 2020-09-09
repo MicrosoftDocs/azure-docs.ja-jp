@@ -5,12 +5,12 @@ author: athinanthny
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.author: atsenthi
-ms.openlocfilehash: ba1fa92559d39a481008d1dd18036e4232be1bfa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6174f35bd54b3ca0b2c5240a663369350b30ce8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75639804"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86241898"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric コンテナー ネットワーク モード
 
@@ -21,7 +21,7 @@ ms.locfileid: "75639804"
 コンテナー サービスが再起動するか、クラスター内の別のノードに移動すると、IP アドレスが変わります。 このため、動的に割り当てられる IP アドレスを使ってコンテナー サービスを検出することはお勧めしません。 サービスの検出には、Service Fabric ネーム サービスまたは DNS サービスのみを使う必要があります。 
 
 >[!WARNING]
->Azure では、仮想ネットワークごとに全部で 65,356 個の IP アドレスを使うことができます。 仮想ネットワーク内のノードの数とコンテナー サービス インスタンス (Open モードを使っているもの) の数の合計が、IP アドレスの数 65,356 を超えることはできません。 高密度シナリオでは、nat ネットワーク モードお勧めします。 さらに、ロード バランサーなどの他の依存関係には、考慮すべきその他の[制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)があります。 現在、ノードあたり最大 50 個の IP アドレスをテストして、安定性が証明されています。 
+>Azure では、仮想ネットワークごとに全部で 65,356 個の IP アドレスを使うことができます。 仮想ネットワーク内のノードの数とコンテナー サービス インスタンス (Open モードを使っているもの) の数の合計が、IP アドレスの数 65,356 を超えることはできません。 高密度シナリオでは、nat ネットワーク モードお勧めします。 さらに、ロード バランサーなどの他の依存関係には、考慮すべきその他の[制限](../azure-resource-manager/management/azure-subscription-service-limits.md)があります。 現在、ノードあたり最大 50 個の IP アドレスをテストして、安定性が証明されています。 
 >
 
 ## <a name="set-up-open-networking-mode"></a>Open ネットワーク モードを設定する
@@ -191,15 +191,14 @@ ms.locfileid: "75639804"
  
 3. Windows クラスターのみの場合は、次の値で仮想ネットワーク用のポート UDP/53 を開く Azure ネットワーク セキュリティ グループ (NSG) ルールを設定します。
 
-   |設定 |値 | |
-   | --- | --- | --- |
-   |Priority |2000 | |
-   |名前 |Custom_Dns  | |
-   |source |VirtualNetwork | |
-   |宛先 | VirtualNetwork | |
-   |サービス | DNS (UDP/53) | |
-   |アクション | Allow  | |
-   | | |
+   |設定 |値 |
+   | --- | --- |
+   |Priority |2000 |
+   |名前 |Custom_Dns  |
+   |source |VirtualNetwork |
+   |宛先 | VirtualNetwork |
+   |サービス | DNS (UDP/53) |
+   |アクション | Allow  |
 
 4. 各サービスのアプリケーション マニフェストでネットワーク モードを指定します。`<NetworkConfig NetworkType="Open">` **Open** ネットワーク モードにすると、サービスに専用 IP アドレスが割り当てられます。 モードを指定しないと、サービスは既定で **nat** モードになります。 次のマニフェストの例では、`NodeContainerServicePackage1` サービスと `NodeContainerServicePackage2` サービスはそれぞれ同じポートでリッスンできます (どちらのサービスも `Endpoint1` でリッスンしています)。 Open ネットワーク モードを指定するときは、`PortBinding` 構成を指定できません。
 
@@ -264,6 +263,6 @@ ms.locfileid: "75639804"
  
 ## <a name="next-steps"></a>次のステップ
 * [Service Fabric アプリケーション モデルを理解する](service-fabric-application-model.md)
-* [Service Fabric サービス マニフェスト リソースについて詳しく学習する](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-manifest-resources)
+* [Service Fabric サービス マニフェスト リソースについて詳しく学習する](./service-fabric-service-manifest-resources.md)
 * [Windows Server 2016 上での Service Fabric への Windows コンテナーのデプロイ](service-fabric-get-started-containers.md)
 * [Linux 上での Service Fabric への Docker コンテナーのデプロイ](service-fabric-get-started-containers-linux.md)

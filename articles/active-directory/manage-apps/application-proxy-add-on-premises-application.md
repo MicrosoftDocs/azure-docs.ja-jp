@@ -2,22 +2,21 @@
 title: チュートリアル - オンプレミス アプリの追加 - Azure AD でのアプリケーション プロキシ
 description: Azure Active Directory (Azure AD) のアプリケーション プロキシ サービスを使用すると、ユーザーは Azure AD アカウントでサインインして、オンプレミスのアプリケーションにアクセスできます。 このチュートリアルでは、アプリケーション プロキシで使用できるように環境を準備する方法について説明します。 次に、Azure portal を使用して、自分の Azure AD テナントにオンプレミス アプリケーションを追加します。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10d0f949fb2a5755512a30dcca011690d86a7e7b
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 7d94b8604b2f947463dd760ca7baf25f19a15a26
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597724"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642148"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する
 
@@ -32,7 +31,7 @@ Azure Active Directory (Azure AD) のアプリケーション プロキシ サ�
 > * Azure AD テナントにオンプレミスのアプリケーションを追加します
 > * テスト ユーザーが Azure AD アカウントを使用してアプリケーションにサインオンできることを確認します
 
-## <a name="before-you-begin"></a>開始する前に
+## <a name="prerequisites"></a>前提条件
 
 オンプレミスのアプリケーションを Azure AD に追加するには、次が必要です。
 
@@ -47,10 +46,12 @@ Azure Active Directory (Azure AD) のアプリケーション プロキシ サ�
 運用環境を高可用性にするため、複数の Windows サーバーを使用することをお勧めします。 このチュートリアルでは、1 つの Windows サーバーで十分です。
 
 > [!IMPORTANT]
-> Windows Server 2019 にコネクタをインストールする場合は、WinHttp コンポーネントで HTTP2 プロトコルのサポートを無効にする必要があります。 それよりも前のバージョンのサポート対象オペレーティング システムでは、これが既定で無効になっています。 Windows Server 2019 では、次のレジストリ キーを追加してサーバーを再起動すれば無効になります。 これはマシン レベルのレジストリ キーであることに注意してください。
+> Windows Server 2019 にコネクタをインストールする場合は、Kerberos の制約付き委任が正しく動作するようにするために、WinHttp コンポーネントで HTTP2 プロトコルのサポートを無効にする必要があります。 それよりも前のバージョンのサポート対象オペレーティング システムでは、これが既定で無効になっています。 Windows Server 2019 では、次のレジストリ キーを追加してサーバーを再起動すれば無効になります。 これはマシン レベルのレジストリ キーであることに注意してください。
 >
 > ```
-> HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
+> Windows Registry Editor Version 5.00
+> 
+> [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp] "EnableDefaultHttp2"=dword:00000000
 > ```
 >
 
@@ -70,21 +71,28 @@ TLS 1.2 を有効にするには、次の手順に従います。
 
 1. 次のレジストリ キーを設定します。
     
-    ```
-    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
-    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
-    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
-    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319] "SchUseStrongCrypto"=dword:00000001
-    ```
+   ```
+   Windows Registry Editor Version 5.00
+
+   [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
+   [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client]
+   "DisabledByDefault"=dword:00000000
+   "Enabled"=dword:00000001
+   [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server]
+   "DisabledByDefault"=dword:00000000
+   "Enabled"=dword:00000001
+   [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
+   "SchUseStrongCrypto"=dword:00000001
+   ```
 
 1. サーバーを再起動します。
-
-> [!IMPORTANT]
-> Application Proxy サービスでは、お客様にクラス最高の暗号化を提供するために、アクセスが TLS 1.2 プロトコルのみに制限されています。 これらの変更は段階的にロールアウトされ、2019 年 8 月 31 日以降に有効となりました。 すべてのクライアントとサーバーおよびブラウザーとサーバーの組み合わせが、TLS 1.2 を使用して Application Proxy サービスへの接続を維持するように更新されていることを確認してください。 これらには、Application Proxy を通じて公開されたアプリケーションにアクセスするためにユーザーが使用しているクライアントも含まれます。 便利な参考資料とリソースについては、「[Office 365 での TLS 1.2 に対する準備](https://support.microsoft.com/help/4057306/preparing-for-tls-1-2-in-office-365)」を参照してください。
 
 ## <a name="prepare-your-on-premises-environment"></a>オンプレミスの環境を準備する
 
 Azure AD アプリケーション プロキシの環境を準備するには、まず Azure データ センターへの通信を有効にします。 パスにファイアウォールがある場合、それが開かれていることを確認します。 ファイアウォールが開かれていることで、コネクタによるアプリケーション プロキシへの HTTPS (TCP) 要求が可能になります。
+
+> [!IMPORTANT]
+> Azure Government クラウドのコネクタをインストールする場合は、[前提条件](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls) と [インストール手順](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud)に従います。 これには、別の URL のセットへのアクセスを有効にし、インストールを実行するための追加のパラメーターが必要です。
 
 ### <a name="open-ports"></a>ポートを開く
 
@@ -105,13 +113,14 @@ Azure AD アプリケーション プロキシの環境を準備するには、�
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | コネクタとアプリケーション プロキシ クラウド サービスの間の通信 |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | コネクタでは、証明書の検証にこれらの URL が使用されます。 |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>\*.microsoftonline.com<br>\*.microsoftonline-p.com<br>\*.msauth.net<br>\*.msauthimages.net<br>\*.msecnd.net<br>\*.msftauth.net<br>\*.msftauthimages.net<br>\*.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctdl.windowsupdate.com:80 | コネクタでは、登録プロセスの間にこれらの URL が使用されます。 |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>\*.microsoftonline.com<br>\*.microsoftonline-p.com<br>\*.msauth.net<br>\*.msauthimages.net<br>\*.msecnd.net<br>\*.msftauth.net<br>\*.msftauthimages.net<br>\*.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com:80 | コネクタでは、登録プロセスの間にこれらの URL が使用されます。 |
 
 ファイアウォールまたはプロキシで DNS 許可リストを構成できる場合は、\*.msappproxy.net と \*.servicebus.windows.net への接続を許可できます。 そうでない場合は、[Azure IP ranges and Service Tags - Public Cloud (Azure IP 範囲とサービス タグ - パブリック クラウド)](https://www.microsoft.com/download/details.aspx?id=56519) へのアクセスを許可する必要があります。 これらの IP 範囲は毎週更新されます。
 
 ## <a name="install-and-register-a-connector"></a>コネクタのインストールと登録
 
 アプリケーション プロキシを使用するには、アプリケーション プロキシ サービスで使用している各 Windows サーバーにコネクタをインストールします。 コネクタは、オンプレミスのアプリケーション サーバーから Azure AD のアプリケーション プロキシへのアウトバウンド接続を管理するエージェントです。 コネクタをインストールするサーバーには、Azure AD Connect などの他の認証エージェントがインストールされていてもかまいません。
+
 
 コネクタをインストールするには:
 
@@ -179,7 +188,7 @@ Azure portal または Windows サーバーを使用して、新しいコネク�
 
     | フィールド | 説明 |
     | :---- | :---------- |
-    | **名前** | アクセス パネルと Azure portal に表示されるアプリケーションの名前。 |
+    | **名前** | [マイ アプリ] および Azure portal に表示されるアプリケーションの名前。 |
     | **内部 URL** | プライベート ネットワークの内部からアプリケーションにアクセスするための URL。 バックエンド サーバー上の特定のパスを指定して発行できます。この場合、サーバーのそれ以外のパスは発行されません。 この方法では、同じサーバー上の複数のサイトを別々のアプリとして発行し、それぞれに独自の名前とアクセス規則を付与することができます。<br><br>パスを発行する場合は、アプリケーションに必要な画像、スクリプト、スタイル シートが、すべてそのパスに含まれていることを確認してください。 たとえば、アプリケーションが https:\//yourapp/app にあり、https:\//yourapp/media にある画像を使用する場合は、パスとして https:\//yourapp/ を発行する必要があります。 この内部 URL は、ユーザーに表示されるランディング ページである必要はありません。 詳細については、「[発行されたアプリのカスタム ホーム ページを設定する](application-proxy-configure-custom-home-page.md)」を参照してください。 |
     | **外部 URL** | ユーザーがネットワークの外部からアプリにアクセスするためのアドレス。 既定のアプリケーション プロキシ ドメインを使用しない場合は、[Azure AD アプリケーション プロキシのカスタム ドメイン](application-proxy-configure-custom-domain.md)に関する記事を参照してください。|
     | **事前認証** | ユーザーにアプリケーションへのアクセス権を付与する前にアプリケーション プロキシがユーザーを認証する方法。<br><br>**Azure Active Directory** - アプリケーション プロキシによってユーザーが Azure AD のサインイン ページにリダイレクトされます。これにより、ディレクトリとアプリケーションに対するユーザーのアクセス許可が認証されます。 このオプションは、条件付きアクセスや Multi-Factor Authentication など、Azure AD のセキュリティ機能を活用できるように、既定のままにしておくことをお勧めします。 Microsoft Cloud Application Security を使用してアプリケーションを監視するには、**Azure Active Directory** が必要です。<br><br>**パススルー** - アプリケーションにアクセスするための Azure AD に対するユーザーの認証は必要ありません。 ただし、バックエンドで認証要件を設定できます。 |
@@ -225,6 +234,10 @@ Azure portal または Windows サーバーを使用して、新しいコネク�
 
 トラブルシューティングについては、「[アプリケーション プロキシの問題とエラー メッセージのトラブルシューティング](application-proxy-troubleshoot.md)」をご覧ください。
 
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+このチュートリアルで作成したリソースは、不要になったら削除してください。
+
 ## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、オンプレミス環境をアプリケーション プロキシで動作するように準備した後、アプリケーション プロキシ コネクタをインストールして登録しました。 次に、Azure AD テナントにアプリケーションを追加しました。 ユーザーが Azure AD アカウントを使用してアプリケーションにサインオンできることを確認しました。
@@ -240,4 +253,4 @@ Azure portal または Windows サーバーを使用して、新しいコネク�
 シングル サインオン用にアプリケーションを構成する準備が整いました。 次のリンクを使用してシングル サインオンの方法を選択し、シングル サインオンのチュートリアルを見つけてください。
 
 > [!div class="nextstepaction"]
-> [シングル サインオンの構成](what-is-single-sign-on.md#choosing-a-single-sign-on-method)
+> [シングル サインオンの構成](sso-options.md#choosing-a-single-sign-on-method)

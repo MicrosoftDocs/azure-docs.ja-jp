@@ -1,18 +1,18 @@
 ---
 title: チュートリアル - サンプル モデルの追加 - Azure Analysis Services | Microsoft Docs
-description: このチュートリアル レッスンでは、Azure Analysis Services でサンプル モデルを追加する方法を説明します。
+description: このチュートリアルでは、Azure Analysis Services でサンプル モデルを追加する方法について説明します。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 05/19/2020
+ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 88ed58ea1eea80b4b890c31260fc65153377eaaa
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 5b84c2e50ae7f5038cf9cb8a96c0c51d6537c929
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697504"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230898"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>チュートリアル - ポータルからサンプル モデルを追加する
 
@@ -24,7 +24,7 @@ ms.locfileid: "83697504"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
-## <a name="before-you-begin"></a>開始する前に
+## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを完了するには、次のものが必要です。
 
@@ -45,7 +45,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 2. **[新しいモデル]**  >  **[データ ソースを選ぶ]** で、 **[サンプル データ]** が選択されていることを確認して、 **[追加]** をクリックします。
 
-    ![サンプル データを選択する](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
+    ![新しいモデルを選択する](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
 
 3. **[概要]** で、`adventureworks` サンプル モデルが追加されたことを確認します。
 

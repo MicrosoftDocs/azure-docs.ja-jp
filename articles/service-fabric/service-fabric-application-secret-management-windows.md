@@ -4,10 +4,10 @@ description: Windows クラスターでの暗号化証明書の設定とシー�
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.openlocfilehash: eb4909d62a2627c368f24dab572b25c6f1df30ec
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82583296"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-windows-clusters"></a>Windows クラスターでの暗号化証明書の設定とシークレットの暗号化

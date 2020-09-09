@@ -3,12 +3,12 @@ title: テンプレート関数 - デプロイ
 description: Azure Resource Manager テンプレートで、デプロイ情報を取得するために使用する関数について説明します。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: a52b4eae9df4ad3fdf9e481ee0a40aac48f6665b
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: e8240c05cba82d5563c4b327ecbc65a9c358720f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203796"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84677816"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>ARM テンプレートのデプロイ関数
 
@@ -108,10 +108,10 @@ Azure サブスクリプション、管理グループ、またはテナント�
 deployment() を使い、親テンプレートの URI に基づいて、別のテンプレートにリンクできます。
 
 ```json
-"variables": {  
-    "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"  
+"variables": {
+    "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"
 }
-```  
+```
 
 ポータル内のデプロイ履歴からテンプレートを再デプロイすると、テンプレートがローカル ファイルとしてデプロイされます。 デプロイ関数の中では、`templateLink` プロパティは返されません。 お使いのテンプレートが `templateLink` に依存して別のテンプレートへのリンクを構成している場合は、ポータルを使用して再デプロイしないでください。 代わりに、最初にテンプレートのデプロイに利用したコマンドを使用してください。
 
@@ -121,7 +121,7 @@ deployment() を使い、親テンプレートの URI に基づいて、別の�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -140,7 +140,7 @@ deployment() を使い、親テンプレートの URI に基づいて、別の�
   "name": "deployment",
   "properties": {
     "template": {
-      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+      "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
       "contentVersion": "1.0.0.0",
       "resources": [],
       "outputs": {
@@ -277,7 +277,7 @@ deployment() を使い、親テンプレートの URI に基づいて、別の�
 通常、パラメーターを使ってリソースの値を設定します。 次の例では、Web サイトの名前を、デプロイ時に渡されるパラメーターの値に設定します。
 
 ```json
-"parameters": { 
+"parameters": {
   "siteName": {
       "type": "string"
   }
@@ -298,7 +298,7 @@ deployment() を使い、親テンプレートの URI に基づいて、別の�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "stringParameter": {
@@ -407,7 +407,7 @@ deployment() を使い、親テンプレートの URI に基づいて、別の�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {},
     "variables": {

@@ -1,22 +1,22 @@
 ---
-title: Event Grid を使用してマップ イベントに対応する | Microsoft Azure Maps
-description: この記事では、Event Grid を使用して Microsoft Azure Maps イベントに対応する方法について説明します。
-author: philmea
-ms.author: philmea
-ms.date: 02/08/2019
+title: Event Grid を使用して Azure Maps イベントに反応する
+description: Geofence に関連する Azure Maps イベントに対処する方法について調べます。 マップ イベントをリッスンする方法および Event Grid を使用してイベントをイベント ハンドラーに再ルーティングする方法について確認します。
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 07/16/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
+manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 9c9483af191e5439af0c0b5e433187d6475c178c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 701c94237ef5348e11b5d7fbc85d4da1f20136ee
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335714"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036812"
 ---
-# <a name="react-to-azure-maps-events-by-using-event-grid"></a>Event Grid を使用して Azure Maps イベントに反応する 
+# <a name="react-to-azure-maps-events-by-using-event-grid"></a>Event Grid を使用して Azure Maps イベントに反応する
 
 Azure Maps は Azure Event Grid と統合されているため、ユーザーは他のサービスにイベント通知を送信して、ダウンストリームのプロセスをトリガーすることができます。 この記事の目的は、ご利用のビジネス アプリケーションを構成して Azure Maps イベントをリッスンできるようにすることです。 これにより、ユーザーは信頼性が高く、スケーラブルで安全な方法で重要なイベントに対応することができます。 たとえば、ユーザーは、デバイスがジオフェンスに入るたびに、データベースの更新、チケットの作成、電子メール通知の配信を実行するアプリケーションを構築できます。
 
@@ -41,39 +41,32 @@ Event Grid は、[イベント サブスクリプション](https://docs.microso
 次の例では、GeofenceResult のスキーマを示します。
 
 ```JSON
-{   
-   "id":"451675de-a67d-4929-876c-5c2bf0b2c000", 
-   "topic":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Maps/accounts/{accountName}", 
-   "subject":"/spatial/geofence/udid/{udid}/id/{eventId}", 
-   "data":{   
-      "geometries":[   
-         {   
-            "deviceId":"device_1", 
-            "udId":"1a13b444-4acf-32ab-ce4e-9ca4af20b169", 
-            "geometryId":"1", 
-            "distance":999.0, 
-            "nearestLat":47.609833, 
-            "nearestLon":-122.148274 
-         }, 
-         {   
-            "deviceId":"device_1", 
-            "udId":"1a13b444-4acf-32ab-ce4e-9ca4af20b169", 
-            "geometryId":"2", 
-            "distance":999.0, 
-            "nearestLat":47.621954, 
-            "nearestLon":-122.131841 
-         } 
-      ], 
-      "expiredGeofenceGeometryId":[   
-      ], 
-      "invalidPeriodGeofenceGeometryId":[   
-      ] 
-   }, 
-   "eventType":"Microsoft.Maps.GeofenceResult", 
-   "eventTime":"2018-11-08T00:52:08.0954283Z", 
-   "metadataVersion":"1", 
-   "dataVersion":"1.0" 
+{
+    "id":"451675de-a67d-4929-876c-5c2bf0b2c000",
+    "topic":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Maps/accounts/{accountName}",
+    "subject":"/spatial/geofence/udid/{udid}/id/{eventId}",
+    "data":{
+        "geometries":[
+            {
+                "deviceId":"device_1",
+                "udId":"1a13b444-4acf-32ab-ce4e-9ca4af20b169",
+                "geometryId":"1",
+                "distance":999.0,
+                "nearestLat":47.609833,
+                "nearestLon":-122.148274
+            }
+        ],
+        "expiredGeofenceGeometryId":[
+        ],
+        "invalidPeriodGeofenceGeometryId":[
+        ]
+    },
+    "eventType":"Microsoft.Maps.GeofenceResult",
+    "eventTime":"2018-11-08T00:52:08.0954283Z",
+    "metadataVersion":"1",
+    "dataVersion":"1.0"
 }
+
 ```
 
 ## <a name="tips-for-consuming-events"></a>イベントの使用に関するヒント

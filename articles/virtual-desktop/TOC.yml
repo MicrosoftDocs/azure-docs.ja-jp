@@ -1,10 +1,12 @@
-- name: Windows Virtual Desktop Spring 2020 リリース
+- name: Windows Virtual Desktop
   href: index.yml
 - name: 概要
   items:
     - name: Windows Virtual Desktop とは
       href: overview.md
-    - name: Fall 2019 リリースのドキュメント
+    - name: 新機能
+      href: whats-new.md
+    - name: Windows Virtual Desktop (クラシック) のドキュメント
       href: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
 - name: チュートリアル
   items:
@@ -21,7 +23,7 @@
     - name: Windows Virtual Desktop リソースに接続する
       items:
         - name: Windows デスクトップ クライアントを使用して接続する
-          href: connect-windows-7-and-10.md
+          href: connect-windows-7-10.md
         - name: Web クライアントに接続する
           href: connect-web.md
         - name: Android クライアントに接続する
@@ -36,12 +38,16 @@
       items:
         - name: PowerShell
           href: create-host-pools-powershell.md
+        - name: Windows 7 仮想マシンをデプロイする
+          href: deploy-windows-7-virtual-machine.md
         - name: GPU ベースのセッション ホストをデプロイする
           href: configure-vm-gpu.md
         - name: 既存のホスト プールを展開する
           href: expand-existing-host-pool.md
         - name: PowerShell を使用してアプリ グループを管理する
           href: manage-app-groups-powershell.md
+    - name: ホスト プールを削除する
+      href: delete-host-pool.md
     - name: プロファイル コンテナーを作成する
       items:
         - name: VM ベースのファイル共有を使用する
@@ -50,6 +56,8 @@
           href: create-fslogix-profile-container.md
         - name: Azure Files と Azure AD DS を使用する
           href: create-profile-container-adds.md
+        - name: Azure Files と AD DS を使用する
+          href: create-file-share.md
     - name: ホスト プール設定を構成する
       items:
         - name: RDP のプロパティ
@@ -66,6 +74,8 @@
           href: set-up-customize-master-image.md
         - name: マスター VHD イメージに Office をインストールする
           href: install-office-on-wvd-master-image.md
+    - name: セッション ホストを自動的にスケーリングする
+      href: set-up-scaling-script.md
     - name: フィードをカスタマイズする
       href: customize-feed-for-virtual-desktop-users.md
     - name: サービスの診断を使用する
@@ -80,10 +90,20 @@
       href: teams-on-wvd.md
     - name: Azure Multi-Factor Authentication を設定する
       href: set-up-mfa.md
+    - name: 自動更新を構成する
+      href: configure-automatic-updates.md
     - name: 言語パックをインストールする
       href: language-packs.md
+    - name: Azure Advisor を使用する
+      href: azure-advisor.md
+    - name: 推奨事項を解決する
+      href: azure-advisor-recommendations.md
 - name: 概念
   items:
+    - name: 認証
+      href: authentication.md
+    - name: 安全な URL リスト
+      href: safe-url-list.md
     - name: Windows Virtual Desktop の環境
       href: environment-setup.md
     - name: ユーザー接続の待ち時間の特定
@@ -98,8 +118,18 @@
       href: store-fslogix-profile.md
     - name: パートナー統合
       href: partners.md
+    - name: Windows Virtual Desktop に関する FAQ
+      href: faq.md
     - name: Windows 10 Enterprise マルチセッションに関する FAQ
       href: windows-10-multisession-faq.md
+    - name: MSIX アプリのアタッチ
+      items:
+        - name: MSIX アプリのアタッチとは
+          href: what-is-app-attach.md
+        - name: 用語集
+          href: app-attach-glossary.md
+        - name: よく寄せられる質問
+          href: app-attach-faq.md
     - name: データの場所
       href: data-locations.md
 - name: トラブルシューティング
@@ -108,7 +138,7 @@
       href: troubleshoot-set-up-overview.md
     - name: 問題の特定と診断
       href: diagnostics-role-service.md
-    - name: テナントとホスト プールの作成
+    - name: ホスト プールの作成
       href: troubleshoot-set-up-issues.md
     - name: セッション ホスト仮想マシンの構成
       href: troubleshoot-vm-configuration.md
@@ -127,19 +157,29 @@
     - name: Linux Support
       href: linux-overview.md
     - name: サポートされる RDP ファイルの設定
-      href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context'
+      href: /windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context
     - name: ネットワーク ガイダンス
-      href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/network-guidance?context=/azure/virtual-desktop/context/context'
+      href: /windows-server/remote/remote-desktop-services/network-guidance?context=/azure/virtual-desktop/context/context
     - name: 仮想マシンのサイズ指定ガイダンス
-      href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context'
+      href: /windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context
+    - name: Azure コマンド ライン インターフェイス (CLI)
+      href: /cli/azure/ext/desktopvirtualization/?view=azure-cli-latest
+    - name: Azure シナリオ例
+      href: /azure/architecture/example-scenario/wvd/windows-virtual-desktop
+    - name: メール検出
+      href: /windows-server/remote/remote-desktop-services/rds-email-discovery
 - name: リソース
   items:
+    - name: PowerShell
+      href: /powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization
+    - name: REST API リファレンス
+      href: /rest/api/desktopvirtualization/
     - name: エクスペリエンス見積もりツール
       href: 'https://azure.microsoft.com/services/virtual-desktop/assessment/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: ラーニング パス
-      href: 'https://docs.microsoft.com/learn/paths/m365-wvd/'
+      href: /learn/paths/m365-wvd/
     - name: 操作方法に関するビデオ
       href: 'https://support.microsoft.com/help/4563049/how-to-videos-about-windows-virtual-desktop'
     - name: 技術コミュニティ サポート グループ

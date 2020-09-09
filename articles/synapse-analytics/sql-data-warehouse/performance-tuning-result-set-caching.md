@@ -6,25 +6,23 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: eadbe13269ce1259b4560af117f5b15b3b294151
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c29ad48e8dc626617786e519e84c92875bc6170
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730599"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378527"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>結果セットのキャッシュを使用したパフォーマンスのチューニング
 
-結果セットのキャッシュが有効になっている場合、SQL Analytics では、繰り返し使用できるよう、クエリ結果がユーザー データベースに自動的にキャッシュされます。  これにより、以降のクエリ実行で永続キャッシュから直接結果を取得できるため、再計算は必要ありません。   結果セットのキャッシュにより、クエリのパフォーマンスが向上し、コンピューティング リソースの使用量が減少します。  さらに、キャッシュされた結果セットを使用するクエリはコンカレンシー スロットをまったく使用しないため、既存のコンカレンシー制限にはカウントされません。 セキュリティのため、キャッシュされた結果にアクセスできるのは、そのユーザーがキャッシュされた結果を作成したユーザーと同じデータ アクセス許可を持っている場合のみです。  
+結果セットのキャッシュが有効になっている場合、Synapse SQL では、繰り返し使用できるように、クエリ結果がユーザー データベースに自動的にキャッシュされます。  これにより、以降のクエリ実行で永続キャッシュから直接結果を取得できるため、再計算は必要ありません。   結果セットのキャッシュにより、クエリのパフォーマンスが向上し、コンピューティング リソースの使用量が減少します。  さらに、キャッシュされた結果セットを使用するクエリはコンカレンシー スロットをまったく使用しないため、既存のコンカレンシー制限にはカウントされません。 セキュリティのため、キャッシュされた結果にアクセスできるのは、そのユーザーがキャッシュされた結果を作成したユーザーと同じデータ アクセス許可を持っている場合のみです。  
 
 ## <a name="key-commands"></a>主なコマンド
-
-[ユーザー データベースに対する結果セットのキャッシュをオン/オフにする](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 [ユーザー データベースに対する結果セットのキャッシュをオン/オフにする](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
@@ -83,7 +81,7 @@ WHERE request_id = <'Your_Query_Request_ID'>
 
 結果セットのキャッシュの最大サイズは、データベースあたり 1 TB です。  基になるクエリ データが変更されると、キャッシュされた結果は自動的に無効になります。  
 
-キャッシュの削除は、このスケジュールに従って SQL Analytics によって自動的に管理されます。
+キャッシュの削除は、このスケジュールに従って Synapse SQL によって自動的に管理されます。
 
 - 結果セットが使用されていない場合、または無効になっている場合は、48 時間ごと。
 - 結果セットのキャッシュが最大サイズに近づいた場合。

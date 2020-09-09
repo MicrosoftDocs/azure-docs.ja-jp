@@ -6,19 +6,19 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 02/18/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: luleon, hirsin, paulgarn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5d92b43b47a20a75d2c8b6becb69cfee5829e80f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3f1829127d1eaf65be586ddff3fb2615cae72c5d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154850"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116140"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする
 
@@ -104,4 +104,4 @@ Azure AD と対象アプリケーションの間の、SAML に基づいたシン
 
 ## <a name="next-steps"></a>次のステップ
 
-アプリケーションに対してシングル サインオンが動作するようになったので、[SaaS アプリケーションに対するユーザーのプロビジョニングとプロビジョニング解除を自動化](../manage-apps/user-provisioning.md)するか、[条件付きアクセスを使ってみる](../conditional-access/app-based-conditional-access.md)ことができます。
+アプリケーションに対してシングル サインオンが動作するようになったので、[SaaS アプリケーションに対するユーザーのプロビジョニングとプロビジョニング解除を自動化](../app-provisioning/user-provisioning.md)するか、[条件付きアクセスを使ってみる](../conditional-access/app-based-conditional-access.md)ことができます。

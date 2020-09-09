@@ -5,14 +5,15 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/25/2019
-ms.openlocfilehash: f0ea24133d7b6acdc4b099ee21a8711a2d99095d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 49acce96012df0a45bc1833ae0397a3d989142ef
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74775706"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500642"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for PostgreSQL - Single Server のサーバーをバックアップおよび復元する方法
 

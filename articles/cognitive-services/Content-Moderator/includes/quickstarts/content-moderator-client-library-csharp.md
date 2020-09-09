@@ -8,14 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 01/27/2020
+ms.date: 08/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 50572c037cc7927a06bcf8d95305353238989ae9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 65465c97f4457756fb376219caeb9cb066a2ec77
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186515"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929120"
 ---
 .NET 用 Content Moderator クライアント ライブラリの使用を開始します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。 Content Moderator は、テキスト、画像、ビデオのコンテンツに不快感を与える可能性がある内容、リスクのある内容、その他望ましくない可能性のある内容が含まれているかどうかを確認する Cognitive Services です。 このサービスでは、そのような内容が検出されると、それに応じたラベル (フラグ) がコンテンツに適用されます。 その後は、法的規制に準拠したり、ユーザーに意図されている環境を維持したりするために、フラグの設定されたコンテンツをアプリで処理することができます。
 
@@ -29,7 +30,7 @@ ms.locfileid: "82186515"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
 * 最新バージョンの [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
 
 ## <a name="setting-up"></a>設定
@@ -38,10 +39,9 @@ ms.locfileid: "82186515"
 
 Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、ローカル コンピューター上に Content Moderator 用のリソースを作成します。 次のこともできます。
 
-* 7 日間有効な[試用版のキー](https://azure.microsoft.com/try/cognitive-services/#decision)を無料で入手する。 サインアップ後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis/)でこれを入手できます。  
 * お使いのリソースを [Azure portal](https://portal.azure.com/) で表示する
 
-試用版のサブスクリプションまたはリソースからキーを取得した後、キーとエンドポイント URL の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)し、それぞれ `CONTENT_MODERATOR_SUBSCRIPTION_KEY` および `CONTENT_MODERATOR_ENDPOINT` という名前を付けます。
+リソースからキーを取得した後、キーとエンドポイント URL の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)し、それぞれに `CONTENT_MODERATOR_SUBSCRIPTION_KEY` と `CONTENT_MODERATOR_ENDPOINT` という名前を付けます。
 
 ### <a name="create-a-new-c-application"></a>新しい C# アプリケーションを作成する
 
@@ -160,7 +160,7 @@ https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
 入力ファイルと出力ファイルを `Main` メソッドの次のメソッド呼び出しに渡します。 このメソッドは、後の手順で定義します。
 
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_textmod_call)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_imagemod_call)]
 
 ### <a name="define-helper-class"></a>ヘルパー クラスを定義する
 

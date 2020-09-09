@@ -7,18 +7,18 @@ documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 6ac9e362314cc45e6adbdcf1390f70cbe6b05de8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8fedad40c18818932bf37dfe93c1b236357c30b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74075964"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001606"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>PowerShell を使用した複数の IP 構成での負荷分散
 
@@ -38,7 +38,7 @@ ms.locfileid: "74075964"
 
 この記事で紹介するシナリオを実現するには、次の手順に従います。
 
-1. Azure PowerShell をインストールします。 最新バージョンの Azure PowerShell をインストールし、サブスクリプションを選択して、ご利用のアカウントにサインインする方法については、「[Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」を参照してください。
+1. Azure PowerShell をインストールします。 最新バージョンの Azure PowerShell をインストールし、サブスクリプションを選択して、ご利用のアカウントにサインインする方法については、「[Azure PowerShell のインストールおよび構成方法](/powershell/azure/)」を参照してください。
 2. 次の設定を使用してリソース グループを作成します。
 
     ```powershell
@@ -46,7 +46,7 @@ ms.locfileid: "74075964"
     $myResourceGroup = "contosofabrikam"
     ```
 
-    詳細については、[リソース グループの作成](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json)に関するページの手順 2. を参照してください。
+    詳細については、[リソース グループの作成](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json)に関するページの手順 2. を参照してください。
 
 3. VM を格納する[可用性セットを作成](../virtual-machines/windows/tutorial-availability-sets.md?toc=%2fazure%2fload-balancer%2ftoc.json)します。 このシナリオでは、次のコマンドを使用します。
 
@@ -54,14 +54,14 @@ ms.locfileid: "74075964"
     New-AzAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset" -Location "West Central US"
     ```
 
-4. [Windows VM の作成](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json)に関する記事の手順 3. ～ 5. に従って、単一の NIC を持つ VM を作成する準備をします。 手順 6.1. を実行し、手順 6.2. の代わりに次のコマンドを実行します。
+4. [Windows VM の作成](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json)に関する記事の手順 3. ～ 5. に従って、単一の NIC を持つ VM を作成する準備をします。 手順 6.1. を実行し、手順 6.2. の代わりに次のコマンドを実行します。
 
     ```powershell
     $availset = Get-AzAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset"
     New-AzVMConfig -VMName "VM1" -VMSize "Standard_DS1_v2" -AvailabilitySetId $availset.Id
     ```
 
-    次に、[Windows VM の作成](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json)に関する記事の手順 6.3. ～ 6.8. を実行します。
+    次に、[Windows VM の作成](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json)に関する記事の手順 6.3. ～ 6.8. を実行します。
 
 5. 各 VM に 2 番目の IP 構成を追加します。 [仮想マシンに複数の IP アドレスを割り当てる](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md#add)操作に関する記事の手順に従います。 次の構成設定を使用します。
 

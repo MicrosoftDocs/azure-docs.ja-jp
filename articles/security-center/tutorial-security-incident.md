@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: 971b93422e2b3f2053e0c5564c7ba924a631d810
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: dc19d74953db48ccf51d4731e2b9feccb2294041
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585764"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076393"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>チュートリアル:セキュリティ インシデントへの対応
 Security Center では、高度な分析および脅威インテリジェンスを使用してハイブリッド クラウド ワークロードを継続的に分析し、悪意のあるアクティビティに関するアラートを受け取ることができます。 さらに、他のセキュリティ製品およびサービスからのアラートを Security Center に統合し、独自のインジケーターまたはインテリジェンス ソースに基づいたカスタム アラートを作成できます。 アラートが生成されたら、調査と修復を行うために迅速なアクションが必要になります。 このチュートリアルでは、次の内容を学習します。
@@ -98,6 +98,7 @@ Security Center の検索機能を使用して、システムの侵害に関す�
 検索を実行するには、**Security Center** ダッシュボードを開きます。左側のナビゲーション ウィンドウにある **[検索]** をクリックし、検索したいエンティティが含まれたワークスペースを選択してから、検索クエリに入力して検索ボタンをクリックします。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
 このコレクションの他のクイックスタートとチュートリアルは、このクイックスタートに基づいています。 引き続き次のクイックスタートとチュートリアルを行う予定の場合、Standard レベルの実行を継続して、自動プロビジョニングを有効のままにしてください。 続行しないまたは Free レベルに戻したい場合:
 
 1. Security Center のメイン メニューに戻り、 **[セキュリティ ポリシー]** を選択します。

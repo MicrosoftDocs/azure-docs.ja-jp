@@ -4,15 +4,15 @@ description: Resource Manager デプロイ モデルを使用して、特殊化�
 author: cynthn
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 2939726898abc2abc0e62d0e36feedbfe7ba3645
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bce702873fc4e66f283a9785bb408bbfa7fda83c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086404"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87266896"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>PowerShell を使用して特殊化されたディスクから Windows VM を作成する
 
@@ -33,7 +33,7 @@ Azure Portal を使用して、[特殊化された VHD から新しい VM を作
 
 ## <a name="option-1-use-an-existing-disk"></a>オプション 1: 既存のディスクを使用する
 
-削除した VM があり、OS ディスクを再利用して新しい VM を作成したい場合、[Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk)を使用します。
+削除した VM があり、OS ディスクを再利用して新しい VM を作成したい場合、[Get-AzDisk](/powershell/module/az.compute/get-azdisk)を使用します。
 
 ```powershell
 $resourceGroupName = 'myResourceGroup'
@@ -68,7 +68,7 @@ VM のスナップショットを取得してマネージド ディスクを使�
 
 ### <a name="take-a-snapshot-of-the-os-disk"></a>OS ディスクのスナップショットを取得する
 
-VM 全体 (すべてのディスクを含む) または 1 つのディスクのみのスナップショットを取得できます。 次の手順では、[New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) コマンドレットを使用して VM の OS ディスクのみのスナップショットを取得する方法を説明します。 
+VM 全体 (すべてのディスクを含む) または 1 つのディスクのみのスナップショットを取得できます。 次の手順では、[New-AzSnapshot](/powershell/module/az.compute/new-azsnapshot) コマンドレットを使用して VM の OS ディスクのみのスナップショットを取得する方法を説明します。 
 
 まずいくつかのパラメーターを設定します。 
 
@@ -116,7 +116,7 @@ $snapShot = New-AzSnapshot `
 
 ### <a name="create-a-new-disk-from-the-snapshot"></a>スナップショットから新しいディスクを作成する
 
-[New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk) を使用してスナップショットからマネージド ディスクを作成します。 この例ではディスクの名前に *myOSDisk* を使用します。
+[New-AzDisk](/powershell/module/az.compute/new-azdisk) を使用してスナップショットからマネージド ディスクを作成します。 この例ではディスクの名前に *myOSDisk* を使用します。
 
 新しい VM の新しいリソース グループを作成します。
 
@@ -193,7 +193,7 @@ $nsg = New-AzNetworkSecurityGroup `
 エンドポイントと NSG 規則の詳細については、[PowerShell を使用した Azure の VM へのポートの開放](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
 
 ### <a name="create-a-public-ip-address-and-nic"></a>パブリック IP アドレスと NIC の作成
-仮想ネットワークでの仮想マシンとの通信を有効にするには、[パブリック IP アドレス](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)とネットワーク インターフェイスが必要です。
+仮想ネットワークでの仮想マシンとの通信を有効にするには、[パブリック IP アドレス](../../virtual-network/public-ip-addresses.md)とネットワーク インターフェイスが必要です。
 
 1. パブリック IP を作成します。 この例では、パブリック IP アドレス名を *myIP* に設定しています。
    
@@ -236,7 +236,7 @@ $vm = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
 
 ### <a name="add-the-os-disk"></a>OS ディスクを追加する 
 
-[Set-AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk) を使用して OS ディスクを構成に追加します。 この例では、ディスクのサイズを *128 GB* に設定し、マネージド ディスクを *Windows* OS ディスクとして接続します。
+[Set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk) を使用して OS ディスクを構成に追加します。 この例では、ディスクのサイズを *128 GB* に設定し、マネージド ディスクを *Windows* OS ディスクとして接続します。
  
 ```powershell
 $vm = Set-AzVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType Standard_LRS `
@@ -245,7 +245,7 @@ $vm = Set-AzVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType Stand
 
 ### <a name="complete-the-vm"></a>VM を完了する 
 
-先ほど作成した構成を使用し、[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) を使用して VM を作成します。
+先ほど作成した構成を使用し、[New-AzVM](/powershell/module/az.compute/new-azvm) を使用して VM を作成します。
 
 ```powershell
 New-AzVM -ResourceGroupName $destinationResourceGroup -Location $location -VM $vm
@@ -270,4 +270,3 @@ $vmList.Name
 
 ## <a name="next-steps"></a>次のステップ
 新しい仮想マシンにサインインします。 詳しくは、「[Windows が実行されている Azure 仮想マシンに接続してログオンする方法](connect-logon.md)」をご覧ください。
-

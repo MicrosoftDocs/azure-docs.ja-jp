@@ -1,25 +1,21 @@
 ---
-title: Azure AD を使用したアプリへのアクセスの管理 | Microsoft Docs
+title: Azure AD を使用したアプリへのアクセスの管理
 description: Azure Active Directory により、組織が各ユーザーがアクセスするアプリをどのように指定できるかついて説明します。
 services: active-directory
-documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2017
-ms.author: mimart
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a694c9f6fc9d3a0b7e73c1565501915aa1470bc
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.author: kenwith
+ms.openlocfilehash: 7738bd2f2dc169ab52677928c6fecbc193ff2f35
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739827"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639921"
 ---
 # <a name="managing-access-to-apps"></a>アプリへのアクセスの管理
 
@@ -49,7 +45,7 @@ Azure AD のアプリケーション割り当ては、次の 2 つの主要な�
 * Azure Active Directory 事前認証を使用するアプリケーション プロキシのアプリケーション
 * ユーザーまたは管理者がそのアプリケーションに同意した後に OAuth 2.0 または OpenID Connect 認証を使用する Azure AD アプリケーション プラットフォームに構築されたアプリケーション。特定の企業アプリケーションでは、サインインが許可される人に対する制御がさらに追加されます。
 
-ユーザー割り当てが "*要求されない*" 場合、割り当てられていないユーザーには、その [マイ アプリ] アクセス パネルでアプリが表示されませんが、アプリケーション自体にはサインインできます (SP が開始するサインオンとも呼ばれています)。あるいは、アプリケーションの **[プロパティ]** ページで **[ユーザー アクセス URL]** を使用できます (IDP 開始サインオンとも呼ばれています)。
+ユーザー割り当てが "*要求されない*" 場合、割り当てられていないユーザーには、そのマイ アプリでアプリが表示されませんが、アプリケーション自体にはサインインできます (SP が開始するサインオンとも呼ばれています)。あるいは、アプリケーションの **[プロパティ]** ページで **[ユーザー アクセス URL]** を使用できます (IDP 開始サインオンとも呼ばれています)。
 
 一部のアプリケーションでは、アプリケーションのプロパティにユーザー割り当てを要求するオプションがありません。 そのような場合、PowerShell を利用し、サービス プリンシパルで appRoleAssignmentRequired プロパティを設定できます。
 
@@ -57,12 +53,12 @@ Azure AD のアプリケーション割り当ては、次の 2 つの主要な�
 
 Azure AD には、組織内のエンド ユーザーに[アプリケーションをデプロイするためのカスタマイズ可能な方法が複数](end-user-experiences.md)用意されています。
 
-* Azure AD の [マイ アプリ] アクセス パネル
+* Azure AD のマイ アプリ
 * Office 365 アプリケーション起動プログラム
 * フェデレーション アプリへの直接サインオン (service-pr)
 * フェデレーション アプリ、パスワードベースのアプリ、または既存のアプリへのディープ リンク
 
-企業アプリに割り当てられているユーザーがアクセス パネルや Office 365 アプリケーション起動プログラムでそれを表示できるかどうかを決定できます。
+企業アプリに割り当てられているユーザーがマイ アプリや Office 365 アプリケーション起動プログラムでそれを表示できるかどうかを決定できます。
 
 ## <a name="example-complex-application-assignment-with-azure-ad"></a>例:Azure AD を使用した複雑なアプリケーション割り当て
 Salesforce のようなアプリケーションについて考えます。 多くの企業では、Salesforce は主にマーケティング チームや販売チームが使用します。 通常、マーケティング チームのメンバーは Salesforce に対する高い特権アクセスを持つ一方、販売チームのメンバーのアクセス権は制限されます。 多くの場合、インフォメーション ワーカーの占める割合が多いと、アプリケーションへのアクセスも制限されます。 これらのルールに対する例外が、問題を複雑にします。 通常、マーケティングまたは販売の指揮部隊には、これらの一般的なルールとは無関係に、ユーザーにアクセス権を付与したり、そのロールを変更したりする特権があります。
@@ -76,7 +72,7 @@ Azure AD では、Salesforce のようなアプリケーションをシングル
 
 * 例外のメカニズムを有効にするには、各ロールについてセルフ サービス グループを作成できます。 たとえば、"salesforce marketing 例外" グループを、セルフ サービス グループとして作成します。 このグループを Salesforce marketing ロールに割り当て、マーケティングの指揮部隊を所有者にすることができます。 マーケティングの指揮部隊のメンバーはユーザーを追加または削除、参加ポリシーを設定できるほか、各ユーザーの参加要求を承認または拒否することもできます。 このメカニズムは、インフォメーション ワーカーに該当するエクスペリエンス全体でサポートされ、所有者またはメンバーになるための特別なトレーニングを必要としません。
 
-この場合、割り当てられたすべてのユーザーは、各グループに追加されるときに Salesforce に自動的にプロビジョニングされ、そのロール割り当ては Salesforce で更新されます。 ユーザーは、Microsoft アプリケーション アクセス パネル、Office Web クライアントを通じて、また組織の Salesforce ログイン ページに移動して、Salesforce を探してアクセスできます。 管理者は Azure AD レポート機能を使用して、使用量や割り当ての状態を簡単に確認できます。
+この場合、割り当てられたすべてのユーザーは、各グループに追加されるときに Salesforce に自動的にプロビジョニングされ、そのロール割り当ては Salesforce で更新されます。 ユーザーは、マイ アプリ、Office Web クライアントを通じて、また組織の Salesforce ログイン ページに移動して、Salesforce を探してアクセスできます。 管理者は Azure AD レポート機能を使用して、使用量や割り当ての状態を簡単に確認できます。
 
 管理者は、 [Azure AD 条件付きアクセス](../conditional-access/concept-conditional-access-users-groups.md) を使用して、特定のロールのアクセス ポリシーを設定できます。 これらのポリシーには、アクセスを企業環境の外で許可するかどうかや、Multi-Factor Authentication、またはデバイスの要件を含めて、さまざまな状況でのアクセスを実現できます。
 
@@ -92,7 +88,7 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 一部のアプリケーションでは、これらのメソッドを組み合わせています。 たとえば、一部の Microsoft アプリケーションは Office 365 サブスクリプションに含まれていますが、同意する必要が依然としてあります。
 
-ユーザーは Office 365 ポータルから Office 365 アプリケーションにアクセスできます。 また、ディレクトリの **[ユーザー設定]** にある [Office 365 表示切り替え機能](hide-application-from-user-portal.md)を利用し、[マイ アプリ] アクセス パネルで Office 365 アプリケーションの表示と非表示を切り替えることができます。 
+ユーザーは Office 365 ポータルから Office 365 アプリケーションにアクセスできます。 また、ディレクトリの **[ユーザー設定]** にある [Office 365 表示切り替え機能](hide-application-from-user-portal.md)を利用し、マイ アプリで Office 365 アプリケーションの表示と非表示を切り替えることができます。 
 
 企業アプリケーションと同様に、Azure portal から特定の Microsoft アプリケーションに[ユーザーを割り当てる](assign-user-or-group-access-portal.md)ことができます。あるいは、ポータルを利用できない場合、PowerShell を利用してユーザーを割り当てることができます。
 

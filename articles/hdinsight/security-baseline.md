@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 62188aefffd05af49bb00c242b266e808b991c84
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 7315ef68b3562a28ee2515077c1e7d2f23c3803f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188176"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230434"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>HDInsight 用の Azure セキュリティ ベースライン
 
@@ -1288,7 +1288,7 @@ https://docs.microsoft.com/azure/security-center/workflow-automation
 
 **ガイダンス**:侵入テストが Microsoft のポリシーに違反しないようにするために、Microsoft の活動規則に従ってください。
 
-https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
+https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.
 
 Microsoft が管理しているクラウド インフラストラクチャ、サービス、アプリケーションに対する Red Teaming およびライブ サイト侵入テストに関する Microsoft の戦略と実施の詳細については、こちらの https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e で確認できます。
 

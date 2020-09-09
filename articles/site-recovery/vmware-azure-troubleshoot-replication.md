@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: f91ee5654b4add37d3cce4f875be1f9c2b398ab9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e9e66cbb024aa64e8c4cb5db9fc1c172fdc573fc
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259495"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135364"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware VM および物理サーバーのレプリケーション問題のトラブルシューティング
 
@@ -77,7 +77,7 @@ Site Recovery でレプリケートされる仮想マシンは、システム内
     - 影響を受けたレプリケーション対象のマシンの [ディスク] ブレードに移動し、レプリカ ディスク名をコピーします
     - このレプリカ マネージド ディスクに移動します
     - [概要] ブレードに、SAS URL が生成されていることを示すバナーが表示される場合があります。 このバナーをクリックして、エクスポートをキャンセルします。 バナーが表示されない場合は、この手順を無視してください。
-    - SAS URL が取り消されたらすぐに、マネージド ディスクの [構成] ブレードにアクセスし、ASR がソース ディスク上で測定済みチャーン レートをサポートできるように、サイズを増やします
+    - SAS URL が取り消されたらすぐに、マネージド ディスクの [構成] ブレードにアクセスし、Azure Site Recovery がソース ディスク上で測定済みチャーン レートをサポートできるように、サイズを増やします
 - 観察されたチャーンが一時的なものである場合は、保留中のデータ アップロード処理が進行し復旧ポイントが作成されるまで、数時間待機します。
 - ディスクに一時ログやテスト データなどの重要ではないデータが含まれている場合は、このデータを他の場所に移動するか、このディスクをレプリケーションから完全に除外することを検討してください
 - 問題が解決しない場合は、レプリケーションの計画に役立つ Site Recovery [デプロイ プランナー](site-recovery-deployment-planner.md#overview)を使用します。
@@ -95,16 +95,16 @@ Site Recovery でレプリケートされる仮想マシンは、システム内
    - InMage Scout アプリケーション サービス
 4. ソース マシンで、エラーの詳細が保存されているログを確認します。
 
-       C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
+    *C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents\*.log*
 
 ### <a name="process-server-with-no-heartbeat-error-806"></a>プロセス サーバーにハートビートがない [error 806]
 プロセス サーバー (PS) からハートビートがない場合は、次を確認します。
 1. PS VM が稼働している。
 2. エラーの詳細に関する PS の次のログを確認します。
 
-       C:\ProgramData\ASR\home\svsystems\eventmanager*.log
-       and
-       C:\ProgramData\ASR\home\svsystems\monitor_protection*.log
+    *C:\ProgramData\ASR\home\svsystems\eventmanager\*.log*\
+    および\
+    *C:\ProgramData\ASR\home\svsystems\monitor_protection\*.log*
 
 ### <a name="master-target-server-with-no-heartbeat-error-78022"></a>マスター ターゲット サーバーにハートビートがない [エラー 78022]
 
@@ -117,7 +117,7 @@ Site Recovery でレプリケートされる仮想マシンは、システム内
     - svagents サービスが実行中であることを確認します。 実行中の場合は、サービスを再起動します。
     - エラーの詳細が保存されているログを確認します。
 
-          C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
+        *C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents\*.log*
 3. マスター ターゲットを構成サーバーに登録するには、フォルダー **%PROGRAMDATA%\ASR\Agent** に移動し、コマンド プロンプトで以下を実行します。
    ```
    cmd
@@ -146,24 +146,26 @@ Site Recovery でレプリケートされる仮想マシンは、システム内
 #### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>原因 3:SQL Server 2016 および 2017 での既知の問題
 **修正方法**: サポート技術情報の[記事](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component)を参照してください
 
+#### <a name="cause-4-app-consistency-not-enabled-on-linux-servers"></a>原因 4:Linux サーバーでアプリの整合性が有効になっていない
+**修正方法**: Linux オペレーティング システム用の Azure Site Recovery では、アプリの整合性のためのアプリケーション カスタム スクリプトがサポートされています。 プリオプションとポストオプションを含むカスタム スクリプトが、アプリの整合性のために Azure Site Recovery の Mobility Agent によって使用されます。 これを有効にする手順は、[こちら](./site-recovery-faq.md#replication)をご覧ください。
 
 ### <a name="more-causes-due-to-vss-related-issues"></a>VSS 関連の問題に起因するその他の原因:
 
 さらにトラブルシューティングを続けるには、ソース マシン上のファイルを確認して、失敗の正確なエラー コードを取得します。
 
-    C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log
+*C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log*
 
 ファイル内のエラーは、どのように探せば良いでしょうか。
 エディターで vacp.log ファイルを開いて、"vacpError" という文字列を検索します
 
-    Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|
+`Ex: `**`vacpError`**`:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|`
 
 上の例では、**2147754994** がエラー コードであり、以下のようなエラーについての情報を示しています
 
 #### <a name="vss-writer-is-not-installed---error-2147221164"></a>VSS ライターがインストールされていません - エラー 2147221164
 
 *修正方法*: アプリケーション整合性タグを生成するために、Azure Site Recovery では Microsoft ボリューム シャドウ コピー サービス (VSS) が使用されます。 これによって、アプリ整合性スナップショットを作成する操作のために、VSS プロバイダーがインストールされます。 この VSS プロバイダーは、サービスとしてインストールされます。 VSS プロバイダー サービスがインストールされていない場合は、アプリケーション整合性スナップショットの作成が失敗し、エラー ID 0x80040154 "クラスが登録されていません" というエラーが発生します。 </br>
-[VSS ライターのインストールのトラブルシューティングに関する記事](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures)を参照してください
+[VSS ライターのインストールのトラブルシューティングに関する記事](./vmware-azure-troubleshoot-push-install.md#vss-installation-failures)を参照してください
 
 #### <a name="vss-writer-is-disabled---error-2147943458"></a>VSS ライターが無効です - エラー 2147943458
 
@@ -193,4 +195,4 @@ VSS プロバイダー サービスのスタートアップの種類が **[自�
 
 ## <a name="next-steps"></a>次のステップ
 
-さらにサポートが必要な場合は、[Azure Site Recovery フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)に質問を投稿してください。 弊社のアクティブなコミュニティを通じて、エンジニアがサポートいたします。
+さらにサポートが必要な場合は、[Azure Site Recovery に関する Microsoft Q&A 質問ページ](/answers/topics/azure-site-recovery.html)に質問を投稿してください。 弊社のアクティブなコミュニティを通じて、エンジニアがサポートいたします。

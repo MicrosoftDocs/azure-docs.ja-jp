@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: ARP テーブル - トラブルシューティング: クラシック'
 description: このページでは、ExpressRoute 回線の ARP テーブルを取得する手順について説明します (クラシック デプロイ モデル)。
 services: expressroute
-author: charwen
+author: duongau
 ms.service: expressroute
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 01/30/2017
-ms.author: charwen
-ms.openlocfilehash: a7a24fc6674adca21e01d2502263c9767510469e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: duau
+ms.openlocfilehash: 7c83b6d25936e184c70d4bf0a51636a3986bf4b2
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80618631"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394841"
 ---
 # <a name="getting-arp-tables-in-the-classic-deployment-model"></a>クラシック デプロイ モデルでの ARP テーブルの取得
 > [!div class="op_single_selector"]
@@ -41,10 +41,12 @@ ARP テーブルから、特定のピアリングに関する IPv4 アドレス�
 
 次に、ARP テーブルの例を示します。
 
-        Age InterfaceProperty IpAddress  MacAddress    
-        --- ----------------- ---------  ----------    
-         10 On-Prem           10.0.0.1 ffff.eeee.dddd
-          0 Microsoft         10.0.0.2 aaaa.bbbb.cccc
+```output
+Age InterfaceProperty IpAddress  MacAddress    
+--- ----------------- ---------  ----------    
+ 10 On-Prem           10.0.0.1   ffff.eeee.dddd
+  0 Microsoft         10.0.0.2   aaaa.bbbb.cccc
+```
 
 
 次のセクションでは、ExpressRoute のエッジ ルーターによって参照される ARP テーブルの表示方法について説明します。
@@ -63,67 +65,81 @@ ARP テーブルから、特定のピアリングに関する IPv4 アドレス�
 ### <a name="arp-tables-for-azure-private-peering"></a>Azure プライベート ピアリングの ARP テーブル
 Azure プライベート ピアリングの ARP テーブルは、次のコマンドレットで取得します。
 
-        # Required variables
-        $ckt = "<your Service Key here>
+```azurepowershell
+# Required variables
+$ckt = "<your Service Key here>
 
-        # ARP table for Azure private peering--primary path
-        Get-AzureDedicatedCircuitPeeringArpInfo -ServiceKey $ckt -AccessType Private -Path Primary
+# ARP table for Azure private peering--primary path
+Get-AzureDedicatedCircuitPeeringArpInfo -ServiceKey $ckt -AccessType Private -Path Primary
 
-        # ARP table for Azure private peering--secondary path
-        Get-AzureDedicatedCircuitPeeringArpInfo -ServiceKey $ckt -AccessType Private -Path Secondary
+# ARP table for Azure private peering--secondary path
+Get-AzureDedicatedCircuitPeeringArpInfo -ServiceKey $ckt -AccessType Private -Path Secondary
+```
 
 該当する 1 本のパスについてのサンプル出力を次に示します。
 
-        Age InterfaceProperty IpAddress  MacAddress    
-        --- ----------------- ---------  ----------    
-         10 On-Prem           10.0.0.1 ffff.eeee.dddd
-          0 Microsoft         10.0.0.2 aaaa.bbbb.cccc
+```output
+Age InterfaceProperty IpAddress  MacAddress    
+--- ----------------- ---------  ----------    
+ 10 On-Prem           10.0.0.1   ffff.eeee.dddd
+  0 Microsoft         10.0.0.2   aaaa.bbbb.cccc
+```
 
 
 ### <a name="arp-tables-for-azure-public-peering"></a>Azure パブリック ピアリングの ARP テーブル
 Azure パブリック ピアリングの ARP テーブルは、次のコマンドレットで取得します。
 
-        # Required variables
-        $ckt = "<your Service Key here>
+```azurepowershell
+# Required variables
+$ckt = "<your Service Key here>
 
-        # ARP table for Azure public peering--primary path
-        Get-AzureDedicatedCircuitPeeringArpInfo -ServiceKey $ckt -AccessType Public -Path Primary
+# ARP table for Azure public peering--primary path
+Get-AzureDedicatedCircuitPeeringArpInfo -ServiceKey $ckt -AccessType Public -Path Primary
 
-        # ARP table for Azure public peering--secondary path
-        Get-AzureDedicatedCircuitPeeringArpInfo -ServiceKey $ckt -AccessType Public -Path Secondary
-
-該当する 1 本のパスについてのサンプル出力を次に示します。
-
-        Age InterfaceProperty IpAddress  MacAddress    
-        --- ----------------- ---------  ----------    
-         10 On-Prem           10.0.0.1 ffff.eeee.dddd
-          0 Microsoft         10.0.0.2 aaaa.bbbb.cccc
-
+# ARP table for Azure public peering--secondary path
+Get-AzureDedicatedCircuitPeeringArpInfo -ServiceKey $ckt -AccessType Public -Path Secondary
+```
 
 該当する 1 本のパスについてのサンプル出力を次に示します。
 
-        Age InterfaceProperty IpAddress  MacAddress    
-        --- ----------------- ---------  ----------    
-         10 On-Prem           64.0.0.1 ffff.eeee.dddd
-          0 Microsoft         64.0.0.2 aaaa.bbbb.cccc
+```output
+Age InterfaceProperty IpAddress  MacAddress    
+--- ----------------- ---------  ----------    
+ 10 On-Prem           10.0.0.1   ffff.eeee.dddd
+  0 Microsoft         10.0.0.2   aaaa.bbbb.cccc
+```
+
+
+該当する 1 本のパスについてのサンプル出力を次に示します。
+
+```output
+Age InterfaceProperty IpAddress  MacAddress    
+--- ----------------- ---------  ----------    
+ 10 On-Prem           64.0.0.1   ffff.eeee.dddd
+  0 Microsoft         64.0.0.2   aaaa.bbbb.cccc
+```
 
 
 ### <a name="arp-tables-for-microsoft-peering"></a>Microsoft ピアリングの ARP テーブル
 Microsoft ピアリングの ARP テーブルは、次のコマンドレットで取得します。
 
-    # ARP table for Microsoft peering--primary path
-    Get-AzureDedicatedCircuitPeeringArpInfo -ServiceKey $ckt -AccessType Microsoft -Path Primary
+```azurepowershell
+# ARP table for Microsoft peering--primary path
+Get-AzureDedicatedCircuitPeeringArpInfo -ServiceKey $ckt -AccessType Microsoft -Path Primary
 
-    # ARP table for Microsoft peering--secondary path
-    Get-AzureDedicatedCircuitPeeringArpInfo -ServiceKey $ckt -AccessType Microsoft -Path Secondary
+# ARP table for Microsoft peering--secondary path
+Get-AzureDedicatedCircuitPeeringArpInfo -ServiceKey $ckt -AccessType Microsoft -Path Secondary
+```
 
 
 以下に示したのは、該当する 1 本のパスについての出力例です。
 
-        Age InterfaceProperty IpAddress  MacAddress    
-        --- ----------------- ---------  ----------    
-         10 On-Prem           65.0.0.1 ffff.eeee.dddd
-          0 Microsoft         65.0.0.2 aaaa.bbbb.cccc
+```output
+Age InterfaceProperty IpAddress  MacAddress    
+--- ----------------- ---------  ----------    
+ 10 On-Prem           65.0.0.1   ffff.eeee.dddd
+  0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
+```
 
 
 ## <a name="how-to-use-this-information"></a>この情報の用途
@@ -135,17 +151,21 @@ Microsoft ピアリングの ARP テーブルは、次のコマンドレット�
 * マイクロソフト側 IP アドレスの最後のオクテットは常に偶数です。
 * 3 つのピアリング (プライマリ/セカンダリ) のいずれについても、マイクロソフト側では同じ MAC アドレスが表示されます。
 
-        Age InterfaceProperty IpAddress  MacAddress    
-        --- ----------------- ---------  ----------    
-         10 On-Prem           65.0.0.1 ffff.eeee.dddd
-          0 Microsoft         65.0.0.2 aaaa.bbbb.cccc
+```output
+Age InterfaceProperty IpAddress  MacAddress    
+--- ----------------- ---------  ----------    
+ 10 On-Prem           65.0.0.1   ffff.eeee.dddd
+  0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
+```
 
 ### <a name="arp-table-when-its-on-premises-or-when-the-connectivity-provider-side-has-problems"></a>オンプレミス側または接続プロバイダー側に問題がある場合の ARP テーブル
  ARP テーブルに表示されるのは 1 件のエントリのみです。 この場合マイクロソフト側で使用されている MAC アドレスと IP アドレスとのマッピングが表示されます。
 
-        Age InterfaceProperty IpAddress  MacAddress    
-        --- ----------------- ---------  ----------    
-          0 Microsoft         65.0.0.2 aaaa.bbbb.cccc
+```output
+Age InterfaceProperty IpAddress  MacAddress    
+--- ----------------- ---------  ----------    
+   0 Microsoft         65.0.0.2  aaaa.bbbb.cccc
+```
 
 > [!NOTE]
 > このような問題が発生した場合は、問題の解決について、ご利用の接続プロバイダーにサポート要求を申請してください。

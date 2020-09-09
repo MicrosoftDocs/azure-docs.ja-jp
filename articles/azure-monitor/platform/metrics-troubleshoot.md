@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: e1ad4e53596b8228bdef5beb18aa250a9512c49f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4800234b55507b7c8d8a16d16ce4d2fef3365baa
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77659664"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829596"
 ---
 # <a name="troubleshooting-metrics-charts"></a>メトリック グラフのトラブルシューティング
 
@@ -42,7 +42,7 @@ Azure メトリックス エクスプローラーでのグラフの作成、カ�
 
 ### <a name="you-dont-have-sufficient-access-rights-to-your-resource"></a>リソースに対する十分なアクセス権がない
 
-Azure では、メトリックへのアクセスは[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) によって制御されます。 リソースのメトリックを調べるには、[監視閲覧者](../../role-based-access-control/built-in-roles.md#monitoring-reader)、[監視共同作成者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)、または[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)のメンバーである必要があります。
+Azure では、メトリックへのアクセスは、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) によって制御されます。 リソースのメトリックを調べるには、[監視閲覧者](../../role-based-access-control/built-in-roles.md#monitoring-reader)、[監視共同作成者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)、または[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)のメンバーである必要があります。
 
 **解決方法:** メトリックを調べるリソースに対して十分なアクセス許可があることを確認します。
 
@@ -68,7 +68,7 @@ Azure では、メトリックへのアクセスは[ロールベースのアク�
 
 **ゲスト OS** のメトリックを収集するには、Azure Diagnostics 拡張機能を構成するか、またはご自分のリソースの **[診断設定]** パネルを使って有効にする必要があります。
 
-**解決方法:** Azure Diagnostics 拡張機能を有効にしてもメトリックが表示されない場合は、[Azure Diagnostics 拡張機能のトラブルシューティング ガイド](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal)の手順をご覧ください。 「[ゲスト OS の名前空間とメトリックを選択できない](metrics-troubleshoot.md#cannot-pick-guest-os-namespace-and-metrics)」のトラブルシューティング手順もご覧ください
+**解決方法:** Azure Diagnostics 拡張機能を有効にしてもメトリックが表示されない場合は、[Azure Diagnostics 拡張機能のトラブルシューティング ガイド](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal)の手順をご覧ください。 「[ゲスト OS の名前空間とメトリックを選択できない](#cannot-pick-guest-os-namespace-and-metrics)」のトラブルシューティング手順もご覧ください
 
 ## <a name="error-retrieving-data-message-on-dashboard"></a>ダッシュボードに "データの取得中にエラーが発生しました" というメッセージが表示される
 
@@ -106,7 +106,7 @@ Azure のメトリック グラフでは、2 つの既知の時間グレイン �
     > [!WARNING]
     > [Log Analytics エージェント](agents-overview.md#log-analytics-agent) (Microsoft Monitoring Agent または "MMA" とも呼ばれます) を使って**ゲスト OS** をストレージ アカウントに送信することはできません。
 
-1. **Microsoft.Insights** リソース プロバイダーが[ご利用のサブスクリプションに登録されている](metrics-troubleshoot.md#microsoftinsights-resource-provider-isnt-registered-for-your-subscription)ことを確認します。
+1. **Microsoft.Insights** リソース プロバイダーが[ご利用のサブスクリプションに登録されている](#microsoftinsights-resource-provider-isnt-registered-for-your-subscription)ことを確認します。
 
 1. ストレージ アカウントがファイアウォールによって保護されていないことを確認します。 Azure portal では、メトリック データを取得してグラフをプロットするために、ストレージ アカウントにアクセスする必要があります。
 

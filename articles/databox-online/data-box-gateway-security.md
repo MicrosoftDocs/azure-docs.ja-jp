@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 2476cf360909374f711564fb5fad5c9e0706083d
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 2711160534270f38845ab7b48234f4a441c236b4
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562476"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195867"
 ---
 # <a name="azure-data-box-gateway-security-and-data-protection"></a>Azure Data Box Gateway のセキュリティとデータ保護
 
@@ -27,7 +27,6 @@ Data Box Gateway ソリューションは、互いに連携し合う 4 つのメ
 - **Data Box Gateway デバイス**。 お客様が用意するシステムのハイパーバイザー内にプロビジョニングする仮想デバイスです。 この仮想デバイスは、オンプレミス データを Azure にインポートするために使用されます。
 - **デバイスに接続されるクライアント/ホスト**。 Data Box Gateway デバイスに接続し、保護する必要があるデータを含んでいるインフラストラクチャ内のクライアント。
 - **クラウド ストレージ**。 データが格納されている Azure クラウド プラットフォーム内の場所。 通常、この場所は、お客様が作成した Data Box Gateway リソースにリンクされたストレージ アカウントになります。
-
 
 ## <a name="data-box-gateway-service-protection"></a>Data Box Gateway サービスの保護
 
@@ -64,7 +63,6 @@ Azure サブスクリプションで作成した Data Box Gateway サービス�
 [!INCLUDE [data-box-edge-gateway-password-best-practices](../../includes/data-box-edge-gateway-password-best-practices.md)]
 - ローカル Web UI を使用して[パスワードを変更します](data-box-gateway-manage-access-power-connectivity-mode.md#manage-device-access)。 パスワードを変更する場合は、サインインの問題が発生しないように、必ずすべてのリモート アクセス ユーザーに通知してください。
 
-
 ## <a name="protect-your-data"></a>データを保護する
 
 ここでは、移動中のデータと保管されているデータを保護する Data Box Gateway のセキュリティ機能について説明します。
@@ -77,10 +75,18 @@ Azure サブスクリプションで作成した Data Box Gateway サービス�
 
 [!INCLUDE [data-box-edge-gateway-data-flight](../../includes/data-box-edge-gateway-data-flight.md)]
 
-### <a name="protect-data-via-storage-accounts"></a>ストレージ アカウントによるデータの保護
+### <a name="protect-data-using-storage-accounts"></a>ストレージ アカウントを使用したデータの保護
 
 [!INCLUDE [data-box-edge-gateway-data-storage-accounts](../../includes/data-box-edge-gateway-protect-data-storage-accounts.md)]
+
 - 承認されていないユーザーからのストレージ アカウントの保護に役立つように、定期的にストレージ アカウント キーをローテーションし、その後[同期](data-box-gateway-manage-shares.md#sync-storage-keys)します。
+
+### <a name="protect-the-device-data-using-bitlocker"></a>BitLocker を使用したデバイス データの保護
+
+Data Box Gateway の仮想マシン上の仮想ディスクをセキュリティで保護するには、BitLocker を有効にすることをお勧めします。 既定では、BitLocker は有効になっていません。 詳細については、次を参照してください。
+
+- [Hyper-V マネージャーでの暗号化サポート設定](h https://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
+- [仮想マシンでの BitLocker のサポート](https://kb.vmware.com/s/article/2036142)
 
 ## <a name="manage-personal-information"></a>個人情報の管理
 
@@ -90,7 +96,7 @@ Data Box Gateway サービスは、次のシナリオの個人情報を収集し
 
 共有にアクセスできる、または削除できるユーザーの一覧を表示するには、[Data Box Gateway での共有の管理](data-box-gateway-manage-shares.md)に関するページにある手順に従ってください。
 
-詳細については、[Security Center](https://www.microsoft.com/trustcenter)で Microsoft のプライバシー ポリシーを確認してください。
+詳細については、[トラスト センター](https://www.microsoft.com/trustcenter)で Microsoft のプライバシー ポリシーを確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 

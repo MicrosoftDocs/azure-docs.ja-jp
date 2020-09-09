@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 83e1e11fe38a21bbd7c44139fac562342bcab866
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8e575cf9bba02a59179cc70870fb680a27648963
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229648"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201177"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C カスタム ポリシーでの要求リゾルバーについて
 
@@ -26,7 +26,7 @@ Azure Active Directory B2C (Azure AD B2C) [カスタム ポリシー](custom-pol
 
 次の例では、`correlationId` という名前の要求の種類が、`string` の **DataType** で定義されています。
 
-```XML
+```xml
 <ClaimType Id="correlationId">
   <DisplayName>correlationId</DisplayName>
   <DataType>string</DataType>
@@ -36,7 +36,7 @@ Azure Active Directory B2C (Azure AD B2C) [カスタム ポリシー](custom-pol
 
 技術プロファイルでは、要求リゾルバーが要求の種類にマップされます。 Azure AD B2C では、要求リゾルバー `{Context:CorrelationId}` の値が要求 `correlationId` に設定されて、技術プロファイルに要求が送信されます。
 
-```XML
+```xml
 <InputClaim ClaimTypeReferenceId="correlationId" DefaultValue="{Context:CorrelationId}" />
 ```
 
@@ -157,7 +157,7 @@ OIDC 要求または OAuth2 要求の一部に含まれているすべてのパ�
 
 このシナリオを使用する RESTful 技術プロファイルの例を次に示します。
 
-```XML
+```xml
 <TechnicalProfile Id="REST">
   <DisplayName>Validate user input data and return loyaltyNumber claim</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -187,7 +187,7 @@ Azure AD B2C を使用すると、HTML コンテンツ定義エンドポイン�
 
 次の例では、名前が **campaignId** で値が `Hawaii` のクエリ文字列パラメーター、**language** コード `en-US`、およびクライアント ID を表す **app** を渡しています。
 
-```XML
+```xml
 <UserJourneyBehaviors>
   <ContentDefinitionParameters>
     <Parameter Name="campaignId">{OAUTH-KV:campaignId}</Parameter>
@@ -207,7 +207,7 @@ Azure AD B2C を使用すると、HTML コンテンツ定義エンドポイン�
 
 [ContentDefinition](contentdefinitions.md) `LoadUri`では、使用されるパラメーターに基づいて、さまざまな場所からコンテンツをプルする要求リゾルバーを送信できます。
 
-```XML
+```xml
 <ContentDefinition Id="api.signuporsignin">
   <LoadUri>https://contoso.blob.core.windows.net/{Culture:LanguageName}/myHTML/unified.html</LoadUri>
   ...
@@ -218,7 +218,7 @@ Azure AD B2C を使用すると、HTML コンテンツ定義エンドポイン�
 
 Azure Application Insights と要求リゾルバーを使用すると、ユーザーの動作に関する分析情報を取得できます。 Application Insights の技術プロファイルでは、Azure Application Insights に保持される入力要求を送信します。 詳しくは、「[Application Insights を使用した Azure AD B2C 体験でのユーザー動作の追跡](analytics-with-application-insights.md)」をご覧ください。 次の例では、ポリシー ID、相関 ID、言語、クライアント ID を Azure Application Insights に送信しています。
 
-```XML
+```xml
 <TechnicalProfile Id="AzureInsights-Common">
   <DisplayName>Alternate Email</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.Insights.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -236,7 +236,7 @@ Azure Application Insights と要求リゾルバーを使用すると、ユー�
 
 [証明書利用者](relyingparty.md) ポリシー技術プロファイルでは、テナント ID または関連付け ID を JWT 内の証明書利用者アプリケーションに送信することができます。
 
-```XML
+```xml
 <RelyingParty>
     <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
     <TechnicalProfile Id="PolicyProfile">

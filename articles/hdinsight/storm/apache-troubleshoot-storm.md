@@ -10,11 +10,11 @@ ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: b51b2c21fd9256c93f6947386a48336af2b75d88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233455"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84700367"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Storm のトラブルシューティング
 

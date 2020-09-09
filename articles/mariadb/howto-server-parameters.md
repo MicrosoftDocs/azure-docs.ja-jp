@@ -4,20 +4,20 @@ description: この記事では、Azure portal を使用して Azure Database fo
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
-ms.date: 4/16/2020
-ms.openlocfilehash: f39e9450fb922e5b93d7b4b809df73cf5ab007c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 6/11/2020
+ms.openlocfilehash: 53ba3c71679ebda1e8e2bf0a59a6ef69d051df4f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81602401"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120417"
 ---
-# <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MariaDB のサーバー パラメーターを構成する方法
+# <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MariaDB サーバーのサーバー パラメーターを構成する
 
 Azure Database for MariaDB では、いくつかのサーバー パラメーターの構成がサポートされています｡ この記事では、Azure Portal を使用してこれらのパラメーターを構成する方法について説明します。 すべてのサーバー パラメーターを調整できるわけではありません。
 
-## <a name="navigate-to-server-parameters-on-azure-portal"></a>Azure ポータルの [サーバー パラメーター] に移動する
+## <a name="configure-server-parameters"></a>サーバー パラメーターの構成
 
 1. Azure portal にサインインし、お使いの Azure Database for MariaDB サーバーを探します。
 2. **[設定]** セクションの **[サーバー パラメーター]** をクリックして、Azure Database for MariaDB サーバーの [サーバー パラメーター] ページを開きます。
@@ -29,41 +29,16 @@ Azure Database for MariaDB では、いくつかのサーバー パラメータ�
 5. パラメーターの新しい値を保存した場合は、 **[すべて既定値にリセット]** を選択していつでもすべてを既定値に戻すことができます。
 ![すべて既定値にリセット](./media/howto-server-parameters/5-reset_parameters.png)
 
-## <a name="list-of-configurable-server-parameters"></a>構成可能なサーバー パラメーターの一覧
+## <a name="setting-parameters-not-listed"></a>設定パラメーターが一覧に含まれていない
 
-サポートされるサーバー パラメーターの一覧は、拡大を続けています。 Azure ポータルのサーバー パラメーターのタブを使用して定義を取得し、お使いのアプリケーションの要件に基づいてサーバー パラメーターを構成します。
+更新するサーバー パラメーターが Azure portal に一覧表示されていない場合は、必要に応じて `init_connect` を使用して、接続レベルでパラメーターを設定できます。 これにより、サーバーに接続する各クライアントのサーバー パラメーターが設定されます。 
 
-## <a name="non-configurable-server-parameters"></a>構成不可能なサーバー パラメーター
+1. **[設定]** セクションの **[サーバー パラメーター]** をクリックして、Azure Database for MariaDB サーバーの [サーバー パラメーター] ページを開きます。
+2. `init_connect` を検索します
+3. 値の列に `SET parameter_name=YOUR_DESIRED_VALUE` の形式でサーバー パラメーターを追加します。
 
-InnoDB バッファー プールと最大接続数は構成できず、[価格レベル](concepts-pricing-tiers.md)に関連付けられています。
-
-|**価格レベル**| **仮想コア数**|**InnoDB バッファー プール (MB)**|
-|---|---|---|
-|Basic| 1| 1024|
-|Basic| 2| 2560|
-|General Purpose| 2| 3584|
-|General Purpose| 4| 7680|
-|General Purpose| 8| 15360|
-|General Purpose| 16| 31232|
-|General Purpose| 32| 62976|
-|General Purpose| 64| 125952|
-|メモリ最適化| 2| 7168|
-|メモリ最適化| 4| 15360|
-|メモリ最適化| 8| 30720|
-|メモリ最適化| 16| 62464|
-|メモリ最適化| 32| 125952|
-
-次に示す追加のサーバー パラメーターは、システム内で構成できません。
-
-|**パラメーター**|**固定値**|
-| :------------------------ | :-------- |
-|Basic レベルの innodb_file_per_table|OFF|
-|innodb_flush_log_at_trx_commit|1|
-|sync_binlog|1|
-|innodb_log_file_size|256MB|
-|innodb_log_files_in_group|2|
-
-ここに記載されていないその他のサーバー パラメーターはすべて、[MariaDB](https://mariadb.com/kb/en/library/xtradbinnodb-server-system-variables/) に対する MariaDB の初期既定値に設定されます。
+    たとえば、`init_connect` を `SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;` に設定すると、サーバーの文字セットを変更できます
+4. **[保存]** をクリックして変更を保存します。
 
 ## <a name="working-with-the-time-zone-parameter"></a>タイム ゾーン パラメーターを使用する
 
@@ -102,8 +77,6 @@ SET time_zone = 'US/Pacific';
 
 [日付と時刻関数](https://mariadb.com/kb/en/library/convert_tz/)については MariaDB ドキュメントを参照してください。
 
-<!--
-## Next steps
+## <a name="next-steps"></a>次のステップ
 
-- [Connection libraries for Azure Database for MariaDB](concepts-connection-libraries.md).
--->
+- [サーバー パラメーター](concepts-server-parameters.md)についてさらに学習します

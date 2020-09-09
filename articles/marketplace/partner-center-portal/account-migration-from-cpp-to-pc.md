@@ -1,18 +1,18 @@
 ---
 title: Cloud パートナー ポータルから Microsoft コマーシャル マーケットプレースにアカウントを移行する
 description: ご自分のアカウントを、Cloud パートナー ポータルから Azure 用の Microsoft コマーシャル マーケットプレースのパートナー センターに移行する方法について説明します
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: parthpandyaMSFT
+ms.author: parthp
 ms.date: 09/23/2019
-ms.openlocfilehash: fb6fe624248a9098f37b94773b7162052b94b5ae
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: fbf76f846395d6bf0b02828ab1d6ad8b70c97784
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800412"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289332"
 ---
 # <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>Cloud パートナー ポータルからパートナー センターにアカウントを移行する方法
 
@@ -27,7 +27,7 @@ CPP で所有者ロールを持っているユーザーの場合は、[発行元
 
 ### <a name="your-account-has-been-migrated-to-partner-center"></a>アカウントがパートナー センターに移行されている
 
-CPP からパートナー センターへの移行が完了しているすべてのアカウントについては、アカウント管理はパートナー センターで行われます。 ユーザーの追加や削除などの変更は、CPP に同期されます。
+パートナー センターでアカウントを管理するようになりました。 ユーザーの追加や削除などの変更は、CPP に同期されます。
 
 ### <a name="you-have-not-yet-migrated-your-account-to-partner-center"></a>アカウントがまだパートナー センターに移行されていない
 
@@ -45,7 +45,7 @@ CPP からパートナー センターへの移行が完了しているすべて
 
 ## <a name="publishers-moving-from-cpp"></a>CPP から移行されている発行元
 
-アカウントを [Cloud パートナー ポータル (CPP)](https://cloudpartner.azure.com) から移行済みの場合は、新しいパートナー センター アカウントを作成する必要はありません。 新しいパートナー センター アカウントへのカスタマイズされたリンクを、電子メールや既存の CPP アカウントへのログイン後のバナー通知で受け取っているはずです。
+アカウントを CPP から移行済みの場合は、新しいパートナー センター アカウントを作成する必要はありません。 新しいパートナー センター アカウントへのカスタマイズされたリンクを、電子メールや既存の CPP アカウントへのログイン後のバナー通知で受け取っているはずです。
 
 このカスタマイズされたリンクにアクセスして、新しいパートナー センター アカウントを有効にした後は、パートナー センターで[コマーシャル マーケットプレース ダッシュボード](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)にアクセスして、アカウントに戻ることができます。
 
@@ -59,7 +59,7 @@ Microsoft との提携を希望される企業は、Microsoft Partner Network (M
 
 Microsoft Partner Network のメンバーでない場合は、[こちらで参加](https://signup.microsoft.com/signup?sku=StoreForBusinessIW&origin=partnerdashboard&culture=en-us&ru=https://partner.microsoft.com/dashboard/account/v3/xpu/onboard?ru=/dashboard/account/v3/enrollment/companyprofile/basicpartnernetwork/new)して MPN ID を取得できます。 アカウントのアクティブ化プロセスで入力する必要があるため、MPN ID をメモしておきます。
 
-Microsoft Partner Network の詳細については、パートナー Web サイト「[Microsoft Partner Network に参加する](https://partner.microsoft.com/en-US/membership)」を参照してください。 Microsoft Partner Network の ISV 特典の詳細については、「[ISV リソース ハブ](https://partner.microsoft.com/isv-resource-hub)」を参照してください。  
+Microsoft Partner Network の詳細については、パートナー Web サイト「[Microsoft Partner Network に参加する](https://partner.microsoft.com/membership)」を参照してください。 Microsoft Partner Network の ISV 特典の詳細については、「[ISV リソース ハブ](https://partner.microsoft.com/isv-resource-hub)」を参照してください。  
 
 ## <a name="move-dynamics-365-and-powerapps-offers-to-partner-center"></a>Dynamics 365 と PowerApps のオファーをパートナー センターに移行する
 

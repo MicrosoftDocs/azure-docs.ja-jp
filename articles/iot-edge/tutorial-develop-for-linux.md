@@ -4,17 +4,17 @@ description: このチュートリアルでは、Linux コンテナーを使用�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/11/2019
+ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 478d9c0485125870f8d5ffb4132f46476b4bb4ef
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 7ec61bf4db949649c993fad4a3255b55626cb259
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384366"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056229"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>チュートリアル:Linux のデバイス用の IoT Edge モジュールを開発する
 
@@ -63,7 +63,7 @@ IoT Edge モジュールを開発する場合は、開発マシンと、モジ�
 
 * 開発設定に応じて、独自のコンピューターまたは仮想マシンを使用できます。
   * 開発用マシンで、入れ子になった仮想化がサポートされていることを確認します。 この機能は、次のセクションでインストールするコンテナー エンジンを実行するために必要です。
-* コンテナー エンジンを実行できるほとんどのオペレーティング システムを使用して、Linux デバイス用の IoT Edge モジュールを開発することができます。 このチュートリアルでは、Windows コンピューターを使用しますが、MacOS または Linux での既知の相違点を指摘します。
+* コンテナー エンジンを実行できるほとんどのオペレーティング システムを使用して、Linux デバイス用の IoT Edge モジュールを開発することができます。 このチュートリアルでは、Windows コンピューターを使用しますが、macOS または Linux での既知の相違点を指摘します。
 * このチュートリアルの後半でモジュール テンプレート パッケージをプルするために、[Git](https://git-scm.com/) をインストールします。  
 * [Visual Studio Code 用の C# (OmniSharp を使用) 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
@@ -134,7 +134,7 @@ Visual Studio Code のコマンド パレットで、次を検索して選択し
    | Provide a solution name (ソリューション名の指定) | ソリューションのためにわかりやすい名前を入力するか、既定値の **EdgeSolution** をそのまま使用します。 |
    | Select module template (モジュール テンプレートの選択) | **C# モジュール**を選択します。 |
    | Provide a module name (モジュール名の指定) | 既定の **SampleModule** を受け入れます。 |
-   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 前の手順で指定した名前がコンテナー イメージに事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリのログイン サーバーの値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br> 最終的なイメージ リポジトリは、\<レジストリ名\>.azurecr.io/samplemodule のようになります。 |
+   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 前の手順で指定した名前がコンテナー イメージに事前設定されます。 **localhost:5000** を、Azure Container Registry の**ログイン サーバー**の値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーの値を取得できます。 <br><br> 最終的なイメージ リポジトリは、\<registry name\>.azurecr.io/samplemodule のようになります。 |
 
    ![Docker イメージ リポジトリを指定する](./media/tutorial-develop-for-linux/image-repository.png)
 
@@ -151,6 +151,9 @@ Visual Studio Code のコマンド パレットで、次を検索して選択し
 ### <a name="provide-your-registry-credentials-to-the-iot-edge-agent"></a>レジストリの資格情報を IoT Edge エージェントに提供する
 
 コンテナー レジストリの資格情報は、環境ファイルに格納され、IoT Edge ランタイムと共有されます。 ランタイムでは、コンテナー イメージを IoT Edge デバイスにプルするためにこれらの資格情報が必要です。
+
+>[!NOTE]
+>「[**プロジェクト テンプレートを作成する**](#create-a-project-template)」手順で、**localhost: 5000** の値を Azure コンテナー レジストリのログイン サーバーの値で置き換えていない場合は、 **.env** ファイルと、配置マニフェストの registryCredentials セクションは見つかりません。 
 
 IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格情報をプルし、それらを環境ファイルに取り込もうとします。 資格情報が既に含まれているかどうかを確認します。 含まれていない場合は、次のようにして追加します。
 
@@ -172,7 +175,7 @@ IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格�
 
 作成したソリューション テンプレートには、IoT Edge モジュールのサンプル コードが含まれています。 このサンプル モジュールは、単にメッセージを受け取って渡すだけです。 パイプライン機能は、モジュールがどのようにして相互に通信を行うかという、IoT Edge での重要な概念を示します。
 
-各モジュールは、コードで宣言された複数の *入力*キューと *出力*キューを持つことができます。 デバイスで実行されている IoT Edge ハブは、1 つのモジュールの出力から、1 つ以上のモジュールの入力にメッセージをルーティングします。 入力と出力を宣言するための特定の言語は、言語によって異なりますが、その概念はすべてのモジュールで同じです。 モジュール間のルーティングの詳細については、[ルートの宣言](module-composition.md#declare-routes)に関する記事を参照してください。
+各モジュールは、コードで宣言された複数の *入力*キューと *出力*キューを持つことができます。 デバイスで実行されている IoT Edge ハブは、1 つのモジュールの出力から、1 つ以上のモジュールの入力にメッセージをルーティングします。 入力と出力を宣言するための特定のコードは、言語によって異なりますが、その概念はすべてのモジュールで同じです。 モジュール間のルーティングの詳細については、[ルートの宣言](module-composition.md#declare-routes)に関する記事を参照してください。
 
 プロジェクト テンプレートに含まれるサンプル C# コードには、.NET 用 IoT Hub SDK の [ModuleClient クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)が使用されています。
 
@@ -194,11 +197,11 @@ IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格�
 
 7. $edgeAgent の必要なプロパティの **modules** プロパティを見つけます。
 
-   ここには 2 つのモジュールがリストされているはずです。 1 つ目は **SimulatedTemperatureSensor** で、これは既定ですべてのテンプレートに含まれており、モジュールをテストするために使用できるシミュレートされた温度データを提供します。 2 つ目は、このソリューションの一部として作成した **SampleModule** モジュールです。
+   ここには 2 つのモジュールがリストされているはずです。 1 つは **SimulatedTemperatureSensor** で、これは既定ですべてのテンプレートに含まれており、モジュールをテストするために使用できるシミュレートされた温度データを提供します。 もう 1 つは、このソリューションの一部として作成した **SampleModule** モジュールです。
 
 8. ファイルの下部には、 **$edgeHub** モジュールの必要なプロパティがあります。
 
-   IoT Edge ハブ モジュールの機能の 1 つは、デプロイ内のすべてのモジュール間でメッセージをルーティングすることです。 **routes** プロパティの値を確認します。 最初のルートである **SampleModuleToIoTHub** は、ワイルドカード文字 ( **\*** ) を使用して、SampleModule モジュール内のどの出力キューからのメッセージも示します。 これらのメッセージは、IoT Hub を示す予約名である *$upstream* に入ります。 2 番目のルートである sensorToSampleModule は、SimulatedTemperatureSensor モジュールからのメッセージを受け取り、SampleModule コードで初期化されているのを確認した *input1* 入力キューにルーティングします。
+   IoT Edge ハブ モジュールの機能の 1 つは、デプロイ内のすべてのモジュール間でメッセージをルーティングすることです。 **routes** プロパティの値を確認します。 ルートの 1 つである **SampleModuleToIoTHub** は、ワイルドカード文字 ( **\*** ) を使用して、SampleModule モジュール内のどの出力キューからのメッセージも示します。 これらのメッセージは、IoT Hub を示す予約名である *$upstream* に入ります。 もう 1 つのルートである **sensorToSampleModule** は、SimulatedTemperatureSensor モジュールからのメッセージを受け取り、SampleModule コードで初期化されているのを確認した *input1* 入力キューにルーティングします。
 
    ![deployment.template.json でルートを確認する](./media/tutorial-develop-for-linux/deployment-routes.png)
 
@@ -212,13 +215,19 @@ IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格�
 
 1. **[表示]**  >  **[ターミナル]** の順に選択して、Visual Studio Code 統合ターミナルを開きます。
 
-2. レジストリを作成した後に保存した Azure コンテナー レジステリの資格情報を使用して Docker にサインインします。
+2. レジストリを作成した後に保存した Azure Container Registry の資格情報を使用して Docker にサインインします。
 
    ```cmd/sh
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
    `--password-stdin` の使用を推奨するセキュリティ警告が表示される場合があります。 このベスト プラクティスは、運用環境のシナリオを対象に推奨されていますが、それはこのチュートリアルの範囲外になります。 詳細については、[docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) のリファレンスをご覧ください。
+   
+3. Azure Container Registry にログインする
+
+   ```cmd/sh
+   az acr login -n <ACR registry name>
+   ```
 
 ### <a name="build-and-push"></a>ビルドとプッシュ
 
@@ -262,7 +271,7 @@ Visual Studio Code がコンテナー レジストリにアクセスできるよ
 モジュール イメージをビルドおよびプッシュしているときにエラーが発生する場合は、開発マシン上の Docker 構成に関連していることがよくあります。 次のチェックを使用して構成を確認してください。
 
 * コンテナー レジストリからコピーした資格情報を使用して `docker login` コマンドを実行したか。 これらの資格情報は、Azure にサインインする際に使用するものとは異なります。
-* コンテナー リポジトリは正しいか。 正しいコンテナー レジストリ名と正しいモジュール名が含まれているか。 SampleModule フォルダー内の **module.json** ファイルを開いて確認してください。 リポジトリ値は、 **\<レジストリ名\>.azurecr.io/samplemodule** のようになっているはずです。
+* コンテナー リポジトリは正しいか。 正しいコンテナー レジストリ名と正しいモジュール名が含まれているか。 SampleModule フォルダー内の **module.json** ファイルを開いて確認してください。 リポジトリ値は、 **\<registry name\>.azurecr.io/samplemodule** のようになっているはずです。
 * **SampleModule** とは異なる名前を自分のモジュールに使用した場合、その名前はソリューション全体で一貫しているか。
 * 対象のマシンは、ビルドしているのと同じ種類のコンテナーを実行しているか。 このチュートリアルは Linux IoT Edge デバイスを対象としているため、Visual Studio Code のサイド バーには **amd64** または **arm32v7** と表示され、Docker Desktop は Linux コンテナーを実行している必要があります。  
 
@@ -270,7 +279,7 @@ Visual Studio Code がコンテナー レジストリにアクセスできるよ
 
 ビルドしたコンテナー イメージがコンテナー レジストリに格納されているのを確認したので、次にそれらをデバイスにデプロイします。 お使いの IoT Edge デバイスが稼働していることを確認します。
 
-1. Visual Studio Code エクスプローラーで、[Azure IoT Hub Devices] (Azure IoT Hub デバイス) セクションを展開します。
+1. Visual Studio Code エクスプローラーの **[Azure IoT Hub]** セクションで、 **[デバイス]** を展開して IoT デバイスの一覧を表示します。
 
 2. デプロイ先の IoT Edge デバイスを右クリックし、次に **[Create Deployment for Single Device]\(単一デバイスのデプロイの作成\)** を選択します。
 
@@ -280,9 +289,7 @@ Visual Studio Code がコンテナー レジストリにアクセスできるよ
 
    deployment.template.json ファイルは使用しないでください。これには、コンテナー レジストリ資格情報もモジュール イメージの値も含まれていません。 Linux ARM32 デバイスを対象としている場合、配置マニフェストの名前は deployment.arm32v7.json になります。
 
-4. IoT Edge デバイスの詳細を展開し、次に、使用するデバイスの**モジュール**一覧を展開します。
-
-5. SimulatedTemperatureSensor と SampleModule モジュールがデバイスで実行されているのを確認できるまで、[最新の情報に更新] ボタンを使用してデバイス ビューを更新してください。
+4. お使いのデバイスの **[モジュール]** を展開し、デプロイされて実行中のモジュールの一覧を表示します。 更新ボタンをクリックします。 デバイスで実行されている新しい SimulatedTemperatureSensor および SampleModule モジュールが表示されます。
 
    両方のモジュールが開始するまでに数分かかる場合があります。 IoT Edge ランタイムは、新しい配置マニフェストを受け取り、コンテナー ランタイムからモジュール イメージを取得して、それぞれの新しいモジュールを開始する必要があります。
 
@@ -321,6 +328,14 @@ SampleModule コードは、入力キューを介してメッセージを受け�
    IoT Edge モジュールでは大文字と小文字の区別があります。
 
    SimulatedTemperatureSensor と SampleModule のログには、処理しているメッセージが表示されるはずです。 edgeAgent モジュールには、他のモジュールを開始する責任があります。そのため、そのログには、配置マニフェストの実装に関する情報が含まれます。 いずれかのモジュールが一覧に表示されていない、または実行されていない場合は、おそらく edgeAgent のログにエラーが書き込まれます。 edgeHub モジュールは、モジュールと IoT Hub 間の通信を担当します。 モジュールは稼働しているが、メッセージが IoT ハブに到着していない場合は、おそらく edgeHub のログにエラーが書き込まれます。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+次の推奨記事に進む場合は、作成したリソースおよび構成を維持して、再利用することができます。 また、同じ IoT Edge デバイスをテスト デバイスとして使用し続けることもできます。
+
+そうでない場合は、課金されないようにするために、ローカル構成と、この記事で使用した Azure リソースを削除できます。
+
+[!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

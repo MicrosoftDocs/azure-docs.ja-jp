@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 23e4d104697b5b688330c6ab3a93beebf62f3c6a
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: b05007e2ea7815afbba2a7a71368686cf7c049fb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799961"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325612"
 ---
 # <a name="metrics-in-azure-monitor"></a>Azure Monitor のメトリック
 
@@ -29,15 +29,15 @@ Azure Monitor のログは軽量であり、ほぼリアルタイムのシナリ
 ## <a name="what-can-you-do-with-azure-monitor-metrics"></a>Azure Monitor のメトリックでできること
 次の表に、Azure Monitor でメトリック データを使用できるさまざまな方法を示します。
 
-|  |  |
+|  | 説明 |
 |:---|:---|
-| 分析 | [メトリックス エクスプローラー](metrics-charts.md)を使用して、収集されたメトリックをグラフで分析し、異なるリソースからのメトリックを比較します。 |
-| 視覚化 | メトリックス エクスプローラーのグラフを [Azure ダッシュボード](../learn/tutorial-app-dashboards.md)にピン留めします。<br>[ブック](../platform/workbooks-overview.md)を作成して、複数のデータのセットを対話型のレポートにまとめます。クエリの結果を [Grafana](grafana-plugin.md) にエクスポートし、そのダッシュボードを利用して他のデータ ソースと組み合わせます。 |
-| アラート: | メトリックがしきい値を超えたときに、通知を送信または[自動化されたアクション](action-groups.md)を実行する[メトリック アラート ルール](alerts-metric.md)を構成します。 |
-| 自動化 |  [自動スケーリング](autoscale-overview.md)を使用して、しきい値を超えるメトリック値に基づいてリソースを増加または減少させます。 |
-| エクスポート | [メトリックをログにルーティング](resource-logs-collect-storage.md)して、Azure Monitor メトリックのデータと Azure Monitor ログのデータを一緒に分析し、93 日間より長くメトリック値を保存します。<br>メトリックを [Event Hub](stream-monitoring-data-event-hubs.md) にストリーミングして、外部システムにルーティングします。 |
-| 取得 | [PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/az.applicationinsights)を使用して、コマンド ラインからメトリック値にアクセスします。<br>[REST API](rest-api-walkthrough.md) を使用して、カスタム アプリケーションからメトリック値にアクセスします。<br>[CLI](/cli/azure/monitor/metrics) を使用して、コマンド ラインからメトリック値にアクセスします。 |
-| アーカイブ | コンプライアンス、監査、オフライン レポートの目的で、リソースのパフォーマンスや正常性の履歴を[アーカイブ](..//learn/tutorial-archive-data.md)します。 |
+| **分析** | [メトリックス エクスプローラー](metrics-charts.md)を使用して、収集されたメトリックをグラフで分析し、異なるリソースからのメトリックを比較します。 |
+| **視覚化** | メトリックス エクスプローラーのグラフを [Azure ダッシュボード](../learn/tutorial-app-dashboards.md)にピン留めします。<br>[ブック](./workbooks-overview.md)を作成して、複数のデータのセットを対話型のレポートにまとめます。クエリの結果を [Grafana](grafana-plugin.md) にエクスポートし、そのダッシュボードを利用して他のデータ ソースと組み合わせます。 |
+| **Alert** | メトリックがしきい値を超えたときに、通知を送信または[自動化されたアクション](action-groups.md)を実行する[メトリック アラート ルール](alerts-metric.md)を構成します。 |
+| **自動化** |  [自動スケーリング](autoscale-overview.md)を使用して、しきい値を超えるメトリック値に基づいてリソースを増加または減少させます。 |
+| **エクスポート** | [メトリックをログにルーティング](./resource-logs.md#send-to-azure-storage)して、Azure Monitor メトリックのデータと Azure Monitor ログのデータを一緒に分析し、93 日間より長くメトリック値を保存します。<br>メトリックを [Event Hub](stream-monitoring-data-event-hubs.md) にストリーミングして、外部システムにルーティングします。 |
+| **取得** | [PowerShell コマンドレット](/powershell/module/az.applicationinsights)を使用して、コマンド ラインからメトリック値にアクセスします。<br>[REST API](rest-api-walkthrough.md) を使用して、カスタム アプリケーションからメトリック値にアクセスします。<br>[CLI](/cli/azure/monitor/metrics) を使用して、コマンド ラインからメトリック値にアクセスします。 |
+| **Archive** | コンプライアンス、監査、オフライン レポートの目的で、リソースのパフォーマンスや正常性の履歴を[アーカイブ](./platform-logs-overview.md)します。 |
 
 ## <a name="how-is-data-in-azure-monitor-metrics-structured"></a>Azure Monitor メトリックのデータの構造
 Azure Monitor メトリックによって収集されるデータは、タイムスタンプ付きのデータの分析用に最適化された時系列データベースに保存されます。 メトリック値の各セットは、次のプロパティを持つ時系列です。
@@ -89,7 +89,7 @@ Azure Monitor によって収集されるメトリックのソースには、基
 
 **プラットフォームのメトリック**は Azure リソースによって作成され、リソースの正常性とパフォーマンスについての可視化を提供します。 リソースの種類ごとに[別個のメトリックのセット](metrics-supported.md)が作成され、必要な構成はありません。 メトリックの定義で特に指定がない限り、プラットフォーム メトリックは 1 分間隔で Azure リソースから収集されます。 
 
-**ゲスト OS メトリック**は、仮想マシンのゲスト オペレーティング システムから収集されます。 Windows 仮想マシンの場合は [Windows Diagnostic Extension (WAD)](../platform/diagnostics-extension-overview.md) を使用し、Linux 仮想マシンの場合は [InfluxData Telegraf エージェント](https://www.influxdata.com/time-series-platform/telegraf/)を使用して、ゲスト OS メトリックを有効にします。
+**ゲスト OS メトリック**は、仮想マシンのゲスト オペレーティング システムから収集されます。 Windows 仮想マシンの場合は [Windows Diagnostic Extension (WAD)](./diagnostics-extension-overview.md) を使用し、Linux 仮想マシンの場合は [InfluxData Telegraf エージェント](https://www.influxdata.com/time-series-platform/telegraf/)を使用して、ゲスト OS メトリックを有効にします。
 
 **アプリケーション メトリック**は、監視対象のアプリケーションについて Application Insights によって作成され、パフォーマンスの問題を検出し、アプリケーションがどのように使用されているかの傾向を追跡する助けになります。 これには、_サーバー応答時間_ と _ブラウザー例外_ などの値が含まれます。
 
@@ -99,7 +99,7 @@ Azure Monitor によって収集されるメトリックのソースには、基
 Azure の多くのリソースでは、メトリックは 93 日間保存されます。 ただし、例外があります。
 
 **ゲスト OS メトリック**
--   **クラシック ゲストの OS メトリック**。 これらは [Windows Diagnostic Extension (WAD)](../platform/diagnostics-extension-overview.md) または [Linux Diagnostic Extension (LAD)](../../virtual-machines/extensions/diagnostics-linux.md) によって収集され、Azure ストレージ アカウントにルーティングされるパフォーマンス カウンターです。 これらのメトリックの保有期間は 14 日です。
+-   **クラシック ゲストの OS メトリック**。 これらは [Windows Diagnostic Extension (WAD)](./diagnostics-extension-overview.md) または [Linux Diagnostic Extension (LAD)](../../virtual-machines/extensions/diagnostics-linux.md) によって収集され、Azure ストレージ アカウントにルーティングされるパフォーマンス カウンターです。 これらのメトリックの保有期間は 14 日です。
 -   **Azure Monitor メトリックに送信されるゲスト OS メトリック**。 これらは [Windows Diagnostic 拡張機能 (WAD)](diagnostics-extension-overview.md) によって収集され、[Azure Monitor データ シンク](diagnostics-extension-overview.md#data-destinations)に送信されるか、Linux マシン上の [InfluxData Telegraf エージェント](https://www.influxdata.com/time-series-platform/telegraf/)を介して収集されるパフォーマンス カウンターです。 これらのメトリックの保有期間は 93 日です。
 -   **Log Analytics エージェントによって収集されるゲスト OS メトリック**。 これらは、Log Analytics エージェントによって収集され、Log Analytics ワークスペースに送信されるパフォーマンス カウンターです。 これらのメトリックの保有期間は 31 日で、最大 2 年間まで延長できます。
 
@@ -108,7 +108,7 @@ Azure の多くのリソースでは、メトリックは 93 日間保存され�
 
 
 > [!NOTE]
-> 長期的な傾向を見るために、[Azure Monitor リソースのプラットフォーム メトリックを Log Analytics ワークスペースに送信](resource-logs-collect-storage.md)できます。
+> 長期的な傾向を見るために、[Azure Monitor リソースのプラットフォーム メトリックを Log Analytics ワークスペースに送信](./resource-logs.md#send-to-azure-storage)できます。
 
 
 
@@ -119,3 +119,4 @@ Azure の多くのリソースでは、メトリックは 93 日間保存され�
 - [Azure Monitor データ プラットフォーム](data-platform.md)の詳細を確認します。
 - [Azure Monitor のログ データ](data-platform-logs.md)について確認します。
 - Azure のさまざまなリソースで[入手できる監視データ](data-sources.md)を確認します。
+

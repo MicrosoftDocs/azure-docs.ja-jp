@@ -1,26 +1,14 @@
 ---
 title: クイック スタート:Apache Storm を使用してイベントを受信する - Azure Event Hubs
 description: クイック スタート:この記事では、Apache Storm を使用して Azure Event Hubs からイベントを受信する方法について説明します。
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
-ms.workload: na
-ms.tgt_pltfrm: java
-ms.devlang: multiple
 ms.topic: quickstart
-ms.custom: seodec18
-ms.date: 11/05/2019
-ms.author: shvija
-ms.openlocfilehash: 90293da07d3a7ef1c32e5f82d35198d4ffa536b1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 06/23/2020
+ms.openlocfilehash: 099a3ff1ad57616de0d7929d787b82e9d55c9e00
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73717613"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087579"
 ---
 # <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>クイック スタート:Apache Storm を使用して Azure Event Hubs からイベントを受信する
 
@@ -250,7 +238,7 @@ Event Hubs の詳細については、次のリンク先を参照してくださ
 * [Event Hubs の FAQ](event-hubs-faq.md)
 
 <!-- Links -->
-[Event Hubs overview]: event-hubs-what-is-event-hubs.md
+[Event Hubs overview]: ./event-hubs-about.md
 [HDInsight Storm]: ../hdinsight/storm/apache-storm-overview.md
 [イベント ハブでの HDInsight Storm の例]: https://github.com/Azure-Samples/hdinsight-java-storm-eventhub
 

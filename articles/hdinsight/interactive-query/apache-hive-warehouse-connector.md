@@ -1,27 +1,28 @@
 ---
 title: Apache Spark & Hive - Hive Warehouse Connector - Azure HDInsight
 description: Azure HDInsight 上で Hive Warehouse Connector を使用して Apache Spark と Apache Hive を統合する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: hrasheed
+author: nis-goel
+ms.author: nisgoel
+ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
-ms.custom: seoapr2020
-ms.date: 04/28/2020
-ms.openlocfilehash: 77623a89e52a5e15fbb4159ff49d9377e53e7d4c
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.topic: how-to
+ms.date: 05/28/2020
+ms.openlocfilehash: 24968511d038b2cea41a59187c0a361684c6720e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509535"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511893"
 ---
-# <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Hive Warehouse Connector を使用して Apache Spark と Apache Hive を統合する
+# <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>Azure HDInsight で Hive Warehouse Connector を使用して Apache Spark と Apache Hive を統合する
 
-Apache Hive Warehouse Connector (HWC) は、Apache Spark と Apache Hive でより簡単に作業できるようにするライブラリです。 Spark DataFrames Hive テーブル間でデータを移動するなどのタスクをサポートすることで、より簡単になります。 また、Spark ストリーミング データを Hive テーブルに転送します。 Hive Warehouse Connector は、Spark と Hive の間で橋渡しのように動作します。 Scala、Java、Python が開発用にサポートされます。
+Apache Hive Warehouse Connector (HWC) は、Apache Spark と Apache Hive でより簡単に作業できるようにするライブラリです。 Spark DataFrames と Hive テーブル間でデータを移動するなどのタスクをサポートしています。 また、Spark ストリーミング データを Hive テーブルに転送します。 Hive Warehouse Connector は、Spark と Hive の間で橋渡しのように動作します。 Scala、Java、Python も開発用のプログラミング言語としてサポートされます。
 
-Hive Warehouse Connector を使用すると、Hive および Spark の独自の機能を活用できます。 強力なビッグ データ アプリケーションを構築するために使用される機能です。 Apache Hive では、ACID (原子性、一貫性、分離性、持続性) なデータベース トランザクションがサポートされています。 Hive における ACID およびトランザクションの詳細については、「[Hive Transactions (Hive トランザクション)](https://cwiki.apache.org/confluence/display/Hive/Hive+Transactions)」を参照してください。 Hive には、Apache Ranger を通じた詳細なセキュリティ コントロールと Apache Spark では使用できない Low Latency Analytical Processing も備わっています。
+Hive Warehouse Connector を使用すると、Hive および Spark の独自の機能を活用して、強力なビッグデータ アプリケーションを構築できます。
 
-Apache Spark には、Apache Hive では使用できないストリーミング機能を提供する Structured Streaming API があります。 HDInsight 4.0 以降、Apache Spark 2.3.1 と Apache Hive 3.1.0 は異なるメタストアになっています。 これらの個別のメタストアによって相互運用性が困難になる可能性があります。 Hive Warehouse Connector によって、Spark と Hive を一緒に使用することが容易になります。 HWC ライブラリは、LLAP (低待機時間分析処理) デーモンから Spark Executor にデータを並列で読み込みます。 この操作により、Spark から Hive への標準の JDBC 接続を使用するよりも効率性と適応性が高まります。
+Apache Hive では、ACID (原子性、一貫性、分離性、持続性) なデータベース トランザクションがサポートされています。 Hive における ACID およびトランザクションの詳細については、「[Hive Transactions (Hive トランザクション)](https://cwiki.apache.org/confluence/display/Hive/Hive+Transactions)」を参照してください。 Hive には、Apache Ranger を通じた詳細なセキュリティ コントロールと、Apache Spark では使用できない Low Latency Analytical Processing (LLAP) も備わっています。
+
+Apache Spark には、Apache Hive では使用できないストリーミング機能を提供する Structured Streaming API があります。 HDInsight 4.0 以降、Apache Spark 2.3.1 と Apache Hive 3.1.0 は異なるメタストアになっています。 個別のメタストアによって相互運用性が困難になる可能性があります。 Hive Warehouse Connector によって、Spark と Hive を一緒に使用することが容易になります。 HWC ライブラリは、LLAP デーモンから Spark Executor にデータを並列で読み込みます。 このプロセスにより、Spark から Hive への標準の JDBC 接続よりも効率性と適応性が高まります。
 
 ![Hive Warehouse Connector のアーキテクチャ](./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png)
 
@@ -37,7 +38,10 @@ Hive Warehouse Connector でサポートされる操作の一部を次に示し�
 
 ## <a name="hive-warehouse-connector-setup"></a>Hive Warehouse Connector の設定
 
-次の手順に従って、Azure HDInsight の Spark および対話型クエリ クラスターの間で Hive Warehouse Connector を設定します。
+> [!IMPORTANT]
+> Spark 2.4 Enterprise セキュリティ パッケージ クラスターにインストールされている HiveServer2 Interactive インスタンスは、Hive Warehouse Connector での使用がサポートされていません。 代わりに、HiveServer2 Interactive ワークロードをホストするために、別の HiveServer2 Interactive クラスターを構成する必要があります。 単一の Spark 2.4 クラスターを利用する Hive Warehouse Connector の構成はサポートされていません。
+
+Hive Warehouse Connector には、Spark ワークロードと Interactive Query ワークロード用に、個別のクラスターが必要です。 次の手順に従って、Azure HDInsight にこれらのクラスターを設定します。
 
 ### <a name="create-clusters"></a>クラスターの作成
 
@@ -45,187 +49,147 @@ Hive Warehouse Connector でサポートされる操作の一部を次に示し�
 
 1. Spark クラスターと同じストレージ アカウントと Azure 仮想ネットワークを使って HDInsight 対話型クエリ (LLAP) **4.0** クラスターを作成します。
 
-### <a name="modify-hosts-file"></a>hosts ファイルの変更
+### <a name="configure-hwc-settings"></a>HWC 設定の構成
 
-自分の対話型クエリ クラスターの headnode0 にある `/etc/hosts` ファイルのノード情報をコピーし、自分の Spark クラスターの headnode0 にある `/etc/hosts` ファイルに情報を連結します。 この手順によって、自分の Spark クラスターが対話型クエリ クラスター内のノードの IP アドレスを解決できるようになります。 `cat /etc/hosts` を使用して、更新されたファイルの内容を表示します。 最終的な出力は、次のスクリーンショットに示されている内容のようになります。
+#### <a name="gather-preliminary-information"></a>準備情報の収集
 
-![Hive Warehouse Connector の hosts ファイル](./media/apache-hive-warehouse-connector/hive-warehouse-connector-hosts-file.png)
+1. Web ブラウザーで `https://LLAPCLUSTERNAME.azurehdinsight.net/#/main/services/HIVE` に移動します。ここで、LLAPCLUSTERNAME は Interactive Query クラスターの名前です。
 
-### <a name="gather-preliminary-information"></a>準備情報の収集
+1. **[概要]**  >  **[HiveServer2 Interactive JDBC URL]** の順に移動し、値を書き留めます。 値は次のようになります。`jdbc:hive2://zk0-iqgiro.rekufuk2y2ce.bx.internal.cloudapp.net:2181,zk1-iqgiro.rekufuk2y2ce.bx.internal.cloudapp.net:2181,zk4-iqgiro.rekufuk2y2ce.bx.internal.cloudapp.net:2181/;serviceDiscoveryMode=zooKeeper;zooKeeperNamespace=hiveserver2-interactive`
 
-#### <a name="from-your-interactive-query-cluster"></a>対話型クエリ クラスターから
+1. **[Configs]**  >  **[Advanced]**  >  **[Advanced hive-site]**  >  **[hive.zookeeper.quorum]** の順に移動し、値を書き留めます。 値は次のようになります。`zk0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk4-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181`
 
-1. `https://LLAPCLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/configs` を使用してクラスターの Apache Ambari Hive ページに移動します。`LLAPCLUSTERNAME` は、対話型クエリ クラスターの名前です。
+1. **[Configs]**  >  **[Advanced]**  >  **[General]**  >  **[hive.metastore.uris]** の順に移動し、値を書き留めます。 値は次のようになります。`thrift://iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`
 
-1. **[Advanced]**  >  **[General]**  >  **[hive.metastore.uris]** に移動し、値を書き留めます。 値は次のようになります。`thrift://iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`
+1. **[Configs]**  >  **[Advanced]**  >  **[Advanced hive-interactive-site]**  >  **[hive.llap.daemon.service.hosts]** の順に移動し、値を書き留めます。 値は次のようになります。`@llap0`
 
-1. **[Advanced]**  >  **[Advanced hive-site]**  >  **[hive.zookeeper.quorum]** に移動し、値を書き留めます。 値は次のようになります。`zk0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk4-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181`
+#### <a name="configure-spark-cluster-settings"></a>Spark クラスター設定の構成
 
-#### <a name="from-your-apache-spark-cluster"></a>Apache Spark クラスターから
+1. Web ブラウザーで `https://CLUSTERNAME.azurehdinsight.net/#/main/services/SPARK2/configs` に移動します。ここで、CLUSTERNAME は Apache Spark クラスターの名前です。
 
-1. `https://SPARKCLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/configs` を使用してクラスターの Apache Ambari Hive ページに移動します。`SPARKCLUSTERNAME` は Apache Spark クラスターの名前です。
+1. **[Custom spark2-defaults]** を展開します。
 
-1. **[Advanced]**  >  **[Advanced hive-interactive-site]**  >  **[hive.llap.daemon.service.hosts]** に移動し、値を書き留めます。 値は次のようになります。`@llap0`
+    ![Apache Ambari Spark2 の構成](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
 
-### <a name="configure-spark-cluster-settings"></a>Spark クラスター設定の構成
+1. **[プロパティの追加]** を選択して、次の構成を追加します。
 
-Spark Ambari Web UI から、 **[Spark2]**  >  **[CONFIGS]**  >  **[Custom spark2-defaults]** に移動します。
+    | 構成 | 値 |
+    |----|----|
+    |`spark.datasource.hive.warehouse.load.staging.dir`|`wasbs://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp`. <br> HDFS と互換性のある適切なステージング ディレクトリに設定します。 2 つの異なるクラスターがある場合、ステージング ディレクトリは、HiveServer2 がそこにアクセスできるように、LLAP クラスターのストレージ アカウントのステージング ディレクトリにあるフォルダーである必要があります。  `STORAGE_ACCOUNT_NAME` をクラスターによって使用されているストレージ アカウントの名前に置き換え、`STORAGE_CONTAINER_NAME` をストレージ コンテナーの名前に置き換えます。 |
+    |`spark.sql.hive.hiveserver2.jdbc.url`| **HiveServer2 Interactive JDBC URL** から先ほど取得した値 |
+    |`spark.datasource.hive.warehouse.metastoreUri`| **hive.metastore.uris** から先ほど取得した値。 |
+    |`spark.security.credentials.hiveserver2.enabled`|YARN クラスター モードの場合は `true`、YARN クライアント モードの場合は `false`。 |
+    |`spark.hadoop.hive.zookeeper.quorum`| **hive.zookeeper.quorum** から先ほど取得した値。 |
+    |`spark.hadoop.hive.llap.daemon.service.hosts`| **hive.llap.daemon.service.hosts** から先ほど取得した値。 |
 
-![Apache Ambari Spark2 の構成](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
+1. 変更を保存し、影響を受けるすべてのコンポーネントを再起動します。
 
-必要に応じて **[プロパティの追加]** を選択し、次の値を追加または更新します。
+### <a name="configure-hwc-for-enterprise-security-package-esp-clusters"></a>Enterprise セキュリティ パッケージ (ESP) クラスター用の HWC の構成
 
-| Key | 値 |
-|----|----|
-|`spark.hadoop.hive.llap.daemon.service.hosts`|**hive.llap.daemon.service.hosts** から先ほど取得した値。|
-|`spark.sql.hive.hiveserver2.jdbc.url`|`jdbc:hive2://LLAPCLUSTERNAME.azurehdinsight.net:443/;user=admin;password=PWD;ssl=true;transportMode=http;httpPath=/hive2` JDBC 接続文字列に設定します。これにより、対話型クエリ クラスター上の Hiveserver2 に接続されます。 `LLAPCLUSTERNAME` を対話型クエリ クラスターの名前に置き換えます。 `PWD` を実際のパスワードで置き換えます。|
-|`spark.datasource.hive.warehouse.load.staging.dir`|`wasbs://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp` HDFS と互換性のある適切なステージング ディレクトリに設定します。 2 つの異なるクラスターがある場合、ステージング ディレクトリは、HiveServer2 がそこにアクセスできるよう、LLAP クラスターのストレージ アカウントのステージング ディレクトリにあるフォルダーである必要があります。  `STORAGE_ACCOUNT_NAME` をクラスターによって使用されているストレージ アカウントの名前に置き換え、`STORAGE_CONTAINER_NAME` をストレージ コンテナーの名前に置き換えます。|
-|`spark.datasource.hive.warehouse.metastoreUri`|**hive.metastore.uris** から先ほど取得した値。|
-|`spark.security.credentials.hiveserver2.enabled`|YARN クライアント デプロイ モードの場合は `false` に設定します。|
-|`spark.hadoop.hive.zookeeper.quorum`|**hive.zookeeper.quorum** から先ほど取得した値。|
+Enterprise セキュリティ パッケージ (ESP) を使用すると、Active Directory ベースの認証、マルチユーザーのサポート、ロールベースのアクセス制御など、エンタープライズレベルの機能を Azure HDInsight の Apache Hadoop クラスターで利用できます。 ESP に関する詳細については、「[HDInsight で Enterprise セキュリティ パッケージを使用する](../domain-joined/apache-domain-joined-architecture.md)」を参照してください。
 
-変更を保存し、必要に応じてコンポーネントを再起動します。
+前のセクションで説明した構成とは別に、ESP クラスターで HWC を使用するための次の構成を追加します。
 
-## <a name="using-the-hive-warehouse-connector"></a>Hive Warehouse Connector の使用
+1. Spark クラスターの Ambari Web UI で、 **[Spark2]**  >  **[CONFIGS]**  >  **[Custom spark2-defaults]** の順に移動します。
 
-### <a name="connecting-and-running-queries"></a>クエリの接続と実行
+1. 次のプロパティを更新します。
+
+    | 構成 | 値 |
+    |----|----|
+    | `spark.sql.hive.hiveserver2.jdbc.url.principal`    | `hive/<llap-headnode>@<AAD-Domain>` |
+    
+    * Web ブラウザーで `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` に移動します。ここで、CLUSTERNAME は Interactive Query クラスターの名前です。 **[HiveServer2 Interactive]** をクリックします。 スクリーンショットに示したように、LLAP を実行しているヘッド ノードの完全修飾ドメイン名 (FQDN) が表示されます。 `<llap-headnode>` は、この値に置き換えます。
+
+        ![Hive Warehouse Connector のヘッド ノード](./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png)
+
+    * [ssh コマンド](../hdinsight-hadoop-linux-use-ssh-unix.md)を使用して Interactive Query クラスターに接続します。 `/etc/krb5.conf` ファイルで `default_realm` パラメーターを探します。 `<AAD-DOMAIN>` は、その値に置き換えます。値の文字列は大文字にしてください。そうしないと、資格情報が見つからなくなります。
+
+        ![Hive Warehouse Connector の AAD ドメイン](./media/apache-hive-warehouse-connector/aad-domain.png)
+
+    * たとえば、`hive/hn0-ng36ll.mjry42ikpruuxgs2qy2kpg4q5e.cx.internal.cloudapp.net@PKRSRVUQVMAE6J85.D2.INTERNAL.CLOUDAPP.NET` です。
+    
+1. 変更を保存し、必要に応じてコンポーネントを再起動します。
+
+## <a name="hive-warehouse-connector-usage"></a>Hive Warehouse Connector の使用
 
 いくつかの異なる方法の中から選択し、Hive Warehouse Connector を使って自分の対話型クエリ クラスターに接続してクエリを実行できます。 サポートされている方法には次のツールがあります。
 
-* [spark-shell](../spark/apache-spark-shell.md)
-* PySpark
-* spark-submit
-* [Zeppelin](../spark/apache-spark-zeppelin-notebook.md)
-* [Livy](../spark/apache-spark-livy-rest-interface.md)
+* [Spark-shell および PySpark](../spark/apache-spark-shell.md)
+* [Spark-submit](#spark-submit)
+* [Zeppelin](./apache-hive-warehouse-connector-zeppelin.md)
 
-この記事で提供されるすべての例は、spark-shell を通じて実行されます。
 
-spark-shell セッションを開始するには、次の手順を実行します。
+Spark から HWC に接続するいくつかの例を次に示します。
 
-1. Apache Spark クラスターのヘッドノードに SSH 接続します。 クラスターへの SSH 接続の詳細については、「[SSH を使用して HDInsight (Apache Hadoop) に接続する](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
+### <a name="spark-shell"></a>Spark-shell
 
-1. 次のコマンドを入力して、spark-shell を起動します。
+1. [ssh コマンド](../hdinsight-hadoop-linux-use-ssh-unix.md)を使用して Apache Spark クラスターに接続します。 次のコマンドを編集して CLUSTERNAME をクラスターの名前に置き換えてから、そのコマンドを入力します。
+
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
+
+1. SSH セッションから次のコマンドを実行して、`hive-warehouse-connector-assembly` のバージョンを確認します。
+
+    ```bash
+    ls /usr/hdp/current/hive_warehouse_connector
+    ```
+
+1. 上で特定した `hive-warehouse-connector-assembly` のバージョンを使用して、次のコードを編集します。 次のコマンドを実行して、spark シェルを起動します。
 
     ```bash
     spark-shell --master yarn \
-    --jars /usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-<STACK_VERSION>.jar \
+    --jars /usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-<VERSION>.jar \
     --conf spark.security.credentials.hiveserver2.enabled=false
     ```
 
-    ウェルカム メッセージと `scala>` プロンプトが表示されます。ここで、コマンドを入力することができます。
-
-1. spark-shell の起動後、次のコマンドを使用して Hive Warehouse Connector インスタンスを開始できます。
+1. spark シェルの起動後、次のコマンドを使用して Hive Warehouse Connector インスタンスを開始できます。
 
     ```scala
     import com.hortonworks.hwc.HiveWarehouseSession
     val hive = HiveWarehouseSession.session(spark).build()
     ```
 
-### <a name="connecting-and-running-queries-on-enterprise-security-package-esp-clusters"></a>Enterprise セキュリティ パッケージ (ESP) クラスター上でのクエリの接続と実行
+### <a name="spark-submit"></a>Spark-submit
 
-Enterprise セキュリティ パッケージ (ESP) は、Azure Active Directory ベースの認証など、エンタープライズ グレードの機能を備えています。 また、マルチ ユーザー サポート、および Azure HDInsight の Apache Hadoop クラスターに対するロールベースのアクセス制御があります。 ESP に関する詳細については、「[HDInsight で Enterprise セキュリティ パッケージを使用する](../domain-joined/apache-domain-joined-architecture.md)」を参照してください。
+scala/java コードを依存関係と共にアセンブリ jar にビルドしたら、次のコマンドを使用して、Spark アプリケーションを起動します。 `<VERSION>` および `<APP_JAR_PATH>` を実際の値に置き換えます。
 
-1. Apache Spark クラスターのヘッドノードに SSH 接続します。
-
-1. 「`kinit`」と入力して、ドメイン ユーザーでログインします。
-
-1. 次に示すように、構成パラメーターの完全なリストを使用して、spark-shell を起動します。 山かっこ内のすべてが大文字の値は全部、自分のクラスターに基づいて指定する必要があります。 下のいずれかのパラメーターに入力する値を確認する必要がある場合は、「[Hive Warehouse Connector の設定](#hive-warehouse-connector-setup)」のセクションを参照してください。
-
-    ```bash
-    spark-shell --master yarn \
-    --jars /usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-<STACK_VERSION>.jar \
+* YARN クライアント モード
+    
+    ```scala
+    spark-submit \
+    --class myHwcApp \
+    --master yarn \
+    --deploy-mode client \
+    --jars /usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-<VERSION>.jar \
     --conf spark.security.credentials.hiveserver2.enabled=false
-    --conf spark.hadoop.hive.llap.daemon.service.hosts='<LLAP_APP_NAME>'
-    --conf spark.sql.hive.hiveserver2.jdbc.url='jdbc:hive2://<ZOOKEEPER_QUORUM>;serviceDiscoveryMode=zookeeper;zookeeperNamespace=hiveserver2-interactive'
-    --conf spark.datasource.hive.warehouse.load.staging.dir='<STAGING_DIR>'
-    --conf spark.datasource.hive.warehouse.metastoreUri='<METASTORE_URI>'
-    --conf spark.hadoop.hive.zookeeper.quorum='<ZOOKEEPER_QUORUM>'
-   ```
+    /<APP_JAR_PATH>/myHwcAppProject.jar
+    ```
 
-### <a name="creating-spark-dataframes-from-hive-queries"></a>Hive クエリからの Spark DataFrame の作成
+* YARN クラスター モード
+    ```scala
+    spark-submit \
+    --class myHwcApp \
+    --master yarn \
+    --deploy-mode cluster \
+    --jars /usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-<VERSION>.jar \
+    --conf spark.security.credentials.hiveserver2.enabled=true
+    /<APP_JAR_PATH>/myHwcAppProject.jar
+    ```
 
-HWC ライブラリを使用したすべてのクエリの結果は、DataFrame として返されます。 次の例は、基本的なクエリを作成する方法を示しています。
+Python の場合は、次の構成も追加します。 
 
-```scala
-hive.setDatabase("default")
-val df = hive.executeQuery("select * from hivesampletable")
-df.filter("state = 'Colorado'").show()
+```python
+--py-files /usr/hdp/current/hive_warehouse_connector/pyspark_hwc-<VERSION>.zip
 ```
+    
+## <a name="run-queries-on-enterprise-security-package-esp-clusters"></a>Enterprise セキュリティ パッケージ (ESP) クラスターに対するクエリの実行
 
-クエリの結果は Spark DataFrame です。これは、MLIB や SparkSQL のような Spark ライブラリと共に使用できます。
+spark-shell または spark-submit を起動する前に、`kinit` を使用します。 USERNAME を、クラスターへのアクセス許可を持つドメイン アカウントの名前に置き換えます。その後、以下のコマンドを実行します。
 
-### <a name="writing-out-spark-dataframes-to-hive-tables"></a>Spark DataFrame から Hive テーブルへの書き出し
-
-Spark は、Hive によって管理される ACID テーブルへの書き込みをネイティブにサポートしていません。 しかし、HWC を使用することで、どの DataFrame も Hive テーブルに書き出すことができます。 次の例では、この機能の動作を確認できます。
-
-1. 次のコマンドを使用し、`sampletable_colorado` というテーブルを作成してその列を指定します。
-
-    ```scala
-    hive.createTable("sampletable_colorado").column("clientid","string").column("querytime","string").column("market","string").column("deviceplatform","string").column("devicemake","string").column("devicemodel","string").column("state","string").column("country","string").column("querydwelltime","double").column("sessionid","bigint").column("sessionpagevieworder","bigint").create()
-    ```
-
-1. テーブル `hivesampletable` をフィルターします (列 `state` = `Colorado`)。 Hive テーブルのこのクエリは Spark DataFrame として返されます。 その後 DataFrame は、`write` 関数を使用して Hive テーブル `sampletable_colorado` に保存されます。
-
-    ```scala
-    hive.table("hivesampletable").filter("state = 'Colorado'").write.format(HiveWarehouseSession.HIVE_WAREHOUSE_CONNECTOR).option("table","sampletable_colorado").save()
-    ```
-
-1. 次のコマンドを使用して結果を表示します。
-
-    ```scala
-    hive.table("sampletable_colorado").show()
-    ```
-
-    ![Hive Warehouse Connector の Hive テーブルの表示](./media/apache-hive-warehouse-connector/hive-warehouse-connector-show-hive-table.png)
-
-### <a name="structured-streaming-writes"></a>構造化ストリーミングの書き込み
-
-Hive Warehouse Connector を使用すると、Spark ストリーミングを使って Hive テーブルにデータを書き込むことができます。
-
-Hive Warehouse Connector を作成するには、次の手順に従います。 この例では、localhost ポート 9999 の Spark ストリームから Hive テーブルにデータを取り込みます。
-
-1. 「[クエリの接続と実行](#connecting-and-running-queries)」の手順に従います。
-
-1. 次のコマンドを使用して、Spark ストリームを開始します。
-
-    ```scala
-    val lines = spark.readStream.format("socket").option("host", "localhost").option("port",9999).load()
-    ```
-
-1. 次の手順を実行して、作成した Spark ストリームのためのデータを生成します。
-    1. 同じ Spark クラスターで2番目の SSH セッションを開きます。
-    1. コマンド プロンプトで、「`nc -lk 9999`」と入力します。 このコマンドでは、`netcat` ユーティリティを使用して、コマンド ラインから指定のポートにデータを送信します。
-
-1. 最初の SSH セッションに戻り、ストリーミング データを保持する新しい Hive テーブルを作成します。 spark-shell で、次のコマンドを入力します。
-
-    ```scala
-    hive.createTable("stream_table").column("value","string").create()
-    ```
-
-1. その後、次のコマンドを使用して、新しく作成したテーブルにストリーミング データを書き込みます。
-
-    ```scala
-    lines.filter("value = 'HiveSpark'").writeStream.format(HiveWarehouseSession.STREAM_TO_STREAM).option("database", "default").option("table","stream_table").option("metastoreUri",spark.conf.get("spark.datasource.hive.warehouse.metastoreUri")).option("checkpointLocation","/tmp/checkpoint1").start()
-    ```
-
-    >[!Important]
-    > 現在、`metastoreUri` および `database` オプションは、Apache Spark の既知の問題のため、手動で設定する必要があります。 この問題の詳細については、[SPARK-25460](https://issues.apache.org/jira/browse/SPARK-25460) を参照してください。
-
-1. 2番目の SSH セッションに戻り、次の値を入力します。
-
-    ```bash
-    foo
-    HiveSpark
-    bar
-    ```
-
-1. 最初の SSH セッションに戻り、この簡単なアクティビティに注目します。 次のコマンドを使用して、データを表示します。
-
-    ```scala
-    hive.table("stream_table").show()
-    ```
-
-2 番目の SSH セッションで、**Ctrl + C** を使用して `netcat` を停止します。 最初の SSH セッションで、`:q` を使用して spark-shell を終了します。
+```bash
+kinit USERNAME
+```
 
 ### <a name="securing-data-on-spark-esp-clusters"></a>Spark ESP クラスター上のデータのセキュリティ保護
 
@@ -247,14 +211,14 @@ Hive Warehouse Connector を作成するには、次の手順に従います。 
     ![Ranger ポリシーを適用する前のデモ テーブル](./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-before-ranger-policy.png)
 
 1. 列の最後の 4 文字だけが表示される列マスク ポリシーを適用します。  
-    1. `https://CLUSTERNAME.azurehdinsight.net/ranger/` で Ranger 管理 UI に移動します。
+    1. `https://LLAPCLUSTERNAME.azurehdinsight.net/ranger/` で Ranger 管理 UI に移動します。
     1. **[Hive]** の下にある自分のクラスターの Hive サービスをクリックします。
         ![Ranger サービス マネージャー](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png)
     1. **[Masking]\(マスク\)** タブをクリックし、 **[Add New Policy]\(新しいポリシーの追加\)** をクリックします
 
         ![Hive Warehouse Connector の Ranger Hive ポリシーの一覧](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
 
-    a. ポリシー名を提供します。 次のように選択します。データベース: **default**、Hive テーブル: **demo**、Hive 列: **name**、ユーザー: **rsadmin2**、アクセスの種類: **select**、 **[Select Masking Option]\(マスク オプションの選択\)** メニュー: **Partial mask: show last 4**。 **[追加]** をクリックします。
+    1. 目的のポリシー名を入力します。 次のように選択します。データベース: **default**、Hive テーブル: **demo**、Hive 列: **name**、ユーザー: **rsadmin2**、アクセスの種類: **select**、 **[Select Masking Option]\(マスク オプションの選択\)** メニュー: **Partial mask: show last 4**。 **[追加]** をクリックします。
                 ![ポリシーの作成](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. テーブルの内容をもう一度表示します。 Ranger ポリシーの適用後は、列の最後の 4 文字だけを確認できます。
 
@@ -262,5 +226,7 @@ Hive Warehouse Connector を作成するには、次の手順に従います。 
 
 ## <a name="next-steps"></a>次のステップ
 
+* [HWC と Apache Spark の操作](./apache-hive-warehouse-connector-operations.md)
 * [HDInsight での対話型クエリの使用](./apache-interactive-query-get-started.md)
+* [HWC と Apache Zeppelin の統合](./apache-hive-warehouse-connector-zeppelin.md)
 * [Zeppelin、Livy、spark-submit、pyspark を使用した Hive Warehouse Connector の操作の例](https://community.hortonworks.com/articles/223626/integrating-apache-hive-with-apache-spark-hive-war.html)

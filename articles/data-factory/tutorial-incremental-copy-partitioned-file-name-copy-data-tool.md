@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 3/17/2020
-ms.openlocfilehash: 6cc089a1efc3f5960a8bca8a36063bb1019bbcc6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/10/2020
+ms.openlocfilehash: 075c8b2670121e7d493d0d99397961155fd0de4b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81409392"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736571"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>データのコピー ツールを使用することにより、パーティション分割されたファイル名に基づく新しいファイルを増分コピーする
 
@@ -155,7 +155,7 @@ ms.locfileid: "81409392"
 
 10. 左側の **[監視]** タブが自動的に選択されたことがわかります。  パイプラインの実行が自動的にトリガーされるまで待機する必要があります (約 1 時間後)。 実行時に、パイプライン名のリンク **DeltaCopyFromBlobPipeline** をクリックしてアクティビティの実行の詳細を表示するか、パイプラインを再実行します。 **[最新の情報に更新]** を選択して、一覧を更新します。
 
-    ![パイプラインの実行を監視する](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs1.png)
+    ![パイプラインの実行を監視する](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs-1.png)
 11. パイプライン内のアクティビティ (コピー アクティビティ) は 1 つだけなので、エントリは 1 つのみです。 **[ソース]** および **[ターゲット]** 列の列幅を (必要に応じて) 調整し、詳細が表示されるようにすると、ソース ファイル (file1.txt) が *source/2020/03/17/03/* から、同じファイル名の *destination/2020/03/17/03/* にコピーされていることがわかります。 
 
     ![パイプラインの実行を監視する](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs2.png)

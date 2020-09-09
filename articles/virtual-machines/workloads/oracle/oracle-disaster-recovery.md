@@ -3,8 +3,8 @@ title: Azure 環境における Oracle ディザスター リカバリー シナ
 description: Azure 環境内の Oracle Database 12c データベースのディザスター リカバリー シナリオ
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: BorisB2015
-manager: gwallace
+author: rgardler
+manager: ''
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: borisb
-ms.openlocfilehash: adf4c54d4f43f806ae985f7c1523303cf574b4c1
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.author: rogardle
+ms.openlocfilehash: 6d1c7a48332aa49bc5c506ceeae287bc3affef16
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81687466"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074072"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Azure 環境内の Oracle Database 12c データベースのディザスター リカバリー
 
@@ -78,7 +78,7 @@ Azure セットアップの概要は次のとおりです。
 ![DR トポロジ ページのスクリーンショット](./media/oracle-disaster-recovery/oracle_topology_02.png)
 
 ### <a name="approach-2-site-to-site-vpn"></a>アプローチ 2: サイト間 VPN
-サイト対サイト VPN は、より優れたアプローチです。 VPN の設定に関する詳細については、「[CLI を使用したサイト間 VPN 接続を持つ仮想ネットワークの作成](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)」を参照してください。
+サイト対サイト VPN は、より優れたアプローチです。 VPN の設定に関する詳細については、「[CLI を使用したサイト間 VPN 接続を持つ仮想ネットワークの作成](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)」を参照してください。
 
 #### <a name="topology"></a>トポロジ
 

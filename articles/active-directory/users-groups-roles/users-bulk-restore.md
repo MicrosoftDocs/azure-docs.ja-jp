@@ -6,19 +6,19 @@ author: curtand
 ms.author: curtand
 manager: mtillman
 ms.date: 04/27/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11f35c7615135f5aa6c63d5d05898d139df61d0d
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 4fe5cacfec6ee85a5d61204ffce38c856b0d1baf
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203304"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423339"
 ---
 # <a name="bulk-restore-deleted-users-in-azure-active-directory"></a>Azure Active Directory での削除済みユーザーの一括復元
 
@@ -34,15 +34,15 @@ CSV テンプレートをダウンロードして入力し、Azure AD ユーザ�
 
 ダウンロードした CSV テンプレート内の行は次のとおりです。
 
-- **バージョン番号**: アップロード CSV には、バージョン番号を含む最初の行を含める必要があります。
-- **列見出し**:列見出しの形式は &lt;*項目名*&gt; [PropertyName] &lt;*必須または空白*&gt; です。 たとえば、「 `Object ID [objectId] Required` 」のように入力します。 テンプレートの古いバージョンの中には、微妙に異なるものもあります。
-- **例の行**:このテンプレートには、各列に使用できる値の例の行が含まれています。 例の行を削除し、独自のエントリに置き換える必要があります。
+- **バージョン番号**: アップロード CSV の先頭行にバージョン番号を含める必要があります。
+- **列見出し**:列見出しの形式は、&lt;*項目名*&gt; [PropertyName] &lt;*Required または空白*&gt; です。 たとえば、「 `Object ID [objectId] Required` 」のように入力します。 テンプレートの古いバージョンの中には、微妙に異なるものもあります。
+- **例の行**:このテンプレートには、各列に使用できる値のサンプル行が含まれています。 サンプル行を削除し、独自のエントリに置き換える必要があります。
 
 ### <a name="additional-guidance"></a>その他のガイダンス
 
 - アップロード テンプレートの最初の 2 行を削除または変更することはできません。アップロードを処理することができなくなります。
-- 必須の列は最初に表示されます。
-- テンプレートに新しい列を追加することはお勧めしません。 追加した追加の列は無視され、処理されません。
+- 必須の列が最初に示されています。
+- テンプレートに新しい列を追加することはお勧めしません。 列を追加しても無視され、処理されません。
 - 出来る限り、常に最新の CSV テンプレートをダウンロードすることをお勧めします。
 
 ## <a name="to-bulk-restore-users"></a>ユーザーを一括復元するには
@@ -51,11 +51,11 @@ CSV テンプレートをダウンロードして入力し、Azure AD ユーザ�
 1. Azure AD で、 **[ユーザー]**  >  **[削除済み]** の順に選択します。
 1. **[削除済みのユーザー]** ページで、 **[一括復元]** を選択して、復元するユーザーのプロパティの有効な CSV ファイルをアップロードします。
 
-   ![[削除済みのユーザー] ページで一括復元コマンドを選択する](./media/users-bulk-restore/bulk-restore.png)
+    ![[削除済みのユーザー] ページで一括復元コマンドを選択する](./media/users-bulk-restore/bulk-restore.png)
 
 1. この CSV テンプレートを開いて、復元するユーザーごとに 1 行を追加します。 唯一の必須値は **ObjectID** です。 そのうえでファイルを保存します。
 
-   ![追加するユーザーをリストするローカル CSV ファイルを選択する](./media/users-bulk-restore/upload-button.png)
+    :::image type="content" source="./media/users-bulk-restore/upload-button.png" alt-text="追加するユーザーをリストするローカル CSV ファイルを選択する":::
 
 1. **[ユーザーの一括復元]** ページの **[CSV ファイルをアップロード]** で、そのファイルを参照します。 ファイルを選択して **[送信]** をクリックすると、CSV ファイルの検証が開始されます。
 1. ファイルの内容が検証されると、"**ファイルが正常にアップロードされました**" と表示されます。 エラーが存在する場合は、ジョブを送信する前にそれらを修正する必要があります。
@@ -68,7 +68,7 @@ CSV テンプレートをダウンロードして入力し、Azure AD ユーザ�
 
 **[一括操作の結果]** ページでは、保留中のすべての一括要求の状態を確認できます。
 
-[![](media/users-bulk-restore/bulk-center.png "Check status in the Bulk Operations Results page")](media/users-bulk-restore/bulk-center.png#lightbox)
+[![[一括操作の結果] ページで状態を確認します。](media/users-bulk-restore/bulk-center.png)](media/users-bulk-restore/bulk-center.png#lightbox)
 
 次に、復元したユーザーが Azure AD 組織に存在するかどうかを、Azure portal または PowerShell を使用して確認できます。
 

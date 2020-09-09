@@ -5,14 +5,15 @@ author: sivethe
 ms.author: sivethe
 ms.service: cosmos-db
 ms.devlang: javascript
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 12/26/2018
-ms.openlocfilehash: cd6cb68014eea00077328f39c2c9bf0a1f7fb679
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: f2168338031b8c5b81fd1998f71adf47dcadc44e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "61330679"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020713"
 ---
 # <a name="expire-data-with-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API でデータを期限切れにする
 
@@ -74,7 +75,7 @@ globaldb:PRIMARY> db.coll.insert({id:1, location: "Paris", ttl: NumberLong(21474
 
 ドキュメントごとの TTL 機能は、Azure Cosmos DB の MongoDB 用 API でアクティブにできます。
 
-![ポータルでのドキュメントごとの TTL 機能のアクティブ化を示すスクリーンショット](./media/mongodb-ttl/mongodb_portal_ttl.png) 
+:::image type="content" source="./media/mongodb-ttl/mongodb_portal_ttl.png" alt-text="ポータルでのドキュメントごとの TTL 機能のアクティブ化を示すスクリーンショット":::
 
 ## <a name="next-steps"></a>次のステップ
 * [Time to Live を使用して Azure Cosmos DB のデータの有効期限が自動的に切れるようにする](../cosmos-db/time-to-live.md)

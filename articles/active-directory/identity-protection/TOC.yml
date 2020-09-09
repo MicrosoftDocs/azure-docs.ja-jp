@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概要
   items:
-    - name: Azure AD Identity Protection とは
+    - name: Identity Protection とは
       href: overview-identity-protection.md
 - name: 概念
   expanded: false
@@ -44,6 +44,14 @@
       href: troubleshooting-identity-protection-faq.md
 - name: リファレンス
   items:
+    - name: Graph API
+      items:
+        - name: riskDetection API
+          href: /graph/api/resources/riskdetection?view=graph-rest-v1.0
+        - name: riskyUsers API
+          href: /graph/api/resources/riskyuser?view=graph-rest-v1.0
+        - name: signIn API
+          href: /graph/api/resources/signin?view=graph-rest-v1.0
     - name: 用語集
       href: reference-identity-protection-glossary.md
 - name: リソース
@@ -51,7 +59,7 @@
     - name: Azure フィードバック フォーラム
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
+      href: /answers/topics/azure-active-directory.html
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: サービスの更新情報

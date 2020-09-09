@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 27ab13481525819eb1435f4c9ac256a21acd21fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c8645ae9cb901b9fc95f00665d73e223a24fda63
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74687796"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076455"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio を使用して Apache Hive クエリを実行する
 

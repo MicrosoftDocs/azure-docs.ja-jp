@@ -3,23 +3,25 @@ title: Azure Media Services のクォータと制限
 description: このトピックでは Microsoft Azure Media Services のクォータと制限について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/01/2020
-ms.author: juliako
-ms.openlocfilehash: e9855a02a57d71793f3a5d6c5ce01cbfda341b70
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: b1836b1d0dc69a2a0b186a54974895eb0d8cd91a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632225"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265492"
 ---
 <!-- If you update limits in this topic, make sure to also update https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
 # <a name="azure-media-services-quotas-and-limits"></a>Azure Media Services のクォータと制限
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 この記事では、最も一般的な Microsoft Azure Media Services の制限を一覧表示しています。これはクォータと呼ばれることもあります。
 
@@ -28,14 +30,14 @@ ms.locfileid: "80632225"
 
 ## <a name="account-limits"></a>アカウントの制限
 
-| リソース | 既定の制限 | 
-| --- | --- | 
+| リソース | 既定の制限 |
+| --- | --- |
 | 1 つのサブスクリプション内の [Media Services アカウント](media-services-account-concept.md) | 25 (固定) |
 
 ## <a name="asset-limits"></a>アセットの制限
 
-| リソース | 既定の制限 | 
-| --- | --- | 
+| リソース | 既定の制限 |
+| --- | --- |
 | Media Services アカウントあたりの[アセット数](assets-concept.md) | 1,000,000|
 
 ## <a name="storage-limits"></a>ストレージの制限
@@ -78,7 +80,7 @@ ms.locfileid: "80632225"
 | --- | --- | 
 | Media Services アカウントあたりの[ライブ イベント数](live-events-outputs-concept.md) <sup>(4)</sup> |5|
 | ライブ イベントあたりのライブ出力 |3 <sup>(5)</sup> |
-| ライブ出力の最大期間 | 25 時間 |
+| ライブ出力の最大期間 | [DVR ウィンドウのサイズ](live-event-cloud-dvr.md) |
 
 <sup>4</sup> ライブイベントの制限の詳細については、[ライブ イベントの種類の比較と制限](live-event-types-comparison.md)に関する記事を参照してください。
 
@@ -86,14 +88,15 @@ ms.locfileid: "80632225"
 
 ## <a name="packaging--delivery-limits"></a>パッケージおよび配信の制限
 
-| リソース | 既定の制限 | 
-| --- | --- | 
+| リソース | 既定の制限 |
+| --- | --- |
 | Media Services アカウントあたりの[ストリーミング エンドポイント](streaming-endpoint-concept.md) (停止済みまたは実行中)|2 |
+| Premium ストリーミング ユニット | 10 |
 | [動的マニフェスト フィルター](filters-dynamic-manifest-overview.md)|100|
 | [ストリーミング ポリシー](streaming-policy-concept.md) | 100 <sup>(6)</sup> |
 | 1 つの資産に同時に関連付けられる一意の[ストリーミング ロケーター数](streaming-locators-concept.md) | 100<sup>(7)</sup> (固定) |
 
-<sup>6</sup> カスタム [ストリーミング ポリシー](https://docs.microsoft.com/rest/api/media/streamingpolicies)を使うときは、Media Service アカウントに対してこのようなポリシーの限られたセットを設計し、同じ暗号化オプションとプロトコルが必要なときは常に、お使いの StreamingLocator に対してそのセットを再利用する必要があります。 ストリーミング ロケーターごとに新しいストリーミング ポリシーを作成しないでください。
+<sup>6</sup> カスタム [ストリーミング ポリシー](/rest/api/media/streamingpolicies)を使うときは、Media Service アカウントに対してこのようなポリシーの限られたセットを設計し、同じ暗号化オプションとプロトコルが必要なときは常に、お使いの StreamingLocator に対してそのセットを再利用する必要があります。 ストリーミング ロケーターごとに新しいストリーミング ポリシーを作成しないでください。
 
 <sup>7</sup> ストリーミング ロケーターは、ユーザーごとのアクセス制御を管理するようには設計されていません。 個々のユーザーに異なるアクセス権限を付与するには、デジタル著作権管理 (DRM) ソリューションを使用します。
 

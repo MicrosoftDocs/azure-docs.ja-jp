@@ -6,15 +6,15 @@ ms.author: mhopkins
 ms.date: 12/08/2016
 ms.service: storage
 ms.subservice: queues
-ms.topic: conceptual
-ms.reviewer: cbrooks
-ms.custom: seo-javascript-september2019
-ms.openlocfilehash: 7abcad03678131668700f5d2c64b9c971081cb89
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.reviewer: dineshm
+ms.custom: seo-javascript-september2019, devx-track-javascript
+ms.openlocfilehash: 53bd4905cf4b8829d65ce2b10c85260ff3f8926c
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060933"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210520"
 ---
 # <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>Azure Queue サービスを使用して Node.js でキューを作成および削除する
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -24,12 +24,15 @@ ms.locfileid: "80060933"
 ## <a name="overview"></a>概要
 このガイドでは、Microsoft Azure Queue サービスを使用して一般的なシナリオを実行する方法について説明します。 サンプルは Node.js API を使用して記述されています。 キュー メッセージの**挿入**、**ピーク**、**取得**、**削除**と、**キューの作成と削除**の各シナリオについて説明します。
 
+> [!IMPORTANT]
+> この記事では、JavaScript 向け Azure Storage クライアント ライブラリのレガシ バージョンについて説明します。 最新バージョンで始めるには、「[クイックスタート: JavaScript 用 Azure Queue storage クライアント ライブラリ v12](storage-quickstart-queues-nodejs.md)」を参照してください
+
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-nodejs-application"></a>Node.js アプリケーションの作成
-空の Node.js アプリケーションを作成します。 Node.js アプリケーションの作成手順については、「[Azure App Service での Node.js Web アプリの作成](../../app-service/app-service-web-get-started-nodejs.md)」、「[Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)」 (Windows PowerShell の使用)、または [Visual Studio Code](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial) に関するページをご覧ください。
+空の Node.js アプリケーションを作成します。 Node.js アプリケーションの作成手順については、「[Azure App Service での Node.js Web アプリの作成](../../app-service/quickstart-nodejs.md)」、「[Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)」 (Windows PowerShell の使用)、または [Visual Studio Code](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial) に関するページをご覧ください。
 
 ## <a name="configure-your-application-to-access-storage"></a>アプリケーションのストレージへのアクセスの構成
 Azure Storage を使用するには、Azure Storage SDK for Node.js が必要です。ここには、ストレージ REST サービスと通信するための便利なライブラリのセットが含まれています。
@@ -192,7 +195,7 @@ queueSvc.getMessages('myqueue', function(error, getResults, getResponse){
 queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, function(error, results, getResponse){
   if(!error){
     // Messages retrieved
-    for(var index in result){
+    for(var index in results){
       // text is available in result[index].messageText
       var message = results[index];
       queueSvc.deleteMessage(queueName, message.messageId, message.popReceipt, function(error, deleteResponse){
@@ -338,7 +341,7 @@ queueSAS = queueSvc.generateSharedAccessSignature('myqueue', { Id: 'user2' });
 
 [Azure Portal]: https://portal.azure.com
 
-[Azure App Service での Node.js Web アプリの作成](../../app-service/app-service-web-get-started-nodejs.md)
+[Azure App Service での Node.js Web アプリの作成](../../app-service/quickstart-nodejs.md)
 
 [Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)
 

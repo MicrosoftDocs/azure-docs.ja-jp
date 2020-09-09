@@ -11,14 +11,14 @@ ms.workload: identity
 ms.devlang: java
 ms.date: 09/14/2019
 ms.author: shoatman
-ms.custom: aaddev
+ms.custom: aaddev, devx-track-java
 ms.reviewer: shoatman
-ms.openlocfilehash: d0497ad68e7b29e6d8c83dd860ba8f509e229579
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 404ffbc09a69b623a421bd0c01550d72e5c03158
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77611896"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115987"
 ---
 # <a name="accounts--tenant-profiles-android"></a>アカウントとテナント プロファイル (Android)
 
@@ -69,7 +69,7 @@ Microsoft ID プラットフォームのアカウントは、次のもので構�
   - `tom@live.com` 用のテナント プロファイルは、これらの各テナントに存在します。
 - 他のテナントの Tom と Bob に関する情報は、レコードのシステムのものとは異なる場合があります。 役職や勤務先所在地などの属性が異なる場合があります。 各組織 (Azure Active Directory テナント) 内のグループやロールのメンバーである場合があります。 この情報を bob@contoso.com テナント プロファイルと呼びます。
 
-図では、bob@contoso.com および tom@live.com で、異なる Azure Active Directory テナント内のリソースにアクセスすることができます。 詳細については、「[Azure portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator)」を参照してください。
+図では、bob@contoso.com および tom@live.com で、異なる Azure Active Directory テナント内のリソースにアクセスすることができます。 詳細については、「[Azure portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](../external-identities/add-users-administrator.md)」を参照してください。
 
 ## <a name="accounts-and-single-sign-on-sso"></a>アカウントとシングル サインオン (SSO)
 
@@ -118,10 +118,10 @@ String issuer = account.getClaims().get("iss"); // The tenant specific authority
 ```
 
 > [!TIP]
-> アカウント オブジェクトから利用可能な要求のリストを表示する場合は、「[id_token の要求](https://docs.microsoft.com/azure/active-directory/develop/id-tokens#claims-in-an-id_token)」を参照してください
+> アカウント オブジェクトから利用可能な要求のリストを表示する場合は、「[id_token の要求](./id-tokens.md#claims-in-an-id_token)」を参照してください
 
 > [!TIP]
-> id_token に追加の要求を含める場合は、次のドキュメントに記載されている省略可能な要求に関するドキュメントを参照してください。「[方法: Azure AD アプリに省略可能な要求を提供する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims)」
+> id_token に追加の要求を含める場合は、次のドキュメントに記載されている省略可能な要求に関するドキュメントを参照してください。「[方法: Azure AD アプリに省略可能な要求を提供する](./active-directory-optional-claims.md)」
 
 ### <a name="access-tenant-profile-claims"></a>テナント プロファイル要求にアクセスする
 

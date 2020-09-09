@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
-ms.openlocfilehash: cef0fcb990cd2c5c6583822d4dc4c6993c52eac2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 114b8b32d4abb1fd9b7e641625cd1b132470bafd
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75666790"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281448"
 ---
 # <a name="migrate-logic-apps-to-latest-schema-version"></a>ロジック アプリを最新のスキーマ バージョンに移行する
 
@@ -40,4 +40,5 @@ ms.locfileid: "75666790"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [ロジック アプリを手動で移行する方法について](../logic-apps/logic-apps-schema-2015-08-01.md)
+* [ロジック アプリを手動で移行する方法について](../logic-apps/logic-apps-schema-2016-04-01.md)
+

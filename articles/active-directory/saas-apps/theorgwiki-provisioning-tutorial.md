@@ -2,25 +2,21 @@
 title: チュートリアル:TheOrgWiki を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory を構成して、ユーザー アカウントを TheOrgWiki に自動的にプロビジョニングまたはプロビジョニング解除する方法を説明します。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: 5eb2096e-f7b6-4a56-a814-0f3d0e788063
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 2b0b11ae89e1f0d150b84f49b04a8badcb44e82c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5959ccd2699ef1162779a4a1d90ab6bb8af1bbbf
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77063146"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544850"
 ---
 # <a name="tutorial-configure-theorgwiki-for-automatic-user-provisioning"></a>チュートリアル:TheOrgWiki を構成し、自動ユーザー プロビジョニングに対応させる
 

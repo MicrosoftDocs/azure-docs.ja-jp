@@ -1,14 +1,14 @@
 ---
 title: メディア ブループリント サンプルをデプロイする
 description: ブループリント アーティファクト パラメーターの詳細を含むメディア ブループリント サンプルのデプロイ手順です。
-ms.date: 02/25/2020
+ms.date: 08/13/2020
 ms.topic: sample
-ms.openlocfilehash: f4eb93d3e03b9a0e59a7d53304c19c371d42ea6e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c8ac1726bc5007c1790f5efbc45c72f9712fcdf2
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78201729"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208433"
 ---
 # <a name="deploy-the-media-blueprint-sample"></a>メディア ブループリント サンプルをデプロイする
 
@@ -98,7 +98,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |\[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ |ポリシー割り当て |省略可能:スコープに追加するため、サポートされている Windows OS を持つ VM イメージの一覧 |空の配列 (`[]`) を使用して、オプションのパラメーターがないことを示すことができます。 |
 |\[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ |ポリシー割り当て |Windows VM 用の Log Analytics ワークスペース |詳細については、「[Azure ポータルで Log Analytics ワークスペースを作成する](../../../../azure-monitor/learn/quick-create-workspace.md)」を参照してください。 |
 |\[プレビュー\]:監査要求をサポートするため、メディア コントロールを監査し、特定の VM 拡張機能をデプロイします |ポリシー割り当て |VM で構成する必要がある Log Analytics ワークスペース ID |これは、VM で構成する必要がある Log Analytics ワークスペース ID (GUID) です。 |
-|\[プレビュー\]:監査要求をサポートするため、メディア コントロールを監査し、特定の VM 拡張機能をデプロイします |ポリシー割り当て |診断ログを有効にする必要のあるリソースの種類の一覧 |診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は、[Azure Monitor 診断ログのスキーマ](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)に関するページで確認できます。 |
+|\[プレビュー\]:監査要求をサポートするため、メディア コントロールを監査し、特定の VM 拡張機能をデプロイします |ポリシー割り当て |診断ログを有効にする必要のあるリソースの種類の一覧 |診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は、[Azure Monitor 診断ログのスキーマ](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)に関するページで確認できます。 |
 |\[プレビュー\]:監査要求をサポートするため、メディア コントロールを監査し、特定の VM 拡張機能をデプロイします |ポリシー割り当て |管理者グループ |グループ。 例: `Administrator; myUser1; myUser2` |
 |\[プレビュー\]:監査要求をサポートするため、メディア コントロールを監査し、特定の VM 拡張機能をデプロイします |ポリシー割り当て |Windows VM Administrators グループに含める必要があるユーザーの一覧 |ローカルの Administrators グループに含める必要があるメンバーのセミコロン区切りリスト。 例: `Administrator; myUser1; myUser2` |
 |ストレージ アカウントに対する Advanced Threat Protection のデプロイ |ポリシー割り当て |結果 |ポリシーの効果の詳細については、「[Azure Policy の効果について](../../../policy/concepts/effects.md)」を参照してください。 |

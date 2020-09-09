@@ -12,12 +12,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: bb32350597059209e5baf01d53b0c59fdc2344f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5a83b3976dd3d3af1bfd5695815f7571d73dd9d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78255213"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652187"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SAP HANA のバックアップ ガイド
 
@@ -25,11 +25,11 @@ ms.locfileid: "78255213"
 
 Azure Virtual Machines で実行されている SAP HANA のバックアップ ガイドでは、Azure 固有のトピックのみを取り上げます。 SAP HANA のバックアップ関連の一般的な項目については、SAP HANA のドキュメントを参照してください。 ここでは、原則的なデータベースのバックアップ戦略、適切で有効なバックアップ戦略を用意する理由と動機を理解しており、バックアップ手順、バックアップの保有期間、および復元手順について会社が有する要件を認識していることを前提にしています。
 
-SAP HANA は、Azure M シリーズなどのさまざまな Azure VM で正式にサポートされています。 SAP HANA が認定されている Azure VM と HANA Large Instance ユニットの完全な一覧については、「[Find Certified IaaS Platforms](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)」(認定 IaaS プラットフォームの検索) を参照してください。 Microsoft Azure では、SAP HANA が物理サーバー上で非仮想化を実行する多数のユニットを提供しています。 このサービスは、[HANA Large Instances](hana-overview-architecture.md) と呼ばれます。 このガイドでは、HANA Large Instances のバックアップ プロセスとツールについては説明しません。 Azure 仮想マシンに限定されます。 HANA Large Instances でのバックアップ/復元プロセスの詳細については、[HLI のバックアップと復元](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore)に関する記事を参照してください。
+SAP HANA は、Azure M シリーズなどのさまざまな Azure VM で正式にサポートされています。 SAP HANA が認定されている Azure VM と HANA Large Instance ユニットの完全な一覧については、「[Find Certified IaaS Platforms](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)」(認定 IaaS プラットフォームの検索) を参照してください。 Microsoft Azure では、SAP HANA が物理サーバー上で非仮想化を実行する多数のユニットを提供しています。 このサービスは、[HANA Large Instances](hana-overview-architecture.md) と呼ばれます。 このガイドでは、HANA Large Instances のバックアップ プロセスとツールについては説明しません。 Azure 仮想マシンに限定されます。 HANA Large Instances でのバックアップ/復元プロセスの詳細については、[HLI のバックアップと復元](./hana-backup-restore.md)に関する記事を参照してください。
 
 この記事では、Azure 仮想マシン上の SAP HANA をバックアップする 3 つの方法を中心に説明します。
 
-- [Azure Backup サービス](https://docs.microsoft.com/azure/backup/backup-overview)により HANA をバックアップする 
+- [Azure Backup サービス](../../../backup/backup-overview.md)により HANA をバックアップする 
 - Azure Linux 仮想マシンのファイル システムに HANA をバックアップする (「[ファイル レベルの SAP HANA Azure バックアップ](sap-hana-backup-file-level.md)」を参照)
 - 手動の Azure ストレージ BLOB スナップショット機能または Azure Backup サービスを使用して、ストレージ スナップショットに基づいて HANA をバックアップする
 
@@ -37,18 +37,18 @@ SAP HANA は、Azure M シリーズなどのさまざまな Azure VM で正式�
 SAP HANA には、サードパーティ製のバックアップ ツールを SAP HANA に直接統合できるバックアップ API が用意されています Azure Backup サービスや [Commvault](https://azure.microsoft.com/resources/protecting-sap-hana-in-azure/) などの製品では、この専用のインターフェイスを使用して SAP HANA データベースまたは再実行ログのバックアップがトリガーされます。 
 
 
-Azure でサポートされている SAP ソフトウェアの詳細については、「[Azure デプロイでサポートされている SAP ソフトウェア](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure)」を参照してください。
+Azure でサポートされている SAP ソフトウェアの詳細については、「[Azure デプロイでサポートされている SAP ソフトウェア](./sap-supported-product-on-azure.md)」を参照してください。
 
 ## <a name="azure-backup-service"></a>Azure Backup サービス
 
 最初に示すシナリオは、Azure Backup サービスが SAP HANA `backint` インターフェイスを使用して、SAP HANA データベースからのストリーミング バックアップを実行するシナリオです。 または、Azure Backup サービスのより汎用的な機能を使用して、アプリケーション整合性のあるディスク スナップショットを作成し、それを Azure Backup サービスに転送します。
 
-Azure Backup は、[backint](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5) と呼ばれる専用の SAP HANA インターフェイスを使用して統合され、SAP HANA のバックアップ ソリューションとして認定を受けています。 ソリューション、その機能、および使用できる Azure リージョンの詳細については、[Azure VM 上の SAP HANA データベースのバックアップに関するサポート マトリックス](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)」を参照してください。 HANA の Azure Backup サービスの詳細と原則については、「[Azure VM での SAP HANA データベースバックアップについて](https://docs.microsoft.com/azure/backup/sap-hana-db-about)」の記事を参照してください。 
+Azure Backup は、[backint](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5) と呼ばれる専用の SAP HANA インターフェイスを使用して統合され、SAP HANA のバックアップ ソリューションとして認定を受けています。 ソリューション、その機能、および使用できる Azure リージョンの詳細については、[Azure VM 上の SAP HANA データベースのバックアップに関するサポート マトリックス](../../../backup/sap-hana-backup-support-matrix.md#scenario-support)」を参照してください。 HANA の Azure Backup サービスの詳細と原則については、「[Azure VM での SAP HANA データベースバックアップについて](../../../backup/sap-hana-db-about.md)」の記事を参照してください。 
 
-Azure Backup サービスを利用する 2 つ目の方法は、Azure Premium Storage のディスク スナップショットを使用してアプリケーション整合性バックアップを作成することです。 [Azure Ultra ディスク](https://docs.microsoft.com/azure/virtual-machines/linux/disks-enable-ultra-ssd)や [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) など、その他の HANA 認定 Azure ストレージでは、Azure Backup サービスによるこの種のスナップショットはサポートされていません。 次の記事を参照してください。
+Azure Backup サービスを利用する 2 つ目の方法は、Azure Premium Storage のディスク スナップショットを使用してアプリケーション整合性バックアップを作成することです。 [Azure Ultra ディスク](../../disks-enable-ultra-ssd.md)や [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) など、その他の HANA 認定 Azure ストレージでは、Azure Backup サービスによるこの種のスナップショットはサポートされていません。 次の記事を参照してください。
 
-- [Azure における VM バックアップ インフラストラクチャの計画を立てる](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)
-- [Azure Linux VM のアプリケーション整合性バックアップ](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent) 
+- [Azure における VM バックアップ インフラストラクチャの計画を立てる](../../../backup/backup-azure-vms-introduction.md)
+- [Azure Linux VM のアプリケーション整合性バックアップ](../../../backup/backup-azure-linux-app-consistent.md) 
 
 次の一連のアクティビティが発生します。
 
@@ -104,7 +104,7 @@ SAP HANA の場合、ほとんどのお客様は、SAP HANA の再実行ログ�
 
 HANA バックアップとストレージ スナップショットについては、いずれかが SAP によって推奨されているということはありません。 状況と使用できるストレージ テクノロジに応じてどちらを使用するかを判断できるよう、双方の長所と短所の一覧が SAP によって作成されています (「[Planning Your Backup and Recovery Strategy (バックアップと回復の戦略の計画)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ef/085cd5949c40b788bba8fd3c65743e/content.htm)」を参照)。
 
-Azure では、Azure BLOB スナップショット機能を使っても複数のディスクにまたがってファイル システムの整合性が確保されるわけでない点に注意してください ([PowerShell による BLOB スナップショットの使用](https://blogs.msdn.microsoft.com/cie/2016/05/17/using-blob-snapshots-with-powershell/)に関するページを参照)。 
+Azure では、Azure BLOB スナップショット機能を使っても複数のディスクにまたがってファイル システムの整合性が確保されるわけでない点に注意してください ([PowerShell による BLOB スナップショットの使用](/archive/blogs/cie/using-blob-snapshots-with-powershell)に関するページを参照)。 
 
 さらに、BLOB スナップショットを頻繁に使用する場合、次の記事で説明されているとおり、課金への影響を把握する必要があります: 「[Understanding How Snapshots Accrue Charges (スナップショットの課金方法について)](/rest/api/storageservices/understanding-how-snapshots-accrue-charges)」。これは Azure 仮想ディスクの使用よりもわかりにくくなっています。
 

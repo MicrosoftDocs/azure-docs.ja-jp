@@ -7,15 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 05/12/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8358d3378ea892ebeef653bcb51243c9f1aa0b8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be43b74e7128f9b250d25f8bdb2642c6f7b41d2a
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79229715"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87115526"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのアクセス トークンの要求
 
@@ -29,7 +30,7 @@ ms.locfileid: "79229715"
 ## <a name="prerequisites"></a>前提条件
 
 - [ユーザー フローを作成](tutorial-create-user-flows.md)して、ユーザーがアプリケーションにサインアップおよびサインインできるようにします。
-- まだそうしていない場合は、[Azure Active Directory B2C テナントに Web API アプリケーションを追加](add-web-application.md)します。
+- まだそうしていない場合は、[Azure Active Directory B2C テナントに Web API アプリケーションを追加](add-web-api-application.md)します。
 
 ## <a name="scopes"></a>スコープ
 
@@ -67,7 +68,7 @@ scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fapi%2Fread%20openid%20offline_acce
 - `<application-ID>` - ユーザー フローをサポートするために登録した Web アプリケーションのアプリケーション識別子。
 - `<redirect-uri>` - クライアント アプリケーションを登録したときに入力した**リダイレクト URI**。
 
-```HTTP
+```http
 GET https://<tenant-name>.b2clogin.com/tfp/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?
 client_id=<application-ID>
 &nonce=anyRandomValue
@@ -84,8 +85,8 @@ https://jwt.ms/?code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
 
 承認コードを正常に受信したら、それを使用してアクセス トークンを要求できます。
 
-```HTTP
-POST <tenant-name>.onmicrosoft.com/oauth2/v2.0/token?p=<policy-name> HTTP/1.1
+```http
+POST <tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
 Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
@@ -99,7 +100,7 @@ grant_type=authorization_code
 
 次の応答に似た内容が表示されます。
 
-```JSON
+```json
 {
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrN...",
     "token_type": "Bearer",
@@ -111,9 +112,9 @@ grant_type=authorization_code
 }
 ```
 
-[https://jwt.ms](https://jwt.ms ) を使用して、返されたアクセス トークンを調べると、次の例に似た内容が表示されるはずです。
+https://jwt.ms を使用して、返されたアクセス トークンを調べると、次の例に似た内容が表示されるはずです。
 
-```JSON
+```json
 {
   "typ": "JWT",
   "alg": "RS256",

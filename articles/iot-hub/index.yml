@@ -11,12 +11,12 @@ metadata:
   manager: eliotgra
   ms.date: 03/23/2020
   ms.custom: amqp
-  ms.openlocfilehash: 93f81f444acae9b4b4451de75de018c2a894bcba
-  ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+  ms.openlocfilehash: 949a007a51fce4a76dcc840f187ca353c88e8ede
+  ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/21/2020
-  ms.locfileid: "81730777"
+  ms.lasthandoff: 07/28/2020
+  ms.locfileid: "87291601"
 landingContent:
 - title: 作業の開始
   linkLists:
@@ -104,3 +104,37 @@ landingContent:
       url: iot-hub-security-x509-get-started.md
     - text: X.509 CA 証明書セキュリティの概念
       url: iot-hub-x509ca-concept.md
+- title: Iot Hub への Azure CLI の使用
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: IoT Hub の作成
+      url: iot-hub-create-using-cli.md
+    - text: IoT デバイスの管理
+      url: iot-hub-device-management-iot-extension-azure-cli-2-0.md
+    - text: メッセージ ルーティングの構成
+      url: tutorial-routing-config-message-routing-cli.md
+    - text: ファイルのアップロードを構成する
+      url: iot-hub-configure-file-upload-cli.md
+    - text: テレメトリの送信と監視
+      url: quickstart-send-telemetry-cli.md
+  - linkListType: reference
+    links:
+    - text: IoT の CLI リファレンス
+      url: /cli/azure/azure-cli-reference-for-IoT
+- title: IoT Hub に PowerShell を使用する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: IoT Hub の作成
+      url: iot-hub-create-using-powershell.md
+    - text: Resource Manager テンプレートを使用して IoT Hub を作成する
+      url: iot-hub-rm-template-powershell.md
+    - text: メッセージ ルーティングの構成
+      url: tutorial-routing-config-message-routing-powershell.md
+    - text: ファイルのアップロードを構成する
+      url: iot-hub-configure-file-upload-powershell.md
+  - linkListType: reference
+    links:
+    - text: IoT の PowerShell リファレンス
+      url: /powershell/module/az.iothub#iothub

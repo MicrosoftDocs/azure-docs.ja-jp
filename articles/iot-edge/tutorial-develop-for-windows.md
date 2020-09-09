@@ -4,17 +4,17 @@ description: このチュートリアルでは、Windows コンテナーを使�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/11/2019
+ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 58a63c9e11cf86318f0e9f051d034cbbaf7c40a9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d4846a69f548c99de735cc9d9e06bd6bb263b4bd
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76772246"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439702"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>チュートリアル:Windows デバイス用の IoT Edge モジュールを開発する
 
@@ -133,7 +133,7 @@ Azure IoT Edge Tools の拡張機能により、Visual Studio でサポートさ
    | ----- | ----- |
    | Visual Studio テンプレート | **[C# モジュール]** を選択します。 |
    | モジュール名 | 既定の **IotEdgeModule1** をそのまま使用します。 |
-   | リポジトリの URL | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、モジュール プロジェクト名の値から事前に入力されています。 **localhost:5000** を、Azure コンテナー レジストリのログイン サーバーの値に置き換えます。 Azure portal で、コンテナー レジストリの**概要**ページから**ログイン サーバー**の値を取得できます。 <br><br> 最終的なイメージ リポジトリは、\<レジストリ名\>.azurecr.io/iotedgemodule1 のようになります。 |
+   | リポジトリの URL | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、モジュール プロジェクト名の値から事前に入力されています。 **localhost:5000** を、Azure Container Registry の**ログイン サーバー**の値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーの値を取得できます。 <br><br> 最終的なイメージ リポジトリは、\<registry name\>.azurecr.io/iotedgemodule1 のようになります。 |
 
       ![ターゲット デバイス、モジュールの種類、コンテナー レジストリ用にプロジェクトを構成する](./media/tutorial-develop-for-windows/add-module-to-solution.png)
 
@@ -179,7 +179,7 @@ IoT Edge ランタイムでは、コンテナー イメージを IoT Edge デバ
 
 作成したソリューション テンプレートには、IoT Edge モジュールのサンプル コードが含まれています。 このサンプル モジュールは、単にメッセージを受け取って渡すだけです。 パイプライン機能は、モジュールがどのようにして相互に通信を行うかという、IoT Edge での重要な概念を示します。
 
-各モジュールは、コードで宣言された複数の *入力*キューと *出力*キューを持つことができます。 デバイスで実行されている IoT Edge ハブは、1 つのモジュールの出力から、1 つ以上のモジュールの入力にメッセージをルーティングします。 入力と出力を宣言するための特定の言語は、言語によって異なりますが、その概念はすべてのモジュールで同じです。 モジュール間のルーティングの詳細については、[ルートの宣言](module-composition.md#declare-routes)に関する記事を参照してください。
+各モジュールは、コードで宣言された複数の *入力*キューと *出力*キューを持つことができます。 デバイスで実行されている IoT Edge ハブは、1 つのモジュールの出力から、1 つ以上のモジュールの入力にメッセージをルーティングします。 入力と出力を宣言するための特定のコードは、言語によって異なりますが、その概念はすべてのモジュールで同じです。 モジュール間のルーティングの詳細については、[ルートの宣言](module-composition.md#declare-routes)に関する記事を参照してください。
 
 プロジェクト テンプレートに含まれるサンプル C# コードには、.NET 用 IoT Hub SDK の [ModuleClient クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)が使用されています。
 
@@ -199,13 +199,13 @@ IoT Edge ランタイムでは、コンテナー イメージを IoT Edge デバ
 
 6. $edgeAgent の必要なプロパティの **modules** プロパティを見つけます。
 
-   ここには 2 つのモジュールがリストされているはずです。 1 つ目は **SimulatedTemperatureSensor** で、これは既定ですべてのテンプレートに含まれており、モジュールをテストするために使用できるシミュレートされた温度データを提供します。 2 つ目は、このプロジェクトの一部として作成した **IotEdgeModule1** モジュールです。
+   ここには 2 つのモジュールがリストされているはずです。 1 つは **SimulatedTemperatureSensor** で、これは既定ですべてのテンプレートに含まれており、モジュールをテストするために使用できるシミュレートされた温度データを提供します。 もう 1 つは、このプロジェクトの一部として作成した **IotEdgeModule1** モジュールです。
 
    このモジュールのプロパティでは、デバイスへのデプロイにどのモジュールを含めるかを宣言します。
 
 7. $edgeHub の必要なプロパティから **routes** プロパティを見つけます。
 
-   IoT Edge ハブ モジュールの機能の 1 つは、デプロイ内のすべてのモジュール間でメッセージをルーティングすることです。 routes プロパティの値を確認します。 最初のルートである **IotEdgeModule1ToIoTHub** では、IotEdgeModule1 モジュールの出力キューから送信されるすべてのメッセージを対象にするために、ワイルドカード文字 ( **\*** ) を使用します。 これらのメッセージは、IoT Hub を示す予約名である *$upstream* に入ります。 2 つ目のルートである **sensorToIotEdgeModule1** では、SimulatedTemperatureSensor モジュールから送信されたメッセージを受け取り、それらを IotEdgeModule1 モジュールの *input1* 入力キューにルーティングします。
+   IoT Edge ハブ モジュールの機能の 1 つは、デプロイ内のすべてのモジュール間でメッセージをルーティングすることです。 routes プロパティの値を確認します。 1 つのルートである **IotEdgeModule1ToIoTHub** では、IotEdgeModule1 モジュールの出力キューから送信されるすべてのメッセージを対象とするために、ワイルドカード文字 ( **\*** ) を使用します。 これらのメッセージは、IoT Hub を示す予約名である *$upstream* に入ります。 もう 1 つのルートである **sensorToIotEdgeModule1** では、SimulatedTemperatureSensor モジュールから送信されたメッセージを受け取り、それらを IotEdgeModule1 モジュールの *input1* 入力キューにルーティングします。
 
    ![deployment.template.json でルートを確認する](./media/tutorial-develop-for-windows/deployment-routes.png)
 
@@ -267,7 +267,7 @@ IoT Edge ランタイムでは、コンテナー イメージを IoT Edge デバ
 モジュール イメージをビルドおよびプッシュしているときにエラーが発生する場合は、開発マシン上の Docker 構成に関連していることがよくあります。 次のチェックを使用して構成を確認してください。
 
 * コンテナー レジストリからコピーした資格情報を使用して `docker login` コマンドを実行したか。 これらの資格情報は、Azure にサインインする際に使用するものとは異なります。
-* コンテナー リポジトリは正しいか。 正しいコンテナー レジストリ名と正しいモジュール名が含まれているか。 チェックする IotEdgeModule1 フォルダー内の **module.json** ファイルを開きます。 リポジトリ値は、 **\<レジストリ名\>.azurecr.io/iotedgemodule1** のようになっているはずです。
+* コンテナー リポジトリは正しいか。 正しいコンテナー レジストリ名と正しいモジュール名が含まれているか。 チェックする IotEdgeModule1 フォルダー内の **module.json** ファイルを開きます。 リポジトリ値は、 **\<registry name\>.azurecr.io/iotedgemodule1** のようになっているはずです。
 * **IotEdgeModule1** とは異なる名前を自分のモジュールに使用した場合、その名前はソリューション全体で一貫しているか。
 * 対象のマシンは、ビルドしているのと同じ種類のコンテナーを実行しているか。 このチュートリアルは Windows IoT Edge デバイスを対象としているため、Visual Studio ファイルには **windows-amd64** 拡張子があり、Docker Desktop では Windows コンテナーが実行されている必要があります。
 
@@ -328,6 +328,14 @@ IotEdgeModule1 コードは、入力キューを介してメッセージを受�
    IoT Edge モジュールでは大文字と小文字の区別があります。
 
    SimulatedTemperatureSensor と IotEdgeModule1 のログには、処理しているメッセージが表示されるはずです。 edgeAgent モジュールには、他のモジュールを開始する責任があります。そのため、そのログには、配置マニフェストの実装に関する情報が含まれます。 いずれかのモジュールが一覧に表示されていない、または実行されていない場合は、おそらく edgeAgent のログにエラーが書き込まれます。 edgeHub モジュールは、モジュールと IoT Hub 間の通信を担当します。 モジュールは稼働しているが、メッセージが IoT ハブに到着していない場合は、おそらく edgeHub のログにエラーが書き込まれます。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+次の推奨記事に進む場合は、作成したリソースおよび構成を維持して、再利用することができます。 また、同じ IoT Edge デバイスをテスト デバイスとして使用し続けることもできます。
+
+そうでない場合は、課金されないようにするために、ローカル構成と、この記事で使用した Azure リソースを削除できます。
+
+[!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -4,14 +4,14 @@ description: 脅威の防止は、データベースに対する潜在的なセ�
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: de056f61337311642589ba937c6d9842d8354d36
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5f419836b9e73e49ec510fc359487633523e0ef0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79530140"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104607"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mariadb"></a>Azure Database for MariaDB の Advanced Threat Protection
 
@@ -23,7 +23,7 @@ Advanced Threat Protection は、高度なセキュリティ機能の統合パ�
 > Advanced Threat Protection は、パブリック プレビュー段階です。 この機能は、Azure Database for MariaDB が汎用サーバーとメモリ最適化サーバー用にデプロイされている Azure のすべてのリージョンで利用できます。
 
 > [!NOTE]
-> Advanced Threat Protection の機能は、US Gov テキサス、US Gov アリゾナ、US Gov アイオワ、US Gov バージニア、US DoD 東部、US DoD 中部、ドイツ中部、ドイツ北部、中国東部、中国東部 2 の Azure 政府およびソブリン クラウド領域では使用**できません**。 一般的な製品の可用性については[リージョン毎の製品の可用性](https://azure.microsoft.com/global-infrastructure/services/)を確認してください。
+> Advanced Threat Protection 機能は、次の Azure Government およびソブリン クラウド リージョンでは使用**できません**。US Gov テキサス、US Gov アリゾナ、US Gov アイオワ、US Gov バージニア、US DoD 東部、US DoD 中部、ドイツ中部、ドイツ北部、中国東部、中国東部 2。 一般的な製品の可用性については[リージョン毎の製品の可用性](https://azure.microsoft.com/global-infrastructure/services/)を確認してください。
 
 ## <a name="set-up-threat-detection"></a>脅威検出の設定
 1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) を開きます。

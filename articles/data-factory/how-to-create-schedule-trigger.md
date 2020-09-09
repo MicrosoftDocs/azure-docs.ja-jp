@@ -11,12 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2018
-ms.openlocfilehash: a0a01dad5ae86cf20d57ade845326838f8fd686a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-python
+ms.openlocfilehash: 5dd51f7bcaaa876285f6f514ea98603ff28e7ffa
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641501"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87872601"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>スケジュールどおりにパイプラインを実行するトリガーの作成
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

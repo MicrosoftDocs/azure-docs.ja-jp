@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.openlocfilehash: ecdcc8a84cdccb05ec514003d63f808583d719c9
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 46b7479df6d087915cfe81895a786a528da6b9bb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797678"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327907"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>ユーザー コンテキスト ID を送信して Azure Application Insights で使用状況を把握できるようにする
 
@@ -19,10 +19,10 @@ ms.locfileid: "83797678"
 
 Application Insights を使用すると、次に示す一連の製品使用状況ツールでユーザーを監視したり追跡したりすることができます。
 
-- [ユーザー、セッション、イベント](https://docs.microsoft.com/azure/application-insights/app-insights-usage-segmentation)
-- [ファネル](https://docs.microsoft.com/azure/application-insights/usage-funnels)
-- [リテンション期間](https://docs.microsoft.com/azure/application-insights/app-insights-usage-retention)コーホート
-- [ブック](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
+- [ユーザー、セッション、イベント](./usage-segmentation.md)
+- [ファネル](./usage-funnels.md)
+- [リテンション期間](./usage-retention.md)コーホート
+- [ブック](../platform/workbooks-overview.md)
 
 Application Insights で一定期間にわたってユーザーの行動を追跡するためには、ユーザーごと、またはセッションごとの ID が必要となります。 すべてのカスタム イベントまたはページ ビューに次の ID を追加します。
 
@@ -30,7 +30,7 @@ Application Insights で一定期間にわたってユーザーの行動を追�
 - セッション:セッション ID を含みます。
 
 > [!NOTE]
-> これは、Application Insights でユーザー アクティビティを追跡するための手動の手順を概説した高度な記事です。 多くの Web アプリケーションでは、**これらの手順は必要ありません**。ユーザー アクティビティを自動的に追跡するには、既定のサーバー側 SDK と[クライアント/ブラウザー側 JavaScript SDK](../../azure-monitor/app/website-monitoring.md ) で十分であるためです。 サーバー側 SDK に加えて[クライアント側監視](../../azure-monitor/app/website-monitoring.md )を構成していない場合は、まずそれを構成し、ユーザー行動分析ツールが期待どおりに機能しているかどうかをテストして確認します。
+> これは、Application Insights でユーザー アクティビティを追跡するための手動の手順を概説した高度な記事です。 多くの Web アプリケーションでは、**これらの手順は必要ありません**。ユーザー アクティビティを自動的に追跡するには、既定のサーバー側 SDK と[クライアント/ブラウザー側 JavaScript SDK](./website-monitoring.md) で十分であるためです。 サーバー側 SDK に加えて[クライアント側監視](./website-monitoring.md)を構成していない場合は、まずそれを構成し、ユーザー行動分析ツールが期待どおりに機能しているかどうかをテストして確認します。
 
 ## <a name="choosing-user-ids"></a>ユーザー ID の選択
 
@@ -42,11 +42,11 @@ Application Insights で一定期間にわたってユーザーの行動を追�
 
 ID には、Guid のほか、個々のユーザーを一意に識別できるだけの複合文字列を使用する必要があります。 たとえば、長い乱数を使用することが考えられます。
 
-ユーザーについて個人を特定できる情報を含んだ ID は、ユーザー ID として Application Insights に送信する値としては不適切です。 [認証されたユーザーの ID](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#authenticated-users) を送信することもできますが、そのような ID は、使用状況を把握するために必要なユーザー ID の要件を満たしません。
+ユーザーについて個人を特定できる情報を含んだ ID は、ユーザー ID として Application Insights に送信する値としては不適切です。 [認証されたユーザーの ID](./api-custom-events-metrics.md#authenticated-users) を送信することもできますが、そのような ID は、使用状況を把握するために必要なユーザー ID の要件を満たしません。
 
 ## <a name="aspnet-apps-setting-the-user-context-in-an-itelemetryinitializer"></a>ASP.NET アプリ:ITelemetryInitializer でのユーザー コンテキストの設定
 
-[ここ](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#addmodify-properties-itelemetryinitializer)で詳しく説明されているように、テレメトリ初期化子を作成します。 要求テレメトリを通じてセッション ID を渡し、Context.User.Id と Context.Session.Id を設定します。
+[ここ](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)で詳しく説明されているように、テレメトリ初期化子を作成します。 要求テレメトリを通じてセッション ID を渡し、Context.User.Id と Context.Session.Id を設定します。
 
 この例でユーザー ID に設定している識別子は、セッション後に有効期限が切れます。 可能であれば、セッションの終了後も維持されるユーザー ID を使用してください。
 
@@ -128,10 +128,11 @@ namespace MvcWebRole.Telemetry
 
 ## <a name="next-steps"></a>次のステップ
 
-- 使用状況を把握できるようにするには、[カスタム イベント](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent)または[ページ ビュー](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)の送信を開始します。
+- 使用状況を把握できるようにするには、[カスタム イベント](./api-custom-events-metrics.md#trackevent)または[ページ ビュー](./api-custom-events-metrics.md#page-views)の送信を開始します。
 - カスタム イベントまたはページ ビューを既に送信した場合は、使用状況ツールを見て、自分のサービスがユーザーにどのように使用されているかを把握します。
     - [利用状況の概要](usage-overview.md)
     - [ユーザー、セッション、およびイベント](usage-segmentation.md)
     - [ファネル](usage-funnels.md)
     - [保持](usage-retention.md)
-    - [ブック](../../azure-monitor/platform/workbooks-overview.md)
+    - [ブック](../platform/workbooks-overview.md)
+

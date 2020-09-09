@@ -5,16 +5,16 @@ description: Azure PowerShell を使用して、複数の Web サイトをホス
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 11/14/2019
+ms.topic: how-to
+ms.date: 07/20/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: e05d84e8e06dbe63a1bc8e8ae1d401f186baac77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f6c6dd18ba57d83aa235f66285e7cb2ed42c1703
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80133059"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524968"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-azure-powershell"></a>Azure PowerShell を使用して、複数の Web サイトをホストするアプリケーション ゲートウェイを作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "80133059"
 > * バックエンド プールを含んだ仮想マシン スケール セットの作成
 > * ドメインの CNAME レコードの作成
 
-![マルチサイト ルーティングの例](./media/tutorial-multiple-sites-powershell/scenario.png)
+:::image type="content" source="./media/tutorial-multiple-sites-powershell/scenario.png" alt-text="複数サイト アプリケーション ゲートウェイ":::
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -125,6 +125,10 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 アプリケーション ゲートウェイが適切にトラフィックをバックエンド アドレス プールにルーティングできるようにするには、リスナーが必要です。 この記事では、2 つのドメインに対して 2 つのリスナーを作成します。 リスナーは、*contoso.com* ドメインと *fabrikam.com* ドメインに対して作成されます。
 
 前に作成したフロントエンド構成とフロントエンド ポートを指定して [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) を使用し、最初のリスナーを作成します。 着信トラフィックに使用するバックエンド プールをリスナーが判断するには、ルールが必要です。 [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) を使用して、*contosoRule* という名前の基本ルールを作成します。
+
+>[!NOTE]
+> Application Gateway または WAF v2 SKU では、リスナーごとに最大 5 つのホスト名を構成することもできます。ホスト名にワイルドカード文字を使用できます。 詳細については、「[リスナーにおけるワイルドカードのホスト名](multiple-site-overview.md#wildcard-host-names-in-listener-preview)」を参照してください。
+>Azure PowerShell を使用してリスナーで複数のホスト名とワイルドカード文字を使用するには、`-HostName`ではなく `-HostNames` を使用する必要があります。 HostNames を使用すると、最大 5 つのホスト名をコンマ区切り値として指定できます。 たとえば、`-HostNames "*.contoso.com,*.fabrikam.com"` のように指定します。
 
 ```azurepowershell-interactive
 $contosolistener = New-AzApplicationGatewayHttpListener `

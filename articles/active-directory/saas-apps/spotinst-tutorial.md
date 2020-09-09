@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Spotinst の統合 | Microsoft Docs
 description: Azure Active Directory と Spotinst の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2f6dbd70-c2db-4ae9-99ee-976c3090d214
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5490ff6c6143dff258d74e013bb9d4c821aab625
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3b8297175c24aac132fd7d83580e0889e0da4730
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76263287"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587958"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-spotinst"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Spotinst の統合
 
@@ -79,18 +75,11 @@ Spotinst に対する Azure AD SSO を構成してテストするには、次の
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
+1. **[基本的な SAML 構成]** セクションで、アプリケーションを IDP-initiated モードで構成する場合は、次の手順を完了します。
 
-    a. **[追加の URL を設定します]** をクリックします。
-
-    b. **[リレー状態]** ボックスに、値 `<ID>` を入力します。
-
-1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
-
-    **[サインオン URL]** テキスト ボックスに、URL として「`https://console.spotinst.com/auth/saml`」と入力します。
-
-    > [!NOTE]
-    > リレー状態の値は実際のものではありません。 実際のリレー状態にリレー状態値を置き換えます。実際の値については後で説明します。
+   1. **[返信 URL]** が https://console.spotinst.com/auth/saml に設定されていることを確認します。
+   1. **[リレー状態]** で、Spotinst 組織 ID を入力します。これは、 **[SSO]** タブでも確認できます。
+   1. **[サインオン URL]** は空である必要があります。
 
 1. **[保存]** をクリックします。
 
@@ -148,11 +137,11 @@ Spotinst に対する Azure AD SSO を構成してテストするには、次の
 
 1. 別の Web ブラウザー ウィンドウで、セキュリティ管理者として Spotinst にサインインします。
 
-2. 画面の右上にある**ユーザー アイコン**をクリックして、 **[設定]** をクリックします。
+2. 画面の右上にある**ユーザー アイコン**をクリックして、**[設定]** をクリックします。
 
     ![Spotinst の設定](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
 
-3. 上部の **[SECURITY]\(セキュリティ\)** タブをクリックし、 **[Identity Providers]\(ID プロバイダー\)** を選択して、以下の手順を実行します。
+3. 上部の **[SECURITY]\(セキュリティ\)** タブをクリックし、**[Identity Providers]\(ID プロバイダー\)** を選択して、以下の手順を実行します。
 
     ![Spotinst のセキュリティ](./media/spotinst-tutorial/tutorial_spotinst_security.png)
 
@@ -170,11 +159,11 @@ Spotinst に対する Azure AD SSO を構成してテストするには、次の
 
    a. 別の Web ブラウザー ウィンドウで、セキュリティ管理者として Spotinst にサインインします。
 
-   b. 画面の右上にある**ユーザー アイコン**をクリックして、 **[設定]** をクリックします。
+   b. 画面の右上にある**ユーザー アイコン**をクリックして、**[設定]** をクリックします。
 
     ![Spotinst の設定](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
 
-    c. **[Users]\(ユーザー\)** をクリックして、 **[ADD USER]\(ユーザーの追加\)** を選択します。
+    c. **[Users]\(ユーザー\)** をクリックして、**[ADD USER]\(ユーザーの追加\)** を選択します。
 
     ![Spotinst の設定](./media/spotinst-tutorial/adduser1.png)
 

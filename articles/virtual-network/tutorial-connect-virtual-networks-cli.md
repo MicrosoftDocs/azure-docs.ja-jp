@@ -9,18 +9,18 @@ Customer intent: I want to connect two virtual networks so that virtual machines
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
-ms.custom: ''
-ms.openlocfilehash: aa2d75173b14e768a207336b54b3dc10a8c3ea5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 855ea936ff91d4c22b0670cd989f91c692c567c8
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235160"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502598"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-cli"></a>Azure CLI を使用して仮想ネットワーク ピアリングで仮想ネットワークを接続する
 

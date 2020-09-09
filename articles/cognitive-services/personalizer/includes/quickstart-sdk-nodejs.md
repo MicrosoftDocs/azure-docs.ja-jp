@@ -2,44 +2,34 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: include
-ms.custom: include file
-ms.date: 04/27/2020
-ms.author: diberry
-ms.openlocfilehash: 237ba5ba390b4065a67f29611fbd43375c239578
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: cog-serv-seo-aug-2020
+ms.date: 08/27/2020
+ms.openlocfilehash: 03680a2a6b4792a2bf522eff1462e29439e0f61b
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188872"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055394"
 ---
-[リファレンスのドキュメント](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest) |[ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer) | [パッケージ (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer) | [サンプル](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js)
+[リファレンスのドキュメント](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest) |[ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer) | [パッケージ (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer) | [サンプル](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/Personalizer)
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services)
 * 最新バージョンの [Node.js](https://nodejs.org) および NPM。
+* Azure サブスクリプションを用意できたら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer"  title="Personalizer リソースを作成"  target="_blank">Personalizer リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、自分のキーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
+    * アプリケーションを Personalizer API に接続するには、作成したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
+    * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
 
-## <a name="using-this-quickstart"></a>このクイックスタートの使用法
-
-
-このクイックスタートを使用するには、次のようないくつかの手順があります。
-
-* Azure portal で、Personalizer リソースを作成する
-* Azure portal の Personalizer リソースの **[構成]** ページで、モデルの更新頻度を非常に短い間隔に変更する
-* コード エディターで、コード ファイルを作成し、コード ファイルを編集する
-* コマンド ラインまたはターミナルで、コマンド ラインから SDK をインストールする
-* コマンド ラインまたはターミナルで、コード ファイルを実行する
-
-[!INCLUDE [Create Azure resource for Personalizer](create-personalizer-resource.md)]
+## <a name="setting-up"></a>設定
 
 [!INCLUDE [Change model frequency](change-model-frequency.md)]
 
-## <a name="create-a-new-nodejs-application"></a>新しい Node.js アプリケーションを作成する
+### <a name="create-a-new-nodejs-application"></a>新しい Node.js アプリケーションを作成する
 
 コンソール ウィンドウ (cmd、PowerShell、Bash など) で、ご利用のアプリ用に新しいディレクトリを作成し、そこに移動します。
 
@@ -53,7 +43,25 @@ mkdir myapp && cd myapp
 npm init -y
 ```
 
-## <a name="install-the-nodejs-library-for-personalizer"></a>Personalizer 用 Node.js ライブラリをインストールする
+任意のエディターまたは IDE で、`sample.js` という名前の新しい Node.js アプリケーションを作成し、リソースのエンドポイントとサブスクリプション キー用の変数を作成します。 
+
+[!INCLUDE [Personalizer find resource info](find-azure-resource-info.md)]
+
+```javascript
+const uuidv1 = require('uuid/v1');
+const Personalizer = require('@azure/cognitiveservices-personalizer');
+const CognitiveServicesCredentials = require('@azure/ms-rest-azure-js').CognitiveServicesCredentials;
+const readline = require('readline-sync');
+
+// The key specific to your personalization service instance; e.g. "0123456789abcdef0123456789ABCDEF"
+const serviceKey = "<REPLACE-WITH-YOUR-PERSONALIZER-KEY>";
+
+// The endpoint specific to your personalization service instance; 
+// e.g. https://<your-resource-name>.cognitiveservices.azure.com
+const baseUri = "https://<REPLACE-WITH-YOUR-PERSONALIZER-ENDPOINT>.cognitiveservices.azure.com";
+```
+
+### <a name="install-the-nodejs-library-for-personalizer"></a>Personalizer 用 Node.js ライブラリをインストールする
 
 次のコマンドを使用して、Node.js 用 Personalizer クライアント ライブラリをインストールします。
 
@@ -81,39 +89,111 @@ Personalizer に報酬を送信するには、[RewardRequest](https://docs.micro
 
 以下のコード スニペットは、Node.js 用 Personalizer クライアント ライブラリを使用して次のことを実行する方法を示します。
 
-* [Personalizer クライアントを作成する](#create-a-personalizer-client)
+* [Personalizer クライアントを作成する](#authenticate-the-client)
 * [Rank API](#request-the-best-action)
 * [Reward API](#send-a-reward)
 
-## <a name="create-a-new-nodejs-application"></a>新しい Node.js アプリケーションを作成する
+## <a name="authenticate-the-client"></a>クライアントを認証する
 
-お気に入りのエディターまたは IDE で、`sample.js` という名前の新しい Node.js アプリケーションを作成します。
+先ほど作成した `serviceKey` と `baseUri` を使用して `PersonalizerClient` のインスタンスを作成します。
 
-## <a name="add-the-dependencies"></a>依存関係を追加する
+```javascript
+const credentials = new CognitiveServicesCredentials(serviceKey);
 
-好みのエディターまたは IDE で、**sample.js** ファイルを開きます。 次の `requires` を追加して、NPM パッケージを追加します。
-
-[!code-javascript[Add module dependencies](~/samples-personalizer/quickstarts/node/sample.js?name=Dependencies)]
-
-## <a name="add-personalizer-resource-information"></a>Personalizer のリソース情報を追加する
-
-`PERSONALIZER_KEY` および `PERSONALIZER_ENDPOINT` という名前の環境変数から取得される、リソースの Azure キーとエンドポイントの変数を作成します。 アプリケーションの起動後に環境変数を作成した場合、その変数にアクセスするには、アプリケーションを実行しているエディター、IDE、またはシェルを閉じて、再読み込みしなければならない場合があります。 メソッドは、このクイックスタートの中で後から作成します。
-
-[!code-javascript[Add Personalizer resource information](~/samples-personalizer/quickstarts/node/sample.js?name=AuthorizationVariables)]
-
-## <a name="create-a-personalizer-client"></a>Personalizer クライアントを作成する
-
-次に、Personalizer クライアントを返すメソッドを作成します。 このメソッドのパラメーターは `PERSONALIZER_RESOURCE_ENDPOINT` で、ApiKey は `PERSONALIZER_RESOURCE_KEY` です。
-
-[!code-javascript[Create a Personalizer client](~/samples-personalizer/quickstarts/node/sample.js?name=Client)]
+// Initialize Personalization client.
+const personalizerClient = new Personalizer.PersonalizerClient(credentials, baseUri);
+```
 
 ## <a name="get-content-choices-represented-as-actions"></a>アクションとして表されるコンテンツの選択肢を取得する
 
 アクションはコンテンツの選択肢を表します。Personalizer を使用して、この中から最適なコンテンツ項目を選択します。 一連のアクションとそのフィーチャーを表す次のメソッドを Program クラスに追加します。
 
-[!code-javascript[Create user features](~/samples-personalizer/quickstarts/node/sample.js?name=createUserFeatureTimeOfDay)]
+```javascript
+function getContextFeaturesList() {
+  const timeOfDayFeatures = ['morning', 'afternoon', 'evening', 'night'];
+  const tasteFeatures = ['salty', 'sweet'];
 
-[!code-javascript[Create actions](~/samples-personalizer/quickstarts/node/sample.js?name=getActions)]
+  let answer = readline.question("\nWhat time of day is it (enter number)? 1. morning 2. afternoon 3. evening 4. night\n");
+  let selection = parseInt(answer);
+  const timeOfDay = selection >= 1 && selection <= 4 ? timeOfDayFeatures[selection - 1] : timeOfDayFeatures[0];
+
+  answer = readline.question("\nWhat type of food would you prefer (enter number)? 1. salty 2. sweet\n");
+  selection = parseInt(answer);
+  const taste = selection >= 1 && selection <= 2 ? tasteFeatures[selection - 1] : tasteFeatures[0];
+
+  console.log("Selected features:\n");
+  console.log("Time of day: " + timeOfDay + "\n");
+  console.log("Taste: " + taste + "\n");
+
+  return [
+    {
+      "time": timeOfDay
+    },
+    {
+      "taste": taste
+    }
+  ];
+}
+```
+
+```javascript
+function getActionsList() {
+  return [
+    {
+      "id": "pasta",
+      "features": [
+        {
+          "taste": "salty",
+          "spiceLevel": "medium"
+        },
+        {
+          "nutritionLevel": 5,
+          "cuisine": "italian"
+        }
+      ]
+    },
+    {
+      "id": "ice cream",
+      "features": [
+        {
+          "taste": "sweet",
+          "spiceLevel": "none"
+        },
+        {
+          "nutritionalLevel": 2
+        }
+      ]
+    },
+    {
+      "id": "juice",
+      "features": [
+        {
+          "taste": "sweet",
+          "spiceLevel": "none"
+        },
+        {
+          "nutritionLevel": 5
+        },
+        {
+          "drink": true
+        }
+      ]
+    },
+    {
+      "id": "salad",
+      "features": [
+        {
+          "taste": "salty",
+          "spiceLevel": "low"
+        },
+        {
+          "nutritionLevel": 8
+        }
+      ]
+    }
+  ];
+}
+```
 
 ## <a name="create-the-learning-loop"></a>学習ループを作成する
 
@@ -121,7 +201,53 @@ Personalizer の学習ループとは、[Rank](#request-the-best-action) 呼び�
 
 次のコードでは、コマンド ラインでユーザーに好みをたずね、その情報を Personalizer に送信して最適なアクションを選択し、その選択をリストから選択できるようユーザーに提示した後、その選択にサービスがどの程度寄与したかを示す報酬を Personalizer に送る形でサイクルをループで処理しています。
 
-[!code-javascript[Create the learning loop](~/samples-personalizer/quickstarts/node/sample.js?name=mainLoop)]
+```javascript
+let runLoop = true;
+
+do {
+
+  let rankRequest = {}
+
+  // Generate an ID to associate with the request.
+  rankRequest.eventId = uuidv1();
+
+  // Get context information from the user.
+  rankRequest.contextFeatures = getContextFeaturesList();
+
+  // Get the actions list to choose from personalization with their features.
+  rankRequest.actions = getActionsList();
+
+  // Exclude an action for personalization ranking. This action will be held at its current position.
+  rankRequest.excludedActions = getExcludedActionsList();
+
+  rankRequest.deferActivation = false;
+
+  // Rank the actions
+  const rankResponse = await personalizerClient.rank(rankRequest);
+
+  console.log("\nPersonalization service thinks you would like to have:\n")
+  console.log(rankResponse.rewardActionId);
+
+  // Display top choice to user, user agrees or disagrees with top choice
+  const reward = getReward();
+
+  console.log("\nPersonalization service ranked the actions with the probabilities as below:\n");
+  for (let i = 0; i < rankResponse.ranking.length; i++) {
+    console.log(JSON.stringify(rankResponse.ranking[i]) + "\n");
+  }
+
+  // Send the reward for the action based on user response.
+
+  const rewardRequest = {
+    value: reward
+  }
+
+  await personalizerClient.events.reward(rankRequest.eventId, rewardRequest);
+
+  runLoop = continueLoop();
+
+} while (runLoop);
+```
 
 rank 呼び出しと reward 呼び出しについて、以降の各セクションでさらに詳しく見ていきましょう。
 
@@ -134,18 +260,42 @@ rank 呼び出しと reward 呼び出しについて、以降の各セクショ�
 
 Rank 要求を実行するために、このプログラムは、ユーザーの好みをたずねてコンテンツの選択肢を作成します。 このプロセスで、アクションから除外するコンテンツ (`excludeActions`) を作成することもできます。 優先度付けされた応答を取得するためには、Rank 要求に[アクション](../concepts-features.md#actions-represent-a-list-of-options)とそのフィーチャー、currentContext フィーチャー、excludeActions、一意の Rank イベント ID が必要です。
 
-このクイックスタートにおけるコンテキストのフィーチャーは、時間帯と食べ物に対するユーザーの好みという単純なものです。 実稼働システムでは、[アクションとフィーチャー](../concept-feature-evaluation.md)を決定し、[評価](../concepts-features.md)することが、決して簡単ではない場合もあります。
+このクイックスタートにおけるコンテキストのフィーチャーは、時間帯と食べ物に対するユーザーの好みという単純なものです。 実稼働システムでは、[アクションとフィーチャー](../concepts-features.md)を決定し、[評価](../concept-feature-evaluation.md)することが、決して簡単ではない場合もあります。
 
-[!code-javascript[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/node/sample.js?name=rank)]
+```javascript
+let rankRequest = {}
+
+// Generate an ID to associate with the request.
+rankRequest.eventId = uuidv1();
+
+// Get context information from the user.
+rankRequest.contextFeatures = getContextFeaturesList();
+
+// Get the actions list to choose from personalization with their features.
+rankRequest.actions = getActionsList();
+
+// Exclude an action for personalization ranking. This action will be held at its current position.
+rankRequest.excludedActions = getExcludedActionsList();
+
+rankRequest.deferActivation = false;
+
+// Rank the actions
+const rankResponse = await personalizerClient.rank(rankRequest);
+```
 
 ## <a name="send-a-reward"></a>報酬を送信する
-
 
 Reward 要求で送信する報酬スコアを取得するめに、このプログラムは、ユーザーの選択をコマンド ラインから取得し、選択に数値を割り当てた後、一意のイベント ID と報酬スコア (数値) を Reward API に送信します。
 
 このクイックスタートでは、0 または 1 という単純な数値を報酬スコアとして割り当てます。 実際のニーズにもよりますが、実稼働システムでは、いつ何を [Reward](../concept-rewards.md) 呼び出しに送信するかが決して簡単な決定事項ではない場合もあります。
 
-[!code-javascript[The Personalizer learning loop sends a reward.](~/samples-personalizer/quickstarts/node/sample.js?name=reward)]
+```javascript
+const rewardRequest = {
+  value: reward
+}
+
+await personalizerClient.events.reward(rankRequest.eventId, rewardRequest);
+```
 
 ## <a name="run-the-program"></a>プログラムの実行
 

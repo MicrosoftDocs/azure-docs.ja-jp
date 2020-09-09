@@ -9,14 +9,15 @@ ms.assetid: 2575A80C-FC74-4631-AE5D-8101CF2591D3
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: tutorial
-ms.date: 12/19/2019
+ms.date: 06/24/2020
 ms.author: aahi
-ms.openlocfilehash: 1c8e0bb136fddeb84dc991e63a761378b38cc470
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 8bfd7b6e5c9a2a7e3d9ed750e544036f3874271f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75382329"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933224"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>C# でのコンソール アプリ検索クライアントのビルド
 
@@ -31,8 +32,9 @@ ms.locfileid: "75382329"
 
 チュートリアルを進めるには、次のものが必要です。
 
-- 見ることができます。 お持ちでない場合は、[無料版の Visual Studio 2017 Community Edition をダウンロードしインストールしてください](https://www.visualstudio.com/downloads/)。
-- Bing Web Search API のサブスクリプション キー。 ない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)にサインアップしてください。
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Bing Search リソースを作成"  target="_blank">Bing Search リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
+* [Visual Studio IDE](https://www.visualstudio.com/downloads/)。
 
 ## <a name="create-a-new-console-app-project"></a>新しいコンソール アプリ プロジェクトを作成する
 
@@ -42,14 +44,14 @@ Visual Studio で、`Ctrl`+`Shift`+`N` キーを押してプロジェクトを�
 
 アプリケーションに "**MyConsoleSearchApp**" という名前を付けて、 **[OK]** をクリックします。
 
-## <a name="add-the-jsonnet-nuget-package-to-the-project"></a>JSON.net Nuget パッケージをプロジェクトに追加する
+## <a name="add-the-jsonnet-nuget-package-to-the-project"></a>JSON.net NuGet パッケージをプロジェクトに追加する
 
 JSON.net では、API によって返される JSON 応答を使用することができます。 NuGet パッケージをプロジェクトに追加します。
 
 - **ソリューション エクスプローラー**でプロジェクトを右クリックし、 **[NuGet パッケージの管理...]** を選びます。
 - **[参照]** タブで `Newtonsoft.Json` を検索します。 最新のバージョンを選択し、 **[インストール]** をクリックします。
 - **[変更のレビュー]** ウィンドウで **[OK]** ボタンをクリックします。
-- **NuGet: MyConsoleSearchApp** という Visual Studio タブを閉じます。
+- 次に示す Visual Studio タブを閉じます。**NuGet:MyConsoleSearchApp**。
 
 ## <a name="add-a-reference-to-systemweb"></a>System.Web に参照を追加する
 
@@ -223,9 +225,9 @@ static void RunQueryAndDisplayResults(string userQuery)
 
 `rankingResponse` JSON オブジェクト ([ドキュメント](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)) には、検索結果の適切な表示順序が記されます。 そこには優先度が付けられた次の 1 つまたは複数のグループが含まれます。
 
-- `pole`: 最も見やすい取り扱い (メインラインとサイドバーの上に表示されるなど) を受ける検索結果。
-- `mainline`: メインラインに表示する検索結果。
-- `sidebar`: サイドバーに表示する検索結果。 サイドバーがない場合、結果はメインラインの下に表示されます。
+- `pole`:最も見やすい取り扱い (メインラインとサイドバーの上に表示されるなど) を受ける検索結果。
+- `mainline`:メインラインに表示される検索結果。
+- `sidebar`:サイドバーに表示される検索結果。 サイドバーがない場合、結果はメインラインの下に表示されます。
 
 優先度付け応答 JSON には、1 つまたは複数のグループが含まれる場合があります。
 

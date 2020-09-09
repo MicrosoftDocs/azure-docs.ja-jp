@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 5625ff7e4fc51b9b6b894698719247902a480f44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 868ad3d1c6e7e7ef2cf32dcf675bc471a614f3ed
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79224843"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243156"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Azure API Management テンプレート データ モデル リファレンス
 このトピックでは、Azure API Management の開発者ポータル テンプレートのデータ モデルで使用される一般的な項目のエンティティと型表現について説明します。  
   
- テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)に関するページを参照してください。  
+ テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](./api-management-developer-portal-templates.md)に関するページを参照してください。  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
@@ -67,7 +67,7 @@ ms.locfileid: "79224843"
 |`serviceUrl`|string|この API を実装するバックエンド サービスの絶対 URL。|  
 |`path`|string|API Management サービス インスタンス内のこの API とそのすべてのリソース パスを一意に識別する相対 URL。 この API のパブリック URL を作成するために、サービス インスタンスの作成時に指定された API エンドポイントのベース URL に追加されます。|  
 |`protocols`|番号の配列|この API の操作を呼び出すことができるプロトコルを記述します。 使用できる値は、`1 - http`、`2 - https`、またはその両方です。|  
-|`authenticationSettings`|[承認サーバーの認証設定](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#AuthenticationSettings)|この API に含まれる認証設定のコレクション。|  
+|`authenticationSettings`|[承認サーバーの認証設定](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#AuthenticationSettings)|この API に含まれる認証設定のコレクション。|  
 |`subscriptionKeyParameterNames`|object|サブスクリプション キーを含むクエリまたはヘッダー パラメーターのカスタム名を指定するために使用できる、省略可能なプロパティ。 このプロパティが存在する場合は、次の 2 つのプロパティのうち少なくとも 1 つが含まれている必要があります。<br /><br /> `{   "subscriptionKeyParameterNames":   {     "query": “customQueryParameterName",     "header": “customHeaderParameterName"   } }`|  
   
 ##  <a name="api-summary"></a><a name="APISummary"></a> API summary  

@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery を使用して Government とパブリック リージョンの間で Azure VM を移動する
 description: Azure Site Recovery を使用して、Azure Government とパブリック リージョンの間で Azure VM を移動します。
-author: rajani-janaki-ram
+author: sideeksh
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 04/16/2019
-ms.author: rajanaki
+ms.author: sideeksh
 ms.custom: MVC
-ms.openlocfilehash: acaf16e7469b3ea4e5e391db91e37dc76be3b261
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a76ebf95b92b6e1251a04daa9ffb48a9abe15b50
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78298532"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425349"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Azure Government とパブリック リージョンの間で Azure VM を移動する 
 
@@ -32,7 +32,7 @@ ms.locfileid: "78298532"
 > * ソース リージョンのリソースを破棄する
 
 > [!IMPORTANT]
-> このチュートリアルでは、Azure Government とパブリック リージョンの間、または Azure VM の通常のディザスター リカバリー ソリューションでサポートされていないリージョン ペア間で、Azure Site Recovery を使用して Azure VM を移動する方法について説明します。 ソース リージョンとターゲット リージョンのペアが[サポート対象](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)である場合、移動については、こちらの[ドキュメント](azure-to-azure-tutorial-migrate.md)を参照してください。 可用性セット内の VM を別のリージョンのゾーン固定 VM に移動することで可用性を向上させることが要件である場合は、[こちら](move-azure-VMs-AVset-Azone.md)のチュートリアルを参照してください。
+> このチュートリアルでは、Azure Government とパブリック リージョンの間、または Azure VM の通常のディザスター リカバリー ソリューションでサポートされていないリージョン ペア間で、Azure Site Recovery を使用して Azure VM を移動する方法について説明します。 ソース リージョンとターゲット リージョンのペアが[サポート対象](./azure-to-azure-support-matrix.md#region-support)である場合、移動については、こちらの[ドキュメント](azure-to-azure-tutorial-migrate.md)を参照してください。 可用性セット内の VM を別のリージョンのゾーン固定 VM に移動することで可用性を向上させることが要件である場合は、[こちら](move-azure-VMs-AVset-Azone.md)のチュートリアルを参照してください。
 
 > [!IMPORTANT]
 > この方法を使用して、サポート対象外のリージョン ペア間で DR を構成することはお勧めしません。これらのペアは、データの待ち時間を考慮して定義されますが、これが DR のシナリオではきわめて重要になるためです。
@@ -53,7 +53,7 @@ ms.locfileid: "78298532"
 VM を Azure にレプリケートするアクセス許可がお使いの Azure アカウントに与えられていることを確認します。
 
 - Azure にマシンをレプリケートするために必要な[アクセス許可](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)を確認します。
-- [ロールベースのアクセス許可](../role-based-access-control/role-assignments-portal.md)を確認し、変更します。 
+- [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) のアクセス許可を確認して変更を加えます。 
 
 ### <a name="set-up-an-azure-network"></a>Azure ネットワークをセットアップ
 
@@ -96,13 +96,13 @@ VM を Azure にレプリケートするアクセス許可がお使いの Azure 
 
      最も一般的に使用されるネットワーク リソースについては、次のドキュメントを参照して、実際の環境に適したものをソース VM の構成に基づいて作成してください。
 
-    - [ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [ロード バランサー](https://docs.microsoft.com/azure/load-balancer)
+    - [ネットワーク セキュリティ グループ](../virtual-network/manage-network-security-group.md)
+    - [ロード バランサー](../load-balancer/index.yml)
     - [パブリック IP](../virtual-network/virtual-network-public-ip-address.md)
     
-    その他のネットワーク コンポーネントについては、ネットワークに関する[ドキュメント](https://docs.microsoft.com/azure/?pivot=products&panel=network)を参照してください。
+    その他のネットワーク コンポーネントについては、ネットワークに関する[ドキュメント](../index.yml?pivot=products&panel=network)を参照してください。
 
-4. ターゲット リージョンへの最終的な切り替えを行う前に構成をテストしたい場合は、ターゲット リージョンに手動で[非運用ネットワークを作成](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)します。 運用環境への影響が最小限で済むため、この方法をお勧めします。
+4. ターゲット リージョンへの最終的な切り替えを行う前に構成をテストしたい場合は、ターゲット リージョンに手動で[非運用ネットワークを作成](../virtual-network/quick-create-portal.md)します。 運用環境への影響が最小限で済むため、この方法をお勧めします。
 
 ## <a name="copy-data-to-the-target-region"></a>ターゲット リージョンにデータをコピーする
 以下の手順では、Azure Site Recovery を使用してターゲット リージョンにデータをコピーする方法を説明しています。
@@ -136,7 +136,7 @@ VM を Azure にレプリケートするアクセス許可がお使いの Azure 
 開始する前に次の作業を行います。 
 
 #### <a name="verify-time-accuracy"></a>時間の精度を検証する
-構成サーバー マシンのシステム クロックが[タイム サーバー](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)と同期していることを確認します。 これは一致している必要があります。 15 分進んでいるか遅れている場合は、セットアップが失敗する可能性があります。
+構成サーバー マシンのシステム クロックが[タイム サーバー](/windows-server/networking/windows-time-service/windows-time-service-top)と同期していることを確認します。 これは一致している必要があります。 15 分進んでいるか遅れている場合は、セットアップが失敗する可能性があります。
 
 #### <a name="verify-connectivity"></a>接続を検証する
 コンピューターが、環境に基づいて次の URL にアクセスできることを確認します。 

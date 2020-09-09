@@ -1,6 +1,6 @@
 ---
 title: FAQ - Azure VMware Solution by CloudSimple
-description: Azure VMware Solution by CloudSimple のよく寄せられる質問
+description: Azure VMware Solution by CloudSimple についてよく寄せられる質問には、接続性、ネットワーク、セキュリティ、ストレージ、Azure 統合などがあります。
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 95d8c2974ea372dd59d15a9f2cc31ed171acd932
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0db8c13a7467ed864c0845319b37f958f60fa4d9
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77025063"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140889"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>VMware Solution by CloudSimple についてよく寄せられる質問
 

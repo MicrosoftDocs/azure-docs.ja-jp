@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 04/14/2020
+ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87bb08e08bca3a9f715590098cfaa22ce7da8017
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 89d6379f3fa41036836288ed5c75fbdaad0031da
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799505"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783824"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Azure Monitor での Azure AD のエンタイトルメント管理に関するアーカイブ ログとレポート
 
@@ -59,7 +59,7 @@ Azure AD 監査ログをアーカイブするには、Azure サブスクリプ�
 
 ## <a name="view-events-for-an-access-package"></a>アクセス パッケージのイベントを表示する  
 
-アクセス パッケージのイベントを表示するには、次のいずれかのロールで、基になる Azure Monitor ワークスペースにアクセスできる必要があります (詳細については、「[Azure Monitor のログ データとワークスペースへのアクセスを管理する](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions)」を参照してください)。 
+アクセス パッケージのイベントを表示するには、次のいずれかのロールで、基になる Azure Monitor ワークスペースにアクセスできる必要があります (詳細については、「[Azure Monitor のログ データとワークスペースへのアクセスを管理する](../../azure-monitor/platform/manage-access.md#manage-access-using-azure-permissions)」を参照してください)。 
 
 - 全体管理者  
 - セキュリティ管理者  
@@ -170,7 +170,7 @@ $wks | ft CustomerId, Name
 
 ### <a name="send-the-query-to-the-log-analytics-workspace"></a>Log Analytics ワークスペースにクエリを送信する
 最後に、ワークスペースを特定したら、[Invoke-AzOperationalInsightsQuery](/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery?view=azps-3.3.0
-) を使用して Kusto クエリをそのワークスペースに送信できます。 これらのクエリは [Kusto クエリ言語](https://docs.microsoft.com/azure/kusto/query/)で記述されています。
+) を使用して Kusto クエリをそのワークスペースに送信できます。 これらのクエリは [Kusto クエリ言語](/azure/kusto/query/)で記述されています。
  
 たとえば、次のようなクエリを送信する PowerShell コマンドレットを使用して、Log Analytics ワークスペースから監査イベント レコードの日付範囲を取得できます。
  
@@ -189,5 +189,4 @@ $bResponse.Results |ft
 ```
 
 ## <a name="next-steps"></a>次のステップ:
-- [Azure Monitor ブックを使用した対話型レポートの作成](../../azure-monitor/platform/workbooks-overview.md) 
-
+- [Azure Monitor ブックを使用した対話型レポートの作成](../../azure-monitor/platform/workbooks-overview.md)

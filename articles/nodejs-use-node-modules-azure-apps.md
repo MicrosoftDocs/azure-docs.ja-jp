@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: routlaw
-ms.openlocfilehash: 8621dde43ff38cee15feb1d30b6ea80ab681c855
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 6c1bbe48ca5205cf1db49d67a711e9a7523e1845
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594782"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077120"
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>Azure アプリケーションでの Node.js モジュールの使用
 このドキュメントは、Azure でホストされているアプリケーションでの Node.js モジュールの使用に関するガイダンスを示します。 また、Azure でアプリケーションによって特定のバージョンのモジュールとネイティブ モジュールが確実に使用されるようにするためのガイダンスも紹介します。
@@ -32,8 +32,8 @@ Node.js モジュールである **package.json** および **npm-shrinkwrap.jso
 
 > [!NOTE]
 > VM でのデプロイはその仮想マシンでホストされているオペレーティング システムに依存するため、この記事では Azure Virtual Machines については説明しません。
-> 
-> 
+>
+>
 
 ## <a name="nodejs-modules"></a>Node.js モジュール
 モジュールは、アプリケーションに対して特定の機能を提供する読み込み可能な JavaScript パッケージです。 モジュールは通常、**npm** コマンドライン ツールを使用してインストールされますが、一部のモジュール (http モジュールなど) はコア Node.js パッケージの一部として提供されます。
@@ -63,12 +63,12 @@ Azure App Service では、すべてのネイティブ モジュールがサポ�
 
 > [!NOTE]
 > Azure App Service へのデプロイ中、<b>package.json</b> ファイルがネイティブ モジュールを参照すると、Git を使用してアプリケーションを発行するときに次の例のようなエラーが表示される場合があります。
-> 
+>
 > npm ERR! module-name@0.6.0 install: 'node-gyp configure build'
-> 
+>
 > npm ERR! 'cmd "/c" "node-gyp configure build"' failed with 1
-> 
-> 
+>
+>
 
 ### <a name="using-a-npm-shrinkwrapjson-file"></a>npm-shrinkwrap.json ファイルの使用
 **npm-shrinkwrap.json** ファイルは、**package.json** ファイルのモジュール バージョン管理制限への対処を試みるものです。 **package.json** ファイルに含まれるのは最上位レベルのモジュールのバージョンのみですが、**npm-shrinkwrap.json** ファイルには、完全なモジュール依存関係チェーンのバージョン要件が含まれます。
@@ -77,17 +77,17 @@ Azure App Service では、すべてのネイティブ モジュールがサポ�
 
 > [!NOTE]
 > Azure App Service へのデプロイ中、<b>npm-shrinkwrap.json</b> ファイルがネイティブ モジュールを参照すると、Git を使用してアプリケーションを発行するときに次の例のようなエラーが表示される場合があります。
-> 
+>
 > npm ERR! module-name@0.6.0 install: 'node-gyp configure build'
-> 
+>
 > npm ERR! 'cmd "/c" "node-gyp configure build"' failed with 1
-> 
-> 
+>
+>
 
 ## <a name="next-steps"></a>次のステップ
-ここでは、Azure で Node.js モジュールを使う方法について説明しました。次は、[Node.js のバージョンを指定する](https://github.com/squillace/nodejs-microservice)方法、[Node.js Web アプリを構築およびデプロイする](app-service/app-service-web-get-started-nodejs.md)方法、[Mac および Linux で Azure コマンド ライン インターフェイスを使う方法](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/)について、それぞれのトピックをご覧ください。
+ここでは、Azure で Node.js モジュールを使う方法について説明しました。次は、[Node.js のバージョンを指定する](https://github.com/squillace/nodejs-microservice)方法、[Node.js Web アプリを構築およびデプロイする](app-service/quickstart-nodejs.md)方法、[Mac および Linux で Azure コマンド ライン インターフェイスを使う方法](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/)について、それぞれのトピックをご覧ください。
 
-詳細については、 [Node.js デベロッパー センター](/azure/javascript/)を参照してください。
+詳細については、 [Node.js デベロッパー センター](/azure/developer/javascript/)を参照してください。
 
 [specify the Node.js version]: nodejs-specify-node-version-azure-apps.md
 [How to use the Azure Command-Line Interface for Mac and Linux]:cli-install-nodejs.md

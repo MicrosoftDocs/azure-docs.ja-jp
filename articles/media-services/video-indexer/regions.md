@@ -9,13 +9,13 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
-ms.author: anzaman
-ms.openlocfilehash: b71890323f6aca92fb9f847252feed57d8db234f
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.author: kumud
+ms.openlocfilehash: 45da0556d074fdb81002f73cd89d0c35cb37276e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594952"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530051"
 ---
 # <a name="azure-regions-in-which-video-indexer-exists"></a>Video Indexer が存在する Azure リージョン
 

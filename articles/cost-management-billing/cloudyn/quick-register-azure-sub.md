@@ -7,14 +7,15 @@ ms.date: 03/12/2020
 ms.topic: quickstart
 ms.custom: seodec18
 ms.service: cost-management-billing
+ms.subservice: cloudyn
 ms.reviewer: benshy
 ROBOTS: NOINDEX
-ms.openlocfilehash: f3b529d3dbe0fe41fb13fabfe32dfad208ef5012
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3a4501374ef6045170d380422763729372f0ec0c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79474630"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690104"
 ---
 # <a name="register-an-individual-azure-subscription-and-view-cost-data"></a>個別の Azure サブスクリプションを登録し、コスト データを確認する
 

@@ -1,22 +1,17 @@
 ---
 title: Azure Stack Hub でチェックポイント ストアとして Blob Storage を使用する (プレビュー)
 description: この記事では Azure Stack Hub (プレビュー) 上の Event Hubs でチェックポイント ストアとして Blob Storage を使用する方法について説明します。
-services: event-hubs
-documentationcenter: na
-author: spelluru
-ms.service: event-hubs
 ms.topic: how-to
-ms.date: 03/18/2020
-ms.author: spelluru
-ms.openlocfilehash: 2938099383c32eac493e4b4bb620f03c76ca5c44
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.date: 06/23/2020
+ms.openlocfilehash: 1c876ed36be6aec9395a1acba3a1deb25a47de2c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82023658"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039227"
 ---
 # <a name="use-blob-storage-as-checkpoint-store---event-hubs-on-azure-stack-hub-preview"></a>チェックポイント ストアとして Blob Storage を使用する - Azure Stack Hub 上の Event Hubs (プレビュー)
-Azure で一般公開されているものとは異なるバージョンの Storage Blob SDK をサポートする環境で、チェックポイント ストアとして Azure Blob Storage を使用している場合は、コードを使用して、Storage Service API バージョンをその環境でサポートされている特定のバージョンに変更する必要があります。 たとえば、[Azure Stack Hub バージョン 2002 上で Event Hubs](https://docs.microsoft.com/azure-stack/user/event-hubs-overview) を実行している場合、Storage Service で利用可能な最も高いバージョンは 2017-11-09 です。 この場合は、コードを使用して、対象にする Storage Service API のバージョンを 2017-11-09 にする必要があります。 特定の Storage API バージョンを対象にする方法の例については、GitHub の次のサンプルを参照してください。 
+Azure で一般公開されているものとは異なるバージョンの Storage Blob SDK をサポートする環境で、チェックポイント ストアとして Azure Blob Storage を使用している場合は、コードを使用して、Storage Service API バージョンをその環境でサポートされている特定のバージョンに変更する必要があります。 たとえば、[Azure Stack Hub バージョン 2002 上で Event Hubs](/azure-stack/user/event-hubs-overview) を実行している場合、Storage Service で利用可能な最も高いバージョンは 2017-11-09 です。 この場合は、コードを使用して、対象にする Storage Service API のバージョンを 2017-11-09 にする必要があります。 特定の Storage API バージョンを対象にする方法の例については、GitHub の次のサンプルを参照してください。 
 
 - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)
 - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java). 

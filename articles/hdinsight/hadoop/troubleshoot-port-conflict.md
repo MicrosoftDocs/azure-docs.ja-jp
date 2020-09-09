@@ -26,7 +26,7 @@ ms.locfileid: "76776048"
 
 ポートの競合が存在します。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決策
 
 ### <a name="method-1"></a>方法 1
 

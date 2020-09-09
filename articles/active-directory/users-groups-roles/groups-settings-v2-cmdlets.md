@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc12e571ca955a0ddc47e1c1dd73c2717161df4b
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: e2da67b9996156f136aa2eddb8aa3d2b1777a554
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82739315"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794554"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>グループ管理用の Azure Active Directory バージョン 2 のコマンドレット
 
@@ -50,7 +50,7 @@ Azure AD PowerShell モジュールをインストールするには、次のコ
     Binary     2.0.0.115    azuread                      {Add-AzureADAdministrati...}
 ```
 
-これで、モジュールのコマンドレットの使用を開始できます。 Azure AD モジュールのコマンドレットについて詳しくは、[Azure Active Directory PowerShell バージョン 2](/powershell/azure/install-adv2?view=azureadps-2.0) に関するオンライン リファレンス ドキュメントをご覧ください。
+これで、モジュールのコマンドレットの使用を開始できます。 Azure AD モジュールのコマンドレットについて詳しくは、[Azure Active Directory PowerShell バージョン 2](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) に関するオンライン リファレンス ドキュメントをご覧ください。
 
 > [!NOTE]
 > Azure AD PowerShell コマンドレットは .Net Core をベースにしているため、新しい PowerShell 7 では動作しません。 この点は把握しており、更新に取り組んでいます。 現時点では、Azure AD の Powershell の操作には、Windows PowerShell 5.x を使用することを推奨します。 
@@ -134,7 +134,7 @@ Azure AD PowerShell コマンドレットを使用してグループの管理を
 ```
 
 > [!NOTE]
-> Azure AD PowerShell コマンドレットは標準の OData クエリを実装しています。 詳しくは、「[OData エンドポイントを使用する OData システム クエリ オプション](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter)」の「 **$filter**」を参照してください。
+> Azure AD PowerShell コマンドレットは標準の OData クエリを実装しています。 詳しくは、「[OData エンドポイントを使用する OData システム クエリ オプション](/previous-versions/dynamicscrm-2015/developers-guide/gg309461(v=crm.7)#BKMK_filter)」の「 **$filter**」を参照してください。
 
 ## <a name="create-groups"></a>グループを作成する
 
@@ -338,7 +338,7 @@ Office 365 のグループの書き戻しは Azure Active Directory (Azure AD) �
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Active Directory PowerShell のその他のドキュメントについては、 [Azure Active Directory コマンドレット](/powershell/azure/install-adv2?view=azureadps-2.0)を参照してください。
+Azure Active Directory PowerShell のその他のドキュメントについては、 [Azure Active Directory コマンドレット](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)を参照してください。
 
 * [Azure Active Directory グループによるリソースへのアクセス管理](../fundamentals/active-directory-manage-groups.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
 * [オンプレミス ID と Azure Active Directory の統合](../hybrid/whatis-hybrid-identity.md?context=azure/active-directory/users-groups-roles/context/ugr-context)

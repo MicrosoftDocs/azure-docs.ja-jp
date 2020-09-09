@@ -1,22 +1,22 @@
 ---
-title: 'Azure AD Connect: ADConnectivityTool PowerShell モジュールとは | Microsoft Docs'
+title: Azure AD Connect:ADConnectivityTool PowerShell モジュールとは | Microsoft Docs
 description: このドキュメントでは、新しい ADConnectivity PowerShell モジュールとトラブルシューティングのための使用方法について説明します。
 services: active-directory
 author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 4/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd5340cd8c802df4ffbe0207b5401d2fee4e207e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d7eed3e06ab42671d9674ad3893a88dfe9817e22
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "64571122"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85360182"
 ---
 # <a name="troubleshoot-azure-ad-connectivity-with-the-adconnectivitytool-powershell-module"></a>ADConnectivityTool PowerShell モジュールを使用した Azure AD 接続性のトラブルシューティング
 
@@ -25,7 +25,7 @@ ADConnectivity ツールは、次のいずれかの場合に使用される Powe
 - インストール時、ネットワーク接続に問題があるために、ユーザーがウィザード上で入力した Active Directory 資格情報を検証できません。
 - インストール後、ユーザーが PowerShell セッションから関数を呼び出した場合。
 
-ツールは次の場所にあります: **C:\Program Files\Microsoft Azure Active Directory Connect\Tools\ ADConnectivityTool.psm1** 
+このツールの場所は**C:\Program Files\Microsoft Azure Active Directory Connect\Tools\ ADConnectivityTool.psm1** です 
 
 ## <a name="adconnectivitytool-during-installation"></a>インストール時の ADConnectivityTool
 
@@ -47,7 +47,7 @@ Azure AD Connect ウィザードの **[ディレクトリの接続]** ページ�
 
 背後で実際に起きていることは、Azure AD Connect による `Start-NetworkConnectivityDiagnosisTools` 関数の呼び出しです。  この関数は、ネットワーク接続の問題が原因で資格情報の検証が失敗したときに呼び出されます。
 
-最後に、ウィザードからツールが呼び出されるたびに詳細なログ ファイルが生成されます。 そのログの場所は **C:\ProgramData\AADConnect\ADConnectivityTool-\<date>-\<time>.log** です
+最後に、ウィザードからツールが呼び出されるたびに詳細なログ ファイルが生成されます。 そのログの場所は **C:\ProgramData\AADConnect\ADConnectivityTool-\<date>-\<time>.log** です。
 
 ## <a name="adconnectivitytools-post-installation"></a>インストール後の ADConnectivityTools
 Azure AD Connect がインストールされた後、ADConnectivityTools PowerShell モジュールのどの関数でも使用できます。  
@@ -74,7 +74,7 @@ Azure AD Connect がインストールされた後、ADConnectivityTools PowerSh
 
 
 ## <a name="next-steps"></a>次の手順
-- [Azure AD Connect: アカウントとアクセス許可](reference-connect-accounts-permissions.md)
+- [Azure AD Connect:アカウントとアクセス許可](reference-connect-accounts-permissions.md)
 - [高速インストール](how-to-connect-install-express.md)
 - [カスタム インストール](how-to-connect-install-custom.md)
 - [ADConnectivityTools リファレンス](reference-connect-adconnectivitytools.md)

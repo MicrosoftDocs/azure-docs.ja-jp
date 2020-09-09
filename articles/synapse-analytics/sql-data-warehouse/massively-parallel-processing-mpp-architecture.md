@@ -6,16 +6,16 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: d204477818ce2733d9f6d1e3dcc7455018456bcb
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: cde6cb514b6f87315400b3c40d8b86bcb7ff0adb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80884834"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85210968"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure Synapse Analytics (旧称 SQL DW) アーキテクチャ
 
@@ -23,7 +23,7 @@ Azure Synapse は、エンタープライズ データ ウェアハウスとビ�
 
  Azure Synapse には、次の 4 つのコンポーネントがあります。
 
-- SQL Analytics:完全な T-SQL ベースの分析
+- Synapse SQL:完全な T-SQL ベースの分析
 
   - SQL プール (プロビジョニング済み DWU での従量課金) – 一般公開
   - SQL オンデマンド (処理された TB 単位の課金) – (プレビュー)
@@ -39,7 +39,7 @@ Azure Synapse は、エンタープライズ データ ウェアハウスとビ�
 
 ![Synapse SQL アーキテクチャ](./media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
-SQL Analytics では、ノードベースのアーキテクチャを使用します。 アプリケーションでは T-SQL コマンドに接続し、これを SQL Analytics の単一のエントリ ポイントである制御ノードに発行します。 制御ノードは、並列処理のためにクエリを最適化する MPP エンジンを実行し、操作をコンピューティング ノードに渡して作業を並行して行います。
+Synapse SQL は、ノードベースのアーキテクチャを使用します。 アプリケーションでは T-SQL コマンドに接続し、これを Synapse SQL の単一のエントリ ポイントである制御ノードに発行します。 制御ノードは、並列処理のためにクエリを最適化する MPP エンジンを実行し、操作をコンピューティング ノードに渡して作業を並行して行います。
 
 コンピューティング ノードはすべてのユーザー データを Azure Storage に保存し、並行クエリを実行します。 Data Movement Service (DMS) はシステム レベルの内部サービスで、必要に応じて複数のノードにデータを移動し、クエリを並列に実行して、正確な結果を返します。
 
@@ -74,7 +74,7 @@ Synapse SQL では、ユーザー データを安全に保つために Azure Sto
 
 ## <a name="distributions"></a>ディストリビューション
 
-ディストリビューションは、分散データで実行される並列クエリの保存および処理の基本的な単位です。 SQL Analytics によるクエリの実行時に、作業は並列で実行される 60 の小さいクエリに分割されます。
+ディストリビューションは、分散データで実行される並列クエリの保存および処理の基本的な単位です。 Synapse SQL でクエリを実行する場合、作業は並列で実行される 60 の小さなクエリに分割されます。
 
 60 の小さいクエリそれぞれは、いずれかのデータ ディストリビューションで実行されます。 各コンピューティング ノードでは、60 ディストリビューションの 1 つまたは複数が管理されます。 最大コンピューティング リソース数を持つ 1 つの SQL プールでは、1 コンピューティング ノードあたりのディストリビューション数は 1 です。 最小コンピューティング リソース数を持つ 1 つの SQL プールでは、1 つのコンピューティング ノードにすべてのディストリビューションがあります。  
 
@@ -119,6 +119,6 @@ Azure Synapse の概要について学習したので、次はすばやく [SQL 
 - [機能に関する要求](https://feedback.azure.com/forums/307516-sql-data-warehouse)
 - [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 - [サポート チケットを作成する](sql-data-warehouse-get-started-create-support-ticket.md)
-- [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse)
+- [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)
 - [Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-sqldw)
 - [Twitter](https://twitter.com/hashtag/SQLDW)

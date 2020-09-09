@@ -1,28 +1,26 @@
 ---
-title: モデル結果の解釈
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (classic): モデル結果の解釈 - Azure'
 description: モデルのスコア付け出力を使用して視覚化し、アルゴリズムに最適なパラメーター セットを選択する方法。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: 9a0b855f48085138b28e02e0a5d01c5dd0f666be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6d9274a7318b7ba5020712507201be14b63508c4
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218062"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432462"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) でモデル結果を解釈する
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+
+
 このトピックでは、Azure Machine Learning Studio (クラシック) で予測結果を視覚化および解釈する方法について説明します。 モデルのトレーニングと予測 (「モデルのスコア付け」) が完了したら、予測結果を理解し、解釈する必要があります。
-
-
 
 Azure Machine Learning Studio (クラシック) には、機械学習モデルの主な種類として次の 4 つがあります。
 
@@ -37,11 +35,11 @@ Azure Machine Learning Studio (クラシック) には、機械学習モデル�
 * クラスタリングのための[クラスターへの割り当て][assign-to-clusters]モジュール
 * 推奨システムのための[マッチボックス レコメンダーのスコア付け][score-matchbox-recommender]
 
-このドキュメントでは、これらのモジュールの各予測結果を解釈する方法について説明します。 これらのモジュールの概要については、[Azure Machine Learning Studio (クラシック) でアルゴリズムを最適化するためのパラメーターを選択する方法](algorithm-parameters-optimize.md)に関するページを参照してください。
+[ML Studio (classic) でアルゴリズムを最適化するためにパラメーターを選択する](algorithm-parameters-optimize.md)方法について説明します。
 
-このトピックでは、モデルの評価ではなく、予測の解釈について説明します。 モデルを評価する方法の詳細については、[Azure Machine Learning Studio (クラシック) でモデルのパフォーマンスを評価する方法](evaluate-model-performance.md)に関するページを参照してください。
+モデルを評価する方法については、[モデルのパフォーマンスを評価する方法](evaluate-model-performance.md)に関する記事を参照してください。
 
-Azure Machine Learning Studio (クラシック) が初めてであり、最初に単純な実験を作成するための支援が必要な場合は、[Azure Machine Learning Studio (クラシック) で単純な実験を作成する方法](create-experiment.md)に関するページを参照してください。
+ML Studio (classic) を初めて使用する場合は、[簡単な実験を作成する方法を参照してください](create-experiment.md)。
 
 ## <a name="classification"></a>分類
 分類問題には 2 つのサブ カテゴリがあります。

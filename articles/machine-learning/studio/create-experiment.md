@@ -1,6 +1,5 @@
 ---
-title: クイック スタート:データ サイエンス実験を作成する
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio (classic):クイック スタート:データ サイエンス実験を作成する - Azure
 description: この機械学習のクイック スタートでは、簡単なデータ サイエンスの実験手順を説明しています。 回帰アルゴリズムを使用して自動車の価格を予測します。
 services: machine-learning
 ms.service: machine-learning
@@ -10,16 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: c4c50ba53bc40ad6ae6fc60b3992f9ab992eb268
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ad02e25e1025692765790be20d993d7dd5cd2e26
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79204564"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432046"
 ---
-# <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio-classic"></a>クイック スタート:Azure Machine Learning Studio (クラシック) で初めてのデータ サイエンス実験を作成する
+# <a name="quickstart-create-your-first-data-science-experiment-in-machine-learning-studio-classic"></a>クイック スタート:Machine Learning Studio (classic) で初めてのデータ サイエンス実験を作成する
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -138,7 +138,7 @@ ms.locfileid: "79204564"
 
 ここでは、データセット内の特徴のサブセットを使用するモデルを構築します。 後でこの手順に戻って別の特徴を選択し、もう一度実験を実行して、より優れた結果が得られるかどうかを確認できます。 しかしまずは、次の特徴を試してみましょう。
 
-    make, body-style, wheel-base, engine-size, horsepower, peak-rpm, highway-mpg, price
+> make、body-style、wheel-base、engine-size、horsepower、peak-rpm、highway-mpg、price
 
 1. 別の [Select Columns in Dataset][select-columns] モジュールを、実験キャンバスにドラッグします。 [Clean Missing Data][clean-missing-data] モジュールの左側の出力ポートを、[Select Columns in Dataset][select-columns] モジュールの入力に接続します。
 

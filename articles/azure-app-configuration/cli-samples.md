@@ -6,18 +6,19 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: sample
 ms.date: 02/19/2020
-ms.openlocfilehash: a255db3fbce2c111a0a629c01b86cc891d71e803
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: d6e644a73a18cdfda71ae6a4e5360b713c08f4f5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77523749"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504400"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI のサンプル
 
 次の表は、Azure CLI を使用する Azure App Configuration 用 Bash スクリプトへのリンクをまとめたものです。
 
-| | |
+| スクリプト | 説明 |
 |-|-|
 |**作成**||
 | [App Configuration ストアを作成する](./scripts/cli-create-service.md) | リソース グループと App Configuration ストアのインスタンスを作成します。  |

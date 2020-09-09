@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB の Azure Synapse Link (プレビュー) を構成して使用する
 description: Azure Cosmos アカウントの Synapse Link を有効にする方法、分析ストアを有効にしたコンテナーを作成する方法、Synapse ワークスペースに Azure Cosmos データベースを接続する方法、クエリを実行する方法について説明します。
-author: SriChintala
+author: Rodrigossz
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
-ms.author: srchi
-ms.openlocfilehash: 384d4ebf211c80ac069889356f269407ba7d3d75
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.author: rosouz
+ms.openlocfilehash: 4c5f812bf1a5a60a6d1344d6a39fbd95898f55fc
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596531"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815574"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Cosmos DB の Azure Synapse Link (プレビュー) を構成して使用する
 
@@ -19,7 +19,7 @@ Azure Cosmos DB の Synapse Link は、クラウド ネイティブのハイブ�
 
 
 > [!IMPORTANT]
-> Azure Synapse Link を使用するには、前述のサポートされているリージョンのいずれかで Azure Cosmos アカウントと Azure Synapse Analytics ワークスペースをプロビジョニングする必要があります。サポートされているリージョンの一覧については、[Azure サービス更新情報](https://azure.microsoft.com/updates/)に関するページを参照してください。 
+> Azure Synapse Link を使用するには、サポートされているリージョンのいずれかで Azure Cosmos アカウントと Azure Synapse Analytics ワークスペースを確実にプロビジョニングしてください。 Azure Synapse Link は現在、次の Azure リージョンでご利用いただけます。米国中西部、米国東部、米国西部 2、北ヨーロッパ、西ヨーロッパ、米国中南部、東南アジア、オーストラリア東部、米国東部 2、英国南部。
 
 Azure Cosmos DB の Synapse Link を使用して分析クエリを実行するには、次の手順に従います。
 
@@ -40,11 +40,11 @@ Azure Cosmos DB の Synapse Link を使用して分析クエリを実行する�
 
 1. 機能一覧から **[Synapse Link]** を選択します。
 
-   ![Synapse Link プレビュー機能の検索](./media/configure-synapse-link/find-synapse-link-feature.png)
+   :::image type="content" source="./media/configure-synapse-link/find-synapse-link-feature.png" alt-text="Synapse Link プレビュー機能の検索":::
 
 1. 次に、ご利用のアカウントで Synapse Link を有効にするように求めるメッセージが表示されます。 [有効化] を選択します。
 
-   ![Synapse Link 機能の有効化](./media/configure-synapse-link/enable-synapse-link-feature.png)
+   :::image type="content" source="./media/configure-synapse-link/enable-synapse-link-feature.png" alt-text="Synapse Link 機能の有効化":::
 
 1. これで、ご利用のアカウントで Synapse Link を使用できるようになりました。 次に、分析ストアが有効なコンテナーを作成して、トランザクション ストアから分析ストアへのオペレーショナル データのレプリケートを自動的に開始する方法について確認します。
 
@@ -67,7 +67,7 @@ Azure Cosmos DB の Synapse Link を使用して分析クエリを実行する�
 
 1. **[新しいコンテナー]** を選択し、データベースの名前、コンテナー、パーティション キー、スループットの詳細を入力します。 **[分析ストア]** オプションをオンにします。 分析ストアを有効にすると、`AnalyicalTTL` プロパティが既定値の -1 (無限のリテンション期間) に設定されたコンテナーが作成されます。 この分析ストアでは、レコードのすべての履歴バージョンが保持されます。
 
-   ![Azure Cosmos コンテナーの分析ストアを有効にする](./media/configure-synapse-link/create-container-analytical-store.png)
+   :::image type="content" source="./media/configure-synapse-link/create-container-analytical-store.png" alt-text="Azure Cosmos コンテナーの分析ストアを有効にする":::
 
 1. このアカウントで以前に Synapse Link を有効にしていない場合は、分析ストアが有効なコンテナーを作成するための前提条件であるため、これを行うように求めるメッセージが表示されます。 プロンプトが表示されたら、 **[Enable Synapse Link]\(Synapse Link を有効にする\)** を選択します。
 
@@ -103,41 +103,60 @@ containerProperties.setAnalyticalStoreTimeToLiveInSeconds(-1);
 container = database.createContainerIfNotExists(containerProperties, 400).block().getContainer();
 ```
 
-### <a name="python-v3-sdk"></a>Python V3 SDK
+### <a name="python-v4-sdk"></a>Python V4 SDK
 
-次のコードでは、Python SDK を使用して、分析ストアを持つコンテナーを作成します。
+Python 2.7 および Azure Cosmos DB SDK 4.1.0 は最低限必要なバージョンであり、SDK は SQL API とのみ互換性があります。
+
+最初の手順では、バージョン 4.1.0 以上の [Azure Cosmos DB Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos) を使用していることを確認します。
 
 ```python
+import azure.cosmos as cosmos
+
+print (cosmos.__version__)
+```
+次の手順では、Azure Cosmos DB Python SDK を使用して、分析ストアを持つコンテナーを作成します。
+
+```python
+# Azure Cosmos DB Python SDK, for SQL API only.
+# Creating an analytical store enabled container.
+
 import azure.cosmos.cosmos_client as cosmos_client
-def create_collection_if_not_exists(cosmosEndpoint, cosmosKey, databaseName, collectionName):
-    client = cosmos_client.CosmosClient(url_connection=cosmosEndpoint, auth={'masterKey': cosmosKey})
+import azure.cosmos.exceptions as exceptions
+from azure.cosmos.partition_key import PartitionKey
 
-db = client.QueryDatabases("select * from c where c.id = '" + databaseName + "'").fetch_next_block()[0]
-options = {
-    'offerThroughput': 1000
-}
+HOST = 'your-cosmos-db-account-URI'
+KEY = 'your-cosmos-db-account-key'
+DATABASE = 'your-cosmos-db-database-name'
+CONTAINER = 'your-cosmos-db-container-name'
 
-container_definition = {
-    'id': collectionName,
-    "partitionKey": {  
-        "paths": [  
-        "/id"  
-        ],  
-        "kind": "Hash" 
-    },
-    "indexingPolicy": {  
-    "indexingMode": "consistent",  
-    "automatic": True,  
-    "includedPaths": [],  
-    "excludedPaths": [{
-        "path": "/*"
-    }]  
-    },
-    "defaultTtl": -1,
-    "analyticalStorageTtl": -1
-}
+client = cosmos_client.CosmosClient(HOST,  KEY )
+# setup database for this sample. 
+# If doesn't exist, creates a new one with the name informed above.
+try:
+    db = client.create_database(DATABASE)
 
-container = client.CreateContainer(db['_self'], container_definition, options)
+except exceptions.CosmosResourceExistsError:
+    db = client.get_database_client(DATABASE)
+
+# Creating the container with analytical store enabled, using the name informed above.
+# If a container with the same name exists, an error is returned.
+#
+# The 3 options for the analytical_storage_ttl parameter are:
+# 1) 0 or Null or not informed (Not enabled).
+# 2) -1 (The data will be stored in analytical store infinitely).
+# 3) Any other number is the actual ttl, in seconds.
+
+try:
+    container = db.create_container(
+        id=CONTAINER,
+        partition_key=PartitionKey(path='/id', kind='Hash'),analytical_storage_ttl=-1
+    )
+    properties = container.read()
+    print('Container with id \'{0}\' created'.format(container.id))
+    print('Partition Key - \'{0}\''.format(properties['partitionKey']))
+
+except exceptions.CosmosResourceExistsError:
+    print('A container with already exists')
 ```
 
 ### <a name="update-the-analytical-store-time-to-live"></a><a id="update-analytical-ttl"></a> 分析ストアの有効期間を更新する
@@ -187,11 +206,15 @@ container.replace(containerProperties).block();
 
 ## <a name="connect-to-a-synapse-workspace"></a><a id="connect-to-cosmos-database"></a> Synapse ワークスペースに接続する
 
-Azure Synapse Link を使用して Azure Synapse Analytics Studio から Azure Cosmos DB データベースにアクセスする方法については、[Azure Synapse Link に接続する方法]()に関する記事の手順を参照してください。
+Azure Synapse Link を使用して Azure Synapse Analytics Studio から Azure Cosmos DB データベースにアクセスする方法については、[Azure Synapse Link に接続する方法](../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md)に関する記事の手順を参照してください。
 
 ## <a name="query-using-synapse-spark"></a><a id="query-analytical-store"></a> Synapse Spark を使用してクエリを実行する
 
-Synapse Spark を使用してクエリを実行する方法については、[Azure Cosmos DB 分析ストアに対してクエリを実行する方法]()に関する記事の手順を参照してください。 この記事では、Synapse ジェスチャから分析ストアを操作する方法について、いくつかの例を紹介しています。 これらのジェスチャは、コンテナーを右クリックすると表示されます。 ジェスチャを使用すると、コードをすばやく生成し、ニーズに合わせて調整することができます。 また、1 回のクリックでデータを検出するのにも最適です。
+Synapse Spark を使用してクエリを実行する方法については、[Azure Cosmos DB 分析ストアに対してクエリを実行する方法](../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md)に関する記事の手順を参照してください。 この記事では、Synapse ジェスチャから分析ストアを操作する方法について、いくつかの例を紹介しています。 これらのジェスチャは、コンテナーを右クリックすると表示されます。 ジェスチャを使用すると、コードをすばやく生成し、ニーズに合わせて調整することができます。 また、1 回のクリックでデータを検出するのにも最適です。
+
+## <a name="getting-started-with-azure-synpase-link---samples"></a><a id="cosmosdb-synapse-link-samples"></a>Azure Synpase Link の使用を開始する - サンプル
+
+Azure Synapse Link の使用を開始する場合、[GitHub](https://aka.ms/cosmosdb-synapselink-samples) にサンプルが用意されています。 これらは、IoT および小売のシナリオでのエンド ツー エンドのソリューションを紹介しています。
 
 ## <a name="next-steps"></a>次のステップ
 

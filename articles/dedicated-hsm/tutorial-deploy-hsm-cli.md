@@ -8,17 +8,17 @@ manager: rkarlin
 editor: ''
 ms.service: key-vault
 ms.topic: tutorial
-ms.custom: mvc, seodec18
+ms.custom: mvc, seodec18, devx-track-azurecli
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 76b7a97a5be5e7952b0ac11d93bd68656ff8f1ec
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 63cdb27663cb1a2d8de1a97a2f352b05ff57a3f4
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79454314"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489886"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>チュートリアル:CLI を使用して既存の仮想ネットワークに HSM をデプロイする
 
@@ -38,7 +38,7 @@ Azure Dedicated HSM では、完全な管理制御と完全な管理責任が備
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Dedicated HSM は現在、Azure portal では使用できません。 サービスに対するすべての操作は、コマンドラインまたは PowerShell を使用して行います。 このチュートリアルでは、Azure Cloud Shell でコマンドライン インターフェイス (CLI) を使用します。 Azure CLI を使用するのが初めての場合は、こちらの [Azure CLI 2.0 の開始](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)に関するページの開始手順に従います。
+Azure Dedicated HSM は現在、Azure portal では使用できません。 サービスに対するすべての操作は、コマンドラインまたは PowerShell を使用して行います。 このチュートリアルでは、Azure Cloud Shell でコマンドライン インターフェイス (CLI) を使用します。 Azure CLI を使用するのが初めての場合は、こちらの [Azure CLI 2.0 の開始](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)に関するページの開始手順に従います。
 
 想定:
 
@@ -63,15 +63,7 @@ az feature show \
    --name AzureDedicatedHSM
 ```
 
-次のコマンドでは、Dedicated HSM サービスに必須のネットワーク機能を確認します。
-
-```azurecli
-az feature show \
-   --namespace Microsoft.Network \
-   --name AllowBaremetalServers
-```
-
-両方のコマンドで "Registered" の状態が返される必要があります (以下を参照)。 コマンドによって "Registered" が返されない場合は、このサービスへの登録が必要です。お客様の Microsoft アカウント担当者にお問い合わせください。
+コマンドで "Registered" の状態が返される必要があります (以下を参照)。 コマンドによって "Registered" が返されない場合は、このサービスへの登録が必要です。お客様の Microsoft アカウント担当者にお問い合わせください。
 
 ![サブスクリプションの状態](media/tutorial-deploy-hsm-cli/subscription-status.png)
 
@@ -144,7 +136,7 @@ az network vnet create \
 ```
 
 ```azurecli
-az network vnet create \
+az network vnet subnet create \
   --vnet-name myHSM-vnet \
   --resource-group myRG \
   --name hsmsubnet \

@@ -4,12 +4,12 @@ description: Azure API Management をすぐに使い始め、Service Fabric の�
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: mvc
-ms.openlocfilehash: 7bd781a21a32ca29fe3f5dd2f4432dbf1e5ca411
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40f8c53394292a85f6fd032e445d79ed82e2d4e9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80292142"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260251"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Azure で API Management と Service Fabric を統合する
 
@@ -30,7 +30,7 @@ Service Fabric での Azure API Management のデプロイは高度なシナリ�
 作業を開始する前に、次のことを行います。
 
 * Azure サブスクリプションを持っていない場合は[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成する
-* [Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) または [Azure CLI](/cli/azure/install-azure-cli) をインストールする。
+* [Azure Powershell](/powershell/azure/install-az-ps) または [Azure CLI](/cli/azure/install-azure-cli) をインストールする。
 * ネットワーク セキュリティ グループにセキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)を作成します。
 * Windows クラスターをデプロイする場合は、Windows 開発環境を設定します。 [Visual Studio 2019](https://www.visualstudio.com)、**Azure 開発**ワークロード、**ASP.NET および Web 開発**ワークロード、 **.NET Core クロス プラットフォーム開発**ワークロードをインストールします。  その後、[.NET 開発環境](service-fabric-get-started.md)をセットアップします。
 
@@ -151,9 +151,9 @@ Service Fabric のバックエンドの場合は、特定の Service Fabric サ�
 
 ### <a name="microsoftapimanagementserviceapispolicies"></a>Microsoft.ApiManagement/service/apis/policies
 
-[Microsoft.ApiManagement/service/apis/policies](/azure/templates/microsoft.apimanagement/service/apis/policies) は、すべてを 1 つにまとめるバックエンド ポリシーを作成します。 このポリシーを使って、要求のルーティング先となるバックエンドの Service Fabric サービスを構成します。 このポリシーは任意の API 操作に適用できます。  詳細については、[ポリシーの概要](/azure/api-management/api-management-howto-policies)に関するページをご覧ください。
+[Microsoft.ApiManagement/service/apis/policies](/azure/templates/microsoft.apimanagement/service/apis/policies) は、すべてを 1 つにまとめるバックエンド ポリシーを作成します。 このポリシーを使って、要求のルーティング先となるバックエンドの Service Fabric サービスを構成します。 このポリシーは任意の API 操作に適用できます。  詳細については、[ポリシーの概要](../api-management/api-management-howto-policies.md)に関するページをご覧ください。
 
-[Service Fabric のバックエンド構成](/azure/api-management/api-management-transformation-policies#SetBackendService)では、次の要求ルーティングをコントロールできます。
+[Service Fabric のバックエンド構成](../api-management/api-management-transformation-policies.md#SetBackendService)では、次の要求ルーティングをコントロールできます。
 
 * サービス インスタンスの選択。Service Fabric サービス インスタンス名として、ハードコートされた名前 (`"fabric:/myapp/myservice"` など) か、HTTP 要求から生成される名前 (`"fabric:/myapp/users/" + context.Request.MatchedParameters["name"]` など) のいずれかを指定します。
 * パーティションの解決。任意の Service Fabric パーティション構成を使用して、パーティション キーを生成します。
@@ -180,7 +180,7 @@ Service Fabric のバックエンドの場合は、特定の Service Fabric サ�
 </policies>
 ```
 
-Service Fabric バックエンド ポリシーの全属性については、[API Management バックエンドに関するドキュメント](https://docs.microsoft.com/azure/api-management/api-management-transformation-policies#SetBackendService)を参照してください。
+Service Fabric バックエンド ポリシーの全属性については、[API Management バックエンドに関するドキュメント](../api-management/api-management-transformation-policies.md#SetBackendService)を参照してください。
 
 ## <a name="set-parameters-and-deploy-api-management"></a>パラメーターの設定と API Management のデプロイ
 
@@ -291,9 +291,9 @@ az group delete --name $ResourceGroupName
 
 ## <a name="next-steps"></a>次のステップ
 
-[API Management](/azure/api-management/import-and-publish) の使用方法の詳細を確認する
+[API Management](../api-management/import-and-publish.md) の使用方法の詳細を確認する
 
-[azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
+[azure-powershell]: /powershell/azure/
 
 [apim-arm]:https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/service-integration/apim.json
 [apim-parameters-arm]:https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/service-integration/apim.parameters.json

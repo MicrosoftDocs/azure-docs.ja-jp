@@ -1,32 +1,21 @@
 ---
 title: Azure Migrate に移行ツールを追加する
 description: Azure Migrate に移行ツールを追加する方法を説明します。
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.manager: carmonm
 ms.topic: article
-ms.date: 11/18/2019
-ms.author: raynew
-ms.openlocfilehash: 6bcb65912627356215769ccc8380ee1a7404f6f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/26/2020
+ms.openlocfilehash: b6ac8ed64d3f12783cc16f0428874a19d027adf9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74185957"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109809"
 ---
 # <a name="add-migration-tools"></a>移行ツールの追加
 
-この記事では、[Azure Migrate](migrate-overview.md) 内で移行ツールを追加する方法について説明します。
+この記事では、[Azure Migrate](./migrate-services-overview.md) 内で移行ツールを追加する方法について説明します。
 
-Azure Migrate には、評価と Azure への移行のためのツールのハブが用意されています。 これには、ネイティブなツール、他の Azure サービスによって提供されるツール、およびサードパーティの独立系ソフトウェア ベンダー (ISV) のオファリングが含まれます。
-
-移行ツールの追加を希望し、まだ Azure Migrate プロジェクトを設定していない場合は、この[記事](how-to-add-tool-first-time.md)に従ってください。
-
-
-
-## <a name="selecting-an-isv-tool"></a>ISV ツールの選択
-
-移行のために [ISV ツール](migrate-services-overview.md#isv-integration)を選択する場合は、ISV のポリシーに従って、ライセンスを取得するか、または無料試用版にサインアップすることから開始できます。 各ツールには、Azure Migrate に接続するためのオプションがあります。 ツールをデプロイし、ツールの手順やドキュメントに従って、ツール ワークスペースを Azure Migrate に接続します。 
+- 移行ツールの追加を希望し、まだ Azure Migrate プロジェクトを設定していない場合は、この[記事](how-to-add-tool-first-time.md)に従ってください。
+- 移行に ISV ツールを追加した場合は、[手順に従って](prepare-isv-movere.md)、ツールを使用するための準備を行います。
 
 ## <a name="select-a-migration-scenario"></a>移行シナリオの選択
 
@@ -34,7 +23,7 @@ Azure Migrate には、評価と Azure への移行のためのツールのハ�
 2. 使用する移行シナリオを選択します。
 
     - Azure にマシンやワークロードを移行するには、 **[サーバーの評価と移行]** を選択します。
-    - オンプレミスの SQL マシンを移行するには、 **[データベースの評価と移行]** を選択します。
+    - オンプレミスの SQL Server データベースを移行するには、 **[Assess and migrate databases] (データベースの評価と移行)** を選択します。
     - オンプレミスの Web アプリを移行するには、 **[Web アプリの評価と移行]** を選択します。
     - オンプレミスの大量のデータを Azure にオフライン モードで移行するには、 **[Data Box の注文]** を選択します。
 

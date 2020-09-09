@@ -5,12 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 045f3ccdc8dc09bf657ab39ce15a0d0524c73fcb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 29ec547a6033b77d92ad7949df286dc94e3243a2
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235199"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213934"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions の HTTP トリガー
 
@@ -497,7 +498,9 @@ public HttpResponseMessage<String> HttpTrigger(
 
 既定では、HTTP トリガーの関数を作成する際に、次の形式のルートを使用して関数のアドレスを指定できます。
 
-    http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>
+```http
+http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>
+```
 
 HTTP トリガーの入力バインドで省略可能な `route` プロパティを使用すると、このルートをカスタマイズできます。 たとえば、次の *function.json* ファイルでは HTTP トリガーの `route` プロパティを定義します。
 
@@ -634,12 +637,14 @@ public class HttpTriggerJava {
 
 ---
 
-既定では、すべての関数のルートには *api* というプレフィックスが付きます。 [host.json](functions-host-json.md) ファイルで `http.routePrefix` プロパティを使用すると、このプレフィックスをカスタマイズまたは削除できます。 次の例では、*host.json* ファイル内でプレフィックスに空の文字列を使用することで、*api* ルート プレフィックスを削除します。
+既定では、すべての関数のルートには *api* というプレフィックスが付きます。 [host.json](functions-host-json.md) ファイルで `extensions.http.routePrefix` プロパティを使用すると、このプレフィックスをカスタマイズまたは削除できます。 次の例では、*host.json* ファイル内でプレフィックスに空の文字列を使用することで、*api* ルート プレフィックスを削除します。
 
 ```json
 {
-    "http": {
-    "routePrefix": ""
+    "extensions": {
+        "http": {
+            "routePrefix": ""
+        }
     }
 }
 ```
@@ -669,7 +674,7 @@ public class HttpTriggerJava {
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-認証されたクライアントに関する情報は、[ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal) として使用できます。 ClaimsPrincipal は、次の例に示すように、要求コンテキストの一部として使用可能です。
+認証されたクライアントに関する情報は、[ClaimsPrincipal](/dotnet/api/system.security.claims.claimsprincipal) として使用できます。 ClaimsPrincipal は、次の例に示すように、要求コンテキストの一部として使用可能です。
 
 ```csharp
 using System.Net;
@@ -701,7 +706,7 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 # <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
-認証されたクライアントに関する情報は、[ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal) として使用できます。 ClaimsPrincipal は、次の例に示すように、要求コンテキストの一部として使用可能です。
+認証されたクライアントに関する情報は、[ClaimsPrincipal](/dotnet/api/system.security.claims.claimsprincipal) として使用できます。 ClaimsPrincipal は、次の例に示すように、要求コンテキストの一部として使用可能です。
 
 ```csharp
 using System.Net;
@@ -747,32 +752,9 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 ---
 
-## <a name="authorization-keys"></a>承認キー
+## <a name="function-access-keys"></a><a name="authorization-keys"></a>関数のアクセス キー
 
-関数を使用すると、開発中に HTTP 関数のエンドポイントにアクセスするのをより困難にするようにキーを使用できます。  HTTP によってトリガーされる関数で HTTP 承認レベルが `anonymous` に設定されている場合を除いて、要求には API キーが含まれている必要があります。 
-
-> [!IMPORTANT]
-> キーは開発中に HTTP エンドポイントを難読化するのに役立つかもしれませんが、運用環境で HTTP トリガーを確保する方法としては意図されていません。 詳細については、[運用環境で HTTP エンドポイントを保護する](#secure-an-http-endpoint-in-production)を参照してください。
-
-> [!NOTE]
-> Functions 1.x ランタイムでは、Webhook プロバイダーは、プロバイダーがサポートするものに応じて、さまざまな方法で要求を認可するためにキーを使用することがあります。 これについては、[Webhook とキー](#webhooks-and-keys)を参照してください。 バージョン 2.x 以降の Functions ランタイムには、Webhook プロバイダーの組み込みサポートは含まれていません。
-
-#### <a name="authorization-scopes-function-level"></a>承認スコープ (関数レベル)
-
-関数レベルのキーには、2 つの承認スコープがあります。
-
-* **関数**:これらのキーは、それらが定義されている特定の関数にのみ適用されます。 API キーとして使用した場合は、その関数だけがアクセスできます。
-
-* **[Host]\(ホスト\)** : ホスト スコープのキーは、関数アプリ内のすべての関数にアクセスするために使用できます。 API キーとして使用した場合は、関数アプリ内のすべての関数がアクセスできます。 
-
-各キーには、参照用に名前が付けられており、関数レベルおよびホスト レベルで "default" という名前の既定のキーがあります。 関数キーが、ホスト キーよりも優先されます。 2 つのキーが同じ名前で定義されている場合は、関数キーが使用されます。
-
-#### <a name="master-key-admin-level"></a>マスターキー (管理レベル) 
-
-各関数アプリには、`_master`という管理レベルのホスト キーもあります。 マスター キーは、アプリ内のすべての関数へのホスト レベルのアクセスを提供するだけでなく、ランタイム REST API への管理アクセスも提供します。 このキーを取り消すことはできません。 認可レベルを`admin`に設定すると、要求でマスター キーを使用する必要があります。 その他のキーを使用すると認可エラーになります。
-
-> [!CAUTION]  
-> マスター キーによって付与された関数 app の権限が昇格しているため、このキーを第三者と共有したり、ネイティブ クライアント アプリケーションに配布したりしないでください。 管理者承認レベルを選択する場合は注意が必要です。
+[!INCLUDE [functions-authorization-keys](../../includes/functions-authorization-keys.md)]
 
 ## <a name="obtaining-keys"></a>キーを入手する
 
@@ -786,7 +768,9 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 ほとんどの HTTP トリガー テンプレートには、要求内の API キーが必要です。 そのため、HTTP 要求は、通常は次の URL のようになります。
 
-    https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?code=<API_KEY>
+```http
+https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?code=<API_KEY>
+```
 
 上記のように、キーは`code`というクエリ文字列変数に含めることができます。 `x-functions-key`HTTP ヘッダーに含めることもできます。 キーの値には、関数のために定義されている任意の関数キーまたは任意のホスト キーを指定できます。
 
@@ -798,15 +782,13 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 ## <a name="secure-an-http-endpoint-in-production"></a>運用環境で HTTP エンドポイントを保護します。
 
-運用環境で、関数エンドポイントを完全に保護するには、次の関数アプリ レベルのセキュリティ オプションのいずれかの実装を検討してください。
+運用環境で、関数エンドポイントを完全に保護するには、次の関数アプリレベルのセキュリティ オプションのいずれかの実装を検討してください。 これらの関数アプリレベル セキュリティ メソッドのいずれかを使用する場合は、HTTP トリガー関数の承認レベルを `anonymous` に設定する必要があります。
 
-* 機能アプリの App サービス認証/認可をオンにします。 App Service プラットフォームでは、Azure Active Directory (AAD) といくつかのサード パーティの ID プロバイダーを使用してクライアントを認証することができます。 この方法を使用して、関数のカスタム認可ルールを実装し、関数コードのユーザー情報を操作できます。 詳細については、「[Azure App Service での認証および認可](../app-service/overview-authentication-authorization.md)」および「[クライアント ID の操作](#working-with-client-identities)」を参照してください。
+[!INCLUDE [functions-enable-auth](../../includes/functions-enable-auth.md)]
 
-* 要求の認証に Azure API Management (APIM) を使用します。 APIM では、受信要求用のさまざまな API のセキュリティ オプションを提供します。 詳細については、 [API Management の認証ポリシー](../api-management/api-management-authentication-policies.md)を参照してください。 APIM を適切に配置すると、APIM インスタンスの IP アドレスからの要求のみを受け入れるように関数アプリを設定できます。 詳細については、[IP アドレス制限](ip-addresses.md#ip-address-restrictions)を参照してください。
+#### <a name="deploy-your-function-app-in-isolation"></a>関数アプリを分離してデプロイする
 
-* Azure App Service 環境 (ASE) で関数アプリをデプロイします。 ASE では、関数を実行するための専用のホスティング環境を提供します。 ASE では、すべての着信要求の認証に使用できる 1 つのフロント エンド ゲートウェイを構成できます。 詳細情報については、[App Service 環境の Web アプリケーション ファイアウォール (WAF) を構成する](../app-service/environment/app-service-app-service-environment-web-application-firewall.md)を参照してください。
-
-これらの関数アプリレベル セキュリティ メソッドのいずれかを使用する場合は、HTTP トリガー関数の承認レベルを `anonymous` に設定する必要があります。
+[!INCLUDE [functions-deploy-isolation](../../includes/functions-deploy-isolation.md)]
 
 ## <a name="webhooks"></a>Webhooks
 
@@ -819,7 +801,7 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 GitHub webhook に応答するには、まず、HTTP トリガーで関数を作成し、**webHookType** プロパティを `github` に設定します。 次に、その URL と API キーを GitHub リポジトリの **[webhook の追加]** ページにコピーします。 
 
-![](./media/functions-bindings-http-webhook/github-add-webhook.png)
+![関数の Webhook の追加方法を示すスクリーンショット。](./media/functions-bindings-http-webhook/github-add-webhook.png)
 
 ### <a name="slack-webhooks"></a>Slack webhook
 
@@ -832,9 +814,17 @@ webhook の承認は、HTTP トリガーの一部である webhook レシーバ�
 * **クエリ文字列**:プロバイダーにより、`clientid` クエリ文字列パラメーターでキー名 (`https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?clientid=<KEY_NAME>` など) が渡されます。
 * **要求ヘッダー**:プロバイダーにより、`x-functions-clientid` ヘッダーでキー名が渡されます。
 
+## <a name="content-types"></a>コンテンツの種類
+
+バイナリ データとフォームデータを C# 以外の関数に渡すには、適切な Content-Type ヘッダーを使用する必要があります。 サポートされるコンテンツの種類としては、バイナリ データ用の `octet-stream` と、[マルチパート型](https://www.iana.org/assignments/media-types/media-types.xhtml#multipart)が含まれます。
+
+### <a name="known-issues"></a>既知の問題
+
+C# 以外の関数では、Content-Type `image/jpeg` を使用して要求を送信すると、`string` 値が関数に渡されます。 このような場合は、`string` 値を手動でバイト配列に変換することで、生のバイナリ データにアクセスすることができます。
+
 ## <a name="limits"></a>制限
 
-HTTP 要求の長さは 100 MB (104,857,600 バイト) に、URL の長さは 4 KB (4,096 バイト) バイトに制限されています。 これらの制限は、ランタイムの [Web.config ファイル](https://github.com/Azure/azure-functions-host/blob/3.x/src/WebJobs.Script.WebHost/web.config)の `httpRuntime` 要素で指定されています。
+HTTP 要求の長さは 100 MB (104,857,600 バイト) に、URL の長さは 4 KB (4,096 バイト) バイトに制限されています。 これらの制限は、ランタイムの [Web.config ファイル](https://github.com/Azure/azure-functions-host/blob/v3.x/src/WebJobs.Script.WebHost/web.config)の `httpRuntime` 要素で指定されています。
 
 HTTP トリガーを使用する関数が 230 秒以内に完了しない場合、[Azure Load Balancer](../app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds) でタイムアウトが発生し、HTTP 502 エラーが返されます。 この関数は実行を継続しますが、HTTP 応答を返すことはできません。 実行時間が長い関数の場合は、非同期パターンに従い、要求の状態について ping で確認できる場所を返すことをお勧めします。 関数を実行できる時間については、[スケールとホスティングに関するページの「従量課金プラン」](functions-scale.md#timeout)を参照してください。
 

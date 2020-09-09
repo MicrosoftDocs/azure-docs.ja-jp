@@ -3,25 +3,25 @@ title: Azure AD アプリ プロキシを使用したオンプレミスのアプ
 description: SAML 認証でセキュリティ保護されているオンプレミスのアプリケーションにシングル サインオンを提供する方法を説明します。 アプリケーション プロキシを使用したオンプレミス アプリへのリモート アクセスを提供します。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/24/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3d2117e913f292e92f37f31d2e123587c70a189
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 2c706de8a7638c16f3778d0d5295069c13b79d98
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80803299"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387270"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>アプリケーション プロキシ を使用したオンプレミスのアプリケーションに対する SAML シングル サインオン
 
@@ -47,7 +47,7 @@ SAML 認証でセキュリティ保護されているオンプレミスのアプ
 
 4. シングル サインオンの方法として、 **[SAML]** を選択します。
 
-5. まず、企業ネットワーク上で動作するように SAML SSO を設定します。 **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の見出しに移動し、その **[編集]** アイコン (鉛筆の形) を選択します。 [基本的な SAML 構成の入力](configure-single-sign-on-non-gallery-applications.md#step-1-edit-the-basic-saml-configuration)に関するページに記載されている手順に従って、アプリケーションに対する SAML ベースの認証を構成します。
+5. まず、企業ネットワーク上で動作するように SAML SSO を設定します。「[SAML ベースのシングル サインオン](configure-saml-single-sign-on.md)」の「基本的な SAML の構成」セクションを参照して、アプリケーションに対して SAML ベースの認証を構成してください。
 
 6. アプリケーションに少なくとも 1 人のユーザーを追加し、テスト アカウントにアプリケーションへのアクセス権があることを確認します。 企業ネットワークに接続しているときに、テスト アカウントを使用して、アプリケーションへのシングル サインオンがあるかどうかを確認します。 
 
@@ -81,7 +81,7 @@ SAML 認証でセキュリティ保護されているオンプレミスのアプ
 
 4. 更新された**応答 URL** の横にあるチェックボックスをオンにして、既定値としてマークします。
 
-   * 必須の **[応答 URL]** を既定としてマークした後、以前に構成した内部 URL を使用する **[応答 URL]** を削除することもできます。
+   * 必須の**応答 URL** を既定値としてマークした後は、内部 URL が使用されており、以前に構成した**応答 URL** は削除することもできます。
 
    * SP によって開始されたフローの場合、バックエンド アプリケーションで認証トークンを受け取るための適切な**応答 URL** または Assertion Consumer Service URL が指定されていることを確認します。
 

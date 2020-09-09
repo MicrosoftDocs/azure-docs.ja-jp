@@ -21,16 +21,16 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "81254310"
 ---
-# <a name="tutorial-set-azure-cdn-caching-rules"></a>チュートリアル: Azure CDN キャッシュ規則の設定
+# <a name="tutorial-set-azure-cdn-caching-rules"></a>チュートリアル:Azure CDN キャッシュ規則の設定
 
 > [!NOTE] 
-> キャッシュ規則は、**Azure CDN Standard from Verizon** および **Azure CDN Standard from Akamai** プロファイルでのみ使用できます。 **Microsoft の Azure CDN** プロファイルの場合は、[Standard ルール エンジン](cdn-standard-rules-engine-reference.md)を使用する必要があります。**Azure CDN Premium from Verizon** プロファイルの場合は、同様の機能に対して[管理](cdn-rules-engine.md)ポータルで **Verizon Premium ルール エンジン**を使用する必要があります。
+> キャッシュ規則は、**Azure CDN Standard from Verizon** および **Azure CDN Standard from Akamai** プロファイルでのみ使用できます。 **Microsoft の Azure CDN** プロファイルの場合は、[Standard ルール エンジン](cdn-standard-rules-engine-reference.md)を使用する必要があります。**Azure CDN Premium from Verizon** プロファイルの場合は、同様の機能に対して**管理**ポータルで [Verizon Premium ルール エンジン](cdn-rules-engine.md)を使用する必要があります。
  
 
 このチュートリアルでは、Azure Content Delivery Network (CDN) のキャッシュ規則を使って、グローバルと、URL パスやファイル拡張子などのカスタム条件の両方で、既定のキャッシュ期限切れ動作を設定または変更する方法について説明します。 Azure CDN では、2 種類のキャッシュ規則が提供されます。
-- グローバル キャッシュ規則: プロファイルのエンドポイントごとに 1 つのグローバル キャッシュ規則を設定することができ、エンドポイントに対するすべての要求に適用されます。 HTTP キャッシュ ディレクティブ ヘッダーが設定されている場合、グローバル キャッシュ規則はそれをオーバーライドします。
+- グローバル キャッシュ規則:プロファイルのエンドポイントごとに 1 つのグローバル キャッシュ規則を設定することができます。この規則は、エンドポイントに対するすべての要求に適用されます。 HTTP キャッシュ ディレクティブ ヘッダーが設定されている場合、グローバル キャッシュ規則はそれをオーバーライドします。
 
-- カスタム キャッシュ規則: プロファイルのエンドポイントごとに、1 つ以上のカスタム キャッシュ規則を設定できます。 カスタム キャッシュ規則は、特定のパスおよびファイル拡張子と一致し、順番に処理され、グローバル キャッシュ規則が設定されている場合はそれをオーバーライドします。 
+- カスタム キャッシュ規則:プロファイルのエンドポイントごとに、1 つ以上のカスタム キャッシュ規則を設定できます。 カスタム キャッシュ規則は、特定のパスおよびファイル拡張子と一致し、順番に処理され、グローバル キャッシュ規則が設定されている場合はそれをオーバーライドします。 
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
@@ -79,7 +79,7 @@ ms.locfileid: "81254310"
     
 2. **[キャッシュ動作]** を **[オーバーライド]** に設定し、 **[日]** フィールドに「30」と入力します。
        
-    このカスタム キャッシュ規則は、エンドポイントの `.jpg` フォルダーにあるすべての `/images` イメージ ファイルについて、キャッシュの有効期間を 30 日に設定します。 要求元のサーバーによって送信された `Cache-Control` または `Expires` HTTP ヘッダーを、この規則はオーバーライドします。
+    このカスタム キャッシュ規則は、エンドポイントの `/images` フォルダーにあるすべての `.jpg` イメージ ファイルについて、キャッシュの有効期間を 30 日に設定します。 要求元のサーバーによって送信された `Cache-Control` または `Expires` HTTP ヘッダーを、この規則はオーバーライドします。
 
     ![カスタム キャッシュ ルール](./media/cdn-caching-rules/cdn-custom-caching-rules.png)
 

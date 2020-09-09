@@ -3,20 +3,20 @@ title: Azure 内で PowerShell を使用して Traffic Manager を管理する
 description: このラーニング パスでは、Traffic Manager で Azure PowerShell の使用を開始します。
 services: traffic-manager
 documentationcenter: na
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
-ms.author: rohink
-ms.openlocfilehash: 7886764a69eefa68be071a801bea65ae995fbdc3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: duau
+ms.openlocfilehash: 21076fe23301c189d9987f78706cc81691ce7a4f
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76938513"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400536"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>PowerShell を使用した Traffic Manager の管理
 
@@ -30,7 +30,7 @@ Azure Traffic Manager は、Traffic Manager プロファイルと呼ばれる設
 
 各 Traffic Manager プロファイルは、'TrafficManagerProfiles' 型のリソースで表されます。 REST API レベルでの各プロファイルの URI は次のとおりです。
 
-    https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/trafficManagerProfiles/{profile-name}?api-version={api-version}
+`https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/trafficManagerProfiles/{profile-name}?api-version={api-version}`
 
 ## <a name="setting-up-azure-powershell"></a>Azure PowerShell の設定
 
@@ -38,7 +38,7 @@ Azure Traffic Manager は、Traffic Manager プロファイルと呼ばれる設
 
 以下の手順では、Microsoft Azure PowerShell を使用します。 次の記事では、Azure PowerShell をインストールして構成する方法について説明します。
 
-* [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)
+* [Azure PowerShell のインストールと構成の方法](/powershell/azure/)
 
 この記事の例では、既存のリソース グループがあることを前提としています。 リソース グループを作成するには、次のコマンドを使用します。
 

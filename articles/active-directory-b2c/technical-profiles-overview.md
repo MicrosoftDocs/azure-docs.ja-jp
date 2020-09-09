@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 125d89301e9d2cc3fc863bffb9b9e6c41e0c129e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 16fdc38d6235ddd0f72c7a35a3d71973ce01a4be
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229937"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85203216"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C カスタム ポリシーでの技術プロファイルについて
 
@@ -49,7 +49,7 @@ ms.locfileid: "82229937"
 技術プロファイルのすべての種類で同じ概念を共有します。 入力要求を送信し、要求変換を実行し、ID プロバイダー、REST API、Azure AD ディレクトリ サービスなど、構成されたパーティと通信します。 プロセスが完了すると、技術プロファイルによって出力要求が戻され、出力要求変換が実行される場合があります。 次の図は、技術プロファイルで参照される変換とマッピングがどのように処理されるかを示しています。 技術プロファイルでやりとりするパーティに関係なく、すべての要求変換が実行された後、技術プロファイルからの出力要求が要求バッグにすぐに格納されます。
 
 ![技術プロファイルのフローを示している図](./media/technical-profiles-overview/technical-profile-idp-saml-flow.png)
- 
+
 1. **シングル サインオン (SSO) セッション管理** - [SSO セッション管理](custom-policy-reference-sso.md)を使用して、技術プロファイルのセッション状態を復元します。
 1. **入力要求変換** - 要求バッグからピックアップされるすべての入力[要求変換](claimstransformations.md)の入力要求。  入力要求変換の出力要求は、後続の入力要求変換の入力要求になる場合があります。
 1. **入力要求** - 要求は要求バッグからピックアップされ、技術プロファイルに使用されます。 たとえば、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)では、入力要求を使用して、ユーザーが提供する出力要求を事前作成します。 REST API 技術プロファイルでは、入力要求を使用し、入力パラメーターを REST API エンドポイントに送信します。 Azure Active Directory では、アカウントの読み取り、更新、削除を行うために、一意識別子として入力要求を使用します。
@@ -70,7 +70,7 @@ ms.locfileid: "82229937"
 
 たとえば、**AAD-UserReadUsingAlternativeSecurityId-NoError** 技術プロファイルには、**AAD-UserReadUsingAlternativeSecurityId** が含まれます。 この技術プロファイルを使うと、`RaiseErrorIfClaimsPrincipalDoesNotExist` メタデータ項目を `true` に設定し、ディレクトリにソーシャル アカウントが存在しない場合はエラーを発生させることができます。 **AAD-UserReadUsingAlternativeSecurityId-NoError** によってこの動作がオーバーライドされ、そのエラー メッセージは無効になります。
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId-NoError">
   <Metadata>
     <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">false</Item>
@@ -81,7 +81,7 @@ ms.locfileid: "82229937"
 
 **AAD-UserReadUsingAlternativeSecurityId** には、`AAD-Common` 技術プロファイルが含まれます。
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
   <Metadata>
     <Item Key="Operation">Read</Item>
@@ -105,7 +105,7 @@ ms.locfileid: "82229937"
 
 **AAD-UserReadUsingAlternativeSecurityId-NoError** と **AAD-UserReadUsingAlternativeSecurityId** はどちらも、**AAD-Common** 技術プロファイルで指定されているため、必須の **Protocol** 要素は指定されません。
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-Common">
   <DisplayName>Azure Active Directory</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />

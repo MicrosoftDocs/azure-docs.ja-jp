@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: b84db69f79b1611347a4c55d929e5426141e7ac6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 65f9ee8f67ac4efb6ab26fa0912d11d7be7c571d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74791494"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520903"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Azure Logic Apps でスコープを使用してグループの状態に基づいてアクションを実行する
 
@@ -71,13 +71,13 @@ ms.locfileid: "74791494"
 
       ![[Bing Maps - Get route]\(Bing 地図 - ルートを取得する\) アクションを設定する](./media/logic-apps-control-flow-run-steps-group-scopes/get-route.png) 
 
-      これらのパラメーターの詳細については、「[Calculate a route (ルートの計算)](https://msdn.microsoft.com/library/ff701717.aspx)」を参照してください。
+      これらのパラメーターの詳細については、「[Calculate a route (ルートの計算)](/bingmaps/rest-services/routes/calculate-a-route)」を参照してください。
 
       | 設定 | 値 | 説明 |
       | ------- | ----- | ----------- |
       | **通過地点 1** | <*start*> | ルートの出発地を入力します。 | 
       | **通過地点 2** | <*end*> | ルートの目的地を入力します。 | 
-      | **回避** | なし | ルート上で回避する要素 (高速道路、通行料金など) を入力します。 使用できる値については、「[Calculate a route](https://msdn.microsoft.com/library/ff701717.aspx)」 (ルートを計算する) をご覧ください。 | 
+      | **回避** | なし | ルート上で回避する要素 (高速道路、通行料金など) を入力します。 使用できる値については、「[Calculate a route](/bingmaps/rest-services/routes/calculate-a-route)」 (ルートを計算する) をご覧ください。 | 
       | **最適化** | timeWithTraffic | ルートを最適化するためのパラメーター (距離、最新の交通情報を加味した移動時間など) を選択します。 この例では、値 "timeWithTraffic" を使用します。 | 
       | **距離単位** | <*your-preference*> | ルートを計算する距離の単位を入力します。 この例では、次の値を使用します:"マイル" | 
       | **Travel mode (移動手段)** | Driving (車) | ルートの移動手段を入力します。 この例では、値 "Driving (車)" を使用します。 | 
@@ -388,7 +388,7 @@ ms.locfileid: "74791494"
 
 ## <a name="get-support"></a>サポートを受ける
 
-* 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
+* ご質問がある場合は、[Azure Logic Apps に関する Microsoft Q&A 質問ページ](/answers/topics/azure-logic-apps.html)を参照してください。
 * 機能や提案について投稿や投票を行うには、[Azure Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次のステップ

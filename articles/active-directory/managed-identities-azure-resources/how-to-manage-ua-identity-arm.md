@@ -3,24 +3,24 @@ title: Azure Resource Manager を使用してユーザー割り当てマネー�
 description: Azure Resource Manager を使用して、ユーザー割り当てマネージド ID を作成および削除する手順について説明します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/10/2019
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 244965da4e22c0808fd1ea9088aa182b27eaf484
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd49c60a23a0ad58f0907d3c1d7c38178ac08c97
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227747"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266359"
 ---
 # <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>Azure Resource Manager を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除する
 
@@ -35,7 +35,7 @@ Azure Resource Manager テンプレートを使用して、ユーザー割り当
 - [ユーザー割り当てマネージド ID を削除する](how-to-manage-ua-identity-cli.md#delete-a-user-assigned-managed-identity)
   ## <a name="prerequisites"></a>前提条件
 
-- Azure リソースのマネージド ID の基本点な事柄については、[概要](overview.md)に関するセクションを参照してください。 **[システム割り当てマネージド ID とユーザー割り当てマネージド ID の違い](overview.md#how-does-the-managed-identities-for-azure-resources-work)を必ず確認してください**。
+- Azure リソースのマネージド ID の基本点な事柄については、[概要](overview.md)に関するセクションを参照してください。 **[システム割り当てマネージド ID とユーザー割り当てマネージド ID の違い](overview.md#managed-identity-types)を必ず確認してください**。
 - まだ Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
 
 ## <a name="template-creation-and-editing"></a>テンプレートの作成と編集
@@ -44,12 +44,12 @@ Azure Portal とスクリプトの場合と同じように、Azure Resource Mana
 
 - [Azure Marketplace のカスタム テンプレート](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)を使用します。これにより、最初からテンプレートを作成したり、既存の共通テンプレートまたは[クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)に基づいてテンプレートを作成したりできます。
 - [元のデプロイ](../../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)または[デプロイの現在の状態](../../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)からテンプレートをエクスポートすることによって、既存のリソース グループから派生させます。
-- ローカルの [JSON エディター (VS Code など)](../../azure-resource-manager/resource-manager-create-first-template.md) を使用してから、PowerShell または CLI を使用してアップロードおよびデプロイします。
+- ローカルの [JSON エディター (VS Code など)](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) を使用してから、PowerShell または CLI を使用してアップロードおよびデプロイします。
 - Visual Studio の [Azure リソース グループ プロジェクト](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md)を使用して、テンプレートを作成およびデプロイします。 
 
 ## <a name="create-a-user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID を作成する 
 
-ユーザー割り当てマネージド ID を作成するには、お使いのアカウントに[マネージド ID 共同作成者](/azure/role-based-access-control/built-in-roles#managed-identity-contributor)ロールの割り当てが必要です。
+ユーザー割り当てマネージド ID を作成するには、お使いのアカウントに[マネージド ID 共同作成者](../../role-based-access-control/built-in-roles.md#managed-identity-contributor)ロールの割り当てが必要です。
 
 ユーザー割り当てマネージド ID を作成するには、次のテンプレートを使用します。 `<USER ASSIGNED IDENTITY NAME>` は実際の値に置き換えます。
 
@@ -88,4 +88,3 @@ Azure Portal とスクリプトの場合と同じように、Azure Resource Mana
 Azure Resource Manager テンプレートを使用して Azure VM にユーザー割り当てマネージド ID を割り当てる方法については、[テンプレートを使用したAzure VM 上の Azure リソースのマネージド ID の構成](qs-configure-template-windows-vm.md)に関するページを参照してください。
 
 
- 

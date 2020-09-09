@@ -7,18 +7,18 @@ author: asudbring
 manager: KumudD
 ms.service: virtual-network
 ms.subservice: ip-services
-ms.devlang: azurecli
-ms.topic: article
+ms.devlang: ''
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: allensu
-ms.openlocfilehash: 3ef96c83b460346ba49051f6f5c4fd0dd5df34ab
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 745b12e2278c487ed49a9d2d726a760a7df8f276
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790169"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84703169"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>Azure portal を使用して静的パブリック IP アドレスを持つ仮想マシンを作成する
 

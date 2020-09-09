@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/21/2020
 ms.author: kumud
 ms.custom: include file
-ms.openlocfilehash: 1c790f10a310b6c4dea3aefd6cb02891b5bbcf9a
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 49a9917d925ebc7a36d14ff6679ad4b1737f9627
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81768760"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515884"
 ---
  次の制限は、Azure Private Link に適用されます。
 
@@ -25,5 +25,5 @@ ms.locfileid: "81768760"
 |プライベート リンク サービスでの IP 構成の数     |  8 (この値は、PLS ごとに使用される NAT IP アドレスに対するものです)       |
 |同じプライベート リンク サービスでのプライベート エンドポイントの数   |  1000       |
 |キー コンテナーあたりのプライベート エンドポイントの数 | 64 |
-|サブスクリプションあたりのプライベート エンドポイントのあるキー コンテナーの数 | 64 |
+|サブスクリプションあたりのプライベート エンドポイントのあるキー コンテナーの数 | 400 |
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 0b3f5963572368cb9c884984418140b4bbc0dea3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 766d0a763f7d69ec58851116e18510235f39b364
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131186"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495065"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Azure Monitor ログを使用した Site Recovery の監視
 
@@ -44,14 +44,14 @@ Site Recovery での Azure Monitor ログの使用は、**Azure から Azure へ
 
 1. コンテナーで、 **[診断設定]**  >  **[診断設定を追加する]** の順にクリックします。
 
-    ![リソース ログの選択](./media/monitoring-log-analytics/add-diagnostic.png)
+    ![[診断設定を追加する] オプションを示すスクリーンショット。](./media/monitoring-log-analytics/add-diagnostic.png)
 
 2. **[診断設定]** で名前を指定し、 **[Log Analytics への送信]** ボックスをオンにします。
 3. Azure Monitor ログのサブスクリプションと Log Analytics ワークスペースを選択します。
 4. トグルで **[Azure Diagnostics]** を選択します。
 5. ログの一覧から、**AzureSiteRecovery** で始まるログをすべて選択します。 次に、 **[OK]** をクリックします
 
-    ![ワークスペースを選択](./media/monitoring-log-analytics/select-workspace.png)
+    ![診断設定画面のスクリーンショット。](./media/monitoring-log-analytics/select-workspace.png)
 
 以後、選択したワークスペース内のテーブル (**AzureDiagnostics**) に Site Recovery のログが取り込まれます。
 
@@ -68,8 +68,8 @@ Site Recovery での Azure Monitor ログの使用は、**Azure から Azure へ
 7. インストールが完了したら、Log Analytics ワークスペースに移動し、 **[詳細設定]** をクリックします。 **[データ]** ページに移動し、 **[Windows パフォーマンス カウンター]** をクリックします。 
 8. **+** をクリックすると、次の 2 つのカウンターが 300 秒のサンプル間隔で追加されます。
 
-        ASRAnalytics(*)\SourceVmChurnRate 
-        ASRAnalytics(*)\SourceVmThrpRate 
+    - ASRAnalytics(*)\SourceVmChurnRate
+    - ASRAnalytics(*)\SourceVmThrpRate
 
 チャーンおよびアップロード レート データがワークスペースに送信されます。
 
@@ -125,7 +125,7 @@ rpoInSeconds_d <= 1800, "15-30Min", ">30Min") 
 | render barchart 
 ```
 
-![RPO を照会する](./media/monitoring-log-analytics/example1.png)
+![Site Recovery を使用してレプリケートされた Azure VM の横棒グラフを示すスクリーンショット。](./media/monitoring-log-analytics/example1.png)
 
 ### <a name="query-site-recovery-jobs"></a>Site Recovery ジョブを照会する
 
@@ -190,7 +190,7 @@ AzureDiagnostics  
 | project TimeGenerated, name_s , RPO_in_seconds = rpoInSeconds_d   
 | render timechart 
 ```
-![マシンの RPO を照会する](./media/monitoring-log-analytics/example2.png)
+![特定の Azure VM の RPO を追跡する傾向グラフのスクリーンショット。](./media/monitoring-log-analytics/example2.png)
 
 ### <a name="query-data-change-rate-churn-and-upload-rate-for-an-azure-vm"></a>Azure VM のデータ変更率 (チャーン) とアップロード率を照会する
 
@@ -207,7 +207,7 @@ Category contains "Upload", "UploadRate", "none") 
 | project TimeGenerated , InstanceWithType , Churn_MBps = todouble(Value_s)/1048576   
 | render timechart  
 ```
-![データの変更量を照会する](./media/monitoring-log-analytics/example3.png)
+![特定の Azure VM の傾向グラフのスクリーンショット。](./media/monitoring-log-analytics/example3.png)
 
 ### <a name="query-data-change-rate-churn-and-upload-rate-for-a-vmware-or-physical-machine"></a>VMware または物理マシンのデータ変更率 (チャーン) とアップロード率を照会する
 
@@ -252,7 +252,7 @@ AzureDiagnostics 
 
 ## <a name="set-up-alerts---examples"></a>アラートを設定する - 例
 
-Azure Monitor のデータに基づいて Site Recovery のアラートを設定できます。 ログ アラートの設定に関する[詳細情報](../azure-monitor/platform/alerts-log.md#managing-log-alerts-from-the-azure-portal)を参照してください。 
+Azure Monitor のデータに基づいて Site Recovery のアラートを設定できます。 ログ アラートの設定に関する[詳細情報](../azure-monitor/platform/alerts-log.md#create-a-log-alert-rule-with-the-azure-portal)を参照してください。 
 
 > [!NOTE]
 > 一部の例では、**replicationProviderName_s** を **A2A** に設定しています。 この場合、セカンダリ Azure リージョンにレプリケートされた Azure VM のアラートが設定されます。 それらの例で、Azure にレプリケートされたオンプレミスの VMware VM または物理サーバーのアラートを設定したい場合は、**A2A** を **InMageAzureV2** に置き換えてください。

@@ -4,16 +4,16 @@ description: この記事では、Azure CLI を使用して、Web トラフィ�
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/01/2019
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: b6bc0b00579bdef0a358f756b8cf2b6034aca017
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 34553c1b211b9e2c4b13a083f5c3a6732fb65472
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68688174"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502700"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Azure CLI を使用して URL に基づいて Web トラフィックをルーティングする
 

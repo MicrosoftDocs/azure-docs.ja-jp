@@ -4,17 +4,17 @@ description: Azure におけるリソースの自動スケールの一般的な�
 ms.topic: conceptual
 ms.date: 05/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: a77cf1704c20abb77d432eab16569071208f6da8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adbfecd05bfd4330e7c7c972cfdb9fe7021eec31
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75396088"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073501"
 ---
 # <a name="overview-of-common-autoscale-patterns"></a>自動スケールの一般的なパターンの概要
 この記事では、Azure におけるリソースのスケールの一般的なパターンについて説明します。
 
-Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[Cloud Services](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/)、および [API Management サービス](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)にのみ適用されます。
+Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[Cloud Services](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/)、および [API Management サービス](../../api-management/api-management-key-concepts.md)にのみ適用されます。
 
 ## <a name="lets-get-started"></a>作業の開始
 
@@ -62,4 +62,3 @@ Web フロントエンド、およびバックエンドと通信する API 層�
 [3]: ./media/autoscale-common-scale-patterns/weekday-weekend-scale.png
 [4]: ./media/autoscale-common-scale-patterns/holidays-scale.png
 [5]: ./media/autoscale-common-scale-patterns/custom-metric-scale.png
-

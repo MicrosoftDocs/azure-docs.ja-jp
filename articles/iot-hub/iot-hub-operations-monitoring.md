@@ -8,13 +8,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: nberdy
-ms.custom: amqp
-ms.openlocfilehash: edbc3431c860794c7cd1dd8e5011c0d7d11d692d
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.custom: amqp, devx-track-csharp
+ms.openlocfilehash: 9d9824be536ca657d9213a47898ad19b0c39d8b4
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81732228"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022022"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>IoT Hub 操作の監視 (非推奨)
 

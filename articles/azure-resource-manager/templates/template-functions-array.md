@@ -3,12 +3,12 @@ title: テンプレート関数 - 配列
 description: Azure Resource Manager テンプレートで配列を操作するために使用する関数について説明します。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: f34ba74847ac394e37e6ef33f859304128daacde
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 4d4ee96888aee5421d88b5371ac25a69c0af4fd7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203813"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84677850"
 ---
 # <a name="array-functions-for-arm-templates"></a>ARM テンプレート用の配列関数
 
@@ -54,7 +54,7 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートで配�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "intToConvert": {
@@ -122,7 +122,7 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートで配�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstArray": {
@@ -163,7 +163,7 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートで配�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "prefix": {
@@ -210,7 +210,7 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートで配�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "stringToTest": {
@@ -291,7 +291,7 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートで配�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "objectToTest": {
@@ -357,7 +357,7 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートで配�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testArray": {
@@ -422,7 +422,7 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートで配�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -476,7 +476,7 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートで配�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstObject": {
@@ -540,7 +540,7 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートで配�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -592,7 +592,7 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートで配�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -679,7 +679,7 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートで配�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -730,7 +730,7 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートで配�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -782,7 +782,7 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートで配�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "startingInt": {
@@ -833,7 +833,7 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートで配�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testArray": {
@@ -901,7 +901,7 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートで配�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testArray": {
@@ -970,7 +970,7 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートで配�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstObject": {

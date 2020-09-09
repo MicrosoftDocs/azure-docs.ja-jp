@@ -2,19 +2,19 @@
 title: SQL オンデマンド (プレビュー) のセルフヘルプ
 description: このセクションには、SQL オンデマンド (プレビュー) に関する問題のトラブルシューティングに役立つ情報が含まれています。
 services: synapse analytics
-author: vvasic-msft
+author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
-ms.date: 04/15/2020
-ms.author: vvasic
+ms.subservice: sql
+ms.date: 05/15/2020
+ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: e2c262915c928cf487cb84aeb3423d67e7a96e97
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7a6b145e9a1efb29bbb6c233f2a09498b4a4ea7f
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421196"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213127"
 ---
 # <a name="self-help-for-sql-on-demand-preview"></a>SQL オンデマンド (プレビュー) のセルフヘルプ
 
@@ -33,7 +33,7 @@ Synapse Studio が SQL オンデマンドへの接続を確立できない場合
 
 ## <a name="query-fails-because-it-cannot-be-executed-due-to-current-resource-constraints"></a>現在のリソース制約によりクエリを実行できないため、クエリが失敗する 
 
-"This query cannot be executed due to current resource constraints (現在のリソース制約のため、このクエリを実行できません)" というエラー メッセージでクエリが失敗する場合、リソースの制約により、SQL OD が現時点でクエリを実行できないことを意味します。 
+"This query cannot be executed due to current resource constraints (現在のリソース制約のため、このクエリを実行できません)" というエラー メッセージでクエリが失敗する場合、リソースの制約により、SQL オンデマンドが現時点でクエリを実行できないことを意味します。 
 
 - 適切なサイズのデータ型が使用されていることを確認してください。 また、文字列型の列の場合は既定で VARCHAR (8000) になるため、Parquet ファイルのスキーマを指定します。 
 
@@ -41,19 +41,49 @@ Synapse Studio が SQL オンデマンドへの接続を確立できない場合
 
 - クエリを最適化するには、[SQL オンデマンドのパフォーマンスのベスト プラクティス](best-practices-sql-on-demand.md)に関するページを参照してください。  
 
+## <a name="create-statement-is-not-supported-in-master-database"></a>CREATE "ステートメント" はマスター データベースでサポートされていません。
+
+次のエラー メッセージが表示され、クエリが失敗します。
+
+> "クエリを実行できませんでした。 エラー:CREATE EXTERNAL TABLE/DATA SOURCE/DATABASE SCOPED CREDENTIAL/FILE FORMAT はマスター データベースでサポートされていません" 
+
+つまり、SQL オンデマンドのマスター データベースでは次を作成できません。
+  - 外部テーブル
+  - 外部データ ソース
+  - データベース スコープ資格情報
+  - 外部ファイル形式
+
+解決方法:
+
+  1. ユーザー データベースの作成:
+
+```sql
+CREATE DATABASE <DATABASE_NAME>
+```
+
+  2. マスター データベースについて前に失敗した <DATABASE_NAME> で CREATE ステートメントを実行します。 
+  
+  外部ファイル形式の作成例:
+    
+```sql
+USE <DATABASE_NAME>
+CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat] 
+WITH ( FORMAT_TYPE = PARQUET)
+```
+
 ## <a name="next-steps"></a>次のステップ
 
 SQL オンデマンドの使用方法について詳しくは、次の記事をご覧ください。
 
 - [単一の CSV ファイルに対するクエリを実行する](query-single-csv-file.md)
 
-- [フォルダーと複数の CSV ファイルに対するクエリを実行する](query-folders-multiple-csv-files.md)
+- [フォルダーと複数の CSV ファイルに対してクエリを実行する](query-folders-multiple-csv-files.md)
 
-- [特定のファイルに対するクエリを実行する](query-specific-files.md)
+- [特定のファイルに対してクエリを実行する](query-specific-files.md)
 
-- [Parquet ファイルに対するクエリを実行する](query-parquet-files.md)
+- [Parquet ファイルに対してクエリを実行する](query-parquet-files.md)
 
-- [Parquet の入れ子にされた型に対するクエリを実行する](query-parquet-nested-types.md)
+- [Parquet の入れ子にされた型に対してクエリを実行する](query-parquet-nested-types.md)
 
 - [JSON ファイルに対するクエリを実行する](query-json-files.md)
 

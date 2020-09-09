@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: mayg
-ms.openlocfilehash: 976888f57269cc9fe6107a38e30d78c73eb5c124
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a78ed25be80cbf083467209f764109a26782278
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228915"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292786"
 ---
 # <a name="reprotect-from-azure-to-on-premises"></a>Azure からオンプレミスへの再保護
 
@@ -33,7 +33,7 @@ ms.locfileid: "79228915"
     - ESXi 5.5 無料エディションまたは vSphere 6 Hypervisor 無料エディションのどちらかを使用している場合。 別のバージョンにアップグレードしてください。
     - Windows Server 2008 R2 SP1 物理サーバーを使用している場合。
     - VMware VM を Hyper-V にフェールバックすることはできません。
-    - [移行されている](migrate-overview.md#what-do-we-mean-by-migration) VM。
+    - 移行されている VM。
     - 別のリソース グループに移動されている VM。
     - 削除されているレプリカ Azure VM。
     - 保護されていない (オンプレミス サイトにレプリケートされている) レプリカ Azure VM。

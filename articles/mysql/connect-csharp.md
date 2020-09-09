@@ -1,24 +1,26 @@
 ---
-title: C# を使用して接続する - Azure Database for MySQL
+title: クイック スタート:C# を使用して接続する - Azure Database for MySQL
 description: このクイックスタートでは、Azure Database for MySQL に接続してデータを照会するために使用できる、C# (.NET) コード サンプルを紹介します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.custom: mvc
+ms.custom: mvc, devx-track-csharp
 ms.devlang: csharp
 ms.topic: quickstart
-ms.date: 3/18/2020
-ms.openlocfilehash: 715be66e1b7d1c9270600dd3f11ee16d9aa1885d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 5/26/2020
+ms.openlocfilehash: b5e024536cdd0829435b9676501b21bc99fff49a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067986"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020050"
 ---
-# <a name="azure-database-for-mysql-use-net-c-to-connect-and-query-data"></a>Azure Database for MySQL: .NET (C#) を使用した接続とデータの照会
+# <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-mysql"></a>クイック スタート:.NET (C#) を使用して Azure Database for MySQL に接続してデータを照会する
+
 このクイックスタートでは、C# アプリケーションを使用して Azure Database for MySQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 このトピックでは、C# を使用した開発には慣れているものの、Azure Database for MySQL の使用は初めてであるユーザーを想定しています。
 
 ## <a name="prerequisites"></a>前提条件
+
 このクイックスタートでは、次のいずれかのガイドで作成されたリソースを出発点として使用します。
 - [Azure Portal を使用した Azure Database for MySQL サーバーの作成](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Azure CLI を使用した Azure Database for MySQL サーバーの作成](./quickstart-create-mysql-server-database-using-azure-cli.md)
@@ -26,6 +28,9 @@ ms.locfileid: "80067986"
 さらに、以下を実行する必要があります。
 - [.NET](https://www.microsoft.com/net/download) のインストール。 リンク先の記事の手順に従って、プラットフォーム (Windows、Ubuntu Linux、または macOS) に応じた .NET をインストールしてください。 
 - [Visual Studio](https://www.visualstudio.com/downloads/) のインストール。
+
+> [!IMPORTANT] 
+> [Azure portal](./howto-manage-firewall-using-portal.md) または [Azure CLI](./howto-manage-firewall-using-cli.md) を使用して、接続元の IP アドレスにサーバーのファイアウォール規則が追加されていることを確認します。
 
 ## <a name="create-a-c-project"></a>C# プロジェクトの作成
 コマンド プロンプトで、次のコマンドを実行します。

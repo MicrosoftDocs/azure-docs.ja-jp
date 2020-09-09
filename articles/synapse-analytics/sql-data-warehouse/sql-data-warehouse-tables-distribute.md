@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 599514f6e7b97208194fc4c1660712f4d5e0c4cb
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 98a3b8d30bcb358a0aaa0f7b124b8399a286d6cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585353"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85214011"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-synapse-sql-pool"></a>Synapse SQL プールでの分散テーブルの設計に関するガイダンス
 

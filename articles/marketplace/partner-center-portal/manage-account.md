@@ -1,18 +1,18 @@
 ---
 title: Microsoft パートナー センターで商業マーケットプレース アカウントを管理する方法
 description: Microsoft パートナー センターで商業マーケットプレース アカウントを管理する方法について学習します。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: parthpandyaMSFT
+ms.author: parthp
 ms.date: 04/27/2020
-ms.openlocfilehash: 54b45825f2322dc127d5db818b7abe52e4a98967
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 8362019365aab002929cc3414e6ca742952fc8ae
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208399"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320019"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>パートナー センターで商業マーケットプレース アカウントを管理する
 
@@ -64,7 +64,7 @@ ms.locfileid: "82208399"
 
 #### <a name="payout-account"></a>支払い受取口座
 
-支払い受取口座は、販売収益の振り込み先となる銀行口座です。 この銀行口座は、パートナー センター アカウントの登録と同じ国に存在していることが必要です。
+支払い受取口座は、販売収益の振り込み先となる銀行口座です。 この銀行口座は、パートナー センター アカウントの登録と同じ国および地域に存在している必要があります。
 
 支払い受取口座を設定するには:
 
@@ -80,21 +80,21 @@ ms.locfileid: "82208399"
 
 現在の税プロファイルの状態を確認し、表示されている **[Entity type]\(エンティティの種類\)** と **[Tax Certificate Information]\(納税証明書情報\)** が正しいことを確認します。 **[編集]** を選択して、必須のフォームを更新または完了します。
 
-課税上の地位を確定するためには、該当する居住国と国籍を指定し、自分の国および地域に関連付けられている適切な税フォームを完了する必要があります。
+課税上の地位を確定するためには、該当する居住国および地域と国籍を指定し、自分の国および地域に関連付けられている適切な税フォームを完了する必要があります。
 
-Microsoft 経由でオファーを販売するためには、居住国や国籍に関係なく、米国の税フォームに記入する必要があります。 特定の米国の居住要件を満たすパートナー様は、IRS W-9 フォームにご記入ください。 その他、米国外のパートナー様は、IRS W-8 フォームにご記入ください。 これらのフォームは、税プロファイルを完成させる際にオンラインで記入できます。
+Microsoft 経由でプランを販売するためには、居住国および地域や国籍に関係なく、米国の税フォームに記入する必要があります。 特定の米国の居住要件を満たすパートナー様は、IRS W-9 フォームにご記入ください。 その他、米国外のパートナー様は、IRS W-8 フォームにご記入ください。 これらのフォームは、税プロファイルを完成させる際にオンラインで記入できます。
 
 Microsoft から支払いを受けたり、租税条約上の権利を申し立てたりするうえで、米国の個人納税者番号 (ITIN) は不要です。
 
 税フォームは、パートナー センターで電子的に完了して提出することができます。ほとんどの場合、フォームを印刷して郵送する必要はありません。
 
-国や地域によって税の要件は異なります。 正確な納税金額は、どの国および地域でオファーを販売するかによって異なります。 一部の国については、Microsoft が代わりに消費税および使用税を送金します。 これらの国については、オファーを掲載するプロセスで特定されます。 その他の国では、パートナー様が、その登録場所に応じて、販売に伴う消費税および使用税を現地の課税当局に直接送金する必要があります。 加えて、パートナー様が受け取る販売収益は、収入として課税対象になる場合があります。 該当する国または地域の関係機関に問い合わせて、Microsoft での販売取引に関する適切な税情報を入手することを強くお勧めします。
+国や地域によって税の要件は異なります。 正確な納税金額は、どの国および地域でオファーを販売するかによって異なります。 一部の国および地域については、Microsoft が代わりに消費税および使用税を送金します。 これらの国および地域については、プランを掲載するプロセスで特定されます。 その他の国および地域では、パートナー様が、その登録場所に応じて、販売に伴う消費税および使用税を現地の課税当局に直接送金する必要があります。 加えて、パートナー様が受け取る販売収益は、収入として課税対象になる場合があります。 該当する国または地域の関係機関に問い合わせて、Microsoft での販売取引に関する適切な税情報を入手することを強くお勧めします。
 
 ##### <a name="withholding-rates"></a>源泉徴収率
-適切な源泉徴収税率は、税フォームで提出した情報によって決まります。 源泉徴収率が適用されるのは、米国内における売上に限られます。米国以外の国における売上は源泉徴収の対象外です。 源泉徴収率は変動しますが、米国外で登録するほとんどの開発者は、30% が既定の税率となります。 お住まいの国が米国との間で所得税に関する租税条約に合意している場合、この税率を下げる選択権をパートナー様は有します。
+適切な源泉徴収税率は、税フォームで提出した情報によって決まります。 源泉徴収率が適用されるのは、米国内における売上に限られます。米国以外の国における売上は源泉徴収の対象外です。 源泉徴収率は変動しますが、米国外で登録するほとんどの開発者は、30% が既定の税率となります。 お住まいの国または地域が米国との間で所得税に関する租税条約に合意している場合、この税率を下げる選択権をパートナー様は有します。
 
 ##### <a name="tax-treaty-benefits"></a>租税条約上の権利
-居住国が米国以外である場合、パートナー様は、租税条約上の権利を利用できる可能性があります。 これらの権利は国によって異なりますが、Microsoft によって源泉徴収される税額を軽減できる可能性があります。 租税条約上の権利は、W-8BEN フォームの Part II に記入することで申し立てることができます。 お住まいの国または地域の適切な機関に問い合わせ、これらの権利が適用されるかどうかを確認することをお勧めします。
+居住国が米国以外である場合、パートナー様は、租税条約上の権利を利用できる可能性があります。 これらの権利は国および地域によって異なりますが、Microsoft によって源泉徴収される税額を軽減できる可能性があります。 租税条約上の権利は、W-8BEN フォームの Part II に記入することで申し立てることができます。 お住まいの国または地域の適切な機関に問い合わせ、これらの権利が適用されるかどうかを確認することをお勧めします。
 
 [Windows アプリ開発者または Windows ゲーム開発者および Azure Marketplace 発行元向けの税の詳細をご覧ください](https://docs.microsoft.com/windows/uwp/publish/tax-details-for-paid-apps)。
 
@@ -117,7 +117,7 @@ Microsoft から支払いを受けたり、租税条約上の権利を申し立�
 
 グローバル一意識別子 (GUID) は、一意の参照番号 (32 桁の 16 進数字) です。Azure の使用状況を追跡する際に使用できます。 
 
-追跡に使用する GUID を作成するには、GUID ジェネレーターの使用をお勧めします。 Azure Storage チームは、正しい形式の GUID を電子メールで送信し、さまざまなトラッキング システムで再利用できる [GUID ジェネレーター フォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR3i8TQB_XnRAsV3-7XmQFpFUMVRVVFFLTDFLS0E2QzNYSkFZR1U3WVJCTSQlQCN0PWcu)を作成しました。
+追跡に使用する GUID を作成するには、GUID ジェネレーターの使用をお勧めします。 Azure Storage チームは、正しい形式の GUID を電子メールで送信し、さまざまなトラッキング システムで再利用できる [GUID ジェネレーター フォーム](https://aka.ms/StoragePartners)を作成しました。
 
 各製品について、オファーと配布チャネルごとに一意の GUID を作成することをお勧めします。 レポートを分割したくない場合は、製品の複数配布チャネルに対して単一の GUID を使用することを選択できます。
 
@@ -128,17 +128,17 @@ Microsoft から支払いを受けたり、租税条約上の権利を申し立�
 
 レポートは、パートナー値 (Microsoft パートナー ID) と GUID によって行われます。 オファーに含まれるそれぞれのプランに合わせ、さらに細かな粒度で GUID を追跡することもできます。
 
-詳細については、[GUID を使用した Azure 顧客の使用状況追跡に関する FAQ](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution#faq) ページを参照してください。
+詳細については、[GUID を使用した Azure 顧客の使用状況追跡に関する FAQ](../azure-partner-customer-usage-attribution.md#faq)) ページを参照してください。
 
 ## <a name="create-a-billing-profile"></a>請求プロファイルを作成する
 
 [Dynamics 365 for Customer Engagement & Power Apps](./create-new-customer-engagement-offer.md) オファーまたは [Dynamics 365 for Operations](./create-new-operations-offer.md) オファーを発行する場合は、**請求プロファイル**に入力する必要があります。
 
-請求先住所は、お客様の法人から事前に設定されています。このアドレスは後で更新できます。 TAX と VAT ID のフィールドは省略可能です。  国名と会社名は編集できません。
+請求先住所は、お客様の法人から事前に設定されています。このアドレスは後で更新できます。 TAX と VAT ID のフィールドは省略可能です。  国および地域の名前と会社名は編集できません。
 
 ## <a name="multi-user-account-management"></a>マルチユーザー アカウント管理
 
-パートナー センターには、マルチユーザー アカウントのアクセスと管理を可能にするために [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD) が活用されています。 パートナー センター アカウントには、登録プロセスの過程でお客様の組織の Azure AD が自動的に関連付けられます。
+パートナー センターには、マルチユーザー アカウントのアクセスと管理を可能にするために [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) が活用されています。 パートナー センター アカウントには、登録プロセスの過程でお客様の組織の Azure AD が自動的に関連付けられます。
 
 ## <a name="manage-users"></a>ユーザーの管理
 
@@ -168,7 +168,7 @@ Microsoft から支払いを受けたり、租税条約上の権利を申し立�
 
 ### <a name="create-new-users"></a>新しいユーザーを作成する
 
-新しいユーザー アカウントを作成する作業は、[**グローバル管理者**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)のアクセス許可があるアカウントで行う必要があります。 
+新しいユーザー アカウントを作成する作業は、[**グローバル管理者**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)のアクセス許可があるアカウントで行う必要があります。 
 
 1. **[アカウント設定]** の **[ユーザー]** に移動し、 **[ユーザーの追加]** を選択した後、 **[新しいユーザーを作成する]** を選択します。
 1. 新しいユーザーごとに、名、姓、およびユーザー名を入力します。 
@@ -182,7 +182,7 @@ Microsoft から支払いを受けたり、租税条約上の権利を申し立�
 
 ### <a name="invite-new-users-by-email"></a>新しいユーザーをメールで招待する
 
-現在貴社の職場アカウント (Azure AD テナント) に属していないユーザーをメールで招待するには、[**グローバル管理者**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)のアクセス許可があるアカウントを持っている必要があります。
+現在貴社の職場アカウント (Azure AD テナント) に属していないユーザーをメールで招待するには、[**グローバル管理者**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)のアクセス許可があるアカウントを持っている必要があります。
 
 1. **[アカウント設定]** の **[ユーザー]** に移動し、 **[ユーザーの追加]** を選択してから、 **[Invite users by email]\(ユーザーをメールで招待する\)** を選択します。
 2. 少なくとも 1 つのメール アドレス (最大 10 個) をコンマまたはセミコロンで区切って入力します。
@@ -202,7 +202,7 @@ Microsoft から支払いを受けたり、租税条約上の権利を申し立�
 
 ### <a name="change-a-user-password"></a>ユーザーのパスワードを変更する
 
-ユーザー アカウントの作成時に**パスワード回復メール**を指定しておけば、そのユーザーが自身のパスワードを変更する必要がある場合に、自分でパスワードを変更することができます。 また、以下の手順でユーザーのパスワードを更新することもできます。 貴社の職場アカウント (Azure AD テナント) のユーザーのパスワードを変更するには、[**グローバル管理者**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)のアクセス許可があるアカウントにサインインする必要があります。 これを行うと、Azure AD テナントにおけるユーザーのパスワードが変更されると共に、パートナー センターへのアクセスに使用されるパスワードも変更されます。
+ユーザー アカウントの作成時に**パスワード回復メール**を指定しておけば、そのユーザーが自身のパスワードを変更する必要がある場合に、自分でパスワードを変更することができます。 また、以下の手順でユーザーのパスワードを更新することもできます。 貴社の職場アカウント (Azure AD テナント) のユーザーのパスワードを変更するには、[**グローバル管理者**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)のアクセス許可があるアカウントにサインインする必要があります。 これを行うと、Azure AD テナントにおけるユーザーのパスワードが変更されると共に、パートナー センターへのアクセスに使用されるパスワードも変更されます。
 
 1. **[アカウント設定]** の **[ユーザー]** ページから、編集したいユーザー アカウントの名前を選択します。
 2. ページ下部の **[Reset password]\(パスワードのリセット\)** ボタンを選択します。
@@ -264,7 +264,7 @@ Microsoft から支払いを受けたり、租税条約上の権利を申し立�
 1. **[アカウント設定]** の **[ユーザー]** ページから **[Add Azure AD applications]\(Azure AD アプリケーションの追加\)** を選択します。
 2. 次のページで、 **[New Azure AD application]\(新しい Azure AD アプリケーション\)** を選択します。
 3. 新しい Azure AD アプリケーションの**応答 URL** を入力します。 これは、Azure AD アプリケーションにユーザーがサインインして使用するための URL です ("アプリの URL" や "サインオン URL" と呼ばれることもあります)。 **応答 URL** は 256 文字未満、かつディレクトリ内で一意であることが必要です。
-4. 新しい Azure AD アプリケーションの**アプリ ID/URI** を入力します。 これは、シングル サインオン要求が Azure AD に送信されるときに提示される、Azure AD アプリケーションの論理的な ID です。 **アプリ ID/URI** は、ディレクトリ内の Azure AD アプリケーションごとに一意であることが必要です。 この ID は 256 文字以下にする必要があります。 アプリ ID/URI の詳細については、[Azure Active Directory とアプリケーションの統合](https://docs.microsoft.com/azure/active-directory/develop/quickstart-modify-supported-accounts#change-the-application-registration-to-support-different-accounts)に関するページを参照してください。
+4. 新しい Azure AD アプリケーションの**アプリ ID/URI** を入力します。 これは、シングル サインオン要求が Azure AD に送信されるときに提示される、Azure AD アプリケーションの論理的な ID です。 **アプリ ID/URI** は、ディレクトリ内の Azure AD アプリケーションごとに一意であることが必要です。 この ID は 256 文字以下にする必要があります。 アプリ ID/URI の詳細については、[Azure Active Directory とアプリケーションの統合](../../active-directory/develop/quickstart-modify-supported-accounts.md#change-the-application-registration-to-support-different-accounts)) に関するページを参照してください。
 5. **[ロール]** セクションで、Azure AD アプリケーションのロール (またはカスタマイズされたアクセス許可) を指定します。
 6. **[保存]** を選択します。
 
@@ -328,7 +328,7 @@ Azure Active Directory (AD) テナントは、Azure portal で設定される組
 3. **[Create]\(作成\)** を選択して、新しいドメインとアカウントの情報を確定します。
 4. 新しい Azure AD グローバル管理者のユーザー名とパスワードでサインインして、[ユーザーの追加と管理](#manage-users)を開始します。
 
-パートナー センター ポータルを介さず Azure portal 内で新しいテナントを作成する方法について詳しくは、[Azure Active Directory で新しいテナントを作成する](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)方法に関する記事を参照してください。
+パートナー センター ポータルを介さず Azure portal 内で新しいテナントを作成する方法について詳しくは、[Azure Active Directory で新しいテナントを作成する](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)方法に関する記事を参照してください。
 
 ### <a name="remove-a-tenant"></a>テナントを削除する
 

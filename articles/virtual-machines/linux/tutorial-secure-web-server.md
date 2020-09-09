@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ac581b45f3aefe7a386f25c978bfc09adda4e39f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7964f96afc59464c28cabb9e1d5c7961fc765a3d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81460479"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501774"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>チュートリアル:Key Vault に格納されている TLS/SSL 証明書を使用して Azure 内の Linux 仮想マシン上の Web サーバーをセキュリティで保護する
 Web サーバーをセキュリティ保護するには、従来より SSL (Secure Sockets Layer) として知られていたトランスポート層セキュリティ (TLS) 証明書を使用した Web トラフィックの暗号化が利用できます。 これらの TLS/SSL 証明書は Azure Key Vault に格納できるため、Azure 上の仮想マシン (VM) に、セキュリティで保護された証明書のデプロイが可能になります。 このチュートリアルで学習する内容は次のとおりです。
@@ -30,7 +30,7 @@ Web サーバーをセキュリティ保護するには、従来より SSL (Secu
 > * VM の作成と NGINX Web サーバーのインストール
 > * VM への証明書の取り込みと NGINX の TLS バインドの構成
 
-このチュートリアルでは、[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) で CLI を使用します。このバージョンは常に更新され最新になっています。 Cloud Shell を開くには、コード ブロックの上部にある **[試してみる]** を選択します。
+このチュートリアルでは、[Azure Cloud Shell](../../cloud-shell/overview.md) で CLI を使用します。このバージョンは常に更新され最新になっています。 Cloud Shell を開くには、コード ブロックの上部にある **[試してみる]** を選択します。
 
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.30 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 

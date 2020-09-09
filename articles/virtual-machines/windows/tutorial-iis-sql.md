@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3e44236f74a5448c540c58ba730d65b412d48bd0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1c53194bd345c18ac582acd538f1e8f8e1e34d54
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101707"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027854"
 ---
 # <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Windows VM に SQL、IIS、.NET スタックをインストールする
 
@@ -33,7 +33,7 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 
 ## <a name="create-an-iis-vm"></a>IIS VM を作成する 
 
-この例では、PowerShell Cloud Shell の [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) コマンドレットを使用して、Windows Server 2016 仮想マシンをすばやく作成し、IIS と .NET Framework をインストールします。 IIS と Azure SQL VM はリソース グループと仮想ネットワークを共有するため、それらの名前となる変数を作成します。
+この例では、PowerShell Cloud Shell の [New-AzVM](/powershell/module/az.compute/new-azvm) コマンドレットを使用して、Windows Server 2016 仮想マシンをすばやく作成し、IIS と .NET Framework をインストールします。 IIS と Azure SQL VM はリソース グループと仮想ネットワークを共有するため、それらの名前となる変数を作成します。
 
 
 ```azurepowershell-interactive
@@ -52,7 +52,7 @@ New-AzVm `
     -OpenPorts 80,3389 
 ```
 
-カスタム スクリプト拡張機能と [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) コマンドレットを使用して、IIS および .NET framework をインストールします。
+カスタム スクリプト拡張機能と [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) コマンドレットを使用して、IIS および .NET framework をインストールします。
 
 ```azurepowershell-interactive
 Set-AzVMExtension `
@@ -76,7 +76,7 @@ $vNet = Get-AzVirtualNetwork `
    -ResourceGroupName $resourceGroup
 ```
 
-[Add-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/add-azvirtualnetworksubnetconfig) を使用してサブネットの構成を作成します。
+[Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) を使用してサブネットの構成を作成します。
 
 
 ```azurepowershell-interactive
@@ -87,7 +87,7 @@ Add-AzVirtualNetworkSubnetConfig `
    -ServiceEndpoint Microsoft.Sql
 ```
 
-[Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetwork) を使用し、新しいサブネット情報で vNet を更新します。
+[Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) を使用し、新しいサブネット情報で vNet を更新します。
    
 ```azurepowershell-interactive   
 $vNet | Set-AzVirtualNetwork
@@ -111,7 +111,7 @@ New-AzVm `
     -OpenPorts 3389,1401 
 ```
 
-[Set-AzVMSqlServerExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsqlserverextension) を使用して [SQL Server 拡張機能](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)を SQL VM に追加します。
+[Set-AzVMSqlServerExtension](/powershell/module/az.compute/set-azvmsqlserverextension) を使用して [SQL Server 拡張機能](../../azure-sql/virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md)を SQL VM に追加します。
 
 ```azurepowershell-interactive
 Set-AzVMSqlServerExtension `
@@ -135,4 +135,3 @@ TLS/SSL 証明書を使用して IIS Web サーバーをセキュリティ保護
 
 > [!div class="nextstepaction"]
 > [TLS/SSL 証明書を使用して IIS Web サーバーをセキュリティで保護する](tutorial-secure-web-server.md)
-

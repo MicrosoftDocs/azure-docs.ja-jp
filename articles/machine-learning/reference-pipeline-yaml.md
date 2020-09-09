@@ -5,17 +5,18 @@ description: YAML ファイルを使用して機械学習パイプラインを�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: reference
 ms.reviewer: larryfr
-ms.author: sanpil
-author: sanpil
-ms.date: 11/11/2019
-ms.openlocfilehash: cee6de8fda45c429d0c74a3ecdc966b49e092567
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.author: nilsp
+author: NilsPohlmann
+ms.date: 07/31/2020
+ms.custom: devx-track-python
+ms.openlocfilehash: 079341fe1b22db83ded4b11941d8bdf809adfb8d
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208501"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845537"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>YAML で機械学習パイプラインを定義する
 
@@ -26,6 +27,7 @@ ms.locfileid: "82208501"
 | ステップの種類 | サポート対象かどうか |
 | ----- | :-----: |
 | PythonScriptStep | はい |
+| ParallelRunStep | はい |
 | AdlaStep | はい |
 | AzureBatchStep | はい |
 | DatabricksStep | はい |
@@ -111,6 +113,7 @@ pipeline:
 | `DatabricsStep` | Databricks ノートブック、Python スクリプト、または JAR を追加します。 [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricksstep?view=azure-ml-py) クラスに対応します。 |
 | `DataTransferStep` | ストレージ オプション間でデータを転送します。 [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py) クラスに対応します。 |
 | `PythonScriptStep` | Python スクリプトを実行します。 [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) クラスに対応します。 |
+| `ParallelRunStep` | Python スクリプトを実行して、大量のデータを非同期的かつ並列的に処理します。 [ParallelRunStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep?view=azure-ml-py) クラスに対応します。 |
 
 ### <a name="adla-step"></a>ADLA ステップ
 
@@ -358,6 +361,58 @@ pipeline:
             outputs:
                 OutputData:
                     destination: Output4
+                    datastore: workspaceblobstore
+                    bind_mode: mount
+```
+
+### <a name="parallel-run-step"></a>並列実行ステップ
+
+| YAML キー | 説明 |
+| ----- | ----- |
+| `inputs` | 入力には、[Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py)、[DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)、または [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py) を指定できます。 |
+| `outputs` | 出力は、[PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) か [OutputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py) のどちらかです。 |
+| `script_name` | Python スクリプトの名前 (`source_directory` からの相対名)。 |
+| `source_directory` | スクリプトや Conda 環境などを格納するディレクトリ。 |
+| `parallel_run_config` | `parallel_run_config.yml` ファイルへのパス。 このファイルは [ParallelRunConfig](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig?view=azure-ml-py) クラスの YAML 表現です。 |
+| `allow_reuse` | 同じ設定でもう一度実行されたときに、ステップで前の結果を再利用するかどうかを決定します。 |
+
+次に、並列実行ステップのサンプルを示します。
+
+```yaml
+pipeline:
+    description: SamplePipelineFromYaml
+    default_compute: cpu-cluster
+    data_references:
+        MyMinistInput:
+            dataset_name: mnist_sample_data
+    parameters:
+        PipelineParamTimeout:
+            type: int
+            default: 600
+    steps:        
+        Step1:
+            parallel_run_config: "yaml/parallel_run_config.yml"
+            type: "ParallelRunStep"
+            name: "parallel-run-step-1"
+            allow_reuse: True
+            arguments:
+            - "--progress_update_timeout"
+            - parameter:timeout_parameter
+            - "--side_input"
+            - side_input:SideInputData
+            parameters:
+                timeout_parameter:
+                    source: PipelineParamTimeout
+            inputs:
+                InputData:
+                    source: MyMinistInput
+            side_inputs:
+                SideInputData:
+                    source: Output4
+                    bind_mode: mount
+            outputs:
+                OutputDataStep2:
+                    destination: Output5
                     datastore: workspaceblobstore
                     bind_mode: mount
 ```

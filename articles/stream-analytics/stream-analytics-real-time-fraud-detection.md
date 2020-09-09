@@ -5,15 +5,15 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: c0b2943e1f0d7f2386ec09da03d297a570eede7a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3bfc03dd7a04bea7e69aa1b62cef267a81b650f1
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80276480"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037615"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure Stream Analytics の使用:リアルタイムでの不正検出
 
@@ -47,7 +47,7 @@ Streaming Analytics ジョブの結果を確認する場合は、Azure Blob Stor
 
 ## <a name="create-an-azure-event-hubs-to-ingest-events"></a>イベントを取り込むための Azure Event Hubs を作成する
 
-データ ストリームを分析するには、Azure に "*取り込む*" 必要があります。 データを取り込む一般的な方法は、[Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) を使うことです。Azure Event Hubs は、1 秒間に数百万件のイベントを取り込み、処理して、イベント情報を格納することができます。 このチュートリアルでは、イベント ハブを作成し、呼び出しイベント ジェネレーター アプリでそのイベント ハブに呼び出しデータを送信します。 Event Hubs について詳しくは、[Azure Service Bus のドキュメント](https://docs.microsoft.com/azure/service-bus/)をご覧ください。
+データ ストリームを分析するには、Azure に "*取り込む*" 必要があります。 データを取り込む一般的な方法は、[Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) を使うことです。Azure Event Hubs は、1 秒間に数百万件のイベントを取り込み、処理して、イベント情報を格納することができます。 このチュートリアルでは、イベント ハブを作成し、呼び出しイベント ジェネレーター アプリでそのイベント ハブに呼び出しデータを送信します。
 
 >[!NOTE]
 >この手順についてさらに詳しくは、「[Azure Portal を使用して Event Hubs 名前空間とイベント ハブを作成する](../event-hubs/event-hubs-create.md)」をご覧ください。 
@@ -202,7 +202,7 @@ TelcoGenerator アプリを開始する前に、作成したイベント ハブ�
    |**設定**  |**推奨値**  |**説明**  |
    |---------|---------|---------|
    |入力のエイリアス  |  CallStream   |  ジョブの入力を識別する名前を入力します。   |
-   |サブスクリプション   |  \<該当するサブスクリプション\> |  作成したイベント ハブがある Azure サブスクリプションを選択します。   |
+   |サブスクリプション   |  \<Your subscription\> |  作成したイベント ハブがある Azure サブスクリプションを選択します。   |
    |Event Hub 名前空間  |  asa-eh-ns-demo |  イベント ハブの名前空間の名前を入力します。   |
    |イベント ハブ名  | asa-eh-frauddetection-demo | イベント ハブの名前を選択します。   |
    |イベント ハブ ポリシー名  | asa-policy-manage-demo | 以前に作成したアクセス ポリシーを選択します。   |
@@ -372,7 +372,7 @@ TelcoGenerator アプリはイベント ハブに呼び出しレコードを送�
    |**設定**  |**推奨値**  |**説明**  |
    |---------|---------|---------|
    |出力エイリアス  |  CallStream-FraudulentCalls   |  ジョブの出力を識別する名前を入力します。   |
-   |サブスクリプション   |  \<該当するサブスクリプション\> |  作成したストレージ アカウントを持っている Azure サブスクリプションを選択します。 ストレージ アカウントは、同じサブスクリプションにある場合も、別のサブスクリプションにある場合もあります。 この例では、同じサブスクリプションにストレージ アカウントを作成したと想定しています。 |
+   |サブスクリプション   |  \<Your subscription\> |  作成したストレージ アカウントを持っている Azure サブスクリプションを選択します。 ストレージ アカウントは、同じサブスクリプションにある場合も、別のサブスクリプションにある場合もあります。 この例では、同じサブスクリプションにストレージ アカウントを作成したと想定しています。 |
    |ストレージ アカウント  |  asaehstorage |  作成したストレージ アカウントの名前を入力します。 |
    |コンテナー  | asa-fraudulentcalls-demo | [新規作成] を選択し、コンテナー名を入力します。 |
 
@@ -420,7 +420,7 @@ BLOB ストレージ内のファイルの内容を調べると、次のような
 
 ## <a name="get-support"></a>サポートを受ける
 
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
+詳細については、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

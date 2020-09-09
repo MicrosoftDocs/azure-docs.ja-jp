@@ -2,23 +2,23 @@
 title: ご利用のテナントに既存の Azure サブスクリプションを追加する - Azure AD
 description: 既存の Azure サブスクリプションを Azure Active Directory テナントに追加する方法について説明します。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
-ms.date: 10/25/2019
+ms.topic: how-to
+ms.date: 06/01/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
-ms.custom: it-pro, seodec18
+ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 104bf51fb03d88ab0e5efd25ebebb0e3060bc264
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 95c3ad5fa66e1327c1fe646303f268ae4e84bd89
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457928"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825023"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する
 
@@ -31,7 +31,7 @@ Azure サブスクリプションには、Azure Active Directory (Azure AD) と�
 すべてのユーザーに、認証のための *ホーム* ディレクトリが 1 つあります。 ユーザーは、他のディレクトリのゲストになることもできます。 Azure AD では、各ユーザーのホーム ディレクトリとゲスト ディレクトリの両方を確認できます。
 
 > [!Important]
-> サブスクリプションを別のディレクトリに関連付けると、[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/role-assignments-portal.md) を使用してロールが割り当てられているユーザーはアクセスできなくなります。 サービス管理者や共同管理者などの従来のサブスクリプション管理者もアクセスできなくなります。
+> サブスクリプションを別のディレクトリに関連付けると、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) を使用してロールが割り当てられているユーザーはアクセスできなくなります。 サービス管理者や共同管理者などの従来のサブスクリプション管理者もアクセスできなくなります。
 >
 > そのサブスクリプションが別のディレクトリに関連付けられている場合は、ポリシー割り当てもサブスクリプションから削除されます。
 >
@@ -42,7 +42,7 @@ Azure サブスクリプションには、Azure Active Directory (Azure AD) と�
 
 サブスクリプションの関連付けまたは追加を行う前に、次のタスクを実行してください。
 
-- 次の変更と影響の一覧を確認してください。
+- サブスクリプションを関連付けたり追加したりした後に行われる変更の一覧と、その影響を確認してください。
 
   - RBAC を使用してロールが割り当てられているユーザーはアクセスできなくなる
   - サービス管理者と共同管理者はアクセスできなくなる
@@ -71,13 +71,13 @@ Azure サブスクリプションには、Azure Active Directory (Azure AD) と�
 
     ![ディレクトリの変更先が表示された [ディレクトリの変更] ページ](media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.png)
 
-    サブスクリプションのディレクトリが変更され、成功メッセージが表示されます。
+    サブスクリプションのディレクトリが変更された後、成功メッセージが表示されます。
 
-    ![ディレクトリ変更の成功メッセージ](media/active-directory-how-subscriptions-associated-directory/edit-directory-success.png)
+  1. [サブスクリプション] ページで **[ディレクトリの切り替え]** を選択し、新しいディレクトリに移動します。 
 
-**[ディレクトリの切り替え]** を使用して、新しいディレクトリに移動します。 すべてが適切に表示されるまでに数時間かかる場合があります。 時間がかかりすぎていると思われる場合は、 **[グローバルなサブスクリプション フィルター]** を確認します。 移動したサブスクリプションが非表示になっていないことを確認します。 一度 Azure portal からサインアウトしてから再びサインインしないと、新しいディレクトリが表示されない場合があります。
+      ![サンプル情報が含まれたディレクトリ スイッチャーのページ](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 
-![サンプル情報が含まれたディレクトリ スイッチャーのページ](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
+      すべてが適切に表示されるまでに数時間かかる場合があります。 時間がかかりすぎていると思われる場合は、 **[グローバルなサブスクリプション フィルター]** を確認します。 移動したサブスクリプションが非表示になっていないことを確認します。 一度 Azure portal からサインアウトしてから再びサインインしないと、新しいディレクトリが表示されない場合があります。
 
 サブスクリプションのディレクトリの変更はサービス レベルの操作であるため、サブスクリプションの課金所有権には影響しません。 アカウント管理者は、引き続き[アカウント センター](https://account.azure.com/subscriptions)からサービス管理者を変更することができます。 元のディレクトリを削除するには、新しいアカウント管理者にサブスクリプションの課金所有権を譲渡する必要があります。課金所有権を別のアカウントに譲渡するには、「[Azure サブスクリプションの所有権を別のアカウントに譲渡する](../../cost-management-billing/manage/billing-subscription-transfer.md)」を参照してください。
 
@@ -85,7 +85,7 @@ Azure サブスクリプションには、Azure Active Directory (Azure AD) と�
 
 サブスクリプションを別のディレクトリに関連付けた後、次のタスクを実行しないと操作が再開されない場合があります。
 
-- キー コンテナーがある場合は、キー コンテナーのテナント ID を変更する必要があります。 詳細については、「[サブスクリプション移行後のキー コンテナー テナント ID の変更](../../key-vault/general/subscription-move-fix.md)」を参照してください。
+- キー コンテナーがある場合は、キー コンテナーのテナント ID を変更する必要があります。 詳細については、「[サブスクリプション移行後のキー コンテナー テナント ID の変更](../../key-vault/general/move-subscription.md)」を参照してください。
 
 - リソースにシステム割り当てマネージド ID を使用していた場合は、それらの ID を再度有効にする必要があります。 ユーザー割り当てマネージド ID を使用していた場合は、それらの ID を再作成する必要があります。 マネージド ID を再度有効にするか再作成した後、それらの ID に割り当てられているアクセス許可を再確立する必要があります。 詳細については、「[Azure リソースのマネージド ID とは](../managed-identities-azure-resources/overview.md)」を参照してください。
 
@@ -95,6 +95,6 @@ Azure サブスクリプションには、Azure Active Directory (Azure AD) と�
 
 - 新しい Azure AD テナントを作成するには、「[クイックスタート:Azure Active Directory で新しいテナントを作成する](active-directory-access-create-new-tenant.md)」を参照してください。
 
-- Microsoft Azure がリソース アクセスを制御する仕組みについて詳しくは、「[従来のサブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md)」を参照してください。
+- Microsoft Azure によってリソース アクセスを制御する方法の詳細については、[従来のサブスクリプション管理者ロール、Azure ロール、Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md)に関するページを参照してください。
 
 - Azure AD でロールを割り当てる方法について詳しくは、「[Azure Active Directory を使ってユーザーに管理者と管理者以外のロールを割り当てる](active-directory-users-assign-role-azure-portal.md)」を参照してください。

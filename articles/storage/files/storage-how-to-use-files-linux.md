@@ -1,32 +1,32 @@
 ---
 title: Linux で Azure Files を使用する | Microsoft Docs
-description: Linux で SMB 経由で Azure File 共有をマウントする方法について説明します。
+description: Linux で SMB 経由で Azure File 共有をマウントする方法について説明します。 前提条件の一覧を参照してください。 Linux クライアントでの SMB のセキュリティに関する考慮事項を確認します。
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fcc9876caf0c002650ab30b7eaed7dc44e2f135e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d00b0558f85e18dfb53736d89fead953cc01ee60
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137741"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053169"
 ---
 # <a name="use-azure-files-with-linux"></a>Linux で Azure Files を使用する
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、[SMB カーネル クライアント](https://wiki.samba.org/index.php/LinuxCIFS)を使用して Linux ディストリビューションにマウントできます。 この記事では、Azure ファイル共有を `mount` コマンドを使用してオンデマンドでマウントするか、`/etc/fstab` にエントリを作成することで起動時にマウントするという 2 つの方法について説明します。
 
 Linux で Azure ファイル共有をマウントするには、SMB 3.0 を使用することをお勧めします。 既定では、Azure Files は転送中の暗号化を必要としますが、これは SMB 3.0 でのみサポートされています。 Azure Files では SMB 2.1 (転送中の暗号化をサポートしていない) もサポートしていますが、セキュリティ上の理由から、別の Azure リージョンまたはオンプレミスから SMB 2.1 を使用して Azure ファイル共有をマウントすることはできません。 最近リリースされた Linux ディストリビューションでは SMB 3.0 がサポートされているため、アプリケーションで特別に必要とされるのでない限り、SMB 2.1 を使用する理由はほとんどありません。  
 
-| | SMB 2.1 <br>(同じ Azure リージョン内の VM 上のマウント) | SMB 3.0 <br>(オンプレミスおよびクロスリージョンからのマウント) |
+| Linux ディストリビューション | SMB 2.1 <br>(同じ Azure リージョン内の VM 上のマウント) | SMB 3.0 <br>(オンプレミスおよびクロスリージョンからのマウント) |
 | --- | :---: | :---: |
 | Ubuntu | 14.04+ | 16.04+ |
 | Red Hat Enterprise Linux (RHEL) | 7+ | 7.5+ |
 | CentOS | 7+ |  7.5+ |
 | Debian | 8+ | 10+ |
 | openSUSE | 13.2+ | 42.3 以降 |
-| SUSE Linux Enterprise Server | 12 以降 | 12 SP3+ |
+| SUSE Linux Enterprise Server | 12 以降 | 12 SP2+ |
 
 上記の表に記載されていない Linux ディストリビューションを使用している場合は、Linux カーネル バージョンを確認することで、その Linux ディストリビューションで暗号化を使用した SMB 3.0 がサポートされているかどうかを確認できます。 暗号化を使用する SMB 3.0 が Linux カーネル バージョン 4.11 に追加されました。 `uname` コマンドにより、使用中の Linux カーネルのバージョンが返されます。
 
@@ -47,7 +47,7 @@ uname -r
     sudo apt install cifs-utils
     ```
 
-    **Fedora**、**Red Hat Enterprise Linux 8+** 、および **CentOS 8+** では、`dnf` パッケージ マネージャーを使用します。
+    **Fedora**、**Red Hat Enterprise Linux 8+**、および **CentOS 8+** では、`dnf` パッケージ マネージャーを使用します。
 
     ```bash
     sudo dnf install cifs-utils
@@ -69,7 +69,7 @@ uname -r
 
 * **Azure コマンド ライン インターフェイス (CLI) の最新バージョン。** Azure CLI をインストールする方法の詳細については、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照し、ご利用のオペレーティング システムを選択してください。 PowerShell 6 以降で Azure PowerShell モジュールを使用することは可能ですが、以下の手順は Azure CLI 用に提供されています。
 
-* **ポート 445 が開いていることを確認する**: SMB は、TCP ポート 445 経由で通信します。ファイアウォールがクライアント マシンの TCP ポート 445 をブロックしていないことを確認してください。  **<your-resource-group>** と **<your-storage-account>** を置き換えます
+* **ポート 445 が開いていることを確認する**: SMB は、TCP ポート 445 経由で通信します。ファイアウォールによってクライアント コンピューターの TCP ポート 445 がブロックされないことを確認してください。  **<your-resource-group>** と **<your-storage-account>** を置き換えます
     ```bash
     resourceGroupName="<your-resource-group>"
     storageAccountName="<your-storage-account>"
@@ -205,7 +205,7 @@ Azure ファイル共有の使用を完了したら、`sudo umount $mntPath` を
     sudo apt update
     sudo apt install autofs
     ```
-    **Fedora**、**Red Hat Enterprise Linux 8+** 、および **CentOS 8+** では、`dnf` パッケージ マネージャーを使用します。
+    **Fedora**、**Red Hat Enterprise Linux 8+**、および **CentOS 8+** では、`dnf` パッケージ マネージャーを使用します。
     ```bash
     sudo dnf install autofs
     ```
@@ -248,22 +248,22 @@ Linux カーネル 4.18 以降、レガシへの対応のために `cifs` と呼
 
 | Distribution | SMB 1 を無効にできる |
 |--------------|-------------------|
-| Ubuntu 14.04-16.04 | いいえ |
-| Ubuntu 18.04 | はい |
-| Ubuntu 19.04+ | はい |
-| Debian 8-9 | いいえ |
-| Debian 10+ | はい |
-| Fedora 29+ | はい |
-| CentOS 7 | いいえ | 
-| CentOS 8+ | はい |
-| Red Hat Enterprise Linux 6.x-7.x | いいえ |
-| Red Hat Enterprise Linux 8+ | はい |
-| openSUSE Leap 15.0 | いいえ |
-| openSUSE Leap 15.1+ | はい |
-| openSUSE Tumbleweed | はい |
-| SUSE Linux Enterprise 11.x-12.x | いいえ |
-| SUSE Linux Enterprise 15 | いいえ |
-| SUSE Linux Enterprise 15.1 | いいえ |
+| Ubuntu 14.04-16.04 | No |
+| Ubuntu 18.04 | Yes |
+| Ubuntu 19.04+ | Yes |
+| Debian 8-9 | No |
+| Debian 10+ | Yes |
+| Fedora 29+ | Yes |
+| CentOS 7 | No | 
+| CentOS 8+ | Yes |
+| Red Hat Enterprise Linux 6.x-7.x | No |
+| Red Hat Enterprise Linux 8+ | Yes |
+| openSUSE Leap 15.0 | No |
+| openSUSE Leap 15.1+ | Yes |
+| openSUSE Tumbleweed | Yes |
+| SUSE Linux Enterprise 11.x-12.x | No |
+| SUSE Linux Enterprise 15 | No |
+| SUSE Linux Enterprise 15.1 | No |
 
 次のコマンドを使用して、Linux ディストリビューションで `disable_legacy_dialects` モジュール パラメーターがサポートされているかどうかを確認できます。
 

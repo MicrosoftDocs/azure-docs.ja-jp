@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fef9059700e2bd94029c40bb819870a7174e0812
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa9786f31e1cf9ee15afdc03d289a04198836133
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930112"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086842"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Azure Data Factory コピー ウィザード
 > [!NOTE]
@@ -69,10 +69,12 @@ Azure Data Factory コピー ウィザードを使用すると、通常はエン
 
 次の形式の入力フォルダーがあるとします。
 
-    2016/03/01/01
-    2016/03/01/02
-    2016/03/01/03
-    ...
+```text
+2016/03/01/01
+2016/03/01/02
+2016/03/01/03
+...
+```
 
 **[ファイルまたはフォルダー]** の **[参照]** ボタンをクリックして、これらのフォルダーのいずれか (例: 2016->03->01->02) を参照し、 **[選択]** をクリックします。 テキスト ボックスに `2016/03/01/02` と表示されます。 ここで、**2016** を **{year}** 、**03** を **{month}** 、**01** を **{day}** 、**02** を **{hour}** にそれぞれ置き換え、**Tab** キーを押します。 この 4 つの変数の形式を選択するドロップダウン リストが表示されます。
 

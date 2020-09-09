@@ -2,23 +2,23 @@
 title: よくあるご質問 (FAQ) - Azure Active Directory | Microsoft Docs
 description: Azure と Azure Active Directory、パスワード管理、およびアプリケーション アクセスに関する一般的な質問とその回答です。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.assetid: b8207760-9714-4871-93d5-f9893de31c8f
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f77304beb598094e8dbbc51ebf624acd71b554b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: b7c119b56d33908dbc0e53d588f3ac4ea155c8de
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681728"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799093"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Azure Active Directory についてよくあるご質問
 Azure Active Directory (Azure AD) は、包括的なサービスとしての ID (IDaaS) ソリューションです。その範囲は ID、アクセス管理、セキュリティのあらゆる面に及びます。

@@ -7,19 +7,19 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/05/2018
+ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83e172e61411c7c1c098706b5ff4566f565d6bf1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3e40eecce3ff0ea5b252fd135ae553fa20e0a77b
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "66253855"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386353"
 ---
 # <a name="what-is-password-hash-synchronization-with-azure-ad"></a>Azure AD とのパスワード ハッシュ同期とは
-パスワード ハッシュ同期は、ハイブリッド ID を実現するために使用されるサインイン方法の 1 つです。 Azure AD Connect では、オンプレミスの Active Directory インスタンスからクラウドベースの Azure AD インスタンスに、ユーザー パスワードのハッシュを同期します。
+パスワード ハッシュ同期は、ハイブリッド ID を実現するために使用されるサインイン方法の 1 つです。 Azure AD Connect では、オンプレミスの Active Directory インスタンスからクラウドベースの Azure AD インスタンスに、ユーザーのパスワードのハッシュを同期します。
 
 パスワード ハッシュ同期は、Azure AD Connect Sync によって実装されるディレクトリ同期の拡張機能です。この機能を使用して、Office 365 などの Azure AD サービスにサインインすることができます。 このサービスにサインインするときに使用するパスワードは、オンプレミスの Active Directory インスタンスにサインインするときに使うものと同じです。
 
@@ -29,6 +29,12 @@ ms.locfileid: "66253855"
 
 * ユーザーの生産性が向上する。
 * ヘルプデスクのコストが削減される。  
+
+パスワード ハッシュの同期では、ハイブリッド アカウントの[漏洩資格情報検出](../identity-protection/concept-identity-protection-risks.md#user-risk)も有効になります。 Microsoft はダーク Web の研究者や法執行機関と協力し、公で利用できるユーザー名とパスワードのペアを見つけています。 そのようなペアが Microsoft のユーザーと一致する場合、関連付けられているアカウントが高リスクに移されます。 
+
+>[!NOTE]
+> 新たに漏洩し、PHS を有効にした後に見つかった資格情報のみ、テナントに対して処理されます。 以前に検出された資格情報ペアは検証されません。
+
 
 サインイン方法として [Active Directory フェデレーション サービス (AD FS) とのフェデレーション](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Configuring-AD-FS-for-user-sign-in-with-Azure-AD-Connect)を使用する場合、必要に応じて、バックアップとしてパスワード ハッシュ同期を設定することができます。
 

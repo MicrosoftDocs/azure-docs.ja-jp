@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 713afb7b277fba65dc4c860e8bdd6b62b4e0147d
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 8e0e0ad9086a7945201b1752126253f12eb751bf
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204784"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320037"
 ---
 # <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>Azure AD を使用してセキュリティで保護された ID に迅速に対応する
 
@@ -55,7 +55,7 @@ Azure AD Free または Office 365 アプリのお客様が自分のユーザー
 | --- | --- |
 | [セキュリティの既定値群を有効にする](concept-fundamentals-security-defaults.md) | MFA を有効にし、レガシ認証をブロックすることで、すべてのユーザー ID とアプリケーションを保護します |
 | [パスワード ハッシュ同期を有効にする](../hybrid/how-to-connect-password-hash-synchronization.md) (ハイブリッド ID を使用している場合) | 認証に冗長性を提供し、セキュリティを強化します (スマート ロックアウト、IP ロックアウト、漏洩した資格情報を検出する機能など) |
-| [ADFS スマート ロックアウトを有効にする](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) (該当する場合) | 悪意のあるアクティビティによるエクストラネット アカウント ロックアウトの発生からユーザーを保護します。 |
+| [ADFS スマート ロックアウトを有効にする](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) (該当する場合) | 悪意のあるアクティビティによるエクストラネット アカウント ロックアウトの発生からユーザーを保護します。 |
 | [Azure Active Directory スマート ロックアウトを有効にする](../authentication/howto-password-smart-lockout.md) (マネージド ID を使用している場合) | スマート ロックアウトは、組織のユーザーのパスワードを推測したり、ブルート フォース方法を使用して侵入しようとする悪意のあるユーザーのロックアウトを支援します。 |
 | [アプリケーションに対するエンドユーザーの同意を無効にする](../manage-apps/configure-user-consent.md) | 管理者の同意ワークフローによって、管理者は、エンド ユーザーが会社のデータを漏洩することがないように、管理者の承認を必要とするアプリケーションへのアクセス権を安全に付与することができます。 Microsoft では、将来のユーザーの同意動作をすべて無効にし、攻撃の対象となる領域を減らし、このリスクを軽減することをお勧めしています。 |
 | [サポートされている SaaS アプリケーションをギャラリーから Azure AD に統合し、シングル サインオンを有効にする](../manage-apps/add-application-portal.md) | Azure AD には、あらかじめ統合された何千ものアプリケーションが含まれるギャラリーがあります。 組織で使用しているアプリケーションの一部は、おそらく、Azure portal から直接アクセスできるギャラリーにあります。 ユーザー エクスペリエンスの向上 (SSO) により、企業の SaaS アプリケーションへのアクセスをリモートで安全に提供します |
@@ -82,7 +82,7 @@ Azure AD Free または Office 365 アプリのお客様が自分のユーザー
 | [パスワード ライトバックを実装する](../authentication/tutorial-enable-sspr-writeback.md)(ハイブリッド ID を使用している場合) | クラウドでのパスワードの変更を、オンプレミスの Windows Server Active Directory 環境に書き戻すことを許可します。 |
 | 条件付きアクセス ポリシーを作成して有効にする | [管理者が管理者権限を割り当てられているアカウントを保護するための MFA。](../conditional-access/howto-conditional-access-policy-admin-mfa.md) <br><br> [レガシ認証プロトコルに関連するリスクが増加したため、レガシ認証プロトコルをブロックします。](../conditional-access/howto-conditional-access-policy-block-legacy.md) <br><br> [ユーザーとアプリケーションをセキュリティで保護して、ご使用の環境にバランスの取れた MFA ポリシーを作成するためのすべてのユーザーとアプリケーション向けの MFA。](../conditional-access/howto-conditional-access-policy-all-users-mfa.md) <br><br> [Azure リソースにアクセスするすべてのユーザーに対して多要素認証を要求することで、特権リソースを保護するには、Azure 管理のために MFA を必須にします。](../conditional-access/howto-conditional-access-policy-azure-management.md) |
 | [パスワード ハッシュ同期を有効にする](../hybrid/how-to-connect-password-hash-synchronization.md) (ハイブリッド ID を使用している場合) | 認証に冗長性を提供し、セキュリティを強化します (スマート ロックアウト、IP ロックアウト、漏洩した資格情報を検出する機能など) |
-| [ADFS スマート ロックアウトを有効にする](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) (該当する場合) | 悪意のあるアクティビティによるエクストラネット アカウント ロックアウトの発生からユーザーを保護します。 |
+| [ADFS スマート ロックアウトを有効にする](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) (該当する場合) | 悪意のあるアクティビティによるエクストラネット アカウント ロックアウトの発生からユーザーを保護します。 |
 | [Azure Active Directory スマート ロックアウトを有効にする](../authentication/howto-password-smart-lockout.md) (マネージド ID を使用している場合) | スマート ロックアウトは、組織のユーザーのパスワードを推測したり、ブルート フォース方法を使用して侵入しようとする悪意のあるユーザーのロックアウトを支援します。 |
 | [アプリケーションに対するエンドユーザーの同意を無効にする](../manage-apps/configure-user-consent.md) | 管理者の同意ワークフローによって、管理者は、エンド ユーザーが会社のデータを漏洩することがないように、管理者の承認を必要とするアプリケーションへのアクセス権を安全に付与することができます。 Microsoft では、将来のユーザーの同意動作をすべて無効にし、攻撃の対象となる領域を減らし、このリスクを軽減することをお勧めしています。 |
 | [ アプリケーション プロキシを使用してオンプレミスのレガシ アプリケーションへのリモート アクセスを有効にする](../manage-apps/application-proxy-add-on-premises-application.md) | Azure AD アプリケーション プロキシを有効にし、レガシ アプリと統合して、ユーザーが自分の Azure AD アカウントでサインインすることで、オンプレミスのアプリケーションに安全にアクセスできるようにします。 |
@@ -94,7 +94,7 @@ Azure AD Free または Office 365 アプリのお客様が自分のユーザー
 | [複数のグローバル管理者を指定する](../users-groups-roles/directory-emergency-access.md) | 緊急事態があった場合に使用するため、クラウド専用の永続的なグローバル管理者アカウントを少なくとも 2 つ割り当てます。 これらのアカウントは日常は使用されないもので、長く複雑なパスワードにする必要があります。 緊急用アカウントを使用すると、緊急時にサービスにアクセスできるようになります。 |
 | [可能な場合は非グローバル管理者ロールを使用する](../users-groups-roles/directory-assign-admin-roles.md) | 管理者には、アクセスする必要がある領域だけに必要なアクセスのみを付与します。 すべての管理者がグローバル管理者である必要はありません。 |
 | [Microsoft のパスワードのガイダンスを有効にする](https://www.microsoft.com/research/publication/password-guidance/) | 設定したスケジュールでのパスワード変更をユーザーに要求することをやめ、複雑さに関する要件を無効にします。ユーザーは自分のパスワードを、より覚えやすく安全な何かのままにしておきやすくなります。 |
-| [ゲスト ユーザー アクセスの計画を作成する](../b2b/what-is-b2b.md) | ゲスト ユーザーが各自の職場 ID、学校 ID、またはソーシャル ID を使用してアプリやサービスにサインインできるようにして、共同作業を行います。 |
+| [ゲスト ユーザー アクセスの計画を作成する](../external-identities/what-is-b2b.md) | ゲスト ユーザーが各自の職場 ID、学校 ID、またはソーシャル ID を使用してアプリやサービスにサインインできるようにして、共同作業を行います。 |
 
 ### <a name="guidance-for-azure-ad-premium-plan-2-customers"></a>Azure AD Premium プラン 2 のお客様向けのガイダンス
 
@@ -114,7 +114,7 @@ Azure AD Free または Office 365 アプリのお客様が自分のユーザー
 | [Identity Protection のユーザーとサインインのリスク ポリシーを有効にする](../identity-protection/howto-identity-protection-configure-risk-policies.md) | Identity Protection のユーザーとサインインのポリシーを有効にします。 推奨されるサインイン ポリシーは、中程度のリスクのサインインをターゲットとし、MFA を要求します。 ユーザー ポリシーの場合は、パスワードの変更操作を必要とする危険度の高いユーザーをターゲットにする必要があります。 |
 | 条件付きアクセス ポリシーを作成して有効にする | [管理者が管理者権限を割り当てられているアカウントを保護するための MFA。](../conditional-access/howto-conditional-access-policy-admin-mfa.md) <br><br> [レガシ認証プロトコルに関連するリスクが増加したため、レガシ認証プロトコルをブロックします。](../conditional-access/howto-conditional-access-policy-block-legacy.md) <br><br> [Azure リソースにアクセスするすべてのユーザーに対して多要素認証を要求することで、特権リソースを保護するには、Azure 管理のために MFA を必須にします。](../conditional-access/howto-conditional-access-policy-azure-management.md) |
 | [パスワード ハッシュ同期を有効にする](../hybrid/how-to-connect-password-hash-synchronization.md) (ハイブリッド ID を使用している場合) | 認証に冗長性を提供し、セキュリティを強化します (スマート ロックアウト、IP ロックアウト、漏洩した資格情報を検出する機能など) |
-| [ADFS スマート ロックアウトを有効にする](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) (該当する場合) | 悪意のあるアクティビティによるエクストラネット アカウント ロックアウトの発生からユーザーを保護します。 |
+| [ADFS スマート ロックアウトを有効にする](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) (該当する場合) | 悪意のあるアクティビティによるエクストラネット アカウント ロックアウトの発生からユーザーを保護します。 |
 | [Azure Active Directory スマート ロックアウトを有効にする](../authentication/howto-password-smart-lockout.md) (マネージド ID を使用している場合) | スマート ロックアウトは、組織のユーザーのパスワードを推測したり、ブルート フォース方法を使用して侵入しようとする悪意のあるユーザーのロックアウトを支援します。 |
 | [アプリケーションに対するエンドユーザーの同意を無効にする](../manage-apps/configure-user-consent.md) | 管理者の同意ワークフローによって、管理者は、エンド ユーザーが会社のデータを漏洩することがないように、管理者の承認を必要とするアプリケーションへのアクセス権を安全に付与することができます。 Microsoft では、将来のユーザーの同意動作をすべて無効にし、攻撃の対象となる領域を減らし、このリスクを軽減することをお勧めしています。 |
 | [ アプリケーション プロキシを使用してオンプレミスのレガシ アプリケーションへのリモート アクセスを有効にする](../manage-apps/application-proxy-add-on-premises-application.md) | Azure AD アプリケーション プロキシを有効にし、レガシ アプリと統合して、ユーザーが自分の Azure AD アカウントでサインインすることで、オンプレミスのアプリケーションに安全にアクセスできるようにします。 |
@@ -126,7 +126,7 @@ Azure AD Free または Office 365 アプリのお客様が自分のユーザー
 | [複数のグローバル管理者を指定する](../users-groups-roles/directory-emergency-access.md) | 緊急事態があった場合に使用するため、クラウド専用の永続的なグローバル管理者アカウントを少なくとも 2 つ割り当てます。 これらのアカウントは日常は使用されないもので、長く複雑なパスワードにする必要があります。 緊急用アカウントを使用すると、緊急時にサービスにアクセスできるようになります。 |
 | [可能な場合は非グローバル管理者ロールを使用する](../users-groups-roles/directory-assign-admin-roles.md) | 管理者には、アクセスする必要がある領域だけに必要なアクセスのみを付与します。 すべての管理者がグローバル管理者である必要はありません。 |
 | [Microsoft のパスワードのガイダンスを有効にする](https://www.microsoft.com/research/publication/password-guidance/) | 設定したスケジュールでのパスワード変更をユーザーに要求することをやめ、複雑さに関する要件を無効にします。ユーザーは自分のパスワードを、より覚えやすく安全な何かのままにしておきやすくなります。 |
-| [ゲスト ユーザー アクセスの計画を作成する](../b2b/what-is-b2b.md) | ゲスト ユーザーが各自の職場 ID、学校 ID、またはソーシャル ID を使用してアプリやサービスにサインインできるようにして、共同作業を行います。 |
+| [ゲスト ユーザー アクセスの計画を作成する](../external-identities/what-is-b2b.md) | ゲスト ユーザーが各自の職場 ID、学校 ID、またはソーシャル ID を使用してアプリやサービスにサインインできるようにして、共同作業を行います。 |
 | [Privileged Identity Management を有効にする](../privileged-identity-management/pim-configure.md) | 管理者が必要なときに承認を受けた場合にのみアクセス権が得られるように、組織内の重要なリソースへのアクセスの管理、制御、監視を可能にします。 |
 
 ## <a name="next-steps"></a>次のステップ

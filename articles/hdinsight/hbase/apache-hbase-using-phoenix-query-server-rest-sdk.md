@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
-ms.custom: hdinsightactive
+ms.topic: how-to
+ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/01/2020
-ms.openlocfilehash: 84c2bad1004029fe61dcfc19321957a170284587
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4ad6d16e4c6d91b44061d99ffa1c397fb0e0ec28
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75612259"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019642"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix Query Server REST SDK
 
@@ -27,7 +27,9 @@ ms.locfileid: "75612259"
 
 Apache Phoenix Query Server 用の Microsoft .NET ドライバーは NuGet パッケージとして提供され、Visual Studio の **NuGet パッケージ マネージャー コンソール**から、次のコマンドを使ってインストールできます。
 
-    Install-Package Microsoft.Phoenix.Client
+```console
+Install-Package Microsoft.Phoenix.Client
+```
 
 ## <a name="instantiate-new-phoenixclient-object"></a>新しい PhoenixClient オブジェクトのインスタンス化
 
@@ -494,7 +496,7 @@ finally
 
 `select` ステートメントの出力結果は次のようになります。
 
-```
+```output
 id0 first0
 id1 first1
 id10 first10

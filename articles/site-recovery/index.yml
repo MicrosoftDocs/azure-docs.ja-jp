@@ -10,12 +10,12 @@ metadata:
   author: rayne-wiselman
   ms.author: raynew
   ms.date: 11/19/2019
-  ms.openlocfilehash: 256f193b0b16c385eeb3f16b3d99f6c113eefab6
-  ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+  ms.openlocfilehash: 009f905e097f434819953b63446e64e3ba3d5efa
+  ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/25/2020
-  ms.locfileid: "83826266"
+  ms.lasthandoff: 07/08/2020
+  ms.locfileid: "86135613"
 landingContent:
 - title: Site Recovery について
   linkLists:
@@ -104,6 +104,6 @@ landingContent:
     - text: サービス機能のリクエスト
       url: https://feedback.azure.com/forums/256299-site-recovery
     - text: Microsoft Q&A に質問をする
-      url: https://docs.microsoft.com/answers/topics/azure-site-recovery.html
+      url: /answers/topics/azure-site-recovery.html
     - text: Azure Tech Community
       url: https://techcommunity.microsoft.com/t5/Azure/ct-p/Azure

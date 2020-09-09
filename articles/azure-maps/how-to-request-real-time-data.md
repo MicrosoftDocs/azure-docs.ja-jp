@@ -1,6 +1,6 @@
 ---
 title: リアルタイムの公共輸送データを要求する | Microsoft Azure Maps
-description: Microsoft Azure Maps Mobility Service を使用してリアルタイムの公共輸送データを要求します。
+description: 停留所への到着など、リアルタイムの公共輸送データを要求する方法について説明します。 この目的のために Azure Maps Mobility Service を使用する方法について参照してください。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/06/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 4743fbe84f5d41b4659e13d96868d2f64a473e4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71dc67d4c142f6fb84458cd6cd0b33452f2217b3
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086079"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037288"
 ---
 # <a name="request-real-time-public-transit-data-using-the-azure-maps-mobility-service"></a>Azure Maps Mobility Service を使用してリアルタイムの公共輸送データを要求する
 
@@ -24,7 +24,7 @@ ms.locfileid: "82086079"
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Maps で公共輸送 API を呼び出すには、最初に Azure Maps アカウントとサブスクリプション キーを用意する必要があります。 [こちらに](quick-demo-map-app.md#create-an-account-with-azure-maps)アカウントの作成方法が記載されているので、指示に従い、Azure Maps アカウントを作成してください。 [プライマリ キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するセクションの手順に従って、アカウントのプライマリ キーを取得してください。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](./how-to-manage-authentication.md)」を参照してください。
+Azure Maps で公共輸送 API を呼び出すには、最初に Azure Maps アカウントとサブスクリプション キーを用意する必要があります。 [こちらに](quick-demo-map-app.md#create-an-azure-maps-account)アカウントの作成方法が記載されているので、指示に従い、Azure Maps アカウントを作成してください。 [プライマリ キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するセクションの手順に従って、アカウントのプライマリ キーを取得してください。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](./how-to-manage-authentication.md)」を参照してください。
 
 この記事では、[Postman アプリ](https://www.getpostman.com/apps)を使用して REST 呼び出しを構築します。 選択した任意の API 開発環境を使用できます。
 

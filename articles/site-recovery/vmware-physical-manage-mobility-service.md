@@ -7,25 +7,28 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 9be758c286e072b0fbefc5f8b20b7accc4e6741b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e65fecb70b7e3adf009396c0daa00fc50b81b519
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228851"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604529"
 ---
 # <a name="manage-the-mobility-agent"></a>モビリティ エージェントを管理する 
 
 Azure への VMware VM と物理サーバーのディザスター リカバリーに Azure Site Recovery を使うときは、ご自身のサーバーでモビリティ エージェントを設定します。 モビリティ エージェントは、保護されたマシン、構成サーバー/スケールアウト プロセス サーバーの間の通信を調整し、データのレプリケーションを管理します。 この記事は、デプロイ後にモビリティ エージェントを管理するための一般的なタスクをまとめたものです。
 
+>[!TIP]
+>特定の Linux OS ディストリビューションのインストーラーをダウンロードするには、[こちら](vmware-physical-mobility-service-overview.md#locate-installer-files)のガイダンスを参照してください。 ポータルから自動的に更新するために、インストーラーをダウンロードする必要はありません。 [ASR を使用すると、構成サーバーからインストーラーが自動的にフェッチされ、エージェントが更新されます](#update-mobility-service-from-azure-portal)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="update-mobility-service-from-azure-portal"></a>Azure portal からモビリティ サービスを更新する
 
 1. 保護されたマシン上のモビリティ サービスの更新を開始する前に、デプロイの一部である、構成サーバー、スケールアウト プロセス サーバー、マスター ターゲット サーバーを必ず更新します。
-2. ポータルでコンテナーを開き、 **[レプリケートされたアイテム]** を開きます。
-3. 構成サーバーが最新版の場合、"Site Recovery レプリケーション エージェントの新しい更新プログラムが利用可能です。 クリックしてインストールしてください" という通知が表示されます。
+    1. [9.36 バージョン](https://support.microsoft.com/help/4578241/)以降の SUSE Linux Enterprise Server 11 SP4 については、最新のインストーラーが[構成サーバーとスケールアウト プロセス サーバーで使用できる](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-server)ことを確認してください。
+1. ポータルでコンテナーを開き、 **[レプリケートされたアイテム]** を開きます。
+1. 構成サーバーが最新版の場合、"Site Recovery レプリケーション エージェントの新しい更新プログラムが利用可能です。 クリックしてインストールしてください" という通知が表示されます。
 
      ![[レプリケートされたアイテム] ウィンドウ](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 
@@ -33,7 +36,7 @@ Azure への VMware VM と物理サーバーのディザスター リカバリ�
 
      ![[レプリケートされたアイテム] VM リスト](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
-5. 選択したマシンごとに、モビリティ サービスの更新ジョブが開始されます。
+5. 選択したマシンごとに、モビリティ サービスの更新ジョブが開始されます。 モビリティ エージェントは、構成サーバーのバージョンに更新されます。 たとえば、構成サーバーがバージョン 9.33 の場合、保護された VM 上のモビリティ エージェントもバージョン 9.33 に更新されます。
 
 ## <a name="update-mobility-service-through-powershell-script-on-windows-server"></a>Windows サーバー上の PowerShell スクリプトを介してモビリティ サービスを更新する
 

@@ -5,13 +5,14 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 10/18/2019
-ms.openlocfilehash: 4301a55e3f5ea5b445ef1540ee59d1b5c28ca0ed
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: bf8b20dadd2fcd78657aa6877e796b645332dd94
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010819"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213454"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Azure Cache for Redis のタイムアウトのトラブルシューティング
 
@@ -30,9 +31,11 @@ Azure Cache for Redis では、提供されるマネージド サービス機能
 
 ## <a name="stackexchangeredis-timeout-exceptions"></a>StackExchange.Redis のタイムアウトの例外
 
-StackExchange.Redis は、同期操作に `synctimeout` という名前の構成設定 (既定値は 1000 ミリ秒) を使用します。 同期呼び出しがこの時間内に完了しない場合、StackExchange.Redis クライアントは、次の例のようなタイムアウト エラーをスローします。
+StackExchange.Redis は、同期操作のために `synctimeout` という名前の構成設定 (既定値は 5000 ミリ秒) を使用します。 同期呼び出しがこの時間内に完了しない場合、StackExchange.Redis クライアントは、次の例のようなタイムアウト エラーをスローします。
 
+```output
     System.TimeoutException: Timeout performing MGET 2728cc84-58ae-406b-8ec8-3f962419f641, inst: 1,mgr: Inactive, queue: 73, qu=6, qs=67, qc=0, wr=1/1, in=0/0 IOCP: (Busy=6, Free=999, Min=2,Max=1000), WORKER (Busy=7,Free=8184,Min=2,Max=8191)
+```
 
 このエラー メッセージには、問題の原因と考えられる解決策を示すのに役立つメトリックが含まれます。 次の表には、エラー メッセージのメトリックに関する詳細が含まれています。
 
@@ -71,9 +74,12 @@ StackExchange.Redis は、同期操作に `synctimeout` という名前の構成
 
 1. サーバーとクライアント アプリケーションが Azure の同じリージョン内に存在することを確認します。 たとえば、キャッシュは米国東部にあるが、クライアントが米国西部にあり、要求が `synctimeout` の間隔内に完了しない場合はタイムアウトになることがあります。あるいは、ローカルの開発用コンピューターからデバッグしている場合はタイムアウトになることがあります。 
 
-    キャッシュとクライアントを同じ Azure リージョン内に配置することを強くお勧めします。 リージョン間呼び出しを含むシナリオの場合、接続文字列に `synctimeout` プロパティを含めることで、`synctimeout` 間隔を既定値の 1000 ミリ秒間隔より大きい値に設定する必要があります。 次の例は、Azure Cache for Redis によって提供された StackExchange.Redis 用の接続文字列 (`synctimeout` は 2000 ミリ秒) のスニペットを示しています。
+    キャッシュとクライアントを同じ Azure リージョン内に配置することを強くお勧めします。 リージョン間呼び出しを含むシナリオの場合は、接続文字列に `synctimeout` プロパティを含めて、`synctimeout` の間隔を既定の 5000 ミリ秒間隔より大きい値に設定する必要があります。 次の例は、Azure Cache for Redis によって提供された StackExchange.Redis 用の接続文字列 (`synctimeout` は 2000 ミリ秒) のスニペットを示しています。
 
-        synctimeout=2000,cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...
+    ```output
+    synctimeout=2000,cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...
+    ```
+
 1. 最新バージョンの [StackExchange.Redis NuGet パッケージ](https://www.nuget.org/packages/StackExchange.Redis/)を使用するようにしてください。 タイムアウトの信頼性を高めるため、コードに示されるバグは常に修正されています。したがって、最新バージョンを使用することが重要です。
 1. 要求がサーバーまたはクライアントの帯域幅の制限に制約されている場合は、それらの要求の完了にかかる時間が長くなるため、タイムアウトになることがあります。 タイムアウトの原因がサーバー上のネットワーク帯域幅にあるかどうかを確認するには、「[サーバー側の帯域幅の制限](cache-troubleshoot-server.md#server-side-bandwidth-limitation)」を参照してください。 タイムアウトの原因がクライアントのネットワーク帯域幅にあるかどうかを確認するには、「[クライアント側の帯域幅の制限](cache-troubleshoot-client.md#client-side-bandwidth-limitation)」を参照してください。
 1. サーバーまたはクライアントに CPU 制約を適用していますか?
@@ -82,7 +88,7 @@ StackExchange.Redis は、同期操作に `synctimeout` という名前の構成
    - CPU の[キャッシュ パフォーマンス メトリック](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)を監視することにより、サーバー上で CPU 制約が発生しているかどうかを確認します。 Redis に CPU 制約が適用されているときに要求を受信した場合、これらの要求はタイムアウトになることがあります。この状況に対処するために、Premium キャッシュの複数のシャードに負荷を分散させるか、より大きいサイズまたは価格レベルにアップグレードすることができます。 詳細については、「[サーバー側の帯域幅の制限](cache-troubleshoot-server.md#server-side-bandwidth-limitation)」を参照してください。
 1. サーバー上での処理に時間がかかるコマンドはありますか? Redis サーバー上での処理に時間がかかる実行時間の長いコマンドがあると、タイムアウトになることがあります。 実行時間の長いコマンドの詳細については、「[実行時間の長いコマンド](cache-troubleshoot-server.md#long-running-commands)」を参照してください。 redis-cli クライアントまたは [Redis コンソール](cache-configure.md#redis-console)を使用して、Azure Cache for Redis インスタンスに接続できます。 次に、[SLOWLOG](https://redis.io/commands/slowlog) コマンドを実行して、予測より遅い要求があるかどうかを確認します。 Redis サーバーと StackExchange.Redis は、少数の大きい要求ではなく、多数の小さい要求用に最適化されています。 データをより小さいチャンクに分割することで、この状態が改善される場合があります。
 
-    redis-cli と stunnel を使用したキャッシュの TLS/SSL エンドポイントへの接続については、[Redis のプレビュー リリース用の ASP.NET セッション状態プロバイダーの発表](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)に関するブログ記事を参照してください。
+    redis-cli と stunnel を使用したキャッシュの TLS/SSL エンドポイントへの接続については、[Redis のプレビュー リリース用の ASP.NET セッション状態プロバイダーの発表](https://devblogs.microsoft.com/aspnet/announcing-asp-net-session-state-provider-for-redis-preview-release/)に関するブログ記事を参照してください。
 1. Redis サーバーの負荷が高いとタイムアウトが生じる場合があります。 `Redis Server Load` [キャッシュ パフォーマンス メトリック](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)を監視することで、サーバーの負荷を監視できます。 100 (最大値) のサーバーの負荷は、Redis サーバーが要求を処理しており、ビジー状態であり、アイドル時間がないことを示します。 特定の要求がサーバーを占有しているかどうかを確認するには、前の段落で説明したように、SlowLog コマンドを実行します。 詳細については、「CPU 使用率またはサーバーの負荷が高い」を参照してください。
 1. ネットワーク ブリップの原因と思われる、クライアント側のイベントは他にありますか? 共通イベントには、クライアント インスタンスの数のスケールアップ/スケールダウン、新しいバージョンのクライアントのデプロイ、または自動スケールの有効化が含まれます。 当社のテストでは、自動スケールまたはスケールアップ/スケールダウンによって発信ネットワーク接続が数秒間失われる場合があることがわかりました。 StackExchange.Redis コードはこのようなイベントに対応し、再接続します。 再接続中に、キュー内のすべての要求がタイムアウトになることがあります。
 1. タイムアウトになったキャッシュへの数個の小さい要求の前に大きい要求がありましたか? エラー メッセージ内のパラメーター `qs` は、クライアントからサーバーに送信されたが、まだ応答を処理していない要求の数を示します。 StackExchange.Redis は単一の TCP 接続を使用し、一度に読み取ることができる応答は 1 つのみであるため、この値が増え続ける可能性があります。 最初の操作がタイムアウトになっても、サーバーとの間のそれ以降のデータの送信は停止されません。 他の要求は、大きい要求が完了するまでブロックされるため、タイムアウトになることがあります。 1 つの解決策は、キャッシュがワークロードに対して十分な大きさであることを確認し、大きい値をより小さいチャンクに分割して、タイムアウトの可能性を最小限に抑えることです。 この他に考えられる解決策は、クライアントで `ConnectionMultiplexer` オブジェクトのプールを使用し、新しい要求の送信時に負荷が最も少ない `ConnectionMultiplexer` を選択することです。 複数の接続オブジェクトにわたって読み込むと、1 つのタイムアウトのために他の要求もタイムアウトになることは防止されます。
@@ -115,5 +121,5 @@ StackExchange.Redis は、同期操作に `synctimeout` という名前の構成
 
 - [Azure Cache for Redis のクライアント側の問題に関するトラブルシューティング](cache-troubleshoot-client.md)
 - [Azure Cache for Redis のサーバー側の問題に関するトラブルシューティング](cache-troubleshoot-server.md)
-- [キャッシュのベンチマークを実行およびテストする方法](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+- [キャッシュのベンチマークを実行およびテストする方法](cache-management-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 - [Azure Cache for Redis を監視する方法](cache-how-to-monitor.md)

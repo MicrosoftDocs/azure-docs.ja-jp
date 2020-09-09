@@ -3,16 +3,17 @@ title: コストのアラートで使用量と支出を監視する
 description: この記事では、Azure Cost Management のコストのアラートが使用量と支出の監視にどのように役立つのかについて説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
-ms.topic: conceptual
+ms.date: 07/24/2020
+ms.topic: how-to
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: e3816c167aea80f32c35c7196de166de57dc9622
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: aeeb630cf15aedd62c085e2070e08fd223656094
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79203068"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88683438"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>コストのアラートを使用して使用量と支出を監視する
 

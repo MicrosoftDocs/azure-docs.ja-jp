@@ -4,21 +4,21 @@ description: アマゾン ウェブ サービス (AWS) EC2 Windows インスタ�
 author: cynthn
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 59d1bf08c0680d222710b55c6d6bdb4d5745da56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9f66653996cb36e58054756ac877f859559609be
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82084517"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87267100"
 ---
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>Windows VM をアマゾン ウェブ サービス (AWS) から Azure 仮想マシンに移行する
 
 ワークロードのホストについて Azure 仮想マシンを評価する場合、既存のアマゾン ウェブ サービス (AWS) EC2 Windows VM インスタンスをエクスポートしてから、仮想ハード ディスク (VHD) を Azure にアップロードできます。 VHD のアップロード後、その VHD から Azure に新しい VM を作成できます。 
 
-この記事では、AWS から Azure に 1 つの VM を移行する方法について説明します。 規模を拡大して AWS から Azure に複数の VM を移行したい場合は、「[Azure Site Recovery を使用してアマゾン ウェブ サービス (AWS) から Azure に仮想マシンを移行する](../../site-recovery/site-recovery-migrate-aws-to-azure.md)」を参照してください。
+この記事では、AWS から Azure に 1 つの VM を移行する方法について説明します。 規模を拡大して AWS から Azure に複数の VM を移行したい場合は、「[Azure Site Recovery を使用してアマゾン ウェブ サービス (AWS) から Azure に仮想マシンを移行する](../../site-recovery/migrate-tutorial-aws-azure.md)」を参照してください。
 
 ## <a name="prepare-the-vm"></a>VM を準備する 
  

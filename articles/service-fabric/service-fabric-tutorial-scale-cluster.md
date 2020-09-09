@@ -4,14 +4,14 @@ description: このチュートリアルでは、Azure の Service Fabric クラ
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 6e8dbb5a56bf313bf35ad97ec6ea7df8ce483be9
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: d9699103f5e13301cce408d2e54f0e15780e0a35
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82788826"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716896"
 ---
-# <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>チュートリアル: Azure で Service Fabric クラスターをスケーリングする
+# <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>チュートリアル:Azure で Service Fabric クラスターのスケーリングを行う
 
 このチュートリアルはシリーズ第 3 部で、既存のクラスターをスケールアウトおよびスケールインする方法を示します。 このチュートリアルを終了すると、クラスターをスケールする方法や残ったリソースをクリーンアップする方法について知ることができます。  Azure 内で実行されているクラスターのスケーリングの詳細については、[Service Fabric クラスターのスケーリング](service-fabric-cluster-scaling.md)に関するページを参照してください。
 
@@ -38,7 +38,7 @@ ms.locfileid: "82788826"
 このチュートリアルを開始する前に
 
 * Azure サブスクリプションを持っていない場合は[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成する
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) または [Azure CLI](/cli/azure/install-azure-cli) をインストールします。
+* [Azure PowerShell](/powershell/azure/install-az-ps) または [Azure CLI](/cli/azure/install-azure-cli) をインストールします。
 * セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)を Azure に作成します
 
 ## <a name="important-considerations-and-guidelines"></a>重要な考慮事項とガイドライン
@@ -64,7 +64,7 @@ Azure クラスターをスケーリングするときには、次のガイド�
 
 ## <a name="export-the-template-for-the-resource-group"></a>リソース グループのテンプレートをエクスポートする
 
-セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)を作成し、リソース グループを正常に設定したら、リソース グループの Resource Manager テンプレートをエクスポートします。 テンプレートをエクスポートすると、クラスターとそのリソースの将来のデプロイを簡単に自動化できます。これは、テンプレートに完全なインフラストラクチャが含まれているためです。  テンプレートのエクスポートの詳細については、「[Manage Azure Resource Manager resource groups by using the Azure portal (Azure portal を使用して Azure Resource Manager リソース グループを管理する)](/azure/azure-resource-manager/manage-resource-groups-portal)」を参照してください。
+セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)を作成し、リソース グループを正常に設定したら、リソース グループの Resource Manager テンプレートをエクスポートします。 テンプレートをエクスポートすると、クラスターとそのリソースの将来のデプロイを簡単に自動化できます。これは、テンプレートに完全なインフラストラクチャが含まれているためです。  テンプレートのエクスポートの詳細については、「[Manage Azure Resource Manager resource groups by using the Azure portal (Azure portal を使用して Azure Resource Manager リソース グループを管理する)](../azure-resource-manager/management/manage-resource-groups-portal.md)」を参照してください。
 
 1. [Azure portal](https://portal.azure.com) で、目的のクラスターを含むリソース グループ (このチュートリアルに従っている場合は **sfclustertutorialgroup**) に移動します。 
 
@@ -833,13 +833,12 @@ Foreach($node in $nodes)
 ```
 
 ## <a name="increase-node-resources"></a>ノード リソースを増加する 
-Service Fabric クラスターを作成した後は、クラスターのノード タイプを垂直方向にスケーリング (ノードのリソースを変更) するか、そのノード タイプの VM のオペレーティング システムをアップグレードすることができます。  
+Service Fabric クラスターを作成した後は、クラスターのノード タイプを垂直方向にスケーリング (ノードのリソースを変更) したり、元のノード タイプを (VM SKU または OS イメージを更新した) 新しいノード タイプに置き換えることによってそのノード タイプの VM のオペレーティング システムをアップグレードしたりすることができます。 詳細については、[Azure Service Fabric ノード タイプのスケールアップ](service-fabric-scale-up-primary-node-type.md)に関するページを参照してください。
 
-> [!WARNING]
-> Silver 以上の持続性で実行されている場合を除き、スケール セット/ノード タイプの VM SKU は変更しないことをお勧めします。 VM SKU のサイズ変更は、データを破壊する、インプレース インフラストラクチャ操作です。 この変更を遅らせたり監視したりする機能がないと、この操作により、ステートフル サービスのデータの消失が発生する可能性があります。また、ステートレス ワークロードに対しても、他の予期できない運用上の問題が発生する可能性があります。
+> [!IMPORTANT]
+> VM SKU や OS イメージをインプレースで変更することは避けてください。これは危険な操作でありサポートされません。
 
-> [!WARNING]
-> プライマリ ノード タイプの VM SKU は変更しないことをお勧めします。これは危険な操作で、サポートされていません。  クラスター容量を増やす必要がある場合、VM インスタンスまたは別のノード タイプを追加できます。  それが不可能な場合は、新しいクラスターを作成し、古いクラスターから[アプリケーション状態を復元する](service-fabric-reliable-services-backup-restore.md)ことができます (妥当な場合)。  それが不可能な場合は、[プライマリ ノード タイプの VM SKU を変更](service-fabric-scale-up-node-type.md)できます。
+それが不可能な場合は、新しいクラスターを作成し、古いクラスターから[アプリケーション状態を復元する](service-fabric-reliable-services-backup-restore.md) ことができます (妥当な場合)。 システム サービスの状態を復元する必要はありません。それらは新しいクラスターにアプリケーションをデプロイしたときに再作成されます。 クラスターでステートレス アプリケーションだけを実行していた場合、実行するのはアプリケーションの新しいクラスターへのデプロイのみであり、復元するものはありません。
 
 ### <a name="update-the-template"></a>テンプレートを更新する
 
@@ -873,19 +872,7 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 > [!div class="nextstepaction"]
 > [クラスターのランタイムをアップグレードする](service-fabric-tutorial-upgrade-cluster.md)
 
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
-[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
-[template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
-[parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json
-
-> * ノード タイプを追加および削除する (スケールアウトおよびスケールイン)
-> * ノード リソースを増加する (スケールアップ)
-
-次のチュートリアルでは、クラスターのランタイムをアップグレードする方法について説明します。
-> [!div class="nextstepaction"]
-> [クラスターのランタイムをアップグレードする](service-fabric-tutorial-upgrade-cluster.md)
-
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
-[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
+[durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
+[reliability]: service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json

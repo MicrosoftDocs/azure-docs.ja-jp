@@ -5,16 +5,16 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 04/08/2020
+ms.date: 06/22/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ce69593c1df0039d64f89e79124af1150409eff7
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: ee00425da89391e5228f2d48b49ca85426066f1e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81113315"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85299009"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>IoT Edge セキュリティ デーモンおよびランタイムの更新
 
@@ -34,12 +34,64 @@ IoT Edge セキュリティ デーモンは、IoT Edge デバイス上のパッ�
 
 Linux x64 デバイスでは、apt-get または適切なパッケージ マネージャーを使用して、セキュリティ デーモンを最新バージョンに更新します。
 
-```bash
-apt-get update
-apt-get install libiothsm iotedge
-```
+Microsoft から最新のリポジトリ構成を取得します。
 
-特定のバージョンのセキュリティ デーモンに更新する場合は、[IoT Edge リリース](https://github.com/Azure/azure-iotedge/releases)から対象となるバージョンを見つけます。 そのバージョンで、お使いのデバイスに適した **libiothsm-std** および **iotedge** ファイルを見つけます。 ファイルごとに、ファイル リンクを右クリックして、リンクのアドレスをコピーします。 リンクのアドレスを使用して、それらのコンポーネントの特定のバージョンをインストールします。
+* **Ubuntu Server 16.04**:
+
+   ```bash
+   curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
+   ```
+
+* **Ubuntu Server 18.04**:
+
+   ```bash
+   curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
+   ```
+
+* **Raspbian Stretch**:
+
+   ```bash
+   curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list
+   ```
+
+生成された一覧をコピーします。
+
+   ```bash
+   sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
+   ```
+
+Microsoft GPG 公開キーをインストールします。
+
+   ```bash
+   curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+   sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
+   ```
+
+apt を更新します。
+
+   ```bash
+   sudo apt-get update
+   ```
+
+使用できる IoT Edge のバージョンを確認します。
+
+   ```bash
+   apt list -a iotedge
+   ```
+
+最新バージョンのセキュリティ デーモンに更新するには、次のコマンドを使用します。これにより **libiothsm-std** も最新バージョンに更新されます。
+
+   ```bash
+   sudo apt-get install iotedge
+   ```
+
+特定のバージョンのセキュリティデーモンに更新する場合は、apt リスト出力からバージョンを指定します。 **iotedge** が更新されるたびに、**libiothsm std** パッケージの最新バージョンへの更新が自動的に試行されます。これにより、依存関係の競合が発生する可能性があります。 最新バージョンに移行しない場合は、必ず同じバージョンの両方のパッケージをターゲットにしてください。 たとえば、次のコマンドでは、1.0.9 リリースの特定のバージョンがインストールされます。
+
+   ```bash
+   sudo apt-get install iotedge=1.0.9-1 libiothsm-std=1.0.9-1
+   ```
+
+インストールするバージョンが apt によって使用できない場合は、curl を使用することで、[IoT Edge リリース](https://github.com/Azure/azure-iotedge/releases) リポジトリからの任意のバージョンをターゲットにすることができます。 インストールするバージョンに応じて、ご利用のデバイスに適した **libiothsm-std** および **iotedge** ファイルを見つけます。 ファイルごとに、ファイル リンクを右クリックして、リンクのアドレスをコピーします。 リンクのアドレスを使用して、それらのコンポーネントの特定のバージョンをインストールします。
 
 ```bash
 curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo dpkg -i ./libiothsm-std.deb
@@ -136,7 +188,7 @@ IoT Edge デバイスを更新するには、次の 2 つのコンポーネン�
    * IoTEdgeSecurityDaemon.ps1
    * リリース 1.0.9 以降は Microsoft-Azure-IoTEdge-amd64.cab、リリース 1.0.8 以前は Microsoft-Azure-IoTEdge.cab。
 
-   Microsoft-Azure-IotEdge-arm32.cab もまた、テストのためにのみ 1.0.9 から使用できます。 IoT Edge は現在、Windows ARM32 デバイスではサポートされていません。
+   1\.0.9 以降は、テスト目的でのみ Microsoft-Azure-IotEdge-arm32.cab を使用することもできます。 IoT Edge では、現在、Windows ARM32 デバイスはサポートされていません。
 
    各リリースの機能をサポートするために機能が変更されるため、使用する .cab ファイルと同じリリースの PowerShell スクリプトを使用することが重要です。
 
@@ -153,9 +205,9 @@ IoT Edge デバイスを更新するには、次の 2 つのコンポーネン�
 
 Azure IoT Edge では、定期的に新しいバージョンの IoT Edge サービスをリリースしています。 個々の安定版リリースの前に、1 つ以上のリリース候補 (RC) バージョンがあります。 RC バージョンには、そのリリースで予定されているすべての機能が含まれていますが、テストおよび検証プロセスはまだ進行中です。 早い段階で新しい機能をテストする場合は、GitHub を介して RC バージョンをインストールし、フィードバックを提供できます。
 
-リリース候補バージョンは、リリースの同じ番号付け規則に従いますが、 **-rc** と末尾に増分の番号が追加されます。 [Azure IoT Edge リリース](https://github.com/Azure/azure-iotedge/releases)の一覧には、安定版と同じリリース候補があります。 たとえば、**1.0.7** の前には、**1.0.7-rc1** と **1.0.7-rc2** という 2 つのリリース候補があります。 また、RC バージョンには**プレリリース**のラベルが付いていることもわかります。
+リリース候補バージョンは、リリースの同じ番号付け規則に従いますが、 **-rc** と末尾に増分の番号が追加されます。 [Azure IoT Edge リリース](https://github.com/Azure/azure-iotedge/releases)の一覧には、安定版と同じリリース候補があります。 たとえば、**1.0.9** より前に存在するリリース候補の 2 つ (**1.0.9-rc5** と **1.0.9-rc6**) を見つけます。 また、RC バージョンには**プレリリース**のラベルが付いていることもわかります。
 
-IoT Edge エージェント モジュールおよびハブ モジュールには、同じ規則でタグ付けされた RC バージョンがあります。 たとえば、**mcr.microsoft.com/azureiotedge-hub:1.0.7-rc2** があります。
+IoT Edge エージェント モジュールおよびハブ モジュールには、同じ規則でタグ付けされた RC バージョンがあります。 たとえば、**mcr.microsoft.com/azureiotedge-hub:1.0.9-rc6** があります。
 
 プレビューの場合、リリース候補バージョンは、通常のインストーラーがターゲットとする最新版として含まれていません。 代わりに、テストする RC バージョンの資産を手動でターゲットにする必要があります。 ほとんどの場合、RC バージョンのインストールや RC バージョンへの更新は、IoT Edge の他の特定のバージョンをターゲットとする場合と同じです。
 
@@ -163,7 +215,7 @@ IoT Edge デバイスを特定のバージョンのセキュリティ デーモ�
 
 新しいコンピューターに IoT Edge をインストールする場合は、次のリンクを使用して、デバイスのオペレーティング システムに応じて特定のバージョンをインストールする方法を確認してください。
 
-* [Linux](how-to-install-iot-edge-linux.md#install-a-specific-runtime-version)
+* [Linux](how-to-install-iot-edge-linux.md#install-runtime-using-release-assets)
 * [Windows](how-to-install-iot-edge-windows.md#offline-or-specific-version-installation)
 
 ## <a name="next-steps"></a>次のステップ

@@ -4,15 +4,16 @@ description: Azure Synapse Analytics のマネージド プライベート エ�
 author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: overview
+ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 08c6610541d987cddd7cf2aeb71c526cb2359598
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ecca67cab486c8f3524c8c8d4c221d52689cf62a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419556"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070098"
 ---
 # <a name="synapse-managed-private-endpoints-preview"></a>Synapse マネージド プライベート エンドポイント (プレビュー)
 
@@ -20,18 +21,19 @@ ms.locfileid: "81419556"
 
 ## <a name="managed-private-endpoints"></a>マネージド プライベート エンドポイント
 
-マネージド プライベート エンドポイントは、マネージド ワークスペース VNet に作成されるプライベート エンドポイントです。Azure リソースへのプライベート リンクを確立します。 これらのプライベート エンドポイントは、Azure Synapse によって自動的に管理されます。
+マネージド プライベート エンドポイントは、マネージド ワークスペース Microsoft Azure 仮想ネットワークに作成されるプライベート エンドポイントです。Azure リソースへのプライベート リンクを確立します。 これらのプライベート エンドポイントは、Azure Synapse によって自動的に管理されます。
 
-Azure Synapse では、プライベート リンクがサポートされます。 プライベート リンクを使用することで、Azure のサービス (Azure Storage、Azure Cosmos DB、Azure SQL Data Warehouse) や Azure でホストされている顧客またはパートナーのサービスに対し、Azure VNet から安全にアクセスすることができます。
+Azure Synapse では、プライベート リンクがサポートされます。 プライベート リンクを使用することで、Azure のサービス (Azure Storage、Azure Cosmos DB、Azure SQL Data Warehouse など) や Azure でホストされている顧客またはパートナーのサービスに、Azure 仮想ネットワークから安全にアクセスすることができます。
 
-プライベート リンクを使用しているときは、VNet とワークスペースとの間のトラフィックが、Microsoft のバックボーン ネットワークのみを使って送信されます。 プライベート リンクによって、データ流出のリスクから身を守ることができます。 リソースへのプライベート リンクは、プライベート エンドポイントを作成することによって確立します。
+プライベート リンクを使用すると、仮想ネットワークとワークスペースとの間のトラフィックが、Microsoft のバックボーン ネットワークのみを使って送信されます。 プライベート リンクによって、データ流出のリスクから身を守ることができます。 リソースへのプライベート リンクは、プライベート エンドポイントを作成することによって確立します。
 
-プライベート エンドポイントでは、自分の VNet からのプライベート IP アドレスを使用して、サービスを実質的に VNet に取り込みます。 プライベート エンドポイントは、サービス全体にではなく Azure 内の特定のリソースにマップされます。 顧客は、その組織で承認されている特定のリソースに接続を制限することができます。 [プライベート リンクとプライベート エンドポイント](https://docs.microsoft.com/azure/private-link/)についての詳しい情報をご覧ください。
+プライベート エンドポイントでは、ご自分の仮想ネットワークのプライベート IP アドレスを使用して、効率的にサービスを仮想ネットワークに取り込みます。 プライベート エンドポイントは、サービス全体にではなく Azure 内の特定のリソースにマップされます。 顧客は、その組織で承認されている特定のリソースに接続を制限することができます。 [プライベート リンクとプライベート エンドポイント](https://docs.microsoft.com/azure/private-link/)についての詳しい情報をご覧ください。
 
 >[!IMPORTANT]
->マネージド プライベート エンドポイントは、マネージド ワークスペース VNet を使用した Azure Synapse ワークスペースでのみサポートされます。
+>マネージド プライベート エンドポイントは、マネージド ワークスペース仮想ネットワークを使用した Azure Synapse ワークスペースでのみサポートされます。
+
 >[!NOTE]
->Azure のデータ ソースとの接続にはすべて、マネージド プライベート エンドポイントを作成することをお勧めします。 マネージド ワークスペース VNet からのアウトバウンド トラフィックは将来すべてブロックされます。
+>マネージド プライベート エンドポイントを経由した場合を除き、マネージド ワークスペース仮想ネットワークからのアウトバウンド トラフィックは将来すべてブロックされます。 Azure のデータ ソースとの接続にはすべて、ワークスペースに外部となるマネージド プライベート エンドポイントを作成することをお勧めします。 
 
 Azure Synapse のマネージド プライベート エンドポイントを作成すると、プライベート エンドポイント接続が "保留" 状態で作成されます。 承認ワークフローが開始されます。 接続を承認または拒否する役割は、プライベート リンク リソースの所有者が担います。
 
@@ -41,7 +43,7 @@ Azure Synapse のマネージド プライベート エンドポイントを作�
 
 ## <a name="managed-private-endpoints-for-sql-pool-and-sql-on-demand"></a>SQL プールと SQL オンデマンドのマネージド プライベート エンドポイント
 
-SQL プールと SQL オンデマンドは、Azure Synapse ワークスペースにおける分析機能です。 これらの機能では、[マネージド ワークスペース VNet](./synapse-workspace-managed-vnet.md) にはデプロイされていないマルチテナント インフラストラクチャが使用されます。
+SQL プールと SQL オンデマンドは、Azure Synapse ワークスペースにおける分析機能です。 これらの機能では、[マネージド ワークスペース仮想ネットワーク](./synapse-workspace-managed-vnet.md)にはデプロイされていないマルチテナント インフラストラクチャが使用されます。
 
 ワークスペースが作成されると、そのワークスペースに、SQL プールと SQL オンデマンドに対する 2 つのマネージド プライベート エンドポイントが Azure Synapse によって作成されます。 
 

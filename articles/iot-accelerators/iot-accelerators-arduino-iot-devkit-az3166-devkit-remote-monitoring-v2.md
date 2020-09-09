@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
-ms.openlocfilehash: 6e9f9c89cf2e5e40d37a1532e688490aae294181
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ed14d4cb79cb5794fa666f1bb96e062d69128d0f
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73888860"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337672"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>IoT DevKit デバイスをリモート監視ソリューション アクセラレータに接続する
 
@@ -130,4 +130,3 @@ DevKit デバイスにアップロードしたサンプル アプリケーショ
 
 * [Azure IoT ソリューション アクセラレータの概要](https://docs.microsoft.com/azure/iot-accelerators/)
 * [UI のカスタマイズ](iot-accelerators-remote-monitoring-customize.md)
-* [IoT DevKit を Azure IoT Central アプリケーションに接続する](../iot-central/core/howto-connect-devkit.md)

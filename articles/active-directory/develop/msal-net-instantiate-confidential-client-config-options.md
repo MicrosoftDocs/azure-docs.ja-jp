@@ -7,18 +7,18 @@ author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 1a520c5a1002e401f880fba84f8fc02a0a678133
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: 140385a26dbfd754438d632ce327c3c4a3ea1b61
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77084738"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166180"
 ---
 # <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>MSAL.NET を使用して、構成オプションで機密クライアント アプリケーションをインスタンス化する
 

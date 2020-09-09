@@ -1,19 +1,20 @@
 ---
-title: Apache Spark MLlib と Azure Synapse Analytics を使用して機械学習アプリを構築する
+title: Apache Spark MLlib で機械学習アプリをビルドする
 description: Apache Spark MLlib を使用して、ロジスティック回帰による分類を使用してデータセットを分析する Machine Learning アプリを作成する方法について説明します。
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.reviewer: jrasnick, carlrab
 ms.topic: conceptual
+ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 25d11d2cf41f8653c5a54007f121c1251bb24b1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e1ece0add7b0749cfd808b0a3ec7962dd43a302d
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82096301"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719344"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Apache Spark MLlib と Azure Synapse Analytics を使用して機械学習アプリを構築する
 
@@ -54,7 +55,7 @@ MLlib は、機械学習タスクに役立つ多数のユーティリティを�
     import matplotlib.pyplot as plt
     from datetime import datetime
     from dateutil import parser
-    from pyspark.sql.functions import unix_timestamp
+    from pyspark.sql.functions import unix_timestamp, date_format, col, when
     from pyspark.ml import Pipeline
     from pyspark.ml import PipelineModel
     from pyspark.ml.feature import RFormula
@@ -70,48 +71,32 @@ MLlib は、機械学習タスクに役立つ多数のユーティリティを�
 
 生データは Parquet 形式であるため、Spark コンテキストを使用して、ファイルをデータフレームとして、直接メモリにプルできます。 次のコードでは既定のオプションを使用していますが、必要に応じて、データ型とその他のスキーマ属性のマッピングを強制的に行うこともできます。
 
-1. 次の行を実行して、新しいセルにコードを貼り付けて、Spark データフレームを作成します。 最初のセクションでは、Azure Storage アクセス情報を変数に割り当てています。 2 番目のセクションでは、Spark にリモートで BLOB ストレージから読み取らせています。 コードの最後の行で Parquet を読み取りますが、この時点でデータは読み込まれていません。
+1. 次の行を実行して、新しいセルにコードを貼り付けて、Spark データフレームを作成します。 これにより、Open Dataset API を介してデータが取得されます。 このデータをすべてプルすると、約 15 億行が生成されます。 Spark プール (プレビュー) のサイズによっては、生データが大きすぎるか、その操作に時間がかかりすぎる可能性があります。 このデータを、より小さいものにフィルター処理することができます。 次のコード例では、start_date と end_date を使用し、1 か月分のデータを返すフィルターを適用します。
 
     ```python
-    # Azure storage access info
-    blob_account_name = "azureopendatastorage"
-    blob_container_name = "nyctlc"
-    blob_relative_path = "yellow"
-    blob_sas_token = r""
+    from azureml.opendatasets import NycTlcYellow
 
-    # Allow SPARK to read from Blob remotely
-    wasbs_path = 'wasbs://%s@%s.blob.core.windows.net/%s' % (blob_container_name, blob_account_name, blob_relative_path)
-    spark.conf.set('fs.azure.sas.%s.%s.blob.core.windows.net' % (blob_container_name, blob_account_name),blob_sas_token)
-
-    # SPARK read parquet, note that it won't load any data yet by now
-    df = spark.read.parquet(wasbs_path)
+    end_date = parser.parse('2018-06-06')
+    start_date = parser.parse('2018-05-01')
+    nyc_tlc = NycTlcYellow(start_date=start_date, end_date=end_date)
+    filtered_df = nyc_tlc.to_spark_dataframe()
     ```
 
-2. このデータをすべてプルすると、約 15 億行が生成されます。 Spark プール (プレビュー) のサイズによっては、生データが大きすぎるか、その操作に時間がかかりすぎる可能性があります。 このデータを、より小さいものにフィルター処理することができます。 必要に応じて、次の行を追加し、応答性の高いエクスペリエンスのために約 200 万行までデータをフィルター処理して減らします。 これらのパラメーターを使用して、1 週間分のデータをプルします。
-
-    ```python
-    # Create an ingestion filter
-    start_date = '2018-05-01 00:00:00'
-    end_date = '2018-05-08 00:00:00'
-
-    filtered_df = df.filter('tpepPickupDateTime > "' + start_date + '" and tpepPickupDateTime < "' + end_date + '"')
-    ```
-
-3. 単純なフィルター処理の欠点は、統計的観点から、データに偏りが発生する可能性があることです。 別の方法として、Spark に組み込まれているサンプリングを使用します。 次のコードでは、上記のコードの後に適用すると、データセットが約 2000 行に減少します。 このサンプリング ステップは、単純なフィルターの代わりに使用することも、単純なフィルターと組み合わせて使用することもできます。
+2. 単純なフィルター処理の欠点は、統計的観点から、データに偏りが発生する可能性があることです。 別の方法として、Spark に組み込まれているサンプリングを使用します。 次のコードでは、上記のコードの後に適用すると、データセットが約 2000 行に減少します。 このサンプリング ステップは、単純なフィルターの代わりに使用することも、単純なフィルターと組み合わせて使用することもできます。
 
     ```python
     # To make development easier, faster and less expensive down sample for now
     sampled_taxi_df = filtered_df.sample(True, 0.001, seed=1234)
     ```
 
-4. これで、データを調査して、読み取られた内容を確認できるようになりました。 通常は、データセットのサイズに応じて、完全なセットではなくサブセットでデータを確認することをお勧めします。 次のコードでは、データを表示する 2 つの方法を示しています。前者は基本的なもので、後者の場合ははるかに機能豊富なグリッド エクスペリエンスに加えて、データをグラフィカルに視覚化する機能も提供しています。
+3. これで、データを調査して、読み取られた内容を確認できるようになりました。 通常は、データセットのサイズに応じて、完全なセットではなくサブセットでデータを確認することをお勧めします。 次のコードでは、データを表示する 2 つの方法を示しています。前者は基本的なもので、後者の場合ははるかに機能豊富なグリッド エクスペリエンスに加えて、データをグラフィカルに視覚化する機能も提供しています。
 
     ```python
-    sampled_taxi_df.show(5)
-    display(sampled_taxi_df.show(5))
+    #sampled_taxi_df.show(5)
+    display(sampled_taxi_df)
     ```
 
-5. 生成されるデータセットのサイズとノートブックを何回も実験または実行する必要に応じて、データセットをワークスペースにローカルにキャッシュすることをお勧めします。 明示的なキャッシュを実行するには、次の 3 つの方法があります。
+4. 生成されるデータセットのサイズとノートブックを何回も実験または実行する必要に応じて、データセットをワークスペースにローカルにキャッシュすることをお勧めします。 明示的なキャッシュを実行するには、次の 3 つの方法があります。
 
    - データフレームをファイルとしてローカルに保存する
    - データフレームを一時テーブルまたはビューとして保存する
@@ -141,7 +126,7 @@ ax1.set_ylabel('Counts')
 plt.suptitle('')
 plt.show()
 
-# How many passengers tip'd by various amounts
+# How many passengers tipped by various amounts
 ax2 = sampled_taxi_pd_df.boxplot(column=['tipAmount'], by=['passengerCount'])
 ax2.set_title('Tip amount by Passenger count')
 ax2.set_xlabel('Passenger count')
@@ -163,7 +148,7 @@ plt.show()
 ![箱ひげ図](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-box-whisker.png)
 ![散布図](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-scatter.png)
 
-## <a name="preparing-the-data"></a>データを準備する
+## <a name="prepare-the-data"></a>データを準備する
 
 生の形式のデータは、高い頻度で、モデルに直接渡すことに適していません。 データに対して一連のアクションを実行して、モデルでそれを使用できる状態にする必要があります。
 
@@ -172,7 +157,7 @@ plt.show()
 - フィルター処理による外れ値/誤った値の除去。
 - 不要な列の除去。
 - モデルをより効率的に機能させるための、生データから派生した新しい列の作成。特徴付けと呼ばれることもあります。
-- ラベル付け。二項分類 (特定の乗車でチップがあるかないか) に取り掛かる際に、チップの金額を 0 または 1 の値に変換する必要があります。
+- ラベル付け - 二項分類 (特定の乗車でチップがあるかないか) に取り掛かる場合に、チップの金額を 0 または 1 の値に変換する必要があります。
 
 ```python
 taxi_df = sampled_taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'paymentType', 'rateCodeId', 'passengerCount'\
@@ -211,7 +196,7 @@ taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'p
 最後のタスクは、ラベル付けされたデータをロジスティック回帰で分析できる形式に変換することです。 ロジスティック回帰アルゴリズムへの入力は、*ラベルと特徴ベクトルのペア*のセットである必要があります。ここで*特徴ベクトル*とは、入力ポイントを表す数のベクトルです。 そのため、カテゴリ列を数値に変換する必要があります。 `trafficTimeBins` 列と `weekdayString` 列を整数表現に変換する必要があります。 変換を実行する方法は多数ありますが、この例で採用されている方法は、一般的な方法である *OneHotEncoding* です。
 
 ```python
-# The sample uses an algorithm that only works with numeric features convert them so they can be consumed
+# Since the sample uses an algorithm that only works with numeric features, convert them so they can be consumed
 sI1 = StringIndexer(inputCol="trafficTimeBins", outputCol="trafficTimeBinsIndex")
 en1 = OneHotEncoder(dropLast=False, inputCol="trafficTimeBinsIndex", outputCol="trafficTimeBinsVec")
 sI2 = StringIndexer(inputCol="weekdayString", outputCol="weekdayIndex")
@@ -239,6 +224,9 @@ train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, te
 
 2 つの DataFrame が得られたところで、次のタスクは、モデル式を作成して、トレーニング DataFrame に対してそれを実行し、さらにテスト用 DataFrame に対して検証することです。 さまざまなバージョンのモデル式で試して、さまざまな組み合わせの影響を確認する必要があります。
 
+> [!Note]
+> モデルを保存するためには、Storage BLOB データ共同作成者 の Azure ロールが必要です。 お使いのストレージ アカウントで、[アクセス制御 (IAM)] に移動し、 **[ロール割り当ての追加]** を選択します。 Storage BLOB データ共同作成者の Azure ロールを SQL Database サーバーに割り当てます。 所有者特権を持つメンバーのみが、この手順を実行できます。 さまざまな Azure の組み込みロールについては、こちらの[ガイド](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を参照してください。
+
 ```python
 ## Create a new LR object for the model
 logReg = LogisticRegression(maxIter=10, regParam=0.3, labelCol = 'tipped')
@@ -262,7 +250,7 @@ metrics = BinaryClassificationMetrics(predictionAndLabels)
 print("Area under ROC = %s" % metrics.areaUnderROC)
 ```
 
-このセルからの出力
+このセルからの出力:
 
 ```shell
 Area under ROC = 0.9779470729751403
@@ -301,4 +289,4 @@ plt.show()
 - [Apache Spark 公式ドキュメント](https://spark.apache.org/docs/latest/)
 
 >[!NOTE]
-> 公式の Apache Spark ドキュメントの一部では、Spark コンソールの使用を前提としていますが、このコンソールは Azure Synapse Spark では利用できません。 代わりに、[ノートブック](../quickstart-apache-spark-notebook.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)または [IntelliJ](../spark/intellij-tool-synapse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) エクスペリエンスを使用してください。
+> Apache Spark の公式ドキュメントの一部では、Spark コンソールの使用を前提としていますが、これは Azure Synapse Spark では利用できません。 代わりに、[ノートブック](../quickstart-apache-spark-notebook.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)または [IntelliJ](../spark/intellij-tool-synapse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) エクスペリエンスを使用してください。

@@ -1,17 +1,17 @@
 ---
 title: Avere vFXT for Azure
-description: HPC 用のクラウド キャッシュ レイヤー、Avere vFXT for Azure の概要
+description: Avere vFXT for Azure について説明します。これは、データ集約型のハイ パフォーマンス コンピューティング タスクに対応したクラウドベースのファイルシステム キャッシュ ソリューションです。
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: overview
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: a9dab2ca844feb1c24dfffc48b4f29cd1a311314
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5095f05b0c9ce9061781c3558ca6c7091ef37aa5
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76153193"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270958"
 ---
 # <a name="what-is-avere-vfxt-for-azure"></a>Avere vFXT for Azure とは
 
@@ -66,7 +66,7 @@ Avere vFXT は、ファイルが要求されたときにそれらをキャッシ
 
 Avere vFXT for Azure では次の Azure リソースが使用されます。
 
-|Azure のコンポーネント|   |
+|Azure のコンポーネント| リソース |
 |----------|-----------|
 |仮想マシン|3 つ以上の E32s_v3|
 |Premium SSD ストレージ|200 GB の OS スペース、およびノードあたり 1 から 4 TB のキャッシュ |

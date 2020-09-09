@@ -1,19 +1,19 @@
 ---
 title: Azure Data Box を使用してオンプレミスの HDFS ストアから Azure Storage に移行する
-description: オンプレミス HDFS ストアから Azure Storage にデータを移行する
+description: Data Box デバイスを使用することにより、オンプレミス HDFS ストアから Azure Storage (BLOB ストレージまたは Data Lake Storage Gen2) にデータを移行します。
 author: normesta
 ms.service: storage
 ms.date: 02/14/2019
 ms.author: normesta
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: b7f7793016d2a408d6b286f417e3e89e7a22ca91
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a50f85e76f16f1e5ba8823adb1ea1aa02157fcee
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232378"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032562"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Azure Data Box を使用してオンプレミスの HDFS ストアから Azure Storage に移行する
 
@@ -239,7 +239,7 @@ sudo -u hdfs ./copy-acls.sh -s /{hdfs_path} > ./filelist.json
 
 データを Data Box デバイスに移動する前に、ヘルパー スクリプトをダウンロードし、データが Data Box に収まるように編成されていることを確認し、不要なファイルを除外する必要があります。
 
-<a id="download-helper-scripts" />
+<a id="download-helper-scripts"></a>
 
 ### <a name="download-helper-scripts-and-set-up-your-edge-node-to-run-them"></a>ヘルパー スクリプトをダウンロードし、それらを実行するようにエッジ ノードを設定する
 

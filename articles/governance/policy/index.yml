@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 05/20/2020
-  ms.openlocfilehash: b28cae1fd59e863c04d744a5c17108f1bd942a4d
-  ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+  ms.date: 08/10/2020
+  ms.openlocfilehash: 66095427637b52d9bc220cba911c3099fd8f397c
+  ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/27/2020
-  ms.locfileid: "84119350"
+  ms.lasthandoff: 08/12/2020
+  ms.locfileid: "88135948"
 landingContent:
 - title: Azure Policy について
   linkLists:
@@ -39,11 +39,15 @@ landingContent:
     links:
     - text: ポリシーを割り当てる (ポータル)
       url: ./assign-policy-portal.md
-    - text: ポリシーを割り当てる (PowerShell)
-      url: ./assign-policy-powershell.md
     - text: ポリシーを割り当てる (Azure CLI)
       url: ./assign-policy-azurecli.md
-    - text: ポリシーを割り当てる (テンプレート)
+    - text: ポリシーを割り当てる (Azure PowerShell)
+      url: ./assign-policy-powershell.md
+    - text: ポリシーを割り当てる (Python)
+      url: ./assign-policy-python.md
+    - text: ポリシーを割り当てる (REST)
+      url: ./assign-policy-rest-api.md
+    - text: ポリシーを割り当てる (ARM テンプレート)
       url: ./assign-policy-template.md
   - linkListType: tutorial
     links:
@@ -73,6 +77,8 @@ landingContent:
       url: ./how-to/author-policies-for-arrays.md
   - linkListType: concept
     links:
+    - text: 規制コンプライアンス
+      url: ./concepts/regulatory-compliance.md
     - text: Kubernetes 用のポリシー
       url: ./concepts/policy-for-kubernetes.md
     - text: VM のポリシー
@@ -92,7 +98,7 @@ landingContent:
   - linkListType: get-started
     links:
     - text: Azure Policy 用の Microsoft Q&A
-      url: /answers/topics/azure-policy.html.html
+      url: /answers/topics/azure-policy.html
     - text: Azure のガバナンスに関する YouTube チャンネル
       url: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
     - text: 製品機能のリクエスト
@@ -127,9 +133,9 @@ landingContent:
       url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
     - text: Azure SDK for .NET (ポリシーの定義)
       url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
-    - text: Azure SDK for Node (ポリシー)
+    - text: Azure SDK for JavaScript (ポリシー)
       url: /javascript/api/@azure/arm-policy
-    - text: Azure SDK for Node (ポリシーの分析情報)
+    - text: Azure SDK for JavaScript (ポリシーの分析情報)
       url: /javascript/api/@azure/arm-policyinsights
     - text: Azure SDK for Python (ポリシー)
       url: /python/api/azure-mgmt-resource/azure.mgmt.resource.policy

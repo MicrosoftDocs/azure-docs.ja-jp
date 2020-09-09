@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 73f1efc512bf031021791da8cc55bc4e7d98a812
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 854fe3ab8ad20e13f864b9fb5419628664985dd8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76840777"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022669"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli"></a>Azure CLI を使用して、セキュリティ グループ ビューで仮想マシンのセキュリティを分析する
 
@@ -25,6 +25,10 @@ ms.locfileid: "76840777"
 > - [PowerShell](network-watcher-security-group-view-powershell.md)
 > - [Azure CLI](network-watcher-security-group-view-cli.md)
 > - [REST API](network-watcher-security-group-view-rest.md)
+
+> [!NOTE]
+> セキュリティ グループ ビュー API は管理されなくなったため、間もなく非推奨となる予定です。 同じ機能を提供する[有効なセキュリティ ルール機能](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview)を使用してください。
+
 
 セキュリティ グループ ビューは、仮想マシンに適用される構成済みの効果的なネットワーク セキュリティ規則を返します。 この機能は、ネットワーク セキュリティ グループおよび VM に構成されている規則を監査および診断して、トラフィックが正常に許可または拒否されていることを確認する際に役立ちます。 この記事では、Azure CLI を使用して、構成済みで効果的なセキュリティ規則を仮想マシン用に取得する方法を説明します。
 

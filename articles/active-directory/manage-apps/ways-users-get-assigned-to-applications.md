@@ -3,24 +3,24 @@ title: アプリケーションにユーザーを割り当てる方法 | Microso
 description: ユーザーがテナントでアプリケーションに割り当てられる方法について理解します。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b818fe1d8b6bbc9d2d8c5b460b4d71dccdd39366
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 516bffa7057f8fee3b8e38d46f3b2da905880044
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65825989"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639938"
 ---
 # <a name="how-to-assign-users-to-applications"></a>ユーザーをアプリケーションに割り当てる方法
 
@@ -44,9 +44,9 @@ ms.locfileid: "65825989"
 
     * [すべてのユーザー](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups) グループ
 
-3.  管理者が [[アプリケーションのセルフ サービス アクセス]](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) を有効にして、**ビジネス承認なし**でユーザーが[アプリケーション アクセス パネル](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)の **[アプリの追加]** 機能を使用してアプリケーションを追加することを許可します。
+3.  管理者が [[アプリケーションのセルフ サービス アクセス]](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) を有効にして、**ビジネス承認なし**でユーザーが[マイ アプリ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)の **[アプリの追加]** 機能を使用してアプリケーションを追加することを許可します
 
-4.  管理者が [[アプリケーションのセルフ サービス アクセス]](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) を有効にして、ユーザーが[アプリケーション アクセス パネル](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)の **[アプリの追加]** 機能を使用してアプリケーションを追加することを許可しますが、**選択された一連のビジネス承認者からの事前の承認があった**場合に限ります。
+4.  管理者が [[アプリケーションのセルフ サービス アクセス]](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) を有効にして、ユーザーが[マイ アプリ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)の **[アプリの追加]** 機能を使用してアプリケーションを追加することを許可しますが、**選択された一連のビジネス承認者からの事前の承認があった**場合に限ります
 
 5.  管理者が [[セルフサービスによるグループ管理]](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) を有効にして、アプリケーションが**ビジネス承認なし**で割り当てられているグループにユーザーが参加することを許可します。
 

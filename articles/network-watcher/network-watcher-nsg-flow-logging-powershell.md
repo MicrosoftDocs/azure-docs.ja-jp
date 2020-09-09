@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 9612afdb63c6988c0027f003caeacd456b5e50e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40f970478b0dd12f6e53c632713051496d412338
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76840946"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736749"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-powershell"></a>PowerShell を使用したネットワーク セキュリティ グループのフローのログの構成
 

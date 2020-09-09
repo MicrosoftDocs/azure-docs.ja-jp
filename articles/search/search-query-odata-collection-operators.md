@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 54ddc8222816831b5b436297bbb1b40d03230f0c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c1243d5d9122539466e94b6bbfdd5ced588e69a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74113236"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934907"
 ---
 # <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>Azure Cognitive Search での OData コレクション演算子 - `any` と `all`
 
@@ -66,23 +66,33 @@ lambda_expression ::= identifier ':' boolean_expression
 
 `tags` フィールドに文字列 "wifi" と一致するものが含まれているドキュメントを照合します。
 
-    tags/any(t: t eq 'wifi')
+```text
+tags/any(t: t eq 'wifi')
+```
 
 `ratings` フィールドのすべての要素が 3 から 5 の範囲 (両数値を含む) に収まるドキュメントを照合します。
 
-    ratings/all(r: r ge 3 and r le 5)
+```text
+ratings/all(r: r ge 3 and r le 5)
+```
 
 `locations` フィールドの地理座標のいずれかが、指定された多角形の範囲内にあるドキュメントを照合します。
 
-    locations/any(loc: geo.intersects(loc, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))
+```text
+locations/any(loc: geo.intersects(loc, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))
+```
 
 `rooms` フィールドが空であるドキュメントを照合します。
 
-    not rooms/any()
+```text
+not rooms/any()
+```
 
 すべての部屋において、`rooms/amenities` フィールドに "tv" が含まれ、`rooms/baseRate` が 100 未満であるドキュメントを照合します。
 
-    rooms/all(room: room/amenities/any(a: a eq 'tv') and room/baseRate lt 100.0)
+```text
+rooms/all(room: room/amenities/any(a: a eq 'tv') and room/baseRate lt 100.0)
+```
 
 ## <a name="limitations"></a>制限事項
 
@@ -97,4 +107,4 @@ lambda_expression ::= identifier ':' boolean_expression
 - [Azure Cognitive Search のフィルター](search-filters.md)
 - [Azure Cognitive Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)
 - [Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)
-- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)

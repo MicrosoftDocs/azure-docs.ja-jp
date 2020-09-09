@@ -1,18 +1,18 @@
 ---
 title: クイックスタート - Azure portal を使用して Analysis Services サーバーを作成する | Microsoft Docs
-description: Azure portal を使用して、Azure Analysis Services サーバー インスタンスをすばやく作成する方法について説明します。
+description: このクイックスタートでは、Azure portal を使用して、Azure Analysis Services サーバー インスタンスを作成する方法について説明します。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 05/19/2020
+ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 36899aa789f4947fe860621bc1795bfbe2ff1ecf
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 488e7c84e481edd1b136fe90ab948d3cfb51ed2c
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697471"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230782"
 ---
 # <a name="quickstart-create-a-server---portal"></a>クイック スタート: サーバーを作成する - ポータル
 
@@ -59,5 +59,3 @@ ms.locfileid: "83697471"
 
 > [!div class="nextstepaction"]
 > [クイック スタート: サーバーのファイアウォールの構成 - ポータル](analysis-services-qs-firewall.md)   
-> [!div class="nextstepaction"]
-> [チュートリアル: サーバーにサンプル モデルを追加する](analysis-services-create-sample-model.md)

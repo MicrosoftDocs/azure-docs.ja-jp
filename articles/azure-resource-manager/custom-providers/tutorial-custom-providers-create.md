@@ -5,12 +5,13 @@ author: jjbfour
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: 09df78955de6423244c2d8ec94e1e1c06ecab257
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 4f425af7681b666b42fbcc70ac0e4c31d9df6d49
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75648739"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503754"
 ---
 # <a name="create-and-use-a-custom-provider"></a>カスタム プロバイダーを作成して使用する
 

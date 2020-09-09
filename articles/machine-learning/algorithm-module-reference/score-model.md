@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 56d8cad05a42da8de680ade487dddee9a97aab3a
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 361199bd380b126ec41fb8a5587a2ebd78cd6f24
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80364182"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84447613"
 ---
-# <a name="score-model-module"></a>スコア モデル モジュール
+# <a name="score-model"></a>モデルのスコア付け
 
 この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 

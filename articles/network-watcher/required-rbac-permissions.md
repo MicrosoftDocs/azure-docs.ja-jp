@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: damendo
-ms.openlocfilehash: f8743f19d6cd262ad140659be55a4fc57e842564
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: de345578b2cade18d126a113937f2eede8e8157e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76840555"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497309"
 ---
 # <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Network Watcher 機能を使用するために必要な、Azure ロールベースのアクセス制御のアクセス許可
 
-Azure のロール ベース アクセス制御 (RBAC) を使用すると、割り当てられた職務を遂行する必要がある組織内のメンバーに特定のアクションのみを割り当てることができます。 Network Watcher 機能を使用するには、Azure にログインするアカウントを、[所有者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#owner)、[共同作成者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#contributor)、または[ネットワーク共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-contributor)の組み込みのロールに割り当てるか、Network Watcher 機能の各セクションの下に一覧表示されているアクションが割り当てられている[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に割り当てる必要があります。 Network Watcher の機能の詳細については、「[Network Watcher とは](network-watcher-monitoring-overview.md)」を参照してください。
+Azure ロールベースのアクセス制御 (Azure RBAC) を使用すると、割り当てられた職務を遂行するために必要な特定のアクションのみを組織内のメンバーに割り当てることができます。 Network Watcher 機能を使用するには、Azure にログインするアカウントを、[所有者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#owner)、[共同作成者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#contributor)、または[ネットワーク共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-contributor)の組み込みのロールに割り当てるか、Network Watcher 機能の各セクションの下に一覧表示されているアクションが割り当てられている[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に割り当てる必要があります。 Network Watcher の機能の詳細については、「[Network Watcher とは](network-watcher-monitoring-overview.md)」を参照してください。
 
 ## <a name="network-watcher"></a>Network Watcher
 
@@ -104,7 +104,7 @@ Network Watcher 機能には、次のアクションも必要です。
 
 | アクション                                                           | 説明                                                    |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Authorization/\*/Read                                     | RBAC ロールの割り当てとポリシー定義のフェッチに使用されます          |
+| Microsoft.Authorization/\*/Read                                     | Azure ロールの割り当てとポリシー定義のフェッチに使用されます          |
 | Microsoft.Resources/subscriptions/resourceGroups/Read               | サブスクリプションのすべてのリソース グループの列挙に使用されます    |
 | Microsoft.Storage/storageAccounts/Read                              | 指定したストレージ アカウントのプロパティの取得に使用されます   |
 | Microsoft.Storage/storageAccounts/listServiceSas/Action、 </br> Microsoft.Storage/storageAccounts/listAccountSas/Action、 <br> Microsoft.Storage/storageAccounts/listKeys/Action| [ストレージ アカウントへのセキュリティで保護されたアクセス](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)およびストレージ アカウントへの書き込みを有効にした、Shared Access Signature (SAS) のフェッチに使用されます |

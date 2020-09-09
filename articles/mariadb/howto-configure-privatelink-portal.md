@@ -4,14 +4,14 @@ description: Azure portal から Azure Database for MariaDB 用のプライベ�
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 3f421cad64caf91b898bb1ec13dc909b93b7f72d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c96c4803293db9d9bacfc43f0de2f7803e6c41c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79370340"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836481"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>ポータルを使用して Azure Database for MariaDB 用の Private Link を作成および管理する
 
@@ -20,7 +20,7 @@ ms.locfileid: "79370340"
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 > [!NOTE]
-> この機能は、Azure Database for MariaDB で汎用およびメモリ最適化の価格レベルがサポートされているすべての Azure リージョンで使用できます。
+> プライベート リンク機能は、General Purpose または Memory Optimized の価格レベルの Azure Database for MariaDB サーバーでのみ使用可能です。 データベース サーバーがこれらの価格レベルのいずれかであることを確認します。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 [Azure portal](https://portal.azure.com) にサインインします。
@@ -74,7 +74,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     | Windows ライセンスを既にお持ちの場合 | 既定値 **[なし]** のままにします。 |
     |||
 
-1. **ディスク** を選択します。
+1. **[Next:ディスク]** を選択します。
 
 1. **[仮想マシンの作成 - Disk]** で、既定値のままにし、 **[Next: Networking]\(次へ : ネットワーク\)** を選択します。
 
@@ -116,11 +116,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |Version  | 必要な MariaDB サーバーのデータベース バージョンを選択します。|
     | コンピューティングとストレージ| ワークロードに基づいて、サーバーに必要な価格レベルを選択します。 |
     |||
- 
+
 7. **[OK]** を選択します。 
 8. **[Review + create]\(レビュー + 作成\)** を選択します。 **[確認および作成]** ページが表示され、Azure によって構成が検証されます。 
 9. "検証に成功しました" というメッセージが表示されたら、 **[作成]** を選択します。 
 10. "検証に成功しました" というメッセージが表示されたら、[作成] を選択します。 
+
+> [!NOTE]
+> Azure Database for MariaDB と VNet サブネットが異なるサブスクリプションに存在する場合があります。 このような場合は、次の構成を確認する必要があります。
+> - 両方のサブスクリプションに **Microsoft.DBforMariaDB** リソース プロバイダーが登録されていることを確認してください。 詳細については、[resource-manager-registration][resource-manager-portal] に関するページをご覧ください
 
 ## <a name="create-a-private-endpoint"></a>プライベート エンドポイントの作成
 
@@ -142,7 +146,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     | 名前 | 「*myPrivateEndpoint*」と入力します。 この名前を取得する場合は、一意の名前を作成します。 |
     |リージョン|**[西ヨーロッパ]** を選択します。|
     |||
-5. **リソース** を選択します。
+5. **[Next:リソース]** を選択します。
 6. **[プライベート エンドポイントの作成 - リソース]** で、次の情報を入力または選択します。
 
     | 設定 | 値 |
@@ -153,8 +157,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     | リソース |*[myServer]* を選択します。|
     |ターゲット サブリソース |*mariadbServer* を選択します|
     |||
-7. **構成** を選択します。
-8. **[Create a private endpoint - Configuration]\(プライベート エンドポイントの作成 - 構成\)** で次の情報を入力または選択します。
+7. **[Next:構成]** を選択します。
+8. **[Create a private endpoint - Configuration]/(プライベート エンドポイントの作成 - 構成/)** で次の情報を入力または選択します。
 
     | 設定 | 値 |
     | ------- | ----- |
@@ -165,6 +169,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |プライベート DNS ゾーンとの統合 |**[はい]** を選択します。 |
     |プライベート DNS ゾーン |*[(新規)privatelink.mariadb.database.azure.com]* を選択します。 |
     |||
+
+    > [!Note] 
+    > サービスに事前に定義されているプライベート DNS ゾーンを使用するか、優先する DNS ゾーン名を指定します。 詳細については、「[Azure サービス DNS ゾーンの構成](../private-link/private-endpoint-dns.md)」を参照してください。
 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。 **[確認および作成]** ページが表示され、Azure によって構成が検証されます。 
 2. "**証に成功しました**" というメッセージが表示されたら、 **[作成]** を選択します。 
@@ -202,7 +209,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="access-the-mariadb-server-privately-from-the-vm"></a>VM から MariaDB サーバーにプライベートにアクセスする
 
-1.  *myVM* のリモート デスクトップで、PowerShell を開きます。
+1. *myVM* のリモート デスクトップで、PowerShell を開きます。
 
 2. 「 `nslookup mydemomserver.privatelink.mariadb.database.azure.com`」と入力します。 
 
@@ -233,7 +240,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 6. (省略可能) 左側のメニューからデータベースを参照して、MariaDB データベースからの情報を作成または照会します
 
-7. myVm へのリモート デスクトップ接続を閉じます。
+7. myVM へのリモート デスクトップ接続を閉じます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 プライベート エンドポイント、MariaDB サーバー、VM を使い終えたら、リソース グループとそこに含まれるすべてのリソースを削除します。
@@ -245,3 +252,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="next-steps"></a>次のステップ
 
 この記事では、仮想ネットワーク上の VM、Azure Database for MariaDB、およびプライベート アクセス用のプライベート エンドポイントを作成しました。 インターネットから 1 台の VM に接続し、Private Link を使用して MariaDB サーバーと安全に通信を行いました。 プライベート エンドポイントの詳細については、「[Azure プライベート エンドポイントとは](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)」を参照してください。
+
+<!-- Link references, to text, Within this same GitHub repo. -->
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

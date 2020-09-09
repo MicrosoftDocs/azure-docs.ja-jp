@@ -1,6 +1,6 @@
 ---
 title: Azure セキュリティの概要 | Microsoft Docs
-description: Azure のセキュリティ、サービス、およびそのしくみについて説明します。
+description: この概要を読むことで、Azure セキュリティとそのさまざまなサービス、およびそのしくみについて知ることができます。
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: b39eb24b5611e36d14b151aaec96941ff52f3dfa
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: d00b897f41ab00f0e3c23292eeb5f431bf5c070c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731700"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835937"
 ---
 # <a name="introduction-to-azure-security"></a>Azure のセキュリティの概要
 ## <a name="overview"></a>概要
@@ -142,7 +142,7 @@ App Service Web Apps は、Web サーバーと Web アプリケーションの�
 このセクションでは、Azure Storage のセキュリティの重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
 
 ### <a name="role-based-access-control-rbac"></a>ロール ベースのアクセス制御 (RBAC)
-ロールベースのアクセス制御 (RBAC) を使用して、ストレージ アカウントをセキュリティで保護できます。 データ アクセスにセキュリティ ポリシーを適用する組織では、[必知事項](https://en.wikipedia.org/wiki/Need_to_know)と[最小権限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)のセキュリティ原則に基づいてアクセスを制限することが不可欠です。 これらのアクセス権は、グループおよびアプリケーションに適切な RBAC ロールを特定のスコープで割り当てることによって付与します。 [組み込み RBAC ロール](../../role-based-access-control/built-in-roles.md)(ストレージ アカウントの共同作成者など) を使用して、ユーザーに権限を割り当てることができます。 [Azure Resource Manager](../../storage/blobs/security-recommendations.md) モデルを使用したストレージ アカウントのストレージ キーに対するアクセス権は、ロールベースのアクセス制御 (RBAC) で制御できます。
+ロールベースのアクセス制御 (RBAC) を使用して、ストレージ アカウントをセキュリティで保護できます。 データ アクセスにセキュリティ ポリシーを適用する組織では、[必知事項](https://en.wikipedia.org/wiki/Need_to_know)と[最小権限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)のセキュリティ原則に基づいてアクセスを制限することが不可欠です。 これらのアクセス権は、グループおよびアプリケーションに適切な Azure ロールを特定のスコープで割り当てることによって付与されます。 [Azure 組み込みロール](../../role-based-access-control/built-in-roles.md) (ストレージ アカウントの共同作成者など) を使用して、ユーザーに権限を割り当てることができます。 [Azure Resource Manager](../../storage/blobs/security-recommendations.md) モデルを使用したストレージ アカウントのストレージ キーに対するアクセス権は、ロールベースのアクセス制御 (RBAC) で制御できます。
 
 ### <a name="shared-access-signature"></a>Shared Access Signature
 [shared access signature (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。 SAS により、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。 この制限付きアクセス許可を付与するとき、アカウント アクセス キーを共有する必要はありません。
@@ -223,7 +223,7 @@ Microsoft Azure [ExpressRoute](../../expressroute/expressroute-introduction.md) 
 
 ![ExpressRoute](./media/overview/azure-security-fig1.png)
 
-ExpressRoute では、Microsoft Azure、Office 365、CRM Online などの Microsoft クラウド サービスへの接続を確立できます。 接続には、任意の環境間 (IP VPN) 接続、ポイントツーポイントのイーサネット接続、共有施設での接続プロバイダーによる仮想交差接続があります。
+ExpressRoute では、Microsoft Azure、Microsoft 365、CRM Online などの Microsoft クラウド サービスへの接続を確立できます。 接続には、任意の環境間 (IP VPN) 接続、ポイントツーポイントのイーサネット接続、共有施設での接続プロバイダーによる仮想交差接続があります。
 
 ExpressRoute 接続はパブリック インターネットを経由しないため、VPN ベースのソリューションよりも安全であると考えられています。 それにより、ExpressRoute 接続はインターネット経由の一般的な接続に比べて、安全性と信頼性が高く、待機時間も短く、高速です。
 
@@ -308,7 +308,7 @@ Azure IaaS では、Microsoft、Symantec、Trend Micro、McAfee、Kaspersky な�
 
 Azure Key Vault (AKV) サービスは、セキュリティを強化し、安全かつ可用性の高い場所で鍵を管理できるように設計されています。 SQL Server コネクタ を利用すると、SQL Server で Azure Key Vault にある鍵を利用できるようになります。
 
-SQL Server をオンプレミス コンピューターで実行している場合、いくつかの手順を踏んでオンプレミスの SQL Server コンピューターから Azure Key Vault にアクセスできます。 ただし、Azure VM の SQL Server の場合、 Azure Key Vault の統合機能を利用することで時間を節約できます。 いくつかの Azure PowerShell コマンドレットでこの機能を有効にし、SQL VM が Key Vault にアクセスするために必要な構成を自動化できます。
+SQL Server をオンプレミス マシンで実行している場合、いくつかの手順を踏んでオンプレミスの SQL Server インスタンスから Azure Key Vault にアクセスできます。 ただし、Azure VM の SQL Server の場合、 Azure Key Vault の統合機能を利用することで時間を節約できます。 いくつかの Azure PowerShell コマンドレットでこの機能を有効にし、SQL VM が Key Vault にアクセスするために必要な構成を自動化できます。
 
 ### <a name="vm-disk-encryption"></a>VM ディスクの暗号化
 [Azure Disk Encryption ](../azure-security-disk-encryption-overview.md) は、Windows および Linux IaaS 仮想マシン ディスクを暗号化するのに役立つ新機能です。 この機能では、OS およびデータ ディスクのボリュームを暗号化するために、Windows の業界標準である BitLocker 機能と Linux の DM-Crypt 機能が使用されます。 このソリューションは Azure Key Vault と統合されており、ディスクの暗号化キーと秘密は Key Vault サブスクリプションで制御および管理できます。 またこのソリューションでは、仮想マシン ディスク上のすべてのデータが、Azure Storage での保存時に暗号化されます。
@@ -336,7 +336,7 @@ Microsoft では、複数のセキュリティ上の方法およびテクノロ�
 
 -   [トークン ベースの認証](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/)によって、Azure Active Directory 経由の認証を有効にします。
 
--   [ロールベースのアクセス制御 (RBAC)](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/) によって、ユーザーに割り当てられたロールに基づいたアクセス権の付与が可能になります。これにより、ユーザーの職務実行に必要なアクセス権のみを簡単に付与できるようになります。 RBAC は、組織のビジネス モデルやリスク許容度に応じてカスタマイズできます。
+-   [Azure ロールベースのアクセス制御 (Azure RBAC)](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/) によって、ユーザーに割り当てられたロールに基づいたアクセス権の付与が可能になります。これにより、ユーザーの職務実行に必要なアクセス権のみを簡単に付与できるようになります。 RBAC は、組織のビジネス モデルやリスク許容度に応じてカスタマイズできます。
 
 -   [ID 管理 (ハイブリッド ID) の統合](https://azure.microsoft.com/documentation/articles/active-directory-hybrid-identity-design-considerations-overview/)により、すべてのリソースに対する認証および承認用に単一のユーザー ID を作成して、内部のデータ センターとクラウド プラットフォームでのユーザーのアクセス権制御を維持することができます。
 

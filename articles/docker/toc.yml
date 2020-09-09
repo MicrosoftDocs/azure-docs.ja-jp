@@ -8,17 +8,17 @@
 - name: チュートリアル
   items:
     - name: Docker と PostgreSQL を使用した Python Web アプリ
-      href: ../app-service/containers/tutorial-python-postgresql-app.md?toc=%2fazure%2fpostgresql%2ftoc.json
+      href: ../app-service/tutorial-python-postgresql-app.md?toc=%2fazure%2fpostgresql%2ftoc.json
     - name: Docker、Jenkins、Linux を使用した CI/CD
-      href: /azure/jenkins/tutorial-jenkins-github-docker-cicd
+      href: /azure/developer/jenkins/pipeline-with-github-and-docker
 - name: 操作方法ガイド
   items:
     - name: Docker VM 拡張機能
-      href: /azure/virtual-machines/linux/dockerextension
+      href: 'https://github.com/Azure/azure-docker-extension/blob/master/README.md'
     - name: Docker マシン
-      href: /azure/virtual-machines/linux/docker-machine
+      href: ../virtual-machines/linux/docker-machine.md
     - name: Docker コンテナー レジストリ
-      href: /azure/container-registry/container-registry-get-started-portal
+      href: ../container-registry/container-registry-get-started-portal.md
 - name: リソース
   items:
     - name: Azure のロードマップ

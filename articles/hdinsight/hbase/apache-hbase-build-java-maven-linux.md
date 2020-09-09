@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
-ms.custom: hdinsightactive,seodec18
+ms.topic: how-to
+ms.custom: hdinsightactive,seodec18, devx-track-java
 ms.date: 12/24/2019
-ms.openlocfilehash: 3e9b23ce450e45dfedcee8b20e09b1c2b52b6e68
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7cd368df1f2a94c8f49454530e7f5997f2659a32
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75495787"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323776"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Apache HBase 向けの Java アプリケーションの構築
 
@@ -31,7 +31,7 @@ Java で [Apache HBase](https://hbase.apache.org/) アプリケーションを�
 
 * SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
-* PowerShell を使用している場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/overview)が必要になります。
+* PowerShell を使用している場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/)が必要になります。
 
 * テキスト エディター。 この記事では、Microsoft Notepad を使用します。
 
@@ -425,12 +425,14 @@ public class DeleteTable {
 
     次の結果が表示されます。
 
-        Franklin Holtz - ID: 2
-        Franklin Holtz - franklin@contoso.com - ID: 2
-        Rae Schroeder - ID: 4
-        Rae Schroeder - rae@contoso.com - ID: 4
-        Gabriela Ingram - ID: 6
-        Gabriela Ingram - gabriela@contoso.com - ID: 6
+    ```console
+    Franklin Holtz - ID: 2
+    Franklin Holtz - franklin@contoso.com - ID: 2
+    Rae Schroeder - ID: 4
+    Rae Schroeder - rae@contoso.com - ID: 4
+    Gabriela Ingram - ID: 6
+    Gabriela Ingram - gabriela@contoso.com - ID: 6
+    ```
 
 5. テーブルを削除するには、次のコマンドを使用します。
 
@@ -684,12 +686,14 @@ public class DeleteTable {
 
     このコマンドは `SearchByEmail` クラスを使用して、`contactinformation` の列ファミリの `email` 列に文字列 `contoso.com` が含まれている行を検索します。 次の結果が表示されます。
 
-          Franklin Holtz - ID: 2
-          Franklin Holtz - franklin@contoso.com - ID: 2
-          Rae Schroeder - ID: 4
-          Rae Schroeder - rae@contoso.com - ID: 4
-          Gabriela Ingram - ID: 6
-          Gabriela Ingram - gabriela@contoso.com - ID: 6
+    ```output
+    Franklin Holtz - ID: 2
+    Franklin Holtz - franklin@contoso.com - ID: 2
+    Rae Schroeder - ID: 4
+    Rae Schroeder - rae@contoso.com - ID: 4
+    Gabriela Ingram - ID: 6
+    Gabriela Ingram - gabriela@contoso.com - ID: 6
+    ```
 
     `-emailRegex` の値に **fabrikam.com** を使用すると、メール フィールドに **fabrikam.com** が含まれているユーザーが返されます。 検索用語に正規表現を使用することもできます。 たとえば、 **^r** で検索すると、'r' から始まる電子メール アドレスが返されます。
 

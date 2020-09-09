@@ -1,6 +1,6 @@
 ---
 title: Azure Sentinel に Cloud App Security データを接続する | Microsoft Docs
-description: Azure Sentinel に Cloud App Security データを接続する方法について説明します。
+description: Microsoft Cloud App Security (MCAS) のコネクタを使用して、アラートと Cloud Discovery のログを MCAS から Azure Sentinel にストリーミングする方法を説明します。 
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,16 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2020
 ms.author: yelevin
-ms.openlocfilehash: 266d97e834247088d40837cbec1436e00d0f4be2
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 8439c8f7aa4e75abd727d2ce2e80d98e6fce5411
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422142"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563952"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Microsoft Cloud App Security からデータを接続する 
-
-
 
 [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) のコネクタにより、アラートと [Cloud Discovery のログ](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it)を MCAS から Azure Sentinel にストリーミングできます。 これにより、クラウド アプリの可視化が可能になり、サイバー脅威を特定して対処するための高度な分析とデータの移動の制御を実行できるようになります。
 
@@ -49,6 +47,8 @@ Cloud App Security がデプロイされていてデータを取り込んでい�
 1. Azure Sentinel にストリーミングするログを選択します。 **[アラート]** と **[Cloud Discovery ログ]** (プレビュー) を選択できます。 
 
 1. **[変更の適用]** をクリックします。
+
+1. Azure Security Center のアラートによって Azure Sentinel で自動的にインシデントが生成されるようにするかどうかを選択できます。 **[Create incidents]\(インシデントの作成\)** で **[有効化]** を選択して、アラートからインシデントを自動的に作成する既定の分析ルールを有効にします。 次に、 **[Active rules]\(アクティブなルール\)** タブの **[分析]** でこのルールを編集します。
 
 1. Cloud App Security のアラートに Log Analytics 内の関連スキーマを使用するには、クエリ ウィンドウで「`SecurityAlert`」と入力します。 Cloud Discovery ログのスキーマの場合は、「`McasShadowItReporting`」と入力します。
 

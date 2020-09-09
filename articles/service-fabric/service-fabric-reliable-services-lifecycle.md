@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: fe338ca3f25cd606da7f95f6c9437a3cd3dc4e69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 162ad87f79109cf38d3d0013608812155c6988a7
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229255"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252251"
 ---
 # <a name="reliable-services-lifecycle-overview"></a>Reliable Services のライフサイクルの概要
 > [!div class="op_single_selector"]
@@ -113,7 +113,7 @@ Service Fabric は、さまざまな理由でステートフル サービスの�
 
 取り消しを適切に処理しないサービスでは、いくつかの問題が発生する可能性があります。 サービスが正常に停止するのを Service Fabric が待機するため、それらの操作の速度が遅くなります。 最終的には、アップグレードがタイムアウトしてロールバックし、アップグレードに失敗することにつながります。 キャンセル トークンに対応しないことにより、クラスターが不均衡になることもあります。 クラスターが不均衡になる原因は、ノードの負荷が高くなってもサービスの移動に時間がかかるためサービスを分散できないためです。 
 
-サービスがステートフルなため、サービスが [Reliable Collection](service-fabric-reliable-services-reliable-collections.md) を使用する可能性も高くなります。 Service Fabric では、プライマリが降格されたときに最初に発生することの 1 つは、基になる状態への書き込みアクセスの取り消しです。 これは、サービスのライフサイクルに影響を与える第 2 の一連の問題につながります。 レプリカが移動中なのかあるいはシャットダウンされているのかと、そのタイミングに基づいて、コレクションが例外を返します。 これらの例外を正しく処理する必要があります。 Service Fabric によってスローされる例外は、永続的なカテゴリ [(`FabricException`)](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception?view=azure-dotnet) と一時的なカテゴリ [(`FabricTransientException`)](https://docs.microsoft.com/dotnet/api/system.fabric.fabrictransientexception?view=azure-dotnet) に分類されます。 永続的な例外はログに記録してスローするべきですが、一時的な例外は再試行ロジックに基づいて再試行することもできます。
+サービスがステートフルなため、サービスが [Reliable Collection](service-fabric-reliable-services-reliable-collections.md) を使用する可能性も高くなります。 Service Fabric では、プライマリが降格されたときに最初に発生することの 1 つは、基になる状態への書き込みアクセスの取り消しです。 これは、サービスのライフサイクルに影響を与える第 2 の一連の問題につながります。 レプリカが移動中なのかあるいはシャットダウンされているのかと、そのタイミングに基づいて、コレクションが例外を返します。 これらの例外を正しく処理する必要があります。 Service Fabric によってスローされる例外は、永続的なカテゴリ [(`FabricException`)](/dotnet/api/system.fabric.fabricexception?view=azure-dotnet) と一時的なカテゴリ [(`FabricTransientException`)](/dotnet/api/system.fabric.fabrictransientexception?view=azure-dotnet) に分類されます。 永続的な例外はログに記録してスローするべきですが、一時的な例外は再試行ロジックに基づいて再試行することもできます。
 
 `ReliableCollections` とサービスのライフサイクル イベントを組み合わせて使用した結果の例外を処理することは、Reliable Service のテストと検証の重要な部分です。 運用環境にデプロイする前にアップグレードと[カオス テスト](service-fabric-controlled-chaos.md)を実行するときは、サービスに常に負荷がかかっている状態で行うことをお勧めします。 このような基本の手順を行うことで、サービスが正しく実装され、ライフサイクル イベントを正しく処理できるようになります。
 

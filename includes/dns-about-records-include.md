@@ -4,12 +4,12 @@ ms.service: dns
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: victorh
-ms.openlocfilehash: 261ae22348cd82b129727261c619727917e19c96
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8ca054b3a3d5147b7d98a021ce1e26d02d5581b0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73832045"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050506"
 ---
 ### <a name="record-names"></a>レコード名
 
@@ -27,8 +27,10 @@ Azure DNS では、一般的な DNS レコードの種類である A、AAAA、CA
 
 場合によっては、特定の名前と種類の DNS レコードを複数作成する必要があることもあります。 たとえば、"www.contoso.com" という Web サイトが 2 つの異なる IP アドレスでホストされているとします。 この Web サイトには、IP アドレスごとに異なる A レコードが、合計 2 つ必要になります。 次に、レコード セットの例を示します。
 
-    www.contoso.com.        3600    IN    A    134.170.185.46
-    www.contoso.com.        3600    IN    A    134.170.188.221
+```dns
+www.contoso.com.        3600    IN    A    134.170.185.46
+www.contoso.com.        3600    IN    A    134.170.188.221
+```
 
 Azure DNS は、"*レコード セット*" を使用してすべての DNS レコードを管理します。 レコード セット ("*リソース*" レコード セットとも呼ばれます) とは、1 つのゾーン内にある同じ名前、同じ種類の DNS レコードのコレクションです。 ほとんどのレコード セットには、1 つのレコードが含まれています。 ただし、上の例のように複数のレコードが含まれているレコード セットも珍しくはありません。
 

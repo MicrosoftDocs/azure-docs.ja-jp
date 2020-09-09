@@ -1,18 +1,19 @@
 ---
 title: クイックスタート - PowerShell を使用して Azure Analysis Services を作成する - Azure Analysis Services | Microsoft Docs
-description: PowerShell を使って Azure Analysis Services サーバーを作成する方法について説明します。
+description: このクイックスタートでは、PowerShell を使って Azure Analysis Services サーバーを作成する方法について説明します。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 03/30/2020
+ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e2b772ac060e55d21341626772667d56245542ca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: references_regions , devx-track-azurepowershell
+ms.openlocfilehash: 737649538aaf82352e27aec6220b13ba355a7a82
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80409927"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229346"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>クイック スタート: サーバーを作成する - PowerShell
 
@@ -73,5 +74,3 @@ Remove-AzAnalysisServicesServer -Name "myserver" -ResourceGroupName "myResourceG
 
 > [!div class="nextstepaction"]
 > [クイック スタート: サーバーのファイアウォールの構成 - ポータル](analysis-services-qs-firewall.md)      
-> [!div class="nextstepaction"]
-> [チュートリアル: サーバーにサンプル モデルを追加する](analysis-services-create-sample-model.md)

@@ -14,13 +14,13 @@ ms.workload: identity
 ms.date: 01/24/2020
 ms.author: ryanwi
 ms.custom: include file
-ms.openlocfilehash: 4e5371a4d2b160b5de8b69b0d25ef0f49f80927b
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: ebd8c1d794293ead55374865057424e15e6f7d7a
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82784080"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86277943"
 ---
 > [!IMPORTANT]
-> [Microsoft ID プラットフォーム (v2.0)](/azure/active-directory/develop/v2-overview) は、Azure Active Directory (Azure AD) 開発者プラットフォーム (v1.0) の進化版です。 これにより、すべての Microsoft ID にサインインして、Microsoft API (Microsoft Graph) や開発者が構築した API を呼び出すためのトークンを取得するアプリケーションを開発者が構築できます。
+> [Microsoft ID プラットフォーム (v2.0)](/azure/active-directory/develop/v2-overview) は、[Azure Active Directory (Azure AD) 開発者プラットフォーム (v1.0) の進化版](../articles/active-directory/azuread-dev/about-microsoft-identity-platform.md)です。 これにより、すべての Microsoft ID にサインインして、Microsoft API (Microsoft Graph) や開発者が構築した API を呼び出すためのトークンを取得するアプリケーションを開発者が構築できます。
 > このコンテンツは、以前の Azure AD v1.0 エンドポイント用です。 新しいプロジェクトには、v2.0 エンドポイントを使用することをお勧めします。 詳細については、「[Microsoft ID プラットフォーム (v2.0) に更新する理由](/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison)」と [Microsoft ID プラットフォームの制限事項](/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison#limitations)に関する記事を参照してください。

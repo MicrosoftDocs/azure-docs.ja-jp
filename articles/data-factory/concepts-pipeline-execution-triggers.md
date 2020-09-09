@@ -11,16 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: a31f800ad157e22f3d35abae3d3b714fa29178ef
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 73934521cc68dc8ec2e28f29e35df833651915d2
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562204"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83997011"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure Data Factory でのパイプラインの実行とトリガー
 
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください: "]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-scheduling-and-execution.md)
 > * [現在のバージョン](concepts-pipeline-execution-triggers.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -236,14 +236,14 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 次の表は、トリガーの繰り返しとスケジュール設定に関連する主要なスキーマ要素の概要を示しています。
 
 | JSON プロパティ | 説明 |
-|:--- |:--- |
+| --- | --- |
 | **startTime** | 日付/時刻の値。 基本的なスケジュールの場合、**startTime** プロパティの値が最初の発生日時に適用されます。 複雑なスケジュールの場合、指定した **startTime** 値になるとすぐにトリガーが起動します。 |
 | **endTime** | トリガーの終了日時。 指定した終了日時を過ぎると、トリガーは実行されません。 このプロパティの値に過去の日時を指定することはできません。 <!-- This property is optional. --> |
 | **timeZone** | タイム ゾーン。 現在、サポートされているタイム ゾーンは UTC のみです。 |
 | **recurrence** | トリガーの繰り返し規則を指定する recurrence オブジェクト。 この recurrence オブジェクトは、**frequency**、**interval** **endTime** **count**、**schedule** の各要素をサポートします。 recurrence オブジェクトを定義する場合、**frequency** 要素は必須です。 recurrence オブジェクトの他の要素は省略可能です。 |
 | **frequency** | トリガーが繰り返される頻度の単位。 サポートされる値には、"minute"、"hour"、"day"、"week"、"month" があります。 |
 | **interval** | **frequency** 値の間隔を示す正の整数。 **frequency** の値は、トリガーの実行頻度を決定します。 たとえば、**interval** が 3 で **frequency** が "week" の場合、トリガーは 3 週間ごとに繰り返されます。 |
-| **schedule** | トリガーの繰り返しのスケジュール。 **frequency** 値が指定されたトリガーは、繰り返しのスケジュールに基づいて繰り返しが変更されます。 **schedule** プロパティには、分、時間、曜日、日にち、週番号に基づいた繰り返しの変更を指定します。
+| **schedule** | トリガーの繰り返しのスケジュール。 **frequency** 値が指定されたトリガーは、繰り返しのスケジュールに基づいて繰り返しが変更されます。 **schedule** プロパティには、分、時間、曜日、日にち、週番号に基づいた繰り返しの変更を指定します。 |
 
 ### <a name="schedule-trigger-example"></a>スケジュール トリガーの例
 
@@ -282,7 +282,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 ### <a name="schema-defaults-limits-and-examples"></a>スキーマの既定値、制限、例
 
 | JSON プロパティ | Type | 必須 | 既定値 | 有効な値 | 例 |
-|:--- |:--- |:--- |:--- |:--- |:--- |
+| --- | --- | --- | --- | --- | --- |
 | **startTime** | string | はい | なし | ISO 8601 の日付/時刻 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
 | **recurrence** | object | はい | なし | recurrence オブジェクト | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
 | **interval** | number | いいえ | 1 | 1 から 1,000 | `"interval":10` |
@@ -293,11 +293,11 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 次の表に、**startTime** プロパティでトリガー実行を制御する方法を示します。
 
 | startTime の値 | スケジュールなしの繰り返し | スケジュールありの繰り返し |
-|:--- |:--- |:--- |
+| --- | --- | --- |
 | **開始時刻が過去** | 開始時刻より後の将来の最初の実行時刻を計算し、その時刻に実行されます。<br /><br />2 回目以降は、最後の実行時刻から計算して実行します。<br /><br />この表の後の例を参照してください。 | トリガーは、指定した開始時刻になると "_すぐに_" 起動します。 最初は、開始時刻から計算したスケジュールに基づいて実行されます。<br /><br />以降は、繰り返しのスケジュールに基づいて実行されます。 |
 | **開始時刻が将来または現在** | 指定した開始時刻に 1 回実行されます。<br /><br />2 回目以降は、最後の実行時刻から計算して実行します。 | トリガーは、指定した開始時刻になると "_すぐに_" 起動します。 最初は、開始時刻から計算したスケジュールに基づいて実行されます。<br /><br />以降は、繰り返しのスケジュールに基づいて実行されます。 |
 
-ここでは、開始時刻が過去であり、スケジュールなしの繰り返しが設定されている場合の動作の例を説明します。 現在の時刻が 2017 年 4 月 8 日 13 時、開始時刻が 2017 年 4 月 7 日 14 時、繰り返しが 2 日ごとであると仮定します  (**recurrence** 値を定義するには、**frequency** プロパティを "day"、**interval** プロパティを 2 に設定します)。**startTime** 値が過去であり、現在の時刻よりも前であることに注意してください。
+ここでは、開始時刻が過去であり、スケジュールなしの繰り返しが設定されている場合の動作の例を説明します。 現在の時刻が 2017 年 4 月 8 日 13 時、開始時刻が 2017 年 4 月 7 日 14 時、繰り返しが 2 日ごとであると仮定します (**recurrence** 値を定義するには、**frequency** プロパティを "day"、**interval** プロパティを 2 に設定します)。**startTime** 値が過去であり、現在の時刻よりも前であることに注意してください。
 
 これらの条件では、最初の実行は 2017 年 4 月 9 日の 14 時です。 Scheduler エンジンは、開始時刻から実行を計算します。 過去のインスタンスはすべて破棄されます。 エンジンは、将来発生する次回のインスタンスを使用します。 このシナリオでは、開始時刻は 2017 年 4 月 7 日の午後 2 時になります。 次回のインスタンスは 2 日後、つまり 2017 年 4 月 9 日の午後 2 時となります。
 
@@ -315,20 +315,17 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 次の表に、**schedule** の要素の詳細を示します。
 
 | JSON 要素 | 説明 | 有効な値 |
-|:--- |:--- |:--- |
-| **分** | トリガーを実行する時刻 (分)。 |- Integer<br />- 整数の配列|
-| **hours** | トリガーを実行する時刻 (時)。 |- Integer<br />- 整数の配列|
-| **weekDays** | トリガーを実行する曜日。 この値を指定できるのは、頻度が週単位の場合のみです。|<br />- Monday<br />- Tuesday<br />- Wednesday<br />- Thursday<br />- Friday<br />- Saturday<br />- Sunday<br />- 曜日の値の配列 (配列の最大サイズは 7)<br /><br />曜日の値の大文字小文字は区別されません|
-| **monthlyOccurrences** | トリガーが実行される月の特定曜日。 この値を指定できるのは、頻度が月単位の場合のみです。 |- **monthlyOccurrence** オブジェクトの配列: `{ "day": day, "occurrence": occurrence }`<br />- **day** 属性は、トリガーが実行される曜日を表します。 たとえば、**monthlyOccurrences** プロパティの **day** 値が `{Sunday}` の場合は、月の毎週日曜日を意味します。 **day** 属性は必須です。<br />- **occurrence** 属性は、月内の指定した **day** の出現を表します。 たとえば、**monthlyOccurrences** プロパティの **day** 値と **occurrence** 値が `{Sunday, -1}` の場合、月の最後の日曜日を意味します。 **occurrence** 属性は省略可能です。|
-| **monthDays** | トリガーが実行される日にち。 この値を指定できるのは、頻度が月単位の場合のみです。 |- -1 以下かつ -31 以上の任意の値<br />- 1 以上かつ 31 以下の任意の値<br />- 値の配列|
+| --- | --- | --- |
+| **分** | トリガーを実行する時刻 (分)。 |- Integer<br />- 整数の配列 |
+| **hours** | トリガーを実行する時刻 (時)。 |- Integer<br />- 整数の配列 |
+| **weekDays** | トリガーを実行する曜日。 この値を指定できるのは、頻度が週単位の場合のみです。|<br />- Monday<br />- Tuesday<br />- Wednesday<br />- Thursday<br />- Friday<br />- Saturday<br />- Sunday<br />- 曜日の値の配列 (配列の最大サイズは 7)<br /><br />曜日の値の大文字小文字は区別されません |
+| **monthlyOccurrences** | トリガーが実行される月の特定曜日。 この値を指定できるのは、頻度が月単位の場合のみです。 |- **monthlyOccurrence** オブジェクトの配列: `{ "day": day, "occurrence": occurrence }`<br />- **day** 属性は、トリガーが実行される曜日を表します。 たとえば、**monthlyOccurrences** プロパティの **day** 値が `{Sunday}` の場合は、月の毎週日曜日を意味します。 **day** 属性は必須です。<br />- **occurrence** 属性は、月内の指定した **day** の出現を表します。 たとえば、**monthlyOccurrences** プロパティの **day** 値と **occurrence** 値が `{Sunday, -1}` の場合、月の最後の日曜日を意味します。 **occurrence** 属性は省略可能です。 |
+| **monthDays** | トリガーが実行される日にち。 この値を指定できるのは、頻度が月単位の場合のみです。 |- -1 以下かつ -31 以上の任意の値<br />- 1 以上かつ 31 以下の任意の値<br />- 値の配列 |
 
 ## <a name="tumbling-window-trigger"></a>タンブリング ウィンドウ トリガー
 タンブリング ウィンドウ トリガーは、状態を維持しながら、指定した開始時刻から定期的に実行される種類のトリガーです。 タンブリング ウィンドウとは、固定サイズで重複しない一連の連続する時間間隔です。
 
 タンブリング ウィンドウ トリガーの詳細と例については、[タンブリング ウィンドウ トリガーの作成](how-to-create-tumbling-window-trigger.md)に関するページを参照してください。
-
-> [!NOTE]
-> タンブリング ウィンドウ トリガーの実行では、"*トリガーされたパイプラインの実行が完了するまで待機します*"。 実行状態には、トリガーされたパイプラインの実行の状態が反映されます。 たとえば、トリガーされたパイプラインの実行が取り消された場合、対応するタンブリング ウィンドウ トリガーの実行が取り消し済みとマークされます。 これは、パイプラインの実行が開始されている限り成功としてマークされる、スケジュール トリガーの "ファイア アンド フォーゲット" ビヘイビアーとは異なります。
 
 ## <a name="event-based-trigger"></a>イベントベースのトリガー
 
@@ -342,7 +339,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 各例は、**interval** 値が 1 であり、schedule の定義に従って **frequency** に適切な値が指定されていることを前提としています。 たとえば、**frequency** 値に "day" を指定し、**schedule** オブジェクトで **monthDays** の変更を指定することはできません。 これらの種類の制限については、前のセクションの表で説明されています。
 
 | 例 | 説明 |
-|:--- |:--- |
+| --- | --- |
 | `{"hours":[5]}` | 毎日午前 5 時に実行されます。 |
 | `{"minutes":[15], "hours":[5]}` | 毎日午前 5 時 15 分に実行されます。 |
 | `{"minutes":[15], "hours":[5,17]}` | 毎日午前 5 時 15 分と午後 5 時 15 分に実行されます。 |
@@ -373,15 +370,18 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 ## <a name="trigger-type-comparison"></a>トリガーの種類の比較
 タンブリング ウィンドウ トリガーとスケジュール トリガーは、どちらも時間のハートビートに対して動作します。 これらはどのように違うのでしょうか。
 
+> [!NOTE]
+> タンブリング ウィンドウ トリガーの実行では、"*トリガーされたパイプラインの実行が完了するまで待機します*"。 実行状態には、トリガーされたパイプラインの実行の状態が反映されます。 たとえば、トリガーされたパイプラインの実行が取り消された場合、対応するタンブリング ウィンドウ トリガーの実行が取り消し済みとマークされます。 これは、パイプラインの実行が開始されている限り成功としてマークされる、スケジュール トリガーの "ファイア アンド フォーゲット" ビヘイビアーとは異なります。
+
 次の表では、タンブリング ウィンドウ トリガーとスケジュール トリガーの比較を示します。
 
-|  | タンブリング ウィンドウ トリガー | スケジュール トリガー |
-|:--- |:--- |:--- |
+| Item | タンブリング ウィンドウ トリガー | スケジュール トリガー |
+| --- | --- | --- |
 | **バックフィル シナリオ** | サポートされています。 パイプライン実行は、過去のウィンドウ用にスケジュールを設定できます。 | サポートされていません。 パイプライン実行は、現時点および将来の期間のみに対して実行できます。 |
 | **信頼性** | 100% の信頼性です。 パイプライン実行は、指定した開始日から隙間なくすべてのウィンドウでスケジュールできます。 | 信頼性は低くなります。 |
 | **再試行機能** | サポートされています。 失敗したパイプライン実行には、既定の再試行ポリシー 0 か、トリガー定義でユーザーが指定したポリシーがあります。 コンカレンシー/サーバー/調整の制限が原因でパイプライン実行に失敗した場合は、自動的に再試行されます (つまり、状態コードが 400:ユーザー エラー、429:要求が多すぎる、500:内部サーバー エラーの場合)。 | サポートされていません。 |
 | **コンカレンシー** | サポートされています。 ユーザーは、トリガーのコンカレンシーの制限を明示的に設定できます。 1 から 50 個の同時実行のトリガーされたパイプライン実行が許可されます。 | サポートされていません。 |
-| **システム変数** | **WindowStart** および **WindowEnd** システム変数の使用がサポートされます。 ユーザーは、トリガー定義のトリガー システム変数として `triggerOutputs().windowStartTime` および `triggerOutputs().windowEndTime` にアクセスできます。 値はそれぞれ、ウィンドウの開始時刻と終了時刻として使用されます。 たとえば、1 時間ごとに実行されるタンブリング ウィンドウ トリガーの場合、午前 1 時から午前 2 時までのウィンドウの定義は `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` と `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z` です。 | サポートされていません。 |
+| **システム変数** | @trigger().scheduledTime および @trigger().startTime と共に、**WindowStart** および **WindowEnd** システム変数の使用もサポートします。 ユーザーは、トリガー定義のトリガー システム変数として `triggerOutputs().windowStartTime` および `triggerOutputs().windowEndTime` にアクセスできます。 値はそれぞれ、ウィンドウの開始時刻と終了時刻として使用されます。 たとえば、1 時間ごとに実行されるタンブリング ウィンドウ トリガーの場合、午前 1 時から午前 2 時までのウィンドウの定義は `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` と `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z` です。 | 既定の @trigger().scheduledTime および @trigger().startTime 変数のみがサポートされます。 |
 | **パイプラインとトリガーのリレーションシップ** | 一対一のリレーションシップをサポートします。 トリガーできるパイプラインは 1 つだけです。 | 多対多のリレーションシップをサポートします。 複数のトリガーが 1 つのパイプラインを開始することができます。 1 つのトリガーが複数のパイプラインを開始することもできます。 |
 
 ## <a name="next-steps"></a>次のステップ

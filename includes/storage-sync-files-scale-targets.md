@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6a053b94813145f9ccd69158d18edb728d5dad61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95c553d26a3e79b53106b933c629c5884c3e004c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74795807"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84466961"
 ---
 | リソース | 移行先 | ハード制限 |
 |----------|--------------|------------|
-| リージョンあたりのストレージ同期サービス数 | 20 のストレージ同期サービス | はい |
-| ストレージ同期サービスごとの同期グループ数 | 100 の同期グループ | はい |
+| リージョンあたりのストレージ同期サービス数 | 100 のストレージ同期サービス | はい |
+| ストレージ同期サービスごとの同期グループ数 | 200 の同期グループ | はい |
 | ストレージ同期サービスごとの登録サーバー数 | 99 サーバー | はい |
 | 同期グループあたりのクラウド エンドポイント数 | 1 クラウド エンドポイント | はい |
 | 同期グループあたりのサーバー エンドポイント数 | 50 サーバー エンドポイント | いいえ |

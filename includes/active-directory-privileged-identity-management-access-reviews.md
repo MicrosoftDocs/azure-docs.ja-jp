@@ -5,15 +5,15 @@ services: active-directory
 author: rolyon
 ms.service: active-directory
 ms.topic: include
-ms.date: 04/29/2019
-ms.author: rolyon
+ms.date: 05/26/2020
+ms.author: barclayn
 ms.custom: include file
-ms.openlocfilehash: d791c4ba46587ac5709d72cb31bc76f087118b03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ee02200f1fb32d430a858d218e27534561ebc24a
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67476239"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83868055"
 ---
 ## <a name="create-one-or-more-access-reviews"></a>1 つ以上のアクセス レビューを作成する
 
@@ -36,13 +36,14 @@ ms.locfileid: "67476239"
     ![ロール メンバーシップをレビューするためのユーザー スコープ](./media/active-directory-privileged-identity-management-access-reviews/users.png)
 
     > [!NOTE]
-    > 複数のロールを選択すると、複数のアクセス レビューが作成されます。 たとえば、5 つのロールを選択すると、5 つの別々のアクセス レビューが作成されます。
+    > - ここで選択されるロールには、[永続的なロールと資格のあるロール](../articles/active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)の両方が含まれます。
+    > - 複数のロールを選択すると、複数のアクセス レビューが作成されます。 たとえば、5 つのロールを選択すると、5 つの別々のアクセス レビューが作成されます。
 
-    Azure AD ロールのアクセス レビューを作成する場合の、レビューのメンバーシップ一覧の例を次に示します。
+    **Azure AD ロール**のアクセス レビューを作成する場合の、レビューのメンバーシップ一覧の例を次に示します。
 
     ![選択できる Azure AD ロールを一覧表示する [レビューのメンバーシップ] ウィンドウ](./media/active-directory-privileged-identity-management-access-reviews/review-membership.png)
 
-    Azure リソース ロールのアクセス レビューを作成する場合の、レビューのメンバーシップ一覧の例を次に示します。
+    **Azure リソース ロール**のアクセス レビューを作成する場合の、レビューのメンバーシップ一覧の例を次の図に示します。
 
     ![選択できる Azure リソース ロールを一覧表示する [レビューのメンバーシップ] ウィンドウ](./media/active-directory-privileged-identity-management-access-reviews/review-membership-azure-resource-roles.png)
 

@@ -3,24 +3,25 @@ title: VM のプライベート IP アドレスの構成 - Azure CLI
 description: Azure コマンド ライン インターフェイス (CLI) を使用して、仮想マシンのプライベート IP アドレスを構成する方法について説明します。
 services: virtual-network
 documentationcenter: na
-author: KumudD
-manager: twooley
+author: asudbring
+manager: KumudD
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 40b03a1a-ea00-454c-b716-7574cea49ac0
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2017
-ms.author: kumud
-ms.openlocfilehash: f4643aae0b28861f4ddb99d8dace749e62f930b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: c34ab73422d8dd41feb9da542ed63fdba060fe3f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78199480"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708163"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Azure CLI を使用して仮想マシンのプライベート IP アドレスを構成する
 
@@ -38,38 +39,7 @@ ms.locfileid: "78199480"
 
 1. まだ行っていない場合は、最新の [Azure CLI](/cli/azure/install-azure-cli) をインストールして構成し、[az login](/cli/azure/reference-index) を使用して Azure アカウントにログインします。
 
-2. [az network public-ip create](/cli/azure/network/public-ip) コマンドを使用して VM のパブリック IP を作成します。 出力の後に表示される一覧では、使用されたパラメーターについて説明されています。
-
-    > [!NOTE]
-    > 今回の手順とこの後の手順では、環境に応じて引数に異なる値を使用したほうが良い場合や、異なる値を使用する必要がある場合があります。
-
-    ```azurecli
-    az network public-ip create \
-    --name TestPIP \
-    --resource-group TestRG \
-    --location centralus \
-    --allocation-method Static
-    ```
-
-    予想される出力:
-
-   ```json
-   {
-        "publicIp": {
-            "idleTimeoutInMinutes": 4,
-            "ipAddress": "52.176.43.167",
-            "provisioningState": "Succeeded",
-            "publicIPAllocationMethod": "Static",
-            "resourceGuid": "79e8baa3-33ce-466a-846c-37af3c721ce1"
-        }
-    }
-    ```
-
-   * `--resource-group`: パブリック IP の作成場所となるリソース グループの名前。
-   * `--name`: パブリック IP の名前。
-   * `--location`: パブリック IP を作成する Azure リージョン。
-
-3. [az network nic create](/cli/azure/network/nic) コマンドを実行し、静的プライベート IP を使用して NIC を作成します。 出力の後に表示される一覧では、使用されたパラメーターについて説明されています。 
+2. [az network nic create](/cli/azure/network/nic) コマンドを実行し、静的プライベート IP を使用して NIC を作成します。 出力の後に表示される一覧では、使用されたパラメーターについて説明されています。 
    
     ```azurecli
     az network nic create \
@@ -117,11 +87,11 @@ ms.locfileid: "78199480"
     
     パラメーター:
 
-    * `--private-ip-address`: NIC の静的プライベート IP アドレスです。
-    * `--vnet-name`: NIC を作成する VNet の名前です。
-    * `--subnet`: NIC を作成するためのサブネットの名前です。
+    * `--private-ip-address`:NIC の静的プライベート IP アドレスです。
+    * `--vnet-name`:NIC を作成する VNet の名前です。
+    * `--subnet`:NIC を作成するためのサブネットの名前です。
 
-4. [azure vm create](/cli/azure/vm/nic) コマンドを実行し、パブリック IP および上記で作成した NIC を使用して VM を作成します。 出力の後に表示される一覧では、使用されたパラメーターについて説明されています。
+3. [azure vm create](/cli/azure/vm/nic) コマンドを実行し、パブリック IP および上記で作成した NIC を使用して VM を作成します。 出力の後に表示される一覧では、使用されたパラメーターについて説明されています。
    
     ```azurecli
     az vm create \
@@ -151,7 +121,7 @@ ms.locfileid: "78199480"
    
    基本的な [az vm create](/cli/azure/vm) パラメーター以外のパラメーター。
 
-   * `--nics`: VM が接続されている NIC の名前。
+   * `--nics`:VM が接続されている NIC の名前です。
    
 VM のオペレーティング システム内で Azure 仮想マシンに割り当てられるプライベート IP は、[Windows VM に複数の IP アドレスを割り当てる](virtual-network-multiple-ip-addresses-cli.md)場合など、必要でない限り静的に割り当てないことをお勧めします。 実際にオペレーティング システム内でプライベート IP アドレスを手動で設定する場合は、それが Azure [ネットワーク インターフェイス](virtual-network-network-interface-addresses.md#change-ip-address-settings)に割り当てられているプライベート IP アドレスと同じアドレスであるようにしてください。そうしないと、仮想マシンへの接続が失われる可能性があります。 詳細については、[プライベート IP アドレス](virtual-network-network-interface-addresses.md#private)設定に関するページを参照してください。
 

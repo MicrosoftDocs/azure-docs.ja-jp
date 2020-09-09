@@ -5,19 +5,16 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 07/30/2020
 ms.author: victorh
-ms.openlocfilehash: e0638cbccd5e3bc282dbdd7d3b5918e29081a12b
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 97d8d10e30d0d0c1654c82651220489785a37059
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80757166"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460220"
 ---
-# <a name="ip-groups-preview-in-azure-firewall"></a>Azure Firewall での IP グループ (プレビュー)
-
-> [!IMPORTANT]
-> このパブリック プレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することは避けてください。 特定の機能はサポート対象ではなく、機能が制限されることがあるか、Azure の場所によっては利用できない場合があります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
+# <a name="ip-groups-in-azure-firewall"></a>Azure Firewall での IP グループ
 
 IP グループを使用すると、次の方法で Azure Firewall 規則の IP アドレスをグループ化して管理できます。
 
@@ -40,7 +37,7 @@ IP グループでは、次の例のような IPv4 アドレス形式を使用�
 
 ## <a name="create-an-ip-group"></a>IP グループを作成する
 
-IP グループは、Azure portal、Azure CLI、または REST API を使用して作成できます。 詳しくは、「[IP グループを作成する (プレビュー)](create-ip-group.md)」をご覧ください。
+IP グループは、Azure portal、Azure CLI、または REST API を使用して作成できます。 詳細については、「[IP グループを作成する](create-ip-group.md)」を参照してください。
 
 ## <a name="browse-ip-groups"></a>IP グループを参照する
 1. Azure portal の検索バーに「**IP グループ**」と入力して選択します。 IP グループの一覧を確認できます。または、 **[追加]** を選択して新しい IP グループを作成できます。
@@ -65,9 +62,6 @@ IP グループ内のすべての IP アドレスと、それに関連付けら�
 
 Azure Firewall の DNAT 規則、アプリケーション規則、またはネットワーク規則を作成するときに、IP アドレスの **[Source type]\(接続元の種類\)** または **[Destination type]\(接続先の種類\)** として **[IP グループ]** を選択できます。
 
-> [!NOTE]
-> ファイアウォール ポリシーでは IP グループはサポートされていません。 現時点では、従来のファイアウォール規則でのみサポートされています。
-
 ![Firewall での IP グループ](media/ip-groups/fw-ipgroup.png)
 
 ## <a name="region-availability"></a>利用可能なリージョン
@@ -76,43 +70,7 @@ IP グループは、すべてのパブリック クラウド リージョンで
 
 ## <a name="ip-address-limits"></a>IP アドレスの制限
 
-50 個以下の IP グループの場合、ファイアウォール インスタンスごとにそれぞれ最大 5000 個の個別の IP アドレスを使用できます。 51 個から 100 個の IP グループの場合、ファイアウォール インスタンスごとにそれぞれ 500 個の個別の IP アドレスを使用できます。
-
-### <a name="examples"></a>例
-
-#### <a name="example-1-supported"></a>例 1: サポートされている
-
-|IP グループ  |IP アドレスの数  |表記  |ルール  |
-|---------|---------|---------|---------|
-|IPGroup1 |4096     |10.0.0.0/20  |Rule1|
-|IPGroup2     |3|196.0.0.0 - 196.0.0.2|Rule1|
-|IPGroup3     |1|1.2.3.4|Rule1|
-|     |**合計 4100**|         |         |
-|     |         |         |         |
-
-#### <a name="example-2-supported"></a>例 2: サポートされている
-
-|IP グループ  |IP アドレスの数  |表記  |ルール  |
-|---------|---------|---------|---------|
-|IPGroup1 |4096     |10.0.0.0/20  |Rule1|
-|IPGroup2     |4096|11.0.0.0/20|Rule1|
-|     |**合計 8192**|         |         |
-
-#### <a name="example-3-not-supported"></a>例 3: サポートされていない
-
-|IP グループ  |IP アドレスの数  |表記  |ルール  |
-|---------|---------|---------|---------|
-|IPGroup1 |8192     |10.0.0.0/20、11.0.0.0/20  |Rule1|
-|     |**合計 8192**|||
-
-#### <a name="example-4-supported"></a>例 4: サポートされている
-
-|IP グループ  |IP アドレスの数  |表記  |ルール  |
-|---------|---------|---------|---------|
-|IPGroup1 |4096     |10.0.0.0/20  |Rule1|
-|IPGroup2     |4096|11.0.0.0/20|Rule2|
-|     |**合計 8192**|         |         |
-
+ファイアウォールあたり最大 100 個の IP グループを割り当てることができ、各 IP グループには最大 5000 個の個別の IP アドレスまたは IP プレフィックスを含めることができます。
 
 ## <a name="related-azure-powershell-cmdlets"></a>関連する Azure PowerShell コマンドレット
 

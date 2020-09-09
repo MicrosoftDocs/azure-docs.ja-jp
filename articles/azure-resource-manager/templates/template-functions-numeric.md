@@ -3,12 +3,12 @@ title: テンプレート関数 - 数値
 description: Azure Resource Manager テンプレートで、数値を操作するために使用する関数について説明します。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: dc15ade453fc5ea4dc031ced0377892f4f8cf27d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 00b44d971a487a0bbec27f3fc2d0746cedd6f874
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192350"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84677918"
 ---
 # <a name="numeric-functions-for-arm-templates"></a>ARM テンプレート用の数値関数
 
@@ -48,7 +48,7 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートで整�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "first": {
@@ -171,7 +171,7 @@ copy の使い方の詳細については、次を参照してください。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "first": {
@@ -262,7 +262,7 @@ copy の使い方の詳細については、次を参照してください。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "stringToConvert": {
@@ -309,7 +309,7 @@ copy の使い方の詳細については、次を参照してください。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -360,7 +360,7 @@ copy の使い方の詳細については、次を参照してください。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -412,7 +412,7 @@ copy の使い方の詳細については、次を参照してください。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "first": {
@@ -470,7 +470,7 @@ copy の使い方の詳細については、次を参照してください。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "first": {
@@ -528,7 +528,7 @@ copy の使い方の詳細については、次を参照してください。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "first": {

@@ -1,18 +1,18 @@
 ---
 title: クイック スタート:PowerShell を使用してブループリントを作成する
 description: このクイックスタートでは、Azure Blueprints と PowerShell を使用して、成果物を作成、定義、デプロイします。
-ms.date: 05/06/2020
+ms.date: 08/27/2020
 ms.topic: quickstart
-ms.openlocfilehash: 79feafa48d5d180949b8a23163f2ee9b686e6076
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 339cd4628cda5f469a783db02c10f86259c93941
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864115"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051493"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>クイック スタート:PowerShell で Azure Blueprint を定義して割り当てる
 
-ブループリントの作成方法と割り当て方法について説明します。Resource Manager テンプレート、ポリシー、セキュリティなどに基づいて、再利用可能かつ短時間でデプロイできる構成を開発するための共通パターンを、ブループリントを通じて定義することができます。 このチュートリアルでは、組織内のブループリントの作成、発行、および割り当てに関連する一般的ないくつかのタスクを実行するための、Azure Blueprint の使用方法について説明します。
+ブループリントの作成方法と割り当て方法について学習すると、Azure Resource Manager テンプレート (ARM テンプレート)、ポリシー、セキュリティなどに基づいて、再利用可能かつ短時間でデプロイできる構成を開発するための共通パターンを定義することができます。 このチュートリアルでは、組織内のブループリントの作成、発行、および割り当てに関連する一般的ないくつかのタスクを実行するための、Azure Blueprint の使用方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -24,7 +24,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-blueprint"></a>ブループリントを作成する
 
-コンプライアンスの標準的なパターンを定義する最初のステップは、使用可能なリソースからブループリントを作成することです。 この例では、"MyBlueprint" という名前のブループリントを作成して、サブスクリプションのロールとポリシーの割り当てを構成します。 その後、リソース グループと Resource Manager テンプレート、さらに、そのリソース グループに対するロールの割り当てを追加します。
+コンプライアンスの標準的なパターンを定義する最初のステップは、使用可能なリソースからブループリントを作成することです。 この例では、"MyBlueprint" という名前のブループリントを作成して、サブスクリプションのロールとポリシーの割り当てを構成します。 その後、リソース グループ、ARM テンプレート、およびそのリソース グループに対するロールの割り当てを追加します。
 
 > [!NOTE]
 > PowerShell を使用するときは、最初に "_ブループリント_" オブジェクトを作成します。 追加する各 "_成果物_" でパラメーターを持つものについては、最初の "_ブループリント_" でパラメーターを事前に定義する必要があります。
@@ -187,9 +187,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
      New-AzBlueprintArtifact -Blueprint $blueprint -Name 'policyStorageTags' -ArtifactFile .\artifacts\policyStorageTags.json
      ```
 
-1. リソース グループにテンプレートを追加します。 Resource Manager テンプレートの **TemplateFile** には、テンプレートの標準的な JSON コンポーネントが含まれています。 また、このテンプレートでは、ブループリントの **storageAccountType**、**tagName**、**tagValue** の各パラメーターをテンプレートに渡すことによって再利用しています。 ブループリント パラメーターは、**TemplateParameterFile** パラメーターを使用してテンプレートに提供され、テンプレート JSON 内ではそのキーと値のペアを使用して値を挿入します。 ブループリントとテンプレート パラメーターの名前は同じでもかまいません。
+1. リソース グループにテンプレートを追加します。 ARM テンプレートの **TemplateFile** には、テンプレートの標準的な JSON コンポーネントが含まれています。 また、このテンプレートでは、ブループリントの **storageAccountType**、**tagName**、**tagValue** の各パラメーターをテンプレートに渡すことによって再利用しています。 ブループリント パラメーターは、**TemplateParameterFile** パラメーターを使用してテンプレートに提供され、テンプレート JSON 内ではそのキーと値のペアを使用して値を挿入します。 ブループリントとテンプレート パラメーターの名前は同じでもかまいません。
 
-   - JSON Azure Resource Manager テンプレート ファイル - \artifacts\templateStorage.json
+   - JSON ARM テンプレート ファイル - \artifacts\templateStorage.json
 
      ```json
      {
@@ -243,7 +243,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
      }
      ```
 
-   - JSON Azure Resource Manager テンプレート パラメーター ファイル - \artifacts\templateStorageParams.json
+   - JSON ARM テンプレート パラメーター ファイル - \artifacts\templateStorageParams.json
 
      ```json
      {

@@ -3,12 +3,12 @@ title: Azure Site Recovery を使用した VMware のディザスター リカ�
 description: Azure Site Recovery を使用してオンプレミスの VMware VM を Azure にディザスター リカバリーする場合のよくある質問に対する回答を確認します。
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: d551cef7037c0b6d7286cbb4b70d8f7a8f7f5cae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 603dc77e6f2a53abb1d65688ced77e58297b8ab5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259512"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086151"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware から Azure へのレプリケーションに関するよくある質問
 
@@ -122,7 +122,7 @@ Site Recovery では、オンプレミスの VMware VM と物理サーバーが 
 
 ### <a name="can-i-change-the-managed-disk-type-after-a-machine-is-protected"></a>マシンに保護を適用した後で、マネージド ディスクの種類を変更できますか?
 
-はい。実行中のレプリケーションの場合、[マネージド ディスクの種類は簡単に変更](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage)できます。 種類を変更する前に、マネージド ディスクで Shared Access Signature の URL が生成されていないことを確認します。
+はい。実行中のレプリケーションの場合、[マネージド ディスクの種類は簡単に変更](../virtual-machines/windows/convert-disk-storage.md)できます。 種類を変更する前に、マネージド ディスクで Shared Access Signature の URL が生成されていないことを確認します。
 
 1. Azure portal の**マネージド ディスク** リソースに移動し、 **[概要]** ブレードに Shared Access Signature の URL バナーがあるかどうかを確認します。
 1. バナーが表示されている場合は、これを選択して進行中のエクスポートをキャンセルします。
@@ -181,6 +181,10 @@ Azure への VMware のレプリケーションでは、ソース VM のディ�
 ### <a name="can-i-replicate-to-a-cache-or-target-storage-account-that-has-a-virtual-network-with-azure-firewalls-configured-on-it"></a>仮想ネットワーク (Azure Storage ファイアウォールあり) が構成されているキャッシュまたはターゲット ストレージ アカウントにレプリケートすることはできますか?
 
 いいえ、Site Recovery では、仮想ネットワーク上の Azure Storage へのレプリケーションはサポートされていません。
+
+### <a name="what-is-the-frequency-of-generation-of-crash-consistent-recovery-points"></a>クラッシュ整合性復旧ポイントはどのくらいの頻度で生成されますか?
+
+Site Recovery では、5 分ごとにクラッシュ整合性復旧ポイントが生成されます。
 
 ## <a name="component-upgrade"></a>コンポーネントのアップグレード
 

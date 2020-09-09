@@ -5,29 +5,30 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
-ms.openlocfilehash: 97e0456e274adee7d678e373cfd92b5003f3d801
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f1778d1f37217a5f65624be2fcc6c58c68002931
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83759100"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013284"
 ---
-# <a name="single-sided-rendering"></a>片面レンダリング
+# <a name="no-loc-textsingle-sided-rendering"></a>:::no-loc text="Single-sided"::: レンダリング
 
 ほとんどのレンダラーでは、パフォーマンスを向上させるために[バックフェイス カリング](https://en.wikipedia.org/wiki/Back-face_culling)を使用します。 ただし、[切断面](cut-planes.md)を使用してメッシュが切り開かれると、多くの場合、三角形の裏面が見えるようになります。 それらの三角形がカリングされている場合、表示される結果は納得のいくものではありません。
 
 この問題を確実に回避する方法は、三角形の*両面*をレンダリングすることです。 バックフェイス カリングを使用しないとパフォーマンスに影響があるため、既定では、Azure Remote Rendering でのみ、切断面と交差しているメッシュについて両面レンダリングに切り替わります。
 
-この動作は、*片面レンダリング*の設定を使用してカスタマイズできます。
+この動作は、 *:::no-loc text="single-sided"::: レンダリング*の設定を使用してカスタマイズできます。
 
 > [!CAUTION]
-> 片面レンダリングの設定は試験的な機能です。 将来、再度削除される可能性があります。 アプリケーション内の重大な問題を実際に解決する場合を除き、既定の設定は変更しないでください。
+> :::no-loc text="single-sided"::: レンダリングの設定は試験的な機能です。 将来、再度削除される可能性があります。 アプリケーション内の重大な問題を実際に解決する場合を除き、既定の設定は変更しないでください。
 
 ## <a name="prerequisites"></a>前提条件
 
-片面レンダリングの設定は、`opaqueMaterialDefaultSidedness` オプションを `SingleSided` に設定して[変換](../../how-tos/conversion/configure-model-conversion.md)されたメッシュにのみ効果があります。 既定では、このオプションは `DoubleSided` に設定されています。
+:::no-loc text="single-sided"::: レンダリングの設定は、`opaqueMaterialDefaultSidedness` オプションを `SingleSided` に設定して[変換](../../how-tos/conversion/configure-model-conversion.md)されたメッシュにのみ効果があります。 既定では、このオプションは `DoubleSided` に設定されています。
 
-## <a name="single-sided-rendering-setting"></a>片面レンダリングの設定
+## <a name="no-loc-textsingle-sided-rendering-setting"></a>:::no-loc text="Single-sided"::: レンダリング設定
 
 3 種類のモードがあります。
 
@@ -35,9 +36,9 @@ ms.locfileid: "83759100"
 
 **DynamicDoubleSiding:** このモードでは、切断面がメッシュと交差すると、両面レンダリングに自動的に切り替わります。 これは既定のモードです。
 
-**AlwaysDoubleSided:** すべての片面ジオメトリが常に強制的に両面レンダリングされるようにします。 このモードは大部分が公開されているので、片面レンダリングと両面レンダリングのパフォーマンスへの影響を簡単に比較できます。
+**AlwaysDoubleSided:** すべての片面ジオメトリが常に強制的に両面レンダリングされるようにします。 このモードは大部分が公開されているので、:::no-loc text="single-sided"::: レンダリングと :::no-loc text="double-sided"::: レンダリングのパフォーマンスへの影響を簡単に比較できます。
 
-片面レンダリングの設定の変更は、次のように行うことができます。
+:::no-loc text="single-sided"::: レンダリングの設定の変更は、次のように行うことができます。
 
 ```cs
 void ChangeSingleSidedRendering(AzureSession session)
@@ -55,13 +56,13 @@ void ChangeSingleSidedRendering(AzureSession session)
 ```cpp
 void ChangeSingleSidedRendering(ApiHandle<AzureSession> session)
 {
-    ApiHandle<SingleSidedSettings> settings = *session->Actions()->SingleSidedSettings();
+    ApiHandle<SingleSidedSettings> settings = session->Actions()->GetSingleSidedSettings();
 
     // Single-sided geometry is rendered as is
-    settings->Mode(SingleSidedMode::Normal);
+    settings->SetMode(SingleSidedMode::Normal);
 
     // Single-sided geometry is always rendered double-sided
-    settings->Mode(SingleSidedMode::AlwaysDoubleSided);
+    settings->SetMode(SingleSidedMode::AlwaysDoubleSided);
 }
 ```
 

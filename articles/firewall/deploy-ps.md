@@ -4,15 +4,15 @@ description: この記事では、Azure PowerShell を使用して Azure Firewal
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.date: 4/10/2019
+ms.date: 08/28/2020
 ms.author: victorh
-ms.topic: conceptual
-ms.openlocfilehash: 7f48012ca1f97c2e28380d95da37863c4bc17f63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.openlocfilehash: c720d7c261421ade9dfce01f0b116123dcab1e55
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73831836"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071705"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>Azure PowerShell を使用して Azure Firewall のデプロイと構成を行う
 
@@ -35,13 +35,13 @@ Azure サブネットから外に向かうアウトバウンド ネットワー�
 
 この記事では、次のことについて説明します。
 
-> [!div class="checklist"]
-> * テスト ネットワーク環境を設定する
-> * ファイアウォールをデプロイする
-> * 既定のルートを作成する
-> * www.google.com へのアクセスを許可するようにアプリケーションを構成する
-> * 外部 DNS サーバーへのアクセスを許可するようにネットワーク ルールを構成する
-> * ファイアウォールをテストする
+
+* テスト ネットワーク環境を設定する
+* ファイアウォールをデプロイする
+* 既定のルートを作成する
+* www.google.com へのアクセスを許可するようにアプリケーションを構成する
+* 外部 DNS サーバーへのアクセスを許可するようにネットワーク ルールを構成する
+* ファイアウォールをテストする
 
 好みに応じて、[Azure portal](tutorial-firewall-deploy-portal.md) を使ってこの手順を行うこともできます。
 
@@ -177,7 +177,7 @@ $AppRule1 = New-AzFirewallApplicationRule -Name Allow-Google -SourceAddress 10.0
 $AppRuleCollection = New-AzFirewallApplicationRuleCollection -Name App-Coll01 `
   -Priority 200 -ActionType Allow -Rule $AppRule1
 
-$Azfw.ApplicationRuleCollections = $AppRuleCollection
+$Azfw.ApplicationRuleCollections.Add($AppRuleCollection)
 
 Set-AzFirewall -AzureFirewall $Azfw
 ```
@@ -195,7 +195,7 @@ $NetRule1 = New-AzFirewallNetworkRule -Name "Allow-DNS" -Protocol UDP -SourceAdd
 $NetRuleCollection = New-AzFirewallNetworkRuleCollection -Name RCNet01 -Priority 200 `
    -Rule $NetRule1 -ActionType "Allow"
 
-$Azfw.NetworkRuleCollections = $NetRuleCollection
+$Azfw.NetworkRuleCollections.Add($NetRuleCollection)
 
 Set-AzFirewall -AzureFirewall $Azfw
 ```

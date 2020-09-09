@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0393673663df8f3ca580ff34e16bee910b955f8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5def6db9d551b3882204c9f997f164a0df7ac223
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75649647"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063306"
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft.Network.PublicIpAddressCombo UI 要素
 
@@ -18,7 +18,7 @@ ms.locfileid: "75649647"
 
 ## <a name="ui-sample"></a>UI サンプル
 
-![Microsoft.Network.PublicIpAddressCombo](./media/managed-application-elements/microsoft.network.publicipaddresscombo.png)
+![Microsoft.Network.PublicIpAddressCombo](./media/managed-application-elements/microsoft-network-publicipaddresscombo.png)
 
 - ユーザーがパブリック IP アドレスとして [なし] を選択した場合、[ドメイン名ラベル] ボックスは表示されません。
 - ユーザーが既存のパブリック IP アドレスを選択した場合、[ドメイン名ラベル] ボックスは無効になります。 その値は、選択した IP アドレスのドメイン名ラベルになります。

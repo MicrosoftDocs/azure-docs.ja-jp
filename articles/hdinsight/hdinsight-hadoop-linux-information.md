@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: e9f8fe17fa28cc5fcc4543bfb5e194bd3e7b837d
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 55ffd563ea0a99d32608bd90bd53d7dc88eb4cf2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594099"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961814"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux での HDInsight の使用方法
 
@@ -40,13 +40,17 @@ HDInsight は、[ドメイン参加済み](./domain-joined/hdinsight-security-ov
 
 内部的には、クラスターの各ノードに、クラスターの構成時に割り当てられた名前が与えられます。 クラスター名を見つける方法については、Ambari Web UI の**ホスト**に関するページを参照してください。 次を使用して、Ambari REST API からホストの一覧を返すこともできます。
 
-    curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts" | jq '.items[].Hosts.host_name'
+```console
+curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts" | jq '.items[].Hosts.host_name'
+```
 
 `CLUSTERNAME` をクラスターの名前に置き換えます。 メッセージが表示されたら、管理者アカウントのパスワードを入力します。 このコマンドで返される JSON ドキュメントにクラスター内のホストの一覧が含まれます。 [jq](https://stedolan.github.io/jq/) により、各ホストの `host_name` 要素値が取り出されます。
 
 特定のサービスのノード名を見つける必要がある場合、そのコンポーネントについて Ambari に問い合わせることができます。 たとえば、HDFS 名のノードのホストを見つけるには、次のコマンドを利用します。
 
-    curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/NAMENODE" | jq '.host_components[].HostRoles.host_name'
+```console
+curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/NAMENODE" | jq '.host_components[].HostRoles.host_name'
+```
 
 このコマンドで、サービスの説明が記載された JSON ドキュメントが返されます。[jq](https://stedolan.github.io/jq/) により、ホストの `host_name` 値のみが引き出されます。
 
@@ -107,7 +111,9 @@ HDInsight を使用する場合、データ ファイルは、Azure Blob Storage
 
 Azure Storage または Data Lake Storage を使用している場合、HDInsight からデータにアクセスするときに特別な処理を行う必要はありません。 たとえば、次のコマンドでは、Azure Storage 上または Data Lake Storage 上のどちらに格納されている場合でも、`/example/data` フォルダー内のファイルを一覧表示します。
 
-    hdfs dfs -ls /example/data
+```console
+hdfs dfs -ls /example/data
+```
 
 HDInsight では、データ ストレージ リソース (Azure Blob Storage と Azure Data Lake Storage) は、コンピューティング リソースから切り離されています。 必要に応じて計算を実行するために HDInsight クラスターを作成し、作業が完了したら後でそのクラスターを削除することができます。 一方で、データ ファイルは、必要である間中、クラウド ストレージ内に安全に保持されます。
 
@@ -239,7 +245,7 @@ HDInsight は管理されたサービスです。 Azure によってクラスタ
 > [!IMPORTANT]
 > HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 >
-> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [https://stackoverflow.com](https://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[https://apache.org](https://apache.org) に[Hadoop](https://hadoop.apache.org/)、[Spark](https://spark.apache.org/) などのプロジェクト サイトもあります。
+> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 たとえば、[HDInsight に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-hdinsight.html)や [https://stackoverflow.com](https://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[https://apache.org](https://apache.org) に[Hadoop](https://hadoop.apache.org/)、[Spark](https://spark.apache.org/) などのプロジェクト サイトもあります。
 
 ## <a name="next-steps"></a>次のステップ
 

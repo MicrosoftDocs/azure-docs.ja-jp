@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: e58e36b3caa5a5ecd137cb9cb61dad7ddb95ff3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dbeb1305a64fcace0be527708bc9122a4ffb931d
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228075"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870835"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Cosmos DB への Azure Stream Analytics の出力  
 Azure Stream Analytics では、JSON 出力のターゲットを [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) にすることができるため、構造化されていない JSON データに対してデータ アーカイブと待機時間の短いクエリを有効にすることができます。 このドキュメントでは、この構成を実装するためのベスト プラクティスについて説明します。
@@ -72,7 +72,7 @@ Azure Cosmos DB では、パーティションがご利用のワークロード�
 
 複数の異なる値を持つパーティション キー プロパティを選択して、これらの値に、ご利用のワークロードを均等に分散させることが重要です。 パーティションを分割すると、当然ながら、同一のパーティション キーを必要とする要求は、単一パーティションの最大スループットによって制限されます。 
 
-同一パーティション キーに属するドキュメントのストレージ サイズは 10 GB に制限されます。 理想的なパーティション キーとは、クエリ内でフィルターとして頻繁に使用され、ソリューションのスケーラビリティを確保するために十分なカーディナリティを持つものを指します。
+同一パーティション キーに属するドキュメントのストレージ サイズは 20 GB に制限されます。 理想的なパーティション キーとは、クエリ内でフィルターとして頻繁に使用され、ソリューションのスケーラビリティを確保するために十分なカーディナリティを持つものを指します。
 
 また、パーティション キーは Azure Cosmos DB 用のストアド プロシージャやトリガーでのトランザクションの境界でもあります。 パーティション キーは、トランザクション内で同時に発生するドキュメントが同一のパーティション キーの値を共有できるように選択する必要があります。 パーティション キーの選択については、記事「[Azure Cosmos DB でのパーティション分割](../cosmos-db/partitioning-overview.md)」に詳しく説明されています。
 

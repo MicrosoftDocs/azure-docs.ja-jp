@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: f221a0bdf579dbbf42ecf64e18803decfb718456
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c0f4e02a76044268946a4a482eaeccf5d622b8a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060657"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036266"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Azure Linux VM に対する SSH 接続の失敗、エラー、拒否のトラブルシューティング
 この記事は、Linux 仮想マシン (VM) に接続しようとしたときに、Secure Shell (SSH) エラー、SSH 接続エラー、または SSH の拒否により発生する問題を見つけて修正するために役立ちます。 Azure Portal、Azure CLI、または Linux 用の VM アクセス拡張機能を使用して、接続の問題を解決できます。
@@ -34,7 +34,7 @@ ms.locfileid: "80060657"
 3. [ネットワーク セキュリティ グループ](../../virtual-network/security-overview.md) ルールで SSH トラフィックが許可されていることを確認します。
    * SSH トラフィックを許可する[ネットワーク セキュリティ グループ規則](#security-rules)が存在することを確認します (既定では TCP ポート 22)。
    * ポートのリダイレクト/マッピングは、Azure Load Balancer なしでは使用できません。
-4. [VM リソースの正常性](../../resource-health/resource-health-overview.md)を確認します。
+4. [VM リソースの正常性](../../service-health/resource-health-overview.md)を確認します。
    * VM が正常であると報告されていることを確認します。
    * [ブート診断を有効にしている](boot-diagnostics.md)場合は、VM のブート エラーがログに報告されていないことを確認します。
 5. [VM を再起動します](#restart-vm)。
@@ -69,11 +69,11 @@ SSH 構成をリセットするには、上のスクリーンショットのよ�
 
 ### <a name="check-security-rules"></a><a id="security-rules" />セキュリティ規則を確認する
 
-[IP フロー検証](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md)を使用して、ネットワーク セキュリティ グループ規則によって、仮想マシンから送受信されるトラフィックがブロックされていないかどうかを確認します。 有効なセキュリティ グループ規則を確認して、SSH ポート (既定では 22) に対して受信 "許可" NSG 規則が存在し、優先されていることを確認することもできます。 詳細については、「[有効なセキュリティ規則を使用した VM トラフィック フローのトラブルシューティング](../../virtual-network/diagnose-network-traffic-filter-problem.md)」を参照してください。
+[IP フロー検証](../../network-watcher/diagnose-vm-network-traffic-filtering-problem.md)を使用して、ネットワーク セキュリティ グループ規則によって、仮想マシンから送受信されるトラフィックがブロックされていないかどうかを確認します。 有効なセキュリティ グループ規則を確認して、SSH ポート (既定では 22) に対して受信 "許可" NSG 規則が存在し、優先されていることを確認することもできます。 詳細については、「[有効なセキュリティ規則を使用した VM トラフィック フローのトラブルシューティング](../../virtual-network/diagnose-network-traffic-filter-problem.md)」を参照してください。
 
 ### <a name="check-routing"></a>ルーティングを確認する
 
-Network Watcher の[次ホップ](../../network-watcher/network-watcher-check-next-hop-portal.md)機能を使用して、ルートが仮想マシンとの間でトラフィックのルーティングを妨げていないことを確認します。 有効なルートを見直し、ネットワーク インターフェイスのすべての有効なルートを確認することもできます。 詳細については、「[有効なルートを使用した VM トラフィック フローのトラブルシューティング](../../virtual-network/diagnose-network-routing-problem.md)」を参照してください。
+Network Watcher の[次ホップ](../../network-watcher/diagnose-vm-network-routing-problem.md)機能を使用して、ルートが仮想マシンとの間でトラフィックのルーティングを妨げていないことを確認します。 有効なルートを見直し、ネットワーク インターフェイスのすべての有効なルートを確認することもできます。 詳細については、「[有効なルートを使用した VM トラフィック フローのトラブルシューティング](../../virtual-network/diagnose-network-routing-problem.md)」を参照してください。
 
 ## <a name="use-the-azure-vm-serial-console"></a>Azure VM シリアル コンソールの使用
 [Azure VM シリアル コンソール](./serial-console-linux.md)では、Linux 仮想マシンのテキスト ベースのコンソールにアクセスできます。 コンソールを使用して、対話型シェル内で SSH 接続のトラブルシューティングを行うことができます。 シリアル コンソールを使用するための[前提条件](./serial-console-linux.md#prerequisites)を満たしていることを確認し、次のコマンドを試して SSH 接続のトラブルシューティングをさらに行います。
@@ -137,7 +137,7 @@ Linux 用の VM アクセス拡張機能は、実行するアクションを定�
 
 ```json
 {
-    "reset_ssh":"True"
+    "reset_ssh":True
 }
 ```
 
@@ -173,7 +173,7 @@ az vm extension set --resource-group philmea --vm-name Ubuntu \
 ```
 
 ## <a name="use-the-azure-classic-cli"></a>Azure クラシック CLI を使用する
-まだインストールしていない場合は、[Azure クラシック CLI をインストールし、Azure サブスクリプションに接続します](../../cli-install-nodejs.md)。 次のコマンドを実行して、確実に Resource Manager モードを使用するようにします。
+まだインストールしていない場合は、[Azure クラシック CLI をインストールし、Azure サブスクリプションに接続します](/cli/azure/install-classic-cli)。 次のコマンドを実行して、確実に Resource Manager モードを使用するようにします。
 
 ```azurecli
 azure config mode arm
@@ -232,7 +232,7 @@ azure vm restart --resource-group myResourceGroup --name myVM
 ```
 
 ## <a name="redeploy-a-vm"></a><a id="redeploy-vm" />VM を再デプロイする
-Azure 内で VM を別のノードに再デプロイすると、基になるネットワーク問題を修正する場合があります。 VM の再デプロイについては、「[新しい Azure ノードへの仮想マシンの再デプロイ](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+Azure 内で VM を別のノードに再デプロイすると、基になるネットワーク問題を修正する場合があります。 VM の再デプロイについては、「[新しい Azure ノードへの仮想マシンの再デプロイ](./redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json)」を参照してください。
 
 > [!NOTE]
 > この操作を行うと、一時ディスクのデータが失われ、仮想マシンに関連付けられている動的 IP アドレスが更新されます。
@@ -268,10 +268,10 @@ azure vm redeploy --resource-group myResourceGroup --name myVM
 * [Azure Portal](https://portal.azure.com) からリモート アクセスをリセットします。 Azure portal で VM を選択し、 **[Reset Remote]\(リモートのリセット\)** を選択します。
 * VM を再起動します。 [Azure portal](https://portal.azure.com) で VM を選択し、 **[再起動]** を選択します。
 
-* 仮想マシンを新しい Azure ノードに VM を再デプロイします。 VM の再デプロイ方法については、「[新しい Azure ノードへの仮想マシンの再デプロイ](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+* 仮想マシンを新しい Azure ノードに VM を再デプロイします。 VM の再デプロイ方法については、「[新しい Azure ノードへの仮想マシンの再デプロイ](./redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json)」を参照してください。
 
     この操作を行うと、一時ディスクのデータが失われ、仮想マシンに関連付けられている動的 IP アドレスが更新されます。
-* [Linux ベースの仮想マシンのパスワードまたは SSH をリセットする方法](../linux/classic/reset-access-classic.md) の指示に従って、以下の操作を行います。
+* [Linux ベースの仮想マシンのパスワードまたは SSH をリセットする方法](/previous-versions/azure/virtual-machines/linux/classic/reset-access-classic) の指示に従って、以下の操作を行います。
 
   * パスワードまたは SSH キーをリセットする
   * *sudo* ユーザー アカウントを作成する
@@ -281,5 +281,5 @@ azure vm redeploy --resource-group myResourceGroup --name myVM
 
 ## <a name="additional-resources"></a>その他のリソース
 * 上記の手順を実行しても VM に SSH 接続できない場合は、「[SSH の詳細なトラブルシューティング手順](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照して、問題を解決するための追加の手順を確認します。
-* アプリケーションへのアクセスのトラブルシューティングに関する詳細については、「[Linux Azure 仮想マシンにおけるアプリケーション接続の問題のトラブルシューティング](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
-* クラシック デプロイ モデルを使用して作成された仮想マシンのトラブルシューティングの詳細については、 [Linux ベースの仮想マシンのパスワードまたは SSH をリセットする方法](../linux/classic/reset-access-classic.md)に関するページを参照してください。
+* アプリケーションへのアクセスのトラブルシューティングに関する詳細については、「[Linux Azure 仮想マシンにおけるアプリケーション接続の問題のトラブルシューティング](./troubleshoot-app-connection.md?toc=/azure/virtual-machines/linux/toc.json)」を参照してください。
+* クラシック デプロイ モデルを使用して作成された仮想マシンのトラブルシューティングの詳細については、 [Linux ベースの仮想マシンのパスワードまたは SSH をリセットする方法](/previous-versions/azure/virtual-machines/linux/classic/reset-access-classic)に関するページを参照してください。

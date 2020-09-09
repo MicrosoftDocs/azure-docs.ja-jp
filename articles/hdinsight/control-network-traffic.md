@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 031dbb0e8c9b9fb8dc37b264f9ba8e1186efc832
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 54a55789cf867c97cf2384b48f1e5545ee54dafc
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82782572"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773408"
 ---
 # <a name="control-network-traffic-in-azure-hdinsight"></a>Azure HDInsight のネットワーク トラフィックを制御する
 
@@ -36,7 +36,7 @@ Azure Virtual Network のネットワーク トラフィックは次のメソッ
 
 3. HDInsight をインストールする予定のサブネットのネットワーク セキュリティ グループを作成または変更します。
 
-    * __ネットワーク セキュリティ グループ__: IP アドレスからの __受信__ トラフィックをポート __443__ で許可します。 これにより、HDInsight 管理サービスが仮想ネットワークの外部から、クラスターに確実に到達できます。
+    * __ネットワーク セキュリティ グループ__: IP アドレスからの __受信__ トラフィックをポート __443__ で許可します。 これにより、HDInsight 管理サービスが仮想ネットワークの外部から、クラスターに確実に到達できます。 __Kafka REST プロキシ__が有効なクラスターの場合、__受信__トラフィックをポート __9400__ でも許可します。 これにより、Kafka REST プロキシ サーバーに到達できるようになります。
 
 ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループの概要](../virtual-network/security-overview.md)に関する記事を参照してください。
 

@@ -1,6 +1,6 @@
 ---
 title: 認証 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
-description: Threat Modeling Tool で公開されている脅威への対応
+description: Threat Modeling Tool での認証の対応策について説明します。 軽減策の情報を参照し、コード例を確認します。
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.custom: has-adal-ref
-ms.openlocfilehash: 569e8d769d56acbb4c7fb4258952ec19e44b58e4
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.custom: has-adal-ref, devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 65e680a14cfc878b6dc406a179a0aa3afe038563
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607828"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004716"
 ---
 # <a name="security-frame-authentication--mitigations"></a>セキュリティ フレーム:認証 | 対応策
 
@@ -105,7 +105,7 @@ ms.locfileid: "82607828"
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
-| 詳細 | <p>組織のポリシーとベスト プラクティスに準拠しているパスワードおよびアカウント ポリシーを実装する必要があります。</p><p>ブルート フォース攻撃や辞書ベース推測を防ぐには: ユーザーが必ず複雑なパスワード (例: 12 文字以上、英数字と特殊文字) を設定するように、強力なパスワード ポリシーを実装する必要があります。</p><p>アカウント ロックアウト ポリシーは次のように実装されます。</p><ul><li>**ソフト ロックアウト:** ブルート フォース攻撃からのユーザー保護に適したオプションです。 たとえば、ユーザーが間違ったパスワードを 3 回入力するたびに、アプリケーションによりアカウントが 1 分間ロックダウンされます。これにより、パスワードのブルート フォース攻撃速度が低下し、攻撃を続行するメリットが少なくなります。 これに対してハード ロックアウト対策を実装しようとすると、アカウントを完全にロックして "DoS" を行うことになります。 アプリケーションが OTP (One Time Password) を生成し、それをアウトオブバンド (電子メール、SMS などで) でユーザーに送信することもできます。 また、失敗回数がしきい値を超えた時点で CAPTCHA を実装する方法もあります。</li><li>**ハード ロックアウト:** アプリケーションを攻撃しているユーザーを検出し、そのアカウントを、対応チームがフォレンジクス調査を行う時間を確保できるまで完全にロックアウトすることで対抗する場合は、必ずこの種類のロックアウトを適用します。 このプロセスの後に、ユーザーのアカウントを元に戻すか、そのユーザーに対して法的手段を取るかを決めることができます。 この方法では、攻撃者が、それ以上アプリケーションとインフラストラクチャに侵入できません。</li></ul><p>既定および予測可能なアカウントへの攻撃を防ぐには、すべてのキーやパスワードが変更可能で、インストール後に生成または変更されたことを確認します。</p><p>アプリケーションがパスワードを自動生成する必要がある場合は、自動生成されたパスワードがランダムで、エントロピーが高いことを確認します。</p>|
+| 詳細 | <p>組織のポリシーとベスト プラクティスに準拠しているパスワードおよびアカウント ポリシーを実装する必要があります。</p><p>ブルート フォース攻撃や辞書ベース推測を防ぐには、ユーザーが必ず複雑なパスワード (例: 12 文字以上、英数字と特殊文字) を設定するように、強力なパスワード ポリシーを実装します。</p><p>アカウント ロックアウト ポリシーは次のように実装されます。</p><ul><li>**ソフト ロックアウト:** ブルート フォース攻撃からのユーザー保護に適したオプションです。 たとえば、ユーザーが間違ったパスワードを 3 回入力するたびに、アプリケーションによりアカウントが 1 分間ロックダウンされます。これにより、パスワードのブルート フォース攻撃速度が低下し、攻撃を続行するメリットが少なくなります。 これに対してハード ロックアウト対策を実装しようとすると、アカウントを完全にロックして "DoS" を行うことになります。 アプリケーションが OTP (One Time Password) を生成し、それをアウトオブバンド (電子メール、SMS などで) でユーザーに送信することもできます。 また、失敗回数がしきい値を超えた時点で CAPTCHA を実装する方法もあります。</li><li>**ハード ロックアウト:** アプリケーションを攻撃しているユーザーを検出し、そのアカウントを、対応チームがフォレンジクス調査を行う時間を確保できるまで完全にロックアウトすることで対抗する場合は、必ずこの種類のロックアウトを適用します。 このプロセスの後に、ユーザーのアカウントを元に戻すか、そのユーザーに対して法的手段を取るかを決めることができます。 この方法では、攻撃者が、それ以上アプリケーションとインフラストラクチャに侵入できません。</li></ul><p>既定および予測可能なアカウントへの攻撃を防ぐには、すべてのキーやパスワードが変更可能で、インストール後に生成または変更されたことを確認します。</p><p>アプリケーションがパスワードを自動生成する必要がある場合は、自動生成されたパスワードがランダムで、エントロピーが高いことを確認します。</p>|
 
 ## <a name="implement-controls-to-prevent-username-enumeration"></a><a id="controls-username-enum"></a>ユーザー名が列挙されないコントロールを実装する
 
@@ -182,7 +182,7 @@ ms.locfileid: "82607828"
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [Azure Multi-Factor Authentication とは](https://azure.microsoft.com/documentation/articles/multi-factor-authentication/) |
-| **手順** | <p>Multi-Factor Authentication (MFA) は、複数の確認方法を要求することで、ユーザーのサインインとトランザクションにさらなる重要なセキュリティ レイヤーを追加する認証方法です。 これらは、次の確認方法のうち 2 つ以上を要求することで機能します。</p><ul><li>ユーザーが知っているもの (通常はパスワード)</li><li>ユーザーが持っているもの (携帯電話など、簡単には複製できない信頼できるデバイス)</li><li>ユーザー自身 (生体認証)</li><ul>|
+| **手順** | <p>Multi-Factor Authentication (MFA) は、複数の確認方法を要求することで、ユーザーのサインインとトランザクションにさらなる重要なセキュリティ レイヤーを追加する認証方法です。 これらは、次の確認方法のうち 2 つ以上を要求することで機能します。</p><ul><li>ユーザーが知っている情報 (一般にパスワード)</li><li>ユーザーの所持品 (複製が困難な、携帯電話などの信頼されているデバイス)</li><li>ユーザー自身 (生体認証)</li><ul>|
 
 ## <a name="restrict-anonymous-access-to-service-fabric-cluster"></a><a id="anon-access-cluster"></a>Service Fabric クラスターへの匿名アクセスを制限する
 
@@ -288,7 +288,7 @@ ms.locfileid: "82607828"
 すべての受信または送信メッセージに対して、常に Windows ドメインまたは証明書認証を要求するように MSMQ を構成します。
 
 ### <a name="example"></a>例
-以下の WCF 構成ファイルの `<netMsmqBinding/>` 要素は、MSMQ キューに接続するときに証明書認証を有効にします。 クライアントは、X.509 証明書を使用して認証されます。 クライアント証明書は、サーバーの証明書ストアに存在する必要があります。
+以下の WCF 構成ファイルの `<netMsmqBinding/>` 要素は、MSMQ キューに接続するときに証明書認証を有効にします。 クライアントは、X.509 証明書を使用して認証されます。 クライアント証明書が、サーバーの証明書ストアに存在する必要があります。
 ```
 <bindings>
     <netMsmqBinding>
@@ -458,7 +458,7 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 | **適用できるテクノロジ** | ジェネリック、C#、Node.JS、  |
 | **属性**              | 該当なし、ゲートウェイの選択 - Azure IoT Hub |
 | **参照**              | 該当なし、[.NET での Azure IoT Hub](https://azure.microsoft.com/documentation/articles/iot-hub-csharp-csharp-getstarted/)、[IoT Hub と Node.JS の概要](https://azure.microsoft.com/documentation/articles/iot-hub-node-node-getstarted)、[SAS と証明書による IoT のセキュリティ保護](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/)、[Git リポジトリ](https://github.com/Azure/azure-iot-sdks/) |
-| **手順** | <ul><li>**ジェネリック:** トランスポート層セキュリティ (TLS) または IPSec を使ってデバイスを認証します。 完全な非対称暗号を扱うことのできないデバイスでは、インフラストラクチャが事前共有キー (PSK) の使用をサポートしている必要があります。 Azure AD の OAuth をご利用ください。</li><li>**C#:** DeviceClient インスタンスを作成するとき、既定では、Create メソッドによって、IoT Hub と通信するために AMQP プロトコルを使用する DeviceClient インスタンスが作成されます。 HTTPS プロトコルを使用するには、プロトコルを引数として受け取る、Create メソッドのオーバーライドを使用します。 HTTPS プロトコルを使用する場合は、`Microsoft.AspNet.WebApi.Client` NuGet パッケージをプロジェクトに追加して、`System.Net.Http.Formatting` 名前空間を含める必要もあります。</li></ul>|
+| **手順** | <ul><li>**ジェネリック:** トランスポート層セキュリティ (TLS) または IPSec を使ってデバイスを認証します。 完全な非対称暗号を扱うことのできないデバイスでは、インフラストラクチャが事前共有キー (PSK) の使用をサポートしている必要があります。 Azure AD の OAuth をご利用ください。</li><li>**C#:** DeviceClient インスタンスを作成するとき、既定では、Create メソッドは、IoT Hub と通信するために AMQP プロトコルを使用する DeviceClient インスタンスを作成します。 HTTPS プロトコルを使用するには、プロトコルを引数として受け取る、Create メソッドのオーバーライドを使用します。 HTTPS プロトコルを使用する場合は、`Microsoft.AspNet.WebApi.Client` NuGet パッケージをプロジェクトに追加して、`System.Net.Http.Formatting` 名前空間を含める必要もあります。</li></ul>|
 
 ### <a name="example"></a>例
 ```csharp
@@ -579,5 +579,5 @@ await deviceClient.SendEventAsync(message);
 | **SDL フェーズ**               | Build |
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし |
-| **参照**              | [Shared Access Signature、第 1 部: SAS モデルについて](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)、[Shared Access Signatures、第 2 部: Blob Storage での SAS の作成と使用](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-2/)、[Shared Access Signature と Stored Access Policy を使用してアカウントのオブジェクトに対するアクセス権を委任する方法](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_how-to-delegate-access-to-objects-in-your-account-using-shared-access-signatures-and-stored-access-policies) |
+| **参照**              | [Shared Access Signature、第 1 部: SAS モデルについて](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)、[Shared Access Signature、第 2 部: Blob Storage での SAS の作成と使用](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-2/)、[Shared Access Signature と Stored Access Policy を使用してアカウントのオブジェクトに対するアクセス権を委任する方法](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_how-to-delegate-access-to-objects-in-your-account-using-shared-access-signatures-and-stored-access-policies) |
 | **手順** | <p>Shared Access Signature (SAS) の使用は、アカウント アクセス キーを知らせずに、自分のストレージ アカウントのオブジェクトへの制限付きアクセスを他のクライアントに許可するための優れた方法です。 SAS とは、ストレージ リソースへの認証アクセスに必要なすべての情報をクエリ パラメーター内に含む URI です。 クライアントは、SAS 内で適切なコンストラクターまたはメソッドに渡すだけで、SAS でストレージ リソースにアクセスできます。</p><p>SAS は、自分のアカウント キーを知らせたくないクライアントに、自分のストレージ アカウント内のリソースへのアクセスを許可する場合に使用できます。 ストレージ アカウント キーには、プライマリ キーとセカンダリ キーの両方が含まれており、これらによって、アカウントとそのすべてのリソースへの管理アクセスが付与されます。 これらのアカウント キーのいずれかを知らせると、悪意で、または誤ってアカウントが使用される可能性が生じます。 Shared Access Signature は、アカウント キーが不要で安全な代替方法です。この方法で、他のクライアントは、付与されたアクセス許可に従ってストレージ アカウント内のデータの読み取り、書き込み、削除を実行できます。</p><p>毎回の論理パラメーター セットが類似している場合は、Stored Access Policy (SAP) を使用することをお勧めします。 Stored Access Policy から派生した SAS を使用すると、その SAS を即時に無効にすることができるので、可能な限り常に Stored Access Policy を使用するベスト プラクティスが推奨されます。</p>|

@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 49a38c06e3a6105ad12133268b83ea73bcea2fc4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: bbcc60070a05155a6143d3f1ff4689d44de7b3c7
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399858"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88944379"
 ---
 :::row:::
     :::column span="3":::
@@ -25,13 +26,13 @@ ms.locfileid: "81399858"
 
 #### <a name="c-nuget-package"></a>C#NuGetパッケージ
 
-.NET Speech SDK は、次の`dotnet add`コマンドを使用して **.NET Core CLI**からインストールできます。
+.NET音声SDK は、次の`dotnet add`コマンドを使用して **.NET Core CLI**からインストールできます。
 
 ```dotnetcli
 dotnet add package Microsoft.CognitiveServices.Speech
 ```
 
-.NET Speech SDK は、次の`Install-Package`コマンドを使用して**Package Manager**からインストールできます。
+.NET音声SDK は、次の`Install-Package`コマンドを使用して**Package Manager**からインストールできます。
 
 ```powershell
 Install-Package Microsoft.CognitiveServices.Speech

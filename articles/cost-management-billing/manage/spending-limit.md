@@ -5,15 +5,16 @@ author: bandersmsft
 ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 02/12/2020
+ms.subservice: billing
+ms.topic: how-to
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 6feac116c92f8dac7bd1dde2084f9b25f5e559f8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: df5c5ed74a5e0a63727962fa86d261cfb588a384
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238059"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690563"
 ---
 # <a name="azure-spending-limit"></a>Azure の使用制限
 

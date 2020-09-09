@@ -1,14 +1,14 @@
 ---
 title: ポリシーのサンプルのインデックス
 description: Azure Policy のビルトインのインデックス。 カテゴリ タグ、規制コンプライアンス、Key Vault、Kubernetes、ゲスト構成など。
-ms.date: 03/25/2020
+ms.date: 07/20/2020
 ms.topic: sample
-ms.openlocfilehash: 41a08a70df24f80ea324860d6d1db16c9ed99760
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: b4f76c42eb23ce368875dfb91f2f7b9e7ee1bd50
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697190"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89481564"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy のサンプル
 
@@ -32,6 +32,16 @@ ms.locfileid: "83697190"
 - [count 演算子](./pattern-count-operator.md)
 - [イニシアティブでのポリシー定義のグループ化](./pattern-group-with-initiative.md)
 - [deployIfNotExists によるリソースのデプロイ](./pattern-deploy-resources.md)
+
+## <a name="regulatory-compliance"></a>規制コンプライアンス
+
+次に示すのは、[法令遵守](../concepts/regulatory-compliance.md)の組み込みです。
+
+- [Azure セキュリティ ベンチマーク](./azure-security-benchmark.md)
+- [CIS Microsoft Azure Foundations Benchmark v1.1.0](./cis-azure-1-1-0.md)
+- [HIPAA HITRUST 9.2](./hipaa-hitrust-9-2.md)
+- [NIST SP 800-53 R4](./nist-sp-800-53-r4.md)
+- [NIST SP 800-171 R2](./nist-sp-800-171-r2.md)
 
 ## <a name="other-samples"></a>その他のサンプル
 

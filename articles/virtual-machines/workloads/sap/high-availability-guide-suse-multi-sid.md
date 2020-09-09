@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/26/2020
+ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 793851780e1154b6b6a21c88ea8cae063a277790
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 16c37c1492b042e9f2f19e631f7801bfbed2d247
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350056"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761214"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>SUSE Linux Enterprise Server for SAP Applications マルチ SID 上の Azure VM での SAP NetWeaver の高可用性ガイド
 
@@ -91,7 +91,7 @@ ms.locfileid: "80350056"
 
 クラスターに参加している仮想マシンは、フェールオーバーが発生したときのために、すべてのリソースを実行できるサイズになっている必要があります。 マルチ SID 高可用性クラスターでは、各 SAP SID は、相互に独立してフェールオーバーできます。  SBD フェンスを使用している場合は、複数のクラスター間で SBD デバイスを共有できます。  
 
-高可用性を実現するには、SAP NetWeaver に高可用性の NFS 共有が必要です。 この例では、SAP NFS 共有が次のどちらかであることを前提としています。共有は高可用性の [NFS ファイル サーバー](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)でホストされており、複数の SAP システムで使用できます。 または、[Azure NetApp Files NFS ボリューム](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)に共有がデプロイされます。  
+高可用性を実現するには、SAP NetWeaver に高可用性の NFS 共有が必要です。 この例では、SAP NFS 共有が次のどちらかであることを前提としています。共有は高可用性の [NFS ファイル サーバー](./high-availability-guide-suse-nfs.md)でホストされており、複数の SAP システムで使用できます。 または、[Azure NetApp Files NFS ボリューム](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)に共有がデプロイされます。  
 
 ![SAP NetWeaver の高可用性の概要](./media/high-availability-guide-suse/ha-suse-multi-sid.png)
 
@@ -101,7 +101,7 @@ ms.locfileid: "80350056"
 > [!TIP]
 > SAP ASCS/ERS のマルチ SID クラスタリングは、さらに複雑なソリューションです。 実装するのがいっそう複雑になります。 また、メンテナンス作業 (OS の修正プログラムの適用など) を行うときの管理労力も増加します。 実際の実装を始める前に、デプロイと、VM、NFS マウント、VIP、ロード バランサーの構成などの関連するすべてのコンポーネントを、時間をかけて慎重に計画してください。  
 
-NFS サーバー、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS、SAP HANA データベースでは、仮想ホスト名と仮想 IP アドレスが使用されます。 Azure では、仮想 IP アドレスを使用するためにロード バランサーが必要になります。 [Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal) の使用をお勧めします。  
+NFS サーバー、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS、SAP HANA データベースでは、仮想ホスト名と仮想 IP アドレスが使用されます。 Azure では、仮想 IP アドレスを使用するためにロード バランサーが必要になります。 [Standard Load Balancer](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md) の使用をお勧めします。  
 
 次の一覧では、3 つの SAP システムから成るこのマルチ SID クラスターの例に対する (A)SCS と ERS ロード バランサーの構成を示します。 各 SID の ASCS および ERS インスタンスごとに、個別のフロントエンド IP、正常性プローブ、負荷分散規則が必要になります。 ASCS/ASCS クラスターの一部であるすべての VM を、1 つのバックエンド プールに割り当てます。  
 
@@ -147,23 +147,23 @@ NFS サーバー、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS、
 
 
 > [!Note]
-> パブリック IP アドレスのない VM が、内部 (パブリック IP アドレスがない) Standard の Azure Load Balancer のバックエンド プール内に配置されている場合、パブリック エンドポイントへのルーティングを許可するように追加の構成が実行されない限り、送信インターネット接続はありません。 送信接続を実現する方法の詳細については、「[SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)」を参照してください。  
+> パブリック IP アドレスのない VM が、内部 (パブリック IP アドレスがない) Standard の Azure Load Balancer のバックエンド プール内に配置されている場合、パブリック エンドポイントへのルーティングを許可するように追加の構成が実行されない限り、送信インターネット接続はありません。 送信接続を実現する方法の詳細については、「[SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続](./high-availability-guide-standard-load-balancer-outbound-connections.md)」を参照してください。  
 
 > [!IMPORTANT]
-> Azure Load Balancer の背後に配置された Azure VM では TCP タイムスタンプを有効にしないでください。 TCP タイムスタンプを有効にすると正常性プローブが失敗することになります。 パラメーター **net.ipv4.tcp_timestamps** は **0** に設定します。 詳しくは、「[Load Balancer の正常性プローブ](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)」を参照してください。
+> Azure Load Balancer の背後に配置された Azure VM では TCP タイムスタンプを有効にしないでください。 TCP タイムスタンプを有効にすると正常性プローブが失敗することになります。 パラメーター **net.ipv4.tcp_timestamps** は **0** に設定します。 詳しくは、「[Load Balancer の正常性プローブ](../../../load-balancer/load-balancer-custom-probe-overview.md)」を参照してください。
 
 ## <a name="sap-nfs-shares"></a>SAP NFS 共有
 
 SAP NetWeaver では、転送、プロファイル ディレクトリなどに対する共有ストレージが必要です。 高可用性の SAP システムの場合、高可用性 NFS 共有を使用することが重要です。 SAP NFS 共有のアーキテクチャを決定する必要があります。 1 つの方法は、[SUSE Linux Enterprise Server の Azure VM に高可用性の NFS クラスター][nfs-ha]を構築することです。これを、複数の SAP システム間で共有できます。 
 
-もう 1 つの方法は、[Azure NetApp Files NFS ボリューム](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)に共有をデプロイすることです。  Azure NetApp Files には、SAP NFS 共有の高可用性が組み込まれています。
+もう 1 つの方法は、[Azure NetApp Files NFS ボリューム](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)に共有をデプロイすることです。  Azure NetApp Files には、SAP NFS 共有の高可用性が組み込まれています。
 
 ## <a name="deploy-the-first-sap-system-in-the-cluster"></a>最初の SAP システムをクラスターにデプロイする
 
 SAP NFS 共有のアーキテクチャが決まったら、対応するドキュメントに従って、クラスターに最初の SAP システムをデプロイします。
 
-* 高可用性の NFS サーバーを使用している場合は、「[SUSE Linux Enterprise Server for SAP Applications 上の Azure VM での SAP NetWeaver の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)」に従います。  
-* Azure NetApp Files NFS ボリュームを使用している場合は、「[SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の Azure VM 上の SAP NetWeaver の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)」に従います
+* 高可用性の NFS サーバーを使用している場合は、「[SUSE Linux Enterprise Server for SAP Applications 上の Azure VM での SAP NetWeaver の高可用性](./high-availability-guide-suse.md)」に従います。  
+* Azure NetApp Files NFS ボリュームを使用している場合は、「[SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の Azure VM 上の SAP NetWeaver の高可用性](./high-availability-guide-suse-netapp-files.md)」に従います
 
 上記のドキュメントでは、必要なインフラストラクチャを準備し、クラスターを構築して、SAP アプリケーションを実行するための OS を準備する手順が説明されています。  
 
@@ -189,7 +189,7 @@ SAP NFS 共有のアーキテクチャが決まったら、対応するドキュ
 
 ### <a name="prepare-for-sap-netweaver-installation"></a>SAP NetWeaver のインストールを準備する
 
-1. 「[Azure portal 経由での手動による Azure Load Balancer のデプロイ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files#deploy-azure-load-balancer-manually-via-azure-portal)」の手順に従って、新しくデプロイされたシステム (つまり、**NW2**、**NW3**) の構成を、既存の Azure Load Balancer に追加します。 構成の IP アドレス、正常性プローブ ポート、負荷分散規則を調整します。  
+1. 「[Azure portal 経由での手動による Azure Load Balancer のデプロイ](./high-availability-guide-suse-netapp-files.md#deploy-azure-load-balancer-manually-via-azure-portal)」の手順に従って、新しくデプロイされたシステム (つまり、**NW2**、**NW3**) の構成を、既存の Azure Load Balancer に追加します。 構成の IP アドレス、正常性プローブ ポート、負荷分散規則を調整します。  
 
 2. **[A]** 追加の SAP システムの名前解決を設定します。 DNS サーバーを使用するか、すべてのノードで `/etc/hosts` を変更することができます。 この例では、`/etc/hosts` ファイルを使用する方法を示します。  IP アドレスとホスト名を環境に合わせて調整します。 
 
@@ -236,8 +236,8 @@ SAP NFS 共有のアーキテクチャが決まったら、対応するドキュ
 
    クラスターにデプロイする追加の SAP システム用のファイル システムで、ファイル `/etc/auto.direct` を更新します。  
 
-   * NFS ファイル サーバーを使用する場合は、[こちら](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse#prepare-for-sap-netweaver-installation)の手順に従ってください
-   * Azure NetApp Files を使用する場合は、[こちら](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files#prepare-for-sap-netweaver-installation)の手順に従ってください 
+   * NFS ファイル サーバーを使用する場合は、[こちら](./high-availability-guide-suse.md#prepare-for-sap-netweaver-installation)の手順に従ってください
+   * Azure NetApp Files を使用する場合は、[こちら](./high-availability-guide-suse-netapp-files.md#prepare-for-sap-netweaver-installation)の手順に従ってください 
 
    新しく追加した共有をマウントするには、`autofs` サービスを再起動する必要があります。  
 
@@ -373,9 +373,11 @@ SAP NFS 共有のアーキテクチャが決まったら、対応するドキュ
    service/halib = $(DIR_CT_RUN)/saphascriptco.so
    service/halib_cluster_connector = /usr/bin/sap_suse_cluster_connector
    
-   # Add the keep alive parameter
+   # Add the keep alive parameter, if using ENSA1
    enque/encni/set_so_keepalive = true
    ```
+
+   ENSA1 と ENSA2 の両方について、`keepalive` OS パラメーターが SAP ノート [1410736](https://launchpad.support.sap.com/#/notes/1410736) の説明に従って設定されていることを確認します。  
 
  * ERS プロファイル
 
@@ -561,17 +563,17 @@ SAP NFS 共有のアーキテクチャが決まったら、対応するドキュ
 
 次のようにして、SAP のインストールを完了します。
 
-* [SAP NetWeaver アプリケーションサーバーを準備します](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse#2d6008b0-685d-426c-b59e-6cd281fd45d7)
-* [DBMS インスタンスをインストールします](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse#install-database)
-* [プライマリ SAP アプリケーション サーバーをインストールします](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse#sap-netweaver-application-server-installation)
+* [SAP NetWeaver アプリケーションサーバーを準備します](./high-availability-guide-suse.md#2d6008b0-685d-426c-b59e-6cd281fd45d7)
+* [DBMS インスタンスをインストールします](./high-availability-guide-suse.md#install-database)
+* [プライマリ SAP アプリケーション サーバーをインストールします](./high-availability-guide-suse.md#sap-netweaver-application-server-installation)
 * 1 つまたは複数の追加の SAP アプリケーション インスタンスをインストールします
 
 ## <a name="test-the-multi-sid-cluster-setup"></a>マルチ SID クラスターのセットアップをテストする
 
 次のテストは、SUSE のベスト プラクティス ガイドに記載されているテスト ケースのサブセットです。 作業を容易にするためにここに含めてあります。 クラスター テストの完全な一覧については、次のドキュメントを参照してください。
 
-* 高可用性の NFS サーバーを使用している場合は、「[SUSE Linux Enterprise Server for SAP Applications 上の Azure VM での SAP NetWeaver の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)」に従います。  
-* Azure NetApp Files NFS ボリュームを使用している場合は、「[SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の Azure VM 上の SAP NetWeaver の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)」に従います
+* 高可用性の NFS サーバーを使用している場合は、「[SUSE Linux Enterprise Server for SAP Applications 上の Azure VM での SAP NetWeaver の高可用性](./high-availability-guide-suse.md)」に従います。  
+* Azure NetApp Files NFS ボリュームを使用している場合は、「[SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の Azure VM 上の SAP NetWeaver の高可用性](./high-availability-guide-suse-netapp-files.md)」に従います
 
 常に SUSE のベスト プラクティス ガイドを読んで、追加されている可能性があるすべての追加テストを実行してください。  
 示されているテストは、3 つの SAP システムがインストールされた、2 ノードのマルチ SID クラスターでのものです。  

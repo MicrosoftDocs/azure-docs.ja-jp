@@ -1,5 +1,5 @@
 ---
-title: Go を使用して接続する - Azure Database for MySQL
+title: クイック スタート:Go を使用して接続する - Azure Database for MySQL
 description: このクイックスタートでは、Azure Database for MySQL に接続してデータを照会するために使用できる、Go コード サンプルをいくつか紹介します。
 author: ajlam
 ms.author: andrela
@@ -7,21 +7,25 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
-ms.date: 3/18/2020
-ms.openlocfilehash: 3b9b18585aac4e31af05218ff732569912508ce9
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.date: 5/26/2020
+ms.openlocfilehash: 154c41c6799bb251f30991fde05f6eacc5de57da
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81681871"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185946"
 ---
-# <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>Azure Database for MySQL: Go 言語を使った接続とデータの照会
+# <a name="quickstart-use-go-language-to-connect-and-query-data-in-azure-database-for-mysql"></a>クイック スタート:Go 言語を使用して Azure Database for MySQL に接続してデータを照会する
+
 このクイックスタートでは、Windows、Ubuntu Linux、Apple macOS の各プラットフォームから、[Go](https://golang.org/) 言語で記述されたコードを使用して Azure Database for MySQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 このトピックでは、Go を使用した開発には慣れているものの、Azure Database for MySQL の使用は初めてであるユーザーを想定しています。
 
 ## <a name="prerequisites"></a>前提条件
 このクイックスタートでは、次のいずれかのガイドで作成されたリソースを出発点として使用します。
 - [Azure Portal を使用した Azure Database for MySQL サーバーの作成](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Azure CLI を使用した Azure Database for MySQL サーバーの作成](./quickstart-create-mysql-server-database-using-azure-cli.md)
+
+> [!IMPORTANT] 
+> [Azure portal](./howto-manage-firewall-using-portal.md) または [Azure CLI](./howto-manage-firewall-using-cli.md) を使用して、接続元の IP アドレスにサーバーのファイアウォール規則が追加されていることを確認します。
 
 ## <a name="install-go-and-mysql-connector"></a>Go と MySQL コネクタのインストール
 ご使用のコンピューターに [Go](https://golang.org/doc/install) および [go-sql-driver for MySQL](https://github.com/go-sql-driver/mysql#installation) をインストールします。 プラットフォームに応じて、該当するセクションの手順に従ってください。

@@ -1,18 +1,18 @@
 ---
 title: IoT プラグ アンド プレイ プレビューの制限とクォータ | Microsoft Docs
 description: IoT プラグ アンド プレイ プレビューを使用する場合に適用される制限、クォータ、およびスロットルについて説明します。
-author: miagdp
-ms.author: miag
-ms.date: 04/01/2020
+author: prashmo
+ms.author: prashmo
+ms.date: 07/21/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: cce99b7d9de09134fd01afb36c41bce3966e8536
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 5c4377120f61792b580225a22b9f5ff51b5e1b64
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80518179"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337400"
 ---
 # <a name="iot-plug-and-play-preview-limits-quotas-and-throttles"></a>IoT プラグ アンド プレイ プレビューの制限、クォータ、およびスロットル
 
@@ -24,39 +24,17 @@ ms.locfileid: "80518179"
 
 | 制限、制約、およびスロットル | 値 | Notes |
 |-----|-----|-----|
-| ハブごとの登録できるデバイス機能モデル (DCM) またはインターフェイスの数 | 1500 ||
-| デバイスごとの登録できるインターフェイスの最大数 | 40 ||
-| デバイスごとの登録できる DCM の最大数 | 1 ||
-| インターフェイスまたは DCM ファイルの最大サイズ | 512 KB ||
-| インターフェイス名の最大サイズ | 256 文字 ||
-| プロパティ名の最大サイズ  | 64 バイト、深さは 7 レベル (最初のレベルは `$iotin` のために予約されています) | 使用できる文字: a-z、A-Z、0-9 (最初の文字にはできません)、およびアンダースコア。 |
-| プロパティ値の最大サイズ | 512 バイト ||
-| コマンド名の最大サイズ | 100 バイト ||
+| ハブごとに登録できるインターフェイスの数 | 1500 ||
+| コンポーネント名の最大サイズ | 1 ～ 64 文字 | 使用できる文字は、a-z、A-Z、0-9 (最初の文字にはできません)、およびアンダースコア (最初の文字または最後の文字にはできません) です。 |
+| プロパティ名の最大サイズ | 1 ～ 64 文字 | 使用できる文字は、a-z、A-Z、0-9 (最初の文字にはできません)、およびアンダースコア (最初の文字または最後の文字にはできません) です。 |
+| プロパティ値の最大サイズ | Digital Twins Definition Language の[プロパティ](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#property)と同じ。 | 5 レベルの深さです。配列または配列を含む複雑なスキーマにすることはできません。 |
+| コマンド名の最大サイズ | 1 ～ 64 文字 | 使用できる文字は、a-z、A-Z、0-9 (最初の文字にはできません)、およびアンダースコア (最初の文字または最後の文字にはできません) です。|
 | デバイス ツインのサイズ | [IoT Hub の制限](../iot-hub/iot-hub-devguide-device-twins.md#device-twin-size)と同じ ||
-| SKU 全体での解決 API 呼び出し (ユニットに関係なく) | 100 要求/秒 ||
-
-## <a name="model-repository"></a>モデル リポジトリ
-
-パブリック プレビューでは、モデル リポジトリに以下の制限とクォータが適用されます。
-
-| 制限、制約、およびスロットル | 値 |
-|-----|-----|
-| Azure Active Directory テナントあたりの会社モデル リポジトリの数 | 1 |
-| モデル リポジトリあたりの承認キーの数 | 10  |
-| 会社モデル リポジトリあたりのモデル (DCM またはインターフェイス) の数| 1500  |
-| Azure Active Directory テナントあたりのパブリック モデル リポジトリ内のモデル (DCM またはインターフェイス) の数| 1500  |
-| 会社モデル リポジトリ内の削除される DCM またはインターフェイスの数 | 10 QPS (Queries Per Second)|
-| テナントによって作成または更新されるモデル リポジトリの数| 1 QPS |
-| モデル リポジトリ内で作成、更新、または削除される承認キーの数 | 1 QPS|
-| 会社モデル リポジトリ内の作成される DCM の数 | 10 QPS |
-| 会社モデル リポジトリ内の作成されるインターフェイスの数 | 10 QPS|
-| パブリック モデル リポジトリ内の作成される DCM の数 | 10 QPS|
-| パブリック モデル リポジトリ内の作成されるインターフェイスの数 | 10 QPS|
 
 ## <a name="parser-library"></a>パーサー ライブラリ
 
-パーサー ライブラリは、[デジタル ツイン定義言語](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL)に適用される制限に従います。
+パーサー ライブラリは、[Digital Twins 定義言語](https://github.com/Azure/opendigitaltwins-dtdl)に適用される制限に従います。
 
 ## <a name="next-steps"></a>次のステップ
 
-推奨される次の手順は、[IoT プラグ アンド プレイ デバイスに接続してやり取りする](./howto-develop-solution.md)方法を学習することです。
+次の手順では、[IoT プラグ アンド プレイのアーキテクチャ](concepts-architecture.md)を確認することをお勧めします。

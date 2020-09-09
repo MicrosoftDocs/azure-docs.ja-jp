@@ -3,31 +3,31 @@ title: Service Fabric 用の Azure Files ボリューム ドライバー
 description: Service Fabric は、Azure Files を使用したコンテナーからのボリュームのバックアップをサポートしています。
 ms.topic: conceptual
 ms.date: 6/10/2018
-ms.openlocfilehash: 514a0cb12359d58e38ebc30ae12cdb277757f2b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5125dbd88a2fe236196c427244f1311d9b73b9f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75750045"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247695"
 ---
 # <a name="azure-files-volume-driver-for-service-fabric"></a>Service Fabric 用の Azure Files ボリューム ドライバー
 
-Azure Files ボリューム ドライバーは、Docker コンテナーに [Azure Files](/azure/storage/files/storage-files-introduction) ベースのボリュームを提供する [Docker ボリューム プラグイン](https://docs.docker.com/engine/extend/plugins_volume/)です。 これは Service Fabric アプリケーションとしてパッケージ化されており、Service Fabric クラスターにデプロイして、クラスター内の他の Service Fabric コンテナー アプリケーションにボリュームを提供できます。
+Azure Files ボリューム ドライバーは、Docker コンテナーに [Azure Files](../storage/files/storage-files-introduction.md) ベースのボリュームを提供する [Docker ボリューム プラグイン](https://docs.docker.com/engine/extend/plugins_volume/)です。 これは Service Fabric アプリケーションとしてパッケージ化されており、Service Fabric クラスターにデプロイして、クラスター内の他の Service Fabric コンテナー アプリケーションにボリュームを提供できます。
 
 > [!NOTE]
 > Azure Files ボリューム プラグインのバージョン 6.5.661.9590 が一般公開されています。
 >
 
 ## <a name="prerequisites"></a>前提条件
-* Windows バージョンの Azure Files ボリューム プラグインは、[Windows Server バージョン 1709](/windows-server/get-started/whats-new-in-windows-server-1709)、[Windows 10 バージョン 1709](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1709) 以降のオペレーティング システムでのみ動作します。
+* Windows バージョンの Azure Files ボリューム プラグインは、[Windows Server バージョン 1709](/windows-server/get-started/whats-new-in-windows-server-1709)、[Windows 10 バージョン 1709](/windows/whats-new/whats-new-windows-10-version-1709) 以降のオペレーティング システムでのみ動作します。
 
 * Linux バージョンの Azure Files ボリューム プラグインは、Service Fabric でサポートされているすべてのオペレーティング システムのバージョンで動作します。
 
 * Azure Files ボリューム プラグインは、Service Fabric バージョン 6.2 以降でのみ機能します。
 
-* [Azure Files ドキュメント](/azure/storage/files/storage-how-to-create-file-share) の指示に従って、Service Fabric コンテナー アプリケーションがボリュームとして使用するファイル共有を作成します。
+* [Azure Files ドキュメント](../storage/files/storage-how-to-create-file-share.md) の指示に従って、Service Fabric コンテナー アプリケーションがボリュームとして使用するファイル共有を作成します。
 
-* [Service Fabric モジュールと Powershell](/azure/service-fabric/service-fabric-get-started) または [SFCTL](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) をインストールしている必要があります。
+* [Service Fabric モジュールと Powershell](./service-fabric-get-started.md) または [SFCTL](./service-fabric-cli.md) をインストールしている必要があります。
 
 * Hyper-V コンテナーを使用している場合は、Azure Resource Manager テンプレート (Azure クラスター) または ClusterConfig.json (スタンドアロン クラスター) の ClusterManifest (ローカル クラスター) セクションまたは fabricSettings セクションに、次のスニペットを追加する必要があります。
 
@@ -72,7 +72,7 @@ Linux 用の Azure Resource Manager デプロイ コマンドは次のとおり�
 .\DeployAzureFilesVolumeDriver.ps1 -subscriptionId [subscriptionId] -resourceGroupName [resourceGroupName] -clusterName [clusterName] -linux
 ```
 
-スクリプトが正常に実行されたら、[アプリケーションの構成](/azure/service-fabric/service-fabric-containers-volume-logging-drivers#configure-your-applications-to-use-the-volume)に関するセクションに進むことができます。
+スクリプトが正常に実行されたら、[アプリケーションの構成](#configure-your-applications-to-use-the-volume)に関するセクションに進むことができます。
 
 
 ### <a name="manual-deployment-for-standalone-clusters"></a>スタンドアロン クラスターの手動デプロイ
@@ -125,7 +125,7 @@ Linux 用の Azure Resource Manager デプロイ コマンドは次のとおり�
 > Windows Server 2016 Datacenter は、SMB マウントのコンテナーへのマッピングをサポートしていません ([Windows Server バージョン 1709 でのみサポートされています](/virtualization/windowscontainers/manage-containers/container-storage))。 この制約があるため、1709 より古いバージョンでは、ネットワーク ボリュームのマッピングと Azure Files ボリューム ドライバーを使用できません。
 
 #### <a name="deploy-the-application-on-a-local-development-cluster"></a>ローカル開発クラスターにアプリケーションをデプロイする
-[上記](/azure/service-fabric/service-fabric-containers-volume-logging-drivers#manual-deployment-for-standalone-clusters)の手順 1. から 3. に従います。
+[上記](#manual-deployment-for-standalone-clusters)の手順 1. から 3. に従います。
 
  Azure Files ボリューム プラグイン アプリケーションの既定のサービス インスタンス数は、-1 です。これは、クラスター内の各ノードにデプロイされたサービスのインスタンスがあることを意味します。 ただし、ローカル開発クラスターに Azure Files ボリューム プラグイン アプリケーションをデプロイする場合は、サービス インスタンス数を 1 と指定する必要があります。 これは、**InstanceCount** アプリケーション パラメーターを使用して実行できます。 したがって、ローカル開発クラスターに Azure Files ボリューム プラグイン アプリケーションを作成するコマンドは、次のようになります。
 
@@ -198,7 +198,7 @@ Azure Files ボリューム プラグインのドライバー名は **sfazurefil
     ```
 
 ## <a name="using-your-own-volume-or-logging-driver"></a>独自のボリュームまたはログ ドライバーの使用
-Service Fabric では、独自のカスタム [ボリューム](https://docs.docker.com/engine/extend/plugins_volume/)または[ログ](https://docs.docker.com/engine/admin/logging/overview/) ドライバーを使用することもできます。 Docker ボリューム/ログ ドライバーがクラスターにインストールされていない場合は、RDP/SSH プロトコルを使って手動でインストールできます。 これらのプロトコルによるインストールは、[仮想マシン スケール セット スタートアップ スクリプト](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/)または [SetupEntryPoint スクリプト](/azure/service-fabric/service-fabric-application-model)を使って実行できます。
+Service Fabric では、独自のカスタム [ボリューム](https://docs.docker.com/engine/extend/plugins_volume/)または[ログ](https://docs.docker.com/engine/admin/logging/overview/) ドライバーを使用することもできます。 Docker ボリューム/ログ ドライバーがクラスターにインストールされていない場合は、RDP/SSH プロトコルを使って手動でインストールできます。 これらのプロトコルによるインストールは、[仮想マシン スケール セット スタートアップ スクリプト](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/)または [SetupEntryPoint スクリプト](./service-fabric-application-model.md)を使って実行できます。
 
 [Azure 用 Docker ボリューム ドライバー](https://docs.docker.com/docker-for-azure/persistent-data-volumes/)をインストールするスクリプトの例を次に示します。
 
@@ -241,4 +241,4 @@ Docker ログ ドライバーを指定する場合は、クラスター内のロ
 
 ## <a name="next-steps"></a>次のステップ
 * ボリューム ドライバーを含むコンテナーのサンプルを参照するには、[Service Fabric コンテナーのサンプル](https://github.com/Azure-Samples/service-fabric-containers)をご覧ください
-* Service Fabric クラスターにコンテナーをデプロイする方法については、[Service Fabric へのコンテナーのデプロイ](service-fabric-deploy-container.md)に関する記事をご覧ください
+* Service Fabric クラスターにコンテナーをデプロイする方法については、[Service Fabric へのコンテナーのデプロイ](./service-fabric-get-started-containers.md)に関する記事をご覧ください

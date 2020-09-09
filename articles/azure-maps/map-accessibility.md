@@ -1,6 +1,6 @@
 ---
 title: Azure Maps でアクセス可能なマップ アプリケーションを作成する | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps を使用し、アクセシビリティ機能を備えたアプリケーションをビルドする方法について説明します。
+description: Azure Maps のアクセシビリティに関する考慮事項について説明します。 マップ アプリケーションにアクセスする機能とアクセシビリティに関するヒントを表示する機能を紹介します。
 services: azure-maps
 author: rbrundritt
 ms.author: richbrun
@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 5fa9e159fa0ac76ce8c585936059fb7f3151c7c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ec88437a0fad3a6bd94a67a5ef5c75b3e506f9e8
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473321"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006215"
 ---
 # <a name="building-an-accessible-application"></a>アクセス可能なアプリケーションをビルド
 
@@ -28,6 +28,7 @@ Azure Maps Web SDK には、次のような多くのユーザー補助機能が�
 - マップが移動されたとき、およびユーザーがコントロールやポップアップにフォーカスしたときの、スクリーン リーダーによる説明。
 - マウス、タッチ、およびキーボードのサポート。
 - 道路地図のスタイルでのアクセス可能な色のコントラストのサポート。
+- ハイ コントラストのサポート。
 
 すべての Microsoft 製品のアクセシビリティへの準拠の詳細は、[こちら](https://cloudblogs.microsoft.com/industry-blog/government/2018/09/11/accessibility-conformance-reports/)に記載されています。 "Azure Maps Web" を検索して、Azure Maps Web SDK 専用のドキュメントを見つけてください。 
 
@@ -45,6 +46,7 @@ Azure Maps Web SDK には、次のような多くのユーザー補助機能が�
 - マップにフォーカスがある状態でマイナス記号、ハイフン (`-`)、またはアンダースコア (`_`) を使用して、1 レベル分縮小します。
 - マウス、タッチ、またはキーボードの Tab キーか Enter キーでズーム コントロールを使用します。
 - マップ上で、`Shift` ボタンを押したままマウスの左ボタンを押しながらドラッグし、マップを拡大する領域を描きます。
+- 一部のマルチタッチ パッドを使用して、2 本の指を上にドラッグしてズームアウトするか、下にドラッグしてズームインします。
 
 **マップをパンする**
 

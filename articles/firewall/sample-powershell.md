@@ -8,20 +8,20 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 5e4fab3d632bca6eb62f1233f681a3611d7ccddf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e5bd9a539b484c8ea011e62db6a25716fd73fd50
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74168725"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536903"
 ---
 # <a name="azure-firewall-powershell-samples"></a>Azure Firewall PowerShell サンプル
 
 次の表には、ファイアウォールを作成する Azure PowerShell スクリプトのサンプルへのリンクが含まれています。
 
 
-| | |
-|----|----|
+| サンプル | 説明 |
+| ------ | ----------- |
 |[Azure Firewall とテスト インフラストラクチャを作成する](scripts/sample-create-firewall-test.md)|Azure Firewall とテスト インフラストラクチャを作成します。|
 
 

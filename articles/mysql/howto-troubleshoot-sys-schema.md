@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/30/2020
-ms.openlocfilehash: 59b8753007c3b9130c397dda30c571580cbb5326
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: d2ed06041e8ee0e2993289cdde5fe92f7664b476
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411085"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83829517"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Azure Database for MySQL でパフォーマンスのチューニングとデータベースのメンテナンスに sys_schema を使用する方法
 
@@ -83,4 +83,4 @@ InnoDB バッファー プールはメモリ内に存在し、DBMS とストレ�
 まとめると、sys_schema はパフォーマンスのチューニングとデータベースのメンテナンスの両方に対して優れたツールです。 お使いの Azure Database for MySQL でこの機能を活用してください。 
 
 ## <a name="next-steps"></a>次のステップ
-- 最も気になる質問への回答を探したり、新しい質問/回答を投稿したりするには、[MSDN フォーラム](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL)または [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql) をご覧ください。
+- 最も気になる質問への回答を探したり、新しい質問/回答を投稿したりするには、[Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-database-mysql.html)または [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql) をご覧ください。

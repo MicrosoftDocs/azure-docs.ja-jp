@@ -6,18 +6,18 @@ ms.date: 04/08/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: ce389f9281b02662f87353f00c9bca92cdf86937
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95ea8b61b01b17512d99d0316073835326e6d7bd
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229039"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927166"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>ロールベースのアクセス制御 (RBAC) を使用して Site Recovery のアクセスを管理する
 
-Azure のロールベースのアクセス制御 (RBAC) を使用すると、Azure のきめ細かなアクセス管理が可能になります。 RBAC を使用すると、チーム内で責任を分離して、特定のジョブを実行する必要に応じてユーザーに特定のアクセス許可のみを付与できます。
+Azure のロールベースのアクセス制御 (Azure RBAC) を使用すると、Azure のきめ細かなアクセス管理が可能になります。 RBAC を使用すると、チーム内で責任を分離して、特定のジョブを実行する必要に応じてユーザーに特定のアクセス許可のみを付与できます。
 
-Azure Site Recovery には、Site Recovery の管理操作を制御するための組み込みロールが 3 つ用意されています。 [Azure RBAC の組み込みのロール](../role-based-access-control/built-in-roles.md)について説明します。
+Azure Site Recovery には、Site Recovery の管理操作を制御するための組み込みロールが 3 つ用意されています。 [Azure の組み込みロール](../role-based-access-control/built-in-roles.md)について説明します
 
 * [Site Recovery 共同作成者](../role-based-access-control/built-in-roles.md#site-recovery-contributor) - このロールには、Recovery Services コンテナーでの Azure Site Recovery の操作の管理に必要なすべてのアクセス許可があります。 ただし、このロールを持つユーザーは、Recovery Services コンテナーの作成や削除、または他のユーザーへのアクセス権の割り当てを行うことはできません。 このロールは、必要に応じてアプリケーションまたは組織全体のディザスター リカバリーを有効にして管理できるディザスター リカバリー管理者に最も適しています。
 * [Site Recovery オペレーター](../role-based-access-control/built-in-roles.md#site-recovery-operator) - この役割には、フェールオーバーとフェールバックの操作を実行して管理するアクセス許可があります。 このロールのユーザーは、レプリケーションの有効化または無効化、コンテナーの作成または削除、新しいインフラストラクチャの登録、他のユーザーへのアクセス権の割り当てを行うことはできません。 このロールは、実際の障害状況や DR ドリルのようなシミュレーション障害状況において、アプリケーション所有者および IT 管理者から指示されて、仮想マシンまたはアプリケーションをフェールオーバーできる、ディザスター リカバリー オペレーターに最も適しています。 障害が解決された後、DR オペレーターは仮想マシンを再び保護してフェールバックを行うことができます。
@@ -72,7 +72,7 @@ Azure Site Recovery を使用して新しい仮想マシンを Azure にレプ�
 Resource Manager デプロイ モデルとクラシック デプロイ モデルそれぞれに、'仮想マシン共同作業者' と '従来の仮想マシン共同作業者' の[組み込みのロール](../role-based-access-control/built-in-roles.md)を使用することを検討してください。
 
 ## <a name="next-steps"></a>次のステップ
-* [ロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md): Azure Portal での RBAC の基本について説明します。
+* [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md): Azure portal での RBAC の基本について説明します。
 * 次の要素を使用したアクセス管理方法の詳細
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)

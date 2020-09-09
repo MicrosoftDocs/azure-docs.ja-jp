@@ -4,13 +4,14 @@ description: Service Fabric クライアント REST API 仕様を使って、Ser
 author: rapatchi
 ms.topic: conceptual
 ms.date: 11/27/2017
+ms.custom: devx-track-java
 ms.author: rapatchi
-ms.openlocfilehash: 0a243c1cd0ab0dcb93a1cc6169c89ba18606f346
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 24ee4a3d8109626bf93e01fbd10c00140762c9c6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75451679"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324626"
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Azure Service Fabric Java クライアント API
 
@@ -39,7 +40,7 @@ AutoRest ツールを使って Service Fabric Java クライアント コード�
     npm install -g autorest
     ```
 
-3. ローカル コンピューターで [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs) リポジトリをフォークしてクローンを作成し、お使いのコンピューターのターミナルからクローンした場所に移動します。
+3. ローカル コンピューターで [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs) リポジトリをフォークして複製し、お使いのコンピューターの端末から複製した場所に移動します。
 
 
 4. 複製したリポジトリで下記の場所に移動します。
@@ -125,5 +126,4 @@ AutoRest ツールを使って Service Fabric Java クライアント コード�
     * API 呼び出しのこのバリエーションは、リアクティブな非同期プログラミングを使い、未処理の REST 応答を扱いたい場合に、使うことができます
 
 ## <a name="next-steps"></a>次のステップ
-* [Service Fabric REST API](https://docs.microsoft.com/rest/api/servicefabric/) についての詳細
-
+* [Service Fabric REST API](/rest/api/servicefabric/) についての詳細

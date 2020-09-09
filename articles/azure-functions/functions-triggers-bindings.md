@@ -2,15 +2,15 @@
 title: Azure Functions のトリガーとバインド
 description: トリガーとバインドを使用して、Azure Functions をオンライン イベントおよびクラウドベース サービスに接続する方法を学習します。
 author: craigshoemaker
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: d41fd7f66ecef3a563345424d7dc4366e47d3f0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ddcf6758c8c648678c69070fa5b65ae6c4947018
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234863"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252693"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions でのトリガーとバインドの概念
 

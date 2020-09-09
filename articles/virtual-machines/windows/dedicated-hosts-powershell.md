@@ -3,17 +3,17 @@ title: Azure PowerShell を使用して Azure 専用ホストにデプロイす�
 description: Azure PowerShell を使用して専用ホストに VM をデプロイします。
 author: cynthn
 ms.service: virtual-machines-windows
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: b90189c6ba5e51a24d0c248b5aa08e9a5e4bbd9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 599d13daac2e062c8f71f5f7d7133646a1447123
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82082851"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87266590"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Azure PowerShell を使用して専用ホストに VM をデプロイする
 
@@ -171,7 +171,7 @@ Tags                   : {}
 
 - VM サイズは、専用ホストと同じサイズ ファミリである必要があります。 たとえば、専用のホストが DSv3 の場合、VM のサイズは Standard_D4s_v3 になる可能性がありますが、Standard_A4_v2 となる可能性はありません。 
 - VM は、専用ホストと同じリージョンに配置する必要があります。
-- VM は、近接通信配置グループの一部になることはありません。 専用のホストに移動する前に、近接通信配置グループから VM を削除してください。 詳細については、「[近接配置グループからの VM の移動](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group)」を参照してください
+- VM は、近接通信配置グループの一部になることはありません。 専用のホストに移動する前に、近接通信配置グループから VM を削除してください。 詳細については、「[近接配置グループからの VM の移動](./proximity-placement-groups.md#move-an-existing-vm-out-of-a-proximity-placement-group)」を参照してください
 - VM は、可用性セット内に置くことはできません。
 - VM が可用性ゾーン内にある場合は、ホスト グループと同じ可用性ゾーンである必要があります。 VM とホスト グループの可用性ゾーンの設定が一致している必要があります。
 

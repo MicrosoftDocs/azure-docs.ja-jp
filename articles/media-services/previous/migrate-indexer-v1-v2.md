@@ -13,16 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: 2268c074480f99ca23117ca2ffd2c87c1dbb10a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3da6dd877a94da64f85f093ae98a0b8a109ab2e1
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76513237"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255105"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Media Indexer と Media Indexer 2 から Video Indexer に移行する
 
-[Azure Media Indexer](media-services-index-content.md) メディア プロセッサと [Azure Media Indexer 2 プレビュー](media-services-process-content-with-indexer2.md) メディア プロセッサのインベントリは廃止される予定です。 提供終了日については、この[レガシ コンポーネント](legacy-components.md)に関するトピックを参照してください。 [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) が、これらの従来のメディア プロセッサに取って代わります。
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
+[Azure Media Indexer](media-services-index-content.md) メディア プロセッサと [Azure Media Indexer 2 プレビュー](media-services-process-content-with-indexer2.md) メディア プロセッサのインベントリは廃止される予定です。 提供終了日については、この[レガシ コンポーネント](legacy-components.md)に関するトピックを参照してください。 [Azure Media Services Video Indexer](../video-indexer/index.yml) が、これらの従来のメディア プロセッサに取って代わります。
 
 Azure Media Services Video Indexer は、Azure Media Analytics、Azure Cognitive Search、Cognitive Services (Face API、Microsoft Translator、Computer Vision API、Custom Speech Service など) を基盤として構築されています。 Video Indexer のビデオとオーディオのモデルを使用して、ビデオから分析情報を抽出することができます。 Video Indexer はどのようなシナリオで使用できるか、どのような機能を提供するか、どのように使用を開始するかを確認するには、[Video Indexer のビデオとオーディオのモデル](../video-indexer/video-indexer-overview.md)に関するページを参照してください。 
 
@@ -42,13 +44,13 @@ Azure Media Services Video Indexer は、Azure Media Analytics、Azure Cognitive
 
 ## <a name="getting-started-with-video-indexer"></a>Video Indexer の使用を開始する
 
-次のセクションでは、関連するリンクを示します。[Video Indexer を使い始めるにはどうすればよいですか?](https://docs.microsoft.com/azure/media-services/video-indexer/video-indexer-overview#how-can-i-get-started-with-video-indexer) 
+次のセクションでは、関連するリンクを示します。[Video Indexer を使い始めるにはどうすればよいですか?](../video-indexer/video-indexer-overview.md#how-can-i-get-started-with-video-indexer) 
 
 ## <a name="getting-started-with-media-services-v3-apis"></a>Media Services v3 API の使用を開始する
 
 Azure Media Services v3 API では、[Azure Media Services v3 アナライザー プリセット](../latest/analyzing-video-audio-files-concept.md)を使用して、ビデオ ファイルとオーディオ ファイルから分析情報を抽出できます。 
 
-**AudioAnalyzerPreset** を使用して、音声または画像ファイルから複数の音声分析情報を抽出できます。 出力には、音声トランスクリプト用の VTT または TTML ファイルと、JSON ファイル (すべての追加の音声分析情報が格納される) が含まれます。 音声分析情報には、キーワード、話者インデックス作成、音声のセンチメント分析が含まれます。 AudioAnalyzerPreset では、特定の言語の言語検出もサポートされます。 詳細については、[変換](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)に関するページを参照してください。
+**AudioAnalyzerPreset** を使用して、音声または画像ファイルから複数の音声分析情報を抽出できます。 出力には、音声トランスクリプト用の VTT または TTML ファイルと、JSON ファイル (すべての追加の音声分析情報が格納される) が含まれます。 音声分析情報には、キーワード、話者インデックス作成、音声のセンチメント分析が含まれます。 AudioAnalyzerPreset では、特定の言語の言語検出もサポートされます。 詳細については、[変換](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)に関するページを参照してください。
 
 ### <a name="get-started"></a>はじめに
 
@@ -60,12 +62,12 @@ Azure Media Services v3 API では、[Azure Media Services v3 アナライザー
 
 ## <a name="getting-started-with-cognitive-services-speech-services"></a>Cognitive Services Speech Services の使用を開始する
 
-[Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/) では、オーディオ ストリームからテキストへの文字起こしがリアルタイムで行われる音声テキスト変換サービスが提供されます。結果のテキストを、お使いのアプリケーション、ツール、またはデバイスで使用したり表示したりできます。 音声テキスト変換を使用して、[独自の音響モデル、言語モデル、または発音モデルをカスタマイズ](../../cognitive-services/speech-service/how-to-custom-speech-train-model.md)できます。 詳細については、[Cognitive Services の音声テキスト変換](../../cognitive-services/speech-service/speech-to-text.md)に関するページを参照してください。 
+[Azure Cognitive Services](../../cognitive-services/index.yml) では、オーディオ ストリームからテキストへの文字起こしがリアルタイムで行われる音声テキスト変換サービスが提供されます。結果のテキストを、お使いのアプリケーション、ツール、またはデバイスで使用したり表示したりできます。 音声テキスト変換を使用して、[独自の音響モデル、言語モデル、または発音モデルをカスタマイズ](../../cognitive-services/speech-service/how-to-custom-speech-train-model.md)できます。 詳細については、[Cognitive Services の音声テキスト変換](../../cognitive-services/speech-service/speech-to-text.md)に関するページを参照してください。 
 
 > [!NOTE] 
-> 音声テキスト変換サービスでは、ビデオ ファイル形式は使用されず、[特定のオーディオ形式](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#audio-formats)だけが使用されます。 
+> 音声テキスト変換サービスでは、ビデオ ファイル形式は使用されず、[特定のオーディオ形式](../../cognitive-services/speech-service/rest-speech-to-text.md#audio-formats)だけが使用されます。 
 
-音声テキスト変換サービスの詳細と開始方法については、「[音声変換の概要](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-to-text)」を参照してください。
+音声テキスト変換サービスの詳細と開始方法については、「[音声変換の概要](../../cognitive-services/speech-service/speech-to-text.md)」を参照してください。
 
 ## <a name="known-differences-from-deprecated-services"></a>非推奨のサービスとの既知の違い 
 
@@ -83,5 +85,3 @@ Video Indexer、Azure Media Services v3 AudioAnalyzerPreset、および Cognitiv
 
 * [レガシ コンポーネント](legacy-components.md)
 * [価格ページ](https://azure.microsoft.com/pricing/details/media-services/#encoding)
-
-

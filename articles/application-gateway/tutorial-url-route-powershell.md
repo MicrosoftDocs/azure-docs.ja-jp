@@ -4,16 +4,16 @@ description: Azure PowerShell を使用して、URL に基づいて Web トラ�
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/31/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8ca5c411db5644182f7e87f1ee1c63f3cbc4d2e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fccc7281ed2978ccc63cd7b53a82c8a00b57d3c2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73200407"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84805986"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-azure-powershell"></a>Azure PowerShell を使用して、URL に基づいて Web トラフィックをルーティングする
 

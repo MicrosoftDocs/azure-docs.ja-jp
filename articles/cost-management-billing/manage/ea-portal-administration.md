@@ -3,16 +3,17 @@ title: Azure EA Portal の管理
 description: この記事では、Azure EA Portal で管理者が行う一般的なタスクについて説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 05/07/2020
+ms.date: 08/20/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: a3551b4f09202b33cee768a69f31a6c5d5d36777
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 764346c7d37e4738992ddf25c11f5ee0913e308d
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648202"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689900"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA Portal の管理
 
@@ -33,7 +34,7 @@ ms.locfileid: "83648202"
 
 ## <a name="department-spending-quotas"></a>部署課金クォータ
 
-EA のお客様は、加入契約の下にある部署ごとに、支出クォータを設定または変更できます。 課金クォータの金額は、現在のコミットメント期間に対して設定されます。 現在のコミットメント期間の終了時、値が更新されない限り、システムによって既存の課金クォータが次のコミットメント期間に延長されます。
+EA のお客様は、加入契約の下にある部署ごとに、支出クォータを設定または変更できます。 課金クォータの金額は、現在の前払い期間に対して設定されます。 現在の前払い期間の終了時、値が更新されない限り、システムによって既存の課金クォータが次の前払い期間に延長されます。
 
 部門管理者は支出クォータを表示できますが、クォータの金額を更新できるのはエンタープライズ管理者だけです。 エンタープライズ管理者と部門管理者は、クォータが 50%、75%、90%、および 100% に達したときに通知を受けます。
 
@@ -48,9 +49,9 @@ EA のお客様は、加入契約の下にある部署ごとに、支出クォ�
     - この時点で、部門名とコストセンターを編集することもできます。
  1. **[保存]** を選択します。
 
-部門の課金クォータが、[部門] タブの部門リスト ビューに表示されるようになります。現在のコミットメント期間の終了時、Azure EA Portal では、課金クォータが次のコミットメント期間も維持されます。
+部門の課金クォータが、[部門] タブの部門リスト ビューに表示されるようになります。現在の前払い期間の終了時、Azure EA Portal では、課金クォータが次の前払い期間も維持されます。
 
-部門のクォータの金額は現在の年額コミットメントとは無関係であり、クォータの金額とアラートは、ファースト パーティの使用量にのみ適用されます。 部署の支出クォータは情報提供のみを目的としており、使用制限は適用されません。
+部門のクォータの金額は現在の Azure 前払いとは無関係であり、クォータの金額とアラートは、ファースト パーティの使用量にのみ適用されます。 部署の支出クォータは情報提供のみを目的としており、使用制限は適用されません。
 
 ### <a name="department-administrator-to-view-the-quota"></a>部門管理者がクォータを表示するには
 
@@ -76,7 +77,7 @@ Azure EA Portal は、Azure EA のコストと使用状況を管理するのに�
 
 Azure EA アカウントは、Azure EA Portal における組織単位です。 これは、サブスクリプションの管理に使用されるほか、レポートにも使用されます。 Azure サービスにアクセスして使用するには、自分でアカウントを作成するか、誰かにアカウントを作成してもらう必要があります。
 
-Azure アカウントの詳細については、「Add an account (アカウントを追加する)」を参照してください。
+Azure アカウントの詳細については、「[アカウントの追加](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-get-started#add-an-account)」を参照してください。
 
 ## <a name="enterprise-devtest-offer"></a>Enterprise Dev/Test オファー
 
@@ -174,7 +175,7 @@ Azure エンタープライズのユーザーは、認証の種類を Microsoft 
 
 ### <a name="how-many-azure-account-owners-can-you-have-per-subscription"></a>サブスクリプションあたりの Azure アカウント所有者は何人までですか?
 
-サブスクリプションごとに 1 人のアカウント所有者のみが許可されます。  [Portal.azure.com] (https://portal.azure.com) のページの左上にある [サブスクリプション] タブで、ロールベースのアクセスまたは (アクセス制御 (IAM)) を使用してさらにロールを追加できます。
+サブスクリプションごとに 1 人のアカウント所有者のみが許可されます。  [Azure portal](https://portal.azure.com) のページの左上にある [サブスクリプション] タブで、ロールベースのアクセスまたは (アクセス制御 (IAM)) を使用してさらにロールを追加できます。
 
 ### <a name="can-an-azure-account-owner-be-listed-under-more-than-one-department"></a>Azure アカウント所有者は複数の部門の下に表示できますか?
 

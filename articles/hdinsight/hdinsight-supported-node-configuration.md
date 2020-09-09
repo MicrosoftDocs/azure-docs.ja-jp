@@ -6,15 +6,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.openlocfilehash: e75146266568001d8fee7be26898ac8bdfffb7fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 05/14/2020
+ms.openlocfilehash: 0bf5559590b66400fc4fc4dc27ea88c3522effb1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77484788"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83646621"
 ---
 # <a name="what-are-the-default-and-recommended-node-configurations-for-azure-hdinsight"></a>Azure HDInsight の既定および推奨のノード構成
 
@@ -22,11 +22,11 @@ ms.locfileid: "77484788"
 
 ## <a name="default-and-minimum-recommended-node-configuration-and-virtual-machine-sizes-for-clusters"></a>クラスターの既定および最小推奨のノード構成と仮想マシンのサイズ
 
-次の表は、HDInsight クラスターの既定および推奨の仮想マシン (VM) のサイズを示しています。  この情報は、HDInsight クラスターをデプロイする PowerShell または Azure CLI スクリプトを作成するときに使用する、VM のサイズを理解する必要があります。
+次の表は、HDInsight クラスターの既定および推奨の仮想マシン (VM) のサイズを示しています。  この情報は、HDInsight クラスターをデプロイする PowerShell または Azure CLI スクリプトを作成するときに、使用する VM のサイズを把握するために必要です。
 
-クラスターで 32 以上のワーカー ノードが必要になる場合、少なくとも 8 コア、14 GB のヘッド ノードのサイズを選択してください。 
+クラスターで 32 以上のワーカー ノードが必要になる場合、少なくとも 8 コア、14 GB のヘッド ノードのサイズを選択してください。
 
-データ ディスクがあるクラスターの種類は、高速書き込み機能が有効な Kafka および HBase クラスターのみです。 HDInsight は、これらのシナリオで P30 と S30 のディスク サイズをサポートしています。
+データ ディスクがあるクラスターの種類は、高速書き込み機能が有効な Kafka および HBase クラスターのみです。 HDInsight は、これらのシナリオで P30 と S30 のディスク サイズをサポートしています。 その他のすべてのクラスターの種類について、HDInsight では、クラスターにマネージド ディスク領域が用意されています。 2019 年 11 月 7 日以降、新しく作成されるクラスター内の各ノードのマネージド ディスク サイズは 128 GB です。 これは変更できません。
 
 このドキュメントで使用されているすべての最小推奨 VM の種類の仕様を次の表にまとめます。
 

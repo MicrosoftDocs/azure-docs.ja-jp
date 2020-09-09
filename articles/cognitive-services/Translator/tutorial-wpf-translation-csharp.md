@@ -8,14 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 02/10/2020
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 0d500a7c24538adb139a42924134f784973f496b
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ef5384abd63dcd9aeb4789dc4955f4b80068d330
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588555"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921241"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>チュートリアル:WPF を使って翻訳アプリを作成する
 
@@ -39,9 +40,9 @@ WPF とは デスクトップ クライアント アプリを作成する UI フ
 
 | サービス | 機能 | 説明 |
 |---------|---------|-------------|
-| Translator | [言語の取得](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | テキスト翻訳がサポートされている言語の完全な一覧を取得します。 |
-| Translator | [Translate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | 60 を超す言語にテキストを翻訳できます。 |
-| Translator | [Detect](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | 入力テキストの言語を検出します。 検出の信頼度スコアが含まれます。 |
+| [変換者] | [言語の取得](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | テキスト翻訳がサポートされている言語の完全な一覧を取得します。 |
+| [変換者] | [Translate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | 70 を超す言語にテキストを翻訳できます。 |
+| [変換者] | [Detect](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | 入力テキストの言語を検出します。 検出の信頼度スコアが含まれます。 |
 | Bing Spell Check | [スペル チェック](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | スペル ミスを修正して、翻訳精度を向上させます。 |
 
 ## <a name="prerequisites"></a>前提条件
@@ -263,7 +264,7 @@ Visual Studio に、アプリのユーザー インターフェイスのプレ�
 
 ## <a name="get-supported-languages"></a>サポートされている言語を取得する
 
-Translator では、現在、60 を超える言語がサポートされています。 今後も新しい言語のサポートが追加される予定なので、作成するアプリでは、言語の一覧をハードコーディングせずに、Translator によって公開される Languages リソースを呼び出すことをお勧めします。
+Translator では、現在、70 を超える言語がサポートされています。 今後も新しい言語のサポートが追加される予定なので、作成するアプリでは、言語の一覧をハードコーディングせずに、Translator によって公開される Languages リソースを呼び出すことをお勧めします。
 
 このセクションでは、翻訳可能な言語の一覧が必要であることを指定した、Languages リソースへの `GET` 要求を作成します。
 

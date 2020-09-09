@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 01/15/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: cd4cc90fb102d517a47ba458619e22b8921dd498
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aed015b67aa36e7678b31d7f2f047cb1e77c6a3d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75495325"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84485314"
 ---
 # <a name="fail-back-vmware-vms-to-on-premises-site"></a>VMware VM をオンプレミスサイトにフェールバックする
 
@@ -29,7 +29,7 @@ ms.locfileid: "75495325"
 
 ## <a name="run-a-failover-to-fail-back"></a>フェールオーバーを実行して、Azure からフェールバックする
 
-1. Azure VM が再保護され、オンプレミス サイトにレプリケートされていることを確認します。 
+1. Azure VM が再保護され、オンプレミス サイトにレプリケートされていることを確認します。
     - フェールバックするには、VM に少なくとも 1つの復旧ポイントが必要です。
     - 復旧計画をフェールバックする場合は、プラン内のすべてのマシンに少なくとも 1つの復旧ポイントが必要です。
 2. コンテナー > **[レプリケートされたアイテム]** で、VM を選択します。 右クリックで、[VM ] > **[計画されていないフェールオーバー]** を選択します。

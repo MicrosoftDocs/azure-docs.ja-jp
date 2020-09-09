@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 67c7955316d4c9670509affb478813df0768f261
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ff15206e2373ce6481cb65cbbeeb3c88cd2b7154
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832556"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269422"
 ---
 # <a name="media-services-v2-frequently-asked-questions"></a>Media Services v2 のよく寄せられる質問
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 この記事では、Azure Media Services (AMS) のユーザー コミュニティからよく寄せられる質問に対して回答します。
 
@@ -66,18 +68,20 @@ Q:エンコーディング プロセス中にビデオをローテーション�
 
 A:[Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) は、90/180/270 の角度によるローテーションをサポートしています。 既定の動作 "自動" により、受信 MP4/MOV ファイルのローテーション メタデータの検出、およびこの補正が試行されます。 **ここ** で定義されたいずれかの JSON プリセットに対する次の [ソース](media-services-mes-presets-overview.md)要素を含めます。
 
-    "Version": 1.0,
-    "Sources": [
-    {
-      "Streams": [],
-      "Filters": {
-        "Rotation": "90"
-      }
-    }
-    ],
-    "Codecs": [
+```json
+"Version": 1.0,
+"Sources": [
+{
+  "Streams": [],
+  "Filters": {
+    "Rotation": "90"
+  }
+}
+],
+"Codecs": [
 
-    ...
+...
+```
 
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス

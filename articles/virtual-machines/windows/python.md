@@ -4,15 +4,16 @@ description: Python を使って Azure で Windows VM を作成および管理�
 author: cynthn
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/22/2017
 ms.author: cynthn
-ms.openlocfilehash: b2172d44b4136b51c0ea459868ebd5b0572bb004
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-python
+ms.openlocfilehash: 1e2558074275f9b97bd4a2fd9a3d111c5de02948
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82098070"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853417"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Python を使用して Azure で Windows VM を作成および管理する
 
@@ -31,7 +32,7 @@ ms.locfileid: "82098070"
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 
-1. まだ [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio) をインストールしていない場合は、インストールを実行します。 [ワークロード] ページで **[Python 開発]** を選び、 **[インストール]** をクリックします。 概要では、**Python 3 64 ビット (3.6.0)** が自動的に選択されていることがわかります。 Visual Studio を既にインストールしてある場合は、Visual Studio 起動ツールを使って Python ワークロードを追加できます。
+1. まだ [Visual Studio](/visualstudio/install/install-visual-studio) をインストールしていない場合は、インストールを実行します。 [ワークロード] ページで **[Python 開発]** を選び、 **[インストール]** をクリックします。 概要では、**Python 3 64 ビット (3.6.0)** が自動的に選択されていることがわかります。 Visual Studio を既にインストールしてある場合は、Visual Studio 起動ツールを使って Python ワークロードを追加できます。
 2. Visual Studio をインストールして起動した後、 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** の順にクリックします。
 3. **[テンプレート]**  >  **[Python]**  >  **[Python アプリケーション]** の順にクリックし、プロジェクトの名前に「*myPythonProject*」と入力して、プロジェクトの場所を選んだ後、 **[OK]** をクリックします。
 
@@ -164,7 +165,7 @@ compute_client = ComputeManagementClient(
     input('Availability set created. Press enter to continue...')
     ```
 
-仮想マシンと通信するには、[パブリック IP アドレス](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)が必要です。
+仮想マシンと通信するには、[パブリック IP アドレス](../../virtual-network/public-ip-addresses.md)が必要です。
 
 1. 仮想マシンのパブリック IP アドレスを作成するには、.py ファイルの変数の後に次の関数を追加します。
 
@@ -463,7 +464,7 @@ compute_client = ComputeManagementClient(
 
 ### <a name="resize-the-vm"></a>VM のサイズを変更する
 
-仮想マシンのサイズを決定するときは、デプロイのさまざまな面を考慮する必要があります。 詳しくは、[VM サイズ](sizes.md)をご覧ください。
+仮想マシンのサイズを決定するときは、デプロイのさまざまな面を考慮する必要があります。 詳しくは、[VM サイズ](../sizes.md)をご覧ください。
 
 1. 仮想マシンのサイズを変更するには、.py ファイルの変数の後に次の関数を追加します。
 
@@ -565,6 +566,5 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 ## <a name="next-steps"></a>次のステップ
 
-- デプロイに問題がある場合は、次の手順として、「[Azure Portal でのリソース グループのデプロイのトラブルシューティング](../../resource-manager-troubleshoot-deployments-portal.md)」を参照してください。
-- [Azure Python ライブラリ](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)の詳細をご覧ください。
-
+- デプロイに問題がある場合は、次の手順として、「[Azure Portal でのリソース グループのデプロイのトラブルシューティング](../../azure-resource-manager/templates/deployment-history.md)」を参照してください。
+- [Azure Python ライブラリ](/python/api/overview/azure/?view=azure-python)の詳細をご覧ください。

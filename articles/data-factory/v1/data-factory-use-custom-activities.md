@@ -10,16 +10,17 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
+ms.custom: devx-track-csharp
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 54cb06f1c77ab68818d8531b57d6eb936deda8d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b8935b9f2c3c598aee7c5d0eb37f21d8114dac42
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231547"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997457"
 ---
-# <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Azure Data Factory パイプラインでカスタム アクティビティを使用する
+# <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>Azure Data Factory バージョン 1 パイプラインでカスタム アクティビティを使用する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-use-custom-activities.md)
 > * [バージョン 2 (最新バージョン)](../transform-data-using-dotnet-custom-activity.md)
@@ -372,7 +373,7 @@ public IDictionary<string, string> Execute(
     > プロジェクトのターゲット フレームワークとして .NET Framework バージョン 4.5.2 を設定してください。プロジェクトを右クリックし、 **[プロパティ]** をクリックしてターゲット フレームワークを設定します。 Data Factory では、4.5.2 より後の .NET Framework のバージョンに対してコンパイルされたカスタム アクティビティはサポートされません。
 
 11. **Windows エクスプローラー**を起動し、ビルドの種類に応じて、**bin\debug** フォルダーまたは **bin\release** フォルダーに移動します。
-12. \<プロジェクト フォルダー\>\bin\Debug フォルダー内のすべてのバイナリを含む zip ファイル **MyDotNetActivity.zip** を作成します。 エラー発生時の問題の原因となったソース コードの行番号など、追加情報を取得するために、**MyDotNetActivity.pdb** ファイルを含めます。
+12. \<project folder\>\bin\Debug フォルダー内のすべてのバイナリを含む zip ファイル、**MyDotNetActivity.zip** を作成します。 エラー発生時の問題の原因となったソース コードの行番号など、追加情報を取得するために、**MyDotNetActivity.pdb** ファイルを含めます。
 
     > [!IMPORTANT]
     > カスタム アクティビティの zip ファイル内のファイルは、いずれもサブフォルダーがない **最上位レベル** に置く必要があります。
@@ -1031,7 +1032,7 @@ GitHub の [Azure Data Factory - ローカル環境](https://github.com/gbrueckl
 
 [batch-net-library]: ../../batch/batch-dotnet-get-started.md
 [batch-create-account]: ../../batch/batch-account-create-portal.md
-[batch-technical-overview]: ../../batch/batch-technical-overview.md
+[batch-technical-overview]:../../azure-sql/database/sql-database-paas-overview.md
 [batch-get-started]: ../../batch/batch-dotnet-get-started.md
 [use-custom-activities]: data-factory-use-custom-activities.md
 [troubleshoot]: data-factory-troubleshoot.md

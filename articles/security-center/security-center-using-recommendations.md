@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: memildin
-ms.openlocfilehash: a1034eb47010da2b0e795ee8c79646f06151cac1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8039be7b69444cc32e763e9a1fb074e7dda4a5ba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77603286"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84783233"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Azure Security Center の推奨事項を使用してセキュリティを強化する
 セキュリティ ポリシーを構成し、Azure Security Center によって提供される推奨事項を実装することで、セキュリティに関する重大なイベントの可能性を低減できます。 この記事では、セキュリティ ポリシーと Security Center の推奨事項を使用してセキュリティ攻撃を軽減する方法を説明します。 
@@ -57,7 +57,7 @@ Jeff は、毎日の監視アクティビティの一環として、Azure にサ
 
 2. Jeff は、**セキュリティ スコア** を確認し、サブスクリプションがどれほど保護されているか全体像を把握します。スコアが 548 であることを確認します。
 
-3. Jeff は、最初に処理する推奨事項を決定する必要があります。 それで、セキュリティ スコアをクリックし、 [セキュリティ スコアの影響](security-center-secure-score.md)がどれほど改善されるかに注目しながらレコメンデーションについて処理を始めます。
+3. Jeff は、最初に処理する推奨事項を決定する必要があります。 それで、セキュリティ スコアをクリックし、[セキュリティ スコア](secure-score-security-controls.md)がどれほど改善されるかに注目しながらレコメンデーションについて処理を始めます。
 
 4. Jeff はたくさんの VM やサーバーに接続しているため、 **[計算とアプリ]** にターゲットを絞ることにします。
 

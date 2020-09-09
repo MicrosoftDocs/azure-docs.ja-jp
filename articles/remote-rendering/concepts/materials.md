@@ -5,12 +5,13 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8551e17ddd71e76aca0c85b9768f564ae0e5f049
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4c9de26d9a83319eee62cf6d30cf2c83f66446fb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679401"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020254"
 ---
 # <a name="materials"></a>素材
 
@@ -35,11 +36,15 @@ Azure Remote Rendering には、次の 2 つの異なる素材の種類があり
 
 メッシュ リソースで素材を直接変更すると、その変更はそのメッシュのすべてのインスタンスに影響を及ぼします。 ただし、MeshComponent での変更は、1 つのメッシュ インスタンスにのみ影響します。 どちらの方法が適しているかは、目的の動作によって異なりますが、MeshComponent の変更がより一般的な方法です。
 
+## <a name="material-de-duplication"></a>素材の重複除去
+
+同じプロパティやテクスチャを持つ複数のマテリアルは変換中に自動的に重複除去され、1 つの素材になります。 この機能は [[変換設定]](../how-tos/conversion/configure-model-conversion.md) で無効にすることができますが、最適なパフォーマンスを得るには、そのままにしておくことをお勧めします。
+
 ## <a name="material-classes"></a>Material クラス
 
 API によって提供されるすべての素材は、基本クラス `Material` から派生します。 それらの型を照会するには `Material.MaterialSubType` を使用するか、直接キャストします。
 
-``` cs
+```cs
 void SetMaterialColorToGreen(Material material)
 {
     if (material.MaterialSubType == MaterialType.Color)
@@ -50,14 +55,33 @@ void SetMaterialColorToGreen(Material material)
     }
 
     PbrMaterial pbrMat = material as PbrMaterial;
-    if( pbrMat!= null )
+    if (pbrMat != null)
     {
-        PbrMaterial pbrMaterial = material.PbrMaterial.Value;
-        pbrMaterial.AlbedoColor = new Color4(0, 1, 0, 1);
+        pbrMat.AlbedoColor = new Color4(0, 1, 0, 1);
         return;
     }
 }
 ```
+
+```cpp
+void SetMaterialColorToGreen(ApiHandle<Material> material)
+{
+    if (material->GetMaterialSubType() == MaterialType::Color)
+    {
+        ApiHandle<ColorMaterial> colorMaterial = material.as<ColorMaterial>();
+        colorMaterial->SetAlbedoColor({ 0, 1, 0, 1 });
+        return;
+    }
+
+    if (material->GetMaterialSubType() == MaterialType::Pbr)
+    {
+        ApiHandle<PbrMaterial> pbrMat = material.as<PbrMaterial>();
+        pbrMat->SetAlbedoColor({ 0, 1, 0, 1 });
+        return;
+    }
+}
+```
+
 
 ## <a name="next-steps"></a>次のステップ
 

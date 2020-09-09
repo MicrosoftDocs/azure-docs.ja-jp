@@ -1,24 +1,22 @@
 ---
-title: Windows Virtual Desktop の診断ツールをデプロイする - Azure
-description: Windows Virtual Desktop の診断 UX ツールをデプロイする方法。
-services: virtual-desktop
+title: Windows Virtual Desktop (クラシック) の診断ツールをデプロイする - Azure
+description: Windows Virtual Desktop (クラシック) の診断 UX ツールをデプロイする方法。
 author: Heidilohr
-ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6635fff957512b601fe0927769e4ea91e9270450
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 61c31b24b01b40da4d73a308a4f304f6ff242e41
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614192"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691413"
 ---
-# <a name="deploy-the-diagnostics-tool"></a>診断ツールをデプロイする
+# <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Windows Virtual Desktop (クラシック) の診断ツールをデプロイする
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースに適用されます。
+>このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトがサポートされていない Windows Virtual Desktop (クラシック) に適用されます。
 
 >[!IMPORTANT]
 >サービスの需要が増加したため、2020 年 3 月 16 日より、ユーザーエクスペリエンスに影響を与える診断クエリを一時的に無効にしました。 このツールはこれらのクエリに依存して機能するため、動作が停止します。 診断クエリを再度利用できるようになったときに、この記事を更新します。
@@ -195,9 +193,10 @@ VM の正常性を確認できるようにするには、Log Analytics 接続を
 6. [種類] の下のドロップダウンメニューで **[Web]** を選択します。
 7. アプリの概要ページから URL を入力し、 **/security/signin-callback** を末尾に追加します。 (例: `https://<yourappname>.azurewebsites.net/security/signin-callback`)。
 
-   ![リダイレクト URI ページ](../media/redirect-uri-page.png)
+   > [!div class="mx-imgBorder"]
+   > ![リダイレクト URI ページ](../media/redirect-uri-page.png)
 
-8. ここで、ご使用の Azure リソースに移動し、テンプレートで指定した名前の Azure App Services リソースを選択し、それに関連付けられている URL に移動します。 (たとえば、テンプレートで使用したアプリ名が `contosoapp45` の場合、関連付けられている URL は <https://contosoapp45.azurewebsites.net> になります)。
+8. ここで、ご使用の Azure リソースに移動し、テンプレートで指定した名前の Azure App Services リソースを選択し、それに関連付けられている URL に移動します。 (たとえば、テンプレートで使用したアプリ名が `contosoapp45` の場合、関連付けられている URL は <http://contoso.azurewebsites.net> になります)。
 9. 適切な Azure Active Directory ユーザー アカウントを使用してサインインします。
 10.   **[Accept]\(承認\)** を選択します。
 
@@ -226,7 +225,7 @@ VM の正常性を確認できるようにするには、Log Analytics 接続を
 
 接続アクティビティに、複数のエラーがある場合があります。 アクティビティの種類を展開すると、ユーザーに発生したその他のエラーを表示できます。 エラー コードの名前を選択して、ダイアログを開き、それに関する詳細情報を確認します。
 
-### <a name="investigate-the-session-host"></a>セッションホストを調査する 
+### <a name="investigate-the-session-host"></a>セッションホストを調査する
 
 検索結果で、情報を必要とするセッション ホストを検索して選択します。
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b0b811a2b7ed432b7fc5015886b28337ca33424e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 29190cee748db17caee32497de5512bee736bae0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76710313"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047710"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>高度な分析データ処理のためのシナリオとプランを特定する方法
 
@@ -75,7 +75,7 @@ ms.locfileid: "76710313"
 * オンプレミスとクラウド両方のリソースが関連するハイブリッド シナリオ
 * 移行の過程でビジネス ロジックによってデータがトランザクション処理、修正、または変更されるシナリオ
 
-詳細については、「[Azure Data Factory を使用してオンプレミスの SQL Server から SQL Azure にデータを移動する](move-sql-azure-adf.md)」を参照してください。
+詳細については、「[Azure Data Factory を使用して SQL Server データベースから SQL Azure にデータを移動する](move-sql-azure-adf.md)」を参照してください。
 
 ### <a name="how-much-of-the-data-is-to-be-moved-to-azure"></a>どのくらいの量のデータが Azure に移動されますか。
 
@@ -102,9 +102,9 @@ ms.locfileid: "76710313"
 
 ### <a name="how-large-is-your-data"></a>データのサイズはどの程度か?
 
-* 小さい: 2 GB 未満
-* 中程度: 2 GB から 10 GB
-* 大きい: 10 GB 超
+* 小さい:2 GB 未満
+* 中程度:2 GB から 10 GB
+* 大きい:10 GB 超
 
 たとえば Azure Machine Learning Studio (クラシック) 環境を使用します。
 
@@ -145,12 +145,12 @@ ms.locfileid: "76710313"
 
 ### <a name="what-tools-should-you-use-for-data-analysis"></a>データ分析にはどのツールを使用する必要がありますか。
 
-* [Microsoft Azure Powershell](/powershell/azure/overview) - Azure リソースを管理するために使用されるスクリプト言語
+* [Microsoft Azure PowerShell](/powershell/azure/) - スクリプト言語で Azure リソースを管理するために使用されるスクリプト言語
 * [Azure Machine Learning Studio](../studio/what-is-ml-studio.md)
 * [Revolution Analytics](https://www.microsoft.com/sql-server/machinelearningserver)
 * [RStudio](https://www.rstudio.com)
 * [Python Tools for Visual Studio](https://aka.ms/ptvsdocs)
-* [Anaconda](https://www.continuum.io/why-anaconda)
+* [Anaconda](https://www.anaconda.com/)
 * [Jupyter notebooks](https://jupyter.org/)
 * [Microsoft Power BI](https://powerbi.microsoft.com)
 

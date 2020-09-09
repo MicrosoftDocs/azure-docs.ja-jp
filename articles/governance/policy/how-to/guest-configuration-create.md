@@ -1,23 +1,22 @@
 ---
 title: Windows 用のゲスト構成ポリシーを作成する方法
 description: Windows に対する Azure Policy のゲスト構成ポリシーを作成する方法について説明します。
-ms.date: 03/20/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: a75525b25945dd9548d7c293d5965cc67eb463dc
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 36e71f00a4613e1723645f48d9e57aed9e1e9a8a
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509620"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719395"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Windows 用のゲスト構成ポリシーを作成する方法
 
-カスタム ポリシーを作成する前に、[Azure Policy のゲスト構成](../concepts/guest-configuration.md)のページで、概念上の概要情報を読むことをお勧めします。
+カスタム ポリシー定義を作成する前に、[Azure Policy のゲスト構成](../concepts/guest-configuration.md)のページで、概念上の概要情報を読むことをお勧めします。
  
 Linux のゲスト構成ポリシーを作成する方法の詳細については、[Linux 用のゲスト構成ポリシーを作成する方法](./guest-configuration-create-linux.md)に関するページを参照してください
 
-Windows の監査時に、ゲスト構成では [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) リソース モジュールを使用して構成ファイルが作成されます。 DSC 構成では、マシンが満たす必要のある条件を定義します。
-構成の評価が失敗した場合、ポリシー効果の **auditIfNotExists** がトリガーされて、マシンは**非準拠**と見なされます。
+Windows の監査時に、ゲスト構成では [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) リソース モジュールを使用して構成ファイルが作成されます。 DSC 構成では、マシンが満たす必要のある条件を定義します。 構成の評価が失敗した場合、ポリシー効果の **auditIfNotExists** がトリガーされて、マシンは**非準拠**と見なされます。
 
 [Azure Policy のゲスト構成](../concepts/guest-configuration.md)は、マシン内の設定を監査するためにのみ使用できます。 マシン内の設定の修復はまだ利用できません。
 
@@ -27,12 +26,18 @@ Azure または非 Azure マシンの状態を検証するための独自の構�
 > ゲスト構成でのカスタム ポリシーは、プレビュー機能です。
 >
 > Azure の仮想マシンで監査を実行するには、ゲスト構成拡張機能が必要です。
-> すべての Windows マシンに拡張機能を大規模にデプロイするには、次のポリシー定義を割り当てます。
->   - [Windows VM でゲスト構成ポリシーを有効にするための前提条件をデプロイする。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
+> すべての Windows マシンに拡張機能を大規模にデプロイするには、ポリシー定義 `Deploy prerequisites to enable Guest Configuration Policy on Windows VMs` を割り当てます。
 
 ## <a name="install-the-powershell-module"></a>PowerShell モジュールをインストールする
 
-ゲスト構成アーティファクトの作成、アーティファクトの自動テスト、ポリシー定義の作成、およびポリシーの発行は、PowerShell のゲスト構成モジュールを使用して完全に自動化できます。 モジュールは、ローカルで実行している PowerShell 6.2 以降、[Azure Cloud Shell](https://shell.azure.com)、または [Azure PowerShell Core Docker イメージ](https://hub.docker.com/r/azuresdk/azure-powershell-core)を使用して、Windows、macOS、または Linux を実行しているマシンにインストールできます。
+ゲスト構成モジュールは、次のようなカスタム コンテンツの作成プロセスを自動化します。
+
+- ゲスト構成コンテンツ アーティファクト (.zip) の作成
+- アーティファクトの自動テスト
+- ポリシー定義の作成
+- ポリシーの発行
+
+モジュールは、ローカルで実行している PowerShell 6.2 以降、[Azure Cloud Shell](https://shell.azure.com)、または [Azure PowerShell Core Docker イメージ](https://hub.docker.com/r/azuresdk/azure-powershell-core)を使用して、Windows、macOS、または Linux を実行しているマシンにインストールできます。
 
 > [!NOTE]
 > Linux では、構成のコンパイルはまだサポートされていません。
@@ -49,7 +54,7 @@ Azure または非 Azure マシンの状態を検証するための独自の構�
 
 - PowerShell 6.2 以降。 インストールされていない場合は、こちらの[手順](/powershell/scripting/install/installing-powershell)に従ってください。
 - Azure PowerShell 1.5.0 以降。 インストールされていない場合は、こちらの[手順](/powershell/azure/install-az-ps)に従ってください。
-  - AZ モジュール 'Az.Accounts' および 'Az.Resources' のみが必要です。
+  - Az モジュール "Az.Accounts" および "Az.Resources" のみが必要です。
 
 ### <a name="install-the-module"></a>モジュールのインストール
 
@@ -77,11 +82,13 @@ DSC の概念と用語の概要については、[PowerShell DSC の概要](/pow
 
 ### <a name="how-guest-configuration-modules-differ-from-windows-powershell-dsc-modules"></a>ゲスト構成モジュールと Windows PowerShell DSC モジュールの違い
 
-ゲスト構成によってコンピューターを監査する場合:
+ゲスト構成でコンピューターを監査する場合、Windows PowerShell DSC とは一連のイベントが異なります。
 
 1. エージェントでは最初に `Test-TargetResource` を実行して、構成が正しい状態であるかどうかを判定します。
 1. 関数によって返されるブール値は、ゲスト割り当ての Azure Resource Manager ステータスが準拠しているべきか否かを決定します。
 1. プロバイダーによって `Get-TargetResource` が実行され、各設定の現在の状態が返されます。これにより、コンピューターが準拠していない理由と、現在の状態が準拠していることの確認に関する両方の詳細情報が得られます。
+
+ゲスト構成の割り当てに値を渡す Azure Policy のパラメーターは、_文字列_型である必要があります。 DSC リソースで配列がサポートされている場合でも、パラメーターを使用して配列を渡すことはできません。
 
 ### <a name="get-targetresource-requirements"></a>Get-TargetResource の要件
 
@@ -111,7 +118,7 @@ return @{
 }
 ```
 
-また、Reason プロパティは、リソースのスキーマ MOF に埋め込みクラスとして追加する必要があります。
+Reason プロパティは、リソースのスキーマ MOF に埋め込みクラスとして追加する必要があります。
 
 ```mof
 [ClassVersion("1.0.0.0")] 
@@ -131,7 +138,7 @@ class ResourceName : OMI_BaseResource
 
 ### <a name="configuration-requirements"></a>構成要件
 
-カスタム構成の名前は、すべての場所で一貫している必要があります。 コンテンツ パッケージの .zip ファイルの名前、MOF ファイル内の構成名、および Resource Manager テンプレート内のゲスト割り当て名は同じである必要があります。
+カスタム構成の名前は、すべての場所で一貫している必要があります。 コンテンツ パッケージの .zip ファイルの名前、MOF ファイル内の構成名、および Azure Resource Manager テンプレート (ARM テンプレート) 内のゲスト割り当て名は同じである必要があります。
 
 ### <a name="scaffolding-a-guest-configuration-project"></a>ゲスト構成プロジェクトのスキャフォールディング
 
@@ -156,14 +163,16 @@ PowerShell コマンドレットは、パッケージの作成に役立ちます
 ### <a name="storing-guest-configuration-artifacts"></a>ゲスト構成成果物の保存
 
 .zip パッケージは、管理対象の仮想マシンからアクセスできる場所に保存されている必要があります。
-たとえば、GitHub リポジトリ、Azure リポジトリ、Azure Storage などです。 パッケージを公開したくない場合は、URL に [SAS トークン](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md)を含めることができます。
-また、マシンの[サービス エンドポイント](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network)をプライベート ネットワークに実装することもできますが、この構成はパッケージへのアクセスにのみ適用され、サービスとの通信には適用されません。
+たとえば、GitHub リポジトリ、Azure リポジトリ、Azure Storage などです。 パッケージを公開したくない場合は、URL に [SAS トークン](../../../storage/common/storage-sas-overview.md)を含めることができます。 また、マシンの[サービス エンドポイント](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network)をプライベート ネットワークに実装することもできますが、この構成はパッケージへのアクセスにのみ適用され、サービスとの通信には適用されません。
 
 ## <a name="step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows"></a>Windows 用のカスタム ゲスト構成監査ポリシーを作成する手順
 
 DSC 構成を作成して設定を監査します。 次の PowerShell スクリプトの例では、**AuditBitLocker** という名前の構成を作成し、**PsDscResources** リソース モジュールをインポートし、`Service` リソースを使って実行中のサービスを監査しています。 構成スクリプトは、Windows または macOS コンピューターから実行できます。
 
 ```powershell
+# Add PSDscResources module to environment
+Install-Module 'PSDscResources'
+
 # Define the DSC configuration and import GuestConfiguration
 Configuration AuditBitLocker
 {
@@ -294,6 +303,8 @@ $uri = publish `
 - **バージョン**:ポリシーのバージョン。
 - **パス**:ポリシー定義が作成されるターゲット パス。
 - **Platform**: ゲスト構成ポリシーとコンテンツ パッケージのターゲット プラットフォーム (Windows/Linux)。
+- **Tag** は、ポリシー定義に 1 つ以上のタグ フィルターを追加します
+- **カテゴリ**は、ポリシー定義のカテゴリ メタデータ フィールドを設定します
 
 次の例では、カスタム ポリシー パッケージから指定されたパスにポリシー定義を作成します。
 
@@ -355,7 +366,35 @@ $role.AssignableScopes.Add("/subscriptions/$subscriptionid")
 New-AzRoleDefinition -Role $role
 ```
 
-### <a name="using-parameters-in-custom-guest-configuration-policies"></a>カスタム ゲスト構成ポリシーでのパラメーターの使用
+### <a name="filtering-guest-configuration-policies-using-tags"></a>タグを使用したゲスト構成ポリシーのフィルター処理
+
+ゲスト構成モジュールのコマンドレットによって作成されたポリシー定義には、必要に応じてタグ用のフィルターを含めることができます。 `New-GuestConfigurationPolicy` の **Tag** パラメーターでは、個々のタグ エントリを含むハッシュテーブルの配列がサポートされています。 タグは、ポリシー定義の `If` セクションに追加されており、ポリシーの割り当てで変更することはできません。
+
+タグをフィルター処理するポリシー定義のスニペットの例を次に示します。
+
+```json
+"if": {
+  "allOf" : [
+    {
+      "allOf": [
+        {
+          "field": "tags.Owner",
+          "equals": "BusinessUnit"
+        },
+        {
+          "field": "tags.Role",
+          "equals": "Web"
+        }
+      ]
+    },
+    {
+      // Original Guest Configuration content
+    }
+  ]
+}
+```
+
+### <a name="using-parameters-in-custom-guest-configuration-policy-definitions"></a>カスタム ゲスト構成ポリシー定義でのパラメーターの使用
 
 ゲスト構成では、実行時に構成のプロパティをオーバーライドすることができます。 この機能は、パッケージの MOF ファイル内の値を静的と見なす必要がないことを意味します。 オーバーライドする値は Azure Policy を通じて提供され、構成の作成方法またはコンパイル方法には影響しません。
 
@@ -382,8 +421,132 @@ New-GuestConfigurationPolicy
     -DisplayName 'Audit Windows Service.' `
     -Description 'Audit if a Windows Service is not enabled on Windows machine.' `
     -Path '.\policyDefinitions' `
-    -Parameters $PolicyParameterInfo `
+    -Parameter $PolicyParameterInfo `
     -Version 1.0.0
+```
+
+## <a name="extending-guest-configuration-with-third-party-tools"></a>サードパーティ製ツールを使用したゲスト構成の拡張
+
+ゲスト構成のアーティファクト パッケージを拡張して、サードパーティ製のツールを含めることができます。
+ゲスト構成を拡張するには、2 つのコンポーネントの開発が必要です。
+
+- サードパーティ製ツールの管理に関連するすべてのアクティビティを処理する Desired State Configuration リソース
+  - インストール
+  - Invoke
+  - 出力の変換
+- ツールがネイティブで使用するための正しい形式のコンテンツ
+
+コミュニティ ソリューションがまだ存在しない場合、DSC リソースにはカスタム開発が必要です。
+コミュニティ ソリューションを見つけるには、PowerShell ギャラリーで [GuestConfiguration](https://www.powershellgallery.com/packages?q=Tags%3A%22GuestConfiguration%22) タグを検索します。
+
+> [!Note]
+> ゲスト構成の拡張性は、"ライセンス持ち込み" シナリオです。 サードパーティ製ツールを使用する前に、その使用条件が満たされていることを確認してください。
+
+開発環境に DSC リソースをインストールした後、`New-GuestConfigurationPackage` の **FilesToInclude** パラメーターを使用して、コンテンツ アーティファクトにサードパーティ製のプラットフォームのコンテンツを含めます。
+
+### <a name="step-by-step-creating-a-content-artifact-that-uses-third-party-tools"></a>サードパーティ製ツールを使用するコンテンツ アーティファクトを作成する手順
+
+DSC コンテンツ アーティファクトのステップ バイ ステップ ガイダンスを変更する必要があるのは、`New-GuestConfigurationPackage` コマンドレットだけです。 この例では、`gcInSpec` モジュールを使用して、Linux で使用される組み込みモジュールではなく InSpec プラットフォームを使用して Windows マシンを監査するようにゲスト構成を拡張します。 コミュニティ モジュールは、[GitHub でオープン ソース プロジェクト](https://github.com/microsoft/gcinspec)として管理されています。
+
+開発環境で、必要なモジュールをインストールします。
+
+```azurepowershell-interactive
+# Update PowerShellGet if needed to allow installing PreRelease versions of modules
+Install-Module PowerShellGet -Force
+
+# Install GuestConfiguration module prerelease version
+Install-Module GuestConfiguration -allowprerelease
+
+# Install commmunity supported gcInSpec module
+Install-Module gcInSpec
+```
+
+最初に、InSpec によって使用される YaML ファイルを作成します。 ファイルは、環境に関する基本的な情報を提供します。 次に例を示します。
+
+```YaML
+name: wmi_service
+title: Verify WMI service is running
+maintainer: Microsoft Corporation
+summary: Validates that the Windows Service 'winmgmt' is running
+copyright: Microsoft Corporation
+license: MIT
+version: 1.0.0
+supports:
+  - os-family: windows
+```
+
+`wmi_service.yml` という名前のこのファイルを、プロジェクト ディレクトリ内の `wmi_service` という名前のフォルダーに保存します。
+
+次に、マシンの監査に使用される InSpec 言語抽象化で Ruby ファイルを作成します。
+
+```Ruby
+control 'wmi_service' do
+  impact 1.0
+  title 'Verify windows service: winmgmt'
+  desc 'Validates that the service, is installed, enabled, and running'
+
+  describe service('winmgmt') do
+    it { should be_installed }
+    it { should be_enabled }
+    it { should be_running }
+  end
+end
+
+```
+
+このファイル `wmi_service.rb` を `wmi_service` ディレクトリ内の `controls` という名前の新しいフォルダーに保存します。
+
+最後に、構成を作成し、**GuestConfiguration** リソース モジュールをインポートし、`gcInSpec` リソースを使用して InSpec プロファイルの名前を設定します。
+
+```powershell
+# Define the configuration and import GuestConfiguration
+Configuration wmi_service
+{
+    Import-DSCResource -Module @{ModuleName = 'gcInSpec'; ModuleVersion = '2.1.0'}
+    node 'wmi_service'
+    {
+        gcInSpec wmi_service
+        {
+            InSpecProfileName       = 'wmi_service'
+            InSpecVersion           = '3.9.3'
+            WindowsServerVersion    = '2016'
+        }
+    }
+}
+
+# Compile the configuration to create the MOF files
+wmi_service -out ./Config
+```
+
+これで、プロジェクトの構造は次のようになります。
+
+```file
+/ wmi_service
+    / Config
+        wmi_service.mof
+    / wmi_service
+        wmi_service.yml
+        / controls
+            wmi_service.rb 
+```
+
+サポート ファイルはまとめてパッケージ化する必要があります。 完成したパッケージは、Azure Policy の定義を作成するためにゲスト構成によって使われます。
+
+`New-GuestConfigurationPackage` コマンドレットでパッケージを作成します。 サードパーティ製コンテンツの場合は、**FilesToInclude** パラメーターを使用して、パッケージに InSpec コンテンツを追加します。 Linux パッケージの場合、**ChefProfilePath** を指定する必要はありません。
+
+- **Name**:ゲスト構成のパッケージ名。
+- **構成**:コンパイル済み構成ドキュメントの完全なパス。
+- **パス**:出力フォルダーのパス。 このパラメーターは省略可能です。 指定しないと、パッケージは現在のディレクトリに作成されます。
+- **FilesoInclude**: InSpec プロファイルへの完全なパス。
+
+次のコマンドを実行して、前の手順で指定した構成を使用してパッケージを作成します。
+
+```azurepowershell-interactive
+New-GuestConfigurationPackage `
+  -Name 'wmi_service' `
+  -Configuration './Config/wmi_service.mof' `
+  -FilesToInclude './wmi_service'  `
+  -Path './package' 
 ```
 
 ## <a name="policy-lifecycle"></a>ポリシーのライフサイクル
@@ -394,11 +557,6 @@ New-GuestConfigurationPolicy
 - **contentHash**: このプロパティは、`New-GuestConfigurationPolicy` コマンドレットによって自動的に更新されます。 `New-GuestConfigurationPackage` によって作成されるパッケージのハッシュ値です。 このプロパティは、発行する `.zip` ファイルに対して適切なものである必要があります。 **contentUri** プロパティのみが更新された場合、拡張機能ではコンテンツ パッケージが受け入れられません。
 
 更新されたパッケージをリリースする最も簡単な方法は、この記事で説明されているプロセスを繰り返し、更新されたバージョン番号を指定することです。 このプロセスにより、すべてのプロパティが正しく更新されることが保証されます。
-
-## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Windows グループ ポリシー コンテンツから Azure Policy ゲスト構成への変換
-
-Windows マシンを監査する場合のゲスト構成は、PowerShell Desired State Configuration 構文の実装です。 DSC コミュニティでは、エクスポートしたグループ ポリシー テンプレートを DSC 形式に変換するためのツールが公開されています。 このツールを前述のゲスト構成コマンドレットと共に使用することで、Windows グループ ポリシーのコンテンツを変換し、Azure Policy 用にパッケージ化および公開して監査することができます。 ツールの使用の詳細については、[クイックスタート: グループ ポリシーを DSC に変換する](/powershell/scripting/dsc/quickstarts/gpo-quickstart)」という記事を参照してください。
-コンテンツの変換後は、パッケージを作成して Azure Policy として公開する上記の手順は、他の DSC コンテンツと同じです。
 
 ## <a name="optional-signing-guest-configuration-packages"></a>省略可能:ゲスト構成パッケージに署名する
 
@@ -440,5 +598,5 @@ Azure Policy ゲスト構成割り当てのトラブルシューティングに�
 ## <a name="next-steps"></a>次のステップ
 
 - [ゲスト構成](../concepts/guest-configuration.md)による VM の監査について学習します。
-- [プログラムによってポリシーを作成する](programmatically-create.md)方法を理解します。
-- [コンプライアンス データを取得する](get-compliance-data.md)方法を学習します。
+- [プログラムによってポリシーを作成する](./programmatically-create.md)方法を理解します。
+- [コンプライアンス データを取得する](./get-compliance-data.md)方法を学習します。

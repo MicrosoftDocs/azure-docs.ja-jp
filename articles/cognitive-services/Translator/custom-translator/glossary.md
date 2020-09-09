@@ -6,21 +6,21 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: caf4a4b038cab81333ca78cd355bb2033891da00
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 67af6ab9ae5c60ee8291f38ea58b3b3d9744dbc9
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73888140"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506653"
 ---
 # <a name="custom-translator-glossary"></a>Custom Translator 用語集
 
 [Custom Translator](https://portal.customtranslator.azure.ai) の用語集では、Custom Translator の操作時に表示されることがある用語について説明します。
 
-| **単語またはフレーズ**       | **[定義]**                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| **単語またはフレーズ**       | **定義**                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ソース言語          | ソース言語は、基の言語であり、別の言語 ("ターゲット") に変換する言語です。                                                                                                                                                                                                                                                                                                                                                         |
 | ターゲット言語          | ターゲット言語は、ソース言語を受け取った後に機械翻訳の提供に使用する言語です。                                                                                                                                                                                                                                                                                                                                               |

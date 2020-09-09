@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: mimckitt
-ms.openlocfilehash: 476241ad3d4077f2da0c513e3c989218701232ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 37a2724e28269d5f8b10d6ae7073aacc8272255b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81255755"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494770"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Linux 用 Network Watcher Agent 仮想マシン拡張機能
 
 ## <a name="overview"></a>概要
 
-[Azure Network Watcher](/azure/network-watcher/) は、Azure ネットワークの監視に使用できる、ネットワーク パフォーマンスの監視、診断、および分析サービスです。 Network Watcher Agent 仮想マシン (VM) 拡張機能は、オンデマンドでのネットワーク トラフィックの捕捉やその他の高度な機能などの Azure VM の一部 Network Watcher 機能に必須の機能です。
+[Azure Network Watcher](../../network-watcher/index.yml) は、Azure ネットワークの監視に使用できる、ネットワーク パフォーマンスの監視、診断、および分析サービスです。 Network Watcher Agent 仮想マシン (VM) 拡張機能は、オンデマンドでのネットワーク トラフィックの捕捉やその他の高度な機能などの Azure VM の一部 Network Watcher 機能に必須の機能です。
 
 この記事では、Linux 用 Network Watcher Agent 仮想マシン拡張機能でサポートされているプラットフォームとデプロイ オプションについて詳しく説明します エージェントのインストールによって、仮想マシンが中断されることも、再起動が必要になることもありません。 デプロイする仮想マシンに拡張機能をデプロイすることができます。 仮想マシンが Azure サービスによってデプロイされる場合は、サービスのドキュメントを調べて、仮想マシンへの拡張機能のインストールが許可されるかどうかを確認します。
 
@@ -49,7 +49,7 @@ Network Watcher Agent 拡張機能は、次の Linux ディストリビューシ
 
 ### <a name="internet-connectivity"></a>インターネット接続
 
-一部の Network Watcher Agent 機能では、仮想マシンがインターネットに接続されている必要があります。 送信接続を確立できない場合、一部の Network Watcher Agent 機能が正しく動作しなかったり、使用できなくなったりすることがあります。 このエージェントを必要とする Network Watcher 機能についての詳細は、[Network Watcher ドキュメント](/azure/network-watcher/) をご覧ください。
+一部の Network Watcher Agent 機能では、仮想マシンがインターネットに接続されている必要があります。 送信接続を確立できない場合、一部の Network Watcher Agent 機能が正しく動作しなかったり、使用できなくなったりすることがあります。 このエージェントを必要とする Network Watcher 機能についての詳細は、[Network Watcher ドキュメント](../../network-watcher/index.yml) をご覧ください。
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 
@@ -119,4 +119,4 @@ az vm extension show --name NetworkWatcherAgentLinux --resource-group myResource
 
 ### <a name="support"></a>サポート
 
-この記事についてさらにヘルプが必要な場合は、[Network Watcher のドキュメント](/azure/network-watcher/)をご覧ください。また、[MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることもできます。 または、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]** をクリックします。 Azure サポートのご利用方法についての詳細は、「[Microsoft Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。
+この記事についてさらにヘルプが必要な場合は、[Network Watcher のドキュメント](../../network-watcher/index.yml)をご覧ください。また、[MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることもできます。 または、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]** をクリックします。 Azure サポートのご利用方法についての詳細は、「[Microsoft Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。

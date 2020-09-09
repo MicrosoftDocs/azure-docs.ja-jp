@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: a68c27de304a0da6470745ee4abf69590d9bf78c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12d78846f5892e71388de6e6e76b868f9b14d4de
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235303"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008918"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>Azure Cache for Redis のサーバー側の問題に関するトラブルシューティング
 
@@ -76,7 +76,7 @@ Redis コマンドの中には、他のコマンドより実行コストが高�
 ## <a name="additional-information"></a>関連情報
 
 - [Azure Cache for Redis のクライアント側の問題に関するトラブルシューティング](cache-troubleshoot-client.md)
-- [Azure Cache for Redis のサービス内容と適切なサイズの選択](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
-- [キャッシュのベンチマークを実行およびテストする方法](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+- [最適なサービス レベルを選択する](cache-overview.md#choosing-the-right-tier)
+- [キャッシュのベンチマークを実行およびテストする方法](cache-management-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 - [Azure Cache for Redis を監視する方法](cache-how-to-monitor.md)
-- [Redis コマンドの実行方法](cache-faq.md#how-can-i-run-redis-commands)
+- [Redis コマンドの実行方法](cache-development-faq.md#how-can-i-run-redis-commands)

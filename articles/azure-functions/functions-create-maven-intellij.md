@@ -5,18 +5,18 @@ author: jeffhollan
 ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 05074696ca2cc9d425269561523beb11eb18c4f3
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.custom: mvc, devcenter, devx-track-java
+ms.openlocfilehash: 38ccc99de72af8f989cca0fefae2f962fb178f0e
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756449"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373370"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>Java と IntelliJ を使用して初めての Azure 関数を作成する
 
 この記事では、次の内容について説明します。
-- IntelliJ IDEA と Apache Maven を使用して[サーバーレス](https://azure.microsoft.com/overview/serverless-computing/)関数プロジェクトを作成する方法
+- IntelliJ IDEA を使用して[サーバーレス](https://azure.microsoft.com/overview/serverless-computing/)関数プロジェクトを作成する方法
 - 自身のコンピューターで統合開発環境 (IDE) 内の関数をテストおよびデバッグする手順
 - 関数プロジェクトを Azure Functions にデプロイする手順
 
@@ -28,86 +28,140 @@ ms.locfileid: "80756449"
 
 Java および IntelliJ で関数を開発するには、次のソフトウェアをインストールします。
 
-- [Java Developer Kit](https://www.azul.com/downloads/zulu/) (JDK) バージョン 8
-- [Apache Maven](https://maven.apache.org) バージョン 3.0 以降
-- [IntelliJ IDEA](https://www.jetbrains.com/idea/download)、コミュニティまたは Maven が付属した Ultimate バージョン
-- [Azure CLI](https://docs.microsoft.com/cli/azure)
++ アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
++ [Azure でサポートされている Java 8 用の Java Development Kit (JDK)](https://aka.ms/azure-jdks)
++ [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) Ultimate Edition または Community Edition がインストールされていること
++ [Maven 3.5.0 以降](https://maven.apache.org/download.cgi)
++ 最新の [Function Core Tools](https://github.com/Azure/azure-functions-core-tools)
 
-> [!IMPORTANT]
-> この記事の手順を行うには、JAVA_HOME 環境変数を JDK のインストール場所に設定する必要があります。
 
- [Azure Functions Core Tools、バージョン 2](functions-run-local.md#v2) をインストールすることをお勧めします。 ここには、Azure Functions を記述、実行、デバッグするためのローカル開発環境が提供されます。
+## <a name="installation-and-sign-in"></a>インストールとサインイン
 
-## <a name="create-a-functions-project"></a>Functions プロジェクトを作成する
+1. IntelliJ IDEA の [設定/環境設定] ダイアログ (Ctrl+Alt+S) で、 **[プラグイン]** を選択します。 次に、**Marketplace** で **Azure Toolkit for IntelliJ** を見つけ、 **[インストール]** をクリックします。 インストール後、 **[再起動]** をクリックしてプラグインをアクティブにします。 
 
-1. IntelliJ IDEA で、 **[新しいプロジェクトの作成]** を選択します。  
-1. **[新しいプロジェクト]** ウィンドウの左ウィンドウで **[Maven]** を選択します。
-1. **[Create from archetype]** (アーキタイプからの作成) チェック ボックスをオンにして、 **[Add Archetype]** (アーキタイプの追加) に [[azure-functions-archetype]](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) を選択します。
-1. **[Add Archetype]** (アーキタイプの追加) ウィンドウで、次のように各フィールドに入力します。
-    - _GroupId_: com.microsoft.azure
-    - _ArtifactId_: azure-functions-archetype
-    - _バージョン_:[中央リポジトリ](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
-    の最新バージョンを確認し、これを使用します。![IntelliJ IDEA でアーキタイプから Maven プロジェクトを作成](media/functions-create-first-java-intellij/functions-create-intellij.png)  
-1. **[OK]** を選択し、 **[次へ]** を選択します。
-1. 現在のプロジェクトの詳細を入力し、 **[完了]** を選択します。
+    ![Marketplace の Azure Toolkit for IntelliJ プラグイン][marketplace]
 
-Maven は、_ArtifactId_ 値と同じ名前で新しいフォルダーにプロジェクト ファイルを作成します。 生成されるプロジェクトのコードは、トリガーする HTTP 要求の本文をエコーする、[HTTP によってトリガーされる](/azure/azure-functions/functions-bindings-http-webhook)単純な関数です。
+2. Azure アカウントにサインインするには、サイドバーの **Azure Explorer** を開き、上部のバーにある **[Azure サインイン]** アイコンをクリックします (または [IDEA] メニューから **[ツール]/[Azure]/ [Azure サインイン]** をクリックします)。
+    ![IntelliJ Azure サインイン コマンド][intellij-azure-login]
 
-## <a name="run-functions-locally-in-the-ide"></a>IDE で関数をローカルで実行する
+3. **[Azure サインイン]** ウィンドウで、 **[Device Login]\(デバイスのログイン\)** を選択し、次に **[サインイン]** をクリックします ([他のサインイン オプション](/azure/developer/java/toolkit-for-intellij/sign-in-instructions))。
 
-> [!NOTE]
-> 関数をローカルで実行およびデバッグするには、[Azure Functions Core Tools、バージョン 2](functions-run-local.md#v2) をインストールしていることを確認してください。
+   ![[デバイスのログイン] が選択されている [Azure サインイン] ウィンドウ][intellij-azure-popup]
 
-1. 変更を手動でインポートするか、[自動インポート](https://www.jetbrains.com/help/idea/creating-and-optimizing-imports.html)を有効にします。
-1. **[Maven Projects]** (Maven プロジェクト) ツールバーを開きます。
-1. **[Lifecycle]** を展開し、 **[package]** を開きます。 ソリューションが、新しく作成されたターゲット ディレクトリに構築されパッケージ化されます。
-1. **[Plugins]**  >  **[azure-functions]** を展開し、 **[azure-functions:run]** を開いて Azure Functions ローカル ランタイムを開始します。  
-  ![Azure Functions の Maven ツールバー](media/functions-create-first-java-intellij/functions-intellij-java-maven-toolbar.png)  
+4. **[Azure Device Login]\(Azure デバイスのログイ\)** ダイアログで **[Copy&Open]\(コピーして開く\)** をクリックします。
 
-1. 関数のテストが終了したら、実行ダイアログ ボックスを閉じます。 アクティブにして同時にローカルで実行できる関数ホストは 1 つだけです。
+   ![[Azure ログイン] ダイアログ ウィンドウ][intellij-azure-copycode]
 
-## <a name="debug-the-function-in-intellij"></a>IntelliJ で関数をデバッグする
+5. ブラウザーで、該当のデバイス コード (前の手順で **[Copy&Open]\(コピーして開く\)** をクリックしたときにコピーされたもの) を貼り付け、 **[次へ]** をクリックします。
 
-1. デバッグ モードで関数ホストを開始するには、関数の実行時に **-DenableDebug** を引数として追加します。 [maven goals](https://www.jetbrains.com/help/idea/maven-support.html#run_goal) で構成を変更することも、ターミナル ウィンドウで次のコマンドを実行することもできます。  
+   ![デバイスのログイン ブラウザー][intellij-azure-link-ms-account]
 
-   ```
-   mvn azure-functions:run -DenableDebug
-   ```
+6. **[サブスクリプションの選択]** ダイアログ ボックスで、使用するサブスクリプションを選択し、 **[OK]** をクリックします。
 
-   このコマンドにより、関数ホストがデバッグ ポートを 5005 で開きます。
+   ![[サブスクリプションの選択] ダイアログ ボックス][intellij-azure-login-select-subs]
+   
+## <a name="create-your-local-project"></a>ローカル プロジェクトを作成する
 
-1. **[実行]** メニューで **[構成の編集]** を選択します。
-1. **(+)** を選択して、 **[リモート]** を追加します。
-1. _[名前]_ および _[設定]_ フィールドに入力し、 **[OK]** を選択して構成を保存します。
-1. セットアップ後、 **[Debug < Remote Configuration Name >]** (<リモート構成名> のデバッグ) を選択するか、キーボードで Shift + F9 キーを押してデバッグを開始します。
+このセクションでは、Azure Toolkit for IntelliJ を使用して、ローカル Azure Functions プロジェクトを作成します。 後からこの記事の中で、関数コードを Azure に発行します。 
 
-1. 完了したら、デバッガーと実行中のプロセスを停止します。 アクティブにして同時にローカルで実行できる関数ホストは 1 つだけです。
+1. IntelliJ のウェルカム ダイアログを開き、 *[Create New Project]\(新規プロジェクトの作成\)* を選択して新規プロジェクト ウィザードを開き、 *[Azure Functions]* を選択します。
 
-## <a name="deploy-the-function-to-azure"></a>関数を Azure にデプロイする
+    ![関数プロジェクトを作成する](media/functions-create-first-java-intellij/create-functions-project.png)
 
-1. 関数を Azure にデプロイする前に、[Azure CLI を使用してサインイン](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)する必要があります。
+1. *[Http Trigger]\(HTTP トリガー\)* を選択し、 *[Next]\(次へ\)* をクリックして、以降のページですべての構成を行います。プロジェクトの場所を確認して *[Finish]\(終了\)* をクリックすると、Intellj IDEA で新しいプロジェクトが開きます。
 
-   ``` azurecli
-   az login
-   ```
+    ![関数プロジェクトの作成の終了](media/functions-create-first-java-intellij/create-functions-project-finish.png)
 
-1. `azure-functions:deploy` Maven ターゲットを使用して、新しい関数にコードをデプロイします。 [Maven Projects]\(Maven プロジェクト) ウィンドウで **azure-functions:deploy** オプションを選択することもできます。
+## <a name="run-the-function-app-locally"></a>関数アプリをローカルで実行する
 
-   ```
-   mvn azure-functions:deploy
-   ```
+1. `src/main/java/org/example/functions/HttpTriggerFunction.java`に移動して生成されたコードを確認します。 行 *17*の横に、緑色の *[Run]\(実行\)* ボタンが表示されています。それをクリックして *[Run 'azure-function-exam...']\('azure-function-exam...' の実行\)* を選択すると、関数アプリが実行されていくつかのログが出力されます。
 
-1. 関数が正常にデプロイされると、Azure CLI 出力に関数の URL が表示されます。
+    ![関数プロジェクトのローカル実行](media/functions-create-first-java-intellij/local-run-functions-project.png)
 
-   ``` output
-   [INFO] Successfully deployed Function App with package.
-   [INFO] Deleting deployment package from Azure Storage...
-   [INFO] Successfully deleted deployment package fabrikam-function-20170920120101928.20170920143621915.zip
-   [INFO] Successfully deployed Function App at https://fabrikam-function-20170920120101928.azurewebsites.net
-   [INFO] ------------------------------------------------------------------------
-   ```
+    ![関数プロジェクトのローカル実行の出力](media/functions-create-first-java-intellij/local-run-functions-output.png)
+
+1. 出力されたエンドポイントにブラウザーからアクセスし、関数を試すことができます (例: `http://localhost:7071/api/HttpTrigger-Java?name=Azure`)。
+
+    ![関数のローカル実行のテスト結果](media/functions-create-first-java-intellij/local-run-functions-test.png)
+
+1. ログは IDEA にも出力されます。ここで、"*停止*" ボタンをクリックして関数を停止します。
+
+    ![関数のローカル実行のテスト ログ](media/functions-create-first-java-intellij/local-run-functions-log.png)
+
+## <a name="debug-the-function-app-locally"></a>関数アプリをローカルでデバッグする
+
+1. 関数アプリをローカルでデバッグしてみましょう。ツールバーの *[Debug]\(デバッグ\)* ボタンをクリックします (表示されていない場合は、 *[View]\(表示\) -> [Appearance]\(外観\) -> [Toolbar]\(ツールバー\)* をクリックしてツールバーを有効にします)。
+
+    ![関数をローカルでデバッグするボタン](media/functions-create-first-java-intellij/local-debug-functions-button.png)
+
+1. ファイル `src/main/java/org/example/functions/HttpTriggerFunction.java` の行 *20* をクリックしてブレークポイントを追加し、エンドポイント `http://localhost:7071/api/HttpTrigger-Java?name=Azure` に再度アクセスすると、ブレークポイントにヒットします。これにより、"*ステップ実行*"、"*ウォッチ*"、"*評価*"など、より多くのデバッグ機能を試すことができます。 停止ボタンをクリックしてデバッグ セッションを停止します。
+
+    ![関数のローカル デバッグの中断](media/functions-create-first-java-intellij/local-debug-functions-break.png)
+
+## <a name="deploy-your-function-app-to-azure"></a>Azure に関数アプリをデプロイする
+
+1. IntelliJ の [Project]\(プロジェクト\) エクスプローラーで、 *[Azure] -> [Deploy to Azure Functions]\(Azure Functionsにデプロイ\)* を選択します。
+
+    ![Azure に関数をデプロイする](media/functions-create-first-java-intellij/deploy-functions-to-azure.png)
+
+1. まだ関数アプリがない場合は、 *[No available function, click to create a new one]\(使用可能な関数がありません。クリックして新規作成します\)* をクリックします。
+
+    ![Azure への関数のデプロイでのアプリの作成](media/functions-create-first-java-intellij/deploy-functions-create-app.png)
+
+1. 関数アプリの名前を入力して適切なサブスクリプション、プラットフォーム、リソース グループ、App Service プランを選択します。ここで、リソース グループや App Service プランを作成することもできます。 次に、アプリの設定を変更せずに *[OK]* をクリックして新しい関数が作成されるまでしばらく待ちます。 *[Creating New Function App]\(新しい関数アプリを作成しています\)* 進行状況バーが消えます。
+
+    ![Azure への関数のデプロイでのアプリの作成ウィザード](media/functions-create-first-java-intellij/deploy-functions-create-app-wizard.png)
+
+1. デプロイする関数アプリを選択します (作成した新しい関数アプリが自動的に選択されます)。 *[Run]\(実行\)* をクリックして関数をデプロイします。
+
+    ![Azure への関数のデプロイの実行](media/functions-create-first-java-intellij/deploy-functions-run.png)
+
+    ![Azure への関数のデプロイのログ](media/functions-create-first-java-intellij/deploy-functions-log.png)
+
+## <a name="manage-azure-functions-from-idea"></a>IDEA から Azure Functions を管理する
+
+1. IDEA の "*Azure 用エクスプローラー*" を使用して関数を管理できます。 *[Function App]\(関数アプリ\)* をクリックすると、ここにすべての関数が表示されます。
+
+    ![エクスプローラーでの関数の表示](media/functions-create-first-java-intellij/explorer-view-functions.png)
+
+1. いずれかの関数をクリックして選択し、右クリックして *[Show Properties]\(プロパティの表示\)* を選択して詳細ページを開きます。 
+
+    ![関数プロパティの表示](media/functions-create-first-java-intellij/explorer-functions-show-properties.png)
+
+1. 関数 *HttpTrigger-Java* を右クリックし、 *[Trigger Function]\(関数のトリガー\)* を選択します。トリガー URL でブラウザーが開きます。
+
+    ![Azure への関数のデプロイの実行](media/functions-create-first-java-intellij/explorer-trigger-functions.png)
+
+## <a name="add-more-functions-to-the-project"></a>プロジェクトに関数を追加する
+
+1. パッケージ *org.example.functions* を右クリックして *[New]\(新規\) -> [Azure Function Class]\(Azure 関数クラス\)* を選択します。 
+
+    ![プロジェクト エントリへの関数の追加](media/functions-create-first-java-intellij/add-functions-entry.png)
+
+1. 関数クラスの作成ウィザードで、クラス名に「*HttpTest*」を入力し、 *[HttpTrigger]* を選択し、 *[OK]* をクリックして作成します。この方法で、新しい関数を必要なだけ作成できます。
+
+    ![プロジェクトへの関数の追加でのトリガーの選択](media/functions-create-first-java-intellij/add-functions-trigger.png)
+    
+    ![プロジェクトへの関数の追加での出力](media/functions-create-first-java-intellij/add-functions-output.png)
+
+## <a name="cleaning-up-functions"></a>関数のクリーンアップ
+
+1. Azure Explorer での Azure Functions の削除
+      
+      ![プロジェクトへの関数の追加でのトリガーの選択](media/functions-create-first-java-intellij/delete-function.png)
+      
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[Azure Functions Java developer guide](functions-reference-java.md)」(Azure Functions Java 開発者ガイド) で、Java 関数の開発の詳細について確認します。
-- `azure-functions:add` Maven ターゲットを使って、異なるトリガーの新しい関数をプロジェクトに追加します。
+HTTP でトリガーされる関数を含む Java 関数プロジェクトを作成し、ローカル コンピューターでそれを実行し、Azure にデプロイしました。 次は以下の方法で関数を拡張します。
+
+> [!div class="nextstepaction"]
+> [Azure Storage キュー出力バインドを追加する](./functions-add-output-binding-storage-queue-java.md)
+
+
+[marketplace]:./media/functions-create-first-java-intellij/marketplace.png
+[intellij-azure-login]: media/functions-create-first-java-intellij/intellij-azure-login.png
+[intellij-azure-popup]: media/functions-create-first-java-intellij/intellij-azure-login-popup.png
+[intellij-azure-copycode]: media/functions-create-first-java-intellij/intellij-azure-login-copyopen.png
+[intellij-azure-link-ms-account]: media/functions-create-first-java-intellij/intellij-azure-login-linkms-account.png
+[intellij-azure-login-select-subs]: media/functions-create-first-java-intellij/intellij-azure-login-selectsubs.png

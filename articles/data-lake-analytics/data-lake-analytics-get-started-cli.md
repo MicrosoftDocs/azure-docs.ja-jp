@@ -2,30 +2,29 @@
 title: Azure Data Lake Analytics の作成とクエリ - Azure CLI
 description: Azure コマンド ライン インターフェイスを使用して Azure Data Lake Analytics アカウントを作成し、U-SQL ジョブを送信する方法について説明します。
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: d9fc9bee98391f7272a417324b9c3a540b6adbe6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: be7f9d66a10f3f0f4a1ae0f9e28e226f268a7f7c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79474511"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497445"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli"></a>Azure CLI で Azure Data Lake Analytics の使用を開始する
+
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-この記事では、Azure CLI コマンド ライン インターフェイスを使用して、Azure Data Lake Analytics のアカウントを作成し、USQL ジョブおよびカタログを送信する方法について説明します。 このジョブでは、タブ区切り値 (TSV) ファイルを読み取り、コンマ区切り値 (CSV) ファイルに変換します。 
+この記事では、Azure CLI コマンド ライン インターフェイスを使用して、Azure Data Lake Analytics のアカウントを作成し、USQL ジョブおよびカタログを送信する方法について説明します。 このジョブでは、タブ区切り値 (TSV) ファイルを読み取り、コンマ区切り値 (CSV) ファイルに変換します。
 
 ## <a name="prerequisites"></a>前提条件
+
 インストールを開始するには、次の項目が必要です。
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-* この記事では、Azure CLI バージョン 2.0 以降を実行している必要があります。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。 
-
-
+* この記事では、Azure CLI バージョン 2.0 以降を実行している必要があります。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -46,6 +45,7 @@ az account set --subscription <subscription id>
 ```
 
 ## <a name="create-data-lake-analytics-account"></a>Data Lake Analytics アカウントを作成する
+
 ジョブを実行するには、Data Lake Analytics アカウントが必要です。 Data Lake Analytics アカウントを作成するには、以下の項目を指定する必要があります。
 
 * **Azure リソース グループ**。 Data Lake Analytics アカウントは、Azure リソース グループ内に作成する必要があります。 [Azure Resource Manager](../azure-resource-manager/management/overview.md) を使用すると、アプリケーション内の複数リソースを 1 つのグループとして操作できます。 アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。  
@@ -88,10 +88,11 @@ az dla account create --account "<Data Lake Analytics Account Name>" --resource-
 
 ```azurecli
 az dla account list
-az dla account show --account "<Data Lake Analytics Account Name>"            
+az dla account show --account "<Data Lake Analytics Account Name>"
 ```
 
 ## <a name="upload-data-to-data-lake-store"></a>Data Lake Store にデータをアップロードする
+
 このチュートリアルでは、いくつかの検索ログを処理します。  検索ログは、Data Lake Store または Azure Blob Storage に格納できます。
 
 Azure Portal には、検索ログ ファイルを含むサンプル データ ファイルを既定の Data Lake Store アカウントにコピーするためのユーザー インターフェイスが用意されています。 「 [ソース データの準備](data-lake-analytics-get-started-portal.md) 」を参照して、データを既定の Data Lake Store アカウントにアップロードします。
@@ -106,19 +107,20 @@ az dls fs list --account "<Data Lake Store Account Name>" --path "<Path>"
 Data Lake Analytics は、Azure BLOB ストレージにもアクセスできます。  Azure BLOB ストレージへのデータのアップロードについては、「 [Azure ストレージでの Azure CLI の使用](../storage/common/storage-azure-cli.md)」を参照してください。
 
 ## <a name="submit-data-lake-analytics-jobs"></a>Data Lake Analytics ジョブを送信する
+
 Data Lake Analtyics ジョブは U-SQL 言語で記述されます。 U-SQL の詳細については、[U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)に関する記事および「[U-SQL Language Reference (U-SQL 言語リファレンス)](https://docs.microsoft.com/u-sql/)」をご覧ください。
 
-**Data Lake Analytics ジョブ スクリプトを作成するには**
+### <a name="to-create-a-data-lake-analytics-job-script"></a>Data Lake Analytics ジョブ スクリプトを作成するには
 
 次の U-SQL スクリプトでテキスト ファイルを作成し、ワークステーションにテキスト ファイルを保存します。
 
-```
-@a  = 
-    SELECT * FROM 
+```usql
+@a  =
+    SELECT * FROM
         (VALUES
             ("Contoso", 1500.0),
             ("Woodgrove", 2700.0)
-        ) AS 
+        ) AS
               D( customer, amount );
 OUTPUT @a
     TO "/data.csv"
@@ -131,22 +133,22 @@ OUTPUT @a
 
 既定の Data Lake Store アカウントに保存されたファイルの相対パスを使用する方が簡単です。 絶対パスを使用することもできます。  次に例を示します。
 
-```
+```usql
 adl://<Data LakeStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
 ```
 
 リンクされたストレージ アカウント内のファイルへのアクセスには、絶対パスを使用する必要があります。  リンクされた Azure Storage アカウントに格納されているファイルの構文は以下のとおりです。
 
-```
+```usql
 wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
 ```
 
 > [!NOTE]
-> Azure BLOB コンテナーのパブリック BLOB はサポートされていません。      
-> Azure BLOB コンテナーのパブリック コンテナーはサポートされていません。      
+> Azure BLOB コンテナーのパブリック BLOB はサポートされていません。
+> Azure BLOB コンテナーのパブリック コンテナーはサポートされていません。
 >
 
-**ジョブを送信するには**
+### <a name="to-submit-jobs"></a>ジョブを送信するには
 
 ジョブを送信するには、次の構文を使用します。
 
@@ -160,14 +162,14 @@ az dla job submit --account "<Data Lake Analytics Account Name>" --job-name "<Jo
 az dla job submit --account "myadlaaccount" --job-name "myadlajob" --script @"C:\DLA\myscript.txt"
 ```
 
-**ジョブを一覧表示し、ジョブの詳細を表示するには**
+### <a name="to-list-jobs-and-show-job-details"></a>ジョブを一覧表示し、ジョブの詳細を表示するには
 
 ```azurecli
 az dla job list --account "<Data Lake Analytics Account Name>"
 az dla job show --account "<Data Lake Analytics Account Name>" --job-identity "<Job Id>"
 ```
 
-**ジョブを取り消すには**
+### <a name="to-cancel-jobs"></a>ジョブを取り消すには
 
 ```azurecli
 az dla job cancel --account "<Data Lake Analytics Account Name>" --job-identity "<Job Id>"

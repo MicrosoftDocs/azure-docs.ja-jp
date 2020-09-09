@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:iOS アプリの作成
-description: このクイック スタートでは、Spatial Anchors を使用する iOS アプリを構築する方法について説明します。
+description: Swift または Objective-C のプログラムで Azure Spatial Anchors を使用して iOS アプリを作成する方法について説明します。
 author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
@@ -9,12 +9,12 @@ ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1da5bd7020304c67bd9f9058612f47d528611a9e
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 2df66979d1e8f400f2630f5e531cd201244fdc6d
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195329"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809988"
 ---
 # <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>クイック スタート:Azure Spatial Anchors を使用する iOS アプリを Swift または Objective-C で作成する
 
@@ -101,6 +101,8 @@ open ./SampleObjC.xcworkspace
 
 `spatialAnchorsAccountId` フィールドを見つけ、`Set me` をアカウント識別子に置き換えます。
 
+`spatialAnchorsAccountDomain` フィールドを見つけ、`Set me` をアカウント ドメインに置き換えます。
+
 # <a name="objective-c"></a>[Objective-C](#tab/openproject-objc)
 
 `iOS/Objective-C/SampleObjC/BaseViewController.m`を開きます。
@@ -108,6 +110,8 @@ open ./SampleObjC.xcworkspace
 `SpatialAnchorsAccountKey` フィールドを見つけ、`Set me` をアカウント キーに置き換えます。
 
 `SpatialAnchorsAccountId` フィールドを見つけ、`Set me` をアカウント識別子に置き換えます。
+
+`SpatialAnchorsAccountDomain` フィールドを見つけ、`Set me` をアカウント ドメインに置き換えます。
 
 ---
 

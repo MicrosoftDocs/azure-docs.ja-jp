@@ -6,14 +6,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/28/2020
-ms.openlocfilehash: deb6c2439cc84f196b7f42fd9f49d3ebfd057cbb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 75db20bdb746e7d15bef56ce7ac0a064993d3f3a
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76962209"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187763"
 ---
 # <a name="deploy-an-azure-stream-analytics-job-using-cicd-npm-package"></a>CI/CD npm パッケージを使用して Azure Stream Analytics ジョブをデプロイする 
 
@@ -21,7 +21,7 @@ Azure Stream Analytics CI/CD npm パッケージを使って、Stream Analytics 
 
 PowerShell を使用したデプロイの詳細については、「[Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)」を参照してください。 [Resource Manager テンプレートのパラメーターとしてオブジェクトを使用する](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/objects-as-parameters)方法を詳しく確認することもできます。
 
-## <a name="build-the-vs-code-project"></a>VS コード プロジェクトをビルドする
+## <a name="build-the-vs-code-project"></a>VS Code プロジェクトをビルドする
 
 **asa-streamanalytics-cicd** npm パッケージを使用して、Azure Stream Analytics ジョブのための継続的インテグレーションと継続的なデプロイを有効にすることができます。 npm パッケージは、[Stream Analytics の Visual Studio Code プロジェクト](quick-create-vs-code.md)の Azure Resource Manager テンプレートを生成するためのツールを提供します。 Visual Studio Code をインストールしなくても、Windows、macOS、Linux で使用できます。
 
@@ -39,13 +39,13 @@ azure-streamanalytics-cicd build -scriptPath "/Users/roger/projects/samplejob/sc
 
 Stream Analytics Visual Studio Code プロジェクトが正常にビルドされると、**bin/[Debug/Retail]/Deploy** フォルダーに次の 2 つの Azure Resource Manager テンプレート ファイルが生成されます。 
 
-*  Resource Manager テンプレート ファイル
+* Resource Manager テンプレート ファイル
 
-       [ProjectName].JobTemplate.json 
+   `[ProjectName].JobTemplate.json`
 
-*  Resource Manager パラメーター ファイル
+* Resource Manager パラメーター ファイル
 
-       [ProjectName].JobTemplate.parameters.json   
+   `[ProjectName].JobTemplate.parameters.json`   
 
 parameters.json ファイルの既定のパラメーターは、Visual Studio Code プロジェクトの設定から取得されます。 別の環境にデプロイする場合は、パラメーターを適宜置換します。
 

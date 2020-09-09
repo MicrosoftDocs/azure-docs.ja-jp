@@ -12,14 +12,15 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5e4bbe1e6bd944787d47c5e3ed98de582c088a52
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe9a50b5557e6165835abf1df67f7486c260c1c5
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231559"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195916"
 ---
-# <a name="move-data-to-and-from-sql-server-on-premises-or-on-iaas-azure-vm-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスまたは IaaS (Azure VM) の SQL Server との間でデータを移動する
+# <a name="move-data-to-and-from-sql-server-using-azure-data-factory"></a>Azure Data Factory を使用した SQL Server との間のデータの移動
+
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-sqlserver-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-sql-server.md)
@@ -27,7 +28,7 @@ ms.locfileid: "79231559"
 > [!NOTE]
 > この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の SQL Server コネクタ](../connector-sql-server.md)に関するページを参照してください。
 
-この記事では、Azure Data Factory のコピー アクティビティを使って、オンプレミスの SQL Server データベースとの間でデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
+この記事では、Azure Data Factory のコピー アクティビティを使って、SQL Server データベースとの間でデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -51,7 +52,7 @@ Data Management Gateway の詳細およびゲートウェイの設定手順に�
 SQL Server と同じオンプレミス コンピューターまたはクラウド VM インスタンスにゲートウェイをインストールできますが、パフォーマンスのためには、別のコンピューターにインストールすることをお勧めします。 ゲートウェイと SQL Server を別のコンピューターにインストールすることで、リソースの競合が減少します。
 
 ## <a name="getting-started"></a>作業の開始
-さまざまなツール/API を使用して、オンプレミスの SQL Server データベースとの間でデータを移動するコピー アクティビティでパイプラインを作成できます。
+さまざまなツールや API を使用して、SQL Server データベースとの間でデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
 パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 
@@ -64,20 +65,20 @@ SQL Server と同じオンプレミス コンピューターまたはクラウ�
 3. コピー操作用の入力データと出力データを表す**データセット**を作成します。 最後の手順で説明されている例では、データセットを作成して入力データを含む SQL Server データベース内の SQL テーブルを指定します。 また、もう 1 つのデータセットを作成して、BLOB コンテナーと SQL Server データベースからコピーされたデータを保持するフォルダーを指定します。 SQL Server データベースに固有のデータセットのプロパティについては、「[データセットのプロパティ](#dataset-properties)」セクションをご覧ください。
 4. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 前に説明した例では、コピー アクティビティのソースとして SqlSource を、シンクとして BlobSink を使います。 同様に、Azure Blob Storage から SQL Server データベースにコピーする場合は、BlobSource と SqlSink をコピー アクティビティで使います。 SQL Server データベースに固有のコピー アクティビティのプロパティについては、「[コピー アクティビティのプロパティ](#copy-activity-properties)」セクションをご覧ください。 ソースまたはシンクとしてデータ ストアを使う方法について詳しくは、前のセクションのデータ ストアのリンクをクリックしてください。
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 オンプレミスの SQL Server データベースとの間でデータをコピーするときに使用する Data Factory エンティティの JSON 定義のサンプルについては、この記事の「[JSON の使用例](#json-examples-for-copying-data-from-and-to-sql-server)」を参照してください。
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 SQL Server データベースとの間でデータをコピーするときに使用する Data Factory エンティティの JSON 定義のサンプルについては、この記事の「[JSON の使用例](#json-examples-for-copying-data-from-and-to-sql-server)」セクションを参照してください。
 
 次のセクションでは、SQL Server に固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
-**OnPremisesSqlServer** 型のリンクされたサービスを作成し、オンプレミスの SQL Server データベースをデータ ファクトリにリンクします。 次の表は、オンプレミスの SQL Server のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
+**OnPremisesSqlServer** 型のリンクされたサービスを作成し、SQL Server データベースをデータ ファクトリにリンクします。 次の表は、SQL Server のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
 次の表は、SQL Server のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | type |type プロパティは次の値に設定されます。**OnPremisesSqlServer** |はい |
-| connectionString |SQL 認証または Windows 認証を使用して、オンプレミス SQL Server データベースに接続するために必要な connectionString 情報を指定します。 |はい |
-| gatewayName |Data Factory サービスが、オンプレミスの SQL Server データベースへの接続に使用するゲートウェイの名前です。 |はい |
+| connectionString |SQL 認証または Windows 認証を使用して、SQL Server データベースに接続するために必要な connectionString 情報を指定します。 |はい |
+| gatewayName |Data Factory サービスが、SQL Server データベースへの接続に使用するゲートウェイの名前です。 |はい |
 | username |Windows 認証を使用している場合は、ユーザー名を指定します。 例: **domainname\\username**。 |いいえ |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
 
@@ -105,7 +106,7 @@ SQL Server と同じオンプレミス コンピューターまたはクラウ�
 ```
 **Windows 認証を使用している場合の JSON**
 
-Data Management Gateway はその情報を使用して指定されたユーザー アカウントに偽装して、オンプレミス SQL Server データベースに接続します。
+Data Management Gateway は、指定されたユーザー アカウントの権限を借用して、SQL Server データベースに接続します。
 
 ```json
 {
@@ -554,7 +555,7 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 3. 同じウィンドウで、 **[TCP/IP]** をダブルクリックして、 **[TCP/IP のプロパティ]** ウィンドウを起動します。
 4. **[IP アドレス]** タブに切り替えます。下へスクロールして **[IPAll]** セクションを表示します。 **[TCP ポート]** の値をメモしておきます (既定値は **1433** です)。
 5. コンピューターに **Windows Firewall のルール** を作成し、このポート経由の受信トラフィックを許可します。
-6. **接続の確認**: 完全修飾名を使って SQL Server に接続するには、別のマシンから SQL Server Management Studio を使用します。 例: "\<machine\>.\<domain\>.corp.\<company\>.com,1433."
+6. **接続の確認**: 完全修飾名を使って SQL Server に接続するには、別のマシンから SQL Server Management Studio を使用します。 "\<machine\>\<domain\>.corp\<company\>.com,1433" などを使用します。
 
    > [!IMPORTANT]
    > 

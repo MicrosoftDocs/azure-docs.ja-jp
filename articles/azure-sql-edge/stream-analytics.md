@@ -2,19 +2,19 @@
 title: Azure SQL Edge (プレビュー) での Azure Stream Analytics Edge ジョブの使用
 description: Azure SQL Edge (プレビュー) で Stream Analytics ジョブを使用する方法について説明します
 keywords: SQL Edge、ストリーム分析、
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 3b57cb8cae80381a6c2cd88358dd9284ba56c919
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: e323c56f22c3a7d32bda5afe03a3462d3263f0d0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594521"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254074"
 ---
 # <a name="using-azure-stream-analytics-jobs-with-sql-edge"></a>SQL Edge での Azure Stream Analytics ジョブの使用
 
@@ -52,7 +52,7 @@ Azure SQL Edge には、ストリーム分析ランタイムがネイティブ�
     |フィールド      | 説明 |
     |---------------|-------------|
     |出力エイリアス | 出力エイリアスの名前。|
-    |データベース | SQL データベースの名前。 SQL Edge インスタンス上に存在するデータベースの有効な名前である必要があります。|
+    |データベース | データベースの名前です。 SQL Edge インスタンス上に存在するデータベースの有効な名前である必要があります。|
     |サーバー名 | SQL インスタンスの名前 (または IP アドレス) とポート番号の詳細。 SQL Edge のデプロイの場合、**tcp:.,1433** をサーバー名に使用できます。|
     |ユーザー名 | 以前に指定したデータベースへのデータ閲覧者とデータ作成者のアクセス権を持つ SQL サインイン アカウント。|
     |Password | 以前に指定した SQL サインイン アカウントのパスワード。|

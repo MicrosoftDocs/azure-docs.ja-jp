@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.reviewer: akjosh
-ms.openlocfilehash: bed65754dd872d51d4cbd1bccc673373e8e96846
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7fff8539f330c7cbc886577eaf6dbe4417411999
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653002"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498142"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure VM のカスタム イメージを作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "83653002"
 > * イメージ ギャラリーを共有する
 
 
-このチュートリアルでは、[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) で CLI を使用します。このバージョンは常に更新され最新になっています。 Cloud Shell を開くには、コード ブロックの上部にある **[試してみる]** を選択します。
+このチュートリアルでは、[Azure Cloud Shell](../../cloud-shell/overview.md) で CLI を使用します。このバージョンは常に更新され最新になっています。 Cloud Shell を開くには、コード ブロックの上部にある **[試してみる]** を選択します。
 
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.4.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
@@ -68,7 +68,7 @@ az group create --name myGalleryRG --location eastus
 az sig create --resource-group myGalleryRG --gallery-name myGallery
 ```
 
-## <a name="get-infornation-about-the-vm"></a>VM に関する情報を取得する
+## <a name="get-information-about-the-vm"></a>VM に関する情報を取得する
 
 利用できる VM は、[az vm list](/cli/azure/vm#az-vm-list) を使用して一覧表示できます。 
 
@@ -90,11 +90,11 @@ az vm get-instance-view -g MyResourceGroup -n MyVm --query id
 
 イメージ定義名は、大文字または小文字、数字、ドット、ダッシュおよびピリオドで構成できます。 
 
-イメージ定義に指定できる値の詳細については、[イメージ定義](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions)に関するページを参照してください。
+イメージ定義に指定できる値の詳細については、[イメージ定義](./shared-image-galleries.md#image-definitions)に関するページを参照してください。
 
 [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create) を使用して、ギャラリー内にイメージ定義を作成します。 
 
-この例では、イメージ定義は *myImageDefinition* という名前で、[特殊化された](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images) Linux OS イメージ用です。 
+この例では、イメージ定義は *myImageDefinition* という名前で、[特殊化された](./shared-image-galleries.md#generalized-and-specialized-images) Linux OS イメージ用です。 
 
 ```azurecli-interactive 
 az sig image-definition create \
@@ -134,7 +134,7 @@ az sig image-version create \
 > [!NOTE]
 > 同じマネージド イメージを使用して別のイメージ バージョンを作成する前に、そのイメージ バージョンが構築とレプリケーションを完全に完了するまで待つ必要があります。
 >
-> また、イメージ バージョンを作成するときに、`--storage-account-type  premium_lrs` を追加してイメージを Premium ストレージに格納することも、`--storage-account-type  standard_zrs` を追加して[ゾーン冗長ストレージ](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)に格納することもできます。
+> また、イメージ バージョンを作成するときに、`--storage-account-type  premium_lrs` を追加してイメージを Premium ストレージに格納することも、`--storage-account-type  standard_zrs` を追加して[ゾーン冗長ストレージ](../../storage/common/storage-redundancy.md)に格納することもできます。
 >
 
  
@@ -176,11 +176,11 @@ az role assignment create \
    --scope <gallery ID>
 ```
 
-RBAC を使用してリソースを共有する方法の詳細については、「[RBAC と Azure CLI を使用してアクセスを管理する](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)」を参照してください。
+RBAC を使用してリソースを共有する方法の詳細については、「[RBAC と Azure CLI を使用してアクセスを管理する](../../role-based-access-control/role-assignments-cli.md)」を参照してください。
 
 ## <a name="azure-image-builder"></a>Azure Image Builder
 
-Azure では、Packer 上に構築された [Azure VM Image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview) サービスも提供しています。 テンプレートにカスタマイズを記述するだけで、イメージの作成が処理されます。 
+Azure では、Packer 上に構築された [Azure VM Image Builder](./image-builder-overview.md) サービスも提供しています。 テンプレートにカスタマイズを記述するだけで、イメージの作成が処理されます。 
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -197,4 +197,3 @@ Azure では、Packer 上に構築された [Azure VM Image Builder](https://doc
 
 > [!div class="nextstepaction"]
 > [高可用性 VM の作成](tutorial-availability-sets.md)
-

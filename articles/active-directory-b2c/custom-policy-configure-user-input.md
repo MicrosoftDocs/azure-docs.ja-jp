@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 85f2ab6f8c3e5edda027e44eeda13a3279a88321
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 47fdf445fa11693dd3a998b8c73ac0c3ed8452a8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473678"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389362"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ポリシーを使用した要求の追加とユーザー入力のカスタマイズ - | Microsoft Docs
 

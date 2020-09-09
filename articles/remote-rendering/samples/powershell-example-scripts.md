@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
-ms.openlocfilehash: c45d2fc34ccbab6d813f12563678d036f9f35753
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: fbac172952c9feea92341dbc028567235b9250bc
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80891494"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075275"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell スクリプトの例
 
@@ -21,26 +22,29 @@ Azure Remote Rendering には、次の 2 つの REST API が用意されてい�
 
 [ARR サンプル リポジトリ](https://github.com/Azure/azure-remote-rendering)には、*Scripts* フォルダーに、サービスの REST API を操作するためのサンプル スクリプトがあります。 この記事では、その使用方法について説明します。
 
+> [!CAUTION]
+REST API 関数を頻繁に呼び出すと、サーバーが調整され、最終的にエラーが返されます。 この場合の http エラーコード ID は 429 ("要求が多すぎます") です。 経験則として、**次の呼び出しとの間に 5 秒から 10 秒**の間隔が必要です。
+
 ## <a name="prerequisites"></a>前提条件
 
 サンプル スクリプトを実行するには、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/) の機能設定が必要です。
 
 1. Azure PowerShell をインストールします。
-    1. 管理者権限で PowerShell を開きます
+    1. 管理者権限で PowerShell ウィンドウを開きます。
     1. `Install-Module -Name Az -AllowClobber` を実行します。
 
 1. スクリプトの実行に関するエラーが発生した場合は、[実行ポリシー](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)が適切に設定されていることを確認してください。
-    1. 管理者権限で PowerShell を開きます
+    1. 管理者権限で PowerShell ウィンドウを開きます。
     1. `Set-ExecutionPolicy -ExecutionPolicy Unrestricted` を実行します。
 
 1. [Azure Storage アカウントを準備します](../how-tos/conversion/blob-storage.md#prepare-azure-storage-accounts)
 
 1. Azure Remote Rendering アカウントを含むサブスクリプションにログインします。
-    1. PowerShell を開きます
+    1. PowerShell ウィンドウを開きます。
     1. `Connect-AzAccount` を実行し、画面の指示に従います。
 
-> [!NOTE]
-> 組織に複数のサブスクリプションがある場合は、SubscriptionId および Tenant 引数の指定が必要になることがあります。 詳細については、[Connect-AzAccount のドキュメント](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)を参照してください。
+    > [!NOTE]
+    > 組織に複数のサブスクリプションがある場合は、SubscriptionId および Tenant 引数の指定が必要になることがあります。 詳細については、[Connect-AzAccount のドキュメント](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)を参照してください。
 
 1. [Azure Remote Rendering GithHub リポジトリ](https://github.com/Azure/azure-remote-rendering)から *Scripts* フォルダーをダウンロードします。
 
@@ -76,6 +80,9 @@ Azure Remote Rendering には、次の 2 つの REST API が用意されてい�
 > [!CAUTION]
 > LocalAssetDirectoryPath パスのバックスラッシュは、二重のバックスラッシュ "\\\\" を使用して正しくエスケープするようにし、inputFolderPath や inputAssetPath などの他のすべてのパスにはスラッシュ "/" を使用するようにしてください。
 
+> [!CAUTION]
+> オプションの値を入力するか、キーと値をすべて削除する必要があります。 たとえば、`"outputAssetFileName"` パラメーターを使用しない場合は、`arrconfig.json` 内の行全体を削除する必要があります。
+
 ### <a name="accountsettings"></a>accountSettings
 
 `arrAccountId` と `arrAccountKey` については、「[Azure Remote Rendering アカウントを作成する](../how-tos/create-an-account.md)」を参照してください。
@@ -85,7 +92,7 @@ Azure Remote Rendering には、次の 2 つの REST API が用意されてい�
 
 **RenderingSession.ps1** を実行する場合は、この構造を入力する必要があります。
 
-- **vmSize:** 仮想マシンのサイズを選択します。 *Standard* または *Premium* を選択します。 不要になったレンダリング セッションをシャットダウンします。
+- **vmSize:** 仮想マシンのサイズを選択します。 [*Standard*](../reference/vm-sizes.md) または [*Premium*](../reference/vm-sizes.md) を選択します。 不要になったレンダリング セッションをシャットダウンします。
 - **maxLeaseTime:** VM をリースする期間です。 リースの有効期限が切れると、シャットダウンされます。 リース時間は後で延長できます (下記参照)。
 
 ### <a name="assetconversionsettings"></a>assetConversionSettings
@@ -186,10 +193,10 @@ Shared Access Signature を生成する必要がないため、変換サービ�
 .\Conversion.ps1
 ```
 
-1. `assetConversionSettings.modelLocation` に格納されているすべてのファイルを、指定した `inputFolderPath` の下の入力 BLOB コンテナーにアップロードします
+1. `assetConversionSettings.modelLocation` に格納されているすべてのファイルを、指定した `inputFolderPath` の下の入力 BLOB コンテナーにアップロードします。
 1. [モデルの変換 REST API](../how-tos/conversion/conversion-rest-api.md) を呼び出して、[モデルの変換](../how-tos/conversion/model-conversion.md)を開始します
-1. 変換が成功または失敗するまで変換ステータスをポーリングします
-1. 変換されたファイルの場所の詳細 (ストレージ アカウント、出力コンテナー、コンテナー内のファイルパス) を出力します
+1. 変換が成功または失敗するまで変換ステータスをポーリングします。
+1. 変換されたファイルの場所の詳細 (ストレージ アカウント、出力コンテナー、コンテナー内のファイルパス) を出力します。
 
 ### <a name="access-to-storage-via-shared-access-signatures"></a>Shared Access Signature 経由のストレージへのアクセス
 
@@ -199,13 +206,13 @@ Shared Access Signature を生成する必要がないため、変換サービ�
 
 リセットすると、以下のようになります。
 
-1. `assetConversionSettings.localAssetDirectoryPath` から入力 BLOB コンテナーにローカル ファイルをアップロードします
-1. 入力コンテナーの SAS URI を生成します
-1. 出力コンテナーの SAS URI を生成します
-1. [モデルの変換 REST API](../how-tos/conversion/conversion-rest-api.md) を呼び出して、[モデルの変換](../how-tos/conversion/model-conversion.md)を開始します
-1. 変換が成功または失敗するまで変換ステータスをポーリングします
-1. 変換されたファイルの場所の詳細 (ストレージ アカウント、出力コンテナー、コンテナー内のファイルパス) を出力します
-1. 出力 BLOB コンテナー内の変換されたモデルに SAS URI を出力します
+1. `assetConversionSettings.localAssetDirectoryPath` から入力 BLOB コンテナーにローカル ファイルをアップロードします。
+1. 入力コンテナーの SAS URI を生成します。
+1. 出力コンテナーの SAS URI を生成します。
+1. [モデルの変換 REST API](../how-tos/conversion/conversion-rest-api.md) を呼び出して、[モデルの変換](../how-tos/conversion/model-conversion.md)を開始します。
+1. 変換が成功または失敗するまで変換ステータスをポーリングします。
+1. 変換されたファイルの場所の詳細 (ストレージ アカウント、出力コンテナー、コンテナー内のファイルパス) を出力します。
+1. 出力 BLOB コンテナー内の変換されたモデルの SAS URI を出力します。
 
 ### <a name="additional-command-line-options"></a>追加のコマンド ライン オプション
 
@@ -246,7 +253,7 @@ Shared Access Signature を生成する必要がないため、変換サービ�
 
 プロセスの個々のステップを実行する場合は、以下を使用できます。
 
-指定された LocalAssetDirectoryPath からのデータのアップロードのみ行います
+指定された LocalAssetDirectoryPath からのデータのアップロードのみ行います。
 
 ```PowerShell
 .\Conversion.ps1 -Upload

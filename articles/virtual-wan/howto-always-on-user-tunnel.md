@@ -5,15 +5,15 @@ description: この記事では、Virtual WAN に対して Always On VPN ユー�
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
-ms.date: 03/13/2020
+ms.topic: how-to
+ms.date: 06/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: dd5b215b143fbaf487325744a158bb8b05707951
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03f67053a5a199c8c64efb05d2b6a65ad6707650
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79504043"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564048"
 ---
 # <a name="configure-an-always-on-vpn-user-tunnel-for-virtual-wan"></a>Virtual WAN に Always On VPN ユーザー トンネルを構成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "79504043"
 ポイント対サイト構成を作成し、仮想ハブの割り当てを編集する必要があります。 手順については、次のセクションを参照してください。
 
 * [P2S の構成を作成する](virtual-wan-point-to-site-portal.md#p2sconfig)
-* [ハブの割り当てを編集する](virtual-wan-point-to-site-portal.md#edit)
+* [P2S ゲートウェイを使用してハブを作成する](virtual-wan-point-to-site-portal.md#hub)
 
 ## <a name="configure-a-user-tunnel"></a>ユーザー トンネルを構成する
 

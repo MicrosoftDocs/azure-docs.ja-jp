@@ -2,16 +2,17 @@
 title: CouchBase から Azure Cosmos DB SQL API に移行する
 description: CouchBase から Azure Cosmos DB SQL API への移行に関するステップバイステップのガイダンス
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
-ms.openlocfilehash: 248860ad6963fcd04526f0d94e52d6a6181463c5
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.custom: devx-track-java
+ms.openlocfilehash: b0c9ef99e4cbb0683273d613d3a85e7f6455a40d
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657345"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87366723"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>CouchBase から Azure Cosmos DB SQL API に移行する
 

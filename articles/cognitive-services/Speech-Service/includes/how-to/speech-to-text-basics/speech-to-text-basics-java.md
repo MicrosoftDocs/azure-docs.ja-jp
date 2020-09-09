@@ -3,13 +3,14 @@ author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
+ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: d59f2ef564da710d084dc027950bc983a88143de
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 314617554abf8fee430e47eb4b0a0ca5db5bc75f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204577"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87374942"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -185,7 +186,7 @@ recognizer.sessionStopped.addEventListener((s, e) -> {
 });
 ```
 
-すべてが設定されると、[`stopContinuousRecognitionAsync`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync) を呼び出すことができます。
+すべてが設定されると、[`startContinuousRecognitionAsync`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.startcontinuousrecognitionasync) を呼び出すことができます。
 
 ```java
 // Starts continuous recognition. Uses StopContinuousRecognitionAsync() to stop recognition.

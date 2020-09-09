@@ -5,12 +5,12 @@ ms.date: 10/04/2018
 ms.topic: conceptual
 description: 何もインストールせずにブラウザーから直接 Azure Dev Spaces に対応する Kubernetes クラスターをすばやく作成する方法について説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: 5e2e5cfd22eeedd3554737458caeca0b891b62fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f6da9055e11b5c514d71122c3650bbc326fb8de8
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77605308"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232289"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-dev-spaces-enabled-with-azure-cloud-shell"></a>Azure Cloud Shell を使用して Azure Dev Spaces が有効な Kubernetes クラスターを作成する
 
@@ -34,7 +34,7 @@ az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-key
 
 ## <a name="next-steps"></a>次のステップ
 
-各種のチュートリアルへのリンクについては、「[Azure Dev Spaces](/azure/dev-spaces/)」を参照してください。
+各種のチュートリアルへのリンクについては、「[Azure Dev Spaces](../index.yml)」を参照してください。
 
 > [!IMPORTANT]
 > Azure Dev Spaces の多くのクイックスタートとチュートリアルでは、Azure Dev Spaces CLI を使用して操作が実行されます。 Azure Dev Spaces CLI を Azure Cloud Shell にインストールすることはできません。

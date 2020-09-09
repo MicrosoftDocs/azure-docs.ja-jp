@@ -2,13 +2,13 @@
 title: 新機能 - Language Understanding (LUIS)
 description: この記事では、Azure Cognitive Services Language Understanding API に関するニュースが定期的に更新されています。
 ms.topic: overview
-ms.date: 05/08/2020
-ms.openlocfilehash: d7ef989d04132dedc79d2408b7083b57d8c926b0
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 06/15/2020
+ms.openlocfilehash: d178ee2f5db74949f4a8ad68df93bf3c4407c58a
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592799"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84789210"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding の新機能
 
@@ -16,17 +16,37 @@ ms.locfileid: "83592799"
 
 ## <a name="release-notes"></a>リリース ノート
 
+### <a name="june-2020"></a>2020 年 6 月
+
+* [Preview 3.0 Authoring](luis-migration-authoring-entities.md) SDK -
+    * バージョン 3.2.0-preview.3 - [.NET - NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)
+    * バージョン 4.0.0-preview.3 - [JS - NPM](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)
+* LUIS を使用した DevOps プラクティスの適用
+    * 概念
+        * [LUIS の DevOps プラクティス](luis-concept-devops-sourcecontrol.md)
+        * [LUIS DevOps の継続的インテグレーションと継続的デリバリーのワークフロー](luis-concept-devops-automation.md)
+        * [LUIS DevOps のテスト](luis-concept-devops-testing.md)
+    * 操作方法
+        * [GitHub Actions を使用して LUIS アプリ開発に DevOps を適用する](luis-how-to-devops-with-github.md)
+    * [完成したコードの GitHub リポジトリ](https://github.com/Azure-Samples/LUIS-DevOps-Template)
+
 ### <a name="may-2020---build"></a>2020 年 5 月 - //Build
 
 * **一般提供** (GA)としてリリース済み:
     * [Language Understanding コンテナー](luis-container-howto.md)
     * プレビュー ポータルが[現在のポータル](https://www.luis.ai)に昇格 ([以前の](https://previous.luis.ai)ポータルはまだ使用可能)
     * 新しい機械学習エンティティの作成とラベル付けエクスペリエンス
-    * 複合エンティティや単純エンティティから機械学習エンティティへの[アップグレード プロセス](migrate-from-composite-entity.md)
+    * 複合エンティティや簡易エンティティから機械学習エンティティへの[アップグレード プロセス](migrate-from-composite-entity.md)
     * 単語バリアントを正規化する[設定](how-to-application-settings-portal.md)のサポート
 * プレビュー オーサリング API の変更点
     * 入れ子の機械学習エンティティのためのアプリ スキーマ 7.x
     * [必須特徴量への移行](luis-migration-authoring-entities.md#api-change-constraint-replaced-with-required-feature)
+* 開発者向けの新しいリソース
+    * [継続的インテグレーション ツール](developer-reference-resource.md#continuous-integration-tools)
+    * ワークショップ - [LUIS を使用した "_自然言語理解_" (NLU)](developer-reference-resource.md#workshops) のためのベスト プラクティスを学習
+* [カスタマー マネージド キー](luis-encryption-of-data-at-rest.md) - 独自のキーを使用して LUIS で使用するデータをすべて暗号化
+* [AI Show](https://channel9.msdn.com/Shows/AI-Show/New-Features-in-Language-Understanding) (ビデオ) - LUIS の新機能を参照
+
 
 
 ### <a name="march-2020"></a>2020 年 3 月
@@ -54,7 +74,7 @@ ms.locfileid: "83592799"
 * 新しい、拡張された[制限](luis-limits.md) - フレーズ リストおよびフレーズの合計のより高い最大値、機能制限としての新しいモデル
 * 深い階層構造の形式でテキストから情報を抽出することで、メッセージ交換アプリケーションをより強力にします。
 
-    ![機械学習したエンティティの画像](./media/whats-new/deep-entity-extraction-example.png)
+    ![機械学習エンティティの画像](./media/whats-new/deep-entity-extraction-example.png)
 
 ### <a name="september-3-2019"></a>2019 年 9 月 3 日
 

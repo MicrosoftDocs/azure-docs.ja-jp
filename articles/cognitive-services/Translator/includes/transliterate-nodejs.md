@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 7801040811844640639195a3493b792a8e1ee645
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f06ee685158dab466ced33ff7bc4177ff1b65629
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586533"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405324"
 ---
 [!INCLUDE [Prerequisites](prerequisites-nodejs.md)]
 

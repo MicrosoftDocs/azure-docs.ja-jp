@@ -8,12 +8,12 @@ ms.date: 03/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6a4b90d8b6fe67de26c8e652e0dc5b62cc27023f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd2b9bc462a9d4bc11f49a7e3294e52f88a926fb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80545624"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511842"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>IoT Edge にモジュールをデプロイしてルートを確立する方法について説明します。
 
@@ -38,7 +38,7 @@ Azure IoT Edge チュートリアルでは、Azure IoT Edge ポータルでウ�
 
 すべての配置マニフェストに、`$edgeAgent` と `$edgeHub` という 2 つのモジュールが必要です。 これらのモジュールは、IoT Edge デバイスとそこで実行されるモジュールを管理する IoT Edge ランタイムの構成要素です。 これらのモジュールの詳細については、[IoT Edge ランタイムとそのアーキテクチャの概要](iot-edge-runtime.md)に関するページを参照してください。
 
-この 2 つのランタイム モジュールに加え、独自のモジュールを 20 個まで追加して、IoT Edge デバイス上で動作させることができます。
+この 2 つのランタイム モジュールに加え、独自のモジュールを 30 個まで追加して、IoT Edge デバイス上で動作させることができます。
 
 IoT Edge ランタイム (edgeAgent と edgeHub) さえ含まれていれば配置マニフェストは有効です。
 
@@ -184,7 +184,7 @@ FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream
 
 IoT Edge は、At-Least-Once 保証を提供します。 IoT Edge ハブは、ルートでそのシンクにメッセージを配信できなかった場合のために、ローカルにメッセージを保存します。 たとえば、IoT Edge ハブが IoT Hub に接続できない場合や、ターゲット モジュールが接続されていない場合です。
 
-IoT Edge ハブでは、`storeAndForwardConfiguration.timeToLiveSecs`IoT Edge ハブの必要なプロパティ[の ](module-edgeagent-edgehub.md) プロパティで指定した時間まで、メッセージが格納されます。
+IoT Edge ハブでは、[IoT Edge ハブの必要なプロパティ](module-edgeagent-edgehub.md)の `storeAndForwardConfiguration.timeToLiveSecs` プロパティで指定した時間まで、メッセージが格納されます。
 
 ## <a name="define-or-update-desired-properties"></a>必要なプロパティの定義または更新
 

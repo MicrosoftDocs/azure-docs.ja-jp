@@ -1,25 +1,32 @@
 ---
-title: Liquid 変換を使用して JSON データ変換をする
-description: Logic Apps と Liquid テンプレートを使用して、高度な JSON 変換用の変換またはマップを作成します
+title: Liquid テンプレートを使用して JSON と XML を変換する
+description: Liquid テンプレートを Azure Logic Apps のマップとして使用して JSON と XML を変換する
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, logicappspm
+ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 04/01/2020
-ms.openlocfilehash: d2598dfe9d7972dcb764abf4a1239613a1e8417a
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.date: 07/31/2020
+ms.openlocfilehash: b3919cbbe0ba7a796a21ae566afb8e2d9fa784db
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879175"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716675"
 ---
-# <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Azure Logic Apps で Liquid テンプレートを使用して高度な JSON 変換を実行する
+# <a name="transform-json-and-xml-using-liquid-templates-as-maps-in-azure-logic-apps"></a>Liquid テンプレートを Azure Logic Apps のマップとして使用して JSON と XML を変換する
 
-ロジック アプリ内で **Compose** や **Parse JSON** などのネイティブなデータ操作アクションを使用して、基本的な JSON 変換を実行できます。 高度な JSON 変換を実行するために、柔軟な Web アプリ向けのオープン ソースのテンプレート言語である [Liquid](https://shopify.github.io/liquid/) を使用して、テンプレートまたはマップを作成できます。 Liquid テンプレートでは、JSON 出力の変換方法が定義されます。反復処理、制御フロー、変数などのより複雑な JSON の変換もサポートされます。
+ロジック アプリ内で基本的な JSON 変換を実行する場合は、**Compose** や **Parse JSON** などのネイティブな[データ操作](../logic-apps/logic-apps-perform-data-operations.md)使用できます。 反復、制御フロー、変数などの要素を含む、高度で複雑な JSON から JSON への変換については、[Liquid](https://shopify.github.io/liquid/) オープンソース テンプレート言語を使用してこれらの変換を記述するテンプレートを作成して使用します。 また、JSON からテキスト、XML から JSON、XML からテキストなど、[その他の変換を実行する](#other-transformations)こともできます。
 
-ロジック アプリで Liquid 変換を実行する前に、Liquid テンプレートを使用して JSON から JSON へのマッピングを定義し、そのマップを統合アカウントに格納する必要があります。 この記事では、この Liquid テンプレートまたはマップを作成して使用する方法を示します。
+ロジック アプリ内で Liquid 変換を実行するには、まず、必要なマッピングを定義する Liquid テンプレートを作成する必要があります。 次に、[統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)に、[テンプレートをマップとしてアップロード](../logic-apps/logic-apps-enterprise-integration-maps.md)します。 **[Transform JSON to JSON - Liquid]\(JSON を JSON に変換 - Liquid\)** アクションをロジック アプリに追加すると、使用するアクションのマップとして Liquid テンプレートを選択できます。
+
+この記事では、次のタスクの実行方法について説明します。
+
+* Liquid テンプレートを作成する。
+* テンプレートを統合アカウントに追加する。
+* Liquid 変換アクションをロジック アプリに追加する。
+* 使用するマップとしてテンプレートを選択する。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -27,20 +34,22 @@ ms.locfileid: "80879175"
 
 * [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
 
-* Basic [統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
+* [統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
 * [Liquid テンプレートの言語](https://shopify.github.io/liquid/)に関する基本的な知識
 
-## <a name="create-liquid-template-or-map-for-your-integration-account"></a>統合アカウント用の Liquid テンプレートまたはマップを作成する
+  > [!NOTE]
+  > **[Transform JSON to JSON - Liquid]\(JSON を JSON に変換 - Liquid\)** アクションは、[Liquid の DotLiquid 実装](https://github.com/dotliquid/dotliquid)に従います。これは、特定のケースにおいて [Liquid の Shopify 実装](https://shopify.github.io/liquid)とは異なります。 詳細については、「[Liquid テンプレートに関する考慮事項](#liquid-template-considerations)」を参照してください。
 
-1. この例では、この手順で説明するサンプル Liquid テンプレートを作成します。 Liquid テンプレートでは、[Liquid のフィルター](https://shopify.github.io/liquid/basics/introduction/#filters)を使用できます。これらのフィルターでは、[DotLiquid](https://github.com/dotliquid/dotliquid) と C# 名前付け規則が使用されます。
+## <a name="create-the-template"></a>テンプレートを作成する
 
-   > [!NOTE]
-   > テンプレートのフィルター名では "*センテンスの大文字小文字を区別*" してください。 そうしないと、フィルターが機能しません。 また、マップには[ファイル サイズ制限](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)があります。
+1. JSON 変換のマップとして使用する Liquid テンプレートを作成します。 必要な任意の編集ツールを使用できます。
+
+   この例では、このセクションで説明するサンプル Liquid テンプレートを作成します。
 
    ```json
    {%- assign deviceList = content.devices | Split: ', ' -%}
-   
+
    {
       "fullName": "{{content.firstName | Append: ' ' | Append: content.lastName}}",
       "firstNameUpperCase": "{{content.firstName | Upcase}}",
@@ -52,12 +61,18 @@ ms.locfileid: "80879175"
             {%- else -%}
             "{{device}}",
             {%- endif -%}
-        {%- endfor -%}
-        ]
+         {%- endfor -%}
+      ]
    }
    ```
 
-1. [Azure portal](https://portal.azure.com) で、検索ボックスに「`integration accounts`」と入力し、 **[統合アカウント]** を選択します。
+1. `.liquid` 拡張子を使用してテンプレートを保存します。 この例では、`SimpleJsonToJsonTemplate.liquid` を使用します。
+
+## <a name="upload-the-template"></a>テンプレートをアップロードする
+
+1. Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com) にサインインします。
+
+1. Azure portal の検索ボックスに「`integration accounts`」と入力し、 **[統合アカウント]** を選択します。
 
    !["統合アカウント" を検索](./media/logic-apps-enterprise-integration-liquid-transform/find-integration-accounts.png)
 
@@ -71,16 +86,16 @@ ms.locfileid: "80879175"
 
 1. **[マップ]** ウィンドウで、 **[追加]** を選択して、マップの詳細を入力します。
 
-   | プロパティ | 値 | 説明 | 
+   | プロパティ | 値 | 説明 |
    |----------|-------|-------------|
-   | **名前** | `JsonToJsonTemplate` | マップの名前 (この例では "JsonToJsonTemplate")。 | 
-   | **マップの種類** | **liquid** | マップの種類。 JSON から JSON への変換では、 **[liquid]** を選択する必要があります。 | 
+   | **名前** | `JsonToJsonTemplate` | マップの名前 (この例では "JsonToJsonTemplate")。 |
+   | **マップの種類** | **liquid** | マップの種類。 JSON から JSON への変換では、 **[liquid]** を選択する必要があります。 |
    | **Map** | `SimpleJsonToJsonTemplate.liquid` | 変換に使用する既存の Liquid テンプレートまたはマップ ファイル (この例では "SimpleJsonToJsonTemplate.liquid")。 このファイルを見つけるには、ファイル ピッカーを使用できます。 マップ サイズの制限については、[制限と構成](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)に関する情報を参照してください。 |
-   ||| 
+   |||
 
    ![Liquid テンプレートを追加する](./media/logic-apps-enterprise-integration-liquid-transform/add-liquid-template.png)
-    
-## <a name="add-the-liquid-action-for-json-transformation"></a>JSON 変換のための Liquid アクションを追加する
+
+## <a name="add-the-liquid-transformation-action"></a>Liquid 変換アクションを追加する
 
 1. Azure Portal で、次の手順に従って[空白のロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。
 
@@ -117,51 +132,119 @@ ms.locfileid: "80879175"
 
 ## <a name="test-your-logic-app"></a>ロジック アプリをテストする
 
-[Postman](https://www.getpostman.com/postman) などのツールからロジック アプリに JSON 入力を送信します。 ロジック アプリからの変換された JSON 出力は、次の例のようになります。
-  
+[Postman](https://www.getpostman.com/postman) または同様のツールを使用して、JSON 入力をロジック アプリに送信します。 ロジック アプリからの変換された JSON 出力は、次の例のようになります。
+
 ![出力例](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontojson.png)
 
-## <a name="more-liquid-action-examples"></a>その他の Liquid アクションの例
-Liquid は、JSON 変換のみに使用されるわけではありません。 Liquid を使用して実行できるその他の変換アクションを以下に示します。
+<a name="template-considerations"></a>
 
-* JSON からテキストへの変換
-  
-  この例で使用する Liquid テンプレートを次に示します。
-   
-   ``` json
-   {{content.firstName | Append: ' ' | Append: content.lastName}}
-   ```
-   サンプルの入力と出力を次に示します。
-  
-   ![JSON からテキストへの出力例](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontotext.png)
+## <a name="liquid-template-considerations"></a>Liquid テンプレートに関する考慮事項
 
-* XML から JSON への変換
-  
-  この例で使用する Liquid テンプレートを次に示します。
-   
-   ``` json
-   [{% JSONArrayFor item in content -%}
-        {{item}}
-    {% endJSONArrayFor -%}]
-   ```
-   サンプルの入力と出力を次に示します。
+* Liquid テンプレートは、Azure Logic Apps における[マップのファイル サイズ制限](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)に従います。
 
-   ![XML から JSON への出力例](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltojson.png)
+* **[Transform JSON to JSON - Liquid]\(JSON を JSON に変換 - Liquid\)** アクションは、[Liquid の DotLiquid 実装](https://github.com/dotliquid/dotliquid)に従います。 この実装は、[Liquid の Shopify 実装](https://shopify.github.io/liquid/)からの .NET Framework へのポートであり、[特定のケース](https://github.com/dotliquid/dotliquid/issues)で異なります。
 
-* XML からテキストへの変換
-  
-  この例で使用する Liquid テンプレートを次に示します。
+  既知の相違点を次に示します。
 
-   ``` json
-   {{content.firstName | Append: ' ' | Append: content.lastName}}
-   ```
+  * **[Transform JSON to JSON - Liquid]\(JSON を JSON に変換 - Liquid\)** アクションでは、JSON、XML、HTML などを含む文字列がネイティブに出力されます。 この Liquid アクションは、Liquid テンプレートから予期されるテキスト出力が JSON 文字列であることだけを示します。 このアクションは、入力を JSON オブジェクトとして解析し、Liquid が JSON 構造を解釈できるようにラッパーを適用することをロジック アプリに指示します。 変換後、アクションは、Liquid からのテキスト出力を解析して JSON に戻すようにロジック アプリに指示します。
 
-   サンプルの入力と出力を次に示します。
+    DotLiquid では JSON はネイティブに認識されないため、バックスラッシュ文字 (`\`) とその他の予約済み JSON 文字を必ずエスケープしてください。
 
-   ![XML からテキストへの出力例](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltotext.png)
+  * テンプレートで [Liquid フィルター](https://shopify.github.io/liquid/basics/introduction/#filters)が使用されている場合は、"*文の先頭文字の大文字化*" が使用されている [DotLiquid と C# の名前付け規則](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers#filter-and-output-casing)に従っていることを確認してください。 すべての Liquid 変換で、テンプレート内のフィルター名でも文の先頭文字の大文字化が使用されていることを確認してください。 そうしないと、フィルターが機能しません。
+
+    たとえば、`replace` フィルターを使用する場合は、`replace` ではなく `Replace` を使用します。 [DotLiquid オンライン](http://dotliquidmarkup.org/try-online)で例を試してみる場合も、同じ規則が適用されます。 詳細については、[Shopify Liquid フィルター](https://shopify.dev/docs/themes/liquid/reference/filters)と [DotLiquid Liquid フィルター](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Developers#create-your-own-filters)に関するページを参照してください。 Shopify の仕様には、各フィルターの例が含まれているため、比較のために、[DotLiquid をオンラインで試す](https://dotliquidmarkup.org/try-online)ページでそれらの例を試してみることができます。
+
+  * 現在、Shopify 拡張機能フィルターの `json` フィルターは [DotLiquid では実装されていません](https://github.com/dotliquid/dotliquid/issues/384)。 通常は、このフィルターを使用して、JSON 文字列解析用のテキスト出力を準備できますが、代わりに `Replace` フィルターを使用する必要があります。
+
+  * [DotLiquid 実装](https://github.com/dotliquid/dotliquid/blob/b6a7d992bf47e7d7dcec36fb402f2e0d70819388/src/DotLiquid/StandardFilters.cs#L425)の標準の `Replace` フィルターでは、[正規表現 (RegEx) による照合](/dotnet/standard/base-types/regular-expression-language-quick-reference)が使用され、[Shopify 実装](https://shopify.github.io/liquid/filters/replace/)では、[単純な文字列の照合](https://github.com/Shopify/liquid/issues/202)が使用されます。 両方の実装は、RegEx の予約文字、またはエスケープ文字を照合パラメーターで使用するまでは、同様に動作するように見えます。
+
+    たとえば、RegEx の予約バックスラッシュ (`\`) エスケープ文字をエスケープするには、`| Replace: '\', '\\'` ではなく `| Replace: '\\', '\\'` を使用します。 次の例では、バックスラッシュ文字をエスケープしようとしたときに、`Replace` フィルターの動作がどのように異なるかを示します。 次の場合は正しく動作します。
+
+    `{ "SampleText": "{{ 'The quick brown fox "jumped" over the sleeping dog\\' | Replace: '\\', '\\' | Replace: '"', '\"'}}"}`
+
+    この結果は次のようになります。
+
+    `{ "SampleText": "The quick brown fox \"jumped\" over the sleeping dog\\\\"}`
+
+    次の場合は失敗します。
+
+    `{ "SampleText": "{{ 'The quick brown fox "jumped" over the sleeping dog\\' | Replace: '\', '\\' | Replace: '"', '\"'}}"}`
+
+    このようなエラーになります。
+
+    `{ "SampleText": "Liquid error: parsing "\" - Illegal \ at end of pattern."}`
+
+    詳細については、[Replace 標準フィルターでの RegEx パターン マッチングの使用](https://github.com/dotliquid/dotliquid/issues/385)に関する記事を参照してください。
+
+  * [DotLiquid 実装](https://github.com/dotliquid/dotliquid/blob/b6a7d992bf47e7d7dcec36fb402f2e0d70819388/src/DotLiquid/StandardFilters.cs#L326)の `Sort` フィルターは、配列またはコレクション内の項目をプロパティによって並べ替えますが、次のような違いがあります。<p>
+
+    * [Shopify の sort 動作](https://shopify.github.io/liquid/filters/sort/)ではなく、[Shopify の sort_natural 動作](https://shopify.github.io/liquid/filters/sort_natural/)に従います。
+
+    * 文字列としての英数字の順序でのみ並べ替えを行います。 詳細については、[数値の並べ替え](https://github.com/Shopify/liquid/issues/980)に関する記事を参照してください。
+
+    * 大文字と小文字を区別する順序ではなく、"*大文字と小文字を区別しない*" 順序が使用されます。 詳細については、[Sort フィルターが、Shopify の仕様にある大文字と小文字の区別についての動作に従わない]( https://github.com/dotliquid/dotliquid/issues/393)ことに関する記事を参照してください。
+
+<a name="other-transformations"></a>
+
+## <a name="other-transformations-using-liquid"></a>Liquid を使用したその他の変換
+
+Liquid は、JSON 変換のみに限定されているわけではありません。 Liquid を使用して他の変換を実行することもできます。次に例を示します。
+
+* [JSON からテキスト](#json-text)
+* [XML から JSON](#xml-json)
+* [XML からテキスト](#xml-text)
+
+<a name="json-text"></a>
+
+### <a name="transform-json-to-text"></a>JSON からテキストへの変換
+
+この例で使用する Liquid テンプレートを次に示します。
+
+```json
+{{content.firstName | Append: ' ' | Append: content.lastName}}
+```
+
+サンプルの入力と出力を次に示します。
+
+![JSON からテキストへの出力例](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontotext.png)
+
+<a name="xml-json"></a>
+
+### <a name="transform-xml-to-json"></a>XML から JSON への変換
+
+この例で使用する Liquid テンプレートを次に示します。
+
+``` json
+[{% JSONArrayFor item in content -%}
+      {{item}}
+  {% endJSONArrayFor -%}]
+```
+
+`JSONArrayFor` ループは、XML 入力用のカスタム ループ機構です。これにより、末尾のコンマを回避する JSON ペイロードを作成できます。 また、このカスタム ループ機構の `where` 条件では、他の Liquid フィルターのように要素の値ではなく、XML 要素の名前が比較に使用されます。 詳細については、[「set-body ポリシーの詳細情報」の「もののコレクション」](https://azure.microsoft.com/blog/deep-dive-on-set-body-policy)を参照してください。
+
+サンプルの入力と出力を次に示します。
+
+![XML から JSON への出力例](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltojson.png)
+
+<a name="xml-text"></a>
+
+### <a name="transform-xml-to-text"></a>XML からテキストへの変換
+
+この例で使用する Liquid テンプレートを次に示します。
+
+``` json
+{{content.firstName | Append: ' ' | Append: content.lastName}}
+```
+
+サンプルの入力と出力を次に示します。
+
+![XML からテキストへの出力例](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltotext.png)
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Enterprise Integration Pack についての詳細情報](../logic-apps/logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack について学習する")  
-* [マップについての詳細情報](../logic-apps/logic-apps-enterprise-integration-maps.md "Enterprise Integration マップについて学習する")  
-
+* [Shopify Liquid 言語と例](https://shopify.github.io/liquid/basics/introduction/)
+* [DotLiquid](http://dotliquidmarkup.org/)
+* [DotLiquid - オンラインで試す](https://dotliquidmarkup.org/try-online)
+* [DotLiquid GitHub](https://github.com/dotliquid/dotliquid)
+* [DotLiquid GitHub の問題](https://github.com/dotliquid/dotliquid/issues/)
+* [マップ](../logic-apps/logic-apps-enterprise-integration-maps.md)についての詳細情報

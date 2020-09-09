@@ -8,18 +8,18 @@ manager: mtillman
 ms.assetid: 3483ee01-8177-49e7-b337-4d5cb14f5e32
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2020
+ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f4b635d6867c36b8b0f385320e3720bea41b54d1
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 9087722b54a805a0c217c236263bdcb39e5456e0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735744"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84986255"
 ---
 # <a name="list-azure-role-assignments-using-azure-cli"></a>Azure CLI を使用して Azure ロールの割り当てを一覧表示する
 
@@ -36,86 +36,129 @@ ms.locfileid: "82735744"
 
 特定のユーザーのロールの割り当てを一覧表示するには、[az role assignment list](/cli/azure/role/assignment#az-role-assignment-list) を使用します。
 
-```azurecli-interactive
-az role assignment list --assignee <assignee>
+```azurecli
+az role assignment list --assignee {assignee}
 ```
 
 既定では、現在のサブスクリプションのロールの割り当てのみが表示されます。 現在のサブスクリプションとその下のロールの割り当てを表示するには、`--all` パラメーターを追加します。 継承されたロールの割り当てを表示するには、`--include-inherited` パラメーターを追加します。
 
 次の例では、*patlong\@contoso.com* ユーザーに直接割り当てられているロールの割り当てを一覧表示します。
 
-```azurecli-interactive
-az role assignment list --all --assignee patlong@contoso.com --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
+```azurecli
+az role assignment list --all --assignee patlong@contoso.com --output json --query '[].{principalName:principalName, roleDefinitionName:roleDefinitionName, scope:scope}'
 ```
 
-```
-{
-  "principalName": "patlong@contoso.com",
-  "roleDefinitionName": "Backup Operator",
-  "scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"
-}
-{
-  "principalName": "patlong@contoso.com",
-  "roleDefinitionName": "Virtual Machine Contributor",
-  "scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"
-}
+```json
+[
+  {
+    "principalName": "patlong@contoso.com",
+    "roleDefinitionName": "Backup Operator",
+    "scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"
+  },
+  {
+    "principalName": "patlong@contoso.com",
+    "roleDefinitionName": "Virtual Machine Contributor",
+    "scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"
+  }
+]
 ```
 
 ## <a name="list-role-assignments-for-a-resource-group"></a>リソース グループに対するロールの割り当ての一覧表示
 
 リソース グループ スコープに存在するロールの割り当てを一覧表示するには、[az role assignment list](/cli/azure/role/assignment#az-role-assignment-list) を使用します。
 
-```azurecli-interactive
-az role assignment list --resource-group <resource_group>
+```azurecli
+az role assignment list --resource-group {resourceGroup}
 ```
 
 次の例では、*pharma-sales* リソース グループに対するロールの割り当てを一覧表示します。
 
-```azurecli-interactive
-az role assignment list --resource-group pharma-sales --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
+```azurecli
+az role assignment list --resource-group pharma-sales --output json --query '[].{principalName:principalName, roleDefinitionName:roleDefinitionName, scope:scope}'
 ```
 
-```
-{
-  "principalName": "patlong@contoso.com",
-  "roleDefinitionName": "Backup Operator",
-  "scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"
-}
-{
-  "principalName": "patlong@contoso.com",
-  "roleDefinitionName": "Virtual Machine Contributor",
-  "scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"
-}
+```json
+[
+  {
+    "principalName": "patlong@contoso.com",
+    "roleDefinitionName": "Backup Operator",
+    "scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"
+  },
+  {
+    "principalName": "patlong@contoso.com",
+    "roleDefinitionName": "Virtual Machine Contributor",
+    "scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"
+  },
+  
+  ...
 
-...
+]
 ```
 
 ## <a name="list-role-assignments-for-a-subscription"></a>サブスクリプションのロールの割り当ての一覧表示
 
 サブスクリプション スコープに存在するすべてのロールの割り当てを一覧表示するには、[az role assignment list](/cli/azure/role/assignment#az-role-assignment-list) を使用します。 サブスクリプション ID を取得するには、Azure portal の **[サブスクリプション]** ブレードで確認するか、[az account list](/cli/azure/account#az-account-list) を使用できます。
 
-```azurecli-interactive
-az role assignment list --subscription <subscription_name_or_id>
+```azurecli
+az role assignment list --subscription {subscriptionNameOrId}
 ```
 
 例:
 
-```azurecli-interactive
-az role assignment list --subscription 00000000-0000-0000-0000-000000000000 --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
+```azurecli
+az role assignment list --subscription 00000000-0000-0000-0000-000000000000 --output json --query '[].{principalName:principalName, roleDefinitionName:roleDefinitionName, scope:scope}'
+```
+
+```json
+[
+  {
+    "principalName": "admin@contoso.com",
+    "roleDefinitionName": "Owner",
+    "scope": "/subscriptions/00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "principalName": "Subscription Admins",
+    "roleDefinitionName": "Owner",
+    "scope": "/subscriptions/00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "principalName": "alain@contoso.com",
+    "roleDefinitionName": "Reader",
+    "scope": "/subscriptions/00000000-0000-0000-0000-000000000000"
+  },
+
+  ...
+
+]
 ```
 
 ## <a name="list-role-assignments-for-a-management-group"></a>管理グループに対するロールの割り当ての一覧表示
 
 管理グループ スコープに存在するすべてのロールの割り当てを一覧表示するには、[az role assignment list](/cli/azure/role/assignment#az-role-assignment-list) を使用します。 管理グループ ID を取得するには、Azure portal の **[管理グループ]** ブレードで確認するか、[az account management-group list](/cli/azure/account/management-group#az-account-management-group-list) を使用します。
 
-```azurecli-interactive
-az role assignment list --scope /providers/Microsoft.Management/managementGroups/<group_id>
+```azurecli
+az role assignment list --scope /providers/Microsoft.Management/managementGroups/{groupId}
 ```
 
 例:
 
-```azurecli-interactive
-az role assignment list --scope /providers/Microsoft.Management/managementGroups/marketing-group --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
+```azurecli
+az role assignment list --scope /providers/Microsoft.Management/managementGroups/sales-group --output json --query '[].{principalName:principalName, roleDefinitionName:roleDefinitionName, scope:scope}'
+```
+
+```json
+[
+  {
+    "principalName": "admin@contoso.com",
+    "roleDefinitionName": "Owner",
+    "scope": "/providers/Microsoft.Management/managementGroups/sales-group"
+  },
+  {
+    "principalName": "alain@contoso.com",
+    "roleDefinitionName": "Reader",
+    "scope": "/providers/Microsoft.Management/managementGroups/sales-group"
+  }
+]
 ```
 
 ## <a name="list-role-assignments-for-a-managed-identity"></a>マネージド ID のロールの割り当ての一覧表示
@@ -124,22 +167,22 @@ az role assignment list --scope /providers/Microsoft.Management/managementGroups
 
     ユーザー割り当てのマネージド ID のオブジェクト ID を取得するには、[az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) または [az identity list](/cli/azure/identity#az-identity-list) を使用します。
 
-    ```azurecli-interactive
-    az ad sp list --display-name "<name>" --query [].objectId --output tsv
+    ```azurecli
+    az ad sp list --display-name "{name}" --query [].objectId --output tsv
     ```
 
     システム割り当てのマネージド ID のオブジェクト ID を取得するには、[az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) を使用します。
 
-    ```azurecli-interactive
-    az ad sp list --display-name "<vmname>" --query [].objectId --output tsv
+    ```azurecli
+    az ad sp list --display-name "{vmname}" --query [].objectId --output tsv
     ```
 
 1. ロールの割り当てを一覧表示するには、[az role assignment list](/cli/azure/role/assignment#az-role-assignment-list) を使用します。
 
     既定では、現在のサブスクリプションのロールの割り当てのみが表示されます。 現在のサブスクリプションとその下のロールの割り当てを表示するには、`--all` パラメーターを追加します。 継承されたロールの割り当てを表示するには、`--include-inherited` パラメーターを追加します。
 
-    ```azurecli-interactive
-    az role assignment list --assignee <objectid>
+    ```azurecli
+    az role assignment list --assignee {objectId}
     ```
 
 ## <a name="next-steps"></a>次のステップ

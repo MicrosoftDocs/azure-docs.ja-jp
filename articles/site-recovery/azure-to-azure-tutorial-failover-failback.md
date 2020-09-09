@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 9bc0d25e19ad3412e62eb3386b0faf3ae5d2a444
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8d38aa513b0829c2626fcd4a92c40faabff1f83e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68782590"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502394"
 ---
 # <a name="fail-over-and-reprotect-azure-vms-between-regions"></a>リージョン間での Azure VM のフェールオーバーと再保護
 
@@ -38,7 +38,7 @@ ms.locfileid: "68782590"
 
 1. **[レプリケートされたアイテム]** で、フェールオーバーする VM を選択し、 **[フェールオーバー]** を選択します
 
-   ![[フェールオーバー]](./media/azure-to-azure-tutorial-failover-failback/failover.png)
+   ![VM のフェールオーバー オプションを示すスクリーンショット。](./media/azure-to-azure-tutorial-failover-failback/failover.png)
 
 2. **[フェールオーバー]** で、フェールオーバー先の**復旧ポイント**を選択します。 次のいずれかのオプションを使うことができます。
 
@@ -58,7 +58,7 @@ ms.locfileid: "68782590"
 > [!NOTE]
 > VM のレプリケーションを有効にした後にディスクを追加した VM をフェールオーバーするとき、レプリケーション ポイントで復旧に使用できるディスクが表示されます。 たとえば、VM に単一のディスクがあり、新しいディスクを追加した場合、ディスクを追加する前に作成されたレプリケーション ポイントでは、そのレプリケーション ポイントが "2 台中の 1 台のディスク" で構成されていることが示されます。
 
-![ディスクが追加された状態でのフェールオーバー](./media/azure-to-azure-tutorial-failover-failback/failover-added.png)
+![追加されたディスクでのフェールオーバーを示すスクリーンショット。](./media/azure-to-azure-tutorial-failover-failback/failover-added.png)
 
 ## <a name="reprotect-the-secondary-vm"></a>セカンダリ VM を再保護する
 
@@ -67,7 +67,7 @@ VM のフェールオーバー後、プライマリ リージョンにレプリ�
 1. VM が**フェールオーバー コミット済み**状態であること、プライマリ リージョンが使用でき、そこに新しいリソースを作成したり、アクセスしたりできることを確認します。
 2. **[コンテナー]**  >  **[レプリケートされたアイテム]** で、フェールオーバーされた VM を右クリックし、 **[再保護]** を選択します。
 
-   ![右クリックして再保護する](./media/azure-to-azure-tutorial-failover-failback/reprotect.png)
+   ![VM の再保護オプションのスクリーンショット。](./media/azure-to-azure-tutorial-failover-failback/reprotect.png)
 
 2. 保護の方向として "セカンダリ リージョンからプライマリ リージョン" が既に選択されていることを確認します。
 3. **リソース グループ、ネットワーク、ストレージ、および可用性セット**の情報を確認します。 新規としてマークされているリソースが、再保護操作の一環として作成されます。

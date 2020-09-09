@@ -1,22 +1,22 @@
 ---
-title: SQL オンデマンド (プレビュー) を使用して、フォルダーと複数の CSV ファイルに対してクエリを実行する
+title: SQL オンデマンド (プレビュー) を使用して、フォルダーと複数のファイルに対してクエリを実行する
 description: SQL オンデマンド (プレビュー) では、Windows OS で使用されるワイルドカードとよく似たワイルドカードを使用して複数のファイルまたはフォルダーを読み取ることができます。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 8f8af7fab7113e38b91c3f5f1bcc41b4e4fba2c1
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 6c61bd420121800ade48de88cbcaadf37343262d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457367"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207633"
 ---
-# <a name="query-folders-and-multiple-csv-files"></a>フォルダーと複数の CSV ファイルに対してクエリを実行する  
+# <a name="query-folders-and-multiple-files"></a>クエリ フォルダーと複数のファイル  
 
 この記事では、Azure Synapse Analytics の SQL オンデマンド (プレビュー) を使用してクエリを作成する方法について説明します。
 
@@ -24,28 +24,9 @@ SQL オンデマンドでは、ワイルドカードを使用して複数のフ�
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事の残りの部分を読む前に、次の記事を必ず確認してください。
+最初の手順として、クエリを実行する**データベースを作成**します。 次に、そのデータベースで[セットアップ スクリプト](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)を実行して、オブジェクトを初期化します。 このセットアップ スクリプトにより、この記事のサンプルで使用されるデータ ソース、データベース スコープの資格情報、および外部ファイル形式が作成されます。
 
-- [初回セットアップ](query-data-storage.md#first-time-setup)
-- [前提条件](query-data-storage.md#prerequisites)
-
-## <a name="read-multiple-files-in-folder"></a>フォルダー内の複数のファイルを読み取る
-
-フォルダー *csv/taxi* を使用してサンプル クエリを実行します。 これには、2016 年 7 月から 2018 年 6 月までの NYC のタクシーのデータ (イエロー タクシーの運行記録) が含まれています。
-
-*csv/taxi* 内のファイルには、次のように年と月に基づいた名前が付けられています。
-
-- yellow_tripdata_2016-07.csv
-- yellow_tripdata_2016-08.csv
-- yellow_tripdata_2016-09.csv
-- ...
-- yellow_tripdata_2018-04.csv
-- yellow_tripdata_2018-05.csv
-- yellow_tripdata_2018-06.csv
-
-各ファイルの構造は次のとおりです。
-        
-    [First 10 rows of the CSV file](./media/querying-folders-and-multiple-csv-files/nyc-taxi.png)
+フォルダー *csv/taxi* を使用してサンプル クエリを実行します。 これには、2016 年 7 月から 2018 年 6 月までの NYC のタクシーのデータ (イエロー タクシーの運行記録) が含まれています。 *csv/taxi* のファイルには、次のパターンを使用して、年月に従って名前が付けられます: yellow_tripdata_<year>-<month>.csv
 
 ## <a name="read-all-files-in-folder"></a>フォルダー内のすべてのファイルを読み取る
     
@@ -57,28 +38,14 @@ SELECT
     SUM(passenger_count) AS passengers_total,
     COUNT(*) AS [rides_total]
 FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/taxi/*.*',
-        FORMAT = 'CSV', 
+        BULK 'csv/taxi/*.csv',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIRSTROW = 2
     )
     WITH (
-        vendor_id VARCHAR(100) COLLATE Latin1_General_BIN2, 
-        pickup_datetime DATETIME2, 
-        dropoff_datetime DATETIME2,
-        passenger_count INT,
-           trip_distance FLOAT,
-        rate_code INT,
-        store_and_fwd_flag VARCHAR(100) COLLATE Latin1_General_BIN2,
-        pickup_location_id INT,
-        dropoff_location_id INT,
-           payment_type INT,
-        fare_amount FLOAT,
-        extra FLOAT,
-        mta_tax FLOAT,
-        tip_amount FLOAT,
-        tolls_amount FLOAT,
-        improvement_surcharge FLOAT,
-        total_amount FLOAT
+        pickup_datetime DATETIME2 2, 
+        passenger_count INT 4
     ) AS nyc
 GROUP BY
     YEAR(pickup_datetime)
@@ -98,28 +65,14 @@ SELECT
     payment_type,  
     SUM(fare_amount) AS fare_total
 FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/taxi/yellow_tripdata_2017-*.csv',
-        FORMAT = 'CSV', 
+        BULK 'csv/taxi/yellow_tripdata_2017-*.csv',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIRSTROW = 2
     )
     WITH (
-        vendor_id VARCHAR(100) COLLATE Latin1_General_BIN2, 
-        pickup_datetime DATETIME2, 
-        dropoff_datetime DATETIME2,
-        passenger_count INT,
-        trip_distance FLOAT,
-        rate_code INT,
-        store_and_fwd_flag VARCHAR(100) COLLATE Latin1_General_BIN2,
-        pickup_location_id INT,
-        dropoff_location_id INT,
-        payment_type INT,
-        fare_amount FLOAT,
-        extra FLOAT,
-        mta_tax FLOAT,
-        tip_amount FLOAT,
-        tolls_amount FLOAT,
-        improvement_surcharge FLOAT,
-        total_amount FLOAT
+        payment_type INT 10,
+        fare_amount FLOAT 11
     ) AS nyc
 GROUP BY payment_type
 ORDER BY payment_type;
@@ -147,8 +100,9 @@ SELECT
     SUM(passenger_count) AS passengers_total,
     COUNT(*) AS [rides_total]
 FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/taxi/',
-        FORMAT = 'CSV', 
+        BULK 'csv/taxi/',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIRSTROW = 2
     )
     WITH (
@@ -192,8 +146,9 @@ SELECT
     SUM(passenger_count) AS passengers_total,
     COUNT(*) AS [rides_total]
 FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/t*i/', 
-        FORMAT = 'CSV', 
+        BULK 'csv/t*i/', 
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIRSTROW = 2
     )
     WITH (
@@ -240,8 +195,9 @@ SELECT
     SUM(passenger_count) AS passengers_total,
     COUNT(*) AS [rides_total]
 FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/t*i/yellow_tripdata_2017-*.csv',
-        FORMAT = 'CSV', 
+        BULK 'csv/t*i/yellow_tripdata_2017-*.csv',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIRSTROW = 2
     )
     WITH (

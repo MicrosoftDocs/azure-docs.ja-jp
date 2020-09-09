@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 04/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 7fe5afbc4984c430cbf393e4e2b44122bdd43983
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b950f80ba8c2bdbaf7a515dc1ce127b934723177
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297123"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85558558"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-blob-storage"></a>Azure Data Box BLOB ストレージに関連する問題のトラブルシューティング
 
@@ -35,8 +35,8 @@ ms.locfileid: "80297123"
 
 |エラー メッセージ  |推奨される操作 |
 |---------|---------|
-|AzCopy コマンドが 1 分間ハングしているように見えた後、次のメッセージが表示されます。 <br>Failed to enumerate directory https://… (ディレクトリ https://… の列挙に失敗しました。) リモート名を解決できませんでした `<accountname>.blob.<serialnumber>.microsoftdatabox.com`|エンドポイント名 `<accountname>.blob.<serialnumber>.microsoftdatabox.com` が `C:\Windows\System32\drivers\etc\hosts` にあるホスト ファイルに追加されていることを確認します。|
-|AzCopy コマンドが 1 分間ハングしているように見えた後、次のメッセージが表示されます。 <br>Error parsing source location. (ソースの場所の解析中にエラーが発生しました。) 基になる接続が閉じられました。SSL/TLS のセキュリティで保護されているチャネルに対する信頼関係を確立できませんでした。|ご使用のデバイス用の TLS/SSL 証明書をシステムの証明書ストアにインポートします。 詳細については、[証明書のダウンロード](data-box-deploy-copy-data-via-rest.md#download-certificate)に関する記事を参照してください。|
+|AzCopy コマンドが 1 分間応答を停止しているように見えた後、次のメッセージが表示されます。 <br>Failed to enumerate directory https://… (ディレクトリ https://… の列挙に失敗しました。) リモート名を解決できませんでした `<accountname>.blob.<serialnumber>.microsoftdatabox.com`|エンドポイント名 `<accountname>.blob.<serialnumber>.microsoftdatabox.com` が `C:\Windows\System32\drivers\etc\hosts` にあるホスト ファイルに追加されていることを確認します。|
+|AzCopy コマンドが 1 分間応答を停止しているように見えた後、次のメッセージが表示されます。 <br>Error parsing source location. (ソースの場所の解析中にエラーが発生しました。) 基になる接続が閉じられました。SSL/TLS のセキュリティで保護されているチャネルに対する信頼関係を確立できませんでした。|ご使用のデバイス用の TLS/SSL 証明書をシステムの証明書ストアにインポートします。 詳細については、[証明書のダウンロード](data-box-deploy-copy-data-via-rest.md#download-certificate)に関する記事を参照してください。|
 
 
 ## <a name="errors-seen-in-azcopy-for-linux"></a>AzCopy for Linux で見られるエラー
@@ -45,8 +45,8 @@ ms.locfileid: "80297123"
 
 |エラー メッセージ  |推奨される操作 |
 |---------|---------|
-|AzCopy コマンドが 20 分間ハングしているように見えた後、次のメッセージが表示されます。 <br>Error parsing source location `https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>`. (ソースの場所の解析中にエラーが発生しました: `https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>`) このようなデバイスまたはアドレスはありません|エンドポイント名 `<accountname>.blob.<serialnumber>.microsoftdatabox.com` が `/etc/hosts` にあるホスト ファイルに追加されていることを確認します。|
-|AzCopy コマンドが 20 分間ハングしているように見えた後、次のメッセージが表示されます。 <br>Error parsing source location… (ソースの場所の解析中にエラーが発生しました…) The SSL connection could not be established. (SSL 接続を確立できませんでした。)|ご使用のデバイス用の TLS/SSL 証明書をシステムの証明書ストアにインポートします。 詳細については、[証明書のダウンロード](data-box-deploy-copy-data-via-rest.md#download-certificate)に関する記事を参照してください。|
+|AzCopy コマンドが 20 分間応答を停止しているように見えた後、次のメッセージが表示されます。 <br>Error parsing source location `https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>`. (ソースの場所の解析中にエラーが発生しました: `https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>`) このようなデバイスまたはアドレスはありません|エンドポイント名 `<accountname>.blob.<serialnumber>.microsoftdatabox.com` が `/etc/hosts` にあるホスト ファイルに追加されていることを確認します。|
+|AzCopy コマンドが 20 分間応答を停止しているように見えた後、次のメッセージが表示されます。 <br>Error parsing source location… (ソースの場所の解析中にエラーが発生しました…) The SSL connection could not be established. (SSL 接続を確立できませんでした。)|ご使用のデバイス用の TLS/SSL 証明書をシステムの証明書ストアにインポートします。 詳細については、[証明書のダウンロード](data-box-deploy-copy-data-via-rest.md#download-certificate)に関する記事を参照してください。|
 
 ## <a name="errors-seen-in-azure-storage-library-for-python"></a>Python 用 Azure Storage ライブラリで見られるエラー
 

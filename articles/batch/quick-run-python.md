@@ -1,31 +1,34 @@
 ---
-title: Python API を使用して Azure Batch ジョブを実行する
-description: Batch Python クライアント ライブラリを使用して Azure Batch のサンプル ジョブとタスクを簡単に実行できます。 Batch サービスの主要概念について説明します。
+title: クイックスタート - Python API を使用して Azure Batch ジョブを実行する
+description: このクイックスタートでは、Batch Python クライアント ライブラリを使用して Azure Batch のサンプル ジョブとタスクを実行します。 Batch サービスの主要概念について説明します。
 ms.topic: quickstart
-ms.date: 11/27/2018
+ms.date: 08/17/2020
 ms.custom:
 - seo-python-october2019
 - mvc
-ms.openlocfilehash: 07ad9115f6cb602b4df5adbe9a7acdc0425bbf86
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+- devx-track-python
+ms.openlocfilehash: e3792a88104c359b014a7a12cf6e48e690c2a865
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117201"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511016"
 ---
 # <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>クイック スタート:Python API を使用して Azure Batch ジョブを実行する
 
-このクイックスタートでは、Python API を使用して、アプリから Azure Batch ジョブを実行します。 このアプリでは、入力データ ファイルを Azure Storage にアップロードし、Batch コンピューティング ノード (仮想マシン) の "*プール*" を作成します。 その後、基本的なコマンドを使用してプールの各入力ファイルを処理するための "*タスク*" を実行する "*ジョブ*" を作成します。
+Python API を使用してアプリから Azure Batch ジョブを実行することによって、Azure Batch の使用を開始します。 このアプリでは、入力データ ファイルを Azure Storage にアップロードし、Batch コンピューティング ノード (仮想マシン) の "プール" を作成します。 その後、基本的なコマンドを使用してプールの各入力ファイルを処理するための "タスク" を実行する "ジョブ" を作成します。
 
-ここでは、Batch サービスの主要な概念を説明します。より大規模でより現実的なワークロードで Batch を試す準備をしましょう。
+このクイックスタートを完了すると、Batch サービスの主要な概念を理解し、より大規模でより現実的なワークロードで Batch を試すことができるようになります。
 
 ![Azure Batch ワークフローの概要](./media/quick-run-python/overview-of-the-azure-batch-workflow.png)
 
 ## <a name="prerequisites"></a>前提条件
 
-- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-- **Azure Batch** アカウントおよびリンクされた **Azure ストレージ** アカウント。 [Azure portal](quick-create-portal.md) または [CLI](quick-create-cli.md) を使用してこれらのアカウントを作成します。
-- [Python](https://python.org/downloads) バージョン 2.7 または 3.3 以降 ([pip](https://pip.pypa.io/en/stable/installing/) パッケージ マネージャーを含む)。
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+- Batch アカウントおよびリンクされた Azure ストレージ アカウント。 これらのアカウントを作成するには、[Azure Portal](quick-create-portal.md) または [Azure CLI](quick-create-cli.md) を使用した Batch のクイック スタートを参照してください。
+
+- [Python](https://python.org/downloads) バージョン 2.7 または 3.3 以降 ([pip](https://pip.pypa.io/en/stable/installing/) パッケージ マネージャーを含む)
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -67,7 +70,7 @@ Batch ワークフローの動作を確認するには、スクリプトを実�
 python python_quickstart_client.py
 ```
 
-スクリプトの実行後に、コードを確認して、アプリケーションの各部分での処理内容を学習します。 
+スクリプトの実行後に、コードを確認して、アプリケーションの各部分での処理内容を学習します。
 
 サンプル アプリケーションを実行すると、コンソールの出力は次のようになります。 実行中、プールのコンピューティング ノードを開始する際に、`Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` で一時停止が発生します。 タスクは、最初のコンピューティング ノードが実行中になるとすぐに、実行するためにキューに登録されます。 Batch アカウントにプール、コンピューティング ノード、ジョブ、タスクを監視するには、[Azure Portal](https://portal.azure.com) で Batch アカウントに移動します。
 
@@ -101,9 +104,9 @@ Batch processing began with mainframe computers and punch cards. Today it still 
 
 このクイック スタートの Python アプリでは、次の処理を実行します。
 
-* 3 つの小さいテキスト ファイルを Azure ストレージ アカウントの BLOB コンテナーにアップロードします。 これらのファイルは、Batch タスクで処理するための入力です。
-* Ubuntu 18.04 LTS を実行している 2 つのコンピューティング ノードのプールを作成します。
-* ノードで実行するジョブと 3 つのタスクを作成します。 各タスクは、Bash シェル コマンド ラインを使用して入力ファイルの 1 つを処理します。
+- 3 つの小さいテキスト ファイルを Azure ストレージ アカウントの BLOB コンテナーにアップロードします。 これらのファイルは、Batch タスクで処理するための入力です。
+- Ubuntu 18.04 LTS を実行している 2 つのコンピューティング ノードのプールを作成します。
+- ノードで実行するジョブと 3 つのタスクを作成します。 各タスクは、Bash シェル コマンド ラインを使用して入力ファイルの 1 つを処理します。
 * タスクによって返されるファイルを表示します。
 
 詳細については、`python_quickstart_client.py` ファイルと以降のセクションを参照してください。
@@ -181,7 +184,7 @@ batch_service_client.job.add(job)
 
 このアプリは、[TaskAddParameter](/python/api/azure-batch/azure.batch.models.taskaddparameter) クラスを使用して、タスク オブジェクトの一覧を作成します。 各タスクは、`command_line` プロパティを使用して入力の `resource_files` オブジェクトを処理します。 このサンプルのコマンド ラインでは、Bash シェルの `cat` コマンドを実行してテキスト ファイルを表示します。 このコマンドは、デモンストレーション用の簡単な例です。 Batch を使用する場合、コマンド ラインは、アプリまたはスクリプトを指定する場所です。 Batch には、アプリやスクリプトをコンピューティング ノードにデプロイする方法が多数用意されています。
 
-その後、アプリは、[task.add_collection](/python/api/azure-batch/azure.batch.operations.taskoperations) メソッドを使用してジョブにタスクを追加します。これにより、タスクは、コンピューティング ノードで実行するためにキューに登録されます。 
+その後、アプリは、[task.add_collection](/python/api/azure-batch/azure.batch.operations.taskoperations) メソッドを使用してジョブにタスクを追加します。これにより、タスクは、コンピューティング ノードで実行するためにキューに登録されます。
 
 ```python
 tasks = list()

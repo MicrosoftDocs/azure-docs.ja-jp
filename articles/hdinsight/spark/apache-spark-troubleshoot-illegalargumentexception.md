@@ -35,7 +35,7 @@ Wrong FS: wasbs://additional@xxx.blob.core.windows.net/spark-examples_2.11-2.1.0
 
 この問題は Spark 2.3.0 で解決されました。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決策
 
 アプリケーション jar が、HDInsight クラスターの既定のストレージまたはプライマリ ストレージに格納されていることを確認します。 Azure Data Factory 場合は、ADF のリンクされたサービスが、HDInsight の既定のコンテナー (セカンダリ コンテナーではなく) を指していることを確認します。
 

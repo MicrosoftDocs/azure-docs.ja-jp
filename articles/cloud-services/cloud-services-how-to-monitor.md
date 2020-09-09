@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: tagore
 ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233815"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847239"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>クラウド サービスの監視の概要
 

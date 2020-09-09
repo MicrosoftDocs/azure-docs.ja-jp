@@ -3,20 +3,20 @@ title: マネージド データ ディスクを Windows VM に接続する - Az
 description: Azure portal を使用して Windows VM にマネージド データ ディスクを接続する方法について説明します。
 author: roygara
 ms.service: virtual-machines-windows
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 0fe04941821de2ac6e4e873e8d073c3e9b9d9508
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b100676cd8cfbffd273ea6ad50b63545f2d6037a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77919381"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836226"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>Azure portal を使用して Windows VM にマネージド データ ディスクを接続する
 
-この記事では、Azure portal で新規のマネージド データ ディスクを Windows 仮想マシン (VM) に接続する方法について説明します。 VM のサイズによって、接続できるデータ ディスクの数が決まります。 詳細については、 [仮想マシンのサイズ](sizes.md)に関するページをご覧ください。
+この記事では、Azure portal で新規のマネージド データ ディスクを Windows 仮想マシン (VM) に接続する方法について説明します。 VM のサイズによって、接続できるデータ ディスクの数が決まります。 詳細については、 [仮想マシンのサイズ](../sizes.md)に関するページをご覧ください。
 
 
 ## <a name="add-a-data-disk"></a>データ ディスクの追加

@@ -3,15 +3,15 @@ title: BI 分析ツールを使用して Azure Cosmos DB に接続する
 description: Azure Cosmos DB の ODBC ドライバーを使用して表とビューを作成し、正規化されたデータを BI とデータ分析ソフトウェアで表示できるようにする方法について説明します。
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/02/2019
 ms.author: sngun
-ms.openlocfilehash: 8be17f0b624c5c34709fb420adb434b77dbc0d91
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1bda235e5f3f867762457d0dc8214bbadc88059e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76721083"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084825"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>BI 分析ツールと ODBC ドライバーを使用して Azure Cosmos DB に接続する
 
@@ -46,7 +46,7 @@ Azure Cosmos DB はスキーマレス データベースであり、厳格なス
 1. **ODBC データ ソース管理者**アプリをコンピューターで開きます。 これを行うには、Windows の検索ボックスに「**ODBC データ ソース**」と入力します。 
     ドライバーがインストールされたことを確認するには、 **[ドライバー]** タブをクリックして **Microsoft Azure Cosmos DB ODBC ドライバー**が一覧に記載されていることを確認します。
 
-    ![Azure Cosmos DB ODBC データ ソース管理者](./media/odbc-driver/odbc-driver.png)
+    :::image type="content" source="./media/odbc-driver/odbc-driver.png" alt-text="Azure Cosmos DB ODBC データ ソース管理者":::
 
 ## <a name="step-2-connect-to-your-azure-cosmos-database"></a><a id="connect"></a>手順 2:Azure Cosmos データベースに接続する
 
@@ -56,18 +56,18 @@ Azure Cosmos DB はスキーマレス データベースであり、厳格なス
 
 1. **[Azure Cosmos DB ODBC Driver SDN Setup]\(Azure Cosmos DB ODBC ドライバーの SDN セットアップ\)** ウィンドウに、次の内容を入力します。 
 
-    ![Azure Cosmos DB ODBC ドライバーの DSN セットアップ ウィンドウ](./media/odbc-driver/odbc-driver-dsn-setup.png)
+    :::image type="content" source="./media/odbc-driver/odbc-driver-dsn-setup.png" alt-text="Azure Cosmos DB ODBC ドライバーの DSN セットアップ ウィンドウ":::
     - **データ ソース名**:ODBC DSN の独自のフレンドリ名。 この名前は Azure Cosmos DB アカウントに対して一意なので、複数のアカウントがある場合は適切に名前を付けてください。
     - **説明**:データ ソースの簡単な説明。
     - **[Host]\(ホスト\)** : Azure Cosmos DB アカウントの URI。 Azure Portal の [Azure Cosmos DB キー] ページから取得できます。次のスクリーンショットをご覧ください。 
     - **アクセス キー**:Azure portal の [Azure Cosmos DB キー] ページから、プライマリまたはセカンダリ、読み取り/書き込みまたは読み取り専用のキーを選びます。次のスクリーンショットをご覧ください。 DSN を読み取り専用のデータ処理とレポート作成に使用する場合は、読み取り専用キーを使用することをお勧めします。
-    ![[Azure Cosmos DB キー] ページ](./media/odbc-driver/odbc-cosmos-account-keys.png)
+    :::image type="content" source="./media/odbc-driver/odbc-cosmos-account-keys.png" alt-text="[Azure Cosmos DB キー] ページ":::
     - **Encrypt Access Key for (アクセスキーの暗号化)** :このコンピューターのユーザーに基づいた最適な選択肢を選択します。 
     
 1. **[テスト]** ボタンをクリックして、Azure Cosmos DB アカウントに接続できることを確認します。 
 
 1.  **[詳細オプション]** をクリックして、次の値を設定します。
-    *  **REST API バージョン**: 操作に使用する [REST API バージョン](https://docs.microsoft.com/rest/api/cosmos-db/)を選択します。 既定値は 2015-12-16 です。 [大きいパーティションキー](large-partition-keys.md)を持つコンテナーがあり、REST API バージョン 2018-12-31 が必要な場合:
+    *  **REST API バージョン**: 操作に使用する [REST API バージョン](/rest/api/cosmos-db/)を選択します。 既定値は 2015-12-16 です。 [大きいパーティションキー](large-partition-keys.md)を持つコンテナーがあり、REST API バージョン 2018-12-31 が必要な場合:
         - REST API バージョンとして「**2018-12-31**」を入力します
         - **スタート** メニューで「regedit」と入力し、**レジストリ エディター** アプリケーションを検索して開きます。
         - レジストリ エディターで、次のパスに移動します。**Computer\HKEY_LOCAL_MACHINE\SOFTWARE\ODBC\ODBC.INI**
@@ -76,7 +76,7 @@ Azure Cosmos DB はスキーマレス データベースであり、厳格なス
         - 右クリックして、新しい**文字列**値を追加します。
             - 値の名前: **IgnoreSessionToken**
             - 値のデータ:**1**
-            ![レジストリ エディターの設定](./media/odbc-driver/cosmos-odbc-edit-registry.png)
+            :::image type="content" source="./media/odbc-driver/cosmos-odbc-edit-registry.png" alt-text="レジストリ エディターの設定":::
     - **Query Consistency (クエリの一貫性)** :操作の[一貫性レベル](consistency-levels.md)を選択します。 既定ではセッションです。
     - **再試行回数**:サービス レートの制限のために最初の要求が完了しない場合、操作を再試行する回数を入力します。
     - **スキーマ ファイル**:これにはオプションがいくつかあります。
@@ -86,7 +86,7 @@ Azure Cosmos DB はスキーマレス データベースであり、厳格なス
 
 1. 操作を完了して **[Azure Cosmos DB ODBC Driver DSN Setup (Azure Cosmos DB ODBC ドライバーの DSN セットアップ)]** ウィンドウを閉じると、新しいユーザー DSN が [ユーザー DSN] タブに追加されます。
 
-    ![[ユーザー DSN] タブの新しい Azure Cosmos DB ODBC DSN](./media/odbc-driver/odbc-driver-user-dsn.png)
+    :::image type="content" source="./media/odbc-driver/odbc-driver-user-dsn.png" alt-text="[ユーザー DSN] タブの新しい Azure Cosmos DB ODBC DSN":::
 
 ## <a name="step-3-create-a-schema-definition-using-the-container-mapping-method"></a><a id="#container-mapping"></a>手順 3:コンテナー マッピングの方法を使ってスキーマ定義を作成する
 
@@ -94,7 +94,7 @@ Azure Cosmos DB はスキーマレス データベースであり、厳格なス
 
 1. 「[Azure Cosmos データベースに接続する](#connect)」の手順 1 から 4 が完了したら、 **[Azure Cosmos DB ODBC Driver DSN Setup]\(Azure Cosmos DB ODBC ドライバーの DSN セットアップ\)** ウィンドウの **[スキーマ エディター]** をクリックします。
 
-    ![[Azure Cosmos DB ODBC Driver DSN Setup (Azure Cosmos DB ODBC ドライバーの DSN セットアップ)] ウィンドウの [スキーマ エディター] ボタン](./media/odbc-driver/odbc-driver-schema-editor.png)
+    :::image type="content" source="./media/odbc-driver/odbc-driver-schema-editor.png" alt-text="Azure Cosmos DB ODBC ドライバーの DSN セットアップ ウィンドウの [スキーマ エディター] ボタン":::
 1. **[スキーマ エディター]** ウィンドウで、 **[新規作成]** をクリックします。
     **[スキーマを生成する]** ウィンドウに、Azure Cosmos DB アカウントのすべてのコンテナーが表示されます。 
 
@@ -162,7 +162,7 @@ Azure Cosmos DB はスキーマレス データベースであり、厳格なス
     
 新しいリンク サーバー名を表示するには、リンク サーバーの一覧を更新します。
 
-![SSMS でのリンク サーバー](./media/odbc-driver/odbc-driver-linked-server-ssms.png)
+:::image type="content" source="./media/odbc-driver/odbc-driver-linked-server-ssms.png" alt-text="SSMS でのリンク サーバー":::
 
 ### <a name="query-linked-database"></a>リンクされたデータベースにクエリを実行する
 
@@ -195,7 +195,8 @@ Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server
 サンプリング プロセスの一環として、ビューの定義と作成ができます。 これらのビューは、SQL ビューと同じです。 これらは読み取り専用で、Azure Cosmos DB SQL クエリの選択とプロジェクションが定義されているスコープです。 
 
 データのビューを作成するには、 **[スキーマ エディター]** ウィンドウの **[ビューの定義]** 列で、サンプリングするコンテナーの行の **[追加]** をクリックします。 
-    ![データのビューを作成する](./media/odbc-driver/odbc-driver-create-view.png)
+
+:::image type="content" source="./media/odbc-driver/odbc-driver-create-view.png" alt-text="データのビューを作成する":::
 
 
 次に **[ビューの定義]** ウィンドウで、次の操作をします。
@@ -204,7 +205,7 @@ Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server
 
 1. **[ビューの編集]** ウィンドウで、Azure Cosmos DB クエリを入力します。 これは、たとえば `SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Manager FROM c WHERE c.City = "Seattle"` のような [Azure Cosmos DB SQL](how-to-sql-query.md) クエリである必要があります。次に **[OK]** をクリックします。
 
-    ![ビューの作成時にクエリを追加する](./media/odbc-driver/odbc-driver-create-view-2.png)
+    :::image type="content" source="./media/odbc-driver/odbc-driver-create-view-2.png" alt-text="ビューの作成時にクエリを追加する":::
 
 
 ビューは好きな数だけ作成できます。 ビューの定義が完了したら、データをサンプリングできます。 
@@ -217,33 +218,36 @@ Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server
 
 1. **[データの取得]** をクリックします。
 
-    ![Power BI Desktop でデータを取得する](./media/odbc-driver/odbc-driver-power-bi-get-data.png)
+    :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data.png" alt-text="Power BI Desktop でデータを取得する":::
 
 1. **[データの取得]** ウィンドウで、 **[Other]** (その他) |  **[ODBC]**  |  **[接続]** の順にクリックします。
 
-    ![Power BI の [データの取得] で ODBC データ ソースを選択する](./media/odbc-driver/odbc-driver-power-bi-get-data-2.png)
+    :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data-2.png" alt-text="Power BI の [データの取得] で ODBC データ ソースを選択する":::
 
 1. **[From ODBC]** (ODBC から) ウィンドウで作成したデータ ソース名を選択し、 **[OK]** をクリックします。 **[詳細オプション]** エントリは空白のままにしておくことができます。
 
-    ![Power BI の [データの取得] でデータ ソース名 (DSN) を選択する](./media/odbc-driver/odbc-driver-power-bi-get-data-3.png)
+   :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data-3.png" alt-text="Power BI の [データの取得] でデータ ソース名 (DSN) を選択する":::
 
 1. **[ODBC ドライバーを使用してデータ ソースにアクセスします]** ウィンドウで、 **[既定またはカスタム]** を選択し、 **[接続]** をクリックします。 **資格情報の接続文字列プロパティ**を含める必要はありません。
 
 1. **[ナビゲーター]** ウィンドウの左ペインでデータベースとスキーマを展開し、テーブルを選択します。 結果ペインには作成したスキーマを使用するデータが含まれています。
 
-    ![Power BI の [データの取得] でテーブルを選択する](./media/odbc-driver/odbc-driver-power-bi-get-data-4.png)
+    :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data-4.png" alt-text="Power BI の [データの取得] でテーブルを選択する":::
 
 1. Power BI Desktop でデータを視覚化するには、テーブル名の前のボックスをオンにし、 **[読み込む]** をクリックします。
 
-1. Power BI Desktop の左端の [データ] タブを選択して ![Power BI Desktop の [データ] タブ](./media/odbc-driver/odbc-driver-data-tab.png) データがインポートされたことを確認します。
+1. Power BI Desktop の左端の [データ] タブ :::image type="icon" source="./media/odbc-driver/odbc-driver-data-tab.png"::: を選択し、データがインポートされたことを確認します。 
 
-1. [レポート] タブ ![Power BI Desktop の [レポート] タブ](./media/odbc-driver/odbc-driver-report-tab.png)をクリックし、 **[新しいビジュアル]** をクリックしてタイルをカスタマイズすることにより、Power BI を使用してビジュアルを作成できます。 Power BI Desktop での視覚化の詳細については、「[Power BI での視覚化の種類](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/)」を参照してください。
+1. [レポート] タブ :::image type="icon" source="./media/odbc-driver/odbc-driver-report-tab.png"::: をクリックし、 **[新しいビジュアル]** をクリックしてタイルをカスタマイズすることにより、Power BI を使用してビジュアルを作成できます。 Power BI Desktop での視覚化の詳細については、「[Power BI での視覚化の種類](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/)」を参照してください。 
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 次のエラーが発生した場合は、[手順 2](#connect) で、Azure Portal からコピーした**ホスト**と**アクセス キー**の値が正しいことを確認して再度試してください。 Azure Portal の**ホスト**と**アクセス キー**の値の右側にある [コピー] ボタンを使って、値を正しくコピーします。
 
-    [HY000]: [Microsoft][Azure Cosmos DB] (401) HTTP 401 Authentication Error: {"code":"Unauthorized","message":"The input authorization token can't serve the request. Please check that the expected payload is built as per the protocol, and check the key being used. Server used the following payload to sign: 'get\ndbs\n\nfri, 20 jan 2017 03:43:55 gmt\n\n'\r\nActivityId: 9acb3c0d-cb31-4b78-ac0a-413c8d33e373"}`
+```output
+[HY000]: [Microsoft][Azure Cosmos DB] (401) HTTP 401 Authentication Error: {"code":"Unauthorized","message":"The input authorization token can't serve the request. Please check that the expected payload is built as per the protocol, and check the key being used. Server used the following payload to sign: 'get\ndbs\n\nfri, 20 jan 2017 03:43:55 gmt\n\n'\r\nActivityId: 9acb3c0d-cb31-4b78-ac0a-413c8d33e373"}
+```
+
 
 ## <a name="next-steps"></a>次のステップ
 

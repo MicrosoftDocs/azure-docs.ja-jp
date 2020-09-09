@@ -4,11 +4,11 @@ description: Azure Site Recovery でのフェールオーバーとフェール�
 ms.topic: conceptual
 ms.date: 12/24/2019
 ms.openlocfilehash: d9b54f3c452212e12419a5ffd67b116c8660308d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236495"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089534"
 ---
 # <a name="about-on-premises-disaster-recovery-failoverfailback"></a>オンプレミスのディザスター リカバリーのフェールオーバーとフェールバックについて
 

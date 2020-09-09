@@ -6,18 +6,18 @@ author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/19/2020
 ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: b0a783ad5db86ca783ff1cebceec8d77ab528047
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: a4da74c01f732f3a62d29847d5f61934dede9778
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81687917"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85208095"
 ---
 # <a name="column-level-security"></a>列レベルのセキュリティ
 
@@ -52,7 +52,7 @@ GRANT <permission> [ ,...n ] ON
 
 ## <a name="example"></a>例
 
-次の例では、`TestUser` が `SSN` テーブルの `Membership` 列にアクセスするのを制限する方法を示します。
+次の例では、`TestUser` が `Membership` テーブルの `SSN` 列にアクセスするのを制限する方法を示します。
 
 社会保障番号を格納するために使用される SSN 列が含まれた `Membership` テーブルを作成します。
 

@@ -3,12 +3,13 @@ title: 仮想マシンの論理的な削除
 description: 仮想マシンの論理的な削除によって、バックアップの安全性が向上するしくみについて説明します。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: ba00b235ea70bcc2dabbd5a91a3f7003f9bbed49
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.custom: references_regions
+ms.openlocfilehash: a79f2bf77bcc184db8ac61b51107c1bb4a2a989d
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82761424"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889828"
 ---
 # <a name="soft-delete-for-virtual-machines"></a>仮想マシンの論理的な削除
 
@@ -37,7 +38,7 @@ VM の論理的な削除によって、ご利用の VM のバックアップが�
    ![論理的な削除状態の VM を示している Azure portal のスクリーンショット](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
    > [!NOTE]
-   > 論理的に削除されたバックアップ項目がコンテナーに存在する場合、その時点でコンテナーを削除することはできません。 バックアップ項目が完全に削除され、コンテナーに論理的な削除状態の項目がなくなってから、コンテナーの削除を試してください。
+   > 論理的に削除されたバックアップ項目がコンテナーに存在する場合、その時点でコンテナーを削除することはできません。 バックアップ項目が完全に削除され、コンテナーに論理的な削除状態の項目がなくなってからコンテナーの削除を試みてください。
 
 4. 論理的に削除された VM を復元するには、最初に削除を取り消す必要があります。 削除を取り消すには、論理的に削除された VM を選択し、 **[削除の取り消し]** オプションを選択します。
 
@@ -61,13 +62,13 @@ VM の論理的な削除によって、ご利用の VM のバックアップが�
 ## <a name="soft-delete-for-vms-using-azure-powershell"></a>Azure PowerShell を使用した VM の論理的な削除
 
 > [!IMPORTANT]
-> Azure PS で論理的に削除するために必要な Az.RecoveryServices バージョンの最小は 2.2.0 です。 ```Install-Module -Name Az.RecoveryServices -Force``` を使用し、最新バージョンを取得してください。
+> Azure PowerShell で論理的に削除するために必要な Az.RecoveryServices の最小バージョンは 2.2.0 です。 ```Install-Module -Name Az.RecoveryServices -Force``` を使用し、最新バージョンを取得してください。
 
 Azure portal に関する上記の説明にあるように、Azure PowerShell の使用時も手順は同じです。
 
 ### <a name="delete-the-backup-item-using-azure-powershell"></a>Azure PowerShell を使用したバックアップ項目の削除
 
-[Disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) PS コマンドレットを使用してバックアップ項目を削除します。
+[Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PowerShell コマンドレットを使用してバックアップ項目を削除します。
 
 ```powershell
 Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
@@ -94,7 +95,7 @@ VM;iaasvmcontainerv2;selfhostrg;AppVM1    AzureVM             iaasvmcontainerv2;
 $myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID -Name AppVM1
 ```
 
-次に、[Undo-AzRecoveryServicesBackupItemDeletion](https://docs.microsoft.com/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion?view=azps-3.1.0) PS コマンドレットで削除操作を元に戻します。
+次に、[Undo-AzRecoveryServicesBackupItemDeletion](/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion) PowerShell コマンドレットで削除操作を元に戻します。
 
 ```powershell
 Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force
@@ -104,12 +105,12 @@ WorkloadName     Operation            Status               StartTime            
 AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM     12/5/2019 12:47:40 PM     65311982-3755-46b5-8e53-c82ea4f0d2a2
 ```
 
-バックアップ項目の "DeleteState" が "NotDeleted" に戻ります。 しかし、保護は引き続き停止状態にあります。 [バックアップを再開](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#change-policy-for-backup-items)して、保護を再び有効にします。
+バックアップ項目の "DeleteState" が "NotDeleted" に戻ります。 しかし、保護は引き続き停止状態にあります。 [バックアップを再開](./backup-azure-vms-automation.md#change-policy-for-backup-items)して、保護を再び有効にします。
 
 ## <a name="soft-delete-for-vms-using-rest-api"></a>REST API を使用した VM の論理的な削除
 
 - [こちら](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data)の説明に従って、REST API を使用してバックアップを削除します。
-- これらの削除操作を元に戻す場合は、[こちら](backup-azure-arm-userestapi-backupazurevms.md#undo-the-stop-protection-and-delete-data)で説明されている手順を参照してください。
+- これらの削除操作を元に戻す場合は、[こちら](backup-azure-arm-userestapi-backupazurevms.md#undo-the-deletion)で説明されている手順を参照してください。
 
 ## <a name="how-to-disable-soft-delete"></a>論理的な削除を無効にする方法
 

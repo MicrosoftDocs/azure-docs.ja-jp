@@ -11,20 +11,20 @@ ms.topic: reference
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1eaf159149bb353b1cf0474aad5bc233decddc5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d4c538a9292698fecc8b44c055ab201748e292c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481570"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85202995"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C のカスタム ポリシーで検証技術プロファイルを定義する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-検証技術プロファイルは、[Azure Active Directory](active-directory-technical-profile.md) や [REST API](restful-technical-profile.md) などの、あらゆるプロトコルの通常の技術プロファイルです。 検証技術プロファイルでは、出力要求を返すか、または次のデータによって 4xx HTTP 状態コードを返します。 詳細については、「[エラー メッセージを返す](restful-technical-profile.md#returning-error-message)」を参照してください。
+検証技術プロファイルは、[Azure Active Directory](active-directory-technical-profile.md) や [REST API](restful-technical-profile.md) などの、あらゆるプロトコルの通常の技術プロファイルです。 検証技術プロファイルでは、出力要求を返すか、または次のデータによって 4xx HTTP 状態コードを返します。 詳細については、「[エラー メッセージを返す](restful-technical-profile.md#returning-validation-error-message)」を参照してください。
 
-```JSON
+```json
 {
     "version": "1.0.0",
     "status": 409,
@@ -87,7 +87,7 @@ ms.locfileid: "79481570"
 2. その次の検証技術プロファイルは、userType 要求が存在しないか、または userType の値が `Partner` の場合は実行されません。 この検証技術プロファイルは、内部顧客データベースからのユーザー プロファイルの読み取りを試行し、使用不可な REST API サービスや内部エラーなどのエラーが発生した場合も続行されます。
 3. 最後の検証技術プロファイルは、userType 要求が存在しないか、または userType の値が `Customer` の場合は実行されません。 この検証技術プロファイルは、内部パートナー データベースからのユーザー プロファイルの読み取りを試行し、使用不可な REST API サービスや内部エラーなどのエラーが発生した場合も続行されます。
 
-```XML
+```xml
 <ValidationTechnicalProfiles>
   <ValidationTechnicalProfile ReferenceId="login-NonInteractive" ContinueOnError="false" />
   <ValidationTechnicalProfile ReferenceId="REST-ReadProfileFromCustomertsDatabase" ContinueOnError="true" >

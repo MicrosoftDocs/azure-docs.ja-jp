@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eba44252672248b983d7f6e0c843f638e5f73447
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4cf35b2c15c0d85c93e69ef4e3b6c76932cbd75d
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74007653"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229380"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>チュートリアル:Azure Active Directory ログを Azure イベント ハブにストリーム配信する
 
@@ -35,7 +35,7 @@ ms.locfileid: "74007653"
 * Azure サブスクリプション。 Azure サブスクリプションを持っていない場合は、[無料試用版にサインアップ](https://azure.microsoft.com/free/)できます。
 * Azure AD テナント。
 * Azure AD テナントの "*グローバル管理者*" または "*セキュリティ管理者*" であるユーザー。
-* Azure サブスクリプション内の Event Hubs 名前空間とイベント ハブ。 [イベント ハブの作成](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)方法に関するページを参照してください。
+* Azure サブスクリプション内の Event Hubs 名前空間とイベント ハブ。 [イベント ハブの作成](../../event-hubs/event-hubs-create.md)方法に関するページを参照してください。
 
 ## <a name="stream-logs-to-an-event-hub"></a>イベント ハブにログをストリーム配信する
 
@@ -79,19 +79,19 @@ ms.locfileid: "74007653"
     
     * **ArcSight**: Azure AD のログと Splunk の統合の詳細については、「[Azure Monitor を使用して Azure Active Directory のログを ArcSight と統合する](howto-integrate-activity-logs-with-arcsight.md)」を参照してください。
     
-    * **Splunk**: Azure AD のログと Splunk の統合の詳細については、[Azure Monitor を使用した Azure AD のログと Splunk の統合](tutorial-integrate-activity-logs-with-splunk.md)に関するページを参照してください。
+    * **Splunk**: Azure AD のログと Splunk の統合の詳細については、[Azure Monitor を使用した Azure AD のログと Splunk の統合](./howto-integrate-activity-logs-with-splunk.md)に関するページを参照してください。
     
     * **IBM QRadar**: DSM および Azure Event Hub Protocol は、[IBM サポート](https://www.ibm.com/support)からダウンロードすることができます。 Azure との統合について詳しくは、[IBM QRadar Security Intelligence Platform 7.3.0](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0) のサイトをご覧ください。
     
     * **Sumo Logic**: イベント ハブのデータを使用するように Sumo Logic を設定するには、「[Install the Azure AD app and view the dashboards (Azure AD アプリをインストールし、ダッシュボードを表示する)](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards)」を参照してください。 
 
-* **カスタム ツールを設定する**。 現在お使いの SIEM がまだ Azure Monitor 診断でサポートされていない場合は、Event Hubs API を使用してカスタム ツールを設定できます。 詳しくは、[イベント ハブからメッセージ受信を開始する](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph)方法に関するページをご覧ください。
+* **カスタム ツールを設定する**。 現在お使いの SIEM がまだ Azure Monitor 診断でサポートされていない場合は、Event Hubs API を使用してカスタム ツールを設定できます。 詳しくは、[イベント ハブからメッセージ受信を開始する](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)方法に関するページをご覧ください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Monitor を使用して Azure Active Directory のログを ArcSight と統合する](howto-integrate-activity-logs-with-arcsight.md)
-* [Azure Monitor を使用して Azure AD のログを Splunk と統合する](tutorial-integrate-activity-logs-with-splunk.md)
+* [Azure Monitor を使用して Azure AD のログを Splunk と統合する](./howto-integrate-activity-logs-with-splunk.md)
 * [Azure Monitor を使用して Azure AD のログを SumoLogic と統合する](howto-integrate-activity-logs-with-sumologic.md)
 * [Azure Monitor で監査ログのスキーマを解釈する](reference-azure-monitor-audit-log-schema.md)
 * [Azure Monitor でサインイン ログのスキーマを解釈する](reference-azure-monitor-sign-ins-log-schema.md)

@@ -4,15 +4,15 @@ description: Azure Analysis Services サーバー名エイリアスを作成す�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 06/16/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4b416a25fd0befa91076fed5f9bf5df23ea30844
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 435649c5431ff14461245fee88cebe4a2c571663
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698989"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361440"
 ---
 # <a name="alias-server-names"></a>サーバー名のエイリアス
 
@@ -37,7 +37,7 @@ ms.locfileid: "83698989"
 
 エイリアス エンドポイントを作成するには、有効な Azure Analysis Services サーバー名を返す任意のメソッドを使用できます。 たとえば、実際のサーバー名が含まれた Azure Blob Storage 内のファイルを参照したり、ASP.NET Web フォーム アプリケーションを作成して発行したりできます。
 
-この例では、ASP.NET Web フォーム アプリケーションが Visual Studio で作成されています。 マスター ページの参照およびユーザー コントロールは、Default.aspx ページから削除されています。 Default.aspx の内容は、次の Page ディレクティブだけです。
+この例では、ASP.NET Web フォーム アプリケーションが Visual Studio で作成されています。 ページの参照とユーザー コントロールは、Default.aspx ページから削除されています。 Default.aspx の内容は、次の Page ディレクティブだけです。
 
 ```
 <%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="FriendlyRedirect._Default" %>
@@ -52,7 +52,7 @@ protected void Page_Load(object sender, EventArgs e)
 }
 ```
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
-[クライアント ライブラリ](analysis-services-data-providers.md)   
+[クライアント ライブラリ](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)   
 [Power BI Desktop からの接続](analysis-services-connect-pbi.md)

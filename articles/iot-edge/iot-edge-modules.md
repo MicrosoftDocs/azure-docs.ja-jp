@@ -8,12 +8,13 @@ ms.date: 03/21/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1c625e628f53d156ad56a1c69df1c23aec9120ac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9feef9ec04bcc44bc09d55202b72ada4adc94cf5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76548715"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017058"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Azure IoT Edge モジュールについて
 

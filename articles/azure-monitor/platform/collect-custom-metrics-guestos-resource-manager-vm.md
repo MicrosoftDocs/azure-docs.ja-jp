@@ -1,36 +1,33 @@
 ---
 title: テンプレートを使用して Azure Monitor で Windows VM のメトリックを収集する
-description: Resource Manager テンプレートを使用して Windows 仮想マシンのゲスト OS メトリックを Azure Monitor メトリック ストアに送信する
+description: Resource Manager テンプレートを使用して Windows 仮想マシンのゲスト OS メトリックを Azure Monitor メトリック データベース ストアに送信する
 author: anirudhcavale
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.author: ancav
+ms.date: 05/04/2020
+ms.author: bwren
 ms.subservice: metrics
-ms.openlocfilehash: e747ca89912c36538bfb9d02986629fe57c5adcb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 208515b7541948ca6913e6fda092c6a424de85f9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77657369"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515786"
 ---
-# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Resource Manager テンプレートを使用して Windows 仮想マシンのゲスト OS メトリックを Azure Monitor メトリック ストアに送信する
+# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine"></a>Azure Resource Manager テンプレートを使用して Windows 仮想マシンのゲスト OS メトリックを Azure Monitor メトリック ストアに送信する
+Azure 仮想マシンのゲスト OS から収集したパフォーマンス データは、他の[プラットフォーム メトリック](../insights/monitor-azure-resource.md#monitoring-data)のように自動的には収集されません。 Azure Monitor [診断拡張機能](diagnostics-extension-overview.md)をインストールして、メトリック データベースにゲスト OS メトリックを収集し、凖リアルタイムのアラート、グラフ作成、ルーティング、REST API からのアクセスなど、Azure Monitor メトリックのすべての機能で使用できるようにします。 この記事では、Resource Manager テンプレートを使用して Windows 仮想マシンのゲスト OS のパフォーマンス メトリックをメトリック データベースに送信するプロセスについて説明します。 
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+> [!NOTE]
+> Azure portal を使用してゲスト OS メトリックを収集するように診断拡張機能を構成する方法の詳細については、「[Windows Azure Diagnostics 拡張機能 (WAD) のインストールと構成](diagnostics-extension-windows-install.md)」を参照してください。
 
-Azure Monitor [診断拡張機能](diagnostics-extension-overview.md)を使用すると、仮想マシン、クラウド サービス、または Service Fabric クラスターの一部として実行されているゲスト オペレーティング システム (ゲスト OS) からメトリックとログを収集できます。 拡張機能により、[多くの異なる場所](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)にテレメトリを送信できます。
-
-この記事では、Windows 仮想マシンのゲスト OS のパフォーマンス メトリックを Azure Monitor データ ストアに送信するプロセスについて説明します。 診断拡張機能バージョン 1.11 以降、標準プラットフォーム メトリックが既に収集されている Azure Monitor メトリック ストアに、メトリックを直接書き込むことができます。
-
-この場所にこれらを格納することで、プラットフォーム メトリックと同じアクションにアクセスできます。 アクションには、ほぼリアルタイムのアラート、グラフ作成、ルーティング、REST API からのアクセスなどの機能があります。 これまで、診断拡張機能では、Azure Monitor データ ストアではなく Azure Storage に書き込んでいました。
 
 Resource Manager テンプレートを初めて利用する場合は、[テンプレートのデプロイ](../../azure-resource-manager/management/overview.md)とその構造および構文についてご確認ください。
 
 ## <a name="prerequisites"></a>前提条件
 
-- サブスクリプションを [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) に登録する必要があります
+- サブスクリプションを [Microsoft.Insights](../../azure-resource-manager/management/resource-providers-and-types.md) に登録する必要があります
 
-- [Azure PowerShell](/powershell/azure) または [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) がインストールされている必要があります。
+- [Azure PowerShell](/powershell/azure) または [Azure Cloud Shell](../../cloud-shell/overview.md) がインストールされている必要があります。
 
 - お使いの VM リソースが、[カスタム メトリックをサポートするリージョン](metrics-custom-overview.md#supported-regions)に存在する必要があります。 
 
@@ -289,4 +286,3 @@ Resource Manager テンプレートをデプロイするために、Azure PowerS
 
 ## <a name="next-steps"></a>次のステップ
 - [カスタム メトリック](metrics-custom-overview.md)の詳細を確認します。
-

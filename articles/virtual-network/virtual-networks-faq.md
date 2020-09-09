@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/12/2019
+ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: d59a2fe32742c2d1d50b9ed33ccace5d377c59c2
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: c242b08c598b04c84ab330e846704eace23c4858
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791988"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205467"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)
 
@@ -55,7 +55,14 @@ VNet を使用して次のことが行えます。
 * ネットワーク構成ファイル (netcfg - クラシック VNet のみ)。 「[Configure a VNet using a network configuration file (ネットワーク構成ファイルを使用した VNet の構成)](virtual-networks-using-network-configuration-file.md)」を参照してください。
 
 ### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>VNet でどのアドレス範囲が使用できるでしょうか。
-[RFC 1918](https://tools.ietf.org/html/rfc1918) で定義されている任意の IP アドレス範囲 (例: 10.0.0.0/16)。 次のアドレス範囲は追加できません。
+[RFC 1918](https://tools.ietf.org/html/rfc1918) で列挙されているアドレス範囲を使用することをお勧めします。これらの範囲は、プライベートのルーティング不能なアドレス空間用に、IETF によって留保されています。
+* 10.0.0.0 ～ 10.255.255.255 (10/8 プレフィックス)
+* 172.16.0.0 ～ 172.31.255.255 (172.16/12 プレフィックス)
+* 192.168.0.0 ～ 192.168.255.255 (192.168/16 プレフィックス)
+
+その他のアドレス空間は、機能することもありますが、望ましくない副作用が発生する可能性があります。
+
+さらに、以下のアドレス範囲は追加できません。
 * 224.0.0.0/4 (マルチキャスト)
 * 255.255.255.255/32 (ブロードキャスト)
 * 127.0.0.0/8 (ループバック)
@@ -102,7 +109,7 @@ VNet では、TCP、UDP、および ICMP TCP/IP プロトコルを使用する�
 ### <a name="can-i-modify-the-size-of-my-subnet-after-i-create-it"></a>作成した後、サブネットのサイズを変更できますか。
 はい。 VM またはサービスがサブネット内にデプロイされていない場合は、サブネットを追加、削除、拡張、または縮小できます。
 
-### <a name="can-i-modify-subnets-after-i-created-them"></a>サブネットを作成後に変更できますか。
+### <a name="can-i-modify-vnet-after-i-created-them"></a>Vnet を作成した後に変更することはできますか。
 はい。 VNet で使用された CIDR ブロックを追加、削除、変更することができます。
 
 ### <a name="if-i-am-running-my-services-in-a-vnet-can-i-connect-to-the-internet"></a>VNet でサービスを実行している場合、インターネットに接続できますか。
@@ -207,7 +214,7 @@ Azure Storage、Azure SQL Database などの一部の Azure PaaS サービスを
 ### <a name="can-i-move-my-services-in-and-out-of-vnets"></a>サービスを VNet 内外で移動できますか。
 いいえ。 サービスを VNet 内外で移動することはできません。 リソースを別の VNet に移動するには、リソースを削除して再デプロイする必要があります。
 
-## <a name="security"></a>Security
+## <a name="security"></a>セキュリティ
 
 ### <a name="what-is-the-security-model-for-vnets"></a>VNet のセキュリティ モデルとは何ですか。
 Vnet は、他の VNet から、および Azure インフラストラクチャでホストされている他のサービスから、完全に分離されています。 VNet は、トラスト バウンダリです。
@@ -229,7 +236,7 @@ Vnet は、他の VNet から、および Azure インフラストラクチャ�
 ### <a name="is-there-tooling-support-for-vnets"></a>VNet に対するツール サポートはありますか。
 はい。 次のツールを使用できます。
 - Azure Portal。[Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network) および[クラシック](virtual-networks-create-vnet-classic-pportal.md) デプロイメント モデルを使用して VNet をデプロイするために使用します。
-- PowerShell。[Resource Manager](/powershell/module/az.network) および[クラシック](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) デプロイメント モデルを使用してデプロイされた VNet を管理するために使用します。
+- PowerShell。[Resource Manager](/powershell/module/az.network) および[クラシック](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0) デプロイメント モデルを使用してデプロイされた VNet を管理するために使用します。
 - Azure コマンド ライン インターフェイス (CLI)。[Resource Manager](/cli/azure/network/vnet) デプロイメント モデルおよび[クラシック](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-resources) デプロイメント モデルを使用してデプロイされた VNet をデプロイおよび管理するために使用します。  
 
 ## <a name="vnet-peering"></a>VNET ピアリング
@@ -349,7 +356,7 @@ VNet サービス エンドポイントは、Azure サービス リソースを�
 はい、できます。 仮想ネットワークと Azure サービス リソースのサブスクリプションは、同じでも異なっていてもかまいません。 唯一の要件は、仮想ネットワークと Azure サービス リソースの両方が、同じ Active Directory (AD) テナントの下に存在する必要があることです。
 
 ### <a name="can-i-turn-on-vnet-service-endpoints-and-set-up-vnet-acls-if-the-virtual-network-and-the-azure-service-resources-belong-to-different-ad-tenants"></a>仮想ネットワークと Azure サービス リソースが異なる AD テナントに属している場合、VNet サービス エンドポイントを有効にして、VNet ACL を設定できますか。
-いいえ、VNet サービス エンドポイントと VNet ACL は、AD テナントをまたがってはサポートされません。
+はい。Azure Storage と Azure Key Vault にサービス エンドポイントを使用する場合は可能です。 残りのサービスでは、VNet サービス エンドポイントと VNet ACL は、AD テナントをまたがってはサポートされません。
 
 ### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gateway-vpn-or-expressroute-gateway-access-azure-paas-service-over-vnet-service-endpoints"></a>Azure Virtual Network ゲートウェイ (VPN) または ExpressRoute ゲートウェイを介して接続されているオンプレミス デバイスの IP アドレスでは、VNet サービス エンドポイント経由で Azure PaaS サービスにアクセスできますか。
 既定では、仮想ネットワークからのアクセスに限定された Azure サービス リソースは、オンプレミスのネットワークからはアクセスできません。 オンプレミスからのトラフィックを許可する場合は、オンプレミスまたは ExpressRoute からのパブリック IP アドレス (通常は NAT) を許可する必要もあります。 これらの IP アドレスは、Azure サービス リソースの IP ファイアウォール構成を通じて追加できます。
@@ -399,9 +406,8 @@ Azure サービスに到達するには、NSG で送信接続を許可する必�
 ### <a name="are-there-any-limits-on-how-many-vnet-service-endpoints-i-can-set-up-from-my-vnet"></a>VNet から設定できる VNet サービス エンドポイントの数に制限はありますか。
 仮想ネットワーク内の VNet サービス エンドポイントの合計数に制限はありません。 Azure サービス リソース (Azure Storage アカウントなど) の場合、リソースへのアクセスに使用されるサブネットの数がサービスによって制限される場合があります。 制限の例を次の表に示します。 
 
-|||
-|---|---|
 |Azure サービス| VNet ルールでの制限|
+|---|---|
 |Azure Storage| 100|
 |Azure SQL| 128|
 |Azure SQL Data Warehouse|  128|

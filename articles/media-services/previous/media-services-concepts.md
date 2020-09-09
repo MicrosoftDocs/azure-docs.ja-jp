@@ -13,23 +13,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: dc39ef8f3d72b2b8fc5aa55aacb2e2503b052023
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: e75dde14cf7182f5153b3a42b26f1c7e8a4e78ac
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160224"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258029"
 ---
-# <a name="azure-media-services-concepts"></a>Azure Media Services の概念 
+# <a name="azure-media-services-concepts"></a>Azure Media Services の概念
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 
 このトピックでは、Media Services の最も重要な概念の概要を説明します。
 
-## <a name="assets-and-storage"></a><a id="assets"/>資産とストレージ
+## <a name="assets-and-storage"></a><a name="assets"></a>資産とストレージ
 ### <a name="assets"></a>アセット
-[アセット](https://docs.microsoft.com/rest/api/media/operations/asset) には、デジタル ファイル (ビデオ、オーディオ、画像、サムネイルのコレクション、テキスト トラック、クローズド キャプション ファイルなど) と、それらのファイルに関するメタデータが含まれます。 デジタル ファイルがアセットにアップロードされた後は、Media Services エンコードおよびストリーミング ワークフローで使用できます。
+[アセット](/rest/api/media/operations/asset) には、デジタル ファイル (ビデオ、オーディオ、画像、サムネイルのコレクション、テキスト トラック、クローズド キャプション ファイルなど) と、それらのファイルに関するメタデータが含まれます。 デジタル ファイルがアセットにアップロードされた後は、Media Services エンコードおよびストリーミング ワークフローで使用できます。
 
 資産は Azure ストレージ アカウント内の BLOB コンテナーにマップされ、資産内のファイルはブロック BLOB としてそのコンテナーに格納されます。 ページ BLOB は Azure Media Services ではサポートされていません。
 
@@ -39,7 +41,7 @@ ms.locfileid: "82160224"
 * 資産には、オーディオビジュアル ファイルの複数の演奏または編集を含めないでください。 不適切な使い方の一例として、複数の TV ドラマおよび広告、または単一の製作物からの複数のカメラ アングルを 1 つの資産に格納しようと試みることが挙げられます。 オーディオビジュアル ファイルの複数の演奏または編集を 1 つの資産に格納すると、ワークフローの後半でエンコード ジョブの送信や、資産の配信のストリーミングおよびセキュリティ保護を行うことが困難になるおそれがあります。  
 
 ### <a name="asset-file"></a>資産ファイル
-[資産ファイル](https://docs.microsoft.com/rest/api/media/operations/assetfile) は、BLOB コンテナーに保存された実際のビデオまたはオーディオ ファイルを表します。 資産ファイルは常に資産に関連付けられ、資産には 1 つまたは複数のファイルが含まれます。 資産ファイル オブジェクトが blob コンテナー内のデジタル ファイルに関連付けられていないと、Media Services のエンコーダー タスクは失敗します。
+[資産ファイル](/rest/api/media/operations/assetfile) は、BLOB コンテナーに保存された実際のビデオまたはオーディオ ファイルを表します。 資産ファイルは常に資産に関連付けられ、資産には 1 つまたは複数のファイルが含まれます。 資産ファイル オブジェクトが blob コンテナー内のデジタル ファイルに関連付けられていないと、Media Services のエンコーダー タスクは失敗します。
 
 **AssetFile** インスタンスと実際のメディア ファイルは、別々の 2 つのオブジェクトです。 AssetFile インスタンスには、メディア ファイルに関するメタデータが含まれており、メディア ファイルには実際のメディア コンテンツが含まれています。
 
@@ -62,7 +64,7 @@ Media Services によって生成された BLOB コンテナーの内容を変�
 **EnvelopeEncryptedProtected** – このオプションを使用するのは、AES (Advanced Encryption Standard) で暗号化された HLS (HTTP ライブ ストリーミング) を保護または (既に保護されている HLS を) アップロードする場合です。 AES で既に暗号化された HLS をアップロードする場合、HLS は Transform Manager によって暗号化されている必要があることに注意してください。
 
 ### <a name="access-policy"></a>アクセス ポリシー
-[アクセス ポリシー](https://docs.microsoft.com/rest/api/media/operations/accesspolicy) は、資産へのアクセス許可 (読み取り、書き込み、一覧表示など) とアクセス期間を定義します。 通常は、資産に格納されたファイルへのアクセスに用いるロケーターに、AccessPolicy オブジェクトを渡します。
+[アクセス ポリシー](/rest/api/media/operations/accesspolicy) は、資産へのアクセス許可 (読み取り、書き込み、一覧表示など) とアクセス期間を定義します。 通常は、資産に格納されたファイルへのアクセスに用いるロケーターに、AccessPolicy オブジェクトを渡します。
 
 >[!NOTE]
 >さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、 [こちらの](media-services-dotnet-manage-entities.md#limit-access-policies) トピックを参照してください。
@@ -75,8 +77,8 @@ BLOB コンテナーは、BLOB のセットをグループ化します。 BLOB �
 > 
 > 
 
-### <a name="locators"></a><a id="locators"/>ロケーター
-[ロケーター](https://docs.microsoft.com/rest/api/media/operations/locator)は、資産に含まれているファイルにアクセスするためのエントリ ポイントになります。 アクセス ポリシーは、指定された資産に対してクライアントが保持するアクセス許可およびアクセス許可の期間を定義するために使用されます。 ロケーターはアクセス ポリシーに対して多対 1 の関係を持つことができるので、同じアクセス許可とアクセス期間の設定を使用しながら、複数のロケーターが複数のクライアントに対して異なる開始時間や接続の種類を提供できます。ただし、Azure Storage サービスで設定されている共有アクセス ポリシーの制限により、特定の資産に対して、5 つを超える一意のロケーターを一度に関連付けることはできません。 
+### <a name="locators"></a><a name="locators"></a>ロケーター
+[ロケーター](/rest/api/media/operations/locator)は、資産に含まれているファイルにアクセスするためのエントリ ポイントになります。 アクセス ポリシーは、指定された資産に対してクライアントが保持するアクセス許可およびアクセス許可の期間を定義するために使用されます。 ロケーターはアクセス ポリシーに対して多対 1 の関係を持つことができるので、同じアクセス許可とアクセス期間の設定を使用しながら、複数のロケーターが複数のクライアントに対して異なる開始時間や接続の種類を提供できます。ただし、Azure Storage サービスで設定されている共有アクセス ポリシーの制限により、特定の資産に対して、5 つを超える一意のロケーターを一度に関連付けることはできません。 
 
 Media Services では、2 種類のロケーターがサポートされています。メディアをストリーミングしたり (MPEG DASH、HLS、Smooth Streaming など)、メディアを徐々にダウンロードしたりするために使用される OnDemandOrigin ロケーター、およびメディア ファイルを Azure ストレージとの間でアップロードまたはダウンロードするために使用される SAS URL ロケーター。 
 
@@ -84,12 +86,12 @@ Media Services では、2 種類のロケーターがサポートされていま
 >一覧表示のアクセス許可 (AccessPermissions.List) は、OnDemandOrigin ロケーターを作成するときには使用しないでください。 
 
 ### <a name="storage-account"></a>ストレージ アカウント
-Azure のストレージにアクセスする場合には必ず、ストレージ アカウントを使用します。 Media Service アカウントに、1 つまたは複数のストレージ アカウントを関連付けることができます。 アカウントに格納できるコンテナーの数は、ストレージ アカウントあたりのコンテナーの合計サイズが 500 TB 未満である限り無制限です。  Media Services が提供する SDK レベルのツールを使用すると、複数のストレージ アカウントを管理すると共に、これらのアカウントへのアップロード中にメトリックまたはランダム配布に基づいて資産の配布を負荷分散できます。 詳細については、「 [Azure Storage](https://msdn.microsoft.com/library/azure/dn767951.aspx)の操作」をご覧ください。 
+Azure のストレージにアクセスする場合には必ず、ストレージ アカウントを使用します。 Media Service アカウントに、1 つまたは複数のストレージ アカウントを関連付けることができます。 アカウントに格納できるコンテナーの数は、ストレージ アカウントあたりのコンテナーの合計サイズが 500 TB 未満である限り無制限です。  Media Services が提供する SDK レベルのツールを使用すると、複数のストレージ アカウントを管理すると共に、これらのアカウントへのアップロード中にメトリックまたはランダム配布に基づいて資産の配布を負荷分散できます。 詳細については、「 [Azure Storage](/previous-versions/azure/dn767951(v=azure.100))の操作」をご覧ください。 
 
 ## <a name="jobs-and-tasks"></a>ジョブとタスク
-[ジョブ](https://docs.microsoft.com/rest/api/media/operations/job) は、通常、1 つのオーディオ/ビデオ プレゼンテーションを処理 (インデックス作成やエンコードなど) するために使用されます。 複数のビデオを処理する場合は、エンコードするビデオごとにジョブを作成します。
+[ジョブ](/rest/api/media/operations/job) は、通常、1 つのオーディオ/ビデオ プレゼンテーションを処理 (インデックス作成やエンコードなど) するために使用されます。 複数のビデオを処理する場合は、エンコードするビデオごとにジョブを作成します。
 
-ジョブには、実行する処理に関するメタデータが含まれます。 ジョブ内の複数の [タスク](https://docs.microsoft.com/rest/api/media/operations/task)は、1 つのタスクの出力アセットを次のタスクの入力アセットとして指定した場合、連結できます。 ジョブ内の複数のタスクは、1 つのタスクの出力資産を次のタスクの入力資産として指定した場合、連結できます。 この方法では、1 つのジョブにメディア表現に必要なすべての処理を含めることができます。
+ジョブには、実行する処理に関するメタデータが含まれます。 ジョブ内の複数の [タスク](/rest/api/media/operations/task)は、1 つのタスクの出力アセットを次のタスクの入力アセットとして指定した場合、連結できます。 ジョブ内の複数のタスクは、1 つのタスクの出力資産を次のタスクの入力資産として指定した場合、連結できます。 この方法では、1 つのジョブにメディア表現に必要なすべての処理を含めることができます。
 
 ## <a name="encoding"></a><a id="encoding"></a>エンコード
 Azure Media Services には、クラウド内のメディア エンコーディングに使用できる複数のオプションが用意されています。
@@ -115,14 +117,14 @@ Azure Media Services では、チャネルは、ライブ ストリーミング 
 * シングル ビットレートのストリーム (RTMP または Smooth Streaming (Fragmented MP4) のいずれかの形式) は、Media Services でのライブ エンコードの実行が有効になっているチャネルに送信されます。 次に、受信したシングル ビットレート ストリームのマルチ ビットレート (アダプティブ) ビデオ ストリームへのライブ エンコードがチャネルで実行されます。 Media Services は、要求に応じて、ストリームを顧客に配信します。
 
 ### <a name="channel"></a>チャネル
-Media Services においてライブ ストリーミング コンテンツの処理を担うのが [チャネル](https://docs.microsoft.com/rest/api/media/operations/channel)です。 チャネルは入力エンドポイントであり、その取り込み URL をライブ トランスコーダーに対して指定します。 チャネルは、ライブ トランスコーダーからライブ入力ストリームを受け取り、1 つまたは複数の StreamingEndpoint を介してストリーミングできる状態にします。 また、ストリームはあらかじめプレビューし、確認したうえで処理、配信しますが、チャネルはその際に使用するプレビュー エンドポイント (プレビュー URL) も提供します
+Media Services においてライブ ストリーミング コンテンツの処理を担うのが [チャネル](/rest/api/media/operations/channel)です。 チャネルは入力エンドポイントであり、その取り込み URL をライブ トランスコーダーに対して指定します。 チャネルは、ライブ トランスコーダーからライブ入力ストリームを受け取り、1 つまたは複数の StreamingEndpoint を介してストリーミングできる状態にします。 また、ストリームはあらかじめプレビューし、確認したうえで処理、配信しますが、チャネルはその際に使用するプレビュー エンドポイント (プレビュー URL) も提供します
 
 チャネル作成時に取り込み URL とプレビュー URL を取得できます。 これらの URL を取得するには、チャネルが開始済み状態である必要はありません。 ライブ トランスコーダーからチャネルへのデータのプッシュを開始する準備ができたら、チャネルを開始する必要があります。 ライブ トランスコーダーがデータの取り込みを開始した後、ストリームをプレビューできます。
 
 各 Media Services アカウントには、複数のチャネル、複数のプログラム、複数 StreamingEndpoints を含めることができます。 帯域幅とセキュリティのニーズに応じて、StreamingEndpoint サービスを 1 つまたは複数のチャネル専用にすることができます。 StreamingEndpoint は、どのチャネルからでもプルできます。
 
 ### <a name="program-event"></a>プログラム (イベント)
-ライブ ストリームでのセグメントの公開と保存は、[プログラム (イベント)](https://docs.microsoft.com/rest/api/media/operations/program) を使用して制御します。 プログラム (イベント) はチャネルによって管理されます。 チャネルとプログラムの関係は、従来のメディアと似ています。チャネルが絶えずコンテンツのストリームを配信するのに対し、プログラムは、そのチャネル上で決まった時間に生じるイベントです。
+ライブ ストリームでのセグメントの公開と保存は、[プログラム (イベント)](/rest/api/media/operations/program) を使用して制御します。 プログラム (イベント) はチャネルによって管理されます。 チャネルとプログラムの関係は、従来のメディアと似ています。チャネルが絶えずコンテンツのストリームを配信するのに対し、プログラムは、そのチャネル上で決まった時間に生じるイベントです。
 録画されたコンテンツの保持時間は、プログラムの **ArchiveWindowLength** プロパティで設定できます。 この値は、最小 5 分から最大 25 時間までの範囲で設定できます。
 
 クライアントが現在のライブ位置からさかのぼってシークできる最長時間も ArchiveWindowLength によって決まります。 プログラムの放送は、指定された期間継続しますが、ArchiveWindowLength を過ぎたコンテンツは絶えず破棄されていきます。 さらに、このプロパティの値によって、クライアント マニフェストが肥大した場合の最大サイズも決まります。
@@ -160,7 +162,7 @@ Media Services で資産を暗号化する場合は、暗号化キー (CommonEnc
 - [PlayReady/Widevine による保護](media-services-protect-with-playready-widevine.md)
 
 ## <a name="delivering"></a>配信
-### <a name="dynamic-packaging"></a><a id="dynamic_packaging"/>ダイナミック パッケージ
+### <a name="dynamic-packaging"></a><a name="dynamic_packaging"></a>ダイナミック パッケージ
 Media Services を使用する際、中間ファイルをアダプティブ ビットレート MP4 セットにエンコードして、その後、[ダイナミック パッケージ](media-services-dynamic-packaging-overview.md)を使用して目的の形式に変換することをお勧めします。
 
 ### <a name="streaming-endpoint"></a>ストリーミング エンドポイント
@@ -180,7 +182,7 @@ Standard ストリーミング エンドポイントはほとんどのストリ�
 StreamingEndpoint が実行状態の場合のみ課金されます。
 
 ### <a name="asset-delivery-policy"></a>資産の配信ポリシー
-Media Services におけるコンテンツ配信ワークフローの手順の 1 つは、ストリーム配信する[アセットの配信ポリシー](https://docs.microsoft.com/rest/api/media/operations/assetdeliverypolicy)を構成することです。 資産の配信ポリシーは、資産を配信する方法、つまりどのストリーミング プロトコルで資産を動的パッケージングするか (例 : MPEG DASH、HLS、スムーズ ストリーミング、またはすべて)、資産を動的に暗号化するかどうか、どの暗号化方法を使用するか (エンベロープ暗号化または共通暗号化) を Media Services に示します。
+Media Services におけるコンテンツ配信ワークフローの手順の 1 つは、ストリーム配信する[アセットの配信ポリシー](/rest/api/media/operations/assetdeliverypolicy)を構成することです。 資産の配信ポリシーは、資産を配信する方法、つまりどのストリーミング プロトコルで資産を動的パッケージングするか (例 : MPEG DASH、HLS、スムーズ ストリーミング、またはすべて)、資産を動的に暗号化するかどうか、どの暗号化方法を使用するか (エンベロープ暗号化または共通暗号化) を Media Services に示します。
 
 ストレージで暗号化した資産をストリーミングするには、ストリーミング サーバーでストレージ暗号化を解除し、指定された配信ポリシーを使用してコンテンツをストリーミングする必要があります。 たとえば、AES (Advanced Encryption Standard) 暗号化キーを使用して暗号化された資産を配信するには、ポリシーの種類を DynamicEnvelopeEncryption に設定します。 ストレージ暗号化を解除して資産を平文でストリームするには、ポリシーの種類を NoDynamicEncryption に設定します。
 
@@ -237,4 +239,3 @@ http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

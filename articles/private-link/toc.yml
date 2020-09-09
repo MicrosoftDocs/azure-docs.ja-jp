@@ -12,12 +12,18 @@
       href: create-private-endpoint-powershell.md
     - name: プライベート エンドポイントの作成 - Azure CLI
       href: create-private-endpoint-cli.md
+    - name: プライベート エンドポイントの作成 - ARM テンプレート
+      displayName: Resource Manager
+      href: create-private-endpoint-template.md
     - name: プライベート リンク サービスの作成 - ポータル
       href: create-private-link-service-portal.md
     - name: プライベート リンク サービスの作成 - PowerShell
       href: create-private-link-service-powershell.md
     - name: プライベート リンク サービスの作成 - Azure CLI
       href: create-private-link-service-cli.md
+    - name: Private Link サービスの作成 - Resource Manager テンプレート
+      displayName: Resource Manager
+      href: create-private-link-service-template.md
 - name: 概念
   items:
     - name: プライベート エンドポイント
@@ -40,6 +46,8 @@
       href: disable-private-link-service-network-policy.md
     - name: プライベート エンドポイントを管理する
       href: manage-private-endpoint.md
+    - name: Azure Firewall を使用してトラフィックを検査する
+      href: inspect-traffic-with-azure-firewall.md
     - name: トラブルシューティング
       items:
         - name: プライベート エンドポイントの接続に関する問題のトラブルシューティング

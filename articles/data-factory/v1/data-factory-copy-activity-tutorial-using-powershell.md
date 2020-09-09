@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 215ed088b17125e7e41877e3c188a6bf3d77e8bb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 71b5b3f24b60796cf839b8920de8eae424ea3809
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73682852"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254363"
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>チュートリアル:データを移動する Data Factory パイプラインを Azure PowerShell で作成する
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "73682852"
 > [!NOTE]
 > この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[コピー アクティビティのチュートリアル](../quickstart-create-data-factory-powershell.md)に関するページを参照してください。 
 
-この記事では、PowerShell を使用して Azure Blob Storage から Azure SQL データベースにデータをコピーするパイプラインを備えたデータ ファクトリを作成します。 Azure Data Factory の使用経験がない場合は、このチュートリアルを実行する前に、「[Azure Data Factory の概要](data-factory-introduction.md)」を参照してください。   
+この記事では、PowerShell を使用して Azure Blob Storage から Azure SQL Database にデータをコピーするパイプラインを備えたデータ ファクトリを作成します。 Azure Data Factory の使用経験がない場合は、このチュートリアルを実行する前に、「[Azure Data Factory の概要](data-factory-introduction.md)」を参照してください。   
 
 このチュートリアルでは、1 つのアクティビティ (コピー アクティビティという 1 つのアクティビティしかありません。 コピー アクティビティは、サポートされているデータ ストアからサポートされているシンク データ ストアにデータをコピーします。 ソースおよびシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関するセクションを参照してください。 このアクティビティは、安全で信頼性の高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。 コピー アクティビティの詳細については、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事を参照してください。
 
@@ -59,15 +59,15 @@ ms.locfileid: "73682852"
     
     AzureStorageLinkedService は、Azure ストレージ アカウントをデータ ファクトリにリンクします。 [前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)の一部として、コンテナーを作成し、データをこのストレージ アカウントにアップロードしました。   
 
-    AzureSqlLinkedService は、Azure SQL データベースをデータ ファクトリにリンクします。 Blob Storage からコピーされたデータは、このデータベースに格納されます。 [前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)の一部として、このデータベースに SQL テーブルを作成しました。   
+    AzureSqlLinkedService は、Azure SQL Database をデータ ファクトリにリンクします。 Blob Storage からコピーされたデータは、このデータベースに格納されます。 [前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)の一部として、このデータベースに SQL テーブルを作成しました。   
 1. 入力および出力**データセット**をデータ ファクトリに作成します。  
     
     Azure Storage のリンクされたサービスは、Data Factory サービスが実行時に Azure ストレージ アカウントへの接続に使用する接続文字列を指定します。 また、入力 BLOB データセットは、コンテナーと、入力データが含まれているフォルダーを指定します。  
 
-    同様に、Azure SQL Database のリンクされたサービスは、Data Factory サービスが実行時に Azure SQL データベースへの接続に使用する接続文字列を指定します。 出力 SQL テーブル データセットは、BLOB ストレージのデータのコピー先となるデータベース内のテーブルを指定します。
+    同様に、Azure SQL Database のリンクされたサービスは、Data Factory サービスが実行時にデータベースへの接続に使用する接続文字列を指定します。 出力 SQL テーブル データセットは、BLOB ストレージのデータのコピー先となるデータベース内のテーブルを指定します。
 1. データ ファクトリに**パイプライン**を作成します。 この手順では、コピー アクティビティのあるパイプラインを作成します。   
     
-    コピー アクティビティでは、Azure Blob Storage の BLOB から Azure SQL データベースのテーブルにデータをコピーします。 パイプラインでコピー アクティビティを使用して、任意のサポートされているソースから任意のサポートされているターゲットにデータをコピーできます。 サポートされているデータ ストアの一覧については、[データ移動アクティビティ](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関する記事を参照してください。 
+    コピー アクティビティでは、Azure Blob Storage の BLOB から Azure SQL Database のテーブルにデータをコピーします。 パイプラインでコピー アクティビティを使用して、任意のサポートされているソースから任意のサポートされているターゲットにデータをコピーできます。 サポートされているデータ ストアの一覧については、[データ移動アクティビティ](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関する記事を参照してください。 
 1. パイプラインを監視します。 この手順では、PowerShell を使用して、入力および出力データセットのスライスを**監視**します。
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
@@ -140,7 +140,7 @@ ms.locfileid: "73682852"
 
 AzureStorageLinkedService は、Azure ストレージ アカウントをデータ ファクトリにリンクします。 このストレージ アカウントは、[前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)の一部としてコンテナーを作成し、データをアップロードしたストレージ アカウントです。   
 
-AzureSqlLinkedService は、Azure SQL データベースをデータ ファクトリにリンクします。 Blob Storage からコピーされたデータは、このデータベースに格納されます。 [前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)の一部として、このデータベースに emp テーブルを作成しました。 
+AzureSqlLinkedService は、Azure SQL Database をデータ ファクトリにリンクします。 Blob Storage からコピーされたデータは、このデータベースに格納されます。 [前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)の一部として、このデータベースに emp テーブルを作成しました。 
 
 ### <a name="create-a-linked-service-for-an-azure-storage-account"></a>Azure ストレージ アカウント用にリンクされたサービスを作成する
 この手順では、Azure ストレージ アカウントをデータ ファクトリにリンクします。
@@ -183,13 +183,13 @@ AzureSqlLinkedService は、Azure SQL データベースをデータ ファク�
     New-AzDataFactoryLinkedService -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName <Name of your data factory> -File .\AzureStorageLinkedService.json
     ```
 
-### <a name="create-a-linked-service-for-an-azure-sql-database"></a>Azure SQL データベース用にリンクされたサービスを作成する
-この手順では、Azure SQL データベースをデータ ファクトリにリンクします。
+### <a name="create-a-linked-service-for-azure-sql-database"></a>Azure SQL Database 用にリンクされたサービスを作成する
+この手順では、Azure SQL Database をデータ ファクトリにリンクします。
 
 1. 以下の内容を記述した AzureSqlLinkedService.json という名前の JSON ファイルを C:\ADFGetStartedPSH フォルダー内に作成します。
 
     > [!IMPORTANT]
-    > &lt;servername&gt;、&lt;databasename&gt;、&lt;username@servername&gt;、&lt;password&gt; を、Azure SQL のサーバー名、データベース名、ユーザー アカウント、パスワードに置き換えます。
+    > &lt;servername&gt;、&lt;databasename&gt;、&lt;username@servername&gt;、&lt;password&gt; を、サーバー名、データベース名、ユーザー アカウント、パスワードに置き換えます。
     
     ```json
     {
@@ -218,7 +218,7 @@ AzureSqlLinkedService は、Azure SQL データベースをデータ ファク�
     ProvisioningState : Succeeded
     ```
 
-   SQL データベース サーバーで **[Azure サービスへのアクセスを許可]** の設定がオンになっていることを確認します。 この設定を確認してオンにするには、次の手順を実行します。
+   ご利用のサーバーで **[Azure サービスへのアクセスを許可]** 設定がオンになっていることを確認してください。 この設定を確認してオンにするには、次の手順を実行します。
 
     1. [Azure ポータル](https://portal.azure.com)
     1. 左側にある **[その他のサービス]** をクリックし、 **[データベース]** カテゴリの **[SQL servers]\(SQL サーバー\)** をクリックします。
@@ -228,11 +228,11 @@ AzureSqlLinkedService は、Azure SQL データベースをデータ ファク�
     1. ツール バーの **[Save]\(保存\)** をクリックします。 
 
 ## <a name="create-datasets"></a>データセットを作成する
-前の手順では、Azure ストレージ アカウントと Azure SQL データベースをデータ ファクトリにリンクするためのリンクされたサービスを作成しました。 この手順では、InputDataset と OutputDataset という名前の 2 つのデータセットを定義します。これらはそれぞれ、AzureStorageLinkedService と AzureSqlLinkedService が参照するデータ ストアに格納されている入力データと出力データを表します。
+前の手順では、Azure ストレージ アカウントと Azure SQL Database をデータ ファクトリにリンクするためのリンクされたサービスを作成しました。 この手順では、InputDataset と OutputDataset という名前の 2 つのデータセットを定義します。これらはそれぞれ、AzureStorageLinkedService と AzureSqlLinkedService が参照するデータ ストアに格納されている入力データと出力データを表します。
 
 Azure Storage のリンクされたサービスは、Data Factory サービスが実行時に Azure ストレージ アカウントへの接続に使用する接続文字列を指定します。 また、入力 BLOB データセット (InputDataset) は、コンテナーと、入力データが含まれているフォルダーを指定します。  
 
-同様に、Azure SQL Database のリンクされたサービスは、Data Factory サービスが実行時に Azure SQL データベースへの接続に使用する接続文字列を指定します。 出力 SQL テーブル データセット (OututDataset) は、BLOB ストレージのデータのコピー先となるデータベース内のテーブルを指定します。 
+同様に、Azure SQL Database のリンクされたサービスは、Data Factory サービスが実行時にデータベースへの接続に使用する接続文字列を指定します。 出力 SQL テーブル データセット (OututDataset) は、BLOB ストレージのデータのコピー先となるデータベース内のテーブルを指定します。 
 
 ### <a name="create-an-input-dataset"></a>入力データセットの作成
 この手順では、BLOB ファイル (emp.txt) を参照する InputDataset という名前のデータセットを作成します。このファイルは、リンクされたサービス AzureStorageLinkedService が表す Azure Storage 内の BLOB コンテナー (adftutorial) のルート フォルダーにあります。 fileName の値を指定しなかった場合やこれをスキップした場合、入力フォルダー内のすべての BLOB のデータがターゲットにコピーされます。 このチュートリアルでは、fileName の値を指定します。  
@@ -306,7 +306,7 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
     ```
 
 ### <a name="create-an-output-dataset"></a>出力データセットを作成する
-手順のこの部分では、 **OutputDataset**という名前の出力データセットを作成します。 このデータセットは、 **AzureSqlLinkedService**で表される Azure SQL データベース内の SQL テーブルをポイントします。 
+手順のこの部分では、 **OutputDataset**という名前の出力データセットを作成します。 このデータセットは、**AzureSqlLinkedService** で表される Azure SQL Database 内の SQL テーブルをポイントします。 
 
 1. 以下の内容を記述した **OutputDataset.json** という名前の JSON ファイルを **C:\ADFGetStartedPSH** フォルダー内に作成します。
 
@@ -341,7 +341,7 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
 
     | プロパティ | 説明 |
     |:--- |:--- |
-    | type | type プロパティを **AzureSqlTable** に設定します。これは、データを Azure SQL データベースのテーブルにコピーするためです。 |
+    | type | type プロパティを **AzureSqlTable** に設定します。これは、データを Azure SQL Database のテーブルにコピーするためです。 |
     | linkedServiceName | 前に作成した **AzureSqlLinkedService** を参照します。 |
     | tableName | データのコピー先となる**テーブル**を指定します。 | 
     | frequency/interval | frequency は **Hour**、interval は **1** に、それぞれ設定されています。これは、出力スライスがパイプラインの開始時刻から終了時刻までの間 **1 時間ごと**に生成されることを表します (出力スライスは、開始時刻の前および終了時刻の後には生成されません)。  |
@@ -450,7 +450,7 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
     ProvisioningState : Succeeded
     ```
 
-**お疲れさまでした。** Azure Blob Storage から Azure SQL データベースにデータをコピーするパイプラインを備えた Azure データ ファクトリが正常に作成されました。 
+**お疲れさまでした。** Azure Blob Storage から Azure SQL Database にデータをコピーするパイプラインを備えた Azure データ ファクトリが正常に作成されました。 
 
 ## <a name="monitor-the-pipeline"></a>パイプラインの監視
 この手順では、Azure PowerShell を使用して、Azure データ ファクトリの状況を監視します。
@@ -554,7 +554,7 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
 Data Factory コマンドレットに関する包括的なドキュメントについては、[Data Factory コマンドレットのリファレンス](/powershell/module/az.datafactory)を参照してください。
 
 ## <a name="summary"></a>まとめ
-このチュートリアルでは、Azure Data Factory を作成し、Azure BLOB から Azure SQL データベースにデータをコピーしました。 また、PowerShell を使用して、データ ファクトリ、リンクされたサービス、データセット、パイプラインを作成しました。 以下は、このチュートリアルで実行した手順の概要です。  
+このチュートリアルでは、Azure Data Factory を作成し、Azure BLOB から Azure SQL Database にデータをコピーしました。 また、PowerShell を使用して、データ ファクトリ、リンクされたサービス、データセット、パイプラインを作成しました。 以下は、このチュートリアルで実行した手順の概要です。  
 
 1. Azure **データ ファクトリ**を作成しました。
 1. 次の **リンクされたサービス**を作成しました。
@@ -565,7 +565,7 @@ Data Factory コマンドレットに関する包括的なドキュメントに�
 1. ソースとして **BlobSource**、シンクとして **SqlSink** を持つ**コピー アクティビティ**がある**パイプライン**を作成しました。
 
 ## <a name="next-steps"></a>次のステップ
-このチュートリアルでは、Azure Blob Storage をコピー操作のソース データ ストア、Azure SQL データベースをターゲット データ ストアとして使用しました。 次の表は、コピー アクティビティによってソースおよびターゲットとしてサポートされているデータ ストアの一覧です。 
+このチュートリアルでは、Azure Blob Storage をコピー操作のソース データ ストア、Azure SQL Database をターゲット データ ストアとして使用しました。 次の表は、コピー アクティビティによってソースおよびターゲットとしてサポートされているデータ ストアの一覧です。 
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
 

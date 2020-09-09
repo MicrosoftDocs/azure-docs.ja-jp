@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と uniFLOW Online の統合 | Microsoft Docs
 description: Azure Active Directory と uniFLOW Online の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 28313d27-638c-4d50-92ad-d093f2ae9ecf
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f26af813fcd4032aabce2305ac8845307d1fca65
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bcda410e678e44916a4128d7ef097883e148ed79
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76262131"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551862"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-uniflow-online"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と uniFLOW Online の統合
 
@@ -83,23 +78,19 @@ uniFLOW Online に対する Azure AD SSO を構成してテストするには、
 
     a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。
 
-    | | |
-    |-|-|
-    | `https://<tenant_domain_name>.eu.uniflowonline.com`|
-    | `https://<tenant_domain_name>.us.uniflowonline.com`|
-    | `https://<tenant_domain_name>.sg.uniflowonline.com`|
-    | `https://<tenant_domain_name>.jp.uniflowonline.com`|
-    | `https://<tenant_domain_name>.au.uniflowonline.com`|
+    - `https://<tenant_domain_name>.eu.uniflowonline.com`
+    - `https://<tenant_domain_name>.us.uniflowonline.com`
+    - `https://<tenant_domain_name>.sg.uniflowonline.com`
+    - `https://<tenant_domain_name>.jp.uniflowonline.com`
+    - `https://<tenant_domain_name>.au.uniflowonline.com`
 
     b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。
 
-    | | |
-    |-|-|
-    | `https://<tenant_domain_name>.eu.uniflowonline.com`|
-    | `https://<tenant_domain_name>.us.uniflowonline.com`|
-    | `https://<tenant_domain_name>.sg.uniflowonline.com`|
-    | `https://<tenant_domain_name>.jp.uniflowonline.com`|
-    | `https://<tenant_domain_name>.au.uniflowonline.com`|
+    - `https://<tenant_domain_name>.eu.uniflowonline.com`
+    - `https://<tenant_domain_name>.us.uniflowonline.com`
+    - `https://<tenant_domain_name>.sg.uniflowonline.com`
+    - `https://<tenant_domain_name>.jp.uniflowonline.com`
+    - `https://<tenant_domain_name>.au.uniflowonline.com`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[uniFLOW Online クライアント サポート チーム](mailto:support@nt-ware.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照したり、uniFLOW Online テナントに表示されている応答 URL を参照したりすることもできます。

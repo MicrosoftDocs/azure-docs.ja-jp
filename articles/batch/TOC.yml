@@ -44,13 +44,13 @@
           href: 'https://github.com/Azure/azure-batch-samples'
     - name: Azure CLI
       href: cli-samples.md
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
-    - name: Security
+    - name: セキュリティ
       items:
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
           href: security-baseline.md
     - name: Batch サービスのワークフローとリソース
@@ -95,6 +95,10 @@
           href: batch-management-dotnet.md
         - name: コスト分析と予算
           href: budget.md
+        - name: Batch アカウントでプライベート エンドポイントを使用する
+          href: private-connectivity.md
+        - name: 顧客管理キーの構成
+          href: batch-customer-managed-key.md
     - name: Azure AD による認証
       items:
         - name: Batch サービスでの Azure AD
@@ -105,8 +109,6 @@
           href: credential-access-key-vault.md
         - name: Batch での証明書の使用
           href: batch-certificates.md
-    - name: アプリケーション パッケージの使用
-      href: batch-application-packages.md
     - name: ファイルとアプリケーションをプール ノードにコピーする
       items:
         - name: プール ノードへのアプリケーションとデータのコピー
@@ -127,8 +129,14 @@
           href: batch-sig-images.md
         - name: マネージド イメージ リソースを使用してプールを作成する
           href: batch-custom-images.md
+        - name: ディスク暗号化が有効になっているプールを作成する
+          href: disk-encryption.md
         - name: 仮想ネットワーク内にプールを作成する
           href: batch-virtual-network.md
+        - name: パブリック IP アドレスのプールを作成する
+          href: create-pool-public-ip.md
+        - name: パブリック IP アドレスのないプールを作成する
+          href: batch-pool-no-public-ip-address.md
         - name: 仮想ファイル システムをマウントする
           href: virtual-file-mount.md
         - name: Azure ファイル共有をマウントする
@@ -255,6 +263,9 @@
           href: batch-task-complete-event.md
         - name: タスク失敗イベント
           href: batch-task-fail-event.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Azure の更新情報
@@ -264,13 +275,13 @@
     - name: Batch のフィードバック
       href: 'https://feedback.azure.com/forums/269742-batch'
     - name: Batch に関する Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-batch.html'
+      href: /answers/topics/azure-batch.html
     - name: Batch Shipyard
       href: 'https://github.com/Azure/batch-shipyard'
     - name: ブログ
-      href: 'https://blogs.technet.microsoft.com/windowshpc/'
+      href: /archive/blogs/windowshpc/
     - name: Azure での HPC
-      href: 'https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/'
+      href: /azure/architecture/topics/high-performance-computing/
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/batch/'
     - name: 料金計算ツール

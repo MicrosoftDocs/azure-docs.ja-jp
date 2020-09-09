@@ -5,21 +5,21 @@ author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 10/29/2019
+ms.topic: how-to
+ms.date: 06/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: e7351e2f39c7e4eed84f4a47e3eeb2214a062a94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1858e06567a0ab0907e6d2cb60358ff4ac00f9a2
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240166"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086349"
 ---
 # <a name="set-up-hdinsight-clusters-with-a-custom-ambari-db"></a>カスタム Ambari DB を使用して HDInsight クラスターを設定する
 
 Apache Ambari を使用すると、Apache Hadoop クラスターを簡単に管理および監視できます。 Apache Ambari には、使いやすい Web UI と REST API が用意されています。 Ambari は HDInsight クラスターに含まれ、クラスターの監視と構成の変更を行うために使用します。
 
-他の記事 ([HDInsight でのクラスターの設定](hdinsight-hadoop-provision-linux-clusters.md)に関する記事など) で説明されているように、通常のクラスターの作成では、Ambari は HDInsight によって管理され、ユーザーがアクセスできない [S0 Azure SQL データベース](../sql-database/sql-database-dtu-resource-limits-single-databases.md#standard-service-tier)にデプロイされます。
+他の記事 ([HDInsight でのクラスターの設定](hdinsight-hadoop-provision-linux-clusters.md)に関する記事など) で説明されているように、通常のクラスターの作成では、Ambari は HDInsight によって管理され、ユーザーがアクセスできない [S0 Azure SQL Database](../azure-sql/database/resource-limits-dtu-single-databases.md#standard-service-tier) にデプロイされます。
 
 カスタム Ambari DB 機能を使用すると、新しいクラスターをデプロイし、自分が管理する外部データベースに Ambari を設定できます。 デプロイには、Azure Resource Manager テンプレートを使用します。 この機能には、次のような利点があります。
 
@@ -38,16 +38,17 @@ Apache Ambari を使用すると、Apache Hadoop クラスターを簡単に管�
 
 カスタム Ambari DB には、これ以外に次の要件があります。
 
+- データベースの名前にハイフンまたはスペースを含めることはできません
 - 既存の Azure SQL DB サーバーとデータベースが必要です。
 - Ambari の設定用に指定するデータベースは、空である必要があります。 既定の dbo スキーマにテーブルが含まれていてはいけません。
 - データベースへの接続に使用するユーザーには、データベースに対する SELECT、CREATE TABLE、および INSERT 権限が必要です。
-- Ambari をホストする Azure SQL サーバー上で [[Azure サービスへのアクセスを許可]](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#azure-portal-steps) オプションをオンにします。
-- SQL Server で、HDInsight サービスからの管理 IP アドレスを許可する必要があります。 SQL サーバー ファイアウォールに追加する必要がある IP アドレスの一覧については、「[HDInsight の管理 IP アドレス](hdinsight-management-ip-addresses.md)」を参照してください。
+- Ambari をホストするサーバー上で [[Azure サービスへのアクセスを許可]](../azure-sql/database/vnet-service-endpoint-rule-overview.md#azure-portal-steps) オプションをオンにします。
+- ファイアウォール規則で、HDInsight サービスからの管理 IP アドレスを許可する必要があります。 サーバーレベルのファイアウォール規則に追加する必要がある IP アドレスの一覧については、「[HDInsight の管理 IP アドレス](hdinsight-management-ip-addresses.md)」を参照してください。
 
 Apache Ambari DB を外部データベースでホストする場合は、次の点に注意してください。
 
 - Ambari を保持する Azure SQL DB の追加コストの責任はお客様にあります。
-- カスタム Ambari DB を定期的にバックアップします。 Azure SQL Database ではバックアップが自動的に生成されますが、バックアップのリテンション期間は異なります。 詳しくは、「[SQL Database 自動バックアップについての詳細情報](../sql-database/sql-database-automated-backups.md)」をご覧ください。
+- カスタム Ambari DB を定期的にバックアップします。 Azure SQL Database ではバックアップが自動的に生成されますが、バックアップのリテンション期間は異なります。 詳しくは、「[SQL Database 自動バックアップについての詳細情報](../azure-sql/database/automated-backups-overview.md)」をご覧ください。
 
 ## <a name="deploy-clusters-with-a-custom-ambari-db"></a>カスタム Ambari DB を使用するクラスターをデプロイする
 

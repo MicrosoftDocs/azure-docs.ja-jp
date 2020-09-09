@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ae8c7c43ecbf9bc625e1e46be3e2c71c8d57b6f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33b55afb7796b197f7130ec9288abb01cc115651
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76720097"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085652"
 ---
 # <a name="explore-data-in-sql-server-virtual-machine-on-azure"></a>Azure の SQL Server Virtual Machine に格納されているデータを探索する
 
@@ -55,14 +55,18 @@ SQL Server のデータ ストアの探索に使用できるいくつかのサ�
 
 次の接続文字列形式を使用して pyodbc を使用し Python から SQL Server データベースに接続することができます (サーバー名、データベース名、ユーザー名およびパスワードは使用する特定の値に置き換えてください)。
 
-    #Set up the SQL Azure connection
-    import pyodbc    
-    conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
+```python
+#Set up the SQL Azure connection
+import pyodbc    
+conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
+```
 
 Python の [Pandas ライブラリ](https://pandas.pydata.org/) には、Python プログラミングでデータを操作するためのデータ構造とデータ解析ツールの豊富なセットが用意されています。 次のコードは、SQL Server データベースから返される結果を Pandas データ フレームに読み取ります。
 
-    # Query database and load the returned results in pandas data frame
-    data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
+```python
+# Query database and load the returned results in pandas data frame
+data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
+```
 
 これで、「 [データ サイエンス環境で Azure BLOB データを処理する](data-blob.md)」トピックで扱うとおりに Pandas データ フレームを操作できるようになりました。
 

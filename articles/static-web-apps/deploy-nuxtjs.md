@@ -7,12 +7,13 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
-ms.openlocfilehash: 8a4fb581b884d28c8366cbf9a50e001eadd027d9
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 2eafd2f74ffcf5fe0fe65d04884cfd2d668cdf0b
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593754"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684577"
 ---
 # <a name="deploy-server-rendered-nuxtjs-websites-on-azure-static-web-apps-preview"></a>サーバーでレンダリングされた Nuxt.js の Web サイトを Azure Static Web Apps プレビューにデプロイする
 
@@ -55,7 +56,7 @@ ms.locfileid: "83593754"
     npm run dev
     ```
 
-<http://localhost:3000> に移動してアプリを開きます。いつも使用しているブラウザーで、次の Web サイトが開かれます。
+`http://localhost:3000` に移動してアプリを開きます。いつも使用しているブラウザーで、次の Web サイトが開かれます。
 
 :::image type="content" source="media/deploy-nuxtjs/start-nuxtjs-app.png" alt-text="Nuxt.js アプリを開始する":::
 

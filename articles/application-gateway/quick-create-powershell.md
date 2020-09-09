@@ -1,20 +1,20 @@
 ---
 title: クイック スタート:PowerShell を使用して Web トラフィックを転送する
 titleSuffix: Azure Application Gateway
-description: Azure PowerShell を使用して、Web トラフィックをバックエンド プール内の仮想マシンにルーティングする Azure アプリケーション ゲートウェイを作成する方法を説明します。
+description: このクイックスタートでは、Azure PowerShell を使用して、Web トラフィックをバックエンド プール内の仮想マシンに転送する Azure Application Gateway を作成する方法を説明します。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 04/15/2020
+ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 3e1ca14d967b0e88ea7eb559fd9962a3824ff9b0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 115f01bffc4664798682923cb83a99a23a8ce274
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81406224"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958339"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用した Azure Application Gateway による Web トラフィックの転送
 
@@ -24,14 +24,14 @@ ms.locfileid: "81406224"
 
 また、[Azure CLI](quick-create-cli.md) または [Azure portal](quick-create-portal.md) を使用してこのクイックスタートを完了することもできます。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Azure PowerShell バージョン 1.0.0 以降](/powershell/azure/install-az-ps) (Azure PowerShell をローカルで実行する場合)。
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="connect-to-azure"></a>Azure に接続する
 

@@ -5,16 +5,17 @@ author: bandersmsft
 ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 08/20/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 1dd0dfad0c68e18ae272d5d94fedd67d24be9ae1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b4905b1aba11a2f8c457d4785897cbe70dd31f76
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200780"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88687418"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>組織の Azure の価格の表示とダウンロード
 

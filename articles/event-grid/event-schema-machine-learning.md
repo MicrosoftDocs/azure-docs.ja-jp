@@ -1,18 +1,14 @@
 ---
 title: Event Grid のソースとしての Azure Machine Learning
 description: Azure Event Grid の Machine Learning ワークスペース イベント用に用意されているプロパティについて説明します
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: f77a76d6acb67c739e0adf186d23e9b16ff7e2ee
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.date: 07/07/2020
+ms.openlocfilehash: fb8cd76829622962b642580bbda7f2a655604c2f
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82928875"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87458044"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Event Grid のソースとしての Azure Machine Learning
 
@@ -30,7 +26,7 @@ Azure Machine Learning から出力されるイベントの種類は次のとお
 | Microsoft.MachineLearningServices.ModelDeployed | モデルがエンドポイントに正常にデプロイされたときに発生します。 |
 | Microsoft.MachineLearningServices.RunCompleted | 実行が正常に完了したときに発生します。 |
 | Microsoft.MachineLearningServices.DatasetDriftDetected | データセット ドリフト モニターがドリフトを検出したときに発生します。 |
-| Microsoft.MachineLearningServices.RunStatusChanged | 実行状態が 'failed' に変更されたときに発生します。 |
+| Microsoft.MachineLearningServices.RunStatusChanged | 実行状態が変化したときに発生します。 |
 
 ### <a name="the-contents-of-an-event-response"></a>イベント応答の内容
 
@@ -99,12 +95,12 @@ Azure Machine Learning から出力されるイベントの種類は次のとお
   "eventTime": "2017-06-26T18:41:00.9584103Z",
   "id": "831e1650-001e-001b-66ab-eeb76e069631",
   "data": {
-    "ExperimentId": "0fa9dfaa-cba3-4fa7-b590-23e48548f5c1",
-    "ExperimentName": "automl-local-regression",
-    "RunId": "AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5",
-    "RunType": null,
-    "RunTags": {},
-    "RunProperties": {
+    "experimentId": "0fa9dfaa-cba3-4fa7-b590-23e48548f5c1",
+    "experimentName": "automl-local-regression",
+    "runId": "AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5",
+    "runType": null,
+    "runTags": {},
+    "runProperties": {
         "runTemplate": "automl_child",
         "pipeline_id": "5adc0a4fe02504a586f09a4fcbb241f9a4012062",
         "pipeline_spec": "{\"objects\": [{\"class_name\": \"StandardScaler\", \"module\": \"sklearn.preprocessing\", \"param_args\": [], \"param_kwargs\": {\"with_mean\": true, \"with_std\": false}, \"prepared_kwargs\": {}, \"spec_class\": \"preproc\"}, {\"class_name\": \"LassoLars\", \"module\": \"sklearn.linear_model\", \"param_args\": [], \"param_kwargs\": {\"alpha\": 0.001, \"normalize\": true}, \"prepared_kwargs\": {}, \"spec_class\": \"sklearn\"}], \"pipeline_id\": \"5adc0a4fe02504a586f09a4fcbb241f9a4012062\"}",
@@ -155,16 +151,16 @@ Azure Machine Learning から出力されるイベントの種類は次のとお
 [{
   "topic": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearningServices/workspaces/{workspace-name}",
   "subject": "experiments/0fa9dfaa-cba3-4fa7-b590-23e48548f5c1/runs/AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5",
-  "eventType": "Microsoft.MachineLearningServices.RunCompleted",
+  "eventType": "Microsoft.MachineLearningServices.RunStatusChanged",
   "eventTime": "2017-06-26T18:41:00.9584103Z",
   "id": "831e1650-001e-001b-66ab-eeb76e069631",
   "data": {
-    "ExperimentId": "0fa9dfaa-cba3-4fa7-b590-23e48548f5c1",
-    "ExperimentName": "automl-local-regression",
-    "RunId": "AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5",
-    "RunType": null,
-    "RunTags": {},
-    "RunProperties": {
+    "experimentId": "0fa9dfaa-cba3-4fa7-b590-23e48548f5c1",
+    "experimentName": "automl-local-regression",
+    "runId": "AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5",
+    "runType": null,
+    "runTags": {},
+    "runProperties": {
         "runTemplate": "automl_child",
         "pipeline_id": "5adc0a4fe02504a586f09a4fcbb241f9a4012062",
         "pipeline_spec": "{\"objects\": [{\"class_name\": \"StandardScaler\", \"module\": \"sklearn.preprocessing\", \"param_args\": [], \"param_kwargs\": {\"with_mean\": true, \"with_std\": false}, \"prepared_kwargs\": {}, \"spec_class\": \"preproc\"}, {\"class_name\": \"LassoLars\", \"module\": \"sklearn.linear_model\", \"param_args\": [], \"param_kwargs\": {\"alpha\": 0.001, \"normalize\": true}, \"prepared_kwargs\": {}, \"spec_class\": \"sklearn\"}], \"pipeline_id\": \"5adc0a4fe02504a586f09a4fcbb241f9a4012062\"}",
@@ -179,7 +175,7 @@ Azure Machine Learning から出力されるイベントの種類は次のとお
         "scoring_data_location": "aml://artifact/ExperimentRun/dcid.AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5/outputs/scoring_file_v_1_0_0.py",
         "model_data_location": "aml://artifact/ExperimentRun/dcid.AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5/outputs/model.pkl"
     },
-   "RunStatus": "failed"
+   "runStatus": "failed"
    },
   "dataVersion": "",
   "metadataVersion": "1"
@@ -226,12 +222,12 @@ Azure Machine Learning から出力されるイベントの種類は次のとお
 
 | プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
-| ExperimentId | string | 実行が属する実験の ID。 |
-| ExperimentName | string | 実行が属する実験の名前。 |
-| RunId | string | 完了した実行の ID。 |
-| RunType | string | 完了した実行の種類。 |
-| RunTags | object | 完了した実行のタグ。 |
-| RunProperties | object | 完了した実行のプロパティ。 |
+| experimentId | string | 実行が属する実験の ID。 |
+| experimentName | string | 実行が属する実験の名前。 |
+| runId | string | 完了した実行の ID。 |
+| runType | string | 完了した実行の種類。 |
+| runTags | object | 完了した実行のタグ。 |
+| runProperties | object | 完了した実行のプロパティ。 |
 
 ### <a name="microsoftmachinelearningservicesdatasetdriftdetected"></a>Microsoft.MachineLearningServices.DatasetDriftDetected
 
@@ -250,22 +246,22 @@ Azure Machine Learning から出力されるイベントの種類は次のとお
 
 | プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
-| ExperimentId | string | 実行が属する実験の ID。 |
-| ExperimentName | string | 実行が属する実験の名前。 |
-| RunId | string | 完了した実行の ID。 |
-| RunType | string | 完了した実行の種類。 |
-| RunTags | object | 完了した実行のタグ。 |
-| RunProperties | object | 完了した実行のプロパティ。 |
-| RunStatus | string | 実行クの状態。 |
+| experimentId | string | 実行が属する実験の ID。 |
+| experimentName | string | 実行が属する実験の名前。 |
+| runId | string | 完了した実行の ID。 |
+| runType | string | 完了した実行の種類。 |
+| runTags | object | 完了した実行のタグ。 |
+| runProperties | object | 完了した実行のプロパティ。 |
+| runStatus | string | 実行クの状態。 |
 
 ## <a name="tutorials-and-how-tos"></a>チュートリアルと方法
 | タイトル | 説明 |
 | ----- | ----- |
-| [Azure Machine Learning イベントを使用する](../machine-learning/concept-event-grid-integration.md) | Azure Machine Learning と Event Grid の統合の概要です。 |
+| [Azure Machine Learning イベントを使用する](../machine-learning/how-to-use-event-grid.md) | Azure Machine Learning と Event Grid の統合の概要です。 |
 
 ## <a name="next-steps"></a>次のステップ
 
 * Azure Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。
 * Azure Event Grid サブスクリプションの作成の詳細については、「[Event Grid サブスクリプション スキーマ](subscription-creation-schema.md)」を参照してください。
-* Azure Machine Learning での Azure Event Grid の使用方法の概要については、「[Azure Machine Learning イベントを使用する](/azure/machine-learning/concept-event-grid-integration)」を参照してください。
-* Azure Machine Learning で Azure Event Grid を使用する例については、[イベント ドリブン Machine Learning ワークフローの作成](/azure/machine-learning/how-to-use-event-grid)に関する記事を参照してください。
+* Azure Machine Learning での Azure Event Grid の使用方法の概要については、「[Azure Machine Learning イベントを使用する](../machine-learning/how-to-use-event-grid.md)」を参照してください。
+* Azure Machine Learning で Azure Event Grid を使用する例については、[イベント ドリブン Machine Learning ワークフローの作成](../machine-learning/how-to-use-event-grid.md)に関する記事を参照してください。

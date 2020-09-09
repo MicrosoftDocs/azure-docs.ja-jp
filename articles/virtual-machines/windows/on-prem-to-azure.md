@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dc283d1845926b79fb541d8ccb011fe853f50484
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f363b8fc2fec659ee1b101c13d1ba6ac629f29d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81870280"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835488"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>アマゾン ウェブ サービス (AWS) やその他のプラットフォームから Azure の Managed Disks に移行する
 
@@ -55,7 +55,7 @@ Azure Managed Disks を使用できる場所を選びます。 Premium Managed D
 
 ### <a name="vm-sizes"></a>VM サイズ
 
-Premium Managed Disks に移行する場合は、VM が配置されているリージョンで利用できる Premium Storage 対応サイズに合うように VM のサイズを更新する必要があります。 Premium Storage で対応できる VM サイズをご確認ください。 Azure VM のサイズの仕様は、「 [仮想マシンのサイズ](sizes.md)」に記載されています。
+Premium Managed Disks に移行する場合は、VM が配置されているリージョンで利用できる Premium Storage 対応サイズに合うように VM のサイズを更新する必要があります。 Premium Storage で対応できる VM サイズをご確認ください。 Azure VM のサイズの仕様は、「 [仮想マシンのサイズ](../sizes.md)」に記載されています。
 Premium Storage で動作する仮想マシンのパフォーマンス特性を確認し、ワークロードに最適な VM を選択してください。 ディスク トラフィックが流れるのに十分な帯域幅が VM で利用できることを確認します。
 
 ### <a name="disk-sizes"></a>ディスク サイズ

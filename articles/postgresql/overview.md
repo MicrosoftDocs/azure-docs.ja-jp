@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 11/25/2019
-ms.openlocfilehash: 9ea0610811f6906526afe55d577e04a8decd5f49
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: deb720638e0921762eb9c5800d218c3cfccb7f55
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74481661"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213603"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Azure Database for PostgreSQL とは
 Azure Database for PostgreSQL は、開発者向けに構築された、Microsoft クラウドのリレーショナル データベース サービスです。 これは、コミュニティ バージョンのオープンソースの [PostgreSQL](https://www.postgresql.org/) データベース エンジンに基づいており、2 つのデプロイ オプション: Single Server と Hyperscale (Citus) で使用できます。
@@ -52,6 +52,6 @@ Azure Database for PostgreSQL についての質問やご提案は、Azure Datab
 - フィードバックを提供したり、新しい機能を要求したりするには、[UserVoice](https://feedback.azure.com/forums/597976-azure-database-for-postgresql) でエントリを作成します。
 
 ## <a name="next-steps"></a>次のステップ
-- コストの比較と計算については、[価格のページ](https://azure.microsoft.com/pricing/details/postgresql/)を参照してください。
+- コストの比較と計算については、[価格のページ](https://azure.microsoft.com/pricing/details/postgresql/)を参照してください。 Single Server と Hyperscale (Citus) の両方のデプロイ オプションで、前払いの予約インスタンス割引も提供されます。詳細については、[Single Server RI の価格](concept-reserved-pricing.md)および [Hyperscale RI の価格](concepts-hyperscale-reserved-pricing.md)に関するページを参照してください。
 - まず、最初の Azure Database for PostgreSQL [Single Server](./quickstart-create-server-database-portal.md) または [Hyperscale (Citus)](./quickstart-create-hyperscale-portal.md) を作成してください。
 - 初めてのアプリを Python、PHP、Ruby、C\#、Java、Node.js で作成します:[接続ライブラリ](./concepts-connection-libraries.md)

@@ -4,15 +4,15 @@ description: Azure でプライベート エンドポイント接続を管理す
 services: private-link
 author: malopMSFT
 ms.service: private-link
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 62b24b3e2f5c1b89fa7db581ac34cf58381db2a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 20695d183ea8184f7ee2948b3897fa1f3a741411
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75452962"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737497"
 ---
 # <a name="manage-a-private-endpoint-connection"></a>プライベート エンドポイント接続を管理する
 Azure Private Link は、承認呼び出しフロー モデルで機能します。このモデルでは、Private Link サービスのコンシューマーがサービスを使用するためにサービス プロバイダーへの接続を要求できます。 次に、サービス プロバイダーは、コンシューマーに接続を許可するかどうかを決定できます。 サービス プロバイダーは、Azure Private Link を使用して、自分のリソース上のプライベート エンドポイント接続を管理できます。 この記事では、プライベート エンドポイント接続を管理する方法について説明します。

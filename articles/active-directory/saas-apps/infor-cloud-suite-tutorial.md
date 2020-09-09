@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory と Infor CloudSuite の統合 | Microsoft Docs
 description: Azure Active Directory と Infor CloudSuite の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: a2f4f843-00d2-4522-a29d-6496cc5a781a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9bb3d260b808e61f15ec85752c299bfeb3ab6fd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ce0e1efc037832e1d8a8faaef1560f68c143db63
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67588557"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553027"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-cloudsuite"></a>チュートリアル:Azure Active Directory と Infor CloudSuite の統合
 
@@ -109,23 +104,21 @@ Infor CloudSuite で Azure AD シングル サインオンを構成するには�
 
     a. **[識別子]** ボックスに、次の形式で URL を入力します。
 
-    | | |
-    |-|-|
-    | `http://mingle-sso.inforcloudsuite.com`|
-    | `http://mingle-sso.se1.inforcloudsuite.com`|
-    | `http://mingle-sso.eu1.inforcloudsuite.com`|
-    | `http://mingle-sso.se2.inforcloudsuite.com`|
-    | |
+    ```http
+    http://mingle-sso.inforcloudsuite.com
+    http://mingle-sso.se1.inforcloudsuite.com
+    http://mingle-sso.eu1.inforcloudsuite.com
+    http://mingle-sso.se2.inforcloudsuite.com
+    ```
 
     b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
 
-    | | |
-    |-|-|
-    | `https://mingle-sso.inforcloudsuite.com:443/sp/ACS.saml2`|
-    | `https://mingle-sso.se1.inforcloudsuite.com:443/sp/ACS.saml2`|
-    | `https://mingle-sso.se2.inforcloudsuite.com:443/sp/ACS.saml2`|
-    | `https://mingle-sso.eu1.inforcloudsuite.com:443/sp/ACS.saml2`|
-    | |
+    ```http
+    https://mingle-sso.inforcloudsuite.com:443/sp/ACS.saml2
+    https://mingle-sso.se1.inforcloudsuite.com:443/sp/ACS.saml2
+    https://mingle-sso.se2.inforcloudsuite.com:443/sp/ACS.saml2
+    https://mingle-sso.eu1.inforcloudsuite.com:443/sp/ACS.saml2
+    ```
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -133,12 +126,12 @@ Infor CloudSuite で Azure AD シングル サインオンを構成するには�
 
     **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
 
-    | | |
-    |-|-|
-    | `https://mingle-portal.inforcloudsuite.com/Tenant-Name/`|
-    | `https://mingle-portal.eu1.inforcloudsuite.com/Tenant-Name/`|
-    | `https://mingle-portal.se1.inforcloudsuite.com/Tenant-Name/`|
-    | `https://mingle-portal.se2.inforcloudsuite.com/Tenant-Name/`|
+    ```http
+    https://mingle-portal.inforcloudsuite.com/Tenant-Name/
+    https://mingle-portal.eu1.inforcloudsuite.com/Tenant-Name/
+    https://mingle-portal.se1.inforcloudsuite.com/Tenant-Name/
+    https://mingle-portal.se2.inforcloudsuite.com/Tenant-Name/
+    ```
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Infor CloudSuite クライアント サポート チーム](mailto:support@infor.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

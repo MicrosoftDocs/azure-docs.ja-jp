@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 2401e8c160fd1c2ee3a734f374f1d4409c52ed16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ea986b338d977102d78e9c12bcbe5b2f2c510e7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82098528"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083448"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>PowerShell を使用し、近接通信配置グループに VM をデプロイする
 
@@ -24,7 +24,7 @@ ms.locfileid: "82098528"
 
 
 ## <a name="create-a-proximity-placement-group"></a>近接通信配置グループの作成
-[New-AzProximityPlacementGroup](https://docs.microsoft.com/powershell/module/az.compute/new-azproximityplacementgroup) コマンドレットを使用し、近接通信配置グループを作成します。 
+[New-AzProximityPlacementGroup](/powershell/module/az.compute/new-azproximityplacementgroup) コマンドレットを使用し、近接通信配置グループを作成します。 
 
 ```azurepowershell-interactive
 $resourceGroup = "myPPGResourceGroup"
@@ -49,7 +49,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-vm"></a>VM の作成
 
-[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) を使用して VM を作成するときに近接通信配置グループ ID を参照する目的で、`-ProximityPlacementGroup $ppg.Id` を使用し、近接通信配置グループで VM を作成します。
+[New-AzVM](/powershell/module/az.compute/new-azvm) を使用して VM を作成するときに近接通信配置グループ ID を参照する目的で、`-ProximityPlacementGroup $ppg.Id` を使用し、近接通信配置グループで VM を作成します。
 
 ```azurepowershell-interactive
 $vmName = "myVM"
@@ -146,7 +146,7 @@ foreach ($vmId in $vmIDs){
 
 ## <a name="scale-sets"></a>スケール セット
 
-近接通信配置グループ内にスケール セットを作成することもできます。 同じ `-ProximityPlacementGroup` パラメーターを [New-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) で使用すると、スケール セットが作成されます。すべてのインスタンスが同じ近接通信配置グループで作成されます。
+近接通信配置グループ内にスケール セットを作成することもできます。 同じ `-ProximityPlacementGroup` パラメーターを [New-AzVmss](/powershell/module/az.compute/new-azvmss) で使用すると、スケール セットが作成されます。すべてのインスタンスが同じ近接通信配置グループで作成されます。
 
 
 近接通信配置グループに既存のスケール セットを追加または削除するには、最初にスケール セットを停止する必要があります。 

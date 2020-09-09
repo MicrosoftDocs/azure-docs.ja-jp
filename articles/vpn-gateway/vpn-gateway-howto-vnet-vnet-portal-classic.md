@@ -5,15 +5,15 @@ services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 63c6329ad62289cd127902c1438073b28fc8683e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bdd27645045195016b7a563787470bf6f2187115
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77201851"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84985467"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>VNet 間の接続の構成 (クラシック)
 

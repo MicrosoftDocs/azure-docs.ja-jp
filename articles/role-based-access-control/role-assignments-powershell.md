@@ -8,18 +8,18 @@ manager: mtillman
 ms.assetid: 9e225dba-9044-4b13-b573-2f30d77925a9
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: db6b38f142254fa1812f34674e6a870629713d7e
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 9b0df4337a5e5faff3427222fb66caf8e02184a3
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735659"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146661"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-powershell"></a>Azure PowerShell を使用して Azure ロールの割り当てを追加または削除する
 
@@ -109,7 +109,7 @@ CanDelegate        : False
 ロール名ではなく一意のロール ID を使用してロールの割り当てを追加するには、[New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) を使用します。
 
 ```azurepowershell
-New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionId <role_id> -ResourceGroupName <resource_group_name>
+New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionId <role_id> -Scope <resource_group_name/resource/management groups>
 ```
 
 次の例では、*pharma-sales* リソース グループで、*alain\@example.com* ユーザーに[仮想マシンの共同作成者](built-in-roles.md#virtual-machine-contributor)ロールを付与します。 一意のロール ID を取得するには、[Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) を使用するか、「[Azure 組み込みロール](built-in-roles.md)」を参照してください。

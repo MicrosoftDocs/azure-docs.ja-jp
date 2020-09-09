@@ -5,15 +5,16 @@ description: Ubuntu Data Science Virtual Machine に含まれるツールの詳�
 author: gvashishtha
 ms.service: machine-learning
 ms.subservice: data-science-vm
+ms.custom: devx-track-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 7cfb2001067b70c64274ee1dd3475c142b788c98
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: c919e8abc55dd5cb36325ae060340c1ee147a1a0
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82161283"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816305"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>リファレンス: Ubuntu (Linux) Data Science Virtual Machine
 
@@ -142,7 +143,7 @@ Jupyter Notebook サーバーは、Python 2、Python 3、R カーネルであら
 > [!NOTE]
 > 証明書の警告が表示されても続行してください。
 
-Jupyter Notebook サーバーは、どのホストからでもアクセスできます。 「**https://\<VM DNS 名または IP アドレス\>:8000/** 」と入力してください。
+Jupyter Notebook サーバーは、どのホストからでもアクセスできます。 **https://\<VM DNS name or IP address\>:8000/** と入力します。
 
 > [!NOTE]
 > ポート 8000 は、VM がプロビジョニングされるときに、ファイアウォールの既定で開けてあります。 
@@ -247,8 +248,6 @@ Azure Machine Learning Studio にサインインしたら、実験キャンバ�
 
 VM で R または Python を使ってモデルを作成し、Azure Machine Learning の運用環境にデプロイすることもできます。 この機能を有効にするために、R (**AzureML**) と Python (**azureml**) にライブラリがインストールされています。
 
-R と Python のモデルを Azure Machine Learning にデプロイする方法については、[Data Science Virtual Machine でできる 10 のこと](vm-do-ten-things.md)に関するページを参照してください。
-
 > [!NOTE]
 > これらの手順は、Windows バージョンの Data Science Virtual Machine 向けに書かれたものです。 ただし、これらに記載されている Azure Machine Learning へのモデルのデプロイに関する情報は Linux VM にも適用されます。
 
@@ -262,8 +261,10 @@ VM には、プリコンパイルされてローカルにプレインストー�
 * **Python**: Anaconda Python には、Scikit-learn などのライブラリと機械学習アルゴリズムがバンドルされています。 その他のライブラリは、 `pip install` を使用してインストールできます。
 * **LightGBM**: デシジョン ツリー アルゴリズムに基づく、高速で分散型の高パフォーマンスな勾配ブースティング フレームワーク。
 * **R**:R 向けに、機械学習関数の豊富なライブラリが用意されています。プレインストールされているライブラリには、lm、glm、randomForest、rpart などがあります。 その他のライブラリは、次のコマンドを使用してインストールできます。
-  
-        install.packages(<lib name>)
+
+    ```r
+    install.packages(<lib name>)
+    ```
 
 上記の最初の 3 つの機械学習ツールに関する追加情報を次に示します。
 
@@ -337,7 +338,7 @@ rattle()
 1. **[Forest]\(フォレスト\)** オプションをオンにし、 **[Execute]\(実行\)** を選択してランダム フォレストを作成します。
 1. **[Evaluate]\(評価\)** タブを選択します。
 1. **[Risk]\(リスク\)** オプションをオンにし、 **[Execute]\(実行\)** を選択して、2 つの**リスク (累積)** パフォーマンス プロットを表示します。
-1. **[Log]\(ログ\)** タブを選択して、これまでの操作の生成済み R コードを表示します 
+1. **[Log]\(ログ\)** タブを選択して、これまでの操作の生成済み R コードを表示します
    (Rattle の現在のリリースにはバグがあるため、ログのテキストの **Export this log** の前に **#** 文字を挿入する必要があります)。
 1. **[Export]\(エクスポート\)** ボタンを選択して、R スクリプト ファイルを *weather_script.R* という名前でホーム フォルダーに保存します。
 

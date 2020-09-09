@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: aprameyr
 ms.openlocfilehash: cf21af43de553a2802289e44eaece12952d077d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229343"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710747"
 ---
 # <a name="replicas-and-instances"></a>レプリカとインスタンス 
 この記事では、ステートフル サービスのレプリカとステートレス サービスのインスタンスのライフサイクルの概要を示します。

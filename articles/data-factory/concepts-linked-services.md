@@ -10,17 +10,17 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/25/2019
-ms.openlocfilehash: a6002ed173ca5358df4257f4c8b41c88bcf60ad8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 08/21/2020
+ms.openlocfilehash: b4cd1fefb728da797d5ff56fe833662f21630c58
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418379"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796410"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Azure Data Factory のリンクされたサービス
 
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択します。"]
 > * [Version 1](v1/data-factory-create-datasets.md)
 > * [現在のバージョン](concepts-linked-services.md)
 
@@ -28,11 +28,11 @@ ms.locfileid: "81418379"
 
 この記事では、リンクされたサービスとは何か、それらはどのように JSON 形式で定義され、Azure Data Factory パイプライン内でどのように使用されるかを説明します。
 
-Azure Data Factory を初めて使用する場合は、[Azure Data Factory の概要](introduction.md)に関するページを参照してください。
+Data Factory を初めて使用する場合は、[Azure Data Factory の概要](introduction.md)に関するページを参照してください。
 
 ## <a name="overview"></a>概要
 
-データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 **パイプライン**は、1 つのタスクを連携して実行する**アクティビティ**の論理的なグループです。 パイプライン内の複数のアクティビティは、データに対して実行するアクションを定義します。 たとえば、コピー アクティビティを使用して、オンプレミスの SQL Server から Azure Blob Storage にデータをコピーすることができます。 その後、Azure HDInsight クラスターで Hive スクリプトを実行する Hive アクティビティを使用して、Blob Storage のデータを処理し、出力データを生成できます。 最後に、別のコピー アクティビティを使用して、ビジネス インテリジェンス (BI) レポート ソリューションが構築されている Azure SQL Data Warehouse に出力データをコピーできます。 パイプラインとアクティビティの詳細については、Azure Data Factory の[パイプラインとアクティビティ](concepts-pipelines-activities.md)を参照してください。
+データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 **パイプライン**は、1 つのタスクを連携して実行する**アクティビティ**の論理的なグループです。 パイプライン内の複数のアクティビティは、データに対して実行するアクションを定義します。 たとえば、コピー アクティビティを使用して、SQL Server から Azure Blob Storage にデータをコピーします。 その後、Azure HDInsight クラスターで Hive スクリプトを実行する Hive アクティビティを使用して、Blob Storage のデータを処理し、出力データを生成できます。 最後に、別のコピー アクティビティを使用して、ビジネス インテリジェンス (BI) レポート ソリューションが構築されている Azure SQL Data Warehouse に出力データをコピーできます。 パイプラインとアクティビティの詳細については、Azure Data Factory の[パイプラインとアクティビティ](concepts-pipelines-activities.md)を参照してください。
 
 ここで、**データセット**とは、**アクティビティ**で入力と出力として使用するデータを単に指定または参照するデータの名前付きビューです。
 
@@ -69,19 +69,19 @@ Data Factory のリンクされたサービスは、次のように JSON 形式�
 プロパティ | 説明 | 必須 |
 -------- | ----------- | -------- |
 name | リンクされたサービスの名前。 [Azure Data Factory - 名前付け規則](naming-rules.md)を参照してください。 |  はい |
-type | リンクされたサービスの種類 次に例を示します。AzureStorage (データ ストア) または AzureBatch (コンピューティング)。 typeProperties の説明を参照してください。 | はい |
-typeProperties | 型のプロパティは、データ ストアまたはコンピューティングごとに異なります。 <br/><br/> サポートされているデータ ストア型と型のプロパティについては、この記事の「[データセットの型](concepts-datasets-linked-services.md#dataset-type)」の表を参照してください。 データ ストアに固有の型のプロパティについては、データ ストア コネクタに関する記事に移動してください。 <br/><br/> サポートされているコンピューティング型とその型のプロパティについては、[コンピューティングのリンクされたサービス](compute-linked-services.md)に関する記事を参照してください。 | はい |
+type | リンクされたサービスの種類 次に例を示します。AzureBlobStorage (データ ストア) または AzureBatch (コンピューティング)。 typeProperties の説明を参照してください。 | はい |
+typeProperties | 型のプロパティは、データ ストアまたはコンピューティングごとに異なります。 <br/><br/> サポートされているデータ ストア型と、その型のプロパティについては、[コネクタの概要](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事を参照してください。 データ ストアに固有の型のプロパティについては、データ ストア コネクタに関する記事に移動してください。 <br/><br/> サポートされているコンピューティング型とその型のプロパティについては、[コンピューティングのリンクされたサービス](compute-linked-services.md)に関する記事を参照してください。 | はい |
 connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ
 
 ## <a name="linked-service-example"></a>リンクされたサービスの例
 
-次のリンクされたサービスは、Azure Storage のリンクされたサービスです。 type が Azure Storage に設定されている点に注目してください。 Azure Storage のリンクされたサービスの型のプロパティには、接続文字列が含まれます。 Data Factory サービスは、この接続文字列を使用して、実行時にデータ ストアに接続します。
+次のリンクされたサービスは、Azure Blob Storage のリンクされたサービスです。 type が Azure Blob Storage に設定されている点に注目してください。 Azure Blob Storage のリンクされたサービスの型のプロパティには、接続文字列が含まれます。 Data Factory サービスは、この接続文字列を使用して、実行時にデータ ストアに接続します。
 
 ```json
 {
-    "name": "AzureStorageLinkedService",
+    "name": "AzureBlobStorageLinkedService",
     "properties": {
-        "type": "AzureStorage",
+        "type": "AzureBlobStorage",
         "typeProperties": {
             "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
         },
@@ -95,7 +95,10 @@ connectVia | データ ストアに接続するために使用される[統合�
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
 
-リンクされたサービスは、以下のツールや SDK のいずれかを使用して作成できます。[.NET API](quickstart-create-data-factory-dot-net.md)、[PowerShell](quickstart-create-data-factory-powershell.md)、[REST API](quickstart-create-data-factory-rest-api.md)、Azure Resource Manager テンプレート、Azure portal
+リンクされたサービスは、[管理ハブ](author-management-hub.md)およびそれらを参照するすべてのアクティビティ、データセット、またはデータ フローを介して Azure Data Factory UX で作成できます。
+
+リンクされたサービスは、[.NET API](quickstart-create-data-factory-dot-net.md)、[PowerShell](quickstart-create-data-factory-powershell.md)、[REST API](quickstart-create-data-factory-rest-api.md)、Azure Resource Manager テンプレート、Azure portal などのツールや SDK のいずれかを使用して作成できます。
+
 
 ## <a name="data-store-linked-services"></a>データ ストアのリンクされたサービス
 

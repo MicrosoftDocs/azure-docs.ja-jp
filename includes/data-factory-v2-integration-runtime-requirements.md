@@ -2,19 +2,20 @@
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 08/12/2019
+ms.date: 07/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 2e90d218aa6dc90746ba0e928fb3393f0bdb5e5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c348b3dd0005eeab154aa2d74abc617cbd1d0cb
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "68966378"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529392"
 ---
 <!--
     Separate the generic requirement on Self-hosted Integration Runtime set-up from connector articles.
 -->
-データ ストアが次のいずれかの方法で構成されている場合、このデータ ストアに接続するには、[セルフホステッド統合ランタイム](../articles/data-factory/create-self-hosted-integration-runtime.md)を設定する必要があります。
+データ ストアがオンプレ ミスネットワーク、Azure Virtual Network、または Amazon Virtual Private Cloud 内にある場合は、[セルフホステッド統合ランタイム](../articles/data-factory/create-self-hosted-integration-runtime.md)を設定して接続する必要があります。
 
-- データ ストアは、オンプレミスのネットワーク内、Azure Virtual Network 内、または Amazon Virtual Private Cloud 内に配置されています。
-- データ ストアは、ファイアウォール規則でホワイトリストに登録されている IP にアクセスが制限されるマネージド クラウド データ サービスです。
+データ ストアがマネージド クラウド データ サービスである場合は、Azure Integration Runtime を使用できます。 ファイアウォール規則でホワイトリストに登録されている IP にアクセスが制限される場合は、[Azure Integration Runtime の IP](../articles/data-factory/azure-integration-runtime-ip-addresses.md) を許可リストに追加することを選択できます。 
+
+Data Factory によってサポートされるネットワーク セキュリティ メカニズムやオプションの詳細については、「[データ アクセス戦略](../articles/data-factory/data-access-strategies.md)」を参照してください。

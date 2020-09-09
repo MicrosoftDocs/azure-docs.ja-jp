@@ -1,19 +1,19 @@
 ---
 title: Azure Blob Storage イベントへの対応 | Microsoft Docs
-description: Blob Storage のイベントをサブスクライブするには、Azure Event Grid を使用します。
+description: Blob Storage イベントをサブスクライブして対応するには、Azure Event Grid を使用します。 イベント モデル、イベントのフィルター処理、およびイベントの使用に関する手法について説明します。
 author: normesta
 ms.author: normesta
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
-ms.reviewer: cbrooks
-ms.openlocfilehash: d9c666fd6fcf020908b6fc5bdd639261853ad9c6
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.reviewer: dineshm
+ms.openlocfilehash: 62cd31ab6f63aec5ddeb675bca3621a329ab1f2b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811548"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826570"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Blob Storage イベントへの対応
 

@@ -3,20 +3,24 @@ title: クイック スタート:.NET 用 Azure Blob Storage クライアント 
 description: このクイックスタートでは、.NET 用 Azure Blob Storage クライアント ライブラリを使用して、BLOB (オブジェクト) ストレージ内にコンテナーと BLOB を作成する方法について説明します。 次に、ローカル コンピューターに BLOB をダウンロードする方法と、コンテナー内のすべての BLOB を一覧表示する方法について説明します。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 07/20/2019
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: b243d05619642e1dd3ad8dfe2bbe1d0a9661b773
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: devx-track-csharp
+ms.openlocfilehash: efec40e4236c00fd4792e9d6aa51943cf43838ca
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75351315"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001418"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>クイック スタート:.NET 用 Azure Blob Storage クライアント ライブラリ v11
 
 .NET 用 Azure Blob Storage クライアント ライブラリ v11 を使用してみましょう。 Azure Blob Storage は、Microsoft のクラウド用オブジェクト ストレージ ソリューションです。 手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。 Blob Storage は、テキスト データやバイナリ データなどの大量の非構造化データを格納するために最適化されています。
+
+> [!NOTE]
+> このクイックスタートでは、Azure Blob Storage クライアント ライブラリのレガシー バージョンを使用します。 最新バージョンで始めるには、「[クイックスタート: .NET 用 Azure Blob Storage クライアント ライブラリ v12](storage-quickstart-blobs-dotnet.md)」を参照してください。
 
 .NET 用 Azure Blob Storage クライアント ライブラリを使用すると、以下のことができます。
 
@@ -27,7 +31,12 @@ ms.locfileid: "75351315"
 * コンテナー内のすべての BLOB を一覧表示する
 * コンテナーを削除する
 
-[API のリファレンスのドキュメント](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet) | [ライブラリのソース コード](https://github.com/Azure/azure-storage-net/tree/master/Blob) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) | [サンプル](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
+その他のリソース:
+
+* [API リファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet)
+* [ライブラリ ソース コード](https://github.com/Azure/azure-storage-net/tree/master/Blob)
+* [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
+* [サンプル](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -109,12 +118,11 @@ namespace blob_quickstart
 {
     class Program
     {
-        public static void Main()
+        public static async Task Main()
         {
             Console.WriteLine("Azure Blob Storage - .NET quickstart sample\n");
 
-            // Run the examples asynchronously, wait for the results before proceeding
-            ProcessAsync().GetAwaiter().GetResult();
+            await ProcessAsync();
 
             Console.WriteLine("Press any key to exit the sample application.");
             Console.ReadLine();

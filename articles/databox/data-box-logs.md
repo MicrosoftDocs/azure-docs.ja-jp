@@ -1,27 +1,27 @@
 ---
-title: Azure Data Box、Azure Data Box Heavy のイベントの追跡とログ記録 | Microsoft Docs
-description: Azure Data Box と Azure Data Box Heavy の注文のさまざまな段階でのイベントの追跡とログ記録の方法を説明します。
+title: インポート注文に関する Azure Data Box イベント、Azure Data Box Heavy イベントの追跡とログ記録 | Microsoft Docs
+description: Azure Data Box と Azure Data Box Heavy のインポート注文のさまざまな段階で、イベントを追跡し、ログ記録を行う方法を説明します。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 08/08/2019
+ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 74d38af4a64a184b26bd6ba1105db0d2530d8ba6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 50dbbe3a6a1af1e73cdf1ee7f5bd3a63cf2f6a50
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81676407"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498805"
 ---
-# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box と Azure Data Box Heavy の追跡とイベントのログ記録
+# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-import-order"></a>Azure Data Box と Azure Data Box Heavy のインポート注文の追跡とイベント ログ記録
 
-Data Box または Data Box Heavy の注文は、注文、設定、データのコピー、返却、Azure へのアップロードと確認、およびデータ消去の段階をたどります。 注文の各段階に対応して、注文へのアクセスの制御、イベントの監査、注文の追跡、生成されるさまざまなログの解釈のための、さまざまなアクションを実行できます。
+Data Box または Data Box Heavy のインポート注文は、注文、設定、データのコピー、返却、Azure へのアップロードと確認、およびデータ消去の段階をたどります。 注文の各段階に対応して、注文へのアクセスの制御、イベントの監査、注文の追跡、生成されるさまざまなログの解釈のための、さまざまなアクションを実行できます。
 
-次の表で、Data Box または Data Box Heavy の注文の段階と、各段階で注文の追跡と監査に使用できるツールの概要を示します。
+次の表で、Data Box または Data Box Heavy のインポート注文の段階と、各段階で注文の追跡と監査に使用できるツールの概要を示します。
 
-| Data Box 注文の段階       | 追跡と監査のためのツール                                                                        |
+| Data Box インポート注文の段階       | 追跡と監査のためのツール                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
 | 注文の作成               | [RBAC を使用して注文へのアクセス制御を設定する](#set-up-access-control-on-the-order)                                                    |
 | 処理された注文            | 以下を通じて[注文を追跡する](#track-the-order) <ul><li> Azure portal </li><li> 運送業者の Web サイト </li><li>メール通知</ul> |
@@ -31,11 +31,11 @@ Data Box または Data Box Heavy の注文は、注文、設定、データの�
 | Azure へのデータのアップロード       | Azure データセンターでのデータのアップロード中のエラーについて[コピー ログを確認する](#review-copy-log-during-upload-to-azure)                         |
 | デバイスからのデータの消去   | 監査ログと注文履歴を含む[生産物流管理ログを表示する](#get-chain-of-custody-logs-after-data-erasure)                |
 
-この記事では、Data Box または Data Box Heavy の注文の追跡と監査に使用できるさまざまなメカニズムやツールの詳細について説明します。 この記事の情報は、Data Box と Data Box Heavy の両方に適用されます。 後続のセクションにおいて、Data Box への言及はすべて、Data Box Heavy にも適用されます。
+この記事では、Data Box または Data Box Heavy のインポート注文の追跡と監査に使用できるさまざまなメカニズムやツールの詳細について説明します。 この記事の情報は、Data Box と Data Box Heavy の両方のインポート注文に適用されます。 後続のセクションにおいて、Data Box への言及はすべて、Data Box Heavy にも適用されます。
 
 ## <a name="set-up-access-control-on-the-order"></a>注文へのアクセス制御を設定する
 
-注文が初めて作成されたときに注文にアクセスできるユーザーを制御できます。 さまざまな範囲のロールベースのアクセス制御 (RBAC) ロールを設定して、Data Box の注文へのアクセスを制御します。 RBAC ロールは、アクセスの種類 (読み取り/書き込み、読み取り専用、操作のサブセットへの読み取り/書き込み) を決定します。
+注文が初めて作成されたときに注文にアクセスできるユーザーを制御できます。 さまざまな範囲の Azure ロールを設定して、Data Box の注文へのアクセスを制御します。 Azure ロールは、アクセスの種類 (読み取りと書き込み、読み取り専用、操作のサブセットへの読み取りと書き込み) を決定します。
 
 Azure Data Box サービスに対して定義できる 2 つのロールは次のとおりです。
 
@@ -205,7 +205,7 @@ Data Box サービスでは、処理される注文ごとに、関連付けら�
 
 既定では、ログは `copylog` という名前のコンテナーに書き込まれます。 ログは、次の命名規則を使用して保存されます。
 
-`storage-account-name/databoxcopylog/ordername_device-serial-number_CopyLog_guid.xml`
+`storage-account-name/databoxcopylog/ordername_device-serial-number_CopyLog_guid.xml`.
 
 コピー ログ パスは、ポータルの **[概要]** ブレードにも表示されます。
 

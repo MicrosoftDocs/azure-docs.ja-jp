@@ -3,19 +3,19 @@ title: Azure Service Fabric スタンドアロン クラスターをアップグ
 description: Azure Service Fabric スタンドアロン クラスターのバージョンまたは構成のアップグレードについて説明します。  T
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.openlocfilehash: ac3e80aae440c6709057e4211f7a4f6a1beea058
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 519a9163d16fda2dd9fcf49cf22fe4ad4a272e09
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790645"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260978"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>Service Fabric スタンドアロン クラスターのアップグレードと更新
 
 最新のシステムでは、アップグレード性を考慮した設計を行うことが、製品の長期的な成功を達成する鍵となります。 Azure Service Fabric スタンドアロン クラスターは、ユーザーが所有するリソースの 1 つです。 この記事では、アップグレードまたは更新できるものについて説明します。
 
 ## <a name="controlling-the-fabric-version-that-runs-on-your-cluster"></a>クラスター上で動作するファブリック バージョンの制御
-クラスターで [Service Fabric のサポートされているバージョン](service-fabric-versions.md)が常に実行されるようにする必要があります。 Microsoft が Service Fabric の新しいバージョンのリリースを発表すると、前のバージョンのサポート期間の終了が発表日から最短で 60 日後に設定されます。 新しいリリースは、[Service Fabric チーム ブログ](https://blogs.msdn.microsoft.com/azureservicefabric/)で発表されます。 その時点で新しいリリースを選択できるようになります。
+クラスターで [Service Fabric のサポートされているバージョン](service-fabric-versions.md)が常に実行されるようにする必要があります。 Microsoft が Service Fabric の新しいバージョンのリリースを発表すると、前のバージョンのサポート期間の終了が発表日から最短で 60 日後に設定されます。 新しいリリースは、[Service Fabric チーム ブログ](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)で発表されます。 その時点で新しいリリースを選択できるようになります。
 
 Microsoft からのリリース時に自動ファブリック アップグレードを受信するようにクラスターを設定するか、有効にするクラスターのサポートされるファブリック バージョンを手動で選択することもできます。 詳細については、「[Windows Server でのスタンドアロン Azure Service Fabric クラスターのアップグレード](service-fabric-cluster-upgrade-windows-server.md)」をご覧ください。
 

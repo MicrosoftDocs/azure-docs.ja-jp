@@ -11,12 +11,13 @@ ms.topic: sample
 ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: allensu
-ms.openlocfilehash: c0bfb5705989c99d3626d6e728b764e94f83fffe
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e142316fa81ed8b669363c63f0b1550a890a890c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74048923"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501748"
 ---
 # <a name="azure-cli-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Azure CLI スクリプトの例: 高可用性のために VM へのトラフィックを負荷分散する
 

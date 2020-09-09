@@ -4,12 +4,12 @@ description: System Center 2012 R2 DPM を使用して Exchange サーバーを 
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: b45efa0623edbec47b8ae12d3a97b1e032626530
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 48a0e0f4b838b3f9b26de5a9cf297ddcdfc2a7e9
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396416"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889721"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>System Center 2012 R2 DPM を使用して Exchange サーバーを Azure Backup にバックアップする
 
@@ -38,8 +38,8 @@ Azure Backup に DPM サーバーを正常に登録するには、System Center 
 
 Exchange サーバーに DPM 保護エージェントをインストールするには、次の手順に従います。
 
-1. ファイアウォールが正しく構成されていることを確認します。 「 [エージェントに対するファイアウォール例外の構成](https://docs.microsoft.com/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019)」を参照してください。
-2. DPM 管理者コンソールで **[管理]、[エージェント]、[インストール]** の順にクリックし、Exchange サーバーにエージェントをインストールします。 詳細な手順については、「 [DPM 保護エージェントのインストール](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) 」を参照してください。
+1. ファイアウォールが正しく構成されていることを確認します。 「 [エージェントに対するファイアウォール例外の構成](/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019)」を参照してください。
+2. DPM 管理者コンソールで **[管理]、[エージェント]、[インストール]** の順にクリックし、Exchange サーバーにエージェントをインストールします。 詳細な手順については、「 [DPM 保護エージェントのインストール](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) 」を参照してください。
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Exchange サーバーの保護グループを作成する
 
@@ -49,7 +49,7 @@ Exchange サーバーに DPM 保護エージェントをインストールする
 4. 保護する Exchange サーバー データベースを選択し、 **[次へ]** をクリックします。
 
    > [!NOTE]
-   > Exchange 2013 を保護する場合は、「 [Exchange 2013 の前提条件](https://docs.microsoft.com/system-center/dpm/back-up-exchange?view=sc-dpm-2016)」を確認してください。
+   > Exchange 2013 を保護する場合は、「 [Exchange 2013 の前提条件](/system-center/dpm/back-up-exchange)」を確認してください。
    >
    >
 

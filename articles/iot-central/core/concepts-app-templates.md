@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 244de9a3236977308a9f7bcaf5106e86a0984201
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0cf343ccd89ac5b00740d8c559538a0f97ec7905
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82024678"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716573"
 ---
 # <a name="what-are-application-templates"></a>アプリケーション テンプレートとは
 
@@ -47,6 +47,7 @@ Azure IoT Central は、業界を問わないアプリケーション プラッ�
   - ストア内分析 - 条件監視
   - ストア内分析 - レジ
   - スマート在庫管理
+  - ビデオ分析 - オブジェクトとモーションの検出
 - [エネルギー](../energy/overview-iot-central-energy.md)
   - スマート メーター監視
   - ソーラー パネルの監視
@@ -56,6 +57,10 @@ Azure IoT Central は、業界を問わないアプリケーション プラッ�
   - 水質のモニタリング
 - [医療](../healthcare/overview-iot-central-healthcare.md)。
   - 患者の継続的なモニタリング
+
+## <a name="application-versions"></a>アプリケーションのバージョン
+
+テンプレートは、IoT Central アプリケーションの特定のバージョンに関連付けられています。 アプリケーションのバージョンは、 **[ヘルプ]** リンクから表示される [[お客様のアプリについて]](./howto-get-app-info.md) ページで確認できます。
 
 ## <a name="next-steps"></a>次のステップ
 

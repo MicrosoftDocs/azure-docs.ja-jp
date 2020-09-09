@@ -8,17 +8,17 @@ manager: rkarlin
 editor: ''
 ms.service: key-vault
 ms.topic: tutorial
-ms.custom: mvc, seodec18
+ms.custom: mvc, seodec18, devx-track-azurepowershell
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/11/2019
-ms.author: mbaldwin
-ms.openlocfilehash: c1a847a315a264591c0d003ff691d9938c2bf0f5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 07/14/2020
+ms.author: johndaw
+ms.openlocfilehash: fc67012dff5931fb86452ea95c2ea074a426953c
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79474426"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075673"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>チュートリアル - PowerShell を使用して既存の仮想ネットワークに HSM をデプロイする
 
@@ -40,7 +40,7 @@ Azure Dedicated HSM サービスでは、完全な管理制御と完全な管理
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Dedicated HSM は、現時点では Azure portal で使用できません。そのため、サービスに対するすべての操作は、コマンドラインまたは PowerShell を使用して行います。 このチュートリアルでは、Azure Cloud Shell で PowerShell を使用します。 PowerShell を使用するのが初めての場合は、こちらの [Azure PowerShell の開始](https://docs.microsoft.com/powershell/azure/get-started-azureps)に関するページの開始手順に従います。
+Azure Dedicated HSM は、現時点では Azure portal で使用できません。そのため、サービスに対するすべての操作は、コマンドラインまたは PowerShell を使用して行います。 このチュートリアルでは、Azure Cloud Shell で PowerShell を使用します。 PowerShell を使用するのが初めての場合は、こちらの [Azure PowerShell の開始](/powershell/azure/get-started-azureps)に関するページの開始手順に従います。
 
 想定:
 
@@ -62,13 +62,7 @@ HSM のプロビジョニングと、ExpressRoute ゲートウェイを介した
 Get-AzProviderFeature -ProviderNamespace Microsoft.HardwareSecurityModules -FeatureName AzureDedicatedHsm
 ```
 
-次のコマンドでは、Dedicated HSM サービスに必須のネットワーク機能を確認します。
-
-```powershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowBaremetalServers
-```
-
-先に進む前に、両方のコマンドで "Registered" の状態が返される必要があります (以下を参照)。  このサービスへの登録が必要な場合は、お客様の Microsoft アカウント担当者にお問い合わせください。
+このコマンドで "Registered" の状態が返されてから先に進む必要があります (以下を参照)。  このサービスへの登録が済んでいない方は、Microsoft アカウント担当者にお問い合わせください。
 
 ![サブスクリプションの状態](media/tutorial-deploy-hsm-powershell/subscription-status.png)
 
@@ -190,7 +184,7 @@ New-AzResourceGroupDeployment -ResourceGroupName myRG `
 
 ![プロビジョニング状態](media/tutorial-deploy-hsm-powershell/progress-status.png)
 
-"provisioningState": "Succeeded" と表示されて正常に完了したら、既存の仮想マシンにサインインし、SSH を使用して HSM デバイスの可用性を確保できます。
+"provisioningState": "Succeeded" と表示されて正常に完了したら、お客様の既存の仮想マシンにサインインし、SSH を使用して HSM デバイスの可用性を確認できます。
 
 ## <a name="verifying-the-deployment"></a>デプロイの確認
 

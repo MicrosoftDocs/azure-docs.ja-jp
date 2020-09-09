@@ -5,18 +5,18 @@ description: データセットを最適にバージョン管理する方法と�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/09/2020
-ms.custom: ''
-ms.openlocfilehash: 5bd4436fc63fb570f052606ab557dbcf243cf5e7
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.topic: conceptual
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: d57122ee98eb6612f43d09ecff4797038ceaf5f2
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80476858"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654091"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>実験でデータセットをバージョン管理して追跡する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -192,4 +192,4 @@ model = run.register_model(model_name='keras-mlp-mnist',
 ## <a name="next-steps"></a>次のステップ
 
 * [データセットを使ってトレーニングする](how-to-train-with-datasets.md)
-* [その他のサンプル データセット ノートブック](https://aka.ms/dataset-tutorial)
+* [その他のサンプル データセット ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/)

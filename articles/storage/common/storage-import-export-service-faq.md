@@ -4,16 +4,16 @@ description: Azure Import/Export サービスについてよく寄せられる�
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
-ms.date: 03/12/2020
+ms.topic: conceptual
+ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 904f93aa705a4e327f29bbec109bdf3b937f6c70
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: f3a41fbd3cbd5b7c8eccfbea8833fdfedee97510
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80519476"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512399"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure Import/Export サービス: よく寄せられる質問
 
@@ -103,7 +103,7 @@ FedEx、DHL、UPS などの既知の運送業者や、米国郵政公社を利�
 
 発送する物理メディアが国境を越える場合があることに注意してください。 お客様は、物理メディアおよびデータが輸入および輸出に関して該当する法律に準拠していることを確認する必要があります。 物理メディアを発送する前に、アドバイザーに依頼して、メディアおよびデータが指定のデータ センターに合法的に発送できることを確認してもらってください。 それにより、マイクロソフトへのメディアの到着が遅れるのを防ぐことができます。
 
-アップロードの完了後、ドライブを海外の住所に返送するプロセスは、国内の返送に要する期間 (通常 2 日から 3 日) よりも長くなる場合があります。 Azure portal に "Packaging (梱包)" として表示されている段階では、さまざまな海外輸出入要件を確実に満たした発送を行うために、適切な書類が提出されるよう Data Box チームが万全を期しています。
+アップロードの完了後、ドライブを海外の住所に返送するプロセスは、国内の返送に要する期間 (通常 2 日から 3 日) よりも長くなる場合があります。 Azure Portal に "Packaging (梱包)" として表示されている段階では、さまざまな海外輸出入要件を確実に満たした発送を行うために、適切な書類が提出されるよう Data Box チームが万全を期しています。
 
 ### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>ディスクをデータセンターに送付するための特別な要件はありますか?
 
@@ -132,7 +132,7 @@ Azure データ センターでは、サポートされる要件に適合しな�
 
 ### <a name="how-can-i-access-data-that-is-imported-by-this-service"></a>このサービスでインポートされたデータには、どのようにしてアクセスできますか?
 
-Azure ストレージ アカウントのデータにアクセスするには、Azure portal または[ストレージ エクスプローラー](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)を使用します。  
+Azure ストレージ アカウントのデータにアクセスするには、Azure Portal または [Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) を使用します。  
 
 ### <a name="after-the-import-is-complete-what-does-my-data-look-like-in-the-storage-account-is-my-directory-hierarchy-preserved"></a>インポートの完了後、ストレージ アカウント内でデータはどのような状態になりますか? ディレクトリ階層は保持されますか?
 
@@ -153,7 +153,7 @@ Azure ストレージ アカウントのデータにアクセスするには、A
 
 ### <a name="does-azure-importexport-support-aes-256-encryption"></a>Azure Import/Export は AES-256 暗号化をサポートしていますか?
 
-いいえ。 Azure Import/Export サービスでは、AES-128 BitLocker 暗号化が既定で使用されます。
+はい。 Azure Import/Export サービスでは、AES-256 BitLocker 暗号化が既定で使用されます。
 
 ## <a name="next-steps"></a>次のステップ
 

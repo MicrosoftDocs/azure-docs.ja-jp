@@ -1,18 +1,18 @@
 ---
 title: コマーシャル マーケットプレースでのパートナー センター分析用の概要 ダッシュボード
-description: マーケットプレースのアクティビティが要約された集計データのグラフ、傾向、値にパートナー センターの [Summary]\(概要) ダッシュボードからアクセスする方法を説明します。
-author: dsindona
-ms.author: dsindona
+description: マーケットプレースのアクティビティが要約された集計データのグラフ、傾向、値にパートナー センターの Summary (概要) ダッシュボードからアクセスする方法を説明します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 86bce85c6ec273b4ab5f9f00cbae68fc054f53f5
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 8e58de7975bc7f5de1fe2ad71f97c02c901c0c21
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262402"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87304124"
 ---
 # <a name="summary-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析での [Summary] (概要) ダッシュボード
 
@@ -70,7 +70,7 @@ ms.locfileid: "81262402"
 - マップを動かして正確な場所を見ることができます。
 - 特定の場所にズーム インできます。
 - ヒートマップには、特定の場所での顧客数、注文数、正規化された使用量の詳細を表示するための補助グリッドがあります。
-- グリッドで国を検索して選択すると、マップ内の場所にズームできます。 地図内の **[ホーム]** ボタンを押すと元のビューに戻ります。
+- グリッドで国またはリージョンを検索して選択すると、マップ内の場所にズームできます。 地図内の **[ホーム]** ボタンを押すと元のビューに戻ります。
 - **新規**顧客が、選択した日付範囲内の月内に初めて、オファーの 1 つを購入しました。
 
 ### <a name="growth-trend-charts"></a>増加傾向グラフ

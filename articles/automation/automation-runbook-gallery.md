@@ -1,18 +1,18 @@
 ---
-title: Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー
-description: Microsoft やコミュニティからの Runbook とモジュールを Azure Automation 環境にインストールして使用できます。  この記事では、これらのリソースにアクセスしたり、自分の Runbook をギャラリーに投稿したりする方法について説明します。
+title: PowerShell ギャラリーの Azure Automation Runbook とモジュールを使用する
+description: この記事では、PowerShell ギャラリーにある Microsoft およびコミュニティからの Runbook とモジュールを使用する方法について説明します。
 services: automation
 ms.subservice: process-automation
 ms.date: 03/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 90b475e275598363314c8f131911fe12650cd3df
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f2bf058ddce81ab9f04e97787a4dc93e44036b1b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535555"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186114"
 ---
-# <a name="runbook-and-module-galleries-for-azure-automation"></a>Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー
+# <a name="use-runbooks-and-modules-in-powershell-gallery"></a>PowerShell ギャラリーの Runbook とモジュールを使用する
 
 Azure Automation で独自の Runbook およびモジュールを作成するのではなく、マイクロソフトやコミュニティによって既に作成されているシナリオにアクセスできます。 PowerShell Runbook と[モジュール](#modules-in-powershell-gallery) は PowerShell ギャラリーから、[Python Runbook](#use-python-runbooks) はスクリプト センター ギャラリーから取得できます。 [開発したシナリオ](#add-a-powershell-runbook-to-the-gallery)を共有することにより、コミュニティに貢献することもできます。 
 
@@ -32,9 +32,9 @@ PowerShell ギャラリーから直接インポートできるのは、Azure por
 
 PowerShell モジュールには Runbook で使用できるコマンドレットが含まれ、Azure Automation でインストールできる既存のモジュールを [PowerShell ギャラリー](https://www.powershellgallery.com)から入手できます。 このギャラリーは Azure portal から起動でき、Azure Automation に直接インストールします。 ダウンロードして手動でインストールすることもできます。
 
-## <a name="common-solutions-available-in-powershell-gallery"></a>PowerShell ギャラリーで使用できる一般的なソリューション
+## <a name="common-scenarios-available-in-powershell-gallery"></a>PowerShell ギャラリーで使用できる一般的なシナリオ
 
-以下の一覧には、一般的なシナリオに対する解決策となるいくつかの Runbook が含まれています。 Azure Automation チームによって作成された Runbook の詳細な一覧については、[AzureAutomationTeam のプロファイル](https://www.powershellgallery.com/profiles/AzureAutomationTeam)のページを参照してください。
+以下の一覧には、一般的なシナリオをサポートするいくつかの Runbook が含まれています。 Azure Automation チームによって作成された Runbook の詳細な一覧については、[AzureAutomationTeam のプロファイル](https://www.powershellgallery.com/profiles/AzureAutomationTeam)のページを参照してください。
 
    * [Update-ModulesInAutomationToLatestVersion](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/) - すべてのモジュールの最新バージョンを PowerShell ギャラリーから Automation アカウントにインポートします。
    * [Enable-AzureDiagnostics](https://www.powershellgallery.com/packages/Enable-AzureDiagnostics/) - ジョブの状態とジョブ ストリームを含む Azure Automation ログを受信するように Azure Diagnostics と Log Analytics を構成します。
@@ -101,10 +101,11 @@ Python Runbook は、[スクリプト センター ギャラリー](https://gall
 
 ## <a name="request-a-runbook-or-module"></a>Runbook またはモジュールを要求する
 
-[ユーザーの声](https://feedback.azure.com/forums/246290-azure-automation/)に要求を送信できます。  Runbook の作成について支援が必要な場合、または PowerShell について質問がある場合は、[フォーラム](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc)に質問を投稿してください。
+[ユーザーの声](https://feedback.azure.com/forums/246290-azure-automation/)に要求を送信できます。  Runbook の作成について支援が必要な場合、または PowerShell について質問がある場合は、[Microsoft Q&A 質問ページ](/answers/topics/azure-automation.html)に質問を投稿してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-* Runbook の使用を開始するには、「[Azure Automation で Runbook を管理する](manage-runbooks.md)」をご覧ください。
-* Runbook での PowerShell と PowerShell ワークフローの違いについては、[PowerShell ワークフローの概要](automation-powershell-workflow.md)に関するページを参照してください。
-* PowerShell (言語リファレンス、学習モジュールを含む) の詳細については、[PowerShell ドキュメント](https://docs.microsoft.com/powershell/scripting/overview)に関するページを参照してください。
+* PowerShell Runbook の使用を開始するには、「[チュートリアル:PowerShell Runbook を作成する](learn/automation-tutorial-runbook-textual-powershell.md)」を参照してください。
+* Runbook を操作するには、「[Azure Automation で Runbook を管理する](manage-runbooks.md)」を参照してください。
+* PowerShell の詳細については、[PowerShell のドキュメント](/powershell/scripting/overview)を参照してください。
+* * PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)」をご覧ください。

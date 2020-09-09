@@ -7,17 +7,17 @@ author: cynthn
 manager: gwallace
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/17/2018
+ms.date: 08/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 7c93c1f525713a90abd71c30a21401b9d1cfcb9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8a122a36b14bd3c5f4912387dc98585cb89ab53b
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460904"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705642"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Azure での Linux VM の時刻同期
 
@@ -25,10 +25,10 @@ ms.locfileid: "81460904"
 
 Azure は、Windows Server 2016 を実行しているインフラストラクチャによってサポートされます。 Windows Server 2016 では、時刻を修正し、ローカル クロックを調整して UTC と同期するために使用されるアルゴリズムが改善されています。  Windows Server 2016 の正確な時刻機能では、正確な時刻を確保するためにホストで VM を制御する VMICTimeSync サービスの動作が大幅に改善されています。 この改善には、VM の開始時や VM の復元時の初期時刻の精度の向上と、割り込み待ち時間の修正が含まれます。 
 
->[!NOTE]
->Windows Time サービスの概要については、こちらの[概要ビデオ](https://aka.ms/WS2016TimeVideo)をご覧ください。
+> [!NOTE]
+> Windows Time サービスの概要については、こちらの[概要ビデオ](https://aka.ms/WS2016TimeVideo)をご覧ください。
 >
-> 詳細については、「[Windows Server 2016 の正確な時刻](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)」を参照してください。 
+> 詳細については、「[Windows Server 2016 の正確な時刻](/windows-server/networking/windows-time-service/accurate-time)」を参照してください。 
 
 ## <a name="overview"></a>概要
 
@@ -64,7 +64,7 @@ Azure でホストされている Linux VM 用の時刻同期を構成する方�
 - NTP (プライマリとして)。NTP サーバーから時刻を取得します。 たとえば、Ubuntu 16.04 LTS の Marketplace イメージでは、**ntp.ubuntu.com** が使用されます。
 - VMICTimeSync サービス (セカンダリとして)。VM にホスト時刻を知らせ、VM がメンテナンスのために一時停止した後、修正を行うために使用されます。 Azure ホストでは、Microsoft 所有の Stratum 1 デバイスを使用して、正確な時刻を保持します。
 
-新しい Linux ディストリビューションでは、VMICTimeSync サービスで PTP (Precision Time Protocol) が使用されますが、以前のディストリビューションでは PTP はサポートされない可能性があり、ホストから時刻を取得するために NTP にフォールバックします。
+新しい Linux ディストリビューションでは、VMICTimeSync サービスで PTP (Precision Time Protocol) ハードウェア クロック ソースが提供されますが、以前のディストリビューションでは、このクロック ソースが提供されない可能性があり、ホストから時刻を取得するために NTP にフォールバックします。
 
 NTP が正しく同期していることを確認するには、`ntpq -p` コマンドを実行します。
 
@@ -112,9 +112,9 @@ root        391      2  0 17:52 ?        00:00:00 [hv_balloon]
 ```
 
 
-### <a name="check-for-ptp"></a>PTP を確認する
+### <a name="check-for-ptp-clock-source"></a>PTP クロック ソースを確認する
 
-新しいバージョンの Linux では、PTP (Precision Time Protocol) クロック ソースを VMICTimeSync プロバイダーの一部として利用できます。 以前のバージョンの Red Hat Enterprise Linux や CentOS 7.x では、[Linux Integration Services](https://github.com/LIS/lis-next) をダウンロードし、それを使用して更新されたドライバーをインポートできます。 PTP を使用する場合、Linux デバイスの形式は /dev/ptp*x* となります。 
+新しいバージョンの Linux では、PTP (Precision Time Protocol) クロック ソースを VMICTimeSync プロバイダーの一部として利用できます。 以前のバージョンの Red Hat Enterprise Linux や CentOS 7.x では、[Linux Integration Services](https://github.com/LIS/lis-next) をダウンロードし、それを使用して更新されたドライバーをインポートできます。 PTP クロック ソースを使用できる場合、Linux デバイスの形式は /dev/ptp*x* になります。 
 
 どの PTP クロック ソースを使用できるかを確認します。
 
@@ -128,11 +128,11 @@ ls /sys/class/ptp
 cat /sys/class/ptp/ptp0/clock_name
 ```
 
-**hyperv** が返されるはずです。
+この場合は、`hyperv` が返されるはずです。
 
 ### <a name="chrony"></a>chrony
 
-Ubuntu 19.10 以降のバージョン、Red Hat Enterprise Linux、および CentOS 7.x では、PTP ソース クロックを使用するように [chrony](https://chrony.tuxfamily.org/) が構成されています。 以前の Linux リリースでは、chrony ではなく、PTP ソースがサポートされない ntpd (Network Time Protocol Daemon) が使用されています。 これらのリリースで PTP を有効にするには、chrony.conf で次のコードを使用して chrony を手動でインストールして構成する必要があります。
+Ubuntu 19.10 以降のバージョン、Red Hat Enterprise Linux、および CentOS 8.x では、PTP ソース クロックを使用するように [chrony](https://chrony.tuxfamily.org/) が構成されています。 以前の Linux リリースでは、chrony ではなく、PTP ソースがサポートされない ntpd (Network Time Protocol Daemon) が使用されています。 これらのリリースで PTP を有効にするには、chrony.conf で次のコードを使用して chrony を手動でインストールして構成する必要があります。
 
 ```bash
 refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
@@ -140,13 +140,13 @@ refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
 
 Ubuntu および NTP の詳細については、[時刻同期](https://help.ubuntu.com/lts/serverguide/NTP.html)に関するページを参照してください。
 
-Red Hat および NTP の詳細については、[NTP の構成](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/s1-configure_ntp)に関するページを参照してください。 
+Red Hat および NTP の詳細については、[NTP の構成](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_ntpd#s1-Configure_NTP)に関するページを参照してください。 
 
-chrony の詳細については、[chrony の使用](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-using_chrony)に関するページを参照してください。
+chrony の詳細については、[chrony の使用](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_the_chrony_suite#sect-Using_chrony)に関するページを参照してください。
 
-chrony および TimeSync ソースの両方が同時に有効になっている場合は、一方を**優先**としてマークし、もう一方のソースをバックアップとして設定することができます。 NTP サービスでは、長時間の経過後を除き、大きなスキューが発生した場合にクロックが更新されないため、VMICTimeSync によって、NTP ベースのツールを単独で使用する場合よりはるかに早く一時停止した VM イベントからクロックが回復されます。
+chrony および VMICTimeSync ソースの両方が同時に有効になっている場合は、一方を**優先**としてマークし、もう一方のソースをバックアップとして設定することができます。 NTP サービスでは、長時間の経過後を除き、大きなスキューが発生した場合にクロックが更新されないため、VMICTimeSync によって、NTP ベースのツールを単独で使用する場合よりはるかに早く一時停止した VM イベントからクロックが回復されます。
 
-既定では、chronyd は、時間の誤差を修正するために、システム クロックを加速または減速します。 誤差が大きすぎる場合、chrony は誤差の修正に失敗します。 これを解決するために、 **/etc/chrony.conf** の `makestep` パラメーターを変更して、誤差が指定されたしきい値を超えた場合に timesync を強制的に適用することができます。
+既定では、chronyd は、時間の誤差を修正するために、システム クロックを加速または減速します。 誤差が大きすぎる場合、chrony は誤差の修正に失敗します。 これを解決するために、 **/etc/chrony.conf** の `makestep` パラメーターを変更して、誤差が、指定されたしきい値を超えた場合に時刻同期を強制的に適用することができます。
 
  ```bash
 makestep 1.0 -1
@@ -164,6 +164,6 @@ systemctl restart chronyd
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、「[Windows Server 2016 の正確な時刻](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)」を参照してください。
+詳細については、「[Windows Server 2016 の正確な時刻](/windows-server/networking/windows-time-service/accurate-time)」を参照してください。
 
 

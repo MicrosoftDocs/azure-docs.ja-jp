@@ -6,27 +6,27 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: c143d8aa24d3479f4619ea2c220d4a0c593f9cb1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 80e87d6fdab6ecf15c241581f8c19d36b30d7e30
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665156"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327108"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Connector 管理ソリューション (非推奨)
 
 ![Application Insights シンボル](./media/app-insights-connector/app-insights-connector-symbol.png)
 
 >[!NOTE]
-> [リソース間のクエリ](../../azure-monitor/log-query/cross-workspace-query.md)のサポートにより、Application Insights Connector 管理ソリューションはもはや必要なくなりました。 その機能は非推奨になり、2019 年 1 月 15 日に Azure 商用クラウドで正式に非推奨となった OMS ポータルと共に、Azure Marketplace から削除されています。 Azure US Government クラウドでは 2019 年 3 月 30 日に廃止されます。
+> [リソース間のクエリ](../log-query/cross-workspace-query.md)のサポートにより、Application Insights Connector 管理ソリューションはもはや必要なくなりました。 その機能は非推奨になり、2019 年 1 月 15 日に Azure 商用クラウドで正式に非推奨となった OMS ポータルと共に、Azure Marketplace から削除されています。 Azure US Government クラウドでは 2019 年 3 月 30 日に廃止されます。
 >
 >既存の接続は 2019 年 6 月 30日まで引き続き機能します。  OMS ポータルの廃止により、ポータルから既存の接続を構成および削除する方法がなくなります。 PowerShell を使用して既存の接続を削除するスクリプトについては、後の「[PowerShell でコネクタを削除する](#removing-the-connector-with-powershell)」をご覧ください。
 >
->複数のアプリケーションに対する Application Insights ログ データのクエリを実行する方法については、「[Azure Monitor で複数の Application Insights リソースを統合する](../log-query/unify-app-resource-data.md)」をご覧ください。 OMS ポータルの廃止について詳しくは、「[OMS ポータルの Azure への移行](../../azure-monitor/platform/oms-portal-transition.md)」をご覧ください。
+>複数のアプリケーションに対する Application Insights ログ データのクエリを実行する方法については、「[Azure Monitor で複数の Application Insights リソースを統合する](../log-query/unify-app-resource-data.md)」をご覧ください。 OMS ポータルの廃止について詳しくは、「[OMS ポータルの Azure への移行](./oms-portal-transition.md)」をご覧ください。
 >
 > 
 
-Application Insights Connector ソリューションを使用すると、[Application Insights](../../azure-monitor/app/app-insights-overview.md) でアプリを監視しているときにパフォーマンスに関する問題を診断し、ユーザーがアプリで何を行っているかを理解することができます。 Log Analytics でも Application Insights で開発者に表示されるものと同じアプリケーション テレメトリのビューを使用できます。 しかし、Application Insights アプリを Log Analytics と統合すると、運用データとアプリケーション データを 1 か所にまとめることによってアプリケーションの可視性が向上します。 同じビューの表示は、アプリ開発者との共同作業を支援します。 共通のビューによって、アプリケーションの問題とプラットフォームの問題の両方を検出して解決するための時間を短縮できます。
+Application Insights Connector ソリューションを使用すると、[Application Insights](../app/app-insights-overview.md) でアプリを監視しているときにパフォーマンスに関する問題を診断し、ユーザーがアプリで何を行っているかを理解することができます。 Log Analytics でも Application Insights で開発者に表示されるものと同じアプリケーション テレメトリのビューを使用できます。 しかし、Application Insights アプリを Log Analytics と統合すると、運用データとアプリケーション データを 1 か所にまとめることによってアプリケーションの可視性が向上します。 同じビューの表示は、アプリ開発者との共同作業を支援します。 共通のビューによって、アプリケーションの問題とプラットフォームの問題の両方を検出して解決するための時間を短縮できます。
 
 このソリューションを使用して、次の操作を実行できます。
 
@@ -44,10 +44,10 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 | 接続先ソース | サポートされています | 説明 |
 | --- | --- | --- |
-| [Windows エージェント](../../azure-monitor/platform/agent-windows.md) | いいえ | ソリューションでは、Windows エージェントの情報は収集しません。 |
-| [Linux エージェント](../../azure-monitor/learn/quick-collect-linux-computer.md) | いいえ | ソリューションでは、Linux エージェントの情報は収集しません。 |
-| [SCOM 管理グループ](../../azure-monitor/platform/om-agents.md) | いいえ | ソリューションでは、接続された SCOM 管理グループ内のエージェントの情報は収集しません。 |
-| [Azure Storage アカウント](collect-azure-metrics-logs.md) | いいえ | ソリューションでは、Azure Storage の情報は収集しません。 |
+| [Windows エージェント](./agent-windows.md) | いいえ | ソリューションでは、Windows エージェントの情報は収集しません。 |
+| [Linux エージェント](../learn/quick-collect-linux-computer.md) | いいえ | ソリューションでは、Linux エージェントの情報は収集しません。 |
+| [SCOM 管理グループ](./om-agents.md) | いいえ | ソリューションでは、接続された SCOM 管理グループ内のエージェントの情報は収集しません。 |
+| [Azure Storage アカウント](./resource-logs.md#send-to-log-analytics-workspace) | いいえ | ソリューションでは、Azure Storage の情報は収集しません。 |
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -57,7 +57,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 ## <a name="configuration"></a>構成
 
-1. Azure Web Apps Analytics ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) から有効にするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](../../azure-monitor/insights/solutions.md)に関するページで説明されているプロセスを使用して有効にしてください。
+1. Azure Web Apps Analytics ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) から有効にするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](../insights/solutions.md)に関するページで説明されているプロセスを使用して有効にしてください。
 2. [Azure ポータル](https://portal.azure.com)にアクセスします。 **[すべてのサービス]** を選択して、Application Insights を開きます。 次に、"Application Insights" を検索します。 
 3. **[サブスクリプション]** で、Application Insights リソースを所有するサブスクリプションを選択し、 **[名前]** で、1 つまたは複数のアプリケーションを選択します。
 4. **[保存]** をクリックします。
@@ -144,7 +144,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 ### <a name="sample-corrected-data"></a>サンプリング補正データ
 
-Application Insights では、" *[サンプリング補正](../../azure-monitor/app/sampling.md)* " によって、テレメトリのトラフィックを削減しています。 Application Insights アプリでサンプリングを有効にすると、Application Insights と Log Analytics の両方に格納されるエントリの数が減少します。 データの整合性は **Application Insights Connector** ページとパースペクティブで保持されますが、カスタム クエリでは、サンプリング データを手動で補正する必要があります。
+Application Insights では、" *[サンプリング補正](../app/sampling.md)* " によって、テレメトリのトラフィックを削減しています。 Application Insights アプリでサンプリングを有効にすると、Application Insights と Log Analytics の両方に格納されるエントリの数が減少します。 データの整合性は **Application Insights Connector** ページとパースペクティブで保持されますが、カスタム クエリでは、サンプリング データを手動で補正する必要があります。
 
 ログ検索クエリでのサンプリング補正の例を次に示します。
 
@@ -163,8 +163,8 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 - 可用性
 - 例外
 - Requests
-- ページ ビュー: ワークスペースでページ ビューを受信するには、その情報を収集するようにアプリを構成する必要があります。 詳細については、「[ページ ビュー](../../azure-monitor/app/api-custom-events-metrics.md#page-views)」を参照してください。
-- カスタム イベント: ワークスペースでページ ビューを受信するには、その情報を収集するようにアプリを構成する必要があります。 詳細については、「[TrackEvent](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)」を参照してください。
+- ページ ビュー: ワークスペースでページ ビューを受信するには、その情報を収集するようにアプリを構成する必要があります。 詳細については、「[ページ ビュー](../app/api-custom-events-metrics.md#page-views)」を参照してください。
+- カスタム イベント: ワークスペースでページ ビューを受信するには、その情報を収集するようにアプリを構成する必要があります。 詳細については、「[TrackEvent](../app/api-custom-events-metrics.md#trackevent)」を参照してください。
 
 データは、使用可能になると、Log Analytics によって Application Insights から受信されます。
 
@@ -304,7 +304,7 @@ $Headers = @{
 $Connections = Invoke-RestMethod -Method "GET" -Uri "https://management.azure.com$($LAWorkspace.ResourceId)/dataSources/?%24filter=kind%20eq%20'ApplicationInsights'&api-version=2015-11-01-preview" -Headers $Headers
 $ConnectionsJson = $Connections | ConvertTo-Json
 ```
-このスクリプトでは、Azure Active Directory に対する認証のためにベアラー認証トークンが必要です。 このトークンを取得する方法の 1 つでは、[REST API のドキュメント サイト](https://docs.microsoft.com/rest/api/loganalytics/datasources/createorupdate)の記事を使用します。 **[試してみる]** をクリックして、お使いの Azure サブスクリプションにログインします。 次の図のように、 **[Request Preview]\(要求プレビュー\)** からベアラー トークンをコピーできます。
+このスクリプトでは、Azure Active Directory に対する認証のためにベアラー認証トークンが必要です。 このトークンを取得する方法の 1 つでは、[REST API のドキュメント サイト](/rest/api/loganalytics/datasources/createorupdate)の記事を使用します。 **[試してみる]** をクリックして、お使いの Azure サブスクリプションにログインします。 次の図のように、 **[Request Preview]\(要求プレビュー\)** からベアラー トークンをコピーできます。
 
 
 ![ベアラー トークン](media/app-insights-connector/bearer-token.png)
@@ -318,4 +318,5 @@ ApplicationInsights | summarize by ApplicationName
 
 ## <a name="next-steps"></a>次のステップ
 
-- [ログ検索](../../azure-monitor/log-query/log-query-overview.md)を使用して Application Insights アプリの詳細情報を表示します。
+- [ログ検索](../log-query/log-query-overview.md)を使用して Application Insights アプリの詳細情報を表示します。
+

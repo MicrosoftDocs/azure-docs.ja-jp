@@ -5,16 +5,16 @@ description: Azure PowerShell を使用して、アプリケーション ゲー�
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: 2bd625982ebd051b92df2f66515fd5b0d0612303
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 21e242d0a6a5aa2efa011289200654e71bd58662
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81311932"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071450"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-azure-powershell"></a>Azure PowerShell で TLS 終端を使用してアプリケーション ゲートウェイを作成する
 

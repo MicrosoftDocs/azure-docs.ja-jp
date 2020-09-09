@@ -8,13 +8,16 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 11/07/2018
-ms.custom: mqtt
-ms.openlocfilehash: 35337a99706f25d62964e08a5b16cd8e81f315c6
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.custom:
+- mqtt
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: c80823513dd65d68d74be62ca1194f843623d2dc
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81730295"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323028"
 ---
 # <a name="upload-files-with-iot-hub"></a>IoT Hub を使用したファイルのアップロード
 

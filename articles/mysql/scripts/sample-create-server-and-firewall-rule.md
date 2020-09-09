@@ -5,15 +5,15 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.topic: sample
 ms.date: 12/02/2019
-ms.openlocfilehash: a210d2d11c9d9fccd000a6dffbf1f8730bda0c8b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 265ab2efb375941b83ca91052e3e2276972d8a9b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74765798"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495218"
 ---
 # <a name="create-a-mysql-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>Azure CLI での MySQL サーバーの作成とファイアウォール規則の構成
 このサンプル CLI スクリプトは、Azure Database for MySQL サーバーを作成して、サーバー レベルのファイアウォール規則を構成するものです。 スクリプトが正常に実行されると、すべての Azure サービスと構成済みの IP アドレスから MySQL サーバーにアクセスできるようになります。
@@ -42,4 +42,4 @@ CLI をローカルで実行する場合、この記事では、Azure CLI バー
 
 ## <a name="next-steps"></a>次のステップ
 - Azure CLI に関する詳細を読む: [Azure CLI ドキュメント](/cli/azure)
-- 他のスクリプトを試す: [Azure Database for MySQL の Azure CLI サンプル](../sample-scripts-azure-cli.md)
+- さらに他のスクリプトも試す: [Azure Database for MySQL 用 Azure CLI サンプル](../sample-scripts-azure-cli.md)

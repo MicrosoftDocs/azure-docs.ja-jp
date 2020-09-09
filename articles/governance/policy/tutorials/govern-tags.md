@@ -1,18 +1,18 @@
 ---
 title: チュートリアル:タグ ガバナンスを管理する
 description: このチュートリアルでは、新しいリソースと既存のリソースに対してタグ ガバナンス モデルを作成して適用するために、Azure Policy の Modify 効果を使用します。
-ms.date: 04/21/2020
+ms.date: 08/17/2020
 ms.topic: tutorial
-ms.openlocfilehash: 6319bbde2fdc8f78e2743dd5f1565c8680433fea
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: f49eedb00c98d3c362140fdca9b195a086903f10
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81759070"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545507"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>チュートリアル:Azure Policy を使用してタグ ガバナンスを管理する
 
-[タグ](../../../azure-resource-manager/management/tag-resources.md)は、Azure リソースを分類してまとめるうえで重要な要素です。 [タグ管理のベスト プラクティス](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)に従う際に、タグは Azure Policy を使用してビジネス ポリシーを適用したり、[Cost Management を使用してコストを追跡](../../../cost-management-billing/costs/cost-mgt-best-practices.md#organize-and-tag-your-resources)したりするための基礎にすることができます。
+[タグ](../../../azure-resource-manager/management/tag-resources.md)は、Azure リソースを分類してまとめるうえで重要な要素です。 [タグ管理のベスト プラクティス](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)に従う際に、タグは Azure Policy を使用してビジネス ポリシーを適用したり、[Cost Management を使用してコストを追跡](../../../cost-management-billing/costs/cost-mgt-best-practices.md#tag-shared-resources)したりするための基礎にすることができます。
 タグを使用する方法や理由にかかわらず、Azure リソースのタグをすばやく追加、変更、および削除できることが重要です。 Azure リソースでタグ付けがサポートされているかどうかを確認するには、[タグのサポート](../../../azure-resource-manager/management/tag-support.md)に関するページをご覧ください。
 
 Azure Policy の [Modify](../concepts/effects.md#modify) 効果は、現在のリソース ガバナンスの段階に関係なく、タグのガバナンスを支援するように設計されています。 **Modify** は、次の場合に役立ちます。
@@ -45,7 +45,7 @@ Azure Policy の [Modify](../concepts/effects.md#modify) 効果は、現在の�
 
 ## <a name="configure-the-costcenter-tag"></a>CostCenter タグを構成する
 
-Azure Policy によって管理される Azure 環境に固有の観点では、_CostCenter_ タグ要件で次のことが求められます。
+Azure Policy によって管理される Azure 環境に固有の観点では、_CostCenter_ タグ要件で次の結果が求められます。
 
 - _CostCenter_ タグが欠落しているリソース グループを拒否する
 - 欠落している場合は、親リソース グループから _CostCenter_ タグを追加するようにリソースを変更する
@@ -107,7 +107,7 @@ Azure Policy によって管理される Azure 環境に固有の観点では、
 
 ## <a name="configure-the-env-tag"></a>Env タグを構成する
 
-Azure Policy によって管理される Azure 環境に固有の観点では、_Env_ タグ要件で次のことが求められます。
+Azure Policy によって管理される Azure 環境に固有の観点では、_Env_ タグ要件で次の結果が求められます。
 
 - リソース グループの名前付けスキームに基づいて、リソース グループの _Env_ タグを変更する
 - リソース グループ内のすべてのリソースの _Env_ タグを、親リソース グループと同じものに変更する

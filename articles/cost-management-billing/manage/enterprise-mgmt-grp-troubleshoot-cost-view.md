@@ -4,20 +4,21 @@ description: Azure Portal で組織のコストを表示するときに発生し
 author: bandersmsft
 ms.reviewer: amberb
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 02/13/2019
+ms.subservice: enterprise
+ms.topic: troubleshooting
+ms.date: 08/20/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 625774331003754c79e1f1d33c663f8928a71ecc
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: bd7f1ff20189b971ba32e5c4b40b380fc22611b2
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411574"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88686855"
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>エンタープライズ コスト表示のトラブルシューティング
 
-エンタープライズ加入契約では、一部の設定において登録ユーザーにコストが表示されません。  これらの設定は、登録管理者によって管理されます。 または、登録を Microsoft から直接購入していない場合は、設定はパートナーによって管理されます。  この記事では、設定の概要と、設定が登録に与える影響について説明します。 これらの設定は、Azure ロールベースのアクセス制御 (RBAC) ロールには依存しません。
+エンタープライズ加入契約では、一部の設定において登録ユーザーにコストが表示されません。  これらの設定は、登録管理者によって管理されます。 または、登録を Microsoft から直接購入していない場合は、設定はパートナーによって管理されます。  この記事では、設定の概要と、設定が登録に与える影響について説明します。 これらの設定は、Azure ロールには依存しません。
 
 ## <a name="enable-access-to-costs"></a>コストへのアクセスを有効にする
 

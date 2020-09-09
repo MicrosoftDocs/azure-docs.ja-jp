@@ -2,13 +2,13 @@
 title: ACR タスクからの外部認証
 description: Azure リソースのマネージド ID を使用して、Azure キー コンテナーに格納されている Docker Hub 資格情報を読み取るように、Azure Container Registry タスク (ACR タスク) を構成します。
 ms.topic: article
-ms.date: 01/14/2020
-ms.openlocfilehash: 47d3d643ee1287ef4f444095a2c6cfe6dcab294b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/06/2020
+ms.openlocfilehash: 0bc43f958a14016146160a06372af0b36a9fff75
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76842522"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058131"
 ---
 # <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Azure マネージド ID を使用した、ACR タスクでの外部認証 
 
@@ -117,6 +117,20 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-user-id-properties](../../includes/container-registry-tasks-user-id-properties.md)]
 
+
+### <a name="grant-identity-access-to-key-vault"></a>ID にキー コンテナーへのアクセスを許可する
+
+次の [az keyvault set-policy][az-keyvault-set-policy] コマンドを実行して、キー コンテナーに対するアクセス ポリシーを設定します。 次の例では、ID にキー コンテナーからのシークレットの読み取りを許可します。 
+
+```azurecli
+az keyvault set-policy --name mykeyvault \
+  --resource-group myResourceGroup \
+  --object-id $principalID \
+  --secret-permissions get
+```
+
+「[タスクを手動で実行する](#manually-run-the-task)」に進んでください。
+
 ## <a name="option-2-create-task-with-system-assigned-identity"></a>オプション 2:システム割り当て ID を使用してタスクを作成する
 
 このセクションの手順では、タスクを作成してシステム割り当て ID を有効にします。 ユーザー割り当て ID を有効にする場合は、「[オプション 1: ユーザー割り当て ID を使用してタスクを作成する](#option-1-create-task-with-user-assigned-identity)」を参照してください。 
@@ -136,7 +150,7 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-system-id-properties](../../includes/container-registry-tasks-system-id-properties.md)]
 
-## <a name="grant-identity-access-to-key-vault"></a>ID にキー コンテナーへのアクセスを許可する
+### <a name="grant-identity-access-to-key-vault"></a>ID にキー コンテナーへのアクセスを許可する
 
 次の [az keyvault set-policy][az-keyvault-set-policy] コマンドを実行して、キー コンテナーに対するアクセス ポリシーを設定します。 次の例では、ID にキー コンテナーからのシークレットの読み取りを許可します。 
 

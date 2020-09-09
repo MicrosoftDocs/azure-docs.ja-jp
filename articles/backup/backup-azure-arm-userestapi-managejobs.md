@@ -4,12 +4,12 @@ description: この記事では、REST API を使用して Azure Backup のバ�
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: 628569c547aa776ec2fbb7ec7e32edad7c1fe7dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ced0e0020fe955734bf6cc767480fbadd6eaffc1
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233947"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890282"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>REST API を使用してバックアップ ジョブと復元ジョブを追跡する
 
@@ -17,7 +17,7 @@ Azure Backup サービスは、バックアップのトリガー、復元操作�
 
 ## <a name="fetch-job-information-from-operations"></a>操作からジョブの情報を取得する
 
-バックアップのトリガーといった操作では常に、jobID が返されます。 次に例を示します。[バックアップのトリガー REST API 操作](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3)の最終的な応答は次のとおりです。
+バックアップのトリガーといった操作では常に、jobID が返されます。 次に例を示します。[バックアップのトリガー REST API 操作](backup-azure-arm-userestapi-backupazurevms.md#example-responses-for-on-demand-backup)の最終的な応答は次のとおりです。
 
 ```http
 {
@@ -33,7 +33,7 @@ Azure Backup サービスは、バックアップのトリガー、復元操作�
 }
 ```
 
-Azure VM のバックアップ ジョブは "jobId" フィールドによって識別され、[こちら](https://docs.microsoft.com/rest/api/backup/jobdetails/)で説明されているように、簡単な *GET* 要求を使用して追跡できます。
+Azure VM のバックアップ ジョブは "jobId" フィールドによって識別され、[こちら](/rest/api/backup/jobdetails/)で説明されているように、簡単な *GET* 要求を使用して追跡できます。
 
 ## <a name="tracking-the-job"></a>ジョブの追跡
 
@@ -41,13 +41,13 @@ Azure VM のバックアップ ジョブは "jobId" フィールドによって�
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}?api-version=2019-05-13
 ```
 
-`{jobName}` は上で説明した "jobId" です。 応答は常に 200 OK であり、"status" フィールドでジョブの現在の状態が示されています。 "Completed" または "CompletedWithWarnings" になると、"extendedInfo" セクションでジョブに関する詳細が示されます。
+`{jobName}` は上で説明した "jobId" です。 応答は常に 200 OK であり、"status" フィールドでジョブの現在の状態が示されています。 "Completed" または "CompletedWithWarnings" になると、'extendedInfo' セクションでジョブに関する詳細が示されます。
 
 ### <a name="response"></a>Response
 
 |名前  |Type  |説明  |
 |---------|---------|---------|
-|200 OK     | [JobResource](https://docs.microsoft.com/rest/api/backup/jobdetails/get#jobresource)        | [OK]        |
+|200 OK     | [JobResource](/rest/api/backup/jobdetails/get#jobresource)        | [OK]        |
 
 #### <a name="example-response"></a>応答の例
 

@@ -11,12 +11,12 @@ metadata:
   ms.author: zarhoads
   manager: gwallace
   ms.date: 09/30/2019
-  ms.openlocfilehash: 752482e33573de4e466b7812616d03f04d2cf395
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: ac8900298670323551a25d4ef7ac3f7b44249c5a
+  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "78196214"
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88209890"
 landingContent:
 - title: Azure Dev Spaces について
   linkLists:
@@ -32,18 +32,6 @@ landingContent:
     links:
     - text: Azure Dev Spaces のインストール
       url: how-to/install-dev-spaces.md
-- title: マイクロサービスの開発とテスト
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: マイクロサービスを実行してデバッグする
-      url: quickstart-netcore.md
-    - text: 一連のマイクロサービスでチームと共同作業を行う
-      url: quickstart-team-development.md
-  - linkListType: how-to-guide
-    links:
-    - text: CI/CD パイプラインで Dev Spaces を統合してエンドツーエンドのテストを改善する
-      url: how-to/setup-cicd.md
 - title: 高度なシナリオ
   linkLists:
   - linkListType: how-to-guide
@@ -64,7 +52,7 @@ landingContent:
     links:
     - text: Azure Dev Spaces で GitHub アクションを使用する
       url: how-to/github-actions.md
-    - text: 開発用マシンを AKS クラスターに接続する
-      url: how-to/connect.md
-    - text: Helm 3 を使用するように Azure Dev Spaces クラスターを構成する
-      url: how-to/helm-3.md
+    - text: Visual Studio Code を使用して Local Process with Kubernetes を利用する
+      url: https://code.visualstudio.com/docs/containers/local-process-kubernetes
+    - text: Visual Studio を使用して Local Process with Kubernetes を利用する
+      url: /visualstudio/containers/local-process-kubernetes

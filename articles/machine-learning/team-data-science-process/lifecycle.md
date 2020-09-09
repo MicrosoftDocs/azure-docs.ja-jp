@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a043a1655950f3ed7688e59352f8a912146e12c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76720454"
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>Team Data Science Process ライフサイクル
@@ -45,7 +45,7 @@ TDSP ライフサイクルは、繰り返し行う一連のステップとして
 
    * **目標**: 具体的な目標。
    * **実行方法**: 特定のタスクの概要とそれらを完了する方法についてのガイダンス。
-   * **アーティファクト**: 成果物と、それらを作成するためのサポート。
+   * **成果物**:成果物と、それらを作成するためのサポート。
 
 ## <a name="next-steps"></a>次のステップ
 

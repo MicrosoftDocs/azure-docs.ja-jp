@@ -2,14 +2,14 @@
 title: 一般的な問題のトラブルシューティング
 description: Azure Container Instances をデプロイ、実行、または管理する際の一般的な問題をトラブルシューティングする方法を学習します。
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 06/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 07cdbfb27aaf9076e726ebda861ed24996e10135
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46d3ad6afb1761ca9503676ad2176482b7e4530e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74533389"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260750"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Azure Container Instances における、トラブルシューティングに関する一般的問題
 
@@ -20,16 +20,17 @@ ms.locfileid: "74533389"
 ## <a name="issues-during-container-group-deployment"></a>コンテナー グループのデプロイ時に発生する問題
 ### <a name="naming-conventions"></a>名前付け規則
 
-コンテナーの仕様を定義するときに、特定のパラメーターは名前付けの制限に準拠している必要があります。 下記は、コンテナーグループの特性のための、特定の要件を持つテーブルです。 Azure の名前付け規則の詳細については、Azure Architecture Center 内の[名前付け規則][azure-name-restrictions]を参照してください。
+コンテナーの仕様を定義するときに、特定のパラメーターは名前付けの制限に準拠している必要があります。 下記は、コンテナーグループの特性のための、特定の要件を持つテーブルです。 詳細については、Azure アーキテクチャ センターの「[名前付け規則][azure-name-restrictions]」と、「[Azure リソースの名前付け規則と制限事項][naming-rules]」を参照してください。
 
 | Scope | 長さ | 大文字小文字の区別 | 有効な文字 | 提案されるパターン | 例 |
 | --- | --- | --- | --- | --- | --- |
-| コンテナー グループ名 | 1 ～ 64 |大文字と小文字は区別されない |最初と最後の文字を除く任意の場所の英数字とハイフン |`<name>-<role>-CG<number>` |`web-batch-CG1` |
-| コンテナー名 | 1 ～ 64 |大文字と小文字は区別されない |最初と最後の文字を除く任意の場所の英数字とハイフン |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| コンテナー名<sup>1</sup> | 1 ～ 63 |小文字 | 最初と最後の文字を除く任意の場所の英数字とハイフン |`<name>-<role>-container<number>` |`web-batch-container1` |
 | コンテナーポート | 1 ～ 65535 の範囲 |Integer |1 ～ 65535 の整数 |`<port-number>` |`443` |
 | DNS 名ラベル | 5-63 |大文字と小文字は区別されない |最初と最後の文字を除く任意の場所の英数字とハイフン |`<name>` |`frontend-site1` |
 | 環境変数 | 1 ～ 63 |大文字と小文字は区別されない |最初と最後の文字を除く任意の場所の英数字とアンダースコア (_) |`<name>` |`MY_VARIABLE` |
-| ボリューム名 | 5-63 |大文字と小文字は区別されない |最初と最後の文字を除く任意の場所の小文字のアルファベット、数字、およびハイフン。 2つの連続するハイフンを含めることはできません。 |`<name>` |`batch-output-volume` |
+| ボリューム名 | 5-63 |小文字 |最初と最後の文字を除く任意の場所の英数字とハイフン。 2つの連続するハイフンを含めることはできません。 |`<name>` |`batch-output-volume` |
+
+<sup>1</sup>コンテナー インスタンスとは独立して指定されていない場合 (`az container create` コマンドの展開など)、コンテナー グループ名にも制限がかかります。
 
 ### <a name="os-version-of-image-not-supported"></a>イメージの OS バージョンがサポートされていない
 
@@ -182,7 +183,7 @@ mcr.microsoft.com/azuredocs/aci-helloworld    latest    7367f3256b41    15 month
 
 #### <a name="image-location"></a>イメージの場所
 
-コンテナーの起動時に発生するイメージ プルの影響を軽減する別の方法は、コンテナー インスタンスをデプロイする予定のリージョンと同じリージョン内の [Azure Container Registry](/azure/container-registry/) で、コンテナー イメージをホストすることです。 これにより、コンテナー イメージを伝送する必要があるネットワーク パスが短縮され、ダウンロード時間が大幅に短くなります。
+コンテナーの起動時に発生するイメージ プルの影響を軽減する別の方法は、コンテナー インスタンスをデプロイする予定のリージョンと同じリージョン内の [Azure Container Registry](../container-registry/index.yml) で、コンテナー イメージをホストすることです。 これにより、コンテナー イメージを伝送する必要があるネットワーク パスが短縮され、ダウンロード時間が大幅に短くなります。
 
 #### <a name="cached-images"></a>キャッシュ イメージ
 
@@ -227,12 +228,13 @@ Azure Container Instances では、通常の Docker 構成のようなポート 
 コンテナーのデバッグを支援するために、[コンテナーのログとイベントを取得する](container-instances-get-logs.md)方法を学習します。
 
 <!-- LINKS - External -->
-[azure-name-restrictions]: https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources
-[windows-sac-overview]: https://docs.microsoft.com/windows-server/get-started/semi-annual-channel-overview
+[azure-name-restrictions]: /azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources
+[naming-rules]: ../azure-resource-manager/management/resource-name-rules.md
+[windows-sac-overview]: /windows-server/get-started/semi-annual-channel-overview
 [docker-multi-stage-builds]: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
 [docker-hub-windows-core]: https://hub.docker.com/_/microsoft-windows-servercore
 [docker-hub-windows-nano]: https://hub.docker.com/_/microsoft-windows-nanoserver
 
 <!-- LINKS - Internal -->
 [az-container-show]: /cli/azure/container#az-container-show
-[list-cached-images]: /rest/api/container-instances/listcachedimages
+[list-cached-images]: /rest/api/container-instances/location/listcachedimages

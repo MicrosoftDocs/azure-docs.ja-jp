@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: TBD
 ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: efc116c278bfe72419800603a3b365f461fe0a28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5f0c022de69823aedbbb34eb369de350b4999c69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232235"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514359"
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>StorSimple デバイスの CHAP の構成
 

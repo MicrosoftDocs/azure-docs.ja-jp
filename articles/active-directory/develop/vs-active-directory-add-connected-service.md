@@ -5,17 +5,17 @@ author: ghogen
 manager: jillfra
 ms.prod: visual-studio-windows
 ms.technology: vs-azure
-ms.custom: aaddev, vs-azure
+ms.custom: devx-track-csharp, aaddev, vs-azure
 ms.workload: azure-vs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.openlocfilehash: d5b6452684757aead684356fd9bb032b90c58c4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a1ba7db72743ac122a697bf271e783ec64e041e8
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535827"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165483"
 ---
 # <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Visual Studio の接続済みサービスを利用して Azure Active Directory を追加する
 
@@ -72,5 +72,5 @@ Azure Active Directory (Azure AD) を使用すると、ASP.NET MVC Web アプリ
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure AD の認証シナリオ](authentication-scenarios.md)
+- [Azure AD の認証シナリオ](./authentication-vs-authorization.md)
 - [ASP.NET Web アプリへの "Microsoft でサインイン" の追加](quickstart-v2-aspnet-webapp.md)

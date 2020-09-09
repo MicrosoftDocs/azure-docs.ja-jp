@@ -3,12 +3,13 @@ title: Azure CLI (az) と Azure Service Fabric CLI (sfctl) のサンプル
 description: クラスター、アプリケーション、およびサービスの管理に関する Azure CLI (az) および Azure Service Fabric CLI (sfctl) のサンプル。
 ms.topic: sample
 ms.date: 04/09/2018
-ms.openlocfilehash: 96339f929c25db213fabe5224dd478022ff43427
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 12a48c525d1458b2d920f6a25d91d67e58749a96
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75526653"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502428"
 ---
 # <a name="azure-cli-az-and-azure-service-fabric-cli-sfctl-samples"></a>Azure CLI (az) と Azure Service Fabric CLI (sfctl) のサンプル
 
@@ -16,7 +17,7 @@ ms.locfileid: "75526653"
 
 [!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-sfctl.md)]
 
-| | |
+| サンプル | 説明 |
 |-|-|
 | **クラスターの作成** (Azure CLI を使用)||
 | [セキュリティで保護された Linux クラスターの作成](./scripts/cli-create-cluster.md)| Azure Service Fabric クラスターを作成します。 |

@@ -3,18 +3,18 @@ title: メモリ リークの検出 - Azure Application Insights のスマート
 description: Azure Application insights を使用して、メモリ リークの可能性を監視します。
 ms.topic: conceptual
 ms.date: 12/12/2017
-ms.openlocfilehash: 85d138518dfb1313a810657016e9fe3143887b6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3fe58cd7d61246c5565cd89fa782c8a977f09499
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671700"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539892"
 ---
 # <a name="memory-leak-detection-preview"></a>メモリ リーク検出 (プレビュー)
 
 Application Insight は、アプリケーションの各プロセスのメモリ消費量を自動的に分析し、メモリ リークの可能性やメモリ使用量の増加を警告することができます。
 
-この機能を使用するには、アプリの[パフォーマンス カウンターを構成する](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters)こと以外は、特別な設定は必要ありません。 アプリケーションから十分な量のメモリ パフォーマンス カウンター テレメトリ (プライベート バイトなど) が生成されると、有効になります。
+この機能を使用するには、アプリの[パフォーマンス カウンターを構成する](./performance-counters.md)こと以外は、特別な設定は必要ありません。 アプリケーションから十分な量のメモリ パフォーマンス カウンター テレメトリ (プライベート バイトなど) が生成されると、有効になります。
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>この種類のスマート検出通知はどのような場合に取得されますか。
 一般的な通知は、アプリケーションの一部である 1 つ以上のプロセスや 1 つ以上のコンピューターで、長時間にわたってメモリ使用量が一貫して増加すると送信されます。 メモリ リークのパターンに一致するメモリ消費の増加を検出するため、機械学習アルゴリズムが使用されます。

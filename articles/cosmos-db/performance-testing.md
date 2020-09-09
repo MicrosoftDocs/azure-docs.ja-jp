@@ -3,16 +3,16 @@ title: Azure Cosmos DB のパフォーマンスとスケールのテスト
 description: Azure Cosmos DB のスケーリングとパフォーマンスをテストする方法について説明します。 ハイパフォーマンス アプリケーション シナリオ用の Azure Cosmos DB の機能を評価できます。
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: fb510c5628913fb3fa37b572c4409aee5d1028ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ffe368d763ee93d1864f0f807cbe18b8ebfe41c9
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76313757"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851658"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Azure Cosmos DB のパフォーマンスとスケールのテスト
 
@@ -29,8 +29,6 @@ Azure Cosmos DB のワークロードに対するパフォーマンス テスト
 
 > [!NOTE]
 > このアプリケーションの目的は、クライアント マシンの数が少ない場合に Azure Cosmos DB で最良のパフォーマンスを得る方法を示すことです。 このサンプルの目的は、Azure Cosmos DBの (制限なしでスケールできる) ピーク時のスループット容量を達成することではありません。
-> 
-> 
 
 Azure Cosmos DB のパフォーマンスを向上させるためのクライアント側の構成オプションについては、[Azure Cosmos DB のパフォーマンスに関するヒント](performance-tips.md)に関する記事を参照してください。
 
@@ -48,52 +46,53 @@ Azure Cosmos DB のパフォーマンスを向上させるためのクライア�
 
 **手順 3:** コマンド ラインからコンソール アプリをコンパイルして実行します。 次のような出力結果が表示されます。
 
-    C:\Users\cosmosdb\Desktop\Benchmark>DocumentDBBenchmark.exe
-    Summary:
-    ---------------------------------------------------------------------
-    Endpoint: https://arramacquerymetrics.documents.azure.com:443/
-    Collection : db.data at 100000 request units per second
-    Document Template*: Player.json
-    Degree of parallelism*: -1
-    ---------------------------------------------------------------------
+```bash
+C:\Users\cosmosdb\Desktop\Benchmark>DocumentDBBenchmark.exe
+Summary:
+---------------------------------------------------------------------
+Endpoint: https://arramacquerymetrics.documents.azure.com:443/
+Collection : db.data at 100000 request units per second
+Document Template*: Player.json
+Degree of parallelism*: -1
+---------------------------------------------------------------------
+DocumentDBBenchmark starting...
+Found collection data with 100000 RU/s
+Starting Inserts with 100 tasks
+Inserted 4503 docs @ 4491 writes/s, 47070 RU/s (122B max monthly 1KB reads)
+Inserted 17910 docs @ 8862 writes/s, 92878 RU/s (241B max monthly 1KB reads)
+Inserted 32339 docs @ 10531 writes/s, 110366 RU/s (286B max monthly 1KB reads)
+Inserted 47848 docs @ 11675 writes/s, 122357 RU/s (317B max monthly 1KB reads)
+Inserted 58857 docs @ 11545 writes/s, 120992 RU/s (314B max monthly 1KB reads)
+Inserted 69547 docs @ 11378 writes/s, 119237 RU/s (309B max monthly 1KB reads)
+Inserted 80687 docs @ 11345 writes/s, 118896 RU/s (308B max monthly 1KB reads)
+Inserted 91455 docs @ 11272 writes/s, 118131 RU/s (306B max monthly 1KB reads)
+Inserted 102129 docs @ 11208 writes/s, 117461 RU/s (304B max monthly 1KB reads)
+Inserted 112444 docs @ 11120 writes/s, 116538 RU/s (302B max monthly 1KB reads)
+Inserted 122927 docs @ 11063 writes/s, 115936 RU/s (301B max monthly 1KB reads)
+Inserted 133157 docs @ 10993 writes/s, 115208 RU/s (299B max monthly 1KB reads)
+Inserted 144078 docs @ 10988 writes/s, 115159 RU/s (298B max monthly 1KB reads)
+Inserted 155415 docs @ 11013 writes/s, 115415 RU/s (299B max monthly 1KB reads)
+Inserted 166126 docs @ 10992 writes/s, 115198 RU/s (299B max monthly 1KB reads)
+Inserted 173051 docs @ 10739 writes/s, 112544 RU/s (292B max monthly 1KB reads)
+Inserted 180169 docs @ 10527 writes/s, 110324 RU/s (286B max monthly 1KB reads)
+Inserted 192469 docs @ 10616 writes/s, 111256 RU/s (288B max monthly 1KB reads)
+Inserted 199107 docs @ 10406 writes/s, 109054 RU/s (283B max monthly 1KB reads)
+Inserted 200000 docs @ 9930 writes/s, 104065 RU/s (270B max monthly 1KB reads)
 
-    DocumentDBBenchmark starting...
-    Found collection data with 100000 RU/s
-    Starting Inserts with 100 tasks
-    Inserted 4503 docs @ 4491 writes/s, 47070 RU/s (122B max monthly 1KB reads)
-    Inserted 17910 docs @ 8862 writes/s, 92878 RU/s (241B max monthly 1KB reads)
-    Inserted 32339 docs @ 10531 writes/s, 110366 RU/s (286B max monthly 1KB reads)
-    Inserted 47848 docs @ 11675 writes/s, 122357 RU/s (317B max monthly 1KB reads)
-    Inserted 58857 docs @ 11545 writes/s, 120992 RU/s (314B max monthly 1KB reads)
-    Inserted 69547 docs @ 11378 writes/s, 119237 RU/s (309B max monthly 1KB reads)
-    Inserted 80687 docs @ 11345 writes/s, 118896 RU/s (308B max monthly 1KB reads)
-    Inserted 91455 docs @ 11272 writes/s, 118131 RU/s (306B max monthly 1KB reads)
-    Inserted 102129 docs @ 11208 writes/s, 117461 RU/s (304B max monthly 1KB reads)
-    Inserted 112444 docs @ 11120 writes/s, 116538 RU/s (302B max monthly 1KB reads)
-    Inserted 122927 docs @ 11063 writes/s, 115936 RU/s (301B max monthly 1KB reads)
-    Inserted 133157 docs @ 10993 writes/s, 115208 RU/s (299B max monthly 1KB reads)
-    Inserted 144078 docs @ 10988 writes/s, 115159 RU/s (298B max monthly 1KB reads)
-    Inserted 155415 docs @ 11013 writes/s, 115415 RU/s (299B max monthly 1KB reads)
-    Inserted 166126 docs @ 10992 writes/s, 115198 RU/s (299B max monthly 1KB reads)
-    Inserted 173051 docs @ 10739 writes/s, 112544 RU/s (292B max monthly 1KB reads)
-    Inserted 180169 docs @ 10527 writes/s, 110324 RU/s (286B max monthly 1KB reads)
-    Inserted 192469 docs @ 10616 writes/s, 111256 RU/s (288B max monthly 1KB reads)
-    Inserted 199107 docs @ 10406 writes/s, 109054 RU/s (283B max monthly 1KB reads)
-    Inserted 200000 docs @ 9930 writes/s, 104065 RU/s (270B max monthly 1KB reads)
-
-    Summary:
-    ---------------------------------------------------------------------
-    Inserted 200000 docs @ 9928 writes/s, 104063 RU/s (270B max monthly 1KB reads)
-    ---------------------------------------------------------------------
-    DocumentDBBenchmark completed successfully.
-    Press any key to exit...
-
+Summary:
+---------------------------------------------------------------------
+Inserted 200000 docs @ 9928 writes/s, 104063 RU/s (270B max monthly 1KB reads)
+---------------------------------------------------------------------
+DocumentDBBenchmark completed successfully.
+Press any key to exit...
+```
 
 **手順 4 (必要に応じて実行):** ツールからレポートされるスループット (RU/s) は、プロビジョニングするコレクションまたは一連のコレクションのスループット以上である必要があります。 そのようになっていない場合は、DegreeOfParallelism を少しずつ増やすと、その境界値に到達しやすくなります。 クライアント アプリのスループットが安定したら、他のクライアント マシンでアプリの複数のインスタンスを開始します。 この手順についてご不明な点がある場合、[Azure portal](https://portal.azure.com) からサポート チケットを申請してください。
 
 アプリの稼働後は、さまざまな[インデックス作成ポリシー](index-policy.md)と[整合性レベル](consistency-levels.md)を試しながら、スループットと待ち時間への影響を把握することができます。 ソース コードに目を通して、同様の構成を独自のテスト スイートや実稼働アプリケーションに実装することもできます。
 
 ## <a name="next-steps"></a>次のステップ
+
 この記事では、.NET コンソール アプリを使用して Azure Cosmos DB でパフォーマンスとスケーリングのテストを実行する方法を説明しました。 詳細については、次の記事を参照してください。
 
 * [Azure Cosmos DB パフォーマンス テスト サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)

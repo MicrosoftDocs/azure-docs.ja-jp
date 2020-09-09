@@ -8,12 +8,13 @@ ms.topic: sample
 ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 28ee64f70cd281a2563a855fb1fca91f229ec7bd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-javascript
+ms.openlocfilehash: deb0ca935cd01a0d86eea007711f65e439d4da00
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "61330600"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421979"
 ---
 # <a name="build-an-app-using-nodejs-and-azure-cosmos-dbs-api-for-mongodb"></a>Node.js および Azure Cosmos DB の MongoDB 用 API を使用してアプリを構築する 
 > [!div class="op_single_selector"]

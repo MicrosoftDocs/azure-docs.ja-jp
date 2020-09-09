@@ -42,7 +42,7 @@ ms.locfileid: "80671448"
 
 1. 新しい空のクラスを Java プロジェクトに追加するために、 **[File]**  >  **[New]**  >  **[Class]** の順に選択します。
 
-1. **[New Java Class]\(新しい Java クラス\)** ウィンドウで、**[Package]\(パッケージ\)** フィールドに「_speechsdk.quickstart_」と入力し、**[Name]\(名前\)** フィールドに「_Main_」と入力します。
+1. **[New Java Class]\(新しい Java クラス\)** ウィンドウで、 **[Package]\(パッケージ\)** フィールドに「_speechsdk.quickstart_」と入力し、 **[Name]\(名前\)** フィールドに「_Main_」と入力します。
 
    ![[New Java Class] ウィンドウのスクリーンショット](~/articles/cognitive-services/speech-service/media/sdk/qs-java-jre-06-create-main-java.png)
 
@@ -187,7 +187,7 @@ ms.locfileid: "80671448"
 
 1. 応答の再生をサポートするために、getAudio() API から返される PullAudioOutputStream オブジェクトを処理しやすいように Java InputStream に変換するクラスを追加します。 この `ActivityAudioStream` は、Direct Line Speech チャネルからの音声応答を処理する特別なクラスです。 このクラスでは、再生の処理に必要なオーディオ形式の情報を取得するアクセサーを提供します。 そのために、 **[File]\(ファイル\)**  >  **[New]\(新規\)**  >  **[Class]\(クラス\)** を選択します。
 
-1. **[New Java Class]\(新しい Java クラス\)** ウィンドウで、**[Package]\(パッケージ\)** フィールドに「_speechsdk.quickstart_」と入力し、**[Name]\(名前\)** フィールドに「_ActivityAudioStream_」と入力します。
+1. **[New Java Class]\(新しい Java クラス\)** ウィンドウで、 **[Package]\(パッケージ\)** フィールドに「_speechsdk.quickstart_」と入力し、 **[Name]\(名前\)** フィールドに「_ActivityAudioStream_」と入力します。
 
 1. 新しく作成した `ActivityAudioStream` クラスを開き、次のコードに置き換えます。
 

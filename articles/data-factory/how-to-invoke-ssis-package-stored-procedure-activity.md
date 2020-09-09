@@ -11,25 +11,26 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 04/17/2018
+ms.date: 07/09/2020
 ms.author: sawinark
-ms.openlocfilehash: 7a935fa4c4e91cf8adcd6df467ac56eeecaf46c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 05ec19fd2351b3a9ac1f383ce4747404eeead936
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605937"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89067826"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory のストアド プロシージャ アクティビティを使用して SSIS パッケージを実行する
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 この記事では、ストアド プロシージャ アクティビティを使用して、SSIS パッケージを Azure Data Factory パイプラインで実行する方法を説明します。 
 
 ## <a name="prerequisites"></a>前提条件
 
 ### <a name="azure-sql-database"></a>Azure SQL データベース 
-この記事のチュートリアルでは、SSIS カタログをホストする Azure SQL データベースを使用します。 Azure SQL Database Managed Instance を使うこともできます。
+この記事のチュートリアルでは、SSIS カタログをホストする Azure SQL データベースを使用します。 Azure SQL Managed Instance を使うこともできます。
 
 ## <a name="create-an-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムを作成します
 Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデプロイに関するチュートリアル](tutorial-create-azure-ssis-runtime-portal.md)の手順に従って作成します。
@@ -80,7 +81,7 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 2. **[アクティビティ]** ツールボックスで **[全般]** を展開し、パイプライン デザイナー画面に **[ストアド プロシージャ]** アクティビティをドラッグ アンド ドロップします。 
 
     ![ストアド プロシージャ アクティビティのドラッグ アンド ドロップ](./media/how-to-invoke-ssis-package-stored-procedure-activity/drag-drop-sproc-activity.png)
-3. ストアド プロシージャ アクティビティのプロパティ ウィンドウで **[SQL アカウント]** タブに切り替えて、 **[+ 新規]** をクリックします。 SSIS カタログ (SSIDB データベース) をホストする Azure SQL データベースへの接続を作成します。 
+3. ストアド プロシージャ アクティビティのプロパティ ウィンドウで **[SQL アカウント]** タブに切り替えて、 **[+ 新規]** をクリックします。 SSIS カタログ (SSIDB データベース) をホストする Azure SQL Database 内のデータベースへの接続を作成します。 
    
     ![新しいリンクされたサービスのボタン](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-linked-service-button.png)
 4. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を行います。 
@@ -134,7 +135,7 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 
     ![アクティビティの実行](./media/how-to-invoke-ssis-package-stored-procedure-activity/activity-runs.png)
 
-4. 次の**クエリ**を Azure SQL サーバーの SSISDB データベースに対して実行すると、パッケージが実行されたことを確認できます。 
+4. 次の**クエリ**を SQL データベースの SSISDB データベースに対して実行すると、パッケージが実行されたことを確認できます。 
 
     ```sql
     select * from catalog.executions
@@ -196,7 +197,7 @@ Azure-SSIS IR と同じデータ ファクトリを使用することも、別�
 * 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、 **[分析]** を展開して **[Data Factory]** を探してください。[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/) データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>Azure SQL Database のリンクされたサービスを作成する
-リンクされたサービスを作成して、SSIS カタログをホストする Azure SQL データベースをデータ ファクトリにリンクします。 このリンクされたサービスの情報をデータ ファクトリが使用して、SSISDB データベースに接続し、ストアド プロシージャを実行して SSIS パッケージを実行します。 
+リンクされたサービスを作成して、SSIS カタログをホストするデータベースをデータ ファクトリにリンクします。 このリンクされたサービスの情報をデータ ファクトリが使用して、SSISDB データベースに接続し、ストアド プロシージャを実行して SSIS パッケージを実行します。 
 
 1. 次の内容を記述した **AzureSqlDatabaseLinkedService.json** という名前の JSON ファイルを **C:\ADF\RunSSISPackage** フォルダーに作成します。 
 
@@ -353,7 +354,7 @@ while ($True) {
     Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-06" -TriggerRunStartedBefore "2017-12-09"
     ```
 
-    次のクエリを Azure SQL サーバーの SSISDB データベースに対して実行すると、パッケージが実行されたことを確認できます。 
+    次のクエリを SQL データベースの SSISDB データベースに対して実行すると、パッケージが実行されたことを確認できます。 
 
     ```sql
     select * from catalog.executions

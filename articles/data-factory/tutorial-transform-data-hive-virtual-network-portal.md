@@ -10,14 +10,14 @@ manager: anandsub
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/04/2018
-ms.openlocfilehash: 23accddcc468eb841eb7c217ec17a893db214cb6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 18f72ff32b29ff5832c363601ed63280339079df
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81409462"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083068"
 ---
-# <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure Data Factory で Hive アクティビティを使用して Azure Virtual Network のデータを変換する
+# <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory-using-the-azure-portal"></a>Azure portal から Azure Data Factory 内の Hive アクティビティを使用して Azure Virtual Network のデータを変換する
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -83,7 +83,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
  
    Azure データ ファクトリの名前は **グローバルに一意**にする必要があります。 次のエラーが発生した場合は、データ ファクトリの名前を変更して (yournameMyAzureSsisDataFactory など) 作成し直してください。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事を参照してください。
   
-       `Data factory name “MyAzureSsisDataFactory” is not available`
+    *データ ファクトリ名 "MyAzureSsisDataFactory" は利用できません*
 3. データ ファクトリを作成する Azure **サブスクリプション**を選択します。 
 4. **[リソース グループ]** について、次の手順のいずれかを行います。
      

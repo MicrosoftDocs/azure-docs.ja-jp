@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: 792b95b120f67afcd360730acbd783a3071388b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 36118bb99da5f0c7f918009413394d931415886f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77431487"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076374"
 ---
 # <a name="protect-your-network-resources"></a>ネットワーク リソースの保護
 Azure Security Center では、ネットワーク セキュリティのベスト プラクティスに対して Azure リソースのセキュリティ状態が継続的に分析されます。 Security Center によって潜在的なセキュリティの脆弱性が識別されると、リソースを堅牢化および保護するために必要な管理を構成するプロセスを説明する推奨事項が作成されます。
@@ -116,7 +116,7 @@ Azure Security Center では、ネットワーク セキュリティのベスト
 
 ## <a name="legacy-networking"></a>レガシ ネットワーク <a name ="legacy-networking"></a>
 
-Security Center Standard レベルがない場合、このセクションではネットワークに関する無料の推奨事項を表示する方法について説明します。
+このセクションではネットワークに関する無料の推奨事項を表示する方法について説明します。Security Center Standard レベルがない場合に参照してください。
 
 この情報にアクセスするには、[ネットワーク] ブレードで、 **[レガシ ネットワークの表示]** をクリックします。 
 

@@ -7,16 +7,23 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 38fb45fd339b5e2c7cab6f66a1ed6c0df73fb29e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e1da26d9067427734d407451bdb53e51ba1e6243
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74069625"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84609167"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Azure HDInsight でサポートされている高可用性サービス
 
  分析コンポーネントに最適な可用性レベルを提供するために、HDInsight は、重要なサービスの高可用性 (HA) を保証するための独自のアーキテクチャを使用して開発されました。 このアーキテクチャの一部のコンポーネントは、自動フェールオーバーを提供するために Microsoft によって開発されました。 その他のコンポーネントは、特定のサービスをサポートするためにデプロイされる標準の Apache コンポーネントです。 この記事では、HDInsight の HA サービス モデルのアーキテクチャ、HDInsight で HA サービスのフェールオーバーをサポートする方法、および他のサービス中断から復旧するためのベストプラクティスについて説明します。
+ 
+> [!NOTE]
+> バイアスフリーなコミュニケーション
+>
+> Microsoft は、多様性を尊重する環境をサポートします。 この記事には、_スレーブ_という単語への言及があります。 Microsoft の[バイアスフリーなコミュニケーションに関するスタイル ガイド](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)では、これを排他的な単語と認めています。 この単語は現在、ソフトウェアに表示される単語であるため、一貫性を保つためにこの記事で使用されています。 単語を削除するためにソフトウェアを更新するのに合わせて、この記事は更新されます。
+>
+
 
 ## <a name="high-availability-infrastructure"></a>高可用性インフラストラクチャ
 
@@ -58,7 +65,7 @@ Microsoft では、HDInsight クラスターの次の表に示す 4 つの Apach
 >[!Note]
 > 現在、HDInsight Enterprise セキュリティ パッケージ (ESP) クラスターでは、Ambari サーバーの高可用性のみが提供されています。
 
-### <a name="architecture"></a>Architecture
+### <a name="architecture"></a>アーキテクチャ
 
 各 HDInsight クラスターには、アクティブ モードとスタンバイ モードそれぞれに 2 つのヘッドノードがあります。 HDInsight HA サービスはヘッドノードでのみ実行されます。 これらのサービスは、常にアクティブなヘッドノードで実行され、スタンバイ ヘッドノードで停止されメンテナンス モードにされる必要があります。
 

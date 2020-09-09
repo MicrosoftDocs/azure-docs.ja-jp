@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 11/26/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 019f462d4264d19bcc4806d91223029a95f9d819
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4946524768d0cff483feb4045a2cc5fba169a7a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77617184"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507949"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>HANA L インスタンスのサポートされるシナリオ
 この記事では、HANA L インスタンス (HLI) のサポートされるシナリオとアーキテクチャの詳細について説明します。
@@ -195,7 +195,7 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 
 ### <a name="key-considerations"></a>重要な考慮事項
 - /usr/sap/SID は、/hana/shared/SID へのシンボリック リンクです。
-- ボリューム サイズの分布は、メモリ内のデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)に関するページを参照してください。
+- ボリューム サイズの分布は、メモリ内のデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](./hana-overview-architecture.md)に関するページを参照してください。
 
 ## <a name="single-node-with-dr-using-storage-replication"></a>ストレージ レプリケーションを使用した DR の単一ノード
  
@@ -232,9 +232,9 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 
 ### <a name="key-considerations"></a>重要な考慮事項
 - /usr/sap/SID は、/hana/shared/SID へのシンボリック リンクです。
-- MCOS の場合:ボリューム サイズの分布は、メモリ内のデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)に関するページを参照してください。
+- MCOS の場合:ボリューム サイズの分布は、メモリ内のデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](./hana-overview-architecture.md)に関するページを参照してください。
 - DR サイト:ボリュームとマウント ポイントは、DR HLI ユニットでの実稼働 HANA インスタンスのインストール用に構成されます ("HANA のインストールに必須" とマークされています)。 
-- DR サイト:データ、ログ バックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー中にのみマウントされます。 詳細については、[ディザスター リカバリーのフェールオーバー手順](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)に関するページを参照してください。
+- DR サイト:データ、ログ バックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー中にのみマウントされます。 詳細については、[ディザスター リカバリーのフェールオーバー手順](./hana-overview-high-availability-disaster-recovery.md)に関するページを参照してください。
 - *SKU Type I クラス*のブート ボリュームは DR ノードにレプリケートされます。
 
 
@@ -281,9 +281,9 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 
 ### <a name="key-considerations"></a>重要な考慮事項
 - /usr/sap/SID は、/hana/shared/SID へのシンボリック リンクです。
-- MCOS の場合:ボリューム サイズの分布は、メモリ内のデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)に関するページを参照してください。
+- MCOS の場合:ボリューム サイズの分布は、メモリ内のデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](./hana-overview-architecture.md)に関するページを参照してください。
 - DR サイト:ボリュームとマウント ポイントは、DR HLI ユニットでの実稼働 HANA インスタンスのインストール用に構成されます ("HANA のインストールに必須" とマークされています)。 
-- DR サイト:データ、ログ バックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー中にのみマウントされます。 詳細については、[ディザスター リカバリーのフェールオーバー手順](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)に関するページを参照してください。 
+- DR サイト:データ、ログ バックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー中にのみマウントされます。 詳細については、[ディザスター リカバリーのフェールオーバー手順](./hana-overview-high-availability-disaster-recovery.md)に関するページを参照してください。 
 - DR サイト:QA インスタンスのインストール用に、QA のデータ、ログ バックアップ、ログ、および共有ボリューム ("QA インスタンスのインストール" とマークされています) が構成されています。
 - *SKU Type I クラス*のブート ボリュームは DR ノードにレプリケートされます。
 
@@ -333,7 +333,7 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 
 ### <a name="key-considerations"></a>重要な考慮事項
 - /usr/sap/SID は、/hana/shared/SID へのシンボリック リンクです。
-- MCOS の場合:ボリューム サイズの分布は、メモリ内のデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)に関するページを参照してください。
+- MCOS の場合:ボリューム サイズの分布は、メモリ内のデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](./hana-overview-architecture.md)に関するページを参照してください。
 - STONITH: SBD は STONITH 設定用に構成されています。 ただし、STONITH の使用は省略可能です。
 
 
@@ -387,11 +387,11 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 
 ### <a name="key-considerations"></a>重要な考慮事項
 - /usr/sap/SID は、/hana/shared/SID へのシンボリック リンクです。
-- MCOS の場合:ボリューム サイズの分布は、メモリ内のデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)に関するページを参照してください。
+- MCOS の場合:ボリューム サイズの分布は、メモリ内のデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](./hana-overview-architecture.md)に関するページを参照してください。
 - STONITH: SBD は STONITH 設定用に構成されています。 ただし、STONITH の使用は省略可能です。
 - DR サイト:プライマリおよびセカンダリ ノードのレプリケーションには、*2 セットのストレージ ボリュームが必要です*。
 - DR サイト:ボリュームとマウント ポイントは、DR HLI ユニットでの実稼働 HANA インスタンスのインストール用に構成されます ("HANA のインストールに必須" とマークされています)。 
-- DR サイト:データ、ログ バックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー中にのみマウントされます。 詳細については、[ディザスター リカバリーのフェールオーバー手順](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)に関するページを参照してください。 
+- DR サイト:データ、ログ バックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー中にのみマウントされます。 詳細については、[ディザスター リカバリーのフェールオーバー手順](./hana-overview-high-availability-disaster-recovery.md)に関するページを参照してください。 
 - DR サイト:QA インスタンスのインストール用に、QA のデータ、ログ バックアップ、ログ、および共有ボリューム ("QA インスタンスのインストール" とマークされています) が構成されています。
 - *SKU Type I クラス*のブート ボリュームは DR ノードにレプリケートされます。
 
@@ -555,7 +555,7 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 ### <a name="key-considerations"></a>重要な考慮事項
 - /usr/sap/SID は、/hana/shared/SID へのシンボリック リンクです。
 -  DR サイト:ボリュームとマウント ポイントは、DR HLI ユニットでの実稼働 HANA インスタンスのインストール用に構成されます ("HANA のインストールに必須" とマークされています)。 
-- DR サイト:データ、ログ バックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー中にのみマウントされます。 詳細については、[ディザスター リカバリーのフェールオーバー手順](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)に関するページを参照してください。 
+- DR サイト:データ、ログ バックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー中にのみマウントされます。 詳細については、[ディザスター リカバリーのフェールオーバー手順](./hana-overview-high-availability-disaster-recovery.md)に関するページを参照してください。 
 - *SKU Type I クラス*のブート ボリュームは DR ノードにレプリケートされます。
 
 
@@ -594,9 +594,9 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 
 ### <a name="key-considerations"></a>重要な考慮事項
 - /usr/sap/SID は、/hana/shared/SID へのシンボリック リンクです。
-- MCOS の場合:ボリューム サイズの分布は、メモリ内のデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)に関するページを参照してください。
+- MCOS の場合:ボリューム サイズの分布は、メモリ内のデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](./hana-overview-architecture.md)に関するページを参照してください。
 - プライマリ ノードは、HANA システム レプリケーションを使用して DR ノードと同期します。 
-- [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) を使用して ExpressRoute 回線を相互にリンクし、リージョンのネットワーク間にプライベート ネットワークを構築します。
+- [Global Reach](../../../expressroute/expressroute-global-reach.md) を使用して ExpressRoute 回線を相互にリンクし、リージョンのネットワーク間にプライベート ネットワークを構築します。
 
 
 
@@ -644,11 +644,11 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 
 ### <a name="key-considerations"></a>重要な考慮事項
 - /usr/sap/SID は、/hana/shared/SID へのシンボリック リンクです。
-- MCOS の場合:ボリューム サイズの分布は、メモリ内のデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)に関するページを参照してください。
+- MCOS の場合:ボリューム サイズの分布は、メモリ内のデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](./hana-overview-architecture.md)に関するページを参照してください。
 - DR サイト:ボリュームとマウント ポイントは、DR HLI ユニットでの実稼働 HANA インスタンスのインストール用に構成されています ("DR サイトの実稼働インスタンス" とマークされています)。 
 - DR サイト:QA インスタンスのインストール用に、QA のデータ、ログ バックアップ、ログ、および共有ボリューム ("QA インスタンスのインストール" とマークされています) が構成されています。
 - プライマリ ノードは、HANA システム レプリケーションを使用して DR ノードと同期します。 
-- [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) を使用して ExpressRoute 回線を相互にリンクし、リージョンのネットワーク間にプライベート ネットワークを構築します。
+- [Global Reach](../../../expressroute/expressroute-global-reach.md) を使用して ExpressRoute 回線を相互にリンクし、リージョンのネットワーク間にプライベート ネットワークを構築します。
 
 ## <a name="high-availability-and-disaster-recovery-with-hsr"></a>HSR の高可用性とディザスター リカバリー 
  
@@ -693,7 +693,7 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 - /usr/sap/SID は、/hana/shared/SID へのシンボリック リンクです。
 - DR サイト:ボリュームとマウント ポイントは、DR HLI ユニットでの実稼働 HANA インスタンスのインストール用に構成されます ("実稼働 DR インスタンス" とマークされています)。 
 - プライマリ サイトのノードは、HANA システム レプリケーションを使用して DR ノードと同期します。 
-- [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) を使用して ExpressRoute 回線を相互にリンクし、リージョンのネットワーク間にプライベート ネットワークを構築します。
+- [Global Reach](../../../expressroute/expressroute-global-reach.md) を使用して ExpressRoute 回線を相互にリンクし、リージョンのネットワーク間にプライベート ネットワークを構築します。
 
 ## <a name="high-availability-and-disaster-recovery-with-hsr-cost-optimized"></a>HSR の高可用性とディザスター リカバリー (コスト最適化)
  
@@ -742,7 +742,7 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 - DR サイト:ボリュームとマウント ポイントは、DR HLI ユニットでの実稼働 HANA インスタンスのインストール用に構成されます ("実稼働 DR インスタンス" とマークされています)。 
 - DR サイト:QA インスタンスのインストール用に、QA のデータ、ログ バックアップ、ログ、および共有ボリューム ("QA インスタンスのインストール" とマークされています) が構成されています。
 - プライマリ サイトのノードは、HANA システム レプリケーションを使用して DR ノードと同期します。 
-- [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) を使用して ExpressRoute 回線を相互にリンクし、リージョンのネットワーク間にプライベート ネットワークを構築します。
+- [Global Reach](../../../expressroute/expressroute-global-reach.md) を使用して ExpressRoute 回線を相互にリンクし、リージョンのネットワーク間にプライベート ネットワークを構築します。
 
 ## <a name="scale-out-with-dr-using-hsr"></a>HSR を使用した DR ありのスケールアウト
  
@@ -789,9 +789,9 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 - /usr/sap/SID は、/hana/shared/SID へのシンボリック リンクです。
 - DR サイト:ボリュームとマウント ポイントは、DR HLI ユニットでの実稼働 HANA インスタンスのインストール用に構成されます。 
 - プライマリ サイトのノードは、HANA システム レプリケーションを使用して DR ノードと同期します。 
-- [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) を使用して ExpressRoute 回線を相互にリンクし、リージョンのネットワーク間にプライベート ネットワークを構築します。
+- [Global Reach](../../../expressroute/expressroute-global-reach.md) を使用して ExpressRoute 回線を相互にリンクし、リージョンのネットワーク間にプライベート ネットワークを構築します。
 
 
 ## <a name="next-steps"></a>次のステップ
-- HANA L インスタンスの[インフラストラクチャと接続](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity)
-- HANA L インスタンスの[高可用性とディザスター リカバリー](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)
+- HANA L インスタンスの[インフラストラクチャと接続](./hana-overview-infrastructure-connectivity.md)
+- HANA L インスタンスの[高可用性とディザスター リカバリー](./hana-overview-high-availability-disaster-recovery.md)

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: e0bc7eeff276d44f3cd23e30eb54c9bd1ca94efd
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: be62cb9cd9f9e603e60006d5482b59ed37a516ff
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80659038"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87375330"
 ---
 1. Eclipse を起動します。
 
@@ -45,7 +45,7 @@ ms.locfileid: "80659038"
 
      [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#repositories)]
 
-   * 依存関係として Speech SDK バージョン 1.11.0 を指定した `dependencies` 要素も追加します。
+   * 依存関係として Speech SDK バージョン 1.13.0 を指定した `dependencies` 要素も追加します。
 
      [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#dependencies)]
 

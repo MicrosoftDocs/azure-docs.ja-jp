@@ -3,12 +3,12 @@ title: Azure Advisor の使用を開始する
 description: Azure Advisor の使用を開始します。
 ms.topic: article
 ms.date: 02/01/2019
-ms.openlocfilehash: 8c2699030b1a6d428ddc2a4db40a66003824cf10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e91049077502a6c0eedf0a4f979c073690c214da
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229671"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117864"
 ---
 # <a name="get-started-with-azure-advisor"></a>Azure Advisor の使用を開始する
 
@@ -19,7 +19,7 @@ Azure Portal を使用して Advisor にアクセスし、推奨事項を取得�
 
 ## <a name="get-recommendations"></a>推奨の取得
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. 左側のウィンドウで、 **[Advisor]** をクリックします。  左側のウィンドウに Advisor が表示されていない場合は、 **[すべてのサービス]** をクリックします。  サービス メニュー ウィンドウで、 **[Monitoring and Management]\(監視と管理\)** の **[Advisor]** をクリックします。 Advisor ダッシュボードが表示されます。
 
@@ -27,7 +27,7 @@ Azure Portal を使用して Advisor にアクセスし、推奨事項を取得�
 
 1. Advisor ダッシュボードには、選択したすべてのサブスクリプションの推奨事項の概要が表示されます。  サブスクリプション フィルター ドロップダウンを使用して、推奨事項を表示するサブスクリプションを選択できます。
 
-1. 特定のカテゴリの推奨事項を取得するには、 **[高可用性]** 、 **[セキュリティ]** 、 **[パフォーマンス]** 、 **[コスト]** の各タブのいずれかをクリックします。 
+1. 特定のカテゴリの推奨事項を取得するには、次の各タブのいずれかをクリックします。 **[信頼性]** 、 **[セキュリティ]** 、 **[パフォーマンス]** 、 **[コスト]** 。 
 
    ![Azure Advisor ダッシュボード](./media/advisor-overview/advisor-dashboard.png)
 
@@ -124,7 +124,8 @@ Advisor では、推奨事項の概要をダウンロードできます。  推�
 Advisor の詳細については、次を参照してください。
 
 - [Azure Advisor の概要](advisor-overview.md)
-- [Advisor の高可用性に関する推奨事項](advisor-high-availability-recommendations.md)
+- [Advisor の信頼性に関する推奨事項](advisor-high-availability-recommendations.md)
 - [Advisor のセキュリティに関する推奨事項](advisor-security-recommendations.md)
 - [Advisor のパフォーマンスに関する推奨事項](advisor-performance-recommendations.md)
-- [Advisor のコストに関する推奨事項](advisor-performance-recommendations.md)
+- [Advisor のコストに関する推奨事項](advisor-cost-recommendations.md)
+- [Advisor の優れた運用の推奨事項](advisor-operational-excellence-recommendations.md)

@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 0819ca02d088aeb9ada5de1269467f70242bbcca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c2114f5392da788bb440589e69e704a148731e02
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75609912"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258616"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Windows Azure Diagnostics 拡張機能を使用したパフォーマンスの監視
 
@@ -193,5 +193,5 @@ WAD を介してパフォーマンス カウンターを収集するには、ク
 
 ## <a name="next-steps"></a>次のステップ
 * クラスターのその他のパフォーマンス カウンターを収集します。 収集が必要なカウンターの一覧については、「[パフォーマンス メトリック](service-fabric-diagnostics-event-generation-perf.md)」を参照してください。
-* [Windows VM と Azure Resource Manager テンプレートで監視と診断を利用](../virtual-machines/windows/extensions-diagnostics-template.md)して、`WadCfg` にさらに変更を加えます (診断データを送信する追加のストレージ アカウントの構成など)。
+* [Windows VM と Azure Resource Manager テンプレートで監視と診断を利用](../virtual-machines/extensions/diagnostics-template.md)して、`WadCfg` にさらに変更を加えます (診断データを送信する追加のストレージ アカウントの構成など)。
 * [WadCfg ビルダー](https://azure.github.io/azure-diagnostics-tools/config-builder/)にアクセスして最初からテンプレートを構築し、構文が正しいことを確認します (https://azure.github.io/azure-diagnostics-tools/config-builder/) で最初からテンプレートを構築し、構文が正しいことを確認します)。

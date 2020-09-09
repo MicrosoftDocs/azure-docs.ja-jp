@@ -7,10 +7,10 @@ ms.date: 11/28/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: ec408403d4baa0f211c6bfe867a15c96513693cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75461951"
 ---
 # <a name="configure-a-gateway-resource-to-route-requests"></a>要求をルーティングするようにゲートウェイ リソースを構成する
@@ -219,8 +219,8 @@ HTTP のルーティング規則は、次のプロパティで構成されます
 ```
 
 このゲートウェイは、ポート 80 でリッスンしており、少なくとも 2 つのサービス "helloWorldService" と "counterService" で構成される、Linux アプリケーション "meshAppLinux" 用に構成されています。 受信要求の URL の構造に応じて、要求はこれらのサービスのいずれかにルーティングされます。 
-* "\<IPAddress>:80/helloWorld/\<要求\>" の場合は、要求は helloWorldService の "helloWorldListener" に送られます。 
-* "\<IPAddress>:80/counter/\<要求\>" の場合は、要求は counterService の "counterListener" に送られます。 
+* "\<IPAddress>:80/helloWorld/\<request\>" の場合は、要求は helloWorldService の "helloWorldListener" に送られます。 
+* "\<IPAddress>:80/counter/\<request\>" の場合は、要求は counterService の "counterListener" に送られます。 
 
 ## <a name="next-steps"></a>次のステップ
 * [Ingress サンプル](https://github.com/Azure-Samples/service-fabric-mesh/tree/2018-09-01-preview/templates/ingress)をデプロイして、ゲートウェイの動作を確認する

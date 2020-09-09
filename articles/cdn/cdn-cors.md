@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 169de21b6dbdafaaeff64e315daa104f3b6faadd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89adc283fa9d6edc49536cb9459a479710c94435
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74278093"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921162"
 ---
 # <a name="using-azure-cdn-with-cors"></a>CORS を利用した Azure CDN の使用
 ## <a name="what-is-cors"></a>CORS とは
@@ -82,7 +82,9 @@ Premium ルール エンジンを使用してこれを行う方法は 2 つあ�
 #### <a name="one-regular-expression-with-all-valid-origins"></a>有効なオリジンがすべて含まれる 1 つの正規表現
 この場合、許可するオリジンがすべて含まれた正規表現を作成します。 
 
-    https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
+```http
+https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
+```
 
 > [!TIP]
 > **Azure CDN Premium from Verizon** では、正規表現を作成するエンジンとして [Perl Compatible Regular Expressions](https://pcre.org/) を使用します。  正規表現を検証するには、[Regular Expressions 101](https://regex101.com/) などのツールを使用できます。  スラッシュ (/) は正規表現で有効であり、エスケープする必要はありません。ただし、この文字のエスケープはベスト プラクティスだと考えられており、一部の正規表現検証ツールではエスケープするよう想定されていることに注意してください。

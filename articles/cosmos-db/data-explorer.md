@@ -3,15 +3,15 @@ title: Azure Cosmos DB エクスプローラーを使用してデータを管理
 description: Azure Cosmos DB エクスプローラーは、スタンドアロンの Web ベースのインターフェイスで、Azure Cosmos DB に格納されたデータを表示および管理することができます。
 author: deborahc
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: dech
-ms.openlocfilehash: 57ba647ade45928f03cd7fb2b037642d5e4d52cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 918f5a4a572f5518e5ae1b08db3d88d559571ed7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79096820"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261887"
 ---
 # <a name="work-with-data-using-azure-cosmos-explorer"></a>Azure Cosmos Explorer を使ってデータを操作する 
 
@@ -41,7 +41,7 @@ Azure Cosmos DB エクスプローラーは、スタンドアロンの Web ベ�
 
    アカウントを開くためのアクセスの種類を選択し、 **[開く]** をクリックします。 エクスプローラーが開いた後は、Azure portal の [データ エクスプローラー] タブでのエクスペリエンスと同じです。   
 
-   ![Azure Cosmos DB エクスプローラーを開く](./media/data-explorer/open-data-explorer-with-access-url.png)
+   :::image type="content" source="./media/data-explorer/open-data-explorer-with-access-url.png" alt-text="Azure Cosmos DB エクスプローラーを開く":::
 
 ## <a name="known-issues"></a>既知の問題
 

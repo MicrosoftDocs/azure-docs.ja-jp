@@ -4,10 +4,10 @@ description: この記事では、コンテナー用 Azure Monitor からのメ�
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 5d73f4399d10683597fb2a2e8a3a2ab4ba0d1165
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75730927"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>コンテナー用 Azure Monitor でパフォーマンスの問題に関するアラートを設定する方法

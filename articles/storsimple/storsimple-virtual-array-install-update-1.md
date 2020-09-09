@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: fa53213e577028628d48db91704578e23888f2a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 41546a449165951cd7b462d1db2b1b58ae74e407
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228095"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85508097"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>StorSimple Virtual Array に Update 1.0 をインストールする
 
@@ -30,6 +30,7 @@ ms.locfileid: "79228095"
 StorSimple Virtual Array を最新の状態に保つために、ソフトウェアの更新プログラムまたは修正プログラムを適用します。 更新プログラムを適用する前に、最初にホストで、次にデバイスで、ボリュームまたは共有をオフラインにすることをお勧めします。 これにより、データ破損の可能性を最小限に抑えられます。 ボリュームまたは共有をオフラインにしたら、デバイスの手動バックアップも作成する必要があります。
 
 > [!IMPORTANT]
+>
 > - Update 1.0 は、デバイス上ではソフトウェア バージョン **10.0.10296.0** になります。 この更新プログラムの新機能については、[Update 1.0 のリリース ノート](storsimple-virtual-array-update-1-release-notes.md)に関するページをご覧ください。
 >
 > - 更新プログラムまたは修正プログラムをインストールすると、デバイスが再起動されることに注意してください。 StorSimple Virtual Array は単一ノード デバイスであることから、実行中のすべての IO が中断され、デバイスでダウンタイムが発生します。

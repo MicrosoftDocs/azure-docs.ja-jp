@@ -10,13 +10,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
+ms.custom: how-to
 ms.date: 03/09/2020
-ms.openlocfilehash: e55e6d4eb4f52b8a4b64db89691cf087a30ecb73
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 0dcb8f1f484f9c24a6376aef8836b6dc50d5278a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612318"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321564"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>クラウドで自動機械学習を使用してモデルをトレーニングする
 
@@ -164,37 +165,38 @@ remote_run = experiment.submit(automl_config, show_output=True)
 
 次の例のような出力が表示されます。
 
-    Running on remote compute: mydsvmParent Run ID: AutoML_015ffe76-c331-406d-9bfd-0fd42d8ab7f6
-    ***********************************************************************************************
-    ITERATION: The iteration being evaluated.
-    PIPELINE:  A summary description of the pipeline being evaluated.
-    DURATION: Time taken for the current iteration.
-    METRIC: The result of computing score on the fitted pipeline.
-    BEST: The best observed score thus far.
-    ***********************************************************************************************
+```output
+Running on remote compute: mydsvmParent Run ID: AutoML_015ffe76-c331-406d-9bfd-0fd42d8ab7f6
+***********************************************************************************************
+ITERATION: The iteration being evaluated.
+PIPELINE:  A summary description of the pipeline being evaluated.
+DURATION: Time taken for the current iteration.
+METRIC: The result of computing score on the fitted pipeline.
+BEST: The best observed score thus far.
+***********************************************************************************************
 
-     ITERATION     PIPELINE                               DURATION                METRIC      BEST
-             2      Standardize SGD classifier            0:02:36                  0.954     0.954
-             7      Normalizer DT                         0:02:22                  0.161     0.954
-             0      Scale MaxAbs 1 extra trees            0:02:45                  0.936     0.954
-             4      Robust Scaler SGD classifier          0:02:24                  0.867     0.954
-             1      Normalizer kNN                        0:02:44                  0.984     0.984
-             9      Normalizer extra trees                0:03:15                  0.834     0.984
-             5      Robust Scaler DT                      0:02:18                  0.736     0.984
-             8      Standardize kNN                       0:02:05                  0.981     0.984
-             6      Standardize SVM                       0:02:18                  0.984     0.984
-            10      Scale MaxAbs 1 DT                     0:02:18                  0.077     0.984
-            11      Standardize SGD classifier            0:02:24                  0.863     0.984
-             3      Standardize gradient boosting         0:03:03                  0.971     0.984
-            12      Robust Scaler logistic regression     0:02:32                  0.955     0.984
-            14      Scale MaxAbs 1 SVM                    0:02:15                  0.989     0.989
-            13      Scale MaxAbs 1 gradient boosting      0:02:15                  0.971     0.989
-            15      Robust Scaler kNN                     0:02:28                  0.904     0.989
-            17      Standardize kNN                       0:02:22                  0.974     0.989
-            16      Scale 0/1 gradient boosting           0:02:18                  0.968     0.989
-            18      Scale 0/1 extra trees                 0:02:18                  0.828     0.989
-            19      Robust Scaler kNN                     0:02:32                  0.983     0.989
-
+ ITERATION     PIPELINE                               DURATION                METRIC      BEST
+         2      Standardize SGD classifier            0:02:36                  0.954     0.954
+         7      Normalizer DT                         0:02:22                  0.161     0.954
+         0      Scale MaxAbs 1 extra trees            0:02:45                  0.936     0.954
+         4      Robust Scaler SGD classifier          0:02:24                  0.867     0.954
+         1      Normalizer kNN                        0:02:44                  0.984     0.984
+         9      Normalizer extra trees                0:03:15                  0.834     0.984
+         5      Robust Scaler DT                      0:02:18                  0.736     0.984
+         8      Standardize kNN                       0:02:05                  0.981     0.984
+         6      Standardize SVM                       0:02:18                  0.984     0.984
+        10      Scale MaxAbs 1 DT                     0:02:18                  0.077     0.984
+        11      Standardize SGD classifier            0:02:24                  0.863     0.984
+         3      Standardize gradient boosting         0:03:03                  0.971     0.984
+        12      Robust Scaler logistic regression     0:02:32                  0.955     0.984
+        14      Scale MaxAbs 1 SVM                    0:02:15                  0.989     0.989
+        13      Scale MaxAbs 1 gradient boosting      0:02:15                  0.971     0.989
+        15      Robust Scaler kNN                     0:02:28                  0.904     0.989
+        17      Standardize kNN                       0:02:22                  0.974     0.989
+        16      Scale 0/1 gradient boosting           0:02:18                  0.968     0.989
+        18      Scale 0/1 extra trees                 0:02:18                  0.828     0.989
+        19      Robust Scaler kNN                     0:02:32                  0.983     0.989
+```
 
 ## <a name="explore-results"></a>結果を探索する
 

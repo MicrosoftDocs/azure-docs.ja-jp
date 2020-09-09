@@ -3,12 +3,12 @@ title: Azure Site Recovery における物理サーバーのディザスター �
 description: この記事では、Azure Site Recovery サービスを使用してオンプレミスの物理サーバー を Azure にディザスター リカバリーするときに使用されるコンポーネントとアーキテクチャの概要を説明します。
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: 089d981284986a2b6eb0ee7f1dbd401fc7ce4fcd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2184654a8169cb353fb40fa76f0a7fe9b3df6f6
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162839"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422659"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>物理サーバーの Azure へのディザスター リカバリー アーキテクチャ
 
@@ -28,6 +28,25 @@ ms.locfileid: "77162839"
 **物理から Azure へのアーキテクチャ**
 
 ![Components](./media/physical-azure-architecture/arch-enhanced.png)
+
+## <a name="set-up-outbound-network-connectivity"></a>発信ネットワーク接続を設定する
+
+Site Recovery を期待どおりに動作させるためには、環境でレプリケートが可能になるように、発信ネットワーク接続を変更する必要があります。
+
+> [!NOTE]
+> Site Recovery では、ネットワーク接続を制御するための認証プロキシの使用をサポートしていません。
+
+### <a name="outbound-connectivity-for-urls"></a>URL に対する送信接続
+
+アウトバウンド接続を制御するために URL ベースのファイアウォール プロキシを使用している場合、以下の URL へのアクセスを許可してください。
+
+| **名前**                  | **商用**                               | **政府**                                 | **説明** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| ストレージ                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | ソース リージョンのキャッシュ ストレージ アカウントに、VM からデータが書き込まれるよう許可します。 |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Site Recovery サービス URL に対する承認と認証を提供します。 |
+| レプリケーション               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | VM と Site Recovery サービスの通信を許可します。 |
+| Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | VM による Site Recovery の監視および診断データの書き込みを許可します。 |
+
 
 ## <a name="replication-process"></a>レプリケーション プロセス
 

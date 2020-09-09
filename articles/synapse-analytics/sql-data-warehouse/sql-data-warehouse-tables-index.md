@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 8cb4af8faccb68c455928c0d3c5405ef2d3e70df
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 5ac32c41bd6b30c3edce68d67adc376e066d0bf5
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011023"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797600"
 ---
 # <a name="indexing-tables-in-synapse-sql-pool"></a>Synapse SQL プールでのテーブルのインデックス作成
 
@@ -142,6 +142,9 @@ GROUP BY
 ,       t.[name]
 ;
 ```
+
+>[!TIP]
+> Synapse SQL のパフォーマンスを向上させるには、永続的なユーザー テーブルで、**sys.pdw_table_mappings** ではなく **sys.pdw_permanent_table_mappings** を使用することを検討してください。 詳細については、「 **[sys.pdw_permanent_table_mappings &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** 」を参照してください。
 
 ビューが作成できたので、このクエリを実行して、10 万行未満の行グループを持つテーブルを特定します。 もちろん、セグメントの品質をさらに高める必要がある場合は、10 万行のしきい値を高くすることもできます。
 

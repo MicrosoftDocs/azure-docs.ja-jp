@@ -5,14 +5,14 @@ author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 09/27/2018
+ms.date: 05/27/2020
 ms.author: cynthn
-ms.openlocfilehash: 1844236a77b688819832b3fe0bf6736beea4bfae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 12db42b0edb3d3e27756593f3dfb079804a4145f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81865482"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170047"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Azure Portal を使用して仮想マシンへのポートを開く方法
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -25,47 +25,45 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. VM のリソース グループを検索して選択し、 **[追加]** を選択して、 **[ネットワーク セキュリティ グループ]** を検索して選択します。
 
-2. **［作成］** を選択します
+1. **［作成］** を選択します
 
     **[ネットワーク セキュリティ グループの作成]** ウィンドウが開きます。
 
     ![ネットワーク セキュリティ グループの作成](./media/nsg-quickstart-portal/create-nsg.png)
 
-2. ネットワーク セキュリティ グループの名前を入力します。 
+1. ネットワーク セキュリティ グループの名前を入力します。 
 
-3. リソース グループを選択するか作成して、場所を選択します。
+1. リソース グループを選択するか作成して、場所を選択します。
 
-4. **[作成]** を選択し、ネットワーク セキュリティ グループを作成します。
+1. **[作成]** を選択し、ネットワーク セキュリティ グループを作成します。
 
 ## <a name="create-an-inbound-security-rule"></a>受信セキュリティ規則の作成
 
 1. 新しいネットワーク セキュリティ グループを選択します。 
 
-2. **[受信セキュリティ規則]** 、 **[追加]** の順に選択します。
+1. 左側のメニューの **[受信セキュリティ規則]** を選択してから、 **[追加]** を選択します。
 
-    ![受信規則の追加](./media/nsg-quickstart-portal/add-inbound-rule.png)
+    ![[詳細設定] ページを開く](./media/nsg-quickstart-portal/advanced.png)
 
-3. **[Advanced] \(詳細設定)** を選択します。 
+1. **[受信セキュリティ規則を追加する]** ページで、ページの上部にある **[基本]** から **[詳細設定]** に切り替えます。 
 
-4. **[サービス]** ボックスの一覧で共通のサービスを選択します (たとえば、 **[HTTP]** )。 使用する特定のポートを指定する場合、 **[カスタム]** を選択することもできます。 
+1. **[サービス]** ボックスの一覧で共通のサービスを選択します (たとえば、 **[HTTP]** )。 使用する特定のポートを指定する場合、 **[カスタム]** を選択することもできます。 
 
-5. 必要に応じて、 **[優先度]** または **[名前]** を変更します。 優先度は、ルールが適用される順序に影響します。数値が小さいほど、ルールが早く適用されます。
+1. 必要に応じて、 **[優先度]** または **[名前]** を変更します。 優先度は、ルールが適用される順序に影響します。数値が小さいほど、ルールが早く適用されます。
 
-6. **[追加]** を選択し、規則を作成します。
+1. **[追加]** を選択し、規則を作成します。
 
 ## <a name="associate-your-network-security-group-with-a-subnet"></a>ネットワーク セキュリティ グループとサブネットの関連付け
 
 最後に、ネットワーク セキュリティ グループを、サブネットまたは特定のネットワーク インターフェイスに関連付けます。 この例では、ネットワーク セキュリティ グループをサブネットに関連付けます。 
 
-1. **[サブネット]** を選択し、 **[関連付け]** を選択します。
+1. 左側のメニューから **[サブネット]** を選択し、 **[Associate]\(関連付け\)** を選択します。
 
-    ![ネットワーク セキュリティ グループとサブネットの関連付け](./media/nsg-quickstart-portal/associate-subnet.png)
-
-2. 仮想ネットワークを選択し、適切なサブネットを選択します。
+1. 仮想ネットワークを選択し、適切なサブネットを選択します。
 
     ![ネットワーク セキュリティ グループと仮想ネットワークの関連付け](./media/nsg-quickstart-portal/select-vnet-subnet.png)
 
-    そのサブネットに接続するすべての VM に、ポート 80 で到達できるようになりました。
+1. 終了したら、 **[OK]** を選択します。
 
 ## <a name="additional-information"></a>関連情報
 

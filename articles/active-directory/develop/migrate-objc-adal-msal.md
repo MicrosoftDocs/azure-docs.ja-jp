@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 6050bdc8c2600998b9804b04b62102e74612719f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 13923596b7ad0f6d3fdef24e847f469645b448ee
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77085182"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119931"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>アプリケーションを iOS および macOS 用の MSAL に移行する
 
@@ -45,7 +45,7 @@ Microsoft ID プラットフォームには、Azure Active Directory v1.0 と大
 * Azure Active Directory v1.0 エンドポイントでは、アプリケーションの登録時にすべてのアクセス許可を事前に宣言する必要があります。 これは、これらのアクセス許可が静的であることを意味します。
 * Microsoft ID プラットフォームを使用すると、アクセス許可を動的に要求できます。 アプリでは必要な場合にのみアクセス許可を要求でき、アプリで必要な場合にはさらに要求できます。
 
-Azure Active Directory v1.0 と Microsoft ID プラットフォームの相違点の詳細については、「[Microsoft ID プラットフォーム (v2.0) に更新する理由](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison)」を参照してください。
+Azure Active Directory v1.0 と Microsoft ID プラットフォームの相違点の詳細については、「[Microsoft ID プラットフォーム (v2.0) に更新する理由](../azuread-dev/azure-ad-endpoint-comparison.md)」を参照してください。
 
 ## <a name="adal-and-msal-library-differences"></a>ADAL と MSAL ライブラリの相違点
 
@@ -77,7 +77,7 @@ MSAL でスコープを提供するには、次の 2 つの方法があります
 
 `/.default` スコープを使用するには、リソース識別子に `/.default` を追加します。 (例: `https://graph.microsoft.com/.default`)。 リソースがスラッシュ (`/`) で終わっている場合は、先頭のスラッシュを含めて `/.default` を追加する必要があります。これにより、2 つのスラッシュ (`//`) を持つスコープが作成されます。
 
-"/.default" スコープの使用方法について詳しくは、[こちら](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#the-default-scope)を参照してください。
+"/.default" スコープの使用方法について詳しくは、[こちら](./v2-permissions-and-consent.md#the-default-scope)を参照してください。
 
 ### <a name="supporting-different-webview-types--browsers"></a>異なる WebView の種類とブラウザーのサポート
 
@@ -207,7 +207,7 @@ iOS の MSAL では、次の 2 種類の SSO もサポートされています�
 
 ## <a name="intune-mam-sdk"></a>Intune MAM SDK
 
-[Intune MAM SDK](https://docs.microsoft.com/intune/app-sdk-get-started) では、バージョン [11.1.2](https://github.com/msintuneappsdk/ms-intune-app-sdk-ios/releases/tag/11.1.2) 以降の iOS 用 MSAL がサポートされています。
+[Intune MAM SDK](/intune/app-sdk-get-started) では、バージョン [11.1.2](https://github.com/msintuneappsdk/ms-intune-app-sdk-ios/releases/tag/11.1.2) 以降の iOS 用 MSAL がサポートされています。
 
 ## <a name="msal-and-adal-in-the-same-app"></a>同じアプリ内の MSAL と ADAL
 

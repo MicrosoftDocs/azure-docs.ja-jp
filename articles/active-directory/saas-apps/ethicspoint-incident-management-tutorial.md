@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と EthicsPoint Incident Management (EPIM) の統合 | Microsoft Docs'
 description: Azure Active Directory と EthicsPoint Incident Management (EPIM) の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8cb31a4c-9309-469b-93ac-daf0d3c7a3e6
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 029e45fc4768084b0dcd89b32c5392d26192f7d6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8ea85db0749b2dc95c073072e52a49c795585b55
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73157159"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555424"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ethicspoint-incident-management-epim"></a>チュートリアル: Azure Active Directory と EthicsPoint Incident Management (EPIM) の統合
 
@@ -108,10 +103,10 @@ EthicsPoint Incident Management (EPIM) との Azure AD シングル サインオ
 
     a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
     
-    | |
-    |--|
-    | `https://<companyname>.navexglobal.com`|
-    | `https://<companyname>.ethicspointvp.com`|
+    ```http
+    https://<companyname>.navexglobal.com
+    https://<companyname>.ethicspointvp.com
+    ```
 
     b. **[識別子]** ボックスに、`https://<companyname>.navexglobal.com/adfs/services/trust` という形式で URL を入力します。
 

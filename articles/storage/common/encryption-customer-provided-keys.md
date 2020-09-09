@@ -1,25 +1,25 @@
 ---
 title: BLOB ストレージに対する要求で暗号化キーを指定する
 titleSuffix: Azure Storage
-description: Azure BLOB ストレージに対して要求を行うクライアントには、要求ごとに暗号化キーを指定するオプションがあります (プレビュー)。 要求に暗号化キーを含めると、BLOB ストレージ操作の暗号化設定をきめ細かく制御できます。
+description: Azure BLOB ストレージに対して要求を行うクライアントには、要求ごとに暗号化キーを指定するオプションがあります。 要求に暗号化キーを含めると、BLOB ストレージ操作の暗号化設定をきめ細かく制御できます。
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/12/2020
+ms.date: 07/20/2020
 ms.topic: conceptual
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: c8a5555c5c33255fdc5902a115e7e9103a4e936f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fec3d760450fb5cc20deed14dac03f58f23c2b4b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79410140"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029741"
 ---
-# <a name="provide-an-encryption-key-on-a-request-to-blob-storage-preview"></a>BLOB ストレージに対する要求で暗号化キーを指定する (プレビュー)
+# <a name="provide-an-encryption-key-on-a-request-to-blob-storage"></a>BLOB ストレージに対する要求で暗号化キーを指定する
 
-Azure BLOB ストレージに対して要求を行うクライアントには、要求ごとに暗号化キーを指定するオプションがあります (プレビュー)。 要求に暗号化キーを含めると、BLOB ストレージ操作の暗号化設定をきめ細かく制御できます。 カスタマー指定のキーは、Azure Key Vault または別のキー ストアに格納できます。
+Azure BLOB ストレージに対して要求を行うクライアントには、要求ごとに暗号化キーを指定するオプションがあります。 要求に暗号化キーを含めると、BLOB ストレージ操作の暗号化設定をきめ細かく制御できます。 カスタマー指定のキーは、Azure Key Vault または別のキー ストアに格納できます。
 
 ## <a name="encrypting-read-and-write-operations"></a>読み取り操作と書き込み操作の暗号化
 

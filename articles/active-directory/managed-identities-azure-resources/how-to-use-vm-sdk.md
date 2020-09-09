@@ -3,24 +3,24 @@ title: Azure SDK を使用して Azure VM でマネージド ID を使用する 
 description: Azure リソースのマネージド ID を持つ Azure VM に対して Azure SDK を使用するコード サンプル。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 422b4c63a86904721fc6910193ffa63a8fe46f0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ecfb2fa5f45a23d387741d4865aa9707df960e86
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74184149"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018418"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-with-azure-sdks"></a>Azure SDK を使用して Azure VM で Azure リソースのマネージド ID を使用する方法 
 

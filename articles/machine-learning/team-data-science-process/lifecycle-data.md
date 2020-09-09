@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3c299e9ec42d63812804b5ff7e50324a2de94200
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 85d7159edb1bc8608165264578d77519bf09efc2
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76720505"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195062"
 ---
 # <a name="data-acquisition-and-understanding-stage-of-the-team-data-science-process"></a>Team Data Science Process のデータの取得と理解のステージ
 
@@ -55,7 +55,7 @@ TDSP には、データの視覚化と概要レポートの準備に役立つ、
 クレンジング済みデータの品質に満足したら、次の手順は、データに内在するパターンの理解を深めることです。 このデータ分析により、ターゲットに適した予測モデルを選択して開発することができます。 ターゲットに対するデータの関連性を表す証拠を探します。 その後、次のモデリング手順に進むための十分なデータがあるかどうかを確認します。 このプロセスも、通常は繰り返し実行されます。 場合によっては、前のステージで最初に特定したデータ セットを強化するために、より正確なデータや関連性の高いデータを持つ新しいデータ ソースを探すことが必要です。 
 
 ### <a name="set-up-a-data-pipeline"></a>データ パイプラインを設定する
-最初に行うデータの取り込みとクリーニングに加え、通常は、新しいデータをスコア付けするプロセスやデータを定期的に更新するプロセスを、継続的な学習プロセスの一部として設定する必要があります。 スコア付けは、データ パイプラインまたはワークフローを使用して行うことができます。 [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) を使用してパイプラインを設定する方法の例については、[Azure Data Factory を使用したオンプレミスの SQL Server インスタンスから Azure SQL Database へのデータの移動](move-sql-azure-adf.md)に関するトピックを参照してください。 
+最初に行うデータの取り込みとクリーニングに加え、通常は、新しいデータをスコア付けするプロセスやデータを定期的に更新するプロセスを、継続的な学習プロセスの一部として設定する必要があります。 スコア付けは、データ パイプラインまたはワークフローを使用して行うことができます。 [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) を使用してパイプラインを設定する方法の例については、[Azure Data Factory を使用した SQL Server インスタンスから Azure SQL Database へのデータの移動](move-sql-azure-adf.md)に関するトピックを参照してください。 
 
 このステージでは、データ パイプラインのソリューション アーキテクチャを開発します。 データ サイエンス プロジェクトの次のステージで、パイプラインを並行して開発します。 パイプラインは、ビジネス ニーズとこのソリューションを統合する既存システムの制約に応じて、次のオプションのいずれかにすることができます。 
 

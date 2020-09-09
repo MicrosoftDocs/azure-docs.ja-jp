@@ -10,13 +10,13 @@ metadata:
   ms.collection: M365-security-compliance
   author: mlottner
   ms.author: mlottner
-  ms.date: 09/23/2019
-  ms.openlocfilehash: 5a9f5c9d919c6c30c6318749ad2a62d40865e573
-  ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+  ms.date: 07/15/2020
+  ms.openlocfilehash: 6047b647641033af415be86d8534bda9c857b608
+  ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/07/2020
-  ms.locfileid: "82890901"
+  ms.lasthandoff: 08/11/2020
+  ms.locfileid: "88067309"
 landingContent:
 - title: Azure Security Center for IoT について
   linkLists:
@@ -24,6 +24,8 @@ landingContent:
     links:
     - text: Azure Security Center for IoT とは
       url: overview.md
+    - text: Azure RTOS のセキュリティ ソリューション
+      url: iot-security-azure-rtos.md
     - text: ソリューションの計画
       url: service-prerequisites.md
   - linkListType: architecture
@@ -56,6 +58,8 @@ landingContent:
       url: quickstart-create-security-twin.md
     - text: カスタムのセキュリティのアラートを作成する
       url: quickstart-create-custom-alerts.md
+    - text: セキュリティ アラートについて調査する
+      url: quickstart-investigate-security-alerts.md
 - title: ソリューションをカスタマイズする
   linkLists:
   - linkListType: how-to-guide

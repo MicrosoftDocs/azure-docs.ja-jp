@@ -5,16 +5,16 @@ author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
 services: web-application-firewall
-ms.date: 08/21/2019
+ms.date: 06/09/2020
 ms.author: victorh
-ms.openlocfilehash: b4f666415a96307b89022c6caf6af90581f294f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 596374d4f3f188e08a10bd25b36b178cc79a6e57
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115365"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808949"
 ---
-# <a name="azure-web-application-firewall-monitoring-and-logging"></a>Azure Web アプリケーション ファイアウォールの監視とログ記録 
+# <a name="azure-web-application-firewall-monitoring-and-logging"></a>Azure Web アプリケーション ファイアウォールの監視とログ記録
 
 Azure Web アプリケーション ファイアウォール (WAF) の監視とログ記録は、Azure Monitor および Azure Monitor ログのログ記録およびそれらとの統合を通じて提供されます。
 
@@ -24,7 +24,7 @@ Front Door での WAF のログは、[Azure Monitor](../../azure-monitor/overvie
 
 Azure portal から、Front Door リソースの種類に移動します。 左側の **[監視]** > **[メトリック]** タブから **WebApplicationFirewallRequestCount** を追加し、WAF 規則に一致する要求の数を追跡できます。 アクションの種類と規則の名前に基づいて、カスタム フィルターを作成できます。
 
-![WAFMetrics](../media/waf-frontdoor-monitor/waf-frontdoor-metrics.png)
+:::image type="content" source="../media/waf-frontdoor-monitor/waf-frontdoor-metrics.png" alt-text="WAFMetrics ":::
 
 ## <a name="logs-and-diagnostics"></a>ログと診断
 
@@ -32,9 +32,25 @@ Front Door の WAF では、検出された脅威ごとに詳細なレポート�
 
 ![WAFDiag](../media/waf-frontdoor-monitor/waf-frontdoor-diagnostics.png)
 
-FrontdoorAccessLog では、顧客のバックエンドに転送されるすべての要求が記録されます。 FrontdoorWebApplicationFirewallLog では、WAF 規則と一致するすべての要求が記録されます。
+[FrontdoorAccessLog](../../frontdoor/front-door-diagnostics.md) では、すべての要求が記録されます。 FrontdoorWebApplicationFirewallLog では、次のスキーマを持つ WAF 規則と一致するすべての要求が記録されます。
 
-次のクエリ例では、ブロックされた要求についての WAF ログを取得します。
+| プロパティ  | 説明 |
+| ------------- | ------------- |
+|アクション|要求に対して実行されるアクション|
+| ClientIp | 要求を行ったクライアントの IP アドレス。 要求に X-Forwarded-For ヘッダーがあった場合、ヘッダーフィールドからクライアント IP が選択されます。 |
+| ClientPort | 要求を行ったクライアントの IP アドレス。 |
+| 詳細|一致する要求に関する追加の詳細 |
+|| matchVariableName: ヘッダー名など、一致した要求の http パラメーター名|
+|| matchVariableValue: 一致をトリガーした値|
+| Host | 一致した要求の host ヘッダー |
+| ポリシー | 要求が一致した WAF ポリシーの名前。 |
+| PolicyMode | WAF ポリシーの操作モード。 取り得る値は "Prevention" と "Detection" です |
+| RequestUri | 一致した要求の完全な URI。 |
+| RuleName | 要求が一致した WAF 規則の名前。 |
+| SocketIp | WAF によって検出されたソース IP アドレス。 この IP アドレスは、いずれの要求ヘッダーとも関係なく、TCP セッションに基づいています。|
+| TrackingReference | Front Door によって提供された要求を識別する一意の参照文字列。X-Azure-Ref ヘッダーとしてクライアントにも送信されます。 アクセス ログで特定の要求の詳細を検索するために必要です。 |
+
+次のクエリ例では、ブロックされた要求についての WAF ログが返されます。
 
 ``` WAFlogQuery
 AzureDiagnostics
@@ -47,26 +63,34 @@ WAF ログに記録された要求の例を次に示します。
 
 ``` WAFlogQuerySample
 {
-    "PreciseTimeStamp": "2020-01-25T00:11:19.3866091Z",
-    "time": "2020-01-25T00:11:19.3866091Z",
+    "time":  "2020-06-09T22:32:17.8376810Z",
     "category": "FrontdoorWebApplicationFirewallLog",
-    "operationName": "Microsoft.Network/FrontDoor/WebApplicationFirewallLog/Write",
-    "properties": {
-        "clientIP": "xx.xx.xxx.xxx",
-        "socketIP": "xx.xx.xxx.xxx",
-        "requestUri": "https://wafdemofrontdoorwebapp.azurefd.net:443/?q=../../x",
-        "ruleName": "Microsoft_DefaultRuleSet-1.1-LFI-930100",
-        "policy": "WafDemoCustomPolicy",
-        "action": "Block",
-        "host": "wafdemofrontdoorwebapp.azurefd.net",
-        "refString": "0p4crXgAAAABgMq5aIpu0T6AUfCYOroltV1NURURHRTA2MTMANjMxNTAwZDAtOTRiNS00YzIwLTljY2YtNjFhNzMyOWQyYTgy",
-        "policyMode": "prevention"
-    }
+    "operationName": "Microsoft.Network/FrontDoorWebApplicationFirewallLog/Write",
+    "properties":
+    {
+        "clientIP":"xxx.xxx.xxx.xxx",
+        "clientPort":"52097",
+        "socketIP":"xxx.xxx.xxx.xxx",
+        "requestUri":"https://wafdemofrontdoorwebapp.azurefd.net:443/?q=%27%20or%201=1",
+        "ruleName":"Microsoft_DefaultRuleSet-1.1-SQLI-942100",
+        "policy":"WafDemoCustomPolicy",
+        "action":"Block",
+        "host":"wafdemofrontdoorwebapp.azurefd.net",
+        "trackingReference":"08Q3gXgAAAAAe0s71BET/QYwmqtpHO7uAU0pDRURHRTA1MDgANjMxNTAwZDAtOTRiNS00YzIwLTljY2YtNjFhNzMyOWQyYTgy",
+        "policyMode":"prevention",
+        "details":
+            {
+            "matches":
+                [{
+                "matchVariableName":"QueryParamValue:q",
+                "matchVariableValue":"' or 1=1"
+                }]
+            }
+     }
 }
+```
 
-``` 
-
-次のクエリ例では、AccessLogs のエントリを取得します。
+次のクエリ例では、AccessLogs のエントリが返されます。
 
 ``` AccessLogQuery
 AzureDiagnostics
@@ -78,26 +102,31 @@ AzureDiagnostics
 
 ``` AccessLogSample
 {
-    "PreciseTimeStamp": "2020-01-25T00:11:12.0160150Z",
-    "time": "2020-01-25T00:11:12.0160150Z",
-    "category": "FrontdoorAccessLog",
-    "operationName": "Microsoft.Network/FrontDoor/AccessLog/Write",
-    "properties": {
-        "trackingReference": "0n4crXgAAAACnRKbdALbyToAqNfSHssDvV1NURURHRTA2MTMANjMxNTAwZDAtOTRiNS00YzIwLTljY2YtNjFhNzMyOWQyYTgy",
-        "httpMethod": "GET",
-        "httpVersion": "2.0",
-        "requestUri": "https://wafdemofrontdoorwebapp.azurefd.net:443/",
-        "requestBytes": "710",
-        "responseBytes": "3116",
-        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4017.0 Safari/537.36 Edg/81.0.389.2",
-        "clientIp": "xx.xx.xxx.xxx",
-        "timeTaken": "0.598",
-        "securityProtocol": "TLS 1.2",
-        "routingRuleName": "WAFdemoWebAppRouting",
-        "backendHostname": "wafdemouksouth.azurewebsites.net:443",
-        "sentToOriginShield": false,
-        "httpStatusCode": "200",
-        "httpStatusDetails": "200"
+"time": "2020-06-09T22:32:17.8383427Z",
+"category": "FrontdoorAccessLog",
+"operationName": "Microsoft.Network/FrontDoor/AccessLog/Write",
+ "properties":
+    {
+    "trackingReference":"08Q3gXgAAAAAe0s71BET/QYwmqtpHO7uAU0pDRURHRTA1MDgANjMxNTAwZDAtOTRiNS00YzIwLTljY2YtNjFhNzMyOWQyYTgy",
+    "httpMethod":"GET",
+    "httpVersion":"2.0",
+    "requestUri":"https://wafdemofrontdoorwebapp.azurefd.net:443/?q=%27%20or%201=1",
+    "requestBytes":"715",
+    "responseBytes":"380",
+    "userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4157.0 Safari/537.36 Edg/85.0.531.1",
+    "clientIp":"xxx.xxx.xxx.xxx",
+    "socketIp":"xxx.xxx.xxx.xxx",
+    "clientPort":"52097",
+    "timeTaken":"0.003",
+    "securityProtocol":"TLS 1.2",
+    "routingRuleName":"WAFdemoWebAppRouting",
+    "rulesEngineMatchNames":[],
+    "backendHostname":"wafdemowebappuscentral.azurewebsites.net:443",
+    "sentToOriginShield":false,
+    "httpStatusCode":"403",
+    "httpStatusDetails":"403",
+    "pop":"SJC",
+    "cacheStatus":"CONFIG_NOCACHE"
     }
 }
 

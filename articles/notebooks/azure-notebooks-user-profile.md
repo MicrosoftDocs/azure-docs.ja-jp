@@ -3,14 +3,16 @@ title: Azure Notebooks で使用するユーザー プロファイルと ID の�
 description: Azure Notebooks でユーザー プロファイルとユーザー ID (共有ノートブックの URL の一部となる) を作成して管理する方法。
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.openlocfilehash: d90eebf1b7b463e038bc5e54f51df0eb6ca746c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9a1ff7f92faec21f537f068f0a33473700ddfed8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75646281"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831354"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks-preview"></a>Azure Notebooks のプロファイルとユーザー ID のプレビュー
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 機能豊富な共同作業領域の Azure Notebooks 内では、自分のユーザー プロファイルに他のユーザーへのパブリック イメージが示されます。
 
@@ -23,8 +25,6 @@ ms.locfileid: "75646281"
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>`:プロジェクト ファイル。
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>/clones`:特定のプロジェクトの複製。
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>/html/<notebook>.ipynb`:特定のノートブックまたはファイルの HTML のプレビュー。
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="your-user-id"></a>自分のユーザー ID
 

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 16cfb6c15a4d17ff3fb4f7f41f59f9f80af1e9e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f1dfe88741a304da92901d3997c746654336ef54
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75382125"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800042"
 ---
 # <a name="moderate-with-custom-term-lists-in-the-api-console"></a>API コンソールでカスタム用語リストを使用してモデレートする
 
@@ -77,15 +77,17 @@ List Management API を使用して、次のタスクを実行できます。
 
 5. よりわかりやすいメタデータをリストに割り当てるには、キーと値のペアのプレースホルダーを使用します。
 
-       {
-          "Name": "MyExclusionList",
-          "Description": "MyListDescription",
-          "Metadata": 
-          {
-             "Category": "Competitors",
-             "Type": "Exclude"
-          }
-       }
+    ```json
+    {
+        "Name": "MyExclusionList",
+        "Description": "MyListDescription",
+        "Metadata": 
+        {
+            "Category": "Competitors",
+            "Type": "Exclude"
+        }
+    }
+    ```
 
    リストのメタデータは、実際の用語ではなく、キーと値のペアとして追加します。
  

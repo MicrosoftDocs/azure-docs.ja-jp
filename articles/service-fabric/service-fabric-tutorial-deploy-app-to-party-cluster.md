@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 9951610732cbb1c5884a7b7e830033f427db0ab1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4cd21669b30b8ec83d6a0538c90d4cec5cafe32a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75646009"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244992"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>チュートリアル: Azure のクラスターに Service Fabric アプリケーションをデプロイする
 
@@ -53,7 +53,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="create-a-cluster"></a>クラスターの作成
 
-アプリケーションの準備ができたので、Service Fabric クラスターを作成して、アプリケーションをクラスターにデプロイします。 [Service Fabric クラスター](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-anywhere)は、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。
+アプリケーションの準備ができたので、Service Fabric クラスターを作成して、アプリケーションをクラスターにデプロイします。 [Service Fabric クラスター](./service-fabric-deploy-anywhere.md)は、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。
 
 このチュートリアルでは、Visual Studio IDE で新しい 3 ノードのテスト クラスターを作成してから、そのクラスターにアプリケーションを発行します。 運用クラスターの作成については、[クラスターの作成と管理に関するチュートリアル](service-fabric-tutorial-create-vnet-and-windows-cluster.md)を参照してください。 [PowerShell](./scripts/service-fabric-powershell-create-secure-cluster-cert.md) スクリプトまたは [Azure CLI](./scripts/cli-create-cluster.md) スクリプトを使用するか、あるいは [Azure Resource Manager テンプレート](service-fabric-tutorial-create-vnet-and-windows-cluster.md)をベースにして、以前に [Azure portal](https://portal.azure.com) を使用して作成した既存のクラスターにアプリケーションをデプロイすることもできます。
 

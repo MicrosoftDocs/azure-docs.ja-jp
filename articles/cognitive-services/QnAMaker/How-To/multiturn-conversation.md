@@ -3,12 +3,12 @@ title: 複数ターン会話 - QnA Maker
 description: プロンプトとコンテキストを使用して、一連の質問についてボットの複数ターンと呼ばれる複数回のターンを管理します。 複数ターンとは、前の質問のコンテキストが次の質問と応答に影響する会話をやりとりする機能です。
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 8ef244e1b6baf480189bb90ea5ff53138a6f377a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 93bc6201cb627dc27071caf7beded5778b06ccb6
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261467"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229348"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>フォローアップ プロンプトを使用して、複数のターンを含む会話を作成します。
 
@@ -367,7 +367,7 @@ QnA Maker は、エクスポートされるファイルに複数ターンの会�
 
 ## <a name="next-steps"></a>次のステップ
 
-この[対話サンプル](https://aka.ms/qnamakermultiturnsample)のコンテキスト会話について、または[複数ターン会話のための概念的ボット設計](https://docs.microsoft.com/azure/bot-service/bot-builder-conversations?view=azure-bot-service-4.0)について詳しく学習します。
+この[対話サンプル](https://github.com/microsoft/BotBuilder-Samples/blob/master/samples/csharp_dotnetcore/adaptive-dialog/07.qnamaker/QnAMaker.csproj)のコンテキスト会話について、または[複数ターン会話のための概念的ボット設計](https://docs.microsoft.com/azure/bot-service/bot-builder-conversations?view=azure-bot-service-4.0)について詳しく学習します。
 
 > [!div class="nextstepaction"]
 > [ナレッジ ベースの移行](../Tutorials/migrate-knowledge-base.md)

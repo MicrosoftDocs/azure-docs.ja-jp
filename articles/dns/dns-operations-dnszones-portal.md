@@ -4,20 +4,19 @@ description: Azure Portal を使って DNS ゾーンを管理できます。 こ
 services: dns
 documentationcenter: na
 author: rohinkoul
-manager: timlt
 ms.service: dns
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2017
 ms.author: rohink
-ms.openlocfilehash: 002f210048c18c6dd99dfb5981bacce8666ee563
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b6cac64d2e3def673f6d7c27e80bd64eead9e97
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76936777"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84689165"
 ---
 # <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>Azure Portal で DNS ゾーンを管理する方法
 

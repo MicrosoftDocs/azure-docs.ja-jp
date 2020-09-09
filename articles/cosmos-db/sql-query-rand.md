@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: e44878b6d65725f08aeca4eb07088315ae2bb78a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ff098da778221868b0eddc17c426d2bf36eec0fe
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78302221"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794332"
 ---
 # <a name="rand-azure-cosmos-db"></a>RAND (Azure Cosmos DB)
  [0,1) からランダムに生成された数値を返します。
@@ -29,7 +29,8 @@ RAND ()
 
 ## <a name="remarks"></a>解説
 
-  `RAND` は非決定論的関数です。 `RAND` の繰り返し呼び出しでは、同じ結果が返されません。
+  `RAND` は非決定論的関数です。 `RAND` の繰り返し呼び出しでは、同じ結果が返されません。 このシステム関数では、インデックスは使用されません。
+
 
 ## <a name="examples"></a>例
   
@@ -44,10 +45,6 @@ SELECT RAND() AS rand
 ```json
 [{"rand": 0.87860053195618093}]  
 ``` 
-
-## <a name="remarks"></a>解説
-
-このシステム関数では、インデックスは使用されません。
 
 ## <a name="next-steps"></a>次のステップ
 

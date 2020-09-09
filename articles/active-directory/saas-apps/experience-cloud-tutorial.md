@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Experience Cloud の統合 | Microsoft Docs
 description: Azure Active Directory と Experience Cloud の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 011e98ba-c452-40e1-983c-936f6a77ae2e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d044a229764d0d6ce1d0f3b10b95d406ccd3dd5f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e5285b4944072e329610285f2c771eb05faafd7a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77371447"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555227"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-experience-cloud"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Experience Cloud の統合
 
@@ -86,33 +82,32 @@ Experience Cloud で Azure AD SSO を構成してテストするには、次の�
 
     a. **[識別子]** ボックスに、次のパターンを使用して URL を入力します。
     
-    |||
-    |-|-|
-    | `https://<cluster>.medallia.com/sso/<company>`|
-    | `https://<cluster>.medallia.ca/sso/<company>`|
-    | `https://<cluster>.medallia.eu/sso/<company>`|
-    | `https://<cluster>.medallia.au/sso/<company>`|
+    ```http
+    https://<cluster>.medallia.com/sso/<company>
+    https://<cluster>.medallia.ca/sso/<company>
+    https://<cluster>.medallia.eu/sso/<company>
+    https://<cluster>.medallia.au/sso/<company>
+    ```
 
     b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
 
-    |||
-    |-|-|
-    | `https://<cluster>.medallia.com/sso/<company>/logonSubmit.do`|
-    | `https://<cluster>.medallia.ca/sso/<company>/logonSubmit.do`|
-    | `https://<cluster>.medallia.eu/sso/<company>/logonSubmit.do`|
-    | `https://<cluster>.medallia.au/sso/<company>/logonSubmit.do`|
-
+    ```http
+    https://<cluster>.medallia.com/sso/<company>/logonSubmit.do
+    https://<cluster>.medallia.ca/sso/<company>/logonSubmit.do
+    https://<cluster>.medallia.eu/sso/<company>/logonSubmit.do
+    https://<cluster>.medallia.au/sso/<company>/logonSubmit.do
+    ```
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
 
-    |||
-    |-|-|
-    | `https://<cluster>.medallia.com/sso/<company>`|
-    | `https://<cluster>.medallia.ca/sso/<company>`|
-    | `https://<cluster>.medallia.eu/sso/<company>`|
-    | `https://<cluster>.medallia.au/sso/<company>`|
+    ```http
+    https://<cluster>.medallia.com/sso/<company>
+    https://<cluster>.medallia.ca/sso/<company>
+    https://<cluster>.medallia.eu/sso/<company>
+    https://<cluster>.medallia.au/sso/<company>
+    ```
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Experience Cloud クライアント サポート チーム](mailto:support@medallia.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

@@ -2,25 +2,22 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Terraform Enterprise の統合 | Microsoft Docs
 description: Azure Active Directory と Terraform Enterprise の間のシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: de2bd4d8-bee4-4580-97a4-47c7738babba
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/10/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2df764fe20f513812b80857c345ce9f1ae25bfb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-terraform
+ms.openlocfilehash: ea3dc98c6a86b4ce7723790fe048c43d31581000
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76157323"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88541784"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-terraform-enterprise"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Terraform Enterprise の統合
 

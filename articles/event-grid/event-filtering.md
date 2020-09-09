@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid でのイベントのフィルター処理
 description: Azure Event Grid サブスクリプションを作成するときにイベントをフィルター処理する方法について説明します。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/21/2019
-ms.author: spelluru
-ms.openlocfilehash: f9fca0a9fefb5959747a4492139ae422a118db02
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/07/2020
+ms.openlocfilehash: 837209d4197c271598155776b8d171a705e1f454
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70390175"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120094"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Event Grid サブスクリプションでのイベントのフィルター処理を理解します
 
@@ -97,9 +93,9 @@ ms.locfileid: "70390175"
 ]
 ```
 
-### <a name="operator"></a>演算子
+### <a name="operators"></a>オペレーター
 
-数値に対して使用できる演算子は次のとおりです。
+**数値**に対して使用できる演算子は次のとおりです。
 
 * NumberGreaterThan
 * NumberGreaterThanOrEquals
@@ -108,9 +104,10 @@ ms.locfileid: "70390175"
 * NumberIn
 * NumberNotIn
 
-ブール値に対して使用できる演算子は、BoolEquals です。
+**ブール値**に対して使用できる演算子は次のとおりです。 
+- BoolEquals です。
 
-文字列に対して使用できる演算子は次のとおりです。
+**文字列**に対して使用できる演算子は次のとおりです。
 
 * StringContains
 * StringBeginsWith
@@ -118,7 +115,7 @@ ms.locfileid: "70390175"
 * StringIn
 * StringNotIn
 
-すべての文字列比較で、大文字と小文字が区別されます。
+すべての文字列の比較では、大文字と小文字は区別**されません**。
 
 ### <a name="key"></a>Key
 
@@ -154,11 +151,161 @@ Cloud Events スキーマのイベントの場合は、キーの次の値を使�
 
 高度なフィルター処理には次の制限事項があります。
 
-* Event Grid サブスクリプションあたり高度なフィルターは 5 つ
+* イベント グリッド サブスクリプションあたり、フィルター全体で高度なフィルターが 5、フィルター値が 25
 * 文字列値あたり 512 文字
 * **in** 演算子および **not in** 演算子の値は 5 つ
+* **`.` (ドット)** 文字を含むキー。 たとえば、`http://schemas.microsoft.com/claims/authnclassreference` や `john.doe@contoso.com` などです。 現時点では、エスケープ文字を含むキーはサポートされていません。 
 
 複数のフィルターで同じキーを使用できます。
+
+### <a name="examples"></a>例
+
+### <a name="stringcontains"></a>StringContains
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringContains",
+    "key": "data.key1",
+    "values": [
+        "microsoft", 
+        "azure"
+    ]
+}]
+```
+
+### <a name="stringbeginswith"></a>StringBeginsWith
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringBeginsWith",
+    "key": "data.key1",
+    "values": [
+        "event", 
+        "grid"
+    ]
+}]
+```
+
+### <a name="stringendswith"></a>StringEndsWith
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringEndsWith",
+    "key": "data.key1",
+    "values": [
+        "jpg", 
+        "jpeg", 
+        "png"
+    ]
+}]
+```
+
+### <a name="stringin"></a>StringIn
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringIn",
+    "key": "data.key1",
+    "values": [
+        "exact", 
+        "string", 
+        "matches"
+    ]
+}]
+```
+
+### <a name="stringnotin"></a>StringNotIn
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringNotIn",
+    "key": "data.key1",
+    "values": [
+        "aws", 
+        "bridge"
+    ]
+}]
+```
+
+### <a name="numberin"></a>NumberIn
+
+```json
+
+"advancedFilters": [{
+    "operatorType": "NumberIn",
+    "key": "data.counter",
+    "values": [
+        5,
+        1
+    ]
+}]
+
+```
+
+### <a name="numbernotin"></a>NumberNotIn
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberNotIn",
+    "key": "data.counter",
+    "values": [
+        41,
+        0,
+        0
+    ]
+}]
+```
+
+### <a name="numberlessthan"></a>NumberLessThan
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberLessThan",
+    "key": "data.counter",
+    "value": 100
+}]
+```
+
+### <a name="numbergreaterthan"></a>NumberGreaterThan
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberGreaterThan",
+    "key": "data.counter",
+    "value": 20
+}]
+```
+
+### <a name="numberlessthanorequals"></a>NumberLessThanOrEquals
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberLessThanOrEquals",
+    "key": "data.counter",
+    "value": 100
+}]
+```
+
+### <a name="numbergreaterthanorequals"></a>NumberGreaterThanOrEquals
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberGreaterThanOrEquals",
+    "key": "data.counter",
+    "value": 30
+}]
+```
+
+### <a name="boolequals"></a>BoolEquals です。
+
+```json
+"advancedFilters": [{
+    "operatorType": "BoolEquals",
+    "key": "data.isEnabled",
+    "value": true
+}]
+```
+
 
 ## <a name="next-steps"></a>次のステップ
 

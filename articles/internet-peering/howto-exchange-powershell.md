@@ -5,15 +5,16 @@ description: PowerShell を使用して Exchange ピアリングを作成また�
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 23c905f148da614c7785b61b76abed191206cd90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 59d098f1ff0f78e37601544619c603b776e0cf22
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678685"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071756"
 ---
 # <a name="create-or-modify-an-exchange-peering-by-using-powershell"></a>PowerShell を使用して Exchange ピアリングを作成または変更する
 

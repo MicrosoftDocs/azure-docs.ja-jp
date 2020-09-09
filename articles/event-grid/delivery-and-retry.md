@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid による配信と再試行
 description: Azure Event Grid がイベントをどのように配信し、未配信メッセージをどのように処理するかについて説明します。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 02/27/2020
-ms.author: spelluru
-ms.openlocfilehash: dda2fd98c4c0d330059156a5ec00baa97ffaf627
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/07/2020
+ms.openlocfilehash: fe7574d7e17b1763afb2292c15007dd87b056ef1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77921064"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087613"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid によるメッセージの配信と再試行
 
@@ -82,8 +78,12 @@ Event Grid では、既定で 24 時間内に配信されないすべてのイ�
 遅延配信の機能的な目的は、Event Grid システムに加えて、正常でないエンドポイントを保護することです。 バックオフや、正常でないエンドポイントへの配信遅延がなければ、Event Grid の再試行ポリシーとボリューム機能によってシステムがすぐに過負荷になる可能性があります。
 
 ## <a name="dead-letter-events"></a>配信不能イベント
+Event Grid では、一定の時間内にイベントを配信できない場合、あるいはイベントの配信を一定回数試行したが配信できない場合、未配信イベントをストレージ アカウントに送信できます。 このプロセスは**配信不能処理**と呼ばれます。 Event Grid では、**次のいずれかの**条件に一致したとき、イベントが配信不能処理されます。 
 
-Event Grid がイベントを配信できない場合は、配信不能イベントをストレージ アカウントに送信できます。 このプロセスは配信不能処理と呼ばれます。 既定では、Event Grid は配信不能処理を有効にしません。 この処理を有効にするには、イベント サブスクリプションの作成時に、配信不能イベントを保持するようにストレージ アカウントを指定する必要があります。 このストレージ アカウントからイベントをプルして配信を解決します。
+- イベントが Time-To-Live 期間内に配信されない
+- イベント配信試行回数が上限を超えている
+
+いずれかの条件が満たされた場合、イベントは削除されるか、配信不能になります。  既定では、Event Grid は配信不能処理を有効にしません。 この処理を有効にするには、イベント サブスクリプションの作成時に、配信不能イベントを保持するようにストレージ アカウントを指定する必要があります。 このストレージ アカウントからイベントをプルして配信を解決します。
 
 Event Grid は、そのすべての再試行を試行し終わると、配信不能の場所にイベントを送信します。 Event Grid は、400 (正しくない要求) または 413 (要求のエンティティが大きすぎます) の応答コードを受信した場合、直ちにそのイベントを配信不能エンドポイントに送信します。 これらの応答コードは、イベントの配信が決して成功しないことを示します。
 

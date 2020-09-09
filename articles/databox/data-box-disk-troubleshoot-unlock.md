@@ -1,19 +1,19 @@
 ---
 title: Azure Data Box Disk でのディスクのロック解除に関する問題のトラブルシューティング | Microsoft Docs
-description: Azure Data Box Disk で見られる問題のトラブルシューティングを行う方法について説明します。
+description: Azure Data Box Disk でのロック解除ツールの問題をトラブルシューティングするためのワークフローについて説明します。 Data Box Disk ロック解除ツールのエラーを参照してください。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: article
-ms.date: 06/14/2019
+ms.topic: troubleshooting
+ms.date: 08/05/2020
 ms.author: alkohli
-ms.openlocfilehash: 02cbf64261bbfbf50561e1b7466b46b27b688e0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 866cf01243983863292ada0b086f8f5b2f94e412
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67148115"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925563"
 ---
 # <a name="troubleshoot-disk-unlocking-issues-in-azure-data-box-disk"></a>Azure Data Box Disk でのディスクのロック解除に関する問題のトラブルシューティング
 
@@ -37,7 +37,7 @@ To figure out who accessed the **Device credentials** blade, you can query the A
 | 現在の .NET Framework はサポートされていません。 サポートされているバージョンは 4.5 以降です。<br><br>メッセージと共にツールが終了します。  | .NET 4.5 がインストールされていません。 Data Box Disk ロック解除ツールが実行されるホスト コンピューターに .NET 4.5 以降をインストールします。                                                                            |
 | ボリュームのロック解除または確認を行えませんでした。 Microsoft サポートにお問い合わせください。  <br><br>ロックされたドライブのロック解除または確認がツールで失敗します。 | ツールで、提供されたパスキーを使用して、ロックされたドライブを 1 つもロック解除することができませんでした。 Microsoft サポートに手順をお問い合わせください。                                                |
 | 以下のボリュームのロック解除と確認が行われました。 <br>ボリュームのドライブ文字: E:<br>パスキー werwerqomnf、qwerwerqwdfda ではどのボリュームもロック解除できませんでした <br><br>ツールで一部のドライブがロック解除され、成功したドライブの文字と失敗したドライブの文字が一覧表示されます。| 部分的に成功しました。 提供されたパスキーで一部のドライブをロック解除できませんでした。 Microsoft サポートに手順をお問い合わせください。 |
-| ロックされたボリュームが見つかりませんでした。 Microsoft から受け取ったディスクが正しく接続されており、ロックされた状態であることを確認してください。          | ロックされたドライブがツールで見つかりません。 ドライブは既にロック解除されているか、検出されませんでした。 ドライブが接続されており、ロックされていることを確認します。                                                           |
+| ロックされたボリュームが見つかりませんでした。 Microsoft から受け取ったディスクが正しく接続されており、ロックされた状態であることを確認してください。          | ロックされたドライブがツールで見つかりません。 ドライブは既にロック解除されているか、検出されませんでした。 ドライブが接続されており、ロックされていることを確認します。 <br> <br>ディスクをフォーマットしている場合は、このエラーが表示されることもあります。 ディスクをフォーマットしている場合は、これらを使用することができません。 Microsoft サポートに手順をお問い合わせください。                                                          |
 | 致命的なエラー: 無効なパラメーター<br>パラメーター名: invalid_arg<br>使用方法:<br>DataBoxDiskUnlock /PassKeys:<passkey_list_separated_by_semicolon><br><br>例:DataBoxDiskUnlock /PassKeys:passkey1;passkey2;passkey3<br>例:DataBoxDiskUnlock /SystemCheck<br>例:DataBoxDiskUnlock /Help<br><br>/PassKeys:      このパスキーは Azure DataBox Disk の注文から取得します。 パスキーによってディスクのロックが解除されます。<br>/Help:          このオプションでは、コマンドレットの使用方法と例のヘルプが表示されます。<br>/SystemCheck:   このオプションでは、ツールを実行するための要件をシステムが満たしているかどうかがチェックされます。<br><br>終了するには何かキーを押してください。 | 無効なパラメーターが入力されました。 許可されているパラメーターは、/SystemCheck、/PassKey、/Help のみです。|
 
 

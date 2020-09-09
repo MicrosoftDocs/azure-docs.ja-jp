@@ -4,15 +4,15 @@ description: これは、クライアント プロファイル ファイルを�
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/18/2020
 ms.author: cherylmc
-ms.openlocfilehash: b88be5cccdaeb452288a2cb2f1dd4b4690a8b274
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c64e7988094612077131029547682c7ae3d25c98
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066201"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84753140"
 ---
 # <a name="working-with-user-vpn-client-profiles"></a>ユーザー VPN クライアント プロファイルの操作
 

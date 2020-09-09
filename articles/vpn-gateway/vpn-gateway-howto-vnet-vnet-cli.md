@@ -5,15 +5,16 @@ services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
-ms.date: 02/14/2018
+ms.topic: how-to
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: a354f8031c26ca86876dc6f3a2092610226cc84b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 8ffad738a8f10816f26760fa34c5ce686fac5bad
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75834565"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401148"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Azure CLI を使用して VNet 間の VPN ゲートウェイ接続を構成する
 

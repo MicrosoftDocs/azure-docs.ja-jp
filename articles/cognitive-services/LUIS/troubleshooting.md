@@ -1,15 +1,15 @@
 ---
 title: よく寄せられる質問 (FAQ) - LUIS
 description: この記事では、Language Understanding (LUIS) についてよく寄せられる質問とその回答を紹介します。
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 3a30dd1c55d1ee4314e5a9a2f14ffe832994c467
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: b45f3c43e70502b2734696a66d2a497c2213d1b9
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592850"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054850"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding についてよくあるご質問 (FAQ)
 
@@ -43,7 +43,7 @@ Language Understanding (LUIS) の詳細については、[こちら](whats-new.m
 [Bing Spell Check API V7](luis-tutorial-bing-spellcheck.md) のチュートリアルをご覧ください。 LUIS は、Bing Spell Check API V7 による制限を強制します。
 
 ### <a name="how-do-i-edit-my-luis-app-programmatically"></a>プログラムで LUIS アプリを編集するにはどうすればよいですか?
-LUIS アプリをプログラムで編集するには、[Authoring API](https://go.microsoft.com/fwlink/?linkid=2092087) を使います。 Authoring API の呼び出し方法の例は、[LUIS Authoring API の呼び出し](./get-started-get-model-rest-apis.md)に関するページ、および「[Build a LUIS app programmatically using Node.js](./luis-tutorial-node-import-utterances-csv.md)」(Node.js を使用してプログラムで LUIS アプリを作成する) をご覧ください。 Authoring API を使うには、エンドポイント キーではなく[オーサリング キー](luis-concept-keys.md#azure-resources-for-luis)を使用する必要があります。 プログラムで作成すると、1 か月あたり最大 1,000,000 呼び出し、および 1 秒あたり最大 5 トランザクションが可能です。 キーおよび LUIS でのキーの使用の詳細については、[キーの管理](./luis-concept-keys.md)に関するページをご覧ください。
+LUIS アプリをプログラムで編集するには、[Authoring API](https://go.microsoft.com/fwlink/?linkid=2092087) を使います。 Authoring API の呼び出し方法の例は、[LUIS Authoring API の呼び出し](./get-started-get-model-rest-apis.md)に関するページ、および「[Build a LUIS app programmatically using Node.js](./luis-tutorial-node-import-utterances-csv.md)」(Node.js を使用してプログラムで LUIS アプリを作成する) をご覧ください。 Authoring API を使うには、エンドポイント キーではなく[オーサリング キー](luis-how-to-azure-subscription.md#azure-resources-for-luis)を使用する必要があります。 プログラムで作成すると、1 か月あたり最大 1,000,000 呼び出し、および 1 秒あたり最大 5 トランザクションが可能です。 キーおよび LUIS でのキーの使用の詳細については、[キーの管理](./luis-how-to-azure-subscription.md)に関するページをご覧ください。
 
 ### <a name="where-is-the-pattern-feature-that-provided-regular-expression-matching"></a>正規表現のマッチングを提供していたパターン機能はどこにありますか?
 以前の**パターン機能**は現在は非推奨になっており、 **[パターン](luis-concept-patterns.md)** に置き換えられています。
@@ -123,7 +123,7 @@ LUIS ポータルでは、抽出するエンティティのテキストにラベ
 LUIS は、[カルチャ](luis-language-support.md#tokenization)に基づいて発話を[トークン化](luis-glossary.md#token)します。 元の値とトークン化された値の両方を、[データ抽出](luis-concept-data-extraction.md#tokenized-entity-returned)に使用できます。
 
 ### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>LUIS エンドポイント キーを作成して割り当てるにはどうすればよいですか?
-Azure で[サービス](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) レベルの[エンドポイント キーを作成](luis-how-to-azure-subscription.md)します。 **[[Azure リソース]](luis-how-to-azure-subscription.md)** ページで[キーを割り当て](luis-how-to-azure-subscription.md)ます。 このアクションに対応する API はありません。 その後、エンドポイントへの HTTP 要求を変更して、[新しいエンドポイント キーを使用する](luis-concept-keys.md)必要があります。
+Azure で[サービス](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) レベルの[エンドポイント キーを作成](luis-how-to-azure-subscription.md)します。 **[[Azure リソース]](luis-how-to-azure-subscription.md)** ページで[キーを割り当て](luis-how-to-azure-subscription.md)ます。 このアクションに対応する API はありません。 その後、エンドポイントへの HTTP 要求を変更して、[新しいエンドポイント キーを使用する](luis-how-to-azure-subscription.md)必要があります。
 
 ### <a name="how-do-i-interpret-luis-scores"></a>LUIS のスコアを解釈するにはどうすればよいですか?
 システムは、その値に関係なく、最高のスコアの意図を使用する必要があります。 たとえば、スコアが 0.5 より低くても (50% 未満)、それは必ずしも LUIS の信頼度が低いことを意味するものではありません。 より多くのトレーニング データを提供すると、最も可能性の高い意図の[スコア](luis-concept-prediction-score.md)を上げるのに役立ちます。
@@ -144,10 +144,10 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ```
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>昨日は動いていた LUIS アプリで、今日は 403 エラーが発生します。 アプリは変更していません。 どのように修正すればよいですか
-こちらの[説明](#how-do-i-create-and-assign-a-luis-endpoint-key)に従って LUIS エンドポイント キーを作成し、それをアプリに割り当てます。 その後、エンドポイントへのクライアント アプリケーションの HTTP 要求を変更して、[新しいエンドポイント キーを使用する](luis-concept-keys.md)必要があります。 別のリージョンに新しいリソースを作成した場合、HTTP クライアント要求のリージョンも変更します。
+こちらの[説明](#how-do-i-create-and-assign-a-luis-endpoint-key)に従って LUIS エンドポイント キーを作成し、それをアプリに割り当てます。 その後、エンドポイントへのクライアント アプリケーションの HTTP 要求を変更して、[新しいエンドポイント キーを使用する](luis-how-to-azure-subscription.md)必要があります。 別のリージョンに新しいリソースを作成した場合、HTTP クライアント要求のリージョンも変更します。
 
 ### <a name="how-do-i-secure-my-luis-endpoint"></a>LUIS エンドポイントをセキュリティで保護するにはどうすればよいですか?
-「[Securing the endpoint](luis-concept-keys.md#securing-the-endpoint)」(エンドポイントのセキュリティ保護) をご覧ください。
+「[Securing the endpoint](luis-how-to-azure-subscription.md#securing-the-endpoint)」(エンドポイントのセキュリティ保護) をご覧ください。
 
 ## <a name="working-within-luis-limits"></a>LUIS 制限内での作業
 
@@ -206,7 +206,7 @@ LUIS の一般公開 (GA) よりも前からアプリが存在していた場合
 
 ### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>どのキーが必要で、それをどこで取得し、それで何を行うかを知るにはどうすればよいですか?
 
-オーサリング キーと予測ランタイム キーの違いの詳細については、[LUIS のオーサリング キーとクエリ予測エンドポイント キー](luis-concept-keys.md)に関する記事を参照してください。
+オーサリング キーと予測ランタイム キーの違いの詳細については、[LUIS のオーサリング キーとクエリ予測エンドポイント キー](luis-how-to-azure-subscription.md)に関する記事を参照してください。
 
 ### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>クォータ不足に関するエラーを受信しました。 どのように修正すればよいですか
 
@@ -333,4 +333,4 @@ Build 2019 Conference では、次の機能が公開されました。
 
 LUIS の詳細については、次のリソースを参照してください。
 * [LUIS のタグが付いた Stack Overflow での質問](https://stackoverflow.com/questions/tagged/luis)
-* [MSDN Language Understanding Intelligent Services (LUIS) フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=LUIS)
+* [MSDN Language Understanding Intelligent Services (LUIS) の Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-language-understanding.html)

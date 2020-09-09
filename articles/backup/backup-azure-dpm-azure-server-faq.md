@@ -4,12 +4,12 @@ description: この記事では、Microsoft Azure Backup Server (MABS) と DPM (
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.openlocfilehash: 35957a1e8a3d6c3d9be06d9d44dbcd47efa0e6ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 00eb064aaf549ee0d83d0cf7d9c9b47c2dc5ef78
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74173161"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827207"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Server と DPM - FAQ
 
@@ -36,6 +36,10 @@ ms.locfileid: "74173161"
 ### <a name="why-cant-i-add-an-external-dpm-server-after-installing-ur7-and-latest-azure-backup-agent"></a>UR7 と最新の Azure Backup エージェントをインストールしましたが、外部 DPM サーバーを追加できません。なぜですか。
 
 ロールアップ 7 以前の更新プログラム ロールアップを利用して、データ ソースがクラウドに保護されている DPM サーバーの場合、UR7 と最新の Azure Backup エージェントをインストールした後、少なくとも 1 日待ってから**外部 DPM サーバーの追加**を開始する必要があります。 1 日の期間は、DPM 保護グループのメタデータを Azure にアップロードするために必要です。 保護グループ メタデータは、夜間ジョブを通じて、1 回目のアップロードが行われます。
+
+### <a name="are-there-recommendations-for-configuring-exclusions-for-antivirus-software"></a>ウイルス対策ソフトウェアの除外を構成するための推奨事項はありますか。
+
+はい。ウイルス対策の除外を構成することをお勧めします。 DPM の除外については、「[DPM サーバーでのウイルス対策ソフトウェアの実行](https://docs.microsoft.com/system-center/dpm/run-antivirus-server?view=sc-dpm-2019)」を参照してください。 MABS の除外については、「[MABS サーバー用ウイルス対策ソフトウェアの構成](backup-azure-mabs-troubleshoot.md#configure-antivirus-for-mabs-server)」を参照してください。
 
 ## <a name="vmware-and-hyper-v-backup"></a>VMware および Hyper-V のバックアップ
 

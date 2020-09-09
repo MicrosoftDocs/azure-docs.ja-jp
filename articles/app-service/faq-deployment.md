@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 25f43051f11d42c4f8565039d3168f2ae162eb37
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 163a6940e50d1f8beacc23855fd1e6f9daad0085
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74671686"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080475"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Azure の Web Apps のデプロイに関するよくあるご質問
 
@@ -40,7 +40,7 @@ Web アプリのコードを発行する方法はいくつかあります。
 ## <a name="how-do-i-deploy-an-aspnet-application-from-visual-studio-to-app-service"></a>Visual Studio から App Service に ASP.NET アプリケーションをデプロイするにはどうすればよいですか。
 <a id="deployasp"></a>
 
-[5 分で初めての ASP.NET Web アプリを Azure に作成](app-service-web-get-started-dotnet.md)のチュートリアルで、Visual Studio を使用して ASP.NET Web アプリケーションを App Service の Web アプリにデプロイする方法を説明しています。
+[5 分で初めての ASP.NET Web アプリを Azure に作成](quickstart-dotnetcore.md)のチュートリアルで、Visual Studio を使用して ASP.NET Web アプリケーションを App Service の Web アプリにデプロイする方法を説明しています。
 
 ## <a name="what-are-the-different-types-of-deployment-credentials"></a>デプロイ資格情報の種類にはどのようなものがありますか。
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 04/27/2020
+ms.date: 08/14/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 4af2d060c11b804c5fa09bfdabbcb9753f7d5885
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 068c2dc698e9f0b6d6f2f6486dff863c1343b178
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204681"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258280"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Text Analytics API のデータとレートの制限
 <a name="data-limits"></a>
@@ -31,17 +31,14 @@ ms.locfileid: "82204681"
 
 | 制限 | 値 |
 |------------------------|---------------|
-| 1 つのドキュメントの最大サイズ | [StringInfo.LengthInTextElements](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) によって計測された 5,120 文字。 |
-| 要求全体の最大サイズ | 1 MB |
+| 1 つのドキュメントの最大サイズ | [StringInfo.LengthInTextElements](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) によって計測された 5,120 文字。 また、これは Text Analytics for Health コンテナーにも適用されます。 |
+| 要求全体の最大サイズ | 1 MB。 また、これは Text Analytics for Health コンテナーにも適用されます。 |
 
 1 回の要求で送信できるドキュメントの最大数は、使用している API のバージョンと機能によって異なります。
 
-#### <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
+#### <a name="version-3"></a>[Version 3](#tab/version-3)
 
-> [!NOTE]
-> v3 API 要求がこれらの制限を超えている一方で v2 の制限内にある場合、API 応答で警告が返されます。 2020 年 7 月 15 日以降は、代わりに 400 エラー コードが返されます。 
-
-API の v3 では、次の制限が変更されています。 以下の制限を超えると、API 応答で警告が生成されます。
+API の v3 では、次の制限が変更されています。 以下の制限を超えると、HTTP 400 エラー コードが生成されます。
 
 
 | 機能 | 要求あたりのドキュメントの最大数 | 
@@ -51,7 +48,7 @@ API の v3 では、次の制限が変更されています。 以下の制限�
 | キー フレーズ抽出 | 10 |
 | 名前付きエンティティの認識 | 5 |
 | Entity Linking | 5 |
-
+| Text Analytics for Health コンテナー | 1000 |
 #### <a name="version-2"></a>[Version 2](#tab/version-2)
 
 | 機能 | 要求あたりのドキュメントの最大数 | 
@@ -66,14 +63,14 @@ API の v3 では、次の制限が変更されています。 以下の制限�
 
 ## <a name="rate-limits"></a>転送率の制限
 
-レート制限は[価格レベル](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)によって異なります。 これらの制限は、API の両方のバージョンで同じです。
+レート制限は[価格レベル](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)によって異なります。 これらの制限は、API の両方のバージョンで同じです。 これらのレート制限は、設定されたレート制限がない Text Analytics for Health コンテナーには適用されません。
 
 | レベル          | 1 秒あたりの要求数 | 1 分あたりの要求数 |
 |---------------|---------------------|---------------------|
 | S/マルチサービス | 1000                | 1000                |
 | S0/F0         | 100                 | 該当なし                 |
-| S1            | 200                 | 該当なし                 |
-| S2            | 該当なし                 | 該当なし                 |
+| S1            | 200                 | 300                 |
+| S2            | 300                 | 300                 |
 | S3            | 500                 | 500                 |
 | S4            | 1000                | 1000                |
 

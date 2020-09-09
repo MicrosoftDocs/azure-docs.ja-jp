@@ -6,17 +6,17 @@ author: anumjs
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6fa8bd42eb067124ab6ea1db77e2f3d6fba79638
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f8dc7be63506e586b90d1e389d26ac591dce9c3b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80745214"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075874"
 ---
 # <a name="restore-an-existing-sql-pool"></a>既存の SQL プールを復元する
 
@@ -24,11 +24,11 @@ ms.locfileid: "80745214"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-**DTU 容量を確認します。** 各プールは、既定の DTU クォータが割り当てられている SQL サーバー (例: myserver.database.windows.net) でホストされます。 データベースを復元するための十分な DTU クォータが SQL Server に残っていることを確認します。 必要な DTU を計算する方法と DTU を要求する方法については、 [DTU クォータの変更の要求](sql-data-warehouse-get-started-create-support-ticket.md)に関するトピックをご覧ください。
+**DTU 容量を確認します。** 各プールは、既定の DTU クォータがある[論理 SQL サーバー](../../azure-sql/database/logical-servers.md) (例: myserver.database.windows.net) でホストされます。 データベースを復元するための十分な DTU クォータがサーバーに残っていることを確認します。 必要な DTU を計算する方法と DTU を要求する方法については、 [DTU クォータの変更の要求](sql-data-warehouse-get-started-create-support-ticket.md)に関するトピックをご覧ください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-1. 必ず [Azure PowerShell をインストール](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)してください。
+1. 必ず [Azure PowerShell をインストール](/powershell/azure/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)してください。
 2. 復元する既存の復元ポイントがあること。 新しい復元を作成する場合は、「[the tutorial to create a new user-defined restore point](sql-data-warehouse-restore-points.md)」 (新しいユーザー定義の復元ポイントを作成するチュートリアル) を参照してください。
 
 ## <a name="restore-an-existing-sql-pool-through-powershell"></a>PowerShell を使用して既存の SQL プールを復元する
@@ -46,19 +46,20 @@ ms.locfileid: "80745214"
 5. RestorePointCreationDate を使用して、目的の復元ポイントを選択します。
 
 6. [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell コマンドレットを使用して、目的の復元ポイントに SQL プールを復元します。
-        1. SQL プールを別の論理サーバーに復元するには、必ず他の論理サーバー名を指定します。  この論理サーバーは、別のリソース グループとリージョン内に存在していても指定できます。
-        2. 別のサブスクリプションに復元するには、[移動] ボタンを使用して、論理サーバーを別のサブスクリプションに移動します。
+
+    1. SQL プールを別のサーバーに復元するには、必ず他のサーバー名を指定します。  このサーバーは、別のリソース グループとリージョン内に存在していてもかまいません。
+    2. 別のサブスクリプションに復元するには、[移動] ボタンを使用して、サーバーを別のサブスクリプションに移動します。
 
 7. 復元された SQL プールがオンラインになっていることを確認します。
 
-8. 復元が完了したら、[復旧後のデータベースの構成](../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)の手順に従って、復旧された SQL プールを構成できます。
+8. 復元が完了したら、[復旧後のデータベースの構成](../../azure-sql/database/disaster-recovery-guidance.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)の手順に従って、復旧された SQL プールを構成できます。
 
 ```Powershell
 
 $SubscriptionName="<YourSubscriptionName>"
 $ResourceGroupName="<YourResourceGroupName>"
 $ServerName="<YourServerNameWithoutURLSuffixSeeNote>"  # Without database.windows.net
-#$TargetResourceGroupName="<YourTargetResourceGroupName>" # uncomment to restore to a different logical server.
+#$TargetResourceGroupName="<YourTargetResourceGroupName>" # uncomment to restore to a different server.
 #$TargetServerName="<YourtargetServerNameWithoutURLSuffixSeeNote>"  
 $DatabaseName="<YourDatabaseName>"
 $NewDatabaseName="<YourDatabaseName>"
@@ -79,7 +80,7 @@ $PointInTime="<RestorePointCreationDate>"
 # Restore database from a restore point
 $RestoredDatabase = Restore-AzSqlDatabase –FromPointInTimeBackup –PointInTime $PointInTime -ResourceGroupName $Database.ResourceGroupName -ServerName $Database.ServerName -TargetDatabaseName $NewDatabaseName –ResourceId $Database.ResourceID
 
-# Use the following command to restore to a different logical server
+# Use the following command to restore to a different server
 #$RestoredDatabase = Restore-AzSqlDatabase –FromPointInTimeBackup –PointInTime $PointInTime -ResourceGroupName $Database.ResourceTargetGroupName -ServerName $TargetServerName -TargetDatabaseName $NewDatabaseName –ResourceId $Database.ResourceID
 
 # Verify the status of restored database
@@ -89,13 +90,13 @@ $RestoredDatabase.status
 
 ## <a name="restore-an-existing-sql-pool-through-the-azure-portal"></a>Azure portal を使用して既存の SQL プールを復元する
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. 復元する元の SQL プールに移動します。
 3. [概要] ブレードの上部にある **[復元]** を選択します。
 
     ![ 復元の概要](./media/sql-data-warehouse-restore-active-paused-dw/restoring-01.png)
 
-4. **[自動復元ポイント]** または **[ユーザー定義の復元ポイント]** を選択します。 SQL プールに自動復元ポイントがない場合は、数時間待つか、復元する前にユーザー定義の復元ポイントを作成します。 ユーザー定義の復元ポイントを使用する場合は、既存のものを選択するか、新しく作成します。 **サーバー**の場合は、別のリソース グループとリージョン内の論理サーバーを選択するか、新しく作成することができます。 すべてのパラメーターを指定したら、 **[Review + Restore]\(確認+ 復元\)** をクリックします。
+4. **[自動復元ポイント]** または **[ユーザー定義の復元ポイント]** を選択します。 SQL プールに自動復元ポイントがない場合は、数時間待つか、復元する前にユーザー定義の復元ポイントを作成します。 ユーザー定義の復元ポイントを使用する場合は、既存のものを選択するか、新しく作成します。 **サーバー**の場合は、別のリソース グループとリージョン内のサーバーを選択するか、新しく作成することができます。 すべてのパラメーターを指定したら、 **[Review + Restore]\(確認+ 復元\)** をクリックします。
 
     ![自動復元ポイント](./media/sql-data-warehouse-restore-active-paused-dw/restoring-11.png)
 

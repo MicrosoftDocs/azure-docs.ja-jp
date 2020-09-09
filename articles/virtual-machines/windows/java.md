@@ -7,13 +7,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 07/17/2017
+ms.custom: devx-track-java
 ms.author: cynthn
-ms.openlocfilehash: a99924983bf0e78bd8c8901e25819a363583169a
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 6c4ee08c1679abd54b98d2804ab120c9330f6968
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81870024"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827488"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Java を使用して Azure で Windows VM を作成および管理する
 
@@ -211,7 +212,7 @@ AvailabilitySet availabilitySet = azure.availabilitySets()
 ```
 ### <a name="create-the-public-ip-address"></a>パブリック IP アドレスの作成
 
-仮想マシンと通信するには、[パブリック IP アドレス](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)が必要です。
+仮想マシンと通信するには、[パブリック IP アドレス](../../virtual-network/public-ip-addresses.md)が必要です。
 
 仮想マシンのパブリック IP アドレスを作成するには、次のコードを main メソッドの try ブロックに追加します。
 
@@ -412,7 +413,7 @@ input.nextLine();
 
 ### <a name="resize-the-vm"></a>VM のサイズを変更する
 
-仮想マシンのサイズを決定するときは、デプロイのさまざまな面を考慮する必要があります。 詳しくは、[VM サイズ](sizes.md)をご覧ください。  
+仮想マシンのサイズを決定するときは、デプロイのさまざまな面を考慮する必要があります。 詳しくは、[VM サイズ](../sizes.md)をご覧ください。  
 
 仮想マシンのサイズを変更するには、次のコードを main メソッドの try ブロックに追加します。
 
@@ -465,5 +466,4 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 
 ## <a name="next-steps"></a>次のステップ
-* [Azure の Java ライブラリ](https://docs.microsoft.com/java/azure/java-sdk-azure-overview)の使用方法について詳しく学習します。
-
+* [Azure の Java ライブラリ](/java/azure/java-sdk-azure-overview)の使用方法について詳しく学習します。

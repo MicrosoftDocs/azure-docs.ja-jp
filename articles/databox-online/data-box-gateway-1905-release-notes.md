@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/12/2019
 ms.author: alkohli
 ms.openlocfilehash: f2843623061e39e8c9c0ebc35b4916bf9bd3b186
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82561867"
 ---
 # <a name="azure-data-box-edge-and-azure-data-box-gateway-1905-release-notes"></a>Azure Data Box Edge と Azure Data Box Gateway 1905 のリリース ノート

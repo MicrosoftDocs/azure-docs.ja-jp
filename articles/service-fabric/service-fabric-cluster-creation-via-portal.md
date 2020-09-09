@@ -3,12 +3,12 @@ title: Azure portal で Service Fabric クラスターを作成する
 description: Azure portal と Azure Key Vault を使用して Azure でセキュリティ保護された Service Fabric クラスターを設定する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: 64a4c430cc7402419d64b77fdcc9a6389cf9de6d
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: b47f3b756ef4d012b41fd15686ffc08ab54fc187
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792481"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259318"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Azure ポータルを使用して Azure で Service Fabric クラスターを作成する
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "82792481"
 ## <a name="cluster-security"></a>クラスターのセキュリティ 
 Service Fabric では証明書を使用して、クラスターとそのアプリケーションのさまざまな側面をセキュリティで保護するための認証および暗号化を指定します。 Service Fabric での証明書の使用方法の詳細については、「[Service Fabric クラスターのセキュリティに関するシナリオ][service-fabric-cluster-security]」を参照してください。
 
-今回初めて Service Fabric クラスターを作成する場合、またはテスト ワークロード用のクラスターをデプロイする場合は、次のセクション ( **「Create cluster in the Azure Portal」(Azure Portal でのクラスターの作成)** ) に進み、テスト ワークロードを実行するクラスターに必要な証明書をシステムで生成してください。 運用ワークロード用のクラスターを設定する場合は、引き続きこの説明を読んでください。
+今回初めて Service Fabric クラスターを作成する場合、またはテスト ワークロード用のクラスターをデプロイする場合は、次のセクション ( **「Azure portal でのクラスターの作成**」) に進み、テスト ワークロードを実行するクラスターに必要な証明書をシステムで生成してください。 運用ワークロード用のクラスターを設定する場合は、引き続きこの説明を読んでください。
 
 #### <a name="cluster-and-server-certificate-required"></a>クラスターとサーバーの証明書 (必須)
 この証明書はクラスターをセキュリティで保護し、クラスターに対する未承認のアクセスを防ぐために必要です。 証明書により、クラスター セキュリティが次のような方法で提供されます。
@@ -107,7 +107,7 @@ Service Fabric を操作するために、クライアント認証証明書を K
 2. プライマリ ノード タイプの最小 VM **サイズ**は、クラスターに選択した**耐久性レベル**によって決まります。 既定の耐久性レベルはブロンズです。 耐久性の詳細については、[Service Fabric クラスターの耐久性の選択方法に関する記事][service-fabric-cluster-durability]を参照してください。
 3. **仮想マシンのサイズ**を選択します。 D シリーズ VM には SSD ドライブが備わっており、ステートフルなアプリケーションに最適です。 部分的なコアを持つ VM SKU や使用可能なディスク容量が 10 GB 未満の VM SKU は使用しないでください。 VM サイズの選択については、[Service Fabric クラスターの計画に関する考慮事項][service-fabric-cluster-capacity]のドキュメントを参照してください。
 4.  **1 つのノード クラスターと 3 つのノード クラスター**は、テストでの使用のみを目的としています。 運用ワークロードの実行では、サポートされません。
-5. ノード タイプに対する**最初の VM スケール セットの容量**を選択します。 後でノード タイプの VM 数をスケールインまたはスケールアウトできますが、プライマリ ノード タイプの場合は、運用ワークロード用に 5 つ以上の VM が必要です。 他のノード タイプには、VM 数に最小値の 1 を設定できます。 プライマリ ノード タイプの最小 VM **数**によって、クラスターの**信頼性**が決まります。  
+5. ノード タイプに対する**最初の仮想マシン スケール セットの容量**を選択します。 後でノード タイプの VM 数をスケールインまたはスケールアウトできますが、プライマリ ノード タイプの場合は、運用ワークロード用に 5 つ以上の VM が必要です。 他のノード タイプには、VM 数に最小値の 1 を設定できます。 プライマリ ノード タイプの最小 VM **数**によって、クラスターの**信頼性**が決まります。  
 6. **カスタム エンドポイント**を構成します。 このフィールドでは、アプリケーション用にパブリック インターネットに Azure Load Balancer 経由で公開するポートのコンマ区切りのリストを入力できます。 たとえば、Web アプリケーションをクラスターにデプロイする予定がある場合は、「80」と入力して、クラスターへのポート 80 でのトラフィックを許可します。 エンドポイントの詳細については、[アプリケーションとの通信][service-fabric-connect-and-communicate-with-services]に関する記事を参照してください。
 7. **リバース プロキシを有効にします**。  [Service Fabric のリバース プロキシ](service-fabric-reverseproxy.md)は、Service Fabric クラスターで実行されているマイクロサービスが HTTP エンドポイントを持つ他のサービスを検出してそのサービスと通信するのに役立ちます。
 8. **[クラスター構成]** ブレードに戻り、 **[+ オプションの設定を表示する]** で、クラスターの**診断**を構成します。 既定では、問題のトラブルシューティングのためクラスターで診断が有効になります。 診断を無効にするには、 **[ステータス]** を **[オフ]** に切り替えます。 診断をオフにすることは **推奨されません** 。 Application Insights プロジェクトが既に作成されている場合は、キーを付与し、アプリケーション トレースがそのプロジェクトにルーティングされるようにします。
@@ -118,10 +118,10 @@ Service Fabric を操作するために、クライアント認証証明書を K
 > サポートされるバージョンの Service Fabric を実行しているクラスターのみがサポート対象になります。 **マニュアル** モードを選択すると、自身の責任でクラスターをサポートされるバージョンにアップグレードする必要があります。
 > 
 
-### <a name="3-security"></a>3.Security
+### <a name="3-security"></a>3.セキュリティ
 ![Azure portal のセキュリティ構成のスクリーンショット。][BasicSecurityConfigs]
 
-セキュア テスト クラスターを簡単に設定できるようにするために、 **[Basic]** オプションが用意されています。 既に証明書があり、[キー コンテナー](/azure/key-vault/)にアップロードしている場合 (また、デプロイでキー コンテナーが使用可能になっている場合) は、 **[カスタム]** オプションを使用します
+セキュア テスト クラスターを簡単に設定できるようにするために、 **[Basic]** オプションが用意されています。 既に証明書があり、[キー コンテナー](../key-vault/index.yml)にアップロードしている場合 (また、デプロイでキー コンテナーが使用可能になっている場合) は、 **[カスタム]** オプションを使用します
 
 #### <a name="basic-option"></a>[Basic] オプション
 画面の指示に従って、既存のキー コンテナーを追加または再利用し、証明書を追加します。 証明書の追加は、同期処理です。そのため、証明書が作成されるのを待機する必要があります。
@@ -177,7 +177,7 @@ Service Fabric を操作するために、クライアント認証証明書を K
 
 通知には作成の進行状況が表示されます (画面の右上にあるステータス バーの近くの "ベル" アイコンをクリックします)。クラスターの作成中に **[スタート画面にピン留めする]** をクリックした場合、 **[Deploying Service Fabric Cluster (Service Fabric クラスターのデプロイ)]** が **[スタート]** 画面にピン留めされます。 このプロセスには少し時間がかかります。 
 
-Powershell または CLI を使用してクラスターで管理操作を実行するには、クラスターに接続する必要があります。詳細については、[クラスターへの接続に関する記事](service-fabric-connect-to-secure-cluster.md)を参照してください。
+PowerShell または CLI を使用してクラスターで管理操作を実行するには、クラスターに接続する必要があります。詳細については、[クラスターへの接続に関する記事](service-fabric-connect-to-secure-cluster.md)を参照してください。
 
 ## <a name="view-your-cluster-status"></a>クラスターの状態を表示する
 ![ダッシュボードのクラスターの詳細のスクリーンショット。][ClusterDashboard]
@@ -202,14 +202,14 @@ Powershell または CLI を使用してクラスターで管理操作を実行�
 この時点で、管理の認証に証明書を使用したセキュリティで保護されたクラスターがあります。 次に、[クラスターに接続](service-fabric-connect-to-secure-cluster.md)して、[アプリケーション シークレットを管理](service-fabric-application-secret-management.md)する方法を説明します。  また、[Service Fabric のサポート オプション](service-fabric-support.md)について学びます。
 
 <!-- Links -->
-[azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
+[azure-powershell]: /powershell/azure/
 [azure-portal]: https://portal.azure.com/
 [key-vault-get-started]: ../key-vault/general/overview.md
 [create-cluster-arm]: service-fabric-cluster-creation-via-arm.md
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [service-fabric-cluster-security-roles]: service-fabric-cluster-security-roles.md
 [service-fabric-cluster-capacity]: service-fabric-cluster-capacity.md
-[service-fabric-cluster-durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
+[service-fabric-cluster-durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
 [service-fabric-connect-and-communicate-with-services]: service-fabric-connect-and-communicate-with-services.md
 [service-fabric-health-introduction]: service-fabric-health-introduction.md
 [service-fabric-reliable-services-backup-restore]: service-fabric-reliable-services-backup-restore.md

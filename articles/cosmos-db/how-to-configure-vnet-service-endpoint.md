@@ -3,15 +3,16 @@ title: Azure Cosmos アカウント用の仮想ネットワーク ベースの�
 description: このドキュメントでは、Azure Cosmos DB の仮想ネットワーク サービス エンドポイントのセットアップに必要な手順について説明します。
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 03/26/2020
+ms.topic: how-to
+ms.date: 06/04/2020
 ms.author: mjbrown
-ms.openlocfilehash: 442623880c1b95f3d7e038ae44832b74853d2c4a
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 995e5a1a87ee332c48641f42c4134e3e58f11cfa
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366241"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495422"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>仮想ネットワーク (VNet) からのアクセスの構成
 
@@ -42,11 +43,11 @@ Azure Cosmos DB アカウントを構成して、Azure 仮想ネットワーク�
 
 1. 追加する Azure 仮想ネットワークの**サブスクリプション**を選択します。 Azure Cosmos DB アカウントへのアクセスを提供する Azure **仮想ネットワーク**と**サブネット**を選択します。 次に、 **[有効化]** を選択して、サービス エンドポイントを持つ選択したネットワークを "Microsoft.AzureCosmosDB" に対して有効にします。 完了したら、 **[追加]** を選択します。
 
-   ![仮想ネットワークとサブネットを選択する](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png)
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png" alt-text="仮想ネットワークとサブネットを選択する":::
 
 1. 仮想ネットワークから Azure Cosmos DB アカウントへのアクセスを有効にすると、この選択したサブネットからのトラフィックのみが許可されます。 追加した仮想ネットワークとサブネットは、次のスクリーン ショットのように表示されます。
 
-   ![正常に構成された仮想ネットワークとサブネット](./media/how-to-configure-vnet-service-endpoint/vnet-and-subnet-configured-successfully.png)
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/vnet-and-subnet-configured-successfully.png" alt-text="正常に構成された仮想ネットワークとサブネット":::
 
 > [!NOTE]
 > 仮想ネットワーク サービス エンドポイントを有効にするには、次のサブスクリプションのアクセス許可が必要です。
@@ -66,7 +67,7 @@ Azure Cosmos DB アカウントを構成して、Azure 仮想ネットワーク�
 
 1. 新しい仮想ネットワークを作成するために必要な詳細を指定し、 **[作成]** を選択します。 "Microsoft.AzureCosmosDB" 用のサービス エンドポイントが有効になっているサブネットが作成されます。
 
-   ![仮想ネットワークと新しい仮想ネットワークのサブネットを選択する](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png)
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png" alt-text="仮想ネットワークと新しい仮想ネットワークのサブネットを選択する":::
 
 ご使用の Azure Cosmos DB アカウントを Azure Cognitive Search などのその他の Azure サービスで使用していたり、それが Stream Analytics または Power BI からアクセスされる場合は、 **[Accept connections from within global Azure datacenters]** \(グローバル Azure データセンター内からの接続を受け入れる\) をオンにしてアクセスを許可します。
 
@@ -80,7 +81,7 @@ Azure Cosmos DB アカウントを構成して、Azure 仮想ネットワーク�
 
 1. 仮想ネットワークまたはサブネットの横にある **[...]** を選択し、 **[削除]** を選択し、仮想ネットワークまたはサブネットのルールを削除します。
 
-   ![仮想ネットワークを削除する](./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png)
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png" alt-text="仮想ネットワークを削除する":::
 
 1. **[保存]** を選択して変更を保存します。
 
@@ -257,6 +258,10 @@ az network vnet subnet update \
    --vnet-name $vnetName \
    --service-endpoints Microsoft.AzureCosmosDB
 ```
+
+## <a name="port-range-when-using-direct-mode"></a>直接モードを使用する場合のポートの範囲
+
+ダイレクト モード接続を介して Azure Cosmos アカウントでサービス エンドポイントを使用している場合は、10000 から 20000 までの TCP ポート範囲が開いていることを確保する必要があります。
 
 ## <a name="migrating-from-an-ip-firewall-rule-to-a-virtual-network-acl"></a><a id="migrate-from-firewall-to-vnet"></a>IP ファイアウォール規則から仮想ネットワーク ACL へ移行する
 

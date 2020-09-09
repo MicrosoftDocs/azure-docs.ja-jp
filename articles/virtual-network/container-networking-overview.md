@@ -1,6 +1,6 @@
 ---
 title: Azure Virtual Network を使ったコンテナー ネットワーク | Microsoft Docs
-description: コンテナーで Azure の仮想ネットワークを使用できるようにする方法について説明します。
+description: Azure Virtual Network コンテナー ネットワーク インターフェイス (CNI) プラグインについて、およびコンテナーで Azure Virtual Network を使用できるようにする方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: aanandr
@@ -10,18 +10,18 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: bdd364c097552d3a1b52073af97d33db70d78556
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: bd86b2ec803b2327d3daa2d4274f13328fec8c27
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75647443"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283216"
 ---
 # <a name="enable-containers-to-use-azure-virtual-network-capabilities"></a>コンテナーで Azure Virtual Network の機能を使用できるようにする
 

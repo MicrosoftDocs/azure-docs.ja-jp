@@ -2,14 +2,14 @@
 title: チュートリアル - 複数コンテナー グループをデプロイする - テンプレート
 description: このチュートリアルでは、Azure Resource Manager テンプレートと Azure CLI を使用して複数のコンテナーを含むコンテナー グループを Azure Container Instances にデプロイする方法を説明します。
 ms.topic: article
-ms.date: 04/03/2019
+ms.date: 07/02/2020
 ms.custom: mvc
-ms.openlocfilehash: b08a974cbbdc9e4bdf1594672f82748bfabe88b4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: cb085112c6e6458d897f52f19988e6301d4ae6e8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653514"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259583"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-resource-manager-template"></a>チュートリアル:Resource Manager テンプレートを使用してマルチコンテナー グループをデプロイする
 
@@ -68,7 +68,7 @@ code azuredeploy.json
     {
       "name": "[parameters('containerGroupName')]",
       "type": "Microsoft.ContainerInstance/containerGroups",
-      "apiVersion": "2018-10-01",
+      "apiVersion": "2019-12-01",
       "location": "[resourceGroup().location]",
       "properties": {
         "containers": [
@@ -151,10 +151,10 @@ code azuredeploy.json
 az group create --name myResourceGroup --location eastus
 ```
 
-[az group deployment create][az-group-deployment-create] コマンドで、テンプレートをデプロイします。
+[az deployment group create][az-deployment-group-create] コマンドを使用してテンプレートをデプロイします。
 
 ```azurecli-interactive
-az group deployment create --resource-group myResourceGroup --template-file azuredeploy.json
+az deployment group create --resource-group myResourceGroup --template-file azuredeploy.json
 ```
 
 数秒以内に、Azure から最初の応答を受信します。
@@ -187,9 +187,9 @@ az container logs --resource-group myResourceGroup --name myContainerGroup --con
 
 ```bash
 listening on port 80
-::1 - - [21/Mar/2019:23:17:48 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
-::1 - - [21/Mar/2019:23:17:51 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
-::1 - - [21/Mar/2019:23:17:54 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
+::1 - - [02/Jul/2020:23:17:48 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
+::1 - - [02/Jul/2020:23:17:51 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
+::1 - - [02/Jul/2020:23:17:54 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
 ```
 
 サイドカー コンテナーのログを表示するには、`aci-tutorial-sidecar` コンテナーを指定して、同様のコマンドを実行します。
@@ -201,7 +201,7 @@ az container logs --resource-group myResourceGroup --name myContainerGroup --con
 出力:
 
 ```bash
-Every 3s: curl -I http://localhost                          2019-03-21 20:36:41
+Every 3s: curl -I http://localhost                          2020-07-02 20:36:41
 
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
@@ -214,7 +214,7 @@ Last-Modified: Wed, 29 Nov 2017 06:40:40 GMT
 ETag: W/"67f-16006818640"
 Content-Type: text/html; charset=UTF-8
 Content-Length: 1663
-Date: Thu, 21 Mar 2019 20:36:41 GMT
+Date: Thu, 02 Jul 2020 20:36:41 GMT
 Connection: keep-alive
 ```
 
@@ -239,5 +239,5 @@ Connection: keep-alive
 [az-container-logs]: /cli/azure/container#az-container-logs
 [az-container-show]: /cli/azure/container#az-container-show
 [az-group-create]: /cli/azure/group#az-group-create
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
-[template-reference]: https://docs.microsoft.com/azure/templates/microsoft.containerinstance/containergroups
+[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create
+[template-reference]: /azure/templates/microsoft.containerinstance/containergroups

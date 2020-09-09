@@ -5,16 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
-ms.topic: conceptual
-ms.date: 4/1/2020
-ms.openlocfilehash: ca5f80e57f90e4dd26ac2e4a175998ff3de2c102
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.topic: how-to
+ms.date: 6/11/2020
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 43562454e8ddbeb3e674cbdbace508ed9ca1d549
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546433"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501172"
 ---
-# <a name="customize-server-parameters-by-using-azure-cli"></a>Azure CLI を使用したサーバー パラメーターのカスタマイズ
+# <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL のサーバー パラメータを構成する
 Azure コマンド ライン ユーティリティ である Azure CLI を使用して、Azure Database for MySQL サーバーの構成パラメーターを一覧表示、表示、および更新できます。 エンジン構成のサブセットは、サーバー レベルで公開され、変更が可能です。 
 
 ## <a name="prerequisites"></a>前提条件
@@ -50,6 +51,14 @@ az mysql server configuration set --name slow_query_log --resource-group myresou
 az mysql server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
 このコードは、**slow\_query\_log** 構成を既定値 **OFF** にリセットします。 
+
+## <a name="setting-parameters-not-listed"></a>設定パラメーターが一覧に含まれていない
+更新するサーバー パラメーターが Azure portal に一覧表示されていない場合は、必要に応じて `init_connect` を使用して、接続レベルでパラメーターを設定できます。 これにより、サーバーに接続する各クライアントのサーバー パラメーターが設定されます。 
+
+リソース グループ **myresourcegroup** にあるサーバー **mydemoserver.mysql.database.azure.com** の **init\_connect** サーバー構成パラメーターを更新して、文字セットなどの値を設定します。
+```azurecli-interactive
+az mysql server configuration set --name init_connect --resource-group myresourcegroup --server mydemoserver --value "SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;"
+```
 
 ## <a name="working-with-the-time-zone-parameter"></a>タイム ゾーン パラメーターを使用する
 

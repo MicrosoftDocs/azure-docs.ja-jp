@@ -4,19 +4,19 @@ description: 準拠しているデバイスを必須とするためにカスタ�
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 03/25/2020
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc6bd486c1e8338eaf875c7026764c80d49e2f05
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c98269f9851272e8caa9b26ae0c57ed13e9a99f2
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295198"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049130"
 ---
 # <a name="conditional-access-require-compliant-devices"></a>条件付きアクセス:Require compliant devices (準拠しているデバイスが必須)
 
@@ -44,7 +44,7 @@ Microsoft Intune をデプロイした組織では、デバイスから返され
 1. **[Cloud apps or actions]\(クラウド アプリまたはアクション\)**  >  **[Include]\(含める\)** で、 **[すべてのクラウド アプリ]** を選択します。
    1. 特定のアプリケーションをポリシーから除外する必要がある場合は、 **[除外されたクラウド アプリの選択]** で **[除外]** タブから選択して **[選択]** を選びます。
    1. **[Done]** を選択します。
-1. **[条件]**  >  **[クライアント アプリ (プレビュー)]** で、 **[構成する]** を **[はい]** に設定し、 **[完了]** を選択します。
+1. **[条件]**  >  **[クライアント アプリ (プレビュー)]**  >  **[このポリシーを適用するクライアント アプリを選択します]** で、すべてを既定値が選択された状態のままにして、 **[完了]** を選択します。
 1. **[アクセス制御]**  >  **[許可]** で、 **[デバイスは準拠としてマーク済みである必要があります]** を選択します。
    1. **[選択]** を選択します。
 1. 設定を確認し、 **[Enable policy]\(ポリシーの有効化\)** を **[オン]** に設定します。
@@ -61,7 +61,7 @@ Windows 7、iOS、Android、macOS、および一部のサードパーティ製 W
 
 [Conditional Access common policies](concept-conditional-access-policy-common.md) (条件付きアクセスの一般的なポリシー)
 
-[条件付きアクセスのレポート専用モードを使用した影響を判断する](howto-conditional-access-report-only.md)
+[条件付きアクセスのレポート専用モードを使用した影響を判断する](howto-conditional-access-insights-reporting.md)
 
 [Simulate sign in behavior using the Conditional Access What If tool](troubleshoot-conditional-access-what-if.md) (条件付きアクセスの What If ツールを使用したサインイン動作のシミュレート)
 

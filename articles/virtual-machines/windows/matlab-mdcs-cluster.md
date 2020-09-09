@@ -8,15 +8,18 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
-ms.openlocfilehash: d34481587fd48e2eddfd268c39f6bc4f7c4e0c76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c2561a6dc3ad8c0af1c266b3822a80c76f45c174
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869419"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639683"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>Azure VM での MATLAB Distributed Computing Server クラスターの作成
 コンピューティング集中型の並列 MATLAB ワークロードを実行する 1 つ以上の MATLAB Distributed Computing Server クラスターを作成するには、Microsoft Azure Virtual Machines を使用します。 VM に MATLAB Distributed Computing Server ソフトウェアをインストールして基本イメージとして使用し、Azure のクイック スタート テンプレートまたは Azure PowerShell スクリプト ( [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)から入手可能) を使用してクラスターをデプロイおよび管理します。 デプロイ後には、クラスターに接続してワークロードを実行します。
+
+> [!IMPORTANT]
+> この記事が書かれてから、Azure での MATLAB アプリケーションの使用が正式にサポートされるようになりました。 これらの新しい機能を、この記事で参照されているテンプレートやスクリプトの代わりに使用することをお勧めします。 [Azure Marketplace](https://azuremarketplace.microsoft.com/) で「matlab」を検索します。Azure での MATLAB アプリケーションの実行に関する詳細については、[MathWorks](https://www.mathworks.com/solutions/cloud.html#public-cloud) を参照してください。
 
 ## <a name="about-matlab-and-matlab-distributed-computing-server"></a>MATLAB および MATLAB Distributed Computing Server について
 [MATLAB](https://www.mathworks.com/products/matlab/) プラットフォームは、エンジニアリングおよび科学的な問題を解決するために最適化されています。 大規模なシミュレーションおよびデータ処理タスクを実行する MATLAB ユーザーは、MathWorks の並列コンピューティング製品のコンピューティング クラスターおよびグリッド サービスを利用して、コンピューティング集中型のワークロードを高速化できます。 [Parallel Computing Toolbox](https://www.mathworks.com/products/parallel-computing/) を使用し、アプリケーションを並列化し、マルチコア プロセッサ、GPU およびコンピューティング クラスターを利用できます。 [MATLAB Distributed Computing Server](https://www.mathworks.com/products/distriben/) を使用し、コンピューティング クラスター内の多数のコンピューターを使用できます。
@@ -25,7 +28,7 @@ Azure の仮想マシンを使用すると、対話型のジョブ、バッチ �
 
 ## <a name="prerequisites"></a>前提条件
 * **クライアント コンピューター** : デプロイ後の Azure と MATLAB Distributed Computing Server クラスターとの通信に、Windows ベースのクライアント コンピューターが必要です。
-* **Azure PowerShell** : クライアント コンピューターにインストールする方法については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」を参照してください。
+* **Azure PowerShell** : クライアント コンピューターにインストールする方法については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/) 」を参照してください。
 * **Azure サブスクリプション** - サブスクリプションがない場合は、 [無料アカウント](https://azure.microsoft.com/free/) を数分で作成することができます。 大規模なクラスターでは、従量課金制サブスクリプションまたはその他の購入オプションを検討してください。
 * **vCPU クォータ** : 大規模なクラスターまたは複数の MATLAB Distributed Computing Server クラスターをデプロイするには、vCPU クォータを増やす必要があります。 クォータを増やすには、 [オンライン カスタマー サポートに申請](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) (無料) してください。
 * **MATLAB の Parallel Computing Toolbox および MATLAB Distributed Computing Server ライセンス** : このスクリプトでは、すべてのライセンスで [MathWorks Hosted License Manager](https://www.mathworks.com/help/install/license-management.html) が使用されていることを想定しています。  

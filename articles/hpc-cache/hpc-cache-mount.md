@@ -3,15 +3,15 @@ title: Azure HPC Cache をマウントする
 description: Azure HPC Cache サービスにクライアントを接続する方法
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/15/2020
 ms.author: v-erkel
-ms.openlocfilehash: a44232f06b455e20530271723e816c2117b339a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10f8e92138878381b5267742b8211df81e0c49d4
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458381"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232680"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>Azure HPC Cache をマウントする
 
@@ -115,7 +115,7 @@ root@test-client:/tmp#
 
 > mount -o hard,proto=tcp,mountproto=tcp,retry=30 ${CACHE_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}
 
-| 推奨される mount コマンドの設定 | |
+| 推奨される mount コマンドの設定 | 説明 |
 --- | ---
 ``hard`` | Azure HPC Cache に対するソフト マウントは、アプリケーション エラーおよび可能性のあるデータ損失と関連付けられます。
 ``proto=tcp`` | このオプションは、NFS ネットワーク エラーの適切な処理をサポートします。

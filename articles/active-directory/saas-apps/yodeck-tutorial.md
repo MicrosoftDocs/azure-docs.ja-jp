@@ -2,25 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Yodeck の統合 | Microsoft Docs'
 description: Azure Active Directory と Yodeck の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b2c8dccb-eeb0-4f4d-a24d-8320631ce819
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: af0748f36e8d2299921f987c517f7a4923bd0d55
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8eed884ed9d957ede4ae9fc192ae5a8e501b652e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67086474"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546238"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yodeck"></a>チュートリアル: Azure Active Directory と Yodeck の統合
 
@@ -119,19 +115,29 @@ Yodeck で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="configure-yodeck-single-sign-on"></a>Yodeck のシングル サインオンの構成
 
+1. **Yodeck** 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+
+    ![image](./media/target-process-tutorial/install_extension.png)
+
+1. ブラウザーに拡張機能を追加した後、 **[Yodeck のセットアップ]** をクリックすると、Yodeck アプリケーションに移動します。 そこから、管理者の資格情報を入力して Yodeck にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 から 5 が自動化されます。
+
+    ![セットアップの構成](common/setup-sso.png)
+
+    **アプリケーションを手動で構成する場合は、次の手順を実行します。**
+
 1. 別の Web ブラウザー ウィンドウで、Yodeck 企業サイトに管理者としてサインインします。
 
-2. ページの右上隅にある **[ユーザー設定]** オプションをクリックし、 **[アカウント設定]** を選択します。
+1. ページの右上隅にある **[ユーザー設定]** オプションをクリックし、**[アカウント設定]** を選択します。
 
     ![Yodeck の構成](./media/yodeck-tutorial/configure1.png)
 
-3. **[SAML]** をクリックし、次の手順を実行します。
+1. **[SAML]** をクリックし、次の手順を実行します。
 
     ![Yodeck の構成](./media/yodeck-tutorial/configure2.png)
 
     a. **[URL からインポートする]** を選択します。
 
-    b. **[URL]** テキスト ボックスに、Azure Portal からコピーした **[アプリのフェデレーション メタデータ URL]** 値を貼り付け、 **[インポート]** をクリックします。
+    b. **[URL]** テキスト ボックスに、Azure Portal からコピーした **[アプリのフェデレーション メタデータ URL]** 値を貼り付け、**[インポート]** をクリックします。
     
     c. **[アプリのフェデレーション メタデータ URL]** をインポートすると、残りのフィールドが自動的に設定されます。
 
@@ -165,7 +171,7 @@ Yodeck で Azure AD シングル サインオンを構成するには、次の�
 
 このセクションでは、Britta Simon に Yodeck へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Yodeck]** の順に選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Yodeck]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -195,7 +201,7 @@ Azure AD ユーザーが Yodeck にサインインできるようにするには
 
 1. Yodeck 企業サイトに管理者としてサインインします。
 
-2. ページの右上隅にある **[ユーザー設定]** オプションをクリックし、 **[ユーザー]** を選択します。
+2. ページの右上隅にある **[ユーザー設定]** オプションをクリックし、**[ユーザー]** を選択します。
 
     ![従業員の追加](./media/yodeck-tutorial/user1.png)
 
@@ -203,7 +209,7 @@ Azure AD ユーザーが Yodeck にサインインできるようにするには
 
     ![従業員の追加](./media/yodeck-tutorial/user2.png)
 
-4. **[ユーザーの詳細]** ダイアログ ページで、次の手順を実行します。
+4. [**User Details**] ダイアログ ページで、以下の手順を実行します。
 
     ![従業員の追加](./media/yodeck-tutorial/user3.png)
 

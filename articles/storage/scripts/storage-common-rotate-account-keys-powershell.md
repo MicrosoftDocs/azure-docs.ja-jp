@@ -10,12 +10,13 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 52ebed3de093f15d8188ee5fec49d75d5a4a206d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 7d8585b5d05012ab2aff2580d41fecf6423b509c
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80060809"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070430"
 ---
 # <a name="rotate-storage-account-access-keys-with-powershell"></a>PowerShell を使用してストレージ アカウントのアクセス キーをローテーションする
 
@@ -51,6 +52,6 @@ Remove-AzResourceGroup -Name rotatekeystestrg
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
+Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。
 
 その他のストレージ PowerShell サンプル スクリプトは、[Azure Blob ストレージ用 PowerShell サンプル](../blobs/storage-samples-blobs-powershell.md)のページにあります。

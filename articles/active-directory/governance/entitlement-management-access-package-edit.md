@@ -3,25 +3,25 @@ title: エンタイトルメント管理でアクセス パッケージを非表
 description: Azure Active Directory のエンタイトルメント管理でアクセス パッケージを非表示または削除する方法について説明します。
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 10/15/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf410db5a483fc4f5d9efc1a6bd5c6202694ef4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 22aa97c6e627c2072636ca2e079877ff0f608b68
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230399"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798802"
 ---
 # <a name="hide-or-delete-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD のエンタイトルメント管理でアクセス パッケージを非表示または削除する
 

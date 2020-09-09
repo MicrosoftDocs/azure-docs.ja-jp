@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 27bb6abb7ae8eae46bc4dea3708270ecb4b731a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0182c3aa9095ad6f7bf3d8d86f115517e9efb020
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260906"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249605"
 ---
 # <a name="api-management-transformation-policies"></a>API Management の変換ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。
@@ -82,7 +82,7 @@ ms.locfileid: "81260906"
 |parse-date|`false` に設定すると、変換中、日付値がコピーされます。|いいえ|true|
 
 ### <a name="usage"></a>使用法
- このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+ このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound、on-error
 
@@ -126,7 +126,7 @@ ms.locfileid: "81260906"
 |consider-accept-header|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   true - 要求の Accept ヘッダーで JSON が要求されている場合に変換を適用します。<br />-   false - 常に変換を適用します。|いいえ|true|
 
 ### <a name="usage"></a>使用法
- このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+ このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound、on-error
 
@@ -161,7 +161,7 @@ ms.locfileid: "81260906"
 |to|置換する文字列。 長さゼロの置換文字列を指定すると、検索文字列を削除できます。|はい|該当なし|
 
 ### <a name="usage"></a>使用法
- このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+ このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound、backend、on-error
 
@@ -192,7 +192,7 @@ ms.locfileid: "81260906"
 |redirect-content-urls|ルート要素。|はい|
 
 ### <a name="usage"></a>使用法
- このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+ このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound
 
@@ -214,7 +214,7 @@ or
 ```
 
 > [!NOTE]
-> バックエンド エンティティは、管理 [API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend) と [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) を使用して管理できます。
+> バックエンド エンティティは、管理 [API](/rest/api/apimanagement/2019-12-01/backend) と [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) を使用して管理できます。
 
 ### <a name="example"></a>例
 
@@ -269,7 +269,7 @@ or
 |名前|説明|必須|Default|
 |----------|-----------------|--------------|-------------|
 |base-url|バックエンド サービスの新しいベース URL。|`base-url` または `backend-id` のいずれかが存在しなければなりません。|該当なし|
-|backend-id|ルーティング先のバックエンドの識別子。 (バックエンド エンティティは、[API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend) と [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) を使用して管理できます)。|`base-url` または `backend-id` のいずれかが存在しなければなりません。|該当なし|
+|backend-id|ルーティング先のバックエンドの識別子。 (バックエンド エンティティは、[API](/rest/api/apimanagement/2019-12-01/backend) と [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) を使用して管理できます)。|`base-url` または `backend-id` のいずれかが存在しなければなりません。|該当なし|
 |sf-partition-key|バックエンドが Service Fabric サービスで、'backend-id' を使って指定されている場合にのみ適用されます。 名前解決サービスからの特定のパーティションを解決するために使います。|いいえ|該当なし|
 |sf-replica-type|バックエンドが Service Fabric サービスで、'backend-id' を使って指定されている場合にのみ適用されます。 要求をパーティションのプライマリ レプリカとセカンダリ レプリカのどちらに送信する必要があるかを制御します。 |いいえ|該当なし|
 |sf-resolve-condition|バックエンドが Service Fabric サービスの場合にのみ適用されます。 Service Fabric バックエンドへの呼び出しを新しい解決で繰り返す必要があるかどうかを識別する条件です。|いいえ|該当なし|
@@ -277,7 +277,7 @@ or
 |sf-listener-name|バックエンドが Service Fabric サービスで、"backend-id" を使って指定されている場合にのみ適用されます。 Service Fabric Reliable Services では、サービス内に複数のリスナーを作成できます。 この属性は、バックエンドのリライアブル サービスに複数のリスナーがある場合に、特定のリスナーを選択するために使用されます。 この属性が指定されていない場合、API Management によって名前のないリスナーの使用が試行されます。 リスナーが 1 つのみのリライアブル サービスでは、通常、リスナーに名前がありません。 |いいえ|該当なし|
 
 ### <a name="usage"></a>使用法
- このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+ このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、backend
 
@@ -447,7 +447,7 @@ OriginalUrl.
 
 
 ### <a name="usage"></a>使用法
- このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+ このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound、backend
 
@@ -523,7 +523,7 @@ OriginalUrl.
 |name|設定するヘッダーの名前を指定します。|はい|該当なし|
 
 ### <a name="usage"></a>使用法
- このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+ このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound、backend、on-error
 
@@ -578,7 +578,7 @@ OriginalUrl.
 |name|設定するクエリ パラメーターの名前を指定します。|はい|該当なし|
 
 ### <a name="usage"></a>使用法
- このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+ このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、backend
 
@@ -656,7 +656,7 @@ OriginalUrl.
 |copy-unmatched-params|元の URL テンプレートに存在しない着信要求のクエリ パラメーターを、書き換えテンプレートで定義されている URL に追加するかどうかを指定します。|いいえ|true|
 
 ### <a name="usage"></a>使用法
- このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+ このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound
 
@@ -720,7 +720,7 @@ OriginalUrl.
 |xsl:stylesheet|ルート スタイルシート要素。 この中で定義する要素と属性はすべて、標準的な [XSLT の仕様](https://www.w3.org/TR/xslt)に従う必要があります。|はい|
 
 ### <a name="usage"></a>使用法
- このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+ このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound
 
@@ -731,5 +731,5 @@ OriginalUrl.
 詳細については、次のトピックを参照してください。
 
 + [API Management のポリシー](api-management-howto-policies.md)
-+ ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](api-management-policy-reference.md)
++ ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](./api-management-policies.md)
 + [ポリシーのサンプル](policy-samples.md)

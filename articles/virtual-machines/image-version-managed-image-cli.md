@@ -9,12 +9,13 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 6f49ece874ea52227e6531193fc53b3bea525702
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 8631a411b26f91bc72e23ac7ff9fb2278f61168c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793843"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502887"
 ---
 # <a name="migrate-from-a-managed-image-to-an-image-version-using-the-azure-cli"></a>Azure CLI を使用してマネージド イメージからイメージ バージョンに移行する
 Shared Image Gallery に移行したい既存のマネージド イメージがある場合は、マネージド イメージから直接 Shared Image Gallery イメージを作成できます。 新しいイメージをテストしたら、ソースのマネージド イメージを削除できます。 [PowerShell](image-version-managed-image-powershell.md) を使用して、マネージド イメージから Shared Image Gallery に移行することもできます。
@@ -40,7 +41,7 @@ Shared Image Gallery に移行したい既存のマネージド イメージが�
 
 イメージ定義名は、大文字または小文字、数字、ドット、ダッシュおよびピリオドで構成できます。 
 
-イメージ定義に指定できる値の詳細については、[イメージ定義](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions)に関するページを参照してください。
+イメージ定義に指定できる値の詳細については、[イメージ定義](./linux/shared-image-galleries.md#image-definitions)に関するページを参照してください。
 
 [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create) を使用して、ギャラリー内にイメージ定義を作成します。
 
@@ -92,9 +93,11 @@ az sig image-version create \
 > [!NOTE]
 > 同じマネージド イメージを使用して別のイメージ バージョンを作成する前に、そのイメージ バージョンが構築とレプリケーションを完全に完了するまで待つ必要があります。
 >
-> イメージ バージョンを作成するときに、`--storage-account-type standard_zrs` を追加することによって、すべてのイメージ バージョンのレプリカを[ゾーン冗長ストレージ](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)に格納することもできます。
+> イメージ バージョンを作成するときに、`--storage-account-type standard_zrs` を追加することによって、すべてのイメージ バージョンのレプリカを[ゾーン冗長ストレージ](../storage/common/storage-redundancy.md)に格納することもできます。
 >
 
 ## <a name="next-steps"></a>次のステップ
 
 [一般化されたイメージ バージョン](vm-generalized-image-version-cli.md)から VM を作成する。
+
+購入プラン情報を提供する方法については、「[イメージ作成時の Azure Marketplace 購入プラン情報の提供](marketplace-images.md)」を参照してください。

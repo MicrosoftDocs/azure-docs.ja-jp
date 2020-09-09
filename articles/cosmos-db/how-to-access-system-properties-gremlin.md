@@ -3,20 +3,20 @@ title: Azure Cosmos DB Graph を使用したシステム ドキュメントの�
 description: Gremlin API を使用して Cosmos DB システム ドキュメントのプロパティの読み取りと書き込みを行う方法について学習します
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/10/2019
 author: luisbosquez
 ms.author: lbosq
-ms.openlocfilehash: 4ed7e67ae0ef027b260d0e0f0407e4e05ed5a8f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a0feac9bbd98dc4c67464e84e9a3204bd9730355
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898304"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85390348"
 ---
 # <a name="system-document-properties"></a>システム ドキュメントのプロパティ
 
-Azure Cosmos DB では、すべてのドキュメントに[システム プロパティ](https://docs.microsoft.com/rest/api/cosmos-db/databases) (```_ts```、```_self```、```_attachments```、```_rid```、```_etag``` など) があります。 さらに、Gremlin エンジンによって、辺の ```inVPartition``` および ```outVPartition``` プロパティが追加されます。 既定では、これらのプロパティはトラバーサルに使用できます。 ただし、特定のプロパティ、またはすべてのプロパティを Gremlin トラバーサルに含めることは可能です。
+Azure Cosmos DB では、すべてのドキュメントに[システム プロパティ](/rest/api/cosmos-db/databases) (```_ts```、```_self```、```_attachments```、```_rid```、```_etag``` など) があります。 さらに、Gremlin エンジンによって、辺の ```inVPartition``` および ```outVPartition``` プロパティが追加されます。 既定では、これらのプロパティはトラバーサルに使用できます。 ただし、特定のプロパティ、またはすべてのプロパティを Gremlin トラバーサルに含めることは可能です。
 
 ```
 g.withStrategies(ProjectionStrategy.build().IncludeSystemProperties('_ts').create())

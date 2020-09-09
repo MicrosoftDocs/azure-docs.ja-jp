@@ -3,16 +3,16 @@ title: Azure VM のパフォーマンスを監視する - Azure Application Insi
 description: Azure VM および Azure 仮想マシン スケール セットに対するアプリケーション パフォーマンス監視。 チャートの読み込みおよび応答時間、依存関係の情報やパフォーマンス警告を設定します。
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: d75e14dccef565f0029d06583e74d5693726dd99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b025c5196d65234a632bd1f939bc1116b72dce0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77661330"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024634"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Azure 仮想マシンと Azure 仮想マシン スケール セットに Azure Monitor Application Insights エージェントをデプロイする
 
-[Azure 仮想マシン](https://azure.microsoft.com/services/virtual-machines/)と [Azure 仮想マシン スケール セット](https://docs.microsoft.com/azure/virtual-machine-scale-sets/)上で実行されている .NET ベースの Web アプリケーションに対する監視を有効にすることが、従来より簡単になりました。 コードを変更することなく、Application Insights を使用する利点のすべてが得られます。
+[Azure 仮想マシン](https://azure.microsoft.com/services/virtual-machines/)と [Azure 仮想マシン スケール セット](../../virtual-machine-scale-sets/index.yml)上で実行されている .NET ベースの Web アプリケーションに対する監視を有効にすることが、従来より簡単になりました。 コードを変更することなく、Application Insights を使用する利点のすべてが得られます。
 
 この記事では、Application Insights エージェントを使用した Application Insights 監視の有効化について説明した後、大規模なデプロイのプロセスを自動化するための事前ガイダンスを提供します。
 
@@ -30,15 +30,15 @@ Azure 仮想マシンと Azure 仮想マシン スケール セットでホス�
 
     * Azure 仮想マシンと Azure 仮想マシン スケール セットの場合は、少なくともこのレベルの監視を有効にすることをお勧めします。 その後、特定のシナリオに基づいて、手動のインストルメンテーションが必要かどうかを評価できます。
 
-    * Application Insights エージェントでは、.NET SDK と同じ依存関係のシグナルを既定で自動的に収集します。 詳細については、「[依存関係の自動収集](https://docs.microsoft.com/azure/azure-monitor/app/auto-collect-dependencies#net)」を参照してください。
+    * Application Insights エージェントでは、.NET SDK と同じ依存関係のシグナルを既定で自動的に収集します。 詳細については、「[依存関係の自動収集](./auto-collect-dependencies.md#net)」を参照してください。
         > [!NOTE]
         > 現在は、.Net IIS でホストされたアプリケーションのみがサポートされています。 SDK を使用して、Azure 仮想マシンと仮想マシン スケール セット上でホストされている ASP.NET Core、Java、Node.js アプリケーションをインストルメント化します。
 
 * **コードベース** (SDK を使用)
 
-    * このアプローチはカスタマイズできる部分がはるかに多いのですが、[Application Insights SDK NuGet パッケージへの依存関係を追加](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)する必要があります。 また、この方法では、最新バージョンのパッケージへの更新を自分で管理する必要があります。
+    * このアプローチはカスタマイズできる部分がはるかに多いのですが、[Application Insights SDK NuGet パッケージへの依存関係を追加](./asp-net.md)する必要があります。 また、この方法では、最新バージョンのパッケージへの更新を自分で管理する必要があります。
 
-    * エージェントベースの監視の既定ではキャプチャされないイベント/依存関係を追跡するためにカスタム API 呼び出しを行う必要がある場合は、この方法を使用する必要があります。 詳細については、[カスタムのイベントとメトリックのための API に関する記事](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics)を参照してください。
+    * エージェントベースの監視の既定ではキャプチャされないイベント/依存関係を追跡するためにカスタム API 呼び出しを行う必要がある場合は、この方法を使用する必要があります。 詳細については、[カスタムのイベントとメトリックのための API に関する記事](./api-custom-events-metrics.md)を参照してください。
 
 > [!NOTE]
 > エージェント ベースの監視と手動の SDK ベースのインストルメンテーションの両方が検出された場合は、手動のインストルメンテーション設定のみが受け付けられます。 これは、重複したデータが送信されないようにするためです。 このチェックアウトの詳細については、以下の「[トラブルシューティング](#troubleshooting)」セクションを参照してください。
@@ -46,10 +46,10 @@ Azure 仮想マシンと Azure 仮想マシン スケール セットでホス�
 ## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machines-using-powershell"></a>PowerShell を使用して、Azure 仮想マシン上で .NET アプリケーションの Application Insights エージェントを管理する
 
 > [!NOTE]
-> Application Insights エージェントをインストールする前に、接続文字列が必要になります。 [新しい Application Insights リソースを作成する](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)か、既存の Application Insights リソースから接続文字列をコピーします。
+> Application Insights エージェントをインストールする前に、接続文字列が必要になります。 [新しい Application Insights リソースを作成する](./create-new-resource.md)か、既存の Application Insights リソースから接続文字列をコピーします。
 
 > [!NOTE]
-> PowerShell の新機能については、 [使用開始ガイド](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azps-2.5.0)を確認してください。
+> PowerShell の新機能については、 [使用開始ガイド](/powershell/azure/get-started-azureps?view=azps-2.5.0)を確認してください。
 
 Application Insights エージェントを Azure 仮想マシンの拡張機能としてインストールまたは更新する
 ```powershell
@@ -99,7 +99,7 @@ Get-AzResource -ResourceId "/subscriptions/<mySubscriptionId>/resourceGroups/<my
 # Location          : southcentralus
 # ResourceId        : /subscriptions/<mySubscriptionId>/resourceGroups/<myVmResourceGroup>/providers/Microsoft.Compute/virtualMachines/<myVmName>/extensions/ApplicationMonitoring
 ```
-また、ポータルの [Azure 仮想マシン ブレード](https://docs.microsoft.com/azure/virtual-machines/extensions/overview)で、インストールされている拡張機能を表示することもできます。
+また、ポータルの [Azure 仮想マシン ブレード](../../virtual-machines/extensions/overview.md)で、インストールされている拡張機能を表示することもできます。
 
 > [!NOTE]
 > インストールを確認するには、Application Insights エージェント拡張機能のデプロイに使用した接続文字列に関連付けられている、Application Insights リソース内の Live Metrics Stream をクリックします。 複数の仮想マシンからデータを送信する場合は、[サーバー名] でターゲット Azure 仮想マシンを選択します。 データのフローが開始されるまでに最大で 1 分かかる場合があります。

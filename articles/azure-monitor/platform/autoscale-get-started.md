@@ -4,17 +4,17 @@ description: Azure でリソースの Web アプリ、クラウド サービス�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: db1814c0a27ac6d61c7353a2c66cb5a1a72688d3
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 710d4e1aa77f8ab3153dafc77a72eec2192cf205
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801605"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794542"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure での自動スケールの使用
 この記事では、Microsoft Azure Portal でリソースの自動スケール設定をセットアップする方法について説明します。
 
-Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[Cloud Services](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/)、および [API Management サービス](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)にのみ適用されます。
+Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[Cloud Services](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/)、および [API Management サービス](../../api-management/api-management-key-concepts.md)にのみ適用されます。
 
 ## <a name="discover-the-autoscale-settings-in-your-subscription"></a>サブスクリプションの自動スケール設定の表示
 
@@ -113,6 +113,28 @@ CPU 使用率に基づいてだけでなく、特定の曜日に異なる方法�
 
 **[Enable autoscale]\(自動スケールを有効にする\)** をクリックし、 **[保存]** をクリックすることで、いつでも自動スケールに戻すことができます。
 
+## <a name="route-traffic-to-healthy-instances-app-service"></a>正常なインスタンスにトラフィックをルーティングする (App Service)
+
+複数のインスタンスにスケールアウトする場合、App Service を使用すれば、ご利用のインスタンスに対して正常性チェックを実行して、正常なインスタンスにのみトラフィックをルーティングすることができます。 これを行うには、ご利用の App Service へのポータルを開いて、 **[監視]** の下にある **[正常性チェック]** を選択します。 **[有効]** を選択し、`/health` や `/api/health` など、ご利用のアプリケーションの有効な URL パスを指定します。 **[保存]** をクリックします。
+
+### <a name="health-check-path"></a>正常性チェック パス
+
+パスからは、2 分以内に 200 から 299 まで (200 と 299 を含む) の状態コードを使用して応答がなければなりません。 2 分以内にパスからの応答がなかった場合、または範囲外のステータス コードが返された場合、インスタンスは "異常" と見なされます。 正常性チェックは App Service の認証および承認機能と統合されています。システムは、これらのセキュリティ機能が有効になっている場合でも、エンドポイントに到達します。 独自の認証システムを使用する場合は、正常性チェック パスによって匿名アクセスが許可される必要があります。 サイトで HTTP**S** が有効になっている場合、healthcheck では HTTP**S** が優先され、このプロトコルを使用して要求が送信されます。
+
+正常性チェック パスによって、ご利用のアプリケーションの重要なコンポーネントが確認されます。 たとえば、ご利用のアプリケーションがデータベースとメッセージング システムに依存している場合、正常性チェックのエンドポイントはそれらのコンポーネントに接続する必要があります。 アプリケーションが重要なコンポーネントに接続できない場合は、アプリケーションが異常であることを示す 500 レベルの応答コードがパスから返されます。
+
+### <a name="behavior"></a>動作
+
+正常性チェック パスを指定すると、App Service によってすべてのインスタンス上のそのパスに対して ping が実行されます。 ping を 5 回実行しても成功の応答コードが返されない場合、そのインスタンスは "異常" と見なされます。 異常なインスタンスは、ロード バランサーのローテーションから除外されます。 さらに、スケール アップまたはスケール アウトする場合は、新しいインスタンスが要求に対して準備ができていることを保証するために、App Service によって正常性チェック パスに対して ping が実行されます。
+
+残りの正常なインスタンスでは、負荷が増加する可能性があります。 残りのインスタンスが過負荷にならないように、ご利用のインスタンスの半分以下が除外されます。 たとえば、App Service プランが 4 つのインスタンスにスケール アウトされ、そのうちの 3 つが異常である場合、最大 2 つがロードバランサーのローテーションから除外されます。 他の 2 つのインスタンス (1 つは正常、1 つは異常) は、引き続き要求を受信することになります。 すべてのインスタンスが異常であるという最悪のシナリオでは、何も除外されません。
+
+インスタンスが 1 時間、異常のままである場合、それは新しいインスタンスに置き換えられます。 App Service プランによれば、1 時間あたり最大で 1 つのインスタンス、1 日あたり最大で 3 つのインスタンスが置き換えられます。
+
+### <a name="monitoring"></a>監視
+
+アプリケーションの正常性チェック パスを指定したら、Azure Monitor を使用してご利用のサイトの正常性を監視できます。 ポータルの **[正常性チェック]** ブレードで、上部のツールバーにある **[メトリック]** をクリックします。 これにより新しいブレードが開き、サイトの過去の正常性状態を確認したり、新しいアラート ルールを作成したりできるようになります。 サイトの監視方法の詳細については、[Azure Monitor に関するガイドを参照してください](../../app-service/web-sites-monitor.md)。
+
 ## <a name="next-steps"></a>次のステップ
 - [アクティビティ ログ アラートを作成して、サブスクリプションで自動スケールのエンジン操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [アクティビティ ログ アラートを作成して、サブスクリプションで失敗した自動スケールのスケールイン/スケールアウト操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
@@ -121,7 +143,7 @@ CPU 使用率に基づいてだけでなく、特定の曜日に異なる方法�
 [1]:https://portal.azure.com
 [2]: ./media/autoscale-get-started/azure-monitor-launch.png
 [3]: ./media/autoscale-get-started/discover-autoscale-azure-monitor.png
-[4]: https://docs.microsoft.com/azure/app-service/app-service-web-get-started-dotnet
+[4]: ../../app-service/quickstart-dotnetcore.md
 [5]: ./media/autoscale-get-started/scale-setting-new-web-app.png
 [6]: ./media/autoscale-get-started/create-scale-setting-web-app.png
 [7]: ./media/autoscale-get-started/scale-in-recommendation.png
@@ -132,4 +154,3 @@ CPU 使用率に基づいてだけでなく、特定の曜日に異なる方法�
 [12]: ./media/autoscale-get-started/scale-definition-json.png
 [13]: ./media/autoscale-get-started/disable-autoscale.png
 [14]: ./media/autoscale-get-started/set-manualscale.png
-

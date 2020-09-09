@@ -3,17 +3,26 @@ title: Azure Migrate で評価/移行ツールを追加する
 description: Azure Migrate プロジェクトを作成し、評価/移行ツールを追加する方法について説明します。
 ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: 48bdea31d17ea1ddf0b983af962dce30b22d8dcf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a94e3cc18f46c457d6ed54ef88c62adefb07c5b9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537731"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102533"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>評価/移行ツールの初回追加
 
-この記事では、評価ツールまたは移行ツールを [Azure Migrate](migrate-overview.md) プロジェクトに初めて追加する方法について説明します。  
+この記事では、評価ツールまたは移行ツールを [Azure Migrate](./migrate-services-overview.md) プロジェクトに初めて追加する方法について説明します。  
 Azure Migrate は、オンプレミスのアプリとワークロード、およびプライベート/パブリック クラウド VM の検出、評価、および Azure への移行を追跡するための中央ハブとなります。 このハブには、評価および移行のための Azure Migrate ツールのほか、他のツールや独立系ソフトウェア ベンダー (ISV) の[オファリング](migrate-services-overview.md#isv-integration)が用意されています。 
+
+## <a name="check-permissions-to-create-project"></a>プロジェクトを作成するためのアクセス許可を確認する
+
+Azure Migrate プロジェクトをまだ作成していない場合は、適切なアクセス許可があることを確認します。
+
+1. Azure portal でサブスクリプションを開き、 **[アクセス制御 (IAM)]** を選択します。
+2. [アクセスの確認] で関連するアカウントを探し、それをクリックしてアクセス許可を表示します。 共同作成者または所有者のアクセス許可を持っている必要があります。
+    - 無料の Azure アカウントを作成したばかりであれば、自分のサブスクリプションの所有者になっています。
+    - サブスクリプションの所有者でない場合は、所有者と協力してロールを割り当てます。
 
 ## <a name="create-a-project-and-add-a-tool"></a>プロジェクトの作成とツールの追加
 
@@ -66,4 +75,6 @@ Azure サブスクリプション内に新しい Azure Migrate プロジェク�
 
 ## <a name="next-steps"></a>次のステップ
 
-追加の[評価](how-to-assess.md)ツールと[移行](how-to-migrate.md)ツールを追加する方法を確認します。 
+- 作業の開始: [Azure Migrate: Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool)、または [Azure Migrate: Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool) 内)。
+- ISV ツール (Movere) を追加した場合は、[手順を確認](prepare-isv-movere.md)して、Azure Migrate にツールをリンクするための準備を行います。
+- 追加の[評価](how-to-assess.md)ツールと[移行](how-to-migrate.md)ツールを追加する方法を確認します。 

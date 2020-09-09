@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: spot
 ms.date: 03/25/2020
 ms.reviewer: jagaveer
-ms.custom: jagaveer
-ms.openlocfilehash: 59de7a8decef807b548ff4b85f06fc1115ce110b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: jagaveer, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: b5888000028ba87d503bb0bc690aad6628a51a37
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125045"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072742"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>仮想マシン スケール セット用の Azure スポット VM 
 
@@ -40,6 +40,11 @@ ms.locfileid: "83125045"
 
 ユーザーは、[Azure Scheduled Events](../virtual-machines/linux/scheduled-events.md) を通じて VM 内通知を受け取ることができます。 これにより、VM が排除されつつある場合には通知が送られ、排除される前にジョブを完了し、タスクのシャットダウンを実行するために 30 秒が与えられます。 
 
+## <a name="placement-groups"></a>配置グループ
+配置グループは、Azure 可用性セットに似た構造で、独自の障害ドメインとアップグレード ドメインが備わっています。 既定では、スケール セットは、最大サイズが 100 個の VM である 1 つの配置グループで構成されます。 `singlePlacementGroup` というスケール セット プロパティが *false* に設定されている場合、そのスケール セットは、複数の配置グループで構成することができ、0 ～ 1,000 個の VM が含まれます。 
+
+> [!IMPORTANT]
+> HPC で Infiniband を使用している場合を除き、リージョンまたはゾーン全体でのスケーリングを向上させるため、スケール セットのプロパティ `singlePlacementGroup` を *false* に設定して複数の配置グループを有効にすることを強くお勧めします。 
 
 ## <a name="deploying-spot-vms-in-scale-sets"></a>スケール セットへのスポット VM のデプロイ
 
@@ -64,6 +69,7 @@ az vmss create \
     --name myScaleSet \
     --image UbuntuLTS \
     --upgrade-policy-mode automatic \
+    --single-placement-group false \
     --admin-username azureuser \
     --generate-ssh-keys \
     --priority Spot \
@@ -89,14 +95,26 @@ $vmssConfig = New-AzVmssConfig `
 
 スポット VM を使うスケール セットを作成するプロセスは、[Linux](quick-create-template-linux.md) または [Windows](quick-create-template-windows.md) での使用の開始に関する記事で詳しく説明されているものと同じです。 
 
-スポット テンプレートのデプロイの場合は、`"apiVersion": "2019-03-01"` 以降を使用してください。 テンプレートで `"virtualMachineProfile":` セクションに `priority`、`evictionPolicy`、`billingProfile` の各プロパティを追加します。 
+スポット テンプレートのデプロイの場合は、`"apiVersion": "2019-03-01"` 以降を使用してください。 
+
+テンプレートで `"virtualMachineProfile":` セクションに `priority`、`evictionPolicy`、`billingProfile` の各プロパティ、および `"Microsoft.Compute/virtualMachineScaleSets"` セクションに `"singlePlacementGroup": false,` を追加します。
 
 ```json
-                "priority": "Spot",
+
+{
+  "type": "Microsoft.Compute/virtualMachineScaleSets",
+  },
+  "properties": {
+    "singlePlacementGroup": false,
+    }
+
+        "virtualMachineProfile": {
+              "priority": "Spot",
                 "evictionPolicy": "Deallocate",
                 "billingProfile": {
                     "maxPrice": -1
                 }
+            },
 ```
 
 無効にしたインスタンスを削除するには、`evictionPolicy` パラメーターを `Delete` に変更します。
@@ -115,12 +133,12 @@ $vmssConfig = New-AzVmssConfig `
 
 **質問:** スポットのクォータはどのように管理されますか。
 
-**A:** スポット インスタンスと標準のインスタンスは、別々のクォータ プールを持ちます。 スポット クォータは、VM とスケール セット インスタンスの間で共有されます。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)」をご覧ください。
+**A:** スポット インスタンスと標準のインスタンスは、別々のクォータ プールを持ちます。 スポット クォータは、VM とスケール セット インスタンスの間で共有されます。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md)」をご覧ください。
 
 
 **質問:** スポットに追加のクォータを要求することはできますか。
 
-**A:** はい。[標準のクォータ要求プロセス](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)を通じて、スポット VM のクォータを増やす要求を送信することができます。
+**A:** はい。[標準のクォータ要求プロセス](../azure-portal/supportability/per-vm-quota-requests.md)を通じて、スポット VM のクォータを増やす要求を送信することができます。
 
 
 **質問:** 既存のスケール セットをスポット スケール セットに変換できますか。
@@ -158,15 +176,15 @@ $vmssConfig = New-AzVmssConfig `
 |------------------------------|-----------------------------------|
 | Enterprise Agreement         | はい                               |
 | 従量課金制                | はい                               |
-| クラウド サービス プロバイダー (CSP) | [パートナーにお問い合わせください](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
+| クラウド サービス プロバイダー (CSP) | [パートナーにお問い合わせください](/partner-center/azure-plan-get-started) |
 | メリット                     | 使用不可                     |
-| スポンサー                    | 使用不可                     |
+| スポンサー                    | はい                               |
 | 無料試用版                   | 使用不可                     |
 
 
 **質問:** どこで質問を投稿できますか。
 
-**A:** [Q&A](https://docs.microsoft.com/answers/topics/azure-spot.html) で質問を投稿し、`azure-spot` のタグを付けることができます。 
+**A:** [Q&A](/answers/topics/azure-spot.html) で質問を投稿し、`azure-spot` のタグを付けることができます。 
 
 ## <a name="next-steps"></a>次のステップ
 

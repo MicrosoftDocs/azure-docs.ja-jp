@@ -7,12 +7,16 @@ ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: robinsh
-ms.openlocfilehash: ff738e56226f7cbb720a754573a9d8607e0e3247
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+- 'Role: Technical Support'
+ms.openlocfilehash: 4a13d1ff030a63d3ccf33297f215909f5920e16a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73890471"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327686"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub デバイス ストリーム (プレビュー)
 

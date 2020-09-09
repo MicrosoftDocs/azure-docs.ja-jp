@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5b1170f721cf8521cfe1762df0cc616c938ddf28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f6521efe024ba0ea29ae427aeaf06ca0e5fa8dd7
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236419"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194914"
 ---
 # <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Cognitive Search インデックスにデータをプッシュする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -47,7 +47,7 @@ Data Management Gateway では、安全かつ管理された方法でオンプ�
 2. コピー操作用の入力データと出力データを表す**データセット**を作成します。
 3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  検索インデックスにデータをコピーするために使用される Data Factory エンティティに関する JSON 定義のサンプルについては、この記事の「[JSON 例: オンプレミスの SQL Server から Azure Cognitive Search インデックスにデータをコピーする](#json-example-copy-data-from-on-premises-sql-server-to-azure-cognitive-search-index)」のセクションを参照してください。
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  検索インデックスにデータをコピーするために使用される Data Factory エンティティに関する JSON 定義のサンプルについては、この記事の「[JSON 例: SQL Server から Azure Cognitive Search インデックスにデータをコピーする](#json-example-copy-data-from-sql-server-to-azure-cognitive-search-index)」のセクションを参照してください。
 
 以降のセクションでは、検索インデックスに固有の Data Factory エンティティを定義するために使用される JSON プロパティに関する詳細について説明します。
 
@@ -108,7 +108,7 @@ Azure Cognitive Search サービスは、バッチとしてのドキュメント
 | String Array | N |
 | GeographyPoint | N |
 
-## <a name="json-example-copy-data-from-on-premises-sql-server-to-azure-cognitive-search-index"></a>JSON の使用例:オンプレミスの SQL Server から Azure Cognitive Search インデックスにデータをコピーする
+## <a name="json-example-copy-data-from-sql-server-to-azure-cognitive-search-index"></a>JSON の使用例:SQL Server から Azure Cognitive Search インデックスにデータをコピーする
 
 次のサンプルは以下を示しています。
 
@@ -118,7 +118,7 @@ Azure Cognitive Search サービスは、バッチとしてのドキュメント
 4. [AzureSearchIndex](#dataset-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 4. [SqlSource](data-factory-sqlserver-connector.md#copy-activity-properties) と [AzureSearchIndexSink](#copy-activity-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
-このサンプルは、オンプレミスの SQL Server データベースから検索インデックスに時系列データを 1 時間ごとにコピーします。 このサンプルで使用される JSON プロパティの説明は、サンプルに続くセクションにあります。
+このサンプルは、SQL Server データベースから検索インデックスに時系列データを 1 時間ごとにコピーします。 このサンプルで使用される JSON プロパティの説明は、サンプルに続くセクションにあります。
 
 最初の手順として、オンプレミスのコンピューターでデータ管理ゲートウェイを設定します。 設定手順は、 [オンプレミスの場所とクラウドの間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md) に関する記事に記載されています。
 

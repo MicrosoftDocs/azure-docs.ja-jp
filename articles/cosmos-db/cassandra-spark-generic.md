@@ -6,14 +6,14 @@ ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/01/2019
-ms.openlocfilehash: cb34ea44c069f067d13a6480531a94a1a515f380
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ffe9167bb155826eea3a1e7994469d378e5925fe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70241238"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260493"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Spark から Azure Cosmos DB Cassandra API に接続する
 

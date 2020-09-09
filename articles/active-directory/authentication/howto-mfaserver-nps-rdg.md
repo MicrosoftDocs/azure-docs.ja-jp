@@ -11,16 +11,16 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23e2f7424464860b647883be2441e903900cb266
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5ebe6671e0a5f4821d06e93e3da4e37bd09a2fa7
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80652879"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716947"
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>RADIUS を使用したリモート デスクトップ ゲートウェイと Multi-Factor Authentication Server
 
-リモート デスクトップ (RD) ゲートウェイでは多くの場合、[ローカル ネットワーク ポリシー サービス (NPS) ](https://docs.microsoft.com/windows-server/networking/core-network-guide/core-network-guide#BKMK_optionalfeatures)を使ってユーザーを認証します。 この記事では、リモート デスクトップ ゲートウェイからの RADIUS 要求を (ローカルの NPS を通じて) Multi-Factor Authentication Server にルーティングする方法について説明します。 Azure MFA と RD ゲートウェイを組み合わせると、強力な認証を行いつつ、ユーザーが自らの作業環境にどこからでもアクセスできる状態を実現できます。
+リモート デスクトップ (RD) ゲートウェイでは多くの場合、[ローカル ネットワーク ポリシー サービス (NPS) ](/windows-server/networking/core-network-guide/core-network-guide#BKMK_optionalfeatures)を使ってユーザーを認証します。 この記事では、リモート デスクトップ ゲートウェイからの RADIUS 要求を (ローカルの NPS を通じて) Multi-Factor Authentication Server にルーティングする方法について説明します。 Azure MFA と RD ゲートウェイを組み合わせると、強力な認証を行いつつ、ユーザーが自らの作業環境にどこからでもアクセスできる状態を実現できます。
 
 Windows Server 2012 R2 ではターミナル サービス向けの Windows 認証をサポートしていないため、MFA Server との統合には RD ゲートウェイと RADIUS を使用します。
 

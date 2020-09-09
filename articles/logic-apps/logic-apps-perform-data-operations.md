@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79237151"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710373"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Azure Logic Apps でデータの操作を実行する
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: 367ae27a6afec803d2e3f98f54bdcf852330ddc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95bd83575809f6ecda716ff751b47b7bb499cae3
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "70274621"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85073357"
 ---
 ## <a name="configure-an-environment-variable-for-authentication"></a>認証用の環境変数を構成する
 
@@ -41,6 +41,6 @@ export COGNITIVE_SERVICE_KEY=your-key
 export COGNITIVE_SERVICE_KEY=your-key
 ```
 
-環境変数を追加した後、変更を有効にするには、コンソール ウィンドウから `source .bash_profile` を実行します。
+環境変数を追加した後、変更を有効にするには、コンソール ウィンドウから `source ~/.bash_profile` を実行します。
 
 ***

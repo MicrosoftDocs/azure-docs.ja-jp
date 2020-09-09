@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/22/2019
 ms.author: rolyon
-ms.openlocfilehash: e70a3a1eedbc56754ad46fd99dddc0c7a3a6cf2f
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: c6736bb2642ff08d0aa3cda536ef1599324efded
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735846"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362018"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure リソースへのアクセス権をユーザーに付与する
 
@@ -72,7 +72,9 @@ Azure RBAC でアクセス権を付与するには、ロールの割り当てを
 
    ロールを割り当てるためのアクセス許可がない場合は、[ロールの割り当ての追加] オプションは無効になります。
 
-   ![[追加] メニュー](./media/role-assignments-portal/add-menu.png)
+   ![[ロールの割り当ての追加] メニュー](./media/shared/add-role-assignment-menu.png)
+
+    [ロールの割り当ての追加] ウィンドウが開きます。
 
    ![[ロールの割り当ての追加] ウィンドウ](./media/quickstart-assign-role-user-portal/add-role-assignment.png)
 

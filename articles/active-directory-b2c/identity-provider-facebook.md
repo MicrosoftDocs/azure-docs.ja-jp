@@ -7,16 +7,17 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/26/2019
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cd0e19de88a6a65d72a2e7e19f7fca2a94d8da55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5879d745de85fe702267dce109e26ebcb07195ce
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78188275"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116273"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Facebook アカウントでのサインアップおよびサインインを設定する
 
@@ -32,7 +33,7 @@ Azure Active Directory B2C (Azure AD B2C) で [ID プロバイダー](authorizat
 1. **[設定]**  >  **[基本]** を選択します。
 1. **カテゴリ**を選択します。たとえば`Business and Pages`。 この値は Facebook では必須ですが、Azure AD B2C では使用されません。
 1. ページの下部で、 **[プラットフォームの追加]** 、 **[Web サイト]** の順に選択します。
-1. **サイト URL** に、`https://your-tenant-name.b2clogin.com/`を入力して`your-tenant-name`をお使いのテナントの名前に置き換えてください。 **[Privacy Policy URL] (プライバシー ポリシーの URL)** に URL (`http://www.contoso.com` など) を入力します。 ポリシーの URL は、アプリケーションのプライバシーに関する情報を提供するために維持されるページです。
+1. **[サイトの URL]** に、Web サイトのアドレス (たとえば `https://contoso.com`) を入力します。 **[Privacy Policy URL] (プライバシー ポリシーの URL)** に URL (`http://www.contoso.com/privacy` など) を入力します。 ポリシーの URL は、アプリケーションのプライバシーに関する情報を提供するために維持されるページです。
 1. **[変更の保存]** を選択します。
 1. ページの上部で、 **[App ID] (アプリ ID)** の値をコピーします。
 1. **[Show (表示)]** を選択し、 **[App Secret (アプリ シークレット)]** の値をコピーします。 テナントで ID プロバイダーとして Facebook を構成するには、この両方を使用します。 **[App Secret]** は、重要なセキュリティ資格情報です。

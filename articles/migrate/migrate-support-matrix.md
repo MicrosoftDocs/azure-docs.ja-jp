@@ -2,18 +2,18 @@
 title: Azure Migrate のサポート マトリックス
 description: Azure Migrate サービスに対するサポートの設定および制限の概要について説明します。
 ms.topic: conceptual
-ms.date: 04/19/2020
+ms.date: 07/23/2020
 ms.author: raynew
-ms.openlocfilehash: ec267053a0bc675d05e6488665f77467da9370e0
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: aac7b7d39102a1fe115ddea483aee36af79e7fc4
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746851"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612114"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate のサポート マトリックス
 
-[Azure Migrate サービス](migrate-overview.md)を使用すると、コンピューターを評価したり、Microsoft Azure クラウドに移行したりできます。 この記事では、Azure Migrate のシナリオやデプロイに対する一般的なサポートの設定および制限を要約しています。
+[Azure Migrate サービス](./migrate-services-overview.md)を使用すると、コンピューターを評価したり、Microsoft Azure クラウドに移行したりできます。 この記事では、Azure Migrate のシナリオやデプロイに対する一般的なサポートの設定および制限を要約しています。
 
 ## <a name="supported-assessmentmigration-scenarios"></a>サポートされる評価/移行シナリオ
 
@@ -21,14 +21,16 @@ ms.locfileid: "83746851"
 
 **デプロイ** | **詳細** 
 --- | --- 
-**アプリ固有の検出** | VMware VM 上で実行されているアプリ、ロール、および機能を検出できます。 現在、この機能は検出のみに限定されています。 評価は現在マシン レベルです。 アプリ、役割、または機能に固有の評価はまだ提供されていません。 
-**オンプレミスの評価** | VMware VM、Hyper-V VM、および物理サーバー上で実行されているオンプレミスのワークロードとデータを評価します。 Azure Migrate Server Assessment と Microsoft Data Migration Assistant (DMA) や、その他のツールと ISV オファリングを使用して評価します。
-**Azure へのオンプレミスの移行** | 物理サーバー、VMware VM、Hyper-V VM、物理サーバー、クラウドベースの VM で実行されているワークロードとデータを Azure に移行します。 Azure Migrate Server Assessment と Azure Database Migration Service (DMS) や、その他のツールと ISV オファリングを使用して移行します。
+**検出** | マシンのメタデータと動的なパフォーマンス データを検出できます。
+**アプリ検出** | VMware VM 上で実行されているアプリ、ロール、および機能を検出できます。 現在、この機能は検出のみに限定されています。 評価は現在マシン レベルです。 アプリ、役割、または機能ベースの評価はまだ提供されていません。 
+**評価** | VMware VM、Hyper-V VM、および物理サーバー上で実行されているオンプレミスのワークロードとデータを評価します。 Azure Migrate Server Assessment、Microsoft Data Migration Assistant (DMA)、さらにその他のツールと ISV オファリングを使用して評価します。
+**移行** | 物理サーバー、VMware VM、Hyper-V VM、物理サーバー、クラウドベースの VM で実行されているワークロードとデータを Azure に移行します。 Azure Migrate Server Assessment と Azure Database Migration Service (DMS) や、その他のツールと ISV オファリングを使用して移行します。
 
 > [!NOTE]
 > 現在、ISV ツールは Azure Government で Azure Migrate にデータを送信できません。 統合された Microsoft ツールを使用するか、パートナー ツールを単独で使用できます。
 
 ## <a name="supported-tools"></a>サポートされているツール
+
 
 次の表に、具体的なツールのサポートをまとめてあります。
 
@@ -40,10 +42,10 @@ Azure Migrate Server Migration | NA | [VMware VM](tutorial-migrate-vmware.md)、
 [Cloudamize](https://www.cloudamize.com/platform#tab-0)| VMware VM、Hyper-V VM、物理サーバー、パブリック クラウド ワークロードを評価します。 | NA
 [Corent Technology](https://go.microsoft.com/fwlink/?linkid=2084928) | VMware VM、Hyper-V VM、物理サーバー、パブリック クラウド ワークロードを評価および移行します。 |  VMware VM、Hyper-V VM、物理サーバー、パブリック クラウド ワークロードを移行します。
 [Device 42](https://go.microsoft.com/fwlink/?linkid=2097158) | VMware VM、Hyper-V VM、物理サーバー、パブリック クラウド ワークロードを評価します。| NA
-[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | オンプレミスの SQL Server データベースを評価します。 | NA
-[DMS](https://docs.microsoft.com/azure/dms/dms-overview) | NA | SQL Server、Oracle、MySQL、PostgreSQL、MongoDB を移行します。 
+[DMA](/sql/dma/dma-overview?view=sql-server-2017) | SQL Server データベースを評価します。 | NA
+[DMS](../dms/dms-overview.md) | NA | SQL Server、Oracle、MySQL、PostgreSQL、MongoDB を移行します。 
 [Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | 仮想デスクトップ インフラストラクチャ (VDI) を評価します | NA
-[Movere](https://www.movere.io/) | VMWare VM、Hyper-V VM、Xen VM、物理マシン、ワークステーション (VDI を含む)、パブリック クラウド ワークロードを評価します | NA
+[Movere](https://www.movere.io/) | VMware VM、Hyper-V VM、Xen VM、物理マシン、ワークステーション (VDI を含む)、パブリック クラウド ワークロードを評価します | NA
 [RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | NA | VMWare VM、Hyper-V VM、Xen VM、KVM VM、物理マシン、パブリック クラウド ワークロードを移行します 
 [Turbonomic](https://go.microsoft.com/fwlink/?linkid=2094295)  | VMware VM、Hyper-V VM、物理サーバー、パブリック クラウド ワークロードを評価します。 | NA
 [UnifyCloud](https://go.microsoft.com/fwlink/?linkid=2097195) | VMware VM、Hyper-V VM、物理サーバー、パブリック クラウド ワークロード、および SQL Server データベースを評価します。 | NA
@@ -68,26 +70,30 @@ Azure Migrate が Azure で機能するためには、マシンの評価と移�
 **タスク** | **アクセス許可** | **詳細**
 --- | --- | ---
 Azure Migrate プロジェクトの作成 | Azure アカウントには、プロジェクトを作成するためのアクセス許可が必要です。 | [VMware](tutorial-prepare-vmware.md#assign-permissions-to-create-project)、[Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-create-project)、または[物理サーバー](tutorial-prepare-physical.md#assign-permissions-to-create-project)の設定。
-Azure Migrate アプライアンスの登録| Azure Migrate では、軽量の [Azure Migrate アプライアンス](migrate-appliance.md)を使用して Azure Migrate Server Assessment でマシンが評価され、Azure Migrate Server Migration で VMware VM の[エージェントレス移行](server-migrate-overview.md)が実行されます。 このアプライアンスではマシンが検出され、メタデータとパフォーマンス データが Azure Migrate に送信されます。<br/><br/> 登録時に登録プロバイダー (Microsoft.OffAzure、Microsoft.Migrate、および Microsoft.KeyVault) が、アプライアンスで選択されたサブスクリプションに登録され、その結果、サブスクリプションがリソース プロバイダーで動作するようになります。 登録するには、サブスクリプションに対する共同作成者または所有者のアクセス権が必要です。<br/><br/> **VMware** - オンボード中、Azure Migrate では 2 つの Azure Active Directory (Azure AD) アプリが作成されます。 最初のアプリによって、アプライアンス エージェントと Azure Migrate サービスとの間の通信が行われます。 このアプリには、Azure リソース管理を呼び出すためのアクセス許可も、リソースに対する RBAC アクセス権もありません。 2 番目のアプリでは、エージェントレスの VMware 移行専用のユーザー サブスクリプションで作成された Azure Key Vault へのアクセスが行われます。 エージェントレスの移行では、ご利用のサブスクリプションのレプリケーション ストレージ アカウントへのアクセス キーを管理するためのキー コンテナーが Azure Migrate によって作成されます。 アプライアンスから検出が開始されると、(カスタマー テナント内の) Azure Key Vault で RBAC アクセスが可能になります。<br/><br/> **Hyper-V** - オンボード中。 Azure Migrate によって Azure AD アプリが 1 つ作成されます。 このアプリによって、アプライアンス エージェントと Azure Migrate サービスとの間の通信が行われます。 このアプリには、Azure リソース管理を呼び出すためのアクセス許可も、リソースに対する RBAC アクセス権もありません。 | [VMware](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance)、[Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-register-the-appliance)、または[物理サーバー](tutorial-prepare-physical.md#assign-permissions-to-register-the-appliance)の設定。
+Azure Migrate アプライアンスの登録| Azure Migrate では、軽量の [Azure Migrate アプライアンス](migrate-appliance.md)を使用して Azure Migrate Server Assessment でマシンが評価され、Azure Migrate Server Migration で VMware VM の[エージェントレス移行](server-migrate-overview.md)が実行されます。 このアプライアンスではマシンが検出され、メタデータとパフォーマンス データが Azure Migrate に送信されます。<br/><br/> 登録時に登録プロバイダー (Microsoft.OffAzure、Microsoft.Migrate、および Microsoft.KeyVault) が、アプライアンスで選択されたサブスクリプションに登録され、その結果、サブスクリプションがリソース プロバイダーで動作するようになります。 登録するには、サブスクリプションに対する共同作成者または所有者のアクセス権が必要です。<br/><br/> **VMware** - オンボード中、Azure Migrate では 2 つの Azure Active Directory (Azure AD) アプリが作成されます。 最初のアプリによって、アプライアンス エージェントと Azure Migrate サービスとの間の通信が行われます。 このアプリには、Azure リソース管理を呼び出すためのアクセス許可も、リソースに対する RBAC アクセス権もありません。 2 番目のアプリでは、エージェントレスの VMware 移行専用のユーザー サブスクリプションで作成された Azure Key Vault へのアクセスが行われます。 エージェントレスの移行では、ご利用のサブスクリプションのレプリケーション ストレージ アカウントへのアクセス キーを管理するためのキー コンテナーが Azure Migrate によって作成されます。 アプライアンスから検出が開始されると、(カスタマー テナント内の) Azure Key Vault で RBAC アクセスが可能になります。<br/><br/> **Hyper-V** - オンボード中。 Azure Migrate によって Azure AD アプリが 1 つ作成されます。 このアプリによって、アプライアンス エージェントと Azure Migrate サービスとの間の通信が行われます。 このアプリには、Azure リソース管理を呼び出すためのアクセス許可も、リソースに対する RBAC アクセス権もありません。 | [VMware](tutorial-prepare-vmware.md#assign-permissions-to-create-azure-ad-apps)、[Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-create-azure-ad-apps)、または[物理サーバー](tutorial-prepare-physical.md#assign-permissions-to-register-the-appliance)の設定。
 VMware エージェントレス移行用のキー コンテナーの作成 | エージェントレス Azure Migrate Server Migration を使用して VMware VM を移行するために、Azure Migrate は、サブスクリプション内のレプリケーション ストレージ アカウントへのアクセス キーを管理するためのキー コンテナーを作成します。 コンテナーを作成するには、Azure Migrate プロジェクトが存在するリソース グループに、アクセス許可 (所有者、共同作成者、およびユーザー アクセス管理者) を設定する必要があります。 | アクセス許可の[設定](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault)。
 
 ## <a name="supported-geographies-public-cloud"></a>サポートされている地域 (パブリック クラウド)
 
-Azure Migrate プロジェクトは、パブリック クラウドの複数の地域で作成できます。 プロジェクトを作成できるのはこれらの地域に限られますが、ターゲットの場所がそれ以外であるマシンを評価または移行することは可能です。 プロジェクトの地域は、検出されたメタデータを格納するためにのみ使用されます。
+Azure Migrate プロジェクトは、パブリック クラウドの複数の地域で作成できます。
+
+- プロジェクトを作成できるのはこれらの地域に限られますが、ターゲットの場所がそれ以外であるマシンを評価または移行することは可能です。
+- プロジェクトの地域は、検出されたメタデータを格納するためにのみ使用されます。
+- プロジェクトを作成するときに、地域を選択します。 プロジェクトと関連リソースは、地域のいずれかのリージョンに作成されます。 このリージョンは、Azure Migrate サービスによって割り当てられます。
 
 **地理的な場所** | **メタデータ ストレージの場所**
 --- | ---
 アジア太平洋 | 東アジアまたは東南アジア
 オーストラリア | オーストラリア東部またはオーストラリア南東部
 ブラジル | ブラジル南部
-カナダ | カナダ中部またはカナダ東部
+Canada | カナダ中部またはカナダ東部
 ヨーロッパ | 北ヨーロッパまたは西ヨーロッパ
 フランス | フランス中部
 インド | インド中部またはインド南部
 日本 |  東日本または西日本
 韓国 | 韓国中部または韓国南部
 イギリス | 英国南部または英国西部
-米国 | 米国中部または米国西部 2
+United States | 米国中部または米国西部 2
 
 
 ## <a name="supported-geographies-azure-government"></a>サポートされている地域 (Azure Government)
@@ -120,4 +126,3 @@ Azure Migrate サービスのバージョンには、次の 2 つがあります
 
 - 移行のために [VMware VM を評価](tutorial-assess-vmware.md)します。
 - 移行のために [Hyper-V VM を評価](tutorial-assess-hyper-v.md)します。
-

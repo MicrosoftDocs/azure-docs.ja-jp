@@ -1,25 +1,25 @@
 ---
-title: Web サービスの再トレーニング
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (classic): Web サービスの再トレーニング - Azure'
 description: Azure Machine Learning Studio (クラシック) で新しくトレーニングされた機械学習モデルを使用するように Web サービスを更新する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-csharp
 ms.date: 02/14/2019
-ms.openlocfilehash: 218c1c98a2ed775ae86c1657156991879708cc7a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7ce7697b92df9c6bef61bbf9eccb9f4252ce957f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79217930"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020685"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>機械学習モデルの再トレーニングとデプロイ
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+
 
 再トレーニングは、機械学習モデルが正確であり、利用できる最も関連性の高いデータに基づいている状態を確保するための 1 つの方法です。 この記事では、Studio (クラシック) で新しい Web サービスとして機械学習モデルを再トレーニングし、デプロイする方法について説明します。 従来の Web サービスを再トレーニングする方法については、[こちらのハウツー記事を参照](retrain-classic-web-service.md)してください。
 
@@ -61,7 +61,7 @@ ms.locfileid: "79217930"
 
 次の手順を実行して、再トレーニング API を呼び出します。
 
-1. Visual Studio で C# コンソール アプリケーションを作成します ( **[新規作成]**  >  **[プロジェクト]**  >  **[Visual C#]**  >  **[Windows クラシック デスクトップ]**  >  **[コンソール アプリ (.NET Framework)]** )。
+1. Visual Studio で、C# コンソール アプリケーションを作成します: **[新規]**  >  **[プロジェクト]**  >  **[Visual C#]**  >  **[Windows クラシック デスクトップ]**  >  **[コンソール アプリ (.NET Framework)]** 。
 1. Machine Learning Web サービス ポータルにサインインします。
 1. 使用する Web サービスをクリックします。
 1. **[Consume (使用)]** をクリックします。
@@ -78,7 +78,9 @@ ms.locfileid: "79217930"
 
 **ApiKey** 宣言を見つけます。
 
-    const string apiKey = "abc123"; // Replace this with the API key for the web service
+```csharp
+const string apiKey = "abc123"; // Replace this with the API key for the web service
+```
 
 **[Consume]\(使用\)** ページの **[Basic consumption info]\(基本的な実行情報\)** セクションで、主キーを探して **apikey** 宣言にコピーします。
 
@@ -96,9 +98,11 @@ BES サンプル コードは、ファイルをローカル ドライブ ("C:\te
 
 *StorageAccountName*、*StorageAccountKey*、および *StorageContainerName* 宣言を見つけて、ポータルから保存した値を更新します。
 
-    const string StorageAccountName = "mystorageacct"; // Replace this with your Azure storage account name
-    const string StorageAccountKey = "a_storage_account_key"; // Replace this with your Azure Storage key
-    const string StorageContainerName = "mycontainer"; // Replace this with your Azure Storage container name
+```csharp
+const string StorageAccountName = "mystorageacct"; // Replace this with your Azure storage account name
+const string StorageAccountKey = "a_storage_account_key"; // Replace this with your Azure Storage key
+const string StorageContainerName = "mycontainer"; // Replace this with your Azure Storage container name
+```
 
 また、入力ファイルがコードで指定した場所で有効であることを確認する必要があります。
 
@@ -106,15 +110,17 @@ BES サンプル コードは、ファイルをローカル ドライブ ("C:\te
 
 要求ペイロードで出力場所を指定する場合は、*RelativeLocation* で指定されたファイルの拡張子を `ilearner` として指定する必要があります。
 
-    Outputs = new Dictionary<string, AzureBlobDataReference>() {
+```csharp
+Outputs = new Dictionary<string, AzureBlobDataReference>() {
+    {
+        "output1",
+        new AzureBlobDataReference()
         {
-            "output1",
-            new AzureBlobDataReference()
-            {
-                ConnectionString = storageConnectionString,
-                RelativeLocation = string.Format("{0}/output1results.ilearner", StorageContainerName) /*Replace this with the location you want to use for your output file and a valid file extension (usually .csv for scoring results or .ilearner for trained models)*/
-            }
-        },
+            ConnectionString = storageConnectionString,
+            RelativeLocation = string.Format("{0}/output1results.ilearner", StorageContainerName) /*Replace this with the location you want to use for your output file and a valid file extension (usually .csv for scoring results or .ilearner for trained models)*/
+        }
+    },
+```
 
 再トレーニング出力の例を次に示します。
 
@@ -140,55 +146,67 @@ BES サンプル コードは、ファイルをローカル ドライブ ("C:\te
 
 次に、[Get-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservice) コマンドレットを呼び出して Web サービス定義オブジェクトを取得します。
 
-    $wsd = Get-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
+```azurepowershell
+$wsd = Get-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
+```
 
 既存の Web サービスのリソース グループ名を決定するには、パラメーターを指定せずに Get-AzMlWebService コマンドレットを実行してご利用のサブスクリプションの Web サービスを表示します。 Web サービスを見つけて、その Web サービス ID を確認します。 リソース グループの名前は ID の 4 番目の要素で、" *resourceGroups* " 要素の後にあります。 次の例では、リソース グループ名は Default-MachineLearning-SouthCentralUS です。
 
-    Properties : Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServicePropertiesForGraph
-    Id : /subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
-    Name : RetrainSamplePre.2016.8.17.0.3.51.237
-    Location : South Central US
-    Type : Microsoft.MachineLearning/webServices
-    Tags : {}
+```azurepowershell
+Properties : Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServicePropertiesForGraph
+Id : /subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
+Name : RetrainSamplePre.2016.8.17.0.3.51.237
+Location : South Central US
+Type : Microsoft.MachineLearning/webServices
+Tags : {}
+```
 
 または、既存の Web サービスのリソース グループ名を判断するには、Azure Machine Learning Web サービス ポータルにサインインします。 Web サービスを選択します。 リソース グループ名は Web サービスの URL の 5 番目の要素で、" *resourceGroups* " 要素の直後にあります。 次の例では、リソース グループ名は Default-MachineLearning-SouthCentralUS です。
 
-    https://services.azureml.net/subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
+`https://services.azureml.net/subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237`
 
 ### <a name="export-the-web-service-definition-object-as-json"></a>Web サービス定義オブジェクトを JSON としてエクスポートする
 
 新しいトレーニング済みモデルを使用するようにトレーニング済みモデルの定義を変更するには、最初にこれを [Export-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice) コマンドレットを使用して、JSON フォーマット ファイルにインポートする必要があります。
 
-    Export-AzMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.json"
+```azurepowershell
+Export-AzMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.json"
+```
 
 ### <a name="update-the-reference-to-the-ilearner-blob"></a>ilearner BLOB への参照を更新する
 
 資産で、[<トレーニング済みモデル>] を見つけ、ilearner BLOB の URI で *locationInfo* の *uri* の値を更新します。 URI は BES 再トレーニング呼び出しの出力からの *BaseLocation* と *RelativeLocation* を組み合わせて作成します。
 
-     "asset3": {
-        "name": "Retrain Sample [trained model]",
-        "type": "Resource",
-        "locationInfo": {
-          "uri": "https://mltestaccount.blob.core.windows.net/azuremlassetscontainer/baca7bca650f46218633552c0bcbba0e.ilearner"
-        },
-        "outputPorts": {
-          "Results dataset": {
+```json
+"asset3": {
+    "name": "Retrain Sample [trained model]",
+    "type": "Resource",
+    "locationInfo": {
+        "uri": "https://mltestaccount.blob.core.windows.net/azuremlassetscontainer/baca7bca650f46218633552c0bcbba0e.ilearner"
+    },
+    "outputPorts": {
+        "Results dataset": {
             "type": "Dataset"
-          }
         }
-      },
+    }
+},
+```
 
 ### <a name="import-the-json-into-a-web-service-definition-object"></a>JSON を Web サービス定義オブジェクトにインポートする
 
 [Import-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/import-azmlwebservice) コマンドレットを使用して、変更された JSON ファイルを予測実験の更新に使用できる Web サービス定義オブジェクトに変換します。
 
-    $wsd = Import-AzMlWebService -InputFile "C:\temp\mlservice_export.json"
+```azurepowershell
+$wsd = Import-AzMlWebService -InputFile "C:\temp\mlservice_export.json"
+```
 
 ### <a name="update-the-web-service"></a>Web サービスを更新する
 
 最後に、[Update-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/update-azmlwebservice) コマンドレットを使用して、予測実験を更新します。
 
-    Update-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
+```azurepowershell
+Update-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
+```
 
 ## <a name="next-steps"></a>次のステップ
 

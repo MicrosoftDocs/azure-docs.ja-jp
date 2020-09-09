@@ -13,15 +13,18 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: Functions の作成
+    - name: 関数の作成
       expanded: true
       items:
         - name: Visual Studio Code
-          href: /azure/azure-functions/functions-create-first-function-vs-code
+          href: ./functions-create-first-function-vs-code.md
         - name: "Visual\_Studio"
           href: functions-create-your-first-function-visual-studio.md
         - name: コマンド ライン
           href: functions-create-first-azure-function-azure-cli.md
+        - name: ARM テンプレート
+          displayName: Resource Manager
+          href: functions-create-first-function-resource-manager.md
     - name: ストレージへの接続
       items:
         - name: Visual Studio Code
@@ -34,7 +37,7 @@
   items:
     - name: Functions と Logic Apps
       href: functions-twitter-email.md
-    - name: VS Code での Python で Functions の開発
+    - name: VS Code での Python 関数の開発
       href: /azure/python/tutorial-vs-code-serverless-python-01
     - name: サーバーレス API のための OpenAPI 定義
       href: functions-openapi-definition.md
@@ -52,6 +55,7 @@
       href: machine-learning-pytorch.md
     - name: カスタム Linux イメージの作成
       href: functions-create-function-linux-custom-image.md
+      displayName: 'container, docker'
     - name: IoT Edge デバイス上の Functions
       href: ../iot-edge/tutorial-deploy-function.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: Azure Cosmos DB と Event Hubs での Java
@@ -62,7 +66,7 @@
       href: 'https://www.serverlesslibrary.net/'
     - name: Azure のサンプル
       items:
-        - name: 'C#'
+        - name: C#
           href: /samples/browse/?products=azure-functions&languages=csharp
         - name: Java
           href: /samples/browse/?products=azure-functions&languages=java
@@ -99,6 +103,7 @@
           href: functions-bindings-example.md
         - name: バインディング拡張機能を登録する
           href: functions-bindings-register.md
+          displayName: 'bundles, extension bundles'
         - name: バインディングの式のパターン
           href: functions-bindings-expressions-patterns.md
         - name: バインディングの戻り値の利用
@@ -109,11 +114,11 @@
       items:
         - name: サポートされている言語
           href: supported-languages.md
-        - name: 'C# (クラス ライブラリ)'
+        - name: C# (クラス ライブラリ)
           href: functions-dotnet-class-library.md
-        - name: 'C# スクリプト (.csx)'
+        - name: C# スクリプト (.csx)
           href: functions-reference-csharp.md
-        - name: 'F#'
+        - name: F#
           href: functions-reference-fsharp.md
         - name: JavaScript
           href: functions-reference-node.md
@@ -124,8 +129,12 @@
         - name: Python
           href: functions-reference-python.md
         - name: TypeScript
-          href: 'functions-reference-node.md#typescript'
-    - name: Security
+          href: functions-reference-node.md#typescript
+    - name: フレームワーク
+      items:
+        - name: Express.js
+          href: shift-expressjs.md
+    - name: セキュリティ
       items:
         - name: セキュリティの概要
           href: security-concepts.md
@@ -142,7 +151,7 @@
     - name: ストレージに関する考慮事項
       href: storage-considerations.md
       displayName: 'encryption, keys, mount, files'
-    - name: Functions プロキシ
+    - name: 関数プロキシ
       href: functions-proxies.md
     - name: ネットワーク オプション
       href: functions-networking-options.md
@@ -166,18 +175,19 @@
               href: functions-develop-vs.md
             - name: コア ツールの開発
               href: functions-run-local.md
-        - name: Functions の作成
+              displayName: 'local, runtime'
+        - name: 関数の作成
           items:
             - name: HTTP トリガー
               items:
                 - name: Azure portal
                   href: functions-create-first-azure-function.md
                 - name: コマンド ライン
-                  href: create-cli.md
+                  href: ./functions-create-first-azure-function-azure-cli.md
                 - name: "Visual\_Studio"
-                  href: create-visual-studio.md
+                  href: ./functions-create-your-first-function-visual-studio.md
                 - name: Visual Studio Code
-                  href: create-visual-studio-code.md
+                  href: ./functions-create-first-function-vs-code.md
                 - name: Gradle を使用した Java
                   href: functions-create-first-java-gradle.md
                 - name: Eclipse を使用した Java
@@ -191,7 +201,7 @@
                 - name: Linux App Service プラン
                   href: create-function-app-linux-app-service-plan.md
                 - name: Linux 従量課金プラン
-                  href: functions-create-first-azure-function-azure-cli-linux.md
+                  href: ./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python
                 - name: Microsoft Azure for Students Starter
                   href: functions-create-student-starter.md
             - name: Azure Cosmos DB のトリガー
@@ -207,20 +217,20 @@
             - name: Azure Cosmos DB - ポータル
               href: functions-integrate-store-unstructured-data-cosmosdb.md
             - name: ストレージ - Python
-              href: add-output-binding-storage-queue-python.md
+              href: ./functions-add-output-binding-storage-queue-cli.md?pivots=programming-language-python
             - name: ストレージ - ポータル
               href: functions-integrate-storage-queue-output-binding.md
             - name: ストレージ - Visual Studio Code
-              href: add-output-binding-storage-queue-vs-code.md
+              href: ./functions-add-output-binding-storage-queue-vs-code.md
             - name: ストレージ - Visual Studio
-              href: add-output-binding-storage-queue-vs.md
+              href: ./functions-add-output-binding-storage-queue-vs.md
             - name: ストレージ - Java
               href: functions-add-output-binding-storage-queue-java.md
         - name: デバッグおよびテスト
           items:
             - name: テスト Functions
               href: functions-test-a-function.md
-            - name: ローカルの PowerShell で Functions をデバッグする
+            - name: ローカルの PowerShell 関数をデバッグする
               href: functions-debug-powershell-local.md
             - name: イベント グリッド トリガーをローカルにデバッグ
               href: functions-debug-event-grid-trigger-local.md
@@ -231,7 +241,7 @@
           displayName: best practice
         - name: エラー処理
           href: functions-bindings-error-pages.md
-        - name: HTTP によってトリガーされない Functions を手動で実行する
+        - name: HTTP によってトリガーされない関数を手動で実行する
           href: functions-manually-run-non-http.md
     - name: 配置
       items:
@@ -249,24 +259,22 @@
           href: run-functions-from-deployment-package.md
         - name: Kubernetes での Functions
           href: functions-kubernetes-keda.md
-          displayName: keda
+          displayName: 'keda, container, docker'
         - name: リソースのデプロイの自動化
           href: functions-infrastructure-as-code.md
-        - name: オンプレミスの Functions
+        - name: オンプレミスの関数
           href: functions-runtime-install.md
         - name: Jenkins プラグインを使用したデプロイ
-          href: /azure/jenkins/jenkins-azure-functions-deploy
+          href: /azure/developer/jenkins/deploy-to-azure-functions
           maintainContext: true
     - name: 構成
       items:
-        - name: Functions アプリの管理
+        - name: 関数アプリの管理
           href: functions-how-to-use-azure-function-app-settings.md
           displayName: 'app setting, application setting'
         - name: ランタイム バージョンの設定
           href: set-runtime-version.md
-        - name: 手動による拡張機能の登録
-          href: install-update-binding-extensions-manual.md
-        - name: Functions の無効化
+        - name: 関数の無効化
           href: disable-function.md
         - name: geo ディザスター リカバリー
           href: functions-geo-disaster-recovery.md
@@ -293,6 +301,8 @@
               href: ../app-service/configure-authentication-provider-microsoft.md?toc=%2fazure%2fazure-functions%2ftoc.json
             - name: Twitter による認証
               href: ../app-service/configure-authentication-provider-twitter.md?toc=%2fazure%2fazure-functions%2ftoc.json
+            - name: OpenID Connect プロバイダーを使用した認証 (プレビュー)
+              href: ../app-service/configure-authentication-provider-openid-connect.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: 高度な認証
           href: ../app-service/app-service-authentication-how-to.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: IP の制限
@@ -310,7 +320,7 @@
             - name: Azure Cosmos DB - ポータル
               href: functions-integrate-store-unstructured-data-cosmosdb.md
             - name: ストレージ - Python
-              href: functions-add-output-binding-storage-queue-python.md
+              href: ./functions-add-output-binding-storage-queue-cli.md?pivots=programming-language-python
             - name: ストレージ - ポータル
               href: functions-integrate-storage-queue-output-binding.md
             - name: ストレージ - Visual Studio Code
@@ -320,14 +330,14 @@
         - name: SQL Database への接続
           href: functions-scenario-database-table-cleanup.md
         - name: 仮想ネットワークへの接続
-          href: functions-create-vnet-old.md
+          href: ./functions-create-vnet.md
         - name: Open API 2.0 定義の作成
-          href: functions-api-definition-getting-started.md
+          href: ./functions-openapi-definition.md
         - name: PowerApps および Microsoft Flow にエクスポートする
           href: app-service-export-api-to-powerapps-and-flow.md
         - name: マネージド ID の使用
           href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
-        - name: HTTP Functions エンドポイントのカスタマイズ
+        - name: HTTP 関数エンドポイントのカスタマイズ
           href: functions-create-serverless-api.md
         - name: オンプレミスのリソースの管理
           href: functions-hybrid-powershell.md
@@ -335,16 +345,22 @@
       items:
         - name: ストレージのトラブルシューティング
           href: functions-recover-storage-account.md
-        - name: Python 依存関係のトラブルシューティング
-          href: recover-module-not-found.md
+        - name: Python 関数のトラブルシューティング
+          href: recover-python-functions.md
 - name: リファレンス
   items:
     - name: API リファレンス
       items:
+        - name: ARM テンプレート
+          href: /azure/templates/microsoft.web/2018-11-01/sites/functions
+        - name: Azure CLI
+          href: /cli/azure/functionapp
+        - name: Azure PowerShell
+          href: /powershell/module/az.functions
         - name: Java
-          href: 'https://docs.microsoft.com/java/api/overview/azure/functions/runtime?view=azure-java-stable'
+          href: /java/api/overview/azure/functions/runtime?view=azure-java-stable
         - name: Python
-          href: 'https://docs.microsoft.com/python/api/azure-functions/azure.functions?view=azure-python'
+          href: /python/api/azure-functions/azure.functions?view=azure-python
     - name: アプリ設定のリファレンス
       href: functions-app-settings.md
     - name: トリガーとバインド
@@ -368,7 +384,7 @@
             - name: Functions 1.x
               href: functions-bindings-cosmosdb.md
               displayName: Azure Cosmos DB
-            - name: Functions 2.x
+            - name: Functions 2.x 以降
               displayName: Azure Cosmos DB
               items:
                 - name: 概要
@@ -383,6 +399,8 @@
                 - name: 出力
                   href: functions-bindings-cosmosdb-v2-output.md
                   displayName: Azure Cosmos DB
+        - name: Dapr
+          href: 'https://github.com/dapr/azure-functions-extension'
         - name: Event Grid
           items:
             - name: 概要
@@ -416,6 +434,8 @@
             - name: 出力
               href: functions-bindings-event-iot-output.md
               displayName: Azure IoT Hubs
+        - name: Kafka
+          href: 'https://github.com/azure/azure-functions-kafka-extension'
         - name: HTTP と webhook
           items:
             - name: 概要
@@ -427,8 +447,6 @@
             - name: 出力
               href: functions-bindings-http-webhook-output.md
               displayName: HTTP
-        - name: Microsoft Graph
-          href: functions-bindings-microsoft-graph.md
         - name: Mobile Apps
           href: functions-bindings-mobile-apps.md
         - name: Notification Hubs
@@ -444,6 +462,8 @@
             - name: 出力
               href: functions-bindings-storage-queue-output.md
               displayName: Queue storage
+        - name: RabbitMQ
+          href: 'https://github.com/azure/azure-functions-rabbitmq-extension'
         - name: SendGrid
           href: functions-bindings-sendgrid.md
         - name: Service Bus
@@ -461,6 +481,9 @@
           items:
             - name: 概要
               href: functions-bindings-signalr-service.md
+              displayName: SignalR Service
+            - name: トリガー
+              href: functions-bindings-signalr-service-trigger.md
               displayName: SignalR Service
             - name: 入力
               href: functions-bindings-signalr-service-input.md
@@ -488,6 +511,8 @@
   items:
     - name: Microsoft Learn でスキルを身に付ける
       href: /learn/browse/?products=azure-functions
+    - name: アーキテクチャのガイダンス
+      href: /azure/architecture/serverless-quest/serverless-overview
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: 価格
@@ -495,13 +520,13 @@
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: クォータの情報
-      href: 'functions-scale.md#service-limits'
+      href: functions-scale.md#service-limits
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'
     - name: ビデオ
       href: 'https://www.youtube.com/c/AzureFunctions'
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-functions.html'
+      href: /answers/topics/azure-functions.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-functions'
     - name: Twitter

@@ -5,19 +5,19 @@ metadata:
   title: Azure SQL Managed Instance のドキュメント
   description: Microsoft SQL Server の安定した最新バージョンに基づく、Azure 内のマネージド インスタンスである Azure SQL Managed Instance に関するドキュメントをご覧ください。
   services: sql-database
-  ms.service: sql-database
-  ms.subservice: single-database
+  ms.service: sql-managed-instance
+  ms.subservice: operations
   ms.topic: landing-page
   author: MashaMSFT
   ms.author: mathoma
   ms.reviewer: carlrab
   ms.date: 05/27/2020
-  ms.openlocfilehash: 967bf5461a1f4e6cf8869bcea6a0e7c74204d1a1
-  ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+  ms.openlocfilehash: 6c02f1f12ed32cbced046f9937d4b8a28d74f97a
+  ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/27/2020
-  ms.locfileid: "84023621"
+  ms.lasthandoff: 08/19/2020
+  ms.locfileid: "88590423"
 landingContent:
 - title: Azure SQL Managed Instance
   linkLists:
@@ -25,6 +25,10 @@ landingContent:
     links:
     - text: SQL マネージド インスタンスの作成
       url: instance-create-quickstart.md
+  - linkListType: video
+    links:
+    - text: Azure SQL Managed Instance の概要
+      url: https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Managed-Instance-Overview-6-of-61
   - linkListType: concept
     links:
     - text: 新機能
@@ -61,20 +65,30 @@ landingContent:
       url: ../database/dynamic-data-masking-overview.md
     - text: パブリック エンドポイント
       url: public-endpoint-overview.md
-- title: リファレンス
+- title: Azure SQL について学習する
   linkLists:
   - linkListType: learn
     links:
+    - text: 初心者向け Azure SQL
+      url: https://aka.ms/azuresql4beginners
+    - text: Azure SQL の基礎
+      url: https://docs.microsoft.com/learn/paths/azure-sql-fundamentals/
+    - text: Azure SQL のハンズオン ラボ
+      url: https://aka.ms/asqlworkshop
+    - text: Azure SQL の短期集中講座
+      url: https://aka.ms/azuresqlbootcamp
     - text: 学習用 SQL リソース
       url: /sql/sql-server/educational-sql-resources
+- title: リファレンス
+  linkLists:
   - linkListType: deploy
     links:
     - text: Azure CLI のサンプル
-      url: /sql/ssms/download-sql-server-management-studio-ssms
+      url: ../database/az-cli-script-samples-content-guide.md
     - text: PowerShell のサンプル
-      url: /sql/ssms/download-sql-server-management-studio-ssms
+      url: ../database/powershell-script-content-guide.md
     - text: Resource Manager テンプレートのサンプル
-      url: /sql/ssms/download-sql-server-management-studio-ssms
+      url: ../database/arm-templates-content-guide.md
   - linkListType: download
     links:
     - text: SQL Server Management Studio (SSMS)

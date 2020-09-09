@@ -6,17 +6,17 @@ author: ronortloff
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: e7aa0c402878c994aabe4e12d811a99e300d7e67
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 266eebc8322b5fc648180c0524abc973a4b60373
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743659"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85212379"
 ---
 # <a name="azure-synapse-analytics-workload-classification"></a>Azure Synapse Analytics ワークロードの分類
 

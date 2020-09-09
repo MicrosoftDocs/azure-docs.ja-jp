@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: dd0a03ea76d517486bb9bda6d9628fb529166dd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b76c940066539995dbefa76d503b5412ce0c359
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81453729"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557912"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>App Service と Azure Functions の Key Vault 参照を使用する
 
@@ -43,11 +43,15 @@ Key Vault 参照の形式は `@Microsoft.KeyVault({referenceString})` です。`
 > | SecretUri=_secretUri_                                                       | **SecretUri** は、バージョン (例: https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931 ) を含む、Key Vault におけるシークレットのフル データプレーン URI になります。  |
 > | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | **VaultName** は Key Vault リソースの名前になります。 **SecretName** はターゲット シークレットの名前になります。 **SecretVersion** は使用するシークレットのバージョンになります。 |
 
-たとえば、バージョンを含めた完全な参照は次のようになります。
+> [!NOTE] 
+> バージョンは現在必須項目です。 シークレットをローテーションするとき、アプリケーション構成でバージョンを更新する必要があります。
+
+たとえば、完全な参照は次のようになります。
 
 ```
 @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
 ```
+
 あるいは:
 
 ```

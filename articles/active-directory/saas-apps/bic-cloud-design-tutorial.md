@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と BIC Cloud Design の統合 | Microsoft Docs
 description: Azure Active Directory と BIC Cloud Design の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 68709502-480d-4f47-add2-05e0046be8ac
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/07/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13f6de35400280d68227af1dd7e3a981494d9e61
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8e2b51a5acae833e67cda6629ab0904b78aaf06b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77088286"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547309"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bic-cloud-design"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と BIC Cloud Design の統合
 
@@ -38,6 +34,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * BIC Cloud Design でのシングル サインオン (SSO) が有効なサブスクリプション。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -97,10 +96,10 @@ BIC Cloud Design に対する Azure AD SSO を構成してテストするには�
 
     **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
 
-    |||
-    |-|-|
-    | `https://<customer-specific-name/tenant>.biccloud.com`|
-    | `https://<customer-specific-name/tenant>.biccloud.de` |
+    ```https
+    https://<customer-specific-name/tenant>.biccloud.com
+    https://<customer-specific-name/tenant>.biccloud.de
+    ```
 
     > [!Note]
     > **識別子**の値が自動的に設定されない場合は、要件に応じて手動で値を入力してください。 サインオン URL は実際の値ではありません。 この値を実際のサインオン URL で更新してください。 この値を取得するには、[BIC Cloud Design クライアント サポート チーム](mailto:bicsupport@gbtec.de)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

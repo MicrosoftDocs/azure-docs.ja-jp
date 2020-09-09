@@ -1,24 +1,24 @@
 ---
-title: Azure portal を使用して Azure パブリック IP を別の Azure リージョンに移動する
-description: Azure portal を使用して Azure パブリック IP を Azure リージョン間で移動するには、Azure Resource Manager テンプレートを使用します。
+title: Azure portal で Azure パブリック IP 構成を別の Azure リージョンに移動する
+description: Azure portal を使用して Azure パブリック IP 構成を Azure リージョン間で移動するには、テンプレートを使用します。
 author: asudbring
 ms.service: virtual-network
 ms.subservice: ip-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: allensu
-ms.openlocfilehash: 6dd4b3279fc0110fff2ee0397a785c87b63644d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23fe515ddfdecb9ef168dd662e3fa2d91ece688f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147826"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711478"
 ---
-# <a name="move-azure-public-ip-to-another-region-using-the-azure-portal"></a>Azure portal を使用して Azure パブリック IP を別のリージョンに移動する
+# <a name="move-azure-public-ip-configuration-to-another-region-using-the-azure-portal"></a>Azure portal を使用して Azure パブリック IP 構成を別のリージョンに移動する
 
-既存の Azure パブリック IP を別のリージョンに移動することが必要になるさまざまなシナリオがあります。 たとえば、テスト用に同じ構成と SKU を使用してパブリック IP を作成することが必要な場合があります。 ディザスター リカバリー計画の一部として、パブリック IP を別のリージョンに移動することが必要な場合もあります。
+既存の Azure パブリック IP 構成を別のリージョンに移動することが必要になるさまざまなシナリオがあります。 たとえば、テスト用に同じ構成と SKU を使用してパブリック IP を作成することが必要な場合があります。 ディザスター リカバリー計画の一部として、パブリック IP 構成を別のリージョンに移動することが必要な場合もあります。
 
-Azure パブリック IP はリージョン固有であり、あるリージョンから別のリージョンに移動することはできません。 ただし、Azure Resource Manager テンプレートを使用して、パブリック IP の既存の構成をエクスポートすることはできます。  その後、パブリック IP をテンプレートにエクスポートすることで別のリージョンにリソースをステージし、移動先リージョンに合わせてパラメーターを変更してから、新しいリージョンにテンプレートをデプロイできます。  Resource Manager とテンプレートの詳細については、「[クイック スタート: Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)」を参照してください。
+**Azure パブリック IP はリージョン固有であり、あるリージョンから別のリージョンに移動することはできません。** ただし、Azure Resource Manager テンプレートを使用して、パブリック IP の既存の構成をエクスポートすることはできます。  その後、パブリック IP をテンプレートにエクスポートすることで別のリージョンにリソースをステージし、移動先リージョンに合わせてパラメーターを変更してから、新しいリージョンにテンプレートをデプロイできます。  Resource Manager とテンプレートの詳細については、「[クイック スタート: Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)」を参照してください。
 
 
 ## <a name="prerequisites"></a>前提条件

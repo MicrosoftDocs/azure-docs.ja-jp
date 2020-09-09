@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5355e43ca6ac075e76a76ceb51be135cf4b62b0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f6f3b10219775adb02d47a91da2573ea99f30ac0
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77564025"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212258"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>Active Directory を使用するための vCenter ID ソースの設定
 
@@ -42,6 +42,9 @@ Active Directory ドメインとドメイン コントローラーは、次の�
 * [プライベート クラウド上で新しい Active Directory を設定する](#set-up-new-active-directory-on-a-private-cloud)
 * [Azure 上で Active Directory を設定する](#set-up-active-directory-on-azure)
 
+> [!IMPORTANT]
+> **Active Directory (Windows 統合認証) はサポートされていません。** ID ソースとしてサポートされるのは、LDAP オプションを使った Active Directory のみです。
+
 ## <a name="add-on-premises-active-directory-as-a-single-sign-on-identity-source"></a>オンプレミスの Active Directory をシングル サインオンの ID ソースとして追加する
 
 オンプレミスの Active Directory をシングル サインオンの ID ソースとして設定するには、次のものが必要です。
@@ -53,7 +56,7 @@ Active Directory ドメインを設定するときは、次の表の情報を使
 
 | **オプション** | **説明** |
 |------------|-----------------|
-| **Name** | ID ソースの名前。 |
+| **名前** | ID ソースの名前。 |
 | **Base DN for users** (ユーザーのベース DN) | ユーザーのベース識別名。 |
 | **ドメイン名** | ドメインの FQDN (例: example.com)。 このテキスト ボックスには IP アドレスを指定しないでください。 |
 | **Domain alias** (ドメイン エイリアス) | ドメインの NetBIOS 名。 SSPI 認証を使用している場合は、Active Directory ドメインの NetBIOS 名を ID ソースのエイリアスとして追加します。 |
@@ -80,7 +83,7 @@ Active Directory ドメインを設定するときは、次の表の情報を使
 * 新しい Active Directory フォレストとドメインのドメイン コントローラーとして使用する、Microsoft Windows Server を実行している 1 つ以上の仮想マシン。
 * 名前解決用の DNS サービスを実行している 1 つ以上の仮想マシン。
 
-詳細な手順については、「[Windows Server 2012 の新しい Active Directory フォレストをインストールする](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-forest--level-200-)」を参照してください。
+詳細な手順については、「[Windows Server 2012 の新しい Active Directory フォレストをインストールする](/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-forest--level-200-)」を参照してください。
 
 > [!TIP]
 > サービスの可用性を高めるために、複数のドメイン コントローラーと DNS サーバーを設定することをお勧めします。
@@ -94,7 +97,7 @@ Active Directory フォレストとドメインを設定した後、新しい Ac
 * Active Directory フォレストの場所へのサイト間 VPN 接続。
 * 既存の Active Directory フォレストの名前を解決するための DNS サーバー。
 
-詳細な手順については、「[Windows Server 2012 の新しい Active Directory 子ドメインまたはツリー ドメインをインストールする](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-child-or-tree-domain--level-200-)」を参照してください。
+詳細な手順については、「[Windows Server 2012 の新しい Active Directory 子ドメインまたはツリー ドメインをインストールする](/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-child-or-tree-domain--level-200-)」を参照してください。
 
 Active Directory ドメインを設定した後、新しい Active Directory に対する [vCenter 上の ID ソースを追加](#add-an-identity-source-on-vcenter)することができます。
 
@@ -118,7 +121,7 @@ Azure で実行される Active Directory は、オンプレミスで実行さ�
 
     ![シングル サインオン](media/OnPremAD02.png)
 
-5. **[Identity Sources]\(ID ソース\)** タブを開き、 **+** をクリックして新しい ID ソースを追加します。
+5. **[Identity Sources]\(ID ソース\)** タブを開き、**+** をクリックして新しい ID ソースを追加します。
 
     ![ID ソース](media/OnPremAD03.png)
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7973ef9c56b70b6b43256db947e7f6f7210c178f
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 4e955a51906f160264fc4e81f263fe7677be91de
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930439"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589624"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Azure の Windows 仮想マシン
 
@@ -30,7 +30,7 @@ Azure の仮想マシンは、さまざまな方法で利用できます。 い�
 アプリケーションで使用する VM の数は、ニーズに応じてスケールアップおよびスケールアウトできます。
 
 ## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>VM の作成前に検討する必要のある事項
-Azure でアプリケーション インフラストラクチャを構築する際には、多数の[設計上の考慮事項](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/windows-vm)が必ず存在します。 開始する前に、VM の次の側面を考慮することが重要です。
+Azure でアプリケーション インフラストラクチャを構築する際には、多数の[設計上の考慮事項](/azure/architecture/reference-architectures/n-tier/windows-vm)が必ず存在します。 開始する前に、VM の次の側面を考慮することが重要です。
 
 * アプリケーション リソースの名前
 * リソースが格納される場所
@@ -48,16 +48,20 @@ Azure で作成されるすべてのリソースは、世界各地の複数の[�
 | Method | 説明 |
 | --- | --- |
 | Azure portal |VM を作成するときに一覧から場所を選択します。 |
-| Azure PowerShell |[Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) コマンドを使用します。 |
-| REST API |[場所の一覧表示](https://docs.microsoft.com/rest/api/resources/subscriptions)操作を使用します。 |
-| Azure CLI |[az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest) 操作を使用します。 |
+| Azure PowerShell |[Get-AzLocation](/powershell/module/az.resources/get-azlocation) コマンドを使用します。 |
+| REST API |[場所の一覧表示](/rest/api/resources/subscriptions)操作を使用します。 |
+| Azure CLI |[az account list-locations](/cli/azure/account?view=azure-cli-latest) 操作を使用します。 |
+
+### <a name="singapore-data-residency"></a>シンガポールのデータ所在地
+
+Azure では、顧客データを 1 つのリージョンに格納できるようにする機能は現在、アジア太平洋地域の東南アジア リージョン (シンガポール) でのみ使用できます。 その他のすべてのリージョンでは、顧客データは geo 内に格納されます。 詳細については、[セキュリティ センター](https://azuredatacentermap.azurewebsites.net/)に関するページを参照してください。
 
 ## <a name="availability"></a>可用性
 Azure は、単一インスタンス仮想マシン向けに、業界をリードする 99.9% というサービス レベル アグリーメントを発表しました。ただし、すべてのディスクに Premium Storage を使用した VM をデプロイすることが条件となります。  デプロイが、VM に適用される 99.95% という標準のサービス レベル アグリーメントの要件を満たすためには、可用性セット内でワークロードを実行する複数の VM をデプロイする必要があります。 可用性セットにより、Azure データ センターにある複数の障害ドメインに VM を分散すると共に、メンテナンス期間の異なるホストにデプロイすることができます。 完全な [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) では、全体としての Azure の可用性の確保について説明します。
 
 
 ## <a name="vm-size"></a>VM サイズ
-使用する VM の[サイズ](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)は、実行するワークロードによって決まります。 さらに、選択したサイズによって、処理能力、メモリ、ストレージの容量などの要素が決まります。 Azure では、さまざまな種類の使用をサポートするために、さまざまなサイズを用意しています。
+使用する VM の[サイズ](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)は、実行するワークロードによって決まります。 さらに、選択したサイズによって、処理能力、メモリ、ストレージの容量などの要素が決まります。 Azure では、さまざまな種類の使用をサポートするために、さまざまなサイズを用意しています。
 
 Azure では、VM のサイズおよびオペレーティング システムに基づいて[時間単位の料金](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)が請求されます。 時間単位を満たさない場合は、分単位でのみ請求されます。 ストレージは別料金で、別個に請求されます。
 
@@ -74,20 +78,20 @@ Azure には、Windows Server オペレーティング システムのさまざ�
 | Method | 説明 |
 | --- | --- |
 | Azure portal |値は、使用するイメージを選択する際に自動的に指定されます。 |
-| Azure PowerShell |[Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher) -Location *location*<BR>[Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer) -Location *location* -Publisher *publisherName*<BR>[Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) -Location *location* -Publisher *publisherName* -Offer *offerName* |
-| REST API |[イメージ発行元の一覧表示](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[イメージ プランの一覧表示](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[イメージ SKU の一覧表示](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
-| Azure CLI |[az vm image list-publishers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest) --location *場所*<BR>[az vm image list-offers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest) --location *場所* --publisher *発行元名*<BR>[az vm image list-skus](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest) --location *場所* --publisher *発行元名* --offer *プラン名*|
+| Azure PowerShell |[Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) -Location *location*<BR>[Get-AzVMImageOffer](/powershell/module/az.compute/get-azvmimageoffer) -Location *location* -Publisher *publisherName*<BR>[Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) -Location *location* -Publisher *publisherName* -Offer *offerName* |
+| REST API |[イメージ発行元の一覧表示](/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[イメージ プランの一覧表示](/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[イメージ SKU の一覧表示](/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
+| Azure CLI |[az vm image list-publishers](/cli/azure/vm/image?view=azure-cli-latest) --location *場所*<BR>[az vm image list-offers](/cli/azure/vm/image?view=azure-cli-latest) --location *場所* --publisher *発行元名*<BR>[az vm image list-skus](/cli/azure/vm?view=azure-cli-latest) --location *場所* --publisher *発行元名* --offer *プラン名*|
 
 [独自のイメージをアップロードして使用](upload-generalized-managed.md)することができますが、そのとき、発行元名、プラン、SKU は使用されません。
 
 ### <a name="extensions"></a>拡張機能
-VM の[拡張機能](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)は、デプロイ後の構成と自動化タスクを通じて VM に追加の機能を提供します。
+VM の[拡張機能](../extensions/features-windows.md?toc=/azure/virtual-machines/windows/toc.json)は、デプロイ後の構成と自動化タスクを通じて VM に追加の機能を提供します。
 
 拡張機能を使用して、次のような一般的なタスクを実行できます。
 
-* **カスタム スクリプトの実行** – [カスタム スクリプト拡張機能](extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を利用すれば、VM のプロビジョニングの際にスクリプトを実行して、VM でワークロードを構成できます。
-* **構成のデプロイと管理** – [PowerShell Desired State Configuration (DSC) 拡張機能](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を利用すれば、VM で DSC をセットアップして構成と環境を管理できます。
-* **診断データの収集** – [Azure Diagnostics 拡張機能](extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を利用すれば、アプリケーションの正常性を監視するために使用できる診断データを収集するように VM を構成できます。
+* **カスタム スクリプトの実行** – [カスタム スクリプト拡張機能](../extensions/custom-script-windows.md?toc=/azure/virtual-machines/windows/toc.json)を利用すれば、VM のプロビジョニングの際にスクリプトを実行して、VM でワークロードを構成できます。
+* **構成のデプロイと管理** – [PowerShell Desired State Configuration (DSC) 拡張機能](../extensions/dsc-overview.md?toc=/azure/virtual-machines/windows/toc.json) を利用すれば、VM で DSC をセットアップして構成と環境を管理できます。
+* **診断データの収集** – [Azure Diagnostics 拡張機能](../extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json)を利用すれば、アプリケーションの正常性を監視するために使用できる診断データを収集するように VM を構成できます。
 
 ### <a name="related-resources"></a>関連リソース
 次の表のリソースは VM によって使用されるため、VM の作成時に存在するか、作成する必要があります。
@@ -95,9 +99,9 @@ VM の[拡張機能](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwi
 | リソース | 必須 | 説明 |
 | --- | --- | --- |
 | [リソース グループ](../../azure-resource-manager/management/overview.md) |はい |VM は、リソース グループに含まれる必要があります。 |
-| [ストレージ アカウント](../../storage/common/storage-create-storage-account.md) |はい |VM には、その仮想ハード ディスクを格納するストレージ アカウントが必要です。 |
+| [ストレージ アカウント](../../storage/common/storage-account-create.md) |はい |VM には、その仮想ハード ディスクを格納するストレージ アカウントが必要です。 |
 | [Virtual Network](../../virtual-network/virtual-networks-overview.md) |はい |VM は、仮想ネットワークのメンバーである必要があります。 |
-| [パブリック IP アドレス](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |いいえ |VM には、リモートでアクセスするためのパブリック IP アドレスを割り当てることができます。 |
+| [パブリック IP アドレス](../../virtual-network/public-ip-addresses.md) |いいえ |VM には、リモートでアクセスするためのパブリック IP アドレスを割り当てることができます。 |
 | [ネットワーク インターフェイス](../../virtual-network/virtual-network-network-interface.md) |はい |VM には、ネットワークで通信するためのネットワーク インターフェイスが必要です。 |
 | [データ ディスク](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |いいえ |VM には、ストレージ容量を拡張するためのデータ ディスクを含めることができます。 |
 
@@ -108,4 +112,3 @@ VM の[拡張機能](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwi
 - [ポータル](quick-create-portal.md)
 - [PowerShell](quick-create-powershell.md)
 - [Azure CLI](quick-create-cli.md)
-

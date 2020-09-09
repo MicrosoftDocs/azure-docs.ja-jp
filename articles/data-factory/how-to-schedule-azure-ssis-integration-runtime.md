@@ -8,21 +8,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 8/2/2019
+ms.date: 07/09/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 83ccc3160ed62a1ea801dd8c5795328fd2b5109f
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 4df4f7e1db880a38f647e8e384cbfb29b70954ec
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584025"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187253"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS Integration Runtime をスケジュールに従って開始および停止する方法
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 この記事では、Azure Data Factory (ADF) を使用して、Azure-SSIS Integration Runtime (IR) の開始と停止のスケジュールを設定する方法を説明します。 Azure-SSIS IR は、SQL Server Integration Services (SSIS) パッケージの実行専用の ADF コンピューティング リソースです。 Azure-SSIS IR を実行するには、それに関連するコストがあります。 このため一般には、SSIS パッケージを Azure で実行する必要がある場合にのみ IR を実行し、必要ないときには IR を停止する必要があります。 ADF のユーザー インターフェイス (UI)/アプリまたは Azure PowerShell を使用して、[IR を手動で開始または停止する](manage-azure-ssis-integration-runtime.md)ことができます。
 
@@ -133,7 +133,7 @@ Azure-SSIS IR をまだプロビジョニングしていない場合は、[チ�
     
 2. 3 つ目のパイプラインをテストするには、SQL Server Management Studio (SSMS) を起動します。 **[サーバーへの接続]** ウィンドウで、次の操作を行います。 
 
-    1. **[サーバー名]** に、「 **&lt;自分の Azure SQL Database サーバー名&gt;.database.windows.net**」と入力します。
+    1. **[サーバー名]** に、「 **&lt;自分のサーバー名&gt;.database.windows.net**」と入力します。
     2. **[オプション >>]** を選択します。
     3. **[データベースの接続]** では **[SSISDB]** を選択します。
     4. **[接続]** を選択します。 

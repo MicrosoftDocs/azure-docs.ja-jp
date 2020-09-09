@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 53c9653b44a6c9d26d49d37b351cf6000676e2d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 711f5293b205c1f500c6d9e08154342285ef959b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75649663"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033210"
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Microsoft.Network.VirtualNetworkCombo UI 要素
 
@@ -20,11 +20,11 @@ ms.locfileid: "75649663"
 
 新しい仮想ネットワークを選択すると、各サブネットの名前とアドレスのプレフィックスをカスタマイズすることができます。 サブネットの構成は省略可能です。
 
-![Microsoft.Network.VirtualNetworkCombo new](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-new.png)
+![Microsoft.Network.VirtualNetworkCombo new](./media/managed-application-elements/microsoft-network-virtualnetworkcombo-new.png)
 
 既存の仮想ネットワークを選択する場合、デプロイ テンプレートに必要な各サブネットを既存のサブネットにマップする必要があります。 この場合、サブネットを構成する必要があります。
 
-![Microsoft.Network.VirtualNetworkCombo existing](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-existing.png)
+![Microsoft.Network.VirtualNetworkCombo existing](./media/managed-application-elements/microsoft-network-virtualnetworkcombo-existing.png)
 
 ## <a name="schema"></a>スキーマ
 

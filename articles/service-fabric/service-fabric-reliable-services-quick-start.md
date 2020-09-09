@@ -3,13 +3,13 @@ title: C# で最初の Service Fabric アプリケーションを作成する
 description: ステートレス サービスとステートフル サービスを使用して Microsoft Azure Service Fabric アプリケーションを作成する方法。
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.custom: sfrev
-ms.openlocfilehash: 15dd9bf6ac19bdac7bc8b50fc70e0b3b0a4e9a83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: sfrev, devx-track-csharp
+ms.openlocfilehash: 1de77f870bce5766ab704249034d6d7b6c8b098e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77083775"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012740"
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 使用
 
@@ -30,7 +30,7 @@ Reliable Services の使用を開始するには、いくつかの基本的な�
 
 ## <a name="create-a-stateless-service"></a>ステートレス サービスの作成
 
-ステートレス サービスは、クラウド アプリケーションで現在基準となっている種類のサービスです。 ステートレスと見なされるのは、確実に格納する必要があるデータや高可用性を実現する必要があるデータが、サービス自体には含まれていないためです。 ステートレス サービスのインスタンスが終了すると、すべての内部状態が失われます。 この種類のサービスで、状態の高可用性と高い信頼性を実現するには、Azure テーブルや SQL データベースなどの外部ストアに状態を格納する必要があります。
+ステートレス サービスは、クラウド アプリケーションで現在基準となっている種類のサービスです。 ステートレスと見なされるのは、確実に格納する必要があるデータや高可用性を実現する必要があるデータが、サービス自体には含まれていないためです。 ステートレス サービスのインスタンスが終了すると、すべての内部状態が失われます。 この種類のサービスでは、高可用性と高い信頼性を実現するために、Azure テーブルや SQL Database などの外部ストアに状態を格納する必要があります。
 
 Visual Studio 2017 または Visual Studio 2019 を管理者として起動し、*HelloWorld* という名前の新しい Service Fabric アプリケーション プロジェクトを作成します。
 
@@ -169,11 +169,11 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
 ```
 
-[IReliableDictionary](https://msdn.microsoft.com/library/dn971511.aspx) は、サービスに状態を確実に格納するために使用できるディクショナリ実装です。 Service Fabric と Reliable Collection を使用すると、データをサービスに直接格納できるため、外部の永続ストアが必要ありません。 Reliable Collection により、データの可用性が向上します。 Service Fabric では、サービスの複数の *レプリカ* を作成して管理することでこれを実現します。 また、これらのレプリカとその状態遷移の管理の複雑さを取り除く API も提供します。
+[IReliableDictionary](/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliabledictionary_2) は、サービスに状態を確実に格納するために使用できるディクショナリ実装です。 Service Fabric と Reliable Collection を使用すると、データをサービスに直接格納できるため、外部の永続ストアが必要ありません。 Reliable Collection により、データの可用性が向上します。 Service Fabric では、サービスの複数の *レプリカ* を作成して管理することでこれを実現します。 また、これらのレプリカとその状態遷移の管理の複雑さを取り除く API も提供します。
 
 Reliable Collection にはカスタム型を含むすべての .NET 型を格納できます。ただし次の点にご注意ください。
 
-* Service Fabric がノード全体で状態を*レプリケート*して状態の可用性を高め、Reliable Collection が各レプリカでデータをローカル ディスクに保存します。 これは、Reliable Collection で保存されるすべてのデータは*シリアル化可能である*必要があることを意味します。 既定では、Reliable Collection は [DataContract](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractattribute%28v=vs.110%29.aspx) を使用してシリアル化します。そのため、既定のシリアライザーを使用する場合は、使用する型が[データ コントラクト シリアライザーでサポートされている](https://msdn.microsoft.com/library/ms731923%28v=vs.110%29.aspx)ことを確認することが重要です。
+* Service Fabric がノード全体で状態を*レプリケート*して状態の可用性を高め、Reliable Collection が各レプリカでデータをローカル ディスクに保存します。 これは、Reliable Collection で保存されるすべてのデータは*シリアル化可能である*必要があることを意味します。 既定では、Reliable Collection は [DataContract](/dotnet/api/system.runtime.serialization.datacontractattribute?view=netcore-3.1) を使用してシリアル化します。そのため、既定のシリアライザーを使用する場合は、使用する型が[データ コントラクト シリアライザーでサポートされている](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer)ことを確認することが重要です。
 * Reliable Collection でトランザクションをコミットすると、可用性が高めるためにオブジェクトがレプリケートされます。 Reliable Collection に格納されるオブジェクトは、サービスのローカル メモリに保持されます。 これは、オブジェクトへのローカルな参照があることを意味します。
   
    トランザクションの Reliable Collection を更新せずに、これらのオブジェクトのローカル インスタンスを変更しないようにしてください。 オブジェクトのローカル インスタンスの変更は自動的にレプリケートされないためです。 オブジェクトをディクショナリに再挿入するか、ディクショナリで *update* メソッドのいずれかを使用する必要があります。
@@ -212,7 +212,7 @@ Reliable Collection の操作は *トランザクション*であるため、複
 ## <a name="next-steps"></a>次のステップ
 [Visual Studio での Service Fabric アプリケーションのデバッグ](service-fabric-debugging-your-application.md)
 
-[はじめに: OWIN 自己ホストによる Service Fabric Web API サービス](service-fabric-reliable-services-communication-webapi.md)
+[はじめに: OWIN 自己ホストによる Service Fabric Web API サービス](./service-fabric-reliable-services-communication-aspnetcore.md)
 
 [Reliable Collection の詳細](service-fabric-reliable-services-reliable-collections.md)
 
@@ -220,5 +220,4 @@ Reliable Collection の操作は *トランザクション*であるため、複
 
 [アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 
-[Reliable Services の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/dn706529.aspx)
-
+[Reliable Services の開発者向けリファレンス](/previous-versions/azure/dn706529(v=azure.100))

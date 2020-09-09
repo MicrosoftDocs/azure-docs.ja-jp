@@ -10,15 +10,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/19/2019
 ms.author: allensu
-ms.openlocfilehash: 874ec75fb9173b6cee50bf8880510464fa13e9d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f30943eb0cc72f677785d1228b47b65764c1e7d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81254242"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887869"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>キャッシュ規則で Azure CDN キャッシュの動作を制御する
 

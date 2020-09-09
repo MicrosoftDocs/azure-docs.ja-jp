@@ -4,85 +4,81 @@
   items:
     - name: IoT プラグ アンド プレイとは
       href: overview-iot-plug-and-play.md
+    - name: プレビュー更新版の更新内容
+      href: overview-iot-plug-and-play-preview-updates.md
 - name: クイックスタート
   expanded: true
   items:
-    - name: デバイスを作成する
-      items:
-        - name: C Linux
-          href: quickstart-create-pnp-device-linux.md
-        - name: C Windows
-          href: quickstart-create-pnp-device-windows.md
     - name: デバイスを IoT Hub に接続する
       items:
-        - name: C Linux
-          href: quickstart-connect-pnp-device-c-linux.md
-        - name: C Windows
-          href: quickstart-connect-pnp-device-c-windows.md
-        - name: 'C#'
-          href: quickstart-connect-pnp-device-csharp.md
-        - name: Java
-          href: quickstart-connect-pnp-device-java.md
+        - name: C
+          href: quickstart-connect-device-c.md
         - name: Node.js
-          href: quickstart-connect-pnp-device-node.md
-    - name: デバイスを IoT Central に接続する
-      href: ../iot-central/core/tutorial-connect-pnp-device.md
-    - name: ソリューション内のデバイスに接続する
+          href: quickstart-connect-device-node.md
+        - name: Python
+          href: quickstart-connect-device-python.md
+        - name: C#
+          href: quickstart-connect-device-csharp.md
+        - name: Java
+          href: quickstart-connect-device-java.md
+    - name: ソリューションからのデバイスの操作
       items:
-        - name: 'C#'
-          href: quickstart-connect-pnp-device-solution-csharp.md
-        - name: Java
-          href: quickstart-connect-pnp-device-solution-java.md
         - name: Node.js
-          href: quickstart-connect-pnp-device-solution-node.md
+          href: quickstart-service-node.md
+        - name: Python
+          href: quickstart-service-python.md
 - name: チュートリアル
   items:
-    - name: VS Code を使用してデバイスを作成する
-      href: tutorial-pnp-visual-studio-code.md
-    - name: 認定に対応したデバイスを構築する
-      href: tutorial-build-device-certification.md
-    - name: デバイスの認定を受ける
-      href: tutorial-certification-test.md
+    - name: 複数のコンポーネント デバイスに接続する (C#)
+      href: tutorial-multiple-components-csharp.md
+    - name: 複数のコンポーネント デバイスに接続する (Java)
+      href: tutorial-multiple-components-java.md
+    - name: 複数のコンポーネント デバイスに接続する (Node.js)
+      href: tutorial-multiple-components-node.md
+    - name: 複数のコンポーネント デバイスに接続する (Python)
+      href: tutorial-multiple-components-python.md
+    - name: MQTT を使用してデバイスを接続する
+      href: tutorial-use-mqtt.md
 - name: 概念
   items:
-    - name: 用語集
-      href: iot-plug-and-play-glossary.md
+    - name: アーキテクチャ
+      href: concepts-architecture.md
     - name: 開発者ガイド
       href: concepts-developer-guide.md
-    - name: 共通インターフェイス
-      href: concepts-common-interfaces.md
-    - name: モデル検出
+    - name: コンポーネント
+      href: concepts-components.md
+    - name: IoT プラグ アンド プレイの規則
+      href: concepts-convention.md
+    - name: Digital Twins
+      href: concepts-digital-twin.md
+    - name: モデル リポジトリ
+      href: concepts-model-repository.md
+    - name: ソリューションでのモデルの使用
       href: concepts-model-discovery.md
+    - name: モデル パーサー
+      href: concepts-model-parser.md
     - name: 制限とクォータ
       href: concepts-limits-quotas.md
+    - name: 用語集
+      href: iot-plug-and-play-glossary.md
 - name: 操作方法ガイド
   items:
-    - name: Visual Studio と Visual Studio Code を使用して開発する
-      href: howto-develop-with-vs-vscode.md
-    - name: IoT エクスプローラーをインストールする
-      href: howto-install-iot-explorer.md
-    - name: Azure CLI 拡張機能をインストールする
-      href: howto-install-pnp-cli.md
-    - name: IoT ポータルにオンボードする
-      href: howto-onboard-portal.md
-    - name: モデルを管理する
-      href: howto-manage-models.md
-    - name: デバイスに接続して対話する
-      href: howto-develop-solution.md
+    - name: IoT エクスプローラーをインストールして使用する
+      href: howto-use-iot-explorer.md
+    - name: Azure IoT CLI 拡張機能をインストールして使用する
+      href: howto-use-iot-pnp-cli.md
+    - name: デジタル ツインを管理する
+      href: howto-manage-digital-twin.md
+    - name: デバイスを認定する
+      href: howto-certify-device.md
 - name: リファレンス
   items:
     - name: ライブラリと SDK
       href: libraries-sdks.md
-    - name: REST API
-      items:
-        - name: デジタル ツイン
-          href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/digitaltwin'
-        - name: デジタル ツインのサービス
-          href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/service'
-        - name: デジタル ツインのモデル リポジトリ
-          href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdatemodel'
-        - name: REST セキュリティ トークンを生成する
-          href: howto-generate-sas-token.md
+    - name: Digital Twin REST API
+      href: 'https://aka.ms/iot-pnp-preview-rest'
+    - name: Azure CLI
+      href: /cli/azure/azure-cli-reference-for-IoT
 - name: リソース
   items:
     - name: サポート オプションとヘルプ オプション
@@ -108,6 +104,6 @@
     - name: Azure IoT SDK
       items:
         - name: IoT サービスの SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT デバイス SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks

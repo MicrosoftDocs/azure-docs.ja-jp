@@ -13,11 +13,11 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d2ea038c7d7212529185d77a6ba9e64deacb1c9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231543"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84689760"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Azure Data Factory を使用して Web テーブル ソースからデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]

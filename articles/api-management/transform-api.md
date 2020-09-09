@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 9a9c6897937b73786367accc33e985a268907226
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 4c3cc572dd9629605414cd88d7735c2b31f92249
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81258747"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "85851256"
 ---
 # <a name="transform-and-protect-your-api"></a>API を変換および保護する
 
@@ -82,8 +82,10 @@ ms.locfileid: "81258747"
 
 7. **\<outbound>** コードを次のように変更します。
 
-       <set-header name="X-Powered-By" exists-action="delete" />
-       <set-header name="X-AspNet-Version" exists-action="delete" />
+   ```
+   <set-header name="X-Powered-By" exists-action="delete" />
+   <set-header name="X-AspNet-Version" exists-action="delete" />
+   ```
 
    ![ポリシー](./media/transform-api/set-policy.png)
 
@@ -112,11 +114,8 @@ ms.locfileid: "81258747"
 2.  **[すべての操作]** を選択します。
 3.  画面の上部の **[デザイン]** タブを選択します。
 4.  **[送信処理]** セクションで、 **[</>]** アイコンをクリックします。
-5.  **&lt;outbound&gt;** 要素内にカーソルを置き、右上隅にある **[Insert policy]\(ポリシーの挿入\)** ボタンをクリックします。
-6.  右側のウィンドウの **[変換ポリシー]** で、 **[+ Find and replace string in body]\(+ 本文内の文字列の検索および置換\)** をクリックします。
-7.  **find-and-replace** コード ( **\<outbound\>** 要素内) を変更して、APIM ゲートウェイと一致するように URL を置換します。 次に例を示します。
-
-        <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
+5.  **&lt;outbound&gt;** 要素内にカーソルを置き、右上隅にある **[Show snippets]\(スニペットの表示\)** ボタンをクリックします。
+6.  右側のウィンドウの **[変換ポリシー]** で、 **[Mask URLs in content]\(コンテンツ内の URL をマスク\)** をクリックします。
 
 ## <a name="protect-an-api-by-adding-rate-limit-policy-throttling"></a>レート制限ポリシー (調整) を追加して API を保護する
 
@@ -132,31 +131,35 @@ ms.locfileid: "81258747"
 6.  右側のウィンドウの **[アクセス制限ポリシー]** で、 **[+ Limit call rate per key]\(+ キーごとの呼び出しレートの制限\)** をクリックします。
 7.  **rate-limit-by-key** コード ( **\<inbound\>** 要素内) を次のコードに変更します。
 
-        <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
+    ```
+    <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
+    ```
 
 ## <a name="test-the-transformations"></a>変換をテストする
 
 この時点でコード エディターのコードを確認すると、ポリシーは次のようになります。
 
-    <policies>
-        <inbound>
-            <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
-            <base />
-        </inbound>
-        <backend>
-            <base />
-        </backend>
-        <outbound>
-            <set-header name="X-Powered-By" exists-action="delete" />
-            <set-header name="X-AspNet-Version" exists-action="delete" />
-            <find-and-replace from="://conferenceapi.azurewebsites.net:443" to="://apiphany.azure-api.net/conference"/>
-            <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
-            <base />
-        </outbound>
-        <on-error>
-            <base />
-        </on-error>
-    </policies>
+   ```
+   <policies>
+      <inbound>
+        <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
+        <base />
+      </inbound>
+      <backend>
+        <base />
+      </backend>
+      <outbound>
+        <set-header name="X-Powered-By" exists-action="delete" />
+        <set-header name="X-AspNet-Version" exists-action="delete" />
+        <find-and-replace from="://conferenceapi.azurewebsites.net:443" to="://apiphany.azure-api.net/conference"/>
+        <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
+        <base />
+      </outbound>
+      <on-error>
+        <base />
+      </on-error>
+   </policies>
+   ```
 
 このセクションの残りの部分では、この記事で設定したポリシー変換をテストします。
 

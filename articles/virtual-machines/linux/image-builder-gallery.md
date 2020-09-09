@@ -1,23 +1,23 @@
 ---
-title: Linux VM のイメージ ギャラリーで Azure Image Builder を使用する (プレビュー)
+title: Linux VM で Azure Image Builder と Shared Image Gallery を使用する (プレビュー)
 description: Azure Image Builder と共有イメージ ギャラリーで Linux VM イメージを作成します。
 author: cynthn
 ms.author: cynthn
-ms.date: 04/20/2019
+ms.date: 05/05/2019
 ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: 196f7b41a9d7eb5da1b2cf52a38917c34905d7bb
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 1eeb8df2605bbe63fe72c5bd451b43111322a7f6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791512"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500914"
 ---
 # <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>プレビュー:Linux イメージを作成して共有イメージ ギャラリーに配布する 
 
-この記事では、Azure Image Builder と Azure CLI を使用して [Shared Image Gallery](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries) でイメージ バージョンを作成し、そのイメージをグローバルに配布する方法について説明します。 この操作は、[Azure PowerShell](../windows/image-builder-gallery.md) を使用して行うこともできます。
+この記事では、Azure Image Builder と Azure CLI を使用して [Shared Image Gallery](../windows/shared-image-galleries.md) でイメージ バージョンを作成し、そのイメージをグローバルに配布する方法について説明します。 この操作は、[Azure PowerShell](../windows/image-builder-gallery.md) を使用して行うこともできます。
 
 
 サンプルの .json テンプレートを使用して、イメージを構成します。 使用する .json ファイルは、[helloImageTemplateforSIG.json](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json) です。 
@@ -45,7 +45,8 @@ az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachine
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
-
+az provider show -n Microsoft.KeyVault | grep registrationState
+az provider show -n Microsoft.Compute | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
@@ -53,7 +54,8 @@ az provider show -n Microsoft.Storage | grep registrationState
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
-
+az provider register -n Microsoft.Compute
+az provider register -n Microsoft.KeyVault
 az provider register -n Microsoft.Storage
 ```
 
@@ -90,18 +92,39 @@ subscriptionID=<Subscription ID>
 az group create -n $sigResourceGroup -l $location
 ```
 
+## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>ユーザー割り当て ID を作成し、リソース グループにアクセス許可を設定する
+Image Builder は、指定された [ユーザー ID](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) を使用して、Azure Shared Image Gallery (SIG) にイメージを挿入します。 この例では、イメージの SIG への配布を実行するための粒度の細かいアクションを持つ Azure ロール定義を作成します。 このロール定義はその後、ユーザー ID に割り当てられます。
 
-そのリソース グループ内にリソースを作成するアクセス許可を Azure Image Builder に付与します。 `--assignee` 値は、Image Builder サービスのアプリ登録 ID です。 
+```bash
+# create user assigned identity for image builder to access the storage account where the script is located
+idenityName=aibBuiUserId$(date +'%s')
+az identity create -g $sigResourceGroup -n $idenityName
 
-```azurecli-interactive
+# get identity id
+imgBuilderCliId=$(az identity show -g $sigResourceGroup -n $idenityName | grep "clientId" | cut -c16- | tr -d '",')
+
+# get the user identity URI, needed for the template
+imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$sigResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$idenityName
+
+# this command will download an Azure role definition template, and update the template with the parameters specified earlier.
+curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
+
+imageRoleDefName="Azure Image Builder Image Def"$(date +'%s')
+
+# update the definition
+sed -i -e "s/<subscriptionID>/$subscriptionID/g" aibRoleImageCreation.json
+sed -i -e "s/<rgName>/$sigResourceGroup/g" aibRoleImageCreation.json
+sed -i -e "s/Azure Image Builder Service Image Creation Role/$imageRoleDefName/g" aibRoleImageCreation.json
+
+# create role definitions
+az role definition create --role-definition ./aibRoleImageCreation.json
+
+# grant role definition to the user assigned identity
 az role assignment create \
-    --assignee cf32a0cc-373c-47c9-9156-0db11f6a6dfc \
-    --role Contributor \
+    --assignee $imgBuilderCliId \
+    --role $imageRoleDefName \
     --scope /subscriptions/$subscriptionID/resourceGroups/$sigResourceGroup
 ```
-
-
-
 
 
 ## <a name="create-an-image-definition-and-gallery"></a>イメージ定義およびギャラリーの作成
@@ -143,6 +166,7 @@ sed -i -e "s/<sharedImageGalName>/$sigName/g" helloImageTemplateforSIG.json
 sed -i -e "s/<region1>/$location/g" helloImageTemplateforSIG.json
 sed -i -e "s/<region2>/$additionalregion/g" helloImageTemplateforSIG.json
 sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateforSIG.json
+sed -i -e "s%<imgBuilderId>%$imgBuilderId%g" helloImageTemplateforSIG.json
 ```
 
 ## <a name="create-the-image-version"></a>イメージ バージョンの作成
@@ -219,6 +243,18 @@ az resource delete \
     --resource-group $sigResourceGroup \
     --resource-type Microsoft.VirtualMachineImages/imageTemplates \
     -n helloImageTemplateforSIG01
+```
+
+アクセス許可の割り当て、ロール、ID の削除
+```azurecli-interactive
+az role assignment delete \
+    --assignee $imgBuilderCliId \
+    --role "$imageRoleDefName" \
+    --scope /subscriptions/$subscriptionID/resourceGroups/$sigResourceGroup
+
+az role definition delete --name "$imageRoleDefName"
+
+az identity delete --ids $imgBuilderId
 ```
 
 Image Builder で作成されたイメージ バージョン (これは常に `0.` で始まります) を取得し、続いてイメージ バージョンを削除します。

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 609ac66ca27d5cad7dd2fb295c3a2a721a1cda16
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 72c2a664b3994d53fdd3602b432df1cabdaeb3ef
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392693"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002972"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>チュートリアル:Azure Kubernetes Service (AKS) クラスターのデプロイ
 
@@ -33,7 +33,9 @@ Kubernetes には、コンテナー化されたアプリケーション用の分
 
 AKS クラスターでは、Kubernetes のロールベースのアクセス制御 (RBAC) を使用できます。 これらのコントロールを使用すると、ユーザーに割り当てられているロールに基づいてリソースへのアクセスを定義できます。 ユーザーに複数のロールが割り当てられている場合は、アクセス許可が組み合わされます。また、アクセス許可のスコープを 1 つの名前空間またはクラスター全体に設定できます。 Azure CLI の既定では、AKS クラスターを作成するときに RBAC が自動的に有効になります。
 
-[az aks create][] を使用して AKS クラスターを作成します。 次の例では、*myResourceGroup* という名前のリソース グループに *myAKSCluster* という名前のクラスターを作成します。 このリソース グループは、[前のチュートリアル][aks-tutorial-prepare-acr]で作成しました。 AKS クラスターが他の Azure リソースと対話できるようにするために、Azure Active Directory のサービス プリンシパルが自動的に作成されます (指定しなかったため)。 この場合、このサービス プリンシパルは、前のチュートリアルで作成した Azure Container Registry (ACR) インスタンスから[イメージをプルする権利を付与][container-registry-integration]されます。 管理しやすくするために、サービス プリンシパルの代わりに[マネージド ID](use-managed-identity.md) を使用することもできることに注意してください。
+[az aks create][] を使用して AKS クラスターを作成します。 次の例では、*myResourceGroup* という名前のリソース グループに *myAKSCluster* という名前のクラスターを作成します。 このリソース グループは、[前のチュートリアル][aks-tutorial-prepare-acr]で作成しました ("*米国東部*" リージョン)。 次の例ではリージョンが指定されず、AKS クラスターも "*米国東部*" リージョンで作成されます。 AKS のリソース制限とリージョン可用性に関する詳細については、「[Azure Kubernetes Service (AKS) のクォータ、仮想マシンのサイズの制限、利用可能なリージョン][quotas-skus-regions]」を参照してください。
+
+AKS クラスターが他の Azure リソースと対話できるようにするために、Azure Active Directory のサービス プリンシパルが自動的に作成されます (指定しなかったため)。 この場合、このサービス プリンシパルは、前のチュートリアルで作成した Azure Container Registry (ACR) インスタンスから[イメージをプルする権利を付与][container-registry-integration]されます。 管理しやすくするために、サービス プリンシパルの代わりに[マネージド ID](use-managed-identity.md) を使用することもできることに注意してください。
 
 ```azurecli
 az aks create \
@@ -108,3 +110,4 @@ aks-nodepool1-12345678-0   Ready    agent   32m   v1.14.8
 [az aks get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [azure-cli-install]: /cli/azure/install-azure-cli
 [container-registry-integration]: ./cluster-container-registry-integration.md
+[quotas-skus-regions]: quotas-skus-regions.md

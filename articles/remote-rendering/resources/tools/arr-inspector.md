@@ -20,7 +20,7 @@ ArrInspector は、実行中の Azure Remote Rendering セッションを検査�
 
 ## <a name="connecting-to-the-arrinspector"></a>ArrInspector に接続する
 
-ARR サーバーのホスト名 (末尾が `mixedreality.azure.com`) を取得したら、[ConnectToArrInspectorAsync](../../how-tos/frontend-apis.md#connect-to-arr-inspector) を使用して接続します。 この関数により、アプリケーションが実行されているデバイス上に `StartArrInspector.html` が作成されます。 ArrInspector を起動するには、PC のブラウザー (Edge、Firefox、または Chrome) でそのファイルを開きます。 そのファイルは 24 時間だけ有効です。
+ARR サーバーのホスト名 (末尾が `mixedreality.azure.com`) を取得したら、[ConnectToArrInspectorAsync](../../how-tos/frontend-apis.md#connect-to-arr-inspector) を使用して接続します。 この関数により、アプリケーションが実行されているデバイス上に `StartArrInspector.html` が作成されます。 ArrInspector を起動するには、PC のブラウザー (Microsoft Edge、Firefox、または Chrome) でそのファイルを開きます。 そのファイルは 24 時間だけ有効です。
 
 `ConnectToArrInspectorAsync` を呼び出すアプリが PC で既に実行されている場合:
 

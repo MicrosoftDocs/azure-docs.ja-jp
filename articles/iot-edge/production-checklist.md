@@ -4,19 +4,19 @@ description: Azure IoT Edge ソリューションを開発環境から運用環�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 4/25/2020
+ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e818de4885d3859199108d7d88e4cbcb215dc4cc
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 6f5698c5390a341df505bf5a1f849e121bd754a2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780744"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258781"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge ソリューションを運用環境にデプロイするための準備を行う
 
@@ -38,11 +38,14 @@ IoT Edge デバイスとして、Raspberry Pi から、ノート PC、サーバ�
 
 ### <a name="install-production-certificates"></a>運用環境の証明書をインストールする
 
-運用環境内のすべての IoT Edge デバイスには、デバイス証明機関 (CA) の証明書をインストールする必要があります。 その CA 証明書は、その後、config.yaml ファイルの IoT Edge ランタイムに宣言されます。 開発とテストのシナリオ用に、IoT Edge ランタイムでは、config.yaml ファイルで証明書が宣言されていない場合に一時証明書が作成されます。 しかし、これらの一時証明書は 3 か月後に有効期限が切れるため、運用環境シナリオでは安全ではありません。
+運用環境内のすべての IoT Edge デバイスには、デバイス証明機関 (CA) の証明書をインストールする必要があります。 その CA 証明書は、その後、config.yaml ファイルの IoT Edge ランタイムに宣言されます。 開発とテストのシナリオ用に、IoT Edge ランタイムでは、config.yaml ファイルで証明書が宣言されていない場合に一時証明書が作成されます。 しかし、これらの一時証明書は 3 か月後に有効期限が切れるため、運用環境シナリオでは安全ではありません。 運用環境のシナリオでは、自己署名の証明機関、または商用認証局から購入した自分独自のデバイス CA 証明書を指定する必要があります。
+
+> [!NOTE]
+> 現時点では、libiothsm の制限により、2050 年 1 月 1 日以降に有効期限が切れる証明書は使用できません。
 
 デバイス CA 証明書のロールの詳細については、[Azure IoT Edge での証明書の使用方法](iot-edge-certs.md)に関するページを参照してください。
 
-IoT Edge デバイスに証明書をインストールし、config.yaml ファイルからそれらを参照する方法の詳細については、[「IoT Edgeデバイスに運用証明書をインストールする」](how-to-manage-device-certificates.md)を参照してください。
+IoT Edge デバイスに証明書をインストールし、config.yaml ファイルからそれらを参照する方法の詳細については、「[IoT Edge デバイスで証明書を管理する](how-to-manage-device-certificates.md)」を参照してください。
 
 ### <a name="have-a-device-management-plan"></a>デバイスの管理を計画する
 
@@ -218,7 +221,7 @@ Azure IoT Hub および IoT Edge の間の通信チャネルは、常にアウ�
 
    | URL (\* = ワイルドカード) | 送信 TCP ポート | 使用法 |
    | ----- | ----- | ----- |
-   | mcr.microsoft.com  | 443 | Microsoft コンテナー レジストリ |
+   | mcr.microsoft.com  | 443 | Microsoft Container Registry |
    | global.azure-devices-provisioning.net  | 443 | DPS でのアクセス (任意指定) |
    | \*.azurecr.io | 443 | 個人やサード パーティのコンテナー レジストリ |
    | \*.blob.core.windows.net | 443 | BLOB ストレージから Azure Container Registry イメージの差分をダウンロードする |
@@ -226,6 +229,10 @@ Azure IoT Hub および IoT Edge の間の通信チャネルは、常にアウ�
    | \*.docker.io  | 443 | Docker Hub でのアクセス (任意指定) |
 
 これらのファイアウォール規則の一部は Azure Container Registry から継承されます。 詳細については、「[ファイアウォールの内側から Azure コンテナー レジストリにアクセスする規則を構成する](../container-registry/container-registry-firewall-access-rules.md)」を参照してください。
+
+> [!NOTE]
+> REST エンドポイントとデータ エンドポイント間に一貫性のある FQDN を提供するために、**2020 年 6 月 15 日**以降、Microsoft Container Registry データ エンドポイントは `*.cdn.mscr.io` から `*.data.mcr.microsoft.com` に変更されます  
+> 詳細については、[Microsoft Container Registry クライアント ファイアウォール規則の構成](https://github.com/microsoft/containerregistry/blob/master/client-firewall-rules.md)に関する記事を参照してください
 
 パブリック コンテナー レジストリへのアクセスを許可するようにファイアウォールを構成しない場合は、「[プライベート レジストリにランタイム コンテナーを格納する](#store-runtime-containers-in-your-private-registry)」で説明されているように、イメージをプライベート コンテナー レジストリに格納することができます。
 

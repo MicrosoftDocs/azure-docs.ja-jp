@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: f15beeee2c5843506f0bf89b4c6d66d77826e152
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 735b16ad054edfea7cf0ad2e1e5b9c76b664e6c3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81459892"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87479638"
 ---
 # <a name="troubleshoot-a-vms-operating-system-disk"></a>VM オペレーティング システム ディスクのトラブルシューティング
 
@@ -40,14 +40,14 @@ ms.locfileid: "81459892"
 
 | command | メモ |
 |---|---|
-| [az vm show](https://docs.microsoft.com/cli/azure/vm) | 仮想マシンの一覧を返します。 このサンプルでは、仮想マシンのオペレーティング システム ディスクを返すクエリ オプションを使用しています。 返された値は、変数名 "uri" に追加されます。 |
-| [az vm delete](https://docs.microsoft.com/cli/azure/vm) | 仮想マシンを削除します。 |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm) | 仮想マシンを作成します。  |
-| [az vm disk attach](https://docs.microsoft.com/cli/azure/vm/disk) | ディスクを仮想マシンに接続します。 |
-| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm) | 仮想マシンの IP アドレスを返します。 |
+| [az vm show](/cli/azure/vm) | 仮想マシンの一覧を返します。 このサンプルでは、仮想マシンのオペレーティング システム ディスクを返すクエリ オプションを使用しています。 返された値は、変数名 "uri" に追加されます。 |
+| [az vm delete](/cli/azure/vm) | 仮想マシンを削除します。 |
+| [az vm create](/cli/azure/vm) | 仮想マシンを作成します。  |
+| [az vm disk attach](/cli/azure/vm/disk) | ディスクを仮想マシンに接続します。 |
+| [az vm list-ip-addresses](/cli/azure/vm) | 仮想マシンの IP アドレスを返します。 |
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
 その他の仮想マシン用の CLI サンプル スクリプトは、[Azure Linux VM のドキュメント](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)のページにあります。

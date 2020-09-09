@@ -11,21 +11,19 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 181e8192170cd7394d6817edd655f4e8257b48a4
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 9f20da2d2ecb4426c0deb1c01591ead5933090f6
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654037"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716998"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Azure Active Directory を使用してオンプレミスのリソースへのパスワードなしのセキュリティ キー サインイン (プレビュー) を有効にする
 
 このドキュメントでは、**Azure AD 参加済み**と**ハイブリッド Azure AD 参加済み**の両方の Windows 10 デバイスがある環境での、オンプレミスのリソースに対するパスワードレス認証の有効化に注目します。 この機能により、Microsoft と互換性のあるセキュリティ キーを使用した、オンプレミスのリソースへのシームレスなシングル サインオン (SSO) が可能になります。
 
-|     |
-| --- |
-| FIDO2 セキュリティ キーは、Azure Active Directory のパブリック プレビュー機能です。 プレビューの詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください|
-|     |
+> [!NOTE]
+> FIDO2 セキュリティ キーは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ## <a name="sso-to-on-premises-resources-using-fido2-keys"></a>FIDO2 キーを使用したオンプレミスのリソースへの SSO
 
@@ -50,7 +48,7 @@ Azure AD Kerberos サーバー オブジェクトがオンプレミスの Active
 
 - デバイスで Windows 10 Insider Build 18945 以降を実行している必要があります。
 - [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) のバージョンは 1.4.32.0 以降である必要があります。
-  - 使用可能な Azure AD ハイブリッド認証オプションの詳細については、「[Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する](../../security/fundamentals/choose-ad-authn.md)」および「[Azure AD Connect で使用するインストールの種類の選択](../hybrid/how-to-connect-install-select-installation.md)」を参照します。
+  - 使用可能な Azure AD ハイブリッド認証オプションの詳細については、「[Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する](../hybrid/choose-ad-authn.md)」および「[Azure AD Connect で使用するインストールの種類の選択](../hybrid/how-to-connect-install-select-installation.md)」を参照します。
 - Windows Server ドメイン コントローラーには、次の修正プログラムがインストールされている必要があります。
     - Windows Server 2016 の場合 - https://support.microsoft.com/help/4534307/windows-10-update-kb4534307
     - Windows Server 2019 の場合 - https://support.microsoft.com/help/4534321/windows-10-update-kb4534321

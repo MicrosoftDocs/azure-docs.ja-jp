@@ -6,16 +6,16 @@ keywords: お気に入り、ポータル
 author: mgblythe
 ms.author: mblythe
 ms.date: 12/20/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
-ms.openlocfilehash: d6b580accb02efb6a44c0c245af583d2e3850409
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 359a544df906a277a89333e3aee2f6203a707f8c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76310817"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764130"
 ---
 # <a name="add-remove-and-rearrange-favorites"></a>お気に入りの追加、削除、並べ替え
 

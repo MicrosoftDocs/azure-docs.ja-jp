@@ -8,15 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 07/27/2020
 ms.author: aahi
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: cc3f48ec1113f954336cfae0bda2cba2499d9a1d
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 2d81175c73928d25c06acb396dac587c7cc73637
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80240118"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88931184"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>クイック スタート:Text Analytics クライアント ライブラリを使用する
 
@@ -32,7 +33,7 @@ Text Analytics クライアント ライブラリを使って次のことを実�
 ::: zone pivot="programming-language-csharp"
 
 > [!IMPORTANT]
-> * Text Analytics API の最新のプレビュー バージョンは `3.0-preview` です。これには、強化された[感情分析](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)および[名前付きエンティティの認識 (NER)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) のパブリック プレビューが含まれています。 最新の安定バージョンは `2.1` です。
+> * Text Analytics API の最新の安定バージョンは `3.0` です。
 >    * 必ず、使用するバージョンの手順にのみ従ってください。
 > * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 運用環境のシナリオでは、パフォーマンスとスケーラビリティを確保するために、バッチ処理された非同期メソッドを使用することをお勧めします。 以下のリファレンス ドキュメントを参照してください。
 
@@ -43,7 +44,7 @@ Text Analytics クライアント ライブラリを使って次のことを実�
 ::: zone pivot="programming-language-java"
 
 > [!IMPORTANT]
-> * このクイックスタートは、Text Analytics クライアント ライブラリのバージョン `3.0-preview` 専用です。これには、強化された[感情分析](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)および[名前付きエンティティの認識 (NER)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) のパブリック プレビューが含まれています。
+> * Text Analytics API の最新の安定バージョンは `3.0` です。
 > * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 運用環境のシナリオでは、パフォーマンスとスケーラビリティを確保するために、バッチ処理された非同期メソッドを使用することをお勧めします。 以下のリファレンス ドキュメントを参照してください。
 
 [!INCLUDE [Java quickstart](../includes/quickstarts/java-sdk.md)]
@@ -53,7 +54,7 @@ Text Analytics クライアント ライブラリを使って次のことを実�
 ::: zone pivot="programming-language-javascript"
 
 > [!IMPORTANT]
-> * Text Analytics API の最新のプレビュー バージョンは `3.0-preview` です。これには、強化された[感情分析](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)および[名前付きエンティティの認識 (NER)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) のパブリック プレビューが含まれています。 最新の安定バージョンは `2.1` です。
+> * Text Analytics API の最新の安定バージョンは `3.0` です。
 >    * 必ず、使用するバージョンの手順にのみ従ってください。
 > * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 運用環境のシナリオでは、パフォーマンスとスケーラビリティを確保するために、バッチ処理された非同期メソッドを使用することをお勧めします。 以下のリファレンス ドキュメントを参照してください。
 > * このバージョンの Text Analytics クライアント ライブラリは、[お使いのブラウザー](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Bundling.md)でも実行できます。
@@ -65,7 +66,7 @@ Text Analytics クライアント ライブラリを使って次のことを実�
 ::: zone pivot="programming-language-python"
 
 > [!IMPORTANT]
-> * Text Analytics API の最新のプレビュー バージョンは `3.0-preview` です。これには、強化された[感情分析](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)および[名前付きエンティティの認識 (NER)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) のパブリック プレビューが含まれています。 最新の安定バージョンは `2.1` です。
+> * Text Analytics API の最新の安定バージョンは `3.0` です。
 >    * 必ず、使用するバージョンの手順にのみ従ってください。
 > * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 運用環境のシナリオでは、パフォーマンスとスケーラビリティを確保するために、バッチ処理された非同期メソッドを使用することをお勧めします。 以下のリファレンス ドキュメントを参照してください。 
 

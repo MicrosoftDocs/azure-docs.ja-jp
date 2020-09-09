@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 2a64f42c8672972939bb2870ba40876e5cc8d855
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8942e9180e87552ec64e0e848751f492778c9993
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591949"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131659"
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>トラブルシューティング:Azure で仮想ネットワークを削除できない
 
@@ -88,7 +88,9 @@ Azure Active Directory ドメイン サービスが有効になっていて仮�
 
 仮想ネットワークが移行の途中で停止していると、削除できません。 次のコマンドを実行して移行を中止してから、仮想ネットワークを削除します。
 
-    Move-AzureVirtualNetwork -VirtualNetworkName "Name" -Abort
+```azurepowershell
+Move-AzureVirtualNetwork -VirtualNetworkName "Name" -Abort
+```
 
 ## <a name="next-steps"></a>次のステップ
 

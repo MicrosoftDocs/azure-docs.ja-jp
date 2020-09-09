@@ -3,20 +3,20 @@ title: 新しいデータに対して ML パイプラインをトリガーする
 titleSuffix: Azure Machine Learning
 description: Azure Logic Apps を使用して ML パイプラインの実行をトリガーする方法について説明します。
 services: machine-learning
-author: sanpil
-ms.author: sanpil
+author: NilsPohlmann
+ms.author: nilsp
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
-ms.topic: conceptual
 ms.date: 02/07/2020
-ms.custom: contperfq4
-ms.openlocfilehash: 32b3e153a98ca7de91e0dd05258414780b39dec4
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.topic: conceptual
+ms.custom: how-to, contperfq4
+ms.openlocfilehash: 6d54945ce026f91b27ce31ba82ada1b0cc49a260
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857964"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324252"
 ---
 # <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>ロジック アプリから Machine Learning パイプラインの実行をトリガーする
 

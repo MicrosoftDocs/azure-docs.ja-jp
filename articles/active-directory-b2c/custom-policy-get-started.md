@@ -7,16 +7,17 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/28/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 856bd6c2a3546a438293e89a0b576e1392d9c6a5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 54d92da469625a3b81d0027558ec14166d916b80
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81407288"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163188"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのカスタム ポリシーの概要
 
@@ -74,22 +75,9 @@ Azure AD B2C では、ローカル アカウントでのユーザーのサイン
 
 ### <a name="register-the-identityexperienceframework-application"></a>IdentityExperienceFramework アプリケーションを登録します
 
-アプリケーションを Azure AD B2C テナントに登録するには、**アプリの登録 (レガシ)** エクスペリエンス、または新しく統合された**アプリの登録 (プレビュー)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregintro)。
+Azure AD B2C テナントにアプリケーションを登録するには、**アプリの登録**エクスペリエンスを使用できます。
 
-#### <a name="applications"></a>[アプリケーション](#tab/applications/)
-
-1. [Azure portal](https://portal.azure.com) にサインインします。
-1. Azure portal で、 **[Azure Active Directory]** を検索して選択します。
-1. **[Azure Active Directory]** の概要メニューで、 **[管理]** から **[アプリの登録 (レガシ)]** を選択します。
-1. **[新しいアプリケーションの登録]** を選択します。
-1. **名前**には、`IdentityExperienceFramework`を入力します。
-1. **アプリケーションの種類**については、**Web アプリケーション/ API** を選択します。
-1. **サインオン URL** には、`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`を入力します。ここで、`your-tenant-name`は、Azure AD B2C テナント ドメイン名です。 ここでは、すべての URL で [b2clogin.com](b2clogin.md) を使用してください。
-1. **［作成］** を選択します 作成した後は、アプリケーション ID をコピーし、後で使用するために保存します。
-
-#### <a name="app-registrations-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
-
-1. **[アプリの登録 (プレビュー)]** 、 **[新規登録]** の順に選択します。
+1. **[アプリの登録]** を選択し、 **[新規登録]** を選択します。
 1. **名前**には、`IdentityExperienceFramework`を入力します。
 1. **[サポートされているアカウントの種類]** で、 **[この組織のディレクトリ内のアカウントのみ]** を選択します。
 1. **[リダイレクト URI]** で **[Web]** を選択し、「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`」と入力します。`your-tenant-name` は、Azure AD B2C テナント ドメイン名です。
@@ -99,7 +87,7 @@ Azure AD B2C では、ローカル アカウントでのユーザーのサイン
 
 次に、スコープを追加して API を公開します。
 
-1. **[管理]** の **[API の公開]** を選択します。
+1. 左側のメニューの **[管理]** で、 **[API の公開]** を選択します。
 1. **[スコープの追加]** 、 **[保存して続行]** の順に選択し、既定のアプリケーション ID URI をそのまま使用します。
 1. 次の値を入力して、ご自身の Azure AD B2C テナントでカスタム ポリシーの実行を許可するスコープを作成します。
     * **スコープ名**: `user_impersonation`
@@ -111,21 +99,7 @@ Azure AD B2C では、ローカル アカウントでのユーザーのサイン
 
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>ProxyIdentityExperienceFramework アプリケーションを登録する
 
-#### <a name="applications"></a>[アプリケーション](#tab/applications/)
-
-1. **[アプリの登録 (レガシ)]** で、 **[新しいアプリケーションの登録]** を選択します。
-1. **名前**には、`ProxyIdentityExperienceFramework`を入力します。
-1. **アプリケーションの種類**については、**ネイティブ**を選択します。
-1. **[リダイレクト URI]** に「`myapp://auth`」と入力します。
-1. **［作成］** を選択します 作成した後は、アプリケーション ID をコピーし、後で使用するために保存します。
-1. **[設定]** を選択し、 **[必要なアクセス許可]** を選択したら、 **[追加]** を選択します。
-1. **[API を選択します]** を選択し、**IdentityExperienceFramework** を検索して選択してから、 **[選択]** をクリックします。
-1. **[IdentityExperienceFramework にアクセスする]** の横のチェックボックスにチェックを入れて、 **[選択する]** をクリックし、 **[完了]** をクリックします。
-1. **[アクセス許可を付与する]** を選択したら、 **[はい]** を選択して確定します。
-
-#### <a name="app-registrations-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
-
-1. **[アプリの登録 (プレビュー)]** 、 **[新規登録]** の順に選択します。
+1. **[アプリの登録]** を選択し、 **[新規登録]** を選択します。
 1. **名前**には、`ProxyIdentityExperienceFramework`を入力します。
 1. **[サポートされているアカウントの種類]** で、 **[この組織のディレクトリ内のアカウントのみ]** を選択します。
 1. **[リダイレクト URI]** で、ドロップダウンを使用して **[パブリック クライアント/ネイティブ (モバイルとデスクトップ)]** を選択します。
@@ -136,14 +110,13 @@ Azure AD B2C では、ローカル アカウントでのユーザーのサイン
 
 次に、アプリケーションをパブリック クライアントとして扱うよう指定します。
 
-1. **[管理]** で、 **[認証]** を選択します。
-1. **[新しいエクスペリエンスを試す]** (表示されている場合) を選択します。
-1. **[詳細設定]** で、 **[アプリケーションは、パブリック クライアントとして扱います]** を有効にします ( **[はい]** を選択します)。
+1. 左側のメニューの **[管理]** セクションで、 **[認証]** を選択します。
+1. **[詳細設定]** で、 **[アプリケーションは、パブリック クライアントとして扱います]** を有効にします ( **[はい]** を選択します)。 **"allowPublicClient": true** がアプリケーション マニフェストで確実に設定されているようにします。 
 1. **[保存]** を選択します。
 
 次に、*IdentityExperienceFramework* 登録で前に公開した API スコープに、アクセス許可を付与します。
 
-1. **[管理]** の下にある **[API のアクセス許可]** を選択します。
+1. 左側のメニューの **[管理]** で、 **[API のアクセス許可]** を選択します。
 1. **[構成されたアクセス許可]** の下で **[アクセス許可の追加]** を選択します。
 1. **[自分の API]** タブ、**IdentityExperienceFramework** アプリケーションの順に選択します。
 1. **[アクセス許可]** で、前に定義した **[user_impersonation]** スコープを選択します。
@@ -151,7 +124,7 @@ Azure AD B2C では、ローカル アカウントでのユーザーのサイン
 1. **[<テナント名> に管理者の同意を与えます]** を選択します。
 1. 現在サインインしているお使いの管理者アカウントを選択するか、少なくとも*クラウド アプリケーション管理者* ロールが割り当てられているお使いの Azure AD B2C テナントのアカウントでサインインします。
 1. **[Accept]\(承認\)** を選択します。
-1. **[更新]** を選択し、両方のスコープの **[状態]** に、"... に付与されました" が表示されていることを確認します。 アクセス許可が反映されるまでに数分かかる場合があります。
+1. **[最新の情報に更新]** を選択した後、スコープの **[状態]** に、"... に付与されました" が表示されることを確認します (offline_access、openid、および user_impersonation)。 アクセス許可が反映されるまでに数分かかる場合があります。
 
 * * *
 
@@ -240,6 +213,6 @@ GitHub からカスタム ポリシー スターター パックを取得し、S
 
 ## <a name="next-steps"></a>次のステップ
 
-次に、ID プロバイダーとしての Azure Active Directory (Azure AD) の追加を試してください。 このファースト ステップ ガイドで使用したベース ファイルには、Azure AD などの他の ID プロバイダーを追加するために必要な内容の一部が既に含まれています。
+次に、ID プロバイダーとしての Azure Active Directory (Azure AD) の追加を試してください。 このファースト ステップ ガイドで使用したベース ファイルには、Azure AD などの他の ID プロバイダーを追加するために必要な内容の一部が既に含まれています。 ID プロバイダーとしての Azure AD の設定については、「[カスタム ポリシーを使用して Azure Active Directory B2C に Azure Active Directory アカウントでサインインするように設定する](identity-provider-azure-ad-single-tenant-custom.md)」を参照してください。 
 
-ID プロバイダーとしての Azure AD の設定については、「[カスタム ポリシーを使用して Azure Active Directory B2C に Azure Active Directory アカウントでサインインするように設定する](identity-provider-azure-ad-single-tenant-custom.md)」を参照してください。
+カスタム ポリシーを使用して ISV 統合を実装する方法の詳細については、Microsoft の[パートナー ギャラリー](partner-gallery.md)をご覧ください。 

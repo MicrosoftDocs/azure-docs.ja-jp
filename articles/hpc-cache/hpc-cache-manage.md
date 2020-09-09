@@ -1,21 +1,23 @@
 ---
 title: Azure HPC Cache を管理して更新する
-description: Azure portal を使用して Azure HPC Cache を管理および更新する方法
+description: Azure portal または Azure CLI を使用して Azure HPC Cache を管理および更新する方法
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
-ms.date: 1/29/2020
-ms.author: rohogue
-ms.openlocfilehash: 57d6a2024cd6fd979426ca5de5e261f110f6156f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 07/08/2020
+ms.author: v-erkel
+ms.openlocfilehash: 66b084cca3d1cd54362a538423988755a3d31ced
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537952"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497227"
 ---
-# <a name="manage-your-cache-from-the-azure-portal"></a>Azure portal からキャッシュを管理する
+# <a name="manage-your-cache"></a>キャッシュを管理する
 
 Azure portal のキャッシュの概要ページには、お使いのキャッシュに関して、プロジェクトの詳細、キャッシュの状態、基本的な統計が表示されます。 キャッシュの停止または開始、キャッシュの削除、長期ストレージへのデータのフラッシュ、ソフトウェア更新を行うためのコントロールも用意されています。
+
+この記事では、Azure CLI を使用してこれらの基本的なタスクを実行する方法についても説明します。
 
 概要ページを開くには、Azure portal でお使いのキャッシュのリソースを選択します。 たとえば、 **[すべてのリソース]** ページを読み込んで、キャッシュ名をクリックします。
 
@@ -23,7 +25,7 @@ Azure portal のキャッシュの概要ページには、お使いのキャッ�
 
 ページの上部のボタンは、キャッシュを管理する助けになります。
 
-* **[開始]** と [ **[停止]** ](#stop-the-cache) - キャッシュ操作を中断します
+* **[開始]** と [ **[停止]** ](#stop-the-cache) - キャッシュ操作を再開または中断します
 * [ **[フラッシュ]** ](#flush-cached-data) - 変更されたデータをストレージ ターゲットに書き込みます
 * [ **[フラッシュ]** ](#upgrade-cache-software) - キャッシュ ソフトウェアを更新します
 * **[最新の情報に更新]** - 概要ページを再読み込みします
@@ -31,11 +33,17 @@ Azure portal のキャッシュの概要ページには、お使いのキャッ�
 
 これらのオプションの詳細については、以下をご覧ください。
 
+キャッシュ管理タスクをデモンストレーションする[ビデオ](https://azure.microsoft.com/resources/videos/managing-hpc-cache/)を視聴するには、次の画像をクリックしてください。
+
+[![ビデオのサムネイル:Azure HPC Cache:管理 (クリックしてビデオ ページにアクセス)](media/video-5-manage.png)](https://azure.microsoft.com/resources/videos/managing-hpc-cache/)
+
 ## <a name="stop-the-cache"></a>キャッシュを停止する
 
 キャッシュを停止して、アクティブでない期間中のコストを削減することができます。 キャッシュが停止している間はアップタイムに対して課金されませんが、キャッシュの割り当て済みディスク ストレージに対しては課金されます。 (詳細については、[価格](https://aka.ms/hpc-cache-pricing)のページを参照してください。)
 
 停止したキャッシュはクライアント要求に応答しません。 キャッシュを停止する前に、クライアントのマウントを解除する必要があります。
+
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 **[停止]** ボタンで、アクティブなキャッシュが中断されます。 **[停止]** ボタンは、キャッシュの状態が **[正常]** または **[低下]** の場合に使用できます。
 
@@ -47,6 +55,42 @@ Azure portal のキャッシュの概要ページには、お使いのキャッ�
 
 ![[開始] が強調表示されている上部のボタンのスクリーンショット](media/start-cache.png)
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+
+[az hpc-cache stop](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-stop) コマンドを使用して、一時的にキャッシュを一時停止します。 このアクションが有効になるのは、キャッシュの状態が **[正常]** または **[低下]** の場合のみです。
+
+停止するまで、キャッシュの内容がストレージ ターゲットに自動的にフラッシュされます。 この処理には時間がかかることがありますが、データの一貫性が確保されます。
+
+アクションが完了すると、キャッシュの状態が **[Stopped]\(停止\)** に変わります。
+
+停止しているキャッシュを再アクティブ化するには、[az hpc-cache start](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-start) を使用します。
+
+開始コマンドまたは停止コマンドを実行すると、操作が完了するまでコマンド ラインに "Running" というステータス メッセージが表示されます。
+
+```azurecli
+$ az hpc-cache start --name doc-cache0629
+ - Running ..
+```
+
+完了すると、メッセージが "Finished" に更新され、リターン コードとその他の情報が表示されます。
+
+```azurecli
+$ az hpc-cache start --name doc-cache0629
+{- Finished ..
+  "endTime": "2020-07-01T18:46:43.6862478+00:00",
+  "name": "c48d320f-f5f5-40ab-8b25-0ac065984f62",
+  "properties": {
+    "output": "success"
+  },
+  "startTime": "2020-07-01T18:40:28.5468983+00:00",
+  "status": "Succeeded"
+}
+```
+
+---
+
 ## <a name="flush-cached-data"></a>キャッシュ データをフラッシュする
 
 概要ページの **[フラッシュ]** ボタンは、キャッシュに格納されている変更されたすべてのデータを、バックエンド ストレージ ターゲットに直ちに書き込むようにキャッシュに指示します。 キャッシュはデータをストレージ ターゲットに定期的に保存するため、バックエンド ストレージ システムが最新の状態であることを確認する場合を除き、これを手動で行う必要はありません。 たとえば、ストレージのスナップショットを取ったり、データ セットのサイズを調べたりする前に **[フラッシュ]** を使用することがあります。
@@ -54,13 +98,47 @@ Azure portal のキャッシュの概要ページには、お使いのキャッ�
 > [!NOTE]
 > フラッシュ プロセスの間、キャッシュはクライアント要求を処理できません。 キャッシュ アクセスは一時停止され、操作の完了後に再開されます。
 
-![[フラッシュ] が強調表示された一番上のボタンと、フラッシュ アクションが記述され、 [はい] (既定) および [いいえ] ボタンで '続行しますか?' とたずねているポップアップ メッセージのスクリーンショット](media/hpc-cache-flush.png)
-
 キャッシュのフラッシュ操作を開始すると、キャッシュはクライアント要求の受け付けを停止し、概要ページのキャッシュの状態は **[Flashing] (フラッシュ中)** に変わります。
 
 キャッシュ内のデータは、適切なストレージ ターゲットに保存されます。 フラッシュする必要があるデータの量によっては、このプロセスに数分または 1 時間以上かかることがあります。
 
 すべてのデータがストレージ ターゲットに保存された後、キャッシュは再度、クライアント要求の取得を自動的に開始します。 キャッシュの状態は **[正常]** に戻ります。
+
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+キャッシュをフラッシュするには、 **[フラッシュ]** ボタンをクリックし、 **[はい]** をクリックして操作を確定します。
+
+![[フラッシュ] が強調表示された一番上のボタンと、フラッシュ アクションが記述され、 [はい] (既定) および [いいえ] ボタンで '続行しますか?' とたずねているポップアップ メッセージのスクリーンショット](media/hpc-cache-flush.png)
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+
+[az hpc-cache flush](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-flush) を使用して、すべての変更されたデータをキャッシュからストレージ ターゲットに書き込むよう強制します。
+
+例:
+
+```azurecli
+$ az hpc-cache flush --name doc-cache0629 --resource-group doc-rg
+ - Running ..
+```
+
+フラッシュが完了すると、成功メッセージが返されます。
+
+```azurecli
+{- Finished ..
+  "endTime": "2020-07-09T17:26:13.9371983+00:00",
+  "name": "c22f8e12-fcf0-49e5-b897-6a6e579b6489",
+  "properties": {
+    "output": "success"
+  },
+  "startTime": "2020-07-09T17:25:21.4278297+00:00",
+  "status": "Succeeded"
+}
+$
+```
+
+---
 
 ## <a name="upgrade-cache-software"></a>キャッシュ ソフトウェアをアップグレードする
 
@@ -76,7 +154,48 @@ Azure portal のキャッシュの概要ページには、お使いのキャッ�
 
 有効期限が切れ、お使いのキャッシュが停止している場合、次回の起動時にキャッシュによってソフトウェアが自動的にアップグレードされます。 (更新プログラムは直ちに開始されない場合もありますが、最初の 1 時間で開始されます)。
 
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
+
 **[アップグレード]** ボタンをクリックしてソフトウェアの更新を開始します。 操作が完了するまで、キャッシュの状態は **[アップグレード中]** に変わります。
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+
+Azure CLI では、キャッシュの状態レポートの最後に新しいソフトウェア情報が含まれています。 (確認するには、[az hpc-cache show](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-show) を使用します。)メッセージで "upgradeStatus" という文字列を探します。
+
+[az hpc-cache upgrade-firmware](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-upgrade-firmware) を使用して、更新プログラム (存在する場合) を適用します。
+
+利用可能な更新プログラムがない場合、この操作による影響はありません。
+
+この例では、キャッシュの状態 (利用可能な更新プログラムが無い) と、upgrade-firmware コマンドの結果を示します。
+
+```azurecli
+$ az hpc-cache show --name doc-cache0629
+{
+  "cacheSizeGb": 3072,
+  "health": {
+    "state": "Healthy",
+    "statusDescription": "The cache is in Running state"
+  },
+
+<...>
+
+  "tags": null,
+  "type": "Microsoft.StorageCache/caches",
+  "upgradeStatus": {
+    "currentFirmwareVersion": "5.3.61",
+    "firmwareUpdateDeadline": "0001-01-01T00:00:00+00:00",
+    "firmwareUpdateStatus": "unavailable",
+    "lastFirmwareUpdate": "2020-06-29T22:18:32.004822+00:00",
+    "pendingFirmwareVersion": null
+  }
+}
+$ az hpc-cache upgrade-firmware --name doc-cache0629
+$
+```
+
+---
 
 ## <a name="delete-the-cache"></a>キャッシュの削除
 
@@ -87,7 +206,35 @@ Azure portal のキャッシュの概要ページには、お使いのキャッ�
 > [!NOTE]
 > Azure HPC Cache は、キャッシュを削除する前に、変更されたデータをキャッシュからバックエンド ストレージ システムに自動的に書き込みません。
 >
-> キャッシュ内のすべてのデータが長期ストレージに書き込まれるようにするには、[キャッシュを停止](#stop-the-cache)してから、削除します。 [削除] ボタンをクリックする前に、ステータス **[Stopped]\(停止\)** が表示されていることを確認します。
+> キャッシュ内のすべてのデータが長期ストレージに書き込まれるようにするには、[キャッシュを停止](#stop-the-cache)してから、削除します。 削除する前に、ステータス **[Stopped]\(停止\)** が表示されていることを確認します。
+
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+キャッシュを停止した後、 **[削除]** ボタンをクリックしてキャッシュを完全に削除します。
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+
+キャッシュを完全に削除するには、Azure CLI コマンド [az hpc-cache delete](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-delete) を使用します。
+
+例:
+```azurecli
+$ az hpc-cache delete --name doc-cache0629
+ - Running ..
+
+<...>
+
+{- Finished ..
+  "endTime": "2020-07-09T22:24:35.1605019+00:00",
+  "name": "7d3cd0ba-11b3-4180-8298-d9cafc9f22c1",
+  "startTime": "2020-07-09T22:13:32.0732892+00:00",
+  "status": "Succeeded"
+}
+$
+```
+
+---
 
 ## <a name="cache-metrics-and-monitoring"></a>キャッシュのメトリックと監視
 

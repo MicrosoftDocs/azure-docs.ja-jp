@@ -89,7 +89,7 @@ ms.locfileid: "83124909"
 
 ### <a name="changing-scale-set-properties-to-use-the-managed-disk-image"></a>マネージド ディスク イメージを使用するようにスケール セット プロパティを変更する
 
-スケール セット `imageReference` の `storageProfile` で、発行元、プラン、SKU、およびプラットフォーム イメージのバージョンを指定する代わりに、`id` リソースの `Microsoft.Compute/images` を指定します。
+スケール セット `storageProfile` の `imageReference` で、発行元、プラン、SKU、およびプラットフォーム イメージのバージョンを指定する代わりに、`Microsoft.Compute/images` リソースの `id` を指定します。
 
 ```json
          "virtualMachineProfile": {

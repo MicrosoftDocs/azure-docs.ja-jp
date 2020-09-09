@@ -8,32 +8,24 @@ ms.topic: conceptual
 description: Azure Dev Spaces と Azure Kubernetes Services を使用して、ビジネス継続性の提供とディザスター リカバリーの準備を行う方法について説明します
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 37c0048bfa7e72b25eb56603fc027045eba25cea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4e47d4b05dedb981d55c527f76ae1c3a120f23d0
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78295829"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232425"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Azure Dev Spaces での事業継続とディザスター リカバリー
 
 ## <a name="review-disaster-recovery-guidance-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のディザスター リカバリー ガイダンスを確認する
 
-Azure Dev Spaces は Azure Kubernetes Service (AKS) の機能です。 AKS でのディザスター リカバリーのガイドラインを理解し、お客様が Dev Spaces に使用する AKS クラスターにそれらが当てはまるかどうかを検討する必要があります。 詳細については、「[Azure Kubernetes Service (AKS) での事業継続とディザスター リカバリーに関するベスト プラクティス](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region)」を参照してください。
+Azure Dev Spaces は Azure Kubernetes Service (AKS) の機能です。 AKS でのディザスター リカバリーのガイドラインを理解し、お客様が Dev Spaces に使用する AKS クラスターにそれらが当てはまるかどうかを検討する必要があります。 詳細については、「[Azure Kubernetes Service (AKS) での事業継続とディザスター リカバリーに関するベスト プラクティス](../../aks/operator-best-practices-multi-region.md)」を参照してください。
 
 ## <a name="enable-dev-spaces-on-aks-clusters-in-different-regions"></a>異なるリージョンの AKS クラスターで Dev Spaces を有効にする
 
 異なるリージョンの AKS クラスターで Dev Spaces を有効にすると、1 つの Azure リージョンで障害が発生した直後に Dev Spaces の使用を再開できます。
 
-AKS の複数リージョンのデプロイの概要については、「[複数リージョンへのデプロイを計画する](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment)」を参照してください。
-
-### <a name="enable-dev-spaces-via-the-azure-portal"></a>Azure portal を使用して Dev Spaces を有効にする
-
-Azure portal で各クラスターの設定にある **[Dev Spaces]** メニュー項目を選択します。 次に、Dev Spaces を有効にするオプションを選択して保存します。
-
-![Azure portal による Dev Spaces の有効化](../media/common/enable-dev-spaces.jpg)
-
-各クラスターに対してこの手順を繰り返します。
+AKS の複数リージョンのデプロイの概要については、「[複数リージョンへのデプロイを計画する](../../aks/operator-best-practices-multi-region.md#plan-for-multiregion-deployment)」を参照してください。
 
 ### <a name="enable-dev-spaces-via-the-azure-cli"></a>Azure CLI を使用して Dev Spaces を有効にする
 

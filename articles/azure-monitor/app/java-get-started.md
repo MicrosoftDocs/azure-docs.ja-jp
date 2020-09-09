@@ -3,14 +3,15 @@ title: クイック スタート:Azure Application Insights を使用した Java
 description: 'Application Insights を使用した Java Web アプリのアプリケーション パフォーマンス監視 '
 ms.topic: conceptual
 author: lgayhardt
+ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: e56ba304d197984110de5127a0f163ac0accf1aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 464bf650cbcaa99e947a21f5a87a5872f7b11178
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537510"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326921"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>クイック スタート:Java Web プロジェクトで Application Insights を使う
 
@@ -131,7 +132,7 @@ Application Insights SDK は、次の順序でキーを探します。
 2. 環境変数:APPINSIGHTS_INSTRUMENTATIONKEY
 3. 構成ファイル:*ApplicationInsights.xml*
 
-これは [コードで設定する](../../azure-monitor/app/api-custom-events-metrics.md#ikey)こともできます。
+これは [コードで設定する](./api-custom-events-metrics.md#ikey)こともできます。
 
 ```java
     String instrumentationKey = "00000000-0000-0000-0000-000000000000";
@@ -172,7 +173,7 @@ HTTP 要求データが概要ブレードに表示されます (表示されな�
 ![特定のサンプル ビューをドリルダウンする](./media/java-get-started/007-instance.png)
 
 ### <a name="analytics-powerful-query-language"></a>Analytics:強力なクエリ言語
-より多くのデータが蓄積されると、データを集計するためのクエリと、個々のインスタンスを検索するためのクエリの両方を実行できます。  [Analytics](../../azure-monitor/app/analytics.md) は、パフォーマンスと使用状況を把握したり、診断を行ったりするための強力なツールです。
+より多くのデータが蓄積されると、データを集計するためのクエリと、個々のインスタンスを検索するためのクエリの両方を実行できます。  [Analytics](../log-query/log-query-overview.md) は、パフォーマンスと使用状況を把握したり、診断を行ったりするための強力なツールです。
 
 ![Example of Analytics](./media/java-get-started/0025.png)
 
@@ -264,7 +265,7 @@ Application Insights Java SDK では、[W3C 分散トレース](https://w3c.gith
   * `tabular`: パフォーマンス カウンター データは、テーブル行形式です。
 
 #### <a name="windows-performance-counters"></a>Windows パフォーマンス カウンター
-それぞれの [Windows パフォーマンス カウンター](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx) は、(フィールドがクラスのメンバーであるのと同様に) カテゴリのメンバーです。 カテゴリについては、グローバルに設定することも、数字または名前付きインスタンスを設定することもできます。
+それぞれの [Windows パフォーマンス カウンター](/windows/win32/perfctrs/performance-counters-portal) は、(フィールドがクラスのメンバーであるのと同様に) カテゴリのメンバーです。 カテゴリについては、グローバルに設定することも、数字または名前付きインスタンスを設定することもできます。
 
 ```XML
     <PerformanceCounters>
@@ -307,16 +308,17 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 * [依存関係の呼び出しを監視する](java-agent.md)
 * [Unix パフォーマンス カウンターを監視する](java-collectd.md)
 * [Web ページに監視機能](javascript.md)を追加して、ページの読み込み時間、AJAX 呼び出し、ブラウザーの例外を監視する
-* [カスタム テレメトリ](../../azure-monitor/app/api-custom-events-metrics.md)を書き込んで、ブラウザーまたはサーバーでの使用状況を追跡する
-* [Analytics](../../azure-monitor/app/analytics.md) を使用して、アプリからのテレメトリに対して強力なクエリを実行する
+* [カスタム テレメトリ](./api-custom-events-metrics.md)を書き込んで、ブラウザーまたはサーバーでの使用状況を追跡する
+* [Analytics](../log-query/log-query-overview.md) を使用して、アプリからのテレメトリに対して強力なクエリを実行する
 * 詳細については、「[Azure for Java developers (Java 開発者向けの Azure)](/java/azure)」を参照してください。
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[apiexceptions]: ../../azure-monitor/app/api-custom-events-metrics.md#trackexception
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
+[api]: ./api-custom-events-metrics.md
+[apiexceptions]: ./api-custom-events-metrics.md#trackexception
+[availability]: ./monitor-web-app-availability.md
+[diagnostic]: ./diagnostic-search.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../../azure-monitor/platform/metrics-charts.md
+[metrics]: ../platform/metrics-charts.md
 [usage]: javascript.md
+

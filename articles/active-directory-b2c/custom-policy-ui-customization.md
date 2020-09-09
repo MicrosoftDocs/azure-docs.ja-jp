@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e50d6d0623e87dfa68a7cc9744c3f595ff0179c6
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: cb833ff35dae4fe1c0c27204ec66fa6b4cdb82c7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396378"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388886"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする
 
@@ -85,7 +85,7 @@ Azure AD B2C カスタム ポリシーを使用して、URL パスまたはク�
 
 クエリ文字列パラメーターを送信するには、[証明書利用者ポリシー](relyingparty.md)内で、次に示すように `ContentDefinitionParameters` 要素を追加します。
 
-```XML
+```xml
 <RelyingParty>
     <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
     <UserJourneyBehaviors>
@@ -101,7 +101,7 @@ Azure AD B2C カスタム ポリシーを使用して、URL パスまたはク�
 
 コンテンツ定義内で、`LoadUri` の値を `https://<app_name>.azurewebsites.net/home/unified` に変更します。 カスタム ポリシー `ContentDefinition` は、次のコード スニペットのようになります。
 
-```XML
+```xml
 <ContentDefinition Id="api.signuporsignin">
   <LoadUri>https://<app_name>.azurewebsites.net/home/unified</LoadUri>
   ...
@@ -118,7 +118,7 @@ https://<app_name>.azurewebsites.net/home/unified?campaignId=123&lang=fr&appId=f
 
 使用されるパラメータ―に基づいて、さまざまな場所からコンテンツを取得できます。 CORS 対応エンドポイントでは、コンテンツをホストするようにフォルダー構造を設定します。 たとえば、次の構造でコンテンツを整理することができます。 ルートの "*フォルダー/言語ごとのフォルダー/お使いの html ファイル*" です。 たとえば、カスタム ページ URI は次のようになります。
 
-```XML
+```xml
 <ContentDefinition Id="api.signuporsignin">
   <LoadUri>https://contoso.blob.core.windows.net/{Culture:LanguageName}/myHTML/unified.html</LoadUri>
   ...

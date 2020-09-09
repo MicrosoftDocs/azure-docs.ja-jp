@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f04bd7788a9cc9657e14aedfb153182d6e53eb95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb64a84388a370e77f39369f78c3086ec1cd00ec
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229695"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798348"
 ---
 # <a name="view-custom-role-assignments-in-azure-active-directory"></a>Azure Active Directory でカスタム ロールの割り当てを表示する
 
@@ -39,7 +39,7 @@ ms.locfileid: "79229695"
 
 ## <a name="view-role-assignments-using-azure-ad-powershell"></a>Azure AD PowerShell を使用してロールの割り当てを表示する
 
-このセクションでは、組織全体のスコープを使用してロールの割り当てを表示する方法について説明します。 この記事では、[Azure Active Directory PowerShell バージョン 2](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#directory_roles) モジュールを使います。 PowerShell を使用して単一アプリケーションのスコープを表示するには、[PowerShell を使用したカスタム ロールの割り当て](roles-assign-powershell.md)に関するページのコマンドレットを使用できます。
+このセクションでは、組織全体のスコープを使用してロールの割り当てを表示する方法について説明します。 この記事では、[Azure Active Directory PowerShell バージョン 2](/powershell/module/azuread/?view=azureadps-2.0#directory_roles) モジュールを使います。 PowerShell を使用して単一アプリケーションのスコープを表示するには、[PowerShell を使用したカスタム ロールの割り当て](roles-assign-powershell.md)に関するページのコマンドレットを使用できます。
 
 ### <a name="prepare-powershell"></a>PowerShell を準備する
 

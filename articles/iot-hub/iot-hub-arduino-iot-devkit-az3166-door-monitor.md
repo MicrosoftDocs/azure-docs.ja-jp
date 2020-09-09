@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: 6bebe8ac6b9869466938600d6267fd0062c84477
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dae797e73d52391288a5e8b7cf4a5c6ab2a122fc
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75977295"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337876"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>ドア モニター -- Azure Functions と SendGrid を使用して、ドアが開いたときに電子メールを送信する           
 
@@ -197,7 +197,4 @@ DevKit が再起動され、コードの実行が開始されます。
 
 ## <a name="next-steps"></a>次のステップ
 
-ここでは、DevKit デバイスを Azure IoT リモート監視ソリューション アクセラレータに接続し、SendGrid サービスを使用して電子メールを送信する方法について学習しました。 推奨される次の手順は以下のとおりです。
-
-* [Azure IoT リモート監視ソリューション アクセラレータの概要](https://docs.microsoft.com/azure/iot-suite/)
-* [MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する](/azure/iot-central/core/howto-connect-devkit)
+ここでは、DevKit デバイスを Azure IoT リモート監視ソリューション アクセラレータに接続し、SendGrid サービスを使用して電子メールを送信する方法について学習しました。 推奨される次のステップは以下のとおりです。[Azure IoT リモート監視ソリューション アクセラレータの概要](https://docs.microsoft.com/azure/iot-suite/)

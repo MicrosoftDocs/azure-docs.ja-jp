@@ -24,27 +24,6 @@
       items:
         - name: Helm を使用した開発
           href: quickstart-helm.md
-        - name: Azure Dev Spaces
-          expanded: true
-          items:
-            - name: チーム開発に Azure Dev Spaces を使用する
-              href: ../dev-spaces/quickstart-team-development.md
-              maintainContext: true
-            - name: Visual Studio Code の使用
-              href: ../dev-spaces/quickstart-netcore.md
-              maintainContext: true
-            - name: Visual Studio を使用する
-              href: ../dev-spaces/quickstart-netcore-visualstudio.md
-              maintainContext: true
-            - name: CLI の使用
-              href: ../dev-spaces/quickstart-cli.md
-              maintainContext: true
-            - name: Azure Dev Spaces で Java を使用する
-              href: ../dev-spaces/quickstart-java.md
-              maintainContext: true
-            - name: Azure Dev Spaces で Node.js を使用する
-              href: ../dev-spaces/quickstart-nodejs.md
-              maintainContext: true
 - name: チュートリアル
   items:
     - name: 1 - AKS 用にアプリケーションを準備する
@@ -61,20 +40,19 @@
       href: tutorial-kubernetes-app-update.md
     - name: 7 - クラスターをアップグレードする
       href: tutorial-kubernetes-upgrade-cluster.md
-- name: サンプル
-  items:
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: クラスターとワークロード
       href: concepts-clusters-workloads.md
     - name: アクセスと ID
       href: concepts-identity.md
-    - name: Security
-      href: concepts-security.md
-      items: null
+    - name: セキュリティ
+      items:
+        - name: アプリケーションとクラスターのセキュリティ
+          href: concepts-security.md
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
     - name: ネットワーク
       href: concepts-network.md
     - name: ストレージ
@@ -87,6 +65,9 @@
       items:
         - name: 概要
           href: best-practices.md
+        - name: AKS クラスターのベースライン アーキテクチャ
+          href: /azure/architecture/reference-architectures/containers/aks/secure-baseline-aks/
+          maintainContext: true
         - name: クラスター オペレーター向け
           items:
             - name: マルチ テナントとクラスター分離
@@ -116,13 +97,35 @@
     - name: クォータと地域の制限
       href: quotas-skus-regions.md
     - name: AKS への移行
-      href: aks-migration.md
+      items:
+        - name: 移行の計画と実施
+          href: aks-migration.md
+        - name: Spring Boot
+          href: /azure/developer/java/migration/migrate-spring-boot-to-azure-kubernetes-service
+          maintainContext: false
+        - name: Tomcat
+          href: /azure/developer/java/migration/migrate-tomcat-to-containers-on-azure-kubernetes-service
+          maintainContext: false
+        - name: WildFly
+          href: /azure/developer/java/migration/migrate-wildfly-to-wildfly-on-azure-kubernetes-service
+          maintainContext: false
+        - name: WebLogic
+          href: /azure/developer/java/migration/migrate-weblogic-to-wildfly-on-azure-kubernetes-service
+          maintainContext: false
+        - name: WebSphere
+          href: /azure/developer/java/migration/migrate-websphere-to-wildfly-on-azure-kubernetes-service
+          maintainContext: false
+        - name: JBoss EAP
+          href: /azure/developer/java/migration/migrate-jboss-eap-to-wildfly-on-azure-kubernetes-service
+          maintainContext: false
     - name: サポートされている Kubernetes バージョン
       href: supported-kubernetes-versions.md
     - name: ホスト OS でのセキュリティ強化
       href: security-hardened-vm-host-image.md
     - name: Azure Kubernetes Service 診断の概要
       href: concepts-diagnostics.md
+    - name: 持続可能なソフトウェア エンジニアリング
+      href: concepts-sustainable-software-engineering.md
 - name: 操作方法ガイド
   items:
     - name: クラスターの操作
@@ -133,6 +136,10 @@
           href: upgrade-cluster.md
         - name: アップタイム SLA を使用する
           href: uptime-sla.md
+        - name: 近接配置グループの使用 (プレビュー)
+          href: reduce-latency-ppg.md
+        - name: ノード イメージのアップグレード
+          href: node-image-upgrade.md
         - name: ノードの OS の更新プログラムの処理
           href: node-updates-kured.md
         - name: AKS クラスターの構成
@@ -160,6 +167,8 @@
         - name: Terraform を使用した AKS のデプロイ
           href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
           maintainContext: true
+        - name: Kubernetes リソース ビューアーの使用 (プレビュー)
+          href: kubernetes-portal.md
         - name: Kubernetes ダッシュボードの使用
           href: kubernetes-dashboard.md
     - name: データ ボリュームの構成
@@ -176,6 +185,16 @@
           href: azure-nfs-volume.md
         - name: Azure NetApp Files
           href: azure-netapp-files.md
+        - name: Azure Ultra Disks の使用 (プレビュー)
+          href: use-ultra-disks.md
+        - name: CSI ストレージ ドライバー
+          items:
+            - name: CSI ストレージ ドライバーを有効にする (プレビュー)
+              href: csi-storage-drivers.md
+            - name: Azure Disk CSI ドライバー (プレビュー)
+              href: azure-disk-csi.md
+            - name: Azure Files CSI ドライバー (プレビュー)
+              href: azure-files-csi.md
     - name: ネットワークを構成する
       items:
         - name: 既存の仮想ネットワークの作成または使用
@@ -188,8 +207,6 @@
           href: internal-lb.md
         - name: Standard Load Balancer の使用
           href: load-balancer-standard.md
-        - name: ユーザー定義ルートをエグレスに使用する
-          href: egress-outboundtype.md
         - name: 静的 IP アドレスの使用
           href: static-ip.md
         - name: イングレス
@@ -200,6 +217,9 @@
               href: http-application-routing.md
             - name: 内部ネットワークの使用
               href: ingress-internal-ip.md
+            - name: 既存の AKS クラスターの AGIC アドオンを有効にする
+              href: ../application-gateway/tutorial-ingress-controller-add-on-existing.md
+              maintainContext: true
             - name: 独自の証明書での TLS の使用
               href: ingress-own-tls.md
             - name: Let's Encrypt での TLS の使用
@@ -208,8 +228,14 @@
                   href: ingress-tls.md
                 - name: 静的パブリック IP アドレスの使用
                   href: ingress-static-ip.md
-        - name: エグレス トラフィック
-          href: egress.md
+        - name: エグレス
+          items:
+            - name: クラスターのエグレス トラフィックの制限および制御
+              href: limit-egress-traffic.md
+            - name: ユーザー定義ルートをエグレスに使用する
+              href: egress-outboundtype.md
+            - name: 基本的なロード バランサーと静的 IP アドレスを使用する
+              href: egress.md
         - name: CoreDNS のカスタマイズ
           href: coredns-custom.md
     - name: セキュリティと認証
@@ -222,6 +248,8 @@
           href: control-kubeconfig-access.md
         - name: ネットワーク ポリシーによるポッドのトラフィックのセキュリティ保護
           href: use-network-policies.md
+        - name: Azure Policy を使用したポッドのセキュリティ保護 (プレビュー)
+          href: use-pod-security-on-azure-policy.md
         - name: ポッド セキュリティ ポリシーの使用 (プレビュー)
           href: use-pod-security-policies.md
         - name: API サーバーの許可された IP 範囲の定義
@@ -230,16 +258,14 @@
           href: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/aks/toc.json
         - name: クラスターの資格情報を更新する
           href: update-credentials.md
-        - name: クラスターのエグレス トラフィックの制限および制御
-          href: limit-egress-traffic.md
         - name: Azure Active Directory の統合の有効化
           items:
-            - name: Azure AD の統合 (プレビュー)
+            - name: AKS マネージド Azure AD
               href: managed-aad.md
-            - name: Azure CLI の使用
+            - name: Azure AD 統合 (レガシ)
               href: azure-ad-integration-cli.md
-            - name: Azure ポータルの使用
-              href: azure-ad-integration.md
+        - name: Kubernetes 承認での Azure RBAC の使用 (プレビュー)
+          href: manage-azure-rbac.md
         - name: Azure AD の統合での Kubernetes RBAC の使用
           href: azure-ad-rbac.md
           maintainContext: true
@@ -249,6 +275,8 @@
           href: private-clusters.md
         - name: ディスクの BYOK
           href: azure-disk-customer-managed-keys.md
+        - name: ホストベースの暗号化の有効化
+          href: enable-host-encryption.md
     - name: 監視およびログ記録
       items:
         - name: コンテナーに対する Azure Monitor
@@ -269,64 +297,18 @@
           href: windows-container-powershell.md
         - name: リモート接続
           href: rdp.md
-        - name: 既知の制限事項
-          href: windows-node-limitations.md
+        - name: Windows Server コンテナー FAQ
+          href: windows-faq.md
         - name: Kubernetes ダッシュボードの使用
           href: kubernetes-dashboard.md
         - name: Windows Server コンテナー用の Dockerfile の作成
-          href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/manage-windows-dockerfile?context=/azure/aks/context/aks-context'
+          href: /virtualization/windowscontainers/manage-docker/manage-windows-dockerfile?context=/azure/aks/context/aks-context
         - name: Windows Server コンテナー用の Dockerfile の最適化
-          href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context'
+          href: /virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context
     - name: アプリケーションの開発と実行
       items:
-        - name: Dev Spaces を使用した開発
-          href: ../dev-spaces/azure-dev-spaces.md
-          maintainContext: true
-          items:
-            - name: Java (VS Code と CLI)
-              items:
-                - name: 1 - はじめに
-                  href: ../dev-spaces/get-started-java.md
-                  maintainContext: true
-                - name: 2 - マルチサービス開発
-                  href: ../dev-spaces/multi-service-java.md
-                  maintainContext: true
-                - name: 3 - チーム開発
-                  href: ../dev-spaces/team-development-java.md
-                  maintainContext: true
-            - name: .NET Core (VS Code と CLI)
-              items:
-                - name: 1 - はじめに
-                  href: ../dev-spaces/get-started-netcore.md
-                  maintainContext: true
-                - name: 2 - マルチサービス開発
-                  href: ../dev-spaces/multi-service-netcore.md
-                  maintainContext: true
-                - name: 3 - チーム開発
-                  href: ../dev-spaces/team-development-netcore.md
-                  maintainContext: true
-            - name: .NET Core (Visual Studio 2017)
-              items:
-                - name: 1 - はじめに
-                  href: ../dev-spaces/get-started-netcore-visualstudio.md
-                  maintainContext: true
-                - name: 2 - マルチサービス開発
-                  href: ../dev-spaces/multi-service-netcore-visualstudio.md
-                  maintainContext: true
-                - name: 3 - チーム開発
-                  href: ../dev-spaces/team-development-netcore-visualstudio.md
-                  maintainContext: true
-            - name: Node.js (VS Code と CLI)
-              items:
-                - name: 1 - はじめに
-                  href: ../dev-spaces/get-started-nodejs.md
-                  maintainContext: true
-                - name: 2 - マルチサービス開発
-                  href: ../dev-spaces/multi-service-nodejs.md
-                  maintainContext: true
-                - name: 3 - チーム開発
-                  href: ../dev-spaces/team-development-nodejs.md
-                  maintainContext: true
+        - name: Visual Studio Code を使用して Local Process with Kubernetes を利用する (プレビュー)
+          href: 'https://code.visualstudio.com/docs/containers/local-process-kubernetes'
         - name: 既存のアプリケーションを Helm でインストールする
           href: kubernetes-helm.md
         - name: OpenFaaS の使用
@@ -389,6 +371,8 @@
           href: ssh.md
         - name: Linux のパフォーマンス ツール
           href: troubleshoot-linux.md
+        - name: Resource Health のイベントを確認する (プレビュー)
+          href: aks-resource-health.md
 - name: リファレンス
   items:
     - name: Azure CLI
@@ -396,7 +380,7 @@
     - name: REST
       href: /rest/api/aks
     - name: PowerShell
-      href: '/powershell/module/az.aks#aks'
+      href: /powershell/module/az.aks#aks
     - name: .NET
       href: /dotnet/api/overview/azure/containerservice
     - name: Python
@@ -407,6 +391,9 @@
       href: /javascript/api/overview/azure/container-service
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.containerservice/managedclusters
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける
@@ -417,10 +404,10 @@
       href: 'https://azure.microsoft.com/pricing/details/container-service/'
     - name: サポート ポリシー
       href: support-policies.md
-    - name: ロードマップ
+    - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: 製品フィードバックの提供
-      href: 'https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks'
+    - name: AKS のロードマップ
+      href: 'https://github.com/Azure/AKS/projects/1'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-container-service'
     - name: ビデオ

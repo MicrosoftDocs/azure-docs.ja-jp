@@ -1,31 +1,32 @@
 ---
 title: クイックスタート - Node.js を使用して Azure Cosmos DB の SQL API アカウントからクエリを実行する
 description: Azure Cosmos DB の SQL API アカウントに接続してデータを照会するアプリを Node.js で作成する方法について説明します。
-author: deborahc
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 02/26/2020
-ms.author: dech
-ms.openlocfilehash: 0b29f9c1f395e079c97d5877d08bd7bd73c7ea53
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 8ec5562af254aa1bcdb030057f61db496a17826b
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80240311"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423390"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>クイック スタート:Node.js を使用して Azure Cosmos DB の SQL API アカウントに接続してデータを照会する
 
 > [!div class="op_single_selector"]
 > - [.NET V3](create-sql-api-dotnet.md)
 > - [.NET V4](create-sql-api-dotnet-V4.md)
-> - [Java](create-sql-api-java.md)
+> - [Java SDK v4](create-sql-api-java.md)
 > - [Node.js](create-sql-api-nodejs.md)
 > - [Python](create-sql-api-python.md)
 > - [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-このクイックスタートでは、Azure portal から Azure Cosmos DB のSQL API アカウントを作成して管理し、また GitHub からクローンされた Node.js アプリを使用します。 Azure Cosmos DB は、マルチモデル データベース サービスです。グローバルな分散と水平方向のスケーリング機能により、ドキュメント データベースやテーブル データベース、キーと値のデータベース、グラフ データベースをすばやく作成し、クエリを実行することができます。
+このクイックスタートでは、Azure portal から Azure Cosmos DB のSQL API アカウントを作成して管理し、また GitHub から複製された Node.js アプリを使用します。 Azure Cosmos DB は、マルチモデル データベース サービスです。グローバルな分散と水平方向のスケーリング機能により、ドキュメント データベースやテーブル データベース、キーと値のデータベース、グラフ データベースをすばやく作成し、クエリを実行することができます。
 
 ## <a name="walkthrough-video"></a>チュートリアル ビデオ
 
@@ -59,7 +60,7 @@ Azure portal でデータ エクスプローラー ツールを使用してデ�
 
    **[コンテナーの追加]** 領域が右端に表示されます。表示するには、右へスクロールする必要がある場合があります。
 
-   ![Azure portal の [データ エクスプローラー] の [コンテナーの追加] ウィンドウ](./media/create-sql-api-nodejs/azure-cosmosdb-data-explorer.png)
+   :::image type="content" source="./media/create-sql-api-nodejs/azure-cosmosdb-data-explorer.png" alt-text="Azure portal の [データ エクスプローラー] の [コンテナーの追加] ウィンドウ":::
 
 2. **[コンテナーの追加]** ページで、新しいコンテナーの設定を入力します。
 
@@ -82,9 +83,9 @@ Azure portal でデータ エクスプローラー ツールを使用してデ�
 
 [!INCLUDE [cosmos-db-create-sql-api-query-data](../../includes/cosmos-db-create-sql-api-query-data.md)]
 
-## <a name="clone-the-sample-application"></a>サンプル アプリケーションのクローン
+## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
-ここで、GitHub から Node.js アプリのクローンを作成し、接続文字列を設定して実行します。
+ここで、GitHub から Node.js アプリの複製を作成し、接続文字列を設定して実行します。
 
 1. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
 
@@ -175,7 +176,7 @@ npm install @azure/cosmos
 
 1. [Azure portal](https://portal.azure.com/) の Azure Cosmos DB アカウントで、左のナビゲーションの **[キー]** を選択してから **[読み取り/書き込みキー]** を選択します。 次の手順では、画面の右側にあるコピー ボタンを使用して、URI と主キーを _app.js_ ファイルにコピーします。
 
-   ![Azure Portal の [キー] ブレードでアクセス キーを表示およびコピーする](./media/create-sql-api-dotnet/keys.png)
+   :::image type="content" source="./media/create-sql-api-dotnet/keys.png" alt-text="Azure portal の [キー] ブレードでアクセス キーを表示およびコピーする":::
 
 2. _config.js_ ファイルを開きます。
 

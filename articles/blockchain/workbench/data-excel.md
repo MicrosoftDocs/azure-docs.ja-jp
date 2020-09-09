@@ -2,14 +2,14 @@
 title: Microsoft Excel で Azure Blockchain Workbench データを使用する
 description: Microsoft Excel で Azure Blockchain Workbench Preview SQL DB のデータを読み込んで表示する方法を説明します。
 ms.date: 09/05/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: mmercuri
-ms.openlocfilehash: a84858ead83782cc9b6ef1b1d7f905172600fb8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4dd941abdded6a93510f4a71119769cd73855bcc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74326044"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253547"
 ---
 # <a name="view-azure-blockchain-workbench-data-with-microsoft-excel"></a>Microsoft Excel で Azure Blockchain Workbench データを表示する
 
@@ -27,7 +27,7 @@ Blockchain Workbench データベースに接続する手順は次の通りで�
 2. **データ** タブで **Get Data** を選択します｡
 3. **From Azure** を選択して､**From Azure SQL Database** を選択します｡
 
-   ![Azure SQL データベースに接続する](./media/data-excel/connect-sql-db.png)
+   ![Azure SQL Database に接続する](./media/data-excel/connect-sql-db.png)
 
 4. **SQL Server database** ダイアログ ボックスで以下の操作を行います｡
 

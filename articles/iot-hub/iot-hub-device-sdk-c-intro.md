@@ -11,12 +11,14 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: a2c2a1d817dbe88bebc36f66b441e609b5faea2a
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: 3acac0c85aa6f3e3725dcf54a646f8ac16250e24
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629356"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324048"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>C 用 Azure IoT device SDK
 

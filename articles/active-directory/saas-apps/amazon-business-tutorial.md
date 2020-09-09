@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory と Amazon ビジネスの統合 | Microsoft Docs
 description: Azure Active Directory と Amazon ビジネスの間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b2597a66-afd9-4f11-b14b-646b597bb6c2
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7ac085beaa85a7ddf3a6c3bfc61820e8e5a63ea
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0db43f438eaff3e783b829eabe7152c5f13e943d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68496567"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548294"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>チュートリアル:Amazon ビジネスと Azure Active Directory の統合
 
@@ -85,26 +80,24 @@ Amazon ビジネスで Azure AD SSO を構成してテストするには、次�
 
     1. **[識別子 (エンティティ ID)]** ボックスに、次のいずれかのパターンを使用して URL を入力します。
     
-       | | |
+       | URL | リージョン |
        |-|-|
-       | `https://www.amazon.com`|
-       | `https://www.amazon.co.jp`|
-       | `https://www.amazon.de`|
+       | `https://www.amazon.com`| 北米 |
+       | `https://www.amazon.co.jp`| 東アジア |
+       | `https://www.amazon.de`| ヨーロッパ |
 
     1. **[応答 URL]** ボックスに、次のいずれかのパターンを使用して URL を入力します。
     
-       | | |
+       | URL | リージョン |
        |-|-|
-       | `https://www.amazon.com/bb/feature/sso/action/3p_redirect?idpid={idpid}`|
-       | `https://www.amazon.co.jp/bb/feature/sso/action/3p_redirect?idpid={idpid}`|
-       | `https://www.amazon.de/bb/feature/sso/action/3p_redirect?idpid={idpid}`|
+       | `https://www.amazon.com/bb/feature/sso/action/3p_redirect?idpid={idpid}`| 北米 |
+       | `https://www.amazon.co.jp/bb/feature/sso/action/3p_redirect?idpid={idpid}`| 東アジア |
+       | `https://www.amazon.de/bb/feature/sso/action/3p_redirect?idpid={idpid}`| ヨーロッパ |
 
        > [!NOTE]
        > 応答 URL 値は、実際の値ではありません。 実際の応答 URL でこの値を更新します。 `<idpid>` の値は、このチュートリアルで後述する「Amazon ビジネス SSO の構成」セクションで得られます。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
-
-    **[サインオン URL]** テキスト ボックスに URL として「`https://www.amazon.com/`」と入力します。
+1. **SP** 開始モードでアプリケーションを構成する場合は、Amazon ビジネスの構成に指定されている完全な URL を、 **[追加の URL を設定します]** セクションの **[サインオン URL]** に追加する必要があります。
 
 1. 次のスクリーンショットには、既定の属性一覧が示されています。 **[ユーザー属性と要求]** セクションで、 **[編集]** アイコンをクリックして、属性を編集します。
 
@@ -153,6 +146,9 @@ Amazon ビジネスで Azure AD SSO を構成してテストするには、次�
 1. **Set up SSO (SSO の設定)** ウィザードで、ご自分の組織の要件に従ってプロバイダーを選択し、 **[Next]\(次へ\)** をクリックします。
 
     ![既定のグループ](media/amazon-business-tutorial/default-group1.png)
+    
+    > [!NOTE]
+    > Microsoft ADFS はオプションとして表示されていますが、Azure AD SSO では機能しません。
 
 1. **New user account defaults (新しいユーザー アカウントの既定値)** ウィザードで、 **[Default Group]\(既定のグループ\)** を選択し、ご自分の組織内のユーザー ロールに従って **[Default Buying Role]\(既定の購入ロール\)** を選択し、 **[Next]\(次へ\)** をクリックします。
 
@@ -197,7 +193,12 @@ Amazon ビジネスで Azure AD SSO を構成してテストするには、次�
 1. 最後に、 **[SSO Connection details]\(SSO 接続の詳細\)** セクションで、 **[Status]\(状態\)** が **[Active]\(アクティブ\)** として表示されます。
 
     ![Connection](media/amazon-business-tutorial/sso-connection5.png)
-
+    
+    > [!NOTE]
+    > **SP** 開始モードでアプリケーションを構成する場合は、次の手順を実行して、上のスクリーンショットのサインオン URL を、Azure portal の **[追加の URL を設定します]** セクションの **[サインオン URL]** テキスト ボックスに貼り付けます。 次の形式を使用します。
+    >
+    > `https://www.amazon.<TLD>/bb/feature/sso/action/start?domain_hint=<uniqueid>`
+    
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。

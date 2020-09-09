@@ -15,18 +15,18 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: akjosh
-ms.openlocfilehash: bd9dc05a84a4ee54fce40e6c88e87ac90bfee8a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b3b6c9d5835f6d81ab8641d8a43fb7228b6b53ab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226819"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085641"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>VMAccess 拡張機能と Azure CLI を使用して、Linux VM 上の管理ユーザー、SSH を管理し、ディスクをチェックまたは修復する
 ## <a name="overview"></a>概要
 Linux VM 上のディスクがエラーを示しています。 何らかの理由で Linux VM の root パスワードをリセットしたか、誤って SSH 秘密キーを削除してしまいました。 これがかつてのデータ センターの時代で起きていたら、車で駆けつけ、KVM を開けて、サーバー コンソールにたどり着くことになっていたでしょう。 Azure VMAccess 拡張機能は、コンソールにアクセスして、Linux へのアクセスをリセットしたり、ディスク レベルの保守を実行したりできるその KVM スイッチとして考えてください。
 
-この記事では、Azure Resource Manager 仮想マシンで Azure VMAccess 拡張機能を使用して、Linux 上でのディスクのチェックや修復、ユーザー アクセスのリセット、管理ユーザー アカウントの管理、または SSH 構成の更新を行う方法について説明します。 クラシック仮想マシンを管理する必要がある場合は、[クラシック VM のドキュメント](../linux/classic/reset-access-classic.md)をご覧ください。 
+この記事では、Azure Resource Manager 仮想マシンで Azure VMAccess 拡張機能を使用して、Linux 上でのディスクのチェックや修復、ユーザー アクセスのリセット、管理ユーザー アカウントの管理、または SSH 構成の更新を行う方法について説明します。 クラシック仮想マシンを管理する必要がある場合は、[クラシック VM のドキュメント](/previous-versions/azure/virtual-machines/linux/classic/reset-access-classic)をご覧ください。 
  
 > [!NOTE]
 > AAD ログイン拡張機能のインストール後に、VMAccess 拡張機能を使用して VM のパスワードをリセットする場合は、AAD ログイン拡張機能を再度実行して、コンピューターの AAD ログインを再度有効にする必要があります。

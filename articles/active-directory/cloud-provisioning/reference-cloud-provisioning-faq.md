@@ -6,19 +6,19 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: overview
-ms.date: 02/26/2020
+ms.topic: reference
+ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbc1baa86bb81c8975587e84427a72ccc044805e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: efcf2df4e472d022fcdec0c9b7c69c73192c503f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77916576"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518472"
 ---
-# <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect に関する FAQ
+# <a name="azure-active-directory-connect-cloud-provisioning-faq"></a>Azure Active Directory Connect クラウド プロビジョニングに関する FAQ
 
 Azure Active Directory (Azure AD) Connect クラウド プロビジョニングに関してよく寄せられる質問をお読みください。
 
@@ -62,7 +62,7 @@ Azure AD Connect 同期では、プロビジョニングがオンプレミスの
 
 **Q:同期済みユーザーが次回ログオン時にパスワードの変更を要求される場合はどうなりますか?**
 
-クラウド プロビジョニングでパスワード ハッシュ同期が有効になっていて、同期済みユーザーがオンプレミス AD への次回ログオン時にパスワードの変更を要求される場合、変更予定のパスワード ハッシュは Azure AD にプロビジョニングされません。 ユーザーがパスワードを変更すると、ユーザー パスワード ハッシュが AD から Azure AD にプロビジョニングされます。
+クラウド プロビジョニングでパスワード ハッシュ同期が有効になっていて、同期済みユーザーがオンプレミス AD への次回ログオン時にパスワードを変更する必要が亜ある場合、"変更予定" のパスワード ハッシュは Azure AD にプロビジョニングされません。 ユーザーがパスワードを変更すると、ユーザー パスワード ハッシュが AD から Azure AD にプロビジョニングされます。
 
 **Q:クラウド プロビジョニングでは、オブジェクトの ms-ds-consistencyGUID の書き戻しがサポートされていますか?**
 
@@ -70,7 +70,7 @@ Azure AD Connect 同期では、プロビジョニングがオンプレミスの
 
 **Q:クラウド プロビジョニングを使用してユーザーをプロビジョニングしています。構成を削除しました。Azure AD に古い同期済みオブジェクトが表示されたままなのはなぜですか?** 
 
-構成を削除しても、Azure AD 内の同期済みオブジェクトがクラウド プロビジョニングによってクリーンアップされることはありません。 古いオブジェクトが表示されないようにするには、構成のスコープを空のグループまたは組織単位に変更します。 プロビジョニングが実行されてオブジェクトがクリーンアップされたら、構成を無効にして削除してください。 
+構成を削除しても、Azure AD 内の同期済みオブジェクトがクラウド プロビジョニングによって自動削除されることはありません。 古いオブジェクトが表示されないようにするには、構成のスコープを空のグループまたは組織単位に変更します。 プロビジョニングが実行されてオブジェクトがクリーンアップされたら、構成を無効にして削除してください。 
 
 **Q:Exchange ハイブリッドがサポートされないことには、どのような意味があるのですか?**
 
@@ -79,6 +79,10 @@ Exchange ハイブリッド展開機能を利用すると、オンプレミス�
 **Q:クラウド プロビジョニング エージェントを Windows Server Core にインストールすることはできますか?**
 
 いいえ。Server Core へのエージェントのインストールはサポートされません。
+
+**Q:クラウド プロビジョニング エージェントでステージング サーバーを使用できますか。**
+
+いいえ。ステージング サーバーはサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ 
 

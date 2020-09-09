@@ -5,14 +5,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: a7da6bc23d797e0e89b2338f446fc850b0fd0577
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: d143c9648f84dd0c8b45122cf2271539a0b9d1cf
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82794015"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086332"
 ---
 # <a name="optimize-apache-hbase-with-apache-ambari-in-azure-hdinsight"></a>Azure HDInsight で Apache Ambari を使用して Apache HBase を最適化する
 

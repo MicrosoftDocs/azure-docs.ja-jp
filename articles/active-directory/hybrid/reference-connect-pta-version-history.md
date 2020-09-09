@@ -12,12 +12,12 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75b127f8429650d46af9f171ed7ff03692f1499e
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 3e5e6afef70ee3d4f4d84cb6b867a916ae57da5a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81379898"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356306"
 ---
 # <a name="azure-ad-pass-through-authentication-agent-version-release-history"></a>Azure AD パススルー認証エージェント: バージョンのリリース履歴 
  

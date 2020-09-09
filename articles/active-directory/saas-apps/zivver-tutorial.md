@@ -2,25 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と ZIVVER の統合 | Microsoft Docs'
 description: Azure Active Directory と ZIVVER の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 64cb7ea0-df6c-4963-84d8-6f435980e2de
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 02b292c5db3d20f56d7b8291ea31d8da9863809b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3f55fed72d61597f61cb246c6c74d525b51702e8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74233255"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546037"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zivver"></a>チュートリアル: Azure Active Directory と ZIVVER の統合
 

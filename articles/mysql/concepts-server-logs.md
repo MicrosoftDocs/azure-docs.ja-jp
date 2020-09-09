@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 4/13/2020
 ms.openlocfilehash: f834ba3355d362e59e2e44f37eca0560b9bf4d7a
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81271983"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL での低速クエリ ログ

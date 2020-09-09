@@ -6,12 +6,12 @@ ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
-ms.openlocfilehash: 2eb1a016e04a4150a76112c68683926810f5c66d
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: fa834e3ac4946c4f617e857342f850445eebfd30
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674553"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055445"
 ---
 # <a name="quickstart-create-your-first-http-triggered-function-with-kotlin-and-intellij"></a>クイック スタート:Kotlin と IntelliJ を使用して、HTTP によってトリガーされる最初の関数を作成する
 
@@ -26,7 +26,7 @@ Kotlin と IntelliJ で関数を開発するには、次のソフトウェアを
 - [Java Developer Kit](https://aka.ms/azure-jdks) (JDK) バージョン 8
 - [Apache Maven](https://maven.apache.org) バージョン 3.0 以降
 - [IntelliJ IDEA](https://www.jetbrains.com/idea/download)、コミュニティまたは Maven が付属した Ultimate バージョン
-- [Azure CLI](https://docs.microsoft.com/cli/azure)
+- [Azure CLI](/cli/azure)
 - Azure Functions Core Tools の[バージョン 2.x](functions-run-local.md#v2)。 ここには、Azure Functions を記述、実行、デバッグするためのローカル開発環境が提供されます。
 
 > [!IMPORTANT]
@@ -45,7 +45,7 @@ Kotlin と IntelliJ で関数を開発するには、次のソフトウェアを
 1. **[OK]** を選択し、 **[次へ]** を選択します。
 1. 現在のプロジェクトの詳細を入力し、 **[完了]** を選択します。
 
-Maven は、_ArtifactId_ 値と同じ名前で新しいフォルダーにプロジェクト ファイルを作成します。 生成されるプロジェクトのコードは、トリガーする HTTP 要求の本文をエコーする、[HTTP によってトリガーされる](/azure/azure-functions/functions-bindings-http-webhook)単純な関数です。
+Maven は、_ArtifactId_ 値と同じ名前で新しいフォルダーにプロジェクト ファイルを作成します。 生成されるプロジェクトのコードは、トリガーする HTTP 要求の本文をエコーする、[HTTP によってトリガーされる](./functions-bindings-http-webhook.md)単純な関数です。
 
 ## <a name="run-functions-locally-in-the-ide"></a>IDE で関数をローカルで実行する
 

@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: ae27aba9fb6dc1421d224dab0c36373753acd5a2
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: f56d3a364e38d13931f8e07d749d3a5958dcee67
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690543"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322512"
 ---
 # <a name="integrating-azure-data-lake-storage-gen1-with-other-azure-services"></a>Azure Data Lake Storage Gen1 と他の Azure サービスを統合する
 Azure Data Lake Storage Gen1 を他の Azure サービスと連携させれば、さまざまなシナリオが可能になります。 次の記事では、Data Lake Storage Gen1 と統合できるサービスについてまとめてあります。
@@ -39,7 +39,7 @@ Azure Data Factory を Data Lake Storage Gen1 と共に使用する方法につ�
 Azure Data Lake Storage Gen1 には、AdlCopy というコマンド ライン ツールがあります。このツールを使用すると、Azure Blob Storage のデータを Data Lake Storage Gen1 アカウントにコピーできます。 詳しくは、[Azure Storage Blob から Data Lake Storage Gen1 へのデータのコピー](data-lake-store-copy-data-azure-storage-blob.md)に関する記事をご覧ください。
 
 ## <a name="copy-data-between-azure-sql-database-and-data-lake-storage-gen1"></a>Azure SQL Database と Data Lake Storage Gen1 の間でデータをコピーする
-Apache Sqoop を使用して Azure SQL Database と Data Lake Storage Gen1 の間でデータのインポートおよびエクスポートを行うことができます。 詳しくは、[Sqoop を使用した Data Lake Storage Gen1 と Azure SQL データベースの間のデータのコピー](data-lake-store-data-transfer-sql-sqoop.md)に関する記事をご覧ください。
+Apache Sqoop を使用して Azure SQL Database と Data Lake Storage Gen1 の間でデータのインポートおよびエクスポートを行うことができます。 詳細については、[Sqoop を使用した Data Lake Storage Gen1 と Azure SQL Database の間のデータのコピー](data-lake-store-data-transfer-sql-sqoop.md)に関する記事を参照してください。
 
 ## <a name="use-data-lake-storage-gen1-with-stream-analytics"></a>Data Lake Storage Gen1 を Stream Analytics と共に使用する
 Azure Stream Analytics を使用してストリーミングされたデータを保存する場合は、出力の 1 つとして Data Lake Storage Gen1 を使用できます。 詳しくは、[Azure Stream Analytics を使用した Azure Storage Blob から Data Lake Storage Gen1 へのデータ ストリーム](data-lake-store-stream-analytics.md)に関する記事をご覧ください。

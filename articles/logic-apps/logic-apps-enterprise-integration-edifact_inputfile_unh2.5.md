@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/27/2017
-ms.openlocfilehash: ad50cbb423f8c60f1caad159bc1a20cf96ed98aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c6d95cb938a341b94a32989e82c42d37956c0a80
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74792542"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179846"
 ---
 # <a name="handle-edifact-documents-with-unh25-segments-in-azure-logic-apps"></a>Azure Logic Apps で UNH 2.5 セグメントを使用して EDIFACT メッセージを処理する
 
@@ -56,8 +56,6 @@ EDIFACT ドキュメント内に UNH2.5 セグメントが存在する場合、�
 1. 統合アカウントにスキーマを追加します。
 
 1. EDIFACT 契約の送信の設定でスキーマを構成します。
-
-1. EDIFACT アグリーメントを選択して **[JSON として編集]** をクリックします。  送信契約の **schemaReferences** で UNH2.5 値を追加します。
 
 1. EDIFACT 契約を選択し、 **[JSON として編集]** を選択します。 送信契約の `schemaReferences` セクションに UNH2.5 値を追加します。
 

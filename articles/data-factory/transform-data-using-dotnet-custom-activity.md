@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
 ms.openlocfilehash: 74e381a9ad32acdaa8cbb719824d74ca6d339f30
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418951"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84019964"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Azure Data Factory パイプラインでカスタム アクティビティを使用する
 

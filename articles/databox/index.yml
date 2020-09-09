@@ -3,7 +3,7 @@ title: Azure Data Box のドキュメント - オフライン転送
 summary: 時間、ネットワーク、またはコストが限られている場合は、オフライン データ転送用の Azure Data Box デバイスを使用します。 ご利用のデータ サイズに応じて、Data Box Disk、Data Box、Data Box Heavy の中から選択します。
 metadata:
   title: Azure Data Box のドキュメント - オフライン転送
-  description: 時間、ネットワーク、またはコストが限られている場合は、Azure へのオフライン データ転送に Data Box デバイスを使用します。
+  description: クラウドへのオフライン データ移行用の記憶装置である Azure Data Box について説明します。 セキュリティで保護された専用記憶装置を使用するデータ転送サービスについて説明します。
   services: databox
   ms.service: databox
   ms.subservice: pod
@@ -12,12 +12,14 @@ metadata:
   author: alkohli
   ms.author: alkohli
   ms.date: 08/16/2019
-  ms.openlocfilehash: 2c42ee93804eb1e0e24b0b67925a092cc8517ceb
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.custom: seo-azure-migrate
+  keywords: cloud data transfer, data migration to cloud, azure data box, data transfer service, data transfer services, azure data transfer
+  ms.openlocfilehash: be5571d44f86d5ba12f604088ca5aab19a973b85
+  ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "69650367"
+  ms.lasthandoff: 08/31/2020
+  ms.locfileid: "89177076"
 landingContent:
 - title: Data Box ファミリについて
   linkLists:
@@ -33,7 +35,7 @@ landingContent:
     links:
     - text: Azure のデータ転送オプションの選択
       url: /azure/storage/common/storage-choose-data-transfer-solution
-- title: はじめに
+- title: 作業開始
   linkLists:
   - linkListType: quickstart
     links:
@@ -77,7 +79,7 @@ landingContent:
       url: data-box-portal-ui-admin.md
     - text: Data Box Heavy (Azure 内)
       url: data-box-portal-admin.md
-- title: '[トラブルシューティング]'
+- title: トラブルシューティング
   linkLists:
   - linkListType: how-to-guide
     links:

@@ -10,13 +10,13 @@ ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
-ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 93ec5e740ac6acf9420a9d980092ed772ac1618e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: dcbaaeb2868a421a41227e1b5d9fdd84a96248eb
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76720981"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852363"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Azure Machine Learning Python クライアント ライブラリを使って Python のデータ セットにアクセスする
 Microsoft Azure Machine Learning Python クライアント ライブラリのプレビューは、ローカルの Python 環境から Azure Machine Learning データセットへの安全なアクセスを確立し、ワークスペースにおけるデータセットを作成して管理できるようにします。
@@ -40,21 +40,26 @@ Python クライアント ライブラリは、次の環境でテストされて
 * python-dateutil
 * pandas
 
-[Anaconda](http://continuum.io/downloads#all)、[Canopy](https://store.enthought.com/downloads/) などの Python ディストリビューションを使用し、Python、IPython、また上述の 3 つのパッケージをインストールすることを推奨します。 IPython は厳密には必要ありませんが、データをインタラクティブに操作して視覚化する優れた環境になります。
+[Anaconda](https://www.anaconda.com/)、[Canopy](https://store.enthought.com/downloads/) などの Python ディストリビューションを使用し、Python、IPython、また上述の 3 つのパッケージをインストールすることを推奨します。 IPython は厳密には必要ありませんが、データをインタラクティブに操作して視覚化する優れた環境になります。
 
 ### <a name="how-to-install-the-azure-machine-learning-python-client-library"></a><a name="installation"></a>Azure Machine Learning Python クライアント ライブラリをインストールする方法
 このトピックで説明されているタスクを完了するには、Azure Machine Learning Python クライアント ライブラリをインストールします。 このライブラリは、[Python Package Index](https://pypi.python.org/pypi/azureml) から入手できます。 ご利用の Python 環境にインストールするには、ローカルの Python 環境から次のコマンドを実行します。
 
-    pip install azureml
+```console
+pip install azureml
+```
 
 代わりに、[GitHub](https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python) からソースをダウンロードしてインストールすることもできます。
 
-    python setup.py install
+```console
+python setup.py install
+```
 
 コンピューターに git をインストールしていれば、git リポジトリから直接 pip を使ってインストールできます。
 
-    pip install git+https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python.git
-
+```console
+pip install git+https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python.git
+```
 
 ## <a name="use-code-snippets-to-access-datasets"></a><a name="datasetAccess"></a>を使ってデータ セットにアクセスする
 Python クライアント ライブラリを使うと、実行している実験から既存のデータ セットへプログラムでアクセスできるようになります。
@@ -143,98 +148,119 @@ Machine Learning Studio (クラシック) で実験が実行されると、モ�
 ### <a name="workspace"></a>ワークスペース
 ワークスペースは、Python クライアント ライブラリのエントリ ポイントです。 `Workspace` クラスに自分のワークスペース ID と認証トークンを指定し、インスタンスを作成します。
 
-    ws = Workspace(workspace_id='4c29e1adeba2e5a7cbeb0e4f4adfb4df',
-                   authorization_token='f4f3ade2c6aefdb1afb043cd8bcf3daf')
-
+```python
+ws = Workspace(workspace_id='4c29e1adeba2e5a7cbeb0e4f4adfb4df',
+               authorization_token='f4f3ade2c6aefdb1afb043cd8bcf3daf')
+```
 
 ### <a name="enumerate-datasets"></a>データセットを列挙する
 特定のワークスペースですべてのデータセットを列挙するには:
 
-    for ds in ws.datasets:
-        print(ds.name)
+```python
+for ds in ws.datasets:
+    print(ds.name)
+```
 
 ユーザーが作成したデータセットのみを列挙するには:
 
-    for ds in ws.user_datasets:
-        print(ds.name)
+```python
+for ds in ws.user_datasets:
+    print(ds.name)
+```
 
 サンプルのデータセットのみを列挙するには:
 
-    for ds in ws.example_datasets:
-        print(ds.name)
+```python
+for ds in ws.example_datasets:
+    print(ds.name)
+```
 
 名前でデータセットにアクセスするには (大文字小文字は区別されます):
 
-    ds = ws.datasets['my dataset name']
+```python
+ds = ws.datasets['my dataset name']
+```
 
 または、インデックスでアクセスするには:
 
-    ds = ws.datasets[0]
-
+```python
+ds = ws.datasets[0]
+```
 
 ### <a name="metadata"></a>メタデータ
 データセットには、コンテンツに加え、メタデータがあります (中間データセットはこのルールの例外であり、メタデータはありません)。
 
 作成時にユーザーが割り当てるメタデータの値の一部には次のものがあります。
 
-    print(ds.name)
-    print(ds.description)
-    print(ds.family_id)
-    print(ds.data_type_id)
+* `print(ds.name)`
+* `print(ds.description)`
+* `print(ds.family_id)`
+* `print(ds.data_type_id)`
 
 Azure ML によって割り当てられるその他の値には次のものがあります。
 
-    print(ds.id)
-    print(ds.created_date)
-    print(ds.size)
+* `print(ds.id)`
+* `print(ds.created_date)`
+* `print(ds.size)`
 
 使用できるメタデータの詳細については、 `SourceDataset` クラスをご覧ください。
 
 ### <a name="read-contents"></a>コンテンツを読み込む
 Machine Learning Studio (クラシック) で提供されるコード スニペットにより、データセットが自動的にダウンロードされ、pandas DataFrame オブジェクトに逆シリアル化されます。 これは次の `to_dataframe` メソッドで実行されます。
 
-    frame = ds.to_dataframe()
+```python
+frame = ds.to_dataframe()
+```
 
 生データをダウンロードして自分で逆シリアル化を実行する場合は、上記のようにします。 現時点では、Python クライアント ライブラリで逆シリアル化できない「ARFF」などの形式に対する唯一の方法になります。
 
 テキストとして内容を読み込むには:
 
-    text_data = ds.read_as_text()
+```python
+text_data = ds.read_as_text()
+```
 
 バイナリとして内容を読み込むには:
 
-    binary_data = ds.read_as_binary()
+```python
+binary_data = ds.read_as_binary()
+```
 
 内容にストリームを開くこともできます。
 
-    with ds.open() as file:
-        binary_data_chunk = file.read(1000)
-
+```python
+with ds.open() as file:
+    binary_data_chunk = file.read(1000)
+```
 
 ### <a name="create-a-new-dataset"></a>新しいデータセットを作成する
 Python クライアント ライブラリでは、Python プログラムからデータセットをアップロードできます。 これらのデータセットは、その後、ご利用のワークスペースで使用できます。
 
 pandas DataFrame にデータがある場合は、次のコードを使用します。
 
-    from azureml import DataTypeIds
+```python
+from azureml import DataTypeIds
 
-    dataset = ws.datasets.add_from_dataframe(
-        dataframe=frame,
-        data_type_id=DataTypeIds.GenericCSV,
-        name='my new dataset',
-        description='my description'
-    )
+dataset = ws.datasets.add_from_dataframe(
+    dataframe=frame,
+    data_type_id=DataTypeIds.GenericCSV,
+    name='my new dataset',
+    description='my description'
+)
+```
 
 ご利用のデータが既にシリアル化されている場合、次を使用できます。
 
-    from azureml import DataTypeIds
+```python
+from azureml import DataTypeIds
 
-    dataset = ws.datasets.add_from_raw_data(
-        raw_data=raw_data,
-        data_type_id=DataTypeIds.GenericCSV,
-        name='my new dataset',
-        description='my description'
-    )
+dataset = ws.datasets.add_from_raw_data(
+    raw_data=raw_data,
+    data_type_id=DataTypeIds.GenericCSV,
+    name='my new dataset',
+    description='my description'
+)
+```
 
 Python クライアント ライブラリは、pandas DataFrame を次の形式にシリアル化できます (`azureml.DataTypeIds` クラスの定数)。
 
@@ -249,66 +275,76 @@ Python クライアント ライブラリは、pandas DataFrame を次の形式�
 
 既存のデータセットを更新するには、まず既存のデータセットへの参照を取得する必要があります。
 
-    dataset = ws.datasets['existing dataset']
+```python
+dataset = ws.datasets['existing dataset']
 
-    print(dataset.data_type_id) # 'GenericCSV'
-    print(dataset.name)         # 'existing dataset'
-    print(dataset.description)  # 'data up to jan 2015'
+print(dataset.data_type_id) # 'GenericCSV'
+print(dataset.name)         # 'existing dataset'
+print(dataset.description)  # 'data up to jan 2015'
+```
 
 その後、 `update_from_dataframe` を使用してをシリアル化し、Azure のデータセットの内容を置き換えます。
 
-    dataset = ws.datasets['existing dataset']
+```python
+dataset = ws.datasets['existing dataset']
 
-    dataset.update_from_dataframe(frame2)
+dataset.update_from_dataframe(frame2)
 
-    print(dataset.data_type_id) # 'GenericCSV'
-    print(dataset.name)         # 'existing dataset'
-    print(dataset.description)  # 'data up to jan 2015'
+print(dataset.data_type_id) # 'GenericCSV'
+print(dataset.name)         # 'existing dataset'
+print(dataset.description)  # 'data up to jan 2015'
+```
 
 データを別の形式にシリアル化する場合は、省略可能な `data_type_id` パラメーターの値を指定します。
 
-    from azureml import DataTypeIds
+```python
+from azureml import DataTypeIds
 
-    dataset = ws.datasets['existing dataset']
+dataset = ws.datasets['existing dataset']
 
-    dataset.update_from_dataframe(
-        dataframe=frame2,
-        data_type_id=DataTypeIds.GenericTSV,
-    )
+dataset.update_from_dataframe(
+    dataframe=frame2,
+    data_type_id=DataTypeIds.GenericTSV,
+)
 
-    print(dataset.data_type_id) # 'GenericTSV'
-    print(dataset.name)         # 'existing dataset'
-    print(dataset.description)  # 'data up to jan 2015'
+print(dataset.data_type_id) # 'GenericTSV'
+print(dataset.name)         # 'existing dataset'
+print(dataset.description)  # 'data up to jan 2015'
+```
 
 `description` パラメーターの値を指定して、新しい説明をオプションで設定できます。
 
-    dataset = ws.datasets['existing dataset']
+```python
+dataset = ws.datasets['existing dataset']
 
-    dataset.update_from_dataframe(
-        dataframe=frame2,
-        description='data up to feb 2015',
-    )
+dataset.update_from_dataframe(
+    dataframe=frame2,
+    description='data up to feb 2015',
+)
 
-    print(dataset.data_type_id) # 'GenericCSV'
-    print(dataset.name)         # 'existing dataset'
-    print(dataset.description)  # 'data up to feb 2015'
+print(dataset.data_type_id) # 'GenericCSV'
+print(dataset.name)         # 'existing dataset'
+print(dataset.description)  # 'data up to feb 2015'
+```
 
 `name` パラメーターの値を指定して、新しい名前をオプションで設定できます。 その後は、新しい名前のみでデータセットを取得することになります。 次のコードを使用すると、データ、名前、説明を更新できます。
 
-    dataset = ws.datasets['existing dataset']
+```python
+dataset = ws.datasets['existing dataset']
 
-    dataset.update_from_dataframe(
-        dataframe=frame2,
-        name='existing dataset v2',
-        description='data up to feb 2015',
-    )
+dataset.update_from_dataframe(
+    dataframe=frame2,
+    name='existing dataset v2',
+    description='data up to feb 2015',
+)
 
-    print(dataset.data_type_id)                    # 'GenericCSV'
-    print(dataset.name)                            # 'existing dataset v2'
-    print(dataset.description)                     # 'data up to feb 2015'
+print(dataset.data_type_id)                    # 'GenericCSV'
+print(dataset.name)                            # 'existing dataset v2'
+print(dataset.description)                     # 'data up to feb 2015'
 
-    print(ws.datasets['existing dataset v2'].name) # 'existing dataset v2'
-    print(ws.datasets['existing dataset'].name)    # IndexError
+print(ws.datasets['existing dataset v2'].name) # 'existing dataset v2'
+print(ws.datasets['existing dataset'].name)    # IndexError
+```
 
 `data_type_id`、`name`、`description` のパラメーターはすべて省略可能で、前の値に対する既定値になります。 `dataframe` パラメーターは常に必要です。
 

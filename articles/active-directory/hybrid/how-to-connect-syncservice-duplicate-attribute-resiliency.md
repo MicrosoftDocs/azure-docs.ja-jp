@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5585f0cd04dca4145f0322db9d625e35372b24b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82632fb104438e1b5279b1525fbce2b6d8e7ceeb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78298345"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356884"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>ID 同期と重複属性の回復性
 重複属性の回復性は、Microsoft のいずれかの同期ツールを実行しているときに **UserPrincipalName** と SMTP **ProxyAddress** の競合によって引き起こされる不整合を避けるために Azure Active Directory に備えられている機能です。

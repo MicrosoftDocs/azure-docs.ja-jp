@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/30/2017
 ms.author: vikdesai
-ms.openlocfilehash: df63a6daabbb46201cc500701f3af23c05c0d9a5
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 68bd8ffab1c9b5992c8d608cbb00f2134796df3c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81759302"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502056"
 ---
-# <a name="save-costs-with-azure-reserved-vm-instances"></a>Azure Reserved VM Instances を使用してコストを削減する
+# <a name="save-costs-with-azure-reserved-vm-instances-linux"></a>Azure Reserved VM Instances を使用してコストを削減する (Linux)
 [!INCLUDE [virtual-machines-buy-compute-reservations](../../../includes/virtual-machines-common-prepay-reserved-vm-instances.md)]
 

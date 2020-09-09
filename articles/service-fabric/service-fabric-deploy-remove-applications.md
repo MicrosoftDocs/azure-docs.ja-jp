@@ -4,11 +4,11 @@ description: Azure Service Fabric でのアプリケーションの削除とデ�
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.openlocfilehash: e3fdd194f2949f1246e991968e02b3278f33f7db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236711"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84699840"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>PowerShell を使用してアプリケーションのデプロイと削除を実行する
 
@@ -64,7 +64,7 @@ Azure Active Directory、X509 証明書、Windows Active Directory で保護さ�
 
 アプリケーション パッケージは、[Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) コマンドでクラスター イメージ ストアにアップロードします。
 
-*MyApplication* という名前のアプリケーションを Visual Studio 2015 でビルドしてパッケージするとします。 ApplicationManifest.xml に既定で表示されるアプリケーション タイプ名は、"MyApplicationType" です。  アプリケーション パッケージ (必要なアプリケーション マニフェスト、サービス マニフェスト、コード/構成/データ パッケージを含む) は、*C:\Users\<username\>\Documents\Visual Studio 2015\Projects\MyApplication\MyApplication\pkg\Debug* にあります。 
+*MyApplication* という名前のアプリケーションを Visual Studio 2015 でビルドしてパッケージするとします。 ApplicationManifest.xml に既定で表示されるアプリケーション タイプ名は、"MyApplicationType" です。  アプリケーション パッケージ (必要なアプリケーション マニフェストとサービス マニフェスト、コード/構成/データ パッケージを含む) は、*C:\Users\<username\>\Documents\Visual Studio 2015\Projects\MyApplication\MyApplication\pkg\Debug* に格納されます。 
 
 アプリケーション パッケージの内容を一覧表示するには、次のコマンドを使用します。
 

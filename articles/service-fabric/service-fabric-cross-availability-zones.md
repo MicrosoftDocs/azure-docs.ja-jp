@@ -5,17 +5,17 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 6da9517f822c9c157d26a1bda8dab2c694b08b12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d763511032ebff9116702b1f649751a4b7b52afd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75609980"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518998"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Availability Zones をまたがる Azure Service Fabric クラスターのデプロイ
 Azure の Availability Zones は高可用性を備えたサービスで、アプリケーションとデータをデータセンターの障害から保護します。 可用性ゾーンは、Azure リージョン内に独立した電源、冷却手段、ネットワークを備えた一意の物理的な場所です。
 
-Service Fabric では、特定のゾーンに固定されるノード タイプをデプロイすることによって、Availability Zones をまたがるクラスターをサポートします。 これにより、アプリケーションの高可用性が確保されます。 Azure Availability Zones は一部のリージョンでのみ使用できます。 詳細については、「[Azure の Availability Zones の概要](https://docs.microsoft.com/azure/availability-zones/az-overview)」をご覧ください。
+Service Fabric では、特定のゾーンに固定されるノード タイプをデプロイすることによって、Availability Zones をまたがるクラスターをサポートします。 これにより、アプリケーションの高可用性が確保されます。 Azure Availability Zones は一部のリージョンでのみ使用できます。 詳細については、「[Azure の Availability Zones の概要](../availability-zones/az-overview.md)」をご覧ください。
 
 サンプル テンプレートを使用できます。[Service Fabric クロス可用性ゾーン テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates)
 
@@ -136,10 +136,14 @@ Availability Zones 間で分散された Service Fabric クラスターでは、
 ```
 
 ### <a name="standard-sku-load-balancer-outbound-rules"></a>Standard SKU Load Balancer のアウトバウンド規則
-Standard Load Balancer および Standard パブリック IP では、Basic SKU を使用する場合と比較して、アウトバウンド接続に新しい機能とさまざまな動作が導入されています。 Standard SKU を操作するときにアウトバウンド接続が必要な場合は、Standard パブリック IP アドレスまたは Standard パブリック Load Balancer で明示的に定義する必要があります。 詳細については、[アウトバウンド接続](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#snatexhaust)と [Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) に関するページを参照してください。
+Standard Load Balancer および Standard パブリック IP では、Basic SKU を使用する場合と比較して、アウトバウンド接続に新しい機能とさまざまな動作が導入されています。 Standard SKU を操作するときにアウトバウンド接続が必要な場合は、Standard パブリック IP アドレスまたは Standard パブリック Load Balancer で明示的に定義する必要があります。 詳細については、[アウトバウンド接続](../load-balancer/load-balancer-outbound-connections.md)と [Azure Standard Load Balancer](../load-balancer/load-balancer-overview.md) に関するページを参照してください。
 
 >[!NOTE]
 > 標準テンプレートでは、既定ですべてのアウトバウンド トラフィックを許可する NSG が参照されます。 インバウンド トラフィックは、Service Fabric 管理操作に必要なポートに制限されます。 NSG 規則は、要件に合わせて変更できます。
+
+>[!NOTE]
+> Standard SKU SLB を使用しているすべての Service Fabric クラスターでは、ポート 443 での送信トラフィックを許可する規則を確実に各ノード タイプに設定する必要があります。 これはクラスターの設定を完了するために必要であり、このルールのないデプロイは失敗します。
+
 
 ### <a name="enabling-zones-on-a-virtual-machine-scale-set"></a>仮想マシン スケール セットでのゾーンの有効化
 ゾーンを有効にするには、仮想マシン スケール セットで、仮想マシン スケール セット リソースに次の 3 つの値を含める必要があります。
@@ -166,7 +170,7 @@ Standard Load Balancer および Standard パブリック IP では、Basic SKU 
     "properties": {
         "type": "ServiceFabricNode",
         "autoUpgradeMinorVersion": false,
-        "publisher": "Microsoft.Azure.ServiceFabric.Test",
+        "publisher": "Microsoft.Azure.ServiceFabric",
         "settings": {
             "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
             "nodeTypeRef": "[parameters('vmNodeType1Name')]",

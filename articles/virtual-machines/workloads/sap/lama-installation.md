@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
 ms.openlocfilehash: fda62ff0af29c7cf681d9438b02420d299535701
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80293945"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Azure 用の SAP LaMa コネクタ
@@ -545,12 +545,12 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
     この問題を回避するには、SAP システムの既定のプロファイルでプロファイル パラメーター OS_UNICODE=uc を設定します。
 
 * SAPinst 手順の実行中のエラー: dCheckGivenServer
-  * SAPinst 手順の実行中のエラー: dCheckGivenServer" version="1.0" ERROR:(この手順から報告される最後のエラー: \<p> Installation was canceled by user. (インストールはユーザーによって取り消されました。 \</p>
+  * SAPinst 手順の実行中のエラー: dCheckGivenServer" version="1.0" ERROR:(この手順から報告される最後のエラー:\<p> インストールはユーザーによってキャンセルされました。 \</p>
   * 解決策  
     プロファイルへのアクセス権を持つユーザーによって SWPM が実行されていることを確認してください。 このユーザーはアプリケーション サーバーのインストール ウィザードで構成できます。
 
 * SAPinst 手順の実行中のエラー: checkClient
-  * SAPinst 手順の実行中のエラー: checkClient" version="1.0" ERROR:(この手順から報告される最後のエラー: \<p> Installation was canceled by user. (インストールはユーザーによって取り消されました。 \</p>)
+  * SAPinst 手順の実行中のエラー: checkClient" version="1.0" ERROR:(この手順から報告される最後のエラー:\<p> インストールはユーザーによってキャンセルされました。 \</p>)
   * 解決策  
     アプリケーション サーバーをインストールする仮想マシンに Microsoft ODBC Driver for SQL Server がインストールされていることを確認してください。
 

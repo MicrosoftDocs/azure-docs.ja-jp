@@ -9,13 +9,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/19/2018
-ms.openlocfilehash: 40b1b8d040c4b3ea76372920f88551fba35c5f26
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/30/2020
+ms.openlocfilehash: b65b5b847712ce32c6723d725be9cf2ed1f99050
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81419444"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801532"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Azure Data Factory を視覚的に監視する
 
@@ -132,6 +132,21 @@ Azure Data Factory でパイプラインを作成して公開した後、それ�
 
 ![パイプラインの実行履歴の表示](media/monitor-visually/rerun-history-image2.png)
 
+## <a name="monitor-consumption"></a>消費量の監視
+
+実行の横にある使用量アイコンをクリックすると、パイプラインの実行によって消費されているリソースを確認できます。 
+
+![消費量の監視](media/monitor-visually/monitor-consumption-1.png)
+
+このアイコンをクリックすると、そのパイプラインの実行によって使用されているリソースの消費量レポートが開きます。 
+
+![消費量の監視](media/monitor-visually/monitor-consumption-2.png)
+
+これらの値を [Azure 料金計算ツール](https://azure.microsoft.com/pricing/details/data-factory/)に組み込んで、パイプラインの実行のコストを見積もることができます。 Azure Data Factory 料金の詳細については、[価格に関するページ](pricing-concepts.md)を参照してください。
+
+> [!NOTE]
+> 料金計算ツールによって返される値は、推定値です。 Azure Data Factory で課金される正確な金額は反映されません。 
+
 ## <a name="gantt-views"></a>ガント ビュー
 
 ガント ビューを使用すると、パイプラインとアクティビティの実行をすばやく可視化できます。
@@ -155,7 +170,7 @@ Azure Data Factory でパイプラインを作成して公開した後、それ�
 
 Data Factory で、サポートされるメトリックに対してアラートを生成できます。 Data Factory の監視ページで **[監視]**  >  **[Alerts & Metrics]\(アラートとメトリック\)** の順に選択して開始します。
 
-![Data Factory の監視ページ](media/monitor-visually/alerts01.png)
+![Data Factory の監視ページ](media/monitor-visually/start-page.png)
 
 この機能の概要とデモンストレーションについては、以下の 7 分間の動画を視聴してください。
 
@@ -165,31 +180,35 @@ Data Factory で、サポートされるメトリックに対してアラート�
 
 1.  **[新しいアラート ルール]** を選択して新しいアラートを作成します。
 
-    ![[新しいアラート ルール] ボタン](media/monitor-visually/alerts02.png)
+    ![[新しいアラート ルール] ボタン](media/monitor-visually/new-alerts.png)
 
 1.  ルール名を指定し、アラートの重大度を選択します。
 
-    ![ルール名と重要度のボックス](media/monitor-visually/alerts03.png)
+    ![ルール名と重要度のボックス](media/monitor-visually/name-and-severity.png)
 
 1.  アラートの条件を選択します。
 
-    ![対象の条件のボックス](media/monitor-visually/alerts04.png)
+    ![対象の条件のボックス](media/monitor-visually/add-criteria-1.png)
 
-    ![条件の一覧](media/monitor-visually/alerts05.png)
+    ![条件の一覧](media/monitor-visually/add-criteria-2.png)
+
+    ![条件の一覧](media/monitor-visually/add-criteria-3.png)
+
+    アラートは、さまざまなメトリックに対して作成できます。これには、ADF エンティティの数またはサイズ、アクティビティ、パイプライン、またはトリガーの実行、Integration Runtime (IR) CPU の使用率、メモリ、ノード数、またはキューに加えて、SSIS パッケージ実行および SSIS IR の開始または停止操作などのメトリックが含まれます。
 
 1.  アラート ロジックを構成します。 すべてのパイプラインと対応するアクティビティについて、選択したメトリックのアラートを作成できます。 また、特定のアクティビティの種類、アクティビティ名、パイプライン名、またはエラーの種類を選択することもできます。
 
-    ![アラート ロジックの構成のオプション](media/monitor-visually/alerts06.png)
+    ![アラート ロジックの構成のオプション](media/monitor-visually/alert-logic.png)
 
 1.  アラートに対して、メール、SMS、プッシュ、および音声での通知を構成します。 アラート通知用にアクション グループを作成するか、既存のものを選択します。
 
-    ![通知の構成のオプション](media/monitor-visually/alerts07.png)
+    ![通知の構成のオプション](media/monitor-visually/configure-notification-1.png)
 
-    ![通知の追加のオプション](media/monitor-visually/alerts08.png)
+    ![通知の追加のオプション](media/monitor-visually/configure-notification-2.png)
 
 1.  アラート ルールを作成します。
 
-    ![アラート ルールの作成のオプション](media/monitor-visually/alerts09.png)
+    ![アラート ルールの作成のオプション](media/monitor-visually/create-alert-rule.png)
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 54f4b38e01b51289319390779a140346befc6f0c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: seodec2018, devx-track-javascript
+ms.openlocfilehash: 97d5c78264f9b2d9f21c618597ccd1c3709c9e0f
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76168816"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405927"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>クイック スタート:Bing Web Search REST API と Node.js を使用して Web を検索する
 
-このクイック スタートを使用すると、Bing Web Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。 この Node.js アプリケーションは、API に検索要求を送信してその応答を表示します。 このアプリケーションは JavaScript で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
+このクイックスタートを使用して、Bing Web Search API を初めて呼び出してみましょう。 この Node.js アプリケーションは、API に検索要求を送信して、JSON 応答を表示します。 このアプリケーションは JavaScript で記述されていますが、この API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,8 +33,7 @@ ms.locfileid: "76168816"
 
 ## <a name="create-a-project-and-declare-required-modules"></a>プロジェクトの作成と必要なモジュールの宣言
 
-お気に入りの IDE またはエディターで新しい Node.js プロジェクトを作成します。
-次のコード スニペットを `search.js` という名前のファイル内のプロジェクトにコピーします。
+お気に入りの IDE またはエディターで新しい Node.js プロジェクトを作成します。 次のコード スニペットを、ご自分のプロジェクトの search.js という名前のファイルにコピーします。
 
 ```javascript
 // Use this simple app to query the Bing Web Search API and get a JSON response.
@@ -44,9 +43,9 @@ const https = require('https')
 
 ## <a name="set-the-subscription-key"></a>サブスクリプション キーの設定
 
-このコード スニペットは、`AZURE_SUBSCRIPTION_KEY` 環境変数を使用してサブスクリプション キーを格納します。これは、コードのデプロイ時にキーの偶発的な露出を防ぐ優れたやり方です。 サブスクリプション キーを探すには、[API に関するページ](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7)に移動します。
+このコード スニペットでは、`AZURE_SUBSCRIPTION_KEY` 環境変数を使用してお使いのサブスクリプション キーを格納します。これは、お使いのコードをデプロイするときに、キーが誤って露出されてしまうのを防ぐ優れたやり方です。
 
-環境変数を使用について詳しくない場合や、このアプリをできるだけ高速に実行しようとしている場合は、`process.env['AZURE_SUBSCRIPTION_KEY']` を、文字列として設定されたサブスクリプション キーに置き換えることができます。
+環境変数を使用について詳しくない場合や、このアプリをできるだけ早く実行したい場合は、文字列として設定されたご自分のサブスクリプション キーを、`process.env['AZURE_SUBSCRIPTION_KEY']` に置き換えます。
 
 ```javascript
 const SUBSCRIPTION_KEY = process.env['AZURE_SUBSCRIPTION_KEY']
@@ -57,7 +56,15 @@ if (!SUBSCRIPTION_KEY) {
 
 ## <a name="create-a-function-to-make-the-request"></a>要求を行う関数の作成
 
-この関数は、セキュリティで保護された GET 要求を作成し、検索クエリをパス内のクエリ パラメーターとして保存します。 `hostname` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。  `encodeURIComponent` は無効な文字をエスケープするために使用され、サブスクリプション キーはヘッダー内で渡されます。 コールバックは、JSON 本文を集約する `data` イベント、問題があればログに記録する `error` イベント、およびメッセージが完了したと見なす必要があるタイミングを知るための `end` イベントにサブスクライブしている[応答](https://nodejs.org/dist/latest-v10.x/docs/api/http.html#http_class_http_serverresponse)を受け取ります。 完了すると、アプリは興味深いヘッダーとメッセージ本文を出力します。 希望に合わせて色の変更や深さの設定が可能で、深さを `1` にすると、応答を使いやすくまとめたものが得られます。
+この関数は、セキュリティで保護された GET 要求を作成し、検索クエリをクエリ パラメーターとしてパスに保存します。 
+
+1. `hostname` 値には、次のコードのグローバル エンドポイントを使用するか、Azure portal に表示される、お使いのリソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。  
+
+2. 無効な文字をエスケープするには、`encodeURIComponent` を使用します。 サブスクリプション キーはヘッダーに渡されます。 
+
+3. コールバックは、JSON 本文を集約する `data` イベント、問題があればログに記録する `error` イベント、およびメッセージが完了したと見なす必要があるタイミングを知るための `end` イベントにサブスクライブしている[応答](https://nodejs.org/dist/latest-v10.x/docs/api/http.html#http_class_http_serverresponse)を受け取ります。 
+
+4. アプリが完成すると、該当するヘッダーとメッセージ本文が出力されます。 ご自分の好みに合わせて、その色を調整し、深さを設定することができます。 `1` の深さでは、応答の概要がわかります。
 
 ```javascript
 function bingWebSearch(query) {
@@ -87,7 +94,7 @@ function bingWebSearch(query) {
 
 ## <a name="get-the-query"></a>クエリの取得
 
-クエリを見つけるためのプログラムの引数を確認してみましょう。 最初の引数はノードへのパスで、2 つ目がファイル名、3 つ目がクエリです。 クエリがない場合は、"Microsoft Cognitive Services" の既定のクエリが使用されます。
+クエリを見つけるためのプログラムの引数を確認してみましょう。 最初の引数はノードへのパスで、2 つ目がファイル名、3 つ目がご自分のクエリです。 クエリがない場合は、"Microsoft Cognitive Services" の既定のクエリが使用されます。
 
 ```javascript
 const query = process.argv[2] || 'Microsoft Cognitive Services'
@@ -103,7 +110,7 @@ bingWebSearch(query)
 
 ## <a name="put-it-all-together"></a>すべてをまとめた配置
 
-最後の手順は、コード `node search.js "<your query>"` を実行することです。
+最後の手順は、ご自分のコードを `node search.js "<your query>"` のコマンドで実行することです。
 
 作成したコードを完全なプログラムと比較したい場合は、以下を参照してください。
 
@@ -140,7 +147,7 @@ const query = process.argv[2] || 'Microsoft Cognitive Services'
 bingWebSearch(query)
 ```
 
-## <a name="sample-response"></a>応答のサンプル
+## <a name="example-json-response"></a>JSON の応答例
 
 Bing Web Search API からの応答は、JSON として返されます。 このサンプル応答は、1 つの結果だけを表示するように切り詰められています。
 
@@ -269,6 +276,6 @@ Bing Web Search API からの応答は、JSON として返されます。 この
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Bing Web 検索単一ページ アプリのチュートリアル](../tutorial-bing-web-search-single-page-app.md)
+> [Bing Web Search API 単一ページ アプリのチュートリアル](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

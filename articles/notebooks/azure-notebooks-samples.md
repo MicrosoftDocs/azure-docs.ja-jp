@@ -3,18 +3,18 @@ title: Azure Notebooks プレビュー用のサンプル Jupyter ノートブッ
 description: サンプルは、無料の Azure Notebooks クラウド サービスで実行される Jupyter ノートブックを体験するための優れた方法です。
 ms.topic: sample
 ms.date: 01/11/2019
-ms.openlocfilehash: f67c37d0ffe0e90e13e05bb50ed6c523e0b3a14e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 397e40f628e6e935fef74d2225d2e477aac7b276
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75646315"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "85833997"
 ---
 # <a name="discover-and-use-sample-notebooks-in-azure-notebooks-preview"></a>Azure Notebooks プレビューでサンプル ノートブックを検出して使用する
 
-インターネットには、Azure Notebooks に簡単に取り込むことができて、人々の関心が高い便利な Jupyter ノートブックのコレクションが多数あります。 この記事では、注目すべきサンプルの一覧を示します。
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+インターネットには、Azure Notebooks に簡単に取り込むことができて、人々の関心が高い便利な Jupyter ノートブックのコレクションが多数あります。 この記事では、注目すべきサンプルの一覧を示します。
 
 検索する対象のノートブックを特定したら、次に示すいくつかの詳細情報を把握しておきます。
 

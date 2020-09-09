@@ -2,21 +2,21 @@
 title: Azure Kubernetes Service (AKS) での可用性ゾーンの使用
 description: Azure Kubernetes Service (AKS) で複数の可用性ゾーンにノードを分散させるクラスターを作成する方法について説明します。
 services: container-service
-ms.custom: fasttrack-edit
+ms.custom: fasttrack-edit, references_regions
 ms.topic: article
-ms.date: 06/24/2019
-ms.openlocfilehash: 5693d9e90de9ba68e7b76e0f2bd5b75141dbda71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 08/13/2020
+ms.openlocfilehash: f24351c5f77e6c00365497d5e6deeefea8271cb9
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77596812"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871413"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>可用性ゾーンを使用する Azure Kubernetes Service (AKS) クラスターを作成する
 
-Azure Kubernetes Service (AKS) クラスターは、ノードやストレージなどのリソースを、基になる Azure コンピューティング インフラストラクチャの複数の論理セクションに分散させます。 このデプロイ モデルを使用すると、単一の Azure データセンター内の個別の更新ドメインと障害ドメインでノードを確実に実行できます。 この既定の動作でデプロイされる AKS クラスターは、ハードウェア障害または計画メンテナンス イベントから保護するための高レベルの可用性を提供します。
+Azure Kubernetes Service (AKS) クラスターは、ノードやストレージなどのリソースを、基になる Azure インフラストラクチャの複数の論理セクションに分散させます。 このデプロイ モデルでは、可用性ゾーンを使用する場合、特定の可用性ゾーン内のノードが、別の可用性ゾーンで定義されているノードと物理的に分離されていることを確認します。 クラスター全体に構成された複数の可用性ゾーンでデプロイされる AKS クラスターは、ハードウェア障害または計画メンテナンス イベントから保護するための高レベルの可用性を提供します。
 
-アプリケーションに高レベルの可用性を提供するために、AKS クラスターを複数の可用性ゾーンに分散させることができます。 これらのゾーンは、特定のリージョン内の物理的に分離されたデータセンターです。 クラスター コンポーネントが複数のゾーンに分散されている場合、AKS クラスターは、それらのゾーンのいずれかで障害が発生しても許容できます。 アプリケーションと管理操作は、1 つのデータセンター全体に問題がある場合でも継続して利用できます。
+クラスター内のノード プールを複数のゾーンにまたがるように定義することで、1 つのゾーンがダウンした場合でも、特定のノード プール内のノードは動作を継続できます。 1 つのデータセンターで物理的な障害が発生した場合でも、ノードのサブセットの障害に耐えられるよう調整できていれば、アプリケーションを引き続き利用できます。
 
 この記事では、AKS クラスターを作成し、複数の可用性ゾーンにノード コンポーネントを分散させる方法について説明します。
 
@@ -28,6 +28,7 @@ Azure CLI バージョン 2.0.76 以降がインストールされて構成さ�
 
 現在、AKS クラスターは、次のリージョンの可用性ゾーンを使用して作成できます。
 
+* オーストラリア東部
 * 米国中部
 * 米国東部 2
 * 米国東部
@@ -41,24 +42,20 @@ Azure CLI バージョン 2.0.76 以降がインストールされて構成さ�
 
 可用性ゾーンを使用して AKS クラスターを作成する場合、次の制限事項が適用されます。
 
-* 可用性ゾーンは、クラスターの作成時にのみ有効にできます。
+* 可用性ゾーンは、クラスターまたはノード プールの作成時にのみ定義できます。
 * 可用性ゾーンの設定は、クラスターの作成後は更新できません。 また、可用性ゾーンを使用するために、既存の非可用性ゾーン クラスターを更新することはできません。
-* AKS クラスターの作成後、その可用性ゾーンを無効にすることはできません。
-* 選択したノード サイズ (VM SKU) を、すべての可用性ゾーンで使用できる必要があります。
-* 可用性ゾーンが有効になっているクラスターでは、複数のゾーンへの分散のために Azure Standard Load Balancer を使用する必要があります。
-* Standard Load Balancer をデプロイするために、Kubernetes バージョン 1.13.5 以降を使用する必要があります。
-
-可用性ゾーンを使用する AKS クラスターでは、Azure Load Balancer *Standard* SKU を使用する必要があります。これはロード バランサーの種類の既定値です。 このロード バランサーの種類は、クラスターの作成時にのみ定義できます。 Standard Load Balancer の詳細と制限事項については、[Azure Load Balancer Standard SKU の制限事項][standard-lb-limitations]に関する記事をご覧ください。
+* 選択したノード サイズ (VM SKU) を、選択したすべての可用性ゾーンで使用できる必要があります。
+* 可用性ゾーンが有効になっているクラスターでは、複数のゾーンへの分散のために Azure Standard Load Balancer を使用する必要があります。 このロード バランサーの種類は、クラスターの作成時にのみ定義できます。 Standard Load Balancer の詳細と制限事項については、[Azure Load Balancer Standard SKU の制限事項][standard-lb-limitations]に関する記事をご覧ください。
 
 ### <a name="azure-disks-limitations"></a>Azure ディスクの制限事項
 
-Azure マネージド ディスクを使用するボリュームは、現在、ゾーン リソースではありません。 元のゾーンとは異なるゾーンで再スケジュールされたポッドは、以前のディスクに再アタッチできません。 ゾーンの問題が発生する可能性のある永続的なストレージを必要としないステートレス ワークロードを実行することをお勧めします。
+Azure マネージド ディスクを使用するボリュームは、現在、ゾーン冗長リソースではありません。 ボリュームをゾーン間で接続することはできず、ターゲット ポッドをホストする特定のノードと同じゾーンに併置する必要があります。
 
-ステートフル ワークロードを実行する必要がある場合は、ポッド仕様でテイントと容認を使用して、ディスクと同じゾーンにポッドを作成するよう Kubernetes スケジューラに指示します。 または、ゾーン間でスケジュールされているときに、ポッドにアタッチできる Azure Files などのネットワークベースのストレージを使用します。
+ステートフル ワークロードを実行する必要がある場合は、ポッド仕様でノード プール テイントと容認を使用して、ポッド スケジューリングをディスクと同じゾーンにグループ化します。 または、ゾーン間でスケジュールされているときに、ポッドにアタッチできる Azure Files などのネットワークベースのストレージを使用します。
 
 ## <a name="overview-of-availability-zones-for-aks-clusters"></a>AKS クラスターの可用性ゾーンの概要
 
-可用性ゾーンとは高可用性を提供するサービスで、アプリケーションとデータをデータセンターの障害から保護します。 ゾーンは、Azure リージョン内の一意の物理的な場所です。 それぞれのゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 回復性を確保するため、有効になっているリージョンにはいずれも最低 3 つのゾーンが別個に存在しています。 可用性ゾーンはリージョン内で物理的に分離されているため、データセンターで障害が発生してもアプリケーションとデータは保護されます。 ゾーン冗長サービスによってアプリケーションとデータが可用性ゾーン全体にレプリケートされ、単一障害点から保護されます。
+可用性ゾーンとは高可用性を提供するサービスで、アプリケーションとデータをデータセンターの障害から保護します。 ゾーンは、Azure リージョン内の一意の物理的な場所です。 それぞれのゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 回復性を確保するため、ゾーンが有効になっているリージョンにはいずれも最低 3 つのゾーンが別個に存在しています。 可用性ゾーンはリージョン内で物理的に分離されているため、データセンターで障害が発生してもアプリケーションとデータは保護されます。
 
 詳しくは、「[Azure の可用性ゾーンの概要][az-overview]」をご覧ください。
 
@@ -66,15 +63,15 @@ Azure マネージド ディスクを使用するボリュームは、現在、�
 
 ![複数の可用性ゾーンへの AKS ノードの分散](media/availability-zones/aks-availability-zones.png)
 
-ゾーンの停止時には、手動で、またはクラスター オートスケーラーを使用してノードを再調整できます。 1 つのゾーンが使用不可になっても、アプリケーションは引き続き実行されます。
+1 つのゾーンが使用できなくなった場合でも、クラスターが複数のゾーンに分散していれば、アプリケーションは引き続き実行されます。
 
 ## <a name="create-an-aks-cluster-across-availability-zones"></a>複数の可用性ゾーンでの AKS クラスターの作成
 
-[az aks create][az-aks-create] コマンドを使用してクラスターを作成する場合、`--zones` パラメーターで、エージェント ノードをデプロイする先のゾーンを定義します。 また、クラスターの作成時に `--zones` パラメーターを定義すると、クラスターの AKS コントロール プレーンのコンポーネントは、最高の可用性構成の複数のゾーンに分散されます。
+[az aks create][az-aks-create] コマンドを使用してクラスターを作成する場合、`--zones` パラメーターで、エージェント ノードをデプロイする先のゾーンを定義します。 クラスターの作成時に `--zones` パラメーターを定義すると、etcd などのコントロール プレーン コンポーネントが 3 つのゾーンに分散されます。 コントロール プレーン コンポーネントが分散される特定のゾーンは、初期ノード プールに対して選択されている明示的なゾーンに依存しません。
 
-AKS クラスターの作成時に既定のエージェント プールのゾーンを定義しない場合、クラスターの AKS コントロール プレーン コンポーネントは可用性ゾーンを使用しません。 [az aks nodepool add][az-aks-nodepool-add] コマンドを使用して追加のノード プールを追加し、それらの新しいノードに対して `--zones` を指定できますが、コントロール プレーン コンポーネントは可用性ゾーンを認識しません。 ノード プールまたは AKS コントロール プレーン コンポーネントがデプロイされた後、それらのゾーン認識は変更できません。
+AKS クラスターの作成時に既定のエージェント プールのゾーンを定義しなかった場合、コントロール プレーン コンポーネントが可用性ゾーン間で分散されることは保証されません。 [az aks nodepool add][az-aks-nodepool-add] コマンドを使用して別のノード プールを追加し、新しいノードに `--zones` を指定することはできますが、コントロール プレーンがゾーン間でどのように分散されているかは変わりません。 可用性ゾーンの設定は、クラスターまたはノード プールの作成時にのみ定義できます。
 
-次の例では、*myResourceGroup* という名前のリソース グループに *myAKSCluster* という名前の AKS クラスターを作成しています。 合計 *3* つのノードが作成されます (ゾーン *1* にエージェント 1 つ、ゾーン *2* にエージェント 1 つ、ゾーン *3* にエージェント 1 つ)。 また、AKS コントロール プレーンのコンポーネントは、クラスターの作成プロセスの一部として定義されるため、最高の可用性構成の複数のゾーンに分散されます。
+次の例では、*myResourceGroup* という名前のリソース グループに *myAKSCluster* という名前の AKS クラスターを作成しています。 合計 *3* つのノードが作成されます (ゾーン *1* にエージェント 1 つ、ゾーン *2* にエージェント 1 つ、ゾーン *3* にエージェント 1 つ)。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus2
@@ -91,6 +88,8 @@ az aks create \
 
 AKS クラスターの作成には数分かかります。
 
+新しいノードが属するゾーンを決定するとき、指定された AKS node プールは、[基になる Azure Virtual Machine Scale Sets によって提供されるベスト エフォートのゾーン分散][vmss-zone-balancing]を使用します。 特定の AKS ノード プールが "バランスが取れている" ものと見なされるのは、スケール セットの各ゾーンの VM 数が同じであるか差が \-1 つ以内の場合です。
+
 ## <a name="verify-node-distribution-across-zones"></a>複数のゾーンへのノードの分散を確認する
 
 クラスターの準備ができたら、スケール セット内のエージェント ノードを一覧表示して、それらがデプロイされている可用性ゾーンを確認します。
@@ -101,7 +100,7 @@ AKS クラスターの作成には数分かかります。
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-次に、[kubectl describe][kubectl-describe] コマンドを使用して、クラスター内のノードを一覧表示します。 次の例に示されているように、*failure-domain.beta.kubernetes.io/zone* 値をフィルター処理します。
+次に、[kubectl describe][kubectl-describe] コマンドを使用して、クラスター内のノードを一覧表示し、*failure-domain.beta.kubernetes.io/zone* 値でフィルター処理します。 Bash シェルの例を次に示します。
 
 ```console
 kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"
@@ -133,7 +132,7 @@ az aks scale \
     --node-count 5
 ```
 
-数分後にスケール操作が完了すると、コマンド `kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"` によって、次の例のような出力が得られます。
+数分後にスケール操作が完了すると、Bash シェルのコマンド `kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"` によって、次の例のような出力が得られます。
 
 ```console
 Name:       aks-nodepool1-28993262-vmss000000
@@ -148,13 +147,13 @@ Name:       aks-nodepool1-28993262-vmss000004
             failure-domain.beta.kubernetes.io/zone=eastus2-2
 ```
 
-ご覧のとおり、ゾーン 1 とゾーン 2 に 2 つのノードが追加されました。 3 つのレプリカで構成されるアプリケーションをデプロイできます。 例として NGINX を使用します。
+ゾーン 1 とゾーン 2 に 2 つのノードが追加されました。 3 つのレプリカで構成されるアプリケーションをデプロイできます。 例として NGINX を使用します。
 
 ```console
 kubectl run nginx --image=nginx --replicas=3
 ```
 
-ポッドが実行されているノードを確認すると、3 つの異なる可用性ゾーンに対応するポッド上でポッドが実行されていることがわかります。 たとえば、コマンド `kubectl describe pod | grep -e "^Name:" -e "^Node:"` を使用すると、次のような出力が表示されます。
+ポッドが実行されているノードを表示すると、3 つの異なる可用性ゾーンに対応するノードでポッドが実行されていることがわかります。 たとえば、Bash シェルでコマンド `kubectl describe pod | grep -e "^Name:" -e "^Node:"` を使用すると、次のような出力が表示されます。
 
 ```console
 Name:         nginx-6db489d4b7-ktdwg
@@ -186,6 +185,7 @@ Node:         aks-nodepool1-28993262-vmss000004/10.240.0.8
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [az-aks-nodepool-add]: /cli/azure/ext/aks-preview/aks/nodepool#ext-aks-preview-az-aks-nodepool-add
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[vmss-zone-balancing]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing
 
 <!-- LINKS - external -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe

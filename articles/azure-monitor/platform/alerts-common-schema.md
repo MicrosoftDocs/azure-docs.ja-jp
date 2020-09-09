@@ -4,12 +4,12 @@ description: 共通アラート スキーマの理解、使用すべき理由と
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: 1445e8cf38b2694146fc8749ba5e77f2297de969
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: faf9975e2795623305583d061d1af7f5eb0cfbe0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226415"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539484"
 ---
 # <a name="common-alert-schema"></a>共通アラート スキーマ
 
@@ -52,8 +52,8 @@ ms.locfileid: "79226415"
 > 1. 次のアラートの種類では、共通スキーマがデフォルトでサポートされています (オプトインは不要です)。
 >     * スマート検出アラート
 > 1. 現在、次のアラートの種類では共通スキーマはサポートされていません。
->     * [Azure Monitor for VMs](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview) によって生成されたアラート
->     * [Azure Cost Management](https://docs.microsoft.com/azure/billing/billing-cost-management-budget-scenario) によって生成されたアラート
+>     * [Azure Monitor for VMs](../insights/vminsights-overview.md) によって生成されたアラート
+>     * [Azure Cost Management](../../cost-management-billing/manage/cost-management-budget-scenario.md) によって生成されたアラート
 
 ### <a name="through-the-azure-portal"></a>Azure portal を使用
 
@@ -64,9 +64,9 @@ ms.locfileid: "79226415"
 
 ### <a name="through-the-action-groups-rest-api"></a>Action Groups REST API を使用
 
-[Action Groups API](https://docs.microsoft.com/rest/api/monitor/actiongroups) を使用して共通アラート スキーマにオプトインすることもできます。 [作成または更新](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate)の REST API 呼び出しの実行中に、電子メール、Webhook、Logic Apps、Azure Functions、Automation Runbook のすべてのアクションに対して、フラグ "useCommonAlertSchema" を 'true' (オプトイン) または 'false' (オプトアウト) に設定できます。
+[Action Groups API](/rest/api/monitor/actiongroups) を使用して共通アラート スキーマにオプトインすることもできます。 [作成または更新](/rest/api/monitor/actiongroups/createorupdate)の REST API 呼び出しの実行中に、電子メール、Webhook、Logic Apps、Azure Functions、Automation Runbook のすべてのアクションに対して、フラグ "useCommonAlertSchema" を 'true' (オプトイン) または 'false' (オプトアウト) に設定できます。
 
-たとえば、[作成または更新](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate) REST API に対して次の要求本文を実行すると、次の操作が行われます。
+たとえば、[作成または更新](/rest/api/monitor/actiongroups/createorupdate) REST API に対して次の要求本文を実行すると、次の操作が行われます。
 
 * 電子メール アクション "John Doe's email" に対して共通アラート スキーマを有効にします
 * 電子メール アクション "Jane Smith's email" に対して共通アラート スキーマを無効にします
@@ -121,7 +121,4 @@ ms.locfileid: "79226415"
 ## <a name="next-steps"></a>次のステップ
 
 - [Webhooks、Logic Apps、Azure Functions、Automation Runbooks の共通アラート スキーマ定義。](https://aka.ms/commonAlertSchemaDefinitions)
-- [共通アラートのスキーマを利用してすべてのアラートを処理するロジック アプリを作成する方法について説明します。](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations) 
-
-
-
+- [共通アラートのスキーマを利用してすべてのアラートを処理するロジック アプリを作成する方法について説明します。](./alerts-common-schema-integrations.md) 

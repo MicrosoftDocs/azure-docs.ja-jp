@@ -5,16 +5,14 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/05/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: 0aedeea2a6ad08e1627c2d1a6ebde6c91a4d02d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2418c8518bbf298a102d4f29b4a973f6121de2eb
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76841767"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171688"
 ---
 # <a name="configure-identity-for-the-event-grid-module"></a>Event Grid モジュールの ID を構成する
 

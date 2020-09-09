@@ -9,34 +9,35 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 12/06/2019
+ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 238f390ac998a05f0c726dd9ed024550b9a5ba3d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: ee1308f08b5ca2192bb429acbb5bdaec199fb26f
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478531"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603276"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-ruby"></a>クイック スタート:Bing Image Search REST API と Ruby を使用してイメージを検索する
 
 このクイック スタートを使用すると、Bing Image Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。 このシンプルな Ruby アプリケーションは、検索クエリを API に送信し、生の結果を表示します。
 
-このアプリケーションは Ruby で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
+このアプリケーションは Ruby で記述されていますが、この API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
 このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingImageSearchv7.rb) で入手できます。
+
 ## <a name="prerequisites"></a>前提条件
 
 * [最新バージョンの Ruby](https://www.ruby-lang.org/en/downloads/)。
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
+詳細については、「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」を参照してください。
 
 ## <a name="create-and-initialize-the-application"></a>アプリケーションを作成して初期化する
 
-1. 次のパッケージをコード ファイルにインポートします。
+1. 次のパッケージを対象のコード ファイルにインポートします。
 
     ```ruby
     require 'net/https'
@@ -44,7 +45,7 @@ ms.locfileid: "80478531"
     require 'json'
     ```
 
-2. API エンドポイント、画像 API 検索パス、サブスクリプション キー、および検索用語の変数を作成します。 `uri` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。
+2. API エンドポイント、画像 API 検索パス、サブスクリプション キー、および検索用語の変数を作成します。 `uri` には、次のコードのグローバル エンドポイントか、Azure portal に表示される、対象のリソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 
     ```ruby
     uri  = "https://api.cognitive.microsoft.com"
@@ -54,7 +55,7 @@ ms.locfileid: "80478531"
 
 ## <a name="format-and-make-an-api-request"></a>API 要求の書式を設定して要求を実行する
 
-最後の手順の変数を使用して、API 要求の検索 URL の書式を設定します。 次に要求を送信します。
+前の手順の変数を使用して、API 要求の検索 URL の書式を設定します。 次に、要求を送信します。
 
 ```ruby
 uri = URI(uri + path + "?q=" + URI.escape(term))
@@ -144,8 +145,7 @@ Bing Image Search API からの応答は、JSON として返されます。 こ�
 
 ## <a name="see-also"></a>関連項目
 
-* [Bing Image Search とは](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [オンラインの対話型デモを試す](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
-* [無料の Cognitive Services アクセス キーを取得する](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+* [Bing Image Search API とは](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [オンラインの対話型デモを試す](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)   
 * [Azure Cognitive Services のドキュメント](https://docs.microsoft.com/azure/cognitive-services)
 * [Bing Image Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

@@ -2,21 +2,21 @@
 title: Azure AD のセキュリティで保護されたハイブリッド アクセス | Microsoft Docs
 description: この記事では、オンプレミス、パブリッククラウド、またはプライベート クラウドにあるレガシ アプリケーションを Azure AD と統合するためのパートナー ソリューションについて説明します。 アプリ デリバリー コントローラーまたはネットワークを Azure AD に接続することで、レガシ アプリをセキュリティで保護します。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: overview
+ms.topic: how-to
 ms.workload: identity
 ms.date: 12/18/2019
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e97b95e290ef74ffd98a3396ffe4705270132b2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 295891afbb0136e0b05bcd49f4045e0e8bcff6e5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75433760"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763042"
 ---
 # <a name="secure-hybrid-access-secure-legacy-apps-with-app-delivery-controllers-and-networks"></a>安全なハイブリッド アクセス:アプリ デリバリー コントローラーとネットワークを使用してレガシ アプリをセキュリティで保護する
 

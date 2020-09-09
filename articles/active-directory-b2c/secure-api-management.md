@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 04/10/2020
+ms.topic: how-to
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0ffadca550a3a28b0ab490dd43c3b884602c93df
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0e8802d612f2497cc58c90856e9a5a5572a142f1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83638496"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87482840"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Azure AD B2C を使用して Azure API Management API をセキュリティで保護する
 
@@ -35,23 +35,23 @@ Azure Active Directory B2C (Azure AD B2C) で認証されたクライアント�
 
 Azure API Management において Azure AD B2C を使用して API のセキュリティを保護する場合、APIM で作成する[受信ポリシー](../api-management/api-management-howto-policies.md)には複数の値が必要です。 ご利用の Azure AD B2C テナントで以前に作成したアプリケーションのアプリ ID を記録します。 前提条件で作成したアプリケーションを使用する場合は、"*webbapp1*" のアプリケーション ID を使用します。
 
-現在の**アプリケーション** エクスペリエンス、または新しく統合された**アプリの登録 (プレビュー)** エクスペリエンスを使用して、アプリケーション ID を取得できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregintro)。
+アプリケーションを Azure AD B2C テナントに登録するには、Microsoft の新しい統合**アプリの登録**エクスペリエンスか以前の**アプリケーション (レガシ)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregtraining)。
 
-#### <a name="applications"></a>[アプリケーション](#tab/applications/)
-
-1. [Azure portal](https://portal.azure.com) にサインインします。
-1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
-1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
-1. **[管理]** で、 **[アプリケーション]** を選択します。
-1. *webapp1* または以前に作成した別のアプリケーションの **[アプリケーション ID]** 列の値を記録します。
-
-#### <a name="app-registrations-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
+#### <a name="app-registrations"></a>[アプリの登録](#tab/app-reg-ga/)
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
-1. **[アプリの登録 (プレビュー)]** を選択してから、 **[Owned applications]\(所有しているアプリケーション\)** タブを選択します。
+1. **[アプリの登録]** を選択してから、 **[Owned applications]\(所有しているアプリケーション\)** タブを選択します。
 1. *webapp1* または以前に作成した別のアプリケーションの **[Application (client) ID]\(アプリケーション (クライアント) ID\)** 列の値を記録します。
+
+#### <a name="applications-legacy"></a>[アプリケーション (レガシ)](#tab/applications-legacy/)
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
+1. **[管理]** で、 **[アプリケーション (レガシ)]** を選択します。
+1. *webapp1* または以前に作成した別のアプリケーションの **[アプリケーション ID]** 列の値を記録します。
 
 * * *
 
@@ -60,7 +60,7 @@ Azure API Management において Azure AD B2C を使用して API のセキュ�
 次に、ご利用の Azure AD B2C ユーザー フローのいずれかについて、既知の構成 URL を取得します。 また、Azure API Management でサポートするトークン発行者エンドポイント URI も必要です。
 
 1. [Azure portal](https://portal.azure.com) で Azure AD B2C テナントを参照します。
-1. **[ポリシー]** で **[ユーザー フロー (ポリシー)]** を選択します。
+1. **[ポリシー]** で **[ユーザー フロー]** を選択します。
 1. 既存のポリシー ("*B2C_1_signupsignin1*" など) を選択して、 **[ユーザー フローを実行します]** を選択します。
 1. ページの上部付近にある **[ユーザー フローを実行します]** 見出しの下に表示されるハイパーリンクの URL を記録します。 この URL は、ユーザー フロー用の OpenID Connect の既知の検出エンドポイントであり、次のセクションにおいて Azure API Management で受信ポリシーを構成するときに使用します。
 
@@ -126,7 +126,7 @@ API を呼び出すには、Azure AD B2C によって発行されたアクセス
 まず、Postman で、`Authorization` ヘッダーで使用するため、Azure AD B2C によって発行されるトークンが必要です。 これを取得するには、前提条件の 1 つとして作成したサインアップ/サインイン ユーザー フローの **[今すぐ実行]** 機能を使用します。
 
 1. [Azure portal](https://portal.azure.com) で Azure AD B2C テナントを参照します。
-1. **[ポリシー]** で **[ユーザー フロー (ポリシー)]** を選択します。
+1. **[ポリシー]** で **[ユーザー フロー]** を選択します。
 1. 既存のサインアップ/サインイン ユーザーフロー (たとえば、"*B2C_1_signupsignin1*") を選択します。
 1. **[アプリケーション]** で、 *[webapp1]* を選択します。
 1. **[応答 URL]** で、`https://jwt.ms` を選択します。
@@ -171,7 +171,7 @@ API を呼び出すには、Azure AD B2C によって発行されたアクセス
 
 1. Postman で **[送信]** ボタンを選択して、要求を実行します。 すべてを正しく構成した場合は、次に示すように、カンファレンス講演者のコレクションを含む JSON 応答が表示されます (ここでは省略されています)。
 
-    ```JSON
+    ```json
     {
       "collection": {
         "version": "1.0",
@@ -206,7 +206,7 @@ API を呼び出すには、Azure AD B2C によって発行されたアクセス
 
 1. **[送信]** ボタンを選択して、要求を実行します。 無効なトークンを使用した場合に想定される結果として、`401` (予期しない) 状態コードが返されます。
 
-    ```JSON
+    ```json
     {
         "statusCode": 401,
         "message": "Unauthorized. Access token is missing or invalid."
@@ -219,7 +219,7 @@ API を呼び出すには、Azure AD B2C によって発行されたアクセス
 
 通常は、複数のアプリケーションが 1 つの REST API でやりとりします。 複数のアプリケーションを対象とするトークンを API で受け取れるようにするには、APIM 受信ポリシーの `<audiences>` 要素にアプリケーション ID を追加します。
 
-```XML
+```xml
 <!-- Accept tokens intended for these recipient applications -->
 <audiences>
     <audience>44444444-0000-0000-0000-444444444444</audience>
@@ -229,7 +229,7 @@ API を呼び出すには、Azure AD B2C によって発行されたアクセス
 
 同様に、複数のトークン発行者をサポートするには、APIM 受信ポリシーの `<issuers>` 要素にエンドポイント URI を追加します。
 
-```XML
+```xml
 <!-- Accept tokens from multiple issuers -->
 <issuers>
     <issuer>https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/</issuer>
@@ -249,7 +249,7 @@ API を呼び出すには、Azure AD B2C によって発行されたアクセス
 
 次の APIM 受信ポリシーの例では、b2clogin.com と login.microsoftonline.com の両方によって発行されたトークンを受け入れる方法を示しています。 また、2 つのアプリケーションからの API 要求もサポートされています。
 
-```XML
+```xml
 <policies>
     <inbound>
         <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">

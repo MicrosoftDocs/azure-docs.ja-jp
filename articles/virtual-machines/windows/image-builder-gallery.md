@@ -3,16 +3,16 @@ title: Windows VM のイメージ ギャラリーで Azure Image Builder を使�
 description: Azure Image Builder と Azure PowerShell を使用し、Azure Shared Gallery イメージ バージョンを作成します。
 author: cynthn
 ms.author: cynthn
-ms.date: 01/14/2020
+ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 48eff11facf0f1432534d61f003f61e6755caf33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 07b9e3e7529aa867a4baf51ffe5c4bbf23599d32
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869515"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836192"
 ---
 # <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>プレビュー:Windows イメージを作成して共有イメージ ギャラリーに配布する 
 
@@ -24,7 +24,7 @@ ms.locfileid: "81869515"
 
 Azure Image Builder では、sysprep が自動的に実行され、イメージが汎用化されます。これは汎用 sysprep コマンドであり、必要に応じて[オーバーライド](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#vms-created-from-aib-images-do-not-create-successfully)できます。 
 
-カスタマイズを層にする回数にご注意ください。 Sysprep コマンドは、1 つの Windows イメージで最大 8 回実行できます。 Sysprep を 8 回実行した後、Windows イメージを再作成する必要があります。 詳細は、[Sysprep の実行回数制限](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)に関するページを参照してください。 
+カスタマイズを層にする回数にご注意ください。 Sysprep コマンドは、1 つの Windows イメージで最大 8 回実行できます。 Sysprep を 8 回実行した後、Windows イメージを再作成する必要があります。 詳細は、[Sysprep の実行回数制限](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)に関するページを参照してください。 
 
 > [!IMPORTANT]
 > 現在、Azure Image Builder はパブリック プレビュー段階にあります。
@@ -89,24 +89,58 @@ $imageTemplateName="helloImageTemplateWin02ps"
 # Distribution properties object name (runOutput).
 # This gives you the properties of the managed image on completion.
 $runOutputName="winclientR01"
-```
 
-
-
-## <a name="create-the-resource-group"></a>リソース グループの作成
-
-リソース グループを作成し、そのリソース グループ内にリソースを作成するアクセス許可を Azure Image Builder に付与します。
-
-```powershell
+# Create a resource group for Image Template and Shared Image Gallery
 New-AzResourceGroup `
    -Name $imageResourceGroup `
    -Location $location
-New-AzRoleAssignment `
-   -ObjectId ef511139-6170-438e-a6e1-763dc31bdf74 `
-   -Scope /subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup `
-   -RoleDefinitionName Contributor
 ```
 
+
+## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>ユーザー割り当て ID を作成し、リソース グループにアクセス許可を設定する
+Image Builder は、指定された[ユーザー ID](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md) を使用して、Azure Shared Image Gallery (SIG) にイメージを挿入します。 この例では、イメージの SIG への配布を実行するための粒度の細かいアクションを持つ Azure ロール定義を作成します。 このロール定義はその後、ユーザー ID に割り当てられます。
+
+```powershell
+# setup role def names, these need to be unique
+$timeInt=$(get-date -UFormat "%s")
+$imageRoleDefName="Azure Image Builder Image Def"+$timeInt
+$identityName="aibIdentity"+$timeInt
+
+## Add AZ PS module to support AzUserAssignedIdentity
+Install-Module -Name Az.ManagedServiceIdentity
+
+# create identity
+New-AzUserAssignedIdentity -ResourceGroupName $imageResourceGroup -Name $identityName
+
+$identityNameResourceId=$(Get-AzUserAssignedIdentity -ResourceGroupName $imageResourceGroup -Name $identityName).Id
+$identityNamePrincipalId=$(Get-AzUserAssignedIdentity -ResourceGroupName $imageResourceGroup -Name $identityName).PrincipalId
+```
+
+
+### <a name="assign-permissions-for-identity-to-distribute-images"></a>イメージを配布するためにアクセス許可を ID に割り当てる
+
+このコマンドは、Azure のロールの定義テンプレートをダウンロードし、前に指定したパラメーターを使用してテンプレートを更新します。
+
+```powershell
+$aibRoleImageCreationUrl="https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json"
+$aibRoleImageCreationPath = "aibRoleImageCreation.json"
+
+# download config
+Invoke-WebRequest -Uri $aibRoleImageCreationUrl -OutFile $aibRoleImageCreationPath -UseBasicParsing
+
+((Get-Content -path $aibRoleImageCreationPath -Raw) -replace '<subscriptionID>',$subscriptionID) | Set-Content -Path $aibRoleImageCreationPath
+((Get-Content -path $aibRoleImageCreationPath -Raw) -replace '<rgName>', $imageResourceGroup) | Set-Content -Path $aibRoleImageCreationPath
+((Get-Content -path $aibRoleImageCreationPath -Raw) -replace 'Azure Image Builder Service Image Creation Role', $imageRoleDefName) | Set-Content -Path $aibRoleImageCreationPath
+
+# create role definition
+New-AzRoleDefinition -InputFile  ./aibRoleImageCreation.json
+
+# grant role definition to image builder service principal
+New-AzRoleAssignment -ObjectId $identityNamePrincipalId -RoleDefinitionName $imageRoleDefName -Scope "/subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup"
+
+### NOTE: If you see this error: 'New-AzRoleDefinition: Role definition limit exceeded. No more role definitions can be created.' See this article to resolve:
+https://docs.microsoft.com/azure/role-based-access-control/troubleshooting
+```
 
 
 ## <a name="create-the-shared-image-gallery"></a>Shared Image Gallery を作成する
@@ -173,7 +207,7 @@ Invoke-WebRequest `
    -replace '<region1>',$location | Set-Content -Path $templateFilePath
 (Get-Content -path $templateFilePath -Raw ) `
    -replace '<region2>',$replRegion2 | Set-Content -Path $templateFilePath
-
+((Get-Content -path $templateFilePath -Raw) -replace '<imgBuilderId>',$identityNameResourceId) | Set-Content -Path $templateFilePath
 ```
 
 
@@ -185,7 +219,7 @@ Invoke-WebRequest `
 New-AzResourceGroupDeployment `
    -ResourceGroupName $imageResourceGroup `
    -TemplateFile $templateFilePath `
-   -api-version "2019-05-01-preview" `
+   -apiversion "2019-05-01-preview" `
    -imageTemplateName $imageTemplateName `
    -svclocation $location
 ```
@@ -282,6 +316,24 @@ $resTemplateId = Get-AzResource -ResourceName $imageTemplateName -ResourceGroupN
 
 ```powerShell
 Remove-AzResource -ResourceId $resTemplateId.ResourceId -Force
+```
+
+ロール割り当ての削除
+
+```powerShell
+Remove-AzRoleAssignment -ObjectId $identityNamePrincipalId -RoleDefinitionName $imageRoleDefName -Scope "/subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup"
+```
+
+定義の削除
+
+```powerShell
+Remove-AzRoleDefinition -Name "$identityNamePrincipalId" -Force -Scope "/subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup"
+```
+
+ID の削除
+
+```powerShell
+Remove-AzUserAssignedIdentity -ResourceGroupName $imageResourceGroup -Name $identityName -Force
 ```
 
 リソース グループを削除します。

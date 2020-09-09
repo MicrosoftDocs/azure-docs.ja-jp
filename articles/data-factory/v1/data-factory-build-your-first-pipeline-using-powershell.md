@@ -11,33 +11,31 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 94f11e306f866496d4ae03dad03b070d26d616e0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3f388937c43c9c6a2b9e4700768d4af9cdcb39de
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75438991"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543114"
 ---
-# <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>チュートリアル: Azure PowerShell を使用した初めての Azure データ ファクトリの作成
+# <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>チュートリアル:Azure PowerShell を使用した初めての Azure データ ファクトリの作成
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-build-your-first-pipeline.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Resource Manager テンプレート](data-factory-build-your-first-pipeline-using-arm.md)
 > * [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
->
->
 
 
 > [!NOTE]
-> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[Azure Data Factory を使用したデータ ファクトリの作成に関するクイック スタート](../quickstart-create-data-factory-powershell.md)に関するページを参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[Azure Data Factory を使用してデータ ファクトリを作成する方法のクイック スタート](../quickstart-create-data-factory-powershell.md)に関するページを参照してください。
 
 この記事では、Azure PowerShell を使用して最初の Azure データ ファクトリを作成します。 その他のツールや SDK を使用してチュートリアルを行うには、ドロップダウン リストでいずれかのオプションを選択します。
 
 このチュートリアルのパイプラインには、1 つのアクティビティ (**HDInsight Hive アクティビティ**) が含まれます。 このアクティビティは、入力データを変換して出力データを生成する Hive スクリプトを Azure HDInsight クラスターで実行します。 このパイプラインは、指定した開始時刻と終了時刻の間で、月 1 回実行されるようスケジュールされています。 
 
 > [!NOTE]
-> このチュートリアルのデータ パイプラインでは、入力データを変換して出力データを生成します。 データをソース データ ストアからターゲット データ ストアにコピーするのではありません。 Azure Data Factory を使用してデータをコピーする方法のチュートリアルについては、[Blob Storage から SQL Database へのデータのコピーのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関するページを参照してください。
+> このチュートリアルのデータ パイプラインでは、入力データを変換して出力データを生成します。 データをソース データ ストアからターゲット データ ストアにコピーするのではありません。 Azure Data Factory を使用してデータをコピーする方法のチュートリアルについては、[Blob Storage から SQL Database にデータをコピーする方法のチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 > 
 > 1 つのパイプラインには複数のアクティビティを含めることができます。 また、1 つのアクティビティの出力データセットを別のアクティビティの入力データセットとして指定することで、2 つのアクティビティを連鎖させる (アクティビティを連続的に実行する) ことができます。 詳細については、[Data Factory のスケジュール設定と実行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)に関するページを参照してください。
 
@@ -46,7 +44,7 @@ ms.locfileid: "75438991"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * 「 [チュートリアルの概要](data-factory-build-your-first-pipeline.md) 」に目を通し、 **前提条件** の手順を完了する必要があります。
-* 「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」に記載されている手順に従って、コンピューターに Azure PowerShell の最新バージョンをインストールします。
+* 「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/) 」に記載されている手順に従って、コンピューターに Azure PowerShell の最新バージョンをインストールします。
 * (省略可能) この記事では、すべての Data Factory コマンドレットを取り上げているわけではありません。 Data Factory コマンドレットに関する包括的なドキュメントについては、「 [Data Factory コマンドレット リファレンス](/powershell/module/az.datafactory) 」を参照してください。
 
 ## <a name="create-data-factory"></a>データ ファクトリの作成
@@ -81,7 +79,7 @@ ms.locfileid: "75438991"
 * Azure Data Factory の名前はグローバルに一意にする必要があります。 " **Data factory 名 "FirstDataFactoryPSH" は利用できません**" というエラーが発生した場合は、名前を変更します (yournameFirstDataFactoryPSH など)。 このチュートリアルの手順の実行中に、この名前を ADFTutorialFactoryPSH の代わりに使用します。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。
 * Data Factory インスタンスを作成するには、Azure サブスクリプションの共同作成者または管理者である必要があります。
 * データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
-* "**サブスクリプションが名前空間 Microsoft.DataFactory を使用するように登録されていません**" というエラー メッセージが表示されたら、以下のいずれかの操作をしてから、もう一度発行してみます。
+* エラー "**This subscription is not registered to use namespace Microsoft.DataFactory (このサブスクリプションは、名前空間 Microsoft.DataFactory を使用するように登録されていません)** " が表示された場合は、以下のいずれかの操作を行ってから、もう一度発行してみます。
 
   * Azure PowerShell で次のコマンドを実行して、Data Factory プロバイダーを登録します。
 
@@ -117,7 +115,7 @@ ms.locfileid: "75438991"
         }
     }
     ```
-    **accountname** は Azure ストレージ アカウントの名前に、**accountkey** は Azure ストレージ アカウントのアクセス キーに置き換えます。 ストレージ アクセス キーを取得する方法については、「[Manage storage account access keys (ストレージ アカウントのアクセス キーの管理)](../../storage/common/storage-account-keys-manage.md)」をご覧ください。
+    **accountname** は Azure ストレージ アカウントの名前に、**accountkey** は Azure ストレージ アカウントのアクセス キーで置き換えます。 ストレージ アクセス キーを取得する方法については、「[ストレージ アカウントのアクセス キーの管理](../../storage/common/storage-account-keys-manage.md)」を参照してください。
 2. Azure PowerShell で ADFGetStarted フォルダーに切り替えます。
 3. **New-AzDataFactoryLinkedService** コマンドレットを使用して、リンクされたサービスを作成できます。 このコマンドレットと、このチュートリアルで使用する他の Data Factory コマンドレットでは、*ResourceGroupName* パラメーターと *DataFactoryName* パラメーターの値を渡す必要があります。 または、**Get-AzDataFactory** を使用して **DataFactory** オブジェクトを取得すると、コマンドレットを実行するたびに *ResourceGroupName* と *DataFactoryName* を入力しなくてもオブジェクトを渡すことができます。 **Get-AzDataFactory** コマンドレットの出力を **$df** 変数に割り当てるには、次のコマンドを実行します。
 
@@ -170,7 +168,7 @@ ms.locfileid: "75438991"
    * オンデマンド HDInsight クラスターの代わりに、 **独自の HDInsight クラスター** を使用できます。 詳細については、 [HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) に関するセクションを参照してください。
    * HDInsight クラスターは、JSON (**linkedServiceName**) で指定した BLOB ストレージに**既定のコンテナー**を作成します。 クラスターを削除しても、HDInsight はこのコンテナーを削除しません。 この動作は仕様です。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (**timeToLive**) がある場合を除き、スライスが処理されるたびに HDInsight クラスターが作成されます。 クラスターは、処理が終了すると自動的に削除されます。
 
-       処理されるスライスが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、"adf**データ ファクトリ名**-**リンクされたサービス名**-日時スタンプ" というパターンに従います。 Azure BLOB ストレージ内のコンテナーを削除するには、 [Microsoft ストレージ エクスプローラー](https://storageexplorer.com/) などのツールを使用します。
+       処理されるスライスが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、"adf**データ ファクトリ名**-**リンクされたサービス名**-日時スタンプ" というパターンに従います。 Azure Blob Storage 内のコンテナーを削除するには、 [Microsoft Azure Storage Explorer](https://storageexplorer.com/) などのツールを使用します。
 
      詳細については、 [オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) に関するセクションを参照してください。
 2. **New-AzDataFactoryLinkedService** コマンドレットを実行して、HDInsightOnDemandLinkedService という名前のリンクされたサービスを作成します。
@@ -260,7 +258,7 @@ ms.locfileid: "75438991"
     ```
 
 ## <a name="create-pipeline"></a>パイプラインの作成
-この手順では、 **HDInsightHive** アクティビティを含む最初のパイプラインを作成します。 入力スライスは 1 か月ごと (frequency: Month、interval: 1) に使用可能であり、出力スライスは 1 か月ごとに生成されるため、アクティビティの scheduler プロパティも 1 か月ごとに設定します。 出力データセットとアクティビティの scheduler の設定は一致している必要があります。 現在、スケジュールは出力データセットによって開始されるため、アクティビティが出力を生成しない場合でも、出力データセットを作成する必要があります。 アクティビティが入力を受け取らない場合は、入力データセットの作成を省略できます。 次の JSON で使用されているプロパティについては、このセクションの最後で説明します。
+この手順では、 **HDInsightHive** アクティビティを含む最初のパイプラインを作成します。 入力スライスは 1 か月ごと (frequency:Month、interval:1) に使用可能であり、出力スライスは 1 か月ごとに生成されるため、アクティビティの scheduler プロパティも 1 か月ごとに設定します。 出力データセットとアクティビティの scheduler の設定は一致している必要があります。 現在、スケジュールは出力データセットによって開始されるため、アクティビティが出力を生成しない場合でも、出力データセットを作成する必要があります。 アクティビティが入力を受け取らない場合は、入力データセットの作成を省略できます。 次の JSON で使用されているプロパティについては、このセクションの最後で説明します。
 
 1. 以下の内容を記述した MyFirstPipelinePSH.json という名前の JSON ファイルを C:\ADFGetStarted フォルダー内に作成します。
 
@@ -409,7 +407,7 @@ ms.locfileid: "75438991"
 4. **HDInsight Hive** アクティビティを持つ**パイプライン**を作成しました。
 
 ## <a name="next-steps"></a>次のステップ
-この記事では、オンデマンド Azure HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。 コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、「 [チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」を参照してください。
+この記事では、オンデマンド Azure HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。 コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、[Azure BLOB から Azure SQL にデータをコピーする方法のチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 
 ## <a name="see-also"></a>参照
 

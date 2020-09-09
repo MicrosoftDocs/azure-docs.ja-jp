@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
-ms.openlocfilehash: 62c317843c275531286eeb2ae616d79ad76c6f99
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e2d43290946969643b10d2ecad2f076df208a5d0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80671109"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88925424"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -83,7 +84,7 @@ ms.locfileid: "80671109"
 
 デザイン ビューが更新されてアプリケーションのユーザー インターフェイスが表示されます。
 
-1. **ソリューション エクスプローラー**で、コードビハインドのソース ファイル `MainPage.xaml.cs` を開きます  (`MainPage.xaml` にグループ化されています)。このファイルの内容を次に置き換えます。これには次のものが含まれます。
+1. **ソリューション エクスプローラー**で、コードビハインドのソース ファイル `MainPage.xaml.cs` を開きます (`MainPage.xaml` にグループ化されています)。このファイルの内容を次に置き換えます。これには次のものが含まれます。
 
 - `Speech` 名前空間と `Speech.Dialog` 名前空間の `using` ステートメント
 - ボタン ハンドラーに接続された、マイクへのアクセスを確実にするための簡単な実装
@@ -263,12 +264,12 @@ ms.locfileid: "80671109"
 
     ```csharp
     // Create a BotFrameworkConfig by providing a Speech service subscription key
-    // the RecoLanguage property is optional (default en-US)
+    // the botConfig.Language property is optional (default en-US)
     const string speechSubscriptionKey = "YourSpeechSubscriptionKey"; // Your subscription key
     const string region = "YourServiceRegion"; // Your subscription service region.
 
     var botConfig = BotFrameworkConfig.FromSubscription(speechSubscriptionKey, region);
-    botConfig.SetProperty(PropertyId.SpeechServiceConnection_RecoLanguage, "en-US");
+    botConfig.Language = "en-US";
     connector = new DialogServiceConnector(botConfig);
     ```
 

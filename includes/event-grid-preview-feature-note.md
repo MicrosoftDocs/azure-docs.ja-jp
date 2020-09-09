@@ -9,10 +9,10 @@ ms.date: 11/06/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: d32beb2d799a60cb9c5be061c39e4ec834da8dcf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "66814832"
 ---
 この機能はプレビュー段階にあります。 これを使用するには、プレビュー拡張機能またはモジュールをインストールする必要があります。

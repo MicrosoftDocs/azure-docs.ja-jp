@@ -1,20 +1,20 @@
 ---
-title: Azure Synapse Analytics の Apache Spark - 主要な概念
+title: Apache Spark の主要概念
 description: この記事では、Azure Synapse Analytics の Apache Spark の概要と、さまざまな概念について説明します。
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 6276d198e547efec3d2e3cb88816da5e2b593aae
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 806f4dff49e9650dba073721109e7d54a18ecbbe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644681"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052327"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Azure Synapse Analytics の Apache Spark の主要な概念
 

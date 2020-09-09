@@ -4,17 +4,17 @@ description: Azure Application Insights で、パフォーマンスとロード 
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 0bfb60b876add70be6cbcd3d726fb3317a8dfcf9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8885a2e511c11317f593706255437e52819adcae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77669864"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024352"
 ---
 # <a name="performance-testing"></a>パフォーマンス テスト
 
 > [!NOTE]
-> クラウドベースのロード テスト サービスは非推奨になっています。 非推奨について、サービスを使用できるかどうか、代替のサービスについて詳しくは、[こちら](https://docs.microsoft.com/azure/devops/test/load-test/overview?view=azure-devops)をご覧ください。
+> クラウドベースのロード テスト サービスは非推奨になっています。 非推奨について、サービスを使用できるかどうか、代替のサービスについて詳しくは、[こちら](/azure/devops/test/load-test/overview?view=azure-devops)をご覧ください。
 
 Application Insights を使用して、Web サイトに対するロード テストを生成できます。 [可用性テスト](monitor-web-app-availability.md)と同じように、世界各地の Azure テスト エージェントから基本的な要求または[複数ステップ要求](availability-multistep.md)を送信できます。 パフォーマンス テストでは、最大 60 分間に最大 20,000 人の同時ユーザーをシミュレートできます。
 

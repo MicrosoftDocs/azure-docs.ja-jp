@@ -4,24 +4,21 @@ titlesuffix: Azure Virtual Network
 description: Azure が仮想ネットワーク トラフィックをルーティングするしくみと、Azure のルーティングをカスタマイズする方法について説明します。
 services: virtual-network
 documentationcenter: na
-author: malopMSFT
+author: KumudD
 manager: ''
-editor: v-miegge
-tags: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
-ms.author: malop
-ms.reviewer: kumud
-ms.openlocfilehash: d9ed11cd00909a104b5ea54463f8a98020837e10
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.author: aldomel
+ms.openlocfilehash: ad0a5fc5940c36aa5d2d6912987b154532bc80a1
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477879"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83727119"
 ---
 # <a name="virtual-network-traffic-routing"></a>仮想ネットワーク トラフィックのルーティング
 
@@ -122,7 +119,7 @@ Azure でカスタムまたはユーザー定義（静的）のルートを作�
 
 BGP を使用して Azure とルートを交換すると、仮想ネットワークのすべてのサブネットのルート テーブルに、アドバタイズされた各プレフィックスの個別のルートが追加されます。 追加されるルートは、ソースとネクストホップの種類が "*仮想ネットワーク ゲートウェイ*" になります。 
 
-ER と VPN Gateway ルートの伝達は、ルート テーブルのプロパティを使用してサブネット上で無効にすることができます。 BGP を使用して Azure とルートを交換するときに、仮想ネットワーク ゲートウェイ ルートの伝達が無効になっているすべてのサブネットのルート テーブルにはルートが追加されません。 VPN 接続の接続は、ネクストホップの種類が*仮想ネットワーク ゲートウェイ*である[カスタム ルート](#custom-routes) を使用して実現されます。 **GatewaySubnet でルートの伝達を無効にしないでください。この設定を無効にすると、ゲートウェイは機能しません。** 詳細については、[仮想ネットワーク ゲートウェイ ルートの伝達を無効にする方法](manage-route-table.md#create-a-route-table) に関するページを参照してください。
+ER と VPN Gateway ルートの伝達は、ルート テーブルのプロパティを使用してサブネット上で無効にすることができます。 BGP を使用して Azure とルートを交換するときに、仮想ネットワーク ゲートウェイ ルートの伝達が無効になっているすべてのサブネットのルート テーブルにはルートが追加されません。 VPN 接続の接続は、ネクストホップの種類が*仮想ネットワーク ゲートウェイ*である[カスタム ルート](#custom-routes) を使用して実現されます。 **GatewaySubnet では、ルートの伝達を無効にしないでください。ゲートウェイは、この設定を無効にすると機能しません。** 詳細については、[仮想ネットワーク ゲートウェイ ルートの伝達を無効にする方法](manage-route-table.md#create-a-route-table) に関するページを参照してください。
 
 ## <a name="how-azure-selects-a-route"></a>Azure がルートを選択するしくみ
 
@@ -170,7 +167,7 @@ ER と VPN Gateway ルートの伝達は、ルート テーブルのプロパテ
 
 仮想ネットワークが Azure VPN ゲートウェイに接続されている場合は、宛先が 0.0.0.0/0 であるルートを含む[ゲートウェイ サブネット](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub)にルート テーブルを関連付けないでください。 関連付けると、ゲートウェイが正しく機能しない可能性があります。 詳細については、「[VPN Gateway の FAQ](../vpn-gateway/vpn-gateway-vpn-faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gatewayports)」の質問「*VPN ゲートウェイで特定のポートが開いているのはなぜですか*」を参照してください。
 
-インターネットと Azure 間で仮想ネットワーク ゲートウェイおよび仮想アプライアンスを使用する場合の実装の詳細については、[Azure とオンプレミス データセンターの間の DMZ](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json) に関する記事および [Azure とインターネットの間の DMZ](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2fazure%2fvirtual-network%2ftoc.json) に関する記事をご覧ください。
+インターネットと Azure 間で仮想ネットワーク ゲートウェイを使用する場合の実装の詳細については、[Azure とオンプレミス データセンター間のネットワーク DMZ](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json) に関する記事を参照してください。
 
 ## <a name="routing-example"></a>ルーティングの例
 

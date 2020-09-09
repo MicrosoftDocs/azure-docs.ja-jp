@@ -5,19 +5,19 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/13/2019
-ms.openlocfilehash: 92b6737f48d8d8704f461c9adac92284b323b05f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/24/2020
+ms.openlocfilehash: 2a4f24da51b9e9e78c3df3e7d1437a380306e300
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234199"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318353"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager を Azure Monitor に接続する
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Operations Manager と Log Analytics ワークスペースを統合することで、[System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) への既存の投資を維持しながら、Azure Monitor で拡張機能を利用することができます。 この統合により、Operations Manager を以下の目的に引き続き利用しながら、Azure Monitor のログを利用することができます。
+Operations Manager と Log Analytics ワークスペースを統合することで、[System Center Operations Manager](/system-center/scom/key-concepts?view=sc-om-1807) への既存の投資を維持しながら、Azure Monitor で拡張機能を利用することができます。 この統合により、Operations Manager を以下の目的に引き続き利用しながら、Azure Monitor のログを利用することができます。
 
 * Operations Manager で IT サービスの正常性を監視する
 * インシデントおよび問題の管理をサポートする ITSM ソリューションとの統合を維持する
@@ -31,7 +31,7 @@ Operations Manager の管理グループに報告するエージェントでは�
 
 ![oms-operations-manager-integration-diagram](./media/om-agents/oms-operations-manager-connection.png)
 
-IT セキュリティ ポリシーによってネットワーク上のコンピューターがインターネットに接続できない場合は､管理サーバーが Log Analytics ゲートウェイに接続するように設定することで､構成情報を受信したり､収集データを送信したりできます (有効にされているソリューションによる)｡ Operations Manager 管理グループが Log Analytics ゲートウェイ経由で Azure Monitor と通信するように設定する方法についての詳細と手順は、[Log Analytics ゲートウェイを使った Azure Monitor へのコンピューターの接続](../../azure-monitor/platform/gateway.md)に関するページをご覧ください。  
+IT セキュリティ ポリシーによってネットワーク上のコンピューターがインターネットに接続できない場合は､管理サーバーが Log Analytics ゲートウェイに接続するように設定することで､構成情報を受信したり､収集データを送信したりできます (有効にされているソリューションによる)｡ Operations Manager 管理グループが Log Analytics ゲートウェイ経由で Azure Monitor と通信するように設定する方法についての詳細と手順は、[Log Analytics ゲートウェイを使った Azure Monitor へのコンピューターの接続](./gateway.md)に関するページをご覧ください。  
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,14 +40,14 @@ IT セキュリティ ポリシーによってネットワーク上のコンピ�
 * Azure Monitor では、System Center Operations Manager 2016 以降、Operations Manager 2012 SP1 UR6 以降、Operations Manager 2012 R2 UR2 以降のみがサポートされています。 プロキシ サポートは、Operations Manager 2012 SP1 UR7 と Operations Manager 2012 R2 UR3 に追加されています。
 * System Center Operations Manager 2016 と US Government クラウドの統合には、Update Rollup 2 以降に含まれる更新された Advisor 管理パックが必要です。 System Center Operations Manager 2012 R2 には、Update Rollup 3 以降に含まれる更新された Advisor 管理パックが必要です。
 * すべての Operations Manager エージェントが最小サポート要件を満たす必要があります。 エージェントに最小限の更新プログラムが適用されていることを確認してください。そうしないと、Windows エージェントの通信が失敗し、Operations Manager イベント ログにエラーが生成される可能性があります。
-* Log Analytics ワークスペース。 詳しくは、[Log Analytics ワークスペースの概要](design-logs-deployment.md)に関する記事をご覧ください。 
+* Log Analytics ワークスペース。 詳しくは、[Log Analytics ワークスペースの概要](design-logs-deployment.md)に関する記事をご覧ください。
 * [Log Analytics Contributor ロール](manage-access.md#manage-access-using-azure-permissions)のメンバーであるアカウントを使用して Azure の認証を受けます。
 
 * サポートされているリージョン - Log Analytics ワークスペースに接続するために、System Center Operations Manager では次の Azure リージョンのみがサポートされています。
     - 米国中西部
     - オーストラリア東南部
     - 西ヨーロッパ
-    - 米国東部
+    - East US
     - 東南アジア
     - 東日本
     - 英国南部
@@ -95,7 +95,7 @@ IT セキュリティ ポリシーによってネットワーク上のコンピ�
 
 ### <a name="tls-12-protocol"></a>TLS 1.2 プロトコル
 
-Azure Monitor へのデータの転送時のセキュリティを保証するため、少なくともトランスポート層セキュリティ (TLS) 1.2 を使用するようにエージェントと管理グループを構成することを強くお勧めします。 以前のバージョンの TLS/SSL (Secure Sockets Layer) は脆弱であることが確認されています。現在、これらは下位互換性を維持するために使用可能ですが、**推奨されていません**。 詳細については、「[TLS 1.2 を使用して安全にデータを送信する](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12)」を参照してください。
+Azure Monitor へのデータの転送時のセキュリティを保証するため、少なくともトランスポート層セキュリティ (TLS) 1.2 を使用するようにエージェントと管理グループを構成することを強くお勧めします。 以前のバージョンの TLS/SSL (Secure Sockets Layer) は脆弱であることが確認されています。現在、これらは下位互換性を維持するために使用可能ですが、**推奨されていません**。 詳細については、「[TLS 1.2 を使用して安全にデータを送信する](./data-security.md#sending-data-securely-using-tls-12)」を参照してください。
 
 ## <a name="connecting-operations-manager-to-azure-monitor"></a>Operations Manager を Azure Monitor に接続する
 
@@ -154,7 +154,7 @@ Log Analytics ワークスペースとの統合が構成された後には､サ
 1. Operations Manager コンソールを開き、 **[Administration (管理)]** ワークスペースを選択します。
 1. **[RunAs Configuration (RunAs の構成)]** で **[Profiles (プロファイル)]** を選択します。
 1. **System Center Advisor Run As Profile Proxy** というプロファイルを開きます。
-1. 実行プロファイル ウィザードで [追加] をクリックし、実行アカウントを使用します。 [実行アカウント](https://technet.microsoft.com/library/hh321655.aspx) を作成することも、既存のアカウントを使用することもできます。 このアカウントには、プロキシ サーバーを通過するための十分な権限を持たせる必要があります。
+1. 実行プロファイル ウィザードで [追加] をクリックし、実行アカウントを使用します。 [実行アカウント](/previous-versions/system-center/system-center-2012-R2/hh321655(v=sc.12)) を作成することも、既存のアカウントを使用することもできます。 このアカウントには、プロキシ サーバーを通過するための十分な権限を持たせる必要があります。
 1. 管理するアカウントを設定するには、 **[選択したクラス、グループ、またはオブジェクト]** を選択し、 **[選択...]** をクリックします。 次に、 **[グループ...]** をクリックし、 **[グループの検索]** ボックス開きます。
 1. **Microsoft System Center Advisor Monitoring Server Group**を検索して選択します。 グループを選択したら、 **[OK]** をクリックして、 **[グループ検索]** ボックスを閉じます。
 1. **[OK]** をクリックして、 **[実行アカウントの追加]** ボックスを閉じます。
@@ -173,7 +173,7 @@ Log Analytics ワークスペースとの統合が構成された後には､サ
 * **Microsoft.SystemCenter.Advisor.MPUpdate** - ベース Azure Monitor 管理パックを更新します。 既定では 12 時間おきに実行されます。
 * **Microsoft.SystemCenter.Advisor.Core.GetIntelligencePacksRule** - ワークスペースで有効にされたソリューション管理パックを更新します。 既定では 5 分おきに実行されます。
 
-この 2 つのルールはオーバーライドすることができます。具体的には、2 つのルールを無効にして自動ダウンロードを防止することも、新しい管理パックの有無とダウンロードの必要性を判断するために行う管理サーバーと Azure Monitor の同期の頻度を変更することもできます。 秒単位の値で **Frequency** パラメーターを変更して同期スケジュールに変更を加える場合、または **Enabled** パラメーターを変更してルールを無効にする場合は、「[How to Override a Rule or Monitor (ルールまたはモニターをオーバーライドする方法)](https://technet.microsoft.com/library/hh212869.aspx)」の手順に従ってください。 Operations Manager Management Group クラスのすべてのオブジェクトに対するオーバーライドを対象としています。
+この 2 つのルールはオーバーライドすることができます。具体的には、2 つのルールを無効にして自動ダウンロードを防止することも、新しい管理パックの有無とダウンロードの必要性を判断するために行う管理サーバーと Azure Monitor の同期の頻度を変更することもできます。 秒単位の値で **Frequency** パラメーターを変更して同期スケジュールに変更を加える場合、または **Enabled** パラメーターを変更してルールを無効にする場合は、「[How to Override a Rule or Monitor (ルールまたはモニターをオーバーライドする方法)](/previous-versions/system-center/system-center-2012-R2/hh212869(v=sc.12))」の手順に従ってください。 Operations Manager Management Group クラスのすべてのオブジェクトに対するオーバーライドを対象としています。
 
 引き続き既存の変更管理プロセスに従って運用管理グループにおける管理パックのリリースを制御する場合は、ルールを無効にし、更新が許可されている特定の期間中にルールを有効にすることができます。 環境内に開発または QA 管理グループがあり､その管理グループがインターネットと接続できる場合は､Log Analytics ワークスペースを使ってその管理グループがそのシナリオをサポートするように設定できます｡ そうすることによって、Azure Monitor 管理パックを生産管理グループにリリースする前に、その都度､管理パックをレビューし、評価することができます。
 
@@ -193,25 +193,15 @@ Log Analytics ワークスペースとの統合が構成された後には､サ
 
 ## <a name="validate-operations-manager-integration-with-azure-monitor"></a>Azure Monitor との Operations Manager の統合を検証する
 
-Operations Manager への Azure Monitor の統合の成功を確認する方法はいくつかあります。
+次のクエリを使用し、接続された Operations Manager インスタンスを取得します。
 
-### <a name="to-confirm-integration-from-the-azure-portal"></a>Azure ポータルから統合を確認する
-
-1. Azure ポータルで、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。
-1. Log Analytics ワークスペースの一覧で該当するワークスペースを選択します｡  
-1. **Advanced settings** を選択し､**Connected Sources** を選択してから､**System Center** を選択します｡
-1. [System Center Operations Manager] セクションの表に、管理グループの名前と共に、エージェントの数、データを最後に受信したときの状態が一覧表示されます。
-
-   ![oms-settings-connectedsources](./media/om-agents/oms-settings-connectedsources.png)
-
-### <a name="to-confirm-integration-from-the-operations-console"></a>オペレーション コンソールから統合を確認するには
-
-1. Operations Manager コンソールを開き、 **[Administration (管理)]** ワークスペースを選択します。
-1. **[管理パック]** を選択し、 **[Look for (検索する文字列)]** ボックスに「**Advisor**」または「**Intelligence**」と入力します。
-1. 有効にしたソリューションによって、対応する管理パックが検索結果に表示されます。  たとえば、アラート管理ソリューションを有効にした場合、管理パック Microsoft System Center Advisor Alert Management がリストに表示されます。
-1. **[監視]** ビューで、 **[Operations Management Suite\Health State (Operations Management Suite\ヘルス状態)]** ビューに移動します。  **Management Server State** の部分から管理サーバーを選択し､**Detail View** の部分で､**Authentication service URI** プロパティの値が Log Analytics ワークスペース ID に一致していることを確認します｡
-
-   ![oms-opsmgr-mg-authsvcuri-property-ms](./media/om-agents/oms-opsmgr-mg-authsvcuri-property-ms.png)
+```azurepowershell
+union *
+| where isnotempty(MG)
+| where not(ObjectName == 'Advisor Metrics' or ObjectName == 'ManagedSpace')
+| summarize LastData = max(TimeGenerated) by lowerCasedComputerName=tolower(Computer), MG, ManagementGroupName
+| sort by lowerCasedComputerName asc
+```
 
 ## <a name="remove-integration-with-azure-monitor"></a>Azure Monitor との統合を削除する
 
@@ -234,7 +224,7 @@ Operations Manager との統合を有効にしたソリューションの管理�
     >  
 
 1. Operations Manager 管理者ロールのメンバーであるアカウントを使用して Operations Manager オペレーション コンソールを開きます。
-1. **[管理]** で **[管理パック]** ノードを選択し、 **[Look for (検索する文字列)]** ボックスに「**Advisor**」と入力して、次の管理パックが管理グループにインポートされた状態になっていることを確認します。
+1. **[管理]** で **[管理パック]** ノードを選択し、**[Look for (検索する文字列)]** ボックスに「**Advisor**」と入力して、次の管理パックが管理グループにインポートされた状態になっていることを確認します。
 
    * Microsoft System Center Advisor
    * Microsoft System Center Advisor Internal
@@ -354,4 +344,5 @@ Microsoft.SystemCenter.Advisor.DataConnector と Advisor Connector の 2 つの�
 
 ## <a name="next-steps"></a>次のステップ
 
-機能を追加し、データを収集するには、[Solutions Gallery から Azure Monitor ソリューションを追加する](../../azure-monitor/insights/solutions.md)方法に関するページを参照してください。
+機能を追加し、データを収集するには、[Solutions Gallery から Azure Monitor ソリューションを追加する](../insights/solutions.md)方法に関するページを参照してください。
+

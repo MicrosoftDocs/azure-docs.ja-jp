@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: cc67acca11e7e0f24dc0597dcd19672a38a7bf28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 19c40f2a7609d556448641e78fdeffe83e8660b1
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75495750"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083952"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Azure Data Lake Storage アカウントで複数の HDInsight クラスターを使用する
 
@@ -44,7 +44,7 @@ Data Lake Storage アカウントで複数の HDInsight クラスターを使用
 - **サービス プリンシパル**は、そのアカウントに関連付けられている Azure Active Directory (AAD) サービス プリンシパルです。
 - **FINGRP**は、財務組織のユーザーを含む AAD で作成されたユーザー グループです。
 
-AAD アプリケーション (これはサービス プリンシパルも作成します) を作成する方法については、「[AAD アプリケーションの作成](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)」を参照してください。 AAD でユーザー グループを作成する方法については、「[Azure Active Directory でのグループの管理](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
+AAD アプリケーション (これはサービス プリンシパルも作成します) を作成する方法については、「[AAD アプリケーションの作成](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)」を参照してください。 AAD でユーザー グループを作成する方法については、「[Azure Active Directory でのグループの管理](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
 
 いくつかの考慮すべき重要な点。
 
@@ -79,7 +79,9 @@ AAD アプリケーション (これはサービス プリンシパルも作成�
 
 これらの設定は、[YARN 247](https://hwxmonarch.atlassian.net/browse/YARN-247) で取得された 1 つの特定の HDInsight ユースケースに影響を与えることがわかっています。 ジョブの送信は、次のようなエラー メッセージで失敗することがあります。
 
-    Resource XXXX is not publicly accessible and as such cannot be part of the public cache.
+```output
+Resource XXXX is not publicly accessible and as such cannot be part of the public cache.
+```
 
 以前にリンクされた YARN JIRA に示されているように、パブリック リソースのローカライズ中に、ローカライザーはリモート ファイル システムに対するアクセス許可をチェックすることによって、要求されたすべてのリソースが実際にパブリックであることを検証します。 その条件に適合しない LocalResource はすべて、ローカライズに対して拒否されます。 アクセス許可のチェックには、"その他" のファイルへの読み取りアクセス権が含まれます。 Azure Data Lake はルート フォルダー レベルにある "その他" へのすべてのアクセスを拒否するため、Azure Data Lake 上に HDInsight クラスターをホストしている場合、そのままではこのシナリオは機能しません。
 

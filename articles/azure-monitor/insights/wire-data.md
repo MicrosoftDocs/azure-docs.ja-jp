@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/03/2018
-ms.openlocfilehash: ee7a2f49641eb0cfe1f8a4bffb44c7f8642408fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/29/2020
+ms.openlocfilehash: 340eb1a983f074a5ab934a30c55649852ec08b62
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670646"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325153"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Azure Monitor の Wire Data 2.0 (プレビュー) ソリューション
 
@@ -19,12 +19,15 @@ ms.locfileid: "77670646"
 
 ワイヤ データとは、Log Analytics エージェントがインストールされた Windows に接続されたコンピューターおよび Linux に接続されたコンピューター (環境内の Operations Manager によって監視されているコンピューターを含む) から収集したネットワーク データとパフォーマンス データを統合したものです。 ネットワーク データを他のログ データと結び付けると、データを相関させるのに役立ちます。
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
-
 Log Analytics エージェントに加えて、ワイヤ データ ソリューションは、IT インフラストラクチャ内のコンピューターにインストールされている Microsoft Dependency Agent を使用します。 Dependency Agent では、使用されるさまざまなプロトコルやポートなど、[OSI モデル](https://en.wikipedia.org/wiki/OSI_model)のネットワーク レベル 2 ～ 3 について、コンピューターとの間で送受信されたネットワーク データを監視します。 データはその後、エージェントを使用して Azure Monitor に送信されます。  
 
 >[!NOTE]
->Service Map を既にデプロイしているか、Service Map または [Azure Monitor for VMs](../../azure-monitor/insights/vminsights-overview.md) を検討している場合は、それらが Azure Monitor で収集して格納する、ワイヤ データにかなりの情報が提供する新しい接続メトリック データセットがあります。
+>Wire Data ソリューションは、[Service Map ソリューション](service-map.md)に置き換えられました。  どちらも、Log Analytics エージェントと Dependency Agent を使用して、Azure Monitor にネットワーク接続データを収集します。 
+> 
+>Wire Data ソリューションを使用している既存のお客様は、引き続き使用できます。 Service Map に移行するための移行タイムラインのガイダンスを公開する予定です。
+>
+>新規のお客様は、[Service Map ソリューション](service-map.md)または [Azure Monitor for VMs](vminsights-overview.md) をインストールする必要があります。  Service Map データセットは、Wire Data に相当します。  Azure Monitor for VMs には、Service Map データセットと、分析用の追加のパフォーマンス データおよび機能が含まれています。 
+
 
 既定では、Azure Monitor は、Windows および Linux に組み込まれているカウンターと、指定したその他のパフォーマンス カウンターからの CPU、メモリ、ディスク、ネットワーク パフォーマンスのデータをログに記録します。 コンピューターで使用されているサブネットやアプリケーション レベルのプロトコルを始めとするネットワークなどのデータは、エージェントごとにリアルタイムで収集されます。  ワイヤ データは、TCP トランスポート層ではなく、アプリケーション レベルでネットワーク データを調べます。  このソリューションは個別の ACK および SYN を調べません。  ハンドシェイクが完了すると、ライブ接続と見なされ、接続済みとしてマークされます。 その接続は両側が合意している限りはライブ接続のままになり、ソケットが開いて、データを前後に渡すことができます。  いずれかの側が接続を閉じると、切断済みとしてマークされます。  したがって、正常に完了したパケットの帯域幅のみがカウントされ、再送信および失敗したパケットに関するレポートは行われません。
 
@@ -164,7 +167,7 @@ Windows または Linux コンピューターがサービスに直接接続で�
 
 ワークスペースのワイヤ データ ソリューションを構成するには、次の手順を実行します。
 
-1. Activity Log Analytics ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) から有効にするか、[Solutions Gallery からの監視ソリューションの追加](../../azure-monitor/insights/solutions.md)に関するページで説明されている手順に従って有効にしてください。
+1. Activity Log Analytics ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) から有効にするか、[Solutions Gallery からの監視ソリューションの追加](./solutions.md)に関するページで説明されている手順に従って有効にしてください。
 2. データを取得する各コンピューターに Dependency Agent をインストールします。 Dependency Agent は近隣のコンピューターへの接続を監視することができるため、すべてのコンピューターにエージェントが必要とは限りません。
 
 > [!NOTE]
@@ -179,7 +182,7 @@ Dependency Agent は、InstallDependencyAgent-Windows.exe によって Windows �
 
 Windows を実行している各コンピューターに Dependency Agent をインストールするには、次の手順を使用します。
 
-1. [環境でホストされている Windows コンピューターからのデータの収集](../../azure-monitor/platform/agent-windows.md)に関する記事の手順に従って、Log Analytics エージェントをインストールします。
+1. [環境でホストされている Windows コンピューターからのデータの収集](../platform/agent-windows.md)に関する記事の手順に従って、Log Analytics エージェントをインストールします。
 2. 前のセクションのリンクを使用して Windows の Dependency Agent をダウンロードしてから、次のコマンドを使用して実行します。`InstallDependencyAgent-Windows.exe`
 3. ウィザードに従ってエージェントをインストールします。
 4. Dependency Agent が起動しない場合は、詳細なエラー情報のログを確認します。 Windows エージェントの場合、ログ ディレクトリは %Programfiles%\Microsoft Dependency Agent\logs です。
@@ -205,7 +208,7 @@ Dependency Agent は、InstallDependencyAgent-Linux64.bin (自己解凍バイナ
 
 各 Linux コンピューターに Dependency Agent をインストールするには、次の手順を使用します。
 
-1. [環境でホストされている Linux コンピューターからのデータの収集](../../azure-monitor/learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key)に関する記事の手順に従って、Log Analytics エージェントをインストールします。
+1. [環境でホストされている Linux コンピューターからのデータの収集](../learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key)に関する記事の手順に従って、Log Analytics エージェントをインストールします。
 2. 前のセクションのリンクを使用して Linux Dependency Agent をダウンロードしてから、次のコマンドを使用して root としてインストールします。sh InstallDependencyAgent-Linux64.bin
 3. Dependency Agent が起動しない場合は、詳細なエラー情報のログを確認します。 Linux エージェントのログ ディレクトリは、/var/opt/microsoft/dependency-agent/log です。
 
@@ -413,4 +416,5 @@ Azure Portal の Log Analytics ワークスペースの **[概要]** ページ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [ログを検索](../../azure-monitor/log-query/log-query-overview.md) して、詳細なワイヤ データ検索レコードを確認します。
+- [ログを検索](../log-query/log-query-overview.md) して、詳細なワイヤ データ検索レコードを確認します。
+

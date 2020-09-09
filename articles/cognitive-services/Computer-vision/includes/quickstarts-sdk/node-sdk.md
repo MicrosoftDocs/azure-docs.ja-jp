@@ -9,12 +9,13 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 01/22/2020
 ms.author: pafarley
-ms.openlocfilehash: 234e2402287fd76bdfd96cb6884c3fd20e805d06
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 71e6d159a7bb69e5aab28752f5ecf1eacaebd624
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80133686"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321899"
 ---
 <a name="HOLTop"></a>
 
@@ -22,19 +23,14 @@ ms.locfileid: "80133686"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
 * 最新バージョンの [Node.js](https://nodejs.org/)
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Computer Vision リソースを作成"  target="_blank">Computer Vision リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
+    * 対象のアプリケーションを Computer Vision サービスに接続するには、作成したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
+    * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
+* キーとエンドポイント URL 用に、それぞれ `COMPUTER_VISION_SUBSCRIPTION_KEY` と `COMPUTER_VISION_ENDPOINT` という名前の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。
 
 ## <a name="setting-up"></a>設定
-
-### <a name="create-a-computer-vision-azure-resource"></a>Computer Vision Azure リソースを作成する
-
-Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) またはローカル マシン上の [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、Computer Vision 用のリソースを作成します。 次のこともできます。
-
-* 7 日間有効な[試用版のキー](https://azure.microsoft.com/try/cognitive-services/#decision)を無料で入手する。 サインアップ後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis/)でこれを入手できます。
-* [Azure portal](https://portal.azure.com/) でご利用のリソースを表示する。
-
-試用版のサブスクリプションまたはリソースからキーを取得した後、キーとエンドポイント URL の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)し、それぞれ `COMPUTER_VISION_SUBSCRIPTION_KEY` および `COMPUTER_VISION_ENDPOINT` という名前を付けます。
 
 ### <a name="create-a-new-nodejs-application"></a>新しい Node.js アプリケーションを作成する
 
@@ -144,7 +140,7 @@ npm install @azure/cognitiveservices-computervision
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_objects)]
 
-ヘルパー関数 `formatRectObjects` を定義します。
+上、左、下、および右の座標と、幅および高さを返すように、ヘルパー関数 `formatRectObjects` を定義します。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_objectformat)]
 
@@ -212,9 +208,9 @@ Computer Vision では、特殊なモデルを使用して、画像をさらに�
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imagetype_describe)]
 
-## <a name="read-printed-and-handwritten-text"></a>印刷されたテキストと手書きのテキストを読み取る
+## <a name="extract-text-ocr-with-read"></a>Read を使用したテキストの抽出 (OCR)
 
-Computer Vision は、画像に映っているテキストを読み取って、文字ストリームに変換することができます。
+Computer Vision では、画像に映っているテキストを抽出し、文字ストリームに変換することができます。 このサンプルでは、Read 操作を使用します。
 
 > [!NOTE]
 > また、ローカルの画像からテキストを読み取ることもできます。 ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 上のサンプル コードを参照してください。
@@ -225,17 +221,17 @@ Computer Vision は、画像に映っているテキストを読み取って、�
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_images)]
 
-### <a name="call-the-recognize-api"></a>Recognize API を呼び出す
+### <a name="call-the-read-api"></a>Read API を呼び出す
 
-次のコードを追加します。これによって、指定された画像の `recognizeText` 関数が呼び出されます。
+以下のコードは、指定された画像に対して `readTextFromURL` 関数と `readTextFromFile` 関数を呼び出すものです。このコードを追加します。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_call)]
 
-`recognizeText` 関数を定義します。 これにより、クライアント オブジェクトに対して **recognizeText** メソッドが呼び出され、操作 ID が返され、画像の内容を読み取る非同期プロセスが開始されます。 次に、結果が返されるまで、操作 ID を使用して 1 秒間隔で操作が確認されます。 次に、抽出された結果が返されます。
+`readTextFromURL` 関数と `readTextFromFile` 関数を定義します。 これらにより、クライアント オブジェクトに対して **read** メソッドと **readInStream** メソッドが呼び出され、操作 ID が返され、画像の内容を読み取る非同期プロセスが開始されます。 次に、結果が返されるまで、操作 ID を使用して操作の状態が確認されます。 次に、抽出された結果が返されます。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_helper)]
 
-次に、ヘルパー関数 `printRecText` を定義します。これにより、Recognize 操作の結果がコンソールに出力されます。
+次に、ヘルパー関数 `printRecText` を定義します。これにより、Read 操作の結果がコンソールに出力されます。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_print)]
 
@@ -259,5 +255,5 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 > [!div class="nextstepaction"]
 >[Computer Vision API リファレンス (Node.js)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest)
 
-* [Computer Vision とは](../../Home.md)
+* [Computer Vision とは](../../overview.md)
 * このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) にあります。

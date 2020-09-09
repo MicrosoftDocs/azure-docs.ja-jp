@@ -1,21 +1,22 @@
 ---
-title: チュートリアル - Azure ストレージ キューの使用 - Azure Storage
-description: Azure Queue サービスを使用して、キューの作成のほか、メッセージの挿入、取得、削除を行う方法のチュートリアル。
+title: チュートリアル - .NET での Azure Storage キューの操作
+description: .NET から Azure Queue サービスを使用して、キューの作成のほか、メッセージの挿入、取得、削除を行う方法のチュートリアル。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 04/24/2019
+ms.date: 06/09/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: tutorial
-ms.reviewer: cbrooks
-ms.openlocfilehash: 9cbdc5231fdc9f836f300b1a3a81a237a9efc123
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.reviewer: dineshm
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7474cfbd0182797bd62e97979e83e2aeb5244cbc
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75968194"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008796"
 ---
-# <a name="tutorial-work-with-azure-storage-queues"></a>チュートリアル:Azure ストレージ キューの操作
+# <a name="tutorial-work-with-azure-storage-queues-in-net"></a>チュートリアル:.NET での Azure ストレージ キューの操作
 
 Azure Queue ストレージではクラウドベースのキューが実装され、分散アプリケーションのコンポーネント間の通信を可能にします。 各キューには、送信側コンポーネントにより追加し、受信側コンポーネントにより処理できるメッセージの一覧が保持されます。 キューを利用することで、アプリケーションを需要に合わせてすぐにスケーリングできます。 この記事では、Azure ストレージ キューを使用するための基本手順について説明します。
 
@@ -25,6 +26,7 @@ Azure Queue ストレージではクラウドベースのキューが実装さ�
 >
 > - Azure のストレージ アカウントの作成
 > - アプリを作成する
+> - Azure クライアント ライブラリを追加する
 > - 非同期コードのサポートを追加する
 > - キューを作成する
 > - キューにメッセージを挿入する
@@ -36,12 +38,12 @@ Azure Queue ストレージではクラウドベースのキューが実装さ�
 ## <a name="prerequisites"></a>前提条件
 
 - プラットフォームに依存しない [Visual Studio Code](https://code.visualstudio.com/download) エディターの無料コピーを入手します。
-- [.NET Core SDK](https://dotnet.microsoft.com/download) をダウンロードし、インストールします。
+- [.NET Core SDK](https://dotnet.microsoft.com/download) バージョン 3.1 以降をダウンロードし、インストールします。
 - 現行の Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
 
 ## <a name="create-an-azure-storage-account"></a>Azure のストレージ アカウントの作成
 
-まず、Azure ストレージ アカウントを作成します。 ストレージ アカウント作成の詳細な手順が必要な場合、「[ストレージ アカウントの作成](../common/storage-account-create.md?toc=%2Fazure%2Fstorage%2Fqueues%2Ftoc.json)」というクイック スタートをご覧ください。
+まず、Azure ストレージ アカウントを作成します。 ストレージ アカウント作成の詳細な手順が必要な場合、「[ストレージ アカウントの作成](../common/storage-account-create.md?toc=%2Fazure%2Fstorage%2Fqueues%2Ftoc.json)」というクイック スタートをご覧ください。 前提条件の無料 Azure アカウントを作成した後に別途行う手順となります。
 
 ## <a name="create-the-app"></a>アプリを作成する
 
@@ -63,7 +65,7 @@ Azure Queue ストレージではクラウドベースのキューが実装さ�
    dotnet build
    ```
 
-   次のような結果が表示されます。
+   次の出力のような結果が表示されます。
 
    ```output
    C:\Tutorials>dotnet new console -n QueueApp
@@ -71,7 +73,7 @@ Azure Queue ストレージではクラウドベースのキューが実装さ�
 
    Processing post-creation actions...
    Running 'dotnet restore' on QueueApp\QueueApp.csproj...
-     Restore completed in 155.62 ms for C:\Tutorials\QueueApp\QueueApp.csproj.
+     Restore completed in 155.63 ms for C:\Tutorials\QueueApp\QueueApp.csproj.
 
    Restore succeeded.
 
@@ -82,7 +84,7 @@ Azure Queue ストレージではクラウドベースのキューが実装さ�
    Copyright (C) Microsoft Corporation. All rights reserved.
 
      Restore completed in 40.87 ms for C:\Tutorials\QueueApp\QueueApp.csproj.
-     QueueApp -> C:\Tutorials\QueueApp\bin\Debug\netcoreapp2.1\QueueApp.dll
+     QueueApp -> C:\Tutorials\QueueApp\bin\Debug\netcoreapp3.1\QueueApp.dll
 
    Build succeeded.
        0 Warning(s)
@@ -93,77 +95,64 @@ Azure Queue ストレージではクラウドベースのキューが実装さ�
    C:\Tutorials\QueueApp>_
    ```
 
-## <a name="add-support-for-asynchronous-code"></a>非同期コードのサポートを追加する
+## <a name="add-the-azure-client-libraries"></a>Azure クライアント ライブラリを追加する
 
-このアプリではクラウド リソースが使用されているため、コードは非同期で実行されます。 ただし、C# の **async** と **await** は、C# 7.1 までは **Main** メソッドで有効なキーワードではありませんでした。 **csproj** ファイルのフラグを介し、そのコンピューターに簡単に切り替えることができます。
+1. `dotnet add package` コマンドを使用して、Azure Storage クライアント ライブラリをプロジェクトに追加します。
+
+   # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+   コンソール ウィンドウのプロジェクト フォルダーから次のコマンドを実行します。
+
+   ```console
+   dotnet add package Azure.Storage.Queues
+   ```
+
+   # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
+   コンソール ウィンドウのプロジェクト フォルダーから以下のコマンドを実行します。
+
+   ```console
+   dotnet add package Microsoft.Azure.Storage.Common
+   ```
+
+   ```console
+   dotnet add package Microsoft.Azure.Storage.Queue
+   ```
+   ---
+
+### <a name="add-using-statements"></a>using ステートメントを追加する
 
 1. プロジェクト ディレクトリのコマンド ラインで「`code .`」と入力し、現在のディレクトリで Visual Studio Code を開きます。 コマンドライン ウィンドウは開いたままにします。 後で他にもコマンドを実行します。 ビルドとデバッグに必要な C# アセットを追加するように求められた場合、 **[はい]** をクリックします。
 
-2. エディターで **QueueApp.csproj** ファイルを開きます。
+1. **Program.cs** ソース ファイルを開いて、`using System;` ステートメントの直後に次の名前空間を追加します。 このアプリでは、Azure Storage に接続し、キューを使用するとき、これらの名前空間からの型が使用されます。
 
-3. ビルド ファイルで最初の **PropertyGroup** に `<LangVersion>7.1</LangVersion>` を追加します。 インストールしてある .NET のバージョンによっては **TargetFramework** が異なる場合があります。そのため、必ず **LangVersion** タグのみを追加してください。
+   # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-   ```xml
-   <Project Sdk="Microsoft.NET.Sdk">
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_UsingStatements":::
 
-     <PropertyGroup>
-       <OutputType>Exe</OutputType>
-       <TargetFramework>netcoreapp2.1</TargetFramework>
-       <LangVersion>7.1</LangVersion>
-     </PropertyGroup>
+   # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-   ...
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_UsingStatements":::
 
-   ```
+1. **Program.cs** ファイルを保存します。
 
-4. **QueueApp.csproj** ファイルを保存します。
+## <a name="add-support-for-asynchronous-code"></a>非同期コードのサポートを追加する
 
-5. **Program.cs** ソース ファイルを開き、非同期で実行されるように **Main** メソッドを更新します。 **void** を **async Task** 戻り値に変更します。
+このアプリではクラウド リソースが使用されているため、コードは非同期で実行されます。
+
+1. 非同期で実行されるように **Main** メソッドを更新します。 **void** を **async Task** 戻り値に変更します。
 
    ```csharp
    static async Task Main(string[] args)
    ```
 
-6. **Program.cs** ファイルを保存します。
+1. **Program.cs** ファイルを保存します。
 
 ## <a name="create-a-queue"></a>キューを作成する
 
-1. `dotnet add package` コマンドを使用して、**Microsoft.Azure.Storage.Common** および **Microsoft.Azure.Storage.Queue** パッケージをプロジェクトにインストールします。 コンソール ウィンドウのプロジェクト フォルダーから以下の dotnet コマンドを実行します。
+Azure API を呼び出す前に、Azure portal から資格情報を取得する必要があります。
 
-   ```console
-   dotnet add package Microsoft.Azure.Storage.Common
-   dotnet add package Microsoft.Azure.Storage.Queue
-   ```
-
-2. **Program.cs** ファイルの一番上で、`using System;` ステートメントの直後に次の名前空間を追加します。 このアプリでは、Azure Storage に接続し、キューを使用するとき、これらの名前空間からの型が使用されます。
-
-   ```csharp
-   using System.Threading.Tasks;
-   using Microsoft.Azure.Storage;
-   using Microsoft.Azure.Storage.Queue;
-   ```
-
-3. **Program.cs** ファイルを保存します。
-
-### <a name="get-your-connection-string"></a>接続文字列を取得する
-
-このクライアント ライブラリでは、接続を確立するために接続文字列が使用されます。 接続文字列は、Azure portal のストレージ アカウントの **[設定]** セクションにあります。
-
-1. Web ブラウザーで、[Azure portal](https://portal.azure.com/) にサインインします。
-
-2. Azure Portal のストレージ アカウントに移動します。
-
-3. **[アクセス キー]** を選択します。
-
-4. **[接続文字列]** フィールドの右にある **[コピー]** ボタンをクリックします。
-
-![接続文字列](media/storage-tutorial-queues/get-connection-string.png)
-
-この接続文字列の形式を次に示します。
-
-   ```
-   "DefaultEndpointsProtocol=https;AccountName=<your storage account name>;AccountKey=<your key>;EndpointSuffix=core.windows.net"
-   ```
+[!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
 ### <a name="add-the-connection-string-to-the-app"></a>アプリに接続文字列を追加する
 
@@ -171,272 +160,132 @@ Azure Queue ストレージではクラウドベースのキューが実装さ�
 
 1. Visual Studio Code に戻ります。
 
-2. **Program** クラスで、`private const string connectionString =` メンバーを追加し、接続文字列を保持します。
+1. **Main** メソッドで、`Console.WriteLine("Hello World!");` コードを次の行に置き換えます。環境変数から接続文字列を取得するものです。
 
-3. 前に Azure portal でコピーした文字列値を等号の後ろに貼り付けます。 **connectionString** 値は自分のアカウントに固有となります。
+   # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-4. **Main** から "Hello World" コードを削除します。 コードは次のようになるはずですが、接続文字列の値は独自のものになります。
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_DeclareConnectionString":::
 
-   ```csharp
-   namespace QueueApp
-   {
-       class Program
-       {
-           private const string connectionString = "DefaultEndpointsProtocol=https; ...";
+   # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-           static async Task Main(string[] args)
-           {
-           }
-       }
-   }
-   ```
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_DeclareConnectionString":::
 
-5. **CloudQueue** オブジェクトを作成するように **Main** を更新します。このオブジェクトは後に送信と受信のメソッドに渡されます。
+1. キュー オブジェクトを作成する次のコードを **Main** に追加します。このキュー オブジェクトを後で送信メソッドと受信メソッドに渡します。
 
-   ```csharp
-        static async Task Main(string[] args)
-        {
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(connectionString);
-            CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-            CloudQueue queue = queueClient.GetQueueReference("mystoragequeue");
-        }
-   ```
+   # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-6. ファイルを保存します。
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_CreateQueueClient":::
+
+   # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_CreateQueueClient":::
+
+1. ファイルを保存します。
 
 ## <a name="insert-messages-into-the-queue"></a>キューにメッセージを挿入する
 
-キューにメッセージを送信する新しいメソッドを作成します。 **Program** クラスに次のメソッドを追加します。 このメソッドによりキュー参照が取得されます。キューがない場合、[CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.createifnotexistsasync) を呼び出すことで新しいキューが作成されます。 次に、[AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync) を呼び出すことでキューにメッセージが追加されます。
+キューにメッセージを送信する新しいメソッドを作成します。
 
-1. 次の **SendMessageAsync** メソッドを **Program** クラスに追加します。
+1. 次の **InsertMessageAsync** メソッドを **Program** クラスに追加します。
 
-   ```csharp
-   static async Task SendMessageAsync(CloudQueue theQueue, string newMessage)
-   {
-       bool createdQueue = await theQueue.CreateIfNotExistsAsync();
+   # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-       if (createdQueue)
-       {
-           Console.WriteLine("The queue was created.");
-       }
+   このメソッドには、キューの参照が渡されます。 まだキューが存在しない場合は、[CreateIfNotExistsAsync](/dotnet/api/azure.storage.queues.queueclient.createifnotexistsasync) を呼び出すことで新しいキューが作成されます。 その後、[SendMessageAsync](/dotnet/api/azure.storage.queues.queueclient.sendmessageasync) を呼び出して *newMessage* をキューに追加します。
 
-       CloudQueueMessage message = new CloudQueueMessage(newMessage);
-       await theQueue.AddMessageAsync(message);
-   }
-   ```
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_InsertMessage":::
 
-2. ファイルを保存します。
+   # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-メッセージは、UTF-8 エンコードの XML 要求に格納できる形式でなければならず、最大 64 KB のサイズまで許容されます。 メッセージにバイナリ データが含まれている場合は、メッセージを Base64 でエンコードすることをお勧めします。
+   このメソッドには、キューの参照が渡されます。 まだキューが存在しない場合は、[CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.createifnotexistsasync) を呼び出すことで新しいキューが作成されます。 次に、[AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync) を呼び出すことでキューに *newMessage* が追加されます。
 
-既定では、メッセージの最大 Time to Live は 7 日に設定されます。 メッセージの有効期限には、任意の正の数値を指定できます。 有効期限のないメッセージを追加するには、**AddMessageAsync** への呼び出しで `Timespan.FromSeconds(-1)` を使用します。
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_InsertMessage":::
 
-```csharp
-await theQueue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null);
-```
+1. **(省略可)** 既定では、メッセージの最大 Time to Live は 7 日に設定されます。 メッセージの有効期限には、任意の正の数値を指定できます。 次のコード スニペットは、有効期限の "*ない*" メッセージを追加します。
+
+   # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+    有効期限のないメッセージを追加するには、**SendMessageAsync** への呼び出しで `Timespan.FromSeconds(-1)` を使用します。
+
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Initial.cs" id="snippet_SendNonExpiringMessage":::
+
+   # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
+    有効期限のないメッセージを追加するには、**AddMessageAsync** への呼び出しで `Timespan.FromSeconds(-1)` を使用します。
+
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Initial.cs" id="snippet_SendNonExpiringMessage":::
+
+1. ファイルを保存します。
+
+キュー メッセージは、UTF-8 エンコードを使用して、XML 要求と互換性のある形式にする必要があります。 メッセージの許容される最大サイズは 64 KB です。 メッセージにバイナリ データが含まれている場合は、メッセージを [Base64 でエンコード](/dotnet/api/system.convert.tobase64string)してください。
 
 ## <a name="dequeue-messages"></a>メッセージをデキューする
 
-**ReceiveMessageAsync** という名前の新しいメソッドを作成します。 このメソッドは、[GetMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessageasync) を呼び出し、キューからメッセージを受け取ります。 メッセージが正常に受け取られたら、何度も処理されないよう、キューから削除しておくことが重要です。 メッセージが受け取られたら、[DeleteMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessageasync) を呼び出し、キューからそれを削除します。
+キューからメッセージを取得する新しいメソッドを作成します。 メッセージが正常に受け取られたら、何度も処理されないよう、キューから削除しておくことが重要です。
 
-1. 次の **ReceiveMessageAsync** メソッドを **Program** クラスに追加します。
+1. **RetrieveNextMessageAsync** という新しいメソッドを **Program** クラスに追加します。
 
-   ```csharp
-   static async Task<string> ReceiveMessageAsync(CloudQueue theQueue)
-   {
-       bool exists = await theQueue.ExistsAsync();
+   # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-       if (exists)
-       {
-           CloudQueueMessage retrievedMessage = await theQueue.GetMessageAsync();
+   このメソッドは、[ReceiveMessagesAsync](/dotnet/api/azure.storage.queues.queueclient.receivemessagesasync) を呼び出してキューからメッセージを受け取ります。第 1 パラメーターに 1 を渡すと、キューにおける次のメッセージだけが取得されます。 メッセージが受け取られたら、[DeleteMessageAsync](/dotnet/api/azure.storage.queues.queueclient.deletemessageasync) を呼び出し、キューからそれを削除します。
 
-           if (retrievedMessage != null)
-           {
-               string theMessage = retrievedMessage.AsString;
-               await theQueue.DeleteMessageAsync(retrievedMessage);
-               return theMessage;
-           }
-       }
-   }
-   ```
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Initial.cs" id="snippet_InitialRetrieveMessage":::
 
-2. ファイルを保存します。
+   # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
+   このメソッドは、[GetMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessageasync) を呼び出し、キューからメッセージを受け取ります。 メッセージが受け取られたら、[DeleteMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessageasync) を呼び出し、キューからそれを削除します。
+
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Initial.cs" id="snippet_InitialRetrieveMessage":::
+
+1. ファイルを保存します。
 
 ## <a name="delete-an-empty-queue"></a>空のキューを削除する
 
 プロジェクトの終わりに、作成したリソースを引き続き必要とするかどうかを判断することをお勧めします。 リソースを実行したままにすると、お金がかかる場合があります。 キューが存在するが空の場合、削除して良いかどうかをユーザーに確認してください。
 
-1. **ReceiveMessageAsync** メソッドを拡張し、空のキューを削除するプロンプトを追加します。
+1. **RetrieveNextMessageAsync** メソッドを拡張し、空のキューを削除するプロンプトを追加します。
 
-   ```csharp
-   static async Task<string> ReceiveMessageAsync(CloudQueue theQueue)
-   {
-       bool exists = await theQueue.ExistsAsync();
+   # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-       if (exists)
-       {
-           CloudQueueMessage retrievedMessage = await theQueue.GetMessageAsync();
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_RetrieveMessage":::
 
-           if (retrievedMessage != null)
-           {
-               string theMessage = retrievedMessage.AsString;
-               await theQueue.DeleteMessageAsync(retrievedMessage);
-               return theMessage;
-           }
-           else
-           {
-               Console.Write("The queue is empty. Attempt to delete it? (Y/N) ");
-               string response = Console.ReadLine();
+   # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-               if (response == "Y" || response == "y")
-               {
-                   await theQueue.DeleteIfExistsAsync();
-                   return "The queue was deleted.";
-               }
-               else
-               {
-                   return "The queue was not deleted.";
-               }
-           }
-       }
-       else
-       {
-           return "The queue does not exist. Add a message to the command line to create the queue and store the message.";
-       }
-   }
-   ```
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_RetrieveMessage":::
 
-2. ファイルを保存します。
+1. ファイルを保存します。
 
 ## <a name="check-for-command-line-arguments"></a>コマンドライン引数を確認する
 
-コマンドラインの引数がアプリに渡されている場合、それらがキューに追加するメッセージであると想定してください。 引数を結合し、文字列を作ります。 前に追加した **SendMessageAsync** を呼び出し、この文字列をメッセージ キューに追加します。
+コマンドラインの引数がアプリに渡されている場合、それらがキューに追加するメッセージであると想定してください。 引数を結合し、文字列を作ります。 前に追加した **InsertMessageAsync** メソッドを呼び出し、この文字列をメッセージ キューに追加します。
 
-コマンドラインの引数がない場合、取得操作を実行します。 **ReceiveMessageAsync** メソッドを呼び出し、キューの最初のメッセージを取得します。
+コマンドラインの引数がない場合、取得操作を試行します。 **RetrieveNextMessageAsync** メソッドを呼び出し、キューの次のメッセージを取得します。
 
 最後に、**Console.ReadLine** を呼び出し、ユーザーの入力を待ってから終了します。
 
 1. コマンドラインの引数を確認し、ユーザーの入力を待つよう、**Main** メソッドを拡張します。
 
-   ```csharp
-        static async Task Main(string[] args)
-        {
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(connectionString);
-            CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-            CloudQueue queue = queueClient.GetQueueReference("mystoragequeue");
+   # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-            if (args.Length > 0)
-            {
-                string value = String.Join(" ", args);
-                await SendMessageAsync(queue, value);
-                Console.WriteLine($"Sent: {value}");
-            }
-            else
-            {
-                string value = await ReceiveMessageAsync(queue);
-                Console.WriteLine($"Received: {value}");
-            }
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_Main":::
 
-            Console.Write("Press Enter...");
-            Console.ReadLine();
-        }
-   ```
+   # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-2. ファイルを保存します。
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_Main":::
+
+1. ファイルを保存します。
 
 ## <a name="complete-code"></a>完成したコード
 
 このプロジェクトの完成したコードは次のようになります。
 
-   ```csharp
-   using System;
-   using System.Threading.Tasks;
-   using Microsoft.Azure.Storage;
-   using Microsoft.Azure.Storage.Queue;
+   # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-   namespace QueueApp
-   {
-    class Program
-    {
-        // The string value is broken up for better onscreen formatting
-        private const string connectionString = "DefaultEndpointsProtocol=https;" +
-                                                "AccountName=<your storage account name>;" +
-                                                "AccountKey=<your key>;" +
-                                                "EndpointSuffix=core.windows.net";
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_AllCode":::
 
-        static async Task Main(string[] args)
-        {
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(connectionString);
-            CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-            CloudQueue queue = queueClient.GetQueueReference("mystoragequeue");
+   # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-            if (args.Length > 0)
-            {
-                string value = String.Join(" ", args);
-                await SendMessageAsync(queue, value);
-                Console.WriteLine($"Sent: {value}");
-            }
-            else
-            {
-                string value = await ReceiveMessageAsync(queue);
-                Console.WriteLine($"Received {value}");
-            }
-
-            Console.Write("Press Enter...");
-            Console.ReadLine();
-        }
-
-        static async Task SendMessageAsync(CloudQueue theQueue, string newMessage)
-        {
-            bool createdQueue = await theQueue.CreateIfNotExistsAsync();
-
-            if (createdQueue)
-            {
-                Console.WriteLine("The queue was created.");
-            }
-
-            CloudQueueMessage message = new CloudQueueMessage(newMessage);
-            await theQueue.AddMessageAsync(message);
-        }
-
-        static async Task<string> ReceiveMessageAsync(CloudQueue theQueue)
-        {
-            bool exists = await theQueue.ExistsAsync();
-
-            if (exists)
-            {
-                CloudQueueMessage retrievedMessage = await theQueue.GetMessageAsync();
-
-                if (retrievedMessage != null)
-                {
-                    string theMessage = retrievedMessage.AsString;
-                    await theQueue.DeleteMessageAsync(retrievedMessage);
-                    return theMessage;
-                }
-                else
-                {
-                    Console.Write("The queue is empty. Attempt to delete it? (Y/N) ");
-                    string response = Console.ReadLine();
-
-                    if (response == "Y" || response == "y")
-                    {
-                        await theQueue.DeleteIfExistsAsync();
-                        return "The queue was deleted.";
-                    }
-                    else
-                    {
-                        return "The queue was not deleted.";
-                    }
-                }
-            }
-            else
-            {
-                return "The queue does not exist. Add a message to the command line to create the queue and store the message.";
-            }
-        }
-    }
-   }
-   ```
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_AllCode":::
+   ---
 
 ## <a name="build-and-run-the-app"></a>アプリのビルドと実行
 
@@ -446,13 +295,13 @@ await theQueue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, nu
    dotnet build
    ```
 
-2. プロジェクトが正常にビルドされたら、次のコマンドを実行し、最初のメッセージをキューに追加します。
+1. プロジェクトが正常にビルドされたら、次のコマンドを実行し、最初のメッセージをキューに追加します。
 
    ```console
    dotnet run First queue message
    ```
 
-次のように出力されます。
+   次のように出力されます。
 
    ```output
    C:\Tutorials\QueueApp>dotnet run First queue message
@@ -461,13 +310,13 @@ await theQueue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, nu
    Press Enter..._
    ```
 
-3. コマンドラインの引数なしでアプリを実行し、キューの最初のメッセージを受け取り、削除します。
+1. コマンドラインの引数なしでアプリを実行し、キューの最初のメッセージを受け取り、削除します。
 
    ```console
    dotnet run
    ```
 
-4. すべてのメッセージが削除されるまでアプリの実行を続けます。 さらに 1 回実行すると、キューが空であるというメッセージとキューを削除するためのプロンプトが表示されます。
+1. すべてのメッセージが削除されるまでアプリの実行を続けます。 さらに 1 回実行すると、キューが空であるというメッセージとキューを削除するためのプロンプトが表示されます。
 
    ```output
    C:\Tutorials\QueueApp>dotnet run First queue message
@@ -508,10 +357,15 @@ await theQueue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, nu
 このチュートリアルでは、以下の内容を学習しました。
 
 1. キューを作成する
-2. メッセージをキューに追加し、キューから削除する
-3. Azure ストレージ キューを削除する
+1. メッセージをキューに追加し、キューから削除する
+1. Azure ストレージ キューを削除する
 
-詳細については Azure キューのクイック スタートでご確認ください。
+詳細については Azure キューのクイックスタートでご確認ください。
 
 > [!div class="nextstepaction"]
-> [キューのクイック スタート](storage-quickstart-queues-portal.md)
+> [キューのクイックスタート (ポータル)](storage-quickstart-queues-portal.md)
+
+- [キューのクイックスタート (.NET)](storage-quickstart-queues-dotnet.md)
+- [キューのクイックスタート (Java)](storage-quickstart-queues-java.md)
+- [キューのクイックスタート (Python)](storage-quickstart-queues-python.md)
+- [キューのクイックスタート (JavaScript)](storage-quickstart-queues-nodejs.md)

@@ -11,12 +11,12 @@ ms.topic: end-user-help
 ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: b6bda6d35391543e416c377557e34de317e293eb
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 04076ed5b91f8e840a084b784477d07eea5adee7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741565"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015972"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Microsoft 以外のアカウントを Microsoft Authenticator アプリに追加する
 
@@ -50,7 +50,7 @@ ms.locfileid: "83741565"
 
 ### <a name="add-your-google-account-to-the-app"></a>Google アカウントをアプリに追加する
 
-1. コンピューターの Google ページで、 **[Set up alternative second step]\(代替の 2 番目のステップを設定する\)** セクションに移動し、 **[Authenticator アプリ]** セクションから **[設定]** を選びます。
+1. コンピューターの Google アカウントのセキュリティ ページ (https://myaccount.google.com/security) で、 **[2 つ目の手順を追加してログインを確認する]** セクションに移動し、 **[認証システム アプリ]** セクションから **[設定]** を選びます。
 
 2. **[Get codes from the Authenticator app]\(Authenticator アプリからコードを入手\)** ページで、ご利用の電話の種類に基づいて **[Android]** または **[iPhone]** を選択してから **[次へ]** を選びます。
 

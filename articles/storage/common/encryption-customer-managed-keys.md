@@ -5,17 +5,17 @@ description: 独自の暗号化キーを使用して、ストレージ アカウ
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/12/2020
+ms.date: 07/20/2020
 ms.topic: conceptual
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: b2755d5aa5dbaa669fa2fdd8b84596e040b5dd6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: af70b1746b2ac847d964975aaf1b2186aa89be01
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81456823"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292739"
 ---
 # <a name="use-customer-managed-keys-with-azure-key-vault-to-manage-azure-storage-encryption"></a>Azure Key Vault でカスタマー マネージド キーを使用して Azure Storage の暗号化を管理する
 
@@ -47,13 +47,13 @@ BLOB とファイル サービスのデータは、カスタマー マネージ�
 
 ## <a name="enable-customer-managed-keys-for-a-storage-account"></a>ストレージ アカウントのカスタマー マネージド キーを有効にする
 
-カスタマー マネージド キーは、既存のストレージ アカウントでのみ有効にすることができます。 キー コンテナーは、ストレージ アカウントに関連するマネージド ID にキーのアクセス許可を付与するアクセス ポリシーでプロビジョニングする必要があります。 マネージド ID は、ストレージ アカウントが作成された後でのみ使用できます。
-
 カスタマー マネージド キーを構成すると、Azure Storage は、関連するキー コンテナー内のカスタマー マネージド キーを使用して、アカウントのルート データ暗号化キーをラップします。 カスタマー マネージド キーを有効にしても、パフォーマンスには影響せず、すぐに有効になります。
 
-カスタマー マネージド キーの有効化または無効化、キーのバージョンの更新、または別のキーの指定によって、Azure Storage の暗号化に使用されるキーを変更すると、ルート キーの暗号化は変わりますが、Azure ストレージ アカウントのデータを再暗号化する必要はありません。
-
 カスタマー マネージド キーを有効または無効にした場合、あるいはキーまたはキーのバージョンを変更した場合、ルート暗号化キーの保護は変更されますが、Azure Storage アカウントのデータを再暗号化する必要はありません。
+
+カスタマー マネージド キーは、既存のストレージ アカウントでのみ有効にすることができます。 キー コンテナーは、ストレージ アカウントに関連付けられているマネージド ID にアクセス許可を付与するアクセス ポリシーで構成する必要があります。 マネージド ID は、ストレージ アカウントが作成された後でのみ使用できます。
+
+カスタマー マネージド キーと Microsoft マネージド キーをいつでも切り替えることができます。 Microsoft マネージド キーの詳細については、「[暗号化キーの管理について](storage-service-encryption.md#about-encryption-key-management)」を参照してください。
 
 Azure Storage 暗号化用に Azure Key Vault でカスタマー マネージド キーを使用する方法については、次のいずれかの記事を参照してください。
 
@@ -68,13 +68,20 @@ Azure Storage 暗号化用に Azure Key Vault でカスタマー マネージド
 
 ストレージ アカウントでカスタマー マネージド キーを有効にするには、Azure Key Vault を使用してキーを格納する必要があります。 Key Vault で **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** の両方のプロパティを有効にする必要があります。
 
-Azure Storage の暗号化では、2048 ビットの RSA と RSA-HSM キーのみがサポートされます。 キーの詳細については、「[Azure Key Vault のキー、シークレット、証明書について](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)」の「**Key Vault のキー**」を参照してください。
+Azure Storage の暗号化では、2,048、3,072、および 4,096 のサイズの RSA キーと RSA-HSM キーがサポートされています。 キーの詳細については、「[Azure Key Vault のキー、シークレット、証明書について](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)」の「**Key Vault のキー**」を参照してください。
+
+Azure Key Vault の使用には関連コストがあります。 詳細については、「[Key Vault の価格](https://azure.microsoft.com/pricing/details/key-vault/)」を参照してください。
 
 ## <a name="rotate-customer-managed-keys"></a>カスタマー マネージド キーをローテーションする
 
-Azure Key Vault のカスタマー マネージド キーは、お使いのコンプライアンス ポリシーに従ってローテーションすることができます。 キーをローテーションするときは、新しいキー バージョンの URI を使用するようにストレージ アカウントを更新する必要があります。 Azure portal で新しいバージョンのキーを使用するようにストレージ アカウントを更新する方法については、「[Azure ポータルを使用して、Azure Storage 用にカスタマー マネージド キーを構成する](storage-encryption-keys-portal.md)」の「**キーのバージョンを更新する**」というタイトルのセクションを参照してください。
+Azure Key Vault のカスタマー マネージド キーは、お使いのコンプライアンス ポリシーに従ってローテーションすることができます。 カスタマー マネージド キーのローテーションには、次の 2 つのオプションがあります。
 
-キーをローテーションしても、ストレージ アカウントのデータの再暗号化はトリガーされません。 ユーザーがこれ以上操作を行う必要はありません。
+- **自動ローテーション:** カスタマー マネージド キーの自動ローテーションを構成するには、ストレージ アカウントでカスタマー マネージド キーを使用した暗号化を有効にするときに、キーのバージョンを省略します。 キーのバージョンが省略されている場合、Azure Storage によって Azure Key Vault が毎日チェックされ、新しいバージョンのカスタマー マネージド キーがないかどうかが確認されます。 新しいキー バージョンを使用できる場合は、最新バージョンのキーが自動的に使用されます。
+- **手動ローテーション:** Azure Storage 暗号化に特定のキー バージョンを使用するには、ストレージ アカウントでカスタマー マネージド キーを使用した暗号化を有効にするときに、そのキー バージョンを指定します。 キーのバージョンを指定した場合、キーのバージョンを手動で更新するまで、Azure Storage ではそのバージョンが暗号化に使用されます。
+
+    キーを手動でローテーションするときは、新しいキー バージョンの URI を使用するようにストレージ アカウントを更新する必要があります。 Azure portal で新しいバージョンのキーを使用するようにストレージ アカウントを更新する方法については、[キーのバージョンを手動で更新する](storage-encryption-keys-portal.md#manually-update-the-key-version)方法に関するセクションを参照してください。
+
+カスタマー マネージド キーをローテーションしても、ストレージ アカウントのデータの再暗号化はトリガーされません。 ユーザーがこれ以上操作を行う必要はありません。
 
 ## <a name="revoke-access-to-customer-managed-keys"></a>カスタマー マネージド キーへのアクセス権を取り消す
 

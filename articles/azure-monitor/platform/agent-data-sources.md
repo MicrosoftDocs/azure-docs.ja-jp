@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: aec3fe2386ce916c556f6da295a8554fff140259
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a183589c3e5274cf747164cdc33d46044f95e716
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226431"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073681"
 ---
 # <a name="agent-data-sources-in-azure-monitor"></a>Azure Monitor のエージェント データ ソース
 Azure Monitor がエージェントから収集するデータは、構成されたデータ ソースによって定義されます。  エージェントからのデータは、一連のレコードを含んだ[ログ データ](data-platform-logs.md)として格納されます。  データ ソースはそれぞれ異なるタイプのレコードを作成し、各レコード タイプは独自のプロパティ セットを持っています。
@@ -47,7 +47,7 @@ Azure Monitor がエージェントから収集するデータは、構成され
 ## <a name="data-collection"></a>データ コレクション
 データ ソースの構成は、数分以内に Azure Monitor に直接接続されたエージェントに配信されます。  指定されたデータがエージェントから収集され、各データ ソースに固有の間隔で Azure Monitor に直接配信されます。  詳しくは、各データ ソースのドキュメントを参照してください。
 
-接続された管理グループ内の System Center Operations Manager エージェントの場合、データ ソースの構成は管理パックに変換され、既定で 5 分ごとに管理グループに配信されます。  このエージェントは、他のエージェントと同じように管理パックをダウンロードし、指定されたデータを収集します。 データは、そのソースに応じて、管理サーバーに送信されてそこから Azure Monitor に転送されるか、エージェントが管理サーバーを介さずに Azure Monitor に送信します。 詳しくは、[Azure における監視ソリューションのデータ収集の詳細](../insights/solutions-inventory.md)に関するページを参照してください。  Operations Manager および Azure Monitor への接続と構成の配信頻度の変更の詳細については、[System Center Operations Manager との統合の構成](om-agents.md)に関するページを参照してください。
+接続された管理グループ内の System Center Operations Manager エージェントの場合、データ ソースの構成は管理パックに変換され、既定で 5 分ごとに管理グループに配信されます。  このエージェントは、他のエージェントと同じように管理パックをダウンロードし、指定されたデータを収集します。 データは、そのソースに応じて、管理サーバーに送信されてそこから Azure Monitor に転送されるか、エージェントが管理サーバーを介さずに Azure Monitor に送信します。 詳しくは、[Azure における監視ソリューションのデータ収集の詳細](../monitor-reference.md)に関するページを参照してください。  Operations Manager および Azure Monitor への接続と構成の配信頻度の変更の詳細については、[System Center Operations Manager との統合の構成](om-agents.md)に関するページを参照してください。
 
 エージェントが Azure Monitor または Operations Manager に接続できない場合は、そのままデータの収集を続け、接続が確立されたときにデータを送信します。  データの量がクライアントの最大キャッシュ サイズに達した場合、またはエージェントが 24 時間以内に接続を確立できなかった場合は、データが失われることがあります。
 

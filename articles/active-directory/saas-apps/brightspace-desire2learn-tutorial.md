@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Brightspace by Desire2Learn の統合 | Microsoft Docs'
 description: Azure Active Directory と Brightspace by Desire2Learn の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: e2d3065b-1f6c-4c45-af78-0d5da3266999
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6423920f5583cf811624a62205a433febddec02e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e212b8c72a8cf7000a2789034f3ee83a5a0c9cda
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73158772"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542771"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightspace-by-desire2learn"></a>チュートリアル: Azure Active Directory と Brightspace by Desire2Learn の統合
 
@@ -41,6 +36,9 @@ Azure AD と Brightspace by Desire2Learn の統合を構成するには、次の
 
 * Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
 * Brightspace by Desire2Learn でのシングル サインオンが有効なサブスクリプション
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -108,10 +106,10 @@ Brightspace by Desire2Learn で Azure AD のシングル サインオンを構�
 
     a. **[識別子]** ボックスに、次の形式で URL を入力します。
     
-    | |
-    |--|
-    | `https://<companyname>.tenants.brightspace.com/samlLogin`|
-    | `https://<companyname>.desire2learn.com/shibboleth-sp`|
+    ```http
+    https://<companyname>.tenants.brightspace.com/samlLogin
+    https://<companyname>.desire2learn.com/shibboleth-sp
+    ```
 
     b. **[応答 URL]** ボックスに、`https://<companyname>.desire2learn.com/d2l/lp/auth/login/samlLogin.d2l` のパターンを使用して URL を入力します
 

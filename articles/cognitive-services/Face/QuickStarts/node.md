@@ -8,87 +8,100 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: b88959d1dd936df0315d7365513ab0c0c5b7df17
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 245cb90fa49e844b6e190f6acb8a44f339fd29dd
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81402937"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88539320"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>クイック スタート:Face REST API と Node.js を使用して画像から顔を検出する
 
 このクイック スタートでは、Azure Face REST API と Node.js を使用して、画像から人の顔を検出します。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。 
 
 ## <a name="prerequisites"></a>前提条件
 
-- Face サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face サービスをサブスクライブし、キーを取得します。
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="Face リソースを作成"  target="_blank">Face リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
+    * 対象のアプリケーションを Face API に接続するには、作成したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
+    * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
 - コード エディター ([Visual Studio Code](https://code.visualstudio.com/download) など)
 
 ## <a name="set-up-the-node-environment"></a>Node 環境をセットアップする
 
-実際のプロジェクトの作成先となるフォルダーに移動して、*facedetection.js* という新しいファイルを作成します。 そのプロジェクトに `requests` モジュールをインストールします。 これにより、スクリプトから HTTP 要求を実行することができます。
+実際のプロジェクトの作成先となるフォルダーに移動して、*facedetection.js* という新しいファイルを作成します。 そのプロジェクトに `axios` モジュールをインストールします。 これにより、スクリプトから HTTP 要求を実行することができます。
 
 ```shell
-npm install request --save
+npm install axios --save
 ```
 
 ## <a name="write-the-nodejs-script"></a>Node.js スクリプトを作成する
 
-次のコードを *facedetection.js* に貼り付けます。 Face サービスへの接続方法と入力データの取得場所がこれらのフィールドによって指定されます。 `subscriptionKey` フィールドは、実際のサブスクリプション キーの値で更新する必要があります。また `uriBase` 文字列も、適切なエンドポイント文字列を含むように変更する必要があります。 `imageUrl` フィールドは、実際の入力画像を指すように変更する必要があります。
+次のコードを *facedetection.js* に貼り付けます。 Face サービスへの接続方法と入力データの取得場所がこれらのフィールドによって指定されます。 [環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows#configure-an-environment-variable-for-authentication)し、Face サブスクリプションのキーとエンドポイントを追加します。 `imageUrl` フィールドは、実際の入力画像を指すように変更する必要があります。
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ```javascript
 'use strict';
 
-const request = require('request');
+const axios = require('axios').default;
 
-// Replace <Subscription Key> with your valid subscription key.
-const subscriptionKey = '<Subscription Key>';
+// Add a valid subscription key and endpoint to your environment variables.
+let subscriptionKey = process.env['FACE_SUBSCRIPTION_KEY']
+let endpoint = process.env['FACE_ENDPOINT'] + '/face/v1.0/detect'
 
-// You must use the same location in your REST call as you used to get your
-// subscription keys. For example, if you got your subscription keys from
-// westus, replace "westcentralus" in the URL below with "westus".
-const uriBase = 'https://<My Endpoint String>.com/face/v1.0/detect';
-
-const imageUrl =
-    'https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg';
+// Optionally, replace with your own image URL (for example a .jpg or .png URL).
+let imageUrl = 'https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/faces.jpg'
 ```
 
 さらに、Face API を呼び出して顔の属性データを入力画像から取得する次のコードを追加します。 `returnFaceAttributes` フィールドは、取得する顔の属性を指定します。 この文字列は、実際の用途に合わせて変更してください。
 
 
 ```javascript
-// Request parameters.
-const params = {
-    'returnFaceId': 'true',
-    'returnFaceLandmarks': 'false',
-    'returnFaceAttributes': 'age,gender,headPose,smile,facialHair,glasses,' +
-        'emotion,hair,makeup,occlusion,accessories,blur,exposure,noise'
-};
-
-const options = {
-    uri: uriBase,
-    qs: params,
-    body: '{"url": ' + '"' + imageUrl + '"}',
-    headers: {
-        'Content-Type': 'application/json',
-        'Ocp-Apim-Subscription-Key' : subscriptionKey
-    }
-};
-
-request.post(options, (error, response, body) => {
-  if (error) {
-    console.log('Error: ', error);
-    return;
-  }
-  let jsonResponse = JSON.stringify(JSON.parse(body), null, '  ');
-  console.log('JSON Response\n');
-  console.log(jsonResponse);
+// Send a POST request
+axios({
+    method: 'post',
+    url: endpoint,
+    params : {
+        returnFaceId: true,
+        returnFaceLandmarks: false,
+        returnFaceAttributes: 'age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise'
+    },
+    data: {
+        url: imageUrl,
+    },
+    headers: { 'Ocp-Apim-Subscription-Key': subscriptionKey }
+}).then(function (response) {
+    console.log('Status text: ' + response.status)
+    console.log('Status text: ' + response.statusText)
+    console.log()
+    //console.log(response.data)
+    response.data.forEach((face) => {
+      console.log('Face ID: ' + face.faceId)
+      console.log('Face rectangle: ' + face.faceRectangle.top + ', ' + face.faceRectangle.left + ', ' + face.faceRectangle.width + ', ' + face.faceRectangle.height)
+      console.log('Smile: ' + face.faceAttributes.smile)
+      console.log('Head pose: ' + JSON.stringify(face.faceAttributes.headPose))
+      console.log('Gender: ' + face.faceAttributes.gender)
+      console.log('Age: ' + face.faceAttributes.age)
+      console.log('Facial hair: ' + JSON.stringify(face.faceAttributes.facialHair))
+      console.log('Glasses: ' + face.faceAttributes.glasses)
+      console.log('Smile: ' + face.faceAttributes.smile)
+      console.log('Emotion: ' + JSON.stringify(face.faceAttributes.emotion))
+      console.log('Blur: ' + JSON.stringify(face.faceAttributes.blur))
+      console.log('Exposure: ' + JSON.stringify(face.faceAttributes.exposure))
+      console.log('Noise: ' + JSON.stringify(face.faceAttributes.noise))
+      console.log('Makeup: ' + JSON.stringify(face.faceAttributes.makeup))
+      console.log('Accessories: ' + JSON.stringify(face.faceAttributes.accessories))
+      console.log('Hair: ' + JSON.stringify(face.faceAttributes.hair))
+      console.log()
+    });
+}).catch(function (error) {
+    console.log(error)
 });
 ```
 
@@ -100,7 +113,7 @@ request.post(options, (error, response, body) => {
 node facedetection.js
 ```
 
-コンソール ウィンドウに、顔の情報が JSON データとして表示されます。 次に例を示します。
+`response.data` からの完全な JSON データを次に示します。 次に例を示します。
 
 ```json
 [

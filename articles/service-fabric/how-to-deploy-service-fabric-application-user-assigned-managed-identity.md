@@ -3,12 +3,12 @@ title: ユーザー割り当てのマネージド ID を持つアプリをデプ
 description: この記事では、ユーザー割り当てのマネージド ID を使用して Service Fabric アプリケーションをデプロイする方法について説明します
 ms.topic: article
 ms.date: 12/09/2019
-ms.openlocfilehash: 9aef81db7a455b72c83cf96898a0c228f1c382fd
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 79d8654733b580be96d59e78f31105077929ac78
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415643"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260091"
 ---
 # <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity"></a>ユーザー割り当てのマネージド ID を持つ Service Fabric アプリケーションをデプロイする
 
@@ -23,40 +23,42 @@ ms.locfileid: "81415643"
 
 ## <a name="user-assigned-identity"></a>ユーザー割り当て ID
 
-ユーザー割り当て ID を持つアプリケーションを有効にするには、まず、**userAssigned** 型と参照されるユーザー割り当て ID でアプリケーション リソースに **ID** プロパティを追加します。 次に、**application** リソースの **properties** セクション内に **managedIdentities** セクションを追加します。このセクションには、ユーザー割り当て ID ごとのフレンドリ名と principalId のマッピングの一覧が含まれます。 ユーザー割り当て ID について詳しくは、[ユーザー割り当てマネージド ID の作成、一覧表示、削除](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell)に関する記事をご覧ください。
+ユーザー割り当て ID を持つアプリケーションを有効にするには、まず、**userAssigned** 型と参照されるユーザー割り当て ID でアプリケーション リソースに **ID** プロパティを追加します。 次に、**application** リソースの **properties** セクション内に **managedIdentities** セクションを追加します。このセクションには、ユーザー割り当て ID ごとのフレンドリ名と principalId のマッピングの一覧が含まれます。 ユーザー割り当て ID について詳しくは、[ユーザー割り当てマネージド ID の作成、一覧表示、削除](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)に関する記事をご覧ください。
 
 ### <a name="application-template"></a>アプリケーション テンプレート
 
 ユーザー割り当て ID を持つアプリケーションを有効にするには、まず、**userAssigned** 型と参照されるユーザー割り当て ID でアプリケーション リソースに **identity** プロパティを追加し、次にユーザー割り当て ID ごとのフレンドリ名と principalId のマッピングの一覧を格納する **managedIdentities** オブジェクトを **properties** セクション内に追加します。
 
-    {
-      "apiVersion": "2019-06-01-preview",
-      "type": "Microsoft.ServiceFabric/clusters/applications",
-      "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'))]",
-      "location": "[resourceGroup().location]",
-      "dependsOn": [
-        "[concat('Microsoft.ServiceFabric/clusters/', parameters('clusterName'), '/applicationTypes/', parameters('applicationTypeName'), '/versions/', parameters('applicationTypeVersion'))]",
-        "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName'))]"
-      ],
-      "identity": {
-        "type" : "userAssigned",
-        "userAssignedIdentities": {
-            "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName'))]": {}
-        }
-      },
-      "properties": {
-        "typeName": "[parameters('applicationTypeName')]",
-        "typeVersion": "[parameters('applicationTypeVersion')]",
-        "parameters": {
-        },
-        "managedIdentities": [
-          {
-            "name" : "[parameters('userAssignedIdentityName')]",
-            "principalId" : "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName')), '2018-11-30').principalId]"
-          }
-        ]
-      }
+```json
+{
+  "apiVersion": "2019-06-01-preview",
+  "type": "Microsoft.ServiceFabric/clusters/applications",
+  "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'))]",
+  "location": "[resourceGroup().location]",
+  "dependsOn": [
+    "[concat('Microsoft.ServiceFabric/clusters/', parameters('clusterName'), '/applicationTypes/', parameters('applicationTypeName'), '/versions/', parameters('applicationTypeVersion'))]",
+    "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName'))]"
+  ],
+  "identity": {
+    "type" : "userAssigned",
+    "userAssignedIdentities": {
+        "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName'))]": {}
     }
+  },
+  "properties": {
+    "typeName": "[parameters('applicationTypeName')]",
+    "typeVersion": "[parameters('applicationTypeVersion')]",
+    "parameters": {
+    },
+    "managedIdentities": [
+      {
+        "name" : "[parameters('userAssignedIdentityName')]",
+        "principalId" : "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName')), '2018-11-30').principalId]"
+      }
+    ]
+  }
+}
+```
 
 上の例では、アプリケーションのマネージド ID のフレンドリ名として、ユーザー割り当て ID のリソース名が使用されています。 次の例では、実際のフレンドリ名が "AdminUser" であるものとしています。
 

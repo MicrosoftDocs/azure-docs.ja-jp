@@ -1,26 +1,22 @@
 ---
 title: キュー メッセージでトリガーされる Azure 関数の作成
-description: Azure Functions を使用して、Azure Storage キューに送信されたメッセージによって呼び出されるサーバーレスの関数を作成します。
+description: Azure Functions を使用して、Azure のキューに送信されたメッセージによって呼び出されるサーバーレスの関数を作成します。
 ms.assetid: 361da2a4-15d1-4903-bdc4-cc4b27fc3ff4
 ms.topic: how-to
 ms.date: 10/01/2018
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 98f0290aad9971bdb0c0b265d96e96d8ac34b99d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4c20579f2306b61741f3c6ab1549285271435a3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756525"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123345"
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>Azure Queue Storage によってトリガーされる関数の作成
 
 Azure Storage キューにメッセージが送信されたときにトリガーされる関数を作成する方法について説明します。
 
-![ログ内のメッセージを表示します。](./media/functions-create-storage-queue-triggered-function/function-app-in-portal-editor.png)
-
 ## <a name="prerequisites"></a>前提条件
-
-- [Microsoft Azure ストレージ エクスプローラーをダウンロードしてインストールする](https://storageexplorer.com/)。
 
 - Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
@@ -28,7 +24,7 @@ Azure Storage キューにメッセージが送信されたときにトリガー
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-![Function App が正常に作成されました。](./media/functions-create-first-azure-function/function-app-create-success.png)
+   :::image type="content" source="./media/functions-create-storage-queue-triggered-function/function-app-create-success.png" alt-text="関数アプリが正常に作成されました。" border="true":::
 
 次に、新しい Function App で関数を作成します。
 
@@ -36,23 +32,16 @@ Azure Storage キューにメッセージが送信されたときにトリガー
 
 ## <a name="create-a-queue-triggered-function"></a>キューによってトリガーされる関数の作成
 
-1. Function App を展開し、 **[関数]+ の横にある** [ **]** ボタンをクリックします。 これが関数アプリの初めての関数の場合は、 **[ポータル内]** 、 **[続行]** の順に選択します。 それ以外の場合は、手順 3 に進みます。
+1. **[関数]** を選択し、 **[+ 追加]** を選択して、新しい関数を追加します。
 
-   ![Azure Portal での関数のクイック スタート ページ](./media/functions-create-storage-queue-triggered-function/function-app-quickstart-choose-portal.png)
+   :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-app-quickstart-choose-template.png" alt-text="Azure portal で関数テンプレートを選択します。" border="true":::
 
-1. **[その他のテンプレート]** 、 **[Finish and view templates]\(終了してテンプレートを表示\)** の順に選択します。
-
-    ![Functions のクイック スタート: [その他のテンプレート] を選択する](./media/functions-create-storage-queue-triggered-function/add-first-function.png)
-
-1. 検索フィールドに「`queue`」と入力し、**キュー トリガー** テンプレートを選択します。
-
-1. プロンプトが表示されたら、 **[インストール]** を選択して Azure Storage 拡張機能とすべての依存関係を関数アプリにインストールします。 インストールが正常に完了したら、 **[続行]** を選択します。
-
-    ![バインディング拡張機能をインストールする](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png)
+1. **Azure Queue Storage トリガー** テンプレートを選択します。
 
 1. 画像の下の表に指定した設定を使用してください。
 
-    ![ストレージ キューによってトリガーされる関数を構成する。](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal-2.png)
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png" alt-text="Queue Storage でトリガーされる関数に名前を付けて、構成します。" border="true":::
+
 
     | 設定 | 推奨値 | 説明 |
     |---|---|---|
@@ -60,27 +49,29 @@ Azure Storage キューにメッセージが送信されたときにトリガー
     | **キュー名**   | myqueue-items    | ストレージ アカウント内の接続先のキューの名前。 |
     | **ストレージ アカウント接続** | AzureWebJobsStorage | Function App によって既に使用されているストレージ アカウント接続を使用するか、新しく作成できます。  |    
 
-1. **[作成]** をクリックして関数を作成します。
+1. 関数を作成するには **[関数を作成する]** を選択します。
 
-次に、Azure Storage アカウントに接続し、**myqueue-items** ストレージ キューを作成します。
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal-3.png" alt-text="Queue Storage によってトリガーされる関数を作成します。" border="true":::
+
+次に、Azure Storage アカウントに接続して、**myqueue-items** ストレージ キューを作成します。
 
 ## <a name="create-the-queue"></a>キューを作成する
 
-1. 関数で、 **[統合]** をクリックし、 **[ドキュメント]** を展開して、 **[アカウント名]** と **[アカウント キー]** の両方をコピーします。 Azure Storage Explorer でこれらの資格情報を使用して、ストレージ アカウントに接続します。 ストレージ アカウントに既に接続している場合は、手順 4 に進みます。
+1. 関数の **[概要]** ページで、リソース グループを選択します。
 
-    ![ストレージ アカウント接続の資格情報を取得します。](./media/functions-create-storage-queue-triggered-function/functions-storage-account-connection.png)
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-resource-group.png" alt-text="Azure portal リソースグループを選択します。" border="true":::
 
-1. [Microsoft Azure Storage Explorer](https://storageexplorer.com/) ツールを実行し、左側の接続アイコンをクリックして、 **[Use a storage account name and key] \(ストレージ アカウント名とキーを使用)** を選択し、 **[次へ]** をクリックします。
+1. リソース グループのストレージ アカウントを見つけて、選択します。
 
-    ![ストレージ アカウント エクスプローラー ツールを実行します。](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-connect-1.png)
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-account-access.png" alt-text="ストレージ アカウントにアクセスします。" border="true":::
 
-1. 手順 1 の **[アカウント名]** と **[アカウント キー]** を入力し、 **[次へ]** をクリックし、 **[接続]** をクリックします。
+1. **[キュー]** を選択し、 **[+ キュー]** を選択します。 
 
-    ![ストレージ資格情報を入力し、接続します。](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-connect-2.png)
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-add-queue.png" alt-text="Azure portal のストレージ アカウントにキューを追加します。" border="true":::
 
-1. 接続されたストレージ アカウントを展開し、 **[キュー]** を右クリックして、 **[キューの作成]** をクリックし、「`myqueue-items`」と入力して、Enter キーを押します。
+1. **[名前]** フィールドに「`myqueue-items`」と入力して、 **[作成]** を選択します。
 
-    ![ストレージ キューを作成します。](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-create-queue.png)
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-name-queue.png" alt-text="Queue Storage コンテナーに名前を付けます。" border="true":::
 
 これでストレージ キューが作成されたので、キューにメッセージを追加して、関数をテストできます。
 
@@ -88,17 +79,23 @@ Azure Storage キューにメッセージが送信されたときにトリガー
 
 1. Azure Portal に戻り、関数を参照して、ページ下部の **[ログ]** を展開して、ログ ストリーミングが一時停止していないことを確認します。
 
-1. Storage Explorer で、ストレージ アカウント、 **[キュー]** 、 **[myqueue-items]** の順に展開し、 **[メッセージの追加]** をクリックします。
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-queue-storage-log-expander.png" alt-text="Azure portal でログを展開します。" border="true":::
 
-    ![メッセージをキューに追加します。](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-add-message.png)
+1. 別のブラウザー ウィンドウで、Azure portal のリソース グループに移動して、ストレージ アカウントを選択します。
 
-1. "Hello World!" メッセージを **[メッセージ テキスト]** に入力し、 **[OK]** をクリックします。
+1. **[キュー]** を選択し、 **[myqueue-items]** コンテナーを選択します。
+
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-queue.png" alt-text="Azure portal で myqueue-items キューに移動します。" border="true":::
+
+1. **[メッセージの追加]** を選択して、「Hello World!」と入力します。 これを **[メッセージ テキスト]** で行います。 **[OK]** を選択します。
+
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-queue-test.png" alt-text="Azure portal で myqueue-items キューに移動します。" border="true":::
 
 1. 数秒間待ってから、関数ログに戻り、新しいメッセージがキューから読み取られていることを確認します。
 
-    ![ログ内のメッセージを表示します。](./media/functions-create-storage-queue-triggered-function/functions-queue-storage-trigger-view-logs.png)
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/function-app-in-portal-editor.png" alt-text="ログ内のメッセージを表示します。" border="true":::
 
-1. Storage Explorer に戻り、 **[更新]** をクリックし、メッセージが処理され、キュー内になくなったことを確認します。
+1. ストレージ キューに戻り、 **[更新]** を選択し、メッセージが処理されてキュー内に存在しなくなったことを確認します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

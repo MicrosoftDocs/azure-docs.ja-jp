@@ -3,31 +3,34 @@ title: Azure Media Services v3 API に接続する - Node.js
 description: この記事では、Node.js を使用して Media Services v3 API に接続する方法を示します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/25/2019
-ms.author: juliako
-ms.openlocfilehash: 0381a2e2b8fd2a8b60e7cb702e0336a5678df057
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 4f6b24b17ac0e12c286a11abe8732bb86e2deb5c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74896095"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297350"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Media Services v3 API に接続する - Node.js
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 この記事では、サービス プリンシパルによるサインイン方式を使用して Azure Media Services v3 Node.js SDK に接続する方法を説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
 - [Node.js](https://nodejs.org/en/download/) をインストールします。
-- [Media Services アカウントを作成する](create-account-cli-how-to.md) リソース グループ名と Media Services アカウント名を覚えておいてください。
+- [Media Services アカウントを作成する](./create-account-howto.md) リソース グループ名と Media Services アカウント名を覚えておいてください。
 
 > [!IMPORTANT]
 > [命名規則](media-services-apis-overview.md#naming-conventions)を確認してください。
@@ -70,7 +73,7 @@ npm install azure-arm-mediaservices
 
 1. 好みのエディターを使用して .js ファイルを作成します。
 1. ファイルを開き、次のコードを貼り付けます。
-1. "endpoint config" セクションの値を、[アクセス API](access-api-cli-how-to.md) から取得した値に設定します。
+1. "endpoint config" セクションの値を、[アクセス API](./access-api-howto.md) から取得した値に設定します。
 
 ```js
 'use strict';
@@ -131,4 +134,3 @@ node index.js
 ## <a name="next-steps"></a>次のステップ
 
 Media Services の [Node.js リファレンス](/javascript/api/overview/azure/mediaservices/management) ドキュメントを調べて、node.js で Media Services API を使用する方法が示されている[サンプル](https://github.com/Azure-Samples/media-services-v3-node-tutorials)をご覧ください。
-

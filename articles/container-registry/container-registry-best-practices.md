@@ -3,12 +3,12 @@ title: レジストリのベスト プラクティス
 description: ベスト プラクティスに従って Azure Container Registry を効果的に使う方法を説明します。
 ms.topic: article
 ms.date: 09/27/2018
-ms.openlocfilehash: 233d84b8bfa6f3d8c800e76032ef74a643db11ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc84fb8cb98f58e28570095370d55a7358ce3a99
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225807"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682686"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Azure Container Registry のベスト プラクティス
 
@@ -59,7 +59,7 @@ Azure Container Registry の認証について詳しくは、「[Azure コンテ
 
 ## <a name="manage-registry-size"></a>レジストリ サイズの管理
 
-各[コンテナー レジストリ SKU][container-registry-skus] のストレージ制約は、一般的なシナリオに一致するように意図されています。開始用の **Basic**、大半の運用アプリケーションに対応する **Standard**、ハイパースケール パフォーマンスと [geo レプリケーション][container-registry-geo-replication]に対応する **Premium** があります。 レジストリの有効期間を通して、使用されていないコンテンツを定期的に削除することによって、そのサイズを管理する必要があります。
+各[コンテナー レジストリ サービス レベル][container-registry-skus]のストレージ制約は、一般的なシナリオに一致するように意図されています。開始用の **Basic**、大半の運用アプリケーションに対応する **Standard**、ハイパースケール パフォーマンスと [geo レプリケーション][container-registry-geo-replication]に対応する **Premium** があります。 レジストリの有効期間を通して、使用されていないコンテンツを定期的に削除することによって、そのサイズを管理する必要があります。
 
 Azure CLI コマンド [az acr show-usage][az-acr-show-usage] を使用して、レジストリの現在のサイズを表示します。
 
@@ -86,7 +86,7 @@ Azure Container Registry は、コンテナー レジストリからイメージ
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Container Registry には、いくつかのレベル (SKU) があり、その機能はレベルごとに異なります。 SKU のバリエーションについて詳しくは、「[Azure Container Registry SKU](container-registry-skus.md)」をご覧ください。
+Azure Container Registry には、いくつかのレベル (SKU とも呼ばれます) があり、その機能はレベルごとに異なります。 利用可能なサービス レベルの詳細については、[Azure Container Registry のサービス レベル](container-registry-skus.md)に関するページを参照してください。
 
 <!-- IMAGES -->
 [delete-repository-portal]: ./media/container-registry-best-practices/delete-repository-portal.png

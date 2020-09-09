@@ -9,12 +9,13 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: 1c631f4dea3b182c97f11f3892dff834c7681507
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e3d169ac42e03f0c57ea1c23247fd0daa1cf51d0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81275565"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926436"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -49,21 +50,19 @@ ms.locfileid: "81275565"
 
 ## <a name="create-a-speech-configuration"></a>Speech 構成を作成する
 
-`SpeechRecognizer` オブジェクトを初期化するには、サブスクリプション キーとサブスクリプション リージョンを使用する構成を作成する必要があります。 このコードを `RecognizeSpeechAsync()` メソッドに挿入します。
+`SpeechRecognizer` オブジェクトを初期化するには、サブスクリプション キーとサブスクリプション リージョンを使用する構成を作成する必要があります。 このコードを `SpeechRecognitionFromMicrophone_ButtonClicked()` メソッドに挿入します。
 
 > [!NOTE]
 > このサンプルでは、`FromSubscription()` メソッドを使用して `SpeechConfig` をビルドします。 使用可能なメソッドの完全な一覧については、[SpeechConfig クラス](https://docs.microsoft.com/dotnet/api/)に関する記事を参照してください[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=51-53)]
 
 ## <a name="initialize-a-speechrecognizer"></a>SpeechRecognizer を初期化する
 
-次に、`SpeechRecognizer` を作成してみましょう。 アンマネージド リソースが確実に正しく解放されるように、このオブジェクトは using ステートメント内に作成されます。 このコードを Speech 構成のすぐ下にある `RecognizeSpeechAsync()` メソッドに挿入します。
+次に、`SpeechRecognizer` を作成してみましょう。 アンマネージド リソースが確実に正しく解放されるように、このオブジェクトは using ステートメント内に作成されます。 このコードを Speech 構成のすぐ下にある `SpeechRecognitionFromMicrophone_ButtonClicked()` メソッドに挿入します。
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=58,59,93)]
 
 ## <a name="recognize-a-phrase"></a>語句を認識する
 
 `SpeechRecognizer` オブジェクトから、`RecognizeOnceAsync()` メソッドを呼び出します。 認識の対象として 1 つの語句を送信しようとしていること、また、その語句が識別された後で、音声認識を停止しようとしていることが、このメソッドを通じて Speech サービスに伝えられます。
-
-using ステートメント内に、このコードを追加します。
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=66)]
 

@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/19/2020
 ms.author: hamusa
-ms.openlocfilehash: a19a1b6e7416667079ab07fc5440ee8828c26bf4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b84a7b88f700e2ba8e9fbe29099dfcbce8dbf3b7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76294837"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85081074"
 ---
 # <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>Azure への移行について多数の物理サーバーを評価する
 
@@ -21,7 +21,7 @@ ms.locfileid: "76294837"
 [Azure Migrate](migrate-services-overview.md) では、アプリ、インフラストラクチャ、およびワークロードを検出、評価、および Microsoft Azure に移行するために役立つツールのハブが提供されます。 このハブには、Azure Migrate ツールと、サードパーティ製の独立系ソフトウェア ベンダー (ISV) オファリングが含まれています。 
 
 
-この記事では、次のことについて説明します。
+この記事では、次の方法について説明します。
 > [!div class="checklist"]
 > * 大規模な評価を計画します。
 > * Azure のアクセス許可を構成し、評価用に物理サーバーを準備します。
@@ -47,7 +47,7 @@ ms.locfileid: "76294837"
 **計画** | **制限**
 --- | --- 
 **Azure Migrate プロジェクト** | 1 つのプロジェクトで最大 35,000 台のサーバーが評価されます。
-**Azure Migrate アプライアンス** | 1 つのアプライアンスで最大 250 台のサーバーを検出できます。<br/> 1 つのアプライアンスは、1 つの Azure Migrate リソースにのみ関連付けることができます。<br/> 任意の数のアプライアンスを 1 つの Azure Migrate プロジェクトに関連付けることができます。 <br/><br/> 
+**Azure Migrate アプライアンス** | 1 つのアプライアンスで最大 1,000 台のサーバーを検出できます。<br/> 1 つのアプライアンスは、1 つの Azure Migrate リソースにのみ関連付けることができます。<br/> 任意の数のアプライアンスを 1 つの Azure Migrate プロジェクトに関連付けることができます。 <br/><br/> 
 **グループ** | 1 つのグループに最大 35,000 台のサーバーを追加できます。
 **Azure Migrate の評価** | 1 回の評価で最大 35,000 台のサーバーを評価できます。
 

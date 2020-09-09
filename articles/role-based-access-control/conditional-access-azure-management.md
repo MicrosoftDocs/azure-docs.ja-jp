@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 07/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: f3341f1c30a1581b8507652c322c00581e3972aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a52635dbaa7a76034f3a535b099320a901e8c07
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77137406"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758777"
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>条件付きアクセスを使用して Azure 管理へのアクセスを管理する
 
@@ -47,5 +47,4 @@ Azure 管理のポリシーを作成するには、ポリシーを適用する�
 
 ポリシーは Azure Resource Manager API を呼び出す Azure PowerShell に適用されることに注意してください。 Microsoft Graph を呼び出す [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2) には適用されません。
 
-
-条件付きアクセスをセットアップして使用する方法の詳細については、 「[Azure Active Directory での条件付きアクセス](../active-directory/active-directory-conditional-access-azure-portal.md)」を参照してください。
+Microsoft Azure の管理で条件付きアクセスを有効にするサンプル ポリシーを設定する方法の詳細については、「[条件付きアクセス: Azure 管理のために MFA を必須にする](../active-directory/conditional-access/howto-conditional-access-policy-azure-management.md)」を参照してください。

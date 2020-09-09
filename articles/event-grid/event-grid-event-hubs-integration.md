@@ -1,19 +1,15 @@
 ---
 title: チュートリアル:Event Hubs データをデータ ウェアハウスに送信する - Event Grid
 description: チュートリアル:Azure Event Grid と Event Hubs を使用して、SQL データ ウェアハウスにデータを移行する方法について説明します。 ここでは、Capture ファイルを取得するために Azure 関数が使用されます。
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
 ms.topic: tutorial
-ms.date: 11/05/2019
-ms.author: spelluru
-ms.openlocfilehash: 6f5bd129b175210cd5b9415a65b8db06d904e24d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 07/07/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1c4a1943981fc3e9f1df0fafff540e24ee3631e9
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73718187"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007453"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>チュートリアル:ビッグ データをデータ ウェアハウスにストリーミングする
 Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (イベント) への対応を可能にするインテリジェントなイベント ルーティング サービスです。 たとえば、Azure BLOB ストレージや Azure Data Lake Storage にキャプチャされた Event Hubs データを処理する Azure 関数をトリガーして、データを別のデータ リポジトリに移行できます。 この [Event Hubs と Event Grid の統合のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)では、Event Hubs と Event Grid を使用して、キャプチャされた Event Hubs データを BLOB ストレージから SQL データ ウェアハウスにシームレスに移行する方法を説明しています。
@@ -79,12 +75,11 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
 ### <a name="use-azure-cli"></a>Azure CLI の使用
 
 1. 次の CLI コマンドを実行して、Azure リソース グループを作成します。 
-    1. 次のコマンドをコピーして Cloud Shell ウィンドウに貼り付けます。
+    1. 次のコマンドをコピーして Cloud Shell ウィンドウに貼り付けます。 必要に応じて、リソース グループの名前と場所を変更します。
 
         ```azurecli
-        az group create -l eastus -n <Name for the resource group>
+        az group create -l eastus -n rgDataMigration
         ```
-    1. **リソース グループ**の名前を指定します。
     2. **Enter**キーを押します。 
 
         たとえば次のようになります。
@@ -107,7 +102,7 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
 
         ```azurecli
         az group deployment create \
-            --resource-group rgDataMigrationSample \
+            --resource-group rgDataMigration \
             --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json \
             --parameters eventHubNamespaceName=<event-hub-namespace> eventHubName=hubdatamigration sqlServerName=<sql-server-name> sqlServerUserName=<user-name> sqlServerPassword=<password> sqlServerDatabaseName=<database-name> storageName=<unique-storage-name> functionAppName=<app-name>
         ```
@@ -132,7 +127,7 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
     1. 次のコマンドをコピーして Cloud Shell ウィンドウに貼り付けます。
 
         ```powershell
-        New-AzResourceGroup -Name rgDataMigration -Location westcentralus
+        New-AzResourceGroup -Name rgDataMigration -Location eastus
         ```
     2. **リソース グループ**の名前を指定します。
     3. Enter キーを押します。 
@@ -170,11 +165,11 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
 ### <a name="create-a-table-in-sql-data-warehouse"></a>SQL Data Warehouse でテーブルを作成する
 [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) スクリプトを実行して、お客様のデータ ウェアハウスにテーブルを作成します。 スクリプトを実行するには、Visual Studio を使用できます。または、ポータルのクエリ エディターを使用できます。 次の手順では、クエリ エディターの使用方法について説明します。 
 
-1. リソース グループ内のリソースの一覧で、お客様の SQL データ ウェアハウスを選択します。 
+1. リソース グループのリソースの一覧で、**Synapse SQL プール (データ ウェアハウス)** を選択します。 
 2. SQL データ ウェアハウスのページで、左側のメニューの **[クエリ エディター (プレビュー)]** を選択します。 
 
     ![SQL データ ウェアハウスのページ](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
-2. SQL サーバーの**ユーザー**の名前と**パスワード**を入力し、 **[OK]** を選択します。 
+2. SQL サーバーの**ユーザー**の名前と**パスワード**を入力し、 **[OK]** を選択します。 SQL サーバーに正常にログインするために、クライアント IP アドレスをファイアウォールに追加することが必要な場合があります。 
 
     ![SQL Server 認証](media/event-grid-event-hubs-integration/sql-server-authentication.png)
 4. クエリ ウィンドウに、次の SQL スクリプトをコピーして実行します。 
@@ -193,6 +188,17 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
     ![SQL クエリを実行する](media/event-grid-event-hubs-integration/run-sql-query.png)
 5. データが作成されたことをチュートリアルの最後に確認できるように、このタブまたはウィンドウを開いたままにしておきます。 
 
+### <a name="update-the-function-runtime-version"></a>関数のランタイム バージョンを更新する
+
+1. Azure portal で、左側のメニューにある **[リソース グループ]** を選択します。
+2. 関数アプリが存在するリソース グループを選択します。 
+3. リソース グループのリソースの一覧で、**App Service** という種類の関数アプリを選択します。
+4. 左側のメニューの **[設定]** で **[構成]** を選択します。 
+5. 右ペインで **[関数のランタイム設定]** タブに切り替えます。 
+5. **[ランタイム バージョン]** を **~3** に更新します。 
+
+    ![関数のランタイム バージョンを更新する](media/event-grid-event-hubs-integration/function-runtime-version.png)
+    
 
 ## <a name="publish-the-azure-functions-app"></a>Azure Functions アプリを発行する
 
@@ -204,13 +210,20 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
 4. 次の画面が表示されたら、 **[開始]** を選択します。 
 
    ![発行の開始ボタン](media/event-grid-event-hubs-integration/start-publish-button.png) 
-5. **[発行先を選択]** ページで、 **[既存のものを選択]** オプションを選択し、 **[プロファイルの作成]** を選択します。 
+5. **[発行]** ダイアログ ボックスの **[対象]** で **[Azure]** を選択し、 **[次へ]** を選択します。 
 
-   ![発行先の選択](media/event-grid-event-hubs-integration/publish-select-existing.png)
-6. [App Service] ページで、お客様の **Azure サブスクリプション**を選択し、お客様のリソース グループ内の**関数アプリ**を選択して、 **[OK]** をクリックします。 
+   ![発行の開始ボタン](media/event-grid-event-hubs-integration/publish-select-azure.png)
+6. **[Azure Function App (Windows)]** を選択し、 **[次へ]** を選択します。 
 
-   ![[App Service] ページ](media/event-grid-event-hubs-integration/publish-app-service.png) 
-1. Visual Studio でプロファイルを構成している場合は、 **[発行]** を選択します。
+   ![[Azure Function App (Windows)] の選択](media/event-grid-event-hubs-integration/select-azure-function-windows.png)
+7. **[Functions インスタンス]** タブで、自分の Azure サブスクリプションを選択し、リソース グループを展開して、使用する関数アプリを選択し、 **[完了]** を選択します。 Azure アカウントにサインインする必要があります (まだ実行していない場合)。 
+
+   ![関数アプリを選択する](media/event-grid-event-hubs-integration/publish-select-function-app.png)
+8. **[サービスの依存関係]** セクションで **[構成]** を選択します。
+9. **[依存関係の構成]** ページで、先ほど作成したストレージ アカウントを選択し、 **[次へ]** を選択します。 
+10. 接続文字列の名前と値の設定をそのままにし、 **[次へ]** を選択します。
+11. **[シークレット ストア]** オプションをオフにし、 **[完了]** を選択します。  
+8. Visual Studio でプロファイルを構成している場合は、 **[発行]** を選択します。
 
    ![発行の選択](media/event-grid-event-hubs-integration/select-publish.png)
 
@@ -224,21 +237,24 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
 4. 一覧で、お客様のリソース グループを選択します。
 
     ![リソース グループを選択します](media/event-grid-event-hubs-integration/select-resource-group.png)
-4. 一覧で、App Service プランを選択します。 
+4. リソース グループのリソースの一覧で、(App Service ではなく) App Service プランを選択します。 
 5. [App Service プラン] ページで、左側のメニューの **[アプリ]** を選択し、関数アプリを選択します。 
 
     ![関数アプリを選択する](media/event-grid-event-hubs-integration/select-function-app-app-service-plan.png)
 6. 関数アプリ、関数の順に展開してから、お客様の関数を選択します。 
+7. ツール バーの **[Event Grid サブスクリプションの追加]** を選択します。 
 
     ![Azure 関数を選択](media/event-grid-event-hubs-integration/select-function-add-button.png)
-7. ツール バーの **[Event Grid サブスクリプションの追加]** を選択します。 
 8. **[Create Event Grid Subscription]\(Event Grid サブスクリプションの作成\)** ページで、次の操作を行います。 
-    1. **[トピックの詳細]** セクションで、次の操作を行います。
-        1. Azure サブスクリプションを選択します。
+    1. **[イベント サブスクリプションの詳細]** ページで、サブスクリプションの名前 (captureEventSub など) を入力し、 **[作成]** を選択します。 
+    2. **[トピックの詳細]** セクションで、次の操作を行います。
+        1. **[トピックの種類]** で **[Event Hubs 名前空間]** を選択します。 
+        2. Azure サブスクリプションを選択します。
         2. Azure リソース グループを選択します。
         3. Event Hubs 名前空間を選択します。
-    2. **[イベント サブスクリプションの詳細]** ページで、サブスクリプションの名前 (captureEventSub など) を入力し、 **[作成]** を選択します。 
-
+    3. **[イベントの種類]** セクションで、 **[イベントの種類のフィルター]** に **[Capture File Created]\(作成されたキャプチャ ファイル\)** が選択されていることを確認します。 
+    4. **[エンドポイントの詳細]** セクションで、 **[エンドポイントのタイプ]** が **[Azure Function]** に設定され、 **[エンドポイント]** が Azure 関数に設定されていることを確認します。 
+    
         ![Event Grid サブスクリプションを作成する](media/event-grid-event-hubs-integration/create-event-subscription.png)
 
 ## <a name="run-the-app-to-generate-data"></a>データを生成するアプリを実行する

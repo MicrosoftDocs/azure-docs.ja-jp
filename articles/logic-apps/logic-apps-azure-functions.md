@@ -6,16 +6,17 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 29713622be90ea280bff3c002be746bf1615718f
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.custom: devx-track-javascript
+ms.openlocfilehash: e853255f0fc1bc95a4a7fb1658fc41d4fe705c41
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605913"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420058"
 ---
-# <a name="call-azure-functions-from-azure-logic-apps"></a>Azure Logic Apps から Azure Functions を呼び出す
+# <a name="call-azure-functions-from-azure-logic-apps"></a>Azure Logic Apps から Azure 関数を呼び出す
 
-自分のロジック アプリで特定のジョブを実行するためのコードを実行する場合は、[Azure Functions](../azure-functions/functions-overview.md) を使用して独自の関数を作成することができます。 このサービスを利用して Node.js、C#、および F# 関数を作成できるので、完全なアプリやコードを実行するためのインフラストラクチャを構築する必要はありません。 また、[Azure Functions 内からロジック アプリを呼び出す](#call-logic-app)こともできます。 Azure Functions は、クラウド内でサーバーレス コンピューティングを実現します。次のようなタスクを実行するために便利です。
+自分のロジック アプリで特定のジョブを実行するためのコードを実行する場合は、[Azure Functions](../azure-functions/functions-overview.md) を使用して独自の関数を作成することができます。 このサービスを利用して Node.js、C#、および F# 関数を作成できるので、完全なアプリやコードを実行するためのインフラストラクチャを構築する必要はありません。 また、[Azure 関数内からロジック アプリを呼び出す](#call-logic-app)こともできます。 Azure Functions は、クラウド内でサーバーレス コンピューティングを実現します。次のようなタスクを実行するために便利です。
 
 * Node.js または C# で、関数を使用してロジック アプリの動作を拡張します。
 * ロジック アプリのワークフローで計算を実行します。
@@ -30,7 +31,7 @@ Azure の関数を作成せずにコード スニペットを実行するには�
 
 * Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
-* Azure Functions のコンテナーである Azure Functions アプリと Azure Functions。関数アプリを持っていない場合は、[まず関数アプリを作成します](../azure-functions/functions-create-first-azure-function.md)。 次に、Azure portal でLogic Apps の外部で関数を作成するか、Logic Apps デザイナーで[Logic Apps の内部から](#create-function-designer)関数を作成することができます。
+* Azure 関数のコンテナーである Azure 関数アプリと Azure 関数。 関数アプリを持っていない場合は、[まず関数アプリを作成します](../azure-functions/functions-create-first-azure-function.md)。 次に、Azure portal でロジック アプリの外部で関数を作成するか、ロジック アプリ デザイナーで[ロジック アプリの内部から](#create-function-designer)関数を作成することができます。
 
 * ロジック アプリを操作するときは、既存であるか新規であるかに関係なく、同じ要件が関数アプリと関数に適用されます。
 
@@ -40,7 +41,7 @@ Azure の関数を作成せずにコード スニペットを実行するには�
 
   * 自分の関数では、**HTTP トリガー** テンプレートを使用します。
 
-    HTTP トリガー テンプレートは、ロジック アプリから `application/json` 型のコンテンツを受け入れることができます。 Azure Functions をロジック アプリに追加すると、このテンプレートからお使いの Azure サブスクリプション内に作成されたカスタム関数がロジック アプリ デザイナーに表示されます。
+    HTTP トリガー テンプレートは、ロジック アプリから `application/json` 型のコンテンツを受け入れることができます。 Azure 関数をロジック アプリに追加すると、このテンプレートからお使いの Azure サブスクリプション内に作成されたカスタム関数がロジック アプリ デザイナーに表示されます。
 
   * [OpenAPI 定義](../azure-functions/functions-openapi-definition.md) (以前は [Swagger ファイル](https://swagger.io/)として知られていました) を定義済みでない限り、自分の関数でカスタム ルートが使用されることはありません。
 
@@ -95,15 +96,15 @@ function convertToDateString(request, response){
    body: data.date.ToDateString();
    ```
 
-Azure Functions を作成できたので、[ロジック アプリに関数を追加する](#add-function-logic-app)方法の手順に従ってください。
+Azure 関数を作成できたので、[ロジック アプリに関数を追加する](#add-function-logic-app)方法の手順に従ってください。
 
 <a name="create-function-designer"></a>
 
 ## <a name="create-functions-inside-logic-apps"></a>ロジック アプリの内部で関数を作成する
 
-ロジック アプリ デザイナーに組み込みの Azure Functions アクションを使用して、ロジック アプリのワークフローから直接 Azure Functions を作成することができますが、このメソッドは、JavaScript で記述された Azure Functions に対してのみ使用できます。 その他の言語の場合は、Azure portal の Azure Functions エクスペリエンスを使用して Azure Functions を作成できます。 詳細については、「[Azure Portal で初めての関数を作成する](../azure-functions/functions-create-first-azure-function.md)」を参照してください。
+ロジック アプリ デザイナーに組み込みの Azure Functions アクションを使用して、ロジック アプリのワークフローから直接 Azure 関数を作成することができますが、このメソッドは、JavaScript で記述された Azure 関数に対してのみ使用できます。 その他の言語の場合は、Azure portal の Azure Functions エクスペリエンスを使用して Azure 関数を作成できます。 詳細については、「[Azure Portal で初めての関数を作成する](../azure-functions/functions-create-first-azure-function.md)」を参照してください。
 
-ただし、Azure Functions を作成する前に、関数のコンテナーである Azure Functions アプリをあらかじめ用意しておく必要があります。 関数アプリを持っていない場合は、まず関数アプリを作成します。 「[Azure Portal で初めての関数を作成する](../azure-functions/functions-create-first-azure-function.md)」を参照してください。
+ただし、Azure 関数を作成する前に、関数のコンテナーである Azure 関数アプリをあらかじめ用意しておく必要があります。 関数アプリを持っていない場合は、まず関数アプリを作成します。 「[Azure Portal で初めての関数を作成する](../azure-functions/functions-create-first-azure-function.md)」を参照してください。
 
 1. [Azure portal](https://portal.azure.com) のロジック アプリ デザイナーでロジック アプリを開きます。
 
@@ -113,7 +114,7 @@ Azure Functions を作成できたので、[ロジック アプリに関数を�
 
    * ロジック アプリのワークフローの既存のステップ間で、矢印の上にマウスを移動して、プラス (+) 記号を選択し、 **[アクションの追加]** を選択します。
 
-1. 検索ボックスで、フィルターとして「azure functions」と入力します。 アクションの一覧から、次のような **[Azure Functions を選択する]** アクションを選択します。
+1. 検索ボックスで、フィルターとして「azure functions」と入力します。 アクションの一覧から、次のような **[Azure 関数を選択する]** アクションを選択します。
 
    !["Azure functions" を探す](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
@@ -154,29 +155,29 @@ Azure Functions を作成できたので、[ロジック アプリに関数を�
 
    ![オブジェクトを文字列としてキャストする](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
-1. 使用するメソッド、要求ヘッダー、クエリ パラメーター、認証などのその他の詳細を指定するには、 **[新しいパラメーターの追加]** の一覧を開き、目的のオプションを選択します。 認証については、選択した関数によってオプションが異なります。 「[Azure Functions の認証を有効にする](#enable-authentication-functions)」を参照してください。
+1. 使用するメソッド、要求ヘッダー、クエリ パラメーター、認証などのその他の詳細を指定するには、 **[新しいパラメーターの追加]** の一覧を開き、目的のオプションを選択します。 認証については、選択した関数によってオプションが異なります。 「[Azure 関数の認証を有効にする](#enable-authentication-functions)」を参照してください。
 
 <a name="add-function-logic-app"></a>
 
 ## <a name="add-existing-functions-to-logic-apps"></a>ロジック アプリに既存の関数を追加する
 
-ロジック アプリから既存の Azure Functions を呼び出すには、ロジック アプリ デザイナーで他のアクションと同様に Azure Functions を追加します。
+ロジック アプリから既存の Azure 関数を呼び出すには、ロジック アプリ デザイナーで他のアクションと同様に Azure 関数を追加します。
 
 1. [Azure portal](https://portal.azure.com) のロジック アプリ デザイナーでロジック アプリを開きます。
 
 1. 関数を追加するステップで、 **[新しいステップ]** を選択します。
 
-1. **[アクションを選択してください]** の下の検索ボックス内に、フィルターとして「azure functions」と入力します。 アクションの一覧から、 **[Azure Functions を選択する]** アクションを選択します。
+1. **[アクションを選択してください]** の下の検索ボックス内に、フィルターとして「azure functions」と入力します。 アクションの一覧から、 **[Azure 関数を選択する]** アクションを選択します。
 
    !["Azure functions" を探す](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
 1. 関数アプリの一覧で、関数アプリを選択します。 関数の一覧が表示されたら、関数を選択します。
 
-   ![関数アプリと Azure Functions を選択する](./media/logic-apps-azure-functions/select-function-app-existing-function.png)
+   ![関数アプリと Azure 関数を選択する](./media/logic-apps-azure-functions/select-function-app-existing-function.png)
 
    API 定義 (Swagger 記述) を持ち、[ロジック アプリが探してアクセスできるように設定された](#function-swagger)関数の場合は、 **[Swagger アクション]** を選択することができます。
 
-   ![関数アプリ、[Swagger アクション]、および Azure Functions を選択する](./media/logic-apps-azure-functions/select-function-app-existing-function-swagger.png)
+   ![関数アプリ、[Swagger アクション]、および Azure 関数を選択する](./media/logic-apps-azure-functions/select-function-app-existing-function-swagger.png)
 
 1. **[要求本文]** ボックスで、関数の入力を指定します。書式は JavaScript Object Notation (JSON) オブジェクトにする必要があります。
 
@@ -188,27 +189,27 @@ Azure Functions を作成できたので、[ロジック アプリに関数を�
 
    ![オブジェクトを文字列としてキャストする](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
-1. 使用するメソッド、要求ヘッダー、クエリ パラメーター、認証などのその他の詳細を指定するには、 **[新しいパラメーターの追加]** の一覧を開き、目的のオプションを選択します。 認証については、選択した関数によってオプションが異なります。 「[Azure Functions の認証を有効にする](#enable-authentication-functions)」を参照してください。
+1. 使用するメソッド、要求ヘッダー、クエリ パラメーター、認証などのその他の詳細を指定するには、 **[新しいパラメーターの追加]** の一覧を開き、目的のオプションを選択します。 認証については、選択した関数によってオプションが異なります。 「[Azure 関数の認証を有効にする](#enable-authentication-functions)」を参照してください。
 
 <a name="call-logic-app"></a>
 
-## <a name="call-logic-apps-from-azure-functions"></a>Azure Functions からロジック アプリを呼び出す
+## <a name="call-logic-apps-from-azure-functions"></a>Azure 関数からロジック アプリを呼び出す
 
-Azure Functions の内部からロジック アプリをトリガーする場合、ロジック アプリは、呼び出し可能なエンドポイントを提供するトリガーから始まる必要があります。 たとえば、**HTTP**、**Request**、**Azure Queues**、または **Event Grid** トリガーでロジック アプリを開始できます。 次に、関数の内部から、そのトリガーの URL に HTTP POST 要求を送信し、ロジック アプリで処理するペイロードを含めます。 詳細については、「[ロジック アプリを呼び出し、トリガーし、入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」をご覧ください。
+Azure 関数の内部からロジック アプリをトリガーする場合、ロジック アプリは、呼び出し可能なエンドポイントを提供するトリガーから始まる必要があります。 たとえば、**HTTP**、**Request**、**Azure Queues**、または **Event Grid** トリガーでロジック アプリを開始できます。 次に、関数の内部から、そのトリガーの URL に HTTP POST 要求を送信し、ロジック アプリで処理するペイロードを含めます。 詳細については、「[ロジック アプリを呼び出し、トリガーし、入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」をご覧ください。
 
 <a name="enable-authentication-functions"></a>
 
-## <a name="enable-authentication-for-azure-functions"></a>Azure Functions の認証を有効にする
+## <a name="enable-authentication-for-azure-functions"></a>Azure 関数の認証を有効にする
 
-サインインしたり、資格情報やシークレットを指定したりする必要なく他の Azure Active Directory (Azure AD) テナント内のリソースへのアクセスを認証するために、ロジック アプリでは、[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) (以前はマネージド サービス ID (MSI) と呼ばれていました) を使用することができます。 この ID は、ユーザーの代わりに Azure で管理されます。ユーザーがシークレットを提供したりローテーションしたりする必要がないため、資格情報の保護に役立ちます。 [Azure AD 認証用のマネージド ID がサポートされているサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)の詳細をご覧ください。
+サインインしたり、資格情報やシークレットを指定したりする必要なく Azure Active Directory (Azure AD) によって保護される他のリソースへのアクセスを容易に認証するために、ロジック アプリでは、[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) (以前はマネージド サービス ID (MSI) と呼ばれていました) を使用することができます。 この ID は、ユーザーの代わりに Azure で管理されます。ユーザーがシークレットを提供したりローテーションしたりする必要がないため、資格情報の保護に役立ちます。 [Azure AD 認証用のマネージド ID がサポートされているサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)の詳細をご覧ください。
 
-システム割り当ての ID または手動で作成したユーザー割り当ての ID を使用するようにロジック アプリを設定した場合、ロジック アプリの Azure Functions では、認証にもその同じ ID を使用できます。 ロジック アプリの Azure Functions の認証サポートについては、[送信呼び出しへの認証の追加](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)に関するページを参照してください。
+システム割り当ての ID または手動で作成したユーザー割り当ての ID を使用するようにロジック アプリを設定した場合、ロジック アプリの Azure 関数では、認証にもその同じ ID を使用できます。 ロジック アプリの Azure 関数の認証サポートについては、[送信呼び出しへの認証の追加](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)に関するページを参照してください。
 
 自分の関数でマネージド ID を設定し、使用するには、次の手順を行います。
 
 1. ロジック アプリでマネージド ID を有効にし、ターゲット リソースに対するその ID のアクセスを設定します。 「[Azure Logic Apps でマネージド ID を使用して認証し、リソースにアクセスする](../logic-apps/create-managed-service-identity.md)」を参照してください。
 
-1. 次の手順で Azure Functions と関数アプリの認証を有効にします。
+1. 次の手順で Azure 関数と関数アプリの認証を有効にします。
 
    * [関数で匿名認証を設定する](#set-authentication-function-app)
    * [関数アプリで Azure AD 認証を設定する](#set-azure-ad-authentication)
@@ -217,7 +218,7 @@ Azure Functions の内部からロジック アプリをトリガーする場合
 
 ### <a name="set-up-anonymous-authentication-in-your-function"></a>関数で匿名認証を設定する
 
-Azure Functions でロジック アプリのマネージド ID を使用するには、関数の認証レベルを匿名に設定しておきます。 設定していないと、ロジック アプリにより "BadRequest" エラーがスローされます。
+Azure 関数でロジック アプリのマネージド ID を使用するには、関数の認証レベルを匿名に設定しておきます。 設定していないと、ロジック アプリにより "BadRequest" エラーがスローされます。
 
 1. [Azure portal](https://portal.azure.com) で、お使いの関数アプリを探して選択します。 以下の手順ではサンプル関数アプリとして "FabrikamFunctionApp" が使用されます。
 
@@ -257,7 +258,7 @@ Azure Functions でロジック アプリのマネージド ID を使用する�
 
 * Azure Active Directory (Azure AD) のテナントのディレクトリ ID
 
-  テナントのディレクトリ ID を取得するには、[`Get-AzureAccount`](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureaccount) Powershell コマンドを実行します。 あるいは、Azure portal で次の手順を行います。
+  テナントのディレクトリ ID を取得するには、[`Get-AzureAccount`](/powershell/module/servicemanagement/azure.service/get-azureaccount) Powershell コマンドを実行します。 あるいは、Azure portal で次の手順を行います。
 
   1. [Azure portal](https://portal.azure.com) で、お使いの関数アプリを探して選択します。
 

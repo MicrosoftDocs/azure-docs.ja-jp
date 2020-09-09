@@ -1,7 +1,7 @@
 ---
 title: Azure CLI スクリプトのサンプル - IPv6 フロントエンドを構成する - Standard Load Balancer
 titlesuffix: Azure Virtual Network
-description: Azure Virtual Network で Azure CLI を使用して IPv6 エンドポイントを有効にします。
+description: Standard Load Balancer を使用して仮想ネットワーク スクリプトのサンプルで IPv6 エンドポイントを構成する方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,12 +12,13 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 5f5856a89a04b58b138ee23a5f289ceff0915acf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 12233fd44a74d127e9b7de71971b9831cf80f7b4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235051"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87492940"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-using-standard-load-balancerpreview"></a>Standard Load Balancer を使用して仮想ネットワーク スクリプトのサンプルで IPv6 エンドポイントを構成する (プレビュー)
 

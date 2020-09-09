@@ -1,24 +1,24 @@
 ---
 title: Azure 仮想ネットワーク サブネットの追加、変更、削除
 titlesuffix: Azure Virtual Network
-description: Azure で仮想ネットワーク サブネットを追加、変更、削除する方法について説明します。
+description: 仮想ネットワークに関する情報が見つかる場所と、Azure で仮想ネットワーク サブネットを追加、変更、削除する方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2020
 ms.author: kumud
-ms.openlocfilehash: b9ef084e530faa3bcea2cfcf1554a84f543bbf59
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 15fe5d6d16948875253d65e70d9d440214a4a2e8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186086"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286106"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>仮想ネットワーク サブネットの追加、変更、削除
 

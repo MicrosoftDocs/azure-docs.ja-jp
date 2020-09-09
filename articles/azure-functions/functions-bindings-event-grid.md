@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 21654a3b325e8b8f0a3e49ee64b7624c8540d0d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1dc1198ab9c546ef1defa1891777c4c8081171e9
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77461081"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957180"
 ---
 # <a name="azure-event-grid-bindings-for-azure-functions"></a>Azure Functions における Azure Event Grid のバインド
 
@@ -38,7 +38,7 @@ Event Grid は、"*パブリッシャー*" 内で発生したイベントにつ�
 
 | Language                                        | 追加手段                                   | 解説 
 |-------------------------------------------------|---------------------------------------------|-------------|
-| C#                                              | [NuGet パッケージ] バージョン 3.x をインストールする | |
+| C#                                              | [NuGet パッケージ] バージョン 2.x をインストールする | |
 | C# スクリプト、Java、JavaScript、Python、PowerShell | [拡張機能バンドル]を登録する          | Visual Studio Code で使用するには [Azure Tools 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)をお勧めします。 |
 | C# スクリプト (Azure portal ではオンラインのみ)         | バインディングを追加する                            | 関数アプリを再発行せずにポータルで既存のバインディング拡張機能を更新するには、[拡張機能の更新]に関する記事を参照してください。 |
 

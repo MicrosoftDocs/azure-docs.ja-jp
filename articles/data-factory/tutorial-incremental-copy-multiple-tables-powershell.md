@@ -1,6 +1,6 @@
 ---
 title: PowerShell を使用して複数のテーブルを増分コピーする
-description: このチュートリアルでは、オンプレミスの SQL Server データベースにある複数のテーブルから Azure SQL Database に差分データを増分コピーする Azure Data Factory パイプラインを作成します。
+description: このチュートリアルでは、SQL Server データベースにある複数のテーブルから Azure SQL Database のデータベースに差分データを増分コピーする Azure Data Factory パイプラインを作成します。
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -10,19 +10,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 01/30/2020
-ms.openlocfilehash: aa4dbfbaff620c25042d2603dab543661ec2cd14
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/10/2020
+ms.openlocfilehash: e7846ae0f52dfee4260838302d55213d2791eb07
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81410007"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250963"
 ---
-# <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>SQL Server にある複数のテーブルから Azure SQL Database にデータを増分読み込みする
+# <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>PowerShell を使用して SQL Server にある複数のテーブルから Azure SQL Database にデータを増分読み込みする
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-このチュートリアルでは、オンプレミスの SQL Server にある複数のテーブルから Azure SQL Database に差分データを読み込むパイプラインを使用して Azure Data Factory を作成します。    
+このチュートリアルでは、SQL Server データベースにある複数のテーブルから Azure SQL Database に差分データを読み込むパイプラインを使用して Azure Data Factory を作成します。    
 
 このチュートリアルでは、以下の手順を実行します。
 
@@ -69,12 +69,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-* **SQL Server**。 このチュートリアルでは、オンプレミスの SQL Server データベースをソース データ ストアとして使用します。 
-* **Azure SQL データベース**。 シンク データ ストアとして SQL データベースを使用します。 SQL データベースがない場合の作成手順については、「[Azure SQL データベースを作成する](../sql-database/sql-database-get-started-portal.md)」を参照してください。 
+* **SQL Server**。 このチュートリアルでは、SQL Server データベースをソース データ ストアとして使用します。 
+* **Azure SQL データベース**。 シンク データ ストアとして Azure SQL Database のデータベースを使用します。 SQL データベースがない場合の作成手順については、[Azure SQL Database のデータベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関するページを参照してください。 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>SQL Server データベースにソース テーブルを作成する
 
-1. [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) または [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio) を開き、オンプレミスの SQL Server データベースに接続します。
+1. [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) または [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio) を開き、SQL Server データベースに接続します。
 
 2. **サーバー エクスプローラー (SSMS)** または **[接続] ペイン (Azure Data Studio)** でデータベースを右クリックし、 **[新しいクエリ]** を選択します。
 
@@ -113,11 +113,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="create-destination-tables-in-your-azure-sql-database"></a>Azure SQL Database にターゲット テーブルを作成する
 
-1. [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) または [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio) を開き、オンプレミスの SQL Server データベースに接続します。
+1. [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) または [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio) を開き、SQL Server データベースに接続します。
 
 2. **サーバー エクスプローラー (SSMS)** または **[接続] ペイン (Azure Data Studio)** でデータベースを右クリックし、 **[新しいクエリ]** を選択します。
 
-3. SQL データベースに対して次の SQL コマンドを実行し、`customer_table` と `project_table` という名前のテーブルを作成します。  
+3. データベースに対して次の SQL コマンドを実行し、`customer_table` および `project_table` という名前のテーブルを作成します。  
 
     ```sql
     create table customer_table
@@ -134,9 +134,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     );
     ```
 
-### <a name="create-another-table-in-the-azure-sql-database-to-store-the-high-watermark-value"></a>高基準値の格納用としてもう 1 つテーブルを Azure SQL Database に作成する
+### <a name="create-another-table-in-azure-sql-database-to-store-the-high-watermark-value"></a>高基準値の格納用としてもう 1 つテーブルを Azure SQL Database に作成する
 
-1. SQL データベースに対して次の SQL コマンドを実行し、基準値の格納先として `watermarktable` という名前のテーブルを作成します。 
+1. データベースに対して次の SQL コマンドを実行し、基準値の格納先として `watermarktable` という名前のテーブルを作成します。 
     
     ```sql
     create table watermarktable
@@ -159,7 +159,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="create-a-stored-procedure-in-the-azure-sql-database"></a>Azure SQL Database にストアド プロシージャを作成する 
 
-次のコマンドを実行して、SQL データベースにストアド プロシージャを作成します。 パイプラインの実行後は都度、このストアド プロシージャによって基準値が更新されます。 
+次のコマンドを実行して、データベースにストアド プロシージャを作成します。 パイプラインの実行後は都度、このストアド プロシージャによって基準値が更新されます。 
 
 ```sql
 CREATE PROCEDURE usp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
@@ -175,9 +175,9 @@ END
 
 ```
 
-### <a name="create-data-types-and-additional-stored-procedures-in-the-azure-sql-database"></a>Azure SQL Database にデータ型と新たなストアド プロシージャを作成する
+### <a name="create-data-types-and-additional-stored-procedures-in-azure-sql-database"></a>Azure SQL Database にデータ型と新たなストアド プロシージャを作成する
 
-次のクエリを実行して、2 つのストアド プロシージャと 2 つのデータ型を SQL データベースに作成します。 それらは、ソース テーブルから宛先テーブルにデータをマージするために使用されます。 
+次のクエリを実行して、2 つのストアド プロシージャと 2 つのデータ型をデータベースに作成します。 それらは、ソース テーブルから宛先テーブルにデータをマージするために使用されます。 
 
 作業工程を簡単に始められるように、差分データをテーブル変数を介して渡すこのようなストアド プロシージャを直接使用し、それらを宛先ストアにマージします。 テーブル変数には、"多数" の差分行 (100 を超える行) が格納されることが想定されていない点に注意してください。  
 
@@ -283,17 +283,17 @@ END
 
 * Data Factory インスタンスを作成するには、Azure へのサインインに使用するユーザー アカウントが、共同作成者または所有者ロールのメンバーであるか、Azure サブスクリプションの管理者である必要があります。
 
-* 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、 **[分析]** を展開して **[Data Factory]** を探してください。[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/) データ ファクトリで使用するデータ ストア (Azure Storage、SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+* 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、 **[分析]** を展開して **[Data Factory]** を探してください。[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/) データ ファクトリで使用するデータ ストア (Azure Storage、SQL Database、SQL Managed Instance など) とコンピューティング (Azure HDInsight など) は他のリージョンに配置できます。
 
 [!INCLUDE [data-factory-create-install-integration-runtime](../../includes/data-factory-create-install-integration-runtime.md)]
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
 
-データ ストアおよびコンピューティング サービスをデータ ファクトリにリンクするには、リンクされたサービスをデータ ファクトリに作成します。 このセクションでは、オンプレミスの SQL Server データベースと Azure SQL Database に対するリンクされたサービスを作成します。 
+データ ストアおよびコンピューティング サービスをデータ ファクトリにリンクするには、リンクされたサービスをデータ ファクトリに作成します。 このセクションでは、SQL Server データベースと、Azure SQL Database のデータベースに対するリンクされたサービスを作成します。 
 
 ### <a name="create-the-sql-server-linked-service"></a>SQL Server のリンクされたサービスを作成する
 
-この手順では、オンプレミス SQL Server データベースをデータ ファクトリにリンクします。
+この手順では、SQL Server データベースをデータ ファクトリにリンクします。
 
 1. 次の内容を記述した **SqlServerLinkedService.json** という名前の JSON ファイルを C:\ADFTutorials\IncCopyMultiTableTutorial フォルダー (まだ存在しない場合はローカル フォルダーを作成してください) に作成します。 SQL Server への接続に使用する認証に基づいて、右側のセクションを選択します。  
 
@@ -372,7 +372,7 @@ END
     Properties        : Microsoft.Azure.Management.DataFactory.Models.SqlServerLinkedService
     ```
 
-### <a name="create-the-sql-database-linked-service"></a>SQL データベースのリンクされたサービスを作成する
+### <a name="create-the-sql-database-linked-service"></a>SQL Database のリンクされたサービスを作成する
 
 1. 次の内容を記述した **AzureSQLDatabaseLinkedService.json** という名前の JSON ファイルを C:\ADFTutorials\IncCopyMultiTableTutorial フォルダーに作成します (ADF フォルダーが存在しない場合は作成してください)。&lt;servername&gt;、&lt;database name&gt;、&lt;user name&gt;、&lt;password&gt; を実際の SQL Server データベースの名前、データベースの名前、ユーザー名、パスワードに置き換えてからファイルを保存してください。 
 

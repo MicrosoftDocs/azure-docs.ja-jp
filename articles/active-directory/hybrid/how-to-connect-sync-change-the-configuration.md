@@ -7,17 +7,17 @@ manager: daveba
 ms.assetid: 7b9df836-e8a5-4228-97da-2faec9238b31
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d77882817934d5ad98f16965aeb9dc246931c495
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ea7f2fbd910f574a6486f1db2eaa9b99a4e3ca3e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230143"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357870"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect 同期: 既定の構成に変更を加える
 この記事の目的は、Azure Active Directory (Azure AD) Connect Sync の既定の構成を変更する方法について説明することです。ここでは、いくつかの一般的なシナリオの手順を紹介します。 この知識があれば、独自のビジネス ルールに基づき独自の構成に対して簡単な変更を加えることができます。
@@ -136,19 +136,19 @@ ms.locfileid: "79230143"
 
 ### <a name="length-of-attributes"></a>属性の長さ
 文字列属性は、既定ではインデックス可能であり、最大長は 448 文字です。 それより多い文字を含む可能性がある文字列属性を使用する場合は、属性フローに次の式を含めるようにします。  
-`attributeName` <- `Left([attributeName],448)`」を参照してください。
+`attributeName` <- `Left([attributeName],448)`.
 
 ### <a name="changing-the-userprincipalsuffix"></a>userPrincipalSuffix の変更
 Active Directory の userPrincipalName 属性は、常にユーザーに認識されるわけではなく、サインイン ID として適切でない場合があります。 Azure AD Connect Sync のインストール ウィザードを使用すると、*mail* など別の属性を選択できます。 ただし、場合によっては、属性を計算する必要があります。
 
 たとえば、Contoso 社に 2 つの Azure AD ディレクトリがあり、一方は運用環境用、もう一方はテスト用であるとします。 テスト テナント内のユーザーについて、サインイン ID に含まれる別のサフィックスを使用することを検討しています。  
-`userPrincipalName` <- `Word([userPrincipalName],1,"@") & "@contosotest.com"`」を参照してください。
+`userPrincipalName` <- `Word([userPrincipalName],1,"@") & "@contosotest.com"`.
 
 この式では、最初の @-sign の左側のすべて (Word) を使用し、固定文字列をそこに連結します。
 
 ### <a name="convert-a-multi-value-attribute-to-single-value"></a>複数値属性から単一値への変換
 Active Directory の一部の属性は、Active Directory ユーザーとコンピューターでは単一値に見えますが、スキーマでは複数値になっています。 例として挙げられるのが、説明属性です。  
-`description` <- `IIF(IsNullOrEmpty([description]),NULL,Left(Trim(Item([description],1)),448))`」を参照してください。
+`description` <- `IIF(IsNullOrEmpty([description]),NULL,Left(Trim(Item([description],1)),448))`.
 
 この式で属性が値を持つ場合は、属性の最初のアイテムを使用し (*Item*)、先頭と末尾のスペースを削除して (*Trim*)、文字列の最初の 448 文字を維持します (*Left*)。
 
@@ -200,7 +200,7 @@ Active Directory の一部の属性は、Active Directory ユーザーとコン�
 
 - Azure AD で指定できる UserType 属性の値は、**Member** と **Guest** の 2 つのみです。
 - Azure AD Connect で同期に対して UserType 属性が有効になっていない場合、ディレクトリの同期によって作成された Azure AD ユーザーの UserType 属性は **Member** に設定されます。
-- Azure AD では、Azure AD Connect によって既存の Azure AD ユーザーの UserType 属性を変更することは許可されていません。 これは、Azure AD ユーザーの作成中にのみ設定でき、[PowerShell を介して変更](/powershell/module/azuread/set-azureaduser?view=azureadps-2.0)できます。
+- バージョン 1.5.30.0 より前、Azure AD では、Azure AD Connect によって既存の Azure AD ユーザーの UserType 属性を変更することは許可されませんでした。 古いバージョンでは、これは、Azure AD ユーザーの作成中にのみ設定でき、[PowerShell を介して変更](/powershell/module/azuread/set-azureaduser?view=azureadps-2.0)できます。
 
 UserType 属性の同期を有効にする前に、まず UserType 属性をオンプレミス Active Directory からどのように派生させるかを決める必要があります。 その一般的な方法を次に示します。
 
@@ -210,7 +210,7 @@ UserType 属性の同期を有効にする前に、まず UserType 属性をオ�
 
 - 別の方法として、UserType 属性の値を他のプロパティから派生させることができます。 たとえば、オンプレミス AD UserPrincipalName 属性の末尾のドメイン部分が <em>@partners.fabrikam123.org</em> である場合、すべてのユーザーを**ゲスト**として同期する必要があるとします。 
 
-    前に説明したように、Azure AD では、Azure AD Connect によって既存の Azure AD ユーザーの UserType 属性を変更することは許可されていません。 したがって、決定したロジックは、テナントの既存の Azure AD ユーザーすべてに対して UserType 属性が既に構成されている方法と一致している必要があります。
+    前に説明したように、古いバージョンの Azure AD Connect では、Azure AD Connect によって既存の Azure AD ユーザーの UserType 属性を変更することは許可されません。 したがって、決定したロジックは、テナントの既存の Azure AD ユーザーすべてに対して UserType 属性が既に構成されている方法と一致している必要があります。
 
 UserType 属性の同期を有効にする大まかな手順は次のとおりです。
 
@@ -243,7 +243,7 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
  5. **[OK]** をクリックして保存します。
 ![オンプレミス AD コネクタのスキーマへのソース属性の追加](./media/how-to-connect-sync-change-the-configuration/usertype1.png)
 
-### <a name="step-3-add-the-usertype-to-the-azure-ad-connector-schema"></a>手順 3:Azure AD コネクタのスキーマに UserType を追加する
+### <a name="step-3-add-the-usertype-attribute-to-the-azure-ad-connector-schema"></a>手順 3:Azure AD コネクタのスキーマに UserType 属性を追加する
 既定では、Azure AD のコネクタ スペースに UserType 属性がインポートされません。 インポート対象の属性のリストに UserType 属性を追加するには、次の手順を実行します。
 
  1. Synchronization Service Manager の **[コネクタ]** タブに進みます。
@@ -340,7 +340,7 @@ Active Directory のスキーマと Azure AD コネクタのスキーマに新�
 
 1. **オンプレミス AD コネクタ**で**フル インポート**を実行します。
 
-   1. Synchronization Service Manager の **[操作]** タブに進みます。
+   1. Synchronization Service Manager の **[コネクタ]** タブに進みます。
    2. **オンプレミス AD コネクタ**を右クリックし、 **[実行]** を選択します。
    3. ポップアップ ダイアログ ボックスで **[フル インポート]** を選択し、 **[OK]** をクリックします。
    4. 操作が完了するのを待ちます。

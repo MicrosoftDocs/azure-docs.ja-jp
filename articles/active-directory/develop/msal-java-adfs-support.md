@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 11/21/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma
-ms.custom: aaddev
-ms.openlocfilehash: 3d834a8d1524595304c22fed9897094622dfd93f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: aaddev, devx-track-java
+ms.openlocfilehash: 5d01d1143563637e21aaa06a3f997c1507e4d8f1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76696216"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114780"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-java"></a>MSAL for Java での Active Directory フェデレーション サービスのサポート
 
@@ -48,4 +48,4 @@ MSAL for Java が Azure AD に接続されると、Azure AD で管理されて�
 
 ## <a name="next-steps"></a>次のステップ
 
-フェデレーション シナリオについては、「[ホーム領域検出ポリシーを使用して、アプリケーションの Azure Active Directory サインイン動作を構成する](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-authentication-for-federated-users-portal)」を参照してください。
+フェデレーション シナリオについては、「[ホーム領域検出ポリシーを使用して、アプリケーションの Azure Active Directory サインイン動作を構成する](../manage-apps/configure-authentication-for-federated-users-portal.md)」を参照してください。

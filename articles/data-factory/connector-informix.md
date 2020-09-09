@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory を使用して IBM Informix ソースからデータをコピーする
-description: Azure Data Factory パイプラインでコピー アクティビティを使用して、IBM Informix ソースからサポートされているシンク データ ストアへデータをコピーする方法について説明します。
+title: Azure Data Factory を使用して IBM Informix をコピー元またはコピー先としてデータをコピーする
+description: Azure Data Factory パイプラインでコピー アクティビティを使用して、IBM Informix をコピー元またはコピー先としてデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -9,16 +9,16 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 06/28/2020
 ms.author: jingwang
-ms.openlocfilehash: b4fb6662491443db5d10825635cad8496e56e7f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 93f484bd30de1ba0ca0f7aa5db263243bebc5b09
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414978"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85508811"
 ---
-# <a name="copy-data-from-and-to-ibm-informix-data-stores-using-azure-data-factory"></a>Azure Data Factory を使用して IBM Informix データ ストアをコピー元またはコピー先としてデータをコピーする
+# <a name="copy-data-from-and-to-ibm-informix-using-azure-data-factory"></a>Azure Data Factory を使用して IBM Informix をコピー元またはコピー先としてデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、IBM Informix データ ストアからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
@@ -30,7 +30,7 @@ ms.locfileid: "81414978"
 - [サポートされるソース/シンク マトリックス](copy-activity-overview.md)での[コピー アクティビティ](copy-activity-overview.md)
 - [Lookup アクティビティ](control-flow-lookup-activity.md)
 
-Informix ソースから、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
+Informix ソースのデータをサポートされる任意のシンク データ ストアにコピーしたり、サポートされる任意のソース データ ストアのデータを Informix シンクにコピーしたりできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -151,6 +151,48 @@ Informix からデータをコピーするために、コピー アクティビ�
             },
             "sink": {
                 "type": "<sink type>"
+            }
+        }
+    }
+]
+```
+
+### <a name="informix-as-sink"></a>シンクとしての Informix
+
+Informix にデータをコピーするために、コピー アクティビティの **sink** セクションでは次のプロパティがサポートされています。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | コピー アクティビティのシンクの type プロパティは、次のように設定する必要があります: **InformixSink** | はい |
+| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/>使用可能な値: 期間。 例:"00:30:00" (30 分)。 |いいえ |
+| writeBatchSize |バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。<br/>使用可能な値: 整数 (行数)。 |いいえ (既定値は 0 - 自動検出) |
+| preCopyScript |コピー アクティビティの毎回の実行で、データをデータ ストアに書き込む前に実行する SQL クエリを指定します。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 |いいえ |
+
+**例:**
+
+```json
+"activities":[
+    {
+        "name": "CopyToInformix",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<Informix output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "<source type>"
+            },
+            "sink": {
+                "type": "InformixSink"
             }
         }
     }

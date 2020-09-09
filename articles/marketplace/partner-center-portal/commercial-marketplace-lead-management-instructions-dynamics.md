@@ -1,18 +1,18 @@
 ---
 title: Dynamics 365 Customer Engagement のリード管理 - Microsoft 商用マーケットプレース
 description: Microsoft AppSource および Azure Marketplace からのリードを管理するように Dynamics 365 Customer Engagement を設定する方法について説明します。
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 03/30/2020
-ms.author: dsindona
-ms.openlocfilehash: 985b3258eb0b957242d529945f32ed9704a91e7d
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 92f4bde31af2a7bb4c658141964f238a8c077eef
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791002"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120379"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>Dynamics 365 Customer Engagement のリード管理を構成する
 
@@ -60,7 +60,7 @@ ms.locfileid: "82791002"
 次の手順を使用して、サービス アカウントを作成し、アクセス許可を割り当てます。 Azure Active Directory または Office 365 を使用できます。
 
 >[!NOTE]
->選択した認証オプションに応じて、対応する手順に進みます。 「[Azure Active Directory](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics#azure-active-directory)」または「[Office 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics#office-365)」をご覧ください。
+>選択した認証オプションに応じて、対応する手順に進みます。 「[Azure Active Directory](#azure-active-directory)」または「[Office 365](#office-365)」をご覧ください。
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
@@ -172,9 +172,9 @@ Dynamics 365 Customer Engagement 向けに Office 365 を構成するには、�
 発行ポータルでオファーのリード管理情報を構成するには、次の手順を行います。
 
 1. オファーの **[オファーのセットアップ]** ページに移動します。
-1. **[リード管理]** セクションで **[接続]** を選択します。
+1. **[潜在顧客]** セクションで、 **[接続]** を選択します。
 
-    ![[リード管理] セクションの [接続] ボタン](./media/commercial-marketplace-lead-management-instructions-dynamics/connect-lead-management.png)
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-dynamics/customer-leads.png" alt-text="[潜在顧客]":::
 
 1. [接続の詳細] ポップアップ ウィンドウで、[リードのターゲット] として **[Dynamics 365 Customer Engagement]** を選択します。
 

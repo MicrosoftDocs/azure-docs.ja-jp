@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 05/29/2018
 ms.reviewer: avverma
-ms.custom: avverma
-ms.openlocfilehash: 7c39088890680b6cfc903083283ed09cb7618d16
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: avverma, devx-track-azurepowershell
+ms.openlocfilehash: e7a4ddaf74df6e04c1597b9c106cd458ddebac55
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124926"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079593"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>仮想マシン スケール セットへのアプリケーションのデプロイ
 
@@ -92,7 +92,7 @@ cloud-init はディストリビューション全体でも有効です。 た�
 
 詳細については、*cloud-init.txt* ファイルの例を含む「[Use cloud-init to customize Azure VMs](../virtual-machines/linux/using-cloud-init.md)」(cloud-init を使用して Azure VM をカスタマイズする) を参照してください。
 
-スケール セットを作成して cloud-init ファイルを使用するには、`--custom-data`az vmss create[ コマンドに ](/cli/azure/vmss) パラメーターを追加し、cloud-init ファイルの名前を指定します。 次の例では、*myScaleSet* という名前のスケール セットを *myResourceGroup* に作成し、*cloud-init.txt* という名前のファイルを使用して VM インスタンスを構成します。 独自の名前を次のように入力します。
+スケール セットを作成して cloud-init ファイルを使用するには、[az vmss create](/cli/azure/vmss) コマンドに `--custom-data` パラメーターを追加し、cloud-init ファイルの名前を指定します。 次の例では、*myScaleSet* という名前のスケール セットを *myResourceGroup* に作成し、*cloud-init.txt* という名前のファイルを使用して VM インスタンスを構成します。 独自の名前を次のように入力します。
 
 ```azurecli
 az vmss create \
@@ -113,4 +113,4 @@ OS の新しいリリースが使用できる場合は、新しいカスタム �
 
 
 ## <a name="next-steps"></a>次のステップ
-アプリケーションを構築してスケール セットに展開します。[スケール セットの設計の概要](virtual-machine-scale-sets-design-overview.md)を参照してください。 スケール セットの管理方法の詳細については、[PowerShell を使用してスケール セットを管理する](virtual-machine-scale-sets-windows-manage.md)を参照してください。
+アプリケーションを構築してスケール セットに展開します。[スケール セットの設計の概要](virtual-machine-scale-sets-design-overview.md)を参照してください。 スケール セットの管理方法の詳細については、[PowerShell を使用してスケール セットを管理する](./virtual-machine-scale-sets-manage-powershell.md)を参照してください。

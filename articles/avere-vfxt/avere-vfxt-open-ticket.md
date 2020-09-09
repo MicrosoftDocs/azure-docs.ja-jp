@@ -1,17 +1,17 @@
 ---
 title: Avere vFXT for Azure のサポートを受ける方法
-description: Avere vFXT for Azure に関するサポート チケットを登録する方法
+description: Azure portal で作成したサポート チケットで、Avere vFXT for Azure のデプロイまたは使用で発生した問題に対応する方法について説明します。
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: b3c604003f78a150067875fb2064ab5eca0600db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 522d29505d7d10f5f6d97136f270f07a63053d19
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227495"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271109"
 ---
 # <a name="get-help-with-your-system"></a>お使いのシステムでサポートを受ける
 

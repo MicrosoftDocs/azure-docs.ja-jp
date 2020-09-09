@@ -26,7 +26,7 @@ Apache Spark Streaming アプリケーションは、24 日間の実行後に停
 
 `livy.server.session.timeout` 値は、Apache Livy がセッションの完了を待機する時間を制御します。 セッションの長さが `session.timeout` 値に達すると、Livy セッションとアプリケーションが自動的に強制終了されます。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決策
 
 長時間実行されるジョブの場合は、Ambari UI を使用して `livy.server.session.timeout` の値を大きくします。 URL `https://<yourclustername>.azurehdinsight.net/#/main/services/LIVY/configs` を使用して、Ambari UI から Livy 構成にアクセスできます。
 

@@ -2,13 +2,14 @@
 title: Azure Application Insights でのデータ保持と保存 | Microsoft Docs
 description: データ保持およびプライバシー ポリシー ステートメント
 ms.topic: conceptual
-ms.date: 09/29/2019
-ms.openlocfilehash: 30878eecf795c85713b9f09b8325b326416022b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/30/2020
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: f6fa42d6cc20c4d26caa7f571f13bb3917b2c7c5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234707"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929331"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights でのデータの収集、保持、保存
 
@@ -18,8 +19,8 @@ ms.locfileid: "79234707"
 
 * 「難しい設定なしで」動く標準の製品利用統計情報モジュールは、多くの場合、機密データをサービスに送信しません。 製品利用統計情報は、負荷指標、パフォーマンス指標、利用率指標、例外レポート、その他の診断データに関連します。 診断レポートに表示される主なユーザー データは URL ですが、いかなる場合も、アプリは URL にプレーンテキストで機密データを入力するべきではありません。
 * 診断と監視利用に役立つ追加のカスタム製品利用統計情報を送信するコードを記述できます。 (この拡張機能は Application Insights の優れた機能です。)手違いにより、このコードを記述し、個人データやその他の機密データが含まれてしまうことはあります。 アプリケーションがそのようなデータを利用する場合、記述するあらゆるコードに徹底したレビュー プロセスを適用してください。
-* アプリを開発し、テストするとき、SDK により送信される内容は簡単に調査できます。 データは IDE とブラウザーのデバッグ出力ウィンドウに表示されます。 
-* データは米国またはヨーロッパの [Microsoft Azure](https://azure.com) サーバーに保管されます。 (ただし、アプリは、場所を問わず実行できます)。Azure には[強力なセキュリティ プロセスがあり、広範囲のコンプライアンス標準を満たします](https://azure.microsoft.com/support/trust-center/)。 あなたとあなたが指名したチームだけがあなたのデータにアクセスできます。 Microsoft のスタッフには、特定の状況下でのみ、あなたに通知した上で限られたアクセスが与えられます。 これは、転送中および保存時に暗号化されます。
+* アプリを開発し、テストするとき、SDK により送信される内容は簡単に調査できます。 データは IDE とブラウザーのデバッグ出力ウィンドウに表示されます。
+* 新しい Application Insights リソースを作成するときに場所を選択できます。 リージョンごとの Application Insights の可用性の詳細については、[こちら](https://azure.microsoft.com/global-infrastructure/services/?products=all)を参照してください。
 *   収集されたデータを確認します。これには、ある状況では許可されても他の状況では許可されないデータが含まれている可能性があるためです。  典型的な例は、デバイス名です。 サーバーからのデバイス名はプライバシーに影響を与えず便利ですが、電話やノート PC のデバイス名はプライバシーに影響を与え、あまり役に立たない場合があります。 主にサーバーを対象にして開発された SDK は、既定でデバイス名を収集することがあります。これは、通常のイベントと例外の両方で、上書きしなければならない場合があります。
 
 この記事の残りの部分では、以上の答えについてもっと詳しく説明します。 設計は自己完結型であり、直近のチームに入っていない同僚にも見せることができます。
@@ -38,31 +39,31 @@ Application Insights SDK はさまざまなアプリケーション タイプに
 ## <a name="what-data-does-it-collect"></a>どのようなデータが収集されますか。
 データ ソースは 3 つあります。
 
-* SDK は[開発時](../../azure-monitor/app/asp-net.md)または[実行時](../../azure-monitor/app/monitor-performance-live-website-now.md)にアプリと統合します。 アプリケーションの種類が違えば SDK も違います。 [Web ページ用の SDK](../../azure-monitor/app/javascript.md) もあります。ページと共にエンド ユーザーのブラウザーに読み込まれます。
+* SDK は[開発時](./asp-net.md)または[実行時](./monitor-performance-live-website-now.md)にアプリと統合します。 アプリケーションの種類が違えば SDK も違います。 [Web ページ用の SDK](./javascript.md) もあります。ページと共にエンド ユーザーのブラウザーに読み込まれます。
   
-  * それぞれの SDK にはさまざまな [モジュール](../../azure-monitor/app/configuration-with-applicationinsights-config.md)があり、さまざまな手法でさまざまな種類の製品利用統計情報を収集します。
+  * それぞれの SDK にはさまざまな [モジュール](./configuration-with-applicationinsights-config.md)があり、さまざまな手法でさまざまな種類の製品利用統計情報を収集します。
   * デプロイ時に SDK をインストールする場合、標準のモジュールに加え、その API を利用し、独自の製品利用統計情報を送信できます。 このカスタム製品利用統計情報にあらゆるデータを含め、送信できます。
-* 一部の Web サーバーには、アプリと共に実行され、CPU、メモリ、ネットワーク占有率に関する製品利用統計情報を送信するエージェントもあります。 たとえば、Azure VM、Docker ホスト、[Java EE サーバー](../../azure-monitor/app/java-agent.md)にそのようなエージェントがあります。
-* [可用性テスト](../../azure-monitor/app/monitor-web-app-availability.md) は Microsoft が実行するプロセスであり、定期的な間隔で要求を Web アプリに送信します。 結果は Application Insights サービスに送信されます。
+* 一部の Web サーバーには、アプリと共に実行され、CPU、メモリ、ネットワーク占有率に関する製品利用統計情報を送信するエージェントもあります。 たとえば、Azure VM、Docker ホスト、[Java EE サーバー](./java-agent.md)にそのようなエージェントがあります。
+* [可用性テスト](./monitor-web-app-availability.md) は Microsoft が実行するプロセスであり、定期的な間隔で要求を Web アプリに送信します。 結果は Application Insights サービスに送信されます。
 
 ### <a name="what-kinds-of-data-are-collected"></a>どのような種類のデータが収集されますか。
 主なカテゴリは次のとおりです。
 
-* [Web サーバー製品利用統計情報](../../azure-monitor/app/asp-net.md) -HTTP 要求。  URI、要求の処理にかかる時間、応答コード、クライアント IP アドレス。 `Session id`
-* [Web ページ](../../azure-monitor/app/javascript.md) - ページ、ユーザーとセッションの数。 ページの読み込み時間。 例外。 AJAX 呼び出し。
+* [Web サーバー製品利用統計情報](./asp-net.md) -HTTP 要求。  URI、要求の処理にかかる時間、応答コード、クライアント IP アドレス。 `Session id`.
+* [Web ページ](./javascript.md) - ページ、ユーザーとセッションの数。 ページの読み込み時間。 例外。 AJAX 呼び出し。
 * パフォーマンス カウンター - メモリ、CPU、IO、ネットワーク占有率。
 * クライアントとサーバーのコンテキスト - OS、ロケール、デバイスの種類、ブラウザー、画面の解像度。
-* [例外](../../azure-monitor/app/asp-net-exceptions.md)とクラッシュ - **スタック ダンプ**、`build id`、CPU タイプ。 
-* [依存関係](../../azure-monitor/app/asp-net-dependencies.md) - REST、SQL、AJAX など、外部サービスの呼び出し。 URI または接続文字列、期間、成功、コマンド。
-* [可用性テスト](../../azure-monitor/app/monitor-web-app-availability.md) - テストとステップの期間、応答。
-* [トレース ログ](../../azure-monitor/app/asp-net-trace-logs.md)と[カスタム テレメトリ](../../azure-monitor/app/api-custom-events-metrics.md) - **コード化してログまたはテレメトリに入れるすべて**。
+* [例外](./asp-net-exceptions.md)とクラッシュ - **スタック ダンプ**、`build id`、CPU タイプ。 
+* [依存関係](./asp-net-dependencies.md) - REST、SQL、AJAX など、外部サービスの呼び出し。 URI または接続文字列、期間、成功、コマンド。
+* [可用性テスト](./monitor-web-app-availability.md) - テストとステップの期間、応答。
+* [トレース ログ](./asp-net-trace-logs.md)と[カスタム テレメトリ](./api-custom-events-metrics.md) - **コード化してログまたはテレメトリに入れるすべて**。
 
 [詳細](#data-sent-by-application-insights)。
 
 ## <a name="how-can-i-verify-whats-being-collected"></a>収集された内容はどのような方法で検証しますか。
 Visual Studio でアプリを開発している場合、デバッグ モードでアプリを実行してください (F5)。 製品利用統計情報は出力ウィンドウに表示されます。 そこから、それをコピーし、JSON として書式設定すれば、調査が簡単になります。 
 
-![](./media/data-retention-privacy/06-vs.png)
+![Visual Studio のデバッグ モードでのアプリの実行を示すスクリーンショット。](./media/data-retention-privacy/06-vs.png)
 
 [診断] ウィンドウには、さらに読みやすいビューもあります。
 
@@ -71,16 +72,16 @@ Web ページの場合、ブラウザーのデバッグ ウィンドウを開き
 ![F12 を押し、[ネットワーク] タブを開きます。](./media/data-retention-privacy/08-browser.png)
 
 ### <a name="can-i-write-code-to-filter-the-telemetry-before-it-is-sent"></a>送信前に製品利用統計情報を絞り込むコードを記述できますか。
-[製品利用統計情報プロセッサ プラグイン](../../azure-monitor/app/api-filtering-sampling.md)を記述することで可能です。
+[製品利用統計情報プロセッサ プラグイン](./api-filtering-sampling.md)を記述することで可能です。
 
 ## <a name="how-long-is-the-data-kept"></a>データはどれだけの期間保持されますか。
-生データ ポイント (つまり、Analytics でクエリを実行したり Search で調べることができる項目) は、最大 730 日間保持されます。 30、60、90、120、180、270、365、550 または 730 日間の[リテンション期間を選択](https://docs.microsoft.com/azure/azure-monitor/app/pricing#change-the-data-retention-period)できます。 730 日以上データを保持する必要がある場合は、[連続エクスポート](../../azure-monitor/app/export-telemetry.md)を使用して、データ インジェスト中にストレージ アカウントにコピーすることができます。 
+生データ ポイント (つまり、Analytics でクエリを実行したり Search で調べることができる項目) は、最大 730 日間保持されます。 30、60、90、120、180、270、365、550 または 730 日間の[リテンション期間を選択](./pricing.md#change-the-data-retention-period)できます。 730 日以上データを保持する必要がある場合は、[連続エクスポート](./export-telemetry.md)を使用して、データ インジェスト中にストレージ アカウントにコピーすることができます。 
 
 90 日より長く保持されるデータには、追加料金が発生します。 Application Insights の価格の詳細については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページを参照してください。
 
 集計されたデータ (つまり、メトリックス エクスプローラーに表示されるカウント、平均、その他の統計データ) は、1 分の詳細度であれば 90 日の期間にわたって保持されます。
 
-[デバッグ スナップショット](../../azure-monitor/app/snapshot-debugger.md)は 15 日間格納されます。 この保持ポリシーは、アプリケーションごとに設定されます。 この値を増やす必要がある場合は、Azure portal でサポート ケースを開くことによって増加を要求できます。
+[デバッグ スナップショット](./snapshot-debugger.md)は 15 日間格納されます。 この保持ポリシーは、アプリケーションごとに設定されます。 この値を増やす必要がある場合は、Azure portal でサポート ケースを開くことによって増加を要求できます。
 
 ## <a name="who-can-access-the-data"></a>誰がデータにアクセスできますか。
 お客様と、組織アカウントを持っている場合はチーム メンバーが、データを見ることができます。 
@@ -92,9 +93,6 @@ Microsoft は、お客様にサービスを提供する目的でのみデータ�
 
 ## <a name="where-is-the-data-held"></a>データが保持されている場所はどこですか。
 * 新しい Application Insights リソースを作成するときに場所を選択できます。 リージョンごとの Application Insights の可用性の詳細については、[こちら](https://azure.microsoft.com/global-infrastructure/services/?products=all)を参照してください。
-
-#### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>それは、アプリを米国、ヨーロッパ、または東南アジアでホストする必要があるという意味ですか。
-* いいえ。 アプリは、独自のオンプレミスのホストでもクラウドでも、場所を問わず実行できます。
 
 ## <a name="how-secure-is-my-data"></a>データのセキュリティは保たれますか。
 Application Insights は Azure サービスのひとつです。 セキュリティ ポリシーについては、[Azure のセキュリティ、プライバシー、およびコンプライアンスに関するホワイト ペーパー](https://go.microsoft.com/fwlink/?linkid=392408)をご覧ください。
@@ -122,7 +120,7 @@ Web ページのコード内にインストルメンテーション キーがあ
 
 ローカル ストレージを利用するテレメトリ チャネルは、TEMP または APPDATA ディレクトリ内に一時ファイルを作成します。これらは、アプリケーションを実行している特定のアカウントだけに制限されます。 これは、エンドポイントが一時的に使用できなくなったか、または調整制限に達した場合に発生する可能性があります。 この問題が解決されると、テレメトリ チャネルは、すべての新しいデータおよび保持されているデータの送信を再開します。
 
-この保持されているデータはローカルでは暗号化されません。 これが問題になる場合は、データを確認して、プライベート データのコレクションを制限します。 詳細については、「[プライベート データをエクスポートして削除する方法](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data#how-to-export-and-delete-private-data)」を参照してください。
+この保持されているデータはローカルでは暗号化されません。 これが問題になる場合は、データを確認して、プライベート データのコレクションを制限します。 詳細については、「[プライベート データをエクスポートして削除する方法](../platform/personal-data-mgmt.md#how-to-export-and-delete-private-data)」を参照してください。
 
 顧客がこのディレクトリを特定のセキュリティ要件で構成する必要がある場合は、フレームワークごとに構成できます。 アプリケーションを実行しているプロセスにこのディレクトリへの書き込みアクセス権があることを確認してください。ただし、意図しないユーザーによってテレメトリが読み取られることを防ぐために、このディレクトリが保護されていることも確認してください。
 
@@ -202,16 +200,16 @@ Application Insight エンドポイントへのデータの転送時のセキュ
 
 |プラットフォーム/言語 | サポート | 詳細情報 |
 | --- | --- | --- |
-| Azure App Service  | サポートされています。構成が必要な場合があります。 | サポートは 2018 年 4 月に発表されました。 [構成の詳細](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)のお知らせを参照してください。  |
-| Azure Function App | サポートされています。構成が必要な場合があります。 | サポートは 2018 年 4 月に発表されました。 [構成の詳細](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)のお知らせを参照してください。 |
-|.NET | サポートされています。構成はバージョンによって異なります。 | .NET 4.7 およびそれ以前のバージョンの詳細な構成情報については、[これらの手順](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)を参照してください。  |
-|Status Monitor | サポートされています。構成が必要です | Status Monitor は、TLS 1.2 をサポートするために [OS 構成](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + [.NET 構成](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)に依存します。
+| Azure App Service  | サポートされています。構成が必要な場合があります。 | サポートは 2018 年 4 月に発表されました。 [構成の詳細](https://azure.github.io/AppService/2018/04/17/App-Service-and-Functions-hosted-apps-can-now-update-TLS-versions!)のお知らせを参照してください。  |
+| Azure Function App | サポートされています。構成が必要な場合があります。 | サポートは 2018 年 4 月に発表されました。 [構成の詳細](https://azure.github.io/AppService/2018/04/17/App-Service-and-Functions-hosted-apps-can-now-update-TLS-versions!)のお知らせを参照してください。 |
+|.NET | サポートされています。構成はバージョンによって異なります。 | .NET 4.7 およびそれ以前のバージョンの詳細な構成情報については、[これらの手順](/dotnet/framework/network-programming/tls#support-for-tls-12)を参照してください。  |
+|Status Monitor | サポートされています。構成が必要です | Status Monitor は、TLS 1.2 をサポートするために [OS 構成](/windows-server/security/tls/tls-registry-settings) + [.NET 構成](/dotnet/framework/network-programming/tls#support-for-tls-12)に依存します。
 |Node.js |  サポートされています。v10.5.0 では構成が必要な場合があります。 | アプリケーションに固有の構成については、[公式の Node.js TLS/SSL ドキュメント](https://nodejs.org/api/tls.html)を使用してください。 |
 |Java | サポートされています。JDK の TLS 1.2 のサポートは、[JDK 6 更新プログラム 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) および [JDK 7](https://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html) で追加されました。 | JDK 8 では、[既定で TLS 1.2](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default) が使用されます。  |
 |Linux | Linux ディストリビューションでは、TLS 1.2 のサポートに関して [OpenSSL](https://www.openssl.org) に依存する傾向があります。  | [OpenSSL の Changelog](https://www.openssl.org/news/changelog.html) を参照して、使用している OpenSSL のバージョンがサポートされていることを確認してください。|
-| Windows 8.0 - 10 | サポートされています。既定で有効になっています。 | [既定の設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)を使用していることを確認するには。  |
-| Windows Server 2012 - 2016 | サポートされています。既定で有効になっています。 | [既定の設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)を使用していることを確認するには |
-| Windows 7 SP1 および Windows Server 2008 R2 SP1 | サポートされていますが、既定では有効になっていません。 | 有効にする方法の詳細については、「[トランスポート層セキュリティ (TLS) のレジストリ設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)」を参照してください。  |
+| Windows 8.0 - 10 | サポートされています。既定で有効になっています。 | [既定の設定](/windows-server/security/tls/tls-registry-settings)を使用していることを確認するには。  |
+| Windows Server 2012 - 2016 | サポートされています。既定で有効になっています。 | [既定の設定](/windows-server/security/tls/tls-registry-settings)を使用していることを確認するには |
+| Windows 7 SP1 および Windows Server 2008 R2 SP1 | サポートされていますが、既定では有効になっていません。 | 有効にする方法の詳細については、「[トランスポート層セキュリティ (TLS) のレジストリ設定](/windows-server/security/tls/tls-registry-settings)」を参照してください。  |
 | Windows Server 2008 SP2 | TLS 1.2 のサポートには、更新プログラムが必要です。 | Windows Server 2008 SP2 に [TLS 1.2 のサポートを追加する更新プログラム](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s)に関するページを参照してください。 |
 |Windows Vista | サポートされていません。 | 該当なし
 
@@ -233,7 +231,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 
 ## <a name="personal-data-stored-in-application-insights"></a>Application Insights に格納される個人データ
 
-この件については、[Application Insights の個人データに関する記事](../../azure-monitor/platform/personal-data-mgmt.md)に詳しく説明されています。
+この件については、[Application Insights の個人データに関する記事](../platform/personal-data-mgmt.md)に詳しく説明されています。
 
 #### <a name="can-my-users-turn-off-application-insights"></a>ユーザーは Application Insights を無効にできますか。
 直接無効にすることはできません。 ユーザーが Application Insights を無効にするために操作できるスイッチはありません。
@@ -286,7 +284,7 @@ SDK はプラットフォームごとに異なり、インストールできる�
 [ApplicationInsights.config を編集して、データの一部をオフにする][config]ことができます
 
 > [!NOTE]
-> クライアント IP は地理的な場所の推論に使用されますが、既定では、IP データは格納されなくなっており、関連するフィールドにはすべてゼロが書き込まれます。 個人データの処理について詳しく理解するには、こちらの[記事](../../azure-monitor/platform/personal-data-mgmt.md#application-data)をお勧めします。 IP アドレスのデータを格納する必要がある場合は、[IP アドレスの収集に関する記事](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)のオプションについての説明をご覧ください。
+> クライアント IP は地理的な場所の推論に使用されますが、既定では、IP データは格納されなくなっており、関連するフィールドにはすべてゼロが書き込まれます。 個人データの処理について詳しく理解するには、こちらの[記事](../platform/personal-data-mgmt.md#application-data)をお勧めします。 IP アドレスのデータを格納する必要がある場合は、[IP アドレスの収集に関する記事](./ip-collection.md)のオプションについての説明をご覧ください。
 
 ## <a name="credits"></a>謝辞
 この製品には、MaxMind によって作成された GeoLite2 データが含まれています。MaxMind は [https://www.maxmind.com](https://www.maxmind.com) から入手できます。
@@ -295,13 +293,14 @@ SDK はプラットフォームごとに異なり、インストールできる�
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[apiproperties]: ../../azure-monitor/app/api-custom-events-metrics.md#properties
-[client]: ../../azure-monitor/app/javascript.md
-[config]: ../../azure-monitor/app/configuration-with-applicationinsights-config.md
-[greenbrown]: ../../azure-monitor/app/asp-net.md
-[java]: ../../azure-monitor/app/java-get-started.md
-[platforms]: ../../azure-monitor/app/platforms.md
+[api]: ./api-custom-events-metrics.md
+[apiproperties]: ./api-custom-events-metrics.md#properties
+[client]: ./javascript.md
+[config]: ./configuration-with-applicationinsights-config.md
+[greenbrown]: ./asp-net.md
+[java]: ./java-get-started.md
+[platforms]: ./platforms.md
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
-[redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[redfield]: ./monitor-performance-live-website-now.md
+[start]: ./app-insights-overview.md
+

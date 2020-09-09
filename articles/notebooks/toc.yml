@@ -16,6 +16,8 @@
       href: quickstart-migrate-local-jupyter-notebook.md
     - name: カスタム環境の使用
       href: quickstart-create-jupyter-notebook-project-environment.md
+    - name: プロジェクトをエクスポートする
+      href: quickstart-export-jupyter-notebook-project.md
 - name: チュートリアル
   items:
     - name: ノートブックの作成と実行

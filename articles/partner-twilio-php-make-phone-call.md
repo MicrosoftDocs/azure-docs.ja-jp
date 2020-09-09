@@ -12,12 +12,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: fb1623c4a409f1c6cba94bad56d773e166d2b182
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e75b5a265ba85813581e39a548d897ea57a33da6
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69637319"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080560"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-php-application-on-azure"></a>Azure 上の PHP アプリケーションで Twilio を使用して通話する方法
 次の例では、Azure でホストされる PHP Web ページから Twilio を使用して通話する方法を示しています。 次のスクリーンショットに示すように、作成されたアプリケーションは通話に関する値の入力をユーザーに求めます。
@@ -105,7 +105,7 @@ echo "URI resource: " . $call->uri . "<br />";
 ![Twilio と PHP を使用する Azure 通話応答][twilio_php_response]
 
 ## <a name="run-the-application"></a>アプリケーションの実行
-次の手順は、[Git を使用して Azure Web Apps にアプリケーションをデプロイする](app-service/app-service-web-get-started-php.md)ことです (ただし、ここにあるすべての情報が関連しているわけではありません)。 
+次の手順は、[Git を使用して Azure Web Apps にアプリケーションをデプロイする](app-service/quickstart-php.md)ことです (ただし、ここにあるすべての情報が関連しているわけではありません)。 
 
 ## <a name="next-steps"></a>次のステップ
 Azure 上の PHP で Twilio を使用した基本機能を示すために、このコードが用意されました。 運用環境で Azure に展開する前に、エラー処理やその他の機能をさらに追加することができます。 次に例を示します。

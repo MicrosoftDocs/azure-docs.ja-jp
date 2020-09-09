@@ -11,6 +11,8 @@
       href: virtual-machines-availability-set-supportability.md
 - name: VM デプロイ ガイダンス
   items:
+    - name: SLES 15 SP1 へのアップグレード
+      href: linux-upgrade-suse-15sp1.md
     - name: 新しい VM のデプロイ
       items:
         - name: Linux
@@ -54,7 +56,7 @@
     - name: VM の起動が停止しています
       href: troubleshoot-vm-boot-configure-update.md
     - name: VM のライフサイクルと状態
-      href: ../windows/states-lifecycle.md
+      href: ../states-lifecycle.md
 - name: VM が起動しない
   items:
     - name: Linux
@@ -67,6 +69,8 @@
       items:
         - name: ブート診断
           href: boot-diagnostics.md
+        - name: ブート エラー - ディスク読み取りエラーが発生しました
+          href: boot-error-disk-read-error-occurred.md
         - name: BitLocker のエラー
           href: troubleshoot-bitlocker-boot-error.md
         - name: ブルー スクリーン エラー
@@ -87,14 +91,26 @@
           href: troubleshoot-reboot-loop.md
         - name: Windows Update でのスタック
           href: troubleshoot-stuck-updating-boot-error.md
+        - name: 予期しない再起動またはエラー
+          href: troubleshoot-unexpected-restart-error-during-vm-boot.md
         - name: VM の起動が停止しています
           href: troubleshoot-vm-boot-configure-update.md
         - name: Windows ブート マネージャーが原因で VM を起動できない
           href: troubleshoot-guide-windows-boot-manager-menu.md
         - name: 更新が原因で VM が応答しない
           href: unresponsive-vm-apply-windows-update.md
+        - name: 監査構成ポリシーの適用時に VM が応答しない
+          href: vm-unresponsive-applying-audit-configuration-policy.md
         - name: グループ ポリシーの適用時に VM が応答しない
           href: unresponsive-vm-apply-group-policy.md
+        - name: セキュリティ ポリシーの適用時に VM が応答しない
+          href: unresponsive-vm-apply-security-policy.md
+        - name: Windows ブート マネージャー エラー - 無効なイメージ ハッシュ状態
+          href: windows-boot-error-invalid-image-hash.md
+        - name: Windows STOP エラー - 無効なシステム構成情報
+          href: windows-stop-error-bad-system-config-info.md
+        - name: Windows STOP エラー - メモリなし状態
+          href: troubleshoot-windows-stop-error.md
 - name: VM に接続できない
   items:
     - name: RDP
@@ -183,13 +199,15 @@
 - name: 仮想ディスクの管理の問題
   items:
     - name: 概要
-      href: ../windows/managed-disks-overview.md
+      href: ../managed-disks-overview.md
     - name: よく寄せられる質問
-      href: ../windows/faq-for-disks.md
+      href: ../faq-for-disks.md
     - name: ストレージ リソースの削除時のエラー
       href: storage-resource-deletion-errors.md
     - name: クラシック ストレージ リソースの削除時のエラー
       href: storage-classic-cannot-delete-storage-account-container-vhd.md
+    - name: Azure で VM を作成する場合に VHD がサポートされない
+      href: vhd-not-supported-vm-azure.md
     - name: 入れ子になった仮想化の使用
       href: troubleshoot-vm-by-use-nested-virtualization.md
 - name: VM のパフォーマンスの問題
@@ -220,6 +238,8 @@
       href: ../extensions/troubleshoot.md
     - name: Windows VM エージェントのオフライン インストール
       href: install-vm-agent-offline.md
+    - name: Windows VM エージェントのトラブルシューティング
+      href: windows-azure-guest-agent.md
 - name: バックアップと復元
   items:
     - name: Azure VM でのバックアップ エラーのトラブルシューティング

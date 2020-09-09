@@ -5,18 +5,16 @@ author: HiteshMadan
 manager: rajarv
 ms.author: himad
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: 5c23b9ef280a4a4e3458d279ecf060d2e3d50295
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f39d22fe58d4375b3b68bacd237c1b200328c4b1
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72991728"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171331"
 ---
-# <a name="module-twin-json-schema"></a>モジュール ツインの JSON スキーマ
+# <a name="module-twin-json-schema-azure-event-grid"></a>モジュール ツイン JSON スキーマ (Azure Event Grid)
 
 IoT Edge の Event Grid は IoT Edge のエコシステムと統合されており、モジュール ツインを介したトピックとサブスクリプションの作成をサポートします。 また、モジュール ツインで報告されたプロパティに関して、すべてのトピックとイベント サブスクリプションの現在の状態も報告されます。
 

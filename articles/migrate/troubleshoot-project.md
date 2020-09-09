@@ -6,12 +6,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/01/2020
-ms.openlocfilehash: b1fc4bce988b13a9ff76fd961d524ce945876054
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b56244fccce623827367d504831ca8db517c108d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535402"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121641"
 ---
 # <a name="troubleshoot-azure-migrate-projects"></a>Azure Migrate プロジェクトのトラブルシューティング
 
@@ -52,7 +52,7 @@ Azure Migrate プロジェクトは、[パブリック クラウド](migrate-sup
 - エラー "要求にはユーザー ID ヘッダーが含まれていなければなりません" が発生した場合、組織の Azure Active Directory (Azure AD) テナントへのアクセス権がないことが示されている可能性があります。 この場合、次のようになります。
     - ユーザーは、Azure AD テナントに初めて追加されるときに、テナントへの参加を求める招待メールを受け取ります。
     - テナントに追加されるには、招待を承認します。
-    - メールが表示されない場合は、テナントへのアクセス権を持つユーザーに連絡し、[招待を再送信する](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator#resend-invitations-to-guest-users)ように依頼してください。
+    - メールが表示されない場合は、テナントへのアクセス権を持つユーザーに連絡し、[招待を再送信する](../active-directory/b2b/add-users-administrator.md#resend-invitations-to-guest-users)ように依頼してください。
     - 招待メールを受け取った後、メールを開き、リンクを選択して招待を承諾します。 その後、Azure portal からサインアウトし、改めてサインインします。 (ブラウザーの更新は機能しません。)これで、移行プロジェクトの作成を始めることができます。
 
 ## <a name="how-do-i-delete-a-project"></a>プロジェクトを削除する方法を教えてください

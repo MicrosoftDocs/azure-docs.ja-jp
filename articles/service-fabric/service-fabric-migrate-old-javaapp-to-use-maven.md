@@ -4,13 +4,14 @@ description: Service Fabric Java SDK を使用していた古い Java アプリ�
 author: rapatchi
 ms.topic: conceptual
 ms.date: 08/23/2017
+ms.custom: devx-track-java
 ms.author: rapatchi
-ms.openlocfilehash: 0e8154039dde3de571e7960b244ab1d43cc764c7
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: f65194cde25deac8c03d6ddc3a7c0b928aaca171
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204289"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327312"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Maven から Java ライブラリをフェッチするよう以前の Java Service Fabric アプリケーションを更新する
 Service Fabric Java バイナリは、Service Fabric Java SDK から Maven ホスティングに移行されました。 **mavencentral** を使用して最新の Service Fabric Java 依存関係をフェッチできます。 このガイドは、Yeoman テンプレートまたは Eclipse を使用して Service Fabric Java SDK 用に作成された既存の Java アプリケーションを、Maven ベースのビルドと互換性を持つように更新する際に役立ちます。

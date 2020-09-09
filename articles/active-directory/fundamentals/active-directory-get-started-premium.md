@@ -2,23 +2,23 @@
 title: Premium エディションにサインアップする方法 - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory Premium エディションにサインアップする方法の手順。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 09/07/2017
 ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a1f4addf9bb1fff34d99867fb3730a9197c9c05
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 9f2e3e9376c26bae2c0b3c0dda06b781b5f2f7c4
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73721226"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799159"
 ---
 # <a name="sign-up-for-azure-active-directory-premium-editions"></a>Azure Active Directory Premium エディションにサインアップする
 Azure Active Directory (Azure AD) Premium エディションを購入して、お使いの Azure サブスクリプションと関連付けることができます。 新しい Azure サブスクリプションを作成する必要がある場合は、ライセンス プランと Azure AD サービス アクセスをアクティブにする必要もあります。

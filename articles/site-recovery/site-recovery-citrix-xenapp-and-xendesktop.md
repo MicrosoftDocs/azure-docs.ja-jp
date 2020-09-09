@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ponatara
-ms.openlocfilehash: 29fbe5389da924a2ecc660aa5ce5c4bb0a0902b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 90d54a8ded99dd8ab43aed688036add6aede20ab
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74084550"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134833"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>多層 XenApp および Citrix XenDesktop デプロイのディザスター リカバリーを設定する
 
@@ -30,8 +30,8 @@ Citrix XenDesktop は、デスクトップとアプリケーションを提供�
 
 開始する前に、以下を理解していることを確認してください。
 
-1. [Azure への仮想マシンのレプリケート](site-recovery-vmware-to-azure.md)
-1. [復旧ネットワークの設計](site-recovery-network-design.md)方法
+1. [Azure への仮想マシンのレプリケート](./vmware-azure-tutorial.md)
+1. [復旧ネットワークの設計](./concepts-on-premises-to-azure-networking.md)方法
 1. [Azure へのテスト フェールオーバーの実行](site-recovery-test-failover-to-azure.md)
 1. [Azure へのフェールオーバーの実行](site-recovery-failover.md)
 1. [ドメイン コントローラーのレプリケート](site-recovery-active-directory.md)方法
@@ -96,7 +96,7 @@ Azure でのドメイン コントローラーのレプリケートと構成に�
 
 SQL サーバーの推奨保護オプションに関する詳細な技術ガイダンスについては、[SQL Server ディザスター リカバリーおよび Azure Site Recovery を使用した SQL Server の保護](site-recovery-sql.md)に関するページをご覧ください。
 
-[このガイダンス](site-recovery-vmware-to-azure.md)に従って、Azure への他のコンポーネント仮想マシンのレプリケートを開始します。
+[このガイダンス](./vmware-azure-tutorial.md)に従って、Azure への他のコンポーネント仮想マシンのレプリケートを開始します。
 
 ![XenApp コンポーネントの保護](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-enablereplication.png)
 

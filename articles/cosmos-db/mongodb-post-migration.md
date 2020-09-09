@@ -4,15 +4,15 @@ description: このドキュメントでは、MongoDB から Azure Cosmos DB の
 author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: lbosq
-ms.openlocfilehash: ce33651aae64d0a90264dde6da64b4044c6ce132
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 055604c399aa1641e823f24af499102bfff3ed0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063604"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263094"
 ---
 # <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API 使用時の移行後の最適化手順
 
@@ -35,7 +35,7 @@ MongoDB データベースに格納されているデータを Azure Cosmos DB �
 2. [Azure portal](https://www.portal.azure.com/) の左側のウィンドウで **[すべてのリソース]** メニューを開き、データを移行した Azure Cosmos DB アカウントを見つけます。
 3. **[接続文字列]** ブレードを開きます。 右側のウィンドウに、自分のアカウントに正常に接続するために必要なすべての情報が表示されます。
 4. アプリケーションの構成 (または、その他の関連する場所) で接続情報を使用し、アプリで Azure Cosmos DB の MongoDB 用 API 接続を反映させます。
-![接続文字列](./media/mongodb-post-migration/connection-string.png)
+:::image type="content" source="./media/mongodb-post-migration/connection-string.png" alt-text="接続文字列":::
 
 詳細については、「[Azure Cosmos DB への MongoDB アプリケーションの接続](connect-mongodb-account.md)」ページを参照してください。
 

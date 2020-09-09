@@ -2,47 +2,24 @@
 title: チュートリアル:Workplace by Facebook を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory と Workplace by Facebook の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.assetid: 6341e67e-8ce6-42dc-a4ea-7295904a53ef
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99103c9994b240e2f45b66acf269b320c90e5135
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ea5a7a0cd89b9aad78ce789517aa8f75767955d8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231732"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88526400"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>チュートリアル:Workplace by Facebook を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルでは、自動ユーザー プロビジョニングを構成するために Workplace by Facebook と Azure Active Directory (Azure AD) の両方で実行する必要がある手順について説明します。 構成すると、Azure AD では、ユーザーとグループの [Workplace by Facebook](https://work.workplace.com/) へのプロビジョニングおよびプロビジョニング解除が Azure AD プロビジョニング サービスを使って自動的に行われるようになります。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。
-
-## <a name="migrating-to-the-new-workplace-by-facebook-application"></a>Workplace by Facebook の新しいアプリケーションへの移行
-Workplace by Facebook と既に統合されている場合は、今後の変更について以下のセクションを参照してください。 Workplace by Facebook を初めて設定する場合は、このセクションをスキップして、サポートされている機能に移動することができます。 
-
-#### <a name="whats-changing"></a>変更点
-* Azure AD 側での変更点: Workplace でユーザーをプロビジョニングするための承認方法は、従来は有効期間が長いシークレット トークンでした。 間もなく、承認方法が OAuth 承認付与に変更されます。 
-* Workplace 側での変更点: 以前は、Azure AD アプリは Workplace by Facebook でのカスタム統合でした。 今後は、Workplace integration ディレクトリにサード パーティ アプリケーションとして Azure AD が表示されるようになります。 
-
-#### <a name="what-do-i-need-to-do-to-migrate-my-existing-custom-integration-to-the-new-application"></a>既存のカスタム統合を新しいアプリケーションに移行するには、どうすればよいですか?
-有効なトークンを持つ既存の Workplace 統合がある場合、操作は必要ありません。 **2020 年 4 月 28 日の時点で、資格情報が無効なために検査されていないすべてのアプリケーションが自動的に移行されました。**
- 
-#### <a name="how-can-i-tell-if-my-application-has-been-migrated"></a>アプリケーションが移行されたかどうかを確認するにはどうすればよいですか? 
-* Azure Portal で確認:アプリケーションが移行されると、今後の変更に関する承認セクションのバナーが削除され、シークレット トークン フィールドが青い承認ボタンに置き換えられます。 
-* Workplace by Facebook ポータルで確認:Azure AD アプリを確認して、承認されていることを確保します。  
-
-#### <a name="the-admin-credentials-section-is-greyed-out-on-my-application-and-i-cant-save-why"></a>アプリケーションの管理者の資格情報セクションが淡色表示されていて、保存することができません。 なぜですか?
-移行されていない Workplace のお客様については、管理者の資格情報セクションがロックダウンされています。 管理者の資格情報セクションが淡色表示されていて、再度アクセスを承認する必要がある場合は、次の URL を使用してください。 **?Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride=true** (https://portal.azure.com/?Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride=true)
-
 
 ## <a name="capabilities-supported"></a>サポートされる機能
 > [!div class="checklist"]
@@ -50,6 +27,8 @@ Workplace by Facebook と既に統合されている場合は、今後の変更�
 > * アクセスが不要になった場合に Workplace by Facebook 上のユーザーを削除する
 > * Azure AD と Workplace by Facebook 間でユーザー属性の同期を維持する
 > * Workplace by Facebook への[シングル サインオン](https://docs.microsoft.com/azure/active-directory/saas-apps/workplacebyfacebook-tutorial) (推奨)
+
+>[!VIDEO https://www.youtube.com/embed/oF7I0jjCfrY]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -169,7 +148,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 プロビジョニングを構成したら、次のリソースを使用してデプロイを監視します。
 
 1. [プロビジョニング ログ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
-2. [進行状況バー](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
+2. [進行状況バー](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
 3. プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)を参照してください。
 
 ## <a name="troubleshooting-tips"></a>トラブルシューティングのヒント

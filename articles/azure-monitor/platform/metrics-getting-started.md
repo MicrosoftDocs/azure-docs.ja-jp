@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 920ff19b162843d1c2d631ad192ce1b3c4273a68
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e5514c4a54083bcc6ef8187f2cd97515d2dd680
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226331"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590185"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Azure メトリックス エクスプローラーの概要
 
@@ -39,18 +39,21 @@ Azure Monitor メトリックス エクスプローラーは、グラフの描�
 
     > ![メトリックを選択する](./media/metrics-getting-started/metric-picker.png)
 
-4. 必要に応じて、メトリックの集計を変更することができます。 たとえば、メトリックの最小値、最大値、または平均値をグラフに表示したい場合があります。
+4. 必要に応じて、[メトリックの集計を変更する](metrics-charts.md#changing-aggregation)ことができます。 たとえば、メトリックの最小値、最大値、または平均値をグラフに表示したい場合があります。
 
-> [!NOTE]
+> [!TIP]
 > 同じグラフに複数のメトリックをプロットして表示する場合は、 **[メトリックの追加]** ボタンを使用して上記の手順を繰り返します。 1 つのビューに複数のグラフを表示する場合は、上部にある **[グラフの追加]** ボタンをクリックします。
 
 ## <a name="select-a-time-range"></a>時間の範囲を選択する
+
+> [!WARNING]
+> [Azure のほとんどのメトリックは 93 日間保存されます](data-platform-metrics.md#retention-of-metrics)。 ただし、1 つのグラフでクエリできるデータは 30 日までです。 この制限は、[ログ ベースのメトリック](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics)には適用されません。
 
 既定では、直近の 24 時間のメトリック データがグラフに表示されます。 ご利用のグラフ上で時間範囲を変更したり、ズームインまたはズーム アウトしたりするには、 **[時刻の選択]** パネルを使用します。 
 
 ![[時間の範囲] パネルを変更する](./media/metrics-getting-started/time-picker.png)
 
-> [!NOTE]
+> [!TIP]
 > グラフ内で関心のある領域 (急上昇または急降下) を調査するには、**時間ブラシ**を使用します。 領域の先頭にマウス ポインターを置き、マウスの左ボタンを押したまま領域のもう一方の側にドラッグしてボタンを離します。 その時間範囲のグラフが拡大されます。 
 
 ## <a name="apply-dimension-filters-and-splitting"></a>ディメンションのフィルターと分割を適用する

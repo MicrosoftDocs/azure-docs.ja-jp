@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: bf69786f56f52874bd9358ae44a6b88b466e77f4
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: cb144aa7b6c717ada3a51fe3286f349bc3d8b325
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81677456"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273916"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Team Data Science Process の実行:Azure HDInsight Hadoop クラスターの使用
 このチュートリアルでは、[Team Data Science Process (TDSP)](overview.md) をエンド ツー エンドのシナリオで使用します。 [Azure HDInsight Hadoop クラスター](https://azure.microsoft.com/services/hdinsight/)を使用して、公開されている [NYC タクシー乗車](https://www.andresmh.com/nyctaxitrips/)データセットのデータの保存、探索、特徴エンジニアリングを行い、データのダウンサンプリングを実行します。 二項分類、多クラス分類、回帰予測タスクを処理するために、ここでは Azure Machine Learning を使用してデータのモデルを構築します。 
@@ -29,21 +29,32 @@ IPython Notebook を使用して、このチュートリアルで説明する 1 
 NYC タクシー乗車データは、約 20 GB の圧縮されたコンマ区切り値 (CSV) ファイル (非圧縮で最大 48 GB) です。 このデータには、1 億 7300 万以上の個々の乗車と、各乗車に支払われた料金が含まれています。 各旅行レコードには、pickup (乗車) と dropoff (降車) の場所と時間、匿名化されたタクシー運転手の (運転) 免許番号、および medallion 番号 (タクシーの一意の ID) が含まれています。 データには 2013 年のすべての乗車が含まれ、データは月ごとに次の 2 つのデータセットに用意されています。
 
 - trip_data CSV ファイルには、乗車の詳細 (乗客数、乗車地点、降車地点、乗車時間、乗車距離) が含まれています。 いくつかのサンプル レコードを次に示します。
-   
-        medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
-        89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
+
+  `medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude`
+
+  `89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171`
+
+  `0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066`
+
+  `0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002`
+
+  `DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388`
+
+  `DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868`
+
 - trip_fare CSV ファイルには、各乗車に対して支払われた料金の詳細 (支払いの種類、料金、追加料金と税、チップ、道路などの通行料、合計支払金額) が含まれます。 いくつかのサンプル レコードを次に示します。
-   
-        medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
-        89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-06 00:18:35,CSH,6,0.5,0.5,0,0,7
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-05 18:49:41,CSH,5.5,1,0.5,0,0,7
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
+
+  `medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount`
+
+  `89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7`
+
+  `0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-06 00:18:35,CSH,6,0.5,0.5,0,0,7`
+
+  `0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-05 18:49:41,CSH,5.5,1,0.5,0,0,7`
+
+  `DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6`
+
+  `DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5`
 
 trip\_data と trip\_fare を結合するための一意のキーは medallion、hack\_licence、pickup\_datetime の各フィールドで構成されています。 特定の乗車に関する詳細をすべて取得するには、これら 3 つのキーと連結するだけで十分です。
 
@@ -51,16 +62,18 @@ trip\_data と trip\_fare を結合するための一意のキーは medallion�
 行う予測の種類をデータ分析に基づいて決定すると、必要なプロセス タスクを明確にするのに役立ちます。 このチュートリアルで扱う予測問題の 3 つの例を以下に示します。すべて *tip\_amount* に基づいています。
 
 - **二項分類**:乗車に対してチップが支払われたかどうかを予測します。 つまり、*tip\_amount* が $0 より大きい場合は肯定的な例で、*tip\_amount* が $0 の場合は否定的な例です。
-   
-        Class 0: tip_amount = $0
-        Class 1: tip_amount > $0
+
+  - クラス 0: tip_amount = $0
+  - クラス 1: tip_amount > $0
+
 - **多クラス分類**:乗車で支払われたチップの範囲を予測します。 *tip\_amount* を次の 5 つのクラスに分割します。
-   
-        Class 0: tip_amount = $0
-        Class 1: tip_amount > $0 and tip_amount <= $5
-        Class 2: tip_amount > $5 and tip_amount <= $10
-        Class 3: tip_amount > $10 and tip_amount <= $20
-        Class 4: tip_amount > $20
+
+  - クラス 0: tip_amount = $0
+  - クラス 1: tip_amount > $0 および tip_amount <= $5
+  - クラス 2: tip_amount > $5 および tip_amount <= $10
+  - クラス 3: tip_amount > $10 および tip_amount <= $20
+  - クラス 4: tip_amount > $20
+
 - **回帰タスク**:乗車で支払われたチップの金額を予測します。  
 
 ## <a name="set-up-an-hdinsight-hadoop-cluster-for-advanced-analytics"></a><a name="setup"></a>高度な分析用に HDInsight Hadoop クラスターをセットアップする
@@ -90,7 +103,9 @@ HDInsight クラスターを使用する高度な分析用の Azure 環境は、
 
 1. コマンド プロンプト ウィンドウで次の AzCopy コマンドを実行します。 *\<path_to_data_folder>* を、目的の転送先に置き換えてください。
 
-        "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
+    ```console
+    "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
+    ```
 
 1. コピーが完了すると、選択したデータのフォルダー内に合計 24 個の Zip ファイルが表示されます。 ダウンロードされたファイルをローカル コンピューター上の同じディレクトリに解凍します。 圧縮されていないファイルが存在するフォルダーをメモしておきます。 *\<path\_to\_unzipped_data\_files\>* として参照されるこのフォルダーについては、後ほど説明します。
 
@@ -102,20 +117,24 @@ HDInsight クラスターを使用する高度な分析用の Azure 環境は、
 
 次の AzCopy コマンドでは、Hadoop クラスターを作成してデータ ファイルを解凍したときに指定した実際の値で次のパラメーターを置き換えます。
 
-* ***\<path_to_data_folder>*** を解凍データ ファイルが入った、マシン上のディレクトリ (パス)。  
-* ***\<Hadoop クラスターのストレージ アカウント名>*** HDInsight クラスターに関連付けられているストレージ アカウント。
-* ***\<Hadoop クラスターの既定のコンテナー>*** クラスターで使用する既定のコンテナー。 通常、既定のコンテナーの名前は、クラスター自体と同じ名前です。 たとえば、"abc123.azurehdinsight.net" というクラスターの場合、既定のコンテナーは abc123 です。
-* ***\<ストレージ アカウント キー>*** クラスターで使用するストレージ アカウントのキー。
+* "***\<path_to_data_folder>***" を、解凍されたデータ ファイルがあるコンピューター上のディレクトリ (パス) で置き換えます。  
+* "***\<storage account name of Hadoop cluster>***" を、HDInsight クラスターに関連付けられているストレージ アカウントで置き換えます。
+* "***\<default container of Hadoop cluster>***" を、クラスターで使用される既定のコンテナーで置き換えます。 通常、既定のコンテナーの名前は、クラスター自体と同じ名前です。 たとえば、"abc123.azurehdinsight.net" というクラスターの場合、既定のコンテナーは abc123 です。
+* "***\<storage account key>***" を、クラスターで使用するストレージ アカウントのキーで置き換えます。
 
 コマンド プロンプトまたは Windows PowerShell ウィンドウで、次の 2 つの AzCopy コマンドを実行します。
 
 このコマンドは、Hadoop クラスターの既定のコンテナーの ***nyctaxitripraw*** ディレクトリに乗車データをアップロードします。
 
-        "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxitripraw /DestKey:<storage account key> /S /Pattern:trip_data_*.csv
+```console
+"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxitripraw /DestKey:<storage account key> /S /Pattern:trip_data_*.csv
+```
 
 このコマンドは、Hadoop クラスターの既定のコンテナーの ***nyctaxifareraw*** ディレクトリに料金データをアップロードします。
 
-        "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxifareraw /DestKey:<storage account key> /S /Pattern:trip_fare_*.csv
+```console
+"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxifareraw /DestKey:<storage account key> /S /Pattern:trip_fare_*.csv
+```
 
 これで、データが BLOB ストレージに格納され、HDInsight クラスター内で利用できるようになりました。
 
@@ -131,9 +150,11 @@ HDInsight クラスターを使用する高度な分析用の Azure 環境は、
 
 探索的データ分析用にクラスターを準備するために、関連する Hive スクリプトを含む ".hql" ファイルを [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) からヘッド ノード上のローカル ディレクトリ (C:\temp) にダウンロードします。 クラスターのヘッド ノードからコマンド プロンプトを開き、次の 2 つのコマンドを実行します。
 
-    set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/DataScienceProcess/DataScienceScripts/Download_DataScience_Scripts.ps1'
+```console
+set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/DataScienceProcess/DataScienceScripts/Download_DataScience_Scripts.ps1'
 
-    @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
+@powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
+```
 
 この 2 つのコマンドによって、このチュートリアルで必要なすべての ".hql" ファイルが、ヘッド ノード上のローカル ディレクトリ ***C:\temp&#92;*** にダウンロードされます。
 
@@ -146,7 +167,9 @@ HDInsight クラスターを使用する高度な分析用の Azure 環境は、
 これで、NYC タクシー データセットの Hive テーブルを作成する準備ができました。
 Hadoop クラスターのヘッド ノードのデスクトップで Hadoop コマンド ラインを開きます。 次のコマンドを実行して Hive ディレクトリを入力します。
 
-    cd %hive_home%\bin
+```console
+cd %hive_home%\bin
+```
 
 > [!NOTE]
 > このチュートリアルでは、Hive bin/ ディレクトリ プロンプトからすべての Hive コマンドを実行します。 これは自動的にすべてのパスの問題に対処します。 このチュートリアルでは、"Hive ディレクトリ プロンプト"、"Hive bin/ ディレクトリ プロンプト"、"Hadoop コマンド ライン" という用語は同じ意味で使用されます。
@@ -155,48 +178,52 @@ Hadoop クラスターのヘッド ノードのデスクトップで Hadoop コ�
 
 Hive ディレクトリ プロンプトから、ヘッド ノードの Hadoop コマンド ラインで次のコマンドを実行します。これにより、Hive データベースとテーブルが作成されます。
 
-    hive -f "C:\temp\sample_hive_create_db_and_tables.hql"
+```console
+hive -f "C:\temp\sample_hive_create_db_and_tables.hql"
+```
 
 **C:\temp\sample\_hive\_create\_db\_and\_tables.hql** ファイルの内容を以下に示します。このファイルでは、Hive データベース **nyctaxidb** と、テーブル **trip**、**fare**が作成されます。
 
-    create database if not exists nyctaxidb;
+```hiveql
+create database if not exists nyctaxidb;
 
-    create external table if not exists nyctaxidb.trip
-    (
-        medallion string,
-        hack_license string,
-        vendor_id string,
-        rate_code string,
-        store_and_fwd_flag string,
-        pickup_datetime string,
-        dropoff_datetime string,
-        passenger_count int,
-        trip_time_in_secs double,
-        trip_distance double,
-        pickup_longitude double,
-        pickup_latitude double,
-        dropoff_longitude double,
-        dropoff_latitude double)  
-    PARTITIONED BY (month int)
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\n'
-    STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/trip' TBLPROPERTIES('skip.header.line.count'='1');
+create external table if not exists nyctaxidb.trip
+(
+    medallion string,
+    hack_license string,
+    vendor_id string,
+    rate_code string,
+    store_and_fwd_flag string,
+    pickup_datetime string,
+    dropoff_datetime string,
+    passenger_count int,
+    trip_time_in_secs double,
+    trip_distance double,
+    pickup_longitude double,
+    pickup_latitude double,
+    dropoff_longitude double,
+    dropoff_latitude double)  
+PARTITIONED BY (month int)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\n'
+STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/trip' TBLPROPERTIES('skip.header.line.count'='1');
 
-    create external table if not exists nyctaxidb.fare
-    (
-        medallion string,
-        hack_license string,
-        vendor_id string,
-        pickup_datetime string,
-        payment_type string,
-        fare_amount double,
-        surcharge double,
-        mta_tax double,
-        tip_amount double,
-        tolls_amount double,
-        total_amount double)
-    PARTITIONED BY (month int)
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\n'
-    STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/fare' TBLPROPERTIES('skip.header.line.count'='1');
+create external table if not exists nyctaxidb.fare
+(
+    medallion string,
+    hack_license string,
+    vendor_id string,
+    pickup_datetime string,
+    payment_type string,
+    fare_amount double,
+    surcharge double,
+    mta_tax double,
+    tip_amount double,
+    tolls_amount double,
+    total_amount double)
+PARTITIONED BY (month int)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\n'
+STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/fare' TBLPROPERTIES('skip.header.line.count'='1');
+```
 
 この Hive スクリプトでは 2 つのテーブルが作成されます。
 
@@ -213,64 +240,80 @@ Hive ディレクトリ プロンプトから、ヘッド ノードの Hadoop �
 
 NYC タクシー データセットは、月ごとに自然にパーティション分割されているので、これを使用することで処理を高速化し、クエリ時間を短縮できます。 次の (Hadoop コマンド ラインを使用して、Hive ディレクトリから発行された) PowerShell コマンドは、月ごとにパーティション分割された trip および fare Hive テーブルにデータを読み込みます。
 
-    for /L %i IN (1,1,12) DO (hive -hiveconf MONTH=%i -f "C:\temp\sample_hive_load_data_by_partitions.hql")
+```powershell
+for /L %i IN (1,1,12) DO (hive -hiveconf MONTH=%i -f "C:\temp\sample_hive_load_data_by_partitions.hql")
+```
 
 **sample\_hive\_load\_data\_by\_partitions.hql** ファイルには、次の **LOAD** コマンドが含まれています。
 
-    LOAD DATA INPATH 'wasb:///nyctaxitripraw/trip_data_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.trip PARTITION (month=${hiveconf:MONTH});
-    LOAD DATA INPATH 'wasb:///nyctaxifareraw/trip_fare_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.fare PARTITION (month=${hiveconf:MONTH});
+```hiveql
+LOAD DATA INPATH 'wasb:///nyctaxitripraw/trip_data_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.trip PARTITION (month=${hiveconf:MONTH});
+LOAD DATA INPATH 'wasb:///nyctaxifareraw/trip_fare_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.fare PARTITION (month=${hiveconf:MONTH});
+```
 
 ここで探索プロセスに使用される多数の Hive クエリは、1 つまたは 2 つのパーティションのみを対象にしています。 これらのクエリをデータセット全体に対して実行することもできます。
 
 ### <a name="show-databases-in-the-hdinsight-hadoop-cluster"></a><a name="#show-db"></a>HDInsight Hadoop クラスターのデータベースを表示する
 Hadoop コマンド ライン ウィンドウ内に HDInsight Hadoop クラスターで作成されたデータベースを表示するには、Hadoop コマンド ラインで次のコマンドを実行します。
 
-    hive -e "show databases;"
+```console
+hive -e "show databases;"
+```
 
 ### <a name="show-the-hive-tables-in-the-nyctaxidb-database"></a><a name="#show-tables"></a>**nyctaxidb** データベースの Hive テーブルを表示する
 **nyctaxidb** データベースのテーブルを表示するには、Hadoop コマンドラインで次のコマンドを実行します。
 
-    hive -e "show tables in nyctaxidb;"
+```console
+hive -e "show tables in nyctaxidb;"
+```
 
 次のコマンドを実行して、テーブルがパーティション分割されていることを確認できます。
 
-    hive -e "show partitions nyctaxidb.trip;"
+```console
+hive -e "show partitions nyctaxidb.trip;"
+```
 
 次のような内容が出力されます。
 
-    month=1
-    month=10
-    month=11
-    month=12
-    month=2
-    month=3
-    month=4
-    month=5
-    month=6
-    month=7
-    month=8
-    month=9
-    Time taken: 2.075 seconds, Fetched: 12 row(s)
+```output
+month=1
+month=10
+month=11
+month=12
+month=2
+month=3
+month=4
+month=5
+month=6
+month=7
+month=8
+month=9
+Time taken: 2.075 seconds, Fetched: 12 row(s)
+```
 
 同様に、次のコマンドを実行して、fare テーブルがパーティション分割されていることを確認できます。
 
-    hive -e "show partitions nyctaxidb.fare;"
+```console
+hive -e "show partitions nyctaxidb.fare;"
+```
 
 次のような内容が出力されます。
 
-    month=1
-    month=10
-    month=11
-    month=12
-    month=2
-    month=3
-    month=4
-    month=5
-    month=6
-    month=7
-    month=8
-    month=9
-    Time taken: 1.887 seconds, Fetched: 12 row(s)
+```output
+month=1
+month=10
+month=11
+month=12
+month=2
+month=3
+month=4
+month=5
+month=6
+month=7
+month=8
+month=9
+Time taken: 1.887 seconds, Fetched: 12 row(s)
+```
 
 ## <a name="data-exploration-and-feature-engineering-in-hive"></a><a name="#explore-hive"></a>Hive におけるデータの探索と特徴エンジニアリング
 > [!NOTE]
@@ -296,15 +339,21 @@ Hive クエリを使用すると、Hive テーブルに読み込まれるデー�
 
 最初の月から trip テーブルの上位 10 個のレコードを取得するには、次のクエリを実行します。
 
-    hive -e "select * from nyctaxidb.trip where month=1 limit 10;"
+```console
+hive -e "select * from nyctaxidb.trip where month=1 limit 10;"
+```
 
 最初の月から fare テーブルの上位 10 個のレコードを取得するには、次のクエリを実行します。
 
-    hive -e "select * from nyctaxidb.fare where month=1 limit 10;"
+```console
+hive -e "select * from nyctaxidb.fare where month=1 limit 10;"
+```
 
 レコードをファイルに保存しておくと、上記のクエリを少し変更するだけで簡単に表示できます。
 
-    hive -e "select * from nyctaxidb.fare where month=1 limit 10;" > C:\temp\testoutput
+```console
+hive -e "select * from nyctaxidb.fare where month=1 limit 10;" > C:\temp\testoutput
+```
 
 ### <a name="exploration-view-the-number-of-records-in-each-of-the-12-partitions"></a>探索:12 個のそれぞれのパーティションのレコードの数を表示する
 > [!NOTE]
@@ -314,65 +363,81 @@ Hive クエリを使用すると、Hive テーブルに読み込まれるデー�
 
 関心があるのは、年間で乗車数がどのように変化するかです。 月ごとにグループ化すると、乗車数の分布が表示されます。
 
-    hive -e "select month, count(*) from nyctaxidb.trip group by month;"
+```console
+hive -e "select month, count(*) from nyctaxidb.trip group by month;"
+```
 
 このコマンドでは次の出力が生成されます。
 
-    1       14776615
-    2       13990176
-    3       15749228
-    4       15100468
-    5       15285049
-    6       14385456
-    7       13823840
-    8       12597109
-    9       14107693
-    10      15004556
-    11      14388451
-    12      13971118
-    Time taken: 283.406 seconds, Fetched: 12 row(s)
+```output
+1       14776615
+2       13990176
+3       15749228
+4       15100468
+5       15285049
+6       14385456
+7       13823840
+8       12597109
+9       14107693
+10      15004556
+11      14388451
+12      13971118
+Time taken: 283.406 seconds, Fetched: 12 row(s)
+```
 
 ここでは、最初の列は月で、2 番目の列はその月の乗車数を表しています。
 
 Hive ディレクトリ プロンプトで次のコマンドを実行して、乗車データ セットの合計レコード数をカウントすることもできます。
 
-    hive -e "select count(*) from nyctaxidb.trip;"
+```console
+hive -e "select count(*) from nyctaxidb.trip;"
+```
 
 このコマンドの結果は、次のようになります。
 
-    173179759
-    Time taken: 284.017 seconds, Fetched: 1 row(s)
+```output
+173179759
+Time taken: 284.017 seconds, Fetched: 1 row(s)
+```
 
 乗車データ セットの場合と同様のコマンドを使用して、Hive ディレクトリ プロンプトから Hive クエリを発行し、料金データ セットのレコード数を検証できます。
 
-    hive -e "select month, count(*) from nyctaxidb.fare group by month;"
+```console
+hive -e "select month, count(*) from nyctaxidb.fare group by month;"
+```
 
 このコマンドでは次の出力が生成されます。
 
-    1       14776615
-    2       13990176
-    3       15749228
-    4       15100468
-    5       15285049
-    6       14385456
-    7       13823840
-    8       12597109
-    9       14107693
-    10      15004556
-    11      14388451
-    12      13971118
-    Time taken: 253.955 seconds, Fetched: 12 row(s)
+```output
+1       14776615
+2       13990176
+3       15749228
+4       15100468
+5       15285049
+6       14385456
+7       13823840
+8       12597109
+9       14107693
+10      15004556
+11      14388451
+12      13971118
+Time taken: 253.955 seconds, Fetched: 12 row(s)
+```
 
 両方のデータセットについて、まったく同じ 1 か月あたりの乗車数が返されます。これにより、データが正しく読み込まれたことを示す最初の検証が提供されます。
 
 Hive ディレクトリ プロンプトで次のコマンドを実行して、乗車データ セットの合計レコード数をカウントすることもできます。
 
-    hive -e "select count(*) from nyctaxidb.fare;"
+```console
+hive -e "select count(*) from nyctaxidb.fare;"
+```
 
 このコマンドの結果は、次のようになります。
 
-    173179759
-    Time taken: 186.683 seconds, Fetched: 1 row(s)
+```output
+173179759
+Time taken: 186.683 seconds, Fetched: 1 row(s)
+```
 
 両方のテーブルのレコードの合計数も同じであり、データが正しく読み込まれたことを示す 2 番目の検証が提供されます。
 
@@ -384,31 +449,39 @@ Hive ディレクトリ プロンプトで次のコマンドを実行して、�
 
 この例では、指定した期間内で乗車回数が 100 を超える medallion (タクシー番号) を識別します。 このクエリは、パーティション変数 **month**によって条件設定されているので、パーティション テーブルへのアクセスによるメリットが得られます。 クエリ結果は、ヘッド ノード上の `C:\temp` にあるローカル ファイル **queryoutput.tsv** に書き込まれます。
 
-    hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
+```console
+hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
+```
 
 検査用の **sample\_hive\_trip\_count\_by\_medallion.hql** ファイルの内容を次に示します。
 
-    SELECT medallion, COUNT(*) as med_count
-    FROM nyctaxidb.fare
-    WHERE month<=3
-    GROUP BY medallion
-    HAVING med_count > 100
-    ORDER BY med_count desc;
+```hiveql
+SELECT medallion, COUNT(*) as med_count
+FROM nyctaxidb.fare
+WHERE month<=3
+GROUP BY medallion
+HAVING med_count > 100
+ORDER BY med_count desc;
+```
 
 NYC タクシーのデータセット内にある medallion (タクシー番号) は、一意のタクシーを識別します。 特定の期間に特定の乗車数を超えるタクシーを確認することで、比較的忙しいタクシーを特定できます。 次の例では、最初の 3 か月間で乗車回数が 100 を超えるタクシーを識別し、クエリ結果を **C:\temp\queryoutput.tsv** ローカル ファイルに保存します。
 
 検査用の **sample\_hive\_trip\_count\_by\_medallion.hql** ファイルの内容を次に示します。
 
-    SELECT medallion, COUNT(*) as med_count
-    FROM nyctaxidb.fare
-    WHERE month<=3
-    GROUP BY medallion
-    HAVING med_count > 100
-    ORDER BY med_count desc;
+```hiveql
+SELECT medallion, COUNT(*) as med_count
+FROM nyctaxidb.fare
+WHERE month<=3
+GROUP BY medallion
+HAVING med_count > 100
+ORDER BY med_count desc;
+```
 
 Hive ディレクトリ プロンプトから次のコマンドを実行します。
 
-    hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
+```console
+hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
+```
 
 ### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>探索:medallion および hack_license ごとの乗車回数の分布
 > [!NOTE]
@@ -420,18 +493,22 @@ Hive ディレクトリ プロンプトから次のコマンドを実行しま�
 
 **sample\_hive\_trip\_count\_by\_medallion\_license.hql** ファイルは、**medallion** と **hack_license** で設定した料金データセットをグループ化し、それぞれの組み合わせの数を返します。 その内容を次に示します。
 
-    SELECT medallion, hack_license, COUNT(*) as trip_count
-    FROM nyctaxidb.fare
-    WHERE month=1
-    GROUP BY medallion, hack_license
-    HAVING trip_count > 100
-    ORDER BY trip_count desc;
+```hiveql
+SELECT medallion, hack_license, COUNT(*) as trip_count
+FROM nyctaxidb.fare
+WHERE month=1
+GROUP BY medallion, hack_license
+HAVING trip_count > 100
+ORDER BY trip_count desc;
+```
 
 このクエリは、タクシーと運転手の組み合わせを乗車回数の多い順に返します。
 
 Hive ディレクトリ プロンプトで次のコマンドを実行します。
 
-    hive -f "C:\temp\sample_hive_trip_count_by_medallion_license.hql" > C:\temp\queryoutput.tsv
+```console
+hive -f "C:\temp\sample_hive_trip_count_by_medallion_license.hql" > C:\temp\queryoutput.tsv
+```
 
 クエリ結果は、ローカル ファイル **C:\temp\queryoutput.tsv** に書き込まれます。
 
@@ -445,17 +522,20 @@ Hive ディレクトリ プロンプトで次のコマンドを実行します�
 
 検査用の **sample\_hive\_quality\_assessment.hql** ファイルの内容を次に示します。
 
-        SELECT COUNT(*) FROM nyctaxidb.trip
-        WHERE month=1
-        AND  (CAST(pickup_longitude AS float) NOT BETWEEN -90 AND -30
-        OR    CAST(pickup_latitude AS float) NOT BETWEEN 30 AND 90
-        OR    CAST(dropoff_longitude AS float) NOT BETWEEN -90 AND -30
-        OR    CAST(dropoff_latitude AS float) NOT BETWEEN 30 AND 90);
-
+```hiveql
+    SELECT COUNT(*) FROM nyctaxidb.trip
+    WHERE month=1
+    AND  (CAST(pickup_longitude AS float) NOT BETWEEN -90 AND -30
+    OR    CAST(pickup_latitude AS float) NOT BETWEEN 30 AND 90
+    OR    CAST(dropoff_longitude AS float) NOT BETWEEN -90 AND -30
+    OR    CAST(dropoff_latitude AS float) NOT BETWEEN 30 AND 90);
+```
 
 Hive ディレクトリ プロンプトで次のコマンドを実行します。
 
-    hive -S -f "C:\temp\sample_hive_quality_assessment.hql"
+```console
+hive -S -f "C:\temp\sample_hive_quality_assessment.hql"
+```
 
 このコマンドに含まれている引数 *-S* は、Hive の Map/Reduce ジョブの状態の画面出力を抑制します。 このコマンドは、Hive クエリの画面出力を読みやすくするので便利です。
 
@@ -472,17 +552,21 @@ Hive ディレクトリ プロンプトで次のコマンドを実行します�
 
 次の **sample\_hive\_tipped\_frequencies.hql** ファイルは、コマンドの実行内容を示しています。
 
-    SELECT tipped, COUNT(*) AS tip_freq
-    FROM
-    (
-        SELECT if(tip_amount > 0, 1, 0) as tipped, tip_amount
-        FROM nyctaxidb.fare
-    )tc
-    GROUP BY tipped;
+```hiveql
+SELECT tipped, COUNT(*) AS tip_freq
+FROM
+(
+    SELECT if(tip_amount > 0, 1, 0) as tipped, tip_amount
+    FROM nyctaxidb.fare
+)tc
+GROUP BY tipped;
+```
 
 Hive ディレクトリ プロンプトで次のコマンドを実行します。
 
-    hive -f "C:\temp\sample_hive_tipped_frequencies.hql"
+```console
+hive -f "C:\temp\sample_hive_tipped_frequencies.hql"
+```
 
 
 ### <a name="exploration-class-distributions-in-the-multiclass-setting"></a>探索:多クラス設定での分類分布
@@ -493,20 +577,24 @@ Hive ディレクトリ プロンプトで次のコマンドを実行します�
 
 「[予測タスクの例](hive-walkthrough.md#mltasks)」で説明されている多クラス分類問題についても、このデータ セットは、支払われるチップの金額を予測する自然な分類に役立ちます。 箱を使って、クエリのチップの範囲を定義できます。 さまざまなチップの範囲のクラス分布を取得するには、**sample\_hive\_tip\_range\_frequencies.hql** ファイルを使います。 その内容を次に示します。
 
-    SELECT tip_class, COUNT(*) AS tip_freq
-    FROM
-    (
-        SELECT if(tip_amount=0, 0,
-            if(tip_amount>0 and tip_amount<=5, 1,
-            if(tip_amount>5 and tip_amount<=10, 2,
-            if(tip_amount>10 and tip_amount<=20, 3, 4)))) as tip_class, tip_amount
-        FROM nyctaxidb.fare
-    )tc
-    GROUP BY tip_class;
+```hiveql
+SELECT tip_class, COUNT(*) AS tip_freq
+FROM
+(
+    SELECT if(tip_amount=0, 0,
+        if(tip_amount>0 and tip_amount<=5, 1,
+        if(tip_amount>5 and tip_amount<=10, 2,
+        if(tip_amount>10 and tip_amount<=20, 3, 4)))) as tip_class, tip_amount
+    FROM nyctaxidb.fare
+)tc
+GROUP BY tip_class;
+```
 
 Hadoop コマンド ライン コンソールから、次のコマンドを実行します。
 
-    hive -f "C:\temp\sample_hive_tip_range_frequencies.hql"
+```console
+hive -f "C:\temp\sample_hive_tip_range_frequencies.hql"
+```
 
 ### <a name="exploration-compute-the-direct-distance-between-two-longitude-latitude-locations"></a>探索:経度緯度の 2 つの場所の直線距離を計算する
 > [!NOTE]
@@ -518,24 +606,26 @@ Hadoop コマンド ライン コンソールから、次のコマンドを実�
 
 実際の乗車距離と緯度経度の 2 つの地点の [Haversine distance (球面上の距離)](https://en.wikipedia.org/wiki/Haversine_formula) を比較するために、Hive 内で利用できる次のような三角関数を使用します。
 
-    set R=3959;
-    set pi=radians(180);
+```hiveql
+set R=3959;
+set pi=radians(180);
 
-    insert overwrite directory 'wasb:///queryoutputdir'
+insert overwrite directory 'wasb:///queryoutputdir'
 
-    select pickup_longitude, pickup_latitude, dropoff_longitude, dropoff_latitude, trip_distance, trip_time_in_secs,
-    ${hiveconf:R}*2*2*atan((1-sqrt(1-pow(sin((dropoff_latitude-pickup_latitude)
-     *${hiveconf:pi}/180/2),2)-cos(pickup_latitude*${hiveconf:pi}/180)
-     *cos(dropoff_latitude*${hiveconf:pi}/180)*pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2)))
-     /sqrt(pow(sin((dropoff_latitude-pickup_latitude)*${hiveconf:pi}/180/2),2)
-     +cos(pickup_latitude*${hiveconf:pi}/180)*cos(dropoff_latitude*${hiveconf:pi}/180)*
-     pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2))) as direct_distance
-    from nyctaxidb.trip
-    where month=1
-    and pickup_longitude between -90 and -30
-    and pickup_latitude between 30 and 90
-    and dropoff_longitude between -90 and -30
-    and dropoff_latitude between 30 and 90;
+select pickup_longitude, pickup_latitude, dropoff_longitude, dropoff_latitude, trip_distance, trip_time_in_secs,
+${hiveconf:R}*2*2*atan((1-sqrt(1-pow(sin((dropoff_latitude-pickup_latitude)
+ *${hiveconf:pi}/180/2),2)-cos(pickup_latitude*${hiveconf:pi}/180)
+ *cos(dropoff_latitude*${hiveconf:pi}/180)*pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2)))
+ /sqrt(pow(sin((dropoff_latitude-pickup_latitude)*${hiveconf:pi}/180/2),2)
+ +cos(pickup_latitude*${hiveconf:pi}/180)*cos(dropoff_latitude*${hiveconf:pi}/180)*
+ pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2))) as direct_distance
+from nyctaxidb.trip
+where month=1
+and pickup_longitude between -90 and -30
+and pickup_latitude between 30 and 90
+and dropoff_longitude between -90 and -30
+and dropoff_latitude between 30 and 90;
+```
 
 上記のクエリで、R は地球の半径 (マイル) を表し、pi はラジアンに変換されます。 緯度経度の 2 つの地点は NYC 領域から大きく外れた値を除外するためにフィルター処理されます。
 
@@ -543,20 +633,25 @@ Hadoop コマンド ライン コンソールから、次のコマンドを実�
 
 Hive ディレクトリ プロンプトで次のコマンドを実行します。
 
-    hdfs dfs -mkdir wasb:///queryoutputdir
+```hiveql
+hdfs dfs -mkdir wasb:///queryoutputdir
 
-    hive -f "C:\temp\sample_hive_trip_direct_distance.hql"
-
+hive -f "C:\temp\sample_hive_trip_direct_distance.hql"
+```
 
 クエリ結果は Hadoop クラスターの既定のコンテナーにある 9 つの Azure BLOB (**queryoutputdir/000000\_0** ～ **queryoutputdir/000008\_0**) に書き込まれます。
 
 個々の BLOB のサイズを表示するには、Hive ディレクトリ プロンプトで次のコマンドを実行します。
 
-    hdfs dfs -ls wasb:///queryoutputdir
+```hiveql
+hdfs dfs -ls wasb:///queryoutputdir
+```
 
 たとえば **000000\_0** などの指定されたファイルの内容を参照するには、Hadoop の `copyToLocal` コマンドを使います。
 
-    hdfs dfs -copyToLocal wasb:///queryoutputdir/000000_0 C:\temp\tempfile
+```hiveql
+hdfs dfs -copyToLocal wasb:///queryoutputdir/000000_0 C:\temp\tempfile
+```
 
 > [!WARNING]
 > ファイル サイズが大きい場合、`copyToLocal` の処理に時間がかかる可能性があるため、大きなファイルではこのコマンドを使用しないことをお勧めします。  
@@ -589,130 +684,134 @@ Machine Learning の[データのインポート][import-data] モジュール�
 
 Machine Learning でモデルを作成するためのデータを準備する **sample\_hive\_prepare\_for\_aml\_full.hql** ファイルの内容を以下に示します。
 
-        set R = 3959;
-        set pi=radians(180);
+```hiveql
+set R = 3959;
+set pi=radians(180);
 
-        create table if not exists nyctaxidb.nyctaxi_downsampled_dataset (
+create table if not exists nyctaxidb.nyctaxi_downsampled_dataset (
 
-        medallion string,
-        hack_license string,
-        vendor_id string,
-        rate_code string,
-        store_and_fwd_flag string,
-        pickup_datetime string,
-        dropoff_datetime string,
-        pickup_hour string,
-        pickup_week string,
-        weekday string,
-        passenger_count int,
-        trip_time_in_secs double,
-        trip_distance double,
-        pickup_longitude double,
-        pickup_latitude double,
-        dropoff_longitude double,
-        dropoff_latitude double,
-        direct_distance double,
-        payment_type string,
-        fare_amount double,
-        surcharge double,
-        mta_tax double,
-        tip_amount double,
-        tolls_amount double,
-        total_amount double,
-        tipped string,
-        tip_class string
-        )
-        row format delimited fields terminated by ','
-        lines terminated by '\n'
-        stored as textfile;
+medallion string,
+hack_license string,
+vendor_id string,
+rate_code string,
+store_and_fwd_flag string,
+pickup_datetime string,
+dropoff_datetime string,
+pickup_hour string,
+pickup_week string,
+weekday string,
+passenger_count int,
+trip_time_in_secs double,
+trip_distance double,
+pickup_longitude double,
+pickup_latitude double,
+dropoff_longitude double,
+dropoff_latitude double,
+direct_distance double,
+payment_type string,
+fare_amount double,
+surcharge double,
+mta_tax double,
+tip_amount double,
+tolls_amount double,
+total_amount double,
+tipped string,
+tip_class string
+)
+row format delimited fields terminated by ','
+lines terminated by '\n'
+stored as textfile;
 
-        --- now insert contents of the join into the above internal table
+--- now insert contents of the join into the above internal table
 
-        insert overwrite table nyctaxidb.nyctaxi_downsampled_dataset
-        select
-        t.medallion,
-        t.hack_license,
-        t.vendor_id,
-        t.rate_code,
-        t.store_and_fwd_flag,
-        t.pickup_datetime,
-        t.dropoff_datetime,
-        hour(t.pickup_datetime) as pickup_hour,
-        weekofyear(t.pickup_datetime) as pickup_week,
-        from_unixtime(unix_timestamp(t.pickup_datetime, 'yyyy-MM-dd HH:mm:ss'),'u') as weekday,
-        t.passenger_count,
-        t.trip_time_in_secs,
-        t.trip_distance,
-        t.pickup_longitude,
-        t.pickup_latitude,
-        t.dropoff_longitude,
-        t.dropoff_latitude,
-        t.direct_distance,
-        f.payment_type,
-        f.fare_amount,
-        f.surcharge,
-        f.mta_tax,
-        f.tip_amount,
-        f.tolls_amount,
-        f.total_amount,
-        if(tip_amount>0,1,0) as tipped,
-        if(tip_amount=0,0,
-        if(tip_amount>0 and tip_amount<=5,1,
-        if(tip_amount>5 and tip_amount<=10,2,
-        if(tip_amount>10 and tip_amount<=20,3,4)))) as tip_class
+insert overwrite table nyctaxidb.nyctaxi_downsampled_dataset
+select
+t.medallion,
+t.hack_license,
+t.vendor_id,
+t.rate_code,
+t.store_and_fwd_flag,
+t.pickup_datetime,
+t.dropoff_datetime,
+hour(t.pickup_datetime) as pickup_hour,
+weekofyear(t.pickup_datetime) as pickup_week,
+from_unixtime(unix_timestamp(t.pickup_datetime, 'yyyy-MM-dd HH:mm:ss'),'u') as weekday,
+t.passenger_count,
+t.trip_time_in_secs,
+t.trip_distance,
+t.pickup_longitude,
+t.pickup_latitude,
+t.dropoff_longitude,
+t.dropoff_latitude,
+t.direct_distance,
+f.payment_type,
+f.fare_amount,
+f.surcharge,
+f.mta_tax,
+f.tip_amount,
+f.tolls_amount,
+f.total_amount,
+if(tip_amount>0,1,0) as tipped,
+if(tip_amount=0,0,
+if(tip_amount>0 and tip_amount<=5,1,
+if(tip_amount>5 and tip_amount<=10,2,
+if(tip_amount>10 and tip_amount<=20,3,4)))) as tip_class
 
-        from
-        (
-        select
-        medallion,
-        hack_license,
-        vendor_id,
-        rate_code,
-        store_and_fwd_flag,
-        pickup_datetime,
-        dropoff_datetime,
-        passenger_count,
-        trip_time_in_secs,
-        trip_distance,
-        pickup_longitude,
-        pickup_latitude,
-        dropoff_longitude,
-        dropoff_latitude,
-        ${hiveconf:R}*2*2*atan((1-sqrt(1-pow(sin((dropoff_latitude-pickup_latitude)
-        *${hiveconf:pi}/180/2),2)-cos(pickup_latitude*${hiveconf:pi}/180)
-        *cos(dropoff_latitude*${hiveconf:pi}/180)*pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2)))
-        /sqrt(pow(sin((dropoff_latitude-pickup_latitude)*${hiveconf:pi}/180/2),2)
-        +cos(pickup_latitude*${hiveconf:pi}/180)*cos(dropoff_latitude*${hiveconf:pi}/180)*pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2))) as direct_distance,
-        rand() as sample_key
+from
+(
+select
+medallion,
+hack_license,
+vendor_id,
+rate_code,
+store_and_fwd_flag,
+pickup_datetime,
+dropoff_datetime,
+passenger_count,
+trip_time_in_secs,
+trip_distance,
+pickup_longitude,
+pickup_latitude,
+dropoff_longitude,
+dropoff_latitude,
+${hiveconf:R}*2*2*atan((1-sqrt(1-pow(sin((dropoff_latitude-pickup_latitude)
+*${hiveconf:pi}/180/2),2)-cos(pickup_latitude*${hiveconf:pi}/180)
+*cos(dropoff_latitude*${hiveconf:pi}/180)*pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2)))
+/sqrt(pow(sin((dropoff_latitude-pickup_latitude)*${hiveconf:pi}/180/2),2)
++cos(pickup_latitude*${hiveconf:pi}/180)*cos(dropoff_latitude*${hiveconf:pi}/180)*pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2))) as direct_distance,
+rand() as sample_key
 
-        from nyctaxidb.trip
-        where pickup_latitude between 30 and 90
-            and pickup_longitude between -90 and -30
-            and dropoff_latitude between 30 and 90
-            and dropoff_longitude between -90 and -30
-        )t
-        join
-        (
-        select
-        medallion,
-        hack_license,
-        vendor_id,
-        pickup_datetime,
-        payment_type,
-        fare_amount,
-        surcharge,
-        mta_tax,
-        tip_amount,
-        tolls_amount,
-        total_amount
-        from nyctaxidb.fare
-        )f
-        on t.medallion=f.medallion and t.hack_license=f.hack_license and t.pickup_datetime=f.pickup_datetime
-        where t.sample_key<=0.01
+from nyctaxidb.trip
+where pickup_latitude between 30 and 90
+    and pickup_longitude between -90 and -30
+    and dropoff_latitude between 30 and 90
+    and dropoff_longitude between -90 and -30
+)t
+join
+(
+select
+medallion,
+hack_license,
+vendor_id,
+pickup_datetime,
+payment_type,
+fare_amount,
+surcharge,
+mta_tax,
+tip_amount,
+tolls_amount,
+total_amount
+from nyctaxidb.fare
+)f
+on t.medallion=f.medallion and t.hack_license=f.hack_license and t.pickup_datetime=f.pickup_datetime
+where t.sample_key<=0.01
+```
 
 このクエリは、Hive ディレクトリ プロンプトで次のように実行します。
 
-    hive -f "C:\temp\sample_hive_prepare_for_aml_full.hql"
+```console
+hive -f "C:\temp\sample_hive_prepare_for_aml_full.hql"
+```
 
 これで、Machine Learning で[データのインポート][import-data] モジュールを使ってアクセスできる内部テーブル **nyctaxidb.nyctaxi_downsampled_dataset** ができました。 さらに、このデータセットを使って Machine Learning モデルを作成できます。  
 
@@ -740,7 +839,9 @@ Machine Learning の[データのインポート][import-data] モジュール�
 
 **D.db** データベース内のテーブル **T** が内部テーブルかどうかを判断する方法を次に示します。 Hive ディレクトリ プロンプトから次のコマンドを実行します。
 
-    hdfs dfs -ls wasb:///D.db/T
+```hiveql
+hdfs dfs -ls wasb:///D.db/T
+```
 
 テーブルが内部テーブルであり、テーブルにデータが設定されている場合は、その内容がここで表示される必要があります。
 

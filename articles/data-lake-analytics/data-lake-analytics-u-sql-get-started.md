@@ -2,22 +2,21 @@
 title: Azure Data Lake Analytics の U-SQL 言語を使用する
 description: Azure Data Lake Analytics の U-SQL 言語の基本情報を説明します。 変数を利用して最初のクエリを記述し、ファイルからデータを抽出し、行セットを変換し、データを集計します。
 services: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/23/2017
-ms.openlocfilehash: 8130679dcc519cecd25abf43902c003ad8047df3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f2af2eed8aa01f35e1813bcd910f3ea22e2a335
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71672836"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128847"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics の U-SQL を使用する
-U-SQL は、あらゆる規模のデータの処理を可能にするために、宣言型の SQL と命令型の C# を組み合わせた言語です。 U-SQL のスケーラブルな分散クエリ機能を使用することで、Azure SQL Database などのリレーショナル ストアのデータを効率的に分析できます。 U-SQL では、読み取り時にスキーマを適用し、カスタム ロジックと UDF を挿入することで、非構造化データを処理できます。 また、U-SQL には、スケールを実行する方法をきめ細かく制御する拡張性があります。 
+
+U-SQL は、あらゆる規模のデータの処理を可能にするために、宣言型の SQL と命令型の C# を組み合わせた言語です。 U-SQL のスケーラブルな分散クエリ機能を使用することで、Azure SQL Database などのリレーショナル ストアのデータを効率的に分析できます。 U-SQL では、読み取り時にスキーマを適用し、カスタム ロジックと UDF を挿入することで、非構造化データを処理できます。 また、U-SQL には、スケールを実行する方法をきめ細かく制御する拡張性があります。
 
 ## <a name="learning-resources"></a>学習用のリソース
 
@@ -33,7 +32,7 @@ U-SQL は、あらゆる規模のデータの処理を可能にするために�
 
 以下の U-SQL スクリプトは単純で、U-SQL 言語のさまざまな側面を確認することができます。
 
-```
+```usql
 @searchlog =
     EXTRACT UserId          int,
             Start           DateTime,
@@ -45,7 +44,7 @@ U-SQL は、あらゆる規模のデータの処理を可能にするために�
     FROM "/Samples/Data/SearchLog.tsv"
     USING Extractors.Tsv();
 
-OUTPUT @searchlog   
+OUTPUT @searchlog
     TO "/output/SearchLog-first-u-sql.csv"
     USING Outputters.Csv();
 ```
@@ -55,6 +54,7 @@ OUTPUT @searchlog
 `Duration` フィールドのデータ型の横にある疑問符に注目してください。 これは、`Duration` フィールドを null にできることを意味します。
 
 ### <a name="key-concepts"></a>主要な概念
+
 * **行セットの変数**: 行セットを生成する各クエリ式を変数に割り当てることができます。 U-SQL は、スクリプトでは T-SQL 変数命名パターンに従います (例: `@searchlog`)。
 * **EXTRACT** のキーワードは、データをファイルから読み取り、読み取り時にスキーマを定義します。 `Extractors.Tsv` はタブ区切り値ファイルのための、組み込みの U-SQL エクストラクターです。 カスタムのエクストラクターを開発することができます。
 * **OUTPUT** は、行セットからファイルにデータを書き込みます。 `Outputters.Csv()` は、コンマ区切り値ファイルを作成するための、組み込みの U-SQL アウトプッターです。 カスタムのアウトプッターを作成することができます。
@@ -65,165 +65,167 @@ EXTRACT と OUTPUT のステートメントでは、ファイル パスを使用
 
 次の絶対ファイル パスは、`mystore` という名前の Data Lake Store のファイルを指しています。
 
-    adl://mystore.azuredatalakestore.net/Samples/Data/SearchLog.tsv
+```usql
+adl://mystore.azuredatalakestore.net/Samples/Data/SearchLog.tsv
+```
 
 次のファイル パスは、`"/"` で始まっています。 既定の Data Lake Store アカウントのファイルを指しています。
 
-    /output/SearchLog-first-u-sql.csv
+```usql
+/output/SearchLog-first-u-sql.csv
+```
 
 ## <a name="use-scalar-variables"></a>スカラー変数の使用
 
 スカラー変数も使用して、スクリプトのメンテナンスを容易にすることができます。 次のように、前の U-SQL スクリプトを記述することもできます。
 
-    DECLARE @in  string = "/Samples/Data/SearchLog.tsv";
-    DECLARE @out string = "/output/SearchLog-scalar-variables.csv";
-
-    @searchlog =
-        EXTRACT UserId          int,
-                Start           DateTime,
-                Region          string,
-                Query           string,
-                Duration        int?,
-                Urls            string,
-                ClickedUrls     string
-        FROM @in
-        USING Extractors.Tsv();
-
-    OUTPUT @searchlog   
-        TO @out
-        USING Outputters.Csv();
+```usql
+DECLARE @in  string = "/Samples/Data/SearchLog.tsv";
+DECLARE @out string = "/output/SearchLog-scalar-variables.csv";
+@searchlog =
+    EXTRACT UserId          int,
+            Start           DateTime,
+            Region          string,
+            Query           string,
+            Duration        int?,
+            Urls            string,
+            ClickedUrls     string
+    FROM @in
+    USING Extractors.Tsv();
+OUTPUT @searchlog
+    TO @out
+    USING Outputters.Csv();
+```
 
 ## <a name="transform-rowsets"></a>行セットの変換
 
 以下のように、 **SELECT** を使用して行セットを変換します。
 
-    @searchlog =
-        EXTRACT UserId          int,
-                Start           DateTime,
-                Region          string,
-                Query           string,
-                Duration        int?,
-                Urls            string,
-                ClickedUrls     string
-        FROM "/Samples/Data/SearchLog.tsv"
-        USING Extractors.Tsv();
-
-    @rs1 =
-        SELECT Start, Region, Duration
-        FROM @searchlog
-    WHERE Region == "en-gb";
-
-    OUTPUT @rs1   
-        TO "/output/SearchLog-transform-rowsets.csv"
-        USING Outputters.Csv();
+```usql
+@searchlog =
+    EXTRACT UserId          int,
+            Start           DateTime,
+            Region          string,
+            Query           string,
+            Duration        int?,
+            Urls            string,
+            ClickedUrls     string
+    FROM "/Samples/Data/SearchLog.tsv"
+    USING Extractors.Tsv();
+@rs1 =
+    SELECT Start, Region, Duration
+    FROM @searchlog
+WHERE Region == "en-gb";
+OUTPUT @rs1
+    TO "/output/SearchLog-transform-rowsets.csv"
+    USING Outputters.Csv();
+```
 
 WHERE 句では [C# ブール式](/dotnet/csharp/language-reference/operators/index)を使用します。 C# 式言語を使用して、独自の式と関数を実行することができます。 論理積 (AND) および論理和 (OR) と組み合わせることによって、より複雑なフィルター処理を実行することもできます。
 
 次のスクリプトでは、DateTime.Parse() メソッドと論理積を使用します。
 
-    @searchlog =
-        EXTRACT UserId          int,
-                Start           DateTime,
-                Region          string,
-                Query           string,
-                Duration        int?,
-                Urls            string,
-                ClickedUrls     string
-        FROM "/Samples/Data/SearchLog.tsv"
-        USING Extractors.Tsv();
-
-    @rs1 =
-        SELECT Start, Region, Duration
-        FROM @searchlog
-    WHERE Region == "en-gb";
-
-    @rs1 =
-        SELECT Start, Region, Duration
-        FROM @rs1
-        WHERE Start >= DateTime.Parse("2012/02/16") AND Start <= DateTime.Parse("2012/02/17");
-
-    OUTPUT @rs1   
-        TO "/output/SearchLog-transform-datetime.csv"
-        USING Outputters.Csv();
+```usql
+@searchlog =
+    EXTRACT UserId          int,
+            Start           DateTime,
+            Region          string,
+            Query           string,
+            Duration        int?,
+            Urls            string,
+            ClickedUrls     string
+    FROM "/Samples/Data/SearchLog.tsv"
+    USING Extractors.Tsv();
+@rs1 =
+    SELECT Start, Region, Duration
+    FROM @searchlog
+WHERE Region == "en-gb";
+@rs1 =
+    SELECT Start, Region, Duration
+    FROM @rs1
+    WHERE Start >= DateTime.Parse("2012/02/16") AND Start <= DateTime.Parse("2012/02/17");
+OUTPUT @rs1
+    TO "/output/SearchLog-transform-datetime.csv"
+    USING Outputters.Csv();
+```
 
  >[!NOTE]
  >2 番目のクエリは最初の行セットの結果で動作します。結果は 2 つのフィルターを組み合わたものです。 また、変数名を再利用することもできます。その場合、名前は字句単位でスコープされます。
 
 ## <a name="aggregate-rowsets"></a>行セットの集計
+
 U-SQL では、使い慣れた ORDER BY、GROUP BY および集計が提供されます。
 
 次のクエリでは、リージョンごとの合計期間を検索してから、上位 5 つの期間を順に表示します。
 
 次のクエリの場合、U-SQL 行セットの順序は保持されません。 そのため、出力を順序付けるには、次のように OUTPUT ステートメントに ORDER BY を追加する必要があります。
 
-    DECLARE @outpref string = "/output/Searchlog-aggregation";
-    DECLARE @out1    string = @outpref+"_agg.csv";
-    DECLARE @out2    string = @outpref+"_top5agg.csv";
-
-    @searchlog =
-        EXTRACT UserId          int,
-                Start           DateTime,
-                Region          string,
-                Query           string,
-                Duration        int?,
-                Urls            string,
-                ClickedUrls     string
-        FROM "/Samples/Data/SearchLog.tsv"
-        USING Extractors.Tsv();
-
-    @rs1 =
-        SELECT
-            Region,
-            SUM(Duration) AS TotalDuration
-        FROM @searchlog
-    GROUP BY Region;
-
-    @res =
-        SELECT *
-        FROM @rs1
-        ORDER BY TotalDuration DESC
-        FETCH 5 ROWS;
-
-    OUTPUT @rs1
-        TO @out1
-        ORDER BY TotalDuration DESC
-        USING Outputters.Csv();
-
-    OUTPUT @res
-        TO @out2
-        ORDER BY TotalDuration DESC
-        USING Outputters.Csv();
+```usql
+DECLARE @outpref string = "/output/Searchlog-aggregation";
+DECLARE @out1    string = @outpref+"_agg.csv";
+DECLARE @out2    string = @outpref+"_top5agg.csv";
+@searchlog =
+    EXTRACT UserId          int,
+            Start           DateTime,
+            Region          string,
+            Query           string,
+            Duration        int?,
+            Urls            string,
+            ClickedUrls     string
+    FROM "/Samples/Data/SearchLog.tsv"
+    USING Extractors.Tsv();
+@rs1 =
+    SELECT
+        Region,
+        SUM(Duration) AS TotalDuration
+    FROM @searchlog
+GROUP BY Region;
+@res =
+    SELECT *
+    FROM @rs1
+    ORDER BY TotalDuration DESC
+    FETCH 5 ROWS;
+OUTPUT @rs1
+    TO @out1
+    ORDER BY TotalDuration DESC
+    USING Outputters.Csv();
+OUTPUT @res
+    TO @out2
+    ORDER BY TotalDuration DESC
+    USING Outputters.Csv();
+```
 
 U-SQL の ORDER BY 句では、SELECT 式で FETCH 句と組み合わせる必要があります。
 
 以下のように、U-SQL の HAVING 句を使用して、HAVING 条件を満たすグループに出力を制限することができます。
 
-    @searchlog =
-        EXTRACT UserId          int,
-                Start           DateTime,
-                Region          string,
-                Query           string,
-                Duration        int?,
-                Urls            string,
-                ClickedUrls     string
-        FROM "/Samples/Data/SearchLog.tsv"
-        USING Extractors.Tsv();
-
-    @res =
-        SELECT
-            Region,
-            SUM(Duration) AS TotalDuration
-        FROM @searchlog
-        GROUP BY Region
-        HAVING SUM(Duration) > 200;
-
-    OUTPUT @res
-        TO "/output/Searchlog-having.csv"
-        ORDER BY TotalDuration DESC
-        USING Outputters.Csv();
+```usql
+@searchlog =
+    EXTRACT UserId          int,
+            Start           DateTime,
+            Region          string,
+            Query           string,
+            Duration        int?,
+            Urls            string,
+            ClickedUrls     string
+    FROM "/Samples/Data/SearchLog.tsv"
+    USING Extractors.Tsv();
+@res =
+    SELECT
+        Region,
+        SUM(Duration) AS TotalDuration
+    FROM @searchlog
+    GROUP BY Region
+    HAVING SUM(Duration) > 200;
+OUTPUT @res
+    TO "/output/Searchlog-having.csv"
+    ORDER BY TotalDuration DESC
+    USING Outputters.Csv();
+```
 
 高度な集計シナリオについては、U-SQL リファレンス ドキュメントで[集計、分析、参照の各関数](/u-sql/built-in-functions)をご確認ください
 
 ## <a name="next-steps"></a>次のステップ
+
 * [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
 * [Data Lake Tools for Visual Studio を使用して U-SQL スクリプトを開発する](data-lake-analytics-data-lake-tools-get-started.md)

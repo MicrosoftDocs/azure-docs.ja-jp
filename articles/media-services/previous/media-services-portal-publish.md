@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: abdb926825abcac4485cb11b71bdc82597391727
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f9f1b51ce09577bf17fa4d92273348665987848
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176823"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266614"
 ---
-# <a name="publish-content-in-the-azure-portal"></a>Azure Portal でコンテンツを発行する  
+# <a name="publish-content-in-the-azure-portal"></a>Azure Portal でコンテンツを発行する
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [ポータル](media-services-portal-publish.md)
 > * [.NET](media-services-deliver-streaming-content.md)
@@ -42,19 +45,19 @@ ms.locfileid: "82176823"
 
 HLS ストリーミング URL を作成するには、次のように、 *(format=m3u8-aapl)* を URL に追加します。
 
-    {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)
+`{streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)`
 
 Smooth Streaming アセットを再生するためのストリーミング URL を作成するには、次の URL 形式を使用します。
 
-    {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest
+`{streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest`
 
 MPEG-DASH ストリーミング URL を作成するには、 *(format=mpd-time-csf)* を URL に追加します。
 
-    {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=mpd-time-csf)
+`{streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=mpd-time-csf)`
 
 Shared Access Signature URL の形式は、次のとおりです。
 
-    {blob container name}/{asset name}/{file name}/{shared access signature}
+`{blob container name}/{asset name}/{file name}/{shared access signature}`
 
 詳細については、[コンテンツ配信の概要](media-services-deliver-content-overview.md)に関する記事を参照してください。
 
@@ -63,7 +66,7 @@ Shared Access Signature URL の形式は、次のとおりです。
 > 
 > 
 
-ロケーターの有効期限を更新するには、[REST API](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) または [.NET API](https://go.microsoft.com/fwlink/?LinkID=533259) を使用することができます。 
+ロケーターの有効期限を更新するには、[REST API](/rest/api/media/operations/locator#update_a_locator) または [.NET API](https://go.microsoft.com/fwlink/?LinkID=533259) を使用することができます。 
 
 > [!NOTE]
 > Shared Access Signature ロケーターの有効期限を更新すると、URL が変更されます。
@@ -97,4 +100,3 @@ Azure Portal のコンテンツ プレーヤーでビデオをテストできま
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
-

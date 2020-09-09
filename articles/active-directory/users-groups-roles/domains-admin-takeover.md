@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36c7bb426a329a54f333b76e028b884204543014
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: d2ccf986f81ec3abed54c85640b8afb1c5cf7172
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582983"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015886"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory の非管理対象ディレクトリを管理者として引き継ぐ
 
@@ -171,8 +171,8 @@ Azure サービスまたは Office 365 を使って既に組織を管理して�
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure AD にカスタム ドメイン名を追加する](../fundamentals/add-custom-domain.md)
-* [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)
-* [Azure PowerShell](/powershell/azure/overview)
+* [Azure PowerShell のインストールと構成の方法](/powershell/azure/)
+* [Azure PowerShell](/powershell/azure/)
 * [Azure コマンドレット リファレンス](/powershell/azure/get-started-azureps)
 * [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
 

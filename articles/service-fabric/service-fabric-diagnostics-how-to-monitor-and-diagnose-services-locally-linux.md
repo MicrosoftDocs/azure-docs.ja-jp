@@ -3,12 +3,13 @@ title: Linux で Azure Service Fabric アプリをデバッグする
 description: ローカルの Linux 開発用コンピューターで Service Fabric サービスを監視し、診断する方法について説明します。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: fa8c4053a348c539c2e9e7a87d002d0fcf4a4d52
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 523cb0d1a8e8f322c1936f1fe52a954399b2acc5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991332"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999769"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>ローカル Linux コンピューター開発のセットアップでサービスを監視して診断する
 
@@ -132,4 +133,4 @@ public static TextWriter Out = Console.Out;
 
 ## <a name="next-steps"></a>次のステップ
 アプリケーションに追加した同じトレース コードで Azure のクラスター上のアプリケーションの診断を行うこともできます。 ツールの各オプションや、その設定方法について説明した記事を参照してください。
-* [Azure Diagnostics でログを収集する方法](service-fabric-diagnostics-how-to-setup-lad.md)
+* [Azure Diagnostics でログを収集する方法](./service-fabric-diagnostics-event-aggregation-lad.md)

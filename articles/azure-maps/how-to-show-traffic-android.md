@@ -1,19 +1,19 @@
 ---
 title: Android マップに交通情報データを表示する | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps Android SDK を使用して、マップに交通情報データを表示する方法について説明します。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e5611eeb08ac370e12cf452d57a87e449fbd80da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b07b520dec4e9149c6748777a119b68e56c65e9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335374"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126399"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Azure Maps Android SDK を使用してマップに交通情報データを表示する
 
@@ -21,9 +21,9 @@ ms.locfileid: "80335374"
 
 ## <a name="prerequisites"></a>前提条件
 
-マップに交通情報を表示するには、事前に [Azure アカウントを作成](quick-demo-map-app.md#create-an-account-with-azure-maps)し、[サブスクリプション キーを取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)しておく必要があります。 次に、[Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) をインストールしてマップを読み込む必要があります。
+マップに交通情報を表示するには、事前に [Azure アカウントを作成](quick-demo-map-app.md#create-an-azure-maps-account)し、[サブスクリプション キーを取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)しておく必要があります。 次に、[Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) をインストールしてマップを読み込む必要があります。
 
-## <a name="incidents-traffic-data"></a>インシデント交通情報データ 
+## <a name="incidents-traffic-data"></a>インシデント交通情報データ
 
 `setTraffic` と `incidents` を呼び出すために次のライブラリをインポートする必要があります。
 
@@ -53,7 +53,7 @@ import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
 
 次のコード スニペットを使用して、交通の流れのデータを設定します。 前のセクションのコードと同様に、`flow` メソッドの戻り値を `setTraffic` メソッドに渡します。 `flow` に渡せる値は 4 つあり、各値が `flow` をトリガーしてそれぞれの値が返されます。 次に、`flow` の戻り値が引数として `setTraffic` に渡されます。 これらの 4 つの値については、次の表を参照してください。
 
-| | |
+|Flow 値 | 説明|
 | :-- | :-- |
 | TrafficFlow.NONE | マップに交通情報データを表示しません |
 | TrafficFlow.RELATIVE | 道路の自由流速度を基準にして交通情報データを表示します |

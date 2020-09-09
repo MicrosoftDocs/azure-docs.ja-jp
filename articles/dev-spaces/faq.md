@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Azure Dev Spaces についての一般的ないくつかの質問にお答えします
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: b5a380f20640b9bc328aa30289ff7f915cc0b73c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 739cfdb4f930d384e180ffd0f3ce2311cd41c70a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414307"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207990"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Azure Dev Spaces についてよく寄せられる質問
 
@@ -38,12 +38,9 @@ Azure Dev Spaces では、[AKS で現在サポートされている Kubernetes �
 * イングレスで何かを変更する場合は、Azure Dev Spaces によって提供されるイングレス ソリューションを使用するように Helm Ｃhart を更新することもできます。
 * [Azure Dev Spaces によって提供されるルーティング機能][dev-spaces-routing]を使用する場合は、個々のプロジェクトのすべてのサービスが単一の Kubernetes 名前空間に収まる必要があり、単純な名前 (たとえば *service-a*) でデプロイする必要があります。 標準の Helm Ｃhart では、*fullnameOverride* プロパティの値を指定することでこの名前を更新できます。
 
-独自の Dockerfile または Helm Ｃhart を Azure Dev Spaces で動作する既存のバージョンと比較するには、[quickstart][quickstart-cli] で生成されたファイルを確認します。
-
-
 ## <a name="can-i-modify-the-files-generated-by-azure-dev-spaces"></a>Azure Dev Spaces によって生成されたファイルを変更できますか。
 
-はい。[プロジェクトを準備するときに Azure Dev Spaces によって生成される][dev-spaces-prep]*azds.yaml* ファイル、Dockerfile、および Helm Ｃhart を変更できます。 これらのファイルを変更すると、プロジェクトのビルド方法と実行方法が変更されます。
+はい。[プロジェクトを準備するときに Azure Dev Spaces によって生成される][dev-spaces-prep] *azds.yaml* ファイル、Dockerfile、および Helm Ｃhart を変更できます。 これらのファイルを変更すると、プロジェクトのビルド方法と実行方法が変更されます。
 
 ## <a name="can-i-use-azure-dev-spaces-without-a-public-ip-address"></a>パブリック IP アドレスなしで Azure Dev Spaces を使用できますか。
 
@@ -99,13 +96,12 @@ Visual Studio では、Azure Dev Spaces を使用してデバッグするため�
 
 [aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled
-[aks-auth-range-ranges]: https://github.com/Azure/dev-spaces/tree/master/public-ips
 [aks-auth-range-update]: ../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges
 [aks-migration]: ../aks/aks-migration.md
 [aks-pod-managed-id]: ../aks/developer-best-practices-pod-security.md#use-pod-managed-identities
 [aks-pod-managed-id-uninstall]: https://github.com/Azure/aad-pod-identity#uninstall-notes
 [aks-restrict-egress-traffic]: ../aks/limit-egress-traffic.md
-[aks-supported-k8s]: ../aks/supported-kubernetes-versions.md#list-currently-supported-versions
+[aks-supported-k8s]: ../aks/supported-kubernetes-versions.md#azure-portal-and-cli-versions
 [bike-sharing]: https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp
 [dev-spaces-pod-managed-id-steps]: troubleshooting.md#error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state
 [dev-spaces-prep]: how-dev-spaces-works-prep.md
@@ -116,7 +112,6 @@ Visual Studio では、Azure Dev Spaces を使用してデバッグするため�
 [ingress-https-traefik]: how-to/ingress-https-traefik.md#configure-the-traefik-ingress-controller-to-use-https
 [istio]: https://istio.io/
 [linkerd]: https://linkerd.io/
-[quickstart-cli]: quickstart-cli.md
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [vs-code-multi-root-workspaces]: https://code.visualstudio.com/docs/editor/multi-root-workspaces
 [windows-containers]: how-to/run-dev-spaces-windows-containers.md

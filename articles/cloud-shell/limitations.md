@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/15/2018
 ms.author: damaerte
 ms.openlocfilehash: 092dccab82326bb9983f11ff64fe50aee7b1084d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74951481"
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Azure Cloud Shell の制限

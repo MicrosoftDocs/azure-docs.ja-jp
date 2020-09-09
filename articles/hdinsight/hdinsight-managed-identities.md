@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: 1081865a2e138af38ba171197719f08dedf6ffdb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 07a8c26f7fc314680c51270ebafe03d4e3a84757
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81408934"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749859"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Azure HDInsight のマネージド ID
 
@@ -25,7 +25,9 @@ Azure HDInsight では、必要に応じて、マネージド ID を使用して
 
 ## <a name="hdinsight-managed-identity-implementation"></a>HDInsight のマネージド ID 実装
 
-Azure HDInsight では、マネージド ID はクラスターのノードごとにプロビジョニングされます。 ただし、これらの ID コンポーネントは HDInsight サービスのみが使用できます。 現在、HDInsight クラスター ノードにインストールされているマネージド ID を使用してアクセス トークンを生成するためのサポートされている方法はありません。 一部の Azure サービスでは、マネージド ID は、アクセス トークンの取得に使用できるエンドポイントで実装されます。 他の Azure サービスと独自にやり取りするためのトークンを使用します。
+Azure HDInsight では、マネージド ID は内部コンポーネントの HDInsight サービスでのみ使用できます。 現在、外部サービスにアクセスする目的で、HDInsight クラスター ノードにインストールされているマネージド ID を使用してアクセス トークンを生成するための方法はサポートされていません。 コンピューティング VM など、一部の Azure サービスでは、マネージド ID は、アクセス トークンの取得に使用できるエンドポイントで実装されます。 このエンドポイントは現在、HDInsight ノードでは使用できません。
+
+分析ジョブ (SCALA ジョブなど) にシークレットやパスワードを置かないようにアプリケーションをブートストラップする必要がある場合、スクリプト アクションを使用してクラスター ノードに独自の証明書を配布し、その後、その証明書を使用して (たとえば、Azure KeyVault にアクセスするための) アクセス トークンを取得できます。
 
 ## <a name="create-a-managed-identity"></a>マネージド ID の作成
 

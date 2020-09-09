@@ -5,12 +5,12 @@ ms.author: puagarw
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
-ms.openlocfilehash: b0a9597e370648faab3787218c7d038798dbd455
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 42bdde45b3a289a35c5bf4c4651e5a50a639f049
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80048105"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251775"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>Azure Kubernetes のデプロイ センター
 
@@ -34,7 +34,7 @@ Azure DevOps のデプロイ センターを利用すると、アプリケーシ
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 
-1. Azure portal のメニュー バーの右側にある [[Cloud Shell]](https://docs.microsoft.com/azure/cloud-shell/overview) を選択します。
+1. Azure portal のメニュー バーの右側にある [[Cloud Shell]](../cloud-shell/overview.md) を選択します。
 
 1. AKS クラスターを作成するには、以下のコマンドを実行します。
 
@@ -56,7 +56,7 @@ Azure DevOps のデプロイ センターを利用すると、アプリケーシ
 
    ![settings](media/deployment-center-launcher/settings.png)
 
-1. コードの場所を選択し、 **[次へ]** を選択します。 次に、現在サポートされているリポジトリのいずれかを選択します: **[Azure Repos](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)** または **GitHub**。
+1. コードの場所を選択し、 **[次へ]** を選択します。 次に、現在サポートされているリポジトリのいずれかを選択します: **[Azure Repos](/azure/devops/repos/index?view=azure-devops)** または **GitHub**。
 
     Azure Repos は、コードを管理するのに役立つバージョン管理ツールのセットです。 ソフトウェア プロジェクトが大きいか小さいかにかかわらず、できるだけ早期にバージョン管理を使用することをお勧めします。
 
@@ -77,7 +77,7 @@ Azure DevOps のデプロイ センターを利用すると、アプリケーシ
 
     ![Dockerfile](media/deployment-center-launcher/dockerfile.png)
 
-1. 既存のコンテナー レジストリを選択するか作成し、 **[完了]** を選択します。 パイプラインが自動的に作成され、[Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/index?view=azure-devops) のキューにビルドが配置されます。
+1. 既存のコンテナー レジストリを選択するか作成し、 **[完了]** を選択します。 パイプラインが自動的に作成され、[Azure Pipelines](/azure/devops/pipelines/index?view=azure-devops) のキューにビルドが配置されます。
 
     Azure Pipelines は、コード プロジェクトを自動的にビルドしてテストし、他のユーザーが使用できるようにするクラウド サービスです。 Azure Pipelines では、継続的インテグレーションと継続的デリバリーが組み合わされ、コードが継続的に一貫してテストおよびビルドされて、任意のターゲットに出荷されます。
 

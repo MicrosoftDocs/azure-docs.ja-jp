@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: 8c85a652cde840336c51e1a5b5459f9dc591e0be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b331ccee183ec101cf3449f12b4f656a1325819
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414681"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118091"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>SSIS 統合ランタイムでのパッケージ実行のトラブルシューティング
 
@@ -74,10 +74,10 @@ Azure Data Factory ポータルを使用して、SSIS パッケージの実行�
 * 考えられる原因と推奨される操作:
   * SSIS アクティビティがファイル システム (パッケージ ファイルまたはプロジェクト ファイル) からパッケージを実行している場合、プロジェクト、パッケージ、または構成ファイルに SSIS アクティビティで指定したパッケージ アクセス資格情報でにアクセスできない場合にこのエラーが発生します。
     * Azure File を使用する場合:
-      * ファイル パスは、\\\\\<ストレージ アカウント名\>.file.core.windows.net\\\<ファイル共有パス\> で開始する必要があります。
+      * ファイル パスは \\\\\<storage account name\>.file.core.windows.net\\\<file share path\> で始めます
       * ドメインは "Azure" にします
-      * ユーザー名は \<ストレージ アカウント名\> である必要があります
-      * パスワードは \<ストレージ アクセス キー\> である必要があります
+      * ユーザー名は \<storage account name\> にします
+      * パスワードは \<storage access key\> にします
     * オンプレミスのファイルを使用する場合は、Azure-SSIS 統合ランタイムがオンプレミスのファイル共有にアクセスできるように、VNet、パッケージ アクセス資格情報、およびアクセス許可が適切に構成されていることを確認してください。
 
 ### <a name="error-message-the-file-name--specified-in-the-connection-was-not-valid"></a>エラー メッセージ:"接続に指定されたファイル名 '...' は無効です"
@@ -95,13 +95,13 @@ Azure Data Factory ポータルを使用して、SSIS パッケージの実行�
 
 ### <a name="error-message-the-database-ssisdb-has-reached-its-size-quota"></a>エラー メッセージ:"データベース 'SSISDB' のサイズ クォータに達しました"
 
-考えられる原因は、Azure SQL データベースに作成された SSISDB データベース、または SSIS 統合ランタイム作成時のマネージド インスタンスがクォータに達したことです。 次のアクションを試してください。
-* データベースの DTU を増やすことを検討します。 詳細については、「[Azure SQL Database サーバーの SQL Database リソース制限](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server)」で確認できます。
+考えられる原因は、Azure SQL データベースまたは SQL Managed Instance に作成された SSISDB データベースがクォータに達したことです。 次のアクションを試してください。
+* データベースの DTU を増やすことを検討します。 詳細は、[論理サーバーの SQL Database 制限](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server)に関するページにあります。
 * お使いのパッケージによって大量のログが生成されているかどうかを確認します。 その場合は、これらのログをクリーンアップするようエラスティック ジョブを構成できます。 詳細については、「[Azure Elastic Database ジョブで SSISDB のログをクリーンアップする](how-to-clean-up-ssisdb-logs-with-elastic-jobs.md)」を参照してください。
 
 ### <a name="error-message-the-request-limit-for-the-database-is--and-has-been-reached"></a>エラー メッセージ:"データベースの要求制限 ... に達しました。"
 
-SSIS 統合ランタイムで多数のパッケージが並列に実行されている場合、SSISDB がその要求制限に達したことが原因でこのエラーが発生する可能性があります。 この問題を解決するには、SSISDB の DTC を増やすことを検討してください。 詳細については、「[Azure SQL Database サーバーの SQL Database リソース制限](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server)」で確認できます。
+SSIS 統合ランタイムで多数のパッケージが並列に実行されている場合、SSISDB がその要求制限に達したことが原因でこのエラーが発生する可能性があります。 この問題を解決するには、SSISDB の DTC を増やすことを検討してください。 詳細は、[論理サーバーの SQL Database 制限](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server)に関するページにあります。
 
 ### <a name="error-message-ssis-operation-failed-with-unexpected-operation-status-"></a>エラー メッセージ:"SSIS Operation failed with unexpected operation status: ... (SSIS 操作が予期しない操作状態で失敗しました: ...)"
 

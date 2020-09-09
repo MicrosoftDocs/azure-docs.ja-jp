@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: f663c9af8c352d0170c633fe76b3fbc5268aad1e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ad26fe0d869a2e892a419b1732727c3ff1d1e9a2
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81400025"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870716"
 ---
 # <a name="about-the-speech-sdk"></a>Speech SDK について
 
@@ -31,17 +31,52 @@ Speech SDK は Speech サービスの機能が多数含まれていますが、�
 
 [音声テキスト変換](speech-to-text.md) (*音声認識*とも呼ばれます) ではオーディオ ストリームからテキストへの文字起こしが行われ、アプリケーション、ツール、またはデバイスでそのテキストを使用したり表示したりできます。 音声テキスト変換を [Language Understanding (LUIS)](../luis/index.yml) で使用し、文字起こしされた音声からユーザーの意図を抽出して、音声コマンドで対応します。 [Speech Translation](speech-translation.md) を使用すると、音声入力を 1 回の通話で別の言語に変換できます。 詳細については、「[音声テキスト変換の基本](speech-to-text-basics.md)」を参照してください。
 
+**音声認識 (SR)、フレーズ リスト、意図、翻訳、オンプレミス コンテナー**は、次のプラットフォームで使用できます。
+
+  - C++/Windows、Linux、および macOS
+  - C# (Framework および .NET Core)/Windows、UWP、Unity、Xamarin、Linux、および macOS
+  - Java (Jre および Android)
+  - JavaScript (ブラウザーと NodeJS)
+  - Python
+  - Swift
+  - Objective-C  
+  - Go (SR のみ)
+
 ### <a name="text-to-speech"></a>テキスト読み上げ
 
 [テキスト読み上げ](text-to-speech.md) (*音声合成*とも呼ばれます) は、テキストを人間に似た合成音声に変換します。 入力テキストは、文字列リテラルか、[音声合成マーク付け言語 (SSML)](speech-synthesis-markup.md) を使用したものです。 標準またはニューラルな音声の詳細については、「[テキスト読み上げ言語と音声サポート](language-support.md#text-to-speech)」を参照してください。
 
+**テキスト読み上げ (TTS)** は、次のプラットフォームで使用できます。
+
+  - C++/Windows および Linux
+  - C#/Windows および UWP および Unity
+  - Java (Jre および Android)
+  - Python
+  - Swift
+  - Objective-C
+  - TTS REST API は他のすべての状況で使用できます。
+
 ### <a name="voice-assistants"></a>音声アシスタント
 
-Speech SDK を使用した音声アシスタントにより、開発者はアプリケーションやエクスペリエンス向けに自然で人間のような会話型インターフェイスを作成できます。 音声アシスタント サービスは、デバイスとアシスタントの間で高速かつ信頼性の高い対話機能を提供します。 実装では、Bot Framework の Direct Line Speech チャネルまたは統合カスタム コマンド (プレビュー) サービスを使用してタスクを完了します。 さらに、音声アシスタントは、[Custom Voice Portal](https://aka.ms/customvoice) を使用して作成し、独自の音声エクスペリエンスを創造できます。
+Speech SDK を使用した[音声アシスタント](voice-assistants.md)により、開発者はアプリケーションやエクスペリエンス向けに自然で人間のような会話型インターフェイスを作成できます。 音声アシスタント サービスは、デバイスとアシスタントの間で高速かつ信頼性の高い対話機能を提供します。 実装では、Bot Framework の Direct Line Speech チャネルまたは統合カスタム コマンド (プレビュー) サービスを使用してタスクを完了します。 さらに、音声アシスタントでは、[Custom Voice Portal](https://aka.ms/customvoice) で作成したカスタム音声を使用して、固有の音声出力エクスペリエンスを追加できます。
+
+**音声アシスタント**は、次のプラットフォームで使用できます。
+
+  - C++/Windows、Linux、および macOS
+  - C#/Windows
+  - Java/Windows、Linux、macOS、および Android (Speech Devices SDK)
 
 #### <a name="keyword-spotting"></a>キーワード認識
 
 Speech SDK では、[キーワード認識](speech-devices-sdk-create-kws.md)の概念をサポートしています。 キーワード認識では、音声でキーワードを識別した後、キーワードを聞くとアクションが行われます。 たとえば、「やあ、Cortana」という音声により、Cortana アシスタントがアクティブになります。
+
+**キーワード認識 (KWS)** は、次のプラットフォームで使用できます。
+
+  - C++/Windows および Linux
+  - C#/Windows および Linux
+  - Python/Windows および Linux
+  - Java/Windows および Linux および Android (Speech Devices SDK)
+  - キーワード認識 (KWS) 機能は任意の種類のマイクでも動作する可能性がありますが、公式の KWS サポートは、現時点では Azure Kinect DK ハードウェアまたは Speech Devices SDK 内のマイク アレイに限定されています
 
 ### <a name="meeting-scenarios"></a>ミーティングのシナリオ
 
@@ -51,9 +86,20 @@ Speech SDK は、単一のデバイスか複数デバイスの会話かに関わ
 
 [会話の文字起こし](conversation-transcription.md)を使用すると、リアルタイム (および非同期) の音声認識、話者識別、各話者に対する文の属性が有効になります (*ダイアライゼーション*とも呼ばれます)。 話者を区別することができるため、対面会議の文字起こしに最適です。
 
+**会話の文字起こし**は、次のプラットフォームで使用できます。
+
+  - C++/Windows および Linux
+  - C# (Framework および .NET Core)/Windows および UWP および Linux
+  - Java/Windows および Linux および Android (Speech Devices SDK)
+
 #### <a name="multi-device-conversation"></a>マルチデバイスの会話
 
 [マルチデバイスの会話](multi-device-conversation.md)を使用して、会話の中で複数のデバイスまたはクライアントを接続し、音声ベースまたはテキストベースのメッセージを送信し、文字起こしや翻訳を容易に実現します。
+
+**マルチデバイスの会話**は、次のプラットフォームで使用できます。
+
+  - C++/Windows
+  - C# (Framework と .NET Core)/Windows
 
 ### <a name="custom--agent-scenarios"></a>カスタム/エージェントのシナリオ
 
@@ -63,9 +109,17 @@ Speech SDK は、テレフォニー データが生成されるコール セン�
 
 [コール センターの文字起こし](call-center-transcription.md)は、対話型音声応答 (IVR) のような様々なシステムに由来する大量のテレフォニー データを文字起こしする一般的な音声テキスト変換シナリオです。 Speech サービスの最新の音声認識モデルはそのような電話データの文字起こしに優れており、人間には理解が難しいデータにも対応しています。
 
+**コール センターの文字起こし**は、Batch Speech Service を通じ、REST API 経由で、あらゆる状況で使用できます。
+
 ### <a name="codec-compressed-audio-input"></a>コーデック圧縮音声入力
 
 いくつかの Speech SDK プログラミング言語では、コーデック圧縮音声入力ストリームをサポートしています。 詳細については、「<a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">圧縮音声入力形式を使用する<span class="docon docon-navigate-external x-hidden-focus"></span></a>」を参照してください。
+
+**コーデック圧縮音声入力**は、次のプラットフォームで使用できます。
+
+  - C++/Linux
+  - C#/Linux
+  - Java/Linux、Android、および iOS
 
 ## <a name="rest-api"></a>REST API
 
@@ -125,5 +179,5 @@ Custom Voice とも呼ばれるカスタム テキスト読み上げは、ブラ
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Speech 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
+* [無料の Azure アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)してください
 * [C# で音声を認識する方法を確認する](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

@@ -4,12 +4,12 @@ description: Azure Application Insights データを利用して 日/週/月 1 �
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: cf251d63645efc70ee93e84827db47ae3055ae33
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: abd87af1a9cf61aba21e9231350aabc661e5091b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82161501"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320410"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Azure Application Insights データを利用したカスタム レポートの自動化
 
@@ -31,9 +31,9 @@ ms.locfileid: "82161501"
 
 [Application Insights データに対してプログラムからクエリを実行する](https://dev.applicationinsights.io/) ことで、スケジュールに従ってカスタム レポートを作成できます。 次のオプションを利用して、すぐに始めることができます。
 
-* [Microsoft Flow を利用してレポートを自動化する](automate-with-flow.md)
+* [Microsoft Flow を利用してレポートを自動化する](../platform/logicapp-flow-connector.md)
 * [Logic Apps を利用してレポートを自動化する](automate-with-logic-apps.md)
-* Monitoring シナリオで "Application Insights scheduled digest" [Azure 関数](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function)テンプレートを利用する。 この関数は SendGrid を使って電子メールを配信します。 
+* Monitoring シナリオで "Application Insights scheduled digest" [Azure 関数](../../azure-functions/functions-create-first-azure-function.md)テンプレートを利用する。 この関数は SendGrid を使って電子メールを配信します。 
 
     ![Azure 関数テンプレート](./media/automate-custom-reports/azure-function-template.png)
 
@@ -72,7 +72,7 @@ availabilityResults
 
 1. Azure Function App を作成します。(Application Insights で新しい Function App を監視する必要がある場合にのみ、Application Insights を _[オン]_ にする必要があります)
 
-   [関数アプリの作成](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function#create-a-function-app)方法については、Azure Functions のドキュメントを参照してください。
+   [関数アプリの作成](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app)方法については、Azure Functions のドキュメントを参照してください。
 
 2. 新しい Function App のデプロイが完了したら、 **[リソースに移動]** を選択します。
 
@@ -83,7 +83,7 @@ availabilityResults
 4. **_Application Insights スケジュールされたダイジェスト テンプレート_** を選択します。
 
      > [!NOTE]
-     > 既定では、関数アプリはランタイム バージョン 3.x で作成されます。 Application Insights のスケジュール済みダイジェスト テンプレートを使用するには、[Azure Functions ランタイム バージョン **1.x** をターゲットにする](https://docs.microsoft.com/azure/azure-functions/set-runtime-version)必要があります。 [構成]、[関数のランタイム設定] の順に移動して、ランタイム バージョンを変更します。 ![ランタイムのスクリーンショット](./media/automate-custom-reports/change-runtime-v.png)
+     > 既定では、関数アプリはランタイム バージョン 3.x で作成されます。 Application Insights のスケジュール済みダイジェスト テンプレートを使用するには、[Azure Functions ランタイム バージョン **1.x** をターゲットにする](../../azure-functions/set-runtime-version.md)必要があります。 [構成]、[関数のランタイム設定] の順に移動して、ランタイム バージョンを変更します。 ![ランタイムのスクリーンショット](./media/automate-custom-reports/change-runtime-v.png)
 
    ![新しい関数の Application Insights テンプレートのスクリーン ショット](./media/automate-custom-reports/function-app-04.png)
 
@@ -106,7 +106,7 @@ availabilityResults
    * SendGridAPI =SendGrid API キー
 
      > [!NOTE]
-     > SendGrid アカウントがない場合は、 作成できます。 Azure Functions での SendGrid の使用に関するドキュメントは、[こちら](https://docs.microsoft.com/azure/azure-functions/functions-bindings-sendgrid)で参照できます。 SendGrid の設定方法と API キーの生成方法に関する簡単な説明は、この記事の最後に記載されています。 
+     > SendGrid アカウントがない場合は、 作成できます。 Azure Functions での SendGrid の使用に関するドキュメントは、[こちら](../../azure-functions/functions-bindings-sendgrid.md)で参照できます。 SendGrid の設定方法と API キーの生成方法に関する簡単な説明は、この記事の最後に記載されています。 
 
 8. **[統合]** を選択し、[出力] の下で **[SendGrid ($return)]** をクリックします。
 
@@ -150,7 +150,8 @@ availabilityResults
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Analytics クエリ](../../azure-monitor/log-query/get-started-queries.md)の作成についての詳細を見る
+* [Analytics クエリ](../log-query/get-started-queries.md)の作成についての詳細を見る
 * [Application Insights データに対してプログラムからクエリを実行する](https://dev.applicationinsights.io/)の詳細を見る
-* [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps) の詳細を見る
+* [Logic Apps](../../logic-apps/logic-apps-overview.md) の詳細を見る
 * [Microsoft Flow](https://ms.flow.microsoft.com)についての詳細を見る
+

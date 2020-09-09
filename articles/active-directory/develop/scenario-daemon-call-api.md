@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: e440628526dada7655cc71f63fc9fff006cc5ef5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7319aacabd2c479c578fbb71ae0bc9fbb2dee9f2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80885448"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119132"
 ---
 # <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>Web API を呼び出すデーモン アプリ - アプリからの Web API 呼び出し
 
@@ -70,16 +70,16 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 # <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!div class="nextstepaction"]
-> [デーモン アプリ - 運用環境への移行](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=dotnet)
+> [デーモン アプリ - 運用環境への移行](./scenario-daemon-production.md?tabs=dotnet)
 
 # <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
-> [デーモン アプリ - 運用環境への移行](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=python)
+> [デーモン アプリ - 運用環境への移行](./scenario-daemon-production.md?tabs=python)
 
 # <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
-> [デーモン アプリ - 運用環境への移行](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=java)
+> [デーモン アプリ - 運用環境への移行](./scenario-daemon-production.md?tabs=java)
 
 ---

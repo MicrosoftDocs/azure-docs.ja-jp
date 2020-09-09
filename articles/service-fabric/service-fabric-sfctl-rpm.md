@@ -5,12 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 1787c0c8a8d5994ce1f1e9e4c55f155bbca6934c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7317fd66303aaabf5232106aa7391439880bebaf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76904951"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260289"
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
 クエリを実行し、修復マネージャー サービスにコマンドを送信します。
@@ -93,4 +93,4 @@ ms.locfileid: "76904951"
 
 ## <a name="next-steps"></a>次のステップ
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。
-- [サンプル スクリプト](/azure/service-fabric/scripts/sfctl-upgrade-application)を使用して、Service Fabric CLI の使用方法を学習します。
+- [サンプル スクリプト](./scripts/sfctl-upgrade-application.md)を使用して、Service Fabric CLI の使用方法を学習します。

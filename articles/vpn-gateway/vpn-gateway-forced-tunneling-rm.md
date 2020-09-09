@@ -5,15 +5,15 @@ services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
-ms.date: 02/01/2018
+ms.topic: how-to
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: fc35654403bbe1375d4188476b11fd0453f74345
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e9444291c40ef504a674ee18351ba581695d1dd3
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225055"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394519"
 ---
 # <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>Azure Resource Manager デプロイ モデルを使用した強制トンネリングの構成
 
@@ -62,7 +62,7 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 ## <a name="before-you-begin"></a><a name="before"></a>開始する前に
 
-Azure Resource Manager PowerShell コマンドレットの最新版をインストールしてください。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview) 」を参照してください。
+Azure Resource Manager PowerShell コマンドレットの最新版をインストールしてください。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/) 」を参照してください。
 
 > [!IMPORTANT]
 > PowerShell コマンドレットの最新バージョンのインストールが必要です。 最新バージョンをインストールしていない場合、一部のコマンドレットの実行時に検証エラーが発生することがあります。

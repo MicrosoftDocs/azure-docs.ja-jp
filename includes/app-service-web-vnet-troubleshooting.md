@@ -4,25 +4,29 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
-ms.openlocfilehash: 652d42d6e2d9e909c3a03bd82a3a36f91bc73807
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: ff54d60573fbc7b6694b8d02d1378869674c1e81
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80419518"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050485"
 ---
 機能は簡単にセットアップできますが、問題が発生しないという意味ではありません。 目的のエンドポイントへのアクセスに関して問題が発生した場合は、アプリのコンソールからの接続をテストするために、いくつかのユーティリティを利用できます。 利用できるコンソールが 2 つあります。 1 つは Kudu コンソールで、もう 1 つは Azure portal 内のコンソールです。 アプリから Kudu コンソールにアクセスするには、 **[ツール]**  >  **[Kudu]** の順に移動します。 [サイト名].scm.azurewebsites.net で Kudo コンソールにアクセスすることもできます。 Web サイトが読み込まれたら、 **[デバッグ コンソール]** タブに移動します。お使いのアプリから Azure portal によってホストされたコンソールにアクセスするには、 **[ツール]**  >  **[コンソール]** の順に移動します。
 
 #### <a name="tools"></a>ツール
 **ping**、**nslookup**、および **tracert** の各ツールは、セキュリティの制約により、コンソールから使用することはできません。 それを補うために、2 つの独立したツールが追加されています。 DNS 機能をテストするために、**nameresolver.exe** という名前のツールを追加しました。 の構文は次のとおりです。
 
-    nameresolver.exe hostname [optional: DNS Server]
+```console
+nameresolver.exe hostname [optional: DNS Server]
+```
 
 nameresolver を使用すると、アプリが依存しているホスト名を確認できます。 この方法によって、DNS の構成に誤りがあるかどうかや、DNS サーバーへのアクセス権がないかどうかをテストできます。 環境変数 WEBSITE_DNS_SERVER と WEBSITE_DNS_ALT_SERVER を調べることによって、アプリによって使用される DNS サーバーをコンソール上で確認できます。
 
 次のツールを使用して、ホストとポートを組み合わせたものへの TCP 接続をテストすることができます。 このツールは **tcpping** という名前で、構文は次のとおりです。
 
-    tcpping.exe hostname [optional: port]
+```console
+tcpping.exe hostname [optional: port]
+```
 
 **tcpping** ユーティリティを使用すると、特定のホストとポートにアクセスできるかどうかがわかります。 成功として示されるのは、ホストとポートの組み合わせでリッスンしているアプリケーションがあり、アプリから指定のホストとポートへのネットワーク アクセスがある場合のみです。
 
@@ -62,7 +66,9 @@ nameresolver を使用すると、アプリが依存しているホスト名を�
 
 * 仮想ネットワーク内の VM に接続し、そこからリソースのホスト:ポートへのアクセスを試みます。 TCP アクセスのテストには、PowerShell コマンド **test-netconnection** を使用します。 の構文は次のとおりです。
 
-      test-netconnection hostname [optional: -Port]
+```powershell
+test-netconnection hostname [optional: -Port]
+```
 
 * VM 上でアプリケーションを起動し、**tcpping** を使用して、アプリのコンソールからそのホストとポートへのアクセスをテストします。
 

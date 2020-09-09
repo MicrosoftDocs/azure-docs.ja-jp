@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: aa2af4302613aad23bfd78b4883bbb46c5e5ddbb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3571455db6ecc600bf0948087b40c281d72512ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76960396"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091251"
 ---
 # <a name="enable-cloudsimple-private-cloud-dns-servers-to-forward-dns-lookup-of-on-premises-resources-to-your-dns-servers"></a>CloudSimple プライベート クラウドの DNS サーバーからオンプレミスのリソースの DNS 参照を DNS サーバーに転送できるようにする
 
@@ -32,7 +32,7 @@ ms.locfileid: "76960396"
 DNS 転送を機能させるには、プライベート クラウド ネットワークからオンプレミス ネットワークへのネットワーク接続が存在している必要があります。  ネットワーク接続を設定するには、以下を使用します。
 
 * [ExpressRoute を使用してオンプレミスから CloudSimple に接続する](on-premises-connection.md)
-* [サイト間 VPN ゲートウェイのセットアップ](https://docs.microsoft.com/azure/vmware-cloudsimple/vpn-gateway#set-up-a-site-to-site-vpn-gateway)
+* [サイト間 VPN ゲートウェイのセットアップ](./vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)
 
 DNS 転送を機能させるには、この接続でファイアウォール ポートを開く必要があります。  使用されるポートは、TCP ポート 53 または UDP ポート 53 です。
 

@@ -7,21 +7,21 @@ author: KumudD
 manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: 5d56b276e44a1dbdffb66270e04763ea729628ef
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7d41893d734037e466ad786641fed98c461adcfc
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594921"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231813"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-the-azure-portal"></a>Azure portal を使用してパブリック IP アドレスのルーティング優先設定を構成する
 
-この記事では、パブリック IP アドレスに対して ISP ネットワーク ( **[インターネット]** オプション) によるルーティング優先設定を構成する方法について説明します。 パブリック IP アドレスを作成した後は、インターネットでの受信および送信トラフィック用に、次の Azure リソースと関連付けることができます。
+この記事では、パブリック IP アドレスに対して ISP ネットワーク ( **[インターネット]** オプション) による[ルーティング優先設定](https://docs.microsoft.com/azure/virtual-network/routing-preference-overview)を構成する方法について示します。 パブリック IP アドレスを作成した後は、インターネットでの受信および送信トラフィック用に、次の Azure リソースと関連付けることができます。
 
 * 仮想マシン
 * 仮想マシン スケール セット

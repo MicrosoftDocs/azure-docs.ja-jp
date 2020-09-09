@@ -11,12 +11,12 @@ metadata:
   author: PatAltimore
   ms.author: patricka
   ms.date: 10/23/2019
-  ms.openlocfilehash: a0e43171e70923cfb3af551391204f118be01970
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 123d84cc29c1dce85cccf8c1bbb089bfbbbf7bf3
+  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "75932660"
+  ms.lasthandoff: 07/23/2020
+  ms.locfileid: "87007665"
 productDirectory:
   items:
   - title: Azure Blockchain サービス
@@ -32,13 +32,6 @@ productDirectory:
     - url: ./workbench/overview.md
       text: Azure Blockchain Workbench とは
     - url: ./workbench/index.yml
-      text: 詳細を表示 >
-  - title: Azure Blockchain Tokens
-    imageSrc: ./media/index/blockchain-tokens.svg
-    links:
-    - url: ./tokens/overview.md
-      text: Azure Blockchain Tokens とは何ですか?
-    - url: ./tokens/index.yml
       text: 詳細を表示 >
 conceptualContent:
   title: はじめに
@@ -71,17 +64,6 @@ conceptualContent:
     - url: https://channel9.msdn.com/Shows/Blocktalk/Building-your-first-Azure-Blockchain-Workbench-application
       itemType: video
       text: 最初のアプリケーションを構築する方法を見る
-  - title: トークンを作成して管理する
-    links:
-    - url: ./tokens/templates.md
-      itemType: concept
-      text: 既製のテンプレートを使用してトークンを定義する
-    - url: ./tokens/account-management.md
-      itemType: concept
-      text: Azure Blockchain Tokens を使用してトークンを管理する
-    - url: https://aka.ms/ABTokensPartI
-      itemType: video
-      text: Azure Blockchain Tokens の概要を見る
   - title: ブロックチェーン データ マネージャーを使用してブロックチェーン データを発行する
     links:
     - url: ./service/data-manager.md
@@ -111,7 +93,7 @@ additionalContent:
       url: https://marketplace.visualstudio.com/items?itemName=azblockchain.azure-blockchain
     - title: Ethereum ブロックチェーン コネクタ
       summary: Azure Logic Apps、Microsoft Flow、Microsoft PowerApps を使用して、トランザクションの送信、コントラクト状態の読み取り、コントラクト更新後のフローのトリガーなど、スマート コントラクト アクションを実行します。
-      url: https://docs.microsoft.com/connectors/blockchainethereum/
+      url: /connectors/blockchainethereum/
     - title: コード サンプル
       summary: 作業を開始するためのコード サンプルが含まれた GitHub リポジトリ。
       url: https://github.com/Azure-Samples/blockchain

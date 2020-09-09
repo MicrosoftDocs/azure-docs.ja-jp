@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
-ms.custom: hdinsightactive,hdiseo17may2017
+ms.topic: how-to
+ms.custom: hdinsightactive,hdiseo17may2017, devx-track-java
 ms.date: 11/20/2019
-ms.openlocfilehash: 73a2a612a4eeb4a59f12abf0660fffb092f0547f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 15a86fd191eefc5882150fb276228d18efd6ff5d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74327203"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323793"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>HDInsight 上の Apache Hive で Java UDF を使用する
 
@@ -234,26 +234,30 @@ cd C:\HDI
 
     このクエリは、テーブルから状態を選択し、その文字列と小文字に変換したものを一緒に表示します。 次のテキストのような出力が表示されます。
 
-        +---------------+---------------+--+
-        |  exampleudf   |     state     |
-        +---------------+---------------+--+
-        | california    | California    |
-        | pennsylvania  | Pennsylvania  |
-        | pennsylvania  | Pennsylvania  |
-        | pennsylvania  | Pennsylvania  |
-        | colorado      | Colorado      |
-        | colorado      | Colorado      |
-        | colorado      | Colorado      |
-        | utah          | Utah          |
-        | utah          | Utah          |
-        | colorado      | Colorado      |
-        +---------------+---------------+--+
+    ```output
+    +---------------+---------------+--+
+    |  exampleudf   |     state     |
+    +---------------+---------------+--+
+    | california    | California    |
+    | pennsylvania  | Pennsylvania  |
+    | pennsylvania  | Pennsylvania  |
+    | pennsylvania  | Pennsylvania  |
+    | colorado      | Colorado      |
+    | colorado      | Colorado      |
+    | colorado      | Colorado      |
+    | utah          | Utah          |
+    | utah          | Utah          |
+    | colorado      | Colorado      |
+    +---------------+---------------+--+
+    ```
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 Hive ジョブを実行しているときに、次のテキストようなエラーが発生する場合があります。
 
-    Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An error occurred while reading or writing to your custom script. It may have crashed with an error.
+```output
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An error occurred while reading or writing to your custom script. It may have crashed with an error.
+```
 
 この問題は、Python ファイルの行末が原因で発生する場合があります。 多くの Windows 版エディターでは行末に既定でCRLF が使用されていますが、Linux アプリケーションでは通常、行末は LF であることを前提としています。
 

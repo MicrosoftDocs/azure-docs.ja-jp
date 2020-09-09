@@ -35,7 +35,7 @@ ms.locfileid: "61454498"
 
 ### <a name="download-the-source-code-and-prepare-the-project"></a>ソース コードをダウンロードしてプロジェクトを準備する
 
-プロジェクトを準備するには、GitHub から [Azure IoT C SDK リポジトリ](https://github.com/Azure/azure-iot-sdk-c)をクローンまたはダウンロードします。
+プロジェクトを準備するには、GitHub から [Azure IoT C SDK リポジトリ](https://github.com/Azure/azure-iot-sdk-c)を複製またはダウンロードします。
 
 サンプルは、**samples/solutions/remote_monitoring_client** フォルダーにあります。
 

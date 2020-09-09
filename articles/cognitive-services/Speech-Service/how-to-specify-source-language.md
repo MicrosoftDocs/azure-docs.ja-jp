@@ -8,15 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/07/2020
+ms.date: 05/19/2020
 ms.author: qiohu
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: f0723534d9d2187593cb73f058ffea62473b80a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 3d761bbad4cb2cd2cdd1c34459f25c811bb41c7e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235969"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918691"
 ---
 # <a name="specify-source-language-for-speech-to-text"></a>音声テキスト変換のソース言語を指定する
 
@@ -166,23 +167,35 @@ speechConfig.endpointId = "The Endpoint ID for your custom model.";
 
 ## <a name="how-to-specify-source-language-in-objective-c"></a>Objective-C でソース言語を指定する方法
 
-最初のステップは、`speechConfig` を作成することです。
+この例では、`SPXSpeechRecognizer` コンストラクトを使って、ソース言語をパラメーターとして明示的に指定します。
 
 ```Objective-C
-SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithSubscription:@"YourSubscriptionkey" region:@"YourRegion"];
+SPXSpeechRecognizer* speechRecognizer = \
+    [[SPXSpeechRecognizer alloc] initWithSpeechConfiguration:speechConfig language:@"de-DE" audioConfiguration:audioConfig];
 ```
 
-次に、`speechRecognitionLanguage` でオーディオのソース言語を指定します。
+この例では、`SPXSourceLanguageConfiguration` を使ってソース言語を提供します。 次に、`SPXSourceLanguageConfiguration` をパラメーターとして `SPXSpeechRecognizer` コンストラクトに渡します。
 
 ```Objective-C
-speechConfig.speechRecognitionLanguage = @"de-DE";
+SPXSourceLanguageConfiguration* sourceLanguageConfig = [[SPXSourceLanguageConfiguration alloc]init:@"de-DE"];
+SPXSpeechRecognizer* speechRecognizer = [[SPXSpeechRecognizer alloc] initWithSpeechConfiguration:speechConfig
+                                                                     sourceLanguageConfiguration:sourceLanguageConfig
+                                                                              audioConfiguration:audioConfig];
 ```
 
-認識にカスタムモデルを使っている場合は、`endpointId` でエンドポイントを指定できます。
+この例では、`SPXSourceLanguageConfiguration` を使ってソース言語とカスタム エンドポイントを提供します。 次に、`SPXSourceLanguageConfiguration` をパラメーターとして `SPXSpeechRecognizer` コンストラクトに渡します。
 
 ```Objective-C
-speechConfig.endpointId = @"The Endpoint ID for your custom model.";
+SPXSourceLanguageConfiguration* sourceLanguageConfig = \
+        [[SPXSourceLanguageConfiguration alloc]initWithLanguage:@"de-DE"
+                                                     endpointId:@"The Endpoint ID for your custom model."];
+SPXSpeechRecognizer* speechRecognizer = [[SPXSpeechRecognizer alloc] initWithSpeechConfiguration:speechConfig
+                                                                     sourceLanguageConfiguration:sourceLanguageConfig
+                                                                              audioConfiguration:audioConfig];
 ```
+
+>[!Note]
+> `speechRecognitionLanguage` および `endpointId` プロパティは、Objective-C の `SPXSpeechConfiguration` クラスでは非推奨になっています。 これらのプロパティの使用は推奨されていないので、`SPXSpeechRecognizer` を構築するときに使わないでください。
 
 ::: zone-end
 

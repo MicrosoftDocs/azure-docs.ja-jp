@@ -9,12 +9,12 @@ ms.subservice: availability
 ms.date: 07/01/2019
 ms.reviewer: zivr
 ms.custom: mimckitt
-ms.openlocfilehash: 8e455d4d016f97a466838c07fc7af2422f72cc00
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 1525ef7c1e19aa9821df3f111fdce3518d37afd5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83727099"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011058"
 ---
 # <a name="preview-creating-and-using-proximity-placement-groups-using-powershell"></a>プレビュー:PowerShell を使用した近接配置グループの作成と使用
 
@@ -30,7 +30,7 @@ VM を可能な限り近くに置き、待ち時間を可能な限り短くす�
 
 
 ## <a name="create-a-proximity-placement-group"></a>近接通信配置グループの作成
-[New-AzProximityPlacementGroup](https://docs.microsoft.com/powershell/module/az.compute/new-azproximityplacementgroup) コマンドレットを使用し、近接通信配置グループを作成します。 
+[New-AzProximityPlacementGroup](/powershell/module/az.compute/new-azproximityplacementgroup) コマンドレットを使用し、近接通信配置グループを作成します。 
 
 ```azurepowershell-interactive
 $resourceGroup = "myPPGResourceGroup"
@@ -55,7 +55,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-scale-set"></a>スケール セットを作成する
 
-[New-AzVMSS](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) を使用してスケール セットを作成するときに近接通信配置グループ ID を参照する目的で、`-ProximityPlacementGroup $ppg.Id` を使用し、近接通信配置グループでスケールを作成します。
+[New-AzVMSS](/powershell/module/az.compute/new-azvmss) を使用してスケール セットを作成するときに近接通信配置グループ ID を参照する目的で、`-ProximityPlacementGroup $ppg.Id` を使用し、近接通信配置グループでスケールを作成します。
 
 ```azurepowershell-interactive
 $scalesetName = "myVM"

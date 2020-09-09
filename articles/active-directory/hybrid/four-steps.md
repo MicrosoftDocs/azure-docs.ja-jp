@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3eb98f543e17981be0d5b9ab08fa4e146659b47
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1b7e394c4227be9ead491fe77457b466b1f62468
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74206791"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279331"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Azure Active Directory を使って強固な ID 基盤を構築するための 4 つのステップ
 
@@ -41,9 +41,9 @@ Azure Active Directory (Azure AD) のハイブリッド ID ソリューション
 
 ### <a name="make-apps-available-to-your-users-seamlessly"></a>ユーザーがアプリをシームレスに使用できるようにする
 
-Azure AD を使用すると、管理者は [Azure portal](https://portal.azure.com/) のエンタープライズ アプリケーション ギャラリーに[アプリケーションを追加](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal)できます。 エンタープライズ アプリケーション ギャラリーにアプリケーションを追加すると、Azure AD を ID プロバイダーとして使用するようにアプリケーションを構成することが容易になります。 また、条件付きアクセス ポリシーを使ってアプリケーションへのユーザー アクセスを管理したり、ユーザーがパスワードを繰り返し入力することなく、自動的にオンプレミスとクラウドベースのアプリケーションにサインインするようにアプリケーションへのシングル サインオン (SSO) を構成したりすることもできます。
+Azure AD を使用すると、管理者は [Azure portal](https://portal.azure.com/) のエンタープライズ アプリケーション ギャラリーに[アプリケーションを追加](../manage-apps/add-application-portal.md)できます。 エンタープライズ アプリケーション ギャラリーにアプリケーションを追加すると、Azure AD を ID プロバイダーとして使用するようにアプリケーションを構成することが容易になります。 また、条件付きアクセス ポリシーを使ってアプリケーションへのユーザー アクセスを管理したり、ユーザーがパスワードを繰り返し入力することなく、自動的にオンプレミスとクラウドベースのアプリケーションにサインインするようにアプリケーションへのシングル サインオン (SSO) を構成したりすることもできます。
 
-アプリケーションが Azure AD ギャラリーに追加されると、ユーザーは自分に割り当てられたアプリを表示し、必要に応じて他のアプリを検索して要求することができます。 Azure AD には、ユーザーが自分のアプリにアクセスするための[いくつかの方法](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences)が用意されています。
+アプリケーションが Azure AD ギャラリーに追加されると、ユーザーは自分に割り当てられたアプリを表示し、必要に応じて他のアプリを検索して要求することができます。 Azure AD には、ユーザーが自分のアプリにアクセスするための[いくつかの方法](../manage-apps/end-user-experiences.md)が用意されています。
 
 * アクセス パネル/マイ アプリ
 * Office 365 アプリ起動ツール
@@ -65,7 +65,7 @@ Active Directory フェデレーション サービス (ADFS) から Azure AD �
 
 ### <a name="enable-secure-remote-access-to-apps"></a>アプリへの安全なリモート アクセスを有効にする
 
-[Azure AD アプリケーション プロキシ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-application-proxy)には、安全な方法で内部アプリにアクセスする必要があるリモート ユーザーのために、組織がオンプレミス アプリをクラウドに発行するためのシンプルなソリューションが用意されています。 Azure AD にシングル サインオンした後、ユーザーは、外部の URL または内部アプリケーション ポータルから、クラウドとオンプレミス両方のアプリケーションにアクセスできます。
+[Azure AD アプリケーション プロキシ](../manage-apps/what-is-application-proxy.md)には、安全な方法で内部アプリにアクセスする必要があるリモート ユーザーのために、組織がオンプレミス アプリをクラウドに発行するためのシンプルなソリューションが用意されています。 Azure AD にシングル サインオンした後、ユーザーは、外部の URL または内部アプリケーション ポータルから、クラウドとオンプレミス両方のアプリケーションにアクセスできます。
 
 Azure AD アプリケーション プロキシには、次のような利点があります。
 
@@ -81,7 +81,7 @@ Azure AD アプリケーション プロキシには、次のような利点が�
 
 現代の企業では、ユーザーが作業を行うために使用しているすべてのクラウド アプリケーションを IT 部門が認識していないことがよくあります。 IT 管理者は、従業員が使用しているクラウド アプリの数はどのくらいだと思うかと尋ねられたとき、平均で 30 または 40 と答えています。 実際には、平均 1,000 個を超える個別のアプリが組織内の従業員によって使用されています。 従業員の 80% が、誰も確認しておらず、セキュリティ ポリシーとコンプライアンス ポリシーに準拠していない未承認のアプリを使用しています。
 
-[Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) は、ユーザーが SSO や条件付きアクセスなどの機能の恩恵を受けられるように、IT が承認してエンタープライズ アプリケーション ギャラリーに追加できる、ユーザーに人気のある便利なアプリを特定するのに役立ちます。
+[Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) (MCAS) は、ユーザーが SSO や条件付きアクセスなどの機能の恩恵を受けられるように、IT が承認してエンタープライズ アプリケーション ギャラリーに追加できる、ユーザーに人気のある便利なアプリを特定するのに役立ちます。
 
 <em>"**Cloud App Security** を使用すると、従業員が、Accenture を保護するのに役立つ基本的なセキュリティ ポリシーをサポートする方法でクラウドと SaaS のアプリケーションを正しく使用していることを確認できます。"</em> --- [Accenture 社、情報セキュリティ部門マネージング ディレクター、John Blasi 氏](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
@@ -98,32 +98,32 @@ Azure AD Connect は、オンプレミスの ID を Azure AD に同期して、�
 このセクションでは、高可用性およびクラウド向けの最新認証を提供して、オンプレミスのフットプリントを減らすための推奨事項を示します。
 
 > [!NOTE]
-> Azure AD Connect の詳細については、「[Azure AD Connect 同期とは](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis)」を参照してください。
+> Azure AD Connect の詳細については、「[Azure AD Connect 同期とは](./how-to-connect-sync-whatis.md)」を参照してください。
 
 ### <a name="set-up-a-staging-server-for-azure-ad-connect-and-keep-it-up-to-date"></a>Azure AD Connect 用のステージング サーバーをセットアップして、最新状態を保つ
 
 Azure AD Connect は、プロビジョニング プロセスにおいて重要な役割を果たします。 何らかの理由で同期サーバーがオフラインになると、オンプレミスへの変更がクラウドで更新されず、ユーザーに対するアクセス問題が生じます。 同期サーバーがオフラインになった後、管理者がすばやく同期を再開できるようにするフェールオーバー戦略を定義することが重要です。
 
-Azure AD Connect のプライマリ サーバーがオフラインになったときに高可用性を提供するために、Azure AD Connect 用に別個の[ステージング サーバー](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-staging-server)をデプロイすることをお勧めします。 サーバーをデプロイすることにより、管理者は、単純な構成の切り替えによってステージング サーバーを運用に "昇格" させることができます。 ステージング モードでスタンバイ サーバーを構成しておくことで、新しい構成変更をテストしてデプロイしたり、古いサーバーを廃止する場合に新しいものを導入したりすることもできます。
+Azure AD Connect のプライマリ サーバーがオフラインになったときに高可用性を提供するために、Azure AD Connect 用に別個の[ステージング サーバー](./how-to-connect-sync-staging-server.md)をデプロイすることをお勧めします。 サーバーをデプロイすることにより、管理者は、単純な構成の切り替えによってステージング サーバーを運用に "昇格" させることができます。 ステージング モードでスタンバイ サーバーを構成しておくことで、新しい構成変更をテストしてデプロイしたり、古いサーバーを廃止する場合に新しいものを導入したりすることもできます。
 
 > [!TIP]
 > Azure AD Connect は定期的に更新されます。 したがって、バージョンが新しくなるたびに提供されるパフォーマンスの向上、バグの修正、および新機能を利用するために、ステージング サーバーを最新状態にしておくことを強くお勧めします。
 
 ### <a name="enable-cloud-authentication"></a>クラウド認証を有効にする
 
-オンプレミスの Active Directory を使用している組織は、Azure AD Connect を使って Azure AD にディレクトリを拡張し、適切な認証方法を構成する必要があります。 組織にとって[正しい認証方法を選択する](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)ことは、アプリをクラウドに移行する過程の第一歩です。 それによりクラウドのすべてのデータとリソースへのアクセスが制御されるため、これは重要なコンポーネントです。
+オンプレミスの Active Directory を使用している組織は、Azure AD Connect を使って Azure AD にディレクトリを拡張し、適切な認証方法を構成する必要があります。 組織にとって[正しい認証方法を選択する](./choose-ad-authn.md)ことは、アプリをクラウドに移行する過程の第一歩です。 それによりクラウドのすべてのデータとリソースへのアクセスが制御されるため、これは重要なコンポーネントです。
 
-Azure AD でオンプレミス ディレクトリ オブジェクトのクラウド認証を有効にするための最も単純で推奨される方法は、[パスワード ハッシュ同期](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) (PHS) を有効にすることです。 または、組織によっては、[パススルー認証](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) (PTA) の有効化を検討することもできます。
+Azure AD でオンプレミス ディレクトリ オブジェクトのクラウド認証を有効にするための最も単純で推奨される方法は、[パスワード ハッシュ同期](./how-to-connect-password-hash-synchronization.md) (PHS) を有効にすることです。 または、組織によっては、[パススルー認証](./how-to-connect-pta-quick-start.md) (PTA) の有効化を検討することもできます。
 
-PHS または PTA のどちらを選択する場合も、[シームレス シングル サインオン](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)を忘れずに有効にしてください。これにより、社内のネットワークで Windows 7 と 8 のデバイスを使用しているときに、ユーザーがアプリにユーザー名とパスワードを繰り返し入力せずにクラウド アプリにアクセスできるようになります。 シングル サインオンを使用しない場合、ユーザーはアプリケーション固有のパスワードを覚えて、各アプリケーションにサインインする必要があります。 同様に、IT スタッフは、Office 365、Box、Salesforce など、アプリケーションごとにユーザー アカウントを作成し、更新する必要があります。 ユーザーはパスワードを覚えておくことに加え、各アプリケーションにサインインするのに時間を費やす必要があります。 標準化されたシングル サインオンのメカニズムを社内全体に提供することは、最良のユーザー エクスペリエンス、リスクの削減、報告する能力、およびガバナンスにとって不可欠です。
+PHS または PTA のどちらを選択する場合も、[シームレス シングル サインオン](./how-to-connect-sso.md)を忘れずに有効にしてください。これにより、社内のネットワークで Windows 7 と 8 のデバイスを使用しているときに、ユーザーがアプリにユーザー名とパスワードを繰り返し入力せずにクラウド アプリにアクセスできるようになります。 シングル サインオンを使用しない場合、ユーザーはアプリケーション固有のパスワードを覚えて、各アプリケーションにサインインする必要があります。 同様に、IT スタッフは、Office 365、Box、Salesforce など、アプリケーションごとにユーザー アカウントを作成し、更新する必要があります。 ユーザーはパスワードを覚えておくことに加え、各アプリケーションにサインインするのに時間を費やす必要があります。 標準化されたシングル サインオンのメカニズムを社内全体に提供することは、最良のユーザー エクスペリエンス、リスクの削減、報告する能力、およびガバナンスにとって不可欠です。
 
-既に AD FS または別のオンプレミス認証プロバイダーを使用している組織では、ID プロバイダーを Azure AD に移行することで、複雑さが軽減されて、可用性が向上します。 フェデレーションを使用する具体的なユース ケースがない限りは、フェデレーション認証から、PHS とシームレス SSO または PTA とシームレス SSO のいずれかに移行して、オンプレミスのフットプリントの削減と、向上したユーザー エクスペリエンスと共にクラウドで提供される柔軟性の利点を得られるようにすることをお勧めします。 詳細については、「[Azure Active Directory でフェデレーションからパスワード ハッシュ同期に移行する](https://docs.microsoft.com/azure/active-directory/hybrid/plan-migrate-adfs-password-hash-sync)」を参照してください。
+既に AD FS または別のオンプレミス認証プロバイダーを使用している組織では、ID プロバイダーを Azure AD に移行することで、複雑さが軽減されて、可用性が向上します。 フェデレーションを使用する具体的なユース ケースがない限りは、フェデレーション認証から、PHS とシームレス SSO または PTA とシームレス SSO のいずれかに移行して、オンプレミスのフットプリントの削減と、向上したユーザー エクスペリエンスと共にクラウドで提供される柔軟性の利点を得られるようにすることをお勧めします。 詳細については、「[Azure Active Directory でフェデレーションからパスワード ハッシュ同期に移行する](./plan-migrate-adfs-password-hash-sync.md)」を参照してください。
 
 ### <a name="enable-automatic-deprovisioning-of-accounts"></a>アカウントの自動プロビジョニング解除を有効にする
 
-アプリケーションへの自動プロビジョニングとプロビジョニング解除を有効にすることは、複数のシステムにわたって ID のライフサイクルを管理するための最良の戦略です。 Azure AD では、[SCIM 2.0 プロトコル](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)を実装する ServiceNow や Salesforce などの人気のあるさまざまな SaaS アプリケーションやその他のアプリケーションに対するユーザー アカウントの[自動化されたポリシー ベースのプロビジョニングとプロビジョニング解除](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal)をサポートしています。 カスタム コードや CSV ファイルの手動アップロードを必要とする従来のプロビジョニング ソリューションとは異なり、プロビジョニング サービスはクラウドでホストされ、Azure portal を使ってセットアップおよび管理できる事前統合されたコネクターを使用します。 自動プロビジョニング解除の主な利点は、ユーザーが組織を離れるときに、主要な SaaS アプリからその ID を即座に削除することにより、組織の安全を確保できることです。
+アプリケーションへの自動プロビジョニングとプロビジョニング解除を有効にすることは、複数のシステムにわたって ID のライフサイクルを管理するための最良の戦略です。 Azure AD では、[SCIM 2.0 プロトコル](../app-provisioning/use-scim-to-provision-users-and-groups.md)を実装する ServiceNow や Salesforce などの人気のあるさまざまな SaaS アプリケーションやその他のアプリケーションに対するユーザー アカウントの[自動化されたポリシー ベースのプロビジョニングとプロビジョニング解除](../app-provisioning/configure-automatic-user-provisioning-portal.md)をサポートしています。 カスタム コードや CSV ファイルの手動アップロードを必要とする従来のプロビジョニング ソリューションとは異なり、プロビジョニング サービスはクラウドでホストされ、Azure portal を使ってセットアップおよび管理できる事前統合されたコネクターを使用します。 自動プロビジョニング解除の主な利点は、ユーザーが組織を離れるときに、主要な SaaS アプリからその ID を即座に削除することにより、組織の安全を確保できることです。
 
-自動ユーザー アカウント プロビジョニングの詳細とそのしくみについては、「 [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)」を参照してください。
+自動ユーザー アカウント プロビジョニングの詳細とそのしくみについては、「 [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。
 
 ## <a name="step-3---empower-your-users-securely"></a>ステップ 3 - 安全にユーザーに権限を与える
 
@@ -133,21 +133,21 @@ PHS または PTA のどちらを選択する場合も、[シームレス シン
 
 ### <a name="enable-self-service-password-reset-for-all-users"></a>すべてのユーザーに対してセルフサービス パスワード リセットを有効にする
 
-Azure の[セルフサービス パスワード リセット ](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) (SSPR) では、IT 管理者は簡単に、ユーザーが管理者の手を借りずにパスワードやアカウントのリセットまたはロック解除を行えるようにできます。 このシステムには、ユーザーがいつシステムにアクセスしたかを追跡する詳細なレポートと、誤用または悪用について警告する通知が用意されています。
+Azure の[セルフサービス パスワード リセット ](../authentication/tutorial-enable-sspr.md) (SSPR) では、IT 管理者は簡単に、ユーザーが管理者の手を借りずにパスワードやアカウントのリセットまたはロック解除を行えるようにできます。 このシステムには、ユーザーがいつシステムにアクセスしたかを追跡する詳細なレポートと、誤用または悪用について警告する通知が用意されています。
 
-既定では、Azure AD はパスワード リセットを実行するときにアカウントをロック解除します。 ただし、Azure AD Connect の[オンプレミスの統合](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks#on-premises-integration)を有効にすると、それらの 2 つの操作を分離することもでき、ユーザーはパスワードをリセットせずにアカウントをロック解除できるようになります。
+既定では、Azure AD はパスワード リセットを実行するときにアカウントをロック解除します。 ただし、Azure AD Connect の[オンプレミスの統合](../authentication/concept-sspr-howitworks.md#on-premises-integration)を有効にすると、それらの 2 つの操作を分離することもでき、ユーザーはパスワードをリセットせずにアカウントをロック解除できるようになります。
 
 ### <a name="ensure-all-users-are-registered-for-mfa-and-sspr"></a>すべてのユーザーが MFA および SSPR に登録していることを確認する
 
 Azure では、ユーザーが MFA および SSPR に登録していることをお客様およびその組織で確認するために使用できるレポートを提供しています。 登録していないユーザーには、そのプロセスについて教える必要がある場合があります。
 
-MFA の[サインイン レポート](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting)には、MFA の使用状況に関する情報が含まれており、組織で MFA がどのように機能しているかに関する分析情報を得ることができます。 Azure AD のサインイン アクティビティ (および監査とリスク検出) へのアクセス権を持つことは、トラブルシューティング、使用状況の分析、およびフォレンジクスの調査を行うために不可欠です。
+MFA の[サインイン レポート](../authentication/howto-mfa-reporting.md)には、MFA の使用状況に関する情報が含まれており、組織で MFA がどのように機能しているかに関する分析情報を得ることができます。 Azure AD のサインイン アクティビティ (および監査とリスク検出) へのアクセス権を持つことは、トラブルシューティング、使用状況の分析、およびフォレンジクスの調査を行うために不可欠です。
 
-同様に、[セルフサービスによるパスワード管理レポート](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-reporting)を使用して、誰が SSPR に登録しているか (またはしていないか) を特定できます。
+同様に、[セルフサービスによるパスワード管理レポート](../authentication/howto-sspr-reporting.md)を使用して、誰が SSPR に登録しているか (またはしていないか) を特定できます。
 
 ### <a name="self-service-app-management"></a>セルフサービス アプリの管理
 
-ユーザーがアクセス パネルからアプリケーションを自己検出できるようにする前に、ユーザーによる自己検出およびアクセス権の要求を許可するアプリケーションに対して、[アプリケーションのセルフ サービス アクセス](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-manage-self-service-access)を有効にする必要があります。 アプリケーションのセルフ サービス アクセスは、ユーザーにアプリケーションの自己検出を許可したり、必要に応じてビジネス グループによるこれらのアプリケーションへのアクセス承認を許可したりする場合に優れた方法です。 ユーザーに割り当てられた[パスワード シングル サインオン アプリケーション](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-gallery#configure-password-sso-for-an-azure-ad-gallery-app)の資格情報をビジネス グループがアクセス パネルから直接管理できるように許可できます。
+ユーザーがアクセス パネルからアプリケーションを自己検出できるようにする前に、ユーザーによる自己検出およびアクセス権の要求を許可するアプリケーションに対して、[アプリケーションのセルフ サービス アクセス](../manage-apps/access-panel-manage-self-service-access.md)を有効にする必要があります。 アプリケーションのセルフ サービス アクセスは、ユーザーにアプリケーションの自己検出を許可したり、必要に応じてビジネス グループによるこれらのアプリケーションへのアクセス承認を許可したりする場合に優れた方法です。 ユーザーに割り当てられた[パスワード シングル サインオン アプリケーション](../manage-apps/application-sign-in-problem-password-sso-gallery.md#configure-password-sso-for-an-azure-ad-gallery-app)の資格情報をビジネス グループがアクセス パネルから直接管理できるように許可できます。
 
 ### <a name="self-service-group-management"></a>セルフサービスのグループ管理
 
@@ -156,7 +156,7 @@ MFA の[サインイン レポート](https://docs.microsoft.com/azure/active-di
 * 動的グループ メンバーシップを使った属性ベース
 * アプリの所有者への委任
 
-Azure AD には、セキュリティ グループと Office 365 グループを使用してリソースへのアクセスを管理する機能があります。 これらのグループは、メンバーシップ要求の承認または拒否、グループ メンバーシップの制御の委任を実行できるグループ所有者によって管理できます。 [セルフサービス グループ管理](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management)と呼ばれるこの機能では、管理者ロールを割り当てられていないグループ所有者が、要求を処理するために管理者に頼らずにグループを作成および管理できるようにすることで時間を節約します。
+Azure AD には、セキュリティ グループと Office 365 グループを使用してリソースへのアクセスを管理する機能があります。 これらのグループは、メンバーシップ要求の承認または拒否、グループ メンバーシップの制御の委任を実行できるグループ所有者によって管理できます。 [セルフサービス グループ管理](../users-groups-roles/groups-self-service-management.md)と呼ばれるこの機能では、管理者ロールを割り当てられていないグループ所有者が、要求を処理するために管理者に頼らずにグループを作成および管理できるようにすることで時間を節約します。
 
 ## <a name="step-4---operationalize-your-insights"></a>ステップ 4 - 分析情報を運用化する
 
@@ -172,25 +172,25 @@ Azure AD には、セキュリティ グループと Office 365 グループを�
 
 操作に対するアプローチを考えるとき、検討すべきいくつかの管理レベルがあります。 最初のレベルは、管理の負担をグローバル管理者に負わせます。 常にグローバル管理者ロールを使用することは、小規模の会社では適切と考えられます。 しかし、特定のタスクを担当するヘルプ デスク担当者と管理者がいる大規模な組織では、グローバル管理者のロールを割り当てることにより、本来実行できる以上のタスクを管理する能力をそれらの個人に提供するため、セキュリティ リスクになる可能性があります。
 
-この場合は、次の管理レベルを検討する必要があります。 Azure AD を使用すると、エンド ユーザーを、低い特権ロールでタスクを管理できる "制限付き管理者" に指定することができます。 たとえば、ヘルプ デスクの担当者に[セキュリティ閲覧者](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#security-reader)のロールを割り当てることで、読み取り専用アクセス権を使用したセキュリティ関連機能の管理を許可できます。 あるいは、[認証管理者](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#authentication-administrator)ロールを個人に割り当てることで、パスワード以外の資格情報をリセットしたり、Azure Service Health の構成や読み取りを行ったりする権限を付与することは、おそらく理にかなっています。
+この場合は、次の管理レベルを検討する必要があります。 Azure AD を使用すると、エンド ユーザーを、低い特権ロールでタスクを管理できる "制限付き管理者" に指定することができます。 たとえば、ヘルプ デスクの担当者に[セキュリティ閲覧者](../users-groups-roles/directory-assign-admin-roles.md#security-reader)のロールを割り当てることで、読み取り専用アクセス権を使用したセキュリティ関連機能の管理を許可できます。 あるいは、[認証管理者](../users-groups-roles/directory-assign-admin-roles.md#authentication-administrator)ロールを個人に割り当てることで、パスワード以外の資格情報をリセットしたり、Azure Service Health の構成や読み取りを行ったりする権限を付与することは、おそらく理にかなっています。
 
-詳細については、「[Azure Active Directory での管理者ロールのアクセス許可](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)」を参照してください。
+詳細については、「[Azure Active Directory での管理者ロールのアクセス許可](../users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
 
 ### <a name="monitor-hybrid-components-azure-ad-connect-sync-ad-fs-using-azure-ad-connect-health"></a>Azure AD Connect Health を使ってハイブリッド コンポーネント (Azure AD Connect 同期、AD FS) を監視する
 
 Azure AD Connect と AD FS は、潜在的にライフサイクル管理と認証を壊して、最終的に停止を引き起こす可能性があるクリティカルなコンポーネントです。 したがって、これらのコンポーネントを監視するために Azure AD Connect Health をデプロイする必要があります。
 
-詳細については、「[Azure AD Connect Health を使用した AD FS の 監視](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs)」を参照してください。
+詳細については、「[Azure AD Connect Health を使用した AD FS の 監視](./how-to-connect-health-adfs.md)」を参照してください。
 
 ### <a name="use-azure-monitor-to-collect-data-logs-for-analytics"></a>Azure Monitor を使用して分析用のデータ ログを収集する
 
-[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) は、詳細な分析情報、高度な分析、およびスマート機械学習を提供する、すべての Azure AD ログの統合監視ポータルです。 Azure Monitor を使用すると、ポータル内や API からメトリックやログを利用して、リソースの状態やパフォーマンスをより詳しく把握できます。 これにより、API を介した幅広い製品統合と、従来のサードパーティ SIEM システムをサポートするデータ エクスポート オプションを有効にしながら、ポータル内での一元管理エクスペリエンスが有効になります。 また、Azure Monitor では、リソースに影響を与える問題が発生したときに通知を受け取ったり、自動アクションを実行したりするようにアラート ルールを構成することもできます。
+[Azure Monitor](../../azure-monitor/overview.md) は、詳細な分析情報、高度な分析、およびスマート機械学習を提供する、すべての Azure AD ログの統合監視ポータルです。 Azure Monitor を使用すると、ポータル内や API からメトリックやログを利用して、リソースの状態やパフォーマンスをより詳しく把握できます。 これにより、API を介した幅広い製品統合と、従来のサードパーティ SIEM システムをサポートするデータ エクスポート オプションを有効にしながら、ポータル内での一元管理エクスペリエンスが有効になります。 また、Azure Monitor では、リソースに影響を与える問題が発生したときに通知を受け取ったり、自動アクションを実行したりするようにアラート ルールを構成することもできます。
 
 ![Azure Monitor](./media/four-steps/image1.png)
 
 ### <a name="create-custom-dashboards-for-your-leadership-and-your-day-to-day"></a>リーダーシップと日常用のカスタム ダッシュボードを作成する
 
-SIEM ソリューションを持たない組織は、Azure AD 用の [Power BI コンテンツ パック](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-power-bi-content-pack)をダウンロードできます。 Power BI コンテンツ パックには、ユーザーによる Azure AD 機能の採用と使用状況を把握するうえで役立つ事前構築済みのレポートが付属しています。これにより、ディレクトリ内のすべてのアクティビティに関する分析情報を得ることができます。 また、独自の[カスタム ダッシュボード](https://docs.microsoft.com/power-bi/service-dashboards)を作成し、リーダーシップ チームと共有して日常的なアクティビティを報告することもできます。 ダッシュボードは、ビジネスを監視し、最も重要なすべてのメトリックの概要を確認するための優れた方法です。 ダッシュボードの視覚化は、1 つまたは多くの基盤となるデータセットからのものである場合と、1 つまたは多くの基盤となるレポートからのものである場合があります。 ダッシュボードは、オンプレミスとクラウドのデータを結合し、データの場所に関係なく、統合されたビューを提供します。
+SIEM ソリューションを持たない組織は、Azure AD 用の [Power BI コンテンツ パック](../reports-monitoring/howto-use-azure-monitor-workbooks.md)をダウンロードできます。 Power BI コンテンツ パックには、ユーザーによる Azure AD 機能の採用と使用状況を把握するうえで役立つ事前構築済みのレポートが付属しています。これにより、ディレクトリ内のすべてのアクティビティに関する分析情報を得ることができます。 また、独自の[カスタム ダッシュボード](/power-bi/service-dashboards)を作成し、リーダーシップ チームと共有して日常的なアクティビティを報告することもできます。 ダッシュボードは、ビジネスを監視し、最も重要なすべてのメトリックの概要を確認するための優れた方法です。 ダッシュボードの視覚化は、1 つまたは多くの基盤となるデータセットからのものである場合と、1 つまたは多くの基盤となるレポートからのものである場合があります。 ダッシュボードは、オンプレミスとクラウドのデータを結合し、データの場所に関係なく、統合されたビューを提供します。
 
 ![Power BI のカスタム ダッシュボード](./media/four-steps/image2.png)
 
@@ -204,7 +204,7 @@ SIEM ソリューションを持たない組織は、Azure AD 用の [Power BI �
 
 ### <a name="monitor-your-usage-of-apps-to-drive-insights"></a>分析情報を活用するためにアプリの使用状況を監視する
 
-シャドウ IT を検出することに加え、[Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) を使用して組織全体でアプリの使用状況を監視することは、組織が、クラウド アプリケーションの可能性をフルに活用するために移行するときに役立ちます。 これにより、アクティビティの可視性を高めて資産を制御し、クラウド アプリケーション全体で重要なデータの保護を強化できます。 MCAS を使って組織内のアプリの使用状況を監視することは、次の項目を確認するのに役立ちます。
+シャドウ IT を検出することに加え、[Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) を使用して組織全体でアプリの使用状況を監視することは、組織が、クラウド アプリケーションの可能性をフルに活用するために移行するときに役立ちます。 これにより、アクティビティの可視性を高めて資産を制御し、クラウド アプリケーション全体で重要なデータの保護を強化できます。 MCAS を使って組織内のアプリの使用状況を監視することは、次の項目を確認するのに役立ちます。
 
 * 従業員がどのような未承認アプリを使用してデータを格納しているか。
 * 機密データは、いつどこでクラウドに格納されているか。

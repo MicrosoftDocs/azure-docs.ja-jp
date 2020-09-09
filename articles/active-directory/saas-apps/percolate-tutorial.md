@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory と Percolate の統合 | Microsoft Docs
 description: このチュートリアルでは、Azure Active Directory と Percolate の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 355f9659-b378-44c9-aa88-236e9b529a53
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: a6c1f893757baf1e6c85420b31997a5073cff684
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: deb64aa0c344e818b5fd85ca1a161293fd35d6f6
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67094595"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553996"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>チュートリアル:Azure Active Directory と Percolate との統合
 
@@ -168,7 +164,7 @@ Percolate で Azure AD シングル サインオンを構成するには、次�
 
     1. **[名前]** ボックスに「**BrittaSimon**」と入力します。
   
-    1. **[ユーザー名]** ボックスに、「**BrittaSimon@\<yourcompanydomain>.\<extension>** 」と入力します。 (例: BrittaSimon@contoso.com)。
+    1. **[ユーザー名]** ボックスに「**BrittaSimon@\<yourcompanydomain>.\<extension>** 」と入力します (例: BrittaSimon@contoso.com)。
 
     1. **[パスワードを表示]** を選択し、 **[パスワード]** ボックス内の値を書き留めます。
 

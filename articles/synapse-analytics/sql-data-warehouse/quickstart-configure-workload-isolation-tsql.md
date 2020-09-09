@@ -6,17 +6,17 @@ author: ronortloff
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/27/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 99c64e703158c40c2cc110a18be7b8c8d3800ff0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9132c9609961053e7f60344dc387b2a8d01bd6b9
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82207804"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212991"
 ---
 # <a name="quickstart-configure-workload-isolation-using-t-sql"></a>クイック スタート:T-SQL を使用してワークロードの分離を構成する
 
@@ -25,11 +25,11 @@ ms.locfileid: "82207804"
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 > [!NOTE]
-> Azure Synapse Analytics の SQL Analytics インスタンスを作成すると、新しい課金対象サービスを使用することになる場合があります。  詳細については、「[Azure Synapse Analytics の価格](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)」を参照してください。
+> Azure Synapse Analytics に Synapse SQL インスタンスを作成すると、新しい課金対象サービスが発生する可能性があります。  詳細については、「[Azure Synapse Analytics の価格](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイックスタートは、Azure Synapse の SQL Analytics インスタンスが既に用意されていて、CONTROL データベース権限を持っていることを前提としています。 作成する必要がある場合は、[ポータルでの作成と接続](create-data-warehouse-portal.md)に関する記事に従って、**mySampleDataWarehouse** という名前のデータ ウェアハウスを作成してください。
+このクイックスタートは、Azure Synapse の Synapse SQL インスタンスが既に用意されていて、CONTROL データベース権限を持っていることを前提としています。 作成する必要がある場合は、[ポータルでの作成と接続](create-data-warehouse-portal.md)に関する記事に従って、**mySampleDataWarehouse** という名前のデータ ウェアハウスを作成してください。
 
 ## <a name="create-login-for-dataloads"></a>DataLoads のログインを作成する
 

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: cshoe
-ms.openlocfilehash: e4f35495d8a01146068cffb9159c29c46c3c0d29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93a12d40e876293eb587ffba865a1d3b1f5f4983
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75561869"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506028"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Functions の信頼性の高いイベント処理
 
@@ -70,7 +70,7 @@ Azure Functions は、次の手順を実行しながら Event Hubs イベント�
 > [!NOTE]
 > [Polly](https://github.com/App-vNext/Polly) は、C# アプリケーションの復元性および一時的なエラー処理ライブラリの例です。
 
-コンパイル済み C# クラス ライブラリを使用する場合、[例外フィルター](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-catch)を使用すると、ハンドルされない例外が発生したときにコードを実行できます。
+コンパイル済み C# クラス ライブラリを使用する場合、[例外フィルター](/dotnet/csharp/language-reference/keywords/try-catch)を使用すると、ハンドルされない例外が発生したときにコードを実行できます。
 
 例外フィルターの使用方法を示すサンプルについては、[Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) リポジトリを参照してください。
 
@@ -91,7 +91,7 @@ Azure Functions は、次の手順を実行しながら Event Hubs イベント�
 
 実装の詳細は異なる場合がありますが、インスタンス間で状態を共有するには、ストレージ メカニズムが必要です。 Azure Storage、Redis Cache、または一連の機能でアクセスできるその他のアカウントに状態を格納することを選択できます。
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) または[持続エンティティ](./durable/durable-functions-overview.md)は、ワークフローとサーキットの状態を管理するのに最適です。 他のサービスも同様に機能しますが、この例ではロジック アプリを使用します。 ロジック アプリを使用すると、関数の実行の一時停止や再起動など、サーキット ブレーカー パターンを実装するために必要な制御機能が使用できます。
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) または [Durable Functions](./durable/durable-functions-overview.md) は、ワークフローとサーキットの状態を管理するのに最適です。 他のサービスも同様に機能しますが、この例ではロジック アプリを使用します。 ロジック アプリを使用すると、関数の実行の一時停止や再起動など、サーキット ブレーカー パターンを実装するために必要な制御機能が使用できます。
 
 ### <a name="define-a-failure-threshold-across-instances"></a>インスタンス間での失敗のしきい値の定義
 
@@ -123,7 +123,7 @@ Azure Logic Apps には、さまざまなサービスへの組み込みコネク
 ## <a name="resources"></a>リソース
 
 - [信頼できるイベント処理のサンプル](https://github.com/jeffhollan/functions-csharp-eventhub-ordered-processing)
-- [Azure Durable Functions サーキット ブレーカー](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
+- [Azure Durable Entity サーキット ブレーカー](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
 
 ## <a name="next-steps"></a>次のステップ
 

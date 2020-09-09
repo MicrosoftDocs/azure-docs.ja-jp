@@ -6,12 +6,13 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 5608d71c4a91c9b46b8ed7de13c9d4c06a3f195f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: da0c3284b42be6d9054b7386839004b57d8ca274
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82194603"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935740"
 ---
 # <a name="azure-signalr-service-authentication"></a>Azure SignalR Service の認証
 
@@ -54,7 +55,7 @@ GitHub を通じて提供される OAuth 認証 API の詳細については、�
 
 1. Web ブラウザーを開き、`https://github.com` に移動してアカウントにサインインします。
 
-2. アカウントで **[Settings]\(設定\)**  >  **[Developer settings]\(開発者向け設定\)** に移動し、 **[OAuth Apps]\(OAuth アプリ\)** の下の **[Register a new application]\(新しいアプリケーションの登録\)** または *[New OAuth App]\(新しい OAuth アプリ\)* をクリックします。
+2. アカウントで **[Settings]\(設定\)**  >  **[Developer settings]\(開発者向け設定\)** に移動し、 *[OAuth Apps]\(OAuth アプリ\)* の下の **[Register a new application]\(新しいアプリケーションの登録\)** または **[New OAuth App]\(新しい OAuth アプリ\)** をクリックします。
 
 3. 新しい OAuth アプリには次の設定を使用し、 **[アプリケーションの登録]** をクリックします。
 
@@ -67,8 +68,10 @@ GitHub を通じて提供される OAuth 認証 API の詳細については、�
 
 4. 新しい OAuth アプリの登録が完了したら、次のコマンドを使用して、*クライアント ID* と*クライアント シークレット*を Secret Manager に追加します。 *Your_GitHub_Client_Id* と *Your_GitHub_Client_Secret* を実際の OAuth アプリの値に置き換えます。
 
-        dotnet user-secrets set GitHubClientId Your_GitHub_Client_Id
-        dotnet user-secrets set GitHubClientSecret Your_GitHub_Client_Secret
+    ```dotnetcli
+    dotnet user-secrets set GitHubClientId Your_GitHub_Client_Id
+    dotnet user-secrets set GitHubClientSecret Your_GitHub_Client_Secret
+    ```
 
 ## <a name="implement-the-oauth-flow"></a>OAuth フローを実装する
 
@@ -76,9 +79,11 @@ GitHub を通じて提供される OAuth 認証 API の詳細については、�
 
 1. 最新の *Microsoft.AspNetCore.Authentication.Cookies* および *AspNet.Security.OAuth.GitHub* パッケージへの参照を追加し、すべてのパッケージを復元します。
 
-        dotnet add package Microsoft.AspNetCore.Authentication.Cookies -v 2.1.0-rc1-30656
-        dotnet add package AspNet.Security.OAuth.GitHub -v 2.0.0-rc2-final
-        dotnet restore
+    ```dotnetcli
+    dotnet add package Microsoft.AspNetCore.Authentication.Cookies -v 2.1.0-rc1-30656
+    dotnet add package AspNet.Security.OAuth.GitHub -v 2.0.0-rc2-final
+    dotnet restore
+    ```
 
 1. *Startup.cs* を開き、次の名前空間に `using` ステートメントを追加します。
 
@@ -345,19 +350,25 @@ GitHub を通じて提供される OAuth 認証 API の詳細については、�
 
 2. .NET Core CLI を使用してアプリケーションをビルドし、コマンド シェルで次のコマンドを実行します。
 
-        dotnet build
+    ```dotnetcli
+    dotnet build
+    ```
 
 3. ビルドが正常に完了したら、次のコマンドを実行して、Web アプリをローカルで実行します。
 
-        dotnet run
+    ```dotnetcli
+    dotnet run
+    ```
 
     既定では、アプリはポート 5000 でローカルにホストされます。
 
-        E:\Testing\chattest>dotnet run
-        Hosting environment: Production
-        Content root path: E:\Testing\chattest
-        Now listening on: http://localhost:5000
-        Application started. Press Ctrl+C to shut down.
+    ```output
+    E:\Testing\chattest>dotnet run
+    Hosting environment: Production
+    Content root path: E:\Testing\chattest
+    Now listening on: http://localhost:5000
+                    Application started. Press Ctrl+C to shut down.
+    ```
 
 4. ブラウザー ウィンドウを起動して、`http://localhost:5000` に移動します。 上部の **[here]** リンクをクリックして、GitHub にログインします。
 

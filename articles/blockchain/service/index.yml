@@ -10,12 +10,12 @@ metadata:
   author: PatAltimore
   ms.author: patricka
   ms.date: 11/04/2019
-  ms.openlocfilehash: 216dbd52531807d471066b01151fba841df308b6
-  ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+  ms.openlocfilehash: 186841ae1bad51fbeee42c97a68f4ab19803f6d4
+  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/23/2020
-  ms.locfileid: "82084976"
+  ms.lasthandoff: 07/23/2020
+  ms.locfileid: "87076977"
 landingContent:
 - title: Azure Blockchain Service について
   linkLists:
@@ -108,4 +108,4 @@ landingContent:
   - linkListType: reference
     links:
     - text: REST API
-      url: https://docs.microsoft.com/rest/api/blockchain
+      url: /rest/api/blockchain

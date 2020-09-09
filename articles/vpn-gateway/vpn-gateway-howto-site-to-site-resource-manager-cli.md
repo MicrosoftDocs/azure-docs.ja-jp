@@ -1,19 +1,19 @@
 ---
 title: 'オンプレミス ネットワークを仮想ネットワークに接続する: サイト間 VPN:CLI'
-description: パブリック インターネットを経由したオンプレミスのネットワークから Azure 仮想ネットワークへの IPsec 接続を作成する手順。 これらの手順は、CLI を使用してクロスプレミスのサイト間 VPN Gateway 接続を作成する際に役立ちます。
+description: CLI を使用し、オンプレミスのネットワークから Azure 仮想ネットワークへのパブリック インターネット経由の IPsec サイト間 VPN Gateway 接続を作成します。
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
-ms.date: 10/18/2018
+ms.topic: how-to
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6d28a5a37be2947ea6cc7019d2b3cc73932c60d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb7afa9afb72ce16213fd15953b6c82d0fddfeb5
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75779112"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401250"
 ---
 # <a name="create-a-virtual-network-with-a-site-to-site-vpn-connection-using-cli"></a>CLI を使用したサイト間 VPN 接続を持つ仮想ネットワークの作成
 

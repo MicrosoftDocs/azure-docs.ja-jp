@@ -5,15 +5,15 @@ services: private-link
 author: malopMSFT
 ms.service: private-link
 ms.topic: overview
-ms.date: 02/27/2020
+ms.date: 06/18/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 48ce72ee501252e35388f958b5c2e166edc2678f
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 908d9386f08c5de863d1d435c54d65cb85feef7a
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196164"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181665"
 ---
 # <a name="what-is-azure-private-link"></a>Azure Private Link とは 
 Azure Private Link を使用すると、お使いの仮想ネットワーク内の[プライベート エンドポイント](private-endpoint-overview.md)経由で Azure PaaS サービス (Azure Storage、SQL Database など) と Azure でホストされている顧客所有の、またはパートナー サービスにアクセスできます。
@@ -40,33 +40,37 @@ Azure Private Link には次のような利点があります。
 ## <a name="availability"></a>可用性 
  次の表に、Private Link サービスと、それらを使用可能なリージョンの一覧を示します。 
 
-|サポートされているサービス  |対応リージョン | Status  |
-|:-------------------|:-----------------|:--------|
-|Standard Azure Load Balancer の背後にある Private Link サービス | すべてのパブリック リージョン  | GA <br/> [詳細情報](https://docs.microsoft.com/azure/private-link/private-link-service-overview) |
-| Azure Storage        |  すべてのパブリック リージョン       | GA <br/> [詳細情報](/azure/storage/common/storage-private-endpoints)  |
-| Azure Data Lake Storage Gen2        |  すべてのパブリック リージョン      | GA <br/> [詳細情報](/azure/storage/common/storage-private-endpoints)  |
-|  Azure SQL データベース         | すべてのパブリック リージョン      |   GA <br/> [詳細情報](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
-|Azure Synapse Analytics (SQL Data Warehouse)| すべてのパブリック リージョン |GA <br/> [詳細情報](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
-|Azure Cosmos DB|  すべてのパブリック リージョン |GA <br/> [詳細情報](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
-|  Azure Database for PostgreSQL - 単一サーバー         | すべてのパブリック リージョン      |   GA <br/> [詳細情報](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
-|  Azure Database for MySQL         | すべてのパブリック リージョン      |   GA <br/> [詳細情報](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)     |
-|  Azure Database for MariaDB         | すべてのパブリック リージョン      |   GA <br/> [詳細情報](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |
-|  Azure Key Vault         | すべてのパブリック リージョン      |   GA   <br/> [詳細情報](https://docs.microsoft.com/azure/key-vault/private-link-service)   |
-|Azure Kubernetes Service - Kubernetes API | すべてのパブリック リージョン      |   GA   <br/> [詳細情報](https://docs.microsoft.com/azure/aks/private-clusters)   |
-|Azure Search | すべてのパブリック リージョン |   GA   <br/> [詳細情報](https://docs.microsoft.com/azure/search/search-security-overview#endpoint-access)    |
-|Azure Container Registry | すべてのパブリック リージョン      |   GA   <br/> [詳細情報](https://docs.microsoft.com/azure/container-registry/container-registry-private-link)   |
-|Azure App Configuration | すべてのパブリック リージョン      |   プレビュー   |
-|Azure Backup | すべてのパブリック リージョン     |   GA   <br/> [詳細情報](https://docs.microsoft.com/azure/backup/private-endpoints)   |
-|Azure Event Hub | すべてのパブリック リージョン      |    GA   <br/> [詳細情報](https://docs.microsoft.com/azure/event-hubs/private-link-service)  |
-|Azure Service Bus | すべてのパブリック リージョン      |  GA   <br/> [詳細情報](https://docs.microsoft.com/azure/service-bus-messaging/private-link-service)    |
-|Azure Relay | すべてのパブリック リージョン      |   プレビュー <br/> [詳細情報](https://docs.microsoft.com/azure/service-bus-relay/private-link-service)  |
-|Azure Event Grid| すべてのパブリック リージョン       |   GA   <br/> [詳細情報](https://docs.microsoft.com/azure/event-grid/network-security) |
-|Azure Web Apps | 米国東部、米国西部 2、米国中南部      |   プレビュー   <br/> [詳細情報](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
-|Azure Machine Learning | 米国東部、米国西部 2、米国中南部      |   プレビュー   <br/> [詳細情報](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
-| IoT Hub | すべてのパブリック リージョン    |   プレビュー   <br/> [詳細情報](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |
-| Azure SignalR | 米国東部、米国西部 2、米国中南部      |   プレビュー   <br/> [詳細情報](https://aka.ms/asrs/privatelink)   |
+|サポートされているサービス  |対応リージョン | その他の注意点 | Status  |
+|:-------------------|:-----------------|:----------------|:--------|
+|Standard Azure Load Balancer の背後にある Private Link サービス | すべてのパブリック リージョン<br/> すべての Government リージョン  | Standard Load Balancer でサポートされます | GA <br/> [詳細情報](https://docs.microsoft.com/azure/private-link/private-link-service-overview) |
+| Azure Storage       |  すべてのパブリック リージョン       |  アカウントの種類 General Purpose V2 でサポートされます | GA <br/> [詳細情報](/azure/storage/common/storage-private-endpoints)  |
+| Azure Data Lake Storage Gen2        |  すべてのパブリック リージョン      |  アカウントの種類 General Purpose V2 でサポートされます | GA <br/> [詳細情報](/azure/storage/common/storage-private-endpoints)  |
+|  Azure SQL データベース         | すべてのパブリック リージョン <br/> すべての Government リージョン      |  プロキシの[接続ポリシー](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policyhttps://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy)についてサポートされます | GA <br/> [詳細情報](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
+|Azure Synapse Analytics (SQL Data Warehouse)| すべてのパブリック リージョン <br/> すべての Government リージョン |  プロキシの[接続ポリシー](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policyhttps://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy)についてサポートされます |GA <br/> [詳細情報](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
+|Azure Cosmos DB|  すべてのパブリック リージョン<br/> すべての Government リージョン | |GA <br/> [詳細情報](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
+|  Azure Database for PostgreSQL - 単一サーバー         | すべてのパブリック リージョン <br/> すべての Government リージョン     | General Purpose とメモリ最適化の価格レベルでサポートされます | GA <br/> [詳細情報](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
+|  Azure Database for MySQL         | すべてのパブリック リージョン<br/> すべての Government リージョン      |  | GA <br/> [詳細情報](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)     |
+|  Azure Database for MariaDB         | すべてのパブリック リージョン<br/> すべての Government リージョン     |  | GA <br/> [詳細情報](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |
+|  Azure Key Vault         | すべてのパブリック リージョン<br/> すべての Government リージョン      |  | GA   <br/> [詳細情報](https://docs.microsoft.com/azure/key-vault/private-link-service)   |
+|Azure Kubernetes Service - Kubernetes API | すべてのパブリック リージョン      |  | GA   <br/> [詳細情報](https://docs.microsoft.com/azure/aks/private-clusters)   |
+|Azure Search | すべてのパブリック リージョン <br/> すべての Government リージョン | プライベート モードのサービスでサポートされます | GA   <br/> [詳細情報](https://docs.microsoft.com/azure/search/search-security-overview#endpoint-access)    |
+|Azure Container Registry | すべてのパブリック リージョン<br/> すべての Government リージョン    | コンテナー レジストリの Premium レベルでサポートされます。 [レベルについてはここをクリック](https://docs.microsoft.com/azure/container-registry/container-registry-skus)| GA   <br/> [詳細情報](https://docs.microsoft.com/azure/container-registry/container-registry-private-link)   |
+|Azure App Configuration | すべてのパブリック リージョン      |  | プレビュー   |
+|Azure Backup | すべてのパブリック リージョン<br/> すべての Government リージョン   |  | GA   <br/> [詳細情報](https://docs.microsoft.com/azure/backup/private-endpoints)   |
+|Azure Event Hub | すべてのパブリック リージョン<br/>すべての Government リージョン      |   | GA   <br/> [詳細情報](https://docs.microsoft.com/azure/event-hubs/private-link-service)  |
+|Azure Service Bus | すべてのパブリック リージョン<br/>すべての Government リージョン  | Azure Service Bus の Premium レベルでサポートされます。 [レベルについてはここをクリック](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-premium-messaging) | GA   <br/> [詳細情報](https://docs.microsoft.com/azure/service-bus-messaging/private-link-service)    |
+|Azure Relay | すべてのパブリック リージョン      |  | プレビュー <br/> [詳細情報](https://docs.microsoft.com/azure/service-bus-relay/private-link-service)  |
+|Azure Event Grid| すべてのパブリック リージョン<br/> すべての Government リージョン       |  | GA   <br/> [詳細情報](https://docs.microsoft.com/azure/event-grid/network-security) |
+|Azure Web Apps | すべてのパブリック リージョン      | PremiumV2 Windows および Linux とエラスティック Premium 機能でサポートされています  | プレビュー   <br/> [詳細情報](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
+|Azure Machine Learning | 米国東部、米国中南部、米国西部 2      |  | プレビュー   <br/> [詳細情報](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
+| Azure Automation  | すべてのパブリック リージョン |  | プレビュー | |
+| Azure IoT Hub | すべてのパブリック リージョン    |  | GA   <br/> [詳細情報](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |
+| Azure SignalR | 米国東部、米国西部 2、米国中南部      |  | プレビュー   <br/> [詳細情報](https://aka.ms/asrs/privatelink)   |
+| Azure Monitor <br/>(ログ分析と Application Insights) | すべてのパブリック リージョン      |  | GA   <br/> [詳細情報](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)   | 
+| Azure File Sync | すべてのパブリック リージョン      | |   GA   <br/> [詳細情報](https://docs.microsoft.com/azure/storage/files/storage-sync-files-networking-endpoints?tabs=azure-portal)   |
+| Azure Batch | 米国東部、米国西部 2、米国中南部、米国中西部、フランス中部、東アジア、英国南部、US Gov バージニア、US Gov アリゾナ  | | GA <br/> [詳細情報](https://docs.microsoft.com/azure/batch/private-connectivity) |
 
-最新情報については、[Azure 仮想ネットワークの更新情報ページ](https://azure.microsoft.com/updates/?product=virtual-network)をご覧ください。
+最新情報については、[Azure Private Link の更新情報ページ](https://azure.microsoft.com/updates/?product=private-link)をご覧ください。
 
 ## <a name="logging-and-monitoring"></a>ログ記録と監視
 

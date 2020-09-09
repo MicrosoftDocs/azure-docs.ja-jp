@@ -1,32 +1,32 @@
 ---
 title: Microsoft AppSource と Azure Marketplace の比較
-description: この記事では、Microsoft の商業マーケットプレースのネットショップ (Microsoft AppSource と Azure Marketplace) の違いについて説明します。
-author: dsindona
+description: この記事では、Microsoft の商業マーケットプレースのオンライン ストア (Microsoft AppSource と Azure Marketplace) の違いについて説明します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/14/2020
-ms.author: dsindona
-ms.openlocfilehash: 78d77ce176c07aed22433f29365b2d338ea32c03
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 10560d1407d4e9f899578d6d4eb9cdf9b7fe7dc9
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414570"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607473"
 ---
 # <a name="comparing-microsoft-appsource-and-azure-marketplace"></a>Microsoft AppSource と Azure Marketplace の比較
 
-Microsoft の商業マーケットプレースには、[Microsoft AppSource](https://appsource.microsoft.com) と [Azure Marketplace](https://azuremarketplace.microsoft.com) が含まれます。 それぞれのネットショップが固有の顧客の要件や異なる対象者にサービスを提供するため、適切な顧客がお客様のソリューションやサービスを利用できるようにすることができます。
+Microsoft の商業マーケットプレースには、[Microsoft AppSource](https://appsource.microsoft.com) と [Azure Marketplace](https://azuremarketplace.microsoft.com) が含まれます。 それぞれのオンライン ストアが固有の顧客要件や異なる対象者に対してサービスを提供するため、適切な顧客が自社のソリューションまたはサービスを利用できるようにすることができます。
 
-## <a name="understanding-the-differences-between-storefronts"></a>ネットショップ間の相違点の概要
+## <a name="understanding-the-differences-between-online-stores"></a>オンライン ストア間の相違点の概要
 
-ネットショップを選択するには、まずオファーの対象者を特定します。 複数のネットショップで対象ユーザーをターゲティングしている場合、複数のネットショップで販売するために一度に公開できます。
+オンライン ストアを選択するには、まずオファーの対象者を特定します。 複数のオンライン ストアで対象ユーザーにターゲット設定をしている場合は、一度公開すれば、複数のストアで販売を行うことができます。
 
 | Azure Marketplace | AppSource |
 |:--- |:--- |
 | IT プロフェッショナルと開発者 | ビジネス ユーザーとビジネスの意思決定者 |
 
-次の表では、ネットショップを使用するメリットを説明します。
+次の表では、オンライン ストアを使用するメリットを説明しています。
 
 | メリット | Azure Marketplace | AppSource |
 |:--- |:--- | :--- |

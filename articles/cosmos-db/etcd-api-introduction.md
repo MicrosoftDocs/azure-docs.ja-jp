@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 16aac5c765c36c49919685ee58e8034786ddf1ae
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 208f0d73b4c8bb11adc9c73796ebc6a622f5ed50
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797354"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85118170"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-etcd-api-preview"></a>Azure Cosmos DB の etcd API (プレビュー) の概要
 
@@ -31,7 +31,7 @@ Azure Cosmos DB は etcd バージョン 3 のワイヤ プロトコルを実装
 
 次の図は、Kubernetes クラスターのコンポーネントを示しています。 クラスター マスターでは、API Server はローカルにインストールされた etcd ではなく Azure Cosmos DB etcd API を使用します。 
 
-![etcd ワイヤ プロトコルを実装する Azure Cosmos DB](./media/etcd-api-introduction/etcd-api-wire-protocol.png)
+:::image type="content" source="./media/etcd-api-introduction/etcd-api-wire-protocol.png" alt-text="etcd ワイヤ プロトコルを実装する Azure Cosmos DB" border="false":::
 
 ## <a name="key-benefits"></a>主な利点
 

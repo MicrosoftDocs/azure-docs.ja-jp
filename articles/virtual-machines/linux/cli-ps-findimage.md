@@ -3,15 +3,15 @@ title: Azure CLI を使用した Linux VM イメージの選択
 description: Azure CLI を使用して Marketplace VM イメージの発行元、プラン、SKU、バージョンを決定する方法について説明します。
 author: cynthn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 0026c70a3a1a6b5e635e6b43e74b557d4218e6d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 34f43d51bf0df488e04605f7f7c77e9c6dcfe9a4
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79226803"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374084"
 ---
 # <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Azure CLI を使用して Azure Marketplace の Linux VM イメージを見つける
 

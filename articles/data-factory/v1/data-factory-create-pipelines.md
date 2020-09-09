@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: f93bea240ee3f139c9be84199d116f9f3f231261
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 62da43879b581d6737eee1310cf642e9692051de
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236407"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85248447"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory のパイプラインとアクティビティ
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -34,7 +34,7 @@ ms.locfileid: "79236407"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>概要
-データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 パイプラインは、1 つのタスクを連携して実行するアクティビティの論理的なグループです。 パイプライン内の複数のアクティビティは、データに対して実行するアクションを定義します。 たとえば、コピー アクティビティを使用して、オンプレミス SQL Server から Azure Blob Storage にデータをコピーできます。 次に、Azure HDInsight クラスターで Hive スクリプトを実行する Hive アクティビティを使用し、Blob ストレージのデータを処理/変換して出力データを生成します。 最後に、2 番目のコピー アクティビティを使用して、ビジネス インテリジェンス (BI) レポート ソリューションが構築されている Azure SQL Data Warehouse に出力データをコピーします。
+データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 パイプラインは、1 つのタスクを連携して実行するアクティビティの論理的なグループです。 パイプライン内の複数のアクティビティは、データに対して実行するアクションを定義します。 たとえば、コピー アクティビティを使用して、SQL Server データベースから Azure Blob Storage にデータをコピーすることができます。 次に、Azure HDInsight クラスターで Hive スクリプトを実行する Hive アクティビティを使用し、Blob ストレージのデータを処理/変換して出力データを生成します。 最後に、2 番目のコピー アクティビティを使用して、ビジネス インテリジェンス (BI) レポート ソリューションが構築されている Azure SQL Data Warehouse に出力データをコピーします。
 
 アクティビティは 0 個以上の入力[データセット](data-factory-create-datasets.md)を受け取り、1 個以上の出力[データセット](data-factory-create-datasets.md)を生成できます。 次の図は、Data Factory でのパイプライン、アクティビティ、データセットの関係を示しています。
 
@@ -94,7 +94,7 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 
 | タグ | 説明 | 必須 |
 | --- | --- | --- |
-| name |パイプラインの名前。 パイプラインが実行するアクションを表す名前を指定します。 <br/><ul><li>最大文字数：260文字</li><li>文字、数字、またはアンダースコア (\_) で始まる必要があります</li><li>次の文字は使用できません: "."、"+"、"?"、"/"、"<"、">"、"\*"、"%"、"&"、":"、"\\"</li></ul> |はい |
+| name |パイプラインの名前。 パイプラインが実行するアクションを表す名前を指定します。 <br/><ul><li>最大文字数: 260</li><li>文字、数字、またはアンダースコア (\_) で始まる必要があります</li><li>次の文字は使用できません: "."、"+"、"?"、"/"、"<"、">"、"\*"、"%"、"&"、":"、"\\"</li></ul> |はい |
 | description | パイプラインの用途を説明するテキストを指定します。 |はい |
 | activities | **activities** セクションでは、1 つまたは複数のアクティビティを定義できます。 activities JSON 要素の詳細については、次のセクションを参照してください。 | はい |
 | start | パイプラインの開始日時。 [ISO 形式](https://en.wikipedia.org/wiki/ISO_8601)にする必要があります。 (例: `2016-10-14T16:32:41Z`)。 <br/><br/>東部標準時などの現地時間を指定できます。 たとえば、`2016-02-27T06:00:00-05:00` は、東部標準時で午前 6 時です。<br/><br/>start プロパティと end プロパティで、パイプラインの有効期間を指定します。 出力スライスは、この有効期間にのみ生成されます。 |いいえ<br/><br/>end プロパティの値を指定する場合は、start プロパティの値も指定する必要があります。<br/><br/>パイプラインを作成するには、開始時間と終了時間の両方が空でもかまいません。 パイプラインを実行できる有効期間を設定するには、両方の値を指定する必要があります。 パイプラインの作成時に開始時間と終了時間を指定しない場合、後で Set-AzDataFactoryPipelineActivePeriod コマンドレットを使用して設定できます。 |
@@ -132,7 +132,7 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 
 | タグ | 説明 | 必須 |
 | --- | --- | --- |
-| name | アクティビティの名前。 アクティビティが実行するアクションを表す名前を指定します。 <br/><ul><li>最大文字数：260文字</li><li>文字、数字、またはアンダースコア (\_) で始まる必要があります</li><li>次の文字は使用できません："."、"+"、"?"、"/"、"<"、">"、"*"、"%"、"&"、":"、"\\"</li></ul> |はい |
+| name | アクティビティの名前。 アクティビティが実行するアクションを表す名前を指定します。 <br/><ul><li>最大文字数: 260</li><li>文字、数字、またはアンダースコア (\_) で始まる必要があります</li><li>次の文字は使用できません："."、"+"、"?"、"/"、"<"、">"、"*"、"%"、"&"、":"、"\\"</li></ul> |はい |
 | description | アクティビティの用途を説明するテキスト。 |はい |
 | type | アクティビティの種類。 アクティビティの種類については、[データ移動アクティビティ](#data-movement-activities)に関するセクションと、[データ変換アクティビティ](#data-transformation-activities)に関するセクションを参照してください。 |はい |
 | inputs |アクティビティで使用される入力テーブル<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |はい |
@@ -147,16 +147,16 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 
 | プロパティ | 使用できる値 | Default value | 説明 |
 | --- | --- | --- | --- |
-| concurrency |整数 <br/><br/>最大値: 10 |1 |アクティビティの同時実行の数。<br/><br/>異なるスライスで実行できる並列アクティビティ実行の数を決定します。 たとえば、アクティビティが大量のデータを処理する必要がある場合、コンカレンシーの値を大きくするとデータ処理が速くなります。 |
+| concurrency |Integer <br/><br/>最大値: 10 |1 |アクティビティの同時実行の数。<br/><br/>異なるスライスで実行できる並列アクティビティ実行の数を決定します。 たとえば、アクティビティが大量のデータを処理する必要がある場合、コンカレンシーの値を大きくするとデータ処理が速くなります。 |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |処理されるデータ スライスの順序を決定します。<br/><br/>たとえば、2 個のスライス (午後 4 時と午後 5 時の実行) があり、どちらも実行が保留されているとします。 executionPriorityOrder を NewestFirst に設定すると、午後 5 時のスライスが最初に処理されます。 同様に、executionPriorityORder を OldestFIrst に設定すると、午後 4 時のスライスが処理されます。 |
-| retry |整数<br/><br/>最大値は 10 |0 |スライスのデータ処理が失敗としてマークされるまでの再試行回数。 データ スライスのアクティビティの実行は、指定された再試行回数まで再試行されます。 再試行は、障害発生後にできるだけ早く行われます。 |
-| timeout |TimeSpan |00:00:00 |アクティビティのタイムアウト。 例： 00:10:00 (タイムアウトが 10 分であることを意味します)<br/><br/>値が指定されていない場合、または値が 0 の場合は、タイムアウトは無期限です。<br/><br/>スライスのデータ処理時間がタイムアウト値を超えた場合、処理は取り消され、システムは処理の再試行を試みます。 再試行の回数は、retry プロパティで指定します。 タイムアウトが発生すると、ステータスは TimedOut に設定されます。 |
-| delay |TimeSpan |00:00:00 |スライスのデータ処理を開始する前の遅延時間を指定します。<br/><br/>データ スライスのアクティビティの実行は、予想実行時刻を Delay だけ過ぎてから開始します。<br/><br/>例: 00:10:00 (10 分の遅延を意味します) |
-| longRetry |整数<br/><br/>最大値: 10 |1 |スライスの実行が失敗になるまでの、長い再試行の回数。<br/><br/>longRetry の試行は longRetryInterval の間隔で行われます。 再試行間隔の時間を指定する必要がある場合は、longRetry を使用します。 Retry と longRetry の両方を指定すると、各 longRetry に Retry が含まれ、最大再試行回数は Retry * longRetry になります。<br/><br/>たとえば、アクティビティ ポリシーに次のような設定があるとします。<br/>Retry: 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>実行するスライスは 1 つだけ (ステータスは Waiting)、アクティビティ実行は毎回失敗するとします。 最初に 3 つの連続する試行があります。 試行するたびに、スライスの状態は Retry になります。 最初の 3 つの試行が終わると、スライスの状態は LongRetry になります。<br/><br/>1 時間 (longRetryInteval の値) が経過した後、再度 3 回連続して試行されます。 その後、スライスの状態は Failed になり、それ以上再試行は行われません。 したがって、全部で 6 回試行されます。<br/><br/>いずれかの実行が成功すると、スライスの状態は Ready になり、それ以上再試行は行われません。<br/><br/>longRetry は、依存するデータがいつ到着するかわからない場合、またはデータ処理が行われる環境全体が当てにならない場合などに使用します。 このような場合、連続して再試行しても意味がなく、時間をおくと成功することがあります。<br/><br/>注意: longRetry または longRetryInterval に大きい値を設定しないでください。 通常、大きな値は、その他のシステムの問題があることを意味します。 |
+| retry |Integer<br/><br/>最大値は 10 |0 |スライスのデータ処理が失敗としてマークされるまでの再試行回数。 データ スライスのアクティビティの実行は、指定された再試行回数まで再試行されます。 再試行は、障害発生後にできるだけ早く行われます。 |
+| timeout |TimeSpan |00:00:00 |アクティビティのタイムアウト。 例:00:10:00 (10 分のタイムアウトを示す)<br/><br/>値が指定されていない場合、または値が 0 の場合は、タイムアウトは無期限です。<br/><br/>スライスのデータ処理時間がタイムアウト値を超えた場合、処理は取り消され、システムは処理の再試行を試みます。 再試行の回数は、retry プロパティで指定します。 タイムアウトが発生すると、ステータスは TimedOut に設定されます。 |
+| delay |TimeSpan |00:00:00 |スライスのデータ処理を開始する前の遅延時間を指定します。<br/><br/>データ スライスのアクティビティの実行は、予想実行時刻を Delay だけ過ぎてから開始します。<br/><br/>例:00:10:00 (10 分の遅延を示す) |
+| longRetry |Integer<br/><br/>最大値: 10 |1 |スライスの実行が失敗になるまでの、長い再試行の回数。<br/><br/>longRetry の試行は longRetryInterval の間隔で行われます。 再試行間隔の時間を指定する必要がある場合は、longRetry を使用します。 Retry と longRetry の両方を指定すると、各 longRetry に Retry が含まれ、最大再試行回数は Retry * longRetry になります。<br/><br/>たとえば、アクティビティ ポリシーに次のような設定があるとします。<br/>Retry: 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>実行するスライスは 1 つだけ (ステータスは Waiting)、アクティビティ実行は毎回失敗するとします。 最初に 3 つの連続する試行があります。 試行するたびに、スライスの状態は Retry になります。 最初の 3 つの試行が終わると、スライスの状態は LongRetry になります。<br/><br/>1 時間 (longRetryInteval の値) が経過した後、再度 3 回連続して試行されます。 その後、スライスの状態は Failed になり、それ以上再試行は行われません。 したがって、全部で 6 回試行されます。<br/><br/>いずれかの実行が成功すると、スライスの状態は Ready になり、それ以上再試行は行われません。<br/><br/>longRetry は、依存するデータがいつ到着するかわからない場合、またはデータ処理が行われる環境全体が当てにならない場合などに使用します。 このような場合、連続して再試行しても意味がなく、時間をおくと成功することがあります。<br/><br/>注意: longRetry または longRetryInterval に大きい値を設定しないでください。 通常、大きな値は、その他のシステムの問題があることを意味します。 |
 | longRetryInterval |TimeSpan |00:00:00 |長い再試行の間の遅延 |
 
 ## <a name="sample-copy-pipeline"></a>コピー パイプラインのサンプル
-次のサンプル パイプラインでは、 **Copy** in the **アクティビティ** 型のアクティビティが 1 つあります。 このサンプルでは、[コピー アクティビティ](data-factory-data-movement-activities.md)が、Azure BLOB Storage から Azure SQL データベースにデータをコピーします。
+次のサンプル パイプラインでは、**Copy** in the **アクティビティ**型のアクティビティが 1 つあります。 このサンプルでは、[コピー アクティビティ](data-factory-data-movement-activities.md)により、Azure の BLOB ストレージから Azure SQL Database にデータをコピーします。
 
 ```json
 {
@@ -207,10 +207,10 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 * アクティビティの入力を **InputDataset** に設定し、出力を **OutputDataset** に設定します。 JSON でのデータセットの定義の詳細については、[データセット](data-factory-create-datasets.md)に関する記事を参照してください。
 * **typeProperties** セクションでは、ソースの種類として **BlobSource** が指定され、シンクの種類として **SqlSink** が指定されています。 データ ストアとの間でのデータの移動については、「[データ移動アクティビティ](#data-movement-activities)」セクションで、ソースまたはシンクとして使用するデータ ストアをクリックしてください。
 
-このパイプライン作成の完全なチュートリアルについては、 [Blob Storage から SQL Database へのデータ コピーのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
+このパイプラインを作成する完全なチュートリアルについては、「[チュートリアル: Blob Storage から SQL Database にデータをコピーする方法のチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 
 ## <a name="sample-transformation-pipeline"></a>変換パイプラインのサンプル
-次のサンプル パイプラインでは、 **HDInsightHive** in the **アクティビティ** 型のアクティビティが 1 つあります。 このサンプルでは、 [HDInsight Hive アクティビティ](data-factory-hive-activity.md) が、Azure HDInsight Hadoop クラスターで Hive スクリプト ファイルを実行して、Azure BLOB ストレージからデータを変換します。
+次のサンプル パイプラインでは、**HDInsightHive** in the **アクティビティ**型のアクティビティが 1 つあります。 このサンプルでは、 [HDInsight Hive アクティビティ](data-factory-hive-activity.md) が、Azure HDInsight Hadoop クラスターで Hive スクリプト ファイルを実行して、Azure BLOB ストレージからデータを変換します。
 
 ```json
 {
@@ -265,7 +265,7 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 
 **typeProperties** セクションは、変換アクティビティごとに異なります。 変換アクティビティでサポートされる typeProperties については、[データ変換アクティビティ](#data-transformation-activities)の表で変換アクティビティをクリックしてください。
 
-このパイプライン作成する完全なチュートリアルについては、「 [チュートリアル: Hadoop クラスターを使用してデータを処理する最初のパイプラインを作成する](data-factory-build-your-first-pipeline.md)」を参照してください。
+このパイプラインを作成する完全なチュートリアルについては、「[チュートリアル: Hadoop クラスターを使用してデータを処理する最初のパイプラインを作成する](data-factory-build-your-first-pipeline.md)」を参照してください。
 
 ## <a name="multiple-activities-in-a-pipeline"></a>パイプライン内の複数アクティビティ
 前の 2 つのサンプル パプラインには 1 つのアクティビティしか含まれていません。 パイプラインに複数のアクティビティを含めることができます。

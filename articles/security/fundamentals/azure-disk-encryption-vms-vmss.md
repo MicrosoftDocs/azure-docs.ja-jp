@@ -1,18 +1,18 @@
 ---
 title: 仮想マシンおよび仮想マシン スケール セット向けの Azure Disk Encryption
-description: この記事では、Azure Disk Encryption の概要を示します
+description: 仮想マシン (VM) と VM スケール セットに対する Azure Disk Encryption について説明します。 Azure Disk Encryption は、Linux と Windows の両方の VM で動作します。
 author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 10/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: c881b2b9743766e4d35e6cb05f6f3469803850bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 21194bf2fe76a7eb0ee034d4a502c20ee3032dd9
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062121"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543675"
 ---
 # <a name="azure-disk-encryption-for-virtual-machines-and-virtual-machine-scale-sets"></a>仮想マシンおよび仮想マシン スケール セット向けの Azure Disk Encryption
 

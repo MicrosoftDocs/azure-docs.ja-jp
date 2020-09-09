@@ -10,14 +10,14 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 01/15/2020
+ms.date: 05/28/2020
 ms.author: curtand
-ms.openlocfilehash: 3deb59b04f3c0ba90e270bc064e3ece3c21229b3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: e460f3fd383286b1e61a979b87a9dfa09f272313
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739608"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799028"
 ---
 # <a name="register-your-verification-method-info-to-reset-your-own-password"></a>確認方法の情報を登録して自分のパスワードをリセットする
 
@@ -26,7 +26,7 @@ ms.locfileid: "83739608"
 自分の情報を登録して自分のパスワードをリセットできるためには、管理者によってこの機能が有効にされている必要があります。 **[パスワードを忘れた場合]** オプションが表示されない場合は、管理者が組織に対してこの機能を有効にしていないことを意味します。 これが不適切と思われる場合は、ヘルプ デスクに問い合わせてください。
 
 >[!Important]
->この記事は、セルフサービス パスワード リセットのためにサインアップを使用しようとしているユーザーを対象としています。 つまり、自分の職場または学校のパスワード (alain@contoso.com など) を、管理者の助けを借りることなくリセットできるようになることを意味します。 管理者が従業員またはその他のユーザーのためにセルフサービス パスワード リセットをオンにする方法を探している場合、「[Azure AD のパスワード リセットのセルフサービスをデプロイする](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment)」やその他の記事を参照してください。
+>この記事は、セルフサービス パスワード リセットのためにサインアップを使用しようとしているユーザーを対象としています。 つまり、自分の職場または学校のパスワード (alain@contoso.com など) を、管理者の助けを借りることなくリセットできるようになることを意味します。 管理者が従業員またはその他のユーザーのためにセルフサービス パスワード リセットをオンにする方法を探している場合、「[Azure AD のパスワード リセットのセルフサービスをデプロイする](../authentication/howto-sspr-deployment.md)」やその他の記事を参照してください。
 
 ## <a name="set-up-your-password-reset-verification-method"></a>パスワード リセットの検証方法を設定する
 

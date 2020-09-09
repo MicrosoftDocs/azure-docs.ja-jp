@@ -1,20 +1,20 @@
 ---
 title: クイックスタート - Java から Azure Cosmos DB を使用してドキュメント データベースを作成する
 description: このクイックスタートでは、Azure Cosmos DB SQL API への接続とクエリに使用できる Java コード サンプルについて説明します
-author: SnehaGunda
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 10/31/2019
-ms.author: sngun
-ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 1d818957daa53efc856a345a4886e814fdaab6f3
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: 474e8152341aeb5e05af1859e531810f2be31e7c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858144"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322807"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>クイック スタート:Azure Cosmos DB SQL API データを管理する Java アプリを作成する
 
@@ -22,12 +22,16 @@ ms.locfileid: "82858144"
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [.NET V4](create-sql-api-dotnet-V4.md)
-> * [Java](create-sql-api-java.md)
+> * [Java SDK v4](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-このクイックスタートでは、Azure portal から Azure Cosmos DB の SQL API アカウントを作成して管理し、また GitHub からクローンされた Java アプリを使用します。 まず、Azure portal を使用して Azure Cosmos DB SQL API アカウントを作成し、SQL Java SDK を使用して Java アプリケーションを作成します。さらに Java アプリケーションを使用して Cosmos DB アカウントにリソースを追加します。 Azure Cosmos DB は、マルチモデル データベース サービスです。グローバルな分散と水平方向のスケーリング機能を備えたドキュメント データベースやテーブル データベース、キーと値のデータベース、グラフ データベースをすばやく作成し、クエリを実行することができます。
+このクイックスタートでは、Azure portal から Azure Cosmos DB の SQL API アカウントを作成して管理し、また GitHub からクローンされた Java アプリを使用します。 まず、Azure portal を使用して Azure Cosmos DB SQL API アカウントを作成し、SQL Java SDK を使用して Java アプリケーションを作成します。さらに Java アプリケーションを使用して Cosmos DB アカウントにリソースを追加します。 Azure Cosmos DB は、マルチモデル データベース サービスです。グローバルな分散と水平方向のスケーリング機能により、ドキュメント データベースやテーブル データベース、キーと値のデータベース、グラフ データベースをすばやく作成し、クエリを実行することができます。
+
+> [!IMPORTANT]  
+> このクイックスタートは Azure Cosmos DB Java SDK v4 のみを対象としています。 詳細については、Azure Cosmos DB Java SDK v4 [リリース ノート](sql-api-sdk-java-v4.md)、[Maven リポジトリ](https://mvnrepository.com/artifact/com.azure/azure-cosmos)、Azure Cosmos DB Java SDK v4 [パフォーマンスに関するヒント](performance-tips-java-sdk-v4-sql.md)、Azure Cosmos DB Java SDK v4 [トラブルシューティング ガイド](troubleshoot-java-sdk-v4-sql.md) を参照してください。 v4 より前のバージョンを現在使用している場合、v4 にアップグレードするには、[Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) ガイドを参照してください。
+>
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,9 +42,9 @@ ms.locfileid: "82858144"
 
 ## <a name="introductory-notes"></a>概要
 
-"*Cosmos DB アカウントの構造:* "  API またはプログラミング言語に関係なく、Cosmos DB "*アカウント*" には 0個以上の "*データベース*" が含まれます。"*データベース*" (DB) には 0 個以上の "*コンテナー*" が含まれます。また、次の図に示すように、"*コンテナー*" には 0 個以上の項目が含まれます。
+"*Cosmos DB アカウントの構造:* " API またはプログラミング言語に関係なく、Cosmos DB "*アカウント*" には 0個以上の "*データベース*" が含まれます。"*データベース*" (DB) には 0 個以上の "*コンテナー*" が含まれます。また、次の図に示すように、"*コンテナー*" には 0 個以上の項目が含まれます。
 
-![Azure Cosmos アカウントのエンティティ](./media/databases-containers-items/cosmos-entities.png)
+:::image type="content" source="./media/databases-containers-items/cosmos-entities.png" alt-text="Azure Cosmos アカウントのエンティティ" border="false":::
 
 データベース、コンテナー、項目の詳細については、[こちら](databases-containers-items.md)を参照してください。 "*プロビジョニング済みスループット*" や "*パーティション キー*" など、いくつかの重要なプロパティが、コンテナーのレベルで定義されています。 
 

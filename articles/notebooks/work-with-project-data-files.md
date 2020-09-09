@@ -3,18 +3,18 @@ title: プロジェクトと Azure Notebooks プレビューを使用したデ�
 description: Azure Notebooks プレビュー プロジェクトに外部ソースからデータを取り込む方法と、プロジェクトからデータをエクスポートする方法について説明します。
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: e1d4a52ab7f4ad2ca3438af4bc87bec0b79f34d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b3669128582d3bdd6a3c4506a040856ab7b07e9a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75646978"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85834116"
 ---
 # <a name="work-with-data-files-in-azure-notebooks-preview-projects"></a>Azure Notebooks プレビュー プロジェクトでデータ ファイルを操作する
 
-データは、多くの Jupyter ノートブック、特にデータ サイエンスのために使用されるノートブックには必要不可欠なものです。 Azure Notebooks では、さまざまなソースからプロジェクトに簡単にインポートし、ノートブックからそのデータを使用することができます。 ノートブックで、プロジェクトに保存されるデータを生成することもできます。ユーザーはそのデータを他の場所で使用するためにダウンロードできます。
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+データは、多くの Jupyter ノートブック、特にデータ サイエンスのために使用されるノートブックには必要不可欠なものです。 Azure Notebooks では、さまざまなソースからプロジェクトに簡単にインポートし、ノートブックからそのデータを使用することができます。 ノートブックで、プロジェクトに保存されるデータを生成することもできます。ユーザーはそのデータを他の場所で使用するためにダウンロードできます。
 
 実行中のノートブック内の **[データ]** メニューにも **[アップロード]** と **[ダウンロード]** コマンドが用意されています。これらのコマンドでは、プロジェクト内のファイルだけでなく、現在のノートブック セッション用の一時ファイルも処理できます。
 

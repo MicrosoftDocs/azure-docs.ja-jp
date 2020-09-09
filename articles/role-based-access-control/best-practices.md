@@ -14,10 +14,10 @@ ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 053e86f3493c7a11a3cbbaad0871e45345697878
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82735336"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Azure RBAC のベスト プラクティス

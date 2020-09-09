@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 2df36d80aea34da1693cecde524d239abd2bb04a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f5409fea1cdbbc35e9068fae6b3ba7fbc2a95580
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100245"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547394"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS docker コンテナーのインストールと実行
 
@@ -26,7 +26,7 @@ Language Understanding (LUIS) コンテナーは、トレーニング済みま�
 
 [![Cognitive Services のコンテナーのデモ](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -53,7 +53,7 @@ LUIS コンテナーを実行するには、次の前提条件を確認してく
 
 ### <a name="container-requirements-and-recommendations"></a>コンテナーの要件と推奨事項
 
-このコンテナーでは、以下の設定に関して最小値と推奨値がサポートされます。
+次の表は、コンテナー ホストの最小値と推奨値の一覧です。 要件は、トラフィック量によって変わる場合があります。
 
 |コンテナー| 最小値 | 推奨 | TPS<br>(最小、最大)|
 |-----------|---------|-------------|--|
@@ -130,13 +130,13 @@ LUIS [ポータル](https://www.luis.ai)には、トレーニング済みアプ�
 
 ### <a name="export-published-apps-package-from-luis-portal"></a>LUIS ポータルから発行済みアプリのパッケージをエクスポートする
 
-発行済みアプリのパッケージは、 **[My apps]\(マイ アプリ\)** 一覧ページから入手できます。
+発行済みアプリのパッケージは、 **[マイ アプリ]** 一覧ページから入手できます。
 
 1. LUIS [ポータル](https://www.luis.ai)にサインオンします。
 1. 一覧でアプリ名の左側にあるチェック ボックスをオンにします。
-1. 一覧の上にあるコンテキスト ツール バーから **[Export]\(エクスポート\)** 項目を選択します。
+1. 一覧の上にあるコンテキスト ツール バーから **[エクスポート]** 項目を選択します。
 1. **[Export for container (GZIP)]\(コンテナー用にエクスポート (GZIP)\)** を選択します。
-1. **[Production slot]\(運用スロット\)** または **[Staging slot]\(ステージング スロット\)** の環境を選択します。
+1. **[運用スロット]** または **[ステージング スロット]** の環境を選択します。
 1. ブラウザーからパッケージがダウンロードされます。
 
 ![アプリ ページの [エクスポート] メニューからコンテナー用の発行済みパッケージをエクスポートする](./media/luis-container-how-to/export-published-package-for-container.png)
@@ -147,10 +147,10 @@ LUIS [ポータル](https://www.luis.ai)には、トレーニング済みアプ�
 
 1. LUIS [ポータル](https://www.luis.ai)にサインオンします。
 1. 一覧でアプリを選択します。
-1. アプリのナビゲーション バーで **[Manage]\(管理\)** を選択します。
-1. 左側のナビゲーション バーで **[Versions]\(バージョン\)** を選択します。
+1. アプリのナビゲーション バーで **[管理]** を選択します。
+1. 左側のナビゲーション バーで **[バージョン]** を選択します。
 1. 一覧でバージョン名の左側にあるチェック ボックスをオンにします。
-1. 一覧の上にあるコンテキスト ツール バーから **[Export]\(エクスポート\)** 項目を選択します。
+1. 一覧の上にあるコンテキスト ツール バーから **[エクスポート]** 項目を選択します。
 1. **[Export for container (GZIP)]\(コンテナー用にエクスポート (GZIP)\)** を選択します。
 1. ブラウザーからパッケージがダウンロードされます。
 

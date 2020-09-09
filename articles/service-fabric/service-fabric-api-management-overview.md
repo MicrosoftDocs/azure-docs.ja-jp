@@ -5,16 +5,16 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: 2a331715d4e4538cfdda8d958ff549a81b627b79
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bbde23dd888d179917f123d00745fb7d0099c2d2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76028550"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259304"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Azure Service Fabric と API Management の概要
 
-通常、クラウド アプリケーションには、ユーザー、デバイス、またはその他のアプリケーションに単一の受信ポイントを提供するフロントエンド ゲートウェイが必要です。 Service Fabric では、[ASP.NET Core アプリケーション](service-fabric-reliable-services-communication-aspnetcore.md)などの任意のステートレス サービスをゲートウェイとして使用できますが、[Event Hubs](https://docs.microsoft.com/azure/event-hubs/)、[IoT Hub](https://docs.microsoft.com/azure/iot-hub/)、[Azure API Management](https://docs.microsoft.com/azure/api-management/) など、トラフィック受信用に設計された別のサービスを使用することもできます。
+通常、クラウド アプリケーションには、ユーザー、デバイス、またはその他のアプリケーションに単一の受信ポイントを提供するフロントエンド ゲートウェイが必要です。 Service Fabric では、[ASP.NET Core アプリケーション](service-fabric-reliable-services-communication-aspnetcore.md)などの任意のステートレス サービスをゲートウェイとして使用できますが、[Event Hubs](../event-hubs/index.yml)、[IoT Hub](../iot-hub/index.yml)、[Azure API Management](../api-management/index.yml) など、トラフィック受信用に設計された別のサービスを使用することもできます。
 
 この記事では、Azure API Management を Service Fabric アプリケーションへのゲートウェイとして使用する方法の概要を示します。 API Management は Service Fabric と直接統合されるので、バックエンドの Service Fabric サービスへのルーティング規則を豊富に備えた API を公開することができます。
 

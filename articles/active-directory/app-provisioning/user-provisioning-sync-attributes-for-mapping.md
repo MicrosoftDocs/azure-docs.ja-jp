@@ -2,20 +2,20 @@
 title: マッピングのために Azure AD に属性を同期する
 description: オンプレミスの Active Directory から Azure AD に属性を同期する方法を説明します。 SaaS アプリへのユーザー プロビジョニングを構成する際は、ディレクトリの拡張機能を使用して、既定では同期されないソース属性を追加します。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/13/2019
-ms.author: mimart
-ms.openlocfilehash: 4b51d74d188f8f1c99f2075000e8fd91e70a81a4
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.author: kenwith
+ms.openlocfilehash: 00c4dec329456409bc8d5b77dca72f25daf9f5c7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593150"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84781075"
 ---
 # <a name="sync-an-attribute-from-your-on-premises-active-directory-to-azure-ad-for-provisioning-to-an-application"></a>アプリケーションにプロビジョニングするためにオンプレミスの Active Directory から Azure AD に属性を同期する
 

@@ -5,19 +5,19 @@ author: cynthn
 ms.service: virtual-machines-windows
 ms.subservice: sizes
 ms.workload: infrastructure
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: cynthn
-ms.openlocfilehash: f456af143ac6ec21bcb9b0c3ec75635c51f748ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4860422fefb5a95fe41912b4898f02867f7b3aeb
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82099888"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832248"
 ---
 # <a name="resize-a-windows-vm"></a>Windows VM のサイズ変更
 
-この記事では、VM を別の [VM サイズ](sizes.md)に移行する方法について説明します。
+この記事では、VM を別の [VM サイズ](../sizes.md)に移行する方法について説明します。
 
 仮想マシン (VM) を作成した後、VM のサイズを変更することで、VM をスケールアップまたはスケールダウンできます。 場合によっては、先に VM の割り当てを解除する必要があります。 これは、現在 VM をホストしているハードウェア クラスターで新しいサイズを使用できない場合に発生する可能性があります。
 
@@ -99,32 +99,24 @@ Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 可用性セット内のすべての VM を停止します。
    
 ```powershell
-$as = Get-AzAvailabilitySet -ResourceGroupName $resourceGroup
-$vmIds = $as.VirtualMachinesReferences
-foreach ($vmId in $vmIDs){
-    $string = $vmID.Id.Split("/")
-    $vmName = $string[8]
-    Stop-AzVM -ResourceGroupName $resourceGroup -Name $vmName -Force
-    } 
+$availabilitySetName = "<availabilitySetName>"
+$as = Get-AzAvailabilitySet -ResourceGroupName $resourceGroup -Name $availabilitySetName
+$virtualMachines = $as.VirtualMachinesReferences |  Get-AzResource | Get-AzVM
+$virtualMachines |  Stop-AzVM -Force -NoWait  
 ```
 
 可用性セット内の VM のサイズを変更して、再起動します。
    
 ```powershell
+$availabilitySetName = "<availabilitySetName>"
 $newSize = "<newVmSize>"
-$as = Get-AzAvailabilitySet -ResourceGroupName $resourceGroup
-$vmIds = $as.VirtualMachinesReferences
-  foreach ($vmId in $vmIDs){
-    $string = $vmID.Id.Split("/")
-    $vmName = $string[8]
-    $vm = Get-AzVM -ResourceGroupName $resourceGroup -Name $vmName
-    $vm.HardwareProfile.VmSize = $newSize
-    Update-AzVM -ResourceGroupName $resourceGroup -VM $vm
-    Start-AzVM -ResourceGroupName $resourceGroup -Name $vmName
-    }
+$as = Get-AzAvailabilitySet -ResourceGroupName $resourceGroup -Name $availabilitySetName
+$virtualMachines = $as.VirtualMachinesReferences |  Get-AzResource | Get-AzVM
+$virtualMachines | Foreach-Object { $_.HardwareProfile.VmSize = $newSize }
+$virtualMachines | Update-AzVM
+$virtualMachines | Start-AzVM
 ```
 
 ## <a name="next-steps"></a>次のステップ
 
-スケーラビリティを高めるには、複数の VM インスタンスを実行してスケール アウトします。詳細については、[仮想マシン スケール セットでのマシンの自動スケール](../../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md)に関するページを参照してください。
-
+スケーラビリティを高めるには、複数の VM インスタンスを実行してスケール アウトします。詳細については、[仮想マシン スケール セットでのマシンの自動スケール](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md)に関するページを参照してください。

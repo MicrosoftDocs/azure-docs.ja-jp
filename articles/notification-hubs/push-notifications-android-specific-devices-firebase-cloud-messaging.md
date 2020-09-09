@@ -12,17 +12,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-java
 ms.date: 04/30/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/30/2019
-ms.openlocfilehash: b7ee3afc2e8b9958a868c8c117262d2017c9b600
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7f7e21f9d7d470faccd40976c4bf508d8d8792dc
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80126875"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323606"
 ---
 # <a name="tutorial-send-notifications-to-specific-devices-using-notification-hubs-and-google-firebase-cloud-messaging"></a>チュートリアル:Notification Hubs と Google Firebase Cloud Messaging を使用して特定のデバイスに通知を送信する
 
@@ -117,7 +117,7 @@ ms.locfileid: "80126875"
 
     `main_activity.xml` のグラフィカル レイアウトは次の図のようになります。
 
-    ![][A1]
+    ![メイン アクティビティの X M L グラフィカル レイアウトがどのように表示されるかを示すエミュレーターのスクリーンショット。][A1]
 3. `MainActivity` クラスと同じパッケージ内にクラス `Notifications` を作成します。
 
     ```java
@@ -340,8 +340,8 @@ ms.locfileid: "80126875"
 [Use Notification Hubs to broadcast localized breaking news]: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
 [Notify users with Notification Hubs]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Mobile Service]: /develop/mobile/tutorials/get-started/
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-To for Windows Store]: https://msdn.microsoft.com/library/jj927172.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[Notification Hubs How-To for Windows Store]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Submit an app page]: https://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: https://go.microsoft.com/fwlink/p/?LinkId=262253

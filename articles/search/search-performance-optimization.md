@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 7c2857de0613be400f83544e1dabe079b7497bbd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5fd949466978714fe1dc0c4ccc67a3cb8f993314
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77212382"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934958"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Azure Cognitive Search のパフォーマンスのためのスケーリング
 
@@ -30,7 +30,7 @@ ms.locfileid: "77212382"
 
 1. 少ない QPS (1 秒あたりのクエリ数) から始め、あらかじめ定めた目標をクエリの待機時間が下回るまで、数を徐々に増やしながらテストを実行します。 これは、アプリケーションの普及に伴ってスケールの計画を立てる際に役立つ重要なベンチマークです。
 
-1. 可能な限り、HTTP 接続を再利用します。 Azure Cognitive Search .NET SDK を使用している場合、これはインスタンスまたは [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) インスタンスを再利用することを意味します。REST API を使用している場合は、1 つの HttpClient を再利用します。
+1. 可能な限り、HTTP 接続を再利用します。 Azure Cognitive Search .NET SDK を使用している場合、これはインスタンスまたは [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient) インスタンスを再利用することを意味します。REST API を使用している場合は、1 つの HttpClient を再利用します。
 
 1. インデックスのさまざまな部分で検索が行われるように、クエリ要求の内容を変更します。 同じ検索要求を継続的に実行すると、データのキャッシュによって、異なるクエリ セットを使用した場合よりもパフォーマンスが高く見えるようになるため、バリエーションを持たせることが重要です。
 
@@ -43,7 +43,7 @@ ms.locfileid: "77212382"
 + Azure Cognitive Search によって、バックグラウンドでインデックス作成タスクが実行されることはありません。 サービスがクエリとインデックス作成のワークロードを同時に処理する場合は、インデックス作成ジョブをクエリ テストに組み込むか、ピーク時を避けてインデックス作成ジョブを実行するオプションを調べることで、この点を考慮してください。
 
 > [!Tip]
-> ロード テスト ツールを利用し、現実的なクエリ負荷をシミュレートすることができます。 [Azure DevOps でロード テスト](https://docs.microsoft.com/azure/devops/test/load-test/get-started-simple-cloud-load-test?view=azure-devops)を試すか、次のいずれかの[代替案](https://docs.microsoft.com/azure/devops/test/load-test/overview?view=azure-devops#alternatives)を利用してください。
+> ロード テスト ツールを利用し、現実的なクエリ負荷をシミュレートすることができます。 [Azure DevOps でロード テスト](/azure/devops/test/load-test/get-started-simple-cloud-load-test?view=azure-devops)を試すか、次のいずれかの[代替案](/azure/devops/test/load-test/overview?view=azure-devops#alternatives)を利用してください。
 
 ## <a name="scale-for-high-query-volume"></a>大量のクエリに対応するスケーリング
 
@@ -99,7 +99,7 @@ Azure Cognitive Search では、リージョンとの間で Azure Cognitive Sear
 
 ### <a name="keep-data-synchronized-across-multiple-services"></a>複数のサービス間でデータの同期を維持する
 
-分散した Search サービスの同期を維持するには 2 つのオプションがあり、[Azure Cognitive Search インデクサー](search-indexer-overview.md)か、Push API ([Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/) とも呼ばれます) を使用します。  
+分散した Search サービスの同期を維持するには 2 つのオプションがあり、[Azure Cognitive Search インデクサー](search-indexer-overview.md)か、Push API ([Azure Cognitive Search REST API](/rest/api/searchservice/) とも呼ばれます) を使用します。  
 
 ### <a name="use-indexers-for-updating-content-on-multiple-services"></a>複数のサービス上のコンテンツ更新のためのインデクサーの使用
 
@@ -111,7 +111,7 @@ Azure Cognitive Search では、リージョンとの間で Azure Cognitive Sear
 
 ### <a name="use-rest-apis-for-pushing-content-updates-on-multiple-services"></a>複数のサービスでコンテンツの更新をプッシュするための REST API を使用する
 
-[Azure Cognitive Search インデックスの内容をプッシュ](https://docs.microsoft.com/rest/api/searchservice/update-index)するために、Azure Cognitive Search REST API を使用している場合は、更新が必要になるたびにすべての Search サービスに変更をプッシュすることで、さまざまな Search サービスの同期を維持できます。 コードでは、ある Search サービスの更新が失敗した場合でも、他のサービスでの成功は必ず処理してください。
+[Azure Cognitive Search インデックスの内容をプッシュ](/rest/api/searchservice/update-index)するために、Azure Cognitive Search REST API を使用している場合は、更新が必要になるたびにすべての Search サービスに変更をプッシュすることで、さまざまな Search サービスの同期を維持できます。 コードでは、ある Search サービスの更新が失敗した場合でも、他のサービスでの成功は必ず処理してください。
 
 ## <a name="leverage-azure-traffic-manager"></a>Azure Traffic Manager の活用
 

@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/01/2019
-ms.openlocfilehash: e2c9da9c1a37b087a31d1910094f51a39288c192
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 08/03/2020
+ms.openlocfilehash: e9c1651244eecb036ca18ad5dadfe23f48b2bce6
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416703"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529264"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Azure Data Factory を使用して QuickBooks Online からデータをコピーする (プレビュー)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -36,9 +36,7 @@ ms.locfileid: "81416703"
 
 QuickBooks Online から、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
-Azure Data Factory では接続を有効にする組み込みのドライバーが提供されるので、このコネクタを使用してドライバーを手動でインストールする必要はありません。
-
-現在、このコネクタでサポートされるのは 1.0a のみです。つまり、2017 年 7 月 17 日よりも前に作成されたアプリに対しては開発者アカウントを持つ必要があります。
+このコネクタでは、QuickBooks OAuth 2.0 認証がサポートされています。
 
 ## <a name="getting-started"></a>作業の開始
 
@@ -53,12 +51,13 @@ QuickBooks のリンクされたサービスでは、次のプロパティがサ
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**QuickBooks** に設定する必要があります | はい |
+| connectionProperties | QuickBooks への接続方法を定義するプロパティのグループ。 | はい |
+| ***`connectionProperties` の下:*** | | |
 | endpoint | QuickBooks Online サーバーのエンドポイント。 (つまり、quickbooks.api.intuit.com)  | はい |
-| companyId | 承認する QuickBooks の会社の会社 ID。 企業 ID を検索する方法については、「[How do I find my Company ID? (会社 ID の検索方法)](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551)」を参照してください。 | はい |
-| consumerKey | OAuth 1.0 認証用のコンシューマー キー。 | はい |
-| consumerSecret | OAuth 1.0 認証用のコンシューマー シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
-| accessToken | OAuth 1.0 認証のアクセス トークン。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
-| accessTokenSecret | OAuth 1.0 認証のアクセス トークン シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| companyId | 承認する QuickBooks の会社の会社 ID。 会社 ID を検索する方法については、[会社 ID の検索方法](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551)に関する記事を参照してください。 | はい |
+| consumerKey | OAuth 2.0 認証用のコンシューマー キー。 | はい |
+| consumerSecret | OAuth 2.0 認証用のコンシューマー シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| refreshToken | QuickBooks アプリケーションに関連付けられた OAuth 2.0 更新トークン。 詳細については、[こちら](https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0#obtain-oauth2-credentials-for-your-app)を参照してください。 更新トークンは、180 日後に有効期限が切れることに注意してください。 お客様は、更新トークンを定期的に更新する必要があります。 <br/>このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。| はい |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は、true です。  | いいえ |
 
 **例:**
@@ -69,22 +68,20 @@ QuickBooks のリンクされたサービスでは、次のプロパティがサ
     "properties": {
         "type": "QuickBooks",
         "typeProperties": {
-            "endpoint" : "quickbooks.api.intuit.com",
-            "companyId" : "<companyId>",
-            "consumerKey": "<consumerKey>",
-            "consumerSecret": {
-                "type": "SecureString",
-                "value": "<consumerSecret>"
-            },
-            "accessToken": {
-                 "type": "SecureString",
-                 "value": "<accessToken>"
-            },
-            "accessTokenSecret": {
-                 "type": "SecureString",
-                 "value": "<accessTokenSecret>"
-            },
-            "useEncryptedEndpoints" : true
+            "connectionProperties": {
+                "endpoint": "quickbooks.api.intuit.com",
+                "companyId": "<company id>",
+                "consumerKey": "<consumer key>", 
+                "consumerSecret": {
+                     "type": "SecureString",
+                     "value": "<clientSecret>"
+                },
+                "refreshToken": {
+                     "type": "SecureString",
+                     "value": "<refresh token>"
+                },
+                "useEncryptedEndpoints": true
+            }
         }
     }
 }

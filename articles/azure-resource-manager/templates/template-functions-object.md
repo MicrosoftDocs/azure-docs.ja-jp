@@ -3,12 +3,12 @@ title: テンプレート関数 - オブジェクト
 description: Azure Resource Manager テンプレートでオブジェクトを操作するために使用する関数について説明します。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 2f77cd85802a2ecb3670cfc6d6b36e5e852fb2a6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fede4d6c71e45b119e500d4c9c6f91765d052036
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231324"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84676796"
 ---
 # <a name="object-functions-for-arm-templates"></a>ARM テンプレート用のオブジェクト関数
 
@@ -44,7 +44,7 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートでオ�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "stringToTest": {
@@ -124,7 +124,7 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートでオ�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testArray": {
@@ -191,7 +191,7 @@ Resource Manager には、Azure Resource Manager (ARM) テンプレートでオ�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstObject": {
@@ -259,7 +259,7 @@ JSON オブジェクトにパラメーター値または変数を含める必要
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "jsonObject1": {
@@ -324,7 +324,7 @@ JSON オブジェクトにパラメーター値または変数を含める必要
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -402,7 +402,7 @@ JSON オブジェクトにパラメーター値または変数を含める必要
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstObject": {

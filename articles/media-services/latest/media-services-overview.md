@@ -4,7 +4,7 @@ titleSuffix: Azure Media Services
 description: Azure Media Services v3 の概要と、クイック スタート、チュートリアル、コード サンプルへのリンク。
 services: media-services
 documentationcenter: na
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 tags: ''
@@ -14,24 +14,26 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/09/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: mvc
-ms.openlocfilehash: bd3890757377525cf9c178866a2a2fbc0791b9de
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b11cd602850d23ac6ec37a9be51912adceb9afbc
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79461012"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267617"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure Media Services v3 の概要
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 クラウドベースのプラットフォームである Azure Media Services では、ブロードキャスト品質のビデオ ストリーミングを実現し、アクセス性と配信を強化し、コンテンツを分析するソリューションを構築できます。 アプリ開発者、コール センター、政府機関、またはエンターテイメント会社のいずれであっても、Media Services を利用すると、今日の最も一般的なモバイル デバイスとブラウザーを使用する多くのユーザーに、優れた品質のメディア エクスペリエンスを提供するアプリを作成できます。
 
 Media Services v3 SDK は [Media Services v3 OpenAPI の仕様 (Swagger)](https://aka.ms/ams-v3-rest-sdk) に基づいています。
 
 > [!NOTE]
-> 現時点では、[Azure portal](https://portal.azure.com/) を使用して、Media Services v3 の[ライブ イベント](live-events-outputs-concept.md)の管理、v3 の[資産](assets-concept.md)の表示 (管理ではない)、[API へのアクセスに関する情報の取得](access-api-portal.md)を行うことができます。 他のすべての管理タスク ([変換とジョブ](transforms-jobs-concept.md)や[コンテンツ保護](content-protection-overview.md)など) については、[REST API](https://docs.microsoft.com/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
+> 現在、[Azure portal](https://portal.azure.com/) を使用して、Media Services v3 の[ライブ イベント](live-events-outputs-concept.md)の管理、v3 の[資産](assets-concept.md)の表示 (管理ではない)、[API へのアクセスに関する情報の取得](./access-api-howto.md)を行うことができます。 他のすべての管理タスク ([変換とジョブ](transforms-jobs-concept.md)や[コンテンツ保護](content-protection-overview.md)など) については、[REST API](/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -47,14 +49,14 @@ Media Services のコンプライアンス、プライバシー、セキュリ�
 
 Media Services を使用すると、クラウドでさまざまなメディア ワークフローを構築できます。 Media Services でできることの例を次に示します。
 
-* 広範なブラウザーやデバイスで再生できるように、さまざまな形式のビデオを提供します。 さまざまなクライアント (モバイル デバイス、TV、PC など) にオンデマンドとライブ ストリーミングの両方を提供するには、ビデオ コンテンツとオーディオ コンテンツを適切にエンコードしてパッケージ化する必要があります。 このようなコンテンツを配信およびストリーミングする方法については、[ファイルのエンコードとストリーミングに関するクイック スタート](stream-files-dotnet-quickstart.md)をご覧ください。
+* 広範なブラウザーやデバイスで再生できるように、さまざまな形式のビデオを提供します。 さまざまなクライアント (モバイル デバイス、TV、PC など) にオンデマンドとライブ ストリーミングの両方を提供するには、ビデオ コンテンツとオーディオ コンテンツを適切にエンコードしてパッケージ化する必要があります。 このようなコンテンツを配信およびストリーミングする方法については、[ファイルのエンコードとストリームに関するクイック スタート](stream-files-dotnet-quickstart.md)を参照してください。
 * サッカー、野球、大学や高校のスポーツなど、多数のオンライン視聴者にライブ スポーツ イベントをストリーム配信します。
 * 町役場、市議会の会議、立法機関などの公開の会議やイベントをブロードキャストします。
 * 録画されたビデオやオーディオ コンテンツを分析します。 たとえば、より高い顧客満足度を実現するため、音声からテキストを抽出して、検索インデックスやダッシュボードを作成できます。 これにより、一般的な苦情、苦情の原因、その他の関連データに関する知見を引き出すことができます。
 * 顧客 (たとえば映画スタジオ) が独自の著作権所有作品のアクセスや使用を制限する必要がある場合は、サブスクリプション ビデオ サービスを作成して、DRM で保護されたコンテンツをストリーム配信します。
 * 飛行機、列車、自動車で再生するためのオフライン コンテンツを提供します。 顧客は、ネットワークから切断される可能性があるときは、携帯電話やタブレットにコンテンツをダウンロードして再生する必要があります。
-* 音声からのテキスト キャプション作成、多言語への翻訳などのために、Azure Media Services と [Azure Cognitive Services APIs](https://docs.microsoft.com/azure/?pivot=products&panel=ai) で教育用 E ラーニング ビデオ プラットフォームを実装します。
-* Azure Media Services を [Azure Cognitive Services APIs](https://docs.microsoft.com/azure/?pivot=products&panel=ai) と共に使用して、より広範な視聴者 (たとえば、聴覚障碍を持つ人や、別の言語で読みたい人など) に対応できるよう、ビデオに字幕とキャプションを追加します。
+* 音声からのテキスト キャプション作成、多言語への翻訳などのために、Azure Media Services と [Azure Cognitive Services APIs](../../index.yml?pivot=products&panel=ai) で教育用 E ラーニング ビデオ プラットフォームを実装します。
+* Azure Media Services を [Azure Cognitive Services APIs](../../index.yml?pivot=products&panel=ai) と共に使用して、より広範な視聴者 (たとえば、聴覚障碍を持つ人や、別の言語で読みたい人など) に対応できるよう、ビデオに字幕とキャプションを追加します。
 * 瞬間的高負荷 (製品発表イベントの開始時など) を処理しやすくする大規模なスケーリングを Azure CDN が実現できるようにします。
 
 ## <a name="how-can-i-get-started-with-v3"></a>v3 の利用を始める方法 
@@ -88,14 +90,14 @@ Media Services v3 を使用して、コンテンツのエンコードとパッ�
 
 ### <a name="samples"></a>サンプル
 
-[このサンプル ブラウザー](https://docs.microsoft.com/samples/browse/?products=azure-media-services)を使用して、Azure Media Services のコード サンプルを参照します。
+[このサンプル ブラウザー](/samples/browse/?products=azure-media-services)を使用して、Azure Media Services のコード サンプルを参照します。
 
 ### <a name="how-to-guides"></a>操作方法ガイド
 
 タスクの完了方法を示すコード サンプルを含むハウツー ガイド。 このセクションでは、多くの例を見つけることができます。 いくつかを次に示します。
 
-* [アカウントの作成 - CLI](create-account-cli-how-to.md)
-* [API へのアクセス - CLI](access-api-cli-how-to.md)
+* [アカウントの作成 - CLI](./create-account-howto.md)
+* [API へのアクセス - CLI](./access-api-howto.md)
 * [HTTPS をジョブの入力とするエンコード - .NET](job-input-from-http-how-to.md)  
 * [イベントの監視 - ポータル](monitor-events-portal-how-to.md)
 * [マルチ DRM を使用した動的な暗号化 - .NET](protect-with-drm.md) 

@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
 ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dd525973a8c8ba5bb3103126b4ddb5b6973590a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3a42cdfbf251e24ed2b59adca1a73b4dfe427a7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78205026"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420007"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールの設定を構成する
 
@@ -32,7 +32,7 @@ ms.locfileid: "78205026"
 1. [特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)のロールであるユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
 1. **[Azure AD Privileged Identity Management]** を開きます。 概要ページの上部にバナーが表示されている場合は、この記事の **[新しいバージョン]** タブの指示に従ってください。 それ以外の場合は、 **[以前のバージョン]** タブの指示に従ってください。
 
-  [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
+  [![[Azure AD] > [Privileged Identity Management] を選択します。](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 Azure AD ロールに対する要求を承認または拒否するには、この記事の手順に従ってください。
 

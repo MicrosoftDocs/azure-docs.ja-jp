@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: a411fc9a95bef595a8fc49cad77189bb88fb7661
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 77dc21b4a04ec5de440b1a17da4747a3dcc711f9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229055"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083720"
 ---
 # <a name="remove-servers-and-disable-protection"></a>サーバーの削除と保護の無効化
 
@@ -169,11 +169,11 @@ Hyper-V サイトには、VMM で管理されていない Hyper-V ホストが�
    - **[レプリケーションを無効にして削除 (推奨)]** - このオプションでは、レプリケートされたアイテムを Azure Site Recovery から削除し、マシンのレプリケーションを停止します。 オンプレミスの仮想マシン上のレプリケーション構成がクリーンアップされ、この保護されたサーバーに対する Site Recovery の請求が停止されます。
    - **[削除]** - このオプションは、ソース環境が削除されたか、アクセスできない (接続されていない) 場合にのみ使用します。 これを使用すると、レプリケートされたアイテムが Azure Site Recovery から削除されます (請求は停止されます)。 オンプレミスの仮想マシン上のレプリケーション構成はクリーンアップ**されません**。 
 
- > [!NOTE]
-     > **[削除]** オプションを選択した場合、オンプレミスの Hyper-V Server 上のレプリケーション設定をクリーンアップするには、次のスクリプトのセットを実行します。
+    > [!NOTE]
+    > **[削除]** オプションを選択した場合、オンプレミスの Hyper-V Server 上のレプリケーション設定をクリーンアップするには、次のスクリプトのセットを実行します。
 
-> [!NOTE]
-> VM を既にフェールオーバーしていて、それが Azure で実行されている場合は、保護を無効にしても、フェールオーバーされた VM は削除されず、影響を受けることもない点に注意してください。
+    > [!NOTE]
+    > VM を既にフェールオーバーしていて、それが Azure で実行されている場合は、保護を無効にしても、フェールオーバーされた VM は削除されず、影響を受けることもない点に注意してください。
 
 1. ソース Hyper-V ホスト サーバーで、仮想マシンのレプリケーションを削除します。 管理 PowerShell から次のスクリプトを実行します。SQLVM1 は仮想マシンの名前に置き換えます。
 
@@ -196,8 +196,11 @@ Hyper-V サイトには、VMM で管理されていない Hyper-V ホストが�
      > **[削除]** オプションを選択した場合、オンプレミスの Hyper-V Server 上のレプリケーション設定をクリーンアップするには、次のスクリプトを実行します。
 3. VMM コンソールから PowerShell を使用して、ソース VMM サーバーで次のスクリプトを実行します (管理者特権が必要です)。 プレースホルダー **SQLVM1** を仮想マシンの名前に置き換えます。
 
-        $vm = get-scvirtualmachine -Name "SQLVM1"
-        Set-SCVirtualMachine -VM $vm -ClearDRProtection
+    ```powershell
+    $vm = get-scvirtualmachine -Name "SQLVM1"
+    Set-SCVirtualMachine -VM $vm -ClearDRProtection
+    ```
+
 4. 上記の手順によって、VMM サーバーのレプリケーション設定がクリアされます。 Hyper-V ホスト サーバーで実行されている仮想マシンのレプリケーションを停止するには、このスクリプトを実行します。 SQLVM1 を仮想マシンの名前に、host01.contoso.com を Hyper-V ホスト サーバーの名前に置き換えます。
 
 ```powershell
@@ -220,17 +223,21 @@ Hyper-V サイトには、VMM で管理されていない Hyper-V ホストが�
 
 3. VMM コンソールから PowerShell を使用して、ソース VMM サーバーで次のスクリプトを実行します (管理者特権が必要です)。 プレースホルダー **SQLVM1** を仮想マシンの名前に置き換えます。
 
-        $vm = get-scvirtualmachine -Name "SQLVM1"
-        Set-SCVirtualMachine -VM $vm -ClearDRProtection
+    ```powershell
+    $vm = get-scvirtualmachine -Name "SQLVM1"
+    Set-SCVirtualMachine -VM $vm -ClearDRProtection
+    ```
+
 4. セカンダリ VMM サーバーで次のスクリプトを実行して、セカンダリ仮想マシンの設定をクリーンアップします。
 
-        $vm = get-scvirtualmachine -Name "SQLVM1"
-        Remove-SCVirtualMachine -VM $vm -Force
+    ```powershell
+    $vm = get-scvirtualmachine -Name "SQLVM1"
+    Remove-SCVirtualMachine -VM $vm -Force
+    ```
+
 5. セカンダリ VMM サーバーで、Hyper-V ホスト サーバー上の仮想マシンを更新し、セカンダリ VM が VMM コンソールで再検出されるようにします。
 6. 上記の手順によって、VMM サーバーのレプリケーション設定がクリアされます。 仮想マシンのレプリケーションを停止する場合は、プライマリとセカンダリの VM で次のスクリプトを実行します。 SQLVM1 を仮想マシンの名前に置き換えます。
 
-        Remove-VMReplication –VMName “SQLVM1”
-
-
-
-
+    ```powershell
+    Remove-VMReplication –VMName "SQLVM1"
+    ```

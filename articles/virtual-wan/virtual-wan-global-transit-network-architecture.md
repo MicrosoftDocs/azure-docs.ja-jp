@@ -1,19 +1,19 @@
 ---
 title: アーキテクチャ:グローバル転送ネットワーク アーキテクチャ
 titleSuffix: Azure Virtual WAN
-description: Virtual WAN のグローバル トランジット ネットワーク アーキテクチャについて説明します
+description: クラウド ワークロード間でユビキタスな Any-to-Any 接続を有効にすることで、Azure Virtual WAN でグローバル トランジット ネットワークを実現することについて説明します。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: article
-ms.date: 02/06/2020
+ms.topic: conceptual
+ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9515058bc78a2d56dc1734c046dac5d5b04f68d9
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 63a9c3a6c23d78411c04250359dac3c3aacde2ba
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81113178"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212704"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>グローバル トランジット ネットワーク アーキテクチャと Virtual WAN
 
@@ -47,7 +47,7 @@ Azure Virtual WAN アーキテクチャでは、Virtual WAN のハブは Azure �
 
 Virtual WAN を確立するには、スポーク (ブランチ、VNet、ユーザー) の数が最も多いリージョンに Virtual WAN ハブを 1 つ作成した後、他のリージョン内にあるスポークをハブに接続します。 これは、エンタープライズ フットプリントの大部分が 1 つのリージョン内にあってリモート スポークの数が少ない場合に適したオプションです。  
   
-## <a name="hub-to-hub-connectivity-preview"></a><a name="hubtohub"></a>ハブ間接続 (プレビュー)
+## <a name="hub-to-hub-connectivity"></a><a name="hubtohub"></a>ハブ間接続
 
 エンタープライズ クラウドのフットプリントは複数のクラウド リージョンにまたがることができ、物理サイトやユーザーに最も近いリージョンからクラウドにアクセスするのに最適です (待ち時間対応)。 グローバル トランジット ネットワーク アーキテクチャの重要な原則の 1 つは、すべてのクラウドとオンプレミスのネットワーク エンドポイントの間のリージョン間接続を有効にすることです。 つまり、あるリージョンのクラウドに接続されているブランチからのトラフィックは、[Azure のグローバル ネットワーク](https://azure.microsoft.com/global-infrastructure/global-network/)によって有効になるハブ間接続を使用して、異なるリージョンにある別のブランチまたは VNet に到達できます。
 
@@ -99,6 +99,9 @@ ExpressRoute Global Reach は、ExpressRoute に対するアドオン機能で�
 
 このオプションでは、企業は Azure バックボーンを利用してブランチを接続できます。 ただし、この機能を使用することはできますが、ブランチの接続に Azure Virtual WAN を使う場合とプライベート WAN を使う場合の利点を比較検討する必要があります。  
 
+> [!NOTE]
+> Virtual WAN 間でのブランチ間接続の無効化を構成すると、ブランチ間接続を無効にできます。 この構成によって、VPN (S2S と P2S) と Express Route 接続サイトの間のルート伝達がブロックされます。 この構成は、ブランチと VNet 間および VNet と VNet 間のルート伝達と接続には影響しません。 Azure portal を使用してこの設定を構成するには、次の手順を実行します。[Virtual WAN Configuration] (Virtual WAN 構成) メニューの [Setting:Branch-to-Branch - Disabled] (設定: ブランチとブランチ - 無効) を選択します。 
+
 ### <a name="remote-user-to-vnet-c"></a>リモート ユーザーと VNet (c)
 
 リモート ユーザー クライアントから Virtual WAN へのポイント対サイト接続を使用して、Azure へのセキュリティ保護された直接リモート アクセスを有効にすることができます。 エンタープライズのリモート ユーザーは、クラウドに戻るのに企業 VPN を使う必要がなくなります。
@@ -111,6 +114,15 @@ ExpressRoute Global Reach は、ExpressRoute に対するアドオン機能で�
 
 VNet 対 VNet トランジットを使うと、VNet を相互に接続し、複数の VNet に実装されている多層アプリケーションを相互接続できます。 必要に応じて、VNet ピアリングを使用して VNet を相互に接続でき、これは VWAN ハブ経由の転送が不要なシナリオに適している場合があります。
 
+
+## <a name="force-tunneling-and-default-route-in-azure-virtual-wan"></a><a name="DefaultRoute"></a>Azure Virtual WAN での強制トンネリングと既定のルート
+
+強制トンネリングを有効にするには、Virtual WAN の VPN、ExpressRoute、または Virtual Network 接続で既定のルートの有効化を構成します。
+
+仮想ハブは、仮想ネットワーク、サイト間 VPN、または ExpressRoute 接続に対し、学習した既定のルートを伝達します (既定の有効化フラグが、その接続で "有効" になっている場合)。 
+
+このフラグは、ユーザーが仮想ネットワーク接続、VPN 接続、または ExpressRoute 接続を編集するときに表示されます。 サイトまたは ExpressRoute 回線がハブに接続されると、このフラグは既定で無効になります。 VNet を仮想ハブに接続するための仮想ネットワーク接続が追加されたときは、既定で有効になります。 既定のルートの起点は Virtual WAN ハブではありません。Virtual WAN ハブにファイアウォールをデプロイした結果としてそのハブが既定のルートを既に学習している場合、または接続されている別のサイトで強制トンネリングが有効な場合に、既定のルートが伝達されます。
+
 ## <a name="security-and-policy-control"></a><a name="security"></a>セキュリティとポリシーの制御
 
 Azure Virtual WAN ハブにより、ハイブリッド ネットワーク上のすべてのネットワーク エンドポイントが相互接続され、すべてのトランジット ネットワーク トラフィックが認識される可能性があります。 VWAN ハブ内に Azure Firewall を展開し、クラウドベースのセキュリティ、アクセス、ポリシー制御を有効にすることにより、Virtual WAN ハブをセキュリティ保護付き仮想ハブに変換できます。 Virtual WAN ハブ内の Azure Firewall のオーケストレーションは、Azure Firewall Manager で実行できます。
@@ -120,6 +132,9 @@ Azure Virtual WAN ハブにより、ハイブリッド ネットワーク上の�
 ![Azure Firewall によるセキュリティ保護付き仮想ハブ](./media/virtual-wan-global-transit-network-architecture/figure5.png)
 
 **図 5:Azure Firewall によるセキュリティ保護付き仮想ハブ**
+
+> [!NOTE]
+> ハブ間のファイアウォールは現在サポートされていません。 ハブ間のトラフィックは、各ハブ内の Azure Firewall をバイパスして直接移動します。
 
 Virtual WAN に対する Azure Firewall では、次のグローバルなセキュリティ保護付きトランジット接続パスがサポートされています。 かっこ内の文字は図 5 に対応します。
 
@@ -133,10 +148,28 @@ VNet 対 VNet セキュリティ保護付きトランジットを使うと、VNe
 
 ### <a name="vnet-to-internet-or-third-party-security-service-i"></a>VNet 対インターネットまたはサードパーティ セキュリティ サービス (i)
 
-VNet 対インターネットまたはサードパーティのセキュリティ保護付きトランジットを使うと、VNet を、Virtual WAN ハブ内の Azure Firewall を介して、インターネットまたはサポートされているサードパーティのセキュリティ サービスに接続できます。
+VNet 対インターネットを使うと、VNet を Virtual WAN ハブ内の Azure Firewall を介してインターネットに接続できます。 サポートされているサードパーティのセキュリティ サービスを介したインターネットへのトラフィックは、Azure Firewall を経由しません。 Azure Firewall Manager を使用して、サポートされているサードパーティのセキュリティ サービスを介して Vnet 対インターネットのパスを構成できます。  
 
 ### <a name="branch-to-internet-or-third-party-security-service-j"></a>ブランチ対インターネットまたはサードパーティ セキュリティ サービス (i)
-ブランチ対インターネットまたはサードパーティのセキュリティ保護付きトランジットを使うと、ブランチを、Virtual WAN ハブ内の Azure Firewall を介して、インターネットまたはサポートされているサードパーティのセキュリティ サービスに接続できます。
+ブランチ対インターネットを使用すると、ブランチはVirtual WAN ハブ内の Azure Firewall を介してインターネットに接続できます。 サポートされているサードパーティのセキュリティ サービスを介したインターネットへのトラフィックは、Azure Firewall を経由しません。 Azure Firewall Manager を使用して、サポートされているサードパーティのセキュリティ サービスを介してブランチ対インターネットのパスを構成できます。 
+
+### <a name="how-do-i-enable-default-route-00000-in-a-secured-virtual-hub"></a>セキュリティ保護付き仮想ハブで既定のルート (0.0.0.0/0) を有効にする方法
+
+Virtual WAN ハブ (セキュリティ保護付き仮想ハブ) に展開された Azure Firewall は、すべてのブランチ (VPN または ExpressRoute によって接続)、スポーク Vnet およびユーザー (P2S VPN 経由で接続) に対して、インターネットまたは信頼されたセキュリティ プロバイダーへの既定のルーターとして構成できます。 この構成は Azure Firewall Manager を使用して行う必要があります。  Azure Firewall 経由のブランチ (ユーザーを含む) からのすべてのトラフィック、および Vnet 対インターネットを構成する方法については、「ハブへのトラフィックのルーティング」を参照してください。 
+
+これは次の 2 つの手順で構成されます。
+
+1. セキュリティ保護付き仮想ハブのルート設定メニューを使用して、インターネット トラフィック ルーティングを構成します。 ファイアウォール経由でインターネットにトラフィックを送信できる Vnet とブランチを構成します。
+
+2. ハブまたは信頼されたセキュリティ プロバイダーの Azure FW 経由でインターネット (0.0.0.0/0) にトラフィックをルーティングできる接続 (Vnet とブランチ) を構成します。 この手順により、既定のルートが、この接続を介して Virtual WAN ハブに接続されている、選択したブランチと Vnet に確実に伝達されます。 
+
+### <a name="force-tunneling-traffic-to-on-premises-firewall-in-a-secured-virtual-hub"></a>セキュリティ保護付き仮想ハブでのオンプレミスのファイアウォールへのトラフィックの強制トンネリング
+
+ブランチ (VPN または ER サイト) のいずれかから仮想ハブによって (BGP 経由で) 学習された既定のルートが既にある場合、この既定のルートは Azure Firewall Manager の設定から学習された既定のルートによってオーバーライドされます。 この場合、Vnet とブランチからハブに入ってきてインターネットに送信されるすべてのトラフィックは、Azure Firewall または信頼されたセキュリティ プロバイダーにルーティングされます。
+
+> [!NOTE]
+> 現在、Vnet、ブランチ、またはユーザーから送信されたインターネットへのトラフィックに対して、オンプレミスのファイアウォールまたは Azure Firewall (および信頼されたセキュリティ プロバイダー) を選択するオプションはありません。 Azure Firewall Manager の設定から学習した既定のルートが、いずれかのブランチから学習した既定のルートより常に優先されます。
+
 
 ## <a name="next-steps"></a>次のステップ
 

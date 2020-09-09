@@ -9,7 +9,7 @@
 - name: チュートリアル
   expanded: true
   items:
-    - name: 基本的なマネージド ドメインの作成
+    - name: マネージド ドメインの作成
       href: tutorial-create-instance.md
     - name: アプリ用の仮想ネットワークの構成
       href: tutorial-configure-networking.md
@@ -21,9 +21,11 @@
       href: tutorial-configure-ldaps.md
     - name: パスワード ハッシュ同期の構成
       href: tutorial-configure-password-hash-sync.md
-    - name: 高度なマネージド ドメインの作成
+    - name: レプリカ セットの作成 (プレビュー)
+      href: tutorial-create-replica-set.md
+    - name: カスタイマイズされたマネージド ドメインの作成
       href: tutorial-create-instance-advanced.md
-    - name: フォレストの信頼の作成 (プレビュー)
+    - name: フォレストの信頼の作成
       href: tutorial-create-forest-trust.md
 - name: サンプル
   items:
@@ -31,12 +33,18 @@
       href: powershell-create-instance.md
     - name: テンプレートを使用したマネージド ドメインの作成
       href: template-create-instance.md
+    - name: Azure AD PowerShell を使用して範囲指定された同期を構成する
+      href: powershell-scoped-synchronization.md
+    - name: Azure PowerShell を使用してリソース フォレストと信頼を作成する
+      href: create-resource-forest-powershell.md
 - name: 概念
   items:
     - name: 管理の基本
       href: administration-concepts.md
     - name: 一般的なデプロイ シナリオ
       href: scenarios.md
+    - name: レプリカ セット (プレビュー)
+      href: concepts-replica-sets.md
     - name: フォレストと信頼
       items:
         - name: リソース フォレスト
@@ -47,6 +55,8 @@
       href: synchronization.md
     - name: パスワード ハッシュ同期のしくみ
       href: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
+    - name: 仮想ネットワークに関する考慮事項
+      href: network-considerations.md
     - name: クラシック デプロイ移行のメリット
       href: concepts-migration-benefits.md
     - name: Azure Active Directory とは
@@ -63,10 +73,6 @@
           href: create-ou.md
         - name: グループの管理されたサービス アカウント (gMSA) の使用
           href: create-gmsa.md
-    - name: Azure AD DS を計画する
-      items:
-        - name: 仮想ネットワークに関する考慮事項
-          href: network-considerations.md
     - name: Azure AD DS を管理する
       items:
         - name: グループ ポリシーの管理
@@ -109,6 +115,8 @@
           href: join-rhel-linux-vm.md
         - name: Ubuntu Server
           href: join-ubuntu-linux-vm.md
+        - name: SUSE Linux Enterprise
+          href: join-suse-linux-vm.md
     - name: アプリケーションをデプロイする
       items:
         - name: Azure AD アプリケーション プロキシをデプロイする

@@ -2,16 +2,17 @@
 title: Application Insights を使用してライブ Azure Service Fabric アプリをプロファイルする
 description: Service Fabric アプリケーションに対して Profiler を有効にします
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 664d6eb377185613a1a5670daf6747b482c79d9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 317c02fe03a56ea3cd3a98b00f8a0080b3917108
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671615"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930283"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>Application Insights を使用してライブ Azure Service Fabric アプリケーションをプロファイルする
 
@@ -26,9 +27,9 @@ Application Insights Profiler は、Azure Diagnostics に付属しています�
 
 環境を設定するには、次の操作を実行します。
 
-1. プロファイラはWindows .NET Framework と .NET Core をサポートします。 .NET Framework を使用している場合は、[.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)以降を使用していることを確認してください。 配置されている OS が`Windows Server 2012 R2`以降であることを確認すれば十分です。 プロファイラーは、.NET Core 2.1 以降のアプリケーションをサポートします。
+1. プロファイラはWindows .NET Framework と .NET Core をサポートします。 .NET Framework を使用している場合は、[.NET Framework 4.6.1](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)以降を使用していることを確認してください。 配置されている OS が`Windows Server 2012 R2`以降であることを確認すれば十分です。 プロファイラーは、.NET Core 2.1 以降のアプリケーションをサポートします。
 
-1. デプロイ テンプレート ファイルで、[Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) の拡張機能を探します。
+1. デプロイ テンプレート ファイルで、[Azure Diagnostics](../platform/diagnostics-extension-overview.md) の拡張機能を探します。
 
 1. `WadCfg` の子要素として次の `SinksConfig` セクションを追加します。 `ApplicationInsightsProfiler` プロパティ値は、自分の Application Insights のインストルメンテーション キーに置き換えます。  
 
@@ -43,7 +44,7 @@ Application Insights Profiler は、Azure Diagnostics に付属しています�
       }
       ```
 
-      デプロイ テンプレートへの診断拡張機能の追加の詳細については、「[Windows VM と Azure Resource Manager テンプレートで監視と診断を利用する](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+      デプロイ テンプレートへの診断拡張機能の追加の詳細については、「[Windows VM と Azure Resource Manager テンプレートで監視と診断を利用する](../../virtual-machines/extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json)」を参照してください。
 
 1. Azure Resource Manager テンプレートを使用して、Service Fabric クラスターをデプロイします。  
   設定が正しい場合、Azure Diagnostics 拡張機能をインストールすると Application Insights Profiler がインストールされて有効になります。 

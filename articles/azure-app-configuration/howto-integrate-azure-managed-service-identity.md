@@ -1,22 +1,23 @@
 ---
-title: Azure マネージド ID を使用して認証する
+title: マネージド ID を使用して App Configuration にアクセスする
 titleSuffix: Azure App Configuration
-description: Azure マネージド ID を使用して Azure App Configuration に対して認証する
+description: マネージド ID を使用して Azure App Configuration に対して認証する
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
+ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: bf97a1eae758778efc8d800666af4a5fcb574429
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1efeeef09e7c228eb8fc14de52a6beb2e9ffffe
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80056837"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206836"
 ---
-# <a name="integrate-with-azure-managed-identities"></a>Azure マネージド ID との統合
+# <a name="use-managed-identities-to-access-app-configuration"></a>マネージド ID を使用して App Configuration にアクセスする
 
-Azure Active Directory [マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) によってクラウド アプリケーションのシークレット管理が簡単になります。 マネージド ID を使用すると、コードでは、それが実行される Azure サービス用に作成されたサービス プリンシパルを使用できます。 Azure Key Vault またはローカル接続文字列に格納された別の資格情報の代わりに、マネージド ID を使用します。 
+Azure Active Directory [マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) によってクラウド アプリケーションのシークレット管理が簡単になります。 マネージド ID を使用すると、コードでは、それが実行される Azure サービス用に作成されたサービス プリンシパルを使用できます。 Azure Key Vault またはローカル接続文字列に格納された別の資格情報の代わりに、マネージド ID を使用します。
 
 Azure App Configuration とその .NET Core、.NET Framework、および Java Spring のクライアント ライブラリには、マネージド ID サポートが組み込まれています。 これの使用は必須ではありませんが、マネージド ID によって、シークレットが含まれるアクセス トークンが不要になります。 コードはサービス エンドポイントのみを使用して App Configuration ストアにアクセスできます。 シークレットの流出させることなく、この URL をコードに直接埋め込むことができます。
 
@@ -26,7 +27,7 @@ Azure App Configuration とその .NET Core、.NET Framework、および Java Sp
 
 このチュートリアルの手順は、任意のコード エディターを使用して実行できます。 推奨のエディターは [Visual Studio Code](https://code.visualstudio.com/) です (Windows、macOS、および Linux プラットフォームで使用できます)。
 
-この記事では、次のことについて説明します。
+この記事では、次の方法について説明します。
 
 > [!div class="checklist"]
 > * App Configuration へのマネージド ID アクセスを許可する。
@@ -84,7 +85,7 @@ Azure App Configuration とその .NET Core、.NET Framework、および Java Sp
 
 1. App Configuration ストアのエンドポイントを検索します。 この URL は、Azure portal 内のストアの **[アクセスキー]** タブにリストされます。
 
-1. *appsettings.json* を開き、以下のスクリプトを追加します。 *\<service_endpoint>* を、角かっこも含めて、ご利用の App Configuration ストアへの URL に置き換えます。 
+1. *appsettings.json* を開き、以下のスクリプトを追加します。 *\<service_endpoint>* を、角かっこも含めて、ご利用の App Configuration ストアへの URL に置き換えます。
 
     ```json
     "AppConfig": {
@@ -183,6 +184,9 @@ Azure App Configuration とその .NET Core、.NET Framework、および Java Sp
 
     他の App Configuration キーと同様に Key Vault 参照にアクセスできるようになりました。 構成プロバイダーは、Key Vault に対して認証して値を取得するように構成した `KeyVaultClient` を使用します。
 
+> [!NOTE]
+> `ManagedIdentityCredential` では、マネージド ID 認証のみがサポートされます。 ローカル環境では機能しません。 コードをローカルで実行する場合、サービス プリンシパル認証もサポートしている `DefaultAzureCredential` の使用を検討してください。 詳細については、[こちらのリンク](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential)を参照してください。
+
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
 ## <a name="deploy-from-local-git"></a>ローカル Git からのデプロイ
@@ -218,7 +222,7 @@ az webapp deployment source config-local-git --name <app_name> --resource-group 
 
 ### <a name="deploy-your-project"></a>プロジェクトのデプロイ
 
-_ローカル ターミナル ウィンドウ_で、ローカル Git リポジトリに Azure リモートを追加します。 _\<url >_ を、「[Kudu でローカル Git を有効にする](#enable-local-git-with-kudu)」で取得した Git リモートの URL に置換します。
+_ローカル ターミナル ウィンドウ_で、ローカル Git リポジトリに Azure リモートを追加します。 _\<url>_ を、「[Kudu でローカル Git を有効にする](#enable-local-git-with-kudu)」で取得した Git リモートの URL に置換します。
 
 ```bash
 git remote add azure <url>
@@ -242,7 +246,7 @@ http://<app_name>.azurewebsites.net
 
 ## <a name="use-managed-identity-in-other-languages"></a>他の言語におけるマネージド ID の使用
 
-.NET Framework 用および Java Spring 用の App Configuration プロバイダーにも、マネージド ID に対する組み込みサポートがあります。 これらのプロバイダーのいずれかを構成するとき、完全な接続文字列の代わりに、ご自分のストアの URL エンドポイントを使用できます。 
+.NET Framework 用および Java Spring 用の App Configuration プロバイダーにも、マネージド ID に対する組み込みサポートがあります。 これらのプロバイダーのいずれかを構成するとき、完全な接続文字列の代わりに、ご自分のストアの URL エンドポイントを使用できます。
 
 たとえば、クイックスタートで作成された .NET Framework コンソールアプリを更新して、*App.config* ファイルで次の設定を指定できます。
 

@@ -1,106 +1,98 @@
 ---
-title: クイック スタート:サーバーを作成する - Azure CLI - Azure Database for PostgreSQL - Single Server
-description: Azure CLI (コマンド ライン インターフェイス) を使用して Azure Database for PostgreSQL - Single Server を作成するためのクイックスタート ガイド。
+title: クイック スタート:サーバーを作成する - Azure CLI - Azure Database for PostgreSQL - 単一サーバー
+description: このクイックスタート ガイドでは、Azure CLI を使用して、Azure Database for PostgreSQL サーバーを作成します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 06/25/2019
-ms.custom: mvc
-ms.openlocfilehash: de46eeb20f3c99eb7a459965d17e2dd55728a9db
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/25/2020
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 182226a0bb97c9239f1c0d0dc6e7d4d2b8bdbb1c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82146653"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798875"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Database for PostgreSQL - 単一サーバーを作成する
+# <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Database for PostgreSQL サーバーを作成する
 
-> [!TIP]
-> よりシンプルな [az postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) Azure CLI コマンド (現在はプレビュー段階) の使用を検討してください。 こちらの[クイック スタート](./quickstart-create-server-up-azure-cli.md) をお試しください。
-
-Azure Database for PostgreSQL は、高可用性 PostgreSQL データベースをクラウドで実行、管理、および拡張することができる、管理されたサービスです。 Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、Azure CLI を使用して、Azure Database for PostgreSQL サーバーを [Azure リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)に作成する方法を説明します。
-
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
+このクイックスタートでは、[Azure Cloud Shell](https://shell.azure.com) で [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) コマンドを使用して、単一の Azure Database for PostgreSQL サーバーを 5 分で作成する方法について説明します。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0 以降を実行していることが要件です。 インストールされているバージョンを確認するには、`az --version` コマンドを実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。 
+> [!TIP]
+> 現在プレビュー段階にあるよりシンプルな [az postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) Azure CLI コマンドの使用を検討してください。 こちらの[クイック スタート](./quickstart-create-server-up-azure-cli.md) をお試しください。
 
-CLI をローカルで実行している場合は、[az login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) コマンドを使用してアカウントにサインインする必要があります。 コマンド出力から、対応するサブスクリプション名の **ID** プロパティを書き留めておきます。
+## <a name="prerequisites"></a>前提条件
+この記事では、Azure CLI バージョン 2.0 以降をローカルで実行する必要があります。 インストールされているバージョンを確認するには、`az --version` コマンドを実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+
+[az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) コマンドを使用して、お使いのアカウントにログインする必要があります。 **id** プロパティに注意してください。これは、お使いの Azure アカウントの**サブスクリプション ID** を参照します。 
+
 ```azurecli-interactive
 az login
 ```
 
-複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 [az account set](/cli/azure/account) コマンドを使用して、アカウントの特定のサブスクリプション ID を選択します。 サブスクリプション ID プレースホルダーへのサブスクリプションを、**az login** 出力の **ID** プロパティに置き換えます。
-```azurecli-interactive
+[az account set](/cli/azure/account) コマンドを使用して、お使いのアカウントの特定のサブスクリプション ID を選択します。 **az login** 出力の **id** の値をメモしておいて、このコマンドの **subscription** 引数の値として使用します。 
+
+```azurecli
 az account set --subscription <subscription id>
 ```
 
-## <a name="create-a-resource-group"></a>リソース グループを作成する
+複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 お使いのすべてのサブスクリプションを取得するには、[az account list](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list) を使用します。
 
-[az group create](/cli/azure/group) コマンドで [Azure リソース グループ](../azure-resource-manager/management/overview.md)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。 一意の名前を指定する必要があります。 次の例では、`westus` の場所に `myresourcegroup` という名前のリソース グループを作成します。
+## <a name="create-an-azure-database-for-postgresql-server"></a>Azure Database for PostgreSQL サーバーの作成
+
+[az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) コマンドを使用して、[Azure リソース グループ](../azure-resource-manager/management/overview.md)を作成し、このリソース グループ内に PostgreSQL サーバーを作成します。 一意の名前を指定する必要があります。 次の例では、`westus` の場所に `myresourcegroup` という名前のリソース グループを作成します。
+
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
 ```
 
-## <a name="create-an-azure-database-for-postgresql-server"></a>Azure Database for PostgreSQL サーバーの作成
-
 [az postgres server create](/cli/azure/postgres/server) コマンドを使用して、[Azure Database for PostgreSQL サーバー](overview.md)を作成します。 1 つのサーバーに複数のデータベースを含めることができます。
 
+```azurecli-interactive
+az postgres server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 
+```
+上記の引数の詳細を次に示します。 
 
 **設定** | **値の例** | **説明**
 ---|---|---
-name | mydemoserver | Azure Database for PostgreSQL サーバーを識別する一意の名前を選択します。 サーバー名に含めることができるのは、英小文字、数字、およびハイフン (-) のみであり、 3 ～ 63 文字にする必要があります。
-resource-group | myresourcegroup | Azure リソース グループの名前を指定します。
-sku-name | GP_Gen5_2 | SKU の名前。 省略表現の {価格レベル}\_{コンピューティング世代}\_{仮想コア} という規則に従います。 sku-name パラメーターの詳細については、この表の下方を参照してください。
-backup-retention | 7 | バックアップを保持する必要のある時間。 単位は日数です。 範囲は 7 ～ 35 です。 
-geo-redundant-backup | 無効 | このサーバーに対して geo 冗長バックアップを有効にする必要があるかどうかどうか。 使用できる値は以下の通りです。Enabled、Disabled
+name | mydemoserver | Azure Database for PostgreSQL サーバーを識別する一意の名前。 サーバー名に含めることができるのは、英小文字、数字、およびハイフン (-) のみであり、 3 から 63 文字にする必要があります。
+resource-group | myresourcegroup | Azure リソース グループの名前。
 location | westus | サーバーの Azure の場所。
-ssl-enforcement | Enabled | このサーバーに対して TLS/SSL を有効にする必要があるかどうかどうか。 使用できる値は以下の通りです。Enabled、Disabled
-storage-size | 51200 | サーバーのストレージ容量 (単位はメガバイト)。 有効な storage-size は最小 5,120 MB で、1,024 MB ずつ増加します。 ストレージ サイズの制限の詳細については、[価格レベル](./concepts-pricing-tiers.md)についてのドキュメントを参照してください。 
-version | 9.6 | PostgreSQL のメジャー バージョン。
 admin-user | myadmin | 管理者ログインのユーザー名。 これを **azure_superuser**、**admin**、**administrator**、**root**、**guest**、**public** にすることはできません。
-admin-password | *セキュリティで保護されたパスワード* | 管理者ユーザーのパスワード。 8 ～ 128 文字にする必要があります。 パスワードには、英大文字、英小文字、数字、英数字以外の文字のうち、3 つのカテゴリの文字が含まれている必要があります。
+admin-password | *セキュリティで保護されたパスワード* | 管理者ユーザーのパスワード。 これには、次のうちの 3 つのカテゴリの、8 から 128 文字が含まれている必要があります。英大文字、英小文字、数字、英数字以外の文字のうち、3 つのカテゴリの文字が含まれている必要があります。
+sku-name|GP_Gen5_2| 価格レベルとコンピューティング構成の名前。 省略表現の {価格レベル}" _{コンピューティング世代}_ "{仮想コア} という規則に従います。 詳しくは、「[Azure Database for PostgreSQL の価格](https://azure.microsoft.com/pricing/details/postgresql/server/)」をご覧ください。
+
+>[!IMPORTANT] 
+>- サーバーの既定の PostgreSQL バージョンは 9.6 です。 サポートされているすべてのバージョンを確認するには、「[サポートされる PostgreSQL のメジャー バージョン](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions)」をご覧ください。
+>- **az postgres server create** コマンドのすべての引数を確認するには、[このリファレンス ドキュメント](https://docs.microsoft.com/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create)を参照してください。
+>- サーバーでは、既定で SSL が有効になっています。 SSL の詳細については、[SSL 接続の構成](./concepts-ssl-connection-security.md)に関するページを参照してください。
+
+## <a name="configure-a-server-level-firewall-rule"></a>サーバーレベルのファイアウォール規則の構成 
+既定では、作成したサーバーにはパブリックにアクセスすることはできません。ファイアウォール規則で保護されています。 サーバーに接続するためのアクセス権をローカル環境に付与するには、[az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) コマンドを使用して、サーバーにファイアウォール規則を構成できます。 
+
+次の例では、特定の IP アドレス 192.168.0.1 からの接続を許可する、`AllowMyIP` と呼ばれるファイアウォール規則を作成しています。 実際の接続元の場所に対応する IP アドレスまたは IP アドレスの範囲で置き換えます。 対象の IP アドレスがわからない場合は、[WhatIsMyIPAddress.com](https://whatismyipaddress.com/) にアクセスして取得します。
 
 
-sku-name パラメーターの値は、次の例のように、{価格レベル}\_{コンピューティング世代}\_{仮想コア数} という規約に従います。
-+ `--sku-name B_Gen5_1` は、"Basic、Gen 5、および 1 個の仮想コア" にマップされます。 このオプションは、利用できる最小の SKU です。
-+ `--sku-name GP_Gen5_32` は、"汎用、Gen 5、および 32 個の仮想コア" にマップされます。
-+ `--sku-name MO_Gen5_2` は、"メモリ最適化、Gen 5、および 2 個の仮想コア" にマップされます。
-
-リージョンごとおよびレベルごとに有効な値を理解するには、[価格レベル](./concepts-pricing-tiers.md)のドキュメントを参照してください。
-
-次の例では、サーバー管理者ログイン `myadmin` を使用して、リソース グループ `myresourcegroup` の `mydemoserver` という名前の PostgreSQL 9.6 サーバーを米国西部に作成します。 これは、**2 つの仮想コア**を備えた **Gen 4** **汎用**サーバーです。 `<server_admin_password>` は独自の値に置き換えます。
-```azurecli-interactive
-az postgres server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen4_2 --version 9.6
-```
-
-> [!NOTE]
-> 低負荷なコンピューティングと I/O がワークロードに適している場合は、Basic 価格レベルの使用を検討してください。 Basic 価格レベルで作成されたサーバーは後で General Purpose またはメモリ最適化にスケーリングできないことに注意してください。 詳細については、[価格に関するページ](https://azure.microsoft.com/pricing/details/postgresql/)を参照してください。
-> 
-
-## <a name="configure-a-server-level-firewall-rule"></a>サーバーレベルのファイアウォール規則の構成
-
-[az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) コマンドで、Azure PostgreSQL サーバーレベルのファイアウォール規則を作成します。 サーバーレベルのファイアウォール規則により、[psql](https://www.postgresql.org/docs/9.2/static/app-psql.html) や [PgAdmin](https://www.pgadmin.org/) などの外部アプリケーションが、Azure PostgreSQL サービスのファイアウォールを経由してサーバーに接続できるようになります。 
-
-ネットワークからの接続が可能な IP 範囲を指定するファイアウォール規則を設定することができます。 次の例では、[az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) を使用して、単一の IP アドレスを指定するファイアウォール規則 `AllowMyIP` を作成します。
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myresourcegroup --server mydemoserver --name AllowMyIP --start-ip-address 192.168.0.1 --end-ip-address 192.168.0.1
 ```
 
 > [!NOTE]
-> Azure PostgreSQL サーバーはポート 5432 を介して通信します。 企業ネットワーク内から接続しようとしても、ポート 5432 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 Azure PostgreSQL サーバーに接続するには、会社の IT 部門にポート 5432 を開放してもらう必要があります。
+> 接続の問題を回避するには、ネットワークのファイアウォールでポート 5432 が許可されていることを確認します。 Azure Database for PostgreSQL サーバーでは、このポートを使用します。 
 
 ## <a name="get-the-connection-information"></a>接続情報の取得
 
-サーバーに接続するには、ホスト情報とアクセス資格情報を提供する必要があります。
+対象のサーバーに接続するには、ホスト情報とアクセス資格情報を入力します。
+
 ```azurecli-interactive
 az postgres server show --resource-group myresourcegroup --name mydemoserver
 ```
 
 結果は JSON 形式です。 **administratorLogin** と **fullyQualifiedDomainName** の値を書き留めておきます。
+
 ```json
 {
   "administratorLogin": "myadmin",
@@ -130,97 +122,30 @@ az postgres server show --resource-group myresourcegroup --name mydemoserver
 }
 ```
 
-## <a name="connect-to-postgresql-database-using-psql"></a>psql を使用した PostgreSQL データベースへの接続
+## <a name="connect-to-the-azure-database-for-postgresql-server-by-using-psql"></a>psql を使用して Azure Database for PostgreSQL サーバーに接続する
+[psql](https://www.postgresql.org/docs/current/static/app-psql.html) クライアントは、PostgreSQL サーバーに接続するための一般的な選択肢です。 [Azure Cloud Shell](../cloud-shell/overview.md) で psql を使用して、対象のサーバーに接続できます。 また、可能な場合は、ローカル環境で psql を使用することもできます。 空のデータベース **postgres** は、新しい PostgreSQL サーバーで自動的に作成されます。 次のコードに示すように、そのデータベースを使用して psql に接続できます。 
 
-クライアント コンピューターに PostgreSQL がインストールされている場合は、[psql](https://www.postgresql.org/docs/current/static/app-psql.html) のローカル インスタンスを使用して Azure PostgreSQL サーバーに接続できます。 ここでは psql コマンド ライン ユーティリティを使用して、Azure PostgreSQL サーバーに接続しましょう。
-
-1. 次の psql コマンドを実行して Azure Database for PostgreSQL に接続します。
    ```bash
-   psql --host=<servername> --port=<port> --username=<user@servername> --dbname=<dbname>
+ psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres
    ```
 
-   たとえば次のコマンドは、アクセス資格情報を使用して、PostgreSQL サーバー **mydemoserver.postgres.database.azure.com** にある既定のデータベース **postgres** に接続します。 パスワードの入力を求められたら、選択した `<server_admin_password>` を入力します。
-  
-   ```bash
-   psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres
-   ```
-
-   > [!TIP]
-   > Postgres への接続に URL パスを使用する場合は、`%40` を使用してユーザー名の @ 記号を URL エンコードします。 たとえば、psql の接続文字列は次のようになります。
-   > ```
-   > psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres
-   > ```
-
-
-2. サーバーに接続したら、プロンプトで空のデータベースを作成します。
-   ```sql
-   CREATE DATABASE mypgsqldb;
-   ```
-
-3. プロンプトで次のコマンドを実行し、新しく作成したデータベース **mypgsqldb** に接続を切り替えます。
-   ```sql
-   \c mypgsqldb
-   ```
-
-## <a name="connect-to-the-postgresql-server-using-pgadmin"></a>pgAdmin を使用して PostgreSQL サーバーに接続する
-
-pgAdmin は PostgreSQL で使用されるオープンソース ツールです。 [pgAdmin の Web サイト](https://www.pgadmin.org/)からインストールできます。 使用する pgAdmin のバージョンは、このクイック スタートで使用されているものと異なる可能性があります。 追加のガイダンスが必要な場合は、pgAdmin のドキュメントをご覧ください。
-
-1. クライアント コンピューターで pgAdmin アプリケーションを開きます。
-
-2. ツール バーから **[オブジェクト]** に移動し、 **[作成]** をポイントして、 **[サーバー]** を選択します。
-
-3. **[作成 - サーバー]** ダイアログ ボックスの **[全般]** タブに、サーバーの一意のフレンドリ名 (**mydemoserver** など) を入力します。
-
-   ![[General]\(全般\) タブ](./media/quickstart-create-server-database-azure-cli/9-pgadmin-create-server.png)
-
-4. **[作成 - サーバー]** ダイアログ ボックスの **[接続]** タブで、設定テーブルに入力します。
-
-   ![[接続] タブ](./media/quickstart-create-server-database-azure-cli/10-pgadmin-create-server.png)
-
-    pgAdmin パラメーター |値|説明
-    ---|---|---
-    ホスト名/アドレス | サーバー名 | 前の手順で Azure Database for PostgreSQL サーバーを作成したときに使用したサーバー名の値。 例に示したサーバーは、**mydemoserver.postgres.database.azure.com** です。 Use the fully qualified domain name ( **\*.postgres.database.azure.com**) as shown in the example. サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 
-    Port | 5432 | Azure Database for PostgreSQL サーバーに接続するときに使用するポート。 
-    メンテナンス データベース | *postgres* | システムによって生成される既定のデータベース名。
-    ユーザー名 | サーバー管理者ログイン名 | 前の手順で Azure Database for PostgreSQL サーバーを作成したときに指定したサーバー管理者ログイン ユーザー名。 ユーザー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 形式は *username\@servername* です。
-    Password | 管理者パスワード | このクイック スタートでサーバーを作成したときに選択したパスワードです。
-    Role | 空白 | この時点でロール名を指定する必要はありません。 このフィールドは空白にしてください。
-    SSL モード | "*必須*" | pgAdmin の [SSL] タブで、TLS/SSL モードを設定できます。既定では、すべての Azure Database for PostgreSQL サーバーは TLS の適用がオンの状態で作成されます。 TLS の適用をオフにする方法については、「[TLS 適用の構成](./concepts-ssl-connection-security.md#configure-enforcement-of-tls)」を参照してください。
-    
-5. **[保存]** を選択します。
-
-6. 左側の **[ブラウザー]** ウィンドウで **[サーバー]** ノードを展開します。 **mydemoserver** など、ご利用のサーバーを選択します。 クリックして接続します。
-
-7. サーバー ノードを展開し、その下の **[Databases]\(データベース\)** を展開します。 一覧には既存の *postgres* データベースと、作成した他のデータベースすべてを含める必要があります。 Azure Database for PostgreSQL では、サーバーごとに複数のデータベースを作成できます。
-
-8. **[データベース]** を右クリックし、 **[作成]** メニューを選択して **[データベース]** を選択します。
-
-9. **[データベース]** フィールドに、任意のデータベース名 (**mypgsqldb2** など) を入力します。
-
-10. データベースの**所有者**をリスト ボックスから選択します。 サーバー管理者ログイン名 (例に示した **my admin** など) を選択します。
-
-    ![pgadmin でデータベースを作成する](./media/quickstart-create-server-database-azure-cli/11-pgadmin-database.png)
-
-11. **[保存]** を選択して、新しい空のデータベースを作成します。
-
-12. **[ブラウザー]** ウィンドウで、該当するサーバー名のデータベースの一覧で、作成したデータベースを確認できます。
-
-
+> [!TIP]
+> Postgres への接続に URL パスを使用する場合は、`%40` を使用してユーザー名の @ 記号を URL エンコードします。 たとえば、psql の接続文字列は次のようになります。
+>
+> ```
+> psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres
+> ```
 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
-
-[Azure リソース グループ](../azure-resource-manager/management/overview.md)を削除して、クイックスタートで作成したすべてのリソースをクリーンアップします。
-
-> [!TIP]
-> このコレクションの他のクイックスタートは、このクイックスタートに基づいています。 引き続きクイックスタートの作業を行う場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 これ以上作業を行わない場合は、以下の手順に従い、このクイック スタートで作成したすべてのリソースを Azure CLI で削除してください。
+これらのリソースが別のクイックスタートまたはチュートリアルで不要である場合、次のコマンドを実行して削除することができます。 
 
 ```azurecli-interactive
 az group delete --name myresourcegroup
 ```
 
-新しく作成した 1 つのサーバーを削除するだけの場合は、[az postgres server delete](/cli/azure/postgres/server) コマンドを実行してください。
+新しく作成したサーバーを 1 つだけ削除する場合は、[az postgres server delete](/cli/azure/postgres/server) コマンドを実行できます。
+
 ```azurecli-interactive
 az postgres server delete --resource-group myresourcegroup --name mydemoserver
 ```
@@ -228,4 +153,8 @@ az postgres server delete --resource-group myresourcegroup --name mydemoserver
 ## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [エクスポートとインポートを使用したデータベースの移行](./howto-migrate-using-export-and-import.md)
+> 
+> [PostgreSQL を使用する Django Web アプリのデプロイ](../app-service/containers/tutorial-python-postgresql-app.md)
+>
+> [Node.JS アプリを使用した接続](./connect-nodejs.md)
 

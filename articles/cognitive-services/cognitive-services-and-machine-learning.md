@@ -3,18 +3,16 @@ title: Cognitive Services と機械学習
 titleSuffix: Azure Cognitive Services
 description: Azure Cognitive Services が機械学習用の他の Azure サービスに適合する部分について説明します。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.author: diberry
-ms.openlocfilehash: ec997c802f83b0d1eea54c0710b0ebc4684397fe
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 0b034d0135c66852b07e0a2ed2fd69e8c3fdc4a6
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584622"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132842"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services と機械学習
 
@@ -73,7 +71,7 @@ Cognitive Services では、ユーザーに対してトレーニング済みの�
 
 ### <a name="no-additional-training-data-required"></a>追加のトレーニング データが不要
 
-完全にトレーニングされたモデルを提供するサービスは、"_ブラックボックス_" として扱われます。 その仕組みやトレーニングに使用されたデータを知る必要はありません。 完全にトレーニングされたモデルに自分のデータを取り込むことで予測が得られます。 
+完全にトレーニングされたモデルを提供するサービスは、"_不透明のボックス_" として扱われます。 その仕組みやトレーニングに使用されたデータを知る必要はありません。 完全にトレーニングされたモデルに自分のデータを取り込むことで予測が得られます。 
 
 ### <a name="some-or-all-training-data-required"></a>トレーニング データが一部または全部必要
 
@@ -139,7 +137,7 @@ Cognitive Services では、ユーザーに対してトレーニング済みの�
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure portal](cognitive-services-apis-create-account.md) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) で Cognitive Services のアカウントを作成する。
-* Cognitive Services の[認証](authentication.md)方法を確認する。
+* コグニティブ サービスの[認証](authentication.md)方法を確認する。
 * 問題の特定とデバッグに[診断ログ](diagnostic-logging.md)を使用する。 
 * Docker [コンテナー](cognitive-services-container-support.md)に Cognitive Services をデプロイする。
 * [サービスの更新情報](https://azure.microsoft.com/updates/?product=cognitive-services)で最新情報を入手する。

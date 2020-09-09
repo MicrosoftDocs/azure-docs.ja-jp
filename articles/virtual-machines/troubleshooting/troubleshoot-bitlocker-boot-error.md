@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
 ms.custom: has-adal-ref
-ms.openlocfilehash: 67a3ba99e29582c5681d69cd0c6db377a258020a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 23523a3618ad31e34a81152e48d4ee0f606e5aac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201339"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088532"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM での BitLocker ブート エラー
 
@@ -28,7 +28,7 @@ ms.locfileid: "83201339"
 
 ## <a name="symptom"></a>症状
 
- Windows VM が起動しません。 [[ブート診断]](../windows/boot-diagnostics.md) ウィンドウでスクリーンショットを調べると、次のエラー メッセージのいずれかが表示されています。
+ Windows VM が起動しません。 [[ブート診断]](./boot-diagnostics.md) ウィンドウでスクリーンショットを調べると、次のエラー メッセージのいずれかが表示されています。
 
 - BitLocker キーを含んだ USB ドライバーを接続してください
 
@@ -48,7 +48,7 @@ ms.locfileid: "83201339"
 この方法で問題が解決しない場合は、次の手順で BEK ファイルを手動で復元します。
 
 1. バックアップとして、影響を受ける VM のシステム ディスクのスナップショットを取得します。 詳細については、[ディスクのスナップショット](../windows/snapshot-copy-managed-disk.md)に関する記事を参照してください。
-2. [復旧 VM にシステム ディスクを取り付ける](troubleshoot-recovery-disks-portal-windows.md)。 手順 7 で [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) コマンドを実行するには、復旧 VM で **[BitLocker ドライブ暗号化]** 機能を有効にする必要があります。
+2. [復旧 VM にシステム ディスクを取り付ける](troubleshoot-recovery-disks-portal-windows.md)。 手順 7 で [manage-bde](/windows-server/administration/windows-commands/manage-bde) コマンドを実行するには、復旧 VM で **[BitLocker ドライブ暗号化]** 機能を有効にする必要があります。
 
     マネージド ディスクをアタッチすると、エラー メッセージ "contains encryption settings and therefore cannot be used as a data disk” が表示される場合があります。 この状況では、次のスクリプトを実行して、ディスクのアタッチを再試行します。
 
@@ -70,7 +70,7 @@ ms.locfileid: "83201339"
     ```
      Blob イメージから復元された VM にマネージド ディスクをアタッチすることはできません。
 
-3. ディスクがアタッチされたら、復旧 VM へのリモート デスクトップ接続を行って、いくつかの Azure PowerShell スクリプトを実行できるようにします。 復旧 VM 上に[最新バージョンの Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) がインストールされていることを確認します。
+3. ディスクがアタッチされたら、復旧 VM へのリモート デスクトップ接続を行って、いくつかの Azure PowerShell スクリプトを実行できるようにします。 復旧 VM 上に[最新バージョンの Azure PowerShell](/powershell/azure/) がインストールされていることを確認します。
 
 4. 管理者特権の Azure PowerShell セッション (管理者として実行) を開きます。 次のコマンドを実行して、Azure サブスクリプションにサインインします。
 
@@ -136,11 +136,15 @@ ms.locfileid: "83201339"
 
     - 保護を中断して、次のように実行して BitLocker を一時的に無効にします。
 
-                    manage-bde -protectors -disable F: -rc 0
-           
+    ```console
+    manage-bde -protectors -disable F: -rc 0
+    ```
+
     - ドライブを完全に復号化します。 そのためには、次のコマンドを実行します。
 
-                    manage-bde -off F:
+    ```console
+    manage-bde -off F:
+    ```
 
 ### <a name="key-encryption-key-scenario"></a>Key Encryption Key のシナリオ
 
@@ -237,17 +241,17 @@ Key Encryption Key のシナリオでは、次の手順に従います。
 
 4. スクリプトが開始されると、次の出力が表示されます。
 
-        GAC    Version        Location                                                                              
-        ---    -------        --------                                                                              
-        False  v4.0.30319     C:\Program Files\WindowsPowerShell\Modules\Az.Accounts\...
-        False  v4.0.30319     C:\Program Files\WindowsPowerShell\Modules\Az.Accounts\...
+    GAC バージョンの場所                                                                              
+    ---    -------        --------                                                                              
+    False  v4.0.30319     C:\Program Files\WindowsPowerShell\Modules\Az.Accounts\...False  v4.0.30319     C:\Program Files\WindowsPowerShell\Modules\Az.Accounts\...
 
     スクリプトが終了すると、次の出力が表示されます。
 
-        VERBOSE: POST https://myvault.vault.azure.net/keys/rondomkey/<KEY-ID>/unwrapkey?api-
-        version=2015-06-01 with -1-byte payload
-        VERBOSE: received 360-byte response of content type application/json; charset=utf-8
-
+    ```output
+    VERBOSE: POST https://myvault.vault.azure.net/keys/rondomkey/<KEY-ID>/unwrapkey?api-
+    version=2015-06-01 with -1-byte payload
+    VERBOSE: received 360-byte response of content type application/json; charset=utf-8
+    ```
 
 5. アタッチされたディスクのロックを BEK ファイルを使用して解除するには、次のコマンドを実行します。
 
@@ -265,11 +269,16 @@ Key Encryption Key のシナリオでは、次の手順に従います。
 
     - 保護を中断して、次のコマンドを実行して BitLocker を一時的に無効にします。
 
-             manage-bde -protectors -disable F: -rc 0
-           
+    ```console
+    manage-bde -protectors -disable F: -rc 0
+    ```
+
     - ドライブを完全に復号化します。 そのためには、次のコマンドを実行します。
 
-                    manage-bde -off F:
+    ```console
+    manage-bde -off F:
+    ```
+
 ## <a name="script-troubleshooting"></a>スクリプトのトラブルシューティング
 
 **エラー:Could not load file or assembly (ファイルまたはアセンブリを読み込めませんでした)**

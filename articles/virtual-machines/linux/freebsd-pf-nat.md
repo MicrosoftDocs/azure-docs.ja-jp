@@ -3,17 +3,17 @@ title: FreeBSD のパケット フィルターを使用して Azure 内にファ
 description: FreeBSD の PF を使用して NAT ファイアウォールを Azure にデプロイする方法について説明します。
 author: KylieLiang
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
-ms.openlocfilehash: 9b78c0d93b57a3e3f4963088d0b93f121f57483c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 85804e0f9293ec2e63aa319854e9559da11c8be1
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78945107"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286276"
 ---
 # <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>FreeBSD のパケット フィルターを使用してAzure 内にセキュア ファイアウォールを作成する方法
 この記事では、一般的な Web サーバー シナリオで、Azure Resource Manager テンプレートを通して FreeBSD の パケット フィルターを使用することで、NAT ファイアウォールをデプロイする方法について説明します。
@@ -34,7 +34,7 @@ Azure Resource Manager テンプレートは、PF を使用して NAT/リダイ�
 az group create --name myResourceGroup --location westus
 ```
 
-次に、[az group deployment create](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup) を使用して [pf-freebsd-setup](/cli/azure/group/deployment) テンプレートをデプロイします。 [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/pf-freebsd-setup/azuredeploy.parameters.json) を同じパスにダウンロードし、独自のリソース値 (`adminPassword`、`networkPrefix``domainNamePrefix` など) を定義します。 
+次に、 [az group deployment create](/cli/azure/group/deployment) を使用して pf-freebsd-setup テンプレートをデプロイします。 azuredeploy.parameters.json を同じパスにダウンロードし、独自のリソース値 (`adminPassword`、`networkPrefix`、`domainNamePrefix` など) を定義します。 
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup --name myDeploymentName \
@@ -49,7 +49,7 @@ az network public-ip list --resource-group myResourceGroup
 ```
     
 ## <a name="next-steps"></a>次のステップ
-Azure 内に独自の NAT を設定することを望んでいますか? 無料だが強力なオープン ソースを使用したいですか? パブリック フォルダーの使用をお勧めします。 [pf-freebsd-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup) テンプレートを使用することで、一般的な Web サーバー シナリオで FreeBSD の PF を使用してラウンド ロビン方式で負荷分散する NAT ファイアウォールを Azure 内にほんの 5 分で設定できます。 
+Azure 内に独自の NAT を設定することを望んでいますか? 無料だが強力なオープン ソースを使用したいですか? パブリック フォルダーの使用をお勧めします。 pf-freebsd-setup テンプレートを使用することで、一般的な Web サーバー シナリオで FreeBSD の PF を使用してラウンド ロビン方式で負荷分散する NAT ファイアウォールを Azure 内にほんの 5 分で設定できます。 
 
 Azure に提供されている FreeBSD の詳細については、「[Azure の FreeBSD の概要](freebsd-intro-on-azure.md)」を参照してください。
 

@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
-ms.custom: mvc
-ms.openlocfilehash: 534956a53615cfafeffa611127bc8c3cc4493753
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: mvc, devx-track-java
+ms.openlocfilehash: 1d1b4e2573519fbd033121763d3e7fe6b071f075
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77604906"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327023"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>クイック スタート:Java を使用して X.509 デバイスを Device Provisioning Service に登録する
 
@@ -66,37 +66,37 @@ ms.locfileid: "77604906"
         1. コマンド ウィンドウで、フォルダー **_azure-iot-sdk-java/provisioning/provisioning-tools/provisioning-x509-cert-generator_** に移動します。
         2. 次のコマンドを実行してツールをビルドします。
 
-                ```cmd\sh
-                mvn clean install
-                ```
+            ```cmd\sh
+            mvn clean install
+            ```
 
         4. 次のコマンドを使用してツールを実行します。
 
-                ```cmd\sh
-                cd target
-                java -jar ./provisioning-x509-cert-generator-{version}-with-deps.jar
-                ```
+            ```cmd\sh
+            cd target
+            java -jar ./provisioning-x509-cert-generator-{version}-with-deps.jar
+            ```
 
         5. プロンプトが表示されたら、必要に応じて証明書の _[Common Name]\(共通名\)_ を入力します。
         6. このツールで、 **[Client Cert]\(クライアント証明書\)** 、 **[Client Cert Private Key]\(クライアント証明書の秘密キー\)** 、 **[Root Cert]\(ルート証明書\)** がローカルに生成されます。
         7. **_-----BEGIN CERTIFICATE-----_** から **_-----END CERTIFICATE-----_** の行を含めて **[Root Cert]\(ルート証明書\)** をコピーします。 
         8. 次のように、 **[Root Cert]\(ルート証明書\)** の値をパラメーター **PUBLIC_KEY_CERTIFICATE_STRING** に割り当てます。
 
-                ```Java
-                private static final String PUBLIC_KEY_CERTIFICATE_STRING =
-                        "-----BEGIN CERTIFICATE-----\n" +
-                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                        "-----END CERTIFICATE-----\n";
-                ```
+            ```Java
+            private static final String PUBLIC_KEY_CERTIFICATE_STRING =
+            "-----BEGIN CERTIFICATE-----\n" +
+            "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+            "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+            "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+            "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+            "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+            "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+            "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+            "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+            "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+            "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+            "-----END CERTIFICATE-----\n";
+            ```
 
         9. "*確認コード*" の入力を求められたら、コマンド ウィンドウを閉じるか、「**n**」と入力します。 
  

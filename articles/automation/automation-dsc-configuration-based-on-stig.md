@@ -1,6 +1,6 @@
 ---
-title: 状態構成で使用するための STIG に基づく構成 - Azure Automation
-description: Azure Automation での状態構成用の STIG に基づく構成について説明します。
+title: Azure Automation State Configuration の STIG に基づくデータの構成
+description: この記事では、Azure Automation State Configuration の DoD STIG に基づいてデータを構成する方法について説明します。
 keywords: DSC, PowerShell, 構成, セットアップ
 services: automation
 ms.service: automation
@@ -10,14 +10,14 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d6d257198fcae54b1214d77f6b905d876d2687f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dab0cd7f7d660808b4ed7a91318baad55f80928c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585529"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015138"
 ---
-# <a name="configuration-based-on-stig"></a>STIG に基づく構成
+# <a name="configure-data-based-on-security-technical-information-guide-stig"></a>セキュリティ技術情報ガイド (STIG) に基づいてデータを構成する
 
 > 適用先:Windows PowerShell 5.1
 
@@ -36,13 +36,13 @@ ms.locfileid: "80585529"
 多くの組織では、ルールに対する[例外を文書化](https://github.com/microsoft/powerstig#powerstigdata)し、そのデータを大規模に管理する必要があります。
 PowerSTIG では、設定の全範囲を 1 つの大きなファイルで処理するのではなく、構成の各領域に対応する[複合リソース](https://github.com/microsoft/powerstig#powerstigdsc)を提供することによって、この問題に取り組んでいます。
 
-構成が生成されたら、それらを [DSC 構成スクリプト](/powershell/scripting/dsc/configurations/configurations)を使用して MOF ファイルを生成し、[その MOF ファイルを Azure Automation にアップロードする](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)ことができます。
-次に、[オンプレミス](/azure/automation/automation-dsc-onboarding#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances)または [Azure](/azure/automation/automation-dsc-onboarding#onboarding-azure-vms) のいずれかからサーバーを登録して、構成をプルします。
+構成が生成されたら、それらを [DSC 構成スクリプト](/powershell/scripting/dsc/configurations/configurations)を使用して MOF ファイルを生成し、[その MOF ファイルを Azure Automation にアップロードする](./tutorial-configure-servers-desired-state.md#create-and-upload-a-configuration-to-azure-automation)ことができます。
+次に、[オンプレミス](./automation-dsc-onboarding.md#enable-physicalvirtual-linux-machines)または [Azure](./automation-dsc-onboarding.md#enable-azure-vms) のいずれかからサーバーを登録して、構成をプルします。
 
 PowerSTIG を試すには、[PowerShell ギャラリー](https://www.powershellgallery.com)にアクセスし、ソリューションをダウンロードするか、[Project Site]\(プロジェクト サイト\) をクリックして[ドキュメント](https://github.com/microsoft/powerstig)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Windows PowerShell Desired State Configuration の概要](/powershell/scripting/dsc/overview/overview)
-- [DSC リソース](/powershell/scripting/dsc/resources/resources)
-- [ローカル構成マネージャーの構成](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- PowerShell DSC については、「[Windows PowerShell Desired State Configuration の概要](/powershell/scripting/dsc/overview/overview)」をご覧ください。
+- PowerShell DSC リソースについては、「[DSC リソース](/powershell/scripting/dsc/resources/resources)」をご覧ください。
+- Local Configuration Manager の構成の詳細については、「[ローカル構成マネージャーの構成](/powershell/scripting/dsc/managing-nodes/metaconfig)」をご覧ください。

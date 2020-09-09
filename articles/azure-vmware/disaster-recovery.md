@@ -1,20 +1,20 @@
 ---
 title: 仮想マシンのディザスター リカバリーを完了する
-description: この記事では、AVS を使用して仮想マシンのディザスター リカバリーを完了する方法について説明します
+description: この記事では、Azure VMware Solution を使用して仮想マシンのディザスター リカバリーを完了する方法について説明します
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 86f823444d4fff3edf8651f4d949c71d2c981ec7
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 76a417b9ba00c4c0e6e958e5a04d19aecfe24563
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82739843"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752276"
 ---
 # <a name="complete-a-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>Azure VMware Solution を使用して仮想マシンのディザスター リカバリーを完了する
 
-この記事では、Azure VMware Solution のプライベート クラウドを復旧またはターゲット サイトとして使用して、VMWare Hybrid Cloud Extension (HCX) ソリューションで仮想マシンのディザスター リカバリーを完了するプロセスについて説明します。
+この記事では、Azure VMware Solution のプライベート クラウドを復旧またはターゲット サイトとして使用して、VMware Hybrid Cloud Extension (HCX) ソリューションで仮想マシンのディザスター リカバリーを完了するプロセスについて説明します。
 
-VMWare HCX には、レプリケーション ポリシーのきめ細かい制御および細分性を提供するさまざまな操作が用意されています。 使用可能な操作は次のとおりです。
+VMware HCX には、レプリケーション ポリシーのきめ細かい制御および細分性を提供するさまざまな操作が用意されています。 使用可能な操作は次のとおりです。
 
 - 反転 - 障害が発生した後。 反転により、サイト B はソース サイトに、サイト A は保護されている VM が現在稼働している場所になります。
 
@@ -46,7 +46,7 @@ VMWare HCX には、レプリケーション ポリシーのきめ細かい制�
 
 :::image type="content" source="./media/disaster-recovery/protect-virtual-machine.png" alt-text="[PROTECT VMS]\(VM の保護\) の選択" border="true":::
 
-開いたウィンドウで、ソースおよびリモートの各サイトを選択します。この場合のリモート サイトは、AVS プライベート クラウドである必要があります。
+開いたウィンドウで、ソースおよびリモートの各サイトを選択します。この場合のリモート サイトは、Azure VMware Solution のプライベート クラウドである必要があります。
 
 :::image type="content" source="./media/disaster-recovery/protect-virtual-machines.png" alt-text="VM の保護のウィンドウ" border="true":::
 
@@ -56,7 +56,7 @@ VMWare HCX には、レプリケーション ポリシーのきめ細かい制�
 
 - **Enable Quiescence (休止を有効にする):** 一貫性のあるコピーがリモート サイトに同期されるように、VM を一時停止します。
 
-- **同期先ストレージ:** 保護されている VM のリモート データストアを選択します。 AVS プライベート クラウドでは、この選択は VSAN データストアである必要があります。
+- **同期先ストレージ:** 保護されている VM のリモート データストアを選択します。 Azure VMware Solution のプライベート クラウドでは、この選択は vSAN データストアである必要があります。
 
 - **コンピューティング コンテナー:** リモート vSphere クラスターまたはリソース プールです。
 
@@ -95,7 +95,7 @@ VM が保護されると、 **[Snapshots]\(スナップショット\)** タブ�
 
 ## <a name="complete-a-test-recover-of-virtual-machines"></a>仮想マシンのテスト復旧を完了する
 
-AVS プライベート クラウドであるリモート サイトで **vSphere クライアント**にログインします。 **HCX プラグイン**内の [ディザスター リカバリー] 領域で、任意の VM の縦方向の省略記号を選択して、操作メニューを表示します。 **[Test Recover VM]\(VM のテスト復旧\)** を選択します。
+Azure VMware Solution のプライベート クラウドであるリモート サイトで **vSphere クライアント**にログインします。 **HCX プラグイン**内の [ディザスター リカバリー] 領域で、任意の VM の縦方向の省略記号を選択して、操作メニューを表示します。 **[Test Recover VM]\(VM のテスト復旧\)** を選択します。
 
 :::image type="content" source="./media/disaster-recovery/test-recover-virtual-machine.png" alt-text="[Test Recover VM]\(VM のテスト復旧\) の選択" border="true":::
 
@@ -105,7 +105,7 @@ AVS プライベート クラウドであるリモート サイトで **vSphere 
 
 **[テスト]** をクリックすると、復旧操作が開始されます。
 
-テスト復旧操作が完了すると、新しい VM を AVS プライベート クラウド vCenter で確認できます。
+テスト復旧操作が完了すると、新しい VM を Azure VMware Solution プライベート クラウドの vCenter で確認できます。
 
 :::image type="content" source="./media/disaster-recovery/verify-test-recovery.png" alt-text="復旧操作の確認" border="true":::
 
@@ -115,7 +115,7 @@ VM やその上で実行されているアプリケーションでテストを�
 
 ## <a name="recover-virtual-machines"></a>仮想マシンを復旧する
 
-AVS プライベート クラウドであるリモート サイトで **vSphere クライアント**にログインし、**HCX プラグイン**にアクセスします。
+Azure VMware Solution のプライベート クラウドであるリモート サイトで **vSphere クライアント**にログインし、**HCX プラグイン**にアクセスします。
 
 復旧シナリオでは、仮想マシンのグループがこの例に使用されます。
 
@@ -131,7 +131,7 @@ AVS プライベート クラウドであるリモート サイトで **vSphere 
 
 ## <a name="complete-a-reverse-replication-on-virtual-machines"></a>仮想マシンでレプリケーションの反転を完了する
 
-AVS プライベート クラウドで **vSphere クライアント**にログインし、**HCX プラグイン**にアクセスします。
+Azure VMware Solution のプライベート クラウドで **vSphere クライアント**にログインし、**HCX プラグイン**にアクセスします。
 レプリケーションの反転を開始する前に、ソース サイトの元の仮想マシンの電源をオフにしておく必要があります。 仮想マシンの電源がオフになっていない場合、この操作は失敗します。
 
 ソース サイトにレプリケートする仮想マシンを一覧から選択し、 **[アクション]** メニューを開いて、 **[反転]** を選択します。 ポップアップ ウィンドウで **[反転]** をクリックして、レプリケーションを開始します。
@@ -144,7 +144,7 @@ AVS プライベート クラウドで **vSphere クライアント**にログ�
 
 ## <a name="disaster-recovery-plan-automation"></a>ディザスター リカバリー プランの自動化
 
-現在、VMWare HCX には、ディザスター リカバリー プランを作成して自動化するための組み込みメカニズムがありません。 この機能は HCX には存在しません。 ただし、ディザスター リカバリー操作用の API を含む REST API のセットが用意されています。
+現在、VMware HCX には、ディザスター リカバリー プランを作成して自動化するための組み込みメカニズムがありません。 この機能は HCX には存在しません。 ただし、ディザスター リカバリー操作用の API を含む REST API のセットが用意されています。
 
 API 仕様は、URL の HCX Manager 内でアクセスできます。
 

@@ -9,10 +9,10 @@ ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file
 ms.openlocfilehash: 6f7f319d2ebb4cd39933addf04f249df02d7819f
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81314120"
 ---
 ## <a name="create-a-resource-group"></a>リソース グループを作成する

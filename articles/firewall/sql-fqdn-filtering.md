@@ -4,22 +4,17 @@ description: この記事では、Azure Firewall アプリケーション規則�
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: article
-ms.date: 07/19/2019
+ms.topic: how-to
+ms.date: 06/18/2020
 ms.author: victorh
-ms.openlocfilehash: 858cfc9a8c15f1e33e688bb5086a58f194e7173f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e921ea707e4a0df968d162726fe53064491cb032
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501499"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610508"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>SQL FQDN を使用して Azure Firewall アプリケーション規則を構成する
-
-> [!IMPORTANT]
-> SQL FQDN を使用した Azure Firewall アプリケーション規則は、現在パブリック プレビューの段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 SQL FQDN を使用して Azure Firewall アプリケーション規則を構成することができます。 これにより、仮想ネットワークからのアクセスを、指定された SQL サーバー インスタンスのみに制限することができます。
 
@@ -29,10 +24,8 @@ SQL FQDN では、以下のトラフィックをフィルター処理できま�
 - オンプレミスから Vnet で実行されている Azure SQL マネージド インスタンスまたは SQL IaaS へ。
 - スポーク間から Vnet で実行されている Azure SQL マネージド インスタンスまたは SQL IaaS へ。
 
-プレビュー期間中、SQL FQDN のフィルター処理は、[プロキシ モード](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy)でのみサポートされます (ポート 1433)。 既定のリダイレクト モードで SQL を使用する場合、[ネットワーク ルール](overview.md#network-traffic-filtering-rules)の一部として SQL サービス タグを使用してアクセスをフィルター処理することができます。
+SQL の FQDN のフィルター処理は、[プロキシ モード](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy)のみでサポートされます (ポート 1433)。 既定のリダイレクト モードで SQL を使用する場合、[ネットワーク ルール](features.md#network-traffic-filtering-rules)の一部として SQL サービス タグを使用してアクセスをフィルター処理することができます。
 SQL IaaS のトラフィックに既定以外のポートを使用する場合は、ファイアウォール アプリケーション規則でこれらのポートを構成できます。
-
-現在、SQL FQDN を使用するアプリケーション規則は、Azure portal、Azure CLI、REST、およびテンプレートを介してすべてのリージョンで使用できます。
 
 ## <a name="configure-using-azure-cli"></a>Azure CLI を使用して構成する
 
@@ -70,4 +63,4 @@ SQL IaaS のトラフィックに既定以外のポートを使用する場合�
 
 ## <a name="next-steps"></a>次のステップ
 
-SQL のプロキシ モードとリダイレクト モードの詳細については、[Azure SQL データベースの接続アーキテクチャ](../sql-database/sql-database-connectivity-architecture.md)を参照してください。
+SQL のプロキシ モードとリダイレクト モードの詳細については、「[Azure SQL Database 接続アーキテクチャ](../azure-sql/database/connectivity-architecture.md)」を参照してください。

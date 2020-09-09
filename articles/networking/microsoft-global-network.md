@@ -1,6 +1,6 @@
 ---
 title: マイクロソフトのグローバル ネットワーク - Azure
-description: マイクロソフトが高速で信頼性の高いグローバル ネットワークを構築する方法について説明します
+description: Microsoft が世界有数のバックボーン ネットワークの 1 つをどのように構築して運用しているか、また優れたクラウド エクスペリエンスを実現する中心的な役割をどのように果たしているかについて説明します。
 services: networking
 documentationcenter: ''
 author: KumudD
@@ -13,16 +13,16 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: 10a061163447a60f1c25b386ef28028436284650
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9420d52cf7d88ff84fd23928f92cdc62e9627619
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75453069"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280904"
 ---
 # <a name="microsoft-global-network"></a>マイクロソフトのグローバル ネットワーク
 
-マイクロソフトは、世界最大規模のバックボーン ネットワークの 1 つを所有し、運営しています。 このグローバルで洗練されたアーキテクチャが、10 万マイルを超える距離をまたいでデータセンターと顧客をつないでいます。 
+マイクロソフトは、世界最大規模のバックボーン ネットワークの 1 つを所有し、運営しています。 このグローバルで洗練されたアーキテクチャが、16 万マイルを超える距離をまたいでデータセンターと顧客をつないでいます。 
  
 毎日、世界中のお客様が、Microsoft Azure、Bing、Dynamics 365、Office 365、Xbox を始めとするマイクロソフトのサービスに接続し、何兆もの要求をこれらのサービスに渡しています。 種類にかかわらず、顧客がマイクロソフトのサービスに期待するのは、即時の信頼性と応答性です。 
  
@@ -32,13 +32,13 @@ ms.locfileid: "75453069"
  
 ## <a name="get-the-premium-cloud-network"></a>最高のクラウド ネットワークの実現
  
-Microsoft クラウドを使用していれば、[考えられる最高のエクスペリエンス](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/)を選ぶことは簡単です。 戦略的に配置されたエッジ ノードを経由して、お客様のトラフィックがこのグローバル ネットワークに入った瞬間から、データは最適なルートを通ってほぼ光速で移動します。 これにより、最高のパフォーマンスを得るための最適な待機時間が保証されます。 これらのエッジ ノードはすべて、145 以上の場所に存在する膨大な数の接続を通じて、ユニーク数 3,500 を超えるインターネット パートナー (ピア) と相互接続され、マイクロソフトの相互接続戦略の基礎を提供しています。 
+Microsoft クラウドを使用していれば、[考えられる最高のエクスペリエンス](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/)を選ぶことは簡単です。 戦略的に配置されたエッジ ノードを経由して、お客様のトラフィックがこのグローバル ネットワークに入った瞬間から、データは最適なルートを通ってほぼ光速で移動します。 これにより、最高のパフォーマンスを得るための最適な待機時間が保証されます。 これらのエッジ ノードはすべて、165 以上の場所に存在する膨大な数の接続を通じて、ユニーク数 3,500 を超えるインターネット パートナー (ピア) と相互接続され、Microsoft の相互接続戦略の基礎を提供しています。 
  
 ロンドンから東京への接続であれ、ワシントン DC からロサンゼルスへの接続であれ、ネットワーク パフォーマンスは定量化され、待機時間、ジッター、パケット損失、スループットなどの影響を受けます。  マイクロソフトでは、トランジット リンクとは対照的に、直接相互接続を優先的に使用します。これによって応答トラフィックの対称性が保たれ、ホップ、ピアリング パーティ、およびパスをできるだけ短くシンプルに保ちやすくなります。 
 
 たとえば、ロンドンのユーザーが東京のサービスにアクセスしようとすると、インターネット トラフィックはロンドンのエッジのいずれかに送信され、フランスを経由して Microsoft WAN に送信され、ヨーロッパとインドの間のインド洋横断経路を通過し、サービスがホストされている日本に到達します。 応答トラフィックは、対称になります。 これは [cold-potato routing (コールド ポテト ルーティング)](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) とも呼ばれ、トラフィックは、渡されるまで可能な限りマイクロソフトのネットワークに留まります。  
   
-ところで、それは、Microsoft サービスを使用するときの一切かつすべてのトラフィックを意味するのでしょうか。 はい。最適なパフォーマンスと整合性を保証するために、Microsoft Azure 内のデータセンター間、または Virtual Machines、Office 365、Xbox、SQL DB、Storage、仮想ネットワークなどの Microsoft サービス間のあらゆるトラフィックはこのグローバル トラフィック内でルーティングされ、決してパブリック インターネットを経由しません。  
+ところで、それは、Microsoft サービスを使用するときの一切かつすべてのトラフィックを意味するのでしょうか。 はい。最適なパフォーマンスと整合性を保証するために、Microsoft Azure 内のデータセンター間、または Virtual Machines、Microsoft 365、Xbox、SQL DB、Storage、仮想ネットワークなどの Microsoft サービス間のあらゆるトラフィックはこのグローバル トラフィック内でルーティングされ、決してパブリック インターネットを経由しません。  
  
 マイクロソフトのクラウドおよびオンライン サービスの劇的な成長を促進しつつ、一貫した高水準のサービス レベルを維持するためには、メトロ、地上、海底の各経路でファイバーの容量と多様性への莫大な投資が不可欠です。 このグローバル ネットワークに最近加わったものには、ビルバオ (スペイン) とバージニアビーチ (米バージニア州) を結ぶ業界初の海中経由 Open Line System (OLS) である [MAREA](https://www.submarinecablemap.com/#/submarine-cable/marea) 海底ケーブルがあります。このほか、米ニューヨークとダブリン (アイルランド) を結ぶ [AEC](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1) や、東京 (日本) とポートランド (米オレゴン州) を結ぶ [New Cross Pacific (NCP)](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system) があります。 
  

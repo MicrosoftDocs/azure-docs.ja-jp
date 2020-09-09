@@ -11,13 +11,13 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/29/2018
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: 6251ab1484c7243bf0b22c7c4faf8b560ef0abb6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: b7ae2543cfa9226064a2890b95dcc96be85fe56d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81457809"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497224"
 ---
 # <a name="manage-web-traffic-using-the-azure-cli"></a>Azure CLI を使用して Web トラフィックを管理する
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: lahugh
 ms.openlocfilehash: 0ca6e38a9c9b5b92041e7f5b0fe964de58ef8f55
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "70128061"
 ---
 ## <a name="get-account-credentials"></a>アカウントの資格情報を取得する

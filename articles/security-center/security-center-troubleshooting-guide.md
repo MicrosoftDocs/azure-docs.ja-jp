@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 47502e693b897a57517d267924cc6c2752c10440
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: e26744c2003bd55b33b638b15775c52abbe1dc32
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585337"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836007"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center トラブルシューティング ガイド
 
@@ -132,7 +132,7 @@ Security Center ダッシュボードを読み込む際に問題が発生した�
 
 ## <a name="contacting-microsoft-support"></a>Microsoft サポートへの問い合わせ
 
-一部の問題は、この記事に示したガイドラインを基に特定できます。その他の問題については、Security Center パブリック [フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter)でドキュメントを確認できます。 ただし、さらにトラブルシューティングが必要な場合は、次に示すように **Azure ポータル**を使用して新しいサポート要求を開くことができます。
+一部の問題は、この記事に示したガイドラインを基に特定できます。その他の問題については、Security Center パブリック [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-security-center.html)でドキュメントを見つけることもできます。 ただし、さらにトラブルシューティングが必要な場合は、次に示すように **Azure ポータル**を使用して新しいサポート要求を開くことができます。
 
 ![Microsoft サポート](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 

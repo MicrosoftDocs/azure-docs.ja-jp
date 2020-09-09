@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/10/2020
-ms.openlocfilehash: 543bc29adc85bd767de9479607d067fadf7b0078
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2736d0cfe514252e36ba6d7e0d71efe09da15aae
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75934695"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076302"
 ---
 # <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>HDInsight 上の Apache Hadoop で MapReduce と SSH を使用する
 

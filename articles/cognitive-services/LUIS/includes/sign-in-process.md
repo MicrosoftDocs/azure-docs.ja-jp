@@ -4,24 +4,24 @@ description: インクルード ファイル
 services: cognitive-services
 author: diberry
 manager: nitinme
-ms.custom: include file
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.date: 05/05/2020
 ms.topic: include
 ms.author: diberry
-ms.openlocfilehash: 5e2a74f69f575f4b9b332b98d7e19089418b29ed
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: da9388a3bd5f4d46ec34ed226e3ee23a96b2f494
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585231"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375453"
 ---
 ## <a name="sign-in-to-luis-portal"></a>LUIS ポータルにサインインする
 
 LUIS の新しいユーザーは、次の手順に従う必要があります。
 
-1. [LUIS ポータル](https://www.luis.ai)にサインインし、国を選択して利用規約に同意します。 代わりに **[マイ アプリ]** が表示される場合は、LUIS リソースが既に存在しているため、次の手順に進んでアプリを作成してください。
+1. [LUIS ポータル](https://www.luis.ai)にサインインし、ご自分の国/地域を選択して利用規約に同意します。 代わりに **[マイ アプリ]** が表示される場合は、LUIS リソースが既に存在しているため、次の手順に進んでアプリを作成してください。 サポートされているリージョンについては、[リージョンと関連付けられているキーの作成と公開](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions)に関する記事を参照してください。
 
 1. **[Create Azure resource]\(Azure リソースの作成\)** を選択し、 **[Create an authoring resource to migrate your apps to]\(アプリの移行先となるオーサリング リソースの作成\)** を選択します。
 

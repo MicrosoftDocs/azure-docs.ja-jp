@@ -8,12 +8,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: 2a0394e6e7c17e0a4954bbdddb1d5b2811959746
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5b9170e0fcf4bba8b928522cdc881f34968d771f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79371581"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003866"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>IoT Hub デバイス ID の一括でのインポートおよびエクスポート
 
@@ -27,8 +28,6 @@ ms.locfileid: "79371581"
 **RegistryManager** クラスには、**ジョブ** フレームワークを使用する **ExportDevicesAsync** および **ImportDevicesAsync** メソッドが含まれています。 これらのメソッドを使用すると、IoT Hub ID レジストリ全体のエクスポート、インポート、および同期化を行うことができます。
 
 このトピックでは、**RegistryManager** クラスと**ジョブ** システムを使用して、IoT Hub の ID レジストリとの間でデバイスの一括インポートおよびエクスポートを実行する方法について説明します。 また、Azure IoT Hub Device Provisioning サービスを使用して、1 つまたは複数の IoT ハブに対してノータッチの Just-In-Time プロビジョニングを実現できるため、人の手を介する必要がなくなります。 詳しくは、[Provisioning Service のドキュメント](/azure/iot-dps)をご覧ください。
-
-[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 ## <a name="what-are-jobs"></a>ジョブとは
 

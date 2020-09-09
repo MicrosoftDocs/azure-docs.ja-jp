@@ -3,16 +3,16 @@ title: リソースにデプロイ順序を設定する
 description: デプロイ時にリソースが正しい順序でデプロイされるように、あるリソースが別のリソースに依存するように設定する方法について説明します。
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: 764b718416e1185f56c7eb6b8335792a5822f212
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 84cea915565ec6ac9872681e1d4173abacb46ac4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535470"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255213"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>ARM テンプレートでのリソース デプロイ順序の定義
 
-リソースをデプロイするときに、デプロイ前に他のリソースが存在することを確認する必要がある場合があります。 たとえば、SQL データベースをデプロイする前に SQL サーバーが必要です。 このリレーションシップは、一方のリソースがもう一方のリソースに依存しているとマークすることで定義します。 依存関係を定義するには、**dependsOn** 要素または **reference** 関数を使用します。
+リソースをデプロイするときに、デプロイ前に他のリソースが存在することを確認する必要がある場合があります。 たとえば、データベースをデプロイする前に論理 SQL サーバーが必要です。 このリレーションシップは、一方のリソースがもう一方のリソースに依存しているとマークすることで定義します。 依存関係を定義するには、**dependsOn** 要素または **reference** 関数を使用します。
 
 Resource Manager により、リソース間の依存関係が評価され、リソースは依存する順にデプロイされます。 相互依存していないリソースは、平行してデプロイされます。 同じテンプレートでデプロイされるリソースの依存関係だけを定義する必要があります。
 
@@ -59,7 +59,7 @@ resources プロパティを使用すると、定義されているリソース�
 
 各親リソースは、子リソースとして特定のリソースの種類のみを受け取ります。 許容されるリソースの種類は、親リソースの[テンプレート スキーマ](https://github.com/Azure/azure-resource-manager-schemas)で指定されます。 子リソースの種類の名前には、親リソースの種類の名前 (**Microsoft.Web/sites/config**、**Microsoft.Web/sites/extensions** など。これは両方とも **Microsoft.Web/sites** の子リソース)。
 
-次の例では、SQL Server と SQL データベースを示します。 データベースが SQL Server の子である場合でも、SQL データベースと SQL Server の間に明示的な依存関係が定義されることに注目してください。
+次の例では、論理 SQL サーバーとデータベースを示します。 データベースがサーバーの子である場合でも、データベースとサーバーの間に明示的な依存関係が定義されることに注目してください。
 
 ```json
 "resources": [

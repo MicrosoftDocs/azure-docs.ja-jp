@@ -8,12 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
-ms.openlocfilehash: f6139bb98fa0272e43c8e180d4ec029f7a7538bb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 211b23db56b6deebb519b9eaac4164ea83edabac
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73494332"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078573"
 ---
 # <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>チュートリアル:ODBC と PowerShell による Apache Hive のクエリの実行
 

@@ -9,13 +9,13 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
 ms.date: 02/04/2020
-ms.author: anzaman
-ms.openlocfilehash: 19067bbbaf93c9abc9a9220b09dd482ce9115655
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: kumud
+ms.openlocfilehash: f373afae03357ffb65eb459f806fe441e29b21b9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80127978"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047085"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-api"></a>Video Indexer API を使用して言語モデルをカスタマイズする
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/09/2018
-ms.openlocfilehash: 96c64f6a0167b678f14bf0199069ecd6b4c8d57a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ac2b79046718fe45ad0dad0396b6f7653efbb779
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80055111"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505331"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>データ コレクター API によるデータ パイプラインの作成
 
@@ -43,7 +43,7 @@ ms.locfileid: "80055111"
 
 Blob Storage、Logic Apps、Azure Functions の詳しい設定については、この記事では取り上げませんが、それぞれの製品のページで詳しい手順をご覧いただけます。
 
-このパイプラインを監視するため、ここでは Application Insights を使用して Azure 関数を監視し ([詳細はこちら](../../azure-functions/functions-monitoring.md))、Azure Monitor を使用してロジック アプリを監視します ([詳細はこちら](../../logic-apps/logic-apps-monitor-your-logic-apps-oms.md))。 
+このパイプラインを監視するため、ここでは Application Insights を使用して Azure 関数を監視し ([詳細はこちら](../../azure-functions/functions-monitoring.md))、Azure Monitor を使用してロジック アプリを監視します ([詳細はこちら](../../logic-apps/monitor-logic-apps-log-analytics.md))。 
 
 ## <a name="setting-up-the-pipeline"></a>パイプラインの設定
 パイプラインを設定するために、まず BLOB コンテナーが作成され、構成済みであることを確認してください。 同様に、データの送信先となる Log Analytics ワークスペースが作成されていることを確認します。

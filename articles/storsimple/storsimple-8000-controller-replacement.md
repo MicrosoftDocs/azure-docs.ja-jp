@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
-ms.openlocfilehash: dd2f6fcc9b2f5d716566e91e89487969613d1005
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9d8b75c48da2bb13d843258ead378d3e849da951
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232223"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514080"
 ---
 # <a name="replace-a-controller-module-on-your-storsimple-device"></a>StorSimple デバイスのコントローラー モジュールを交換する
 ## <a name="overview"></a>概要

@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 06/03/2020
 ms.author: juliako
-ms.openlocfilehash: b4849b4fbfdbaece46f5669f4c242e864b1ca533
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 53e337cf4ccbabf7f0b7a227632ba5e996e2b4f3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81769747"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072138"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
@@ -32,9 +32,35 @@ ms.locfileid: "81769747"
 ## <a name="known-issues"></a>既知の問題
 
 > [!NOTE]
-> [Azure portal](https://portal.azure.com/) を使用し、v3 の[ライブ イベント](live-events-outputs-concept.md)の管理、v3 の[資産](assets-concept.md)の表示、API へのアクセスに関する情報の取得を行うことができます。 他のすべての管理タスク (変換とジョブなど) については、[REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
+> [Azure portal](https://portal.azure.com/) を使用して、v3 の[ライブ イベント](live-events-outputs-concept.md)の管理、v3 の[資産](assets-concept.md)とジョブの表示、API へのアクセスに関する情報の取得、コンテンツの暗号化を行うことができます。 他のすべての管理タスク (変換とジョブの管理など) については、[REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
+>
+> 詳細については、[Media Services v3 に関する Azure portal の制限事項](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3)に関する記事を参照してください。
 
-詳細については、「[Media Services v2 から v3 への移行のガイダンス](migrate-from-v2-to-v3.md#known-issues)」を参照してください。
+## <a name="july-2020"></a>2020 年 7 月
+
+### <a name="live-transcriptions"></a>ライブ文字起こし
+
+ライブ文字起こしで 19 の言語と 8 つの地域がサポートされるようになりました。
+
+## <a name="protecting-your-content-with-media-services-and-azure-ad"></a>Media Services と Azure AD によるコンテンツの保護
+
+「[Azure AD を使用したエンド ツー エンドのコンテンツ保護](./azure-ad-content-protection.md)」というタイトルのチュートリアルを公開しました。
+
+### <a name="high-availablity"></a>高可用性
+
+Media Services とビデオ オン デマンド (VOD) を使用した高可用性の[概要](./media-services-high-availability-encoding.md)と[サンプル](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/HighAvailabilityEncodingStreaming)を公開しました。
+
+## <a name="june-2020"></a>2020 年 6 月
+
+### <a name="live-video-analytics-on-iot-edge-preview-release"></a>Live Video Analytics on IoT Edge プレビュー リリース
+
+Live Video Analytics on IoT Edge のプレビューが公開されました。 詳細については、「[リリース ノート](../live-video-analytics-edge/release-notes.md)」を参照してください。
+
+Live Video Analytics on IoT Edge は、メディア サービス ファミリの拡張です。 独自のエッジ デバイスで任意の AI モデルを使用してライブ ビデオを分析し、必要に応じてそのビデオをキャプチャして記録することができます。 ライブ ビデオ パイプラインの構築と運用の複雑さを気にせずに、エッジでリアルタイムのビデオ分析を使用してアプリを作成できるようになりました。
+
+## <a name="may-2020"></a>2020 年 5 月
+
+Azure Media Services は、次のリージョンで一般提供されています。"ドイツ北部"、"ドイツ中西部"、"スイス北部"、および "スイス西部"。 お客様は、Azure portal を使用して、これらのリージョンに Media Services をデプロイできます。
 
 ## <a name="april-2020"></a>2020 年 4 月
 
@@ -59,9 +85,9 @@ Media Services が次の Azure Government リージョンで一般公開され�
 
 |HTTP ヘッダー|値|送信者|受信者|目的|
 | ---- | ---- | ---- | ---- | ----- |
-|CDN-Origin-Assist-Prefetch-Enabled | 1 (既定) または 0 |CDN|Origin (配信元)|CDN がプリフェッチ対応であることを示すこと|
-|CDN-Origin-Assist-Prefetch-Path| 例: <br/>フラグメント(ビデオ= 1400000000, フォーマット = mpd-time-cmaf)|Origin (配信元)|CDN|CDN にプリフェッチ パスを提供すること|
-|CDN-Origin-Assist-Prefetch-Request|1 (プリフェッチ要求) または 0 (通常の要求)|CDN|Origin (配信元)|CDN からの要求がプリフェッチであることを示すこと|
+|CDN-Origin-Assist-Prefetch-Enabled | 1 (既定) または 0 |CDN|出発地|CDN がプリフェッチ対応であることを示すこと|
+|CDN-Origin-Assist-Prefetch-Path| 例: <br/>フラグメント(ビデオ= 1400000000, フォーマット = mpd-time-cmaf)|出発地|CDN|CDN にプリフェッチ パスを提供すること|
+|CDN-Origin-Assist-Prefetch-Request|1 (プリフェッチ要求) または 0 (通常の要求)|CDN|出発地|CDN からの要求がプリフェッチであることを示すこと|
 
 ヘッダー交換の一部を実際に確認するには、次の手順を実行します。
 
@@ -115,7 +141,7 @@ Media Services v3 で、24 時間 365 日のライブ イベントのライブ �
 
 #### <a name="deprecation-of-media-processors"></a>メディア プロセッサの非推奨化
 
-*Azure Media Indexer* および "*Azure Media Indexer 2 プレビュー*" の廃止を発表します。 提供終了日については、[レガシ コンポーネント](../previous/legacy-components.md)に関するトピックを参照してください。 [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) が、これらの従来のメディア プロセッサに取って代わります。
+*Azure Media Indexer* および "*Azure Media Indexer 2 プレビュー*" の廃止を発表します。 提供終了日については、[レガシ コンポーネント](../previous/legacy-components.md)に関するトピックを参照してください。 [Azure Media Services Video Indexer](../video-indexer/index.yml) が、これらの従来のメディア プロセッサに取って代わります。
 
 詳細については、[Azure Media Indexer および Azure Media Indexer 2 から Azure Media Services Video Indexer への移行](../previous/migrate-indexer-v1-v2.md)に関する記事をご覧ください。
 
@@ -149,9 +175,9 @@ Media Services を南アフリカ北部と南アフリカ西部の各リージ�
 
 ### <a name="video-subclipping"></a>ビデオのサブクリップ
 
-[ジョブ](https://docs.microsoft.com/rest/api/media/jobs)を使用してビデオをエンコードする際に、ビデオをトリミングまたはサブクリップできるようになりました。 
+[ジョブ](/rest/api/media/jobs)を使用してビデオをエンコードする際に、ビデオをトリミングまたはサブクリップできるようになりました。 
 
-この機能は、[BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) プリセットまたは [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) プリセットを使用して構築された[変換](https://docs.microsoft.com/rest/api/media/transforms)で動作します。 
+この機能は、[BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) プリセットまたは [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) プリセットを使用して構築された[変換](/rest/api/media/transforms)で動作します。 
 
 次の例を参照してください。
 
@@ -190,12 +216,12 @@ Media Services のパフォーマンス向上を含む更新が追加されま�
 
 ### <a name="new-presets"></a>新しいプリセット
 
-* [FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset) が組み込みのアナライザー プリセットに追加されました。
-* [ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset) が組み込みのエンコーダー プリセットに追加されました。 詳細については、[コンテンツに対応したエンコード](content-aware-encoding.md)に関する記事を参照してください。 
+* [FaceDetectorPreset](/rest/api/media/transforms/createorupdate#facedetectorpreset) が組み込みのアナライザー プリセットに追加されました。
+* [ContentAwareEncodingExperimental](/rest/api/media/transforms/createorupdate#encodernamedpreset) が組み込みのエンコーダー プリセットに追加されました。 詳細については、[コンテンツに対応したエンコード](content-aware-encoding.md)に関する記事を参照してください。 
 
 ## <a name="march-2019"></a>2019 年 3 月
 
-動的パッケージが Dolby Atmos 対応になりました。 詳細については、「[ダイナミック パッケージによってサポートされているオーディオ コーデック](dynamic-packaging-overview.md#audio-codecs)」を参照してください。
+動的パッケージが Dolby Atmos 対応になりました。 詳細については、「[ダイナミック パッケージによってサポートされているオーディオ コーデック](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging)」を参照してください。
 
 資産またはアカウント フィルターの一覧を指定できるようになりました。これはストリーミング ロケーターに適用されます。 詳細については、[フィルターとストリーミング ロケーターの関連付け](filters-concept.md#associating-filters-with-streaming-locator)に関する記事を参照してください。
 
@@ -224,21 +250,21 @@ V3 API の GA リリースの更新プログラム:
 
 ## <a name="november-2018"></a>2018 年 11 月
 
-CLI 2.0 モジュールが、[Azure Media Services v3 GA](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest) – v 2.0.50 で使用できるようになりました。
+CLI 2.0 モジュールが、[Azure Media Services v3 GA](/cli/azure/ams?view=azure-cli-latest) – v 2.0.50 で使用できるようになりました。
 
 ### <a name="new-commands"></a>新しいコマンド
 
-- [az ams account](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest)
-- [az ams account-filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
-- [az ams asset](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest)
-- [az ams asset-filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
-- [az ams content-key-policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
-- [az ams job](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
-- [az ams live-event](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
-- [az ams live-output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
-- [az ams streaming-endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
-- [az ams streaming-locator](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
-- [az ams account mru](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) - メディア占有ユニットを管理できます。 詳細については、「[メディア占有ユニットをスケーリングする](media-reserved-units-cli-how-to.md)」を参照してください。
+- [az ams account](/cli/azure/ams/account?view=azure-cli-latest)
+- [az ams account-filter](/cli/azure/ams/account-filter?view=azure-cli-latest)
+- [az ams asset](/cli/azure/ams/asset?view=azure-cli-latest)
+- [az ams asset-filter](/cli/azure/ams/asset-filter?view=azure-cli-latest)
+- [az ams content-key-policy](/cli/azure/ams/content-key-policy?view=azure-cli-latest)
+- [az ams job](/cli/azure/ams/job?view=azure-cli-latest)
+- [az ams live-event](/cli/azure/ams/live-event?view=azure-cli-latest)
+- [az ams live-output](/cli/azure/ams/live-output?view=azure-cli-latest)
+- [az ams streaming-endpoint](/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
+- [az ams streaming-locator](/cli/azure/ams/streaming-locator?view=azure-cli-latest)
+- [az ams account mru](/cli/azure/ams/account/mru?view=azure-cli-latest) - メディア占有ユニットを管理できます。 詳細については、「[メディア占有ユニットをスケーリングする](media-reserved-units-cli-how-to.md)」を参照してください。
 
 ### <a name="new-features-and-breaking-changes"></a>新機能と重大な変更
 
@@ -329,7 +355,7 @@ CMAF と 'cbcs' 暗号化のサポート。Apple HLS (iOS 11+) および、CMAF 
 
 ### <a name="video-indexer"></a>Video Indexer
 
-Video Indexer GA のリリースは 8 月に発表されました。 現在サポートされている機能に関する新しい情報については、「[Video Indexer とは](../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json)」をご覧ください。 
+Video Indexer GA のリリースは 8 月に発表されました。 現在サポートされている機能に関する新しい情報については、「[Video Indexer とは](../video-indexer/video-indexer-overview.md?bc=/azure/media-services/video-indexer/breadcrumb/toc.json&toc=/azure/media-services/video-indexer/toc.json)」をご覧ください。 
 
 ### <a name="plans-for-changes"></a>変更の計画
 
@@ -358,11 +384,15 @@ Media Services v3 CLI または API を使用して 9 月 28 日から 10 月 12
 
 ### <a name="known-issues"></a>既知の問題
 
-* ジョブを送信するときに、Azure Blob storage 内にあるファイルへの HTTPS URL、SAS の URL またはパスを使用して、ソース ビデオを取り込むように指定できます。 現時点では、AMS v3 には、HTTPS URL 経由でチャンク転送エンコード処理がサポートされていません。
+* ジョブを送信するときに、Azure Blob storage 内にあるファイルへの HTTPS URL、SAS の URL またはパスを使用して、ソース ビデオを取り込むように指定できます。 現在、Media Services v3 では HTTPS URL を介したチャンク転送エンコードはサポートされていません。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの送信、最新情報の入手
 
 「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
+
+## <a name="see-also"></a>関連項目
+
+[Media Services v2 から v3 への移行のガイダンス](migrate-from-v2-to-v3.md#known-issues)
 
 ## <a name="next-steps"></a>次のステップ
 

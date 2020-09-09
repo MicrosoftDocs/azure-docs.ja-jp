@@ -4,29 +4,25 @@ description: Azure App Service のアプリを Azure 仮想ネットワークと
 author: ccompy
 ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.topic: article
-ms.date: 04/16/2020
+ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 78b49b8b7e17f12d49825390a302e28a61e10d16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 399689f3f7d07a6e77128037be6b7439e7bf5184
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770837"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88960022"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>アプリを Azure 仮想ネットワークと統合する
 
-この記事では、Azure App Service の VNet 統合機能と、それを [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) のアプリで設定する方法について説明します。 [Azure Virtual Network][VNETOverview] (VNet) を使用すると、多くの Azure リソースをインターネットにルーティングできないネットワークに配置できます。
+この記事では、Azure App Service の VNet 統合機能と、それを [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) のアプリで設定する方法について説明します。 [Azure Virtual Network][VNETOverview] (VNet) を使用すると、多くの Azure リソースをインターネットにルーティングできないネットワークに配置できます。 VNet 統合機能を使用すると、アプリは VNet 内のリソースにアクセスするか、VNet を通じてリソースにアクセスできます。 VNet 統合では、アプリにプライベートでアクセスすることはできません。
 
-Azure App Service には、次の 2 つのバリエーションがあります。
+Azure App Service では、VNet 統合機能に次の 2 つのバリエーションがあります。
 
 [!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-types.md)]
 
 ## <a name="enable-vnet-integration"></a>VNET 統合を有効にする
-
-> [!NOTE]
-> Linux アプリのメニューで [ネットワーク] ブレードが無効 (グレー表示) になっている場合は、その機能が現在使用できないことを意味します。
->
 
 1. App Service ポータルで **[ネットワーク]** の UI に移動します。 **[VNet 統合]** の下の **[ここをクリックして構成]** を選択します。
 
@@ -75,8 +71,8 @@ App Service 内のアプリは、worker ロールでホストされます。 Bas
 
 ゲートウェイが必要な VNet 統合は次の場合は使用できません。
 
-* Linux アプリに対して。
 * Azure ExpressRoute で接続された VNet に対して。
+* Linux アプリから
 * サービス エンドポイントによって保護されているリソースにアクセスする場合。
 * ExpressRoute とポイント対サイトまたはサイト間 VPN の両方をサポートする共存ゲートウェイに対して。
 
@@ -127,7 +123,7 @@ VNet 統合インスタンスのアプリ ビューで実行できる操作は�
 
 App Service プランの VNet 統合の UI には、App Service プラン内のアプリによって使用されているすべての VNet 統合が表示されます。 各 VNet の詳細を表示するには、目的の VNet を選択します。 ここでは、ゲートウェイが必要な VNet 統合に対して実行できる操作が 2 つあります。
 
-* **ネットワークを同期する**: ネットワーク同期操作は、ゲートウェイに依存する VNet 統合機能に対してのみ使用されます。 ネットワーク同期操作を実行すると、証明書とネットワークの情報が確実に同期されるようになります。VNet の DNS を追加または変更する場合は、ネットワーク同期操作を実行する必要があります。 この操作では、この VNet を使用するすべてのアプリが再起動されます。
+* **ネットワークを同期する**: ネットワーク同期操作は、ゲートウェイに依存する VNet 統合機能に対してのみ使用されます。 ネットワーク同期操作を実行すると、証明書とネットワークの情報が確実に同期されるようになります。VNet の DNS を追加または変更する場合は、ネットワーク同期操作を実行する必要があります。 この操作では、この VNet を使用するすべてのアプリが再起動されます。 この操作は、使用しているアプリと VNet が異なるサブスクリプションに属している場合は機能しません。
 * **ルートを追加する**: ルートを追加すると、送信トラフィックが VNet に転送されます。
 
 ### <a name="gateway-required-vnet-integration-routing"></a>ゲートウェイが必要な VNET 統合のルーティング
@@ -155,25 +151,54 @@ VNet で定義されているルートが、アプリから VNet にトラフィ
 
 リージョン VNet 統合では CLI がサポートされています。 次のコマンドにアクセスするには、[Azure CLI をインストール][installCLI]します。
 
-        az webapp vnet-integration --help
+```azurecli
+az webapp vnet-integration --help
 
-        Group
-            az webapp vnet-integration : Methods that list, add, and remove virtual network integrations
-            from a webapp.
-                This command group is in preview. It may be changed/removed in a future release.
-        Commands:
-            add    : Add a regional virtual network integration to a webapp.
-            list   : List the virtual network integrations on a webapp.
-            remove : Remove a regional virtual network integration from webapp.
+Group
+    az webapp vnet-integration : Methods that list, add, and remove virtual network
+    integrations from a webapp.
+        This command group is in preview. It may be changed/removed in a future release.
+Commands:
+    add    : Add a regional virtual network integration to a webapp.
+    list   : List the virtual network integrations on a webapp.
+    remove : Remove a regional virtual network integration from webapp.
 
-        az appservice vnet-integration --help
+az appservice vnet-integration --help
 
-        Group
-            az appservice vnet-integration : A method that lists the virtual network integrations used in an
-            appservice plan.
-                This command group is in preview. It may be changed/removed in a future release.
-        Commands:
-            list : List the virtual network integrations used in an appservice plan.
+Group
+    az appservice vnet-integration : A method that lists the virtual network
+    integrations used in an appservice plan.
+        This command group is in preview. It may be changed/removed in a future release.
+Commands:
+    list : List the virtual network integrations used in an appservice plan.
+```
+
+リージョン VNet 統合では Powershell のサポートも提供されていますが、サブネットの resourceID のプロパティ配列を使用して汎用のリソースを作成する必要があります
+
+```azurepowershell
+# Parameters
+$sitename="myWebApp"
+$resourcegroupname="myRG"
+$VNetname="myVNet"
+$location="myRegion"
+$integrationsubnetname = "myIntegrationSubnet"
+$subscriptionID = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
+
+#Property array with the SubnetID
+$properties = @{
+      "subnetResourceId" = "/subscriptions/"+$subscriptionID+"/resourceGroups/"+$resourcegroupname+"/providers/Microsoft.Network/virtualNetworks/"+$VNetname+"/subnets/"+$integrationsubnetname;
+      }
+      
+#Creation of the VNet integration
+$resourceID = $sitename+"/VirtualNetwork"
+New-AzResource -ResourceName $resourceID `
+-Location $location  `
+-ResourceGroupName $resourcegroupname `
+-ResourceType Microsoft.Web/sites/networkConfig `
+-PropertyObject $properties 
+
+```
+
 
 ゲートウェイが必要な VNet 統合では、PowerShell を使用して App Service を Azure 仮想ネットワークと統合できます。 すぐに使用できるスクリプトについては、「[Azure App Service のアプリを Azure 仮想ネットワークに接続する](https://gallery.technet.microsoft.com/scriptcenter/Connect-an-app-in-Azure-ab7527e3)」をご覧ください。
 
@@ -187,19 +212,19 @@ VNet で定義されているルートが、アプリから VNet にトラフィ
 
 
 <!--Links-->
-[VNETOverview]: https://azure.microsoft.com/documentation/articles/virtual-networks-overview/ 
+[VNETOverview]: ../virtual-network/virtual-networks-overview.md
 [AzurePortal]: https://portal.azure.com/
 [ASPricing]: https://azure.microsoft.com/pricing/details/app-service/
 [VNETPricing]: https://azure.microsoft.com/pricing/details/vpn-gateway/
 [DataPricing]: https://azure.microsoft.com/pricing/details/data-transfers/
-[V2VNETP2S]: https://azure.microsoft.com/documentation/articles/vpn-gateway-howto-point-to-site-rm-ps/
+[V2VNETP2S]: ../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md
 [ILBASE]: environment/create-ilb-ase.md
 [V2VNETPortal]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md
 [VPNERCoex]: ../expressroute/expressroute-howto-coexist-resource-manager.md
 [ASE]: environment/intro.md
 [creategatewaysubnet]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#creategw
-[creategateway]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#creategw
-[setp2saddresses]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#addresspool
-[VNETRouteTables]: https://docs.microsoft.com/azure/virtual-network/manage-route-table/
-[installCLI]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest/
+[creategateway]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#creategw
+[setp2saddresses]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#addresspool
+[VNETRouteTables]: ../virtual-network/manage-route-table.md
+[installCLI]: /cli/azure/install-azure-cli?view=azure-cli-latest%2f
 [privateendpoints]: networking/private-endpoint.md

@@ -1,17 +1,17 @@
 ---
 title: Azure Data Share の監視方法
 description: Azure Data Share で招待の状態、共有サブスクリプション、スナップショット履歴を監視する方法について説明します。
-author: joannapea
-ms.author: joanpo
+author: jifems
+ms.author: jife
 ms.service: data-share
-ms.topic: conceptual
-ms.date: 07/10/2019
-ms.openlocfilehash: 15089dd99de0471c244a6c0d93931438442599a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 07/30/2020
+ms.openlocfilehash: 2a986afa1916d179834c516a26f76a2789f82452
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73490508"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87511889"
 ---
 # <a name="monitor-azure-data-share"></a>Azure Data Share の監視  
 
@@ -40,13 +40,17 @@ ms.locfileid: "73490508"
 
 ## <a name="snapshot-history"></a>スナップショットの履歴 
 
-履歴タブから、データ コンシューマーのテナントにコピーされたスナップショットを表示することができます。 各スナップショットの間隔について、頻度と期間を監視できます。 
+共有の **[履歴]** タブでは、データ プロバイダーからデータ コンシューマーのデータ ストアにデータがいつコピーされるかを表示できます。 各スナップショットの頻度、期間、および状態を監視できます。 
 
 ![スナップショットの履歴](./media/sent-shares.png "スナップショットの履歴") 
 
-実行開始日をクリックすると、各スナップショットの実行に関する詳細情報を表示できます。 
+実行開始日をクリックすると、各スナップショットの実行に関する詳細情報を表示できます。 次に、各データセットの状態をクリックして、転送されたデータの量、コピーされたファイルまたはレコードの数、スナップショットの期間、使用された仮想コアの数、およびエラー メッセージ (ある場合) を表示します。 
 
-既定では、最大 30 日分のスナップショット履歴が表示されます。 30 日を超える履歴を表示する必要がある場合、[監視]、[診断設定] の順に移動し、 **[診断設定の追加]** を選択します。 これらのログの格納先となるストレージ アカウントの選択が求められます。 
+最大 30 日分のスナップショット履歴が表示されます。 30 日を超える履歴を保存および表示する必要がある場合は、診断設定を利用できます。
+
+## <a name="diagnostic-setting"></a>診断設定
+
+診断設定を、ログ データまたはイベントを保存するように構成できます。 [監視] > [診断設定] の順に移動し、 **[診断設定を追加する]** を選択します。 目的のログ データまたはイベントを選択し、それらを格納または送信する場所を選択します。 
 
 ![スナップショットの履歴](./media/diagnostic-settings.png "診断設定") 
 

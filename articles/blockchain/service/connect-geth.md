@@ -1,19 +1,19 @@
 ---
 title: Geth を使用して Azure Blockchain Service に接続する
 description: Azure Blockchain Service のトランザクション ノード上の Geth インスタンスに接続します
-ms.date: 11/20/2019
+ms.date: 05/26/2020
 ms.topic: quickstart
-ms.reviewer: janders
-ms.openlocfilehash: 9da78eac1dc429bcc0ad52bb9cb2f1fb743a90d4
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.reviewer: maheshna
+ms.openlocfilehash: 2c5b6a56d96ac132949052e9879c8f61d41ffb06
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74455830"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994785"
 ---
 # <a name="quickstart-use-geth-to-attach-to-an-azure-blockchain-service-transaction-node"></a>クイック スタート:Geth を使用して Azure Blockchain Service のトランザクション ノードに接続する
 
-このクイックスタートでは、Geth クライアントを使用して Azure Blockchain Service トランザクション ノード上の Geth インスタンスに接続します。 接続したら、Geth の JavaScript コンソールを使用して web3 JavaScript Dapp API を呼び出します。
+このクイックスタートでは、Geth クライアントを使用して Azure Blockchain Service トランザクション ノード上の Geth インスタンスに接続します。 接続したら、Geth コンソールを使用して Ethereum JavaScript API を呼び出します。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -45,7 +45,7 @@ Azure Blockchain Service トランザクションノードの Geth 接続文字�
     geth attach <connection string>
     ```
 
-1. トランザクション ノードの Ethereum コンソールに接続すると、web3 JavaScript Dapp API または admin API を呼び出すことができます。
+1. トランザクション ノードの Ethereum コンソールに接続すると、Ethereum JavaScript API を使用することができます。
 
     たとえば、chainId を見つけるには次の API を使用します。
 

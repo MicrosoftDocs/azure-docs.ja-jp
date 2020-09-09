@@ -8,16 +8,16 @@ author: sabbour
 ms.author: asabbour
 keywords: aro、openshift、az aro、red hat、cli
 ms.custom: mvc
-ms.openlocfilehash: 45da3034891e5a82fb8423adb6bcd5e867f9d4e2
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 393185d2167e18df3f8c1319e7367efbc437de1a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204800"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590338"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-cli"></a>Azure Red Hat OpenShift 4 クラスターの Azure Active Directory 認証を構成する (CLI)
 
-CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0.75 以降を実行していることが要件となります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
+CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.6.0 以降を実行していることが要件となります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
 
 Azure Active Directory アプリケーションの構成に使用するクラスター固有の URL を取得します。
 
@@ -97,7 +97,7 @@ EOF
 
 ## <a name="update-the-azure-active-directory-applications-optionalclaims-with-a-manifest"></a>Azure Active Directory アプリケーションの optionalClaims をマニフェストで更新する
 
-**\<AppID>** を、上記の手順で取得した ID に置き換えます。
+**\<AppID>** を以前に取得した ID に置き換えます。
 
 ```azurecli-interactive
 az ad app update \
@@ -109,7 +109,7 @@ az ad app update \
 
 Azure Active Directory からユーザー情報を読み取れるようにするには、適切なスコープを定義する必要があります。
 
-**\<AppID>** を、上記の手順で取得した ID に置き換えます。
+**\<AppID>** を以前に取得した ID に置き換えます。
 
 **Azure Active Directory Graph.User.Read** スコープでサインインとユーザー プロファイルの読み取りを有効にする権限を追加します。
 
@@ -148,21 +148,21 @@ az aro list-credentials \
 }
 ```
 
-次のコマンドを使用して、OpenShift クラスターの API サーバーにログインします。 `$apiServer` 変数は、[以前]()設定されています。 **\<kubeadmin password>** を、取得したパスワードに置き換えます。
+次のコマンドを使用して、OpenShift クラスターの API サーバーにログインします。 `$apiServer` 変数は、[以前]()設定されています。 **\<kubeadmin password>** を取得したパスワードに置き換えます。
 
 ```azurecli-interactive
 oc login $apiServer -u kubeadmin -p <kubeadmin password>
 ```
 
-Azure Active Directory アプリケーション シークレットを格納する OpenShift シークレットを作成し、 **\<ClientSecret>** を上記の手順で取得したシークレットに置き換えます。
+Azure Active Directory アプリケーション シークレットを格納するための OpenShift シークレットを作成し、 **\<ClientSecret>** を以前に取得したシークレットに置き換えます。
 
 ```azurecli-interactive
 oc create secret generic openid-client-secret-azuread \
   --namespace openshift-config \
   --from-literal=clientSecret=<ClientSecret>
-```    
+```
 
-**oidc.yaml** ファイルを作成し、Azure Active Directory に対して OpenShift OpenID 認証を構成します。 **\<AppID>** および **\<TenantId>** を、上記の手順で取得した値に置き換えます。
+**oidc.yaml** ファイルを作成し、Azure Active Directory に対して OpenShift OpenID 認証を構成します。 **\<AppID>** と **\<TenantId>** を以前に取得した値に置き換えます。
 
 ```bash
 cat > oidc.yaml<< EOF
@@ -177,20 +177,20 @@ spec:
     type: OpenID
     openID:
       clientID: <AppId>
-      clientSecret: 
+      clientSecret:
         name: openid-client-secret-azuread
-      extraScopes: 
+      extraScopes:
       - email
       - profile
-      extraAuthorizeParameters: 
+      extraAuthorizeParameters:
         include_granted_scopes: "true"
       claims:
-        preferredUsername: 
+        preferredUsername:
         - email
         - upn
-        name: 
+        name:
         - name
-        email: 
+        email:
         - email
       issuer: https://login.microsoftonline.com/<TenantId>
 EOF

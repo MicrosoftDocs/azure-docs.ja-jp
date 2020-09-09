@@ -1,6 +1,6 @@
 ---
 title: VM のネットワーク スループットの最適化 | Microsoft Docs
-description: Azure 仮想マシンのネットワーク スループットを最適化する方法について説明します。
+description: Microsoft Azure の Windows VM および Linux VM (Ubuntu、CentOS、Red Hat などの主要ディストリビューションを含む) のネットワーク スループットを最適化します。
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2017
 ms.author: steveesp
-ms.openlocfilehash: be5f38bdeaf51dbe23006ecf30b4deb66aa7402a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7b693d10b4e1925e9c07111982a616b56b77e5b6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75690895"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87265145"
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Azure 仮想マシンのネットワーク スループットの最適化
 

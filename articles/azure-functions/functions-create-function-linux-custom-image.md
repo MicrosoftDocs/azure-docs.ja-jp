@@ -3,20 +3,20 @@ title: カスタム イメージを使用して Linux 上で Azure Functions を
 description: カスタム Linux イメージで実行する Azure Functions を作成する方法について説明します。
 ms.date: 03/30/2020
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: fee4e16bd77664e541eeb36cb807a77d13191899
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f068f91a104c15099809343438cc925fb8856248
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82165724"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146863"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>カスタム コンテナーを使用して Linux で関数を作成する
 
 このチュートリアルでは、コードを作成し、Linux の基本イメージを使用したカスタム Docker コンテナーとして Azure Functions にデプロイします。 カスタム イメージを使用するのは通常、特定の言語バージョン、特定の依存関係、または組み込みイメージで提供されない構成が関数に必要になるときです。
 
-[Linux でホストされる初めての関数の作成](functions-create-first-azure-function-azure-cli-linux.md)に関するページで説明されている既定の Azure App Service コンテナーを使用することもできます。 Azure Functions でサポートされている基本イメージについては、[Azure Functions 基本イメージ リポジトリ](https://hub.docker.com/_/microsoft-azure-functions-base)を参照してください。
+[Linux でホストされる初めての関数の作成](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python)に関するページで説明されている既定の Azure App Service コンテナーを使用することもできます。 Azure Functions でサポートされている基本イメージについては、[Azure Functions 基本イメージ リポジトリ](https://hub.docker.com/_/microsoft-azure-functions-base)を参照してください。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -81,17 +81,19 @@ func init LocalFunctionsProject --worker-runtime node --language typescript --do
 
 # <a name="bash"></a>[bash](#tab/bash)
 ```bash
-mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype -Ddocker
+mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype -DjavaVersion=8 -Ddocker
 ```
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 ```powershell
-mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-Ddocker"
+mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-DjavaVersion=8" "-Ddocker"
 ```
 # <a name="cmd"></a>[Cmd](#tab/cmd)
 ```cmd
-mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-Ddocker"
+mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-DjavaVersion=8" "-Ddocker"
 ```
 ---
+
+`-DjavaVersion` パラメーターは、使用する Java のバージョンを Functions Runtime に指示します。 プレビュー段階にある Java 11 で関数を実行する場合は、`-DjavaVersion=11` を使用します。 `-DjavaVersion` を指定しない場合、Maven の既定値は Java 8 になります。 詳細については、「[Java のバージョン](functions-reference-java.md#java-versions)」を参照してください。
 
 Maven により、デプロイ時にプロジェクトの生成を終了するための値の入力が求められます。   
 入力を求められたら、次の値を入力します。
@@ -156,7 +158,7 @@ mvn azure-functions:run
 
 ## <a name="build-the-container-image-and-test-locally"></a>コンテナー イメージを作成してローカルでテストする
 
-(省略可) プロジェクト フォルダーのルートにある *Dockerfile" を確認します。 Dockerfile には、Linux 上で関数アプリを実行するために必要な環境が記述されています。  Azure Functions でサポートされている基本イメージの詳細な一覧については、[Azure Functions 基本イメージ ページ](https://hub.docker.com/_/microsoft-azure-functions-base)を参照してください。
+(省略可) プロジェクト フォルダーのルートにある *Dockerfile* を確認します。 Dockerfile には、Linux 上で関数アプリを実行するために必要な環境が記述されています。  Azure Functions でサポートされている基本イメージの詳細な一覧については、[Azure Functions 基本イメージ ページ](https://hub.docker.com/_/microsoft-azure-functions-base)を参照してください。
     
 ルート プロジェクト フォルダーで、[docker build](https://docs.docker.com/engine/reference/commandline/build/) コマンドを実行し、名前に `azurefunctionsimage`、タグに `v1.0.0` を指定します。 `<DOCKER_ID>` を Docker Hub アカウント ID で置換します。 このコマンドでは、コンテナーの Docker イメージがビルドされます。
 
@@ -295,17 +297,24 @@ Azure 上の関数アプリにイメージをデプロイしたら、HTTP 要求
 
     # <a name="portal"></a>[ポータル](#tab/portal)
 
-    1. Azure portal にサインインし、ページの上部にある**検索**ボックスに関数アプリの名前を入力して、目的の関数アプリを検索します。 その結果から **App Service** リソースを選択します。
+    1. Azure portal にサインインし、"**関数アプリ**" を検索して選択します。
 
-    1. 左側のナビゲーション パネルの **[関数 (読み取り専用)]** で、目的の関数の名前を選択します。
+    1. 検証する関数を選択します。
 
-    1. 詳細パネルで **[</> 関数の URL の取得]** を選択します。
+    1. 左側のナビゲーション パネルで **[関数]** を選択し、検証する関数を選択します。
+
+        ![Azure portal で関数を選択する](./media/functions-create-function-linux-custom-image/functions-portal-select-function.png)   
+
     
-        ![Azure portal の [関数の URL の取得] コマンド](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key.png)   
+    1. **[関数の URL の取得]** を選択します。
 
-    1. ポップアップで **[default (Function key)]\(既定 (関数キー)\)** を選択し、 **[コピー]** を選択します。 `?code=` に続く文字列がキーです
+        ![Azure portal から関数 URL を取得する](./media/functions-create-function-linux-custom-image/functions-portal-get-function-url.png)   
 
-        ![Azure portal からの関数 URL のコピー](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key-popup.png)   
+    
+    1. ポップアップ ウィンドウで、 **[default (function key)]\(既定 (関数キー)\)** を選択し、URL をクリップボードにコピーします。 `?code=` に続く文字列がキーです
+
+        ![既定の関数アクセス キーを選択する](./media/functions-create-function-linux-custom-image/functions-portal-copy-url.png)   
+
 
     > [!NOTE]  
     > 関数アプリはコンテナーとしてデプロイされるため、ポータルでその関数コードを変更することはできません。 ローカル イメージでプロジェクトを更新して、再度イメージをレジストリにプッシュした後、Azure に再デプロイする必要があります。 後続のセクションで継続的デプロイを設定することができます。
@@ -340,11 +349,11 @@ Azure 上の関数アプリにイメージをデプロイしたら、HTTP 要求
 
     ---
 
-1. 関数 URL をブラウザーのアドレス バーに貼り付けます。この URL の末尾にパラメーター `&name=Azure` を追加してください。 "Hello Azure" といったテキストがブラウザーに表示されます。
+1. 関数 URL をブラウザーのアドレス バーに貼り付けます。この URL の末尾にパラメーター `&name=Azure` を追加してください。 "Hello, Azure" のようなテキストがブラウザーに表示されます。
 
     ![ブラウザーでの関数の応答。](./media/functions-create-function-linux-custom-image/function-app-browser-testing.png)
 
-1. 承認をテストするために、URL から code= パラメーターを取り除き、関数から応答がないことを確認します。
+1. 承認をテストするために、URL から `code=` パラメーターを取り除き、関数から応答がないことを確認します。
 
 
 ## <a name="enable-continuous-deployment-to-azure"></a>Azure への継続的デプロイを有効にする
@@ -375,7 +384,7 @@ SSH では、コンテナーとクライアント間の通信をセキュリテ�
 
     ::: zone pivot="programming-language-csharp"
     ```Dockerfile
-    FROM microsoft/dotnet:2.2-sdk-appservice AS installer-env
+    FROM mcr.microsoft.com/azure-functions/dotnet:3.0-appservice
     ```
     ::: zone-end
 
@@ -402,9 +411,7 @@ SSH では、コンテナーとクライアント間の通信をセキュリテ�
     FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
     ```
     ::: zone-end
-
-    基本イメージ間の違いは、[App Services のカスタム Docker イメージに関するチュートリアル](../app-service/containers/tutorial-custom-docker-image.md#enable-ssh-connections)で説明されています。
-
+    
 1. もう一度 `docker build` コマンドを使用してイメージをリビルドします。`<docker_id>` は、実際の Docker ID に置き換えてください。
 
     ```
@@ -429,7 +436,7 @@ SSH では、コンテナーとクライアント間の通信をセキュリテ�
 
 ## <a name="write-to-an-azure-storage-queue"></a>Azure Storage キューに書き込む
 
-Azure Functions を使用すると、独自の統合コードを記述しなくても、他の Azure サービスやリソースに関数を接続できます。 これらの*バインド*は、入力と出力の両方を表し、関数定義内で宣言されます。 バインドからのデータは、パラメーターとして関数に提供されます。 "*トリガー*" は、特殊な種類の入力バインドです。 関数はトリガーを 1 つしか持てませんが、複数の入力および出力バインドを持つことができます。 詳細については、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md)」を参照してください。
+Azure Functions を使用すると、独自の統合コードを記述することなく他の Azure サービスやリソースに関数を接続できます。 これらの*バインド*は、入力と出力の両方を表し、関数定義内で宣言されます。 バインドからのデータは、パラメーターとして関数に提供されます。 "*トリガー*" は、特殊な種類の入力バインドです。 関数はトリガーを 1 つしか持てませんが、複数の入力および出力バインドを持つことができます。 詳細については、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md)」を参照してください。
 
 このセクションでは、関数と Azure Storage キューを統合する方法について説明します。 この関数に追加する出力バインドは、HTTP 要求のデータをキュー内のメッセージに書き込みます。
 
@@ -481,7 +488,7 @@ Azure Functions を使用すると、独自の統合コードを記述しなく�
 1. ルート フォルダーで `docker build` コマンドを再度実行します。今回は、タグ内のバージョンを `v1.0.1` に更新します。 以前と同様に、`<docker_id>` を Docker Hub アカウント ID に置き換えてください。
 
     ```
-    docker build --tag <docker_id>/azurefunctionsimage:v1.0.1
+    docker build --tag <docker_id>/azurefunctionsimage:v1.0.1 .
     ```
     
 1. `docker push` を使用して、更新済みのイメージをリポジトリにプッシュして戻します。

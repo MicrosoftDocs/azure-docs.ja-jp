@@ -4,15 +4,15 @@ description: この記事では、Azure Portal を使用してローカル ネ�
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
-ms.date: 06/19/2017
+ms.topic: how-to
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: fdb98242cede36f818604a7a5d713f5f7c75daad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57288d49fdfa193e9ebebe5f2ce4d24327997980
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75864028"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89392478"
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-portal"></a>Azure Portal を使用したローカル ネットワーク ゲートウェイの設定の変更
 

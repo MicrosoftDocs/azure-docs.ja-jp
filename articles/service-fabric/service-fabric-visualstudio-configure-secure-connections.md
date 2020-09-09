@@ -5,12 +5,12 @@ author: cawaMS
 ms.topic: conceptual
 ms.date: 8/04/2017
 ms.author: cawa
-ms.openlocfilehash: 11f76153726d3fc92118fb46cc61b4627ab6a1b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d4d6b781d97d481793e69cf2ca97cca5b93ce432
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75464101"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256095"
 ---
 # <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Visual Studio から Service Fabric クラスターにセキュリティ保護された接続を構成する
 アクセス制御ポリシーが構成されている Azure Service Fabric クラスターに Visual Studio を使用して安全にアクセスする方法について説明します。
@@ -35,9 +35,9 @@ Visual Studio から Service Fabric プロジェクトを発行するには、 *
 3. プロジェクトのショートカット メニューで **[発行]** を選択し、 **[Azure アプリケーションの公開]** ダイアログ ボックスを開いて、対象のクラスターを選択します。 自動的に接続が解決され、発行プロファイルにセキュリティ保護された接続パラメーターが保存されます。
 4. 省略可能:発行プロファイルを編集して、セキュリティで保護されたクラスター接続を指定できます。
    
-   発行プロファイルの XML ファイルを手動で編集して証明書の情報を指定するため、証明書ストアの名前、ストアの場所、および証明書の拇印をメモしておいてください。 後で、証明書ストアの名前とストアの場所に対して値の指定が必要になります。 UnitTesting.Conditions.ExportTestConditionAttribute について詳しくは、「[証明書のサムプリントを取得する](https://msdn.microsoft.com/library/ms734695\(v=vs.110\).aspx)」を参照して詳細を確認してください。
+   発行プロファイルの XML ファイルを手動で編集して証明書の情報を指定するため、証明書ストアの名前、ストアの場所、および証明書の拇印をメモしておいてください。 後で、証明書ストアの名前とストアの場所に対して値の指定が必要になります。 UnitTesting.Conditions.ExportTestConditionAttribute について詳しくは、「[証明書のサムプリントを取得する](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)」を参照して詳細を確認してください。
    
-   *ClusterConnectionParameters* パラメーターを使用して、Service Fabric クラスターに接続するときに使用する PowerShell のパラメーターを指定できます。 Connect-ServiceFabricCluster コマンドレットが受け取るパラメーターをすべて使用できます。 使用可能なパラメーターの一覧については、「 [Connect-ServiceFabricCluster](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster) 」を参照してください。
+   *ClusterConnectionParameters* パラメーターを使用して、Service Fabric クラスターに接続するときに使用する PowerShell のパラメーターを指定できます。 Connect-ServiceFabricCluster コマンドレットが受け取るパラメーターをすべて使用できます。 使用可能なパラメーターの一覧については、「 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) 」を参照してください。
    
    リモート クラスターに発行する場合は、そのクラスターに適したパラメーターを指定する必要があります。 次は、セキュリティ保護されていないクラスターに接続する場合の例です。
    

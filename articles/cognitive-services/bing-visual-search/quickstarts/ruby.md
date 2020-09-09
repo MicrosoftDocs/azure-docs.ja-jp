@@ -8,45 +8,47 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: e19f582084bec6915f95cf16fd8571b8d99da6fd
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 20c5ef930af8cc279f63432e9e3a14a0767ca592
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75379642"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870359"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>クイック スタート:Bing Visual Search REST API と Ruby を使用して画像に関する分析情報を取得する
 
-このクイック スタートでは、Ruby プログラミング言語を使用して Bing Visual Search を呼び出し、結果を表示します。 POST 要求で画像を API エンドポイントにアップロードします。 結果には、アップロードされた画像に類似した画像に関する URL と説明情報が含まれます。
+このクイックスタートを使用して、Ruby プログラミング言語で Bing Visual Search API を呼び出してみましょう。 POST 要求で画像を API エンドポイントにアップロードします。 結果には、アップロードされた画像に類似した画像に関する URL と説明情報が含まれます。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを実行するには:
-
-* [Ruby 2.4 以降](https://www.ruby-lang.org/en/downloads/)のインストール
+* [Ruby 2.4 以降](https://www.ruby-lang.org/en/downloads/)をインストールします。
 * サブスクリプション キーを取得します。
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="project-and-required-modules"></a>プロジェクトと必須のモジュール
 
-お使いの IDE またはエディターで新しい Ruby プロジェクトを作成します。 `net/http`、`uri`、および `json` をインポートして結果の JSON テキストを処理します。 `base64` ライブラリは、ファイル名の文字列をエンコードするために使用されます。 
+お使いの IDE またはエディターで新しい Ruby プロジェクトを作成します。 `net/http`、`uri`、および `json` をインポートして結果の JSON テキストを処理します。 ファイル名の文字列をエンコードする `base64` ライブラリをインポートします。 
 
-```
+```ruby
 require 'net/https'
 require 'uri'
 require 'json'
 require 'base64'
-
 ```
 
 ## <a name="define-variables"></a>変数の定義
 
-次のコードは必要な変数を割り当てます。 エンドポイントが正しいことを確認し、`accessKey` の値を Azure アカウントのサブスクリプション キーに置き換えます。  `batchNumber` は Post データの前後の境界に必要な GUID です。  `fileName` 変数は、POST の画像ファイルを識別します。  `if` ブロックは、有効なサブスクリプション キーをテストします。
+次のコードは main 関数を宣言し、必要な変数を割り当てます。 
 
-```
+1. エンドポイントが正しいことを確認し、`accessKey` の値を Azure アカウントの有効なサブスクリプション キーに置き換えます。 
+2. `batchNumber` には、POST データの前後の境界に必要な GUID を割り当てます。 
+3. `fileName` には、POST に使用する画像ファイルを割り当てます。 
+4. `if` ブロックは、有効なサブスクリプション キーをテストします。
+
+```ruby
 accessKey = "ACCESS-KEY"
 uri  = "https://api.cognitive.microsoft.com"
 path = "/bing/v7.0/images/visualsearch"
@@ -63,40 +65,40 @@ end
 
 ## <a name="form-data-for-post-request"></a>POST 要求のフォーム データ
 
-POST への画像データは前後の境界で囲まれています。 次の関数で境界を設定します。
+1. POST への画像データを前後の境界で囲みます。 次の関数で境界を設定します。
 
-```
-def BuildFormDataStart(batNum, fileName)
-    startBoundary = "--batch_" + batNum
-    return startBoundary + "\r\n" + "Content-Disposition: form-data; name=\"image\"; filename=" + "\"" + fileName + "\"" + "\r\n\r\n"   
-end
+   ```ruby
+   def BuildFormDataStart(batNum, fileName)
+       startBoundary = "--batch_" + batNum
+       return startBoundary + "\r\n" + "Content-Disposition: form-data; name=\"image\"; filename=" + "\"" + fileName + "\"" + "\r\n\r\n"    
+   end
 
-def BuildFormDataEnd(batNum)
-    return "\r\n\r\n" + "--batch_" + batNum + "--" + "\r\n"
-end
-```
+   def BuildFormDataEnd(batNum)
+       return "\r\n\r\n" + "--batch_" + batNum + "--" + "\r\n"
+   end
+   ```
 
-次に、エンドポイント URI と、POST 本文を含む配列を構築します。  前の関数を使用して、先頭の境界を配列に読み込みます。 画像ファイルを配列に読み込みます。 次に、末尾の境界を配列に読み込みます。
+2. エンドポイント URI と、POST 本文を含む配列を構築します。 前の関数を使用して、先頭の境界を配列に読み込みます。 画像ファイルを配列に読み取ったら、末尾の境界を配列に読み取ります。
 
-```
-uri = URI(uri + path)
-print uri
-print "\r\n\r\n"
+   ```ruby
+   uri = URI(uri + path)
+   print uri
+   print "\r\n\r\n"
 
-post_body = []
+   post_body = []
 
-post_body << BuildFormDataStart(batchNumber, fileName)
+   post_body << BuildFormDataStart(batchNumber, fileName)
 
-post_body << File.read(fileName) #Base64.encode64(File.read(fileName))
+   post_body << File.read(fileName) #Base64.encode64(File.read(fileName))
 
-post_body << BuildFormDataEnd(batchNumber)
-```
+   post_body << BuildFormDataEnd(batchNumber)
+   ```
 
 ## <a name="create-the-http-request"></a>HTTP 要求を作成する
 
-`Ocp-Apim-Subscription-Key` ヘッダーを設定します。  要求を作成します。 次に、ヘッダーとコンテンツの種類を割り当てます。 以前に作成した POST 本文を要求に追加します。
+`Ocp-Apim-Subscription-Key` ヘッダーを設定します。 要求を作成したら、ヘッダーとコンテンツの種類を割り当てます。 以前に作成した POST 本文を要求に追加します。
 
-```
+```ruby
 header = {'Ocp-Apim-Subscription-Key': accessKey}
 request = Net::HTTP::Post.new(uri)  # , 'ImageKnowledge' => 'ImageKnowledge'
 
@@ -108,9 +110,9 @@ request.body = post_body.join
 
 ## <a name="request-and-response"></a>要求と応答
 
-Ruby は要求を送信し、次のコード行で応答を取得します。
+Ruby は要求を送信し、次のコードで応答を取得します。
 
-```
+```ruby
 response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
    http.request(request)
 end
@@ -121,7 +123,7 @@ end
 
 応答のヘッダーを出力し、JSON ライブラリを使用して出力の書式を設定します。
 
-```
+```ruby
 puts "\nRelevant Headers:\n\n"
 response.each_header do |key, value|
     if key.start_with?("bingapis-") or key.start_with?("x-msedge-") then
@@ -134,11 +136,11 @@ puts JSON::pretty_generate(JSON(response.body))
 
 ```
 
-## <a name="results"></a>結果
+## <a name="json-response"></a>JSON 応答
 
 次の JSON は出力のセグメントです。
 
-```
+```JSON
 Relevant Headers:
 
 bingapis-traceid: 6E19E78D4FEC4A61AB4F85977EEDB8E6
@@ -284,5 +286,5 @@ JSON Response:
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Bing Visual Search の概要](../overview.md)
+> [Bing Visual Search API とは](../overview.md)
 > [Visual Search のシングルページ Web アプリを作成する](../tutorial-bing-visual-search-single-page-app.md)

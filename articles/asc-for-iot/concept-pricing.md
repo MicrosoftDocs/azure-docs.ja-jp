@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/27/2019
 ms.author: mlottner
-ms.openlocfilehash: fe117cf8d05ba3392b71858acf94d1fc88c1a527
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 98afd1eb1f8a73c2d6dd3f293a07cdb70780d238
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81311563"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004768"
 ---
 # <a name="pricing-and-associated-costs"></a>価格と関連コスト
 
@@ -54,7 +54,7 @@ Azure Security Center for IoT には、直接の価格には含まれない関�
 
 次の表では、関連コストの概要と各オプションの影響を示します。
 
-|     | 使用法 | 解説 |
+| オプション | 使用法 | 解説 |
 | --- | --- | --- |
 | **Log Analytics ストレージ** |  |
 | デバイスの推奨事項とアラート| サービスによって生成されるセキュリティ推奨事項とアラート | 非オプション |

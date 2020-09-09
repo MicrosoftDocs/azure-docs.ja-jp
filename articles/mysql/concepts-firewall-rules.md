@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/15/2020
-ms.openlocfilehash: a82d2317314c79a82fe80c5a25afc950fb728815
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/17/2020
+ms.openlocfilehash: c677b0278d29c499d4369967c1c76132a1ae9d21
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76155198"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519849"
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Azure Database for MySQL サーバーのファイアウォール規則
 ファイアウォールは、どのコンピューターに権限を持たせるかを指定するまで、データベース サーバーへのすべてのアクセスを遮断します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてサーバーへのアクセス権を付与します。
@@ -66,8 +66,12 @@ Microsoft Azure Database for MySQL サーバー サービスに期待どおり�
 
 * **サーバーの IP がパブリックのように見える:** Azure Database for MySQL サーバーへの接続は、パブリックにアクセス可能な Azure ゲートウェイ経由でルーティングされます。 しかし、実際のサーバー IP は、ファイアウォールによって保護されています。 詳細については、[接続アーキテクチャに関する記事](concepts-connectivity-architecture.md)をご覧ください。 
 
+* **許可されている IP を使用して Azure リソースから接続できない:** 接続元のサブネットに対して、**Microsoft.Sql** サービス エンドポイントが有効になっているかどうかを確認します。 サブネットで **Microsoft.Sql** が有効になっている場合は、そのサブネットで [VNet サービス エンドポイント規則](concepts-data-access-and-security-vnet.md)のみを使用することを指定します。
+
+   たとえば、**Microsoft.Sql** 有効になっていても、対応する VNet ルールがないサブネット内の Azure VM から接続している場合、次のエラーが表示されることがあります: `FATAL: Client from Azure Virtual Networks is not allowed to access the server`
+
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Portal を使用した Azure Database for MySQL ファイアウォール規則の作成と管理](./howto-manage-firewall-using-portal.md)
 * [Azure CLI を使用した Azure Database for MySQL ファイアウォール規則の作成と管理](./howto-manage-firewall-using-cli.md)
-- [Azure Database for MySQL での VNet サービス エンドポイント](./concepts-data-access-and-security-vnet.md)
+* [Azure Database for MySQL での VNet サービス エンドポイント](./concepts-data-access-and-security-vnet.md)

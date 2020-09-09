@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
 ms.openlocfilehash: e3028a9f046edb4013d8a2d6ec88d8c3cb2ca489
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218813"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691715"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Language Understanding (LUIS) Cognitive Services でのデータの格納と削除
 LUIS では、キーによって指定された領域に対応する Azure のデータ ストアに、データが暗号化されて格納されます。 このデータは 30 日間保存されます。 

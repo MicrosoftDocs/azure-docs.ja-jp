@@ -1,14 +1,14 @@
 ---
 title: 新しい Azure ポリシー定義の影響を評価する
 description: Azure 環境に新しいポリシー定義を導入するときの手順について説明します。
-ms.date: 09/23/2019
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 394f87c0328bce46d4c7177a336a7861991ad0e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 243f04cc20e1fb7167306b925a0e494b34cf1267
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187751"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544704"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy-definition"></a>新しい Azure ポリシー定義の影響を評価する
 
@@ -33,8 +33,7 @@ Azure Policy は、Azure リソースをビジネス標準に合わせて管理�
 
 ## <a name="audit-existing-resources"></a>既存のリソースを監査する
 
-新しいポリシー定義で新しいリソースまたは更新されたリソースを管理する前に、テスト リソース グループなど、既存リソースの限られたサブセットがどのように評価されるか確認することをお勧めします。 ポリシー割り当てに対して[適用モード](./assignment-structure.md#enforcement-mode)
- "_無効_" (DoNotEnforce) を使用して、[効果](./effects.md)がトリガーされたり、アクティビティ ログ エントリが作成されたりしないようにします。
+新しいポリシー定義で新しいリソースまたは更新されたリソースを管理する前に、テスト リソース グループなど、既存リソースの限られたサブセットがどのように評価されるか確認することをお勧めします。 ポリシー割り当てに対して[適用モード](./assignment-structure.md#enforcement-mode) "_無効_" (DoNotEnforce) を使用して、[効果](./effects.md)がトリガーされたり、アクティビティ ログ エントリが作成されたりしないようにします。
 
 このステップでは、ワークフローに影響を与えずに、既存のリソースに対する新しいポリシーのコンプライアンス結果を評価することができます。 準拠しているリソースが非準拠としてマークされないこと ("_擬陽性_")、非準拠と想定されるすべてのリソースが正しくマークされることを確認します。
 リソースの最初のサブセットが想定どおりに検証された後、評価をすべての既存リソースに徐々に拡大します。

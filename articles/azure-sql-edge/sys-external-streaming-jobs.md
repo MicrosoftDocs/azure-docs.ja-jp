@@ -2,19 +2,19 @@
 title: sys.external_streaming_jobs (Transact-SQL) - Azure SQL Edge (プレビュー)
 description: Azure SQL Edge (プレビュー) での sys.external_streaming_jobs の使用方法について説明します
 keywords: sys.external_streaming_jobs、SQL Edge
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: reference
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
-ms.openlocfilehash: 7d4f66375c5490906e773c6f105a029c3a88465c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c4da73e3197df894a0726556b4e92141818a520e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594461"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84233081"
 ---
 # <a name="sysexternal_streaming_jobs-transact-sql"></a>sys.external_streaming_jobs (Transact-SQL)
 

@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: 29acd1b00d23e4f1c2f241027dadbbb406e5e049
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7b4a622de142fd44b64015c8238f44dafc34ce72
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190791"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133703"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>多層 SAP NetWeaver アプリ デプロイのディザスター リカバリーを設定する
 
@@ -28,9 +28,9 @@ Site Recovery を使用すると、次のことができます。
 
 この記事の内容を学習するには、次のタスクの実行方法を知っている必要があります。
 
-* [仮想マシンを Azure にレプリケートする](azure-to-azure-walkthrough-enable-replication.md)
-* [復旧ネットワークを設計する](site-recovery-azure-to-azure-networking-guidance.md)
-* [Azure へのテスト フェールオーバーを実行する](azure-to-azure-walkthrough-test-failover.md)
+* [仮想マシンを Azure にレプリケートする](./azure-to-azure-tutorial-enable-replication.md)
+* [復旧ネットワークを設計する](./azure-to-azure-about-networking.md)
+* [Azure へのテスト フェールオーバーを実行する](./azure-to-azure-tutorial-dr-drill.md)
 * [Azure へのフェールオーバーを実行する](site-recovery-failover.md)
 * [ドメイン コントローラーをレプリケートする](site-recovery-active-directory.md)
 * [SQL Server インスタンスをレプリケートする](site-recovery-sql.md)
@@ -111,7 +111,7 @@ Site Recovery を使用することで、複数の Azure リージョンにま�
 
 ## <a name="replicate-virtual-machines"></a>仮想マシンのレプリケート
 
-Azure ディザスター リカバリー データ センターへのすべての SAP アプリケーション仮想マシンのレプリケートを開始するには、「[仮想マシンを Azure にレプリケートする](azure-to-azure-walkthrough-enable-replication.md)」セクションの手順に従います。
+Azure ディザスター リカバリー データ センターへのすべての SAP アプリケーション仮想マシンのレプリケートを開始するには、「[仮想マシンを Azure にレプリケートする](./azure-to-azure-tutorial-enable-replication.md)」セクションの手順に従います。
 
 * Active Directory と DNS の保護については、[Active Directory と DNS の保護の方法](site-recovery-active-directory.md)を学習してください。
 

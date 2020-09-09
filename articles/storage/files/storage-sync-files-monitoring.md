@@ -1,18 +1,18 @@
 ---
 title: Azure File Sync 監視する | Microsoft Docs
-description: Azure File Sync の監視方法。
+description: Azure Monitor、ストレージ同期サービス、および Windows Server を使用して Azure File Sync デプロイを監視する方法について説明します。
 author: roygara
 ms.service: storage
-ms.topic: conceptual
-ms.date: 06/28/2019
+ms.topic: how-to
+ms.date: 08/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ac09f9b59bc6f47adc9311cc910352c1a0d73b5d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9db8a0397c836e8cbc45404d9c4f149255fc76fa
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68699283"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271058"
 ---
 # <a name="monitor-azure-file-sync"></a>Azure File Sync の監視
 
@@ -20,7 +20,11 @@ Azure File Sync を使用すると、オンプレミスのファイル サーバ
 
 この記事では、Azure Monitor、ストレージ同期サービス、Windows Server を使用して、Azure File Sync デプロイを監視する方法について説明します。
 
-現在、以下の監視オプションを利用できます。
+このガイドでは、次のシナリオが扱われています。 
+- Azure Monitor で Azure File Sync メトリックを表示します。
+- Azure Monitor でアラートを作成して、重大な状況を事前に通知します。
+- Azure portal を使用して Azure File Sync デプロイの正常性を表示します。
+- Windows サーバーでイベント ログとパフォーマンス カウンターを使用して Azure File Sync デプロイの正常性を監視する方法について説明します。 
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
@@ -30,7 +34,9 @@ Azure File Sync を使用すると、オンプレミスのファイル サーバ
 
 Azure File Sync のメトリックは既定で有効になっており、15 分ごとに Azure Monitor に送信されます。
 
-Azure Monitor 内で Azure File Sync のメトリックを表示するには、**ストレージ同期サービス** リソースの種類を選択します。
+**Azure Monitor で Azure File Sync メトリックを表示する方法**
+- **Azure portal** で **[ストレージ同期サービス]** に移動し、 **[メトリック]** をクリックします。
+- **[メトリック]** ドロップダウンをクリックし、表示するメトリックを選択します。
 
 Azure Monitor では、Azure File Sync の次のメトリックを使用できます。
 
@@ -48,32 +54,59 @@ Azure Monitor では、Azure File Sync の次のメトリックを使用でき�
 
 ### <a name="alerts"></a>警告
 
-Azure Monitor でアラートを構成するには、ストレージ同期サービスを選択し、アラートに使用する [Azure File Sync のメトリック](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#metrics)を選択します。  
+アラートは、監視データで重要な状態が見つかると事前に通知します。 Azure Monitor でのアラートの構成の詳細については、「[Microsoft Azure のアラートの概要](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)」をご覧ください。
+
+**Azure File Sync のアラートを作成する方法**
+
+- **Azure portal** で、 **[ストレージ同期サービス]** に移動します。 
+- [監視] セクションで **[アラート]** をクリックし、 **[+ 新しいアラート ルール]** をクリックします。
+- **[条件の選択]** をクリックし、アラートに関する次の情報を指定します。 
+    - **メトリック**
+    - **ディメンション名**
+    - **アラート ロジック**
+- **[アクション グループの選択]** をクリックし、既存のアクション グループを選択するか、新しいアクション グループを作成して、アクション グループ (電子メール、SMS など) をアラートに追加します。
+- **アラート ルール名**、**説明**、および**重大度**などの**アラートの詳細**を指定します。
+- **[アラート ルールの作成]** をクリックして、アラートを作成します。  
 
 次の表に、監視するシナリオの例とアラートに使用する適切なメトリックを示します。
 
 | シナリオ | アラートに使用するメトリック |
 |-|-|
-| ポータルのサーバー エンドポイントの正常性 = エラー | 同期セッションの結果 |
+| サーバー エンドポイントの正常性が原因でポータルにエラーが表示される | 同期セッションの結果 |
 | ファイルがサーバーまたはクラウド エンドポイントへの同期に失敗する | ファイルが同期していない |
 | 登録済みのサーバーがストレージ同期サービスと通信できない | サーバーのオンライン状態 |
 | クラウドを使った階層化の呼び戻しサイズが 1 日で 500 GiB を超えた  | クラウドを使った階層化の呼び戻しサイズ |
 
-Azure Monitor でのアラートの構成の詳細については、「[Microsoft Azure のアラートの概要]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)」をご覧ください。
+これらのシナリオのアラートを作成する方法については、「[アラートの例](#alert-examples)」を参照してください。
 
 ## <a name="storage-sync-service"></a>ストレージ同期サービス
 
-登録済みサーバーの正常性、サーバー エンドポイントの正常性、およびメトリックを表示するには、Azure portal 内でストレージ同期サービスに移動します。 **[登録済みサーバー]** ブレードに登録済みサーバーの正常性が表示され、 **[同期グループ]** ブレードにサーバー エンドポイントの正常性が表示されます。
+**Azure portal** で Azure File Sync デプロイの正常性を表示するには、 **[ストレージ同期サービス]** に移動します。ここで、次の情報を確認できます。
+
+- 登録済みサーバーの正常性
+- サーバー エンドポイントの正常性
+    - ファイルが同期していない
+    - 同期アクティビティ
+    - クラウドの階層化の効率性
+    - 階層化されていないファイル
+    - 呼び戻しエラー
+- メトリック
 
 ### <a name="registered-server-health"></a>登録済みサーバーの正常性
 
+ポータルで**登録済みサーバーの正常性**を表示するには、 **[ストレージ同期サービス]** の **[登録済みサーバー]** セクションに移動します。
+
 - **登録済みサーバー**の状態が **[オンライン]** である場合、サーバーは正常にサービスと通信しています。
-- **登録済みサーバー**の状態が **[オフラインのようです]** である場合は、ストレージ同期モニター (AzureStorageSyncMonitor.exe) プロセスがサーバー上で実行されているか確認します。 サーバーがファイアウォールまたはプロキシの内側にある場合は、[こちらの記事](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy)を参照して、ファイアウォールとプロキシを構成してください。
+- **登録済みサーバー**の状態が **[オフラインのようです]** である場合、ストレージ同期モニター プロセス (AzureStorageSyncMonitor.exe) が実行されていないか、またはサーバーが Azure File Sync サービスにアクセスできません。 詳細については、[トラブルシューティングのドキュメント](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#server-endpoint-noactivity)を参照してください。
 
 ### <a name="server-endpoint-health"></a>サーバー エンドポイントの正常性
 
-- ポータルのサーバー エンドポイントの正常性は、サーバーのテレメトリ イベント ログに記録されている同期イベント (ID 9102 および 9302) に基づきます。 一時的なエラーが原因で同期セッションが失敗した場合 (エラーで取り消された場合など)、現在の同期セッションが進行中である限り、ポータルには同期の正常性が引き続き表示される可能性があります。 ファイルが適用されているかどうかを判断するために、イベント ID 9302 が使用されます。 詳細については、[同期の正常性](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync)と[同期の進行状況](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)に関するドキュメントを参照してください。
-- 同期が進行していないことが原因でポータルに同期エラーが表示された場合は、[トラブルシューティングに関するドキュメント](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors)を参考にしてください。
+ポータルで**サーバー エンドポイント**の正常性を表示するには、 **[ストレージ同期サービス]** の **[同期グループ]** セクションに移動し、**同期グループ**を選択します。
+
+- ポータルの**サーバー エンドポイントの正常性**と**同期アクティビティ**は、サーバーのテレメトリ イベント ログに記録されている同期イベント (ID 9102 および 9302) に基づきます。 一時的なエラーが原因で同期セッションが失敗した場合 (エラーで取り消された場合など)、現在の同期セッションが進行中である (ファイルが適用される) 限り、ポータルには同期が正常な状態として引き続き表示されます。 イベント ID 9302 は同期の進行状況イベントであり、同期セッションが完了するとイベント ID 9102 がログに記録されます。  詳細については、[同期の正常性](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync)と[同期の進行状況](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)に関するドキュメントを参照してください。 同期が進行していないことが原因でポータルにエラーが表示された場合は、[トラブルシューティングに関するドキュメント](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors)を参考にしてください。
+- ポータルで**同期されていないファイル**の数は、サーバーのテレメトリ イベント ログに記録されているイベント ID 9121 に基づいています。 このイベントは、同期セッションが完了すると、アイテム単位のエラーごとにログに記録されます。 アイテム単位のエラーを解決するには、「[同期していない特定のファイルやフォルダーがあるかどうかを確認するにはどうすればよいですか](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)」を参照してください。
+- ポータルで**クラウドの階層化の効率性**を表示するには、 **[サーバー エンドポイントのプロパティ]** に移動し、 **[クラウドの階層化]** セクションに移動します。 クラウドの階層化の効率性について提供されるデータは、サーバーのテレメトリ イベント ログに記録されるイベント ID 9071 に基づいています。 詳細については、「[クラウドの階層化の概要](https://docs.microsoft.com/azure/storage/files/storage-sync-cloud-tiering)」を参照してください。
+- ポータルで**階層化されていないファイル**および**呼び戻しエラー**を表示するには、 **[サーバー エンドポイントのプロパティ]** に移動し、 **[クラウドの階層化]** セクションに移動します。 **階層化されていないファイル**は、サーバーのテレメトリ イベント ログに記録されるイベント ID 9003 に基づいており、**呼び戻しエラー**は、イベント ID 9006 に基づいています。 階層化または呼び戻しに失敗したファイルを調査するには、「[階層に失敗したファイルのトラブルシューティングを行う方法](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#how-to-troubleshoot-files-that-fail-to-tier)」と「[呼び戻しに失敗したファイルのトラブルシューティングを行う方法](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#how-to-troubleshoot-files-that-fail-to-be-recalled)」を参照してください。
 
 ### <a name="metric-charts"></a>メトリック グラフ
 
@@ -94,26 +127,28 @@ Azure Monitor でのアラートの構成の詳細については、「[Microsof
 
 ## <a name="windows-server"></a>Windows Server
 
-Windows Server では、クラウドを使った階層化、登録済みのサーバー、および同期の正常性を表示できます。
+Azure File Sync エージェントがインストールされている **Windows Server** で、**イベント ログ**および**パフォーマンス カウンター**を使用すると、そのサーバー上のサーバー エンドポイントの正常性を確認できます。
 
 ### <a name="event-logs"></a>イベント ログ
 
 サーバーのテレメトリ イベント ログを使用して、登録済みサーバー、同期、およびクラウドを使った階層化の正常性を監視します。 テレメトリ イベント ログは、イベント ビューアーの *Applications and Services\Microsoft\FileSync\Agent* にあります。
 
-同期の正常性:
+同期の正常性
 
-- 同期セッションが終了すると、イベント ID 9102 がログに記録されます。 同期セッションが正常に終了している (**HResult = 0**) かどうか、および項目単位の同期エラーがあるかどうかを確認する場合は、このイベントを使用します。 詳細については、[同期の正常性](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync)および[項目単位のエラー](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)に関するドキュメントを参照してください。
+- 同期セッションが完了すると、イベント ID 9102 がログに記録されます。 同期セッションが正常に終了している (**HResult = 0**) かどうか、および項目単位の同期エラーがあるかどうか (**PerItemErrorCount**) を確認する場合は、このイベントを使用します。 詳細については、[同期の正常性](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync)および[項目単位のエラー](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)に関するドキュメントを参照してください。
 
   > [!Note]  
   > 同期セッション全体が失敗する場合や、PerItemErrorCount が 0 以外の場合があります。 しかし、それでも同期セッションは進行し、一部のファイルは正常に同期します。 このことは、Applied フィールド (AppliedFileCount、AppliedDirCount、AppliedTombstoneCount、AppliedSizeBytes) で確認できます。 このフィールドでは、成功したセッションの数が示されます。 行内に失敗した同期セッションが複数あるのに、Applied の数が増えている場合は、サポート チケットを開く前に、時間をとって同期の再試行を待ちます。
 
+- イベント ID 9121 は、同期セッションが完了すると、アイテム単位のエラーごとにログに記録されます。 このイベントを使用して、このエラーとの同期に失敗したファイルの数を確認します (**PersistentCount** と **TransientCount**)。 持続的なアイテム単位のエラーを調査する必要があります。「[同期していない特定のファイルやフォルダーがあるかどうかを確認するにはどうすればよいですか](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)」を参照してください。
+
 - アクティブな同期セッションがある場合は、5 分から 10 分ごとにイベント ID 9302 がログに記録されます。 現在の同期セッションが進行中 (**AppliedItemCount が 0 より大きい**) かどうかを確認するには、このイベントを使用します。 同期が進行していない場合、同期セッションは最終的に失敗するはずです。イベント ID 9102 はエラーと共にログに記録されます。 詳細については、[同期の進行に関するドキュメント](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)をご覧ください。
 
-登録済みサーバーの正常性:
+登録済みサーバーの正常性
 
-- サーバーでサービスのジョブについてクエリが実行されている場合、30 秒ごとにイベント ID 9301 がログに記録されます。 GetNextJob が **0 の状態**で終了した場合、サーバーはサービスと通信できます。 GetNextJob がエラーで終了した場合は、[トラブルシューティングに関するドキュメント](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors)を参考にしてください。
+- サーバーでサービスのジョブについてクエリが実行されている場合、30 秒ごとにイベント ID 9301 がログに記録されます。 GetNextJob が **0 の状態**で終了した場合、サーバーはサービスと通信できます。 GetNextJob がエラーで終了した場合は、[トラブルシューティングに関するドキュメント](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#server-endpoint-noactivity)を参考にしてください。
 
-クラウドを使った階層化の正常性:
+クラウドを使った階層化の正常性
 
 - サーバー上の階層化アクティビティを監視するには、テレメトリ イベント ログ (イベント ビューアーの *[アプリケーションとサービス]\[Microsoft]\[FileSync]\[Agent]* の下) にあるイベント ID 9003、9016、9029 を使用します。
 
@@ -121,12 +156,13 @@ Windows Server では、クラウドを使った階層化、登録済みのサ�
   - イベント ID 9016 は、ボリュームの非実体化の結果を示します。 次に例を示します。空き領域の割合、セッション内の非実体化されたファイルの数、非実体化が失敗したファイルの数。
   - イベント ID 9029 では、サーバー エンドポイントの非実体化セッション情報が提供されます。 次に例を示します。セッション内の試行されたファイルの数、セッション内の階層化されたファイルの数、既に階層化されているファイルの数。
   
-- サーバー上の呼び戻しアクティビティを監視するには、テレメトリ イベント ログ (イベント ビューアーの *[アプリケーションとサービス]\[Microsoft]\[FileSync]\[Agent]* の下) にあるイベント ID 9005、9006、9009、および 9059 を使用します。
+- サーバー上の呼び戻しアクティビティを監視するには、テレメトリ イベント ログ (イベント ビューアーの *[アプリケーションとサービス]\[Microsoft]\[FileSync]\[Agent]* の下) にあるイベント ID 9005、9006、9009、9059、および 9071 を使用します。
 
   - イベント ID 9005 は、サーバー エンドポイントの呼び戻しの信頼性を示します。 次に例を示します。アクセスされた一意のファイルの合計数、アクセスが失敗した一意のファイルの合計数。
   - イベント ID 9006 は、サーバー エンドポイントの呼び戻しエラーの分布を示します。 次に例を示します。失敗した要求の合計数、ErrorCode。 エラー コードごとに 1 つのイベントがログ記録されます。
   - イベント ID 9009 では、サーバー エンドポイントの呼び戻しセッション情報が提供されます。 次に例を示します。DurationSeconds、CountFilesRecallSucceeded、CountFilesRecallFailed。
   - イベント ID 9059 では、サーバー エンドポイントのアプリケーション呼び戻し分布が提供されます。 次に例を示します。ShareId、Application Name、TotalEgressNetworkBytes。
+  - イベント ID 9071 では、サーバー エンドポイントの、クラウドを使った階層化の効率性が示されます。 次に例を示します。TotalDistinctFileCountCacheHit、TotalDistinctFileCountCacheMiss、TotalCacheHitBytes、TotalCacheMissBytes.
 
 ### <a name="performance-counters"></a>パフォーマンス カウンター
 
@@ -145,9 +181,103 @@ Windows Server では、クラウドを使った階層化、登録済みのサ�
 | AFS Sync Operations\Uploaded Sync Files/sec | 1 秒あたりのアップロードされたファイル数。 |
 | AFS Sync Operations\Total Sync File Operations/sec | 同期されたファイルの合計数 (アップロードとダウンロード)。 |
 
+## <a name="alert-examples"></a>アラートの例
+ここでは、Azure File Sync のアラートの例をいくつか紹介します。
+
+  > [!Note]  
+  > アラートを作成するときに雑音が多すぎる場合は、しきい値とアラート ロジックを調整します。
+  
+### <a name="how-to-create-an-alert-if-the-server-endpoint-health-shows-an-error-in-the-portal"></a>サーバー エンドポイントの正常性が原因でエラーがポータルに表示された場合にアラートを作成する方法
+
+1. **Azure portal** で、それぞれの **[ストレージ同期サービス]** に移動します。 
+2. **[監視]** セクションに移動し、 **[アラート]** をクリックします。 
+3. **[+ 新しいアラート ルール]** をクリックして、新しいアラート ルールを作成します。 
+4. **[条件の選択]** をクリックして、条件を構成します。
+5. **[シグナル ロジックの構成]** ブレードで、シグナル名の下の **[Sync session result]\(同期セッションの結果\)** をクリックします。  
+6. 次のディメンション構成を選択します。 
+    - ディメンション名:**サーバー エンドポイント名**  
+    - 演算子: **=** 
+    - ディメンション値:**All current and future values\(現在および将来のすべての値\)**  
+7. **[アラート ロジック]** に移動し、次の手順を行います。 
+    - しきい値を **[Static]** に設定 
+    - 演算子:**より小さい** 
+    - 集計の種類: **[最大]**  
+    - しきい値: **1** 
+    - 評価基準:集計の細分性 = **24 時間** | 評価の頻度 = **1 時間ごと** 
+    - **[完了]** をクリック 
+8. **[アクション グループの選択]** をクリックし、既存のアクション グループを選択するか、新しいアクション グループを作成して、アクション グループ (電子メール、SMS など) をアラートに追加します。
+9. **アラート ルール名**、**説明**、および**重大度**などの**アラートの詳細**を指定します。
+10. **[アラート ルールの作成]** をクリックします。 
+
+### <a name="how-to-create-an-alert-if-files-are-failing-to-sync-to-a-server-or-cloud-endpoint"></a>ファイルがサーバーまたはクラウド エンドポイントへの同期に失敗する場合にアラートを作成する方法
+
+1. **Azure portal** で、それぞれの **[ストレージ同期サービス]** に移動します。 
+2. **[監視]** セクションに移動し、 **[アラート]** をクリックします。 
+3. **[+ 新しいアラート ルール]** をクリックして、新しいアラート ルールを作成します。 
+4. **[条件の選択]** をクリックして、条件を構成します。
+5. **[シグナル ロジックの構成]** ブレードで、シグナル名の下の **[Files not syncing]\(同期されていないファイル\)** をクリックします。  
+6. 次のディメンション構成を選択します。 
+     - ディメンション名:**サーバー エンドポイント名**  
+     - 演算子: **=** 
+     - ディメンション値:**All current and future values\(現在および将来のすべての値\)**  
+7. **[アラート ロジック]** に移動し、次の手順を行います。 
+     - しきい値を **[Static]** に設定 
+     - 演算子:**より大きい** 
+     - 集計の種類: **合計**  
+     - しきい値: **100** 
+     - 評価基準:集計の細分性 = **5 分** | 評価の頻度 = **5 分ごと** 
+     - **[完了]** をクリック 
+8. **[アクション グループの選択]** をクリックし、既存のアクション グループを選択するか、新しいアクション グループを作成して、アクション グループ (電子メール、SMS など) をアラートに追加します。
+9. **アラート ルール名**、**説明**、および**重大度**などの**アラートの詳細**を指定します。
+10. **[アラート ルールの作成]** をクリックします。 
+
+### <a name="how-to-create-an-alert-if-a-registered-server-is-failing-to-communicate-with-the-storage-sync-service"></a>登録済みのサーバーがストレージ同期サービスと通信できない場合にアラートを作成する方法
+
+1. **Azure portal** で、それぞれの **[ストレージ同期サービス]** に移動します。 
+2. **[監視]** セクションに移動し、 **[アラート]** をクリックします。 
+3. **[+ 新しいアラート ルール]** をクリックして、新しいアラート ルールを作成します。 
+4. **[条件の選択]** をクリックして、条件を構成します。
+5. **[シグナル ロジックの構成]** ブレードで、シグナル名の下の **[サーバーのオンライン状態]** をクリックします。  
+6. 次のディメンション構成を選択します。 
+     - ディメンション名:**サーバー名**  
+     - 演算子: **=** 
+     - ディメンション値:**All current and future values\(現在および将来のすべての値\)**  
+7. **[アラート ロジック]** に移動し、次の手順を行います。 
+     - しきい値を **[Static]** に設定 
+     - 演算子:**より小さい** 
+     - 集計の種類: **[最大]**  
+     - しきい値 (バイト単位):**1** 
+     - 評価基準:集計の細分性 = **1 時間** | 評価の頻度 = **30 分ごと** 
+     - **[完了]** をクリック 
+8. **[アクション グループの選択]** をクリックし、既存のアクション グループを選択するか、新しいアクション グループを作成して、アクション グループ (電子メール、SMS など) をアラートに追加します。
+9. **アラート ルール名**、**説明**、および**重大度**などの**アラートの詳細**を指定します。
+10. **[アラート ルールの作成]** をクリックします。 
+
+### <a name="how-to-create-an-alert-if-the-cloud-tiering-recall-size-has-exceeded-500gib-in-a-day"></a>クラウドを使った階層化の呼び戻しサイズが 1 日で 500 GiB を超えた場合にアラートを作成する方法
+
+1. **Azure portal** で、それぞれの **[ストレージ同期サービス]** に移動します。 
+2. **[監視]** セクションに移動し、 **[アラート]** をクリックします。 
+3. **[+ 新しいアラート ルール]** をクリックして、新しいアラート ルールを作成します。 
+4. **[条件の選択]** をクリックして、条件を構成します。
+5. **[シグナル ロジックの構成]** ブレードで、シグナル名の下の **[クラウドを使った階層化の呼び戻しサイズ]** をクリックします。  
+6. 次のディメンション構成を選択します。 
+     - ディメンション名:**サーバー名**  
+     - 演算子: **=** 
+     - ディメンション値:**All current and future values\(現在および将来のすべての値\)**  
+7. **[アラート ロジック]** に移動し、次の手順を行います。 
+     - しきい値を **[Static]** に設定 
+     - 演算子:**より大きい** 
+     - 集計の種類: **合計**  
+     - しきい値 (バイト単位):**67108864000** 
+     - 評価基準:集計の細分性 = **24 時間** | 評価の頻度 = **1 時間ごと** 
+    - **[完了]** をクリック 
+8. **[アクション グループの選択]** をクリックし、既存のアクション グループを選択するか、新しいアクション グループを作成して、アクション グループ (電子メール、SMS など) をアラートに追加します。
+9. **アラート ルール名**、**説明**、および**重大度**などの**アラートの詳細**を指定します。
+10. **[アラート ルールの作成]** をクリックします。 
+
 ## <a name="next-steps"></a>次のステップ
 - [Azure File Sync のデプロイの計画](storage-sync-files-planning.md)
 - [ファイアウォールとプロキシの設定の考慮事項](storage-sync-files-firewall-and-proxy.md)
-- [Azure File Sync をデプロイする](storage-sync-files-deployment-guide.md)
+- [Azure File Sync のデプロイ](storage-sync-files-deployment-guide.md)
 - [Azure File Sync のトラブルシューティング](storage-sync-files-troubleshoot.md)
 - [Azure Files についてよく寄せられる質問 (FAQ)](storage-files-faq.md)

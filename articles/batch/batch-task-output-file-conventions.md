@@ -1,21 +1,21 @@
 ---
-title: .NET ファイル規則ライブラリを使用して Azure Storage に出力データを保持する - Azure Batch
+title: .NET ファイル規則ライブラリを使用して Azure Storage に出力データを保持する
 description: .NET 用の Azure Batch ファイル規則ライブラリを使用して、Azure Storage にバッチ タスクとジョブの出力を保持し、Azure Portal でその出力を表示する方法を説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2018
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d7988ef4339280bd729cc1acaa1b7fb2c33b6b9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: H1Hack27Feb2017, devx-track-csharp
+ms.openlocfilehash: 1a45eed421dd8d734fcef0dd452df1d4a65fd053
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232702"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936964"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>.NET 用の Batch ファイル規則ライブラリを使用した Azure Storage へのジョブおよびタスクのデータの保持
 
 [!INCLUDE [batch-task-output-include](../../includes/batch-task-output-include.md)]
 
-タスクのデータを保持する方法の 1 つに [.NET 用の Azure Batch ファイル規則ライブラリ][nuget_package]があります。 ファイル規則ライブラリにより、タスク出力データを Azure Storage に保存し、取得する処理が簡素化されます。 ファイル規則ライブラリはタスク コードでも、クライアント コードでも使用できます。タスク コードではファイルを保持するために、クライアント コードではファイルを一覧で取得するために使用されます。 [タスクの依存関係](batch-task-dependencies.md)のシナリオのように、上流のタスクの出力を取得するためにタスク コードでライブラリを使用することもできます。
+タスクのデータを保持する方法の 1 つに [.NET 用の Azure Batch ファイル規則ライブラリ][nuget_package]があります。 ファイル規則ライブラリにより、タスク出力データを Azure Storage に保存し、取得する処理が簡素化されます。 ファイル規則ライブラリはタスク コードでも、クライアント コード &mdash; でも使用できます。タスク コードではファイルを保持するために、クライアント コードではファイルを一覧で取得するために使用されます。 [タスクの依存関係](batch-task-dependencies.md)のシナリオのように、上流のタスクの出力を取得するためにタスク コードでライブラリを使用することもできます。
 
 ファイル規則ライブラリを使用して出力ファイルを取得する際は、ファイル名や場所がわからなくても、ID と目的で出力を一覧表示することで、 特定のジョブまたはタスクのファイルを容易に特定できます。 たとえば、ファイル規則ライブラリを利用すれば、特定のタスクのすべての中間ファイルを一覧表示したり、特定のジョブのプレビュー ファイルを取得したりすることができます。
 
@@ -55,16 +55,16 @@ Azure Batch は、タスクの出力を保持するために複数の方法を�
 
 ファイル規則ライブラリを利用してジョブとタスク出力のデータを保存する場合、Azure Storage にコンテナーを作成し、そのコンテナーに出力を保存します。 タスク出力をコンテナーにアップロードするには、タスク コードで [.NET 用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage)を使用します。
 
-Azure Storage でのコンテナーと BLOB の操作の詳細については、「[.NET を使用して Azure Blob Storage を使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」を参照してください。
+Azure Storage でのコンテナーと BLOB の操作の詳細については、「[.NET を使用して Azure Blob Storage を使用する](../storage/blobs/storage-quickstart-blobs-dotnet.md)」を参照してください。
 
 > [!WARNING]
-> ファイル規則ライブラリを使用したジョブとタスクの出力はすべて同じコンテナーに格納されるため、 大量のタスクで同時にファイルを保持しようとすると、Azure Storage のスロットルの制限が適用される場合があります。 スロットリングの制限の詳細については、「[BLOB ストレージのパフォーマンスとスケーラビリティのチェックリスト](../storage/blobs/storage-performance-checklist.md)」を参照してください。
+> ファイル規則ライブラリを使用したジョブとタスクの出力はすべて同じコンテナーに格納されるため、 大量のタスクで同時にファイルを保持しようとすると、Azure Storage の調整の制限が適用される場合があります。 調整の制限の詳細については、「[BLOB ストレージのパフォーマンスとスケーラビリティのチェックリスト](../storage/blobs/storage-performance-checklist.md)」を参照してください。
 
 ### <a name="create-storage-container"></a>ストレージ コンテナーの作成
 
 Azure Storage にタスク出力を保持するには、まず [CloudJob][net_cloudjob].[PrepareOutputStorageAsync][net_prepareoutputasync] を呼び出してコンテナーを作成します。 この拡張メソッドは [CloudStorageAccount][net_cloudstorageaccount] オブジェクトをパラメーターとして受け取り、 コンテナーを作成します。このコンテナーには、Azure portal またはこれ以降に説明する取得メソッドで内容を検出できるように、ファイル規則の標準に従って名前が付けられます。
 
-通常、クライアント アプリケーション (プール、ジョブ、タスクを作成するアプリケーション) でコンテナーを作成するために以下のコードを配置します。
+通常、クライアント アプリケーション &mdash; (プール、ジョブ、タスクを作成するアプリケーション) でコンテナーを作成するために以下のコードを配置します。
 
 ```csharp
 CloudJob job = batchClient.JobOperations.CreateJob(
@@ -124,7 +124,7 @@ await jobOutputStorage.SaveAsync(JobOutputKind.JobPreview, "mymovie_preview.mp4"
 
 ### <a name="store-task-logs"></a>タスクのログの格納
 
-タスクまたはジョブの完了時に、永続的なストレージでファイルを保持するだけでなく、タスクの実行中に更新されたファイルの保持も必要になる可能性があります。たとえば、ログ ファイル、`stdout.txt`、`stderr.txt` などです。 Azure Batch ファイル規則ライブラリでは、この目的で使用する [TaskOutputStorage][net_taskoutputstorage].[SaveTrackedAsync][net_savetrackedasync] メソッドを提供しています。 [SaveTrackedAsync][net_savetrackedasync] では、ノード上のファイルの更新を (指定した間隔で) 追跡し、それを Azure Storage で保持できます。
+タスクまたはジョブの完了時に、永続的なストレージでファイルを保持するだけでなく、タスクの実行中に更新されたファイルの保持も必要になる可能性があります。たとえば、&mdash; ログ ファイル、`stdout.txt`、`stderr.txt` などです。 Azure Batch ファイル規則ライブラリでは、この目的で使用する [TaskOutputStorage][net_taskoutputstorage].[SaveTrackedAsync][net_savetrackedasync] メソッドを提供しています。 [SaveTrackedAsync][net_savetrackedasync] では、ノード上のファイルの更新を (指定した間隔で) 追跡し、それを Azure Storage で保持できます。
 
 次のコード スニペットでは、タスクの実行中、15 秒ごとに Azure Storage で `stdout.txt` を更新するために [SaveTrackedAsync][net_savetrackedasync] を使用しています。
 
@@ -208,7 +208,7 @@ Azure Portal でタスク出力ファイルとログを表示するには、目�
 
 ### <a name="get-the-batch-file-conventions-library-for-net"></a>.NET 用 Batch ファイル規則ライブラリの入手
 
-.NET 用 Batch ファイル規則ライブラリは [NuGet][nuget_package] にあります。 このライブラリでは、新しいメソッドによって [CloudJob][net_cloudjob] クラスと [CloudTask][net_cloudtask] クラスが拡張されています。 ファイル規則ライブラリについての[リファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.conventions.files)も参照してください。
+.NET 用 Batch ファイル規則ライブラリは [NuGet][nuget_package] にあります。 このライブラリでは、新しいメソッドによって [CloudJob][net_cloudjob] クラスと [CloudTask][net_cloudtask] クラスが拡張されています。 ファイル規則ライブラリについての[リファレンス ドキュメント](/dotnet/api/microsoft.azure.batch.conventions.files)も参照してください。
 
 ファイル規則ライブラリの[ソース コード][github_file_conventions]は、GitHub の Microsoft Azure SDK for .NET リポジトリ内にあります。 
 
@@ -222,20 +222,20 @@ Azure Portal でタスク出力ファイルとログを表示するには、目�
 [github_file_conventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files/README.md
 [github_persistoutputs]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/PersistOutputs
 [github_samples]: https://github.com/Azure/azure-batch-samples
-[net_batchclient]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient.aspx
-[net_cloudjob]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.aspx
-[net_cloudstorageaccount]: https://docs.microsoft.com/java/api/com.microsoft.azure.storage.cloudstorageaccount
-[net_cloudtask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.aspx
+[net_batchclient]: /dotnet/api/microsoft.azure.batch.batchclient
+[net_cloudjob]: /dotnet/api/microsoft.azure.batch.cloudjob
+[net_cloudstorageaccount]: /java/api/com.microsoft.azure.storage.cloudstorageaccount
+[net_cloudtask]: /dotnet/api/microsoft.azure.batch.cloudtask
 [net_fileconventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files/README.md
-[net_joboutputkind]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputkind.aspx
-[net_joboutputstorage]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputstorage.aspx
-[net_joboutputstorage_saveasync]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputstorage.saveasync.aspx
-[net_msdn]: https://msdn.microsoft.com/library/azure/mt348682.aspx
-[net_prepareoutputasync]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.cloudjobextensions.prepareoutputstorageasync.aspx
-[net_saveasync]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync.aspx
-[net_savetrackedasync]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.taskoutputstorage.savetrackedasync.aspx
-[net_taskoutputkind]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.taskoutputkind.aspx
-[net_taskoutputstorage]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.taskoutputstorage.aspx
+[net_joboutputkind]: /dotnet/api/microsoft.azure.batch.conventions.files.joboutputkind
+[net_joboutputstorage]: /dotnet/api/microsoft.azure.batch.conventions.files.joboutputstorage
+[net_joboutputstorage_saveasync]: /dotnet/api/microsoft.azure.batch.conventions.files.joboutputstorage.saveasync
+[net_msdn]: /dotnet/api/microsoft.azure.batch
+[net_prepareoutputasync]: /dotnet/api/microsoft.azure.batch.conventions.files.cloudjobextensions.prepareoutputstorageasync
+[net_saveasync]: /dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync
+[net_savetrackedasync]: /dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.savetrackedasync
+[net_taskoutputkind]: /dotnet/api/microsoft.azure.batch.conventions.files.taskoutputkind
+[net_taskoutputstorage]: /dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage
 [nuget_manager]: https://docs.nuget.org/consume/installing-nuget
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
 [portal]: https://portal.azure.com

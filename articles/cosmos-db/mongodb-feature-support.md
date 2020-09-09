@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 94b65b4e7947bc02b1fdaae90c8f774ec216e7bb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7c5164a032e77d85c995384473935b134ff528e5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80981887"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009309"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>Azure Cosmos DB の MongoDB (3.2 バージョン) 用 API: サポートされる機能と構文
 
@@ -56,7 +56,7 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 - dropDatabase
 - listCollections
 - drop
-- 作成
+- create
 - filemd5
 - createIndexes
 - listIndexes
@@ -73,7 +73,7 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 - listDatabases
 - whatsmyuri
 
-<a name="aggregation-pipeline"/>
+<a name="aggregation-pipeline"></a>
 
 ## <a name="aggregation-pipelinea"></a>集計パイプライン</a>
 
@@ -288,7 +288,7 @@ $regex クエリでは、左固定の式でインデックス検索が可能で�
 
 ### <a name="geospatial-operators"></a>地理空間演算子
 
-演算子 | 例 | |
+演算子 | 例 | サポートされています |
 --- | --- | --- |
 $geoWithin | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | はい |
 $geoIntersects |  ```{ "Location.coordinates": { $geoIntersects: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | はい |
@@ -342,7 +342,7 @@ Cosmos DB では、ドキュメントのタイムスタンプに基づく Time-t
 
 ## <a name="user-and-role-management"></a>ユーザーとロールの管理
 
-Cosmos DB では、ユーザーとロールはまだサポートされていません。 Cosmos DB では、ロール ベース アクセス制御 (RBAC) と、[Azure portal](https://portal.azure.com) ([接続文字列] ページ) から取得できる読み取り/書き込みおよび読み取り専用のパスワード/キーがサポートされています。
+Cosmos DB では、ユーザーとロールはまだサポートされていません。 ただし、Azure ロールベース アクセス制御 (Azure RBAC) と、[Azure portal](https://portal.azure.com) ([接続文字列] ページ) から取得できる読み取りと書き込みおよび読み取り専用のパスワードとキーがサポートされています。
 
 ## <a name="replication"></a>レプリケーション
 

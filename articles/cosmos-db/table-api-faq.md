@@ -4,14 +4,14 @@ description: Azure Cosmos DB の Table API についてよく寄せられる質�
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 08/12/2020
 ms.author: sngun
-ms.openlocfilehash: 981c6f145f0bf06fbe81234d473b9fbcd2235174
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 65f276662ac4837003c7a7078b6197ba155eadc9
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82613980"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167591"
 ---
 # <a name="frequently-asked-questions-about-the-table-api-in-azure-cosmos-db"></a>Azure Cosmos DB の Table API についてよく寄せられる質問
 
@@ -45,10 +45,10 @@ Azure Cosmos DB Table API は [Azure portal](https://portal.azure.com) で利用
 
   | REST メソッド | REST エンドポイント/クエリ オプション | ドキュメントの URL | 説明 |
   | ------------| ------------- | ---------- | ----------- |
-  | GET、PUT | `/?restype=service@comp=properties`| 「[Set Table Service Properties](https://docs.microsoft.com/rest/api/storageservices/set-table-service-properties)」(Table Service のプロパティを設定する) および「[Get Table Service Properties](https://docs.microsoft.com/rest/api/storageservices/get-table-service-properties)」(Table Service のプロパティを取得する) | このエンドポイントは、CORS ルールの設定、ストレージ分析の構成、ログ記録の設定に使われます。 CORS は現在サポートされておらず、Azure Cosmos DB での分析とログ記録の処理は Azure Storage Table とは異なります。 |
-  | OPTIONS | `/<table-resource-name>` | 「[Pre-flight CORS table request](https://docs.microsoft.com/rest/api/storageservices/preflight-table-request)」(プレフライト CORS テーブル要求) | これは、Azure Cosmos DB が現在サポートしていない CORS の一部です。 |
-  | GET | `/?restype=service@comp=stats` | 「[Get Table Service Stats](https://docs.microsoft.com/rest/api/storageservices/get-table-service-stats)」(Table Service の統計情報を取得する) | プライマリとセカンダリの間でデータがレプリケートされる速度の情報を提供します。 Cosmos DB ではレプリケーションは書き込みの一部なので、これは必要ありません。 |
-  | GET、PUT | `/mytable?comp=acl` | 「[Get Table ACL](https://docs.microsoft.com/rest/api/storageservices/get-table-acl)」(テーブルの ACL を取得する) および[Set Table ACL](https://docs.microsoft.com/rest/api/storageservices/set-table-acl)」(テーブルの ACL を設定する) | Shared Access Signature (SAS) の管理に使われる保存されたアクセス ポリシーを取得および設定します。 SAS はサポートされていますが、設定と管理の方法は異なります。 |
+  | GET、PUT | `/?restype=service@comp=properties`| 「[Set Table Service Properties](/rest/api/storageservices/set-table-service-properties)」(Table Service のプロパティを設定する) および「[Get Table Service Properties](/rest/api/storageservices/get-table-service-properties)」(Table Service のプロパティを取得する) | このエンドポイントは、CORS ルールの設定、ストレージ分析の構成、ログ記録の設定に使われます。 CORS は現在サポートされておらず、Azure Cosmos DB での分析とログ記録の処理は Azure Storage Table とは異なります。 |
+  | OPTIONS | `/<table-resource-name>` | 「[Pre-flight CORS table request](/rest/api/storageservices/preflight-table-request)」(プレフライト CORS テーブル要求) | これは、Azure Cosmos DB が現在サポートしていない CORS の一部です。 |
+  | GET | `/?restype=service@comp=stats` | 「[Get Table Service Stats](/rest/api/storageservices/get-table-service-stats)」(Table Service の統計情報を取得する) | プライマリとセカンダリの間でデータがレプリケートされる速度の情報を提供します。 Cosmos DB ではレプリケーションは書き込みの一部なので、これは必要ありません。 |
+  | GET、PUT | `/mytable?comp=acl` | 「[Get Table ACL](/rest/api/storageservices/get-table-acl)」(テーブルの ACL を取得する) および[Set Table ACL](/rest/api/storageservices/set-table-acl)」(テーブルの ACL を設定する) | Shared Access Signature (SAS) の管理に使われる保存されたアクセス ポリシーを取得および設定します。 SAS はサポートされていますが、設定と管理の方法は異なります。 |
 
 * Azure Cosmos DB Table API は JSON 形式のみをサポートし、ATOM はサポートしません。
 
@@ -274,7 +274,7 @@ Azure Cosmos DB は、可用性、待機時間、スループットが保証さ�
 
 ### <a name="i-never-get-a-quota-full-notification-indicating-that-a-partition-is-full-when-i-ingest-data-into-azure-table-storage-with-the-table-api-i-do-get-this-message-is-this-offering-limiting-me-and-forcing-me-to-change-my-existing-application"></a>Azure Table Storage にデータを取り込んだときに、(パーティションがいっぱいであることを示す) "クォータが上限に達した" ことを通知するメッセージが表示されたことは一度もありませんでした。 Table API では、このメッセージが表示されました。 このサービスには制限があり、既存のアプリケーションを変更しなければならないのでしょうか?
 
-Azure Cosmos DB は、待機時間、スループット、可用性、整合性を保証し、無制限のスケールを提供する SLA ベースのシステムです。 保証された Premium パフォーマンスを確保するために、データ サイズとインデックスが管理可能であり、スケーラブルであることを確認してください。 パーティション キーごとのエンティティ数または項目数に 10 GB の制限を設けているのは、検索やクエリの優れたパフォーマンスを確実に提供するためです。 すべての情報を 1 つのパーティションに格納し、そのパーティションに対してクエリを実行すると、ホット パーティションになります。Azure Storage でもアプリケーションが適切にスケールできるように、ホット パーティションが発生*しない*ようにすることをお勧めします。
+Azure Cosmos DB は、待機時間、スループット、可用性、整合性を保証し、無制限のスケールを提供する SLA ベースのシステムです。 保証された Premium パフォーマンスを確保するために、データ サイズとインデックスが管理可能であり、スケーラブルであることを確認してください。 パーティション キーごとのエンティティ数または項目数に 20 GB の制限を設けているのは、検索やクエリの優れたパフォーマンスを確実に提供するためです。 すべての情報を 1 つのパーティションに格納し、そのパーティションに対してクエリを実行すると、ホット パーティションになります。Azure Storage でもアプリケーションが適切にスケールできるように、ホット パーティションが発生*しない*ようにすることをお勧めします。
 
 ### <a name="so-partitionkey-and-rowkey-are-still-required-with-the-table-api"></a>Table API で PartitionKey と RowKey が必要なのはそのためですか?
 
@@ -293,7 +293,7 @@ Azure Cosmos DB は、待機時間、スループット、可用性、整合性�
 次のいずれかの方法でフィードバックをお寄せください。
 
 * [ユーザーの声](https://feedback.azure.com/forums/263030-azure-cosmos-db)
-* [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
+* [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb)。 Stack Overflow は、プログラミングに関する質問に最適です。 質問が[的を得ており](https://stackoverflow.com/help/on-topic)、かつ[その質問を明確で回答可能なものにするようにできるだけ多くの詳細情報が含まれている](https://stackoverflow.com/help/how-to-ask)ことを確認してください。
 
 ## <a name="next-steps"></a>次のステップ

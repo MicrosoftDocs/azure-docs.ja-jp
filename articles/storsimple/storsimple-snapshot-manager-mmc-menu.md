@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 78ef81af-0d3a-4802-be54-ad192f9ac8a6
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
-ms.openlocfilehash: ced075395c4f2a51308d5d3b0cbe4c0153a17816
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c177adaa6fe0808d6719a8e87669d7f2fa4fb9cf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75931480"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85508828"
 ---
 # <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>StorSimple Snapshot Manager での MMC メニュー操作の使用
 

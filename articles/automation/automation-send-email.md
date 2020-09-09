@@ -1,44 +1,34 @@
 ---
 title: Azure Automation Runbook からメールを送信する
-description: SendGrid を使用して Runbook 内からメールを送信する方法について説明します。
+description: この記事では、Runbook 内からメールを送信する方法について説明します。
 services: automation
 ms.subservice: process-automation
 ms.date: 07/15/2019
-ms.topic: tutorial
-ms.openlocfilehash: 4d825dee469497cbb56a91c913ff3ac51963058b
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.topic: conceptual
+ms.openlocfilehash: c01e329e4e4ab403c8966f096239abffee1c1fc5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82855690"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185859"
 ---
-# <a name="tutorial-send-an-email-from-an-azure-automation-runbook"></a>チュートリアル:Azure Automation Runbook からメールを送信する
+# <a name="send-an-email-from-a-runbook"></a>Runbook からメールを送信する
 
-PowerShell を使用して、[SendGrid](https://sendgrid.com/solutions) によって Runbook からメールを送信できます。 このチュートリアルでは、以下の内容を学習します。
-
-> [!div class="checklist"]
->
-> * Azure Key Vault を作成します。
-> * キー コンテナーに `SendGrid` API キーを格納します。
-> * API キーを取得してメールを送信する再利用可能な Runbook を作成します。[Azure Key Vault](/azure/key-vault/) に格納されている API キーを使用します。
-
->[!NOTE]
->この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation の Azure PowerShell モジュールを更新する方法](automation-update-azure-modules.md)」に従って、モジュールを最新バージョンに更新できます。
+PowerShell を使用して、[SendGrid](https://sendgrid.com/solutions) によって Runbook からメールを送信できます。 
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、以下が必要です。
-
-* Azure サブスクリプション:まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
-* [SendGrid アカウントを作成します](/azure/sendgrid-dotnet-how-to-send-email#create-a-sendgrid-account)。
-* Runbook を格納および実行するための [Automation アカウント](automation-offering-get-started.md)と **Az** モジュール、および [Run As Connection](automation-create-runas-account.md)。
+* Azure のサブスクリプション。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
+* [SendGrid アカウント](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account)。
+* [Automation アカウント](./index.yml)と **Az** モジュール。
+* Runbook を保存および実行するための[実行アカウント](./manage-runas-account.md)。
 
 ## <a name="create-an-azure-key-vault"></a>Azure Key Vault を作成する
 
-Azure Key Vault は、次の PowerShell スクリプトを使用して作成できます。 変数値を環境に固有の値に置き換えます。 コード ブロックの右上隅にある **[使ってみる]** ボタンを通じて、埋め込まれた Azure Cloud Shell を使用します。 ローカル コンピューターに [Azure PowerShell モジュール](/powershell/azure/install-az-ps)がインストールされている場合は、コードをローカルにコピーして実行することもできます。
+Azure Key Vault は、次の PowerShell スクリプトを使用して作成できます。 変数値を環境に固有の値に置き換えます。 コード ブロックの右上隅にある **[使ってみる]** ボタンを通じて、埋め込まれた Azure Cloud Shell を使用します。 ローカル コンピューターに [Az モジュール](/powershell/azure/install-az-ps)がインストールされている場合は、コードをローカルにコピーして実行することもできます。
 
 > [!NOTE]
-> API キーを取得するには、[SendGrid API キーの検索](/azure/sendgrid-dotnet-how-to-send-email#to-find-your-sendgrid-api-key)に関するページに記載されている手順を使用します。
+> API キーを取得するには、[SendGrid API キーの検索](../sendgrid-dotnet-how-to-send-email.md#to-find-your-sendgrid-api-key)に関するページに記載されている手順を使用します。
 
 ```azurepowershell-interactive
 $SubscriptionId  =  "<subscription ID>"
@@ -71,35 +61,29 @@ $appID = $connection.FieldDefinitionValues.ApplicationId
 Set-AzKeyVaultAccessPolicy -VaultName $VaultName -ServicePrincipalName $appID -PermissionsToSecrets Set, Get
 ```
 
-Azure Key Vault を作成してシークレットを格納するその他の方法については、[Key Vault のクイックスタート](/azure/key-vault/)を参照してください。
+Azure Key Vault を作成してシークレットを格納するその他の方法については、[Key Vault のクイックスタート](../key-vault/index.yml)を参照してください。
 
-## <a name="import-required-modules-to-your-automation-account"></a>必要なモジュールを Automation アカウントにインポートする
+## <a name="import-required-modules-into-your-automation-account"></a>必要なモジュールを Automation アカウントにインポートする
 
-Runbook 内で Azure Key Vault を使用するには、Automation アカウントに以下のモジュールが必要です。
+Runbook 内で Azure Key Vault を使用するには、次のモジュールを Automation アカウントにインポートする必要があります。
 
 * [Az.Profile](https://www.powershellgallery.com/packages/Az.Profile)
 * [Az.KeyVault](https://www.powershellgallery.com/packages/Az.KeyVault)
 
-**[インストール オプション]** の下にある [Azure Automation] タブで **[Deploy to Azure Automation]\(Azure Automation にデプロイする\)** をクリックします。 このアクションにより Azure portal が開きます。 [インポート] ページで、Automation アカウントを選択し、 **[OK]** をクリックします。
-
-必要なモジュールを追加するその他の方法については、「[モジュールをインポートする](/azure/automation/shared-resources/modules#importing-modules)」を参照してください。
+手順については、「[Az モジュールのインポート](shared-resources/modules.md#import-az-modules)」を参照してください。
 
 ## <a name="create-the-runbook-to-send-an-email"></a>Runbook を作成してメールを送信する
 
-キー コンテナーを作成し、`SendGrid` API キーを格納したら、API キーを取得してメールを送信する Runbook を作成します。
-
-この Runbook では、Azure Key Vault からシークレットを取得するために Azure で認証を行う際に、[実行アカウント](automation-create-runas-account.md)として `AzureRunAsConnection` を使用します。
-
-この例を使用して、**Send-GridMailMessage** と呼ばれる Runbook を作成します。 PowerShell スクリプトは変更して、さまざまなシナリオで再利用できます。
+キー コンテナーを作成し、`SendGrid` API キーを格納したら、API キーを取得してメールを送信する Runbook を作成します。 この Runbook は、[実行アカウント](./manage-runas-account.md)として `AzureRunAsConnection` を使用して Azure で認証を行い、Azure Key Vault からシークレットを取得します。 **Send-GridMailMessage** Runbook を呼び出します。 例として使用される PowerShell スクリプトを変更して、さまざまなシナリオで再利用できます。
 
 1. Azure Automation アカウントに移動します。
 2. **[プロセス オートメーション]** の **[Runbook]** を選択します。
 3. Runbook の一覧の上部で、 **[+ Runbook の作成]** を選択します。
-4. **[Runbook の追加]** ページで、Runbook 名として「**Send-GridMailMessage**」と入力します。 Runbook の種類として、 **[PowerShell]** を選びます。 そのうえで **[Create]\(作成\)** を選択します。
+4. [Runbook の追加] ページで、Runbook 名として「**Send-GridMailMessage**」と入力します。 Runbook の種類として、 **[PowerShell]** を選びます。 そのうえで **[Create]\(作成\)** を選択します。
    ![Runbook を作成する](./media/automation-send-email/automation-send-email-runbook.png)
-5. Runbook が作成され、 **[PowerShell Runbook の編集]** ページが開きます。
+5. Runbook が作成され、[PowerShell Runbook の編集] ページが開きます。
    ![Runbook を編集する](./media/automation-send-email/automation-send-email-edit.png)
-6. **[編集]** ページに、次の PowerShell の例をコピーします。 `$VaultName` が、キー コンテナーを作成したときに指定した名前であることを確認します。
+6. [編集] ページに、次の PowerShell の例をコピーします。 `VaultName` には、Key Vault に対して選択した名前が指定されていることを確認します。
 
     ```powershell-interactive
     Param(
@@ -151,13 +135,14 @@ Runbook 内で Azure Key Vault を使用するには、Automation アカウン�
 7. **[発行]** を選択して Runbook を保存し、発行します。
 
 Runbook が正常に実行されることを確認するには、「[Runbook をテストする](manage-runbooks.md#test-a-runbook)」または [Runbook の開始](start-runbooks.md)に関するページの手順に従います。
+
 最初にテスト用のメールが表示されない場合は、**迷惑メール**および**スパム**のフォルダーを確認してください。
 
-## <a name="clean-up"></a>クリーンアップする
+## <a name="clean-up-resources-after-the-email-operation"></a>メール操作後にリソースをクリーンアップする
 
-不要になったら、Runbook を削除します。 削除するには、Runbook 一覧で Runbook を選択し、 **[削除]** をクリックします。
+1. この Runbook が不要になったら、Runbook の一覧で選択し、 **[削除]** をクリックします。
 
-キー コンテナーを削除するには、[Remove-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/remove-azkeyvault?view=azps-3.7.0) コマンドレットを使用します。
+2. キー コンテナーを削除するには、[Remove-AzKeyVault](/powershell/module/az.keyvault/remove-azkeyvault?view=azps-3.7.0) コマンドレットを使用します。
 
 ```azurepowershell-interactive
 $VaultName = "<your KeyVault name>"
@@ -167,7 +152,6 @@ Remove-AzKeyVault -VaultName $VaultName -ResourceGroupName $ResourceGroupName
 
 ## <a name="next-steps"></a>次のステップ
 
-* Runbook の作成または開始に関する問題については、「[Runbook に関するエラーのトラブルシューティング](./troubleshoot/runbooks.md)」を参照してください。
-* Automation アカウント内のモジュールを更新するには、「[Azure Automation 内の Azure PowerShell モジュールを更新する方法](automation-update-azure-modules.md)]」を参照してください。
-* Runbook の実行を監視するには、「[Automation から Azure Monitor ログにジョブの状態とジョブ ストリームを転送する](automation-manage-send-joblogs-log-analytics.md)」を参照してください。
-* アラートを使用して Runbook をトリガーするには、「[Azure Automation Runbook をトリガーするアラートを使用する](automation-create-alert-triggered-runbook.md)」を参照してください。
+* Runbook ジョブのデータを Log Analytics ワークスペースに送信するには、「[Azure Monitor ログに Azure Automation のジョブ データを転送する](automation-manage-send-joblogs-log-analytics.md)」を参照してください。
+* 基本レベルのメトリックとログを監視するには、「[Azure Automation Runbook をトリガーするアラートを使用する](automation-create-alert-triggered-runbook.md)」を参照してください。
+* Runbook の操作中に発生した問題を修正するには、「[Runbook の問題のトラブルシューティング](./troubleshoot/runbooks.md)」を参照してください。

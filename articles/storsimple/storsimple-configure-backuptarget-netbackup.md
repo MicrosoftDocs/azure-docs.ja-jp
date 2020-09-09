@@ -1,6 +1,6 @@
 ---
 title: NetBackup を使用したバックアップ ターゲットとしての StorSimple 8000 シリーズ | Microsoft Docs
-description: Veritas NetBackup を使用した StorSimple バックアップ ターゲットの構成について説明します。
+description: Veritas NetBackup を利用した StorSimple バックアップ ターゲット構成と両方のソリューションを統合するためのベスト プラクティスについて説明します。
 services: storsimple
 documentationcenter: ''
 author: harshakirank
@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
-ms.openlocfilehash: 957fff73f2406e0e057a7c978dd76a6bd9c156b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b186fadcc99c6cc538b61eaa94d5d84d649c233f
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67876203"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184008"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>NetBackup を使用したバックアップ ターゲットとしての StorSimple
 
@@ -507,7 +507,7 @@ StorSimple クラウド スナップショットは、StorSimple デバイスに
 
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>クラウド スナップショットを開始または削除する方法
 
-1. [Azure PowerShell をインストールします](/powershell/azure/overview)。
+1. [Azure PowerShell をインストールします](/powershell/azure/)。
 2. [Manage-CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) PowerShell スクリプトをダウンロードして設定します。
 3. スクリプトを実行するサーバーで PowerShell を管理者として実行します。 スクリプトによって行われる変更を確認するには、`-WhatIf $true` を指定してスクリプトを実行してください。 検証が完了したら、`-WhatIf $false` を渡します。 次のコマンドを実行します。
    ```powershell

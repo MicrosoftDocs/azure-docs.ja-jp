@@ -5,17 +5,17 @@ description: 発行されたパイプラインを使用して Azure Machine Lear
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
 ms.author: keli19
 author: likebupt
 ms.date: 04/06/2020
-ms.custom: designer
-ms.openlocfilehash: 7a132734c3ccb6d5d143053b83723950d154d74c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.topic: conceptual
+ms.custom: how-to, designer
+ms.openlocfilehash: 181d79c6aef87999bc1b4242a70870edf60ad7df
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653694"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319628"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナーを使用してモデルを再トレーニングする (プレビュー)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -34,6 +34,8 @@ ms.locfileid: "83653694"
 
 * Enterprise SKU の Azure Machine Learning ワークスペース。
 * この操作方法シリーズのパート 1、[デザイナーでのデータの変換](how-to-designer-transform-data.md)に関する記事を完了してください。
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 また、この記事は、デザイナーでパイプラインを構築することの基本的知識を持っていることも前提としています。 ガイド付きの概要については、[チュートリアル](tutorial-designer-automobile-price-train-score.md)を完了してください。 
 

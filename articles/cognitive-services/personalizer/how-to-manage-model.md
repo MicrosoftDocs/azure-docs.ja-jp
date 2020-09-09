@@ -1,14 +1,14 @@
 ---
 title: モデルと学習設定の管理 - Personalizer
 description: 機械学習モデルと学習設定は、独自のソース管理システムでバックアップ用にエクスポートできます。
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: c544d058019c8d507f65dc6bfd854376b364abd1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 59af5a64ea5752ec03fb44df91440e8d395e3782
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77624209"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344358"
 ---
 # <a name="how-to-manage-model-and-learning-settings"></a>モデルと学習設定を管理する方法
 

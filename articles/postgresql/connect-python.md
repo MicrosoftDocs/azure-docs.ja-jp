@@ -1,23 +1,27 @@
 ---
-title: Python を使用して接続する - Azure Database for PostgreSQL - Single Server
+title: クイック スタート:Python を使用して接続する - Azure Database for PostgreSQL - Single Server
 description: このクイックスタートでは、Azure Database for PostgreSQL - Single Server に接続してデータを照会するために使用できる、Python コード サンプルを紹介します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.custom: mvc, devcenter
+ms.custom: mvc, devcenter, devx-track-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: 3694c0b74393068538a0c8f496444a1541d88fee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a9303909eb98fc0ff2d7582fa7f5807a879e7958
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76769055"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182684"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>クイック スタート:Python を使用して Azure Database for PostgreSQL - Single Server に接続し、データにクエリを実行する
 
 このクイックスタートでは、macOS、Ubuntu Linux、または Windows 上で Python を使用して Azure Database for PostgreSQL を操作します。 このクイックスタートでは、データベースに接続し、SQL ステートメントを使用してデータを照会、挿入、更新、削除する方法を説明します。 この記事では、Python には慣れているものの、Azure Database for PostgreSQL の使用は初めてであるユーザーを想定しています。
+
+> [!TIP]
+> PostgreSQL を使用する Django アプリケーションを構築する場合は、[PostgreSQL を使用した Django Web アプリのデプロイ](../app-service/containers/tutorial-python-postgresql-app.md)に関するチュートリアルを参照してください。
+
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,7 +42,7 @@ ms.locfileid: "76769055"
 Azure Database for PostgreSQL データベースに接続するには、完全修飾サーバー名とログイン資格情報が必要です。 この情報は Azure portal から取得できます。
 
 1. [Azure portal](https://portal.azure.com/) で、ご利用の Azure Database for PostgreSQL サーバー名を検索して選択します。 
-1. サーバーの **[概要]** ページで、完全修飾**サーバー名**と**管理者ユーザー名**をコピーします。 完全修飾**サーバー名** は常に *\<my-server-name>.postgres.database.azure.com* の形式になり、**管理者ユーザー名**は常に *\<my-admin-username>@\<my-server-name>* の形式になります。 
+1. サーバーの **[概要]** ページで、完全修飾**サーバー名**と**管理者ユーザー名**をコピーします。 完全修飾**サーバー名**は常に *\<my-server-name>.postgres.database.azure.com* の形式になり、**管理者ユーザー名**は常に *\<my-admin-username>@\<my-server-name>* の形式になります。 
    
    また、管理者パスワードも必要です。 忘れた場合は、このページでリセットできます。 
    

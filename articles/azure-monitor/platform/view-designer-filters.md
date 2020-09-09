@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/22/2018
-ms.openlocfilehash: b4840ed30eb1f6dc8d6e6cef47da17807f9644d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4f4b914fe5851df0928df9ccc41ca3b20c5d3469
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77658576"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955957"
 ---
 # <a name="filters-in-azure-monitor-views"></a>Azure Monitor ビューのフィルター
 [Azure Monitor ビュー](view-designer.md)内の**フィルター**を使用すると、ユーザーはビュー自体を変更せずに、特定のプロパティの値によってビュー内のデータをフィルター処理することができます。  たとえば、ビューのユーザーが、特定のコンピューターまたは複数のコンピューターからのデータだけをフィルター表示したビューを利用できます。  1 つのビューに複数のフィルターを作成して、ユーザーが複数のプロパティでフィルター処理することが可能です。  この記事では、フィルターの使用方法およびカスタム ビューへの追加方法について説明します。
@@ -61,15 +61,19 @@ ms.locfileid: "77658576"
 
 クエリでフィルター値を使用する構文は次のようになります。 
 
-    where ${filter name}  
+`where ${filter name}`  
 
 たとえば、イベントを返して _Computers_ というフィルターを使用するクエリがビューにある場合、以下のクエリを使用することができます。
 
-    Event | where ${Computers} | summarize count() by EventLevelName
+```kusto
+Event | where ${Computers} | summarize count() by EventLevelName
+```
 
 Severity という別のフィルターを追加した場合は、両方のフィルターを適用する次のクエリを使用できます。
 
-    Event | where ${Computers} | where ${Severity} | summarize count() by EventLevelName
+```kusto
+Event | where ${Computers} | where ${Severity} | summarize count() by EventLevelName
+```
 
 ## <a name="next-steps"></a>次のステップ
 * カスタム ビューに追加できる[視覚エフェクト パーツ](view-designer-parts.md)の詳細についてはこちらをご覧ください。

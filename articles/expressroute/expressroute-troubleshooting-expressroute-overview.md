@@ -2,18 +2,18 @@
 title: 'Azure ExpressRoute: 接続の検証 - トラブルシューティング ガイド'
 description: このページでは、ExpressRoute 回線のエンド ツー エンド接続のトラブルシューティングと検証の手順について説明します。
 services: expressroute
-author: rambk
+author: duongau
 ms.service: expressroute
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 10/31/2019
-ms.author: rambala
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 58ae39e8dfdf918ae14ca9bb8dac28405828999e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5689bf60144cf3d66335eb4d77a96d29d8cdcc96
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78330959"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401743"
 ---
 # <a name="verifying-expressroute-connectivity"></a>ExpressRoute 接続の検証
 この記事は、ExpressRoute 接続の検証とトラブルシューティングに役立ちます。 ExpressRoute は、接続プロバイダーが一般的に提供するプライベート接続を介して、オンプレミス ネットワークを Microsoft クラウドへと拡張します。 ExpressRoute 接続には従来、次の 3 つの異なるネットワーク ゾーンが含まれます。
@@ -95,7 +95,9 @@ ExpressRoute 回線を運用可能にするには、 *[回線の状態]* が *[�
 ### <a name="verification-via-powershell"></a>PowerShell を使用した検証
 リソース グループ内のすべての ExpressRoute 回線を一覧表示するには、次のコマンドを使用します。
 
-    Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG"
+```azurepowershell
+Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG"
+```
 
 >[!TIP]
 >リソース グループの名前を探している場合は、コマンド *Get-AzResourceGroup*を使用して、サブスクリプション内のすべてのリソース グループを一覧表示することで取得できます。
@@ -104,37 +106,43 @@ ExpressRoute 回線を運用可能にするには、 *[回線の状態]* が *[�
 
 リソース グループ内の特定の ExpressRoute 回線を選択するには、次のコマンドを使用します。
 
-    Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+```azurepowershell
+Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+```
 
 応答のサンプルは次のとおりです。
 
-    Name                             : Test-ER-Ckt
-    ResourceGroupName                : Test-ER-RG
-    Location                         : westus2
-    Id                               : /subscriptions/***************************/resourceGroups/Test-ER-RG/providers/***********/expressRouteCircuits/Test-ER-Ckt
-    Etag                             : W/"################################"
-    ProvisioningState                : Succeeded
-    Sku                              : {
-                                        "Name": "Standard_UnlimitedData",
-                                        "Tier": "Standard",
-                                        "Family": "UnlimitedData"
-                                        }
-    CircuitProvisioningState         : Enabled
-    ServiceProviderProvisioningState : Provisioned
-    ServiceProviderNotes             : 
-    ServiceProviderProperties        : {
-                                        "ServiceProviderName": "****",
-                                        "PeeringLocation": "******",
-                                        "BandwidthInMbps": 100
-                                        }
-    ServiceKey                       : **************************************
-    Peerings                         : []
-    Authorizations                   : []
+```output
+Name                             : Test-ER-Ckt
+ResourceGroupName                : Test-ER-RG
+Location                         : westus2
+Id                               : /subscriptions/***************************/resourceGroups/Test-ER-RG/providers/***********/expressRouteCircuits/Test-ER-Ckt
+Etag                             : W/"################################"
+ProvisioningState                : Succeeded
+Sku                              : {
+                                    "Name": "Standard_UnlimitedData",
+                                    "Tier": "Standard",
+                                    "Family": "UnlimitedData"
+                                    }
+CircuitProvisioningState         : Enabled
+ServiceProviderProvisioningState : Provisioned
+ServiceProviderNotes             : 
+ServiceProviderProperties        : {
+                                    "ServiceProviderName": "****",
+                                    "PeeringLocation": "******",
+                                    "BandwidthInMbps": 100
+                                    }
+ServiceKey                       : **************************************
+Peerings                         : []
+Authorizations                   : []
+```
 
 ExpressRoute 回線が運用可能かどうかを確認するには、特に次のフィールドに注目してください。
 
-    CircuitProvisioningState         : Enabled
-    ServiceProviderProvisioningState : Provisioned
+```output
+CircuitProvisioningState         : Enabled
+ServiceProviderProvisioningState : Provisioned
+```
 
 > [!NOTE]
 > ExpressRoute 回線を構成した後、 *[回線の状態]* が有効の状態になっていない場合は、[Microsoft サポート][Support]にお問い合わせください。 一方、 *[プロバイダーの状態]* が未プロビジョニングの状態の場合は、サービス プロバイダーにお問い合わせください。
@@ -168,47 +176,56 @@ Azure portal では、ExpressRoute 回線のピアリング状態を [ExpressRou
 ### <a name="verification-via-powershell"></a>PowerShell を使用した検証
 Azure プライベート ピアリング構成の詳細を取得するには、次のコマンドを使用します。
 
-    $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-    Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt
+```azurepowershell
+$ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt
+```
 
 正常に構成されたプライベート ピアリングの応答のサンプルは次のとおりです。
 
-    Name                       : AzurePrivatePeering
-    Id                         : /subscriptions/***************************/resourceGroups/Test-ER-RG/providers/***********/expressRouteCircuits/Test-ER-Ckt/peerings/AzurePrivatePeering
-    Etag                       : W/"################################"
-    PeeringType                : AzurePrivatePeering
-    AzureASN                   : 12076
-    PeerASN                    : 123##
-    PrimaryPeerAddressPrefix   : 172.16.0.0/30
-    SecondaryPeerAddressPrefix : 172.16.0.4/30
-    PrimaryAzurePort           : 
-    SecondaryAzurePort         : 
-    SharedKey                  : 
-    VlanId                     : 200
-    MicrosoftPeeringConfig     : null
-    ProvisioningState          : Succeeded
+```output
+Name                       : AzurePrivatePeering
+Id                         : /subscriptions/***************************/resourceGroups/Test-ER-RG/providers/***********/expressRouteCircuits/Test-ER-Ckt/peerings/AzurePrivatePeering
+Etag                       : W/"################################"
+PeeringType                : AzurePrivatePeering
+AzureASN                   : 12076
+PeerASN                    : 123##
+PrimaryPeerAddressPrefix   : 172.16.0.0/30
+SecondaryPeerAddressPrefix : 172.16.0.4/30
+PrimaryAzurePort           : 
+SecondaryAzurePort         : 
+SharedKey                  : 
+VlanId                     : 200
+MicrosoftPeeringConfig     : null
+ProvisioningState          : Succeeded
+```
 
  正常に有効にされたピアリング コンテキストでは、プライマリとセカンダリのアドレス プレフィックスが表示されます。 /30 サブネットは、MSEE と CE/PE-MSEE のインターフェイス IP アドレスに使用されます。
 
 Azure パブリック ピアリング構成の詳細を取得するには、次のコマンドを使用します。
 
-    $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-    Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt
+```azurepowershell
+$ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt
+```
 
 Microsoft ピアリング構成の詳細を取得するには、次のコマンドを使用します。
 
-    $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-     Get-AzExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
+```azurepowershell
+$ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+Get-AzExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
+```
 
 ピアリングが構成されていない場合は、エラー メッセージが表示されます。 記述されているピアリング (この例では Azure パブリック ピアリング) が回線内で構成されていない場合の応答のサンプルは次のとおりです。
 
-    Get-AzExpressRouteCircuitPeeringConfig : Sequence contains no matching element
-    At line:1 char:1
-        + Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering ...
-        + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            + CategoryInfo          : CloseError: (:) [Get-AzExpr...itPeeringConfig], InvalidOperationException
-            + FullyQualifiedErrorId : Microsoft.Azure.Commands.Network.GetAzureExpressRouteCircuitPeeringConfigCommand
-
+```azurepowershell
+Get-AzExpressRouteCircuitPeeringConfig : Sequence contains no matching element
+At line:1 char:1
+    + Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering ...
+    + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        + CategoryInfo          : CloseError: (:) [Get-AzExpr...itPeeringConfig], InvalidOperationException
+        + FullyQualifiedErrorId : Microsoft.Azure.Commands.Network.GetAzureExpressRouteCircuitPeeringConfigCommand
+```
 
 > [!NOTE]
 > ピアリングの有効化が失敗する場合は、割り当てられたプライマリ サブネットとセカンダリ サブネットが、リンクされた CE/PE-MSEE 上の構成と一致するかどうかを確認してください。 さらに、適切な *VlanId*、*AzureASN*、*PeerASN* が MSEE で使用されているかどうかと、これらの値がリンクされた CE/PE-MSEE で使用されている値に対応しているかどうかも確認してください。 MD5 ハッシュが選択されている場合は、MSEE と PE-MSEE/CE のペアで共有キーは同じものにする必要があります。 以前に構成した共有キーは、セキュリティ上の理由で表示されません。 MSEE ルーター上のこれらの構成のいずれかを変更する必要がある場合は、「[ExpressRoute 回線のピアリングの作成と変更を行う][CreatePeering]」を参照してください。  
@@ -234,28 +251,31 @@ ExpressRoute ピアリングの ARP テーブルの表示方法、およびこ�
 
 *Private* ルーティング コンテキストについて、*Primary* パスで MSEE からルーティング テーブルを取得するには、次のコマンドを使用します。
 
-    Get-AzExpressRouteCircuitRouteTable -DevicePath Primary -ExpressRouteCircuitName ******* -PeeringType AzurePrivatePeering -ResourceGroupName ****
+```azurepowershell
+Get-AzExpressRouteCircuitRouteTable -DevicePath Primary -ExpressRouteCircuitName ******* -PeeringType AzurePrivatePeering -ResourceGroupName ****
+```
 
 応答の例は次のとおりです。
 
-    Network : 10.1.0.0/16
-    NextHop : 10.17.17.141
-    LocPrf  : 
-    Weight  : 0
-    Path    : 65515
+```output
+Network : 10.1.0.0/16
+NextHop : 10.17.17.141
+LocPrf  : 
+Weight  : 0
+Path    : 65515
 
-    Network : 10.1.0.0/16
-    NextHop : 10.17.17.140*
-    LocPrf  : 
-    Weight  : 0
-    Path    : 65515
+Network : 10.1.0.0/16
+NextHop : 10.17.17.140*
+LocPrf  : 
+Weight  : 0
+Path    : 65515
 
-    Network : 10.2.20.0/25
-    NextHop : 172.16.0.1
-    LocPrf  : 
-    Weight  : 0
-    Path    : 123##
-
+Network : 10.2.20.0/25
+NextHop : 172.16.0.1
+LocPrf  : 
+Weight  : 0
+Path    : 123##
+```
 
 > [!NOTE]
 > MSEE と CE/PE-MSEE の間の eBGP ピアリングの状態がアクティブまたはアイドルの場合は、割り当てられたプライマリ ピアとセカンダリ ピアのサブネットが、リンクされた CE/PE-MSEE 上の構成と一致するかどうかを確認してください。 さらに、適切な *VlanId*、*AzureASN*、*PeerASN* が MSEE で使用されているかどうかと、これらの値がリンクされた PE-MSEE/CE で使用されている値に対応しているかどうかも確認してください。 MD5 ハッシュが選択されている場合は、MSEE と CE/PE-MSEE のペアで共有キーは同じものにする必要があります。 MSEE ルーター上のこれらの構成のいずれかを変更する必要がある場合は、「[ExpressRoute 回線のピアリングの作成と変更を行う][CreatePeering]」を参照してください。
@@ -269,24 +289,32 @@ ExpressRoute ピアリングの ARP テーブルの表示方法、およびこ�
 
 次の例は、ピアリングに対するコマンドの応答が存在しないことを示します。
 
-    Get-AzExpressRouteCircuitRouteTable : The BGP Peering AzurePublicPeering with Service Key ********************* is not found.
-    StatusCode: 400
+```azurepowershell
+Get-AzExpressRouteCircuitRouteTable : The BGP Peering AzurePublicPeering with Service Key ********************* is not found.
+StatusCode: 400
+```
 
 ## <a name="confirm-the-traffic-flow"></a>トラフィック フローを確認する
 ピアリング コンテキストのプライマリ パスとセカンダリ パスを組み合わせたトラフィックの統計情報 (入出力バイト数) を取得するには、次のコマンドを使用します。
 
-    Get-AzExpressRouteCircuitStats -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -PeeringType 'AzurePrivatePeering'
+```azurepowershell
+Get-AzExpressRouteCircuitStats -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -PeeringType 'AzurePrivatePeering'
+```
 
 コマンドの出力例は次のとおりです。
 
-    PrimaryBytesIn PrimaryBytesOut SecondaryBytesIn SecondaryBytesOut
-    -------------- --------------- ---------------- -----------------
-         240780020       239863857        240565035         239628474
+```output
+PrimaryBytesIn PrimaryBytesOut SecondaryBytesIn SecondaryBytesOut
+-------------- --------------- ---------------- -----------------
+     240780020       239863857        240565035         239628474
+```
 
 ピアリングが存在しない場合のコマンドの出力例は次のとおりです。
 
-    Get-AzExpressRouteCircuitRouteTable : The BGP Peering AzurePublicPeering with Service Key ********************* is not found.
-    StatusCode: 400
+```azurepowershell
+Get-AzExpressRouteCircuitRouteTable : The BGP Peering AzurePublicPeering with Service Key ********************* is not found.
+StatusCode: 400
+```
 
 ## <a name="next-steps"></a>次の手順
 詳細やヘルプについては、次のリンク先を確認してください。

@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 312e9db594983f85372285bdff415a2d5dc76ed3
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 5c175a1575a4efbdc2294412e3743e201d8c4bb1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984012"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653306"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Azure Virtual Network の IPv6 の概要
 
@@ -58,6 +58,7 @@ Azure VNet の IPv6 には、以下の機能が含まれています。
     - 複数のフロントエンド構成 (オプション)。これにより、単一のロード バランサーで複数の IPv6 パブリック IP アドレスを使用できます。フロントエンド アドレスをまたいで同じフロントエンド プロトコルとポートを再利用できます。
     - 負荷分散規則の *Floating IP* 機能を使用して、オプションの IPv6 ポートをバックエンド インスタンスで再利用できます 
     - 注:負荷分散では、プロトコル変換は実行されません (NAT64 はサポートされていません)。 
+    - 注:IPv6 は、Azure VM 上のプライマリ ネットワーク インターフェイス (NIC) に対してのみ負荷分散できます。 
 - Azure VNET 内に弾力性のある多層アプリケーションを作成するための、[Standard IPv6 内部 Load Balancer](ipv6-dual-stack-standard-internal-load-balancer-powershell.md) のサポート。   
 - レガシ デプロイとの互換性のための Basic IPv6 パブリック Load Balancer のサポート
 - [予約された IPv6 パブリック IP アドレスおよびアドレス範囲](ipv6-public-ip-address-prefix.md)により、安定した予測可能な IPv6 アドレスが提供されます。これにより、会社や顧客向けに Azure でホストされるアプリケーションを簡単にホワイトリストに登録できます。
@@ -73,10 +74,14 @@ Azure VNET の IPv6 は、お客様が Azure でデュアル スタック (IPv4 
 
 ## <a name="limitations"></a>制限事項
 Azure 仮想ネットワークの IPv6 の現在のリリースには、次の制限があります。
-- Azure 仮想ネットワークの IPv6 は、すべてのデプロイ方法を使用して、すべてのグローバル Azure Commercial リージョンで使用できます。  U.S. Government クラウドでのデプロイは、一時的に、ARM (JSON) テンプレート、コマンド ライン インターフェイス (CLI)、PowerShell に制限されます。  U.S. Government クラウドの IPv6 サポートは、まもなく提供される予定です。  
+- Azure 仮想ネットワークの IPv6 は、すべてのデプロイ方法を使用して、すべてのグローバル Azure Commercial リージョンと米国政府リージョンで使用できます。  
 - ExpressRoute ゲートウェイは、IPv6 を有効になっている VNET で IPv4 専用のトラフィックに対して使用できます。  IPv6 トラフィックについては、今後サポートされる予定です。   
 - VPN ゲートウェイは、IPv6 が有効になっている VNET で、直接的にも、"UseRemoteGateway" とのピアリングでも使用できません。
 - Azure プラットフォーム (AKS など) では、コンテナーに対する IPv6 通信はサポートされていません。  
+- IPv6 は、Azure VM 上のプライマリ ネットワーク インターフェイス (NIC) に対してのみ負荷分散できます。 セカンダリ NIC への IPv6 トラフィックの負荷分散はサポートされていません。    
+- IPv6 専用 Virtual Machines または Virtual Machine Scale Sets はサポートされていません。各 NIC には、少なくとも 1 つの IPv4 IP 構成を含める必要があります。 
+- 既存の IPv4 デプロイに IPv6 を追加する場合、既存のリソース ナビゲーション リンクがある VNET に IPv6 範囲を追加することはできません。  
+- 現在、Azure パブリック DNS では、IPv6 に対して正引き DNS がサポートされていますが、逆引き DNS はまだサポートされていません。   
 
 ## <a name="pricing"></a>価格
 

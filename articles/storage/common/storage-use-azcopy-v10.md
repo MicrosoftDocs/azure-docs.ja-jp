@@ -3,16 +3,16 @@ title: AzCopy v10 を使用して Azure Storage にデータをコピーまた�
 description: AzCopy は、ストレージ アカウント間のデータ コピーに利用できるコマンドライン ユーティリティです。 この記事は、AzCopy をダウンロードし、ストレージ アカウントに接続し、ファイルを転送する際に役立ちます。
 author: normesta
 ms.service: storage
-ms.topic: conceptual
-ms.date: 10/23/2019
+ms.topic: how-to
+ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 6e6bd55fbb73113dfbcd01e94753c4fb21219c14
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: b43b20023aa0d96dcaa3ce79b626d61ec6f6752d
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780880"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423833"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy を使ってみる
 
@@ -23,7 +23,7 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 >
 > 以前のバージョンの AzCopy を使用する必要がある場合は、この記事の「[以前のバージョンの AzCopy の使用](#previous-version)」セクションを参照してください。
 
-<a id="download-and-install-azcopy" />
+<a id="download-and-install-azcopy"></a>
 
 ## <a name="download-azcopy"></a>AzCopy をダウンロードする
 
@@ -31,7 +31,7 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 
 - [Windows 64 ビット](https://aka.ms/downloadazcopy-v10-windows) (zip)
 - [Windows 32 ビット](https://aka.ms/downloadazcopy-v10-windows-32bit) (zip)
-- [Linux](https://aka.ms/downloadazcopy-v10-linux) (tar)
+- [Linux x86-64](https://aka.ms/downloadazcopy-v10-linux) (tar)
 - [MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
 
 これらのファイルは、zip ファイル (Windows および Mac) または tar ファイル (Linux) として圧縮されます。 Linux 上で tar ファイルをダウンロードして圧縮を解除するには、お使いの Linux ディストリビューションのドキュメントを参照してください。
@@ -97,7 +97,7 @@ Azure Active Directory を使用すると、各コマンドに SAS トークン�
 ロールを確認し、割り当てる方法については、「[Azure portal で RBAC を使用して Azure BLOB とキューのデータへのアクセスを付与する](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
 
 > [!NOTE]
-> RBAC ロールの割り当ての反映には最大で 5 分かかる場合があることに留意してください。
+> Azure ロールの割り当ての反映には最大で 5 分かかる場合があることに留意してください。
 
 ターゲット コンテナーまたはディレクトリのアクセス制御リスト (ACL) にご自分のセキュリティ プリンシパルが追加されている場合は、これらのロールのいずれかがご自分のセキュリティ プリンシパルに割り当てられている必要はありません。 ACL では、ご自分のセキュリティ プリンシパルには、ターゲット ディレクトリの書き込みアクセス許可と、コンテナーおよび各親ディレクトリの実行アクセス許可が必要になります。
 
@@ -111,7 +111,7 @@ Azure Active Directory を使用すると、各コマンドに SAS トークン�
 azcopy login
 ```
 
-1 つ以上の組織に属している場合、ストレージ アカウントが属する組織のテナント ID を含めます。
+エラーが発生する場合は、ストレージ アカウントが属する組織のテナント ID を含めてみてください。
 
 ```azcopy
 azcopy login --tenant-id=<tenant-id>
@@ -125,7 +125,7 @@ azcopy login --tenant-id=<tenant-id>
 
 サインイン ウィンドウが表示されます。 そのウィンドウで、Azure アカウント資格情報を使用して、Azure アカウントにサインインします。 正常にサインインしたら、ブラウザー ウィンドウを閉じ、AzCopy の使用を開始できます。
 
-<a id="service-principal" />
+<a id="service-principal"></a>
 
 #### <a name="authenticate-a-service-principal"></a>サービス プリンシパルの認証
 
@@ -158,7 +158,7 @@ $env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
 次に、以下のコマンドを入力し、Enter キーを押します。
 
 ```azcopy
-azcopy login --service-principal --application-id <application-id> --tenant-id=<tenant-id>
+azcopy login --service-principal --certificate-path path-to-certificate-file --application-id application-id --tenant-id=tenant-id
 ```
 
 `<application-id>` プレースホルダーを、ご自分のサービス プリンシパルのアプリ登録のアプリケーション ID に置き換えます。 `<tenant-id>` プレースホルダーを、ストレージ アカウントが属する組織のテナント ID に置き換えます。 テナント ID を確認するには、Azure portal 内で **[Azure Active Directory] > [プロパティ] > [ディレクトリ ID]** の順に選択します。 
@@ -191,7 +191,7 @@ azcopy login --service-principal --certificate-path <path-to-certificate-file> -
 > [!NOTE]
 > この例で示すように、プロンプトを使用することを検討してください。 そうすると、ご自分のパスワードがご使用のコンソールのコマンド履歴に表示されません。 
 
-<a id="managed-identity" />
+<a id="managed-identity"></a>
 
 #### <a name="authenticate-a-managed-identity"></a>マネージド ID を認証する
 
@@ -271,7 +271,7 @@ ID を認証し、SAS トークンを取得したら、ファイルの転送を�
 
 そのリンクを取得するには、このコマンドを実行します。
 
-| オペレーティング システム  | command |
+| オペレーティング システム  | コマンド |
 |--------|-----------|
 | **Linux** | `curl -s -D- https://aka.ms/downloadazcopy-v10-linux | grep ^Location` |
 | **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).headers.location` |
@@ -281,7 +281,7 @@ ID を認証し、SAS トークンを取得したら、ファイルの転送を�
 
 この URL はこのコマンドの出力に表示されます。 その後、実際のスクリプトでその URL を使用して AzCopy をダウンロードできます。
 
-| オペレーティング システム  | command |
+| オペレーティング システム  | コマンド |
 |--------|-----------|
 | **Linux** | `wget -O azcopy_v10.tar.gz https://aka.ms/downloadazcopy-v10-linux && tar -xf azcopy_v10.tar.gz --strip-components=1` |
 | **Windows** | `Invoke-WebRequest https://azcopyvnext.azureedge.net/release20190517/azcopy_windows_amd64_10.1.2.zip -OutFile azcopyv10.zip <<Unzip here>>` |
@@ -304,7 +304,7 @@ ID を認証し、SAS トークンを取得したら、ファイルの転送を�
 
 Storage Explorer では、ご自分のアカウント キーを使用して、操作を実行します。そのため、Storage Explorer にサインインした後は、追加の承認資格情報を提供する必要はありません。
 
-<a id="previous-version" />
+<a id="previous-version"></a>
 
 ## <a name="use-the-previous-version-of-azcopy"></a>以前のバージョンの AzCopy の使用
 

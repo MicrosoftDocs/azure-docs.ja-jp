@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Elqano SSO の統合 | Microsoft Docs
 description: Azure Active Directory と Elqano SSO の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 1df28724-e5e6-4251-b4ec-b0fa45f61537
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc2bfc9aa752e948662d44c7ae7c1ed33b4a67ce
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0e9c5801c549e200714ee04a16cd6cde9c345adb
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80135741"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544160"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-elqano-sso"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Elqano SSO の統合
 

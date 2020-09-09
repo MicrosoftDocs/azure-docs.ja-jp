@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5196615b6b935e4d37565298be03ad315163d132
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a788134f64066b0469d34fbfbacacd8c45438bde
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231111"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85203148"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -24,7 +24,7 @@ ms.locfileid: "79231111"
 
 **TechnicalProfiles** 要素には、クレーム プロバイダーによってサポートされる一連の技術プロファイルが含まれています。 どのクレーム プロバイダーも、そのクレーム プロバイダーと通信するために必要なエンドポイントとプロトコルを特定する技術プロファイルを 1 つ以上持っている必要があります。 1 つのクレーム プロバイダーが複数の技術プロファイルを持つことができます。
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>Display name</DisplayName>
   <TechnicalProfiles>
@@ -310,7 +310,7 @@ ms.locfileid: "79231111"
 
 次の技術プロファイルは、**identityProviders** 文字列コレクションに `facebook.com` という値が含まれている場合にのみ実行されます。
 
-```XML
+```xml
 <TechnicalProfile Id="UnLink-Facebook-OAUTH">
   <DisplayName>Unlink Facebook</DisplayName>
 ...

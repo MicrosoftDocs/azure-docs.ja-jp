@@ -5,20 +5,20 @@ description: この記事では、Azure PowerShell を使用して Azure 仮想�
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: c733538a4e730a95008a8ec1e4d50c20d6ce24ec
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: f2ff81c1f1989e28fa48e4307a13433a7b98e915
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80420758"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051051"
 ---
 # <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell"></a>Azure 仮想ネットワーク内の IPv4 アプリケーションを IPv6 にアップグレードする - PowerShell
 
@@ -36,7 +36,7 @@ PowerShell をローカルにインストールして使用することを選択
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事では、[クイック スタート: Standard Load Balancer を作成する - Azure PowerShell](../load-balancer/quickstart-create-standard-load-balancer-powershell.md) に関するページに説明されているように、Standard Load Balancer をデプロイしたことを前提としています。
+この記事では、[クイック スタート: Standard Load Balancer を作成する - Azure PowerShell](../load-balancer/quickstart-load-balancer-standard-public-powershell.md) に関するページに説明されているように、Standard Load Balancer をデプロイしたことを前提としています。
 
 ## <a name="retrieve-the-resource-group"></a>リソース グループの取得
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: e93b3412785817050ac53030be9ff2172a678c06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5c3a24bc9d754a15a0b372667fbcd689365a9aec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77617123"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088310"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>SLES 12 SP3 での SAP HANA スケールアウトの高可用性セットアップの確認とトラブルシューティング 
 
@@ -172,7 +172,7 @@ nc: connect to 10.0.2.40 port 40002 (tcp) failed: Connection refused
 
 テスト システムからの **corosync.conf** の内容は、一例です。
 
-[クラスターのインストール](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#cluster-installation)に関するセクションの手順 11 で説明されているように、最初のセクションは **totem** です。 **mcastaddr** の値は無視できます。 既存のエントリを保持します。 **token** と **consensus** のエントリは、[Microsoft Azure SAP HANA のドキュメント][sles-pacemaker-ha-guide]に従って設定する必要があります。
+[クラスターのインストール](./high-availability-guide-suse-pacemaker.md#cluster-installation)に関するセクションの手順 11 で説明されているように、最初のセクションは **totem** です。 **mcastaddr** の値は無視できます。 既存のエントリを保持します。 **token** と **consensus** のエントリは、[Microsoft Azure SAP HANA のドキュメント][sles-pacemaker-ha-guide]に従って設定する必要があります。
 
 <pre><code>
 totem {
@@ -279,7 +279,7 @@ systemctl restart corosync
 
 ## <a name="sbd-device"></a>SBD デバイス
 
-Azure VM で SBD デバイスをセットアップする方法については、[SBD フェンス](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing)のセクションで説明されています。
+Azure VM で SBD デバイスをセットアップする方法については、[SBD フェンス](./high-availability-guide-suse-pacemaker.md#sbd-fencing)のセクションで説明されています。
 
 最初に、クラスター内のすべてのノードに ACL エントリがあるかどうか、SBD サーバー VM を確認します。 SBD サーバー VM で次のコマンドを実行します。
 
@@ -422,7 +422,7 @@ sbd -d /dev/sdm message hso-hana-vm-s2-2 test
 /dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68:   notice: servant: Received command test from hso-hana-vm-s2-1 on disk /dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68
 </code></pre>
 
-**/etc/sysconfig/sbd** のエントリが、「[Setting up Pacemaker on SUSE Linux Enterprise Server in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing)」(Azure で SUSE Linux Enterprise Server に Pacemaker を設定する) の説明に対応しているかどうかを確認します。 **/etc/iscsi/iscsid.conf** のスタートアップ設定が自動に設定されていることを確認します。
+**/etc/sysconfig/sbd** のエントリが、「[Setting up Pacemaker on SUSE Linux Enterprise Server in Azure](./high-availability-guide-suse-pacemaker.md#sbd-fencing)」(Azure で SUSE Linux Enterprise Server に Pacemaker を設定する) の説明に対応しているかどうかを確認します。 **/etc/iscsi/iscsid.conf** のスタートアップ設定が自動に設定されていることを確認します。
 
 **/etc/sysconfig/sbd** では、次のエントリが重要です。 必要に応じて、**id** 値を調整します。
 
@@ -457,7 +457,7 @@ node.startup = automatic
 5. イニシエーター名の上にある **[Service Start]\(サービスの開始\)** 値が **[When Booting]\(起動時\)** に設定されていることを確認します。
 6. そうでない場合は、 **[Manually]\(手動\)** の代わりに **[When Booting]\(起動時\)** に設定します。
 7. 次に、上部のタブを **[Connected Targets]\(接続済みのターゲット\)** に切り替えます。
-8. **[Connected Targets]\(接続済みのターゲット\)** 画面に、この例: **10.0.0.19:3260 iqn.2006-04.dbhso.local:dbhso** のような SBD デバイスのエントリが表示されます。
+8. **[Connected Targets]\(接続済みのターゲット)** 画面に、次の例のような SBD デバイスのエントリが表示されます:**10.0.0.19:3260 iqn.2006-04.dbhso.local:dbhso**。
 9. **Start-Up** 値が **on boot** に設定されているかどうかを確認します。
 10. そうでない場合は、 **[Edit]\(編集\)** を選択して変更します。
 11. 変更内容を保存し、YaST2 を終了します。
@@ -979,4 +979,3 @@ https://&ltnode&gt:7630
 ## <a name="next-steps"></a>次のステップ
 
 このトラブルシューティング ガイドでは、スケールアウト構成での SAP HANA の高可用性について説明しました。 データベースに加え、SAP ランドスケープ内のもう 1 つの重要なコンポーネントは、SAP NetWeaver スタックです。 [SUSE Enterprise Linux Server を使用した Azure の仮想マシン上の SAP NetWeaver の高可用性][sap-nw-ha-guide-sles]について学習します。
-

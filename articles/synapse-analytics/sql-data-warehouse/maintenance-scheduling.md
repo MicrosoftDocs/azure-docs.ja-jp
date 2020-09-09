@@ -6,16 +6,16 @@ author: antvgski
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/02/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 43fc32e910c51e8b70e15aa49584a18e5b703fca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1c5bc4400e99fb1c24e321e623aaee523b9c7383
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631604"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85210985"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>メンテナンス スケジュールを使用してサービスの更新とメンテナンスを管理する
 

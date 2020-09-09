@@ -5,15 +5,15 @@ description: Azure Resource Manager と PowerShell を使用して、Azure VPN G
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
-ms.topic: article
-ms.date: 02/14/2018
+ms.topic: how-to
+ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: eaca48fc354f1cf37635e9729b04eaaaa882ba1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6039eeed2e1bcb348920be986e72089164c614ae
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77161904"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89392652"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>S2S VPN または VNet-to-VNet 接続の IPsec/IKE ポリシーを構成する
 
@@ -118,7 +118,7 @@ S2S VPN 接続を作成するための詳細な手順については、[S2S VPN 
 ### <a name="before-you-begin"></a><a name="before"></a>開始する前に
 
 * Azure サブスクリプションを持っていることを確認します。 Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
-* Azure Resource Manager PowerShell コマンドレットをインストールします。 PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell の概要](/powershell/azure/overview)」を参照してください。
+* Azure Resource Manager PowerShell コマンドレットをインストールします。 PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell の概要](/powershell/azure/)」を参照してください。
 
 ### <a name="step-1---create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a><a name="createvnet1"></a>手順 1 - 仮想ネットワーク、VPN ゲートウェイ、およびローカル ネットワーク ゲートウェイを作成する
 
@@ -404,4 +404,4 @@ Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connecti
 
 ポリシー ベースのトラフィック セレクターの詳細については、[複数のオンプレミスのポリシー ベースの VPN デバイスへの接続](vpn-gateway-connect-multiple-policybased-rm-ps.md)に関する記事を参照してください。
 
-接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 手順については、 [仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) に関するページを参照してください。
+接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 手順については、 [仮想マシンの作成](../virtual-machines/windows/quick-create-portal.md) に関するページを参照してください。

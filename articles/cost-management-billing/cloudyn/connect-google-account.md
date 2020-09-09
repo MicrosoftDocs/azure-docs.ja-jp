@@ -6,15 +6,16 @@ ms.author: banders
 ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: cloudyn
 ms.reviewer: benshy
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4e10d39f744b40e7eb9058841eed9ff0f0e55d44
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8d549a8fd7c8b03f98fe2b11c94531ed323e0e3a
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79474647"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690070"
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>Google Cloud Platform アカウントの接続
 

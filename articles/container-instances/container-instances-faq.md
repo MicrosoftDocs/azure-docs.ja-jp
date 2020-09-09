@@ -3,13 +3,13 @@ title: よく寄せられる質問
 description: Azure Container Instances サービスに関連するよく寄せられる質問の回答
 author: dkkapur
 ms.topic: article
-ms.date: 04/10/2020
-ms.openlocfilehash: 4fca198356c8db006c4190e0f16b20f78dc1d477
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/02/2020
+ms.openlocfilehash: 95190496df4037a973207e14292911225094782e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115229"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421282"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Azure Container Instances についてよく寄せられる質問
 
@@ -27,25 +27,28 @@ Azure Container Instances のデプロイ可能なコンテナー イメージ�
 
 デプロイ時間の主な決定要因の 1 つはイメージのサイズなので、サイズを小さくする方法を探します。 不要なレイヤーを削除したり、イメージ内のレイヤーのサイズを小さくします (より軽いベース OS イメージを選択します)。 たとえば、Linux コンテナーを実行している場合は、完全な Ubuntu Server ではなく Alpine をベース イメージとして使用することを検討します。 同様に、Windows コンテナーの場合は、可能であれば Nano Server のベース イメージを使用します。 
 
-また、[List Cached Images](/rest/api/container-instances/listcachedimages) API から入手できる Azure Container Images の事前にキャッシュされたイメージの一覧も確認することもお勧めします。 事前にキャッシュされたいずれかのイメージのためにイメージ レイヤーを切り替えることもできます。 
+また、[List Cached Images](/rest/api/container-instances/location/listcachedimages) API から入手できる Azure Container Images の事前にキャッシュされたイメージの一覧も確認することもお勧めします。 事前にキャッシュされたいずれかのイメージのためにイメージ レイヤーを切り替えることもできます。 
 
 コンテナーの起動時間の短縮に関する[詳細なガイダンス](container-instances-troubleshooting.md#container-takes-a-long-time-to-start)を参照してください。
 
 ### <a name="what-windows-base-os-images-are-supported"></a>どの Windows ベース OS イメージがサポートされていますか。
 
+> [!NOTE]
+> 2020 年の Windows 更新プログラム以降の下位互換性の問題により、次のイメージ バージョンには、ベース イメージでの使用が推奨されている最小バージョン番号が含まれています。 以前のバージョンのイメージを使用した現在の展開は影響を受けませんが、新しい展開は次のベース イメージに従う必要があります。 
+
 #### <a name="windows-server-2016-base-images"></a>Windows Server 2016 ベース イメージ
 
-* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `10.0.14393.x`、`sac2016`
-* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016`、`10.0.14393.x`
+* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `sac2016`、`10.0.14393.3506` 以降
+* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016`、`10.0.14393.3506` 以降
 
 > [!NOTE]
 > Semi-Annual Channel 1709 または 1803 に基づく Windows イメージはサポートされていません。
 
 #### <a name="windows-server-2019-and-client-base-images-preview"></a>Windows Server 2019 とクライアント ベース イメージ (プレビュー)
 
-* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `1809`、`10.0.17763.914` 以前
-* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2019`、`1809`、`10.0.17763.914` 以前
-* [Windows](https://hub.docker.com/_/microsoft-windows): `1809`、`10.0.17763.914` 以前
+* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `1809`、`10.0.17763.1040` 以降
+* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2019`、`1809`、`10.0.17763.1040` 以降
+* [Windows](https://hub.docker.com/_/microsoft-windows): `1809`、`10.0.17763.1040` 以降
 
 ### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>どの .NET または .NET Core イメージ レイヤーをコンテナーに使用すればよいですか。 
 
@@ -86,7 +89,7 @@ Azure Container Instances は、サーバーレスのコンテナー オンデ�
 
 ### <a name="what-features-are-available-to-instances-running-in-a-custom-vnet"></a>カスタム VNet で実行されているインスタンスにはどのような機能を使用できますか。
 
-選択した [Azure 仮想ネットワークにコンテナー グループをデプロイ](container-instances-vnet.md)し、プライベート IP をコンテナー グループに委任して、Azure リソース全体で VNet 内のトラフィックをルーティングすることができます。 仮想ネットワークへのコンテナー グループのデプロイは、現在、Azure リージョンのサブセット内にある運用環境ワークロードで使用できます。
+選択した [Azure 仮想ネットワークにコンテナー グループをデプロイ](container-instances-vnet.md)し、プライベート IP をコンテナー グループに委任して、Azure リソース全体で VNet 内のトラフィックをルーティングすることができます。 Azure Container Instances でのネットワークのシナリオと制限事項については、「[仮想ネットワークのシナリオとリソース](container-instances-virtual-network-concepts.md)」を参照してください。
 
 ## <a name="pricing"></a>価格
 

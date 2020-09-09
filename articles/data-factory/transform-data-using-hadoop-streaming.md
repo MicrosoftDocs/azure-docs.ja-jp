@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/16/2018
-ms.openlocfilehash: c1bba6903fe1cb8cc5bae9a12153553594180b43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/08/2020
+ms.openlocfilehash: 5acfef94a98f105a7cc09c5b72b65e8c228ed87d
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418883"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83844629"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Azure Data Factory での Hadoop Streaming アクティビティを使用したデータの変換
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -78,11 +78,11 @@ Azure Data Factory の使用経験がない場合は、この記事を読む前�
 | mapper            | mapper 実行可能ファイルの名前を指定します。 | はい      |
 | reducer           | reducer 実行可能ファイルの名前を指定します。 | はい      |
 | combiner          | combiner 実行可能ファイルの名前を指定します。 | いいえ       |
-| fileLinkedService | 実行されるマッパー、コンバイナー、レジューサの各プログラムを格納するために使用される Azure Storage のリンクされたサービスへの参照。 このリンクされたサービスを指定していない場合は、HDInsight のリンクされたサービスで定義されている Azure Storage のリンクされたサービスが使用されます。 | いいえ       |
+| fileLinkedService | 実行されるマッパー、コンバイナー、レジューサの各プログラムを格納するために使用される Azure Storage のリンクされたサービスへの参照。 ここでは **[Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)** および **[ADLS Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)** にリンクされたサービスのみがサポートされています。 このリンクされたサービスを指定していない場合は、HDInsight のリンクされたサービスで定義されている Azure Storage のリンクされたサービスが使用されます。 | いいえ       |
 | filePath          | fileLinkedService によって参照される、Azure Storage に格納された マッパー、コンバイナー、レジューサ の各プログラムのパスの配列を指定します。 パスの大文字と小文字は区別されます。 | はい      |
 | input             | マッパーの入力ファイルの WASB パスを指定します。 | はい      |
 | output            | レジューサの出力ファイルの WASB パスを指定します。 | はい      |
-| getDebugInfo      | HDInsight クラスターで使用されている Azure Storage または scriptLinkedService で指定された Azure Storage にログ ファイルがコピーされるタイミングを指定します。 使用できる値: None、Always、または Failure。 既定値: None。 | いいえ       |
+| getDebugInfo      | HDInsight クラスターで使用されている Azure Storage または scriptLinkedService で指定された Azure Storage にログ ファイルがコピーされるタイミングを指定します。 使用できる値は以下の通りです。None、Always、または Failure。 既定値:[なし] : | いいえ       |
 | 引数         | Hadoop ジョブの引数の配列を指定します。 引数はコマンド ライン引数として各タスクに渡されます。 | いいえ       |
 | defines           | Hive スクリプト内で参照するキーと値のペアとしてパラメーターを指定します。 | いいえ       | 
 

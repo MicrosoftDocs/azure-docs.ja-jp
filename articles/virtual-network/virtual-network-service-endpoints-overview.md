@@ -13,24 +13,24 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: ae9d219c376aa704be34088a4f7c48c35baa9669
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 6935ea505643f253daf4c0b7d818137f52583682
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509501"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132825"
 ---
 # <a name="virtual-network-service-endpoints"></a>仮想ネットワーク サービス エンドポイント
 
-仮想ネットワーク (VNet) サービス エンドポイントでは、仮想ネットワークのプライベート アドレス空間が拡張されます。 さらに、エンドポイントでは、VNet の ID が直接接続によって Azure サービスに拡張されます。 エンドポイントを使用することで、重要な Azure サービス リソースへのアクセスを仮想ネットワークのみに限定することができます。 VNet から Azure サービスへのトラフィックは常に、Microsoft Azure のバックボーン ネットワーク上に残ります。
+仮想ネットワーク (VNet) サービス エンドポイントでは、Azure のバックボーン ネットワーク上で最適化されたルートを介して、Azure サービスに安全に直接接続できます。 エンドポイントを使用することで、重要な Azure サービス リソースへのアクセスを仮想ネットワークのみに限定することができます。 サービス エンドポイントを使用すると、VNet 内のプライベート IP アドレスは、VNet 上のパブリック IP アドレスを必要とせずに、Azure サービスのエンドポイントに接続できます。
 
 この機能は、次の Azure サービスとリージョンで提供されています。 *Microsoft.\** リソースはかっこ内に示されています。 お使いのサービスに対してサービス エンドポイントを構成する際に、サブネット側でこのリソースを有効にしてください。
 
 **一般公開**
 
 - **[Azure Storage](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)** (*Microsoft.Storage*):一般公開 (全 Azure リージョン)。
-- **[Azure SQL Database](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft.Sql*):一般公開 (全 Azure リージョン)。
-- **[Azure SQL Data Warehouse](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft.Sql*):一般公開 (全 Azure リージョン)。
+- **[Azure SQL Database](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft.Sql*):一般公開 (全 Azure リージョン)。
+- **[Azure SQL Data Warehouse](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft.Sql*):一般公開 (全 Azure リージョン)。
 - **[Azure Database for PostgreSQL サーバー](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft.Sql*):一般公開 (データベース サービスを利用できる Azure リージョン)。
 - **[Azure Database for MySQL サーバー](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft.Sql*):一般公開 (データベース サービスを利用できる Azure リージョン)。
 - **[Azure Database for MariaDB](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)** (*Microsoft.Sql*):一般公開 (データベース サービスを利用できる Azure リージョン)。
@@ -39,7 +39,7 @@ ms.locfileid: "82509501"
 - **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft.ServiceBus*):一般公開 (全 Azure リージョン)。
 - **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft.EventHub*):一般公開 (全 Azure リージョン)。
 - **[Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft.AzureActiveDirectory*):一般公開 (ADLS Gen1 を利用できる全 Azure リージョン)。
-- **[Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)** : 一般公開 (App Service を利用できる全 Azure リージョン)。
+- **[Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)** (*Microsoft.Web*):一般公開 (App Service を利用できる全 Azure リージョン)。
 
 **パブリック プレビュー**
 
@@ -90,7 +90,7 @@ ms.locfileid: "82509501"
 
 ### <a name="considerations"></a>考慮事項
 
-- サービス エンドポイントを有効にすると、サブネット内の仮想マシンの接続元 IP アドレスは切り替わります。 接続元 IP アドレスは、そのサブネットからサービスと通信するときに、パブリック IPv4 アドレスからプライベート IPv4 アドレスを使用するように切り替わります。 この切り替え中に、サービスに接続中の既存の TCP 接続はすべて閉じられます。 サービスに接続するサブネットのサービス エンドポイントを有効または無効にするときは、重要なタスクが実行されていないことを確認してください。 また、この IP アドレスの切り替えの後に、ご利用のアプリケーションが自動的に Azure サービスに接続できることを確認してください。
+- サービス エンドポイントを有効にすると、発信元 IP アドレスは、そのサブネットからサービスへの通信時に、パブリック IPv4 アドレスからプライベート IPv4 アドレスを使用するように切り替わります。 この切り替え中に、サービスに接続中の既存の TCP 接続はすべて閉じられます。 サービスに接続するサブネットのサービス エンドポイントを有効または無効にするときは、重要なタスクが実行されていないことを確認してください。 また、この IP アドレスの切り替えの後に、ご利用のアプリケーションが自動的に Azure サービスに接続できることを確認してください。
 
   IP アドレスの切り替えが影響するのは、ご利用の仮想ネットワークからのサービス トラフィックのみです。 仮想マシンに割り当てられたパブリック IPv4 アドレスとの間でやりとりされる他のトラフィックへの影響はありません。 Azure サービスについては、Azure のパブリック IP アドレスを使用する既存のファイアウォール ルールがある場合、これらのルールは仮想ネットワークのプライベート アドレスへの切り替え時に停止します。
 - サービス エンドポイントを使用しても、Azure サービスの DNS エントリは変わらず、引き続き Azure サービスに割り当てられているパブリック IP アドレスに解決されます。
@@ -123,7 +123,7 @@ ms.locfileid: "82509501"
 
 サービス エンドポイントは、仮想ネットワークへの書き込みアクセス権を持つユーザーが仮想ネットワーク上で個別に構成できます。 Azure サービス リソースへのアクセスを VNet に限定するには、ユーザーが、追加されたサブネットの *Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action* へのアクセス許可を持っている必要があります。 組み込みのサービス管理者ロールには、既定でこのアクセス許可が含まれています。 アクセス許可を変更するには、カスタム ロールを作成します。
 
-組み込みロールの詳細については、「[Azure リソースの組み込みロール](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。 特定のアクセス許可をカスタム ロールに割り当てる方法の詳細については、「[Azure リソースのカスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
+組み込みロールの詳細については、「[Azure 組み込みロール](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。 特定のアクセス許可をカスタム ロールに割り当てる方法の詳細については、「[Azure カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
 
 仮想ネットワークと Azure サービス リソースのサブスクリプションは、同じでも異なっていてもかまいません。 仮想ネットワークと Azure サービス リソースのサブスクリプションが異なる場合、リソースは同じ Active Directory (AD) テナントの下に置かれている必要があります。 
 
@@ -147,9 +147,8 @@ FAQ については、[仮想ネットワーク サービス エンドポイン�
 
 - [仮想ネットワーク サービス エンドポイントの構成](tutorial-restrict-network-access-to-resources.md)
 - [Azure Storage アカウントを仮想ネットワークに限定する](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [Azure SQL Database を仮想ネットワークに限定する](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [Azure SQL Data Warehouse を仮想ネットワークに限定する](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
+- [Azure SQL Database を仮想ネットワークに限定する](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Azure SQL Data Warehouse を仮想ネットワークに限定する](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
 - [仮想ネットワーク内の Azure サービス統合](virtual-network-for-azure-services.md)
 - [仮想ネットワーク サービス エンドポイント ポリシー](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
 - [Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)
-

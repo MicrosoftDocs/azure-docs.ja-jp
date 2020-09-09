@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory と Palo Alto Networks - Admin UI の統合 | Microsoft Docs
 description: Azure Active Directory と Palo Alto Networks - Admin UI の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: a826eaec-15af-4c85-8855-8a3374d1efb9
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/12/2020
+ms.date: 08/17/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9804a44a29f4540c28ec4e1eb6927e65af70218c
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d8a4a4360265cabc179c8cd41d0a33a0575f55a6
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682950"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855021"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>チュートリアル:Azure Active Directory と Palo Alto Networks - Admin UI の統合
 
@@ -47,6 +43,7 @@ Azure AD と Palo Alto Networks - Admin UI の統合を構成するには、次�
 
 * Palo Alto Networks - Admin UI では、**SP** によって開始される SSO がサポートされます
 * Palo Alto Networks - Admin UI では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Palo Alto Networks - Admin UI を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-palo-alto-networks---admin-ui-from-the-gallery"></a>ギャラリーからの Palo Alto Networks - Admin UI の追加
 
@@ -59,8 +56,7 @@ Azure AD への Palo Alto Networks - Admin UI の統合を構成するには、�
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Palo Alto Networks - Admin UI**」と入力します。
 1. 結果パネルで **[Palo Alto Networks - Admin UI]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-
+## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
 このセクションでは、**B.Simon** というテスト ユーザーに基づいて、Palo Alto Networks - Admin UI で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Palo Alto Networks - Admin UI 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
@@ -106,20 +102,23 @@ Palo Alto Networks - Admin UI で Azure AD シングル サインオンを構成
 
     > **[識別子]** と **[応答 URL]** では、ポート 443 が必須となります。これらの値は Palo Alto Firewall にハードコーディングされています。 このポート番号を削除した場合、ログイン中にエラーが発生します。
 
-1. PureCloud by Genesys アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
+1. Palo Alto Networks - Admin UI アプリケーションでは、特定の形式の SAML アサーションが求められます。そのため、カスタム属性マッピングを SAML トークン属性構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
     ![image](common/default-attributes.png)
 
    > [!NOTE]
    > 属性の値はサンプルです。*username* と *adminrole* には適切な値をマップしてください。 さらにもう 1 つ、省略可能な属性 *accessdomain* があります。この属性は、ファイアウォールで特定の仮想システムへの管理アクセスを制限する目的で使用します。
 
-1. その他に、PureCloud by Genesys アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
+1. その他に、Palo Alto Networks - Admin UI アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
     | 名前 |  ソース属性|
     | --- | --- |
     | username | user.userprincipalname |
     | adminrole | customadmin |
     | | |
+
+    > [!NOTE]
+    > _adminrole_ 値は、手順 9 で説明したように、**Palo Alto Networks** で構成されているロール名と同じにする必要があります。 
 
     > [!NOTE]
     > これらの属性の詳細については、次の記事を参照してください。
@@ -276,5 +275,3 @@ Palo Alto Networks - Admin UI では、Just-In-Time ユーザー プロビジョ
 - [Azure AD で Palo Alto Networks - Admin UI を試す](https://aad.portal.azure.com/)
 
 - [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [高度な可視性と制御によって Palo Alto Networks - Admin UI を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

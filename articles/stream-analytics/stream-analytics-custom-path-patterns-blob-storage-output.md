@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: e978771eaafafe4120f9eec802525c293fb9c7c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6d6838779d4f219a8ce10b2cf3ae6cd620762a3
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75426380"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869815"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure Stream Analytics でのカスタム BLOB 出力のパーティション分割
 
@@ -77,10 +77,10 @@ REST API を使用すると、その要求に使用される JSON ファイル�
 |{datetime:MM}|月 (01 ～ 12)|01|
 |{datetime:M}|月 (1 ～ 12)|1|
 |{datetime:dd}|日 (01 ～ 31)|02|
-|{datetime:d}|日 (1 ～ 12)|2|
+|{datetime:d}|日 (1 ～ 31)|2|
 |{datetime:HH}|24 時間表記での時 (00 ～ 23)|10|
-|{datetime:mm}|分 (00 ～ 24)|06|
-|{datetime:m}|分 (0 ～ 24)|6|
+|{datetime:mm}|分 (00 ～ 60)|06|
+|{datetime:m}|分 (0 ～ 60)|6|
 |{datetime:ss}|秒 (00 ～ 60)|08|
 
 カスタム DateTime パターンを使用しない場合は、パス プレフィックスに {date} トークンと {time} トークンのどちらかまたは両方を追加して、組み込みの DateTime 形式を表示するドロップダウン リストを生成できます。
@@ -113,7 +113,7 @@ MSCK REPAIR TABLE while hive.exec.dynamic.partition true
 
 ### <a name="example"></a>例
 
-[Azure Stream Analytics Portal](stream-analytics-quick-create-portal.md) クイック スタート ガイドに従って、ストレージ アカウント、リソース グループ、Stream Analytics ジョブ、および入力ソースを作成します。 クイック スタート ガイドで使用されているサンプル データを使用します。[GitHub](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Samples/GettingStarted/HelloWorldASA-InputStream.json) から入手することもできます。
+[Azure Stream Analytics Azure portal](stream-analytics-quick-create-portal.md) クイック スタート ガイドに従って、ストレージ アカウント、リソース グループ、Stream Analytics ジョブ、および入力ソースを作成します。 クイック スタート ガイドで使用されているサンプル データを使用します。[GitHub](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Samples/GettingStarted/HelloWorldASA-InputStream.json) から入手することもできます。
 
 次の構成の BLOB 出力シンクを作成します。
 

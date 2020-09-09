@@ -13,21 +13,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: juliako
-ms.openlocfilehash: 1c2d6287a89c7816c30cf26978859c07dba0251d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0d896b0ce23116f1b87718f492d407ac094b9e6a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78197506"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89261157"
 ---
-# <a name="azure-media-services-overview"></a>Azure Media Services の概要 
+# <a name="azure-media-services-overview"></a>Azure Media Services の概要
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector" title1="使用している Media Services のバージョンを選択してください:"]
 > * [Version 3](../latest/media-services-overview.md)
 > * [Version 2](media-services-overview.md)
 
 > [!NOTE]
-> Media Services v2 に新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 に新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 
 Microsoft Azure Media Services (AMS) は拡張可能なクラウド ベースのプラットフォームです。これにより、開発者はスケーラブルなメディア管理の構築、アプリケーションの配信を実行できます。 Media Services は、各種クライアント (TV、PC、モバイル デバイスなど) へのオンデマンドとライブ ストリーミングでの配信でビデオやオーディオのコンテンツの安全なアップロード、格納、エンコード、パッケージ化を可能にする REST API に基づいています。
 
@@ -40,7 +42,7 @@ Media Services を使いこなして、エンド ツー エンドのワークフ
 
 Media Services にビデオまたは画像をアップロードする前に、ビデオまたは画像を使用するための適切な権限をすべて取得している必要があります。これには、法律で義務づけられている場合において、ビデオまたは画像に含まれる人物から、Media Services および Azure でのデータの使用、処理、および保存について、必要なすべての同意を得ることが含まれます (このような人物が存在する場合)。 一部の法的管轄区域では、生体認証データなどの特定のカテゴリのデータの収集、オンライン処理、および保管に関して特別な法的要件が課せられる場合があります。 特別な法的要件の対象となるデータの処理と保管のために Media Services と Azure を使用する前に、適用される可能性のあるこのような法的要件に準拠していることを確認する必要があります。
 
-Media Services のコンプライアンス、プライバシー、セキュリティについては、Microsoft [セキュリティ センター](https://www.microsoft.com/trust-center/?rtc=1)にアクセスしてください。 Microsoft のプライバシー義務、データの取り扱いと保持の慣行 (データの削除方法など) については、Microsoft の[プライバシーに関する声明](https://privacy.microsoft.com/PrivacyStatement)、[オンライン サービス規約](https://www.microsoft.com/licensing/product-licensing/products?rtc=1) ("OST")、および[データ処理の補遺](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA") に関するページをご確認ください。 Media Services を使用することによって、OST、DPA およびプライバシー ステートメントに従うことに同意したものと見なされます。
+Media Services のコンプライアンス、プライバシー、セキュリティについては、Microsoft [セキュリティ センター](https://www.microsoft.com/trust-center/?rtc=1)にアクセスしてください。 Microsoft のプライバシー義務、データの取り扱いと保持の慣行 (データの削除方法など) については、Microsoft の[プライバシー ステートメント](https://privacy.microsoft.com/PrivacyStatement)、[オンライン サービス条項](https://www.microsoft.com/licensing/product-licensing/products?rtc=1) ("OST")、および[データ処理の補遺](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA") に関するページをご確認ください。 Media Services を使用することによって、OST、DPA およびプライバシー ステートメントに従うことに同意したものと見なされます。
  
 ## <a name="prerequisites"></a>前提条件
 
@@ -57,7 +59,7 @@ Azure Media Services を使用するには、次が必要です。
 
 Media Services ソリューションを構築するために、以下を使用できます。
 
-* [Media Services REST API](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)
+* [Media Services REST API](/rest/api/media/operations/azure-media-services-rest-api-reference)
 * 使用可能な次のいずれかの SDK:
     * Azure Media Services SDK for .NET
     
@@ -71,12 +73,12 @@ Media Services ソリューションを構築するために、以下を使用�
     * [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (Azure Media Services Explorer (AMSE) は Windows 用の Winforms/C# アプリケーションです)
 
 > [!NOTE]
-> 最新バージョンの Java SDK を入手し、Java での開発を始めるには、「[Azure Media Services 用 Java クライアント SDK の概要](https://docs.microsoft.com/azure/media-services/media-services-java-how-to-use)」を参照してください。 <br/>
+> 最新バージョンの Java SDK を入手し、Java での開発を始めるには、「[Azure Media Services 用 Java クライアント SDK の概要](./media-services-java-how-to-use.md)」を参照してください。 <br/>
 > Media Services 用の最新の PHP SDK をダウンロードするには、[Packagist リポジトリ](https://packagist.org/packages/microsoft/windowsazure#v0.5.7)でバージョン 0.5.7 の Microsoft/WindowAzure パッケージを検索してください。  
 
 ## <a name="code-samples"></a>コード サンプル
 
-**Azure のコード サンプル** ギャラリーで複数のコード サンプルが見つかります: [Azure Media Services のコード サンプル](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0)。
+**Azure のコード サンプル** ギャラリーで、[Azure Media Services のコード サンプル](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0)を検索すると、複数のコード サンプルが見つかります。
 
 ## <a name="concepts"></a>概念
 

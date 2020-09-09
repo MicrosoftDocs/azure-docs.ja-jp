@@ -2,18 +2,18 @@
 title: Azure Site Recovery を使用したカスタマー マネージド サイト間での (VMM による) ディザスター リカバリーの廃止 | Microsoft Docs
 description: Hyper-V を使用しているお客様所有のサイト間の DR と SCVMM によって Azure で管理されているサイト間の DR の廃止予定と代替オプションの詳細
 services: site-recovery
-author: rajani-janaki-ram
-manager: rochakm
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: article
 ms.date: 02/25/2020
-ms.author: rajanaki
-ms.openlocfilehash: 208177d10e9002fafe2495710da229541a11a43e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: sharrai
+ms.openlocfilehash: 9ffe7a3158b1de6828350947dcf81ef41d08708d
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77661672"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421843"
 ---
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>Azure Site Recovery を使用したカスタマー マネージド サイト間での (VMM による) ディザスター リカバリーの廃止
 
@@ -39,7 +39,7 @@ Site Recovery を使用する System Center Virtual Machine Manager (SCVMM) に�
 - オプション 1 (推奨):[DR ターゲットとして Azure の使用を開始する](hyper-v-vmm-azure-tutorial.md)ことを選択します。
 
 
-- オプション 2:サイト間レプリケーションを、基本的な [Hyper-Hyper-V レプリカ ソリューション](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica)を使用して続行することを選択します。ただし、Azure portal で Azure Site Recovery を使用して DR 構成を管理することはできません。 
+- オプション 2:サイト間レプリケーションを、基本的な [Hyper-Hyper-V レプリカ ソリューション](/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica)を使用して続行することを選択します。ただし、Azure portal で Azure Site Recovery を使用して DR 構成を管理することはできません。 
 
 
 ## <a name="remediation-steps"></a>修復手順

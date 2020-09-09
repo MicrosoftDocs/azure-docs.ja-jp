@@ -2,33 +2,32 @@
 title: コスト効率が高く優先順位の低い VM でワークロードを実行する
 description: 優先順位の低い VM をプロビジョニングして Azure Batch ワークロードのコストを減らす方法について説明します。
 author: mscurrell
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: ec75dac7e5615cddf942ff7939ea7e95315f8699
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e33119213d4ae28347334e60923d5ba222cd3a66
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116045"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816696"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Batch で優先順位の低い VM を使用する
 
 Azure Batch には Batch ワークロードのコストを減らす優先順位の低い仮想マシン (VM) が用意されています。 優先順位の低い VM は、非常に低いコストで大量のコンピューティング能力を使用できるようにすることで、新しい種類の Batch ワークロードを可能にします。
- 
+
 優先順位の低い VM は Azure の余剰容量を活用します。 プールで優先順位の低い VM を指定すると、Azure Batch は使用できる場合にこの余剰分を使用します。
- 
+
 優先順位の低い VM を使用するデメリットは、利用可能な容量によっては、これらの VM が割り当てられなかったりいつでも割り込まれたりする可能性がある点です。 このため、優先順位の低い VM は特定の種類のワークロードに最適です。 優先順位の低い VM は、ジョブの完了時間に柔軟性があり、作業が多数の VM に分散されているバッチおよび非同期処理ワークロードに使用します。
- 
+
 優先度の低い VM は、専用の VM と比較して大幅な割引価格で提供されます。 料金について詳しくは、「[Batch の価格](https://azure.microsoft.com/pricing/details/batch/)」をご覧ください。
 
 > [!NOTE]
-> [単一インスタンス VM](https://docs.microsoft.com/azure/virtual-machines/linux/spot-vms) と [VM スケールセット](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot)に[スポット VM](https://azure.microsoft.com/pricing/spot/) を使用できるようになりました。 スポット VM は優先順位の低い VM の進化版ですが、その価格の差はさまざまで、オプションの最大価格をスポット VM の割り当て時に設定することもできます。
+> [単一インスタンス VM](../virtual-machines/spot-vms.md) と [VM スケールセット](../virtual-machine-scale-sets/use-spot.md)に[スポット VM](https://azure.microsoft.com/pricing/spot/) を使用できるようになりました。 スポット VM は優先順位の低い VM の進化版ですが、その価格の差はさまざまで、オプションの最大価格をスポット VM の割り当て時に設定することもできます。
 >
-> Azure Batch プールでは、新しいバージョンの [Batch API とツール](https://docs.microsoft.com/azure/batch/batch-apis-tools)とともに、スポット VM の一般公開から数か月以内にそのサポートを開始する予定です。 スポット VM のサポートが開始されると、優先順位の低い VM は非推奨になりますが、スポット VM への移行に十分な時間を確保するため、API とツールの現在のバージョンを使用して、少なくとも 12 か月間は引き続きサポートされます。 
+> Azure Batch プールでは、新しいバージョンの [Batch API とツール](./batch-apis-tools.md)とともに、スポット VM の一般公開から数か月以内にそのサポートを開始する予定です。 スポット VM のサポートが開始されると、優先順位の低い VM は非推奨になりますが、スポット VM への移行に十分な時間を確保するため、API とツールの現在のバージョンを使用して、少なくとも 12 か月間は引き続きサポートされます。 
 >
-> スポット VM は、[クラウド サービス構成](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration)プールではサポートされません。 スポット VM を使用するには、クラウド サービス プールを[仮想マシン構成](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)プールに移行する必要があります。
-
+> スポット VM は、[クラウド サービス構成](/rest/api/batchservice/pool/add#cloudserviceconfiguration)プールではサポートされません。 スポット VM を使用するには、クラウド サービス プールを[仮想マシン構成](/rest/api/batchservice/pool/add#virtualmachineconfiguration)プールに移行する必要があります。
 
 ## <a name="use-cases-for-low-priority-vms"></a>優先順位の低い VM の使用事例
 
@@ -72,8 +71,7 @@ Azure Batch には、優先順位の低い VM を使用してメリットを享�
     優先順位の低い VM はコストがより低いため、クォータは専用 VM のクォータより高くなります。 詳しくは、「[Batch サービスのクォータと制限](batch-quota-limit.md#resource-quotas)」をご覧ください。    
 
 > [!NOTE]
-> 優先順位の低い VM は、[ユーザー サブスクリプション モード](batch-api-basics.md#account)で作成された Batch アカウントでは、現在サポートされていません。
->
+> 優先順位の低い VM は、[ユーザー サブスクリプション モード](accounts.md)で作成された Batch アカウントでは、現在サポートされていません。
 
 ## <a name="create-and-update-pools"></a>プールの作成と更新
 
@@ -183,6 +181,6 @@ Azure Portal でメトリックを表示するには、次の手順を実行し�
 
 ## <a name="next-steps"></a>次のステップ
 
-* Batch を使用するための準備を担当する方は、「 [開発者向け Batch 機能の概要](batch-api-basics.md)」で重要な情報をご確認ください。 この記事には、Batch アプリケーションを構築するときに使用できる多数の API 機能、プール、ノード、ジョブ、タスクなど、Batch サービスのリソースに関する詳しい情報が記載されています。
+* [Batch サービスのワークフローと主要なリソース](batch-service-workflow-features.md) (プール、ノード、ジョブ、タスクなど) について学習します。
 * Batch ソリューションの構築に使用できる [Batch API とツール](batch-apis-tools.md)について学習します。
 * 優先順位の低い VM からスポット VM への移行の計画を開始しましょう。 優先順位の低い VM を**クラウド サービス構成**プールと共に使用する場合は、**仮想マシンの構成**プールに移動することを計画してください。

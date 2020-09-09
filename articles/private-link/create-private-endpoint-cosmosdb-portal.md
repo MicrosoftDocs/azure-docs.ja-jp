@@ -3,15 +3,15 @@ title: Azure Private Link を使用して Azure Cosmos アカウントに接続�
 description: プライベート エンドポイントを作成して、VM から Azure Cosmos アカウントに安全にアクセスする方法について説明します。
 author: malopMSFT
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: b7a50a2dabc9503ca5dbdd3388e29cfc69963885
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d074128376d481902a203de3d32ef89aa72d7b3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252597"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737718"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Azure Private Link を使用して Azure Cosmos アカウントに非公開で接続する
 
@@ -69,7 +69,7 @@ Azure プライベート エンドポイントは、Azure におけるプライ�
     | Windows ライセンスを既にお持ちの場合 | 既定値 **[なし]** のままにします。 |
     |||
 
-1. **ディスク** を選択します。
+1. **[Next:ディスク]** を選択します。
 
 1. **[仮想マシンの作成 - Disk]** で、既定値のままにし、 **[Next: Networking]\(次へ : ネットワーク\)** を選択します。
 

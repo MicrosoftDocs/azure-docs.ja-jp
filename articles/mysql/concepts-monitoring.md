@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 2de04bbb1523151ac566b78bf99eba34c437fccd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 8/13/2020
+ms.openlocfilehash: 582e4ea93a64164b09892fab2752f48fcde43ab1
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79537093"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225701"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Azure Database for MySQL での監視
 サーバーに関する監視データは、ワークロードをトラブルシューティングしたり最適化したりするのに役立ちます。 Azure Database for MySQL には、サーバーの動作への洞察を提供する各種のメトリックが用意されています。
@@ -26,7 +26,7 @@ ms.locfileid: "79537093"
 |---|---|---|---|
 |cpu_percent|CPU 使用率|Percent|使用されている CPU の割合|
 |memory_percent|メモリの割合|Percent|使用されているメモリの割合|
-|io_consumption_percent|IO の割合|Percent|使用されている IO の割合|
+|io_consumption_percent|IO の割合|Percent|使用されている IO の割合 (Basic レベルのサーバーには適用されません)|
 |storage_percent|ストレージの割合|Percent|サーバーの最大数のうち使用されているストレージの割合|
 |storage_used|使用済みストレージ|バイト|使用されているストレージの量。 サービスで使用されるストレージには、データベース ファイル、トランザクション ログ、サーバー ログが含まれることがあります。|
 |serverlog_storage_percent|サーバー ログ ストレージの割合|Percent|サーバーの最大サーバー ログ ストレージのうち、使用されているサーバー ログ ストレージの割合。|
@@ -35,10 +35,10 @@ ms.locfileid: "79537093"
 |storage_limit|ストレージの制限|バイト|このサーバーの最大のストレージ|
 |active_connections|アクティブな接続|Count|サーバーへのアクティブな接続の数|
 |connections_failed|失敗した接続|Count|サーバーへの失敗した接続の数|
-|seconds_behind_master|レプリケーションのラグ (秒単位)|Count|レプリカ サーバーがマスター サーバーから遅延している秒数。|
+|seconds_behind_master|レプリケーションのラグ (秒単位)|Count|レプリカ サーバーがマスター サーバーから遅延している秒数。 (Basic レベルのサーバーには適用されません)|
 |network_bytes_egress|Network Out|バイト|アクティブな接続全体のネットワーク送信。|
 |network_bytes_ingress|Network In|バイト|アクティブな接続全体のネットワーク受信。|
-|backup_storage_used|使用済みバックアップ ストレージ|バイト|使用されているバックアップ ストレージの量。|
+|backup_storage_used|使用済みバックアップ ストレージ|バイト|使用されているバックアップ ストレージの量。 このメトリックは、サーバーに設定されているバックアップ保持期間に基づいて保持されているすべてのデータベースの完全バックアップ、差分バックアップ、ログ バックアップによって使用されるストレージの合計を表します。 バックアップの頻度はサービスによって管理され、[概念に関する記事](concepts-backup.md)で説明されています。 geo 冗長ストレージの場合、バックアップ ストレージの使用量は、ローカル冗長ストレージの 2 倍になります。|
 
 ## <a name="server-logs"></a>サーバー ログ
 サーバーで低速クエリ ログと監査ログを有効にしできます。 これらのログは、Azure Monitor ログ、Event Hubs、およびストレージ アカウントでの Azure 診断ログを通じて入手することもできます。 ログの詳細については、 [監査ログ](concepts-audit-logs.md)と[低速クエリ ログ](concepts-server-logs.md)の記事を参照してください。
@@ -54,7 +54,7 @@ ms.locfileid: "79537093"
 
 ## <a name="planned-maintenance-notification"></a>計画メンテナンスの通知
 
-**計画メンテナンスの通知**によって、Azure Database for MySQL に対して今後予定されているメンテナンスに関するアラートを受信できます。 これらの通知は [Service Health の](../service-health/overview.md)計画メンテナンスに統合されており、サブスクリプションに対してスケジュールされたすべてのメンテナンスを 1 か所に表示できます。 また、異なるリソースに対しては異なる連絡先が必要になる場合があるため、さまざまなリソース グループに対して適切なユーザーへの通知をスケーリングすることも可能です。 今後のメンテナンスに関する通知は、イベントの 72 時間前に受信します。
+**計画メンテナンスの通知**によって、Azure Database for MySQL に対して今後予定されているメンテナンスに関するアラートを受信できます。 これらの通知は [Service Health](../service-health/overview.md) の計画メンテナンスに統合されており、サブスクリプションに対してスケジュールされたすべてのメンテナンスを 1 か所に表示できます。 また、異なるリソースに対しては異なる連絡先が必要になる場合があるため、さまざまなリソース グループに対して適切なユーザーへの通知をスケーリングすることも可能です。 今後のメンテナンスに関する通知は、イベントの 72 時間前に受信します。
 
 > [!Note]
 > Microsoft では、**計画メンテナンスの通知**の 72 時間での通知をすべてのイベントに対して提供するために、あらゆる試みを行います。 ただし、重大時やセキュリティ更新プログラムに関する場合には、イベントが迫ってから通知が送信されたり、あるいは通知が省略されたりすることがあります。
@@ -73,7 +73,7 @@ ms.locfileid: "79537093"
 **サービス正常性アラート**の作成方法の詳細な手順については、「[サービス通知のアクティビティ ログ アラートを作成する](../service-health/alerts-activity-log-service-notifications.md)」を参照してください。
 
 > [!IMPORTANT]
-> 計画メンテナンスの通知は現在、プレビュー段階です
+> 計画メンテナンスの通知は、現在、米国中西部**を除く**すべてのリージョンでプレビューとして利用できます
 
 ## <a name="next-steps"></a>次のステップ
 - メトリックに対するアラートの作成のガイダンスについては、[アラートを設定する方法](howto-alert-on-metric.md)に関するページをご覧ください。

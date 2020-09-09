@@ -12,12 +12,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e5ad7badfa44a006fd7e71d3b0e42ee95ac698d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a9cd70d534cebf35938285208dc76bd4a6d94533
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "64919004"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279008"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>チュートリアル:Azure AD Connect で AD FS のバックアップとして PHS を設定する
 
@@ -33,7 +33,7 @@ ms.locfileid: "64919004"
 このチュートリアルは、「[チュートリアル: 単一の AD フォレスト環境をクラウドに統合する](tutorial-federation.md)」が基になっています。これは、このチュートリアルを行うための前提条件です。  このチュートリアルを完了していない場合は、このドキュメントの手順を実行する前に完了してください。
 
 >[!IMPORTANT]
->PHS に切り替える前に、AD FS 環境のバックアップを作成する必要があります。  これは、[AD FS の迅速な復元ツール](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-rapid-restore-tool#how-to-use-the-tool)を使用して行うことができます。
+>PHS に切り替える前に、AD FS 環境のバックアップを作成する必要があります。  これは、[AD FS の迅速な復元ツール](/windows-server/identity/ad-fs/operations/ad-fs-rapid-restore-tool#how-to-use-the-tool)を使用して行うことができます。
 
 ## <a name="enable-phs-in-azure-ad-connect"></a>Azure AD Connect で PHS を有効にする
 フェデレーションを使用する Azure AD Connect 環境を準備した後の最初の手順は、Azure AD Connect がハッシュを同期できるようにパスワード ハッシュの同期をオンにすることです。

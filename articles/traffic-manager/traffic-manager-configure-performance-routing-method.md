@@ -4,20 +4,20 @@ description: この記事では、最も短い待機時間でエンドポイン�
 services: traffic-manager
 manager: twooley
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
-ms.author: rohink
-ms.openlocfilehash: f5e9b7690c28793a35c692a6125a6b11c7a140a4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: duau
+ms.openlocfilehash: 46d71a38b79f449084f7353527f2dfb05d5b92a4
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76938753"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401029"
 ---
 # <a name="configure-the-performance-traffic-routing-method"></a>パフォーマンスによるトラフィック ルーティング方法の構成
 

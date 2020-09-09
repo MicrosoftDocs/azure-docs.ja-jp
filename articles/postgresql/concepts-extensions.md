@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: a12738f5de783c8a34718b8d9cb4bbf54f230589
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/10/2020
+ms.openlocfilehash: b97b373936f9c485eaa96cdd34ed33c49e75ad9a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77201273"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242068"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の PostgreSQL 拡張機能
 PostgreSQL では拡張機能を使用してデータベースの機能を拡張することができます。 拡張機能により、関連する複数の SQL オブジェクトを単一のパッケージにまとめて、単一のコマンドでデータベースに対する読み込みや削除を行うことができます。 データベースに読み込まれた後、拡張機能は組み込み機能と同じように機能します。
@@ -212,7 +212,7 @@ Postgres バージョン 9.5 を搭載した Azure Database for PostgreSQL サ�
 ## <a name="dblink-and-postgres_fdw"></a>dblink および postgres_fdw
 [dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) および [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) を使用して、1 つの PostgreSQL サーバーから別のサーバーに、または同一サーバー内の別のデータベースに接続できます。 受信側サーバーでは、ファイアウォールを経由した送信元サーバーからの接続を許可している必要があります。 これらの拡張機能を使用して Azure Database for PostgreSQL サーバー間を接続する場合、[Azure サービスへのアクセスを許可] を [オン] に設定することで実現できます。 拡張機能を使用して同じサーバーにループバックする場合にも、これは必要になります。 [Azure サービスへのアクセスを許可] 設定は、Postgres サーバー向けの Azure portal ページ内の [接続のセキュリティ ] の下にあります。 [Azure サービスへのアクセスを許可] を [オン] にすると、すべての Azure IP が許可リストに設定されます。
 
-現時点では、Azure Database for PostgreSQL からの送信接続は、他の Azure Database for PostgreSQL サーバーへの接続を除き、サポートされていません。
+現時点では、Azure Database for PostgreSQL からの送信接続は、同じリージョンにある他の Azure Database for PostgreSQL サーバーへの接続を除き、サポートされていません。
 
 ## <a name="uuid"></a>uuid
 [uuid-ossp 拡張機能](https://www.postgresql.org/docs/current/uuid-ossp.html)の `uuid_generate_v4()` を使用する予定の場合、パフォーマンス上の利点について、[pgcrypto 拡張機能](https://www.postgresql.org/docs/current/pgcrypto.html)の `gen_random_uuid()` と比較することを検討してください。

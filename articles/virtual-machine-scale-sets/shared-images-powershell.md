@@ -1,5 +1,5 @@
 ---
-title: 共有 VM イメージを使用して Azure のスケール セットを作成する
+title: 共有 VM イメージを使用して Azure PowerShell のスケール セットを作成する
 description: Azure PowerShell を使用して Azure の仮想マシン スケール セットをデプロイするために使用する共有 VM イメージを作成する方法について説明します。
 author: cynthn
 ms.service: virtual-machine-scale-sets
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: d0912958aaa897e4f8bc18aa88e0c41078d375a8
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 55ca80296bfdfde162ca5a4df348fd80328dd184
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792787"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494923"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-powershell"></a>Azure PowerShell を使用した仮想マシン スケール セットの共有イメージの作成および使用
 

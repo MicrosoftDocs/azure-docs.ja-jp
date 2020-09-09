@@ -5,12 +5,13 @@ author: mumian
 ms.date: 03/31/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: de7ec961672db2f3120e00f1a42b33f71e7ab092
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: b1454106c4498f4519972633df8a871585d254f1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437827"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497547"
 ---
 # <a name="tutorial-add-parameters-to-your-arm-template"></a>チュートリアル:ARM テンプレートにパラメーターを追加する
 

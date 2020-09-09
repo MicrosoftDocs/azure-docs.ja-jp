@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/25/2019
-ms.openlocfilehash: 70520b464bcb26ff8f1ea10f87bbf30537dc58a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/25/2020
+ms.openlocfilehash: 506bd79a512a5d8d143f582ee84d292dff86d9df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131216"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392813"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server 内のログ
 
@@ -82,6 +82,7 @@ Azure Monitor ログの場合は、選択したワークスペースにログが
 ```
 AzureDiagnostics
 | where LogicalServerName_s == "myservername"
+| where Category == "PostgreSQLLogs"
 | where TimeGenerated > ago(1d) 
 ```
 

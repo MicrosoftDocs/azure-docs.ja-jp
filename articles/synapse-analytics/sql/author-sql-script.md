@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: omafnan
-ms.openlocfilehash: 940c6d6d96c5c1aa062397d21ea96dace2c09bae
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ee384d6095ccbf25225a435fe8afe4281c5d62df
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427399"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921390"
 ---
 # <a name="using-sql-script-in-azure-synapse-studio-preview"></a>Azure Synapse Studio (プレビュー) での SQL スクリプトの使用
 
@@ -23,69 +23,66 @@ Azure Synapse Studio (プレビュー) は、SQL クエリを作成するため�
 
 SQL スクリプトで作成のエクスペリエンスを開始するには、いくつかの方法があります。 新しい SQL スクリプトを作成するには、次の方法のいずれかを使用します。
 
-1. "+" アイコンを選択し、[SQL スクリプト] を選択します。
+1. [開発] メニューの **[+]** アイコンを選択し、 **[SQL スクリプト]** を選択します。
 
-    > [!div class="mx-imgBorder"] 
-    >![newsqlscript](./media/author-sql-script/newsqlscript.png)
+    ![newsqlscript](media/author-sql-script/newsqlscript.png)
 
-2. [開発]、[SQL スクリプト] の [アクション] メニューから、[New SQL script]\(新しい SQL スクリプト\) を選択します。 
+2. **[操作]** メニューの **[New SQL script]** \(新しい SQL スクリプト\) を選択します
+    
+    ![newsqlscript2actions](media/author-sql-script/newsqlscript2actions.png)
 
-    > [!div class="mx-imgBorder"] 
-    > ![newsqlscript](./media/author-sql-script/newsqlscript2actions.png)
+または、次を実行できます。 
 
-or 
-
-3. SQL スクリプトの開発の [アクション] メニューから、[インポート] を選択し、ローカル ストレージから既存の SQL スクリプトを選択します。
-
-    > [!div class="mx-imgBorder"] 
-    > ![newsqlscript](./media/author-sql-script/newsqlscript3actions.png)
+3. [開発] の [SQL スクリプト] の **[アクション]** メニューから、 **[インポート]** を選択し、お使いのローカル ストレージから既存の SQL スクリプトを選択します。
+ 
+    ![newsqlscript3actions](media/author-sql-script/newsqlscript3actions.png)
 
 ## <a name="create-your-sql-script"></a>SQL スクリプトを作成する
 
-1. [プロパティ] ボタンを選択し、作成する SQL スクリプトの名前を選択して、SQL スクリプトに割り当てられた既定の名前を置き換えます。
+1. **[プロパティ]** ボタンを選択し、作成する SQL スクリプトの名前を選択して、SQL スクリプトに割り当てられた既定の名前を置き換えます。
+  
+    ![newsqlscriptrename](media/author-sql-script/newsqlscriptrename.png)
 
-    > [!div class="mx-imgBorder"] 
-    > ![newsqlscript](./media/author-sql-script/newsqlscriptrename.png)
+2. **[接続先]** ドロップダウン メニューから、特定の SQL プールまたは SQL オンデマンドを選択します。 または、必要に応じて、 **[Use database]\(使用するデータベース\)** からデータベースを選択します。
+ 
+    ![newsqlchoosepool](media/author-sql-script/newsqlchoosepool.png)
 
-1. [接続先] ドロップダウン メニューから、特定の SQL プールまたは SQL オンデマンドを選択します。 または、必要に応じて、"データベースの使用" からデータベースを選択します。
+3. IntelliSense 機能を使用して、SQL スクリプトの作成を開始します。
 
-    > [!div class="mx-imgBorder"] 
-    > ![newsqlscript](./media/author-sql-script/newsqlchoosepool.png)
-
-1. IntelliSense 機能を使用して、SQL スクリプトの作成を開始します。
-
-    > [!div class="mx-imgBorder"] 
-    > ![newsqlscript](./media/author-sql-script/newsqlintellisense.png)
+    ![newsqlintellisense](media/author-sql-script/newsqlintellisense.png)
 
 ## <a name="run-your-sql-script"></a>SQL スクリプトを実行する
 
-SQL スクリプトを実行するには、[実行] ボタンを選択します。 既定では、結果はテーブルに表示されます。
+ご自分の SQL スクリプトを実行するには、 **[実行]** ボタンを選択します。 既定では、結果はテーブルに表示されます。
 
-> [!div class="mx-imgBorder"] 
-> ![newsqlscript](./media/author-sql-script/newsqlscriptresultstable.png)
+![newsqlscriptresultstable](media/author-sql-script/newsqlscriptresultstable.png)
 
 ## <a name="export-your-results"></a>結果をエクスポートする
 
 結果は、さまざまな形式 (CSV、Excel、JSON、XML など) でローカル ストレージにエクスポートできます。そのためには、[結果のエクスポート] を選択して、拡張子を選択します。
 
-[グラフ] ボタンを選択して、SQL スクリプトの結果をグラフで視覚化することもできます。 [グラフの種類] と [Category column]\(カテゴリ列\) を選択します。 [イメージとして保存] を選択して、グラフを画像にエクスポートします。 
+**[グラフ]** ボタンを選択して、SQL スクリプトの結果をグラフで視覚化することもできます。 [グラフの種類] と **[Category column]\(カテゴリ列\)** を選択します。 **[イメージとして保存]** を選択して、グラフを画像にエクスポートします。 
 
-> [!div class="mx-imgBorder"] 
-> ![newsqlscript](./media/author-sql-script/newsqlscriptresultschart.png)
+![newsqlscriptresultschart](media/author-sql-script/newsqlscriptresultschart.png)
 
 ## <a name="explore-data-from-a-parquet-file"></a>Parquet ファイルからデータを探索する
 
-SQL スクリプトを使用してストレージ アカウント内の Parquet ファイルを探索して、ファイルの内容をプレビューすることができます。 
+SQL スクリプトを使用してストレージ アカウント内の Parquet ファイルを探索して、ファイルの内容をプレビューすることができます。
 
-> [!div class="mx-imgBorder"] 
-> ![newsqlscript](./media/author-sql-script/newscriptsqlodparquet.png)
+![newscriptsqlodparquet](media/author-sql-script/newscriptsqlodparquet.png)
 
 ## <a name="sql-tables-external-tables-views"></a>SQL テーブル、外部テーブル、ビュー
 
-データの [アクション] メニューを選択すると、[New SQL script]\(新しい SQL スクリプト\)、[Select TOP 1000 rows]\(上位 1000 行の選択\)、[作成]、[DROP and CREATE]\(DROP および CREATE\) などのアクションを選択できます。 SQL プールおよび SQL オンデマンドのノードを右クリックして、使用可能なジェスチャを調べます。
+データの下の **[アクション]** メニューを選択すると、次などいくつかのアクションを選択できます。
 
-> [!div class="mx-imgBorder"] 
-> ![newsqlscript](./media/author-sql-script/newscriptdatabase.png)
+- New SQL script (新しい SQL スクリプト)
+- 上位 1000 行を選択
+- CREATE
+- DROP および CREATE 
+ 
+SQL プールおよび SQL オンデマンドのノードを右クリックして、使用可能なジェスチャを調べます。
+ 
+![newscriptdatabase](media/author-sql-script/newscriptdatabase.png)
 
 ## <a name="next-steps"></a>次のステップ
 

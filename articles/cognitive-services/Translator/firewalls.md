@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: dce41879f77d0bed44daa89c1dabbcc3f92e145e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 78a53c99f5f184c1b6b45d59d86c23efb898d7dc
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592527"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996960"
 ---
 # <a name="how-to-translate-behind-ip-firewalls-with-translator"></a>Translator を使用して IP ファイアウォールの内側で翻訳する方法
 

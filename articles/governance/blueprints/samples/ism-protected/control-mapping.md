@@ -1,14 +1,14 @@
 ---
 title: Australian Government ISM PROTECTED ブループリント サンプルの概要
 description: Australian Government ISM PROTECTED ブループリント サンプルの概要。 このブループリント サンプルは、お客様が特定の ISM PROTECTED コントロールを評価するのに役立ちます。
-ms.date: 03/10/2020
+ms.date: 08/03/2020
 ms.topic: sample
-ms.openlocfilehash: e2f64943e9db207feb3f59a905cad994553a6cd6
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 750cc5551f0bbf05e0da6ad41d46729231243f72
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82595357"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760432"
 ---
 # <a name="control-mapping-of-the-australian-government-ism-protected-blueprint-sample"></a>Australian Government ISM PROTECTED ブループリント サンプルのコントロール マッピング
 
@@ -106,10 +106,10 @@ ms.locfileid: "82595357"
 
 - ストレージ アカウントに対する制限のないネットワーク アクセスの監査
 - Service Fabric クラスターは、クライアント認証に Azure Active Directory だけを使用する必要がある
-- \[プレビュー\]:パスワードなしのアカウントからのリモート接続が許可されている Linux VM の監査結果を表示する
-- \[プレビュー\]:パスワードなしのアカウントからのリモート接続が許可されている Linux VM を監査する前提条件をデプロイする
-- \[プレビュー\]:パスワードなしのアカウントが存在する Linux VM の監査結果を表示する
-- \[プレビュー\]:パスワードなしのアカウントがある Linux VM を監査するための前提条件をデプロイする
+- パスワードなしのアカウントからのリモート接続が許可されている Linux VM の監査結果を表示する
+- パスワードなしのアカウントからのリモート接続が許可されている Linux VM を監査する前提条件をデプロイする
+- パスワードなしのアカウントが存在する Linux VM の監査結果を表示する
+- パスワードなしのアカウントがある Linux VM を監査するための前提条件をデプロイする
 
 ### <a name="0974-multi-factor-authentication-is-used-to-authenticate-standard-users"></a>0974 標準ユーザーの認証には多要素認証が使用される
 
@@ -122,8 +122,8 @@ ms.locfileid: "82595357"
 
 ### <a name="0421-passphrases-used-for-single-factor-authentication-are-a-minimum-of-14-characters-with-complexity-ideally-as-4-random-words"></a>0421 単一要素認証に使用されるパスフレーズは長さが 14 文字以上で、複雑さを備えている (4 つのランダムな単語を含むのが理想)
 
-- \[プレビュー\]:"セキュリティ設定 - アカウント ポリシー" の Windows VM 構成の監査結果を表示する
-- \[プレビュー\]:"セキュリティ設定 - アカウント ポリシー" の Windows VM 構成を監査するための前提条件をデプロイする
+- "セキュリティ設定 - アカウント ポリシー" の Windows VM 構成の監査結果を表示する
+- "セキュリティ設定 - アカウント ポリシー" の Windows VM 構成を監査するための前提条件をデプロイする
 
 ## <a name="guidelines-for-system-management---system-administration"></a>システム管理のためのガイドライン - システム管理
 
@@ -147,7 +147,7 @@ ms.locfileid: "82595357"
 - SQL データベースの脆弱性を修復する必要がある
 - 脆弱性評価を SQL サーバー上で有効にする必要がある
 - 脆弱性評価を SQL マネージド インスタンス上で有効にする必要がある
-- \[プレビュー\]:Virtual Machines で脆弱性評価を有効にする必要がある
+- マシンで脆弱性評価を有効にする必要がある
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
 - 脆弱性評価ソリューションによって脆弱性を修復する必要がある
 - 使用しているマシンでセキュリティ構成の脆弱性を修復する必要がある
@@ -159,7 +159,7 @@ ms.locfileid: "82595357"
 - SQL データベースの脆弱性を修復する必要がある
 - 脆弱性評価を SQL サーバー上で有効にする必要がある
 - 脆弱性評価を SQL マネージド インスタンス上で有効にする必要がある
-- \[プレビュー\]:Virtual Machines で脆弱性評価を有効にする必要がある
+- Virtual Machines で脆弱性評価を有効にする必要がある
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
 - 脆弱性評価ソリューションによって脆弱性を修復する必要がある
 - 使用しているマシンでセキュリティ構成の脆弱性を修復する必要がある
@@ -171,7 +171,7 @@ ms.locfileid: "82595357"
 - SQL データベースの脆弱性を修復する必要がある
 - 脆弱性評価を SQL サーバー上で有効にする必要がある
 - 脆弱性評価を SQL マネージド インスタンス上で有効にする必要がある
-- \[プレビュー\]:Virtual Machines で脆弱性評価を有効にする必要がある
+- Virtual Machines で脆弱性評価を有効にする必要がある
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
 - 脆弱性評価ソリューションによって脆弱性を修復する必要がある
 - 使用しているマシンでセキュリティ構成の脆弱性を修復する必要がある
@@ -183,7 +183,7 @@ ms.locfileid: "82595357"
 - SQL データベースの脆弱性を修復する必要がある
 - 脆弱性評価を SQL サーバー上で有効にする必要がある
 - 脆弱性評価を SQL マネージド インスタンス上で有効にする必要がある
-- \[プレビュー\]:Virtual Machines で脆弱性評価を有効にする必要がある
+- Virtual Machines で脆弱性評価を有効にする必要がある
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
 - 脆弱性評価ソリューションによって脆弱性を修復する必要がある
 - 使用しているマシンでセキュリティ構成の脆弱性を修復する必要がある
@@ -195,7 +195,7 @@ ms.locfileid: "82595357"
 - SQL データベースの脆弱性を修復する必要がある
 - 脆弱性評価を SQL サーバー上で有効にする必要がある
 - 脆弱性評価を SQL マネージド インスタンス上で有効にする必要がある
-- \[プレビュー\]:Virtual Machines で脆弱性評価を有効にする必要がある
+- Virtual Machines で脆弱性評価を有効にする必要がある
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
 - 脆弱性評価ソリューションによって脆弱性を修復する必要がある
 - 使用しているマシンでセキュリティ構成の脆弱性を修復する必要がある
@@ -207,7 +207,7 @@ ms.locfileid: "82595357"
 - SQL データベースの脆弱性を修復する必要がある
 - 脆弱性評価を SQL サーバー上で有効にする必要がある
 - 脆弱性評価を SQL マネージド インスタンス上で有効にする必要がある
-- \[プレビュー\]:Virtual Machines で脆弱性評価を有効にする必要がある
+- Virtual Machines で脆弱性評価を有効にする必要がある
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
 - 脆弱性評価ソリューションによって脆弱性を修復する必要がある
 - 使用しているマシンでセキュリティ構成の脆弱性を修復する必要がある
@@ -229,8 +229,8 @@ ms.locfileid: "82595357"
 ### <a name="0582-the-following-events-are-logged-for-operating-systems-access-to-important-data-and-processes-application-crashes-and-any-error-messages-attempts-to-use-special-privileges-changes-to-accounts-changes-to-security-policy-changes-to-system-configurations-domain-name-system-dns-and-hypertext-transfer-protocol-http-requests-failed-attempts-to-access-data-and-system-resources-service-failures-and-restarts-system-startup-and-shutdown-transfer-of-data-to-external-media-user-or-group-management-use-of-special-privileges"></a>0582 オペレーティング システムに関して、次のイベントがログに記録される (重要なデータやプロセスへのアクセス、アプリケーションのクラッシュとエラー メッセージ、特別な権限を使用する試み、アカウントに対する変更、セキュリティ ポリシーに対する変更、システム構成に対する変更、ドメイン ネーム システム (DNS) とハイパーテキスト転送プロトコル (HTTP) の要求、データとシステム リソースへのアクセスの試行の失敗、サービスの障害と再開、システムの起動とシャットダウン、外部メディアへのデータの転送、ユーザーまたはグループの管理、特別な権限の使用)
 
 - \[プレビュー\]:Audit Log Analytics エージェントのデプロイ - 一覧にない VM イメージ (OS)
-- \[プレビュー\]:VMSS の Log Analytics エージェントのデプロイの監査 - VM イメージ (OS) が一覧にない
-- \[プレビュー\]:VM 用 Audit Log Analytics ワークスペース - 不一致の報告
+- VMSS の Log Analytics エージェントのデプロイの監査 - VM イメージ (OS) が一覧にない
+- VM 用 Audit Log Analytics ワークスペース - 不一致の報告
 - 診断設定の監査
 
 ### <a name="1537-the-following-events-are-logged-for-databases-access-to-particularly-important-information-addition-of-new-users-especially-privileged-users-any-query-containing-comments-any-query-containing-multiple-embedded-queries-any-query-or-database-alerts-or-failures-attempts-to-elevate-privileges-attempted-access-that-is-successful-or-unsuccessful-changes-to-the-database-structure-changes-to-user-roles-or-database-permissions-database-administrator-actions-database-logons-and-logoffs-modifications-to-data-use-of-executable-commands"></a>1537 データベースに関して、次のイベントがログに記録される (特に重要な情報へのアクセス、新しいユーザー (特に特権ユーザー) の追加、コメントを含むクエリ、複数の埋め込みクエリを含んだクエリ、クエリまたはデータベースのアラートまたはエラー、権限昇格の試み、成功または失敗したアクセスの試行、データベース構造に対する変更、ユーザー ロールまたはデータベース権限に対する変更、データベース管理者アクション、データベースのログオンとログオフ、データの変更、実行可能コマンドの使用)
@@ -246,7 +246,7 @@ ms.locfileid: "82595357"
 - SQL データベースの脆弱性を修復する必要がある
 - 脆弱性評価を SQL サーバー上で有効にする必要がある
 - 脆弱性評価を SQL マネージド インスタンス上で有効にする必要がある
-- \[プレビュー\]:Virtual Machines で脆弱性評価を有効にする必要がある
+- Virtual Machines で脆弱性評価を有効にする必要がある
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
 - 脆弱性評価ソリューションによって脆弱性を修復する必要がある
 - 使用しているマシンでセキュリティ構成の脆弱性を修復する必要がある

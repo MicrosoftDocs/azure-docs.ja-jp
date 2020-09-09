@@ -1,5 +1,5 @@
 ---
-title: デザイナーを使用して ML モデルを構築する
+title: デザイナー (プレビュー) を使用して ML モデルを構築する
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning 用のデザイナーを構成する用語、概念、ワークフローについて説明します。
 services: machine-learning
@@ -8,13 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
-ms.date: 11/12/2019
-ms.openlocfilehash: 78a6e7fa8d030185f537136a3a2124d8bc59d808
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/28/2020
+ms.custom: designer
+ms.openlocfilehash: 181f0d62f160a6644e0423be052012521752525f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79037621"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012945"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナー (プレビュー) とは 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -37,10 +38,10 @@ Azure Machine Learning デザイナーを使用すると、対話型キャンバ
 デザイナーには、機械学習モデルを構築、テスト、デプロイするためのビジュアルキャンバスが用意されています。 デザイナーを使用すると、次のことができます。
 
 + [データセット](#datasets)と[モジュール](#module)をキャンバスにドラッグ アンド ドロップします。
-+ 複数のモジュールを接続して[パイプラインのドラフト](#pipeline-draft)を作成します。
++ モジュールを接続して[パイプラインのドラフト](#pipeline-draft)を作成します。
 + Azure Machine Learning ワークスペースのコンピューティング リソースを使用して、[パイプラインの実行](#pipeline-run)を送信します。
 + **トレーニング パイプライン**を**推論パイプライン**に変換します。
-+ パイプラインを REST **パイプライン エンドポイント**に[発行](#publish)し、異なるパラメーターとデータセットを使用して新しいパイプラインの実行を送信します。
++ パイプラインを REST **パイプライン エンドポイント**に[発行](#publish)し、異なるパラメーターとデータセットを使用して実行される新しいパイプラインを送信します。
     + **トレーニング パイプライン**を発行し、1 つのパイプラインを再利用して、パラメーターとデータセットを変更しながら、複数のモデルをトレーニングします。
     + **バッチ推論パイプライン**を発行し、以前にトレーニングしたモデルを使用して、新しいデータで予測を行います。
 + **リアルタイム推論パイプライン**をリアルタイム エンドポイントに[デプロイ](#deploy)して、新しいデータの予測をリアルタイムで行います。
@@ -49,7 +50,7 @@ Azure Machine Learning デザイナーを使用すると、対話型キャンバ
 
 ## <a name="pipeline"></a>パイプライン
 
-[パイプライン](concept-azure-machine-learning-architecture.md#ml-pipelines)は、ユーザーによって相互に接続されたデータセットと分析モジュールで構成されます。 パイプラインには多くの用途があります。1 つのモデルをトレーニングするパイプラインや、複数のモデルをトレーニングするパイプラインを作成できます。 リアルタイムまたはバッチで予測を行うパイプラインや、データをクリーンアップするだけのパイプラインを作成できます。 パイプラインを使用して、作業を再利用し、プロジェクトを整理することができます。
+[パイプライン](concept-azure-machine-learning-architecture.md#ml-pipelines)は、ユーザーによって接続されたデータセットと分析モジュールで構成されます。 パイプラインには多くの用途があります。1 つのモデルをトレーニングするパイプラインや、複数のモデルをトレーニングするパイプラインを作成できます。 リアルタイムまたはバッチで予測を行うパイプラインや、データをクリーンアップするだけのパイプラインを作成できます。 パイプラインを使用して、作業を再利用し、プロジェクトを整理することができます。
 
 ### <a name="pipeline-draft"></a>パイプラインのドラフト
 
@@ -72,17 +73,18 @@ Azure Machine Learning デザイナーを使用すると、対話型キャンバ
 
 ## <a name="datasets"></a>データセット
 
-機械学習データセットによって、データへのアクセスと操作がより容易になります。 デザイナーには、実験に利用できる多数のサンプル データセットが含まれています。 必要に応じて、データセットをさらに[登録](how-to-create-register-datasets.md)することができます。
+機械学習データセットによって、データへのアクセスと操作がより容易になります。 デザイナーには、実験に利用できるいくつかのサンプル データセットが含まれています。 必要に応じて、データセットをさらに[登録](how-to-create-register-datasets.md)することができます。
 
 ## <a name="module"></a>Module
 
-モジュールとは、データに対して実行できるアルゴリズムのことです。 デザイナーには、データのイングレス機能や、プロセスのトレーニング、スコアリング、検証などのさまざまなモジュールが用意されています。
+モジュールとは、データに対して実行できるアルゴリズムのことです。 デザイナーには、データのイングレス機能や、プロセスのトレーニング、スコアリング、検証などのいくつかのモジュールが用意されています。
 
 モジュールに一連のパラメーターが含まれている場合、これらを使用してモジュールの内部アルゴリズムを構成することができます。 キャンバスでモジュールを選択すると、モジュールのパラメーターは、キャンバス右側の [プロパティ] ウィンドウに表示されます。 このウィンドウでパラメーターを変更することにより、モデルを微調整できます。 デザイナーでは、個々のモジュールに対してコンピューティング リソースを設定できます。 
 
-![モジュールのプロパティ](./media/concept-designer/properties.png)
+:::image type="content" source="./media/concept-designer/properties.png"alt-text="モジュールのプロパティ":::
 
-利用できる機械学習アルゴリズムのライブラリ内の移動に関するヘルプについては、「[アルゴリズムとモジュールのリファレンスの概要](algorithm-module-reference/module-reference.md)」を参照してください。
+
+利用できる機械学習アルゴリズムのライブラリ内の移動に関するヘルプについては、「[アルゴリズムとモジュールのリファレンスの概要](algorithm-module-reference/module-reference.md)」をご覧ください。 アルゴリズムの選択の詳細については、[Azure Machine Learning アルゴリズム チート シート](algorithm-cheat-sheet.md)に関するページをご覧ください。
 
 ## <a name="compute-resources"></a><a name="compute"></a> コンピューティング リソース
 
@@ -91,9 +93,10 @@ Azure Machine Learning デザイナーを使用すると、対話型キャンバ
 | コンピューティング ターゲット | トレーニング | デプロイ |
 | ---- |:----:|:----:|
 | Azure Machine Learning コンピューティング | ✓ | |
+| Azure Machine Learning コンピューティング インスタンス | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
-コンピューティング先は、自分の [Azure Machine Learning ワークスペース](concept-workspace.md)に接続されています。 [Azure Machine Learning Studio (クラシック)](https://ml.azure.com) で自分のワークスペースのコンピューティング先を管理します。
+コンピューティング先は、自分の [Azure Machine Learning ワークスペース](concept-workspace.md)に接続されています。 [Azure Machine Learning Studio](https://ml.azure.com) で自分のワークスペース内のコンピューティング先を管理します。
 
 ## <a name="deploy"></a>配置
 
@@ -113,27 +116,7 @@ Azure Machine Learning デザイナーを使用すると、対話型キャンバ
 
 デザイナーでは、SDK と同じ [PublishedPipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py) オブジェクトが作成されます。
 
-
-## <a name="moving-from-the-visual-interface-to-the-designer"></a>ビジュアル インターフェイスからデザイナーへの移行
-
-ビジュアル インターフェイス (プレビュー) が更新され、Azure Machine Learning デザイナー (プレビュー) になりました。 デザイナーは、Azure Machine Learning の他の機能と完全に統合された、パイプラインベースのバックエンドを使用するように再設計されています。 
-
-これらの更新の結果として、ビジュアル インターフェイスのいくつかの概念と用語が変更されたり、名前が変更されたりしています。 最も重要な概念の変更については、次の表を参照してください。 
-
-| デザイナーの概念 | ビジュアル インターフェイスでの従来の概念 |
-| ---- |:----:|
-| パイプラインのドラフト | 実験 |
-| リアルタイム エンドポイント | Web サービス |
-
-### <a name="migrating-to-the-designer"></a>デザイナーへの移行
-
-デザイナーでは、既存のビジュアル インターフェイス実験と Web サービスをパイプラインとリアルタイム エンドポイントに変換することができます。 ビジュアル インターフェイスのアセットを移行するには、次の手順を使用します。
-
-[!INCLUDE [migrate from the visual interface](../../includes/aml-vi-designer-migration.md)]
-
-
 ## <a name="next-steps"></a>次のステップ
 
 * 予測分析と機械学習の基本について学習する: [チュートリアル: デザイナーを使用して自動車の価格を予測する](tutorial-designer-automobile-price-train-score.md)
 * 既存の[デザイナーのサンプル](samples-designer.md)を変更して、ニーズに合わせて調整する方法について説明します。
-

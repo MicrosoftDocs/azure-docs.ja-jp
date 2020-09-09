@@ -1,6 +1,6 @@
 ---
 title: 監査とログ記録 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
-description: Threat Modeling Tool で公開されている脅威への対応
+description: Threat Modeling Tool での監査とログ記録の軽減策について説明します。 軽減策に関する情報を参照し、コード例を表示します。
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: c9d20b3259cf4ea7af263d5e31145ad372db0c77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bac17073650736df9ec48e951290852e082e9417
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68728408"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542995"
 ---
-# <a name="security-frame-auditing-and-logging--mitigations"></a>セキュリティ フレーム: 監査とログ記録 | 対応策 
+# <a name="security-frame-auditing-and-logging--mitigations"></a>セキュリティ フレーム:監査とログ記録 | 対応策 
 
 | 製品/サービス | [アーティクル] |
 | --------------- | ------- |

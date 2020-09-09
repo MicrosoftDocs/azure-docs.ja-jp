@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 179bc5cdf982792f41e0dec209341f346959a31a
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: dffa059b18e159d04b5e3bb8555dabf801ede692
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397516"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85511794"
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスのフェールオーバーとディザスター リカバリー
 

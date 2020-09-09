@@ -10,17 +10,18 @@ editor: ''
 ms.assetid: 2cf6a49b-5d35-491f-abc3-63ec24eb4bc2
 ms.subservice: asc-for-iot
 ms.devlang: na
+ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 4d7d2f0a423a50f85160a856480eaa973be7e2b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 64b9176a16f4d8d2b7ee7f33e00714d811c5f070
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537612"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209082"
 ---
 # <a name="deploy-an-azure-security-center-for-iot-c-based-security-agent-for-windows"></a>Windows 用の Azure Security Center for IoT の C# ベースのセキュリティ エージェントをデプロイする
 

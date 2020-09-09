@@ -8,12 +8,12 @@ ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: bd65f33663dea3663f14fb4167448e39b9b7d0b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c2999d5bd6d780d5815f22d18e6e8cdd580987af
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82099769"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020170"
 ---
 # <a name="run-scripts-in-your-windows-vm"></a>Windows VM でスクリプトを実行する
 
@@ -34,7 +34,7 @@ ms.locfileid: "82099769"
 [実行コマンド](run-command.md)機能では、スクリプトを使用して仮想マシンやアプリケーションの管理およびトラブルシューティングを行うことができます。この機能は、ゲスト ファイアウォールで RDP ポートや SSH ポートが開かれていないなど、マシンに到達不能なときにも使用できます。
 
 * Azure 仮想マシンでスクリプトを実行します。
-* [Azure Portal](run-command.md)、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)、[Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke)、または [PowerShell](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) を使用して実行できます。
+* [Azure Portal](run-command.md)、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)、[Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke)、または [PowerShell](/powershell/module/az.compute/invoke-azvmruncommand) を使用して実行できます。
 * Azure Portal でスクリプトをすばやく実行し、出力を確認して、必要に応じて繰り返すことができます。
 * スクリプトは直接入力するか、組み込みのスクリプトを使用できます。
 * PowerShell スクリプトは Windows マシンで実行し、Bash スクリプトは Linux マシンで実行します。
@@ -57,7 +57,7 @@ ms.locfileid: "82099769"
 
 ## <a name="serial-console"></a>シリアル コンソール
 
-[Serial console](serial-console.md) を使用すると、VM に接続されているキーボードと同じように、VM に直接アクセスできます。
+[Serial console](../troubleshooting/serial-console-windows.md) を使用すると、VM に接続されているキーボードと同じように、VM に直接アクセスできます。
 
 * Azure 仮想マシンでコマンドを実行します。
 * Azure Portal 内のマシンにテキスト ベースのコンソールを使用して実行できます。
@@ -71,4 +71,4 @@ ms.locfileid: "82099769"
 * [カスタム スクリプト拡張機能](../extensions/custom-script-windows.md)
 * [実行コマンド](run-command.md)
 * [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md)
-* [Serial console](serial-console.md)
+* [Serial console](../troubleshooting/serial-console-windows.md)

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 08/13/2020
 ms.author: victorh
-ms.openlocfilehash: cb065f10664f46578f84e59501d75d510ccb3c6a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 75435155ba1dad798d301006a30a5d5b6e96226a
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201577"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611179"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall に関する FAQ
 
@@ -22,15 +22,7 @@ Azure Firewall は、Azure Virtual Network リソースを保護するクラウ�
 
 ## <a name="what-capabilities-are-supported-in-azure-firewall"></a>Azure Firewall ではどのような機能がサポートされていますか?
 
-* サービスとしてのステートフル ファイアウォール
-* 無制限のクラウド スケーラビリティを備えたビルトインの高可用性
-* FQDN フィルタリング
-* FQDN のタグ
-* ネットワーク トラフィックのフィルタリング規則
-* 送信 SNAT サポート
-* 受信 DNAT のサポート
-* Azure サブスクリプションと VNET をまたいでアプリケーションとネットワークの接続ポリシーを一元的に作成、適用、記録できます。
-* Azure Monitor との完全統合によるログ記録と分析
+Azure Firewall の機能の詳細については、「[Azure Firewall の機能](features.md)」を参照してください。
 
 ## <a name="what-is-the-typical-deployment-model-for-azure-firewall"></a>Azure Firewall の一般的なデプロイ モデルを教えてください
 
@@ -58,7 +50,7 @@ Azure Firewall は受信と送信のフィルター処理をサポートして�
 
 ## <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Azure Firewall では、どのログ記録および分析サービスがサポートされていますか?
 
-Azure Firewall は、ファイアウォール ログの表示と分析について Azure Monitor と統合されています。 Log Analytics、Azure Storage、または Event Hubs にログを送信できます。 Log Analytics や、Excel や Power BI などのさまざまなツールで分析できます。 詳細については、「[チュートリアル:Azure Firewall のログを監視する方法に関するチュートリアル](tutorial-diagnostics.md)を参照してください。
+Azure Firewall は、ファイアウォール ログの表示と分析について Azure Monitor と統合されています。 Log Analytics、Azure Storage、または Event Hubs にログを送信できます。 Log Analytics や、Excel や Power BI などのさまざまなツールで分析できます。 詳細については、[Azure Firewall のログを監視する方法に関するチュートリアル](tutorial-diagnostics.md)を参照してください。
 
 ## <a name="how-does-azure-firewall-work-differently-from-existing-services-such-as-nvas-in-the-marketplace"></a>Azure Firewall の動作は、マーケットプレースの NVA などの既存のサービスとどのように異なりますか?
 
@@ -103,8 +95,10 @@ Set-AzFirewall -AzureFirewall $azfw
 
 $azfw = Get-AzFirewall -Name "FW Name" -ResourceGroupName "RG Name"
 $vnet = Get-AzVirtualNetwork -ResourceGroupName "RG Name" -Name "VNet Name"
-$publicip = Get-AzPublicIpAddress -Name "Public IP Name" -ResourceGroupName " RG Name"
-$azfw.Allocate($vnet,$publicip)
+$publicip1 = Get-AzPublicIpAddress -Name "Public IP1 Name" -ResourceGroupName "RG Name"
+$publicip2 = Get-AzPublicIpAddress -Name "Public IP2 Name" -ResourceGroupName "RG Name"
+$azfw.Allocate($vnet,@($publicip1,$publicip2))
+
 Set-AzFirewall -AzureFirewall $azfw
 ```
 
@@ -129,7 +123,7 @@ Azure Firewall サービスの制限については、「[Azure サブスクリ�
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>サポートされているネットワーク仮想アプライアンスに、トンネリング/チェーンが強制されますか。
 
-強制トンネリングがサポートされています。 詳細については、「[Azure Firewall 強制トンネリング](forced-tunneling.md)」を参照してください。 
+強制トンネリングは、新しいファイアウォールを作成するときにサポートされます。 既存のファイアウォールを強制トンネリング用に構成することはできません。 詳細については、「[Azure Firewall 強制トンネリング](forced-tunneling.md)」を参照してください。
 
 Azure Firewall には、インターネットへの直接接続が必要です。 AzureFirewallSubnet が BGP 経由のオンプレミス ネットワークへの既定のルートを学習する場合は、インターネットへの直接接続を保持するために、**NextHopType** の値を **Internet** に設定した 0.0.0.0/0 UDR でこれを上書きする必要があります。
 
@@ -145,7 +139,9 @@ Azure Firewall には、インターネットへの直接接続が必要です�
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>アプリケーション ルールのターゲット FQDN でワイルドカードはどのように機能しますか。
 
-* **.contoso.com** を構成した場合、これにより、*何らかの値*.contoso.com は許可されますが、contoso.com (ドメインの頂点) は許可されません。 ドメインの頂点を許可する場合は、それをターゲット FQDN として明示的に構成する必要があります。
+現在、ワイルドカードは FQDN の左側でのみ使用できます。 たとえば、* **.contoso.com** や ***contoso.com** などです。
+
+\* **.contoso.com** を構成した場合、これにより、*何らかの値*.contoso.com は許可されますが、contoso.com (ドメインの頂点) は許可されません。 ドメインの頂点を許可する場合は、それをターゲット FQDN として明示的に構成する必要があります。
 
 ## <a name="what-does-provisioning-state-failed-mean"></a>"*プロビジョニング状態: 失敗*" はどのような意味ですか。
 
@@ -176,7 +172,9 @@ Azure Firewall の初期スループット容量は 2.5 から 3 Gbps で、30 G
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Azure Firewall のスケールアウトにはどのくらいの時間がかかりますか。
 
-Azure Firewall は、平均スループットまたは CPU 使用率が 60% になると、徐々にスケーリングされます。 スケールアウトには 5 から 7 分かかります。 パフォーマンス テストを行うときは、少なくとも 10 から 15 分のテストを行い、新しく作成された Firewall ノードを活用するために新しい接続を開始してください。
+Azure Firewall は、平均スループットまたは CPU 使用率が 60% になると、徐々にスケーリングされます。 既定のデプロイの最大スループットは約 2.5 ～ 3 Gbps で、その量の 60% に達したときにスケールアウトが開始されます。 スケールアウトには 5 から 7 分かかります。 
+
+パフォーマンス テストを行うときは、少なくとも 10 ～ 15 分のテストを行い、新しく作成されたファイアウォール ノードを活用するために新しい接続を開始してください。
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Azure Firewall では Active Directory へのアクセスが既定で許可されますか。
 
@@ -187,9 +185,9 @@ Azure Firewall は、平均スループットまたは CPU 使用率が 60% に�
 はい。Azure PowerShell を使用して、それを行うことができます。
 
 ```azurepowershell
-# Add a Threat Intelligence Whitelist to an Existing Azure Firewall
+# Add a Threat Intelligence allow list to an Existing Azure Firewall
 
-## Create the Whitelist with both FQDN and IPAddresses
+## Create the allow list with both FQDN and IPAddresses
 
 $fw = Get-AzFirewall -Name "Name_of_Firewall" -ResourceGroupName "Name_of_ResourceGroup"
 $fw.ThreatIntelWhitelist = New-AzFirewallThreatIntelWhitelist `
@@ -197,9 +195,10 @@ $fw.ThreatIntelWhitelist = New-AzFirewallThreatIntelWhitelist `
 
 ## Or Update FQDNs and IpAddresses separately
 
-$fw = Get-AzFirewall -Name "Name_of_Firewall" -ResourceGroupName "Name_of_ResourceGroup"
-$fw.ThreatIntelWhitelist.FQDNs = @("fqdn1", "fqdn2", …)
-$fw.ThreatIntelWhitelist.IpAddress = @("ip1", "ip2", …)
+$fw = Get-AzFirewall -Name $firewallname -ResourceGroupName $RG
+$fw.ThreatIntelWhitelist.IpAddresses = @($fw.ThreatIntelWhitelist.IpAddresses + $ipaddresses)
+$fw.ThreatIntelWhitelist.fqdns = @($fw.ThreatIntelWhitelist.fqdns + $fqdns)
+
 
 Set-AzFirewall -AzureFirewall $fw
 ```
@@ -211,3 +210,19 @@ TCP ping は実際にはターゲット FQDN に接続していません。 Azur
 ## <a name="are-there-limits-for-the-number-of-ip-addresses-supported-by-ip-groups"></a>IP グループでサポートされる IP アドレスの数に制限はありますか。
 
 はい。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)」を参照してください。
+
+## <a name="can-i-move-an-ip-group-to-another-resource-group"></a>別のリソース グループに IP グループを移動できますか。
+
+いいえ。IP グループを別のリソースグループに移動することは現在サポートされていません。
+
+## <a name="what-is-the-tcp-idle-timeout-for-azure-firewall"></a>Azure Firewall の TCP アイドル タイムアウトはどうなっていますか。
+
+ネットワーク ファイアウォールの標準的な動作では、TCP 接続が確実に維持されるようにして、アクティビティがない場合はすぐに終了するようになっています。 Azure Firewall の TCP アイドル タイムアウトは 4 分です。 この設定を構成することはできません。 アイドル時間がタイムアウト値よりも長い場合、TCP や HTTP のセッションが維持される保証はありません。 一般的な方法として、TCP keep-alive を使用します。 この方法を使用すると、接続が長時間アクティブ状態に維持されます。 詳細については、[.NET の例](https://docs.microsoft.com/dotnet/api/system.net.servicepoint.settcpkeepalive?redirectedfrom=MSDN&view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_)に関するページを参照してください。
+
+## <a name="can-i-deploy-azure-firewall-without-a-public-ip-address"></a>パブリック IP アドレスを使用せずに Azure Firewall をデプロイできますか。
+
+いいえ。現時点では、Azure Firewall はパブリック IP アドレスを使用してデプロイする必要があります。
+
+## <a name="where-does-azure-firewall-store-customer-data"></a>顧客データは Azure Firewall によってどこに格納されますか?
+
+Azure Firewall によって、顧客データがデプロイされているリージョン外に移動または格納されることはありません。

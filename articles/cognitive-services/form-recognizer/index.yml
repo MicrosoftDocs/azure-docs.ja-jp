@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 953303c8726335c8f8cfdb0919fc33b724549974
-  ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+  ms.openlocfilehash: c653a8afa3d15278a03655f71dccade6171db837
+  ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/27/2020
-  ms.locfileid: "83997113"
+  ms.lasthandoff: 08/21/2020
+  ms.locfileid: "88723896"
 landingContent:
 - title: Form Recognizer について
   linkLists:
@@ -46,10 +46,6 @@ landingContent:
       url: quickstarts/client-library.md?pivots=programming-language-javascript
     - text: REST API の使用する (cURL)
       url: quickstarts/curl-train-extract.md
-  - linkListType: tutorial
-    links:
-    - text: Logic Apps で Form Recognizer を使用する
-      url: tutorial-form-recognizer-with-logic-apps.md
 - title: トレーニング データ セットの作成
   linkLists:
   - linkListType: how-to-guide
@@ -84,6 +80,20 @@ landingContent:
       url: quickstarts/curl-train-extract.md
     - text: REST API の使用する (cURL)
       url: quickstarts/curl-receipts.md
+  - linkListType: concept
+    links:
+    - text: レシートの概念
+      url: concept-receipts.md?
+- title: 名刺からデータを抽出する
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: REST API の使用
+      url: quickstarts/python-business-cards.md?
+  - linkListType: concept
+    links:
+    - text: 名刺の概念
+      url: concept-business-cards.md?
 - title: テキスト レイアウト情報を取得する
   linkLists:
   - linkListType: quickstart
@@ -119,15 +129,13 @@ landingContent:
   - linkListType: reference
     links:
     - text: Form Recognizer API v2.0
-      url: https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm
-    - text: Form Recognizer API v1.0
-      url: https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeWithCustomModel
+      url: https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm
     - text: .NET SDK
-      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview
+      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer
     - text: Azure PowerShell
       url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
     - text: Azure コマンド ライン インターフェイス (CLI)
-      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices#az-cognitiveservices-list
 - title: ヘルプとフィードバック
   linkLists:
   - linkListType: reference

@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 3294a7b2112e9527041ef343f4452aedb7a2a272
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0eed2328aca78402c5f4691bb9b3d07d4f36472e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70073462"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250228"
 ---
 # <a name="how-to-migrate-azure-api-management-across-regions"></a>Azure API Management をリージョン間で移行する方法
 API Management インスタンスを 1 つの Azure リージョンから別のリージョンに移行するには、[バックアップと復元](api-management-howto-disaster-recovery-backup-restore.md)機能を使用できます。 ソース リージョンとターゲット リージョンで同じ API Management 価格レベルを選択する必要があります。 
 
 > [!NOTE]
-> 種類が異なるクラウド間で移行を行う場合、バックアップと復元は機能しません。 そのため、リソースを[テンプレートとして](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-portal#export-resource-groups-to-templates)エクスポートする必要があります。 次に、エクスポートしたテンプレートをターゲットの Azure リージョンに合わせて調整し、リソースを再作成します。 
+> 種類が異なるクラウド間で移行を行う場合、バックアップと復元は機能しません。 そのため、リソースを[テンプレートとして](../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)エクスポートする必要があります。 次に、エクスポートしたテンプレートをターゲットの Azure リージョンに合わせて調整し、リソースを再作成します。 
 
 ## <a name="option-1-use-a-different-api-management-instance-name"></a>オプション 1: 別の API Management インスタンス名を使用する
 
@@ -47,3 +47,4 @@ API Management インスタンスを 1 つの Azure リージョンから別の�
 ## <a name="next-steps"></a><a name="next-steps"> </a>次の手順
 * バックアップと復元機能の詳細については、[ディザスター リカバリーを実装する方法](api-management-howto-disaster-recovery-backup-restore.md)に関するページを参照してください。
 * Azure リソースの移行の詳細については、[Azure のリージョン間の移行に関するガイダンス](https://github.com/Azure/Azure-Migration-Guidance)を参照してください。
+* [ご自分のクラウドの支出を最適化して節約する](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

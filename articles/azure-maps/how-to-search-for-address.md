@@ -1,231 +1,181 @@
 ---
-title: Azure Maps Search Service を使用して場所を検索する | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps Search Service を使用してジオコーディングとリバース ジオコーディングのために場所を検索する方法について説明します。
-author: philmea
-ms.author: philmea
-ms.date: 01/15/2020
+title: Azure Maps Search Service を使用して場所を検索する
+description: Azure Maps Search Service について説明します。 この一連の API を使用して、ジオコーディング、逆ジオコーディング、あいまい検索、および交差点住所の逆引き検索を行う方法について説明します。
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 07/21/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: cf0e5267885df1ace51271c53bb2d68ee5002f00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 48dd0168f878a16e2eabe47151d0b09993d9f5f9
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335430"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037781"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Azure Maps Search Service を使用して場所を検索する
 
-Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) は、開発者が住所、場所、名前またはカテゴリ別の事業の一覧、およびその他の地理情報を検索できるように設計された RESTful API のセットです。 サービスでは、従来のジオコーディングをサポートするだけでなく、緯度と経度に基づいて住所や交差点の逆ジオコーディングを行うこともできます。 検索で返された緯度と経度の値は、[Route](https://docs.microsoft.com/rest/api/maps/route) サービスや [Weather](https://docs.microsoft.com/rest/api/maps/weather) サービスなどの他の Azure Maps サービスでパラメーターとして使用できます。
+Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) は、開発者が住所、場所、名前またはカテゴリ別の事業の一覧、およびその他の地理情報を検索できるように設計された RESTful API のセットです。 サービスでは、従来のジオコーディングをサポートするだけでなく、緯度と経度に基づいて住所や交差道路の逆ジオコーディングを行うこともできます。 検索で返された緯度と経度の値は、[Route](https://docs.microsoft.com/rest/api/maps/route) サービスや [Weather](https://docs.microsoft.com/rest/api/maps/weather) サービスなどの他の Azure Maps サービスでパラメーターとして使用できます。
 
-この記事では、次のことについて説明します。
+この記事では、次の方法について学習します。
 
 * [住所検索 API]( https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) を使用して、住所 (ジオコード アドレスの場所) の緯度と経度の座標を要求する
 * [あいまい検索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) を使用して、住所または目的地 (POI) を検索する
-* 住所をプロパティや座標と一緒に検索
-* 座標位置を住所に変換するために [住所の逆引き検索](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)を行う
-* [交差点住所の逆引き検索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet) を使用した交差点の検索
+* 座標位置を番地に変換するために [住所の逆引き検索](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)を行う
+* [交差点住所の逆引き検索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet) を使用して、座標位置を人間が理解できる交差道路に変換する  多くの場合、これは、デバイスまたはアセットから GPS フィードを受信し、座標が配置されている場所を知る必要があるアプリケーションをトラッキングする場合に必要です。
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事の手順を完了するには、最初に Azure Maps アカウントを作成し、Map アカウントのサブスクリプション キーを取得する必要があります。 [アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)に関するページの手順に従って、Azure Maps アカウントのサブスクリプションを作成します。さらに、[主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するページの手順に従って、お使いのアカウントの主キーを取得します。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](./how-to-manage-authentication.md)」を参照してください。
+1. [Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-azure-maps-account)
+2. [プライマリ サブスクリプション キー (主キーまたはサブスクリプション キーとも呼ばれます) を取得します](quick-demo-map-app.md#get-the-primary-key-for-your-account)。
 
-この記事では、[Postman アプリ](https://www.getpostman.com/apps)を使用して REST 呼び出しを構築します。 選択した任意の API 開発環境を使用できます。
+このチュートリアルでは [Postman](https://www.postman.com/) アプリケーションを使用していますが、別の API 開発環境を選択することもできます。
 
 ## <a name="request-latitude-and-longitude-for-an-address-geocoding"></a>住所の緯度と経度を要求する (ジオコーディング)
 
-この例では、Azure Maps の [Get Search Address API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) を使用して、住所を緯度および経度の座標に変換します。 住所のすべてまたは一部を API に渡すと、番地、郵便番号、国または地域などの詳細な住所プロパティと、緯度および経度による位置の値を含む応答を受け取ることができます。
+この例では、Azure Maps の [Get Search Address API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) を使用して、住所を緯度および経度の座標に変換します。 このプロセスは*ジオコーディング*とも呼ばれています。 応答では、座標が返されるだけでなく、番地、郵便番号、地方自治体、国または地域の情報などの詳細な住所プロパティも返されます。
 
-ジオコーディングする住所のセットがある場合は、[Post Search Address Batch API](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressbatch) を使用して、クエリのバッチを単一の API 呼び出しで送信できます。
+>[!TIP]
+>ジオコーディングする住所のセットがある場合は、[Post Search Address Batch API](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressbatch) を使用して、クエリのバッチを単一の API 呼び出しで送信できます。
 
-1. Postman で、 **[新しい要求]**  |  **[GET request\(GET 要求\)]** をクリックして、「**Address Search**」 (住所検索) という名前を付けます。
+1. Postman アプリを開きます。 Postman アプリの上部付近で **[新規]** を選択します。 **[新規作成]** ウィンドウで **[コレクション]** を選択します。  コレクションに名前を付け、 **[作成]** ボタンを選択します。 このコレクションは、このドキュメントの残りの例で使用します。
 
-2. [Builder]\(ビルダー\) タブで、**GET** HTTP メソッドを選択し、API エンドポイントの要求 URL を入力して、承認プロトコルを選択します (存在する場合)。
+2. 要求を作成するには、 **[新規]** をもう一度選択します。 **[新規作成]** ウィンドウで **[要求]** を選択します。 要求の **[要求名]** を入力します。 前の手順で作成したコレクションを選択し、 **[Save]\(保存\)** を選択します。
 
-![住所検索](./media/how-to-search-for-address/address_search_url.png)
+3. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 この要求では、特定の住所 (`400 Braod St, Seattle, WA 98109`) を検索します。
 
-| パラメーター | 推奨値 |
-|---------------|------------------------------------------------| 
-| HTTP メソッド | GET |
-| 要求 URL | [https://atlas.microsoft.com/search/address/json?](https://atlas.microsoft.com/search/address/json?) | 
-| 承認 | No Auth |
+    この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。 要求は次の URL のようになります。
 
-3. **[パラメーター]** をクリックして、要求 URL のクエリまたはパスのパラメーターとして使用する次のキーと値のペアを入力します。 
+    ```http
+    https://atlas.microsoft.com/search/address/json?&subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&language=en-US&query=400 Broad St, Seattle, WA 98109
+    ```
 
-![住所検索](./media/how-to-search-for-address/address_search_params.png) 
+4. 青い **[送信]** ボタンをクリックします。 応答本文には、1 つの場所のデータが含まれます。
 
-| Key | 値 | 
-|------------------|-------------------------| 
-| api-version | 1.0 | 
-| subscription-key | \<Azure Maps キー\> | 
-| query | 400 Broad St, Seattle, WA 98109 | 
+5. 今度は、場所の候補が複数個ある住所を検索します。 **[パラメーター]** セクションで、`query` キーを `400 Broad, Seattle` に変更します。 青い **[送信]** ボタンをクリックします。
 
-4. **[送信]** をクリックして、応答の本体を確認します。 
+    :::image type="content" source="./media/how-to-search-for-address/search-address.png" alt-text="住所の検索":::
 
-ここでは、完全な住所のクエリを指定したので、応答の本体には単一の結果を受信します。 
+6. 次に、`query` キーを `400 Broa` に設定してみます。
 
-5. [パラメーター] では、クエリ文字列を次の値に編集します。 
-
-    ```plaintext 
-        400 Broad, Seattle 
-    ``` 
-
-6. 次のキー/値のペアを **Params** セクションに追加し、 **[送信]** をクリックします。 
-
-| Key | 値 | 
-|-----|------------| 
-| typeahead | true | 
-
-**typeahead** フラグは、部分的な入力値としてクエリを処理して、予測値の配列を返すよう、住所検索の API に指示します。
+7. **[送信]** ボタンをクリックします。  応答に複数の国からの応答が含まれていることがわかります。 ユーザーの関連領域に結果をジオバイアスするには、常にできるだけ多くの場所の詳細を要求に追加してください。
 
 ## <a name="using-fuzzy-search-api"></a>あいまい検索 API の使用
 
-検索クエリでユーザーの入力内容がわからない場合は、Azure Maps の[あいまい検索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) を使用することをお勧めします。 この API は、目的地 (POI) 検索とジオコーディングを正規の "一行検索" で組み合わせています。 たとえば、この API では、任意のアドレスまたは POI のトークンの組み合わせの入力を処理できます。 また、コンテキストの位置 (緯度/経度 のペア) で重み付けされたり、座標と半径によって完全に制約を受けたりする場合があります。あるいは、地理的偏向のアンカー ポイントなしで、より汎用的に API を実行することもできます。
+Azure Maps [Fuzzy Search API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) では、標準的な単一行の自由形式検索がサポートされています。 検索要求に対するユーザー入力の種類がわからない場合は、Azure Maps Search Fuzzy API を使用することをお勧めします。  クエリには、完全なアドレスまたはアドレスの一部を入力できます。 また、目的地 (POI) の名前、POI カテゴリ、ブランドの名前などの POI トークンを入力することもできます。 さらに、検索結果の関連性を高めるため、座標位置と半径を指定するか、境界ボックスを定義して、クエリ結果を制限できます。
 
-ほとんどの検索クエリは、パフォーマンスを得るためと想定外の結果を減らすために、既定で `maxFuzzyLevel=1` に設定されます。 この既定値は、クエリ パラメーターに `maxFuzzyLevel=2` または `3` を渡すことで、必要に応じて要求ごとにオーバーライドできます。
+>[!TIP]
+>ほとんどの検索クエリは、より優れたパフォーマンスを得て想定外の結果を減らすために、既定で maxFuzzyLevel=1 に設定されます。 あいまいさのレベルを調整するには、`maxFuzzyLevel` または `minFuzzyLevel` パラメーターを使用します。 `maxFuzzyLevel` の詳細と省略可能なパラメーターの完全な一覧については、[あいまい検索の URI パラメーター](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy#uri-parameters)に関するセクションをご覧ください
 
 ### <a name="search-for-an-address-using-fuzzy-search"></a>あいまい検索を使用した住所の検索
 
-1. Postman アプリを開き、[新規]、[新規作成] の順にクリックして、 **[GET request(\GET 要求\)]** を選択します。 **あいまい検索**の要求名を入力して、これを保存するコレクションまたはフォルダーを選択し、 **[保存]** をクリックします。
+この例では、あいまい検索を使用して、全世界で `pizza` を検索します。  次に、特定の国を範囲として検索する方法について説明します。 最後に、座標位置と半径を使用して検索の範囲を特定の領域に設定し、返される結果の数を制限する方法について説明します。
 
-2. [Builder\(ビルダー\)] タブで、**GET** HTTP メソッドを選択し、API エンドポイントの要求 URL を入力します。
+>[!IMPORTANT]
+>ユーザーの関連領域に結果をジオバイアスするには、常にできるだけ多くの場所の詳細を追加してください。 詳細については、[検索のベスト プラクティス](how-to-use-best-practices-for-search.md#geobiased-search-results)に関するセクションをご覧ください。
 
-    ![あいまい検索](./media/how-to-search-for-address/fuzzy_search_url.png)
+1. Postman アプリで、 **[new]\(新規\)** をクリックし、 **[Request]\(\要求\)** を選択します。 要求の **[要求名]** を入力します。 前のセクションで作成したコレクションを選択するか、新しいコレクションを作成して、 **[Save]\(保存\)** を選択します。
 
-    | パラメーター | 推奨値 |
-    |---------------|------------------------------------------------|
-    | HTTP メソッド | GET |
-    | 要求 URL | [https://atlas.microsoft.com/search/fuzzy/json?](https://atlas.microsoft.com/search/fuzzy/json?) |
-    | 承認 | No Auth |
+2. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。 要求は次の URL のようになります。
 
-    URL パスの **json** 属性で、応答形式が決定まります。 この記事では、使いやすく、読みやすい json を使用します。 使用可能な応答形式については、[Maps Functional API のリファレンス](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)の「**Get Search Fuzzy**」(あいまいな検索の取得) の定義で確認できます。
+    ```http
+   https://atlas.microsoft.com/search/fuzzy/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=pizza
+    ```
 
-3. **[パラメーター]** をクリックして、要求 URL のクエリまたはパスのパラメーターとして使用する次のキーと値のペアを入力します。
+    >[!NOTE]
+    >URL パスの _json_ 属性で、応答形式が決定まります。 この記事では、使いやすく、読みやすい json を使用します。 サポートされている他の応答形式については、[URI パラメーターのリファレンス ドキュメント](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy#uri-parameters)の `format` パラメーターの定義をご覧ください。
 
-    ![あいまい検索](./media/how-to-search-for-address/fuzzy_search_params.png)
+3. **[送信]** をクリックして、応答の本体を確認します。
 
-    | Key | 値 |
-    |------------------|-------------------------|
-    | api-version | 1.0 |
-    | subscription-key | \<Azure Maps キー\> |
-    | query | pizza |
-
-4. **[送信]** をクリックして、応答の本体を確認します。
-
-    あいまいなクエリ文字列 "pizza" からは結果として、"pizza" と "restaurant" のカテゴリに含まれる 10 か所の[目的地](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi#searchpoiresponse) (POI) が返されました。 各結果からは、該当の場所の所在地住所、緯度値と経度値、ビュー ポート、エントリ ポイントが返されます。
+    あいまいなクエリ文字列 "pizza" からは結果として、"pizza" と "restaurant" のカテゴリに含まれる 10 か所の[目的地](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi#searchpoiresponse) (POI) が返されました。 各結果には、該当の場所の番地、緯度値と経度値、ビュー ポート、エントリ ポイントなどの詳細が含まれています。 このクエリでは結果が雑多で、特定の参照場所には関連付けられません。
   
-    特定の参照場所に結び付けられておらず、このクエリの結果は変化します。 **countrySet** パラメーターを使用すると、アプリケーションの対象にする必要がある国または地域のみを指定できます。 既定の動作では全世界が検索されるので、必要のない結果が返される可能性があります。
+    次の手順では、`countrySet` パラメーターを使用して、アプリケーションの対象にする必要がある国または地域のみを指定します。 サポートされている国または地域の完全な一覧については、[検索範囲](https://docs.microsoft.com/azure/azure-maps/geocoding-coverage)に関するセクションをご覧ください。
 
-5. 次のキー/値のペアを **Params** セクションに追加し、 **[送信]** をクリックします。
+4. 既定の動作では全世界が検索されるので、必要のない結果が返される可能性があります。 次に、米国のみで pizza を検索します。 **[パラメーター]** セクションに `countrySet` キーを追加し、その値を `US` に設定します。 `countrySet` キーを `US` に設定すると、結果が米国に制限されます。
 
-    | Key | 値 |
-    |------------------|-------------------------|
-    | countrySet | US |
-  
+    :::image type="content" source="./media/how-to-search-for-address/search-fuzzy-country.png" alt-text="米国で pizza を検索する":::
+
     これで、結果が国コードによってバインドされ、クエリでは米国のピザ レストランが返されます。
-  
-    ある場所の結果を得るには、関心地点にクエリを実行して、返された緯度と経度の値をあいまい検索サービスの呼び出しの中で使用します。 ここでは、Search サービスを使用してシアトル スペース ニードルの場所が返され、緯度 /経度を使用して 検索に指向が付加されました。
-  
-6. [パラメーター] に次のキーと値のペアを入力して、 **[送信]** をクリックします。
 
-    ![あいまい検索](./media/how-to-search-for-address/fuzzy_search_latlon.png)
-  
-    | Key | 値 |
+5. さらに絞り込んだ検索結果を取得するには、緯度と経度の座標ペアを範囲として検索できます。 coordinate pair. この例では、シアトル スペース ニードルの緯度と経度を使用します。 of the Seattle Space Needle. 半径 400 メートル以内の結果のみを取得したいので、`radius` パラメーターを追加します。 また、`limit` パラメーターを追加して、最寄りの 5 つのピザ屋に結果を制限します。
+
+    **[パラメーター]** セクションに次のキー/値のペアを追加します。
+
+     | キー | 値 |
     |-----|------------|
     | lat | 47.620525 |
     | lon | -122.349274 |
+    | radius | 400 |
+    | limit | 5|
 
+6. **[送信]** をクリックします。 応答には、シアトル スペース ニードルの近くにあるピザ レストランの結果が含まれています。
 
 ## <a name="search-for-a-street-address-using-reverse-address-search"></a>住所の逆引き検索を使用した所在地住所の検索
 
-Azure Maps の[Get Search Address Reverse API]( https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) により座標 (例:37.786505、-122.3862) を人間が理解しやすい住所に変換します。 多くの場合、これは、デバイスまたはアセットから GPS フィードを受信し、座標が配置されているアドレスを知る必要があるアプリケーションをトラッキングする場合に必要です。
-リバース ジオコーディングする座標セットがある場合は、[Post Search Address Batch API](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressreversebatch) を使用して、クエリのバッチを単一の API 呼び出しで送信できます。
+Azure Maps [Get Search Address Reverse API]( https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) は、座標を人が判読できる番地に変換します。 この API は、GPS フィードを利用して特定の座標点の住所を検出する必要があるアプリケーションでよく使用されます。
 
+>[!IMPORTANT]
+>ユーザーの関連領域に結果をジオバイアスするには、常にできるだけ多くの場所の詳細を追加してください。 詳細については、[検索のベスト プラクティス](how-to-use-best-practices-for-search.md#geobiased-search-results)に関するセクションをご覧ください。
 
-1. Postman で、 **[新しい要求]**  |  **[GET request\(GET 要求\)]** をクリックして、「**Reverse Address Search**」 (住所の逆引き検索) という名前を付けます。
+>[!TIP]
+>リバース ジオコーディングする座標セットがある場合は、[Post Search Address Batch API](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressreversebatch) を使用して、クエリのバッチを単一の API 呼び出しで送信できます。
 
-2. [Builder\(ビルダー\)] タブで、**GET** HTTP メソッドを選択し、API エンドポイントの要求 URL を入力します。
+この例では、利用可能ないくつかのオプション パラメーターを使用して、逆方向の検索を行います。 省略可能なパラメーターの完全な一覧については、[逆方向の検索のパラメーター](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#uri-parameters)に関するセクションをご覧ください。
+
+1. Postman アプリで、 **[new]\(新規\)** をクリックし、 **[Request]\(\要求\)** を選択します。 要求の **[要求名]** を入力します。 最初のセクションで作成したコレクションを選択するか、新しいコレクションを作成して、 **[Save]\(保存\)** を選択します。
+
+2. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。 要求は次の URL のようになります。
+
+    ```http
+    https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=47.591180,-122.332700&number=1
+    ```
+
+3. **[送信]** をクリックして、応答の本体を確認します。 1 つのクエリ結果が表示されます。 応答には、セーフコ フィールドのキー アドレス情報が含まれます。
   
-    ![住所の逆引き検索の URL](./media/how-to-search-for-address/reverse_address_search_url.png)
-  
-    | パラメーター | 推奨値 |
-    |---------------|------------------------------------------------|
-    | HTTP メソッド | GET |
-    | 要求 URL | [https://atlas.microsoft.com/search/address/reverse/json?](https://atlas.microsoft.com/search/address/reverse/json?) |
-    | 承認 | No Auth |
-  
-3. **[パラメーター]** をクリックして、要求 URL のクエリまたはパスのパラメーターとして使用する次のキーと値のペアを入力します。
-  
-    ![住所の逆引き検索のパラメーター](./media/how-to-search-for-address/reverse_address_search_params.png)
-  
-    | Key | 値 |
-    |------------------|-------------------------|
-    | api-version | 1.0 |
-    | subscription-key | \<Azure Maps キー\> |
-    | query | 47.591180,-122.332700 |
-  
-4. **[送信]** をクリックして、応答の本体を確認します。
+4. 今度は、 **[パラメーター]** セクションに次のキー/値のペアを追加します。
 
-    応答には、セーフコ フィールドのキー アドレス情報が含まれます。
-  
-5. 次のキー/値のペアを **Params** セクションに追加し、 **[送信]** をクリックします。
+    | キー | 値 | 戻り値
+    |-----|------------|------|
+    | number | 1 |通りの側 (左/右) とその数値からのオフセット位置を応答に含めることができます。|
+    | returnSpeedLimit | true | その住所での制限速度が返されます。|
+    | returnRoadUse | true | その住所での道路用途の種類が返されます。 使用できるすべての道路用途の種類については、[道路用途の種類](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#uri-parameters)に関するセクションをご覧ください。|
+    | returnMatchType | true| 一致の種類を返します。 使用できるすべての値については、[住所の逆引き検索の結果](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#searchaddressreverseresult)に関するセクションをご覧ください
 
-    | Key | 値 |
-    |-----|------------|
-    | number | true |
+   :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="逆引き検索":::
 
-    [number](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) クエリ パラメーターが要求と共に送信された場合、応答には、通りの側 (左または右) とその数値からのオフセット位置が含まれることがあります。
-  
-6. 次のキー/値のペアを **Params** セクションに追加し、 **[送信]** をクリックします。
+5. **[送信]** をクリックして、応答の本体を確認します。
 
-    | Key | 値 |
-    |-----|------------|
-    | returnSpeedLimit | true |
-  
-    [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) クエリ パラメーターが設定されているとき、応答からは公示速度制限が返されます。
+6. 次に、`entityType` キーを追加し、その値を `Municipality` に設定します。 `entityType` キーを使用すると、前の手順の `returnMatchType` キーがオーバーライドされます。 地方自治体に関する情報を要求しているので、`returnSpeedLimit` と `returnRoadUse` も削除する必要があります。  使用できるすべてのエンティティ型については、[エンティティ型](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#entitytype)に関するセクションをご覧ください。
 
-7. 次のキー/値のペアを **Params** セクションに追加し、 **[送信]** をクリックします。
+    :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="エンティティ型の逆引き検索":::
 
-    | Key | 値 |
-    |-----|------------|
-    | returnRoadUse | true |
+7. **[送信]** をクリックします。 この結果を手順 5 で返された結果と比較します。  要求されたエンティティ型が `municipality` であるため、応答に番地の情報は含まれていません。 また、返された `geometryId` は、Azure Maps Get [Search Polygon API](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon) で境界多角形を要求するときに使用できます。
 
-    [returnRoadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) クエリ パラメーターが設定された場合、応答には番地レベルで逆引き地理コードの道路用途の配列が返されます。
+>[!TIP]
+>これらのパラメーターの詳細と関連情報については、[逆引き検索のパラメーターに関するセクション](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#uri-parameters)をご覧ください。
 
-8. 次のキー/値のペアを **Params** セクションに追加し、 **[送信]** をクリックします。
-
-    | Key | 値 |
-    |-----|------------|
-    | roadUse | true |
-
-    [roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) クエリ パラメーターを使用して、逆ジオコード クエリを特定の種類の道路に制限できます。
-  
 ## <a name="search-for-cross-street-using-reverse-address-cross-street-search"></a>交差点住所の逆引き検索を使用して交差点を検索する
 
-1. Postman で、 **[新しい要求]**  |  **[GET request\(GET 要求\)]** をクリックして、「**Reverse Address Cross Street Search**」 (交差点住所の逆引き検索) という名前を付けます。
+この例では、住所の座標に基づいて交差道路を検索します。
 
-2. [Builder\(ビルダー\)] タブで、**GET** HTTP メソッドを選択し、API エンドポイントの要求 URL を入力します。
-  
-    ![交差点住所の逆引き検索](./media/how-to-search-for-address/reverse_address_search_url.png)
-  
-    | パラメーター | 推奨値 |
-    |---------------|------------------------------------------------|
-    | HTTP メソッド | GET |
-    | 要求 URL | [https://atlas.microsoft.com/search/address/reverse/crossstreet/json?](https://atlas.microsoft.com/search/address/reverse/crossstreet/json?) |
-    | 承認 | No Auth |
-  
-3. **[パラメーター]** をクリックして、要求 URL のクエリまたはパスのパラメーターとして使用する次のキーと値のペアを入力します。
-  
-    | Key | 値 |
-    |------------------|-------------------------|
-    | api-version | 1.0 |
-    | subscription-key | \<Azure Maps キー\> |
-    | query | 47.591180,-122.332700 |
-  
-4. **[送信]** をクリックして、応答の本体を確認します。
+1. Postman アプリで、 **[new]\(新規\)** をクリックし、 **[Request]\(\要求\)** を選択します。 要求の **[要求名]** を入力します。 最初のセクションで作成したコレクションを選択するか、新しいコレクションを作成して、 **[Save]\(保存\)** を選択します。
 
-## <a name="next-steps"></a>次のステップ
+2. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。 要求は次の URL のようになります。
+  
+    ```http
+   https://atlas.microsoft.com/search/address/reverse/crossstreet/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=47.591180,-122.332700
+    ```
 
-- Azure Maps [Search Service REST API のドキュメント](https://docs.microsoft.com/rest/api/maps/search)を確認します。
-- [Azure Maps Search Service のベスト プラクティス](https://docs.microsoft.com/azure/azure-maps/how-to-use-best-practices-for-search)とクエリを最適化する方法について確認します。
+    :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="交差道路の検索":::
+  
+3. **[送信]** をクリックして、応答の本体を確認します。 応答に `Occidental Avenue South` という `crossStreet` の値が含まれていることがわかります。
+
+## <a name="next-steps"></a>次の手順
+
+> [!div class="nextstepaction"]
+> [Azure Maps Search Service REST API](https://docs.microsoft.com/rest/api/maps/search)
+
+> [!div class="nextstepaction"]
+> [Azure Maps Search Service のベスト プラクティス](how-to-use-best-practices-for-search.md)

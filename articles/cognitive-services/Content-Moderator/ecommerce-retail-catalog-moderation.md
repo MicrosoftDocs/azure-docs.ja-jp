@@ -8,14 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 01/27/2020
+ms.date: 06/29/2020
 ms.author: pafarley
-ms.openlocfilehash: 5e74eda9e30c536c0eba4e847019344c87e10cce
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 017dabf16384e53d924ed69f36b64050fcacb5bf
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76774351"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934788"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>チュートリアル:Azure Content Moderator を使用して eコマース製品画像をモデレートする
 
@@ -32,7 +33,7 @@ ms.locfileid: "76774351"
 
 完全なサンプル コードは、GitHub 上の [samples-eCommerceCatalogModeration](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) リポジトリで入手できます。
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 

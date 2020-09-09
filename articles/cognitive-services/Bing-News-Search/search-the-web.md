@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: e0e99c7f677173c64afad3109b2f4accd7cb3cb9
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: d44fe58eb17e7f11dc64ee1426df7f356cb91aef
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75448446"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85602756"
 ---
 # <a name="what-is-the-bing-news-search-api"></a>Bing News Search API とは
 
@@ -40,10 +40,8 @@ Bing News Search API は主に、関連するニュース記事を検索して�
 
 Bing News Search API は RESTful Web サービスです。HTTP 要求を作成して JSON を解析できる任意のプログラミング言語から簡単に呼び出すことができます。 REST API または SDK のいずれかを使用してサービスを使用できます。
 
-1. Bing Search API にアクセスできる Cognitive Services API アカウントを作成します。 Azure サブスクリプションをお持ちでない場合は、[無料でアカウントを作成](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-news-api)できます。
-
+1. Bing Search API が利用できる [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を作成します。 Azure サブスクリプションをお持ちでない場合は、無料で[アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)できます。
 2. 有効な検索クエリを使用して API に要求を送信します。
-
 3. 返された JSON メッセージを解析して API 応答を処理します。
 
 ## <a name="next-steps"></a>次のステップ

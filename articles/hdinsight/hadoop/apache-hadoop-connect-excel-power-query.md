@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: e643c7fe7b18eed30843e7cab3977036435d2112
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: acb5171048b5a12310b6c0af5d652b7e615a71f5
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75435800"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087811"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>Power Query を使用して Excel を Apache Hadoop に接続する
 

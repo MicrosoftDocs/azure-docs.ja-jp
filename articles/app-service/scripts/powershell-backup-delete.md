@@ -7,13 +7,13 @@ ms.assetid: ebcadb49-755d-4202-a5eb-f211827a9168
 ms.topic: sample
 ms.date: 10/30/2017
 ms.author: msangapu
-ms.custom: mvc, seodec18
-ms.openlocfilehash: 93b53bedef291b9aa740f5bbe9c492185f035f89
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: mvc, seodec18, devx-track-azurepowershell
+ms.openlocfilehash: 29eda8fcb24dce6c54fb56c94d242513b319caad
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80044829"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89073966"
 ---
 # <a name="delete-a-backup-for-a-web-using-azure-powershell"></a>Azure PowerShell を使用して Web のバックアップを削除する
 
@@ -46,6 +46,6 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
+Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。
 
 その他の Azure App Service Web Apps 用 Azure PowerShell サンプル スクリプトは、[Azure PowerShell サンプル](../samples-powershell.md)のページにあります。

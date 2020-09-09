@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: a8213bd57936f95870324950204dbd6c1473739a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8114a5e6db7b82b846d221471f41dbdf418ddd9d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588520"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001996"
 ---
 # <a name="connect-azure-stack-virtual-machines-to-azure-sentinel"></a>Azure Stack 仮想マシンを Azure Sentinel に接続する
 
@@ -49,7 +49,7 @@ Azure Stack で動作している仮想マシンに **Azure Monitor, Update and 
 1. Azure Stack の **[拡張機能のインストール]** ウィンドウで、指定されたフィールドにそれらを貼り付け、 **[OK]** をクリックします。
 1. 拡張機能のインストールが完了すると、その状態が **[プロビジョニング成功]** と表示されます。 Azure Sentinel ポータルに仮想マシンが表示されるまでに、最大で 1 時間かかる場合があります。
 
-Windows 用エージェントのインストールと構成の詳細については、[Windows コンピューターの接続](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)に関するページを参照してください。
+Windows 用エージェントのインストールと構成の詳細については、[Windows コンピューターの接続](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard)に関するページを参照してください。
 
 エージェントの問題に対する Linux のトラブルシューティングについては、[Azure Log Analytics Linux エージェントのトラブルシューティング](../azure-monitor/platform/agent-linux-troubleshoot.md)に関するページを参照してください。
 

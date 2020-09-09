@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.date: 10/10/2019
-ms.openlocfilehash: 63843230b3d4a521df858b00c8e5c887e8f53a7a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 05/08/2019
+ms.openlocfilehash: 98f3c96fe1d1e8dd0f73d0441db8319fc2241cd7
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415588"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563740"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされるコンピューティング環境
 
@@ -38,14 +38,25 @@ ms.locfileid: "81415588"
 | [Azure 関数](#azure-function-linked-service)         | [Azure 関数アクティビティ](control-flow-azure-function-activity.md)
 >  
 
-## <a name="on-demand-hdinsight-compute-environment"></a>オンデマンドの HDInsight コンピューティング環境
+## <a name="hdinsight-compute-environment"></a>HDInsight コンピューティング環境
+
+オンデマンドおよび BYOC (Bring Your Own Compute) 環境内の構成でサポートされるストレージのリンクされたサービスの種類についての詳細は、以下の表を参照してください。
+
+| コンピューティングのリンクされたサービス | プロパティ名                | 説明                                                  | BLOB | ADLS Gen2 | Azure SQL DB | ADLS Gen 1 |
+| ------------------------- | ---------------------------- | ------------------------------------------------------------ | ---- | --------- | ------------ | ---------- |
+| オンデマンド                 | linkedServiceName            | データを保存し、処理するためにオンデマンド クラスターで使用される Azure Storage のリンクされたサービスです。 | はい  | はい       | いいえ           | いいえ         |
+|                           | additionalLinkedServiceNames | Data Factory サービスがユーザーに代わって登録できるように、HDInsight のリンクされたサービスの追加ストレージ アカウントを指定します。 | はい  | いいえ        | いいえ           | いいえ         |
+|                           | hcatalogLinkedServiceName    | HCatalog データベースを指す Azure SQL のリンクされたサービスの名前。 オンデマンド HDInsight クラスターは、Azure SQL データベースをメタストアとして使用して作成されます。 | いいえ   | いいえ        | はい          | いいえ         |
+| BYOC                      | linkedServiceName            | Azure Storage のリンクされたサービスの参照。                | はい  | はい       | いいえ           | いいえ         |
+|                           | additionalLinkedServiceNames | Data Factory サービスがユーザーに代わって登録できるように、HDInsight のリンクされたサービスの追加ストレージ アカウントを指定します。 | いいえ   | いいえ        | いいえ           | いいえ         |
+|                           | hcatalogLinkedServiceName    | HCatalog データベースを指す Azure SQL のリンクされたサービスの参照。 | いいえ   | いいえ        | いいえ           | いいえ         |
+
+### <a name="azure-hdinsight-on-demand-linked-service"></a>Azure HDInsight のオンデマンドのリンクされたサービス
 
 この種類の構成では、コンピューティング環境は Azure Data Factory サービスにより完全管理されます。 データを処理するためのジョブが送信される前に Data Factory サービスにより自動的に作成され、ジョブの完了時に削除されます。 オンデマンドのコンピューティング環境のために「リンクされたサービス」を作成し、構成し、ジョブ実行、クラスター管理、ブートストラップ アクションの詳細設定を制御できます。
 
 > [!NOTE]
-> オンデマンド構成は現在のところ、Azure HDInsight クラスターにのみ対応しています。 Azure Databricks は、ジョブ クラスターを使用したオンデマンド ジョブもサポートしています。詳細については、「[Azure Databricks のリンクされたサービス](#azure-databricks-linked-service)」を参照してください。
-
-## <a name="azure-hdinsight-on-demand-linked-service"></a>Azure HDInsight のオンデマンドのリンクされたサービス
+> オンデマンド構成は現在のところ、Azure HDInsight クラスターにのみ対応しています。 Azure Databricks も、ジョブ クラスターを使用したオンデマンド ジョブをサポートしています。 詳細については、「[Azure Databricks のリンクされたサービス](#azure-databricks-linked-service)」を参照してください。
 
 Azure Data Factory サービスは、データを処理するためのオンデマンド HDInsight クラスターを自動的に作成します。 このクラスターはクラスターに関連付けられているストレージ アカウント (JSON の linkedServiceName プロパティ) と同じリージョンで作成されます。 ストレージ アカウントは、汎用の Standard Azure Storage アカウントである必要があります。 
 
@@ -59,7 +70,7 @@ Azure Data Factory サービスは、データを処理するためのオンデ�
 > [!IMPORTANT]
 > オンデマンドで Azure HDInsight クラスターをプロビジョニングするには一般的に **20 分**以上かかります。
 
-### <a name="example"></a>例
+#### <a name="example"></a>例
 
 次の JSON は、Linux ベースのオンデマンド HDInsight のリンクされたサービスを定義します。 Data Factory サービスは、必要なアクティビティを処理するために、**Linux ベースの** HDInsight クラスターを自動的に作成します。 
 
@@ -98,9 +109,9 @@ Azure Data Factory サービスは、データを処理するためのオンデ�
 > [!IMPORTANT]
 > HDInsight クラスターは、JSON (**linkedServiceName**) で指定した BLOB ストレージに**既定のコンテナー**を作成します。 クラスターを削除しても、HDInsight はこのコンテナーを削除しません。 この動作は仕様です。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (**timeToLive**) がある場合を除き、スライスを処理する必要があるたびに HDInsight クラスターが作成され、処理が終了すると削除されます。 
 >
-> 実行するアクティビティが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、`adf**yourdatafactoryname**-**linkedservicename**-datetimestamp` 形式になります。 Azure BLOB ストレージ内のコンテナーを削除するには、 [Microsoft ストレージ エクスプローラー](https://storageexplorer.com/) などのツールを使用します。
+> 実行するアクティビティが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、`adf**yourdatafactoryname**-**linkedservicename**-datetimestamp` 形式になります。 Azure Blob Storage 内のコンテナーを削除するには、[Microsoft Azure Storage Explorer](https://storageexplorer.com/) などのツールを使用します。
 
-### <a name="properties"></a>Properties
+#### <a name="properties"></a>Properties
 
 | プロパティ                     | 説明                              | 必須 |
 | ---------------------------- | ---------------------------------------- | -------- |
@@ -131,7 +142,7 @@ Azure Data Factory サービスは、データを処理するためのオンデ�
 > [!IMPORTANT]
 > 現在、HDInsight のリンクされたサービスは、HBase、Interactive Query (Hive LLAP)、Storm をサポートしていません。 
 
-#### <a name="additionallinkedservicenames-json-example"></a>additionalLinkedServiceNames JSON の例
+* additionalLinkedServiceNames JSON の例
 
 ```json
 "additionalLinkedServiceNames": [{
@@ -140,7 +151,7 @@ Azure Data Factory サービスは、データを処理するためのオンデ�
 }]
 ```
 
-### <a name="service-principal-authentication"></a>サービス プリンシパルの認証
+#### <a name="service-principal-authentication"></a>サービス プリンシパルの認証
 
 オンデマンドの HDInsight リンク サービスでは、ユーザーに代わって HDInsight クラスターを作成するためにサービス プリンシパル認証が必要になります。 サービス プリンシパルの認証を使用するには、Azure Active Directory (Azure AD) でアプリケーション エンティティを登録し、サブスクリプションの、または HDInsight クラスターが作成されるリソース グループの**共同作成者**のロールを付与します。 詳細な手順については、[ポータルを使用した、リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルの作成](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)に関する記事を参照してください。 次の値を記録しておきます。リンクされたサービスを定義するときに使います。
 
@@ -156,7 +167,7 @@ Azure Data Factory サービスは、データを処理するためのオンデ�
 | **servicePrincipalKey** | アプリケーションのキーを取得します。           | はい      |
 | **tenant**              | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | はい      |
 
-### <a name="advanced-properties"></a>高度なプロパティ
+#### <a name="advanced-properties"></a>高度なプロパティ
 
 次のプロパティを指定し、オンデマンド HDInsight クラスターを詳細に設定することもできます。
 
@@ -171,7 +182,7 @@ Azure Data Factory サービスは、データを処理するためのオンデ�
 | stormConfiguration     | HDInsight クラスターに Storm 構成パラメーター (storm-site.xml) を指定します。 | いいえ       |
 | yarnConfiguration      | HDInsight クラスターに Yarn 構成パラメーター (yarn-site.xml) を指定します。 | いいえ       |
 
-#### <a name="example--on-demand-hdinsight-cluster-configuration-with-advanced-properties"></a>例 – オンデマンド HDInsight クラスターと詳細なプロパティ
+* 例 – オンデマンド HDInsight クラスターと詳細なプロパティ
 
 ```json
 {
@@ -225,7 +236,7 @@ Azure Data Factory サービスは、データを処理するためのオンデ�
 }
 ```
 
-### <a name="node-sizes"></a>ノードのサイズ
+#### <a name="node-sizes"></a>ノードのサイズ
 次のプロパティを使用して、ヘッド ノード、データ ノード、Zookeeper ノードのサイズを指定できます。 
 
 | プロパティ          | 説明                              | 必須 |
@@ -234,8 +245,7 @@ Azure Data Factory サービスは、データを処理するためのオンデ�
 | dataNodeSize      | データ ノードのサイズを指定します。 既定値はStandard_D3 です。 | いいえ       |
 | zookeeperNodeSize | Zookeeper ノードのサイズを指定します。 既定値はStandard_D3 です。 | いいえ       |
 
-#### <a name="specifying-node-sizes"></a>ノードのサイズの指定
-前のセクションで説明したプロパティで指定する必要がある文字列値については、[仮想マシンのサイズ](../virtual-machines/linux/sizes.md)に関する記事を参照してください。 値は、この記事に記載されている**コマンドレットと API** に準拠する必要があります。 この記事に示すように、Large (既定値) サイズのデータ ノードのメモリ容量は 7 GB ですが、シナリオによってはこれでは不十分な場合があります。 
+* ノード サイズの指定。前のセクションで説明したプロパティで指定する必要がある文字列値については、[仮想マシンのサイズ](../virtual-machines/linux/sizes.md)に関する記事を参照してください。 値は、この記事に記載されている**コマンドレットと API** に準拠する必要があります。 この記事に示すように、Large (既定値) サイズのデータ ノードのメモリ容量は 7 GB ですが、シナリオによってはこれでは不十分な場合があります。 
 
 D4 サイズのヘッド ノードとワーカー ノードを作成する場合は、headNodeSize プロパティと dataNodeSize プロパティの値として **Standard_D4** を指定します。 
 
@@ -246,7 +256,7 @@ D4 サイズのヘッド ノードとワーカー ノードを作成する場合
 
 これらのプロパティに間違った値を指定すると、次のエラーが発生します。**エラー:** クラスターを作成できませんでした。 例外:クラスター作成操作を完了できません。 コード '400' で操作が失敗しました。 取り残されたクラスターの状態:'Error'。 メッセージ:'PreClusterCreationValidationFailure'。 このエラーが発生した場合は、[仮想マシンのサイズ](../virtual-machines/linux/sizes.md)に関する記事の表に記載されている**コマンドレットと API** の名前を使用していることを確認してください。        
 
-## <a name="bring-your-own-compute-environment"></a>Bring Your Own のコンピューティング環境
+### <a name="bring-your-own-compute-environment"></a>Bring Your Own のコンピューティング環境
 この種類の構成では、既存のコンピューティング環境を Data Factory の「リンクされたサービス」として登録できます。 このコンピューティング環境はユーザーにより管理され、Data Factory サービスをこの環境を利用し、アクティビティを実行します。
 
 この種類の構成は次のコンピューティング環境でサポートされています。
@@ -437,7 +447,7 @@ Azure Machine Learning のリンクされたサービスを作成して、Azure 
 | servicePrincipalId     | アプリケーションのクライアント ID を取得します。     | いいえ |
 | servicePrincipalKey    | アプリケーションのキーを取得します。           | いいえ |
 | tenant                 | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | UpdateResourceEndpoint が指定されている場合は必須です | いいえ |
-| connectVia             | このリンク サービスにアクティビティをディスパッチするために使用される統合ランタイムです。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用することができます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ |    
+| connectVia             | このリンク サービスにアクティビティをディスパッチするために使用される統合ランタイムです。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用することができます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ |
 
 ## <a name="azure-data-lake-analytics-linked-service"></a>Azure Data Lake Analytics リンク サービス
 **Azure Data Lake Analytics** リンク サービスを作成して、Azure Data Lake Analytics コンピューティング サービスを Azure Data Factory にリンクします。 パイプラインの Data Lake Analytics U-SQL アクティビティは、このリンク サービスを参照します。 

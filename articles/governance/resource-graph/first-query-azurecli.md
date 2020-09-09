@@ -1,14 +1,15 @@
 ---
 title: クイック スタート:初めての Azure CLI クエリ
 description: このクイックスタートでは、手順に従って、Azure CLI の Resource Graph 拡張機能を有効にし、最初のクエリを実行します。
-ms.date: 11/21/2019
+ms.date: 08/10/2020
 ms.topic: quickstart
-ms.openlocfilehash: e75152c720d94f084b43f855452e5e8ce4dc6bc8
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 7d55aaae30176b3f0246dd254496465fb89b0e99
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215640"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051000"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>クイック スタート:Azure CLI を使用して最初の Resource Graph クエリを実行します
 
@@ -26,7 +27,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure CLI を Azure Resource Graph のクエリに対して有効にするには、拡張機能を追加する必要があります。 [Windows 10上の bash](/windows/wsl/install-win10)、 [Cloud Shell](https://shell.azure.com) (スタンドアロンと内部の両方のポータル)、 [Azure CLI Docker 画像](https://hub.docker.com/r/microsoft/azure-cli/)、または、ローカルにインストールされた場合を含め、この拡張機能はAzure CLI を使用できる場合はいつでも動作します。
 
-1. 最新の Azure CLI がインストールされていることを確認します (**2.0.76** 以降)。 インストールされていない場合は、こちらの[手順](/cli/azure/install-azure-cli-windows?view=azure-cli-latest)に従ってください。
+1. 最新の Azure CLI がインストールされていることを確認します (**2.0.76** 以降)。 インストールされていない場合は、こちらの[手順](/cli/azure/install-azure-cli-windows)に従ってください。
 
 1. 選択された Azure CLI 環境では、次のコマンドでインポートします。
 
@@ -69,7 +70,7 @@ Azure CLI を Azure Resource Graph のクエリに対して有効にするには
    ```
 
    > [!NOTE]
-   > 最初のクエリと同様に、このクエリを複数回実行すると要求あたり異なる一連のリソースを中断する可能性があります。 クエリ コマンドの順序が重要です。 この例では、`limit` の後に `order by` がきます。 これによりクエリの結果をまず制限し、それからそれらを注文します。
+   > 最初のクエリと同様に、このクエリを複数回実行すると要求あたり異なる一連のリソースを中断する可能性があります。 クエリ コマンドの順序が重要です。 この例では、`limit` の後に `order by` がきます。 このコマンドの順序によって、まずクエリ結果が制限され、次にその結果が並べ替えられます。
 
 1. 最初に**名前**プロパティで並べ替え (`order by`) を行ってから結果を上位 5 件に制限 (`limit`) するようにクエリを更新します。
 
@@ -78,7 +79,7 @@ Azure CLI を Azure Resource Graph のクエリに対して有効にするには
    az graph query -q 'Resources | project name, type | order by name asc | limit 5'
    ```
 
-最終的なクエリを複数回実行したとき、環境内で何も変更がないと仮定すると、返される結果は一貫性があり、想定どおりになります。つまり、結果は**名前**プロパティで並べ替えられますが、上位 5 件に制限されます。
+最後のクエリを複数回実行した場合、環境内で何も変更がないと仮定すると、返される結果は変わらず、**Name** プロパティで並べ替えられますが、引き続き上位 5 件の結果に制限されます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -91,7 +92,7 @@ az extension remove -n resource-graph
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、Azure CLI 環境に Resource Graph 拡張機能を追加し、最初のクエリを実行しました。 Resource Graph 言語の詳細については、クエリ言語の詳細のページに進んでください。
+このクイックスタートでは、Azure CLI 環境に Resource Graph 拡張機能を追加し、最初のクエリを実行しました。 Resource Graph 言語の詳細については、クエリ言語の詳細ページに進んでください。
 
 > [!div class="nextstepaction"]
 > [クエリ言語に関する詳細情報を入手します](./concepts/query-language.md)

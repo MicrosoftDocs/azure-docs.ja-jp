@@ -14,14 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 615a6afb0f7a3e133603db10e7c79add3322070c
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a0343c607a342c3438d68627b97c71cdf05199b2
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80476691"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267787"
 ---
-# <a name="publish-media-services-content-using-net"></a>.NET を使用して Media Services コンテンツを発行する  
+# <a name="publish-media-services-content-using-net"></a>.NET を使用して Media Services コンテンツを発行する
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [REST](media-services-rest-deliver-streaming-content.md)
 > * [.NET](media-services-deliver-streaming-content.md)
@@ -99,13 +103,12 @@ ms.locfileid: "80476691"
 
 次のような出力が表示されます。
 
-    URL to manifest for client streaming using Smooth Streaming protocol:
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest
-    URL to manifest for client streaming using HLS protocol:
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=m3u8-aapl)
-    URL to manifest for client streaming using MPEG DASH protocol:
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=mpd-time-csf)
-
+- URL to manifest for client streaming using Smooth Streaming protocol: (スムーズ ストリーミング プロトコルを使用したクライアント ストリーミング用のマニフェストへの URL:)\
+  `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest`
+- URL to manifest for client streaming using HLS protocol: (HLS プロトコルを使用したクライアント ストリーミング用のマニフェストへの URL:)\
+  `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=m3u8-aapl)`
+- URL to manifest for client streaming using MPEG DASH protocol: (MPEG DASH プロトコルを使用したクライアント ストリーミング用のマニフェストへの URL:)\
+  `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=mpd-time-csf)`
 
 > [!NOTE]
 > TLS 接続経由でコンテンツのストリーミングもできます。 そのためには、ストリーミング URL の先頭が HTTPS になっていることをご確認ください。 現在のところ、AMS ではカスタム ドメインを使用した TLS はサポートされていません。
@@ -145,12 +148,12 @@ ms.locfileid: "80476691"
 ```
 次のような出力が表示されます。
 
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_400kbps_AAC_und_ch2_96kbps.mp4
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_3400kbps_AAC_und_ch2_96kbps.mp4
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_2250kbps_AAC_und_ch2_96kbps.mp4
+- `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4`
+- `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_400kbps_AAC_und_ch2_96kbps.mp4`
+- `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_3400kbps_AAC_und_ch2_96kbps.mp4`
+- `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_2250kbps_AAC_und_ch2_96kbps.mp4`
 
-    . . . 
+    。 。 。 
 
 ### <a name="use-media-services-net-sdk-extensions"></a>Media Services .NET SDK Extensions の使用
 次のコードでは、ロケーターを作成してアダプティブのスムーズ ストリーミング、HLS、MPEG-DASH URL を生成する.NET SDK Extensions のメソッドを呼び出します。

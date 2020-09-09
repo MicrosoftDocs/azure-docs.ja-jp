@@ -1,26 +1,26 @@
 ---
-title: Azure Marketplace の IoT Edge モジュール
-description: Azure Marketplace でアプリとサービスのパブリッシャー用の IoT Edge モジュールが提供されています。
-author: qianw211
+title: Azure Marketplace の IoT Edge モジュール オファー
+description: Azure Marketplace での IoT Edge モジュール オファーの公開について説明します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.author: dsindona
-ms.openlocfilehash: 762d9947046f159e992f09211bfcd76ff8d6712e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+author: keferna
+ms.author: keferna
+ms.date: 08/18/2020
+ms.openlocfilehash: c475e548cc8e29a83f2d440df43fb8ac31dc1c1e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684339"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816254"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge のモジュール
 
-[Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) プラットフォームは Azure クラウドによってサポートされます。  このプラットフォームでは、ユーザーは IoT  デバイスで直接実行するクラウド ワークロードをデプロイすることができます。  IoT Edge モジュールでは、オフラインのワークロードを実行でき、ローカルでデータを分析することができます。 このプランでは、帯域幅を保存したり、ローカルおよび機密データを保護することができ、低待機応答時間を提供します。  このような構築済みのワークロードを活用するためにいくつかのオプションがあります。 今までは、ごく少数の Microsoft のファーストパーティ  ソリューションが使用可能でした。  カスタマイズ IoT ソリューションの構築に時間とリソースを使う必要がありました。
+[Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) プラットフォームは Microsoft Azure に支えられています。  このプラットフォームでは、ユーザーは IoT  デバイスで直接実行するクラウド ワークロードをデプロイすることができます。  IoT Edge モジュールでは、オフラインのワークロードを実行でき、ローカルでデータを分析することができます。 このプランでは、帯域幅を保存したり、ローカルおよび機密データを保護することができ、低待機応答時間を提供します。  このような構築済みのワークロードを活用するためにいくつかのオプションがあります。 今までは、ごく少数の Microsoft のファーストパーティ  ソリューションが使用可能でした。  カスタマイズ IoT ソリューションの構築に時間とリソースを使う必要がありました。
 
-[Azure Marketplace で IoT Edge モジュール](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1)が提供されていることにより、1 か所でパブリッシャーが IoT のユーザーにソリューションを公開したり販売したりすることができるようになりました。 IoT 開発者は、適当な機能を検索して、それを購入することによって、自分のソリューションの開発を加速することができます。  
+[Azure Marketplace の IoT Edge モジュール](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1)により、パブリッシャーは IoT の対象ユーザーへのソリューションの公開や販売を 1 か所で行うことができるようになりました。 IoT 開発者は、適当な機能を検索して、それを購入することによって、自分のソリューションの開発を加速することができます。  
 
-## <a name="key-benefits-of-iot-edge-modules-in-azure-marketplace"></a>Azure Marketplace での IoT Edge モジュールの主なメリット:
+## <a name="key-benefits-of-iot-edge-modules-in-azure-marketplace"></a>Azure Marketplace の IoT Edge モジュールの主なメリット
 
 | **パブリッシャーが対象**    | **お客様 (IoT 開発者) が対象**  |
 | :------------------- | :-------------------|
@@ -30,7 +30,7 @@ ms.locfileid: "81684339"
 
 ## <a name="what-is-an-iot-edge-module"></a>IoT Edge モジュールとは何ですか。
 
-Azure IoT Edge では、ビジネス ロジックをモジュール形式でエッジに展開および管理できます。 Azure IoT Edge モジュールは、IoT Edge によって管理される計算の最小単位であり、Azure Stream Analytics などの Microsoft サービス、サードパーティー サービスまたは、独自ソリューション固有のコードを含めることができます。 IoT Edge モジュールの詳細については、[Azure IoT Edge モジュールを理解する](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules)を参照してください。
+Azure IoT Edge では、ビジネス ロジックをモジュール形式でエッジに展開および管理できます。 Azure IoT Edge モジュールは、IoT Edge によって管理される計算の最小単位であり、Azure Stream Analytics などの Microsoft サービス、サードパーティー サービスまたは、独自ソリューション固有のコードを含めることができます。 IoT Edge モジュールの詳細については、[Azure IoT Edge モジュールを理解する](../iot-edge/iot-edge-modules.md)を参照してください。
 
 **コンテナー プランの種類と、IoT Edge モジュール プランの種類の違いは何ですか。**
 
@@ -38,52 +38,43 @@ IoT Edge モジュール プランの種類は、IoT Edge デバイスで実行�
 
 ## <a name="publishing-your-iot-edge-module"></a>IoT Edge モジュールの発行
 
-**右側のネット ショップの選択**
+**正しいオンライン ストアの選択**
 
-IoT Edge モジュールが Azure Marketplace でのみ発行され、AppSource は適用されません。  ネット ショップ間の相違点と対象ユーザーの詳細については、[ソリューションの発行オプションの決定](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)を参照してください。
- 
+IoT Edge モジュールが Azure Marketplace でのみ発行され、AppSource は適用されません。 オンライン ストア間の相違点と対象ユーザーの詳細については、「[公開オプションを選定する](determine-your-listing-type.md)」を参照してください。
+
 **課金オプション**
 
 Marketplace は現在、IoT Edge モジュールの**無料**および**ライセンスを持ち込む (BYOL)** 課金オプションをサポートしています。
- 
-**発行オプション**
 
-すべてのケースで IoT Edge モジュールでは、**Transact** 発行オプションを選択する必要があります。  発行オプションの詳細については、[発行オプションを選択する](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)を参照してください。  
+### <a name="publishing-options"></a>公開オプション
+
+すべてのケースで IoT Edge モジュールでは、**Transact** 発行オプションを選択する必要があります。  発行オプションの詳細については、[発行オプションを選択する](determine-your-listing-type.md)を参照してください。  
 
 ## <a name="eligibility-criteria"></a>対象となる条件
 
 Microsoft Azure Marketplace の契約とポリシーのすべてのご契約条件は、IoT Edge モジュールのプランに適用されます。  さらに、IoT Edge モジュールの前提条件と技術面の要件があります。  
 
-**前提条件**
+### <a name="prerequisites"></a>前提条件
 
 IoT Edge モジュールを Azure Marketplace で発行するには、次の前提条件を満たす必要があります。
 
-- パートナー センターへのアクセス。 詳細については、 [Azure Marketplace と AppSource の発行ガイド](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)を参照してください。
-- Azure Container registry で IoT Edge モジュールをホストします。 
-- IoT Edge モジュールのメタデータを (非網羅的なリストのように) 用意してください： 
+- パートナー センターへのアクセス。 詳細については、 [Azure Marketplace と AppSource の発行ガイド](marketplace-publishers-guide.md)を参照してください。
+- Azure Container registry で IoT Edge モジュールをホストします。
+- IoT Edge モジュールのメタデータを (非網羅的なリストのように) 用意してください：
     - タイトル
     - (HTML 形式) での説明
-    - ロゴのイメージ (40x40px、90x90px、115x115px 255x115px を含むPNG 形式および固定イメージのサイズ)
+    - ロゴ イメージ (48 x 48 (オプション)、90 x 90 (オプション)、および 216 x 216 から 350 x 350 px までのサイズ (すべて PNG 形式))
     - 使用条件とプライバシー ポリシー
     - 既定のモジュールの構成 (ルート、ツインの必要なプロパティ、createOptions、環境変数)
     - ドキュメント
     - サポートの連絡先
 
-**技術的な要件**
+### <a name="technical-requirements"></a>技術的な要件
 
 Azure Marketplace で認定および発行されるためには、IoT Edge モジュールの主要な技術面の要件の詳細は、「[IoT Edge モジュールの技術アセットの準備](./partner-center-portal/create-iot-edge-module-asset.md)」を参照してください。
 
-## <a name="documentation-and-resources"></a>ドキュメントおよびリソース
-
-[IoT Edge モジュール オファーの作成](./partner-center-portal/azure-iot-edge-module-creation.md) -- パートナー センターで新しい IoT Edge モジュール オファーを発行するための手順を説明します。
-
 ## <a name="next-steps"></a>次のステップ
 
-まだ行っていない場合は、
-
-- マーケットプレースについて[学習](https://azuremarketplace.microsoft.com/sell)します。
-
-パートナー センターに登録し、新しいオファーの作成か既存のオファーの使用を開始するには、
-
+- コマーシャル マーケットプレースについて[学習](https://azuremarketplace.microsoft.com/sell)します。
 - [パートナー センターにサインイン](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)し、オファーを作成するか完成させます。
-- IoT Edge オファーを発行する方法の詳細については、[IoT Edge モジュール オファーを作成する](./partner-center-portal/azure-iot-edge-module-creation.md)方法に関するページを参照してください。
+- パートナー センターで [IoT Edge モジュール オファーを作成](./partner-center-portal/azure-iot-edge-module-creation.md)します。

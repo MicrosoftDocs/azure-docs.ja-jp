@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 234bf8bb-d5fe-40be-9d25-721d7482bc3b
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-ms.openlocfilehash: 5cedde1e7daa49aaa7a2786c9ad8a65fb8e452f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8267a678f35d01119ae3e7d89a07c789dc969614
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297571"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85507502"
 ---
 # <a name="use-storsimple-device-manager-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>StorSimple デバイス マネージャーを使用して StorSimple Virtual Array のストレージ アカウント資格情報を管理する
 

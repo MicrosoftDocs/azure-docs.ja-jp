@@ -1,15 +1,15 @@
 ---
-title: コンテナー インスタンスのセキュリティ
+title: コンテナー インスタンスのセキュリティに関する考慮事項
 description: Azure Container Instances のイメージとシークレットをセキュリティで保護する推奨事項、およびコンテナー プラットフォームに関する一般的なセキュリティの考慮事項です
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: 87fa28cf9bdb546a5f108284023a9f787645a1fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f49f115e10326887cf4d23406437467256b7df2e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457996"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922236"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Azure Container Instances のセキュリティに関する考慮事項
 
@@ -18,6 +18,9 @@ ms.locfileid: "81457996"
 > [!div class="checklist"]
 > * Azure Container Instances のイメージとシークレットの管理に関する**セキュリティについての推奨事項**
 > * 任意のコンテナー プラットフォームのコンテナー ライフサイクル全体に関する**コンテナー エコシステムの考慮事項**
+
+デプロイのセキュリティ体制を改善するために役立つ包括的な推奨事項については、「[Container Instances の Azure セキュリティ ベースライン](security-baseline.md)」を参照してください。
+
 
 ## <a name="security-recommendations-for-azure-container-instances"></a>Azure Container Instances のセキュリティに関する推奨事項
 
@@ -37,7 +40,7 @@ ms.locfileid: "81457996"
 
 ### <a name="protect-credentials"></a>資格情報を保護する
 
-コンテナーは、複数のクラスターと Azure リージョンに広がることがあります。 そのため、パスワードやトークンなど、ログインまたは API アクセスに必要な資格情報をセキュリティで保護する必要があります。 転送中または保存中のそれらのコンテナーには、特権を持つユーザーのみがアクセスできるようにします。 すべての資格情報シークレットの一覧を作成した後、コンテナー プラットフォーム対応に設計されている新しいシークレット管理ツールを使うよう開発者に要求します。  ソリューションに、暗号化されたデータベース、転送中のシークレット データ用の TLS 暗号化、および最低限の特権を設定する[ロールベースのアクセス制御](../role-based-access-control/overview.md)が含まれていることを確認します。 [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) は、コンテナー化されたアプリケーションの暗号化キーとシークレット (証明書、接続文字列、パスワードなど) を保護するクラウド サービスです。 このデータは慎重な扱いを要する情報であり、ビジネス上重要であるため、承認されたアプリケーションとユーザーのみがキー コンテナーにアクセスできるように、キー コンテナーへのアクセスをセキュリティで保護します。
+コンテナーは、複数のクラスターと Azure リージョンに広がることがあります。 そのため、パスワードやトークンなど、ログインまたは API アクセスに必要な資格情報をセキュリティで保護する必要があります。 転送中または保存中のそれらのコンテナーには、特権を持つユーザーのみがアクセスできるようにします。 すべての資格情報シークレットの一覧を作成した後、コンテナー プラットフォーム対応に設計されている新しいシークレット管理ツールを使うよう開発者に要求します。  ソリューションに、暗号化されたデータベース、転送中のシークレット データ用の TLS 暗号化、および最小特権の [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) が含まれていることを確認します。 [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) は、コンテナー化されたアプリケーションの暗号化キーとシークレット (証明書、接続文字列、パスワードなど) を保護するクラウド サービスです。 このデータは慎重な扱いを要する情報であり、ビジネス上重要であるため、承認されたアプリケーションとユーザーのみがキー コンテナーにアクセスできるように、キー コンテナーへのアクセスをセキュリティで保護します。
 
 ## <a name="considerations-for-the-container-ecosystem"></a>コンテナー エコシステムに関する考慮事項
 
@@ -140,6 +143,8 @@ ms.locfileid: "81457996"
 * [Azure Container Instances](container-instances-log-analytics.md) および [Azure Container Registry](../container-registry/container-registry-diagnostics-audit-logs.md) のリソース ログ
 
 ## <a name="next-steps"></a>次のステップ
+
+* デプロイのセキュリティ体制を改善するために役立つ包括的な推奨事項については、「[Container Instances の Azure セキュリティ ベースライン](security-baseline.md)」を参照してください。
 
 * [Azure Security Center](../security-center/container-security.md) を使用して、コンテナー化された環境でリアルタイムの脅威検出を行う方法について詳しく学習します。
 

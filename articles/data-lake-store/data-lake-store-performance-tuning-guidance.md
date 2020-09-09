@@ -1,17 +1,17 @@
 ---
 title: Azure Data Lake Storage Gen1 - パフォーマンス チューニング
-description: Azure Data Lake Storage Gen1 のパフォーマンス チューニングについて説明します。
+description: 最高のパフォーマンスを得るには、読み取りと書き込みをできるだけ並列実行し、Azure Data Lake Storage Gen1 で利用できるスループットをすべて利用することが重要です。そのしくみについて説明します。
 author: stewu
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: 2521700e0f07691541ee6cbbf085a8be72f08129
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d18440b27d9429a2638a58be40e1ec583b9a85ad
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73904620"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190243"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>Azure Data Lake Storage Gen1 のパフォーマンス チューニング
 
@@ -47,7 +47,7 @@ Data Lake Storage Gen1 は、あらゆる分析シナリオで必要とされる
 | AdlCopy    | Azure Data Lake Analytics ユニット | [リンク](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)         |
 | DistCp            | -m (マッパー) | [リンク](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)                             |
 | Azure Data Factory| parallelCopies | [リンク](../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | fs.azure.block.size、-m (マッパー) | [リンク](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)        |
+| Sqoop           | fs.azure.block.size、-m (マッパー) | [リンク](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>データ セットの構成
 
@@ -65,15 +65,11 @@ Data Lake Storage Gen1 は、あらゆる分析シナリオで必要とされる
 
 Hive および ADLA のワークロードでは、時系列データのパーティションを削除すると、一部のクエリがデータのサブセットのみを読み取るようにできるため、パフォーマンスを向上させることができます。
 
-時系列データを取り込むこれらのパイプラインでは、多くの場合、ファイルに構造化されたファイル名やフォルダー名が付けられます。 以下に、日付によって構成されたデータの一般的な例を示します。
-
-    \DataSet\YYYY\MM\DD\datafile_YYYY_MM_DD.tsv
+時系列データを取り込むこれらのパイプラインでは、多くの場合、ファイルに構造化されたファイル名やフォルダー名が付けられます。 次に示すのは、日付によって構成されたデータの一般的な例です: *\DataSet\YYYY\MM\DD\datafile_YYYY_MM_DD.tsv*。
 
 フォルダーとファイル名の両方に、日時の情報が示されていることに注意してください。
 
-日付と時刻については、以下が一般的なパターンです。
-
-    \DataSet\YYYY\MM\DD\HH\mm\datafile_YYYY_MM_DD_HH_mm.tsv
+日付と時刻については、次に示すのが一般的なパターンです: *\DataSet\YYYY\MM\DD\HH\mm\datafile_YYYY_MM_DD_HH_mm.tsv*。
 
 繰り返しになりますが、フォルダーとファイルの整理については、より大きなファイルサイズに最適化され、各フォルダーに妥当な数のファイルが配置されるような選択を行ってください。
 
@@ -135,7 +131,7 @@ HDInsight クラスター内には 3 つのレイヤーがあります。これ�
 | [HDInsight の MapReduce](data-lake-store-performance-tuning-mapreduce.md)            | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.maps</li><li>Mapreduce.reduce.memory</li><li>Mapreduce.job.reduces</li></ul> |
 | [HDInsight の Storm](data-lake-store-performance-tuning-storm.md)| <ul><li>ワーカー プロセスの数</li><li>スパウトの Executor インスタンスの数</li><li>ボルトの Executor インスタンスの数 </li><li>スパウトのタスクの数</li><li>ボルトのタスクの数</li></ul>|
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 * [Azure Data Lake Storage Gen1 の概要](data-lake-store-overview.md)
 * [Azure Data Lake Analytics の使用を開始する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

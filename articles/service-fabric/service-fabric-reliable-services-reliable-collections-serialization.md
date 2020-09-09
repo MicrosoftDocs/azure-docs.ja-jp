@@ -3,12 +3,13 @@ title: Reliable Collection オブジェクトのシリアル化
 description: Azure Service Fabric で Reliable Collection オブジェクトをシリアル化する規定の方法や、カスタムのシリアル化を定義する方法をなどについて説明します。
 ms.topic: conceptual
 ms.date: 5/8/2017
-ms.openlocfilehash: 666e1bb45a9c75ee143f15a0d871d6ae1408eca9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1d29f5d3391bdea0b21997a392d4d2e053b7ec65
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75639549"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018622"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Azure Service Fabric での Reliable Collection オブジェクトのシリアル化
 Reliable Collection では項目がレプリケートおよび永続化されるため、コンピューターの不具合や電源障害が発生しても、これらの項目が影響を受けることはありません。
@@ -19,7 +20,7 @@ Reliable State Manager には組み込みのシリアライザーが格納され
 
 ## <a name="built-in-serializers"></a>組み込みのシリアライザー
 
-Reliable State Manager には一般的な型のための組み込みのシリアライザーが含まれているため、既定で効率的にシリアル化できます。 その他の型については、Reliable State Manager は [DataContractSerializer](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer(v=vs.110).aspx) を使用します。
+Reliable State Manager には一般的な型のための組み込みのシリアライザーが含まれているため、既定で効率的にシリアル化できます。 その他の型については、Reliable State Manager は [DataContractSerializer](/dotnet/api/system.runtime.serialization.datacontractserializer?view=netcore-3.1) を使用します。
 型が変わらないことが明らかで、型の名前などの情報を含める必要がないため、組み込みのシリアライザーの方が効率的です。
 
 Reliable State Manager には、次の型用の組み込みのシリアライザーがあります。 
@@ -44,7 +45,7 @@ Reliable State Manager には、次の型用の組み込みのシリアライザ
 
 カスタムのシリアライザーは通常、パフォーマンスを向上させたり、ネットワーク上とディスクのデータを暗号化したりするために使用します。 その主な理由は、型に関する情報をシリアル化する必要がないため、汎用シリアライザーに比べて、一般的にカスタム シリアライザーの方が効率性に優れているためです。 
 
-[IReliableStateManager.TryAddStateSerializer\<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) を使用して、特定の型 T 用のカスタム シリアライザーを登録します。復元が開始される前にすべての Reliable Collection が適切なシリアライザーにアクセスして永続化されたデータを読み取れるようにするため、この登録は StatefulServiceBase の作成時に行う必要があります。
+[IReliableStateManager.TryAddStateSerializer\<T>](/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) を使用して、特定の型 T 用のカスタム シリアライザーを登録します。復元が開始される前にすべての Reliable Collection が適切なシリアライザーにアクセスして永続化されたデータを読み取れるようにするため、この登録は StatefulServiceBase の作成時に行う必要があります。
 
 ```csharp
 public StatefulBackendService(StatefulServiceContext context)
@@ -62,7 +63,7 @@ public StatefulBackendService(StatefulServiceContext context)
 
 ### <a name="how-to-implement-a-custom-serializer"></a>カスタム シリアライザーの実装方法
 
-カスタム シリアライザーは、[IStateSerializer\<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) インターフェイスを実装する必要があります。
+カスタム シリアライザーは、[IStateSerializer\<T>](/dotnet/api/microsoft.servicefabric.data.istateserializer-1) インターフェイスを実装する必要があります。
 
 > [!NOTE]
 > IStateSerializer\<T> には、ベース値と呼ばれる追加の T を受け取る書き込みと読み取りのオーバーロードが含まれています。 この API は差分のシリアル化に使用します。 現在、差分のシリアル化機能は公開されていません。 そのため、差分のシリアル化が公開されて有効になるまで、これら 2 つのオーバーロードは呼び出されません。
@@ -131,7 +132,7 @@ public class OrderKeySerializer : IStateSerializer<OrderKey>
 一方、カスタム シリアライザーや DataContractSerializer を使用している場合は、データの下位互換性と上位互換性を確保する必要があります。
 つまり各バージョンのシリアライザーは、型のどのバージョンもシリアル化と逆シリアル化ができる必要があります。
 
-データ コントラクト ユーザーは、フィールドの追加、削除、変更用に適切に定義されたバージョン管理規則に従う必要があります。 またデータ コントラクトでは、不明なフィールドの処理、シリアル化と逆シリアル化プロセスへのフッキング、クラスの継承に対するサポートもあります。 詳細については、[「データ コントラクトの使用」](https://msdn.microsoft.com/library/ms733127.aspx)をご覧ください。
+データ コントラクト ユーザーは、フィールドの追加、削除、変更用に適切に定義されたバージョン管理規則に従う必要があります。 またデータ コントラクトでは、不明なフィールドの処理、シリアル化と逆シリアル化プロセスへのフッキング、クラスの継承に対するサポートもあります。 詳細については、[「データ コントラクトの使用」](/dotnet/framework/wcf/feature-details/using-data-contracts)をご覧ください。
 
 カスタム シリアライザーのユーザーは、下位互換性と上位互換性を確保するために、使用するシリアライザーのガイドラインに従う必要があります。
 すべてのバージョンをサポートする一般的な方法は、最初にサイズ情報を追加したら、後はオプションのプロパティ情報のみを追加することです。
@@ -139,7 +140,7 @@ public class OrderKeySerializer : IStateSerializer<OrderKey>
 
 ## <a name="next-steps"></a>次のステップ
   * [シリアル化とアップグレード](service-fabric-application-upgrade-data-serialization.md)
-  * [Reliable Collection の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  * [Reliable Collection の開発者向けリファレンス](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
   * [Visual Studio を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial.md) に関する記事では、Visual Studio を使用してアプリケーションをアップグレードする方法について説明します。
   * [PowerShell を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial-powershell.md) に関する記事では、PowerShell を使用したアプリケーションのアップグレードについて説明します。
   * [アップグレード パラメーター](service-fabric-application-upgrade-parameters.md)を使用して、アプリケーションのアップグレード方法を制御します。

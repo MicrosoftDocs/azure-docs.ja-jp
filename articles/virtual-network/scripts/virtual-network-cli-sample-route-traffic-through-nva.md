@@ -15,14 +15,15 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: d8704c34d59a8f735d060a7c7ca6463034883714
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: cc539800cb9cb75ecc69f0d7ae923ed3edfd2ad0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74083812"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87492294"
 ---
-# <a name="route-traffic-through-a-network-virtual-appliance-script-sample"></a>ネットワーク仮想アプライアンス経由のトラフィックのルーティングのスクリプト サンプル
+# <a name="route-traffic-through-a-network-virtual-appliance---azure-cli-script-sample"></a>ネットワーク仮想アプライアンス経由のトラフィックのルーティング - Azure CLI スクリプト サンプル
 
 このスクリプト サンプルは、フロントエンド サブネットとバックエンド サブネットを含む仮想ネットワークを作成します。 2 つのサブネット間でトラフィックをルーティングするために、IP 転送を有効にした VM も作成します。 スクリプトの実行後には、ファイアウォール アプリケーションなどのネットワーク ソフトウェアを VM にデプロイできます。
 

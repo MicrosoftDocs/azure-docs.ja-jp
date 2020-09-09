@@ -8,16 +8,16 @@ ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c576ac1f56a29fc73f92e2292b457262828c5046
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 14d0190a97c22a805065ceaf41dcd655b9e8182b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100466"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065294"
 ---
 # <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>チュートリアル - カスタム スクリプト拡張機能を使って Azure 内の Windows 仮想マシンにアプリケーションを展開する
 
-迅速かつ一貫した方法で仮想マシン (VM) を構成するには、[Windows 用のカスタム スクリプト拡張機能](extensions-customscript.md)を使用することができます。 このチュートリアルで学習する内容は次のとおりです。
+迅速かつ一貫した方法で仮想マシン (VM) を構成するには、[Windows 用のカスタム スクリプト拡張機能](../extensions/custom-script-windows.md)を使用することができます。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
 > * カスタム スクリプト拡張機能を使用して IIS をインストールする
@@ -39,13 +39,13 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
-次のように、[Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) を使用して VM の管理者のユーザー名とパスワードを設定します。
+次のように、[Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) を使用して VM の管理者のユーザー名とパスワードを設定します。
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-これで、[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) を使用して VM を作成できるようになります。 次の例では、場所 *EastUS* に *myVM* という名前の VM を作成します。 これらが存在しない場合は、リソース グループ *myResourceGroupAutomate* と関連ネットワーク リソースが作成されます。 Web トラフィックを許可するには、このコマンドレットでポート *80* も開きます。
+これで、[New-AzVM](/powershell/module/az.compute/new-azvm) を使用して VM を作成できるようになります。 次の例では、場所 *EastUS* に *myVM* という名前の VM を作成します。 これらが存在しない場合は、リソース グループ *myResourceGroupAutomate* と関連ネットワーク リソースが作成されます。 Web トラフィックを許可するには、このコマンドレットでポート *80* も開きます。
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -64,7 +64,7 @@ New-AzVm `
 
 
 ## <a name="automate-iis-install"></a>IIS のインストールを自動化する
-[Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) を使用して、カスタム スクリプト拡張機能をインストールします。 この拡張機能によって `powershell Add-WindowsFeature Web-Server` が実行され、IIS Web サーバーがインストールされます。次に、VM のホスト名を表示するように *Default.htm* ページが更新されます。
+[Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) を使用して、カスタム スクリプト拡張機能をインストールします。 この拡張機能によって `powershell Add-WindowsFeature Web-Server` が実行され、IIS Web サーバーがインストールされます。次に、VM のホスト名を表示するように *Default.htm* ページが更新されます。
 
 ```azurepowershell-interactive
 Set-AzVMExtension -ResourceGroupName "myResourceGroupAutomate" `
@@ -79,7 +79,7 @@ Set-AzVMExtension -ResourceGroupName "myResourceGroupAutomate" `
 
 
 ## <a name="test-web-site"></a>Web サイトをテストする
-ロード バランサーのパブリック IP アドレスを取得するには、[Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) を使用します。 次の例では、先ほど作成した *myPublicIPAddress* の IP アドレスを取得します。
+ロード バランサーのパブリック IP アドレスを取得するには、[Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) を使用します。 次の例では、先ほど作成した *myPublicIPAddress* の IP アドレスを取得します。
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress `

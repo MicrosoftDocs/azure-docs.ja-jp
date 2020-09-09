@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: PHP で検索を実行する - Bing Web Search API'
+title: クイック スタート:PHP で検索を実行する - Bing Web Search API
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、PHP を使って Bing Web Search REST API に要求を送信し、JSON 応答を受信します
 services: cognitive-services
@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 58192845e0119ce96ea2577007d211f075d3e419
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: bbb6acd4e976d345daa99cde7635febc3755963f
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76169721"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873819"
 ---
-# <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>クイック スタート: PHP を使用して Bing Web Search API を呼び出す  
+# <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>クイック スタート:PHP を使用して Bing Web Search API を呼び出す  
 
-このクイック スタートを使用すると、Bing Web Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。 この Node.js アプリケーションは、API に検索要求を送信してその応答を表示します。 このアプリケーションは JavaScript で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
+このクイックスタートを使用して、Bing Web Search API を初めて呼び出してみましょう。 この Node.js アプリケーションは、API に検索要求を送信して、JSON 応答を表示します。 このアプリケーションは JavaScript で記述されていますが、この API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,7 +33,7 @@ ms.locfileid: "76169721"
 
 ## <a name="enable-secure-http-support"></a>セキュリティ保護された HTTP のサポートの有効化
 
-作業を開始する前に、`php.ini` を見つけ、次の行をコメント解除します。
+作業を開始する前に、php.ini を見つけ、次の行をコメント解除します。
 
 ```php
 ; extension=php_openssl.dll
@@ -41,9 +41,13 @@ ms.locfileid: "76169721"
 
 ## <a name="create-a-project-and-define-variables"></a>プロジェクトの作成と変数の定義
 
-適切な IDE またはエディターで新しい PHP プロジェクトを作成します。 開始タグと終了タグの `<?php` と `?>` を追加し忘れないでください。
+1. 適切な IDE またはエディターで新しい PHP プロジェクトを作成します。 開始タグと終了タグの `<?php` と `?>` を追加します。
 
-先に進む前に、いくつかの変数を設定する必要があります。 `$endpoint` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。 `$endpoint` が正しいことを確認し、`$accesskey` の値を Azure アカウントの有効なサブスクリプション キーに置き換えます。 `$term` の値を置き換えると、検索クエリを自由にカスタマイズすることができます。
+2. `$endpoint` 値には、次のコードのグローバル エンドポイントを使用するか、Azure portal に表示される、お使いのリソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。 
+
+3. `$endpoint` の値が正しいことを確認し、`$accesskey` の値を Azure アカウントの有効なサブスクリプション キーに置き換えます。 
+
+4. 必要に応じて、`$term` の値を置き換えて、検索クエリをカスタマイズすることができます。
 
 ```php
 $accessKey = 'enter key here';
@@ -113,7 +117,7 @@ if (strlen($accessKey) == 32) {
 
 ## <a name="put-it-all-together"></a>すべてをまとめた配置
 
-最後の手順で、コードを検証し、実行します。 作成したコードを完全なプログラムと比較したい場合は、以下を参照してください。
+最後の手順で、コードを検証して実行します。 作成したコードを完全なプログラムと比較したい場合は、以下を参照してください。
 
 ```php
 <?php
@@ -155,7 +159,7 @@ if (strlen($accessKey) == 32) {
 ?>
 ```
 
-## <a name="sample-response"></a>応答のサンプル
+## <a name="example-json-response"></a>JSON の応答例
 
 Bing Web Search API からの応答は、JSON として返されます。 このサンプル応答は、1 つの結果だけを表示するように切り詰められています。  
 
@@ -284,6 +288,6 @@ Bing Web Search API からの応答は、JSON として返されます。 この
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Bing Web 検索単一ページ アプリのチュートリアル](../tutorial-bing-web-search-single-page-app.md)
+> [Bing Web Search API 単一ページ アプリのチュートリアル](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

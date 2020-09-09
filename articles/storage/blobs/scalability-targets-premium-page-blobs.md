@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: e134c69f5d602cb4369e9410e3e2b9d3478b11a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2c238bf3911283db5d09fdd5679d784c5e5401f8
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76756251"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654805"
 ---
 # <a name="scalability-and-performance-targets-for-premium-page-blob-storage-accounts"></a>Premium ページ BLOB ストレージ アカウントのスケーラビリティおよびパフォーマンス ターゲット
 
@@ -25,7 +25,7 @@ ms.locfileid: "76756251"
 Premium パフォーマンス ページ BLOB ストレージ アカウントは、読み取り/書き込み操作用に最適化されています。 この種類のストレージ アカウントは、Azure 仮想マシンの非管理対象ディスクを支援します。
 
 > [!NOTE]
-> Microsoft では、可能であれば、Azure 仮想マシン (VM) で管理ディスクを使用することをお勧めします。 管理ディスクの詳細については、[Windows VM 用の Azure Disk Storage の概要](../../virtual-machines/windows/managed-disks-overview.md)に関するページをご覧ください。
+> Microsoft では、可能であれば、Azure 仮想マシン (VM) で管理ディスクを使用することをお勧めします。 マネージド ディスクの詳細については、[VM 向け Azure Disk Storage の概要](../../virtual-machines/managed-disks-overview.md)に関するページを参照してください。
 
 Premium ページ BLOB ストレージ アカウントのスケーラビリティ ターゲットは、次のとおりです。
 
@@ -39,7 +39,7 @@ Premium ページ BLOB ストレージ アカウントのスケーラビリテ�
 
 Premium ページ BLOB アカウントは、Premium パフォーマンス用に構成された汎用アカウントです。 汎用 v2 ストレージ アカウントをお勧めします。
 
-非管理対象ディスクに Premium ページ BLOB ストレージ アカウントを使用しており、アプリケーションが 1 つのストレージ アカウントのスケーラビリティ ターゲットを超えた場合は、管理ディスクに移行することをお勧めします。 管理ディスクの詳細については、[Windows VM 用の Azure Disk Storage の概要](../../virtual-machines/windows/managed-disks-overview.md)または [Linux VM 用の Azure Disk Storage の概要](../../virtual-machines/linux/managed-disks-overview.md)に関するページをご覧ください。
+非管理対象ディスクに Premium ページ BLOB ストレージ アカウントを使用しており、アプリケーションが 1 つのストレージ アカウントのスケーラビリティ ターゲットを超えた場合は、管理ディスクに移行することをお勧めします。 マネージド ディスクの詳細については、[VM 向け Azure Disk Storage の概要](../../virtual-machines/managed-disks-overview.md)に関するページを参照してください。
 
 管理ディスクに移行できない場合は、複数のストレージ アカウントを使用するようにアプリケーションをビルドし、それらのストレージ アカウント間でデータをパーティション分割します。 たとえば、複数の VM で合計 51 TB のディスクを接続する場合、ディスクを 2 つのストレージ アカウントに分散します。 Premium Storage アカウント 1 つあたりの上限は 35 TB です。 1 つの Premium パフォーマンス ストレージ アカウントでプロビジョニングするディスクの容量が 35 TB を超えることがないようにしてください。
 

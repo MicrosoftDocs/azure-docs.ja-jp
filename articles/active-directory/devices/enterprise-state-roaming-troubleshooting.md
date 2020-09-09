@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae8ce24aeb665a7f99326e83dbe18d020e1b6196
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb376ebacdd76fdde30178e19fa3c3062e57da1c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78672342"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267243"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Azure Active Directory の Enterprise State Roaming の設定のトラブルシューティング
 
@@ -84,7 +84,7 @@ Azure Multi-Factor Authentication が構成されている場合、特定の条�
 
 ### <a name="event-viewer"></a>イベント ビューアー
 
-高度なトラブルシューティング方法として、イベント ビューアーを使って特定のエラーの検出ができるものがあります。 これらについては、下の表に記載します。 [イベント ビューアー] > [アプリケーションとサービス ログ] > **[Microsoft]**  >  **[Windows]**  >  **[SettingSync-Azure]** でイベントを表示します。同期の ID 関連の問題については、 **[Microsoft]**  >  **[Windows]**  >  **[AAD]** に移動します。
+高度なトラブルシューティング方法として、イベント ビューアーを使って特定のエラーの検出ができるものがあります。 これらについては、下の表に記載します。 [イベント ビューアー] > **[アプリケーションとサービス ログ]**  >  **[Microsoft]**  >  **[Windows]**  >  **[SettingSync-Azure]** でイベントを表示します。同期の ID 関連の問題については、 **[アプリケーションとサービス ログ]**  >  **[Microsoft]**  >  **[Windows]**  >  **[AAD]** に移動します。
 
 ## <a name="known-issues"></a>既知の問題
 
@@ -108,7 +108,7 @@ Windows 10 バージョン 1511 のクライアントに、2016 年 7 月にリ�
 
 ### <a name="theme-is-not-syncing-as-well-as-data-protected-with-windows-information-protection"></a>テーマのほかに、Windows Information Protection で保護されたデータも同期されません 
 
-データの漏えいを防ぐため、[Windows Information Protection](https://technet.microsoft.com/itpro/windows/keep-secure/protect-enterprise-data-using-wip) で保護されたデータは、Enterprise State Roaming を通じて Windows 10 Anniversary Update を使用するデバイスに同期されることはありません。
+データの漏えいを防ぐため、[Windows Information Protection](/windows/security/information-protection/windows-information-protection/protect-enterprise-data-using-wip) で保護されたデータは、Enterprise State Roaming を通じて Windows 10 Anniversary Update を使用するデバイスに同期されることはありません。
 
 **推奨される操作**  
 [なし] : この問題は今後、Windows の更新プログラムで解決される可能性があります。

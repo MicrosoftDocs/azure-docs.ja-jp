@@ -10,12 +10,13 @@ ms.date: 04/21/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 125f4188ed3f12f366c619af9efe3aa203987c19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 22e012c36f5c2c6f195a7e3b21afe9001a4cad0d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81870529"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077961"
 ---
 # <a name="require-secure-transfer-to-ensure-secure-connections"></a>セキュリティで保護された接続を確保するために安全な転送を要求する
 
@@ -51,7 +52,7 @@ ms.locfileid: "81870529"
 
 ## <a name="require-secure-transfer-from-code"></a>コードから安全な転送を要求する
 
-安全な転送をプログラムで要求するには、ストレージ アカウントに _supportsHttpsTrafficOnly_ プロパティを設定します。 このプロパティを設定するには、ストレージ リソース プロバイダーの REST API、クライアント ライブラリ、またはツールを使用します。
+安全な転送をプログラムで要求するには、ストレージ アカウントで _enableHttpsTrafficOnly_ プロパティを _True_ に設定します。 このプロパティを設定するには、ストレージ リソース プロバイダーの REST API、クライアント ライブラリ、またはツールを使用します。
 
 * [REST API](/rest/api/storagerp/storageaccounts)
 * [PowerShell](/powershell/module/az.storage/set-azstorageaccount)

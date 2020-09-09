@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/31/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5daf88e746ea803f345c79bd31d656f2615b6754
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5528607b0559dad246262748c83c9d359ee2144e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78184096"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385741"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>OWIN ベースの Web API を b2clogin.com に移行する
 

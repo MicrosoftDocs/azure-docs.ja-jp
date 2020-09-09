@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 176b0634fe2c7ee2f47162e439c4ea16bde77a8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 53fd2332224d903c5a4b33563470cf3569f82b13
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75772620"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526658"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Linux または Windows での Azure 仮想マシンのパフォーマンスのトラブルシューティング
 
-この記事では、仮想マシン (VM) の監視と観察によるパフォーマンスの一般的なトラブルシューティングについて説明し、発生する可能性のある問題を修復します。 監視だけでなく、Perfinsights を使用することもできます。これにより、ベスト プラクティスのレコメンデーションと IO/CPU/メモリに関する主要なボトルネックを含むレポートが提供されます。 Perfinsights は、[Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) と [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) の両方の Azure VM に用意されています。
+この記事では、仮想マシン (VM) の監視と観察によるパフォーマンスの一般的なトラブルシューティングについて説明し、発生する可能性のある問題を修復します。 監視だけでなく、Perfinsights を使用することもできます。これにより、ベスト プラクティスのレコメンデーションと IO/CPU/メモリに関する主要なボトルネックを含むレポートが提供されます。 Perfinsights は、[Windows](./how-to-use-perfinsights.md) と [Linux](./how-to-use-perfinsights-linux.md) の両方の Azure VM に用意されています。
 
 この記事では、監視を使用してパフォーマンスのボトルネックを診断する手順について説明します。
 
@@ -30,7 +30,7 @@ ms.locfileid: "75772620"
 
 ### <a name="azure-iaas-virtual-machine-monitoring"></a>Azure IaaS 仮想マシンの監視
 
-ゲスト VM を監視するには、Azure VM 監視を使用します。これにより、特定のリソースの状態の概要が通知されます。 VM 診断が有効になっているかどうかを確認するには、[Azure リソース ログの概要](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs)に関する記事を参照してください。 次のように表示される場合は、診断が有効になっていない可能性が高いです。
+ゲスト VM を監視するには、Azure VM 監視を使用します。これにより、特定のリソースの状態の概要が通知されます。 VM 診断が有効になっているかどうかを確認するには、[Azure リソース ログの概要](../../azure-monitor/learn/tutorial-resource-logs.md)に関する記事を参照してください。 次のように表示される場合は、診断が有効になっていない可能性が高いです。
 
 ![監視が有効になっていない](media/troubleshoot-performance-virtual-machine-linux-windows/1-virtual-machines-monitoring-not-enabled.png)
  
@@ -101,7 +101,7 @@ VM 診断を有効にするには
 
 ### <a name="cpu-observe-trends"></a>CPU 観察の傾向
 
-パフォーマンスの問題を調査するときは、傾向を把握して、その影響を受けるかどうかを判断します。 次のセクションでは、ポータルの監視グラフを使用して傾向を表示します。 同じ期間に異なるリソース動作を相互参照する場合にも役立つことがあります。 グラフをカスタマイズするには、[Azure Monitor データ プラットフォーム](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform)をクリックします。
+パフォーマンスの問題を調査するときは、傾向を把握して、その影響を受けるかどうかを判断します。 次のセクションでは、ポータルの監視グラフを使用して傾向を表示します。 同じ期間に異なるリソース動作を相互参照する場合にも役立つことがあります。 グラフをカスタマイズするには、[Azure Monitor データ プラットフォーム](../../azure-monitor/platform/data-platform.md)をクリックします。
 
 急上昇 – 急上昇は、スケジュールされたタスク/既知のイベントに関連する可能性があります。 タスクを特定できる場合は、必要なパフォーマンス レベルでタスクが実行されているかどうかを判断します。 パフォーマンスが許容できる場合は、リソースを増やす必要はない可能性があります。
 
@@ -120,7 +120,7 @@ VM 診断を有効にするには
 
 VM を増やしても CPU の実行が 95% ある場合は、この設定でパフォーマンスが向上するか、アプリケーションのスループットが許容できるレベルになるかを判断します。 それ以外の場合は、個々のアプリケーション\プロセスのトラブルシューティングを行います。
 
-[Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) または [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) に Perfinsights を使用して、どのプロセスが CPU 使用率に影響を与えているかを分析できます。 
+[Windows](./how-to-use-perfinsights.md) または [Linux](./how-to-use-perfinsights-linux.md) に Perfinsights を使用して、どのプロセスが CPU 使用率に影響を与えているかを分析できます。 
 
 ## <a name="check-for-memory-bottleneck"></a>メモリのボトルネックを確認する
 
@@ -151,13 +151,13 @@ VM を増やしても CPU の実行が 95% ある場合は、この設定でパ�
 
 より大きな VM にアップグレードした後も、100% まで一定して増加し続けていることがわかった場合は、アプリケーション/プロセスを特定し、トラブルシューティングを行います。
 
-[Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) または [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) に Perfinsights を使用して、どのプロセスがメモリ使用率に影響を与えているかを分析できます。 
+[Windows](./how-to-use-perfinsights.md) または [Linux](./how-to-use-perfinsights-linux.md) に Perfinsights を使用して、どのプロセスがメモリ使用率に影響を与えているかを分析できます。 
 
 ## <a name="check-for-disk-bottleneck"></a>ディスクのボトルネックを確認する
 
 VM のストレージ サブシステムを確認するには、VM 診断のカウンターとストレージ アカウント診断も使用して、Azure VM レベルで診断を確認します。
 
-VM 内の固有のトラブルシューティングでは、[Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) または [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) に Perfinsights を使用できます。これにより、どのプロセスが IO に影響を与えているかを分析できます。 
+VM 内の固有のトラブルシューティングでは、[Windows](./how-to-use-perfinsights.md) または [Linux](./how-to-use-perfinsights-linux.md) に Perfinsights を使用できます。これにより、どのプロセスが IO に影響を与えているかを分析できます。 
 
 ゾーン冗長および Premium Storage アカウントのカウンターはないことに注意してください。 これらのカウンターに関連する問題の場合は、サポート ケースを生成します。
 
@@ -208,7 +208,7 @@ IOPS の上限に達しているかどうかを確認するには、ストレー
 
 Standard ストレージの新しいディスク オファリングでは、IOPS とスループットの制限が異なる場合がありますが、Standard ストレージ アカウントの累積制限は 20000 IOPS です (Premium ストレージの制限は、アカウント レベルまたはディスク レベルで異なります)。 さまざまな Standard ストレージのディスク オファリングとディスクごとの制限については、以下を参照してください。
 
-* [Windows 上の VM ディスクのスケーラビリティおよびパフォーマンスの目標](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets)
+* [Windows 上の VM ディスクのスケーラビリティおよびパフォーマンスの目標](../windows/disk-scalability-targets.md)
 
 #### <a name="references"></a>References
 
@@ -224,19 +224,19 @@ VM に接続されている VHD のスループットの上限を確認します
 
 Standard ストレージの新しいディスク オファリングには、さまざまな IOPS とスループットの制限があります (IOPS は VHD ごとには公開されません)。 データを見て、ディスクの読み取りと書き込みを使用して VM レベルでの VHD の合計スループット (MB) の上限に達しているかどうかを確認し、VM ストレージ構成を最適化して、1 つの VHD 制限を超えてスケーリングします。 さまざまな Standard ストレージのディスク オファリングとディスクごとの制限については、以下を参照してください。
 
-* [Windows 上の VM ディスクのスケーラビリティおよびパフォーマンスの目標](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets)
+* [Windows 上の VM ディスクのスケーラビリティおよびパフォーマンスの目標](../windows/disk-scalability-targets.md)
 
 ### <a name="high-disk-utilizationlatency-remediation"></a>ディスクの高使用率と待機時間の修復
 
 クライアントの待機時間を短縮し、VM IO を最適化して、VHD の制限を超えてスケーリングします
 
-* [Azure での Windows の IO の最適化](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-performance-best-practices/)
+* [Azure での Windows の IO の最適化](../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md?toc=/azure/virtual-machines/windows/toc.json)
 
-* [Azure での Linux の IO の最適化](https://blogs.msdn.microsoft.com/igorpag/2014/10/23/azure-storage-secrets-and-linux-io-optimizations/)
+* [Azure での Linux の IO の最適化](/archive/blogs/igorpag/azure-storage-secrets-and-linux-io-optimizations)
 
 #### <a name="reduce-throttling"></a>調整を減らす
 
-ストレージ アカウントの上限に達した場合は、ストレージ アカウント間で VHD のバランスを再調整します。 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/)に関する記事をご覧ください。
+ストレージ アカウントの上限に達した場合は、ストレージ アカウント間で VHD のバランスを再調整します。 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../../storage/common/scalability-targets-standard-account.md)に関する記事をご覧ください。
 
 ### <a name="increase-throughput-and-reduce-latency"></a>スループットの向上と待機時間の短縮
 
@@ -244,9 +244,9 @@ Standard ストレージの新しいディスク オファリングには、さ�
 
 次の記事では、特定のシナリオについて説明します。
 
-* [Azure Premium Storage への移行](https://azure.microsoft.com/documentation/articles/storage-migration-to-premium-storage/)
+* [Azure Premium Storage への移行](../windows/migrate-to-managed-disks.md)
 
-* [Azure Premium Storage と SQL Server の使用](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-use-premium-storage/)
+* [Azure Premium Storage と SQL Server の使用](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-server-premium-storage)
 
 ## <a name="next-steps"></a>次のステップ
 

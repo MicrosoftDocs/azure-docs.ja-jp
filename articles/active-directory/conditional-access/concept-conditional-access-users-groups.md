@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 08/03/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17312e44714c8bdb20e22ad9aeb950e46eb71e3e
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: ba1fc856ee9093b628bd86b9847f8fc70b7189c2
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80755260"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552902"
 ---
 # <a name="conditional-access-users-and-groups"></a>条件付きアクセス:ユーザーとグループ
 
@@ -40,7 +40,13 @@ ms.locfileid: "80755260"
    - ディレクトリ ロール
       - 管理者は、割り当てを決定するために使用される特定の Azure AD ディレクトリ ロールを選択できます。 たとえば組織で、全体管理者ロールを割り当てられるユーザーに対してより制限の厳しいポリシーを作成する場合があります。
    - ユーザーとグループ
-      - 特定のユーザーのセットを対象にできます。 たとえば組織で人事部アプリがクラウド アプリとして選択されている場合は、人事部のすべてのメンバーを含むグループを選択できます。 Azure AD 内の任意の種類のグループを指定できます。これには、動的なグループや、割り当て済みのセキュリティ グループおよび配布グループが含まれます。
+      - 特定のユーザーのセットを対象にできます。 たとえば組織で人事部アプリがクラウド アプリとして選択されている場合は、人事部のすべてのメンバーを含むグループを選択できます。 Azure AD 内の任意の種類のグループを指定できます。これには、動的なグループや、割り当て済みのセキュリティ グループおよび配布グループが含まれます。 ポリシーは、入れ子になったユーザーおよびグループに適用されます。
+
+> [!WARNING]
+> ユーザーまたはグループが 2048 を超えるグループのメンバーである場合、そのアクセスはブロックされる可能性があります。 この制限は、直接と入れ子の両方のグループ メンバーシップに適用されます。
+
+> [!WARNING]
+> 条件付きアクセス ポリシーは、[管理単位にスコープ指定されている](../users-groups-roles/roles-admin-units-assign-roles.md)ディレクトリ ロール、または ([カスタム ロール](../users-groups-roles/roles-create-custom.md)経由などで) オブジェクトに直接スコープ指定されているディレクトリ ロールが割り当てられているユーザーをサポートしません。
 
 ## <a name="exclude-users"></a>ユーザーを除外する
 

@@ -5,7 +5,6 @@
     - name: 仮想マシンについて
       href: overview.md
 - name: クイックスタート
-  expanded: true
   items:
     - name: VM の作成 - ポータル
       href: quick-create-portal.md
@@ -13,6 +12,10 @@
       href: quick-create-powershell.md
     - name: VM の作成 - Azure CLI
       href: quick-create-cli.md
+    - name: VM の作成 - Resource Manager テンプレート
+      displayName: 'Resource Manager, template, json'
+      href: quick-create-template.md
+  expanded: true
 - name: チュートリアル
   items:
     - name: 1 - VM の作成/管理
@@ -34,8 +37,8 @@
     - name: 9 - 仮想マシンのバックアップ
       href: tutorial-backup-vms.md
     - name: 10 - VM の管理
-      href: tutorial-govern-resources.md
       displayName: scope policy RBAC lock tag
+      href: tutorial-govern-resources.md
     - name: 11 - VM の追跡と更新
       href: tutorial-config-management.md
     - name: 12 - VM の監視
@@ -67,25 +70,25 @@
             - name: VHD からの VM のアップロード
               href: ./../scripts/virtual-machines-windows-powershell-upload-generalized-script.md
             - name: OS ディスクのアタッチ
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md
+              href: ./../scripts/virtual-machines-powershell-sample-create-vm-from-managed-os-disks.md
             - name: スナップショットからの VM
               href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md
         - name: ストレージの管理
           items:
             - name: VHD からマネージド ディスクを作成する
-              href: ../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-vhd.md
+              href: ../scripts/virtual-machines-powershell-sample-create-managed-disk-from-vhd.md
             - name: スナップショットからマネージド ディスクを作成する
-              href: ../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md
+              href: ../scripts/virtual-machines-powershell-sample-create-managed-disk-from-snapshot.md
             - name: マネージド ディスクをコピーする
-              href: ../scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md
+              href: ../scripts/virtual-machines-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md
             - name: ストレージ アカウントに VHD としてスナップショットをエクスポートする
-              href: ../scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-storage-account.md
+              href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account.md
             - name: ストレージ アカウントにマネージド ディスクの VHD をエクスポートする
-              href: ../scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-vhd.md
+              href: ../scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd.md
             - name: VHD からスナップショットを作成する
-              href: ../scripts/virtual-machines-windows-powershell-sample-create-snapshot-from-vhd.md
+              href: ../scripts/virtual-machines-powershell-sample-create-snapshot-from-vhd.md
             - name: スナップショットをコピーする
-              href: ../scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-same-or-different-subscription.md
+              href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-same-or-different-subscription.md
         - name: セキュリティで保護
           items:
             - name: VM とそのデータ ディスクを暗号化する
@@ -115,17 +118,17 @@
         - name: ストレージの管理
           items:
             - name: VHD からマネージド ディスクを作成する
-              href: ../scripts/virtual-machines-windows-cli-sample-create-managed-disk-from-vhd.md
+              href: ../scripts/virtual-machines-cli-sample-create-managed-disk-from-vhd.md
             - name: スナップショットからマネージド ディスクを作成する
-              href: ../scripts/virtual-machines-windows-cli-sample-create-managed-disk-from-snapshot.md
+              href: ../scripts/virtual-machines-cli-sample-create-managed-disk-from-snapshot.md
             - name: マネージド ディスクのコピー
-              href: ../scripts/virtual-machines-windows-cli-sample-copy-managed-disks-to-same-or-different-subscription.md
+              href: ../scripts/virtual-machines-cli-sample-copy-managed-disks-to-same-or-different-subscription.md
             - name: ストレージ アカウントに VHD としてスナップショットをエクスポートする
-              href: ../scripts/virtual-machines-windows-cli-sample-copy-snapshot-to-storage-account.md
+              href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account.md
             - name: ストレージ アカウントにマネージド ディスクの VHD をエクスポートする
-              href: ../scripts/virtual-machines-windows-cli-sample-copy-managed-disks-vhd.md
+              href: ../scripts/virtual-machines-cli-sample-copy-managed-disks-vhd.md
             - name: スナップショットのコピー
-              href: ../scripts/virtual-machines-windows-cli-sample-copy-snapshot-to-same-or-different-subscription.md
+              href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-same-or-different-subscription.md
         - name: ネットワーク
           items:
             - name: VM 間のネットワーク トラフィックのセキュリティ保護
@@ -138,9 +141,6 @@
           items:
             - name: Azure Monitor
               href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-oms.md
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ../policy-samples.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
 - name: 概念
   items:
     - name: イメージ
@@ -151,7 +151,7 @@
         - name: Resource Manager テンプレート
           href: template-description.md
     - name: リージョン
-      href: regions.md
+      href: ../regions.md
       items:
         - name: Azure 拡張機能について
           href: ../extensions/overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -162,7 +162,7 @@
     - name: 可用性とパフォーマンス
       items:
         - name: 可用性
-          href: availability.md
+          href: ../availability.md
         - name: コロケーション
           href: co-location.md
         - name: ネットワーク パフォーマンス
@@ -170,9 +170,9 @@
     - name: VM の種類とサイズ
       items:
         - name: VM サイズ
-          href: sizes.md
+          href: ../sizes.md
         - name: 第 2 世代 VM
-          href: generation-2.md
+          href: ../generation-2.md
         - name: 汎用
           items:
             - name: 概要
@@ -189,6 +189,10 @@
               href: ../dv3-dsv3-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Dav4 および Dasv4 シリーズ
               href: ../dav4-dasv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Ddv4 および Ddsv4 シリーズ
+              href: ../ddv4-ddsv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Dv4 および Dsv4 シリーズ
+              href: ../dv4-dsv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: コンピューティング最適化
           items:
             - name: 概要
@@ -206,12 +210,16 @@
               href: ../ev3-esv3-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Eav4 および Easv4 シリーズ
               href: ../eav4-easv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Edv4 および Edsv4 シリーズ
+              href: ../edv4-edsv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Ev4 および Esv4 シリーズ
+              href: ../ev4-esv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: M シリーズ
               href: ../m-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Mv2 シリーズ
               href: ../mv2-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: 制約付き vCPU
-              href: constrained-vcpu.md
+              href: ../constrained-vcpu.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: ストレージ最適化
           items:
             - name: 概要
@@ -223,13 +231,15 @@
         - name: GPU - 高速コンピューティング
           items:
             - name: 概要
-              href: sizes-gpu.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+              href: ../sizes-gpu.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
             - name: NC シリーズ
               href: ../nc-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: NCv2 シリーズ
               href: ../ncv2-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: NCv3 シリーズ
               href: ../ncv3-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: NCasT4_v3 シリーズ
+              href: ../nct4-v3-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: ND シリーズ
               href: ../nd-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: NDv2 シリーズ
@@ -264,17 +274,21 @@
             - name: 専用ホストの前払い
               href: ../prepay-dedicated-hosts-reserved-instances.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
             - name: Azure の予約とは
-              href: ../../billing/billing-save-compute-costs-reservations.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+              href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md?toc=/azure/virtual-machines/windows/toc.json
             - name: VM インスタンス サイズの柔軟性
-              href: reserved-vm-instance-size-flexibility.md
+              href: ../reserved-vm-instance-size-flexibility.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: スポット VM
-          href: spot-vms.md
           displayName: 'pre-empt, preempt'
+          href: ../spot-vms.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: 一時ディスクを使用しない Azure VM
+          href: ../azure-vms-no-temp-disk.md
+        - name: Azure VM のサイズの名前付け規則
+          href: ../vm-naming-conventions.md
         - name: 旧世代
-          href: ../sizes-previous-gen.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
           displayName: D-series Ds-series A-series Basic
+          href: ../sizes-previous-gen.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Isolated のサイズ
-          href: isolation.md
+          href: ../isolation.md
         - name: Azure コンピューティング ユニット (ACU)
           href: ../acu.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: ベンチマーク スコア
@@ -286,9 +300,9 @@
             - name: VM の前払い
               href: prepay-reserved-vm-instances.md
             - name: Azure の予約とは
-              href: ../../billing/billing-save-compute-costs-reservations.md
+              href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md
             - name: VM インスタンス サイズの柔軟性
-              href: reserved-vm-instance-size-flexibility.md
+              href: ../reserved-vm-instance-size-flexibility.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: 専用ホスト
       href: dedicated-hosts.md
     - name: メンテナンスと更新
@@ -296,53 +310,58 @@
     - name: Disk Storage
       items:
         - name: マネージド ディスクの概要
-          href: managed-disks-overview.md
+          href: ../managed-disks-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: IaaS VM 用のディスクの種類の選択
-          href: disks-types.md
+          href: ../disks-types.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 暗号化
           href: disk-encryption.md
         - name: Disk Storage の予約
           href: ../../cost-management-billing/reservations/understand-disk-reservations.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
         - name: 高パフォーマンス用の設計
-          href: premium-storage-performance.md
+          href: ../premium-storage-performance.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: ディスク バースト
           href: disk-bursting.md
         - name: ディスクのスケーラビリティ ターゲット
           href: disk-scalability-targets.md
         - name: ディスクのバックアップとディザスター リカバリー
-          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+          href: ../backup-and-disaster-recovery-for-azure-iaas-disks.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 共有ディスク
           href: disks-shared.md
         - name: エフェメラル OS ディスク
-          href: ephemeral-os-disks.md
+          href: ../ephemeral-os-disks.md
     - name: ネットワーク
-      href: network-overview.md
+      href: ../network-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: スケール セット
       href: ../../virtual-machine-scale-sets/overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: インフラストラクチャの自動化
-      href: infrastructure-automation.md
+      href: ../infrastructure-automation.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Security
       items:
         - name: セキュリティとポリシー
-          href: security-policy.md
+          href: ../security-policy.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Azure Disk Encryption
           href: disk-encryption-overview.md
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ../security-controls-policy.md
+        - name: Azure セキュリティ ベンチマーク用のセキュリティ ベースライン
+          href: security-baseline.md
         - name: 組み込みのセキュリティ制御
           href: virtual-machines-windows-security-controls.md
         - name: Bastion
           href: ../../bastion/bastion-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: 状態とライフサイクル
-      href: states-lifecycle.md
+      href: ../states-lifecycle.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: 監視
       href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+    - name: ブート診断
+      href: ../../virtual-machines/boot-diagnostics.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: バックアップと回復
-      href: backup-recovery.md
+      href: ../backup-recovery.md
     - name: クラウド導入フレームワーク
-      href: 'https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/get-started/?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json'
+      href: /azure/cloud-adoption-framework/get-started/?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: アーキテクチャ センター
-      href: 'https://docs.microsoft.com/en-us/azure/architecture/'
-    - name: インフラストラクチャの例
-      href: infrastructure-example.md
+      href: /azure/architecture/
 - name: 操作方法ガイド
   items:
     - name: VM の作成
@@ -364,19 +383,16 @@
               href: ../linux/spot-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
             - name: エラー コード
               href: ../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-        - name: 'C# の使用'
-          href: csharp.md
+        - name: C# の使用
+          href: ../../azure-resource-manager/templates/deploy-rest.md
         - name: 特殊化されたディスクを使用する
           items:
             - name: ポータル
               href: create-vm-specialized-portal.md
             - name: PowerShell
               href: create-vm-specialized.md
-        - name: 'Resource Manager テンプレートと C# の使用'
-          href: csharp-template.md
-          displayName: Azure Resource Manager
         - name: Chef を使用した VM の作成
-          href: ../../chef/chef-automation.md
+          href: /azure/developer/chef/windows-vm-configure
         - name: Java の使用
           href: java.md
         - name: Python の使用
@@ -386,6 +402,13 @@
           href: ps-template.md
         - name: VM への接続
           href: connect-logon.md
+        - name: Linux VM への接続
+          displayName: ssh keygen ssk-key putty
+          items:
+            - name: ポータルで
+              href: ../ssh-keys-portal.md
+            - name: Windows の場合
+              href: ../linux/ssh-from-windows.md
         - name: Azure ハイブリッド特典ライセンスの使用
           href: hybrid-use-benefit-licensing.md
         - name: Windows 10 のマルチテナント ホスティング権限の使用
@@ -397,7 +420,7 @@
         - name: 移行の概要
           href: migration-classic-resource-manager-overview.md
         - name: 移行の詳細
-          href: migration-classic-resource-manager-deep-dive.md
+          href: ../migration-classic-resource-manager-deep-dive.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 移行の計画
           href: migration-classic-resource-manager-plan.md
         - name: PowerShell を使用して移行する
@@ -407,7 +430,7 @@
         - name: 移行用のコミュニティ ツール
           href: migration-classic-resource-manager-community-tools.md
         - name: よく寄せられる質問
-          href: migration-classic-resource-manager-faq.md
+          href: ../migration-classic-resource-manager-faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: イメージの使用
       displayName: 'SIG, AMI, image'
       items:
@@ -421,6 +444,8 @@
                   items:
                     - name: VM から
                       href: ../image-version-vm-powershell.md
+                    - name: VHD またはスナップショットから
+                      href: ../image-version-snapshot-powershell.md
                     - name: マネージド イメージから移行する
                       href: ../image-version-managed-image-powershell.md
                     - name: 別のギャラリーからコピーする
@@ -436,11 +461,13 @@
             - name: CLI
               items:
                 - name: ギャラリーの作成
-                  href: ../linux/shared-images.md
+                  href: ../shared-images-cli.md
                 - name: イメージを作成する
                   items:
                     - name: VM から
                       href: ../image-version-vm-cli.md
+                    - name: VHD またはスナップショットから
+                      href: ../image-version-snapshot-cli.md
                     - name: マネージド イメージから移行する
                       href: ../image-version-managed-image-cli.md
                     - name: 別のギャラリーからコピーする
@@ -449,6 +476,8 @@
                       href: ../image-version-another-gallery-cli.md
                 - name: VM の作成
                   items:
+                    - name: 専用イメージ
+                      href: ../vm-specialized-image-version-cli.md
                     - name: 一般化されたイメージ
                       href: ../vm-generalized-image-version-cli.md
                 - name: イメージ リソースを更新する
@@ -478,6 +507,10 @@
               href: ../linux/image-builder-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Azure CLI の使用
               href: image-builder.md
+            - name: VNET を使用して VM を作成する
+              href: image-builder-vnet.md
+            - name: Azure PowerShell の使用
+              href: image-builder-powershell.md
             - name: イメージ ギャラリー用のビルド
               href: image-builder-gallery.md
             - name: 既存のイメージの更新
@@ -491,6 +524,8 @@
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: イメージを検索および使用する
           href: cli-ps-findimage.md
+        - name: 購入プラン情報
+          href: ../marketplace-images.md
         - name: アップロード用に VM を準備する
           href: prepare-for-upload-vhd-image.md
         - name: VM をイメージにキャプチャする
@@ -505,7 +540,7 @@
           href: download-vhd.md
     - name: VM のセキュリティ保護
       items:
-        - name: Recommendations
+        - name: 推奨事項
           href: security-recommendations.md
         - name: ジャストインタイム アクセス
           href: ../../security-center/security-center-just-in-time.md
@@ -520,9 +555,9 @@
                 - name: CLI
                   href: ../../bastion/create-host-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Bastion を使用して接続する
+              href: ../../bastion/bastion-connect-vm-ssh.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
               items:
                 - name: Bastion SSH 接続
-              href: ../../bastion/bastion-connect-vm-ssh.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Bastion RDP 接続
               href: ../../bastion/bastion-connect-vm-rdp.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Encrypt
@@ -564,7 +599,7 @@
         - name: 障害復旧
           href: ../virtual-machines-disaster-recovery-guidance.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: VM をバックアップする
-          href: ../../backup/backup-introduction-to-azure-backup.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+          href: ../../backup/backup-overview.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
           items:
             - name: 単一の VM のバックアップ
               href: ../../backup/quick-backup-vm-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -586,7 +621,7 @@
     - name: VM の管理
       items:
         - name: VM の使用状況
-          href: vm-usage.md
+          href: ../vm-usage.md
         - name: 一般的な PowerShell タスク
           href: ps-common-ref.md
         - name: VM サイズの変更
@@ -619,6 +654,8 @@
           href: instance-metadata-service.md
         - name: 入れ子になった仮想化の有効化
           href: nested-virtualization.md
+        - name: VM ゲストの自動修正プログラム (プレビュー)
+          href: automatic-vm-guest-patching.md
     - name: プラットフォームのメンテナンス
       items:
         - name: メンテナンスの通知
@@ -647,14 +684,12 @@
           href: scheduled-event-service.md
     - name: VM を監視する
       items:
-        - name: Azure 仮想マシンの監視
-          href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: エージェント
           items:
             - name: エージェントの概要
               href: ../../azure-monitor/platform/agents-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: よく寄せられる質問
-              href: '../../azure-monitor/faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json#agents'
+              href: ../../azure-monitor/faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json#agents
             - name: Azure Diagnostics 拡張機能
               items:
                 - name: 概要
@@ -664,7 +699,7 @@
                       items:
                         - name: 仮想マシン
                           href: ../../azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-                        - name: VM スケール セット
+                        - name: スケール セット
                           href: ../../azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vmss.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                     - name: Event Hubs への送信
                       href: ../../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -675,7 +710,7 @@
                     - name: バージョン履歴
                       href: ../../azure-monitor/platform/diagnostics-extension-versions.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                     - name: JSON Lines リソース ログの形式
-                      href: ../../azure-monitor/platform/diagnostic-logs-append-blobs.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                      href: ../../azure-monitor/platform/resource-logs-blob-format.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
                     - name: トラブルシューティング
                       href: ../../azure-monitor/platform/diagnostics-extension-troubleshooting.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Log Analytics エージェント
@@ -685,7 +720,7 @@
                 - name: Windows エージェント
                   href: ../../azure-monitor/platform/agent-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                 - name: Windows 用の VM 拡張機能
-                  href: ../../azure-monitor/../virtual-machines/windows/extensions-oms.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json?toc=/azure/azure-monitor/toc.json
+                  href: ../extensions/oms-windows.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json?toc=/azure/azure-monitor/toc.json&toc=/azure/virtual-machines/windows/toc.json
                 - name: Log Analytics ゲートウェイ
                   href: ../../azure-monitor/platform/gateway.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                 - name: エージェント管理
@@ -715,11 +750,11 @@
             - name: トラブルシューティング
               items:
                 - name: Log Analytics VM 拡張機能
-                  displayname: 'troubleshoot, troubleshooting'
                   href: ../../azure-monitor/platform/vmext-troubleshoot.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-                - name: Log Analytics Windows エージェント
                   displayname: 'troubleshoot, troubleshooting'
+                - name: Log Analytics Windows エージェント
                   href: ../../azure-monitor/platform/agent-windows-troubleshoot.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                  displayname: 'troubleshoot, troubleshooting'
         - name: VM に対する Azure Monitor
           items:
             - name: 概要
@@ -727,19 +762,19 @@
             - name: 一般提供の FAQ
               href: ../../azure-monitor/insights/vminsights-ga-release-faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: よく寄せられる質問
-              href: '../../azure-monitor/faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json#azure-monitor-for-vms'
+              href: ../../azure-monitor/faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json#azure-monitor-for-vms
             - name: 監視を有効にする
               items:
                 - name: 監視の有効化の概要
                   href: ../../azure-monitor/insights/vminsights-enable-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                 - name: 単一の Azure VM での有効化
-                  href: ../../azure-monitor/insights/vminsights-enable-single-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-portal.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
                 - name: Azure Policy を使用して有効にする
-                  href: ../../azure-monitor/insights/vminsights-enable-at-scale-policy.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-policy.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
                 - name: Azure PowerShell を使用して有効にする
-                  href: ../../azure-monitor/insights/vminsights-enable-at-scale-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-powershell.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
                 - name: ハイブリッド環境対応にする
-                  href: ../../azure-monitor/insights/vminsights-enable-hybrid-cloud.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-hybrid.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
             - name: 依存関係のマップ
               href: ../../azure-monitor/insights/vminsights-maps.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: パフォーマンスの監視
@@ -757,7 +792,7 @@
     - name: 可用性とスケール
       items:
         - name: Virtual Machine Scale Sets
-          href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+          href: ../../virtual-machine-scale-sets/overview.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
         - name: 高可用性
           href: manage-availability.md
         - name: 近接通信配置グループの作成
@@ -777,13 +812,13 @@
         - name: カスタム データ
           href: ../custom-data.md
         - name: Chef
-          href: chef-automation.md
+          href: /azure/developer/chef/windows-vm-configure
         - name: Visual Studio から Web アプリを発行する
           href: publish-web-app-from-visual-studio.md
     - name: アプリケーションの実行
       items:
         - name: SQL Server
-          href: sql/virtual-machines-windows-sql-server-iaas-overview.md
+          href: ../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
         - name: MongoDB
           href: install-mongodb.md
         - name: SAP on Azure
@@ -793,18 +828,18 @@
         - name: "Visual\_Studio"
           href: using-visual-studio-vm.md
         - name: ハイ パフォーマンス コンピューティング (HPC)
-          href: hpcpack-cluster-options.md
+          href: /powershell/high-performance-computing/overview
           items:
             - name: HPC Pack 2016 クラスター
-              href: hpcpack-2016-cluster.md
+              href: /powershell/high-performance-computing/overview
             - name: HPC Pack 2016 Azure Active Directory の統合
-              href: hpcpack-cluster-active-directory.md
+              href: /powershell/high-performance-computing/hpcpack-cluster-active-directory
             - name: HPC Pack 2012 R2 ヘッド ノード
-              href: hpcpack-cluster-headnode.md
+              href: /powershell/high-performance-computing/deploy-an-hpc-pack-2016-cluster-in-azure
             - name: HPC Pack 2012 R2 にオンプレミスのジョブを送信する
-              href: hpcpack-cluster-submit-jobs.md
+              href: /powershell/high-performance-computing/hpcpack-cluster-submit-jobs-in-azure
             - name: HPC Pack 上の Excel
-              href: excel-cluster-hpcpack.md
+              href: /powershell/high-performance-computing/excel-2016-offloading-to-azure-cluster
     - name: ストレージの管理
       items:
         - name: ディスクを追加する
@@ -817,25 +852,41 @@
           href: detach-disk.md
         - name: Resource Manager テンプレートによるディスクのデプロイ
           displayName: Azure Resource Manager
-          href: using-managed-disks-template-deployments.md
+          href: ../using-managed-disks-template-deployments.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 共有ディスクを有効にする
-          href: disks-shared-enable.md
+          href: ../disks-shared-enable.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: ディスクに VHD をアップロードする - PowerShell
           href: disks-upload-vhd-to-managed-disk-powershell.md
+        - name: ディスクを安全にインポート/エクスポートする - ポータル
+          href: ../disks-enable-private-links-for-import-export-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: ディスクのサイズの変更
           href: expand-os-disk.md
         - name: Storage Explorer を使用してディスクを管理する
-          href: disks-use-storage-explorer-managed-disks.md
+          href: ../disks-use-storage-explorer-managed-disks.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: ディスクのスナップショットの作成
           href: snapshot-copy-managed-disk.md
         - name: Disk Storage の予約
-          href: disks-reserved-capacity.md
+          href: ../disks-reserved-capacity.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 増分スナップショットの作成 - PowerShell
           href: disks-incremental-snapshots.md
         - name: 増分スナップショットの作成 - ポータル
           href: disks-incremental-snapshots-portal.md
         - name: 非管理対象ディスクのバックアップ
           href: incremental-snapshots.md
+        - name: 暗号化
+          items:
+            - name: ホスト時の暗号化を有効にする - PowerShell
+              href: disks-enable-host-based-encryption-powershell.md
+            - name: ホスト時の暗号化を有効にする - ポータル
+              href: ../disks-enable-host-based-encryption-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: カスタマー マネージド キーを有効にする - PowerShell
+              href: disks-enable-customer-managed-keys-powershell.md
+            - name: カスタマー マネージド キーを有効にする - ポータル
+              href: ../disks-enable-customer-managed-keys-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: 保存時の二重暗号化を有効にする
+              href: disks-enable-double-encryption-at-rest-powershell.md
+            - name: 保存時の二重暗号化を有効にする - ポータル
+              href: ../disks-enable-double-encryption-at-rest-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 移行と変換
           items:
             - name: Standard と Premium 間でディスクを変換する
@@ -849,20 +900,22 @@
         - name: パフォーマンス
           items:
             - name: 書き込みアクセラレータを有効にする
-              href: how-to-enable-write-accelerator.md
+              href: ../how-to-enable-write-accelerator.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: ウルトラ ディスクの使用
-              href: disks-enable-ultra-ssd.md
+              href: ../disks-enable-ultra-ssd.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: ディスクのベンチマークの実行
               href: disks-benchmarks.md
-        - name: アタッチされていないディスクの検出
+        - name: アタッチされていないディスクの検出 - PowerShell
           href: find-unattached-disks.md
+        - name: アタッチされていないディスクの検出 - ポータル
+          href: ../disks-find-unattached-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: ディスクに関する FAQ
-          href: faq-for-disks.md
+          href: ../faq-for-disks.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: ネットワークの管理
       href: ps-common-network-ref.md
       items:
         - name: Create virtual network
-          href: ../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+          href: ../../virtual-network/quick-create-portal.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
         - name: VM へのポートを開く
           items:
             - name: Azure portal
@@ -882,18 +935,18 @@
     - name: マネージド ID の構成
       items:
         - name: ポータル
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: CLI
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: PowerShell
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Azure Resource Manager テンプレート
           displayName: ARM
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: REST
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-rest-vm?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-rest-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Azure SDK
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: 拡張機能を使用する
       items:
         - name: 拡張機能のインストールの制限
@@ -967,7 +1020,7 @@
             - name: アマゾン ウェブ サービス (AWS) から
               href: aws-to-azure.md
             - name: Azure Site Recovery を使用する
-              href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+              href: ../../site-recovery/migrate-overview.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
 - name: トラブルシューティング
   href: ../troubleshooting/index.yml
 - name: リファレンス
@@ -975,7 +1028,7 @@
     - name: Azure CLI
       href: /cli/azure/vm
     - name: Azure PowerShell
-      href: /powershell/azureps-cmdlets-docs
+      href: /powershell/azure/
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.compute
     - name: Java
@@ -991,10 +1044,13 @@
     - name: Resource Manager テンプレート
       displayName: ARM
       href: /azure/templates/microsoft.compute/allversions
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ../policy-reference.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
 - name: リソース
   items:
     - name: Q & A
-      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-machines.html'
+      href: /answers/topics/azure-virtual-machines.html
     - name: Resource Manager テンプレートを作成する
       displayName: Azure Resource Manager
       href: ../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json

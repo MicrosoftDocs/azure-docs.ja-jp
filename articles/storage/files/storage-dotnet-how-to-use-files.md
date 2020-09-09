@@ -4,16 +4,17 @@ description: Azure Files を使ってファイル データを格納する.NET �
 author: roygara
 ms.service: storage
 ms.devlang: dotnet
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4d8be13a75e276d5be6ec71141a13f95601869f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c5c51bb052948c58d4849c556d0756240d6968ca
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78301439"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011533"
 ---
 # <a name="develop-for-azure-files-with-net"></a>.NET を使用して Azure Files 用に開発する
 
@@ -99,7 +100,7 @@ NuGet を使って両方のパッケージを取得できます。 次の手順�
 ```
 
 > [!NOTE]
-> 最新バージョンの Azure ストレージ エミュレーターでは、Azure Files はサポートされません。 Azure Files を操作するには、接続文字列がクラウド内の Azure ストレージ アカウントを対象とする必要があります。
+> 最新バージョンの Azure Storage エミュレーターと Azurite オープンソース エミュレーターは、Azure Files をサポートしていません。 Azure Files を操作するには、接続文字列がクラウド内の Azure ストレージ アカウントを対象とする必要があります。
 
 ## <a name="add-using-directives"></a>using ディレクティブを追加する
 

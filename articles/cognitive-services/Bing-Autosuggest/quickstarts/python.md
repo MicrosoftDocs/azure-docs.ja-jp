@@ -8,18 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 582e298bb291a66a6ec6b7300dffaa0fc18af4e0
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-python
+ms.openlocfilehash: 2106b36d1b769f0bb207d77eb2395623c14a4a17
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80238920"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848062"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-python"></a>クイック スタート:Bing Autosuggest REST API と Python によって検索クエリの候補を表示する
 
-このクイック スタートでは、Bing Autosuggest API を呼び出して JSON 応答を取得するための基礎を学ぶことができます。 このシンプルな Python アプリケーションは、検索クエリの一部を API に送信して検索の候補を返します。 このアプリケーションは Python で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このサンプルのソース コードは、[GitHub 上で](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingAutosuggestv7.py)入手できます。
+このクイックスタートでは、Bing Autosuggest API を呼び出して JSON 応答を読み取る方法について説明します。 このシンプルな Python アプリケーションは、検索クエリの一部を API に送信して検索の候補を返します。 このアプリケーションは Python で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このサンプルのソース コードは、[GitHub 上で](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingAutosuggestv7.py)入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,7 +36,7 @@ ms.locfileid: "80238920"
     import http.client, urllib.parse, json
     ```
 
-2. API ホストとパス、[市場コード](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)、および検索クエリの一部に対応する変数を作成します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
+2. API ホストとパス、[市場コード](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)、および検索クエリの一部に対応する変数を作成します。 次のコードのグローバル エンドポイントか、Azure portal に表示される、対象のリソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用します。
 
     ```python
     subscriptionKey = 'enter key here'
@@ -45,7 +46,7 @@ ms.locfileid: "80238920"
     query = 'sail'
     ```
 
-3. `?mkt=` パラメーターに市場コードを付加し、`&q=` パラメーターに目的のクエリを付加して、パラメーター文字列を作成します。
+3. `mkt=` パラメーターに市場コードを付加し、`q=` パラメーターに目的のクエリを付加して、パラメーター文字列を作成します。
 
     ```python
     params = '?mkt=' + mkt + '&q=' + query

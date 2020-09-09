@@ -6,19 +6,19 @@ author: curtand
 ms.author: curtand
 manager: mtillman
 ms.date: 04/27/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca30d5b050a34000fa7c6465356aba206aeaa8e4
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 82304052d6ed0c0169c24c19c58d53548b4479cc
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203355"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423594"
 ---
 # <a name="bulk-delete-users-in-azure-active-directory"></a>Azure Active Directory でユーザーを一括削除する
 
@@ -68,7 +68,7 @@ CSV テンプレートをダウンロードして入力すると、Azure AD ユ�
 
 **[一括操作の結果]** ページでは、保留中のすべての一括要求の状態を確認できます。
 
-   [![](media/users-bulk-delete/bulk-center.png "Check delete status in the Bulk Operations Results page")](media/users-bulk-delete/bulk-center.png#lightbox)
+   [![[一括操作の結果] ページで削除の状態を確認します。](media/users-bulk-delete/bulk-center.png)](media/users-bulk-delete/bulk-center.png#lightbox)
 
 次に、削除したユーザーが Azure AD 組織に存在するかどうかを、Azure portal または PowerShell を使用して確認できます。
 

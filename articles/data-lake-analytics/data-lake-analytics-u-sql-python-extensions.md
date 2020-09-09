@@ -3,18 +3,16 @@ title: Azure Data Lake Analytics で Python を使用した U-SQL スクリプ�
 description: Azure Data Lake Analytics を使用して U-SQL スクリプトで Python コードを実行する方法を説明します
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
-ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
-ms.topic: conceptual
+ms.reviewer: jasonh
+ms.topic: how-to
 ms.date: 06/20/2017
-ms.openlocfilehash: 0a49cbdb4caf474d0628fea3679ce712d37886e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-python
+ms.openlocfilehash: b15ab268433e4220d499f3e1fe7cb90ffac2a1be
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60813408"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876019"
 ---
 # <a name="extend-u-sql-scripts-with-python-code-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics で Python コードを使用した U-SQL スクリプトの拡張
 
@@ -26,7 +24,7 @@ ms.locfileid: "60813408"
 * 左側のメニューで、 **[作業の開始]** の **[サンプル スクリプト]** をクリックします
 * **[U-SQL Extensions をインストールする]** をクリックし、 **[OK]** をクリックします
 
-## <a name="overview"></a>概要 
+## <a name="overview"></a>概要
 
 U-SQL 用の Python 拡張機能では、開発者が Python コードの膨大な並列実行を実行できるようにします。 基本的な手順を以下の例で示します。
 
@@ -35,38 +33,32 @@ U-SQL 用の Python 拡張機能では、開発者が Python コードの膨大�
 * U-SQL 用の Python 拡張機能には、レジューサ (`Extension.Python.Reducer`) が組み込まれており、レジューサに割り当てられている各頂点で Python コードを実行します
 * U-SQL スクリプトには、 "`usqlml_main`" という機能を持つ埋め込み型 Python コードが含まれています。この機能は、入力として pandas DataFrame を受け入れ、出力として pandas DataFrame を返します。
 
---
-
-    REFERENCE ASSEMBLY [ExtPython];
-
-    DECLARE @myScript = @"
-    def get_mentions(tweet):
-        return ';'.join( ( w[1:] for w in tweet.split() if w[0]=='@' ) )
-
-    def usqlml_main(df):
-        del df['time']
-        del df['author']
-        df['mentions'] = df.tweet.apply(get_mentions)
-        del df['tweet']
-        return df
-    ";
-
-    @t  = 
-        SELECT * FROM 
-           (VALUES
-               ("D1","T1","A1","@foo Hello World @bar"),
-               ("D2","T2","A2","@baz Hello World @beer")
-           ) AS 
-               D( date, time, author, tweet );
-
-    @m  =
-        REDUCE @t ON date
-        PRODUCE date string, mentions string
-        USING new Extension.Python.Reducer(pyScript:@myScript);
-
-    OUTPUT @m
-        TO "/tweetmentions.csv"
-        USING Outputters.Csv();
+```usql
+REFERENCE ASSEMBLY [ExtPython];
+DECLARE @myScript = @"
+def get_mentions(tweet):
+    return ';'.join( ( w[1:] for w in tweet.split() if w[0]=='@' ) )
+def usqlml_main(df):
+    del df['time']
+    del df['author']
+    df['mentions'] = df.tweet.apply(get_mentions)
+    del df['tweet']
+    return df
+";
+@t  =
+    SELECT * FROM
+       (VALUES
+           ("D1","T1","A1","@foo Hello World @bar"),
+           ("D2","T2","A2","@baz Hello World @beer")
+       ) AS date, time, author, tweet );
+@m  =
+    REDUCE @t ON date
+    PRODUCE date string, mentions string
+    USING new Extension.Python.Reducer(pyScript:@myScript);
+OUTPUT @m
+    TO "/tweetmentions.csv"
+    USING Outputters.Csv();
+```
 
 ## <a name="how-python-integrates-with-u-sql"></a>Python と U-SQL が統合する方法
 
@@ -77,30 +69,36 @@ U-SQL 用の Python 拡張機能では、開発者が Python コードの膨大�
 
 ### <a name="schemas"></a>スキーマ
 
-* U-SQL では、Pandas のインデックス ベクターはサポートされていません。 Python 関数内のすべての入力データ フレームには、常に 0 から、行数から 1 を引いた数までの 64 ビットの数値インデックスがあります。 
+* U-SQL では、Pandas のインデックス ベクターはサポートされていません。 Python 関数内のすべての入力データ フレームには、常に 0 から、行数から 1 を引いた数までの 64 ビットの数値インデックスがあります。
 * U-SQL データセットでは、重複する列名を持つことはできません
-* 文字列以外の U-SQL データセットの列名。 
+* 文字列以外の U-SQL データセットの列名。
 
 ### <a name="python-versions"></a>Python のバージョン
-Python 3.5.1 (Windows 用にコンパイル) のみサポートされています。 
+
+Python 3.5.1 (Windows 用にコンパイル) のみサポートされています。
 
 ### <a name="standard-python-modules"></a>標準的な Python モジュール
+
 すべての標準的な Python モジュールが含まれます。
 
 ### <a name="additional-python-modules"></a>追加の Python モジュール
+
 標準的な Python ライブラリのほかにも、一般的に使用される Python ライブラリの一部が含まれます。
 
-    pandas
-    numpy
-    numexpr
+* pandas
+* numpy
+* numexpr
 
 ### <a name="exception-messages"></a>例外メッセージ
+
 現時点では、Python コードの例外は一般的な頂点のエラーとして表示されます。 今後、U-SQL ジョブのエラー メッセージでは、Python の例外メッセージが表示されます。
 
 ### <a name="input-and-output-size-limitations"></a>入力と出力のサイズ制限
+
 各頂点には、割り当てられたメモリ量に制限があります。 現在、AU の制限は 6 GB です。 入力と出力の DataFrame は Python コード内のメモリに存在する必要があるため、入力と出力の合計サイズは 6 GB を超えることはできません。
 
-## <a name="see-also"></a>参照
+## <a name="next-steps"></a>次のステップ
+
 * [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
 * [Data Lake Tools for Visual Studio を使用して U-SQL スクリプトを開発する](data-lake-analytics-data-lake-tools-get-started.md)
 * [Azure Data Lake Analytics ジョブに U-SQL ウインドウ関数を使用する](data-lake-analytics-use-window-functions.md)

@@ -4,17 +4,23 @@ description: この記事では、Azure Database for MariaDB サーバーとや�
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 4/2/2020
-ms.openlocfilehash: 1b79a49b2fb87ebf180aaaa40447f40c5a982c2e
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 34fcb8d28ae8deda88a6ce91261301ab5d08a743
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632280"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104556"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>Azure Database for MariaDB でユーザーを作成する 
 この記事では、Azure Database for MariaDB でユーザーを作成する方法について説明します。
+
+> [!NOTE]
+> バイアスフリーなコミュニケーション
+>
+> Microsoft は、多様性を尊重する環境をサポートします。 この記事には、_スレーブ_という単語への言及があります。 Microsoft の[バイアスフリーなコミュニケーションに関するスタイル ガイド](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)では、これを排他的な単語と認めています。 この単語は現在、ソフトウェアに表示される単語であるため、一貫性を保つためにこの記事で使用されています。 単語を削除するためにソフトウェアを更新するのに合わせて、この記事は更新されます。
+>
 
 Azure Database for MariaDB を初めて作成したときに、サーバー管理者のログイン ユーザー名とパスワードを指定しています。 詳細については、[クイックスタート](quickstart-create-mariadb-server-database-using-azure-portal.md)に関するページを参照してください。 サーバー管理者のログイン ユーザー名は、Azure Portal で確認できます。
 

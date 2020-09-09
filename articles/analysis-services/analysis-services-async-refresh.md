@@ -7,12 +7,13 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c5f6cec8b7fd1169a4f04649fcaf7bb7ada33833
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.custom: references_regions
+ms.openlocfilehash: 0a5a7ac7d830cb03b1370c31d7e854f3b2a5a2fc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81406287"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507184"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>REST API を使用した非同期更新
 
@@ -158,14 +159,14 @@ CommitMode は partialBatch と同じです。 これは、読み込みに何時
 [
     {
         "refreshId": "1344a272-7893-4afa-a4b3-3fb87222fdac",
-        "startTime": "2017-12-09T01:58:04.76",
-        "endTime": "2017-12-09T01:58:12.607",
+        "startTime": "2017-12-07T02:06:57.1838734Z",
+        "endTime": "2017-12-07T02:07:00.4929675Z",
         "status": "succeeded"
     },
     {
         "refreshId": "474fc5a0-3d69-4c5d-adb4-8a846fa5580b",
-        "startTime": "2017-12-07T02:05:48.32",
-        "endTime": "2017-12-07T02:05:54.913",
+        "startTime": "2017-12-07T01:05:54.157324Z",
+        "endTime": "2017-12-07T01:05:57.353371Z",
         "status": "succeeded"
     }
 ]
@@ -208,7 +209,7 @@ CommitMode は partialBatch と同じです。 これは、読み込みに何時
 
 ### <a name="to-use-the-code-sample"></a>サンプル コードを使用するには
 
-1.    リポジトリをクローンまたはダウンロードします。 RestApiSample ソリューションを開きます。
+1.    リポジトリを複製またはダウンロードします。 RestApiSample ソリューションを開きます。
 2.    「**client.BaseAddress = …** 」の行を探し 、ご利用の[ベース URL](#base-url) を指定します。
 
 このコード例では、[サービス プリンシパル](#service-principal)の認証を使用しています。

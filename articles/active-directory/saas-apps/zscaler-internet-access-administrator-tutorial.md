@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory と Zscaler Internet Access Administrator の統合 | Microsoft Docs
 description: Azure Active Directory と Zscaler Internet Access Administrator の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: ea555097-bf62-45dd-9b45-b75c50324a69
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a149527c6e00972991bf0b18e6f7c599799a0c91
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0cbcfb65d7c7ac71b17e38dd72545a3d8fd2f162
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73161027"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545881"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>チュートリアル:Azure Active Directory と Zscaler Internet Access Administrator の統合
 
@@ -41,6 +36,9 @@ Zscaler Internet Access Administrator と Azure AD の統合を構成するに�
 
 * Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
 * Zscaler Internet Access Administrator サブスクリプション
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -108,8 +106,8 @@ Zscaler Internet Access Administrator で Azure AD シングル サインオン�
 
     a. **[識別子]** テキスト ボックスに、要件に従って URL を入力します。
 
-    | |
-    |--|
+    | 識別子 |
+    |------------|
     | `https://admin.zscaler.net` |
     | `https://admin.zscalerone.net` |
     | `https://admin.zscalertwo.net` |
@@ -119,8 +117,8 @@ Zscaler Internet Access Administrator で Azure AD シングル サインオン�
 
     b. **[応答 URL]** テキスト ボックスに、要件に従って URL を入力します。
 
-    | |
-    |--|
+    | [応答 URL] |
+    |-----------|
     | `https://admin.zscaler.net/adminsso.do` |
     | `https://admin.zscalerone.net/adminsso.do` |
     | `https://admin.zscalertwo.net/adminsso.do` |

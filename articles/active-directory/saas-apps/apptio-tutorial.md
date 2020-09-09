@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Apptio の統合 | Microsoft Docs
 description: Azure Active Directory と Apptio の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b23eba91-7698-47e7-ae75-0ceafd739965
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d353aad9f0ecf871410dd94b0081381a0b1304c6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: bc3354312798939842ef40c40660aead0e90c367
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647336"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540700"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-apptio"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Apptio の統合
 

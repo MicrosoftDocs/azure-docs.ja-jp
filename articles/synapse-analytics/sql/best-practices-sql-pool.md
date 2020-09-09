@@ -6,16 +6,16 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: b3dc111fe62cbae857f3369165ba29cf40e90342
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8483fd2a1b33330b868fb21d71922377e906e6c8
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426391"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958423"
 ---
 # <a name="best-practices-for-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics での SQL プールのベスト プラクティス
 
@@ -59,7 +59,7 @@ PolyBase の読み込みは、CTAS または INSERT INTO を使用して実行�
 
 Gzip テキスト ファイルを使用する場合にスループットを最大限引き上げるには、ファイルを 60 個以上に分割して、読み込みの並列処理を最大化してください。 全体のスループットを引き上げるには、データを同時に読み込むことを検討してください。 このセクションに関連するトピックの追加情報については、次の記事をご覧ください。
 
-- [データの読み込み](data-loading-overview.md)
+- [データの読み込み](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [PolyBase の使い方ガイド](data-loading-best-practices.md)
 - [Azure SQL プールの読み込みパターンと戦略](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/)
 - [Azure Data Factory を使用してデータを読み込む](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
@@ -193,7 +193,7 @@ SQL プールには、クエリの実行を監視するために使用できる 
 
 一般的な問題と解決方法については、[トラブルシューティング](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関する記事もご覧ください。
 
-この記事に記載されていない情報が必要な場合は、このページの左側にある "Search for docs" を使用して、SQL プールのすべてのドキュメントを検索してください。  [SQL プール フォーラム](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse)は、他のユーザーや SQL プールの製品グループに質問を投稿できる場所です。  
+この記事に記載されていない情報が必要な場合は、[Azure Synapse に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)を検索して、他のユーザーや SQL プール製品グループに質問することができます。  
 
 Microsoft では、このフォーラムを積極的に監視し、お客様からの質問に他のユーザーや Microsoft のスタッフが回答しているかどうかを確認しています。  Stack Overflow で質問したい方のために、[Azure SQL プール Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-sqldw)も用意しています。
 

@@ -1,27 +1,24 @@
 ---
-title: VM イメージの共有アクセス署名 URI を取得する | Azure Marketplace
-description: この記事では、各仮想ハード ディスク (VHD) の共有アクセス署名 (SAS) URI を取得する方法について説明します。
-author: anbene
+title: VM イメージの Shared Access Signature URI - Azure Marketplace
+description: Azure Marketplace で仮想ハード ディスク (VHD) の Shared Access Signature (SAS) URI を生成します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: mingshen
-ms.openlocfilehash: c226d35647e4a5a2b1d583dd6328bfb73dae2a1c
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.topic: article
+author: iqshahmicrosoft
+ms.author: iqshah
+ms.date: 07/29/2020
+ms.openlocfilehash: 2bc129fc37347bd108ad62409490c5ce31b7728f
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81732637"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87538933"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>VM イメージの Shared Access Signature URI の取得
 
-> [!IMPORTANT]
-> Azure 仮想マシン オファーの管理を Cloud パートナー ポータルからパートナー センターに移行しています。 オファーが移行されるまでは、オファーを管理する Cloud パートナー ポータルの [VM イメージの共有アクセス署名 URI の取得](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-get-sas-uri)に関するページの手順に従ってください。
-
 この記事では、各仮想ハード ディスク (VHD) の共有アクセス署名 (SAS) Uniform Resource Identifier (URI) を生成する方法について説明します。
 
-発行プロセス中に、プランに関連付けられている各 VHD の URI を指定する必要があります。 このようなプランは、以前は SKU (Stock Keeping Unit) と呼ばれていました。 マイクロソフトは、認定プロセスでこれらの VHD にアクセスします。 この URI は、パートナー センターの **[プラン]** タブで入力します。
+発行プロセス中に、プラン (以前は SKU と呼ばれていました) に関連付けられている各 VHD の URI を指定する必要があります。(formerly called SKUs). マイクロソフトは、認定プロセスでこれらの VHD にアクセスします。 この URI は、パートナー センターの **[プラン]** タブで入力します。
 
 VHD の SAS URI を生成するときは、次の要件に従ってください。
 
@@ -34,17 +31,15 @@ VHD の SAS URI を生成するときは、次の要件に従ってください�
 
 SAS アドレス (URL) の作成には、次の 2 つの一般的なツールが使用されます。
 
-* **Microsoft Storage Explorer** - Windows、macOS、Linux 向けに提供されているグラフィカル ツール。
+* **Microsoft Azure Storage Explorer** – Azure portal で使用できるグラフィカル ツールです。
 * **Microsoft Azure CLI** - Windows 以外のオペレーティング システムや自動化された環境、継続的インテグレーション環境に推奨されます。
 
-### <a name="use-microsoft-storage-explorer"></a>Microsoft ストレージ エクスプローラーを使用する
+### <a name="use-microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer を使用する
 
-1. [Microsoft Azure ストレージ エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)をダウンロードしてインストールします。
-2. エクスプローラーを開き、左側のメニューで **[アカウントの追加]** を選択します。 **[Azure Storage へ接続する]** ダイアログ ボックスが表示されます。
-3. **[Azure アカウントを追加する]** を選択し、 **[サインイン]** を選択します。 必要な手順を完了して、Azure アカウントにサインインします。
-4. 左側の **[エクスプローラー]** ペインで、 **[ストレージ アカウント]** に移動し、このノードを展開します。
-5. VHD を右クリックし、 **[Get Share Access Signature]\(共有アクセス署名の取得\)** を選択します。
-6. **[Shared Access Signature]** ダイアログ ボックスが表示されます。 次のフィールドに入力します。
+1. Azure portal でストレージ アカウントに移動します。
+2. 左側のエクスプローラー ペインで、 **[Storage Explorer]** (プレビュー) ツールを開きます。
+3. VHD を右クリックし、 **[Shared Access Signature の取得]** を選択します。
+4. **[Shared Access Signature]** ダイアログ ボックスが表示されます。 次のフィールドに入力します。
 
     * **[開始時刻]** - VHD のアクセス許可の開始日。 現在の日付の 1 日前の日付を指定します。
     * **[有効期限]** - VHD のアクセス許可の有効期限。 現在の日付から 3 週間以上先の日付を指定します。
@@ -53,20 +48,11 @@ SAS アドレス (URL) の作成には、次の 2 つの一般的なツールが
 
         :::image type="content" source="media/create-sas-uri-storage-explorer.png" alt-text="[Shared Access Signature] ダイアログ ボックスの図":::
 
-7. この VHD に関連付けられている SAS URI を作成するには、 **[作成]** を選択します。 ダイアログ ボックスが更新され、この操作の詳細が表示されます。
-8. **[URI]** をコピーし、テキスト ファイルとして安全な場所に保存します。
+5. この VHD に関連付けられている SAS URI を作成するには、 **[作成]** を選択します。 ダイアログ ボックスが更新され、この操作の詳細が表示されます。
+6. **[URI]** をコピーし、テキスト ファイルとして安全な場所に保存します。
 
     :::image type="content" source="media/create-sas-uri-shared-access-signature-details.png" alt-text="[Shared Access Signature] の詳細ボックスの図":::
-
-    ここで生成された SAS URI のアクセス範囲は、コンテナーレベルとなります。 これを特定するには、テキスト ファイルを編集して VHD 名を追加します (次の手順)。
-
-9. SAS URI の vhds 文字列の後に VHD 名を挿入します (スラッシュを含めます)。 最終的な SAS URI は次のようになります。
-
-    `<blob-service-endpoint-url> + /vhds/ + <vhd-name>? + <sas-connection-string>` たとえば、VDH の名前が `TestRGVM2.vhd` である場合、最終的な SAS URI は次のようになります。
-
-    `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
-
-10. 発行するプラン内の各 VHD に対して、これらの手順を繰り返します。
+7. 発行するプラン内の各 VHD に対して、これらの手順を繰り返します。
 
 ### <a name="using-azure-cli"></a>Azure CLI の使用
 
@@ -113,7 +99,7 @@ SAS アドレス (URL) の作成には、次の 2 つの一般的なツールが
 
     `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
-発行する予定の SKU に含まれる各 VHD について、これらの手順を繰り返します。
+発行するプラン内の各 VHD に対して、これらの手順を繰り返します。
 
 ## <a name="verify-the-sas-uri"></a>SAS URI の検証
 
@@ -127,6 +113,6 @@ SAS アドレス (URL) の作成には、次の 2 つの一般的なツールが
 
 ## <a name="next-step"></a>次のステップ
 
-SAS URI の作成に問題がある場合は、[SAS URL に関する一般的な問題](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-sas-uri-issues)に関するページを参照してください。 それ以外の場合は、SAS URI を後で使用できるよう安全な場所に保存します。 これは、パートナー センターで VM オファーを発行するために必要になります。
+SAS URI の作成に問題がある場合は、[SAS URL に関する一般的な問題](common-sas-uri-issues.md)に関するページを参照してください。 それ以外の場合は、SAS URI を後で使用できるよう安全な場所に保存します。 これは、パートナー センターで VM オファーを発行するために必要になります。
 
-* [Azure 仮想マシン オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)
+* [Azure 仮想マシン オファーを作成する](azure-vm-create-offer.md)

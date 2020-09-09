@@ -5,15 +5,15 @@ author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 920755e128f10a79a056d47813b1b65d8633c937
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: f4f79a28dbe8a49e608ca6fae1781a1e19646619
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628744"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448887"
 ---
 # <a name="troubleshoot-input-connections"></a>入力接続のトラブルシューティング
 
@@ -139,9 +139,35 @@ FROM data
 
 3 つ以上の入力が同じ Event Hubs コンシューマー グループに接続されるクエリでは、別のコンシューマー グループを作成します。 そのためには、追加の Stream Analytics 入力を作成する必要があります。
 
+### <a name="create-separate-inputs-with-different-consumer-groups"></a>コンシューマー グループが異なる個別の入力を作成する
+
+同じイベント ハブに対して、異なるコンシューマー グループを使用して個別の入力を作成できます。 次の UNION クエリは *InputOne* と *InputTwo* が同じイベント ハブ ソースを参照している例です。 クエリでは、個別の入力に異なるコンシューマー グループを持たせることができます。 UNION クエリは 1 つの例にすぎません。
+
+```sql
+WITH 
+DataOne AS 
+(
+SELECT * FROM InputOne 
+),
+
+DataTwo AS 
+(
+SELECT * FROM InputTwo 
+),
+
+SELECT foo FROM DataOne
+UNION 
+SELECT foo FROM DataTwo
+
+```
+
+## <a name="readers-per-partition-exceeds-iot-hub-limit"></a>パーティションあたりのリーダー数が IoT Hub の上限を上回る
+
+Stream Analytics ジョブでは、IoT Hub に組み込まれた[イベント ハブ互換エンドポイント](../iot-hub/iot-hub-devguide-messages-read-builtin.md)を使用して IoT ハブに接続し、イベントが読み取られます。 パーティションあたりのリーダー数が IoT Hub の上限を上回る場合は、[イベントハブでの解決策](#readers-per-partition-exceeds-event-hubs-limit)を使用して問題を解決できます。 組み込みエンドポイントのコンシューマー グループは、IoT Hub ポータルのエンドポイント セッションまたは [IoT Hub SDK](https://docs.microsoft.com/rest/api/iothub/IotHubResource/CreateEventHubConsumerGroup) を使用して作成できます。
+
 ## <a name="get-help"></a>ヘルプの参照
 
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
+詳細については、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

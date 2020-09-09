@@ -7,12 +7,13 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 36d580b7659325d4bf5f13889f774ddaa2ab0702
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.custom: devx-track-javascript
+ms.openlocfilehash: d9988adea8e4d2dab39de64f9fd155a9d0b02cae
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594251"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432972"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps-preview"></a>Azure Static Web Apps プレビュー用にローカル開発環境を設定する
 
@@ -62,9 +63,9 @@ CLI ツールを使用してサイトにサービスを提供する場合は、[
 
 Visual Studio Code 用 Live Server 拡張機能には、静的コンテンツを提供するローカル開発用 Web サーバーが用意されています。
 
-#### <a name="create-a-repository"></a>リポジトリの作成
+#### <a name="create-a-repository"></a>リポジトリを作成する
 
-1. [https://github.com/staticwebdev/vanilla-api/generate](https://github.com/staticwebdev/vanilla-api/generate) に移動し、このテンプレートを使用して、**vanilla-api** という名前の新しい GitHub プロジェクトを作成します。
+1. GitHub にログインしていることを確認し、[https://github.com/staticwebdev/vanilla-api/generate](https://github.com/staticwebdev/vanilla-api/generate) に移動して、このテンプレートを使用して **vanilla-api** という名前の新しい GitHub プロジェクトを作成します。
 
     :::image type="content" source="media/local-development/vanilla-api.png" alt-text="GitHub の新しいリポジトリ ウィンドウ":::
 

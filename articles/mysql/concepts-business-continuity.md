@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: af0069adc741cfc802c37c90c0c7ec3c3ba74bb2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 7/7/2020
+ms.openlocfilehash: 74fdfb9f3a3f59f55b0f0ed4865601c0ddb7b7f2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79537229"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86241966"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mysql"></a>Azure Database for MySQL でのビジネス継続性を理解する
 
@@ -47,6 +47,14 @@ Azure Database for MySQL で提供されるビジネス継続性機能には、�
 
 > [!IMPORTANT]
 > geo リストアは、geo 冗長バックアップ ストレージでサーバーをプロビジョニングした場合にのみ可能です。 既存のサーバーに対してローカル冗長を geo 冗長バックアップに切り替える場合は、既存のサーバーの mysqldump を使用してダンプを取得し、geo 冗長バックアップで構成された新しく作成したサーバーに復元する必要があります。
+
+## <a name="cross-region-read-replicas"></a>リージョンにまたがる読み取りレプリカ
+
+リージョンにまたがる読み取りレプリカを使用すると、事業継続とディザスター リカバリーの計画を強化できます。 読み取りレプリカは、MySQL のバイナリ ログ レプリケーション テクノロジを使用して非同期的に更新されます。 読み取りレプリカ、利用可能なリージョン、フェールオーバーする方法については、[読み取りレプリカの概念に関する記事](concepts-read-replicas.md)を参照してください。 
+
+## <a name="faq"></a>よく寄せられる質問
+### <a name="where-does-azure-database-for-mysql-store-customer-data"></a>Azure Database for MySQL は顧客データをどこに格納しますか?
+既定では、Azure Database for MySQL によって、デプロイされているリージョン外に顧客データが移動または格納されることはありません。 ただし、顧客は必要に応じて、[地理冗長バックアップ](concepts-backup.md#backup-redundancy-options)を有効にするか、別のリージョンにデータを格納するための[クロスリージョン読み取りレプリカ](concepts-read-replicas.md#cross-region-replication)を作成することを選択できます。
 
 ## <a name="next-steps"></a>次のステップ
 

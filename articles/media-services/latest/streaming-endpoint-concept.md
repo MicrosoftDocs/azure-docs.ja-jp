@@ -4,24 +4,24 @@ titleSuffix: Azure Media Services
 description: コンテンツをクライアント プレーヤー アプリまたは CDN (Content Delivery Network) に直接配信するダイナミック パッケージおよびストリーミング サービスであるストリーミング エンドポイント (配信元) について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/13/2020
-ms.author: juliako
-ms.openlocfilehash: 72cfdf172e4524e302ef2e22826d4f78ce32daf0
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.author: inhenkel
+ms.openlocfilehash: 9f17e8a09715ce9ff51715f17a449ec0a5b3f770
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582728"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297197"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure Media Services のストリーミング エンドポイント (配信元)
 
-Microsoft Azure Media Services では、[ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints)は、いずれかの一般的なストリーミング メディア プロトコル (HLS または DASH) を使用して、ライブのオンデマンド コンテンツをクライアント プレーヤー アプリに直接配信できるダイナミック (Just-In-Time) パッケージおよび配信元サービスを表します。 さらに、**ストリーミング エンドポイント**は、業界有数の DRM に動的 (Just-In-Time) 暗号化を提供します。 
+Microsoft Azure Media Services では、[ストリーミング エンドポイント](/rest/api/media/streamingendpoints)は、いずれかの一般的なストリーミング メディア プロトコル (HLS または DASH) を使用して、ライブのオンデマンド コンテンツをクライアント プレーヤー アプリに直接配信できるダイナミック (Just-In-Time) パッケージおよび配信元サービスを表します。 さらに、**ストリーミング エンドポイント**は、業界有数の DRM に動的 (Just-In-Time) 暗号化を提供します。 
 
 Media Services アカウントを作成すると、**既定**のストリーミング エンドポイントが停止状態で作成されます。 **既定の**ストリーミング エンドポイントを削除することはできません。 このアカウントでは、さらに多くのストリーミング エンドポイントを作成できます ([クォータと制限](limits-quotas-constraints.md)に関するページを参照)。
 
@@ -41,11 +41,13 @@ Media Services アカウントを作成すると、**既定**のストリーミ�
 ### <a name="limitations"></a>制限事項
 
 * ストリーミング エンドポイント名の最大値は 24 文字です。
-* 名前は、次の [regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) パターン `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$` に従う必要があります。
+* 名前は、次の [regex](/dotnet/standard/base-types/regular-expression-language-quick-reference) パターン `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$` に従う必要があります。
 
 ## <a name="types"></a>型
 
 **ストリーミング エンドポイント**には、**Standard** (プレビュー) と **Premium** の 2 つの型があります。 型は、ストリーミング エンドポイントに割り当てられたスケール ユニットの数 (`scaleUnits`) によって定義されます。
+
+ストリーミング ユニットの上限は、通常 10 です。 お使いのアカウントの上限を引き上げるには、[こちら](https://azure.microsoft.com/support/create-ticket/)までご連絡ください。
 
 次の表で、型について説明します。
 
@@ -61,7 +63,7 @@ SLA については、[価格と SLA](https://azure.microsoft.com/pricing/detail
 
 ## <a name="comparing-streaming-types"></a>ストリーミング タイプの比較
 
-機能|Standard|Premium
+特徴量|Standard|Premium
 ---|---|---
 スループット |最大 600 Mbps であり、CDN を使用した場合に実効スループットが大幅に向上します。|ストリーミング ユニット (SU) あたり 200 Mbps。 CDN を使用した場合に実効スループットが大幅に向上します。
 CDN|Azure CDN、サードパーティ CDN、または CDN なし。|Azure CDN、サードパーティ CDN、または CDN なし。
@@ -77,7 +79,7 @@ IP フィルタリング/G20/カスタム ホスト <sup>1</sup>|はい|はい
 
 ## <a name="streaming-endpoint-properties"></a>ストリーミング エンドポイントのプロパティ
 
-このセクションでは、ストリーミング エンドポイントの一部のプロパティについて詳しく説明します。 新しいストリーミング エンドポイントを作成する方法の例と全プロパティの説明については、[ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)に関する記事をご覧ください。
+このセクションでは、ストリーミング エンドポイントの一部のプロパティについて詳しく説明します。 新しいストリーミング エンドポイントを作成する方法の例と全プロパティの説明については、[ストリーミング エンドポイント](/rest/api/media/streamingendpoints/create)に関する記事をご覧ください。
 
 - `accessControl`:このストリーミング エンドポイントのセキュリティ設定である、このエンドポイントに接続することを許可された Akamai 署名ヘッダー認証キーと IP アドレスを構成するために使用されます。 このプロパティは、`cdnEnabled` が false に設定されているときにのみ設定できます。
 
@@ -92,7 +94,7 @@ IP フィルタリング/G20/カスタム ホスト <sup>1</sup>|はい|はい
 
 - `cdnProfile`:`cdnEnabled` が true に設定されていると、`cdnProfile` の値を渡すこともできます。 `cdnProfile` は CDN エンドポイントのポイントが作成される、CDN プロファイルの名前です。 既存の cdnProfile を指定するか、新しいものを使用できます。 値が NULL で `cdnEnabled` が true の場合、既定値 "AzureMediaStreamingPlatformCdnProfile" が使用されます。 指定された `cdnProfile` が既に存在する場合、その下にエンドポイントが作成されます。 プロファイルが存在しない場合は、新しいプロファイルが自動的に作成されます。
 - `cdnProvider`:CDN が有効になっていると、`cdnProvider` の値を渡すこともできます。 `cdnProvider` は使用されるプロバイダーを制御します。 現時点では、"StandardVerizon"、"PremiumVerizon"、および "StandardAkamai" の 3 つの値がサポートされています。 値が指定されておらず、`cdnEnabled` が true である場合は、"StandardVerizon" (既定値) が使用されます。
-- `crossSiteAccessPolicies`:さまざまなクライアントのクロス サイト アクセス ポリシーを指定するために使用されます。 詳しくは、[Cross-domain ポリシー ファイルの仕様](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)と「[Making a Service Available Across Domain Boundaries](https://msdn.microsoft.com/library/cc197955\(v=vs.95\).aspx)」(ドメインの境界を越えてサービスを利用できるようにする) をご覧ください。 設定は、Smooth Streaming にのみ適用されます。
+- `crossSiteAccessPolicies`:さまざまなクライアントのクロス サイト アクセス ポリシーを指定するために使用されます。 詳しくは、[Cross-domain ポリシー ファイルの仕様](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)と「[Making a Service Available Across Domain Boundaries](/previous-versions/azure/azure-services/gg185950(v=azure.100))」(ドメインの境界を越えてサービスを利用できるようにする) をご覧ください。 設定は、Smooth Streaming にのみ適用されます。
 - `customHostNames`:カスタム ホスト名に転送されたトラフィックを受け入れるようにストリーミング エンドポイントを構成するために使用されます。 このプロパティは Standard と Premium のストリーミング エンドポイントで有効であり、`cdnEnabled`: false のときに設定できます。
 
     ドメイン名の所有権は、Media Services によって確認される必要があります。 Media Services は、使用中のドメインに追加されるコンポーネントとして Media Services アカウント ID が含まれる `CName` レコードを要求することで、ドメイン名の所有権を検証します。 例として、ストリーミング エンドポイントのカスタム ホスト名として "sports.contoso.com" が使用されるには、Media Services の検証ホスト名の 1 つにポイントするよう、`<accountId>.contoso.com` のレコードを構成する必要があります。 検証ホスト名は、verifydns.\<mediaservices-dns-zone> で構成されます。

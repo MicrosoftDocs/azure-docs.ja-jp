@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 55984082a6b287e9f7cdca005a24ef3c18032491
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02e9426c7fc537a43fadddb5e2c34fd9c311d69b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75456698"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84753268"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Azure Logic Apps で変数を使用して値を格納および管理する
 
@@ -22,7 +22,7 @@ ms.locfileid: "75456698"
 * 変数の値を取得または参照する。
 * 変数を一定の値だけ増減させる。この操作は "*値を増やす*" および "*値を減らす*" と呼ばれています。
 * 異なる値を変数に代入する。
-* 文字列または配列の末尾に変数の値を挿入 ("*追加*") する。
+* 文字列または配列の最後の項目として、変数の値を挿入または "*追加*" します。
 
 変数は、それを作成したロジック アプリ インスタンスの範囲内でのみ、グローバルに存在します。 また、同じロジック アプリ インスタンス内であれば、ループの反復処理の境界を越えて存続します。 アクションの出力を参照するときはアクションの名前を使用するのが普通ですが、変数を参照するときは、変数の名前をトークンとして使用します。
 

@@ -3,16 +3,17 @@ title: Linux VM からデータ ディスクを切断する - Azure
 description: Azure CLI または Azure portal を使用して、Azure の仮想マシンからデータ ディスクをデタッチする方法について説明します。
 author: roygara
 ms.service: virtual-machines-linux
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/18/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f8a0790169b17ad7755386f9bdd4f9372efc83e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 41f70a476e5cc562207614c4e04658d5f0fc6d09
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74036366"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499519"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>データ ディスクを Linux 仮想マシンから切断する方法
 
@@ -106,12 +107,10 @@ az vm disk detach \
 ## <a name="detach-a-data-disk-using-the-portal"></a>ポータルを使用してデータ ディスクを切断する方法
 
 1. 左側のメニューで **[Virtual Machines]** を選択します。
-2. 切断するデータ ディスクが接続されている仮想マシンを選択し、 **[停止]** をクリックして VM の割り当てを解除します。
-3. 仮想マシンのウィンドウで、 **[ディスク]** を選択します。
-4. **[ディスク]** ウィンドウの上部にある **[編集]** を選択します。
-5. **[ディスク]** ウィンドウで、切断するデータ ディスクの右端にある ![切断ボタンのイメージ](./media/detach-disk/detach.png) 切断ボタンをクリックします。
-5. ディスクが削除されたら、ウィンドウの上部にある [保存] をクリックします。
-6. 仮想マシンのウィンドウで **[概要]** をクリックし、ウィンドウの上部にある **[開始]** ボタンをクリックして VM を再起動します。
+1. 仮想マシンのブレードで、 **[ディスク]** を選択します。
+1. **[ディスク]** ブレードの上部で、 **[編集]** を選択します。
+1. **[ディスク]** ブレードで、切断するデータ ディスクの右端にある ![切断ボタンのイメージ](./media/detach-disk/detach.png) 切断ボタンをクリックします。
+1. ディスクが削除されたら、ブレードの上部にある **[保存]** をクリックします。
 
 ディスクはストレージに残りますが、仮想マシンには接続されていません。
 

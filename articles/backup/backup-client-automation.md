@@ -3,16 +3,16 @@ title: PowerShell を使用して Windows Server を Azure にバックアップ
 description: この記事では、PowerShell を使用して Windows Server または Windows クライアント上に Azure Backup を設定したり、バックアップと回復を管理したりする方法について説明します。
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 67c80a76720dd544da355ee00540cd11a22bfb10
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 47c8fc39626d3bca3355c1d1e46f1634327748a8
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848167"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892373"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>PowerShell を使用して Windows Server/Windows Client に Microsoft Azure Backup をデプロイおよび管理する手順
 
-この記事では、PowerShell を使用して、Windows Server または Windows クライアント上に Microsoft Azure Backup をセットアップし、バックアップと回復を管理する方法を示します。
+この記事では、PowerShell を使用して Windows Server または Windows クライアント上に Azure Backup を設定したり、バックアップと回復を管理したりする方法について説明します。
 
 ## <a name="install-azure-powershell"></a>Azure PowerShell をインストールする
 
@@ -20,7 +20,7 @@ ms.locfileid: "83848167"
 
 開始するには、[PowerShell の最新リリースをインストール](/powershell/azure/install-az-ps)します。
 
-## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーの作成
+## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 
 次の手順では、Recovery Services コンテナーの作成について説明します。 Recovery Services コンテナーは Backup コンテナーとは異なります。
 
@@ -30,7 +30,7 @@ ms.locfileid: "83848167"
     Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 
-2. Recovery Services コンテナーは ARM リソースであるため、リソース グループ内に配置する必要があります。 既存のリソース グループを使用することも、新しいリソース グループを作成することもできます。 新しいリソース グループを作成する場合、リソース グループの名前と場所を指定します。  
+2. Recovery Services コンテナーは Azure Resource Manager リソースであるため、リソース グループ内に配置する必要があります。 既存のリソース グループを使用することも、新しいリソース グループを作成することもできます。 新しいリソース グループを作成する場合、リソース グループの名前と場所を指定します。  
 
     ```powershell
     New-AzResourceGroup –Name "test-rg" –Location "WestUS"
@@ -42,7 +42,7 @@ ms.locfileid: "83848167"
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
     ```
 
-4. 使用するストレージ冗長性の種類を指定します。[ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy-lrs.md) または [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy-grs.md) を使用できます。 次に示す例では、testVault の -BackupStorageRedundancy オプションが GeoRedundant に設定されています。
+4. 使用するストレージ冗長性の種類を指定します。 [ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy.md) または [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy.md) を使用できます。 次に示す例では、*testVault* の **-BackupStorageRedundancy** オプションが **GeoRedundant** に設定されています。
 
    > [!TIP]
    > Azure Backup コマンドレットの多くは、入力として Recovery Services コンテナー オブジェクトを必要としています。 このため、Backup Recovery Services コンテナー オブジェクトを変数に格納すると便利です。
@@ -56,7 +56,7 @@ ms.locfileid: "83848167"
 
 ## <a name="view-the-vaults-in-a-subscription"></a>サブスクリプション内のコンテナーの表示
 
-**Get-AzRecoveryServicesVault** を使用して、現在のサブスクリプション内にあるすべてのコンテナーを一覧表示します。 このコマンドは、新しく作成したコンテナーを確認したり、サブスクリプション内の利用可能なコンテナーを確認したりするのに使用できます。
+**Get-AzRecoveryServicesVault** を使用して、現在のサブスクリプション内にあるすべてのコンテナーを一覧表示します。 このコマンドを使用すると、新しいコンテナーが作成されたことを確認したり、サブスクリプション内のどのコンテナーが利用できるかを調べたりすることができます。
 
 **Get-AzRecoveryServicesVault** コマンドを実行すると、サブスクリプション内にあるすべてのコンテナーが一覧表示されます。
 
@@ -138,7 +138,7 @@ $CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault1 
 > [!NOTE]
 > コンテナー証明書の生成に関するバグは、Az 3.5.0 リリースで修正されています。 コンテナー証明書をダウンロードするには、Az 3.5.0 リリース バージョン以上を使用してください。
 
-PowerShell の最新の Az モジュールでは、基になるプラットフォームの制限上、コンテナーの資格情報をダウンロードするために自己署名証明書が必要となります。 自己署名証明書を指定してコンテナーの資格情報をダウンロードする例を次に示します。
+PowerShell の最新の Az モジュールでは、基になるプラットフォームの制限のために、コンテナーの資格情報をダウンロードするには自己署名証明書が必要になります。 自己署名証明書を指定してコンテナーの資格情報をダウンロードする例を次に示します。
 
 ```powershell
 $dt = $(Get-Date).ToString("M-d-yyyy")
@@ -147,8 +147,8 @@ $certficate = [convert]::ToBase64String($cert.Export([System.Security.Cryptograp
 $CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault -Path $CredsPath -Certificate $certficate
 ```
 
-Windows Server または Windows クライアント コンピューターで [Start-OBRegistration](https://docs.microsoft.com/powershell/module/msonlinebackup/start-obregistration?view=winserver2012-ps) コマンドレットを実行し、コンピューターをコンテナーに登録します。
-バックアップに使用されるこれらのコマンドレットは、インストール プロセスの一部として Mars AgentInstaller が追加した MSONLINE モジュールに含まれています。
+Windows Server または Windows クライアント コンピューターで [Start-OBRegistration](/powershell/module/msonlinebackup/start-obregistration) コマンドレットを実行し、コンピューターをコンテナーに登録します。
+これと、バックアップに使用されるその他のコマンドレットは、インストール プロセスの一部として MARS AgentInstaller で追加された MSONLINE モジュールに含まれています。
 
 このエージェント インストーラーでは、$Env:PSModulePath 変数が更新されません。 つまり、モジュールの自動読み込みに失敗します。 これを解決するために、次を実行できます。
 
@@ -183,11 +183,11 @@ Machine registration succeeded.
 
 ## <a name="networking-settings"></a>ネットワークの設定
 
-プロキシ サーバーを介して Windows コンピューターをインターネットに接続した場合、プロキシ設定もエージェントに指定できます。 この例では、プロキシ サーバーがないため、プロキシ関連の情報はないことを明示的に示しています。
+プロキシ サーバーを介して Windows コンピューターをインターネットに接続した場合、プロキシ設定もエージェントに指定できます。 この例では、プロキシ サーバーがないため、プロキシ関連の情報を明示的にクリアしています。
 
 特定の曜日セットに対して、帯域幅の使用を、`work hour bandwidth`オプションと`non-work hour bandwidth`オプションで制御することもできます。
 
-プロキシと帯域幅の詳細の設定は、 [Set-OBMachineSetting](https://docs.microsoft.com/powershell/module/msonlinebackup/set-obmachinesetting) コマンドレットを使用して実行します。
+プロキシと帯域幅の詳細の設定は、 [Set-OBMachineSetting](/powershell/module/msonlinebackup/set-obmachinesetting) コマンドレットを使用して実行します。
 
 ```powershell
 Set-OBMachineSetting -NoProxy
@@ -209,7 +209,7 @@ Server properties updated successfully.
 
 データの機密性を保護するために、Microsoft Azure Backup に送信されるバックアップ データは暗号化されます。 暗号化パスフレーズは、復元時にデータの暗号化を解除するための "パスワード" になります。
 
-Azure portal の **[Recovery Services コンテナー]** セクションにある **[設定]**  >  **[プロパティ]**  >  **[セキュリティ PIN]** 下の **[生成]** を選択して、セキュリティ PIN を生成する必要があります。 
+Azure portal の **[Recovery Services コンテナー]** セクションにある **[設定]**  >  **[プロパティ]**  >  **[セキュリティ PIN]** 下の **[生成]** を選択して、セキュリティ PIN を生成する必要があります。
 
 >[!NOTE]
 > セキュリティ PIN は、Azure portal でのみ生成できます。
@@ -232,23 +232,23 @@ Server properties updated successfully
 
 ## <a name="back-up-files-and-folders"></a>ファイルとフォルダーのバックアップ
 
-Windows Server およびクライアントから Azure Backup へのすべてのバックアップは、ポリシーによって管理されます。 ポリシーは 3 つの部分で構成されます。
+Windows Server およびクライアントから Azure Backup へのすべてのバックアップは、ポリシーによって管理されます。 ポリシーには、次の 3 つの部分があります。
 
 1. **バックアップ スケジュール**。バックアップをいつ実行し、いつサービスと同期するかを指定します。
 2. **保持スケジュール** は、Azure で回復ポイントを保持する期間を指定します。
 3. **ファイル内包/除外仕様**。何をバックアップするかを指定します。
 
-このドキュメントでは、バックアップを自動化するため、構成を何も行っていないことを前提としています。 まず、 [New-OBPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/new-obpolicy) コマンドレットを使って新しいバックアップ ポリシーを作成します。
+このドキュメントでは、バックアップを自動化するため、構成を何も行っていないことを前提としています。 まず、 [New-OBPolicy](/powershell/module/msonlinebackup/new-obpolicy) コマンドレットを使って新しいバックアップ ポリシーを作成します。
 
 ```powershell
 $NewPolicy = New-OBPolicy
 ```
 
-この時点でポリシーは空で、どの項目を含むまたは除外するか、またバックアップをいつ実行するか、どこに格納するかを定義する他のコマンドレットが必要です。
+この時点でポリシーは空であり、どの項目を含めるか、どの項目を除外するか、いつバックアップを実行するか、どこにバックアップを格納するかを定義するために、他のコマンドレットが必要です。
 
 ### <a name="configuring-the-backup-schedule"></a>バックアップ スケジュールの構成
 
-ポリシーの 3 つの部分の最初は、[New-OBSchedule](https://docs.microsoft.com/powershell/module/msonlinebackup/new-obschedule) コマンドレットを使用して作成されるバックアップ スケジュールです。 バックアップ スケジュールでは、バックアップをいつ実行するかを定義します。 スケジュールを作成するときは、次の 2 つの入力パラメーターを指定する必要があります。
+ポリシーの 3 つの部分の最初は、[New-OBSchedule](/powershell/module/msonlinebackup/new-obschedule) コマンドレットを使用して作成されるバックアップ スケジュールです。 バックアップ スケジュールでは、バックアップをいつ実行するかを定義します。 スケジュールを作成するときは、次の 2 つの入力パラメーターを指定する必要があります。
 
 * **曜日** 。 バックアップ ジョブは、週に 1 回、毎日、またはこれらを組み合わせたさまざまな間隔で実行できます。
 * **1 日のうちの時間帯** 。 バックアップがトリガーされる最大 3 つの異なる時間帯を定義できます。
@@ -259,7 +259,7 @@ $NewPolicy = New-OBPolicy
 $Schedule = New-OBSchedule -DaysOfWeek Saturday, Sunday -TimesOfDay 16:00
 ```
 
-バックアップ スケジュールはポリシーに関連付ける必要があります。これを行うには、[Set-OBSchedule](https://docs.microsoft.com/powershell/module/msonlinebackup/set-obschedule) コマンドレットを使用します。
+バックアップ スケジュールはポリシーに関連付ける必要があります。これを行うには、[Set-OBSchedule](/powershell/module/msonlinebackup/set-obschedule) コマンドレットを使用します。
 
 ```powershell
 Set-OBSchedule -Policy $NewPolicy -Schedule $Schedule
@@ -271,13 +271,13 @@ BackupSchedule : 4:00 PM Saturday, Sunday, Every 1 week(s) DsList : PolicyName :
 
 ### <a name="configuring-a-retention-policy"></a>保有ポリシーの構成
 
-保有ポリシーでは、バックアップ ジョブから作成した回復ポイントをどのくらいの期間保持するかを定義します。 [New-OBRetentionPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/new-obretentionpolicy) コマンドレットを使って新しい保有ポリシーを作成するとき、Microsoft Azure Backup でバックアップの回復ポイントを保持する日数を指定できます。 次の例では、7 日間の保有ポリシーを設定します。
+保有ポリシーでは、バックアップ ジョブから作成した回復ポイントをどのくらいの期間保持するかを定義します。 [New-OBRetentionPolicy](/powershell/module/msonlinebackup/new-obretentionpolicy) コマンドレットを使って新しいアイテム保持ポリシーを作成するとき、Azure Backup でバックアップの回復ポイントを保持する日数を指定できます。 次の例では、7 日間の保有ポリシーを設定します。
 
 ```powershell
 $RetentionPolicy = New-OBRetentionPolicy -RetentionDays 7
 ```
 
-保有ポリシーは、コマンドレット [Set-OBRetentionPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/set-obretentionpolicy)を使用してメインのポリシーと関連付ける必要があります。
+保有ポリシーは、コマンドレット [Set-OBRetentionPolicy](/powershell/module/msonlinebackup/set-obretentionpolicy)を使用してメインのポリシーと関連付ける必要があります。
 
 ```powershell
 Set-OBRetentionPolicy -Policy $NewPolicy -RetentionPolicy $RetentionPolicy
@@ -314,7 +314,7 @@ PolicyState     : Valid
 
 後者は、New-OBFileSpec コマンドの NonRecursive フラグを使用して実行できます。
 
-次の例では、ボリューム C: および D: をバックアップし、Windows フォルダーと任意の一時フォルダー内の OS バイナリを除外します。 それを行うには、[New-OBFileSpec](https://docs.microsoft.com/powershell/module/msonlinebackup/new-obfilespec) コマンドレットを使用して 2 つのファイル指定 (包含用に 1 つと除外用に 1 つ) を作成します。 ファイル指定が作成されたら、 [Add-OBFileSpec](https://docs.microsoft.com/powershell/module/msonlinebackup/add-obfilespec) コマンドレットを使用してポリシーに関連付けます。
+次の例では、ボリューム C: および D: をバックアップし、Windows フォルダーと任意の一時フォルダー内の OS バイナリを除外します。 それを行うには、[New-OBFileSpec](/powershell/module/msonlinebackup/new-obfilespec) コマンドレットを使用して 2 つのファイル指定 (包含用に 1 つと除外用に 1 つ) を作成します。 ファイル指定が作成されたら、 [Add-OBFileSpec](/powershell/module/msonlinebackup/add-obfilespec) コマンドレットを使用してポリシーに関連付けます。
 
 ```powershell
 $Inclusions = New-OBFileSpec -FileSpec @("C:\", "D:\")
@@ -410,7 +410,7 @@ PolicyState     : Valid
 
 ### <a name="applying-the-policy"></a>ポリシーの適用
 
-これで、ポリシー オブジェクトが完了し、バックアップ スケジュール、保有ポリシー、およびファイルの包含/除外リストに関連付けられました。 次に、Microsoft Azure Backup で使用するためにこのポリシーをコミットできます。 新しく作成されたポリシーを適用する前に、[Remove-OBPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/remove-obpolicy) コマンドレットを使用して、サーバーに関連付けられた既存のバックアップ ポリシーが存在しないことを確認してください。 ポリシーを削除すると確認のダイアログが表示されます。 確認をスキップするには、コマンドレットで `-Confirm:$false` フラグを使用します。
+これで、ポリシー オブジェクトが完了し、バックアップ スケジュール、保有ポリシー、およびファイルの包含/除外リストに関連付けられました。 次に、Microsoft Azure Backup で使用するためにこのポリシーをコミットできます。 新しく作成されたポリシーを適用する前に、[Remove-OBPolicy](/powershell/module/msonlinebackup/remove-obpolicy) コマンドレットを使用して、サーバーに関連付けられた既存のバックアップ ポリシーが存在しないことを確認してください。 ポリシーを削除すると確認のダイアログが表示されます。 確認をスキップするには、コマンドレットで `-Confirm:$false` フラグを使用します。
 
 ```powershell
 Get-OBPolicy | Remove-OBPolicy
@@ -420,7 +420,7 @@ Get-OBPolicy | Remove-OBPolicy
 Microsoft Azure Backup Are you sure you want to remove this backup policy? This will delete all the backed up data. [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
 ```
 
-[Set-OBPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/set-obpolicy) コマンドレットで、ポリシー オブジェクトのコミットを実行します。 ここでも、確認のダイアログが表示されます。 確認をスキップするには、コマンドレットで `-Confirm:$false` フラグを使用します。
+[Set-OBPolicy](/powershell/module/msonlinebackup/set-obpolicy) コマンドレットで、ポリシー オブジェクトのコミットを実行します。 ここでも、確認のダイアログが表示されます。 確認をスキップするには、コマンドレットで `-Confirm:$false` フラグを使用します。
 
 ```powershell
 Set-OBPolicy -Policy $NewPolicy
@@ -468,7 +468,7 @@ RetentionPolicy : Retention Days : 7
 State : Existing PolicyState : Valid
 ```
 
-既存のバックアップ ポリシーの詳細を表示するには、 [Get-OBPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/get-obpolicy) コマンドレットを使用します。 バックアップ スケジュール用の [Get-OBSchedule](https://docs.microsoft.com/powershell/module/msonlinebackup/get-obschedule) コマンドレット、リテンション期間ポリシー用の [Get-OBRetentionPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/get-obretentionpolicy) コマンドレットを使用してさらにドリルダウンできます。
+既存のバックアップ ポリシーの詳細を表示するには、 [Get-OBPolicy](/powershell/module/msonlinebackup/get-obpolicy) コマンドレットを使用します。 バックアップ スケジュール用の [Get-OBSchedule](/powershell/module/msonlinebackup/get-obschedule) コマンドレット、リテンション期間ポリシー用の [Get-OBRetentionPolicy](/powershell/module/msonlinebackup/get-obretentionpolicy) コマンドレットを使用してさらにドリルダウンできます。
 
 ```powershell
 Get-OBPolicy | Get-OBSchedule
@@ -523,7 +523,7 @@ IsRecursive : True
 
 ### <a name="performing-an-on-demand-backup"></a>オンデマンド バックアップの実行
 
-バックアップ ポリシーが設定されると、スケジュールに従ってバックアップが実行されます。 [Start-OBBackup](https://docs.microsoft.com/powershell/module/msonlinebackup/start-obbackup) コマンドレットを使って、オンデマンド バックアップを起動することもできます。
+バックアップ ポリシーが設定されると、スケジュールに従ってバックアップが実行されます。 [Start-OBBackup](/powershell/module/msonlinebackup/start-obbackup) コマンドレットを使って、オンデマンド バックアップを起動することもできます。
 
 ```powershell
 Get-OBPolicy | Start-OBBackup
@@ -542,9 +542,9 @@ Job completed.
 The backup operation completed successfully.
 ```
 
-## <a name="back-up-windows-server-system-state-in-mabs-agent"></a>MABS エージェントでの Windows Server のシステム状態のバックアップ
+## <a name="back-up-windows-server-system-state-in-mars-agent"></a>MARS エージェントでの Windows Server のシステム状態のバックアップ
 
-このセクションでは、MABS エージェントでシステムの状態を設定する PowerShell コマンドについて説明します
+このセクションでは、MARS エージェントでシステムの状態を設定する PowerShell コマンドについて説明します
 
 ### <a name="schedule"></a>スケジュール
 
@@ -581,7 +581,7 @@ Get-OBSystemStatePolicy
 
 ### <a name="picking-the-source-volume"></a>ソース ボリュームの選択
 
-Microsoft Azure Backup から項目を復元するには、まず、項目のソースを特定する必要があります。 Windows サーバーまたは Windows クライアントのコンテキストでコマンドを実行するため、コンピューターは既に特定されています。 ソースを特定する次の手順は、それを含むボリュームを特定することです。 該当のコンピューターからバックアップするボリュームまたはソースの一覧は、 [Get-OBRecoverableSource](https://docs.microsoft.com/powershell/module/msonlinebackup/get-obrecoverablesource) コマンドレットを実行して取得できます。 このコマンドは、このサーバー/クライアントでバックアップされるすべてのソースの配列を返します。
+Azure Backup から項目を復元するには、まず、項目のソースを特定する必要があります。 Windows サーバーまたは Windows クライアントのコンテキストでコマンドを実行するため、コンピューターは既に特定されています。 ソースを特定する次の手順は、それを含むボリュームを特定することです。 該当のコンピューターからバックアップするボリュームまたはソースの一覧は、 [Get-OBRecoverableSource](/powershell/module/msonlinebackup/get-obrecoverablesource) コマンドレットを実行して取得できます。 このコマンドは、このサーバー/クライアントでバックアップされるすべてのソースの配列を返します。
 
 ```powershell
 $Source = Get-OBRecoverableSource
@@ -600,7 +600,7 @@ ServerName : myserver.microsoft.com
 
 ### <a name="choosing-a-backup-point-from-which-to-restore"></a>復元元のバックアップ ポイントの選択
 
-バックアップ ポイントの一覧は、[Get-OBRecoverableItem](https://docs.microsoft.com/powershell/module/msonlinebackup/get-obrecoverableitem) コマンドレットと適切なパラメーターを実行して取得できます。 この例では、ソース ボリューム *C:* の最新のバックアップ ポイントを選択し、これを使用して特定のファイルを復旧します。
+バックアップ ポイントの一覧は、[Get-OBRecoverableItem](/powershell/module/msonlinebackup/get-obrecoverableitem) コマンドレットと適切なパラメーターを実行して取得できます。 この例では、ソース ボリューム *C:* の最新のバックアップ ポイントを選択し、これを使用して特定のファイルを復旧します。
 
 ```powershell
 $Rps = Get-OBRecoverableItem $Source[0]
@@ -632,7 +632,7 @@ ItemSize             :
 ItemLastModifiedTime :
 ```
 
-オブジェクト `$Rps` は、バックアップ ポイントの配列です。 最初の要素は最新のポイントで、N 番目の要素は最も古いポイントです。 最新のポイントを選択するには、 `$Rps[0]`を使用します。
+オブジェクト `$Rps` は、バックアップ ポイントの配列です。 最初の要素は最新のポイントで、N 番目の要素は最も古いポイントです。 最新のポイントを選択するには、`$Rps[0]` を使用します。
 
 ### <a name="specifying-an-item-to-restore"></a>復元する項目の指定
 
@@ -659,13 +659,13 @@ ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
 
 ### <a name="triggering-the-restore-process"></a>復元プロセスのトリガー
 
-復元プロセスをトリガーするには、まず、回復オプションを指定する必要があります。 これを行うには、 [New-OBRecoveryOption](https://docs.microsoft.com/powershell/module/msonlinebackup/new-obrecoveryoption) コマンドレットを使用します。 この例では、ファイルを *C:\temp* に復元すると仮定します。また、宛先フォルダー *C:\temp* に既に存在するファイルをスキップすると仮定します。こうした回復オプションを作成するには、次のコマンドを使用します。
+復元プロセスをトリガーするには、まず、回復オプションを指定する必要があります。 これを行うには、 [New-OBRecoveryOption](/powershell/module/msonlinebackup/new-obrecoveryoption) コマンドレットを使用します。 この例では、ファイルを *C:\temp* に復元すると仮定します。また、宛先フォルダー *C:\temp* に既に存在するファイルをスキップすると仮定します。こうした回復オプションを作成するには、次のコマンドを使用します。
 
 ```powershell
 $RecoveryOption = New-OBRecoveryOption -DestinationPath "C:\temp" -OverwriteType Skip
 ```
 
-次に、`Get-OBRecoverableItem` コマンドレットの出力から選択した `$Item` で [Start-OBRecovery](https://docs.microsoft.com/powershell/module/msonlinebackup/start-obrecovery) コマンドを使用して復元プロセスをトリガーします。
+次に、`Get-OBRecoverableItem` コマンドレットの出力から選択した `$Item` で [Start-OBRecovery](/powershell/module/msonlinebackup/start-obrecovery) コマンドを使用して復元プロセスをトリガーします。
 
 ```powershell
 Start-OBRecovery -RecoverableItem $Item -RecoveryOption $RecoveryOption
@@ -744,5 +744,5 @@ Invoke-Command -Session $Session -Script { param($D, $A) Start-Process -FilePath
 
 Windows Server/Windows クライアント用の Azure Backup の詳細については、次を参照してください。
 
-* [Azure Backup の概要](backup-introduction-to-azure-backup.md)
+* [Azure Backup の概要](./backup-overview.md)
 * [Windows Server のバックアップ](backup-windows-with-mars-agent.md)

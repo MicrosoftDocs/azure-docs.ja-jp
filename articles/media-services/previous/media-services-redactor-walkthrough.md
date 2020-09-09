@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: ril
 ms.reviewer: juliako
-ms.openlocfilehash: a8db8de6ef062dcf757f3d264379677d6550ea3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df35b48a4da05d068760f0b04394ea53d788000e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69997671"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269694"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Azure Media Analytics での顔編集チュートリアル
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 ## <a name="overview"></a>概要
 

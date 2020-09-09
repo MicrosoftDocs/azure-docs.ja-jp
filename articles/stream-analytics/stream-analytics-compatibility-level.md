@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 8f22b1ff97826dc318794aca58973b1276e74209
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a82f3c347c75d658e3e7ec52d51107f5a240ee5b
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79087867"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056518"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブの互換性レベル
 
@@ -142,11 +142,11 @@ Azure Stream Analytics では、地理空間参照データのインデックス
 
 **1.1 レベル:** CREATE TABLE で、強力なスキーマを指定することができます。 Stream Analytics エンジンによって、データがこのスキーマに準拠していることが検証されます。 このモデルでは、NaN 値を持つイベントをコマンドがフィルター処理できます。
 
-### <a name="disable-automatic-upcast-for-datetime-strings-in-json"></a>JSON の日時文字列の自動アップキャストの無効化
+### <a name="disable-automatic-conversion-of-datetime-strings-to-datetime-type-at-ingress-for-json"></a>JSON のイングレス時の datetime 文字列から DateTime 型への自動変換を無効にする
 
-**1.0 レベル:** JSON パーサーが、日付/時刻/ゾーン情報を持つ文字列値を DateTime 型に自動的にアップ キャストし、UTC に変換しました。 この動作により、タイムゾーン情報が失われていました。
+**1.0 レベル:** JSON パーサーは、日付/時刻/ゾーン情報を含む文字列値を、イングレス時に DateTime 型に自動変換します。これにより、値は直ちに元の形式とタイムゾーン情報を失います。 これはイングレス時に行われるため、そのフィールドがクエリで使用されていない場合でも、UTC DateTime に変換されます。
 
-**1.1 レベル:** 日付/時刻/ゾーン情報を持つ文字列値を DateTime 型に自動的にアップキャストすることはなくなりました。 そのため、タイムゾーン情報は保持されます。
+**1.1 レベル:** 日付/時刻/ゾーン情報を持つ文字列値の DateTime 型への自動変換は行われません。 その結果、タイムゾーン情報と元の形式は保持されます。 ただし、NVARCHAR(MAX) フィールドは、DATETIME 式 (DATEADD 関数など) の一部としてクエリで使用されている場合、計算を実行するために DateTime 型に変換され、元の形式を失います。
 
 ## <a name="next-steps"></a>次のステップ
 

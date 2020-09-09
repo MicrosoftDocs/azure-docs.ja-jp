@@ -1,22 +1,22 @@
 ---
-title: データ型の定義
+title: Synapse SQL プールでのテーブルのデータ型
 description: Synapse SQL プールにおけるテーブルのデータ型の定義に関するレコメンデーション。
 services: synapse-analytics
 author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 01/06/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 2c99bf77246463dd84c41218afbb5e50f4335f9f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8118329564bbf8193797be0db619f821c064429a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81413765"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089160"
 ---
 # <a name="table-data-types-in-synapse-sql-pool"></a>Synapse SQL プールでのテーブルのデータ型
 

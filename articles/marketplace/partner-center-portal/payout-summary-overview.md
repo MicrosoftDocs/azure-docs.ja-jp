@@ -1,29 +1,29 @@
 ---
 title: 支払いの概要の概説 - Azure Marketplace
-description: '[支払いの概要] には、プランで獲得した金額の詳細が表示されます。 また、支払いを受け取るタイミングと支払い額を確認することもできます。'
-author: mingshen
-ms.author: mingshen
-ms.service: marketplace
+description: '[支払いの概要] には、プランで獲得した金額の詳細が表示されます。 また、支払いを受け取るタイミングと支払われる金額を確認することもできます。'
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 04/24/2020
-ms.openlocfilehash: 48644f2f8148a7aa1974be0d7f761e9b3a55612d
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.service: marketplace
+ms.topic: article
+author: mingshen-ms
+ms.author: mingshen
+ms.date: 07/14/2020
+ms.openlocfilehash: 2e7658e965931dd78a6db0e2c9fee36edffff98b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82782548"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87479814"
 ---
 # <a name="payout-summary-overview"></a>支払いの概要の概説
 
 [[支払いの概要]](./payout-summary.md) には、Microsoft で獲得した金額の詳細が表示されます。 また、支払いを受け取るタイミングと支払われる金額を確認することもできます。
 
-Azure Marketplace でオファリングを販売している場合は、[支払いの概要] に成功した支払いに関する情報も表示されます。 Azure Marketplace の支払いの詳細については、「[Microsoft Azure Marketplace 参加ポリシー](https://docs.microsoft.com/legal/marketplace/participation-policy)」と「[Microsoft Azure Marketplace 発行元契約](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt)」を参照してください。
+Azure Marketplace でオファリングを販売している場合は、[支払いの概要] に成功した支払いに関する情報も表示されます。 Azure Marketplace の支払いの詳細については、「[Microsoft Azure Marketplace 参加ポリシー](https://docs.microsoft.com/legal/marketplace/participation-policy)」と「[Microsoft Azure Marketplace 発行元契約](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx)」を参照してください。
 
 > [!NOTE]
-> 支払いの対象となるには、収益が $50 の[支払いしきい値](./payment-thresholds-methods-timeframes.md)に達している必要があります。 支払いしきい値の詳細については、「[Microsoft Azure Marketplace 発行元契約](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt)」を参照してください。
+> 支払いの対象となるには、収益が $50 の[支払いしきい値](./payment-thresholds-methods-timeframes.md)に達している必要があります。 支払いしきい値の詳細については、「[Microsoft Azure Marketplace 発行元契約](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx)」を参照してください。
 
-取引の公開オプションに関するすべてのレポートと分析情報は、パートナー センターの [分析] セクションから入手できます。アクセスするには、ポータルの右上隅にある次のアイコンを使用します。
+支払いの詳細を表示するには、[パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインし、画面の右上隅にある [支払い] アイコンを選択します。
 
 ![パートナー センター ポータルの右上隅にある支払いアイコンを示しています。](./media/payout-overview.png)
 
@@ -43,19 +43,6 @@ Azure Marketplace でオファリングを販売している場合は、[支払�
 | 支払いの概要 | 表示可能 | アクセス権なし | アクセス権なし | アクセス権なし | 表示可能 | アクセス権なし  |
 | | | | | | | |
 
-## <a name="payout-report-differences"></a>支払いレポートの相違点
-
-Cloud パートナー ポータル (旧) とパートナー センター (新) での支払いレポートの相違点は次のとおりです。
-
-| クラウド パートナー ポータル | パートナー センター |
-| --- | --- |
-| **リンク**: https://cloudpartner.azure.com/ | **リンク**: https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory と https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
-| **ナビゲーション**: 分析情報の支払いで提供される支払いレポート | **ナビゲーション**: パートナー センターで提供される支払いレポート – [支払い] アイコン |
-| **[スコープ]** :<ul><li>進行中の回収、回収済み、および支払い済みを対象に、品目ごとの取引が表示されます。</li><li>レポート - 発注書が作成された後のすべての品目が表示されます。これには、進行中の回収と進行中の課金、および回収の状態とまだ支払いの対象となっていない品目が含まれます。</li></ul> | **[スコープ]** :<ul><li>対象となる収益と見なされると品目が表示されます。</li><li>顧客が最初に Microsoft に支払いをすると、ISV に支払いレポートの開始が表示されます。</li><li>支払いレポートには、進行中の回収と進行中の課金は表示されません。</li></ul> |
-| **支払いの準備ができていない取引**:進行中の課金 | **支払いの準備ができていない取引**:次の見積支払: 支払いの状態は未処理の状態です。 |
-| **支払いの状態:** 該当なし | **支払いの状態:**<ul><li>未処理:収益は支払いの対象となります。</li><li>近日中:収益は、次回の月次支払いで発行元に送信されます。</li><li>送信済み:支払いが銀行に送信されました。</li></ul> |
-| | |
-
 ## <a name="payment-schedules"></a>支払いスケジュール
 
 保持期間、パートナーの可視性、顧客がクレジット カードや請求書を使用する場合などの支払いスケジュールの詳細については、**支払いの詳細**に関するトピックの「[支払いスケジュール](./payout-policy-details.md#payment-schedules)」セクションを参照してください。
@@ -70,7 +57,7 @@ Cloud パートナー ポータル (旧) とパートナー センター (新) �
 | participantId | プログラムによるパートナー収益のプライマリ ID |
 | participantIdType | インセンティブ プログラムの場合はプログラム ID、プログラムがストア プログラムおよび Azure Marketplace 用である場合は販売者 |
 | participantName | 収益パートナーの名前 |
-| partnerCountryCode | 収益パートナーの場所/国 |
+| partnerCountryCode | 収益パートナーの場所、国、地域 |
 | programName | インセンティブ/ストア プログラム名 |
 | transactionId | 取引の一意識別子 |
 | transactionCurrency | 元の顧客取引が発生した通貨 (パートナーの場所の通貨ではありません) |
@@ -113,15 +100,15 @@ Cloud パートナー ポータル (旧) とパートナー センター (新) �
 | storeFee | コマーシャル マーケットプレースでアプリまたはアドオンを利用できるようにするための料金として、Microsoft によって保持される金額。 |
 | transactionPaymentMethod | 取引に使用される顧客の支払い方法 (カード、携帯電話会社の請求、PayPal など) |
 | tpan | サード パーティの広告ネットワーク |
-| customerCountry | 顧客の国 |
+| customerCountry | 顧客の国および地域 |
 | customerCity | 顧客の市区町村 |
 | customerState | 顧客の都道府県 |
 | customerZip | 顧客の郵便番号 |
 | TenantId | テナントの ID |
 | externalReferenceId | プログラムの一意識別子 |
 | externalReferenceIdLabel | 一意識別子のラベル |
-| transactionCountryCode | 取引が発生した国番号 |
-| taxCountry | 顧客の国 |
+| transactionCountryCode | 取引が発生した国および地域番号 |
+| taxCountry | 顧客の国および地域 |
 | taxState | 顧客の都道府県 |
 | taxCity | 顧客の市区町村 |
 | taxZipCode | 顧客の郵便番号 |
@@ -132,7 +119,7 @@ Cloud パートナー ポータル (旧) とパートナー センター (新) �
 | AssetId | Marketplace サービスの顧客注文の一意識別子。 これは購入品目を表します。 複数の資産が存在することもあります。 |
 | OrderId | 顧客の請求書に関連しています |
 | LineItemId | 顧客の請求書の個別行 |
-| 顧客の国 | 顧客が指定した国名。 これは、顧客の Azure サブスクリプションの国とは異なる場合があります。 |
+| 顧客の国および地域 | 顧客が指定した国や地域の名前。 これは、顧客の Azure サブスクリプションの国や地域とは異なる場合があります。 |
 | Customer EmailAddress | 顧客が指定したメール アドレス。 これは、顧客の Azure サブスクリプションのメール アドレスとは異なる場合があります。 |
 | SkuId | 発行中に定義される SKU ID。 1 つのプランに多数の SKU を関連付けることは可能ですが、1 つの SKU に関連付けることのできるプランは 1 つのみです。 |
 

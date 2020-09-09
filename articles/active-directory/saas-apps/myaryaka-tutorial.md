@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と MyAryaka の統合 | Microsoft Docs
 description: Azure Active Directory と MyAryaka の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b98e270c-6653-4fa4-85da-169cc97f6c6a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fe7ccf4afea1c7ee359f31660914f21e2ab4e90
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e394528404d998702a8b833949fd8da0700e0470
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74534639"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547994"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-myaryaka"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と MyAryaka の統合
 
@@ -84,10 +79,10 @@ MyAryaka に対する Azure AD SSO を構成してテストするには、次の
 
     a. **[サインオン URL]** ボックスに、次のいずれかのパターンを使用します。
 
-    | |
-    |-|
-    | `https://my.aryaka.com/`|
-    | `https://kso.aryaka.com/auth/realms/<CUSTOMERID>`|
+    ```https
+    https://my.aryaka.com/
+    https://kso.aryaka.com/auth/realms/<CUSTOMERID>
+    ```
 
     b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://kso.aryaka.com/auth/realms/<CUSTOMERID>`
 

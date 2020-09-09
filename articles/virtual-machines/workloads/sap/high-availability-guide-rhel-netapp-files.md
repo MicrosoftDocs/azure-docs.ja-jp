@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/24/2020
+ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 601194d3a8cc789c51b8e127001ab2367dceeee7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5ba5ebcb68ed206bab038f0a892e24834ddb0f22
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82148217"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653428"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>SAP アプリケーション用の Azure NetApp Files を使用した Red Hat Enterprise Linux 上の SAP NetWeaver 用の Azure Virtual Machines の高可用性
 
@@ -49,7 +49,7 @@ ms.locfileid: "82148217"
 [sap-hana-ha]:sap-hana-high-availability-rhel.md
 [glusterfs-ha]:high-availability-guide-rhel-glusterfs.md
 
-この記事では、[Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/) を使用して、仮想マシンのデプロイと構成、クラスター フレームワークのインストール、および高可用性 SAP NetWeaver 7.50 システムのインストールを行う方法について説明します。
+この記事では、[Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) を使用して、仮想マシンのデプロイと構成、クラスター フレームワークのインストール、および高可用性 SAP NetWeaver 7.50 システムのインストールを行う方法について説明します。
 この例の構成やインストール コマンドなどでは、ASCS インスタンスの番号は 00、ERS インスタンスの番号は 01、プライマリ アプリケーション インスタンス (PAS) の番号は 02、アプリケーション インスタンス (AAS) の番号は 03 です。 SAP システム ID QAS が使用されます。 
 
 データベース レイヤーについては、詳しくは説明していません。  
@@ -91,11 +91,11 @@ ms.locfileid: "82148217"
 SAP Netweaver セントラル サービスの高可用性 (HA) を実現するには、共有ストレージが必要です。
 従来、Red Hat Linux 上でこれを実現するには、高可用性 GlusterFS クラスターを別途構築する必要がありました。 
 
-現在は、Azure NetApp Files 上にデプロイした共有ストレージを使用して、SAP Netweaver HA を実現できるようになりました。 Azure NetApp Files を共有ストレージに使用すると、追加の [GlusterFS クラスター](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs)は必要なくなります。 SAP Netweaver セントラル サービス (ASCS/SCS) の HA を実現するには、依然として Pacemaker が必要です。
+現在は、Azure NetApp Files 上にデプロイした共有ストレージを使用して、SAP Netweaver HA を実現できるようになりました。 Azure NetApp Files を共有ストレージに使用すると、追加の [GlusterFS クラスター](./high-availability-guide-rhel-glusterfs.md)は必要なくなります。 SAP Netweaver セントラル サービス (ASCS/SCS) の HA を実現するには、依然として Pacemaker が必要です。
 
 ![SAP NetWeaver の高可用性の概要](./media/high-availability-guide-rhel/high-availability-guide-rhel-anf.png)
 
-SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS、SAP HANA データベースでは、仮想ホスト名と仮想 IP アドレスが使用されます。 Azure では、仮想 IP アドレスを使用するためにロード バランサーが必要になります。 [Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal) の使用をお勧めします。 (A)SCS と ERS に別々のフロントエンド IP を使用したロード バランサーの構成を次に示します。
+SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS、SAP HANA データベースでは、仮想ホスト名と仮想 IP アドレスが使用されます。 Azure では、仮想 IP アドレスを使用するためにロード バランサーが必要になります。 [Standard Load Balancer](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md) の使用をお勧めします。 (A)SCS と ERS に別々のフロントエンド IP を使用したロード バランサーの構成を次に示します。
 
 ### <a name="ascs"></a>(A)SCS
 
@@ -138,15 +138,15 @@ Azure NetApp Files はいくつかの [Azure リージョン](https://azure.micr
 
 ### <a name="deploy-azure-netapp-files-resources"></a>Azure NetApp Files リソースのデプロイ  
 
-以下の手順では、[Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) が既にインストールされていることを前提としています。 Azure NetApp Files のリソースと、そのリソースがマウントされる VM は、同じ Azure Virtual Network 内またはピアリングされた Azure Virtual Network 内にデプロイする必要があります。  
+以下の手順では、[Azure Virtual Network](../../../virtual-network/virtual-networks-overview.md) が既にインストールされていることを前提としています。 Azure NetApp Files のリソースと、そのリソースがマウントされる VM は、同じ Azure Virtual Network 内またはピアリングされた Azure Virtual Network 内にデプロイする必要があります。  
 
-1. まだそのようになっていない場合は、[Azure NetApp Files へのオンボード](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)を要求してください。  
-2. [NetApp アカウントの作成手順](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account)に関するページに従って、選択した Azure リージョン内で NetApp アカウントを作成します。  
-3. [Azure NetApp Files の容量プールの設定手順](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool)に関するページに従って、Azure NetApp Files の容量プールを設定します。  
+1. まだそのようになっていない場合は、[Azure NetApp Files へのオンボード](../../../azure-netapp-files/azure-netapp-files-register.md)を要求してください。  
+2. [NetApp アカウントの作成手順](../../../azure-netapp-files/azure-netapp-files-create-netapp-account.md)に関するページに従って、選択した Azure リージョン内で NetApp アカウントを作成します。  
+3. [Azure NetApp Files の容量プールの設定手順](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md)に関するページに従って、Azure NetApp Files の容量プールを設定します。  
 この記事で示されている SAP Netweaver アーキテクチャでは、1 つの Azure NetApp Files の容量プール、Premium SKU が使用されています。 Azure 上の SAP Netweaver アプリケーション ワークロード用には、Azure NetApp Files Premium SKU をお勧めします。  
-4. [Azure NetApp Files へのサブネットの委任手順](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)に関するページの説明に従って、サブネットを Azure NetApp Files に委任します。  
+4. [Azure NetApp Files へのサブネットの委任手順](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md)に関するページの説明に従って、サブネットを Azure NetApp Files に委任します。  
 
-5. [Azure NetApp Files 用のボリュームの作成手順](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)に関するページに従って、Azure NetApp Files のボリュームをデプロイします。 指定された Azure NetApp Files の[サブネット](https://docs.microsoft.com/rest/api/virtualnetwork/subnets)内にボリュームをデプロイします。 Azure NetApp ボリュームの IP アドレスは、自動的に割り当てられます。 Azure NetApp Files のリソースと Azure VM は、同じ Azure Virtual Network 内またはピアリングされた Azure Virtual Network 内に配置する必要があることに注意してください。 この例では、sap<b>QAS</b> と transSAP という、2 つの Azure NetApp Files ボリュームを使用します。 対応するマウント ポイントにマウントされるファイル パスは、/usrsap<b>qas</b>/sapmnt<b>QAS</b>、/usrsap<b>qas</b>/usrsap<b>QAS</b>sys のようになります。  
+5. [Azure NetApp Files 用のボリュームの作成手順](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)に関するページに従って、Azure NetApp Files のボリュームをデプロイします。 指定された Azure NetApp Files の[サブネット](/rest/api/virtualnetwork/subnets)内にボリュームをデプロイします。 Azure NetApp ボリュームの IP アドレスは、自動的に割り当てられます。 Azure NetApp Files のリソースと Azure VM は、同じ Azure Virtual Network 内またはピアリングされた Azure Virtual Network 内に配置する必要があることに注意してください。 この例では、sap<b>QAS</b> と transSAP という、2 つの Azure NetApp Files ボリュームを使用します。 対応するマウント ポイントにマウントされるファイル パスは、/usrsap<b>qas</b>/sapmnt<b>QAS</b>、/usrsap<b>qas</b>/usrsap<b>QAS</b>sys のようになります。  
 
    1. ボリューム sap<b>QAS</b> (nfs://192.168.24.5/usrsap<b>qas</b>/sapmnt<b>QAS</b>)
    2. ボリューム sap<b>QAS</b> (nfs://192.168.24.5/usrsap<b>qas</b>/usrsap<b>QAS</b>ascs)
@@ -156,7 +156,7 @@ Azure NetApp Files はいくつかの [Azure リージョン](https://azure.micr
    6. ボリューム sap<b>QAS</b> (nfs://192.168.24.5/usrsap<b>qas</b>/usrsap<b>QAS</b>pas)
    7. ボリューム sap<b>QAS</b> (nfs://192.168.24.5/usrsap<b>qas</b>/usrsap<b>QAS</b>aas)
   
-この例では、すべての SAP Netweaver ファイル システム用に Azure NetApp Files を使用して、Azure NetApp Files の使用方法を説明しました。 NFS 経由でマウントする必要がない SAP ファイル システムを [Azure ディスク ストレージ](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd)としてデプロイすることもできます。 この例の場合、<b>a-e</b> は、Azure NetApp Files 上に配置する必要があります。<b>f-g</b> (/usr/sap/<b>QAS</b>/D<b>02</b>、/usr/sap/<b>QAS</b>/D<b>03</b>) は、Azure ディスク ストレージとしてデプロイできます。 
+この例では、すべての SAP Netweaver ファイル システム用に Azure NetApp Files を使用して、Azure NetApp Files の使用方法を説明しました。 NFS 経由でマウントする必要がない SAP ファイル システムを [Azure ディスク ストレージ](../../disks-types.md#premium-ssd)としてデプロイすることもできます。 この例の場合、<b>a-e</b> は、Azure NetApp Files 上に配置する必要があります。<b>f-g</b> (/usr/sap/<b>QAS</b>/D<b>02</b>、/usr/sap/<b>QAS</b>/D<b>03</b>) は、Azure ディスク ストレージとしてデプロイできます。 
 
 ### <a name="important-considerations"></a>重要な考慮事項
 
@@ -164,9 +164,9 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
 
 - 最小容量プールは 4 TiB です。 容量プールのサイズは、1 TiB 単位で増やすことができます。
 - 最小ボリュームは 100 GiB です。
-- Azure NetApp Files と、Azure NetApp Files のボリュームがマウントされるすべての仮想マシンは、同じ Azure 仮想ネットワーク内、または同じリージョン内の[ピアリングされた仮想ネットワーク](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)内に存在する必要があります。 同じリージョン内の VNET ピアリング経由での Azure NetApp Files のアクセスが、サポートされるようになっています。 グローバル ピアリング経由での Azure NetApp Files のアクセスは、まだサポートされていません。
+- Azure NetApp Files と、Azure NetApp Files のボリュームがマウントされるすべての仮想マシンは、同じ Azure 仮想ネットワーク内、または同じリージョン内の[ピアリングされた仮想ネットワーク](../../../virtual-network/virtual-network-peering-overview.md)内に存在する必要があります。 同じリージョン内の VNET ピアリング経由での Azure NetApp Files のアクセスが、サポートされるようになっています。 グローバル ピアリング経由での Azure NetApp Files のアクセスは、まだサポートされていません。
 - 選択した仮想ネットワークには、Azure NetApp Files に委任されているサブネットがある必要があります。
-- Azure NetApp Files の[エクスポート ポリシー](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)では、ユーザーが制御できるのは、許可されたクライアント、アクセスの種類 (読み取りおよび書き込み、読み取り専用など) です。 
+- Azure NetApp Files の[エクスポート ポリシー](../../../azure-netapp-files/azure-netapp-files-configure-export-policy.md)では、ユーザーが制御できるのは、許可されたクライアント、アクセスの種類 (読み取りおよび書き込み、読み取り専用など) です。 
 - Azure NetApp Files 機能は、ゾーンにはまだ対応していません。 現在、Azure NetApp Files 機能は、Azure リージョン内のすべての可用性ゾーンにはデプロイされていません。 Azure リージョンによっては、待ち時間が発生する可能性があることに注意してください。 
 - Azure NetApp Files ボリュームは、NFSv3 または NFSv4.1 ボリュームとしてデプロイできます。 SAP アプリケーション層 (ASCS/ERS、SAP アプリケーション サーバー) では、両方のプロトコルがサポートされています。 
 
@@ -251,10 +251,10 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
          * ASCS ERS のポート 32**01**、33**01**、5**01**13、5**01**14、5**01**16 と TCP に対して上記の "d" 以下の手順を繰り返します
 
       > [!Note]
-      > パブリック IP アドレスのない VM が、内部 (パブリック IP アドレスがない) Standard の Azure Load Balancer のバックエンド プール内に配置されている場合、パブリック エンドポイントへのルーティングを許可するように追加の構成が実行されない限り、送信インターネット接続はありません。 送信接続を実現する方法の詳細については、「[SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)」を参照してください。  
+      > パブリック IP アドレスのない VM が、内部 (パブリック IP アドレスがない) Standard の Azure Load Balancer のバックエンド プール内に配置されている場合、パブリック エンドポイントへのルーティングを許可するように追加の構成が実行されない限り、送信インターネット接続はありません。 送信接続を実現する方法の詳細については、「[SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続](./high-availability-guide-standard-load-balancer-outbound-connections.md)」を参照してください。  
 
       > [!IMPORTANT]
-      > Azure Load Balancer の背後に配置された Azure VM では TCP タイムスタンプを有効にしないでください。 TCP タイムスタンプを有効にすると正常性プローブが失敗することになります。 パラメーター **net.ipv4.tcp_timestamps** は **0** に設定します。 詳しくは、「[Load Balancer の正常性プローブ](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)」を参照してください。
+      > Azure Load Balancer の背後に配置された Azure VM では TCP タイムスタンプを有効にしないでください。 TCP タイムスタンプを有効にすると正常性プローブが失敗することになります。 パラメーター **net.ipv4.tcp_timestamps** は **0** に設定します。 詳しくは、「[Load Balancer の正常性プローブ](../../../load-balancer/load-balancer-custom-probe-overview.md)」を参照してください。
 
 ## <a name="disable-id-mapping-if-using-nfsv41"></a>ID マッピングを無効にする (NFSv 4.1 を使用する場合)
 
@@ -589,9 +589,11 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
    #Restart_Program_01 = local $(_EN) pf=$(_PF)
    Start_Program_01 = local $(_EN) pf=$(_PF)
    
-   # Add the keep alive parameter
+   # Add the keep alive parameter, if using ENSA1
    enque/encni/set_so_keepalive = true
    ```
+
+   ENSA1 と ENSA2 の両方について、`keepalive` OS パラメーターが SAP ノート [1410736](https://launchpad.support.sap.com/#/notes/1410736) の説明に従って設定されていることを確認します。  
 
    * ERS プロファイル
 
@@ -610,8 +612,6 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
 1. **[A]** キープ アライブを構成します
 
    SAP NetWeaver アプリケーション サーバーと ASCS/SCS の間の通信は、ソフトウェア ロード バランサーを介してルーティングされます。 ロード バランサーは、構成可能なタイムアウト後に非アクティブな接続を切断します。 これを防止するには、SAP NetWeaver ASCS/SCS プロファイル内にパラメーターを設定し、Linux システム設定を変更する必要があります。 詳細については、[SAP Note 1410736][1410736] を参照してください。
-
-   ASCS/SCS プロファイル パラメーター enque/encni/set_so_keepalive は、前の手順で既に追加されています。
 
    ```
    # Change the Linux system configuration
@@ -1250,7 +1250,7 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
 
 ## <a name="next-steps"></a>次のステップ
 
-* [RHEL for SAP アプリケーション マルチ SID 上の Azure VM での SAP NW の HA ガイド](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
+* [RHEL for SAP アプリケーション マルチ SID 上の Azure VM での SAP NW の HA ガイド](./high-availability-guide-rhel-multi-sid.md)
 * [SAP のための Azure Virtual Machines の計画と実装][planning-guide]
 * [SAP のための Azure Virtual Machines のデプロイ][deployment-guide]
 * [SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]

@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory での自動ユーザー プロビジョニング用に Brivo Onair Identity Connector を構成する | Microsoft Docs
 description: Brivo Onair Identity Connector に対してユーザー アカウントが自動的にプロビジョニングおよびプロビジョニング解除されるように、Azure Active Directory を構成する方法について説明します。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: 542ce04c-ef7d-4154-9b0e-7f68e1154f6b
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: Zhchia
-ms.openlocfilehash: f3c1e7337c0ce07b7fbebb9f954deeb75f0b9584
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 305a369733ce0435b5f892efd0d447b0940143fc
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246655"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547751"
 ---
 # <a name="tutorial-configure-brivo-onair-identity-connector-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Brivo Onair Identity Connector を構成する
 
@@ -54,17 +50,17 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ## <a name="setup-brivo-onair-identity-connector-for-provisioning"></a>プロビジョニング用に Brivo Onair Identity Connector を設定する
 
-1.    [Brivo Onair Identity Connector 管理コンソール](https://acs.brivo.com/login/)にサインインします。 **[Account]\(アカウント\) > [Account Settings]\(アカウントの設定\)** に移動します。
+1. [Brivo Onair Identity Connector 管理コンソール](https://acs.brivo.com/login/)にサインインします。 **[Account]\(アカウント\) > [Account Settings]\(アカウントの設定\)** に移動します。
 
-    ![Brivo Onair Identity Connector 管理コンソール](media/brivo-onair-identity-connector-provisioning-tutorial/admin.png)
+   ![Brivo Onair Identity Connector 管理コンソール](media/brivo-onair-identity-connector-provisioning-tutorial/admin.png)
 
-2.  **[Azure AD]** タブをクリックします。 **[Azure AD]** の詳細ページで、上級管理者アカウントのパスワードを再入力します。 **[Submit]\(送信\)** をクリックします。
+2. **[Azure AD]** タブをクリックします。 **[Azure AD]** の詳細ページで、上級管理者アカウントのパスワードを再入力します。 **[Submit]\(送信\)** をクリックします。
 
-    ![Brivo Onair Identity Connector での Azure](media/brivo-onair-identity-connector-provisioning-tutorial/azuread.png)
+   ![Brivo Onair Identity Connector での Azure](media/brivo-onair-identity-connector-provisioning-tutorial/azuread.png)
 
-3.    **[Copy Token]\(トークンのコピー\)** ボタンをクリックし、 **[Secret Token]\(シークレット トークン\)** を保存します。 この値を、Azure portal で Brivo Onair Identity Connector アプリケーションの [プロビジョニング] タブにある [シークレット トークン] フィールドに入力します。
+3. **[Copy Token]\(トークンのコピー\)** ボタンをクリックし、 **[Secret Token]\(シークレット トークン\)** を保存します。 この値を、Azure portal で Brivo Onair Identity Connector アプリケーションの [プロビジョニング] タブにある [シークレット トークン] フィールドに入力します。
 
-    ![Brivo Onair Identity Connector でのトークン](media/brivo-onair-identity-connector-provisioning-tutorial/token.png)
+   ![Brivo Onair Identity Connector でのトークン](media/brivo-onair-identity-connector-provisioning-tutorial/token.png)
 
 ## <a name="add-brivo-onair-identity-connector-from-the-gallery"></a>ギャラリーから Brivo Onair Identity Connector を追加する
 

@@ -3,17 +3,18 @@ title: スケジュールされたクリーンアップ タスクを Azure Funct
 description: Azure Functions を使用して、Azure SQL Database に接続し、定期的に行をクリーンアップするタスクをスケジュールします。
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 10/02/2019
-ms.openlocfilehash: 2e3f53943d45e90b8aff8e386ce8d0e28670673f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0b5e255d7d108eb063ece4e5489a8762261a0bed
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79366813"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207258"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Functions を使用して Azure SQL Database に接続する
 
-この記事では、Azure Functions を使用して Azure SQL Database または Azure SQL Managed Instance に接続するスケジュール済みジョブを作成する方法を示します。 この関数コードは、データベース内のテーブル内の行をクリーンアップします。 この新しい C# 関数は、Visual Studio 2019 の定義済みタイマー トリガー テンプレートに基づいて作成されます。 このシナリオを実現するには、別途データベースの接続文字列を関数アプリのアプリ設定として設定する作業が必要となります。 Azure SQL Managed Instance の場合は、Azure Functions から接続できるように[パブリック エンドポイントを有効にする](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)必要があります。 このシナリオではデータベースに対する一括操作を使用しています。 
+この記事では、Azure Functions を使用して Azure SQL Database または Azure SQL Managed Instance に接続するスケジュール済みジョブを作成する方法を示します。 この関数コードは、データベース内のテーブル内の行をクリーンアップします。 この新しい C# 関数は、Visual Studio 2019 の定義済みタイマー トリガー テンプレートに基づいて作成されます。 このシナリオを実現するには、別途データベースの接続文字列を関数アプリのアプリ設定として設定する作業が必要となります。 Azure SQL Managed Instance の場合は、Azure Functions から接続できるように[パブリック エンドポイントを有効にする](../azure-sql/managed-instance/public-endpoint-configure.md)必要があります。 このシナリオではデータベースに対する一括操作を使用しています。 
 
 C# 関数を初めて使用する場合は、[Azure Functions C# 開発者向けリファレンス](functions-dotnet-class-library.md)をお読みください。
 
@@ -21,13 +22,13 @@ C# 関数を初めて使用する場合は、[Azure Functions C# 開発者向け
 
 + 「[Visual Studio を使用して初めての関数を作成する](functions-create-your-first-function-visual-studio.md)」記事の手順が完了しており、バージョン 2.x 以降のランタイムを対象としたローカル関数アプリを作成しています。 また、プロジェクトを Azure の関数アプリに発行している必要があります。
 
-+ この記事では、AdventureWorksLT サンプル データベースの **SalesOrderHeader** テーブルに対して一括クリーンアップ操作を実行する Transact-SQL コマンドの例を取り上げています。 AdventureWorksLT サンプル データベースを作成するには、記事「[Azure portal で Azure SQL データベースを作成する](../sql-database/sql-database-get-started-portal.md)」の手順を実行します。
++ この記事では、AdventureWorksLT サンプル データベースの **SalesOrderHeader** テーブルに対して一括クリーンアップ操作を実行する Transact-SQL コマンドの例を取り上げています。 AdventureWorksLT サンプル データベースを作成するには、[Azure portal を使用して Azure SQL Database でデータベースを作成する方法](../azure-sql/database/single-database-create-quickstart.md)に関する記事の手順を実行します。
 
-+ このクイック スタートに使用するコンピューターのパブリック IP アドレスに対する[サーバー レベルのファイアウォール規則](../sql-database/sql-database-get-started-portal-firewall.md)を追加している必要があります。 このルールは、ローカル コンピューターから SQL データベース インスタンスにアクセスできるようにするために必要です。  
++ このクイック スタートに使用するコンピューターのパブリック IP アドレスに対する[サーバー レベルのファイアウォール規則](../azure-sql/database/firewall-create-server-level-portal-quickstart.md)を追加している必要があります。 このルールは、ローカル コンピューターから SQL Database インスタンスにアクセスできるようにするために必要です。  
 
 ## <a name="get-connection-information"></a>接続情報の取得
 
-「[Azure Portal で Azure SQL データベースを作成する](../sql-database/sql-database-get-started-portal.md)」を完了したときに作成したデータベースの接続文字列を取得する必要があります。
+[Azure portal を使用して Azure SQL Database でデータベースを作成する方法](../azure-sql/database/single-database-create-quickstart.md)に関する記事の手順で作成したデータベースの接続文字列を取得する必要があります。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 
@@ -55,7 +56,7 @@ Function App は、Azure での関数の実行をホストします。 セキュ
 
 ## <a name="add-the-sqlclient-package-to-the-project"></a>SqlClient パッケージをプロジェクトに追加する
 
-SqlClient ライブラリを含む NuGet パッケージを追加する必要があります。 SQL データベースへの接続には、このデータ アクセス ライブラリが必要です。
+SqlClient ライブラリを含む NuGet パッケージを追加する必要があります。 SQL Database への接続には、このデータ アクセス ライブラリが必要です。
 
 1. Visual Studio 2019 で、ローカル関数アプリ プロジェクトを開きます。
 

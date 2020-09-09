@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: b1cf1750924ab8ea8afff6ac788683565433866b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 59d181d8f4c176a8fc00ac0fb8ab0216c6ae27f4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81618014"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080042"
 ---
 # <a name="built-in-cognitive-skills-for-text-and-image-processing-during-indexing-azure-cognitive-search"></a>インデックス作成中のテキストとイメージの処理用の組み込みのコグニティブ スキル (Azure Cognitive Search)
 
@@ -22,7 +22,7 @@ ms.locfileid: "81618014"
 > [!NOTE]
 > 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure Cognitive Search のドキュメント解析段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
 >
-> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Cognitive Search の価格](https://go.microsoft.com/fwlink/?linkid=2042400)に関するページで説明されています。
+> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Cognitive Search の価格](https://azure.microsoft.com/pricing/details/search/)に関するページで説明されています。
 >
 > [インクリメンタル エンリッチメント (プレビュー)](cognitive-search-incremental-indexing-conceptual.md) 機能を使用するとキャッシュを提供できます。それにより、インデクサーがコグニティブ スキル (将来、スキルセットを変更する場合に必要) のみを効率的に実行できるようになり、時間とコストが節約されます。
 
@@ -38,7 +38,7 @@ ms.locfileid: "81618014"
 | [Microsoft.Skills.Text.LanguageDetectionSkill](cognitive-search-skill-language-detection.md)  | このスキルでは、トレーニング済みモデルを使用し、使用されている言語を検出します (ドキュメントごとに 1 つの言語 ID)。 同じテキスト セグメント内で複数の言語が使用されている場合、出力は、主に使用されている言語の LCID になります。|
 | [Microsoft.Skills.Text.MergeSkill](cognitive-search-skill-textmerger.md) | フィールドのコレクションからのテキストを 1 つのフィールドに統合します。  |
 | [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md) | このスキルでは、トレーニング済みモデルを使用し、人、場所、組織、メール、URL、日時のフィールドから成るカテゴリの固定したセットに対してエンティティを確立します。 |
-| [Microsoft.Skills.Text.PIIDetectionSkill](cognitive-search-skill-pii-detection.md)  | このスキルは、事前トレーニングされたモデルを使用して、特定のテキストから個人を特定できる情報を抽出します。 スキルは、テキスト内で検出された PII エンティティをマスクするためのさまざまなオプションも提供します。  |
+| [Microsoft.Skills.Text.PIIDetectionSkill](cognitive-search-skill-pii-detection.md)  | このスキルは、事前トレーニングされたモデルを使用して、特定のテキストから個人を特定できる情報を抽出します。 また、このスキルには、テキスト内で検出された個人を特定できる情報エンティティをマスクするためのさまざまなオプションも用意されています。  |
 | [Microsoft.Skills.Text.SentimentSkill](cognitive-search-skill-sentiment.md)  | このスキルでは、トレーニング済みモデルを使用し、レコード単位で肯定的または否定的センチメントのスコア付けを行います。 スコアは 0 と 1 の間です。 センチメントを検出できない null の場合と、中立と見なさるテキストの両方に対して、中立のスコアが生成されます。  |
 | [Microsoft.Skills.Text.SplitSkill](cognitive-search-skill-textsplit.md) | コンテンツを徐々に強化または拡張できるように、テキストをページに分割します。 |
 | [Microsoft.Skills.Text.TranslationSkill](cognitive-search-skill-text-translation.md) | このスキルは、正規化やローカライズのユース ケース向けに、トレーニング済みモデルを使用して入力テキストをさまざまな言語に翻訳します。 |
@@ -48,6 +48,7 @@ ms.locfileid: "81618014"
 | [Microsoft.Skills.Util.DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) | エンリッチメント パイプライン内のファイルからコンテンツを抽出します。 |
 | [Microsoft.Skills.Util.ShaperSkill](cognitive-search-skill-shaper.md) | 出力を複合型 (フル ネーム、複数行の住所、または姓と個人識別子の組み合わせに使用される可能性があるマルチパート データ型) にマップします。 |
 | [Microsoft.Skills.Custom.WebApiSkill](cognitive-search-custom-skill-web-api.md) | カスタム Web API に対して HTTP 呼び出しを行うことで、AI エンリッチメント パイプラインを拡張することができます |
+| [Microsoft.Skills.Custom.AmlSkill](cognitive-search-aml-skill.md) | Azure Machine Learning モデルで AI エンリッチメント パイプラインを拡張できるようにします |
 
 
 [カスタム スキル](cognitive-search-custom-skill-web-api.md)作成のガイダンスについては、[カスタム インターフェイスの定義方法](cognitive-search-custom-skill-interface.md)と[AI エンリッチメント用のカスタム スキルを作成する](cognitive-search-create-custom-skill-example.md)方法に関する記事を参照してください。

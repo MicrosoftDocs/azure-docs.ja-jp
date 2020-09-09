@@ -1,20 +1,20 @@
 ---
 title: マップ イベントを処理する | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps Web SDK を使用して、マップ イベントを含む対話型の Web SDK マップを作成する方法について説明します。
-author: Philmea
-ms.author: philmea
+description: ユーザーがマップとやりとりするときに発生するイベントについて学習します。 サポートされているすべてのマップ イベントの一覧を表示します。 Azure Maps Web SDK を使用してイベントを処理する方法を確認します。
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 09/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen
-ms.openlocfilehash: 92108873d4a91c845f4a1f2685cf50942513510e
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: f3a48e4434588b2eb64637e6f0a454148cad39f2
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124008"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036444"
 ---
 # <a name="interact-with-the-map"></a>マップの操作
 
@@ -26,7 +26,7 @@ ms.locfileid: "83124008"
 
 <br/>
 
-<iframe height='600' scrolling='no' title='マップの連動 – マウス イベント' src='//codepen.io/azuremaps/embed/bLZEWd/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>ペンを参照してください <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>マップの連動</a> – <a href='https://codepen.io/azuremaps'>CodePen@azuremaps の Azure Maps (</a><a href='https://codepen.io'></a>) によるマウス イベント。
+<iframe height='600' scrolling='no' title='マップの連動 – マウス イベント' src='//codepen.io/azuremaps/embed/bLZEWd/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>ペンを参照してください <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>マップの連動</a> – <a href='https://codepen.io'>CodePen</a> の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) によるマウス イベント。
 </iframe>
 
 ## <a name="interact-with-map-layers"></a>マップの連動
@@ -35,7 +35,7 @@ ms.locfileid: "83124008"
 
 <br/>
 
-<iframe height='600' scrolling='no' title='マップの連動 – レイヤー イベント' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io/azuremaps/pen/bQRRPE/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>マップの連動 – レイヤー イベント</a>」Pen を表示します。
+<iframe height='600' scrolling='no' title='マップの連動 – レイヤー イベント' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/bQRRPE/'>マップの連動 – レイヤー イベント</a>」Pen を表示します。
 </iframe>
 
 ## <a name="interact-with-html-marker"></a>HTML マーカーの操作
@@ -44,7 +44,7 @@ ms.locfileid: "83124008"
 
 <br/>
 
-<iframe height='500' scrolling='no' title='マップの連動 - HTML マーカー イベント' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io/azuremaps/pen/VVzKJY/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>マップの連動 - HTML マーカー イベント</a>」Pen を表示します。
+<iframe height='500' scrolling='no' title='マップの連動 - HTML マーカー イベント' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/VVzKJY/'>マップの連動 - HTML マーカー イベント</a>」Pen を表示します。
 </iframe>
 
 次の表には、サポートされているマップ クラス イベントがすべてリストされています。

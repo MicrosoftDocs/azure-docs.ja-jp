@@ -13,12 +13,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 854bf2d1ed2155290c2ecebd17695049fdd0c8bb
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: d630a41f9b83a852605ffad2a85ad6dd14bbac73
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314288"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079651"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用してルート テーブルでネットワーク トラフィックをルーティングする
 
@@ -359,3 +359,6 @@ Azure を使用して VM のネットワーク インターフェイスの [IP �
 
 > [!div class="nextstepaction"]
 > [PaaS リソースへのネットワーク アクセスを制限する](tutorial-restrict-network-access-to-resources.md)
+
+> [!NOTE] 
+> Azure サービスは有料です。 Azure Cost Management を使用すると、予算を設定して、支出を制御するためのアラートを構成できます。 Cost Management で Azure のコストを分析、管理、最適化しましょう。 詳しくは、[コスト分析に関するクイックスタート](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)を参照してください。

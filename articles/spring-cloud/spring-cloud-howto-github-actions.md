@@ -6,12 +6,13 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/15/2019
-ms.openlocfilehash: 559c894a2212466761de820de7486ae203337802
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-java
+ms.openlocfilehash: 3f004be0afc6c73fdabe57e568cd57b51e9abcc5
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77538466"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299684"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>GitHub Actions を使用する Azure Spring Cloud CI/CD
 
@@ -99,7 +100,7 @@ jobs:
     
     - name: maven build, clean
       run: |
-        mvn clean package -D skipTests
+        mvn clean package -DskipTests
     
     - name: Azure Login
       uses: azure/login@v1
@@ -142,7 +143,7 @@ jobs:
     
     - name: maven build, clean
       run: |
-        mvn clean package -D skipTests
+        mvn clean package -DskipTests
         
     - name: Azure Login
       uses: azure/login@v1
@@ -163,7 +164,7 @@ jobs:
 ```
 
 ## <a name="deploy-with-maven-plugin"></a>Maven プラグインを使用してデプロイする
-もう 1 つの方法は、Jar のデプロイとアプリ設定の更新に [Maven プラグイン](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-maven)を使用することです。 コマンド `mvn azure-spring-cloud:deploy` はべき等であり、必要に応じて自動的にアプリを作成します。 対応するアプリを事前に作成する必要はありません。
+もう 1 つの方法は、Jar のデプロイとアプリ設定の更新に [Maven プラグイン](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart)を使用することです。 コマンド `mvn azure-spring-cloud:deploy` はべき等であり、必要に応じて自動的にアプリを作成します。 対応するアプリを事前に作成する必要はありません。
 
 ```
 name: AzureSpringCloud
@@ -183,7 +184,7 @@ jobs:
     
     - name: maven build, clean
       run: |
-        mvn clean package -D skipTests
+        mvn clean package -DskipTests
         
     # Maven plugin can cosume this authentication method automatically
     - name: Azure Login

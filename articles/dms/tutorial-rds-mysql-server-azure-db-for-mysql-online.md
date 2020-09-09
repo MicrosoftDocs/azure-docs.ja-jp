@@ -3,21 +3,21 @@ title: チュートリアル:RDS MySQL をオンラインで Azure Database for 
 titleSuffix: Azure Database Migration Service
 description: Azure Database Migration Service を使用する RDS MySQL から Azure Database for MySQL へのオンライン移行の実行について学習します。
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: arunkumarthiags
+ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: c34de48d0184057f42d1b779abee56e1fa9ac169
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/09/2020
+ms.openlocfilehash: c0c62cf28c9e9368e80982fa7c5badeb79d40ae4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78255162"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087732"
 ---
 # <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>チュートリアル:DMS を使用して RDS MySQL を Azure Database for MySQL にオンラインで移行する
 
@@ -67,6 +67,7 @@ Azure Database Migration Service を使用して、RDS MySQL インスタンス�
 
 1. 新しいパラメーター グループを作成するには、「[MySQL Database Log Files](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.Concepts.MySQL.html)」 (MySQL データベース ログ ファイル) 記事の「**Binary Logging Format**」 (バイナリ ログ形式) セクションの AWS で提供される手順に従います。
 2. 次の構成で新しいパラメーター グループを作成します。
+    * log_bin = ON
     * binlog_format = row
     * binlog_checksum = NONE
 3. 新しいパラメーター グループを保存します。
@@ -121,6 +122,10 @@ Azure Database Migration Service を使用して、RDS MySQL インスタンス�
     ```
 
 4. クエリ結果内の外部キー削除 (2 列目) を実行して、外部キーを削除します。
+
+> [!NOTE]
+> Azure DMS では、CASCADE 参照操作はサポートされていません。これは、親テーブルで行が削除または更新されたときに子テーブル内の一致する行を自動的に削除または更新するのに役立つ操作です。 詳細については、MySQL のドキュメントで、[FOREIGN KEY 制約](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)に関する記事の参照操作のセクションを参照してください。
+> Azure DMS では、初期データの読み込み中に、ターゲット データベース サーバーで外部キー制約を削除する必要があるため、参照操作を使用できません。 ワークロードが、この参照操作による、関連する子テーブルの更新に依存している場合は、代わりに[ダンプと復元](https://docs.microsoft.com/azure/mysql/concepts-migrate-dump-restore)を実行することをお勧めします。 
 
 5. データにトリガー (insert または update トリガー) が含まれている場合は、ソースからデータをレプリケートする前にターゲットでデータの整合性が適用されます。 移行時は*ターゲットの*すべてのテーブル内のトリガーを無効にし、移行の完了後にトリガーを有効にすることをお勧めします。
 

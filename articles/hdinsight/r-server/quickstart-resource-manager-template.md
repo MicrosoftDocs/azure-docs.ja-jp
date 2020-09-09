@@ -8,38 +8,41 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: cde8d6932400966ae22720b1e86f3c5164f25b30
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7f86d0a090409385497715b70e8199bdf48c6995
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81603442"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640329"
 ---
-# <a name="quickstart-create-ml-services-cluster-in-azure-hdinsight-using-resource-manager-template"></a>クイック スタート:Resource Manager テンプレートを使用して Azure HDInsight 内に ML Services クラスターを作成する
+# <a name="quickstart-create-ml-services-cluster-in-azure-hdinsight-using-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure HDInsight に ML Services クラスターを作成する
 
-このクイックスタートでは、Azure Resource Manager テンプレートを使用して、Azure HDInsight に [ML Services](./r-server-overview.md) クラスターを作成します。 Azure で HDInsight クラスターを作成するときのデプロイ オプションとして Microsoft Machine Learning Server を選択できるようになりました。 このオプションを提供するクラスターの種類は、ML Services と呼ばれます。 この機能により、データ サイエンティスト、統計学者、R プログラマは、HDInsight でのスケーラブルで分散型の分析手法にオンデマンドでアクセスできるようになります。
+このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Azure HDInsight に [ML Services](./r-server-overview.md) クラスターを作成します。 Azure で HDInsight クラスターを作成するときのデプロイ オプションとして Microsoft Machine Learning Server を選択できるようになりました。 このオプションを提供するクラスターの種類は、ML Services と呼ばれます。 この機能により、データ サイエンティスト、統計学者、R プログラマは、HDInsight でのスケーラブルで分散型の分析手法にオンデマンドでアクセスできるようになります。
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+
+[![Azure へのデプロイ](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-rserver%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>前提条件
+
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="create-an-ml-services-cluster"></a>ML サービス クラスターの作成
+## <a name="review-the-template"></a>テンプレートを確認する
 
-### <a name="review-the-template"></a>テンプレートを確認する
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-hdinsight-rserver/)からのものです。
 
-このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-rserver)からのものです。
-
-:::code language="json" source="~/quickstart-templates/101-hdinsight-rserver/azuredeploy.json" range="1-171":::
-
+:::code language="json" source="~/quickstart-templates/101-hdinsight-rserver/azuredeploy.json":::
 
 テンプレートでは、次の 2 つの Azure リソースが定義されています。
 
-* [Microsoft.Storage/storageAccounts](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts): Azure のストレージ アカウントを作成します。
-* [Microsoft.HDInsight/cluster](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/clusters): HDInsight クラスターを作成します。
+* [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts): Azure のストレージ アカウントを作成します。
+* [Microsoft.HDInsight/cluster](/azure/templates/microsoft.hdinsight/clusters): HDInsight クラスターを作成します。
 
-### <a name="deploy-the-template"></a>テンプレートのデプロイ
+## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-1. 下の **[Azure へのデプロイ]** ボタンを選択して Azure にサインインし、Resource Manager テンプレートを開きます。
+1. 下の **[Azure に配置する]** ボタンを選択して Azure にサインインし、ARM テンプレートを開きます。
 
     [![Azure へのデプロイ](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-rserver%2Fazuredeploy.json)
 
@@ -76,7 +79,7 @@ Azure portal からお使いのクラスターに移動し、 **[削除]** を�
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、Resource Manager テンプレートを使用して HDInsight で ML Services クラスターを作成する方法を学習しました。 次の記事では、RStudio Server で、分散 R 計算に Spark を使用する方法を示す R スクリプトを実行する方法について説明します。
+このクイックスタートでは、ARM テンプレートを使用して HDInsight で ML Services クラスターを作成する方法を学習しました。 次の記事では、RStudio Server で、分散 R 計算に Spark を使用する方法を示す R スクリプトを実行する方法について説明します。
 
 > [!div class="nextstepaction"]
 > [RStudio Server を使用して Azure HDInsight で ML サービス クラスターに対して R スクリプトを実行する](./machine-learning-services-quickstart-job-rstudio.md)

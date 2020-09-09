@@ -5,15 +5,15 @@ description: Direct ピアリングのチュートリアル
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: d88fcfc4d3e073bf544f2ca0f4d01dbe305b45da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e27fa26514d27d68aecdf9e28b36e2747dc8ffe2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75774038"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710764"
 ---
 # <a name="direct-peering-walkthrough"></a>Direct ピアリングのチュートリアル
 

@@ -1,19 +1,19 @@
 ---
-title: .NET と REST の API のバージョン管理
+title: API のバージョン
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search の REST API のバージョン ポリシーと .NET SDK のクライアント ライブラリ。
 manager: nitinme
-author: brjohnstmsft
-ms.author: brjohnst
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 178f56354120bf7a65c51f1c9cf54e34bd011d97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/20/2020
+ms.openlocfilehash: bf3e4262f4342788f343ab287fd3db53d12736c7
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79137290"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918113"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Azure Cognitive Search の API のバージョン
 
@@ -23,43 +23,74 @@ Azure Cognitive Search のチームでは、原則として必要な場合にの
 
 SDK 更新プログラムにも同じルールが適用されます。 Azure Cognitive Search SDK は[セマンティック バージョニング](https://semver.org/) ルールに従っています。つまり、バージョンにはメジャー、マイナー、およびビルド番号という 3 つの部分があります (たとえば、1.1.0)。 SDK の新しいメジャー バージョンは、下位互換性が保たれなくなる変更が生じた場合にのみリリースされます。 下位互換性が保たれる機能更新の場合はマイナー バージョンがインクリメントされ、バグ修正の場合はビルド バージョンのみがインクリメントされます。
 
-> [!NOTE]
-> お使いの Azure Cognitive Search サービスのインスタンスは、最新のバージョンを含む複数の REST API バージョンをサポートしています。 バージョンが最新ではなくなった場合でも、そのバージョンを引き続き使用できますが、最新バージョンを使用するようにコードを移行することをお勧めします。 REST API を使用している場合は、api-version パラメーターを使用して、すべての要求に API バージョンを指定する必要があります。 .NET SDK を使用している場合は、使用している SDK のバージョンによって REST API の対応するバージョンが決まります。 サービスが新しいバージョンの API をサポートするようにアップグレードされた場合でも、使用中の古い SDK のコードを変更なしで引き続き実行できます。
+> [!Important]
+> .NET、Java、Python、および JavaScript 用の Azure SDK によって、Azure Cognitive Search 用の新しいクライアント ライブラリがロールアウトされます。 現在、最新の Search REST API (2020-06-30) や Management REST API (2020-03-13) が完全にサポートされる Azure SDK ライブラリはありませんが、これは時間の経過と共に変化します。 このページや[新機能](whats-new.md)に関するページで機能拡張のお知らせを定期的に確認することができます。 
 
-## <a name="snapshot-of-current-versions"></a>現在のバージョンのスナップショット
-Azure Cognitive Search とのすべてのプログラミング インターフェイスの現行バージョンのスナップショットを次に示します。
+## <a name="rest-apis"></a>REST API
+
+Azure Cognitive Search サービスのインスタンスでは、最新のバージョンを含む、REST API の複数のバージョンをサポートしています。 バージョンが最新ではなくなった場合でも、そのバージョンを引き続き使用できますが、最新バージョンを使用するように[コードを移行する](search-api-migration.md)ことをお勧めします。 REST API を使用している場合は、api-version パラメーターを使用して、すべての要求に API バージョンを指定する必要があります。 .NET SDK を使用している場合は、使用している SDK のバージョンによって REST API の対応するバージョンが決まります。 サービスが新しいバージョンの API をサポートするようにアップグレードされた場合でも、使用中の古い SDK のコードを変更なしで引き続き実行できます。
+
+以下の表には、現在および以前にリリースされた Search Service REST API のバージョンのバージョン履歴を示します。 最新の安定バージョンとプレビュー バージョンのみのドキュメントが公開されています。
+
+### <a name="search-service-apis"></a>Search Service API
+
+検索サービスでコンテンツを作成して管理します。
+
+| バージョン&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | Status | 下位互換性に関する問題 |
+|-------------------------|--------|------------------------------|
+| [Search 2020-06-30](/rest/api/searchservice/index)| Stable | 関連性のスコアリングが強化され、ナレッジ ストアが一般公開されている、Search REST API の最新の安定リリースです。|
+| [Search 2020-06-30-Preview](/rest/api/searchservice/index-preview)| プレビュー | 安定バージョンに関連付けられているプレビュー バージョン。 複数の[プレビュー機能](search-api-preview.md)が含まれています。 |
+| 検索 2019-05-06 | Stable | [複合型](search-howto-complex-data-types.md)が追加されています。 |
+| 検索 2019-05-06-Preview | プレビュー | 安定バージョンに関連付けられているプレビュー バージョン。 |
+| Search 2017-11-11 | Stable  | スキルセットと [AI エンリッチメント](cognitive-search-concept-intro.md)が追加されています。 |
+| Search 2017-11-11-Preview | プレビュー | 安定バージョンに関連付けられているプレビュー バージョン。 |
+| Search 2016-09-01 |Stable | [インデクサー](search-indexer-overview.md)が追加されています。 |
+| Search 2016-09-01-Preview | プレビュー | 安定バージョンに関連付けられているプレビュー バージョン。|
+| Search 2015-02-28 | Stable  | 最初に一般公開されたリリースです。  |
+| Search 2015-02-28-Preview | プレビュー | 安定バージョンに関連付けられているプレビュー バージョン。 |
+| Search 2014-10-20-Preview | プレビュー | 2 番目のパブリック プレビューです。 |
+| Search 2014-07-31-Preview | プレビュー | 1 番目のパブリック プレビューです。 |
+
+### <a name="management-rest-apis"></a>管理 REST API
+
+検索サービスを作成および構成し、API キーを管理します。
+
+| バージョン&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | Status | 下位互換性に関する問題 |
+|-------------------------|--------|------------------------------|
+| [Management 2020-03-13](/rest/api/searchmanagement/) | Stable | エンドポイントの保護が強化された、Management REST API の最新の安定リリースです。 プライベート リンクを使用する[プライベート エンドポイント](service-create-private-endpoint.md)、および[ネットワーク IP 規則](service-configure-firewall.md)が新しいサービスに追加されています。 |
+| [Management 2019-10-01-Preview](/rest/api/searchmanagement/index-2019-10-01-preview) | プレビュー  | バージョン番号にかかわらず、これは引き続き Management REST API の現在のプレビュー バージョンです。 現時点ではプレビュー機能はありません。 最近、すべてのプレビュー機能が最近一般公開されました。 |
+| Management 2015-08-19  | Stable | Management REST API の最初の一般公開バージョン。 サービスのプロビジョニング、スケールアップ、および API キーの管理が可能です。 |
+| Management 2015-08-19-Preview | プレビュー | Management REST API の最初のプレビュー バージョン。 |
+
+## <a name="azure-sdk-for-net"></a>Azure SDK for .NET
+
+パッケージのバージョン履歴は、NuGet.org でご確認いただけます。この表では、各パッケージのページへのリンクを示しています。
 
 
-| インターフェイス | 最新のメジャー バージョン | Status |
-| --- | --- | --- |
-| [.NET SDK](https://aka.ms/search-sdk) |9.0 |一般公開、2019 年 5 月にリリース済み |
-| [.NET SDK Preview](https://aka.ms/search-sdk-preview) |8.0-preview |プレビュー、2019 年 4 月にリリース済み |
-| [Service REST API](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |一般公開 |
-| [Service REST API 2019-05-06-Preview](search-api-preview.md) |2019-05-06-Preview |プレビュー |
-| [.NET Management SDK](https://aka.ms/search-mgmt-sdk) |3.0 |一般公開 |
-| [Management REST API](https://docs.microsoft.com/rest/api/searchmanagement/) |2020-03-13|一般公開 |
+| SDK バージョン | Status | 説明 |
+|-------------|--------|------------------------------|
+| [Azure.Search.Documents 11.0](https://www.nuget.org/packages/Azure.Search.Documents/1.0.0-preview.4) | Stable | 2020 年 7 月にリリースされた、Azure .NET SDK の新しいクライアント ライブラリです。 Search REST api-version=2020-06-30 REST API を対象としていますが、geo フィルターまたは [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder?view=azure-dotnet) はまだサポートされていません。 |
+| [Microsoft.Azure.Search 10.0](https://www.nuget.org/packages/Microsoft.Azure.Search/) | Stable | リリース日: 2019 年 5 月。 Search REST api-version=2019-05-06 を対象としています。|
+| [Microsoft.Azure.Search 8.0-preview](https://www.nuget.org/packages/Microsoft.Azure.Search/8.0.0-preview) | プレビュー | リリース日: 2019 年 4 月。 Search REST api-version=2019-05-06-Preview を対象としています。|
+| [Microsoft.Azure.Management.Search 3.0.0](/dotnet/api/overview/azure/search/management?view=azure-dotnet) | Stable | Management REST api-version=2015-08-19 を対象としています。  |
 
-REST API の場合は、各呼び出しに対して `api-version` を含める必要があります。 `api-version` を使用すると、プレビュー API などの特定のバージョンを対象にするのが容易になります。 次の例に、 `api-version` パラメーターを指定する方法を示します。
+## <a name="azure-sdk-for-java"></a>Azure SDK for Java
 
-    GET https://my-demo-app.search.windows.net/indexes/hotels?api-version=2019-05-06
+| SDK バージョン | Status | 説明  |
+|-------------|--------|------------------------------|
+| [Java azure-search-documents 11](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-search-documents/11.0.0/index.html) | Stable | 2020 年 7 月にリリースされた、Azure .NET SDK の新しいクライアント ライブラリです。 Search REST api-version=2019-05-06 を対象としています。 |
+| [Java Management Client 1.35.0](/java/api/overview/azure/search/management?view=azure-java-stable) | Stable | Management REST api-version=2015-08-19 を対象としています。 |
 
-> [!NOTE]
-> 各要求で `api-version` を指定するとしても、すべての API 要求で同じバージョンを使用することをお勧めします。 このことは、特に、新しい API バージョンが、以前のバージョンで認識されない属性または操作を導入している場合に当てはまります。 API バージョンを混在させると、意図しない結果を招くおそれがあるので、お勧めしません。
->
-> サービス REST API と管理 REST API は、それぞれ別々にバージョン管理されます。 バージョン番号の類似性は偶然によるものです。
+## <a name="azure-sdk-for-javascript"></a>Azure SDK for JavaScript
 
-一般公開 (またはGA) の API は、実稼働環境で使用でき、Azure サービス レベル アグリーメントの対象です。 プレビュー バージョンには、必ずしも GA バージョンに移行されるとは限らない実験用の機能が含まれています。 **運用アプリケーションではプレビュー API を使用しないことを強くお勧めします。**
+| SDK バージョン | Status | 説明  |
+|-------------|--------|------------------------------|
+| [JavaScript azure-search 11.0](https://azure.github.io/azure-sdk-for-node/azure-search/latest/) | Stable | 2020 年 7 月にリリースされた、Azure .NET SDK の新しいクライアント ライブラリです。 Search REST api-version=2016-09-01 を対象としています。 |
+| [JavaScript azure-arm-search](https://azure.github.io/azure-sdk-for-node/azure-arm-search/latest/) | Stable | Management REST api-version=2015-08-19 を対象としています。 |
 
-## <a name="update-to-the-latest-version-of-the-rest-api-by-october-15-2020"></a>2020 年 10 月 15 日までに最新バージョンの REST API に更新してください
-次に示すバージョンの Azure Cognitive Search REST API は、2020 年 10 月 15 日に廃止され、サポートされなくなりました。**2014-07-31-preview**、**2014-10-20-Preview**、**2015-02-28-Preview**、および **2015-02-28**。 さらに、**3.0.0-rc** よりも前のバージョンの Azure Cognitive Search .NET SDK は、これらの REST API バージョンの 1 つを対象としているため、廃止される予定です。 この日以降、非推奨の REST API または SDK のバージョンを使用するアプリケーションは動作しなくなり、アップグレードする必要があります。 この種類の変更と同様に、調整に十分な時間をとるため、12 か月前通知を行っています。  引き続き Azure Cognitive Search を使用するには、2020 年 10 月 15 日までに [REST API](search-api-migration.md) を対象とする既存のコードを [REST API バージョン 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) 以降または .NET SDK を [バージョン 3.0](search-dotnet-sdk-migration.md) 以降に移行してください。  最新バージョンへの更新についてご不明な点がある場合は、コードを更新するのに十分な時間があることを確認するため、2020 年 5 月 15 日までに azuresearch_contact@microsoft.com にメールでお問い合わせください。
+## <a name="azure-sdk-for-python"></a>Azure SDK for Python
 
-## <a name="about-preview-and-generally-available-versions"></a>プレビュー バージョンと一般公開バージョンについて
-Azure Cognitive Search では常に、まず REST API によって、次に .NET SDK のプレリリース版で実験機能を事前公開しています。
-
-プレビュー機能は、機能の設計と実装に関するフィードバックの収集を目的とするテストと実験のために提供されています。 このため、プレビュー機能は、下位互換性を損なう可能性のある形で、時間の経過と共に変更されることがあります。 これは、下位互換性のある小規模な修正プログラムと機能強化以外は変更される可能性が低い安定した GA バージョンの機能とは対照的です。 また、プレビュー機能は必ずしも GA リリースに反映されません。
-
-そのため、プレビュー バージョンに依存した実稼働コードの作成はお勧めしません。 古いプレビュー バージョンを使用している場合は、一般公開 (GA) バージョンに移行することをお勧めします。
-
-.NET SDK の場合:コード移行のガイダンスについては、[.NET SDK のアップグレード](search-dotnet-sdk-migration-version-9.md)に関する記事を参照してください。
-
-一般提供とは、Azure Cognitive Search がサービス レベル アグリーメント (SLA) の下で使用されることを意味します。 SLA については、[Azure Cognitive Search のサービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/search/v1_0/)に関する記事を参照してください。
+| SDK バージョン | Status | 説明  |
+|-------------|--------|------------------------------|
+| [Python azure-search-documents 11.0](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-search-documents/11.0.0/index.html) | Stable | 2020 年 7 月にリリースされた、Azure .NET SDK の新しいクライアント ライブラリです。 Search REST api-version=2019-05-06 を対象としています。 |
+| [Python azure-mgmt-search 1.0](/python/api/overview/azure/search?view=azure-python) | Stable | Management REST api-version=2015-08-19 を対象としています。 |

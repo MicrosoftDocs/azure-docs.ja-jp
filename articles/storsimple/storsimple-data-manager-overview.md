@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure StorSimple データ マネージャーの概要 | Microsoft Docs
-description: StorSimple Data Manager サービスの概要について説明します
+description: StorSimple Data Manager ソリューションについて説明し、このサービスを使用して、StorSimple データおよびその他の Azure サービスをクラウドで使用するアプリケーションを作成する方法について説明します。
 services: storsimple
 documentationcenter: NA
 author: vidarmsft
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/21/2018
 ms.author: alkohli
-ms.openlocfilehash: 2ffe17bf7ef4f01c18d2c26f4a045add7302272d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d683f49cadb384ef59d3bae819156733691813cd
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67876101"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183498"
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>StorSimple Data Manager ソリューションの概要
 
@@ -48,7 +48,7 @@ Azure Functions、Azure Automation、Azure Data Factory で Data Manager を使�
 StorSimple Data Manager は、次の 7 つのリージョンで利用できます。
 
  - 東南アジア
- - 米国東部
+ - East US
  - 米国西部
  - 米国西部 2
  - 米国中西部

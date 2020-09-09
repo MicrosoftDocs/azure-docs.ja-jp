@@ -5,19 +5,20 @@ author: bandersmsft
 ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 1c4522bed191ef4142cc603bf0e1d22f086111ee
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b4c2db76405e7bad7653c1801eb2bcc5db82fe9b
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200590"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684798"
 ---
 # <a name="open-banking-psd2-and-strong-customer-authentication-sca-for-azure-customers"></a>Azure のお客様向けのオープン バンキング (PSD2) と強力なカスタマー認証 (SCA)
 
-2019 年 9 月 14 日以降、[欧州経済領域](https://en.wikipedia.org/wiki/European_Economic_Area)の 31 か国の銀行では、オンライン購入を行う人物の身元を検証してからその支払いを処理することが必要になりました。 この検証では、オンライン購入の安全性と保護を確保するのに役立つ多要素認証が必要です。 一部の国では、この検証要件の日付が遅延されます。 詳細については、[PSD2 に関する Microsoft の FAQ](https://support.microsoft.com/en-us/help/4517854?preview) に関するページを参照してください。
+2019 年 9 月 14 日以降、[欧州経済領域](https://en.wikipedia.org/wiki/European_Economic_Area)の 31 の国/地域の銀行では、オンライン購入を行う人物の身元を検証してからその支払いを処理することが必要になりました。 この検証では、オンライン購入の安全性と保護を確保するのに役立つ多要素認証が必要です。 一部の国/地域では、この検証要件の日付が遅延されます。 詳細については、[PSD2 に関する Microsoft の FAQ](https://support.microsoft.com/en-us/help/4517854?preview) に関するページを参照してください。
 
 ## <a name="what-psd2-means-for-azure-customers"></a>Azure のお客様にとっての PSD2 の意味
 

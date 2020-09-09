@@ -16,15 +16,15 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 564c648a550b41017ffc684ca19ff03612fc63d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad1567a3a6cba2c2fbc519ffe5d384aba25ab51d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79137630"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648991"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Azure 仮想マシンの SAP ワークロードでサポートされるシナリオ
-Azure での SAP NetWeaver、Business One、`Hybris`、または S/4HANA システム アーキテクチャの設計により、さまざまなアーキテクチャやツールで、スケーラブルで、効率性、可用性に優れたデプロイを実現するためのさまざまな機会が提供されます。 使用されているオペレーティング システムまたは DBMS によっては、制限があります。 また、オンプレミスでサポートされているすべてのシナリオが、Azure でも同じようにサポートされているわけではありません。 このドキュメントでは、サポートされていない非高可用性構成と高可用性構成、および Azure VM だけを使用するアーキテクチャについて説明します。 [HANA Large Instances](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) でサポートされているシナリオについては、「[HANA L インスタンスのサポートされるシナリオ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario)」をご覧ください。 
+Azure での SAP NetWeaver、Business One、`Hybris`、または S/4HANA システム アーキテクチャの設計により、さまざまなアーキテクチャやツールで、スケーラブルで、効率性、可用性に優れたデプロイを実現するためのさまざまな機会が提供されます。 使用されているオペレーティング システムまたは DBMS によっては、制限があります。 また、オンプレミスでサポートされているすべてのシナリオが、Azure でも同じようにサポートされているわけではありません。 このドキュメントでは、サポートされていない非高可用性構成と高可用性構成、および Azure VM だけを使用するアーキテクチャについて説明します。 [HANA Large Instances](./hana-overview-architecture.md) でサポートされているシナリオについては、「[HANA L インスタンスのサポートされるシナリオ](./hana-supported-scenario.md)」をご覧ください。 
 
 
 ## <a name="2-tier-configuration"></a>2 層構成
@@ -34,7 +34,7 @@ SAP 2 層構成は、同じサーバーまたは VM ユニットで実行され�
 
 ![単純な 2 層構成](./media/sap-planning-supported-configurations/two-tier-simple-configuration.png)
 
-運用環境と非運用環境の SQL Server、Oracle、DB2、maxDB、SAP ASE の DBMS システムに対して、Windows、Red Hat、SUSE、Oracle Linux でそのような構成がサポートされています。 SAP HANA が DBMS の場合は、そのような種類の構成は非運用環境でのみサポートされます。 これには、[Azure HANA Large Instances](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) のデプロイのケースも含まれます。
+運用環境と非運用環境の SQL Server、Oracle、DB2、maxDB、SAP ASE の DBMS システムに対して、Windows、Red Hat、SUSE、Oracle Linux でそのような構成がサポートされています。 SAP HANA が DBMS の場合は、そのような種類の構成は非運用環境でのみサポートされます。 これには、[Azure HANA Large Instances](./hana-overview-architecture.md) のデプロイのケースも含まれます。
 Azure でサポートされているすべての OS/DBMS の組み合わせについて、この種類の構成がサポートされています。 ただし、DBMS コンポーネントと SAP コンポーネントにより、メモリ リソースと CPU リソースに対する競合が起き、使用可能な物理リソースを超えてしまうことがないように構成することは必須です。 これを行うには、DBMS で割り当てることができるメモリを制限する必要があります。 また、アプリケーション インスタンスの SAP 拡張メモリを制限する必要もあります。 また、VM 全体の CPU 使用率を監視し、コンポーネントによって CPU リソースが限界まで使用されていないことを確認する必要もあります。 
 
 > [!NOTE]
@@ -48,7 +48,7 @@ Azure でサポートされているすべての OS/DBMS の組み合わせに�
 
 ![単純な 2 層構成](./media/sap-planning-supported-configurations/three-tier-simple-configuration.png)
 
-運用環境と非運用環境の SQL Server、Oracle、DB2、SAP HANA、maxDB、SAP ASE の DBMS システムに対して、Windows、Red Hat、SUSE、Oracle Linux で、この種の構成がサポートされています。 これは、[Azure HANA Large Instances](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) に対する既定のデプロイ構成です。 単純化するため、SAP アプリケーション レイヤーの SAP セントラル サービスと SAP ダイアログ インスタンスは区別しませんでした。 この単純な 3 層構成では、SAP セントラル サービスに対する高可用性保護はありません。
+運用環境と非運用環境の SQL Server、Oracle、DB2、SAP HANA、maxDB、SAP ASE の DBMS システムに対して、Windows、Red Hat、SUSE、Oracle Linux で、この種の構成がサポートされています。 これは、[Azure HANA Large Instances](./hana-overview-architecture.md) に対する既定のデプロイ構成です。 単純化するため、SAP アプリケーション レイヤーの SAP セントラル サービスと SAP ダイアログ インスタンスは区別しませんでした。 この単純な 3 層構成では、SAP セントラル サービスに対する高可用性保護はありません。
 
 > [!NOTE]
 > 運用 SAP システムの場合は、このドキュメントで後ほど説明するように、追加の高可用性と最終的なディザスター リカバリーの構成をお勧めします
@@ -72,7 +72,7 @@ Azure でサポートされているすべての OS/DBMS の組み合わせに�
 1 つのホスト上で複数のデータベース インスタンスを実行する場合は、異なるインスタンスがリソースに対して競合しないようにして、VM の物理リソースの制限を超えないようにする必要があります。 これは特に、VM を共有するインスタンスの 1 つが割り当てることのできる量に上限を設ける必要があるメモリの場合に大事です。 また、異なるデータベース インスタンスで利用できる CPU リソースにも当てはまります。 前述のすべての DBMS には、インスタンス レベルでメモリ割り当てと CPU リソースを制限できる構成があります。
 このような構成を Azure VM でサポートするには、異なるインスタンスによって管理されるデータベースのデータ ファイルとログおよび再実行ログ ファイルに使用されるディスクまたはボリュームを分離することが期待されます。 つまり、異なる DBMS インスタンスによって管理されるデータベースのデータ ファイルまたはログ ファイルと再実行ログ ファイルで、同じディスクまたはボリュームが共有されないようにします。 
 
-HANA Large Instances のディスク構成は、構成済みで提供されます。詳細についてた、「[HANA Large Instances のサポートされているシナリオ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-mcos)」を参照してください。 
+HANA Large Instances のディスク構成は、構成済みで提供されます。詳細についてた、「[HANA Large Instances のサポートされているシナリオ](./hana-supported-scenario.md#single-node-mcos)」を参照してください。 
 
 > [!NOTE]
 > 運用 SAP システムの場合は、このドキュメントで後ほど説明するように、追加の高可用性と最終的なディザスター リカバリーの構成をお勧めします。 複数の DBMS インスタンスで 1 つの VM を使用することは、このドキュメントで後ほど説明する高可用性構成ではサポートされていません。
@@ -92,33 +92,33 @@ SAP 運用システムをデプロイするときは、ホット スタンバイ
 
 一般に、Microsoft では、docs.microsoft.com の SAP ワークロード セクションに記載されている高可用性構成とソフトウェア パッケージのみがサポートされています。 SAP ノート [#1928533](https://launchpad.support.sap.com/#/notes/1928533) でも同じ内容を読むことができます。 Microsoft では、Microsoft と SAP ワークロードのドキュメントに記載されていない他の高可用性サードパーティ製ソフトウェア フレームワークのサポートを提供していません。 そのような場合、高可用性フレームワークのサードパーティ サプライヤーは、サポート プロセスにお客様として関与する必要がある高可用性構成のサポート パーティです。 この記事では、例外について説明します。 
 
-一般に、Microsoft でサポートされる Azure VM または HANA Large Instances ユニットでの高可用性構成は制限されています。 HANA Large Instances でサポートされるシナリオについては、「[HANA L インスタンスのサポートされるシナリオ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario)」をご覧ください。
+一般に、Microsoft でサポートされる Azure VM または HANA Large Instances ユニットでの高可用性構成は制限されています。 HANA Large Instances でサポートされるシナリオについては、「[HANA L インスタンスのサポートされるシナリオ](./hana-supported-scenario.md)」をご覧ください。
 
 Azure VM では、次の高可用性構成が DBMS レベルでサポートされています。
 
 - SUSE および Red Hat 上の Linux Pacemaker に基づく SAP HANA システム レプリケーション。 詳細については以下の記事を参照してください。
-    - [SUSE Linux Enterprise Server 上の Azure VM での SAP HANA の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability)
-    - [Red Hat Enterprise Linux 上の Azure VM での SAP HANA の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel)
+    - [SUSE Linux Enterprise Server 上の Azure VM での SAP HANA の高可用性](./sap-hana-high-availability.md)
+    - [Red Hat Enterprise Linux 上の Azure VM での SAP HANA の高可用性](./sap-hana-high-availability-rhel.md)
 - SUSE および Red Hat 上の [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) を使用する SAP HANA スケールアウト n+m 構成。 詳細については以下の記事を参照してください。
-    - [SUSE Linux Enterprise Server 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
-    - [Red Hat Enterprise Linux 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
+    - [SUSE Linux Enterprise Server 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする](./sap-hana-scale-out-standby-netapp-files-suse.md)
+    - [Red Hat Enterprise Linux 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする](./sap-hana-scale-out-standby-netapp-files-rhel.md)
 - Windows スケールアウト ファイル サービスに基づく SQL Server フェールオーバー クラスター。 ただし、運用システムでは、クラスタリングではなく SQL Server Always On を使用することをお勧めします。 SQL Server Always On では、個別のストレージを使用して可用性を向上させることができます。 詳細については、次の記事を参照してください。 
-    - [Azure Virtual Machines で SQL Server フェールオーバー クラスター インスタンスを構成する](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-create-failover-cluster)
+    - [Azure Virtual Machines で SQL Server フェールオーバー クラスター インスタンスを構成する](../../../azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md)
 - SQL Server Always On は、Windows オペレーティング システムで Azure 上の SQL Server に対してサポートされています。 これは、Azure での運用 SQL Server インスタンスに対する既定の推奨事項です。 詳細については、次の記事を参照してください。
-    - [Azure Virtual Machines での SQL Server Always On 可用性グループの概要](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)。
-    - [さまざまな地域に存在する Azure 仮想マシンに Always On 可用性グループを構成します](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-dr)｡
-    - [Azure の AlwaysOn 可用性グループに使用するロード バランサーの構成](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener)。
+    - [Azure Virtual Machines での SQL Server Always On 可用性グループの概要](../../../azure-sql/virtual-machines/windows/availability-group-overview.md)。
+    - [さまざまな地域に存在する Azure 仮想マシンに Always On 可用性グループを構成します](../../../azure-sql/virtual-machines/windows/availability-group-manually-configure-multiple-regions.md)｡
+    - [Azure の AlwaysOn 可用性グループに使用するロード バランサーの構成](../../../azure-sql/virtual-machines/windows/availability-group-load-balancer-portal-configure.md)。
 - Windows および Oracle Linux 用の Oracle Data Guard。 Oracle Linux の詳細については、次の記事を参照してください。
-    - [Azure Linux 仮想マシンで Oracle Data Guard を実装する](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)
+    - [Azure Linux 仮想マシンで Oracle Data Guard を実装する](../oracle/configure-oracle-dataguard.md)
 - SUSE および RHEL 上の IBM DB2 HADR。Pacemaker を使用する SUSE と RHEL の詳細なドキュメントについては、以下を参照してください。
-    - [Pacemaker による SUSE Linux Enterprise Server 上の Azure VM での IBM Db2 LUW の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm)
-    - [Red Hat Enterprise Linux Server 上の Azure VM での IBM Db2 LUW の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-ibm-db2-luw)
+    - [Pacemaker による SUSE Linux Enterprise Server 上の Azure VM での IBM Db2 LUW の高可用性](./dbms-guide-ha-ibm.md)
+    - [Red Hat Enterprise Linux Server 上の Azure VM での IBM Db2 LUW の高可用性](./high-availability-guide-rhel-ibm-db2-luw.md)
 - 以下のドキュメントで詳しく説明されている SAP ASE と SAP maxDB の構成。
-    - [SAP ワークロードのための SAP ASE Azure Virtual Machines DBMS のデプロイ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sapase)
-    - [Azure VM 上の SAP MaxDB、liveCache、Content Server のデプロイ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_maxdb)
+    - [SAP ワークロードのための SAP ASE Azure Virtual Machines DBMS のデプロイ](./dbms_guide_sapase.md)
+    - [Azure VM 上の SAP MaxDB、liveCache、Content Server のデプロイ](./dbms_guide_maxdb.md)
 - HANA Large Instances の高可用性シナリオについては、以下で詳しく説明されています。
-    - [HANA L インスタンスのサポートされるシナリオ - HSR と STONITH を使用した高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#hsr-with-stonith-for-high-availability)
-    - [HANA L インスタンスのサポートされるシナリオ - ホストの自動フェールオーバー (1+1)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#host-auto-failover-11)
+    - [HANA L インスタンスのサポートされるシナリオ - HSR と STONITH を使用した高可用性](./hana-supported-scenario.md#hsr-with-stonith-for-high-availability)
+    - [HANA L インスタンスのサポートされるシナリオ - ホストの自動フェールオーバー (1+1)](./hana-supported-scenario.md#host-auto-failover-11)
 
 > [!IMPORTANT]
 > 上で説明したシナリオのいずれでも、1 つの VM で複数の DBMS インスタンスの構成はサポートされていません。 各ケースでは、VM ごとにデプロイできるデータベース インスタンスは 1 つだけで、説明されている高可用性の方法で保護することができます。 Windows または Pacemaker の同じフェールオーバー クラスターで複数の DBMS インスタンスを保護することは、現時点ではサポートされて**いません**。 また、Oracle Data Guard は、VM デプロイごとに 1 つのインスタンスのケースに対してのみサポートされます。 
@@ -146,23 +146,23 @@ DBMS やオペレーティング システムによっては、Azure ロード �
 SAP セントラル サービスは、SAP 構成の 2 番目の単一障害点です。 そのため、これらのセントラル サービス プロセスも保護する必要があります。 SAP ワークロードに対しては次のようなオファーがサポートされ、ドキュメント化されています。
 
 - sapmnt とグローバル トランスポート ディレクトリ用に Windows スケールアウト ファイル サービスを使用する Windows フェールオーバー クラスターサーバー。 詳細については、次の記事を参照してください。
-    - [Azure のファイル共有を使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share)
-    - [Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用して SAP の高可用性向けの Azure インフラストラクチャを準備します](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)
+    - [Azure のファイル共有を使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する](./sap-high-availability-guide-wsfc-file-share.md)
+    - [Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用して SAP の高可用性向けの Azure インフラストラクチャを準備します](./sap-high-availability-infrastructure-wsfc-file-share.md)
 - sapmnt とグローバル トランスポート ディレクトリ用に [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) に基づく SMB 共有を使用する Windows フェールオーバー クラスターサーバー。 詳細については以下の記事を参照してください。
-    - [SAP アプリケーション用の Azure NetApp Files (SMB) を使用した Windows 上の Azure VM における SAP NetWeaver の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)
+    - [SAP アプリケーション用の Azure NetApp Files (SMB) を使用した Windows 上の Azure VM における SAP NetWeaver の高可用性](./high-availability-guide-windows-netapp-files-smb.md)
 - SIOS `Datakeeper` に基づく Windows フェールオーバー クラスター サーバー。 Microsoft によって文書化されていますが、このソリューションを使用するときに SIOS サポートを利用できるように、SIOS とのサポート関係が必要です。 詳細については、次の記事を参照してください。
-    - [Azure のクラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)
-    - [SAP ASCS/SCS 用の Windows フェールオーバー クラスターと共有ディスクを使用して SAP HA 向けに Azure インフラストラクチャを準備する](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-shared-disk)
+    - [Azure のクラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する](./sap-high-availability-guide-wsfc-shared-disk.md)
+    - [SAP ASCS/SCS 用の Windows フェールオーバー クラスターと共有ディスクを使用して SAP HA 向けに Azure インフラストラクチャを準備する](./sap-high-availability-infrastructure-wsfc-shared-disk.md)
 - ファイル レプリケーションのために 2 つの SUSE VM と `drdb` を使用して高可用性 NFS 共有が作成されている SUSE オペレーティング システム上の Pacemaker。 詳細については以下のドキュメントを参照してください
-    - [SUSE Linux Enterprise Server for SAP Applications 上の Azure VM での SAP NetWeaver の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)
-    - [SUSE Linux Enterprise Server 上の Azure VM での NFS の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)
+    - [SUSE Linux Enterprise Server for SAP Applications 上の Azure VM での SAP NetWeaver の高可用性](./high-availability-guide-suse.md)
+    - [SUSE Linux Enterprise Server 上の Azure VM での NFS の高可用性](./high-availability-guide-suse-nfs.md)
 - [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) によって提供される NFS 共有を利用する SUSE オペレーティング システム上の Pacemaker。 詳細については以下を参照してください
-    - [SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の Azure VM 上の SAP NetWeaver の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
+    - [SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の Azure VM 上の SAP NetWeaver の高可用性](./high-availability-guide-suse-netapp-files.md)
 - `glusterfs` クラスターでホストされた NFS 共有を使用する Red Hat オペレーティング システム上の Pacemaker。 詳細については次の記事を参照してください
-    - [Red Hat Enterprise Linux での SAP NetWeaver のための Azure Virtual Machines 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)
-    - [Red Hat Enterprise Linux for SAP NetWeaver における Azure VM 上の `GlusterFS`](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs)
+    - [Red Hat Enterprise Linux での SAP NetWeaver のための Azure Virtual Machines 高可用性](./high-availability-guide-rhel.md)
+    - [Red Hat Enterprise Linux for SAP NetWeaver における Azure VM 上の `GlusterFS`](./high-availability-guide-rhel-glusterfs.md)
 - [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) でホストされた NFS 共有を使用する Red Hat オペレーティング システム上の Pacemaker。 詳細については、次の記事を参照してください
-    - [SAP アプリケーション用の Azure NetApp Files を使用した Red Hat Enterprise Linux 上の SAP NetWeaver 用の Azure Virtual Machines の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
+    - [SAP アプリケーション用の Azure NetApp Files を使用した Red Hat Enterprise Linux 上の SAP NetWeaver 用の Azure Virtual Machines の高可用性](./high-availability-guide-rhel-netapp-files.md)
 
 この一覧のソリューションでは、`Datakeeper` 製品をサポートし、問題が発生した場合に直接 SIOS と連携できるよう、SIOS とのサポート関係が必要です。 Windows、Red Hat、SUSE OS のライセンス方法によっては、示されている高可用性構成の完全なサポートのため、OS プロバイダーとのサポート契約が必要になる場合もあります。
 
@@ -195,8 +195,8 @@ SAP セントラル サービス クラスターのシナリオで使用でき�
 
 Azure では、マルチ SID クラスター構成は、ENSA1 と ENSA2 がある Windows オペレーティング システムでサポートされています。 古いエンキュー レプリケーション サービス アーキテクチャ (ENSA1) と新しいアーキテクチャ (ENSA2) を 1 つのマルチ SID クラスターで組み合わせないことをお勧めします。 このようなアーキテクチャの詳細については、次の記事をご覧ください
 
-- [Azure で Windows Server フェールオーバー クラスタリングと共有ディスクを使用する SAP ASCS/SCS インスタンスのマルチ SID 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-shared-disk) 
-- [Azure での Windows Server フェールオーバー クラスタリングとファイル共有による SAP ASCS/SCS インスタンスのマルチ SID 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-file-share) 
+- [Azure で Windows Server フェールオーバー クラスタリングと共有ディスクを使用する SAP ASCS/SCS インスタンスのマルチ SID 高可用性](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md) 
+- [Azure での Windows Server フェールオーバー クラスタリングとファイル共有による SAP ASCS/SCS インスタンスのマルチ SID 高可用性](./sap-ascs-ha-multi-sid-wsfc-file-share.md) 
 
 SUSE では、Pacemaker に基づくマルチ SID クラスターもサポートされています。 ここまでの構成は以下に対してサポートされています。
 
@@ -204,7 +204,7 @@ SUSE では、Pacemaker に基づくマルチ SID クラスターもサポート
 - 古いエンキュー レプリケーション サービス アーキテクチャ (ENSA1)
 - 2 ノード Pacemaker クラスター構成
 
-この構成については、「[SUSE Linux Enterprise Server for SAP Applications マルチ SID 上の Azure VM での SAP NetWeaver の高可用性ガイド](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)」を参照してください
+この構成については、「[SUSE Linux Enterprise Server for SAP Applications マルチ SID 上の Azure VM での SAP NetWeaver の高可用性ガイド](./high-availability-guide-suse-multi-sid.md)」を参照してください
 
 エンキュー レプリケーション サーバーを使用するマルチ SID クラスターは次の図のようになります
 
@@ -215,29 +215,29 @@ SUSE では、Pacemaker に基づくマルチ SID クラスターもサポート
 SAP HANA スケールアウト シナリオは、[SAP HANA ハードウェア ディレクトリ](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)に列記されている HANA 認定 Azure VM のサブセットについてサポートされています。 "Clustering" 列が "Yes" になっているすべての VM は、OLAP または S/4HANA のスケールアウトに使用できます。スタンバイを使用しない構成は、次の Azure Storage の種類でサポートされます。 
 
 - Azure Premium Storage (/hana/log ボリューム用の Azure 書き込みアクセラレータを含む)
-- [Ultra Disk](https://docs.microsoft.com/azure/virtual-machines/linux/disks-enable-ultra-ssd)
+- [Ultra Disk](../../disks-enable-ultra-ssd.md)
 - [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) 
 
 スタンバイ ノードを使用する OLAP または S/4HANA の SAP HANA スケールアウト構成は、Azure NetApp Files でホストされる NFS 共有でのみサポートされています。
 
 スタンバイ ノードがある場合とない場合の正確なストレージ構成の詳細については、次の記事を参照してください。
 
-- [SAP HANA Azure 仮想マシンのストレージ構成](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) 
-- [SUSE Linux Enterprise Server 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
-- [Red Hat Enterprise Linux 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
+- [SAP HANA Azure 仮想マシンのストレージ構成](./hana-vm-operations-storage.md) 
+- [SUSE Linux Enterprise Server 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする](./sap-hana-scale-out-standby-netapp-files-suse.md)
+- [Red Hat Enterprise Linux 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする](./sap-hana-scale-out-standby-netapp-files-rhel.md)
 - [SAP サポート ノート #2080991](https://launchpad.support.sap.com/#/notes/2080991)
 
 HANA Large Instances でサポートされる HANA スケールアウト構成の詳細については、次のドキュメントを参照してください。
 
-- [スタンバイを使用する HANA Large Instances スケールアウトでサポートされるシナリオ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-standby)
-- [スタンバイを使用しない HANA Large Instances スケールアウトでサポートされるシナリオ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-without-standby)
+- [スタンバイを使用する HANA Large Instances スケールアウトでサポートされるシナリオ](./hana-supported-scenario.md#scale-out-with-standby)
+- [スタンバイを使用しない HANA Large Instances スケールアウトでサポートされるシナリオ](./hana-supported-scenario.md#scale-out-without-standby)
 
 
 ## <a name="disaster-recovery-scenario"></a>ディザスター リカバリーのシナリオ
 さまざまなディザスター リカバリー シナリオがサポートされています。 ディザスター アーキテクチャは、グリッドを終了する完全な Azure リージョンを補正する必要があるアーキテクチャと定義されます。 つまり、SAP ランドスケープを実行するためのターゲットとして、ディザスター リカバリー ターゲットを別の Azure リージョンにする必要があります。 方法と構成は、DBMS レイヤーと非 DBMS レイヤーで異なります。 
 
 ### <a name="dbms-layer"></a>DBMS レイヤー
-DBMS レイヤーでは、Always On、Oracle Data Guard、DB2 HADR、SAP ASE Always On、HANA システム レプリケーションなどの DBMS ネイティブ レプリケーション メカニズムを使用する構成がサポートされています。 このような場合のレプリケーション ストリームは非同期であることが必須です。一方、単一の Azure リージョン内にデプロイされる一般的な高可用性シナリオでは同期です。 このようなサポートされる DBMS ディザスター リカバリー構成の一般的な例については、「[Azure リージョンの枠を越えた SAP HANA の可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions#combine-availability-within-one-region-and-across-regions)」を参照してください。 そのセクションの 2 番目の図では、例として HANA のシナリオが説明されています。 SAP アプリケーションでサポートされている主なデータベースはすべて、このようなシナリオでデプロイできます。
+DBMS レイヤーでは、Always On、Oracle Data Guard、DB2 HADR、SAP ASE Always On、HANA システム レプリケーションなどの DBMS ネイティブ レプリケーション メカニズムを使用する構成がサポートされています。 このような場合のレプリケーション ストリームは非同期であることが必須です。一方、単一の Azure リージョン内にデプロイされる一般的な高可用性シナリオでは同期です。 このようなサポートされる DBMS ディザスター リカバリー構成の一般的な例については、「[Azure リージョンの枠を越えた SAP HANA の可用性](./sap-hana-availability-across-regions.md#combine-availability-within-one-region-and-across-regions)」を参照してください。 そのセクションの 2 番目の図では、例として HANA のシナリオが説明されています。 SAP アプリケーションでサポートされている主なデータベースはすべて、このようなシナリオでデプロイできます。
 
 小さい VM ではワークロードのトラフィックがいっぱいになることはないため、ディザスター リカバリー リージョンのターゲット インスタンスとしてそのような VM の使用がサポートされています。 その場合は、以下の点に注意してください。
 
@@ -246,22 +246,22 @@ DBMS レイヤーでは、Always On、Oracle Data Guard、DB2 HADR、SAP ASE Alw
 - 1 つの Azure 可用性セットに異なる VM が収集されているときに VM ファミリ間でサイズを変更すると、または VM の M シリーズ ファミリと Mv2 ファミリの間でサイズの変更を行うと、問題になることがあります
 - 最小限の遅延で変更のストリームを受信できるデータベース インスタンスの CPU とメモリの消費量、および最小限の遅延でこれらの変更をデータに適用するのに十分な CPU とメモリ リソース  
 
-さまざまな VM サイズの制限について詳しくは、[こちら](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)を参照してください 
+さまざまな VM サイズの制限について詳しくは、[こちら](../../sizes.md)を参照してください 
 
 DR ターゲットのデプロイ方法としてもう 1 つサポートされているのは、非運用 SAP インスタンスの非運用 DBMS インスタンスが実行されている VM に 2 つ目の DBMS インスタンスをインストールする方法です。 この方法は、DR シナリオのメイン インスタンスとして機能する必要がある特定のターゲット インスタンスに必要なメモリ、CPU リソース、ネットワーク帯域幅、ストレージ帯域幅を把握する必要があるため、少々困難になる場合があります。 特に HANA では、データが DR ターゲット インスタンスに事前に読み込まれないように、共有ホスト上で DR ターゲットとして機能するインスタンスを構成することを強くお勧めします。
 
 HANA Large Instance の DR シナリオについては、次のドキュメントを参照してください。
 
-- [ストレージ レプリケーションを使用する DR を備えた単一ノード](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-storage-replication)
-- [ストレージ レプリケーションを使用する DR (多目的) を備えた単一ノード](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-multipurpose-using-storage-replication)
-- [ストレージ レプリケーションを使用する DR (多目的) を備えた単一ノード](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-multipurpose-using-storage-replication)
-- [HSR と DR を使用した高可用性とストレージ レプリケーション](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-with-hsr-and-dr-with-storage-replication)
-- [ストレージ レプリケーションを使用しする DR を備えたスケールアウト](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-storage-replication)
-- [HSR を使用する DR を備えた単一ノード](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-hsr)
-- [単一ノードの HSR から DR (コスト最適化)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-hsr-to-dr-cost-optimized)
-- [HSR の高可用性とディザスター リカバリー](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr)
-- [HSR の高可用性とディザスター リカバリー (コスト最適化)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr-cost-optimized)
-- [HSR を使用する DR を備えたスケールアウト](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-hsr)
+- [ストレージ レプリケーションを使用する DR を備えた単一ノード](./hana-supported-scenario.md#single-node-with-dr-using-storage-replication)
+- [ストレージ レプリケーションを使用する DR (多目的) を備えた単一ノード](./hana-supported-scenario.md#single-node-with-dr-multipurpose-using-storage-replication)
+- [ストレージ レプリケーションを使用する DR (多目的) を備えた単一ノード](./hana-supported-scenario.md#single-node-with-dr-multipurpose-using-storage-replication)
+- [HSR と DR を使用した高可用性とストレージ レプリケーション](./hana-supported-scenario.md#high-availability-with-hsr-and-dr-with-storage-replication)
+- [ストレージ レプリケーションを使用しする DR を備えたスケールアウト](./hana-supported-scenario.md#scale-out-with-dr-using-storage-replication)
+- [HSR を使用する DR を備えた単一ノード](./hana-supported-scenario.md#single-node-with-dr-using-hsr)
+- [単一ノードの HSR から DR (コスト最適化)](./hana-supported-scenario.md#single-node-hsr-to-dr-cost-optimized)
+- [HSR の高可用性とディザスター リカバリー](./hana-supported-scenario.md#high-availability-and-disaster-recovery-with-hsr)
+- [HSR の高可用性とディザスター リカバリー (コスト最適化)](./hana-supported-scenario.md#high-availability-and-disaster-recovery-with-hsr-cost-optimized)
+- [HSR を使用する DR を備えたスケールアウト](./hana-supported-scenario.md#scale-out-with-dr-using-hsr)
 
 > [!NOTE]
 > SAP ワークロード下での DBMS のデプロイについて、[Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) の使用はテストされていません。 そのため、現時点では、SAP システムの DBMS レイヤーではサポートされていません。 一覧で示されていない Microsoft および SAP による他のレプリケーション方法は、サポートされていません。 異なる Azure リージョン間で SAP システムの DBMS レイヤーをレプリケートするためにサードパーティ製ソフトウェアを使用する場合は、ソフトウェアのベンダーによってサポートされている必要があり、Microsoft と SAP のサポート チャネルではサポートされません。 
@@ -269,7 +269,7 @@ HANA Large Instance の DR シナリオについては、次のドキュメン�
 ## <a name="non-dbms-layer"></a>非 DBMS レイヤー
 SAP アプリケーション レイヤーおよび最終的に必要な共有やストレージの場所については、次の 2 つの主要なシナリオがお客様によって利用されています。
 
-- 2 番目の Azure リージョンのディザスター リカバリー ターゲットは、どのような運用目的または非運用目的にも使用されていません。 このシナリオでは、ディザスター リカバリー ターゲットとして機能する VM をデプロイしないのが理想的であり、運用 SAP アプリケーション レイヤーのイメージとイメージに対する変更は、ディザスター リカバリー リージョンにレプリケートされます。 そのようなタスクを実行できる機能は、[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-move-overview) です。 Azure Site Recovery では、このような Azure から Azure へのレプリケーション シナリオがサポートされています。 
+- 2 番目の Azure リージョンのディザスター リカバリー ターゲットは、どのような運用目的または非運用目的にも使用されていません。 このシナリオでは、ディザスター リカバリー ターゲットとして機能する VM をデプロイしないのが理想的であり、運用 SAP アプリケーション レイヤーのイメージとイメージに対する変更は、ディザスター リカバリー リージョンにレプリケートされます。 そのようなタスクを実行できる機能は、[Azure Site Recovery](../../../site-recovery/azure-to-azure-move-overview.md) です。 Azure Site Recovery では、このような Azure から Azure へのレプリケーション シナリオがサポートされています。 
 - ディザスター リカバリー ターゲットは、非運用環境のシステムによって実際に使用されている VM です。 通常、SAP ランドスケープ全体は、運用システムと非運用システムが 2 つの異なる Azure リージョンに分かれています。 お客様のデプロイの多くでは、運用システムと同等の非運用システムが使用されます。 運用アプリケーション インスタンスが、アプリケーション レイヤーの非運用システムに事前にインストールされています。 フェールオーバーが発生した場合、非運用インスタンスがシャットダウンされ、運用 VM の仮想名が非運用 VM に移動されて (DNS で新しい IP アドレスが割り当てられた後)、インストール済みの運用インスタンスが起動されます
 
 ### <a name="sap-central-services-clusters"></a>SAP セントラル サービス クラスター
@@ -304,12 +304,9 @@ Azure アーキテクチャで SAP ワークロードに対してサポートさ
  
 
 ## <a name="next-steps"></a>次の手順
-次の手順については、「[SAP NetWeaver のための Azure Virtual Machines の計画と実装](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)」を参照してください
+次の手順については、「[SAP NetWeaver のための Azure Virtual Machines の計画と実装](./planning-guide.md)」を参照してください
 
 
 
 
   
-
-
-

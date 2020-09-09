@@ -2,15 +2,16 @@
 title: Azure Functions C# スクリプト開発者向けリファレンス
 description: C# スクリプトを使用して Azure Functions を開発する方法について説明します。
 author: craigshoemaker
-ms.topic: reference
+ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 12/12/2017
 ms.author: cshoe
-ms.openlocfilehash: a5497300f6b0cbf3a073681bac41adc583d869ef
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 4d5388f850f47323f6ad79f9f91e617e506546bf
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82733398"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205441"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# スクリプト (.csx) 開発者向けリファレンス
 
@@ -51,11 +52,11 @@ FunctionsProject
 
 関数アプリの構成に使用できる共有 [host.json](functions-host-json.md) ファイルがあります。 各関数には、独自のコード ファイル (.csx) とバインディング構成ファイル (function.json) があります。
 
-Functions ランタイムの[バージョン 2.x およびそれ以降](functions-versions.md) で必要なバインディング拡張機能は、`extensions.csproj` フォルダー内の実際のライブラリファイルと共に、`bin`ファイルで定義されます。 ローカルで開発する場合は、[バインド拡張機能を登録する](./functions-bindings-register.md#extension-bundles)必要があります。 Azure portal 上で関数を開発するときに、この登録が実行されます。
+Functions ランタイムの[バージョン 2.x およびそれ以降](functions-versions.md) で必要なバインディング拡張機能は、`bin` フォルダー内の実際のライブラリファイルと共に、`extensions.csproj`ファイルで定義されます。 ローカルで開発する場合は、[バインド拡張機能を登録する](./functions-bindings-register.md#extension-bundles)必要があります。 Azure portal 上で関数を開発するときに、この登録が実行されます。
 
 ## <a name="binding-to-arguments"></a>引数へのバインド
 
-入力または出力データは、`name`function.json*構成ファイルの* プロパティを介して C# スクリプト関数パラメーターにバインドされます。 次の例は、キューによってトリガーされる関数の *function.json* ファイルと *run.csx* ファイルを示しています。 キュー メッセージからデータを受信するパラメーターの名前は `myQueueItem` です。これは `name` プロパティの値であるためです。
+入力または出力データは、*function.json* 構成ファイルの `name` プロパティを介して C# スクリプト関数パラメーターにバインドされます。 次の例は、キューによってトリガーされる関数の *function.json* ファイルと *run.csx* ファイルを示しています。 キュー メッセージからデータを受信するパラメーターの名前は `myQueueItem` です。これは `name` プロパティの値であるためです。
 
 ```json
 {
@@ -116,7 +117,7 @@ POCO クラスでは、各プロパティにゲッターとセッターが定義
 
 ## <a name="reusing-csx-code"></a>.csx コードの再利用
 
-他の *.csx* ファイルで定義されたクラスとメソッドを、*run.csx* ファイルで使用できます。 そのためには、`#load`run.csx*ファイル内で* ディレクティブを使用します。 次の例では、`MyLogger` という名前のログ記録ルーチンが *myLogger.csx* 内で共有され、*ディレクティブを使用して*run.csx`#load` に読み込まれます。
+他の *.csx* ファイルで定義されたクラスとメソッドを、*run.csx* ファイルで使用できます。 そのためには、*run.csx* ファイル内で `#load` ディレクティブを使用します。 次の例では、`MyLogger` という名前のログ記録ルーチンが *myLogger.csx* 内で共有され、`#load` ディレクティブを使用して *run.csx* に読み込まれます。
 
 *run.csx*の例:
 
@@ -218,7 +219,7 @@ public class Order
 
 ## <a name="binding-to-method-return-value"></a>メソッドの戻り値へのバインド
 
-`$return`function.json*内の名前* を使用して、出力バインディングにメソッド戻り値を使用できます。 例については、[トリガーとバインディング](./functions-bindings-return-value.md)に関するページを参照してください。
+*function.json* 内の名前 `$return` を使用して、出力バインディングにメソッド戻り値を使用できます。 例については、[トリガーとバインディング](./functions-bindings-return-value.md)に関するページを参照してください。
 
 正常な関数の実行によって、常に戻り値が出力バインドに渡される場合のみ、戻り値を使用してください。 それ以外の場合は、次のセクションに示すように `ICollector` または `IAsyncCollector` を使用してください。
 
@@ -238,7 +239,7 @@ public static void Run(ICollector<string> myQueue, ILogger log)
 
 ## <a name="logging"></a>ログ記録
 
-出力を C# のストリーミング ログにログ記録するために、[ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) 型の引数を含めます。 これの名前を `log`にすることをお勧めします。 Azure Functions では `Console.Write` を使用しないでください。
+出力を C# のストリーミング ログにログ記録するために、[ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) 型の引数を含めます。 これの名前を `log`にすることをお勧めします。 Azure Functions では `Console.Write` を使用しないでください。
 
 ```csharp
 public static void Run(string myBlob, ILogger log)
@@ -248,11 +249,11 @@ public static void Run(string myBlob, ILogger log)
 ```
 
 > [!NOTE]
-> `TraceWriter` の代わりに使用できる新しいログ記録フレームワークについては、「[Azure Functions を監視する](functions-monitoring.md#write-logs-in-c-functions)」の記事にある、「**C# 関数でログを書き込む**」をご覧ください。
+> `TraceWriter` の代わりに使用できる新しいログ記録フレームワークについては、「**Azure Functions を監視する**」の記事にある、「[C# 関数でログを書き込む](functions-monitoring.md#write-logs-in-c-functions)」をご覧ください。
 
 ## <a name="async"></a>非同期
 
-関数を[非同期](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)にするには、`async` キーワードを使用して `Task` オブジェクトを返します。
+関数を[非同期](/dotnet/csharp/programming-guide/concepts/async/)にするには、`async` キーワードを使用して `Task` オブジェクトを返します。
 
 ```csharp
 public async static Task ProcessQueueMessageAsync(
@@ -359,7 +360,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 
 カスタム アセンブリを参照するために、*共有*アセンブリまたは*プライベート* アセンブリのいずれかを使用できます。
 
-* 共有アセンブリは、関数アプリ内のすべての関数にわたって共有されます。 カスタム アセンブリを参照するには、そのアセンブリをご自分の`bin`関数アプリのルート フォルダー[ (wwwroot) 内の ](functions-reference.md#folder-structure) という名前のフォルダーにアップロードします。
+* 共有アセンブリは、関数アプリ内のすべての関数にわたって共有されます。 カスタム アセンブリを参照するには、そのアセンブリをご自分の[関数アプリのルート フォルダー](functions-reference.md#folder-structure) (wwwroot) 内の `bin` という名前のフォルダーにアップロードします。
 
 * プライベート アセンブリは、特定の関数のコンテキストの一部であり、異なるバージョンのサイドローディングをサポートします。 プライベート アセンブリを関数ディレクトリ の `bin` フォルダーにアップロードする必要があります。 `#r "MyAssembly.dll"` などのファイル名を使用してアセンブリを参照します。
 
@@ -367,7 +368,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 
 ### <a name="watched-directories"></a>監視対象のディレクトリ
 
-関数のスクリプト ファイルを含むディレクトリは、アセンブリの変更を自動的に監視されています。 その他のディレクトリでアセンブリの変更を監視するには、`watchDirectories`host.json[ の ](functions-host-json.md) の一覧にそのディレクトリを追加します。
+関数のスクリプト ファイルを含むディレクトリは、アセンブリの変更を自動的に監視されています。 その他のディレクトリでアセンブリの変更を監視するには、[host.json](functions-host-json.md) の `watchDirectories` の一覧にそのディレクトリを追加します。
 
 ## <a name="using-nuget-packages"></a>NuGet パッケージを使用する
 2\.x およびそれ以降の C# 関数で NuGet パッケージを使用するには、*function.proj* ファイルを、関数アプリのファイルシステム内の関数フォルダーにアップロードします。 *Microsoft.ProjectOxford.Face* バージョン *1.1.0* への参照を追加する *function.proj* ファイルの例を次に示します。
@@ -444,11 +445,11 @@ public static string GetEnvironmentVariable(string name)
 
 ## <a name="binding-at-runtime"></a>実行時のバインド
 
-C# および他の .NET 言語では、[function.json](https://en.wikipedia.org/wiki/Imperative_programming) の[*宣言型*](https://en.wikipedia.org/wiki/Declarative_programming)のバインドではなく*命令型*のバインド パターンを使用できます。 命令型のバインドは、設計時ではなくランタイム時にバインド パラメーターを計算する必要がある場合に便利です。 このパターンを使用すると、サポートされている入力バインドと出力バインドに関数コード内でバインドできます。
+C# および他の .NET 言語では、*function.json* の[*宣言型*](https://en.wikipedia.org/wiki/Declarative_programming)のバインドではなく[命令型](https://en.wikipedia.org/wiki/Imperative_programming)のバインド パターンを使用できます。 命令型のバインドは、設計時ではなくランタイム時にバインド パラメーターを計算する必要がある場合に便利です。 このパターンを使用すると、サポートされている入力バインドと出力バインドに関数コード内でバインドできます。
 
 次のように命令型のバインドを定義します。
 
-- 必要な命令型のバインドの **function.json** にエントリを*含めないで*ください。
+- 必要な命令型のバインドの *function.json* にエントリを**含めないで**ください。
 - 入力パラメーター [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) または [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs) を渡します。
 - 次の C# パターンを使用してデータ バインドを実行します。
 
@@ -459,7 +460,7 @@ using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
 }
 ```
 
-`BindingTypeAttribute` はバインドを定義する .NET 属性、`T` はそのバインドの種類でサポートされている入力または出力の型です。 `T` を `out` パラメーター型 (`out JObject` など) にすることはできません。 たとえば、Mobile Apps テーブルの出力バインドは [6 種類の出力](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)をサポートしますが、[ に使用できるのは \<ICollector](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs)T>[ または `IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)`T` のみです。
+`BindingTypeAttribute` はバインドを定義する .NET 属性、`T` はそのバインドの種類でサポートされている入力または出力の型です。 `T` を `out` パラメーター型 (`out JObject` など) にすることはできません。 たとえば、Mobile Apps テーブルの出力バインドは [6 種類の出力](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)をサポートしますが、`T` に使用できるのは [ICollector\<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) または [`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) のみです。
 
 ### <a name="single-attribute-example"></a>単一属性の例
 
@@ -482,7 +483,7 @@ public static async Task Run(string input, Binder binder)
 
 ### <a name="multiple-attribute-example"></a>複数属性の例
 
-前の例では、関数アプリのメイン ストレージ アカウント接続文字列 (`AzureWebJobsStorage`) のアプリ設定を取得します。 ストレージ アカウントに使用するカスタム アプリ設定を指定するには、[StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) を追加し、属性の配列を `BindAsync<T>()` に渡します。 `Binder`ではなく、`IBinder` パラメーターを使用します。  次に例を示します。
+前の例では、関数アプリのメイン ストレージ アカウント接続文字列 (`AzureWebJobsStorage`) のアプリ設定を取得します。 ストレージ アカウントに使用するカスタム アプリ設定を指定するには、[StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) を追加し、属性の配列を `BindAsync<T>()` に渡します。 `IBinder`ではなく、`Binder` パラメーターを使用します。  次に例を示します。
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -506,7 +507,7 @@ public static async Task Run(string input, Binder binder)
 次の表に、各バインドの種類の .NET 属性と、それらが定義されているパッケージを示します。
 
 > [!div class="mx-codeBreakAll"]
-> | バインド | Attribute | 参照の追加 |
+> | バインド | 属性 | 参照の追加 |
 > |------|------|------|
 > | Cosmos DB | [`Microsoft.Azure.WebJobs.DocumentDBAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.CosmosDB"` |
 > | Event Hubs | [`Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs)、[`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/b798412ad74ba97cf2d85487ae8479f277bdd85c/test/Microsoft.Azure.WebJobs.ServiceBus.UnitTests/ServiceBusAccountTests.cs) | `#r "Microsoft.Azure.Jobs.ServiceBus"` |

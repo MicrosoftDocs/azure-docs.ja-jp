@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: da9834636944c6bb816c4f49b0e9bf3abda2264a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3b65d04b383fdc0a409e23ab6b6649604be502c6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82097780"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525589"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>チュートリアル:Key Vault に格納されている TLS/SSL 証明書を使用して、Azure 内の Windows 仮想マシン上の Web サーバーをセキュリティで保護します
 
@@ -44,7 +44,7 @@ Azure Key Vault では、証明書やパスワードなどの暗号化キーと�
 
 
 ## <a name="create-an-azure-key-vault"></a>Azure Key Vault を作成する
-キー コンテナーと証明書を作成する前に、[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) を使用してリソース グループを作成します。 次の例では、*myResourceGroupSecureWeb* という名前のリソース グループを*米国東部*に作成します。
+キー コンテナーと証明書を作成する前に、[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用してリソース グループを作成します。 次の例では、*myResourceGroupSecureWeb* という名前のリソース グループを*米国東部*に作成します。
 
 ```azurepowershell-interactive
 $resourceGroup = "myResourceGroupSecureWeb"
@@ -52,7 +52,7 @@ $location = "East US"
 New-AzResourceGroup -ResourceGroupName $resourceGroup -Location $location
 ```
 
-[New-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault) を使用してキー コンテナーを作成します。 各 Key Vault には一意の名前が必要であり、その名前はすべて小文字にする必要があります。 次の例の `mykeyvault` は一意の Key Vault 名で置き換えてください。
+[New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault) を使用してキー コンテナーを作成します。 各 Key Vault には一意の名前が必要であり、その名前はすべて小文字にする必要があります。 次の例の `mykeyvault` は一意の Key Vault 名で置き換えてください。
 
 ```azurepowershell-interactive
 $keyvaultName="mykeyvault"
@@ -63,7 +63,7 @@ New-AzKeyVault -VaultName $keyvaultName `
 ```
 
 ## <a name="generate-a-certificate-and-store-in-key-vault"></a>証明書を生成して Key Vault に格納する
-実際の運用では、[Import-AzKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/import-azkeyvaultcertificate) を使用して、信頼できるプロバイダーによって署名された有効な証明書をインポートする必要があります。 このチュートリアルでは、[Add-AzKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultcertificate) で、[New-AzKeyVaultCertificatePolicy](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvaultcertificatepolicy) からの既定の証明書ポリシーを使用する自己署名証明書を生成する方法を次の例に示します。 
+実際の運用では、[Import-AzKeyVaultCertificate](/powershell/module/az.keyvault/import-azkeyvaultcertificate) を使用して、信頼できるプロバイダーによって署名された有効な証明書をインポートする必要があります。 このチュートリアルでは、[Add-AzKeyVaultCertificate](/powershell/module/az.keyvault/add-azkeyvaultcertificate) で、[New-AzKeyVaultCertificatePolicy](/powershell/module/az.keyvault/new-azkeyvaultcertificatepolicy) からの既定の証明書ポリシーを使用する自己署名証明書を生成する方法を次の例に示します。 
 
 ```azurepowershell-interactive
 $policy = New-AzKeyVaultCertificatePolicy `
@@ -80,13 +80,13 @@ Add-AzKeyVaultCertificate `
 
 
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成
-次のように、[Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) を使用して VM の管理者のユーザー名とパスワードを設定します。
+次のように、[Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) を使用して VM の管理者のユーザー名とパスワードを設定します。
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-これで、[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) を使用して VM を作成できるようになります。 次の例では、場所 *EastUS* に *myVM* という名前の VM を作成します。 これらが存在しない場合は、関連ネットワーク リソースが作成されます。 セキュリティで保護された Web トラフィックを許可するには、コマンドレットでポート *443* も開きます。
+これで、[New-AzVM](/powershell/module/az.compute/new-azvm) を使用して VM を作成できるようになります。 次の例では、場所 *EastUS* に *myVM* という名前の VM を作成します。 これらが存在しない場合は、関連ネットワーク リソースが作成されます。 セキュリティで保護された Web トラフィックを許可するには、コマンドレットでポート *443* も開きます。
 
 ```azurepowershell-interactive
 # Create a VM
@@ -112,11 +112,11 @@ Set-AzVMExtension -ResourceGroupName $resourceGroup `
     -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server -IncludeManagementTools"}'
 ```
 
-VM が作成されるまで､数分間かかります｡ 最後に、Azure カスタム スクリプト拡張機能を使用して [Set-AzVmExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) で IIS web サーバーをインストールします。
+VM が作成されるまで､数分間かかります｡ 最後に、Azure カスタム スクリプト拡張機能を使用して [Set-AzVmExtension](/powershell/module/az.compute/set-azvmextension) で IIS web サーバーをインストールします。
 
 
 ## <a name="add-a-certificate-to-vm-from-key-vault"></a>Key Vault からの証明書を VM に追加します。
-Key Vault からの証明書を VM に追加するには、[Get-AzKeyVaultSecret](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultsecret) で証明書の ID を取得します。 [Add-AzVMSecret](https://docs.microsoft.com/powershell/module/az.compute/add-azvmsecret) で証明書を VM に追加します。
+Key Vault からの証明書を VM に追加するには、[Get-AzKeyVaultSecret](/powershell/module/az.keyvault/get-azkeyvaultsecret) で証明書の ID を取得します。 [Add-AzVMSecret](/powershell/module/az.compute/add-azvmsecret) で証明書を VM に追加します。
 
 ```azurepowershell-interactive
 $certURL=(Get-AzKeyVaultSecret -VaultName $keyvaultName -Name "mycert").id
@@ -130,7 +130,7 @@ Update-AzVM -ResourceGroupName $resourceGroup -VM $vm
 
 
 ## <a name="configure-iis-to-use-the-certificate"></a>証明書を使用するように IIS を構成します。
-再度、[Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) でカスタム スクリプト拡張機能を使用して IIS 構成を更新します。 この更新プログラムは、Key Vault から挿入した証明書を IIS に 適用し、Web バインド構成します。
+再度、[Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) でカスタム スクリプト拡張機能を使用して IIS 構成を更新します。 この更新プログラムは、Key Vault から挿入した証明書を IIS に 適用し、Web バインド構成します。
 
 ```azurepowershell-interactive
 $PublicSettings = '{
@@ -150,7 +150,7 @@ Set-AzVMExtension -ResourceGroupName $resourceGroup `
 
 
 ### <a name="test-the-secure-web-app"></a>セキュリティで保護された Web アプリをテストする
-VM のパブリック IP アドレスを取得するには、[Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) を使用します。 次の例では、先ほど作成した `myPublicIP` の IP アドレスを取得しています。
+VM のパブリック IP アドレスを取得するには、[Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) を使用します。 次の例では、先ほど作成した `myPublicIP` の IP アドレスを取得しています。
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName $resourceGroup -Name "myPublicIPAddress" | select "IpAddress"

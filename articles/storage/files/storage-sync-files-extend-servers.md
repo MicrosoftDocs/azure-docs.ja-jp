@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: eb00234fb7522c763dbaa910bee99cf327bebaf1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 80fcebec76788ca9ec754b35c57f9965f38c2c0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77597900"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037101"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>チュートリアル:Azure File Sync を使用して Windows ファイル サーバーを拡張する
 
@@ -259,9 +259,8 @@ Azure File Sync エージェントをインストールした後、サーバー�
 
    ![サーバー登録 UI のスクリーンショット](media/storage-sync-files-extend-servers/signin.png)
 
-   | | |
-   | ----- | ----- |
    | Value | 説明 |
+   | ----- | ----- |
    | **Azure サブスクリプション** | このチュートリアルのストレージ同期サービスが含まれているサブスクリプション。 |
    | **リソース グループ** | ストレージ同期サービスを含むリソース グループ。 このチュートリアルでは、_afsresgroup101918_ を使用します。 |
    | **ストレージ同期サービス** | ストレージ同期サービスの名前。 このチュートリアルでは _afssyncservice02_ を使用します。 |
@@ -301,9 +300,8 @@ Azure File Sync エージェントをインストールした後、サーバー�
 
 1. **[サーバー エンドポイントの追加]** ウィンドウで、次の情報を入力してサーバー エンドポイントを作成します。
 
-   | | |
-   | ----- | ----- |
    | Value | 説明 |
+   | ----- | ----- |
    | **登録済みサーバー** | お客様が作成したサーバーの名前。 このチュートリアルでは *afsvm101918* を使用します。 |
    | **パス** | お客様が作成したドライブへの Windows Server パス。 このチュートリアルでは、*f:\filestosync* を使用します。 |
    | **クラウドの階層化** | このチュートリアルでは、無効のままにします。 |

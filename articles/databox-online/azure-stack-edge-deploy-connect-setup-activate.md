@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 7c8a35b2699035b3ce4f96a94ca970da2cf343c4
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: e0a0d9415cc55c24bb4dc0690c73d9f79fc0ce0e
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82564430"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608436"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-stack-edge"></a>チュートリアル:Azure Stack Edge を接続、設定、およびアクティブ化する 
 
@@ -25,6 +25,7 @@ ms.locfileid: "82564430"
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
+>
 > * 物理デバイスに接続する
 > * 物理デバイスの設定とアクティブ化
 
@@ -35,7 +36,7 @@ Azure Stack Edge デバイスを構成および設定する前に、次のこと
 * [Azure Stack Edge の設置](azure-stack-edge-deploy-install.md)に関するページで詳細に説明されているように、物理デバイスが設置されていること。
 * Azure Stack Edge デバイスを管理するために作成した Azure Stack Edge サービスからのアクティブ化キーを持っていること。 詳細については、[Azure Stack Edge の配置の準備](azure-stack-edge-deploy-prep.md)に関するページをご覧ください。
 
-## <a name="connect-to-the-local-web-ui-setup"></a>ローカル Web UI 設定に接続する 
+## <a name="connect-to-the-local-web-ui-setup"></a>ローカル Web UI 設定に接続する
 
 1. Azure Stack Edge デバイスに接続するために、お使いのコンピューター上のイーサネット アダプターで静的 IP アドレス 192.168.100.5 とサブネット 255.255.255.0 を構成します。
 
@@ -43,11 +44,10 @@ Azure Stack Edge デバイスを構成および設定する前に、次のこと
 
     ![ケーブル接続されたデバイスのバックプレーン](./media/azure-stack-edge-deploy-install/backplane-cabled.png)
 
-
 3. ブラウザー ウィンドウを開き、`https://192.168.100.10` からデバイスのローカル Web UI にアクセスします。  
-    このアクションは、そのデバイスに電源を入れてから数分かかることがあります。 
+    このアクションは、そのデバイスに電源を入れてから数分かかることがあります。
 
-    Web サイトのセキュリティ証明書に問題があることを示すエラーまたは警告が表示されます。 
+    Web サイトのセキュリティ証明書に問題があることを示すエラーまたは警告が表示されます。
    
     ![Web サイトのセキュリティ証明書のエラー メッセージ](./media/azure-stack-edge-deploy-connect-setup-activate/image2.png)
 
@@ -96,12 +96,12 @@ Azure Stack Edge デバイスを構成および設定する前に、次のこと
    
    a. **[Web プロキシ URL]**  ボックスに、`http://host-IP address or FQDN:Port number` という形式の URL を入力します。 HTTPS URL はサポートされていません。
 
-   b. **[認証]** で、 **[なし]** または **[NTLM]** を選択します。
+   b. **[認証]** で、 **[なし]** または **[NTLM]** を選択します。 Azure Stack Edge デバイス上でコンピューティングを有効にして IoT Edge モジュールを使用する場合には、Web プロキシ認証を **[なし]** に設定しておくことをお勧めします。 **NTLM** はサポートされていません。
 
    c. 認証を使用している場合は、ユーザー名とパスワードを入力します。
 
    d. 構成された Web プロキシ設定を検証して適用するには、 **[Apply settings] (設定を適用)** を選択します。
-   
+
    > [!NOTE]
    > プロキシ自動構成 (PAC) ファイルはサポートされていません。 PAC ファイルは、Web ブラウザーやその他のユーザー エージェントが、特定の URL をフェッチするための適切なプロキシ サーバー (アクセス方法) を自動的に選択する方法を定義します。
    > プロキシの証明書は信頼されていないため、すべてのトラフィックをインターセプトして読み取る (その後、独自の証明書を使用してすべてに再署名する) プロキシは互換性がありません。

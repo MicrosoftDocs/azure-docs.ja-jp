@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と SuccessFactors の統合 | Microsoft Docs
 description: Azure Active Directory と SuccessFactors の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 32bd8898-c2d2-4aa7-8c46-f1f5c2aa05f1
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d49915271580b5665981bf7e212f3d5712c86456
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 48524bec352d2fa9c169a1345e52ad4c789e59d3
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76292981"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552120"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-successfactors"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SuccessFactors の統合
 
@@ -85,44 +81,38 @@ SuccessFactors で Azure AD SSO を構成してテストするには、次の構
 
     a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。
 
-    | |
-    |--|
-    | `https://<companyname>.successfactors.com/<companyname>`|
-    | `https://<companyname>.sapsf.com/<companyname>`|
-    | `https://<companyname>.successfactors.eu/<companyname>`|
-    | `https://<companyname>.sapsf.eu`|
+    - `https://<companyname>.successfactors.com/<companyname>`
+    - `https://<companyname>.sapsf.com/<companyname>`
+    - `https://<companyname>.successfactors.eu/<companyname>`
+    - `https://<companyname>.sapsf.eu`
 
     b. **[識別子]** ボックスに、次の形式で URL を入力します。
 
-    | |
-    |--|
-    | `https://www.successfactors.com/<companyname>`|
-    | `https://www.successfactors.com`|
-    | `https://<companyname>.successfactors.eu`|
-    | `https://www.successfactors.eu/<companyname>`|
-    | `https://<companyname>.sapsf.com`|
-    | `https://hcm4preview.sapsf.com/<companyname>`|
-    | `https://<companyname>.sapsf.eu`|
-    | `https://www.successfactors.cn`|
-    | `https://www.successfactors.cn/<companyname>`|
+    - `https://www.successfactors.com/<companyname>`
+    - `https://www.successfactors.com`
+    - `https://<companyname>.successfactors.eu`
+    - `https://www.successfactors.eu/<companyname>`
+    - `https://<companyname>.sapsf.com`
+    - `https://hcm4preview.sapsf.com/<companyname>`
+    - `https://<companyname>.sapsf.eu`
+    - `https://www.successfactors.cn`
+    - `https://www.successfactors.cn/<companyname>`
 
     c. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
 
-    | |
-    |--|
-    | `https://<companyname>.successfactors.com/<companyname>`|
-    | `https://<companyname>.successfactors.com`|
-    | `https://<companyname>.sapsf.com/<companyname>`|
-    | `https://<companyname>.sapsf.com`|
-    | `https://<companyname>.successfactors.eu/<companyname>`|
-    | `https://<companyname>.successfactors.eu`|
-    | `https://<companyname>.sapsf.eu`|
-    | `https://<companyname>.sapsf.eu/<companyname>`|
-    | `https://<companyname>.sapsf.cn`|
-    | `https://<companyname>.sapsf.cn/<companyname>`|
+    - `https://<companyname>.successfactors.com/<companyname>`
+    - `https://<companyname>.successfactors.com`
+    - `https://<companyname>.sapsf.com/<companyname>`
+    - `https://<companyname>.sapsf.com`
+    - `https://<companyname>.successfactors.eu/<companyname>`
+    - `https://<companyname>.successfactors.eu`
+    - `https://<companyname>.sapsf.eu`
+    - `https://<companyname>.sapsf.eu/<companyname>`
+    - `https://<companyname>.sapsf.cn`
+    - `https://<companyname>.sapsf.cn/<companyname>`
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、[SuccessFactors クライアント サポート チーム](https://www.successfactors.com/content/ssf-site/en/support.html)に問い合わせてください。
+    > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、[SuccessFactors クライアント サポート チーム](https://www.sap.com/support.html)に問い合わせてください。
 
 4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -233,7 +223,7 @@ SuccessFactors で Azure AD SSO を構成してテストするには、次の構
 
 Azure AD ユーザーが SuccessFactors にサインインできるようにするには、そのユーザーを SuccessFactors にプロビジョニングする必要があります。 SuccessFactors の場合、プロビジョニングは手動で行います。
 
-SuccessFactors でユーザーを作成するには、 [SuccessFactors のサポート チーム](https://www.successfactors.com/content/ssf-site/en/support.html)に連絡する必要があります。
+SuccessFactors でユーザーを作成するには、 [SuccessFactors のサポート チーム](https://www.sap.com/support.html)に連絡する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 

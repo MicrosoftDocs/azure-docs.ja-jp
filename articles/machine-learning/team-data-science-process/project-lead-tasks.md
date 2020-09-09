@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4a4d3a1480a852218e698862a509c4af45e49eb8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76714416"
 ---
 # <a name="project-lead-tasks-in-the-team-data-science-process"></a>Team Data Science Process でのプロジェクト リーダーのタスク
@@ -57,7 +57,7 @@ ms.locfileid: "76714416"
 
 チームの **MyTeam** プロジェクトでプロジェクト リポジトリを作成するには:
 
-1. *https:\//\<サーバー名>/\<組織名>/\<チーム名>* (例: **https:\//dev.azure.com/DataScienceUnit/MyTeam**) でチームのプロジェクトの**まとめ**ページに移動し、左側のナビゲーションから **[リポジトリ]** を選択します。 
+1. *https:\//\<server name>/\<organization name>/\<team name>* (例: **https:\//dev.azure.com/DataScienceUnit/MyTeam**) でチームのプロジェクトの**まとめ**ページに移動し、左側のナビゲーションから **[リポジトリ]** を選択します。 
    
 1. ページの一番上にあるリポジトリ名を選択し、ドロップダウンから **[新しいリポジトリ]** を選択します。
    
@@ -83,7 +83,7 @@ ms.locfileid: "76714416"
    
    ![[インポート] を選択する](./media/project-lead-tasks/project-leads-5-create-project-repo-4.png)
    
-1. **[Git リポジトリをインポートする]** ダイアログで、 **[ソースの種類]** として **[Git]** を選択し、 **[クローン URL]** に **TeamTemplate** リポジトリの URL を入力します。 URL は、*https:\//\<サーバー名>/\<組織名>/\<チーム名>/_git/\<チーム テンプレート リポジトリ名>* です。 例: **https:\//dev.azure.com/DataScienceUnit/MyTeam/_git/TeamTemplate**. 
+1. **[Git リポジトリをインポートする]** ダイアログで、 **[ソースの種類]** として **[Git]** を選択し、 **[クローン URL]** に **TeamTemplate** リポジトリの URL を入力します。 URL は *https:\//\<server name>/\<organization name>/\<team name>/_git/\<team template repository name>* です。 例: **https:\//dev.azure.com/DataScienceUnit/MyTeam/_git/TeamTemplate**. 
    
 1. **[インポート]** を選択します。 チーム テンプレート リポジトリの内容が、プロジェクト リポジトリにインポートされます。 
    

@@ -1,28 +1,24 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Predictix Assortment Planning の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Predictix Assortment Planning の統合 | Microsoft Docs
 description: このチュートリアルでは、Azure Active Directory と Predictix Assortment Planning の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 37e686ff-f8e5-40b1-9d7e-f64b076917b7
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: bc3ea2f6fddc233a69d96c0c885ab310ed1e77c2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5b7ec1843d279e8c0477ed1c7754746d4f3044ad
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67094163"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553656"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-predictix-assortment-planning"></a>チュートリアル: Azure Active Directory と Predictix Assortment Planning の統合
+# <a name="tutorial-azure-active-directory-integration-with-predictix-assortment-planning"></a>チュートリアル:Azure Active Directory と Predictix Assortment Planning の統合
 
 このチュートリアルでは、Predictix Assortment Planning と Azure Active Directory (Azure AD) を統合する方法について説明します。
 この統合には、次の利点があります。
@@ -106,19 +102,17 @@ Predictix Assortment Planning で Azure AD のシングル サインオンを構
 
     1. **[サイン オン URL]** ボックスに、次のパターンの URL を入力します。
 
-       | |
-        |--|
-        | `https://<sub-domain>.ap.predictix.com/sso/request`|
-        | `https://<sub-domain>.dev.ap.predictix.com/`|
-        | |
+        ```https
+        https://<sub-domain>.ap.predictix.com/sso/request
+        https://<sub-domain>.dev.ap.predictix.com/
+        ```
 
     1. **[識別子 (エンティティ ID)]** ボックスに、次のパターンの URL を入力します。
 
-        | |
-        |--|
-        | `https://<sub-domain>.ap.predictix.com`|
-        | `https://<sub-domain>.dev.ap.predictix.com`|
-        | |
+        ```https
+        https://<sub-domain>.ap.predictix.com
+        https://<sub-domain>.dev.ap.predictix.com
+        ```
 
     > [!NOTE]
     > これらの値はプレースホルダーです。 実際のサインオン URL と識別子を使用する必要があります。 これらの値を取得するには、[Predictix Assortment Planning サポート チーム](https://www.infor.com/support)に問い合わせてください。 また、Azure portal の **[基本的な SAML 構成]** ダイアログ ボックスに示されているパターンを参照することもできます。
@@ -159,11 +153,11 @@ Predictix Assortment Planning 側でシングル サインオンを構成する�
 
     1. **[名前]** ボックスに「**BrittaSimon**」と入力します。
   
-    1. **[ユーザー名]** ボックスに、「**BrittaSimon@\<yourcompanydomain>.\<extension>** 」と入力します。 (例: BrittaSimon@contoso.com)。
+    1. **[ユーザー名]** ボックスに「**BrittaSimon@\<yourcompanydomain>.\<extension>** 」と入力します (例: BrittaSimon@contoso.com)。
 
     1. **[パスワードを表示]** を選択し、 **[パスワード]** ボックス内の値を書き留めます。
 
-    1. **作成** を選択します。
+    1. **［作成］** を選択します
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

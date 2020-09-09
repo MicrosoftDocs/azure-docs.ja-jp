@@ -1,17 +1,17 @@
 ---
 title: デプロイの概要 - Avere vFXT for Azure
-description: Avere vFXT for Azure のデプロイの概要
+description: この概要では、Avere vFXT for Azure クラスターをデプロイする方法について説明します。 具体的なデプロイ手順は、関連記事にあります。
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 78140fea74272dff6056bebfbd44ed9d55b0e1db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c63fdf2164dd4dce12912669eec29c79755cc2a
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76153685"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271228"
 ---
 <!-- filename is linked to in the marketplace template, make sure it gets a redirect if we rename it -->
 

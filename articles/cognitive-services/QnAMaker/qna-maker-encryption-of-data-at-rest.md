@@ -1,20 +1,20 @@
 ---
 title: QnA Maker での保存データの暗号化
 titleSuffix: Azure Cognitive Services
-description: QnA Maker での保存データの暗号化。
+description: Microsoft からは Microsoft が管理する暗号化キーが提供されます。また、カスタマー マネージド キー (CMK) と呼ばれている独自のキーで自分の Cognitive Services サブスクリプションを管理することをお客様に許可します。 この記事では、QnA Maker での保存データの暗号化と、CMK を有効化および管理する方法について説明します。
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 07/10/2020
 ms.author: egeaney
-ms.openlocfilehash: bd64321a6a7afbac61a63365c77a75120f837e83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1ca0dda046329e95c649540fd42f96ca43838c85
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79371988"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086707"
 ---
 # <a name="qna-maker-encryption-of-data-at-rest"></a>QnA Maker での保存データの暗号化
 
@@ -52,6 +52,11 @@ QnA Maker サービスでは、Azure Search サービスから CMK が使用さ�
 ## <a name="regional-availability"></a>リージョン別の提供状況
 
 カスタマー マネージド キーは、すべての Azure Search リージョンで使用できます。
+
+## <a name="encryption-of-data-in-transit"></a>転送中のデータの暗号化
+
+QnA Maker ポータルは、ユーザーのブラウザー上で実行されます。 どのアクションでも、各コグニティブ サービス API への直接呼び出しがトリガーされます。 そのため、QnA Maker では転送中のデータに対応しています。
+ただし、QnA Maker ポータル サービスは米国西部でホストされており、まだ米国以外のお客様にとっては最適な状況ではありません。 
 
 ## <a name="next-steps"></a>次のステップ
 

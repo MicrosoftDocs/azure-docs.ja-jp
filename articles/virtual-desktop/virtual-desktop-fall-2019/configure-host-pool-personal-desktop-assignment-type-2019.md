@@ -1,24 +1,22 @@
 ---
-title: Windows Virtual Desktop の個人用デスクトップの割り当ての種類 - Azure
-description: Windows Virtual Desktop の個人用デスクトップ ホスト プールの割り当ての種類を構成する方法。
-services: virtual-desktop
-author: HeidiLohr
-ms.service: virtual-desktop
-ms.topic: conceptual
-ms.date: 03/30/2020
+title: Windows Virtual Desktop (クラシック) の個人用デスクトップの割り当ての種類 - Azure
+description: Windows Virtual Desktop (クラシック) の個人用デスクトップ ホスト プールの割り当ての種類を構成する方法。
+author: Heidilohr
+ms.topic: how-to
+ms.date: 05/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2541e9e10103d66c6c2fb6978c3029d61b813eab
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 669010d2de90498c98fc685fe931b084a11cd104
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614128"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008510"
 ---
-# <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>個人用デスクトップ ホスト プールの割り当ての種類を構成する
+# <a name="configure-the-personal-desktop-host-pool-assignment-type-for-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) の個人用デスクトップ ホスト プールの割り当ての種類を構成する
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースに適用されます。 Spring 2020 更新プログラムで導入された Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../configure-host-pool-personal-desktop-assignment-type.md)をご覧ください。
+>この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../configure-host-pool-personal-desktop-assignment-type.md)を参照してください。
 
 ニーズに合わせて、個人用デスクトップ ホスト プールの割り当ての種類を構成して Windows Virtual Desktop 環境を調整することができます。 このトピックでは、ユーザーの自動割り当てまたは直接割り当てを構成する方法について説明します。
 
@@ -31,7 +29,7 @@ ms.locfileid: "82614128"
 
 ユーザーを自動的に割り当てるには、まずユーザーを個人用デスクトップ ホスト プールに割り当てて、ユーザーが自分のフィードでデスクトップを表示できるようにします。 割り当てられたユーザーが自分のフィードでデスクトップを起動すると、ホスト プールにまだ接続していない場合は、使用可能なセッション ホストが要求されます。これにより、割り当てプロセスが完了します。
 
-作業を開始する前に、[Windows Virtual Desktop PowerShell モジュールをダウンロードしてインポート](/powershell/windows-virtual-desktop/overview/)します (まだの場合のみ)。 
+作業を開始する前に、[Windows Virtual Desktop PowerShell モジュールをダウンロードしてインポート](/powershell/windows-virtual-desktop/overview/)します (まだの場合のみ)。
 
 > [!NOTE]
 > これらの手順を実行する前に、Windows Virtual Desktop PowerShell モジュール バージョン 1.0.1534.2001 以降がインストールされていることを確認してください。
@@ -76,9 +74,21 @@ Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -Use
 Set-RdsSessionHost <tenantname> <hostpoolname> -Name <sessionhostname> -AssignedUser <userupn>
 ```
 
+## <a name="remove-a-user-assignment"></a>ユーザー割り当てを削除する
+
+ユーザーが個人用デスクトップを必要としなくなった場合や、ユーザーが退職した場合、または他のユーザーのためにデスクトップを再利用したい場合、ユーザー割り当てを削除することができます。
+
+現在、セッション ホストを完全に削除するのが、個人用デスクトップのユーザー割り当てを削除する唯一の方法となります。 セッション ホストを削除するには、次のコマンドレットを実行します。
+
+```powershell
+Remove-RdsSessionHost
+```
+
+そのセッション ホストを再び個人用デスクトップのホスト プールに追加する必要が生じた場合は、そのマシンから Windows Virtual Desktop をアンインストールしてから、「[PowerShell を使用してホスト プールを作成する](create-host-pools-powershell-2019.md)」の手順に従ってセッション ホストを再登録します。
+
 ## <a name="next-steps"></a>次のステップ
 
 個人用デスクトップ割り当ての種類を構成したので、次は Windows Virtual Desktop クライアントにサインインしてユーザー セッションの一部としてテストすることができます。 次の 2 つの手順では、任意のクライアントを使用してセッションに接続する方法を説明します。
 
-- [Windows デスクトップ クライアントを使用して接続する](../connect-windows-7-and-10.md)
+- [Windows デスクトップ クライアントを使用して接続する](connect-windows-7-10-2019.md)
 - [Web クライアントに接続する](connect-web-2019.md)

@@ -2,13 +2,13 @@
 title: シークレット ボリュームをコンテナー グループにマウントする
 description: シークレット ボリュームをマウントし、コンテナー インスタンスがアクセスする秘密情報を保存する方法について説明します。
 ms.topic: article
-ms.date: 04/03/2020
-ms.openlocfilehash: 756828e71174246450245938595c8872afc62961
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.date: 07/02/2020
+ms.openlocfilehash: ea82ba5994feaf102d4622eada284df431e004d0
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657145"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169563"
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>Azure Container Instances にシークレット ボリュームをマウントする
 
@@ -62,7 +62,7 @@ YAML テンプレートを使ってデプロイするときは、テンプレー
 以下の YAML テンプレートは、"*シークレット*" ボリュームを `/mnt/secrets` でマウントするコンテナーを 1 つ含んだコンテナー グループを定義しています。 このシークレット ボリュームには、シークレットを含む "mysecret1" と "mysecret2" の 2 つのファイルがあります。
 
 ```yaml
-apiVersion: '2018-10-01'
+apiVersion: '2019-12-01'
 location: eastus
 name: secret-volume-demo
 properties:

@@ -10,16 +10,16 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: afb576c265ccdd4a014ed678331f030a0442a197
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c6fbec35920c8afd08ab60fc380c9f816ae599b0
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218553"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561021"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Text Analytics REST API を呼び出す方法
 
-**Text Analytics API** の呼び出しは HTTP POST/GET 呼び出しであり、任意の言語で作成できます。 この記事では、REST と [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) を使用して主要な概念を示します。
+**Text Analytics API** の呼び出しは HTTP POST/GET 呼び出しであり、任意の言語で作成できます。 この記事では、REST と [Postman](https://www.postman.com/downloads/) を使用して主要な概念を示します。
 
 各要求には、アクセス キーと HTTP エンドポイントを含める必要があります。 エンドポイントは、サインアップ時に選択したリージョン、サービス URL、および要求: `sentiment`、`keyphrases`、`languages`、`entities` で使用したリソースを指定します。 
 

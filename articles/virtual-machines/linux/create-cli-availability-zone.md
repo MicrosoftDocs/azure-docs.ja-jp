@@ -3,15 +3,15 @@ title: Azure CLI を使用してゾーン Linux VM を作成する
 description: Azure CLI を使用して可用性ゾーン内に Linux VM を作成する
 author: cynthn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 568bac3c6c80173e38d7b15de17e90cb4fbdab80
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 964d2b5d89fd91aca68e9b47b0049529fe284848
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208960"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829001"
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Azure CLI を使用して可用性ゾーン内に Linux 仮想マシンを作成する
 
@@ -23,7 +23,7 @@ ms.locfileid: "82208960"
 
 
 ## <a name="check-vm-sku-availability"></a>提供されている VM SKU の確認
-提供されている VM サイズ (SKU) は、リージョンやゾーンによって異なる場合があります。 可用性ゾーンの使用計画を立てやすくするために、提供されている VM SKU を Azure リージョンとゾーンごとに一覧表示することができます。 そうすることで適切な VM サイズを選び、必要な回復性をすべてのゾーンにわたって確保することができます。 さまざまな VM の種類とサイズについて詳しくは、[VM サイズの概要](sizes.md)に関するページを参照してください。
+提供されている VM サイズ (SKU) は、リージョンやゾーンによって異なる場合があります。 可用性ゾーンの使用計画を立てやすくするために、提供されている VM SKU を Azure リージョンとゾーンごとに一覧表示することができます。 そうすることで適切な VM サイズを選び、必要な回復性をすべてのゾーンにわたって確保することができます。 さまざまな VM の種類とサイズについて詳しくは、[VM サイズの概要](../sizes.md)に関するページを参照してください。
 
 [az vm list-skus](/cli/azure/vm) コマンドで、利用可能な VM SKU を表示することができます。 次の例では、*eastus2* リージョンで提供されている VM SKU を一覧表示しています。
 
@@ -188,8 +188,4 @@ az network public-ip show --resource-group myResourceGroupVM --name $ipaddressna
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、可用性ゾーン内に VM を作成する方法を説明しました。 Azure VM の[可用性](availability.md)の詳細を確認してください。
-
-
-
-
+この記事では、可用性ゾーン内に VM を作成する方法を説明しました。 Azure VM の[可用性](../availability.md)の詳細を確認してください。

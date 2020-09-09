@@ -1,26 +1,26 @@
 ---
-title: SQL オンデマンドの使用 (プレビュー)
+title: クイック スタート:SQL オンデマンドを使用する
 description: このクイックスタートでは、SQL オンデマンド (プレビュー) を使用してさまざまな種類のファイルにクエリを実行する方法について説明します。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 43f361fbaf4ab0462af0a720d7711f219134a165
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: fe07192b0077518cdd73092f53342c298034cfa8
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692166"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274171"
 ---
-# <a name="quickstart-using-sql-on-demand"></a>クイック スタート:SQL オンデマンドの使用
+# <a name="quickstart-use-sql-on-demand"></a>クイック スタート:SQL オンデマンドを使用する
 
-Synapse SQL オンデマンド (プレビュー) は、Azure Storage に配置されたファイルに対して SQL クエリを実行できるサーバーレス クエリ サービスです。 このクイックスタートでは、SQL オンデマンドを使用してさまざまな種類のファイルにクエリを実行する方法について説明します。
+Synapse SQL オンデマンド (プレビュー) は、Azure Storage に配置されたファイルに対して SQL クエリを実行できるサーバーレス クエリ サービスです。 このクイックスタートでは、SQL オンデマンドを使用してさまざまな種類のファイルにクエリを実行する方法について説明します。 サポートされている形式の一覧については、[OPENROWSET](sql/develop-openrowset.md) のページを参照してください。
 
-次のファイルの種類がサポートされます。JSON、CSV、Apache Parquet
+このクイックスタートでは、CSV、Apache Parquet、および JSON ファイルに対してクエリを実行します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,7 +30,7 @@ Synapse SQL オンデマンド (プレビュー) は、Azure Storage に配置�
 - [Azure Data Studio](sql/get-started-azure-data-studio.md) は、オンデマンド データベースで SQL クエリとノートブックを実行できるクライアント ツールです。
 - [SQL Server Management Studio](sql/get-started-ssms.md) は、オンデマンド データベースで SQL クエリを実行できるクライアント ツールです。
 
-クイックスタートのパラメーター:
+このクイックスタートのパラメーター:
 
 | パラメーター                                 | 説明                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
@@ -60,36 +60,27 @@ Synapse SQL オンデマンド (プレビュー) は、Azure Storage に配置�
 CREATE DATABASE mydbname
 ```
 
-### <a name="create-credentials"></a>資格情報を作成する
+### <a name="create-data-source"></a>データ ソースの作成
 
-SQL オンデマンドを使用してクエリを実行するには、SQL オンデマンドがストレージ内のファイルにアクセスするために使用する資格情報を作成します。
-
-> [!NOTE]
-> このセクションのサンプルを正常に実行するには、SAS トークンを使用する必要があります。
->
-> SAS トークンの使用を開始するには、この[記事](sql/develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through)に説明されている UserIdentity を削除する必要があります。
->
-> SQL オンデマンドでは、既定で常に AAD パススルーが使用されます。
-
-ストレージ アクセスの制御を管理する方法について詳しくは、[SQL オンデマンドのストレージ アカウント アクセスを制御する方法](sql/develop-storage-files-storage-access-control.md)に関する記事を参照してください。
-
-このセクションのサンプルで使用する資格情報を作成するには、次のコード スニペットを実行します。
+SQL オンデマンドを使用してクエリを実行するには、ストレージ内のファイルにアクセスするために SQL オンデマンドが使用するデータ ソースを作成します。
+次のコード スニペットを実行し、このセクションのサンプルで使用するデータ ソースを作成します。
 
 ```sql
--- create credentials for containers in our demo storage account
-IF EXISTS
-   (SELECT * FROM sys.credentials
-   WHERE name = 'https://sqlondemandstorage.blob.core.windows.net')
-   DROP CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net]
-GO
+-- create master key that will protect the credentials:
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = <enter very strong password here>
 
-CREATE CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net]
+-- create credentials for containers in our demo storage account
+CREATE DATABASE SCOPED CREDENTIAL sqlondemand
 WITH IDENTITY='SHARED ACCESS SIGNATURE',  
 SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-12-31T12%3A10%3A00Z&sig=KlSU2ullCscyTS0An0nozEpo4tO5JAgGBvw%2FJX2lguw%3D'
 GO
+CREATE EXTERNAL DATA SOURCE SqlOnDemandDemo WITH (
+    LOCATION = 'https://sqlondemandstorage.blob.core.windows.net',
+    CREDENTIAL = sqlondemand
+);
 ```
 
-## <a name="querying-csv-files"></a>CSV ファイルのクエリの実行
+## <a name="query-csv-files"></a>CSV ファイルに対してクエリを実行する
 
 次の図は、クエリを実行するファイルのプレビューです。
 
@@ -101,8 +92,9 @@ GO
 SELECT TOP 10 *
 FROM OPENROWSET
   (
-      BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/*.csv'
-    , FORMAT = 'CSV'
+      BULK 'csv/population/*.csv',
+      DATA_SOURCE = 'SqlOnDemandDemo',
+      FORMAT = 'CSV', PARSER_VERSION = '2.0'
   )
 WITH
   (
@@ -118,7 +110,7 @@ WHERE
 クエリのコンパイル時にスキーマを指定できます。
 その他の例については、[CSV ファイルに対してクエリを実行する](sql/query-single-csv-file.md)方法を参照してください。
 
-## <a name="querying-parquet-files"></a>Parquet ファイルのクエリの実行
+## <a name="query-parquet-files"></a>Parquet ファイルのクエリ
 
 次のサンプルは、Parquet ファイルのクエリを実行するための自動スキーマ推論機能を示しています。 これはスキーマを指定せずに 2017 年 9 月の行の数を返します。
 
@@ -129,14 +121,15 @@ WHERE
 SELECT COUNT_BIG(*)
 FROM OPENROWSET
   (
-      BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2017/month=9/*.parquet'
-    , FORMAT='PARQUET'
+      BULK 'parquet/taxi/year=2017/month=9/*.parquet',
+      DATA_SOURCE = 'SqlOnDemandDemo',
+      FORMAT='PARQUET'
   ) AS nyc
 ```
 
 [parquet ファイルのクエリの実行](sql/query-parquet-files.md)に関する詳細を参照してください。
 
-## <a name="querying-json-files"></a>JSON ファイルのクエリの実行
+## <a name="query-json-files"></a>JSON ファイルのクエリ
 
 ### <a name="json-sample-file"></a>JSON サンプル ファイル
 
@@ -158,7 +151,7 @@ FROM OPENROWSET
 }
 ```
 
-### <a name="querying-json-files"></a>JSON ファイルのクエリの実行
+### <a name="query-json-files"></a>JSON ファイルのクエリ
 
 次のクエリでは、[JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) を使用して、「*Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected articles*」という書籍からスカラー値 (タイトル、出版社) を取得する方法について説明しています。
 
@@ -169,7 +162,8 @@ SELECT
   , jsonContent
 FROM OPENROWSET
   (
-      BULK 'https://sqlondemandstorage.blob.core.windows.net/json/books/*.json'
+      BULK 'json/books/*.json',
+      DATA_SOURCE = 'SqlOnDemandDemo'
     , FORMAT='CSV'
     , FIELDTERMINATOR ='0x0b'
     , FIELDQUOTE = '0x0b'

@@ -6,12 +6,12 @@ ms.author: jegeib
 ms.service: security
 ms.topic: article
 ms.date: 10/16/2019
-ms.openlocfilehash: 452b44653775a1bcb9456b62e1587b5ff2dff874
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 410da29d8c119111d1ec9b4e60bf8fb1ca661f70
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75552051"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259388"
 ---
 # <a name="threat-modeling-tool-update-release-71610151---10162019"></a>Threat Modeling Tool 更新プログラム リリース 7.1.61015.1 - 2019 年 10 月 16 日
 
@@ -41,9 +41,11 @@ Azure Logic Apps と Azure Data Explorer 用の新しいステンシルが、関
 
 一部のお客様から、"Threat Modeling Tool 2016" またはカスタム テンプレートで作成されたファイルを開くときに、次のエラー メッセージが表示されるという報告を受けています。
 
-    System.InvalidOperationException: Invalid Priority value. Accepted values are [0..4] and 'High', 'Medium', 'Low' at ThreatModeling.Model.Threat.get_Priority()
-    
-    System.ArgumentOutOfRangeException: Accepted values are 'High', 'Medium', and 'Low' Parameter name: value Actual value was 5.6. at ThreatModeling.Model.Threat.set_Priority(String value)
+```output
+System.InvalidOperationException: Invalid Priority value. Accepted values are [0..4] and 'High', 'Medium', 'Low' at ThreatModeling.Model.Threat.get_Priority()
+
+System.ArgumentOutOfRangeException: Accepted values are 'High', 'Medium', and 'Low' Parameter name: value Actual value was 5.6. at ThreatModeling.Model.Threat.set_Priority(String value)
+```
 
 この問題は調査中です
 

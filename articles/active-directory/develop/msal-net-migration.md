@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: f389943d284c573312473f426048f8aadb79088e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: cdd93cf8751ce2e46f06020b1d18d42416f793d4
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81533974"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166110"
 ---
 # <a name="migrating-applications-to-msalnet"></a>MSAL.NET へのアプリケーションの移行
 
@@ -37,7 +37,7 @@ Azure AD エンティティを認証し、Azure AD からのトークンを要�
 
 ほとんどの場合、MSAL.NET と Microsoft ID プラットフォーム エンドポイント (最新世代の Microsoft 認証ライブラリ) を使用します。 MSAL.NET を使用して、Azure AD (職場と学校のアカウント)、Microsoft (個人用) アカウント (MSA)、または Azure AD B2C でアプリケーションにサインインしているユーザーのためにトークンを取得します。
 
-開発者向け Azure AD (v1.0) エンドポイント (および ADAL.NET) を既に使い慣れている場合は、[Microsoft ID プラットフォーム (v2.0) エンドポイントの違い](active-directory-v2-compare.md)に関するページをお読みください。
+開発者向け Azure AD (v1.0) エンドポイント (および ADAL.NET) を既に使い慣れている場合は、[Microsoft ID プラットフォーム (v2.0) エンドポイントの違い](../azuread-dev/azure-ad-endpoint-comparison.md)に関するページをお読みください。
 
 ただし、アプリケーションで以前のバージョンの [Active Directory フェデレーション サービス (AD FS)](/windows-server/identity/active-directory-federation-services) を使用してユーザーをサインインさせる必要がある場合は、引き続き ADAL.NET を使用する必要があります。 詳細については、「[ADFS support](https://aka.ms/msal-net-adfs-support)」 (ADFS のサポート) を参照してください。
 
@@ -131,7 +131,7 @@ Interactive | [対話型認証](https://github.com/AzureAD/azure-activedirectory
 
 アプリの種類 | Grant | ADAL.NET | MSAL.NET
 ----- | ----- | ----- | -----
-Web アプリ、Web API、デーモン | クライアントの資格情報 | [ADAL.NET のクライアント資格情報フロー](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [MSAL.NET のクライアント資格情報フロー](msal-authentication-flows.md#client-credentials))
+Web アプリ、Web API、デーモン | クライアントの資格情報 | [ADAL.NET のクライアント資格情報フロー](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [MSAL.NET のクライアント資格情報フロー](msal-authentication-flows.md#client-credentials)
 Web API | 次の代理 | [ADAL.NET でのユーザーの代わりのサービス間呼び出し](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [MSAL.NET での次の代理](msal-authentication-flows.md#on-behalf-of)
 Web アプリ | 承認コード | [ADAL.NET を使用する Web アプリの承認コードでのトークンの取得](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-authorization-codes-on-web-apps) | [MSAL.NET を使用する Web アプリの承認コードでのトークンの取得](msal-authentication-flows.md#authorization-code)
 
@@ -161,7 +161,7 @@ v1.0 トークンと v2.0 トークンの詳細については、[Azure Active D
 
 ## <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>v1.0 トークンを受け入れる Web API のスコープ
 
-OAuth 2 アクセス許可は、v1.0 Web API (リソース) アプリケーションでクライアント アプリケーションに公開するアクセス許可スコープです。 これらのアクセス許可スコープは、同意中にクライアント アプリケーションに付与できます。 [Azure Active Directory アプリケーション マニフェスト](active-directory-application-manifest.md)に関するページの oauth2Permissions についてのセクションを参照してください。
+OAuth 2 アクセス許可は、v1.0 Web API (リソース) アプリケーションでクライアント アプリケーションに公開するアクセス許可スコープです。 これらのアクセス許可スコープは、同意中にクライアント アプリケーションに付与できます。 [Azure Active Directory アプリケーション マニフェスト](./reference-app-manifest.md)に関するページの oauth2Permissions についてのセクションを参照してください。
 
 ### <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>v1.0 アプリケーションの特定の OAuth2 アクセス許可へのアクセス権を要求するスコープ
 
@@ -196,7 +196,7 @@ var result = await app.AcquireTokenInteractive(scopes).ExecuteAsync();
 Azure AD で使用されるロジックは次のとおりです。
 - v1.0 アクセス トークン (使用可能な場合のみ) を使用する ADAL (v1.0) エンドポイントの場合、aud=resource となります
 - v2.0 トークンを受け入れるリソースのためにアクセス トークンを要求する MSAL (v2.0 エンドポイント) の場合は、aud=resource.AppId となります
-- v1.0 アクセス トークンを受け入れるリソースのためにアクセス トークンを要求する MSAL (v2.0 エンドポイント) の場合 (上記の例の場合)、Azure AD では、最後のスラッシュの前のすべてを取得し、それをリソース ID として使用することで、要求されたスコープからの目的の対象ユーザーを解析します。 そのため、https:\//database.windows.net が "https://database.windows.net/ " の対象ユーザーを必要とする場合、https:\/ /database.windows.net//.default のスコープを要求する必要があります。 Issue #[747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747) の「Resource url's trailing slash is omitted, which caused sql auth failure #747」 (リソース URL の末尾のスラッシュが省略されたため、SQL 認証エラー #747 が発生した) も参照してください
+- v1.0 アクセス トークンを受け入れるリソースのためにアクセス トークンを要求する MSAL (v2.0 エンドポイント) の場合 (上記の例の場合)、Azure AD では、最後のスラッシュの前のすべてを取得し、それをリソース ID として使用することで、要求されたスコープからの目的の対象ユーザーを解析します。 そのため、https:\//database.windows.net が "https://database.windows.net/ " の対象ユーザーを必要とする場合、https:\/ /database.windows.net//.default のスコープを要求する必要があります。 問題 #[747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747) の「Resource url's trailing slash is omitted, which caused sql auth failure #747」 (リソース URL の末尾のスラッシュが省略されたため、SQL 認証エラー #747 が発生した) も参照してください
 
 
 ### <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>v1.0 アプリケーションのすべてのアクセス許可へのアクセス権を要求するスコープ

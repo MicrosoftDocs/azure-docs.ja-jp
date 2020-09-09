@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:Azure Sentinel でプレイブックを実行する
-description: チュートリアル:この記事では、Azure Sentinel でプレイブックを実行する方法について説明します。
+description: このチュートリアルは、Azure Sentinel でセキュリティ プレイブックを使用して、セキュリティ関連の問題 (脅威) への自動対応を設定するのに役立ちます。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2019
 ms.author: yelevin
-ms.openlocfilehash: f6adcb978dbe540d3bdd352089d4dde407d0fb4c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f75731fab9a238ffcac2e620235c9d8c5da97549
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77585086"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053492"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>チュートリアル:Azure Sentinel で脅威への自動対応を設定する
 
@@ -60,7 +60,7 @@ ms.locfileid: "77585086"
 Azure Sentinel に新しいセキュリティ プレイブックを作成するには、次の手順に従います。
 
 1. **Azure Sentinel** ダッシュボードを開きます。
-2. **[管理]** で **[プレイブック]** を選択します。
+2. **[構成]** で、 **[プレイブック]** を選択します。
 
    ![ロジック アプリ](./media/tutorial-respond-threats-playbook/playbookimg.png)
 

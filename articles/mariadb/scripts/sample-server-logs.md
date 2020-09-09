@@ -6,14 +6,14 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 12/02/2019
-ms.openlocfilehash: a6d4ed70418f39b24a68362d5006f3f374693cb6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5212f4eb17ef7b4ed1b89604fc12a1e13bae78f4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74777350"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502190"
 ---
 # <a name="enable-and-download-server-slow-query-logs-of-an-azure-database-for-mariadb-server-using-azure-cli"></a>Azure CLI を使用して Azure Database for MariaDB サーバーの低速のクエリ ログを有効にしてダウンロードする
 この CLI のサンプル スクリプトでは、単一の Azure Database for MariaDB サーバーの低速クエリ ログを有効にしてダウンロードします。
@@ -45,4 +45,4 @@ CLI をローカルで実行する場合、この記事では、Azure CLI バー
 
 ## <a name="next-steps"></a>次のステップ
 - Azure CLI に関する詳細を読む: [Azure CLI ドキュメント](/cli/azure)
-- 「[Azure Database for MariaDB 用の Azure CLI サンプル](../sample-scripts-azure-cli.md)」にあるその他のスクリプトを試す
+- さらに他のスクリプトも試す: [Azure Database for MariaDB 用の Azure CLI サンプル](../sample-scripts-azure-cli.md)

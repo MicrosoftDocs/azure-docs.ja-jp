@@ -1,21 +1,15 @@
 ---
 title: 管理ライブラリ - Azure Event Hubs | Microsoft Docs
 description: この記事では、.NET から Azure Event Hubs 名前空間とエンティティを管理するのに使用できるライブラリについて説明します。
-services: event-hubs
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
-ms.devlang: dotnet
 ms.topic: article
-ms.custom: seodec18
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: 431fe04461f422274697d1e91c4b56e914ce2d4e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 74392fbf0b2c0b81898410af8027a4f13fc52b67
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60746660"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013998"
 ---
 # <a name="event-hubs-management-libraries"></a>Event Hubs 管理ライブラリ
 
@@ -33,7 +27,7 @@ Event Hubs 管理ライブラリの使用を開始するには、Azure Active Di
 
 * [リソースにアクセスできる Active Directory アプリケーションとサービス プリンシパルを Azure Portal で作成する](../active-directory/develop/howto-create-service-principal-portal.md)
 * [リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
-* [リソースにアクセスするためのサービス プリンシパルを Azure CLI で作成する](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md)
+* [リソースにアクセスするためのサービス プリンシパルを Azure CLI で作成する](/cli/azure/create-an-azure-service-principal-azure-cli)
 
 これらのチュートリアルでは、`AppId` (クライアント ID)、`TenantId`、`ClientSecret` (認証キー) が提供されます。これらはすべて管理ライブラリによって認証に使用されます。 実行するリソース グループに対する**所有者**のアクセス許可が必要です。
 

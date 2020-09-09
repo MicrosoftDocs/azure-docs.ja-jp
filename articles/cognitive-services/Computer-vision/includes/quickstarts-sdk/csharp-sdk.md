@@ -9,12 +9,13 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 5a2de6cb4c7de6f789041d8df7ca562e97ee0863
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3ec3e44c667d6821c4a6dc0779a760b65de5046e
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82595267"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321914"
 ---
 <a name="HOLTop"></a>
 
@@ -22,19 +23,14 @@ ms.locfileid: "82595267"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
 * 最新バージョンの [.NET Core SDK](https://dotnet.microsoft.com/download/)。
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Computer Vision リソースを作成"  target="_blank">Computer Vision リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
+    * 対象のアプリケーションを Computer Vision サービスに接続するには、作成したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
+    * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
+* キーとエンドポイント URL 用に、それぞれ `COMPUTER_VISION_SUBSCRIPTION_KEY` と `COMPUTER_VISION_ENDPOINT` という名前の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。
 
 ## <a name="setting-up"></a>設定
-
-### <a name="create-a-computer-vision-azure-resource"></a>Computer Vision Azure リソースを作成する
-
-Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) またはローカル マシン上の [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、Computer Vision 用のリソースを作成します。 次のこともできます。
-
-* 7 日間有効な[試用版のキー](https://azure.microsoft.com/try/cognitive-services/#decision)を無料で入手する。 サインアップ後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis/)でこれを入手できます。  
-* [Azure portal](https://portal.azure.com/) でご利用のリソースを表示する。
-
-試用版のサブスクリプションまたはリソースからキーを取得した後、キーとエンドポイント URL の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)し、それぞれ `COMPUTER_VISION_SUBSCRIPTION_KEY` および `COMPUTER_VISION_ENDPOINT` という名前を付けます。
 
 ### <a name="create-a-new-c-application"></a>新しい C# アプリケーションを作成する
 
@@ -75,7 +71,7 @@ Build succeeded.
 次のコマンドを使用して、アプリケーション ディレクトリ内に .NET 用 Computer Vision クライアント ライブラリをインストールします。
 
 ```dotnetcli
-dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --version 5.0.0
+dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --version 6.0.0-preview.1
 ```
 
 Visual Studio IDE を使用している場合、クライアント ライブラリは、ダウンロード可能な NuGet パッケージとして入手できます。
@@ -216,7 +212,7 @@ Computer Vision では、特殊なモデルを使用して、画像をさらに�
 
 ## <a name="read-printed-and-handwritten-text"></a>印刷されたテキストと手書きのテキストを読み取る
 
-Computer Vision は、画像に映っているテキストを読み取って、文字ストリームに変換することができます。 このセクションのコードでは `ExtractTextUrl` メソッドを定義しています。クライアント オブジェクトを使用して、印刷されたテキストや手書きのテキストを画像から検出して抽出するものです。
+Computer Vision は、画像に映っているテキストを読み取って、文字ストリームに変換することができます。 テキスト認識の詳細については、「[光学式文字認識 (OCR)](../../concept-recognizing-text.md#read-api)」概念ドキュメントを参照してください。このセクションのコードでは、最新の [Read 3.0 用 Computer Vision SDK リリース](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/6.0.0-preview.1)を使用し、クライアント オブジェクトを使用して画像内のテキストを検出して抽出する `BatchReadFileUrl` メソッドを定義しています。
 
 このメソッドの呼び出しを `Main` メソッドに追加します。
 
@@ -224,30 +220,30 @@ Computer Vision は、画像に映っているテキストを読み取って、�
 
 ### <a name="set-up-test-image"></a>テスト画像の設定
 
-**Program** クラスで、テキストの抽出元となる画像の URL への参照を保存します。
+**Program** クラスで、テキストの抽出元となる画像の URL への参照を保存します。 このスニペットには、印刷テキストと手書きテキストの両方のサンプル画像が含まれています。
 
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_extracttext_url)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_readtext_url)]
 
 > [!NOTE]
 > ローカルの画像からテキストを抽出することもできます。 ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) 上のサンプル コードを参照してください。
 
 ### <a name="call-the-read-api"></a>Read API を呼び出す
 
-テキストを読み取るための新しいメソッドを定義します。 以下のコードは、指定された画像に対して **BatchReadFileAsync** メソッドを呼び出すものです。このコードを追加します。 これによって操作 ID が返され、画像の内容を読み取る非同期プロセスが開始されます。
+テキストを読み取るための新しいメソッドを定義します。 以下のコードは、指定された画像に対して **ReadAsync** メソッドを呼び出すものです。このコードを追加します。 これによって操作 ID が返され、画像の内容を読み取る非同期プロセスが開始されます。
 
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_extract_call)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_read_url)]
 
 ### <a name="get-read-results"></a>読み取りの結果を取得する
 
-次に、**BatchReadFileAsync** の呼び出しから返された操作 ID を取得し、操作の結果をサービスに照会します。 次のコードは、結果が返されるまで 1 秒間隔で操作をチェックします。 次に、抽出されたテキスト データをコンソールに出力します。
+次に、**ReadAsync** の呼び出しから返された操作 ID を取得し、これを使用して操作の結果をサービスに照会します。 次のコードは、結果が返されるまで操作をチェックします。 次に、抽出されたテキスト データをコンソールに出力します。
 
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_extract_response)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_read_response)]
 
 ### <a name="display-read-results"></a>読み取りの結果を表示する
 
 取得したテキスト データを解析して表示する次のコードを追加すれば、メソッドの定義は完了です。
 
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_extract_display)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_read_display)]
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
@@ -269,5 +265,5 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 > [!div class="nextstepaction"]
 >[Computer Vision API リファレンス (.NET)](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet)
 
-* [Computer Vision とは](../../Home.md)
+* [Computer Vision とは](../../overview.md)
 * このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) にあります。

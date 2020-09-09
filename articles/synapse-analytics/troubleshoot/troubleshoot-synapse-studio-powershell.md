@@ -1,5 +1,5 @@
 ---
-title: PowerShell での Azure Synapse Studio (プレビュー) 接続のトラブルシューティング
+title: PowerShell を使用した Synapse Studio (プレビュー) 接続のトラブルシューティング
 description: PowerShell を使用した Azure Synapse Studio 接続のトラブルシューティング
 author: julieMSFT
 ms.service: synapse-analytics
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: bbc985407a6cb56f4f1b539f514ab092b5f7d0de
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: f4afaf536a9c65758ad030e5cdeeee5fb97074d7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427523"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046668"
 ---
 # <a name="diagnose-azure-synapse-studio-preview-connectivity-issues-with-powershell-script"></a>PowerShell スクリプトを使用した Azure Synapse Studio (プレビュー) 接続に関する問題の診断
 

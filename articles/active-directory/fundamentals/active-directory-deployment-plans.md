@@ -2,7 +2,7 @@
 title: デプロイ計画 - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory の機能を多数デプロイする方法に関するエンド ツー エンドのガイダンスです。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7a596454a48a1d6fcee77634363dd38f34a4d58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 75081c218536d17798d1ffa788f79130211f72d3
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81603346"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318429"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory のデプロイ計画
 ここでは、Azure Active Directory (Azure AD) の機能のデプロイについてのエンド ツー エンドのガイダンスを紹介しています。 Azure AD のデプロイ計画では、Azure AD の代表的な機能について、そのビジネス上の価値や計画の考慮事項、正しくデプロイするうえで必要な運用手順をひととおり説明しています。
@@ -66,12 +66,13 @@ ms.locfileid: "81603346"
 | [セルフサービス パスワード リセット](../authentication/howto-sspr-deployment.md)| セルフサービス パスワード リセット により、ユーザーは、必要に応じていつでも、どこでも、管理者の介入なしでパスワードをリセットできます。 |
 | [パスワードレス](../authentication/howto-authentication-passwordless-deployment.md) | 組織内の Microsoft Authenticator アプリまたは FIDO2 セキュリティ キーを使用してパスワードレス認証を実装します。 |
 
-## <a name="deploy-application-management"></a>アプリケーション管理のデプロイ
+## <a name="deploy-application-and-device-management"></a>アプリケーションおよびデバイス管理のデプロイ
 
 | 機能 | 説明|
 | -| - |
 | [シングル サインオン](../manage-apps/plan-sso-deployment.md)| シングル サインオンは、ユーザーが 1 回サインインするだけで作業に必要なアプリとリソースにアクセスできる機能です。 サインインすると、資格情報をもう一度入力する必要なしに、Microsoft Office から SalesForce、Box、さらには内部アプリケーションにアクセスできるようになります。 |
 | [アクセス パネル](../manage-apps/access-panel-deployment-plan.md)| すべてのアプリケーションを検出し、それにアクセスするための単純なハブをユーザーに提供します。 ユーザーが、アプリやグループへのアクセスを要求したり、他のユーザーに代わってリソースへのアクセスを管理したりするなどのセルフサービス機能を使用して生産性を向上できるようにします。 |
+| [デバイス](../devices/plan-device-deployment.md) | この記事は、デバイスを Azure AD と統合する方法を評価し、実装計画を選択するのに役立ちます。また、サポートされているデバイス管理ツールへの主要なリンクを提供します。 |
 
 
 ## <a name="deploy-hybrid-scenarios"></a>ハイブリッド シナリオのデプロイ
@@ -80,7 +81,7 @@ ms.locfileid: "81603346"
 | -| -|
 | [ADFS からパスワード ハッシュ同期への移行](../hybrid/plan-migrate-adfs-password-hash-sync.md)| パスワード ハッシュ同期では、ユーザー パスワードのハッシュがオンプレミスの Active Directory から Azure AD に同期されます。これにより Azure AD では、オンプレミスの Active Directory とやり取りすることなくユーザーを認証することができます |
 | [ADFS からパススルー認証への移行](../hybrid/plan-migrate-adfs-pass-through-authentication.md)| Azure AD パススルー認証を使用すると、ユーザーは同じパスワードを使用して、オンプレミスのアプリケーションとクラウドベースのアプリケーションの両方にサインインできます。 この機能により、ユーザー エクスペリエンスが向上します。ユーザーは、覚えておくパスワードが 1 つ少なくなり、ユーザーがサインイン方法を忘れる可能性が低くなるため IT ヘルプデスクのコストが削減されます。 この機能により、ユーザーが Azure AD を使用してサインインするとき、ユーザーのパスワードがオンプレミスの Active Directory に対して直接検証されます。 |
-| [Azure AD アプリケーション プロキシ](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-deployment-plan) |現在、従業員は、どこでも、いつでも、どんなデバイスからでも生産的であることを望んでいます。 クラウド内の SaaS アプリとオンプレミスの企業アプリにアクセスする必要があります。 Azure AD アプリケーション プロキシを使用すると、コストが高く複雑な仮想プライベート ネットワーク (VPN) や非武装地帯 (DMZ) を使用することなく、この堅牢なアクセスが可能になります。 |
+| [Azure AD アプリケーション プロキシ](../manage-apps/application-proxy-deployment-plan.md) |現在、従業員は、どこでも、いつでも、どんなデバイスからでも生産的であることを望んでいます。 クラウド内の SaaS アプリとオンプレミスの企業アプリにアクセスする必要があります。 Azure AD アプリケーション プロキシを使用すると、コストが高く複雑な仮想プライベート ネットワーク (VPN) や非武装地帯 (DMZ) を使用することなく、この堅牢なアクセスが可能になります。 |
 | [シームレス SSO](../hybrid/how-to-connect-sso-quick-start.md)| Azure Active Directory シームレス シングル サインオン (Azure AD シームレス SSO) では、ユーザーが企業ネットワークに接続される会社のデバイスを使用するときに、自動的にサインインを行います。 この機能を使用すると、ユーザーは Azure AD にサインインするためにパスワードを入力する必要がなくなり、通常はユーザー名の入力も不要です。 この機能により、追加のオンプレミス コンポーネントを必要とせずに、認可されたユーザーはクラウドベースのアプリケーションに簡単にアクセスできるようになります。 |
 
 ## <a name="deploy-user-provisioning"></a>ユーザー プロビジョニングのデプロイ
@@ -96,3 +97,4 @@ ms.locfileid: "81603346"
 | -| -|
 | [Privileged Identity Management](../privileged-identity-management/pim-deployment-plan.md)| Azure AD Privileged Identity Management (PIM) は、Azure AD、Azure リソース、およびその他の Microsoft Online Services 全体の特権管理者ロールを管理するのに役立ちます。 PIM では Just-In-Time アクセス、承認要求ワークフロー、完全に統合されたアクセス レビューなどのソリューションが提供されるので、リアルタイムに特権ロールの悪意のあるアクティビティを特定し、明らかにして防ぐことができます。 |
 | [レポートと監視](../reports-monitoring/plan-monitoring-and-reporting.md)| Azure AD のレポートおよび監視ソリューションは、法令、セキュリティ、運用の各要件と、既存の環境およびプロセスによって異なります。 この記事では、さまざまな設計オプションを紹介し、正しいデプロイ戦略のガイドを示します。 |
+| [アクセス レビュー](../governance/deploy-access-reviews.md) | アクセス レビューは、誰にアクセス許可が付与され、何にアクセスしているのかを把握し、管理することができる、ガバナンス戦略の重要な部分です。 この記事では、アクセス レビューを計画および展開して、必要なセキュリティとコラボレーション体制を実現する方法について説明します。 |

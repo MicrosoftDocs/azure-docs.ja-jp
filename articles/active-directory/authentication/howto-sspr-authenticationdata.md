@@ -1,45 +1,48 @@
 ---
-title: Azure AD SSPR データ要件 - Azure Active Directory
-description: Azure AD のセルフサービス パスワード リセットのデータ要件とそれらを満たす方法
+title: セルフサービス パスワード リセットの連絡先情報の事前設定 - Azure Active Directory
+description: Azure Active Directory セルフサービス パスワード リセット (SSPR) のユーザーの連絡先情報を事前に設定して、それらのユーザーが登録プロセスを実行せずに機能を使用できるようにする方法について説明します。
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 12/09/2019
+ms.date: 07/17/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42f7e120745357d3bd5735cca568bdd6971ea061
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6fa1c14509a558c1f91d07bf9a73a4ecc39e1413
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80652352"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068679"
 ---
-# <a name="deploy-password-reset-without-requiring-end-user-registration"></a>エンド ユーザーによる登録を必要としないパスワード リセットをデプロイする
+# <a name="pre-populate-user-authentication-contact-information-for-azure-active-directory-self-service-password-reset-sspr"></a>Azure Active Directory セルフサービス パスワード リセット (SSPR) のユーザー認証連絡先情報の事前設定
 
-Azure Active Directory (Azure AD) のセルフサービス パスワード リセット (SSPR) をデプロイするには、認証データが存在する必要があります。 ユーザーに自分で認証データを入力させている組織もあります。 他の組織では Active Directory に既に存在するデータと同期する方法が採用されています。 次の条件が満たされていれば、ユーザーが介入しなくても、この同期されたデータは Azure AD と SSPR で利用できるようになります。
+Azure Active Directory (Azure AD) のセルフサービス パスワード リセット (SSPR) を使用するには、ユーザーの認証連絡先情報が存在する必要があります。 ユーザーに自分で認証データを登録させている組織もあります。 他に、Active Directory Domain Services (AD DS) に既に存在する認証データから同期する方法を採用している組織もあります。 ユーザーが介入しなくても、同期されたデータは Azure AD と SSPR で利用できるようになります。 ユーザーが自分のパスワードを変更またはリセットする必要がある場合、以前に連絡先情報を登録していない場合でも、ユーザーはそれを実行できます。
+
+次の要件を満たしている場合、認証連絡先情報を事前設定することができます。
 
 * オンプレミスのディレクトリ内のデータが正しい形式になっていること。
-* [簡単設定を使って Azure AD Connect](../hybrid/how-to-connect-install-express.md) が構成されていること。
+* Azure AD テナントの [Azure AD Connect](../hybrid/how-to-connect-install-express.md) を構成している。
 
-正常に動作させるには、電話番号の形式が " *+<国コード> <電話番号>* " (例: +1 4255551234) になっている必要があります。
+電話番号の形式が *+CountryCode PhoneNumber* ( *+1 4251234567* など) である必要があります。
 
 > [!NOTE]
-> 国番号と電話番号の間にスペースを入れる必要があります。
+> 国番号と電話番号の間にスペースが必要です。
 >
-> パスワードのリセットは内線番号をサポートしていません。 +1 4255551234X12345 の形式であっても、電話がかけられる前に内線番号は削除されます。
+> パスワードのリセットは内線番号をサポートしていません。 *+1 4251234567X12345* の形式であっても、電話がかけられる前に内線番号は削除されます。
 
 ## <a name="fields-populated"></a>取り込まれるフィールド
 
-Azure AD Connect で既定の設定を使用する場合、次のマッピングが行われます。
+Azure AD Connect で既定の設定を使用する場合、SSPR の認証連絡先情報を設定するために、次のマッピングが行われます。
 
-| オンプレミスの Active Directory | Azure AD |
-| --- | --- |
-| telephoneNumber | 会社電話 |
-| mobile | 携帯電話 |
+| オンプレミスの Active Directory | Azure AD     |
+|------------------------------|--------------|
+| telephoneNumber              | 会社電話 |
+| mobile                       | 携帯電話 |
 
 ユーザーが携帯電話番号を認証すると、Azure AD の **[認証の連絡先情報]** の下にある *[電話番号]* フィールドにもその番号が設定されます。
 
@@ -49,10 +52,12 @@ Azure portal の Azure AD ユーザーの **[認証方法]** ページでは、�
 
 ![Azure AD におけるユーザーの認証の連絡先情報][Contact]
 
-* **[電話番号]** フィールドに電話番号が設定され、SSPR ポリシーの **[携帯電話]** が有効になると、その番号がパスワード リセット登録ページに表示され、パスワード リセット ワークフロー中にも表示されます。
-* パスワード リセットには、 **[代替の電話]** フィールドは使用されません。
-* **[電子メール]** フィールドにメール アドレスが設定され、SSPR ポリシーの **[電子メール]** が有効になると、そのメール アドレスがパスワード リセット登録ページに表示され、パスワード リセット ワークフロー中にも表示されます。
-* **[連絡用メール アドレス]** フィールドにメール アドレスが設定され、SSPR ポリシーの **[電子メール]** が有効になると、そのメール アドレスはパスワード リセット登録ページには表示され**ません**が、パスワード リセット ワークフロー中には表示されます。
+この認証連絡先情報には、次の考慮事項が適用されます。
+
+* *[電話番号]* フィールドに電話番号が設定され、SSPR ポリシーの *[携帯電話]* が有効になると、その番号がパスワード リセット登録ページに表示され、パスワード リセット ワークフロー中にも表示されます。
+* パスワード リセットには、 *[代替の電話]* フィールドは使用されません。
+* *[電子メール]* フィールドにメール アドレスが設定され、SSPR ポリシーの *[電子メール]* が有効になると、そのメール アドレスがパスワード リセット登録ページに表示され、パスワード リセット ワークフロー中にも表示されます。
+* *[連絡用メール アドレス]* フィールドにメール アドレスが設定され、SSPR ポリシーの *[電子メール]* が有効になると、そのメール アドレスはパスワード リセット登録ページには表示されませんが、パスワード リセット ワークフロー中には表示されます。
 
 ## <a name="security-questions-and-answers"></a>セキュリティの質問と回答
 
@@ -66,19 +71,25 @@ Azure portal の Azure AD ユーザーの **[認証方法]** ページでは、�
 * **認証用電子メール**
 * **セキュリティの質問と回答**
 
-**[携帯電話]** または **[連絡用メール アドレス]** に値が指定されている場合、ユーザーはそれらの値を使用してすぐにパスワードをリセットすることができます。これはユーザーがサービスに登録していない場合でも実行できます。 さらに、これらの値は、ユーザーが初めて登録するときに表示され、ユーザーは必要に応じてそれらを変更することができます。 ユーザーが正常に登録された後、これらの値は、それぞれ **[認証用電話]** フィールドと **[認証用メール]** フィールドの固定値になります。
+*[携帯電話]* または *[連絡用メール アドレス]* に値が指定されている場合、ユーザーはそれらの値を使用してすぐにパスワードをリセットすることができます。これはユーザーがサービスに登録していない場合でも実行できます。
+
+これらの値は、ユーザーが初めて登録するときにも表示され、ユーザーは必要に応じてそれらを変更することができます。 ユーザーが正常に登録された後、これらの値は、それぞれ *[認証用電話]* フィールドと *[認証用メール]* フィールドの固定値になります。
 
 ## <a name="set-and-read-the-authentication-data-through-powershell"></a>PowerShell を使用した認証データの設定と読み取り
 
 PowerShell を使用して、次のフィールドを設定することができます。
 
-* **連絡用メール アドレス**
-* **携帯電話**
-* **会社電話**:オンプレミス ディレクトリと同期していない場合にのみ設定できます
+* *連絡用メール アドレス*
+* *携帯電話*
+* *会社電話*
+    * オンプレミス ディレクトリと同期していない場合にのみ設定できます。
+
+> [!IMPORTANT]
+> PowerShell v1 と PowerShell v2 間のコマンド機能には、既知のパリティの欠如があります。 [認証方法用の Microsoft Graph REST API (ベータ)](/graph/api/resources/authenticationmethods-overview) は、最新の対話を実現するための現在のエンジニアリング フォーカスです。
 
 ### <a name="use-powershell-version-1"></a>PowerShell バージョン 1 を使う
 
-操作を開始するには、[Azure AD PowerShell モジュールをダウンロードしてインストールする](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule)必要があります。 インストールした後、次の手順を使って各フィールドを構成できます。
+操作を開始するには、[Azure AD PowerShell モジュールをダウンロードしてインストール](/previous-versions/azure/jj151815(v=azure.100)#bkmk_installmodule)します。 それがインストールされたら、次の手順に従って各フィールドを構成します。
 
 #### <a name="set-the-authentication-data-with-powershell-version-1"></a>PowerShell バージョン 1 を使って認証データを設定する
 
@@ -86,10 +97,10 @@ PowerShell を使用して、次のフィールドを設定することができ
 Connect-MsolService
 
 Set-MsolUser -UserPrincipalName user@domain.com -AlternateEmailAddresses @("email@domain.com")
-Set-MsolUser -UserPrincipalName user@domain.com -MobilePhone "+1 1234567890"
-Set-MsolUser -UserPrincipalName user@domain.com -PhoneNumber "+1 1234567890"
+Set-MsolUser -UserPrincipalName user@domain.com -MobilePhone "+1 4251234567"
+Set-MsolUser -UserPrincipalName user@domain.com -PhoneNumber "+1 4252345678"
 
-Set-MsolUser -UserPrincipalName user@domain.com -AlternateEmailAddresses @("email@domain.com") -MobilePhone "+1 1234567890" -PhoneNumber "+1 1234567890"
+Set-MsolUser -UserPrincipalName user@domain.com -AlternateEmailAddresses @("email@domain.com") -MobilePhone "+1 4251234567" -PhoneNumber "+1 4252345678"
 ```
 
 #### <a name="read-the-authentication-data-with-powershell-version-1"></a>PowerShell バージョン 1 を使って認証データを読み取る
@@ -116,9 +127,9 @@ Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthentic
 
 ### <a name="use-powershell-version-2"></a>PowerShell バージョン 2 を使う
 
-始めるには、[Azure AD バージョン 2 PowerShell モジュールをダウンロードしてインストールする](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0)必要があります。 インストールした後、次の手順を使って各フィールドを構成できます。
+始めるには、[Azure AD バージョン 2 PowerShell モジュールをダウンロードしてインストールします](/powershell/module/azuread/?view=azureadps-2.0)。
 
-Install-Module をサポートする PowerShell の最新バージョンから簡単にインストールするには、次のコマンドを実行します (最初の行では、モジュールが既にインストールされているかどうかを確認しています)。
+`Install-Module` をサポートする PowerShell の最新バージョンから簡単にインストールするには、次のコマンドを実行します。 最初の行では、モジュールが既にインストールされているかどうかを確認しています。
 
 ```PowerShell
 Get-Module AzureADPreview
@@ -126,16 +137,18 @@ Install-Module AzureADPreview
 Connect-AzureAD
 ```
 
+モジュールがインストールされたら、次の手順に従って各フィールドを構成します。
+
 #### <a name="set-the-authentication-data-with-powershell-version-2"></a>PowerShell バージョン 2 を使って認証データを設定する
 
 ```PowerShell
 Connect-AzureAD
 
 Set-AzureADUser -ObjectId user@domain.com -OtherMails @("email@domain.com")
-Set-AzureADUser -ObjectId user@domain.com -Mobile "+1 2345678901"
-Set-AzureADUser -ObjectId user@domain.com -TelephoneNumber "+1 1234567890"
+Set-AzureADUser -ObjectId user@domain.com -Mobile "+1 4251234567"
+Set-AzureADUser -ObjectId user@domain.com -TelephoneNumber "+1 4252345678"
 
-Set-AzureADUser -ObjectId user@domain.com -OtherMails @("emails@domain.com") -Mobile "+1 1234567890" -TelephoneNumber "+1 1234567890"
+Set-AzureADUser -ObjectId user@domain.com -OtherMails @("emails@domain.com") -Mobile "+1 4251234567" -TelephoneNumber "+1 4252345678"
 ```
 
 #### <a name="read-the-authentication-data-with-powershell-version-2"></a>PowerShell バージョン 2 を使って認証データを読み取る
@@ -152,16 +165,9 @@ Get-AzureADUser | select DisplayName,UserPrincipalName,otherMails,Mobile,Telepho
 
 ## <a name="next-steps"></a>次のステップ
 
-* [SSPR のロールアウトを正常に完了する方法](howto-sspr-deployment.md)
-* [パスワードのリセットまたは変更](../user-help/active-directory-passwords-update-your-own-password.md)
-* [セルフサービス パスワード リセットのための登録](../user-help/active-directory-passwords-reset-register.md)
-* [ライセンスに関する質問](concept-sspr-licensing.md)
-* [ユーザーが使用できる認証方法](concept-sspr-howitworks.md#authentication-methods)
-* [SSPR のポリシー オプション](concept-sspr-policy.md)
-* [パスワード ライトバックの概要とその必要性](howto-sspr-writeback.md)
-* [SSPR でアクティビティをレポートする方法](howto-sspr-reporting.md)
-* [SSPR のすべてのオプションとその意味](concept-sspr-howitworks.md)
-* [不具合が発生していると思われるSSPR のトラブルシューティング方法](active-directory-passwords-troubleshoot.md)
-* [質問したい内容に関する説明がどこにもない。](active-directory-passwords-faq.md)
+ユーザーの認証連絡先情報が事前設定されたら、次のチュートリアルを実行して、セルフサービス パスワード リセットを有効にします。
+
+> [!div class="nextstepaction"]
+> [Azure AD のセルフサービス パスワード リセット を有効にする](tutorial-enable-sspr.md)
 
 [Contact]: ./media/howto-sspr-authenticationdata/user-authentication-contact-info.png "グローバル管理者によるユーザーの認証の連絡先情報の変更"

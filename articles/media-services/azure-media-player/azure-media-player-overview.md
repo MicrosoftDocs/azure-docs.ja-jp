@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: b6d30aebd4de272ba98fce87f23701b129eacb02
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 6f3c173c61e9f6d82a51fcaf7e11cda47eb47c1c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81727559"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011710"
 ---
 # <a name="azure-media-player-overview"></a>Azure Media Player の概要 #
 
@@ -28,7 +28,7 @@ Microsoft Azure Media Services では、DASH、スムーズ ストリーミン�
 
 ## <a name="license"></a>ライセンス ##
 
-Azure Media Player は、Azure Media Player の Microsoft ソフトウェア ライセンス条項に記載された規定に従うことを条件としてライセンスされます。 [ライセンス ファイル](azure-media-player-license.md)で全条項をご覧いただけます。 その他の情報については、[プライバシーに関する声明](https://www.microsoft.com/en-us/privacystatement/default.aspx)を参照してください。
+Azure Media Player は、Azure Media Player の Microsoft ソフトウェア ライセンス条項に記載された規定に従うことを条件としてライセンスされます。 [ライセンス ファイル](/legal/azure-media-player/azure-media-player-license)で全条項をご覧いただけます。 その他の情報については、[プライバシーに関する声明](https://www.microsoft.com/en-us/privacystatement/default.aspx)を参照してください。
 
 Copyright 2015 Microsoft Corporation.
 

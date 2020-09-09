@@ -9,12 +9,13 @@ ms.devlang: cli
 ms.topic: sample
 ms.date: 06/22/2017
 ms.author: tamram
-ms.openlocfilehash: aa7cba00d865bb7b2c1e0fd1f0059fb35ffff690
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: bfda6c5315e11a4a924b82dc3eacdf692357827b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80060826"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503686"
 ---
 # <a name="create-a-storage-account-and-rotate-its-account-access-keys"></a>ストレージ アカウントを作成してアカウント アクセス キーのローテーションを行う
 

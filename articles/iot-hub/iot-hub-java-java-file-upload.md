@@ -12,12 +12,13 @@ ms.date: 06/28/2017
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: f0753827fe5f7f2b866726683d4cb1f205da4599
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+- devx-track-java
+ms.openlocfilehash: 38816b616179ec16e06e987f82b498085c34ba3f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81732477"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327584"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>IoT Hub を使用してデバイスからクラウドにファイルをアップロードする (Java)
 
@@ -143,7 +144,7 @@ ms.locfileid: "81732477"
 
 2. コマンド プロンプトで、新しい `read-file-upload-notification` フォルダーに移動します。
 
-3. テキスト エディターを使用して、`pom.xml` フォルダー内の `read-file-upload-notification` ファイルを開き、次の依存関係を **dependencies** ノードに追加します。 依存関係を追加することにより、アプリケーションの **iothub-java-service-client** パッケージを使用して、IoT Hub サービスと通信できます。
+3. テキスト エディターを使用して、`read-file-upload-notification` フォルダー内の `pom.xml` ファイルを開き、次の依存関係を **dependencies** ノードに追加します。 依存関係を追加することにより、アプリケーションの **iothub-java-service-client** パッケージを使用して、IoT Hub サービスと通信できます。
 
     ```xml
     <dependency>
@@ -154,7 +155,7 @@ ms.locfileid: "81732477"
     ```
 
     > [!NOTE]
-    > **Maven 検索**を使用して、[iot-service-client](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22) の最新バージョンを確認できます。
+    > [Maven 検索](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)を使用して、**iot-service-client** の最新バージョンを確認できます。
 
 4. `pom.xml` ファイルを保存して閉じます。
 

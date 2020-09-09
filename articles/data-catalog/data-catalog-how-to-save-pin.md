@@ -4,14 +4,14 @@ description: データ ソースとデータ資産を後で使用できるよう
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: a8545939fd027989519e0f7a161f750ec676749a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d0baed53441893ec294784f0f8092fe89a347c9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68976810"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523708"
 ---
 # <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>Azure Data Catalog での検索条件の保存とデータ資産のピン留め
 ## <a name="introduction"></a>はじめに

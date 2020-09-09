@@ -4,15 +4,15 @@ description: Azure Cosmos DB Gremlin API を使用してグラフ データベ�
 author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: lbosq
-ms.openlocfilehash: dc9a5616aa2bb1f7e09045b9cfe4f4d7e9c69be2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ea3aab76c8d7eaad46ae1c20f6ddb4547b25b5b7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898320"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261819"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API のグラフ データのモデリング
 
@@ -73,11 +73,11 @@ ms.locfileid: "78898320"
 
 * **頂点に基づくプロパティ**:このアプローチでは、エンティティは 3 つの個別の頂点と 2 つのエッジを使用して、そのプロパティを記述します。 このアプローチにより、冗長性が軽減される可能性はありますが、モデルの複雑さが増します。 モデルの複雑さが増すと、待ち時間、クエリの複雑さ、および計算コストが増加する場合があります。 このモデルでは、パーティション分割で問題が発生する可能性もあります。
 
-![プロパティに頂点を使用するエンティティ モデル。](./media/graph-modeling/graph-modeling-1.png)
+:::image type="content" source="./media/graph-modeling/graph-modeling-1.png" alt-text="プロパティに頂点を使用するエンティティ モデル。" border="false":::
 
 * **プロパティが埋め込まれた頂点**:このアプローチでは、キーと値のペアの一覧を利用して、頂点内でエンティティのすべてのプロパティを表します。 このアプローチにより、モデルの複雑さが軽減され、クエリがシンプルになり、トラバーサルのコスト効率が高くなります。
 
-![プロパティに頂点を使用するエンティティ モデル。](./media/graph-modeling/graph-modeling-2.png)
+:::image type="content" source="./media/graph-modeling/graph-modeling-2.png" alt-text="プロパティに頂点を使用するエンティティ モデル。" border="false":::
 
 > [!NOTE]
 > 上記の例は、エンティティ プロパティを分割する 2 つの方法の比較を示すためにのみ、簡略化されたグラフ モデルを示しています。
@@ -105,7 +105,7 @@ Edge オブジェクトには、`out()` または `outE()` 関数を使用した
 * 一般的でない用語を使用して、リレーションシップにラベルを付ける。
 * リレーションシップ名を使用して、ソースの頂点のラベルとターゲットの頂点のラベルを関連付ける。
 
-![リレーションシップのラベル付けの例。](./media/graph-modeling/graph-modeling-3.png)
+:::image type="content" source="./media/graph-modeling/graph-modeling-3.png" alt-text="リレーションシップのラベル付けの例。" border="false":::
 
 トラバーサーがエッジのフィルター処理に使用するラベルを具体的にするほど良くなります。 この決定は、クエリのコストにも大きな影響を与える可能性があります。 クエリのコストは、[executionProfile ステップを使用](graph-execution-profile.md)していつでも評価できます。
 

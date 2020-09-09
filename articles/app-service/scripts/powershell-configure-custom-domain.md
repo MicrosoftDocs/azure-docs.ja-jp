@@ -7,19 +7,19 @@ ms.assetid: 356f5af9-f62e-411c-8b24-deba05214103
 ms.topic: sample
 ms.date: 03/20/2017
 ms.author: msangapu
-ms.custom: mvc, seodec18
-ms.openlocfilehash: 4629157142c17122c0aa6c74c1918c1d01d796c0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: mvc, seodec18, devx-track-azurepowershell
+ms.openlocfilehash: 749250f4ee5e1a0a39c9dc36795fa07e9da743a0
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80044735"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072232"
 ---
 # <a name="assign-a-custom-domain-to-a-web-app-using-powershell"></a>PowerShell を使用してカスタム ドメインを Web アプリに割り当てる
 
 このサンプル スクリプトでは、App Service で Web アプリを関連リソースと合わせて作成し、`www.<yourdomain>` を作成したアプリにマップします。 
 
-必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールし、`Connect-AzAccount` を実行して、Azure との接続を作成します。 また、ドメイン レジストラーの DNS 構成ページにアクセスできることも必要です。
+必要に応じて、[Azure PowerShell ガイド](/powershell/azure/)の手順に従って Azure PowerShell をインストールし、`Connect-AzAccount` を実行して、Azure との接続を作成します。 また、ドメイン レジストラーの DNS 構成ページにアクセスできることも必要です。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -49,6 +49,6 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
+Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。
 
 その他の Azure App Service Web Apps 用 Azure PowerShell サンプル スクリプトは、[Azure PowerShell サンプル](../samples-powershell.md)のページにあります。

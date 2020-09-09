@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 0a9728e05aee27e74054a77e2c9be7dc08968207
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4aec156821a7d38907602cc1def0459dbf996b24
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79455861"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84447562"
 ---
 # <a name="train-model-module"></a>モデルのトレーニング モジュール
 
@@ -64,7 +64,7 @@ ms.locfileid: "79455861"
   
 5.  パイプラインを送信します。 データの量が多いと、この処理にしばらく時間がかかる場合があります。
 
-## <a name="results"></a><a name="bkmk_results"></a> 結果
+## <a name="results"></a>結果
 
 モデルのトレーニング後、次の作業を行います。
 

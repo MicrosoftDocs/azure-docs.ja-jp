@@ -28,7 +28,7 @@ Ambari エージェントの CPU 使用率が高くなっています。これ�
 
 さまざまな Ambari エージェントのバグが原因で、まれに、Ambari エージェントの CPU 使用率が高く (100 近くに) なる場合があります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 1. Ambari エージェントのプロセス ID (pid) を識別します。
 
@@ -67,7 +67,7 @@ Ambari エージェントが開始されていません。これにより、一�
 
 アラートは、Ambari エージェントが実行されていないことが原因で発生します。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 1. Ambari エージェントの状態を確認します。
 
@@ -93,7 +93,7 @@ Ambari のハートビート エージェントが失われました。
 
 OMS ログで CPU 使用率が高くなっています。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 * [Disable-AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) PowerShell コマンドレットを使用して Azure Monitor ログ記録を無効にします。
 * `mdsd.warn` ログ ファイルを削除します

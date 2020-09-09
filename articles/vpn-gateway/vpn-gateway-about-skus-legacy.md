@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 08/15/2019
 ms.author: cherylmc
 ms.openlocfilehash: 9c5e6d5aca51bd560a46837ba47de86362665773
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235751"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84687788"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>仮想ネットワーク ゲートウェイ SKU (従来の SKU) の使用
 

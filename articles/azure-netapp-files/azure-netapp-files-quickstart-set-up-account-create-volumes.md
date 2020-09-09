@@ -6,13 +6,14 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: quickstart
-ms.date: 12/01/2019
-ms.openlocfilehash: fc7f13fb7ffe1667aaeaa4a3cc1916c6049a98c1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 06/09/2020
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 92d92072fbc8ceebdd4fd9253620e5fba89bfb54
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75551643"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987513"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>クイック スタート:Azure NetApp Files を設定し、NFS ボリュームを作成する 
 
@@ -30,7 +31,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="before-you-begin"></a>開始する前に 
 
 > [!IMPORTANT] 
-> Azure NetApp Files サービスへのアクセスを許可されている必要があります。  サービスへのアクセスを要求するには、[Azure NetApp Files 順番待ちリスト送信ページ](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u)を参照してください。  次の手順に進む前に、Azure NetApp Files チームから正式な確認メールが届くのを待つ必要があります。 
+> Azure NetApp Files サービスへのアクセスを許可されている必要があります。  サービスへのアクセスを要求するには、[Azure NetApp Files 順番待ちリスト送信ページ](https://aka.ms/azurenetappfiles)を参照してください。  次の手順に進む前に、Azure NetApp Files チームから正式な確認メールが届くのを待つ必要があります。 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -131,7 +132,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     > [!NOTE]
     > サポートされているリージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)」を参照してください。
-    > コマンド ライン ツールでサポートされているリージョン名を取得するには、`az account list-locations -query "[].{Region:name}" --out table` を使用してください。
+    > コマンド ライン ツールでサポートされているリージョン名を取得するには、`az account list-locations --query "[].{Region:name}" --out table` を使用してください。
     >
 
 2. [az group create](/cli/azure/group#az-group-create) コマンドを使って新しいリソース グループを作成します。
@@ -411,4 +412,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="next-steps"></a>次のステップ  
 
 > [!div class="nextstepaction"]
-> [Azure NetApp Files を使用してボリュームを管理する](azure-netapp-files-manage-volumes.md)  
+> [Azure NetApp Files のストレージ階層](azure-netapp-files-understand-storage-hierarchy.md)   
+> [Azure NetApp Files のサービス レベル](azure-netapp-files-service-levels.md)   
+> [NFS ボリュームを作成する](azure-netapp-files-create-volumes.md)   

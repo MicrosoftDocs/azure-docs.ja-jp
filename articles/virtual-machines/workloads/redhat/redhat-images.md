@@ -1,5 +1,5 @@
 ---
-title: Azure の Red Hat Enterprise Linux イメージ | Microsoft Docs
+title: Azure の Red Hat Enterprise Linux イメージの概要
 description: Microsoft Azure の Red Hat Enterprise Linux イメージについて説明します
 services: virtual-machines-linux
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: f06c4304be67fbc2f3116375dae33b10228723a4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9aa0ca41f63da94e2dedaffe65ea518b8adff0dc
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239872"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439469"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux イメージの概要
 
@@ -26,7 +26,7 @@ ms.locfileid: "80239872"
 すべてのバージョンの RHEL の Red Hat サポート ポリシーの詳細については、「[Red Hat Enterprise Linux life cycle (Red Hat Enterprise Linux のライフ サイクル)](https://access.redhat.com/support/policy/updates/errata)」を参照してください。 料金の詳細については、「[Azure 料金計算ツール](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)」を参照してください。
 
 >[!IMPORTANT]
-> Azure Marketplace で現在入手できる RHEL イメージは、BYOS (Bring-Your-Own-Subscription) または従量課金制ライセンス モデルをサポートしています。 [Azure Hybrid Use Benefit](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) と、BYOS と従量課金制ライセンス間の動的切り替えはサポートされていません。 ライセンス モードを切り替えるには、対応するイメージから VM を再デプロイする必要があります。
+> Azure Marketplace で現在入手できる RHEL イメージは、BYOS (Bring-Your-Own-Subscription) または従量課金制ライセンス モデルをサポートしています。 [Azure Hybrid Use Benefit](../../windows/hybrid-use-benefit-licensing.md) と、BYOS と従量課金制ライセンス間の動的切り替えはサポートされていません。 ライセンス モードを切り替えるには、対応するイメージから VM を再デプロイする必要があります。
 
 >[!NOTE]
 > Azure Marketplace の RHEL イメージに関連する問題については、サポート チケットを Microsoft に提出してください。
@@ -64,8 +64,8 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:lat
 ```
 
 >[!NOTE]
-> 通常、最新のものを判断するためのバージョン比較では、[CompareTo メソッド](https://msdn.microsoft.com/library/a5ts8tb6.aspx)の規則に従います。
-このイメージ バージョン比較を行うには、値を文字列ではなく[バージョン](https://docs.microsoft.com/dotnet/api/system.version.-ctor?view=netframework-4.8) オブジェクトとして比較します。
+> 通常、最新のものを判断するためのバージョン比較では、[CompareTo メソッド](/dotnet/api/system.version.compareto?view=netcore-3.1#system_version_compareto_system_version_)の規則に従います。
+このイメージ バージョン比較を行うには、値を文字列ではなく[バージョン](/dotnet/api/system.version.-ctor?view=netframework-4.8) オブジェクトとして比較します。
 
 ## <a name="rhel-6-image-types"></a>RHEL 6 イメージの種類
 
@@ -100,12 +100,15 @@ RHEL 7.x イメージの場合、いくつかの異なる種類のイメージ�
 
 ## <a name="rhel-8-image-types"></a>RHEL 8 イメージの種類
 
+>[!NOTE]
+> Red Hat では、Grubby を使用し、RHEL 8+ のカーネル コマンド ライン パラメーターを構成することを推奨しています。 詳細は[こちら](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_monitoring_and_updating_the_kernel/configuring-kernel-command-line-parameters_managing-monitoring-and-updating-the-kernel)をご覧ください。
+
 次に、RHEL 8 イメージの種類の詳細を示します。
 
 |Publisher | プラン | SKU 値 | Version | 詳細
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | 8 | RHEL マイナー バージョンと発行日の連結された値 (例: 8.0.20191023) | これらのイメージは、標準の Red Hat リポジトリに接続されている、LVM パーティション分割 RHEL 8 イメージです。
-|RedHat | RHEL | 8-gen2 | RHEL マイナー バージョンと発行日の連結された値 (例: 8.0.20191024) | これらのイメージは、標準の Red Hat リポジトリに接続されている、LVM パーティション分割 Hyper-V 第 2 世代 RHEL 8 イメージです。 Azure の第 2 世代 VM の詳細については、「[Azure での第 2 世代 VM のサポート](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)」を参照してください。
+|RedHat | RHEL | 8-gen2 | RHEL マイナー バージョンと発行日の連結された値 (例: 8.0.20191024) | これらのイメージは、標準の Red Hat リポジトリに接続されている、LVM パーティション分割 Hyper-V 第 2 世代 RHEL 8 イメージです。 Azure の第 2 世代 VM の詳細については、「[Azure での第 2 世代 VM のサポート](../../linux/generation-2.md)」を参照してください。
 
 ## <a name="rhel-longer-support-add-ons"></a>RHEL 長期サポート アドオン
 

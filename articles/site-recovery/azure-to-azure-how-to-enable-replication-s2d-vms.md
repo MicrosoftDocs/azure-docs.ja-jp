@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 9f394fa8d618c97d74a47ff6e42a002f177cf7d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0b4f18c32639ceb2084febe210a8cfd4c423a0cf
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75973659"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135765"
 ---
 # <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>記憶域スペース ダイレクトを実行している Azure VM を別のリージョンにレプリケートする
 
@@ -20,7 +20,7 @@ ms.locfileid: "75973659"
 >記憶域スペース ダイレクト クラスターでは、クラッシュ整合性復旧ポイントのみがサポートされています。
 >
 
-[記憶域スペース ダイレクト (S2D)](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct) はソフトウェアで定義されたストレージであり、Azure 上に[ゲスト クラスター](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure)を作成する手段を提供します。  Microsoft Azure のゲスト クラスターは、IaaS VM で構成されるフェールオーバー クラスターです。 ホストされた VM ワークロードはゲスト クラスター間でフェールオーバーすることができ、アプリケーションに対して、単独の Azure VM で可能なものより高い可用性 SLA を実現できます。 SQL やスケールアウト ファイル サーバーなどの重要なアプリケーションを VM でホストする場合に便利です。
+[記憶域スペース ダイレクト (S2D)](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct) はソフトウェアで定義されたストレージであり、Azure 上に[ゲスト クラスター](https://techcommunity.microsoft.com/t5/failover-clustering/bg-p/FailoverClustering)を作成する手段を提供します。  Microsoft Azure のゲスト クラスターは、IaaS VM で構成されるフェールオーバー クラスターです。 ホストされた VM ワークロードはゲスト クラスター間でフェールオーバーすることができ、アプリケーションに対して、単独の Azure VM で可能なものより高い可用性 SLA を実現できます。 SQL やスケールアウト ファイル サーバーなどの重要なアプリケーションを VM でホストする場合に便利です。
 
 ## <a name="disaster-recovery-with-storage-spaces-direct"></a>記憶域スペース ダイレクトを使用したディザスター リカバリー
 
@@ -38,14 +38,14 @@ ms.locfileid: "75973659"
 
 **ディザスター リカバリーの考慮事項**
 
-1. クラスターに対する[クラウド監視](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp)をセットアップするときは、監視をディザスター リカバリー リージョン内に維持します。
-2. ソース リージョンとは異なる DR リージョン上のサブネットに仮想マシンをフェールオーバーする場合は、フェールオーバーの後でクラスターの IP アドレスを変更する必要があります。  クラスターの IP を変更するには、Site Recovery の[復旧計画スクリプト](https://docs.microsoft.com/azure/site-recovery/site-recovery-runbook-automation)を使用する必要があります。</br>
+1. クラスターに対する[クラウド監視](/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp)をセットアップするときは、監視をディザスター リカバリー リージョン内に維持します。
+2. ソース リージョンとは異なる DR リージョン上のサブネットに仮想マシンをフェールオーバーする場合は、フェールオーバーの後でクラスターの IP アドレスを変更する必要があります。  クラスターの IP を変更するには、Site Recovery の[復旧計画スクリプト](./site-recovery-runbook-automation.md)を使用する必要があります。</br>
 カスタム スクリプト拡張機能を使用して VM 内でコマンドを実行する[サンプル スクリプト](https://github.com/krnese/azure-quickstart-templates/blob/master/asr-automation-recovery/scripts/ASR-Wordpress-ChangeMysqlConfig.ps1) 
 
 ### <a name="enabling-site-recovery-for-s2d-cluster"></a>S2D クラスターに対して Site Recovery を有効にする
 
 1. 復旧サービス コンテナー内で、[+replicate]\(+ レプリケート\) をクリックします
-1. クラスター内のすべてのノードを選択し、それらを[マルチ VM 整合性グループ](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-common-questions#multi-vm-consistency)の一部にします
+1. クラスター内のすべてのノードを選択し、それらを[マルチ VM 整合性グループ](./azure-to-azure-common-questions.md#multi-vm-consistency)の一部にします
 1. アプリケーション整合性がオフになっているレプリケーション ポリシーを選択します* (クラッシュ整合性のサポートのみ利用可能)
 1. レプリケーションを有効にします
 
@@ -70,7 +70,7 @@ ms.locfileid: "75973659"
 
 
 ### <a name="failover-of-the-virtual-machines"></a>仮想マシンのフェールオーバー 
-Site Recovery の[復旧計画](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans)を使用して VM の両方のノードをフェールオーバーする必要があります 
+Site Recovery の[復旧計画](./site-recovery-create-recovery-plans.md)を使用して VM の両方のノードをフェールオーバーする必要があります 
 
 ![storagespacesdirect 保護](./media/azure-to-azure-how-to-enable-replication-s2d-vms/recoveryplan.PNG)
 
@@ -94,4 +94,4 @@ Site Recovery の[復旧計画](https://docs.microsoft.com/azure/site-recovery/s
 詳しくは、「[Site Recovery でのフェールオーバー](site-recovery-failover.md)」をご覧ください。
 ## <a name="next-steps"></a>次のステップ
 
-フェールバックの実行について[さらに学習する](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback)。
+フェールバックの実行について[さらに学習する](./azure-to-azure-tutorial-failover-failback.md)。

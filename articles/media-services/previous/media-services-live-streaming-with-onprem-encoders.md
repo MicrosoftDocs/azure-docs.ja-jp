@@ -14,14 +14,16 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: c0d19d68d016a47762fb5d2646ea6ccf74d3ef75
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 746fe9132dcb06678e2a0a975c8eed0aba6c3fad
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80476559"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269626"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > 2018 年 5 月 12日以降は、ライブ チャネルで RTP/MPEG-2 トランスポート ストリーム取り込みプロトコルがサポートされなくなります。 RTP/MPEG-2 から RTMP またはフラグメント化 MP4 (Smooth Streaming) 取り込みプロトコルに移行してください。
@@ -225,7 +227,8 @@ IP アドレスが指定されておらず、規則の定義もない場合は�
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="feedback"></a>フィードバック
+## <a name="suggestions-and-feedback"></a>提案とフィードバック
+
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>関連トピック

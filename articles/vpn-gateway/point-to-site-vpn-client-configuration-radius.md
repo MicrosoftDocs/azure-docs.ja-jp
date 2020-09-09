@@ -4,15 +4,15 @@ description: RADIUS 認証を使用する接続用の Windows、Mac OS X、お�
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 69517d69a26364cf1cc950d7aaa849522decacf1
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 5f16a902980b8cf88fb3e8a7f888a0f58ed34355
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81732739"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84986554"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>P2S RADIUS 認証用の VPN クライアント構成ファイルを作成およびインストールする
 
@@ -151,7 +151,7 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 
 次の手順は、Ubuntu 17.0.4 上で strongSwan 5.5.1 を使用して作成されました。 実際の画面は、使用している Linux と strongSwan のバージョンによって異なる場合があります。
 
-1. **[ターミナル]** を起動し、例のコマンドを実行して **strongSwan** とその Network Manager をインストールします。 `libcharon-extra-plugins` に関連するエラーが発生する場合、これを `strongswan-plugin-eap-mschapv2` に置き換えます。
+1. **[端末]** を起動し、例のコマンドを実行して **strongSwan** とその Network Manager をインストールします。 `libcharon-extra-plugins` に関連するエラーが発生する場合、これを `strongswan-plugin-eap-mschapv2` に置き換えます。
 
    ```Terminal
    sudo apt-get install strongswan libcharon-extra-plugins moreutils iptables-persistent network-manager-strongswan

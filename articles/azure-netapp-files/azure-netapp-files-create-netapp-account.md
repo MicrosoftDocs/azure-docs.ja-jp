@@ -11,15 +11,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: 25cae58663f6fa7ef27995c10509eb33e49dd4c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e5e0c43aa8c4fbf0db89065e0fab93ee174a4ede
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70012585"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85483671"
 ---
 # <a name="create-a-netapp-account"></a>NetApp アカウントを作成する
 NetApp アカウントを作成することによって、容量プールを設定し、その後、ボリュームを作成することができます。 新しい NetApp アカウントの作成は、[Azure NetApp Files] ブレードを使用して行います。

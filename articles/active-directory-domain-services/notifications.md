@@ -1,5 +1,5 @@
 ---
-title: Azure AD Domain Services のメール通知 | Microsoft Docs'
+title: Azure AD Domain Services のメール通知 | Microsoft Docs
 description: Azure Active Directory Domain Services のマネージド ドメインでの問題について警告するメール通知を構成する方法について説明します
 services: active-directory-ds
 author: iainfoulds
@@ -9,26 +9,26 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 8c6d59889e572893877f2178cade57e07aa91413
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 149de14ed2430613e9ca6d5d12f8dce6ba425dfe
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654784"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039995"
 ---
 # <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services での問題に関するメール通知を構成する
 
 Azure Active Directory Domain Services (Azure AD DS) のマネージド ドメインの正常性は、Azure プラットフォームによって監視されます。 Azure portal の正常性状態ページには、マネージド ドメインのすべてのアラートが表示されます。 適切なタイミングで問題に応答するために、Azure AD DS マネージド ドメインで問題が検出されたらすぐに正常性アラートでレポートするようにメール通知を構成できます。
 
-この記事では、Azure AD DS マネージド ドメイン用にメール通知受信者を構成する方法について説明します。
+この記事では、マネージド ドメイン用にメール通知受信者を構成する方法について説明します。
 
 ## <a name="email-notification-overview"></a>メール通知の概要
 
-Azure AD DS マネージド ドメインでの問題を警告するために、メール通知を構成できます。 これらのメール通知では、アラートが存在する Azure AD DS マネージド ドメインのほか、検出時刻や Azure portal の正常性ページへのリンクが記載されています。 提供されているトラブルシューティングのアドバイスに従って、問題を解決できます。
+マネージド ドメインでの問題を警告するために、メール通知を構成できます。 これらのメール通知には、アラートが存在するマネージド ドメインのほか、検出時刻や Azure portal の正常性ページへのリンクが記載されます。 提供されているトラブルシューティングのアドバイスに従って、問題を解決できます。
 
-次のメール通知の例は、Azure AD DS マネージド ドメインで重大な警告またはアラートが生成されたことを示しています。
+次のメール通知の例は、マネージド ドメインで重大な警告またはアラートが生成されたことを示しています。
 
 ![メール通知の例](./media/active-directory-domain-services-alerts/email-alert.png)
 
@@ -37,13 +37,13 @@ Azure AD DS マネージド ドメインでの問題を警告するために、�
 
 ### <a name="why-would-i-receive-email-notifications"></a>メール通知が送信される理由
 
-Azure AD DS は、マネージド ドメインに関する重要な更新情報についてメール通知を送信します。 これらの通知は、サービスに影響があり、すぐに対処する必要がある、緊急の問題に限られます。 各メール通知は、Azure AD DS マネージド ドメイン上のアラートによってトリガーされます。 アラートは Azure portal にも表示され、[Azure AD DS の正常性ページ][check-health]で確認できます。
+Azure AD DS は、マネージド ドメインに関する重要な更新情報についてメール通知を送信します。 これらの通知は、サービスに影響があり、すぐに対処する必要がある、緊急の問題に限られます。 それぞれのメール通知は、マネージド ドメイン上のアラートによってトリガーされます。 アラートは Azure portal にも表示され、[Azure AD DS の正常性ページ][check-health]で確認できます。
 
 Azure AD DS から、広告、更新プログラム、または営業目的のメールが送信されることはありません。
 
 ### <a name="when-will-i-receive-email-notifications"></a>メール通知が送信されるタイミング
 
-通知は、Azure AD DS マネージド ドメインで[新しいアラート][troubleshoot-alerts]が検出されると、直ちに送信されます。 アラートが解決されない場合は、さらにメール通知が 4 日に 1 回、リマインダーとして送信されます。
+通知は、マネージド ドメインで[新しいアラート][troubleshoot-alerts]が検出されると、直ちに送信されます。 アラートが解決されない場合は、さらにメール通知が 4 日に 1 回、リマインダーとして送信されます。
 
 ### <a name="who-should-receive-the-email-notifications"></a>メール通知の宛先
 
@@ -58,23 +58,23 @@ Azure AD DS のメール受信者のリストは、マネージド ドメイン�
 メール通知の既存の受信者を確認したり、他の受信者を追加したりするには、次の手順を実行します。
 
 1. Azure portal で、**Azure AD Domain Services** を検索して選択します。
-1. Azure AD DS マネージド ドメイン (*aaddscontoso.com* など) を選択します。
+1. 目的のマネージド ドメインを選択します (例: *aaddscontoso.com*)。
 1. Azure AD DS リソース ウィンドウの左側で、 **[通知設定]** を選択します。 メール通知の既存の受信者が表示されます。
 1. メールの受信者を追加するには、[その他の受信者] テーブルにメール アドレスを入力します。
 1. 終了したら、最上部のナビゲーションで **[保存]** を選択します。
 
 > [!WARNING]
-> 通知設定を変更すると、自分の通知設定だけでなく、Azure AD DS マネージド ドメイン全体の通知設定が更新されます。
+> 通知設定を変更すると、自分の通知設定だけでなく、マネージド ドメイン全体の通知設定が更新されます。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 ### <a name="i-received-an-email-notification-for-an-alert-but-when-i-logged-on-to-the-azure-portal-there-was-no-alert-what-happened"></a>アラートのメール通知を受信しましたが、Azure portal にログオンしてもアラートが見当たりません。 なぜでしょうか?
 
-アラートは、解決されると、Azure portal から消去されます。 最も可能性が高い理由として、Azure AD DS マネージド ドメインのアラートが、メール通知を受け取った他の受信者によって解決されたか、Azure プラットフォームによって自動的に解決されたことが考えられます。
+アラートは、解決されると、Azure portal から消去されます。 最も可能性が高い理由として、マネージド ドメインのアラートがメール通知を受け取った他の受信者によって解決されたか、Azure プラットフォームによって自動的に解決されたことが考えられます。
 
 ### <a name="why-can-i-not-edit-the-notification-settings"></a>通知設定を編集できないのはなぜですか?
 
-Azure portal の通知設定ページにアクセスできない場合は、Azure AD DS マネージド ドメインを編集するアクセス許可がありません。 グローバル管理者に連絡して Azure AD DS のリソースを編集するためのアクセス許可を取得するか、受信者リストから削除してもらう必要があります。
+Azure portal の通知設定ページにアクセスできない場合は、マネージド ドメインを編集するアクセス許可がありません。 グローバル管理者に連絡して Azure AD DS のリソースを編集するためのアクセス許可を取得するか、受信者リストから削除してもらう必要があります。
 
 ### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>メール アドレスを指定したにもかかわらず、メール通知が届かないようです。 なぜですか?
 
@@ -82,7 +82,7 @@ Azure portal の通知設定ページにアクセスできない場合は、Azur
 
 ## <a name="next-steps"></a>次のステップ
 
-レポートされる可能性があるいくつかの問題のトラブルシューティングの詳細については、[Azure AD DS マネージド ドメインに関するアラートの解決][troubleshoot-alerts]に関するページを参照してください。
+レポートされる可能性があるいくつかの問題のトラブルシューティングの詳細については、[マネージド ドメインでのアラートの解決][troubleshoot-alerts]に関するページを参照してください。
 
 <!-- INTERNAL LINKS -->
 [check-health]: check-health.md

@@ -9,22 +9,20 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 78ed2d85729cce94e8dfa579545f558d2cfe4651
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73e8f0de9f879498acb71e97fa47c81b3447252d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79504075"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84749610"
 ---
-# <a name="train-anomaly-detection-model"></a>異常検出モデルのトレーニング
+# <a name="train-anomaly-detection-model-module"></a>異常検出モデルのトレーニング モジュール
 
-この記事では、Azure Machine Learning デザイナー (プレビュー) で**異常検出モデルのトレーニング** モジュールを使用して、トレーニング済みの異常検出モデルを作成する方法について説明します。
+この記事では、Azure Machine Learning デザイナー (プレビュー) で異常検出モデルのトレーニング モジュールを使用して、トレーニング済みの異常検出モデルを作成する方法について説明します。
 
 このモジュールでは、異常検出モデル用のパラメーター セットとラベル付けされていないデータセットを入力として受け取ります。 トレーニング済みの異常検出モデルがトレーニング データのラベル セットと共に返されます。  
 
-デザイナーに用意されている異常検出アルゴリズムの詳細については、次のトピックを参照してください。 
-
-+ [PCA ベースの異常検出](pca-based-anomaly-detection.md)  
+デザイナーに用意されている異常検出アルゴリズムの詳細については、「[PCA ベースの異常検出](pca-based-anomaly-detection.md)」を参照してください。  
 
 ## <a name="how-to-configure-train-anomaly-detection-model"></a>異常検出モデルのトレーニングを構成する方法 
 
@@ -32,7 +30,7 @@ ms.locfileid: "79504075"
 
 2. [PCA ベースの異常検出](pca-based-anomaly-detection.md)など、異常検出用に設計されたモジュールのいずれかに接続します。
 
-    その他の種類のモデルはサポートされていません。パイプラインの実行時に次のエラーが表示されます。All models must have the same learner type. (すべてのモデルは学習器の種類が同じでなければなりません。)  
+    他の種類のモデルはサポートされていません。 パイプラインを実行すると、"All models must have the same learner type (すべてのモデルは学習器の種類が同じでなければなりません)" というエラーが表示されます。  
 
 3.  ラベル列を選択し、アルゴリズム固有のその他のパラメーターを設定することで、異常検出モジュールを構成します。  
 
@@ -46,9 +44,9 @@ ms.locfileid: "79504075"
 
 + モデルのパラメーターを表示するには、モデルを右クリックし、 **[Visualize]\(可視化\)** を選択します。 
 
-+ 予測を作成するには、[モデルのスコア付け](score-model.md)を新しい入力データと共に使用します。
++ 予測を作成するには、[モデルのスコア付け](score-model.md)モジュールを新しい入力データと共に使用します。
 
-+ トレーニング済みのモデルのスナップショットを保存するには、モジュールを選択し、右側のパネルの **[出力とログ]** タブの **[Register dataset]\(データセットの登録\)** アイコンをクリックします。   
++ トレーニング済みのモデルのスナップショットを保存するには、モジュールを選択します。 次に、右側のパネルの **[出力 + ログ]** タブにある **[データセットの登録]** アイコンをクリックします。   
 
  
 ## <a name="next-steps"></a>次のステップ

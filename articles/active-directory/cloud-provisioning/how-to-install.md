@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 764071eeaf368ecf78679632cffbd6964db40aa5
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: a5b59942731c8ca7b29de30e160d8370c9cf76ef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681036"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807640"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>Azure AD Connect クラウド プロビジョニング エージェントのインストール
 このドキュメントでは、Azure Active Directory (Azure AD) Connect プロビジョニング エージェントのインストール プロセスと、それを Azure portal で最初に構成する方法について説明します。
@@ -34,7 +34,8 @@ Azure AD Connect プロビジョニングのインストールと構成は、次
 エージェントをインストールするには、次の手順に従います。
 
 1. 使用するサーバーにエンタープライズ管理者のアクセス許可でサインインします。
-1. Azure Portal にアクセスします。 左側の **[Azure Active Directory]** を選択します。
+1. Azure portal にサインインし、 **[Azure Active Directory]** に移動します。
+1. 左側のメニューで、 **[Azure AD Connect]** を選択します。
 1. **[プロビジョニングの管理 (プレビュー)]**  >  **[すべてのエージェントの確認]** を選択します。
 1. Azure portal から Azure AD Connect プロビジョニング エージェントをダウンロードします。
 

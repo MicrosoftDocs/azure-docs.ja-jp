@@ -2,17 +2,17 @@
 title: Application Insights のリリース注釈 | Microsoft Docs
 description: Application Insights で、メトリックス エクスプローラーのグラフにデプロイ マーカーまたはビルド マーカーを追加します。
 ms.topic: conceptual
-ms.date: 07/01/2019
-ms.openlocfilehash: 0ad773ca6a7102ac718d43dfbbf6a4f834e681a0
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.date: 08/14/2020
+ms.openlocfilehash: e21981f134f6a78109d70b1edf6d61e204b64e12
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010727"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258422"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Application Insights のメトリック グラフの注釈
 
-注釈は、新しいビルドのデプロイ先やその他の重要なイベントを示します。 注釈により、変更内容がアプリケーションのパフォーマンスに影響を与えたかどうかを簡単に把握できます。 それらは、[Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/tasks/) ビルド システムで自動的に作成できます。 PowerShell から作成することにより、任意のイベントにフラグを設定する注釈を作成することもできます。
+注釈は、新しいビルドのデプロイ先やその他の重要なイベントを示します。 注釈により、変更内容がアプリケーションのパフォーマンスに影響を与えたかどうかを簡単に把握できます。 それらは、[Azure Pipelines](/azure/devops/pipelines/tasks/) ビルド システムで自動的に作成できます。 PowerShell から作成することにより、任意のイベントにフラグを設定する注釈を作成することもできます。
 
 ## <a name="release-annotations-with-azure-pipelines-build"></a>Azure Pipelines ビルドでのリリース注釈
 
@@ -34,7 +34,7 @@ Azure DevOps 組織に拡張機能をインストールする必要があるの�
 
 Azure Pipelines のリリース テンプレートごとに個別の API キーを作成します。
 
-1. [Azure portal](https://portal.azure.com) にサインインし、アプリケーションを監視する Application Insights リソースを開きます。 または、まだない場合は、[新しい Application Insights リソースを作成](../../azure-monitor/app/app-insights-overview.md)します。
+1. [Azure portal](https://portal.azure.com) にサインインし、アプリケーションを監視する Application Insights リソースを開きます。 または、まだない場合は、[新しい Application Insights リソースを作成](./app-insights-overview.md)します。
    
 1. **[API アクセス]** タブを開き、 **[Application Insights ID]** をコピーします。
    
@@ -68,6 +68,10 @@ Azure Pipelines のリリース テンプレートごとに個別の API キー�
    ![Azure DevOps の [変数] タブで、[追加] を選択し、変数名を ApiKey にして、[値] に API キーを貼り付ける。](./media/annotations/7-paste-api-key.png)
    
 1. メイン リリース テンプレート ウィンドウで **[保存]** 選択して、テンプレートを保存します。
+
+
+   > [!NOTE]
+   > API キーに対する制限については、[REST API の割合の制限に関するドキュメント](https://dev.applicationinsights.io/documentation/Authorization/Rate-limits)を参照してください。
 
 ## <a name="view-annotations"></a>注釈を表示する
 
@@ -115,5 +119,6 @@ Azure DevOps を使わずに、GitHub の [CreateReleaseAnnotation](https://gith
 
 ## <a name="next-steps"></a>次のステップ
 
-* [作業項目を作成する](../../azure-monitor/app/diagnostic-search.md#create-work-item)
-* [PowerShell でのオートメーション](../../azure-monitor/app/powershell.md)
+* [作業項目を作成する](./diagnostic-search.md#create-work-item)
+* [PowerShell でのオートメーション](./powershell.md)
+

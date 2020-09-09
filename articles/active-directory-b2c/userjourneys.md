@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 189343888d2856a6945723c030485e58394c912f
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: d705c7fbdb744082b402f4dd598551107563ed2e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559604"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85203165"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -106,7 +106,7 @@ ms.locfileid: "82559604"
 
 以下の前提条件は、ユーザーの objectId が存在するかどうかを確認します。 ユーザー体験では、ユーザーはローカル アカウントを使用してサインインすることを選択しています。 objectId が存在する場合は、このオーケストレーション手順をスキップしてください。
 
-```XML
+```xml
 <OrchestrationStep Order="2" Type="ClaimsExchange">
   <Preconditions>
     <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
@@ -123,7 +123,7 @@ ms.locfileid: "82559604"
 
 以下の前提条件は、ユーザーがソーシャル アカウントを使用してサインインしているかどうかを確認します。 ディレクトリ内のユーザー アカウント検索の試行が行われます。 ユーザーがローカル アカウントを使用してサインインまたはサインアップする場合は、このオーケストレーション手順をスキップしてください。
 
-```XML
+```xml
 <OrchestrationStep Order="3" Type="ClaimsExchange">
   <Preconditions>
     <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
@@ -140,7 +140,7 @@ ms.locfileid: "82559604"
 
 Preconditions では複数の前提条件を確認できます。 次の例では、「objectId」または「email」が存在するかどうかを確認します。 最初の条件が true の場合、journey は次のオーケストレーション手順をスキップします。
 
-```XML
+```xml
 <OrchestrationStep Order="4" Type="ClaimsExchange">
   <Preconditions>
   <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
@@ -185,7 +185,7 @@ Preconditions では複数の前提条件を確認できます。 次の例で�
 
 次のオーケストレーション手順では、ユーザーはFacebook、LinkedIn、Twitter、Google、またはローカル アカウントでサインインすることを選択できます。 ユーザーがいずれかのソーシャル ID プロバイダーを選択すると、`TargetClaimsExchangeId` 属性で指定された選定要求交換を使用して 2 番目のオーケストレーション手順が実行されます。 2 番目のオーケストレーション手順は、ユーザーをソーシャル ID プロバイダーにリダイレクトしてサインイン プロセスを完了します。 ユーザーがローカル アカウントを使用してサインインすることを選択した場合、Azure AD B2C は同じオーケストレーション手順にとどまり (同じサインアップ ページまたはサインイン ページ)、2 番目の手順をスキップします。
 
-```XML
+```xml
 <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
     <ClaimsProviderSelections>
     <ClaimsProviderSelection TargetClaimsExchangeId="FacebookExchange" />

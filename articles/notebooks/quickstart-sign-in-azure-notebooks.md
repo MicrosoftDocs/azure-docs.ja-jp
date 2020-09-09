@@ -3,18 +3,18 @@ title: Azure Notebooks プレビューにサインインする
 description: Azure Notebooks プレビューにすばやくサインインし、ユーザー ID を設定します。これにより、保存済みのプロジェクトにアクセスしたり、ノートブックを他のユーザーと共有したりできるようになります。
 ms.topic: quickstart
 ms.date: 04/15/2019
-ms.openlocfilehash: b6572a7c0b965b2b72916db577b47eff4f1921c0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8a2d9836cd005ab11106c569929a6776d605da50
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75647018"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85830419"
 ---
 # <a name="quickstart-sign-in-and-set-a-user-id-for-azure-notebooks-preview"></a>クイック スタート:Azure Notebooks プレビューにサインインしてユーザー ID を設定する
 
-サインインしなくても Azure Notebooks を常に表示できますが、ノートブックを実行し、保存されたプロジェクトとノートブックにアクセスし、他のユーザーとノートブックを共有するには、サインインする必要があります。
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+サインインしなくても Azure Notebooks を常に表示できますが、ノートブックを実行し、保存されたプロジェクトとノートブックにアクセスし、他のユーザーとノートブックを共有するには、サインインする必要があります。
 
 ## <a name="sign-in"></a>サインイン
 

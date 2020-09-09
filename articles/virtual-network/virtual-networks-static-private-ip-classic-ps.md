@@ -8,19 +8,20 @@ manager: dcscontentpm
 tags: azure-service-management
 ms.assetid: 60c7b489-46ae-48af-a453-2b429a474afd
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9255ca3a2ed7e446c60a269deef61372955c25f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 669b8427f13efcc55a69bc7c970b6658a6719cd8
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458507"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134719"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-powershell"></a>PowerShell を使用して仮想マシン (クラシック) のプライベート IP アドレスを構成する
 
@@ -39,94 +40,114 @@ ms.locfileid: "81458507"
 ## <a name="how-to-verify-if-a-specific-ip-address-is-available"></a>特定の IP アドレスが使用可能であるかを確認する方法
 IP アドレス *192.168.1.101* が *TestVnet* という VNet で使用可能かどうかを確認するには、次の PowerShell コマンドを実行して、*IsAvailable* の値を確認します。
 
-    Test-AzureStaticVNetIP –VNetName TestVNet –IPAddress 192.168.1.101 
+```azurepowershell
+Test-AzureStaticVNetIP –VNetName TestVNet –IPAddress 192.168.1.101 
+```
 
 予想される出力:
 
-    IsAvailable          : True
-    AvailableAddresses   : {}
-    OperationDescription : Test-AzureStaticVNetIP
-    OperationId          : fd3097e1-5f4b-9cac-8afa-bba1e3492609
-    OperationStatus      : Succeeded
+```output
+IsAvailable          : True
+AvailableAddresses   : {}
+OperationDescription : Test-AzureStaticVNetIP
+OperationId          : fd3097e1-5f4b-9cac-8afa-bba1e3492609
+OperationStatus      : Succeeded
+```
 
 ## <a name="how-to-specify-a-static-private-ip-address-when-creating-a-vm"></a>VM 作成時に静的プライベート IP アドレスを指定する方法
 以下の PowerShell スクリプトによって *TestService* という新しいクラウド サービスが作成され、Azure からイメージが取得されます。次に、その取得されたイメージを使用して *DNS01* という VM が新しいクラウド サービス内に作成され、その VM は *FrontEnd* というサブネットに含まれるように設定され、VM の静的プライベート IP アドレスとして *192.168.1.7* が設定されます。
 
-    New-AzureService -ServiceName TestService -Location "Central US"
-    $image = Get-AzureVMImage | where {$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
-    New-AzureVMConfig -Name DNS01 -InstanceSize Small -ImageName $image.ImageName |
-      Add-AzureProvisioningConfig -Windows -AdminUsername adminuser -Password MyP@ssw0rd!! |
-      Set-AzureSubnet –SubnetNames FrontEnd |
-      Set-AzureStaticVNetIP -IPAddress 192.168.1.7 |
-      New-AzureVM -ServiceName TestService –VNetName TestVNet
+```azurepowershell
+New-AzureService -ServiceName TestService -Location "Central US"
+$image = Get-AzureVMImage | where {$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
+New-AzureVMConfig -Name DNS01 -InstanceSize Small -ImageName $image.ImageName |
+    Add-AzureProvisioningConfig -Windows -AdminUsername adminuser -Password MyP@ssw0rd!! |
+    Set-AzureSubnet –SubnetNames FrontEnd |
+    Set-AzureStaticVNetIP -IPAddress 192.168.1.7 |
+    New-AzureVM -ServiceName TestService –VNetName TestVNet
+```
 
 予想される出力:
 
-    WARNING: No deployment found in service: 'TestService'.
-    OperationDescription OperationId                          OperationStatus
-    -------------------- -----------                          ---------------
-    New-AzureService     fcf705f1-d902-011c-95c7-b690735e7412 Succeeded      
-    New-AzureVM          3b99a86d-84f8-04e5-888e-b6fc3c73c4b9 Succeeded  
+```output
+WARNING: No deployment found in service: 'TestService'.
+OperationDescription OperationId                          OperationStatus
+-------------------- -----------                          ---------------
+New-AzureService     fcf705f1-d902-011c-95c7-b690735e7412 Succeeded      
+New-AzureVM          3b99a86d-84f8-04e5-888e-b6fc3c73c4b9 Succeeded  
+```
 
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>VM 用の静的プライベート IP アドレス情報を取得する方法
 上記のスクリプトで作成した VM の静的プライベート IP アドレス情報を表示するには、次の PowerShell コマンドを実行し、 *IpAddress*の値を確認します。
 
-    Get-AzureVM -Name DNS01 -ServiceName TestService
+```azurepowershell
+Get-AzureVM -Name DNS01 -ServiceName TestService
+```
 
 予想される出力:
 
-    DeploymentName              : TestService
-    Name                        : DNS01
-    Label                       : 
-    VM                          : Microsoft.WindowsAzure.Commands.ServiceManagement.Model.PersistentVM
-    InstanceStatus              : Provisioning
-    IpAddress                   : 192.168.1.7
-    InstanceStateDetails        : Windows is preparing your computer for first use...
-    PowerState                  : Started
-    InstanceErrorCode           : 
-    InstanceFaultDomain         : 0
-    InstanceName                : DNS01
-    InstanceUpgradeDomain       : 0
-    InstanceSize                : Small
-    HostName                    : rsR2-797
-    AvailabilitySetName         : 
-    DNSName                     : http://testservice000.cloudapp.net/
-    Status                      : Provisioning
-    GuestAgentStatus            : Microsoft.WindowsAzure.Commands.ServiceManagement.Model.GuestAgentStatus
-    ResourceExtensionStatusList : {Microsoft.Compute.BGInfo}
-    PublicIPAddress             : 
-    PublicIPName                : 
-    NetworkInterfaces           : {}
-    ServiceName                 : TestService
-    OperationDescription        : Get-AzureVM
-    OperationId                 : 34c1560a62f0901ab75cde4fed8e8bd1
-    OperationStatus             : OK
+```output
+DeploymentName              : TestService
+Name                        : DNS01
+Label                       : 
+VM                          : Microsoft.WindowsAzure.Commands.ServiceManagement.Model.PersistentVM
+InstanceStatus              : Provisioning
+IpAddress                   : 192.168.1.7
+InstanceStateDetails        : Windows is preparing your computer for first use...
+PowerState                  : Started
+InstanceErrorCode           : 
+InstanceFaultDomain         : 0
+InstanceName                : DNS01
+InstanceUpgradeDomain       : 0
+InstanceSize                : Small
+HostName                    : rsR2-797
+AvailabilitySetName         : 
+DNSName                     : http://testservice000.cloudapp.net/
+Status                      : Provisioning
+GuestAgentStatus            : Microsoft.WindowsAzure.Commands.ServiceManagement.Model.GuestAgentStatus
+ResourceExtensionStatusList : {Microsoft.Compute.BGInfo}
+PublicIPAddress             : 
+PublicIPName                : 
+NetworkInterfaces           : {}
+ServiceName                 : TestService
+OperationDescription        : Get-AzureVM
+OperationId                 : 34c1560a62f0901ab75cde4fed8e8bd1
+OperationStatus             : OK
+```
 
 ## <a name="how-to-remove-a-static-private-ip-address-from-a-vm"></a>VM から静的プライベート IP アドレスを削除する方法
 上記のスクリプトで VM に追加された静的プライベート IP アドレスを削除するには、次の PowerShell コマンドを実行します。
 
-    Get-AzureVM -ServiceName TestService -Name DNS01 |
-      Remove-AzureStaticVNetIP |
-      Update-AzureVM
+```azurepowershell
+Get-AzureVM -ServiceName TestService -Name DNS01 |
+    Remove-AzureStaticVNetIP |
+    Update-AzureVM
+```
 
 予想される出力:
 
-    OperationDescription OperationId                          OperationStatus
-    -------------------- -----------                          ---------------
-    Update-AzureVM       052fa6f6-1483-0ede-a7bf-14f91f805483 Succeeded
+```output
+OperationDescription OperationId                          OperationStatus
+-------------------- -----------                          ---------------
+Update-AzureVM       052fa6f6-1483-0ede-a7bf-14f91f805483 Succeeded
+```
 
 ## <a name="how-to-add-a-static-private-ip-address-to-an-existing-vm"></a>既存の VM に静的プライベート IP アドレスを追加する方法
 上記のスクリプトを使用して作成した VM に静的プライベート IP アドレスを追加するには、次のコマンドを実行します。
 
-    Get-AzureVM -ServiceName TestService -Name DNS01 |
-      Set-AzureStaticVNetIP -IPAddress 192.168.1.7 |
-      Update-AzureVM
+```azurepowershell
+Get-AzureVM -ServiceName TestService -Name DNS01 |
+    Set-AzureStaticVNetIP -IPAddress 192.168.1.7 |
+    Update-AzureVM
+```
 
 予想される出力:
 
-    OperationDescription OperationId                          OperationStatus
-    -------------------- -----------                          ---------------
-    Update-AzureVM       77d8cae2-87e6-0ead-9738-7c7dae9810cb Succeeded 
+```output
+OperationDescription OperationId                          OperationStatus
+-------------------- -----------                          ---------------
+Update-AzureVM       77d8cae2-87e6-0ead-9738-7c7dae9810cb Succeeded 
+```
 
 ## <a name="set-ip-addresses-within-the-operating-system"></a>オペレーティング システム内で IP アドレスを設定する
 

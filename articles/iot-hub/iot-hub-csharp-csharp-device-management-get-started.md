@@ -9,13 +9,13 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: 3cc74faa39b21b1ab275149db4f85de8f55fd07e
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.custom: mqtt, devx-track-csharp
+ms.openlocfilehash: 5760c574e64a3b3b4a1df12092cff44374790a90
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81733474"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018401"
 ---
 # <a name="get-started-with-device-management-net"></a>デバイス管理の開始 (.NET)
 
@@ -65,7 +65,7 @@ ms.locfileid: "81733474"
 
 1. **[新しいプロジェクトの作成]** で、 **[コンソール アプリ (.NET Framework)]** プロジェクト テンプレートを探して選択し、 **[次へ]** を選択します。
 
-1. **[新しいプロジェクトの構成]** で、プロジェクトに *TriggerReboot* という名前を設定し、.NET Framework バージョン 4.5.1 以降を選択します。 **作成** を選択します。
+1. **[新しいプロジェクトの構成]** で、プロジェクトに *TriggerReboot* という名前を設定し、.NET Framework バージョン 4.5.1 以降を選択します。 **［作成］** を選択します
 
     ![New Visual C# Windows Classic Desktop project](./media/iot-hub-csharp-csharp-device-management-get-started/create-trigger-reboot-configure.png)
 
@@ -77,7 +77,7 @@ ms.locfileid: "81733474"
 
    この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet パッケージへの参照とその依存関係が追加されます。
 
-1. `using`Program.cs**ファイルの先頭に次の** ステートメントを追加します。
+1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
 
    ```csharp
    using Microsoft.Azure.Devices;
@@ -148,7 +148,7 @@ ms.locfileid: "81733474"
 
 1. Visual Studio で、既に作成した TriggerReboot ソリューションの **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** を選択します。 **[新しいプロジェクトの作成]** で、 **[コンソール アプリ (.NET Framework)]** プロジェクト テンプレートを探して選択し、 **[次へ]** を選択します。
 
-1. **[新しいプロジェクトの構成]** で、プロジェクトに *SimulateManagedDevice* という名前を付け、 **[ソリューション]** で **[ソリューションに追加]** を選択します。 **作成** を選択します。
+1. **[新しいプロジェクトの構成]** で、プロジェクトに *SimulateManagedDevice* という名前を付け、 **[ソリューション]** で **[ソリューションに追加]** を選択します。 **［作成］** を選択します
 
     ![プロジェクトに名前を付けてソリューションに追加する](./media/iot-hub-csharp-csharp-device-management-get-started/configure-device-app.png)
 
@@ -160,7 +160,7 @@ ms.locfileid: "81733474"
 
    この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT device SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet パッケージへの参照とその依存関係が追加されます。
 
-1. `using`Program.cs**ファイルの先頭に次の** ステートメントを追加します。
+1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
 
     ```csharp
     using Microsoft.Azure.Devices.Client;

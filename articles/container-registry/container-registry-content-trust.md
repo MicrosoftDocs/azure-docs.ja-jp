@@ -1,21 +1,21 @@
 ---
 title: 署名済みのイメージの管理
-description: Azure Container Registry でコンテンツの信頼を有効にし、署名済みのイメージをプッシュしたりプルしたりする方法について説明します。
+description: Azure Container Registry でコンテンツの信頼を有効にし、署名済みのイメージをプッシュしたりプルしたりする方法について説明します。 コンテンツの信頼は、Premium サービス レベルの機能です。
 ms.topic: article
 ms.date: 09/06/2019
-ms.openlocfilehash: ce1e9e5cce0de58703e69df8db14cfbf3ecf04f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34bb56bab869cb1f12541b65c59b06a73b215377
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78249936"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076850"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure Container Registry におけるコンテンツの信頼
 
 Azure Container Registry では、Docker の[コンテンツの信頼][docker-content-trust]モデルを実装し、署名済みのイメージのプッシュとプルを有効にします。 この記事では、コンテナー レジストリ内でコンテンツの信頼を有効にする方法について説明します。
 
 > [!NOTE]
-> コンテンツの信頼は、Azure Container Registry の [Premium SKU](container-registry-skus.md) の機能です。
+> コンテンツの信頼は、Azure Container Registry の [Premium サービス レベル](container-registry-skus.md)の機能です。
 
 ## <a name="how-content-trust-works"></a>コンテンツの信頼の動作概念
 
@@ -114,7 +114,7 @@ az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee 
 `<service principal ID>` には、サービス プリンシパルの **appId**、**objectId**、またはその **servicePrincipalNames** を指定できます。 サービス プリンシパルと Azure Container Registry の取り扱いについて詳しくは、「[サービス プリンシパルによる Azure Container Registry 認証](container-registry-auth-service-principal.md)」をご覧ください。
 
 > [!IMPORTANT]
-> ロールが変更されたら、新しいロールを有効にするために、`az acr login` を実行して Azure CLI のローカル ID トークンを更新します。 ID のロールの検証の詳細については、「[RBAC と Azure CLI を使用して Azure リソースへのアクセスを管理する](../role-based-access-control/role-assignments-cli.md)」と「[Azure リソースの RBAC のトラブルシューティング](../role-based-access-control/troubleshooting.md)」を参照してください。
+> ロールが変更されたら、新しいロールを有効にするために、`az acr login` を実行して Azure CLI のローカル ID トークンを更新します。 ID のロールの検証の詳細については、「[RBAC と Azure CLI を使用して Azure リソースへのアクセスを管理する](../role-based-access-control/role-assignments-cli.md)」と「[Azure RBAC のトラブルシューティング](../role-based-access-control/troubleshooting.md)」を参照してください。
 
 ## <a name="push-a-trusted-image"></a>信頼済みのイメージをプッシュする
 

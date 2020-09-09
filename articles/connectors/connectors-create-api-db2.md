@@ -7,12 +7,12 @@ ms.reviewer: plarsen, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: 32b482607827ee4420e39b1936586d64f9ea3139
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd85155f932d57319f5f27081b44b48e5540bfb2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651383"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284049"
 ---
 # <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して IBM DB2 リソースにアクセスして管理する
 
@@ -359,7 +359,7 @@ DB2 データベース テーブルから 1 レコードを削除するには、
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-コネクタの Swagger ファイルに記述される、トリガー、アクション、制限などのこのコネクタの技術的詳細については、[コネクタの参照ページ](https://docs.microsoft.com/connectors/db2/)を参照してください。
+コネクタの Swagger ファイルに記述される、トリガー、アクション、制限などのこのコネクタの技術的詳細については、[コネクタの参照ページ](/connectors/db2/)を参照してください。
 
 > [!NOTE]
 > [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリの場合、このコネクタの ISE のラベルが付いたバージョンでは、代わりに [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)が使用されます。
@@ -367,3 +367,4 @@ DB2 データベース テーブルから 1 レコードを削除するには、
 ## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。
+

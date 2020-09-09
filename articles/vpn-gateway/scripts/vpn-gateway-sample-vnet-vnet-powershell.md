@@ -1,22 +1,22 @@
 ---
 title: Azure PowerShell のサンプル スクリプト - VNet 間 VPN の構成 | Microsoft Docs
-description: サイト間 VPN を構成します。
+description: PowerShell スクリプトを使用して、サイト対サイトの VNet 間 VPN ゲートウェイ接続を構成する方法について説明します。
 services: vpn-gateway
 documentationcenter: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.devlang: powershell
 ms.topic: sample
 ms.date: 01/09/2020
 ms.author: alzam
-ms.openlocfilehash: a4d23f34553881b6425514572f9122edf693a57a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 949c2b7810bc6b4f5a80b9932427f4aa3565794e
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75862222"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030363"
 ---
-# <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>PowerShell を使用した VNet 間 VPN Gateway 接続を構成する
+# <a name="use-powershell-to-configure-a-vnet-to-vnet-vpn-gateway-connection"></a>PowerShell を使用して VNet 対 VNet VPN ゲートウェイ接続を構成する
 
 このスクリプトは、接続の種類として VNet 間接続を使用して 2 つの仮想ネットワークを接続します。
 
@@ -167,4 +167,4 @@ Remove-AzResourceGroup -Name TestRG2
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
+Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。

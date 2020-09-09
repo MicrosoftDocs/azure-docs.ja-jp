@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 03/18/2020
 ms.author: azfuncdf
 zone_pivot_groups: code-editors-set-one
-ms.openlocfilehash: eda3afdf8deb3336cd0c5293c2422e694caa69c8
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f5eb5f5ce6c6ded3fffc95b73d3ac86ae9e94ba2
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80132726"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055464"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>C\# で最初の Durable Functions を作成する
 
@@ -148,7 +148,7 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 
 1. **出力**パネルから HTTP トリガーの URL をコピーします。 HTTP によってトリガーされる関数を呼び出す URL は、次の形式である必要があります。
 
-        https://<functionappname>.azurewebsites.net/api/HelloOrchestration_HttpStart
+    `https://<functionappname>.azurewebsites.net/api/HelloOrchestration_HttpStart`
 
 1. HTTP 要求のこの新しい URL をブラウザーのアドレス バーに貼り付けます。 以前の発行済みアプリの使用時と同じ状態応答を受け取るはずです。
 
@@ -277,7 +277,7 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 
     Durable Functions の HTTP トリガーを呼び出す URL は、次の形式である必要があります。
 
-        https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>_HttpStart
+    `https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>_HttpStart`
 
 2. HTTP 要求のこの新しい URL をブラウザーのアドレス バーに貼り付けます。 以前の発行済みアプリの使用時と同じ状態応答を受け取るはずです。
 

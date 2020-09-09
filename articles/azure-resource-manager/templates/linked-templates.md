@@ -2,13 +2,13 @@
 title: デプロイ用のテンプレートをリンクする
 description: Azure リソース マネージャー テンプレートでリンクされたテンプレートを使用して、モジュール構造のテンプレート ソリューションを作成する方法について説明します。 パラメーターの値を渡す方法、パラメーター ファイルを指定する方法、および URL を動的に作成する方法を示します。
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.openlocfilehash: f71d8cc62daf68b158bed444da1446e016194b56
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.date: 07/21/2020
+ms.openlocfilehash: 40da2443828a07f2171922fcc6d8976d464d0ad4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609308"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086814"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Azure リソース デプロイ時のリンクされたテンプレートおよび入れ子になったテンプレートの使用
 
@@ -16,7 +16,7 @@ ms.locfileid: "82609308"
 
 中小規模のソリューションの場合、テンプレートを 1 つにするとわかりやすく、保守も簡単になります。 すべてのリソースと値を 1 つのファイルで参照できます。 高度なシナリオの場合、リンクされたテンプレートを使用することで、対象となるコンポーネントにソリューションを分割することができます。 これらのテンプレートは、他のシナリオで簡単に再利用できます。
 
-チュートリアルについては、「[チュートリアル: リンクされた Azure Resource Manager テンプレートの作成](template-tutorial-create-linked-templates.md)」を参照してください。
+チュートリアルについては、「[チュートリアル: リンクされた Azure Resource Manager テンプレートの作成](./deployment-tutorial-linked-template.md)」を参照してください。
 
 > [!NOTE]
 > リンクされたテンプレートまたは入れ子になったテンプレートには、[増分](deployment-modes.md)デプロイ モードのみを使用できます。
@@ -34,9 +34,9 @@ ms.locfileid: "82609308"
   "variables": {},
   "resources": [
     {
-      "name": "nestedTemplate1",
-      "apiVersion": "2019-10-01",
       "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "name": "nestedTemplate1",
       "properties": {
         "mode": "Incremental",
         "template": {
@@ -63,13 +63,13 @@ ms.locfileid: "82609308"
   },
   "resources": [
     {
-      "name": "nestedTemplate1",
-      "apiVersion": "2019-10-01",
       "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "name": "nestedTemplate1",
       "properties": {
         "mode": "Incremental",
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "resources": [
             {
@@ -132,7 +132,7 @@ ms.locfileid: "82609308"
         },
         "mode": "Incremental",
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "variables": {
             "exampleVar": "from nested template"
@@ -160,7 +160,7 @@ ms.locfileid: "82609308"
 
 `exampleVar` の値は、`expressionEvaluationOptions` の `scope` プロパティの値によって変わります。 次の表に、両方のスコープの結果を示します。
 
-| `expressionEvaluationOptions` `scope` | 出力 |
+| `expressionEvaluationOptions` のスコープ | 出力 |
 | ----- | ------ |
 | inner | 入れ子になったテンプレートから |
 | outer (既定値) | 親テンプレートから |
@@ -169,7 +169,7 @@ ms.locfileid: "82609308"
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
@@ -232,7 +232,7 @@ ms.locfileid: "82609308"
           }
         },
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "parameters": {
             "adminLogin": {
@@ -308,15 +308,18 @@ ms.locfileid: "82609308"
 }
 ```
 
-リンク済みテンプレートを参照する場合、`uri` の値は、ローカル ファイル、またはローカル ネットワークでのみ使用できるファイルにはしないでください。 **http** または **https** としてダウンロードできる URI 値を指定する必要があります。 
+リンク済みテンプレートを参照する場合、`uri` の値は、ローカル ファイル、またはローカル ネットワークでのみ使用できるファイルにはしないでください。 **http** または **https** としてダウンロードできる URI 値を指定する必要があります。
 
 > [!NOTE]
 >
 > 次のように `_artifactsLocation` パラメーターを使用するなど、**http** または **https** を使用するものに最終的に 解決されるパラメーターを使用して、テンプレートを参照できます: `"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
 
-
-
 Resource Manager は、テンプレートにアクセスできる必要があります。 1 つと選択肢として、ストレージ アカウントにリンク済みテンプレートを配置し、その項目の URI を使用できます。
+
+[テンプレート スペック](./template-specs.md) (現在はプライベート プレビュー) を使用すると、組織内の他のユーザーと ARM テンプレートを共有できます。 テンプレート スペックは、メイン テンプレートと、そのリンクされたテンプレートをパッケージ化するためにも使用できます。 詳細については、次を参照してください。
+
+- [チュートリアル:リンクされたテンプレートを使用してテンプレート スペックを作成する](./template-specs-create-linked.md)」を参照してください。
+- [チュートリアル:テンプレート スペックをリンクされたテンプレートとしてデプロイする](./template-specs-deploy-linked-template.md)」を参照してください。
 
 ### <a name="parameters-for-linked-template"></a>リンクされたテンプレートのパラメーター
 
@@ -358,7 +361,7 @@ Resource Manager は、テンプレートにアクセスできる必要があり
       "contentVersion":"1.0.0.0"
      },
      "parameters": {
-      "StorageAccountName":{"value": "[parameters('StorageAccountName')]"}
+      "storageAccountName":{"value": "[parameters('storageAccountName')]"}
     }
    }
   }
@@ -425,7 +428,7 @@ Resource Manager は、テンプレートにアクセスできる必要があり
     "scope": "inner"
     },
     "template": {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [
       {
@@ -461,7 +464,7 @@ Resource Manager は、テンプレートにアクセスできる必要があり
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {},
   "variables": {},
@@ -479,7 +482,7 @@ Resource Manager は、テンプレートにアクセスできる必要があり
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {},
   "variables": {},
@@ -512,7 +515,7 @@ Resource Manager は、テンプレートにアクセスできる必要があり
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "publicIPAddresses_name": {
@@ -547,7 +550,7 @@ Resource Manager は、テンプレートにアクセスできる必要があり
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "loadBalancers_name": {
@@ -620,7 +623,7 @@ Resource Manager では、各テンプレートはデプロイ履歴内で個別
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "publicIPAddresses_name": {
@@ -658,7 +661,7 @@ Resource Manager では、各テンプレートはデプロイ履歴内で個別
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
   },
@@ -725,7 +728,7 @@ done
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
   "containerSasToken": { "type": "securestring" }
@@ -795,7 +798,7 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 
 ## <a name="next-steps"></a>次のステップ
 
-* チュートリアルの実行については、「[チュートリアル: リンクされた Azure Resource Manager テンプレートの作成](template-tutorial-create-linked-templates.md)」を参照してください。
+* チュートリアルの実行については、「[チュートリアル: リンクされた Azure Resource Manager テンプレートの作成](./deployment-tutorial-linked-template.md)」を参照してください。
 * リソースのデプロイの順序の定義については、「[Azure Resource Manager テンプレートでの依存関係の定義](define-resource-dependency.md)」を参照してください。
 * リソースを 1 つ定義し、そのリソースの複数のインスタンスを作成する方法については、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](copy-resources.md)」を参照してください。
 * ストレージ アカウントにテンプレートを設定し SAS トークンを生成する手順については、「[Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](deploy-powershell.md)」または「[Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](deploy-cli.md)」を参照してください。

@@ -5,14 +5,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: ce3916ef1155224a91c0736c3dabe907ae8d2611
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 33c2ee7bc477d3c9d3823642dbdd974650017822
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793771"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084360"
 ---
 # <a name="optimize-apache-hive-with-apache-ambari-in-azure-hdinsight"></a>Azure HDInsight で Apache Ambari を使用して Apache Hive を最適化する
 
@@ -48,7 +48,7 @@ Hadoop では、1 つのファイルを複数のファイルに分割 ( *"マッ
 
 1. 制限パラメーターを変更するには、Tez サービスの **[Configs]\(構成\)** タブに移動します。 **[General]\(全般\)** パネルを展開し、`tez.grouping.max-size` パラメーターと `tez.grouping.min-size` パラメーターを見つけます。
 
-1. 両方のパラメーターを ** 33,554,432 ** バイト(32 MB) に設定します。
+1. 両方のパラメーターを **33,554,432** バイト(32 MB) に設定します。
 
     ![Apache Ambari の Tez のグループ化サイズ](./media/optimize-hive-ambari/apache-tez-grouping-size.png)
 

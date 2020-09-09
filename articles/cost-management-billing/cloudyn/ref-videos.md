@@ -6,15 +6,16 @@ ms.author: banders
 ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: cloudyn
 ms.reviewer: benshy
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9acad813914614fd2cdaad4fd348e9e19225c67e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7ce72cc9cf2f01b0c486f8fa510195f178a646a6
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79463766"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690835"
 ---
 # <a name="cloudyn-walk-through-training-videos"></a>Cloudyn のチュートリアル トレーニング ビデオ
 

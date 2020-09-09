@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: a54feccf-0123-4e49-a743-eb8d0bdd1ebc
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
-ms.openlocfilehash: 6939ea2497a9f12321e1a6dfb9bf9fbb353bc7db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d4e78a90c5b852177c88350422bdd6ce1e398cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240776"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84704949"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>仮想マシン ネットワーク トラフィック フィルターの問題を診断する
 

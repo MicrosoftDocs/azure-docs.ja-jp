@@ -1,19 +1,19 @@
 ---
 title: 結果をトリミングするためのセキュリティ フィルター
 titleSuffix: Azure Cognitive Search
-description: セキュリティ フィルターとユーザー ID を使用した Azure Cognitive Search コンテンツに対するアクセス制御。
+description: セキュリティ フィルターとユーザー ID を使用した Azure Cognitive Search の検索結果に対するドキュメント レベルのセキュリティ特権。
 manager: nitinme
-author: brjohnstmsft
-ms.author: brjohnst
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 24f168f68a60ebb0408b7f1c367039ea5caea6d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/04/2020
+ms.openlocfilehash: 8562fd1afaa01e362bd6d95fd4dcf90cf3145c5a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72794279"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928525"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>Azure Cognitive Search の結果をトリミングするためのセキュリティ フィルター
 
@@ -34,33 +34,36 @@ ms.locfileid: "72794279"
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事では、[Azure サブスクリプション](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)、[Azure Cognitive Search サービス](https://docs.microsoft.com/azure/search/search-create-service-portal)、および [Azure Cognitive Search インデックス](https://docs.microsoft.com/azure/search/search-create-index-portal)がある前提で説明します。  
+この記事では、[Azure サブスクリプション](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)、[Azure Search Cognitive Search サービス](search-create-service-portal.md)、および [インデックス](search-what-is-an-index.md)がある前提で説明します。  
 
 ## <a name="create-security-field"></a>セキュリティ フィールドを作成する
 
 ドキュメントには、アクセス権を持っているグループを指定するフィールドが含まれている必要があります。 この情報は、発行元に返される結果セットから選択または拒否するドキュメントのフィルター条件になります。
 ここでは、セキュリティで保護されたファイルのインデックスがあり、各ファイルにはさまざまなユーザーがアクセスできると想定して説明します。
+
 1. フィールド `group_ids` (ここでは任意の名前を選択できます) を `Collection(Edm.String)` として追加します。 ユーザーが持っているアクセス権に基づいて検索結果がフィルターされるように、フィールドの `filterable` 属性が `true` に設定されていることを確認します。 たとえば、`file_name` が "secured_file_b" のドキュメントで `group_ids` フィールドを `["group_id1, group_id2"]` に設定した場合、グループ ID "group_id1" または "group_id2" に属するユーザーのみが、このファイルに対して読み取りアクセス権を持ちます。
+   
    検索要求の一部として返されないように、フィールドの `retrievable` 属性が `false` に設定されていることを確認します。
+
 2. この例のために、`file_id` および `file_name` フィールドも追加します。  
 
-```JSON
-{
-    "name": "securedfiles",  
-    "fields": [
-        {"name": "file_id", "type": "Edm.String", "key": true, "searchable": false, "sortable": false, "facetable": false},
-        {"name": "file_name", "type": "Edm.String"},
-        {"name": "group_ids", "type": "Collection(Edm.String)", "filterable": true, "retrievable": false}
-    ]
-}
-```
+    ```JSON
+    {
+        "name": "securedfiles",  
+        "fields": [
+            {"name": "file_id", "type": "Edm.String", "key": true, "searchable": false, "sortable": false, "facetable": false},
+            {"name": "file_name", "type": "Edm.String"},
+            {"name": "group_ids", "type": "Collection(Edm.String)", "filterable": true, "retrievable": false}
+        ]
+    }
+    ```
 
 ## <a name="pushing-data-into-your-index-using-the-rest-api"></a>REST API を使用してインデックスにデータをプッシュする
   
 インデックスの URL エンドポイントに HTTP POST 要求を発行します。 HTTP 要求の本文は、追加するドキュメントを含む JSON オブジェクトです。
 
 ```
-POST https://[search service].search.windows.net/indexes/securedfiles/docs/index?api-version=2019-05-06  
+POST https://[search service].search.windows.net/indexes/securedfiles/docs/index?api-version=2020-06-30  
 Content-Type: application/json
 api-key: [admin key]
 ```
@@ -106,19 +109,19 @@ api-key: [admin key]
 }
 ```
 
-セキュリティの追加または更新の詳細については、[セキュリティの編集](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)に関するページを参照してください。
+セキュリティの追加または更新の詳細については、[セキュリティの編集](/rest/api/searchservice/addupdate-or-delete-documents)に関するページを参照してください。
    
 ## <a name="apply-the-security-filter"></a>セキュリティ フィルターを適用する
 
 `group_ids` のアクセス権に基づいてドキュメントをトリミングするには、`group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))` フィルターを含む検索クエリを発行する必要があります (この "group_id1, group_id2,..." は、検索要求の発行元が属するグループです)。
 このフィルターは、指定された識別子のいずれかが `group_ids` フィールドに含まれるすべてのドキュメントと一致します。
-Azure Cognitive Search を使用してドキュメントを検索する方法の詳細については、[ドキュメントの検索](https://docs.microsoft.com/rest/api/searchservice/search-documents)に関するページを参照してください。
+Azure Cognitive Search を使用してドキュメントを検索する方法の詳細については、[ドキュメントの検索](/rest/api/searchservice/search-documents)に関するページを参照してください。
 このサンプルでは、POST 要求を使用してドキュメントを検索する方法について説明している点に注意してください。
 
 HTTP POST 要求を発行します。
 
 ```
-POST https://[service name].search.windows.net/indexes/securedfiles/docs/search?api-version=2019-05-06
+POST https://[service name].search.windows.net/indexes/securedfiles/docs/search?api-version=2020-06-30
 Content-Type: application/json  
 api-key: [admin or query key]
 ```

@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 12/12/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 79f00e4138d0fecdc7320235dd9c496033693d2b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: ecdcfc7d90f61443cc6947680df9bbf9d9b9514e
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75383093"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873231"
 ---
 # <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>クイック スタート:PHP と Bing News Search REST API を使用してニュース検索を実行する
 
-このクイック スタートを使用すると、Bing Image Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。 このシンプルな JavaScript アプリケーションは、検索クエリを API に送信し、生の結果を表示します。
+このクイックスタートを使用して、Bing News Search API を呼び出してみましょう。 このシンプルな PHP アプリケーションは、検索クエリを API に送信し、JSON 応答を表示します。
 
 このアプリケーションは PHP で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
@@ -30,18 +30,18 @@ ms.locfileid: "75383093"
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
+詳細については、「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」を参照してください。
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
-[Bing News Search API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) は、Bing 検索エンジンからニュースの結果を返します。
+このアプリケーションを実行するには、次の手順に従います。
 
-1. コードのコメントで説明されているように、`php.ini` でセキュリティ保護された HTTP のサポートが有効になっていることを確認します。
+1. コードのコメントで説明されているように、`;extension=php_openssl.dll` 行をコメント解除して、`php.ini` ファイルでセキュリティ保護された HTTP サポートを有効にします。
 2. 適切な IDE またはエディターで新しい PHP プロジェクトを作成します。
 3. 次に示すコードを追加します。
 4. `accessKey` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-5. 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
-5. プログラムを実行します。
+5. 次のコードのグローバル エンドポイントを使用するか、Azure portal に表示される、対象のリソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用することができます。
+6. プログラムを実行します。
 
 ```php
 <?php
@@ -103,7 +103,7 @@ echo json_encode(json_decode($json), JSON_PRETTY_PRINT);
 ?>
 ```
 
-**Response**
+## <a name="example-json-response"></a>JSON の応答例
 
 成功した応答は、次の例に示すように JSON で返されます。 
 

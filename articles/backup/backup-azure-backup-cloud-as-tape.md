@@ -3,12 +3,12 @@ title: お使いのテープ インフラストラクチャを置き換える方
 description: Azure でのデータのバックアップと復元を可能にするテープのようなセマンティクスを Azure Backup が提供する方法について説明します。
 ms.topic: conceptual
 ms.date: 04/30/2017
-ms.openlocfilehash: aeda1cefc84d425855c40b793f8334936541e63f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4174868d391eda70ce4921deee63b8bacf672b4c
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77425104"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757236"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>テープから Azure クラウドに長期ストレージを移動する
 
@@ -64,11 +64,11 @@ Backup スケジュールは、バックアップ操作の頻度を示します�
 
 前の画面の **[変更]** をクリックすることによって、顧客はより柔軟に保持スケジュールを指定することができます。
 
-![変更](./media/backup-azure-backup-cloud-as-tape/modify.png)
+![[ポリシーの変更] ウィンドウ](./media/backup-azure-backup-cloud-as-tape/modify.png)
 
 ## <a name="next-steps"></a>次のステップ
 
 Azure Backup の詳細については、以下をご覧ください。
 
-* [Azure Backup の概要](backup-introduction-to-azure-backup.md)
-* [Azure Backup を試す](backup-try-azure-backup-in-10-mins.md)
+* [Azure Backup の概要](./backup-overview.md)
+* [Azure Backup を試す](./backup-windows-with-mars-agent.md)

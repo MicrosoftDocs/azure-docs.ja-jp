@@ -5,12 +5,13 @@ author: BharatNarasimman
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 4fa4c6e46dd786b833087f892d995e85b5d2ea47
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: fd8e6dd712801de49971c1ef27cea664d73a4cb0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236623"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012774"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric のリバース プロキシ
 Azure Service Fabric に組み込まれたリバース プロキシは、Service Fabric クラスターで実行されているマイクロサービスが HTTP エンドポイントを持つ他のサービスを検出してそのサービスと通信するのに役立ちます。
@@ -35,8 +36,8 @@ Service Fabric のマイクロサービスは、クラスター内のノード �
 > **サポートされているプラットフォーム**
 >
 > Service Fabric のリバース プロキシでは現在、次のプラットフォームがサポートされています。
-> * *Windows クラスター*: Windows 8 以降または Windows Server 2012 以降
-> * *Linux クラスター*: 現在、リバース プロキシは Linux クラスターでは使用できません
+> * "*Windows クラスター*":Windows 8 以降または Windows Server 2012 以降
+> * "*Linux クラスター*":現在、リバース プロキシは Linux クラスターでは使用できません
 >
 
 ## <a name="reaching-microservices-from-outside-the-cluster"></a>クラスターの外部からのマイクロサービスへの到達
@@ -65,9 +66,9 @@ Load Balancer で個々のサービスのポートを構成するのではなく
 http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?PartitionKey=<key>&PartitionKind=<partitionkind>&ListenerName=<listenerName>&TargetReplicaSelector=<targetReplicaSelector>&Timeout=<timeout_in_seconds>
 ```
 
-* **http (s):** HTTP または HTTPS トラフィックを受け入れるようにリバース プロキシを構成できます。 HTTPS 転送の場合、HTTPS でリッスンするようにリバース プロキシをセットアップした後に、「[Connect to a secure service with the reverse proxy (リバース プロキシを使用したセキュリティで保護されたサービスへの接続)](service-fabric-reverseproxy-configure-secure-communication.md)」をご覧ください。
+* **http(s):** HTTP または HTTPS トラフィックを受け入れるようにリバース プロキシを構成できます。 HTTPS 転送の場合、HTTPS でリッスンするようにリバース プロキシをセットアップした後に、「[Connect to a secure service with the reverse proxy (リバース プロキシを使用したセキュリティで保護されたサービスへの接続)](service-fabric-reverseproxy-configure-secure-communication.md)」をご覧ください。
 * **Cluster FQDN (完全修飾ドメイン名) | internal IP:** 外部クライアントの場合、クラスターのドメイン (例: mycluster.eastus.cloudapp.azure.com) を介して到達できるようにリバース プロキシを構成できます。 既定では、リバース プロキシはすべてのノードで実行されます。 内部トラフィックの場合、リバース プロキシには localhost または任意の内部ノード IP (例: 10.0.0.1) で到達できます。
-* **Port:** リバース プロキシに指定されているポートです (例: 19081)。
+* **Port:** リバース プロキシ用に指定されているポートです (例: 19081)。
 * **ServiceInstanceName:** "fabric:/" スキームなしで到達しようとしているデプロイ済みのサービス インスタンスの完全修飾名です。 たとえば、*fabric:/myapp/myservice/* サービスに到達するには、*myapp/myservice* を使用します。
 
     サービス インスタンス名は、大文字小文字が区別されます。 URL のサービス インスタンス名に使用されている大文字小文字が異なる場合、要求は 404 (Not Found) で失敗します。
@@ -78,7 +79,7 @@ http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?
 * **TargetReplicaSelector**: ターゲット レプリカまたはインスタンスの選択方法を指定します。
   * ターゲット サービスがステートフルの場合、TargetReplicaSelector には "PrimaryReplica"、"RandomSecondaryReplica"、"RandomReplica" のいずれかを指定できます。 このパラメーターが指定されていない場合、既定値は "PrimaryReplica" です。
   * ターゲット サービスがステートレスの場合、リバース プロキシは要求の転送先となるサービス パーティションのインスタンスをランダムに選択します。
-* **Timeout:** クライアント要求の代わりに、リバース プロキシによって作成される、サービスに対する HTTP 要求のタイムアウトを指定します。 既定値は 60 秒です。 これは省略可能なパラメーターです。
+* **Timeout:** クライアント要求の代わりに、リバース プロキシによって作成される、サービスに対する HTTP 要求のタイムアウトを指定します。 既定値は 120 秒です。 これは省略可能なパラメーターです。
 
 ### <a name="example-usage"></a>使用例
 例として、次の URL で HTTP リスナーを開く *fabric:/MyApp/MyService* サービスを取得します。
@@ -117,14 +118,14 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 
 ただし、レプリカまたはサービス インスタンスはホスト プロセスを共有できます。また、次のような http.sys ベースの Web サーバーによってホストされているときには、ポートを共有している場合もあります。
 
-* [System.Net.HttpListener](https://msdn.microsoft.com/library/system.net.httplistener%28v=vs.110%29.aspx)
+* [System.Net.HttpListener](/dotnet/api/system.net.httplistener?view=netcore-3.1)
 * [ASP.NET Core WebListener](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
 * [Katana](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.OwinSelfHost/)
 
 この状況では、Web サーバーはホスト プロセスで要求に応答することができますが、解決されたサービス インスタンスまたはレプリカはホストで使用できなくなっています。 この場合、ゲートウェイは Web サーバーから HTTP 404 応答を受信します。 そのため、HTTP 404 応答は 2 つの異なる意味を持つ可能性があります。
 
-- ケース 1: サービス アドレスは正しいが、ユーザーから要求されたリソースが存在しない。
-- ケース 2: サービス アドレスが間違っており、ユーザーから要求されたリソースが、実際には別のノードに存在する可能性がある。
+- ケース 1:サービス アドレスは正しいが、ユーザーから要求されたリソースが存在しない。
+- ケース 2:サービス アドレスが間違っており、ユーザーから要求されたリソースが、実際には別のノードに存在する可能性がある。
 
 最初のケースは通常の HTTP 404 であり、ユーザー エラーと見なされます。 ただし、2 番目のケースでは、ユーザーは存在するリソースを要求しています。 サービス自体が移動しているため、リバース プロキシがリソースを見つけることができませんでした。 この場合、リバース プロキシはアドレスを再度解決し、要求を再試行する必要があります。
 
@@ -155,7 +156,7 @@ Docker Compose コンテナー内で実行される Service Fabric サービス�
 * [リバース プロキシ イベントの診断](service-fabric-reverse-proxy-diagnostics.md)
 * [GitHub のサンプル プロジェクト](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)で、サービス間の HTTP 通信の例を確認します。
 * [Reliable Services のリモート処理によるリモート プロシージャ コール](service-fabric-reliable-services-communication-remoting.md)
-* [Reliable Services の OWIN を使用する Web API](service-fabric-reliable-services-communication-webapi.md)
+* [Reliable Services の OWIN を使用する Web API](./service-fabric-reliable-services-communication-aspnetcore.md)
 * [Reliable Services を使用した WCF 通信](service-fabric-reliable-services-communication-wcf.md)
 
 [0]: ./media/service-fabric-reverseproxy/external-communication.png

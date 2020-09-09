@@ -1,18 +1,14 @@
 ---
 title: Event Grid ソースとしての Azure リソース グループ
 description: Azure Event Grid のリソース グループ イベントに対して用意されているプロパティについて説明します
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: fb52b54eb32a119a463b59e4d4f2ab30096886fa
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.date: 07/07/2020
+ms.openlocfilehash: ed01bfdb67d9b8a3dd5875ec3fd8c6edf8922520
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393266"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105916"
 ---
 # <a name="azure-resource-group-as-an-event-grid-source"></a>Event Grid ソースとしての Azure リソース グループ
 

@@ -5,13 +5,13 @@ ms.service: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.date: 4/11/2020
-ms.topic: conceptual
-ms.openlocfilehash: 25ece3174cd65df9c665888d913cf6b9029904b1
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.topic: how-to
+ms.openlocfilehash: df6e7435d072cc88e82f3dc9a323a5b21145c432
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393961"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037258"
 ---
 # <a name="intellisense-in-azure-stream-analytics-tools-for-visual-studio-code"></a>Visual Studio Code 用の Azure Stream Analytics ツールでの IntelliSense
 
@@ -34,13 +34,12 @@ VS Code 用 Stream Analytics ツールでの IntelliSense 機能では、言語�
 
 VS Code 用 Stream Analytics ツールの IntelliSense では、言語サーバーの提案、スニペット、単純な単語ベースのテキスト入力候補など、さまざまな種類の入力候補が提供されます。
 
-|       |         |       |
-| ----- | ------- | ----- |
+|Completion     |  Type       |
+| ----- | ------- |
 | Keywords | `keyword`
 | 関数 | `build-in function`, `user defined function`  |
 | データ セット名| `input`、`output`、`intermediate result set`|
 | データ セットの列名|`input`, `intermediate result set`|
-|
 
 #### <a name="name-completion"></a>名前の補完
 

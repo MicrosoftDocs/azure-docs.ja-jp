@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: overview
-ms.openlocfilehash: a06c63152cb56be6d94cccc472d2e1d65651d6ce
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: e40109a3c43fa30d70b7a13243723d717b4003c4
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677927"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021443"
 ---
 # <a name="about-azure-remote-rendering"></a>Azure Remote Rendering について
 
@@ -22,7 +22,11 @@ ms.locfileid: "80677927"
 
 ![サンプル モデル](../media/arr-engine.png)
 
-テザリングされていないデバイスでは、複雑なモデルをレンダリングするための計算能力が限られます。 その一方で、多くのアプリケーションでは、視覚的な忠実性を少しでも低下させることは許容されません。
+テザリングされていないデバイスでは、複雑なモデルをレンダリングするための計算能力が限られます。 その一方で、多くのアプリケーションでは、視覚的な忠実性を少しでも低下させることは許容されません。 次のスクリーンショットでは、詳細なモデルと、一般的なコンテンツ作成ツールを使用してデシメートされたモデルを比較しています。
+
+![サンプル モデル](./media/engine-model-decimated.png)
+
+削減されたモデルは、元のモデルの 1800 万個の三角形に対して、約 20 万個の三角形 (詳細な内部パーツを含む) で構成されています。
 
 *Remote Rendering* は、レンダリング ワークロードをクラウドにあるハイエンド GPU に送ることでこの問題を解決します。 クラウドでホストされるグラフィック エンジンが、画像をレンダリングし、ビデオ ストリームとしてエンコードし、ターゲット デバイスにストリーム配信します。
 

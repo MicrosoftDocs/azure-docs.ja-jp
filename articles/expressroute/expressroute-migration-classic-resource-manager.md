@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: クラシック VNet を Resource Manager に移行する'
 description: このページでは、ExpressRoute 回線の移行後に、そこに関連付けられた仮想ネットワークを Resource Manager に移行する方法について説明します。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/06/2020
-ms.author: cherylmc
-ms.openlocfilehash: 8033c80b72c19a9473ce7ecfaa8fe5a1da9f12ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: duau
+ms.openlocfilehash: ac6fe619fc1c65b9ced18227d08cde50997eb7d7
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77061320"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395280"
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>クラシックから Resource Manager への ExpressRoute 回線および関連する仮想ネットワークの移行
 
@@ -22,16 +22,16 @@ ms.locfileid: "77061320"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* Azure PowerShell モジュールの最新バージョンがあることを確認します。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。 PowerShell サービス管理モジュール (クラシック デプロイ モデルに必要) をインストールするには、「[Azure PowerShell Service Management モジュールのインストール](/powershell/azure/servicemanagement/install-azure-ps)」を参照してください。
+* Azure PowerShell モジュールの最新バージョンがあることを確認します。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/)」を参照してください。 PowerShell サービス管理モジュール (クラシック デプロイ モデルに必要) をインストールするには、「[Azure PowerShell Service Management モジュールのインストール](/powershell/azure/servicemanagement/install-azure-ps)」を参照してください。
 * 構成を開始する前に、必ず、[前提条件](expressroute-prerequisites.md)、[ルーティングの要件](expressroute-routing.md)、および[ワークフロー](expressroute-workflows.md)を確認してください。
 * [クラシックから Resource Manager への ExpressRoute 回線の移行](expressroute-move.md)に関する記事に記載されている情報を確認してください。 制限および制約事項について完全に理解していることを確認します。
 * 回路がクラシック デプロイ モデルで完全に動作できることを確認します。
 * Resource Manager デプロイ モデルで作成したリソース グループがあることを確認します。
 * 次のリソースの移行に関するドキュメントを確認します。
 
-    * [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
-    * [プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
-    * [FAQ: プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
+    * [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行](../virtual-machines/windows/migration-classic-resource-manager-overview.md)
+    * [プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細](../virtual-machines/migration-classic-resource-manager-deep-dive.md)
+    * [FAQ: プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行](../virtual-machines/migration-classic-resource-manager-faq.md)
     * [Review most common migration errors and mitigations](../virtual-machines/windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (移行の一般的なエラーと緩和策を確認する)
 
 ## <a name="supported-and-unsupported-scenarios"></a>サポートされているシナリオとサポートされていないシナリオ
@@ -82,7 +82,7 @@ ExpressRoute 回線に接続されているリソースを移行する前に、E
    ```
 
 ## <a name="next-steps"></a>次のステップ
-* [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
-* [プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
-* [FAQ: プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
+* [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行](../virtual-machines/windows/migration-classic-resource-manager-overview.md)
+* [プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細](../virtual-machines/migration-classic-resource-manager-deep-dive.md)
+* [FAQ: プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行](../virtual-machines/migration-classic-resource-manager-faq.md)
 * [Review most common migration errors and mitigations](../virtual-machines/windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (移行の一般的なエラーと緩和策を確認する)

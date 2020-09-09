@@ -4,16 +4,16 @@ description: このチュートリアルでは、PowerShell を使用して Wind
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 2d170057a85a8e223fa9d1bc2bfc17e0c284afcd
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: a7390858e55a456ec5fb2f851be1a7443be97082
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756044"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245043"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>チュートリアル:Azure 仮想ネットワークに Windows を実行する Service Fabric クラスターをデプロイする
 
-このチュートリアルは、シリーズの第 1 部です。 PowerShell とテンプレートを使用して、Windows を実行している Azure Service Fabric クラスターを [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)および[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)にデプロイする方法を説明します。 完了すると、クラウドで実行されているクラスターにアプリケーションをデプロイできるようになります。 Azure CLI を使用する Linux クラスターを作成する場合は、[セキュリティで保護された Linux クラスターを Azure で作成する](service-fabric-tutorial-create-vnet-and-linux-cluster.md)方法に関するページを参照してください。
+このチュートリアルは、シリーズの第 1 部です。 PowerShell とテンプレートを使用して、Windows を実行している Azure Service Fabric クラスターを [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)および[ネットワーク セキュリティ グループ](../virtual-network/virtual-network-vnet-plan-design-arm.md)にデプロイする方法を説明します。 完了すると、クラウドで実行されているクラスターにアプリケーションをデプロイできるようになります。 Azure CLI を使用する Linux クラスターを作成する場合は、[セキュリティで保護された Linux クラスターを Azure で作成する](service-fabric-tutorial-create-vnet-and-linux-cluster.md)方法に関するページを参照してください。
 
 このチュートリアルでは、本番環境シナリオについて説明します。 テスト目的で小規模のクラスターを作成する場合は、[テスト クラスターの作成](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)に関するページを参照してください。
 
@@ -48,7 +48,7 @@ ms.locfileid: "80756044"
 
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 * [Service Fabric SDK と PowerShell モジュール](service-fabric-get-started.md)をインストールします。
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) をインストールします。
+* [Azure PowerShell](/powershell/azure/install-az-ps)をインストールします。
 * [Azure クラスター](service-fabric-azure-clusters-overview.md)の主要な概念を確認します。
 * 運用環境用のクラスターのデプロイを[計画して準備します](service-fabric-cluster-azure-deployment-preparation.md)。
 
@@ -73,8 +73,8 @@ ms.locfileid: "80756044"
 * 証明書のセキュリティ保護 (テンプレート パラメーターで構成可能)。
 * [リバース プロキシ](service-fabric-reverseproxy.md)が有効。
 * [DNS サービス](service-fabric-dnsservice.md)が有効。
-* ブロンズ[持続性レベル](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (テンプレート パラメーターで構成可能)。
-* シルバー[信頼性レベル](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) (テンプレート パラメーターで構成可能)。
+* ブロンズ[持続性レベル](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) (テンプレート パラメーターで構成可能)。
+* シルバー[信頼性レベル](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) (テンプレート パラメーターで構成可能)。
 * クライアント接続エンドポイント: 19000 (テンプレート パラメーターで構成可能)。
 * HTTP ゲートウェイ エンドポイント: 19080 (テンプレート パラメーターで構成可能)。
 
@@ -111,7 +111,7 @@ ms.locfileid: "80756044"
 その他のアプリケーション ポートが必要な場合は、トラフィックの受信を許可するように **Microsoft.Network/loadBalancers** リソースと **Microsoft.Network/networkSecurityGroups** リソースを調整する必要があります。
 
 ### <a name="windows-defender"></a>Windows Defender
-既定では、Windows Server 2016 には [Windows Defender ウイルス対策プログラム](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)がインストールされ、機能します。 一部の SKU ではユーザー インターフェイスが既定でインストールされますが、必須ではありません。 テンプレートで宣言されている各ノード タイプ/VM スケール セットに対して、Service Fabric ディレクトリとプロセスを除外するために、[Azure VM マルウェア対策拡張機能](/azure/virtual-machines/extensions/iaas-antimalware-windows)が使用されます。
+既定では、Windows Server 2016 には [Windows Defender ウイルス対策プログラム](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)がインストールされ、機能します。 一部の SKU ではユーザー インターフェイスが既定でインストールされますが、必須ではありません。 テンプレートで宣言されている各ノード タイプ/VM スケール セットに対して、Service Fabric ディレクトリとプロセスを除外するために、[Azure VM マルウェア対策拡張機能](../virtual-machines/extensions/iaas-antimalware-windows.md)が使用されます。
 
 ```json
 {
@@ -145,8 +145,8 @@ ms.locfileid: "80756044"
 
 **パラメーター** | **値の例** | **メモ** 
 |---|---|---|
-|adminUserName|vmadmin| クラスター VM の管理者ユーザー名。 [VM のユーザー名要件](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm)。 |
-|adminPassword|Password#1234| クラスター VM の管理者パスワード。 [VM のパスワード要件](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm)。|
+|adminUserName|vmadmin| クラスター VM の管理者ユーザー名。 [VM のユーザー名要件](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm)。 |
+|adminPassword|Password#1234| クラスター VM の管理者パスワード。 [VM のパスワード要件](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。|
 |clusterName|mysfcluster123| クラスターの名前。 使用できる文字はアルファベットと数字のみです。 長さは 3 から 23 文字で指定できます。|
 |location|southcentralus| クラスターの場所。 |
 |certificateThumbprint|| <p>自己署名証明書を作成する場合または証明書ファイルを提供する場合は、値を空にする必要があります。</p><p>以前にキー コンテナーにアップロードされた既存の証明書を使用するには、証明書の SHA1 サムプリントの値を入力します。 例: "6190390162C988701DB5676EB81083EA608DCCF3"。</p> |
@@ -703,7 +703,7 @@ Get-ServiceFabricClusterHealth
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-このチュートリアル シリーズの他の記事では、ここで作成したクラスターを使用します。 次の記事にすぐに進まない場合は、料金の発生を避けるため、[クラスターを削除](service-fabric-cluster-delete.md)することができます。
+このチュートリアル シリーズの他の記事では、ここで作成したクラスターを使用します。 次の記事にすぐに進まない場合は、料金の発生を避けるため、[クラスターを削除](./service-fabric-tutorial-delete-cluster.md)することができます。
 
 ## <a name="next-steps"></a>次のステップ
 

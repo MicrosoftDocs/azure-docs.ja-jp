@@ -2,26 +2,21 @@
 title: アプリケーション プロキシのトラブルシューティング | Microsoft Docs
 description: Azure AD アプリケーション プロキシのエラーのトラブルシューティングを行う方法について説明します。
 services: active-directory
-documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 06/24/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.custom: H1Hack27Feb2017; it-pro
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7be9a17bed2a39d16f813332c2d6effc03393264
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 413cfe4f3aed446ad26a210b4faa452c4f624685
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79224931"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640856"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>アプリケーション プロキシの問題とエラー メッセージのトラブルシューティング | Microsoft Docs
 
@@ -39,13 +34,13 @@ ms.locfileid: "79224931"
 
 たとえば、 `https://yourapp/app` というパスを発行しても、アプリケーションが `https://yourapp/media` 内のイメージを呼び出した場合、イメージは表示されません。 アプリケーションの発行には、関連するコンテンツをすべて含めるために必要な最上位のパスを使用するようにしてください。 この例では `http://yourapp/` になります。
 
-参照するコンテンツを含めるようにパスを変更しても、ユーザーにそのパスのさらに深いリンクにアクセスしてもらう必要がある場合は、ブログ記事「 [Setting the right link for Application Proxy applications in the Azure AD access panel and Office 365 app launcher (Azure AD アクセス パネルと Office 365 アプリ起動ツールでのアプリケーション プロキシ アプリケーションの適切なリンクの設定)](https://blogs.technet.microsoft.com/applicationproxyblog/2016/04/06/setting-the-right-link-for-application-proxy-applications-in-the-azure-ad-access-panel-and-office-365-app-launcher/)」を参照してください。
-
 ## <a name="connector-errors"></a>コネクタのエラー
 
 コネクタ ウィザードのインストール中に登録に失敗した場合は、2 とおりの方法でエラーの原因を確認できます。 **Applications and Services Logs\Microsoft\AadApplicationProxy\Connector\Admin** にあるイベント ログを確認するか、次の Windows PowerShell コマンドを実行してください。
 
-    Get-EventLog application –source "Microsoft AAD Application Proxy Connector" –EntryType "Error" –Newest 1
+```powershell
+Get-EventLog application –source "Microsoft AAD Application Proxy Connector" –EntryType "Error" –Newest 1
+```
 
 イベント ログでコネクタのエラーが確認された場合は、この一般的なエラーの表を参考に問題を解決してください。
 
@@ -84,6 +79,7 @@ ms.locfileid: "79224931"
 | この企業アプリには、現在、アクセスできません。 後でもう一度やり直してください。コネクタがタイムアウトになりました。 | オンプレミス側でこのアプリケーション向けに適切に定義されていないユーザーが、発行済みのアプリにアクセスしようとしたときに、このエラーが表示されることがあります。 ユーザーが、オンプレミス コンピューターでこのバックエンド アプリケーションに対して定義されているような適切なアクセス許可を持っていることを確認します。 |
 | この企業のアプリにはアクセスできません。 このアプリケーションにアクセスする権限がありません。 承認に失敗しました。 ユーザーが Azure Active Directory Premium のライセンスを持っていることを確認します。 | サブスクライバーの管理者によってユーザーに対して Premium ライセンスが明示的に割り当てられていない場合、発行されたアプリにそのユーザーがアクセスしようとすると、このエラーが発生することがあります。 サブスクライバーの Active Directory **[ライセンス]** タブに移動し、このユーザーまたはユーザー グループに Premium ライセンスが割り当てられていることを確認します。 |
 | 指定されたホスト名を持つサーバーが見つかりませんでした。 | アプリケーションのカスタム ドメインが正しく構成されていない場合、発行したアプリにユーザーがアクセスしようとすると、このエラーが表示されることがあります。 「[Azure AD アプリケーション プロキシでのカスタム ドメインの使用](application-proxy-configure-custom-domain.md)」の手順に従って、ドメインの証明書がアップロードされ、DNS レコードが正しく構成されていることを確認してください。 |
+|禁止:この社内アプリにアクセスできないか、ユーザーを承認できませんでした。 ユーザーがオンプレミスの AD で定義されていること、およびユーザーがオンプレミスの AD でアプリにアクセスできることを確認してください。 | これは、承認情報へのアクセスに問題がある可能性があります。「[一部のアプリケーションや API でアカウント オブジェクトの承認情報に対するアクセス許可が必要になる]( https://support.microsoft.com/help/331951/some-applications-and-apis-require-access-to-authorization-information)」を参照してください。 簡単に言うと、アプリケーション プロキシ コネクタのコンピューター アカウントを "Windows Authorization Access Group" 組み込みドメイン グループに追加して解決します。 |
 
 ## <a name="my-error-wasnt-listed-here"></a>上記に記載のないエラー
 

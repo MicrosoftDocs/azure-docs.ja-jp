@@ -1,14 +1,14 @@
 ---
-title: ブループリント オペレーター用の環境をセットアップする
-description: ブループリント オペレーターの組み込みのロールベースのアクセス制御 (RBAC) ロールで使用するように Azure 環境を構成する方法について説明します。
-ms.date: 08/26/2019
+title: ブループリント オペレーター用の環境を設定する
+description: ブループリント オペレーターの Azure 組み込みロールで使用するように Azure 環境を構成する方法について説明します。
+ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: fba0dd3f2eeb69f768800d1d04640510462d3c86
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ef911553b4985a6497fb397a1ae405387c6539fb
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873218"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051459"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>ブループリント オペレーター用の環境を構成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "74873218"
 
 1. (推奨) [セキュリティ グループを作成してメンバーを追加します](../../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)
 
-1. アカウントまたはセキュリティ グループに[ブループリント オペレーター](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)の**ロールの割り当てを追加します**
+1. アカウントまたはセキュリティ グループに**ブループリント オペレーター**の[ロールの割り当てを追加します](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)
 
 ## <a name="user-assign-managed-identity"></a>ユーザー割り当てマネージド ID
 
@@ -30,7 +30,7 @@ ms.locfileid: "74873218"
 
 1. 割り当てられたブループリントで使用する[ユーザー割り当てのマネージド ID を作成します](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity)
 
-1. アカウントまたはセキュリティ グループに[マネージド ID オペレーター](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)の**ロールの割り当てを追加します**。 ロールの割り当ての範囲を、新しいユーザー割り当てのマネージド ID に設定します。
+1. アカウントまたはセキュリティ グループに**マネージド ID オペレーター**の[ロールの割り当てを追加します](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)。 ロールの割り当ての範囲を、新しいユーザー割り当てのマネージド ID に設定します。
 
 1. **ブループリント オペレーター**として、新しいユーザー割り当て管理対象 ID を使用する[ブループリントを割り当てます](../create-blueprint-portal.md#assign-a-blueprint)。
 

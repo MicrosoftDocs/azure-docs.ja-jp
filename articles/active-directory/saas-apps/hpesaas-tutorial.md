@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と HPE SaaS の統合 | Microsoft Docs'
 description: Azure Active Directory と HPE SaaS の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 314003d6-ca66-4456-88c3-934254d4a9a2
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c881068fa97361176e4bef2bc156ea213a79c54
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: cc208e515ccf14e04460608aacbd3a69a9776185
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73159012"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551423"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hpe-saas"></a>チュートリアル: Azure Active Directory と HPE SaaS の統合
 
@@ -111,7 +106,7 @@ HPE SaaS で Azure AD シングル サインオンを構成するには、次の
     b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<subdomain>.saas.hpe.com`
 
     > [!NOTE]
-    > この識別子の値は実際のものではありません。 実際の識別子でこの値を更新します。 この値を取得するには、[HPE SaaS クライアント サポート チーム](https://saas.hpe.com/en-us/contact)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > この識別子の値は実際のものではありません。 実際の識別子でこの値を更新します。 この値を取得するには、[HPE SaaS クライアント サポート チーム](https://www.sas.com/en_us/contact.html)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -129,7 +124,7 @@ HPE SaaS で Azure AD シングル サインオンを構成するには、次の
 
 ### <a name="configure-hpe-saas-single-sign-on"></a>HPE SaaS のシングル サインオンの構成
 
-**HPE SaaS** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [HPE SaaS サポート チーム](https://saas.hpe.com/en-us/contact)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**HPE SaaS** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [HPE SaaS サポート チーム](https://www.sas.com/en_us/contact.html)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -184,7 +179,7 @@ HPE SaaS で Azure AD シングル サインオンを構成するには、次の
 
 ### <a name="create-hpe-saas-test-user"></a>HPE SaaS テスト ユーザーの作成
 
-このセクションでは、HPE SaaS で Britta Simon というユーザーを作成します。  [HPE SaaS サポート チーム](https://saas.hpe.com/en-us/contact)と連携して、HPE SaaS プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、HPE SaaS で Britta Simon というユーザーを作成します。  [HPE SaaS サポート チーム](https://www.sas.com/en_us/contact.html)と連携して、HPE SaaS プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

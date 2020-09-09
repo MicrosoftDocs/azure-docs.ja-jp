@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: d2dfaab3d01ea29b0f9ecba1e9d748415bed2edc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: de25a3f9df04b09a7337dc889a688a171d98db28
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228923"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129902"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>PowerShell を使用して VMware VM の Azure へのディザスター リカバリーを設定する
 
@@ -36,7 +36,7 @@ ms.locfileid: "79228923"
 開始する前に次の操作を実行してください。
 
 - [シナリオのアーキテクチャとコンポーネント](vmware-azure-architecture.md)を理解している。
-- すべてのコンポーネントの[サポート要件](site-recovery-support-matrix-to-azure.md)を確認する。
+- すべてのコンポーネントの[サポート要件](./vmware-physical-azure-support-matrix.md)を確認する。
 - Azure PowerShell `Az` モジュールがある。 Azure PowerShell をインストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストールと構成のガイド](/powershell/azure/install-az-ps)に関するページをご覧ください。
 
 ## <a name="log-into-azure"></a>Azure にログインする
@@ -105,7 +105,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 Set-ASRVaultContext コマンドレットを使って、コンテナーのコンテキストを設定します。 コンテキストを設定した後、PowerShell セッションでのそれ以降の Azure Site Recovery 操作は、選んだコンテナーのコンテキストで実行されます。
 
 > [!TIP]
-> Azure Site Recovery PowerShell モジュール (Az.RecoveryServices モジュール) のほとんどのコマンドレットには、使いやすいエイリアスがあります。 このモジュールのコマンドレットの形式は *\<操作>-**AzRecoveryServicesAsr**\<オブジェクト>* であり、これに対応するエイリアスの形式は *\<操作>-**ASR**\<オブジェクト>* です。 使いやすくするために、コマンドレットのエイリアスを置き換えることができます。
+> Azure Site Recovery PowerShell モジュール (Az.RecoveryServices モジュール) のほとんどのコマンドレットには、使いやすいエイリアスがあります。 このモジュールのコマンドレットの形式は *\<Operation>-**AzRecoveryServicesAsr**\<Object>* であり、これに対応するエイリアスの形式は *\<Operation>-**ASR**\<Object>* です。 使いやすくするために、コマンドレットのエイリアスを置き換えることができます。
 
 次の例では、$vault 変数に設定されているコンテナーの詳細を使って、PowerShell セッションに対するコンテナーのコンテキストを指定しています。
 
@@ -497,4 +497,4 @@ Errors           : {}
 2. フェールオーバーが正常に完了すると、フェールオーバー操作をコミットし、Azure からオンプレミスの VMware サイトへのレプリケーションの反転を設定できます。
 
 ## <a name="next-steps"></a>次のステップ
-[Azure Site Recovery PowerShell リファレンス](https://docs.microsoft.com/powershell/module/Az.RecoveryServices)を使用して、他のタスクを自動化する方法について学びます。
+[Azure Site Recovery PowerShell リファレンス](/powershell/module/Az.RecoveryServices)を使用して、他のタスクを自動化する方法について学びます。

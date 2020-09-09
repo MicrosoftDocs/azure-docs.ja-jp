@@ -3,21 +3,20 @@ title: Traffic Manager エンドポイントの種類 | Microsoft Docs
 description: この記事では、Azure Traffic Manager で使用できるさまざまなエンドポイントの種類について説明します
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
-manager: twooley
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
-ms.author: rohink
-ms.openlocfilehash: 3d8f899a7899243129d31c2620a51dc764a8e917
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: duau
+ms.openlocfilehash: 692c63849bc9e92ded43db3bf22ce14384f2b68d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226995"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401284"
 ---
 # <a name="traffic-manager-endpoints"></a>Traffic Manager エンドポイント
 

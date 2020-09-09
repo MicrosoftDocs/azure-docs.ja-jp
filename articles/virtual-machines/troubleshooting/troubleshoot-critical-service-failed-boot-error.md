@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: 54ba87b681a055bb46b81ca81d2bcdd103491f27
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8c3e76f1a7edffefc8773dfa548773ec0932fae6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77921455"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129855"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Azure VM 起動時に Windows が "CRITICAL SERVICE FAILED" をブルー スクリーンに表示する
 この記事では、Microsoft Azure で Windows 仮想マシン (VM) を起動するときに発生する可能性のある "CRITICAL SERVICE FAILED" エラーについて説明します。 また、この問題の解決するためのトラブルシューティング手順について説明します。 
@@ -84,11 +84,15 @@ Windows VM が起動しません。 [[ブート診断]](./boot-diagnostics.md) �
 
 1. 復旧 VM で、管理者特権でのコマンド プロンプトから次のコマンドを実行します。 このコマンドは、次回の起動時にセーフ モードで起動するように、影響を受ける OS ディスクを設定します。
 
-        bcdedit /store <OS DISK you attached>:\boot\bcd /set {default} safeboot minimal
+    ```console
+    bcdedit /store <OS DISK you attached>:\boot\bcd /set {default} safeboot minimal
+    ```
 
     たとえば、接続した OS ディスクがドライブ F の場合は、次のコマンドを実行します。
 
-        bcdedit /store F: boot\bcd /set {default} safeboot minimal
+    ```console
+    bcdedit /store F: boot\bcd /set {default} safeboot minimal
+    ```
 
 2. [OS ディスクを切断し、影響を受ける VM に OS ディスクを接続し直します](troubleshoot-recovery-disks-portal-windows.md)。 VM がセーフ モードで起動します。 依然としてエラーが発生する場合は、省略可能な手順を実行します。
 3. **[実行]** ボックスを開き、**verifier** を実行して、ドライバーの検証マネージャー ツールを起動します。
@@ -98,7 +102,10 @@ Windows VM が起動しません。 [[ブート診断]](./boot-diagnostics.md) �
 
 7. セーフ モードでの起動設定を削除します。
 
-        bcdedit /store <OS DISK LETTER>:\boot\bcd /deletevalue {default} safeboot
+    ```console
+    bcdedit /store <OS DISK LETTER>:\boot\bcd /deletevalue {default} safeboot
+    ```
+
 8.  VM を再起動します。 
 
 ### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>省略可能: ダンプ クラッシュ モードでのダンプ ログの分析

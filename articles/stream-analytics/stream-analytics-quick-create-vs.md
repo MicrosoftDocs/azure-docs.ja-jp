@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.openlocfilehash: 5e654fe5d31a225a855da8477e073ceeb1a68634
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: aff9bf83795043e0176d7a3f155844c8dbe0281a
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81767240"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337477"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>クイック スタート:Visual Studio を使用して Azure Stream Analytics ジョブを作成する
 
@@ -42,9 +42,9 @@ Stream Analytics ジョブを定義する前に、後でジョブの入力とし
    
    |**設定**  |**推奨値**  |**説明**  |
    |---------|---------|---------|
-   |サブスクリプション  | \<該当するサブスクリプション\> |  使用する Azure サブスクリプションを選択します。 |
+   |サブスクリプション  | \<Your subscription\> |  使用する Azure サブスクリプションを選択します。 |
    |Resource group   |   asaquickstart-resourcegroup  |   **[新規作成]** を選択し、アカウントの新しいリソース グループ名を入力します。 |
-   |リージョン  |  \<ユーザーに最も近いリージョンを選択\> | お客様の IoT ハブをホストできる地理的な場所を選択します。 お客様のユーザーに最も近い場所を使用します。 |
+   |リージョン  |  \<Select the region that is closest to your users\> | お客様の IoT ハブをホストできる地理的な場所を選択します。 お客様のユーザーに最も近い場所を使用します。 |
    |IoT Hub 名  | MyASAIoTHub  |   お客様の IoT ハブの名前を選択します。   |
 
    ![IoT Hub の作成](./media/stream-analytics-quick-create-vs/create-iot-hub.png)
@@ -116,7 +116,7 @@ Azure Stream Analytics プロジェクトに含まれる要素に注目してく
    |ソースの種類   |  データ ストリーム |  適切な入力ソース ([データ ストリーム] または [参照データ]) を選択します。   |
    |source  |  IoT Hub |  適切な入力ソースを選択します。   |
    |リソース  | 現在のアカウントからデータ ソースを選択します | 手動でデータを入力するか、既存のアカウントを選択するかを選択します。   |
-   |サブスクリプション  |  \<該当するサブスクリプション\>   | 作成した IoT ハブがある Azure サブスクリプションを選択します。   |
+   |サブスクリプション  |  \<Your subscription\>   | 作成した IoT ハブがある Azure サブスクリプションを選択します。   |
    |IoT Hub  |  MyASAIoTHub   |  対象の IoT ハブの名前を選択または入力します。 IoT ハブが同じサブスクリプション内に作成されている場合、IoT ハブ名は自動的に検出されます。   |
    
 3. 他のオプションは既定値のままにして、 **[保存]** を選択し、設定を保存します。  
@@ -134,7 +134,7 @@ Azure Stream Analytics プロジェクトに含まれる要素に注目してく
    |出力のエイリアス  |  出力   |  ジョブの出力を識別する名前を入力します。   |
    |シンク   |  Blob Storage |  適切なシンクを選択します。    |
    |リソース  |  データ ソース設定を手動で提供します |  手動でデータを入力するか、既存のアカウントを選択するかを選択します。   |
-   |サブスクリプション  |  \<該当するサブスクリプション\>   | 作成したストレージ アカウントを持っている Azure サブスクリプションを選択します。 ストレージ アカウントは、同じサブスクリプションにある場合も、別のサブスクリプションにある場合もあります。 この例では、同じサブスクリプションにストレージ アカウントを作成したと想定しています。   |
+   |サブスクリプション  |  \<Your subscription\>   | 作成したストレージ アカウントを持っている Azure サブスクリプションを選択します。 ストレージ アカウントは、同じサブスクリプションにある場合も、別のサブスクリプションにある場合もあります。 この例では、同じサブスクリプションにストレージ アカウントを作成したと想定しています。   |
    |ストレージ アカウント  |  asaquickstartstorage   |  ストレージ アカウントの名前を選択するか、入力します。 ストレージ アカウントが同じサブスクリプション内に作成されている場合、ストレージ アカウント名は自動的に検出されます。   |
    |コンテナー  |  container1   |  ストレージ アカウントで作成した既存のコンテナーを選択します。   |
    |パスのパターン  |  output   |  コンテナー内に作成するファイル パスの名前を入力します。   |
@@ -151,8 +151,8 @@ Azure Stream Analytics プロジェクトに含まれる要素に注目してく
 
    ```sql
    SELECT *
-   INTO BlobOutput
-   FROM IoTHubInput
+   INTO Output
+   FROM Input
    HAVING Temperature > 27
    ```
 

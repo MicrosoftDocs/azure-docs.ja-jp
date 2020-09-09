@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 08/29/2019
 ms.custom: mvc
 ms.openlocfilehash: 001b4e4f0ea7fbacd232b2a87abfe353f34919bd
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80985016"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Azure Portal から Function App を作成する

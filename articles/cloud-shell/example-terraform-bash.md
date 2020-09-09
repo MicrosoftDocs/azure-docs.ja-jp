@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: tarcher
-ms.openlocfilehash: 8bacadd8941131f608411e61cc15c120c1b2bc60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-terraform
+ms.openlocfilehash: e13e6d9ac2f4600e41f221efd23997f712dffc54
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79458156"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032087"
 ---
 # <a name="deploy-with-terraform-from-bash-in-azure-cloud-shell"></a>Azure Cloud Shell で Bash から Terraform を使ってデプロイする
 この記事では、[Terraform AzureRM プロバイダー](https://www.terraform.io/docs/providers/azurerm/index.html)を使ってリソース グループを作成する手順について説明します。

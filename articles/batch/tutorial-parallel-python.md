@@ -1,16 +1,16 @@
 ---
-title: 並列ワークロードの実行
+title: Python API を使用して並列ワークロードを実行する
 description: チュートリアル - Batch Python クライアント ライブラリを使用して、Azure Batch で ffmpeg を使ってメディア ファイルを並列処理します。
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
-ms.custom: mvc
-ms.openlocfilehash: 32e42fe04ad8ce55bbbbb90e5aca6356fd1c6f22
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-python
+ms.openlocfilehash: 34cea5e0b60c0a7ee8c3d31dd02a6f7e975de738
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117116"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853332"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>チュートリアル:Python API を使用して Azure Batch で並列ワークロードを実行する
 

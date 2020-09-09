@@ -9,7 +9,7 @@ editor: ''
 ms.assetid: 2c3db9a8-50fa-475a-97d8-f31082af6593
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
@@ -17,12 +17,12 @@ ms.date: 03/10/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eda3643a7b1a341c7ed664dbfea933145f1f927
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61cae487c588c7649de638d9ea6d3111bfbe9e1a
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78968707"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229686"
 ---
 # <a name="how-to-integrate-azure-active-directory-logs-with-splunk-using-azure-monitor"></a>方法:Azure Monitor を使用して Azure Active Directory のログを Splunk と統合する
 
@@ -32,7 +32,7 @@ ms.locfileid: "78968707"
 
 この機能を使用するには、次が必要です。
 
-- Azure AD のアクティビティ ログを含む Azure イベント ハブ。 [アクティビティ ログをイベント ハブにストリーミングする](quickstart-azure-monitor-stream-logs-to-event-hub.md)方法を確認してください。 
+- Azure AD のアクティビティ ログを含む Azure イベント ハブ。 [アクティビティ ログをイベント ハブにストリーミングする](./tutorial-azure-monitor-stream-logs-to-event-hub.md)方法を確認してください。 
 
 -  [Splunk 用 Microsoft Azure アドオン](https://splunkbase.splunk.com/app/3757/)。 
 

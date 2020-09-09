@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 1fdeffb5ee5b1e2d66fbf5586d307cd8d8b78858
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: e6652d28da6bf142125e6ec284af16c849b00b1e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76166742"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322059"
 ---
 # <a name="quickstart-use-java-to-search-the-web-with-the-bing-web-search-rest-api-an-azure-cognitive-service"></a>クイック スタート:Java を使用して、Azure コグニティブ サービスである Bing Web Search REST API で Web を検索する
 
-このクイックスタートでは、Java アプリケーションを使用して Bing Web Search API への最初の呼び出しを行い、JSON 応答を受け取ります。 この Java アプリケーションは、API に検索要求を送信してその応答を表示します。 このアプリケーションは Java で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
+このクイックスタートでは、Java アプリケーションを使用して Bing Web Search API への最初の呼び出しを行います。 この Java アプリケーションは、API に検索要求を送信して、JSON 応答を表示します。 このアプリケーションは Java で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -49,7 +49,7 @@ import com.google.gson.JsonParser;
 
 ### <a name="declare-gson-in-the-maven-pom-file"></a>Maven POM ファイルでの Gson の宣言
 
-Maven を使用している場合は、`POM.xml` で Gson を宣言します。 Gson をローカルにインストールしてある場合は、この手順をスキップします。
+Maven を使用している場合は、POM.xml で Gson を宣言します。 Gson をローカルにインストールしてある場合は、この手順をスキップします。
 
 ```xml
 <dependency>
@@ -61,7 +61,7 @@ Maven を使用している場合は、`POM.xml` で Gson を宣言します。 
 
 ## <a name="declare-the-bingwebsearch-class"></a>BingWebSearch クラスの宣言
 
-`BingWebSearch` クラスを宣言します。 これには、`main` メソッドなど、このクイック スタートで説明する大部分のコードが含まれます。  
+`BingWebSearch` クラスを宣言します。 これには、`main()` メソッドなど、このクイックスタートで説明する大部分のコードが含まれます。  
 
 ```java
 public class BingWebSearch {
@@ -73,7 +73,13 @@ public class BingWebSearch {
 
 ## <a name="define-variables"></a>変数の定義
 
-このコードは、`subscriptionKey`、`host`、`path`、および `searchTerm` を設定します。 `host` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。 `subscriptionKey` の値を Azure アカウントの有効なサブスクリプション キーに置き換えます。 `searchTerm` の値を置き換えると、検索クエリを自由にカスタマイズすることができます。 前述のように、忘れずにこのコードを `BingWebSearch` クラスに追加してください。
+次のコードでは、`subscriptionKey`、`host`、`path`、および `searchTerm` を設定します。 このコードを、前のセクションで作成した `BingWebSearch` クラスに追加します。
+
+1. `host` 値には、次のコードのグローバル エンドポイントを使用するか、Azure portal に表示される、お使いのリソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。 
+
+2. `subscriptionKey` の値を Azure アカウントの有効なサブスクリプション キーに置き換えます。 
+
+3. 必要に応じて、`searchTerm` の値を置き換えて、検索クエリをカスタマイズすることができます。 
 
 ```java
 // Enter a valid subscription key.
@@ -91,7 +97,7 @@ static String searchTerm = "Microsoft Cognitive Services";
 
 ## <a name="construct-a-request"></a>要求の構築
 
-このメソッドは、`BingWebSearch` クラス内にあり、`url` の構築、応答の受信と解析、および Bing 関連の HTTP ヘッダーの抽出を行います。  
+`SearchWeb()` メソッドは、`BingWebSearch` クラス内にあり、`url` の構築、応答の受信と解析、および Bing 関連の HTTP ヘッダーの抽出を行います。  
 
 ```java
 public static SearchResults SearchWeb (String searchQuery) throws Exception {
@@ -137,7 +143,7 @@ public static String prettify(String json_text) {
 
 ## <a name="declare-the-main-method"></a>main メソッドの宣言
 
-このメソッドは必須であり、プログラムの起動時に最初に呼び出されるメソッドです。 このアプリケーションでは、`subscriptionKey` の検証、要求の実行、および JSON 応答の出力を行うコードが含まれています。
+`main()` メソッドは必須であり、プログラムの起動時に最初に呼び出されるメソッドです。 このアプリケーションでは、`subscriptionKey` の検証、要求の実行、および JSON 応答の出力を行うコードが含まれています。
 
 ```java
 public static void main (String[] args) {
@@ -167,7 +173,7 @@ public static void main (String[] args) {
 
 ## <a name="create-a-container-class-for-search-results"></a>検索結果のコンテナー クラスの作成
 
-`SearchResults` コンテナー クラスは、`BingWebSearch` クラスの外部にあります。 これには、応答に関連するヘッダーと JSON データが含まれています。
+`SearchResults` コンテナー クラスは、`BingWebSearch` クラスの外部で定義されています。 これには、応答に関連するヘッダーと JSON データが含まれています。
 
 ```java
 class SearchResults{
@@ -182,7 +188,7 @@ class SearchResults{
 
 ## <a name="put-it-all-together"></a>すべてをまとめた配置
 
-最後の手順で、コードをコンパイルし、実行します。 コマンドは次のとおりです。
+最後の手順で、コードをコンパイルして実行します。 次のコマンドを使用します。
 
 ```powershell
 javac BingWebSearch.java -classpath ./gson-2.8.5.jar -encoding UTF-8
@@ -191,7 +197,7 @@ java -cp ./gson-2.8.5.jar BingWebSearch
 
 作成したコードをサンプル コードと比較したい場合は、[GitHub で利用できるサンプル コード](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingWebSearchv7.java)を参照してください。
 
-## <a name="sample-response"></a>応答のサンプル
+## <a name="example-json-response"></a>JSON の応答例
 
 Bing Web Search API からの応答は、JSON として返されます。 このサンプル応答は、1 つの結果だけを表示するように切り詰められています。
 
@@ -320,6 +326,6 @@ Bing Web Search API からの応答は、JSON として返されます。 この
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Bing Web 検索単一ページ アプリのチュートリアル](../tutorial-bing-web-search-single-page-app.md)
+> [Bing Web Search API 単一ページ アプリのチュートリアル](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]  

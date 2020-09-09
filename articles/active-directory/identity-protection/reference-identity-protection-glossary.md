@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a3e2df956aaa4f9fd0af83dd2a18e04d731c714
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1a17f52e519a84c58c9ed5b75259cc0b96d0a175
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74232341"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949176"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection 用語集
 
@@ -160,4 +160,4 @@ Azure Active Directory で ID を認証するプロセスとアクション、�
 
 ## <a name="see-also"></a>参照
 
-- [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
+- [Azure Active Directory Identity Protection](./overview-identity-protection.md)

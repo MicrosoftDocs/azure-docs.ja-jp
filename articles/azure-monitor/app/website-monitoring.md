@@ -2,14 +2,14 @@
 title: クイック スタート:Azure Monitor Application Insights を使用して Web サイトを監視する
 description: このクイックスタートでは、Azure Monitor Application Insights を使用したクライアント (ブラウザー) 側の Web サイト監視を設定する方法について説明します。
 ms.topic: quickstart
-ms.date: 07/15/2019
+ms.date: 08/19/2020
 ms.custom: mvc
-ms.openlocfilehash: b47f3ce1ebed12d14dffd68e87dd013bb86218ea
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 959beeac004c71fb4593740d3c1685771638e40c
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801639"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611332"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>クイック スタート:Azure Monitor Application Insights を使って Web サイトの監視を開始する
 
@@ -30,7 +30,7 @@ Application Insights は、オンプレミスまたはクラウドで実行さ�
 1. **[リソースの作成]**  >  **[管理ツール]**  >  **[Application Insights]** の順に選択します。
 
    > [!NOTE]
-   >Application Insights リソースの作成が初めての場合は、「[Application Insights リソースの作成](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)」を参照してください。
+   >Application Insights リソースの作成が初めての場合は、「[Application Insights リソースの作成](./create-new-resource.md)」を参照してください。
 1. 構成ボックスが表示されたら、次の表を使用して入力フィールドを完成させます。
 
     | 設定        | 値           | 説明  |
@@ -66,16 +66,21 @@ Application Insights は、オンプレミスまたはクラウドで実行さ�
 
 1. ``hello_world.html`` ファイルの閉じる ``</head>`` タグの前に、次のスクリプトを追加します。
 
-   ```javascript
-   <script type="text/javascript">
-      var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t}(
-      {
-         instrumentationKey:"INSTRUMENTATION_KEY"
-      }
-      );window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
-   </script>
-   ```
-
+    ```javascript
+    <script type="text/javascript">
+    !function(T,l,y){var S=T.location,u="script",k="instrumentationKey",D="ingestionendpoint",C="disableExceptionTracking",E="ai.device.",I="toLowerCase",b="crossOrigin",w="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"4",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[I](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,p,l,u;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][I]()]=i[1])}if(!e[D]){var r=e.endpointsuffix,o=r?e.location:null;e[D]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[k]||d[k]||"",p=s[D],l=p?p+"/v2/track":config.endpointUrl,(u=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=l,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),u.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,l)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:w,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(w,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(u,l))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(u);n.src=h;var e=y[b];return!e&&""!==e||"undefined"==n[b]||(n[b]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(u)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[C]&&!0!==s[C]){method="onerror",t(["_"+method]);var c=T[method];T[method]=function(e,t,n,a,i){var r=c&&c(e,t,n,a,i);return!0!==r&&m["_"+method]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);(T[t]=n).queue&&0===n.queue.length&&n.trackPageView({})}(window,document,{
+    src: "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js", // The SDK URL Source
+    //name: "appInsights", // Global SDK Instance name defaults to "appInsights" when not supplied
+    //ld: 0, // Defines the load delay (in ms) before attempting to load the sdk. -1 = block page load and add to head. (default) = 0ms load after timeout,
+    //useXhr: 1, // Use XHR instead of fetch to report failures (if available),
+    //crossOrigin: "anonymous", // When supplied this will add the provided value as the cross origin attribute on the script tag 
+    cfg: { // Application Insights Configuration
+        instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
+        /* ...Other Configuration Options... */
+    }});
+    </script>
+    ```
+    
 1. ``hello_world.html`` を編集し、インストルメンテーション キーを追加します。
 
 1. ローカル ブラウザー セッションで、``hello_world.html`` を開きます。 この操作によって、単一のページ ビューが作成されます。 ブラウザーを最新の情報に更新して、複数のテスト ページ ビューを生成することができます。
@@ -105,19 +110,19 @@ Application Insights は、オンプレミスまたはクラウドで実行さ�
 
    ![一定の期間にわたるユーザー要求に関する Analytics グラフ](./media/website-monitoring/analytics-query.png)
 
-1. **[概要]** ページに戻ります。 **[調査]** ヘッダーで、 **[ブラウザー]** を選択し、 **[パフォーマンス]** を選択します。  Web サイトのパフォーマンスに関するメトリックが表示されます。 Web サイトのエラーと例外を分析するための対応するビューがあります。 **[サンプル]** を選択して、[エンドツーエンドのトランザクションの詳細](../../azure-monitor/app/transaction-diagnostics.md)にアクセスできます。
+1. **[概要]** ページに戻ります。 **[調査]** ヘッダーで、 **[ブラウザー]** を選択し、 **[パフォーマンス]** を選択します。  Web サイトのパフォーマンスに関するメトリックが表示されます。 Web サイトのエラーと例外を分析するための対応するビューがあります。 **[サンプル]** を選択して、[エンドツーエンドのトランザクションの詳細](./transaction-diagnostics.md)にアクセスできます。
 
    ![サーバー メトリックのグラフ](./media/website-monitoring/browser-performance.png)
 
-1. Application Insights のメイン メニューの **[使用状況]** ヘッダーにある [ **[ユーザー]** ](../../azure-monitor/app/usage-segmentation.md) を選択し、[ユーザー動作分析ツール](../../azure-monitor/app/usage-overview.md)の調査を開始します。 1 台のマシンからテストを行っているため、1 人のユーザーのデータのみが表示されます。 ライブの Web サイトの場合、ユーザーの分布はこのようになります。
+1. Application Insights のメイン メニューの **[使用状況]** ヘッダーにある [ **[ユーザー]** ](./usage-segmentation.md) を選択し、[ユーザー動作分析ツール](./usage-overview.md)の調査を開始します。 1 台のマシンからテストを行っているため、1 人のユーザーのデータのみが表示されます。 ライブの Web サイトの場合、ユーザーの分布はこのようになります。
 
      ![ユーザーのグラフ](./media/website-monitoring/usage-users.png)
 
-1. 複数のページがある、より複雑な Web サイトでは、[**User Flows**](../../azure-monitor/app/usage-flows.md) ツールを使用して、Web サイトのさまざまな部分を辿る訪問者の経路を追跡できます。
+1. 複数のページがある、より複雑な Web サイトでは、[**User Flows**](./usage-flows.md) ツールを使用して、Web サイトのさまざまな部分を辿る訪問者の経路を追跡できます。
 
    ![User Flows の視覚化](./media/website-monitoring/user-flows.png)
 
-Web サイトを監視するためのより高度な構成については、[JavaScript SDK の API リファレンス](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)を参照してください。
+Web サイトを監視するためのより高度な構成については、[JavaScript SDK の API リファレンス](./javascript.md)を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -132,4 +137,5 @@ Web サイトを監視するためのより高度な構成については、[Jav
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [パフォーマンスの問題の特定と診断](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)
+> [パフォーマンスの問題の特定と診断](../log-query/log-query-overview.md)
+

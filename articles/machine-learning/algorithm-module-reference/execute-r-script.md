@@ -8,19 +8,19 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 03/10/2020
-ms.openlocfilehash: eb778c8d24639320b60927438de76a29de724ac2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/27/2020
+ms.openlocfilehash: 873f0d7d2aa4493e77a10f62b0646f4f8233f6b9
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684704"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337842"
 ---
-# <a name="execute-r-script"></a>R スクリプトの実行
+# <a name="execute-r-script-module"></a>R スクリプトの実行モジュール
 
-この記事では、**R スクリプトの実行**モジュールを使用して、Azure Machine Learning デザイナー (プレビュー) のパイプラインで R コードを実行する方法について説明します。
+この記事では、R スクリプトの実行モジュールを使用して、Azure Machine Learning デザイナー (プレビュー) のパイプラインで R コードを実行する方法について説明します。
 
-R を使用すると、既存のモジュールでは現在サポートされていない次のようなタスクを実行できます。 
+R を使用すると、既存のモジュールが現在サポートしていないタスクを実行できます。次に例を示します。 
 - カスタム データ変換を作成する
 - 独自のメトリックを使用して予測を評価する
 - デザイナーでスタンドアロン モジュールとして実装されていないアルゴリズムを使用してモデルをビルドする
@@ -31,9 +31,9 @@ Azure Machine Learning デザイナーでは、R の CRAN (包括的な R アー
 
 ## <a name="supported-r-packages"></a>サポートされる R パッケージ
 
-R 環境には、100 を超えるパッケージがプレインストールされています。 完全な一覧については、「[プレインストールされている R パッケージ](#pre-installed-r-packages)」セクションをご覧ください。
+100 以上のパッケージを含む R 環境がプレインストールされています。 完全な一覧については、「[プレインストールされている R パッケージ](#preinstalled-r-packages)」セクションを参照してください。
 
-また、次のコードを任意の **R スクリプトの実行**モジュールに追加して、インストールされているパッケージを表示することもできます。
+また、次のコードを任意の R スクリプトの実行モジュールに追加して、インストールされているパッケージを表示することもできます。
 
 ```R
 azureml_main <- function(dataframe1, dataframe2){
@@ -42,22 +42,24 @@ azureml_main <- function(dataframe1, dataframe2){
   return(list(dataset1=dataframe1, dataset2=dataframe2))
 }
 ```
+> [!NOTE]
+> プレインストール一覧に含まれていないパッケージを必要とする R スクリプトの実行モジュールがパイプラインに複数含まれている場合は、それぞれのモジュールにそれらのパッケージをインストールしてください。 
 
 ## <a name="installing-r-packages"></a>R パッケージのインストール
-追加の R パッケージをインストールするには、`install.packages()` メソッドを使用します。 パッケージは、**R スクリプトの実行**モジュールごとにインストールされ、他の **R スクリプトの実行**モジュール間で共有されることはありません。
+追加の R パッケージをインストールするには、`install.packages()` メソッドを使用します。 パッケージは、R スクリプトの実行モジュールごとにインストールされます。 それらは他の R スクリプトの実行モジュール間で共有されません。
 
 > [!NOTE]
-> `install.packages("zoo",repos = "http://cran.us.r-project.org")` などのパッケージをインストールするときは、CRAN リポジトリを指定してください。
+> `install.packages("zoo",repos = "http://cran.us.r-project.org")` などのパッケージをインストールするときは、CRAN リポジトリを指定します。
 
 このサンプルは、Zoo のインストール方法を示しています。
 ```R
 # R version: 3.5.1
-# The script MUST contain a function named azureml_main
+# The script MUST contain a function named azureml_main,
 # which is the entry point for this module.
 
-# Please note that functions dependant on X11 library
-# such as "View" are not supported because X11 library
-# is not pre-installed.
+# Note that functions dependent on the X11 library,
+# such as "View," are not supported because the X11 library
+# is not preinstalled.
 
 # The entry point function MUST have two input arguments.
 # If the input port is not connected, the corresponding
@@ -74,21 +76,21 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
  > [!NOTE]
-  > インストールの繰り返しを避けるために、パッケージが既に存在するかどうかを確認してください。 上記サンプル コードの `  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")` のようにします。 インストールを繰り返すと、Web サービス要求のタイムアウトが発生する可能性があります。     
+ > パッケージをインストールする前に、パッケージが既に存在するかどうかを確認して、インストールを繰り返さないようにします。 インストールを繰り返すと、Web サービス要求がタイムアウトする可能性があります。     
 
-## <a name="upload-files"></a>ファイルをアップロードする
-**R スクリプトの実行**では、Azure Machine Learning R SDK を使用したファイルのアップロードがサポートされています。
+## <a name="uploading-files"></a>ファイルのアップロード
+R スクリプトの実行モジュールでは、Azure Machine Learning R SDK を使用したファイルのアップロードがサポートされています。
 
-次の例は、**R スクリプトの実行**でイメージ ファイルをアップロードする方法を示しています。
+次の例は、R スクリプトの実行でイメージ ファイルをアップロードする方法を示しています。
 ```R
 
 # R version: 3.5.1
-# The script MUST contain a function named azureml_main
+# The script MUST contain a function named azureml_main,
 # which is the entry point for this module.
 
-# Please note that functions dependant on X11 library
-# such as "View" are not supported because X11 library
-# is not pre-installed.
+# Note that functions dependent on the X11 library,
+# such as "View," are not supported because the X11 library
+# is not preinstalled.
 
 # The entry point function MUST have two input arguments.
 # If the input port is not connected, the corresponding
@@ -112,49 +114,60 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
-パイプラインの実行が完了したら、モジュールの右側のパネルで画像をプレビューできます。
+パイプラインの実行が終了したら、モジュールの右側のパネルでイメージをプレビューできます。
 
 > [!div class="mx-imgBorder"]
-> ![アップロードされた画像](media/module/upload-image-in-r-script.png)
+> ![アップロードされたイメージのプレビュー](media/module/upload-image-in-r-script.png)
+
+## <a name="access-to-registered-dataset"></a>登録済みデータセットへのアクセス
+
+ワークスペースに[登録されているデータセットにアクセス](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets#access-datasets-in-your-script)するには、次のサンプル コードを参照してください。
+
+```R
+        azureml_main <- function(dataframe1, dataframe2){
+  print("R script run.")
+  run = get_current_run()
+  ws = run$experiment$workspace
+  dataset = azureml$core$dataset$Dataset$get_by_name(ws, "YOUR DATASET NAME")
+  dataframe2 <- dataset$to_pandas_dataframe()
+  # Return datasets as a Named List
+  return(list(dataset1=dataframe1, dataset2=dataframe2))
+}
+```
 
 ## <a name="how-to-configure-execute-r-script"></a>R スクリプトの実行を構成する方法
 
-**R スクリプトの実行**モジュールには、出発点として利用できるサンプル コードが含まれています。 **R スクリプトの実行**モジュールを構成するには、一連の入力と、実行するコードを指定します。
+R スクリプトの実行モジュールには、出発点として利用できるサンプル コードが含まれています。 R スクリプトの実行モジュールを構成するには、一連の入力と、実行するコードを指定します。
 
-![R モジュール](media/module/execute-r-script.png)
+![R モジュールの入力の図](media/module/execute-r-script.png)
 
 デザイナーに保存されたデータセットは、このモジュールで読み込まれると自動的に R データ フレームに変換されます。
 
-1.  **R スクリプトの実行**モジュールをパイプラインに追加します。
+1.  **R スクリプトの実行**モジュールをパイプラインに追加します。  
 
-  
+1. スクリプトに必要なすべての入力を接続します。 入力は、任意指定であり、データと追加の R コードを含めることができます。
 
-1. スクリプトで必要なすべての入力を接続します。 入力は、任意指定であり、データと追加の R コードを含めることができます。
+    * **Dataset1**:`dataframe1` として 1 番目の入力を参照します。 入力データセットは、CSV、TSV、または ARFF ファイル形式にする必要があります。 または、Azure Machine Learning データセットを接続することもできます。
 
-    * **Dataset1**:`dataframe1` として 1 番目の入力を参照します。 入力データセットは、CSV、TSV、ARFF として形式設定する必要があります。または Azure Machine Learning データセットを接続できます。
+    * **Dataset2**:`dataframe2` として 2 番目の入力を参照します。 このデータセットも、CSV、TSV、ARFF ファイル形式、または Azure Machine Learning データセット形式にする必要があります。
 
-    * **Dataset2**:`dataframe2` として 2 番目の入力を参照します。 このデータセットも、CSV、TSV、ARFF ファイルとして、あるいは Azure Machine Learning データセットとして形式設定する必要があります。
-
-    * **スクリプト バンドル**:3 番目の入力では、ZIP ファイルが受け入れられます。 ZIP 形式のファイルには、複数のファイルと複数のファイルの種類を含めることができます。
+    * **スクリプト バンドル**:3 つ目の入力には、.zip ファイルを指定できます。 ZIP ファイルには、複数のファイルと複数のファイルの種類を含めることができます。
 
 1. **[R script]\(R スクリプト\)** テキストボックスに、有効な R スクリプトを入力するか貼り付けます。
 
     > [!NOTE]
-    > スクリプトを記述するときは十分に注意し、宣言されていない変数やインポートされていないモジュールまたは関数の使用など、構文エラーがないことを確認してください。 また、このドキュメントの最後にある、事前にインストールされているパッケージの一覧にも特別な注意を払ってください。 一覧表示されていないパッケージを使用するには、`install.packages("zoo",repos = "http://cran.us.r-project.org")` などのスクリプトでインストールしてください。
-    
-    > [!NOTE]
-    > X11 ライブラリが事前にインストールされていないため、"View" などの X11 ライブラリに依存する関数はサポートされていません。
+    > スクリプトを記述するときは注意が必要です。 宣言されていない変数やインポートされていないモジュールまたは関数の使用など、構文エラーがないことを確認してください。 この記事の最後に記載したプレインストールされているパッケージの一覧には特に注意してください。 一覧に記載されていないパッケージを使用するには、スクリプトでインストールします。 たとえば `install.packages("zoo",repos = "http://cran.us.r-project.org")` です。
     
     作業を支援するために、 **[R Script]\(R スクリプト\)** テキスト ボックスにはサンプル コードが事前に入力されており、編集または置換することができます。
     
     ```R
     # R version: 3.5.1
-    # The script MUST contain a function named azureml_main
+    # The script MUST contain a function named azureml_main,
     # which is the entry point for this module.
 
-    # Please note that functions dependant on X11 library
-    # such as "View" are not supported because X11 library
-    # is not pre-installed.
+    # Note that functions dependent on the X11 library,
+    # such as "View," are not supported because the X11 library
+    # is not preinstalled.
     
     # The entry point function MUST have two input arguments.
     # If the input port is not connected, the corresponding
@@ -164,7 +177,7 @@ azureml_main <- function(dataframe1, dataframe2){
     azureml_main <- function(dataframe1, dataframe2){
     print("R script run.")
 
-    # If a zip file is connected to the third input port, it is
+    # If a .zip file is connected to the third input port, it's
     # unzipped under "./Script Bundle". This directory is added
     # to sys.path.
 
@@ -173,23 +186,40 @@ azureml_main <- function(dataframe1, dataframe2){
     }
     ```
 
- * スクリプトには、このモジュールのエントリ ポイントである `azureml_main` という名前の関数を含める必要があります。
+    `Param<dataframe1>` と `Param<dataframe2>` の入力引数が関数で使用されていない場合でも、エントリ ポイント関数にはこれらの引数が必要です。
 
- * `Param<dataframe1>` と `Param<dataframe2>` の 2 つの入力引数が関数で使用されていない場合でも、エントリ ポイント関数にはこの 2 つの引数が必要です。
-
-   > [!NOTE]
-    > **[R スクリプトの実行]** モジュールに渡されるデータは、`dataframe1` および `dataframe2` として参照されます。これは、Azure Machine Learning デザイナーとは異なります (デザイナーでは `dataset1`、`dataset2` として参照されます)。 スクリプトで入力データが正しく参照されていることを確認してください。  
+    > [!NOTE]
+    > R スクリプトの実行モジュールに渡されるデータは、`dataframe1` および `dataframe2` として参照されます。これは、Azure Machine Learning デザイナーとは異なります (デザイナーでは、`dataset1`、`dataset2` として参照されます)。 スクリプトで入力データが正しく参照されていることを確認します。  
  
     > [!NOTE]
-    >  既存の R コードは、デザイナー パイプラインで実行するために、多少の変更が必要な場合があります。 たとえば、CSV 形式で指定した入力データは、コードで使用する前に、データセットに明示的に変換する必要があります。 また、R 言語で使用されるデータ型および列型は、デザイナーで使用されるデータ型および列型とはいくつかの点で異なります。
+    > 既存の R コードは、デザイナー パイプラインで実行するために、多少の変更が必要な場合があります。 たとえば、CSV 形式で指定した入力データは、コードで使用する前に、データセットに明示的に変換する必要があります。 また、R 言語で使用されるデータ型および列型は、デザイナーで使用されるデータ型および列型とはいくつかの点で異なります。
 
-1.  **Random seed (ランダム シード)** : ランダム シード値として R 環境内で使用する値を入力します。 このパラメーターは、R コードで `set.seed(value)` を呼び出すのと同じです。  
+    スクリプトが 16 KB を超える場合は、**スクリプト バンドル** ポートを使用すると、 *[CommandLine exceeds the limit of 16597 characters]\(コマンド ラインの文字数が上限の 16597 字を超えています\)* のようなエラーを回避できます。 
+    
+    スクリプトとその他のカスタム リソースを zip ファイルにバンドルし、その zip ファイルを**ファイル データセット**として Studio にアップロードします。 次に、デザイナー作成ページの左側のモジュール ペインにある *[My datasets]\(マイ データセット\)* リストから、データセット モジュールをドラッグします。 データセット モジュールを **R スクリプトの実行**モジュールの**スクリプト バンドル** ポートに接続します。
+    
+    スクリプト バンドルでスクリプトを使用するサンプル コードを次に示します。
+
+    ```R
+    azureml_main <- function(dataframe1, dataframe2){
+    # Source the custom R script: my_script.R
+    source("./Script Bundle/my_script.R")
+
+    # Use the function that defined in my_script.R
+    dataframe1 <- my_func(dataframe1)
+
+    sample <- readLines("./Script Bundle/my_sample.txt")
+    return (list(dataset1=dataframe1, dataset2=data.frame("Sample"=sample)))
+    }
+    ```
+
+1.  **[Random Seed]\(ランダム シード\)** には、ランダム シード値として R 環境内で使用する値を入力します。 このパラメーターは、R コードで `set.seed(value)` を呼び出すのと同じです。  
 
 1. パイプラインを送信します。  
 
 ## <a name="results"></a>結果
 
-**R スクリプトの実行**モジュールは複数の出力を返すことができますが、それらは R データ フレームとして提供する必要があります。 データ フレームは、他のモジュールとの互換性のために、自動的にデザイナーのデータセットに変換されます。
+R スクリプトの実行モジュールからは複数の出力を返すことができますが、それらは R データ フレームとして提供する必要があります。 データ フレームは、他のモジュールとの互換性のために、自動的にデザイナーのデータセットに変換されます。
 
 R からの標準メッセージとエラーはモジュールのログに返されます。
 
@@ -197,20 +227,20 @@ R スクリプトで結果を出力する必要がある場合は、モジュー
 
 ## <a name="sample-scripts"></a>サンプルのスクリプト
 
-カスタム R スクリプトを使用してパイプラインを拡張する方法は多数あります。  このセクションでは、一般的なタスクのためのサンプル コードを示します。
+カスタム R スクリプトを使用してパイプラインを拡張する方法は多数あります。 このセクションでは、一般的なタスクのためのサンプル コードを示します。
 
 
-### <a name="add-r-script-as-an-input"></a>R スクリプトを入力として追加する
+### <a name="add-an-r-script-as-an-input"></a>入力として R スクリプトを追加する
 
-**R スクリプトの実行**モジュールは、入力として任意の R スクリプト ファイルをサポートします。 そのためには、それらを ZIP ファイルの一部としてワークスペースにアップロードする必要があります。
+R スクリプトの実行モジュールは、入力として任意の R スクリプト ファイルをサポートします。 それらを使用するには、.zip ファイルの一部としてワークスペースにアップロードする必要があります。
 
-1. R コードを含む ZIP ファイルをワークスペースにアップロードするには、 **[データセット]** 資産ページに移動し、 **[データセットの作成]** をクリックして、 **[ローカル ファイルから]** を選択し、データセットの種類オプションとして **[ファイル]** を選択します。  
+1. R コードを含む .zip ファイルをワークスペースにアップロードするには、 **[データセット]** 資産ページに移動します。 **[データセットの作成]** を選択し、 **[ローカル ファイルから]** と **[ファイル]** のデータセットの種類オプションを選択します。  
 
 1. 左側のモジュール ツリーで、 **[データセット]** カテゴリの **[マイ データセット]** リストに ZIP ファイルがあることを確認します。
 
 1.  そのデータセットを**スクリプト バンドル**入力ポートに接続します。
 
-1. ZIP ファイルに含まれるすべてのファイルは、パイプラインの実行時間中に使用できます。 
+1. .zip ファイル内のすべてのファイルは、パイプラインの実行時に使用できます。 
 
     スクリプト バンドル ファイルにディレクトリ構造が含まれる場合、その構造が保持されます。 ただし、コードを変更して、ディレクトリ **./Script Bundle** をパスの先頭に追加する必要があります。
 
@@ -220,12 +250,12 @@ R スクリプトで結果を出力する必要がある場合は、モジュー
 
 ```R
 # R version: 3.5.1
-# The script MUST contain a function named azureml_main
+# The script MUST contain a function named azureml_main,
 # which is the entry point for this module.
 
-# Please note that functions dependant on X11 library
-# such as "View" are not supported because X11 library
-# is not pre-installed.
+# Note that functions dependent on the X11 library,
+# such as "View," are not supported because the X11 library
+# is not preinstalled.
 
 # The entry point function MUST have two input arguments.
 # If the input port is not connected, the corresponding
@@ -234,17 +264,17 @@ R スクリプトで結果を出力する必要がある場合は、モジュー
 #   Param<dataframe2>: a R DataFrame
 azureml_main <- function(dataframe1, dataframe2){
   print("R script run.")
-  # If a zip file is connected to the third input port, it is
+  # If a .zip file is connected to the third input port, it's
   # unzipped under "./Script Bundle". This directory is added
   # to sys.path.
   series <- dataframe1$width
-  # find the maximum and minimum values of width column in dataframe1
+  # Find the maximum and minimum values of the width column in dataframe1
   max_v <- max(series)
   min_v <- min(series)
-  # calculate the scale and bias
+  # Calculate the scale and bias
   scale <- max_v - min_v
   bias <- min_v / dis
-  # apply min-max normalizing
+  # Apply min-max normalizing
   dataframe1$width <- dataframe1$width / scale - bias
   dataframe2$width <- dataframe2$width / scale - bias
   # Return datasets as a Named List
@@ -252,12 +282,12 @@ azureml_main <- function(dataframe1, dataframe2){
 }
  ```
 
-### <a name="read-a-zip-file-as-input"></a>入力として ZIP ファイルを読み取る
+### <a name="read-a-zip-file-as-input"></a>入力として .zip ファイルを読み取る
 
-この例は、**R スクリプトの実行**モジュールへの入力として ZIP ファイル内のデータセットを使用する方法を示しています。
+この例は、R スクリプトの実行モジュールへの入力として .zip ファイル内のデータセットを使用する方法を示しています。
 
-1. CSV 形式でデータ ファイルを作成し、"mydatafile.csv" という名前を付けます。
-1. ZIP ファイルを作成し、CSV ファイルをアーカイブに追加します。
+1. CSV 形式でデータ ファイルを作成し、「**mydatafile.csv**」という名前を付けます。
+1. .zip ファイルを作成し、CSV ファイルをアーカイブに追加します。
 1. ZIP ファイルを Azure Machine Learning ワークスペースにアップロードします。 
 1. 結果として得られるデータセットを、**R スクリプトの実行**モジュールの **ScriptBundle** 入力に接続します。
 1. ZIP ファイルから CSV データを読み取るには、次のコードを使用します。
@@ -290,9 +320,9 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ### <a name="pass-r-objects-between-execute-r-script-modules"></a>R スクリプトの実行モジュール間で R オブジェクトを渡す
 
-内部のシリアル化メカニズムを使用することで、**R スクリプトの実行**モジュールのインスタンス間で R オブジェクトを渡すことができます。 この例は、2 つの **R スクリプトの実行**モジュール間で `A` という名前の R オブジェクトを移動することを想定しています。
+内部のシリアル化メカニズムを使用することで、R スクリプトの実行モジュールのインスタンス間で R オブジェクトを渡すことができます。 この例は、2 つの R スクリプトの実行モジュール間で `A` という名前の R オブジェクトを移動することを想定しています。
 
-1. 1 番目の **R スクリプトの実行**モジュールをパイプラインに追加し、 **[R Script]\(R スクリプト\)** テキスト ボックスに次のコードを入力して、シリアル化されたオブジェクト `A` をモジュールの出力データ テーブル内の列として作成します。  
+1. **R スクリプトの実行**モジュールをパイプラインに追加します。 次に **[R Script]\(R スクリプト\)** テキスト ボックスに次のコードを入力し、モジュールの出力データ テーブルの列としてシリアル化されたオブジェクト `A` を作成します。  
   
     ```R
     azureml_main <- function(dataframe1, dataframe2){
@@ -306,7 +336,7 @@ azureml_main <- function(dataframe1, dataframe2){
     }
     ```
 
-    整数型への明示的な変換が実行されるのは、シリアル化関数により、デザイナーではサポートされない R `Raw` 形式でデータが出力されるためです。
+    シリアル化関数からはデータが R `Raw` 形式で出力されますが、これはデザイナーではサポートされていないため、整数型への明示的な変換が行われます。
 
 1. **R スクリプトの実行**モジュールの 2 番目のインスタンスを追加し、それを前のモジュールの出力ポートに接続します。
 
@@ -321,13 +351,12 @@ azureml_main <- function(dataframe1, dataframe2){
     }
     ```
 
-## <a name="pre-installed-r-packages"></a>プレインストールされている R パッケージ
+## <a name="preinstalled-r-packages"></a>プレインストールされている R パッケージ
 
-使用できるプレインスール済み R パッケージの現在の一覧:
+現在、次のプレインストールされた R パッケージを使用できます。
 
-|              |            | 
-|--------------|------------| 
 | Package      | Version    | 
+|--------------|------------| 
 | askpass      | 1.1        | 
 | assertthat   | 0.2.1      | 
 | backports    | 1.1.4      | 

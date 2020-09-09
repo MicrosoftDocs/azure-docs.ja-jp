@@ -1,18 +1,19 @@
 ---
 title: .NET Core による Azure App Configuration のクイック スタート | Microsoft Docs
-description: .NET Core で Azure App Configuration を使用する場合のクイック スタートです
+description: このクイックスタートでは、Azure App Configuration でコードとは別にアプリケーション設定のストレージと管理を一元化して、.NET Core アプリを作成します。
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: quickstart
+ms.custom: devx-track-csharp
 ms.date: 1/9/2019
 ms.author: lcozzens
-ms.openlocfilehash: 420d9b48013f5f6debe588667fe1cc0390517e66
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 57202752a965ad0405a04b2eba4cdf42070c94bf
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80245380"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319493"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>クイック スタート:App Configuration を使用して .NET Core アプリを作成する
 
@@ -43,7 +44,7 @@ ms.locfileid: "80245380"
 
 1. プロジェクト用の新規フォルダーを作成します。
 
-2. 新しいフォルダーで次のコマンドを実行して、新しい ASP.NET Core コンソール アプリ プロジェクトを作成します。
+2. 新しいフォルダーで次のコマンドを実行して、新しい .NET Core コンソール アプリ プロジェクトを作成します。
 
     ```dotnetcli
     dotnet new console
@@ -99,7 +100,9 @@ ms.locfileid: "80245380"
 
     macOS または Linux を使用する場合は、次のコマンドを実行します。
 
-        export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```console
+    export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```
 
     変更を有効にするために、コマンド プロンプトを再起動します。 環境変数の値を出力して、正しく設定されていることを確認します。
 

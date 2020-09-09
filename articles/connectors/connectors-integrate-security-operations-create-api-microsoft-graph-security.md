@@ -9,22 +9,22 @@ ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: b4f51b192d1a7c0ee14a769321793753e8217dea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b08b5db5639d498aa6a6a47b7f7121cad565fe02
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77598835"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986370"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>セキュリティ操作を Microsoft Graph Security および Azure Logic Apps と統合することで脅威の防止能力を強化する
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) と [Microsoft Graph Security](https://docs.microsoft.com/graph/security-concept-overview) コネクタを使用して、Microsoft のセキュリティ製品、サービス、およびパートナーを統合する自動化されたワークフローを作成することで、アプリによる脅威の検出、防止、および対応方法を強化できます。 たとえば、アラートなどの Microsoft Graph Security エンティティを監視して管理する [Azure Security Center プレイブック](../security-center/security-center-playbooks.md)を作成できます。 Microsoft Graph Security コネクタによってサポートされるいくつかのシナリオを以下に示します。
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) と [Microsoft Graph Security](/graph/security-concept-overview) コネクタを使用して、Microsoft のセキュリティ製品、サービス、およびパートナーを統合する自動化されたワークフローを作成することで、アプリによる脅威の検出、防止、および対応方法を強化できます。 たとえば、アラートなどの Microsoft Graph Security エンティティを監視して管理する [Azure Security Center プレイブック](../security-center/workflow-automation.md)を作成できます。 Microsoft Graph Security コネクタによってサポートされるいくつかのシナリオを以下に示します。
 
 * クエリまたはアラート ID に基づいてアラートを取得する。 たとえば、重大度が高いアラートを含む一覧を取得できます。
 
 * アラートを更新する。 たとえば、アラートの割り当ての更新、アラートへのコメントの追加、アラートのタグ付けを実行できます。
 
-* [アラート サブスクリプション (Webhook)](https://docs.microsoft.com/graph/api/resources/webhooks) を作成することで、アラートの作成または変更を監視する。
+* [アラート サブスクリプション (Webhook)](/graph/api/resources/webhooks) を作成することで、アラートの作成または変更を監視する。
 
 * アラート サブスクリプションを管理する。 たとえば、アクティブなサブスクリプションの取得、サブスクリプションの有効期限の延長、サブスクリプションの削除を実行できます。
 
@@ -109,52 +109,52 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
 ### <a name="manage-alerts"></a>Manage alerts
 
-フィルター処理、並べ替え、または最新の結果の取得を行うには、[Microsoft Graph でサポートされている ODATA クエリ パラメーター](https://docs.microsoft.com/graph/query-parameters) "*だけ*" を指定します。 完全なベース URL または HTTP アクション (`https://graph.microsoft.com/v1.0/security/alerts`、`GET` 操作、`PATCH` 操作など) は "*指定しないでください*"。 重大度が高いアラートの一覧を取得する場合の**アラートの取得**アクションのパラメーターの例は次のとおりです。
+フィルター処理、並べ替え、または最新の結果の取得を行うには、[Microsoft Graph でサポートされている ODATA クエリ パラメーター](/graph/query-parameters) "*だけ*" を指定します。 完全なベース URL または HTTP アクション (`https://graph.microsoft.com/v1.0/security/alerts`、`GET` 操作、`PATCH` 操作など) は "*指定しないでください*"。 重大度が高いアラートの一覧を取得する場合の**アラートの取得**アクションのパラメーターの例は次のとおりです。
 
 `Filter alerts value as Severity eq 'high'`
 
-このコネクタで使用できるクエリの詳細については、[Microsoft Graph Security アラート リファレンス ドキュメント](https://docs.microsoft.com/graph/api/alert-list)を参照してください。 このコネクタを使用して強化されたエクスペリエンスを構築するには、コネクタでサポートされている[スキーマ プロパティのアラート](https://docs.microsoft.com/graph/api/resources/alert)の詳細を確認してください。
+このコネクタで使用できるクエリの詳細については、[Microsoft Graph Security アラート リファレンス ドキュメント](/graph/api/alert-list)を参照してください。 このコネクタを使用して強化されたエクスペリエンスを構築するには、コネクタでサポートされている[スキーマ プロパティのアラート](/graph/api/resources/alert)の詳細を確認してください。
 
 | アクション | 説明 |
 |--------|-------------|
-| **アラートの取得** | 1 つまたは複数の[アラートのプロパティ](https://docs.microsoft.com/graph/api/resources/alert)に基づいてフィルター処理されたアラートを取得します。例: `Provider eq 'Azure Security Center' or 'Palo Alto Networks'`。 | 
+| **アラートの取得** | 1 つまたは複数の[アラートのプロパティ](/graph/api/resources/alert)に基づいてフィルター処理されたアラートを取得します。例: `Provider eq 'Azure Security Center' or 'Palo Alto Networks'`。 | 
 | **ID によるアラートの取得** | アラート ID に基づいて特定のアラートを取得します。 | 
-| **アラートの更新** | アラート ID に基づいて特定のアラートを更新します。 必須のプロパティと編集可能なプロパティを要求に確実に渡すには、[アラートの編集可能なプロパティ](https://docs.microsoft.com/graph/api/alert-update)を参照してください。 たとえば、アラートをセキュリティ分析に割り当てて調査できるようにするには、アラートの **Assigned to** プロパティを更新できます。 |
+| **アラートの更新** | アラート ID に基づいて特定のアラートを更新します。 必須のプロパティと編集可能なプロパティを要求に確実に渡すには、[アラートの編集可能なプロパティ](/graph/api/alert-update)を参照してください。 たとえば、アラートをセキュリティ分析に割り当てて調査できるようにするには、アラートの **Assigned to** プロパティを更新できます。 |
 |||
 
 ### <a name="manage-alert-subscriptions"></a>アラート サブスクリプションを管理する
 
-Microsoft Graph では、"[*サブスクリプション*](https://docs.microsoft.com/graph/api/resources/subscription)" ([*Webhook*](https://docs.microsoft.com/graph/api/resources/webhooks)) がサポートされています。 サブスクリプションを取得、更新、または削除するには、[Microsoft Graph でサポートされている ODATA クエリ パラメーター](https://docs.microsoft.com/graph/query-parameters)を Microsoft Graph エンティティ コンストラクトに指定し、`security/alerts` と ODATA クエリを含めます。 ベース URL (`https://graph.microsoft.com/v1.0` など) は "*含めないでください*"。 代わりに、次の例の形式を使用してください。
+Microsoft Graph では、"[*サブスクリプション*](/graph/api/resources/subscription)" ([*Webhook*](/graph/api/resources/webhooks)) がサポートされています。 サブスクリプションを取得、更新、または削除するには、[Microsoft Graph でサポートされている ODATA クエリ パラメーター](/graph/query-parameters)を Microsoft Graph エンティティ コンストラクトに指定し、`security/alerts` と ODATA クエリを含めます。 ベース URL (`https://graph.microsoft.com/v1.0` など) は "*含めないでください*"。 代わりに、次の例の形式を使用してください。
 
-`security/alerts?$filter=status eq 'New'`
+`security/alerts?$filter=status eq 'NewAlert'`
 
 | アクション | 説明 |
 |--------|-------------|
-| **サブスクリプションを作成する** | 変更について通知する[サブスクリプションを作成します](https://docs.microsoft.com/graph/api/subscription-post-subscriptions)。 特定のアラートの種類用にこのサブスクリプションをフィルター処理できます。 たとえば、重大度が高いアラートについて通知するサブスクリプションを作成できます。 |
-| **アクティブなサブスクリプションを取得する** | [有効期限が切れていないサブスクリプションを取得します](https://docs.microsoft.com/graph/api/subscription-list)。 | 
-| **サブスクリプションを更新する** | サブスクリプション ID を指定して、[サブスクリプションを更新します](https://docs.microsoft.com/graph/api/subscription-update)。 たとえば、サブスクリプションを延長するには、サブスクリプションの `expirationDateTime` プロパティを更新できます。 | 
-| **サブスクリプションを削除する** | サブスクリプション ID を指定して、[サブスクリプションを削除します](https://docs.microsoft.com/graph/api/subscription-delete)。 | 
+| **サブスクリプションを作成する** | 変更について通知する[サブスクリプションを作成します](/graph/api/subscription-post-subscriptions)。 特定のアラートの種類用にこのサブスクリプションをフィルター処理できます。 たとえば、重大度が高いアラートについて通知するサブスクリプションを作成できます。 |
+| **アクティブなサブスクリプションを取得する** | [有効期限が切れていないサブスクリプションを取得します](/graph/api/subscription-list)。 | 
+| **サブスクリプションを更新する** | サブスクリプション ID を指定して、[サブスクリプションを更新します](/graph/api/subscription-update)。 たとえば、サブスクリプションを延長するには、サブスクリプションの `expirationDateTime` プロパティを更新できます。 | 
+| **サブスクリプションを削除する** | サブスクリプション ID を指定して、[サブスクリプションを削除します](/graph/api/subscription-delete)。 | 
 ||| 
 
 ### <a name="manage-threat-intelligence-indicators"></a>脅威インテリジェンス インジケーターを管理する
 
-フィルター処理、並べ替え、または最新の結果の取得を行うには、[Microsoft Graph でサポートされている ODATA クエリ パラメーター](https://docs.microsoft.com/graph/query-parameters) "*だけ*" を指定します。 完全なベース URL または HTTP アクション (`https://graph.microsoft.com/beta/security/tiIndicators`、`GET` 操作、`PATCH` 操作など) は "*指定しないでください*"。 脅威の種類が `DDoS` であるインジケーターの一覧を取得する場合の**脅威インテリジェンス インジケーターの取得**アクションのパラメーターの具体例を次に示します。
+フィルター処理、並べ替え、または最新の結果の取得を行うには、[Microsoft Graph でサポートされている ODATA クエリ パラメーター](/graph/query-parameters) "*だけ*" を指定します。 完全なベース URL または HTTP アクション (`https://graph.microsoft.com/beta/security/tiIndicators`、`GET` 操作、`PATCH` 操作など) は "*指定しないでください*"。 脅威の種類が `DDoS` であるインジケーターの一覧を取得する場合の**脅威インテリジェンス インジケーターの取得**アクションのパラメーターの具体例を次に示します。
 
 `Filter threat intelligence indicator value as threatType eq 'DDoS'`
 
-このコネクタで使用できるクエリの詳細については、[Microsoft Graph セキュリティ脅威インテリジェンス インジケーター リファレンス ドキュメントの「オプションのクエリ パラメーター」](https://docs.microsoft.com/graph/api/tiindicators-list?view=graph-rest-beta&tabs=http)を参照してください。 このコネクタを使用して強化されたエクスペリエンスを構築するには、コネクタでサポートされている[スキーマ プロパティの脅威インテリジェンス インジケーター](https://docs.microsoft.com/graph/api/resources/tiindicator?view=graph-rest-beta)の詳細を確認してください。
+このコネクタで使用できるクエリの詳細については、[Microsoft Graph セキュリティ脅威インテリジェンス インジケーター リファレンス ドキュメントの「オプションのクエリ パラメーター」](/graph/api/tiindicators-list?tabs=http&view=graph-rest-beta)を参照してください。 このコネクタを使用して強化されたエクスペリエンスを構築するには、コネクタでサポートされている[スキーマ プロパティの脅威インテリジェンス インジケーター](/graph/api/resources/tiindicator?view=graph-rest-beta)の詳細を確認してください。
 
 | アクション | 説明 |
 |--------|-------------|
-| **脅威インテリジェンス インジケーターを取得する** | 1 つまたは複数の[脅威インテリジェンス インジケーターのプロパティ](https://docs.microsoft.com/graph/api/resources/tiindicator?view=graph-rest-beta)に基づいてフィルター処理された脅威インテリジェンス インジケーターを取得します。例: `threatType eq 'MaliciousUrl' or 'DDoS'` |
+| **脅威インテリジェンス インジケーターを取得する** | 1 つまたは複数の[脅威インテリジェンス インジケーターのプロパティ](/graph/api/resources/tiindicator?view=graph-rest-beta)に基づいてフィルター処理された脅威インテリジェンス インジケーターを取得します。例: `threatType eq 'MaliciousUrl' or 'DDoS'` |
 | **脅威インテリジェンス インジケーターを ID で取得する** | 脅威インテリジェンス インジケーター ID に基づいて特定の脅威インテリジェンス インジケーターを取得します。 | 
-| **脅威インテリジェンス インジケーターを作成する** | 脅威インテリジェンス インジケーター コレクションに投稿することで、新しい 脅威インテリジェンス インジケーターを作成します。 必須プロパティを要求に確実に渡すには、[脅威インテリジェンス インジケーターを作成するための必須プロパティ](https://docs.microsoft.com/graph/api/tiindicators-post?view=graph-rest-beta&tabs=http)に関する記事を参照してください。 |
-| **複数の脅威インテリジェンス インジケーターを送信する** | 脅威インテリジェンス インジケーターのコレクションを投稿することで、複数の新しい脅威インテリジェンス インジケーターを作成します。 必須プロパティを要求に確実に渡すには、[複数の脅威インテリジェンス インジケーターを送信するための必須プロパティ](https://docs.microsoft.com/graph/api/tiindicator-submittiindicators?view=graph-rest-beta&tabs=http)に関する記事を参照してください。 |
-| **脅威インテリジェンス インジケーターを更新する** | 脅威インテリジェンス インジケーター ID に基づいて特定の脅威インテリジェンス インジケーターを更新します。 必須プロパティと編集可能なプロパティを要求に確実に渡すには、[脅威インテリジェンス インジケーターの編集可能なプロパティ](https://docs.microsoft.com/graph/api/tiindicator-update?view=graph-rest-beta&tabs=http)に関する記事を参照してください。 たとえば、targetProduct セキュリティ ツール内でインジケーターが一致した場合に適用するアクションを更新するには、脅威インテリジェンス インジケーターの **action** プロパティを更新します。 |
-| **複数の脅威インテリジェンス インジケーターを更新する** | 複数の脅威インテリジェンス インジケーターを更新します。 必須プロパティを要求に確実に渡すには、[複数の脅威インテリジェンス インジケーターを更新するための必須プロパティ](https://docs.microsoft.com/graph/api/tiindicator-updatetiindicators?view=graph-rest-beta&tabs=http)に関する記事を参照してください。 |
+| **脅威インテリジェンス インジケーターを作成する** | 脅威インテリジェンス インジケーター コレクションに投稿することで、新しい 脅威インテリジェンス インジケーターを作成します。 必須プロパティを要求に確実に渡すには、[脅威インテリジェンス インジケーターを作成するための必須プロパティ](/graph/api/tiindicators-post?tabs=http&view=graph-rest-beta)に関する記事を参照してください。 |
+| **複数の脅威インテリジェンス インジケーターを送信する** | 脅威インテリジェンス インジケーターのコレクションを投稿することで、複数の新しい脅威インテリジェンス インジケーターを作成します。 必須プロパティを要求に確実に渡すには、[複数の脅威インテリジェンス インジケーターを送信するための必須プロパティ](/graph/api/tiindicator-submittiindicators?tabs=http&view=graph-rest-beta)に関する記事を参照してください。 |
+| **脅威インテリジェンス インジケーターを更新する** | 脅威インテリジェンス インジケーター ID に基づいて特定の脅威インテリジェンス インジケーターを更新します。 必須プロパティと編集可能なプロパティを要求に確実に渡すには、[脅威インテリジェンス インジケーターの編集可能なプロパティ](/graph/api/tiindicator-update?tabs=http&view=graph-rest-beta)に関する記事を参照してください。 たとえば、targetProduct セキュリティ ツール内でインジケーターが一致した場合に適用するアクションを更新するには、脅威インテリジェンス インジケーターの **action** プロパティを更新します。 |
+| **複数の脅威インテリジェンス インジケーターを更新する** | 複数の脅威インテリジェンス インジケーターを更新します。 必須プロパティを要求に確実に渡すには、[複数の脅威インテリジェンス インジケーターを更新するための必須プロパティ](/graph/api/tiindicator-updatetiindicators?tabs=http&view=graph-rest-beta)に関する記事を参照してください。 |
 | **脅威インテリジェンス インジケーターを ID で削除する** | 脅威インテリジェンス インジケーター ID に基づいて特定の脅威インテリジェンス インジケーターを削除します。 |
-| **複数の脅威インテリジェンス インジケーターを ID で削除する** | 複数の脅威インテリジェンス インジケーターを ID で削除します。 必須プロパティを要求に確実に渡すには、[複数の脅威インテリジェンス インジケーターを ID で削除するための必須プロパティ](https://docs.microsoft.com/graph/api/tiindicator-deletetiindicators?view=graph-rest-beta&tabs=http)に関する記事を参照してください。 |
-| **複数の脅威インテリジェンス インジケーターを外部 ID で削除する** | 複数の脅威インテリジェンス インジケーターを外部 ID で削除します。 必須プロパティを要求に確実に渡すには、[複数の脅威インテリジェンス インジケーターを外部 ID で削除するための必須プロパティ](https://docs.microsoft.com/graph/api/tiindicator-deletetiindicatorsbyexternalid?view=graph-rest-beta&tabs=http)に関する記事を参照してください。 |
+| **複数の脅威インテリジェンス インジケーターを ID で削除する** | 複数の脅威インテリジェンス インジケーターを ID で削除します。 必須プロパティを要求に確実に渡すには、[複数の脅威インテリジェンス インジケーターを ID で削除するための必須プロパティ](/graph/api/tiindicator-deletetiindicators?tabs=http&view=graph-rest-beta)に関する記事を参照してください。 |
+| **複数の脅威インテリジェンス インジケーターを外部 ID で削除する** | 複数の脅威インテリジェンス インジケーターを外部 ID で削除します。 必須プロパティを要求に確実に渡すには、[複数の脅威インテリジェンス インジケーターを外部 ID で削除するための必須プロパティ](/graph/api/tiindicator-deletetiindicatorsbyexternalid?tabs=http&view=graph-rest-beta)に関する記事を参照してください。 |
 |||
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
@@ -164,3 +164,4 @@ Microsoft Graph では、"[*サブスクリプション*](https://docs.microsoft
 ## <a name="next-steps"></a>次のステップ
 
 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。
+

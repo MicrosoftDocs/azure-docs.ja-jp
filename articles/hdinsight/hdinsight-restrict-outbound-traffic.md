@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: c65e3ad7ed02ddd4e6ed1d60628a738d333e9a9c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f87c3665f558b3185e95b0ad0aa18a883439a221
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189383"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006519"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>ファイアウォールを使用して Azure HDInsight クラスターのアウトバウンド ネットワーク トラフィックを構成する
 
@@ -75,7 +75,7 @@ Azure Firewall を使用して既存の HDInsight からのエグレスをロッ
 
     **[ターゲットの FQDN] セクション**
 
-    | 名前 | ソース アドレス | `Protocol:Port` | ターゲット FQDN | Notes |
+    | 名前 | ソース アドレス | プロトコル:ポート | ターゲット FQDN | Notes |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https:443 | login.windows.net | Windows ログイン アクティビティを許可する |
     | Rule_3 | * | https:443 | login.microsoftonline.com | Windows ログイン アクティビティを許可する |
@@ -115,7 +115,8 @@ HDInsight クラスターを正しく構成するネットワーク ルールを
     | 名前 | Protocol | ソース アドレス | サービス タグ | ターゲット ポート | Notes |
     | --- | --- | --- | --- | --- | --- |
     | Rule_7 | TCP | * | SQL | 1433 | SQL の [サービス タグ] セクションで、SQL トラフィックのログを記録して監査するためのネットワーク ルールを構成します。 HDInsight サブネットで SQL Server 用にサービス エンドポイントを構成していない限り、ファイアウォールはバイパスされます。 |
-
+    | Rule_8 | TCP | * | Azure Monitor | * | (省略可能) 自動スケール機能を使用する予定のお客様は、このルールを追加する必要があります。 |
+    
    ![タイトル:アプリケーション ルール コレクションを入力する](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
 1. **[追加]** を選択します。
@@ -188,61 +189,7 @@ Azure Firewall のスケールの制限と要求の増加については、[こ�
 
 パブリック エンドポイント (`https://CLUSTERNAME.azurehdinsight.net`) または SSH エンドポイント (`CLUSTERNAME-ssh.azurehdinsight.net`) を使用するには、[こちら](../firewall/integrate-lb.md)で説明されている非対称ルーティングの問題を回避するために、必ずルート テーブルに正しいルートとNSG ルールが指定されていることを確認します。 特にこのケースでは、インバウンド NSG 規則のクライアント IP アドレスを許可し、次ホップを `internet` に設定してユーザー定義ルート テーブルに追加する必要があります。 ルーティングが正しく設定されていない場合、タイムアウト エラーが表示されます。
 
-## <a name="configure-another-network-virtual-appliance"></a>別のネットワーク仮想アプライアンスの構成
-
-> [!Important]
-> 次の情報が必要なのは、Azure Firewall 以外のネットワーク仮想アプライアンス (NVA) を構成する場合**のみ**です。
-
-前の手順では、HDInsight クラスターからの送信トラフィックを制限するために Azure Firewall を構成することができます。 Azure Firewall は自動的に、多くの一般的な重要なシナリオのトラフィックを許可するように構成されます。 別のネットワーク仮想アプライアンスを使用するには、いくつかの追加機能を構成する必要があります。 ネットワーク仮想アプライアンスを構成する場合は、次の要因にご注意ください。
-
-* サービス エンドポイント対応のサービスは、サービス エンドポイントを使用して構成する必要があります。
-* IP アドレスの依存関係が HTTP/S 以外のトラフィック (TCP トラフィックと UDP トラフィックの両方) に対応しています。
-* FQDN HTTP/HTTPS エンドポイントは、NVA デバイスに配置することができます。
-* ワイルドカード HTTP/HTTPS エンドポイントは、さまざまな修飾子に応じて変わる場合がある依存関係です。
-* 作成したルート テーブルを HDInsight サブネットに割り当てます。
-
-### <a name="service-endpoint-capable-dependencies"></a>サービス エンドポイント対応の依存関係
-
-| **エンドポイント** |
-|---|
-| Azure SQL |
-| Azure Storage |
-| Azure Active Directory |
-
-#### <a name="ip-address-dependencies"></a>IP アドレスの依存関係
-
-| **エンドポイント** | **詳細** |
-|---|---|
-| \*:123 | NTP クロック チェック。 トラフィックは、ポート 123 上の複数のエンドポイントでチェックされます |
-| [こちら](hdinsight-management-ip-addresses.md)で発行された IP | これらの IP は HDInsight サービスです |
-| ESP クラスター用の AAD DS プライベート IP |
-| \*:KMS Windows ライセンス認証の場合は 16800 |
-| \*Log Analytics の場合は 12000 |
-
-#### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS の依存関係
-
-> [!Important]
-> 以下の一覧には、いくつかの最も重要な FQDN のみを示しています。 NVA を構成するための追加の FQDN (ほとんど Azure Storage と Azure Service Bus) は[このファイルで](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json)取得できます。
-
-| **エンドポイント**                                                          |
-|---|
-| azure.archive.ubuntu.com:80                                           |
-| security.ubuntu.com:80                                                |
-| ocsp.msocsp.com:80                                                    |
-| ocsp.digicert.com:80                                                  |
-| wawsinfraprodbay063.blob.core.windows.net:443                         |
-| registry-1.docker.io:443                                              |
-| auth.docker.io:443                                                    |
-| production.cloudflare.docker.com:443                                  |
-| download.docker.com:443                                               |
-| us.archive.ubuntu.com:80                                              |
-| download.mono-project.com:80                                          |
-| packages.treasuredata.com:80                                          |
-| security.ubuntu.com:80                                                |
-| azure.archive.ubuntu.com:80                                           |
-| ocsp.msocsp.com:80                                                    |
-| ocsp.digicert.com:80                                                  |
-
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure HDInsight 仮想ネットワーク アーキテクチャ](hdinsight-virtual-network-architecture.md)
+* [ネットワーク仮想アプライアンスを構成する](./network-virtual-appliance.md)

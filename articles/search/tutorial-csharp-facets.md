@@ -7,13 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/10/2020
-ms.openlocfilehash: bc25ba6d95fe58a80c90881c6ad60cdb8801cce4
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 06/20/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 0b51960418b311ed6170d6d060f3674a9a825808
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780591"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998511"
 ---
 # <a name="tutorial-add-faceted-navigation-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用してファセット ナビゲーションを追加する
 

@@ -2,20 +2,20 @@
 title: Azure Front Door - ワイルドカード ドメインのサポート
 description: この記事では、カスタム ドメインの一覧におけるワイルドカード ドメインのマッピングや管理が、Azure Front Door でどのようにサポートされるかについて説明します。
 services: frontdoor
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2020
-ms.author: sharadag
-ms.openlocfilehash: 6d8a6d6f0b05b9b7fd0144959c82b6a2c9e659a3
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.author: duau
+ms.openlocfilehash: 349c00b312ba7c3f18bab04fb059199732b4f1b3
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81768308"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398751"
 ---
 # <a name="wildcard-domains"></a>ワイルドカード ドメイン
 

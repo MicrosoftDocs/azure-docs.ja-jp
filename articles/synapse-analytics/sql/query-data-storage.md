@@ -1,57 +1,236 @@
 ---
-title: 概要 - SQL オンデマンド (プレビュー) を使用してストレージ内のデータを照会する
-description: このセクションには、Azure Synapse Analytics 内の SQL オンデマンド (プレビュー) リソースを試すために使用できるサンプル クエリが含まれています。
+title: SQL オンデマンド (プレビュー) を使用してストレージ内のデータに対してクエリを実行する
+description: この記事では、Azure Synapse Analytics 内の SQL オンデマンド (プレビュー) リソースを使用して、Azure のストレージに対してクエリを実行する方法について説明します。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: e18fc765385e6d703e735a1ca15c539c32f36e93
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 93e6b373aa125facb3a3eddecc926438c919b335
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82116249"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489743"
 ---
-# <a name="overview-query-data-in-storage"></a>概要:ストレージ内のデータを照会する
+# <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Synapse SQL 内で SQL オンデマンド (プレビュー) リソースを使用してストレージ ファイルに対してクエリを実行する
 
-このセクションには、Azure Synapse Analytics 内の SQL オンデマンド (プレビュー) リソースを試すために使用できるサンプル クエリが含まれています。
-現在サポートされているファイルは次のとおりです。 
-- CSV
-- Parquet
-- JSON
+SQL オンデマンド (プレビュー) を使用すると、データ レイク内のデータに対してクエリを実行できます。 これには、半構造化と非構造化のデータのクエリに対応する T-SQL クエリ領域が用意されています。 クエリでは、次の T-SQL の側面がサポートされています。
 
-## <a name="prerequisites"></a>前提条件
+- 大部分の [SQL 関数と演算子](overview-features.md)を含む、完全な [SELECT](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 領域。
+- CREATE EXTERNAL TABLE AS SELECT ([CETAS](develop-tables-cetas.md)) は、[外部テーブル](develop-tables-external-tables.md)を作成し、次に並行して、Transact-SQL SELECT ステートメントの結果を Azure Storage にエクスポートします。
+
+現在サポートされているものとされていないものの詳細については、[SQL オンデマンドの概要](on-demand-workspace-overview.md)に関する記事、または以下の記事をご覧ください。
+- [ストレージ アクセスの開発](develop-storage-files-overview.md)に関する記事では、[外部テーブル](develop-tables-external-tables.md)と [OPENROWSET](develop-openrowset.md) 関数を使用してストレージからデータを読み取る方法について説明しています。
+- [ストレージ アクセスの制御](develop-storage-files-storage-access-control.md)に関する記事では、SAS 認証を使用するか、ワークスペースのマネージド ID を使用して、Synapse SQL からストレージにアクセスできるようにする方法について説明しています。
+
+## <a name="overview"></a>概要
+
+Azure Storage ファイルに格納されているデータに対するインプレース クエリのスムーズな実行をサポートするために、SQL オンデマンドでは、次の追加機能を持つ [OPENROWSET](develop-openrowset.md) 関数が使用されます。
+
+- [複数のファイルまたはフォルダーに対してクエリを実行する](#query-multiple-files-or-folders)
+- [PARQUET ファイル形式](#query-parquet-files)
+- [CSV および区切りテキストに対してクエリを実行する (フィールド ターミネータ、行ターミネータ、エスケープ文字)](#query-csv-files)
+- [選択した列のサブセットの読み取り](#read-a-chosen-subset-of-columns)
+- [スキーマ推論](#schema-inference)
+- [filename 関数](#filename-function)
+- [filepath 関数](#filepath-function)
+- [複合型と入れ子または繰り返しのデータ構造を操作する](#work-with-complex-types-and-nested-or-repeated-data-structures)
+
+## <a name="query-parquet-files"></a>PARQUET ファイルに対してクエリを実行する
+
+Parquet ソース データに対してクエリを実行するには、FORMAT = 'PARQUET' を使用します。
+
+```syntaxsql
+SELECT * FROM
+OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net//mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
+WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
+```
+
+使用例については、[Parquet ファイルに対するクエリの実行](query-parquet-files.md)に関する記事を参照してください。
+
+## <a name="query-csv-files"></a>CSV ファイルに対してクエリを実行する
+
+CSV ソース データに対してクエリを実行するには、FORMAT = 'CSV' を使用します。 CSV ファイルに対してクエリを実行するときに、`OPENROWSET` 関数の一部として CSV ファイルのスキーマを指定できます。
+
+```sql
+SELECT * FROM
+OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder/data.csv', FORMAT = 'CSV', PARSER_VERSION='2.0') 
+WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
+```
+
+解析規則をカスタム CSV 形式に合わせて調整するために使用できる追加オプションがいくつかあります。
+- ESCAPE_CHAR = 'char' は、ファイル内でそれ自体とすべての区切り記号の値をエスケープするために使用するファイル内の文字を指定します。 エスケープ文字の後にそれ自体以外の値、またはいずれかの区切り記号の値が続く場合は、その値を読み取るときにエスケープ文字が削除されます。
+ESCAPE_CHAR パラメーターは、FIELDQUOTE が有効かどうかに関係なく適用されます。 引用文字をエスケープするために使用されることはありません。 引用文字は、別の引用文字でエスケープする必要があります。 引用文字は、値が引用文字で囲まれている場合にのみ、列の値の中で使用できます。
+- FIELDTERMINATOR ='field_terminator' は、使用するフィールド ターミネータを指定します。 既定のフィールド ターミネータはコンマ (" **,** ") です。
+- ROWTERMINATOR ='row_terminator' は、使用する行ターミネータを指定します。 既定の行ターミネータは、改行文字  **\r\n** です。
+
+## <a name="file-schema"></a>ファイル スキーマ
+
+Synapse SQL の SQL 言語を使用すると、ファイルのスキーマを `OPENROWSET` 関数の一部として定義し、列のすべてまたはサブセットを読み取ることができます。また、スキーマの推論を使用して、ファイルから列の型を自動的に決定することもできます。
+
+### <a name="read-a-chosen-subset-of-columns"></a>選択した列のサブセットを読み取る
+
+読み取る列を指定するには、`OPENROWSET` ステートメント内にオプションの WITH 句を指定できます。
+
+- CSV データ ファイルがある場合、すべての列を読み取るには、列名とそのデータ型を指定します。 列のサブセットが必要な場合は、序数を使用して、元のデータ ファイルから序数で列を選択します。 列は、序数の指定によってバインドされます。
+- Parquet データ ファイルがある場合は、元のデータ ファイル内の列名と一致する列名を指定します。 列は名前によってバインドされます。
+
+```sql
+SELECT * FROM
+OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
+WITH (
+      C1 int, 
+      C2 varchar(20),
+      C3 as varchar(max)
+) as rows
+```
+
+列ごとに、列の名前と型を `WITH` 句で指定する必要があります。
+サンプルについては、[すべての列を指定せずに CSV ファイルを読み取る](query-single-csv-file.md#return-a-subset-of-columns)ことに関する記事を参照してください。
+
+## <a name="schema-inference"></a>スキーマ推論
+
+`OPENROWSET` ステートメントから WITH 句を省略することで、基になるファイルからスキーマを自動検出 (推論) するようにサービスに指示できます。
+
+> [!NOTE]
+> これは現在、PARQUET ファイル形式でのみ機能します。
+
+```sql
+SELECT * FROM
+OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
+```
+
+最適なパフォーマンスが得られる[適切な推定データ型](best-practices-sql-on-demand.md#check-inferred-data-types)が使用されていることを確認してください。 
+
+## <a name="query-multiple-files-or-folders"></a>複数のファイルまたはフォルダーに対してクエリを実行する
+
+1 つのフォルダーまたは一連のフォルダー内にある一連のファイルを 1 つのエンティティまたは行セットとして扱いながら、それらに対して T-SQL クエリを実行するには、フォルダーのパス、または一連のファイルやフォルダーのパターン (ワイルドカードを使用) を指定します。
+
+次の規則が適用されます。
+
+- パターンは、ディレクトリ パスの一部またはファイル名に使用できます。
+- 同じディレクトリ ステップまたはファイル名に複数のパターンを使用できます。
+- 複数のワイルドカードがある場合は、一致するすべてのパス内のファイルが、結果のファイル セットに含められます。
+
+```sql
+SELECT * FROM
+OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/myroot/*/mysubfolder/*.parquet', FORMAT = 'PARQUET' ) as rows
+```
+
+使用例については、[フォルダーと複数のファイルに対するクエリの実行](query-folders-multiple-csv-files.md)に関する記事を参照してください。
+
+## <a name="file-metadata-functions"></a>ファイル メタデータ関数
+
+### <a name="filename-function"></a>filename 関数
+
+この関数は、行の生成元のファイル名を返します。 
+
+特定のファイルに対してクエリを実行するには、[特定のファイルに対するクエリの実行](query-specific-files.md#filename)に関する記事の「Filename」セクションをお読みください。
+
+戻り値のデータ型は nvarchar(1024) です。 最適なパフォーマンスを確保するために、filename 関数の結果は必ず適切なデータ型にキャストしてください。 文字データ型を使用する場合は、適切な長さが使用されていることを確認します。
+
+### <a name="filepath-function"></a>filepath 関数
+
+この関数は、完全パスまたはパスの一部を返します。
+
+- パラメーターを指定せずに呼び出された場合、行の生成元である完全なファイル パスを返します。
+- パラメーターを指定して呼び出されると、パラメーターで指定された位置にあるワイルドカードと一致するパスの一部を返します。 たとえば、パラメーター値 1 は、最初のワイルドカードと一致するパスの一部を返します。
+
+追加情報については、[特定のファイルに対するクエリの実行](query-specific-files.md#filepath)に関する記事の「Filepath」セクションをお読みください。
+
+戻り値のデータ型は nvarchar(1024) です。 最適なパフォーマンスを確保するために、filepath 関数の結果は必ず適切なデータ型にキャストしてください。 文字データ型を使用する場合は、適切な長さが使用されていることを確認します。
+
+## <a name="work-with-complex-types-and-nested-or-repeated-data-structures"></a>複合型と入れ子または繰り返しのデータ構造を操作する
+
+([Parquet](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) ファイルなどの) 入れ子または繰り返しのデータ型に格納されているデータのスムーズな操作を可能にするために、SQL オンデマンドに次の拡張機能が追加されています。
+
+#### <a name="project-nested-or-repeated-data"></a>入れ子にされたデータまたは繰り返しのデータを射影する
+
+データを射影するには、入れ子にされたデータ型の列を含む Parquet ファイルに対して SELECT ステートメントを実行します。 出力時、入れ子にされた値は JSON にシリアル化され、varchar(8000) SQL データ型として返されます。
+
+```sql
+    SELECT * FROM
+    OPENROWSET
+    (   BULK 'unstructured_data_path' ,
+        FORMAT = 'PARQUET' )
+    [AS alias]
+```
+
+詳細については、[Parquet の入れ子にされた型に対するクエリの実行](query-parquet-nested-types.md#project-nested-or-repeated-data)に関する記事の「入れ子または繰り返しのデータを射影する」セクションを参照してください。
+
+#### <a name="access-elements-from-nested-columns"></a>入れ子にされた列から要素にアクセスする
+
+入れ子にされた列 (構造体など) から入れ子にされた要素にアクセスするには、"ドット表記" を使用して、フィールド名をパスに連結します。 `OPENROWSET` 関数の WITH 句に column_name としてパスを指定します。
+
+構文フラグメントの例を次に示します。
+
+```syntaxsql
+    OPENROWSET
+    (   BULK 'unstructured_data_path' ,
+        FORMAT = 'PARQUET' )
+    WITH ({'column_name' 'column_type',})
+    [AS alias]
+    'column_name' ::= '[field_name.] field_name'
+```
+
+既定で、`OPENROWSET` では、ソース フィールドの名前とパスを WITH 句に指定された列名と一致させます。 同じソース Parquet ファイル内異なる入れ子レベルに含まれている要素には、WITH 句を使用してアクセスできます。
+
+**戻り値**
+
+- 関数では、入れ子にされた型グループに含まれていないすべての Parquet の型について、指定した要素から、および指定したパスで、int、decimal、varchar などのスカラー値が返されます。
+- パスが、入れ子にされた型の要素を指している場合、関数は、指定されたパスの先頭の要素から始まる JSON フラグメントを返します。 JSON フラグメントの型は varchar(8000) です。
+- 指定された column_name でプロパティが見つからない場合、関数はエラーを返します。
+- 指定された column_path でプロパティが見つからない場合、[パス モード](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#PATHMODE)に応じて、関数は、strict モードのときはエラーを、lax モードのときには null を返します。
+
+クエリのサンプルについては、[Parquet の入れ子にされた型に対するクエリの実行](query-parquet-nested-types.md#read-properties-from-nested-object-columns)に関する記事の「入れ子にされた列から要素にアクセスする」セクションを参照してください。
+
+#### <a name="access-elements-from-repeated-columns"></a>繰り返される列から要素にアクセスする
+
+配列やマップの要素など、繰り返される列から要素にアクセスするには、射影する必要があるすべてのスカラー要素に対して [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 関数を使用し、次を指定します。
+
+- 最初のパラメーターとして、入れ子にされた、または繰り返される列
+- 2 番目のパラメーターとして、アクセスする要素またはプロパティを指定する [JSON パス](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+
+繰り返される列から非スカラー要素にアクセスするには、射影する必要があるすべての非スカラー要素に対して [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 関数を使用し、次を指定します。
+
+- 最初のパラメーターとして、入れ子にされた、または繰り返される列
+- 2 番目のパラメーターとして、アクセスする要素またはプロパティを指定する [JSON パス](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+
+次の構文フラグメントをご覧ください。
+
+```syntaxsql
+    SELECT
+       { JSON_VALUE (column_name, path_to_sub_element), }
+       { JSON_QUERY (column_name [ , path_to_sub_element ]), )
+    FROM
+    OPENROWSET
+    (   BULK 'unstructured_data_path' ,
+        FORMAT = 'PARQUET' )
+    [AS alias]
+```
+
+繰り返される列から要素にアクセスするためのクエリのサンプルについては、[Parquet の入れ子にされた型に対するクエリの実行](query-parquet-nested-types.md#access-elements-from-repeated-columns)に関する記事をご覧ください。
+
+## <a name="query-samples"></a>クエリのサンプル
+
+さまざまな型のデータに対するクエリの詳細については、サンプル クエリを参照してください。
+
+### <a name="tools"></a>ツール
 
 クエリを発行するために必要なツール:
-
-- 任意の SQL クライアント:
     - Azure Synapse Studio (プレビュー)
     - Azure Data Studio
     - SQL Server Management Studio
 
-また、パラメーターは次のとおりです。
+### <a name="demo-setup"></a>デモのセットアップ
 
-| パラメーター                                 | 説明                                                   |
-| ----------------------------------------- | ------------------------------------------------------------- |
-| SQL オンデマンド サービス エンドポイント アドレス    | サーバー名として使用されます。                                   |
-| SQL オンデマンド サービス エンドポイント リージョン     | サンプルで使用されるストレージを決定するために使用されます。 |
-| エンドポイント アクセスのユーザー名とパスワード | エンドポイントへのアクセスに使用されます。                               |
-| ビューの作成に使用するデータベース     | このデータベースはサンプルの開始点として使用されます。       |
+最初の手順として、クエリを実行する**データベースを作成**します。 次に、そのデータベースで[セットアップ スクリプト](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)を実行して、オブジェクトを初期化します。 
 
-## <a name="first-time-setup"></a>初回セットアップ
-
-この記事の後半に記載されているサンプルを使用する前に、次の 2 つの手順を実行します。
-
-- ビューのデータベースを作成する (ビューを使用する場合)
-- SQL オンデマンドがストレージ内のファイルにアクセスするために使用する資格情報を作成する
-
-### <a name="create-database"></a>データベースの作成
-
-ビューを作成するには、データベースが必要です。 このデータベースは、このドキュメントの一部のサンプル クエリで使用します。
+このセットアップ スクリプトにより、データ ソース、データベース スコープの資格情報、これらのサンプルでデータの読み取りに使用される外部ファイル形式が作成されます。
 
 > [!NOTE]
 > このデータベースは、実際のデータではなくメタデータを表示するためにのみ使用されます。  使用するデータベース名を書き留めておきます。後で必要になります。
@@ -60,66 +239,14 @@ ms.locfileid: "82116249"
 CREATE DATABASE mydbname;
 ```
 
-### <a name="create-credentials"></a>資格情報を作成する
-
-クエリを実行する前に、資格情報を作成する必要があります。 この資格情報は、SQL オンデマンド サービスがストレージ内のファイルにアクセスするために使用されます。
-
-> [!NOTE]
-> このセクションの方法を正常に実行するには、SAS トークンを使用する必要があります。
->
-> SAS トークンの使用を開始するには、この[記事](develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through)に説明されている UserIdentity を削除する必要があります。
->
-> SQL オンデマンドでは、既定で常に AAD パススルーが使用されます。
-
-ストレージのアクセス制御の管理方法の詳細については、この[リンク](develop-storage-files-storage-access-control.md)を参照してください。
-
-CSV、JSON、および Parquet コンテナーの資格情報を作成するには、次のコードを実行します。
-
-```sql
--- create credentials for CSV container in our demo storage account
-IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://sqlondemandstorage.blob.core.windows.net/csv')
-DROP CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/csv];
-GO
-
-CREATE CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/csv]
-WITH IDENTITY='SHARED ACCESS SIGNATURE',  
-SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-12-31T12%3A10%3A00Z&sig=KlSU2ullCscyTS0An0nozEpo4tO5JAgGBvw%2FJX2lguw%3D';
-GO
-
--- create credentials for JSON container in our demo storage account
-IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://sqlondemandstorage.blob.core.windows.net/json')
-DROP CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/json];
-GO
-
-CREATE CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/json]
-WITH IDENTITY='SHARED ACCESS SIGNATURE',  
-SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-12-31T12%3A10%3A00Z&sig=KlSU2ullCscyTS0An0nozEpo4tO5JAgGBvw%2FJX2lguw%3D';
-GO
-
--- create credentials for PARQUET container in our demo storage account
-IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://sqlondemandstorage.blob.core.windows.net/parquet')
-DROP CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/parquet];
-GO
-
-CREATE CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/parquet]
-WITH IDENTITY='SHARED ACCESS SIGNATURE',  
-SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-12-31T12%3A10%3A00Z&sig=KlSU2ullCscyTS0An0nozEpo4tO5JAgGBvw%2FJX2lguw%3D';
-GO
-```
-
-## <a name="provided-demo-data"></a>提供されるデモ データ
+### <a name="provided-demo-data"></a>提供されるデモ データ
 
 デモ データには次のデータセットが含まれています。
 
-- NYC タクシー - イエロー タクシーの移動記録 - パブリック NYC データセットの一部
-  - CSV 形式
-  - Parquet 形式
-- 人口データ セット
-  - CSV 形式
+- NYC タクシー - イエロー タクシーの移動記録 - CSV および Parquet 形式のパブリック NYC データセットの一部
+- CSV 形式での母集団データ セット
 - 入れ子になった列を含むサンプルの Parquet ファイル
-  - Parquet 形式
-- 書籍 JSON
-  - JSON 形式
+- JSON 形式の書籍
 
 | フォルダー パス                                                  | 説明                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -132,54 +259,15 @@ GO
 | /json/                                                       | JSON 形式のデータの親フォルダー                        |
 | /json/books/                                                 | 書籍データを含む JSON ファイル                                   |
 
-## <a name="validation"></a>検証
-
-次の 3 つのクエリを実行して、資格情報が正しく作成されているかどうかを確認します。
-
-> [!NOTE]
-> サンプル クエリ内のすべての URI は、北ヨーロッパ Azure リージョンにあるストレージ アカウントを使用します。 適切な資格情報が作成されていることを確認してください。 以下のクエリを実行して、ストレージ アカウントが表示されることを確認します。
-
-```sql
-SELECT name
-FROM sys.credentials
-WHERE
-     name IN ( 'https://sqlondemandstorage.blob.core.windows.net/csv',
-     'https://sqlondemandstorage.blob.core.windows.net/parquet',
-     'https://sqlondemandstorage.blob.core.windows.net/json');
-```
-
-適切な資格情報が見つからない場合は、「[初回セットアップ](#first-time-setup)」を確認してください。
-
-### <a name="sample-query"></a>サンプル クエリ
-
-検証の最後の手順は、次のクエリを実行することです。
-
-```sql
-SELECT
-    COUNT_BIG(*)
-FROM  
-    OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2017/month=9/*.parquet',
-        FORMAT='PARQUET'
-    ) AS nyc;
-```
-
-上記のクエリでは、次の数値が返されます: **8945574**。
 
 ## <a name="next-steps"></a>次のステップ
 
-これで、操作方法に関する次の記事に進む準備ができました。
+さまざまなファイルの種類に対してクエリを実行する方法、およびビューの作成と使用の詳細については、次の記事を参照してください。
 
-- [単一の CSV ファイルに対するクエリを実行する](query-single-csv-file.md)
-
-- [フォルダーと複数の CSV ファイルに対してクエリを実行する](query-folders-multiple-csv-files.md)
-
-- [特定のファイルに対してクエリを実行する](query-specific-files.md)
-
+- [CSV ファイルに対してクエリを実行する](query-single-csv-file.md)
 - [Parquet ファイルに対してクエリを実行する](query-parquet-files.md)
-
-- [Parquet の入れ子にされた型に対してクエリを実行する](query-parquet-nested-types.md)
-
-- [JSON ファイルに対するクエリを実行する](query-json-files.md)
-
-- [ビューの作成と使用](create-use-views.md)
+- [JSON ファイルに対してクエリを実行する](query-json-files.md)
+- [入れ子になった値に対してクエリを実行する](query-parquet-nested-types.md)
+- [フォルダーと複数の CSV ファイルに対してクエリを実行する](query-folders-multiple-csv-files.md)
+- [クエリでファイルのメタデータを使用する](query-specific-files.md)
+- [ビューの作成および使用](create-use-views.md)

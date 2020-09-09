@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 78896323-e57c-431e-bbe2-0cbde1cf43a2
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: twooley
-ms.openlocfilehash: f09d4dd46a50f1794e51342a939b8919c5c523ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b27cf605c978e15d81a43db3371a71b0ccc48c8d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228139"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85508922"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>StorSimple Snapshot Manager を使用したボリュームの表示と管理
 ## <a name="overview"></a>概要

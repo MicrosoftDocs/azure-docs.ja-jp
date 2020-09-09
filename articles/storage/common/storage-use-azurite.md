@@ -1,22 +1,22 @@
 ---
 title: ローカルでの Azure Storage の開発に Azurite エミュレーターを使用する
-description: Azurite オープンソース エミュレーター (プレビュー) では、Azure Storage アプリケーションをテストするための無料のローカル環境が提供されます。
+description: Azurite オープンソース エミュレーターでは、Azure Storage アプリケーションをテストするための無料のローカル環境が提供されます。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/31/2019
+ms.date: 07/15/2020
 ms.service: storage
 ms.subservice: common
-ms.topic: conceptual
-ms.openlocfilehash: 5e1fce0852a4e820d7ee0af626ce3fddf6773750
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.openlocfilehash: c850fccf5a86df4c35ce4db53b5b40d5e8588210
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76029926"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089415"
 ---
-# <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>ローカルでの Azure Storage の開発とテストに Azurite エミュレーターを使用する (プレビュー)
+# <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>ローカルでの Azure Storage の開発に Azurite エミュレーターを使用する
 
-Azurite バージョン 3.2 オープンソース エミュレーター (プレビュー) では、Azure Blob Storage アプリケーションおよび Azure Queue storage アプリケーションをテストするための無料のローカル環境が提供されます。 ローカルでのアプリケーションの動作に満足できたら、クラウドでの Azure Storage アカウントの使用に切り替えることができます。 エミュレーターは、Windows、Linux、および MacOS でのクロスプラットフォーム サポートを提供します。 Azurite v3 は、Azure Blob サービスによって実装された API をサポートします。
+Azurite オープンソース エミュレーターには、Azure Blob およびキュー ストレージ アプリケーションをテストするための無料のローカル環境が用意されています。 ローカルでのアプリケーションの動作に満足できたら、クラウドでの Azure Storage アカウントの使用に切り替えることができます。 エミュレーターは、Windows、Linux、および macOS でのクロスプラットフォーム サポートを提供します。
 
 Azurite は今後のストレージ エミュレーター プラットフォームです。 Azurite は [Azure ストレージ エミュレーター](storage-use-emulator.md)よりも優先されます。 Azurite は、最新バージョンの Azure Storage API をサポートするために引き続き更新されます。
 
@@ -33,45 +33,49 @@ Visual Studio Code で、 **[EXTENSIONS]** ウィンドウを選択し、 **[EXT
 
 ![Visual Studio Code の拡張機能のマーケットプレース](media/storage-use-azurite/azurite-vs-code-extension.png)
 
-または、ブラウザーで [VS Code 拡張機能のマーケット](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite)に移動します。 **[Install]\(インストール\)** を選択して Visual Studio Code を開き、Azurite 拡張機能ページに直接アクセスします。
+また、ブラウザーで [Visual Studio Code 拡張機能のマーケット](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite)に移動することもできます。 **[Install]\(インストール\)** を選択して Visual Studio Code を開き、Azurite 拡張機能ページに直接アクセスします。
 
-Azurite をすばやく開始または終了するには、VS Code ステータスバーで **[Azurite Blob Service]** または **[Azurite Queue Service]** をクリックするか、VS Code コマンド パレットで次のコマンドを発行します。 コマンド パレットを開くには、VS Code で **F1** キーを押します。
+拡張機能では、次の Visual Studio Code コマンドがサポートされています。 コマンド パレットを開くには、Visual Studio Code で F1 キーを押します。 
 
-拡張機能では、次の Visual Studio Code コマンドがサポートされています。
+   - **Azurite:Clean** - すべての Azurite サービス永続性データをリセットします
+   - **Azurite:Clean Blob Service** - Blob Service をクリーンアップします
+   - **Azurite:Clean Queue Service** - Queue service をクリーンアップします
+   - **Azurite:Close** - すべての Azurite サービスを閉じます
+   - **Azurite:Close Blob Service** - Blob Service を閉じます
+   - **Azurite:Close Queue Service** - Queue service を閉じます
+   - **Azurite:Start** - すべての Azurite サービスを開始します
+   - **Azurite:Start Blob Service** - Blob Service を開始します
+   - **Azurite:Start Queue Service** - Queue service を開始します
 
-   * **Azurite:Start** - すべての Azurite サービスを開始します
-   * **Azurite:Close** - すべての Azurite サービスを閉じます
-   * **Azurite:Clean** - すべての Azurite サービス永続性データをリセットします
-   * **Azurite:Start Blob Service** - Blob Service を開始します
-   * **Azurite:Close Blob Service** - Blob Service を閉じます
-   * **Azurite:Clean Blob Service** - Blob Service をクリーンアップします
-   * **Azurite:Start Queue Service** - Queue service を開始します
-   * **Azurite:Close Queue Service** - Queue service を閉じます
-   * **Azurite:Clean Queue Service** - Queue service をクリーンアップします
+Visual Studio Code 内で Azurite を構成するには、拡張機能ウィンドウを選択します。 **Azurite** の **[管理]** (歯車) アイコンを選択します。 **[拡張機能の設定]** を選択します。
 
-Visual Studio Code 内で Azurite を構成するには、拡張機能ウィンドウを選択します。 **Azurite** の **[管理]** (歯車) アイコンを選択します。 **[Configure Extension Settings]\(拡張機能の設定の構成\)** を選択します。
-
-![Azurite の拡張機能の設定の構成](media/storage-use-azurite/azurite-configure-extension-settings.png)
+![Azurite の拡張機能設定の構成](media/storage-use-azurite/azurite-configure-extension-settings.png)
 
 次の設定がサポートされています。
 
-   * **Azurite:Blob Host** - Blob service のリッスン エンドポイント。 既定の設定は 127.0.0.1 です。
-   * **Azurite:Blob Port** - Blob service のリスニング ポート。 既定のポートは 10000 です。
-   * **Azurite:Debug** - Azurite チャネルにデバッグ ログを出力します。 既定値は **false** です。
-   * **Azurite:Location** - ワークスペースの場所のパス。 既定値は Visual Studio Code の作業フォルダーです。
-   * **Azurite:Queue Host** - Queue サービスのリッスン エンドポイント。 既定の設定は 127.0.0.1 です。
-   * **Azurite:Queue Port** - Queue サービスのリッスン ポート。 既定のポートは 10001 です。
-   * **Azurite:Silent** - サイレント モードではアクセス ログが無効になります。 既定値は **false** です。
+   - **Azurite:Blob Host** - Blob service のリッスン エンドポイント。 既定の設定は 127.0.0.1 です。
+   - **Azurite:Blob Port** - Blob service のリスニング ポート。 既定のポートは 10000 です。
+   - **Azurite:Cert** - HTTPS モードを有効にするための、ローカルに信頼されている PEM または PFX 証明書ファイルへのパス。
+   - **Azurite:Debug** - Azurite チャネルにデバッグ ログを出力します。 既定値は **false** です。
+   - **Azurite:Key** - ローカルに信頼されている PEM キーファイルへのパス。**Azurite:Cert** が PEM ファイルを指す場合は必須です。
+   - **Azurite:Location** - ワークスペースの場所のパス。 既定値は Visual Studio Code の作業フォルダーです。
+   - **Azurite:Loose** - ルーズ モード (サポートされていないヘッダーとパラメーターを無視します) を有効にします。
+   - **Azurite:OAuth** - 省略可能な OAuth レベル。
+   - **Azurite:Pwd** - PFX ファイルのパスワード。 **Azurite:Cert** が PFX ファイルを指す場合は必須です。
+   - **Azurite:Queue Host** - Queue サービスのリッスン エンドポイント。 既定の設定は 127.0.0.1 です。
+   - **Azurite:Queue Port** - Queue サービスのリッスン ポート。 既定のポートは 10001 です。
+   - **Azurite:Silent** - サイレント モードではアクセス ログが無効になります。 既定値は **false** です。
+   - **Azurite:API バージョンの確認をスキップします** - 要求 API バージョン チェックをスキップします。 既定値は **false** です。
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>NPM を使用して Azurite をインストールして実行する
 
-このインストール方法では、[Node.js バージョン8.0 以降](https://nodejs.org)がインストールされている必要があります。 **npm** は、Node.js のすべてのインストールに含まれるパッケージ管理ツールです。 Node.js をインストールした後、次の **npm** コマンドを実行して Azurite をインストールします。
+このインストール方法では、[Node.js バージョン8.0 以降](https://nodejs.org)がインストールされている必要があります。 ノード パッケージ マネージャー (npm) は、Node.js のすべてのインストールに含まれるパッケージ管理ツールです。 Node.js をインストールした後、次の `npm` コマンドを実行して Azurite をインストールします。
 
 ```console
 npm install -g azurite
 ```
 
-Azurite をインストールしたら、「[Azurite をコマンドラインから実行する](#run-azurite-from-a-command-line)」を参照してください。
+Azurite をインストールしたら、「[Azurite をコマンド ラインから実行する](#run-azurite-from-a-command-line)」を参照してください。
 
 ## <a name="install-and-run-the-azurite-docker-image"></a>Azurite Docker イメージをインストールして実行する
 
@@ -86,7 +90,8 @@ docker pull mcr.microsoft.com/azure-storage/azurite
 次のコマンドは Azurite Docker を実行します。 `-p 10000:10000` パラメーターにより、ホスト マシンのポート 10000 から Docker インスタンスに要求がリダイレクトされます。
 
 ```console
-docker run -p 10000:10000 -p 10001:10001 mcr.microsoft.com/azure-storage/azurite
+docker run -p 10000:10000 -p 10001:10001 \
+    mcr.microsoft.com/azure-storage/azurite
 ```
 
 **ワークスペースの場所を指定する**:
@@ -94,30 +99,15 @@ docker run -p 10000:10000 -p 10001:10001 mcr.microsoft.com/azure-storage/azurite
 次の例で、`-v c:/azurite:/data` パラメーターでは Azurite の永続的なデータの場所として *c:/azurite* が指定されています。 Docker コマンドを実行する前に、*c:/azurite* ディレクトリを作成しておく必要があります。
 
 ```console
-docker run -p 10000:10000 -p 10001:10001 -v c:/azurite:/data mcr.microsoft.com/azure-storage/azurite
+docker run -p 10000:10000 -p 10001:10001 \
+    -v c:/azurite:/data mcr.microsoft.com/azure-storage/azurite
 ```
 
 **Blob Service だけを実行する**
 
 ```console
-docker run -p 10000:10000 mcr.microsoft.com/azure-storage/azurite
+docker run -p 10000:10000 mcr.microsoft.com/azure-storage/azurite \
     azurite-blob --blobHost 0.0.0.0 --blobPort 10000
-```
-
-**すべての Azurite パラメーターを設定する**:
-
-この例では、すべてのコマンドライン パラメーターを設定する方法を示します。 以下のすべてのパラメーターは、1 つのコマンドラインで指定する必要があります。
-
-```console
-docker run -p 8888:8888
-           -p 9999:9999
-           -v c:/azurite:/workspace mcr.microsoft.com/azure-storage/azurite azurite
-           -l /workspace
-           -d /workspace/debug.log
-           --blobPort 8888
-           --blobHost 0.0.0.0
-           --queuePort 9999
-           --queueHost 0.0.0.0
 ```
 
 起動時に Azurite を構成する方法の詳細については、「[コマンド ライン オプション](#command-line-options)」を参照してください。
@@ -138,37 +128,37 @@ npm run build
 npm install -g
 ```
 
-Azurite をインストールおよびビルドしたら、「[Azurite をコマンドラインから実行する](#run-azurite-from-a-command-line)」を参照してください。
+Azurite をインストールおよびビルドしたら、「[Azurite をコマンド ラインから実行する](#run-azurite-from-a-command-line)」を参照してください。
 
-## <a name="run-azurite-from-a-command-line"></a>Azurite をコマンドラインから実行する
+## <a name="run-azurite-from-a-command-line"></a>Azurite をコマンド ラインから実行する
 
 > [!NOTE]
-> Visual Studio Code 拡張機能のみをインストールした場合、Azurite をコマンドラインから実行することはできません。 代わりに、VS Code コマンド パレットを使用してください。 詳細については、「[Azurite Visual Studio Code の拡張機能をインストールして実行する](#install-and-run-the-azurite-visual-studio-code-extension)」を参照してください。
+> Visual Studio Code 拡張機能のみをインストールした場合、Azurite をコマンドラインから実行することはできません。 代わりに、Visual Studio Code コマンド パレットを使用します。 詳細については、「[Azurite Visual Studio Code の拡張機能をインストールして実行する](#install-and-run-the-azurite-visual-studio-code-extension)」を参照してください。
 
-コマンドラインを使用してすぐに作業を開始するには、**c:\azurite** という名前のディレクトリを作成し、次のコマンドを発行して Azurite を起動します。
+コマンド ラインを使用してすぐに作業を開始するには、*c:\azurite* という名前のディレクトリを作成し、次のコマンドを発行して Azurite を起動します。
 
 ```console
 azurite --silent --location c:\azurite --debug c:\azurite\debug.log
 ```
 
-このコマンドは、すべてのデータを特定のディレクトリ **c:\azurite** に格納するように Azurite に指示します。 **--location** オプションを省略した場合は、現在の作業ディレクトリが使用されます。
+このコマンドは、すべてのデータを特定のディレクトリ *c:\azurite* に格納するように Azurite に指示します。 `--location` オプションを省略した場合は、現在の作業ディレクトリが使用されます。
 
 ## <a name="command-line-options"></a>コマンド ライン オプション
 
-このセクションでは、Azurite を起動するときに使用できるコマンドライン スイッチについて詳しく説明します。 すべてのコマンドライン スイッチは省略可能です。
+このセクションでは、Azurite を起動するときに使用できるコマンド ライン スイッチについて詳しく説明します。
+
+### <a name="help"></a>Help
+
+**オプション** - `-h` または `--help` スイッチを使用してコマンド ラインのヘルプを取得します。
 
 ```console
-C:\Azurite> azurite [--blobHost <IP address>] [--blobPort <port address>] 
-    [-d | --debug <log file path>] [-l | --location <workspace path>]
-    [--queueHost <IP address>] [--queuePort <port address>]
-    [-s | --silent] [-h | --help]
+azurite -h
+azurite --help
 ```
-
-**-d** は **--debug** のショートカット、 **-l** スイッチは **--location** のショートカット、 **-s** は **--silent** のショートカット、 **-h** は **--help** のショートカットです。
 
 ### <a name="blob-listening-host"></a>BLOB リスニング ホスト
 
-**省略可能**: 既定では、Azurite はローカル サーバーとして 127.0.0.1 をリッスンします。 要件に合わせてアドレスを設定するには、 **--blobHost** スイッチを使用します。
+**オプション** - 既定では、Azurite はローカル サーバーとして 127.0.0.1 をリッスンします。 要件に合わせてアドレスを設定するには、`--blobHost` スイッチを使用します。
 
 ローカル コンピューターの要求のみを受け入れる:
 
@@ -187,7 +177,7 @@ azurite --blobHost 0.0.0.0
 
 ### <a name="blob-listening-port-configuration"></a>BLOB リスニング ポートの構成
 
-**省略可能**: 既定では、Azurite は Blob service をポート 10000 でリッスンします。 必要なリスニング ポートを指定するには、 **--blobPort** スイッチを使用します。
+**オプション** - 既定では、Azurite は Blob service をポート 10000 でリッスンします。 必要なリスニング ポートを指定するには、`--blobPort` スイッチを使用します。
 
 > [!NOTE]
 > カスタマイズされたポートを使用した後、Azure Storage ツールまたは SDK で、接続文字列または対応する構成を更新する必要があります。
@@ -208,7 +198,7 @@ azurite --blobPort 0
 
 ### <a name="queue-listening-host"></a>キュー リスニング ホスト
 
-**省略可能**: 既定では、Azurite はローカル サーバーとして 127.0.0.1 をリッスンします。 要件に合わせてアドレスを設定するには、 **--queueHost** スイッチを使用します。
+**オプション** - 既定では、Azurite はローカル サーバーとして 127.0.0.1 をリッスンします。 要件に合わせてアドレスを設定するには、`--queueHost` スイッチを使用します。
 
 ローカル コンピューターの要求のみを受け入れる:
 
@@ -227,7 +217,7 @@ azurite --queueHost 0.0.0.0
 
 ### <a name="queue-listening-port-configuration"></a>キュー リスニング ポートの構成
 
-**省略可能**: Azurite の既定では、ポート 10001 で Queue サービスがリッスンされます。 必要なリスニング ポートを指定するには、 **--queuePort** スイッチを使用します。
+**オプション** - 既定では、Azurite は Queue サービスをポート 10001 でリッスンします。 必要なリスニング ポートを指定するには、`--queuePort` スイッチを使用します。
 
 > [!NOTE]
 > カスタマイズされたポートを使用した後、Azure Storage ツールまたは SDK で、接続文字列または対応する構成を更新する必要があります。
@@ -248,79 +238,99 @@ azurite --queuePort 0
 
 ### <a name="workspace-path"></a>ワークスペース パス
 
-**省略可能**: Azurite は、実行中にデータをローカル ディスクに格納します。 ワークスペースの場所としてパスを指定するには、 **--location** スイッチを使用します。 既定では、現在のプロセスの作業ディレクトリが使用されます。
-
-```console
-azurite --location c:\azurite
-```
+**オプション** - Azurite は、実行中にデータをローカル ディスクに格納します。 ワークスペースの場所としてパスを指定するには、`-l` または `--location` スイッチを使用します。 既定では、現在のプロセスの作業ディレクトリが使用されます。 小文字の "l" であることに注意してください。
 
 ```console
 azurite -l c:\azurite
+azurite --location c:\azurite
 ```
 
 ### <a name="access-log"></a>アクセス ログ
 
-**省略可能**: 既定では、アクセス ログはコンソール ウィンドウに表示されます。 **--silent** スイッチを使用すると、アクセス ログの表示が無効になります。
-
-```console
-azurite --silent
-```
+**オプション** - 既定では、アクセス ログはコンソール ウィンドウに表示されます。 `-s` または `--silent` スイッチを使用すると、アクセス ログの表示が無効になります。
 
 ```console
 azurite -s
+azurite --silent
 ```
-
 ### <a name="debug-log"></a>デバッグ ログ
 
-**省略可能**: デバッグ ログにはすべての要求と例外スタック トレースに関する詳細情報が含まれます。 **--debug** スイッチに有効なローカル ファイル パスを指定すると、デバッグ ログが有効になります。
-
-```console
-azurite --debug path/debug.log
-```
+**オプション** - デバッグ ログにはすべての要求と例外スタック トレースに関する詳細情報が含まれます。 `-d` または `--debug` スイッチに有効なローカル ファイル パスを指定すると、デバッグ ログが有効になります。
 
 ```console
 azurite -d path/debug.log
+azurite --debug path/debug.log
 ```
 
 ### <a name="loose-mode"></a>ルーズ モード
 
-**省略可能**: Azurite では、既定で、サポートされていない要求ヘッダーとパラメーターをブロックするために厳格モードが適用されます。 **--loose** スイッチを使用すると、厳格モードが無効になります。
-
-```console
-azurite --loose
-```
-
-ショートカット スイッチは大文字の "L" です。
+**オプション** - Azurite では、既定で、サポートされていない要求ヘッダーとパラメーターをブロックするために厳格モードが適用されます。 `-L` または `--loose` スイッチを使用すると、厳格モードが無効になります。 大文字の "L" であることに注意してください。
 
 ```console
 azurite -L
+azurite --loose
 ```
+### <a name="version"></a>Version
+
+**オプション** - `-v` または `--version` スイッチを使用して、インストールされている Azurite のバージョン番号を表示します。
+
+```console
+azurite -v
+azurite --version
+```
+
+### <a name="certificate-configuration-https"></a>証明書の構成 (HTTPS)
+
+**オプション** - 既定では、Azurite は HTTP プロトコルを使用します。 HTTPS モードを有効にするには、Privacy Enhanced Mail (.pem) または [Personal Information Exchange (.pfx)](https://docs.microsoft.com/windows-hardware/drivers/install/personal-information-exchange---pfx--files) 証明書ファイルへのパスを `--cert` スイッチに指定します。
+
+PEM ファイルに `--cert` が指定されている場合、対応する `--key` スイッチを指定する必要があります。
+
+```console
+azurite --cert path/server.pem --key path/key.pem
+```
+
+PFX ファイルに `--cert` が指定されている場合、対応する `--pwd` スイッチを指定する必要があります。
+
+```console
+azurite --cert path/server.pfx --pwd pfxpassword
+```
+
+PEM および PFX ファイルの作成の詳細については、「[HTTPS セットアップ](https://github.com/Azure/Azurite/blob/master/README.md#https-setup)」を参照してください。
+
+### <a name="oauth-configuration"></a>OAuth 構成
+
+**オプション** - `--oauth` スイッチを使用して、Azurite の OAuth 認証を有効にします。
+
+```console
+azurite --oauth basic --cert path/server.pem --key path/key.pem
+```
+
+> [!NOTE]
+> OAuth には HTTPS エンドポイントが必須です。 `--oauth` スイッチと共に `--cert` スイッチを指定することで、HTTPS を確実に有効にしてください。
+
+Azurite は、`--oauth` スイッチに `basic` パラメーターを指定することによって基本認証をサポートします。 Azurite は、受信ベアラー トークンの検証や、発行者、対象ユーザー、有効期限の確認などの基本認証を行います。 Azurite は、トークンの署名およびアクセス許可を確認しません。
+
+### <a name="skip-api-version-check"></a>API のバージョン チェックをスキップする
+
+**省略可能** -起動時に、Azurite では、要求された API バージョンが有効であることが確認されます。 次のコマンドを使用すると、API のバージョン チェックがスキップされます。
+
+```console
+azurite --skipApiVersionCheck
+```
+
 
 ## <a name="authorization-for-tools-and-sdks"></a>ツールと SDK の認証
 
-任意の認証方法を使用して、Azure Storage の SDK またはツール ([Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) など) から Azurite に接続します。 認証が必要です。 Azurite は、共有キーと Shared Access Signature (SAS) を使用した認証をサポートしています。 Azurite ではパブリック コンテナーへの匿名アクセスもサポートされています。
+任意の認証方法を使用して、Azure Storage の SDK またはツール ([Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) など) から Azurite に接続します。 認証が必要です。 Azurite は、OAuth、共有キー、および Shared Access Signature (SAS) を使用した認証をサポートしています。 Azurite ではパブリック コンテナーへの匿名アクセスもサポートされています。
+
+Azure SDK を使用している場合は、`--oauth basic and --cert --key/--pwd` オプションを使用して Azurite を開始します。
 
 ### <a name="well-known-storage-account-and-key"></a>既知のストレージ アカウントとキー
 
-Azurite では次のアカウント名とキーを使用できます。 これは従来の Azure Storage エミュレーターで使用されるものと同じ既知のアカウントとキーです。
+Azurite は、従来の Azure Storage エミュレーターで使用されるものと同じ既知のアカウントとキーを受け入れます。
 
-* アカウント名: `devstoreaccount1`
-* アカウント キー: `Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==`
-
-> [!NOTE]
-> SharedKey 認証に加えて、Azurite ではアカウントとサービスの SAS 認証がサポートされています。 コンテナーがパブリック アクセスを許可するように設定されている場合は匿名アクセスも使用できます。
-
-### <a name="connection-string"></a>接続文字列
-
-アプリケーションから Azurite に接続する最も簡単な方法は、ショートカット *UseDevelopmentStorage=true* を参照するアプリケーションの構成ファイル内で接続文字列を構成することです。 たとえば、*app.config* ファイル内の接続文字列は次のようになります。
-
-```xml
-<appSettings>
-  <add key="StorageConnectionString" value="UseDevelopmentStorage=true" />
-</appSettings>
-```
-
-詳細については、「[Azure Storage の接続文字列を構成する](storage-configure-connection-string.md)」を参照してください。
+- アカウント名: `devstoreaccount1`
+- アカウント キー: `Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==`
 
 ### <a name="custom-storage-accounts-and-keys"></a>カスタム ストレージ アカウントとキー
 
@@ -332,10 +342,18 @@ Azurite では、`AZURITE_ACCOUNTS` 環境変数を次の形式で設定する�
 set AZURITE_ACCOUNTS="account1:key1"
 ```
 
+```bash
+export AZURITE_ACCOUNTS="account1:key1"
+```
+
 それぞれ 2 つのキーを持つ複数のストレージ アカウントを使用する場合は、次のように指定します。
 
 ```cmd
 set AZURITE_ACCOUNTS="account1:key1:key2;account2:key1:key2"
+```
+
+```bash
+export AZURITE_ACCOUNTS="account1:key1:key2;account2:key1:key2"
 ```
 
 Azurite では、既定で、1 分ごとにカスタム アカウント名とキーが環境変数から更新されます。 この機能により、アカウント キーを動的にローテーションしたり、Azurite を再起動することなく新しいストレージ アカウントを追加したりできます。
@@ -343,15 +361,161 @@ Azurite では、既定で、1 分ごとにカスタム アカウント名とキ
 > [!NOTE]
 > カスタム ストレージ アカウントを設定すると、既定の `devstoreaccount1` ストレージ アカウントは無効になります。
 
-> [!NOTE]
-> カスタム アカウント名とキーを使用する場合は、それに応じて接続文字列を更新します。
+### <a name="connection-strings"></a>Connection strings
 
-> [!NOTE]
-> Linux 環境で環境変数を設定するには、`export` キーワードを使用します。Windows では `set` を使用します。
+アプリケーションから Azurite に接続する最も簡単な方法は、ショートカット *UseDevelopmentStorage=true* を参照するアプリケーションの構成ファイル内で接続文字列を構成することです。 たとえば、*app.config* ファイル内の接続文字列は次のようになります。
 
-### <a name="storage-explorer"></a>ストレージ エクスプローラー
+```xml
+<appSettings>
+  <add key="StorageConnectionString" value="UseDevelopmentStorage=true" />
+</appSettings>
+```
 
-Azure Storage Explorer では、 **[アカウントの追加]** アイコンをクリックし、 **[Attach to a local emulator]\(ローカル エミュレーターにアタッチ\)** を選択して **[接続]** をクリックすることによって Azurite に接続します。
+#### <a name="http-connection-strings"></a>HTTP 接続文字列
+
+次の接続文字列は、[Azure SDK](https://aka.ms/azsdk) またはツール (Azure CLI 2.0 や Storage Explorer など) に渡すことができます。
+
+完全な接続文字列は次のとおりです。
+
+`DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;`
+
+Blob service にのみ接続する場合、接続文字列は次のようになります。
+
+`DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;`
+
+Queue サービスにのみ接続する場合、接続文字列は次のようになります。
+
+`DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;`
+
+#### <a name="https-connection-strings"></a>HTTPS 接続文字列
+
+完全な HTTPS 接続文字列は次のとおりです。
+
+`DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://127.0.0.1:10000/devstoreaccount1;QueueEndpoint=https://127.0.0.1:10001/devstoreaccount1;`
+
+Blob service のみを使用する場合、HTTPS 接続文字列は次のようになります。
+
+`DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://127.0.0.1:10000/devstoreaccount1;`
+
+Queue サービスのみを使用する場合、HTTPS 接続文字列は次のようになります。
+
+`DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;QueueEndpoint=https://127.0.0.1:10001/devstoreaccount1;`
+
+`dotnet dev-certs` を使用して自己署名証明書を生成した場合は、次の接続文字列を使用します。
+
+`DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://localhost:10000/devstoreaccount1;QueueEndpoint=https://localhost:10001/devstoreaccount1;`
+
+[カスタム ストレージ アカウントとキー](#custom-storage-accounts-and-keys)を使用する場合は、接続文字列を更新します。
+
+詳細については、「[Azure Storage の接続文字列を構成する](storage-configure-connection-string.md)」を参照してください。
+
+### <a name="azure-sdks"></a>Azure SDK
+
+[Azure SDK](https://aka.ms/azsdk) で Azurite を使用するには、 OAuth と HTTPS のオプションを使用します。
+
+```console
+azurite --oauth basic --cert certname.pem --key certname-key.pem
+```
+
+#### <a name="azure-blob-storage"></a>Azure Blob Storage
+
+続いて、BlobContainerClient、BlobServiceClient、または BlobClient をインスタンス化できます。
+
+```csharp
+// With container URL and DefaultAzureCredential
+var client = new BlobContainerClient(
+    new Uri("https://127.0.0.1:10000/devstoreaccount1/container-name"), new DefaultAzureCredential()
+  );
+
+// With connection string
+var client = new BlobContainerClient(
+    "DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://127.0.0.1:10000/devstoreaccount1;QueueEndpoint=https://127.0.0.1:10001/devstoreaccount1;", "container-name"
+  );
+
+// With account name and key
+var client = new BlobContainerClient(
+    new Uri("https://127.0.0.1:10000/devstoreaccount1/container-name"),
+    new StorageSharedKeyCredential("devstoreaccount1", "Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==")
+  );
+```
+
+#### <a name="azure-queue-storage"></a>Azure Queue Storage
+
+QueueClient または QueueServiceClient をインスタンス化することもできます。
+
+```csharp
+// With queue URL and DefaultAzureCredential
+var client = new QueueClient(
+    new Uri("https://127.0.0.1:10001/devstoreaccount1/queue-name"), new DefaultAzureCredential()
+  );
+
+// With connection string
+var client = new QueueClient(
+    "DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://127.0.0.1:10000/devstoreaccount1;QueueEndpoint=https://127.0.0.1:10001/devstoreaccount1;", "queue-name"
+  );
+
+// With account name and key
+var client = new QueueClient(
+    new Uri("https://127.0.0.1:10001/devstoreaccount1/queue-name"),
+    new StorageSharedKeyCredential("devstoreaccount1", "Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==")
+  );
+```
+
+### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer
+
+Storage Explorer を使用すると、Azurite に格納されているデータを表示できます。
+
+#### <a name="connect-to-azurite-using-http"></a>HTTP を使用して Azurite に接続する
+
+Storage Explorer で、次の手順に従って Azurite に接続します。
+
+ 1. **[アカウントの管理]** アイコンを選択します
+ 1. **[アカウントの追加]** を選択します
+ 1. **[ローカル エミュレーターにアタッチする]** を選択します
+ 1. **[次へ]** を選択します
+ 1. **[表示名]** フィールドを編集して、任意の名前にします
+ 1. もう一度 **[次へ]** を選択します
+ 1. **[接続]** を選択します
+
+#### <a name="connect-to-azurite-using-https"></a>HTTPS を使用して Azurite に接続する
+
+既定では、Storage Explorer は、自己署名証明書を使用する HTTPS エンドポイントを開きません。 HTTPS で Azurite を実行している場合は、自己署名証明書を使用している可能性があります。 Storage Explorer で、 **[編集]**  ->  **[SSL 証明書]**  ->  **[証明書のインポート]** ダイアログを使用して SSL 証明書をインポートします。
+
+##### <a name="import-certificate-to-storage-explorer"></a>証明書を Storage Explorer にインポートする
+
+1. ローカル コンピューターで証明書を検索します。
+1. Storage Explorer で、 **[編集]**  ->  **[SSL 証明書]**  ->  **[証明書のインポート]** の順に移動して、証明書をインポートします。
+
+証明書をインポートしないと、次のエラーが表示されます。
+
+`unable to verify the first certificate` または `self signed certificate in chain`
+
+##### <a name="add-azurite-via-https-connection-string"></a>HTTPS 接続文字列を使用して Azurite を追加する
+
+Storage Explorer に Azurite HTTPS を追加するには、次の手順に従います。
+
+1. **[エクスプローラーの切り替え]** を選択します
+1. **[Local & Attached]\(ローカルで接続済み\)** を選択します
+1. **[ストレージ アカウント]** を右クリックし、 **[Connect to Azure Storage]\(Azure Storage に接続する\)** を選択します
+1. **[Use a connection string]\(接続文字列を使用する\)** を選択します
+1. **[次へ]** を選択します。
+1. **[表示名]** フィールドに値を入力します
+1. このドキュメントの前のセクションに示した [HTTPS 接続文字列](#https-connection-strings)を入力します
+1. **[次へ]** を選択します
+1. **[接続]** を選択します
+
+## <a name="workspace-structure"></a>ワークスペースの構造
+
+Azurite を初期化するときに、次のファイルとフォルダーがワークスペースの場所に作成されることがあります。
+
+- `__blobstorage__` - Azurite Blob service の永続化されたバイナリ データを格納しているディレクトリ
+- `__queuestorage__` - Azurite Queue サービスの永続化されたバイナリ データを格納しているディレクトリ
+- `__azurite_db_blob__.json` - Azurite Blob service のメタデータ ファイル
+- `__azurite_db_blob_extent__.json` - Azurite Blob service のエクステント メタデータ ファイル
+- `__azurite_db_queue__.json` - Azurite Queue サービスのメタデータ ファイル
+- `__azurite_db_queue_extent__.json` - Azurite Queue サービスのエクステント メタデータ ファイル
+
+Azurite をクリーンアップするには、上記のファイルとフォルダーを削除し、エミュレーターを再起動します。
 
 ## <a name="differences-between-azurite-and-azure-storage"></a>Azurite と Azure Storage の違い
 
@@ -379,7 +543,7 @@ Azurite の BLOB にアクセスするには次のアドレスを使用できま
 
 ### <a name="scaling-and-performance"></a>スケーリングとパフォーマンス
 
-Azurite はスケーラブルなストレージ サービスではなく、多数の同時クライアントはサポートされません。 パフォーマンスの保証はありません。 Azurite は開発とテストを目的としています。
+Azurite は、多数の接続されたクライアントをサポートしていません。 パフォーマンスの保証はありません。 Azurite は開発とテストを目的としています。
 
 ### <a name="error-handling"></a>エラー処理
 
@@ -387,7 +551,7 @@ Azurite は Azure Storage エラー処理ロジックに合わせて調整され
 
 ### <a name="ra-grs"></a>RA-GRS
 
-Azurite は、読み取りアクセス geo 冗長レプリケーション (RA-GRS) をサポートしています。 ストレージ リソースの場合、2 次拠点にアクセスするにはアカウント名に **-secondary** を付加します。 たとえば、Azurite で読み取り専用の 2 次拠点を使用して BLOB にアクセスするには、次のアドレスを使用します。
+Azurite は、読み取りアクセス geo 冗長レプリケーション (RA-GRS) をサポートしています。 ストレージ リソースの場合、2 次拠点にアクセスするにはアカウント名に `-secondary` を付加します。 たとえば、Azurite で読み取り専用の 2 次拠点を使用して BLOB にアクセスするには、次のアドレスを使用します。
 
 `http://127.0.0.1:10000/devstoreaccount1-secondary/mycontainer/myblob.txt`
 
@@ -397,5 +561,5 @@ Azurite への参加や提案をお待ちしています。 近日公開され�
 
 ## <a name="next-steps"></a>次のステップ
 
-* 「[Azure ストレージ エミュレーターを使用した開発とテスト](storage-use-emulator.md)」には、Azurite によって置き換えられつつある従来の Azure ストレージ エミュレーターについて記載されています。
-* 「[Azure Storage の接続文字列を構成する](storage-configure-connection-string.md)」では、有効な Azure Storage の接続文字列をアセンブルする方法が説明されています。
+- 「[Azure ストレージ エミュレーターを使用した開発とテスト](storage-use-emulator.md)」には、Azurite によって置き換えられつつある従来の Azure ストレージ エミュレーターについて記載されています。
+- 「[Azure Storage の接続文字列を構成する](storage-configure-connection-string.md)」では、有効な Azure Storage の接続文字列をアセンブルする方法が説明されています。

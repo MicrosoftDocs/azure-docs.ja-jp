@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) 上で複数の同時実行ポッド
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 144d93cbb3b66f260dbd9d92863ca5fb13ed00a5
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: e7f013d16b899418a5262f23dfcc595a1e270616
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207668"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281210"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 上で Azure ファイル共有を含むボリュームを手動で作成して使用する
 
@@ -234,6 +234,8 @@ azurefile   Bound    azurefile   5Gi        RWX            azurefile      5s
 関連するベスト プラクティスについては、[AKS のストレージとバックアップに関するベスト プラクティス][operator-best-practices-storage]に関する記事を参照してください。
 
 AKS クラスターと Azure Files の操作について詳しくは、[Azure Files 対応の Kubernetes プラグイン][kubernetes-files]に関するページを参照してください。
+
+ストレージ クラスのパラメーターについては、「[静的プロビジョニング (独自のファイル共有を使用)](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/docs/driver-parameters.md#static-provisionbring-your-own-file-share)」を参照してください。
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#create

@@ -2,24 +2,24 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 04/14/2020
-ms.openlocfilehash: 45dad7d7b176037087e37638db380294521a8e19
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 08/17/2020
+ms.openlocfilehash: a56b95fe4f6b7005e823ebe80fd2e74ed1cf7725
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82135057"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511346"
 ---
-この記事では、Custom Vision SDK と Go を使用して物体検出モデルを構築する際の足がかりとして役立つ情報とサンプル コードを紹介します。 作成後は、タグ付きのリージョンの追加、画像のアップロード、プロジェクトのトレーニング、プロジェクトの公開された予測エンドポイント URL の取得、エンドポイントを使用したプログラミングによる画像のテストを行うことができます。 この例は、独自の Go アプリケーションを構築するためのテンプレートとしてご利用ください。
+この記事では、Custom Vision クライアント ライブラリと Go を使用して物体検出モデルを構築する際の足がかりとして役立つ情報とサンプル コードを紹介します。 作成後は、タグ付きのリージョンの追加、画像のアップロード、プロジェクトのトレーニング、プロジェクトの公開された予測エンドポイント URL の取得、エンドポイントを使用したプログラミングによる画像のテストを行うことができます。 この例は、独自の Go アプリケーションを構築するためのテンプレートとしてご利用ください。
 
 ## <a name="prerequisites"></a>前提条件
 
 - [Go 1.8+](https://golang.org/doc/install)
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="install-the-custom-vision-sdk"></a>Custom Vision SDK をインストールする
+## <a name="install-the-custom-vision-client-library"></a>Custom Vision クライアント ライブラリをインストールする
 
-Custom Vision Service SDK for Go をインストールするには、PowerShell で次のコマンドを実行します。
+Go 用 Custom Vision Service クライアント ライブラリをインストールするには、PowerShell で次のコマンドを実行します。
 
 ```shell
 go get -u github.com/Azure/azure-sdk-for-go/...

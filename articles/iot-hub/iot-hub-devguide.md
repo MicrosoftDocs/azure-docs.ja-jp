@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/29/2018
 ms.custom: mqtt
 ms.openlocfilehash: 4e380fdcd72ab21f00272536b9f08145dcb09bc1
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81728814"
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Azure IoT Hub 開発者ガイド

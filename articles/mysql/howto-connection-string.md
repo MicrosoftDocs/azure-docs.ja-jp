@@ -4,14 +4,15 @@ description: このドキュメントでは、Azure Database for MySQL に接続
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: ff257e101ca925a554f2343d357e2042d2930b45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-python, devx-track-javascript
+ms.openlocfilehash: 2dc701b15b0fd30af0f4a28e39153c0ee77ae128
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062394"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850340"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>Azure Database for MySQL にアプリケーションを接続する方法
 このトピックでは、Azure Database for MySQL でサポートされているすべての接続文字列の種類と共に、テンプレートと例を紹介します。 実際に使用する接続文字列のパラメーターと設定は異なる可能性があります。
@@ -62,7 +63,7 @@ client = Mysql2::Client.new(username: {username@servername}, password: {your_pas
 ```
 
 ## <a name="get-the-connection-string-details-from-the-azure-portal"></a>Azure ポータルから接続文字列の詳細を取得する
-[Azure ポータル](https://portal.azure.com)で、Azure Database for MySQL サーバーに移動し、 **[接続文字列]** をクリックして、インスタンスの文字列リストを取得します。![Azure ポータルの [接続文字列] ウィンドウ](./media/howto-connection-strings/connection-strings-on-portal.png)
+[Azure portal](https://portal.azure.com) で、Azure Database for MySQL サーバーに移動し、 **[接続文字列]** をクリックして、インスタンスの文字列リストを取得します。![Azure portal 上の [接続文字列] ウィンドウ](./media/howto-connection-strings/connection-strings-on-portal.png)
 
 この文字列は、ドライバー、サーバー、その他のデータベース接続パラメーターといった詳細情報を提供します。 独自のパラメーター (データベース名やパスワードなど) を使用してこれらの例を変更します。 その文字列を使用して、コードやアプリケーションからサーバーに接続できます。
 

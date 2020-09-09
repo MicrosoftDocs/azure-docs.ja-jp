@@ -9,12 +9,13 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: pasta
-ms.openlocfilehash: e01cc9e8cedb6c38da0b56e04419c706d5d0566e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 6bde75fe0fb856633d7849173faf21db76edc950
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75946034"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406913"
 ---
 # <a name="how-to-display-math-in-the-immersive-reader"></a>イマーシブ リーダーで数式を表示する方法
 

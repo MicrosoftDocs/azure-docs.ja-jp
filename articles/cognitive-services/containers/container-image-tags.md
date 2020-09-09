@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: cabc3d2a0f8eb3a75938d1768bb0085aab528391
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: e0df3de5eadfd2cc5c00c52da5c4942b42a68b2b
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584605"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722570"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Azure Cognitive Services コンテナー イメージ タグ
 
@@ -35,13 +35,29 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 
 ## <a name="computer-vision"></a>Computer Vision
 
-[Computer Vision][cv-containers] コンテナー イメージは `containerpreview.azurecr.io` コンテナー レジストリにあります。 `microsoft` リポジトリ内にあり、`cognitive-services-read` という名前が付いています。 完全修飾コンテナー イメージ名は `containerpreview.azurecr.io/microsoft/cognitive-services-read` です。
+[Computer Vision][cv-containers] Read OCR コンテナー イメージは `containerpreview.azurecr.io` コンテナー レジストリにあります。 `microsoft` リポジトリ内にあり、`cognitive-services-read` という名前が付いています。 完全修飾コンテナー イメージ名は `containerpreview.azurecr.io/microsoft/cognitive-services-read` です。
 
 このコンテナー イメージでは、次のタグを利用できます。
 
 | イメージ タグ                    | Notes |
 |-------------------------------|:------|
-| `latest`                      |       |
+| `latest ( (2.0.013250001-amd64-preview)` | • コンテナーのメモリ使用量をさらに減らします。 |
+|                                          | • マルチポッド セットアップには外部キャッシュが必要です。 たとえば、キャッシュ用に Redis を設定します。 |
+|                                          | • Redis cache がセットアップされていて ResultExpirationPeriod=0 のとき、結果が失われる問題を解決します。  |
+|                                          | • 要求本文サイズの 26MB 制限を削除します。 コンテナーでは 26MB を超えるファイルを受け取れるようになります。  |
+|                                          | • タイム スタンプとビルド バージョンをコンソール ログに追加します。  |
+| `1.1.013050001-amd64-preview`            | * 認識結果を消去するタイミングを指定する目的で ReadEngineConfig:ResultExpirationPeriod コンテナー初期化構成を追加しました。 |
+|                                          | 設定は時間単位であり、既定値は 48 時間です。   |
+|                                          |   この設定により、結果格納時のメモリ使用量を減らすことができます。特に、コンテナーのメモリ内ストレージが使用されるときに効果があります。  |
+|                                          |    * 例 1. ReadEngineConfig:ResultExpirationPeriod=1、プロセスから 1 時間後に認識結果が消去されます。   |
+|                                          |    * 例 2. ReadEngineConfig:ResultExpirationPeriod=0、結果取得後に認識結果が消去されます。  |
+|                                          | 無効なイメージ形式がシステムに渡されたときの 500 内部サーバー エラーを解決しました。 400 エラーが返されるようになりました。   |
+|                                          | `{`  |
+|                                          | `"error": {`  |
+|                                          |      `"code": "InvalidImageSize",`  |
+|                                          |      `"message": "Image must be between 1024 and 209715200 bytes."`  |
+|                                          |          `}`  |
+|                                          | `}`  |
 | `1.1.011580001-amd64-preview` |       |
 | `1.1.009920003-amd64-preview` |       |
 | `1.1.009910003-amd64-preview` |       |
@@ -663,8 +679,8 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 | `3.0-fr`   | 感情分析 v3 (フランス語)                |
 | `3.0-it`   | 感情分析 v3 (イタリア語)               |
 | `3.0-de`   | 感情分析 v3 (ドイツ語)                |
-| `3.0-zh`   | 感情分析 v3 (中国語-簡体字)  |
-| `3.0-zht`  | 感情分析 v3 (中国語 - 繁体字) |
+| `3.0-zh`   | 感情分析 v3 (簡体字中国語)  |
+| `3.0-zht`  | 感情分析 v3 (繁体字中国語) |
 | `3.0-ja`   | 感情分析 v3 (日本語)              |
 | `3.0-pt`   | 感情分析 v3 (ポルトガル語)            |
 | `3.0-nl`   | 感情分析 v3 (オランダ語)                 |

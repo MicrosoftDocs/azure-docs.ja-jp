@@ -1,22 +1,22 @@
 ---
-title: 統計の作成と更新
+title: Azure Synapse SQL を使用したテーブルの統計の作成と更新
 description: Synapse SQL プール内のテーブルに関するクエリ用に最適化された統計の作成と更新のレコメンデーションと例。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6f2af87cf5cef1b5a80bc16d962fba579b4ff309
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 914c3128805c9875249bb1998fcdb6e456e73b16
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985866"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799317"
 ---
 # <a name="table-statistics-in-synapse-sql-pool"></a>Synapse SQL プールでのテーブルの統計
 
@@ -97,14 +97,63 @@ table_name は、表示する統計が格納されているテーブルの名前
 
 クエリのトラブルシューティングを行うときに最初に尋ねる質問の 1 つが、「**統計は最新の状態ですか**」というものです。
 
-この質問は、データの経過時間で答えられるものではありません。 基になるデータに重要な変更がない場合は、最新の統計オブジェクトが古い可能性があります。
+この質問は、データの経過時間で答えられるものではありません。 基になるデータに重要な変更がない場合は、最新の統計オブジェクトが古い可能性があります。 行数が大幅に変わった場合や、列の値の分布で重大な変更があった場合は、"*その後で*" 統計を更新する必要があります。 
 
-> [!TIP]
-> 行数が大幅に変わった場合や、列の値の分布で重大な変更があった場合は、"*その後で*" 統計を更新する必要があります。
+前回の統計が更新されてからテーブル内のデータが変更されたかどうかを判断するための動的管理ビューはありません。  次の 2 つのクエリは、統計が古くなっているかどうかを判断するのに役立ちます。
 
-前回の統計が更新されてからテーブル内のデータが変更されたかどうかを判断するための動的管理ビューはありません。 統計情報の経過期間がわかると、全体像の一部を把握できます。
+**クエリ 1:** 統計による行数 (**stats_row_count**) と実際の行数 (**actual_row_count**) の違いを確認します。 
 
-以下のクエリでは、それぞれのテーブルで統計情報が最後に更新された時刻を確認できます。
+```sql
+select 
+objIdsWithStats.[object_id], 
+actualRowCounts.[schema], 
+actualRowCounts.logical_table_name, 
+statsRowCounts.stats_row_count, 
+actualRowCounts.actual_row_count,
+row_count_difference = CASE
+    WHEN actualRowCounts.actual_row_count >= statsRowCounts.stats_row_count THEN actualRowCounts.actual_row_count - statsRowCounts.stats_row_count
+    ELSE statsRowCounts.stats_row_count - actualRowCounts.actual_row_count
+END,
+percent_deviation_from_actual = CASE
+    WHEN actualRowCounts.actual_row_count = 0 THEN statsRowCounts.stats_row_count
+    WHEN statsRowCounts.stats_row_count = 0 THEN actualRowCounts.actual_row_count
+    WHEN actualRowCounts.actual_row_count >= statsRowCounts.stats_row_count THEN CONVERT(NUMERIC(18, 0), CONVERT(NUMERIC(18, 2), (actualRowCounts.actual_row_count - statsRowCounts.stats_row_count)) / CONVERT(NUMERIC(18, 2), actualRowCounts.actual_row_count) * 100)
+    ELSE CONVERT(NUMERIC(18, 0), CONVERT(NUMERIC(18, 2), (statsRowCounts.stats_row_count - actualRowCounts.actual_row_count)) / CONVERT(NUMERIC(18, 2), actualRowCounts.actual_row_count) * 100)
+END
+from
+(
+    select distinct object_id from sys.stats where stats_id > 1
+) objIdsWithStats
+left join
+(
+    select object_id, sum(rows) as stats_row_count from sys.partitions group by object_id
+) statsRowCounts
+on objIdsWithStats.object_id = statsRowCounts.object_id 
+left join
+(
+    SELECT sm.name [schema] ,
+    tb.name logical_table_name ,
+    tb.object_id object_id ,
+    SUM(rg.row_count) actual_row_count
+    FROM sys.schemas sm
+    INNER JOIN sys.tables tb ON sm.schema_id = tb.schema_id
+    INNER JOIN sys.pdw_table_mappings mp ON tb.object_id = mp.object_id
+    INNER JOIN sys.pdw_nodes_tables nt ON nt.name = mp.physical_name
+    INNER JOIN sys.dm_pdw_nodes_db_partition_stats rg
+    ON rg.object_id = nt.object_id
+    AND rg.pdw_node_id = nt.pdw_node_id
+    AND rg.distribution_id = nt.distribution_id
+    WHERE 1 = 1
+    GROUP BY sm.name, tb.name, tb.object_id
+) actualRowCounts
+on objIdsWithStats.object_id = actualRowCounts.object_id
+
+```
+
+>[!TIP]
+> Synapse SQL のパフォーマンスを向上させるには、永続的なユーザー テーブルで、**sys.pdw_table_mappings** ではなく **sys.pdw_permanent_table_mappings** を使用することを検討してください。 詳細については、「 **[sys.pdw_permanent_table_mappings &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** 」を参照してください。
+
+**クエリ 2:** 各テーブルで統計が最後に更新された日時を調べて、統計の経過期間を確認します。 
 
 > [!NOTE]
 > 列の値の分布に重要な変更がある場合は、最後に更新された時刻に関係なく統計を更新する必要があります。

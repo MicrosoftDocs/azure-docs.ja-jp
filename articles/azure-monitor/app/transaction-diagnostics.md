@@ -4,12 +4,12 @@ description: Application Insights のエンド ツー エンドのトランザ�
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
-ms.openlocfilehash: 39c4c51a1bc84e06efac3674b1ee5b487f9e6729
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 552e80d6c90a18180ab41dce72e995b6804a91bc
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671139"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318914"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>統合されたコンポーネント間のトランザクションの診断
 
@@ -64,7 +64,7 @@ ms.locfileid: "77671139"
 
 ## <a name="profiler-and-snapshot-debugger"></a>Profiler とスナップショット デバッガー
 
-[Application Insights Profiler](../../azure-monitor/app/profiler.md) または[スナップショット デバッガー](snapshot-debugger.md)は、パフォーマンスと障害の問題をコード レベルで診断するのに役立ちます。 このエクスペリエンスを使用して、任意のコンポーネントからの Profiler トレースやスナップショットをシングル クリックで表示できます。
+[Application Insights Profiler](./profiler.md) または[スナップショット デバッガー](snapshot-debugger.md)は、パフォーマンスと障害の問題をコード レベルで診断するのに役立ちます。 このエクスペリエンスを使用して、任意のコンポーネントからの Profiler トレースやスナップショットをシングル クリックで表示できます。
 
 Profiler が機能しない場合は、**serviceprofilerhelp\@microsoft.com** までお問い合わせください。
 
@@ -95,3 +95,4 @@ Profiler が機能しない場合は、**serviceprofilerhelp\@microsoft.com** �
 *関連項目のクエリのほとんどが、新しいエクスペリエンスからなくなっているのはなぜですか?*
 
 これは仕様です。 コンポーネント全体に渡って、関連項目はすべて左側 (上部と下部セクション) から既に利用可能です。 新しいエクスペリエンスの左側で扱われない関連項目が 2 つあります。このイベントの 5 分前後からのすべてのテレメトリと、ユーザー タイムラインです。
+

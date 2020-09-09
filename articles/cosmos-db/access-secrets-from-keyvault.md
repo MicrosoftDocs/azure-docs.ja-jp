@@ -6,15 +6,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 225221635f978e3d70cec4ce7e9d78d6b100b4fd
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 50a9d5e3d3bbb608160ee160c5f1aede8f70e530
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618768"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262669"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Azure Key Vault を使用して Azure Cosmos キーをセキュリティ保護する 
 
@@ -51,7 +51,7 @@ Azure Cosmos DB アクセス キーを Key Vault に格納して読み取るた�
    * シークレットの **[名前]** を指定します。
    * Cosmos DB アカウントの接続文字列を **[値]** フィールドに指定します。 次に、 **[作成]** を選択します。
 
-   ![シークレットの作成](./media/access-secrets-from-keyvault/create-a-secret.png)
+   :::image type="content" source="./media/access-secrets-from-keyvault/create-a-secret.png" alt-text="シークレットを作成します":::
 
 4. シークレットが作成されたら、開いて、次の形式の ** シークレット識別子をコピーします。 この識別子は次のセクションで使用します。 
 
@@ -70,11 +70,11 @@ Azure Cosmos DB アクセス キーを Key Vault に格納して読み取るた�
 
 5. アプリケーションがデプロイされたら、 Azure Portal で、デプロイした Web アプリケーションに移動し、そのアプリケーションの **[マネージド サービス ID]** をオンにします。  
 
-   ![マネージド サービス ID](./media/access-secrets-from-keyvault/turn-on-managed-service-identity.png)
+   :::image type="content" source="./media/access-secrets-from-keyvault/turn-on-managed-service-identity.png" alt-text="マネージド サービス ID":::
 
 アプリケーションをすぐに実行すると、次のエラーが表示されます。このアプリケーションに Key Vault のアクセス許可を付与していないためです。
 
-![アクセス許可なしでデプロイされたアプリケーション](./media/access-secrets-from-keyvault/app-deployed-without-access.png)
+:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-without-access.png" alt-text="アクセス許可なしでデプロイされたアプリケーション":::
 
 ## <a name="register-the-application--grant-permissions-to-read-the-key-vault"></a>アプリケーションの登録および Key Vault を読み取るアクセス許可の付与
 
@@ -84,11 +84,11 @@ Azure Cosmos DB アクセス キーを Key Vault に格納して読み取るた�
 
 2. **[アクセス ポリシー]** を開き、 **[+ 新規追加]** を選択し、デプロイした Web アプリケーションを探して、アクセス許可を選択して **[OK]** を選択します。  
 
-   ![アクセス ポリシーの追加](./media/access-secrets-from-keyvault/add-access-policy.png)
+   :::image type="content" source="./media/access-secrets-from-keyvault/add-access-policy.png" alt-text="アクセス ポリシーの追加":::
 
 ここで、アプリケーションを実行すると、Key Vault からシークレットを読み取ることができます。
 
-![シークレットと一緒にデプロイされたアプリケーション](./media/access-secrets-from-keyvault/app-deployed-with-access.png)
+:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-with-access.png" alt-text="シークレットと一緒にデプロイされたアプリケーション":::
  
 同様に、Key Vault にアクセスするユーザーを追加できます。 自分自身を Key Vaultに追加する必要があります。これには、**アクセスポリシー** をクリックしてから、Visual Studio でアプリケーションを実行するために必要なすべてのアクセス許可を付与します。 このアプリケーションをデスクトップから実行するとき、自分の ID が使用されます。
 

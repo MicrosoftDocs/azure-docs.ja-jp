@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4c3b3318e941723ec333597c7e4b3e48710152d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d02bc8d97b65f4ea2c2585201654899a63d3229b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78397806"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201363"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -23,7 +23,7 @@ ms.locfileid: "78397806"
 
 **ClaimsSchema**要素は、ポリシーの一部として参照可能な要求の種類を定義します。 要求スキーマは、要求を宣言する場所です。 要求は、名、姓、表示名、電話番号などを指定できます。 ClaimsSchema 要素には**ClaimType**要素の一覧が含まれています。 **ClaimType**要素に **Id**属性が含まれており、 それは要求の名前であります。
 
-```XML
+```xml
 <BuildingBlocks>
   <ClaimsSchema>
     <ClaimType Id="Id">
@@ -97,7 +97,7 @@ PredicateValidationReference| 0:1 | **PredicateValidationsInput**要素への参
 
 次の例で、Identity Experience Framework は SAML2 id プロバイダーまたは証明書利用者アプリケーションと相互作用するときに、 **surname**要求が`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`にマップされ、OpenIdConnect と OAuth2 とともに、要求は、`family_name`にマップされます。
 
-```XML
+```xml
 <ClaimType Id="surname">
   <DisplayName>Surname</DisplayName>
   <DataType>string</DataType>
@@ -111,7 +111,7 @@ PredicateValidationReference| 0:1 | **PredicateValidationsInput**要素への参
 
 その結果、Azure AD B2C によって発行された JWT トークンでは、ClaimType 名 **surname** ではなく `family_name` が出力されます。
 
-```JSON
+```json
 {
   "sub": "6fbbd70d-262b-4b50-804c-257ae1706ef2",
   "auth_time": 1535013501,
@@ -132,7 +132,7 @@ PredicateValidationReference| 0:1 | **PredicateValidationsInput**要素への参
 
 次の例では **PhoneNumber** 要求を `Simple` マスクで構成します。
 
-```XML
+```xml
 <ClaimType Id="PhoneNumber">
   <DisplayName>Phone Number</DisplayName>
   <DataType>string</DataType>
@@ -147,7 +147,7 @@ Identity Experience Framework では、最初の 6 桁の数字を非表示し�
 
 次の例では **AlternateEmail** 要求を `Regex` マスクで構成します。
 
-```XML
+```xml
 <ClaimType Id="AlternateEmail">
   <DisplayName>Please verify the secondary email linked to your account</DisplayName>
   <DataType>string</DataType>
@@ -190,7 +190,7 @@ Identity Experience Framework では、電子メールアドレスと電子メ�
 
 次の例では、**市区町村**ドロップダウン リストの要求を設定し、既定値を`New York`に設定します。
 
-```XML
+```xml
 <ClaimType Id="city">
   <DisplayName>city where you work</DisplayName>
   <DataType>string</DataType>
@@ -218,7 +218,7 @@ Identity Experience Framework では、電子メールアドレスと電子メ�
 
 次の例では、**電子メール**要求を正規表現入力検証とヘルプ テキストとともに設定します。
 
-```XML
+```xml
 <ClaimType Id="email">
   <DisplayName>Email Address</DisplayName>
   <DataType>string</DataType>
@@ -262,7 +262,7 @@ Azure AD B2C では、さまざまなクレームの種類の要求データを�
 
 ![要求の種類で指定されたプロパティを示しているテキストボックス](./media/claimsschema/textbox.png)
 
-```XML
+```xml
 <ClaimType Id="displayName">
   <DisplayName>Display Name</DisplayName>
   <DataType>string</DataType>
@@ -277,7 +277,7 @@ Azure AD B2C では、さまざまなクレームの種類の要求データを�
 
 ![要求の種類で指定されたプロパティを示している電子メール ボックス](./media/claimsschema/emailbox.png)
 
-```XML
+```xml
 <ClaimType Id="email">
   <DisplayName>Email Address</DisplayName>
   <DataType>string</DataType>
@@ -295,7 +295,7 @@ Azure AD B2C では、さまざまなクレームの種類の要求データを�
 
 ![パスワードを使用する要求種類](./media/claimsschema/password.png)
 
-```XML
+```xml
 <ClaimType Id="password">
   <DisplayName>Password</DisplayName>
   <DataType>string</DataType>
@@ -310,7 +310,7 @@ Azure AD B2C では、さまざまなクレームの種類の要求データを�
 
 ![datetimedropdown を使用する要求の種類](./media/claimsschema/datetimedropdown.png)
 
-```XML
+```xml
 <ClaimType Id="dateOfBirth">
   <DisplayName>Date Of Birth</DisplayName>
   <DataType>date</DataType>
@@ -325,7 +325,7 @@ Azure AD B2C では、さまざまなクレームの種類の要求データを�
 
 ![radiodsingleselect を使用する要求の種類](./media/claimsschema/radiosingleselect.png)
 
-```XML
+```xml
 <ClaimType Id="color">
   <DisplayName>Preferred color</DisplayName>
   <DataType>string</DataType>
@@ -344,7 +344,7 @@ Azure AD B2C では、さまざまなクレームの種類の要求データを�
 
 ![dropdownsingleselect を使用する要求の種類](./media/claimsschema/dropdownsingleselect.png)
 
-```XML
+```xml
 <ClaimType Id="city">
   <DisplayName>City where you work</DisplayName>
   <DataType>string</DataType>
@@ -363,7 +363,7 @@ Azure AD B2C では、さまざまなクレームの種類の要求データを�
 
 ![checkboxmultiselect を使用する要求の種類](./media/claimsschema/checkboxmultiselect.png)
 
-```XML
+```xml
 <ClaimType Id="languages">
   <DisplayName>Languages you speak</DisplayName>
   <DataType>string</DataType>
@@ -382,7 +382,7 @@ Azure AD B2C では、さまざまなクレームの種類の要求データを�
 
 ![Readonly を使用する要求の種類](./media/claimsschema/readonly.png)
 
-```XML
+```xml
 <ClaimType Id="membershipNumber">
   <DisplayName>Membership number</DisplayName>
   <DataType>string</DataType>
@@ -398,7 +398,7 @@ Azure AD B2C では、さまざまなクレームの種類の要求データを�
 
 ![段落を使用する要求種類](./media/claimsschema/paragraph.png)
 
-```XML
+```xml
 <ClaimType Id="responseMsg">
   <DisplayName>Error message: </DisplayName>
   <DataType>string</DataType>

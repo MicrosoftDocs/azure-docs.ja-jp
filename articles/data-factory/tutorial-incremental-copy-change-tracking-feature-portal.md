@@ -1,6 +1,6 @@
 ---
-title: Change Tracking を使用してデータを増分コピーする
-description: このチュートリアルでは、オンプレミスの SQL Server データベースにある複数のテーブルから Azure SQL データベースに差分データを増分コピーする Azure Data Factory パイプラインを作成します。
+title: Azure portal を使用して Change Tracking を使用してデータを増分コピーする
+description: このチュートリアルでは、SQL Server データベースにある複数のテーブルから Azure SQL Database のデータベースに差分データを増分コピーする Azure Data Factory パイプラインを作成します。
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: 40e4fed9755edc2204c7b6b24a003995a14212d0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c28489c2fa502f0ba1283abdea19219ed7438a99
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81415435"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085788"
 ---
-# <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>変更追跡情報を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする
+# <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-the-azure-portal"></a>Azure portal を使用して、変更追跡情報を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-このチュートリアルでは、ソース Azure SQL データベースから**変更追跡**情報に基づく差分データを Azure Blob Storage に読み込むパイプラインを使用して Azure Data Factory を作成します。  
+このチュートリアルでは、Azure SQL Database のソース データベースから**変更追跡**情報に基づく差分データを Azure Blob Storage に読み込むパイプラインを使用して Azure Data Factory を作成します。  
 
 このチュートリアルでは、以下の手順を実行します。
 
@@ -42,12 +42,12 @@ ms.locfileid: "81415435"
 ここでは、Change Tracking テクノロジを使用してデータを増分読み込みする一般的なエンド ツー エンドのワークフロー ステップを取り上げます。
 
 > [!NOTE]
-> Azure SQL Database と SQL Server は、どちらも Change Tracking テクノロジをサポートしています。 このチュートリアルでは、Azure SQL Database をソース データ ストアとして使用します。 オンプレミスの SQL Server を使用してもかまいません。
+> Azure SQL Database と SQL Server は、どちらも Change Tracking テクノロジをサポートしています。 このチュートリアルでは、Azure SQL Database をソース データ ストアとして使用します。 SQL Server インスタンスを使用してもかまいません。
 
 1. **履歴データの初回読み込みを実行する** (1 回実行)。
-    1. ソース Azure SQL データベースの Change Tracking テクノロジを有効にします。
-    2. Azure SQL データベースから SYS_CHANGE_VERSION の初期値をベースラインとして取得し、変更済みデータをキャプチャします。
-    3. Azure SQL データベースから Azure Blob Storage にフル データを読み込みます。
+    1. Azure SQL Database のソース データベースの Change Tracking テクノロジを有効にします。
+    2. データベースから SYS_CHANGE_VERSION の初期値をベースラインとして取得し、変更済みデータをキャプチャします。
+    3. ソース データベースから Azure Blob Storage にフル データを読み込みます。
 2. **スケジュールに従って差分データの増分読み込みを実行する** (データの初回読み込み後に定期的に実行)。
     1. 新旧の SYS_CHANGE_VERSION 値を取得します。
     3. 差分データを読み込みます。これは、**sys.change_tracking_tables** から得られる変更済みの行 (2 つの SYS_CHANGE_VERSION 値の間にある行) の主キーと**ソース テーブル**内のデータとを結合した後、その差分データをターゲットに移動することによって行います。
@@ -70,13 +70,14 @@ ms.locfileid: "81415435"
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="prerequisites"></a>前提条件
-* **Azure SQL データベース**。 **ソース** データ ストアとして使うデータベースです。 Azure SQL データベースがない場合は、[Azure SQL データベースの作成](../sql-database/sql-database-get-started-portal.md)に関する記事に書かれている手順を参照して作成してください。
+* **Azure SQL データベース**。 **ソース** データ ストアとして使うデータベースです。 Azure SQL Database のデータベースがない場合の作成手順については、[Azure SQL Database のデータベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関する記事を参照してください。
 * **Azure Storage アカウント**。 **シンク** データ ストアとして使用する BLOB ストレージです。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md)」を参照してください。 **adftutorial** という名前のコンテナーを作成します。 
 
-### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>Azure SQL データベースにデータ ソース テーブルを作成する
-1. **SQL Server Management Studio** を起動し、Azure SQL Server に接続します。
+### <a name="create-a-data-source-table-in-azure-sql-database"></a>Azure SQL Database にデータ ソース テーブルを作成する
+
+1. **SQL Server Management Studio** を起動し、SQL Database に接続します。
 2. **サーバー エクスプローラー**で目的の**データベース**を右クリックして **[新しいクエリ]** を選択します。
-3. Azure SQL データベースに対して次の SQL コマンドを実行し、`data_source_table` という名前のテーブルをソース データ ストアとして作成します。  
+3. データベースに対して次の SQL コマンドを実行し、`data_source_table` という名前のテーブルをソース データ ストアとして作成します。  
 
     ```sql
     create table data_source_table
@@ -97,10 +98,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         (5, 'eeee', 22);
 
     ```
+
 4. 次の SQL クエリを実行して、データベースとソース テーブル (data_source_table) の **Change Tracking** 機構を有効にします。
 
     > [!NOTE]
-    > - &lt;your database name&gt; は、data_source_table がある実際の Azure SQL データベースの名前に置き換えてください。
+    > - &lt;your database name&gt; は、data_source_table がある Azure SQL Database のデータベースの名前に置き換えてください。
     > - 現行の例では、変更済みのデータが 2 日間維持されます。 変更済みデータを読み込む間隔を 3 日おき、またはそれ以上にした場合、変更済みデータの一部が読み込まれません。  CHANGE_RETENTION の数値を増やす必要があります。 または、変更済みデータの読み込み間隔を必ず 2 日以内としてください。 詳細については、「[データベースの変更の追跡を有効にする](/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server#enable-change-tracking-for-a-database)」を参照してください。
 
     ```sql
@@ -130,7 +132,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     > [!NOTE]
     > SQL Database の変更追跡を有効にした後、データが変更されていなければ、変更追跡バージョンの値は 0 になります。
-6. 次のクエリを実行して、Azure SQL データベースにストアド プロシージャを作成します。 このストアド プロシージャをパイプラインで呼び出すことによって、前の手順で作成したテーブルの変更追跡バージョンを更新します。
+6. 次のクエリを実行して、データベースにストアド プロシージャを作成します。 このストアド プロシージャをパイプラインで呼び出すことによって、前の手順で作成したテーブルの変更追跡バージョンを更新します。
 
     ```sql
     CREATE PROCEDURE Update_ChangeTracking_Version @CurrentTrackingVersion BIGINT, @TableName varchar(50)
@@ -164,7 +166,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    Azure データ ファクトリの名前は **グローバルに一意**にする必要があります。 次のエラーが発生した場合は、データ ファクトリの名前を変更して (yournameADFTutorialDataFactory など) 作成し直してください。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事を参照してください。
 
-       `Data factory name “ADFTutorialDataFactory” is not available`
+   *データ ファクトリ名 "ADFTutorialDataFactory" は利用できません*
 3. データ ファクトリを作成する Azure **サブスクリプション**を選択します。
 4. **[リソース グループ]** について、次の手順のいずれかを行います。
 
@@ -188,7 +190,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ![[Create pipeline]\(パイプラインの作成\) ボタン](./media/tutorial-incremental-copy-change-tracking-feature-portal/get-started-page.png)
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
-データ ストアおよびコンピューティング サービスをデータ ファクトリにリンクするには、リンクされたサービスをデータ ファクトリに作成します。 このセクションでは、Azure ストレージ アカウントと Azure SQL データベースに対するリンクされたサービスを作成します。
+データ ストアおよびコンピューティング サービスをデータ ファクトリにリンクするには、リンクされたサービスをデータ ファクトリに作成します。 このセクションでは、Azure ストレージ アカウントと Azure SQL Database のデータベースに対するリンクされたサービスを作成します。
 
 ### <a name="create-azure-storage-linked-service"></a>Azure Storage のリンクされたサービスを作成する
 この手順では、Azure ストレージ アカウントをデータ ファクトリにリンクします。
@@ -209,19 +211,19 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 
 ### <a name="create-azure-sql-database-linked-service"></a>Azure SQL Database のリンクされたサービスを作成する
-この手順では、Azure SQL データベースをデータ ファクトリにリンクします。
+この手順では、データベースをデータ ファクトリにリンクします。
 
 1. **[接続]** をクリックし、 **[+ 新規]** をクリックします。
 2. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで **[Azure SQL Database]** を選択し、 **[続行]** をクリックします。
 3. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を行います。
 
     1. **[名前]** フィールドに「**AzureSqlDatabaseLinkedService**」と入力します。
-    2. **[サーバー名]** フィールドで Azure SQL サーバーを選択します。
-    4. **[データベース名]** フィールドで Azure SQL データベースを選択します。
-    5. **[ユーザー名]** フィールドにユーザーの名前を入力します。
-    6. **[パスワード]** フィールドに、ユーザーのパスワードを入力します。
-    7. **[テスト接続]** をクリックして接続をテストします。
-    8. **[保存]** をクリックして、リンクされたサービスを保存します。
+    2. **[サーバー名]** フィールドでサーバーを選択します。
+    3. **[データベース名]** フィールドでデータベースを選択します。
+    4. **[ユーザー名]** フィールドにユーザーの名前を入力します。
+    5. **[パスワード]** フィールドに、ユーザーのパスワードを入力します。
+    6. **[テスト接続]** をクリックして接続をテストします。
+    7. **[保存]** をクリックして、リンクされたサービスを保存します。
 
        ![Azure SQL Database のリンクされたサービスの設定](./media/tutorial-incremental-copy-change-tracking-feature-portal/azure-sql-database-linked-service-settings.png)
 
@@ -329,7 +331,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![フル コピーからの出力ファイル](media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-output-file.png)
 
-このファイルには、Azure SQL データベースからのデータが存在します。
+このファイルには、データベースからのデータが存在します。
 
 ```
 1,aaaa,21
@@ -341,7 +343,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="add-more-data-to-the-source-table"></a>ソース テーブルにデータを追加する
 
-Azure SQL データベースに次のクエリを実行して行の追加と更新を行います。
+データベースに次のクエリを実行して行の追加と更新を行います。
 
 ```sql
 INSERT INTO data_source_table
@@ -416,7 +418,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
     2. **[Import parameter]\(インポート パラメーター\)** を選択します。
     3. **[ストアド プロシージャのパラメーター]** セクションで、各パラメーターに次の値を指定します。
 
-        | 名前 | Type | Value |
+        | 名前 | Type | 値 |
         | ---- | ---- | ----- |
         | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} |
         | TableName | String | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} |
@@ -452,7 +454,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 
 ![増分コピーからの出力ファイル](media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-output-file.png)
 
-このファイルに含まれているのは、Azure SQL データベースからの差分データのみです。 `U` と記録されているレコードはデータベース内の更新された行で、`I` は追加された行です。
+このファイルに含まれているのは、データベースからの差分データのみです。 `U` と記録されているレコードはデータベース内の更新された行で、`I` は追加された行です。
 
 ```
 1,update,10,2,U

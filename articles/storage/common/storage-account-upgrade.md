@@ -1,19 +1,20 @@
 ---
 title: 汎用 v2 ストレージ アカウントにアップグレードする
 titleSuffix: Azure Storage
-description: 汎用 v2 ストレージ アカウントにアップグレードします。
+description: Azure portal、PowerShell、または Azure CLI を使用して、汎用 v2 ストレージ アカウントにアップグレードします。 BLOB データのアクセス層を指定します。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: tamram
-ms.openlocfilehash: 9afbade408d6f95fcd3a61aa1ba65bc09c7a875b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: c80269c949ec97a09584d736371ccd11879fd82b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80067229"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069716"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>汎用 v2 ストレージ アカウントにアップグレードする
 
@@ -60,7 +61,7 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 ## <a name="specify-an-access-tier-for-blob-data"></a>BLOB データのアクセス層を指定する
 
-汎用 v2 アカウントは、すべての Azure ストレージ サービスとデータ オブジェクトをサポートしていますが、アクセス層は BLOB ストレージ内のブロック BLOB に対してのみ適用できます。 汎用 v2 ストレージ アカウントにアップグレードするときは、既定のアカウント アクセス層としてホットまたはクールを指定できます。これは、個々の BLOB アクセス層パラメーターが指定されていない場合と同様に、BLOB データがアップロードされる既定の層を示します。
+汎用 v2 アカウントは、すべての Azure ストレージ サービスとデータ オブジェクトをサポートしていますが、アクセス層は BLOB ストレージ内のブロック BLOB に対してのみ使用できます。 汎用 v2 ストレージ アカウントにアップグレードするときは、既定のアカウント アクセス層としてホットまたはクールを指定できます。これは、個々の BLOB アクセス層パラメーターが指定されていない場合と同様に、BLOB データがアップロードされる既定の層を示します。
 
 BLOB アクセス層を使用すると、想定される使用パターンに基づいて最も費用対効果の高いストレージを選択できます。 ブロック BLOB は、ホット層、クール層、またはアーカイブ層に格納できます。 アクセス層の詳細については、「[Azure Blob Storage:ホット ストレージ層、クール ストレージ層、アーカイブ ストレージ層](../blobs/storage-blob-storage-tiers.md)」をご覧ください。
 

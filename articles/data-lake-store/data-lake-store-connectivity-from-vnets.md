@@ -1,6 +1,6 @@
 ---
 title: VNET から Azure Data Lake Storage Gen1 への接続 | Microsoft Docs
-description: Azure VNET から Azure Data Lake Storage Gen1 への接続
+description: リソースへのアクセスが制限されている Azure 仮想マシンから Azure Data Lake Storage Gen1 へのアクセスを有効にする方法について説明します。
 services: data-lake-store,data-catalog
 documentationcenter: ''
 author: esung22
@@ -9,15 +9,15 @@ editor: cgronlun
 ms.assetid: 683fcfdc-cf93-46c3-b2d2-5cb79f5e9ea5
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/31/2018
 ms.author: elsung
-ms.openlocfilehash: c8d028a981d7811ed2c864db5750afc83ab93b2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0fa836ea31793d9177ad6e838ddea1516bf51733
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60878870"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191408"
 ---
 # <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>Azure VNET 内の VM から Azure Data Lake Storage Gen1 へのアクセス
 Azure Data Lake Storage Gen1 は、パブリック インターネット IP アドレスで動作する PaaS サービスです。 パブリック インターネットに接続できるサーバーは、通常、Azure Data Lake Storage Gen1 エンドポイントにも接続できます。 既定では、Azure VNET 内のすべての VM はインターネットにアクセスできるため、Azure Data Lake Storage Gen1 にアクセスできます。 ただし、VNET 内の VM をインターネットにアクセスできないように構成することもできます。 そのような VM では、Azure Data Lake Storage Gen1 へのアクセスも制限されます。 Azure VNET 内の VM のパブリック インターネット アクセスをブロックするには、次のいずれかの方法を使用します。
@@ -31,14 +31,18 @@ Azure Data Lake Storage Gen1 は、パブリック インターネット IP ア�
 ## <a name="enabling-connectivity-to-azure-data-lake-storage-gen1-from-vms-with-restricted-connectivity"></a>接続が制限されている VM から Azure Data Lake Storage Gen1 への接続を有効にする
 このような VM から Azure Data Lake Storage Gen1 にアクセスするには、Azure Data Lake Storage Gen1 アカウントが使用可能なリージョンの IP アドレスにアクセスするように、VM を構成する必要があります。 Data Lake Storage Gen1 アカウントのリージョンの IP アドレスは、アカウントの DNS 名 (`<account>.azuredatalakestore.net`) を解決することによって確認できます。 アカウントの DNS 名を解決するには、**nslookup** などのツールを使用できます。 コンピューターでコマンド プロンプトを開き、次のコマンドを実行します。
 
-    nslookup mydatastore.azuredatalakestore.net
+```console
+nslookup mydatastore.azuredatalakestore.net
+```
 
 出力結果は、以下のようになります。 **Address** プロパティの値が、Data Lake Storage Gen1 アカウントに関連付けられている IP アドレスを示します。
 
-    Non-authoritative answer:
-    Name:    1434ceb1-3a4b-4bc0-9c69-a0823fd69bba-mydatastore.projectcabostore.net
-    Address:  104.44.88.112
-    Aliases:  mydatastore.azuredatalakestore.net
+```output
+Non-authoritative answer:
+Name:    1434ceb1-3a4b-4bc0-9c69-a0823fd69bba-mydatastore.projectcabostore.net
+Address:  104.44.88.112
+Aliases:  mydatastore.azuredatalakestore.net
+```
 
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-nsg"></a>NSG を使用して制限されている VM からの接続を有効にする

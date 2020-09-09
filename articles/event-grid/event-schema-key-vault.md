@@ -1,18 +1,14 @@
 ---
 title: Event Grid ソースとして Azure Key Vault
 description: Azure Event Grid で Azure Key Vault のイベント用に提供されているプロパティとスキーマについて説明します
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: 40bff9585e64163039a8847ff868c982ffb20414
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.date: 07/07/2020
+ms.openlocfilehash: 1f9cbe85de9423484343e4054be8d2d58c6c5e7e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81458251"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109435"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>Event Grid ソースとして Azure Key Vault
 

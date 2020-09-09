@@ -6,14 +6,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/31/2019
-ms.openlocfilehash: 1903c2faab865152d1f3666f3c9dadd745058b56
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 271f62625433a6651ba0e3230a62be51e5147f3e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75612293"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000194"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio を使用した Apache Storm の C# トポロジの開発
 
@@ -686,7 +687,7 @@ Linux ベースの HDInsight クラスターでは、.NET 4.5 用にコンパイ
 
 1. 変更を保存した後、**F5** キーを押すか、 **[デバッグ]**  >  **[デバッグの開始]** を選択して、プロジェクトを開始します。 コンソール ウィンドウが表示され、テストの進行に合わせてステータスを記録します。 `Tests finished` が表示されたら、任意のキーを押してウィンドウを閉じます。
 
-1. **Windows エクスプローラー**を使って、プロジェクトが含まれるディレクトリを見つけます (例: *C:\\Users\\\<ユーザー名>\\source\\repos\\WordCount\\WordCount*)。次に、このディレクトリで *Bin* を開き、 *[デバッグ]* を選択します。 テストの実行時に生成された、*sentences.txt*、*counter.txt*、*splitter.txt* というテキスト ファイルが表示されます。 それぞれのテキスト ファイルを開いてデータを確認します。
+1. **Windows エクスプローラー**を使って、プロジェクトが含まれるディレクトリを見つけます (例: *C:\\Users\\\<your_user_name>\\source\\repos\\WordCount\\WordCount*)。次に、このディレクトリで *Bin* を開き、 *[デバッグ]* を選択します。 テストの実行時に生成された、*sentences.txt*、*counter.txt*、*splitter.txt* というテキスト ファイルが表示されます。 それぞれのテキスト ファイルを開いてデータを確認します。
 
    > [!NOTE]  
    > これらのファイルでは、文字列データは 10 進数の値の配列として保存されます。 たとえば、**splitter.txt** ファイルの `[[97,103,111]]` は、*ago* という単語を表します。

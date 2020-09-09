@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 361b98a1cde8ee5dee99a370b46d8fc8e0f5af28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231575"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707142"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Azure Data Factory を使用した SAP HANA からのデータ移動
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]

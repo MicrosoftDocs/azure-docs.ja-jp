@@ -1,28 +1,24 @@
 ---
-title: 'チュートリアル: Azure Active Directory と PolicyStat の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と PolicyStat の統合 | Microsoft Docs
 description: Azure Active Directory と PolicyStat の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: af5eb0f1-1c8e-4809-b0c4-8ccfb915ca42
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 327e470d60235e6bf400293e80e3aec5f6144ff4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 212bd1bc0b15ad985fc8037e99876d78132b2c22
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68943439"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547938"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-policystat"></a>チュートリアル: Azure Active Directory と PolicyStat の統合
+# <a name="tutorial-azure-active-directory-integration-with-policystat"></a>チュートリアル:Azure Active Directory と PolicyStat の統合
 
 このチュートリアルでは、PolicyStat と Azure Active Directory (Azure AD) を統合する方法について説明します。
 PolicyStat と Azure AD の統合には、次の利点があります。
@@ -40,6 +36,9 @@ PolicyStat と Azure AD の統合を構成するには、次のものが必要�
 
 * Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
 * PolicyStat でのシングル サインオンが有効なサブスクリプション
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -80,10 +79,9 @@ PolicyStat で Azure AD のシングル サインオンを構成してテスト�
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[PolicyStat シングル サインオンの構成](#configure-policystat-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
-3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[PolicyStat テスト ユーザーの作成](#create-policystat-test-user)** - PolicyStat で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+3. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+4. **[PolicyStat テスト ユーザーの作成](#create-policystat-test-user)** - PolicyStat で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -124,7 +122,7 @@ PolicyStat で Azure AD シングル サインオンを構成するには、次�
 
 6. その他に、PolicyStat アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | Name | ソース属性 |
+    | 名前 | ソース属性 |
     |------------------- | -------------------- |
     | uid | ExtractMailPrefix([mail]) |
 
@@ -164,25 +162,7 @@ PolicyStat で Azure AD シングル サインオンを構成するには、次�
    
     ![[Administrator Menu]\(管理者メニュー\)](./media/policystat-tutorial/ic808633.png "管理者メニュー")
 
-3. **[Setup]** セクションで、 **[Enable Single Sign-on Integration]** を選択します。
-   
-    ![[Single Sign-On Configuration]\(シングル サインオン構成\)](./media/policystat-tutorial/ic808634.png "[Single Sign-On Configuration]")
-
-4. **[Configure Attributes]** をクリックし、 **[Configure Attributes]** セクションで次の手順に従います。
-   
-    ![[Single Sign-On Configuration]\(シングル サインオン構成\)](./media/policystat-tutorial/ic808635.png "[Single Sign-On Configuration]")
-   
-    a. **[Username Attribute]** ボックスに、「**uid**」と入力します。
-
-    b. **[First Name Attribute]\(名属性\)** ボックスにユーザー "**Britta**" の**名**を入力します。
-
-    c. **[Last Name Attribute]\(姓属性\)** ボックスにユーザー "**Simon**" の**姓**を入力します。
-
-    d. **[Email Attribute]\(電子メール属性\)** ボックスにユーザー `BrittaSimon@contoso.com` の**メール アドレス**を入力します。
-
-    e. **[変更を保存]** をクリックします。
-
-5. **[Your IDP Metadata]** をクリックし、 **[Your IDP Metadata]** セクションで次の手順に従います。
+3. **[Your IDP Metadata]** をクリックし、 **[Your IDP Metadata]** セクションで次の手順に従います。
    
     ![[Single Sign-On Configuration]\(シングル サインオン構成\)](./media/policystat-tutorial/ic808636.png "[Single Sign-On Configuration]")
    
@@ -190,33 +170,26 @@ PolicyStat で Azure AD シングル サインオンを構成するには、次�
 
     b. **[変更を保存]** をクリックします。
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
+4. **[Configure Attributes]** をクリックし、 **[Configure Attributes]** セクションで次の手順に従います。
+   
+    a. **[Username Attribute]** ボックスに、「**uid**」と入力します。
 
-このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
+    b. **[First Name Attribute]\(名前 (名) 属性\)** テキスト ボックスに、Azure **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`** の名前 (名) 属性の要求名を入力します。
 
-1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+    c. **[Last Name Attribute]\(名前 (姓) 属性\)** テキスト ボックスに、Azure **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`** の名前 (姓) 属性の要求名を入力します。
 
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
+    d. **[Email Attribute]\(電子メール属性\)** テキスト ボックスに、Azure **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** の電子メール属性の要求名を入力します。
 
-2. 画面の上部にある **[新しいユーザー]** を選択します。
+    e. **[変更を保存]** をクリックします。
 
-    ![[新しいユーザー] ボタン](common/new-user.png)
+5. **[Setup]** セクションで、 **[Enable Single Sign-on Integration]** を選択します。
+   
+    ![[Single Sign-On Configuration]\(シングル サインオン構成\)](./media/policystat-tutorial/ic808634.png "[Single Sign-On Configuration]")
 
-3. [ユーザーのプロパティ] で、次の手順を実行します。
-
-    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
-
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
-    b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
-
-    d. **Create** をクリックしてください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に PolicyStat へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、独自のアカウントに PolicyStat へのアクセスを許可することで、Azure シングル サインオンを使用できるようにします。
 
 1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[PolicyStat]** を選択します。
 
@@ -230,11 +203,11 @@ PolicyStat で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
-5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+5. **[ユーザーとグループ]** ダイアログの [ユーザー] リストで自分のアカウントを選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
 6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
@@ -260,4 +233,3 @@ PolicyStat で Azure AD シングル サインオンを構成するには、次�
 - [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

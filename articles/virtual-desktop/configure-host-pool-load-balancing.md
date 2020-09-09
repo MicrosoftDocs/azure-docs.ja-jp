@@ -1,19 +1,17 @@
 ---
 title: Windows Virtual Desktop の負荷分散を構成する - Azure
 description: Windows Virtual Desktop 環境での負荷分散方法を構成する方法。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 447de339d3ceef7aeb1c232605b0e30bbbb1e7d8
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 07eae73a36bf4051925547fa375f46963a162881
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612437"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010108"
 ---
 # <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>Windows Virtual Desktop の負荷分散方法を構成する
 
@@ -33,15 +31,15 @@ ms.locfileid: "82612437"
 セッションの上限の調整なしで幅優先の負荷分散を実行するようにホスト プールを構成するには、次の PowerShell コマンドレットを実行します。
 
 ```powershell
-Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'BreadthFirst' 
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'BreadthFirst'
 ```
 
-その後、幅優先の負荷分散方法を設定したことを確認するには、次のコマンドレットを実行します。 
+その後、幅優先の負荷分散方法を設定したことを確認するには、次のコマンドレットを実行します。
 
 ```powershell
-Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType 
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType
 
-Name             : hostpoolname 
+Name             : hostpoolname
 LoadBalancerType : BreadthFirst
 ```
 
@@ -58,13 +56,13 @@ Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname>
 深さ優先の負荷分散を実行するようにホスト プールを構成するには、次の PowerShell コマンドレットを実行します。
 
 ```powershell
-Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'DepthFirst' -MaxSessionLimit ### 
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'DepthFirst' -MaxSessionLimit ###
 ```
 
 設定が更新されたことを確認するには、次のコマンドレットを実行します。
 
 ```powershell
-Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType, MaxSessionLimit 
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType, MaxSessionLimit
 
 Name             : hostpoolname
 LoadBalancerType : DepthFirst
@@ -77,8 +75,8 @@ MaxSessionLimit  : 6
 
 負荷分散を構成するには:
 
-1. Azure portal (https://portal.azure.com) にサインインします。 
-2. [サービス] 下で **[Windows Virtual Desktop]** を探して選択します。 
+1. Azure portal (https://portal.azure.com) にサインインします。
+2. [サービス] 下で **[Windows Virtual Desktop]** を探して選択します。
 3. Windows Virtual Desktop のページで、 **[ホスト プール]** を選択します。
 4. 編集するホスト プールの名前を選択します。
 5. **[プロパティ]** を選択します。

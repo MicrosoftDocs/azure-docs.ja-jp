@@ -6,27 +6,27 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: f2f3e84462307f43ffe432fe878476d979f489f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e422b019dd17c8c56ba99b5826e9f6215459c382
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79480914"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825363"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure での Service Map ソリューションの使用
 
 Service Map は自動的に Windows および Linux のシステム上のアプリケーション コンポーネントを検出し、サービス間の通信をマップします。 Service Map を使用すると、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 Service Map は、TCP 接続アーキテクチャ全体におけるサーバー、プロセス、受信接続と送信接続の待機時間、ポートの間の接続を表示します。エージェントのインストール以外の構成は必要ありません。
 
-この記事では、オンボードと、Service Map の使い方を詳しく説明します。 このソリューションの前提条件の構成の詳細については、[Azure Monitor for VMs の有効化の概要](vminsights-enable-overview.md#prerequisites)に関するページをご覧ください。 要約すると、以下が必要です。
+この記事では、オンボードと、Service Map の使い方を詳しく説明します。 ソリューションの前提条件は次のとおりです。
 
-* このソリューションを有効にするための Log Analytics ワークスペース。
+* [サポートされているリージョン](vminsights-configure-workspace.md#supported-regions)内の Log Analytics ワークスペース。
 
-* ソリューションを有効にしたのと同じワークスペースを報告するように構成された Windows コンピューターまたは Linux サーバーにインストールされている Log Analytics エージェント。
+* ソリューションを有効にした同じワークスペースに接続された Windows コンピューターまたは Linux サーバーにインストールされている [Log Analytics エージェント](vminsights-enable-overview.md#agents)。
 
-* Windows コンピューターまたは Linux サーバーにインストールされている Dependency Agent。
+* Windows コンピューターまたは Linux サーバーにインストールされている [Dependency Agent](vminsights-enable-overview.md#agents)。
 
 >[!NOTE]
->Service Map を既にデプロイ済みの場合は、VM 用 Azure Monitor でマップを表示することもできます。これには、VM の正常性とパフォーマンスを監視する追加機能が含まれます。 詳細については、[VM 用 Azure Monitor の概要](../../azure-monitor/insights/vminsights-overview.md)に関するページを参照してください。 Service Map ソリューションと Azure Monitor for VMs マップ機能の違いについては、次の [FAQ](../faq.md#azure-monitor-for-vms) を参照してください。
+>Service Map を既にデプロイ済みの場合は、VM 用 Azure Monitor でマップを表示することもできます。これには、VM の正常性とパフォーマンスを監視する追加機能が含まれます。 詳細については、[VM 用 Azure Monitor の概要](./vminsights-overview.md)に関するページを参照してください。 Service Map ソリューションと Azure Monitor for VMs マップ機能の違いについては、次の [FAQ](../faq.md#azure-monitor-for-vms) を参照してください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -35,7 +35,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 ## <a name="enable-service-map"></a>Service Map を有効にする
 
 1. Service Map ソリューションを [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview) から有効にします。または、[Solutions Gallery からの監視ソリューションの追加](solutions.md)に関するページで説明されている手順に従って有効にします。
-1. データを取得する各コンピューターの [Windows に Dependency Agent をインストールするか](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-windows)、[Linux に Dependency Agent をインストールします](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-linux)。 Dependency Agent は近隣のコンピューターへの接続を監視することができるため、すべてのコンピューターにエージェントが必要とは限りません。
+1. データを取得する各コンピューターの [Windows に Dependency Agent をインストールするか](./vminsights-enable-hybrid.md#install-the-dependency-agent-on-windows)、[Linux に Dependency Agent をインストールします](./vminsights-enable-hybrid.md#install-the-dependency-agent-on-linux)。 Dependency Agent は近隣のコンピューターへの接続を監視することができるため、すべてのコンピューターにエージェントが必要とは限りません。
 
 Log Analytics ワークスペースから Azure Portal 内の Service Map にアクセスして、左側のウィンドウから **[ソリューション]** オプションを選択します。<br><br> ![ワークスペースで [ソリューション] オプションを選択します](./media/service-map/select-solution-from-workspace.png)。<br> ソリューションの一覧から **[ServiceMap(workspaceName)]** を選択し、Service Map ソリューションの概要ページで、Service Map の概要タイルをクリックします。<br><br> ![Service Map の概要タイル](./media/service-map/service-map-summary-tile.png)。
 
@@ -241,7 +241,7 @@ Service Map で関連するアラートを表示できるようにするには�
 
 ## <a name="service-desk-integration"></a>サービス デスクとの統合
 
-Service Map と IT Service Management Connector との統合は、両方のソリューションが有効であり、Log Analytics ワークスペースに構成されているときは自動的に行われます。 Service Map での統合に、"サービス デスク" というラベルが付けられます。 詳細については、[IT Service Management Connector を使用した ITSM 作業項目の一元管理](https://docs.microsoft.com/azure/log-analytics/log-analytics-itsmc-overview)に関するページを参照してください。
+Service Map と IT Service Management Connector との統合は、両方のソリューションが有効であり、Log Analytics ワークスペースに構成されているときは自動的に行われます。 Service Map での統合に、"サービス デスク" というラベルが付けられます。 詳細については、[IT Service Management Connector を使用した ITSM 作業項目の一元管理](../platform/itsmc-overview.md)に関するページを参照してください。
 
 **[Machine Service Desk]\(マシン サービス デスク\)** ウィンドウでは、選択した時間範囲内で選択したサーバーの IT Service Management イベントすべてが一覧表示されます。 進行中の項目がある場合はサーバーにアイコンが表示され、[Machine Service Desk]\(マシン サービス デスク\) ウィンドウにはそれらの項目が一覧表示されます。
 
@@ -270,7 +270,7 @@ Service Map と Change Tracking との統合は、両方のソリューション
 
 ![[Machine Performance]\(マシンのパフォーマンス\) ウィンドウ](media/service-map/machine-performance.png)
 
-パフォーマンス データを表示するには、[適切な Log Analytics パフォーマンス カウンターを有効](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters)にする必要があります。  有効にするカウンターは次のとおりです。
+パフォーマンス データを表示するには、[適切な Log Analytics パフォーマンス カウンターを有効](../platform/data-sources-performance-counters.md)にする必要があります。  有効にするカウンターは次のとおりです。
 
 Windows:
 - Processor(*)\\% Processor Time
@@ -304,7 +304,7 @@ Service Map と Update Management との統合は、両方のソリューショ�
 
 ## <a name="log-analytics-records"></a>Log Analytics のレコード
 
-Service Map のコンピューターとプロセスのインベントリ データは、Log Analytics で[検索](../../azure-monitor/log-query/log-query-overview.md)できます。 このデータは、移行計画、容量の分析、探索、必要に応じたパフォーマンスのトラブルシューティングといったシナリオに適用できます。
+Service Map のコンピューターとプロセスのインベントリ データは、Log Analytics で[検索](../log-query/log-query-overview.md)できます。 このデータは、移行計画、容量の分析、探索、必要に応じたパフォーマンスのトラブルシューティングといったシナリオに適用できます。
 
 プロセスまたはコンピューターが起動されたとき、あるいは Service Map にオンボードされたときに生成されるレコードに加え、一意のコンピューターとプロセスごとに 1 時間あたり 1 つのレコードが生成されます。 これらのレコードは、次の表に示したプロパティを持ちます。 ServiceMapComputer_CL イベントのフィールドと値は、ServiceMap Azure Resource Manager API のマシン リソースのフィールドにマップされます。 ServiceMapProcess_CL イベントのフィールドと値は、ServiceMap Azure Resource Manager API のプロセス リソースのフィールドにマップされます。 ResourceName_s フィールドは、対応する Resource Manager リソースの名前フィールドと一致します。 
 
@@ -457,43 +457,43 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 
 ### <a name="list-all-known-machines"></a>既知のコンピューターを一覧表示
 
-ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>すべてのマネージド コンピューターの物理メモリ容量を一覧表示。
 
-ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s`
 
 ### <a name="list-computer-name-dns-ip-and-os"></a>コンピューター名、DNS、IP、および OS を一覧表示。
 
-ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s`
 
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>"sql" でコマンドラインのすべてのプロセスを検索
 
-ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId
+`ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="find-a-machine-most-recent-record-by-resource-name"></a>リソース名でコンピューター (最新のレコード) を検索
 
-search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId
+`search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="find-a-machine-most-recent-record-by-ip-address"></a>IP アドレスでマシン (最新のレコード) を検索
 
-search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId
+`search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-all-known-processes-on-a-specified-machine"></a>指定のマシンにある既知のプロセスすべてを一覧表示
 
-ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId
+`ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-all-computers-running-sql"></a>SQL を実行しているすべてのコンピューターを一覧表示
 
-ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s
+`ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s`
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>データセンター内にあるすべての製品バージョンの curl を一覧表示
 
-ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s
+`ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s`
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>CentOS を実行しているすべてのコンピューターのコンピューター グループを作成
 
-ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s
+`ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s`
 
 ### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>マシンのグループからの送信接続を要約します
 
@@ -540,7 +540,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 ## <a name="rest-api"></a>REST API
 
-サービス マップのすべてのサーバー、プロセス、および依存関係データは、[サービス マップ REST API](https://docs.microsoft.com/rest/api/servicemap/) を使用して取得できます。
+サービス マップのすべてのサーバー、プロセス、および依存関係データは、[サービス マップ REST API](/rest/api/servicemap/) を使用して取得できます。
 
 ## <a name="diagnostic-and-usage-data"></a>診断と使用状況データ
 
@@ -550,7 +550,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 ## <a name="next-steps"></a>次のステップ
 
-Log Analytics の[ログ検索](../../azure-monitor/log-query/log-query-overview.md)の詳細を確認して、Service Map によって収集されたデータを取得します。
+Log Analytics の[ログ検索](../log-query/log-query-overview.md)の詳細を確認して、Service Map によって収集されたデータを取得します。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -571,7 +571,7 @@ Microsoft Dependency Agent は、Microsoft Visual Studio ランタイム ライ�
 
 次の表に、コード番号と推奨される解決策を示します。
 
-| コード | 説明 | 解像度 |
+| コード | 説明 | 解決方法 |
 |:--|:--|:--|
 | 0x17 | ライブラリのインストーラーは、まだインストールされていない Windows Update を要求しています。 | 最新のライブラリ インストーラー ログを確認してください。<br><br>`Windows8.1-KB2999226-x64.msu` への参照の後に `Error 0x80240017: Failed to execute MSU package,` という行が続いている場合、KB2999226 をインストールするための前提条件が揃っていません。 [Windows での汎用の C ランタイム](https://support.microsoft.com/kb/2999226)に関する記事の前提条件セクションに記載の手順に従ってください。 前提条件をインストールするためには、Windows Update の実行と再起動が複数回必要になることがあります。<br><br>Microsoft Dependency Agent インストーラーをもう一度実行します。 |
 
@@ -600,6 +600,6 @@ Service Map にマシンは表示されるがプロセスまたは接続デー�
 
 `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` (Windows) または `/var/opt/microsoft/dependency-agent/log/service.log file` (Linux) を確認します。 ファイルの最後の行に、カーネルがロードされなかった原因が示されています。 たとえば、カーネルを更新した場合にそのカーネルが Linux でサポートされないことがあります。
 
-## <a name="feedback"></a>フィードバック
+## <a name="suggestions"></a>検索候補
 
 サービス マップやこのドキュメントについてフィードバックはありますか。  [UserVoice ページ](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)では、機能を提案したり、既存の提案に投票することができます。

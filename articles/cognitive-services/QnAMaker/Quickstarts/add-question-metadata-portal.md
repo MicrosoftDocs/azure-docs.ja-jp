@@ -1,22 +1,22 @@
 ---
 title: クイック スタート:QnA Maker ポータルで質問と回答を追加する
-description: このクイックスタートでは、ユーザーが自分の質問に対する適切な回答を見つけられるように、質問と回答のセットをメタデータと共に追加する方法について説明します。
+description: このクイックスタートでは、ユーザーが自分の質問に対する適切な回答を見つけられるように、質問と回答のペアをメタデータと共に追加する方法について説明します。
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: fc8bac425723e9194c447f1cf6ee13547c09d772
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: a832d9f421d3a1851401c286f129e29d0196ec99
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873683"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331391"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>クイック スタート:QnA Maker ポータルで質問と回答を追加する
 
-ナレッジ ベースを作成したら、質問と回答 (QnA) のセットを、回答をフィルター処理するためのメタデータと共に追加します。 次の表には Azure サービスの制限についての質問が記載されていますが、関係する Azure サービスはそれぞれ異なります。
+ナレッジ ベースを作成したら、質問と回答 (QnA) のペアを、回答をフィルター処理するためのメタデータと共に追加します。 次の表には Azure サービスの制限についての質問が記載されていますが、関係する Azure Search サービスはそれぞれ異なります。
 
 <a name="qna-table"></a>
 
-|オン|疑問がある場合|Answer|Metadata|
+|ペア|疑問がある場合|Answer|Metadata|
 |--|--|--|--|
 |1 番|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
 |2 番|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Cognitive Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Cognitive Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Cognitive Search tier supports.`|`service=search`<br>`link_in_answer=false`|
@@ -39,11 +39,11 @@ QnA ペアにメタデータが追加されると、クライアント アプリ
 
 ## <a name="add-additional-alternatively-phrased-questions"></a>言い回しを変えて質問を追加する
 
-最新のナレッジ ベースには、QnA Maker のトラブルシューティングに関する QnA ペアが含まれています。 これらのセットは、作成プロセスでナレッジ ベースに URL を追加したときに作成されました。
+最新のナレッジ ベースには、QnA Maker のトラブルシューティングに関する QnA ペアが含まれています。 これらのペアは、作成プロセスでナレッジ ベースに URL を追加したときに作成されました。
 
 この URL をインポートした時点では、1 つの回答について質問が 1 つしか作成されていませんでした。 この手順では、別の質問を追加します。
 
-1. **[編集]** ページで、質問と回答のセットの上にある検索ボックスを使用し、`How large a knowledge base can I create?` という質問を探します。
+1. **[編集]** ページで、質問と回答のペアの上にある検索ボックスを使用し、`How large a knowledge base can I create?` という質問を探します。
 
 1. **[質問]** 列で、 **[+ Add alternative phrasing]\(+ 代わりの言い回しの追加\)** を選択し、次の表に示した新しい言い回しをそれぞれ追加します。
 
@@ -70,9 +70,9 @@ QnA ペアにメタデータが追加されると、クライアント アプリ
 
 ## <a name="add-metadata-to-filter-the-answers"></a>回答をフィルター処理するためのメタデータを追加する
 
-質問と回答のセットにメタデータを追加すると、フィルター処理済みの回答をクライアント アプリケーションが要求できるようになります。 このフィルターは、[1 つ目と 2 つ目のランカー](../concepts/query-knowledge-base.md#ranker-process)が適用される前に適用されます。
+質問と回答のペアにメタデータを追加すると、フィルター処理済みの回答をクライアント アプリケーションが要求できるようになります。 このフィルターは、[1 つ目と 2 つ目のランカー](../concepts/query-knowledge-base.md#ranker-process)が適用される前に適用されます。
 
-1. [このクイックスタートの最初の表](#qna-table)にある 2つ目の質問と回答のセットをメタデータなしで追加したうえで、次の手順を続行します。
+1. [このクイックスタートの最初の表](#qna-table)にある 2つ目の質問と回答のペアをメタデータなしで追加したうえで、次の手順を続行します。
 
 1. **[オプションの表示]** を選択し、 **[メタデータの表示]** を選択します。
 
@@ -85,7 +85,7 @@ QnA ペアにメタデータが追加されると、クライアント アプリ
 1. 同じ 2 つのメタデータ タグに対し、メタデータのペアを追加します。
 
     `link_in_answer` : `true`<br>
-    `server`: `qna_maker`
+    `service`: `qna_maker`
 
     同じメタデータ タグで値が異なる 2 つの質問が完成しました。
 

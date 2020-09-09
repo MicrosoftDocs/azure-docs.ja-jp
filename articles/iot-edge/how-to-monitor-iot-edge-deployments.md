@@ -8,13 +8,14 @@ ms.date: 04/21/2020
 ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
+ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 97bc3c8571793ec8c8b67fe0e7c5cb3b6a56fde4
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: bc01c283fd4e2b6e3494c18c1908152aecee2c5f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726045"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489114"
 ---
 # <a name="monitor-iot-edge-deployments"></a>IoT Edge デプロイの監視
 
@@ -101,4 +102,4 @@ deployment show-metric コマンドは、次のパラメーターを受け取り
 
 ## <a name="next-steps"></a>次のステップ
 
-[組み込みのダイレクト メソッドを使用して EdgeAgent と通信する](how-to-edgeagent-direct-method.md)方法について学習します。
+IoT Edge のデプロイの接続と正常性のために、[モジュール ツインを監視する](how-to-monitor-module-twins.md)方法を確認します (監視対象は主に IoT Edge Agent と IoT Edge Hub のランタイム モジュールです)。

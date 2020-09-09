@@ -1,0 +1,82 @@
+### YamlMime:Landing
+title: Azure Kinect DK のドキュメント
+summary: Azure Kinect DK は、高度な AI センサーを採用した、先進的なコンピューター ビジョンと音声モデルを構築するための開発者キットです。 Kinect は、深度センサー、空間マイク配列とビデオ カメラ、および方位センサーを備えたオールインワンの小型デバイスです。複数のモード、オプション、およびソフトウェア開発キット (SDK) が用意されています。
+metadata:
+  title: Azure Kinect DK のドキュメント
+  description: Azure Kinect DK は、高度な AI センサーを採用した、先進的なコンピューター ビジョンと音声モデルを構築するための開発者キットです。 Kinect は、深度センサー、空間マイク配列とビデオ カメラ、および方位センサーを備えたオールインワンの小型デバイスです。複数のモード、オプション、および SDK が用意されています。
+  ms.prod: kinect-dk
+  ms.topic: landing-page
+  author: tesych
+  ms.author: tesych
+  ms.date: 03/11/2020
+  ms.openlocfilehash: f1691507d75d6de630f3c5a48cd59c8cc22b5999
+  ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 03/31/2020
+  ms.locfileid: "85277902"
+landingContent:
+- title: Azure Kinect DK について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Kinect DK とは
+      url: about-azure-kinect-dk.md
+  - linkListType: reference
+    links:
+    - text: ハードウェア仕様
+      url: hardware-specification.md
+    - text: システム要件
+      url: system-requirements.md
+- title: はじめに
+  linkLists:
+  - linkListType: download
+    links:
+    - text: Azure Kinect Sensor SDK
+      url: sensor-sdk-download.md
+    - text: Azure Kinect Body Tracking SDK
+      url: body-sdk-download.md
+  - linkListType: quickstart
+    links:
+    - text: Azure Kinect DK を設定する
+      url: set-up-azure-kinect-dk.md
+    - text: センサー ストリームをファイルに記録する
+      url: record-sensor-streams-file.md
+    - text: 最初の Azure Kinect アプリケーションを構築する
+      url: build-first-app.md
+    - text: Body Tracking SDK を設定する
+      url: body-sdk-setup.md
+    - text: 最初の体のトラッキング アプリを作成する
+      url: build-first-body-app.md
+- title: Sensor SDK を使用する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: デバイスを検索して開く
+      url: find-then-open-device.md
+    - text: イメージ データの取得
+      url: about-sensor-sdk.md
+    - text: マイクへのアクセス
+      url: access-mics.md
+    - text: 記録と再生
+      url: record-playback-api.md
+- title: Body Tracking SDK を使用する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 体のトラッキングの結果を表示する
+      url: get-body-tracking-results.md
+    - text: ボディ フレームのデータにアクセスする
+      url: access-data-body-frame.md
+- title: リファレンス
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Sensor SDK API
+      url: https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/index.html
+    - text: Body Tracking SDK API
+      url: https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/index.html
+    - text: Vision Services
+      url: https://azure.microsoft.com/services/cognitive-services/directory/vision/
+    - text: Speech Services
+      url: https://docs.microsoft.com/azure/cognitive-services/speech-service/

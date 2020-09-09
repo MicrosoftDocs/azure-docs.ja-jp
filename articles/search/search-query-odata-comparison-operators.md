@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 62c8c93e07326e776cbe089042abc481544794bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc5803f96c30ea1df362676aa8c4104bb0b69db3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74113227"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934873"
 ---
 # <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>Azure Cognitive Search の OData 比較演算子 - `eq`、`ne`、`gt`、`lt`、`ge`、`le`
 
@@ -136,27 +136,37 @@ comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 
 `Rating` フィールドが 3 から 5 (両端を含む) の範囲のドキュメントを照合します。
 
-    Rating ge 3 and Rating le 5
+```text
+Rating ge 3 and Rating le 5
+```
 
 `Location` フィールドが指定した緯度および経度から 2 キロメートル未満のドキュメントを一致させる場合:
 
-    geo.distance(Location, geography'POINT(-122.031577 47.578581)') lt 2.0
+```text
+geo.distance(Location, geography'POINT(-122.031577 47.578581)') lt 2.0
+```
 
 `LastRenovationDate` フィールドが、2015 年 1 月 1 日の午前 0 時 (UTC) 以降のドキュメントを一致させる場合:
 
-    LastRenovationDate ge 2015-01-01T00:00:00.000Z
+```text
+LastRenovationDate ge 2015-01-01T00:00:00.000Z
+```
 
 `Details/Sku` フィールドが `null` ではないドキュメントを一致させる場合:
 
-    Details/Sku ne null
+```text
+Details/Sku ne null
+```
 
 少なくとも 1 つの部屋のタイプが "Deluxe Room" であり、`Rooms/Type` フィールドの文字列がフィルターと正確に一致するホテルのドキュメントを一致させる場合:
 
-    Rooms/any(room: room/Type eq 'Deluxe Room')
+```text
+Rooms/any(room: room/Type eq 'Deluxe Room')
+```
 
 ## <a name="next-steps"></a>次のステップ  
 
 - [Azure Cognitive Search のフィルター](search-filters.md)
 - [Azure Cognitive Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)
 - [Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)
-- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)

@@ -1,25 +1,24 @@
 ---
-title: ワークスペースの作成
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (classic): ワークスペースの作成 - Azure'
 description: Azure Machine Learning Studio (クラシック) を使用するには、Machine Learning Studio (クラシック) ワークスペースが必要です。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 7b01e7667392d475bcab70dcd3dfaad2c3956e8f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: c283ef2f6eb28dca7ca5bc5e391ef30465c65dc0
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208535"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691277"
 ---
-# <a name="create-and-share-an-azure-machine-learning-studio-classic-workspace"></a>Azure Machine Learning Studio (クラシック) ワークスペースを作成して共有する
+# <a name="create-and-share-an-machine-learning-studio-classic-workspace"></a>Machine Learning Studio (classic) ワークスペースを作成して共有する
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 Azure Machine Learning Studio (クラシック) を使用するには、Machine Learning Studio (クラシック) ワークスペースが必要です。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
 
@@ -71,7 +70,7 @@ Studio (クラシック) ワークスペースの管理方法の詳細につい�
 
 
 ## <a name="share-an-azure-machine-learning-studio-classic-workspace"></a>Azure Machine Learning Studio (クラシック) ワークスペースを共有する
-Machine Learning Studio (クラシック) ワークスペースを作成した後、ユーザーをワークスペースに招待し、ワークスペースとその実験、データセット、ノートブックなどのすべてに対するアクセスを共有できます。ユーザーは、次のいずれかの役割で追加することができます。
+Machine Learning Studio (classic) ワークスペースを作成した後、ユーザーをワークスペースに招待し、ワークスペースとその実験、データセットなどのすべてに対するアクセスを共有できます。ユーザーは、次のいずれかの役割で追加することができます。
 
 * **ユーザー** - ワークスペース内の実験やデータセットの作成、表示、変更、削除を行うことができます。
 * **所有者** - ワークスペース ユーザーの招待と削除、ユーザーが実行できる操作の登録を行うことができます。

@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: memildin
   ms.author: memildin
-  ms.date: 11/04/2019
-  ms.openlocfilehash: a1d764ce1ce332290c1bd68c5beb5f2731ae5e41
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 08/17/2020
+  ms.openlocfilehash: d87e86bc1e4795be4e234cba06ddd9ab663ba3f8
+  ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "80159304"
+  ms.lasthandoff: 09/01/2020
+  ms.locfileid: "89276866"
 landingContent:
 - title: Security Center について
   linkLists:
@@ -30,18 +30,16 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
-    - text: コンテンツの保護
-      url: container-security.md
-    - text: VM 用の統合された脆弱性評価
-      url: built-in-vulnerability-assessment.md
-    - text: セキュリティ アラートのスキーマの確認
-      url: alerts-schemas.md
-    - text: アラートや推奨事項に対する応答の自動化
-      url: workflow-automation.md
-    - text: セキュリティ アラートと推奨事項のエクスポート
-      url: continuous-export.md
-    - text: Azure Key Vault の脅威の防止の設定
-      url: advanced-threat-protection-key-vault.md
+    - text: Security Center のリリース ノート
+      url: release-notes.md
+    - text: Asset Inventory によるリソースの管理
+      url: asset-inventory.md
+    - text: 適応型アプリケーション制御のページの書き換え
+      url: security-center-adaptive-application.md
+    - text: 新しいセキュリティ制御の詳細な説明
+      url: secure-score-security-controls.md#security-controls-and-their-recommendations
+    - text: セキュリティ スコア API
+      url: secure-score-security-controls.md#get-your-secure-score-from-the-rest-api
 - title: はじめに
   linkLists:
   - linkListType: get-started
@@ -49,7 +47,7 @@ landingContent:
     - text: セキュリティ ポリシーの構成
       url: tutorial-security-policy.md
     - text: セキュリティ体制の評価
-      url: security-center-secure-score.md
+      url: secure-score-security-controls.md
     - text: 高度なセキュリティへのアップグレード
       url: security-center-onboarding.md
 - title: セキュア スコアを向上させる
@@ -64,6 +62,8 @@ landingContent:
       url: tutorial-security-policy.md
     - text: 推奨事項を使用してセキュリティを強化する
       url: security-center-using-recommendations.md
+    - text: セキュア スコア API を使用して追跡する
+      url: secure-score-security-controls.md#get-your-secure-score-from-the-rest-api
 - title: 脅威の軽減
   linkLists:
   - linkListType: how-to-guide

@@ -4,19 +4,19 @@ description: ハイブリッド Azure AD 参加を組織全体で同時に有効
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f43db805ccbb7d4e546c51bbe39350f4bbba2efb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 66b216e5e511d2d80378ee7e2d124dccbc7abcb7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80049989"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85252714"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>ハイブリッド Azure AD 参加の検証を制御する
 

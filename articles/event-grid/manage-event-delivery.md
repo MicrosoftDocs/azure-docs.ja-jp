@@ -1,24 +1,23 @@
 ---
 title: 配信不能と再試行に関する方針 - Azure Event Grid
 description: Event Grid のイベント配信オプションをカスタマイズする方法について説明します。 配信不能メッセージの送信先を設定し、配信の再試行時間を指定します。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 10/22/2019
-ms.author: spelluru
-ms.openlocfilehash: caed3c077b4df5da5fd8541b2f7e85ef119604b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/20/2020
+ms.openlocfilehash: 2ff1d05899fb74583489649154ffa062e857cb95
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72794032"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074879"
 ---
 # <a name="dead-letter-and-retry-policies"></a>配信不能と再試行に関する方針
 
 イベント サブスクリプションの作成時には、イベント配信の設定をカスタマイズできます。 この記事では、配信不能の場所の設定方法と、再試行の設定のカスタマイズ方法を示します。 これらの機能については、「[Event Grid によるメッセージの配信と再試行](delivery-and-retry.md)」をご覧ください。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+> [!NOTE]
+> メッセージの配信、再試行、配信不能の詳細については、「[Event Grid によるメッセージの配信と再試行]()」を参照してください。
 
 ## <a name="set-dead-letter-location"></a>配信不能の場所の設定
 
@@ -99,7 +98,8 @@ az eventgrid event-subscription create \
   --max-delivery-attempts 18
 ```
 
-`event-ttl` と `max-deliver-attempts` の両方を設定した場合、Event Grid は期限切れについて最初の設定を使用して、イベント配信を停止するタイミングを判別します。
+> [!NOTE]
+> `event-ttl` と `max-deliver-attempts` の両方を設定した場合、Event Grid は期限切れについて最初の設定を使用して、イベント配信を停止するタイミングを判別します。 たとえば、Time-to-live (TTL) を 30 分に設定し、配信の最大試行回数を 10 回に設定したとします。 イベントが 30 分の時間経過または 10 回の試行 (どちらか先に発生した方) の後に配信されなかった場合、そのイベントは配信不能となります。  
 
 ### <a name="powershell"></a>PowerShell
 
@@ -127,7 +127,8 @@ New-AzEventGridSubscription `
   -MaxDeliveryAttempt 18
 ```
 
-`EventTtl` と `MaxDeliveryAttempt` の両方を設定した場合、Event Grid は期限切れについて最初の設定を使用して、イベント配信を停止するタイミングを判別します。
+> [!NOTE]
+> `event-ttl` と `max-deliver-attempts` の両方を設定した場合、Event Grid は期限切れについて最初の設定を使用して、イベント配信を停止するタイミングを判別します。 たとえば、Time-to-live (TTL) を 30 分に設定し、配信の最大試行回数を 10 回に設定したとします。 イベントが 30 分の時間経過または 10 回の試行 (どちらか先に発生した方) の後に配信されなかった場合、そのイベントは配信不能となります。  
 
 ## <a name="next-steps"></a>次のステップ
 

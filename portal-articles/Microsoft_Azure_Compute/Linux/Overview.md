@@ -1,6 +1,6 @@
 ---
 title: Linux 仮想マシンの概要 | Microsoft Docs
-description: Azure Portal 内にある Linux 仮想マシンの概要に関するヘルプ コンテンツ
+description: Azure portal 内にある Linux 仮想マシンの概要に関するヘルプ コンテンツ
 services: virtual-machines-linux
 author: sewatson
 manager: lwelicki
@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: ff439083ca9c648ceec95b89b041bb5b60785c91
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: bf465cb6d391188b4110cca6d72deba6932af0a6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77603012"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282400"
 ---
 # <a name="linux-virtual-machines-documentation"></a>Linux 仮想マシンのドキュメント
 
@@ -23,9 +23,10 @@ Azure Linux 仮想マシンでは、Red Hat、Ubuntu、または好みの Linux 
 
 Ubuntu を実行している仮想マシン内で NGINX Web サーバーをデプロイする方法について説明します。
 
-- [Azure Portal](/azure/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Azure PowerShell](/azure/virtual-machines/virtual-machines-linux-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Azure CLI](/azure/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Azure CLI](../../articles/virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Azure Portal](../../articles//virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Azure PowerShell](../../articles//virtual-machines/quick-create-powershell.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+
 
 ## <a name="step-by-step-tutorials"></a>ステップバイステップ チュートリアル
 

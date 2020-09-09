@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
-ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: dd8442c00e2b7685b0dc1a7bd5150c87f2c27b7c
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
+ms.openlocfilehash: 06d9ea895607332c8de25176376d52987ceed7a1
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891449"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212268"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Azure Functions における Azure Queue storage の出力バインド
 
@@ -369,15 +369,15 @@ C# と C# スクリプトで複数のキュー メッセージを書き込むに
 
 - **戻り値**:*function.json* 内の `name` プロパティを `$return` に設定します。 この構成では、関数の戻り値は Queue storage メッセージとして永続化されます。
 
-- **命令型**:[Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) 型として宣言されたパラメーターの [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) メソッドに値を渡します。 `set` に渡された値は、Queue storage メッセージとして永続化されます。
+- **命令型**:[Out](/python/api/azure-functions/azure.functions.out?view=azure-python) 型として宣言されたパラメーターの [set](/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) メソッドに値を渡します。 `set` に渡された値は、Queue storage メッセージとして永続化されます。
 
 # <a name="java"></a>[Java](#tab/java)
 
-[QueueOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queueoutput) 注釈を使用して関数からイベント ハブ メッセージを出力するには、次の 2 つのオプションがあります。
+[QueueOutput](/java/api/com.microsoft.azure.functions.annotation.queueoutput) 注釈を使用して関数からイベント ハブ メッセージを出力するには、次の 2 つのオプションがあります。
 
 - **戻り値**:関数自体に注釈を適用すると、関数の戻り値がイベントハブ メッセージとして永続化されます。
 
-- **命令型**:メッセージ値を明示的に設定するには、[`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding) 型の特定のパラメーターに注釈を適用します。 ここで、`T` は POJO または任意のネイティブ Java 型です。 この構成では、`setValue` メソッドに値を渡すと、その値がイベント ハブ メッセージとして保持されます。
+- **命令型**:メッセージ値を明示的に設定するには、[`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) 型の特定のパラメーターに注釈を適用します。 ここで、`T` は POJO または任意のネイティブ Java 型です。 この構成では、`setValue` メソッドに値を渡すと、その値がイベント ハブ メッセージとして保持されます。
 
 ---
 
@@ -385,9 +385,9 @@ C# と C# スクリプトで複数のキュー メッセージを書き込むに
 
 | バインド |  リファレンス |
 |---|---|
-| キュー | [キュー エラー コード](https://docs.microsoft.com/rest/api/storageservices/queue-service-error-codes) |
-| BLOB、テーブル、キュー | [ストレージ エラー コード](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
-| BLOB、テーブル、キュー |  [トラブルシューティング](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
+| キュー | [キュー エラー コード](/rest/api/storageservices/queue-service-error-codes) |
+| BLOB、テーブル、キュー | [ストレージ エラー コード](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
+| BLOB、テーブル、キュー |  [トラブルシューティング](/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 <a name="host-json"></a>  
 

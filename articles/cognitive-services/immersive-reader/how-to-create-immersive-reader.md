@@ -1,5 +1,5 @@
 ---
-title: イマーシブ リーダーのリソースを作成する
+title: Immersive Reader のリソースを作成する
 titleSuffix: Azure Cognitive Services
 description: この記事では、カスタム サブドメインを含む新しいイマーシブ リーダー リソースを作成した後、Azure テナントで Azure AD を構成する方法について説明します。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 41efe4592c65ae3cdd85ce1b212554e50691905a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 66a2fde47f71536661431959b957246e28c81d6a
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78330721"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639811"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>イマーシブ リーダー リソースを作成して Azure Active Directory 認証を構成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "78330721"
 
 ## <a name="set-up-powershell-environment"></a>PowerShell 環境をセットアップする
 
-1. まず、[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を開きます。 左上のドロップダウンを参照するか、または「`pwsh`」と入力して、Cloud Shell が PowerShell に設定されていることを確認します。
+1. まず、[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を開きます。 左上のドロップダウンを参照するか、「`pwsh`」と入力して、Cloud Shell が PowerShell に設定されていることを確認します。
 
 1. 以下のコード スニペットをコピーしてシェルに貼り付けます。
 
@@ -44,7 +44,8 @@ ms.locfileid: "78330721"
         [Parameter(Mandatory=$true)] [String] $ResourceGroupLocation,
         [Parameter(Mandatory=$true)] [String] $AADAppDisplayName="ImmersiveReaderAAD",
         [Parameter(Mandatory=$true)] [String] $AADAppIdentifierUri,
-        [Parameter(Mandatory=$true)] [String] $AADAppClientSecret
+        [Parameter(Mandatory=$true)] [String] $AADAppClientSecret,
+        [Parameter(Mandatory=$true)] [String] $AADAppClientSecretExpiration
     )
     {
         $unused = ''
@@ -93,12 +94,13 @@ ms.locfileid: "78330721"
         $clientId = az ad app show --id $AADAppIdentifierUri --query "appId" -o tsv
         if (-not $clientId) {
             Write-Host "Creating new Azure Active Directory app"
-            $clientId = az ad app create --password $AADAppClientSecret --display-name $AADAppDisplayName --identifier-uris $AADAppIdentifierUri --query "appId" -o tsv
+            $clientId = az ad app create --password $AADAppClientSecret --end-date "$AADAppClientSecretExpiration" --display-name $AADAppDisplayName --identifier-uris $AADAppIdentifierUri --query "appId" -o tsv
 
             if (-not $clientId) {
                 throw "Error: Failed to create Azure Active Directory app"
             }
-            Write-Host "Azure Active Directory app created successfully"
+            Write-Host "Azure Active Directory app created successfully."
+            Write-Host "NOTE: To manage your Active Directory app client secrets after this Immersive Reader Resource has been created please visit https://portal.azure.com and go to Home -> Azure Active Directory -> App Registrations -> $AADAppDisplayName -> Certificates and Secrets blade -> Client Secrets section" -ForegroundColor Yellow
         }
 
         # Create a service principal if it doesn't already exist
@@ -155,6 +157,7 @@ ms.locfileid: "78330721"
       -AADAppDisplayName '<AAD_APP_DISPLAY_NAME>' `
       -AADAppIdentifierUri '<AAD_APP_IDENTIFIER_URI>' `
       -AADAppClientSecret '<AAD_APP_CLIENT_SECRET>'
+      -AADAppClientSecretExpiration '<AAD_APP_CLIENT_SECRET_Expiration>'
     ```
 
     | パラメーター | 説明 |
@@ -168,7 +171,12 @@ ms.locfileid: "78330721"
     | ResourceGroupLocation |リソース グループが存在しない場合は、グループの作成先の場所を指定する必要があります。 場所の一覧を表示するには、`az account list-locations` を実行します。 返された結果の *name* プロパティ (スペースなし) を使用します。 リソース グループが既に存在する場合、このパラメーターは省略可能です。 |
     | AADAppDisplayName |Azure Active Directory アプリケーションの表示名。 既存の Azure AD アプリケーションが見つからない場合は、この名前を使用して新しく作成されます。 Azure AD アプリケーションが既に存在する場合、このパラメーターは省略可能です。 |
     | AADAppIdentifierUri |Azure AD アプリの URI。 既存の Azure AD アプリが見つからない場合は、この URI を使用して新しく作成されます。 たとえば、「 `https://immersivereaderaad-mycompany` 」のように入力します。 |
-    | AADAppClientSecret |作成するパスワード。このパスワードは、後でイマーシブ リーダーを起動するためのトークンを取得する際の認証に使用されます。 パスワードは 16 文字以上でなければなりません。また、特殊文字を 1 文字以上、数字を 1 文字以上含める必要があります。 |
+    | AADAppClientSecret |作成するパスワード。このパスワードは、後でイマーシブ リーダーを起動するためのトークンを取得する際の認証に使用されます。 パスワードは 16 文字以上でなければなりません。また、特殊文字を 1 文字以上、数字を 1 文字以上含める必要があります。 このリソースを作成した後に Azure AD アプリケーション クライアント シークレットを管理するには、 https://portal.azure.com にアクセスして、[ホーム] -> [Azure Active Directory] -> [アプリの登録] -> `[AADAppDisplayName]` -> [証明書とシークレット] ブレード -> [クライアント シークレット] セクションに移動してください (以下の "Azure AD アプリケーション シークレットの管理" スクリーンショットを参照)。 |
+    | AADAppClientSecretExpiration |`[AADAppClientSecret]` の有効期限が切れる日付または日時 (例:'2020-12-31T11:59:59+00:00' または '2020-12-31')。 |
+
+    Azure AD アプリケーション シークレットの管理
+
+    ![Azure Portal の [証明書とシークレット] ブレード](./media/client-secrets-blade.png)
 
 1. 後で使用するために、JSON 出力をテキスト ファイルにコピーします。 出力は次のようになります。
 
@@ -183,9 +191,10 @@ ms.locfileid: "78330721"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Node.js クイックスタート](./quickstart-nodejs.md)で、Node.js とイマーシブ リーダー SDK を使用して他にできることを確認する
+* [Node.js クイックスタート](./quickstarts/client-libraries.md?pivots=programming-language-nodejs)で、Node.js とイマーシブ リーダー SDK を使用して他にできることを確認する
+* [Android チュートリアル](./tutorial-android.md)を参照して、Android 用の Java または Kotlin を使用してイマーシブ リーダー SDK で他にできることを確認する
+* [iOS チュートリアル](./tutorial-ios.md)を参照して、iOS 用の Swift を使用してイマーシブ リーダー SDK で他にできることを確認する
 * [Python チュートリアル](./tutorial-python.md)で、Python と Immersive Reader SDK を使用して他にできることを確認する
-* [Swift チュートリアル](./tutorial-ios-picture-immersive-reader.md)で、Swift と Immersive Reader SDK を使用して他にできることを確認する
 * [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) と [Immersive Reader SDK リファレンス](./reference.md)を探索する
 
 

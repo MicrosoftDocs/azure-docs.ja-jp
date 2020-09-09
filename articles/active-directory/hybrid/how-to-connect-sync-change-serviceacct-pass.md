@@ -12,24 +12,24 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b2a0d0b77b6db481b13785907a1359d2bbe3e9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 31c76b78d4ab7a3f305b52526b7e4ce14f3b1ede
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984506"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278039"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>ADSync サービス アカウントのパスワードの変更
 ADSync サービス アカウントのパスワードを変更すると、暗号化キーを破棄し、ADSync サービス アカウントのパスワードを再初期化するまで、同期サービスを正常に開始できなくなります。 
 
 Azure AD Connect は同期サービスの一部として、暗号化キーを使用して AD DS コネクタ アカウントと ADSync サービス アカウントのパスワードを保存します。  これらのアカウントは、データベースへの保存前に暗号化されます。 
 
-暗号化キーは、[Windows データ保護 (DPAPI)](https://msdn.microsoft.com/library/ms995355.aspx) を使用して保護されています。 DPAPI では、**ADSync サービス アカウント**を使用して暗号化キーを保護します。 
+暗号化キーは、[Windows データ保護 (DPAPI)](/previous-versions/ms995355(v=msdn.10)) を使用して保護されています。 DPAPI では、**ADSync サービス アカウント**を使用して暗号化キーを保護します。 
 
 サービス アカウントのパスワードを変更する必要がある場合は、「[ADSync サービス アカウントの暗号化キーの破棄](#abandoning-the-adsync-service-account-encryption-key)」の手順に従って変更します。  この手順は、なんらかの理由で暗号化キーを破棄する必要がある場合にも使用してください。
 
@@ -52,7 +52,7 @@ Azure AD Connect は同期サービスの一部として、暗号化キーを使
  
 ## <a name="abandoning-the-adsync-service-account-encryption-key"></a>ADSync サービス アカウントの暗号化キーの破棄
 >[!IMPORTANT]
->次の手順は、ビルド 1.1.443.0 以前の Azure AD Connect にのみ適用されます。
+>次の手順は、ビルド 1.1.443.0 以前の Azure AD Connect にのみ適用されます。 これは、新しいバージョンの Azure AD Connect には使用できません。
 
 暗号化キーを破棄するには、次の手順を実行します。
 

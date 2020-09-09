@@ -1,37 +1,41 @@
 ---
 title: テンプレート デプロイの what-if (プレビュー)
 description: Azure Resource Manager テンプレートをデプロイする前に、リソースがどのような変更されるかを確認します。
-author: mumian
+author: tfitzmac
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.author: jgao
-ms.openlocfilehash: 70023f4fa5d44c74c7ce14f3a2c09ff14c9d2f8c
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.date: 08/05/2020
+ms.author: tomfitz
+ms.openlocfilehash: 27efe1e03b8a0d373d566106a53a41007731973e
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82581190"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810073"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>ARM テンプレートのデプロイの what-if 操作 (プレビュー)
 
-Azure Resource Manager (ARM) テンプレートをデプロイする前に、発生する変更をプレビューすることができます。 Azure Resource Manager の what-if 操作を使うと、テンプレートをデプロイした場合にリソースがどのように変更されるかを確認できます。 what-if 操作では、既存のリソースに対していかなる変更も行われません。 代わりに、指定したテンプレートがデプロイされた場合の変更が予測されます。
+Azure Resource Manager テンプレート (ARM テンプレート) をデプロイする前に、発生する変更をプレビューすることができます。 Azure Resource Manager の what-if 操作を使うと、テンプレートをデプロイした場合にリソースがどのように変更されるかを確認できます。 what-if 操作では、既存のリソースに対していかなる変更も行われません。 代わりに、指定したテンプレートがデプロイされた場合の変更が予測されます。
 
 > [!NOTE]
 > what-if 操作は、現在プレビューの段階です。 プレビュー リリースなので、実際には何も変更されないときに、結果ではリソースが変更されることが示される場合があります。 このような問題を減らす作業が行われていますが、お客様の支援が必要です。 これらの問題を、[https://aka.ms/whatifissues](https://aka.ms/whatifissues)で報告してください。
 
-what-if 操作は Azure PowerShell、Azure CLI、または REST API 操作で使用できます。
+what-if 操作は Azure PowerShell、Azure CLI、または REST API 操作で使用できます。 What-if は、リソース グループ、サブスクリプション、管理グループ、テナント レベルのデプロイでサポートされています。
 
-## <a name="install-powershell-module"></a>PowerShell モジュールをインストールする
+## <a name="install-azure-powershell-module"></a>Azure PowerShell モジュールをインストールする
 
-PowerShell で what-if を使用するには、PowerShell ギャラリーから Az.Resources モジュールのプレビュー バージョンをインストールする必要があります。 ただし、モジュールをインストールする前に、PowerShell Core (6.x または 7.x) があることを確認してください。 PowerShell 5.x 以前を使用している場合は [PowerShell](/powershell/scripting/install/installing-powershell) のバージョンを更新してください。 プレビュー モジュールを PowerShell 5.x 以前にインストールすることはできません。
+PowerShell で What-if を使用するには、**Az モジュールの 4.2 以降**のバージョンが必要です。
 
-### <a name="install-preview-version"></a>プレビュー バージョンのインストール
+ただし、必要なモジュールをインストールする前に、PowerShell Core (6.x または 7.x) があることを確認してください。 PowerShell 5.x 以前を使用している場合は [PowerShell](/powershell/scripting/install/installing-powershell) のバージョンを更新してください。 必要なモジュールを PowerShell 5.x 以前にインストールすることはできません。
 
-プレビュー モジュールをインストールするには、次を使用します。
+### <a name="install-latest-version"></a>最新バージョンをインストールする
+
+モジュールをインストールするには、次を使用します。
 
 ```powershell
-Install-Module Az.Resources -RequiredVersion 1.12.1-preview -AllowPrerelease
+Install-Module -Name Az -Force
 ```
+
+モジュールのインストールの詳細については、「[Azure PowerShell をインストールする](/powershell/azure/install-az-ps)」を参照してください。
 
 ### <a name="uninstall-alpha-version"></a>アルファ版のアンインストール
 
@@ -97,11 +101,14 @@ Scope: /subscriptions/./resourceGroups/ExampleGroup
 Resource changes: 1 to modify.
 ```
 
+> [!NOTE]
+> What-if 操作では、[reference 関数](template-functions-resource.md#reference)を解決できません。 reference 関数を含むテンプレート式にプロパティを設定するたびに、What-if は、そのプロパティが変更されることを報告します。 この動作は、What-if がそのプロパティの現在の値 (ブール値の場合は `true` や `false` など) を未解決のテンプレート式と比較するために発生します。 当然、これらの値は一致しません。 テンプレートをデプロイすると、このプロパティは、テンプレート式が別の値に解決される場合にのみ変更されます。
+
 ## <a name="what-if-commands"></a>What-if コマンド
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-テンプレートをデプロイする前に変更のプレビューを表示するには、デプロイ コマンドに `-Whatif` スイッチ パラメーターを追加します。
+テンプレートをデプロイする前に変更をプレビューするには、[New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) または [New-AzSubscriptionDeployment](/powershell/module/az.resources/new-azdeployment) を使用します。 デプロイ コマンドに `-Whatif` スイッチ パラメーターを追加します。
 
 * リソース グループ デプロイの場合は `New-AzResourceGroupDeployment -Whatif`
 * サブスクリプション レベルのデプロイの場合は `New-AzSubscriptionDeployment -Whatif` および `New-AzDeployment -Whatif`
@@ -111,34 +118,41 @@ Resource changes: 1 to modify.
 * リソース グループ デプロイの場合は `New-AzResourceGroupDeployment -Confirm`
 * サブスクリプション レベルのデプロイの場合は `New-AzSubscriptionDeployment -Confirm` および `New-AzDeployment -Confirm`
 
-上記のコマンドは、手動で検査できるテキストの概要を返します。 プログラムによって変更を検査できるオブジェクトを取得するには、以下を使用します。
+上記のコマンドは、手動で検査できるテキストの概要を返します。 プログラムで変更を検査できるオブジェクトを取得するには、[Get-AzResourceGroupDeploymentWhatIfResult](/powershell/module/az.resources/get-azresourcegroupdeploymentwhatifresult) または [Get-AzSubscriptionDeploymentWhatIfResult](/powershell/module/az.resources/get-azdeploymentwhatifresult) を使用します。
 
 * リソース グループ デプロイの場合は `$results = Get-AzResourceGroupDeploymentWhatIfResult`
 * サブスクリプション レベルのデプロイの場合は `$results = Get-AzSubscriptionDeploymentWhatIfResult` または `$results = Get-AzDeploymentWhatIfResult`
 
 ### <a name="azure-cli"></a>Azure CLI
 
-テンプレートをデプロイする前に変更のプレビューを表示するには、デプロイ コマンドで `what-if` を使用します。
+テンプレートをデプロイする前に変更のプレビューを表示するには、次のコマンドを使用します。
 
-* リソース グループ デプロイの場合は `az deployment group what-if`
-* サブスクリプション レベルのデプロイの場合は `az deployment sub what-if`
+* [az deployment group what-if](/cli/azure/deployment/group#az-deployment-group-what-if) (リソース グループのデプロイの場合)
+* [az deployment sub what-if](/cli/azure/deployment/sub#az-deployment-sub-what-if) (サブスクリプション レベルのデプロイの場合)
+* [az deployment mg what-if](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-what-if) (管理グループのデプロイの場合)
+* [az deployment tenant what-if](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-what-if) (テナントのデプロイの場合)
 
-`--confirm-with-what-if` (または短縮形式 `-c`) を使用して、変更をプレビューし、デプロイを続行するかどうかを確認するプロンプトを表示することもできます。
+`--confirm-with-what-if` (または短縮形式 `-c`) を使用して、変更をプレビューし、デプロイを続行するかどうかを確認するプロンプトを表示することもできます。 このスイッチを次のコマンドに追加します。
 
-* リソース グループ デプロイの場合は `az deployment group create --confirm-with-what-if` または `-c`
-* サブスクリプション レベルのデプロイの場合は `az deployment sub create --confirm-with-what-if` または `-c`
+* [az deployment group create](/cli/azure/deployment/group#az-deployment-group-create)
+* [az deployment sub create](/cli/azure/deployment/sub#az-deployment-sub-create)
+* [az deployment mg create](/cli/azure/deployment/mg#az-deployment-mg-create)
+* [az deployment tenant create](/cli/azure/deployment/tenant#az-deployment-tenant-create)
 
-上記のコマンドは、手動で検査できるテキストの概要を返します。 プログラムによって変更を検査できる JSON オブジェクトを取得するには、以下を使用します。
+たとえば、リソース グループのデプロイの場合は `az deployment group create --confirm-with-what-if` または `-c` を使用します。
 
-* リソース グループ デプロイの場合は `az deployment group what-if --no-pretty-print`
-* サブスクリプション レベルのデプロイの場合は `az deployment sub what-if --no-pretty-print`
+上記のコマンドは、手動で検査できるテキストの概要を返します。 プログラムによって変更を検査できる JSON オブジェクトを取得するには、`--no-pretty-print` スイッチを使用します。 たとえば、リソース グループのデプロイの場合は `az deployment group what-if --no-pretty-print` を使用します。
+
+カラーなしの結果を返す場合は、[Azure CLI 構成](/cli/azure/azure-cli-configuration)ファイルを開きます。 **no_color** を **yes** に設定します。
 
 ### <a name="azure-rest-api"></a>Azure REST API
 
 REST API については、以下を使用します。
 
 * リソース グループ デプロイの場合は「[デプロイ - What If](/rest/api/resources/deployments/whatif)」
-* サブスクリプション レベルのデプロイの場合は「[デプロイ - サブスクリプション スコープ での What If](/rest/api/resources/deployments/whatifatsubscriptionscope)」
+* サブスクリプションのデプロイの場合は「[デプロイ - サブスクリプション スコープでの What If](/rest/api/resources/deployments/whatifatsubscriptionscope)」
+* 管理グループのデプロイの場合は「[デプロイ - 管理グループ スコープでの What If](/rest/api/resources/deployments/whatifatmanagementgroupscope)」
+* テナントのデプロイの場合は「[デプロイ - テナント スコープでの What If](/rest/api/resources/deployments/whatifattenantscope)」
 
 ## <a name="change-types"></a>変更の種類
 
@@ -303,7 +317,7 @@ Resource changes: 1 to modify.
 
 出力の上部で、変更の種類を示す色が定義されていることに注意してください。
 
-出力の下部には、タグ Owner が削除されたことが表示されています。 アドレス プレフィックスが 10.0.0.0/16 から 10.0.0.0/15 に変更されました。 subnet001 という名前のサブネットが削除されました。 これらの変更は、実際にはデプロイされていないことに注意してください。 テンプレートをデプロイした場合に行われる変更のプレビューが表示されています。
+出力の下部には、タグ Owner が削除されたことが表示されています。 アドレス プレフィックスが 10.0.0.0/16 から 10.0.0.0/15 に変更されました。 subnet001 という名前のサブネットが削除されました。 これらの変更は、デプロイされていないことに注意してください。 テンプレートをデプロイした場合に行われる変更のプレビューが表示されています。
 
 削除済みとして一覧されたプロパティの一部は、実際には変更されません。 プロパティは、テンプレートに含まれていない場合、削除済みとして誤って報告されることがありますが、デプロイ時に既定値として自動的に設定されます。 この結果は、what-if 応答では "ノイズ" と見なされます。 最後にデプロイされたリソースには、プロパティ用の値セットがあります。 what-if 操作が成熟すると、これらのプロパティは結果から除外されます。
 
@@ -396,6 +410,16 @@ Are you sure you want to execute the deployment?
 ```
 
 期待通りの変更が表示され、デプロイを実行することを確認できます。
+
+## <a name="sdks"></a>SDK
+
+what-if 操作は、Azure SDK を介して使用できます。
+
+* Python の場合は、[what-if](/python/api/azure-mgmt-resource/azure.mgmt.resource.resources.v2019_10_01.operations.deploymentsoperations?view=azure-python#what-if-resource-group-name--deployment-name--properties--location-none--custom-headers-none--raw-false--polling-true----operation-config-) を使用します。
+
+* Java の場合は、[DeploymentWhatIf クラス](/java/api/com.microsoft.azure.management.resources.deploymentwhatif?view=azure-java-stable)を使用します。
+
+* .NET の場合は、[DeploymentWhatIf クラス](/dotnet/api/microsoft.azure.management.resourcemanager.models.deploymentwhatif?view=azure-dotnet)を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 

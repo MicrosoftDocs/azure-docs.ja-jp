@@ -4,15 +4,15 @@ description: ポイント対サイト クライアントにカスタム ルー�
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
-ms.date: 11/11/2019
+ms.topic: how-to
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3588755e2aab1c84d443e917eca8c7fca280b49a
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: a02bd5519b776a063646c11be2a34366fe429f99
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756887"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89392393"
 ---
 # <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>P2S VPN クライアント用のカスタム ルートをアドバタイズする
 

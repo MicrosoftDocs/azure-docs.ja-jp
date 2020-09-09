@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: d76bac60bae11f0843d81de523030154af62a373
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: b62352d09419de11135f4d7a2740e0e74b80255d
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811705"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962130"
 ---
 # <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>Azure App Service の自分のコードから TLS/SSL 証明書を使用する
 
@@ -24,12 +24,12 @@ App Service の TLS/SSL 証明書の管理機能を使用すれば、証明書�
 
 この攻略ガイドに従うには:
 
-- [App Service アプリを作成する](/azure/app-service/)
+- [App Service アプリを作成する](./index.yml)
 - [証明書をアプリに追加する](configure-ssl-certificate.md)
 
 ## <a name="find-the-thumbprint"></a>拇印を確認する
 
-<a href="https://portal.azure.com" target="_blank">Azure portal</a> の左側のメニューから、 **[App Services]**  >  **\<app-name>** を選択します。
+<a href="https://portal.azure.com" target="_blank">Azure portal</a> で、左側のメニューから **[App Services]**  >  **\<app-name>** を選択します。
 
 アプリの左側のナビゲーションで **[TLS/SSL 設定]** を選択し、 **[秘密キー証明書 (.pfx)]** または **[公開キー証明書 (.cer)]** を選択します。
 
@@ -164,4 +164,4 @@ Node.js、PHP、Python、Java、Ruby で TLS/SSL 証明書をファイルから�
 * [Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する](configure-ssl-bindings.md)
 * [HTTPS の適用](configure-ssl-bindings.md#enforce-https)
 * [TLS 1.1/1.2 の適用](configure-ssl-bindings.md#enforce-tls-versions)
-* [FAQ:App Service 証明書](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)
+* [FAQ:App Service 証明書](./faq-configuration-and-management.md)

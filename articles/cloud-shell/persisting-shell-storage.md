@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
 ms.openlocfilehash: 37005a722d4a1962b4f6e1ddb8bb1c7a1229d28a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81273292"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Azure Cloud Shell でファイルを永続化する

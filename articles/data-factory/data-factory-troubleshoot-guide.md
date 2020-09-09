@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: f07cc109b21010df89b105576cb9afcf93df774a
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 568739ebdce632ae955da5e1cec12635c86af57c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744768"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522858"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Azure Data Factory のトラブルシューティング
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -123,6 +123,14 @@ ms.locfileid: "82744768"
 - **原因**:エラー メッセージは、予期しないクラスター状態や特定のアクティビティなど、さまざまな問題を示します。 多くの場合、エラー メッセージは表示されません。
 
 - **推奨事項**:該当なし
+
+### <a name="error-code-3208"></a>エラー コード:3208
+
+- **メッセージ**: `An error occurred while sending the request.`
+
+- **原因**:Databricks サービスへのネットワーク接続が中断されました。
+
+- **推奨事項**:セルフホステッド統合ランタイムを使用している場合は、統合ランタイム ノードからのネットワーク接続が信頼できることを確認してください。 Azure 統合ランタイムを使用している場合、通常は再試行すると機能します。
  
 ## <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 
@@ -1055,4 +1063,4 @@ ms.locfileid: "82744768"
 * [Data Factory の Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-data-factory)
 * [Data Factory に関する Twitter 情報](https://twitter.com/hashtag/DataFactory)
 * [Azure のビデオ](https://azure.microsoft.com/resources/videos/index/)
-* [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home)
+* [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-data-factory.html)

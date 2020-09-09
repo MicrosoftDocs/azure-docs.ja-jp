@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: dekapur
-ms.openlocfilehash: 0f9b625dfbe9c39bea7771dcc5fd58805ce19811
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8a1fdfb23b6e0aee9b9bdd04f70c554824f4c35
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75458365"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246573"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>スタンドアロン Windows クラスターの構成設定
 この記事では、*ClusterConfig.json* ファイルで設定できる、スタンドアロン Azure Service Fabric クラスターの構成設定について説明します。 このファイルを使って、クラスターのノード、セキュリティ構成、およびフォールト ドメインとアップグレード ドメインに関するネットワーク トポロジに関する情報を指定します。  構成設定を変更または追加した後、[スタンドアロン クラスターを作成する](service-fabric-cluster-creation-for-windows-server.md)か、[スタンドアロン クラスターの構成をアップグレードする](service-fabric-cluster-config-upgrade-windows-server.md)かのいずれかを行うことができます。
@@ -89,7 +89,7 @@ diagnosticsStore セクションでは、次のスニペットに示すように
 }
 ```
 
-metadata はクラスターの診断の説明であり、セットアップに従って設定できます。 これらの変数は、ETW トレース ログ、クラッシュ ダンプ、パフォーマンス カウンターの収集に役立ちます。 ETW トレース ログの詳細については、「[Tracelog](https://msdn.microsoft.com/library/windows/hardware/ff552994.aspx)」および「[ETW トレース](https://msdn.microsoft.com/library/ms751538.aspx)」を参照してください。 [クラッシュ ダンプ](https://blogs.technet.microsoft.com/askperf/2008/01/08/understanding-crash-dump-files/)、[パフォーマンス カウンター](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx)など、すべてのログは、マシンの connectionString フォルダーに送信できます。 また、AzureStorage を使用して診断を格納することもできます。 次のサンプル スニペットを参照してください。
+metadata はクラスターの診断の説明であり、セットアップに従って設定できます。 これらの変数は、ETW トレース ログ、クラッシュ ダンプ、パフォーマンス カウンターの収集に役立ちます。 ETW トレース ログの詳細については、「[Tracelog](/windows-hardware/drivers/devtest/tracelog)」および「[ETW トレース](/dotnet/framework/wcf/samples/etw-tracing)」を参照してください。 [クラッシュ ダンプ](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf)、[パフォーマンス カウンター](/windows/win32/perfctrs/performance-counters-portal)など、すべてのログは、マシンの connectionString フォルダーに送信できます。 また、AzureStorage を使用して診断を格納することもできます。 次のサンプル スニペットを参照してください。
 
 ```json
 "diagnosticsStore": {
@@ -193,7 +193,7 @@ KtlLogger セクションでは、Reliable Services のグローバル構成設�
     ]
 }
 ```
-使用可能なすべてのアドオン機能は、[Service Fabric REST API リファレンス](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-addonfeatures)に関するページで確認できます。
+使用可能なすべてのアドオン機能は、[Service Fabric REST API リファレンス](/rest/api/servicefabric/sfrp-model-addonfeatures)に関するページで確認できます。
 
 ### <a name="container-support"></a>コンテナー サポート
 スタンドアロン クラスターの Windows Server コンテナーと Hyper-V コンテナーの両方でコンテナー サポートを有効にするには、DnsService アドオン機能を有効にする必要があります。
@@ -204,4 +204,3 @@ KtlLogger セクションでは、Reliable Services のグローバル構成設�
 スタンドアロン クラスターをデプロイしている場合、[スタンドアロン クラスターの構成をアップグレード](service-fabric-cluster-config-upgrade-windows-server.md)することもできます。 
 
 [Service Fabric Explorer を使用してクラスターを視覚化](service-fabric-visualizing-your-cluster.md)する方法を説明します。
-

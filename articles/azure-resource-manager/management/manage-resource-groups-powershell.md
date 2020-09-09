@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 25e001927d5c06b4a7e5639faaa054ae18b12bb7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8457925479e3c28e062f87dbb830969d66523ec7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226203"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827078"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>Azure PowerShell を使用して Azure Resource Manager リソース グループを管理する
 
@@ -74,11 +74,11 @@ Azure Resource Manager によってリソースの削除の順序が決定され
 
 「[Deploy resources to an existing resource group (リソースを既存のリソース グループにデプロイする)](manage-resources-powershell.md#deploy-resources-to-an-existing-resource-group)」をご覧ください。
 
-リソース グループのデプロイを検証するには、[Test-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/Az.Resources/Test-AzResourceGroupDeployment?view=azps-1.3.0) をご覧ください。
+リソース グループのデプロイを検証するには、[Test-AzResourceGroupDeployment](/powershell/module/Az.Resources/Test-AzResourceGroupDeployment?view=azps-1.3.0) をご覧ください。
 
 ## <a name="deploy-a-resource-group-and-resources"></a>リソース グループとリソースをデプロイする
 
-Resource Manager テンプレートを使用して、リソース グループを作成し、そのグループにリソースをデプロイできます。 詳しくは、「[リソース グループを作成してリソースをデプロイする](../templates/deploy-to-subscription.md#resource-group-and-resources)」をご覧ください。
+Resource Manager テンプレートを使用して、リソース グループを作成し、そのグループにリソースをデプロイできます。 詳しくは、「[リソース グループを作成してリソースをデプロイする](../templates/deploy-to-subscription.md#resource-groups)」をご覧ください。
 
 ## <a name="redeploy-when-deployment-fails"></a>デプロイに失敗したときに再デプロイする
 
@@ -217,11 +217,11 @@ Export-AzResourceGroup `
 
 ## <a name="manage-access-to-resource-groups"></a>リソース グループへのアクセスを管理する
 
-[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) は、Azure に存在するリソースに対するアクセス権を管理するための手法です。 詳細については、[RBAC と Azure PowerShell を使用したアクセスの管理](../../role-based-access-control/role-assignments-powershell.md)に関する記事をご覧ください。
+[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) は、Azure のリソースへのアクセスを管理する方法です。 詳細については、[RBAC と Azure PowerShell を使用したアクセスの管理](../../role-based-access-control/role-assignments-powershell.md)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
 - Azure Resource Manager については、「[Azure Resource Manager の概要](overview.md)」を参照してください。
 - Resource Manager テンプレートの構文については、「[Azure Resource Manager テンプレートの構造と構文の詳細](../templates/template-syntax.md)」を参照してください。
-- テンプレートを開発する方法については、[ステップバイステップのチュートリアル](/azure/azure-resource-manager/)のページをご覧ください。
+- テンプレートを開発する方法については、[ステップバイステップのチュートリアル](../index.yml)のページをご覧ください。
 - Azure Resource Manager テンプレートのスキーマを表示するには、[テンプレート リファレンス](/azure/templates/)のページをご覧ください。

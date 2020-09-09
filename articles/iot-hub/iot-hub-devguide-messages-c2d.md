@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt
 ms.openlocfilehash: 307ab47c1f7498f71e61108a616d35ef1d4f61c9
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81730008"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>IoT ハブから cloud-to-device メッセージを送信する

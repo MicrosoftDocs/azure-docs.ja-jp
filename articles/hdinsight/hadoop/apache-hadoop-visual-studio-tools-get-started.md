@@ -7,14 +7,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/14/2020
-ms.openlocfilehash: 7504826f267d717f30c5e88621578412c744e5f9
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 5fce1a8e2f4dda8ea84cfd66aa9dc13768ab17e7
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383502"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077087"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Apache Hive クエリを実行する
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 2daaf9bbdf90029f0aad4333ab94e2d1d1d3d7ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 691293d0f7ecf5bb2ad83a3f292ad2c9b873e31e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79129557"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386532"
 ---
 ## <a name="limitations"></a>制限事項
 
@@ -53,7 +53,7 @@ Azure で VM を作成するときに、VM に使用する専用ホストを選�
 
 ホストは特定の障害ドメインに作成することができます。 スケール セットまたは可用性セット内の VM と同様に、異なる障害ドメインのホストは、データ センター内の異なる物理ラックに配置されます。 ホスト グループを作成するときは、障害ドメインの数を指定する必要があります。 ホスト グループ内にホストを作成するときは、各ホストに障害ドメインを割り当てます。 VM に障害ドメインを割り当てる必要はありません。
 
-障害ドメインは、併置と同じものではありません。 2 つのホストを同じ障害ドメインにしても、互いに近接しているとは限りません。
+障害ドメインは、コロケーションと同じものではありません。 2 つのホストを同じ障害ドメインにしても、互いに近接しているとは限りません。
 
 障害ドメインはホスト グループにスコープされます。 2 つのホスト グループ間の非アフィニティについては、何も想定しないでください (異なる可用性ゾーンに存在しない場合)。
 
@@ -71,8 +71,7 @@ Azure で VM を作成するときに、VM に使用する専用ホストを選�
 
 **メンテナンス管理**により、お客様は、専用ホストでスケジュールされた通常のプラットフォーム更新をスキップし、35 日のローリングウィンドウ内で選択した時点で適用することができます。
 
-> [!NOTE]
->  メンテナンス コントロールは、現在パブリック プレビューの段階です。 詳細については、**メンテナンス コントロールと [CLI](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) または [PowerShell](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-powershell?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) を使用した更新プログラムの制御**に関するページを参照してください。
+詳細については、「[メンテナンス コントロールによるプラットフォームの更新の管理](https://docs.microsoft.com/azure/virtual-machines/maintenance-control)」を参照してください。
 
 ## <a name="capacity-considerations"></a>容量に関する考慮事項
 
@@ -80,7 +79,15 @@ Azure で VM を作成するときに、VM に使用する専用ホストを選�
 
 ## <a name="quotas"></a>Quotas (クォータ)
 
-専用ホストの vCPU には、リージョンあたり 3000 の既定のクォータ制限があります。 ただし、展開できるホストの数は、ホストに使用されている VM サイズ ファミリのクォータによっても制限されます。 たとえば、**従量課金制**サブスクリプションの場合、米国東部リージョンで使用可能な Dsv3 サイズ シリーズの vCPU には 10 個のクォータがあります。 この場合、専用ホストを展開する前に、少なくとも 64 vCPU にクォータを増やすように要求する必要があります。 右上隅にある **[引き上げを依頼する]** ボタンを選択し、必要に応じて要求を申請します。
+専用ホストをデプロイするときに使用されるクォータには、次の 2 種類があります。
+
+1. 専用ホストの vCPU クォータ。 既定のクォータ制限は、リージョンごとに 3000 vCPU です。
+1. VM サイズ ファミリ クォータ。 たとえば、**従量課金制**サブスクリプションの場合、米国東部リージョンで使用可能な Dsv3 サイズ シリーズの vCPU には 10 個のクォータがあります。 Dsv3 専用ホストをデプロイするには、専用ホストをデプロイする前に、少なくとも 64 vCPU にクォータを増やすように要求する必要があります。 
+
+クォータの増加を要求するには、[Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) でサポート リクエストを作成します。
+
+専用ホストをプロビジョニングすると、専用ホストの vCPU と VM ファミリの vCPU クォータの両方が使用されますが、リージョンの vCPU は使用されません。
+
 
 ![ポータルの使用量とクォータのページのスクリーンショット](./media/virtual-machines-common-dedicated-hosts/quotas.png)
 

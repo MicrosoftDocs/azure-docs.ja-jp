@@ -6,12 +6,13 @@ ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
-ms.openlocfilehash: e4ac4f669d38f07d9fe4edbd600cc06f135fac03
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 526287feb93052d10428971dfd8f660d4265c831
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674563"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071263"
 ---
 # <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>クイック スタート:Kotlin と Maven を使用して初めての関数を作成する
 
@@ -25,7 +26,7 @@ Kotlin を使用して関数を開発するには、以下のものがインス�
 
 - [Java Developer Kit](https://aka.ms/azure-jdks)、バージョン 8
 - [Apache Maven](https://maven.apache.org)、バージョン 3.0 以降
-- [Azure CLI](https://docs.microsoft.com/cli/azure)
+- [Azure CLI](/cli/azure)
 - [Azure Functions Core Tools](./functions-run-local.md#v2) バージョン 2.6.666 以降
 
 > [!IMPORTANT]
@@ -79,7 +80,7 @@ Maven により、プロジェクトの生成を終了するために必要な�
 [INFO] Parameter: artifactId, Value: fabrikam-function
 </pre>
 
-Maven は、この例 `fabrikam-functions` の場合、_artifactId_ という名前の新しいフォルダーにプロジェクト ファイルを作成します。 プロジェクトで生成される、すぐに実行できるコードは、[HTTP によってトリガーされる](/azure/azure-functions/functions-bindings-http-webhook)、要求の本文をエコーする簡単な関数です。
+Maven は、この例 `fabrikam-functions` の場合、_artifactId_ という名前の新しいフォルダーにプロジェクト ファイルを作成します。 プロジェクトで生成される、すぐに実行できるコードは、[HTTP によってトリガーされる](./functions-bindings-http-webhook.md)、要求の本文をエコーする簡単な関数です。
 
 ```kotlin
 class Function {

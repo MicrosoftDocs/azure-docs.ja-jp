@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 674ca8bea110d60557d1e50e7b68c9c3f7a92bf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f90f5f4298fcca77e293965ddd377598bcfd1930
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77564586"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077312"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>CloudSimple Private Cloud 上で vCenter の ID プロバイダーとして Azure AD を使用する
 
@@ -46,7 +46,7 @@ vCenter で ID ソースとして Azure AD を使用するには、Azure AD と 
 > [!NOTE]
 > 既に Azure AD をお持ちの場合は、このセクションを省略できます。
 
-1. [Azure AD のドキュメント](../active-directory/fundamentals/get-started-azure-ad.md)で説明されているように、サブスクリプションに Azure AD を設定します。
+1. [Azure AD のドキュメント](../active-directory/fundamentals/active-directory-whatis.md)で説明されているように、サブスクリプションに Azure AD を設定します。
 2. 「[Azure Active Directory Premium エディションにサインアップする](../active-directory/fundamentals/active-directory-get-started-premium.md)」の説明に従って、サブスクリプション上で Azure Active Directory Premium を有効にします。
 3. [Azure Active Directory へのカスタム ドメイン名の追加](../active-directory/fundamentals/add-custom-domain.md)に関する記事の説明に従って、カスタム ドメイン名を設定し、カスタム ドメイン名を確認します。
     1. Azure で提供される情報を使用して、ドメイン レジストラー上で DNS レコードを設定します。
@@ -59,17 +59,17 @@ vCenter で ID ソースとして Azure AD を使用するには、Azure AD と 
 > [!NOTE]
 > これは、vCenter の ID ソースとして Azure AD を有効にする重要な手順です。  問題を回避するために、必ずすべての手順を正しく実行してください。
 
-1. [Azure portal を使用して Azure Active Directory Domain Services を有効にする](../active-directory-domain-services/active-directory-ds-getting-started.md)方法の記事の説明に従って Azure AD Domain Services を有効にします。
-2. [Azure portal を使用して Azure Active Directory Domain Services を有効にする](../active-directory-domain-services/active-directory-ds-getting-started-network.md)方法の記事の説明に従って、Azure AD Domain Services によって使用されるネットワークを設定します。
-3. [Azure portal を使用して Azure Active Directory Domain Services を有効にする](../active-directory-domain-services/active-directory-ds-getting-started-admingroup.md)方法の記事の説明に従って、Azure AD Domain Services を管理する管理者グループを構成します。
-4. [Azure Active Directory Domain Services を有効にする](../active-directory-domain-services/active-directory-ds-getting-started-dns.md)方法の記事の説明に従って、Azure AD Domain Services の DNS 設定を更新します。  インターネット経由で AD に接続する場合は、Azure AD Domain Services のパブリック IP アドレスの DNS レコードをドメイン名に設定します。
-5. ユーザーのパスワード ハッシュ同期を有効にします。  この手順で、NT LAN Manager (NTLM) および Kerberos 認証に必要なパスワード ハッシュが Azure AD Domain Services との間で同期されるようになります。 パスワード ハッシュの同期をセットアップすると、ユーザーは自社の資格情報を使用して、マネージド ドメインにサインインできます。 「[Azure Active Directory Domain Services とのパスワード ハッシュの同期を有効にする](../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)」を参照してください。
+1. [Azure portal を使用して Azure Active Directory Domain Services を有効にする](../active-directory-domain-services/tutorial-create-instance.md)方法の記事の説明に従って Azure AD Domain Services を有効にします。
+2. [Azure portal を使用して Azure Active Directory Domain Services を有効にする](../active-directory-domain-services/tutorial-create-instance.md)方法の記事の説明に従って、Azure AD Domain Services によって使用されるネットワークを設定します。
+3. [Azure portal を使用して Azure Active Directory Domain Services を有効にする](../active-directory-domain-services/tutorial-create-instance.md)方法の記事の説明に従って、Azure AD Domain Services を管理する管理者グループを構成します。
+4. [Azure Active Directory Domain Services を有効にする](../active-directory-domain-services/tutorial-create-instance.md)方法の記事の説明に従って、Azure AD Domain Services の DNS 設定を更新します。  インターネット経由で AD に接続する場合は、Azure AD Domain Services のパブリック IP アドレスの DNS レコードをドメイン名に設定します。
+5. ユーザーのパスワード ハッシュ同期を有効にします。  この手順で、NT LAN Manager (NTLM) および Kerberos 認証に必要なパスワード ハッシュが Azure AD Domain Services との間で同期されるようになります。 パスワード ハッシュの同期をセットアップすると、ユーザーは自社の資格情報を使用して、マネージド ドメインにサインインできます。 「[Azure Active Directory Domain Services とのパスワード ハッシュの同期を有効にする](../active-directory-domain-services/tutorial-create-instance.md)」を参照してください。
     1. クラウド専用ユーザーが存在する場合は、<a href="http://myapps.microsoft.com/" target="_blank">Azure AD アクセス パネル</a>を使用してパスワードを変更し、パスワード ハッシュが NTLM または Kerberos で必要な形式で格納されるようにする必要があります。  [クラウド専用ユーザー アカウントのマネージド ドメインとのパスワード ハッシュ同期を有効にする方法](../active-directory-domain-services/tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)の記事の手順に従います。  この手順は、個々のユーザーと、Azure portal または Azure AD PowerShell コマンドレットを使用して Azure AD ディレクトリに作成される新しいユーザーに対して行う必要があります。 Azure AD Domain Services へのアクセスを必要とするユーザーは、<a href="http://myapps.microsoft.com/" target="_blank">Azure AD アクセス パネル</a>を使用し、そのプロファイルにアクセスしてパスワードを変更する必要があります。
 
         > [!NOTE]
         > 組織にクラウド専用ユーザー アカウントが存在する場合、Azure Active Directory Domain Services を使用する必要があるすべてのユーザーは、自分のパスワードを変更しなければなりません。 クラウド専用ユーザー アカウントとは、Azure Portal または Azure AD PowerShell コマンドレットを使って Azure AD ディレクトリに作成されたアカウントです。 そのようなユーザー アカウントは、オンプレミス ディレクトリとの間で同期されません。
 
-    2. オンプレミスの Active Directory からパスワードを同期する場合は、[Active Directory のドキュメント](../active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant.md)の手順に従ってください。
+    2. オンプレミスの Active Directory からパスワードを同期する場合は、[Active Directory のドキュメント](../active-directory-domain-services/tutorial-configure-password-hash-sync.md)の手順に従ってください。
 
 6.  [Azure AD Domain Services のマネージド ドメイン用の Secure LDAP (LDAPS) の構成](../active-directory-domain-services/tutorial-configure-ldaps.md)に関する記事の説明に従って、Azure Active Directory Domain Services 上で Secure LDAP を構成します。
     1. [Secure LDAP 用の証明書の取得](../active-directory-domain-services/tutorial-configure-ldaps.md#create-a-certificate-for-secure-ldap)に関する Azure のトピックの説明に従って、Secure LDAP に使用する証明書をアップロードします。  CloudSimple では、証明機関から発行された署名済み証明書を使用して、vCenter が証明書を信頼できるようにすることをお勧めします。

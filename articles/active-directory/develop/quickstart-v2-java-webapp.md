@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
-ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: ed105ce6bd1d7d8980799049649b8d5b95dcb761
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
+ms.openlocfilehash: 10ae1c76d48c1cedbb915fec66177ac3612feea0
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536116"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115222"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>クイック スタート:Java Web アプリに "Microsoft でサインイン" を追加する
 
@@ -56,7 +56,7 @@ ms.locfileid: "81536116"
 >    - **[登録]** を選択します。
 > 1. **[概要]** ページで、アプリケーションの **[アプリケーション (クライアント) ID]** と **[ディレクトリ (テナント) ID]** の値を見つけます。 後のためにこれらの値をコピーします。
 > 1. メニューから **[認証]** を選択し、次の情報を追加します。
->    - **Web** プラットフォーム構成を追加します。  これらの `https://localhost:8080/msal4jsample/secure/aad` と `https://localhost:8080/msal4jsample/graph/me` を**リダイレクト URI** として追加します。
+>    - **Web** プラットフォーム構成を追加します。  これらの `https://localhost:8443/msal4jsample/secure/aad` と `https://localhost:8443/msal4jsample/graph/me` を**リダイレクト URI** として追加します。
 >    - **[保存]** を選択します。
 > 1. メニューから **[証明書とシークレット]** を選択し、 **[クライアント シークレット]** セクションで **[新しいクライアント シークレット]** をクリックします。
 >
@@ -70,7 +70,7 @@ ms.locfileid: "81536116"
 >
 > このクイックスタートのコード サンプルを動作させるには、以下の操作が必要です。
 >
-> 1. 応答 URL として `https://localhost:8080/msal4jsample/secure/aad` および `https://localhost:8080/msal4jsample/graph/me` を追加します。
+> 1. 応答 URL として `https://localhost:8443/msal4jsample/secure/aad` および `https://localhost:8443/msal4jsample/graph/me` を追加します
 > 1. クライアント シークレットを作成します。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [これらの変更を行います]()
@@ -115,8 +115,8 @@ ms.locfileid: "81536116"
 >    aad.clientId=Enter_the_Application_Id_here
 >    aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/
 >    aad.secretKey=Enter_the_Client_Secret_Here
->    aad.redirectUriSignin=https://localhost:8080/msal4jsample/secure/aad
->    aad.redirectUriGraph=https://localhost:8080/msal4jsample/graph/me
+>    aad.redirectUriSignin=https://localhost:8443/msal4jsample/secure/aad
+>    aad.redirectUriGraph=https://localhost:8443/msal4jsample/graph/me
 >    aad.msGraphEndpointHost="https://graph.microsoft.com/"
 >    ```
 > 各値の説明:
@@ -149,11 +149,11 @@ ms.locfileid: "81536116"
 
 ##### <a name="running-from-ide"></a>IDE からの実行
 
-IDE から Web アプリケーションを実行している場合は、[実行] をクリックし、プロジェクトのホーム ページに移動します。 このサンプルでは、標準のホームページ URL は https://localhost:8080 です。
+IDE から Web アプリケーションを実行している場合は、[実行] をクリックし、プロジェクトのホーム ページに移動します。 このサンプルでは、標準のホームページ URL は https://localhost:8443 です
 
 1. 前面のページで、 **[ログイン]** ボタンを選択して Azure Active Directory にリダイレクトし、ユーザーに資格情報の入力を求めます。
 
-1. ユーザーは認証されると、 *https://localhost:8080/msal4jsample/secure/aad* にリダイレクトされます。 ユーザーがサインインしたので、ページにサインインしたアカウントに関する情報が表示されます。 サンプル UI には、次のボタンがあります。
+1. ユーザーは認証されると、 *https://localhost:8443/msal4jsample/secure/aad* にリダイレクトされます。 ユーザーがサインインしたので、ページにサインインしたアカウントに関する情報が表示されます。 サンプル UI には、次のボタンがあります。
     - "*サインアウト*": 現在のユーザーをアプリケーションからサインアウトし、ホーム ページにリダイレクトします。
     - *Show User Info (ユーザー情報の表示)* :Microsoft Graph のトークンを取得し、そのトークンを含む要求で Microsoft Graph を呼び出します。これにより、サインインしたユーザーに関する基本情報が返されます。
 
@@ -163,15 +163,6 @@ Web サンプルを Tomcat にデプロイする場合は、ソース コード�
 
 1. ms-identity-java-webapp/pom.xml を開きます
     - `<name>msal-web-sample</name>` の下に `<packaging>war</packaging>` を追加します
-    - 依存関係を追加します。
-
-         ```xml
-         <dependency>
-          <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-starter-tomcat</artifactId>
-          <scope>provided</scope>
-         </dependency>
-         ```
 
 2. ms-identity-java-webapp/src/main/java/com.microsoft.azure.msalwebsample/MsalWebSampleApplication を開きます
 
@@ -199,16 +190,29 @@ Web サンプルを Tomcat にデプロイする場合は、ソース コード�
     }
    ```
 
-3. コマンド プロンプトを開き、プロジェクトのルート フォルダーに移動して、`mvn package` を実行します
+3.   Tomcat の既定の HTTP ポートは 8080 ですが、ポート 8443 経由の HTTPS 接続が必要です。 これを構成するには、次のようにします。
+        - tomcat/conf/system.xml にアクセスします
+        - `<connector>` タグを検索し、既存のコネクタを次のように置き換えます。
+        ```
+        <Connector
+                   protocol="org.apache.coyote.http11.Http11NioProtocol"
+                   port="8443" maxThreads="200"
+                   scheme="https" secure="true" SSLEnabled="true"
+                   keystoreFile="C:/Path/To/Keystore/File/keystore.p12" keystorePass="KeystorePassword"
+                   clientAuth="false" sslProtocol="TLS"/>
+        ``` 
+       
+4. コマンド プロンプトを開き、このサンプルのルート フォルダー (pom ファイルが配置されている場所) に移動して、`mvn package` を実行してプロジェクトをビルドします。
     - これにより、/targets ディレクトリに `msal-web-sample-0.1.0.war` ファイルが生成されます。
-    - このファイルの名前を `ROOT.war` に変更します
+    - このファイルの名前を `msal4jsample.war` に変更します
     - Tomcat またはその他の J2EE コンテナー ソリューションを使用して、この war ファイルをデプロイします。
-        - Tomcat コンテナーにデプロイするには、.war ファイルを Tomcat インストールの下にある webapps フォルダーにコピーしてから、Tomcat サーバーを起動します。
+        - デプロイするには、msal4jsample.war ファイルを Tomcat インストールの下にある `/webapps/` ディレクトリにコピーしてから、Tomcat サーバーを起動します。
 
-この WAR は、自動的に https://localhost:8080/ でホストされます。
+5. デプロイされたら、ブラウザーで https://localhost:8443/msal4jsample にアクセスします。
+
 
 > [!IMPORTANT]
-> このクイック スタート アプリケーションは、クライアント シークレットを使用して、それ自体を機密クライアントとして識別します。 クライアント シークレットはプロジェクト ファイルにプレーン テキストとして追加されるため、セキュリティ上の理由から、アプリケーションを運用アプリケーションと見なす前に、クライアント シークレットの代わりに証明書を使用することをお勧めします。 証明書の使用方法の詳細については、「[アプリケーションを認証するための証明書資格情報](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials)」を参照してください。
+> このクイック スタート アプリケーションは、クライアント シークレットを使用して、それ自体を機密クライアントとして識別します。 クライアント シークレットはプロジェクト ファイルにプレーン テキストとして追加されるため、セキュリティ上の理由から、アプリケーションを運用アプリケーションと見なす前に、クライアント シークレットの代わりに証明書を使用することをお勧めします。 証明書の使用方法の詳細については、「[アプリケーションを認証するための証明書資格情報](./active-directory-certificate-credentials.md)」を参照してください。
 
 ## <a name="more-information"></a>詳細情報
 
@@ -250,11 +254,11 @@ import com.microsoft.aad.msal4j.*;
 アクセス許可と同意について学習します。
 
 > [!div class="nextstepaction"]
-> [アクセス許可と同意](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)
+> [アクセス許可と同意](./v2-permissions-and-consent.md)
 
 このシナリオ用の認証フローの詳細については、OAuth 2.0 承認コード フローを参照してください。
 
 > [!div class="nextstepaction"]
-> [承認コードの Oauth フロー](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)
+> [承認コードの Oauth フロー](./v2-oauth2-auth-code-flow.md)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: 1bb8300f1e54cf03563704cf00549ce9e09a3916
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb2654c2854692d120cf6dea7fa8fb901e14688e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229835"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203512"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box Disk の制限
 
@@ -56,14 +56,15 @@ Azure Storage サービスの制限と共有、コンテナー、およびファ
     - 事前に作成されたすべてのフォルダーにわたり、また、すべての Data Box Disk にわたって 1 つのリソース グループ内で特定の名前を持つマネージド ディスクを 1 つだけ保持できます。 これは、事前に作成されたフォルダーにアップロードされた VHD は一意の名前でなければならないことを意味します。 指定した名前が、リソース グループ内の既存のマネージド ディスクと一致しないようにしてください。 VHD の名前が同じである場合、1 つの VHD のみがその名前を持つマネージド ディスクに変換されます。 その他の VHD は、ステージング ストレージ アカウントにページ BLOB としてアップロードされます。
     - VHD は必ず、事前に作成されたフォルダーの 1 つにコピーします。 これらのフォルダー以外または自分で作成したフォルダーに VHD をコピーすると、VHD はマネージド ディスクではなく、ページ BLOB として Azure Storage アカウントにアップロードされます。
     - マネージド ディスクを作成するためにアップロードできるのは、容量固定の VHD のみです。 動的 VHD、差分 VHD、VHDX ファイルはサポートされていません。
+    - 事前に作成されたマネージド ディスク フォルダーにコピーされた非 VHD ファイルは、マネージド ディスクに変換されません。
 
 ## <a name="azure-storage-account-size-limits"></a>Azure ストレージ アカウントのサイズ制限
 
-ここでは、ストレージ アカウントにコピーするデータのサイズ制限を示します。 アップロードするデータがこれらの制限に準拠していることを確認してください。 これらの制限の最新情報については、「[Azure Blob Storage のスケール ターゲット](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage)」および「[Azure Files のスケール ターゲット](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts)」をご覧ください。
+ここでは、ストレージ アカウントにコピーできるデータのサイズに関する制限を示します。 アップロードするデータがこれらの制限に準拠していることを確認してください。 
 
-| Azure ストレージ アカウントにコピーするデータのサイズ                      | 既定の制限          |
-|---------------------------------------------------------------------|------------------------|
-| ブロック BLOB とページ BLOB                                            | ストレージ アカウントあたり 500 TB。 <br> これには、Data Box Disk を含むすべてのソースのデータが含まれます。|
+| データの種類             | 既定の制限          |
+|--------------------------|------------------------|
+| ブロック BLOB、ページ BLOB    | これらの制限に関する最新の情報については、[Azure BLOB ストレージのスケール ターゲット](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage)、[Azure Standard Storage のスケール ターゲット](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts)、[Azure Files のスケール ターゲット](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets)に関するページを参照してください。 <br /><br /> この制限には、Data Box Disk を含むすべてのソースのデータが含まれます。|
 
 
 ## <a name="azure-object-size-limits"></a>Azure オブジェクトのサイズ制限

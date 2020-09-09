@@ -1,20 +1,20 @@
 ---
 title: マップに多角形浮き出しレイヤーを追加する | Microsoft Azure Maps
 description: Microsoft Azure Maps Web SDK に浮き出し多角形レイヤーを追加する方法。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 10/08/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen
-ms.openlocfilehash: 7405098bd4924333aafcd1c285eb2f37bb1d4f75
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: cd12242367c6f3b5b2c64df28f7f5e52cf1a4f97
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334538"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282876"
 ---
 # <a name="add-a-polygon-extrusion-layer-to-the-map"></a>マップに多角形浮き出しレイヤーを追加する
 

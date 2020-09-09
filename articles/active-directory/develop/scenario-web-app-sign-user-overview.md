@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 65d254cec5735c54e19f5adfde57fb6aed776a2c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 52e33177b5fc6c68f615b8eb7738e66b18a1763a
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80881487"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118708"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>シナリオ:ユーザーをサインインさせる Web アプリ
 
@@ -82,21 +82,21 @@ Web アプリでは、Web ブラウザーでユーザーを認証します。 �
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 > [!div class="nextstepaction"]
-> [アプリの登録](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=aspnetcore)
+> [アプリの登録](./scenario-web-app-sign-user-app-registration.md?tabs=aspnetcore)
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 > [!div class="nextstepaction"]
-> [アプリの登録](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=aspnet)
+> [アプリの登録](./scenario-web-app-sign-user-app-registration.md?tabs=aspnet)
 
 # <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
-> [アプリの登録](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=java)
+> [アプリの登録](./scenario-web-app-sign-user-app-registration.md?tabs=java)
 
 # <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
-> [アプリの登録](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=python)
+> [アプリの登録](./scenario-web-app-sign-user-app-registration.md?tabs=python)
 
 ---

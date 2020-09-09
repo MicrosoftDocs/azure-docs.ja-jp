@@ -2,13 +2,13 @@
 title: ハイブリッド Kubernetes クラスターに Azure Monitor for containers を構成する | Microsoft Docs
 description: この記事では、Azure Stack などの環境でホストしている Kubernetes クラスターを監視することを目的として Azure Monitor for containers を構成する方法を説明します。
 ms.topic: conceptual
-ms.date: 04/22/2020
-ms.openlocfilehash: a0008f7a2d6b808a8ff55d85330801305361d7c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/30/2020
+ms.openlocfilehash: d2ca977f572ee9f60c1ca72fc472f3a6ee6c6362
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185967"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498901"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>ハイブリッド Kubernetes クラスターに Azure Monitor for containers を構成する
 
@@ -16,29 +16,29 @@ Azure Monitor for containers は、Azure Kubernetes Service (AKS) と、Azure �
 
 ## <a name="supported-configurations"></a>サポートされている構成
 
-Azure Monitor for containers では、以下が公式にサポートされています。
+Azure Monitor for containers では、次の構成が公式にサポートされています。
 
-* 環境: 
+- 環境:
 
-    * オンプレミスの Kubernetes
+    - オンプレミスの Kubernetes
     
-    * Azure と Azure Stack 上の AKS エンジン。 詳細については、[Azure Stack 上の AKS エンジン](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)に関するページを参照してください
+    - Azure と Azure Stack 上の AKS エンジン。 詳細については、[Azure Stack 上の AKS エンジン](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)に関するページを参照してください
     
-    * [OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) バージョン 4 以降、オンプレミスまたはその他のクラウド環境。
+    - [OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) バージョン 4 以降、オンプレミスまたはその他のクラウド環境。
 
-* Kubernetes のバージョンとサポート ポリシーについては、[AKS でサポートされているバージョン](../../aks/supported-kubernetes-versions.md)と同じです。
+- Kubernetes のバージョンとサポート ポリシーについては、[AKS でサポートされているバージョン](../../aks/supported-kubernetes-versions.md)と同じです。
 
-* コンテナー ランタイム:Docker、Moby、および CRI と互換性のあるランタイム (CRI-O、など)。
+- 次のコンテナー ランタイムがサポートされています。Docker、Moby、および CRI と互換性のあるランタイム (CRI-O、など)。
 
-* マスター ノードとワーカー ノード用の Linux OS のリリース:Ubuntu (18.04 LTS と 16.04 LTS)、および Red Hat Enterprise Linux CoreOS 43.81。
+- サポートされているマスターおよびワーカー ノードの Linux OS リリースは次のとおりです。Ubuntu (18.04 LTS と 16.04 LTS)、および Red Hat Enterprise Linux CoreOS 43.81。
 
-* サポートされているアクセス制御:Kubernetes の RBAC と非 RBAC
+- サポートされているアクセス制御:Kubernetes の RBAC と非 RBAC
 
 ## <a name="prerequisites"></a>前提条件
 
 始める前に、必ず以下のものを用意してください。
 
-* Log Analytics ワークスペース。
+- [Log Analytics ワークスペース。](../platform/design-logs-deployment.md)
 
     Azure Monitor for containers では、Azure の[リージョン別の製品](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)に関するページに一覧表示されているリージョンの Log Analytics ワークスペースがサポートされます。 ワークスペースは、[Azure Resource Manager](../platform/template-workspace-configuration.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)、[Azure portal](../learn/quick-create-workspace.md) のいずれかを使用して作成できます。
 
@@ -46,11 +46,13 @@ Azure Monitor for containers では、以下が公式にサポートされてい
     >同一の Log Analytics ワークスペースに名称が同じクラスターが複数ある場合には、そのワークスペースに対してクラスターの監視を有効にすることはできません。 クラスター名は一意になっている必要があります。
     >
 
-* コンテナーの監視を有効にするために、**Log Analytics 共同作成者ロール**のメンバーである必要があります。 Log Analytics ワークスペースへのアクセスを制御する方法の詳細については、[ワークスペースとログ データに対するアクセスの管理](../platform/manage-access.md)に関するページを参照してください。
+- コンテナーの監視を有効にするために、**Log Analytics 共同作成者ロール**のメンバーである必要があります。 Log Analytics ワークスペースへのアクセスを制御する方法の詳細については、[ワークスペースとログ データに対するアクセスの管理](../platform/manage-access.md)に関するページを参照してください。
 
-* [HELM クライアント](https://helm.sh/docs/using_helm/)。これは、特定の Kubernetes クラスターに Azure Monitor for containers のチャートをオンボードするために使用します。
+- 監視データを表示するには、Azure Monitor for containers で構成された Log Analytics ワークスペースの "[*Log Analytics 閲覧者*](../platform/manage-access.md#manage-access-using-azure-permissions)" ロールを持っている必要があります。
 
-* コンテナー化されたバージョンの Linux 用 Log Analytics エージェントが Azure Monitor と通信するためには、プロキシとファイアウォールに関する次の構成情報が必要です。
+- [HELM クライアント](https://helm.sh/docs/using_helm/)。これは、特定の Kubernetes クラスターに Azure Monitor for containers のチャートをオンボードするために使用します。
+
+- コンテナー化されたバージョンの Linux 用 Log Analytics エージェントが Azure Monitor と通信するためには、プロキシとファイアウォールに関する次の構成情報が必要です。
 
     |エージェントのリソース|Port |
     |------|---------|
@@ -58,9 +60,9 @@ Azure Monitor for containers では、以下が公式にサポートされてい
     |*.oms.opinsights.azure.com |ポート 443 |
     |*.dc.services.visualstudio.com |ポート 443 |
 
-* コンテナー化されたエージェントがパフォーマンスに関するメトリックを収集できるように、クラスター内のすべてのノードで Kubelet の `cAdvisor secure port: 10250` または `unsecure port :10255` を開いておく必要があります。 Kubelet の cAdvisor がまだ構成されていない場合は、`secure port: 10250` を構成することをお勧めします。
+- コンテナー化されたエージェントがパフォーマンスに関するメトリックを収集できるように、クラスター内のすべてのノードで Kubelet の `cAdvisor secure port: 10250` または `unsecure port :10255` を開いておく必要があります。 Kubelet の cAdvisor がまだ構成されていない場合は、`secure port: 10250` を構成することをお勧めします。
 
-* コンテナー化されたエージェントがクラスター内の Kubernetes API サービスとやり取りしてインベントリ データを収集するために、コンテナーに `KUBERNETES_SERVICE_HOST` と `KUBERNETES_PORT_443_TCP_PORT` の 2 つの環境変数を指定する必要があります。
+- コンテナー化されたエージェントがクラスター内の Kubernetes API サービスとやり取りしてインベントリ データを収集するために、コンテナーに `KUBERNETES_SERVICE_HOST` と `KUBERNETES_PORT_443_TCP_PORT` の 2 つの環境変数を指定する必要があります。
 
 >[!IMPORTANT]
 >ハイブリッド Kubernetes クラスターの監視は、ciprod10182019 以降のバージョンのエージェントに限りサポートされます。
@@ -79,11 +81,11 @@ Hybrid Kubernetes クラスターに対して Azure Monitor for containers を�
 
 テンプレートを使用するリソースのデプロイの概念について馴染みがない場合は、以下を参照してください。
 
-* [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../../azure-resource-manager/templates/deploy-powershell.md)
+- [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../../azure-resource-manager/templates/deploy-powershell.md)
 
-* [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../../azure-resource-manager/templates/deploy-cli.md)
+- [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../../azure-resource-manager/templates/deploy-cli.md)
 
-Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.59 以降を実行している必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。
+Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.59 以降を実行している必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 この方法には、2 つの JSON テンプレートが含まれます。 1 つのテンプレートでは監視を有効にする構成が指定され、もう 1 つのテンプレートには、次を指定するために構成するパラメーター値が含まれています。
 
@@ -103,7 +105,7 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
     ```azurecli
     Name                                  CloudName    SubscriptionId                        State    IsDefault
     ------------------------------------  -----------  ------------------------------------  -------  -----------
-    Microsoft Azure                       AzureCloud   68627f8c-91fO-4905-z48q-b032a81f8vy0  Enabled  True
+    Microsoft Azure                       AzureCloud   0fb60ef2-03cc-4290-b595-e71108e8f4ce  Enabled  True
     ```
 
     **SubscriptionId** の値をコピーします。
@@ -200,27 +202,27 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
     }
     ```
 
-7. 値を編集します。**workspaceResourceId** には手順 3 でコピーした値を使用し、**workspaceRegion** には Azure CLI コマンド [az monitor log-analytics workspace show](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest#az-monitor-log-analytics-workspace-list) を実行して得られる**リージョン**の値をコピーします。
+7. 値を編集します。**workspaceResourceId** には手順 3 でコピーした値を使用し、**workspaceRegion** には Azure CLI コマンド [az monitor log-analytics workspace show](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest#az-monitor-log-analytics-workspace-list) を実行して得られる**リージョン**の値をコピーします。
 
 8. このファイルを containerSolutionParams.json という名前でローカル フォルダーに保存します。
 
 9. これでこのテンプレートをデプロイする準備が整いました。
 
-   * Azure PowerShell を使用してデプロイするには、そのテンプレートを含むフォルダーで次のコマンドを使用します。
+   - Azure PowerShell を使用してデプロイするには、そのテンプレートを含むフォルダーで次のコマンドを使用します。
 
        ```powershell
-       # configure and login to the cloud of log analytics workspace.Specify the corresponding cloud environment of your workspace to below command.
+       # configure and login to the cloud of Log Analytics workspace.Specify the corresponding cloud environment of your workspace to below command.
        Connect-AzureRmAccount -Environment <AzureCloud | AzureChinaCloud | AzureUSGovernment>
        ```
 
        ```powershell
        # set the context of the subscription of Log Analytics workspace
-       Set-AzureRmContext -SubscriptionId <subscription Id of log analytics workspace>
+       Set-AzureRmContext -SubscriptionId <subscription Id of Log Analytics workspace>
        ```
 
        ```powershell
-       # execute deployment command to add container insights solution to the specified Log Analytics workspace
-       New-AzureRmResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <resource group of log analytics workspace> -TemplateFile .\containerSolution.json -TemplateParameterFile .\containerSolutionParams.json
+       # execute deployment command to add Container Insights solution to the specified Log Analytics workspace
+       New-AzureRmResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <resource group of Log Analytics workspace> -TemplateFile .\containerSolution.json -TemplateParameterFile .\containerSolutionParams.json
        ```
 
        設定の変更が完了するまで数分かかります。 完了すると、次のような結果を含むメッセージが表示されます。
@@ -229,7 +231,7 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
        provisioningState       : Succeeded
        ```
 
-   * Azure CLI を使用してデプロイするには、次のコマンドを実行します。
+   - Azure CLI を使用してデプロイするには、次のコマンドを実行します。
 
        ```azurecli
        az login
@@ -248,43 +250,58 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
 
        監視を有効にした後、クラスターの正常性メトリックが表示されるまで、約 15 分かかる場合があります。
 
-## <a name="install-the-chart"></a>チャートをインストールする
+## <a name="install-the-helm-chart"></a>HELM Chart をインストールする
+
+このセクションでは、Azure Monitor for containers のコンテナー化されたエージェントをインストールします。 次に進む前に、`omsagent.secret.wsid` パラメーターに必要なワークスペース ID と、`omsagent.secret.key` パラメーターに必要な主キーを特定する必要があります。 この情報を特定するには、次の手順を実行してから、Helm Chart を使用してエージェントをインストールするコマンドを実行します。
+
+1. 次のコマンドを実行して、ワークスペース ID を特定します。
+
+    `az monitor log-analytics workspace list --resource-group <resourceGroupName>`
+
+    出力で、**name** フィールドの下のワークスペース名を見つけ、**customerID** フィールドの下にあるその Log Analytics ワークスペースのワークスペース ID をコピーします。
+
+2. 次のコマンドを実行して、ワークスペースの主キーを特定します。
+
+    `az monitor log-analytics workspace get-shared-keys --resource-group <resourceGroupName> --workspace-name <logAnalyticsWorkspaceName>`
+
+    出力で、**primarySharedKey** フィールドの下の主キーを見つけ、その値をコピーします。
 
 >[!NOTE]
->次のコマンドは、Helm バージョン 2 にのみ適用できます。 `--name` パラメーターの使用は、Helm バージョン 3 には適用されません。
+>次のコマンドは、Helm バージョン 2 にのみ適用できます。 `--name` パラメーターの使用は、Helm バージョン 3 には適用されません。 
 
-HELM チャートを有効にする手順は次のとおりです。
+>[!NOTE]
+>Kubernetes クラスターがプロキシ サーバー経由で通信する場合は、プロキシ サーバーの URL を使用して `omsagent.proxy` パラメーターを構成します。 クラスターがプロキシ サーバー経由で通信しない場合は、このパラメーターを指定する必要はありません。 詳細については、この記事の後半にある「[プロキシ エンドポイントを構成する](#configure-proxy-endpoint)」を参照してください。
 
-1. 次のコマンドを実行して、ローカルのリストに Azure のチャート リポジトリを追加します。
+3. 次のコマンドを実行して、ローカルのリストに Azure のチャート リポジトリを追加します。
 
     ```
     helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/
     ````
 
-2. 次のコマンドを実行してチャートをインストールします。
+4. 次のコマンドを実行してチャートをインストールします。
 
     ```
     $ helm install --name myrelease-1 \
-    --set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<my_prod_cluster> incubator/azuremonitor-containers
+    --set omsagent.secret.wsid=<logAnalyticsWorkspaceId>,omsagent.secret.key=<logAnalyticsWorkspaceKey>,omsagent.env.clusterName=<my_prod_cluster> incubator/azuremonitor-containers
     ```
 
-    Log Analytics ワークスペースが Azure China にある場合には、次のコマンドを実行します。
+    Log Analytics ワークスペースが Azure China 21Vianet にある場合には、次のコマンドを実行します。
 
     ```
     $ helm install --name myrelease-1 \
-     --set omsagent.domain=opinsights.azure.cn,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
+     --set omsagent.domain=opinsights.azure.cn,omsagent.secret.wsid=<logAnalyticsWorkspaceId>,omsagent.secret.key=<logAnalyticsWorkspaceKey>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
     ```
 
     Log Analytics ワークスペースが Azure US Government にある場合には、次のコマンドを実行します。
 
     ```
     $ helm install --name myrelease-1 \
-    --set omsagent.domain=opinsights.azure.us,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
+    --set omsagent.domain=opinsights.azure.us,omsagent.secret.wsid=<logAnalyticsWorkspaceId>,omsagent.secret.key=<logAnalyticsWorkspaceKey>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
     ```
 
 ### <a name="enable-the-helm-chart-using-the-api-model"></a>API モデルを使用して、Helm グラフを有効にする
 
-AKS エンジン クラスター仕様の JSON ファイル (API モデルとも呼ばれます) で、アドオンを指定できます。 このアドオンでは、base64 でエンコードされたバージョンの `WorkspaceGUID` と、収集した監視データが格納される Log Analytics ワークスペースの `WorkspaceKey` を指定します。
+AKS エンジン クラスター仕様の JSON ファイル (API モデルとも呼ばれます) で、アドオンを指定できます。 このアドオンでは、収集した監視データが格納される Log Analytics ワークスペースの、base64 でエンコードされたバージョンの `WorkspaceGUID` と `WorkspaceKey` を指定します。 `WorkspaceGUID` と `WorkspaceKey` は、前のセクションの手順 1 と 2 を使用して検出できます。
 
 Azure Stack Hub クラスターに対してサポートされる API 定義については、[kubernetes-container-monitoring_existing_workspace_id_and_key.json](https://github.com/Azure/aks-engine/blob/master/examples/addons/container-monitoring/kubernetes-container-monitoring_existing_workspace_id_and_key.json) の例をご覧ください。 具体的には、**kubernetesConfig** の **addons** プロパティを探します。
 
@@ -296,7 +313,7 @@ Azure Stack Hub クラスターに対してサポートされる API 定義に�
              "name": "container-monitoring",
              "enabled": true,
              "config": {
-               "workspaceGuid": "<Azure Log Analytics Workspace Guid in Base-64 encoded>",
+               "workspaceGuid": "<Azure Log Analytics Workspace Id in Base-64 encoded>",
                "workspaceKey": "<Azure Log Analytics Workspace Key in Base-64 encoded>"
              }
            }
@@ -313,18 +330,39 @@ Azure Stack Hub クラスターに対してサポートされる API 定義に�
 >[!NOTE]
 >インジェストの待ち時間 (Azure Log Analytics ワークスペースでエージェントがコミットを完了するまで) は、5 から 10 分程度です。 必要な監視データのすべてが Azure Monitor で利用できるようになるまでの間は、クラスターの状態として **[データなし]** と **[不明]** のいずれかの値が表示されます。
 
+## <a name="configure-proxy-endpoint"></a>プロキシ エンドポイントを構成する
+
+チャートのバージョン 2.7.1 以降、チャートでは、`omsagent.proxy` チャート パラメーターを使用したプロキシ エンドポイントの指定がサポートされます。 これにより、プロキシ サーバー経由で通信することができます。 Azure Monitor for containers エージェントと Azure Monitor 間の通信には HTTP または HTTPS プロキシ サーバーを使用でき、匿名と基本認証 (ユーザー名/パスワード) の両方がサポートされます。
+
+プロキシ構成の値には、次の構文があります: `[protocol://][user:password@]proxyhost[:port]`
+
+> [!NOTE]
+>プロキシ サーバーで認証が必要ない場合でも、疑似ユーザー名/パスワードを指定する必要があります。 これは、どのようなユーザー名とパスワードでもかまいません。
+
+|プロパティ| 説明 |
+|--------|-------------|
+|Protocol | http または https |
+|user | プロキシ認証のオプションのユーザー名 |
+|password | プロキシ認証のオプションのパスワード |
+|proxyhost | プロキシ サーバーのアドレスまたは FQDN |
+|port | プロキシ サーバーのオプションのポート番号 |
+
+例: `omsagent.proxy=http://user01:password@proxy01.contoso.com:8080`
+
+プロトコルを **http** として指定すると、SSL/TLS のセキュリティで保護された接続を使用して HTTP 要求が作成されます。 プロキシ サーバーは、SSL/TLS プロトコルをサポートしている必要があります。
+
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 ハイブリッド Kubernetes クラスターの監視を有効にしようとしているときにエラーが発生した場合は、PowerShell スクリプト [TroubleshootError_nonAzureK8s.ps1](https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/Troubleshoot/TroubleshootError_nonAzureK8s.ps1) をコピーしてコンピューターのフォルダーに保存します。 このスクリプトは、発生した問題を検出して修正するために提供されています。 次の問題を修正を検出して修正を試みるように設計されています：
 
-* 指定された Azure Monitor Log Analytics ワークスペースが有効
-* Log Analytics ワークスペースが Azure Monitor for Containers ソリューションで構成されています。 そうでなければ、ワークスペースを構成します。
-* OmsAgent replicaset ポッドを実行中
-* OmsAgent daemonset ポッドを実行中
-* OmsAgent ヘルス サービスを実行中
-* Log Analytics ワークスペース ID とコンテナー化されたエージェントで構成されたキーは、Insight が構成されているワークスペースと一致します。
-* すべての Linux ワーカー ノードに `kubernetes.io/role=agent` のラベルがあることを確認して、rs ポッドをスケジュールします。 存在しなければ、追加してください。
-* クラスター内のすべてのノードで `cAdvisor secure port:10250` または `unsecure port: 10255` が開かれていることを検証します。
+- 指定された Azure Monitor Log Analytics ワークスペースが有効
+- Log Analytics ワークスペースが Azure Monitor for Containers ソリューションで構成されています。 そうでなければ、ワークスペースを構成します。
+- OmsAgent replicaset ポッドを実行中
+- OmsAgent daemonset ポッドを実行中
+- OmsAgent ヘルス サービスを実行中
+- Log Analytics ワークスペース ID とコンテナー化されたエージェントで構成されたキーは、Insight が構成されているワークスペースと一致します。
+- すべての Linux ワーカー ノードに `kubernetes.io/role=agent` のラベルがあることを確認して、rs ポッドをスケジュールします。 存在しなければ、追加してください。
+- クラスター内のすべてのノードで `cAdvisor secure port:10250` または `unsecure port: 10255` が開かれていることを検証します。
 
 Azure PowerShell を使用して実行するには、そのスクリプトを含むフォルダーで、次のコマンドを使用します：
 

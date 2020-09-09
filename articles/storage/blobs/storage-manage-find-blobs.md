@@ -3,17 +3,17 @@ title: BLOB インデックスを使用して Azure Blob Storage でデータを
 description: BLOB インデックス タグを使用して、BLOB オブジェクトの分類、管理、および検出のためのクエリを実行する方法について説明します。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 04/24/2020
+ms.date: 08/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: f1a4d9af8a1b1095527078dd790e80ef45a5ee9a
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: ed70a05e0a6213ce00a6e0514f0741e8abbaeef9
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82710214"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690376"
 ---
 # <a name="manage-and-find-data-on-azure-blob-storage-with-blob-index-preview"></a>BLOB インデックスを使用して Azure Blob Storage でデータを管理および検索する (プレビュー)
 
@@ -63,14 +63,14 @@ BLOB に複数のタグを適用して、データをよりわかりやすくす
 > "Priority" = '01' 
 >
 
-既存のインデックス タグ属性を変更するには、最初に既存のタグ属性を取得し、そのタグ属性を変更して、SetBlobTags 操作を使用して置き換えます。 BLOB からすべてのインデックス タグを削除するには、タグ属性を指定せずに SetBlobTags 操作を呼び出します。 BLOB インデックス タグは BLOB データ コンテンツのサブリソースであるため、SetBlobTags は基になるコンテンツを変更せず、BLOB の last-modified-time を変更しません。
+既存のインデックス タグ属性を変更するには、最初に既存のタグ属性を取得し、そのタグ属性を変更して、SetBlobTags 操作を使用して置き換えます。 BLOB からすべてのインデックス タグを削除するには、タグ属性を指定せずに SetBlobTags 操作を呼び出します。 BLOB インデックス タグは BLOB データ コンテンツのサブリソースであるため、SetBlobTags によって基になるコンテンツが変更されることはなく、BLOB の last-modified-time や eTag (エンティティ タグ) も変更されません。 現在のすべてのベース BLOB と以前のバージョンのインデックス タグは作成または変更できますが、スナップショットまたは論理的に削除された BLOB のタグは変更できません。 
 
 BLOB インデックス タグには次の制限が適用されます。
 - 各 BLOB には、最大 10 個の BLOB インデックス タグを設定できます
 - タグ キーは 1 文字から 128 文字にする必要があります
 - タグ値は 0 文字から 256 文字にする必要があります
 - タグ キーとタグ値では、大文字と小文字が区別されます
-- タグ キーとタグ値は文字列データ型のみをサポートし、数字または特殊文字は文字列として保存されます
+- タグ キーとタグ値では文字列データ型のみがサポートされ、数字、日付、時刻、または特殊文字が文字列として保存されます。
 - タグ キーとタグ値は、次の名前付け規則に従う必要があります。
   - 英数字: a-z、A-Z、0-9
   - 特殊文字: スペース、プラス、マイナス、ピリオド、コロン、等号、アンダースコア、スラッシュ
@@ -106,6 +106,13 @@ BLOB インデックスのフィルター処理には、次の条件が適用さ
 |     <=     |  以下  | "Company" <= 'Contoso' |
 |    AND     |  論理 AND  | "Rank" >= '010' AND "Rank" < '100' |
 | @container |  特定のコンテナーに範囲指定します   | @container = 'videofiles' AND "status" = 'done' |
+
+> [!NOTE]
+> タグの設定とクエリを行うときは、辞書の順序を理解しておいてください。
+> - 数字は、文字の前に並べられます。 数字は、1 桁目の数字に基づいて並べられます。
+> - 大文字は、小文字の前に並べられます。
+> - 記号は標準ではありません。 一部の記号は、数値の前に並べられます。 その他の記号は、文字の前または後に並べられます。
+>
 
 ## <a name="conditional-blob-operations-with-blob-index-tags"></a>BLOB インデックス タグを使用した条件付き BLOB 操作
 REST バージョン 2019-10-10 以降では、ほとんどの [BLOB サービス API](https://docs.microsoft.com/rest/api/storageservices/operations-on-blobs) で、指定された BLOB インデックス条件が満たされた場合にのみ操作が成功するように、条件ヘッダー x-ms-if-tags がサポートされるようになりました。 条件が満たされない場合、`error 412: The condition specified using HTTP conditional header(s) is not met` が表示されます。
@@ -201,7 +208,7 @@ BLOB インデックス タグは、BLOB データのサブリソースです。
 
 |   BLOB 操作   |  RBAC アクション   |
 |---------------------|----------------|
-| タグによる BLOB の検索  | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter |
+| タグによる BLOB の検索  | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action |
 | BLOB タグの設定         | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write | 
 | BLOB タグの取得         | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read |
 
@@ -233,7 +240,7 @@ BLOB インデックス タグとメタデータはどちらも、ユーザー�
 |              |   Metadata   |   BLOB インデックス タグ  |
 |--------------|--------------|--------------------|
 | **制限**         | 数値制限はありません。合計 8 KB。大文字と小文字を区別しません | BLOB あたり最大 10 個のタグ、タグあたり 768 バイト。大文字と小文字を区別します |
-| **更新**      | アーカイブ層では許可されません。SetBlobMetadata は、既存のすべてのメタデータを置き換えます。SetBlobMetadata は BLOB の last-modified-time を変更します | すべてのアクセス層で許可されます。SetBlobTags は、既存のすべてのタグを置き換えます。SetBlobTags は BLOB の last-modified-time を変更しません |
+| **更新プログラム**      | アーカイブ層では許可されません。SetBlobMetadata は、既存のすべてのメタデータを置き換えます。SetBlobMetadata は BLOB の last-modified-time を変更します | すべてのアクセス層で許可されます。SetBlobTags は、既存のすべてのタグを置き換えます。SetBlobTags は BLOB の last-modified-time を変更しません |
 | **Storage**        | BLOB データと共に格納されます |  BLOB データへのサブリソースです | 
 | **インデックス作成とクエリの実行** | ネイティブで該当なし。Azure Search などの別のサービスを使用する必要があります | あり。 ネイティブのインデックス作成とクエリ実行機能が BLOB ストレージに組み込まれています |
 | **暗号化** | BLOB データに使用されるのと同じ暗号化キーを使用して保存時に暗号化 |  Microsoft が管理する暗号化キーを使用して保存時に暗号化 |
@@ -246,9 +253,11 @@ BLOB インデックスの価格は現在パブリック プレビュー段階�
 
 ## <a name="regional-availability-and-storage-account-support"></a>リージョンの可用性とストレージ アカウントのサポート
 
-BLOB インデックスは、現在　General Purpose v2 (GPv2) アカウントでのみ使用できます。 Azure portal では、既存の General Purpose (GPv1) アカウントを GPv2 アカウントにアップグレードすることができます。 ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](../common/storage-account-overview.md)」をご覧ください。
+現時点で BLOB インデックスを使用できるのは、階層型名前空間 (HNS) が無効になっている General Purpose v2 (GPv2) アカウントだけです。 General Purpose (GPV1) アカウントはサポートされていませんが、GPv1 アカウントを GPv2 アカウントにアップグレードできます。 ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](../common/storage-account-overview.md)」をご覧ください。
 
 パブリック プレビューでは、BLOB インデックスは現在、次の一部のリージョンでのみご利用いただけます。
+- カナダ中部
+- カナダ東部
 - フランス中部
 - フランス南部
 
@@ -276,7 +285,7 @@ az provider register --namespace 'Microsoft.Storage'
 このセクションでは、BLOB インデックスの現在のパブリック プレビューにおける既知の問題と条件について説明します。 ほとんどのプレビューと同様、動作が変更される可能性があるため、この機能は GA に達するまで実稼働ワークロードに使用しないでください。
 
 -   プレビューでは、プレビュー リージョンでストレージ アカウントの BLOB インデックスを使用にする前に、まずサブスクリプションを登録する必要があります。
--   プレビューでは、GPv2 アカウントのみが現在サポートされています。 Blob、BlockBlobStorage、および HNS 対応 DataLake Gen2 アカウントは、BLOB インデックスでは現在サポートされていません。
+-   プレビューでは、GPv2 アカウントのみが現在サポートされています。 Blob、BlockBlobStorage、および HNS 対応 DataLake Gen2 アカウントは、BLOB インデックスでは現在サポートされていません。 GPv1 アカウントはサポートされません。
 -   現在、インデックス タグがあるページ BLOB をアップロードしても、タグは保持されません。 タグは、ページ BLOB をアップロードした後に設定する必要があります。
 -   フィルター処理が単一のコンテナーにスコープされている場合、フィルター式のすべてのインデックス タグが等値チェック (キー = 値) である場合にのみ @container を渡すことができます。 
 -   AND 条件で範囲演算子を使用する場合は、同じインデックス タグ キー名のみを指定できます (Age > ‘013’ AND Age < ‘100’)。
@@ -284,6 +293,7 @@ az provider register --namespace 'Microsoft.Storage'
 -   アカウント フェールオーバーは現在サポートされていません。 フェールオーバー後に BLOB インデックスが正しく更新されない可能性があります。
 -   ライフサイクル管理では、BLOB インデックス一致による等値チェックのみが現在サポートされています。
 -   CopyBlob では、BLOB インデックス タグはコピー元 BLOB から新しいコピー先 BLOB にコピーされません。 コピー操作中にコピー先 BLOB に適用するタグを指定できます。 
+- コピー先 BLOB にタグが適用されている別のストレージ アカウントから CopyBlob (非同期コピー) を使用すると、現在、これは BLOB インデックス エンジンからフィルター セット内の BLOB とそのタグが返されなくなる原因となっています。 一時的に、URL (Sync copy) から CopyBlob を使用することをお勧めします。
 -   タグはスナップショット作成時に保持されます。ただし、スナップショットの昇格は現在サポートされておらず、空のタグ セットが生成される可能性があります。
 
 ## <a name="faq"></a>よく寄せられる質問
@@ -291,10 +301,15 @@ az provider register --namespace 'Microsoft.Storage'
 ### <a name="can-blob-index-help-me-filter-and-query-content-inside-my-blobs"></a>BLOB インデックスは、BLOB 内のコンテンツをフィルター処理したりクエリを実行したりするのに役立ちますか? 
 いいえ。 BLOB インデックス タグは、探している BLOB を見つけるのに役立ちます。 BLOB 内で検索する必要がある場合は、クエリ アクセラレーションまたは Azure Search を使用してください。
 
+### <a name="are-there-any-special-considerations-regarding-blob-index-tag-values"></a>BLOB インデックスのタグ値に関して、特別な注意事項はありますか?
+BLOB インデックス タグでは文字列データ型のみがサポートされ、クエリでは辞書の順序で結果が返されます。 数字については、ゼロ パディングすることをお勧めします。 日付と時刻については、ISO 8601 準拠の形式で格納することをお勧めします。
+
 ### <a name="are-blob-index-tags-and-azure-resource-manager-tags-related"></a>BLOB インデックス タグと Azure Resource Manager タグは関連していますか?
 いいえ。Azure Resource Manager タグは、サブスクリプション、リソース グループ、ストレージ アカウントなどのコントロール プレーン リソースを整理するのに役立ちます。 BLOB インデックス タグは、ストレージ アカウント内の BLOB などのデータ プレーン リソースでのオブジェクト管理と検出を提供します。
 
 ## <a name="next-steps"></a>次のステップ
 
-BLOB インデックスの使用方法の例を参照してください。 [BLOB インデックスを使用したデータの管理および検索 ](storage-blob-index-how-to.md)に関する記事を参照してください。
+BLOB インデックスを使用する方法の例については、[BLOB インデックスを使用してデータを管理して検索する](storage-blob-index-how-to.md)方法に関する記事を参照してください。
+
+[ライフサイクル管理](storage-lifecycle-management-concepts.md)について確認し、BLOB インデックスの一致でルールを設定します。
 

@@ -8,14 +8,15 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 03/13/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 0df0ba4ce76d249bcb4738b41c94677e061f14ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 11e08427067efa5e7bd33b8d08d84443444a190b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409859"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078267"
 ---
 # <a name="determine-which-azure-storage-encryption-key-model-is-in-use-for-the-storage-account"></a>ストレージアカウントに使用されている Azure Storage 暗号化キーモデルを決定する
 

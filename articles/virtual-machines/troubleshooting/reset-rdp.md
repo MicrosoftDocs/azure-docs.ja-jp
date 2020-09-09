@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: 580ec443dc087f270e30856c336a5699bbf1ae71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 80bcac36271d86334e11cb3cd161cd96777e6fe5
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71058438"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832452"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Windows VM でリモート デスクトップ サービスまたはその管理者パスワードをリセットする
 Windows 仮想マシン (VM) に接続できない場合は、ご自分のローカル管理者パスワードをリセットすることも、(Windows ドメイン コントローラーでサポートされていない) リモート デスクトップ サービスの構成をリセットすることもできます。 パスワードをリセットするには、Azure portal を使用するか、Azure PowerShell で VM アクセス拡張機能を使用します。 VM にサインインした後、そのローカル管理者のパスワードをリセットします。  
-PowerShell を使用する場合は、[最新の PowerShell モジュールのインストールと構成](/powershell/azure/overview)が完了しており、Azure サブスクリプションにサインインしていることを確認します。 また、[クラシック デプロイ モデルを使用して作成された VM でこれらの手順を実行](https://docs.microsoft.com/azure/virtual-machines/windows/classic/reset-rdp)することもできます。
+PowerShell を使用する場合は、[最新の PowerShell モジュールのインストールと構成](/powershell/azure/)が完了しており、Azure サブスクリプションにサインインしていることを確認します。 また、[クラシック デプロイ モデルを使用して作成された VM でこれらの手順を実行](/previous-versions/azure/virtual-machines/windows/classic/reset-rdp)することもできます。
 
 リモート デスクトップ サービスと資格情報は、以下の方法でリセットできます。
 
@@ -55,11 +55,11 @@ PowerShell を使用する場合は、[最新の PowerShell モジュールの�
 
 ## <a name="reset-by-using-the-vmaccess-extension-and-powershell"></a>VMAccess 拡張機能と PowerShell を使用してリセットする
 
-まず、[最新の PowerShell モジュールのインストールと構成](/powershell/azure/overview)が完了しており、[Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して Azure サブスクリプションにサインインしていることを確認します。
+まず、[最新の PowerShell モジュールのインストールと構成](/powershell/azure/)が完了しており、[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して Azure サブスクリプションにサインインしていることを確認します。
 
 ### <a name="reset-the-local-administrator-account-password"></a>**ローカル管理者アカウント パスワードのリセット**
 
-- [Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) PowerShell コマンドレットを使用して、管理者パスワードまたはユーザー名をリセットします。 バージョン 1 は非推奨のため、`typeHandlerVersion` 設定は 2.0 以上である必要があります。 
+- [Set-AzVMAccessExtension](/powershell/module/az.compute/set-azvmaccessextension) PowerShell コマンドレットを使用して、管理者パスワードまたはユーザー名をリセットします。 バージョン 1 は非推奨のため、`typeHandlerVersion` 設定は 2.0 以上である必要があります。 
 
     ```powershell
     $SubID = "<SUBSCRIPTION ID>" 
@@ -77,7 +77,7 @@ PowerShell を使用する場合は、[最新の PowerShell モジュールの�
 
 ### <a name="reset-the-remote-desktop-services-configuration"></a>**リモート デスクトップ サービスの構成のリセット**
 
-1. [Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) PowerShell コマンドレットを使用して、VM へのリモート アクセスをリセットします。 次の例では、`myResourceGroup` リソース グループの `myVM` という名前の VM で、`myVMAccess` という名前のアクセス拡張機能をリセットします。
+1. [Set-AzVMAccessExtension](/powershell/module/az.compute/set-azvmaccessextension) PowerShell コマンドレットを使用して、VM へのリモート アクセスをリセットします。 次の例では、`myResourceGroup` リソース グループの `myVM` という名前の VM で、`myVMAccess` という名前のアクセス拡張機能をリセットします。
 
     ```powershell
     Set-AzVMAccessExtension -ResourceGroupName "myResoureGroup" -VMName "myVM" -Name "myVMAccess" -Location WestUS -typeHandlerVersion "2.0" -ForceRerun
@@ -94,7 +94,6 @@ PowerShell を使用する場合は、[最新の PowerShell モジュールの�
 
 - [Azure VM 拡張機能とその機能について学習します](../extensions/features-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-- [RDP または SSH を使用して Azure Virtual Machines に接続します](https://msdn.microsoft.com/library/azure/dn535788.aspx)。
+- [RDP または SSH を使用して Azure Virtual Machines に接続します](/previous-versions/azure/dn535788(v=azure.100))。
 
 - [Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティングを行います](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
-

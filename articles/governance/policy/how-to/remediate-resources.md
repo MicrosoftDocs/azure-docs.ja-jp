@@ -1,14 +1,14 @@
 ---
 title: 準拠していないリソースを修復する
 description: このガイドでは、Azure Policy のポリシーに準拠していないリソースを修復する手順を説明します。
-ms.date: 02/26/2020
+ms.date: 06/09/2020
 ms.topic: how-to
-ms.openlocfilehash: f4846b6eb1ea03c6706a610cab16ec376d19b060
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be55f16734a94acfcc89d632f4cb79f550fa74d5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195232"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84636310"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Azure Policy を使って準拠していないリソースを修復する
 
@@ -51,9 +51,6 @@ az role definition list --name 'Contributor'
 - SDK (Azure PowerShell など) を使用している場合
 - 割り当てスコープの範囲外のリソースがテンプレートによって変更される場合
 - 割り当てスコープの範囲外のリソースがテンプレートによって読み取られる場合
-
-> [!NOTE]
-> 現在この機能をサポートしている SDK は Azure PowerShell と .NET だけです｡
 
 ### <a name="create-managed-identity-with-powershell"></a>PowerShell で管理対象 ID を作成する
 
@@ -180,6 +177,10 @@ Start-AzPolicyRemediation -Name 'myRemedation' -PolicyAssignmentId '/subscriptio
 ```
 
 その他の修復コマンドレットや例については、[Az.PolicyInsights](/powershell/module/az.policyinsights/#policy_insights) モジュールを参照してください。
+
+### <a name="create-a-remediation-task-during-policy-assignment-in-the-azure-portal"></a>Azure portal でポリシー割り当て時に修復タスクを作成する
+
+修復タスクを簡単に作成する方法は、ポリシーの割り当て時に Azure portal から行うことです。 割り当てるポリシー定義が **deployIfNotExists** または **Modify** 効果である場合、 **[修復]** タブのウィザードによって _[修復タスクを作成する]_ オプションが提供されます。 このオプションを選択すると、ポリシーの割り当てと同時に修復タスクが作成されます。
 
 ## <a name="next-steps"></a>次のステップ
 

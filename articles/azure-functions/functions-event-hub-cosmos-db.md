@@ -5,12 +5,13 @@ author: KarlErickson
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
-ms.openlocfilehash: b6d7b2c60e777266b1cab578b8970c1fa1c6bc50
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-java
+ms.openlocfilehash: ef2b774195f522be3520850d2e6e7193e70dd4fb
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77425325"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372452"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>チュートリアル:イベント ハブ トリガーと Azure Cosmos DB 出力バインドを使用して Java で関数を作成する
 
@@ -445,9 +446,9 @@ az group delete --name $RESOURCE_GROUP
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、イベント ハブ イベントを処理し、Cosmos DB を更新する Azure 関数を作成する方法を学習しました。 詳細については、「[Azure Functions の Java 開発者向けガイド](/azure/azure-functions/functions-reference-java)」を参照してください。 使用する注釈の詳細については、[com.microsoft.azure.functions.annotation](/java/api/com.microsoft.azure.functions.annotation) のリファレンスを参照してください。
+このチュートリアルでは、イベント ハブ イベントを処理し、Cosmos DB を更新する Azure 関数を作成する方法を学習しました。 詳細については、「[Azure Functions の Java 開発者向けガイド](./functions-reference-java.md)」を参照してください。 使用する注釈の詳細については、[com.microsoft.azure.functions.annotation](/java/api/com.microsoft.azure.functions.annotation) のリファレンスを参照してください。
 
-このチュートリアルでは、環境変数とアプリケーション設定を使用して、接続文字列などのシークレットを保存しました。 これらのシークレットを Azure Key Vault に保存する方法については、「[App Service と Azure Functions の Key Vault 参照を使用する](/azure/app-service/app-service-key-vault-references)」を参照してください。
+このチュートリアルでは、環境変数とアプリケーション設定を使用して、接続文字列などのシークレットを保存しました。 これらのシークレットを Azure Key Vault に保存する方法については、「[App Service と Azure Functions の Key Vault 参照を使用する](../app-service/app-service-key-vault-references.md)」を参照してください。
 
 次に、Azure Pipelines CI/CD を使用して自動デプロイを行う方法を学習します。
 

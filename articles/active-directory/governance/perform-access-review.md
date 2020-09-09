@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 04/30/2020
+ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a939eece83b94043f750d6f7f63db290f827da4
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 5b672cca97e70c97a5dccb1ca54daccd6c171932
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611233"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85077987"
 ---
 # <a name="review-access-to-groups-and-applications-in-azure-ad-access-reviews"></a>Azure AD アクセス レビューでグループおよびアプリケーションに対するアクセスをレビューする
 

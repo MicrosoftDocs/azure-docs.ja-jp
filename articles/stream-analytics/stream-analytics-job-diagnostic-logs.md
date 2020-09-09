@@ -5,14 +5,14 @@ author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
-ms.date: 03/27/2020
-ms.openlocfilehash: 40b57af95f9ea4d4212756634c721ddd55f85d7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: troubleshooting
+ms.date: 06/18/2020
+ms.openlocfilehash: 6d0a778dee31d93244479c08c7bb7b6f37cf49cb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127747"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319356"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>リソース ログを使用した Azure Stream Analytics のトラブルシューティング
 
@@ -59,23 +59,23 @@ Stream Analytics には 2 種類のログがあります。
 
 リソース ログをオンにして Azure Monitor ログに送信することを、強くお勧めします。 既定では、**オフ**になっています。 オンにするには、次の手順を完了します。
 
-1.  Azure portal にサインインして、Stream Analytics ジョブに移動します。 **[監視]** の下の **[診断ログ]** を選択します。 次に、 **[診断を有効にする]** を選択します。
+1.  Log Analytics ワークスペースを作成します (まだ作成していない場合)。 対象の Stream Analytics ジョブと同じリージョン内に Log Analytics ワークスペースを用意することをお勧めします。
+
+2.  Azure portal にサインインして、Stream Analytics ジョブに移動します。 **[監視]** の下の **[診断ログ]** を選択します。 次に、 **[診断を有効にする]** を選択します。
 
     ![リソース ログへのブレード ナビゲーション](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  **[診断設定]** で **[名前]** を作成し、 **[Log Analytics への送信]** の横にあるチェック ボックスをオンにします。 次に、既存の **Log Analytics ワークスペース**を追加するか、新規作成します。 **[ログ]** で **[実行]** と **[作成]** 、および **[メトリック]** で **[AllMetrics]** のチェック ボックスをオンにします。 **[保存]** をクリックします。 追加のコストを防ぐために、対象の Stream Analytics ジョブと同じ Azure リージョン内の Log Analytics ワークスペースを使用することをお勧めします。
+2.  **[診断設定の名前]** に**名前**を指定し、 **[ログ]** の下にある **[実行]** および **[作成]** と、 **[メトリック]** の下にある **[AllMetrics]** の各ボックスをオンにします。 次に、 **[Log Analytics への送信]** を選択し、ワークスペースを選択します。 **[保存]** をクリックします。
 
-    ![リソース ログの設定](./media/stream-analytics-job-diagnostic-logs/diagnostic-settings.png)
+    ![リソース ログの設定](./media/stream-analytics-job-diagnostic-logs/logs-setup.png)
 
 3. Stream Analytics ジョブが開始すると、リソース ログが Log Analytics ワークスペースにルーティングされます。 ジョブのリソース ログを表示するには、 **[監視]** セクションの **[ログ]** を選択します。
 
    ![[監視] の [リソース ログ]](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs.png)
 
-4. Stream Analytics には、関心のあるログを簡単に検索できる定義済みのクエリが用意されています。 **[全般]** 、 **[入力データ エラー]** 、 **[出力データ エラー]** の 3 つのカテゴリがあります。 たとえば、過去 7 日間のジョブのすべてのエラーの概要を表示するには、適切な定義済みクエリの **[実行]** を選択します。 
+4. Stream Analytics には、関心のあるログを簡単に検索できる定義済みのクエリが用意されています。 左側のペインで事前定義済みのクエリを選択し、 **[実行]** を選択できます。 下部のペインにクエリの結果が表示されます。 
 
-   ![[監視] の [リソース ログ]](./media/stream-analytics-job-diagnostic-logs/logs-categories.png)
-
-   ![ログの結果](./media/stream-analytics-job-diagnostic-logs/logs-result.png)
+   ![[監視] の [リソース ログ]](./media/stream-analytics-job-diagnostic-logs/logs-example.png)
 
 ## <a name="resource-log-categories"></a>リソース ログのカテゴリ
 
@@ -138,12 +138,9 @@ Data | エラーの原因を正確に特定するうえで役に立つデータ�
 エラー | (省略可能) エラー情報。 使用できる場合は通常、例外情報です。
 Message| ログ メッセージ。
 Type | メッセージの種類。 エラーの内部カテゴリにマップされます。 たとえば、**JobValidationError** または **BlobOutputAdapterInitializationFailure**。
-関連付け ID | ジョブの実行を一意に識別する [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)。 ジョブが開始されてから停止するまでに生成された実行ログ エントリすべてに、同じ**関連付け ID** の値が付けられます。
+関連付け ID | ジョブの実行を一意に識別する GUID。 ジョブが開始されてから停止するまでに生成された実行ログ エントリすべてに、同じ**関連付け ID** の値が付けられます。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Stream Analytics の概要](stream-analytics-introduction.md)
-* [Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
-* [Stream Analytics ジョブのスケール設定](stream-analytics-scale-jobs.md)
-* [Stream Analytics クエリ言語リファレンス](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Stream Analytics データ エラー](https://docs.microsoft.com/azure/stream-analytics/data-errors)
+* [Stream Analytics クエリ言語リファレンス](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

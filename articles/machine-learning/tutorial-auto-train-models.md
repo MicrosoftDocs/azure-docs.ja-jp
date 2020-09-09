@@ -6,16 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-author: trevorbye
-ms.author: trbye
-ms.reviewer: trbye
-ms.date: 02/10/2020
-ms.openlocfilehash: 75e61ea3f4fa6c2b346f912a9effd66ad94e7e93
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+author: aniththa
+ms.author: anumamah
+ms.reviewer: nibaccam
+ms.date: 08/14/2020
+ms.custom: devx-track-python
+ms.openlocfilehash: 884e97815a048d3e37dba57d362d71e72ef5e103
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77116455"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120849"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>チュートリアル:自動機械学習を使用してタクシー料金を予測する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -69,290 +70,18 @@ for sample_month in range(12):
 green_taxi_df.head(10)
 ```
 
-<div>
-<style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>vendorID</th>
-      <th>lpepPickupDatetime</th>
-      <th>lpepDropoffDatetime</th>
-      <th>passengerCount</th>
-      <th>tripDistance</th>
-      <th>puLocationId</th>
-      <th>doLocationId</th>
-      <th>pickupLongitude</th>
-      <th>pickupLatitude</th>
-      <th>dropoffLongitude</th>
-      <th>...</th>
-      <th>paymentType</th>
-      <th>fareAmount</th>
-      <th>extra</th>
-      <th>mtaTax</th>
-      <th>improvementSurcharge</th>
-      <th>tipAmount</th>
-      <th>tollsAmount</th>
-      <th>ehailFee</th>
-      <th>totalAmount</th>
-      <th>tripType</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>131969</th>
-      <td>2</td>
-      <td>2015-01-11 05:34:44</td>
-      <td>2015-01-11 05:45:03</td>
-      <td>3</td>
-      <td>4.84</td>
-      <td>なし</td>
-      <td>なし</td>
-      <td>-73.88</td>
-      <td>40.84</td>
-      <td>-73.94</td>
-      <td>...</td>
-      <td>2</td>
-      <td>15.00</td>
-      <td>0.50</td>
-      <td>0.50</td>
-      <td>0.3</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>16.30</td>
-      <td>1.00</td>
-    </tr>
-    <tr>
-      <th>1129817</th>
-      <td>2</td>
-      <td>2015-01-20 16:26:29</td>
-      <td>2015-01-20 16:30:26</td>
-      <td>1</td>
-      <td>0.69</td>
-      <td>なし</td>
-      <td>なし</td>
-      <td>-73.96</td>
-      <td>40.81</td>
-      <td>-73.96</td>
-      <td>...</td>
-      <td>2</td>
-      <td>4.50</td>
-      <td>1.00</td>
-      <td>0.50</td>
-      <td>0.3</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>6.30</td>
-      <td>1.00</td>
-    </tr>
-    <tr>
-      <th>1278620</th>
-      <td>2</td>
-      <td>2015-01-01 05:58:10</td>
-      <td>2015-01-01 06:00:55</td>
-      <td>1</td>
-      <td>0.45</td>
-      <td>なし</td>
-      <td>なし</td>
-      <td>-73.92</td>
-      <td>40.76</td>
-      <td>-73.91</td>
-      <td>...</td>
-      <td>2</td>
-      <td>4.00</td>
-      <td>0.00</td>
-      <td>0.50</td>
-      <td>0.3</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>4.80</td>
-      <td>1.00</td>
-    </tr>
-    <tr>
-      <th>348430</th>
-      <td>2</td>
-      <td>2015-01-17 02:20:50</td>
-      <td>2015-01-17 02:41:38</td>
-      <td>1</td>
-      <td>0.00</td>
-      <td>なし</td>
-      <td>なし</td>
-      <td>-73.81</td>
-      <td>40.70</td>
-      <td>-73.82</td>
-      <td>...</td>
-      <td>2</td>
-      <td>12.50</td>
-      <td>0.50</td>
-      <td>0.50</td>
-      <td>0.3</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>13.80</td>
-      <td>1.00</td>
-    </tr>
-    <tr>
-      <th>1269627</th>
-      <td>1</td>
-      <td>2015-01-01 05:04:10</td>
-      <td>2015-01-01 05:06:23</td>
-      <td>1</td>
-      <td>0.50</td>
-      <td>なし</td>
-      <td>なし</td>
-      <td>-73.92</td>
-      <td>40.76</td>
-      <td>-73.92</td>
-      <td>...</td>
-      <td>2</td>
-      <td>4.00</td>
-      <td>0.50</td>
-      <td>0.50</td>
-      <td>0</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>5.00</td>
-      <td>1.00</td>
-    </tr>
-    <tr>
-      <th>811755</th>
-      <td>1</td>
-      <td>2015-01-04 19:57:51</td>
-      <td>2015-01-04 20:05:45</td>
-      <td>2</td>
-      <td>1.10</td>
-      <td>なし</td>
-      <td>なし</td>
-      <td>-73.96</td>
-      <td>40.72</td>
-      <td>-73.95</td>
-      <td>...</td>
-      <td>2</td>
-      <td>6.50</td>
-      <td>0.50</td>
-      <td>0.50</td>
-      <td>0.3</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>7.80</td>
-      <td>1.00</td>
-    </tr>
-    <tr>
-      <th>737281</th>
-      <td>1</td>
-      <td>2015-01-03 12:27:31</td>
-      <td>2015-01-03 12:33:52</td>
-      <td>1</td>
-      <td>0.90</td>
-      <td>なし</td>
-      <td>なし</td>
-      <td>-73.88</td>
-      <td>40.76</td>
-      <td>-73.87</td>
-      <td>...</td>
-      <td>2</td>
-      <td>6.00</td>
-      <td>0.00</td>
-      <td>0.50</td>
-      <td>0.3</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>6.80</td>
-      <td>1.00</td>
-    </tr>
-    <tr>
-      <th>113951</th>
-      <td>1</td>
-      <td>2015-01-09 23:25:51</td>
-      <td>2015-01-09 23:39:52</td>
-      <td>1</td>
-      <td>3.30</td>
-      <td>なし</td>
-      <td>なし</td>
-      <td>-73.96</td>
-      <td>40.72</td>
-      <td>-73.91</td>
-      <td>...</td>
-      <td>2</td>
-      <td>12.50</td>
-      <td>0.50</td>
-      <td>0.50</td>
-      <td>0.3</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>13.80</td>
-      <td>1.00</td>
-    </tr>
-    <tr>
-      <th>150436</th>
-      <td>2</td>
-      <td>2015-01-11 17:15:14</td>
-      <td>2015-01-11 17:22:57</td>
-      <td>1</td>
-      <td>1.19</td>
-      <td>なし</td>
-      <td>なし</td>
-      <td>-73.94</td>
-      <td>40.71</td>
-      <td>-73.95</td>
-      <td>...</td>
-      <td>1</td>
-      <td>7.00</td>
-      <td>0.00</td>
-      <td>0.50</td>
-      <td>0.3</td>
-      <td>1.75</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>9.55</td>
-      <td>1.00</td>
-    </tr>
-    <tr>
-      <th>432136</th>
-      <td>2</td>
-      <td>2015-01-22 23:16:33</td>
-      <td>2015-01-22 23:20:13</td>
-      <td>1</td>
-      <td>0.65</td>
-      <td>なし</td>
-      <td>なし</td>
-      <td>-73.94</td>
-      <td>40.71</td>
-      <td>-73.94</td>
-      <td>...</td>
-      <td>2</td>
-      <td>5.00</td>
-      <td>0.50</td>
-      <td>0.50</td>
-      <td>0.3</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>6.30</td>
-      <td>1.00</td>
-    </tr>
-  </tbody>
-</table>
-<p>10 行 × 23 列</p>
-</div>
-
+|vendorID| lpepPickupDatetime|  lpepDropoffDatetime|    passengerCount| tripDistance|   puLocationId|   doLocationId|   pickupLongitude|    pickupLatitude| dropoffLongitude    |...|   paymentType |fareAmount |extra| mtaTax| improvementSurcharge|   tipAmount|  tollsAmount|    ehailFee|   totalAmount|    tripType|
+|----|----|----|----|----|----|---|--|---|---|---|----|----|----|--|---|----|-----|----|----|----|----|---|
+|131969|2|2015-01-11 05:34:44|2015-01-11 05:45:03|3|4.84|なし|なし|-73.88|40.84|-73.94|...|2|15.00|0.50|0.50|0.3|0.00|0.00|nan|16.30|1.00
+|1129817|2|2015-01-20 16:26:29|2015-01-20 16:30:26|1|0.69|なし|なし|-73.96|40.81|-73.96|...|2|4.50|1.00|0.50|0.3|0.00|0.00|nan|6.30|1.00
+|1278620|2|2015-01-01 05:58:10|2015-01-01 06:00:55|1|0.45|なし|なし|-73.92|40.76|-73.91|...|2|4.00|0.00|0.50|0.3|0.00|0.00|nan|4.80|1.00
+|348430|2|2015-01-17 02:20:50|2015-01-17 02:41:38|1|0.00|なし|なし|-73.81|40.70|-73.82|...|2|12.50|0.50|0.50|0.3|0.00|0.00|nan|13.80|1.00
+1269627|1|2015-01-01 05:04:10|2015-01-01 05:06:23|1|0.50|なし|なし|-73.92|40.76|-73.92|...|2|4.00|0.50|0.50|0|0.00|0.00|nan|5.00|1.00
+|811755|1|2015-01-04 19:57:51|2015-01-04 20:05:45|2|1.10|なし|なし|-73.96|40.72|-73.95|...|2|6.50|0.50|0.50|0.3|0.00|0.00|nan|7.80|1.00
+|737281|1|2015-01-03 12:27:31|2015-01-03 12:33:52|1|0.90|なし|なし|-73.88|40.76|-73.87|...|2|6.00|0.00|0.50|0.3|0.00|0.00|nan|6.80|1.00
+|113951|1|2015-01-09 23:25:51|2015-01-09 23:39:52|1|3.30|なし|なし|-73.96|40.72|-73.91|...|2|12.50|0.50|0.50|0.3|0.00|0.00|nan|13.80|1.00
+|150436|2|2015-01-11 17:15:14|2015-01-11 17:22:57|1|1.19|なし|なし|-73.94|40.71|-73.95|...|1|7.00|0.00|0.50|0.3|1.75|0.00|nan|9.55|1.00
+|432136|2|2015-01-22 23:16:33   2015-01-22 23:20:13 1   0.65|なし|なし|-73.94|40.71|-73.94|...|2|5.00|0.50|0.50|0.3|0.00|0.00|nan|6.30|1.00
 
 初期データを読み込んだところで、乗車日時のフィールドからさまざまな時間ベースのフィーチャーを作成する関数を定義します。 これによって、月、日付、曜日、時刻に対応する新しいフィールドが作成され、時間に基づいた季節性をモデルで考慮できるようになります。 日付フレームに対して `apply()` 関数を使用し、`build_time_features()` 関数をタクシー データの各行に繰り返し適用します。
 
@@ -370,289 +99,18 @@ green_taxi_df[["month_num", "day_of_month","day_of_week", "hour_of_day"]] = gree
 green_taxi_df.head(10)
 ```
 
-<div>
-<style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>vendorID</th>
-      <th>lpepPickupDatetime</th>
-      <th>lpepDropoffDatetime</th>
-      <th>passengerCount</th>
-      <th>tripDistance</th>
-      <th>puLocationId</th>
-      <th>doLocationId</th>
-      <th>pickupLongitude</th>
-      <th>pickupLatitude</th>
-      <th>dropoffLongitude</th>
-      <th>...</th>
-      <th>improvementSurcharge</th>
-      <th>tipAmount</th>
-      <th>tollsAmount</th>
-      <th>ehailFee</th>
-      <th>totalAmount</th>
-      <th>tripType</th>
-      <th>month_num</th>
-      <th>day_of_month</th>
-      <th>day_of_week</th>
-      <th>hour_of_day</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>131969</th>
-      <td>2</td>
-      <td>2015-01-11 05:34:44</td>
-      <td>2015-01-11 05:45:03</td>
-      <td>3</td>
-      <td>4.84</td>
-      <td>なし</td>
-      <td>なし</td>
-      <td>-73.88</td>
-      <td>40.84</td>
-      <td>-73.94</td>
-      <td>...</td>
-      <td>0.3</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>16.30</td>
-      <td>1.00</td>
-      <td>1</td>
-      <td>11</td>
-      <td>6</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>1129817</th>
-      <td>2</td>
-      <td>2015-01-20 16:26:29</td>
-      <td>2015-01-20 16:30:26</td>
-      <td>1</td>
-      <td>0.69</td>
-      <td>なし</td>
-      <td>なし</td>
-      <td>-73.96</td>
-      <td>40.81</td>
-      <td>-73.96</td>
-      <td>...</td>
-      <td>0.3</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>6.30</td>
-      <td>1.00</td>
-      <td>1</td>
-      <td>20</td>
-      <td>1</td>
-      <td>16</td>
-    </tr>
-    <tr>
-      <th>1278620</th>
-      <td>2</td>
-      <td>2015-01-01 05:58:10</td>
-      <td>2015-01-01 06:00:55</td>
-      <td>1</td>
-      <td>0.45</td>
-      <td>なし</td>
-      <td>なし</td>
-      <td>-73.92</td>
-      <td>40.76</td>
-      <td>-73.91</td>
-      <td>...</td>
-      <td>0.3</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>4.80</td>
-      <td>1.00</td>
-      <td>1</td>
-      <td>1</td>
-      <td>3</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>348430</th>
-      <td>2</td>
-      <td>2015-01-17 02:20:50</td>
-      <td>2015-01-17 02:41:38</td>
-      <td>1</td>
-      <td>0.00</td>
-      <td>なし</td>
-      <td>なし</td>
-      <td>-73.81</td>
-      <td>40.70</td>
-      <td>-73.82</td>
-      <td>...</td>
-      <td>0.3</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>13.80</td>
-      <td>1.00</td>
-      <td>1</td>
-      <td>17</td>
-      <td>5</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>1269627</th>
-      <td>1</td>
-      <td>2015-01-01 05:04:10</td>
-      <td>2015-01-01 05:06:23</td>
-      <td>1</td>
-      <td>0.50</td>
-      <td>なし</td>
-      <td>なし</td>
-      <td>-73.92</td>
-      <td>40.76</td>
-      <td>-73.92</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>5.00</td>
-      <td>1.00</td>
-      <td>1</td>
-      <td>1</td>
-      <td>3</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>811755</th>
-      <td>1</td>
-      <td>2015-01-04 19:57:51</td>
-      <td>2015-01-04 20:05:45</td>
-      <td>2</td>
-      <td>1.10</td>
-      <td>なし</td>
-      <td>なし</td>
-      <td>-73.96</td>
-      <td>40.72</td>
-      <td>-73.95</td>
-      <td>...</td>
-      <td>0.3</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>7.80</td>
-      <td>1.00</td>
-      <td>1</td>
-      <td>4</td>
-      <td>6</td>
-      <td>19</td>
-    </tr>
-    <tr>
-      <th>737281</th>
-      <td>1</td>
-      <td>2015-01-03 12:27:31</td>
-      <td>2015-01-03 12:33:52</td>
-      <td>1</td>
-      <td>0.90</td>
-      <td>なし</td>
-      <td>なし</td>
-      <td>-73.88</td>
-      <td>40.76</td>
-      <td>-73.87</td>
-      <td>...</td>
-      <td>0.3</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>6.80</td>
-      <td>1.00</td>
-      <td>1</td>
-      <td>3</td>
-      <td>5</td>
-      <td>12</td>
-    </tr>
-    <tr>
-      <th>113951</th>
-      <td>1</td>
-      <td>2015-01-09 23:25:51</td>
-      <td>2015-01-09 23:39:52</td>
-      <td>1</td>
-      <td>3.30</td>
-      <td>なし</td>
-      <td>なし</td>
-      <td>-73.96</td>
-      <td>40.72</td>
-      <td>-73.91</td>
-      <td>...</td>
-      <td>0.3</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>13.80</td>
-      <td>1.00</td>
-      <td>1</td>
-      <td>9</td>
-      <td>4</td>
-      <td>23</td>
-    </tr>
-    <tr>
-      <th>150436</th>
-      <td>2</td>
-      <td>2015-01-11 17:15:14</td>
-      <td>2015-01-11 17:22:57</td>
-      <td>1</td>
-      <td>1.19</td>
-      <td>なし</td>
-      <td>なし</td>
-      <td>-73.94</td>
-      <td>40.71</td>
-      <td>-73.95</td>
-      <td>...</td>
-      <td>0.3</td>
-      <td>1.75</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>9.55</td>
-      <td>1.00</td>
-      <td>1</td>
-      <td>11</td>
-      <td>6</td>
-      <td>17</td>
-    </tr>
-    <tr>
-      <th>432136</th>
-      <td>2</td>
-      <td>2015-01-22 23:16:33</td>
-      <td>2015-01-22 23:20:13</td>
-      <td>1</td>
-      <td>0.65</td>
-      <td>なし</td>
-      <td>なし</td>
-      <td>-73.94</td>
-      <td>40.71</td>
-      <td>-73.94</td>
-      <td>...</td>
-      <td>0.3</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>nan</td>
-      <td>6.30</td>
-      <td>1.00</td>
-      <td>1</td>
-      <td>22</td>
-      <td>3</td>
-      <td>23</td>
-    </tr>
-  </tbody>
-</table>
-<p>10 行 × 27 列</p>
-</div>
+|vendorID| lpepPickupDatetime|  lpepDropoffDatetime|    passengerCount| tripDistance|   puLocationId|   doLocationId|   pickupLongitude|    pickupLatitude| dropoffLongitude    |...|   paymentType|fareAmount  |extra| mtaTax| improvementSurcharge|   tipAmount|  tollsAmount|    ehailFee|   totalAmount|tripType|month_num|day_of_month|day_of_week|hour_of_day
+|----|----|----|----|----|----|---|--|---|---|---|----|----|----|--|---|----|-----|----|----|----|----|---|----|----|----
+|131969|2|2015-01-11 05:34:44|2015-01-11 05:45:03|3|4.84|なし|なし|-73.88|40.84|-73.94|...|2|15.00|0.50|0.50|0.3|0.00|0.00|nan|16.30|1.00|1|11|6|5
+|1129817|2|2015-01-20 16:26:29|2015-01-20 16:30:26|1|0.69|なし|なし|-73.96|40.81|-73.96|...|2|4.50|1.00|0.50|0.3|0.00|0.00|nan|6.30|1.00|1|20|1|16
+|1278620|2|2015-01-01 05:58:10|2015-01-01 06:00:55|1|0.45|なし|なし|-73.92|40.76|-73.91|...|2|4.00|0.00|0.50|0.3|0.00|0.00|nan|4.80|1.00|1|1|3|5
+|348430|2|2015-01-17 02:20:50|2015-01-17 02:41:38|1|0.00|なし|なし|-73.81|40.70|-73.82|...|2|12.50|0.50|0.50|0.3|0.00|0.00|nan|13.80|1.00|1|17|5|2
+1269627|1|2015-01-01 05:04:10|2015-01-01 05:06:23|1|0.50|なし|なし|-73.92|40.76|-73.92|...|2|4.00|0.50|0.50|0|0.00|0.00|nan|5.00|1.00|1|1|3|5
+|811755|1|2015-01-04 19:57:51|2015-01-04 20:05:45|2|1.10|なし|なし|-73.96|40.72|-73.95|...|2|6.50|0.50|0.50|0.3|0.00|0.00|nan|7.80|1.00|1|4|6|19
+|737281|1|2015-01-03 12:27:31|2015-01-03 12:33:52|1|0.90|なし|なし|-73.88|40.76|-73.87|...|2|6.00|0.00|0.50|0.3|0.00|0.00|nan|6.80|1.00|1|3|5|12
+|113951|1|2015-01-09 23:25:51|2015-01-09 23:39:52|1|3.30|なし|なし|-73.96|40.72|-73.91|...|2|12.50|0.50|0.50|0.3|0.00|0.00|nan|13.80|1.00|1|9|4|23
+|150436|2|2015-01-11 17:15:14|2015-01-11 17:22:57|1|1.19|なし|なし|-73.94|40.71|-73.95|...|1|7.00|0.00|0.50|0.3|1.75|0.00|nan|9.55|1.00|1|11|6|17
+|432136|2|2015-01-22 23:16:33   2015-01-22 23:20:13 1   0.65|なし|なし|-73.94|40.71|-73.94|...|2|5.00|0.50|0.50|0.3|0.00|0.00|nan|6.30|1.00|1|22|3|23
 
 トレーニングまたはその他の特徴の構築で必要としない列を削除します。
 
@@ -675,159 +133,16 @@ green_taxi_df.head(5)
 green_taxi_df.describe()
 ```
 
-<div>
-<style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>vendorID</th>
-      <th>passengerCount</th>
-      <th>tripDistance</th>
-      <th>pickupLongitude</th>
-      <th>pickupLatitude</th>
-      <th>dropoffLongitude</th>
-      <th>dropoffLatitude</th>
-      <th>totalAmount</th>
-      <th>month_num</th>
-      <th>day_of_month</th>
-      <th>day_of_week</th>
-      <th>hour_of_day</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-    </tr>
-    <tr>
-      <th>mean</th>
-      <td>1.78</td>
-      <td>1.37</td>
-      <td>2.87</td>
-      <td>-73.83</td>
-      <td>40.69</td>
-      <td>-73.84</td>
-      <td>40.70</td>
-      <td>14.75</td>
-      <td>6.50</td>
-      <td>15.13</td>
-      <td>3.27</td>
-      <td>13.52</td>
-    </tr>
-    <tr>
-      <th>std</th>
-      <td>0.41</td>
-      <td>1.04</td>
-      <td>2.93</td>
-      <td>2.76</td>
-      <td>1.52</td>
-      <td>2.61</td>
-      <td>1.44</td>
-      <td>12.08</td>
-      <td>3.45</td>
-      <td>8.45</td>
-      <td>1.95</td>
-      <td>6.83</td>
-    </tr>
-    <tr>
-      <th>min</th>
-      <td>1.00</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>-74.66</td>
-      <td>0.00</td>
-      <td>-74.66</td>
-      <td>0.00</td>
-      <td>-300.00</td>
-      <td>1.00</td>
-      <td>1.00</td>
-      <td>0.00</td>
-      <td>0.00</td>
-    </tr>
-    <tr>
-      <th>25%</th>
-      <td>2.00</td>
-      <td>1.00</td>
-      <td>1.06</td>
-      <td>-73.96</td>
-      <td>40.70</td>
-      <td>-73.97</td>
-      <td>40.70</td>
-      <td>7.80</td>
-      <td>3.75</td>
-      <td>8.00</td>
-      <td>2.00</td>
-      <td>9.00</td>
-    </tr>
-    <tr>
-      <th>50%</th>
-      <td>2.00</td>
-      <td>1.00</td>
-      <td>1.90</td>
-      <td>-73.94</td>
-      <td>40.75</td>
-      <td>-73.94</td>
-      <td>40.75</td>
-      <td>11.30</td>
-      <td>6.50</td>
-      <td>15.00</td>
-      <td>3.00</td>
-      <td>15.00</td>
-    </tr>
-    <tr>
-      <th>75%</th>
-      <td>2.00</td>
-      <td>1.00</td>
-      <td>3.60</td>
-      <td>-73.92</td>
-      <td>40.80</td>
-      <td>-73.91</td>
-      <td>40.79</td>
-      <td>17.80</td>
-      <td>9.25</td>
-      <td>22.00</td>
-      <td>5.00</td>
-      <td>19.00</td>
-    </tr>
-    <tr>
-      <th>max</th>
-      <td>2.00</td>
-      <td>9.00</td>
-      <td>97.57</td>
-      <td>0.00</td>
-      <td>41.93</td>
-      <td>0.00</td>
-      <td>41.94</td>
-      <td>450.00</td>
-      <td>12.00</td>
-      <td>30.00</td>
-      <td>6.00</td>
-      <td>23.00</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+|vendorID|passengerCount|tripDistance|pickupLongitude|pickupLatitude|dropoffLongitude|dropoffLatitude|  totalAmount|month_num   day_of_month|day_of_week|hour_of_day
+|----|----|---|---|----|---|---|---|---|---|---|---
+|count|48000.00|48000.00|48000.00|48000.00|48000.00|48000.00|48000.00|48000.00|48000.00|48000.00|48000.00|48000.00
+|mean|1.78|1.37|2.87|-73.83|40.69|-73.84|40.70|14.75|6.50|15.13|3.27|13.52
+|std|0.41|1.04|2.93|2.76|1.52|2.61|1.44|12.08|3.45|8.45|1.95|6.83
+|min|1.00|0.00|0.00|-74.66|0.00|-74.66|0.00|-300.00|1.00|1.00|0.00|0.00
+|25%|2.00|1.00|1.06|-73.96|40.70|-73.97|40.70|7.80|3.75|8.00|2.00|9.00
+|50%|2.00|1.00|1.90|-73.94|40.75|-73.94|40.75|11.30|6.50|15.00|3.00|15.00
+|75%|2.00|1.00|3.60|-73.92|40.80|-73.91|40.79|17.80|9.25|22.00|5.00|19.00
+|max|2.00|9.00|97.57|0.00|41.93|0.00|41.94|450.00|12.00|30.00|6.00|23.00
 
 
 概要の統計では、外れ値すなわちモデルの精度を低下させる値を含むフィールドがいくつか見つかります。 まず、マンハッタン エリアの境界内に収まるように緯度と経度のフィールドをフィルター処理します。 これにより、その距離範囲を超えるタクシー乗車や、他の特徴との関係の点で外れ値となっているタクシー乗車が除外されます。
@@ -874,10 +189,7 @@ ws = Workspace.from_config()
 ```python
 from sklearn.model_selection import train_test_split
 
-y_df = final_df.pop("totalAmount")
-x_df = final_df
-
-x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, random_state=223)
+x_train, x_test = train_test_split(final_df, test_size=0.2, random_state=223)
 ```
 
 この手順の目的は、正しい精度を測定するために、モデルのトレーニングに使用されたことのないデータ ポイントで完成モデルをテストすることです。
@@ -892,12 +204,12 @@ x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, r
 
 ### <a name="define-training-settings"></a>トレーニングの設定を定義する
 
-トレーニング用の実験パラメーターとモデルの設定を定義します。 [設定](how-to-configure-auto-train.md)の完全な一覧を表示します。 これらの既定の設定で実験を送信するには約 5 分から 20 分かかりますが、実行時間を短くしたい場合は `experiment_timeout_minutes` パラメーターを減らしてください。
+トレーニング用の実験パラメーターとモデルの設定を定義します。 [設定](how-to-configure-auto-train.md)の完全な一覧を表示します。 これらの既定の設定で実験を送信するには約 5 分から 20 分かかりますが、実行時間を短くしたい場合は `experiment_timeout_hours` パラメーターを減らしてください。
 
 |プロパティ| このチュートリアルの値 |説明|
 |----|----|---|
 |**iteration_timeout_minutes**|2|各イテレーションの分単位での時間制限。 合計実行時間を短縮するには、この値を減らします。|
-|**experiment_timeout_minutes**|20|すべてのイテレーションを組み合わせて、実験が終了するまでにかかる分単位での最大時間。|
+|**experiment_timeout_hours**|0.3|すべてのイテレーションを組み合わせて、実験が終了するまでにかかる最大時間 (時間単位)。|
 |**enable_early_stopping**|True|短期間でスコアが向上していない場合に、早期終了を有効にするフラグ。|
 |**primary_metric**| spearman_correlation | 最適化したいメトリック。 このメトリックに基づいて、最適なモデルが選択されます。|
 |**featurization**| 自動 | **auto** を使用すると、実験の入力データを前処理できます (欠損データの処理、テキストから数値への変換など)。|
@@ -909,7 +221,7 @@ import logging
 
 automl_settings = {
     "iteration_timeout_minutes": 2,
-    "experiment_timeout_minutes": 20,
+    "experiment_timeout_hours": 0.3,
     "enable_early_stopping": True,
     "primary_metric": 'spearman_correlation',
     "featurization": 'auto',
@@ -925,8 +237,8 @@ from azureml.train.automl import AutoMLConfig
 
 automl_config = AutoMLConfig(task='regression',
                              debug_log='automated_ml_errors.log',
-                             X=x_train.values,
-                             y=y_train.values.flatten(),
+                             training_data=x_train,
+                             label_column_name="totalAmount",
                              **automl_settings)
 ```
 
@@ -945,44 +257,46 @@ experiment = Experiment(ws, "taxi-experiment")
 local_run = experiment.submit(automl_config, show_output=True)
 ```
 
-    Running on local machine
-    Parent Run ID: AutoML_1766cdf7-56cf-4b28-a340-c4aeee15b12b
-    Current status: DatasetFeaturization. Beginning to featurize the dataset.
-    Current status: DatasetEvaluation. Gathering dataset statistics.
-    Current status: FeaturesGeneration. Generating features for the dataset.
-    Current status: DatasetFeaturizationCompleted. Completed featurizing the dataset.
-    Current status: DatasetCrossValidationSplit. Generating individually featurized CV splits.
-    Current status: ModelSelection. Beginning model selection.
+```output
+Running on local machine
+Parent Run ID: AutoML_1766cdf7-56cf-4b28-a340-c4aeee15b12b
+Current status: DatasetFeaturization. Beginning to featurize the dataset.
+Current status: DatasetEvaluation. Gathering dataset statistics.
+Current status: FeaturesGeneration. Generating features for the dataset.
+Current status: DatasetFeaturizationCompleted. Completed featurizing the dataset.
+Current status: DatasetCrossValidationSplit. Generating individually featurized CV splits.
+Current status: ModelSelection. Beginning model selection.
 
-    ****************************************************************************************************
-    ITERATION: The iteration being evaluated.
-    PIPELINE: A summary description of the pipeline being evaluated.
-    DURATION: Time taken for the current iteration.
-    METRIC: The result of computing score on the fitted pipeline.
-    BEST: The best observed score thus far.
-    ****************************************************************************************************
+****************************************************************************************************
+ITERATION: The iteration being evaluated.
+PIPELINE: A summary description of the pipeline being evaluated.
+DURATION: Time taken for the current iteration.
+METRIC: The result of computing score on the fitted pipeline.
+BEST: The best observed score thus far.
+****************************************************************************************************
 
-     ITERATION   PIPELINE                                       DURATION      METRIC      BEST
-             0   StandardScalerWrapper RandomForest             0:00:16       0.8746    0.8746
-             1   MinMaxScaler RandomForest                      0:00:15       0.9468    0.9468
-             2   StandardScalerWrapper ExtremeRandomTrees       0:00:09       0.9303    0.9468
-             3   StandardScalerWrapper LightGBM                 0:00:10       0.9424    0.9468
-             4   RobustScaler DecisionTree                      0:00:09       0.9449    0.9468
-             5   StandardScalerWrapper LassoLars                0:00:09       0.9440    0.9468
-             6   StandardScalerWrapper LightGBM                 0:00:10       0.9282    0.9468
-             7   StandardScalerWrapper RandomForest             0:00:12       0.8946    0.9468
-             8   StandardScalerWrapper LassoLars                0:00:16       0.9439    0.9468
-             9   MinMaxScaler ExtremeRandomTrees                0:00:35       0.9199    0.9468
-            10   RobustScaler ExtremeRandomTrees                0:00:19       0.9411    0.9468
-            11   StandardScalerWrapper ExtremeRandomTrees       0:00:13       0.9077    0.9468
-            12   StandardScalerWrapper LassoLars                0:00:15       0.9433    0.9468
-            13   MinMaxScaler ExtremeRandomTrees                0:00:14       0.9186    0.9468
-            14   RobustScaler RandomForest                      0:00:10       0.8810    0.9468
-            15   StandardScalerWrapper LassoLars                0:00:55       0.9433    0.9468
-            16   StandardScalerWrapper ExtremeRandomTrees       0:00:13       0.9026    0.9468
-            17   StandardScalerWrapper RandomForest             0:00:13       0.9140    0.9468
-            18   VotingEnsemble                                 0:00:23       0.9471    0.9471
-            19   StackEnsemble                                  0:00:27       0.9463    0.9471
+ ITERATION   PIPELINE                                       DURATION      METRIC      BEST
+         0   StandardScalerWrapper RandomForest             0:00:16       0.8746    0.8746
+         1   MinMaxScaler RandomForest                      0:00:15       0.9468    0.9468
+         2   StandardScalerWrapper ExtremeRandomTrees       0:00:09       0.9303    0.9468
+         3   StandardScalerWrapper LightGBM                 0:00:10       0.9424    0.9468
+         4   RobustScaler DecisionTree                      0:00:09       0.9449    0.9468
+         5   StandardScalerWrapper LassoLars                0:00:09       0.9440    0.9468
+         6   StandardScalerWrapper LightGBM                 0:00:10       0.9282    0.9468
+         7   StandardScalerWrapper RandomForest             0:00:12       0.8946    0.9468
+         8   StandardScalerWrapper LassoLars                0:00:16       0.9439    0.9468
+         9   MinMaxScaler ExtremeRandomTrees                0:00:35       0.9199    0.9468
+        10   RobustScaler ExtremeRandomTrees                0:00:19       0.9411    0.9468
+        11   StandardScalerWrapper ExtremeRandomTrees       0:00:13       0.9077    0.9468
+        12   StandardScalerWrapper LassoLars                0:00:15       0.9433    0.9468
+        13   MinMaxScaler ExtremeRandomTrees                0:00:14       0.9186    0.9468
+        14   RobustScaler RandomForest                      0:00:10       0.8810    0.9468
+        15   StandardScalerWrapper LassoLars                0:00:55       0.9433    0.9468
+        16   StandardScalerWrapper ExtremeRandomTrees       0:00:13       0.9026    0.9468
+        17   StandardScalerWrapper RandomForest             0:00:13       0.9140    0.9468
+        18   VotingEnsemble                                 0:00:23       0.9471    0.9471
+        19   StackEnsemble                                  0:00:27       0.9463    0.9471
+```
 
 ## <a name="explore-the-results"></a>結果を検索する
 
@@ -1011,7 +325,9 @@ print(fitted_model)
 最高のモデルを使用して、テスト データ セット上で予測を実行し、タクシー料金を予測します。 関数 `predict` は最高のモデルを使用して、`x_test` データ セットから y (**交通費**) の値を予測します。 `y_predict` から最初の 10 個の予測コスト値をプリントします。
 
 ```python
-y_predict = fitted_model.predict(x_test.values)
+y_test = x_test.pop("totalAmount")
+
+y_predict = fitted_model.predict(x_test)
 print(y_predict[:10])
 ```
 
@@ -1047,11 +363,13 @@ print("Model Accuracy:")
 print(1 - mean_abs_percent_error)
 ```
 
-    Model MAPE:
-    0.14353867606052823
+```output
+Model MAPE:
+0.14353867606052823
 
-    Model Accuracy:
-    0.8564613239394718
+Model Accuracy:
+0.8564613239394718
+```
 
 
 最終的な予測精度メトリックから、モデルでのデータ セットの特徴によるタクシー料金の予測はかなり良好で、誤差は ± 4 ドル (約 15%) 以内であることがわかります。

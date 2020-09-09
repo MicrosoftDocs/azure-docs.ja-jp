@@ -4,9 +4,7 @@ description: セキュリティで保護されたプッシュ通知を Azure か
 documentationcenter: ios
 author: sethmanheim
 manager: femila
-editor: jwargo
 services: notification-hubs
-ms.assetid: 17d42b0a-2c80-4e35-a1ed-ed510d19f4b4
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ios
@@ -16,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 96d1dd514f6fb9c11d7194714337583d6b4387cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d7dc3212007e9b9ec67d0d235135d4d46f20b950
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75530750"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022125"
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs の安全なプッシュ
 
@@ -50,7 +48,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 この安全なプッシュのチュートリアルでは、プッシュ通知を安全に送信する方法を説明します。 このチュートリアルは「 [ユーザーへの通知](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) 」チュートリアルに基づいて記述されているため、先にそのチュートリアルでの手順を完了してください。
 
 > [!NOTE]
-> このチュートリアルでは、「 [Notification Hubs の使用 (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md)」での説明に従って通知が作成され、構成されていると想定しています。
+> このチュートリアルでは、「[Azure Notification Hubs を使用して iOS アプリにプッシュ通知を送信する](ios-sdk-get-started.md)」の説明のとおり通知ハブを作成し、構成したと想定しています。
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
@@ -124,7 +122,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 4. ここでは、受信通知を処理し、上記のメソッドを使用して表示するコンテンツを取得する必要があります。 最初に、プッシュ通知を受信するときに iOS アプリケーションがバックグラウンドで実行されるようにします。 **XCode** で、左側のパネルのアプリケーション プロジェクトを選択し、中央のウィンドウの **[ターゲット]** セクションでメイン アプリケーション ターゲットをクリックします。
 5. 次に、中央ウィンドウの上部で **[機能]** タブをクリックし、 **[リモート通知]** チェック ボックスをオンにします。
 
-    ![][IOS1]
+    ![アプリ プロジェクトが選択され、[機能] タブが開いている、XCode のスクリーンショット。 [リモート通知] チェック ボックスがオンになっている。][IOS1]
 
 6. `AppDelegate.m` で、次のメソッドを追加してプッシュ通知を処理します。
 

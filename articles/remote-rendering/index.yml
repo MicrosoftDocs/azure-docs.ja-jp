@@ -9,12 +9,12 @@ metadata:
   author: florianborn71
   ms.author: flborn
   ms.date: 03/26/2020
-  ms.openlocfilehash: 9f27118bfe3e01ce8d1cfc8c60c46c416b39c846
-  ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+  ms.openlocfilehash: e740fd08dc3e616b0768c6c15fd4191cb58e261a
+  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/28/2020
-  ms.locfileid: "84142131"
+  ms.lasthandoff: 06/30/2020
+  ms.locfileid: "85565435"
 landingContent:
 - title: Azure Remote Rendering について
   linkLists:
@@ -36,7 +36,7 @@ landingContent:
       url: concepts/sessions.md
     - text: エンティティ
       url: concepts/entities.md
-    - text: Components
+    - text: コンポーネント
       url: concepts/components.md
     - text: モデル
       url: concepts/models.md
@@ -52,17 +52,27 @@ landingContent:
       url: quickstarts/deploy-to-hololens.md
     - text: Unity のサンプルをデスクトップにデプロイする
       url: quickstarts/deploy-to-desktop.md
+    - text: ネイティブ C++ サンプルを HoloLens にデプロイする
+      url: quickstarts/native-cpp/hololens/deploy-native-cpp-tutorial.md
     - text: モデルをレンダリング用に変換する
       url: quickstarts/convert-model.md
 - title: 独自のアプリを作成する方法を学習する
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Unity:プロジェクトをゼロから設定する
-      url: tutorials/unity/project-setup.md
-    - text: Unity:リモート エンティティを操作する
-      url: tutorials/unity/working-with-remote-entities.md
-    - text: Unity:環境と素材を変更する
-      url: tutorials/unity/changing-environment-and-materials.md
+    - text: 概要
+      url: tutorials/unity/tutorial-landing.md
+    - text: リモートでレンダリングされたモデルの表示
+      url: tutorials/unity/view-remote-models/view-remote-models.md
+    - text: カスタム モデルの読み込み
+      url: tutorials/unity/custom-models/custom-models.md
+    - text: モデルの操作
+      url: tutorials/unity/manipulate-models/manipulate-models.md
+    - text: 素材、ライト、および効果の調整
+      url: tutorials/unity/materials-lighting-effects/materials-lighting-effects.md
+    - text: Azure Remote Rendering とモデル ストレージのセキュリティ保護
+      url: tutorials/unity/security/security.md
+    - text: 商用の Azure Remote Rendering アプリケーションの作成
+      url: tutorials/unity/commercial-ready/commercial-ready.md
     - text: 'ネイティブ C++: Remote Rendering を HoloLens Holographic アプリに統合する'
       url: tutorials/native-cpp/hololens/integrate-remote-rendering-into-holographic-app.md

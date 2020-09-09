@@ -3,18 +3,18 @@ title: Durable Functions のバージョンの概要 - Azure Functions
 description: Durable Functions のバージョンについて説明します。
 author: cgillum
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 08/20/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 4a117e7f69647af3ad82f9013bfa40556ccc0dbd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6662259494bba5747e01c4574186e9030112247
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77152892"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719412"
 ---
 # <a name="durable-functions-versions-overview"></a>Durable Functions のバージョンの概要
 
-*Durable Functions* は、サーバーレス環境でステートフル関数を記述できる、[Azure Functions](../functions-overview.md) と [Azure WebJobs](../../app-service/web-sites-create-web-jobs.md) の拡張機能です。 この拡張機能は状態、チェックポイント、再起動を管理します。 Durable Functions にまだ慣れていない場合は、[概要ドキュメント](durable-functions-overview.md)をご覧ください。
+*Durable Functions* は、サーバーレス環境でステートフル関数を記述できる、[Azure Functions](../functions-overview.md) と [Azure WebJobs](../../app-service/webjobs-create.md) の拡張機能です。 この拡張機能は状態、チェックポイント、再起動を管理します。 Durable Functions にまだ慣れていない場合は、[概要ドキュメント](durable-functions-overview.md)をご覧ください。
 
 ## <a name="new-features-in-2x"></a>2\.x の新機能
 
@@ -44,7 +44,29 @@ Durable Functions 2.x では、次のことを実行できる新しい[持続的
 
 ### <a name="upgrade-the-extension"></a>拡張機能をアップグレードする
 
-プロジェクトに [Durable Functions バインド拡張機能](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask)のバージョン 2.x をインストールします。 詳細については、「[Azure Functions バインド拡張機能を登録する](../functions-bindings-register.md)」を参照してください。
+プロジェクトに Durable Functions バインド拡張機能の最新 2.x バージョンをインストールします。
+
+#### <a name="javascript-python-and-powershell"></a>JavaScript、Python、PowerShell
+
+Durable Functions 2.x は [Azure Functions 拡張機能バンドル](../functions-bindings-register.md#extension-bundles)のバージョン 2.x で使用できます。
+
+プロジェクトで拡張機能バンドルのバージョンを更新するには、host.json を開き、バージョン 2.x (`[2.*, 3.0.0)`) を使用するように `extensionBundle` セクションを更新します。
+
+```json
+{
+    "version": "2.0",
+    "extensionBundle": {
+        "id": "Microsoft.Azure.Functions.ExtensionBundle",
+        "version": "[2.*, 3.0.0)"
+    }
+}
+```
+
+#### <a name="net"></a>.NET
+
+[Durable Functions バインド拡張機能](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask)の最新 2.x バージョンを使用するように .NET プロジェクトを更新します。
+
+詳細については、「[Azure Functions バインド拡張機能を登録する](../functions-bindings-register.md#local-csharp)」を参照してください。
 
 ### <a name="update-your-code"></a>コードを更新する
 
@@ -82,3 +104,7 @@ Durable Functions 2.x では、新しいホストの json スキーマが使用�
 #### <a name="functionjson-changes-javascript-and-c-script"></a>function.json の変更 (JavaScript および C# スクリプト)
 
 Durable Functions 1.x では、オーケストレーション クライアントのバインドには `orchestrationClient` の `type` が使用されます。 バージョン 2.x では、代わりに `durableClient` が使用されます。
+
+#### <a name="raise-event-changes"></a>イベント発生の変更
+
+Durable Functions 1.x では、[イベント発生](durable-functions-external-events.md#send-events) API を呼び出して、存在しないインスタンスを指定すると、サイレント エラーが発生しました。 2\.x 以降では、存在しないオーケストレーションに対するイベント発生は例外になります。

@@ -2,26 +2,21 @@
 title: チュートリアル:TINFOIL SECURITY と Azure Active Directory のシングル サインオン (SSO) 統合 | Microsoft Docs
 description: Azure Active Directory と TINFOIL SECURITY の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: da02da92-e3b0-4c09-ad6c-180882b0f9f8
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71d3078b553843922cd51e4e0f43ea84b6dcde16
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 35ff822b4439a48a922fe5ccd4530dfb5d40ffae
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74170757"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552033"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tinfoil-security"></a>チュートリアル:TINFOIL SECURITY と Azure Active Directory のシングル サインオン (SSO) 統合
 
@@ -176,7 +171,7 @@ Azure AD ユーザーが TINFOIL SECURITY にサインインできるように�
 
 1. ユーザーがエンタープライズ アカウントに参加している場合は、[TINFOIL SECURITY サポート チームに連絡](https://www.tinfoilsecurity.com/contact)して、ユーザー アカウントを作成する必要があります。
 
-1. 通常の TINFOIL SECURITY SaaS ユーザーは、グループ作業者をユーザーの任意のサイトに追加できます。 ここでは、新しい TINFOIL SECURITY ユーザー アカウントを作成するための招待状を指定した電子メール アドレスに送信するプロセスが起動します。
+1. 通常の TINFOIL SECURITY SaaS ユーザーは、コラボレーターをユーザーの任意のサイトに追加できます。 ここでは、新しい TINFOIL SECURITY ユーザー アカウントを作成するための招待状を指定した電子メール アドレスに送信するプロセスが起動します。
 
 > [!NOTE]
 > TINFOIL SECURITY から提供されている他の TINFOIL SECURITY ユーザー アカウント作成ツールまたは API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。

@@ -1,24 +1,14 @@
 ---
 title: Azure Service Bus - メッセージの参照
 description: Service Bus メッセージを参照してピークすると、Azure Service Bus クライアントは、キューまたはサブスクリプションに存在するすべてのメッセージを列挙できます。
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 6156557d10210535b287aa516070c0b5da416512
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.openlocfilehash: 0f2d4ed1225aef4c28a5f3d841669c2e3122ba10
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77539367"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341241"
 ---
 # <a name="message-browsing"></a>メッセージの読み取り
 

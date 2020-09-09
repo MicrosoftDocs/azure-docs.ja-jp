@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 12/09/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: c86a387e66cce914f9d0b92793893b0cba08e7bc
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: b0992c4d18fdb9cb5201ab3ef52fba8ee3feb7a2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587097"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964381"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>クイック スタート:翻訳のためのカスタム モデルを構築、デプロイ、および使用する
 
@@ -24,13 +24,13 @@ ms.locfileid: "83587097"
 
 1. [Custom Translator](https://portal.customtranslator.azure.ai) ポータルを使用するには、サインインするための [Microsoft アカウント](https://signup.live.com)または [Azure AD アカウント](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (Azure でホストされている組織アカウント) が必要になります。
 
-2. Azure portal を通じた Translator へのサブスクリプション。 Custom Translator 内のお客様のワークスペースに関連付ける Translator サブスクリプション キーが必要です。 「[Translator にサインアップする方法](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup)」を参照してください。
+2. Azure portal を通じた Translator へのサブスクリプション。 カスタム翻訳ツール内のお客様のワークスペースに関連付ける Translator サブスクリプション キーが必要です。 「[Translator にサインアップする方法](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup)」を参照してください。
 
 3. 上記の両方がある場合は、[カスタム翻訳ツール](https://portal.customtranslator.azure.ai) ポータルにサインインしてワークスペースとプロジェクトを作成し、ファイルをアップロードしてモデルを作成、デプロイします。
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
 
-初回使用時は、ワークスペースを作成して Translator サブスクリプションに関連付ける際に、サービス利用規約への同意を求められます。
+初回使用時は、ワークスペースを作成して Translator サブスクリプションに関連付ける際に、サービス利用条件への同意を求められます。
 
 ![ワークスペースの作成](media/quickstart/terms-of-service.png)
 ![ワークスペースの作成](media/quickstart/create-workspace-1.png)
@@ -83,7 +83,7 @@ Custom Translator ポータルのランディング ページで、[新しいプ
 
 ## <a name="use-a-deployed-model"></a>デプロイしたモデルの使用
 
-デプロイしたモデルには、Microsoft Translator [Text API V3 を通じて CategoryID を指定することによって](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)アクセスすることができます。 Translator の詳細については、[API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) Web ページを参照してください。
+デプロイしたモデルには、Translator を介して CategoryID を指定することでアクセスできます (https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) )。 Translator の詳細については、[API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) に関する Web ページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

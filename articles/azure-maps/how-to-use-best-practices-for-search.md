@@ -1,45 +1,43 @@
 ---
 title: Azure Maps Search Service のベスト プラクティス | Microsoft Azure Maps
 description: Microsoft Azure Maps から Search Service を使用する場合のベスト プラクティスを適用する方法について説明します。
-author: philmea
-ms.author: philmea
-ms.date: 01/23/2020
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 09/02/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8d62d7d278323baa0ae49b9e12f46468efb067a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6565d8056ae8106bd93b7dd096bc709010ec5c3f
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335315"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400706"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Azure Maps Search Service のベスト プラクティス
 
-Azure Maps[Search Service](https://docs.microsoft.com/rest/api/maps/search)には、さまざまな機能を提供する API が含まれています。 たとえば、Search Address API は、特定の場所の近くにある目的地 (POI) やデータを検索できます。 
+Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) には、開発者が住所、場所、名前またはカテゴリ別の事業の一覧、およびその他の地理情報を検索するために役立つさまざまな機能を提供する API が含まれています。 たとえば、[あいまい検索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) を使用して、住所または目的地 (POI) を検索できます。
 
 この記事では、Azure Maps Search Service からデータを呼び出す際に、サウンド プラクティスを適用する方法を説明します。 学習内容は次のとおりです。
-
-* 関連する一致を返すクエリを作成します。
-* 検索結果を制限します。
-* 結果の型の違いについて説明します。
-* アドレス検索の応答構造を読みます。
+> [!div class="checklist"]
+> * 関連する一致を返すクエリを作成する
+> * 検索の結果を制限する
+> * 結果の種類の違いを確認する
+> * 住所検索の応答構造を確認する
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Mapsサービス API を呼び出すには、Azure Maps アカウントとキーが必要です。 詳細については、[アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)および[主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)を参照してください。 
+1. [Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-azure-maps-account)
+2. [プライマリ サブスクリプション キー (主キーまたはサブスクリプション キーとも呼ばれます) を取得します](quick-demo-map-app.md#get-the-primary-key-for-your-account)。
 
-Azure Maps での認証の詳細については、[Azure Maps での認証の管理](./how-to-manage-authentication.md)を参照してください。
-
-> [!TIP]
-> Search Service にクエリを実行するには、[Postman アプリ](https://www.getpostman.com/apps)を使用して REST 呼び出しを作成します。 または、選択した任意の API 開発環境を使用できます。
+この記事では、[Postman アプリ](https://www.postman.com/downloads/)を使用して REST 呼び出しを構築しますが、任意の API 開発環境を選択できます。
 
 ## <a name="best-practices-to-geocode-addresses"></a>ジオコード アドレスに関するベスト プラクティス
 
-Azure Maps Search Service を使って住所の全部または一部を検索すると、API は検索クエリからキーワードを読み取ります。 次に、住所の経度と緯度の座標を返します。 このプロセスは*ジオコーディング*と呼ばれています。 
+Azure Maps Search Service を使って住所の全部または一部を検索すると、API は検索クエリからキーワードを読み取ります。 次に、住所の経度と緯度の座標を返します。 このプロセスは*ジオコーディング*と呼ばれています。
 
-ある国でジオコーディングする機能は、道路データの可用性とジオコーディング サービスの精度に左右されます。 国または地域による Azure Maps のジオコーディング機能の詳細については、[ジオコーディングの対象範囲](https://docs.microsoft.com/azure/azure-maps/geocoding-coverage)を参照してください。
+ある国またはリージョンでジオコーディングする機能は、道路データの可用性とジオコーディング サービスの精度に左右されます。 国または地域による Azure Maps のジオコーディング機能の詳細については、[ジオコーディングの対象範囲](https://docs.microsoft.com/azure/azure-maps/geocoding-coverage)を参照してください。
 
 ### <a name="limit-search-results"></a>検索の結果を制限する
 
@@ -52,7 +50,7 @@ Azure Maps Search Service を使って住所の全部または一部を検索す
 
 ユーザーの関連領域に結果をジオバイアスするには、常にできるだけ多くの場所の詳細を追加します。 次の入力型を指定して、検索結果を制限できます。
 
-* `countrySet`パラメーターを設定します。 たとえば、`US,FR`に設定できます。 デフォルトでは、API は全世界を検索するため、不要な結果が返される可能性があります。 クエリに`countrySet`パラメーターがない場合、検索で不正確な結果が返される可能性があります。 たとえば、*ベルビュー*という名前の都市を検索すると、米国とフランスの両方に*ベルビュー*という名前の都市があるため、両国の結果が返されます。
+* `countrySet`パラメーターを設定します。 たとえば、`US,FR`に設定できます。 デフォルトでは、API は全世界を検索するため、不要な結果が返される可能性があります。 クエリに`countrySet`パラメーターがない場合、検索で不正確な結果が返される可能性があります。 たとえば、"*ベルビュー*" という名前の都市を検索すると、米国とフランスの両方に "*ベルビュー*" という名前の都市があるため、両方の国またはリージョンの結果が返されます。
 
 * `btmRight` パラメーターと `topleft` パラメーターを使用して、境界ボックスを設定できます。 これらのパラメーターは検索をマップ上の特定領域に制限します。
 
@@ -61,7 +59,7 @@ Azure Maps Search Service を使って住所の全部または一部を検索す
 
 #### <a name="fuzzy-search-parameters"></a>あいまい検索パラメーター
 
-検索クエリに対するユーザー入力がわからない場合は、Azure Maps[Search Fuzzy API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)を使用することをお勧めします。 この API は、POI 検索およびジオコーディングを正規の*一行検索*で組み合わせます。 
+検索クエリに対するユーザー入力がわからない場合は、Azure Maps[Search Fuzzy API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)を使用することをお勧めします。 たとえば、ユーザーからの入力が、住所だったり、目的地 (POI) (*ショッピングモール*など) だったりすることがあります。 この API は、POI 検索およびジオコーディングを正規の*一行検索*で組み合わせます。 
 
 * `minFuzzyLevel` パラメーターと `maxFuzzyLevel` パラメーターを使用すると、クエリパラメーターがユーザーが必要とする情報と完全に一致しない場合でも、関連する一致を返すことができます。 パフォーマンスを最大化し、異常な結果を減らすには、検索クエリをデフォルトの`minFuzzyLevel=1`および`maxFuzzyLevel=2`に設定します。 
 
@@ -70,7 +68,7 @@ Azure Maps Search Service を使って住所の全部または一部を検索す
 * `idxSet`パラメータを使用して、結果タイプの正確なセットに優先順位を付けます。 結果の正確なセットに優先順位を付けるには、コンマで区切られたインデックスのリストを送信します。 リストでは、アイテムの順序は関係ありません。 Azure Maps は以下のインデックスをサポートしています。
 
 * `Addr` - **住所範囲**:道路の始点と終点から補間された住所ポイント。 これらの地点は、住所範囲として表されます。
-* `Geo` - **地域**: 土地の行政区画です。 たとえば、地域は国、州、市などとなります。
+* `Geo` - **地域**: 土地の行政区画です。 たとえば、地域は国またはリージョン、州、市などとなります。
 * `PAD` - **ポイントアドレス**:街路の名前と番号を含む住所です。 ポイントアドレスはインデックスにあります。 例は*Soquel Dr 2501*です。 ポイントアドレスは、住所に利用できる最高レベルの精度を提供します。  
 * `POI` - **目的地**:注目に値する、または興味深いと思われるマップ上のポイントです。 [Search Address API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)では POI は返されません。  
 * `Str` - **街路**: マップ上の街路です。
@@ -85,7 +83,7 @@ Azure Maps Search Service を使って住所の全部または一部を検索す
 
 ### <a name="reverse-geocode-and-filter-for-a-geography-entity-type"></a>geography エンティティ型の逆ジオコードとフィルター
 
-[Search Address Reverse API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)で逆ジオコード検索を実行すると、サービスは行政区分のポリゴンを返すことができます。 特定の geography エンティティ型に検索を絞り込むには、要求に`entityType`パラメーターを含めます。 
+[Search Address Reverse API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)で逆ジオコード検索を実行すると、サービスは行政区分のポリゴンを返すことができます。 たとえば、都市の区分のポリゴンをフェッチできます。 特定の geography エンティティ型に検索を絞り込むには、要求に`entityType`パラメーターを含めます。 
 
 結果の応答には、一致した geography IDとエンティティ型が含まれます。 複数のエンティティを指定すると、エンドポイントは*使用可能な最小のエンティティ*が返されます。 返された geometry ID を使用して、[Search Polygon サービス](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)を介して geography のジオメトリを取得できます。
 
@@ -480,7 +478,7 @@ url.QueryEscape(query)
 
 POI 検索では、POI 結果を名前で要求できます。 たとえば、名前でビジネスを検索できます。 
 
-アプリケーションにカバレッジが必要な国を指定するには、`countrySet`パラメータを使用することを強くお勧めします。 既定の動作では、世界全体を検索します。 この広範な検索では不要な結果が返され、検索に時間がかかる場合があります。
+アプリケーションにカバレッジが必要な国またはリージョンを指定するには、`countrySet`パラメーターを使用することを強くお勧めします。 既定の動作では、世界全体を検索します。 この広範な検索では不要な結果が返され、検索に時間がかかる場合があります。
 
 ### <a name="brand-search"></a>ブランドの検索
 
@@ -769,7 +767,7 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 * **アドレス範囲**:街路の始点と終点から補間されたアドレスポイントの範囲です。  
 
-* **geography**: 国、州、市など、土地の行政区画を表すマップ上の領域です。 
+* **geography**: 国またはリージョン、州、市など、土地の行政区画を表すマップ上の領域です。 
 
 * **POI**:注意する価値があり、興味を引く可能性があるマップ上のポイントです。
 

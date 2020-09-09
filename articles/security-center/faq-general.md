@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: e2cc04be5a79009f92e275f9de46df60a8e23c8b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 782884f53f0ec17c47b79cf66504d0e3ad3fc29d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106578"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84783216"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>FAQ - Azure Security Center に関する一般的な質問
 
@@ -29,7 +29,7 @@ Security Center では、データの収集と格納に Log Analytics エージ�
 
 
 ## <a name="how-do-i-get-azure-security-center"></a>Azure Security Center はどうしたら取得できますか。
-Azure Security Center は、Microsoft Azure サブスクリプションで有効化し、[Azure Portal](https://azure.microsoft.com/features/azure-portal/) からアクセスします  アクセスするには、[ポータルにサインイン](https://portal.azure.com)し、 **[参照]** を選択し、 **[Security Center]** までスクロールします。
+Azure Security Center は、Microsoft Azure サブスクリプションで有効化し、[Azure Portal](https://azure.microsoft.com/features/azure-portal/) からアクセスします アクセスするには、[ポータルにサインイン](https://portal.azure.com)し、 **[参照]** を選択し、 **[Security Center]** までスクロールします。
 
 
 ## <a name="which-azure-resources-are-monitored-by-azure-security-center"></a>Azure Security Center の監視対象になる Azure リソースは何ですか。
@@ -37,14 +37,8 @@ Azure Security Center は、次の Azure リソースを監視します。
 
 * 仮想マシン (VM) ( [Cloud Services](../cloud-services/cloud-services-choose-me.md)を含む)
 * 仮想マシン スケール セット
-* Azure 仮想ネットワーク
-* Containers
-* Azure SQL サービス
-* Azure ストレージ アカウント
-* ([App Service 環境](../app-service/environment/intro.md)にある) Azure Web アプリ
 * Azure サブスクリプションに統合済みのパートナー ソリューション (VM 上および App Service Environment 上の Web アプリケーション ファイアウォールなど)
-
-さらに、Azure 以外のマシン (オンプレミスのものを含む) も Azure Security Center で監視できます。 [Windows マシン](./quick-onboard-windows-computer.md)と [Linux マシン](./quick-onboard-linux-computer.md)の両方がサポートされています。
+* [製品概要に記載されているさまざまな Azure PaaS サービス](features-paas.md)
 
 
 ## <a name="how-can-i-see-the-current-security-state-of-my-azure-resources"></a>Azure リソースの現在のセキュリティ状態を確認する方法を教えてください。
@@ -59,7 +53,7 @@ Azure Security Center で有効になっているセキュリティ ポリシー
 
 
 ## <a name="who-can-modify-a-security-policy"></a>セキュリティ ポリシーを変更できるのは誰ですか。
-セキュリティ ポリシーを変更するには、セキュリティ管理者であるか、そのサブスクリプションの所有者または共同作成者である必要があります。
+セキュリティ ポリシーを変更するには、**セキュリティ管理者**であるか、そのサブスクリプションの**所有者**である必要があります。
 
 セキュリティ ポリシーを構成する方法については、 [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md) を参照してください。
 
@@ -87,7 +81,7 @@ Azure Security Center は、Azure のリソース、ネットワーク、パー�
 
 
 ## <a name="why-did-secure-score-values-change"></a>セキュリティ スコア値が変わったのはなぜですか? <a name="secure-score-faq"></a>
-2019 年 2 月の時点で、Security Center では、推奨事項の重大度に合わせて一部の推奨事項のスコアを調整しました。 この調整により、全体的なセキュリティ スコア値が変わる可能性があります。  セキュリティ スコアの詳細については、[セキュリティ スコアの計算](security-center-secure-score.md)に関する記事をご覧ください。
+2019 年 2 月の時点で、Security Center では、推奨事項の重大度に合わせて一部の推奨事項のスコアを調整しました。 この調整により、全体的なセキュリティ スコア値が変わる可能性があります。  セキュリティ スコアに関する詳細については、[Azure Security Center の強化されたセキュリティ スコア](secure-score-security-controls.md)に関するページを参照してください。
 
 
 ## <a name="whats-the-difference-between-threats-detected-and-alerted-on-by-microsoft-security-response-center-versus-azure-security-center"></a>Microsoft Security Response Center と Azure Security Center によって検出され、警告される脅威の違いは何ですか。

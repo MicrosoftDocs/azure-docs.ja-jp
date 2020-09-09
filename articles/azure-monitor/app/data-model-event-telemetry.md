@@ -4,18 +4,18 @@ description: イベント テレメトリ用の Application Insights データ �
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: bd8b2581f7642f6825aaf0d1b51c8e94d4333d33
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 69685afa14352a22b58bccbea342038e4273696e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671883"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320614"
 ---
 # <a name="event-telemetry-application-insights-data-model"></a>イベント テレメトリ:Application Insights データ モデル
 
-アプリケーションで発生したイベントを表すイベント テレメトリ項目を作成できます ([Application Insights](../../azure-monitor/app/app-insights-overview.md))。 通常は、ボタンのクリックや注文のチェックアウトなどのユーザーの操作です。 初期化や構成の更新などのアプリケーション ライフ サイクル イベントの場合もあります。 
+アプリケーションで発生したイベントを表すイベント テレメトリ項目を作成できます ([Application Insights](./app-insights-overview.md))。 通常は、ボタンのクリックや注文のチェックアウトなどのユーザーの操作です。 初期化や構成の更新などのアプリケーション ライフ サイクル イベントの場合もあります。 
 
-意味的には、イベントは、要求に相関付けられる場合と、関連付けられない場合があります。 ただし、適切に使用すれば、イベント テレメトリは、要求やトレースよりも重要になります。 イベントはビジネス テレメトリを表しているため、独立したより緩やかな[サンプリング](../../azure-monitor/app/api-filtering-sampling.md)の対象にする必要があります。
+意味的には、イベントは、要求に相関付けられる場合と、関連付けられない場合があります。 ただし、適切に使用すれば、イベント テレメトリは、要求やトレースよりも重要になります。 イベントはビジネス テレメトリを表しているため、独立したより緩やかな[サンプリング](./api-filtering-sampling.md)の対象にする必要があります。
 
 ## <a name="name"></a>名前
 
@@ -34,5 +34,6 @@ ms.locfileid: "77671883"
 ## <a name="next-steps"></a>次のステップ
 
 - Application Insights の型とデータ モデルについては、[データ モデル](data-model.md)に関するページを参照してください。
-- [カスタム イベント テレメトリを記述します](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)。
-- Application Insights でサポートされている[プラットフォーム](../../azure-monitor/app/platforms.md)を確認します。
+- [カスタム イベント テレメトリを記述します](./api-custom-events-metrics.md#trackevent)。
+- Application Insights でサポートされている[プラットフォーム](./platforms.md)を確認します。
+

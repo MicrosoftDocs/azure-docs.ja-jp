@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: aahi
-ms.openlocfilehash: 4cdf58974cd8fa9d7813df7e970caea260409225
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79bbdd109d005b7c6de293aebf50433fb7ea1d91
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78251303"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291648"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>Text Analytics Cognitive Service の外部/コミュニティ コンテンツ
 
@@ -23,7 +23,7 @@ ms.locfileid: "78251303"
 
 ## <a name="blogs"></a>ブログ
 
-+ [Text Analytics API original announcement (Text Analytics API の最初の告知) (Azure ブログ)](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/)
++ [Text Analytics API original announcement (Text Analytics API の最初の告知) (Azure ブログ)](https://azure.microsoft.com/blog/using-text-analytics-in-call-centers/)
 
 + [Using Text Analytics Key Phrase Cognitive Services API from PowerShell (PowerShell から Text Analytics Key Phrase Cognitive Services API を使用する) (AutomationNext ブログ)](https://automationnext.wordpress.com/tag/text-analytics/)
 

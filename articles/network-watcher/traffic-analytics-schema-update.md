@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/06/2020
 ms.author: vinigam
-ms.openlocfilehash: 4fe981576e3f6e58b0886d9c0d2eb2915d8b7720
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 31d0de63185c56eafda8c42efbe44d8e7ffcaf1f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396621"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022465"
 ---
 # <a name="sample-queries-with-new-fields-in-the-traffic-analytics-schema-august-2019-schema-update"></a>Traffic Analytics スキーマに新しいフィールドを使用したサンプル クエリ (2019 年 8 月のスキーマ更新)
 
@@ -76,7 +76,7 @@ DestPublicIPsAggregated = iif(isnotempty(DestPublicIPs_s), DestPublicIPs_s, "N/A
 
 古いフィールドでは次の形式を使用していました。
 
-<Index value 0)>|<NSG_ RuleName>|<Flow Direction>|<Flow Status>|<FlowCount ProcessedByRule>
+`<Index value 0)>|<NSG_ RuleName>|<Flow Direction>|<Flow Status>|<FlowCount ProcessedByRule>`
 
 ネットワーク セキュリティ グループ (NSG) 全体でデータを集計しなくなりました。 更新されたスキーマでは、**NSGList_s** に含まれる NSG は 1 つだけです。 また、**NSGRules** に含まれるルールは 1 つだけです。 例で示しているように、ここを含むフィールドで複雑な形式を廃止しました。
 

@@ -10,16 +10,17 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 08/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 344ad8e106c119c1de59570d1ec4e3df5e1cc8af
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 26d52eed02c9d25ed2f18afa3a5262ba9224b0ba
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417122"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224868"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure Data Factory のメタデータの取得アクティビティ
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 メタデータの取得アクティビティを使用すると、Azure Data Factory で任意のデータのメタデータを取得できます。 このアクティビティは、次のシナリオで使用できます。
@@ -60,13 +61,14 @@ ms.locfileid: "81417122"
 - Azure Blob Storage の場合、`lastModified` はコンテナーと BLOB に適用されますが、仮想フォルダーには適用されません。
 - `lastModified` フィルターは現在、子項目のフィルター処理に適用されますが、指定されたフォルダーまたはファイル自体には適用されません。
 - フォルダー/ファイルに対するワイルドカード フィルターは、Get Metadata アクティビティではサポートされていません。
+- バイナリ ファイル、JSON ファイル、または XML ファイルからメタデータを取得する場合、`structure` および `columnCount` はサポートされません。
 
 **リレーショナル データベース**
 
 | コネクタ/メタデータ | structure | columnCount | exists |
 |:--- |:--- |:--- |:--- |
 | [Azure SQL Database](connector-azure-sql-database.md) | √ | √ | √ |
-| [Azure SQL Database マネージド インスタンス](connector-azure-sql-database-managed-instance.md) | √ | √ | √ |
+| [Azure SQL Managed Instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) | √ | √ | √ |
 | [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md) | √ | √ | √ |
 | [SQL Server](connector-sql-server.md) | √ | √ | √ |
 
@@ -99,13 +101,36 @@ ms.locfileid: "81417122"
 
 ```json
 {
-    "name": "MyActivity",
-    "type": "GetMetadata",
-    "typeProperties": {
-        "fieldList" : ["size", "lastModified", "structure"],
-        "dataset": {
-            "referenceName": "MyDataset",
-            "type": "DatasetReference"
+    "name":"MyActivity",
+    "type":"GetMetadata",
+    "dependsOn":[
+
+    ],
+    "policy":{
+        "timeout":"7.00:00:00",
+        "retry":0,
+        "retryIntervalInSeconds":30,
+        "secureOutput":false,
+        "secureInput":false
+    },
+    "userProperties":[
+
+    ],
+    "typeProperties":{
+        "dataset":{
+            "referenceName":"MyDataset",
+            "type":"DatasetReference"
+        },
+        "fieldList":[
+            "size",
+            "lastModified",
+            "structure"
+        ],
+        "storeSettings":{
+            "type":"AzureBlobStorageReadSettings"
+        },
+        "formatSettings":{
+            "type":"JsonReadSettings"
         }
     }
 }
@@ -115,18 +140,22 @@ ms.locfileid: "81417122"
 
 ```json
 {
-    "name": "MyDataset",
-    "properties": {
-    "type": "AzureBlob",
-        "linkedService": {
-            "referenceName": "StorageLinkedService",
-            "type": "LinkedServiceReference"
+    "name":"MyDataset",
+    "properties":{
+        "linkedServiceName":{
+            "referenceName":"AzureStorageLinkedService",
+            "type":"LinkedServiceReference"
         },
-        "typeProperties": {
-            "folderPath":"container/folder",
-            "filename": "file.json",
-            "format":{
-                "type":"JsonFormat"
+        "annotations":[
+
+        ],
+        "type":"Json",
+        "typeProperties":{
+            "location":{
+                "type":"AzureBlobStorageLocation",
+                "fileName":"file.json",
+                "folderPath":"folder",
+                "container":"container"
             }
         }
     }

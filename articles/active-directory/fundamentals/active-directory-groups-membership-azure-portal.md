@@ -2,23 +2,23 @@
 title: 別のグループに対してメンバーの追加または削除を行う - Azure AD
 description: Azure Active Directory を使用して別のグループからグループを追加または削除する方法について説明します。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/19/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 830bf7134b3a8b0425c53673a1347dd77897a5bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ecfc532ea859c78b72a15dc85e0d3fc740ffe19a
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75423031"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797544"
 ---
 # <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Azure Active Directory を使用して別のグループからグループを追加または削除する
 この記事は、Azure Active Directory を使用して別のグループからグループを追加および削除するのに役立ちます。

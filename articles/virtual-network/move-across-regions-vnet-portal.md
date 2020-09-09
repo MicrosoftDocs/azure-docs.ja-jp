@@ -3,15 +3,15 @@ title: Azure portal を使用して Azure 仮想ネットワークを別の Azur
 description: Resource Manager テンプレートと Azure portal を使用して Azure 仮想ネットワークを Azure リージョン間で移動します。
 author: asudbring
 ms.service: virtual-network
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: c54725d9a947b0c912a822686d7b2cffe1a7b5c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ed3da649ba65484a79b42ba5bb45431839e123d4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75640790"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711444"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-the-azure-portal"></a>Azure portal を使用して Azure 仮想ネットワークを別のリージョンに移動する
 

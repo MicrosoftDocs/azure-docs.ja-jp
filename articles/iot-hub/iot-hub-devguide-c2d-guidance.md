@@ -11,12 +11,14 @@ ms.date: 01/29/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: b5682334bd3fb23fbbebed5fc8ece6d55e9c5652
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: 10206aced4f38f4d157f46703aac2d28ec863274
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81733241"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319152"
 ---
 # <a name="cloud-to-device-communications-guidance"></a>cloud-to-device 通信に関するガイダンス
 
@@ -32,13 +34,13 @@ IoT Hub では、デバイス アプリがバックエンド アプリに機能�
 
 さまざまな cloud-to-device 通信オプションの詳細な比較を次に示します。
 
-|  | ダイレクト メソッド | デバイス ツインの必要なプロパティ | クラウドからデバイスへのメッセージ |
-| ---- | ------- | ---------- | ---- |
+| Categories | ダイレクト メソッド | デバイス ツインの必要なプロパティ | クラウドからデバイスへのメッセージ |
+| ---------- | -------------- | ------------------------- | ------------------------ |
 | シナリオ | すぐに確認する必要があるコマンド (例: ファンをオンにする)。 | デバイスを特定の状態に置いておくために長時間実行されるコマンド。 たとえば、テレメトリの送信間隔を 30 分に設定します。 | デバイス アプリに対する一方向の通知です。 |
 | Data flow | 双方向。 デバイス アプリは、メソッドにすぐに応答できます。 ソリューション バックエンドは、コンテキストから要求の結果を受信します。 | 一方向。 デバイス アプリは、プロパティが変更された通知を受信します。 | 一方向。 デバイス アプリは、メッセージを受信します。
 | Durability | 切断されているデバイスとは通信しません。 ソリューション バックエンドには、デバイスが接続されていないことが通知されます。 | プロパティの値は、デバイス ツインに保持されます。 デバイスは、次の再接続時にそれを読み取ります。 プロパティの値は [IoT Hub クエリ言語](iot-hub-devguide-query-language.md)を使用して取得できます。 | メッセージは、IoT Hub によって最大 48 時間保持できます。 |
 | 対象サーバー | **deviceId** を使用する場合は 1 台のデバイス、[jobs](iot-hub-devguide-jobs.md) を使用する場合は複数台のデバイス。 | **deviceId** を使用する場合は 1 台のデバイス、[jobs](iot-hub-devguide-jobs.md) を使用する場合は複数台のデバイス。 | **deviceId** による 1 台のデバイス。 |
-| Size | ダイレクト メソッドの最大ペイロード サイズは 128 KB。 | 必要なプロパティの最大サイズは 32KB です。 | 最大 64 KB のメッセージ。 |
+| サイズ | ダイレクト メソッドの最大ペイロード サイズは 128 KB。 | 必要なプロパティの最大サイズは 32KB です。 | 最大 64 KB のメッセージ。 |
 | 頻度 | 高。 詳細については、[IoT Hub の制限](iot-hub-devguide-quotas-throttling.md)に関するページを参照してください。 | 中。 詳細については、[IoT Hub の制限](iot-hub-devguide-quotas-throttling.md)に関するページを参照してください。 | 低。 詳細については、[IoT Hub の制限](iot-hub-devguide-quotas-throttling.md)に関するページを参照してください。 |
 | Protocol | MQTT または AMQP を使用して利用できます。 | MQTT または AMQP を使用して利用できます。 | すべてのプロトコルで使用できます。 HTTPS を使う場合、デバイスはポーリングを行う必要があります。 |
 

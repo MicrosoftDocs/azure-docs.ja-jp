@@ -1,27 +1,27 @@
 ---
 title: VNet ピアリングの作成 - 異なるサブスクリプション
 titlesuffix: Azure Virtual Network
-description: Resource Manager で作成されて異なる Azure サブスクリプションに存在する仮想ネットワーク間に仮想ネットワーク ピアリングを作成する方法を説明します。
+description: 同じまたは別の Azure Active Directory テナント内の異なる Azure サブスクリプションに存在する Resource Manager で作成された仮想ネットワーク間に仮想ネットワーク ピアリングを作成する方法を説明します。
 services: virtual-network
 documentationcenter: ''
-author: anavinahar
+author: KumudD
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
-ms.author: anavin
-ms.openlocfilehash: d085279167b498b13cfb79b97703cfdff7d6dd8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: kumud
+ms.openlocfilehash: 79062ae45f04b290f6e4120906b98590ce95dbe1
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225207"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833268"
 ---
-# <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>仮想ネットワーク ピアリングを作成する - Resource Manager、異なるサブスクリプション
+# <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions-and-azure-active-directory-tenants"></a>仮想ネットワーク ピアリングを作成する - Resource Manager、異なるサブスクリプション、および Azure Active Directory テナント
 
-このチュートリアルでは、Resource Manager で作成された仮想ネットワーク間に仮想ネットワーク ピアリングを作成する方法について説明します。 仮想ネットワークは、異なるサブスクリプションに存在します。 2 つの仮想ネットワークをピアリングすると、別々の仮想ネットワークに存在するリソースが、あたかも同じ仮想ネットワーク内に存在するかのような帯域幅と待ち時間で相互に通信を行うことができます。 詳しくは、「[仮想ネットワーク ピアリング](virtual-network-peering-overview.md)」をご覧ください。
+このチュートリアルでは、Resource Manager で作成された仮想ネットワーク間に仮想ネットワーク ピアリングを作成する方法について説明します。 異なる Azure Active Directory (Azure AD) テナントに属している可能性のあるさまざまなサブスクリプションに仮想ネットワークが存在します。 2 つの仮想ネットワークをピアリングすると、別々の仮想ネットワークに存在するリソースが、あたかも同じ仮想ネットワーク内に存在するかのような帯域幅と待ち時間で相互に通信を行うことができます。 詳しくは、「[仮想ネットワーク ピアリング](virtual-network-peering-overview.md)」をご覧ください。
 
 仮想ネットワーク ピアリングを作成する手順は、サブスクリプションが同じか異なるか、また、どの[Azure デプロイメント モデル](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を使用して仮想ネットワークが作成されているかによって異なります。 他のシナリオで仮想ネットワークを作成する方法については、次の表で目的のシナリオを選択してください。
 
@@ -148,7 +148,7 @@ CLI とその依存関係をインストールする代わりに、Azure Cloud S
           --name myVnetAToMyVnetB \
           --resource-group myResourceGroupA \
           --vnet-name myVnetA \
-          --remote-vnet-id /subscriptions/<SubscriptionB-Id>/resourceGroups/myResourceGroupB/providers/Microsoft.Network/VirtualNetworks/myVnetB \
+          --remote-vnet /subscriptions/<SubscriptionB-Id>/resourceGroups/myResourceGroupB/providers/Microsoft.Network/VirtualNetworks/myVnetB \
           --allow-vnet-access
     ```
 
@@ -181,7 +181,7 @@ CLI とその依存関係をインストールする代わりに、Azure Cloud S
 
 このチュートリアルでは、サブスクリプションごとに異なるアカウントを使用します。 両方のサブスクリプションへのアクセス許可を持つアカウントを使用している場合は、すべての手順で同じアカウントを使用し、Azure からログアウトする手順をスキップして、ユーザー ロールの割り当てを作成するスクリプト行を削除できます。 次のすべてのスクリプトの UserA@azure.com と UserB@azure.com を、UserA と UserB で使用しているユーザー名に置き換えます。
 
-1. Azure PowerShell バージョン 1.0.0 以降を使用していることを確認します。 これは、`Get-Module -Name Az` を実行することで行えます。最新バージョンの PowerShell の [Az モジュール](/powershell/azure/install-az-ps)をインストールすることをお勧めします。 Azure PowerShell を初めてお使いの方は、[Azure PowerShell の概要](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事を参照してください。 
+1. Azure PowerShell バージョン 1.0.0 以降を使用していることを確認します。 これは、`Get-Module -Name Az` を実行することで行えます。最新バージョンの PowerShell の [Az モジュール](/powershell/azure/install-az-ps)をインストールすることをお勧めします。 Azure PowerShell を初めてお使いの方は、[Azure PowerShell の概要](/powershell/azure/?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事を参照してください。 
 2. PowerShell セッションを開始します。
 3. PowerShell で、`Connect-AzAccount` コマンドを入力して UserA として Azure にログインします。 ログインに使用するアカウントには、仮想ネットワーク ピアリングを作成するためのアクセス許可が必要です。 アクセス許可の一覧については、[仮想ネットワークのピアリングのアクセス許可](virtual-network-manage-peering.md#permissions)に関するページをご覧ください。
 4. リソース グループと仮想ネットワーク A を作成します。PC で、次のスクリプトをテキスト エディターにコピーします。 `<SubscriptionA-Id>` を SubscriptionA の ID に置き換えます。 サブスクリプション ID がわからない場合は、`Get-AzSubscription` コマンドを入力して表示します。 返された出力の **id** の値がサブスクリプション ID です。 スクリプトを実行するには、変更後のスクリプトをコピーし、PowerShell に貼り付けて、`Enter` キーを押します。

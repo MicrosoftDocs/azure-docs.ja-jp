@@ -1,5 +1,5 @@
 ---
-title: Synapse Analytics の SQL リソースの使用
+title: Synapse SQL のリソースの使用
 description: Azure Synapse Analytics の Synapse SQL 使用モデルについて学習します。
 services: synapse analytics
 author: vvasic-msft
@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: e078893b3bbe0ef5661cd87bad62b320f78ceb5d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 086c853b21301074cf35f13db52db1fdb145518c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421236"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489573"
 ---
-# <a name="azure-synapse-analytics-sql-resource-consumption"></a>Azure Synapse Analytics の SQL リソースの使用
+# <a name="synapse-sql-resource-consumption"></a>Synapse SQL のリソースの使用
 
 この記事では、Synapse SQL (プレビュー) のリソースの使用モデルについて説明します。
 
@@ -27,7 +27,7 @@ SQL オンデマンドは、適切なサイズを選択する必要がない、�
 
 最適な Data Warehouse ユニット (DWU) の数の選択についての推奨事項と、ユニットの数を変更する方法を示します。
 
-### <a name="what-are-data-warehouse-units"></a>Data Warehouse ユニットとは
+### <a name="data-warehouse-units"></a>Data Warehouse ユニット
 
 Synapse SQL プールは、プロビジョニングされる分析リソースのコレクションを表します。 分析リソースは、CPU、メモリ、および IO の組み合わせとして定義されます。 これらの 3 つのリソースは、Data Warehouse ユニット (DWU) と呼ばれるコンピューティング スケールのユニットにバンドルされます。 DWU は、コンピューティング リソースとパフォーマンスの抽象的な正規化された単位を表します。 サービス レベルを変更すると、システムで使用できる DWU の数が変更され、それによってさらにシステムのパフォーマンスやコストが調整されます。
 
@@ -77,9 +77,9 @@ Data Warehouse ユニットを増やすと、コンピューティング リソ�
 
 #### <a name="capacity-limits"></a>容量制限
 
-各 SQL Server (たとえば myserver.database.windows.net) には、特定の数の Data Warehouse ユニットを許可する[データベース トランザクション ユニット (DTU)](../../sql-database/sql-database-service-tiers-dtu.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) クォータがあります。 詳細については、[ワークロード管理の容量制限](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#workload-management)に関する記事を参照してください。
+各 SQL Server (たとえば myserver.database.windows.net) には、特定の数の Data Warehouse ユニットを許可する[データベース トランザクション ユニット (DTU)](../../azure-sql/database/service-tiers-dtu.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) クォータがあります。 詳細については、[ワークロード管理の容量制限](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#workload-management)に関する記事を参照してください。
 
-### <a name="how-many-data-warehouse-units-do-i-need"></a>必要な Data Warehouse ユニットの数
+### <a name="assess-the-number-of-data-warehouse-units-you-need"></a>必要な Data Warehouse ユニットの数を評価する
 
 理想的な Data Warehouse ユニットの数は、ワークロードと、システムに読み込まれているデータの量に大きく依存します。
 
@@ -99,14 +99,14 @@ SQL プールは、大量のコンピューティングをプロビジョニン�
 
 Data Warehouse ユニットを変更するには、「[ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)」で説明されているアクセス許可が必要です。
 
-SQL DB 共同作成者や SQL Server 共同作成者などの Azure リソースの組み込みロールで DWU 設定を変更できます。
+SQL DB 共同作成者や SQL Server 共同作成者などの Azure 組み込みロールで DWU 設定を変更できます。
 
 #### <a name="view-current-dwu-settings"></a>現在の DWU 設定の表示
 
 現在の DWU 設定を表示するには、次の手順に従います。
 
 1. Visual Studio で SQL Server オブジェクト エクスプローラーを開きます。
-2. SQL Database 論理サーバーに関連付けられている master データベースに接続します。
+2. 論理 SQL サーバーに関連付けられている master データベースに接続します。
 3. sys.database_service_objectives 動的管理ビューから選択します。 たとえば次のようになります。
 
 ```sql
@@ -148,7 +148,7 @@ T-SQL で現在の DWU の設定を表示したり、設定を変更したり、
 
 DWU を変更するには、次の手順に従います。
 
-1. SQL Database 論理サーバーに関連付けられている master データベースに接続します。
+1. サーバーに関連付けられている master データベースに接続します。
 2. [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) TSQL ステートメントを使います。 次の例では、MySQLDW データベースのサービス レベル目標を DW1000c に設定します。
 
 ```Sql
@@ -184,7 +184,7 @@ Azure Portal でスケールアウト操作のデータベースの状態を確�
 
 DWU の変更の状態を確認するには、次の手順に従います。
 
-1. SQL Database 論理サーバーに関連付けられている master データベースに接続します。
+1. サーバーに関連付けられている master データベースに接続します。
 2. 次のクエリを送信して、データベースの状態を確認します。
 
 ```sql

@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: d0fd9999abc4a67ded0f66977e1a3ba5310c87be
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.date: 08/21/2020
+ms.openlocfilehash: 37f0a8d1f70fa96db505973d097febabe99ab7a8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383030"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749169"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4.0 の概要
 
@@ -91,10 +91,14 @@ HDI 4.0 に含まれる Apache Oozie 4.3.1 では以下の点が変更されて�
 
 * HDInsight 4.0 では、Apache Hive 用 MapReduce はサポートされていません。 代わりに Apache Tez を使用してください。 詳しくは、[Apache Tez](https://tez.apache.org/) に関するページをご覧ください。
 * HDInsight 4.0 では Apache Storm がサポートされていません。
-* HDInsight 4.0 では、Hive ビューは使用できなくなります。
+* HDInsight 4.0 では、ML Services クラスターの種類がサポートされていません。
+* Hive View は、バージョン番号が 4.1 以上の HDInsight 4.0 クラスターでのみ利用できます。 この番号は、[Ambari Admin]、[バージョン] の順に選択すると見つかります。
 * Apache Zeppelin のシェル インタープリターは、Spark および対話型クエリ クラスターではサポートされていません。
 * Spark-LLAP クラスターでは LLAP を "*無効にする*" ことはできません。 LLAP をオフにすることだけができます。
 * Azure Data Lake Storage Gen2 では、Jupyter Notebook を Spark クラスターに保存できません。
+* Apache pig は既定では Tez で実行されますが、Mapreduce に変更することもできます
+* 行および列のセキュリティに対する Spark SQL Ranger 統合は非推奨です
+* HDInsight 4.0 では Spark 2.4 と Kafka 2.1 を利用できます。そのため、Spark 2.3 と Kafka 1.1 はサポートされなくなりました。 HDInsight 4.0 では、Spark 2.4 および Kafka 2.1 以降を使用することをお勧めします。
 
 ## <a name="next-steps"></a>次のステップ
 

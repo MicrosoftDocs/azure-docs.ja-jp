@@ -5,17 +5,18 @@ description: Azure CLI を使用して、Azure Active Directory 資格情報に�
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/18/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: e1a81b25042501a166cee122279d21e3702cd419
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: ddfa12bd758ffc362c51e10f63800665109d54a6
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75371991"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534075"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli"></a>Azure CLI を使用してコンテナーまたは BLOB のユーザー委任 SAS を作成する
 
@@ -39,7 +40,7 @@ Azure AD の資格情報を使用して、Azure CLI にサインインします�
 
 Azure PowerShell からユーザー委任 SAS を作成するには、Azure CLI へのサインインに使用する Azure AD アカウントに、**Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** アクションを含むロールが割り当てられている必要があります。 このアクセス許可により、Azure AD アカウントが*ユーザー委任キー*を要求できるようにします。 ユーザー委任キーは、ユーザー委任 SAS に署名するために使用されます。 **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** アクションを提供するロールは、ストレージ アカウント、リソース グループ、またはサブスクリプションのレベルで割り当てられている必要があります。
 
-Azure AD セキュリティ プリンシパルに RBAC ロールを割り当てるための十分なアクセス許可がない場合は、アカウント所有者または管理者に依頼して、必要なアクセス許可を割り当ててもらう必要がある場合があります。
+Azure AD セキュリティ プリンシパルに Azure ロールを割り当てるための十分なアクセス許可がない場合は、アカウント所有者または管理者に依頼して、必要なアクセス許可を割り当ててもらう必要がある場合があります。
 
 次の例では、**ストレージ BLOB データ共同作成者**ロールを割り当てます。これには、**Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** アクションが含まれます。 ロールは、ストレージ アカウントのレベルでスコープ設定されます。
 
@@ -52,7 +53,7 @@ az role assignment create \
     --scope "/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>"
 ```
 
-**Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** アクションを含む組み込みロールの詳細については、「[Azure リソースの組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
+**Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** アクションを含む組み込みロールの詳細については、「[Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
 
 ## <a name="use-azure-ad-credentials-to-secure-a-sas"></a>Azure AD の資格情報を使用して SAS をセキュリティ保護する
 
@@ -129,7 +130,7 @@ az storage account revoke-delegation-keys \
 ```
 
 > [!IMPORTANT]
-> ユーザーの委任キーと RBAC ロールの割り当てはいずれも Azure Storage によってキャッシュされるため、失効プロセスの開始と、既存のユーザーの委任 SAS の無効化の間に、遅延が発生する可能性があります。
+> ユーザーの委任キーと Azure ロールの割り当てはいずれも Azure Storage によってキャッシュされるため、失効プロセスの開始と、既存のユーザーの委任 SAS の無効化の間に、遅延が発生する可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
 

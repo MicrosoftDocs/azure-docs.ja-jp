@@ -9,22 +9,22 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/31/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: c1dc5216f758c2dda263e2f61b043dbde5f76604
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: f02f8c0c5aabc48e7b9966898028485a4687f413
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655499"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723080"
 ---
-# <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services マネージド ドメイン内の内部アプリケーションに安全にアクセスするために Azure AD アプリケーション プロキシをデプロイする
+# <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services マネージド ドメイン内の内部アプリケーションに安全にアクセスするために Azure AD アプリケーション プロキシをデプロイする
 
 Azure AD Domain Services (Azure AD DS) を使用して、オンプレミスで実行されているレガシ アプリケーションを Azure にリフトアンドシフトすることができます。 その後、Azure Active Directory (AD) アプリケーション プロキシにより、インターネット経由でアクセスできるように、Azure AD DS マネージド ドメインの一部として内部アプリケーションを安全に公開することで、リモート ワーカーをサポートできます。
 
 Azure AD アプリケーション プロキシを使用したことがなく、詳細を確認したい場合は、[内部アプリケーションに安全なリモート アクセスを提供する方法](../active-directory/manage-apps/application-proxy.md)に関する記事を参照してください。
 
-この記事では、Azure AD アプリケーション プロキシ コネクタを作成および構成して、Azure AD DS マネージド ドメイン内のアプリケーションへの安全なアクセスを提供する方法について説明します。
+この記事では、Azure AD アプリケーション プロキシ コネクタを作成および構成して、マネージド ドメイン内のアプリケーションへの安全なアクセスを提供する方法について説明します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -36,18 +36,18 @@ Azure AD アプリケーション プロキシを使用したことがなく、�
     * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
     * Azure AD アプリケーション プロキシを使用するには、**Azure AD Premium のライセンス**が必要です。
 * Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services のマネージド ドメイン。
-    * 必要であれば、[Azure Active Directory Domain Services インスタンスを作成して構成][create-azure-ad-ds-instance]してください。
+    * 必要に応じて、[Azure Active Directory Domain Services のマネージド ドメインを作成して構成][create-azure-ad-ds-instance]します。
 
 ## <a name="create-a-domain-joined-windows-vm"></a>ドメインに参加している Windows VM を作成する
 
-環境内で実行されているアプリケーションにトラフィックをルーティングするには、Azure AD アプリケーション プロキシ コネクタ コンポーネントをインストールします。 この Azure AD アプリケーション プロキシ コネクタは、Azure AD DS マネージド ドメインに参加している Windows Server 仮想マシン (VM) にインストールする必要があります。 アプリケーションによっては、それぞれにコネクタがインストールされている複数のサーバーをデプロイできます。 このデプロイ オプションにより、可用性が向上し、負荷の高い認証を処理できます。
+環境内で実行されているアプリケーションにトラフィックをルーティングするには、Azure AD アプリケーション プロキシ コネクタ コンポーネントをインストールします。 この Azure AD アプリケーション プロキシ コネクタは、マネージド ドメインに参加している Windows Server 仮想マシン (VM) にインストールする必要があります。 アプリケーションによっては、それぞれにコネクタがインストールされている複数のサーバーをデプロイできます。 このデプロイ オプションにより、可用性が向上し、負荷の高い認証を処理できます。
 
-Azure AD アプリケーション プロキシ コネクタを実行する VM は、Azure AD DS を有効にしたのと同じ、またはピアリングされた仮想ネットワーク上にある必要があります。 アプリケーション プロキシを使用して発行するアプリケーションをホストする VM も、同じ Azure 仮想ネットワークにデプロイする必要があります。
+Azure AD アプリケーション プロキシ コネクタを実行する VM は、同じか、またはピアリングされた仮想ネットワーク上に、マネージド ドメインとして存在する必要があります。 アプリケーション プロキシを使用して発行するアプリケーションをホストする VM も、同じ Azure 仮想ネットワークにデプロイする必要があります。
 
 Azure AD アプリケーション プロキシ コネクタ用の VM を作成するには、次の手順を実行します。
 
-1. [カスタム OU を作成します](create-ou.md)。 このカスタム OU を管理するアクセス許可を、Azure AD DS マネージド ドメイン内のユーザーに委任できます。 Azure AD アプリケーション プロキシ用の VM とアプリケーションを実行する VM は、既定の *AAD DC Computers* OU ではなく、カスタム OU の一部である必要があります。
-1. [仮想マシンをドメインに参加させます][create-join-windows-vm]。Azure AD アプリケーション プロキシ コネクタを実行しているものと、アプリケーションを実行しているものの両方を Azure AD DS マネージド ドメインに参加させます。 前の手順のカスタム OU 内に、これらのコンピューター アカウントを作成します。
+1. [カスタム OU を作成します](create-ou.md)。 このカスタム OU を管理する権限を、マネージド ドメイン内のユーザーに委任できます。 Azure AD アプリケーション プロキシ用の VM とアプリケーションを実行する VM は、既定の *AAD DC Computers* OU ではなく、カスタム OU の一部である必要があります。
+1. [仮想マシンをドメインに参加させます][create-join-windows-vm]。Azure AD アプリケーション プロキシ コネクタを実行しているものと、アプリケーションを実行しているものの両方をマネージド ドメインに参加させます。 前の手順のカスタム OU 内に、これらのコンピューター アカウントを作成します。
 
 ## <a name="download-the-azure-ad-application-proxy-connector"></a>Azure AD アプリケーション プロキシ コネクタをダウンロードする
 
@@ -72,7 +72,7 @@ VM を Azure AD アプリケーション プロキシ コネクタとして使�
         > [!NOTE]
         > コネクタの登録に使用する全体管理者アカウントは、アプリケーション プロキシ サービスを有効にしたのと同じディレクトリに属している必要があります。
         >
-        > たとえば、Azure AD ドメインが *aaddscontoso.com* の場合、全体管理者は `admin@aaddscontoso.com` か、そのドメインの別の有効なエイリアスである必要があります。
+        > たとえば、Azure AD ドメインが *contoso.com* の場合、全体管理者は `admin@contoso.com` か、そのドメインの別の有効なエイリアスである必要があります。
 
    * コネクタをインストールする VM で [Internet Explorer セキュリティ強化の構成] がオンになっていると、登録画面がブロックされることがあります。 アクセスを許可するには、エラー メッセージの指示に従うか、インストールプロセス中に Internet Explorer のセキュリティ強化をオフにします。
    * コネクタの登録が失敗する場合は、[アプリケーション プロキシのトラブルシューティング](../active-directory/manage-apps/application-proxy-troubleshoot.md)に関する記事をご覧ください。
@@ -82,11 +82,11 @@ VM を Azure AD アプリケーション プロキシ コネクタとして使�
     ![Azure portal でアクティブと表示されている新しい Azure AD アプリケーション プロキシ コネクタ](./media/app-proxy/connected-app-proxy.png)
 
 > [!NOTE]
-> Azure AD アプリケーション プロキシを介して認証を行うアプリケーションの高可用性を実現するために、複数の VM にコネクタをインストールできます。 前のセクションと同じ手順を繰り返して、Azure AD DS マネージド ドメインに参加している他のサーバーにコネクタをインストールします。
+> Azure AD アプリケーション プロキシを介して認証を行うアプリケーションの高可用性を実現するために、複数の VM にコネクタをインストールできます。 前のセクションと同じ手順を繰り返して、マネージド ドメインに参加している他のサーバーにコネクタをインストールします。
 
 ## <a name="enable-resource-based-kerberos-constrained-delegation"></a>リソースベースの Kerberos の制約付き委任を有効にする
 
-統合 Windows 認証 (IWA) を使用してアプリケーションへのシングル サインオンを使用するには、Azure AD アプリケーション プロキシ コネクタに、ユーザーに偽装して代理でトークンを送受信するためのアクセス許可を付与します。 これらのアクセス許可を付与するには、コネクタに対して Azure AD DS マネージド ドメインのリソースにアクセスするための Kerberos の制約付き委任 (KCD) を構成します。 Azure AD DS マネージド ドメインのドメイン管理者特権がないため、マネージド ドメインに従来のアカウントレベルの KCD を構成することはできません。 代わりに、リソースベースの KCD を使用します。
+統合 Windows 認証 (IWA) を使用してアプリケーションへのシングル サインオンを使用するには、Azure AD アプリケーション プロキシ コネクタに、ユーザーに偽装して代理でトークンを送受信するためのアクセス許可を付与します。 これらのアクセス許可を付与するには、コネクタに対してマネージド ドメインのリソースにアクセスするための Kerberos の制約付き委任 (KCD) を構成します。 マネージド ドメインのドメイン管理者特権がないため、マネージド ドメインに従来のアカウントレベルの KCD を構成することはできません。 代わりに、リソースベースの KCD を使用します。
 
 詳細については、「[Azure Active Directory Domain Services で Kerberos の制約付き委任 (KCD) を構成する](deploy-kcd.md)」を参照してください。
 
@@ -113,7 +113,7 @@ Set-ADComputer appserver.aaddscontoso.com -PrincipalsAllowedToDelegateToAccount 
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure AD DS と統合された Azure AD アプリケーション プロキシを使用して、ユーザーがアクセスできるようにアプリケーションを発行します。 詳しくは、[Azure AD アプリケーション プロキシを使用したアプリケーションの発行](../active-directory/manage-apps/application-proxy-publish-azure-portal.md)に関する記事をご覧ください。
+Azure AD DS と統合された Azure AD アプリケーション プロキシを使用して、ユーザーがアクセスできるようにアプリケーションを発行します。 詳しくは、[Azure AD アプリケーション プロキシを使用したアプリケーションの発行](../active-directory/manage-apps/application-proxy-add-on-premises-application.md)に関する記事をご覧ください。
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

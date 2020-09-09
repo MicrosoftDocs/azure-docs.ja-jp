@@ -5,12 +5,12 @@ ms.assetid: f9a5cfa1-fbb0-41e6-95d1-75d457347a35
 ms.topic: article
 ms.date: 01/14/2016
 ms.custom: seodec18
-ms.openlocfilehash: e7ad45ea4cb1049ed7eeb454162e23e81ed35019
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 92e893fe9f74d51856faf39d3e4800dd5a8155db
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78255201"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815387"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>PowerShell を使用した Azure App Service アプリの複製
 
@@ -107,6 +107,8 @@ Traffic Manager ID を構成した後で、ソース アプリの複製を新し
 ```powershell
 $destapp = New-AzWebApp -ResourceGroupName <Resource group name> -Name dest-webapp -Location "South Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -TrafficManagerProfileId $TMProfileID
 ```
+> [!NOTE]
+> "Traffic Manager のホスト名の SSL 検証が失敗しています" というエラーが表示された場合は、複製操作の実行時に powershell コマンドレットで -IgnoreCustomHostNames 属性を使用するか、ポータルを使用することをお勧めします。
 
 ## <a name="current-restrictions"></a>現在の制限
 アプリ複製に関する既知の制限を次に示します。

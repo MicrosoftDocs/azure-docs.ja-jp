@@ -8,14 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: 684aba561dc50b64dd7cc564cff8e55229ce1429
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.custom: devx-track-python
+ms.openlocfilehash: 38c2b3cdf40f1924a36ffd84d9dc5f9b2f7f319d
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80239037"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245708"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>クイック スタート:Anomaly Detector REST API および Python を使用し、時系列データ内の異常を検出する
 
@@ -30,16 +31,16 @@ ms.locfileid: "80239037"
 
 ## <a name="prerequisites"></a>前提条件
 
+- Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services)
+- Azure サブスクリプションを入手したら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="Anomaly Detector リソースを作成"  target="_blank">Anomaly Detector リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイするまで待ち、 **[リソースに移動]** ボタンをクリックします。
+    - 対象のアプリケーションを Anomaly Detector API に接続するには、作成したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
+    Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
 - [Python 2.x または 3.x](https://www.python.org/downloads/)
-- Anomaly Detector キーとエンドポイント
 - Python 用の[要求ライブラリ](https://pypi.org/project/requests/)
 
 - 時系列データ ポイントを含む JSON ファイル。 このクイック スタートのサンプル データは、[GitHub](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json) にあります。
 
-### <a name="create-an-anomaly-detector-resource"></a>Anomaly Detector リソースを作成する
-
-[!INCLUDE [anomaly-detector-resource-creation](../../../../includes/cognitive-services-anomaly-detector-resource-cli.md)]
-
+[!INCLUDE [anomaly-detector-environment-variables](../includes/environment-variables.md)]
 
 ## <a name="create-a-new-application"></a>新しいアプリケーションを作成する
 
@@ -84,7 +85,7 @@ ms.locfileid: "80239037"
 
 ## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>最新のデータ ポイントの異常状態を検出する
 
-1. `detect_latest()` というメソッドを作成して、時系列内の最新のデータ ポイントが異常であるかどうかを判断します。 自身のエンドポイント、URL、サブスクリプション キー、および JSON データを使用して、上記の `send_request()` メソッドを呼び出します。 
+1. `detect_latest()` というメソッドを作成して、時系列内の最新のデータ ポイントが異常であるかどうかを判断します。 自身のエンドポイント、URL、サブスクリプション キー、および JSON データを使用して、上記の `send_request()` メソッドを呼び出します。
 
 2. 結果で `json.dumps()` を呼び出してそれを書式設定し、コンソールに出力します。
 

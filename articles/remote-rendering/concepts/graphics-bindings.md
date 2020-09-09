@@ -9,12 +9,13 @@ ms.author: flborn
 ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
-ms.openlocfilehash: 4854d5ff9d697a2bf082a788c0e761a2152b0294
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f769036ac9e5a6945e7ecad30e021d377cabd358
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758709"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020271"
 ---
 # <a name="graphics-binding"></a>グラフィックスのバインド
 
@@ -27,7 +28,7 @@ ms.locfileid: "83758709"
 Unity では、`RemoteManagerUnity.InitializeManager` に渡される `RemoteUnityClientInit` 構造体によってバインド全体が処理されます。 グラフィックス モードを設定するには、`GraphicsApiType` フィールドを、選択したバインドに設定する必要があります。 このフィールドは、XRDevice が存在するかどうかに応じて自動的に設定されます。 この動作は、次の動作で手動でオーバーライドできます。
 
 * **HoloLens 2**: [Windows Mixed Reality](#windows-mixed-reality) のグラフィックス バインドが常に使用されます。
-* **フラットな UWP デスクトップ アプリ**:[シミュレーション](#simulation)が常に使用されます。 このモードを使用するには、「[チュートリアル: Unity プロジェクトをゼロから設定する](../tutorials/unity/project-setup.md)」の手順に従ってください。
+* **フラットな UWP デスクトップ アプリ**:[シミュレーション](#simulation)が常に使用されます。
 * **Unity エディター**:WMR VR ヘッドセットが接続されていない限り、[シミュレーション](#simulation)が常に使用されます。この場合、ARR は無効になり、アプリケーションの ARR 関連以外の部分をデバッグできます。 [Holographic Remoting](../how-tos/unity/holographic-remoting.md) もご覧ください。
 
 Unity の他の唯一の関連部分は[基本的なバインド](#access)にアクセスしているため、以下の他のすべてのセクションはスキップできます。
@@ -233,4 +234,4 @@ else
 
 ## <a name="next-steps"></a>次のステップ
 
-* [チュートリアル:Unity プロジェクトをゼロから設定する](../tutorials/unity/project-setup.md)
+* [チュートリアル:リモートでレンダリングされたモデルの表示](../tutorials/unity/view-remote-models/view-remote-models.md)

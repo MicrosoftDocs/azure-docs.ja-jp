@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory と webMethods Integration Suite の統合 | Microsoft Docs
 description: Azure Active Directory と webMethods Integration Suite の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 97261535-7a2d-4d73-94c8-38116b8a776e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 30fc55cb608189e1be82c2b28393c5e242e262fd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1a7931f524d7f6cb1f98a582bed65c4dd06f9c58
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73160866"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88523870"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-webmethods-integration-suite"></a>チュートリアル:Azure Active Directory と webMethods Integration Suite の統合
 
@@ -109,19 +105,16 @@ webMethods Integration Suite で Azure AD シングル サインオンを構成�
 
     a. **[識別子]** ボックスに、次の形式で URL を入力します。
 
-    | |
-    |--|
-    | `<SUBDOMAIN>.webmethodscloud.com` |
-    | `<SUBDOMAIN>.webmethodscloud.eu` |
-    | `<SUBDOMAIN>.webmethodscloud.de` |
+    - `<SUBDOMAIN>.webmethodscloud.com`
+    - `<SUBDOMAIN>.webmethodscloud.eu`
+    - `<SUBDOMAIN>.webmethodscloud.de`
 
     b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
 
-    | |
-    |--|
-    | `https://<SUBDOMAIN>.webmethodscloud.com/integration/live/saml/ssoResponse` |
-    | `https://<SUBDOMAIN>.webmethodscloud.eu/integration/live/saml/ssoResponse` |
-    | `https://<SUBDOMAIN>.webmethodscloud.de/integration/live/saml/ssoResponse` |
+
+    - `https://<SUBDOMAIN>.webmethodscloud.com/integration/live/saml/ssoResponse`
+    - `https://<SUBDOMAIN>.webmethodscloud.eu/integration/live/saml/ssoResponse`
+    - `https://<SUBDOMAIN>.webmethodscloud.de/integration/live/saml/ssoResponse`
 
     c. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -129,11 +122,9 @@ webMethods Integration Suite で Azure AD シングル サインオンを構成�
 
     d. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
 
-    | |
-    |--|
-    | `https://<SUBDOMAIN>.webmethodscloud.com/integration/live/saml/ssoRequest` |
-    | `https://<SUBDOMAIN>.webmethodscloud.eu/integration/live/saml/ssoRequest` |
-    | `https://<SUBDOMAIN>.webmethodscloud.de/integration/live/saml/ssoRequest` |
+    - `https://<SUBDOMAIN>.webmethodscloud.com/integration/live/saml/ssoRequest`
+    - `https://<SUBDOMAIN>.webmethodscloud.eu/integration/live/saml/ssoRequest`
+    - `https://<SUBDOMAIN>.webmethodscloud.de/integration/live/saml/ssoRequest`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[webMethods Integration Suite クライアント サポート チーム](https://empower.softwareag.com/)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -144,19 +135,15 @@ webMethods Integration Suite で Azure AD シングル サインオンを構成�
 
     a. **[識別子]** ボックスに、次の形式で URL を入力します。
 
-    | |
-    |--|
-    | `<SUBDOMAIN>.webmethodscloud.com` |
-    | `<SUBDOMAIN>.webmethodscloud.eu` |
-    | `<SUBDOMAIN>.webmethodscloud.de` |
+    - `<SUBDOMAIN>.webmethodscloud.com`
+    - `<SUBDOMAIN>.webmethodscloud.eu`
+    - `<SUBDOMAIN>.webmethodscloud.de`
 
     b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
 
-    | |
-    |--|
-    | `https://<SUBDOMAIN>.webmethodscloud.com/umc/rest/saml/initsso` |
-    | `https://<SUBDOMAIN>.webmethodscloud.eu/umc/rest/saml/initsso` |
-    | `https://<SUBDOMAIN>.webmethodscloud.de/umc/rest/saml/initsso` |
+    - `https://<SUBDOMAIN>.webmethodscloud.com/umc/rest/saml/initsso`
+    - `https://<SUBDOMAIN>.webmethodscloud.eu/umc/rest/saml/initsso`
+    - `https://<SUBDOMAIN>.webmethodscloud.de/umc/rest/saml/initsso`
 
     c. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -164,11 +151,9 @@ webMethods Integration Suite で Azure AD シングル サインオンを構成�
 
     d. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
 
-    | |
-    |--|
-    | `https://api.webmethodscloud.com/umc/rest/saml/initsso/?tenant=<TENANTID>` |
-    | `https://api.webmethodscloud.eu/umc/rest/saml/initsso/?tenant=<TENANTID>` |
-    | `https://api.webmethodscloud.de/umc/rest/saml/initsso/?tenant=<TENANTID>` |
+    - `https://api.webmethodscloud.com/umc/rest/saml/initsso/?tenant=<TENANTID>`
+    - `https://api.webmethodscloud.eu/umc/rest/saml/initsso/?tenant=<TENANTID>`
+    - `https://api.webmethodscloud.de/umc/rest/saml/initsso/?tenant=<TENANTID>`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[webMethods Integration Suite クライアント サポート チーム](https://empower.softwareag.com/)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

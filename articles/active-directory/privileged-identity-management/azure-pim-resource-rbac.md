@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
 ms.date: 01/10/2020
 ms.author: curtand
 ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bf65ad595fb1ab70eb6613b6d54ac2a4f69141e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 45144f64789a19390984c3f9f6a660e3c3300215
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78329618"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84743152"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure リソース ロールのアクティビティおよび監査履歴を表示する
 

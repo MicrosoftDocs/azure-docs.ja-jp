@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: rajanaki
-ms.openlocfilehash: 0a3e5c922009353e4ba9ccab12cf70ea2b5992da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1b3fdd93902709541f4a22e652c34973158ad9c7
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73961474"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132445"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Hyper-V から Azure へのレプリケーションおよびフェールオーバーをトラブルシューティングする
 
@@ -28,12 +28,12 @@ Hyper-V VM の保護を有効にしたときに問題が発生する場合は、
 3. Hyper-V Virtual Machine Management サービスが Hyper-V ホスト上で実行されていることを確認します。
 4. VM への Hyper-V-VMMS\Admin サインインに表示される問題を確認します。 このログは **Applications and Services Logs** > **Microsoft** > **Windows** にあります。
 5. ゲスト VM 上で、WMI が有効になっており、アクセス可能であることを確認します。
-   - 基本的な WMI テスト[について学習します](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/)。
+   - 基本的な WMI テスト[について学習します](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf)。
    - WMI を[トラブルシューティングします](https://aka.ms/WMiTshooting)。
-   - WMI スクリプトおよびサービスに関する問題を[トラブルシューティングします](https://technet.microsoft.com/library/ff406382.aspx#H22)。
+   - WMI スクリプトおよびサービスに関する問題を[トラブルシューティングします](/previous-versions/tn-archive/ff406382(v=msdn.10)#H22)。
 6. ゲスト VM 上で、最新バージョンの Integration Services が実行されていることを確認します。
-    - 最新バージョンを使用していることを[確認します](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)。
-    - Integration Services を最新の状態に[維持します](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date)。
+    - 最新バージョンを使用していることを[確認します](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)。
+    - Integration Services を最新の状態に[維持します](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date)。
     
 ## <a name="replication-issues"></a>レプリケーションの問題
 
@@ -66,7 +66,7 @@ Hyper-V VM の保護を有効にしたときに問題が発生する場合は、
 3. このプロファイラーを実行した後、[帯域幅](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input)と[ストレージ](hyper-v-deployment-planner-analyze-report.md#vm-storage-placement-recommendation)の推奨事項に従います。
 4. [データ チャーンの制限](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)を確認します。 VM 上のデータ チャーンが高いことが確認できた場合は、次を実行します。
    - VM が再同期にマークされているかどうかを確認します。
-   - [次の手順](https://blogs.technet.microsoft.com/virtualization/2014/02/02/hyper-v-replica-debugging-why-are-very-large-log-files-generated/)に従って、チャーンのソースを調査します。
+   - [次の手順](https://techcommunity.microsoft.com/t5/virtualization/bg-p/Virtualization)に従って、チャーンのソースを調査します。
    - チャーンは、HRL ログ ファイルが使用可能なディスク容量の 50% を超えると発生する場合があります。 これが問題である場合は、問題が発生しているすべての VM により多くの記憶域スペースをプロビジョニングします。
    - レプリケーションが一時停止されていないことを確認します。 一時停止されていると、hrl ファイルへの変更の書き込みが続行されるため、そのサイズの増加につながる場合があります。
  
@@ -115,9 +115,10 @@ Hyper-V VM の保護を有効にしたときに問題が発生する場合は、
         - カウンター:"Write Bytes / Sec"</br>
         - このデータ チャーン レートは、VM またはそのアプリがどれだけビジー状態にあるかに応じて、上昇するか、または高いレベルにとどまります。
         - ソース ディスクの平均データ チャーンは、Site Recovery の標準ストレージで 2 MB/秒です。 [詳細情報](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)
-    - さらに、[ストレージのスケーラビリティ ターゲットを確認](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets)できます。
-8. [Deployment Planner](hyper-v-deployment-planner-run.md) を実行します。
-9. [ネットワーク](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input)と[ストレージ](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input)の推奨事項を確認してください。
+    - さらに、[ストレージのスケーラビリティ ターゲットを確認](../storage/common/scalability-targets-standard-account.md)できます。
+8. Linux ベースのサーバーを使用する場合は、アプリの整合性が有効になっていることを確認してください。 [詳細情報](./site-recovery-faq.md#replication)
+9. [Deployment Planner](hyper-v-deployment-planner-run.md) を実行します。
+10. [ネットワーク](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input)と[ストレージ](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input)の推奨事項を確認してください。
 
 
 ### <a name="vss-failing-inside-the-hyper-v-host"></a>Hyper-V ホスト内で VSS が失敗する
@@ -129,7 +130,7 @@ Hyper-V VM の保護を有効にしたときに問題が発生する場合は、
 
 2. VM の VSS スナップショットを生成するには、その VM に Hyper-V Integration Services がインストールされており、Backup (VSS) Integration Services が有効になっていることを確認します。
     - ゲスト上で Integration Services VSS サービス/デーモンが実行され、 **[OK]** の状態になっていることを確認します。
-    - これは、Hyper-V ホスト上の管理者特権での PowerShell セッションからコマンド **Get-VMIntegrationService -VMName\<VMName>-Name VSS** を使用して確認できます。この情報はまた、ゲスト VM にログインすることによっても取得できます。 [詳細については、こちらを参照してください](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)。
+    - これは、Hyper-V ホスト上の管理者特権での PowerShell セッションからコマンド **Get-VMIntegrationService -VMName\<VMName>-Name VSS** を使用して確認できます。この情報はまた、ゲスト VM にログインすることによっても取得できます。 [詳細については、こちらを参照してください](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)。
     - VM 上の Backup/VSS Integration Services が実行され、正常な状態にあることを確認します。 そうでない場合は、次のサービス、および Hyper-V ホスト サーバー上の Hyper-V ボリューム シャドウ コピー リクエスター サービスを再起動します。
 
 ### <a name="common-errors"></a>一般的なエラー
@@ -137,7 +138,7 @@ Hyper-V VM の保護を有効にしたときに問題が発生する場合は、
 **エラー コード** | **メッセージ** | **詳細**
 --- | --- | ---
 **0x800700EA** | "Hyper-V は仮想マシンの VSS スナップショット セットを生成できませんでした:詳細なデータを入手できます。 (0x800700EA)。 バックアップ操作が進行中の場合は、VSS スナップショット セットの生成が失敗する可能性があります。<br/><br/> 仮想マシンのレプリケーション操作が失敗しました:詳細なデータを入手できます。" | VM でダイナミック ディスクが有効になっているかどうかを確認します。 これはサポートされていません。
-**0x80070032** | "Hyper-V ボリューム シャドウ コピー リクエスタは、バージョンが Hyper-V で予測されたバージョンに一致しないため、仮想マシン <./VMname> に接続できませんでした | 最新の Windows 更新プログラムがインストールされているかどうかを確認します。<br/><br/> 最新バージョンの Integration Services への[アップグレード](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date)。
+**0x80070032** | "Hyper-V ボリューム シャドウ コピー リクエスタは、バージョンが Hyper-V で予測されたバージョンに一致しないため、仮想マシン <./VMname> に接続できませんでした | 最新の Windows 更新プログラムがインストールされているかどうかを確認します。<br/><br/> 最新バージョンの Integration Services への[アップグレード](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date)。
 
 
 
@@ -169,4 +170,3 @@ Hyper-V レプリケーション イベントはすべて、**Applications and S
 
 -   VMM の場合は、[サポート診断プラットフォーム (SDP) ツール](https://social.technet.microsoft.com/wiki/contents/articles/28198.asr-data-collection-and-analysis-using-the-vmm-support-diagnostics-platform-sdp-tool.aspx)を使用して Site Recovery のログ収集を実行します。
 -   VMM なしの Hyper-V の場合は、[このツールをダウンロードし](https://dcupload.microsoft.com/tools/win7files/DIAG_ASRHyperV_global.DiagCab)、Hyper-V ホスト上でそれを実行してログを収集します。
-

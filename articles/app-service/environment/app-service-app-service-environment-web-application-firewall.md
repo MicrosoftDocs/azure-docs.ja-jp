@@ -7,17 +7,17 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 33fd0b6a3a07fa4fbc5448a97ca93c75a3e239d5
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e40a42afc99d505dc48794d5ad919e4d682b7070
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684217"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961841"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>App Service 環境の Web アプリケーション ファイアウォール (WAF) を構成する
 ## <a name="overview"></a>概要
 
-Web アプリケーション ファイアウォール (WAF) は、着信する Web トラフィックを検査して、SQL インジェクション、クロスサイト スクリプティング、マルウェアのアップロード、アプリケーション DDoS、およびその他の攻撃をブロックすることにより、Web アプリケーションのセキュリティを確保するのに役立ちます。 さらに、データ損失防止 (DLP) のためにバックエンド Web サーバーからの応答を検査することもできます。 App Service 環境が提供する分離と追加スケーリングと組み合わせることで、悪意のある要求と大量のトラフィックに対処する必要がある、ビジネスに不可欠な Web アプリケーションをホストする理想的な環境が用意されます。 Azure では、[Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) で WAF 機能が提供されます。  App Service Environment と Application Gateway を統合する方法については、[ILB ASE と Application Gateway の統合](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway)に関するドキュメントを参照してください。
+Web アプリケーション ファイアウォール (WAF) は、着信する Web トラフィックを検査して、SQL インジェクション、クロスサイト スクリプティング、マルウェアのアップロード、アプリケーション DDoS、およびその他の攻撃をブロックすることにより、Web アプリケーションのセキュリティを確保するのに役立ちます。 さらに、データ損失防止 (DLP) のためにバックエンド Web サーバーからの応答を検査することもできます。 App Service 環境が提供する分離と追加スケーリングと組み合わせることで、悪意のある要求と大量のトラフィックに対処する必要がある、ビジネスに不可欠な Web アプリケーションをホストする理想的な環境が用意されます。 Azure では、[Application Gateway](../../application-gateway/overview.md) で WAF 機能が提供されます。  App Service Environment と Application Gateway を統合する方法については、[ILB ASE と Application Gateway の統合](./integrate-with-application-gateway.md)に関するドキュメントを参照してください。
 
 Azure Application Gateway に加えて、[Azure 用 Barracuda WAF](https://www.barracuda.com/programs/azure) のように [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf?tab=PlansAndPrice) で入手できるマーケットプレース オプションがいくつかあります。 このドキュメントの残りの部分では、App Service Environment と Barracuda WAF デバイスを統合する方法について説明します。
 
@@ -26,7 +26,7 @@ Azure Application Gateway に加えて、[Azure 用 Barracuda WAF](https://www.b
 ## <a name="setup"></a>セットアップ
 このドキュメントでは、複数の負荷分散されたBarracuda WAF インスタンスの背後に App Service 環境を構成して、WAF からのトラフィックのみが App Service 環境に到着でき、DMZ からアクセスできないようにします。 さらに、Azure Traffic Manager を Barracuda WAF インスタンスの前に配置して、Azure のデータセンターとリージョン全体で負荷が分散されるようにします。 設定の概要図は次のようになります。
 
-![Architecture][Architecture] 
+![アーキテクチャ][Architecture] 
 
 > [!NOTE]
 > [App Service 環境での ILB のサポート](app-service-environment-with-internal-load-balancer.md)の導入により、ASE を DMZ からアクセスできないように設定し、プライベート ネットワークでのみ使用できるように構成することができます。 
@@ -34,7 +34,7 @@ Azure Application Gateway に加えて、[Azure 用 Barracuda WAF](https://www.b
 > 
 
 ## <a name="configuring-your-app-service-environment"></a>App Service 環境の構成
-App Service 環境の構成については、このテーマに関する[ドキュメント](app-service-web-how-to-create-an-app-service-environment.md)を参照してください。 App Service Environment を作成した後、その環境の中に Web Apps、API Apps、[Mobile Apps](../../app-service-mobile/app-service-mobile-value-prop.md) を作成できます。これらはすべて、次のセクションで構成する WAF の背後で保護されます。
+App Service 環境の構成については、このテーマに関する[ドキュメント](app-service-web-how-to-create-an-app-service-environment.md)を参照してください。 App Service Environment を作成した後、その環境の中に Web Apps、API Apps、[Mobile Apps](/previous-versions/azure/app-service-mobile/app-service-mobile-value-prop) を作成できます。これらはすべて、次のセクションで構成する WAF の背後で保護されます。
 
 ## <a name="configuring-your-barracuda-waf-cloud-service"></a>Barracuda WAF クラウド サービスを構成する
 Barracuda には、その WAF を Azure の仮想マシンにデプロイすることに関する [詳細な記事](https://campus.barracuda.com/product/webapplicationfirewall/article/WAF/DeployWAFInAzure) があります。 ただし、これらの手順に従うときは、冗長性を持たせ、単一障害点の発生を防ぐために、少なくとも 2 つの WAF インスタンスの VM を同じクラウド サービスにデプロイします。
@@ -89,9 +89,11 @@ Traffic Manager の ping を WAF からアプリケーションに転送する�
 ![Web サイトの変換][WebsiteTranslations]
 
 ## <a name="securing-traffic-to-app-service-environment-using-network-security-groups-nsg"></a>App Service 環境へのトラフィックをネットワーク セキュリティ グループ (NSG) を使用して保護する
-App Service 環境へのトラフィックを、クラウド サービスの VIP アドレスを使用して WAF からのトラフィックだけに制限する方法の詳細については、 [着信トラフィックの制御に関するドキュメント](app-service-app-service-environment-control-inbound-traffic.md) を参照してください。 このタスクを TCP ポート 80 に対して実行するサンプル Powershell コマンドを次に示します。
+App Service 環境へのトラフィックを、クラウド サービスの VIP アドレスを使用して WAF からのトラフィックだけに制限する方法の詳細については、 [着信トラフィックの制御に関するドキュメント](app-service-app-service-environment-control-inbound-traffic.md) を参照してください。 このタスクを TCP ポート 80 に対して実行するサンプル PowerShell コマンドを次に示します。
 
-    Get-AzureNetworkSecurityGroup -Name "RestrictWestUSAppAccess" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP Barracuda" -Type Inbound -Priority 201 -Action Allow -SourceAddressPrefix '191.0.0.1'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
+```azurepowershell-interactive
+Get-AzureNetworkSecurityGroup -Name "RestrictWestUSAppAccess" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP Barracuda" -Type Inbound -Priority 201 -Action Allow -SourceAddressPrefix '191.0.0.1'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
+```
 
 SourceAddressPrefix を、WAF のクラウド サービスの仮想 IP アドレス (VIP) に置き換えます。
 

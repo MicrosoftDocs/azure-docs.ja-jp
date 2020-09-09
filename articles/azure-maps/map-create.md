@@ -1,20 +1,20 @@
 ---
 title: Azure Maps を使用してマップを作成する | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps Web SDK を使用して、Web ページにマップをレンダリングする方法について説明します。
-author: Philmea
-ms.author: philmea
+description: Azure Maps Web SDK を使用して Web ページにマップを追加する方法について説明します。 アニメーション、スタイル、カメラ、サービス、ユーザー操作のオプションについて説明します。
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen
-ms.openlocfilehash: 97eb1ebb61e5ff78ed918fded8107f5775b533c2
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: 9566bcc329b4d148fe9454fe70b556a9010fc4ac
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124025"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036472"
 ---
 # <a name="create-a-map"></a>マップを作成する
 
@@ -127,6 +127,47 @@ map.setCamera({
 
 <iframe height='500' scrolling='no' title='マップ ビューをアニメーション化する' src='//codepen.io/azuremaps/embed/WayvbO/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/WayvbO/'>Animate Map View</a>」Pen を表示します。
 </iframe>
+
+## <a name="request-transforms"></a>要求の変換
+
+マップ コントロールによって行われた HTTP 要求を変更できると便利な場合があります。 次に例を示します。
+
+- タイル要求にヘッダーを追加する。 これは多くの場合、パスワードで保護されたサービスに対して行われます。
+- プロキシ サービスを介して要求を実行するように URL を変更する。
+
+マップの[サービス オプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.serviceoptions)には `transformRequest` があります。これを使用すると、マップによって行われるすべての要求を、それらが行われる前に変更することができます。 `transformRequest` オプションは、2 つのパラメーター (文字列の URL と、要求の使用目的を示すリソースの種類の文字列) を受け取る関数です。 この関数は、[RequestParameters](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.requestparameters) の結果を返す必要があります。
+
+```JavaScript
+transformRequest: (url: string, resourceType: string) => RequestParameters
+```
+
+次の例では、これを使用して、ユーザー名とパスワードをヘッダーとして要求に追加することにより、`https://example.com` サイトへのすべての要求を変更する方法を示します。
+
+```JavaScript
+var map = new atlas.Map('myMap', {
+    transformRequest: function (url, resourceType) {
+        //Check to see if the request is to the specified endpoint.
+        if (url.indexOf('https://examples.com') > -1) {
+            //Add custom headers to the request.
+            return {
+                url: url,
+                header: {
+                    username: 'myUsername',
+                    password: 'myPassword'
+                }
+            };
+        }
+
+        //Return the URL unchanged by default.
+        return { url: url };
+    },
+
+    authOptions: {
+        authType: 'subscriptionKey',
+        subscriptionKey: '<Your Azure Maps Key>'
+    }
+});
+```
 
 ## <a name="try-out-the-code"></a>コードを実行する
 

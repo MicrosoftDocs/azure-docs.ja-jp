@@ -1,6 +1,6 @@
 ---
 title: Azure Data Lake Storage Gen2 の概要
-description: Azure Data Lake Storage Gen2 の概要について説明します
+description: Azure Data Lake Storage Gen2 の概要を読みます。 主な機能について説明します。 サポートされている BLOB ストレージの機能、Azure サービスの統合、およびプラットフォームを確認します。
 author: normesta
 ms.service: storage
 ms.topic: overview
@@ -8,12 +8,12 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 2f920e29fafdc55478e0e2c16d683bd1c3bc81d8
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: d85b0cd2f9fa7eb81f5c39bd5d163188e3cd7106
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78942929"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835767"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 の概要
 
@@ -37,7 +37,7 @@ Data Lake Storage Gen2 は、低コストの [Azure Blob Storage](storage-blobs-
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Data Lake Storage Gen2 の主な機能
 
--   **Hadoop と互換性のあるアクセス**:Data Lake Storage Gen2 を使用すると、[Hadoop 分散ファイル システム (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) の場合と同様にデータの管理およびアクセスを行うことができます。 新しい [ABFS ドライバー](data-lake-storage-abfs-driver.md)は、[Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index) *、* [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index)、[SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/) など、すべての Apache Hadoop 環境内で、Data Lake Storage Gen2 に格納されているデータにアクセスするために使用できます。
+-   **Hadoop と互換性のあるアクセス**:Data Lake Storage Gen2 を使用すると、[Hadoop 分散ファイル システム (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) の場合と同様にデータの管理およびアクセスを行うことができます。 新しい [ABFS ドライバー](data-lake-storage-abfs-driver.md)は、[Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index) *、* [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index)、[Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics) など、すべての Apache Hadoop 環境内で、Data Lake Storage Gen2 に格納されているデータにアクセスするために使用できます。
 
 -   **POSIX アクセス許可のスーパーセット**:Data Lake Gen2 のセキュリティ モデルは、ACL および POSIX のアクセス許可に加え、Data Lake Storage Gen2 固有の追加設定をサポートしています。 設定は、ストレージ エクスプローラーだけでなく、Hive や Spark などのフレームワークを使用して構成できます。
 

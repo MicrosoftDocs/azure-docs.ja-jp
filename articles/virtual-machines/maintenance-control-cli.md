@@ -3,16 +3,16 @@ title: CLI を使用した Azure 仮想マシンのメンテナンス コント�
 description: メンテナンス コントロールと CLI を使用して、ご利用の Azure VM にメンテナンスを適用するタイミングを制御する方法について説明します。
 author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 4843b4769e31748fd5f624005792c604db18f11e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56f9873828e2f93008498beed986827a01872bf1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137503"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84675861"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>メンテナンス コントロールと Azure CLI を使用して更新を制御する
 

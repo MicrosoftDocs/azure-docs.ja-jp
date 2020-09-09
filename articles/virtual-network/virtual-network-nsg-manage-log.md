@@ -6,16 +6,16 @@ services: virtual-network
 author: KumudD
 manager: mtillman
 ms.service: virtual-network
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: cfc1b933abbbc3736145ff3c6a600f48260538d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c56b5ac1c1aa6fa5894d1aedcb94fe4694c2db28
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133818"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84696033"
 ---
 # <a name="resource-logging-for-a-network-security-group"></a>ネットワーク セキュリティ グループのリソース ログ
 

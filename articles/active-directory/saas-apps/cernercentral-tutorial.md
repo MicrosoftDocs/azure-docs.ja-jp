@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Cerner Central の統合 | Microsoft Docs'
 description: Azure Active Directory と Cerner Central の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d2bc549d-d286-4679-854e-bb67c62b0475
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d530ce802b6735ffe0b45abdc97fe99a1a7e619b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9e6d598176bdd36b3b932161e944bc26059a5b80
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67105768"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88530125"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cerner-central"></a>チュートリアル: Azure Active Directory と Cerner Central の統合
 
@@ -109,17 +104,17 @@ Cerner Central で Azure AD シングル サインオンを構成するには、
 
     a. **[識別子]** ボックスに、次の形式で URL を入力します。
 
-    | |
-    |--|
-    | `https://<instancename>.cernercentral.com/session-api/protocol/saml2/metadata` |
-    | `https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/metadata` |
+    ```http
+    https://<instancename>.cernercentral.com/session-api/protocol/saml2/metadata
+    https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/metadata
+    ```
 
     b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
 
-    | |
-    |--|
-    | `https://<instancename>.cernercentral.com/session-api/protocol/saml2/sso` |
-    | `https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/sso` |
+    ```http
+    https://<instancename>.cernercentral.com/session-api/protocol/saml2/sso
+    https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/sso
+    ```
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Cerner Central クライアント サポート チーム](mailto:SISupport@cbre.com)に問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

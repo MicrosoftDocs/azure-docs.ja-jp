@@ -3,12 +3,13 @@ title: Azure CLI サンプル スクリプト - Batch アカウントの作成 -
 description: このスクリプトでは、ユーザー サブスクリプション モードで Azure Batch アカウントを作成します。 このアカウントを使うと、サブスクリプションにコンピューティング ノードを割り当てられます。
 ms.topic: sample
 ms.date: 01/29/2018
-ms.openlocfilehash: 9f3919574dd7dcbe932c71dfcea2ac52ec906c6c
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 1c60b9c3de5f2370d7bbc557d36db61d23d32ccf
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681893"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494402"
 ---
 # <a name="cli-example-create-a-batch-account-in-user-subscription-mode"></a>CLI の例: ユーザー サブスクリプション モードでの Batch アカウントの作成
 
@@ -38,8 +39,8 @@ az group delete --name myResourceGroup
 |---|---|
 | [az role assignment create](/cli/azure/role) | ユーザー、グループ、またはサービス プリンシパルに対して、新しいロール割り当てを作成します。 |
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az keyvault create](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-create) | Key Vault を作成します。 |
-| [az keyvault set-policy](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-set-policy) | 指定した Key Vault のセキュリティ ポリシーを更新します。 |
+| [az keyvault create](/cli/azure/keyvault#az-keyvault-create) | Key Vault を作成します。 |
+| [az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy) | 指定した Key Vault のセキュリティ ポリシーを更新します。 |
 | [az batch account create](/cli/azure/batch/account#az-batch-account-create) | Batch アカウントを作成します。  |
 | [az batch account login](/cli/azure/batch/account#az-batch-account-login) | さらに CLI と対話できるように、指定された Batch アカウントを認証します。  |
 | [az group delete](/cli/azure/group#az-group-delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |

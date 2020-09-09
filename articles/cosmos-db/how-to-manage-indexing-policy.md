@@ -1,17 +1,18 @@
 ---
 title: Azure Cosmos DB でインデックス作成ポリシーを管理する
 description: インデックス作成ポリシーを管理して、インデックス作成に対してプロパティを含めるか除外する方法、さまざまな Azure Cosmos DB SDK を使用してインデックス作成を定義する方法について説明します。
-author: ThomasWeiss
+author: timsander1
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 12/02/2019
-ms.author: thweiss
-ms.openlocfilehash: 58a1ee13afa76b152723cb71d4037f9c31cc8d4e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.date: 08/04/2020
+ms.author: tisande
+ms.custom: devx-track-python, devx-track-javascript, devx-track-azurecli, devx-track-csharp
+ms.openlocfilehash: 2b1fe86c09349a25c8ebfda38ffc3ec352fdaba3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227347"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019557"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でインデックス作成ポリシーを管理する
 
@@ -137,7 +138,7 @@ Azure Cosmos DB では、コンテナーごとに定義された[インデック
     }
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > 一般的に、モデルに追加される新しいプロパティのインデックスを Azure Cosmos DB がプロアクティブに作成できるよう、**オプトアウト** インデックス作成ポリシーの使用をお勧めします。
 
 ### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>特定のプロパティ パスに対してのみ空間インデックスを使用する
@@ -173,6 +174,9 @@ Azure Cosmos DB では、コンテナーごとに定義された[インデック
 ## <a name="composite-indexing-policy-examples"></a>複合インデックス作成ポリシーの例
 
 個々のプロパティのパスを含めたり除外したりするほかに、複合インデックスを指定することもできます。 複数のプロパティを対象とする 1 つの `ORDER BY` 句を使用したクエリを実行したい場合は、これらのプロパティに対する[複合インデックス](index-policy.md#composite-indexes)が必要になります。 さらに、複合インデックスには、さまざまなプロパティにフィルターや ORDER BY 句が与えられているクエリでパフォーマンス上の長所があります。
+
+> [!NOTE]
+> 複合パスではスカラー値のインデックスのみが作成されるため、そのパスには `/?` が暗黙的に含まれています。 複合パスでは `/*` ワイルドカードはサポートされません。 複合パスに `/?` または `/*` を指定しないでください。
 
 ### <a name="composite-index-defined-for-name-asc-age-desc"></a>(name asc, age desc) に対して定義された複合インデックス:
 
@@ -340,7 +344,7 @@ Azure Cosmos DB では、インデックス作成ポリシーは下のいずれ�
 [インデックス作成ポリシーの更新](index-policy.md#modifying-the-indexing-policy)により、インデックスの変換がトリガーされます。 この変換の進行状況は、SDK から追跡することもできます。
 
 > [!NOTE]
-> インデックス作成ポリシーを更新するとき、Azure Cosmos DB への書き込みが中断されることはありません。 インデックスの再作成中、インデックスが更新されているとき、クエリから部分的な結果が返されることがあります。
+> インデックス作成ポリシーを更新するとき、Azure Cosmos DB への書き込みが中断されることはありません。 [インデックスの変換](indexing-policy.md#modifying-the-indexing-policy)について、さらに学習してください
 
 ## <a name="use-the-azure-portal"></a>Azure ポータルの使用
 
@@ -358,7 +362,7 @@ Azure Cosmos のコンテナーには、そのインデックス作成ポリシ�
 
 1. 完了したら、 **[保存]** をクリックします。
 
-![Azure portal を使用してインデックス作成を管理する](./media/how-to-manage-indexing-policy/indexing-policy-portal.png)
+:::image type="content" source="./media/how-to-manage-indexing-policy/indexing-policy-portal.png" alt-text="Azure portal を使用してインデックス作成を管理する":::
 
 ## <a name="use-the-azure-cli"></a>Azure CLI の使用
 
@@ -368,7 +372,9 @@ Azure Cosmos のコンテナーには、そのインデックス作成ポリシ�
 
 カスタム インデックス作成ポリシーを使用したコンテナーの作成の詳細については、[Powershell を使用したカスタム インデックス作成ポリシーでのコンテナーの作成](manage-with-powershell.md#create-container-custom-index)に関する説明を参照してください。
 
-## <a name="use-the-net-sdk-v2"></a>.NET SDK V2 の使用
+## <a name="use-the-net-sdk"></a><a id="dotnet-sdk"></a> .NET SDK の使用
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
 [.NetSDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) の `DocumentCollection` オブジェクトでは、`IndexingMode` を変更し、`IncludedPaths` および `ExcludedPaths` を追加または削除できる `IndexingPolicy` プロパティを公開しています。
 
@@ -398,7 +404,7 @@ ResourceResponse<DocumentCollection> container = await client.ReadDocumentCollec
 long indexTransformationProgress = container.IndexTransformationProgress;
 ```
 
-## <a name="use-the-net-sdk-v3"></a>.NET SDK V3 の使用
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
 [.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) の `ContainerProperties` オブジェクト (その使用法については[こちらのクイックスタート](create-sql-api-dotnet.md)を参照) では `IndexingPolicy` プロパティを公開しています。これを使用すると、`IndexingMode` を変更したり `IncludedPaths` や `ExcludedPaths` を追加または削除したりすることができます。
 
@@ -454,6 +460,7 @@ await client.GetDatabase("database").DefineContainer(name: "container", partitio
     .Attach()
     .CreateIfNotExistsAsync();
 ```
+---
 
 ## <a name="use-the-java-sdk"></a>Java SDK の使用
 
@@ -607,7 +614,9 @@ const containerResponse = await client.database('database').container('container
 const indexTransformationProgress = replaceResponse.headers['x-ms-documentdb-collection-index-transformation-progress'];
 ```
 
-## <a name="use-the-python-sdk-v3"></a>Python SDK V3 の使用
+## <a name="use-the-python-sdk"></a>Python SDK の使用
+
+# <a name="python-sdk-v3"></a>[Python SDK V3](#tab/pythonv3)
 
 [Python SDK V3](https://pypi.org/project/azure-cosmos/) (その使用法については[こちらのクイック スタート](create-sql-api-python.md)を参照) を使用する場合、コンテナーの構成がディクショナリとして管理されます。 このディクショナリから、インデックス作成ポリシーとそのすべての属性にアクセスすることができます。
 
@@ -671,7 +680,7 @@ container['indexingPolicy']['compositeIndexes'] = [
 response = client.ReplaceContainer(containerPath, container)
 ```
 
-## <a name="use-the-python-sdk-v4"></a>Python SDK V4 の使用
+# <a name="python-sdk-v4"></a>[Python SDK V4](#tab/pythonv4)
 
 [Python SDK V4](https://pypi.org/project/azure-cosmos/) を使用する場合、コンテナーの構成はディクショナリとして管理されます。 このディクショナリから、インデックス作成ポリシーとそのすべての属性にアクセスすることができます。
 
@@ -736,6 +745,7 @@ indexingPolicy['compositeIndexes'] = [
 ```python
 response = database_client.replace_container(container_client, container['partitionKey'], indexingPolicy)
 ```
+---
 
 ## <a name="next-steps"></a>次のステップ
 

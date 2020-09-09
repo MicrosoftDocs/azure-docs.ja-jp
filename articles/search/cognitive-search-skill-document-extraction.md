@@ -6,14 +6,14 @@ manager: nitinme
 author: careyjmac
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 06/17/2020
 ms.author: chalton
-ms.openlocfilehash: 0f67caad03c4ebd1cf8f3721f377d8362219016a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f209be383e445e3b0c011e0bfb4266a191a8d931
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76837733"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080868"
 ---
 # <a name="document-extraction-cognitive-skill"></a>ドキュメント抽出の認知技術
 
@@ -25,7 +25,8 @@ ms.locfileid: "76837733"
 > [!NOTE]
 > 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、およびインデックス作成のドキュメント解析ステージの一部としての画像抽出に対しては、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
 >
-> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格については、[価格のページ](https://go.microsoft.com/fwlink/?linkid=2042400)で説明されています。
+> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格については、[価格のページ](https://azure.microsoft.com/pricing/details/search/)で説明されています。
+
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.DocumentExtractionSkill
 
@@ -51,7 +52,7 @@ Microsoft.Skills.Util.DocumentExtractionSkill
 
 | 入力名     | 説明 |
 |--------------------|-------------|
-| file_data | コンテンツを抽出する必要があるファイル。 |
+| `file_data` | コンテンツを抽出する必要があるファイル。 |
 
 "file_data" の入力では、次のように定義されたオブジェクトを指定する必要があります。
 
@@ -74,8 +75,8 @@ Microsoft.Skills.Util.DocumentExtractionSkill
 
 | 出力名    | 説明 |
 |--------------|-------------|
-| content | ドキュメントのテキスト コンテンツ。 |
-| normalized_images | `imageAction` を `none` 以外の値に設定すると、新しい *normalized_images* フィールドに画像の配列が格納されます。 各画像の出力形式の詳細については、[画像抽出に関するドキュメント](cognitive-search-concept-image-scenarios.md)を参照してください。 |
+| `content` | ドキュメントのテキスト コンテンツ。 |
+| `normalized_images`   | `imageAction` を `none` 以外の値に設定すると、新しい *normalized_images* フィールドに画像の配列が格納されます。 各画像の出力形式の詳細については、[画像抽出に関するドキュメント](cognitive-search-concept-image-scenarios.md)を参照してください。 |
 
 ##  <a name="sample-definition"></a>定義例
 
@@ -145,7 +146,7 @@ Microsoft.Skills.Util.DocumentExtractionSkill
 }
 ```
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 + [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)

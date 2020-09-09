@@ -9,16 +9,17 @@ ms.topic: how-to
 ms.date: 04/23/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 1ccf03deee2a2f72c1eb2008e1acc5bf67d16447
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 478413132a09334c6b5fe6e4d7c4c31c988cd38d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793895"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501050"
 ---
 # <a name="create-a-vm-using-a-specialized-image-version-with-the-azure-cli"></a>Azure CLI を使用して、特殊化されたイメージ バージョンから VM を作成する
 
-Shared Image Gallery に格納されている[特殊化されたイメージ バージョン](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images)から VM を作成します。 一般化されたイメージ バージョンを使用して VM を作成する場合は、[一般化されたイメージ バージョンからの VM の作成](vm-generalized-image-version-cli.md)に関する記事をご覧ください。
+Shared Image Gallery に格納されている[特殊化されたイメージ バージョン](./linux/shared-image-galleries.md#generalized-and-specialized-images)から VM を作成します。 一般化されたイメージ バージョンを使用して VM を作成する場合は、[一般化されたイメージ バージョンからの VM の作成](vm-generalized-image-version-cli.md)に関する記事をご覧ください。
 
 必要に応じて、この例のリソース名を置き換えてください。 
 
@@ -58,5 +59,3 @@ az vm create --resource-group myResourceGroup \
 - [共有イメージ ギャラリーにイメージ定義を作成する](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [共有イメージ ギャラリーにイメージのバージョンを作成する](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 - [イメージ バージョンから VM を作成する](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
-
-

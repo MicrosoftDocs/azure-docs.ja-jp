@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 887c9432f04cce775e045bb6da83f0af4a4a4bce
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: b01f1edd4305c09a874b177e4bca373991c9162e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396884"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85203811"
 ---
 # <a name="predicates-and-predicatevalidations"></a>述語および PredicateValidations
 
@@ -81,7 +81,7 @@ IsLengthRange メソッドによって、文字列要求値の長さが、指定
 
 次の例は、文字列の長さ範囲を指定する `Minimum` および `Maximum` パラメーターを持つ IsLengthRange メソッドを示しています。
 
-```XML
+```xml
 <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
   <Parameters>
     <Parameter Id="Minimum">8</Parameter>
@@ -100,7 +100,7 @@ MatchesRegex メソッドによって、文字列要求値が正規表現に一�
 
 次の例は、正規表現を指定する `RegularExpression` パラメーターを持つ `MatchesRegex` メソッドを示しています。
 
-```XML
+```xml
 <Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be numbers only.">
   <Parameters>
     <Parameter Id="RegularExpression">^[0-9]+$</Parameter>
@@ -118,7 +118,7 @@ IncludesCharacters メソッドによって、文字列要求値に文字セッ�
 
 次の例は、文字セットを指定する `CharacterSet` パラメーターを持つ `IncludesCharacters` メソッドを示しています。
 
-```XML
+```xml
 <Predicate Id="Lowercase" Method="IncludesCharacters" HelpText="a lowercase letter">
   <Parameters>
     <Parameter Id="CharacterSet">a-z</Parameter>
@@ -137,7 +137,7 @@ IsDateRange メソッドによって、日付要求値が、指定された最�
 
 次の例は、`yyyy-mm-dd` と `Today` の形式で日付範囲を指定する `Minimum` および `Maximum` パラメーターを持つ `IsDateRange` メソッドを示しています。
 
-```XML
+```xml
 <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 1970-01-01 and today.">
   <Parameters>
     <Parameter Id="Minimum">1970-01-01</Parameter>
@@ -152,7 +152,7 @@ IsDateRange メソッドによって、日付要求値が、指定された最�
 
 **PredicateValidations** 要素は、[BuildingBlocks](buildingblocks.md) 要素内の **Predicates** 要素の直後に表示する必要があります。
 
-```XML
+```xml
 <PredicateValidations>
   <PredicateValidation Id="">
     <PredicateGroups>
@@ -239,7 +239,7 @@ IsDateRange メソッドによって、日付要求値が、指定された最�
 - **AllowedAADCharacters**: `MatchesRegex` メソッドを使用して、パスワードのみの無効な文字が指定されたことを検証します。
 - **DisallowedWhitespace**: `MatchesRegex` メソッドを使用して、パスワードが空白文字で開始または終了していないことを検証します。
 
-```XML
+```xml
 <Predicates>
   <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
     <Parameters>
@@ -297,7 +297,7 @@ IsDateRange メソッドによって、日付要求値が、指定された最�
 - **StrongPassword** DisallowedWhitespace、AllowedAADCharacters、IsLengthBetween8And64 を検証します。 最後のグループ `CharacterClasses` は、`MatchAtLeast` を 3 に設定して、述語の追加セットを実行します。 ユーザー パスワードは 8 文字から 16 文字にする必要があり、大文字、小文字、数字、または記号の中から 3 つを使用する必要があります。
 - **CustomPassword**: DisallowedWhitespace、AllowedAADCharacters のみを検証します。 このため、ユーザーは、文字が有効であれば、任意の長さのパスワードを指定できます。
 
-```XML
+```xml
 <PredicateValidations>
   <PredicateValidation Id="SimplePassword">
     <PredicateGroups>
@@ -367,7 +367,7 @@ IsDateRange メソッドによって、日付要求値が、指定された最�
 
 要求の種類で、**PredicateValidationReference** 要素を追加し、SimplePassword、StrongPassword、または CustomPassword など、いずれかの述語検証として識別子を指定します。
 
-```XML
+```xml
 <ClaimType Id="password">
   <DisplayName>Password</DisplayName>
   <DataType>string</DataType>
@@ -386,7 +386,7 @@ Azure AD B2C にエラー メッセージが表示された場合に、要素が
 
 **Predicates** 要素と **PredicateValidations** 要素を使用して、**UserInputType** の最小および最大日付値を、`DateTimeDropdown` を使用して制御できます。 これを行うには、`IsDateRange` メソッドを使用して**述語**を作成し、最小および最大パラメーターを指定します。
 
-```XML
+```xml
 <Predicates>
   <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 01-01-1980 and today.">
     <Parameters>
@@ -399,7 +399,7 @@ Azure AD B2C にエラー メッセージが表示された場合に、要素が
 
 `DateRange` 述語への参照を含む **PredicateValidation** を追加します。
 
-```XML
+```xml
 <PredicateValidations>
   <PredicateValidation Id="CustomDateRange">
     <PredicateGroups>
@@ -415,7 +415,7 @@ Azure AD B2C にエラー メッセージが表示された場合に、要素が
 
 要求の種類で、**PredicateValidationReference** 要素を追加し、`CustomDateRange` に ID を指定します。
 
-```XML
+```xml
 <ClaimType Id="dateOfBirth">
   <DisplayName>Date of Birth</DisplayName>
   <DataType>date</DataType>

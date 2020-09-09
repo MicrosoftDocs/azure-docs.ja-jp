@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: 2471c29f559df5c347c62ceb4c7fd9b4ae1e5eec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 947b509468857b98b868881bdd48adf67a5d60db
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77657335"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499003"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS 分析プレビュー ソリューションを使用した DNS インフラストラクチャに関する洞察の収集
 
@@ -38,11 +38,11 @@ DNS 分析ソリューションは、Windows DNS の分析ログと監査ログ�
 | [Windows エージェント](../platform/agent-windows.md) | はい | ソリューションでは、Windows エージェントから DNS 情報を収集します。 |
 | [Linux エージェント](../learn/quick-collect-linux-computer.md) | いいえ | ソリューションでは、ダイレクト Linux エージェントから DNS 情報は収集しません。 |
 | [System Center Operations Manager 管理グループ](../platform/om-agents.md) | はい | ソリューションでは、接続された Operations Manager 管理グループ内のエージェントから DNS 情報が収集されます。 Operations Manager エージェントから Azure Monitor への直接接続は必要ありません。 データは管理グループから Log Analytics ワークスペースに転送されます。 |
-| [Azure Storage アカウント](../platform/collect-azure-metrics-logs.md) | いいえ | ソリューションでは、Azure Storage は使用されません。 |
+| [Azure Storage アカウント](../platform/resource-logs.md#send-to-log-analytics-workspace) | いいえ | ソリューションでは、Azure Storage は使用されません。 |
 
 ### <a name="data-collection-details"></a>データ収集の詳細
 
-DNS 分析ソリューションでは、Log Analytics エージェントがインストールされている DNS サーバーから DNS インベントリと DNS イベント関連データを収集します。 その後このデータが Azure Monitor にアップロードされ、ソリューション ダッシュボードに表示されます。 インベントリ関連データ (DNS サーバーの数、ゾーンの数、リソース レコードの数など) は、DNS PowerShell コマンドレットを実行して収集します。 データは 2 日に 1 回更新されます。 イベント関連データは、Windows Server 2012 R2 の強化された DNS ログと診断機能によって提供される[分析ログと監査ログ](https://technet.microsoft.com/library/dn800669.aspx#enhanc)からほぼリアルタイムで収集されます。
+DNS 分析ソリューションでは、Log Analytics エージェントがインストールされている DNS サーバーから DNS インベントリと DNS イベント関連データを収集します。 その後このデータが Azure Monitor にアップロードされ、ソリューション ダッシュボードに表示されます。 インベントリ関連データ (DNS サーバーの数、ゾーンの数、リソース レコードの数など) は、DNS PowerShell コマンドレットを実行して収集します。 データは 2 日に 1 回更新されます。 イベント関連データは、Windows Server 2012 R2 の強化された DNS ログと診断機能によって提供される[分析ログと監査ログ](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11)#enhanc)からほぼリアルタイムで収集されます。
 
 ## <a name="configuration"></a>構成
 
@@ -179,7 +179,7 @@ DNS タイルには、データ収集中の DNS サーバーの数が含まれ�
 
 1. DNS 参照データが見つからない - この問題のトラブルシューティングを行うには、構成をリセットするか、ポータルで構成ページを 1 回読み込んでください。 リセットの場合は、設定を別の値に変更してから元の値に戻し、構成を保存します。
 
-## <a name="feedback"></a>フィードバック
+## <a name="suggestions"></a>検索候補
 
 フィードバックを提供するには、[Log Analytics UserVoice ページ](https://aka.ms/dnsanalyticsuservoice)にアクセスして、使用している DNS Analytics 機能のアイデアを投稿してください。 
 

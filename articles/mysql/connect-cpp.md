@@ -1,5 +1,5 @@
 ---
-title: C++ を使用して接続する - Azure Database for MySQL
+title: クイック スタート:C++ を使用して接続する - Azure Database for MySQL
 description: このクイックスタートでは、Azure Database for MySQL に接続してデータを照会するために使用できる、C++ コード サンプルを紹介します。
 author: ajlam
 ms.author: andrela
@@ -7,18 +7,20 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: cpp
 ms.topic: quickstart
-ms.date: 3/18/2020
-ms.openlocfilehash: c09327e208719d31b1ae1587c14d0223269abfa9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 5/26/2020
+ms.openlocfilehash: 6aa550a9c3f58fc7101e632bcd56800b27efc84e
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80062578"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185980"
 ---
-# <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>Azure Database for MySQL: Connector/C++ を使った接続とデータの照会
+# <a name="quickstart-use-connectorc-to-connect-and-query-data-in-azure-database-for-mysql"></a>クイック スタート:Connector/C++ を使用して Azure Database for MySQL に接続してデータを照会する
+
 このクイックスタートでは、C++ アプリケーションを使用して Azure Database for MySQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 このトピックでは、C++ を使用した開発には慣れているものの、Azure Database for MySQL の使用は初めてであることを前提としています。
 
 ## <a name="prerequisites"></a>前提条件
+
 このクイックスタートでは、次のいずれかのガイドで作成されたリソースを出発点として使用します。
 - [Azure Portal を使用した Azure Database for MySQL サーバーの作成](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Azure CLI を使用した Azure Database for MySQL サーバーの作成](./quickstart-create-mysql-server-database-using-azure-cli.md)
@@ -28,6 +30,9 @@ ms.locfileid: "80062578"
 - [Visual Studio](https://www.visualstudio.com/downloads/)
 - [MySQL Connector/C++](https://dev.mysql.com/downloads/connector/cpp/) のインストール 
 - [Boost](https://www.boost.org/) のインストール
+
+> [!IMPORTANT] 
+> [Azure portal](./howto-manage-firewall-using-portal.md) または [Azure CLI](./howto-manage-firewall-using-cli.md) を使用して、接続元の IP アドレスにサーバーのファイアウォール規則が追加されていることを確認します。
 
 ## <a name="install-visual-studio-and-net"></a>Visual Studio と .NET のインストール
 このセクションの手順では、.NET を使用した開発に慣れていることを前提としています。

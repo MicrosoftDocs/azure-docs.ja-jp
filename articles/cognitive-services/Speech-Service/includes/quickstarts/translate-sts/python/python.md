@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/09/2019
 ms.author: chlandsi
-ms.openlocfilehash: 03042cef3e5b5fb4360223e3c804f1ed2e24c97f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2c3ba2289899206a15ace88a29cfbfdfad0f9de5
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78924793"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226160"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -88,7 +88,7 @@ ms.locfileid: "78924793"
 
 1. 同じファイル内で、文字列 `YourSubscriptionKey` をサブスクリプション キーに置き換えます。
 
-1. 文字列 `YourServiceRegion` を、サブスクリプションに関連付けられた[リージョン](../../../../regions.md) (たとえば、無料試用版サブスクリプションでは `westus`) に置き換えます。
+1. 文字列 `YourServiceRegion` を、自分のサブスクリプションに関連付けられている[リージョン](../../../../regions.md)に置き換えます。
 
 1. `quickstart.py` に加えた変更を保存します。
 

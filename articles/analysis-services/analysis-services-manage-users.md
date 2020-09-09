@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5ca9b1d9fbd18f60de80a80c932f0e27b8dc8583
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 15ae1ca6902c27732812a591f492430150c84ecb
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701051"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926180"
 ---
 # <a name="authentication-and-user-permissions"></a>認証とユーザーのアクセス許可
 
@@ -24,7 +24,7 @@ Azure Analysis Services では、[Azure AD B2B コラボレーション](../acti
 
 ## <a name="authentication"></a>認証
 
-すべてのクライアント アプリケーションとツールは、Analysis Services [クライアント ライブラリ](analysis-services-data-providers.md) (AMO、MSOLAP、ADOMD) の 1 つ以上を使ってサーバーに接続します。 
+すべてのクライアント アプリケーションとツールは、Analysis Services [クライアント ライブラリ](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) (AMO、MSOLAP、ADOMD) の 1 つ以上を使ってサーバーに接続します。 
 
 3 つのクライアント ライブラリはすべて、Azure AD の対話型フローと非対話型認証方法の両方をサポートします。 2 つの非対話型方法である Active Directory パスワード認証方法と Active Directory 統合認証方法は、AMOMD と MSOLAP を利用しているアプリケーションで使用できます。 これら 2 つの方式では、ポップアップ ダイアログ ボックスは表示されません。
 
@@ -68,7 +68,7 @@ Excel ユーザーは、Windows アカウント、組織 ID (メール アドレ
 
 ![Azure Portal の [アクセス制御 (IAM)]](./media/analysis-services-manage-users/aas-manage-users-rbac.png)
 
-このレベルのロールは、Portal で完了可能なタスクまたは Azure Resource Manager テンプレートを使って完了可能なタスクを実行する必要のあるユーザーまたはアカウントに適用します。 詳しくは、「[ロールベースのアクセス制御](../role-based-access-control/overview.md)」をご覧ください。 
+このレベルのロールは、Portal で完了可能なタスクまたは Azure Resource Manager テンプレートを使って完了可能なタスクを実行する必要のあるユーザーまたはアカウントに適用します。 詳細については、[Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) に関する記事を参照してください。 
 
 ## <a name="database-roles"></a>データベース ロール
 
@@ -81,4 +81,4 @@ Excel ユーザーは、Windows アカウント、組織 ID (メール アドレ
 [Azure Active Directory のグループによるリソースへのアクセス管理](../active-directory/fundamentals/active-directory-manage-groups.md)   
 [データベース ロールとユーザーの管理](analysis-services-database-users.md)  
 [サーバー管理者の管理](analysis-services-server-admins.md)  
-[ロールベースのアクセス制御](../role-based-access-control/overview.md)  
+[Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md)  

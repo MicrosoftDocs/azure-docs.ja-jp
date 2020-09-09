@@ -1,17 +1,17 @@
 ---
 title: Azure Automation で Python Runbook を作成する
-description: 簡単な Python Runbook を作成、テスト、発行する方法を説明するチュートリアルです。
+description: この記事では、シンプルな Python Runbook を作成、テスト、発行する方法を説明します。
 services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.custom: has-adal-ref
-ms.openlocfilehash: 2b20796fdcf71ccfb60c519d081b42fba982f0b6
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.custom: has-adal-ref, devx-track-python
+ms.openlocfilehash: e12327651165606e6a9b571d410f547a09a8ec8e
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608696"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847926"
 ---
 # <a name="tutorial-create-a-python-runbook"></a>チュートリアル:Python Runbook を作成する
 
@@ -31,7 +31,7 @@ ms.locfileid: "82608696"
 このチュートリアルを完了するには、以下が必要です。
 
 - Azure のサブスクリプション。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
-- [Automation アカウント](../automation-offering-get-started.md)。Runbook の保存と Azure リソースの認証に使用します。 このアカウントには、仮想マシンを開始および停止するアクセス許可が必要です。
+- [Automation アカウント](../index.yml)。Runbook の保存と Azure リソースの認証に使用します。 このアカウントには、仮想マシンを開始および停止するアクセス許可が必要です。
 - Azure 仮想マシン。 マシンを停止して起動するので、運用 VM は使用しないでください。
 
 ## <a name="create-a-new-runbook"></a>新しい Runbook の作成
@@ -79,13 +79,11 @@ Runbook を発行して運用環境で使用できるようにする前に、Run
 
 ## <a name="publish-and-start-the-runbook"></a>Runbook を発行して開始する
 
-前の手順で作成した Runbook は、まだドラフト モードです。 運用環境で実行できるようにするには、発行する必要があります。
-Runbook を発行するときは、既存の発行済みバージョンをドラフト バージョンで上書きします。
-この例では、Runbook を作成したばかりなので、発行済みバージョンはまだありません。
+前の手順で作成した Runbook は、まだドラフト モードです。 運用環境で実行できるようにするには、発行する必要があります。 Runbook を発行するときは、既存の発行済みバージョンをドラフト バージョンで上書きします。 この例では、Runbook を作成したばかりなので、発行済みバージョンはまだありません。
 
 1. **[発行]** をクリックして Runbook を発行し、確認を要求されたら **[はい]** をクリックします。
 
-2. **[Runbook]** ページで左へスクロールして Runbook を表示すると、 **[編集状態]** は **[発行済み]** になっているはずです。
+2. [Runbook] ページで左へスクロールして Runbook を表示すると、 **[編集状態]** は **[発行済み]** になります。
 
 3. 右にスクロールして戻り、**MyFirstRunbook-Python** のウィンドウを表示します。
 
@@ -163,7 +161,7 @@ Runbook をテストして発行しましたが、これまでのところ役に
 
 ## <a name="add-code-to-create-python-compute-client-and-start-the-vm"></a>コードを追加して、Python Compute クライアントを作成し、VM を起動する
 
-Azure VM で作業するには、[Azure Compute client for Python](https://docs.microsoft.com/python/api/azure-mgmt-compute/azure.mgmt.compute.computemanagementclient) (Python 用の Azure Compute クライアント) のインスタンスを作成します。
+Azure VM で作業するには、[Azure Compute client for Python](/python/api/azure-mgmt-compute/azure.mgmt.compute.computemanagementclient) (Python 用の Azure Compute クライアント) のインスタンスを作成します。
 
 Compute クライアントを使用して、VM を起動します。 Runbook に次のコードを追加します。
 

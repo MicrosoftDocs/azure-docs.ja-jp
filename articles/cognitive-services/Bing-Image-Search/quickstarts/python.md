@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 03/31/2020
+ms.date: 05/08/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 6287b9b8e6129fd62a896e5ac1fcca29febbf01a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: seodec2018, devx-track-python
+ms.openlocfilehash: 8e0b7a81008fecbeb741b5b6e65c1eb8a1fdda29
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478545"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850731"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>クイック スタート:Bing Image Search REST API と Python を使用してイメージを検索する
 
-このクイック スタートでは、Bing Image Search API に検索要求を送信する基本的な方法について説明します。 この Python アプリケーションは、検索クエリを API に送信し、その結果から最初の画像の URL を表示します。 このアプリケーションは Python で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
+このクイックスタートを使用して、Bing Image Search API に検索要求を送信する方法について説明します。 この Python アプリケーションは、検索クエリを API に送信し、その結果から最初の画像の URL を表示します。 このアプリケーションは Python で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
-この例は、起動 Binder バッジ上でクリックすることで、[MyBinder](https://mybinder.org) の Jupyter Notebook として実行できます。
+この例を [MyBinder](https://mybinder.org) で Jupyter Notebook として実行するには、**起動バインダー** バッジを選択します。
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingImageSearchAPI.ipynb)
 
@@ -40,7 +40,7 @@ ms.locfileid: "80478545"
 
 ## <a name="create-and-initialize-the-application"></a>アプリケーションを作成して初期化する
 
-1. 任意の IDE またはエディターで新しい Python ファイルを作成し、次のモジュールをインポートします。 サブスクリプション キー、検索のエンドポイント、検索語句の変数を作成します。 `search_url` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。
+1. 任意の IDE またはエディターで新しい Python ファイルを作成し、次のモジュールをインポートします。 サブスクリプション キー、検索のエンドポイント、検索語句の変数を作成します。 `search_url` には、次のコードのグローバル エンドポイントを使用するか、Azure portal に表示される、対象のリソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用することができます。
 
     ```python
     import requests
@@ -61,13 +61,13 @@ ms.locfileid: "80478545"
 
 ## <a name="create-and-send-a-search-request"></a>検索要求を作成して送信する
 
-1. 検索要求のパラメーターに使用するディクショナリを作成します。 `q` パラメーターに検索語句を追加します。 パブリック ドメインから画像を検索するために、`license` パラメーターには "public" を使用します。 写真のみを検索する場合は、`imageType` に "photo" を使用します。
+1. 検索要求のパラメーターに使用するディクショナリを作成します。 `q` パラメーターに検索語句を追加します。 パブリック ドメインから画像を検索するには、`license` パラメーターを `public` に設定します。 写真のみを検索する場合は、`imageType` を `photo` に設定します。
 
     ```python
     params  = {"q": search_term, "license": "public", "imageType": "photo"}
     ```
 
-2. `requests` ライブラリを使用して、Bing Image Search API を呼び出します。 ヘッダーとパラメーターを要求に追加し、その応答を JSON オブジェクトとして返します。 応答の `thumbnailUrl` フィールドからいくつかのサムネイル画像の URL を取得します。
+2. `requests` ライブラリを使用して、Bing Image Search API を呼び出します。 ヘッダーとパラメーターを要求に追加し、その応答を JSON オブジェクトとして返します。 応答の `thumbnailUrl` フィールドから、いくつかのサムネイル画像の URL を取得します。
 
     ```python
     response = requests.get(search_url, headers=headers, params=params)
@@ -151,7 +151,6 @@ Bing Image Search API からの応答は、JSON として返されます。 こ�
 > [Bing Image Search の単一ページ アプリのチュートリアル](../tutorial-bing-image-search-single-page-app.md)
 
 * [Bing Image Search API とは](../overview.md)  
-* Bing Search API の[価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。 
-* [無料の Cognitive Services アクセス キーを取得する](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+* [Bing Search API の価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。 
 * [Azure Cognitive Services のドキュメント](https://docs.microsoft.com/azure/cognitive-services)
 * [Bing Image Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

@@ -1,18 +1,19 @@
 ---
-title: Functions 2.x での Azure Cosmos DB の入力バインド
+title: Functions 2.x 以降に対する Azure Cosmos DB の入力バインド
 description: Azure Functions で Azure Cosmos DB の入力バインドを使用する方法について説明します。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
-ms.openlocfilehash: eabcf40e28927919215979ccc46fa029d19adbfe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 42932d712d6c4a94cad28aec924b88fbc126662b
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78943423"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212786"
 ---
-# <a name="azure-cosmos-db-input-binding-for-azure-functions-2x"></a>Azure Functions 2.x での Azure Cosmos DB の入力バインド
+# <a name="azure-cosmos-db-input-binding-for-azure-functions-2x-and-higher"></a>Azure Functions 2.x 以降に対する Azure Cosmos DB の入力バインド
 
 Azure Cosmos DB 入力バインドでは、SQL API を使用して 1 つ以上の Azure Cosmos DB ドキュメントを取得して関数の入力パラメーターに渡します。 ドキュメント ID またはクエリ パラメーターは、関数を呼び出したトリガーに基づいて決定することができます。
 
@@ -42,8 +43,12 @@ namespace CosmosDBSamplesV2
 {
     public class ToDoItem
     {
+        [JsonProperty("id")]
         public string Id { get; set; }
+        
+        [JsonProperty("partitionKey")]
         public string PartitionKey { get; set; }
+        
         public string Description { get; set; }
     }
 }
@@ -295,7 +300,7 @@ namespace CosmosDBSamplesV2
 次の例は、ドキュメントの一覧を取得する [C# 関数](functions-dotnet-class-library.md)を示しています。 関数は、HTTP 要求によってトリガーされます。 コードでは、Azure Cosmos DB バインドによって提供される `DocumentClient` インスタンスを使用して、ドキュメントの一覧を読み取ります。 また、`DocumentClient` インスタンスは、書き込み操作に使用できます。
 
 > [!NOTE]
-> [IDocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.idocumentclient?view=azure-dotnet) インターフェイスを使用してテストを容易にすることもできます。
+> [IDocumentClient](/dotnet/api/microsoft.azure.documents.idocumentclient?view=azure-dotnet) インターフェイスを使用してテストを容易にすることもできます。
 
 ```cs
 using Microsoft.AspNetCore.Http;
@@ -860,7 +865,7 @@ module.exports = function (context, req, toDoItem) {
       "name": "toDoItem",
       "databaseName": "ToDoItems",
       "collectionName": "Items",
-      "connection": "CosmosDBConnection",
+      "connectionStringSetting": "CosmosDBConnection",
       "direction": "in",
       "Id": "{id}",
       "PartitionKey": "{partitionKeyValue}"
@@ -1017,7 +1022,6 @@ def main(queuemsg: func.QueueMessage, documents: func.DocumentList) -> func.Docu
       "PartitionKey": "{Query.partitionKeyValue}"
     }
   ],
-  "disabled": true,
   "scriptFile": "__init__.py"
 }
 ```
@@ -1420,7 +1424,7 @@ public class DocsFromRouteSqlQuery {
 
 # <a name="java"></a>[Java](#tab/java)
 
-[Java 関数ランタイム ライブラリ](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)から、Cosmos DB に書き込むパラメーターに `@CosmosDBOutput` 注釈を使用します。 注釈パラメーターの型は `OutputBinding<T>` にするようにします。ここで、`T` は Java のネイティブ型または POJO のどちらかです。
+[Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)から、Cosmos DB に書き込むパラメーターに `@CosmosDBOutput` 注釈を使用します。 注釈パラメーターの型は `OutputBinding<T>` にするようにします。ここで、`T` は Java のネイティブ型または POJO のどちらかです。
 
 ---
 
@@ -1463,7 +1467,7 @@ public class DocsFromRouteSqlQuery {
 
 # <a name="java"></a>[Java](#tab/java)
 
-[Java 関数ランタイム ライブラリ](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)の [@CosmosDBInput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.cosmosdbinput) 注釈によって Cosmos DB データは関数に公開されます。 この注釈は、Java のネイティブ型、POJO、または `Optional<T>` を使用した null 許容値で使用できます。
+[Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)の [@CosmosDBInput](/java/api/com.microsoft.azure.functions.annotation.cosmosdbinput) 注釈によって Cosmos DB データは関数に公開されます。 この注釈は、Java のネイティブ型、POJO、または `Optional<T>` を使用した null 許容値で使用できます。
 
 ---
 

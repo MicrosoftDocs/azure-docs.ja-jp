@@ -5,12 +5,12 @@ author: alexwun
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: alexwun
-ms.openlocfilehash: c3395248188c2a16736cfc8cea262fe163a6944b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8fc0239dd18fc7071823a129a7dbc4f102023d66
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75645669"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246199"
 ---
 # <a name="understand-the-imagestoreconnectionstring-setting"></a>ImageStoreConnectionString 設定を理解する
 
@@ -38,7 +38,7 @@ Service Fabric は、マイクロソフトの社内で数多くの多様なチ�
 
 また、ファイル システム プロバイダーも Azure Storage プロバイダーも、複数のクラスター間で 1 つの Image Store を共有する手段として使うことは避けてください。それぞれのクラスターによって Image Store に競合するデータが書き込まれる可能性があるため、クラスターの構成データの破損につながります。 プロビジョニングしたアプリケーション パッケージを複数のクラスター間で共有する場合は、代わりに [sfpkg][12] ファイルを使用してください。このファイルは、ダウンロード URI で任意の外部ストアにアップロードすることができます。
 
-したがって、ImageStoreConnectionString を構成することはできますが、単純に既定の設定を使用します。 Visual Studio から Azure に発行する場合、パラメーターは、状況に応じて自動的に設定されます。 Azure でホストされるクラスターにプログラムでデプロイする場合、接続文字列は常に "fabric:ImageStore" です。 不確かな場合は、[PowerShell](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclustermanifest)、[.NET](https://msdn.microsoft.com/library/azure/mt161375.aspx)、または[REST](https://docs.microsoft.com/rest/api/servicefabric/get-a-cluster-manifest) でクラスター マニフェストを取得することで、その値を常に検証できます。 オンプレミス テストと運用クラスターはどちらも、常にイメージ ストア サービス プロバイダーを使用するように構成する必要があります。
+したがって、ImageStoreConnectionString を構成することはできますが、単純に既定の設定を使用します。 Visual Studio から Azure に発行する場合、パラメーターは、状況に応じて自動的に設定されます。 Azure でホストされるクラスターにプログラムでデプロイする場合、接続文字列は常に "fabric:ImageStore" です。 不確かな場合は、[PowerShell](/powershell/module/servicefabric/get-servicefabricclustermanifest)、[.NET](/previous-versions/azure/reference/mt161375(v=azure.100))、または[REST](/rest/api/servicefabric/get-a-cluster-manifest) でクラスター マニフェストを取得することで、その値を常に検証できます。 オンプレミス テストと運用クラスターはどちらも、常にイメージ ストア サービス プロバイダーを使用するように構成する必要があります。
 
 ### <a name="next-steps"></a>次のステップ
 [PowerShell を使用してアプリケーションのデプロイと削除を実行する][10]

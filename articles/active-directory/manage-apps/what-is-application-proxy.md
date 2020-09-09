@@ -2,23 +2,21 @@
 title: Azure AD アプリケーション プロキシを使用してオンプレミス アプリを発行する
 description: アプリケーション プロキシを使用して、リモート ユーザー向けにオンプレミス Web アプリケーションを外部に発行する理由を説明します。 アプリケーション プロキシのアーキテクチャ、コネクタ、認証方法、およびセキュリティ上の利点について説明します。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: overview
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/31/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.custom: has-adal-ref
-ms.openlocfilehash: d38cf25bb3b7622a0d444e4a71a4d62aafc053b6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ce159bc61a1f21c52b8d182c1248ba1d436462da
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196463"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640516"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Azure AD アプリケーション プロキシを使用してリモート ユーザー向けにオンプレミス アプリを発行する
 
@@ -78,7 +76,7 @@ Azure AD はアプリケーション プロキシを使用して、オンプレ�
 
 この機能のコンポーネントには、クラウドで実行するアプリケーション プロキシ サービス、オンプレミスのサーバーで実行する軽量エージェントのアプリケーション プロキシ コネクタ、および ID プロバイダーの Azure AD が含まれます。 これら 3 つのコンポーネントがすべて連携し、オンプレミス Web アプリケーションにアクセスするためのシングル サインオン エクスペリエンスがユーザーに提供されます。
 
-外部ユーザーは、サインイン後、使い慣れた URL を使用するか、自分のデスクトップまたは iOS/MAC デバイスの [MyApps アクセス パネル](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)から、オンプレミス Web アプリケーションにアクセスできます。 たとえば、アプリケーション プロキシでは、リモート デスクトップ、SharePoint サイト、Tableau、Qlik、Outlook on the web、および基幹業務 (LOB) アプリケーションへのリモート アクセスとシングル サインオンを提供できます。
+外部ユーザーは、サインイン後、使い慣れた URL を使用するか、自分のデスクトップまたは iOS/MAC デバイスの[マイ アプリ](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)から、オンプレミス Web アプリケーションにアクセスできます。 たとえば、アプリケーション プロキシでは、リモート デスクトップ、SharePoint サイト、Tableau、Qlik、Outlook on the web、および基幹業務 (LOB) アプリケーションへのリモート アクセスとシングル サインオンを提供できます。
 
 ![Azure AD アプリケーション プロキシのアーキテクチャ](media/what-is-application-proxy/azure-ad-application-proxy-architecture.png)
 
@@ -89,7 +87,7 @@ Azure AD はアプリケーション プロキシを使用して、オンプレ�
 * Web アプリケーション
 * さまざまなデバイスの豊富なアプリケーションに公開する Web API
 * リモート デスクトップ ゲートウェイの背後でホストされているアプリケーション
-* Active Directory Authentication Library (ADAL) と統合されるリッチ クライアント アプリ
+* [Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview) と統合されるリッチ クライアント アプリ
 
 アプリケーション プロキシは、次のネイティブ認証プロトコルを使用するアプリで動作します。
 
@@ -101,7 +99,7 @@ Azure AD はアプリケーション プロキシを使用して、オンプレ�
 * [**フォームまたはパスワード ベースの認証**](application-proxy-configure-single-sign-on-password-vaulting.md)。 この認証方法では、ユーザーは初回アクセス時にユーザー名とパスワードを使用してアプリケーションにサインオンします。 最初のサインイン後は、Azure AD がユーザー名とパスワードをアプリケーションに提供します。 このシナリオでは、認証は Azure AD によって処理されます。
 * [**SAML 認証**](application-proxy-configure-single-sign-on-on-premises-apps.md)。 SAML ベースのシングル サインオンは、SAML 2.0 または WS-Federation のいずれかのプロトコルを使用するアプリケーションでサポートされます。 SAML によるシングル サインオンでは、ユーザーの Azure AD アカウントを使用して、Azure AD がアプリケーションに対して認証を行います。
 
-サポートされている方法の詳細については、「[シングル サインオンの方法の選択](what-is-single-sign-on.md#choosing-a-single-sign-on-method)」を参照してください。
+サポートされている方法の詳細については、「[シングル サインオンの方法の選択](sso-options.md#choosing-a-single-sign-on-method)」を参照してください。
 
 ### <a name="security-benefits"></a>セキュリティ上の利点
 

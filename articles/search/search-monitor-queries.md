@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: da7a47bf61453c30f5c735b1282ae93d2442598c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5589a46a63437fb395db280222f8a9e84775df3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127691"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935077"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>Azure Cognitive Search でクエリ要求を監視する
 
@@ -100,7 +100,7 @@ ms.locfileid: "82127691"
 
 現在の数値を簡単に確認できるように、サービスの [概要] ページの **[監視]** タブには、3 つのメトリック (**検索の待ち時間**、**秒あたりの検索クエリ数 (検索ユニットごと)** 、**スロットルされた検索クエリの割合**) が表示されます。これらは、一定の間隔で時間、日、および週単位で測定されるほか、集計の種類を変更するオプションが用意されています。
 
-さらに詳しく調べるには、 **[監視]** メニューからメトリックス エクスプローラーを開き、データを階層化、拡大、および視覚化して、傾向や異常を確認します。 メトリックス エクスプローラーの詳細を確認するには、この[メトリックのグラフの作成に関するチュートリアル](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-metrics-explorer)を完了してください。
+さらに詳しく調べるには、 **[監視]** メニューからメトリックス エクスプローラーを開き、データを階層化、拡大、および視覚化して、傾向や異常を確認します。 メトリックス エクスプローラーの詳細を確認するには、この[メトリックのグラフの作成に関するチュートリアル](../azure-monitor/learn/tutorial-metrics-explorer.md)を完了してください。
 
 1. [監視] セクションの下で、 **[メトリックス]** を選択し、スコープがお使いの検索サービスに設定されているメトリックス エクスプローラーを開きます。
 
@@ -128,11 +128,11 @@ ms.locfileid: "82127691"
    AzureDiagnostics
    | project OperationName, Query_s, IndexName_s, Documents_d
    | where OperationName == "Query.Search"
-   | where Query_s != "?api-version=2019-05-06&search=*"
+   | where Query_s != "?api-version=2020-06-30&search=*"
    | where IndexName_s != "realestate-us-sample-index"
    ```
 
-1. 必要に応じて、*Query_s* に列フィルターを設定して、特定の構文または文字列を検索します。 たとえば、`?api-version=2019-05-06&search=*&%24filter=HotelName` "*に等しい*" というフィルターを設定することができます。
+1. 必要に応じて、*Query_s* に列フィルターを設定して、特定の構文または文字列を検索します。 たとえば、`?api-version=2020-06-30&search=*&%24filter=HotelName` "*に等しい*" というフィルターを設定することができます。
 
    ![ログ記録されたクエリ文字列](./media/search-monitor-usage/log-query-strings.png "ログ記録されたクエリ文字列")
 

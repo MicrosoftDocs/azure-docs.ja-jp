@@ -1,24 +1,14 @@
 ---
 title: Azure Service Bus の重複メッセージの検出 | Microsoft Docs
 description: この記事では、Azure Service Bus メッセージの重複を検出する方法について説明します。 重複したメッセージは無視して、破棄することができます。
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: c109b9fd310a09e5eb4c6d18cc3536e4d8069c0b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.openlocfilehash: dbca1b4b4f894d35835e7d37e0b4e742a2d3b917
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76760370"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083890"
 ---
 # <a name="duplicate-detection"></a>重複検出
 
@@ -43,7 +33,7 @@ ID のアプリケーションによる制御は、アプリケーションが *
 
 この機能は、ポータルでエンティティの作成する際に、既定ではオフになっている、 **[重複データ検出を有効にする]** チェック ボックスをオンにすることで有効にできます。 新しいトピックを作成するための設定と同じです。
 
-![][1]
+![[キューの作成] ダイアログ ボックスのスクリーンショット。[重複データ検出の有効化] オプションが選択され、赤の枠線で囲まれています。][1]
 
 > [!IMPORTANT]
 > キューが作成された後に重複の検出を有効または無効にすることはできません。 それができるのはキューの作成時点のみです。 
@@ -52,7 +42,7 @@ ID のアプリケーションによる制御は、アプリケーションが *
 
 重複検出時間の履歴は、既定では、キューおよびトピックで 30 秒に設定され、最大値は 7 日間に設定されています。 この設定は、Azure ポータルの [キューおよびトピックのプロパティ] ウィンドウで変更することができます。
 
-![][2]
+![Service Bus 機能のスクリーンショット。[プロパティ] 設定が強調表示され、[重複データ検出の履歴] オプションが赤の枠線で囲まれています。][2]
 
 プログラム上は、フル .NET Framework API の [QueueDescription.DuplicateDetectionHistoryTimeWindow](/dotnet/api/microsoft.servicebus.messaging.queuedescription.duplicatedetectionhistorytimewindow#Microsoft_ServiceBus_Messaging_QueueDescription_DuplicateDetectionHistoryTimeWindow) プロパティを使用して、メッセージ が保持される重複検出時間枠を設定できます。 Azure Resource Manager API では、値は [queueProperties.duplicateDetectionHistoryTimeWindow](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) プロパティで設定します。
 

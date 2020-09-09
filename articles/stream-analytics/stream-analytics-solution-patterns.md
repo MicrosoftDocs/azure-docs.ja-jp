@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 3b95863c1ae53bd0642aec356f55aba1faf8ef09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c3d487c1595a077ac8609813a41d15e28ede0e0b
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535784"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903325"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure Stream Analytics のソリューション パターン
 
@@ -22,7 +22,7 @@ Azure にある他の多くのサービスと同様、Stream Analytics は、他
 
 Azure Stream Analytics を使用して、リアルタイムのダッシュボードとアラートを簡単に構築することができます。 Event Hubs または IoT Hub からイベントを取り込み、[Power BI ダッシュボードにストリーミング データ セットをフィード](/power-bi/service-real-time-streaming)するシンプルなソリューションが挙げられます。 詳細については、「[Stream Analytics で通話データを分析し、Power BI ダッシュボードで結果を視覚化する](stream-analytics-manage-job.md)」という詳しいチュートリアルを参照してください。
 
-![ASA Power BI ダッシュボード](media/stream-analytics-solution-patterns/pbidashboard.png)
+![ASA Power BI ダッシュボード](media/stream-analytics-solution-patterns/power-bi-dashboard.png)
 
 このソリューションは、Azure portal からわずか数分で構築できます。 大がかりなコーディングは不要で、ビジネス ロジックの表現には SQL 言語が使用されます。
 
@@ -30,13 +30,13 @@ Azure Stream Analytics を使用して、リアルタイムのダッシュボー
 
 ## <a name="use-sql-for-dashboard"></a>ダッシュボードに SQL を使用する
 
-Power BI ダッシュボードは、待ち時間は短いものの、本格的な Power BI レポートを生成する用途には使用できません。 レポート作成パターンとしては、データをまず SQL データベースに出力するのが一般的です。 その後、Power BI の SQL コネクタを使用して、SQL に最新のデータを照会します。
+Power BI ダッシュボードは、待ち時間は短いものの、本格的な Power BI レポートを生成する用途には使用できません。 レポート作成パターンとしては、データをまず SQL Database に出力するのが一般的です。 その後、Power BI の SQL コネクタを使用して、SQL に最新のデータを照会します。
 
-![ASA SQL ダッシュボード](media/stream-analytics-solution-patterns/sqldashboard.png)
+![ASA SQL ダッシュボード](media/stream-analytics-solution-patterns/sql-dashboard.png)
 
-SQL データベースを使用することで、待ち時間はわずかに長くなりますが、柔軟性は向上します。 待ち時間の要件が 1 秒を超えるジョブには、このソリューションが最適です。 この方法では、Power BI の機能を最大限に活用して、レポートに使用するデータをさらにスライスしてダイスしたり、その他の視覚化オプションを使用したりできます。 また、Tableau など他のダッシュボード ソリューションを使用する柔軟性も得られます。
+SQL Database を使用することで、待ち時間はわずかに長くなりますが、柔軟性は向上します。 待ち時間の要件が 1 秒を超えるジョブには、このソリューションが最適です。 この方法では、Power BI の機能を最大限に活用して、レポートに使用するデータをさらにスライスしてダイスしたり、その他の視覚化オプションを使用したりできます。 また、Tableau など他のダッシュボード ソリューションを使用する柔軟性も得られます。
 
-SQL は、高スループットのデータ ストアではありません。 Azure Stream Analytics から SQL データベースへの最大スループットは、現時点では約 24 MB/秒です。 実際のソリューションのイベント ソースからもっと高速にデータが生成される場合、Stream Analytics の処理ロジックを使用して、SQL への出力速度を下げる必要があります。 フィルタリング、ウィンドウ集計、テンポラル結合を使用したパターン マッチング、分析関数などの手法を利用できます。 SQL への出力速度は、「[Azure SQL Database への Azure Stream Analytics の出力](stream-analytics-sql-output-perf.md)」で説明されている手法を使って、さらに最適化することができます。
+SQL は、高スループットのデータ ストアではありません。 Azure Stream Analytics から SQL Database への最大スループットは、現時点では約 24 MB/秒です。 実際のソリューションのイベント ソースからもっと高速にデータが生成される場合、Stream Analytics の処理ロジックを使用して、SQL への出力速度を下げる必要があります。 フィルタリング、ウィンドウ集計、テンポラル結合を使用したパターン マッチング、分析関数などの手法を利用できます。 SQL への出力速度は、「[Azure SQL Database への Azure Stream Analytics の出力](stream-analytics-sql-output-perf.md)」で説明されている手法を使って、さらに最適化することができます。
 
 ## <a name="incorporate-real-time-insights-into-your-application-with-event-messaging"></a>イベント メッセージングを使用してリアルタイムの分析情報をアプリケーションに取り込む
 
@@ -44,7 +44,7 @@ Stream Analytics がよく利用されるもう 1 つの用途として、リア
 
 既存のビジネス ワークフローでアラートを生成するためには、ダウンストリームのイベント コンシューマー ロジックを実装する必要があります。 Azure Functions でカスタム ロジックを実装できるため、この統合を実施する最も手軽な方法は Azure Functions です。 Stream Analytics ジョブの出力として Azure Functions を使用するためのチュートリアルは、「[Azure Stream Analytics ジョブから Azure Functions を実行する](stream-analytics-with-azure-functions.md)」でご覧いただけます。 また、Azure Functions では、テキストやメールを含め、さまざまな種類の通知がサポートされます。 こうした統合には、ロジック アプリも使用できます。この場合、Stream Analytics とロジック アプリの間に Event Hubs を使用することになります。
 
-![ASA イベント メッセージング アプリ](media/stream-analytics-solution-patterns/eventmessagingapp.png)
+![ASA イベント メッセージング アプリ](media/stream-analytics-solution-patterns/event-messaging-app.png)
 
 他方で、Event Hubs は、きわめて柔軟性の高い統合ポイントとなります。 Azure Data Explorer や Time Series Insights などの他の多くのサービスで、Event Hubs のイベントを消費できます。 このソリューションは、Azure Stream Analytics から Event Hubs シンクにサービスを直接接続することによって実現できます。 Event Hubs は、このような統合シナリオを実現するための、Azure における最速のスループットを備えたメッセージング ブローカーでもあります。
 
@@ -52,7 +52,7 @@ Stream Analytics がよく利用されるもう 1 つの用途として、リア
 
 Azure Stream Analytics と Azure SignalR Service を使用すると、カスタムのリアルタイム ビジュアル化 (ダッシュボードやマップの視覚化など) を実現できます。 SignalR を使用すれば、Web クライアントを更新し、リアルタイムに動的コンテンツを表示することができます。
 
-![ASA 動的アプリ](media/stream-analytics-solution-patterns/dynamicapp.png)
+![ASA 動的アプリ](media/stream-analytics-solution-patterns/dynamic-app.png)
 
 ## <a name="incorporate-real-time-insights-into-your-application-through-data-stores"></a>データ ストアを使用してリアルタイムの分析情報をアプリケーションに取り込む
 
@@ -60,23 +60,23 @@ Azure Stream Analytics と Azure SignalR Service を使用すると、カスタ�
 
 CRUD ベースのシステムでは、大量のデータがパフォーマンス ボトルネックを引き起こすことが少なくありません。 パフォーマンスのボトルネックを解決するために、[イベント ソーシング ソリューション パターン](/azure/architecture/patterns/event-sourcing)が使用されます。 テンポラルなパターンと分析情報も、従来のデータ ストアからは抽出することが難しく効率も良くありません。 大量のデータを扱う近年のデータ ドリブン型アプリケーションでは、データフローベースのアーキテクチャがよく使用されます。 そのアーキテクチャの要となるのが、移動中のデータを対象にしたコンピューティング エンジンとしての Azure Stream Analytics です。
 
-![ASA イベント ソーシング アプリ](media/stream-analytics-solution-patterns/eventsourcingapp.png)
+![ASA イベント ソーシング アプリ](media/stream-analytics-solution-patterns/event-sourcing-app.png)
 
 このソリューション パターンでは、Azure Stream Analytics によってイベントが処理されてデータ ストアに集約されます。 アプリケーション レイヤーは、従来の要求/応答パターンを使用して、そのデータ ストアと対話することになります。 Stream Analytics には大量のイベントをリアルタイムに処理する機能があるため、アプリケーションは非常にスケーラブルであり、データ ストア レイヤーを増強する必要はありません。 実質的にはデータ ストア レイヤーが、システムにおける具体化されたビューとなります。 Stream Analytics の出力として Cosmos DB を使用する方法は、「[Azure Cosmos DB への Azure Stream Analytics の出力](stream-analytics-documentdb-output.md)」で説明されています。
 
 処理ロジックが複雑で、特定のロジック領域を個別にアップグレードする必要があるような実際のアプリケーションでは、中間イベント ブローカーとしての Event Hubs に複数の Stream Analytics ジョブを組み合わせることができます。
 
-![ASA の複雑なイベント ソーシング アプリ](media/stream-analytics-solution-patterns/eventsourcingapp2.png)
+![ASA の複雑なイベント ソーシング アプリ](media/stream-analytics-solution-patterns/event-sourcing-app-complex.png)
 
 このパターンでは、システムの回復性と管理しやすさが向上します。 一方、Stream Analytics では 1 回限りの処理が保証されているものの、中間の Event Hubs に重複するイベントが到達する可能性も、わずかながらあります。 ダウンストリームの Stream Analytics ジョブは、ルックバック ウィンドウでロジック キーを使用し、イベントを重複排除することが重要となります。 イベント配信の詳細については、[イベント配信の保証](/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics)に関するリファレンスを参照してください。
 
 ## <a name="use-reference-data-for-application-customization"></a>アプリケーションのカスタマイズに参照データを使用する
 
-Azure Stream Analytics の参照データ機能は、アラートのしきい値、処理ルール、[ジオフェンス](geospatial-scenarios.md)など、特にエンドユーザーのカスタマイズを考えて設計されています。 アプリケーション レイヤーは、パラメーターの変更を受け付けて、それらを SQL データベースに格納できます。 Stream Analytics ジョブはそのデータベースに対して定期的に変更を照会し、参照データの結合によって、カスタマイズのパラメーターを利用しやすい状態にします。 参照データを使用してアプリケーションのカスタマイズを行う方法の詳細については、[SQL 参照データ](sql-reference-data.md)と[参照データの結合](/stream-analytics-query/reference-data-join-azure-stream-analytics)に関するページを参照してください。
+Azure Stream Analytics の参照データ機能は、アラートのしきい値、処理ルール、[ジオフェンス](geospatial-scenarios.md)など、特にエンドユーザーのカスタマイズを考えて設計されています。 アプリケーション レイヤーは、パラメーターの変更を受け付けて、それらを SQL Database に格納できます。 Stream Analytics ジョブはそのデータベースに対して定期的に変更を照会し、参照データの結合によって、カスタマイズのパラメーターを利用しやすい状態にします。 参照データを使用してアプリケーションのカスタマイズを行う方法の詳細については、[SQL 参照データ](sql-reference-data.md)と[参照データの結合](/stream-analytics-query/reference-data-join-azure-stream-analytics)に関するページを参照してください。
 
 このパターンを使用すれば、ルールのしきい値が参照データから定義されるようなルール エンジンを実装することもできます。 ルールの詳細については、「[Azure Stream Analytics での、設定可能なしきい値に基づいたルールの処理](stream-analytics-threshold-based-rules.md)」を参照してください。
 
-![ASA 参照データ アプリ](media/stream-analytics-solution-patterns/refdataapp.png)
+![ASA 参照データ アプリ](media/stream-analytics-solution-patterns/reference-data-app.png)
 
 ## <a name="add-machine-learning-to-your-real-time-insights"></a>リアルタイムの分析情報に Machine Learning を追加する
 
@@ -84,37 +84,34 @@ Azure Stream Analytics のビルトインの[異常検出モデル](stream-analy
 
 同じ Stream Analytics パイプラインにオンライン トレーニングとスコアリングを導入したいと考えている、詳しい知識のあるユーザーの方は、[線形回帰](stream-analytics-high-frequency-trading.md)を使用してそれを行う例を参照してください。
 
-![ASA Machine Learning アプリ](media/stream-analytics-solution-patterns/mlapp.png)
+![ASA Machine Learning アプリ](media/stream-analytics-solution-patterns/machine-learning-app.png)
 
-## <a name="near-real-time-data-warehousing"></a>ほぼリアルタイムのデータ ウェアハウジング
+## <a name="real-time-data-warehousing"></a>リアルタイム データ ウェアハウジング
 
-もう 1 つの一般的なパターンとして、リアルタイム データ ウェアハウジングがあります。これはストリーミング データ ウェアハウスとも呼ばれます。 アプリケーションからのイベントを Event Hubs や IoT Hub で受け取る以外にも、[IoT Edge 上で動作する Azure Stream Analytics](stream-analytics-edge.md) を使用して、データ クレンジング、データの削減、データ ストア、データ転送のニーズに応えることができます。 IoT Edge 上で動作する Stream Analytics であれば、システムにおける帯域幅の制限や接続の問題に適切に対処できます。 SQL Data Warehouse への出力には、SQL 出力アダプターを使用できますが、最大スループットは 10 MB/秒に制限されます。
+もう 1 つの一般的なパターンとして、リアルタイム データ ウェアハウジングがあります。これはストリーミング データ ウェアハウスとも呼ばれます。 アプリケーションからのイベントを Event Hubs や IoT Hub で受け取る以外にも、[IoT Edge 上で動作する Azure Stream Analytics](stream-analytics-edge.md) を使用して、データ クレンジング、データの削減、データ ストア、データ転送のニーズに応えることができます。 IoT Edge 上で動作する Stream Analytics であれば、システムにおける帯域幅の制限や接続の問題に適切に対処できます。 Stream Analytics は、Azure Synapse Analytics への書き込み中に、最大 200 MB/秒のスループット率をサポートできます。
 
-![ASA データ ウェアハウジング](media/stream-analytics-solution-patterns/datawarehousing.png)
+![ASA データ ウェアハウジング](media/stream-analytics-solution-patterns/data-warehousing.png)
 
-トレードオフとしてある程度の待ち時間は生じますが、イベントを Azure Blob Storage にアーカイブしたうえで、[PolyBase を使用してそれらを SQL Data Warehouse にインポート](../synapse-analytics/sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md)するなどすれば、スループットを改善することができます。 Stream Analytics から Blob Storage への出力と Blob Storage から SQL Data Warehouse への入力は、[データをタイムスタンプごとにアーカイブ](stream-analytics-custom-path-patterns-blob-storage-output.md)し、定期的にインポートすることによって、手動で関連付ける必要があります。
-
-この使用パターンでは、Azure Stream Analytics がほぼリアルタイムの ETL エンジンとして使用されます。 新たに到着するイベントは、ダウンストリームの Analytics Service から利用できるように、絶えず変換されて格納されます。
-
-![ASA の高スループット データ ウェアハウジング](media/stream-analytics-solution-patterns/datawarehousing2.png)
 
 ## <a name="archiving-real-time-data-for-analytics"></a>リアルタイム データを分析用にアーカイブする
 
 データ サイエンスとデータ分析のアクティビティは、その大半がオフラインで実行されます。 Azure Stream Analytics では、Azure Data Lake Store Gen2 出力形式や Parquet 出力形式でデータをアーカイブすることができます。 この機能を使えば、Azure Data Lake Analytics や Azure Databricks、Azure HDInsight に対し、手間なく直接データを取り込むことができます。 このソリューションでは、Azure Stream Analytics がほぼリアルタイムの ETL エンジンとして使用されます。 Data Lake にアーカイブ済みのデータは、さまざまなコンピューティング エンジンを使用して調査することができます。
 
-![ASA のオフライン分析](media/stream-analytics-solution-patterns/offlineanalytics.png)
+> [!div class="mx-imgBorder"]
+> ![ASA のオフライン分析](media/stream-analytics-solution-patterns/offline-analytics.png)
 
 ## <a name="use-reference-data-for-enrichment"></a>エンリッチメントに参照データを使用する
 
-データ エンリッチメントは、多くの場合、ETL エンジンの要件となっています。 Azure Stream Analytics は、SQL データベースと Azure Blob Storage の両方の[参照データ](stream-analytics-use-reference-data.md)を使ったデータ エンリッチメントをサポートします。 データ エンリッチメントによって、Azure Data Lake と SQL Data Warehouse の両方へのデータ ランディングを実現できます。
+データ エンリッチメントは、多くの場合、ETL エンジンの要件となっています。 Azure Stream Analytics は、SQL Database と Azure Blob Storage の両方の[参照データ](stream-analytics-use-reference-data.md)を使ったデータ エンリッチメントをサポートします。 データ エンリッチメントによって、Azure Data Lake と SQL Data Warehouse の両方へのデータ ランディングを実現できます。
 
-![ASA のオフライン分析とデータ エンリッチメント](media/stream-analytics-solution-patterns/offlineanalytics.png)
+
+![ASA のオフライン分析とデータ エンリッチメント](media/stream-analytics-solution-patterns/offline-analytics-enriched.png)
 
 ## <a name="operationalize-insights-from-archived-data"></a>アーカイブ データからの分析情報を運用化する
 
 ほぼリアルタイムのアプリケーション パターンにオフライン分析パターンを組み合わせると、フィードバック ループを作成することができます。 フィードバック ループを使用することにより、アプリケーションは絶えず変化するデータのパターンに自動的に適応することができます。 このフィードバック ループは、アラートのしきい値を変えるだけの単純なものもあれば、機械学習モデルを再トレーニングするような複雑なものもあります。 同じソリューション アーキテクチャは、クラウドで実行される ASA ジョブと IoT Edge で実行される ASA ジョブの両方に適用できます。
 
-![ASA の分析情報の運用化](media/stream-analytics-solution-patterns/insightsoperationalization.png)
+![ASA の分析情報の運用化](media/stream-analytics-solution-patterns/insights-operationalization.png)
 
 ## <a name="how-to-monitor-asa-jobs"></a>ASA ジョブを監視する方法
 
@@ -163,7 +160,7 @@ Azure Stream Analytics に SLA 保証があっても、また、エンド ツー
 
 さいわい、こうした遅延イベントは、前述のデータ アーカイブ パターンを使用すれば、適切に処理することができます。 アーカイブ ジョブで受信イベントを到着時刻に処理し、Azure BLOB または Azure Data Lake Store には、対応するイベント時刻と共に適切なタイム バケットにイベントをアーカイブするという考え方です。 どれだけ遅れてイベントが到着しようと、決してドロップされることはありません。 いずれは必ず適切なタイム バケットに到着します。 復旧過程で、アーカイブ済みのイベントを再処理し、その結果を任意のストアにバックフィルすることができます。 これは、ラムダ パターンが実装される方法と似ています。
 
-![ASA のバックフィル](media/stream-analytics-solution-patterns/backfill.png)
+![ASA のバックフィル](media/stream-analytics-solution-patterns/back-fill.png)
 
 バックフィル プロセスは、オフライン バッチ処理システムで行う必要があります。オフライン バッチ処理システムは、ほぼ確実に、Azure Stream Analytics とはプログラミング モデルが異なります。 つまり、処理ロジック全体を独自に再実装する必要があります。
 

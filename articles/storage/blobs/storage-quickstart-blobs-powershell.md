@@ -9,12 +9,13 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 03/31/2020
 ms.author: tamram
-ms.openlocfilehash: bca04317acf589e8bae46f086c6c79dfc82152a8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b051a4ffe4d24e1ef0e69ab7c18a8ed3388b57e5
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82176653"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078284"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>クイック スタート:PowerShell を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
@@ -52,17 +53,32 @@ Blob Storage は、ブロック BLOB、追加 BLOB、およびページ BLOB を
 次の例では、ローカル ディスク上の *D:\\_TestImages* フォルダーの *Image001.jpg* と *Image002.png* を作成したコンテナーにアップロードします。
 
 ```powershell
-# upload a file
-Set-AzStorageBlobContent -File "D:\_TestImages\Image001.jpg" `
+# upload a file to the default account (inferred) access tier
+Set-AzStorageBlobContent -File "D:\_TestImages\Image000.jpg" `
   -Container $containerName `
   -Blob "Image001.jpg" `
   -Context $ctx 
 
-# upload another file
+# upload a file to the Hot access tier
+Set-AzStorageBlobContent -File "D:\_TestImages\Image001.jpg" `
+  -Container $containerName `
+  -Blob "Image001.jpg" `
+  -Context $ctx 
+  -StandardBlobTier Hot
+
+# upload another file to the Cool access tier
 Set-AzStorageBlobContent -File "D:\_TestImages\Image002.png" `
   -Container $containerName `
   -Blob "Image002.png" `
   -Context $ctx
+  -StandardBlobTier Cool
+
+# upload a file to a folder to the Archive access tier
+Set-AzStorageBlobContent -File "D:\_TestImages\foldername\Image003.jpg" `
+  -Container $containerName `
+  -Blob "Foldername/Image003.jpg" `
+  -Context $ctx 
+  -StandardBlobTier Archive
 ```
 
 続行する前に、希望する数のファイルをアップロードします。
@@ -125,6 +141,6 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 * [Storage PowerShell コマンドレット](/powershell/module/az.storage)
 
-### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure ストレージ エクスプローラー
+### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer
 
-* [Microsoft Azure ストレージ エクスプローラー](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
+* [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。

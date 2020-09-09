@@ -5,14 +5,14 @@ author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
-ms.date: 03/05/2019
-ms.openlocfilehash: 8466fbcb4325dc244551a3b84fc20581366b7071
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.date: 8/6/2020
+ms.openlocfilehash: 4c6d1d3877629150493ee2a57a04573760d2772a
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78851154"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870019"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics と Power BI:ストリーミング データのリアルタイム分析ダッシュボード
 
@@ -39,7 +39,10 @@ Azure Stream Analytics では、主要なビジネス インテリジェンス �
 
 2. 左側のメニューで、 **[ジョブ トポロジ]** の下にある **[出力]** を選択します。 次に、 **[+ 追加]** を選択し、ドロップダウン メニューから **[Power BI]** を選択します。
 
-3. **[+ 追加]**  >  **[Power BI]** の順に選択します。 次に、フォームに次の詳細を入力して、 **[承認する]** を選択します。
+3. **[+ 追加]**  >  **[Power BI]** の順に選択します。 続けて、フォームに次の詳細を入力し、独自のユーザー ID を使用して Power BI に接続するために **[承認]** を選択します (トークンは 90日間有効です)。 
+
+>[!NOTE]
+>運用ジョブの場合は、[マネージド ID を使用して、Power BI に対して Azure Stream Analytics ジョブを認証する](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity)ように接続することをお勧めします。
 
    |**設定**  |**推奨値**  |
    |---------|---------|
@@ -184,16 +187,6 @@ Streaming Analytics ジョブが、受信ストリームでの不正な呼び出
 
      ![不正な呼び出しに関する 2 つのタイルが表示されている完成した Power BI ダッシュボード](./media/stream-analytics-power-bi-dashboard/pbi-dashboard-fraudulent-calls-finished.png)
 
-
-## <a name="learn-more-about-power-bi"></a>Power BI についての詳細情報
-
-このチュートリアルで紹介しているのは、データセットに関するほんの数種類の視覚エフェクトの作成方法です。 Power BI は、組織の他の顧客のビジネス インテリジェンス ツールを作成するのに役立ちます。 他のアイデアについては、次のリソースを参照してください。
-
-* Power BI ダッシュボードの別の例については、[Power BI の概要](https://youtu.be/L-Z_6P56aas?t=1m58s)ビデオをご覧ください。
-* Power BI に対する Streaming Analytics ジョブ出力の構成および Power BI グループの使用について詳しくは、「[Stream Analytics の出力](stream-analytics-define-outputs.md)」記事の「[Power BI](stream-analytics-define-outputs.md#power-bi)」セクションをご覧ください。 
-* Power BI の一般的な使い方については、「[Power BI サービスのダッシュボード](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/)」をご覧ください。
-
-
 ## <a name="learn-about-limitations-and-best-practices"></a>制限事項とベスト プラクティスについて
 現在、Power BI は、およそ 1 秒に 1 回呼び出すことができます。 ストリーミング ビジュアルでは、15 KB のパケットがサポートされます。 これを超えると、ストリーミング ビジュアルは失敗します (ただし、プッシュは動作し続けます)。 このような制限から必然的に、Power BI は、Azure Stream Analytics で大幅なデータ負荷の低減が見られるケースへと落ち着きます。 1 秒あたりのデータ プッシュを 1 回以内に抑え、かつスループットの要件の範囲内にクエリを抑えるために、タンブリング ウィンドウやホッピング ウィンドウの使用をお勧めします。
 
@@ -234,12 +227,10 @@ Streaming Analytics ジョブが、受信ストリームでの不正な呼び出
 
 Power BI で承認が更新されると、承認の領域に緑色のアラートが表示され、問題が解決されたことがわかります。
 
-## <a name="get-help"></a>ヘルプの参照
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
-
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
-* [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
+* [Stream Analytics の出力](stream-analytics-define-outputs.md)
 * [Azure Stream Analytics クエリ言語リファレンス](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics の管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [マネージド ID を使用して、Power BI に対して Azure Stream Analytics ジョブを認証する](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity)

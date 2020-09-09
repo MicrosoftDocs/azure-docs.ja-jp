@@ -1,22 +1,22 @@
 ---
-title: 条件付きアクセス ポリシーの移行 - Azure Active Directory
+title: 多要素認証による条件付きアクセス ポリシーの移行 - Azure Active Directory
 description: この記事では、Azure Portal で多要素認証が必要なクラシック ポリシーを移行する方法を示します。
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 12/04/2019
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d637ac464b689a25ce5d5a79cf47da0c85d38d0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5cc99241f5fa7c09c69db13dcb3f6c3aaa75e376
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74846032"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027395"
 ---
 # <a name="migrate-a-classic-policy-in-the-azure-portal"></a>Azure portal でクラシック ポリシーを移行する
 

@@ -2,14 +2,14 @@
 title: Azure Files ボリュームをコンテナー グループにマウントする
 description: Azure Files ボリュームをマウントして、Azure Container Instances で状態を保持する方法について説明します
 ms.topic: article
-ms.date: 12/30/2019
+ms.date: 07/02/2020
 ms.custom: mvc
-ms.openlocfilehash: f66890c503de8de9160f11fb28795012ae57daeb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eaf5e0704ba2ea4f0e0a30d61e4ae1d2ad1bf58d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75561339"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259465"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Azure Container Instances に Azure ファイル共有をマウントする
 
@@ -103,7 +103,7 @@ Azure CLI と [YAML テンプレート](container-instances-multi-container-yaml
 CLI の例のように、`dnsNameLabel` 値は、コンテナー インスタンスを作成する Azure リージョン内で一意である必要があります。 必要に応じて、YAML ファイル内の値を更新します。
 
 ```yaml
-apiVersion: '2018-10-01'
+apiVersion: '2019-12-01'
 location: eastus
 name: file-share-demo
 properties:
@@ -168,7 +168,7 @@ CLI と YAML によるデプロイに加え、Azure [Resource Manager テンプ�
     {
       "name": "file-share-demo",
       "type": "Microsoft.ContainerInstance/containerGroups",
-      "apiVersion": "2018-10-01",
+      "apiVersion": "2019-12-01",
       "location": "[resourceGroup().location]",
       "properties": {
         "containers": [
@@ -223,11 +223,11 @@ CLI と YAML によるデプロイに加え、Azure [Resource Manager テンプ�
 }
 ```
 
-この Resource Manager テンプレートを使ってデプロイするには、上記の JSON を `deploy-aci.json` という名前のファイルに保存し、`--template-file` パラメーターを指定して [az group deployment create][az-group-deployment-create] コマンドを実行します。
+この Resource Manager テンプレートを使ってデプロイするには、上記の JSON を `deploy-aci.json` という名前のファイルに保存し、`--template-file` パラメーターを指定して [az deployment group create][az-deployment-group-create] コマンドを実行します。
 
 ```azurecli
 # Deploy with Resource Manager template
-az group deployment create --resource-group myResourceGroup --template-file deploy-aci.json
+az deployment group create --resource-group myResourceGroup --template-file deploy-aci.json
 ```
 
 
@@ -285,4 +285,4 @@ Azure Container Instances にその他の種類のボリュームをマウント
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create
 [az-container-show]: /cli/azure/container#az-container-show
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create

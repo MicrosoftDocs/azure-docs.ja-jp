@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 0ebbf0d41c05f71c571d9665903ba4ba44f71bd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: cb27b4fec0d266bb9931b3942746b034ee3a645f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198805"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89009952"
 ---
 # <a name="configure-opc-publisher"></a>OPC Publisher の構成
 
@@ -58,7 +59,7 @@ OPC Publisher は、構成ファイルを使用するか、メソッドの呼び
 
 OPC UA イベントを発行するには、データ変更の場合と同じ構成ファイルを使用します。
 
-次の例では、[SimpleEvents server](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/SimpleEvents/Server) によって生成されたイベントに対する発行を構成する方法を示しています。 SimpleEvents サーバーは [OPC Foundation リポジトリ](https://github.com/OPCFoundation/UA-.NETStandard)から見つけることができます。
+次の例では、[SimpleEvents server](https://github.com/OPCFoundation/UA-.NETStandard-Samples/tree/master/Workshop/SimpleEvents/Server) によって生成されたイベントに対する発行を構成する方法を示しています。 SimpleEvents サーバーは [OPC Foundation リポジトリ](https://github.com/OPCFoundation/UA-.NETStandard-Samples)から見つけることができます。
 
 ```json
 [

@@ -6,17 +6,17 @@ author: ronortloff
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 11/12/2019
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: daf57c7e6ef40f75eac070c06547cf2a28338f21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 90815d52e6884efe6cff9a7860c093b4b5c1bc94
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633239"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204543"
 ---
 # <a name="manage-compute-in-azure-synapse-analytics-data-warehouse"></a>Azure Synapse Analytics データ ウェアハウスでコンピューティングを管理する
 

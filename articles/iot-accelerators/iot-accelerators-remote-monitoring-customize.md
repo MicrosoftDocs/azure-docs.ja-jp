@@ -8,12 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/09/2018
 ms.topic: conceptual
-ms.openlocfilehash: eb3d5fea68b5b1b6e648943cb3dbaab5857e9e07
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 412254f47a2700f77003f7db661f0ade214a1e23
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68608003"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423203"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>リモート監視ソリューション アクセラレータをカスタマイズする
 

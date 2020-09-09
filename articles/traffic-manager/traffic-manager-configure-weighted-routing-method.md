@@ -3,21 +3,20 @@ title: チュートリアル - Azure Traffic Manager を使用した重み付け
 description: このチュートリアルでは、Traffic Manager でラウンドロビン方式を使用してトラフィックの負荷分散を行う方法について説明します
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
-manager: twooley
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
-ms.author: rohink
-ms.openlocfilehash: 8bdc710b36cae70d29d32333f431b8a9dda154cc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.author: duau
+ms.openlocfilehash: dff7d4ec02c5a17b51d73b9d81f93984b95a7d22
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76938707"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401352"
 ---
 # <a name="tutorial-configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>チュートリアル:Traffic Manager の重み付けトラフィック ルーティング方法の構成
 

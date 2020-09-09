@@ -3,12 +3,13 @@ title: テンプレート リソースの場所
 description: Azure Resource Manager テンプレートでリソースの場所を設定する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: a8324dac1232eecd5624e5f1dc0e6656295c0a10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e60fa9727ef899c3192c751614736cd1dda5b382
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156431"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504196"
 ---
 # <a name="set-resource-location-in-arm-template"></a>ARM テンプレートでリソースの場所を設定する
 
@@ -44,7 +45,7 @@ az provider show \
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "storageAccountType": {

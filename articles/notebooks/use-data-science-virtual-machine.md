@@ -6,21 +6,21 @@ manager: andneil
 ms.author: getroyer
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: b4da63b7b2a6da4316215b85a09ca7420745251c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 291f1ac093568f50ad6146b70fa1ef69263b7b5b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898400"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830310"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Azure Data Science Virtual Machine を使用する
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 既定では、プロジェクトは**無料のコンピューティング** レベルで実行しますが、このレベルは不正使用を回避するために、4 GB のメモリと 1 GB のデータに制限されています。 これらの制限をバイパスするには、Azure サブスクリプションでプロビジョニングした別の仮想マシンを使用します。 この目的での最適な選択肢は、**Data Science Virtual Machine for Linux (Ubuntu)** イメージを使用する Azure Data Science Virtual Machine (DSVM) です。 この DSVM では、Azure Notebooks に必要なすべてが事前構成されており、Azure Notebooks の **[実行]** ドロップダウン リストに自動的に表示されます。
 
 > [!Note]
 > Azure Notebooks は、Linux Ubuntu イメージを使用して作成された DSVM でのみサポートされています。 Azure Notebooks は、Windows 2012、Windows 2016、Linux CentOS イメージではサポートされていません。
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="create-a-dsvm-instance"></a>DSVM インスタンスを作成する
 

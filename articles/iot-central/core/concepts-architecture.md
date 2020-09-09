@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 12ad231d81b6c134ebb8d4902b3f95c978e9622d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e4b81f2350795b1244289119d714e99bc06ba6f
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233367"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337145"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central のアーキテクチャ
 
@@ -135,7 +135,7 @@ Azure IoT Central アプリケーションでは、デバイス テンプレー�
 
 IoT Central アプリケーションのデバイス テンプレートには、次のものが含まれます。
 
-- **デバイス機能モデル**では、デバイスの機能 (送信するテレメトリ、デバイスの状態を定義するプロパティ、デバイスが応答するコマンドなど) を指定します。 デバイスの機能は、1つ以上のインターフェイスに編成されています。 デバイス機能モデルの詳細については、[IoT プラグ アンド プレイ (プレビュー)](../../iot-pnp/overview-iot-plug-and-play.md) に関するドキュメントを参照してください。
+- **デバイス機能モデル**では、デバイスの機能 (送信するテレメトリ、デバイスの状態を定義するプロパティ、デバイスが応答するコマンドなど) を指定します。 デバイスの機能は、1つ以上のインターフェイスに編成されています。
 - **クラウド プロパティ**では、IoT Central がデバイス用に格納するプロパティを指定します。 これらのプロパティは IoT Central にのみ格納され、デバイスに送信されることはありません。
 - **ビュー**では、オペレーターがデバイスを監視および管理できるように、ビルダーが作成するダッシュボードとフォームを指定します。
 - **カスタマイズ**により、ビルダーはデバイス機能モデルの定義の一部をオーバーライドして、IoT Central アプリケーションに対する関連性を高めることができます。
@@ -154,7 +154,7 @@ Azure IoT Central アプリケーションでは、接続されたデバイス�
 
 事前定義済みロールの 1 つを使用して、あるいはカスタム ロールを作成することで、Azure IoT Central アプリケーションの[アクセス ルールを管理者は定義できます](howto-manage-users-roles.md)。 ユーザーにアクセスが許可されるアプリケーションの領域とユーザーが実行できるアクションがロールにより決定されます。
 
-## <a name="security"></a>Security
+## <a name="security"></a>セキュリティ
 
 Azure IoT Central 内のセキュリティ機能には、次のものがあります。
 

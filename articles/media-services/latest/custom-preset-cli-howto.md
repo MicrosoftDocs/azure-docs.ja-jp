@@ -3,23 +3,25 @@ title: Media Services v3 Azure CLI を使用するカスタム変換のエンコ
 description: このトピックでは、Azure Media Services v3 で Azure CLI を使用してカスタム変換をエンコードする方法を示します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.custom: ''
-ms.date: 05/14/2019
-ms.author: juliako
-ms.openlocfilehash: 7c1b446ccf04199449f012e738f6a03660735f50
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.topic: how-to
+ms.custom: devx-track-azurecli
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: c61ac8c7cf85b1fae4c9b531f16b951dd2b80876
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80382955"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295787"
 ---
 # <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>カスタム変換を使用してエンコードする方法 - Azure CLI
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services でエンコードする場合、クイック スタートの「[ファイルのストリーミング配信](stream-files-cli-quickstart.md#create-a-transform-for-adaptive-bitrate-encoding)」で示されている業界のベスト プラクティスに基づき、推奨される組み込みプリセットのいずれかを使用して、すぐに作業を開始することができます。 また、特定のシナリオやデバイス要件をターゲットとするカスタム プリセットを作成することもできます。
 
@@ -32,7 +34,7 @@ Azure Media Services でエンコードする場合、クイック スタート�
 
 ## <a name="prerequisites"></a>前提条件
 
-[Media Services アカウントを作成する](create-account-cli-how-to.md)
+[Media Services アカウントを作成する](./create-account-howto.md)
 
 リソース グループ名と Media Services アカウント名を覚えておいてください。
 

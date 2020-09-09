@@ -3,16 +3,16 @@ title: チュートリアル - Azure IoT Edge を使用したエッジでの Str
 description: このチュートリアルでは、Azure Stream Analytics をモジュールとして IoT Edge デバイスに展開します
 author: kgremban
 ms.author: kgremban
-ms.date: 11/11/2019
+ms.date: 07/29/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d8c3bde0f32c1df6c98f6a71f6ab830c21256903
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c259e913a8ee5181bc58aea651af62324cf01fcb
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76906291"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439399"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>チュートリアル:Azure Stream Analytics を IoT Edge モジュールとしてデプロイする
 
@@ -64,7 +64,7 @@ Azure Stream Analytics ジョブを作成して IoT Edge デバイスで実行�
 
 1. ストレージ アカウントを作成するには、以下の値を指定します。
 
-   | フィールド | Value |
+   | フィールド | 値 |
    | ----- | ----- |
    | サブスクリプション | IoT ハブと同じサブスクリプションを選択します。 |
    | Resource group | IoT Edge のクイックスタートおよびチュートリアルのすべてのテスト リソースに、同じリソース グループを使用することをお勧めします。 たとえば、**IoTEdgeResources** を使用します。 |
@@ -81,7 +81,7 @@ Azure Stream Analytics ジョブを作成して IoT Edge デバイスで実行�
 
 1. ジョブを作成するには、以下の値を指定します。
 
-   | フィールド | Value |
+   | フィールド | 値 |
    | ----- | ----- |
    | ジョブ名 | ジョブの名前を指定します。 たとえば、「**IoTEdgeJob**」と指定します。 |
    | サブスクリプション | IoT ハブと同じサブスクリプションを選択します。 |
@@ -134,7 +134,7 @@ Azure portal で Stream Analytics ジョブが作成されたら、ジョブの�
     HAVING Avg(machine.temperature) > 70
     ```
 
-1. **[保存]** を選択します。
+1. **[クエリの保存]** を選択します。
 
 ### <a name="configure-iot-edge-settings"></a>IoT Edge の設定を構成する
 
@@ -169,7 +169,7 @@ IoT Edge デバイスに Azure Stream Analytics ジョブをデプロイする�
    1. **[追加]** をクリックし、 **[IoT Edge モジュール]** を選択します。
    1. 名前は、「**SimulatedTemperatureSensor**」と入力します。
    1. イメージ URI として「**mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0**」と入力します。
-   1. 他の設定はそのままにして、 **[保存]** を選択します。
+   1. 他の設定はそのままにして、 **[追加]** を選択します。
 
 1. 次の手順に従って、ご自身の Azure Stream Analytics Edge ジョブを追加します。
 
@@ -187,13 +187,13 @@ IoT Edge デバイスに Azure Stream Analytics ジョブをデプロイする�
 
    既定では、Stream Analytics モジュールは、基になるジョブと同じ名前になります。 必要に応じて、このページでモジュール名を変更できますが、必須ではありません。
 
-1. **[キャンセル]** または **[保存]** を選択します。
+1. **[更新]** または **[キャンセル]** を選択します。
 
-1. 後の手順で必要になるため、Stream Analytics モジュールの名前を書き留めてから、 **[次へ:ルート]** を選択して続行します。
+1. 後の手順で必要になるため、Stream Analytics モジュールの名前を書き留めます。 次に、 **[Next:ルート]** を選択して続行します。
 
 1. **[ルート]** タブで、モジュールと IoT Hub の間でメッセージが渡される方法を定義します。 メッセージは、名前と値のペアを使用して作成されます。 既定の `route` および `upstream` の名前と値を、次の表に示すペア (次の名前と値のペア) に置き換えます。また、 _{moduleName}_ のインスタンスを実際の Azure Stream Analytics モジュールの名前に置き換えます。
 
-    | 名前 | Value |
+    | 名前 | 値 |
     | --- | --- |
     | `telemetryToCloud` | `FROM /messages/modules/SimulatedTemperatureSensor/* INTO $upstream` |
     | `alertsToCloud` | `FROM /messages/modules/{moduleName}/* INTO $upstream` |

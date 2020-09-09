@@ -8,17 +8,17 @@ manager: daveba
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 759748124893a8f906a4bc336f835546202b0b62
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6afba520db399cc4eb99c8716540886cc88f6ae7
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80049491"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89275880"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオンのトラブルシューティングを行う
 
@@ -74,9 +74,9 @@ ms.locfileid: "80049491"
 シームレス SSO の問題のトラブルシューティングを行うには、次のチェックリストを使用します。
 
 - Azure AD Connect でシームレス SSO 機能が有効になっていることを確認します。 (ポートのブロックなどが原因で) この機能を有効にできない場合は、すべての[前提条件](how-to-connect-sso-quick-start.md#step-1-check-the-prerequisites)が満たされていることを確認します。
-- [Azure AD Join](../active-directory-azureadjoin-overview.md) とシームレス SSO の両方をテナントで有効にしている場合は、Azure AD Join で問題が発生していないことを確認してください。 デバイスが Azure AD に登録され、ドメインに参加している場合は、Azure AD Join の SSO がシームレス SSO よりも優先されます。 Azure AD の SSO を使用している場合、"Windows に接続済み" というサインイン タイルが表示されます。
+- [Azure AD Join](../devices/overview.md) とシームレス SSO の両方をテナントで有効にしている場合は、Azure AD Join で問題が発生していないことを確認してください。 デバイスが Azure AD に登録され、ドメインに参加している場合は、Azure AD Join の SSO がシームレス SSO よりも優先されます。 Azure AD の SSO を使用している場合、"Windows に接続済み" というサインイン タイルが表示されます。
 - Azure AD の URL (`https://autologon.microsoftazuread-sso.com`) が、ユーザーのイントラネット ゾーンの設定に含まれていることを確認します。
-- 会社のデバイスが Active Directory ドメインに参加していることを確認します。 シームレス SSO が機能するために、デバイスが[Azure AD 参加済み](../active-directory-azureadjoin-overview.md)である必要は _ありません_。
+- 会社のデバイスが Active Directory ドメインに参加していることを確認します。 シームレス SSO が機能するために、デバイスが[Azure AD 参加済み](../devices/overview.md)である必要は _ありません_。
 - ユーザーが Active Directory ドメイン アカウントでデバイスにログオンしていることを確認します。
 - ユーザーのアカウントが、シームレス SSO が設定されている Active Directory フォレストからのものであることを確認します。
 - デバイスが企業ネットワークに接続されていることを確認します。
@@ -106,7 +106,7 @@ ms.locfileid: "80049491"
 
 ### <a name="step-1-import-the-seamless-sso-powershell-module"></a>手順 1:Seamless SSO PowerShell モジュールのインポート
 
-1. 最初に [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview) をダウンロードしてインストールします。
+1. 最初に [Azure AD PowerShell](/powershell/azure/active-directory/overview) をダウンロードしてインストールします。
 2. `%programfiles%\Microsoft Azure Active Directory Connect` フォルダーを参照します。
 3. `Import-Module .\AzureADSSO.psd1` コマンドを使用して、Seamless SSO PowerShell モジュールをインポートします。
 

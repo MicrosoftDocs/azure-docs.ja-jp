@@ -10,12 +10,13 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 7130ed43183d64b00f8f5ef1697b9a3b456ad396
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b2fb06c838de480bb73501307ab11cb3d6831921
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "72931670"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919320"
 ---
 # <a name="create-video-reviews-using-net"></a>.NET を使用してビデオ レビューを作成する
 
@@ -165,7 +166,7 @@ public static ContentModeratorClient NewClient()
 - **Status**。 値を "Unpublished" に設定します。 設定しない場合は既定で "Pending" になります。これはビデオ レビューが公開済みで、人間によるレビュー待ちであることを意味します。 ビデオ レビューが公開されると、ビデオ フレーム、トランスクリプト、トランスクリプトのモデレート結果を追加できなくなります。
 
 > [!NOTE]
-> **CreateVideoReviews** により IList\<string> が返されます。 これらの文字列には、それぞれビデオ レビューの ID が含まれています。 これらの ID は GUID であり、**ContentId** プロパティの値とは異なります。 
+> **CreateVideoReviews** は IList\<string> を返します。 これらの文字列には、それぞれビデオ レビューの ID が含まれています。 これらの ID は GUID であり、**ContentId** プロパティの値とは異なります。 
 
 名前空間 VideoReviews、クラス Program に次のメソッド定義を追加します。
 
@@ -220,13 +221,13 @@ private static string CreateReview(ContentModeratorClient client, string id, str
 **VideoFrameBodyItem** には、次のプロパティがあります。
 - **Timestamp**。 ビデオ フレームが取得されてからのビデオ内の時間 (秒単位) が含まれる文字列。
 - **FrameImage**。 ビデオ フレームの URL。
-- **Metadata**。 IList\<VideoFrameBodyItemMetadataItem>。 **VideoFrameBodyItemMetadataItem** は単純にキーと値のペアです。 有効なキーは次のとおりです。
+- **Metadata**。 An IList\<VideoFrameBodyItemMetadataItem>。 **VideoFrameBodyItemMetadataItem** は単純にキーと値のペアです。 有効なキーは次のとおりです。
 - **reviewRecommended**。 人間によるビデオ フレームのレビューが推奨される場合は True。
 - **adultScore**。 ビデオ フレーム内の成人向けコンテンツの重大度を評価する 0 から 1 の値。
 - **a**。 ビデオに成人向けコンテンツが含まれる場合は True。
 - **racyScore**。 ビデオ フレーム内のきわどいコンテンツの重大度を評価する 0 から 1 の値。
 - **r**。 ビデオ フレームにきわどいコンテンツが含まれている場合は True。
-- **ReviewerResultTags**。 IList\<VideoFrameBodyItemReviewerResultTagsItem>。 **VideoFrameBodyItemReviewerResultTagsItem** は単純にキーと値のペアです。 アプリケーションはこれらのタグを使用してビデオ フレームを整理できます。
+- **ReviewerResultTags**。 An IList\<VideoFrameBodyItemReviewerResultTagsItem>。 **VideoFrameBodyItemReviewerResultTagsItem** は単純にキーと値のペアです。 アプリケーションはこれらのタグを使用してビデオ フレームを整理できます。
 
 > [!NOTE]
 > このクイック スタートは、**adultScore** プロパティと **racyScore** プロパティにランダムな値を生成します。 運用環境のアプリケーションでは、これらの値を Azure Media Service としてデプロイされた[ビデオ モデレーション サービス](video-moderation-api.md)から取得します。

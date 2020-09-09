@@ -1,24 +1,15 @@
 ---
 title: Azure Service Bus のエンドツーエンド トレースと診断 | Microsoft Docs
 description: Service Bus のクライアント診断とエンドツーエンド トレース (クライアントから、処理に関連するすべてのサービスまで) の概要。
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 7c2efc9c736097873201505f280af5d47bed4847
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9b46f85e16370d15e3a8def98cdcdf8b3878208d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294167"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021631"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Service Bus メッセージングを介した分散トレースおよび相関付け
 

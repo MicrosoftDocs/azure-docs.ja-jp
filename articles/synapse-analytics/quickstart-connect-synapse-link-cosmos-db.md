@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB 用の Azure Synapse Link に接続する
+title: クイック スタート:Azure Cosmos DB 用の Azure Synapse Link に接続する
 description: Synapse Link を使用して Azure Cosmos DB を Synapse ワークスペースに接続する方法
 services: synapse-analytics
 author: ArnoMicrosoft
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 81cc7745790c7a89576dc5d0ff925dbaff2b2334
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 56b018326e8673e6ac9e625a5732a08238f982fd
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700385"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274324"
 ---
 # <a name="connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB 用の Azure Synapse Link に接続する
 
@@ -33,7 +33,7 @@ Azure Cosmos DB アカウントをワークスペースに接続する前に、�
 
 ## <a name="navigate-to-synapse-studio"></a>Synapse Studio に移動する
 
-Synapse ワークスペースから、 **[Synapse Studio の起動]** を選択します。 Synapse Studio のホーム ページで、[**データ] を選択します。これにより、**データ オブジェクト エクスプローラー**に移動します。
+Synapse ワークスペースから、 **[Synapse Studio の起動]** を選択します。 Synapse Studio のホーム ページで、[**データ] を選択します。これにより、 **データ オブジェクト エクスプローラー** に移動します。
 
 ## <a name="connect-an-azure-cosmos-db-database-to-a-synapse-workspace"></a>Azure Cosmos DB データベースを Synapse ワークスペースに接続する
 

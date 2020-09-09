@@ -6,12 +6,12 @@ ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.topic: article
 ms.date: 07/25/2018
 ms.custom: seodec18
-ms.openlocfilehash: f7f9f6d5617ad0f9be69c47ce514d395534fd892
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4db7c6bf29d0874b5441a8a0eb90f7d1ada33d9c
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74672211"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962436"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Azure App Service の PremiumV2 レベルの構成
 
@@ -43,7 +43,7 @@ App Service アプリの価格レベルは、実行されている [App Service 
 
 **[Production]\(運用\)** を選択してから **[P1V2]** 、 **[P2V2]** 、または **[P3V2]** を選択し、 **[適用]** をクリックします。
 
-![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
+![アプリの推奨価格レベルを示すスクリーンショット。](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 > [!IMPORTANT] 
 > オプションとして **[P1V2]** **[P2V2]** 、および **[P3V2]** が表示されない場合、またはこれらのオプションがグレー表示になっている場合、App Service プランが含まれている基になる App Service デプロイで **PremiumV2** を利用できない可能性があります。 詳細については、「[サポートされてないリソース グループとリージョンの組み合わせからスケール アップする](#unsupported)」を参照してください。
@@ -58,15 +58,15 @@ App Service アプリの価格レベルは、実行されている [App Service 
 
 App Service アプリ ページの左側のナビゲーションで、 **[スケール アップ (App Service のプラン)]** を選択します。
 
-![](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
+![App Service プランをスケールアップする方法を示すスクリーンショット。](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
 
 **[Production]\(運用\)** を選択してから **[P1V2]** 、 **[P2V2]** 、または **[P3V2]** を選択し、 **[適用]** をクリックします。
 
-![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
+![アプリの推奨価格レベルを示すスクリーンショット。](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 操作が正常に完了すると、アプリの概要ページに **PremiumV2** レベルであることが表示されます。
 
-![](media/app-service-configure-premium-tier/finished.png)
+![PremiumV2 価格レベルを示すアプリの [概要] ページのスクリーンショット。](media/app-service-configure-premium-tier/finished.png)
 
 ### <a name="if-you-get-an-error"></a>エラーが表示された場合
 
@@ -81,13 +81,13 @@ App Service アプリ ページの左側のナビゲーションで、 **[スケ
 - **新しい**リソース グループを作成した後、**新しい**リソース グループ内に**新しい**アプリと App Service プランを作成し、作成プロセス中に目的の Azure リージョンを選択します。  新しい App Service プランの作成時に、**PremiumV2** プランを選択する**必要があります**。  これにより、リソース グループ、App Service プラン、および Azure リージョンの組み合わせが、**PremiumV2** をサポートする App Service デプロイ内に作成される App Service プランになります。  その後、新しく作成たアプリと App Service プランに、アプリケーション コードを再デプロイします。 必要に応じて、後で App Service プランを **PremiumV2** からスケール ダウンしてコストを節約できます。将来もう一度 **PremiumV2** を使用するように、問題なくスケール アップできます。
 - 既存の **Premium** レベルでアプリが既に実行されている場合は、**PremiumV2** を使用する新しい App Service プランに、すべてのアプリ設定、接続文字列、およびデプロイ構成と共にアプリを複製できます。
 
-    ![](media/app-service-configure-premium-tier/clone-app.png)
+    ![アプリを複製する方法を示すスクリーンショット。](media/app-service-configure-premium-tier/clone-app.png)
 
     **[アプリの複製]** ページで、**PremiumV2** を使用する App Service プランを目的のリージョンで作成し、複製するアプリ設定と構成を指定できます。
 
 ## <a name="automate-with-scripts"></a>スクリプトで自動化する
 
-[Azure CLI](/cli/azure/install-azure-cli) または [Azure PowerShell](/powershell/azure/overview) を使用すると、**PremiumV2** レベルでのアプリ作成をスクリプトで自動化することができます。
+[Azure CLI](/cli/azure/install-azure-cli) または [Azure PowerShell](/powershell/azure/) を使用すると、**PremiumV2** レベルでのアプリ作成をスクリプトで自動化することができます。
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -116,4 +116,4 @@ New-AzAppServicePlan -ResourceGroupName <resource_group_name> `
 ## <a name="more-resources"></a>その他のリソース
 
 [Azure でのアプリのスケールアップ](manage-scale-up.md)  
-[手動または自動によるインスタンス数のスケール変更](../monitoring-and-diagnostics/insights-how-to-scale.md)
+[手動または自動によるインスタンス数のスケール変更](../azure-monitor/platform/autoscale-get-started.md)

@@ -3,15 +3,15 @@ title: Azure PowerShell を使用して Azure 外部ロード バランサーを
 description: Azure PowerShell を使って Azure 外部ロード バランサーを Azure リージョン間で移動するには、Azure Resource Manager テンプレートを使用します。
 author: asudbring
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: a24eb4608e7630d5b613751fa2120361eccd7672
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be1971c9184d0b2b406b669ae9d1ea61598b201f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75644819"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809428"
 ---
 # <a name="move-azure-external-load-balancer-to-another-region-using-azure-powershell"></a>Azure PowerShell を使用して Azure 外部ロード バランサーを別のリージョンに移動する
 
@@ -116,7 +116,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
     ```
 8. また、必要に応じて、テンプレート内の他のパラメーターも変更できます。これらは、実際の要件に応じて省略可能です。
 
-    * **SKU** - 構成のパブリック IP の SKU を、Standard から Basic、または Basic から Standard に変更できます。そのためには、**\<resource-group-name>.json** ファイルの **sku** > **name** プロパティを変更します。
+    * **SKU** - 構成のパブリック IP の SKU を、Standard から Basic、または Basic から Standard に変更できます。そのためには、 **\<resource-group-name>.json** ファイルの **sku** > **name** プロパティを変更します。
 
          ```json
             "resources": [
@@ -282,7 +282,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
         },
     ```
 
-10. 外部ロード バランサー構成を移動するターゲット リージョンを編集するには、**\<resource-group-name>.json** ファイルで **resources** の下の **location** プロパティを変更します。
+10. 外部ロード バランサー構成を移動するターゲット リージョンを編集するには、 **\<resource-group-name>.json** ファイルで **resources** の下の **location** プロパティを変更します。
 
     ```json
         "resources": [
@@ -306,7 +306,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
     ```
 12. また、必要に応じて、テンプレート内の他のパラメーターも変更できます。これらは、実際の要件に応じて省略可能です。
     
-    * **SKU** - 構成の外部ロード バランサーの SKU を、Standard から Basic または Basic から Standard に変更できます。そのためには、**\<resource-group-name>.json** ファイルの **sku** > **name** プロパティを変更します。
+    * **SKU** - 構成の外部ロード バランサーの SKU を、Standard から Basic、または Basic から Standard に変更できます。そのためには、 **\<resource-group-name>.json** ファイルの **sku** > **name** プロパティを変更します。
 
         ```json
         "resources": [
@@ -322,7 +322,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
         ```
       Basic SKU と Standard SKU のロード バランサーの違いの詳細については、「[Azure Standard Load Balancer の概要](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)」を参照してください。
 
-    * **負荷分散規則** - 構成の負荷分散規則を追加または削除できます。そのためには、**\<resource-group-name>.json** ファイルの **loadBalancingRules** セクションでエントリを追加または削除します。
+    * **負荷分散規則** - 構成の負荷分散規則を追加または削除できます。そのためには、 **\<resource-group-name>.json** ファイルの **loadBalancingRules** セクションでエントリを追加または削除します。
 
         ```json
         "loadBalancingRules": [
@@ -354,7 +354,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
         ```
        負荷分散規則の詳細については、「[Azure Load Balancer とは](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)」を参照してください。
 
-    * **プローブ** - 構成のロード バランサーのプローブを追加または削除できます。そのためには、**\<resource-group-name>.json** ファイルの **probes** セクションでエントリを追加または削除します。
+    * **プローブ** - 構成のロード バランサーのプローブを追加または削除できます。そのためには、 **\<resource-group-name>.json** ファイルの **probes** セクションでエントリを追加または削除します。
 
         ```json
         "probes": [
@@ -374,7 +374,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
         ```
        Azure Load Balancer の正常性プローブの詳細については、「[Load Balancer の正常性プローブ](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)」を参照してください。
 
-    * **インバウンド NAT 規則** - ロード バランサーのインバウンド NAT 規則を追加または削除できます。そのためには、**\<resource-group-name>.json** ファイルの **inboundNatRules** セクションでエントリを追加または削除します。
+    * **インバウンド NAT 規則** - ロード バランサーのインバウンド NAT 規則を追加または削除できます。そのためには、 **\<resource-group-name>.json** ファイルの **inboundNatRules** セクションでエントリを追加または削除します。
 
         ```json
         "inboundNatRules": [
@@ -396,7 +396,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
                     }
                 ]
         ```
-        インバウンド NAT 規則の追加または削除を完了するには、**\<resource-group-name>.json** ファイルの末尾で **type** プロパティとして、規則が存在するか削除されている必要があります。
+        インバウンド NAT 規則の追加または削除を完了するには、 **\<resource-group-name>.json** ファイルの末尾の **type** プロパティとして、規則が存在するか削除されている必要があります。
 
         ```json
         {
@@ -422,7 +422,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
         ```
         インバウンド NAT 規則の詳細については、「[Azure Load Balancer とは](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)」を参照してください。
 
-    * **アウトバウンド規則** - 構成のアウトバウンド規則を追加または削除できます。そのためには、**\<resource-group-name>.json** ファイルの **outboundRules** プロパティを編集します。
+    * **アウトバウンド規則** - 構成のアウトバウンド規則を追加または削除できます。そのためには、 **\<resource-group-name>.json** ファイルの **outboundRules** プロパティを編集します。
 
         ```json
         "outboundRules": [

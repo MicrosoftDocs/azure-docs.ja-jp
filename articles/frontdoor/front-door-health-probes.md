@@ -3,20 +3,20 @@ title: Azure Front Door - バックエンドの正常性監視 | Microsoft Docs
 description: この記事は、バックエンドの正常性が Azure Front Door によってどのように監視されるかを理解するのに役立ちます
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: e2e656c395f1a31c1f5ebbd46d5a18a046f854f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: duau
+ms.openlocfilehash: c96dac55df2cdc15b7d3699e947c851a9fe69b02
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471576"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399635"
 ---
 # <a name="health-probes"></a>正常性プローブ
 

@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と SAP Cloud Platform の統合 | Microsoft Docs'
 description: Azure Active Directory と SAP Cloud Platform の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: bd398225-8bd8-4697-9a44-af6e6679113a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89ea2c45e16dfeb63801f70fa4480c0d865a890f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c2738e1a6168440adee79ebaa599a313600153a4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73160072"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546765"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>チュートリアル: Azure Active Directory と SAP Cloud Platform の統合
 
@@ -114,35 +109,29 @@ SAP Cloud Platform で Azure AD シングル サインオンを構成するに�
 
     a. **[サインオン URL]** ボックスに、ユーザーが **SAP Cloud Platform** アプリケーションへのサインオンに使用する URL を入力します。 これは、SAP Cloud Platform アプリケーションで保護されたリソースのアカウント固有の URL です。 URL は次のパターンに基づいています。`https://<applicationName><accountName>.<landscape host>.ondemand.com/<path_to_protected_resource>`
       
-     >[!NOTE]
-     >これは、ユーザーが認証を必要とする SAP Cloud Platform アプリケーションの URL です。
-     > 
+    >[!NOTE]
+    >これは、ユーザーが認証を必要とする SAP Cloud Platform アプリケーションの URL です。
+    > 
 
-    | |
-    |--|
-    | `https://<subdomain>.hanatrial.ondemand.com/<instancename>` |
-    | `https://<subdomain>.hana.ondemand.com/<instancename>` |
+    - `https://<subdomain>.hanatrial.ondemand.com/<instancename>`
+    - `https://<subdomain>.hana.ondemand.com/<instancename>`
 
     b. **[識別子]** ボックスに、次のいずれかの形式で SAP Cloud Platform の URL を入力します。 
 
-    | |
-    |--|
-    | `https://hanatrial.ondemand.com/<instancename>` |
-    | `https://hana.ondemand.com/<instancename>` |
-    | `https://us1.hana.ondemand.com/<instancename>` |
-    | `https://ap1.hana.ondemand.com/<instancename>` |
+    - `https://hanatrial.ondemand.com/<instancename>`
+    - `https://hana.ondemand.com/<instancename>`
+    - `https://us1.hana.ondemand.com/<instancename>`
+    - `https://ap1.hana.ondemand.com/<instancename>`
 
     c. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
 
-    | |
-    |--|
-    | `https://<subdomain>.hanatrial.ondemand.com/<instancename>` |
-    | `https://<subdomain>.hana.ondemand.com/<instancename>` |
-    | `https://<subdomain>.us1.hana.ondemand.com/<instancename>` |
-    | `https://<subdomain>.dispatcher.us1.hana.ondemand.com/<instancename>` |
-    | `https://<subdomain>.ap1.hana.ondemand.com/<instancename>` |
-    | `https://<subdomain>.dispatcher.ap1.hana.ondemand.com/<instancename>` |
-    | `https://<subdomain>.dispatcher.hana.ondemand.com/<instancename>` |
+    - `https://<subdomain>.hanatrial.ondemand.com/<instancename>`
+    - `https://<subdomain>.hana.ondemand.com/<instancename>`
+    - `https://<subdomain>.us1.hana.ondemand.com/<instancename>`
+    - `https://<subdomain>.dispatcher.us1.hana.ondemand.com/<instancename>`
+    - `https://<subdomain>.ap1.hana.ondemand.com/<instancename>`
+    - `https://<subdomain>.dispatcher.ap1.hana.ondemand.com/<instancename>`
+    - `https://<subdomain>.dispatcher.hana.ondemand.com/<instancename>`
 
     > [!NOTE] 
     > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 サインオン URL と識別子を取得するには、[SAP Cloud Platform クライアント サポート チーム](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/5dd739823b824b539eee47b7860a00be.html)に問い合わせてください。 応答 URL については、チュートリアルの後半で説明されている信頼管理セクションから入手できます。

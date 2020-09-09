@@ -4,24 +4,24 @@ titleSuffix: Azure Media Services
 description: Azure Media Services で Transform を作成してビデオの処理ルールを記述する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/19/2019
-ms.author: juliako
-ms.openlocfilehash: ab99b974aed6f8cd5e1da2ee9b427f593b405889
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: inhenkel
+ms.openlocfilehash: a9e34c4aaeb6fc2c151233b05ed5584e0e624148
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73571232"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297979"
 ---
 # <a name="transforms-and-jobs-in-media-services"></a>Media Services の Transform と Job
 
-このトピックでは、[Transform](https://docs.microsoft.com/rest/api/media/transforms) と [Job](https://docs.microsoft.com/rest/api/media/jobs) に関する詳細を示し、これらのエンティティ間の関係について説明します。
+このトピックでは、[Transform](/rest/api/media/transforms) と [Job](/rest/api/media/jobs) に関する詳細を示し、これらのエンティティ間の関係について説明します。
 
 ## <a name="overview"></a>概要
 
@@ -58,7 +58,7 @@ ms.locfileid: "73571232"
 
 ### <a name="viewing-schema"></a>スキーマの表示
 
-Media Services v3 では、プリセットは API 自体で厳密に型指定されたエンティティです。 これらのオブジェクトの "スキーマ" 定義は、[Open API の仕様 (または Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01) にあります。 プリセット定義 (**StandardEncoderPreset** など) は、[REST API](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)、[.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)、またはその他の Media Services v3 SDK のリファレンス ドキュメントでも確認できます。
+Media Services v3 では、プリセットは API 自体で厳密に型指定されたエンティティです。 これらのオブジェクトの "スキーマ" 定義は、[Open API の仕様 (または Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01) にあります。 プリセット定義 (**StandardEncoderPreset** など) は、[REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset)、[.NET SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)、またはその他の Media Services v3 SDK のリファレンス ドキュメントでも確認できます。
 
 ### <a name="creating-transforms"></a>変換の作成
 
@@ -66,7 +66,7 @@ Transform は、REST、CLI、または公開されている任意の SDK を使�
 
 ### <a name="updating-transforms"></a>変換の更新
 
-[Transform](https://docs.microsoft.com/rest/api/media/transforms) を更新する必要がある場合は、**Update** 操作を使用します。 これは基になる TransformOutput の記述または優先度を変更することを目的としています。 このような更新は、進行中のすべてのジョブが完了したときに行うことをお勧めします。 レシピを書き直す場合は、新しい Transform を作成する必要があります。
+[Transform](/rest/api/media/transforms) を更新する必要がある場合は、**Update** 操作を使用します。 これは基になる TransformOutput の記述または優先度を変更することを目的としています。 このような更新は、進行中のすべてのジョブが完了したときに行うことをお勧めします。 レシピを書き直す場合は、新しい Transform を作成する必要があります。
 
 ### <a name="transform-object-diagram"></a>Transform オブジェクトの図
 
@@ -74,11 +74,11 @@ Transform は、REST、CLI、または公開されている任意の SDK を使�
 
 画像を選択すると、フル サイズで表示されます。  
 
-<a href="./media/api-diagrams/transform-large.png" target="_blank"><img src="./media/api-diagrams/transform-small.png"></a>
+[![Transform オブジェクトとそれが参照するオブジェクト (オブジェクト間のクラス派生リレーションシップを含む) を示す図。](./media/api-diagrams/transform-small.png)](./media/api-diagrams/transform-large.png#lightbox)
 
 ## <a name="jobs"></a>ジョブ
 
-**ジョブ**は、特定の入力ビデオまたはオーディオ コンテンツに **Transform** を適用する、Media Services への実際の要求です。 Transform を作成すると､Media Services API または公開されている任意の SDK を使用してジョブを送信できます｡ **Job** は、入力ビデオの場所や出力先などの情報を指定します。 入力ビデオの場所は、HTTPS URL、SAS URL、または[アセット](https://docs.microsoft.com/rest/api/media/assets)を使用して指定できます。  
+**ジョブ**は、特定の入力ビデオまたはオーディオ コンテンツに **Transform** を適用する、Media Services への実際の要求です。 Transform を作成すると､Media Services API または公開されている任意の SDK を使用してジョブを送信できます｡ **Job** は、入力ビデオの場所や出力先などの情報を指定します。 入力ビデオの場所は、HTTPS URL、SAS URL、または[アセット](/rest/api/media/assets)を使用して指定できます。  
 
 ### <a name="job-input-from-https"></a>HTTPS からのジョブ入力
 
@@ -94,7 +94,7 @@ Transform は、REST、CLI、または公開されている任意の SDK を使�
 
 ### <a name="updating-jobs"></a>ジョブの更新
 
-ジョブが送信された後、[Job](https://docs.microsoft.com/rest/api/media/jobs) エンティティの更新操作を使用して、*description* および *priority* プロパティを変更できます。 *priority* プロパティの変更は、ジョブがキューに入っている状態の場合にのみ有効です。 ジョブの処理がすでに開始されているか､完了している場合､優先順位の変更は適用されません｡
+ジョブが送信された後、[Job](/rest/api/media/jobs) エンティティの更新操作を使用して、*description* および *priority* プロパティを変更できます。 *priority* プロパティの変更は、ジョブがキューに入っている状態の場合にのみ有効です。 ジョブの処理がすでに開始されているか､完了している場合､優先順位の変更は適用されません｡
 
 ### <a name="job-object-diagram"></a>ジョブ オブジェクトの図
 
@@ -102,7 +102,7 @@ Transform は、REST、CLI、または公開されている任意の SDK を使�
 
 画像をクリックすると、フル サイズで表示されます。  
 
-<a href="./media/api-diagrams/job-large.png" target="_blank"><img src="./media/api-diagrams/job-small.png"></a>
+[![Job オブジェクトとそれが参照するオブジェクト (オブジェクト間のクラス派生リレーションシップを含む) を示す図。](./media/api-diagrams/job-small.png)](./media/api-diagrams/job-large.png#lightbox)
 
 ## <a name="configure-media-reserved-units"></a>メディア占有ユニットを構成する
 
@@ -116,7 +116,7 @@ Media Services v3 または Video Indexer によってトリガーされる音�
 
 ## <a name="see-also"></a>関連項目
 
-* [エラー コード](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
+* [エラー コード](/rest/api/media/jobs/get#joberrorcode)
 * [Media Services エンティティのフィルター処理、順序付け、ページング](entities-overview.md)
 
 ## <a name="next-steps"></a>次のステップ

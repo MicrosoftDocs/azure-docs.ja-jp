@@ -12,12 +12,12 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: 4822e6feb29f5a17c653a60937b895ec584e0ee4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 19372b30a5e56738230216777897c08b07a0a86a
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69637200"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170702"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>Ruby で音声および SMS 機能に Twilio を使用する方法
 このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。 電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。 Twilio の詳細、およびアプリケーションで音声と SMS を使用する方法については、「 [次のステップ](#NextSteps) 」を参照してください。
@@ -38,10 +38,12 @@ TwiML は、通話または SMS をどのように処理するかを Twilio に�
 
 たとえば、次の TwiML は、テキスト **Hello World** を音声に変換します。
 
-    <?xml version="1.0" encoding="UTF-8" ?>
-    <Response>
-       <Say>Hello World</Say>
-    </Response>
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<Response>
+    <Say>Hello World</Say>
+</Response>
+```
 
 すべての TwiML ドキュメントには、 `<Response>` がルート要素として存在します。 ここから、Twilio 動詞を使用してアプリケーションの動作を定義します。
 
@@ -82,28 +84,36 @@ Twilio サービスを使用し、Azure で動作している Ruby アプリケ�
 
 新しい VM に SSH で接続し、新しいアプリケーション用のディレクトリを作成します。 そのディレクトリの中に Gemfile というファイルを作成し、次のコードをファイルにコピーします。
 
-    source 'https://rubygems.org'
-    gem 'sinatra'
-    gem 'thin'
+```bash
+source 'https://rubygems.org'
+gem 'sinatra'
+gem 'thin'
+```
 
 コマンド ラインで、 `bundle install`を実行します。 これにより、上に示した依存関係がインストールされます。 次に、 `web.rb`というファイルを作成します。 これが Web アプリケーションのコードを記述する場所になります。 このファイルに次のコードを貼り付けます。
 
-    require 'sinatra'
+```ruby
+require 'sinatra'
 
-    get '/' do
-        "Hello Monkey!"
-    end
+get '/' do
+    "Hello Monkey!"
+end
+```
 
 この時点で、 `ruby web.rb -p 5000`コマンドを実行できます。 これにより、単純な Web サーバーがポート 5000 で動き始めます。 Azure VM 用に設定した URL にブラウザーでアクセスすると、このアプリケーションを参照できます。 ブラウザーで Web アプリケーションにアクセスできたら、Twilio アプリケーションの作成を始める準備ができています。
 
 ## <a name="configure-your-application-to-use-twilio"></a><a id="configure_app"></a>Twilio を使用するようにアプリケーションを構成する
 Twilio ライブラリを使用するように Web アプリケーションを構成するには、 `Gemfile` を更新して次の行を追加します。
 
-    gem 'twilio-ruby'
+```bash
+gem 'twilio-ruby'
+```
 
 コマンド ラインで、 `bundle install`を実行します。 `web.rb` を開き、先頭に次の行を追加します。
 
-    require 'twilio-ruby'
+```ruby
+require 'twilio-ruby'
+```
 
 これで、Ruby 用の Twilio ヘルパー ライブラリを Web アプリケーションで使用するための設定が完了しました。
 
@@ -112,33 +122,35 @@ Twilio ライブラリを使用するように Web アプリケーションを�
 
 次の関数を `web.md`に追加します。
 
-    # Set your account ID and authentication token.
-    sid = "your_twilio_account_sid";
-    token = "your_twilio_authentication_token";
+```ruby
+# Set your account ID and authentication token.
+sid = "your_twilio_account_sid";
+token = "your_twilio_authentication_token";
 
-    # The number of the phone initiating the call.
-    # This should either be a Twilio number or a number that you've verified
-    from = "NNNNNNNNNNN";
+# The number of the phone initiating the call.
+# This should either be a Twilio number or a number that you've verified
+from = "NNNNNNNNNNN";
 
-    # The number of the phone receiving call.
-    to = "NNNNNNNNNNN";
+# The number of the phone receiving call.
+to = "NNNNNNNNNNN";
 
-    # Use the Twilio-provided site for the TwiML response.
-    url = "http://yourdomain.cloudapp.net/voice_url";
+# Use the Twilio-provided site for the TwiML response.
+url = "http://yourdomain.cloudapp.net/voice_url";
 
-    get '/make_call' do
-      # Create the call client.
-      client = Twilio::REST::Client.new(sid, token);
+get '/make_call' do
+    # Create the call client.
+    client = Twilio::REST::Client.new(sid, token);
 
-      # Make the call
-      client.account.calls.create(to: to, from: from, url: url)
-    end
+    # Make the call
+    client.account.calls.create(to: to, from: from, url: url)
+end
 
-    post '/voice_url' do
-      "<Response>
-         <Say>Hello Monkey!</Say>
-       </Response>"
-    end
+post '/voice_url' do
+    "<Response>
+        <Say>Hello Monkey!</Say>
+    </Response>"
+end
+```
 
 ブラウザーで `http://yourdomain.cloudapp.net/make_call` を開くと、通話を発信する Twilio API の呼び出しがトリガーされます。 `client.account.calls.create` の最初の 2 つのパラメーターは、文字どおり、呼び出し元 (`from`) と呼び出し先 (`to`) の番号です。 
 
@@ -151,11 +163,13 @@ Twilio ライブラリを使用するように Web アプリケーションを�
 
 今回は受信 SMS メッセージを処理するので、URL を `http://yourdomain.cloudapp.net/sms_url`に更新します。 ページの下部にある [Save Changes] をクリックします。 `web.rb` に戻り、アプリケーションをプログラミングして次の処理を追加します。
 
-    post '/sms_url' do
-      "<Response>
-         <Message>Hey, thanks for the ping! Twilio and Azure rock!</Message>
-       </Response>"
-    end
+```ruby
+post '/sms_url' do
+    "<Response>
+        <Message>Hey, thanks for the ping! Twilio and Azure rock!</Message>
+    </Response>"
+end
+```
 
 変更を加えた後は、必ず Web アプリケーションを再起動してください。 次に、電話を使用して Twilio 番号に SMS を送信します。 "Hey, thanks for the ping! Twilio and Azure rock!" という SMS 応答がすぐに返されます。
 

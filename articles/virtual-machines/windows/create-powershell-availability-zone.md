@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 60ce5b868b2a8f955b32e372201613ba66d49eff
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 95d97605f00a3a80c097eb16695c9d296e17c33d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208977"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825244"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-powershell"></a>PowerShell を使用して可用性ゾーン内に Windows 仮想マシンを作成する
 
@@ -32,9 +32,9 @@ Connect-AzAccount
 ```
 
 ## <a name="check-vm-sku-availability"></a>提供されている VM SKU の確認
-提供されている VM サイズ (SKU) は、リージョンやゾーンによって異なる場合があります。 可用性ゾーンの使用計画を立てやすくするために、提供されている VM SKU を Azure リージョンとゾーンごとに一覧表示することができます。 そうすることで適切な VM サイズを選び、必要な回復性をすべてのゾーンにわたって確保することができます。 さまざまな VM の種類とサイズについて詳しくは、[VM サイズの概要](sizes.md)に関するページを参照してください。
+提供されている VM サイズ (SKU) は、リージョンやゾーンによって異なる場合があります。 可用性ゾーンの使用計画を立てやすくするために、提供されている VM SKU を Azure リージョンとゾーンごとに一覧表示することができます。 そうすることで適切な VM サイズを選び、必要な回復性をすべてのゾーンにわたって確保することができます。 さまざまな VM の種類とサイズについて詳しくは、[VM サイズの概要](../sizes.md)に関するページを参照してください。
 
-使用可能な VM SKU は、[Get-AzComputeResourceSku](https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku) コマンドで確認できます。 次の例では、*eastus2* リージョンで提供されている VM SKU を一覧表示しています。
+使用可能な VM SKU は、[Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) コマンドで確認できます。 次の例では、*eastus2* リージョンで提供されている VM SKU を一覧表示しています。
 
 ```powershell
 Get-AzComputeResourceSku | where {$_.Locations.Contains("eastus2")};
@@ -61,7 +61,7 @@ virtualMachines   Standard_E4_v3   eastus2  {1, 2, 3}
 
 ## <a name="create-resource-group"></a>リソース グループの作成
 
-[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 この例では、*myResourceGroup* という名前のリソース グループが *eastus2* リージョンに作成されます。 
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 この例では、*myResourceGroup* という名前のリソース グループが *eastus2* リージョンに作成されます。 
 
 ```powershell
 New-AzResourceGroup -Name myResourceGroup -Location EastUS2
@@ -105,7 +105,7 @@ $nsg = New-AzNetworkSecurityGroup -ResourceGroupName myResourceGroup -Location e
 ```
 
 ### <a name="create-a-network-card-for-the-virtual-machine"></a>仮想マシン用のネットワーク カードを作成する 
-[New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) を使用して、仮想マシン用のネットワーク カードを作成します。 ネットワーク カードは、仮想マシンをサブネット、ネットワーク セキュリティ グループ、パブリック IP アドレスに接続します。
+[New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) を使用して、仮想マシン用のネットワーク カードを作成します。 ネットワーク カードは、仮想マシンをサブネット、ネットワーク セキュリティ グループ、パブリック IP アドレスに接続します。
 
 ```powershell
 # Create a virtual network card and associate with public IP address and NSG
@@ -128,7 +128,7 @@ $vmConfig = New-AzVMConfig -VMName myVM -VMSize Standard_DS1_v2 -Zone 2 | `
     -Skus 2016-Datacenter -Version latest | Add-AzVMNetworkInterface -Id $nic.Id
 ```
 
-[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) を使用して、仮想マシンを作成します。
+[New-AzVM](/powershell/module/az.compute/new-azvm) を使用して、仮想マシンを作成します。
 
 ```powershell
 New-AzVM -ResourceGroupName myResourceGroup -Location eastus2 -VM $vmConfig
@@ -136,7 +136,7 @@ New-AzVM -ResourceGroupName myResourceGroup -Location eastus2 -VM $vmConfig
 
 ## <a name="confirm-zone-for-managed-disk"></a>マネージド ディスクのゾーンの確認
 
-VM と同じ可用性ゾーンに VM の IP アドレス リソースを作成しました。 VM のマネージド ディスク リソースは、同じ可用性ゾーンに作成されます。 このことは、[Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk) で確認できます。
+VM と同じ可用性ゾーンに VM の IP アドレス リソースを作成しました。 VM のマネージド ディスク リソースは、同じ可用性ゾーンに作成されます。 このことは、[Get-AzDisk](/powershell/module/az.compute/get-azdisk) で確認できます。
 
 ```powershell
 Get-AzDisk -ResourceGroupName myResourceGroup
@@ -170,4 +170,4 @@ Tags               : {}
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、可用性ゾーン内に VM を作成する方法を説明しました。 Azure VM の[可用性](availability.md)の詳細を確認してください。
+この記事では、可用性ゾーン内に VM を作成する方法を説明しました。 Azure VM の[可用性](../availability.md)の詳細を確認してください。

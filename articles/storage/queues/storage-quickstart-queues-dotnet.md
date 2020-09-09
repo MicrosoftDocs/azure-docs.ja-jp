@@ -3,23 +3,21 @@ title: クイック スタート:Azure Queue storage ライブラリ v12 - .NET
 description: Azure Queue .NET v12 ライブラリを使用してキューを作成し、そのキューにメッセージを追加する方法について説明します。 次に、キューからメッセージを読み取って削除する方法について説明します。 キューを削除する方法についても説明します。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/22/2019
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: c69aa91596ff203445aa4fa3ccd59001ffe16649
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: devx-track-csharp
+ms.openlocfilehash: fd60adf94e57be3892a264c2a8457b839e1c8778
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78197489"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011295"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>クイック スタート:.NET 用 Azure Queue storage クライアント ライブラリ v12
 
 .NET 用 Azure Queue storage クライアント ライブラリ バージョン 12 を使用してみましょう。 Azure Queue storage は、後で取得して処理するために多数のメッセージを格納するためのサービスです。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。
-
-> [!NOTE]
-> 以前の SDK バージョンを使ってみるには、「[クイックスタート: .NET 用 Azure Storage SDK v11 を使用してキューを管理する](storage-quickstart-queues-dotnet-legacy.md)」を参照してください。
 
 .NET 用 Azure Queue storage クライアント ライブラリ v12 を使用すると、以下のことができます。
 
@@ -31,7 +29,12 @@ ms.locfileid: "78197489"
 * キューからメッセージを削除する
 * キューを削除する
 
-[API のリファレンスのドキュメント](/dotnet/api/azure.storage.queues) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues) | [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0) | [サンプル](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+その他のリソース:
+
+* [API リファレンス ドキュメント](/dotnet/api/azure.storage.queues)
+* [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues)
+* [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0)
+* [サンプル](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>前提条件
 

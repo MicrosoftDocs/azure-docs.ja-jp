@@ -30,7 +30,7 @@ Apache Hive 結合の既定の動作では、Map/Reduce 手順を行うことな
 Caused by: java.lang.OutOfMemoryError: GC overhead limit exceeded error.
 ```
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決策
 
 次の Hive 構成値を設定することにより、結合時に Hive で (Map/Reduce 手順を行う代わりに) テーブルがメモリに読み込まれないようにします。
 

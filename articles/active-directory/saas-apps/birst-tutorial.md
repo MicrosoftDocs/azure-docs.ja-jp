@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Birst Agile Business Analytics の統合 | Microsoft Docs'
 description: Azure Active Directory と Birst Agile Business Analytics の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 677183b1-5348-4302-88cc-5c8ab63a3c6c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46bea4afcd59a385a8e9d2ccf1aa0d70fdae198c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0a82e6c8b44a7bc9a2c83caecfd83f398e64674a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73158835"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88537194"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-birst-agile-business-analytics"></a>チュートリアル: Azure Active Directory と Birst Agile Business Analytics の統合
 

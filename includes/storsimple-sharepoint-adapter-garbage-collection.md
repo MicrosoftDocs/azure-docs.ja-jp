@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 00d292b3ba2d1b6c7c425d4c9f89188e660ac80d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c734ff03b1cf277c7e0967d8b76b1941434f414
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73182243"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050340"
 ---
 ここでは、次の操作を行います。
 
@@ -31,12 +31,13 @@ ms.locfileid: "73182243"
 
 #### <a name="to-prepare-the-content-database-and-recycle-bin-to-immediately-delete-orphaned-blobs"></a>孤立した BLOB をすぐに削除するようにコンテンツ データベースとごみ箱を準備するには
 1. SQL Server の SQL Management Studio で、対象のコンテンツ データベースに対して次の更新クエリを実行します。 
-   
-       `use WSS_Content`
-   
-       `exec mssqlrbs.rbs_sp_set_config_value ‘garbage_collection_time_window’ , ’time 00:00:00’`
-   
-       `exec mssqlrbs.rbs_sp_set_config_value ‘delete_scan_period’ , ’time 00:00:00’`
+
+    `use WSS_Content`
+
+    `exec mssqlrbs.rbs_sp_set_config_value ‘garbage_collection_time_window’ , ’time 00:00:00’`
+
+    `exec mssqlrbs.rbs_sp_set_config_value ‘delete_scan_period’ , ’time 00:00:00’`
+
 2. Web フロントエンド サーバーの **[サーバーの全体管理]** で、目的のコンテンツ データベースの **[Web アプリケーションの全般設定]** を編集して、一時的にごみ箱を無効にします。 この操作を実行すると、関連するすべてのサイト コレクションのごみ箱も空になります。 そのためには、 **[サーバーの全体管理]**  ->  **[アプリケーション管理]**  ->  **[Web アプリケーション (Web アプリケーションの管理)]**  ->  **[SharePoint - 80]**  ->  **[アプリケーションの全般設定]** の順にクリックします。 **[ごみ箱の状態]** を **[オフ]** に設定します。
    
     ![[Web アプリケーションの全般設定]](./media/storsimple-sharepoint-adapter-garbage-collection/HCS_WebApplicationGeneralSettings-include.png)
@@ -44,7 +45,7 @@ ms.locfileid: "73182243"
 #### <a name="to-run-the-maintainer"></a>Maintainer を実行するには
 * Web フロントエンド サーバーの SharePoint 2013 管理シェルで、次のように Maintainer を実行します。
   
-      `Microsoft.Data.SqlRemoteBlobs.Maintainer.exe -ConnectionStringName RBSMaintainerConnectionWSSContent -Operation GarbageCollection -GarbageCollectionPhases rdo`
+    `Microsoft.Data.SqlRemoteBlobs.Maintainer.exe -ConnectionStringName RBSMaintainerConnectionWSSContent -Operation GarbageCollection -GarbageCollectionPhases rdo`
   
   > [!NOTE]
   > 現時点では、StorSimple でサポートされているのは `GarbageCollection` 操作のみです。 また、Microsoft.Data.SqlRemoteBlobs.Maintainer.exe に対して発行されたパラメーターでは大文字と小文字が区別されることにも注意してください。 

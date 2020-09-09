@@ -4,15 +4,15 @@ description: プライベート エンドポイントを使用して、Azure 内
 services: private-link
 author: malopMSFT
 ms.service: private-link
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 111e6e2f80c3460f363c496b7b32befdca16250d
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 1ccbb685ceb406fd7a52edf793b53d9e1c32630b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115110"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737327"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Azure プライベート エンドポイントを使用して非公開でストレージ アカウントに接続する
 Azure プライベート エンドポイントは、Azure におけるプライベート リンクの基本的な構成要素です。 仮想マシン (VM) などの Azure リソースとプライベート リンク リソースとの非公開での通信が可能になります。
@@ -71,7 +71,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | Windows ライセンスを既にお持ちの場合 | 既定値 **[なし]** のままにします。 |
     |||
 
-1. **ディスク** を選択します。
+1. **[Next:ディスク]** を選択します。
 
 1. **[仮想マシンの作成 - Disk]** で、既定値のままにし、 **[Next: Networking]\(次へ : ネットワーク\)** を選択します。
 
@@ -111,7 +111,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | レプリケーション | **[読み取りアクセス geo 冗長ストレージ (RA-GRS)]** を選択します。 |
     |||
   
-3. **ネットワーク** を選択します。
+3. **[Next:ネットワーク]** を選択します。
 4. **[ストレージ アカウントの作成] - [ネットワーク]** で、接続方法に **[プライベート エンドポイント]** を選択します。
 5. **[ストレージ アカウントの作成] - [ネットワーク]** で、 **[プライベート エンドポイントの追加]** を選択します。 
 6. **[プライベート エンドポイントの作成]** で、次の情報を入力または選択します。
@@ -177,7 +177,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     Address:  10.0.0.5
     Aliases:  mystorageaccount.blob.core.windows.net
     ```
-3. [Microsoft Azure ストレージ エクスプローラー](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows)をインストールします。
+3. [Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows) をインストールします。
 4. 右クリックで **[ストレージ アカウント]** を選択します。
 5. **[Connect to an azure storage]\(Azure ストレージに接続する\)** を選択します。
 6. **[Use a connection string]\(接続文字列を使用する\)** を選択します。

@@ -2,17 +2,17 @@
 title: Azure Static Web Apps の GitHub Actions ワークフロー
 description: GitHub リポジトリを使用して Azure Static Web Apps への継続的デプロイを設定する方法について説明します。
 services: static-web-apps
-author: christiannwamba
+author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.author: chnwamba
-ms.openlocfilehash: 44472eb697a4d191d4ed99b7879654fcca61383b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.author: cshoe
+ms.openlocfilehash: 92d445991aa8b90a343ad7d015787cff35ddf183
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655207"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340926"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>Azure Static Web Apps プレビューの GitHub Actions ワークフロー
 
@@ -50,7 +50,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
     - name: Build And Deploy
       id: builddeploy
       uses: Azure/static-web-apps-deploy@v0.0.1-preview
@@ -105,7 +107,7 @@ Static Web Apps ワークフロー ファイルには、2 つの使用可能な�
 | 名前  | 説明 |
 |---------|---------|
 |`build_and_deploy_job` | `on` プロパティに一覧表示されているブランチに対してコミットをプッシュするかプル要求を開くと実行されます。 |
-|`close_pull_request_job` | プル要求を終了したときにだけ実行されます。 |
+|`close_pull_request_job` | プル要求を閉じたときにのみ実行され、これにより、プル要求から作成されたステージング環境が削除されます。 |
 
 ## <a name="steps"></a>手順
 

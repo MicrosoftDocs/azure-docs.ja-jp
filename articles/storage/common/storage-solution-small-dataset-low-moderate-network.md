@@ -5,15 +5,15 @@ services: storage
 author: alkohli
 ms.service: storage
 ms.subservice: blobs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: alkohli
-ms.openlocfilehash: 3e6f4f3eb312f0d4d96a008c0944a9608d0bf4a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4f21e7f64338b7d50ca401081bf73ca0c1a1c88f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60397279"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85504306"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>低速から中速のネットワーク帯域幅での小規模なデータセットのデータ転送
  

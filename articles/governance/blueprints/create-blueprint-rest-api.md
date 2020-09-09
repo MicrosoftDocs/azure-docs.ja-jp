@@ -1,18 +1,18 @@
 ---
 title: クイック スタート:REST API を使用してブループリントを作成する
 description: このクイックスタートでは、Azure Blueprints と REST API を使用して、成果物を作成、定義、デプロイします。
-ms.date: 02/26/2020
+ms.date: 06/29/2020
 ms.topic: quickstart
-ms.openlocfilehash: ec84e8396ad65aa01f73414b971f27bc95396e2f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: e3cdf28cfe523e52aceefe20294042d28b98e1e2
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745092"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971200"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>クイック スタート:REST API で Azure Blueprint を定義して割り当てる
 
-ブループリントの作成方法と割り当て方法について説明します。Resource Manager テンプレート、ポリシー、セキュリティなどに基づいて、再利用可能かつ短時間でデプロイできる構成を開発するための共通パターンを、ブループリントを通じて定義することができます。 このチュートリアルでは、組織内のブループリントの作成、発行、および割り当てに関連する一般的ないくつかのタスクを実行するための、Azure Blueprint の使用方法について説明します。
+ブループリントの作成方法と割り当て方法について学習すると、Azure Resource Manager テンプレート (ARM テンプレート)、ポリシー、セキュリティなどに基づいて、再利用可能かつ短時間でデプロイできる構成を開発するための共通パターンを定義することができます。 このチュートリアルでは、組織内のブループリントの作成、発行、および割り当てに関連する一般的ないくつかのタスクを実行するための、Azure Blueprint の使用方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -52,7 +52,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 
 ## <a name="create-a-blueprint"></a>ブループリントを作成する
 
-コンプライアンスの標準的なパターンを定義する最初のステップは、使用可能なリソースからブループリントを作成することです。 この例では、"MyBlueprint" という名前のブループリントを作成して、サブスクリプションのロールとポリシーの割り当てを構成します。 その後、リソース グループと Resource Manager テンプレート、さらに、そのリソース グループに対するロールの割り当てを追加します。
+コンプライアンスの標準的なパターンを定義する最初のステップは、使用可能なリソースからブループリントを作成することです。 この例では、"MyBlueprint" という名前のブループリントを作成して、サブスクリプションのロールとポリシーの割り当てを構成します。 その後、リソース グループ、ARM テンプレート、およびそのリソース グループに対するロールの割り当てを追加します。
 
 > [!NOTE]
 > REST API を使用すると、"_ブループリント_" オブジェクトが最初に作成されます。 追加する各 "_成果物_" でパラメーターを持つものについては、最初の "_ブループリント_" でパラメーターを事前に定義する必要があります。
@@ -200,7 +200,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      }
      ```
 
-1. リソース グループにテンプレートを追加します。 Resource Manager テンプレートの**要求本文**では、テンプレートの通常の JSON コンポーネントが含まれ、**properties.resourceGroup** でターゲット リソース グループが定義されます。 また、このテンプレートでは、ブループリントの **storageAccountType**、**tagName**、**tagValue** の各パラメーターをテンプレートに渡すことによって再利用しています。 ブループリント パラメーターは **properties.parameters** を定義するとテンプレートから利用することができ、テンプレート JSON 内ではそのキーと値のペアを使用して値を挿入します。 ブループリントとテンプレート パラメーターの名前は同じでもかまいませんが、それぞれがブループリントからテンプレート成果物に渡す方法を示すために別のものにしてあります。
+1. リソース グループにテンプレートを追加します。 ARM テンプレートの**要求本文**では、テンプレートの通常の JSON コンポーネントが含まれ、**properties.resourceGroup** でターゲット リソース グループが定義されます。 また、このテンプレートでは、ブループリントの **storageAccountType**、**tagName**、**tagValue** の各パラメーターをテンプレートに渡すことによって再利用しています。 ブループリント パラメーターは **properties.parameters** を定義するとテンプレートから利用することができ、テンプレート JSON 内ではそのキーと値のペアを使用して値を挿入します。 ブループリントとテンプレート パラメーターの名前は同じでもかまいませんが、それぞれがブループリントからテンプレート成果物に渡す方法を示すために別のものにしてあります。
 
    - REST API URI
 

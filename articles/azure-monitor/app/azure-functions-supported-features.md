@@ -6,12 +6,12 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: cf0c97fd65f9966bf42fa22e2c8f92263952cb7a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 333bba2b1d3cd83457196e38b827daa78199f235
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77655652"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033515"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Azure Functions でサポートされる Application Insights の機能
 
@@ -57,11 +57,11 @@ Application Insights の互換性のあるバージョンの詳細について�
 
 ## <a name="live-metrics--secure-control-channel"></a>Live Metrics とコントロール チャネルの保護
 
-指定したカスタム フィルター条件は、Application Insights SDK の Live Metrics コンポーネントに送信されます。 フィルターに顧客 ID などの機密情報が含まれている可能性があります。 シークレット API キーを使用してチャネルをセキュリティで保護できます。 手順については、「[コントロール チャネルの保護](https://docs.microsoft.com/azure/azure-monitor/app/live-stream#secure-the-control-channel)」を参照してください。
+指定したカスタム フィルター条件は、Application Insights SDK の Live Metrics コンポーネントに送信されます。 フィルターに顧客 ID などの機密情報が含まれている可能性があります。 シークレット API キーを使用してチャネルをセキュリティで保護できます。 手順については、「[コントロール チャネルの保護](./live-stream.md#secure-the-control-channel)」を参照してください。
 
 ## <a name="sampling"></a>サンプリング
 
-Azure Functions では、構成の中で、サンプリングが既定で有効になっています。 詳細については、[サンプリングの構成](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling)に関するページをご覧ください。
+Azure Functions では、構成の中で、サンプリングが既定で有効になっています。 詳細については、[サンプリングの構成](../../azure-functions/functions-monitoring.md#configure-sampling)に関するページをご覧ください。
 
 プロジェクトで Application Insights SDK に依存してテレメトリ追跡を手動で行っている場合、ご使用のサンプリング構成が Functions のサンプリング構成と異なっていると、予想外の動作が起こることがあります。 
 

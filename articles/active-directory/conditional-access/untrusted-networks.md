@@ -4,19 +4,19 @@ description: 信頼されていないネットワークからのアクセスの�
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cedec7f0bd51460796d8138f8d481d2982098f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6b2f9a6e13fdc39ab18a2056fab15982aa9fb0e4
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74380004"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948166"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>方法:条件付きアクセスを使用して信頼されていないネットワークからのアクセスに対して MFA を必須にする   
 
@@ -69,4 +69,4 @@ Azure AD 条件付きアクセスを使用すると、アクセス許可を付�
 
 ## <a name="next-steps"></a>次のステップ
 
-条件付きアクセスの詳細については、[Azure Active Directory の条件付きアクセスの概要](../active-directory-conditional-access-azure-portal.md)に関するページを参照してください。
+条件付きアクセスの詳細については、[Azure Active Directory の条件付きアクセスの概要](./overview.md)に関するページを参照してください。

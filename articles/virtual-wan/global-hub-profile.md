@@ -2,17 +2,17 @@
 title: Azure Virtual WAN のグローバルまたはハブベースの VPN プロファイルをダウンロードする | Microsoft Docs
 description: Virtual WAN の自動化されたスケーラブルなブランチ間接続、利用可能なリージョン、パートナーについて説明します。
 services: virtual-wan
-author: anzaman
+author: kumudD
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 4/20/2020
 ms.author: alzam
-ms.openlocfilehash: b63bb861f4df087f852bb1bf599d32100d063f7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d0fc2f608617ca00fea8b9ed5c4b874c65940263
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81733187"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064789"
 ---
 # <a name="download-a-global-or-hub-based-profile-for-user-vpn-clients"></a>ユーザー VPN クライアント用にグローバルまたはハブベースのプロファイルをダウンロードする
 

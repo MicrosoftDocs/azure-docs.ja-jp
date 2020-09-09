@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/08/2019
-ms.author: b-juche
-ms.openlocfilehash: 12be766f36a0901079a5a26f20ea7dacc75268de
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.date: 05/21/2020
+ms.author: ramakk
+ms.openlocfilehash: d81ae835fa62c5188c8d71a5ae0563259ab027f3
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80667873"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797426"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Azure NetApp Files のネットワーク計画のガイドライン
 
@@ -36,10 +36,12 @@ Azure NetApp Files ネットワークを計画するときは、いくつかの�
 次の機能は、Azure NetApp Files では現在サポートされていません。 
 
 * 委任されたサブネットに適用されるネットワーク セキュリティ グループ (NSG)
-* Azure NetApp ファイル サブネットとしてのアドレス プレフィックスを持つユーザー定義ルート (UDR)
+* 委任されたサブネットに適用されるユーザー定義ルート (UDR)
 * Azure NetApp Files インターフェイス上の (カスタム名前付けポリシーなどの) Azure ポリシー
 * Azure NetApp Files トラフィック用のロード バランサー
-* Azure NetApp Files は、Azure Virtual WAN ではサポートされていません
+* Azure Virtual WAN 
+* ゾーン冗長仮想ネットワーク ゲートウェイ (Az が名前に含まれるゲートウェイ SKU) 
+* アクティブ/アクティブの仮想ネットワーク GW 
 
 Azure NetApp Files には、次のネットワーク制限が適用されます。
 
@@ -82,9 +84,10 @@ VNet が別の VNet とピアリングされている場合、VNet アドレス�
 
 ### <a name="udrs-and-nsgs"></a>UDR と NSG
 
-Azure NetApp Files 用の委任サブネットでは、ユーザー定義ルート (UDR) とネットワーク セキュリティ グループ (NSG) はサポートされていません。
+Azure NetApp Files 用の委任サブネットでは、ユーザー定義ルート (UDR) とネットワーク セキュリティ グループ (NSG) はサポートされていません。 しかし、UDR と NSG を他のサブネットに適用することはできます。これは、Azure NetApp Files に委任されたサブネットと同じ VNet 内であっても同様です。
 
-回避策として、Azure NetApp Files の委任されたサブネットとの間のトラフィックを許可または拒否する他のサブネットに NSG を適用することができます。  
+* このようにすると、UDR により、それらの他のサブネットから Azure NetApp Files の委任サブネットに向かうトラフィック フローが定義されます。 これは、Azure NetApp Files からそれらの他のサブネットに向かう、システム ルートを使用した逆方向のトラフィック フローと対応させるうえで役立ちます。  
+* 次に、NSG により、Azure NetApp Files の委任サブネットとの間のトラフィックが許可または拒否されます。 
 
 ## <a name="azure-native-environments"></a>Azure ネイティブ環境
 

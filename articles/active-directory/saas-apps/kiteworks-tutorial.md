@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory と Kiteworks の統合 | Microsoft Docs
 description: Azure Active Directory と Kiteworks の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: f7984aaf-ab1f-4a85-9646-a9523f5275d9
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 52b113d92fa83795e94d5179ea47ed5d9d9e9a26
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ae504a7dcd6f598c13b5fabffaca4ec6ec067e4b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68248917"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549930"
 ---
 # <a name="tutorial-integrate-kiteworks-with-azure-active-directory"></a>チュートリアル:Kiteworks と Azure Active Directory の統合
 

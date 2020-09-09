@@ -1,16 +1,14 @@
 ---
 title: Azure Functions のネットワーク オプション
 description: Azure Functions で利用可能なすべてのネットワーク オプションの概要。
-author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
-ms.author: alkarche
-ms.openlocfilehash: 6637627d48df8f9b6126debc215aac9bceb76f6b
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 60258ef4aa3bbbbab69acd4f5106c774caa6f46f
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80419527"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385944"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions のネットワーク オプション
 
@@ -28,13 +26,7 @@ ms.locfileid: "80419527"
 
 ## <a name="matrix-of-networking-features"></a>ネットワーク機能のマトリックス
 
-|                |[従量課金プラン](functions-scale.md#consumption-plan)|[Premium プラン](functions-scale.md#premium-plan)|[App Service プラン](functions-scale.md#app-service-plan)|[App Service 環境](../app-service/environment/intro.md)|
-|----------------|-----------|----------------|---------|-----------------------|  
-|[受信 IP の制限とプライベート サイト アクセス](#inbound-ip-restrictions)|✅はい|✅はい|✅はい|✅はい|
-|[仮想ネットワークの統合](#virtual-network-integration)|❌いいえ|✅はい (リージョン)|✅はい (リージョンとゲートウェイ)|✅はい|
-|[仮想ネットワーク トリガー (非 HTTP)](#virtual-network-triggers-non-http)|❌いいえ| ✅はい |✅はい|✅はい|
-|[ハイブリッド接続](#hybrid-connections) (Windows のみ)|❌いいえ|✅はい|✅はい|✅はい|
-|[送信 IP の制限](#outbound-ip-restrictions)|❌いいえ| ✅はい|✅はい|✅はい|
+[!INCLUDE [functions-networking-features](../../includes/functions-networking-features.md)]
 
 ## <a name="inbound-ip-restrictions"></a>受信 IP の制限
 
@@ -47,15 +39,7 @@ IP 制限を使用すると、アプリへのアクセスを許可または拒�
 
 ## <a name="private-site-access"></a>プライベート サイトへのアクセス
 
-プライベート サイト アクセスとは、Azure 仮想ネットワークなどのプライベート ネットワークからのみアプリにアクセスできるようにすることです。
-
-* プライベート サイトへのアクセスは、サービス エンドポイントが構成されている場合に [Premium](./functions-premium-plan.md)、[従量課金](functions-scale.md#consumption-plan)、および [App Service](functions-scale.md#app-service-plan) の各プランで利用できます。
-    * サービス エンドポイントは、 **[プラットフォーム機能]**  >  **[ネットワーク]**  >  **[アクセス制限を構成する]**  >  **[ルールの追加]** から、アプリごとに構成できます。 これで、仮想ネットワークをルールの種類として選択できるようになりました。
-    * 詳細については、[仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)に関するページを参照してください。
-    * サービス エンドポイントがあれば、仮想ネットワーク統合が構成されていても、関数はインターネットへの完全な送信アクセスを引き続き持つことに注意してください。
-* プライベート サイトへのアクセスは、内部ロード バランサー (ILB) を使用して構成されている App Service Environment 内でも使用可能です。 詳細については、「[App Service Environment で内部ロード バランサーを作成して使用する](../app-service/environment/create-ilb-ase.md)」を参照してください。
-
-プライベート サイト アクセスを設定する方法については、[Azure Functions のプライベート サイト アクセスの設定](functions-create-private-site-access.md)に関するページ参照してください。
+[!INCLUDE [functions-private-site-access](../../includes/functions-private-site-access.md)]
 
 ## <a name="virtual-network-integration"></a>仮想ネットワークの統合
 
@@ -102,9 +86,9 @@ Azure Key Vault 参照を使用すると、コードの変更を必要とせず�
 
 ### <a name="premium-plan-with-virtual-network-triggers"></a>仮想ネットワーク トリガーを使用した Premium プラン
 
-Premium プランを実行する場合は、仮想ネットワーク内で実行されているサービスに非 HTTP トリガー関数を接続できます。 これを行うには、関数アプリの仮想ネットワーク トリガーのサポートを有効にする必要があります。 **仮想ネットワーク トリガーのサポート**の設定は、[Azure portal](https://portal.azure.com) の **[関数アプリの設定]** にあります。
+Premium プランを実行する場合は、仮想ネットワーク内で実行されているサービスに非 HTTP トリガー関数を接続できます。 これを行うには、関数アプリの仮想ネットワーク トリガーのサポートを有効にする必要があります。 **[仮想ネットワーク トリガーのサポート]** 設定は、[Azure portal](https://portal.azure.com) の **[構成]**  >  **[関数のランタイム設定]** にあります。
 
-![仮想ネットワークの切り替え](media/functions-networking-options/virtual-network-trigger-toggle.png)
+:::image type="content" source="media/functions-networking-options/virtual-network-trigger-toggle.png" alt-text="VNETToggle":::
 
 次の Azure CLI コマンドを使用して、仮想ネットワーク トリガーを有効にすることもできます。
 
@@ -133,7 +117,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 ## <a name="hybrid-connections"></a>ハイブリッド接続
 
-[ハイブリッド接続](../service-bus-relay/relay-hybrid-connections-protocol.md)は、他のネットワークのアプリケーション リソースにアクセスするために使用できる Azure Relay の機能です。 アプリからアプリケーション エンドポイントにアクセスできます。 アプリケーションにアクセスするために使用することはできません。 ハイブリッド接続は、Windows で実行されている、従量課金プラン以外のすべての関数に使用できます。
+[ハイブリッド接続](../azure-relay/relay-hybrid-connections-protocol.md)は、他のネットワークのアプリケーション リソースにアクセスするために使用できる Azure Relay の機能です。 アプリからアプリケーション エンドポイントにアクセスできます。 アプリケーションにアクセスするために使用することはできません。 ハイブリッド接続は、Windows で実行されている、従量課金プラン以外のすべての関数に使用できます。
 
 Azure Functions で使用されるとき、各ハイブリッド接続は、単一の TCP ホストとポートの組み合わせに相互に関連付けられます。 つまり、TCP リッスン ポートにアクセスしている限り、任意のオペレーティング システムの任意のアプリケーションがハイブリッド接続のエンドポイントになることができます。 ハイブリッド接続機能では、アプリケーション プロトコルやアクセス先は認識されません。 ネットワーク アクセスを提供するだけです。
 
@@ -147,6 +131,12 @@ Azure Functions で使用されるとき、各ハイブリッド接続は、単�
 送信 IP の制限は、Premium プラン、App Service プラン、App Service Environment で利用できます。 App Service Environment が展開されている仮想ネットワークの送信制限を構成することができます。
 
 Premium プランまたは App Service プランの関数アプリを仮想ネットワークと統合した場合でも、アプリは既定でインターネットへの送信呼び出しを行うことができます。 アプリケーション設定 `WEBSITE_VNET_ROUTE_ALL=1` を追加することで、ネットワーク セキュリティ グループ ルールをトラフィックの制限に使用できる仮想ネットワークに、送信トラフィックがすべて送信されます。
+
+## <a name="automation"></a>オートメーション
+次の API では、リージョンでの仮想ネットワーク統合をプログラミングで管理できます。
+
++ **Azure CLI**:[`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) コマンドを使用し、リージョンでの仮想ネットワーク統合を追加、一覧表示、または削除します。  
++ **ARM テンプレート**:リージョンでの仮想ネットワーク統合は、Azure Resource Manager テンプレートを使用することで有効にできます。 完全な例については、[こちらの関数クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/) ページを参照してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

@@ -1,23 +1,14 @@
 ---
 title: よく寄せられる質問 - Apache Kafka 用 Azure Event Hubs
 description: この記事では、さまざまなプロトコル (AMQP、Apache Kafka、および HTTPS) を使用するコンシューマーとプロデューサーが、Azure Event Hubs の使用時にイベントを交換する方法を示しています。
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/01/2020
-ms.author: shvija
-ms.openlocfilehash: 0186b90e1d75c5dba6e1ca26e4ba079a3456cea4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 8bdd86d9f299a69d5f2d05bb8ec526ed94780608
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606686"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031685"
 ---
 # <a name="frequently-asked-questions---event-hubs-for-apache-kafka"></a>よく寄せられる質問 - Apache Kafka 用 Event Hubs 
 この記事では、Apache Kafka 用 Event Hubs への移行についてよく寄せられる質問とその回答を示します。
@@ -50,5 +41,5 @@ Event Hubs と Kafka 用 Event Hubs の詳細については、次の記事を�
 - [Event Hubs 用 Apache Kafka 開発者ガイド](apache-kafka-developer-guide.md)
 - [Event Hubs 用 Apache Kafka 移行ガイド](apache-kafka-migration-guide.md)
 - [Event Hubs 用 Apache Kafka トラブルシューティング ガイド](apache-kafka-troubleshooting-guide.md)
-- [推奨される構成](https://github.com/Azure/azure-event-hubs-for-kafka/blob/master/CONFIGURATION.md)
+- [推奨される構成](apache-kafka-configurations.md)
 

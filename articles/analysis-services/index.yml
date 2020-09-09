@@ -4,19 +4,19 @@ summary: クラウド内で Analysis Services を使用してデータ モデリ
 metadata:
   title: Azure Analysis Services のドキュメント | Microsoft Docs
   description: Azure Analysis Services は、完全に管理されたサービスとしてのプラットフォーム (PaaS) であり、エンタープライズ レベルのデータ モデルをクラウドで提供します。
-  ms.service: analysis-services
+  ms.service: azure-analysis-services
   ms.topic: landing-page
   ms.collection: 
   author: minewiskan
   ms.author: owend
   manager: mtillman
   ms.date: 10/30/2019
-  ms.openlocfilehash: 8c0d92cc7f50ec72b33d86335291580a477db056
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: a41f34134e25941d89c5dcd8b1f2a2ec5884df94
+  ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "78273667"
+  ms.lasthandoff: 08/04/2020
+  ms.locfileid: "87553735"
 landingContent:
 - title: Azure Analysis Services について
   linkLists:

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/05/2020
-ms.openlocfilehash: 466c170985715be52a90d579c19ca23aefefe2e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe7d6d4e70bc55a6a91d3c1a1b910db4b5469fe6
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77066002"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197068"
 ---
 # <a name="apache-ambari-usage-in-azure-hdinsight"></a>Azure HDInsight での Apache Ambari の使用法
 
@@ -56,7 +56,7 @@ ps -ef | grep failover
 
 ## <a name="ambari-database"></a>Ambari データベース
 
-HDInsight は、Ambari サーバーのデータベースとして機能する SQL Azure データベースを内部で作成します。 既定の[サービス レベルは S0](../sql-database/sql-database-elastic-pool-scale.md) です。
+HDInsight は、Ambari サーバーのデータベースとして機能するデータベースを SQL Database 内部で作成します。 既定の[サービス レベルは S0](../azure-sql/database/elastic-pool-scale.md) です。
 
 クラスターを作成するときにワーカー ノードの数が 16 を超えるクラスターの場合は、S2 がデータベースのサービス レベルです。
 

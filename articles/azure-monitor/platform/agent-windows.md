@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 644d1094ec57e148804941297d50398e36b1b068
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 80ece5b0704869c31ab0656eed922b3f21ba9928
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996423"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505756"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Windows コンピューターを Azure Monitor に接続する
 
@@ -44,13 +44,13 @@ Windows 用 Log Analytics エージェントをインストールする前に、
 5. **ワークスペース ID**と**主キー**をコピーして、好みのエディターに貼り付けます。    
    
 ## <a name="configure-agent-to-use-tls-12"></a>TLS 1.2 を使用するようエージェントを構成する
-Windows エージェントと Log Analytics サービス間の通信で [TLS 1.2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12) プロトコルが使用されるようにするには、次の手順を実行して、仮想マシンにエージェントがインストールされる前または後に、それを有効にできます。
+Windows エージェントと Log Analytics サービス間の通信で [TLS 1.2](/windows-server/security/tls/tls-registry-settings#tls-12) プロトコルが使用されるようにするには、次の手順を実行して、仮想マシンにエージェントがインストールされる前または後に、それを有効にできます。
 
 >[!NOTE]
 >Windows Server 2008 SP2 x64 を実行している VM を、TLS 1.2 を使用するように構成する場合は、以下の手順を行う前に、次の [SHA-2 コード署名サポート更新プログラム](https://support.microsoft.com/help/4474419/sha-2-code-signing-support-update)をインストールする必要があります。 
 >
 
-1. **HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols** のレジストリのサブキーを見つけます。
+1. 次のレジストリ キーを探します:**HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
 2. TLS 1.2 用に **Protocols** の下に **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2** のサブキーを作成します。
 3. 前に作成した TLS 1.2 プロトコル バージョンのサブキーの下に **Client** サブキーを作成します。 たとえば、**HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client** です。
 4. **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client** の下に次の DWORD 値を作成します。
@@ -58,16 +58,16 @@ Windows エージェントと Log Analytics サービス間の通信で [TLS 1.2
     * **Enabled** [値 = 1]
     * **DisabledByDefault** [値 = 0]  
 
-既定では無効になっている暗号化がセキュリティで保護されるように、.NET Framework 4.6 以降を構成します。 [強力な暗号化](https://docs.microsoft.com/dotnet/framework/network-programming/tls#schusestrongcrypto)では、TLS 1.2 などのようなよりセキュリティの高いプロトコルを使用し、安全ではないプロトコルをブロックします。 
+既定では無効になっている暗号化がセキュリティで保護されるように、.NET Framework 4.6 以降を構成します。 [強力な暗号化](/dotnet/framework/network-programming/tls#schusestrongcrypto)では、TLS 1.2 などのようなよりセキュリティの高いプロトコルを使用し、安全ではないプロトコルをブロックします。 
 
-1. **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\.NETFramework\v4.0.30319** のレジストリのサブキーを見つけます。  
+1. 次のレジストリ キーを探します:**HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\.NETFramework\v4.0.30319**。  
 2. このサブキーの下に、DWORD 値 **SchUseStrongCrypto** を値 **1** で作成します。  
-3. **HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\.NETFramework\v4.0.30319** のレジストリのサブキーを見つけます。  
+3. 次のレジストリ キーを探します:**HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\.NETFramework\v4.0.30319**。  
 4. このサブキーの下に、DWORD 値 **SchUseStrongCrypto** を値 **1** で作成します。 
 5. 設定を有効にするためにシステムを再起動します。 
 
 ## <a name="install-the-agent-using-setup-wizard"></a>セットアップ ウィザードを使用してエージェントをインストールする
-次の手順では、コンピューター上のエージェント用のセットアップ ウィザードを使用して、Azure クラウドと Azure Government クラウド内にある Log Analytics エージェントをインストールし、構成します。 System Center Operations Manager 管理グループにも報告をするようエージェントを構成する方法を知るには、「[エージェント セットアップ ウィザードを使用して Operations Manager エージェントを展開するには](https://docs.microsoft.com/system-center/scom/manage-deploy-windows-agent-manually#to-deploy-the-operations-manager-agent-with-the-agent-setup-wizard)」を参照してください。
+次の手順では、コンピューター上のエージェント用のセットアップ ウィザードを使用して、Azure クラウドと Azure Government クラウド内にある Log Analytics エージェントをインストールし、構成します。 System Center Operations Manager 管理グループにも報告をするようエージェントを構成する方法を知るには、「[エージェント セットアップ ウィザードを使用して Operations Manager エージェントを展開するには](/system-center/scom/manage-deploy-windows-agent-manually#to-deploy-the-operations-manager-agent-with-the-agent-setup-wizard)」を参照してください。
 
 1. ご使用の Log Analytics ワークスペースで、先の手順で移動した **[Windows サーバー]** ページの **[Windows エージェントのダウンロード]** から、Windows オペレーティング システムのプロセッサ アーキテクチャに応じた適切なバージョンを選択します。   
 2. セットアップを実行して、コンピューターにエージェントをインストールします。
@@ -92,7 +92,7 @@ Windows エージェントと Log Analytics サービス間の通信で [TLS 1.2
 
 次の表は、エージェントのセットアップ (Automation DSC を使用してデプロイする場合を含む) でサポートされる、特定パラメーターを示したものです。
 
-|MMA 固有のオプション                   |メモ         |
+|MMA 固有のオプション                   |Notes         |
 |---------------------------------------|--------------|
 | NOAPM=1                               | 省略可能なパラメーター。 .NET アプリケーション パフォーマンス監視なしでエージェントをインストールします。|   
 |ADD_OPINSIGHTS_WORKSPACE               | 1 = ワークスペースに報告するようにエージェントを構成します                |
@@ -120,7 +120,7 @@ Windows エージェントと Log Analytics サービス間の通信で [TLS 1.2
 
 ## <a name="install-the-agent-using-dsc-in-azure-automation"></a>Azure Automation の DSC を使用してエージェントをインストールする
 
-次のサンプル スクリプトを使用して、Azure Automation の DSC を使用するエージェントをインストールできます。   Automation アカウントがない場合は、「[Azure Automation の概要](/azure/automation/)」を参照して、Automation DSC を使用する前に必要な Automation アカウントを作成するための要件と手順を確認してください。  Automation DSC のことをよく知らない場合は、「[Azure Automation DSC の使用](../../automation/automation-dsc-getting-started.md)」をご覧ください。
+次のサンプル スクリプトを使用して、Azure Automation の DSC を使用するエージェントをインストールできます。   Automation アカウントがない場合は、「[Azure Automation の概要](../../automation/index.yml)」を参照して、Automation DSC を使用する前に必要な Automation アカウントを作成するための要件と手順を確認してください。  Automation DSC のことをよく知らない場合は、「[Azure Automation DSC の使用](../../automation/automation-dsc-getting-started.md)」をご覧ください。
 
 次のサンプルは、`URI` 値によって識別される 64 ビット エージェントをインストールします。 URI 値を置き換えることで、32 ビット バージョンを使用することもできます。 両方のバージョンの URI は次のとおりです。
 
@@ -131,9 +131,9 @@ Windows エージェントと Log Analytics サービス間の通信で [TLS 1.2
 >[!NOTE]
 >この手順とサンプル スクリプトでは、Windows コンピューターに既にデプロイされているエージェントのアップグレードはサポートされていません。
 
-32 ビット バージョンと 64 ビット バージョンのエージェント パッケージには、それぞれ異なる製品コードがあり、リリースされる新バージョンにも、それぞれ一意の値が指定されます。  製品コードは、アプリケーションや製品の主要な識別情報となる GUID であり、Windows インストーラーの **ProductCode** プロパティによって表されます。  `ProductId`MMAgent.ps1**スクリプトの** 値は、32 ビットまたは 64 ビットのエージェント インストーラー パッケージの製品コードと一致する必要があります。
+32 ビット バージョンと 64 ビット バージョンのエージェント パッケージには、それぞれ異なる製品コードがあり、リリースされる新バージョンにも、それぞれ一意の値が指定されます。  製品コードは、アプリケーションや製品の主要な識別情報となる GUID であり、Windows インストーラーの **ProductCode** プロパティによって表されます。  **MMAgent.ps1** スクリプトの `ProductId` 値は、32 ビットまたは 64 ビットのエージェント インストーラー パッケージの製品コードと一致する必要があります。
 
-製品コードをエージェント インストール パッケージから直接取得するには、Windows ソフトウェア開発キットのコンポーネントである [Windows SDK Components for Windows Installer Developers (Windows インストーラー開発者向け Windows SDK コンポーネント)](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) に含まれている、Orca.exe を使用するか、Microsoft Valuable Professional (MVP) によって記述された[サンプル スクリプト](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/)に従った、PowerShell を使用できます。  どちらの方法でも、まず、MMASetup インストール パッケージから **MOMagent.msi** ファイルを抽出する必要があります。  これについては、前のセクション「[コマンド ラインを使用してエージェントをインストールする](#install-the-agent-using-the-command-line)」の最初の手順で説明しています。  
+製品コードをエージェント インストール パッケージから直接取得するには、Windows ソフトウェア開発キットのコンポーネントである [Windows SDK Components for Windows Installer Developers (Windows インストーラー開発者向け Windows SDK コンポーネント)](/windows/win32/msi/platform-sdk-components-for-windows-installer-developers) に含まれている、Orca.exe を使用するか、Microsoft Valuable Professional (MVP) によって記述された[サンプル スクリプト](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/)に従った、PowerShell を使用できます。  どちらの方法でも、まず、MMASetup インストール パッケージから **MOMagent.msi** ファイルを抽出する必要があります。  これについては、前のセクション「[コマンド ラインを使用してエージェントをインストールする](#install-the-agent-using-the-command-line)」の最初の手順で説明しています。  
 
 1. [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) から Azure Automation に xPSDesiredStateConfiguration DSC モジュールをインポートします。  
 2.    *OPSINSIGHTS_WS_ID* と *OPSINSIGHTS_WS_KEY* に対して Azure Automation 変数アセットを作成します。 *OPSINSIGHTS_WS_ID* を Log Analytics ワークスペース ID に設定し、*OPSINSIGHTS_WS_KEY* をワークスペースの主キーに設定します。
@@ -183,7 +183,7 @@ Configuration MMAgent
 
 エージェントのインストールが完了した後、エージェントが正常に接続され、レポートが送信されていることを確認するには、次の 2 つの方法があります。  
 
-**[コントロール パネル]** 内のコンピューターから、 **[Microsoft Monitoring Agent]** という項目を見つけます。  これを選択すると、 **[Azure Log Analytics]** タブに、**Microsoft Monitoring Agent が Microsoft Operations Management Suite サービスに正常に接続している**ことを示すメッセージが表示されます。<br><br> ![Log Analytics への MMA 接続の状態](media/agent-windows/log-analytics-mma-laworkspace-status.png)
+**[コントロール パネル]** 内のコンピューターから、 **[Microsoft Monitoring Agent]** という項目を見つけます。  これを選択すると、 **[Azure Log Analytics]** タブに、次のことを示すメッセージがエージェントによって表示されます。"**Microsoft Monitoring Agent は Microsoft Operations Management Suite サービスに正常に接続しました。** "<br><br> ![Log Analytics への MMA 接続の状態](media/agent-windows/log-analytics-mma-laworkspace-status.png)
 
 また、Azure portal で簡単なログ クエリを実行することもできます。  
 

@@ -3,7 +3,7 @@ title: Azure Media Services v3 .NET SDK を使用したフィルターの作成
 description: このトピックでは、クライアントがストリームの特定のセクションをストリームする際に使用できるフィルターを作成する方法について説明します。 Media Services では、動的マニフェストを作成してこの選択型ストリーミングをアーカイブします。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,22 +11,25 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/03/2019
-ms.author: juliako
-ms.openlocfilehash: ef04b1b7b5030189482e89e26e4565397cbdd7c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b2a392ab5301a51edff1df88596f2fe68d85ea63
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75779248"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266716"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>Media Services .NET SDK を使用してフィルターを作成する
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 コンテンツを顧客に配信 (ライブ イベントやビデオ オン デマンドをストリーム配信) する際、アセットの既定のマニフェスト ファイルに記述された内容だけではクライアントのニーズに柔軟に対応できない場合があります。 Azure Media Services では、アカウント フィルターと、コンテンツのアセットフィルターを定義することができます。 
 
 この機能と、この機能が使用されているシナリオの詳細については、[動的マニフェスト](filters-dynamic-manifest-overview.md)と[フィルター](filters-concept.md)に関する記事を参照してください。
 
-このトピックでは、Media Services .NET SDK を使用してビデオ オン デマンド アセットにフィルターを定義し、[アカウント フィルター](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet)と[アセット フィルター](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet)を作成する方法について説明します。 
+このトピックでは、Media Services .NET SDK を使用してビデオ オン デマンド アセットにフィルターを定義し、[アカウント フィルター](/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet)と[アセット フィルター](/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet)を作成する方法について説明します。 
 
 > [!NOTE]
 > [presentationTimeRange](filters-concept.md#presentationtimerange) を必ず確認してください。
@@ -34,13 +37,13 @@ ms.locfileid: "75779248"
 ## <a name="prerequisites"></a>前提条件 
 
 - [フィルターと動的マニフェスト](filters-dynamic-manifest-overview.md)を確認します。
-- [Media Services アカウントを作成する](create-account-cli-how-to.md) リソース グループ名と Media Services アカウント名を覚えておいてください。 
-- [API へのアクセス](access-api-cli-how-to.md)に必要な情報を取得する
-- [.NET SDK の使用を始める](stream-files-tutorial-with-api.md#start_using_dotnet)方法については、[Azure Media Services を使用してビデオのアップロード、エンコード、ストリーム配信を行う方法](stream-files-tutorial-with-api.md)に関するページを参照してください。
+- [Media Services アカウントを作成する](./create-account-howto.md) リソース グループ名と Media Services アカウント名を覚えておいてください。 
+- [API へのアクセス](./access-api-howto.md)に必要な情報を取得する
+- [.NET SDK の使用を始める](stream-files-tutorial-with-api.md#start-using-media-services-apis-with-net-sdk)方法については、[Azure Media Services を使用してビデオのアップロード、エンコード、ストリーム配信を行う方法](stream-files-tutorial-with-api.md)に関するページを参照してください。
 
 ## <a name="define-a-filter"></a>フィルターの定義  
 
-.NET では、[FilterTrackSelection](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.filtertrackselection?view=azure-dotnet) クラスと [FilterTrackPropertyCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition?view=azure-dotnet) クラスを使用してトラックの選択を構成します。 
+.NET では、[FilterTrackSelection](/dotnet/api/microsoft.azure.management.media.models.filtertrackselection?view=azure-dotnet) クラスと [FilterTrackPropertyCondition](/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition?view=azure-dotnet) クラスを使用してトラックの選択を構成します。 
 
 次のコードでは、EC-3 であるオーディオ トラックと、0-1000000 の範囲でビットレートであるビデオ トラックを含むフィルターが定義されています。
 
@@ -119,5 +122,3 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 ## <a name="next-steps"></a>次のステップ
 
 [ビデオのストリーム配信](stream-files-tutorial-with-api.md) 
-
-

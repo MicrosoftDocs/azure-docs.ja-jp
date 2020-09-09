@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: d7c38a44e3111a319e4146b3c9b71a22b0d31bfd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce9f7e922b9a168205ea1d193830dd654691998a
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "72675466"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510812"
 ---
 # <a name="what-are-parallel-documents"></a>並列ドキュメントとは
 

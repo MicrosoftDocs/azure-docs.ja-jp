@@ -3,17 +3,16 @@ title: Python、R、C# で U-SQL ジョブを実行する - Azure Data Lake Anal
 description: Python、R、および C# で分離コードを使用して Azure Data Lake にジョブを送信する方法について説明します。
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: jejiang
-ms.author: jejiang
-ms.reviewer: jasonwhowell
-ms.topic: conceptual
+ms.reviewer: jasonh
+ms.topic: how-to
 ms.date: 11/22/2017
-ms.openlocfilehash: cb3ddf0c4147fa982e8ab0f9d440292d12803d35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-python
+ms.openlocfilehash: 673c8db0b7c6d3d8658d2d3b6cfd7e00f3d7d986
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71309701"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876208"
 ---
 # <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>Visual Studio Code で Azure Data Lake Analytics の Python、R、および C# を使用して U-SQL を開発する
 Visual Studio Code (VSCode) を使用して、U-SQL で Python、R、および C# 分離コードを記述し、Azure Data Lake サービスにジョブを送信する方法について説明します。 Data Lake Tools for VSCode の詳細については、「[Azure Data Lake Tools for Visual Studio Code の使用](data-lake-analytics-data-lake-tools-for-vscode.md)」を参照してください。

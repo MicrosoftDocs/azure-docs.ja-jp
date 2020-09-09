@@ -4,15 +4,15 @@ description: Azure Cosmos DB の MongoDB (3.6 バージョン) 用 API でサポ
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 01/15/2020
+ms.date: 08/07/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 5df21b2c1926803a65eca911c66b059f36ee18aa
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 50414d48c3368ddf409630422d3316cdc45a63fe
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393616"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587397"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB の MongoDB (3.6 バージョン) 用 API: サポートされる機能と構文
 
@@ -106,7 +106,7 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 |top     |    いいえ     |
 |whatsmyuri     |   はい      |
 
-<a name="aggregation-pipeline"/>
+<a name="aggregation-pipeline"></a>
 
 ## <a name="aggregation-pipelinea"></a>集計パイプライン</a>
 
@@ -137,7 +137,7 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 |$lookup    |    はい|
 |$out        |はい|
 |$indexStats|        いいえ|
-|$facet    |いいえ|
+|$facet    |はい|
 |$bucket|    いいえ|
 |$bucketAuto|    いいえ|
 |$sortByCount|    はい|
@@ -495,10 +495,10 @@ $nearSphere |  はい |
 $geometry |  はい |
 $minDistance | はい |
 $maxDistance | はい |
-$center | はい |
-$centerSphere | はい |
-$box | はい |
-$polygon |  はい |
+$center | いいえ |
+$centerSphere | いいえ |
+$box | いいえ |
+$polygon |  いいえ |
 
 ## <a name="cursor-methods"></a>カーソル メソッド
 
@@ -542,7 +542,32 @@ $polygon |  はい |
 
 ## <a name="unique-indexes"></a>一意なインデックス
 
-一意なインデックスによって、特定のフィールドの値が、コレクション内のすべてのドキュメントにわたって重複していないことが保証されます。これは、既定の "_id" キーで一意性が保持される方法と似ています。 "unique" 制約を含めて createIndex コマンドを使用すれば、Cosmos DB でカスタム インデックスを作成できます。
+[一意なインデックス](mongodb-indexing.md#unique-indexes)によって、特定のフィールドの値が、コレクション内のすべてのドキュメントにわたって重複していないことが保証されます。これは、既定の "_id" キーで一意性が保持される方法と似ています。 Cosmos DB で一意なインデックスを作成するには、`unique` 制約パラメーターを指定して `createIndex` コマンドを実行します。
+
+```javascript
+globaldb:PRIMARY> db.coll.createIndex( { "amount" : 1 }, {unique:true} )
+{
+        "_t" : "CreateIndexesResponse",
+        "ok" : 1,
+        "createdCollectionAutomatically" : false,
+        "numIndexesBefore" : 1,
+        "numIndexesAfter" : 4
+}
+```
+
+## <a name="compound-indexes"></a>複合インデックス
+
+[複合インデックス](mongodb-indexing.md#compound-indexes-mongodb-server-version-36)では、最大 8 つのフィールドから成るフィールド グループにインデックスを付けることができます。 この種のインデックスは、ネイティブの MongoDB 複合インデックスとは異なります。 Azure Cosmos DB の複合インデックスは、複数のフィールドに適用される並べ替え操作に使用されます。 複合インデックスを作成するには、パラメーターとして複数のプロパティを指定する必要があります。
+
+```javascript
+globaldb:PRIMARY> db.coll.createIndex({"amount": 1, "other":1})
+{
+        "createdCollectionAutomatically" : false, 
+        "numIndexesBefore" : 1,
+        "numIndexesAfter" : 2,
+        "ok" : 1
+}
+```
 
 ## <a name="time-to-live-ttl"></a>Time-to-live (TTL)
 

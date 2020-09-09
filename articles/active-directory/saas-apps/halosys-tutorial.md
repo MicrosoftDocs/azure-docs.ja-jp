@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Halosys の統合 | Microsoft Docs'
 description: Azure Active Directory と Halosys の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 42a0eb7c-5cb7-44a9-b00b-b0e7df4b63e8
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d224f8fa5d696cd55b4f214111280d9210f836e9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5c5efdfb90f98374c988fa2908bf2cc32097042b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73159103"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88529061"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-halosys"></a>チュートリアル: Azure Active Directory と Halosys の統合
 
@@ -111,7 +106,7 @@ Halosys で Azure AD シングル サインオンを構成するには、次の�
     b. **[応答 URL]** ボックスに、`https://<company-name>.halosys.com/<instance name>` のパターンを使用して URL を入力します
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Halosys クライアント サポート チーム](https://halosys.com/halosys#contact)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Halosys クライアント サポート チーム](https://www.sonata-software.com/form/contact)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -129,7 +124,7 @@ Halosys で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="configure-halosys-single-sign-on"></a>Halosys シングル サインオンの構成
 
-**Halosys** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Halosys サポート チーム](https://halosys.com/halosys#contact)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Halosys** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Halosys サポート チーム](https://www.sonata-software.com/form/contact)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -184,7 +179,7 @@ Halosys で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="create-halosys-test-user"></a>Halosys テスト ユーザーの作成
 
-このセクションでは、Halosys で Britta Simon というユーザーを作成します。  [Halosys サポート チーム](https://halosys.com/halosys#contact)と連携し、Halosys プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Halosys で Britta Simon というユーザーを作成します。  [Halosys サポート チーム](https://www.sonata-software.com/form/contact)と連携し、Halosys プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

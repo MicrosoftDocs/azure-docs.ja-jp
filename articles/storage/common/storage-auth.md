@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 8db6140789a9e4f46e368b913cacacd21609ccd9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a56fdf8bc3bfa93c12cce66664e68b223fa97ff2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81529724"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029537"
 ---
 # <a name="authorizing-access-to-data-in-azure-storage"></a>Azure Storage 内のデータへのアクセスの承認
 
@@ -23,11 +23,11 @@ ms.locfileid: "81529724"
 
 次の表は、リソースへのアクセスを承認するために Azure Storage に用意されているオプションをまとめたものです。
 
-|  |共有キー (ストレージ アカウント キー)  |Shared Access Signature (SAS)  |Azure Active Directory (Azure AD)  |オンプレミス Active Directory Domain Services (プレビュー) |匿名のパブリック読み取りアクセス  |
-|---------|---------|---------|---------|---------|---------|
+| Azure の成果物 | 共有キー (ストレージ アカウント キー) | Shared Access Signature (SAS) | Azure Active Directory (Azure AD) | オンプレミス Active Directory Domain Services (プレビュー) | 匿名のパブリック読み取りアクセス |
+| -------------- | -------------------------------- | ----------------------------- | --------------------------------- | ------------------------------------------------------ | ---------------------------- |
 |Azure BLOB     |[サポートされています](/rest/api/storageservices/authorize-with-shared-key/)         |[サポートされています](storage-sas-overview.md)         |[サポートされています](storage-auth-aad.md)         |サポートされていません|[サポートされています](../blobs/storage-manage-access-to-resources.md)         |
 |Azure Files (SMB)     |[サポートされています](/rest/api/storageservices/authorize-with-shared-key/)         |サポートされていません         |[AAD ドメイン サービスでのみサポートされています](../files/storage-files-active-directory-overview.md)         |[サポートされています。資格情報を Azure AD と同期する必要があります](../files/storage-files-active-directory-overview.md)|サポートされていません         |
-|Azure Files (REST)     |[サポートされています](/rest/api/storageservices/authorize-with-shared-key/)         |[サポートされています](storage-sas-overview.md)         |サポートされていません         |サポートされていません |サポートされていません         |
+|Azure Files (REST)     |[サポートされています](/rest/api/storageservices/authorize-with-shared-key/)         |[サポートされています](storage-sas-overview.md)         |サポートされていません         |サポートされていません |サポートされていません。         |
 |Azure キュー     |[サポートされています](/rest/api/storageservices/authorize-with-shared-key/)         |[サポートされています](storage-sas-overview.md)         |[サポートされています](storage-auth-aad.md)         |サポートされていません | サポートされていません         |
 |Azure テーブル     |[サポートされています](/rest/api/storageservices/authorize-with-shared-key/)         |[サポートされています](storage-sas-overview.md)         |サポートされていません         |サポートされていません| サポートされていません         |
 

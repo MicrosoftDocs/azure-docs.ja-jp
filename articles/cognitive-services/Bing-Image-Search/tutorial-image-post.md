@@ -10,12 +10,13 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 12/06/2019
 ms.author: aahi
-ms.openlocfilehash: 69c5fc9805bed8fdfde3dd208e7fb66254e82c3c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 2b51fb8dcc456d895d5c4032bd16e1502ee86f0f
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75383877"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407083"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>チュートリアル:Bing Image Search API と C# を使用して画像の詳細情報を抽出する
 

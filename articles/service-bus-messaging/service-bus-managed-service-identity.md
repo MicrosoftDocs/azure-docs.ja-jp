@@ -1,24 +1,14 @@
 ---
 title: Azure Service Bus での Azure リソースのマネージド ID
 description: この記事では、Azure Service Bus エンティティ (キュー、トピック、サブスクリプション) にアクセスするためにマネージド ID を使用する方法について説明します。
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 46a1db94d576174b837a40c646fcf9e082e339c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 1deb3bdf823f1554e302bb35baabe444223f9008
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461618"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079860"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Azure Service Bus リソースにアクセスするために Azure Active Directory を使用してマネージド ID を認証する
 [Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) は、デプロイに関連付けられ、その下でアプリケーション コードが実行されるセキュリティ保護された ID を作成できる Azure 間機能です。 この ID は、アプリケーションに必要な特定の Azure リソースにアクセスするためのカスタム アクセス許可を付与するアクセス制御ロールに関連付けることができます。
@@ -33,29 +23,29 @@ ms.locfileid: "81461618"
 
 認証の手順により、実行時にアプリケーション要求に OAuth 2.0 アクセス トークンが含まれる必要があります。 アプリケーションが Azure VM、仮想マシン スケール セット、または Azure 関数アプリなどの Azure エンティティ内から実行されている場合、マネージド ID を使用してリソースにアクセスできます。 
 
-承認の手順では、セキュリティ プリンシパルに 1 つ以上の RBAC ロールを割り当てる必要があります。 Azure Service Bus には、Service Bus リソースの一連のアクセス許可を含む RBAC ロールが用意されています。 セキュリティ プリンシパルに割り当てられたロールによって、そのプリンシパルが持つアクセス許可が決定されます。 Azure Service Bus に RBAC ロールを割り当てる方法の詳細については、「[Azure Service Bus 用の組み込み RBAC ロール](#built-in-rbac-roles-for-azure-service-bus)」を参照してください。 
+承認の手順では、セキュリティ プリンシパルに 1 つまたは複数の Azure ロールを割り当てる必要があります。 Azure Service Bus には、Service Bus リソースの一連のアクセス許可を含む Azure ロールが用意されています。 セキュリティ プリンシパルに割り当てられたロールによって、そのプリンシパルが持つアクセス許可が決定されます。 Azure Service Bus に Azure ロールを割り当てる方法の詳細については、「[Azure Service Bus 用の Azure 組み込みロール](#azure-built-in-roles-for-azure-service-bus)」を参照してください。 
 
 Service Bus に対して要求を行うネイティブ アプリケーションと Web アプリケーションは、Azure AD を使用して承認することもできます。 この記事では、アクセス トークンを要求し、それを使用して Service Bus リソースへの要求を承認する方法を示します。 
 
 
-## <a name="assigning-rbac-roles-for-access-rights"></a>アクセス権に対して RBAC ロールを割り当てる
-Azure Active Directory (Azure AD) では、[ロールベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) を通じて、セキュリティで保護されたリソースへのアクセス権が承認されます。 Azure Service Bus では、Service Bus エンティティへのアクセスに使用されるアクセス許可の一般的なセットを含む組み込み RBAC ロールのセットが定義されており、データにアクセスするためのカスタム ロールを定義することもできます。
+## <a name="assigning-azure-roles-for-access-rights"></a>アクセス権に対して Azure ロールを割り当てる
+Azure Active Directory (Azure AD) では、[Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) を通じて、セキュリティで保護されたリソースへのアクセス権が承認されます。 Azure Service Bus では Azure 組み込みロールのセットが定義されており、それには Service Bus エンティティへのアクセスに使用されるアクセス許可の一般的なセットが含まれています。また、データにアクセスするためのカスタム ロールを定義することもできます。
 
-RBAC ロールが Azure AD セキュリティ プリンシパルに割り当てられると、Azure によりそのセキュリティ プリンシパルのリソースへのアクセス権が付与されます。 アクセスは、サブスクリプションのレベル、リソース グループ、または Service Bus 名前空間にスコープを設定できます。 Azure AD セキュリティ プリンシパルは、ユーザー、グループ、アプリケーション サービス プリンシパル、または Azure リソースのマネージド ID の場合があります。
+Azure ロールが Azure AD セキュリティ プリンシパルに割り当てられると、Azure によりそのセキュリティ プリンシパルのリソースへのアクセス権が付与されます。 アクセスは、サブスクリプションのレベル、リソース グループ、または Service Bus 名前空間にスコープを設定できます。 Azure AD セキュリティ プリンシパルは、ユーザー、グループ、アプリケーション サービス プリンシパル、または Azure リソースのマネージド ID の場合があります。
 
-## <a name="built-in-rbac-roles-for-azure-service-bus"></a>Azure Service Bus 用の組み込み RBAC ロール
-Azure Service Bus の場合、名前空間およびそれに関連するすべてのリソースの Azure Portal および Azure リソース管理 API による管理は、*ロールベースのアクセス制御* (RBAC) モデルを使って既に保護されています。 Azure では、Service Bus 名前空間へのアクセスを承認するための次の組み込み RBAC ロールが提供されています。
+## <a name="azure-built-in-roles-for-azure-service-bus"></a>Azure Service Bus 用の Azure 組み込みロール
+Azure Service Bus の場合、名前空間およびそれに関連するすべてのリソースの Azure portal および Azure リソース管理 API による管理は、Azure RBAC モデルを使って既に保護されています。 Azure では、Service Bus 名前空間へのアクセスを承認するための次の Azure 組み込みロールが提供されています。
 
 - [Azure Service Bus データ所有者](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner):Service Bus 名前空間とそのエンティティ (キュー、トピック、サブスクリプション、およびフィルター) へのデータ アクセスが可能です
 - [Azure Service Bus データ送信者](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender):このロールを使用して、Service Bus 名前空間とそのエンティティへの送信アクセスを許可します。
 - [Azure Service Bus データ受信者](../role-based-access-control/built-in-roles.md#azure-service-bus-data-receiver):このロールを使用して、Service Bus 名前空間とそのエンティティへの受信アクセスを許可します。 
 
 ## <a name="resource-scope"></a>リソースのスコープ 
-セキュリティ プリンシパルに RBAC ロールを割り当てる前に、セキュリティ プリンシパルに必要なアクセスのスコープを決定します。 ベスト プラクティスとしては、常にできるだけ狭いスコープのみを付与するのが最善の方法です。
+セキュリティ プリンシパルに Azure ロールを割り当てる前に、セキュリティ プリンシパルに必要なアクセスのスコープを決定します。 ベスト プラクティスとしては、常にできるだけ狭いスコープのみを付与するのが最善の方法です。
 
 次の一覧で、Service Bus リソースへのアクセスのスコープとして指定できるレベルを、最も狭いスコープから順に示します。
 
-- **キュー**、**トピック**、または**サブスクリプション**:ロールの割り当ては、特定の Service Bus エンティティに適用されます。 現在、Azure portal では、サブスクリプション レベルでの Service Bus RBAC ロールへのユーザー/グループ/マネージド ID の割り当てはサポートされていません。 以下に示したのは、Azure CLI コマンドの使用例です。[az-role-assignment-create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) を使用して、Service Bus RBAC ロールに ID を割り当てています。 
+- **キュー**、**トピック**、または**サブスクリプション**:ロールの割り当ては、特定の Service Bus エンティティに適用されます。 現在、Azure portal では、サブスクリプション レベルでの Service Bus Azure ロールへのユーザー、グループ、マネージド ID の割り当てはサポートされていません。 以下に示したのは、Azure CLI コマンドの使用例です。[az-role-assignment-create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) によって、Service Bus の Azure ロールに ID を割り当てています。 
 
     ```azurecli
     az role assignment create \
@@ -68,28 +58,28 @@ Azure Service Bus の場合、名前空間およびそれに関連するすべ�
 - **サブスクリプション**:ロールの割り当ては、サブスクリプションのすべてのリソース グループ内のすべての Service Bus リソースに適用されます。
 
 > [!NOTE]
-> RBAC ロールの割り当ての反映には最大で 5 分かかる場合があることに留意してください。 
+> Azure ロールの割り当ての反映には最大で 5 分かかる場合があることに留意してください。 
 
-組み込みのロールの定義方法の詳細については、[ロール定義](../role-based-access-control/role-definitions.md#management-and-data-operations)に関するページを参照してください。 カスタム RBAC ロールの作成の詳細については、[Azure のロールベースのアクセス制御のためにカスタム ロールを作成する方法](../role-based-access-control/custom-roles.md)に関するページを参照してください。
+組み込みのロールの定義方法の詳細については、[ロール定義](../role-based-access-control/role-definitions.md#management-and-data-operations)に関するページを参照してください。 Azure カスタム ロールの作成については、「[Azure カスタム ロール](../role-based-access-control/custom-roles.md)」を参照してください。
 
 ## <a name="enable-managed-identities-on-a-vm"></a>VM 上のマネージド ID を有効にする
 Azure リソースのマネージド ID を使用して、ご利用の VM から Service Bus リソースを承認するには、最初に VM 上で Azure リソースのマネージド ID を有効にする必要があります。 Azure リソースのマネージド ID を有効にする方法については、次の記事のいずれかを参照してください。
 
-- [Azure Portal](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
+- [Azure Portal](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager テンプレート](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
 - [Azure Resource Manager クライアント ライブラリ](../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 ## <a name="grant-permissions-to-a-managed-identity-in-azure-ad"></a>Azure AD のマネージド ID にアクセス許可を付与する
-ご利用のアプリケーション内のマネージド ID から Service Bus サービスへの要求を承認するには、最初にそのマネージド ID に対してロールベースのアクセス制御 (RBAC) の設定を構成します。 Azure Service Bus で、Service Bus からの送信と読み取りを行うためのアクセス許可を含む RBAC ロールを定義します。 RBAC ロールがマネージド ID に割り当てられると、適切なスコープで Service Bus エンティティへのアクセス権がそのマネージド ID に付与されます。
+ご利用のアプリケーション内のマネージド ID から Service Bus サービスへの要求を承認するには、最初にそのマネージド ID に対して Azure ロールベースのアクセス制御 (Azure RBAC) の設定を構成します。 Azure Service Bus によって、Service Bus からの送信と読み取りを行うためのアクセス許可を含む Azure ロールが定義されます。 Azure ロールがマネージド ID に割り当てられると、適切なスコープで Service Bus エンティティへのアクセス権がそのマネージド ID に付与されます。
 
-RBAC ロールの割り当ての詳細については、「[Authenticate and authorize with Azure Active Directory for access to Service Bus resources](authenticate-application.md#built-in-rbac-roles-for-azure-service-bus)」 (Service Bus リソースへのアクセスに Azure Active Directory を使用して認証、承認する) を参照してください。
+Azure ロールの割り当ての詳細については、[Azure Active Directory を使用した Service Bus リソースへのアクセスの認証と承認](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)に関する記事を参照してください。
 
 ## <a name="use-service-bus-with-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID による Service Bus の使用
 マネージド ID で Service Bus を使用するには、ロールと適切なスコープを ID に割り当てる必要があります。 このセクションの手順では、マネージド ID で実行され Service Bus リソースにアクセスするシンプルなアプリケーションを使用します。
 
-ここでは、[Azure App Service](https://azure.microsoft.com/services/app-service/) でホストされているサンプル Web アプリケーションを使用します。 Web アプリケーションを作成するための詳細な手順については、[Azure に ASP.NET Core Web アプリを作成する](../app-service/app-service-web-get-started-dotnet.md)に関する記事を参照してください
+ここでは、[Azure App Service](https://azure.microsoft.com/services/app-service/) でホストされているサンプル Web アプリケーションを使用します。 Web アプリケーションを作成するための詳細な手順については、[Azure に ASP.NET Core Web アプリを作成する](../app-service/quickstart-dotnetcore.md)に関する記事を参照してください
 
 アプリケーションが作成されたら、次の手順を行います。 
 
@@ -103,7 +93,7 @@ RBAC ロールの割り当ての詳細については、「[Authenticate and aut
 
 ここで、このサービス ID をご利用の Service Bus リソースの必要なスコープ内のロールに割り当てます。
 
-### <a name="to-assign-rbac-roles-using-the-azure-portal"></a>Azure portal を使用して RBAC ロールを割り当てるには
+### <a name="to-assign-azure-roles-using-the-azure-portal"></a>Azure portal を使用して Azure ロールを割り当てるには
 Service Bus 名前空間にロールを割り当てるには、Azure portal で名前空間に移動します。 リソースの [アクセス制御 (IAM)] 設定を表示し、次の手順に従ってロールの割り当てを管理します。
 
 > [!NOTE]

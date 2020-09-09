@@ -1,18 +1,18 @@
 ---
-title: Azure Monitor を使用して Azure リソースを監視する
-description: Azure Monitor で Azure リソースのデータを収集して分析する方法について説明します。
+title: Azure Monitor を使用して Azure 仮想マシンを監視する
+description: Azure Monitor で Azure 仮想マシンのデータを収集して分析する方法について説明します。
 ms.service: azure-monitor
 ms. subservice: logs
 ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
-ms.openlocfilehash: 12616fbc80468d35ebb8b0bc5cd12bfd5871e788
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 40c7b9e5a8b7c38c9468d54e69ca7a73c5f2d46b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79503193"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516398"
 ---
 # <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>クイック スタート:Azure Monitor を使用して Azure 仮想マシンを監視する
 [Azure Monitor](../overview.md) では、作成された時点から、Azure 仮想マシンからのデータ収集が開始されます。 このクイック スタートでは、Azure VM に対して自動的に収集されるデータと、そのデータを Azure portal で表示する方法について簡単に説明します。 次に、VM に対して [Azure Monitor for VMs](../insights/vminsights-overview.md) を有効にします。これにより、VM 上のエージェントでは、プロセスとその依存関係を含むゲスト オペレーティング システムからデータを収集して分析できるようになります。
@@ -83,7 +83,7 @@ Azure リソースから収集される監視データの詳細な説明につ�
 
 ## <a name="view-data-collected"></a>収集されたデータを表示する
 
-7. 仮想マシンをクリックし、 **[パフォーマンス]** タブを選択します。これは、VM のゲスト オペレーティング システムから収集されたパフォーマンス カウンターの選択グループを示しています。 下にスクロールすると、さらにカウンターを表示できます。グラフ上にマウスを移動すると、平均とパーセンタイルを異なるタイミングで表示できます。
+7. 仮想マシンをクリックし、 **[Monitoring]\(監視\)** メニューの **[Insights]** タイルにある **[パフォーマンス]** タブを選択します。 これは、VM のゲスト オペレーティング システムから収集されたパフォーマンス カウンターの選択グループを示しています。 下にスクロールすると、さらにカウンターを表示できます。グラフ上にマウスを移動すると、平均とパーセンタイルを異なるタイミングで表示できます。
 
     ![パフォーマンス](media/quick-monitor-azure-vm/performance.png)
 
@@ -107,4 +107,4 @@ Azure リソースから収集される監視データの詳細な説明につ�
 このクイック スタートでは、仮想マシンに対して Azure Monitor for VMs を有効にし、ゲスト オペレーティング システムのイベントを収集するように Log Analytics ワークスペースを構成しました。 データの表示および分析方法を学習する場合は、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Log Analytics でのデータの表示と分析](../../azure-monitor/learn/tutorial-viewdata.md)
+> [Log Analytics でのデータの表示と分析](../log-query/get-started-portal.md)

@@ -5,14 +5,14 @@ ms.topic: quickstart
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: eb0a83d0110002cc32998af4083d06cf6e86e16a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 652c5b7c2df4e1f8bd379390451886914628505d
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75372688"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854979"
 ---
-# <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>クイック スタート: Service Fabric に Linux コンテナーをデプロイする
+# <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>クイック スタート:Service Fabric への Linux コンテナーのデプロイ
 
 Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。
 
@@ -53,14 +53,14 @@ Azure にアプリケーションをデプロイするには、アプリケー�
 #!/bin/bash
 
 # Variables
-ResourceGroupName="containertestcluster" 
-ClusterName="containertestcluster" 
-Location="eastus" 
-Password="q6D7nN%6ck@6" 
-Subject="containertestcluster.eastus.cloudapp.azure.com" 
-VaultName="containertestvault" 
-VmPassword="Mypa$$word!321"
-VmUserName="sfadminuser"
+ResourceGroupName='containertestcluster' 
+ClusterName='containertestcluster' 
+Location='eastus' 
+Password='q6D7nN%6ck@6' 
+Subject='containertestcluster.eastus.cloudapp.azure.com' 
+VaultName='containertestvault' 
+VmPassword='Mypa$$word!321'
+VmUserName='sfadminuser'
 
 # Login to Azure and set the subscription
 az login
@@ -179,9 +179,9 @@ az group delete --name $ResourceGroupName
 ```
 
 クラスターの操作が完了したら、証明書ストアから証明書を削除できます。 次に例を示します。
-- Windows の場合: [証明書 MMC スナップイン](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in)を使用します。 スナップインの追加時に **[ユーザー アカウント]** を選択してください。 `Certificates - Current User\Personal\Certificates` に移動して、証明書を削除します。
-- Mac の場合: キーチェーン アプリを使用します。
-- Ubuntu の場合: 証明書の表示に使用される手順に従ってから、証明書を削除します。
+- Windows の場合:[証明書 MMC スナップイン](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in)を使用します。 スナップインの追加時に **[ユーザー アカウント]** を選択してください。 `Certificates - Current User\Personal\Certificates` に移動して、証明書を削除します。
+- Mac の場合:キーチェーン アプリを使用します。
+- Ubuntu の場合:証明書の表示に使用される手順に従ってから、証明書を削除します。
 
 ## <a name="next-steps"></a>次のステップ
 

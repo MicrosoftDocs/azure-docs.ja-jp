@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/13/2020
-ms.openlocfilehash: a3884fdfbbc215c305053d8615d690880f4026ea
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 370ac9528b023f01aaff5e5a7ec62785a02bb4bd
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314158"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085346"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Apache Spark アプリケーションを作成する
 
@@ -25,7 +25,7 @@ ms.locfileid: "81314158"
 * Azure HDInsight Spark クラスター リソースにアクセスする。
 * Scala Spark アプリケーションをローカルで開発して実行する。
 
-この記事では、次のことについて説明します。
+この記事では、次の方法について説明します。
 > [!div class="checklist"]
 > * Azure Toolkit for IntelliJ プラグインを使用する
 > * Apache Spark アプリケーションを開発する
@@ -239,7 +239,7 @@ Scala アプリケーションを作成した後に、クラスターに送信�
     |メイン クラス名|既定値は、選択したファイルのメイン クラスです。 クラスを変更するには、省略記号 ( **...** ) をクリックし、別のクラスを選択します。|
     |ジョブの構成|既定のキーと値のどちらかまたは両方を変更できます。 詳細については、[Apache Livy REST API](https://livy.incubator.apache.org/docs/latest/rest-api.html) に関するページを参照してください。|
     |コマンド ライン引数|必要に応じて、main クラスの引数をスペースで区切って入力できます。|
-    |参照される JAR と参照されるファイル|参照されている Jar およびファイルのパスを入力できます (存在する場合)。 現在 ADLS Gen 2 クラスターのみをサポートする Azure 仮想ファイル システム内のファイルを参照することもできます。 詳細:[Apache Spark 構成](https://spark.apache.org/docs/latest/configuration.html#runtime-environment)。  [リソースをクラスターにアップロードする方法](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer)に関するページも参照してください。|
+    |参照される JAR と参照されるファイル|参照されている Jar およびファイルのパスを入力できます (存在する場合)。 現在 ADLS Gen 2 クラスターのみをサポートする Azure 仮想ファイル システム内のファイルを参照することもできます。 詳細情報:[Apache Spark 構成](https://spark.apache.org/docs/latest/configuration.html#runtime-environment)。  [リソースをクラスターにアップロードする方法](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer)に関するページも参照してください。|
     |ジョブ アップロード ストレージ|展開して追加のオプションを表示します。|
     |ストレージ型|ドロップダウン リストから **[Use Azure Blob to upload]\(Azure BLOB を使用してアップロード\)** を選択します。|
     |ストレージ アカウント|ストレージ アカウントを入力します。|
@@ -262,7 +262,7 @@ Azure Toolkit for IntelliJ を使用してさまざまな操作を行うこと�
 
 ### <a name="access-the-job-view"></a>ジョブ ビューにアクセスする
 
-1. Azure Explorer から、 **[HDInsight]**  > \<対象のクラスター > **[ジョブ]** に移動します。
+1. Azure Explorer で **[HDInsight]**  > \<Your Cluster> >  **[ジョブ]** の順に移動します。
 
     ![IntelliJ Azure Explorer のジョブ ビュー ノード](./media/apache-spark-intellij-tool-plugin/intellij-job-view-node.png)
 
@@ -450,15 +450,15 @@ IntelliJ IDEA で作成した既存の Spark Scala アプリケーションを�
 
 2. ルート レベルに、次のテキストのような **module** 要素があります。
 
-        ```
-        <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
-        ```
+    ```xml
+    <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+    ```
 
    **module** 要素が次のテキストのようになるように、この要素を編集して `UniqueKey="HDInsightTool"` を追加します。
 
-        ```
-        <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4" UniqueKey="HDInsightTool">
-        ```
+    ```xml
+    <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4" UniqueKey="HDInsightTool">
+    ```
 
 3. 変更を保存します。 これで、アプリケーションは Azure Toolkit for IntelliJ との互換性を持つようになります。 これをテストするには、[プロジェクト] でプロジェクト名を右クリックします。 これで、ポップアップ メニューで、 **[Submit Spark Application to HDInsight]\(HDInsight への Spark アプリケーションの送信\)** を選択できるようになります。
 

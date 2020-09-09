@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: 73c149a0d0992fecd1acf633891057570285df64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f5634a33dccb06437f2e5f095e7880221dba9d6e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75639668"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007912"
 ---
 # <a name="actor-events"></a>アクター イベント
 アクター イベントは、アクターからクライアントにベスト エフォート通知を送信する方法を提供します。 アクター イベントは、アクターとクライアントの通信用に設計されており、アクター間の通信には使用できません。
@@ -102,7 +103,7 @@ event.gameScoreUpdated(Id.getUUIDId(), score);
 ## <a name="next-steps"></a>次のステップ
 * [アクターの再入](service-fabric-reliable-actors-reentrancy.md)
 * [アクターの診断とパフォーマンスの監視](service-fabric-reliable-actors-diagnostics.md)
-* [Actor API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Actor API リファレンス ドキュメント](/previous-versions/azure/dn971626(v=azure.100))
 * [C# コード サンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [C# .NET Core コード サンプル](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started)
 * [Java コード サンプル](https://github.com/Azure-Samples/service-fabric-java-getting-started)

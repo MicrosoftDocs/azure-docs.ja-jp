@@ -4,14 +4,15 @@ description: Azure CLI を使用して Azure Database for MySQL のデータ暗�
 author: kummanish
 ms.author: manishku
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
-ms.openlocfilehash: 3c33fdb114356af7707c1aae2eddefd81bf10b9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: eb83cd4fe7e98b1cde6dcee5d3f25fa5e35f1d2c
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185831"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799821"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for MySQL のデータ暗号化
 
@@ -20,26 +21,27 @@ Azure CLI を使用して Azure Database for MySQL のデータ暗号化を設�
 ## <a name="prerequisites-for-azure-cli"></a>Azure CLI の前提条件
 
 * Azure サブスクリプションがあり、そのサブスクリプションの管理者である必要があります。
-* カスタマー マネージド キーに使用するキー コンテナーとキーを作成します。 また、キー コンテナーの消去防止と論理的な削除も有効にします。
+* カスタマー マネージド キーで使用するキー コンテナーとキーを作成します。 また、キー コンテナーの消去防止と論理的な削除も有効にします。
 
-    ```azurecli-interactive
-    az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true --enable-purge-protection true
-    ```
+  ```azurecli-interactive
+  az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true -enable-purge-protection true
+  ```
 
 * 作成された Azure Key Vault で、Azure Database for MySQL のデータ暗号化に使用するキーを作成します。
 
-    ```azurecli-interactive
-    az keyvault key create --name <key_name> -p software --vault-name <vault_name>
-    ```
+  ```azurecli-interactive
+  az keyvault key create --name <key_name> -p software --vault-name <vault_name>
+  ```
 
 * 既存のキー コンテナーを使用するには、カスタママー マネージド キーとして使用すための次のプロパティが必要です。
-  * [論理的な削除](../key-vault/general/overview-soft-delete.md)
+
+  * [論理的な削除](../key-vault/general/soft-delete-overview.md)
 
     ```azurecli-interactive
     az resource update --id $(az keyvault show --name \ <key_vault_name> -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
     ```
 
-  * [消去保護](../key-vault/general/overview-soft-delete.md#purge-protection)
+  * [消去保護](../key-vault/general/soft-delete-overview.md#purge-protection)
 
     ```azurecli-interactive
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
@@ -54,17 +56,17 @@ Azure CLI を使用して Azure Database for MySQL のデータ暗号化を設�
 
 1. Azure Database for MySQL でマネージド ID を取得する方法は 2 つあります。
 
-    ### <a name="create-an-new-azure-database-for-mysql-server-with-a-managed-identity"></a>マネージド ID を持つ Azure Database for MySQL サーバーを作成する。
+   ### <a name="create-an-new-azure-database-for-mysql-server-with-a-managed-identity"></a>マネージド ID を持つ Azure Database for MySQL サーバーを新規作成する。
 
-    ```azurecli-interactive
-    az mysql server create --name -g <resource_group> --location <locations> --storage-size <size>  -u <user>-p <pwd> --backup-retention <7> --sku-name <sku name> --geo-redundant-backup <Enabled/Disabled>  --assign-identity
-    ```
+   ```azurecli-interactive
+   az mysql server create --name -g <resource_group> --location <locations> --storage-size size>  -u <user>-p <pwd> --backup-retention <7> --sku-name <sku name> -geo-redundant-backup <Enabled/Disabled>  --assign-identity
+   ```
 
-    ### <a name="update-an-existing-the-azure-database-for-mysql-server-to-get-a-managed-identity"></a>既存の Azure Database for MySQL サーバーを更新して、マネージド ID を取得する。
+   ### <a name="update-an-existing-the-azure-database-for-mysql-server-to-get-a-managed-identity"></a>既存の Azure Database for MySQL サーバーを更新して、マネージド ID を取得する。
 
-    ```azurecli-interactive
-    az mysql server update --name  <server name>  -g <resource_group> --assign-identity
-    ```
+   ```azurecli-interactive
+   az mysql server update --name  <server name>  -g <resource_group> --assign-identity
+   ```
 
 2. MySQL サーバーの名前である **[プリンシパル]** の **[キーのアクセス許可]** を設定します ( **[取得]** 、 **[ラップ]** 、 **[ラップ解除]** )。
 
@@ -88,36 +90,55 @@ Key Vault に格納されている顧客のマネージド キーで Azure Datab
 
 ### <a name="creating-a-restoredreplica-server"></a>復元/レプリカ サーバーの作成
 
-  *  [復元サーバーの作成](howto-restore-server-cli.md) 
-  *  [読み取りレプリカ サーバーの作成](howto-read-replicas-cli.md) 
+* [復元サーバーの作成](howto-restore-server-cli.md) 
+* [読み取りレプリカ サーバーの作成](howto-read-replicas-cli.md) 
 
 ### <a name="once-the-server-is-restored-revalidate-data-encryption-the-restored-server"></a>サーバーが復元された後、復元されたサーバーのデータ暗号化を再検証する
 
-    ```azurecli-interactive
-    az mysql server key create –name  <server name> -g <resource_group> --kid <key url>
-    ```
+*   レプリカ サーバーに ID を割り当てる
+```azurecli-interactive
+az mysql server update --name  <server name>  -g <resoure_group> --assign-identity
+```
+
+*   復元されたサーバーまたはレプリカ サーバーに使用されたはずの既存のキーを取得する
+
+```azurecli-interactive
+az mysql server key list --name  '<server_name>'  -g '<resource_group_name>'
+```
+
+*   復元されたサーバーまたはレプリカ サーバーの新しい ID に対するポリシーを設定する
+  
+```azurecli-interactive
+az keyvault set-policy --name <keyvault> -g <resoure_group> --key-permissions get unwrapKey wrapKey --object-id <principl id of the server returned by the step 1>
+```
+
+* 暗号化キーを使用して復元されたサーバーまたはレプリカ サーバーを再検証する
+
+```azurecli-interactive
+az mysql server key create –name  <server name> -g <resource_group> --kid <key url>
+```
 
 ## <a name="additional-capability-for-the-key-being-used-for-the-azure-database-for-mysql"></a>Azure Database for MySQL で使用されているキーの追加機能
 
 ### <a name="get-the-key-used"></a>使用されているキーを取得する
 
-    ```azurecli-interactive
-    az mysql server key show --name  <server name>  -g <resource_group> --kid <key url>
-    ```
+```azurecli-interactive
+az mysql server key show --name  <server name>  -g <resource_group> --kid <key url>
+```
 
-    Key url:  `https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
+キーの URL: `https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
 
 ### <a name="list-the-key-used"></a>使用されているキーを一覧表示する
 
-    ```azurecli-interactive
-    az mysql server key list --name  <server name>  -g <resource_group>
-    ```
+```azurecli-interactive
+az mysql server key list --name  <server name>  -g <resource_group>
+```
 
 ### <a name="drop-the-key-being-used"></a>使用されているキーを削除する
 
-    ```azurecli-interactive
-    az mysql server key delete -g <resource_group> --kid <key url> 
-    ```
+```azurecli-interactive
+az mysql server key delete -g <resource_group> --kid <key url>
+```
 
 ## <a name="using-an-azure-resource-manager-template-to-enable-data-encryption"></a>Azure Resource Manager テンプレートを使用したデータ暗号化の有効化
 
@@ -130,9 +151,10 @@ Azure portal とは別に、新規および既存のサーバー用の Azure Res
 この Azure Resource Manager テンプレートでは、Azure Database for MySQL サーバーを作成し、パラメーターとして渡された **KeyVault** および **Key** を使用して、サーバーのデータ暗号化を有効にします。
 
 ### <a name="for-an-existing-server"></a>既存のサーバーの場合
+
 また、Azure Resource Manager テンプレートを使用して、既存の Azure Database for MySQL サーバー上でデータ暗号化を有効にすることもできます。
 
-* プロパティ オブジェクトの `Uri` プロパティで以前コピーした Azure Key Vault キーのリソース ID を渡します。
+* プロパティ オブジェクトの `Uri` プロパティで以前にコピーした Azure Key Vault キーのリソース ID を渡します。
 
 * *2020-01-01-preview* を API バージョンとして使用します。
 

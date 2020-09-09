@@ -10,12 +10,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 554bb99121190198982f64deb6ee0674aa8831ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a2126aceba8724b46de094d14db754d704500c6
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60381197"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850977"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect:ADSyncConfig PowerShell リファレンス
 次のドキュメントでは、Azure AD Connect に含まれる ADSyncConfig.psm1 PowerShell モジュールの参照情報を示します。
@@ -59,25 +59,24 @@ AD で SearchBase パラメーターから開始し検索を実行し、ACL の�
 ### <a name="examples"></a>例
 
 #### <a name="example-1"></a>例 1
+'Contoso' ドメインで継承が無効になっているオブジェクトを検索します (既定では 'organizationalUnit' オブジェクトのみが返されます)
 ```
-Find objects with disabled inheritance in 'Contoso' domain (by default returns 'organizationalUnit' objects only)
-```
-
 Get-ADSyncObjectsWithInheritanceDisabled -SearchBase 'Contoso'
+```
 
 #### <a name="example-2"></a>例 2
+'Contoso' ドメインで継承が無効になっている 'user' オブジェクトを検索します
 ```
-Find 'user' objects with disabled inheritance in 'Contoso' domain
-```
-
 Get-ADSyncObjectsWithInheritanceDisabled -SearchBase 'Contoso' -ObjectClass 'user'
+```
 
 #### <a name="example-3"></a>例 3
+OU 内で継承が無効になっているすべての種類のオブジェクトを検索します
 ```
-Find all types of objects with disabled inheritance in a OU
+Get-ADSyncObjectsWithInheritanceDisabled -SearchBase OU=AzureAD,DC=Contoso,DC=com -ObjectClass '*'
 ```
 
-Get-ADSyncObjectsWithInheritanceDisabled -SearchBase OU=AzureAD,DC=Contoso,DC=com -ObjectClass '*'
+
 
 ### <a name="parameters"></a>PARAMETERS
 
@@ -118,7 +117,7 @@ Accept wildcard characters: False
 ## <a name="set-adsyncbasicreadpermissions"></a>Set-ADSyncBasicReadPermissions
 
 ### <a name="synopsis"></a>概要
-基本の読み取りアクセス許可用に、ご使用の Active Directory フォレストとドメインを初期化します。
+指定されたコネクターアカウントに対して、ご使用の Active Directory フォレストとドメインを読み取るためのアクセス権を付与します。
 
 ### <a name="syntax"></a>SYNTAX
 
@@ -291,7 +290,7 @@ Accept wildcard characters: False
 ## <a name="set-adsyncexchangehybridpermissions"></a>Set-ADSyncExchangeHybridPermissions
 
 ### <a name="synopsis"></a>概要
-Exchange ハイブリッド機能用に、ご使用の Active Directory フォレストとドメインを初期化します。
+指定されたコネクターアカウントに対して、ご使用の Active Directory フォレストとドメインで利用される Exchange ハイブリッド機能のためのアクセス権を付与します。
 
 ### <a name="syntax"></a>SYNTAX
 
@@ -458,7 +457,7 @@ Accept wildcard characters: False
 ## <a name="set-adsyncexchangemailpublicfolderpermissions"></a>Set-ADSyncExchangeMailPublicFolderPermissions
 
 ### <a name="synopsis"></a>概要
-Exchange メールのパブリック フォルダー機能用に、ご使用の Active Directory フォレストとドメインを初期化します。
+指定されたコネクターアカウントに対して、ご使用の Active Directory フォレストとドメインで利用される Exchange メールのパブリック フォルダー機能のためのアクセス権を付与します。
 
 ### <a name="syntax"></a>SYNTAX
 
@@ -620,7 +619,7 @@ Accept wildcard characters: False
 ## <a name="set-adsyncmsdsconsistencyguidpermissions"></a>Set-ADSyncMsDsConsistencyGuidPermissions
 
 ### <a name="synopsis"></a>概要
-mS-DS-ConsistencyGuid 機能用に、ご使用の Active Directory フォレストとドメインを初期化します。
+指定されたコネクターアカウントに対して、ご使用の Active Directory フォレストとドメインで利用される mS-DS-ConsistencyGuid 機能のためのアクセス権を付与します。
 
 ### <a name="syntax"></a>SYNTAX
 
@@ -781,7 +780,7 @@ Accept wildcard characters: False
 ## <a name="set-adsyncpasswordhashsyncpermissions"></a>Set-ADSyncPasswordHashSyncPermissions
 
 ### <a name="synopsis"></a>概要
-パスワード ハッシュの同期用に、ご使用の Active Directory フォレストとドメインを初期化します。
+指定されたコネクターアカウントに対して、ご使用の Active Directory フォレストとドメインで利用されるパスワード ハッシュの同期機能のためのアクセス権を付与します。
 
 ### <a name="syntax"></a>SYNTAX
 
@@ -902,7 +901,7 @@ Accept wildcard characters: False
 ## <a name="set-adsyncpasswordwritebackpermissions"></a>Set-ADSyncPasswordWritebackPermissions
 
 ### <a name="synopsis"></a>概要
-Azure AD からのパスワード ライトバック用に、ご使用の Active Directory フォレストとドメインを初期化します。
+指定されたコネクターアカウントに対して、ご使用の Active Directory フォレストとドメインで利用されるパスワード ライトバック機能のためのアクセス権を付与します。
 
 ### <a name="syntax"></a>SYNTAX
 
@@ -1081,28 +1080,19 @@ Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <
 ### <a name="description"></a>Description
 Set-ADSyncRestrictedPermissions 関数は、提供されているアカウントのアクセス許可のセキュリティを強化します。
 アクセス許可のセキュリティの強化には、次の手順が含まれます。
-1.
-指定したオブジェクトの継承を無効にします
-2.
-SELF に固有の ACE を除き、特定のオブジェクトのすべての ACE を削除します。
+1. 指定したオブジェクトの継承を無効にします
+2. SELF に固有の ACE を除き、特定のオブジェクトのすべての ACE を削除します。
 SELF については、既定のアクセス許可を維持します。
-3.
-以下の特定のアクセス許可を割り当てます。
+3. 以下の特定のアクセス許可を割り当てます。
 
-        Type    Name                                        Access              Applies To
-        =============================================================================================
-        Allow   SYSTEM                                      Full Control        This object
-        Allow   Enterprise Admins                           Full Control        This object
-        Allow   Domain Admins                               Full Control        This object
-        Allow   Administrators                              Full Control        This object
-
-        Allow   Enterprise Domain Controllers               List Contents
-                                                            Read All Properties
-                                                            Read Permissions    This object
-
-        Allow   Authenticated Users                         List Contents
-                                                            Read All Properties
-                                                            Read Permissions    This object
+   | Type | 名前 | アクセス | 適用対象 |
+   |------|------|--------|------------|
+   | Allow | SYSTEM | フル コントロール | このオブジェクト |
+   | Allow | Enterprise Admins | フル コントロール | このオブジェクト |
+   | Allow | Domain Admins | フル コントロール | このオブジェクト | 
+   | Allow | 管理者 | フル コントロール | このオブジェクト |
+   | Allow | Enterprise Domain Controllers | コンテンツの一覧 <br> すべてのプロパティの読み取り <br> 読み取りのアクセス許可 | このオブジェクト |
+   | Allow | Authenticated Users | コンテンツの一覧 <br> すべてのプロパティの読み取り <br> 読み取りのアクセス許可 | このオブジェクト |
 
 ### <a name="examples"></a>例
 
@@ -1198,7 +1188,7 @@ Accept wildcard characters: False
 ## <a name="set-adsyncunifiedgroupwritebackpermissions"></a>Set-ADSyncUnifiedGroupWritebackPermissions
 
 ### <a name="synopsis"></a>概要
-Azure AD からのグループ ライトバック用に、ご使用の Active Directory フォレストとドメインを初期化します。
+指定されたコネクターアカウントに対して、ご使用の Active Directory フォレストとドメインで利用されるグループ ライトバック機能のためのアクセス権を付与します。
 
 ### <a name="syntax"></a>SYNTAX
 

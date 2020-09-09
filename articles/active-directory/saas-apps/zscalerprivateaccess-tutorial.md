@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory と Zscaler Private Access (ZPA) の統合 | Microsoft Docs
 description: Azure Active Directory と Zscaler Private Access (ZPA) の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: 83711115-1c4f-4dd7-907b-3da24b37c89e
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/23/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0a1538f640bb4722eca1d4f3a80125837593bab
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8c7347aabb3aa6f122ea82a46ad8a09f53e271bf
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67085723"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545688"
 ---
 # <a name="tutorial-integrate-zscaler-private-access-zpa-with-azure-active-directory"></a>チュートリアル:Azure Active Directory と Zscaler Private Access (ZPA) の統合
 
@@ -39,6 +34,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * シングル サインオン (SSO) が有効な Zscaler Private Access (ZPA) サブスクリプション。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 

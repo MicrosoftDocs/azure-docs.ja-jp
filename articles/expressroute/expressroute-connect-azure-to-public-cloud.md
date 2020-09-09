@@ -2,17 +2,17 @@
 title: Azure をパブリック クラウドに接続する | Microsoft Docs
 description: Azure を他のパブリック クラウドに接続するさまざまな方法について説明します
 services: expressroute
-author: osamazia
+author: duongau
 ms.service: expressroute
 ms.topic: article
 ms.date: 07/24/2019
-ms.author: osamaz
-ms.openlocfilehash: b8a454c2a104dfe8545cf734bf0b020b8f749bb1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: duau
+ms.openlocfilehash: f413b6100fb2a7d1c8bc06d787468cc3e79c0169
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73889627"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397476"
 ---
 # <a name="connecting-azure-with-public-clouds"></a>Azure をパブリック クラウドに接続する
 
@@ -34,7 +34,7 @@ ExpressRoute 経由で接続するには 3 つの方法があります。
  
 レイヤー 3 プロバイダー経由で接続する場合、Microsoft は BGP で顧客の VNET ルートをサービス プロバイダーにアドバタイズします。 プロバイダーは、2 つの異なる実装をする場合があります。
 
-![](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l3.png)
+![レイヤー 3 プロバイダーを示す図。](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l3.png)
 
 すべてのクラウド プロバイダーからのトラフィックが顧客ルーターに到達する場合、プロバイダーは個別の VRF 内の各クラウド プロバイダーにランディングする場合があります。 顧客がサービス プロバイダーに依頼して BGP を実行している場合、これらのルートは既定で他のクラウド プロバイダーに再びアドバタイズされます。 
 
@@ -45,7 +45,7 @@ ExpressRoute 経由で接続するには 3 つの方法があります。
 ### <a name="layer2-provider-and-direct-connection"></a>レイヤー 2 プロバイダーと直接接続
 
 どちらのモデルでも物理的な接続は異なりますが、レイヤー 3 では MSEE と顧客のルーターの間に BGP が直接確立されます。 ExpressRoute Direct の顧客の場合は、MSEE に直接接続します。 一方でレイヤー 2 の場合、サービス プロバイダーは VLAN を顧客のオンプレミスからクラウドに拡張します。 顧客は、レイヤー 2 ネットワーク上で BGP を実行して、DC をクラウドに接続します。
-![](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l2.png)
+![レイヤー 2 プロバイダーと直接接続を示す図。](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l2.png)
 どちらの場合でも、顧客は、各パブリック クラウドへのポイント ツー ポイント接続を利用できます。 顧客は、各パブリック クラウドに対して個別の BGP 接続を確立します。 1 つのクラウド プロバイダーによって受信されたルートは、既定で他のクラウド プロバイダーにアドバタイズされます。 各クラウド プロバイダーには異なるプレフィックス制限があるため、ルートをアドバタイズする際には、顧客はこれらの制限を考慮する必要があります。 顧客は、他のパブリック クラウドからルートをアドバタイズしながら、Microsoft に依頼して通常の BGP ノブを使用できます。
 
 ## <a name="direct-connection-with-expressroute"></a>ExpressRoute を使用した直接接続

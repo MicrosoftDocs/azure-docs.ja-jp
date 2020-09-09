@@ -1,7 +1,7 @@
 ---
-title: 仮想ネットワークの作成 - クイック スタート - Azure portal
+title: 仮想ネットワークの作成 - クイック スタート - Azure Portal
 titleSuffix: Azure Virtual Network
-description: クイック スタート:Azure portal で仮想ネットワークを作成します。 これらのネットワークにより、VM などの Azure リソースが相互におよびインターネットで安全に通信できるようになります。
+description: クイック スタート:Azure Portal で仮想ネットワークを作成します。 これらのネットワークにより、VM などの Azure リソースが相互におよびインターネットで安全に通信できるようになります。
 author: KumudD
 tags: azure-resource-manager
 ms.service: virtual-network
@@ -11,16 +11,16 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/05/2020
 ms.author: kumud
-ms.openlocfilehash: 1a1593566b8bdb72f322d64c1ee99c7018f49329
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dfeb9c6bc3dbe33881fc51ccb08a776b827dfe9c
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79214790"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082439"
 ---
-# <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>クイック スタート:Azure ポータルを使用した仮想ネットワークの作成
+# <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>クイック スタート:Azure Portal を使用した仮想ネットワークの作成
 
-このクイックスタートでは、Azure portal を使用した仮想ネットワークの作成方法について説明します。 2 つの仮想マシン (VM) をデプロイします。 次に、VM 間で安全な通信を行い、インターネットから VM に接続します。 仮想ネットワークは、Azure 内のプライベート ネットワークの基本的な構成要素です。 それにより、VM などの Azure リソースは、相互に、またはインターネットと、安全に通信することができます。
+このクイックスタートでは、Azure Portal を使用した仮想ネットワークの作成方法について説明します。 2 つの仮想マシン (VM) をデプロイします。 次に、VM 間で安全な通信を行い、インターネットから VM に接続します。 仮想ネットワークは、Azure 内のプライベート ネットワークの基本的な構成要素です。 それにより、VM などの Azure リソースは、相互に、またはインターネットと、安全に通信することができます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -28,11 +28,11 @@ ms.locfileid: "79214790"
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Azure portal](https://portal.azure.com) にサインインします。
+[Azure Portal](https://portal.azure.com) にサインインします。
 
 ## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
-1. Azure portal メニューから **[リソースの作成]** を選択します。 Azure Marketplace で、 **[ネットワーク]**  >  **[仮想ネットワーク]** を選択します。
+1. Azure Portal メニューから **[リソースの作成]** を選択します。 Azure Marketplace で、 **[ネットワーク]**  >  **[仮想ネットワーク]** を選択します。
 
 1. **[仮想ネットワークの作成]** に次の情報を入力または選択します。
 
@@ -43,7 +43,7 @@ ms.locfileid: "79214790"
     | 名前 | 「*myVirtualNetwork*」と入力します。 |
     | 場所 | **[米国東部]** を選択します。|
 
-1. **[Next: IP Addresses]\(次へ: IP アドレス\)** を選択し、 **[IPv4 アドレス空間]** に「*10.1.0.0/16*」と入力します。
+1. **次へ:[Next: IP Addresses]\(次へ: IP アドレス\)** を選択し、 **[IPv4 アドレス空間]** に「*10.1.0.0/16*」と入力します。
 
 1. **[サブネットの追加]** を選択し、 **[サブネット名]** に「*myVirtualSubnet*」、 **[サブネットのアドレス範囲]** に「*10.1.0.0/24*」と入力します。
 
@@ -57,7 +57,7 @@ ms.locfileid: "79214790"
 
 ### <a name="create-the-first-vm"></a>最初の VM を作成する
 
-1. Azure portal メニューから **[リソースの作成]** を選択します。
+1. Azure Portal メニューから **[リソースの作成]** を選択します。
 
 1. Azure Marketplace で、 **[コンピューティング]**  >  **[Windows Server 2019 Datacenter]** を選択します。 **［作成］** を選択します
 
@@ -84,7 +84,7 @@ ms.locfileid: "79214790"
     | **コスト削減** |  |
     | Windows ライセンスを既にお持ちの場合 | 既定値の **[いいえ]** になります。 |
 
-1. **ディスク** を選択します。
+1. **次へ:ディスク** を選択します。
 
 1. **[仮想マシンの作成 - Disk]** で、既定値のままにして、 **[Next:Networking]\(次へ : ネットワーク\)** を選択します。
 
@@ -99,7 +99,7 @@ ms.locfileid: "79214790"
     | パブリック受信ポート | 既定値の **[選択したポートを許可する]** になります。 |
     | 受信ポートの選択 | 既定値の **[HTTP]** と **[RDP]** になります。
 
-1. **管理** を選択します。
+1. **次へ:管理** を選択します。
 
 1. **[仮想マシンの作成 - 管理]** の **[診断ストレージ アカウント]** で **[新規作成]** を選択します。
 
@@ -129,7 +129,7 @@ ms.locfileid: "79214790"
 
 *myVm1* を作成した後、インターネットに接続します。
 
-1. Azure portal で、*myVm1* を検索して選択します。
+1. Azure Portal で、*myVm1* を検索して選択します。
 
 1. **[接続]** 、 **[RDP]** の順に選択します。
 
@@ -223,3 +223,6 @@ ms.locfileid: "79214790"
 仮想ネットワーク設定の詳細については、「[仮想ネットワークの作成、変更、削除](manage-virtual-network.md)」をご覧ください。
 
 Azure では、VM 間の安全な通信を既定で実行できます。 Azure では、インターネットから Windows VM への受信リモート デスクトップ接続のみが許可されています。 VM ネットワーク通信の種類の詳細については、[ネットワーク トラフィックのフィルター処理](tutorial-filter-network-traffic.md)に関する記事を参照してください。
+
+> [!NOTE] 
+> Azure サービスは有料です。 Azure Cost Management を使用すると、予算を設定して、支出を制御するためのアラートを構成できます。 Cost Management で Azure のコストを分析、管理、最適化しましょう。 詳細については、[コスト分析に関するクイック スタート](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)に関するページを参照してください。

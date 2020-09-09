@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 50bcd42189b1bcc945d726277975892f07f1baa1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 827c1954456ee7943c48525919ed411836f610aa
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78255531"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114025"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Azure で適切な MySQL サーバー オプションを選択する
 
@@ -31,7 +31,7 @@ Azure では、MySQL サーバーのワークロードをホスト型仮想マ�
 
 これらのオプションの主な違いを次の表に示します。
 
-|            | Azure Database for MySQL | Azure VM 上の MySQL    |
+| 属性          | Azure Database for MySQL | Azure VM 上の MySQL    |
 |:-------------------|:-----------------------------|:--------------------|
 | サービス レベル アグリーメント (SLA)                | 99.99% の可用性の SLA を提供| 同じ可用性セットに 2 つ以上のインスタンスがある場合、最大 99.95% の可用性。<br/><br/>Premium Storage を使用した単一インスタンス VM の場合、99.9% の可用性。<br/><br/>複数の可用性セット内の複数のインスタンスで Availability Zones を使用した場合、99.99%。<br/><br/>「[Virtual Machines の SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)」を参照してください。 |
 | オペレーティング システムの修正プログラムの適用        | 自動  | お客様が管理 |
@@ -85,7 +85,7 @@ Azure Database for MySQL は、あらゆる種類のノード レベルの中断
   - インデックスのチューニング
   - クエリのチューニング
   - 監査
-  - Security
+  - セキュリティ
 
   また、別のデータ センターに高可用性を構成するために必要な構成や管理は、最小限で済むか、まったく行わないで済みます。
 

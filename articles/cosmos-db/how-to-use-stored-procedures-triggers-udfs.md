@@ -3,15 +3,16 @@ title: Azure Cosmos DB SDK でストアド プロシージャ、トリガー、�
 description: Azure Cosmos DB SDK を使用してストアド プロシージャ、トリガー、およびユーザー定義関数を呼び出す方法について説明します
 author: timsander1
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 05/07/2020
+ms.topic: how-to
+ms.date: 06/16/2020
 ms.author: tisande
-ms.openlocfilehash: 2e870e6cbc16fd98d8fccb5bbe3ac5d8be634cf2
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.custom: devx-track-python, devx-track-javascript
+ms.openlocfilehash: fccd3209d88ecd0f7e2baa06a55555a1370c4ec4
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982311"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586309"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を登録および使用する方法
 
@@ -31,7 +32,7 @@ Azure Cosmos DB の SQL API は、JavaScript で記述されたストアド プ�
 次の例は、.NET SDK V2 を使用してストアド プロシージャを登録する方法を示しています。
 
 ```csharp
-string storedProcedureId = "spCreateToDoItem";
+string storedProcedureId = "spCreateToDoItems";
 StoredProcedure newStoredProcedure = new StoredProcedure
    {
        Id = storedProcedureId,
@@ -45,17 +46,25 @@ StoredProcedure createdStoredProcedure = response.Resource;
 次のコードは、 .NET SDK V2 を使用してストアド プロシージャを呼び出す方法を示しています。
 
 ```csharp
-dynamic newItem = new
+dynamic[] newItems = new dynamic[]
 {
-    category = "Personal",
-    name = "Groceries",
-    description = "Pick up strawberries",
-    isComplete = false
+    new {
+        category = "Personal",
+        name = "Groceries",
+        description = "Pick up strawberries",
+        isComplete = false
+    },
+    new {
+        category = "Personal",
+        name = "Doctor",
+        description = "Make appointment for check up",
+        isComplete = false
+    }
 };
 
 Uri uri = UriFactory.CreateStoredProcedureUri("myDatabase", "myContainer", "spCreateToDoItem");
 RequestOptions options = new RequestOptions { PartitionKey = new PartitionKey("Personal") };
-var result = await client.ExecuteStoredProcedureAsync<string>(uri, options, newItem);
+var result = await client.ExecuteStoredProcedureAsync<string>(uri, options, new[] { newItems });
 ```
 
 ### <a name="stored-procedures---net-sdk-v3"></a>ストアド プロシージャ - .NET SDK V3
@@ -63,10 +72,11 @@ var result = await client.ExecuteStoredProcedureAsync<string>(uri, options, newI
 次の例は、.NET SDK V3 を使用してストアド プロシージャを登録する方法を示しています。
 
 ```csharp
-StoredProcedureResponse storedProcedureResponse = await client.GetContainer("database", "container").Scripts.CreateStoredProcedureAsync(new StoredProcedureProperties
+string storedProcedureId = "spCreateToDoItems";
+StoredProcedureResponse storedProcedureResponse = await client.GetContainer("myDatabase", "myContainer").Scripts.CreateStoredProcedureAsync(new StoredProcedureProperties
 {
-    Id = "spCreateToDoItem",
-    Body = File.ReadAllText(@"..\js\spCreateToDoItem.js")
+    Id = storedProcedureId,
+    Body = File.ReadAllText($@"..\js\{storedProcedureId}.js")
 });
 ```
 
@@ -80,10 +90,16 @@ dynamic[] newItems = new dynamic[]
         name = "Groceries",
         description = "Pick up strawberries",
         isComplete = false
+    },
+    new {
+        category = "Personal",
+        name = "Doctor",
+        description = "Make appointment for check up",
+        isComplete = false
     }
 };
 
-var result = await client.GetContainer("database", "container").Scripts.ExecuteStoredProcedureAsync<string>("spCreateToDoItem", new PartitionKey("Personal"), newItems);
+var result = await client.GetContainer("database", "container").Scripts.ExecuteStoredProcedureAsync<string>("spCreateToDoItem", new PartitionKey("Personal"), new[] { newItems });
 ```
 
 ### <a name="stored-procedures---java-sdk"></a>ストアド プロシージャ - Java SDK
@@ -94,8 +110,8 @@ var result = await client.GetContainer("database", "container").Scripts.ExecuteS
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
 StoredProcedure newStoredProcedure = new StoredProcedure(
     "{" +
-        "  'id':'spCreateToDoItem'," +
-        "  'body':" + new String(Files.readAllBytes(Paths.get("..\\js\\spCreateToDoItem.js"))) +
+        "  'id':'spCreateToDoItems'," +
+        "  'body':" + new String(Files.readAllBytes(Paths.get("..\\js\\spCreateToDoItems.js"))) +
     "}");
 //toBlocking() blocks the thread until the operation is complete and is used only for demo.  
 StoredProcedure createdStoredProcedure = asyncClient.createStoredProcedure(containerLink, newStoredProcedure, null)
@@ -106,8 +122,10 @@ StoredProcedure createdStoredProcedure = asyncClient.createStoredProcedure(conta
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
-String sprocLink = String.format("%s/sprocs/%s", containerLink, "spCreateToDoItem");
+String sprocLink = String.format("%s/sprocs/%s", containerLink, "spCreateToDoItems");
 final CountDownLatch successfulCompletionLatch = new CountDownLatch(1);
+
+List<ToDoItem> ToDoItems = new ArrayList<ToDoItem>();
 
 class ToDoItem {
     public String category;
@@ -122,10 +140,19 @@ newItem.name = "Groceries";
 newItem.description = "Pick up strawberries";
 newItem.isComplete = false;
 
+ToDoItems.add(newItem)
+
+newItem.category = "Personal";
+newItem.name = "Doctor";
+newItem.description = "Make appointment for check up";
+newItem.isComplete = false;
+
+ToDoItems.add(newItem)
+
 RequestOptions requestOptions = new RequestOptions();
 requestOptions.setPartitionKey(new PartitionKey("Personal"));
 
-Object[] storedProcedureArgs = new Object[] { newItem };
+Object[] storedProcedureArgs = new Object[] { ToDoItems };
 asyncClient.executeStoredProcedure(sprocLink, requestOptions, storedProcedureArgs)
     .subscribe(storedProcedureResponse -> {
         String storedProcResultAsString = storedProcedureResponse.getResponseAsString();
@@ -146,7 +173,7 @@ successfulCompletionLatch.await();
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
-const sprocId = "spCreateToDoItem";
+const sprocId = "spCreateToDoItems";
 await container.scripts.storedProcedures.create({
     id: sprocId,
     body: require(`../js/${sprocId}`)
@@ -163,7 +190,7 @@ const newItem = [{
     isComplete: false
 }];
 const container = client.database("myDatabase").container("myContainer");
-const sprocId = "spCreateToDoItem";
+const sprocId = "spCreateToDoItems";
 const {body: result} = await container.scripts.storedProcedure(sprocId).execute(newItem, {partitionKey: newItem[0].category});
 ```
 
@@ -172,27 +199,30 @@ const {body: result} = await container.scripts.storedProcedure(sprocId).execute(
 次の例は、Python SDK を使用してストアド プロシージャを登録する方法を示しています。
 
 ```python
-with open('../js/spCreateToDoItem.js') as file:
+with open('../js/spCreateToDoItems.js') as file:
     file_contents = file.read()
 container_link = 'dbs/myDatabase/colls/myContainer'
 sproc_definition = {
-    'id': 'spCreateToDoItem',
+    'id': 'spCreateToDoItems',
     'serverScript': file_contents,
 }
-sproc = client.CreateStoredProcedure(container_link, sproc_definition)
+client = cosmos_client.CosmosClient(url, key)
+database = client.get_database_client(database_name)
+container = database.get_container_client(container_name)
+sproc = container.create_stored_procedure(container_link, sproc_definition)
 ```
 
 次のコードは、Python SDK を使用してストアド プロシージャを呼び出す方法を示しています。
 
 ```python
-sproc_link = 'dbs/myDatabase/colls/myContainer/sprocs/spCreateToDoItem'
+sproc_link = 'dbs/myDatabase/colls/myContainer/sprocs/spCreateToDoItems'
 new_item = [{
     'category':'Personal',
     'name':'Groceries',
     'description':'Pick up strawberries',
     'isComplete': False
 }]
-client.ExecuteStoredProcedure(sproc_link, new_item, {'partitionKey': 'Personal'}
+container.execute_stored_procedure(sproc_link, new_item, {'partitionKey': 'Personal'}
 ```
 
 ## <a name="how-to-run-pre-triggers"></a><a id="pre-triggers"></a>プリトリガーの実行方法
@@ -340,7 +370,10 @@ trigger_definition = {
     'triggerType': documents.TriggerType.Pre,
     'triggerOperation': documents.TriggerOperation.Create
 }
-trigger = client.CreateTrigger(container_link, trigger_definition)
+client = cosmos_client.CosmosClient(url, key)
+database = client.get_database_client(database_name)
+container = database.get_container_client(container_name)
+trigger = container.create_trigger(container_link, trigger_definition)
 ```
 
 次のコードは、Python SDK を使用してプリトリガーを呼び出す方法を示しています。
@@ -349,8 +382,8 @@ trigger = client.CreateTrigger(container_link, trigger_definition)
 container_link = 'dbs/myDatabase/colls/myContainer'
 item = {'category': 'Personal', 'name': 'Groceries',
         'description': 'Pick up strawberries', 'isComplete': False}
-client.CreateItem(container_link, item, {
-                  'preTriggerInclude': 'trgPreValidateToDoItemTimestamp'})
+container.create_item(container_link, item, {
+                  'pre_trigger_include': 'trgPreValidateToDoItemTimestamp'})
 ```
 
 ## <a name="how-to-run-post-triggers"></a><a id="post-triggers"></a>ポストトリガーの実行方法
@@ -487,7 +520,10 @@ trigger_definition = {
     'triggerType': documents.TriggerType.Post,
     'triggerOperation': documents.TriggerOperation.Create
 }
-trigger = client.CreateTrigger(container_link, trigger_definition)
+client = cosmos_client.CosmosClient(url, key)
+database = client.get_database_client(database_name)
+container = database.get_container_client(container_name)
+trigger = container.create_trigger(container_link, trigger_definition)
 ```
 
 次のコードは、Python SDK を使用してポストトリガーを呼び出す方法を示しています。
@@ -496,8 +532,8 @@ trigger = client.CreateTrigger(container_link, trigger_definition)
 container_link = 'dbs/myDatabase/colls/myContainer'
 item = {'name': 'artist_profile_1023', 'artist': 'The Band',
         'albums': ['Hellujah', 'Rotators', 'Spinning Top']}
-client.CreateItem(container_link, item, {
-                  'postTriggerInclude': 'trgPostUpdateMetadata'})
+container.create_item(container_link, item, {
+                  'post_trigger_include': 'trgPostUpdateMetadata'})
 ```
 
 ## <a name="how-to-work-with-user-defined-functions"></a><a id="udfs"></a>ユーザー定義関数を操作する方法
@@ -629,14 +665,17 @@ udf_definition = {
     'id': 'Tax',
     'serverScript': file_contents,
 }
-udf = client.CreateUserDefinedFunction(container_link, udf_definition)
+client = cosmos_client.CosmosClient(url, key)
+database = client.get_database_client(database_name)
+container = database.get_container_client(container_name)
+udf = container.create_user_defined_function(container_link, udf_definition)
 ```
 
 次のコードは、Python SDK を使用してユーザー定義関数を呼び出す方法を示しています。
 
 ```python
 container_link = 'dbs/myDatabase/colls/myContainer'
-results = list(client.QueryItems(
+results = list(container.query_items(
     container_link, 'SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000'))
 ```
 

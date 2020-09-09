@@ -2,13 +2,13 @@
 title: REST API とテンプレートを使用してリソースをデプロイする
 description: Azure Resource Manager と Resource Manager REST API を使用してリソースを Azure にデプロイします。 リソースは Resource Manager テンプレートで定義されます。
 ms.topic: conceptual
-ms.date: 06/04/2019
-ms.openlocfilehash: 9cdb7b668e5170917b41ef49639bd9a17e538766
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/21/2020
+ms.openlocfilehash: 17ea7da3e0b581ed60d2db97d350a70d5250ef28
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153235"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079484"
 ---
 # <a name="deploy-resources-with-arm-templates-and-resource-manager-rest-api"></a>ARM テンプレートと Resource Manager REST API を使用してリソースをデプロイする
 
@@ -20,27 +20,35 @@ ms.locfileid: "80153235"
 
 管理グループ、Azure サブスクリプション、またはリソース グループをデプロイの対象として指定できます。 多くの場合、リソース グループをデプロイの対象にします。 管理グループまたはサブスクリプションのデプロイを使用するのは、指定したスコープ全体にポリシーとロールの割り当てを適用するときです。 また、リソース グループを作成し、それにリソースをデプロイする場合も、サブスクリプション デプロイを使用します。 使用するコマンドは、デプロイのスコープに応じて異なります。
 
-**リソース グループ**にデプロイするには、[デプロイ - 作成](/rest/api/resources/deployments/createorupdate)に関するページのコマンドを使用します。 要求は以下に送信されます。
+* **リソース グループ**にデプロイするには、[デプロイ - 作成](/rest/api/resources/deployments/createorupdate)に関するページのコマンドを使用します。 要求は以下に送信されます。
 
-```HTTP
-PUT https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-05-01
-```
+  ```HTTP
+  PUT https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
+  ```
 
-**サブスクリプション**にデプロイするには、[デプロイ - サブスクリプション スコープで作成](/rest/api/resources/deployments/createorupdateatsubscriptionscope)に関するページのコマンドを使用します。 要求は以下に送信されます。
+* **サブスクリプション**にデプロイするには、[デプロイ - サブスクリプション スコープで作成](/rest/api/resources/deployments/createorupdateatsubscriptionscope)に関するページのコマンドを使用します。 要求は以下に送信されます。
 
-```HTTP
-PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-05-01
-```
+  ```HTTP
+  PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
+  ```
 
-サブスクリプション レベルでのデプロイの詳細については、「[サブスクリプション レベルでリソース グループとリソースを作成する](deploy-to-subscription.md)」を参照してください。
+  サブスクリプション レベルでのデプロイの詳細については、「[サブスクリプション レベルでリソース グループとリソースを作成する](deploy-to-subscription.md)」を参照してください。
 
-**管理グループ**にデプロイするには、[デプロイ - 管理グループ スコープで作成](/rest/api/resources/deployments/createorupdateatmanagementgroupscope)に関するページを参照してください。 要求は以下に送信されます。
+* **管理グループ**にデプロイするには、[デプロイ - 管理グループ スコープで作成](/rest/api/resources/deployments/createorupdateatmanagementgroupscope)に関するページを参照してください。 要求は以下に送信されます。
 
-```HTTP
-PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-05-01
-```
+  ```HTTP
+  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
+  ```
 
-管理グループ レベルでのデプロイの詳細については、「[管理グループ レベルでリソースを作成する](deploy-to-management-group.md)」を参照してください。
+  管理グループ レベルでのデプロイの詳細については、「[管理グループ レベルでリソースを作成する](deploy-to-management-group.md)」を参照してください。
+
+* **テナント**にデプロイするには[デプロイ - テナントのスコープでの作成または更新](/rest/api/resources/deployments/createorupdateattenantscope)に関するページを使用します。 要求は以下に送信されます。
+
+  ```HTTP
+  PUT https://management.azure.com/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
+  ```
+
+  テナント レベルでのデプロイの詳細については、「[テナント レベルでリソースを作成する](deploy-to-tenant.md)」を参照してください。
 
 この記事の例では、リソース グループ デプロイを使用します。
 
@@ -51,7 +59,7 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 1. 既存のリソース グループがない場合は、リソース グループを作成します。 ソリューションに必要なサブスクリプション ID、新しいリソース グループの名前、場所を指定します。 詳細については、「[リソース グループの作成](/rest/api/resources/resourcegroups/createorupdate)」を参照してください。
 
    ```HTTP
-   PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2019-05-01
+   PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2019-10-01
    ```
 
    次のような要求本文を使用します。
@@ -65,12 +73,12 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
    }
    ```
 
-1. [テンプレート デプロイを検証する](/rest/api/resources/deployments/validate)操作を実行して、デプロイを実行する前に検証します。 デプロイをテストする場合、(次の手順で示すように) デプロイの実行時に必要なパラメーターを正確に指定します。
+1. テンプレートをデプロイする前に、テンプレートが環境に与える変更をプレビューすることができます。 [what-if 操作](template-deploy-what-if.md)を使用して、テンプレートによって必要な変更が行われるかどうかを確認します。 What-if はまた、テンプレートのエラーも検証します。
 
 1. テンプレートをデプロイするには、要求 URI にサブスクリプション ID、リソース グループの名前、デプロイの名前を指定します。
 
    ```HTTP
-   PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2019-05-01
+   PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2019-10-01
    ```
 
    要求の本文に、テンプレートとパラメーター ファイルへのリンクを指定します。 パラメーター ファイルの詳細については、「[Resource Manager パラメーター ファイルを作成する](parameter-files.md)」を参照してください。
@@ -93,7 +101,7 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
    }
    ```
 
-    応答の内容、要求の内容、またはその両方を記録するには、要求に **debugSetting** を含めます。
+    応答の内容、要求の内容、またはその両方を記録するには、要求に `debugSetting` を含めます。
 
    ```json
    {
@@ -116,7 +124,7 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 
     ストレージ アカウントを設定して、Shared Access Signature (SAS) トークンを使用することができます。 詳細については、「[Delegating Access with a Shared Access Signature (Shared Access Signature を使用したアクセスの委任)](/rest/api/storageservices/delegating-access-with-a-shared-access-signature)」を参照してください。
 
-    パラメーターに機密性の高い値(パスワードなど) を提供する必要がある場合は、その値を Key Vault に追加します。 前の例で示したように、デプロイ中に Key Vault を取得します。 詳細については、「 [デプロイメント時にセキュリティで保護された値を渡す](key-vault-parameter.md)」を参照してください。
+    パラメーターに機密性の高い値(パスワードなど) を提供する必要がある場合は、その値を Key Vault に追加します。 前の例で示したように、デプロイ中に Key Vault を取得します。 詳細については、「[デプロイメント時にセキュリティで保護された値を渡す](key-vault-parameter.md)」を参照してください。
 
 1. テンプレートとパラメーターのファイルにリンクするのではなく、それらを要求本文に含めることができます。 次の例は、テンプレートとパラメーターをインラインにした要求の本文を示しています。
 
@@ -125,7 +133,7 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
       "properties": {
       "mode": "Incremental",
       "template": {
-        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
         "parameters": {
           "storageAccountType": {
@@ -184,8 +192,24 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 1. テンプレートのデプロイの状態を取得するには、[デプロイ - 取得](/rest/api/resources/deployments/get)に関するページを参照してください。
 
    ```HTTP
-   GET https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2018-05-01
+   GET https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
    ```
+
+## <a name="deployment-name"></a>デプロイ名
+
+デプロイには `ExampleDeployment` のような名前を付けることができます。
+
+デプロイを実行するたびに、リソース グループのデプロイ履歴にデプロイ名のエントリが追加されます。 別のデプロイを実行するときに同じ名前を付けると、現在のデプロイによって前のエントリが置き換えられます。 デプロイ履歴に一意のエントリを保持する場合は、デプロイごとに一意の名前を付けます。
+
+一意の名前を作成するために、ランダムな数値を割り当てることができます。 または、日付の値を追加します。
+
+同じリソース グループに対して同じ名前のデプロイを同時に実行した場合は、最後のデプロイのみが完了します。 完了していない同じ名前のデプロイは、最後のデプロイによって置き換えられます。 たとえば、`storage1` という名前のストレージ アカウントをデプロイする `newStorage` という名前のデプロイを実行し、`storage2` という名前のストレージ アカウントをデプロイする `newStorage` という名前の別のデプロイを同時に実行した場合は、1 つのストレージ アカウントのみがデプロイされます。 結果のストレージ アカウントの名前は `storage2` になります。
+
+ただし、`storage1` という名前のストレージ アカウントをデプロイする `newStorage` という名前のデプロイを実行し、その完了直後に、`storage2` という名前のストレージ アカウントをデプロイする `newStorage` という名前の別のデプロイを実行した場合は、ストレージ アカウントは 2 つになります。 1 つは `storage1` という名前に、もう 1 つは `storage2` という名前になります。 ただし、デプロイ履歴にはエントリが 1 つだけ存在します。
+
+デプロイごとに一意の名前を指定すると、競合なしでそれらを同時に実行できます。 `storage1` という名前のストレージ アカウントをデプロイする `newStorage1` という名前のデプロイを実行し、`storage2` という名前のストレージ アカウントをデプロイする `newStorage2` という名前の別のデプロイを同時に実行した場合は、2 つのストレージ アカウントがデプロイされ、デプロイ履歴には 2 つのエントリが存在します。
+
+同時デプロイによる競合を回避し、デプロイ履歴に一意のエントリが確実に存在するようにするには、各デプロイに一意の名前を付けます。
 
 ## <a name="next-steps"></a>次のステップ
 

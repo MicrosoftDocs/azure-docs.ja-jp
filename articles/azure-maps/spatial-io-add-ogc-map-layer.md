@@ -1,19 +1,19 @@
 ---
 title: Open Geospatial Consortium (OGC) のマップ レイヤーを追加する | Microsoft Azure Maps
 description: マップに OGC マップ レイヤーをオーバーレイする方法と、OgcMapLayer クラスのさまざまなオプションを使用する方法について説明します。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b753ecfc07cfb3806838f8a05dbe33ef0bb92730
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6efc6b27090ecc7171bb66deb303a4764d9b6f04
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334298"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128558"
 ---
 # <a name="add-a-map-layer-from-the-open-geospatial-consortium-ogc"></a>Open Geospatial Consortium (OGC) のマップ レイヤーを追加する
 
@@ -28,7 +28,7 @@ ms.locfileid: "80334298"
 - GetFeatureInfo では、サービスで `EPSG:4326` がサポートされるか、再投影が処理される必要があります。 
 - サポートされている操作:
 
-    | | |
+    | 操作 | 説明 |
     | :-- | :-- |
     | GetCapabilities | サポートされている機能を含む、サービスに関するメタデータを取得します |
     | GetMap | 指定された領域のマップ イメージを取得します |
@@ -42,7 +42,7 @@ ms.locfileid: "80334298"
 - TileMatrix 識別子は、マップのズーム レベルに対応する整数値である必要があります。 Azure マップ上でのズーム レベルは、`"0"` から `"22"` の値です。 つまり、`"00"` はサポートされませんが、`"0"` はサポートされます。
 - サポートされている操作:
 
-    | | |
+    | 操作 | 説明 |
     | :-- | :-- |
     | GetCapabilities | サポート対象の操作と機能を取得します |
     | GetTile | 特定のタイルの画像を取得します |

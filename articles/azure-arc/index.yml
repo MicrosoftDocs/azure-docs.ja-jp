@@ -1,39 +1,87 @@
-### YamlMime:Landing
-title: Azure Arc
-summary: Azure Arc は、Azure Resource Manager の機能を Linux および Windows サーバーに拡張するほか、オンプレミス、マルチクラウド、エッジにわたるあらゆるインフラストラクチャに Kubernetes クラスターを拡張します。 Azure Arc を使用すると、顧客は場所を問わず Azure データ サービスを実行できるため、データを常に最新の状態に保つ機能、(数時間ではなく) 数秒でのデプロイ、インフラストラクチャでの動的なスケーラビリティなど、クラウド イノベーションの利点を実感できます。 サーバー向け Azure Arc は現在、パブリック プレビュー段階にあります。
+### YamlMime:Hub
+title: Azure Arc のドキュメント
+summary: オンプレミス、エッジ、マルチクラウドにまたがる複雑で分散された環境を簡素化します。
+brand: azure
 metadata:
-  title: サーバー向け Azure Arc
-  description: Azure でオンプレミスのマシンを管理する方法について説明します
-  author: bobbytreed
-  manager: carmonm
+  title: Azure Arc
+  description: オンプレミス、エッジ、マルチクラウドにまたがる複雑で分散された環境にリソースをデプロイする方法について説明します。 Azure Arc を使用すると、場所を問わず Azure サービスのデプロイが可能になり、Azure の管理が任意のインフラストラクチャに拡張されます。
   ms.service: azure-arc
-  ms.topic: landing-page
-  ms.date: 11/04/2019
-  ms.author: robreed
-  ms.openlocfilehash: e80cdec365a14caee5c74900e1c21f7349165e66
-  ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+  ms.topic: hub-page
+  author: MGoedtel
+  ms.author: magoedte
+  ms.date: 08/21/2020
+  ms.openlocfilehash: 6dec6bb451e7a330138c9a2a65f2a7dec7202a6a
+  ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/13/2020
-  ms.locfileid: "81261280"
-landingContent:
-- title: Azure Arc の概要
-  linkLists:
-  - linkListType: overview
+  ms.lasthandoff: 08/28/2020
+  ms.locfileid: "89051323"
+highlightedContent:
+  items:
+  - title: Azure Arc 対応サーバー (プレビュー)
+    itemType: overview
+    url: ./servers/overview.md
+  - title: Azure Arc 対応 Kubernetes (プレビュー)
+    itemType: overview
+    url: ./kubernetes/overview.md
+  - title: Azure Arc について
+    itemType: overview
+    url: overview.md
+productDirectory:
+  title: Azure Arc 対応サービス
+  summary: 場所を問わずサービスを実行する方法を参照してください。
+  items:
+  - title: Azure Arc 対応サーバー
+    imageSrc: ./media/manage-450-machines-azure-arc.svg
     links:
-    - text: Azure Arc の詳細
-      url: https://aka.ms/Azure-Arc-Info
-- title: サーバー向け Azure Arc を使用してマシンを Azure に接続する
-  linkLists:
-  - linkListType: overview
+    - url: ./servers/onboard-portal.md
+      text: Azure portal から Azure Arc へのマシンの接続
+    - url: ./servers/onboard-service-principal.md
+      text: サービス プリンシパルを使用したマシンの大規模な接続
+    - url: ./servers/onboard-dsc.md
+      text: PowerShell DSC を使用してマシンを Azure に接続する
+    - url: ./servers/index.yml
+      text: さらに表示...
+  - title: Azure Arc 対応 Kubernetes
+    imageSrc: ./media/containers-101-kubernetes-services.svg
     links:
-    - text: サーバー向け Azure Arc とは
-      url: ./servers/overview.md
-  - linkListType: quickstart
+    - url: ./kubernetes/connect-cluster.md
+      text: クラスターの接続
+    - url: ./kubernetes/use-gitops-connected-cluster.md
+      text: GitOps を使用して構成をデプロイする
+    - url: ./kubernetes/index.yml
+      text: さらに表示...
+conceptualContent:
+  title: 作業開始
+  items:
+  - title: Azure Arc 対応サーバー (プレビュー)
     links:
-    - text: Azure portal から Azure Arc へのマシンの接続
-      url: ./servers/onboard-portal.md
-    - text: サービス プリンシパルを使用したマシンの大規模な接続
-      url: ./servers/onboard-service-principal.md
-    - text: PowerShell DSC を使用してマシンを Azure に接続する
-      url: ./servers/onboard-dsc.md
+    - url: ./servers/learn/quick-enable-hybrid-vm.md
+      itemType: get-started
+      text: Arc 対応サーバー エージェントを有効にする
+    - url: ./servers/learn/tutorial-enable-vm-insights.md
+      itemType: tutorial
+      text: Azure Monitor for VMs を使用してハイブリッド マシンを監視する
+    - url: ./servers/policy-samples.md
+      itemType: learn
+      text: Azure Policy を使用した受付制御ポリシー
+    - url: ./servers/manage-vm-extensions.md
+      itemType: how-to-guide
+      text: Azure VM 拡張機能の管理と使用
+  - title: Azure Arc 対応 Kubernetes (プレビュー)
+    links:
+    - url: ./kubernetes/use-gitops-with-helm.md
+      itemType: deploy
+      text: GitOps を使用して Helm グラフをデプロイする
+    - url: ./kubernetes/use-azure-policy.md
+      itemType: how-to-guide
+      text: Azure Policy を使用して GitOps を適用する
+    - url: ../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/toc.json
+      itemType: tutorial
+      text: Azure Monitor を使用してコンテナーを監視する
+    - url: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/toc.json
+      itemType: learn
+      text: Azure Policy を使用した受付制御ポリシー
+    - url: ./kubernetes/deploy-azure-iot-edge-workloads.md
+      itemType: deploy
+      text: Azure IoT Edge ワークロードをデプロイする

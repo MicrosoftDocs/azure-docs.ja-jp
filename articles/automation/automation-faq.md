@@ -1,27 +1,24 @@
 ---
 title: Azure Automation の FAQ | Microsoft Docs
-description: Azure Automation についてよく寄せられる質問の回答です。
+description: この記事では、Azure Automation についてよく寄せられる質問に対する回答を提供します。
 services: automation
 ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 02/25/2020
-ms.openlocfilehash: 3fa29f3df5f0434c4c61e8d12adbb3f55156a29f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 76c8d09ef2ef0130ddac856a1f37f8b68d977494
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81405959"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186233"
 ---
 # <a name="azure-automation-frequently-asked-questions"></a>Azure Automation についてよく寄せられる質問
 
 この Microsoft FAQ は、Azure Automation についてよく寄せられる質問の一覧です。 その機能について追加のご質問がある場合は、ディスカッション フォーラムにアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
 
->[!NOTE]
->この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation の Azure PowerShell モジュールを更新する方法](automation-update-azure-modules.md)」に従って、モジュールを最新バージョンに更新できます。
-
-## <a name="update-management-solution"></a>Update Management ソリューション
+## <a name="update-management"></a>更新管理
 
 ### <a name="can-i-prevent-unexpected-os-level-upgrades"></a>予期しない OS レベルのアップグレードを防止することはできますか?
 
@@ -41,7 +38,7 @@ Update Management では更新プログラムの強化がクラウドで実行�
 
 ### <a name="can-i-deploy-updates-across-azure-tenants"></a>Azure テナントの境界を越えて更新プログラムをデプロイすることはできますか?
 
-Update Management への報告を行う別の Azure テナントに、修正プログラムを適用する必要があるマシンが存在する場合は、次の対処法を使用して、それらをスケジュールを設定する必要があります。 スケジュールを作成するには、`ForUpdateConfiguration` パラメーターを指定して [New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) コマンドレットを使用します。 [New-AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) コマンドレットを使用して、他のテナントのマシンを `NonAzureComputer` パラメーターに渡すことができます。 次の例は、その方法を示したものです。
+Update Management への報告を行う別の Azure テナントに、修正プログラムを適用する必要があるマシンが存在する場合は、次の対処法を使用して、それらをスケジュールを設定する必要があります。 スケジュールを作成するには、`ForUpdateConfiguration` パラメーターを指定して [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) コマンドレットを使用します。 [New-AzAutomationSoftwareUpdateConfiguration](/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) コマンドレットを使用して、他のテナントのマシンを `NonAzureComputer` パラメーターに渡すことができます。 次の例は、その方法を示したものです。
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")
@@ -57,5 +54,5 @@ New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationA
 
 こちらでご質問の回答が見つからない場合は、次のソースで他の質問と回答を参照できます。
 
-- [Azure Automation](https://social.msdn.microsoft.com/Forums/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc)
+- [Azure Automation](/answers/topics/azure-automation.html)
 - [フィードバック フォーラム](https://feedback.azure.com/forums/905242-update-management)

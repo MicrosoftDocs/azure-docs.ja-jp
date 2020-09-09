@@ -4,15 +4,15 @@ description: Resource Manager と Azure Portal を使用して VNet 間の VPN �
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3d91203253c08acdaa159fc70f7a34fa7fca20c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5abf79d23ca2de661383cc002dac9d7f9e4dc5bf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78674156"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84985571"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Azure ポータルを使用して VNet 間 VPN ゲートウェイ接続を構成する
 

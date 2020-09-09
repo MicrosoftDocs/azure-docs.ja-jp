@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 809fbe85a9783777d5dbef86357bd5a386bd6f81
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 69df5a65df99a7497099e71e9f41701458370c87
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261244"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84423923"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Azure Cache for Redis での使用から TLS 1.0 と 1.1 を削除する
 
@@ -19,7 +19,7 @@ ms.locfileid: "81261244"
 
 この作業の一環として、Azure Cache for Redis に対して次の変更が行われます。
 
-* **フェーズ 1:** 新しく作成されるキャッシュ インスタンスには、既定の最小 TLS バージョンとして 1.2 が構成されます。 (これは以前は TLS 1.0 でした。)この時点で既定のキャッシュ インスタンスが更新されることはありません。 必要に応じて、下位互換性を保つために、1.0 または 1.1 に[最小 TLS バージョンを戻す](cache-configure.md#access-ports)ことができます。 この変更は、Azure portal またはその他の管理 API を使用して実行できます。
+* **フェーズ 1:** 新しく作成されるキャッシュ インスタンスには、既定の最小 TLS バージョンとして 1.2 が構成されます (以前は TLS 1.0)。  この時点で既定のキャッシュ インスタンスが更新されることはありません。 必要に応じて、下位互換性を保つために、1.0 または 1.1 に[最小 TLS バージョンを戻す](cache-configure.md#access-ports)ことができます。 この変更は、Azure portal またはその他の管理 API を使用して実行できます。
 * **フェーズ 2:** TLS のバージョン 1.0 と 1.1 のサポートは停止されます。 この変更以降、お使いのアプリケーションでは、TLS 1.2 以降を使用してキャッシュと通信する必要があります。
 
 さらに、この変更の一環として、セキュリティで保護されていない古い暗号スイートのサポートが廃止されます。  キャッシュが最小 TLS バージョンである 1.2 に構成されている場合、サポートされる暗号スイートは以下に制限されます。
@@ -31,16 +31,18 @@ ms.locfileid: "81261244"
 
 これらの変更が有効になる日付は次のとおりです。
 
-| クラウド               | フェーズ 1 の開始日 | フェーズ 2 の開始日      |
-|---------------------|--------------------|-------------------------|
-| Azure (グローバル)      |  2020 年 1 月 13 日  | 2020 年 5 月 11 日 (延長) |
-| Azure Government    |  2020 年 3 月 13 日    | 2020 年 5 月 11 日            |
-| Azure Germany       |  2020 年 3 月 13 日    | 2020 年 5 月 11 日            |
-| Azure 中国         |  2020 年 3 月 13 日    | 2020 年 5 月 11 日            |
+| クラウド                | フェーズ 1 の開始日 | フェーズ 2 の開始日         |
+|----------------------|--------------------|----------------------------|
+| Azure (グローバル)       |  2020 年 1 月 13 日  | COVID 19 のために延期  |
+| Azure Government     |  2020 年 3 月 13 日    | COVID 19 のために延期  |
+| Azure Germany        |  2020 年 3 月 13 日    | COVID 19 のために延期  |
+| Azure China 21Vianet |  2020 年 3 月 13 日    | COVID 19 のために延期  |
+
+注:フェーズ 2 の新しい日付は未定
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>アプリケーションが既に準拠しているかどうかを確認する
 
-アプリケーションが TLS 1.2 で動作するかどうかを確認する最も簡単な方法は、 **[TLS の最小バージョン]** の値を、使用しているテスト用またはステージング キャッシュで TLS 1.2 に設定することです。 **[TLS の最小バージョン]** 設定は、Azure portal 内のキャッシュ インスタンスの [[詳細設定]](cache-configure.md#advanced-settings) にあります。 この変更後もアプリケーションが予想どおりに動作し続ける場合は、おそらく準拠しています。 アプリケーションで使用されるいくつかの具体的な Redis クライアント ライブラリを、TLS 1.2 を有効にするように構成しなければならない場合があります。これにより、そのセキュリティ プロトコルで Azure Cache for Redis に接続できます。
+アプリケーションが TLS 1.2 で動作するかどうかを見つけるための最も簡単な方法は、テストまたはステージング キャッシュで **[TLS の最小バージョン]** の値を TLS 1.2 に設定してからテストを実行することです。 **[TLS の最小バージョン]** 設定は、Azure portal 内のキャッシュ インスタンスの [[詳細設定]](cache-configure.md#advanced-settings) にあります。  この変更後もアプリケーションが予想どおりに動作し続ける場合は、おそらく準拠しています。 Azure Cache for Redis に接続するには、アプリケーションによって使用される Redis クライアント ライブラリを構成して TLS 1.2 を有効にすることが必要になる場合があります。
 
 ## <a name="configure-your-application-to-use-tls-12"></a>TLS 1.2 を使用するようにアプリケーションを構成する
 
@@ -55,7 +57,12 @@ Redis .NET クライアントは、.NET Framework 4.5.2 以前では既定で以
 
 ### <a name="net-core"></a>.NET Core
 
-Redis .NET Core クライアントは、既定で最新の TLS バージョンを使用します。
+Redis .NET Core クライアントは既定で OS 既定の TLS バージョンになります。これは言うまでもなく OS 自体に依存します。 
+
+OS のバージョンや、適用されている修正プログラムに応じて、有効な既定の TLS バージョンは異なる場合があります。 これに関して存在する情報源は 1 つですが、[これ](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)は Windows の場合の記事です。 
+
+ただし、古い OS を使用している場合や、確かめたいだけの場合は、クライアント経由で手動で優先 TLS バージョンを構成することをお勧めします。
+
 
 ### <a name="java"></a>Java
 

@@ -1,19 +1,19 @@
 ---
 title: パフォーマンス用に Azure Data Lake Storage Gen2 を最適化する | Microsoft Docs
-description: Azure Data Lake Storage Gen2 のパフォーマンス チューニング ガイドライン
+description: パフォーマンス用に Azure Data Lake Storage Gen2 を最適化する方法を理解します。 データの取り込み、データセットの構造などについて説明します。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: f1a16228b72d7e0f45048669ade94a0c78d9ac52
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a1ae0971b016ed226351167cfabfca7d3cafd19f
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74327942"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905407"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>パフォーマンス用に Azure Data Lake Storage Gen2 を最適化する
 
@@ -47,7 +47,7 @@ Data Lake Storage Gen2 は、あらゆる分析シナリオで必要とされる
 |--------------------|------------------------------------------------------|------------------------------|
 | DistCp            | -m (マッパー)   | [リンク](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
 | Azure Data Factory| parallelCopies    | [リンク](../../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | fs.azure.block.size、-m (マッパー)    |   [リンク](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)        |
+| Sqoop           | fs.azure.block.size、-m (マッパー)    |   [リンク](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>データ セットの構成
 
@@ -65,13 +65,13 @@ Hive ワークロードでは、時系列データのパーティションを削
 
 時系列データを取り込むこれらのパイプラインでは、多くの場合、ファイルにかなり構造化されたファイル名やフォルダー名が付けられます。 以下に、日付によって構成されたデータの一般的な例を示します。
 
-    \DataSet\YYYY\MM\DD\datafile_YYYY_MM_DD.tsv
+*\DataSet\YYYY\MM\DD\datafile_YYYY_MM_DD.tsv*
 
 フォルダーとファイル名の両方に、日時の情報が示されていることに注意してください。
 
 日付と時刻については、以下が一般的なパターンです。
 
-    \DataSet\YYYY\MM\DD\HH\mm\datafile_YYYY_MM_DD_HH_mm.tsv
+*\DataSet\YYYY\MM\DD\HH\mm\datafile_YYYY_MM_DD_HH_mm.tsv*
 
 繰り返しになりますが、フォルダーとファイルの整理については、より大きなファイルサイズに最適化され、各フォルダーに妥当な数のファイルが配置されるような選択を行ってください。
 
@@ -138,5 +138,5 @@ HDInsight クラスター内には 3 つのレイヤーがあります。これ�
 | [HDInsight の MapReduce](data-lake-storage-performance-tuning-mapreduce.md) | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.maps</li><li>Mapreduce.reduce.memory</li><li>Mapreduce.job.reduces</li></ul> |
 | [HDInsight の Storm](data-lake-storage-performance-tuning-storm.md)| <ul><li>ワーカー プロセスの数</li><li>スパウトの Executor インスタンスの数</li><li>ボルトの Executor インスタンスの数 </li><li>スパウトのタスクの数</li><li>ボルトのタスクの数</li></ul>|
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 * [Azure Data Lake Storage Gen2 の概要](data-lake-storage-introduction.md)

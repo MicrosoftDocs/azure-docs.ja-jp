@@ -1,25 +1,23 @@
 ---
 title: メンテナンス構成に関連付けられているリソースを別のリージョンに移動する
 description: VM メンテナンス構成に関連付けられているリソースを別の Azure リージョンに移動する方法を説明します
-services: virtual-machines
 author: shants123
 ms.service: virtual-machines
-ms.topic: article
-ms.tgt_pltfrm: vm
+ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: shants
-ms.openlocfilehash: 3e271e2467b495e79a93ce5eab5edee36e65e619
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 38532fba2be1fedd275ed2e7f9dfc1bf5752499d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78304338"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501655"
 ---
 # <a name="move-resources-in-a-maintenance-control-configuration-to-another-region"></a>メンテナンス コントロール構成のリソースを別のリージョンに移動する
 
 メンテナンス コントロール構成に関連付けられているリソースを別の Azure リージョンに移動するには、この記事に従ってください。 構成を移動する場合、さまざまな理由が考えられます。 たとえば、新しい Azure リージョンを利用するため、特定のリージョンでのみ利用可能な機能やサービスをデプロイするため、内部ポリシーとガバナンスの要件を満たすため、または容量計画の要件に応じるためなどがあります。
 
-カスタマイズされたメンテナンス構成でメンテナンス コントロールを使用すると、プラットフォームの更新プログラムを [Windows](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json) VM、[Linux](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Flinux%2Fbreadcrumb%2Ftoc.json&view=azure-java-stable) VM、Azure Dedicated Host に適用する方法を制御できます。 メンテナンス コントロールをリージョン間で移動するためのシナリオがいくつかあります。
+カスタマイズされたメンテナンス構成でメンテナンス コントロールを使用すると、プラットフォームの更新プログラムを [Windows](./maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json) VM、[Linux](./maintenance-control-cli.md?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Flinux%2Fbreadcrumb%2Ftoc.json&view=azure-java-stable) VM、Azure Dedicated Host に適用する方法を制御できます。 メンテナンス コントロールをリージョン間で移動するためのシナリオがいくつかあります。
 
 - メンテナンス構成に関連付けられているリソースを移動するが、構成自体は移動しない場合、この記事に従います。
 - メンテナンス コントロール構成を移動するが、構成に関連付けられているリソースは移動しない場合、[こちらの手順](move-region-maintenance-configuration.md)に従います。
@@ -51,7 +49,7 @@ ms.locfileid: "78304338"
     $adh | Dedicated ホスト名 | "myHost"
     $adhParentName | 親リソース名 | "HostGroup"
     
-2. PowerShell の [Get-AZConfigurationAssignment](https://docs.microsoft.com/powershell/module/az.maintenance/Get-AzConfigurationAssignment?view=azps-3.5.0) コマンドを使用してメンテナンス構成を取得する場合:
+2. PowerShell の [Get-AZConfigurationAssignment](/powershell/module/az.maintenance/get-azconfigurationassignment?view=azps-3.5.0) コマンドを使用してメンテナンス構成を取得する場合:
 
     - Azure Dedicated Host の場合、次のコマンドを実行します。
         ```
@@ -63,7 +61,7 @@ ms.locfileid: "78304338"
         ```
         Get-AzConfigurationAssignment -ResourceGroupName $rgName -ResourceName $vmName -ProviderName Microsoft.Compute -ResourceType virtualMachines | Format-Table Name
         ```
-3. CLI の [az maintenance assignment](https://docs.microsoft.com/cli/azure/ext/maintenance/maintenance/assignment?view=azure-cli-latest) コマンドを使用してメンテナンス構成を取得する場合:
+3. CLI の [az maintenance assignment](/cli/azure/ext/maintenance/maintenance/assignment?view=azure-cli-latest) コマンドを使用してメンテナンス構成を取得する場合:
 
     - Azure Dedicated Host の場合:
 
@@ -80,7 +78,7 @@ ms.locfileid: "78304338"
 
 ## <a name="move"></a>詳細ビュー 
 
-1. [こちらの手順に従って](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json) Azure VM を新しいリージョンに移動します。
+1. [こちらの手順に従って](../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json) Azure VM を新しいリージョンに移動します。
 2. リソースを移動した後、メンテナンス構成を移動したかどうかに応じて、必要があれば、新しいリージョンのリソースにメンテナンス構成を再適用します。 メンテナンス構成をリソースに適用するには、[PowerShell](../virtual-machines/maintenance-control-powershell.md) または [CLI](../virtual-machines/maintenance-control-cli.md) を使用します。
 
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 05/26/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 845948d9aec28ee79a11fb11aaef4cfbf1b263fa
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 8360eae71ddd41d3105dbd037f273139262727ad
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770549"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419565"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>Azure Active Directory を使用して SMS ベース認証 (プレビュー) 用にユーザーを構成して有効にする
 
@@ -24,10 +24,8 @@ ms.locfileid: "81770549"
 
 この記事では、Azure AD で選択されたユーザーまたはグループに対して SMS ベースの認証を有効にする方法について説明します。
 
-|     |
-| --- |
-| ユーザー用の SMS ベース認証は、Azure Active Directory のパブリック プレビュー機能です。 プレビューの詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください|
-|     |
+> [!NOTE]
+> ユーザー用の SMS ベース認証は、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -38,7 +36,7 @@ ms.locfileid: "81770549"
 * お使いのサブスクリプションに関連付けられている Azure Active Directory テナント。
     * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
 * SMS ベース認証を有効にするには、Azure AD テナントでの "*全体管理者*" 特権が必要です。
-* テキスト メッセージ認証方法ポリシーで有効になっている各ユーザーは、その方法を使用しない場合でも、ライセンスを取得している必要があります。 有効な各ユーザーは、次の Azure AD または Microsoft 365 ライセンスのいずれかを保持している必要があります。
+* テキスト メッセージ認証方法ポリシーで有効になっている各ユーザーは、その方法を使用しない場合でも、ライセンスを取得している必要があります。 有効な各ユーザーは、次の Azure AD、EMS、または Microsoft 365 ライセンスのいずれかを保持している必要があります。
     * [Azure AD Premium P1 または P2][azuread-licensing]
     * [Microsoft 365 (M365) F1 または F3][m365-firstline-workers-licensing]
     * [Enterprise Mobility + Security (EMS) E3 または E5][ems-licensing] または [Microsoft 365 (M365) E3 または E5][m365-licensing]
@@ -67,7 +65,7 @@ SMS ベース認証のパブリック プレビュー期間中は、次の制限
 1. **Azure Active Directory** を検索して選択します。
 1. Azure Active Directory ウィンドウの左側にあるナビゲーション メニューから、 **[セキュリティ] > [認証方法] > [認証方法ポリシー (プレビュー)]** を選択します。
 
-    [![](media/howto-authentication-sms-signin/authentication-method-policy-cropped.png "Browse to and select the Authentication method policy (preview) window in the Azure portal")](media/howto-authentication-sms-signin/authentication-method-policy.png#lightbox)
+    [![Azure portal で [認証方法ポリシー (プレビュー)] ウィンドウを参照して選択します。](media/howto-authentication-sms-signin/authentication-method-policy-cropped.png)](media/howto-authentication-sms-signin/authentication-method-policy.png#lightbox)
 
 1. 利用可能な認証方法の一覧から、 **[テキスト メッセージ]** を選択します。
 1. **[有効にする]** を *[はい]* に設定します。
@@ -83,7 +81,7 @@ Azure AD テナントで SMS ベース認証が有効になっている状態で
 1. テキスト メッセージ認証ポリシー ウィンドウで、 **[ターゲット]** を "*選択されたユーザー*" に設定します。
 1. **[ユーザーまたはグループの追加]** を選択して、"*Contoso ユーザー*" や "*Contoso SMS ユーザー*" などのテスト ユーザーまたはグループを選択します。
 
-    [![](media/howto-authentication-sms-signin/add-users-or-groups-cropped.png "Choose users or groups to enable for SMS-based authentication in the Azure portal")](media/howto-authentication-sms-signin/add-users-or-groups.png#lightbox)
+    [![Azure portal で SMS ベースの認証を有効にするユーザーまたはグループを選択します。](media/howto-authentication-sms-signin/add-users-or-groups-cropped.png)](media/howto-authentication-sms-signin/add-users-or-groups.png#lightbox)
 
 1. ユーザーまたはグループを選択したら、更新された認証方法ポリシーの **[選択]** 、 **[保存]**  を順に選びます。
 
@@ -150,12 +148,16 @@ Azure portal でユーザーのアカウントに電話番号を設定しよう�
 
 Microsoft Authenticator アプリや FIDO2 セキュリティ キーなど、パスワードを使用せずに Azure AD にサインインするその他の方法については、「[Azure AD のパスワードレス認証オプション][concepts-passwordless]」を参照してください。
 
+また、Microsoft Graph REST API ベータ版を使用して、SMS ベースのサインインを[有効][rest-enable]または[無効][rest-disable]にすることができます。
+
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../fundamentals/sign-up-organization.md
 [associate-azure-ad-tenant]: ../fundamentals/active-directory-how-subscriptions-associated-directory.md
 [concepts-passwordless]: concept-authentication-passwordless.md
 [tutorial-azure-mfa]: tutorial-enable-azure-mfa.md
 [tutorial-sspr]: tutorial-enable-sspr.md
+[rest-enable]: /graph/api/phoneauthenticationmethod-enablesmssignin?view=graph-rest-beta&tabs=http
+[rest-disable]: /graph/api/phoneauthenticationmethod-disablesmssignin?view=graph-rest-beta&tabs=http
 
 <!-- EXTERNAL LINKS -->
 [azure-portal]: https://portal.azure.com
@@ -164,3 +166,5 @@ Microsoft Authenticator アプリや FIDO2 セキュリティ キーなど、パ
 [azuread-licensing]: https://azure.microsoft.com/pricing/details/active-directory/
 [ems-licensing]: https://www.microsoft.com/microsoft-365/enterprise-mobility-security/compare-plans-and-pricing
 [m365-licensing]: https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans
+[o365-f1]: https://www.microsoft.com/microsoft-365/business/office-365-f1?market=af
+[o365-f3]: https://www.microsoft.com/microsoft-365/business/office-365-f3?activetab=pivot%3aoverviewtab

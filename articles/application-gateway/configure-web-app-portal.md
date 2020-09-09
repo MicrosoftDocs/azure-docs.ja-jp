@@ -5,15 +5,15 @@ description: この記事では、既存または新しいアプリケーショ�
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
-ms.date: 11/14/2019
+ms.topic: how-to
+ms.date: 06/09/2020
 ms.author: absha
-ms.openlocfilehash: 0ec417b3c7a025d2d05bdd74ec683a2891c3b0de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1109dae90790c9667b3c60afb6416c20061a95fe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74075172"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808102"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>Application Gateway を使用した App Service の構成
 
@@ -21,7 +21,7 @@ App Service は専用のデプロイではなくマルチテナント サービ�
 
 Application Gateway には、Application Gateway からバックエンドに要求がルーティングされる際に、要求内のホスト ヘッダーをバックエンドのホスト名でオーバーライドする `Pick host name from backend address` というスイッチがあります。 この機能により、Azure App Service や API Management などのマルチテナント バックエンドがサポートされます。 
 
-この記事では、次のことについて説明します。
+この記事では、次の方法について説明します。
 
 > [!div class="checklist"]
 >
@@ -59,7 +59,7 @@ Application Gateway には、Application Gateway からバックエンドに要�
 3. ユース ケースに従って HTTP または HTTPS としてプロトコルを選択します。 
 
    > [!NOTE]
-   > HTTPS を選択した場合、App Service バックエンドをホワイトリストに登録するために、認証証明書や信頼されたルート証明書をアップロードする必要はありません。App Service は信頼された Azure サービスであるためです。
+   > HTTPS を選択した場合、App Service バックエンドを許可するために、認証証明書や信頼されたルート証明書をアップロードする必要はありません。App Service は信頼された Azure サービスであるためです。
 
 4. **[App Service 用に使用します]** のチェック ボックスをオンにします。 `Create a probe with pick host name from backend address` と `Pick host name from backend address` のスイッチは自動的に有効になることに注意してください。`Pick host name from backend address` は、Application Gateway からバックエンドに要求がルーティングされる際に、要求内のホスト ヘッダーをバックエンドのホスト名でオーバーライドします。  
 

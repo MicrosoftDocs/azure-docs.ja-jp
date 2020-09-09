@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: 455cb1e0067217be6edcf665e8c07e8fcd684ab5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e26d4070bc9fabeb3467e7bdc805faad4e6646c3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76842403"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526505"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>ファイル システム エラーによる Linux VM の起動に関する問題のトラブルシューティング
 
@@ -75,7 +75,7 @@ Linux には、いくつかのファイル システム チェッカーが用意
 
 ## <a name="resolution"></a>解像度
 
-この問題を解決するには、[シリアル コンソール](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)を使用して、VM を緊急モードで起動し、該当するツールを使用してファイル システムを修復します。 ご利用の VM 上でシリアル コンソールが有効になっていない場合または機能していない場合は、この記事のセクション「[VM をオフライン修復する](#repair-the-vm-offline)」を参照してください。
+この問題を解決するには、[シリアル コンソール](./serial-console-linux.md)を使用して、VM を緊急モードで起動し、該当するツールを使用してファイル システムを修復します。 ご利用の VM 上でシリアル コンソールが有効になっていない場合または機能していない場合は、この記事のセクション「[VM をオフライン修復する](#repair-the-vm-offline)」を参照してください。
 
 ## <a name="use-the-serial-console"></a>シリアル コンソールの使用
 
@@ -83,8 +83,8 @@ Linux には、いくつかのファイル システム チェッカーが用意
 
    > [!Note]
    > Linux 用のシリアル コンソールの使用の詳細については、次を参照してください。
-   > * [シリアル コンソールを使用して GRUB とシングル ユーザー モードにアクセスする](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)
-   > * [SysRq および NMI 呼び出しにシリアル コンソールを使用する](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-nmi-sysrq)
+   > * [シリアル コンソールを使用して GRUB とシングル ユーザー モードにアクセスする](../linux/serial-console-grub-single-user-mode.md)
+   > * [SysRq および NMI 呼び出しにシリアル コンソールを使用する](./serial-console-nmi-sysrq.md)
 
 2. [電源] アイコンボタンを選択してから、[VM の再起動] を選択します (シリアル コンソールが有効になっていない場合または正常に接続されていない場合、そのボタンは表示されません)。
 
@@ -134,7 +134,7 @@ Linux には、いくつかのファイル システム チェッカーが用意
 
 ## <a name="repair-the-vm-offline"></a>VM をオフライン修復する
 
-1. VM のシステム ディスクをデータ ディスクとして復旧 VM (任意の動作中の Linux VM) に接続します。 これを行うには、[CLI コマンド](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux)を使用することも、[VM 修復コマンド](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)を使用して復旧 VM の設定を自動化することもできます。
+1. VM のシステム ディスクをデータ ディスクとして復旧 VM (任意の動作中の Linux VM) に接続します。 これを行うには、[CLI コマンド](./troubleshoot-recovery-disks-linux.md)を使用することも、[VM 修復コマンド](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)を使用して復旧 VM の設定を自動化することもできます。
 
 2. 接続したシステム ディスクのドライブ ラベルを検索します。 この例では、接続したシステム ディスクのラベルが /dev/sdc1 であると想定します。 これを、ご利用の VM の適切な値に置き換えます。
 
@@ -178,6 +178,5 @@ Linux には、いくつかのファイル システム チェッカーが用意
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure CLI 2.0 で OS ディスクを復旧 VM に接続して Linux VM のトラブルシューティングを行う](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-recovery-disks)
-* [ポータルを利用し、データ ディスクを Linux VM に接続する](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal)
-
+* [Azure CLI 2.0 で OS ディスクを復旧 VM に接続して Linux VM のトラブルシューティングを行う](./troubleshoot-recovery-disks-linux.md)
+* [ポータルを利用し、データ ディスクを Linux VM に接続する](../linux/attach-disk-portal.md)

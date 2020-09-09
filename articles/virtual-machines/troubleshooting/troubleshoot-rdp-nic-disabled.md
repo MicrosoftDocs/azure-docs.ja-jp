@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: 315974e4995630eb3af055ac0e1c44f7d8dd0737
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6bce1616ce0c7f7e42810a551acb2f02165ccf93
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77918242"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078631"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>ネットワーク インターフェイスが無効になっているために VM にリモート デスクトップ接続できない
 
@@ -40,21 +40,29 @@ VM のインターフェイスを有効にするには、VM に対してシリ�
 )。 VM でシリアル コンソールが有効になっていない場合は、「[ネットワーク インターフェイスをリセットする](#reset-network-interface)」をご覧ください。
 2. ネットワーク インターフェイスの状態をチェックします。
 
-        netsh interface show interface
+    ```console
+    netsh interface show interface
+    ```
 
     無効になっているネットワーク インターフェイスの名前をメモします。
 
 3. ネットワーク インターフェイスを有効にします。
 
-        netsh interface set interface name="interface Name" admin=enabled
+    ```console
+    netsh interface set interface name="interface Name" admin=enabled
+    ```
 
     たとえば、ネットワーク インターフェイスの名前が "Ethernet 2" の場合は、次のコマンドを実行します。
 
-        netsh interface set interface name="Ethernet 2" admin=enabled
+    ```console
+    netsh interface set interface name="Ethernet 2" admin=enabled
+    ```
 
 4.  ネットワーク インターフェイスの状態をもう一度チェックして、ネットワーク インターフェイスが有効になっていることを確認します。
 
-        netsh interface show interface
+    ```console
+    netsh interface show interface
+    ```
 
     この時点で VM を再起動する必要はありません。 VM は到達可能に戻ります。
 

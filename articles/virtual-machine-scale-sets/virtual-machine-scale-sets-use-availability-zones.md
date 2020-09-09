@@ -9,12 +9,12 @@ ms.subservice: availability
 ms.date: 08/08/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: daa469bef999f33feb44983e3b5a7073b4df655e
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: e1c91bf9138e37c6de381ab34ab80413d3040981
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197349"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029316"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>可用性ゾーンを使用する仮想マシン スケール セットを作成する
 
@@ -92,7 +92,7 @@ az vmss create \
 
 ### <a name="zone-redundant-scale-set"></a>ゾーン冗長スケール セット
 
-ゾーン冗長スケールを作成するには、*Standard* SKU のパブリック IP アドレスとロード バランサーを使います。 冗長性を高めるため、*Standard* SKU はゾーン冗長ネットワーク リソースを作成します。 詳しくは、「[Azure Load Balancer Standard の概要](../load-balancer/load-balancer-standard-overview.md)」および「[Standard Load Balancer と可用性ゾーン](../load-balancer/load-balancer-standard-availability-zones.md)」をご覧ください。
+ゾーン冗長スケールを作成するには、*Standard* SKU のパブリック IP アドレスとロード バランサーを使います。 冗長性を高めるため、*Standard* SKU はゾーン冗長ネットワーク リソースを作成します。 詳しくは、「[Azure Load Balancer Standard の概要](../load-balancer/load-balancer-overview.md)」および「[Standard Load Balancer と可用性ゾーン](../load-balancer/load-balancer-standard-availability-zones.md)」をご覧ください。
 
 ゾーン冗長スケール セットを作成するには、`--zones` パラメーターで複数のゾーンを指定します。 次の例では、*myScaleSet* という名前のゾーン冗長スケール セットを、ゾーン *1、2、3* にまたがって作成します。
 
@@ -209,7 +209,7 @@ New-AzVmss `
 }
 ```
 
-パブリック IP アドレスまたはロード バランサーを作成する場合、 *"sku": { "name":"Standard" }"* プロパティを指定してゾーン冗長ネットワーク リソースを作成します。 また、ネットワーク セキュリティ グループとルールを作成して、すべてのトラフィックを許可する必要があります。 詳しくは、「[Azure Load Balancer Standard の概要](../load-balancer/load-balancer-standard-overview.md)」および「[Standard Load Balancer と可用性ゾーン](../load-balancer/load-balancer-standard-availability-zones.md)」をご覧ください。
+パブリック IP アドレスまたはロード バランサーを作成する場合、 *"sku": { "name":"Standard" }"* プロパティを指定してゾーン冗長ネットワーク リソースを作成します。 また、ネットワーク セキュリティ グループとルールを作成して、すべてのトラフィックを許可する必要があります。 詳しくは、「[Azure Load Balancer Standard の概要](../load-balancer/load-balancer-overview.md)」および「[Standard Load Balancer と可用性ゾーン](../load-balancer/load-balancer-standard-availability-zones.md)」をご覧ください。
 
 ゾーン冗長スケール セットとネットワーク リソースの完全な例については、[こちらのサンプル Resource Manager テンプレート](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)をご覧ください
 

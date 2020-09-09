@@ -9,15 +9,15 @@ manager: danielsc
 ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
-ms.workload: data-services
 ms.topic: conceptual
+ms.custom: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 0938888b7343b441725faace7a5f20d8f50674c8
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 27d56958120d0eddebe30dc410805909fe507f7c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872067"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319577"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Azure Machine Learning の実験でファイルを保存する場所と書き込む場所
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,7 +30,9 @@ ms.locfileid: "82872067"
 
 コンピューティング ターゲットまたはローカル マシンで実験を開始する前に、コードの実行に必要な依存関係ファイルやデータ ファイルなどの必要なファイルが、そのコンピューティング ターゲットに存在することを確認する必要があります。
 
-Azure Machine Learning では、スクリプト フォルダー全体をターゲットのコンピューティング コンテキストにコピーして、スナップショットを取ることにより、トレーニング スクリプトが実行されます。 実験スナップショットのストレージ制限は、300 MB または 2000 ファイル (あるいはその両方) です。
+Azure Machine Learning では、ソース ディレクトリ全体をコピーすることで、トレーニング スクリプトが実行されます。 アップロードしたくない機密データがある場合は、[.ignore ファイル](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots)を使用するか、ソース ディレクトリに含めないようにします。 代わりに、[データストア](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)を使用してデータにアクセスしてください。
+
+実験スナップショットのストレージ制限は、300 MB または 2000 ファイル (あるいはその両方) です。
 
 このため、次のことをお勧めします。
 

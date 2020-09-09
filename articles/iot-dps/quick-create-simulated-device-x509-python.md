@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
-ms.custom: mvc
-ms.openlocfilehash: 44f1a2cd3336eeae87878c333fb05d2e6b1f88e8
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: mvc, devx-track-python
+ms.openlocfilehash: 3386dcf60049ede9297bd36e701442ce50603add
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77605393"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87872519"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>クイック スタート:IoT Hub Device Provisioning Service 対応の Python デバイス SDK を使用して、シミュレートされた X.509 デバイスを作成してプロビジョニングする
 
@@ -87,15 +87,17 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 
 3. 出力ウィンドウで、確認を求められたら個々の登録について「`i`」と入力します。 シミュレートされたデバイスについて、ローカルで生成された X.509 証明書が出力ウィンドウに表示されます。 
     
-    最初の証明書をクリップボードにコピーします。 初めて見つかった次の行から始めます。
+    ```output
+    Copy the first certificate to clipboard. Begin with the first occurrence of:
     
         -----BEGIN CERTIFICATE----- 
         
-    次の行が初めて見つかったらコピーを終了します。
+    End you copying after the first occurrence of:
     
         -----END CERTIFICATE-----
         
-    この両方の行も含めるようにしてください。 
+    Make sure to include both of those lines as well.
+    ``` 
 
     ![ダイス デバイス登録アプリケーション](./media/python-quick-create-simulated-device-x509/dice-device-enrollment.png)
  

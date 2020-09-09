@@ -10,12 +10,12 @@ ms.date: 04/21/2020
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
-ms.openlocfilehash: cea5fb507225f063e2d48c56fae254e123a8f72b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3408970bcf5e34ce9f0f0afe9e723b4877dcd694
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81771779"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84193404"
 ---
 # <a name="query-acceleration-sql-language-reference-preview"></a>クエリ アクセラレーション SQL 言語リファレンス (プレビュー)
 
@@ -54,7 +54,7 @@ SELECT aggregate_expression FROM table [WHERE expression] [LIMIT limit]
 SELECT sys.split(split_size)FROM BlobStorage
 ```
 
-<a id="data-types" />
+<a id="data-types"></a>
 
 ## <a name="data-types"></a>データ型
 
@@ -231,7 +231,7 @@ SELECT ステートメントには、1 つ以上のプロジェクション式�
 
 ``IS MISSING`` 演算子は、クエリ アクセラレーション SQL 言語でサポートされる唯一の非標準の演算子です。  JSON データでは、特定の入力レコードにフィールドがない場合、``IS MISSING`` 式フィールドはブール値 true に評価されます。
 
-<a id="table-descriptors" />
+<a id="table-descriptors"></a>
 
 ## <a name="table-descriptors"></a>テーブル記述子
 
@@ -302,7 +302,7 @@ SELECT weight,warehouses[0].longitude,id,tags[1] FROM BlobStorage[*]
 > [!NOTE]
 > BlobStorage と BlobStorage[\*] はどちらも、オブジェクト全体を参照します。 ただし、FROM 句にパスを含めた場合は、BlobStorage[\*].path を使用する必要があります。
 
-<a id="sys-split" />
+<a id="sys-split"></a>
 
 ## <a name="syssplit"></a>Sys.Split
 

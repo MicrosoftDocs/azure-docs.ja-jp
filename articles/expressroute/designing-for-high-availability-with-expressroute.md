@@ -2,22 +2,25 @@
 title: 'Azure ExpressRoute: 高可用性を実現する設計'
 description: このページでは、Azure ExpressRoute を使用しつつ高可用性を実現するためのアーキテクチャ上の推奨事項を示します。
 services: expressroute
-author: rambk
+author: duongau
 ms.service: expressroute
 ms.topic: article
 ms.date: 06/28/2019
-ms.author: rambala
-ms.openlocfilehash: 4c3c6ae5fbdd91e6e44438be7fef2a3a91564a34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: duau
+ms.openlocfilehash: d6e63ad5781b0b8d6f46aee1cb88373721bb9dfc
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74076675"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397901"
 ---
 # <a name="designing-for-high-availability-with-expressroute"></a>ExpressRoute を使用した高可用性のための設計
 
 ExpressRoute は、Microsoft リソースへのキャリア グレード プライベート ネットワーク接続を提供する高可用性のために設計されています。 つまり、Microsoft ネットワーク内の ExpressRoute パスには単一障害点はありません。 可用性を最大化するには、ExpressRoute 回線の顧客およびサービス プロバイダー セグメントも高可用性のために設計する必要があります。 この記事では、まず、ExpressRoute を使用して堅牢なネットワーク接続を構築するためのネットワーク アーキテクチャの考慮事項について説明します。次に、ExpressRoute 回線の高可用性を向上させるために役立つ微調整機能について説明します。
 
+>[!NOTE]
+>この記事で説明する概念は、Virtual WAN で、またはその外部で ExpressRoute 回線を作成する場合にも同様に適用されます。
+>
 
 ## <a name="architecture-considerations"></a>アーキテクチャの考慮事項
 

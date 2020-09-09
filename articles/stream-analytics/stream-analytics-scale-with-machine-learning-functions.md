@@ -5,14 +5,14 @@ author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/16/2020
-ms.openlocfilehash: 4e2c99274df90d232754c862f3174b5767392cec
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 1493a15a97ca88d0ed914f78b1906088c03dff10
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929045"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037411"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Azure Machine Learning Studio (クラシック) 関数を使用した Stream Analytics ジョブのスケーリング
 
@@ -140,7 +140,7 @@ Machine Learning 関数で Stream Analytics ジョブをスケーリングする
 2. 実行中の Stream Analytics ジョブの許容待機時間 (および Machine Learning Web サービス要求のバッチ サイズ)。
 3. プロビジョニング済みの Stream Analytics SU および Machine Learning Web サービス要求の数 (関数関連の追加コスト)。
 
-完全にパーティション分割された Stream Analytics クエリを例として使用しました。 もっと複雑なクエリが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を活用してください。Stream Analytics チームから追加のサポートを受けることができます。
+完全にパーティション分割された Stream Analytics クエリを例として使用しました。 もっと複雑なクエリが必要な場合、Stream Analytics チームから追加のサポートを受けるための最適なリソースは、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)です。
 
 ## <a name="next-steps"></a>次のステップ
 Stream Analytics の詳細については、以下を参照してください。

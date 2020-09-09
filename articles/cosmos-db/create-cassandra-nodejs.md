@@ -1,25 +1,28 @@
 ---
 title: クイック スタート:Cassandra API (Node.js) - Azure Cosmos DB
 description: このクイックスタートでは、Azure Cosmos DB の Cassandra API を使って、Node.js でプロファイル アプリケーションを作成する方法を示します
-author: SnehaGunda
-ms.author: sngun
+author: TheovanKraay
+ms.author: thvankra
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.openlocfilehash: ffc2681e487a51ce630d9433d6ded86961b5276c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 05/18/2020
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 1fa481911be8eb91db498350e57e2ba42e4aedb5
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77210363"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421010"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-sdk-and-azure-cosmos-db"></a>クイック スタート:Node.js SDK と Azure Cosmos DB を使用して Cassandra アプリを構築する
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
-> * [Java](create-cassandra-java.md)
+> * [.NET Core](create-cassandra-dotnet-core.md)
+> * [Java v3](create-cassandra-java.md)
+> * [Java v4](create-cassandra-java-v4.md)
 > * [Node.js](create-cassandra-nodejs.md)
 > * [Python](create-cassandra-python.md)
 >  
@@ -40,9 +43,9 @@ ms.locfileid: "77210363"
 
 [!INCLUDE [cosmos-db-create-dbaccount-cassandra](../../includes/cosmos-db-create-dbaccount-cassandra.md)]
 
-## <a name="clone-the-sample-application"></a>サンプル アプリケーションのクローン
+## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
-GitHub から Cassandra API アプリをクローンし、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
+GitHub から Cassandra API アプリを複製し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
 
 1. コマンド プロンプトを開きます。 `git-samples` という名前の新しいフォルダーを作成します。 その後、コマンド プロンプトを閉じます。
 
@@ -56,7 +59,7 @@ GitHub から Cassandra API アプリをクローンし、接続文字列を設�
     cd "C:\git-samples"
     ```
 
-3. 次のコマンドを実行して、サンプル レポジトリをクローンします。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
+3. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-cassandra-nodejs-getting-started.git
@@ -168,31 +171,31 @@ GitHub から Cassandra API アプリをクローンし、接続文字列を設�
 
 1. [Azure portal](https://portal.azure.com/) の Azure Cosmos DB アカウントで、 **[接続文字列]** を選択します。 
 
-    画面右側の ![コピー ボタン](./media/create-cassandra-nodejs/copy.png) ボタンを使って、一番上にある [CONTACT POINT]\(コンタクト ポイント\) の値をコピーします。
+1. 画面右側の :::image type="icon" source="./media/create-cassandra-nodejs/copy.png"::: ボタンを使用して、一番上の [CONTACT POINT]\(コンタクト ポイント\) の値をコピーします。
 
-    ![Azure Portal の [接続文字列] ページに表示されているコンタクト ポイント、ユーザー名、パスワードをコピーする](./media/create-cassandra-nodejs/keys.png)
+    :::image type="content" source="./media/create-cassandra-nodejs/keys.png" alt-text="Azure portal の [接続文字列] ページに表示されているコンタクト ポイント、ユーザー名、パスワードをコピーする":::
 
-2. `config.js` ファイルを開きます。 
+1. `config.js` ファイルを開きます。 
 
-3. 4 行目の `<FillMEIN>` にポータルのコンタクト ポイントの値を貼り付けます。
+1. 4 行目の `<FillMEIN>` にポータルのコンタクト ポイントの値を貼り付けます。
 
     4 行目は次のようになります。 
 
     `config.contactPoint = "cosmos-db-quickstarts.cassandra.cosmosdb.azure.com:10350"`
 
-4. ポータルの [USERNAME]\(ユーザー名\) の値をコピーし、2 行目の `<FillMEIN>` に貼り付けます。
+1. ポータルの [USERNAME]\(ユーザー名\) の値をコピーし、2 行目の `<FillMEIN>` に貼り付けます。
 
     2 行目は次のようになります。 
 
     `config.username = 'cosmos-db-quickstart';`
     
-5. ポータルの [PASSWORD]\(パスワード\) の値をコピーし、3 行目の `<FillMEIN>` に貼り付けます。
+1. ポータルの [PASSWORD]\(パスワード\) の値をコピーし、3 行目の `<FillMEIN>` に貼り付けます。
 
     3 行目は次のようになります。
 
     `config.password = '2Ggkr662ifxz2Mg==';`
 
-6. `config.js` ファイルを保存します。
+1. `config.js` ファイルを保存します。
     
 ## <a name="use-the-x509-certificate"></a>X509 証明書を使う
 
@@ -209,11 +212,11 @@ GitHub から Cassandra API アプリをクローンし、接続文字列を設�
 > 
 > .crt ファイルをダブルクリックして、証明書の表示に開きます。 
 >
-> ![出力を表示して検証する](./media/create-cassandra-nodejs/crtcer1.gif)
+> :::image type="content" source="./media/create-cassandra-nodejs/crtcer1.gif" alt-text="出力を表示して検証する":::
 >
 > 証明書ウィザードで [次へ] を押します。 [Base-64 encoded X.509 (.CER)]、[次へ] の順に選択します。
 >
-> ![出力を表示して検証する](./media/create-cassandra-nodejs/crtcer2.gif)
+> :::image type="content" source="./media/create-cassandra-nodejs/crtcer2.gif" alt-text="出力を表示して検証する":::
 >
 > [参照] を選択して変換先を見つけ、ファイル名を入力します。
 > [次へ] を選択して終了します。
@@ -234,13 +237,13 @@ GitHub から Cassandra API アプリをクローンし、接続文字列を設�
 
 4. コマンド ラインから予想される結果を確認します。
 
-    ![出力を表示して検証する](./media/create-cassandra-nodejs/output.png)
+    :::image type="content" source="./media/create-cassandra-nodejs/output.png" alt-text="出力を表示して検証する":::
 
     Ctrl + C キーを押してプログラムの実行を停止し、コンソール ウィンドウを閉じます。 
 
 5. Azure portal で **Data Explorer** を開き、この新しいデータのクエリ、変更、操作を行います。 
 
-    ![データ エクスプローラーでのデータの表示](./media/create-cassandra-nodejs/data-explorer.png) 
+    :::image type="content" source="./media/create-cassandra-nodejs/data-explorer.png" alt-text="データ エクスプローラーでのデータの表示"::: 
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 

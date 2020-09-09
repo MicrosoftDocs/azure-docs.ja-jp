@@ -1,19 +1,15 @@
 ---
 title: Azure Event Hubs へのアクセスを承認する
 description: この記事では、Azure Event Hubs リソースへのアクセスを承認するためのさまざまなオプションについて説明します。
-services: event-hubs
-ms.service: event-hubs
-documentationcenter: ''
-author: spelluru
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: f44be4e1d3d1186f0122bd4669ae800ab42e31d6
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 18b8bd80eaec316fbaefadad0dd7a19418bfa838
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521310"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85323179"
 ---
 # <a name="authorize-access-to-azure-event-hubs"></a>Azure Event Hubs へのアクセスを承認する
 イベント ハブからイベント/データを発行または使用するたびに、クライアントでは Event Hubs リソースへのアクセスが試行されます。 データの発行または使用に必要なアクセス許可をクライアントが持っていることがサービスにより確保されるように、セキュリティで保護されたリソースに対するすべての要求が承認される必要があります。 

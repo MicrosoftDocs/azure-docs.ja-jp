@@ -2,25 +2,21 @@
 title: チュートリアル:Zscaler One を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: ユーザー アカウントを Zscaler One に自動的にプロビジョニング/プロビジョニング解除するように Azure Active Directory を構成する方法について説明します。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd-msft
-ms.assetid: 72f6ba2b-73ed-420a-863a-aff672f26fa3
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 87413932acee576934ee50b59546371b03ceaf7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 978f8ff5e57a5a9a1df10152713c8c42901b3b6f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77064174"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545862"
 ---
 # <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>チュートリアル:Zscaler One を構成し、自動ユーザー プロビジョニングに対応させる
 

@@ -11,19 +11,19 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 10/01/2019
-  ms.openlocfilehash: 35c37f5b2b307bb1a3d90b9876f148b5a1120490
-  ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+  ms.openlocfilehash: 6b72b632cb1cea104d7db2afbb870725496326b8
+  ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/20/2020
-  ms.locfileid: "83713632"
+  ms.lasthandoff: 09/02/2020
+  ms.locfileid: "89321805"
 landingContent:
 - title: Computer Vision について
   linkLists:
   - linkListType: overview
     links:
     - text: Computer Vision とは
-      url: Home.md
+      url: overview.md
   - linkListType: whats-new
     links:
     - text: 新機能
@@ -32,11 +32,11 @@ landingContent:
     links:
     - text: Vision API を使用してアプリにインテリジェンスを組み込む
       url: https://azure.microsoft.com/resources/videos/connect-2017-microsoft-cognitive-services-put-intelligence-into-your-business-apps/
-- title: 印刷されたテキストと手書きのテキストの認識
+- title: 光学式文字認識 (OCR)
   linkLists:
   - linkListType: concept
     links:
-    - text: 印刷されたテキストと手書きのテキストの認識
+    - text: 光学式文字認識 (OCR)
       url: concept-recognizing-text.md
   - linkListType: quickstart
     links:
@@ -124,12 +124,12 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
+    - text: Computer Vision API v3.1 プレビュー
+      url: https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005
     - text: Computer Vision API v3.0
       url: https://aka.ms/computer-vision-v3-ref
     - text: Computer Vision API v2.1
       url: https://westus.dev.cognitive.microsoft.com/docs/services/5cd27ec07268f6c679a3e641/operations/56f91f2e778daf14a499f21b
-    - text: Computer Vision API v2.0
-      url: https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44
     - text: .NET SDK
       url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet
     - text: Python SDK

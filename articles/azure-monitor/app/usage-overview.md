@@ -3,24 +3,26 @@ title: Azure Application Insights による利用状況分析 | Microsoft docs
 description: ユーザーを理解し、提供しているアプリでユーザーが何を実行するかを理解します。
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 7f4f46f183291684fa59e5aa35b65c8ac3352563
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 4ace90b0893eed24227cadcb9a5b9fae7d502ff8
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797788"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800213"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights による利用状況分析
 
-最も人気のある Web アプリまたはモバイル アプリの機能は何か。 そのアプリによりユーザーは目標を達成したか。 特定の時点でアプリを離れたか。その後、利用を再開したか。  [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) は、ユーザーのアプリの使用方法に関する強力な洞察を得るのに役立ちます。 アプリを更新するたびに、アプリがユーザーにどの程度役立っているかを確認できます。 この知識により、次の開発サイクルに関してデータ駆動型の意思決定を行うことができます。
+最も人気のある Web アプリまたはモバイル アプリの機能は何か。 そのアプリによりユーザーは目標を達成したか。 特定の時点でアプリを離れたか。その後、利用を再開したか。  [Azure Application Insights](./app-insights-overview.md) は、ユーザーのアプリの使用方法に関する強力な洞察を得るのに役立ちます。 アプリを更新するたびに、アプリがユーザーにどの程度役立っているかを確認できます。 この知識により、次の開発サイクルに関してデータ駆動型の意思決定を行うことができます。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Cijb]
 
 ## <a name="send-telemetry-from-your-app"></a>アプリからテレメトリを送信する
 
 Application Insights をアプリのサーバー コードと Web ページの両方にインストールすることにより、最適な操作環境が得られます。 アプリのクライアントおよびサーバー コンポーネントから Azure Portal に分析用のテレメトリが送信されます。
 
-1. **サーバー コード:** [ASP.NET](../../azure-monitor/app/asp-net.md)、[Azure](../../azure-monitor/app/app-insights-overview.md)、[Java](../../azure-monitor/app/java-get-started.md)、[Node.js](../../azure-monitor/app/nodejs.md)、または[その他](../../azure-monitor/app/platforms.md)のアプリ向けの適切なモジュールをインストールします。
+1. **サーバー コード:** [ASP.NET](./asp-net.md)、[Azure](./app-insights-overview.md)、[Java](./java-get-started.md)、[Node.js](./nodejs.md)、または[その他](./platforms.md)のアプリ向けの適切なモジュールをインストールします。
 
-    * "*サーバー コードをインストールしたくない場合は、[Azure Application Insights リソースの作成](../../azure-monitor/app/create-new-resource.md )のみを行ってください。* "
+    * "*サーバー コードをインストールしたくない場合は、[Azure Application Insights リソースの作成](./create-new-resource.md)のみを行ってください。* "
 
 2. **Web ページ コード:** Web ページの閉じる ``</head>`` タグの前に、次のスクリプトを追加します。 インストルメンテーション キーを Application Insights リソースの適切な値に置き換えます。
     
@@ -34,9 +36,9 @@ Application Insights をアプリのサーバー コードと Web ページの�
     </script>
     ```
 
-    Web サイトを監視するためのより高度な構成については、[JavaScript SDK の参照記事](https://docs.microsoft.com/azure/azure-monitor/app/javascript)を参照してください。
+    Web サイトを監視するためのより高度な構成については、[JavaScript SDK の参照記事](./javascript.md)を参照してください。
 
-3. **モバイル アプリ コード:** [このガイド](../../azure-monitor/learn/mobile-center-quickstart.md)に従い、App Center SDK を使ってアプリからイベントを収集し、これらのイベントのコピーを分析のために Application Insights に送信します。
+3. **モバイル アプリ コード:** [このガイド](../learn/mobile-center-quickstart.md)に従い、App Center SDK を使ってアプリからイベントを収集し、これらのイベントのコピーを分析のために Application Insights に送信します。
 
 4. **テレメトリの取得:** プロジェクトをデバッグ モードで数分間実行し、Application Insights の [概要] ブレードで結果を確認します。
 
@@ -45,7 +47,7 @@ Application Insights をアプリのサーバー コードと Web ページの�
 ## <a name="include-user-and-session-id-in-your-telemetry"></a>ユーザー ID とセッション ID をテレメトリに含める
 Application Insights で一定期間にわたってユーザーを追跡するためには、それらのユーザーを識別する手段が必要となります。 ユーザー ID やセッション ID を必要としない使用状況ツールはイベント ツールだけです。
 
-[このプロセス](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context)を使用してユーザー ID とセッション ID の送信を開始します。
+[このプロセス](./usage-send-user-context.md)を使用してユーザー ID とセッション ID の送信を開始します。
 
 ## <a name="explore-usage-demographics-and-statistics"></a>使用状況の人口統計データや統計を調査する
 ユーザーがアプリをいつ使い、どのページに最も興味があり、ユーザーがどこにいて、どのようなブラウザーやオペレーティング システムを使っているかを確認しましょう。 
@@ -103,7 +105,7 @@ Application Insights で一定期間にわたってユーザーを追跡する�
 
 これらのイベントにプロパティ値をアタッチできます。これにより、ポータルでイベントを確認するときに、イベントをフィルター処理または分割できます。 また、匿名ユーザー ID などのプロパティの標準セットが各イベントにアタッチされます。これにより、個人ユーザーのアクティビティのシーケンスを追跡できます。
 
-[カスタム イベント](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)と[プロパティ](../../azure-monitor/app/api-custom-events-metrics.md#properties)の詳細については、こちらを参照してください。
+[カスタム イベント](./api-custom-events-metrics.md#trackevent)と[プロパティ](./api-custom-events-metrics.md#properties)の詳細については、こちらを参照してください。
 
 ### <a name="slice-and-dice-events"></a>イベントの詳細な分析
 
@@ -121,7 +123,7 @@ Application Insights で一定期間にわたってユーザーを追跡する�
 
 Application Insights ポータルでは、プロパティ値に基づいてデータをフィルター選択および分割して、異なるバージョンを比較します。
 
-これを行うには、[テレメトリ初期化子を設定](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)します。
+これを行うには、[テレメトリ初期化子を設定](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)します。
 
 **ASP.NET アプリ**
 
@@ -175,5 +177,6 @@ Web アプリ初期化子 (Global.asax.cs など) 内:
    - [ファネル](usage-funnels.md)
    - [保持](usage-retention.md)
    - [ユーザー フロー](usage-flows.md)
-   - [ブック](../../azure-monitor/platform/workbooks-overview.md)
+   - [ブック](../platform/workbooks-overview.md)
    - [ユーザー コンテキストの追加](usage-send-user-context.md)
+

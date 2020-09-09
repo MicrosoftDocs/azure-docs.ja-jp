@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/19/2019
 ms.author: tibasham
-ms.openlocfilehash: 5d6396efc9ab25baa0d32e7c33c7715863516249
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e5ab1262def78da4971ea6e5535f3ac915a38ec8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77371359"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526760"
 ---
 # <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>"再起動中"、"シャットダウン中"、または "サービスの停止中" に Azure Windows VM のシャットダウンが停止する
 
@@ -25,7 +25,7 @@ ms.locfileid: "77371359"
 
 ## <a name="symptoms"></a>現象
 
-[起動診断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)を利用して VM のスクリーンショットを表示すると、スクリーンショットに "再起動中"、"シャットダウン中"、または "サービスを停止しています" というメッセージが表示されることがあります。
+[起動診断](./boot-diagnostics.md)を利用して VM のスクリーンショットを表示すると、スクリーンショットに "再起動中"、"シャットダウン中"、または "サービスを停止しています" というメッセージが表示されることがあります。
 
 !["再起動中"、"シャットダウン中"、および "サービスを停止しています" 画面](./media/boot-error-troubleshooting-windows/restart-shut-down-stop-service.png)
  
@@ -41,27 +41,27 @@ Windows では、シャットダウン プロセスを使用してシステム �
 
 2. 必要なファイルが含まれているディスクを作業用 VM からデタッチし、破損した VM にそのディスクを接続します。 このディスクは**ユーティリティ ディスク**と呼ばれています。
 
-[シリアル コンソール](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows)を使用して、次の手順を完了します。
+[シリアル コンソール](./serial-console-windows.md)を使用して、次の手順を完了します。
 
-1. 管理 PowerShell を開き、停止中にハングしたサービスを確認します。
+1. 管理 PowerShell を開き、停止時に応答が停止されたサービスを確認します。
 
    ``
    Get-Service | Where-Object {$_.Status -eq "STOP_PENDING"}
    ``
 
-2. 管理 CMD で、ハングしたサービスの PID を取得します。
+2. 管理 CMD 上で、応答しないサービスの PID を取得します。
 
    ``
    tasklist /svc | findstr /i <STOPING SERVICE>
    ``
 
-3. ハングしたプロセス <STOPPING SERVICE> からメモリ ダンプのサンプルを取得します。
+3. 応答しないプロセス <STOPPING SERVICE> からメモリ ダンプのサンプルを取得します。
 
    ``
    procdump.exe -s 5 -n 3 -ma <PID>
    ``
 
-4. ここでハングしたプロセスを中止して、シャット ダウン プロセスのロックを解除します。
+4. ここで、応答しないプロセスを中止して、シャットダウン プロセスのロックを解除します。
 
    ``
    taskkill /PID <PID> /t /f
@@ -81,13 +81,13 @@ dism /online /cleanup-image /restorehealth
 
 **復旧 VM に OS ディスクを接続する**
 
-1. バックアップとして、影響を受ける VM の OS ディスクのスナップショットを取得します。 詳細については、[ディスクのスナップショット](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk)に関する記事を参照してください。
+1. バックアップとして、影響を受ける VM の OS ディスクのスナップショットを取得します。 詳細については、[ディスクのスナップショット](../windows/snapshot-copy-managed-disk.md)に関する記事を参照してください。
 
-2. [復旧 VM に OS ディスクを接続します](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal)。
+2. [復旧 VM に OS ディスクを接続します](./troubleshoot-recovery-disks-portal-windows.md)。
 
 3. 復旧 VM にリモート デスクトップ接続します。
 
-4. OS ディスクが暗号化されている場合、次の手順に進む前に暗号化をオフにする必要があります。 詳細については、[起動できない VM で暗号化されている OS ディスクを復号する](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-bitlocker-boot-error#solution)方法に関するページを参照してください。
+4. OS ディスクが暗号化されている場合、次の手順に進む前に暗号化をオフにする必要があります。 詳細については、[起動できない VM で暗号化されている OS ディスクを復号する](./troubleshoot-bitlocker-boot-error.md#solution)方法に関するページを参照してください。
 
 **ダンプ ファイルを探してサポート チケットを送信する**
 
@@ -142,7 +142,7 @@ dism /online /cleanup-image /restorehealth
    reg unload HKLM\BROKENSYSTEM
    ```
 
-5. [OS ディスクをデタッチし、影響を受ける VM に OS ディスクを再アタッチします](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal)。
+5. [OS ディスクをデタッチし、影響を受ける VM に OS ディスクを再アタッチします](./troubleshoot-recovery-disks-portal-windows.md)。
 
 6. VM を起動し、シリアル コンソールにアクセスします。
 

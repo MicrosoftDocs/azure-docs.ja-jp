@@ -7,18 +7,20 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
-ms.openlocfilehash: 9cfb44fbf84ad85f3e2684dfec21cc83d4aaa666
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6fa959b1c9ed021a97031ba03822ae89fbbb7bbb
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131252"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983076"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Azure Application Gateway の Web アプリケーション ファイアウォール (WAF) のトラブルシューティング
 
 Web アプリケーション ファイアウォール (WAF) を通過する必要がある要求がブロックされている場合、いくつかのことを実行できます。
 
 最初に、[WAF の概要](ag-overview.md)と [WAF の構成](application-gateway-waf-configuration.md)に関するドキュメントを必ずお読みください。 また、[WAF の監視](../../application-gateway/application-gateway-diagnostics.md)を有効にしていること確認してください。これらの記事では、WAF がどのように機能するか、WAF 規則セットの仕組み、および WAF ログへのアクセス方法について説明しています。
+
+OWASP 規則セットは、すぐに使用できるように設計されています。また、WAF を使用して、アプリケーションまたは組織の特定のニーズに合わせて調整することもできます。 これは完全に正常であり、多くの場合、実際には、除外、カスタム ルールを作成したり、問題または誤検知を引き起こす可能性があるルールを無効にしたりすることが予想されます。 サイトおよび URI ごとのポリシーでは、特定のサイトまたは URI に影響する変更のみを許可するため、同じ問題が発生していない他のサイトには影響を与えないようにする必要があります。 
 
 ## <a name="understanding-waf-logs"></a>WAF ログの理解
 

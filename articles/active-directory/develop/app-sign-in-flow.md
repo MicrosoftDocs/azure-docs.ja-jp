@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/28/2020
+ms.date: 05/18/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 7b326e17611b5f4b9520d8218a28a67afe9a851a
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: af5b27dc85a276c731a61135ab59ab81f5aaf3c2
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584179"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772201"
 ---
 # <a name="app-sign-in-flow-with-microsoft-identity-platform"></a>Microsoft ID プラットフォーム を使用したアプリのサインイン フロー
 
@@ -29,7 +29,7 @@ ms.locfileid: "82584179"
 ユーザーがブラウザーで Web アプリに移動すると、次のことが起こります。
 
 * Web アプリで、ユーザーが認証されているかどうかが判断されます。
-* ユーザーが認証されていない場合は、ユーザーをサインインさせるように Web アプリから Azure AD に委任されます。 そのサインインは、ユーザーに資格情報を入力する、多要素認証を使用する、パスワードをまったく使用しない (Windows Hello を使用するなど) ように求めることを意味する可能性のある組織のポリシーに準拠します。
+* ユーザーが認証されていない場合は、ユーザーをサインインさせるように Web アプリから Azure AD に委任されます。 そのサインインは組織のポリシーに準拠します。したがって、ユーザーに資格情報を入力するように求めることもあれば、[多要素認証](../authentication/concept-mfa-howitworks.md) (2 要素認証や 2FA と呼ばれることがあります) を使用することも、パスワードをまったく使用しない (Windows Hello を使用するなど) 場合もあります。
 * ユーザーは、クライアント アプリが必要とするアクセスに同意するように求められます。 これは、ユーザーが同意したアクセスを表すトークンを Microsoft ID プラットフォームで配信できるように、クライアント アプリを Azure AD に登録する必要があるためです。
 
 ユーザーが正常に認証されると、次のことが起こります。

@@ -2,26 +2,21 @@
 title: 'チュートリアル: Cornerstone OnDemand を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
 description: Azure Active Directory を構成して、ユーザー アカウントを Cornerstone OnDemand に自動的にプロビジョニングおよびプロビジョニング解除する方法を説明します。
 services: active-directory
-documentationcenter: ''
 author: zhchia
 writer: zhchia
-manager: beatrizd
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6212e74ecbf8327d3939138de2e92868f29b0f1a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4200bc9879aba5e18282123be03576cc617a5e14
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77058427"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549230"
 ---
 # <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>チュートリアル: Cornerstone OnDemand を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -39,7 +34,7 @@ ms.locfileid: "77058427"
 * 管理者アクセス許可がある Cornerstone OnDemand のユーザー アカウント
 
 > [!NOTE]
-> Azure AD プロビジョニング統合は、[Cornerstone OnDemand Web サービス](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_-_Summary_of_Web_Services_v20151106.pdf)に依存しています。 このサービスは Cornerstone OnDemand チームが使用できます。
+> Azure AD プロビジョニング統合は、[Cornerstone OnDemand Web サービス](https://www.cornerstoneondemand.com/)に依存しています。 このサービスは Cornerstone OnDemand チームが使用できます。
 
 ## <a name="add-cornerstone-ondemand-from-the-azure-marketplace"></a>Azure Marketplace から Cornerstone OnDemand を追加する
 

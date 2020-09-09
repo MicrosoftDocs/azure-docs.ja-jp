@@ -6,18 +6,22 @@ manager: carmonm
 services: azure-monitor
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 07/23/2020
 ms.author: mbullwin
-ms.openlocfilehash: 29e675f3ae35df9211f58d45ad8450566d67a588
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d85f011289bfa27bcf1e94d8da8cd7a32092c2c
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77658236"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799567"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor ブック
 
 ブックは、Azure portal 内でデータを分析し、高度な視覚的レポートを作成するための柔軟なキャンバスを提供します。 Azure 全体から複数のデータ ソースを活用し、それらを結合して、統合された対話型エクスペリエンスにすることができます。 
+
+ブックの作成に関するビデオ チュートリアルはこちらです。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4B4Ap]
 
 ## <a name="data-sources"></a>データ ソース
 
@@ -28,12 +32,12 @@ ms.locfileid: "77658236"
 ブックは現在、次のデータ ソースと互換性があります。
 
 * [ログ](workbooks-data-sources.md#logs)
-* [メトリック](workbooks-data-sources.md#metrics)
+* [Metrics](workbooks-data-sources.md#metrics)
 * [Azure Resource Graph](workbooks-data-sources.md#azure-resource-graph)
 * [アラート (プレビュー)](workbooks-data-sources.md#alerts-preview)
-* [ワークロードの正常性 (プレビュー)](workbooks-data-sources.md#workload-health-preview)
-* [Azure Resource Health (プレビュー)](workbooks-data-sources.md#azure-resource-health)
-* [Azure Data Explorer (プレビュー)](workbooks-data-sources.md#azure-data-explorer-preview)
+* [ワークロードの正常性](workbooks-data-sources.md#workload-health)
+* [Azure Resource Health](workbooks-data-sources.md#azure-resource-health)
+* [Azure Data Explorer](workbooks-data-sources.md#azure-data-explorer)
 
 ## <a name="visualizations"></a>視覚化
 
@@ -52,9 +56,9 @@ ms.locfileid: "77658236"
 
 ブックのエクスペリエンスを探索するには、最初に Azure Monitor サービスに移動します。 これを行うには、Azure portal の検索ボックスに「**Monitor**」と入力します。
 
-次に、 **[ブック (プレビュー)]** を選択します。
+次に、 **[ブック]** を選択します。
 
-![赤い枠で強調表示された [ブック (プレビュー)] ボタンのスクリーンショット](./media/workbooks-overview/workbooks-preview.png)
+![赤い枠で強調表示された [ブック] ボタンのスクリーンショット](./media/workbooks-overview/workbooks.png)
 
 ### <a name="gallery"></a>[ギャラリー]
 

@@ -8,12 +8,13 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: lbosq
-ms.openlocfilehash: b1286daaa76c71f88d44ea387a92876a8676783c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: devx-track-python
+ms.openlocfilehash: b927a0a64256283536a73002cc5915bcaddd2efc
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77062237"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873145"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>クイック スタート:Python と Azure portal を使用して Azure Cosmos DB にグラフ データベースを作成する
 
@@ -97,7 +98,7 @@ ms.locfileid: "77062237"
 
     URI の値の最初の部分をコピーします。
 
-    ![Azure Portal の [キー] ページでアクセス キーを表示およびコピーする](./media/create-graph-python/keys.png)
+    :::image type="content" source="./media/create-graph-python/keys.png" alt-text="Azure portal の [キー] ページでアクセス キーを表示およびコピーする":::
 
 2. *connect.py* ファイルを開き、104 行目の `<YOUR_ENDPOINT>` に URI の値を貼り付けます。
 
@@ -171,15 +172,15 @@ ms.locfileid: "77062237"
 
 1. Azure portal の Azure Cosmos DB アカウントで **[データ エクスプローラー]** を選択し、**sample-graph** を展開して **[グラフ]** 、 **[フィルターの適用]** の順に選択します。 
 
-   ![Azure Portal のデータ エクスプローラーで新しいドキュメントを作成する](./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png)
+   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png" alt-text="Azure portal のデータ エクスプローラーで新しいドキュメントを作成する":::
 
 2. **[結果]** リストを見ると、3 人の新しいユーザーがグラフに追加されていることがわかります。 ドラッグ アンド ドロップで頂点を移動したり、マウスのホイールを回して拡大および縮小したり、双方向矢印でグラフのサイズを大きくしたりできます。 
 
-   ![Azure Portal のデータ エクスプローラーにおけるグラフの新しい頂点](./media/create-graph-python/azure-cosmosdb-graph-explorer-new.png)
+   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-graph-explorer-new.png" alt-text="Azure portal のデータ エクスプローラーにおけるグラフの新しい頂点":::
 
 3. 新しいユーザーを何人か追加してみます。 グラフにデータを追加するには、 **[New Vertex]\(新しい頂点\)** ボタンを選択します。
 
-   ![Azure Portal のデータ エクスプローラーで新しいドキュメントを作成する](./media/create-graph-python/azure-cosmosdb-data-explorer-new-vertex.png)
+   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="Azure portal のデータ エクスプローラーで新しいドキュメントを作成する":::
 
 4. 「*person*」というラベルを入力します。
 
@@ -218,15 +219,15 @@ ms.locfileid: "77062237"
 
 12. これで rakesh と ashley を接続できる状態になりました。 **[結果]** リストで **[ashley]** が選択されていることを確認し、右下の **[Targets]\(ターゲット\)** の横にある編集ボタンを選択します。 ウィンドウの幅を広げないと **[プロパティ]** 領域が見えない場合があります。
 
-    ![グラフ内の頂点のターゲットを変更します。](./media/create-graph-python/azure-cosmosdb-data-explorer-edit-target.png)
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-edit-target.png" alt-text="グラフ内の頂点のターゲットを変更する":::
 
 13. **[Target]\(ターゲット\)** ボックスに「*rakesh*」と入力し、 **[Edge label]\(辺ラベル\)** ボックスに「*knows*」と入力して、チェック ボックスをオンにします。
 
-    ![データ エクスプローラーで ashley と rakesh との間の接続を追加します。](./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png)
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png" alt-text="データ エクスプローラーで ashley と rakesh との間の接続を追加する":::
 
 14. 結果リストから **[rakesh]** を選択すると、ashley と rakesh が接続されていることがわかります。 
 
-    ![データ エクスプローラーで接続されている 2 つの頂点](./media/create-graph-python/azure-cosmosdb-graph-explorer.png)
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-graph-explorer.png" alt-text="データ エクスプローラーで接続されている 2 つの頂点":::
 
 以上で、このチュートリアルのリソース作成部分は完了です。 引き続き、グラフへの頂点の追加、既存の頂点の変更、またはクエリの変更を行うことができます。 次に、Azure Cosmos DB が提供するメトリックを確認し、リソースをクリーンアップします。 
 

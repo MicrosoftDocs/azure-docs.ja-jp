@@ -4,14 +4,14 @@ description: Azure portal を使用して Azure Database for PostgreSQL 単一�
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 4dff2321414721dbd415b468e59aea0ab4b3acee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 01a256e17b1101782eaee9bebd85f5e7093773d3
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79372733"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287781"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-postgresql-single-server-using-azure-portal"></a>Azure portal を使用して Azure Database for PostgreSQL 単一サーバーでパブリック ネットワーク アクセスを拒否する
 
@@ -21,7 +21,7 @@ ms.locfileid: "79372733"
 
 このハウツー ガイドを完了するには、次が必要です。
 
-* [Azure Database for PostgreSQL 単一サーバー](quickstart-create-PostgreSQL Single server-server-database-using-azure-portal.md)
+* [Azure Database for PostgreSQL 単一サーバー](quickstart-create-server-database-portal.md)
 
 ## <a name="set-deny-public-network-access"></a>パブリック ネットワーク アクセスの拒否を設定する
 

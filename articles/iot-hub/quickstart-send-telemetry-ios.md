@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub への利用統計情報の送信に関するクイック スタート | Microsoft Docs
-description: このクイック スタートでは、サンプルの iOS アプリケーションを実行して、IoT Hub にシミュレートされた利用統計情報を送信し、クラウドで処理するために IoT Hub から利用統計情報を読み取ります。
+title: Azure IoT Hub への利用統計情報の送信に関するクイック スタート (iOS)
+description: サンプルの iOS アプリケーションを実行して、IoT Hub にシミュレートされた利用統計情報を送信し、クラウドで処理するために IoT Hub から利用統計情報を読み取ります。
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -11,12 +11,12 @@ ms.custom:
 - mvc
 - mqtt
 ms.date: 04/03/2019
-ms.openlocfilehash: dd6ad0a3bc20821f51fcb4637dd4af18a6c3ec84
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c5df389d9bb22fca72f2ff3b65c417f592208d58
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81769135"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061565"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>クイック スタート:デバイスから IoT ハブへのテレメトリの送信 (iOS)
 

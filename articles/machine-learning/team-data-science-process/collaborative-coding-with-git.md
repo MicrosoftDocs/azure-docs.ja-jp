@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 0708e395eff90ff5b889c05f0fd5e7a98205c5bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 739be373992fcd994f085f8571675779e450bfee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76721899"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090214"
 ---
 # <a name="collaborative-coding-with-git"></a>Git を使用した共同コーディング
 
@@ -25,11 +25,11 @@ ms.locfileid: "76721899"
 
 Azure DevOps では、Azure Boards のユーザー ストーリーまたはタスク作業項目を Azure Repos Git リポジトリ ブランチに接続する便利な方法を提供します。 関連付けられているコードにユーザー ストーリーまたはタスクを直接リンクできます。 
 
-作業項目を新しいブランチに接続するには、作業項目の横にある**アクション**の省略記号 ( **...** ) を選択し、コンテキスト メニューでスクロールして **[New branch]\(新しいブランチ\)** を選択します。  
+作業項目を新しいブランチに接続するには、作業項目の横にある**アクション**の省略記号 ( **...** ) を選択し、コンテキスト メニューでスクロールして **[新しいブランチ]** を選択します。  
 
 ![1](./media/collaborative-coding-with-git/1-sprint-board-view.png)
 
-**[Create branch]\(ブランチの作成\)** ダイアログで、新しいブランチの名前と、Azure Repos Git のベース リポジトリおよびブランチを指定します。 ベース リポジトリは、作業項目と同じ Azure DevOps プロジェクト内になければなりません。 ベース ブランチには、マスター ブランチまたは別の既存のブランチを指定できます。 **[Create branch]\(ブランチの作成\)** を選択します。 
+**[ブランチの作成]** ダイアログで、新しいブランチの名前と、Azure Repos Git のベース リポジトリおよびブランチを指定します。 ベース リポジトリは、作業項目と同じ Azure DevOps プロジェクト内になければなりません。 ベース ブランチには、既存のブランチを指定できます。 **[ブランチの作成]** を選択します。 
 
 ![2](./media/collaborative-coding-with-git/2-create-a-branch.png)
 
@@ -51,11 +51,11 @@ git checkout <working branch name>
 
 ユーザー ストーリー作業項目ごとに Git ブランチを作成することをお勧めします。 次に、タスク作業項目ごとに、ユーザー ストーリー ブランチに基づいてブランチを作成できます。 複数の担当者が同じプロジェクトの異なるユーザー ストーリーや、同じユーザー ストーリーの異なるタスクで作業している場合は、そのユーザー ストーリーとタスクの関係に対応する階層にブランチを編成します。 ブランチを共有する場合は、各チーム メンバーが異なるブランチや異なるコード、または他のアーティファクトに取り組むようにすることで、競合を最小限に抑えることができます。 
 
-次の図は、TDSP の推奨のブランチ戦略を示しています。 1 つのプロジェクトに取り組む担当者が 1 人か 2 人だけの場合や、1 人の担当者のみがユーザー ストーリーのすべてのタスクに取り組む場合には特に、ここで示すほど多くのブランチは必要ありません。 ただし、開発ブランチはマスター ブランチから分離することを常にお勧めします。これにより、リリース ブランチが開発アクティビティによって中断されるのを防ぐことができます。 Git ブランチ モデルの詳細な説明については、「[成功する Git ブランチ モデル](https://nvie.com/posts/a-successful-git-branching-model/)」をご覧ください。
+次の図は、TDSP の推奨のブランチ戦略を示しています。 1 つのプロジェクトに取り組む担当者が 1 人か 2 人だけの場合や、1 人の担当者のみがユーザー ストーリーのすべてのタスクに取り組む場合には特に、ここで示すほど多くのブランチは必要ありません。 ただし、開発ブランチはプライマリ ブランチから常に分離することをお勧めします。こうすると、リリース ブランチが開発アクティビティによって中断されるのを防ぐことができます。 Git ブランチ モデルの詳細な説明については、「[成功する Git ブランチ モデル](https://nvie.com/posts/a-successful-git-branching-model/)」をご覧ください。
 
 ![3](./media/collaborative-coding-with-git/3-git-branches.png)
 
-作業項目を既存のブランチにリンクすることもできます。 作業項目の **[Detail]\(詳細\)** ページで、 **[Add link.]\(リンクの追加\)** を選択します。 次に、作業項目をリンクする既存のブランチを選択し、 **[OK]** を選択します。 
+作業項目を既存のブランチにリンクすることもできます。 作業項目の **[詳細]** ページで、 **[リンクの追加]** を選択します。 次に、作業項目をリンクする既存のブランチを選択し、 **[OK]** を選択します。 
 
 ![4](./media/collaborative-coding-with-git/4-link-to-an-existing-branch.png)
 
@@ -76,11 +76,11 @@ git push origin script
 
 1 回以上のコミットおよびプッシュの実行後に、現在の作業ブランチをそのベース ブランチにマージする準備ができたら、Azure Repos で*プル要求*を作成して送信できます。 
 
-Azure DevOps プロジェクトのメイン ページから、左のナビゲーションで **[Repos]**  >  **[Pull requests]\(プル要求\)** をポイントします。 次に、 **[New pull request]\(新しいプル要求\)** ボタンまたは **[Create a pull request]\(プル要求の作成\)** リンクのいずれかを選択します。
+Azure DevOps プロジェクトのメイン ページから、左のナビゲーションで **[Repos]**  >  **[プル要求]** をポイントします。 次に、 **[新しいプル要求]** ボタンまたは **[プル要求の作成]** リンクのいずれかを選択します。
 
 ![6](./media/collaborative-coding-with-git/6-spring-create-pull-request.png)
 
-必要に応じて、 **[New pull request]\(新しいプル要求\)** 画面で、変更をマージする Git リポジトリとブランチに移動します。 必要な情報を追加または変更します。 **[Reviewers]\(レビュー担当者\)** で、レビュー担当者の名前を追加し、 **[Create]\(作成\)** を選択します。 
+必要に応じて、 **[新しいプル要求]** 画面で、変更をマージする Git リポジトリとブランチに移動します。 必要な情報を追加または変更します。 **[レビュー担当者]** で、レビュー担当者の名前を追加し、 **[作成]** を選択します。 
 
 ![7](./media/collaborative-coding-with-git/7-spring-send-pull-request.png)
 
@@ -90,15 +90,15 @@ Azure DevOps プロジェクトのメイン ページから、左のナビゲー
 
 ![8](./media/collaborative-coding-with-git/8-add_comments.png)
 
-レビュー担当者が変更を承認すると、マージ権限を持つ担当者が作業ブランチをそのベース ブランチにマージできます。 **[Complete]\(完了\)** を選択し、 **[Complete pull request]\(プル要求の完了\)** ダイアログで **[Complete merge]\(マージの完了\)** を選択します。 マージ後に、作業しているブランチを削除することを選択できます。 
+レビュー担当者が変更を承認すると、マージ権限を持つ担当者が作業ブランチをそのベース ブランチにマージできます。 **[完了]** を選択し、 **[プル要求の完了]** ダイアログで **[マージの完了]** を選択します。 マージ後に、作業しているブランチを削除することを選択できます。 
 
 ![10](./media/collaborative-coding-with-git/10-spring-complete-pullrequest.png)
 
-要求が **[COMPLETED]\(完了\)** としてマークされていることを確認します。 
+要求が **[完了]** としてマークされていることを確認します。 
 
 ![11](./media/collaborative-coding-with-git/11-spring-merge-pullrequest.png)
 
-左側のナビゲーションで **Repos** に戻ると、`script` ブランチが削除されたため、マスター ブランチに切り替わったことが確認できます。
+左側のナビゲーションで **Repos** に戻ると、`script` ブランチが削除されたためにメイン ブランチに切り替わったことを確認できます。
 
 ![12](./media/collaborative-coding-with-git/12-spring-branch-deleted.png)
 

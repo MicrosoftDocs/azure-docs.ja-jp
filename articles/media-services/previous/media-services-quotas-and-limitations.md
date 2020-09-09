@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: dc0d41457729bf5fd78adb88d683ab4fbe23a148
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bb217efabbbc50bf5d52b8ee02407ce1beb42756
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60557147"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259559"
 ---
 # <a name="quotas-and-limitations"></a>クォータと制限
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 この記事では、Microsoft Azure Media Services に関連付けられているクォータと制限について説明します。
 

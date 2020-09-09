@@ -5,16 +5,15 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/29/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: c82f1edfc3acd73c1d38425f963aaaf2976a1cc5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 12bcb54f4bfdf17209324febeba380ff7789fc0f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76844593"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998987"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>チュートリアル:クラウドでイベントを発行してサブスクライブする
 

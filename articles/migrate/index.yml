@@ -1,21 +1,23 @@
 ### YamlMime:Landing
 title: Azure Migrate のドキュメント
-summary: Azure Migrate は、オンプレミスのワークロードの検出、評価、および Azure への移行を行うための中心的なツールのハブを提供します。
+summary: Azure Migrate ハブのツールを使用したオンプレミス環境の検出、評価、移行に役立つ記事を紹介します。
 metadata:
   title: Azure Migrate のドキュメント
-  description: Azure Migrate を使用してオンプレミスのワークロードを Azure に移行します。
+  description: Azure の移行に関するチュートリアル、リソース、移行評価ツールについてご覧ください。 Azure Migrate ハブのツールを使用して、オンプレミス環境を検出、評価し、Azure に移行する方法について説明します。
   ms.service: azure-migrate
   ms.topic: landing-page
   ms.collection: collection
   author: rayne-wiselman
   ms.author: raynew
-  ms.date: 11/19/2019
-  ms.openlocfilehash: 3f1d89d7e9c4c8a57c08d6b5880f707a01b7fcb2
-  ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+  ms.date: 07/08/2020
+  ms.custom: seo-azure-migrate
+  keywords: azure migrate, azure migration, azure migrate assessment tool, azure migrate tool, azure migrate documentation, azure migration documentation
+  ms.openlocfilehash: b38df4b4a9c9cd0741e9bc4d69e42ebaf2feefb7
+  ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/25/2020
-  ms.locfileid: "83835191"
+  ms.lasthandoff: 09/01/2020
+  ms.locfileid: "89228343"
 landingContent:
 - title: Azure Migrate について
   linkLists:
@@ -96,6 +98,6 @@ landingContent:
     - text: サービス機能のリクエスト
       url: https://feedback.azure.com/forums/907195-azure-migrate
     - text: フォーラムでの質問
-      url: https://docs.microsoft.com/answers/topics/azure-migrate.html
+      url: /answers/topics/azure-migrate.html
     - text: Azure Tech Community
       url: https://techcommunity.microsoft.com/t5/Azure-Migration/bd-p/AzureMigration

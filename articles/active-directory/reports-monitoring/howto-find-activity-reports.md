@@ -7,19 +7,19 @@ author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d356f8c10ae3770d9f4ade100ab0496ee58d772f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b705cf6ac6fd25c7794db7651db5bc5c5c0e790c
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74008208"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230621"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Azure Portal でアクティビティ レポートを見つける
 
@@ -114,7 +114,7 @@ ms.locfileid: "74008208"
 
 異常アクティビティ レポートは、Azure AD で検出および報告されるセキュリティ関連のリスク検出に関する情報を提供します。
 
-次の表は、Azure AD 異常アクティビティ セキュリティ レポートと、各レポートに対応する Azure portal のリスク検出の種類を示しています。 詳細については、「[Azure Active Directory リスク検出](concept-risk-events.md)」を参照してください。  
+次の表は、Azure AD 異常アクティビティ セキュリティ レポートと、各レポートに対応する Azure portal のリスク検出の種類を示しています。 詳細については、「[Azure Active Directory リスク検出](../identity-protection/overview-identity-protection.md)」を参照してください。  
 
 
 | Azure AD 異常アクティビティ レポート |  Identity Protection のリスク検出の種類|
@@ -136,8 +136,8 @@ ms.locfileid: "74008208"
 
 [Azure portal](https://portal.azure.com) では、 **[Azure Active Directory]** ブレードの **[セキュリティ]** セクションで、検出されたリスク検出に関するレポートにアクセスできます。 検出されたリスク検出は、次のレポートで追跡されます。   
 
-- [危険な状態のユーザー](concept-user-at-risk.md)
-- [リスクの高いサインイン](concept-risky-sign-ins.md)
+- [危険な状態のユーザー](../identity-protection/overview-identity-protection.md)
+- [リスクの高いサインイン](../identity-protection/overview-identity-protection.md)
 
     ![セキュリティ レポート](./media/howto-find-activity-reports/04.png "セキュリティ レポート")
 
@@ -171,10 +171,10 @@ Azure Portal でいくつかの操作を実行したので、`Activity logs > Au
 
 操作はアクティビティ ログにすぐには表示されません。 アクティビティ ログの待ち時間を次の表に示します。 
 
-| レポート | &nbsp; | 待ち時間 (P95) | 待ち時間 (P99) |
-|--------|--------|---------------|---------------|
-| ディレクトリ監査 | &nbsp; | 2 分 | 5 分 |
-| サインイン アクティビティ | &nbsp; | 2 分 | 5 分 | 
+| レポート | 待ち時間 (P95) | 待ち時間 (P99) |
+|--------|---------------|---------------|
+| ディレクトリ監査 | 2 分 | 5 分 |
+| サインイン アクティビティ | 2 分 | 5 分 |
 
 #### <a name="resolution"></a>解決策
 
@@ -192,10 +192,10 @@ Azure Portal でいくつかの操作を実行したので、`Activity logs > Au
 
 操作はアクティビティ ログにすぐには表示されません。 アクティビティ ログの待ち時間を次の表に示します。 
 
-| レポート | &nbsp; | 待ち時間 (P95) | 待ち時間 (P99) |
-|--------|--------|---------------|---------------|
-| ディレクトリ監査 | &nbsp; | 2 分 | 5 分 |
-| サインイン アクティビティ | &nbsp; | 2 分 | 5 分 | 
+| レポート | 待ち時間 (P95) | 待ち時間 (P99) |
+|--------|---------------|---------------|
+| ディレクトリ監査 | 2 分 | 5 分 |
+| サインイン アクティビティ | 2 分 | 5 分 |
 
 #### <a name="resolution"></a>解決策
 
@@ -213,10 +213,10 @@ Azure portal で 30 日より前のサインイン データおよび監査デ�
 
 Azure Active Directory Actions には、ライセンスに応じて次の期間のアクティビティ レポートが保存されます。
 
-| レポート           | &nbsp; |  Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
-| ---              | ----   |  ---           | ---                 | ---                 |
-| 監査ログ  | &nbsp; |   7 日     | 30 日             | 30 日             |
-| サインイン | &nbsp; | 使用できません。 7 日間分のサインインについては、個人のユーザー プロファイル ブレードからアクセスできます | 30 日 | 30 日             |
+| レポート           | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
+| ---              | ---           | ---                 | ---
+| 監査ログ  | 7 日        | 30 日             | 30 日             |
+| サインイン | 使用できません。 7 日間分のサインインについては、個人のユーザー プロファイル ブレードからアクセスできます | 30 日 | 30 日             |
 
 詳細については、「[Azure Active Directory レポートのアイテム保持ポリシー](reference-reports-data-retention.md)」を参照してください。  
 
@@ -228,4 +228,4 @@ Azure Active Directory Actions には、ライセンスに応じて次の期間�
 
 * [監査ログの概要](concept-audit-logs.md)
 * [サインインの概要](concept-sign-ins.md)
-* [危険なイベントの概要](concept-risk-events.md)
+* [危険なイベントの概要](../identity-protection/overview-identity-protection.md)

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 77bfd9d5bcae7bedd673354e32464d5f59bdc9b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad87272749011c81c1040825da3f3c53858a55bd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76720873"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322862"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>SSIS コネクタを使用して Azure Blob Storage 間でデータを移動する
 [SQL Server Integration Services Feature Pack for Azure](https://msdn.microsoft.com/library/mt146770.aspx) には、Azure への接続、Azure とオンプレミスのデータ ソースとの間でのデータ転送、Azure に格納したデータの処理に必要なコンポーネントが用意されています。
@@ -27,7 +27,7 @@ ms.locfileid: "76720873"
 
 これらの Azure リソースを使用する例については、[SQL](sql-walkthrough.md) と [HDInsight](hive-walkthrough.md) のチュートリアルを参照してください。
 
-ハイブリッド データ統合のシナリオに共通するビジネス ニーズを満たすために SSIS を使用する標準的なシナリオの詳細については、 [SQL Server Integration Services Feature Pack for Azure をさらに活用する方法](https://blogs.msdn.com/b/ssis/archive/2015/06/25/doing-more-with-sql-server-integration-services-feature-pack-for-azure.aspx) に関するブログを参照してください。
+ハイブリッド データ統合のシナリオに共通するビジネス ニーズを満たすために SSIS を使用する標準的なシナリオの詳細については、 [SQL Server Integration Services Feature Pack for Azure をさらに活用する方法](https://techcommunity.microsoft.com/t5/sql-server-integration-services/doing-more-with-sql-server-integration-services-feature-pack-for/ba-p/388238) に関するブログを参照してください。
 
 > [!NOTE]
 > Azure BLOB ストレージの概要については、[Azure BLOB の基礎](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)に関する記事および [Azure BLOB サービス](https://msdn.microsoft.com/library/azure/dd179376.aspx)に関するページをご覧ください。

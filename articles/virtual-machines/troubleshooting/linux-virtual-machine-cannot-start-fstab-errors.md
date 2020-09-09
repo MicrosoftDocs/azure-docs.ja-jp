@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: f68221666f370f87af7539d9302aaa3ed472d5e8
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: cf27a842d37e96c82370e9b9b81763c8a5d1f7c9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82883143"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509054"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-fstab-errors"></a>fstab エラーによる Linux VM の起動に関する問題のトラブルシューティング
 
-Secure Shell (SSH) 接続を使用して Azure Linux 仮想マシン (VM) に接続することはできません。 [Azure portal](https://portal.azure.com/) 上で [ブート診断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)機能を実行すると、次の例のようなログ エントリが表示されます。
+Secure Shell (SSH) 接続を使用して Azure Linux 仮想マシン (VM) に接続することはできません。 [Azure portal](https://portal.azure.com/) 上で [ブート診断](./boot-diagnostics.md)機能を実行すると、次の例のようなログ エントリが表示されます。
 
 ## <a name="examples"></a>例
 
@@ -106,8 +106,8 @@ Give root password for maintenance
 
 ### <a name="using-single-user-mode"></a>シングル ユーザー モードを使用する
 
-1. [シリアル コンソール](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)に接続します。
-2. シリアル コンソールを使用してシングル ユーザー モード[シングル ユーザー モード](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)にします
+1. [シリアル コンソール](./serial-console-linux.md)に接続します。
+2. シリアル コンソールを使用してシングル ユーザー モード[シングル ユーザー モード](../linux/serial-console-grub-single-user-mode.md)にします
 3. VM が起動されてシングル ユーザー モードになります。 任意のテキスト エディターを使用して fstab ファイルを開きます。 
 
    ```
@@ -140,7 +140,7 @@ Give root password for maintenance
 
 ### <a name="using-root-password"></a>ルート パスワードを使用する
 
-1. [シリアル コンソール](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)に接続します。
+1. [シリアル コンソール](./serial-console-linux.md)に接続します。
 2. ローカル ユーザーとパスワードを使用してシステムにサインインします。
 
    > [!Note]
@@ -188,20 +188,20 @@ Give root password for maintenance
 
 ## <a name="repair-the-vm-offline"></a>VM をオフライン修復する
 
-1. VM のシステム ディスクをデータ ディスクとして復旧 VM (任意の動作中の Linux VM) に接続します。 これを行うには、[CLI コマンド](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux)を使用することも、[VM 修復コマンド](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)を使用して復旧 VM の設定を自動化することもできます。
+1. VM のシステム ディスクをデータ ディスクとして復旧 VM (任意の動作中の Linux VM) に接続します。 これを行うには、[CLI コマンド](./troubleshoot-recovery-disks-linux.md)を使用することも、[VM 修復コマンド](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)を使用して復旧 VM の設定を自動化することもできます。
 
 2. システム ディスクをデータ ディスクとして復旧 VM にマウントしたら、変更を加える前に fstab ファイルをバックアップしてから、次の手順に従って fstab ファイルを修正します。
 
-3.    ディスクがマウントされなかったことを示すエラーを探します。 次の例では、もはや存在しないディスクにシステムが接続しようとしました。
+3. ディスクがマウントされなかったことを示すエラーを探します。 次の例では、もはや存在しないディスクにシステムが接続しようとしました。
 
-    ```
-    [DEPEND] Dependency failed for /datadisk1.
-    [DEPEND] Dependency failed for Local File Systems.
-    [DEPEND] Dependency failed for Relabel all filesystems, if necessary.
-    [DEPEND] Dependency failed for Migrate local... structure to the new structure.
-    Welcome to emergency mode! After logging in, type "journalctl -xb" to view system logs, "systemctl reboot" to reboot, "systemctl default" or ^D to try again to boot into default mode.
-    Give root password for maintenance (or type Control-D to continue):
-    ```
+   ```output
+   [DEPEND] Dependency failed for /datadisk1.
+   [DEPEND] Dependency failed for Local File Systems.
+   [DEPEND] Dependency failed for Relabel all filesystems, if necessary.
+   [DEPEND] Dependency failed for Migrate local... structure to the new structure.
+   Welcome to emergency mode! After logging in, type "journalctl -xb" to view system logs, "systemctl reboot" to reboot, "systemctl default" or ^D to try again to boot into default mode.
+   Give root password for maintenance (or type Control-D to continue):
+   ```
 
 4. ルート パスワード (Red Hat ベースの VM) を使用して VM に接続します。
 
@@ -217,7 +217,7 @@ Give root password for maintenance
    > * 各行のフィールドは、タブまたはスペースによって区切られます。 空白行は無視されます。 先頭文字がシャープ記号 (#) になっている行はコメントです。 コメント行は fstab ファイル内に残しておくことができますが、処理されません。 よくわからない fstab 行については、削除するのでなく、コメント化することをお勧めします。
    > * VM を復旧して起動する場合、ファイル システムのパーティションは、必須のパーティションのみとする必要があります。 VM では、コメント化された追加のパーティションに関するアプリケーション エラーが発生する可能性があります。 ただし、追加のパーティションを使用せずに VM を起動する必要があります。 コメント行をいずれも後でコメント解除できます。
    > * ファイル システム パーティションの UUID を使用して、データ ディスクを Azure VM にマウントすることをお勧めします。 たとえば、``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"`` コマンドを実行します。
-   > * ファイル システムの UUID を確認するには、blkid コマンドを実行します。 構文の詳細については、man blkid コマンドを実行してください。 回復するディスクは現在新しい VM にマウントされていることに注意してください。 UUID は一貫している必要がありますが、この VM 上ではデバイスのパーティション ID ("/dev/sda1" など) が異なります。 システム以外の VHD に配置されている、障害が発生した元の VM のファイル システム パーティションを、復旧 VM で [CLI コマンドを使用](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux)して利用することはできません。
+   > * ファイル システムの UUID を確認するには、blkid コマンドを実行します。 構文の詳細については、man blkid コマンドを実行してください。 回復するディスクは現在新しい VM にマウントされていることに注意してください。 UUID は一貫している必要がありますが、この VM 上ではデバイスのパーティション ID ("/dev/sda1" など) が異なります。 システム以外の VHD に配置されている、障害が発生した元の VM のファイル システム パーティションを、復旧 VM で [CLI コマンドを使用](./troubleshoot-recovery-disks-linux.md)して利用することはできません。
    > * nofail オプションを使用すると、ファイル システムが壊れている場合または起動時にファイル システムが存在しない場合でも、VM を確実に起動できます。 VM を起動するのに必要のないパーティションでエラーが発生した後も起動が続行されるようにするために、fstab ファイル内の nofail オプションを使用することをお勧めします。
 
 7. fstab ファイル内の正しくない行または不要な行をいずれも変更またはコメント アウトして、VM が正常に起動できるようにします。
@@ -240,5 +240,5 @@ Give root password for maintenance
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure CLI 2.0 で OS ディスクを復旧 VM に接続して Linux VM のトラブルシューティングを行う](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-recovery-disks)
-* [Azure portal で OS ディスクを復旧 VM に接続して Linux VM のトラブルシューティングを行う](https://docs.microsoft.com/azure/virtual-machines/linux/troubleshoot-recovery-disks-portal)
+* [Azure CLI 2.0 で OS ディスクを復旧 VM に接続して Linux VM のトラブルシューティングを行う](./troubleshoot-recovery-disks-linux.md)
+* [Azure portal で OS ディスクを復旧 VM に接続して Linux VM のトラブルシューティングを行う](./troubleshoot-recovery-disks-portal-linux.md)

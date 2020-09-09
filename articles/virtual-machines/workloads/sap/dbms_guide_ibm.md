@@ -9,15 +9,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/10/2019
+ms.date: 08/18/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4392fcee9b498a14841742e8313b9fa06dcc7983
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 5805fe1f3fe25a1e2d7fbc5c0d0fb443586479d2
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82977925"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649614"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための IBM Db2 Azure Virtual Machines DBMS のデプロイ
 
@@ -26,12 +26,12 @@ IBM Db2 for LUW での SAP Business Suite の実行に関する一般的な情�
 
 Azure での SAP on Db2 for LUW に関するその他の情報および更新については、SAP Note [2233094] を参照してください。 
 
-Azure 上の SAP ワークロードに関するさまざまな記事が公開されています。  [Azure での SAP ワークロード作業の開始](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)に関する記事の関心のある分野を選択することをお勧めします。
+Azure 上の SAP ワークロードに関するさまざまな記事が公開されています。  [Azure での SAP ワークロード作業の開始](./get-started.md)に関する記事の関心のある分野を選択することをお勧めします。
 
 次の SAP Note は、このドキュメントで扱う領域に関する SAP on Azure に関連します。
 
-| Note 番号 | タイトル |
-| --- | --- |
+| Note 番号 |タイトル |
+| --- |--- |
 | [1928533] |SAP Applications on Azure:Supported Products and Azure VM types (Azure 上の SAP アプリケーション: サポートされる製品と Azure VM の種類) |
 | [2015553] |SAP on Microsoft Azure:Support Prerequisites (Microsoft Azure 上の SAP: サポートの前提条件) |
 | [1999351] |Troubleshooting Enhanced Azure Monitoring for SAP (強化された Azure Monitoring for SAP のトラブルシューティング) |
@@ -44,7 +44,7 @@ Azure 上の SAP ワークロードに関するさまざまな記事が公開さ
 | [2002167] |Red Hat Enterprise Linux 7.x:Installation and Upgrade (Red Hat Enterprise Linux 7.x: インストールとアップグレード) |
 | [1597355] |Linux のスワップ領域に関する推奨事項 |
 
-このドキュメントの前提条件として、「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」ドキュメントと [Azure 上の SAP ワークロードに関するドキュメント](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)の中の他のガイドを読んでいる必要があります。 
+このドキュメントの前提条件として、「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」ドキュメントと [Azure 上の SAP ワークロードに関するドキュメント](./get-started.md)の中の他のガイドを読んでいる必要があります。 
 
 
 ## <a name="ibm-db2-for-linux-unix-and-windows-version-support"></a>IBM Db2 for Linux, UNIX, and Windows バージョンのサポート
@@ -54,10 +54,10 @@ Microsoft Azure Virtual Machine サービスにおける SAP on IBM Db2 for LUW 
 
 ## <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Azure VM で SAP をインストールするための IBM Db2 for Linux, UNIX, and Windows 構成ガイドライン
 ### <a name="storage-configuration"></a>ストレージの構成
-すべてのデータベース ファイルは、直接接続されたディスクをベースとする NTFS ファイル システムに保存する必要があります。 これらのディスクは Azure VM にマウントされており、Azure ページ Blob Storage (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) または Managed Disks (<https://docs.microsoft.com/azure/storage/storage-managed-disks-overview>) に基づいています。 あらゆる種類のネットワーク ドライブまたは Azure ファイル サービスのようなリモート共有は次のデータベース ファイルをサポートして **いません** 。 
+SAP ワークロード用の Azure Storage の種類の概要については、「[SAP ワークロードの Azure Storage の種類](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage)」を参照してください。すべてのデータベース ファイルは、Azure ブロック ストレージのマウントされたディスクに保存する必要があります (Windows: NFFS、Linux: xfs、ext4 または ext3)。 あらゆる種類のネットワーク ドライブまたは次の Azure サービスのようなリモート共有は、データベース ファイルに対してサポートされて**いません**。 
 
-* <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx>
-* <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
+* [Microsoft Azure File Service](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+* [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)
 
 「[SAP ワークロードのための Azure Virtual Machines DBMS のデプロイの考慮事項](dbms_guide_general.md)」に記載されているステートメントは、Azure Page BLOB Storage をベースとするディスクまたは Managed Disks を使用した Db2 DBMS のデプロイにも適用されます。
 
@@ -67,13 +67,65 @@ Microsoft Azure Virtual Machine サービスにおける SAP on IBM Db2 for LUW 
 
 パフォーマンスに関する考慮事項についても、SAP インストール ガイドの「データベース ディレクトリのデータの安全性とパフォーマンスに関する考慮事項」の章を参照してください。
 
-または、「[SAP ワークロードのための Azure Virtual Machines DBMS のデプロイに関する考慮事項](dbms_guide_general.md)」に記載されているように、Windows Storage Pools (Windows Server 2012 以上でのみ使用可能) を使用して、複数のディスクにまたがって 1 つの大きな論理デバイスを作成できます。
+または、「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」に記載されているように、Windows 記憶域プール (Windows Server 2012 以降でのみ使用可能)、または Linux 上の LVM または mdadm を使用して、複数のディスクにまたがって 1 つの大きな論理デバイスを作成できます。
 
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
 Sapdata と saptmp ディレクトリに対する Db2 ストレージ パスを含むディスクについては、512 KB の物理ディスクのセクター サイズを指定する必要があります。 Windows 記憶域プールを使用する場合は、コマンド ライン インターフェイスで `-LogicalSectorSizeDefault` パラメーターを使用して、手動で記憶域プールを作成する必要があります。 詳細については、<https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool> を参照してください。
 
-Azure M シリーズ VM で Azure 書き込みアクセラレータを使用すれば、Azure Premium Storage のパフォーマンスに比較して、トランザクション ログへの書き込み待機時間を数分の 1 に短縮できます。 そのため、Db2 のトランザクション ログ用のボリュームを形成する VHD には Azure 書き込みアクセラレータをデプロイする必要があります。 詳細については、「[Azure 書き込みアクセラレータ](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)」を参照してください。
+Azure M シリーズ VM で Azure 書き込みアクセラレータを使用すれば、Azure Premium Storage のパフォーマンスに比較して、トランザクション ログへの書き込み待機時間を数分の 1 に短縮できます。 そのため、Db2 のトランザクション ログ用のボリュームを形成する VHD には Azure 書き込みアクセラレータをデプロイする必要があります。 詳細については、「[Azure 書き込みアクセラレータ](../../how-to-enable-write-accelerator.md)」を参照してください。
+
+## <a name="recommendation-on-vm-and-disk-structure-for-ibm-db2-deployment"></a>IBM Db2 デプロイのための VM とディスク構造に関する推奨事項
+
+SAP NetWeaver Applications 用の IBM Db2 は、SAP サポート ノート [1928533] に記載されているすべての VM の種類でサポートされています。  IBM Db2 データベースを実行するために推奨される VM ファミリは、大規模なマルチテラバイト データベース向けの Esd_v4/Eas_v4/Es_v3 および M/M_v2 シリーズです。 M シリーズの書き込みアクセラレータを有効にすると、IBM Db2 のトランザクション ログのディスク書き込みパフォーマンスが向上する場合があります。 
+
+以下に、小さな規模から非常に大きな規模までの、SAP on Db2 デプロイのさまざまなサイズと使用のベースライン構成を示します。
+
+#### <a name="extra-small-sap-system-database-size-50---200-gb-example-solution-manager"></a>極小規模の SAP システム: データベース サイズ 50 - 200 GB: 例の Solution Manager
+| VM 名 / サイズ |Db2 マウント ポイント |Azure Premium ディスク |ディスクの NR |IOPS |スループット [MB/秒] |サイズ [GB] |バースト IOPS |バーストのしきい値 [GB] | ストライプ サイズ | キャッシュ |
+| --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+|E4ds_v4 |/db2 |P6 |1 |240  |50  |64  |3.500  |170  ||  |
+|vCPU: 4 |/db2/<SID>/sapdata |P10 |2 |1.000  |200  |256  |7.000  |340  |256 KB |ReadOnly |
+|RAM: 32 GiB |/db2/<SID>/saptmp |P6 |1 |240  |50  |128  |3.500  |170  | ||
+| |/db2/<SID>/log_dir |P6 |2 |480  |100  |128  |7.000  |340  |64 KB ||
+| |/db2/<SID>/offline_log_dir |P10 |1 |500  |100  |128  |3.500  |170  || |
+
+#### <a name="small-sap-system-database-size-200---750-gb-small-business-suite"></a>小規模の SAP システム: データベース サイズ 200 - 750 GB: 小規模の Business Suite
+| VM 名 / サイズ |Db2 マウント ポイント |Azure Premium ディスク |ディスクの NR |IOPS |スループット [MB/秒] |サイズ [GB] |バースト IOPS |バーストのしきい値 [GB] | ストライプ サイズ | キャッシュ |
+| --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+|E16ds_v4 |/db2 |P6 |1 |240  |50  |64  |3.500  |170  || |
+|vCPU: 16 |/db2/<SID>/sapdata |P15 |4 |4.400  |500  |1.024  |14.000  |680  |256 KB |ReadOnly |
+|RAM: 128 GiB |/db2/<SID>/saptmp |P6 |2 |480  |100  |128  |7.000  |340  |128 KB ||
+| |/db2/<SID>/log_dir |P15 |2 |2.200  |250  |512  |7.000  |340  |64 KB ||
+| |/db2/<SID>/offline_log_dir |P10 |1 |500  |100  |128  |3.500  |170  ||| 
+
+#### <a name="medium-sap-system-database-size-500---1000-gb-small-business-suite"></a>中規模の SAP システム: データベース サイズ 500 - 1000 GB: 小規模の Business Suite
+| VM 名 / サイズ |Db2 マウント ポイント |Azure Premium ディスク |ディスクの NR |IOPS |スループット [MB/秒] |サイズ [GB] |バースト IOPS |バーストのしきい値 [GB] | ストライプ サイズ | キャッシュ |
+| --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+|E32ds_v4 |/db2 |P6 |1 |240  |50  |64  |3.500  |170  || |
+|vCPU: 32 |/db2/<SID>/sapdata |P30 |2 |10.000  |400  |2.048  |10.000  |400  |256 KB |ReadOnly |
+|RAM: 256 GiB |/db2/<SID>/saptmp |P10 |2 |1.000  |200  |256  |7.000  |340  |128 KB ||
+| |/db2/<SID>/log_dir |P20 |2 |4.600  |300  |1.024  |7.000  |340  |64 KB ||
+| |/db2/<SID>/offline_log_dir |P15 |1 |1.100  |125  |256  |3.500  |170  ||| 
+
+#### <a name="large-sap-system-database-size-750---2000-gb-business-suite"></a>大規模の SAP system: データベース サイズ 750 - 2000 GB: Business Suite
+| VM 名 / サイズ |Db2 マウント ポイント |Azure Premium ディスク |ディスクの NR |IOPS |スループット [MB/秒] |サイズ [GB] |バースト IOPS |バーストのしきい値 [GB] | ストライプ サイズ | キャッシュ |
+| --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+|E64ds_v4 |/db2 |P6 |1 |240  |50  |64  |3.500  |170  || |
+|vCPU: 64 |/db2/<SID>/sapdata |P30 |4 |20.000  |800  |4.096  |20.000  |800  |256 KB |ReadOnly |
+|RAM: 504 GiB |/db2/<SID>/saptmp |P15 |2 |2.200  |250  |512  |7.000  |340  |128 KB ||
+| |/db2/<SID>/log_dir |P20 |4 |9.200  |600  |2.048  |14.000  |680  |64 KB ||
+| |/db2/<SID>/offline_log_dir |P20 |1 |2.300  |150  |512  |3.500  |170  || |
+
+#### <a name="large-multi-terabyte-sap-system-database-size-2tb-global-business-suite-system"></a>大規模のマルチテラバイト SAP システム: データベース サイズ 2TB+: Global Business Suite システム
+| VM 名 / サイズ |Db2 マウント ポイント |Azure Premium ディスク |ディスクの NR |IOPS |スループット [MB/秒] |サイズ [GB] |バースト IOPS |バーストのしきい値 [GB] | ストライプ サイズ | キャッシュ |
+| --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+|M128s |/db2 |P10 |1 |500  |100  |128  |3.500  |170  || |
+|vCPU: 128 |/db2/<SID>/sapdata |P40 |4 |30.000  |1.000  |8.192  |30.000  |1.000  |256 KB |ReadOnly |
+|RAM: 2,048 GiB |/db2/<SID>/saptmp |P20 |2 |4.600  |300  |1.024  |7.000  |340  |128 KB ||
+| |/db2/<SID>/log_dir |P30 |4 |20.000  |800  |4.096  |20.000  |800  |64 KB |WriteAccelerator |
+| |/db2/<SID>/offline_log_dir |P30 |1 |5.000  |200  |1.024  |5.000  |200  || |
+
 
 ### <a name="backuprestore"></a>バックアップ/復元
 IBM Db2 for LUW のバックアップ/復元機能は、標準の Windows Server オペレーティング システムと Hyper-V と同じ方法でサポートされています。
@@ -95,6 +147,15 @@ IBM Db2 for LUW のバックアップ/復元機能は、標準の Windows Server
 >Windows 上の Db2 は Windows VSS テクノロジをサポートしません。 このため、Azure Backup Service のアプリケーション整合性 VM バックアップは、Db2 DBMS が展開されている VM には使用できません。
 
 ### <a name="high-availability-and-disaster-recovery"></a>高可用性と障害復旧
+
+#### <a name="linux-pacemaker"></a>Linux Pacemaker
+
+ペースメーカーを使用した Db2 の高可用性ディザスター リカバリー (HADR) がサポートされています。 SLES と RHEL の両方のオペレーティング システムがサポートされています。 この構成により、IBM Db2 for SAP の高可用性が実現します。 デプロイ ガイドは次のとおりです。
+* SLES: [Pacemaker による SUSE Linux Enterprise Server 上の Azure VM での IBM Db2 LUW の高可用性](dbms-guide-ha-ibm.md) 
+* RHEL:[Red Hat Enterprise Linux Server 上の Azure VM での IBM Db2 LUW の高可用性](high-availability-guide-rhel-ibm-db2-luw.md)
+
+#### <a name="windows-cluster-server"></a>Windows クラスター サーバー
+
 Microsoft Cluster Server (MSCS) はサポートされていません。
 
 Db2 の高可用性災害時リカバリー (HADR) がサポートされています。 HA 構成の仮想マシンで名前解決が機能している場合、Azure でのセットアップはオンプレミスで行われるセットアップとまったく変わりません。 IP 解決のみに依存することはお勧めしません。
@@ -167,7 +228,7 @@ IBM Database を使用した VM のデプロイについては、「[SAP ワー�
 
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com
-[azure-ps]:/powershell/azureps-cmdlets-docs
+[azure-ps]:/powershell/azure/
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
 [azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
@@ -341,7 +402,7 @@ IBM Database を使用した VM のデプロイについては、「[SAP ワー�
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../windows/disks-types.md
+[storage-premium-storage-preview-portal]:../../disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -375,9 +436,9 @@ IBM Database を使用した VM のデプロイについては、「[SAP ワー�
 [virtual-machines-sizes-windows]:../../windows/sizes.md
 [virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
 [virtual-machines-windows-classic-ps-sql-int-listener]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
-[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:./../../windows/sql/virtual-machines-windows-sql-high-availability-dr.md
-[virtual-machines-sql-server-infrastructure-services]:./../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md
-[virtual-machines-sql-server-performance-best-practices]:./../../windows/sql/virtual-machines-windows-sql-performance.md
+[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+[virtual-machines-sql-server-infrastructure-services]:../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
+[virtual-machines-sql-server-performance-best-practices]:../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/resources/templates/sql-server-2014-alwayson-existing-vnet-and-ad/

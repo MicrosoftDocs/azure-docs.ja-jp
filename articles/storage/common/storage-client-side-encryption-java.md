@@ -8,14 +8,15 @@ ms.devlang: java
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 32691e0ddcee3f5410b12f07a2fb80806345bc26
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-java
+ms.openlocfilehash: 230fac982e19c1106aa5757c9bf1c32d192740d7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460513"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87314511"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Java による Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]

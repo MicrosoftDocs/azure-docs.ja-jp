@@ -5,14 +5,14 @@ author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/10/2018
-ms.openlocfilehash: 34c8555356d5c0142d7b677c8119fe66806ab064
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aa1d8ff0743399d96436f33426ebc4c4ab4a29f6
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76834911"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045639"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio"></a>Visual Studio で Stream Analytics クエリをローカルでテストする
 

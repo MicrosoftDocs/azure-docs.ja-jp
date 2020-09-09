@@ -1,21 +1,21 @@
 ---
 title: Azure Blockchain Service の台帳のバージョン、修正プログラム適用、アップグレード
-description: システム修正プログラムの適用やシステム管理およびユーザー管理のアップグレードに関するポリシーなど、Azure Blockchain Service でサポートされている台帳のバージョンの概要です。
-ms.date: 11/20/2019
+description: Overview of the supported ledgers versions in Azure Blockchain Service. システム修正プログラムの適用やアップグレードに関するポリシーなど、Azure Blockchain Service でサポートされている台帳のバージョンの概要です。
+ms.date: 06/30/2020
 ms.topic: conceptual
-ms.reviewer: janders
-ms.openlocfilehash: 8d4a77699dd80743acfadd4d72d6d75bc1939b3b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: ravastra
+ms.openlocfilehash: ea7c54e229178320329204a3199ab2b4c44058fe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74325186"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807742"
 ---
 # <a name="supported-azure-blockchain-service-ledger-versions"></a>サポートされている Azure Blockchain Service の台帳のバージョン
 
 Azure Blockchain Service では、既知の参加者のグループ (Azure Blockchain Service ではコンソーシアムと呼ばれます) 内のプライベート トランザクションの処理用に設計されている Ethereum ベースの [Quorum](https://www.goquorum.com/developers) 台帳が使用されます。
 
-現在、Azure Blockchain Service は [Quorum バージョン 2.2.3](https://github.com/jpmorganchase/quorum/releases/tag/v2.2.3) と [Tessera トランザクション マネージャー](https://github.com/jpmorganchase/tessera)をサポートしています。
+現在、Azure Blockchain Service は [Quorum バージョン 2.6.0](https://github.com/jpmorganchase/quorum/releases/tag/v2.6.0) と [Tessera トランザクション マネージャー](https://github.com/jpmorganchase/tessera)をサポートしています。
 
 ## <a name="managing-updates-and-upgrades"></a>更新プログラムとアップグレードの管理
 
@@ -30,6 +30,43 @@ Azure Blockchain Service は、既存の実行中メンバーに対して、Quor
 ## <a name="availability-of-new-ledger-versions"></a>台帳の新しいバージョンの使用可能性
 
 Azure Blockchain Service では、Quorum 台帳の最新のメジャーおよびマイナー バージョンは、Quorum の製造元で使用可能になってから 60 日以内に提供されます。 新しいメンバーとコンソーシアムをプロビジョニングするとき、コンソーシアムでは最大 4 つのマイナー リリースから選択することができます。 メジャーまたはマイナー リリースからの、またはそれらへのアップグレードは現在サポートされていません。 たとえば、バージョン 2.x を実行している場合、バージョン 3.x へのアップグレードは現在サポートされていません。 同様に、バージョン 2.2 を実行している場合、バージョン 2.3 へのアップグレードは現在サポートされていません。
+
+## <a name="how-to-check-quorum-ledger-version"></a>Quorum 台帳のバージョンを確認する方法
+
+Azure Blockchain Service メンバーの Quorum バージョンを確認するには、geth を使用してノードに接続するか、診断ログを表示します。
+
+### <a name="using-geth"></a>geth を使用する
+
+geth を使用して Azure Blockchain Service ノードに接続します。 たとえば、「 `geth attach https://myblockchainmember.blockchain.azure.com:3200/<Access key>` 」のように入力します。
+
+ノードが接続されると、次の出力のように Quorum バージョンが geth によって報告されます。
+
+``` text
+instance: Geth/v1.9.7-stable-9339be03(quorum-v2.6.0)/linux-amd64/go1.13.12
+```
+
+geth の使用方法の詳細については、「[クイック スタート:Geth を使用して Azure Blockchain Service のトランザクション ノードに接続する](connect-geth.md)」を参照してください。
+
+### <a name="using-diagnostic-logs"></a>診断ログを使用する
+
+診断ログを有効にすると、トランザクション ノードの Quorum バージョンが報告されます。 たとえば、次のノード情報ログ メッセージに、Quorum バージョンが記されています。
+
+``` text 
+{"NodeName":"transaction-node","Message":"INFO [06-22|05:31:45.156] Starting peer-to-peer node instance=Geth/v1.9.7-stable-9339be03(quorum-v2.6.0)/linux-amd64/go1.13.12\n"}
+{"NodeName":"transaction-node","Message":"[*] Starting Quorum node with QUORUM_VERSION=2.6.0, TESSERA_VERSION=0.10.5 and PRIVATE_CONFIG=/working-dir/c/tm.ipc\n"}
+111
+```
+
+診断ログの詳細については、「[Azure Monitor を使用して Azure Blockchain Service を監視する](monitor-azure-blockchain-service.md#diagnostic-settings)」をご覧ください。
+
+## <a name="how-to-check-genesis-file-content"></a>ジェネシス ファイルの内容を確認する方法
+
+ブロックチェーン ノードのジェネシス ファイルの内容を確認するには、次の Ethereum JavaScript API を使用できます。
+
+``` bash
+admin.nodeInfo.protocols
+```
+この API は、geth コンソールまたは web3 ライブラリを使用して呼び出せます。 geth の使用方法の詳細については、「[クイック スタート:Geth を使用して Azure Blockchain Service のトランザクション ノードに接続する](connect-geth.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

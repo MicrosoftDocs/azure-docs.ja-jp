@@ -2,21 +2,21 @@
 title: 特定のユーザーがいつアプリにアクセスできるようになるかを確認する
 description: 非常に重要なユーザーが、Azure AD でユーザー プロビジョニング向けに構成したアプリケーションにいつアクセスできるようになるかを確認する方法を説明します。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/03/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 9d976785340e1a032aa4484dd2e8fd6cb2915129
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 307a97b71fe453c89617a86a88063e60fcf28fa3
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593915"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235062"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>ユーザー プロビジョニングの状態を確認する
 
@@ -30,7 +30,7 @@ Azure AD プロビジョニング サービスは、ソース システムとタ
 - 現在実行されているプロビジョニング サイクルまたは最後に完了したプロビジョニング サイクルの種類 (初回または増分)。
 - 完了したプロビジョニング サイクルのパーセンテージを示す**進行状況バー**。 このパーセンテージは、プロビジョニングされたページの数を表します。 各ページには複数のユーザーまたはグループが含まれている可能性もあるため、プロビジョニングされたユーザー、グループ、ロールの数とこのパーセンテージとの間に、直接的な相関関係はないことに注意してください。
 - **[最新の情報に更新]** ボタン。このボタンを使用して、常に最新の情報を表示することができます。
-- コネクタ データ ストア内の**ユーザー**と**グループ**の数。 この数は、オブジェクトがプロビジョニングのスコープに追加されるたびに増加します。 ユーザーが論理的に削除されたり、物理的に削除されたりしても、コネクタ データ ストアからオブジェクトが削除されないため、数は減りません。 この数は、CDS が[リセット](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)された後の最初の同期で再計算されます。 
+- コネクタ データ ストア内の**ユーザー**と**グループ**の数。 この数は、オブジェクトがプロビジョニングのスコープに追加されるたびに増加します。 ユーザーが論理的に削除されたり、物理的に削除されたりしても、コネクタ データ ストアからオブジェクトが削除されないため、数は減りません。 この数は、CDS が[リセット](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)された後の最初の同期で再計算されます。 
 - **[監査ログの表示]** リンク。Azure AD のプロビジョニング ログが開いて、個々のユーザーのプロビジョニング状態を含め、ユーザー プロビジョニング サービスによって実行された全操作についての詳細が表示されます (以下の[プロビジョニング ログの使用](#use-provisioning-logs-to-check-a-users-provisioning-status)に関するセクションを参照)。
 
 プロビジョニング サイクルの完了後、現在までにプロビジョニングされた累積のユーザー数とグループ数が、完了日と最後のサイクルの期間と共に **[現在までの統計情報]** セクションに表示されます。 直近のプロビジョニング サイクルは、 **[アクティビティ ID]** によって一意に識別されます。 **[ジョブ ID]** は、プロビジョニング ジョブの一意識別子であり、テナント内のアプリに固有です。
@@ -77,12 +77,11 @@ Azure portal でプロビジョニング ログを確認する方法の詳細に
 | Azure AD のすべてのユーザーを同期する|  1,000 未満  | 30 分未満 | 30 分未満 |
 | Azure AD のすべてのユーザーを同期する | 1,000 ～ 10,000  | 43 ～ 86 分 | 30 分未満 |
 
-
 **割り当てられたユーザーとグループのみを同期する**構成では、次の式を使用して**初回サイクル**のおよその最小予測時間と最大予測時間を確認できます。
 
-    Minimum minutes =  0.01 x [Number of assigned users, groups, and group members]
-    Maximum minutes = 0.08 x [Number of assigned users, groups, and group members] 
-    
+- 最小時間 (分) = 0.01 x [割り当てられたユーザー、グループ、およびグループ メンバーの数]
+- 最大時間 (分) = 0.08 x [割り当てられたユーザー、グループ、およびグループ メンバーの数]
+
 **初回サイクル**の完了に要する時間に影響する要因のまとめ:
 
 - プロビジョニングのスコープ内のユーザーとグループの合計数。

@@ -1,19 +1,19 @@
 ---
 title: 'パフォーマンスをチューニングする: MapReduce、HDInsight & Azure Data Lake Storage Gen2 | Microsoft Docs'
-description: Azure Data Lake Storage Gen2 の MapReduce パフォーマンス チューニング ガイドライン
+description: Azure Data Lake Storage Gen2 で Map Reduce ジョブのパフォーマンスを調整するためのガイドラインについて説明します。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: a3ea6858355d6cb921f629bf36134d96371f6244
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e9d638a7ed17d08b585c71b1dac4a0177f4a2939
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74327922"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030522"
 ---
 # <a name="tune-performance-mapreduce-hdinsight--azure-data-lake-storage-gen2"></a>パフォーマンスをチューニングする: MapReduce、HDInsight & Azure Data Lake Storage Gen2
 
@@ -57,7 +57,7 @@ Map タスクと Reduce タスクのメモリ サイズは、特定のジョブ�
 
 mapreduce.job.maps/mapreduce.job.reduces をチューニングするには、使用可能な合計 YARN メモリの量を考慮する必要があります。  この情報は Ambari で利用できます。  YARN に移動し、[Configs] \(構成) タブを表示します。YARN メモリは、このウィンドウに表示されます。  合計 YARN メモリを取得するには、YARN メモリと、クラスター内のノードの数を掛けます。
 
-    Total YARN memory = nodes * YARN memory per node
+YARN メモリの合計 = ノード数 * ノードごとの YARN メモリ
 
 空のクラスターを使用している場合、メモリはクラスターの合計 YARN メモリになります。  ほかのアプリケーションでメモリを使用している場合は、Mapper や Reducer の数を使用するコンテナーの数に減らすことで、クラスターのメモリの一部のみを使用するように選択できます。  
 
@@ -65,7 +65,7 @@ mapreduce.job.maps/mapreduce.job.reduces をチューニングするには、使
 
 YARN コンテナーによって、ジョブのコンカレンシーがどの程度可能かが決まります。  合計 YARN メモリを、mapreduce.map.memory で割ります。  
 
-    # of YARN containers = total YARN memory / mapreduce.map.memory
+YARN コンテナーの数 = YARN メモリの合計 / mapreduce.map.memory
 
 **手順 5:mapreduce.job.maps/mapreduce.job.reduces を設定する**
 
@@ -85,18 +85,19 @@ CPU スケジューリングと CPU の分離は既定ではオフになって�
 
 この例では、I/O 集約型ジョブを実行し、マップ タスクには 3 GB のメモリで十分であると判断しています。
 
-    mapreduce.map.memory = 3GB
+mapreduce.map.memory = 3 GB
 
 **ステップ 3:合計 YARN メモリを決定する**
 
-    Total memory from the cluster is 8 nodes * 96GB of YARN memory for a D14 = 768GB
+クラスターからの合計メモリは、8 ノード * D14 の 96 GB の YARN メモリ = 768 GB
+
 **手順 4:YARN コンテナーの数を計算する**
 
-    # of YARN containers = 768GB of available memory / 3 GB of memory =   256
+YARN コンテナーの数 = 768 GB の使用可能なメモリ  / 3 GB のメモリ = 256
 
 **手順 5:mapreduce.job.maps/mapreduce.job.reduces を設定する**
 
-    mapreduce.map.jobs = 256
+mapreduce.map.jobs = 256
 
 ## <a name="examples-to-run"></a>実行例
 
@@ -109,12 +110,18 @@ Data Lake Storage Gen2 で MapReduce を実行する方法を示すために、�
 
 **Teragen**
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 10000000000 abfs://example/data/1TB-sort-input
+```cmd
+yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 10000000000 abfs://example/data/1TB-sort-input
+```
 
 **Terasort**
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 -Dmapreduce.job.reduces=512 -Dmapreduce.reduce.memory.mb=3072 abfs://example/data/1TB-sort-input abfs://example/data/1TB-sort-output
+```cmd
+yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 -Dmapreduce.job.reduces=512 -Dmapreduce.reduce.memory.mb=3072 abfs://example/data/1TB-sort-input abfs://example/data/1TB-sort-output
+```
 
 **Teravalidate**
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapreduce.job.maps=512 -Dmapreduce.map.memory.mb=3072 abfs://example/data/1TB-sort-output abfs://example/data/1TB-sort-validate
+```cmd
+yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapreduce.job.maps=512 -Dmapreduce.map.memory.mb=3072 abfs://example/data/1TB-sort-output abfs://example/data/1TB-sort-validate
+```

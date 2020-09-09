@@ -9,17 +9,21 @@ ms.custom:
 - mvc
 - amqp
 - mqtt
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+- devx-track-javascript
+- devx-track-azurecli
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: e42b403717eb83db06a9f719a6451cbca74c2929
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f6ac83a0fc32b426a914b76d27c2920ff8ce6731
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81770036"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500250"
 ---
-# <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>チュートリアル: シミュレートされたデバイスを使用して IoT ハブとの接続をテストする
+# <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>チュートリアル:シミュレートされたデバイスを使用して IoT ハブとの接続をテストする
 
 このチュートリアルでは、Azure IoT Hub ポータル ツールと Azure CLI コマンドを使用してデバイスの接続をテストします。 このチュートリアルでは、デスクトップ マシンで実行する単純なデバイス シミュレーターも使用します。
 

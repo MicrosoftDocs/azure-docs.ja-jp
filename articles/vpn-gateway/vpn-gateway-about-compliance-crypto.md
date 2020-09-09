@@ -1,18 +1,18 @@
 ---
 title: Azure VPN Gateway:暗号化要件
-description: この記事では、暗号化要件と Azure VPN ゲートウェイについて説明します。
+description: クロスプレミス S2S VPN トンネルと Azure VNet 間接続の両方の暗号化要件を満たすように Azure VPN ゲートウェイを構成する方法について説明します。
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: 93e13592d9c434b159ad4f4c10ef30328941c64e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 499d184d373b896ba7bffcf990693ef5e6ac466b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75902821"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032426"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>暗号化要件と Azure VPN ゲートウェイについて
 

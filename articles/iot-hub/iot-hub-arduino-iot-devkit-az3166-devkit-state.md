@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
-ms.openlocfilehash: deb1ea8c7b41ad48bddebfbed1b15c667ee0071a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0d8e10a18436b0b52820dd0bf15ad0b2de969b79
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73483947"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337944"
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
 
@@ -106,7 +106,7 @@ MXChip IoT DevKit がコンピューターに接続されている状態で、�
 ![テスト手順の例](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state.gif)
 
 > [!NOTE]
-> Azure portal でデバイス ツインの生データを表示できます。[IoT Hub] -\> [IoT デバイス] -\> " *\<お使いのデバイス\>* "  -\> [デバイス ツイン]。
+> Azure portal でデバイス ツインの生データを表示できます。[IoT Hub] -\> [IoT デバイス] -\> *\<your device\>*  -\> [デバイス ツイン]。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -114,7 +114,4 @@ MXChip IoT DevKit がコンピューターに接続されている状態で、�
 - MXChip IoT DevKit デバイスを Azure IoT リモート監視ソリューション アクセラレータに接続します。
 - Azure IoT デバイス ツイン関数を使用して、DevKit の RGB LED の色を検出して制御します。
 
-推奨される次の手順は以下のとおりです。
-
-* [Azure IoT リモート監視ソリューション アクセラレータの概要](https://docs.microsoft.com/azure/iot-suite/)
-* [MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する](/azure/iot-central/core/howto-connect-devkit)
+推奨される次の手順は以下のとおりです。[Azure IoT リモート監視ソリューション アクセラレータの概要](https://docs.microsoft.com/azure/iot-suite/)

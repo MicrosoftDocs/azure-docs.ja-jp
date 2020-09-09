@@ -13,14 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: ca5de657ad45f53cff0cb01d5fe9cc412baf4533
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 29a889fc15b1889711d08d3386920652a8bc8f57
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72792301"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269048"
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>メディア エンコーダー プレミアム ワークフローでの高度なエンコード
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!NOTE]
 > この記事で説明する Media Encoder Premium Workflow メディア プロセッサは中国では提供されません。
 >

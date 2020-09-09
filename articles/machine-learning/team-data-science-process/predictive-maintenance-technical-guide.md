@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 6452a826cfb6f7ceb65e6e89cdd42d683ee463b1
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 9520369861623e60a0118baa20a7871437433a4b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682719"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290704"
 ---
 # <a name="technical-guide-to-the-solution-template-for-predictive-maintenance-in-aerospace"></a>航空宇宙の業務における予測メンテナンスのためのソリューション テンプレートに関する技術ガイド
 
@@ -58,7 +58,7 @@ ms.locfileid: "83682719"
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) を使用して、[Azure イベント ハブ](#azure-event-hub) サービスから取得した入力ストリームをほぼリアルタイムで分析できます。 次に結果を [Power BI](https://powerbi.microsoft.com) ダッシュボード上に公開し、後で [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) サービスによって処理するために、すべての未加工の受信イベントを [Azure Storage](https://azure.microsoft.com/services/storage/) サービスにアーカイブします。
 
 ### <a name="hdinsight-custom-aggregation"></a>HDInsight カスタム集計
-HDInsight を使用して、(Azure Data Factory によって調整される) [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトを実行し、Azure Stream Analytics リソースを使用してアーカイブされた未加工のイベントの集計を行います。
+HDInsight を使用して、(Azure Data Factory によって調整される) [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) スクリプトを実行し、Azure Stream Analytics リソースを使用してアーカイブされた未加工のイベントの集計を行います。
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 (Azure Data Factory によって調整される) [Azure Machine Learning サービス](https://azure.microsoft.com/services/machine-learning/)で受け取った入力を使用して、特定の航空機エンジンの残存耐用年数 (RUL) を予測します。 
@@ -113,22 +113,22 @@ Azure Stream Analytics クエリの構築については、MSDN の [Stream Anal
 
 ![Azure Data Factory](./media/predictive-maintenance-technical-guide/azure-data-factory.png)
 
-このファクトリの 2 つのパイプラインには、データのパーティション分割と集計に使用される [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトが含まれます。 このスクリプトは、セットアップ時に作成される [Azure ストレージ](https://azure.microsoft.com/services/storage/) アカウントに置かれます。 その場所は maintenancesascript\\\\script\\\\hive\\\\ (または https://[Your solution name].blob.core.windows.net/maintenancesascript) になります。
+このファクトリの 2 つのパイプラインには、データのパーティション分割と集計に使用される [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) スクリプトが含まれます。 このスクリプトは、セットアップ時に作成される [Azure ストレージ](https://azure.microsoft.com/services/storage/) アカウントに置かれます。 その場所は maintenancesascript\\\\script\\\\hive\\\\ (または https://[Your solution name].blob.core.windows.net/maintenancesascript) になります。
 
-[Azure Stream Analytics](#azure-stream-analytics-1) クエリと同様に、[Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトは、受信データ形式に関して暗黙的に認識するため、データ形式に基づいて変更する必要があります。
+[Azure Stream Analytics](#azure-stream-analytics-1) クエリと同様に、[Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) スクリプトは、受信データ形式に関して暗黙的に認識するため、データ形式に基づいて変更する必要があります。
 
 #### <a name="aggregateflightinfopipeline"></a>*AggregateFlightInfoPipeline*
-この[パイプライン](../../data-factory/concepts-pipelines-activities.md)には、[HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) アクティビティが含まれます。このアクティビティは、[Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトを実行する [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) を使用して、[Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) ジョブの実行時に [Azure Storage](https://azure.microsoft.com/services/storage/) に入れられるデータをパーティション分割します。
+この[パイプライン](../../data-factory/concepts-pipelines-activities.md)には、[HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) アクティビティが含まれます。このアクティビティは、[Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) スクリプトを実行する [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) を使用して、[Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) ジョブの実行時に [Azure Storage](https://azure.microsoft.com/services/storage/) に入れられるデータをパーティション分割します。
 
-このパーティション分割タスク用の [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトは ***AggregateFlightInfo.hql*** です
+このパーティション分割タスク用の [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) スクリプトは ***AggregateFlightInfo.hql*** です
 
 #### <a name="mlscoringpipeline"></a>*MLScoringPipeline*
 この[パイプライン](../../data-factory/concepts-pipelines-activities.md)には複数のアクティビティが含まれ、それらの最終結果は、このソリューション テンプレートに関連付けられている [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) の実験からのスコア付けされた予測です。
 
 含まれるアクティビティは次のとおりです。
 
-* [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) アクティビティ: [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトを実行する [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) を使用して、[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) の実験に必要な集計と特徴エンジニアリングを実行します。
-  このパーティション分割タスク用の [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトは ***PrepareMLInput.hql*** です。
+* [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) アクティビティ: [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) スクリプトを実行する [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) を使用して、[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) の実験に必要な集計と特徴エンジニアリングを実行します。
+  このパーティション分割タスク用の [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) スクリプトは ***PrepareMLInput.hql*** です。
 * [コピー](https://msdn.microsoft.com/library/azure/dn835035.aspx) アクティビティ: [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) アクティビティからの結果を、[AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) アクティビティによってアクセスされる 1 つの [Azure Storage](https://azure.microsoft.com/services/storage/) BLOB に移動します。
 * [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) アクティビティ: [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) の実験を呼び出します。この実験の結果は、1 つの [Azure Storage](https://azure.microsoft.com/services/storage/) BLOB に配置されます。
 

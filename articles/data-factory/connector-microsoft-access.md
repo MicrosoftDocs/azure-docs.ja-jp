@@ -1,6 +1,6 @@
 ---
-title: Microsoft Access ソースからデータをコピーする
-description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Microsoft Access ソースからサポートされているシンク データ ストアへデータをコピーする方法について説明します。
+title: Microsoft Access をコピー元またはコピー先としてデータをコピーする
+description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Microsoft Access をコピー元またはコピー先としてデータをコピーする方法について説明します。
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/27/2019
-ms.openlocfilehash: fc2179efcda4ee11dda3b424b16a072a2bb2c26e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/28/2020
+ms.openlocfilehash: 00966af4e0fc83015726d86a4c7cb5724ad38633
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418186"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513367"
 ---
-# <a name="copy-data-from-and-to-microsoft-access-data-stores-using-azure-data-factory"></a>Azure Data Factory を使用して Microsoft Access データ ストアをコピー元またはコピー先としてデータをコピーする
+# <a name="copy-data-from-and-to-microsoft-access-using-azure-data-factory"></a>Azure Data Factory を使用して Microsoft Access データ ストアをコピー元またはコピー先としてデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Microsoft Access データ ストアからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
@@ -30,7 +30,7 @@ ms.locfileid: "81418186"
 - [サポートされるソース/シンク マトリックス](copy-activity-overview.md)での[コピー アクティビティ](copy-activity-overview.md)
 - [Lookup アクティビティ](control-flow-lookup-activity.md)
 
-Microsoft Access ソースから、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
+Microsoft Access ソースのデータをサポートされる任意のシンク データ ストアにコピーしたり、サポートされる任意のソース データ ストアのデータを Microsoft Access シンクにコピーしたりできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -68,7 +68,7 @@ Microsoft Access のリンクされたサービスでは、次のプロパティ
 {
     "name": "MicrosoftAccessLinkedService",
     "properties": {
-        "type": "Microsoft Access",
+        "type": "MicrosoftAccess",
         "typeProperties": {
             "connectionString": "Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=<path to your DB file e.g. C:\\mydatabase.accdb>;",
             "authenticationType": "Basic",
@@ -121,7 +121,7 @@ Microsoft Access からデータをコピーする場合、次のプロパティ
 
 ### <a name="microsoft-access-as-source"></a>ソースとしての Microsoft Access
 
-Microsoft Access 互換データ ストアからデータをコピーする場合、コピー アクティビティの **source** セクションで次のプロパティがサポートされます。
+Microsoft Access からデータをコピーするために、コピー アクティビティの **source** セクションでは次のプロパティがサポートされています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -154,6 +154,48 @@ Microsoft Access 互換データ ストアからデータをコピーする場�
             },
             "sink": {
                 "type": "<sink type>"
+            }
+        }
+    }
+]
+```
+
+### <a name="microsoft-access-as-sink"></a>シンクとしての Microsoft Access
+
+Microsoft Access にデータをコピーするために、コピー アクティビティの **sink** セクションでは次のプロパティがサポートされています。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | コピー アクティビティのシンクの type プロパティは、次のように設定する必要があります: **MicrosoftAccessSink** | はい |
+| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/>使用可能な値: 期間。 例:"00:30:00" (30 分)。 |いいえ |
+| writeBatchSize |バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。<br/>使用可能な値: 整数 (行数)。 |いいえ (既定値は 0 - 自動検出) |
+| preCopyScript |コピー アクティビティの毎回の実行で、データをデータ ストアに書き込む前に実行する SQL クエリを指定します。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 |いいえ |
+
+**例:**
+
+```json
+"activities":[
+    {
+        "name": "CopyToMicrosoftAccess",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<Microsoft Access output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "<source type>"
+            },
+            "sink": {
+                "type": "MicrosoftAccessSink"
             }
         }
     }

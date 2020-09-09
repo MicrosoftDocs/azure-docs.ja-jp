@@ -13,14 +13,14 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ROBOTS: NOINDEX
-ms.openlocfilehash: 92acb1a475fbd41bfb7351d73c61db866ce2bbc0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1075cce9b9e3bc3267756bba84691788293fa8d2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154935"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116303"
 ---
-# <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory の条件付きアクセスについての開発者ガイド
+# <a name="developer-guidance-for-the-azure-active-directory-conditional-access-feature"></a>Azure Active Directory の条件付きアクセス機能についての開発者ガイド
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) の条件付きアクセス機能では、ア�
 * Intune 登録されているデバイスのみに特定のサービスへのアクセスを許可します。
 * ユーザーの場所と IP 範囲を制限します。
 
-条件付きアクセスのすべての機能について詳しくは、[Azure Active Directory の条件付きアクセス](../active-directory-conditional-access-azure-portal.md)に関するページをご覧ください。
+条件付きアクセスのすべての機能の詳細については、「[条件付きアクセスとは](../conditional-access/overview.md)」を参照してください。
 
 Azure AD のアプリをビルドしている開発者のために、この記事では、条件付きアクセスを使用する方法について示し、条件付きアクセス ポリシーが適用される可能性のある制御不能なリソースにアクセスした場合の影響についても学習します。 この記事では、On-Behalf-Of フロー、Web アプリ、Microsoft Graph へのアクセス、API の呼び出しに対し条件付きアクセスが与える影響についても説明します。
 
@@ -49,7 +49,7 @@ Azure AD のアプリをビルドしている開発者のために、この記�
 * ADAL.js を使用するシングル ページ アプリ
 * リソースを呼び出す Web Apps
 
-条件付きアクセス ポリシーは、アプリに適用できますが、アプリがアクセスする Web API にも適用できます。 条件付きアクセス ポリシーを構成する方法の詳細については、「[クイック スタート: Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](../conditional-access/app-based-mfa.md)」を参照してください。
+条件付きアクセス ポリシーは、アプリに適用できますが、アプリがアクセスする Web API にも適用できます。 条件付きアクセス ポリシーの構成方法の詳細については、「[一般的な条件付きアクセス ポリシー](../conditional-access/concept-conditional-access-policy-common.md)」を参照してください。
 
 シナリオによっては、エンタープライズのお客様は、条件付きアクセス ポリシーをいつでも適用および削除することができます。 新しいポリシーが適用されたときにアプリの機能を継続するためには、"チャレンジ" 処理を実装する必要があります。 チャレンジ処理の例は次のとおりです。
 
@@ -90,7 +90,7 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 ### <a name="prerequisites"></a>前提条件
 
-Azure AD の条件付きアクセスは、[Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) に含まれている機能です。 ライセンス要件の詳細については、[ライセンスのないユーザーのレポート](../active-directory-conditional-access-unlicensed-usage-report.md)に関するページを参照してください。 開発者は、Azure AD Premium を含む Enterprise Mobility Suite に無料でサブスクリプションできる [Microsoft Developer Network](https://msdn.microsoft.com/dn308572.aspx) に参加できます。
+Azure AD の条件付きアクセスは、[Azure AD Premium](../fundamentals/active-directory-whatis.md) に含まれている機能です。 ライセンス要件の詳細については、[ライセンスのないユーザーのレポート](../reports-monitoring/overview-reports.md)に関するページを参照してください。 開発者は、Azure AD Premium を含む Enterprise Mobility Suite に無料でサブスクリプションできる [Microsoft Developer Network](/) に参加できます。
 
 ### <a name="considerations-for-specific-scenarios"></a>特定のシナリオの考慮事項
 
@@ -177,7 +177,7 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 
 ## <a name="see-also"></a>関連項目
 
-* 機能について詳しくは、「[Azure Active Directory の条件付きアクセス](../active-directory-conditional-access-azure-portal.md)」をご覧ください。
+* 機能について詳しくは、「[Azure Active Directory の条件付きアクセス](../conditional-access/overview.md)」をご覧ください。
 * Azure AD コード サンプルについては、[GitHub リポジトリのコード サンプル](https://github.com/azure-samples?utf8=%E2%9C%93&q=active-directory)を参照してください。
 * ADAL SDK の詳細情報およびリファレンス ドキュメントにアクセスするには、[ライブラリ ガイド](active-directory-authentication-libraries.md)を参照してください。
 * マルチテナント シナリオの詳細については、[マルチテナント アプリケーション パターンを使用してすべての Azure Active Directory (AD) ユーザーがサインインできるようにする方法](../develop/howto-convert-app-to-be-multi-tenant.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)を参照してください。

@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
-ms.custom: mvc
-ms.openlocfilehash: 3f0d937737cb261fb81dc4cdad3579ee593b5981
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: c434abdac19c0afd3a76256c27fc3316a8b09940
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233306"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163698"
 ---
 # <a name="create-a-cicd-pipeline-for-net-with-azure-devops-starter"></a>Azure DevOps Starter を使用して .NET 用 CI/CD パイプラインを作成する
 

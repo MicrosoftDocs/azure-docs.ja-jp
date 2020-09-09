@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/25/2019
-ms.openlocfilehash: 1ce6da555bc8777bdb9671df1567f06227b74b6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81a83c629a1cdcde77ec43751f32ebfe1dfb3425
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192801"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266850"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory の式と関数
 
@@ -64,6 +64,11 @@ ms.locfileid: "82192801"
 |"Answer is: \@\@{pipeline().parameters.myNumber}"| string `Answer is: @{pipeline().parameters.myNumber}` が返されます。|  
   
 ## <a name="examples"></a>例
+
+### <a name="complex-expression-example"></a>複合式の例
+次の例は、アクティビティの出力の詳細サブフィールドを参照する複雑な例を示しています。 サブフィールドと評価されるパイプライン パラメーターを参照するには、ドット (.) 演算子ではなく、[] 構文を使用します (subfield1 と subfield2 の場合と同様)
+
+@activity('{activityName}').output.{subfield1}.{subfield2}[pipeline().parameters.subfield3].{subfield4}
 
 ### <a name="a-dataset-with-a-parameter"></a>パラメーターを備えたデータセット
 次の例では、BlobDataset は **path** という名前のパラメーターを受け取ります。 その値は、`dataset().path` という式を使用して **folderPath** プロパティの値を設定するために使用されます。 
@@ -527,26 +532,26 @@ addToTime('2018-01-01T00:00:00Z', 1, 'Day', 'D')
 
 ### <a name="and"></a>and
 
-すべての式が true かどうかを調べます。
-すべての式が true の場合は true を返し、少なくとも 1 つの式が false の場合は false を返します。
+両方の式が true であるかどうかを確認します。
+両方の式が true の場合は true を返し、少なくとも 1 つの式が false の場合は false を返します。
 
 ```
-and(<expression1>, <expression2>, ...)
+and(<expression1>, <expression2>)
 ```
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*expression1*>, <*expression2*>, ... | はい | Boolean | 調べる式 |
+| <*expression1*>, <*expression2*> | はい | Boolean | 調べる式 |
 |||||
 
 | 戻り値 | Type | 説明 |
 | ------------ | -----| ----------- |
-| true または false | Boolean | すべての式が true の場合は true を返します。 少なくとも 1 つの式が false の場合は false を返します。 |
+| true または false | Boolean | 両方の式が true の場合は true を返します。 少なくとも 1 つの式が false の場合は false を返します。 |
 ||||
 
 *例 1*
 
-これらの例は、指定したブール値がすべて true かどうかを調べます。
+これらの例では、指定されたブール値が両方とも true であるかどうかを確認します。
 
 ```
 and(true, true)
@@ -562,7 +567,7 @@ and(false, false)
 
 *例 2*
 
-これらの例は、指定した式がすべて true かどうかを調べます。
+これらの例では、指定された式が両方とも true であるかどうかを確認します。
 
 ```
 and(equals(1, 1), equals(2, 2))
@@ -910,7 +915,7 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 convertFromUtc('2018-01-01T08:00:00.0000000Z', 'Pacific Standard Time')
 ```
 
-返される結果: `"2018-01-01T00:00:00.0000000"`
+返される結果: `"2018-01-01T00:00:00Z"`
 
 *例 2*
 
@@ -2384,20 +2389,20 @@ not(equals(1, 1))
 ### <a name="or"></a>or
 
 少なくとも 1 つの式が true かどうかを調べます。
-少なくとも 1 つの式が true の場合は true を返し、すべての式が false の場合は false を返します。
+少なくとも 1 つの式が true の場合は true を返し、両方が false の場合は false を返します。
 
 ```
-or(<expression1>, <expression2>, ...)
+or(<expression1>, <expression2>)
 ```
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*expression1*>, <*expression2*>, ... | はい | Boolean | 調べる式 |
+| <*expression1*>, <*expression2*> | はい | Boolean | 調べる式 |
 |||||
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| true または false | Boolean | 少なくとも 1 つの式が true の場合は true を返します。 すべての式が false の場合は false を返します。 |
+| true または false | Boolean | 少なくとも 1 つの式が true の場合は true を返します。 両方の式が false の場合は false を返します。 |
 ||||
 
 *例 1*

@@ -7,13 +7,13 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: 'ASP.NET Core - C#'
+    - name: ASP.NET Core - C#
       href: signalr-quickstart-dotnet-core.md
-    - name: 'ASP.NET - C#'
+    - name: ASP.NET - C#
       href: signalr-quickstart-dotnet.md
     - name: Azure Functions - JavaScript
       href: signalr-quickstart-azure-functions-javascript.md
-    - name: 'Azure Functions - C#'
+    - name: Azure Functions - C#
       href: signalr-quickstart-azure-functions-csharp.md
     - name: Azure Functions - Java
       href: signalr-quickstart-azure-functions-java.md
@@ -25,10 +25,6 @@
   items:
     - name: 認証を使用してサーバーレスのリアルタイム アプリを構築する
       href: signalr-tutorial-authenticate-azure-functions.md
-    - name: モニター
-      items:
-        - name: 診断ログを使用して SignalR サービスを監視する
-          href: signalr-tutorial-diagnostic-logs.md
 - name: サンプル
   items:
     - name: コード サンプル
@@ -49,6 +45,8 @@
           href: signalr-concept-serverless-development-config.md
         - name: Azure Functions 用の SignalR Service バインドのリファレンス
           href: ../azure-functions/functions-bindings-signalr-service.md
+        - name: アップストリームの設定
+          href: concept-upstream.md
     - name: 高可用性
       items:
         - name: 回復性とディザスター リカバリー
@@ -73,12 +71,26 @@
       items:
         - name: アクセス キーのローテーション
           href: signalr-howto-key-rotation.md
+        - name: Azure サービス タグの使用
+          href: howto-service-tags.md
+        - name: Azure プライベート エンドポイントの使用
+          href: howto-private-endpoints.md
+        - name: ネットワーク アクセス制御の管理
+          href: howto-network-access-control.md
+        - name: マネージド ID の使用
+          href: howto-use-managed-identity.md
     - name: 統合
       items:
         - name: Azure Functions のバインド
           href: signalr-concept-azure-functions.md
         - name: Event Grid の統合
           href: signalr-howto-event-grid-integration.md
+    - name: モニター
+      items:
+        - name: 診断ログを使用して SignalR サービスを監視する
+          href: signalr-howto-diagnostic-logs.md
+        - name: Azure Policy を使用したコンプライアンスの監査
+          href: signalr-howto-azure-policy.md
 - name: References
   items:
     - name: Azure CLI
@@ -89,6 +101,9 @@
       href: 'https://docs.microsoft.com/aspnet/core/signalr'
     - name: Azure SignalR Service のプロトコル
       href: 'https://github.com/Azure/azure-signalr/blob/dev/specs/ServiceProtocol.md'
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: ソリューション

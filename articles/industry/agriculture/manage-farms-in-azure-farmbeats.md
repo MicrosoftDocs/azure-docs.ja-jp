@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 09144c4c35ab911b60931849807123608f2c3cdd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233391"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847487"
 ---
 # <a name="manage-farms"></a>ファームの管理
 

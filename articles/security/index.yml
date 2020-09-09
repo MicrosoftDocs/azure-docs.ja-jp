@@ -4,7 +4,7 @@ summary: セキュリティは、Azure のすべての要素に統合されて�
 brand: azure
 metadata:
   title: Azure のセキュリティのドキュメント
-  description: セキュリティは、Azure のすべての要素に統合されています。 Azure は、グローバル セキュリティ インテリジェンス、高度な顧客向けコントロール、安全で堅牢なインフラストラクチャのたまものである比類の無いセキュリティ上の利点を提供します。 この強力な組み合わせにより、アプリケーションとデータの保護、コンプライアンスに関する取り組みの支援、あらゆる規模の組織に適したコスト効果の高いセキュリティの提供が可能になります。
+  description: Azure のセキュリティについて説明します。 セキュリティの基礎、ベスト プラクティスとパターン、Azure Security Center についての情報をご覧ください。
   services: security
   ms.service: security
   ms.subservice: na
@@ -14,12 +14,12 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 08/29/2019
-  ms.openlocfilehash: b3c5fb0dd15c1211132e627b507aa20a043f09ba
-  ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+  ms.openlocfilehash: de2b3baae0ab999c0e3eb8ed76194632e7b066e6
+  ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/10/2020
-  ms.locfileid: "81115359"
+  ms.lasthandoff: 08/03/2020
+  ms.locfileid: "87540854"
 highlightedContent:
   items:
   - title: Azure のセキュリティの概要

@@ -3,15 +3,15 @@ title: Azure Cosmos DB で Azure Kubernetes を使用する方法
 description: Azure Cosmos DB (プレビュー) を使用して Azure での Kubernetes クラスターのブートストラップする方法について説明します
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: sngun
-ms.openlocfilehash: 9dbbc914580d8d80a3f9b7d730574e24b44827c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 31c3c02f2b32594e5b20450d0bb519f4cdf82807
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70093722"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497762"
 ---
 # <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>Azure Cosmos DB (プレビュー) で Azure Kubernetes を使用する方法
 
@@ -33,7 +33,7 @@ Azure Cosmos DB での etcd API の詳細については、[概要](etcd-api-int
 
    Azure Kubernetes エンジン (**aks-engine**) は、Azure 上の Kubernetes クラスター用の Azure Resource Manager テンプレートを生成します。 aks-engine への入力は、オーケストレーター、フィーチャー、エージェントなど、目的のクラスターを記述したクラスター定義ファイルです。 入力ファイルの構造は、Azure Kubernetes Service のパブリック API に似ています。
 
-1. Azure Cosmos DB の etcd API は現在プレビュー段階にあります。 [https://aka.ms/cosmosetcdapi-signup](https://aka.ms/cosmosetcdapi-signup ) でサインアップしてプレビュー バージョンを使用します。 フォームを送信した後、サブスクリプションは、Azure Cosmos etcd API を使用できるようにホワイトリストに登録されます。 
+1. Azure Cosmos DB の etcd API は現在プレビュー段階にあります。 [https://aka.ms/cosmosetcdapi-signup](https://aka.ms/cosmosetcdapi-signup ) でサインアップしてプレビュー バージョンを使用します。 フォームを送信した後、サブスクリプションで Azure Cosmos etcd API を使用することが許可されます。 
 
 ## <a name="deploy-the-cluster-with-azure-cosmos-db"></a>Azure Cosmos DB でクラスターをデプロイする
 
@@ -43,7 +43,7 @@ Azure Cosmos DB での etcd API の詳細については、[概要](etcd-api-int
    az login 
    ```
 
-1. 複数のサブスクリプションがある場合は、Azure Cosmos DB etcd API のホワイトリストに登録されているサブスクリプションに切り替えます。 次のコマンドを使用して、必要なサブスクリプションに切り替えることができます。
+1. 複数のサブスクリプションがある場合は、Azure Cosmos DB etcd API が許可されているサブスクリプションに切り替えます。 次のコマンドを使用して、必要なサブスクリプションに切り替えることができます。
 
    ```azurecli-interactive
    az account set --subscription "<Name of your subscription>"

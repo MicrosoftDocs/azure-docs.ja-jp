@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 3eef7476a729c7b83290b9d8d86ba06524bed72b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4421ad4260ff8eada87cdebc031d09922860324f
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297097"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196327"
 ---
 # <a name="troubleshoot-dms-errors-when-connecting-to-source-databases"></a>ソース データベースへの接続時の DMS エラーのトラブルシューティング
 
@@ -30,7 +30,7 @@ ms.locfileid: "80297097"
 | エラー         | 原因とトラブルシューティングの詳細 |
 | ------------- | ------------- |
 | SQL 接続できませんでした。 SQL Server への接続を確立しているときにネットワーク関連またはインスタンス固有のエラーが発生しました。 サーバーが見つからないかアクセスできません。 インスタンス名が正しいことと、SQL Server がリモート接続を許可するように構成されていることを確認してください。<br> | このエラーは、サービスでソース サーバーを見つけられない場合に発生します。 問題に対処する場合は、「[動的ポートまたは名前付きインスタンスを使用しているときのソース SQL Server への接続エラー](https://docs.microsoft.com/azure/dms/known-issues-troubleshooting-dms#error-connecting-to-source-sql-server-when-using-dynamic-port-or-named-instance)」を参照してください。 |
-| **エラー 53** -1 - SQL 接続できませんでした。 (また、エラー コード 1、2、5、53、233、258、1225、11001 の場合)<br><br> | このエラーは、サービスでソース サーバーに接続できない場合に発生します。 問題に対処する場合は、以下のリソースを参照してからもう一度試します。 <br><br>  [接続の問題のトラブルシューティングを行うための対話型ユーザー ガイド](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)<br><br> [SQL Server から Azure SQL Database への移行の前提条件](https://docs.microsoft.com/azure/dms/pre-reqs#prerequisites-for-migrating-sql-server-to-azure-sql-database) <br><br> [SQL Server から Azure SQL Database Managed Instance への移行の前提条件](https://docs.microsoft.com/azure/dms/pre-reqs#prerequisites-for-migrating-sql-server-to-an-azure-sql-database-managed-instance) |
+| **エラー 53** -1 - SQL 接続できませんでした。 (また、エラー コード 1、2、5、53、233、258、1225、11001 の場合)<br><br> | このエラーは、サービスでソース サーバーに接続できない場合に発生します。 問題に対処する場合は、以下のリソースを参照してからもう一度試します。 <br><br>  [接続の問題のトラブルシューティングを行うための対話型ユーザー ガイド](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)<br><br> [SQL Server から Azure SQL Database への移行の前提条件](https://docs.microsoft.com/azure/dms/pre-reqs#prerequisites-for-migrating-sql-server-to-azure-sql-database) <br><br> [SQL Server から Azure SQL Managed Instance への移行の前提条件](https://docs.microsoft.com/azure/dms/pre-reqs#prerequisites-for-migrating-sql-server-to-an-azure-sql-database-managed-instance) |
 | **エラー 18456** - ログインできませんでした。<br> | このエラーは、サービスで指定された T-SQL 資格情報を使用して、ソース データベースに接続できない場合に発生します。 問題に対処するには、入力された資格情報を確認します。 また、「[MSSQLSERVER_18456](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error?view=sql-server-2017)」、あるいはこの表の下の注釈にリストされているトラブルシューティングのドキュメントを参照してから、もう一度試すことができます。 |
 | 無効な AccountName 値 '{0}' が指定されました。 AccountName に必要な形式は、DomainName\UserName です<br> | このエラーは、ユーザーが Windows 認証を選択したが、無効な形式でユーザー名を指定した場合に発生します。 問題に対処するには、Windows 認証の正しい形式でユーザー名を指定するか、 **[SQL 認証]** を選択します。 |
 

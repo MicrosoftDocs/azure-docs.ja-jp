@@ -13,10 +13,10 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.openlocfilehash: 89a383aabf3487a0938604bc28ddb06c0541d13e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80881352"
 ---
 # <a name="single-and-multiple-account-public-client-apps"></a>単一および複数アカウントのパブリック クライアント アプリ

@@ -5,16 +5,16 @@ services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: dd7666bb9f22214fb4701e6be9edc171912d9bf9
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 610391cefe88f6d066f4af12f6fb88f55b1fe56b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691860"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85206549"
 ---
 # <a name="store-query-results-to-storage-using-sql-on-demand-preview-using-azure-synapse-analytics"></a>Azure Synapse Analytics を使用して SQL オンデマンド (プレビュー) でクエリ結果をストレージに格納する
 
@@ -22,24 +22,28 @@ ms.locfileid: "82691860"
 
 ## <a name="prerequisites"></a>前提条件
 
-最初の手順として、以下の記事を確認し、前提条件を満たしていることを確認します。
+最初の手順として、クエリを実行する**データベースを作成**します。 次に、そのデータベースで[セットアップ スクリプト](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)を実行して、オブジェクトを初期化します。 このセットアップ スクリプトにより、データ ソース、データベース スコープの資格情報、これらのサンプルでデータの読み取りに使用される外部ファイル形式が作成されます。
 
-- [初回セットアップ](query-data-storage.md#first-time-setup)
-- [前提条件](query-data-storage.md#prerequisites)
+この記事の手順に従って、データ ソース、データベース スコープの資格情報、出力ストレージへのデータの書き込みに使用される外部ファイル形式を作成してください。
 
 ## <a name="create-external-table-as-select"></a>CREATE EXTERNAL TABLE AS SELECT
 
 CREATE EXTERNAL TABLE AS SELECT (CETAS) ステートメントを使用して、クエリ結果をストレージに格納することができます。
 
 > [!NOTE]
-> クエリの最初の行 ([mydbname]) は、自分で作成したデータベースを使用するように変更してください。 データベースをまだ作成していない場合は、「[初回セットアップ](query-data-storage.md#first-time-setup)」を参照してください。 MyDataSource 外部データ ソースの LOCATION は、書き込みアクセス許可がある場所を指すように変更する必要があります。 
+> クエリの最初の行 ([mydbname]) は、自分で作成したデータベースを使用するように変更してください。
 
 ```sql
 USE [mydbname];
 GO
 
+CREATE DATABASE SCOPED CREDENTIAL [SasTokenWrite]
+WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
+     SECRET = 'sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D';
+GO
+
 CREATE EXTERNAL DATA SOURCE [MyDataSource] WITH (
-    LOCATION = 'https://sqlondemandstorage.blob.core.windows.net/csv'
+    LOCATION = 'https://<storage account name>.blob.core.windows.net/csv', CREDENTIAL = [SasTokenWrite]
 );
 GO
 
@@ -58,8 +62,9 @@ SELECT
     *
 FROM
     OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population-unix/population.csv',
-        FORMAT='CSV'
+        BULK 'csv/population-unix/population.csv',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0'
     ) WITH (
         CountryCode varchar(4),
         CountryName varchar(64),
@@ -69,12 +74,12 @@ FROM
 
 ```
 
-## <a name="use-a-external-table-created"></a>作成された外部テーブルを使用する
+## <a name="use-the-external-table"></a>外部テーブルを使用する
 
 CETAS で作成した外部テーブルは、通常の外部テーブルと同じように使用できます。
 
 > [!NOTE]
-> クエリの最初の行 ([mydbname]) は、自分で作成したデータベースを使用するように変更してください。 データベースをまだ作成していない場合は、「[初回セットアップ](query-data-storage.md#first-time-setup)」を参照してください。
+> クエリの最初の行 ([mydbname]) は、自分で作成したデータベースを使用するように変更してください。
 
 ```sql
 USE [mydbname];

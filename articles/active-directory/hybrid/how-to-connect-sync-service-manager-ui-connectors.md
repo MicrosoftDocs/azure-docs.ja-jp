@@ -11,18 +11,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae932191c7b76590ea217386dfd729add5566f87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a013af680ecc84a2a981341ba4bb95148adc799f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230107"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357258"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Azure AD Connect の Sync Service Manager でコネクタを使用する
 

@@ -2,26 +2,21 @@
 title: 'チュートリアル:チュートリアル: Azure Active Directory と Korn Ferry ALP の統合 | Microsoft Docs'
 description: Azure Active Directory と Korn Ferry ALP の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 6f5b53b7-6d1d-4bed-a95a-127e2d4d8b3f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57801403f2d0e29fb32b6919a7078ae3fb895fdf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 52de9ca9dbd4e8018224f15aa643d0756b0d29be
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73159635"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549910"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-korn-ferry-alp"></a>チュートリアル:Azure Active Directory と Korn Ferry ALP の統合
 
@@ -108,19 +103,19 @@ Korn Ferry ALP で Azure AD のシングル サインオンを構成するには
 
     a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。
 
-    | |
-    |--|
-    | `https://intappextin01/portalweb/sso/client/audience?guid=<customerguid>` | 
-    | `https://qaassessment.kfnaqa.com/portalweb/sso/client/audience?guid=<customerguid>` |
-    | `https://assessments.kornferry.com/portalweb/sso/client/audience?guid=<customerguid>` |
+    ```http
+    https://intappextin01/portalweb/sso/client/audience?guid=<customerguid>
+    https://qaassessment.kfnaqa.com/portalweb/sso/client/audience?guid=<customerguid>
+    https://assessments.kornferry.com/portalweb/sso/client/audience?guid=<customerguid>
+    ```
 
     b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。
     
-    | |
-    |--|
-    | `https://intappextin01/portalweb/sso/client/audience?guid=<customerguid>` |
-    | `https://qaassessment.kfnaqa.com/portalweb/sso/client/audience?guid=<customerguid>` |
-    | `https://assessments.kornferry.com/portalweb/sso/client/audience?guid=<customerguid>` |
+    ```http
+    https://intappextin01/portalweb/sso/client/audience?guid=<customerguid>
+    https://qaassessment.kfnaqa.com/portalweb/sso/client/audience?guid=<customerguid>
+    https://assessments.kornferry.com/portalweb/sso/client/audience?guid=<customerguid>
+    ```
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Korn Ferry ALP クライアント サポート チーム](mailto:noreply@kornferry.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

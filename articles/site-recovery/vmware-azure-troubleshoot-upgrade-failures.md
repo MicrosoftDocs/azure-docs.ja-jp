@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/10/2019
 ms.author: raynew
-ms.openlocfilehash: b59f933fedd5f1d3ed3f7972b1a1fe653df31be2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a6e4b415a9fe8ea80a84e415879df9d2f359478
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75893911"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84434372"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>Microsoft Azure Site Recovery プロバイダーのアップグレード エラーのトラブルシューティング
 
@@ -65,4 +65,16 @@ Microsoft Azure Site Recovery Provider (DRA) をアップグレードすると�
 
 1. タスク マネージャーを使用して、インストールの進行状況を監視します。 CX_THIRDPARTY_SETUP.EXE のプロセスがタスク マネージャーに表示されなくなったら、次のステップに進みます。
 1. C:\thirdparty が存在し、そのフォルダーに RRD ライブラリが含まれていることを確認します。
-1. 統合セットアップをダウンロードしたフォルダーに戻り、MicrosoftAzureSiteRecoveryUnifiedSetup.exe を実行してアップグレードを完了します。 
+1. 統合セットアップをダウンロードしたフォルダーに戻り、MicrosoftAzureSiteRecoveryUnifiedSetup.exe を実行してアップグレードを完了します。
+
+## <a name="upgrade-failure-due-to-master-target-installation-failure"></a>マスター ターゲットのインストール失敗に起因するアップグレード失敗
+
+Microsoft Azure Site Recovery Provider (DRA) をアップグレードするとき、マスター ターゲットのインストールに失敗し、"Installation location does not exist and/or it does not have 1 GB free space and/or it does not exist on a fixed drive." というエラーが表示されます。
+
+これはレジストリ キーのパラメーターの null 値に起因する可能性があります。 この問題を解決するには -
+
+1. レジストリ エディター (regedit.exe) を開始し、HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\InMage Systems\Installed Products\4 ブランチを開きます。
+1. "InstallDirectory" キー値を調べます。 null の場合、現在のインストール ディレクトリ値を追加します。
+1. 同様に、レジストリ エディターで HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\InMage Systems\Installed Products\5 ブランチを開きます。
+1. "InstallDirectory" キー値を調べ、現在のインストール ディレクトリ値を追加します。
+1. 統合セットアップ インストーラを再実行します。

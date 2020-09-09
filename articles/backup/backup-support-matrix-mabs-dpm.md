@@ -3,12 +3,12 @@ title: MABS と System Center DPM のサポート マトリックス
 description: この記事では、Microsoft Azure Backup Server (MABS) または System Center DPM を使用してオンプレミスおよび Azure VM のリソースをバックアップする場合の、Azure Backup のサポートについてまとめます。
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2d3b9dbf0440809578fca113ee6674b79a5d7fb1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 26d9e3012749298a781cd611866bc6d0a6596979
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82193277"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825224"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Microsoft Azure Backup Server または System Center DPM を使用したバックアップのサポート マトリックス
 
@@ -16,7 +16,7 @@ ms.locfileid: "82193277"
 
 ## <a name="about-dpmmabs"></a>DPM/MABS について
 
-[System Center DPM](https://docs.microsoft.com/system-center/dpm/dpm-overview?view=sc-dpm-1807) は、エンタープライズ コンピューターおよびデータのバックアップと復旧を構成、促進、および管理するエンタープライズ ソリューションです。 これは製品の [System Center](https://www.microsoft.com/cloud-platform/system-center-pricing) スイートの一部です。
+[System Center DPM](/system-center/dpm/dpm-overview) は、エンタープライズ コンピューターおよびデータのバックアップと復旧を構成、促進、および管理するエンタープライズ ソリューションです。 これは製品の [System Center](https://www.microsoft.com/system-center/pricing) スイートの一部です。
 
 MABS は、オンプレミスの物理サーバー、VM、およびそれらで実行されているアプリをバックアップするために使用できるサーバー製品です。
 
@@ -24,7 +24,7 @@ MABS は System Center DPM に基づいており、同様の機能を提供し�
 
 - MABS を実行するために System Center ライセンスは必要ありません。
 - MABS と DPM の両方に対して、Azure は長期的なバックアップ ストレージを提供します。 さらに、DPM では、テープで長期保存するためのデータのバックアップが可能になります。 MABS では、この機能は提供されません。
-- セカンダリ DPM サーバーを使用してプライマリ DPM サーバーをバックアップすることができます。 セカンダリ サーバーは、プライマリ サーバー データベースと、プライマリ サーバーに格納されているデータ ソース レプリカを保護します。 プライマリ サーバーに障害が発生した場合、セカンダリ サーバーは、プライマリ サーバーが再び使用可能になるまで、プライマリ サーバーによって保護されているワークロードを引き続き保護することができます。  MABS では、この機能は提供されません。
+- [セカンダリ DPM サーバーを使用してプライマリ DPM サーバーをバックアップすることができます。](/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019) セカンダリ サーバーは、プライマリ サーバー データベースと、プライマリ サーバーに格納されているデータ ソース レプリカを保護します。 プライマリ サーバーに障害が発生した場合、セカンダリ サーバーは、プライマリ サーバーが再び使用可能になるまで、プライマリ サーバーによって保護されているワークロードを引き続き保護することができます。  MABS では、この機能は提供されません。
 
 MABS は、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=57520)からダウンロードします。 これは、オンプレミスまたは Azure VM で実行できます。
 
@@ -71,18 +71,18 @@ Azure Backup は、次のいずれかのオペレーティング システムを
 **シナリオ** | **DPM/MABS**
 --- | ---
 **Azure VM 上の MABS** |  Windows 2016 Datacenter。<br/><br/> Windows 2019 Datacenter。<br/><br/> マーケットプレースのイメージから始めることをお勧めします。<br/><br/> 4 つのコアと 8 GB の RAM を持つ最小の Standard_A4_v2 です。
-**Azure VM 上の DPM** | 更新プログラム 3 以降が適用された System Center 2012 R2。<br/><br/> [System Center](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server) で必要とされる Windows オペレーティング システム。<br/><br/> マーケットプレースのイメージから始めることをお勧めします。<br/><br/> 4 つのコアと 8 GB の RAM を持つ最小の Standard_A4_v2 です。
+**Azure VM 上の DPM** | 更新プログラム 3 以降が適用された System Center 2012 R2。<br/><br/> [System Center](/system-center/dpm/prepare-environment-for-dpm#dpm-server) で必要とされる Windows オペレーティング システム。<br/><br/> マーケットプレースのイメージから始めることをお勧めします。<br/><br/> 4 つのコアと 8 GB の RAM を持つ最小の Standard_A4_v2 です。
 **MABS オンプレミス** |  MABS v3 以降: Windows Server 2016 または Windows Server 2019
 **DPM オンプレミス** | 物理サーバー/Hyper-V VM: System Center 2012 SP1 以降。<br/><br/> VMware VM: 更新プログラム 5 以降が適用された System Center 2012 R2。
 
 >[!NOTE]
->Azure Backup Server のインストールは、Windows Server Core または Microsoft Hyper-V サーバーではサポートされていません。
+>Azure Backup Server のインストールは、Windows Server Core または Microsoft Hyper-V Server ではサポートされていません。
 
 ## <a name="management-support"></a>管理のサポート
 
 **問題点** | **詳細**
 --- | ---
-**インストール** | DPM/MABS は、単一目的のコンピューターにインストールします。<br/><br/> ドメイン コントローラー、アプリケーション サーバー ロールがインストールされているコンピューター、Microsoft Exchange Server または System Center Operations Manager を実行しているコンピューター、クラスター ノードには DPM/MABS をインストールしないでください。<br/><br/> [DPM のすべてのシステム要件を確認してください](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server)。
+**インストール** | DPM/MABS は、単一目的のコンピューターにインストールします。<br/><br/> ドメイン コントローラー、アプリケーション サーバー ロールがインストールされているコンピューター、Microsoft Exchange Server または System Center Operations Manager を実行しているコンピューター、クラスター ノードには DPM/MABS をインストールしないでください。<br/><br/> [DPM のすべてのシステム要件を確認してください](/system-center/dpm/prepare-environment-for-dpm#dpm-server)。
 **[ドメイン]** | DPM/MABS はドメインに参加させる必要があります。 最初に DPM/MABS をインストールし、次にこれらをドメインに参加させます。 デプロイ後に DPM/MABS を新しいドメインに移動することはサポートされていません。
 **Storage** | Modern Backup Storage (MBS) は、DPM 2016/MABS v2 以降でサポートされています。 MABS v1 では使用できません。
 **MABS のアップグレード** | MABS v3 を直接インストールすることも、MABS v2 から MABS v3 にアップグレードすることもできます。 [詳細については、こちらを参照してください](backup-azure-microsoft-azure-backup.md#upgrade-mabs)。
@@ -131,13 +131,13 @@ DPM サーバー/MABS は、次の URL にアクセスできる必要があり�
 - `.microsoftonline.com`
 - `.windows.net`
 
-Microsoft ピアリングを使用して、次のサービスまたはリージョン、および関連するコミュニティ値を選択してください。
+Microsoft ピアリングの使用時には、サービス、リージョン、関連するコミュニティについて以下の値を選択します。
 
 - Azure Active Directory (12076:5060)
 - Microsoft Azure リージョン (Recovery Services コンテナーの場所による)
 - Azure Storage (Recovery Services コンテナーの場所による)
 
-詳細については、「[ExpressRoute ルーティングの要件](https://docs.microsoft.com/azure/expressroute/expressroute-routing)」を参照してください。
+詳細については、「[ExpressRoute ルーティングの要件](../expressroute/expressroute-routing.md)」を参照してください。
 
 >[!NOTE]
 >パブリック ピアリングは、新しい回線では非推奨です。
@@ -153,6 +153,13 @@ Microsoft ピアリングを使用して、次のサービスまたはリージ�
 15 日よりも長い期間接続なし | アクティブ | ディスクまたは Azure へのバックアップなし。<br/><br/> ディスクまたは Azure から復元できます。
 15 日よりも長い期間接続なし | 期限切れ/プロビジョニング解除済み | ディスクまたは Azure へのバックアップなし。<br/><br/> サブスクリプションの有効期限が切れている場合は、ディスクまたは Azure から復元できます。<br/><br/> サブスクリプションが使用停止されている場合は、ディスクまたは Azure から復元できません。 Azure の復旧ポイントが削除されます。
 
+## <a name="domain-and-domain-trusts-support"></a>ドメインとドメインの信頼のサポート
+
+|要件 |詳細 |
+|---------|---------|
+|Domain    | DPM/MABS サーバーは、Windows Server 2019、Windows Server 2016、Windows Server 2012 R2、Windows Server 2012 ドメインに存在する必要があります。        |
+|ドメインの信頼   |  DPM/MABS では、異なるフォレスト間にフォレスト レベルの双方向信頼関係が確立されていれば、フォレストをまたがるデータ保護がサポートされます。   <BR><BR>   DPM/MABS サーバー ドメインとの双方向の信頼関係を持つフォレスト内において、DPM/MABS ではドメインをまたいでサーバーとワークステーションを保護できます。 ワークグループまたは信頼されていないドメイン内のコンピューターを保護するには、[ワークグループと信頼されていないドメイン内のワークロードのバックアップと復元](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019)に関する記事を参照してください。  |
+
 ## <a name="dpmmabs-storage-support"></a>DPM/MABS ストレージのサポート
 
 DPM/MABS にバックアップされたデータは、ローカル ディスク ストレージに格納されます。
@@ -161,7 +168,7 @@ DPM/MABS にバックアップされたデータは、ローカル ディスク 
 --- | ---
 **MBS** | Modern Backup Storage (MBS) は、DPM 2016/MABS v2 以降でサポートされています。 MABS v1 では使用できません。
 **Azure VM 上の MABS ストレージ** | データは、DPM/MABS VM に接続され、DPM/MABS で管理されている Azure ディスクに格納されます。 DPM/MABS 記憶域プールに使用できるディスクの数は、VM のサイズによって制限されます。<br/><br/> A2 VM: 4 ディスク、A3 VM: 8 ディスク、A4 VM: 16 ディスク (各ディスクの最大サイズは 1 TB)。 これにより、使用可能な合計のバックアップ記憶域プールが決定されます。<br/><br/> バックアップできるデータの量は、接続されたディスクの数とサイズによって決まります。
-**Azure VM 上の MABS のデータ保持期間** | データは DPM/MABS Azure ディスクに 1 日保持し、それより長期間の場合は DPM/MABS からコンテナーにバックアップすることをお勧めします。 そのため、Azure Backup にデータをオフロードすることで大量のデータを保護できます。
+**Azure VM 上の MABS のデータ保持期間** | データは DPM/MABS Azure ディスクに 1 日保持し、それより長期間の場合は DPM/MABS からコンテナーにバックアップすることをお勧めします。 これにより、Azure Backup にオフロードすることで大量のデータを保護できます。
 
 ### <a name="modern-backup-storage-mbs"></a>Modern Backup Storage (MBS)
 
@@ -174,11 +181,11 @@ DPM 2016/MABS v2 (Windows Server 2016 上で実行されている) 以降は、M
 
 ## <a name="supported-backups-to-mabs"></a>サポートされる MABS へのバックアップ
 
-Azure Backup Server で保護できるさまざまなサーバーとワークロードについては、[Azure Backup Server Protection Matrix](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix#protection-support-matrix) を参照してください。
+Azure Backup Server で保護できるさまざまなサーバーとワークロードについては、[Azure Backup Server Protection Matrix](./backup-mabs-protection-matrix.md#protection-support-matrix) を参照してください。
 
 ## <a name="supported-backups-to-dpm"></a>サポートされる DPM へのバックアップ
 
-Data Protection Manager で保護できる各種サーバーとワークロードの詳細については、[「DPM でバックアップできるものは何か」を参照してください。](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2019)
+Data Protection Manager で保護できる各種サーバーとワークロードの詳細については、[「DPM でバックアップできるものは何か」を参照してください。](/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2019)
 
 - DPM/MABS によってバックアップされるクラスター化されたワークロードは DPM/MABS と同じドメインか、または子/信頼できるドメインに存在する必要があります。
 - NTLM/証明書認証を使用して、信頼されていないドメインまたはワークグループのデータをバックアップできます。
@@ -188,4 +195,4 @@ Data Protection Manager で保護できる各種サーバーとワークロー�
 - MABS アーキテクチャーについての[詳細を確認](backup-architecture.md#architecture-back-up-to-dpmmabs)してください。
 - MARS エージェントに対して何がサポートされているか[確認](backup-support-matrix-mars-agent.md)してください。
 - MABS サーバーを[設定](backup-azure-microsoft-azure-backup.md)します。
-- [DPM を設定](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-180)します。
+- [DPM を設定](/system-center/dpm/install-dpm)します。

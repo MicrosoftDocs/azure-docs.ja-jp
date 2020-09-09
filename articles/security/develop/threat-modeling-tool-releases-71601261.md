@@ -1,19 +1,19 @@
 ---
 title: Microsoft Threat Modeling Tool のリリース 2019 年 1 月 29 日
 titleSuffix: Azure
-description: Threat Modeling Tool のリリース ノートです
+description: 2019 年 1 月 29 日にリリースされた Microsoft Threat Modeling Tool のリリース ノートをお読みください。 このノートには、機能の変更点と既知の問題点が記載されています。
 author: jegeib
 ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 01/25/2019
-ms.openlocfilehash: 7d0be8d7243331264c10a407e3d78370ea798928
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 17147d412bd888cdd3cd270829ad6d6103867b34
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78269773"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539052"
 ---
 # <a name="threat-modeling-tool-update-release-71601261---1292019"></a>Threat Modeling Tool 更新プログラム リリース 7.1.60126.1 - 1/29/2019
 

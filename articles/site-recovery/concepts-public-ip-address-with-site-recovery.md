@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: b1f3ffa6fc90fc0cab0217d1b71907342f2dbd0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 01c2f61dcf024e8c9dbbd5b2ee11a479b3c16305
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236539"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130283"
 ---
 # <a name="set-up-public-ip-addresses-after-failover"></a>フェールオーバー後にパブリック IP アドレスを設定する
 
@@ -48,7 +48,7 @@ Traffic Manager でのフェールオーバーシナリオの詳細について�
 2. Traffic Manager による[Azure フェールオーバー](../site-recovery/concepts-traffic-manager-with-site-recovery.md#azure-to-azure-failover) 
 
 セットアップは次のとおりです。
-- [Traffic Manager プロファイル](../traffic-manager/traffic-manager-create-profile.md)を作成します。
+- [Traffic Manager プロファイル](../traffic-manager/quickstart-create-traffic-manager-profile.md)を作成します。
 - **優先度**ルーティングメゾットを活用しながら、2 つのエンドポイントを作成します ― ソース用の**プライマリ**と Azure 用の**フェールオーバー**です。 **Primary** には優先順位 1 を割り当て、**Failover** には優先順位 2 を割り当てます。
 - **プライマリ**エンドポイントは、ソース環境がAzure の内部または外部にあるかどうかによって、[Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints)または[外部](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)どちらにもなり得ます。
 - **フェールオーバー**エンドポイントが**Azure**エンドポイントとして作成されます。 **静的パブリック IP アドレス**を使用し、これが災害時に Traffic Manager 用の外部に接続するエンドポイントとなります。

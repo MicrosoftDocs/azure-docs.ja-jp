@@ -7,12 +7,12 @@ ms.service: app-service
 ms.topic: conceptual
 ms.date: 01/06/2017
 ms.author: yegu
-ms.openlocfilehash: 11c854491ab030394eb61964979cb04a5a4b489b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ec8d4f5611425734974d07ae6ee7008b10b9b406
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75433391"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833776"
 ---
 # <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>テンプレートを使用して Web アプリと Azure Cache for Redis を作成する
 
@@ -42,11 +42,13 @@ ms.locfileid: "75433391"
 ## <a name="variables-for-names"></a>名前用の変数
 このテンプレートでは、リソースの名前を作成する変数を使用します。 [uniqueString](../azure-resource-manager/templates/template-functions-string.md#uniquestring) 関数を使用し、リソース グループの ID に基づく値を構築します。
 
-    "variables": {
-      "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",
-      "webSiteName": "[concat('webSite', uniqueString(resourceGroup().id))]",
-      "cacheName": "[concat('cache', uniqueString(resourceGroup().id))]"
-    },
+```json
+"variables": {
+  "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",
+  "webSiteName": "[concat('webSite', uniqueString(resourceGroup().id))]",
+  "cacheName": "[concat('cache', uniqueString(resourceGroup().id))]"
+},
+```
 
 
 ## <a name="resources-to-deploy"></a>デプロイ対象のリソース
@@ -57,23 +59,25 @@ Web アプリで使用される Azure Cache for Redis を作成します。 キ�
 
 テンプレートによって、リソース グループと同じ場所にキャッシュが作成されます。
 
-    {
-      "name": "[variables('cacheName')]",
-      "type": "Microsoft.Cache/Redis",
-      "location": "[resourceGroup().location]",
-      "apiVersion": "2015-08-01",
-      "dependsOn": [ ],
-      "tags": {
-        "displayName": "cache"
-      },
-      "properties": {
-        "sku": {
-          "name": "[parameters('cacheSKUName')]",
-          "family": "[parameters('cacheSKUFamily')]",
-          "capacity": "[parameters('cacheSKUCapacity')]"
-        }
-      }
+```json
+{
+  "name": "[variables('cacheName')]",
+  "type": "Microsoft.Cache/Redis",
+  "location": "[resourceGroup().location]",
+  "apiVersion": "2015-08-01",
+  "dependsOn": [ ],
+  "tags": {
+    "displayName": "cache"
+  },
+  "properties": {
+    "sku": {
+      "name": "[parameters('cacheSKUName')]",
+      "family": "[parameters('cacheSKUFamily')]",
+      "capacity": "[parameters('cacheSKUCapacity')]"
     }
+  }
+}
+```
 
 
 ### <a name="web-app"></a>Web アプリ
@@ -81,44 +85,52 @@ Web アプリで使用される Azure Cache for Redis を作成します。 キ�
 
 Azure Cache for Redis との連動を可能にするアプリ設定プロパティで Web アプリが構成されることに注意してください。 これらのアプリ設定はデプロイ時に指定された値に基づいて動的に作成されます。
 
+```json
+{
+  "apiVersion": "2015-08-01",
+  "name": "[variables('webSiteName')]",
+  "type": "Microsoft.Web/sites",
+  "location": "[resourceGroup().location]",
+  "dependsOn": [
+    "[concat('Microsoft.Web/serverFarms/', variables('hostingPlanName'))]",
+    "[concat('Microsoft.Cache/Redis/', variables('cacheName'))]"
+  ],
+  "tags": {
+    "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', variables('hostingPlanName'))]": "empty",
+    "displayName": "Website"
+  },
+  "properties": {
+    "name": "[variables('webSiteName')]",
+    "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"
+  },
+  "resources": [
     {
       "apiVersion": "2015-08-01",
-      "name": "[variables('webSiteName')]",
-      "type": "Microsoft.Web/sites",
-      "location": "[resourceGroup().location]",
+      "type": "config",
+      "name": "appsettings",
       "dependsOn": [
-        "[concat('Microsoft.Web/serverFarms/', variables('hostingPlanName'))]",
+        "[concat('Microsoft.Web/Sites/', variables('webSiteName'))]",
         "[concat('Microsoft.Cache/Redis/', variables('cacheName'))]"
       ],
-      "tags": {
-        "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', variables('hostingPlanName'))]": "empty",
-        "displayName": "Website"
-      },
       "properties": {
-        "name": "[variables('webSiteName')]",
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"
-      },
-      "resources": [
-        {
-          "apiVersion": "2015-08-01",
-          "type": "config",
-          "name": "appsettings",
-          "dependsOn": [
-            "[concat('Microsoft.Web/Sites/', variables('webSiteName'))]",
-            "[concat('Microsoft.Cache/Redis/', variables('cacheName'))]"
-          ],
-          "properties": {
-            "CacheConnection": "[concat(variables('cacheName'),'.redis.cache.windows.net,abortConnect=false,ssl=true,password=', listKeys(resourceId('Microsoft.Cache/Redis', variables('cacheName')), '2015-08-01').primaryKey)]"
-          }
-        }
-      ]
+       "CacheConnection": "[concat(variables('cacheName'),'.redis.cache.windows.net,abortConnect=false,ssl=true,password=', listKeys(resourceId('Microsoft.Cache/Redis', variables('cacheName')), '2015-08-01').primaryKey)]"
+      }
     }
+  ]
+}
+```
 
 ## <a name="commands-to-run-deployment"></a>デプロイを実行するコマンド
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell
-    New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-with-redis-cache/azuredeploy.json -ResourceGroupName ExampleDeployGroup
+
+```azurepowershell
+New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-with-redis-cache/azuredeploy.json -ResourceGroupName ExampleDeployGroup
+```
 
 ### <a name="azure-cli"></a>Azure CLI
-    azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-with-redis-cache/azuredeploy.json -g ExampleDeployGroup
+
+```azurecli
+azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-with-redis-cache/azuredeploy.json -g ExampleDeployGroup
+```

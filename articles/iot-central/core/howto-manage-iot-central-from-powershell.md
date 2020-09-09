@@ -7,19 +7,20 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 03/27/2020
 ms.topic: how-to
+ms.custom: devx-track-azurepowershell
 manager: philmea
-ms.openlocfilehash: 9ca1c8f4a8e92babf65ec049b3784882bd3af689
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 77327689911a0fc36df14f69ef4d48e5cb120375
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744972"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89067758"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Azure PowerShell から IoT Central を管理する
 
 [!INCLUDE [iot-central-selector-manage](../../../includes/iot-central-selector-manage.md)]
 
-[Azure IoT Central アプリケーション マネージャー](https://aka.ms/iotcentral) Web サイト上で IoT Central アプリケーションを作成および管理するのではなく、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) を使用してアプリケーションを管理できます。
+[Azure IoT Central アプリケーション マネージャー](https://aka.ms/iotcentral) Web サイト上で IoT Central アプリケーションを作成および管理するのではなく、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/) を使用してアプリケーションを管理できます。
 
 ## <a name="prerequisites"></a>前提条件
 

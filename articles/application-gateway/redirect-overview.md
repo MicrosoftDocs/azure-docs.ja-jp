@@ -4,15 +4,15 @@ description: あるリスナーで受信したトラフィックを別のリス�
 services: application-gateway
 author: amsriva
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 5943d8aad4d5dd0d981fae9b2325dd3fc75b31e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8c2bac1bee5a2301a29589f15d72d0f69b4a05b4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74129888"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253853"
 ---
 # <a name="application-gateway-redirect-overview"></a>Application Gateway のリダイレクトの概要
 

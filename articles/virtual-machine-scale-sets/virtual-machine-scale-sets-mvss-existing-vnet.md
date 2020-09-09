@@ -10,10 +10,10 @@ ms.date: 04/26/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: fab6e6742fa43e1e38ee661b67896ae4aa11b3ed
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83124824"
 ---
 # <a name="add-reference-to-an-existing-virtual-network-in-an-azure-scale-set-template"></a>既成の仮想ネットワークへの参照を Azure スケール セット テンプレートに追加する

@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 2439d4f03184f8dbb85b229b3908dff95013b4bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a84d0310573a1210e21157102a445fff9244782
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74113143"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923978"
 ---
 # <a name="odata-searchscore-function-in-azure-cognitive-search"></a>Azure Cognitive Search における OData の `search.score` 関数
 
@@ -38,10 +38,12 @@ ms.locfileid: "74113143"
 
 `search.score` と `rating` に基づいて降順でホテルを並べ替え、その後、所与の座標からの距離別に昇順で並べ替え、2 つのホテルで評価が同じ場合、距離的に近い方が先に表示されるようにします。
 
+```odata-filter-expr
     search.score() desc,rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
+```
 
 ## <a name="next-steps"></a>次のステップ  
 
 - [Azure Cognitive Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)
 - [Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)
-- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)

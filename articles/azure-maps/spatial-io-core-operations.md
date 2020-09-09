@@ -1,19 +1,20 @@
 ---
 title: コア IO 操作 | Microsoft Azure Maps
 description: 空間 IO モジュールのコア ライブラリを使用して、XML および区切られたデータの読み取りと書き込みを効率的に行う方法について説明します。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 0b8fe1b319dc480879944d28f10645025a8cb38e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 021680a81cc5f97bb92c3a9e14036e1a88dae278
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371454"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87279510"
 ---
 # <a name="core-io-operations"></a>コア IO 操作
 
@@ -30,7 +31,7 @@ ms.locfileid: "80371454"
 
 既定では、リーダーは区切り記号としてコンマ文字を使用します。 ただし、区切り記号は、任意の 1 文字に変更することも、`'auto'` に設定することもできます。 `'auto'` に設定すると、リーダーは文字列の最初のテキスト行を分析します。 次に、区切り記号として使用する最も一般的な文字を以下の表から選択します。
 
-| | |
+| 区切り記号 | 文字 |
 | :-- | :-- |
 | コンマ | `,` |
 | タブ | `\t` |

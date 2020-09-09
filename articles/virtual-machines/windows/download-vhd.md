@@ -6,15 +6,15 @@ manager: gwallace
 ms.service: virtual-machines-windows
 ms.subservice: disks
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/13/2019
 ms.author: cynthn
-ms.openlocfilehash: e87f2436f69abed4c0d0ee415226f99b52f2e804
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c57ac0fb0ab377f00770e3c9c03a413dcb345bc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82085367"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291040"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Azure から Windows VHD をダウンロードする
 
@@ -22,7 +22,7 @@ ms.locfileid: "82085367"
 
 ## <a name="optional-generalize-the-vm"></a>省略可能:VM の汎用化
 
-他の VM を作成するための[イメージ](tutorial-custom-images.md)として VHD を使用したい場合には、[Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation) でオペレーティング システムを一般化する必要があります。 
+他の VM を作成するための[イメージ](tutorial-custom-images.md)として VHD を使用したい場合には、[Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation) でオペレーティング システムを一般化する必要があります。 
 
 他の VM を作成するためのイメージとして VHD を使用するには、VM を一般化してください。
 
@@ -45,7 +45,7 @@ VHD は、実行中の VM に接続されている場合、Azure からダウン
 
 ## <a name="generate-download-url"></a>ダウンロード URL の生成
 
-VHD ファイルをダウンロードするには、[Shared Access Signature (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) URL を生成する必要があります。 URL が生成されると、その URL に有効期限が割り当てられます。
+VHD ファイルをダウンロードするには、[Shared Access Signature (SAS)](../../storage/common/storage-sas-overview.md?toc=/azure/virtual-machines/windows/toc.json) URL を生成する必要があります。 URL が生成されると、その URL に有効期限が割り当てられます。
 
 1. VM のページで、左側のメニューの **[ディスク]** をクリックします。
 1. VM のオペレーティング システム ディスクを選択します。
@@ -68,4 +68,3 @@ VHD ファイルをダウンロードするには、[Shared Access Signature (SA
 - [VHD ファイルを Azure にアップロードする](upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)方法を学習します。 
 - [ストレージ アカウント内の非管理対象ディスクからマネージド ディスクを作成する](attach-disk-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 - [PowerShell を使用した Azure ディスクの管理](tutorial-manage-data-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
-

@@ -1,17 +1,16 @@
 ---
 title: Azure CLI のサンプル - Azure Functions
 description: Azure CLI のサンプル - Azure Functions
-author: syntaxc4
 ms.assetid: 577d2f13-de4d-40d2-9dfc-86ecc79f3ab0
 ms.topic: sample
 ms.date: 01/09/2018
-ms.custom: mvc
-ms.openlocfilehash: 365275d291244d3c08f856d2d919c7ee7d79161a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 619e974240b19465d50e394f87a7476efec41e45
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223749"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504502"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI のサンプル
 
@@ -22,8 +21,8 @@ ms.locfileid: "79223749"
 | アプリを作成する | 説明 |
 |---|---|
 | [サーバーレス実行用の Function App の作成](scripts/functions-cli-create-serverless.md) | 従量課金プランで関数アプリを作成します。  |
-| [サーバーレス Python 関数アプリの作成](scripts/functions-cli-create-serverless-python.md) | 専用の App Service プランで関数アプリを作成します。 |
-| [スケーラブル Premium プランでの関数アプリの作成](scripts/functions-cli-create-premium-plan.md) | 専用の App Service プランで関数アプリを作成します。 |
+| [サーバーレス Python 関数アプリの作成](scripts/functions-cli-create-serverless-python.md) | 従量課金プランで Python 関数アプリを作成します。 |
+| [スケーラブル Premium プランでの関数アプリの作成](scripts/functions-cli-create-premium-plan.md) | Premium プランで関数アプリを作成します。 |
 | [専用 (App Service) プランでの関数アプリの作成](scripts/functions-cli-create-app-service-plan.md) | 専用の App Service プランで関数アプリを作成します。 |
 
 | 統合 | 説明|

@@ -14,12 +14,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b17300fa69b61c7713c860e2a35e63fcb6584bc4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 04ea92e18fc6efb8b375a22cc34baf1d33b78802
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "66474004"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279025"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>チュートリアル:パスワード ハッシュの同期 (PHS) を使用して単一 AD フォレストを統合する
 
@@ -29,8 +29,8 @@ ms.locfileid: "66474004"
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを完了するために必要な前提条件を次に示します。
-- [Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview) がインストールされたコンピューター。  これは、[Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os) または [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) コンピューターに対して行うことをお勧めします。
-- 仮想マシンがインターネットで通信できるようにするための[外部ネットワーク アダプター](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/connect-to-network)。
+- [Hyper-V](/windows-server/virtualization/hyper-v/hyper-v-technology-overview) がインストールされたコンピューター。  これは、[Windows 10](/virtualization/hyper-v-on-windows/about/supported-guest-os) または [Windows Server 2016](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) コンピューターに対して行うことをお勧めします。
+- 仮想マシンがインターネットで通信できるようにするための[外部ネットワーク アダプター](/virtualization/hyper-v-on-windows/quick-start/connect-to-network)。
 - [Azure サブスクリプション](https://azure.microsoft.com/free)
 - Windows Server 2016 のコピー
 

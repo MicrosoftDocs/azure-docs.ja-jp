@@ -2,18 +2,18 @@
 title: 'Azure ExpressRoute: VNet へのゲートウェイの追加: クラシック'
 description: ExpressRoute の構成に対して PowerShell を使用してクラシック デプロイ モデルの VNet 用の VNet ゲートウェイを構成します。
 services: expressroute
-author: charwen
+author: duongau
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/06/2019
-ms.author: charwen
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: d7927af5b831dbe3294e1abc3a878e323bf1867e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f42a7d030f45be1b96728fdcac7a13cf797ed34
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74928061"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396405"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell-classic"></a>PowerShell を使用して ExpressRoute の仮想ネットワーク ゲートウェイを構成する (クラシック)
 > [!div class="op_single_selector"]

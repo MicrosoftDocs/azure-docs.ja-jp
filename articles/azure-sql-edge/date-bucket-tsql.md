@@ -2,19 +2,19 @@
 title: Date_Bucket (Transact-SQL) - Azure SQL Edge (プレビュー)
 description: Azure SQL Edge での Date_Bucket の使用について説明します (プレビュー)
 keywords: Date_Bucket, SQL Edge
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: reference
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
-ms.openlocfilehash: dda292909b7b90579666cd83d460fc4051c9456c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c2f63abeb9f935236b4c35decb278eb86e0e2a82
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595681"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233288"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
 
@@ -248,10 +248,10 @@ SELECT DATE_BUCKET(week,(SELECT top 1 CustomerKey FROM dbo.DimCustomer where Geo
   
 #### <a name="specifying-numeric-expressions-and-scalar-system-functions-as-number-and-date"></a>number および date として数値式やスカラー システム関数を指定する
 
-この例では、数値式 (-`(10/2))` を使用し、*number* と *date* の引数としてスカラー システム関数 (`SYSDATETIME`) を使用しています。
+この例では、数値式 ((10/2)) を使用し、number と date の引数としてスカラー システム関数 (SYSDATETIME) を使用しています。
   
 ```sql
-SELECT Date_Bucket(week,-(10/2), SYSDATETIME());
+SELECT Date_Bucket(week,(10/2), SYSDATETIME());
 ```
 
 #### <a name="specifying-an-aggregate-window-function-as-number"></a>number として集計関数を指定する

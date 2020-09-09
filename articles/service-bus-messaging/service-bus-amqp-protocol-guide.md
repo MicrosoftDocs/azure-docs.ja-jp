@@ -1,25 +1,14 @@
 ---
 title: Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド | Microsoft Docs
 description: Azure Service Bus と Event Hubs で使用されている AMQP 1.0 プロトコルの式と記述に関するガイド
-services: service-bus-messaging,event-hubs
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: d2d3d540-8760-426a-ad10-d5128ce0ae24
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/23/2019
-ms.author: aschhab
-ms.openlocfilehash: d706e9b3351b0693a1f352e15b6b9b0cc5c7a65d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.openlocfilehash: ffccd49d37dbf2a8fc404e9895b648e53007675c
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77086157"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064538"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド
 
@@ -59,7 +48,7 @@ AMQP の動作について最も権威のある情報源は AMQP 1.0 仕様で�
 
 AMQP は、"*コンテナー*" という通信プログラムを呼び出します。コンテナーには、その内部の通信エンティティである "*ノード*" が存在します。 キューは、そうしたノードの 1 つです。 AMQP は、多重化に対応しているため、1 本の接続をノード間の複数の通信経路で使用することが可能です。たとえばアプリケーション クライアントは、2 つのキューのうち、一方からは受信しながら、同時に同じネットワーク接続上でもう一方のキューに対して送信を行うことができます。
 
-![][1]
+![コンテナー間のセッションと接続を示す図。][1]
 
 そのためネットワーク接続はコンテナーに固定されます。 ネットワーク接続は、クライアント ロールのコンテナーによって開始されます。クライアント ロールのコンテナーが、受信側ロールのコンテナーに対して送信 TCP ソケット接続を確立し、受信側ロールは受信 TCP 接続を待機してそれを受け入れます。 接続ハンドシェイクには、プロトコル バージョンのネゴシエーション、トランスポート レベルのセキュリティ (TLS/SSL) の使用に関する宣言 (またはネゴシエーション)、SASL に基づく接続スコープでの認証/承認ハンドシェイクが含まれます。
 
@@ -84,7 +73,7 @@ Service Bus では、接続と TLS のセットアップ後、SASL の機構に�
 
 ### <a name="amqp-outbound-port-requirements"></a>AMQP 送信ポートの要件
 
-TCP 経由で AMQP 接続を使用するクライアントでは、ローカル ファイアウォールでポート 5671 と 5672 を開く必要があります。 これらのポートと共に、[EnableLinkRedirect](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect?view=azure-dotnet) 機能が有効になっている場合は、追加のポートを開く必要がある場合があります。 `EnableLinkRedirect` は、メッセージの受信中に 1 ホップをスキップし、スループットを向上させることができるようにする新しいメッセージング機能です。 クライアントは、次の図に示すように、ポート範囲 104XX 経由でバックエンド サービスとの直接通信を開始します。 
+TCP 経由で AMQP 接続を使用するクライアントでは、ローカル ファイアウォールでポート 5671 と 5672 を開く必要があります。 これらのポートと共に、[EnableLinkRedirect](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect?view=azure-dotnet) 機能が有効になっている場合は、追加のポートを開く必要がある場合があります。 `EnableLinkRedirect` は、メッセージの受信中に 1 ホップをスキップし、スループットを向上させることができるようにする新しいメッセージング機能です。 クライアントは、次の図に示すように、ポート範囲 104XX 経由でバックエンド サービスとの直接通信を開始します。 
 
 ![宛先ポートの一覧][4]
 
@@ -95,7 +84,7 @@ TCP 経由で AMQP 接続を使用するクライアントでは、ローカル 
 
 AMQP では、メッセージがリンクを介して転送されます。 リンクは、メッセージを一方向に転送することを目的としてセッション上に形成される通信経路です。転送ステータスのネゴシエーションは、接続された当事者どうしがリンクを介し、双方向に実行します。
 
-![][2]
+![2 つのコンテナー間のリンク接続を結ぶセッションを示すスクリーンショット。][2]
 
 リンクは、送信側または受信側のどちらのコンテナーからでも随時、既存のセッション上に作成できます。これは、転送とその経路の開始が、ソケット接続を作成した当事者にのみ許可される HTTP や MQTT などの他の多くのプロトコルと AMQP が異なる点です。
 
@@ -111,7 +100,7 @@ Service Bus におけるノードは、キューやトピック、サブスク�
 
 リンクが確立されると、そのリンク上でメッセージを転送できる状態となります。 AMQP では、送信側からリンクを介して受信側にメッセージを移動する明示的なプロトコル ジェスチャ (*transfer* パフォーマティブ) によって転送が実行されます。 転送は、その結果についての共通認識が両者の間に確立されたことを意味する "settled (解決済み)" の状態になったときに完了します。
 
-![][3]
+![送信側と受信側の間でのメッセージの転送と、それによって生じる処理を示す図。][3]
 
 最も単純なケースとして、送信側はメッセージを "未解決" の状態で送信することができます。これはクライアントが転送の結果に関心がなく、受信側からは、その操作の結果についてのフィードバックが一切得られないことを意味します。 このモードは、Service Bus により AMQP プロトコル レベルでサポートされますが、いずれのクライアント API にも公開されていません。
 
@@ -131,7 +120,7 @@ Service Bus は、リンクの復旧をサポートしていません。クラ�
 
 これまで説明してきたセッション レベルのフロー制御モデルに加え、各リンクには独自のフロー制御モデルが存在します。 セッション レベルのフロー制御は、一度に処理すべきフレーム数が多くなりすぎないようコンテナーを保護するものです。これに対し、リンク レベルのフロー制御では、そのリンクから受け取るメッセージの数とそのタイミングが、アプリケーションの管理下に置かれます。
 
-![][4]
+![送信元、送信先、送信元ポート、宛先ポート、およびプロトコル名を示すログのスクリーンショット。 宛先ポート 10401 (0x28 A 1) の最初の行が黒で囲まれています。][4]
 
 リンク上で転送が行われるのは、送信側に十分な*リンク クレジット*があるときだけです。 リンク クレジットは、受信側が *flow* パフォーマティブ (適用対象はリンク) を使って設定するカウンターです。 送信側は、自身にリンク クレジットが割り当てられているとき、メッセージを配信することでそのクレジットを消費します。 メッセージを配信するたびに、残りのリンク クレジットが 1 つ減らされます。 リンク クレジットを使い果たすと、配信は停止します。
 
@@ -275,8 +264,8 @@ AMQP メッセージ プロパティの一部ではなく、かつ、メッセ�
 
 トランザクションの作業を開始するには、 コントローラーがコーディネータから `txn-id` を取得する必要があります。 `declare` 型のメッセージを送信することで、これを行います。 宣言が成功すると、コーディネーターは処理出力で応答し、それを通じて、割り当てられた `txn-id` が伝えられます。
 
-| クライアント (コント ローラー) | | Service Bus (コーディネーター) |
-| --- | --- | --- |
+| クライアント (コント ローラー) | Direction | Service Bus (コーディネーター) |
+| :--- | :---: | :--- |
 | attach(<br/>name={link name},<br/>... ,<br/>role=**sender**,<br/>target=**Coordinator**<br/>) | ------> |  |
 |  | <------ | attach(<br/>name={link name},<br/>... ,<br/>target=Coordinator()<br/>) |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (**Declare()** )}| ------> |  |
@@ -288,11 +277,11 @@ AMQP メッセージ プロパティの一部ではなく、かつ、メッセ�
 
 > 注: fail=true はトランザクションのロールバックを示し、fail=false はコミットを示します。
 
-| クライアント (コント ローラー) | | Service Bus (コーディネーター) |
-| --- | --- | --- |
+| クライアント (コント ローラー) | Direction | Service Bus (コーディネーター) |
+| :--- | :---: | :--- |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
 |  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction ID}<br/>))|
-| | 。 。 。 <br/>トランザクション作業<br/>(別のリンク上で)<br/> 。 。 。 |
+| | 。 。 。 <br/>トランザクション作業<br/>(別のリンク上で)<br/> . . . |
 | transfer(<br/>delivery-id=57, ...)<br/>{ AmqpValue (<br/>**Discharge(txn-id=0,<br/>fail=false)** )}| ------> |  |
 | | <------ | disposition( <br/> first=57, last=57, <br/>state=**Accepted()** )|
 
@@ -300,8 +289,8 @@ AMQP メッセージ プロパティの一部ではなく、かつ、メッセ�
 
 すべてのトランザクション作業は、txn-id を伝送するトランザクションの配信ステータス `transactional-state` を使って行われます。メッセージを送信する場合は、トランザクションのステータスは、メッセージの転送フレームによって伝送されます。 
 
-| クライアント (コント ローラー) | | Service Bus (コーディネーター) |
-| --- | --- | --- |
+| クライアント (コント ローラー) | Direction | Service Bus (コーディネーター) |
+| :--- | :---: | :--- |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
 |  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction ID}<br/>))|
 | transfer(<br/>handle=1,<br/>delivery-id=1, <br/>**state=<br/>TransactionalState(<br/>txn-id=0)** )<br/>{ payload }| ------> |  |
@@ -311,8 +300,8 @@ AMQP メッセージ プロパティの一部ではなく、かつ、メッセ�
 
 メッセージの処理には、`Complete` / `Abandon` / `DeadLetter` / `Defer` のような操作が含まれています。 トランザクションの中でこれらの操作を実行するには、disposition を使って `transactional-state` を渡します。
 
-| クライアント (コント ローラー) | | Service Bus (コーディネーター) |
-| --- | --- | --- |
+| クライアント (コント ローラー) | Direction | Service Bus (コーディネーター) |
+| :--- | :---: | :--- |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
 |  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction ID}<br/>))|
 | | <------ |transfer(<br/>handle=2,<br/>delivery-id=11, <br/>state=null)<br/>{ payload }|  
@@ -410,8 +399,8 @@ Service Bus の現在の実装では、SASL の "ANONYMOUS" 方式との組み�
 
 > 注:このリンクを確立する前に、*via-entity* と *destination-entity* の両方に対して認証が実行される必要があります。
 
-| Client | | Service Bus |
-| --- | --- | --- |
+| Client | Direction | Service Bus |
+| :--- | :---: | :--- |
 | attach(<br/>name={link name},<br/>role=sender,<br/>source={client link ID},<br/>target= **{via-entity}** ,<br/>**properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )]** ) | ------> | |
 | | <------ | attach(<br/>name={link name},<br/>role=receiver,<br/>source={client link ID},<br/>target={via-entity},<br/>properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )] ) |
 
@@ -430,5 +419,5 @@ AMQP の詳細については、次のリンクを参照してください。
 [4]: ./media/service-bus-amqp-protocol-guide/amqp4.png
 
 [Service Bus AMQP の概要]: service-bus-amqp-overview.md
-[パーティション分割された Service Bus のキューとトピックにおける AMQP 1.0 のサポート]: service-bus-partitioned-queues-and-topics-amqp-overview.md
-[Windows Server 用 Service Bus の AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
+[パーティション分割された Service Bus のキューとトピックにおける AMQP 1.0 のサポート]: 
+[AMQP in Service Bus for Windows Server]: /previous-versions/service-bus-archive/dn574799(v=azure.100)

@@ -1,16 +1,15 @@
 ---
 title: プールの VM サイズを選択する
 description: Azure Batch プールのコンピューティング ノード用に使用可能な VM サイズを選択する方法
-ms.topic: article
-ms.date: 09/12/2019
-ms.author: labrenne
+ms.topic: conceptual
+ms.date: 08/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: d33b97790d2ce9a276a552fd02fe28c796234b15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9aef1fc21120401252d188b7373c6ce4139c71c4
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115858"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005143"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch プールのコンピューティング ノード用の VM サイズを選択する
 
@@ -36,9 +35,13 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 | DC | なし |
 | Dv2、DSv2 | すべてのサイズ |
 | Dv3、Dsv3 | すべてのサイズ |
-| Dav4、Dasv4 | なし - まだ使用できません |
+| Dav4<sup>1</sup> | すべてのサイズ |
+| Dasv4<sup>1</sup> | すべてのサイズ |
+| Ddv4、Ddsv4 |  なし - まだ使用できません |
 | Ev3、Esv3 | すべてのサイズ (E64is_v3 と E64i_v3 を除く) |
-| Eav4、Easv4 | なし - まだ使用できません |
+| Eav4<sup>1</sup> | すべてのサイズ |
+| Easv4<sup>1</sup> | すべてのサイズ |
+| Edv4、Edsv4 |  なし - まだ使用できません |
 | F、Fs | すべてのサイズ |
 | Fsv2 | すべてのサイズ |
 | G、Gs | すべてのサイズ |
@@ -47,8 +50,8 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 | HBv2<sup>1</sup> | すべてのサイズ |
 | HC<sup>1</sup> | すべてのサイズ |
 | Ls | すべてのサイズ |
-| Lsv2 | なし - まだ使用できません |
-| M<sup>1</sup> | すべてのサイズ (M64、M64m、M128、M128m を除く) |
+| Lsv2<sup>1</sup> | すべてのサイズ |
+| M<sup>1</sup> | すべてのサイズ |
 | Mv2 | なし - まだ使用できません |
 | NC | すべてのサイズ |
 | NCv2<sup>1</sup> | すべてのサイズ |
@@ -73,7 +76,7 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 
 ## <a name="size-considerations"></a>サイズの考慮事項
 
-* **アプリケーションの要件** - ノード上で実行するアプリケーションの特性と要件を考慮してください。 アプリケーションがマルチスレッドであるかどうかや、どのくらいのメモリが消費されるかという点が、最も適切でコスト効率の高いノード サイズを選ぶうえでのヒントになります。 マルチインスタンスの [MPI ワークロード](batch-mpi.md)または CUDA アプリケーションについては、それぞれ特別な [HPC](../virtual-machines/linux/sizes-hpc.md) または [GPU 対応](../virtual-machines/linux/sizes-gpu.md)の VM サイズを検討してください。 (「[Batch プールでの RDMA 対応または GPU 対応インスタンスの使用](batch-pool-compute-intensive-sizes.md)」を参照してください。)
+* **アプリケーションの要件** - ノード上で実行するアプリケーションの特性と要件を考慮してください。 アプリケーションがマルチスレッドであるかどうかや、どのくらいのメモリが消費されるかという点が、最も適切でコスト効率の高いノード サイズを選ぶうえでのヒントになります。 マルチインスタンスの [MPI ワークロード](batch-mpi.md)または CUDA アプリケーションについては、それぞれ特別な [HPC](../virtual-machines/sizes-hpc.md) または [GPU 対応](../virtual-machines/sizes-gpu.md)の VM サイズを検討してください。 (「[Batch プールでの RDMA 対応または GPU 対応インスタンスの使用](batch-pool-compute-intensive-sizes.md)」を参照してください。)
 
 * **ノードあたりのタスク数** - ノードのサイズは、そこで一度に実行されるタスクが 1 つであるという想定で選択するのが一般的です。 しかしジョブの実行中に、コンピューティング ノードで複数のタスク (ひいては複数のアプリケーション インスタンス) が[並列実行](batch-parallel-node-tasks.md)できるとメリットがあります。 そのような場合は、タスクを並列に実行するという需要の増大に対応するために、マルチコア ノード サイズを選ぶことが基本です。
 
@@ -87,5 +90,5 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 
 ## <a name="next-steps"></a>次のステップ
 
-* Batch の詳細な概要については、「[Batch を使って大規模な並列コンピューティング ソリューションを開発する](batch-api-basics.md)」を参照してください。
+* [Batch サービスのワークフローと主要なリソース](batch-service-workflow-features.md) (プール、ノード、ジョブ、タスクなど) について学習します。
 * コンピューティング集中型 VM のサイズを使用する方法について詳しくは、「[Batch プールでの RDMA 対応または GPU 対応インスタンスの使用](batch-pool-compute-intensive-sizes.md)」をご覧ください。

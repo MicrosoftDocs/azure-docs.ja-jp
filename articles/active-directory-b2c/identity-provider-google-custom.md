@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/20/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8d02c86a1ff330aa4003299e1494a164089d8470
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 91a55782492c1b2612652b147e0aca37941bf4db
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78188224"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388206"
 ---
 # <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して Google アカウントによるサインインを設定する
 
@@ -139,7 +139,7 @@ Google アカウントをクレーム プロバイダーとして定義するに
 1. 作成したユーザー体験内で、`Order="1"` を含む **OrchestrationStep** 要素を見つけます。
 2. **ClaimsProviderSelects** の下に、次の要素を追加します。 **TargetClaimsExchangeId** の値を適切な値 (`GoogleExchange` など) に設定します。
 
-    ```XML
+    ```xml
     <ClaimsProviderSelection TargetClaimsExchangeId="GoogleExchange" />
     ```
 
@@ -150,7 +150,7 @@ Google アカウントをクレーム プロバイダーとして定義するに
 1. ユーザー体験内で、`Order="2"` を含む **OrchestrationStep** を見つけます。
 2. 次の **ClaimsExchange** 要素を追加します。**TargetClaimsExchangeId** に使用した ID と同じ値を必ずご使用ください。
 
-    ```XML
+    ```xml
     <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAuth" />
     ```
 

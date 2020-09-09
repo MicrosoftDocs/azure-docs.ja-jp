@@ -5,15 +5,16 @@ author: bandersmsft
 ms.reviewer: amberb
 tags: billing,top-support-issue
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 4aa02dae521844f2654a50f77be9b2ee3c46a74f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e62ea7052420e2d0c20b99935659a5443540a942
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199519"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88686821"
 ---
 # <a name="change-your-azure-subscription-to-a-different-offer"></a>Azure サブスクリプションを別のオファーに変更する
 
@@ -51,10 +52,10 @@ ms.locfileid: "77199519"
 1. 現在のサブスクリプションから移行可能なオファーの一覧から、**目的のオファーを選択します**。 この一覧の内容はアカウントが関連付けられているメンバーシップに基づいて決まります。 何も表示されない場合は、[移行可能なプランの一覧](#whats-supported)をチェックして、適切なメンバーシップを持っていることを確認してください。
 
    ![切り替え先のプランの選択](./media/switch-azure-offer/selectoffer.png)
-1. 切り替え先のプランによっては、切り替えによって生じる影響について注意が表示される場合があります。 先に進む前に、その内容をよく確認し、記載されている指示に従ってください。
+1. 切り替え先のプランによっては、切り替えによって生じる影響について注意が表示される場合があります。 続行する前にその一覧をよく確認し、その指示に従ってください。
 
    ![注意事項の確認](./media/switch-azure-offer/thingstonote.png)
-1. サブスクリプションの名前を変更できます。 既定では、サブスクリプションは新しいプラン名に設定されます。 **[プランの切り替え]** をクリックしてプロセスを完了します。
+1. サブスクリプションの名前を変更できます。 既定では、これは新しいプラン名に設定されます。 **[プランの切り替え]** をクリックしてプロセスを完了します。
 
    ![緑色のボタンをクリック](./media/switch-azure-offer/confirmpage.png)
 1. Success! これでサブスクリプションは新しいオファーに切り替わりました。
@@ -96,11 +97,11 @@ Azure オファーとは、ご利用の Azure サブスクリプションの*種
 
 #### <a name="billing"></a>課金
 
-切り替えを行った日に、すべての未処理料金の請求書が生成されます。 その後、サブスクリプションは新しいオファーの価格条件に従って課金されます。 サブスクリプションの請求日はオファーを変更した日付に変更されます。 プラン変更前の使用状況と課金データは保存されないので、切り替え前にコピーをダウンロードしておくことをお勧めします。
+切り替えを行った日に、すべての未処理料金の請求書が生成されます。 その後、サブスクリプションは新しいオファーの価格条件に従って課金されます。 サブスクリプションの請求日はオファーを変更した日付に変更されます。 プラン変更前の使用状況と課金データは保持されないので、切り替え前にコピーをダウンロードしておくことをお勧めします。
 
 ### <a name="can-i-migrate-from-a-subscription-with-pay-as-you-go-rates-to-cloud-solution-provider-csp-or-enterprise-agreement-ea"></a>従量課金制料金のサブスクリプションからクラウド ソリューション プロバイダー (CSP) またはマイクロソフト エンタープライズ契約 (EA) に移行することはできますか?
 
-* CSP に移行するには、[Azure の従量課金制サブスクリプションから CSP への移行](https://docs.microsoft.com/azure/cloud-solution-provider/migration/migration-from-payg-to-csp)に関する記事をご覧ください。
+* CSP に移行するには、「[サブスクライバーと CSP の間で Azure サブスクリプションを譲渡する](transfer-subscriptions-subscribers-csp.md)」を参照してください。
 * EA に移行するには、登録管理者に依頼してアカウントを EA に追加してもらう必要があります。 登録案内メールの指示に従って、サブスクリプションを EA 加入契約に移行します。 詳細については、EA ポータルの「[既存のアカウントの関連付け](https://ea.azure.com/helpdocs/associateExistingAccount)」を参照してください。
 
 ### <a name="can-i-migrate-data-and-services-to-a-new-subscription"></a>データとサービスを新しいサブスクリプションに移行できますか?

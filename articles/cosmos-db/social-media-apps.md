@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: 8428e417f5f86edca77edae6ca4b7ef84e5ff425
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d4fbadd03f443d28376a122c7ecb06c475c2247d
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73827293"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850689"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Azure Cosmos DB によるソーシャル化
 
@@ -25,7 +25,7 @@ ms.locfileid: "73827293"
 
 SQL データベースの経験や、[データのリレーショナル モデリング](https://en.wikipedia.org/wiki/Relational_model)の知識を持っている人もいるかもしれません。 最初の図はたとえば次のようなものになります。
 
-![相対リレーショナル モデルを示すダイアグラム](./media/social-media-apps/social-media-apps-sql.png)
+:::image type="content" source="./media/social-media-apps/social-media-apps-sql.png" alt-text="相対リレーショナル モデルを示す図" border="false":::
 
 完全に正規化された見事なデータ構造ですが、拡張性がありません。
 
@@ -39,22 +39,24 @@ SQL データベースの経験や、[データのリレーショナル モデ�
 
 この記事では、Azure の NoSQL データベースである [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) を使って、コスト効果の高い方法でソーシャル プラットフォームのデータをモデル化する方法を説明します。 また、[Gremlin API](../cosmos-db/graph-introduction.md) などの Azure Cosmos DB の他の機能を使う方法もお話しします。 [NoSQL](https://en.wikipedia.org/wiki/NoSQL) のアプローチの採用、JSON 形式でのデータの保存、[非正規化](https://en.wikipedia.org/wiki/Denormalization)の適用により、これまで複雑であった投稿を次のような 1 つの[ドキュメント](https://en.wikipedia.org/wiki/Document-oriented_database)に変換できます。
 
-    {
-        "id":"ew12-res2-234e-544f",
-        "title":"post title",
-        "date":"2016-01-01",
-        "body":"this is an awesome post stored on NoSQL",
-        "createdBy":User,
-        "images":["https://myfirstimage.png","https://mysecondimage.png"],
-        "videos":[
-            {"url":"https://myfirstvideo.mp4", "title":"The first video"},
-            {"url":"https://mysecondvideo.mp4", "title":"The second video"}
-        ],
-        "audios":[
-            {"url":"https://myfirstaudio.mp3", "title":"The first audio"},
-            {"url":"https://mysecondaudio.mp3", "title":"The second audio"}
-        ]
-    }
+```json
+{
+    "id":"ew12-res2-234e-544f",
+    "title":"post title",
+    "date":"2016-01-01",
+    "body":"this is an awesome post stored on NoSQL",
+    "createdBy":User,
+    "images":["https://myfirstimage.png","https://mysecondimage.png"],
+    "videos":[
+        {"url":"https://myfirstvideo.mp4", "title":"The first video"},
+        {"url":"https://mysecondvideo.mp4", "title":"The second video"}
+    ],
+    "audios":[
+        {"url":"https://myfirstaudio.mp3", "title":"The first audio"},
+        {"url":"https://mysecondaudio.mp3", "title":"The second audio"}
+    ]
+}
+```
 
 また、投稿を 1 つのクエリで結合なしに取得できます。 このクエリははるかにシンプルでわかりやすい方法です。予算的にも、必要なリソースを減らして大きな成果を上げることができます。
 
@@ -62,39 +64,45 @@ Azure Cosmos DB では、自動的なインデックス付けによって、す�
 
 投稿へのコメントは、親プロパティを使用して他の投稿と同様に処理できます。 (この方法により、オブジェクト マッピングが簡素化されます。)
 
-    {
-        "id":"1234-asd3-54ts-199a",
-        "title":"Awesome post!",
-        "date":"2016-01-02",
-        "createdBy":User2,
-        "parent":"ew12-res2-234e-544f"
-    }
+```json
+{
+    "id":"1234-asd3-54ts-199a",
+    "title":"Awesome post!",
+    "date":"2016-01-02",
+    "createdBy":User2,
+    "parent":"ew12-res2-234e-544f"
+}
 
-    {
-        "id":"asd2-fee4-23gc-jh67",
-        "title":"Ditto!",
-        "date":"2016-01-03",
-        "createdBy":User3,
-        "parent":"ew12-res2-234e-544f"
-    }
+{
+    "id":"asd2-fee4-23gc-jh67",
+    "title":"Ditto!",
+    "date":"2016-01-03",
+    "createdBy":User3,
+    "parent":"ew12-res2-234e-544f"
+}
+```
 
 また、すべてのソーシャル インタラクションをカウンターとして別のオブジェクトに保存できます。
 
-    {
-        "id":"dfe3-thf5-232s-dse4",
-        "post":"ew12-res2-234e-544f",
-        "comments":2,
-        "likes":10,
-        "points":200
-    }
+```json
+{
+    "id":"dfe3-thf5-232s-dse4",
+    "post":"ew12-res2-234e-544f",
+    "comments":2,
+    "likes":10,
+    "points":200
+}
+```
 
 フィードの作成は、特定の関連度順で投稿 ID のリストを保持できるドキュメントを作成するだけのことです。
 
-    [
-        {"relevance":9, "post":"ew12-res2-234e-544f"},
-        {"relevance":8, "post":"fer7-mnb6-fgh9-2344"},
-        {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
-    ]
+```json
+[
+    {"relevance":9, "post":"ew12-res2-234e-544f"},
+    {"relevance":8, "post":"fer7-mnb6-fgh9-2344"},
+    {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
+]
+```
 
 作成日順に並べ替えられた投稿を含む "最新の" ストリームを作成できます。 または、過去 24 時間により多くの "いいね" を獲得した投稿を含む "最もホットな" ストリームを作成することもできます。 フォロワーや関心事などのロジックに基づいて、ユーザーごとにカスタム ストリームを実装することさえできます。 それもやはり投稿のリストです。 これは、これらのリストの構築方法の問題ですが、読み取りパフォーマンスは引き続き制約を受けていません。 これらのリストのいずれかを取得したら、[IN キーワード](sql-query-keywords.md#in)を使用して Cosmos DB に対して 1 つのクエリを発行し、投稿のページを一度に取得します。
 
@@ -104,28 +112,32 @@ Azure Cosmos DB では、自動的なインデックス付けによって、す�
 
 フォロワーの処理はさらに複雑です。 Cosmos DB にはドキュメント サイズの制限があり、サイズの大きいドキュメントの読み取りと書き込みは、アプリケーションのスケーラビリティに影響を与えます。 よって次のような構造のドキュメントとしてフォロワーを保存する方法が考えられます。
 
-    {
-        "id":"234d-sd23-rrf2-552d",
-        "followersOf": "dse4-qwe2-ert4-aad2",
-        "followers":[
-            "ewr5-232d-tyrg-iuo2",
-            "qejh-2345-sdf1-ytg5",
-            //...
-            "uie0-4tyg-3456-rwjh"
-        ]
-    }
+```json
+{
+    "id":"234d-sd23-rrf2-552d",
+    "followersOf": "dse4-qwe2-ert4-aad2",
+    "followers":[
+        "ewr5-232d-tyrg-iuo2",
+        "qejh-2345-sdf1-ytg5",
+        //...
+        "uie0-4tyg-3456-rwjh"
+    ]
+}
+```
 
 この構造は、フォロワーが数千人のユーザーであれば問題なく機能するかもしれません。 しかし、セレブがランクに参加した場合、この方法ではドキュメント サイズが大きくなり、最終的にドキュメント サイズの上限に達する可能性があります。
 
 この問題を解決するには、混成方式を使います。 ユーザー統計情報ドキュメントの一部として、次のようにフォロワーの数を保存します。
 
-    {
-        "id":"234d-sd23-rrf2-552d",
-        "user": "dse4-qwe2-ert4-aad2",
-        "followers":55230,
-        "totalPosts":452,
-        "totalPoints":11342
-    }
+```json
+{
+    "id":"234d-sd23-rrf2-552d",
+    "user": "dse4-qwe2-ert4-aad2",
+    "followers":55230,
+    "totalPosts":452,
+    "totalPoints":11342
+}
+```
 
 フォロワーの実際のグラフを Azure Cosmos DB の [Gremlin API](../cosmos-db/graph-introduction.md) を使用して保存し、各ユーザーの[頂点](http://mathworld.wolfram.com/GraphVertex.html)と、"A が B をフォローする" という関係性を維持する[エッジ](http://mathworld.wolfram.com/GraphEdge.html)を作成できます。 Gremlin API では、特定のユーザーのフォロワーを取得し、ユーザーの共通点を示唆するより複雑なクエリを作成できます。 ユーザーのお気に入りや楽しんでいるコンテンツ カテゴリをグラフに追加すれば、フォローしている人のお気に入りコンテンツを勧めたり、共通点の多いユーザーを見つけたりといった、高度なコンテンツ検出機能を備えたエクスペリエンスの創造に取り掛かることができます。
 
@@ -141,23 +153,25 @@ Azure Cosmos DB では、自動的なインデックス付けによって、す�
 
 例として、ユーザー情報を取得してみましょう。
 
-    {
-        "id":"dse4-qwe2-ert4-aad2",
-        "name":"John",
-        "surname":"Doe",
-        "address":"742 Evergreen Terrace",
-        "birthday":"1983-05-07",
-        "email":"john@doe.com",
-        "twitterHandle":"\@john",
-        "username":"johndoe",
-        "password":"some_encrypted_phrase",
-        "totalPoints":100,
-        "totalPosts":24
-    }
+```json
+{
+    "id":"dse4-qwe2-ert4-aad2",
+    "name":"John",
+    "surname":"Doe",
+    "address":"742 Evergreen Terrace",
+    "birthday":"1983-05-07",
+    "email":"john@doe.com",
+    "twitterHandle":"\@john",
+    "username":"johndoe",
+    "password":"some_encrypted_phrase",
+    "totalPoints":100,
+    "totalPosts":24
+}
+```
 
 この情報を調べることで、重要な情報とそうでない情報をすぐに見つけることができるため、次のように "ラダー" を作成できます。
 
-![ラダー パターンの図](./media/social-media-apps/social-media-apps-ladder.png)
+:::image type="content" source="./media/social-media-apps/social-media-apps-ladder.png" alt-text="ラダー パターンの図" border="false":::
 
 最小の段はユーザーチャンクと呼ばれます。これは、ユーザーを識別する情報の最小単位であり、データの重複に対して使用されます。 重複するデータのサイズを "表示する" 情報だけに減らすことで、大規模な更新の可能性を低減しています。
 
@@ -167,26 +181,30 @@ Azure Cosmos DB では、自動的なインデックス付けによって、す�
 
 ユーザーを分割し、この情報をさまざまな場所に保存するのはなぜでしょうか。 それは、パフォーマンスの観点から言えば、ドキュメントのサイズが大きくなるほど、クエリのコストが高くなるからです。 ソーシャル ネットワークでパフォーマンスに依存するすべてのクエリを実行するための適切な情報で、ドキュメントをスリムに保ちます。 その他の情報は、完全なプロファイル編集、ログイン、利用状況分析のためのデータ マイニング、ビッグ データへの取り組みなどの最終的なシナリオ用に保存します。 データ マイニングのためのデータ収集は、Azure SQL Database で実行されるので、実際には収集に時間がかかってもかまいません。 私たちが気に掛けているのは、ユーザーに高速で軽快なエクスペリエンスを提供することです。 Cosmos DB に保存されるユーザーは、次のコードのようになります。
 
-    {
-        "id":"dse4-qwe2-ert4-aad2",
-        "name":"John",
-        "surname":"Doe",
-        "username":"johndoe"
-        "email":"john@doe.com",
-        "twitterHandle":"\@john"
-    }
+```json
+{
+    "id":"dse4-qwe2-ert4-aad2",
+    "name":"John",
+    "surname":"Doe",
+    "username":"johndoe"
+    "email":"john@doe.com",
+    "twitterHandle":"\@john"
+}
+```
 
 さらに、投稿は次のようになります。
 
-    {
-        "id":"1234-asd3-54ts-199a",
-        "title":"Awesome post!",
-        "date":"2016-01-02",
-        "createdBy":{
-            "id":"dse4-qwe2-ert4-aad2",
-            "username":"johndoe"
-        }
+```json
+{
+    "id":"1234-asd3-54ts-199a",
+    "title":"Awesome post!",
+    "date":"2016-01-02",
+    "createdBy":{
+        "id":"dse4-qwe2-ert4-aad2",
+        "username":"johndoe"
     }
+}
+```
 
 チャンクの属性が影響を受ける編集が発生しても、影響を受けたドキュメントを簡単に見つけることができます。 `SELECT * FROM posts p WHERE p.createdBy.id == "edited_user_id"` のような、インデックス付き属性を参照するクエリを使用し、チャンクを更新するだけです。
 
@@ -228,9 +246,9 @@ Cosmos DB では、動的なパーティション分割をすぐに使用でき�
 
 Cosmos DB では、すべてのパーティションでクエリ ([集計](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)を含む) が透過的に実行されるので、データが拡大しても、ロジックを追加する必要はありません。
 
-トラフィックやリソースの消費量 ([RU](request-units.md) (要求ユニット) で測定) は、時間の経過と共に増加します。 ユーザー ベースが拡大すると、読み取りと書き込みの頻度が増えます。 ユーザー ベースによるコンテンツの作成や読み取りが多くなり始めます。 そのため、**スループットを拡張する**機能が重要です。 RU は簡単に増やすことができます。 そのためには、Azure portal で数回クリックするか [API でコマンドを発行](https://docs.microsoft.com/rest/api/cosmos-db/replace-an-offer)します。
+トラフィックやリソースの消費量 ([RU](request-units.md) (要求ユニット) で測定) は、時間の経過と共に増加します。 ユーザー ベースが拡大すると、読み取りと書き込みの頻度が増えます。 ユーザー ベースによるコンテンツの作成や読み取りが多くなり始めます。 そのため、**スループットを拡張する**機能が重要です。 RU は簡単に増やすことができます。 そのためには、Azure portal で数回クリックするか [API でコマンドを発行](/rest/api/cosmos-db/replace-an-offer)します。
 
-![スケールアップとパーティション キーの定義](./media/social-media-apps/social-media-apps-scaling.png)
+:::image type="content" source="./media/social-media-apps/social-media-apps-scaling.png" alt-text="スケールアップとパーティション キーの定義":::
 
 状況が好転し続けるとどうなるでしょう。 自分のプラットフォームが、他のリージョン、国、または大陸のユーザーのに認識されて、使われるようになることを想像してください。 嬉しい驚きですね。
 
@@ -240,13 +258,13 @@ Cosmos DB を使用すると、数回のクリックで[データをグローバ
 
 データをグローバルにレプリケートするときは、クライアントがそのデータを利用できるかどうかを確認する必要があります。 Web フロントエンドを使用する場合、またはモバイル クライアントから API にアクセスする場合は、[Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) をデプロイし、必要なリージョンすべてに Azure App Service の複製を作成します。その際に、拡張されたグローバル カバレッジをサポートするためのパフォーマンス構成を使用します。 フロントエンドまたは API にアクセスしたクライアントは、最も近い App Service にルーティングされ、その APP Service はローカルの Cosmos DB レプリカに接続されます。
 
-![ソーシャル プラットフォームへのグローバル カバレッジの追加](./media/social-media-apps/social-media-apps-global-replicate.png)
+:::image type="content" source="./media/social-media-apps/social-media-apps-global-replicate.png" alt-text="ソーシャル プラットフォームへのグローバル カバレッジの追加" border="false":::
 
 ## <a name="conclusion"></a>まとめ
 
 この記事では、低コストのサービスを使用して Azure で完全なソーシャル ネットワークを作成する代替手段を明らかにしています。 多層ストレージ ソリューションと "ラダー" と呼ばれるデータ分散の使用を促進することによって結果をもたらします。
 
-![ソーシャル ネットワーキングでの Azure サービス間の対話を示すダイアグラム](./media/social-media-apps/social-media-apps-azure-solution.png)
+:::image type="content" source="./media/social-media-apps/social-media-apps-azure-solution.png" alt-text="ソーシャル ネットワーキングでの Azure サービス間の対話を示す図" border="false":::
 
 実際には、この種のシナリオに対応する特効薬はありません。 優れたソーシャル アプリケーションを提供する Azure Cosmos DB の速度と自由度、Azure Cognitive Search のような最高クラスの検索ソリューションの背後にあるインテリジェンス、言語に依存しないアプリケーションではなく、強力なバックグラウンド プロセスをホストする Azure App Services の柔軟性、大量のデータを保存する拡張可能な Azure Storage と Azure SQL Database、プロセスにフィードバックを提供することができ、適切なコンテンツを適切なユーザーに提供するうえで役立つ知識とインテリジェンスを生み出す Azure Machine Learning の分析力など、優れたサービスの組み合わせによって生まれる相乗効果により、優れた体験を構築することが可能になります。
 

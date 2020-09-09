@@ -5,12 +5,13 @@ author: LMWF
 ms.topic: conceptual
 ms.date: 6/12/2017
 ms.author: lemai
-ms.openlocfilehash: 8f2eefec94ad4763a054ee089b17232c41e642dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9c31040ec13084f9e4b08bbc9a347e4ad44975bf
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75609793"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021257"
 ---
 # <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>Start Node API と Stop Node API を Node Transition API に置き換える
 
@@ -271,11 +272,11 @@ Node Transition API を呼び出したときに例外がスローされなけれ
         }
 ```
 
-[stopnode]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.faultmanagementclient?redirectedfrom=MSDN
-[stopnodeps]: https://msdn.microsoft.com/library/mt125982.aspx
-[startnode]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.faultmanagementclient?redirectedfrom=MSDN
-[startnodeps]: https://msdn.microsoft.com/library/mt163520.aspx
-[nodequery]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient
-[nodequeryps]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnode
-[snt]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.testmanagementclient
-[gntp]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.testmanagementclient
+[stopnode]: /dotnet/api/system.fabric.fabricclient.faultmanagementclient
+[stopnodeps]: /previous-versions/azure/mt125982(v=azure.100)
+[startnode]: /dotnet/api/system.fabric.fabricclient.faultmanagementclient
+[startnodeps]: /previous-versions/azure/mt163520(v=azure.100)
+[nodequery]: /dotnet/api/system.fabric.fabricclient.queryclient
+[nodequeryps]: /powershell/module/servicefabric/get-servicefabricnode
+[snt]: /dotnet/api/system.fabric.fabricclient.testmanagementclient
+[gntp]: /dotnet/api/system.fabric.fabricclient.testmanagementclient

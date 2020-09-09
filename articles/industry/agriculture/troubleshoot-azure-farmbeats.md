@@ -5,16 +5,16 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b82d415d5e0cf18250123f3483e196aa040285dd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c66d3d6fd3ee0bcba01db61183f40cd3ccf3f39d
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656826"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797940"
 ---
-# <a name="troubleshoot"></a>トラブルシューティング
+# <a name="troubleshoot-azure-farmbeats"></a>Azure FarmBeats のトラブルシューティング
 
-この記事では、Azure FarmBeats の一般的な問題の解決策を示します。 さらに支援が必要な場合は、[サポート フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats)に問い合わせるか、farmbeatssupport@microsoft.com にメールでご連絡ください。
+この記事では、Azure FarmBeats の一般的な問題の解決策を示します。 さらに支援が必要な場合は、[Q&A サポート フォーラム](https://aka.ms/farmbeatssupport)に問い合わせるか、farmbeatssupport@microsoft.com にメールでご連絡ください。
 
 > [!NOTE]
   > 4 月中に FarmBeats をインストールし、ジョブが空のエラー メッセージで失敗する場合は、重要な保健機関や安全機関へのサポートを優先するために、インストールにバッチ クォータが割り当てられていない可能性があります。 詳細については、 [こちら](https://azure.microsoft.com/blog/update-2-on-microsoft-cloud-services-continuity/) をご覧ください。 ジョブを正常に実行するには、Batch アカウントへの VM の割り当てを要求する必要があります。
@@ -58,8 +58,8 @@ ms.locfileid: "83656826"
 
 **是正措置**:
 
-1. FarmBeats Datahub リソース グループにアクセスします。
-2. **イベント ハブ** (DatafeedEventHubNamespace) を選択し、受信メッセージの数を確認します。
+1. FarmBeats リソース グループにアクセスします。
+2. **イベント ハブ**名前空間 ("sensor-partner-eh-namespace-xxxx") を選択し、[Event Hubs] をクリックして、パートナーに割り当てられているイベント ハブの受信メッセージの数を確認します
 3. 以下のいずれかを実行します。
 
    - "*受信メッセージがない*" 場合は、デバイス パートナーにお問い合わせください。  
@@ -110,7 +110,7 @@ ms.locfileid: "83656826"
 > [!NOTE]
 > 関心のあるセンサー パートナーのパートナー ID。
 
-3. パートナー API に戻り、 **[Get/\<ID>]\(<ID> を取得\)** を選択します。
+3. パートナー API に戻り、 **[Get/\<ID>] (<ID> を取得)** を選択します。
 4. 手順 3. のパートナー ID を指定して、 **[Execute]\(実行\)** を選択します。
 
    API の応答に、Event Hubs の接続文字列が含まれているはずです。
@@ -250,7 +250,7 @@ ms.locfileid: "83656826"
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel: 接続数の上限に到達した
 
-**ジョブ エラー メッセージ**:"Maximum number of two concurrent flows achieved by the user '\<username>'. (ユーザー "<ユーザー名>" の同時実行フロー数が上限の 2 個に達しました。)"
+**ジョブ エラー メッセージ**:"ユーザー '\<username>' が実行できる 2 つの同時実行フローの最大数。"
 
 **意味**:接続数の上限に到達したためにジョブが失敗した場合、同じ Sentinel アカウントが複数のジョブで使用されています。
 
@@ -314,3 +314,39 @@ ms.locfileid: "83656826"
 1. FarmBeats Datahub リソース グループにアクセスします。
 2. **App Service** を選択します。  
 3. [App Service の価格のスケールアップ](https://azure.microsoft.com/pricing/details/app-service/windows/)に関するページにアクセスし、適切な価格レベルを選択します。
+
+## <a name="weather-data-job-failures"></a>気象データ ジョブの失敗
+
+**Error**: 気象データを取得するジョブを実行したが、ジョブが失敗する
+
+### <a name="collect-logs-to-troubleshoot-weather-data-job-failures"></a>ログを収集して、気象データ ジョブの失敗をトラブルシューティングする
+
+1. Azure portal で FarmBeats リソース グループに移動します。
+2. リソース グループに含まれる Data Factory サービスをクリックします。 サービスには "sku:Datahub" というタグが付きます
+
+> [!NOTE]
+> リソース グループ内のサービスのタグを表示するには、[列の編集] をクリックし、リソース グループ ビューに [タグ] を追加します。
+
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-1.png" alt-text="プロジェクト FarmBeats":::
+
+3. Data Factory の [概要] ページで、 **[Author and Monitor]\(作成と監視\)** をクリックします。 ブラウザーに新しいタブが表示されます。 **[監視]** をクリックします。
+
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="プロジェクト FarmBeats":::
+
+4. 気象ジョブの実行の一部であるパイプライン実行の一覧が表示されます。 ログを収集するジョブをクリックします。
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-3.png" alt-text="プロジェクト FarmBeats":::
+
+5. パイプラインの概要ページに、アクティビティの実行の一覧が表示されます。 ログを収集するアクティビティの実行 ID をメモします。
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="プロジェクト FarmBeats":::
+
+6. Azure portal の FarmBeats リソース グループに戻り、名前が **datahublogs-XXXX** のストレージ アカウントをクリックします。
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="プロジェクト FarmBeats":::
+
+7. **[Containers]\(コンテナー\)**  ->  **[adfjobs]** をクリックします。 検索ボックスに、上記の手順 5 でメモしたジョブの実行 ID を入力します。
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-6.png" alt-text="プロジェクト FarmBeats":::
+
+8. 検索結果には、このジョブに関連するログを持つフォルダーが表示されます。 問題のデバッグの支援を受けるには、ログをダウンロードして farmbeatssupport@microsoft.com に送信してください。

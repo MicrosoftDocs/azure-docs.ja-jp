@@ -9,18 +9,18 @@ ms.subservice: azuread-dev
 ms.workload: identity
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 082cbb931c9dae60b39f9ee5323337bf051fb56d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 08b018082c753b9524cb12a72d637fe5458d9114
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154782"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85383701"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>方法:iOS で ADAL を使用してクロスアプリ SSO を有効にする
 

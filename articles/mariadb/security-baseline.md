@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2d78a7e0eaed27fec7f813fa3e6bffaffe5a6540
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fd195fee513b2eed9049c7841f791d73a41b876b
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186171"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87366835"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>Azure Database for MariaDB 用の Azure セキュリティ ベースライン
 
@@ -28,7 +28,7 @@ Azure Database for MariaDB 用の Azure セキュリティ ベースラインに
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1:Virtual Network でネットワーク セキュリティ グループまたは Azure Firewall を使用してリソースを保護する
 
-**ガイダンス**: プライベート エンドポイントを使用して、Azure Database for MariaDB 用に Private Link を構成します。 Private Link を使用すると、プライベート エンドポイントを経由して Azure 内のさまざまな PaaS サービスに接続できます。 Azure Private Link は基本的に、プライベート仮想ネットワーク (VNet) 内に Azure サービスを提供します。 仮想ネットワークと MariaDB インスタンスの間のトラフィックは、Microsoft のバックボーン ネットワークを経由します。
+**ガイダンス**:プライベート エンドポイントを使用して、Azure Database for MariaDB 用に Private Link を構成します。 Private Link を使用すると、プライベート エンドポイントを経由して Azure 内のさまざまな PaaS サービスに接続できます。 Azure Private Link は基本的に、プライベート仮想ネットワーク (VNet) 内に Azure サービスを提供します。 仮想ネットワークと MariaDB インスタンスの間のトラフィックは、Microsoft のバックボーン ネットワークを経由します。
 
 また、仮想ネットワーク サービス エンドポイントを使用して、Azure Database for MariaDB の実装へのネットワーク アクセスを保護および制限することもできます。 仮想ネットワーク規則は、仮想ネットワーク内の特定のサブネットから送信される通信を Azure Database for MariaDB で許可するかどうかを制御する 1 つのファイアウォール セキュリティ機能です。
 
@@ -128,7 +128,7 @@ Azure Database for MariaDB 用に Advanced Threat Protection を構成する方�
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9:ネットワーク デバイスの標準的なセキュリティ構成を維持する
 
-**ガイダンス**: Azure Policy を使用して、Azure Database for MariaDB インスタンスに関連付けられているネットワーク設定とネットワーク リソースの標準的なセキュリティ構成を定義して実装します。 Azure Database for MariaDB インスタンスのネットワーク構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.DBforMariaDB" および "Microsoft.Network" 名前空間で Azure Policy エイリアスを使用します。 次のように、ネットワークまたは Azure Database for MariaDB インスタンスに関連する組み込みのポリシー定義を使用することもできます。
+**ガイダンス**:Azure Policy を使用して、Azure Database for MariaDB インスタンスに関連付けられているネットワーク設定とネットワーク リソースの標準的なセキュリティ構成を定義して実装します。 Azure Database for MariaDB インスタンスのネットワーク構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.DBforMariaDB" および "Microsoft.Network" 名前空間で Azure Policy エイリアスを使用します。 次のように、ネットワークまたは Azure Database for MariaDB インスタンスに関連する組み込みのポリシー定義を使用することもできます。
 
 - DDoS Protection Standard を有効にする必要がある
 
@@ -296,7 +296,7 @@ Azure Sentinel をオンボードする方法: https://docs.microsoft.com/azure/
 
 MariaDB のアクセス管理について: https://docs.microsoft.com/azure/mariadb/concepts-security#access-management
 
-Azure サブスクリプションの組み込み RBAC ロールについて: https://docs.microsoft.com/azure/role-based-access-control/built-in-roles
+Azure サブスクリプションの Azure 組み込みロールについて: https://docs.microsoft.com/azure/role-based-access-control/built-in-roles
 
 
 **Azure Security Center の監視**: はい
@@ -362,7 +362,7 @@ Azure で MFA を有効にする方法: https://docs.microsoft.com/azure/active-
 
 ### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7: 管理者アカウントからの疑わしいアクティビティを記録してアラートを生成する
 
-**ガイダンス**: MariaDB 用に Advanced Threat Protection を有効にして、疑わしいアクティビティに関するアラートを生成します。
+**ガイダンス**:MariaDB 用に Advanced Threat Protection を有効にして、疑わしいアクティビティに関するアラートを生成します。
 
 さらに、Azure AD Privileged Identity Management (PIM) を使用して、環境内で疑わしいまたは安全でないアクティビティが発生したときにログとアラートを生成できます。 Azure AD のリスク検出を使用して、危険なユーザーの行動に関するアラートとレポートを表示します。
 
@@ -458,7 +458,7 @@ Azure Sentinel をオンボードする方法: https://docs.microsoft.com/azure/
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 機密情報のインベントリを維持する
 
-**ガイダンス**: タグを使用すると、機密情報を格納または処理する Azure Database for MariaDB インスタンスや関連リソースの追跡に役立ちます。
+**ガイダンス**:タグを使用すると、機密情報を格納または処理する Azure Database for MariaDB インスタンスや関連リソースの追跡に役立ちます。
 
 タグを作成して使用する方法: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
@@ -486,7 +486,7 @@ Azure Database for MariaDB のファイアウォール規則の構成方法: htt
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3:機密情報の承認されていない転送を監視してブロックする
 
-**ガイダンス**: Azure VM を使用して MariaDB インスタンスにアクセスする場合は、Private Link、MariaDB ネットワーク構成、ネットワーク セキュリティ グループ、およびサービス タグを利用して、データ流出の可能性を軽減します。
+**ガイダンス**:Azure VM を使用して MariaDB インスタンスにアクセスする場合は、Private Link、MariaDB ネットワーク構成、ネットワーク セキュリティ グループ、およびサービス タグを利用して、データ流出の可能性を軽減します。
 
 Microsoft では、MariaDB 用の基になるインフラストラクチャを管理し、顧客データの損失や漏洩を防ぐための厳格な管理を実施してきました。
 
@@ -656,7 +656,7 @@ Azure RBAC の概要: https://docs.microsoft.com/azure/role-based-access-control
 
 ### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4:承認された Azure リソースとソフトウェア タイトルのインベントリを管理する
 
-**ガイダンス**: 適用できません。この推奨事項は、コンピューティング リソースと Azure 全体を対象にしています。
+**ガイダンス**:適用できません。この推奨事項は、コンピューティング リソースと Azure 全体を対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -691,7 +691,7 @@ Azure Graph を使用してクエリを作成する方法: https://docs.microsof
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7:承認されていない Azure リソースとソフトウェア アプリケーションを削除する
 
-**ガイダンス**: 適用できません。この推奨事項は、コンピューティング リソースと Azure 全体を対象にしています。
+**ガイダンス**:適用できません。この推奨事項は、コンピューティング リソースと Azure 全体を対象にしています。
 
 
 
@@ -794,7 +794,7 @@ Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3:セキュリティで保護された Azure リソースの構成を維持する
 
-**ガイダンス**: Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
+**ガイダンス**:Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
 
 Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -876,7 +876,7 @@ Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11:Azure シークレットを安全に管理する
 
-**ガイダンス**: Azure Database for MariaDB サーバーへのアクセスに使用される Azure App Service で実行されている Azure Virtual Machines または Web アプリケーションの場合は、マネージド サービス ID を Azure Key Vault と組み合わせて使用して、Azure Database for MariaDB サーバー シークレットの管理を簡素化およびセキュリティで保護します。 Key Vault の論理的な削除が有効になっていることを確認します。
+**ガイダンス**: Azure Database for MariaDB サーバーへのアクセスに使用される Azure App Service で実行されている Azure Virtual Machines または Web アプリケーションの場合は、マネージド サービス ID を Azure Key Vault と組み合わせて使用して、Azure Database for MariaDB サーバー シークレットの管理を簡素化およびセキュリティで保護します。 Key Vault の論理的な削除を確実に有効にします。
 
 Azure マネージド ID と統合する方法: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
@@ -892,7 +892,7 @@ Azure マネージド ID と統合する方法: https://docs.microsoft.com/azure
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12:ID を安全かつ自動的に管理する
 
-**ガイダンス**: Azure Database for MariaDB サーバーでは、現在、データベースにアクセスするための Azure Active Directory 認証はサポートされていません。  Azure Database for MariaDB サーバーを作成するときに、管理者ユーザーの資格情報を指定します。 この管理者は、追加の MariaDB ユーザーを作成するために使用できます。  
+**ガイダンス**:Azure Database for MariaDB サーバーでは、現在、データベースにアクセスするための Azure Active Directory 認証はサポートされていません。  Azure Database for MariaDB サーバーを作成するときに、管理者ユーザーの資格情報を指定します。 この管理者は、追加の MariaDB ユーザーを作成するために使用できます。  
 
 Azure Database for MariaDB サーバーへのアクセスに使用される Azure App Service で実行されている Azure Virtual Machines または Web アプリケーションの場合は、マネージド サービス ID を Azure Key Vault と組み合わせて使用して、Azure Database for MariaDB サーバーの資格情報を格納および取得します。  Key Vault の論理的な削除が有効になっていることを確認します。
 
@@ -1014,19 +1014,10 @@ Azure Database for MariaDB でのバックアップと復元について: https:
 ### <a name="101-create-an-incident-response-guide"></a>10.1:インシデント対応ガイドを作成する
 
 **ガイダンス**: 組織のインシデント対応ガイドを作成します。 要員のすべてのロールを定義するインシデント対応計画が記述されていることと、検出からインシデント後のレビューまでのインシデント対応/管理のフェーズがあることを確認します。
-    
 
-    Guidance on building your own security incident response process: https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
-
-    
-
-    Microsoft Security Response Center's Anatomy of an Incident: https://msrc-blog.microsoft.com/2019/06/27/inside-the-msrc-anatomy-of-a-ssirp-incident/
-
-    
-
-    Customer may also leverage NIST's Computer Security Incident Handling Guide to aid in the creation of their own incident response plan: https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final 
-
-
+- 独自のセキュリティ インシデント対応プロセスを構築するためのガイダンス: https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
+- Microsoft Security Response Center のインシデントの構造: https://msrc-blog.microsoft.com/2019/06/27/inside-the-msrc-anatomy-of-a-ssirp-incident/
+- お客様は、独自のインシデント対応計画の作成に役立つ NIST の「コンピューター セキュリティ インシデント対応ガイド」を利用することもできます: https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final 
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1035,17 +1026,12 @@ Azure Database for MariaDB でのバックアップと復元について: https:
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2:インシデントのスコアリングと優先順位付けの手順を作成する
 
 **ガイダンス**: Security Center によって各アラートに重大度が割り当てられるため、最初に調査する必要があるアラートの優先順位付けに役立ちます。 重要度は、アラートの発行に使用された Security Center の信頼度と、アラートの原因となったアクティビティの背後に悪意のある意図があったかどうかの信頼レベルに基づいて決まります。 
-    
 
-    Additionally, clearly mark subscriptions (for ex. production, non-prod) using tags and create a naming system to clearly identify and categorize Azure resources, especially those processing sensitive data.  It is your responsibility to prioritize the remediation of alerts based on the criticality of the Azure resources and environment where the incident occurred.
+また、サブスクリプション ( 運用、非運用など) をタグを使用して明確にマークし、Azure リソース (特に、機密データを処理するもの) を明確に識別して分類するための命名システムを作成します。  インシデントが発生した Azure リソースと環境の重要度に基づいて、アラートの修復に優先順位を付けることは、お客様の責任です。
 
-    
+- Azure Security Center のセキュリティ アラート: https://docs.microsoft.com/azure/security-center/security-center-alerts-overview
 
-    Security alerts in Azure Security Center: https://docs.microsoft.com/azure/security-center/security-center-alerts-overview
-
-    
-
-タグを使用した Azure リソースの整理: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+- タグを使用した Azure リソースの整理: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure Security Center の監視**: はい
 
@@ -1054,11 +1040,8 @@ Azure Database for MariaDB でのバックアップと復元について: https:
 ### <a name="103-test-security-response-procedures"></a>10.3:セキュリティ対応手順のテスト
 
 **ガイダンス**: ご利用のシステムのインシデント対応機能を定期的にテストする演習を実施することで、ご利用の Azure リソースの保護を支援できます。 弱点やギャップを特定し、必要に応じて計画を見直します。
-    
 
-    Refer to NIST's publication: Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
-
-
+- NIST の出版物を参照してください。IT の計画と機能に関するテスト、トレーニング、演習プログラムのガイド: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1067,11 +1050,8 @@ Azure Database for MariaDB でのバックアップと復元について: https:
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4:セキュリティ インシデントの連絡先の詳細を指定し、セキュリティ インシデントのアラート通知を構成します
 
 **ガイダンス**:セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) でユーザーのデータが違法または権限のないユーザーによってアクセスされたことが検出された場合に、Microsoft からの連絡先として使用されます。 事後にインシデントをレビューして、問題が解決されていることを確認します。
-    
 
-    How to set the Azure Security Center Security Contact: https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
-
-
+- Azure Security Center のセキュリティ連絡先を設定する方法: https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
 **Azure Security Center の監視**: はい
 
@@ -1080,15 +1060,9 @@ Azure Database for MariaDB でのバックアップと復元について: https:
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5:インシデント対応システムにセキュリティ アラートを組み込む
 
 **ガイダンス**: 連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートすると、Azure リソースへのリスクを特定できます。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用してアラートを Azure Sentinel にストリーミングできます。
-    
 
-    How to configure continuous export: https://docs.microsoft.com/azure/security-center/continuous-export
-
-    
-
-    How to stream alerts into Azure Sentinel: https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
-
-
+- 連続エクスポートを構成する方法: https://docs.microsoft.com/azure/security-center/continuous-export
+- Azure Sentinel にアラートをストリーミングする方法: https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
 **Azure Security Center の監視**: 適用なし
 

@@ -10,12 +10,12 @@ ms.technology: integration-services
 author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
-ms.openlocfilehash: 6f2983b375e3eeb73a0372e123d4d2763b3c65ec
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 5dd8e483751010a6090e0ec415c40d381e978fd9
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629390"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118804"
 ---
 # <a name="access-data-stores-and-file-shares-with-windows-authentication-from-ssis-packages-in-azure"></a>Azure の SSIS パッケージから Windows 認証を使用してデータ ストアとファイル共有にアクセスする
 
@@ -34,7 +34,7 @@ Azure Data Factory (ADF) 内の Azure-SSIS Integration Runtime (IR) で実行さ
 > [!WARNING]
 > Windows 認証を使用してデータ ストアに接続するときに上記のどの方法も使用しないと、Windows 認証に依存するパッケージはデータ ストアにアクセスできず、実行時に失敗します。 
 
-この記事の残りの部分では、Windows 認証を使用してデータ ストアにアクセスするパッケージを Azure-SSIS IR 上で実行するために、Azure SQL Database サーバー/Managed Instance でホストされている SSIS カタログ (SSISDB) を構成する方法について説明します。 
+この記事の残りの部分では、Windows 認証を使用してデータ ストアにアクセスするパッケージを Azure-SSIS IR 上で実行するために、SQL Database/SQL Managed Instance でホストされている SSIS カタログ (SSISDB) を構成する方法について説明します。 
 
 ## <a name="you-can-only-use-one-set-of-credentials"></a>使用できる資格情報は 1 セットのみ
 
@@ -44,7 +44,7 @@ SSIS パッケージ内の Windows 認証を使用する場合は、資格情報
 
 パッケージが Windows 認証を使用して、オンプレミスのデータ ストアにアクセスできるようにするドメイン資格情報を提供するには、次のことを行います。
 
-1. SQL Server Management Studio (SSMS) または別のツールを使用して、SSISDB をホストする Azure SQL Database サーバー/Managed Instance に接続します。 詳しくは、[Azure での SSISDB への接続](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)に関する記事をご覧ください。
+1. SQL Server Management Studio (SSMS) または別のツールを使用して、SSISDB をホストする SQL Database/SQL Managed Instance に接続します。 詳しくは、[Azure での SSISDB への接続](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)に関する記事をご覧ください。
 
 2. SSISDB を現在のデータベースとして使用し、クエリ ウィンドウを開きます。
 
@@ -60,7 +60,7 @@ SSIS パッケージ内の Windows 認証を使用する場合は、資格情報
 
 アクティブなドメイン資格情報を表示するには、次のことを行います。
 
-1. SSMS または別のツールを使用して、SSISDB をホストする Azure SQL Database サーバー/Managed Instance に接続します。 詳しくは、[Azure での SSISDB への接続](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)に関する記事をご覧ください。
+1. SSMS または別のツールを使用して、SSISDB をホストする SQL Database/SQL Managed Instance に接続します。 詳しくは、[Azure での SSISDB への接続](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)に関する記事をご覧ください。
 
 2. SSISDB を現在のデータベースとして使用し、クエリ ウィンドウを開きます。
 
@@ -75,7 +75,7 @@ SSIS パッケージ内の Windows 認証を使用する場合は、資格情報
 ### <a name="clear-domain-credentials"></a>ドメイン資格情報のクリア
 この記事の説明に従って指定した資格情報を削除するには、次のことを行います。
 
-1. SSMS または別のツールを使用して、SSISDB をホストする Azure SQL Database サーバー/Managed Instance に接続します。 詳しくは、[Azure での SSISDB への接続](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)に関する記事をご覧ください。
+1. SSMS または別のツールを使用して、SSISDB をホストする SQL Database/SQL Managed Instance に接続します。 詳しくは、[Azure での SSISDB への接続](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)に関する記事をご覧ください。
 
 2. SSISDB を現在のデータベースとして使用し、クエリ ウィンドウを開きます。
 
@@ -140,7 +140,7 @@ Azure で実行されているパッケージからオンプレミスのファ�
 
 Azure で実行されているパッケージから Azure VM のファイル共有にアクセスするには、次のことを行います。
 
-1. SSMS または別のツールを使用して、SSISDB をホストする Azure SQL Database サーバー/Managed Instance に接続します。 詳しくは、[Azure での SSISDB への接続](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)に関する記事をご覧ください。
+1. SSMS または別のツールを使用して、SSISDB をホストする SQL Database/SQL Managed Instance に接続します。 詳しくは、[Azure での SSISDB への接続](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)に関する記事をご覧ください。
 
 2. SSISDB を現在のデータベースとして使用し、クエリ ウィンドウを開きます。
 
@@ -156,7 +156,7 @@ Azure Files に関する詳細については、「[Azure ファイル](https://
 
 Azure で実行されているパッケージから Azure Files のファイル共有にアクセスするには、次のことを行います。
 
-1. SSMS または別のツールを使用して、SSISDB をホストする Azure SQL Database サーバー/Managed Instance に接続します。 詳しくは、[Azure での SSISDB への接続](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)に関する記事をご覧ください。
+1. SSMS または別のツールを使用して、SSISDB をホストする SQL Database/SQL Managed Instance に接続します。 詳しくは、[Azure での SSISDB への接続](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)に関する記事をご覧ください。
 
 2. SSISDB を現在のデータベースとして使用し、クエリ ウィンドウを開きます。
 

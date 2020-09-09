@@ -4,19 +4,19 @@ description: Identity Protection でリスク検出をシミュレートする�
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: conceptual
-ms.date: 10/18/2019
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e50e406e74c0b78f41830c4ea7c5b10830002ed3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cbcc2351b7ead3714cfd21aa30b031cec75074a9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72886694"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84463758"
 ---
 # <a name="simulating-risk-detections-in-identity-protection"></a>Identity Protection でのリスク検出のシミュレーション
 

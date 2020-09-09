@@ -3,15 +3,15 @@ title: REST - サービス間認証 - Data Lake Storage Gen1 - Azure
 description: REST API を利用し、Azure Data Lake Storage Gen1 と Azure Active Directory でサービス間認証を行う方法について説明します。
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: d7d0ec39e9f0f294324eb18337f4234ddaa63e2c
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 725490316ef4fcbce197d5a29b7665b7de7014c9
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688138"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85857113"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Azure Data Lake Storage Gen1 に対する REST API を使用したサービス間認証
 > [!div class="op_single_selector"]
@@ -34,15 +34,19 @@ ms.locfileid: "82688138"
 
 このシナリオでは、操作を実行するための独自の資格情報をアプリケーションが提供します。 そのために、次のスニペットに示すように POST 要求を発行する必要があります。
 
-    curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
-      -F grant_type=client_credentials \
-      -F resource=https://management.core.windows.net/ \
-      -F client_id=<CLIENT-ID> \
-      -F client_secret=<AUTH-KEY>
+```console
+curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
+  -F grant_type=client_credentials \
+  -F resource=https://management.core.windows.net/ \
+  -F client_id=<CLIENT-ID> \
+  -F client_secret=<AUTH-KEY>
+```
 
 この要求の出力には、後で REST API 呼び出しで渡す認証トークン (以下の出力の `access-token` で示される) が取り込まれます。 テキスト ファイルに認証トークンを保存します。このファイルは、Data Lake Store Gen1 に対して REST 呼び出しを行うときに必要になります。
 
-    {"token_type":"Bearer","expires_in":"3599","expires_on":"1458245447","not_before":"1458241547","resource":"https://management.core.windows.net/","access_token":"<REDACTED>"}
+```output
+{"token_type":"Bearer","expires_in":"3599","expires_on":"1458245447","not_before":"1458241547","resource":"https://management.core.windows.net/","access_token":"<REDACTED>"}
+```
 
 この記事では、 **非対話型** のアプローチを使用します。 非対話型 (サービス間呼び出し) の詳細については、 [資格情報を使用したサービス間呼び出し](https://msdn.microsoft.com/library/azure/dn645543.aspx)に関するページを参照してください。
 

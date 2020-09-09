@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: ad6d3992f03802174eb03aa30b57b8d3dac1d6c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e0e7089e7c674f324c2c3d293661c518b41731b9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78942963"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021859"
 ---
 # <a name="azure-sql-database-security-features"></a>Azure SQL Database のセキュリティ機能    
 Azure SQL Database は、Azure でリレーショナル データベース サービスを提供しています。 顧客データを保護し、お客様がリレーショナル データベース サービスに期待する強力なセキュリティ機能を提供するために、SQL Database には独自のセキュリティ機能があります。 これらの機能は、Azure から継承されたコントロールに基づいて構築されています。
@@ -31,13 +31,13 @@ Azure SQL Database は、Azure でリレーショナル データベース サ�
 Azure SQL Database は表形式データ ストリーム (TDS) プロトコルのみをサポートしているため、既定の TCP/1433 のポート経由でのみデータベースにアクセスできます。
 
 ### <a name="azure-sql-database-firewall"></a>Azure SQL Database ファイアウォール
-顧客データを保護するために、Azure SQL Database にはファイアウォール機能があります。この機能の既定では、以下のように SQL Database サーバーへのアクセスをすべて禁止しています。
+顧客データを保護するために、Azure SQL Database にはファイアウォール機能があります。この機能の既定では、以下のように SQL Database へのアクセスをすべて禁止しています。
 
 ![Azure SQL Database ファイアウォール](./media/infrastructure-sql/sql-database-firewall.png)
 
 ゲートウェイ ファイアウォールではアドレスを制限できるので、お客様は受け入れ可能な IP アドレスの範囲を細かく指定することができます。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてアクセス権を付与します。
 
-ファイアウォールの構成は、管理ポータルを使用するか、Azure SQL Database Management REST API を使用してプログラムで行うことができます。 Azure SQL Database ゲートウェイ ファイアウォールの既定では、Azure SQL データベース インスタンスに対するすべてのお客様の TDS アクセスが禁止されています。 お客様は、アクセス制御リスト (ACL) を使用して、送信元と宛先のインターネット アドレス、プロトコル、およびポート番号を指定して Azure SQL Database の接続を許可することで、アクセスを構成する必要があります。
+ファイアウォールの構成は、管理ポータルを使用するか、Azure SQL Database Management REST API を使用してプログラムで行うことができます。 Azure SQL Database ゲートウェイ ファイアウォールの既定では、Azure SQL Database に対するすべてのお客様の TDS アクセスが禁止されています。 お客様は、アクセス制御リスト (ACL) を使用して、送信元と宛先のインターネット アドレス、プロトコル、およびポート番号を指定して Azure SQL Database の接続を許可することで、アクセスを構成する必要があります。
 
 ### <a name="dosguard"></a>DoSGuard
 サービス拒否 (DoS) 攻撃は、DoSGuard という SQL Database ゲートウェイ サービスによって軽減されます。 DoSGuard は、IP アドレスからの失敗したログインを積極的に追跡します。 一定の期間内に特定の IP アドレスから失敗したログインが複数回ある場合、その IP アドレスは、事前に定義された期間、サービス内のすべてのリソースにアクセスできなくなります。

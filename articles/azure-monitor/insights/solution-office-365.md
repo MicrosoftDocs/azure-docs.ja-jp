@@ -1,17 +1,17 @@
 ---
-title: Azure の Office 365 管理ソリューション | Microsoft Docs
+title: Azure の Office 365 管理ソリューション
 description: この記事では、Azure での Office 365 ソリューションの構成と使用について詳しく説明します。  Azure Monitor で作成された Office 365 レコードの詳細な説明が含まれています。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: 2c6eb5407ec62b6e9e771ce257b66fca2a91e0a5
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.openlocfilehash: 14f7b5546d30d98adf4a14408882c972687a2d71
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82023607"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498799"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure の Office 365 管理ソリューション (プレビュー)
 
@@ -19,7 +19,7 @@ ms.locfileid: "82023607"
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>ソリューションの更新
-> このソリューションは、[Azure Sentinel](../../sentinel/overview.md) の [Office 365](../../sentinel/connect-office-365.md) 一般公開ソリューション、および [Azure AD レポートおよび監視ソリューション](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)に置き換えられました。 これらのソリューションにより、以前の Azure Monitor Office 365 ソリューションの更新バージョンが提供され、構成操作が向上しました。 2020 年 7 月 30 日までは、既存のソリューションを引き続きご利用いただけます。
+> このソリューションは、[Azure Sentinel](../../sentinel/overview.md) の [Office 365](../../sentinel/connect-office-365.md) 一般公開ソリューション、および [Azure AD レポートおよび監視ソリューション](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)に置き換えられました。 これらのソリューションにより、以前の Azure Monitor Office 365 ソリューションの更新バージョンが提供され、構成操作が向上しました。 2020 年 10 月 31 日までは、既存のソリューションを引き続きご利用いただけます。
 > 
 > Azure Sentinel は、ログを取り込み、検出、調査、検出、機械学習による分析情報を含む追加の SIEM 機能を提供するクラウド ネイティブのセキュリティ情報およびイベント管理ソリューションです。 Azure Sentinel を使用することで、Office 365 SharePoint アクティビティと Exchange 管理ログの取り込みが提供されるようになりました。
 > 
@@ -35,8 +35,8 @@ ms.locfileid: "82023607"
 >
 > ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 > 
-> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-july-30th"></a>Q:現時点から 7 月 30 日までの間に、Office 365 Azure Monitor ソリューションをオンボードすることはできますか。
-> いいえ、Azure Monitor Office 365 ソリューションのオンボード スクリプトは使用できません。 このソリューションは 7 月 30 日に削除されます。
+> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-october-31"></a>Q:現時点から 10 月 31 日までの間に、Office 365 Azure Monitor ソリューションをオンボードすることはできますか。
+> いいえ、Azure Monitor Office 365 ソリューションのオンボード スクリプトは使用できません。 このソリューションは 10 月 31 日に削除されます。
 > 
 > ### <a name="q-will-the-tables-and-schemas-be-changed"></a>Q:テーブルとスキーマは変更されますか。
 > **OfficeActivity** テーブル名とスキーマは、現在のソリューションと同じままです。 新しいソリューションでは、Azure AD データを参照するクエリを除き、同じクエリを使用し続けることができます。
@@ -102,11 +102,11 @@ ms.locfileid: "82023607"
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>Q:Azure Sentinel は、ソリューションの一部として追加のコネクタを提供しますか。
 > はい。[Azure Sentinel データ ソースの接続](../../sentinel/connect-data-sources.md)に関する記事を参照してください。
 > 
-> ###    <a name="q-what-will-happen-on-july-30-do-i-need-to-offboard-beforehand"></a>Q:7 月 30 日には何が行われるのですか。 事前にオフボードする必要はありますか。
+> ###    <a name="q-what-will-happen-on-october-31-do-i-need-to-offboard-beforehand"></a>Q:10 月 31 日には何が行われるのですか。 事前にオフボードする必要はありますか。
 > 
 > - **Office365** ソリューションからデータを受信することができなくなります。 このソリューションは Marketplace で使用できなくなります
 > - Azure Sentinel のお客様については、Log Analytics ワークスペース ソリューション **Office365** が Azure Sentinel **SecurityInsights** ソリューションに含まれるようになります。
-> - ソリューションを手動でオフボードしない場合、データは 7 月 30 日に自動的に切断されます。
+> - ソリューションを手動でオフボードしない場合、データは 10 月 31 日に自動的に切断されます。
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>Q:データは新しいソリューションに転送されますか。
 > はい。 **Office 365** ソリューションをワークスペースから削除すると、スキーマが削除されるため、そのデータは一時的に使用できなくなります。 新しい **Office 365** コネクタを Sentinel で有効にすると、スキーマがワークスペースに復元され、既に収集されたデータが使用できるようになります。 
@@ -228,7 +228,7 @@ Office 365 管理ソリューションでは、Azure Monitor で Office 365 環�
 
 ## <a name="data-collection"></a>データ コレクション
 
-最初のデータ収集には数時間かかる場合があります。 収集が開始されると、レコードが作成されるたびに、Office 365 は [webhook 通知](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications)と詳細なデータを Azure Monitor に送信します。 このレコードは、受信した後、数分以内に Azure Monitor で使用できます。
+最初のデータ収集には数時間かかる場合があります。 収集が開始されると、レコードが作成されるたびに、Office 365 は [webhook 通知](/office/office-365-management-api/office-365-management-activity-api-reference#receiving-notifications)と詳細なデータを Azure Monitor に送信します。 このレコードは、受信した後、数分以内に Azure Monitor で使用できます。
 
 ## <a name="using-the-solution"></a>ソリューションの使用
 
@@ -266,7 +266,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 | Type | *OfficeActivity* |
 | ClientIP | アクティビティが記録されたときに使用されたデバイスの IP アドレス。 IP アドレスは IPv4 または IPv6 アドレスの形式で表示されます。 |
 | OfficeWorkload | レコードが参照する Office 365 サービス。<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
-| Operation | ユーザーまたは管理者アクティビティの名前。  |
+| 操作 | ユーザーまたは管理者アクティビティの名前。  |
 | OrganizationId | 組織の Office 365 テナントの GUID。 どの Office 365 サービスで発生するかにかかわらず、この値は組織に対して常に同じになります。 |
 | RecordType | 実行する操作の種類。 |
 | ResultStatus | (Operation プロパティで指定された) アクションが正常に終了したかどうかを示します。 値は Succeeded、PartiallySucceeded、Failed のいずれかです。 Exchange 管理者アクティビティの場合、値は True または False です。 |

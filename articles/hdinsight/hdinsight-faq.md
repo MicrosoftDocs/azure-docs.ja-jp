@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 8a69cb83492fabc692886fe6966a147de3bcbb04
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: c0efdda24ae47ae65f0d469b50feaefdf6350678
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780846"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022216"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: よく寄せられる質問
 
@@ -43,6 +43,14 @@ HDInsight クラスターの種類とプロビジョニング方法を確認す�
 ### <a name="what-are-the-various-types-of-nodes-in-an-hdinsight-cluster"></a>HDInsight クラスターにはどのような種類のノードがありますか。
 
 「[Azure HDInsight クラスターでのリソースの種類](hdinsight-virtual-network-architecture.md#resource-types-in-azure-hdinsight-clusters)」を参照してください。
+
+### <a name="what-are-the-best-practices-for-creating-large-hdinsight-clusters"></a>大規模な HDInsight クラスターを作成するためのベスト プラクティスとは
+
+1. クラスターのスケーラビリティを向上させるには、[カスタム Ambari DB](https://docs.microsoft.com/azure/hdinsight/hdinsight-custom-ambari-db) を使用して HDInsight クラスターを設定することをお勧めします。
+2. [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) を使用して HDInsight クラスターを作成し、Azure Data Lake Storage Gen2 のより高い帯域幅とその他のパフォーマンス特性を活用します。
+3. ヘッド ノードは、これらのノードで実行されている複数のマスター サービスに対応できるように十分な大きさにする必要があります。
+4. 対話型クエリなどの特定のワークロードには、より大きな Zookeeper ノードが必要になるものもあります。 8 コア以上の VM を検討してください。
+5. Hive と Spark の場合は、[外部の Hive メタストア](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-external-metadata-stores)を使用します。
 
 ## <a name="individual-components"></a>個別のコンポーネント
 
@@ -79,9 +87,9 @@ HDInsight クラスターの種類とプロビジョニング方法を確認す�
 
 ## <a name="metastore"></a>メタストア
 
-### <a name="how-can-i-migrate-from-the-existing-metastore-to-azure-sql-server"></a>既存のメタストアから Azure SQL Server に移行するにはどうすればよいですか。 
+### <a name="how-can-i-migrate-from-the-existing-metastore-to-azure-sql-database"></a>既存のメタストアから Azure SQL Database に移行するにはどうすればよいですか? 
 
-SQL Server から Azure SQL Server に移行する方法については、「[チュートリアル:DMS を使用して SQL Server を Azure SQL Database の単一データベースまたはプールされたデータベースにオフラインで移行する](../dms/tutorial-sql-server-to-azure-sql.md)」を参照してください。
+SQL Server から Azure SQL Database に移行する方法については、「[チュートリアル: DMS を使用して SQL Server を Azure SQL Database の単一データベースまたはプールされたデータベースにオフラインで移行する](../dms/tutorial-sql-server-to-azure-sql.md)」を参照してください。
 
 ### <a name="is-the-hive-metastore-deleted-when-the-cluster-is-deleted"></a>クラスターが削除されると Hive メタストアは削除されますか。
 
@@ -276,8 +284,8 @@ Azure Storage Explorer を使用して、ユーザーのセキュリティ グ�
 
 次の REST エンドポイントを使用して、JSON 形式で必要な情報をプルできます。 基本認証ヘッダーを使用して要求を行います。
 
-- `Tez Query View`: *https:\//\<クラスター名>.azurehdinsight.net/ws/v1/timeline/HIVE_QUERY_ID/*
-- `Tez Dag View`: *https:\//\<クラスター名>.azurehdinsight.net/ws/v1/timeline/TEZ_DAG_ID/*
+- `Tez Query View`: *https:\//\<cluster name>.azurehdinsight.net/ws/v1/timeline/HIVE_QUERY_ID/*
+- `Tez Dag View`: *https:\//\<cluster name>.azurehdinsight.net/ws/v1/timeline/TEZ_DAG_ID/*
 
 ### <a name="how-do-i-retrieve-the-configuration-details-from-hdi-cluster-by-using-an-azure-active-directory-user"></a>Azure Active Directory ユーザーを使用して HDI クラスターから構成の詳細を取得するにはどうすればよいですか。
 

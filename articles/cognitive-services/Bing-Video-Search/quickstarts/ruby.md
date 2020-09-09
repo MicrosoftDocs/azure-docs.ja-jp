@@ -8,18 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 8f6022f03d28362e85fba3fd75e60c4d7032b41b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: cd02a0ea51faa7dae14e0f9d61c446aae55dcbe1
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448373"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849571"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-ruby"></a>クイック スタート:Bing Video Search REST API と Ruby を使用して動画を検索する
 
-このクイック スタートを使用すると、Bing Video Search API への最初の呼び出しを行い、JSON 応答の検索結果を表示することができます。 このシンプルな Ruby アプリケーションは、HTTP 動画検索クエリを API に送信してその応答を表示します。 このアプリケーションは Python で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このサンプルのソース コードは、追加のエラー処理とコードの注釈を含め、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingVideoSearchv7.rb) で入手できます。
+このクイックスタートを使用して、Bing Video Search API を呼び出してみましょう。 このシンプルな Ruby アプリケーションでは、HTTP 動画検索クエリを API に送信して、その JSON 応答を表示します。 このアプリケーションは Python で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 
+
+このサンプルのソース コードは、追加のエラー処理とコードの注釈を含め、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingVideoSearchv7.rb) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,7 +39,7 @@ ms.locfileid: "75448373"
     require 'json'
     ```
 
-2. API エンドポイント、動画 API 検索パス、サブスクリプション キー、検索語句の変数を作成します。 `uri` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。
+2. API エンドポイント、動画 API 検索パス、サブスクリプション キー、検索語句の変数を作成します。 `url` 値には、次のコードのグローバル エンドポイントを使用するか、Azure portal に表示される、お使いのリソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 
     ```ruby
     uri  = "https://api.cognitive.microsoft.com"
@@ -48,13 +50,13 @@ ms.locfileid: "75448373"
 
 ## <a name="create-and-send-an-api-request"></a>API 要求を作成して送信する
 
-1. 最後の手順の変数を使用して、要求の検索 URL の書式を設定します。 URI とパスを結合し、検索語句を URL エンコードしたうえで、`?q=` パラメーターに追加します。
+1. 前の手順の変数を使用して、要求の検索 URL を書式設定します。 URI とパスを結合し、検索語句を URL エンコードしたうえで、`?q=` パラメーターに追加します。
 
     ```ruby
     uri = URI(uri + path + "?q=" + URI.escape(term))
     ```
 
-2. 完成した検索 URL を要求に追加し、サブスクリプション キーを `Ocp-Apim-Subscription-Key` ヘッダーに追加します。
+2. 完全な検索 URL を要求に追加し、サブスクリプション キーを `Ocp-Apim-Subscription-Key` ヘッダーに追加します。
     
     ``` ruby
     request = Net::HTTP::Get.new(uri)
@@ -71,11 +73,11 @@ ms.locfileid: "75448373"
 
 ## <a name="process-and-view-the-response"></a>応答の処理と表示
 
-1. 応答の受信後、JSON 応答を出力することができます。
+応答の受信後、JSON 応答を出力します。
 
-    ```ruby
-    puts JSON::pretty_generate(JSON(response.body))
-    ```
+```ruby
+puts JSON::pretty_generate(JSON(response.body))
+```
 
 ## <a name="json-response"></a>JSON 応答
 
@@ -191,7 +193,7 @@ ms.locfileid: "75448373"
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [シングル ページ Web アプリを作成する](../tutorial-bing-video-search-single-page-app.md)
+> [単一ページの Web アプリの作成](../tutorial-bing-video-search-single-page-app.md)
 
 ## <a name="see-also"></a>関連項目 
 

@@ -7,12 +7,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: 583511194fb100add1d5fc4ea9c06a869cf652b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 182b4f262361db001dcb6d47bf3e8f2aac6bc9b3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77212273"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091523"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Azure PowerShell を使用して Azure 仮想マシンのディザスター リカバリーを設定する
 
@@ -418,7 +418,7 @@ $datadiskId1 = $vm.StorageProfile.DataDisks[0].ManagedDisk.Id
 $RecoveryReplicaDiskAccountType = $vm.StorageProfile.DataDisks[0].ManagedDisk.StorageAccountType
 $RecoveryTargetDiskAccountType = $vm.StorageProfile.DataDisks[0].ManagedDisk.StorageAccountType
 
-$DataDisk1ReplicationConfig  = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $CacheStorageAccount.Id `
+$DataDisk1ReplicationConfig  = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $EastUSCacheStorageAccount.Id `
          -DiskId $datadiskId1 -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType `
          -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
 

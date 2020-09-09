@@ -1,17 +1,15 @@
 ---
 title: Azure Functions のネットワークについてよく寄せられる質問
 description: Azure Functions のネットワークについてよく寄せられる質問とシナリオ。
-author: alexkarcher-msft
 ms.topic: troubleshooting
 ms.date: 4/11/2019
-ms.author: alkarche
 ms.reviewer: glenga
-ms.openlocfilehash: acb1e942c1f342ce6fee7d8aeacafcc1d7b6fd91
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 52e0a6f9261d89ecd7c660be118162a898988526
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75409525"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385910"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Azure Functions のネットワークについてよく寄せられる質問
 
@@ -55,7 +53,7 @@ Premium プラン、App Service プラン、または App Service Environment �
 
 ## <a name="how-can-i-deploy-my-function-app-in-a-virtual-network"></a>仮想ネットワークで関数アプリをデプロイするにはどうすればよいですか?
 
-全体が仮想ネットワーク内にある関数アプリを作成する唯一の方法は、App Service Environment にデプロイすることです。 内部ロード バランサーと App Service Environment の併用の詳細については、まず「[App Service Environment で内部ロード バランサーを作成して使用する](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase)」の記事から参照してください。
+全体が仮想ネットワーク内にある関数アプリを作成する唯一の方法は、App Service Environment にデプロイすることです。 内部ロード バランサーと App Service Environment の併用の詳細については、まず「[App Service Environment で内部ロード バランサーを作成して使用する](../app-service/environment/create-ilb-ase.md)」の記事から参照してください。
 
 仮想ネットワークのリソースへの一方向のアクセスのみが必要なシナリオ、または緩くネットワークを分離する必要があるシナリオについては、[Functions のネットワークの概要](functions-networking-options.md)に関する記事を参照してください。
 

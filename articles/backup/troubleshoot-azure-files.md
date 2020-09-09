@@ -3,12 +3,12 @@ title: Azure ファイル共有のバックアップのトラブルシューテ�
 description: この記事は、Azure ファイル共有を保護する際に発生する問題に関するトラブルシューティング情報です。
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: a9b3514b4c1a00cc2f9bb1e1922975bf0bb70d24
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: b6f4c74f6e2e8c463d1bcbd78d6ff79d3fb6ee56
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562085"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889810"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Azure ファイル共有のバックアップ中の問題のトラブルシューティング
 
@@ -25,6 +25,7 @@ ms.locfileid: "82562085"
   >ストレージ アカウントのすべてのファイル共有は、1 つの Recovery Services コンテナーのみで保護できます。 [このスクリプト](scripts/backup-powershell-script-find-recovery-services-vault.md)を使用すると、ご自分のストレージ アカウントが登録されている Recovery Services コンテナーを見つけるのに役立ちます。
 
 - サポートされていないストレージ アカウントのいずれにもファイル共有が存在しないようにしてください。 サポートされているストレージ アカウントを見つけるには、「[Azure ファイル共有のバックアップのサポート マトリックス](azure-file-share-support-matrix.md)」を参照してください。
+- 新しいストレージ アカウントの場合、ストレージ アカウント名とリソース グループ名を組み合わせた長さが確実に 84 文字を超えないようにしてください。従来のストレージ アカウントの場合は 77 文字です。
 - ストレージ アカウントのファイアウォール設定を確認して、信頼された Microsoft サービスからストレージ アカウントへのアクセスを許可するオプションが有効になっていることを確認します。
 
 ### <a name="error-in-portal-states-discovery-of-storage-accounts-failed"></a>ポータルのエラーが、ストレージ アカウントの検出に失敗したことを示しています
@@ -56,6 +57,9 @@ Azure portal で、お使いの**コンテナー** >  **[バックアップ イ�
 >Recovery Services コンテナーは、コンテナーに登録されているすべてのストレージ アカウントの登録を解除した後にのみ削除できます。
 
 ## <a name="common-backup-or-restore-errors"></a>バックアップまたは復元に関する一般的なエラー
+
+>[!NOTE]
+>バックアップ操作または復元操作を実行するための十分なアクセス許可があることを確認するには、[このドキュメント](./backup-rbac-rs-vault.md#minimum-role-requirements-for-the-azure-file-share-backup)を参照してください。
 
 ### <a name="filesharenotfound--operation-failed-as-the-file-share-is-not-found"></a>FileShareNotFound- ファイル共有が見つからないため、操作が失敗しました
 
@@ -276,6 +280,43 @@ Error Code:BMSUserErrorObjectLocked
 エラー メッセージ:選択された項目で別の操作が実行中です。
 
 進行中の他の操作が完了するのを待って、しばらくしてから再試行してください。
+
+## <a name="common-soft-delete-related-errors"></a>論理的な削除に関連する一般的なエラー
+
+### <a name="usererrorrestoreafsinsoftdeletestate--this-restore-point-is-not-available-as-the-snapshot-associated-with-this-point-is-in-a-file-share-that-is-in-soft-deleted-state"></a>UserErrorRestoreAFSInSoftDeleteState - この復元ポイントに関連付けられているスナップショットが論理的に削除された状態のファイル共有に含まれるため、このポイントを使用できません
+
+Error Code:UserErrorRestoreAFSInSoftDeleteState
+
+エラー メッセージ:この復元ポイントに関連付けられているスナップショットが論理的に削除された状態のファイル共有に含まれるため、このポイントを使用できません。
+
+データが論理的な削除状態である場合は復元操作を実行できません。 Files ポータルから、または[削除を取り消すためのスクリプト](scripts/backup-powershell-script-undelete-file-share.md)を使用して、ファイル共有の削除を取り消してから、復元を試行します。
+
+### <a name="usererrorrestoreafsindeletestate--listed-restore-points-are-not-available-as-the-associated-file-share-containing-the-restore-point-snapshots-has-been-deleted-permanently"></a>UserErrorRestoreAFSInDeleteState - 復元ポイントのスナップショットが含まれている関連付けられたファイル共有が完全に削除されているため、一覧の復元ポイントは利用できません
+
+Error Code:UserErrorRestoreAFSInDeleteState
+
+エラー メッセージ:復元ポイントのスナップショットが含まれている関連付けられたファイル共有が完全に削除されているため、一覧の復元ポイントは利用できません。
+
+バックアップされたファイル共有が削除されているかどうかを確認します。 論理的に削除された状態の場合、論理的な削除の保持期間が経過しているために復旧されなかったのか確認します。 どちらの場合も、すべてのスナップショットが完全に失われ、データを復旧することはできません。
+
+>[!NOTE]
+> すべての復元ポイントが失われるのを防ぐために、バックアップされたファイル共有を削除しないようにすること、または論理的に削除された状態の場合は、論理的な削除の保持期間が終了する前に削除を取り消すことをお勧めします。
+
+### <a name="usererrorbackupafsinsoftdeletestate---backup-failed-as-the-azure-file-share-is-in-soft-deleted-state"></a>UserErrorBackupAFSInSoftDeleteState - Azure ファイル共有が論理的に削除された状態であるため、バックアップに失敗しました
+
+Error Code:UserErrorBackupAFSInSoftDeleteState
+
+エラー メッセージ:Azure ファイル共有が論理的に削除された状態であるため、バックアップに失敗しました
+
+**Files ポータル**から、または[削除を取り消すためのスクリプト](scripts/backup-powershell-script-undelete-file-share.md)を使用して、ファイル共有の削除を取り消します。その後、バックアップを継続し、データが完全に削除されるのを回避します。
+
+### <a name="usererrorbackupafsindeletestate--backup-failed-as-the-associated-azure-file-share-is-permanently-deleted"></a>UserErrorBackupAFSInDeleteState- 関連付けられている Azure ファイル共有が完全に削除されているため、バックアップに失敗しました
+
+Error Code:UserErrorBackupAFSInDeleteState
+
+エラー メッセージ:関連付けられている Azure ファイル共有が完全に削除されているため、バックアップに失敗しました
+
+バックアップされたファイル共有が完全に削除されているかどうかを確認します。 されている場合は、バックアップ エラーの繰り返しを回避するために、このファイル共有のバックアップを停止してください。 保護を停止する方法については、[Azure ファイル共有の保護の停止](./manage-afs-backup.md#stop-protection-on-a-file-share)に関する記事を参照してください
 
 ## <a name="next-steps"></a>次のステップ
 

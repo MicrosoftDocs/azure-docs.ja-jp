@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 5d1b0b19523eb37aa83aa59b24114be9f76ffa55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad2ac118908f1c1f77ea204ae2400913ac0807cb
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "68882766"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147399"
 ---
 # <a name="add-analytics-to-the-bing-search-apis"></a>Bing Search API に分析を追加する
 
 Bing Statistics は、Bing Search API に分析情報を提供します。 こうした分析には、呼び出しのボリューム、上位のクエリ文字列、地理的な分布などが含まれます。 [Azure portal](https://ms.portal.azure.com) で Bing Statistics を有効にするには、Azure リソースに移動し、 **[Enable Bing Statistics]\(Bing Statisticsを有効にする\)** をクリックします。
 
 > [!IMPORTANT]
-> * Bing Statistics は、無料試用版サブスクリプション、または無料の `F0` 価格レベルのリソースでは利用できません。
+> * Bing Statistics は、無料の `F0` 価格レベルのリソースでは利用できません。
 > * Bing Statistics ダッシュボードで入手できるデータを使用して、サード パーティに配布するためのアプリケーションを作成することはできません。
 > * Bing Statistics を有効にすると、サブスクリプションの料金が少し上がります。 詳細については、[価格](https://aka.ms/bingstatisticspricing)のページを参照してください。
 

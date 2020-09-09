@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Syxsense の統合 | Microsoft Docs
 description: Azure Active Directory と Syxsense の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: a109c82f-ece5-4897-9d1b-a18044462e8a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/07/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 684b8c31524c55ad3335c02ec1268f1afea78a93
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3bb03444062a5652e4e0aad24560b90acd2ce2d2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77086588"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544819"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-syxsense"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Syxsense の統合
 
@@ -86,10 +82,6 @@ Syxsense に対する Azure AD SSO を構成してテストするには、次の
     a. **[識別子]** ボックスに、`https://<SUBDOMAIN>.cloudmanagementsuite.com/Saml2` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<SUBDOMAIN>.cloudmanagementsuite.com/Saml2/Acs` のパターンを使用して URL を入力します
-
-1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
-
-    **[サインオン URL]** ボックスに、`https://<SUBDOMAIN>.cloudmanagementsuite.com/samlautologin` という形式で URL を入力します。
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Syxsense クライアント サポート チーム](mailto:DevTeam@syxsense.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

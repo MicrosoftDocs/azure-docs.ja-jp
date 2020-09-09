@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
-ms.openlocfilehash: ff01aed92669acb193ff149ea9298550134f42a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: afd3979690b8952c915a49099ee04b3d416031fd
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228879"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189731"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>Azure への VMware レプリケーションのソース環境を設定する
 
@@ -37,7 +37,7 @@ ms.locfileid: "79228879"
 
 ## <a name="set-up-the-configuration-server"></a>構成サーバーを設定する
 
-Open Virtualization Application (OVA) テンプレートを使用し、構成サーバーをオンプレミスの VMware VM として設定できます。 VMware VM にインストールされるコンポーネントについては、[こちら](concepts-vmware-to-azure-architecture.md)をご覧ください。
+Open Virtualization Application (OVA) テンプレートを使用し、構成サーバーをオンプレミスの VMware VM として設定できます。 VMware VM にインストールされるコンポーネントについては、[こちら](./vmware-azure-architecture.md)をご覧ください。
 
 1. 構成サーバー デプロイの[前提条件](vmware-azure-deploy-configuration-server.md#prerequisites)を確認します。
 2. デプロイに必要な[容量を確認](vmware-azure-deploy-configuration-server.md#sizing-and-capacity-requirements)します。
@@ -82,6 +82,18 @@ Open Virtualization Application (OVA) テンプレートを使用し、構成サ
 5. C:\ProgramData\LogUploadServiceLogs
 6. C:\ProgramData\Microsoft Azure Site Recovery
 7. Azure Site Recovery 負荷分散プロセス サーバーのインストール ディレクトリ。例: C:\Program Files (x86)\Microsoft Azure Site Recovery
+
+### <a name="if-antivirus-software-is-active-on-the-linux-master-target"></a>ウイルス対策ソフトウェアが Linux マスター ターゲットで有効になっている場合
+
+ウイルス対策ソフトウェアから次のフォルダーを除外します
+
+1.  /usr/local/ASR
+2.  /usr/local/InMage
+3.  /var/log/vxlogs
+4.  /var/log
+5.  /var/log/ApplicationPolicyLogs
+6.  /var/log/ASRsetuptelemetry
+7.  /var/log/ASRsetuptelemetry_uploaded
 
 
 ## <a name="next-steps"></a>次のステップ

@@ -1,35 +1,34 @@
 ---
 title: 実稼働環境のモデルでデータを収集する
 titleSuffix: Azure Machine Learning
-description: Azure Blob Storage で Azure Machine Learning の入力モデル データを収集する方法について説明します。
+description: デプロイされた Azure Machine Learning モデルからデータを収集する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.reviewer: laobri
+ms.reviewer: sgilley
 ms.author: copeters
 author: lostmygithubaccount
-ms.date: 11/12/2019
-ms.custom: seodec18
-ms.openlocfilehash: 44acc81df9eb6dc6a6af28b5b0f4730aa93adffc
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.date: 07/14/2020
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: 3ece750ab63c2c8e33fbfb46739eec55de4f5d07
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475426"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320189"
 ---
-# <a name="collect-data-for-models-in-production"></a>実稼働環境でモデルのデータを収集する
+# <a name="collect-data-from-models-in-production"></a>実稼働環境のモデルからデータを収集する
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
->[!IMPORTANT]
-> Azure Machine Learning Monitoring SDK は、間もなく廃止されます。 この SDK はまだ、同 SDK を使用してモデルのデータ ドリフトを監視している開発者には適しています。 しかし、新規の利用者には、シンプルな [Application Insights によるデータ監視](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights)の使用をお勧めします。
-
-この記事では、Azure Machine Learning から入力モデル データを収集する方法を示します。 また、入力データを Azure Kubernetes Service (AKS) クラスターにデプロイし、出力データを Azure Blob Storage に格納する方法も示します。
+この記事では、Azure Kubernetes Service (AKS) クラスターにデプロイされた Azure Machine Learning モデルからデータを収集する方法について説明します。 収集したデータは、Azure Blob ストレージに格納されます。
 
 収集を有効にすると、収集したデータで次のことができるようになります。
 
-* 実稼働データがモデルに追加されたときの[データ ドリフトを監視する](how-to-monitor-data-drift.md)。
+* 収集した実稼働データについて[データの誤差を監視する](how-to-monitor-datasets.md)。
+
+* [Power BI](#powerbi) または [Azure Databricks](#databricks)を使用して、収集したデータを分析する。
 
 * モデルの再トレーニングや最適化の時期をより適切に判断する。
 
@@ -68,17 +67,17 @@ ms.locfileid: "80475426"
 
 - AKS クラスターが必要です。 作成とデプロイの方法については、[デプロイする方法とその場所](how-to-deploy-and-where.md)に関するページを参照してください。
 
-- [環境を設定](how-to-configure-environment.md)し、[Azure Machine Learning Monitoring SDK](https://aka.ms/aml-monitoring-sdk) をインストールします。
+- [環境を設定](how-to-configure-environment.md)し、[Azure Machine Learning Monitoring SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) をインストールします。
 
 ## <a name="enable-data-collection"></a>データ収集を有効にする
 
-データ コレクションは、Azure Machine Learning または他のツールを使用してデプロイするモデルに関係なく有効にできます。
+[データ収集](https://docs.microsoft.com/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?view=azure-ml-py)は、Azure Machine Learning または他のツールを使用してデプロイするモデルに関係なく、有効にすることができます。
 
 データ コレクションを有効にするには、次の操作を行う必要があります。
 
 1. スコア付けファイルを開きます。
 
-1. ファイルの先頭に[次のコード](https://aka.ms/aml-monitoring-sdk)を追加します。
+1. ファイルの先頭に次のコードを追加します。
 
    ```python 
    from azureml.monitoring import ModelDataCollector
@@ -119,41 +118,10 @@ ms.locfileid: "80475426"
 
 1. 新しいイメージを作成して機械学習モデルをデプロイするには、[デプロイする方法とその場所](how-to-deploy-and-where.md)に関するページを参照してください。
 
-依存関係が環境ファイルとスコアリング ファイルにインストールされたサービスが既に存在する場合は、次の手順でデータ コレクションを有効にします。
-
-1. [Azure Machine Learning](https://ml.azure.com) に移動します。
-
-1. ワークスペースを開きます。
-
-1. **[デプロイ]**  >  **[サービスの選択]**  >  **[編集]** の順に選択します。
-
-   ![サービスを編集する](././media/how-to-enable-data-collection/EditService.PNG)
-
-1. **[詳細設定]** で **[Enable Application Insights diagnostics and data collection]\(Application Insights の診断とデータ収集を有効にする\)** をオンにします。
-
-1. **[更新]** を選択して変更を適用します。
 
 ## <a name="disable-data-collection"></a>データ収集を無効にする
 
-データ コレクションはいつでも停止できます。 データ コレクションを無効にするには、Python コードまたは Azure Machine Learning を使用します。
-
-### <a name="option-1---disable-data-collection-in-azure-machine-learning"></a>オプション 1 - Azure Machine Learning でデータ コレクションを無効にする
-
-1. [Azure Machine Learning](https://ml.azure.com) にサインインします。
-
-1. ワークスペースを開きます。
-
-1. **[デプロイ]**  >  **[サービスの選択]**  >  **[編集]** の順に選択します。
-
-   [![[編集] オプションを選択する](././media/how-to-enable-data-collection/EditService.PNG)](./././media/how-to-enable-data-collection/EditService.PNG#lightbox)
-
-1. **[詳細設定]** で **[Enable Application Insights diagnostics and data collection]\(Application Insights の診断とデータ収集を有効にする\)** をオフにします。
-
-1. **[更新]** をクリックして変更を適用します。
-
-これらの設定には、[Azure Machine Learning](https://ml.azure.com) のワークスペースでアクセスすることもできます。
-
-### <a name="option-2---use-python-to-disable-data-collection"></a>オプション 2 - Python を使用してデータ コレクションを無効にする
+データ コレクションはいつでも停止できます。 Python コードを使用してデータ コレクションを無効にします。
 
   ```python 
   ## replace <service_name> with the name of the web service
@@ -166,7 +134,7 @@ ms.locfileid: "80475426"
 
 ### <a name="quickly-access-your-blob-data"></a>BLOB データにすばやくアクセスする
 
-1. [Azure Machine Learning](https://ml.azure.com) にサインインします。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
 
 1. ワークスペースを開きます。
 
@@ -181,7 +149,7 @@ ms.locfileid: "80475426"
    # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
    ```
 
-### <a name="analyze-model-data-using-power-bi"></a>Power BI を使用してモデル データを分析する
+### <a name="analyze-model-data-using-power-bi"></a><a id="powerbi"></a>Power BI を使用してモデル データを分析する
 
 1. [Power BI Desktop](https://www.powerbi.com) をダウンロードして開きます。
 
@@ -217,7 +185,7 @@ ms.locfileid: "80475426"
 
 1. モデル データでのカスタム レポートの作成を開始します。
 
-### <a name="analyze-model-data-using-azure-databricks"></a>Azure Databricks を使用してモデル データを分析する
+### <a name="analyze-model-data-using-azure-databricks"></a><a id="databricks"></a> Azure Databricks を使用してモデル データを分析する
 
 1. [Azure Databricks ワークスペース](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)を作成します。
 
@@ -241,3 +209,7 @@ ms.locfileid: "80475426"
     [![Databricks の設定](./media/how-to-enable-data-collection/dbsetup.png)](././media/how-to-enable-data-collection/dbsetup.png#lightbox)
 
 1. データを表示および分析するには、テンプレートの手順に従います。
+
+## <a name="next-steps"></a>次のステップ
+
+収集したデータについて[データの誤差を検出します](how-to-monitor-datasets.md)。

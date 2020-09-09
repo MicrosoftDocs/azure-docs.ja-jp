@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 2912777c001a36ec913e2cfd618091ada5aa107a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3903500e87dd162779d1732a4cfe405ba34e702c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74807138"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074745"
 ---
 # <a name="delete-an-hdinsight-cluster-using-your-browser-powershell-or-the-azure-cli"></a>ブラウザー、PowerShell、または Azure CLI を使用して HDInsight クラスターを削除する
 
-HDInsight クラスターの課金は、クラスターが作成されると開始し、クラスターが削除されると停止します。 課金は分単位なので、クラスターを使わなくなったら必ず削除してください。 このドキュメントでは、[Azure portal](https://portal.azure.com)、[Azure PowerShell Az モジュール](https://docs.microsoft.com/powershell/azure/overview)、および [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) を使ってクラスターを削除する方法について説明します。
+HDInsight クラスターの課金は、クラスターが作成されると開始し、クラスターが削除されると停止します。 課金は分単位なので、クラスターを使わなくなったら必ず削除してください。 このドキュメントでは、[Azure portal](https://portal.azure.com)、[Azure PowerShell Az モジュール](https://docs.microsoft.com/powershell/azure/)、および [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) を使ってクラスターを削除する方法について説明します。
 
 > [!IMPORTANT]  
 > HDInsight クラスターを削除しても、そのクラスターに関連付けられている Azure Storage アカウントまたは Data Lake Storage は削除されません。 これらのサービスに格納されているデータは、将来再利用できます。

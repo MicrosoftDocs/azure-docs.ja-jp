@@ -8,18 +8,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/31/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 9a76f72d3f01ab9253c452e49dde171280fe481d
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 24928ec4117b321cfec7177fdad40f2a3ab7a1f4
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654410"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722723"
 ---
-# <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>チュートリアル:Azure Active Directory Domain Services (プレビュー) で、オンプレミスのドメインへの送信フォレストの信頼を作成する
+# <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>チュートリアル:Azure Active Directory Domain Services で、オンプレミスのドメインへの送信フォレストの信頼を作成する
 
-パスワード ハッシュを同期できない環境、またはスマート カードを使用して排他的にサインインするために自分でパスワードがわからないユーザーが含まれる環境では、Azure Active Directory Domain Services (AD DS) でリソース フォレストを使用できます。 リソース フォレストでは、Azure AD DS から 1 つまたは複数のオンプレミスの AD DS 環境への一方向の送信の信頼が使用されます。 この信頼関係により、ユーザー、アプリケーション、およびコンピューターは、Azure AD DS マネージド ドメインから、オンプレミスのドメインに対して認証を行うことができます。 Azure AD DS リソース フォレストは現在、プレビューの段階です。
+パスワード ハッシュを同期できない環境、またはスマート カードを使用して排他的にサインインするために自分でパスワードがわからないユーザーが含まれる環境では、Azure Active Directory Domain Services (Azure AD DS) でリソース フォレストを使用できます。 リソース フォレストでは、Azure AD DS から 1 つまたは複数のオンプレミスの AD DS 環境への一方向の送信の信頼が使用されます。 この信頼関係により、ユーザー、アプリケーション、およびコンピューターは、Azure AD DS マネージド ドメインから、オンプレミスのドメインに対して認証を行うことができます。 リソース フォレストでは、オンプレミスのパスワード ハッシュが同期されることはありません。
 
 ![Azure AD DS からオンプレミスの AD DS へのフォレストの信頼の図](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
 
@@ -42,10 +42,12 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 * ご利用のサブスクリプションに関連付けられた Azure Active Directory テナント (オンプレミス ディレクトリまたはクラウド専用ディレクトリと同期されていること)。
     * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
 * リソース フォレストを使用して作成され、ご利用の Azure AD テナント内で構成された Azure Active Directory Domain Services マネージド ドメイン。
-    * 必要であれば、[Azure Active Directory Domain Services インスタンスを作成して構成][create-azure-ad-ds-instance-advanced]してください。
+    * 必要に応じて、[Azure Active Directory Domain Services のマネージド ドメインを作成して構成][create-azure-ad-ds-instance-advanced]します。
     
     > [!IMPORTANT]
-    > 必ず*リソース* フォレストを使用して Azure AD DS マネージド ドメインを作成してください。 既定のオプションでは、*ユーザー* フォレストが作成されます。 オンプレミスの AD DS 環境への信頼を作成できるのは、リソース フォレストだけです。 また、マネージド ドメインに対して *Enterprise* SKU を少なくとも使用する必要があります。 必要に応じて、[Azure AD DS マネージド ドメインの SKU を変更][howto-change-sku]します。
+    > 必ず*リソース* フォレストを使用してマネージド ドメインを作成してください。 既定のオプションでは、*ユーザー* フォレストが作成されます。 オンプレミスの AD DS 環境への信頼を作成できるのは、リソース フォレストだけです。
+    >
+    > また、マネージド ドメインに対して *Enterprise* SKU を少なくとも使用する必要があります。 必要に応じて、[マネージド ドメインの SKU を変更][howto-change-sku]します。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -69,16 +71,16 @@ Azure AD DS でフォレストの信頼を構成する前に、Azure とオン�
 
 ## <a name="configure-dns-in-the-on-premises-domain"></a>オンプレミスのドメイン内で DNS を構成する
 
-オンプレミスの環境から Azure AD DS マネージド ドメインを正しく解決するには、既存の DNS サーバーにフォワーダーを追加することが必要になる場合があります。 Azure AD DS マネージド ドメインと通信するようにオンプレミスの環境が構成されていない場合は、オンプレミスの AD DS ドメインに対して管理ワークステーションから次の手順を行います。
+オンプレミスの環境からマネージド ドメインを正しく解決するには、既存の DNS サーバーにフォワーダーを追加することが必要になる場合があります。 マネージド ドメインと通信するようにオンプレミスの環境を構成していない場合は、オンプレミスの AD DS ドメインに対して管理ワークステーションから次の手順を行います。
 
 1. **[スタート] | [管理ツール] | [DNS]** の順に選択します。
 1. *myAD01* などの DNS サーバーを右クリックし、 **[プロパティ]** を選択します。
 1. **[フォワーダー]** 、 **[編集]** の順に選択して、他のフォワーダーを追加します。
-1. *10.0.2.4* や *10.0.2.5* などの、Azure AD DS マネージド ドメインの IP アドレスを追加します。
+1. *10.0.2.4* や *10.0.2.5* などの、マネージド ドメインの IP アドレスを追加します。
 
 ## <a name="create-inbound-forest-trust-in-the-on-premises-domain"></a>オンプレミス ドメインに受信フォレストの信頼を作成する
 
-オンプレミスの AD DS ドメインには、Azure AD DS マネージド ドメインに対する受信フォレストの信頼が必要です。 この信頼は、オンプレミスの AD DS ドメインで手動で作成する必要があり、Azure portal から作成することはできません。
+オンプレミスの AD DS ドメインには、マネージド ドメインに対する受信フォレストの信頼が必要です。 この信頼は、オンプレミスの AD DS ドメインで手動で作成する必要があり、Azure portal から作成することはできません。
 
 オンプレミスの AD DS ドメイン上で受信の信頼を構成するには、オンプレミスの AD DS ドメインに対して管理ワークステーションから次の手順を行います。
 
@@ -87,22 +89,22 @@ Azure AD DS でフォレストの信頼を構成する前に、Azure とオン�
 1. **[信頼]** タブ、 **[新しい信頼]** の順に選択します。
 1. Azure AD DS ドメイン名に対して名前 (*aaddscontoso.com* など) を入力してから、 **[次へ]** を選択します
 1. **フォレストの信頼**を作成するオプションを選択して、**一方向: 受信**の信頼を作成します。
-1. **[This domain only]\(このドメインのみ\)** に信頼を作成することを選択します。 次の手順では、Azure portal で Azure AD DS マネージド ドメインに対する信頼を作成します。
+1. **[This domain only]\(このドメインのみ\)** に信頼を作成することを選択します。 次の手順では、Azure portal でマネージド ドメインに対する信頼を作成します。
 1. **フォレスト全体の認証**を使用することを選択してから、信頼パスワードを入力して確認します。 これと同じパスワードを、次のセクションの Azure portal にも入力します。
 1. 既定のオプションを使用して次のいくつかのウィンドウをステップ実行し、オプションの **[確認しない]** を選択します。
 1. **[完了]** を選択します。
 
 ## <a name="create-outbound-forest-trust-in-azure-ad-ds"></a>Azure AD DS で送信フォレストの信頼を作成する
 
-Azure AD DS マネージド ドメインを解決するようにオンプレミスの AD DS ドメインが構成され、受信フォレストの信頼が作成された状態で、現在、送信フォレストの信頼が作成されています。 この送信フォレストの信頼により、オンプレミスの AD DS ドメインと Azure AD DS マネージド ドメインとの間の信頼関係が完成します。
+マネージド ドメインを解決するようにオンプレミスの AD DS ドメインが構成され、受信フォレストの信頼が作成された状態で、現在、送信フォレストの信頼が作成されています。 この送信フォレストの信頼により、オンプレミスの AD DS ドメインとマネージド ドメインとの間の信頼関係が完成します。
 
-Azure portal で Azure AD DS マネージド ドメインに対する送信の信頼を作成するには、次の手順を行います。
+マネージド ドメインに対する送信の信頼を Azure portal で作成するには、次の手順を行います。
 
 1. Azure portal で **Azure AD Domain Services** を検索して選択し、次にご利用のマネージド ドメイン (*aaddscontoso.com* など) を選択します
-1. Azure AD DS マネージド ドメインの左側にあるメニューで、 **[信頼]** を選択してから、 **[+ 追加]** を選択して信頼を追加します。
+1. マネージド ドメインの左側にあるメニューで、 **[信頼]** を選択してから、 **[+ 追加]** を選択して信頼を追加します。
 
    > [!NOTE]
-   > **[信頼]** メニュー オプションが表示されない場合は、 **[プロパティ]** で *フォレストの種類* を確認してください。 信頼を作成できるのは、*リソース* フォレストだけです。 フォレストの種類が*ユーザー*場合、信頼を作成することはできません。 現在、Azure AD DS マネージド ドメインのフォレストの種類を変更する方法はありません。 マネージド ドメインを削除し、リソース フォレストとして作成し直す必要があります。
+   > **[信頼]** メニュー オプションが表示されない場合は、 **[プロパティ]** で *フォレストの種類* を確認してください。 信頼を作成できるのは、*リソース* フォレストだけです。 フォレストの種類が*ユーザー*場合、信頼を作成することはできません。 現在、マネージド ドメインのフォレストの種類を変更する方法はありません。 マネージド ドメインを削除し、リソース フォレストとして作成し直す必要があります。
 
 1. ご利用の信頼を識別する表示名を入力し、次にオンプレミスの信頼されたフォレストの DNS 名 (*onprem.contoso.com* など) を入力します。
 1. 前のセクションでオンプレミスの AD DS ドメインに対して受信フォレストの信頼を構成したときに使用したのと同じ信頼パスワードを指定します。
@@ -124,9 +126,9 @@ Azure portal で Azure AD DS マネージド ドメインに対する送信の�
 
 ### <a name="on-premises-user-authentication-from-the-azure-ad-ds-resource-forest"></a>Azure AD DS リソース フォレストからのオンプレミスのユーザー認証
 
-Windows Server 仮想マシンを Azure AD DS リソース ドメインに参加させる必要があります。 この仮想マシンを使用して、オンプレミスのユーザーが仮想マシン上で認証されることをテストします。
+Windows Server 仮想マシンをマネージド ドメインに参加させる必要があります。 この仮想マシンを使用して、オンプレミスのユーザーが仮想マシン上で認証されることをテストします。 必要に応じて、[Windows VM を作成し、マネージド ドメインに参加させます][join-windows-vm]。
 
-1. [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview) と Azure AD DS 管理者の資格情報を使用して、Azure AD DS リソース フォレストに参加している Windows Server VM に接続します。
+1. [Azure Bastion](../bastion/bastion-overview.md) と Azure AD DS 管理者の資格情報を使用して、Azure AD DS リソース フォレストに参加している Windows Server VM に接続します。
 1. コマンド プロンプトを開き、`whoami` コマンドを使用して、現在認証されているユーザーの識別名を表示します。
 
     ```console
@@ -148,7 +150,7 @@ Azure AD DS リソース フォレストに参加している Windows Server VM 
 
 #### <a name="enable-file-and-printer-sharing"></a>ファイルとプリンターの共有を有効にする
 
-1. [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview) と Azure AD DS 管理者の資格情報を使用して、Azure AD DS リソース フォレストに参加している Windows Server VM に接続します。
+1. [Azure Bastion](../bastion/bastion-overview.md) と Azure AD DS 管理者の資格情報を使用して、Azure AD DS リソース フォレストに参加している Windows Server VM に接続します。
 
 1. **[Windows の設定]** を開き、 **[ネットワークと共有センター]** を検索して選択します。
 1. **[共有の詳細設定の変更]** のオプションを選択します。
@@ -167,7 +169,7 @@ Azure AD DS リソース フォレストに参加している Windows Server VM 
 1. **[選択するオブジェクト名を入力してください]** ボックスに「*Domain Users*」と入力します。 **[名前の確認]** を選択してから、オンプレミスの Active Directory の資格情報を入力して、 **[OK]** を選択します。
 
     > [!NOTE]
-    > 信頼関係は一方向のみであるため、資格情報を指定する必要があります。 つまり、Azure AD DS からのユーザーは、リソースにアクセスすることも、信頼された (オンプレミスの) ドメイン内のユーザーまたはグループを検索することもできません。
+    > 信頼関係は一方向のみであるため、資格情報を指定する必要があります。 つまり、Azure AD DS マネージド ドメインからのユーザーは、リソースにアクセスすることも、信頼された (オンプレミスの) ドメイン内のユーザーまたはグループを検索することもできません。
 
 1. ご利用のオンプレミスの Active Directory からの **[ドメイン ユーザー]** グループは、 **[FileServerAccess]** グループのメンバーである必要があります。 **[OK]** を選択してグループを保存し、ウィンドウを閉じます。
 
@@ -216,3 +218,4 @@ Azure AD DS 内のフォレストの種類に関する概念的な詳細につ�
 [howto-change-sku]: change-sku.md
 [vpn-gateway]: ../vpn-gateway/vpn-gateway-about-vpngateways.md
 [expressroute]: ../expressroute/expressroute-introduction.md
+[join-windows-vm]: join-windows-vm.md

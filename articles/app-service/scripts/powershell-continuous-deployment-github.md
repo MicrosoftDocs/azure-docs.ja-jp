@@ -5,19 +5,19 @@ tags: azure-service-management
 ms.assetid: 42f901f8-02f7-4869-b22d-d99ef59f874c
 ms.topic: sample
 ms.date: 03/20/2017
-ms.custom: mvc
-ms.openlocfilehash: eee6ac9f9c469f9e1a9344ab4a30626c219d7836
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 0ccb108b55844f822a42a3f1bccbb182a5658289
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74685168"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89073864"
 ---
 # <a name="create-a-web-app-with-continuous-deployment-from-github"></a>GitHub からの継続的なデプロイで Web アプリを作成する
 
 このサンプル スクリプトでは、App Service で Web アプリを関連リソースと合わせて作成し、GitHub リポジトリからの[継続的デプロイ](../deploy-continuous-deployment.md)を設定します。 継続的なデプロイを使用しない GitHub でのデプロイについては、「[Web アプリを作成して GitHub からコードをデプロイする](powershell-deploy-github.md)」を参照してください。
 
-必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールし、`Connect-AzAccount` を実行して、Azure との接続を作成します。 また、次のことを確認します。
+必要に応じて、[Azure PowerShell ガイド](/powershell/azure/)の手順に従って Azure PowerShell をインストールし、`Connect-AzAccount` を実行して、Azure との接続を作成します。 また、次のことを確認します。
 
 - アプリケーション コードが、自分が所有するパブリックまたはプライベートの GitHub リポジトリ内にある。 自動ビルドを取得するには、「[リポジトリを準備する](../deploy-continuous-deployment.md#prepare-your-repository)」の表に従ってリポジトリを構築します。
 - [GitHub アカウントで個人用アクセス トークンを作成](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line)している。
@@ -49,6 +49,6 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
+Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。
 
 その他の Azure App Service Web Apps 用 Azure PowerShell サンプル スクリプトは、[Azure PowerShell サンプル](../samples-powershell.md)のページにあります。

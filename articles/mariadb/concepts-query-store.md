@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: a502638744009fc34a7f0a27f8034b89d2c8fa26
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79527811"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>クエリ ストアを使用した Azure Database for MariaDB のパフォーマンスの監視

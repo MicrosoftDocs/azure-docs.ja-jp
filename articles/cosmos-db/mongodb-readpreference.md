@@ -6,14 +6,15 @@ ms.author: sivethe
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2019
-ms.openlocfilehash: 579767a0d535605a2316c35bd413a75474b5a3de
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 22530e79a2bcf34a88ea857bda56b6f424894461
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409997"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421996"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API を使用して読み取りをグローバルに配布する方法について説明します
 

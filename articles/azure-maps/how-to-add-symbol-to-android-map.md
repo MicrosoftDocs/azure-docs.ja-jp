@@ -1,19 +1,19 @@
 ---
 title: Android マップにシンボル レイヤーを追加する | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps Android SDK を使用してマップにシンボル レイヤーを追加することによってマップ上にポイント データをレンダリングする方法について説明します。
-author: philmea
-ms.author: philmea
+description: マップにマーカーを追加する方法について説明します。 データ ソースのポイントベースのデータを含むシンボル レイヤーを、Azure Maps Android SDK を使用して追加する例を参照してください。
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 0eca73b5acae715283c05125181e12729ed5a772
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99a4f69a814314b233a3129ed31d18ffa1682d8d
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335582"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037390"
 ---
 # <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>Azure Maps Android SDK を使用してマップにシンボル レイヤーを追加する方法
 
@@ -172,6 +172,8 @@ ms.locfileid: "80335582"
 
 ![Android マップのピン](./media/how-to-add-symbol-to-android-map/android-map-pin.png)</center>
 
+> [!TIP]
+> 既定では、重なっているシンボルがシンボル レイヤーによって非表示になることで、シンボルのレンダリングが最適化されます。 拡大すると、非表示のシンボルが表示されるようになります。 この機能を無効にして、すべてのシンボルを常にレンダリングするには、`iconAllowOverlap` オプションを `true` に設定します。
 
 ## <a name="next-steps"></a>次のステップ
 

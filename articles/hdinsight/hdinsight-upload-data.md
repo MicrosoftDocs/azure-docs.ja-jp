@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdiseo17may2017,seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: e73a8a420c7591a45a62ba38123c6b3368e0f738
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d642397ef42227e530bd9eff14c3da6078241281
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190641"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085873"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>HDInsight で Apache Hadoop ジョブのデータをアップロードする
 
@@ -62,11 +62,11 @@ hadoop fs -copyFromLocal <localFilePath> <storageFilePath>
 
 HDInsight の既定のファイル システムは Azure Storage 内にあるため、/example/data/data.txt は実際には Azure Storage 内にあります。 このファイルは次のように表すこともできます。
 
-    wasbs:///example/data/data.txt
+`wasbs:///example/data/data.txt`
 
 or
 
-    wasbs://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt
+`wasbs://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt`
 
 ファイルに使用するその他の Hadoop コマンドの一覧は、[https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html) をご覧ください。
 
@@ -80,7 +80,7 @@ Azure Storage を操作するためのグラフィカル インターフェイ�
 | Client | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
 | [Microsoft Visual Studio Tools for HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources) |✔ |✔ |✔ |
-| [Azure 記憶域エクスプローラー](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) |✔ |✔ |✔ |
+| [Azure Storage Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) |✔ |✔ |✔ |
 | [`Cerulea`](https://www.cerebrata.com/products/cerulean/features/azure-storage) | | |✔ |
 | [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) | | |✔ |
 | [Microsoft Azure 用の CloudBerry Explorer](https://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |✔ |

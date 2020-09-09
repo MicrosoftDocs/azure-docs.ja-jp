@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services (MARS) エージェントをインス�
 description: Windows マシンをバックアップする目的で Microsoft Azure Recovery Services (MARS) エージェントをインストールする方法について説明します。
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: d3932b66dbc41ff2631e2cccbe716c0877a509d3
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 715153d445acbc372f8305ca39f5276bf8a39773
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422926"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533480"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Azure Backup MARS エージェントをインストールする
 
@@ -42,10 +42,10 @@ Azure Backup では、オンプレミスのマシンや Azure VM からファイ
 
 ## <a name="modify-storage-replication"></a>ストレージ レプリケーションを変更する
 
-既定では、コンテナーには [geo 冗長ストレージ (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs) が使用されます。
+既定では、コンテナーには [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy.md) が使用されます。
 
 * コンテナーをプライマリ バックアップ メカニズムとする場合は、GRS を使用することをお勧めします。
-* [ローカル冗長ストレージ (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) を使用し、Azure ストレージのコストを削減できます。
+* [ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy.md?toc=/azure/storage/blobs/toc.json) を使用し、Azure ストレージのコストを削減できます。
 
 ストレージ レプリケーションの種類を変更にするには:
 
@@ -66,11 +66,12 @@ Azure Backup では、オンプレミスのマシンや Azure VM からファイ
 マシンのインターネットへのアクセスが制限されている場合、マシンまたはプロキシのファイアウォール設定によって次の URL と IP アドレスが許可されていることを確保してください。
 
 * URL
-  * `www\.msftncsi.com`
+  * `www.msftncsi.com`
   * `*.Microsoft.com`
   * `*.WindowsAzure.com`
   * `*.microsoftonline.com`
   * `*.windows.net`
+  * `www.msftconnecttest.com`
 * IP アドレス
   * 20.190.128.0/18
   * 40.126.0.0/18
@@ -82,6 +83,7 @@ Azure Backup では、オンプレミスのマシンや Azure VM からファイ
 パブリック ピアリングを使用するには、まず次のドメインとアドレスへのアクセスを確保します。
 
 * `http://www.msftncsi.com/ncsi.txt`
+* `http://www.msftconnecttest.com/connecttest.txt`
 * `microsoft.com`
 * `.WindowsAzure.com`
 * `.microsoftonline.com`
@@ -93,7 +95,7 @@ Microsoft ピアリングを使用するには、次のサービス、リージ�
 * Azure リージョン、Recovery Services コンテナーの場所による
 * Azure Storage、Recovery Services コンテナーの場所による
 
-詳細については、「[ExpressRoute ルーティングの要件](https://docs.microsoft.com/azure/expressroute/expressroute-routing)」を参照してください。
+詳細については、「[ExpressRoute ルーティングの要件](../expressroute/expressroute-routing.md)」を参照してください。
 
 > [!NOTE]
 > パブリック ピアリングは、新しい回線では非推奨です。
@@ -153,7 +155,7 @@ Microsoft ピアリングを使用するには、次のサービス、リージ�
 
     ![サーバーの登録ウィザードを使用してコンテナーの資格情報を追加する](./media/backup-configure-vault/register1.png)
 
-1. **[暗号化の設定]** ページで、マシンのバックアップの暗号化と暗号化の解除に使用されるパスフレーズを指定します。
+1. **[暗号化の設定]** ページで、マシンのバックアップの暗号化と暗号化の解除に使用されるパスフレーズを指定します。 使用できるパスフレーズ文字の詳細については、[こちら](backup-azure-file-folder-backup-faq.md#what-characters-are-allowed-for-the-passphrase)を参照してください。
 
     * 安全な場所にパスフレーズを保存します。 バックアップを復元するために必要になります。
     * パスフレーズを紛失または忘れた場合、Microsoft でもバックアップ データは回復できません。

@@ -5,16 +5,16 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
-ms.openlocfilehash: 8cba02d3c7d1e649853570b199b646b1c4dcce2d
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: dc14334668b76ee8cbb81e48abfe1eecf17fa138
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80667417"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130401"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリーでのレプリケーションのトラブルシューティング
 
-この記事では、リージョン間で Azure 仮想マシン (VM) をレプリケートおよび復旧するときに、Azure Site Recovery で発生する一般的な問題について説明します。 また、一般的な問題のトラブルシューティング方法についても説明します。 サポートされる構成の詳細については、[Azure VM をレプリケートするためのサポート マトリックス](site-recovery-support-matrix-azure-to-azure.md)に関するページをご覧ください。
+この記事では、リージョン間で Azure 仮想マシン (VM) をレプリケートおよび復旧するときに、Azure Site Recovery で発生する一般的な問題について説明します。 また、一般的な問題のトラブルシューティング方法についても説明します。 サポートされる構成の詳細については、[Azure VM をレプリケートするためのサポート マトリックス](./azure-to-azure-support-matrix.md)に関するページをご覧ください。
 
 Azure Site Recovery は、一貫してソース リージョンからディザスター リカバリー リージョンにデータをレプリケートします。 5 分ごとにクラッシュ整合性復旧ポイントも作成されます。 Site Recovery で復旧ポイントが作成されずに 60 分が経過すると、次の情報が通知されます。
 
@@ -41,7 +41,7 @@ Azure Site Recovery がイベントを作成するのは、ソース仮想マシ
 
 以下の表は、Azure Site Recovery の制限を示したものです。 これらの制限は、Microsoft のテストに基づいていますが、アプリケーションの入出力 (I/O) として想定されるすべての組み合わせを網羅したものではありません。 実際の結果は、ご使用のアプリケーションで発生するさまざまな I/O によって異なることが考えられます。
 
-ここで考慮していただきたい制限が 2 つあります。ディスクあたりのデータ チャーンと仮想マシンあたりのデータ チャーンです。 たとえば、次の表の Premium P20 ディスクを見てみましょう。 1 つの VM の場合、Site Recovery はディスクあたり 5 MB/秒のチャーンを処理できます。そのようなディスクが最大で 5 つあります。 Site Recovery には、VM あたりのチャーンの合計が 25 MB/秒という制限があります。
+ここで考慮していただきたい制限が 2 つあります。ディスクあたりのデータ チャーンと仮想マシンあたりのデータ チャーンです。 たとえば、次の表の Premium P20 ディスクを見てみましょう。 1 つの VM の場合、Site Recovery はディスクあたり 5 MB/秒のチャーンを処理できます。そのようなディスクが最大で 5 つあります。 Site Recovery には、VM あたりのチャーンの合計が 54 MB/秒という制限があります。
 
 **レプリケーション先のストレージ** | **ソース ディスクの平均 I/O サイズ** |**ソース ディスクの平均データ チャーン** | **ソース データ ディスクの 1 日あたりの合計データ チャーン**
 ---|---|---|---
@@ -78,7 +78,7 @@ Azure Site Recovery にはデータ変更率に制限があり、これはディ
 
 Site Recovery では、キャッシュ ストレージ アカウントにレプリケートされたデータを送信します。 仮想マシンからキャッシュ ストレージ アカウントへのデータ アップロード速度が 3 秒あたり 4 MB よりも遅い場合、ネットワーク待ち時間が発生することがあります。
 
-待ち時間に関連する問題を確認するには、[AzCopy](/azure/storage/common/storage-use-azcopy) を使用します。 このコマンドライン ユーティリティを使用して、仮想マシンからキャッシュ ストレージ アカウントにデータをアップロードすることができます。 待ち時間が長い場合は、VM からの送信ネットワーク トラフィックを制御するためのネットワーク仮想アプライアンス (NVA) を使用しているかどうかを確認します。 この場合、すべてのレプリケーション トラフィックが NVA を通過すると、アプライアンスがスロットルされる可能性があります。
+待ち時間に関連する問題を確認するには、[AzCopy](../storage/common/storage-use-azcopy-v10.md) を使用します。 このコマンドライン ユーティリティを使用して、仮想マシンからキャッシュ ストレージ アカウントにデータをアップロードすることができます。 待ち時間が長い場合は、VM からの送信ネットワーク トラフィックを制御するためのネットワーク仮想アプライアンス (NVA) を使用しているかどうかを確認します。 この場合、すべてのレプリケーション トラフィックが NVA を通過すると、アプライアンスがスロットルされる可能性があります。
 
 レプリケーション トラフィックが NVA に送られないように、"ストレージ" 用の仮想ネットワーク内にネットワーク サービス エンドポイントを作成することをお勧めします。 詳細については、「[ネットワーク仮想アプライアンスの構成](azure-to-azure-about-networking.md#network-virtual-appliance-configuration)」をご覧ください。
 
@@ -105,6 +105,10 @@ Site Recovery レプリケーションを動作させるには、VM で特定の
 ### <a name="youre-using-azure-storage-spaces-direct-configuration"></a>Azure 記憶域スペース ダイレクト構成を使用しています
 
 **修正方法**: Azure Site Recovery では、記憶域スペース ダイレクト構成のアプリケーション整合性復旧ポイントを作成できません。 [レプリケーション ポリシーを構成します](azure-to-azure-how-to-enable-replication-s2d-vms.md)。
+
+### <a name="app-consistency-not-enabled-on-linux-servers"></a>Linux サーバーでアプリの整合性が有効になっていない
+
+**修正方法**: Linux オペレーティング システム用の Azure Site Recovery では、アプリの整合性のためのアプリケーション カスタム スクリプトがサポートされています。 プリオプションとポストオプションを含むカスタム スクリプトが、アプリの整合性のために Azure Site Recovery の Mobility Agent によって使用されます。 これを有効にする手順は、[こちら](./site-recovery-faq.md#replication)をご覧ください。
 
 ### <a name="more-causes-because-of-vss-related-issues"></a>VSS 関連のイシューに起因するその他の原因:
 

@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 03/19/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: b7f229162ed745408121d898f5af516d22a0c039
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: bcf619e2251f5c1b641190549da45f721835ce0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984931"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076151"
 ---
 # <a name="update-the-admin-username-and-password-of-the-vms-in-a-cluster"></a>クラスター内の VM の管理者のユーザー名とパスワードを更新します。
 
@@ -27,7 +27,7 @@ Service Fabric クラスター内の各[ノード型](../service-fabric-cluster-
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールします。 
+必要に応じて、[Azure PowerShell ガイド](/powershell/azure/)の手順に従って Azure PowerShell をインストールします。 
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -49,6 +49,6 @@ Service Fabric クラスター内の各[ノード型](../service-fabric-cluster-
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
+Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。
 
 その他の Azure Service Fabric 用 Azure PowerShell サンプルは、[Azure PowerShell サンプル](../service-fabric-powershell-samples.md)のページにあります。

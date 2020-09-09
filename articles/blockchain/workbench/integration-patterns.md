@@ -4,12 +4,12 @@ description: Azure Blockchain Workbench Preview のスマート コントラク�
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: mmercuri
-ms.openlocfilehash: f9626edd5bd655e3de5d0f9648041faf832e3b84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dae63e16356e825d3be31380df1648749e59d8bd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74325963"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538355"
 ---
 # <a name="smart-contract-integration-patterns"></a>スマート コントラクトの統合パターン
 
@@ -31,7 +31,7 @@ Azure Blockchain Workbench で生成される Web アプリケーションの機
 
 REST API は、主に Web、モバイル、およびボット アプリケーションなどの対話型クライアントに使用されます。
 
-このセクションでは、分散型台帳にトランザクションを送信する REST API と、トランザクションに関するデータを Azure Blockchain Workbench の*オフ チェーン* SQL データベースに問い合わせる方法について説明します。
+このセクションでは、分散型台帳にトランザクションを送信する REST API と、トランザクションに関するデータを Azure Blockchain Workbench の "*オフ チェーン*" データベースに問い合わせる方法について説明します。
 
 ### <a name="sending-transactions-to-a-distributed-ledger-from-an-external-system"></a>外部システムから分散型台帳へのトランザクションの送信
 
@@ -134,7 +134,7 @@ Azure Blockchain Workbench REST API によって、分散型台帳に対する�
 -   状態の変化は、ダウンストリームのコンシューマーにイベントとして表れます。
 -   ダウンストリームのコンシューマーはイベントを受け取り、外部コードの実行をトリガーします。
 
-![外部プロセスへの遷移の制御](./media/integration-patterns/transition-external-process.png)
+![この図は、イベントが分散元帳に送信される原因となった、コントラクト内の状態の変化を示しています。 その後、Blockchain Workbench はイベントを取得して、発行します。](./media/integration-patterns/transition-external-process.png)
 
 #### <a name="return-of-control-from-the-smart-contract"></a>スマート コントラクトからの制御の復帰
 
@@ -142,7 +142,7 @@ Azure Blockchain Workbench REST API によって、分散型台帳に対する�
 
 ##### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Azure Blockchain Workbench の直接配信で想定される形式
 
-![](./media/integration-patterns/direct-delivery.png)
+![この図は、Service Bus を介して Blockchain Workbench によって取得される外部システムからの API メッセージを示しています。 Blockchain Workbench は、エージェントに代わって、メッセージをトランザクションとして分散型台帳に送信します。 それはコントラクトに渡され、それにより状態が変化します。](./media/integration-patterns/direct-delivery.png)
 
 このモデルでは、上記のプロセスに続いて、コントラクトへの通信とその後の状態変更が発生します。
 
@@ -204,7 +204,7 @@ Azure Blockchain Workbench には、REST とメッセージ ベースの API に
 
 -   Azure Blockchain Workbench は、アプリケーション、ワークフロー、コントラクト、およびトランザクションに関するメタデータを、通常の操作の一部として格納します。
 -   外部システムまたはツールには、データベース サーバー名、データベース名、認証の種類、ログインの資格情報、使用するデータベースのビューなど、データベースに関する情報の収集を容易にする 1 つ以上のダイアログが用意されています。
--   外部システム、サービス、レポート、開発者ツール、エンタープライズ生産性ツールによるダウンストリームの利用を容易にするために、SQL データベース ビューに対してクエリが作成されます。
+-   外部システム、サービス、レポート、開発者ツール、エンタープライズ生産性ツールによるダウンストリームの利用を容易にするために、データベース ビューに対してクエリが作成されます。
 
 ## <a name="storage-integration"></a>ストレージの統合
 

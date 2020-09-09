@@ -1,24 +1,14 @@
 ---
 title: Azure Service Bus のメッセージのシーケンス処理とタイムスタンプ | Microsoft Docs
 description: この記事では、Azure Service Bus のメッセージのシーケンス処理と (タイムスタンプによる) 順序付けを維持する方法について説明します。
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 54d774c00fa650cb9608f46cc07b9d899709eaa5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.openlocfilehash: fdb18802e576ad114fd3f783d5efd7bb826a5f94
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230295"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341179"
 ---
 # <a name="message-sequencing-and-timestamps"></a>メッセージのシーケンス処理とタイムスタンプ
 

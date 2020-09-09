@@ -6,16 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/10/2020
+ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 5c37dbdc34138faab8adae6ad18252c18a75cad4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: ca9a796483c52e2e74231dfcbb67a72b913d35d7
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80337084"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072997"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>ストレージ アカウントがレプリケートされる方法を変更する
 
@@ -26,7 +27,7 @@ Azure Storage には、以下の種類のレプリケーションが用意され
 - ローカル冗長ストレージ (LRS)
 - ゾーン冗長ストレージ (ZRS)
 - geo 冗長ストレージ (GRS) または読み取りアクセス geo 冗長ストレージ (RA-GRS)
-- geo ゾーン冗長ストレージ (GZRS) または読み取りアクセス geo ゾーン冗長ストレージ (RA-GZRS) (プレビュー)
+- geo ゾーン冗長ストレージ (GZRS) または読み取りアクセス geo ゾーン冗長ストレージ (RA-GZRS)
 
 これらの各オプションの概要については、「[Azure Storage の冗長性](storage-redundancy.md)」を参照してください。
 
@@ -40,13 +41,14 @@ Azure Storage には、以下の種類のレプリケーションが用意され
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
 | <b>元: LRS</b> | 該当なし | Azure portal、PowerShell、または CLI を使用してレプリケーション設定を変更する<sup>1</sup> | 手動の移行を実行する <br /><br />ライブ マイグレーションを要求する | 手動の移行を実行する <br /><br /> OR <br /><br /> まず GRS/RA-GRS に切り替えてから、ライブ マイグレーションを要求する<sup>1</sup> |
 | <b>元: GRS/RA-GRS</b> | Azure portal、PowerShell、または CLI を使用してレプリケーション設定を変更する | 該当なし | 手動の移行を実行する <br /><br /> OR <br /><br /> まず LRS に切り替えてから、ライブ マイグレーションを要求する | 手動の移行を実行する <br /><br /> ライブ マイグレーションを要求する |
-| <b>元: ZRS</b> | 手動の移行を実行する | 手動の移行を実行する | 該当なし | Azure portal、PowerShell、または CLI を使用してレプリケーション設定を変更する<sup>1</sup> |
+| <b>元: ZRS</b> | 手動の移行を実行する | 手動の移行を実行する | 該当なし | Azure portal、PowerShell、または CLI を使用してレプリケーション設定を変更する<sup>1、2</sup> |
 | <b>元: GZRS/RA-GZRS</b> | 手動の移行を実行する | 手動の移行を実行する | Azure portal、PowerShell、または CLI を使用してレプリケーション設定を変更する | 該当なし |
 
-<sup>1</sup> 1 回限りのエグレス料金が発生します。
+<sup>1</sup> 1 回限りのエグレス料金が発生します。<br />
+<sup>2</sup> ZRS から GZRS/RA-GZRS への変換またはその逆の変換は、次のリージョンではサポートされていません: 米国東部 2、米国東部、西ヨーロッパ。
 
 > [!CAUTION]
-> (RA-)GRS または (RA-)GZRS アカウントに対して[アカウントのフェールオーバー](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance)を実行した場合は、新しいプライマリ リージョンでローカル冗長になるように構成されます。 そのような LRS アカウントでの ZRS または GZRS へのライブ マイグレーションはサポートされていません。 [手動の移行](https://docs.microsoft.com/azure/storage/common/redundancy-migration#perform-a-manual-migration-to-zrs)を実行する必要があります。
+> (RA-)GRS または (RA-)GZRS アカウントに対して[アカウントのフェールオーバー](storage-disaster-recovery-guidance.md)を実行した場合、アカウントはフェールオーバー後の新しいプライマリ リージョンでローカル冗長になります。 フェールオーバーによって作成される LRS アカウントに対する ZRS または GZRS へのライブ マイグレーションは、サポートされていません。 ZRS または GZRS への[手動移行](#perform-a-manual-migration-to-zrs)を実行する必要があります。
 
 ## <a name="change-the-replication-setting"></a>レプリケーション設定を変更する
 
@@ -195,4 +197,4 @@ az storage account update -g <resource_group> -n <storage_account> --set kind=St
 
 - [Azure Storage の冗長性](storage-redundancy.md)
 - [ストレージ アカウントの最終同期時刻プロパティを確認する](last-sync-time-get.md)
-- [読み取りアクセス geo 冗長ストレージを使用した高可用性アプリケーションの設計](storage-designing-ha-apps-with-ragrs.md)
+- [geo 冗長性を使用する高可用性アプリケーションの設計](geo-redundant-design.md)

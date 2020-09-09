@@ -6,20 +6,20 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 04/16/2020
+ms.date: 07/10/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3af281846e2bd1a39e691d84e964d8a8f780a6f1
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 918675b111b7b1b85669692b63fed683ea2831f8
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81870412"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475636"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>スコープ付きロールを管理単位に割り当てる
 
@@ -34,7 +34,7 @@ Role  |  説明
 認証管理者  |  割り当てられた管理単位内でのみ、管理者以外のユーザーの認証方法の情報を表示、設定、リセットするためにアクセスできます。
 グループ管理者  |  割り当てられた管理単位内でのみ、グループとグループ設定 (名前付けポリシーや有効期限ポリシーなど) のすべての側面を管理できます。
 ヘルプデスク管理者  |  割り当てられた管理単位内でのみ、管理者以外のユーザーとヘルプデスク管理者のパスワードをリセットできます。
-ライセンス管理者  |  管理単位内でのみ、ライセンスを割り当てたり、ライセンス割り当ての削除や更新を行ったりできます。
+ライセンス管理者  |  管理単位内でのみ、ライセンスの割り当て、削除、更新を行うことができます。
 パスワード管理者  |  割り当てられた管理単位内でのみ、管理者以外のユーザーとパスワード管理者のパスワードをリセットできます。
 ユーザー管理者  |  割り当てられた管理単位内でのみ、ユーザーとグループのすべての側面 (制限付き管理者のパスワードのリセットを含む) を管理できます。
 
@@ -46,31 +46,37 @@ Role  |  説明
 
 ![ロールのスコープを変更する管理単位を選択する](./media/roles-admin-units-assign-roles/select-role-to-scope.png)
 
-割り当てるロールを選択して、 **[割り当ての追加]** を選択します。 これにより、右側にパネルがスライドして開き、ロールに割り当てるユーザーを 1 人以上選択できます。
+割り当てるロールを選択して、 **[割り当ての追加]** を選択します。 右側のパネルが開きます。ここでは、ロールに割り当てるユーザーを 1 人以上選択できます。
 
 ![スコープを設定するロールを選択してから、[割り当ての追加] を選択する](./media/roles-admin-units-assign-roles/select-add-assignment.png)
 
 ### <a name="powershell"></a>PowerShell
 
-    $administrative = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
-    $AdminUser = Get-AzureADUser -ObjectId 'janedoe@fabidentity.onmicrosoft.com'
-    $uaRoleMemberInfo = New-Object -TypeName Microsoft.Open.AzureAD.Model.RoleMemberInfo -Property @{ObjectId = $AdminUser.ObjectId}
-    Add-AzureADScopedRoleMembership -RoleObjectId $UserAdminRole.ObjectId -ObjectId $administrative unitObj.ObjectId -RoleMemberInfo  $uaRoleMemberInfo
+```powershell
+$AdminUser = Get-AzureADUser -ObjectId "Use the user's UPN, who would be an admin on this unit"
+$Role = Get-AzureADDirectoryRole | Where-Object -Property DisplayName -EQ -Value "User Account Administrator"
+$administrativeUnit = Get-AzureADAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
+$RoleMember = New-Object -TypeName Microsoft.Open.AzureAD.Model.RoleMemberInfo
+$RoleMember.ObjectId = $AdminUser.ObjectId
+Add-AzureADScopedRoleMembership -ObjectId $administrativeUnit.ObjectId -RoleObjectId $Role.ObjectId -RoleMemberInfo $RoleMember
+```
 
 強調表示されたセクションは、それぞれの環境で必要に応じて変更される場合があります。
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
-    Http request
-    POST /administrativeUnits/{id}/scopedRoleMembers
+```http
+Http request
+POST /administrativeUnits/{id}/scopedRoleMembers
     
-    Request body
-    {
-      "roleId": "roleId-value",
-      "roleMemberInfo": {
-        "id": "id-value"
-      }
-    }
+Request body
+{
+  "roleId": "roleId-value",
+  "roleMemberInfo": {
+    "id": "id-value"
+  }
+}
+```
 
 ## <a name="list-the-scoped-admins-on-an-au"></a>AU のスコープ付き管理者を一覧表示する
 
@@ -80,18 +86,23 @@ Role  |  説明
 
 ### <a name="powershell"></a>PowerShell
 
-    $administrative unitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
-    Get-AzureADScopedRoleMembership -ObjectId $administrative unitObj.ObjectId | fl *
+```powershell
+$administrativeUnit = Get-AzureADAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
+Get-AzureADScopedRoleMembership -ObjectId $administrativeUnit.ObjectId | fl *
+```
 
 強調表示されたセクションは、それぞれの環境で必要に応じて変更される場合があります。
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
-    Http request
-    GET /administrativeUnits/{id}/scopedRoleMembers
-    Request body
-    {}
+```http
+Http request
+GET /administrativeUnits/{id}/scopedRoleMembers
+Request body
+{}
+```
 
 ## <a name="next-steps"></a>次のステップ
 
-- [管理単位のトラブルシューティングと FAQ](roles-admin-units-faq-troubleshoot.md)
+- [クラウド グループを使用してロールの割り当てを管理する](roles-groups-concept.md)
+- [クラウド グループに割り当てられているロールのトラブルシューティング](roles-groups-faq-troubleshooting.md)

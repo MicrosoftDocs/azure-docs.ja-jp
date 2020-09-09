@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/17/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: 09c1899004bd93d0f2365c3bbc000c37459e8d89
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: a81c4f32385cf06238f36ca0162923f93d682807
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797826"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323725"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Application Insights のファネルを使って、顧客がどのようにアプリケーションを利用しているか把握する
 
@@ -37,7 +37,7 @@ ms.locfileid: "83797826"
 ### <a name="funnels-features"></a>ファネルの機能
 前掲のスクリーンショットには、強調表示されている領域が 5 箇所あります。 これらはファネルの機能です。 スクリーンショットの対応する各領域についての詳細は、次のとおりです。
 1. アプリがサンプリングされる場合は、サンプリング バナーが表示されます。 バナーを選択すると、サンプリングをオフにする方法を説明するコンテキスト ペインが開きます。 
-2. じょうごを [Power BI](../../azure-monitor/app/export-power-bi.md ) にエクスポートできます。
+2. じょうごを [Power BI](./export-power-bi.md) にエクスポートできます。
 3. 手順を選択すると、右側に詳細が表示されます。 
 4. コンバージョン履歴のグラフによって、過去 90 日間のコンバージョン レートが表示されます。 
 5. ユーザー ツールにアクセスすることで、ユーザーの理解を深めます。 各ステップでフィルターを使用できます。 
@@ -46,7 +46,7 @@ ms.locfileid: "83797826"
   * [利用状況の概要](usage-overview.md)
   * [ユーザー、セッション、およびイベント](usage-segmentation.md)
   * [保持](usage-retention.md)
-  * [ブック](../../azure-monitor/platform/workbooks-overview.md)
+  * [ブック](../platform/workbooks-overview.md)
   * [ユーザー コンテキストの追加](usage-send-user-context.md)
-  * [Power BI へのエクスポート](../../azure-monitor/app/export-power-bi.md )
+  * [Power BI へのエクスポート](./export-power-bi.md)
 

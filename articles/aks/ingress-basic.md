@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) クラスターで基本的な NGINX イングレス コントローラーをインストールして構成する方法について説明します。
 services: container-service
 ms.topic: article
-ms.date: 04/27/2020
-ms.openlocfilehash: e5b3d1c94de8406c12222eea59beafd7277d646d
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.date: 08/17/2020
+ms.openlocfilehash: 9ab177e2756227f3893d13c97d12ad67cfb1ff62
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561966"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855830"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でイングレス コントローラーを作成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "82561966"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事では、[Helm 3][helm] を使用し、NGINX イングレス コントローラーをインストールします。
+この記事では、[Helm 3][helm] を使用し、NGINX イングレス コントローラーをインストールします。 最新リリースの Helm を使用していること、および *ingress-nginx* の Helm リポジトリにアクセスできることを確認します。
 
 この記事ではまた、Azure CLI バージョン 2.0.64 以降を実行していることも必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
@@ -47,11 +47,11 @@ ms.locfileid: "82561966"
 # Create a namespace for your ingress resources
 kubectl create namespace ingress-basic
 
-# Add the official stable repository
-helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+# Add the ingress-nginx repository
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 
 # Use Helm to deploy an NGINX ingress controller
-helm install nginx-ingress stable/nginx-ingress \
+helm install nginx-ingress ingress-nginx/ingress-nginx \
     --namespace ingress-basic \
     --set controller.replicaCount=2 \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
@@ -61,11 +61,10 @@ helm install nginx-ingress stable/nginx-ingress \
 次の出力例に示すように、NGINX イングレス コントローラーに対して Kubernetes ロード バランサー サービスが作成されると、動的パブリック IP アドレスが割り当てられます。
 
 ```
-$ kubectl get service -l app=nginx-ingress --namespace ingress-basic
+$ kubectl --namespace ingress-basic get services -o wide -w nginx-ingress-ingress-nginx-controller
 
-NAME                             TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)                      AGE
-nginx-ingress-controller         LoadBalancer   10.0.61.144    EXTERNAL_IP   80:30386/TCP,443:32276/TCP   6m2s
-nginx-ingress-default-backend    ClusterIP      10.0.192.145   <none>        80/TCP                       6m2s
+NAME                                     TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)                      AGE   SELECTOR
+nginx-ingress-ingress-nginx-controller   LoadBalancer   10.0.74.133   EXTERNAL_IP     80:32486/TCP,443:30953/TCP   44s   app.kubernetes.io/component=controller,app.kubernetes.io/instance=nginx-ingress,app.kubernetes.io/name=ingress-nginx
 ```
 
 イングレス ルールはまだ作成されていないため、内部 IP アドレスを参照すると、NGINX イングレス コントローラーの既定の 404 ページが表示されます。 イングレス ルールは、後続の手順で構成します。
@@ -80,7 +79,7 @@ nginx-ingress-default-backend    ClusterIP      10.0.192.145   <none>        80/
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: aks-helloworld-one
+  name: aks-helloworld-one  
 spec:
   replicas: 1
   selector:
@@ -103,7 +102,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: aks-helloworld-one
+  name: aks-helloworld-one  
 spec:
   type: ClusterIP
   ports:
@@ -118,7 +117,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: aks-helloworld-two
+  name: aks-helloworld-two  
 spec:
   replicas: 1
   selector:
@@ -141,7 +140,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: aks-helloworld-two
+  name: aks-helloworld-two  
 spec:
   type: ClusterIP
   ports:
@@ -163,10 +162,10 @@ kubectl apply -f aks-helloworld-two.yaml --namespace ingress-basic
 
 次の例では、*EXTERNAL_IP* へのトラフィックが `aks-helloworld-one` という名前のサービスにルーティングされます。 *EXTERNAL_IP/hello-world-two* へのトラフィックは、`aks-helloworld-two` サービスにルーティングされます。 静的資産の場合、*EXTERNAL_IP/static* へのトラフィックは `aks-helloworld-one` という名前のサービスにルーティングされます。
 
-`hello-world-ingress.yaml` という名前のファイルを作成し、次の例の YAML 内にコピーします。
+*hello-world-ingress.yaml* という名前のファイルを作成し、次の例の YAML 内にコピーします。
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress
@@ -174,7 +173,8 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   rules:
   - http:
@@ -182,13 +182,17 @@ spec:
       - backend:
           serviceName: aks-helloworld-one
           servicePort: 80
-        path: /(.*)
+        path: /hello-world-one(/|$)(.*)
       - backend:
           serviceName: aks-helloworld-two
           servicePort: 80
         path: /hello-world-two(/|$)(.*)
+      - backend:
+          serviceName: aks-helloworld-one
+          servicePort: 80
+        path: /(.*)
 ---
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress-static
@@ -292,7 +296,7 @@ kubectl delete namespace ingress-basic
 
 <!-- LINKS - external -->
 [helm]: https://helm.sh/
-[helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm
+[helm-cli]: ./kubernetes-helm.md
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx
 
 <!-- LINKS - internal -->

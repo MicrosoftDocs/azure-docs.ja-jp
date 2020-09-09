@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 742bc307c90ad58b83b7d4c92f9546b87c163c3b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bdc8b68206161abdd1782561c904d4e670ecca22
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77019283"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358958"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Azure AD Connect データベースを SQL Server Express から SQL Server に移動する 
 
@@ -42,7 +42,7 @@ ms.locfileid: "77019283"
 8. データベースがアタッチされたら、Azure AD Connect サーバーに戻り、Azure AD Connect をインストールします。
 9. MSI のインストールが完了すると、Azure AD Connect ウィザードが簡易モードの設定で開始されます。 [終了] アイコンをクラスター リソースして画面を閉じます。
    ![ようこそ](./media/how-to-connect-install-move-db/db1.png)
-10. 新しいコマンド プロンプトまたは PowerShell セッションを開始します。 フォルダー \<ドライブ>\program files\Microsoft Azure AD Connect に移動します。 コマンド .\AzureADConnect.exe /useexistingdatabase を実行して、"既存のデータベースを使用する" 設定モードで Azure AD Connect ウィザードを開始します。
+10. 新しいコマンド プロンプトまたは PowerShell セッションを開始します。 フォルダー \<drive>\program files\Microsoft Azure AD Connect に移動します。 コマンド .\AzureADConnect.exe /useexistingdatabase を実行して、"既存のデータベースを使用する" 設定モードで Azure AD Connect ウィザードを開始します。
     ![PowerShell](./media/how-to-connect-install-move-db/db2.png)
 11. [Azure AD Connect へようこそ] 画面が表示されます。 ライセンス条項とプライバシーに関する声明に同意したら、 **[続行]** をクリックします。
     ![ようこそ](./media/how-to-connect-install-move-db/db3.png)
@@ -50,24 +50,24 @@ ms.locfileid: "77019283"
     ![ようこそ](./media/how-to-connect-install-move-db/db4.png)           
 
 13. **[Azure AD に接続]** 画面で、Azure AD ディレクトリのグローバル管理者の資格情報を指定する必要があります。 既定の onmicrosoft.com ドメインでアカウントを使用することをお勧めします。 このアカウントは、Azure AD のサービス アカウントを作成するためにのみ使用され、ウィザードが完了した後は使用されません。
-    ![接続](./media/how-to-connect-install-move-db/db5.png)
+    ![接続する](./media/how-to-connect-install-move-db/db5.png)
  
 14. **[ディレクトリの接続]** 画面では、ディレクトリ同期に構成されている既存の AD フォレストは、赤色の×アイコンで表示されます。 オンプレミスの AD フォレストの変更を同期するには、AD DS アカウントが必要です。 Azure AD Connect ウィザードでは、ADSync データベースに格納されている AD DS アカウントの資格情報を取得できません。これは、資格情報が暗号化され、復号には前の Azure AD Connect サーバーが必要なためです。 **[資格情報の変更]** をクリックして、AD フォレストの AD DS アカウントを指定します。
     ![Directories](./media/how-to-connect-install-move-db/db6.png)
  
- 
+
 15. ポップアップ ダイアログで、(i) エンタープライズ管理者の資格情報を指定して Azure AD Connect に AD DS アカウントの作成を任せるか、(ii) AD DS アカウントを自分で作成してその資格情報を Azure AD Connect に提供することができます。 オプションを選択し、必要な資格情報を指定したら、 **[OK]** をクリックしてポップアップ ダイアログを閉じます。
     ![ようこそ](./media/how-to-connect-install-move-db/db7.png)
  
- 
+
 16. 資格情報を入力すると、赤色の×アイコンは緑色のチェック アイコンで置き換えられます。 **[次へ]** をクリックします。
     ![ようこそ](./media/how-to-connect-install-move-db/db8.png)
  
- 
+
 17. **[構成の準備完了]** 画面で、 **[インストール]** をクリックします。
     ![ようこそ](./media/how-to-connect-install-move-db/db9.png)
  
- 
+
 18. インストールが完了すると、Azure AD Connect サーバーがステージング モードで自動的に有効になります。 ステージング モードを無効にする前に、予期しない変更に備えてサーバー構成と保留中のエクスポートを確認することをお勧めします。 
 
 ## <a name="next-steps"></a>次のステップ

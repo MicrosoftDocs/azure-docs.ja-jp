@@ -8,15 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/16/2020
+ms.date: 05/19/2020
 ms.author: trbye
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: fefbe793fa4a6b90ba9bf8d468d42dcbd315759c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+zone_pivot_groups: programming-languages-speech-services-nomore-variant
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 1fc7e7da62aa92812a124f920f5c59ebf8e50fcc
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402209"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934618"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>音声テキスト変換の自動言語検出
 
@@ -25,11 +26,11 @@ ms.locfileid: "81402209"
 この記事では、`AutoDetectSourceLanguageConfig` を利用して `SpeechRecognizer` オブジェクトを構築し、検出された言語を取得する方法について説明します。
 
 > [!IMPORTANT]
-> この機能は、C#、C++、Java、Python 用の Speech SDK でのみ利用できます。
+> この機能は、C#、C++、Java、Python、JavaScript、Objective-C 用の Speech SDK でのみ利用できます。
 
 ## <a name="automatic-language-detection-with-the-speech-sdk"></a>Speech SDK による自動言語検出
 
-自動言語検出には現在、1 回の検出で 2 言語というサービス側の制限があります。 `AudoDetectSourceLanguageConfig` オブジェクトを構築するとき、この上限を念頭に置いてください。 下のサンプルでは、`AutoDetectSourceLanguageConfig` を作成し、それを利用して `SpeechRecognizer` を構築します。
+自動言語検出には現在、1 回の検出で 4 言語というサービス側の制限があります。 `AudoDetectSourceLanguageConfig` オブジェクトを構築するとき、この上限を念頭に置いてください。 下のサンプルでは、`AutoDetectSourceLanguageConfig` を作成し、それを利用して `SpeechRecognizer` を構築します。
 
 > [!TIP]
 > 音声テキスト変換時に使用するカスタム モデルを指定することもできます。 詳細については、「[自動言語検出にカスタム モデルを使用する](#use-a-custom-model-for-automatic-language-detection)」を参照してください。
@@ -118,6 +119,37 @@ detected_language = auto_detect_source_language_result.language
 
 ::: zone-end
 
+::: zone pivot="programming-language-objectivec"
+
+```Objective-C
+NSArray *languages = @[@"zh-CN", @"de-DE"];
+SPXAutoDetectSourceLanguageConfiguration* autoDetectSourceLanguageConfig = \
+        [[SPXAutoDetectSourceLanguageConfiguration alloc]init:languages];
+SPXSpeechRecognizer* speechRecognizer = \
+        [[SPXSpeechRecognizer alloc] initWithSpeechConfiguration:speechConfig
+                           autoDetectSourceLanguageConfiguration:autoDetectSourceLanguageConfig
+                                              audioConfiguration:audioConfig];
+SPXSpeechRecognitionResult *result = [speechRecognizer recognizeOnce];
+SPXAutoDetectSourceLanguageResult *languageDetectionResult = [[SPXAutoDetectSourceLanguageResult alloc] init:result];
+NSString *detectedLanguage = [languageDetectionResult language];
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-javascript"
+
+```Javascript
+var autoDetectConfig = SpeechSDK.AutoDetectSourceLanguageConfig.fromLanguages(["en-US", "de-DE"]);
+var speechRecognizer = SpeechSDK.SpeechRecognizer.FromConfig(speechConfig, audioConfig, autoDetectConfig);
+speechRecognizer.recognizeOnceAsync((result: SpeechSDK.SpeechRecognitionResult) => {
+        var languageDetectionResult = SpeechSDK.AutoDetectSourceLanguageResult.fromResult(result);
+        var detectedLanguage = languageDetectionResult.language;
+},
+{});
+```
+
+::: zone-end
+
 ## <a name="use-a-custom-model-for-automatic-language-detection"></a>自動言語検出にカスタム モデルを使用する
 
 Speech サービス モデルを利用した言語検出に加え、認識を強化するためのカスタム モデルを指定できます。 カスタム モデルが指定されていない場合、このサービスでは既定の言語モデルが使用されます。
@@ -182,6 +214,50 @@ AutoDetectSourceLanguageConfig autoDetectSourceLanguageConfig =
 
 ::: zone-end
 
+::: zone pivot="programming-language-objectivec"
+
+```Objective-C
+SPXSourceLanguageConfiguration* enLanguageConfig = [[SPXSourceLanguageConfiguration alloc]init:@"en-US"];
+SPXSourceLanguageConfiguration* frLanguageConfig = \
+        [[SPXSourceLanguageConfiguration alloc]initWithLanguage:@"fr-FR"
+                                                     endpointId:@"The Endpoint Id for custom model of fr-FR"];
+NSArray *languageConfigs = @[enLanguageConfig, frLanguageConfig];
+SPXAutoDetectSourceLanguageConfiguration* autoDetectSourceLanguageConfig = \
+        [[SPXAutoDetectSourceLanguageConfiguration alloc]initWithSourceLanguageConfigurations:languageConfigs];
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-javascript"
+
+```Javascript
+var enLanguageConfig = SpeechSDK.SourceLanguageConfig.fromLanguage("en-US");
+var frLanguageConfig = SpeechSDK.SourceLanguageConfig.fromLanguage("fr-FR", "The Endpoint Id for custom model of fr-FR");
+var autoDetectConfig = SpeechSDK.AutoDetectSourceLanguageConfig.fromSourceLanguageConfigs([enLanguageConfig, frLanguageConfig]);
+```
+
+::: zone-end
+
 ## <a name="next-steps"></a>次のステップ
 
-- [Speech SDK のリファレンス ドキュメント](speech-sdk.md)
+::: zone pivot="programming-language-csharp"
+* 自動言語検出については、GitHub の[サンプル コード](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_recognition_samples.cs#L741)を参照してください
+::: zone-end
+
+::: zone pivot="programming-language-cpp"
+* 自動言語検出については、GitHub の[サンプル コード](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/cpp/windows/console/samples/speech_recognition_samples.cpp#L507)を参照してください
+::: zone-end
+
+::: zone pivot="programming-language-java"
+* 自動言語検出については、GitHub の[サンプル コード](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/SpeechRecognitionSamples.java#L521)を参照してください
+::: zone-end
+
+::: zone pivot="programming-language-python"
+* 自動言語検出については、GitHub の[サンプル コード](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_synthesis_sample.py#L434)を参照してください
+::: zone-end
+
+::: zone pivot="programming-language-objectivec"
+* 自動言語検出については、GitHub の[サンプル コード](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/objective-c/ios/speech-samples/speech-samples/ViewController.m#L494)を参照してください
+::: zone-end
+
+* [Speech SDK のリファレンス ドキュメント](speech-sdk.md)

@@ -1,44 +1,44 @@
 ---
 title: レプリケートされたテーブルの設計ガイダンス
-description: Synapse SQL でのレプリケートされたテーブルの設計に関する推奨事項
+description: Synapse SQL プールでのレプリケート テーブルの設計に関する推奨事項
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 654aeddbb305124ea00a883dbef9d8b5ad585a36
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 036cb15cf16b5f90dc17ccdce378a073a398d403
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80990788"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181337"
 ---
-# <a name="design-guidance-for-using-replicated-tables-in-sql-analytics"></a>SQL Analytics でレプリケートされたテーブルを使用するための設計ガイダンス
+# <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>Synapse SQL プールでレプリケート テーブルを使用するための設計ガイダンス
 
-この記事では、SQL Analytics スキーマでレプリケート テーブルを設計するための推奨事項を紹介します。 これらの推奨事項を使用すると、データの移動が少なくなり、クエリの複雑さが軽減されることでクエリ パフォーマンスが向上します。
+この記事では、Synapse SQL プール スキーマでレプリケート テーブルを設計するための推奨事項を紹介します。 これらの推奨事項を使用すると、データの移動が少なくなり、クエリの複雑さが軽減されることでクエリ パフォーマンスが向上します。
 
 > [!VIDEO https://www.youtube.com/embed/1VS_F37GI9U]
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事では、SQL Analytics のデータ分散とデータ移動の概念を理解していることを前提としています。  詳細については、[アーキテクチャ](massively-parallel-processing-mpp-architecture.md)に関する記事を参照してください。
+この記事では、SQL プールのデータ分散とデータ移動の概念を理解していることを前提としています。  詳細については、[アーキテクチャ](massively-parallel-processing-mpp-architecture.md)に関する記事を参照してください。
 
 テーブル設計の一環として、ご利用のデータと、そのデータを照会する方法についてできる限り理解してください。  たとえば、次のような質問を考えてみます。
 
 - テーブルの大きさはどの程度か。
 - どの程度の頻度でテーブルが更新されるか。
-- SQL Analytics データベース内にファクト テーブルとディメンション テーブルがあるか。
+- SQL プール データベース内にファクト テーブルとディメンション テーブルがあるか。
 
 ## <a name="what-is-a-replicated-table"></a>レプリケート テーブルとは
 
 レプリケート テーブルには、各コンピューティング ノード上でアクセスできるテーブルの完全なコピーがあります。 テーブルをレプリケートすると、結合または集計の前に、コンピューティング ノード内のデータを転送する必要がなくなります。 テーブルには複数のコピーが含まれているため、テーブルのサイズが 2 GB 未満に圧縮されている場合にレプリケート テーブルが最も効果的に機能します。  2 GB はハード制限ではありません。  データが静的で変化しない場合は、さらに大きなテーブルをレプリケートできます。
 
-次の図は、各コンピューティング ノード上でアクセスできるレプリケート テーブルを示したものです。 SQL Analytics では、レプリケート テーブルは各コンピューティング ノード上のディストリビューション データベースに完全にコピーされます。
+次の図は、各コンピューティング ノード上でアクセスできるレプリケート テーブルを示したものです。 SQL プールでは、レプリケート テーブルは各コンピューティング ノード上のディストリビューション データベースに完全にコピーされます。
 
 ![レプリケート テーブル](./media/design-guidance-for-replicated-tables/replicated-table.png "レプリケート テーブル")  
 
@@ -52,8 +52,8 @@ ms.locfileid: "80990788"
 次の場合、レプリケート テーブルでは最適なクエリ パフォーマンスが得られない可能性があります。
 
 - テーブルで、頻繁な挿入、更新、削除操作が行われる。 これらのデータ操作言語 (DML) 操作では、レプリケート テーブルを再構築する必要があります。 頻繁に再構築すると、パフォーマンスが低下する場合があります。
-- SQL Analytics データベースは頻繁にスケーリングされます。 SQL Analytics データベースをスケーリングすると、コンピューティング ノードの数が変わるため、レプリケート テーブルの再構築が発生します。
-- テーブルに多数の列があっても、通常、データ操作でアクセスする列はごく少数である。 このシナリオでは、テーブル全体をレプリケートするのではなく、テーブルを分散し、頻繁にアクセスする列にインデックスを作成する方が効果的であると考えられます｡ クエリでデータ移動が必要な場合、SQL Analytics では、要求された列のデータのみが移動されます。
+- SQL プールは頻繁にスケーリングされます。 SQL プール データベースをスケーリングすると、コンピューティング ノードの数が変わるため、レプリケート テーブルの再構築が発生します。
+- テーブルに多数の列があっても、通常、データ操作でアクセスする列はごく少数である。 このシナリオでは、テーブル全体をレプリケートするのではなく、テーブルを分散し、頻繁にアクセスする列にインデックスを作成する方が効果的であると考えられます｡ クエリでデータ移動が必要な場合、SQL プールでは、要求された列のデータのみが移動されます。
 
 ## <a name="use-replicated-tables-with-simple-query-predicates"></a>単純なクエリ述語でレプリケート テーブルを使用する
 
@@ -124,9 +124,9 @@ WHERE d.FiscalYear = 2004
 
 ## <a name="performance-considerations-for-modifying-replicated-tables"></a>レプリケート テーブルを変更する場合のパフォーマンスに関する考慮事項
 
-SQL Analytics では、テーブルのマスター バージョンを保持することによってレプリケート テーブルが実装されます。 そのマスター バージョンは、各コンピューティング ノード上の最初のディストリビューション データベースにコピーされます。 変更がある場合、SQL Analytics はまずマスター バージョンを更新してから、各コンピューティング ノードのテーブルを再構築します。 レプリケート テーブルの再構築では、すべての Compute ノードにテーブルがコピーされ､インデックスが再構築されます｡  たとえば､DW2000c 上のレプリケート テーブルには､データのコピーが 5 つあります｡  各 Compute ノードにマスター コピー 1 部と完全コピー 1 部  すべてのデータは分散データベースに格納されます｡ SQL Analytics では、このモデルを使用して､データ変更ステートメントの高速処理と柔軟なスケーリング操作がサポートされます。
+SQL プールでは、テーブルのマスター バージョンを保持することによってレプリケート テーブルが実装されます。 そのマスター バージョンは、各コンピューティング ノード上の最初のディストリビューション データベースにコピーされます。 変更がある場合、最初にマスター バージョンが更新され、次に各コンピューティング ノードのテーブルが再構築されます。 レプリケート テーブルの再構築では、すべての Compute ノードにテーブルがコピーされ､インデックスが再構築されます｡  たとえば､DW2000c 上のレプリケート テーブルには､データのコピーが 5 つあります｡  各 Compute ノードにマスター コピー 1 部と完全コピー 1 部  すべてのデータは分散データベースに格納されます｡ SQL プールでは、このモデルを使用して、データ変更ステートメントの高速処理と柔軟なスケーリング操作がサポートされます。
 
-再構築が必要になるのは、次の操作の後です。
+非同期の再構築は、次の後のレプリケート テーブルに対する最初のクエリによってトリガーされます。
 
 - データが読み込まれるまたは変更される
 - Synapse SQL インスタンスが別のレベルにスケーリングされる
@@ -141,7 +141,7 @@ SQL Analytics では、テーブルのマスター バージョンを保持す�
 
 ### <a name="use-indexes-conservatively"></a>インデックスは控えめに使用する
 
-標準的なインデックス作成方法は、レプリケート テーブルにも当てはまります。 SQL Analytics では、再構築の一環として、各レプリケート テーブル インデックスが再構築されます。 インデックスを使用するのは、インデックスの再構築にかかるコストよりもパフォーマンスの向上が重要な場合のみにしてください。
+標準的なインデックス作成方法は、レプリケート テーブルにも当てはまります。 SQL プールでは、再構築の一環として、各レプリケート テーブル インデックスが再構築されます。 インデックスを使用するのは、インデックスの再構築にかかるコストよりもパフォーマンスの向上が重要な場合のみにしてください。
 
 ### <a name="batch-data-load"></a>データの読み込みをバッチ処理する
 
@@ -149,9 +149,9 @@ SQL Analytics では、テーブルのマスター バージョンを保持す�
 
 たとえば、次の読み込みパターンでは、4 つのソースからデータを読み込み、4 つの再構築を呼び出します。
 
-        Load from source 1.
+- ソース 1 から読み込む。
 - Select ステートメントで再構築 1 をトリガーする。
-        ソース 2 から読み込む。
+- ソース 2 から読み込む。
 - Select ステートメントで再構築 2 をトリガーする。
 - ソース 3 から読み込む。
 - Select ステートメントで再構築 3 をトリガーする。
@@ -193,7 +193,7 @@ SELECT TOP 1 * FROM [ReplicatedTable]
 
 レプリケート テーブルを作成するには、次のいずれかのステートメントを使用します。
 
-- [CREATE TABLE (SQL Analytics)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [CREATE TABLE AS SELECT (SQL Analytics)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE (SQL プール)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE AS SELECT (SQL プール)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 分散テーブルの概要については、[分散テーブル](sql-data-warehouse-tables-distribute.md)に関するページを参照してください。

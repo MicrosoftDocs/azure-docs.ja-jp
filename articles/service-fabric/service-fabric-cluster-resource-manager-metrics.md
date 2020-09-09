@@ -5,12 +5,13 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: ea21502cdab35b261e20af7f23b7b522f77c6667
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3cb22bc2cd032e51dcdb7429e2c0684c578b0870
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75451996"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005651"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Service Fabric のリソース使用量と負荷をメトリックで管理する
 "*メトリック*" は、サービスが関心を持っているリソースであり、クラスター内のノードによって提供されます。 メトリックは、サービスのパフォーマンスを向上させたり監視したりするために管理する必要があるすべての要素を指します。 たとえば、メモリの消費量を監視して、サービスが過負荷になっているかどうかを知ることができます。 パフォーマンスを向上させるためにメモリ制約が少ないところにサービスを移動できるかどうかを確認するために使用することもできます。

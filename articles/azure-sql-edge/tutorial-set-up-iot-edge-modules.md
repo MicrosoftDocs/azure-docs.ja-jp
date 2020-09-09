@@ -2,19 +2,19 @@
 title: Azure SQL Edge での IoT Edge モジュールの設定
 description: 鉄鉱石の不純物を予測する、この 3 部構成の Azure SQL Edge チュートリアルの第 2 部では、IoT Edge のモジュールと接続を設定します。
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: tutorial
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: bbbbe09aac30165a2f9b7bbe54f58e0c09a6cf09
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a4087ef56712e098443009bd0457029394ea7b51
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593501"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235034"
 ---
 # <a name="set-up-iot-edge-modules-and-connections"></a>IoT Edge のモジュールと接続を設定する
 
@@ -25,7 +25,7 @@ Azure SQL Edge で鉄鉱石の不純物を予測する、この 3 部構成チ�
 
 ## <a name="create-azure-stream-analytics-module"></a>Azure Stream Analytics モジュールの作成
 
-このチュートリアルで使用する Azure Stream Analytics モジュールを作成します。 SQL Edge でのストリーミング ジョブの使用について詳しくは、[SQL Database Edge でのストリーミング ジョブの使用](https://docs.microsoft.com/azure/sql-database-edge/stream-analytics#using-streaming-jobs-with-sql-database-edge)に関するページを参照してください。
+このチュートリアルで使用する Azure Stream Analytics モジュールを作成します。 SQL Edge でのストリーミング ジョブの使用の詳細については、[SQL Edge でのストリーミング ジョブの使用](stream-analytics.md)に関するページを参照してください。
 
 Edge として設定されたホスティング環境で、Azure Stream Analytics ジョブが作成されたら、チュートリアルの入力と出力を設定します。
 
@@ -101,7 +101,7 @@ Edge として設定されたホスティング環境で、Azure Stream Analytic
 
 ## <a name="deploy-the-azure-sql-edge-module"></a>Azure SQL Edge モジュールのデプロイ
 
-1. 「[Azure SQL Database Edge プレビューのデプロイ](https://docs.microsoft.com/azure/sql-database-edge/deploy-portal#deploy-sql-database-edge)」の手順に従って、Azure SQL Edge モジュールをデプロイします。
+1. 「[Azure SQL Edge (プレビュー) をデプロイする](https://docs.microsoft.com/azure/azure-sql-edge/deploy-portal)」の手順に従って、Azure SQL Edge モジュールをデプロイします。
 
 2. **[モジュールの設定]** ページの **[Specify Route]\(ルートの指定\)** で、モジュールから IoT Edge ハブへの通信のためのルートを次のように指定します。 
 

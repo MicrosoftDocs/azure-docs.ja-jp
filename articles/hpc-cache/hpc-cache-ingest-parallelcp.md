@@ -3,15 +3,15 @@ title: Azure HPC Cache のデータ取り込み - 並列コピー スクリプ�
 description: 並列コピー スクリプトを使用して Azure HPC Cache の Blob Storage ターゲットにデータを移動する方法
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/30/2019
-ms.author: rohogue
-ms.openlocfilehash: 90e05ad3d42b1009b631630fe476669a9f418d33
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: v-erkel
+ms.openlocfilehash: ff7b15a36c5ef19a1fa6ffdca7697dd6ba97c29f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74166899"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092356"
 ---
 # <a name="azure-hpc-cache-data-ingest---parallel-copy-script-method"></a>Azure HPC Cache のデータ取り込み - 並列コピー スクリプトを使用した方法
 

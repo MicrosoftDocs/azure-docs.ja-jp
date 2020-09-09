@@ -3,15 +3,15 @@ title: Azure Automation を使用して StorSimple Data Manager でジョブを�
 description: Azure Automation を使用して StorSimple Data Manager ジョブをトリガーする方法について説明します
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 034b4996672f0961cf31d342aa6055482f099b9f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2562e7463ba0a79cf77d21f3bb619f13283c989d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76273987"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514925"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>Azure Automation を使用してジョブをトリガーする
 

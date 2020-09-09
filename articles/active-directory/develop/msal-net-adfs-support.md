@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 15af18177cea217612a4d5276d130abe02d339f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: 4107b0785ef4635e0e5e745a35b605d2634a220d
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77160762"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166231"
 ---
 # <a name="active-directory-federation-services-support-in-msalnet"></a>MSAL.NET での Active Directory フェデレーション サービスのサポート
 Windows Server で Active Directory フェデレーション サービス (AD FS) を使用して、自分が開発しているアプリケーションに OpenID Connect と OAuth 2.0 ベースの認証と承認を追加できます。 その後、これらのアプリケーションで、AD FS に対して直接ユーザーを認証することができます。 詳細については、「[開発者向けの AD FS のシナリオ](/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios)」をご覧ください。
@@ -58,4 +58,4 @@ MSAL.NET では、Open ID Connect に準拠し、PKCE とスコープを認識�
 
 ## <a name="next-steps"></a>次のステップ
 
-フェデレーション シナリオについては、「[ホーム領域検出ポリシーを使用して、アプリケーションの Azure Active Directory サインイン動作を構成する](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-authentication-for-federated-users-portal)」を参照してください。
+フェデレーション シナリオについては、「[ホーム領域検出ポリシーを使用して、アプリケーションの Azure Active Directory サインイン動作を構成する](../manage-apps/configure-authentication-for-federated-users-portal.md)」を参照してください。

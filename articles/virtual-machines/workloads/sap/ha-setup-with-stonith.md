@@ -14,10 +14,10 @@ ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4060dbe936af8ff1f9dd8c958f64834cb06525de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77615084"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>STONITH を使用した SUSE での高可用性のセットアップ
@@ -257,7 +257,7 @@ systemctl start pacemaker
 ```
 crm_mon
 ```
-![crm-mon.png](media/HowToHLI/HASetupWithStonith/crm-mon.png) hawk にログインして、クラスターの状態 *https://\<ノード IP>:7630* を確認することもできます。 既定のユーザーは hacluster で、パスワードは linux です。 必要な場合は、*passwd* コマンドを使ってパスワードを変更できます。
+![crm-mon.png](media/HowToHLI/HASetupWithStonith/crm-mon.png) hawk にログインして、クラスターの状態 *https://\<node IP>:7630* を確認することもできます。 既定のユーザーは hacluster で、パスワードは linux です。 必要な場合は、*passwd* コマンドを使ってパスワードを変更できます。
 
 ## <a name="7-configure-cluster-properties-and-resources"></a>7.クラスターのプロパティとリソースを構成する 
 このセクションでは、クラスター リソースを構成する手順について説明します。
@@ -322,7 +322,7 @@ crm configure load update crm-vip.txt
 *crm_mon* コマンドを実行すると、2 つのリソースが表示されます。
 ![crm_mon_command.png](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
 
-また、*https://\<ノード IP アドレス>:7630/cib/live/state* で状態を確認することもできます
+また、*https://\<node IP address>:7630/cib/live/state* で状態を確認できます
 
 ![hawlk-status-page.png](media/HowToHLI/HASetupWithStonith/hawlk-status-page.png)
 

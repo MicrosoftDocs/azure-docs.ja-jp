@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: ルーティングを最適化する'
 description: このページでは、Microsoft とユーザー (企業) のネットワークとを接続する ExpressRoute 回線がユーザー側に複数存在する場合のルーティングを最適化する方法について詳しく説明します。
 services: expressroute
-author: charwen
+author: duongau
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/11/2019
-ms.author: charwen
-ms.openlocfilehash: dcbae103933167c583bf0f73dc2fa09178c38bd5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: duau
+ms.openlocfilehash: aef21ecbda26e47dc6ef8a915cbd4403c13430e4
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74080130"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395232"
 ---
 # <a name="optimize-expressroute-routing"></a>ExpressRoute ルーティングの最適化
 ExpressRoute 回線が複数あるとき、Microsoft への接続経路は複数存在します。 その結果、期待したルーティングが行われない、つまりトラフィックが貴社のネットワークから Microsoft に到達するまでの経路と、Microsoft から貴社のネットワークに到達するまでの経路が、想定よりも長くなってしまう可能性があります。 ネットワーク パスが長くなるほど、遅延は大きくなります。 遅延は、アプリケーションのパフォーマンスとユーザー エクスペリエンスに直接影響します。 この記事では、該当する問題について例示すると共に、標準のルーティング技術を使ってルーティングを最適化する方法を説明します。
@@ -33,18 +33,18 @@ Microsoft ピアリングまたはパブリック ピアリングを使用する
 
 **R1 の観点からの Cisco IOS-XE 構成:**
 
-    R1(config)#route-map prefer-ExR permit 10
-    R1(config-route-map)#set local-preference 150
+- R1(config)#route-map prefer-ExR permit 10
+- R1(config-route-map)#set local-preference 150
 
-    R1(config)#router BGP 345
-    R1(config-router)#neighbor 1.1.1.2 remote-as 12076
-    R1(config-router)#neighbor 1.1.1.2 activate
-    R1(config-router)#neighbor 1.1.1.2 route-map prefer-ExR in
+- R1(config)#router BGP 345
+- R1(config-router)#neighbor 1.1.1.2 remote-as 12076
+- R1(config-router)#neighbor 1.1.1.2 activate
+- R1(config-router)#neighbor 1.1.1.2 route-map prefer-ExR in
 
 **R1 の観点からの Junos 構成:**
 
-    user@R1# set protocols bgp group ibgp type internal
-    user@R1# set protocols bgp group ibgp local-preference 150
+- user@R1# set protocols bgp group ibgp type internal
+- user@R1# set protocols bgp group ibgp local-preference 150
 
 
 

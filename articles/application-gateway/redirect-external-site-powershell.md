@@ -5,15 +5,15 @@ description: Azure PowerShell を使用して Web トラフィックを外部サ
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 6596cdb2df0a916c49086f80466db60b02a81467
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f6480bdd5139d5bc7a5a1887b80f43c3903bf579
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74047755"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84804608"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-azure-powershell"></a>Azure PowerShell を使用して外部リダイレクトと共にアプリケーション ゲートウェイを作成する
 

@@ -3,16 +3,17 @@ title: Azure EA VM 予約インスタンス
 description: この記事では、VM 予約インスタンスに対する Azure 予約が、エンタープライズ登録にかかる金額の節約にどのように役立つかについて説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 05/01/2020
+ms.date: 08/20/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 4321d2b48a3672b537cf0f50c5e02e3196e68ed8
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: aa95cf8b649558dc3164fe12e4268f210301f755
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691163"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88687042"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA VM 予約インスタンス
 
@@ -39,21 +40,30 @@ ms.locfileid: "82691163"
 
 ## <a name="reserved-instances-api-support"></a>予約インスタンス API サポート
 
-Azure API を使用して、Azure サービスまたはソフトウェアの予約に関する組織の情報をプログラムで取得できます。 詳細については、「[APIs for Azure reservation automation](../reservations/reservation-apis.md)」(Azure の予約自動化の API) を参照してください。
+Azure API を使用して、Azure サービスまたはソフトウェアの予約に関する組織の情報をプログラムで取得します。 たとえば、次の用途に API を使用します。
+
+- 購入する予約を検索する
+- 予約の購入
+- 購入した予約を表示する
+- 予約の利用を表示および管理する
+- 予約を分割または統合する
+- 予約の範囲を変更する
+
+詳細については、「[APIs for Azure reservation automation](../reservations/reservation-apis.md)」(Azure の予約自動化の API) を参照してください。
 
 ## <a name="azure-reserved-virtual-machine-instances"></a>Azure 予約仮想マシン インスタンス
 
-予約インスタンスにより、すべての VM で仮想マシンのコストを従量課金制の料金に比べて最大 72% 削減できます。また、予約インスタンスと Azure ハイブリッド特典を組み合わせると、最大 82% 節約できます。 1 年または 3 年分の前払いにより、ワークロード、予算、予測の優先順位をより適正に設定できます。 ビジネス ニーズの変化に応じて予約を交換またはキャンセルすることができます。
+予約インスタンスにより、すべての VM で仮想マシンのコストを従量課金制価格に比べて最大 72% 削減できます。 また、予約インスタンスと Azure ハイブリッド特典を組み合わせると、最大 82% 節約できます。 予約インスタンスで 1 年分または 3 年分を前払いすることにより、ワークロード、予算、予測が管理しやすくなります。 ビジネス ニーズの変化に応じて予約を交換またはキャンセルすることができます。
 
 ### <a name="how-to-buy-reserved-virtual-machine-instances"></a>予約仮想マシン インスタンスを購入する方法
 
-Azure 予約仮想マシン インスタンスを購入するには、エンタープライズ Azure 登録管理者が [Azure EA Portal](https://ea.azure.com/) の _[加入契約]_ タブにある _[加入契約の詳細]_ セクションで _[予約インスタンス]_ 購入オプションを有効にする必要があります。
+Azure 予約仮想マシンインスタンスを購入するには、エンタープライズ Azure 加入契約管理者が _[予約インスタンス]_ 購入オプションを有効にする必要があります。 このオプションは、[Azure EA Portal](https://ea.azure.com/) の _[加入契約]_ タブの _[加入契約の詳細]_ セクションにあります。
 
 EA 加入契約を有効にして、予約インスタンスを追加すると、EA 加入契約に関連付けられたアクティブなサブスクリプションを持つすべてのアカウント所有者は、[Azure portal](https://aka.ms/reservations) で予約仮想マシン インスタンスを購入できます。 詳細については、[予約仮想マシン インスタンスによる仮想マシンの使用料の前払いとコスト削減](https://go.microsoft.com/fwlink/?linkid=861721)に関するページを参照してください。
 
 ### <a name="how-to-view-reserved-instance-purchase-details"></a>予約インスタンスの購入の詳細を表示する方法
 
-[Azure portal](https://aka.ms/reservations) の左側にある _[加入契約]_ メニューを使用するか、または [Azure EA Portal](https://ea.azure.com/) を使用して、予約インスタンスの購入の詳細を表示することができます。 左側のメニューで **[レポート]** を選択し、 _[使用状況の概要]_ タブで _[Charges by Services]\(サービス別料金\)_ セクションまで下にスクロールします。このセクションの一番下までスクロールすると、一覧の最後に、予約インスタンスの購入と使用状況が表示されます。予約インスタンスは、サービス名の横に '1 year' または '3 years' が示されます。たとえば、Standard_DS1_v2 eastus 1 year または Standard_D2s_v3 eastus2 3 years と表示されます。
+[Azure portal](https://aka.ms/reservations) の左側にある _[加入契約]_ メニューを使用するか、または [Azure EA Portal](https://ea.azure.com/) を使用して、予約インスタンスの購入の詳細を表示することができます。 左側のメニューで **[レポート]** を選択し、 _[使用状況の概要]_ タブで _[Charges by Services]\(サービス別料金\)_ セクションまで下にスクロールします。このセクションの一番下までスクロールすると、一覧の最後に、予約インスタンスの購入と使用状況が表示されます。予約インスタンスは、サービス名の横に `1 year` または `3 years` が示されます。たとえば、`Standard_DS1_v2 eastus 1 year` または `Standard_D2s_v3 eastus2 3 years` と表示されます。
 
 ### <a name="how-can-i-change-the-subscription-associated-with-reserved-instance-or-transfer-my-reserved-instance-benefits-to-a-subscription-under-the-same-account"></a>予約インスタンスと関連付けられたサブスクリプションを変更するか、予約インスタンス特典を同じアカウントのサブスクリプションに譲渡するにはどうすればよいですか?
 
@@ -66,7 +76,7 @@ EA 加入契約を有効にして、予約インスタンスを追加すると�
 
 ### <a name="how-to-view-reserved-instance-usage-details"></a>予約インスタンスの使用量の詳細を表示する方法
 
-予約インスタンスの使用量の詳細は、[Azure portal](https://aka.ms/reservations) に表示することができます。または、[Azure EA portal](https://ea.azure.com/) で、 _[レポート]_  >  _[使用状況の概要]_  > 、 _[Charges by Services]\(サービス別料金\)_ の順に移動して表示することもできます (課金情報を表示するアクセス権限を持つ EA のお客様の場合)。 予約インスタンスは、'Reservation' を含むサービス名で識別できます。たとえば、Reservation-Base VM または Virtual Machines Reservation-Windows Svr (1 Core) と表示されます。
+予約インスタンスの使用量の詳細は、[Azure portal](https://aka.ms/reservations) に表示することができます。または、[Azure EA portal](https://ea.azure.com/) で、 _[レポート]_  >  _[使用状況の概要]_  > 、 _[Charges by Services]\(サービス別料金\)_ の順に移動して表示することもできます (課金情報を表示するアクセス権限を持つ EA のお客様の場合)。 予約インスタンスは、"Reservation" を含むサービス名で識別できます。たとえば、`Reservation-Base VM or Virtual Machines Reservation-Windows Svr (1 Core)` と表示されます。
 
 使用状況の詳細と詳細レポートのダウンロード用 CSV には、予約インスタンスの使用量に関する追加情報が含まれます。 _[追加情報]_ フィールドは、予約インスタンスの使用量を確認するのに役立ちます。
 
@@ -74,15 +84,16 @@ Azure ハイブリッド特典を使用せずに Azure 予約 VM インスタン
 
 ### <a name="reserved-instance-billing"></a>予約インスタンスの課金
 
-エンタープライズ カスタマーの場合は、年額コミットメントを利用して Azure 予約 VM インスタンスを購入します。 加入契約の年額コミットメントに、予約インスタンスを購入できる十分な残高が残っている場合、予約インスタンスの金額は年額コミットメントの残高から差し引かれ、購入分の請求書は送付されません。
+エンタープライズ カスタマーの場合は、Azure 前払いを利用して Azure 予約 VM インスタンスを購入します。 加入契約の Azure 前払いに、予約インスタンスを購入できる十分な残高が残っている場合、予約インスタンスの金額は Azure 前払いの残高から差し引かれ、購入分の請求書は送付されません。
 
-Azure EA のお客様がお持ちの年額コミットメントが全額使用されている場合でも、予約インスタンスを購入することができます。この購入に対しては、次回の超過分請求で請求されます。 予約インスタンスの超過分がある場合は、通常の超過分請求に含まれます。
+Azure EA のお客様がお持ちの Azure 前払いが全額使用されている場合でも、予約インスタンスを購入することができます。この購入に対しては、次回の超過分請求で請求されます。 予約インスタンスの超過分がある場合は、通常の超過分請求に含まれます。
 
 ### <a name="reserved-instance-expiration"></a>予約インスタンスの有効期限
 
 予約の 30 日前および有効期限の 30 日前にメールで通知が送付されます。 予約の期限が切れても、デプロイされている VM は稼働し続け、従量課金制で課金されます。 詳細については、[予約仮想マシン インスタンス プラン](https://azure.microsoft.com/pricing/reserved-vm-instances/)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
+
 - Azure の予約の詳細については、「[Azure の予約とは](../reservations/save-compute-costs-reservations.md)」を参照してください。
 - エンタープライズ予約のコストと使用状況の詳細については、「[Enterprise Agreement の予約のコストと使用状況を取得する](../reservations/understand-reserved-instance-usage-ea.md)」を参照してください。
 - 価格の詳細については、「[Linux Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)」または「[Windows Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)」を参照してください。

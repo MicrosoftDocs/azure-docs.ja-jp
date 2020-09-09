@@ -3,15 +3,16 @@ title: Azure Cosmos DB の要求ユニット (RU) 使用量を確認する
 description: Azure Cosmos コンテナーに対して実行した操作の要求ユニット (RU) 使用量を確認する方法について説明します。
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/01/2019
 ms.author: thweiss
-ms.openlocfilehash: c5699bb851bd0a818a987228155c62683e93f51a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-javascript
+ms.openlocfilehash: d692a884688d81fdf16261edff816fa8f0215877
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77585902"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422319"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>Azure Cosmos DB の要求ユニット使用量を確認する
 
@@ -37,10 +38,11 @@ SQL API を使用している場合、Azure Cosmos コンテナーに対する�
 
 1. **[Query Stats]\(クエリの統計\)** を選択すると、実行した要求の実際の使用量が表示されます。
 
-![Azure portal で SQL クエリの要求の使用量を表示した画面のスクリーンショット](./media/find-request-unit-charge/portal-sql-query.png)
+:::image type="content" source="./media/find-request-unit-charge/portal-sql-query.png" alt-text="Azure portal で SQL クエリの要求の使用量を表示した画面のスクリーンショット":::
 
 ### <a name="use-the-net-sdk"></a>.NET SDK を使用する
-### <a name="net-v2-sdk"></a>.Net V2 SDK
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
 [.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) から返されたオブジェクトにより `RequestCharge` プロパティが公開されます。
 
@@ -75,13 +77,15 @@ while (query.HasMoreResults)
 }
 ```
 
-### <a name="net-v3-sdk"></a>.Net V3 SDK
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
 [.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) から返されたオブジェクトにより `RequestCharge` プロパティが公開されます。
 
 [!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/CustomDocsSampleCode.cs?name=GetRequestCharge)]
 
 詳細については、「[クイック スタート: Azure Cosmos DB の SQL API アカウントを使用して .NET Web アプリをビルドする](create-sql-api-dotnet.md)」を参照してください。
+
+---
 
 ### <a name="use-the-java-sdk"></a>Java SDK の使用
 
@@ -184,7 +188,7 @@ RU 使用量は、`getLastRequestStatistics` という名前のカスタム [デ
 
 1. **[Query Stats]\(クエリの統計\)** を選択すると、実行した要求の実際の使用量が表示されます。
 
-![Azure portal で MongoDB クエリの要求の使用量を表示した画面のスクリーンショット](./media/find-request-unit-charge/portal-mongodb-query.png)
+:::image type="content" source="./media/find-request-unit-charge/portal-mongodb-query.png" alt-text="Azure portal で MongoDB クエリの要求の使用量を表示した画面のスクリーンショット":::
 
 ### <a name="use-the-mongodb-net-driver"></a>MongoDB .NET ドライバーの使用
 

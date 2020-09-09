@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: genli
-ms.openlocfilehash: becbf88aeda164f7d916cbc1f1ace89262cc1a3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb2f08c4788c90f8bdb2af9c6ef95fd1ac43b994
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77921625"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028670"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Azure VM のローカルの Windows パスワードをオフラインでリセットする
 Azure ゲスト エージェントがインストールされている場合、[Azure Portal または Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を使用して、Azure 内の VM のローカルの Windows パスワードをリセットできます。 これは、Azure VM のパスワードをリセットする最も一般的な方法です。 Azure のゲスト エージェントが応答しない場合やカスタム イメージのアップロード後にインストールに失敗する場合、Windows のパスワードを手動でリセットできます。 この記事では、ソース OS の仮想ディスクを別の VM に接続してローカル アカウントのパスワードをリセットする方法について説明します。 この記事に記載されている手順は、Windows ドメイン コントローラーには適用されません。 
@@ -61,7 +61,7 @@ Azure ゲスト エージェントへのアクセス権がない場合に Azure 
      
      ![gpt.ini を作成する](./media/reset-local-password-without-agent/create-gpt-ini.png)
 
-4. `\Windows\System32\GroupPolicy\Machines\Scripts\` に `scripts.ini` を作成します。 非表示のフォルダーが表示されていることを確認します。 必要に応じて、`Machine` フォルダーまたは `Scripts` フォルダーを作成します。
+4. `\Windows\System32\GroupPolicy\Machine\Scripts\` に `scripts.ini` を作成します。 非表示のフォルダーが表示されていることを確認します。 必要に応じて、`Machine` フォルダーまたは `Scripts` フォルダーを作成します。
    
    * 作成した `scripts.ini` ファイルに次の行を追加します。
      
@@ -107,7 +107,7 @@ Azure ゲスト エージェントへのアクセス権がない場合に Azure 
 > [!NOTE]
 > この手順は、Windows ドメイン コントローラーには適用されません。 スタンドアロン サーバーまたはドメインのメンバーであるサーバーでのみ機能します。
 
-次の手順を試す前に、[Azure Portal または Azure PowerShell](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/reset-rdp) を使用したパスワードのリセットを必ずお試しください。 開始する前に、必ず VM のバックアップをおとりください。 
+次の手順を試す前に、[Azure Portal または Azure PowerShell](/previous-versions/azure/virtual-machines/windows/classic/reset-rdp) を使用したパスワードのリセットを必ずお試しください。 開始する前に、必ず VM のバックアップをおとりください。 
 
 1. Azure Portal で、影響を受ける VM を削除します。 VM を削除しても削除されるのは、Azure 内の VM の参照であるメタデータのみです。 VMが削除されても、仮想ディスクは保持されます。
    

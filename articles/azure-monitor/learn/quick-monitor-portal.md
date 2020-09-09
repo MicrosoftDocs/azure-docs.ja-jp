@@ -7,18 +7,18 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: 074010a2f3b1f4f4a58b3c4727bf4eed28402e0a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ed7cec34b4bca1882d069997d4f89677cda32447
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82142633"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080951"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>ASP.NET Web アプリケーションの監視を開始する
 
 Azure Application Insights を使うと、Web アプリケーションの可用性、パフォーマンス、利用状況を簡単に監視できます。  アプリケーションのエラーを、ユーザーからの報告を待つことなく、迅速に特定して診断することもできます。  Application Insights から収集したアプリのパフォーマンスと有効性に関する情報を使用することで、十分な情報に基づいて、アプリケーションのメンテナンスと改善に関する選択を行えます。
 
-このクイックスタートでは、既存の ASP.NET Web アプリケーションに Application Insights を追加してライブ統計の分析を開始する方法を説明します。これは、アプリケーションの分析に使用できるさまざまな方法の中の 1 つです。 ASP.NET Web アプリケーションがない場合は、[ASP.NET Web アプリを作成するためのクイック スタート](../../app-service/app-service-web-get-started-dotnet-framework.md)に従って作成できます。
+このクイックスタートでは、既存の ASP.NET Web アプリケーションに Application Insights を追加してライブ統計の分析を開始する方法を説明します。これは、アプリケーションの分析に使用できるさまざまな方法の中の 1 つです。 ASP.NET Web アプリケーションがない場合は、[ASP.NET Web アプリを作成するためのクイック スタート](../../app-service/quickstart-dotnet-framework.md)に従って作成できます。
 
 ## <a name="prerequisites"></a>前提条件
 このクイック スタートを完了するには、以下が必要です。
@@ -76,7 +76,7 @@ Azure Portal で Application Insights を開いて、実行中のアプリケー
 
     ![Live Stream](media/quick-monitor-portal/7livemetrics.png)
 
-    Azure でアプリケーションをホストする準備ができたら、すぐに公開することができます。 [ASP.NET Web アプリを作成するためのクイックスタート](../../app-service/app-service-web-get-started-dotnet.md#update-the-app-and-redeploy)に記載されている手順に従います。
+    Azure でアプリケーションをホストする準備ができたら、すぐに公開することができます。 [ASP.NET Web アプリを作成するためのクイックスタート](../../app-service/quickstart-dotnetcore.md#update-the-app-and-redeploy)に記載されている手順に従います。
 
 5. Visual Studio を使用して Application Insights の監視を追加する場合、クライアント側監視を自動的に追加することができます。 クライアント側監視を手動でアプリケーションに追加するには、次の JavaScript をアプリケーションに追加します。
 

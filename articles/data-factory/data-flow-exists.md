@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/07/2020
 ms.openlocfilehash: 805b51bf4e6d8feab9539f660dfc72ca78b82d5c
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982634"
 ---
 # <a name="exists-transformation-in-mapping-data-flow"></a>マッピング データ フローの存在変換

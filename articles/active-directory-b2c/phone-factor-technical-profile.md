@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e2b30e8f6bcbe7c0e739455f4942712f68ff8404
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 10d5fda526c41704381bb544bdfd0589063c1d15
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437445"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85203862"
 ---
 # <a name="define-a-phone-factor-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで電話ファクター技術プロファイルを定義する
 
@@ -36,7 +36,7 @@ Azure Active Directory B2C (Azure AD B2C) では、電話番号の登録およ�
 
 次の例は、登録と検証のための電話ファクター技術プロファイルを示しています。
 
-```XML
+```xml
 <TechnicalProfile Id="PhoneFactor-InputOrVerify">
   <DisplayName>PhoneFactor</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.PhoneFactorProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -64,7 +64,7 @@ InputClaims 要素には、次の要求が含まれている必要がありま�
 
 次の例は、複数の電話番号を使用した場合を示しています。 詳細については、[サンプル ポリシー](https://github.com/azure-ad-b2c/samples/tree/master/policies/mfa-add-secondarymfa)を参照してください。
 
-```XML
+```xml
 <InputClaims>
   <InputClaim ClaimTypeReferenceId="userIdForMFA" PartnerClaimType="UserId" />
   <InputClaim ClaimTypeReferenceId="strongAuthenticationPhoneNumber" />

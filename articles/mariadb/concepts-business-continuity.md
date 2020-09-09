@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: c01e0df1f420c8489ca3445d9fa025b251a870f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 7/7/2020
+ms.openlocfilehash: 183ece0d82431a8a961902d75d2fc24b013bc97b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79532393"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252268"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mariadb"></a>Azure Database for MariaDB でのビジネス継続性を理解する
 
@@ -48,11 +48,16 @@ Azure Database for MariaDB で提供されるビジネス継続性機能には�
 > [!IMPORTANT]
 > geo リストアは、geo 冗長バックアップ ストレージでサーバーをプロビジョニングした場合にのみ可能です。
 
+## <a name="cross-region-read-replicas"></a>リージョンにまたがる読み取りレプリカ
+
+リージョンにまたがる読み取りレプリカを使用すると、事業継続とディザスター リカバリーの計画を強化できます。 読み取りレプリカは、MariaDB のバイナリ ログ レプリケーション テクノロジを使用して非同期的に更新されます。 読み取りレプリカ、利用可能なリージョン、フェールオーバーする方法については、[読み取りレプリカの概念に関する記事](concepts-read-replicas.md)を参照してください。 
+
+## <a name="faq"></a>よく寄せられる質問
+### <a name="where-does-azure-database-for-mariadb-store-customer-data"></a>Azure Database for MariaDB は顧客データをどこに格納しますか?
+既定では、Azure Database for MariaDB によって、デプロイされているリージョン外に顧客データが移動または格納されることはありません。 ただし、顧客は必要に応じて、[地理冗長バックアップ](concepts-backup.md#backup-redundancy-options)を有効にするか、別のリージョンにデータを格納するための[クロスリージョン読み取りレプリカ](concepts-read-replicas.md#cross-region-replication)を作成することを選択できます。
+
 ## <a name="next-steps"></a>次のステップ
 
-- 自動バックアップについて詳しくは、[Azure Database for MariaDB でのバックアップ](concepts-backup.md)に関するページをご覧ください。
-- Azure Portal を使用して特定の時点に復元する方法については、 [Azure Portal を使用したデータベースのポイントインタイム リストア](howto-restore-server-portal.md)に関するページをご覧ください。
-
-<!--
-- To restore to a point in time using Azure CLI, see [restore database to a point in time using CLI](howto-restore-server-cli.md). 
--->
+- [Azure Database for MariaDB での自動バックアップ](concepts-backup.md)の詳細を確認する。
+- [Azure portal](howto-restore-server-portal.md) または [Azure CLI](howto-restore-server-cli.md) を使用して復元する方法を確認する。
+- [Azure Database for MariaDB の読み取りレプリカ](concepts-read-replicas.md)について確認する。

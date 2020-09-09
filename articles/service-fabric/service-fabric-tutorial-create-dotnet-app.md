@@ -3,17 +3,17 @@ title: Azure で Service Fabric 上に .NET アプリを作成する
 description: このチュートリアルでは、ASP.NET Core のフロントエンドとリライアブル サービスのステートフルなバックエンドを含むアプリケーションを作成し、クラスターにアプリケーションをデプロイする方法を説明します。
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.custom: mvc
-ms.openlocfilehash: cbfae89ffa446ca3915129fd9add2701ac21d837
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: mvc, devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 847bd2e30977c5a14f8294f6709cbd6d376a8211
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75465478"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016276"
 ---
-# <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>チュートリアル: ASP.NET Core Web API フロントエンド サービスとステートフルなバックエンド サービスを含むアプリケーションを作成およびデプロイする
+# <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>チュートリアル:ASP.NET Core Web API フロントエンド サービスとステートフルなバックエンド サービスを含むアプリケーションを作成およびデプロイする
 
-このチュートリアルは、シリーズの第 1 部です。  ASP.NET Core Web API フロント エンドとステートフルなバックエンド サービスを含む Azure Service Fabric アプリケーションを作成し、データを格納する方法を説明します。 最後まで読み進めていけば、ASP.NET Core Web フロントエンドからクラスター内のステートフルなバックエンド サービスに投票結果を保存するアプリケーションが完成します。 投票アプリケーションを手動で作成しない場合は、完成したアプリケーションの[ソース コードをダウンロード](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)し、「[投票のサンプル アプリケーションの概要](#walkthrough_anchor)」に進むことができます。  必要に応じて、このチュートリアルの[ビデオ ウォークスルー](https://channel9.msdn.com/Events/Connect/2017/E100)をご覧になることもできます。
+このチュートリアルは、シリーズの第 1 部です。  ASP.NET Core Web API フロント エンドとステートフルなバックエンド サービスを含む Azure Service Fabric アプリケーションを作成し、データを格納する方法を説明します。 最後まで読み進めていけば、ASP.NET Core Web フロントエンドからクラスター内のステートフルなバックエンド サービスに投票結果を保存するアプリケーションが完成します。 このチュートリアル シリーズには、Windows 開発者用コンピューターが必要です。 投票アプリケーションを手動で作成しない場合は、完成したアプリケーションの[ソース コードをダウンロード](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)し、「[投票のサンプル アプリケーションの概要](#walkthrough_anchor)」に進むことができます。  必要に応じて、このチュートリアルの[ビデオ ウォークスルー](https://channel9.msdn.com/Events/Connect/2017/E100)をご覧になることもできます。
 
 ![AngularJS+ASP.NET API フロントエンド、Service Fabric のステートフル バックエンド サービスに接続](./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png)
 
@@ -41,7 +41,7 @@ ms.locfileid: "75465478"
 
 ## <a name="create-an-aspnet-web-api-service-as-a-reliable-service"></a>ASP.NET Web API サービスをリライアブル サービスとして作成する
 
-まず、ASP.NET Core を使用して投票アプリケーション Web フロントエンドを作成します。 ASP.NET Core は軽量のクロスプラットフォーム Web 開発フレームワークであり、これを使用すると、最新の Web UI と Web API を作成できます。 Service Fabric と ASP.NET Core を統合する方法を十分に理解するには、「[Service Fabric リライアブル サービスでの ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)」の記事全体を読むことを強くお勧めします。 ここでは、このチュートリアルに従って、すぐに開始することができます。 ASP.NET Core の詳細については、[ASP.NET Core のドキュメント](https://docs.microsoft.com/aspnet/core/)を参照してください。
+まず、ASP.NET Core を使用して投票アプリケーション Web フロントエンドを作成します。 ASP.NET Core は軽量のクロスプラットフォーム Web 開発フレームワークであり、これを使用すると、最新の Web UI と Web API を作成できます。 Service Fabric と ASP.NET Core を統合する方法を十分に理解するには、「[Service Fabric リライアブル サービスでの ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)」の記事全体を読むことを強くお勧めします。 ここでは、このチュートリアルに従って、すぐに開始することができます。 ASP.NET Core の詳細については、[ASP.NET Core のドキュメント](/aspnet/core/)を参照してください。
 
 1. Visual Studio を**管理者**として起動します。
 

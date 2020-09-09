@@ -3,16 +3,16 @@ title: Oracle Database に接続する
 description: Oracle Database REST API と Azure Logic Apps を使用して、レコードを挿入および管理します
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 03/29/2017
+ms.date: 05/20/2020
 tags: connectors
-ms.openlocfilehash: fdbf7fd7dded2fc0026e5c819ca579eeddc5cdb6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 988d1efd348fe8e85dd33fbe35cc8dc9362c081b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147810"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290609"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Oracle Database コネクタの概要
 
@@ -20,6 +20,13 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 
 * 顧客データベースに新しい顧客を追加するか、注文データベースで注文を更新することで、ワークフローを構築します。
 * データ行の取得、新しい行の挿入、行の削除を行うアクションを使用します。 たとえば、Dynamics CRM Online にレコードが作成されると (トリガー)、Oracle Database に行を挿入します (アクション)。 
+
+このコネクタでは、次の項目はサポートされていません。
+
+* ビュー 
+* 複合キーが含まれるテーブル
+* テーブル内の入れ子になったオブジェクトの種類
+* 非スカラー値を含むデータベース関数
 
 この記事では、ロジック アプリで Oracle Database コネクタを使用する方法について説明します。
 
@@ -51,30 +58,30 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 
 2. ロジック アプリを開始するときに、 **[要求/応答 - 要求]** トリガーを選択します。 
 
-    ![](./media/connectors-create-api-oracledatabase/request-trigger.png)
+    ![ダイアログ ボックスには、すべてのトリガーを検索するボックスがあります。 "要求/応答 - 要求" という単一のトリガーも、選択ボタンと共に表示されます。](./media/connectors-create-api-oracledatabase/request-trigger.png)
 
 3. **[保存]** を選択します。 保存すると、要求 URL が自動的に生成されます。 
 
 4. **[新しいステップ]** 、 **[アクションの追加]** の順に選択します。 「`oracle`」と入力して、使用できるアクションを表示します。 
 
-    ![](./media/connectors-create-api-oracledatabase/oracledb-actions.png)
+    ![検索ボックスには「oracle」と入力されています。 検索では、"Oracle Database" というラベルが付いた 1 つのヒットが生成されます。 タブ付きページがあり、1 つのタブには "トリガー (0)" と表示され、もう 1 つには "アクション (6)" と表示されます。 一覧には、6 個のアクションがあります。 それらの 1 つ目は、"行の取得のプレビュー" です。](./media/connectors-create-api-oracledatabase/oracledb-actions.png)
 
     > [!TIP]
     > この方法を使用すると、すべてのコネクタで使用できるトリガーとアクションを、最も簡単に確認することもできます。 `oracle` など、コネクタ名の一部を入力すると、 その名前に一致するトリガーとアクションの一覧が表示されます。 
 
 5. **[Oracle Database - Get row (Oracle Database - 行を取得する)]** など、アクションのいずれかを選択します。 **[Connect via on-premises data gateway (オンプレミス データ ゲートウェイ経由で接続する)]** を選択します。 Oracle サーバー名、認証方法、ユーザー名、パスワードを入力し、ゲートウェイを選択します。
 
-    ![](./media/connectors-create-api-oracledatabase/create-oracle-connection.png)
+    ![ダイアログ ボックスのタイトルは、[Oracle Database - Get row]\(Oracle Database - 行の取得\) です。 [オンプレミスのデータ ゲートウェイ経由で接続] というラベルの、オンになっているボックスがあります。 その下には、他に 5 つのテキスト ボックスがあります。](./media/connectors-create-api-oracledatabase/create-oracle-connection.png)
 
 6. 接続されたら、一覧からテーブルを選択し、テーブルに行 ID を入力します。 テーブルの識別子も必要です。 テーブルの識別子がわからない場合は、Oracle DB の管理者に連絡し、`select * from yourTableName` の出力から取得します。 これにより、操作を続行するために必要な、テーブルを特定できる情報が提供されます。
 
     次の例では、人事データベースからジョブ データが返されました。 
 
-    ![](./media/connectors-create-api-oracledatabase/table-rowid.png)
+    ![[Get row (Preview)]\(行の取得 (プレビュー)\) というタイトルのダイアログ ボックスには、次の 2 つのテキスト ボックスがあります。[テーブル名] には "HRJOBS" と表示されていて、ドロップダウン リストがあり、[行 ID] には "SA_REP" と表示されています。](./media/connectors-create-api-oracledatabase/table-rowid.png)
 
 7. この手順では、その他のコネクタのいずれかを使用してワークフローを構築します。 Oracle からデータを取得しているかどうかをテストするには、Office 365 Outlook など、メール送信コネクタのいずれかを使用して、Oracle データを含むメールを自分宛てに送信します。 Oracle テーブルからの動的トークンを使用して、電子メールの `Subject` および `Body` を作成します。
 
-    ![](./media/connectors-create-api-oracledatabase/oracle-send-email.png)
+    ![2 つのダイアログ ボックスがあります。 [メールの送信] には、電子メールの "本文"、"件名"、および "宛先" アドレスを指定するためのボックスがあります。 [動的なコンテンツの追加] ダイアログ ボックスを使用すると、フローのアプリやサービスの動的コンテンツを検索できます。](./media/connectors-create-api-oracledatabase/oracle-send-email.png)
 
 8. ロジック アプリを**保存**して、 **[実行]** を選択します。 デザイナーを閉じて、実行履歴で状態を確認します。 失敗した場合は、失敗したことを示すメッセージの行を選択します。 デザイナーが開き、失敗した手順と、エラー情報が表示されます。 成功した場合は、追加した情報が電子メールで通知されます。
 
@@ -83,11 +90,11 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 
 * oracle というハッシュタグを監視し、データベースにツイートを入力して、そのツイートに対してクエリを実行できるようにするほか、他のアプリケーションで使用できるようにします。 ロジック アプリで `Twitter - When a new tweet is posted` トリガーを追加し、 **#oracle** ハッシュタグを入力します。 次に、`Oracle Database - Insert row` アクションを追加し、テーブルを選択します。
 
-    ![](./media/connectors-create-api-oracledatabase/twitter-oracledb.png)
+    ![[新しいツイートが投稿されたら] ダイアログ ボックスには、検索テキストとして "hashtag oracle" と表示され、確認の頻度を指定できます。 このダイアログ ボックスの後には、[Oracle Database] ダイアログ ボックスが表示され、アクションを選択できます。](./media/connectors-create-api-oracledatabase/twitter-oracledb.png)
 
 * メッセージが Service Bus キューに送信されます。 そのメッセージを取得し、データベースに入力します。 ロジック アプリで `Service Bus - when a message is received in a queue` トリガーを追加し、キューを選択します。 次に、`Oracle Database - Insert row` アクションを追加し、テーブルを選択します。
 
-    ![](./media/connectors-create-api-oracledatabase/sbqueue-oracledb.png)
+    ![[メッセージを受信したとき] ダイアログ ボックスには、[キュー名] として "orders" と表示され、確認の頻度を指定できます。 このボックスの後には、[Insert row (Preview)]\(行の挿入 (プレビュー)\) ダイアログ ボックスが表示され、[テーブル名] を選択できます。](./media/connectors-create-api-oracledatabase/sbqueue-oracledb.png)
 
 ## <a name="common-errors"></a>一般的なエラー
 
@@ -108,12 +115,6 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 **原因**:テーブルに主キーがありません。  
 
 **解決方法**:Oracle Database コネクタでは、主キー列が含まれるテーブルを使用する必要があります。
-
-#### <a name="currently-not-supported"></a>以下は現在サポートされていません
-
-* ビュー 
-* 複合キーが含まれるテーブル
-* テーブル内の入れ子になったオブジェクトの種類
  
 ## <a name="connector-specific-details"></a>コネクタ固有の詳細
 
@@ -121,10 +122,11 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 
 ## <a name="get-some-help"></a>ヘルプ情報
 
-[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)では、質問の投稿や質問への回答を行うことができるほか、他の Logic Apps ユーザーがどのようなことを行っているかがわかります。 
+[Microsoft Q&A の Azure Logic Apps に関する質問ページ](/answers/topics/azure-logic-apps.html)では、質問の投稿や質問への回答を行うことができるほか、他の Logic Apps ユーザーがどのようなことを行っているかがわかります。 
 
 [https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish) では、Logic Apps やコネクタの機能向上に役立つ皆様の投票や提案をお待ちしています。 
 
 
 ## <a name="next-steps"></a>次のステップ
 [ロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)し、[API の一覧](apis-list.md)で Logic Apps で使用できるコネクタを確認します。
+

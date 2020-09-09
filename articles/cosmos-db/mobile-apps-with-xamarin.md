@@ -7,12 +7,13 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: 8fbd2065ceae1aadf1dc57c78adb21b7c2848297
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 14a004864891aad768486c3a436b4936d693715e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80985560"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999038"
 ---
 # <a name="tutorial-build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>チュートリアル:Xamarin と Azure Cosmos DB を使用したモバイル アプリケーションの構築
 
@@ -31,7 +32,7 @@ ms.locfileid: "80985560"
 ## <a name="azure-cosmos-db-capabilities-for-mobile-apps"></a>モバイル アプリ向けの Azure Cosmos DB の機能
 Azure Cosmos DB は、モバイル アプリ開発者向けの次の主要な機能を備えています。
 
-![モバイル アプリ向けの Azure Cosmos DB の機能](media/mobile-apps-with-xamarin/documentdb-for-mobile.png)
+:::image type="content" source="media/mobile-apps-with-xamarin/documentdb-for-mobile.png" alt-text="モバイル アプリ向けの Azure Cosmos DB の機能":::
 
 * スキーマなしのデータに対するリッチ クエリ。 Azure Cosmos DB では、データをスキーマなしの JSON ドキュメントとして異種コレクションに格納します。 スキーマやインデックスについて心配する必要なく、[高速なリッチ クエリ](how-to-sql-query.md)を提供します。
 * 高速スループット。 Azure Cosmos DB では、ドキュメントを読み書きするのにわずか数ミリ秒しかかかりません。 開発者は必要なスループットを指定でき、Azure Cosmos DB はすべての単一リージョンのアカウントに緩やかな整合性で 99.999% の可用性 SLA を提供し、全ての複数リージョンのデータベース アカウントに 99.99% の 読み取り可用性を提供します。
@@ -47,7 +48,7 @@ Azure Cosmos DB は、モバイル アプリ開発者向けの次の主要な機
 ### <a name="get-started"></a>はじめに
 Azure Cosmos DB の利用を開始するのは簡単です。 Azure Portal に移動して、新しい Azure Cosmos DB アカウントを作成します。 **[クイック スタート]** タブをクリックします。Azure Cosmos DB アカウントにあらかじめ接続されている Xamarin Forms のタスク一覧のサンプルをダウンロードします。 
 
-![モバイル アプリ向けの Azure Cosmos DB の [クイック スタート]](media/mobile-apps-with-xamarin/cosmos-db-quickstart.png)
+:::image type="content" source="media/mobile-apps-with-xamarin/cosmos-db-quickstart.png" alt-text="モバイル アプリ向けの Azure Cosmos DB の [クイック スタート]":::
 
 または、既存の Xamarin アプリがある場合は、[Azure Cosmos DB NuGet パッケージ](sql-api-sdk-dotnet-core.md)を追加できます。 Azure Cosmos DB では、Xamarin.IOS、Xamarin.Android、および Xamarin Forms の共有ライブラリをサポートしています。
 
@@ -85,19 +86,19 @@ To-Do List アプリをマルチ ユーザーの To-Do List アプリに変更�
 
 このパターンの完全なコード サンプルについては、[GitHub のリソース トークン ブローカー](https://github.com/kirillg/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems)に関するページを参照してください。 次の図には、このソリューションを示しています。
 
-![Azure Cosmos DB ユーザーおよびアクセス許可のブローカー](media/mobile-apps-with-xamarin/documentdb-resource-token-broker.png)
+:::image type="content" source="media/mobile-apps-with-xamarin/documentdb-resource-token-broker.png" alt-text="Azure Cosmos DB ユーザーおよびアクセス許可のブローカー" border="false":::
 
 ここで、2 人のユーザーが同じ To-Do List にアクセスできるようにする場合は、リソース トークン ブローカーでアクセス トークンにアクセス許可を追加できます。
 
 ### <a name="scale-on-demand"></a>オンデマンドでの拡張
 Azure Cosmos DB は、管理された DBaaS (database as a service) です。 ユーザー ベースが拡大しても、VM のプロビジョニングやコア数の増加について心配する必要はありません。 必要なのは、アプリに必要な 1 秒あたりの操作数 (スループット) を Azure Cosmos DB に指示することだけです。 **[スケール]** タブで、1 秒あたりの要求ユニット (RU) と呼ばれるスループットの尺度を使用して、スループットを指定できます。 たとえば、1 KB のドキュメントの読み取り操作には 1 RU が必要です。 また、**スループット** メトリックにアラートを追加して、トラフィックの増加を監視し、アラートの発生に応じてスループットをプログラムで変更することもできます。
 
-![オンデマンドでの Azure Cosmos DB のスループットの拡張](media/mobile-apps-with-xamarin/cosmos-db-xamarin-scale.png)
+:::image type="content" source="media/mobile-apps-with-xamarin/cosmos-db-xamarin-scale.png" alt-text="オンデマンドでの Azure Cosmos DB のスループットの拡張":::
 
 ### <a name="go-planet-scale"></a>世界規模化
 アプリが普及すると、ユーザーが世界中に広がる可能性があります。 または、不測の事態に備える必要があるかもしれません。 Azure Portal に移動して、Azure Cosmos DB アカウントを開きます。 地図上でクリックすると、世界中の任意の数のリージョンにデータを継続的にレプリケートできます。 この機能により、ユーザーがどこにいてもデータを利用できるようになります。 不測の事態に備えるためにフェールオーバー ポリシーを追加することもできます。
 
-![地理的リージョンをまたいだ Azure Cosmos DB の拡張](media/mobile-apps-with-xamarin/cosmos-db-xamarin-replicate.png)
+:::image type="content" source="media/mobile-apps-with-xamarin/cosmos-db-xamarin-replicate.png" alt-text="地理的リージョンをまたいだ Azure Cosmos DB の拡張" border="false":::
 
 おめでとうございます。 ソリューションが完成し、モバイル アプリで Xamarin と Azure Cosmos DB を利用できるようになりました。 同様の手順に従って、Azure Cosmos DB JavaScript SDK を使用した Cordova アプリや、Azure Cosmos DB REST API を使用したネイティブ iOS/Android アプリを構築することができます。
 

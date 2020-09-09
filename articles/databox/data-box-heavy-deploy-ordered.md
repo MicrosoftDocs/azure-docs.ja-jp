@@ -1,6 +1,6 @@
 ---
 title: Azure Data Box Heavy の注文方法のチュートリアル | Microsoft Docs
-description: Azure Data Box Heavy の配置の前提条件と注文方法について説明します
+description: このチュートリアルでは、オンプレミスのデータを Azure にインポートできるようにするハイブリッド ソリューションである Azure Data Box Heavy とその注文方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 4e9077d06341ce5ecf6b2238374ce1ac8e13dca3
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 9b2b97f11c1493deca9b79907e894efbb7b9c456
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415160"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920995"
 ---
 # <a name="tutorial-order-azure-data-box-heavy"></a>チュートリアル:Azure Data Box Heavy を注文する
 
@@ -75,7 +75,7 @@ Azure Data Box Heavy は、迅速かつ簡単な信頼性の高い方法でオ�
     |---------|---------|
     |サブスクリプション     | Data Box サービス用の EA、CSP、または Azure スポンサー サブスクリプションを選択します。 <br> サブスクリプションは、課金アカウントにリンクされます。       |
     |転送の種類     | **[Azure へインポート]** を選択します。        |
-    |ソースの国     | データが現在存在する国/地域を選択します。         |
+    |ソースの国/地域     | データが現在存在する国/地域を選択します。         |
     |宛先 Azure リージョン     | データを転送する Azure リージョンを選択します。        |
 
     [![Data Box ファミリの使用可能性の選択](media/data-box-deploy-ordered/select-data-box-option1.png)](media/data-box-deploy-ordered/select-data-box-option1.png#lightbox)
@@ -91,7 +91,7 @@ Azure Data Box Heavy は、迅速かつ簡単な信頼性の高い方法でオ�
     |名前     | 注文を追跡するためのフレンドリ名を指定します。 <br> 名前の長さは 3 ～ 24 文字で、文字、数字、ハイフンを使うことができます。 <br> 名前の最初と最後は、文字か数字とする必要があります。      |
     |Resource group     | 既存のグループを使用するか、新しいグループを作成します。 <br> リソース グループとは、まとめて管理したり、デプロイしたりできるリソースの論理コンテナーです。         |
     |宛先 Azure リージョン     | ストレージ アカウントのリージョンを選択します。 <br> 詳細については、[利用可能なリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=databox)に関する記事をご覧ください。        |
-    |保存先     | ストレージ アカウント、マネージド ディスク、またはその両方から選択します。 <br> 指定した Azure リージョンに基づいて、既存のストレージ アカウントのフィルター処理された一覧から 1 つまたは複数のストレージ アカウントを選択します。 <br>Data Box Heavy は、最大 10 個のストレージ アカウントにリンクできます。 <br> 新しい**汎用 v1 アカウント**、**汎用 v2 アカウント**、または **Blob Storage アカウント**を作成することもできます。 <br> Azure Data Lake Storage Gen 2 アカウントはサポートされていません。 [デバイスでサポートされるストレージ アカウント](data-box-heavy-system-requirements.md#supported-storage-accounts)に関する記事を参照してください。 <br>仮想ネットワークに対するストレージ アカウントがサポートされます。 セキュリティで保護されたストレージ アカウントと Data Box サービスとを連携させるには、ストレージ アカウントのネットワーク ファイアウォール設定内で、信頼できるサービスを有効にします。 詳細については、[Azure Data Box サービスを信頼できるサービスとして追加する](../storage/common/storage-network-security.md#exceptions)方法に関する記事を参照してください。|
+    |保存先     | ストレージ アカウント、マネージド ディスク、またはその両方から選択します。 <br> 指定した Azure リージョンに基づいて、既存のストレージ アカウントのフィルター処理された一覧から 1 つまたは複数のストレージ アカウントを選択します。 <br>Data Box Heavy は、最大 10 個のストレージ アカウントにリンクできます。 <br> 新しい**汎用 v1 アカウント**、**汎用 v2 アカウント**、または **Blob Storage アカウント**を作成することもできます。 <br>[デバイスでサポートされるストレージ アカウント](data-box-heavy-system-requirements.md#supported-storage-accounts)に関する記事を参照してください。 <br>仮想ネットワークに対するストレージ アカウントがサポートされます。 セキュリティで保護されたストレージ アカウントと Data Box サービスとを連携させるには、ストレージ アカウントのネットワーク ファイアウォール設定内で、信頼できるサービスを有効にします。 詳細については、[Azure Data Box サービスを信頼できるサービスとして追加する](../storage/common/storage-network-security.md#exceptions)方法に関する記事を参照してください。|
 
     保存先としてストレージ アカウントを使用している場合は、以下のようなスクリーンショットが表示されます。
 

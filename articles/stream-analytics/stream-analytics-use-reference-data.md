@@ -6,17 +6,28 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/8/2019
-ms.openlocfilehash: b3808524706b13761dd8eccffa301c602d08f481
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 5/11/2020
+ms.openlocfilehash: 8aae9a0ff3ffdbd4f6bc93db5c6f15dcb938080e
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232027"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196436"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Stream Analytics での参照に参照データを使用する
 
 参照データ (別名、ルックアップ テーブル) は、静的または本来はあまり変更されない有限のデータ セットであり、データ ストリームのルックアップや増大を行うために使用されます。 たとえば、IoT のシナリオでは、センサーに関する (変化が頻繁ではない) メタデータを参照データに格納し、リアルタイムの IoT データ ストリームと結合することができます。 Azure Stream Analytics は、参照データをメモリに読み込んで、待機時間の短いストリーム処理を実現します。 Azure Stream Analytics ジョブで参照データを使用するには、一般にクエリで[参照データの結合](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics)を使用します。 
+
+## <a name="example"></a>例  
+自動車が料金所を通過したときに生成されるイベントのリアルタイム ストリームを作成できます。 料金所では、ライセンス プレートをリアルタイムでキャプチャし、登録の詳細がある静的なデータセットと結合して、有効期限が切れたライセンス プレートを識別できます。  
+  
+```SQL  
+SELECT I1.EntryTime, I1.LicensePlate, I1.TollId, R.RegistrationId  
+FROM Input1 I1 TIMESTAMP BY EntryTime  
+JOIN Registration R  
+ON I1.LicensePlate = R.LicensePlate  
+WHERE R.Expired = '1'
+```  
 
 Stream Analytics は、参照データの格納レイヤーとして Azure BLOB ストレージおよび Azure SQL Database をサポートします。 [任意の数のクラウド ベースおよびオンプレミスのデータ ストア](../data-factory/copy-activity-overview.md)を使用するために、Azure Data Factory から参照データを BLOB ストレージに変換またはコピー (あるいは両方) することもできます。
 
@@ -34,9 +45,9 @@ Stream Analytics は、参照データの格納レイヤーとして Azure BLOB 
 |ストレージ アカウント   | BLOB が配置されるストレージ アカウントの名前。 Stream Analytics のジョブと同じサブスクリプションにある場合は、ドロップ ダウンから選択することができます。   |
 |ストレージ アカウント キー   | ストレージ アカウントに関連付けられている秘密キー。 ストレージ アカウントが Stream Analytics のジョブと同じサブスクリプションにある場合は、自動的に設定されます。   |
 |ストレージ コンテナー   | コンテナーにより、Microsoft Azure Blob service に格納される BLOB が論理的にグループ化されます。 BLOB を Blob service にアップロードするとき、その BLOB のコンテナーを指定する必要があります。   |
-|パスのパターン   | 指定されたコンテナー内に BLOB を配置するために使用されるパス。 このパス内に、次の 2 つの変数のいずれかまたは両方のインスタンスを指定できます。<BR>{date}、{time}<BR>例 1: products/{date}/{time}/product-list.csv<BR>例 2: products/{date}/product-list.csv<BR>例 3: product-list.csv<BR><br> 指定されたパスに、BLOB が存在しない場合、BLOB が使用可能になるまで、Stream Analytics ジョブは無期限に待機します。   |
-|日付形式 [省略可能]   | 指定したパス パターン内で {date} を使用した場合は、サポートされている形式のドロップ ダウンから、BLOB を編成する日付形式を選択できます。<BR>例: YYYY/MM/DD、MM/DD/YYYY など   |
-|時刻形式 [省略可能]   | 指定したパス パターン内で {time} を使用した場合は、サポートされている形式のドロップ ダウンから、BLOB を編成する時刻形式を選択できます。<BR>例: HH、HH/mm、HH-mm  |
+|パスのパターン   | これは、指定されたコンテナー内で BLOB を見つけるために使用される必須プロパティです。 このパス内に、次の 2 つの変数のいずれかまたは両方のインスタンスを指定できます。<BR>{date}、{time}<BR>例 1: products/{date}/{time}/product-list.csv<BR>例 2: products/{date}/product-list.csv<BR>例 3: product-list.csv<BR><br> 指定されたパスに、BLOB が存在しない場合、BLOB が使用可能になるまで、Stream Analytics ジョブは無期限に待機します。   |
+|日付形式 [省略可能]   | 指定したパス パターン内で {date} を使用した場合は、サポートされている形式のドロップ ダウンから、BLOB を編成する日付形式を選択できます。<BR>例:YYYY/MM/DD、MM/DD/YYYY など   |
+|時刻形式 [省略可能]   | 指定したパス パターン内で {time} を使用した場合は、サポートされている形式のドロップ ダウンから、BLOB を編成する時刻形式を選択できます。<BR>例:HH、HH/mm、HH-mm  |
 |イベントのシリアル化の形式   | クエリを予想どおりに動作させるには、入ってくるデータ ストリームに使用しているシリアル化形式が Stream Analytics で認識される必要があります。 参照データの場合、サポートされている形式は CSV と JSON です。  |
 |エンコード   | 現時点でサポートされているエンコード形式は UTF-8 だけです。  |
 
@@ -46,7 +57,7 @@ Stream Analytics は、参照データの格納レイヤーとして Azure BLOB 
 
 ### <a name="generate-reference-data-on-a-schedule"></a>スケジュールに従って参照データを生成する
 
-参照データが変更頻度の低いデータセットである場合、参照データの更新をサポートするには、{date} および {time} 置換トークンを使用する入力構成でパス パターンを指定します。 Stream Analytics は、このパス パターンに基づいて、更新された参照データ定義を取得します。 たとえば、日付形式が "`sample/{date}/{time}/products.csv`YYYY-MM-DD **" で、時刻形式が "** HH-mm **" の**  パターンは、更新された BLOB `sample/2015-04-16/17-30/products.csv` を UTC タイム ゾーンの 2015 年 4 月 16 日の午後 5 時 30 分に回収するように Stream Analytics に指示します。
+参照データが変更頻度の低いデータセットである場合、参照データの更新をサポートするには、{date} および {time} 置換トークンを使用する入力構成でパス パターンを指定します。 Stream Analytics は、このパス パターンに基づいて、更新された参照データ定義を取得します。 たとえば、日付形式が "**YYYY-MM-DD**" で、時刻形式が "**HH-mm**" の `sample/{date}/{time}/products.csv` パターンは、更新された BLOB `sample/2015-04-16/17-30/products.csv` を UTC タイム ゾーンの 2015 年 4 月 16 日の午後 5 時 30 分に回収するように Stream Analytics に指示します。
 
 Azure Stream Analytics は、更新された参照データ BLOB を、1 分間隔で自動的にスキャンします。 わずかな遅延ありでタイムスタンプ 10:30:00 で BLOB をアップロードした場合 (たとえば、10:30:30)、この BLOB を参照する Stream Analytics ジョブでわずかな遅延が認識されます。 このようなシナリオを避けるためには、対象の有効時刻 (この例では 10:30:00) より前に、BLOB をアップロードし、Azure Stream Analytics ジョブが十分な時間を持ってメモリ内を探したりロードし、操作を実行できるようにすることをお勧めします。 
 
@@ -85,13 +96,13 @@ Stream Analytics には、Azure SQL Database に対するクエリの実行に�
 
 SQL Database 参照データを構成するには、まず**参照データ**入力を作成する必要があります。 次の表は、参照データ入力の作成中に指定する必要がある各プロパティとその説明を示しています。 詳細については、[SQL Database からの参照データの Azure Stream Analytics ジョブでの使用](sql-reference-data.md)に関するページを参照してください。
 
-参照データ入力として [Azure SQL Database Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) を使用できます。 [Azure SQL Database Managed Instance でパブリック エンドポイントを構成](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)してから、Azure Stream Analytics で次の設定を手動で構成する必要があります。 データベースがアタッチされた SQL Server が実行されている Azure 仮想マシンも、以下の設定を手動で構成することによりサポートされます。
+参照データ入力として [Azure SQL Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) を使用できます。 [SQL Managed Instance でパブリック エンドポイントを構成](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)してから、Azure Stream Analytics で次の設定を手動で構成する必要があります。 データベースがアタッチされた SQL Server が実行されている Azure 仮想マシンも、以下の設定を手動で構成することによりサポートされます。
 
 |**プロパティ名**|**説明**  |
 |---------|---------|
 |入力のエイリアス|この入力を参照するジョブ クエリで使用されるわかりやすい名前。|
 |サブスクリプション|サブスクリプションの選択|
-|データベース|参照データを含む Azure SQL Database。 Azure SQL Database Managed Instance の場合は、ポート 3342 を指定する必要があります。 たとえば、*sampleserver.public.database.windows.net,3342* のようになります|
+|データベース|参照データを含む Azure SQL Database。 SQL Managed Instance の場合は、ポート 3342 を指定する必要があります。 たとえば、*sampleserver.public.database.windows.net,3342* のようになります|
 |ユーザー名|Azure SQL Database に関連付けられているユーザー名。|
 |Password|Azure SQL Database に関連付けられているパスワード。|
 |定期的に更新|このオプションでは、リフレッシュ レートを選択できます。 "On"(オン) を選択すると、リフレッシュ レートを DD:HH:MM で指定できます。|
@@ -100,17 +111,32 @@ SQL Database 参照データを構成するには、まず**参照データ**入
 
 ## <a name="size-limitation"></a>サイズ制限
 
-Stream Analytics は、**最大 300 MB のサイズ**の参照データをサポートします。 この 300 MB という参照データの最大サイズの制限は、単純なクエリでのみ達成可能です。 クエリが複雑になり、時間帯集計、一時的な結合、一時的な分析関数などのステートフル処理が含まれるようになると、サポートされる参照データの最大サイズは減少することが予期されます。 Azure Stream Analytics が参照データを読み込むことができないときに、複雑な操作が実行された場合、ジョブはメモリ不足になり、操作は失敗します。 このような場合は、SU % の使用状況メトリックは 100% になります。    
+最適なパフォーマンスを得るには、300 MB 未満の参照データセットを使用することをお勧めします。 300 MB を超える参照データの使用は、6 SU 以上のジョブでサポートされています。 この機能はプレビュー段階であり、運用環境では使用できません。 非常に大きな参照データを使用すると、ジョブのパフォーマンスに影響を与える可能性があります。 クエリが複雑になり、時間帯集計、一時的な結合、一時的な分析関数などのステートフル処理が含まれるようになると、サポートされる参照データの最大サイズは減少することが予期されます。 Azure Stream Analytics が参照データを読み込むことができないときに、複雑な操作が実行された場合、ジョブはメモリ不足になり、操作は失敗します。 このような場合は、SU % の使用状況メトリックは 100% になります。    
 
-|**ストリーミング ユニットの数**  |**サポートされるおおよその最大サイズ (MB 単位)**  |
+|**ストリーミング ユニットの数**  |**推奨サイズ**  |
 |---------|---------|
-|1   |50   |
-|3   |150   |
-|6 以上   |300   |
+|1   |50 MB 以下   |
+|3   |150 MB 以下   |
+|6 以上   |300 MB 以下。 300 MB を超える参照データの使用はプレビューでサポートされており、ジョブのパフォーマンスに影響を与える可能性があります。    |
 
-ジョブのストリーミング ユニットの数を 6 を超える数に増やしても、サポートされる参照データの最大サイズが増えることはありません。
+参照データの圧縮はサポートされていません。
 
-参照データの圧縮はサポートされていません。 
+## <a name="joining-multiple-reference-datasets-in-a-job"></a>ジョブ内の複数の参照データセットの結合
+クエリの 1 つのステップでは、1 つの参照データ入力と 1 つのストリーム入力のみを結合できます。 ただし、クエリを複数のステップに分割することで、複数の参照データセットを結合できます。 次に例を示します。
+
+```SQL  
+With Step1 as (
+    --JOIN input stream with reference data to get 'Desc'
+    SELECT streamInput.*, refData1.Desc as Desc
+    FROM    streamInput
+    JOIN    refData1 ON refData1.key = streamInput.key 
+)
+--Now Join Step1 with second reference data
+SELECT *
+INTO    output 
+FROM    Step1
+JOIN    refData2 ON refData2.Desc = Step1.Desc 
+``` 
 
 ## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]

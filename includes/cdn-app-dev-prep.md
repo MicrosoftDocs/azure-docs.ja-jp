@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/21/2018
 ms.author: mazha
 ms.openlocfilehash: 41f2d4540f665137d34d262546cdc1a2edfbae3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77608727"
 ---
 ## <a name="prerequisites"></a>前提条件
@@ -32,7 +32,7 @@ CDN 管理コードを記述する前に、コードが Azure Resource Manager �
     ![Naming the resource group](./media/cdn-app-dev-prep/cdn-subscription-id-include.png)
 
 ### <a name="creating-the-azure-ad-application-and-applying-permissions"></a>Azure AD アプリケーションの作成とアクセス許可の適用
-Azure Active Directory でのアプリの認証には、個別ユーザーか、サービス プリンシパルかという 2 つのアプローチがあります。 サービス プリンシパルは、Windows のサービス アカウントと似ています。  CDN プロファイルとやり取りするアクセス許可を特定のユーザーに付与する代わりに、サービス プリンシパルにアクセス許可を付与します。  通常、サービス プリンシパルは、自動化された非対話型プロセスに使用されます。  このチュートリアルでは対話型コンソール アプリを作成していますが、サービス プリンシパルのアプローチに注目します。
+Azure Active Directory でのアプリの認証には、2 つの手法があります。つまり個別ユーザー、またはサービス プリンシパルです。 サービス プリンシパルは、Windows のサービス アカウントと似ています。  CDN プロファイルとやり取りするアクセス許可を特定のユーザーに付与する代わりに、サービス プリンシパルにアクセス許可を付与します。  通常、サービス プリンシパルは、自動化された非対話型プロセスに使用されます。  このチュートリアルでは対話型コンソール アプリを作成していますが、サービス プリンシパルのアプローチに注目します。
 
 サービス プリンシパルの作成は、Azure Active Directory アプリケーションの作成を含むいくつかの手順で構成されます。  これを作成するには、[こちらのチュートリアルに従います](../articles/active-directory/develop/howto-create-service-principal-portal.md)。
 

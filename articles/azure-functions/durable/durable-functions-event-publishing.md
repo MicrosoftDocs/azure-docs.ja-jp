@@ -3,16 +3,16 @@ title: Azure Event Grid への Durable Functions の発行 (プレビュー)
 description: Durable Functions の Azure Event Grid 自動発行を構成する方法を説明します。
 ms.topic: conceptual
 ms.date: 04/25/2020
-ms.openlocfilehash: c0106f3754e0cdcbf1f295fbe3f1b5def8dc3ca1
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: e4651dd7548ba76380bfc2d1b314e67d7abe63d9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83124272"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081748"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Azure Event Grid への Durable Functions の発行 (プレビュー)
 
-この記事では、オーケストレーション ライフサイクル イベント (作成、完了、失敗など) をカスタムの [Azure Event Grid トピック](https://docs.microsoft.com/azure/event-grid/overview)に発行するように Durable Functions を設定する方法を示します。
+この記事では、オーケストレーション ライフサイクル イベント (作成、完了、失敗など) をカスタムの [Azure Event Grid トピック](../../event-grid/overview.md)に発行するように Durable Functions を設定する方法を示します。
 
 この機能が役立つシナリオを次にいくつか示します。
 
@@ -26,7 +26,7 @@ ms.locfileid: "83124272"
 
 * [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) を Durable Functions プロジェクトにインストールします。
 * [Azure ストレージ エミュレーター](../../storage/common/storage-use-emulator.md) (Windows のみ) をインストールするか、既存の Azure Storage アカウントを使用します。
-* [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) をインストールするか、[Azure Cloud Shell](../../cloud-shell/overview.md) を使用します
+* [Azure CLI](/cli/azure/?view=azure-cli-latest) をインストールするか、[Azure Cloud Shell](../../cloud-shell/overview.md) を使用します
 
 ## <a name="create-a-custom-event-grid-topic"></a>カスタムの Event Grid トピックの作成
 
@@ -168,7 +168,7 @@ Azure portal を使用して、ご使用の Durable Functions アプリによっ
 
 ### <a name="add-an-event-grid-subscription"></a>Event Grid のサブスクリプションを追加する
 
-ここでは、作成した Event Grid トピックの Event Grid サブスクリプションを追加できます。 詳しくは、「[Azure Event Grid の概念](https://docs.microsoft.com/azure/event-grid/concepts)」をご覧ください。
+ここでは、作成した Event Grid トピックの Event Grid サブスクリプションを追加できます。 詳しくは、「[Azure Event Grid の概念](../../event-grid/concepts.md)」をご覧ください。
 
 1. 新しい関数で、 **[統合]** を選択し、 **[イベント グリッド トリガー (eventGridEvent)]** を選択します。 
 

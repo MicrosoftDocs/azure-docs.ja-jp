@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/04/2018
-ms.openlocfilehash: d7a37d51c411488231205fd036f9a287f5206ce5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c76cf939959d198d2c28181295a695a65ae46af9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77672448"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505705"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Azure Monitor ログのテキスト データの解析
-Azure Monitor によって収集された一部のログ データでは、1 つのプロパティに複数に分けられた情報が含まれます。 このデータを複数のプロパティに分けて解析すると、クエリで使用しやすくなります。 一般的な例は、複数の値を持つすべてのログ エントリを 1 つのプロパティに集める[カスタム ログ](../../log-analytics/log-analytics-data-sources-custom-logs.md)です。 異なる値に個別のプロパティを作成することによって、それぞれで検索したり、集約したりできます。
+Azure Monitor によって収集された一部のログ データでは、1 つのプロパティに複数に分けられた情報が含まれます。 このデータを複数のプロパティに分けて解析すると、クエリで使用しやすくなります。 一般的な例は、複数の値を持つすべてのログ エントリを 1 つのプロパティに集める[カスタム ログ](../platform/data-sources-custom-logs.md)です。 異なる値に個別のプロパティを作成することによって、それぞれで検索したり、集約したりできます。
 
 この記事では、データが取り込まれたとき、またデータがクエリで取得されたときに、Azure Monitor でログ データを解析するためのさまざまなオプションについて説明します。また、それぞれの相対的な利点について比較します。
 
@@ -23,7 +23,7 @@ Azure Monitor によって収集された一部のログ データでは、1 つ
 データを収集した場合は取り込み時に、またはクエリを使用してデータを分析した場合はクエリ時にデータを解析できます。 以下に示すように、それぞれの戦略には、それぞれの利点があります。
 
 ### <a name="parse-data-at-collection-time"></a>収集時のデータ解析
-収集時にデータを解析する場合、テーブルに新しいプロパティを作成する[カスタム フィールド](../../log-analytics/log-analytics-custom-fields.md)を構成します。 クエリに解析ロジックを含める必要はありません。テーブルのその他のフィールドと同じようにこれらのプロパティを使用します。
+収集時にデータを解析する場合、テーブルに新しいプロパティを作成する[カスタム フィールド](../platform/custom-fields.md)を構成します。 クエリに解析ロジックを含める必要はありません。テーブルのその他のフィールドと同じようにこれらのプロパティを使用します。
 
 この方法には、次のような長所があります。
 

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 04/27/2020
-ms.openlocfilehash: 8d4e9a1e255884b9250879ab486d7a4e2849473a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 08/06/2020
+ms.openlocfilehash: 1ba2f5e4b88ae6ae0ed15dbfbbc4fa5c55c45a77
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192095"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874029"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure portal を使用して HDInsight で Linux ベースのクラスターを作成する
 
@@ -63,6 +63,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="storage"></a>ストレージ
 
+> [!WARNING] 
+> 2020 年 6 月 15 日以降、HDInsight を使用して新しいサービス プリンシパルを作成することはできません。 Azure Active Directory 使用した[サービス プリンシパルと証明書の作成](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)に関する記事を参照してください。
+
 ![HDInsight でのクラスター ストレージの作成](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-storage.png "Azure portal での新しいクラスターの作成 - ストレージ")
 
 ### <a name="primary-storage"></a>プライマリ ストレージ
@@ -82,6 +85,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="metastore-settings"></a>メタストアの設定
 
 省略可能:既存の SQL Database を指定して、クラスターの外部に Apache Hive、Apache Oozie、または Apache Ambari メタデータを保存します。 メタストアに使用される Azure SQL データベースでは、Azure HDInsight を含む他の Azure サービスに接続できる必要があります。 メタストアを作成するとき、データベース名にダッシュやハイフンを使用しないでください。 これらの文字が含まれると、クラスター作成プロセスが失敗する可能性があります。
+
+> [!IMPORTANT]
+> メタストアをサポートするクラスター図形の場合、既定のメタストアでは、**DTU 上限が Basic レベルの 5 (アップグレード不可能)** である Azure SQL Database が提供されます。 基本的なテスト目的に適しています。 より大きなワークロードや運用環境のワークロードの場合は、外部のメタストアに移行することをお勧めします。
 
 **セキュリティとネットワーク >>** を選択して、次のタブに進みます。
 

@@ -1,7 +1,7 @@
 ---
 title: Microsoft Threat Modeling Tool の通信セキュリティ
 titleSuffix: Azure
-description: Threat Modeling Tool で公開されている脅威への対応
+description: Threat Modeling Tool で公開されている通信セキュリティの脅威に対する軽減策について説明します。 軽減策の情報を参照し、コード例を確認します。
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,12 +16,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 8cb74a020590fc55dcd1f046ba667be3d6640b3e
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3d795d30e3ad420e0fed002baddf37469ddcf995
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203745"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004564"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>セキュリティ フレーム:通信のセキュリティ | 軽減策 
 | 製品/サービス | [アーティクル] |

@@ -4,14 +4,14 @@ description: この記事では、Azure portal を使用して Azure Database fo
 author: ambhatna
 ms.author: ambhatna
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: ddbcb0143a4f84d9e0f3dc2fedf780fca6637692
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c028bff80856f7edcb34688ffa5c3320a66ccc9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062513"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112614"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mysql-using-the-azure-portal"></a>Azure portal を使用した Azure Database for MySQL のストレージの自動拡張
 この記事では、Azure Database for MySQL サーバーのストレージを、ワークロードに影響を与えることなく拡張されるように構成する方法について説明します。

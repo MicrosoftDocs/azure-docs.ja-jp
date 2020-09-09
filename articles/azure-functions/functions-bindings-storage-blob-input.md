@@ -5,12 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 33db9a8d86e02db2076cdb85170d466697930b96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: de590af49e39832a52bf733319b86300ecab2a34
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633891"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213285"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Azure Functions における Azure Blob Storage の入力バインド
 
@@ -328,7 +329,7 @@ public static void Run(
 
 # <a name="python"></a>[Python](#tab/python)
 
-[InputStream](https://docs.microsoft.com/python/api/azure-functions/azure.functions.inputstream?view=azure-python) に型指定したパラメーターを使用して BLOB データにアクセスします。 詳細については、「[入力 - 例](#example)」を参照してください。
+[InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python) に型指定したパラメーターを使用して BLOB データにアクセスします。 詳細については、「[入力 - 例](#example)」を参照してください。
 
 # <a name="java"></a>[Java](#tab/java)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: 20d710f717a9dff26f46ac7a201a9b694f3fbe84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03e6f51d2ab7138675f7d79c04faa2e4dffec60c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74684127"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825686"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Azure シリアル コンソールにアクセスできず、ディスク レイアウトが LVM (論理ボリューム マネージャー) を使用している場合の Linux VM のトラブルシューティング
 
@@ -29,7 +29,7 @@ ms.locfileid: "74684127"
 
 影響を受けている VM のスナップショットを作成します。 
 
-このスナップショットは、**復旧** VM にアタッチされます。 **スナップショット**の作成方法については、[こちら](https://docs.microsoft.com/azure/virtual-machines/linux/snapshot-copy-managed-disk#use-azure-portal)の手順に従ってください。
+このスナップショットは、**復旧** VM にアタッチされます。 **スナップショット**の作成方法については、[こちら](../linux/snapshot-copy-managed-disk.md#use-azure-portal)の手順に従ってください。
 
 ## <a name="create-a-rescue-vm"></a>復旧 VM を作成する
 通常、オペレーティング システムのバージョンが同一であるか類似している復旧 VM を使用することをお勧めします。 **リージョン**と**リソース グループ**は、影響を受けている VM と同じものを使用します
@@ -209,7 +209,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 
 
 ### <a name="example-3---enable-serial-console"></a>例 3 - シリアル コンソールを有効にする
-Azure シリアル コンソールにアクセスできない場合は、Linux VM の GRUB 構成パラメーターを確認して修正します。 詳細については、[このドキュメント](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-proactive-configuration)を参照してください
+Azure シリアル コンソールにアクセスできない場合は、Linux VM の GRUB 構成パラメーターを確認して修正します。 詳細については、[このドキュメント](./serial-console-grub-proactive-configuration.md)を参照してください
 
 ### <a name="example-4---kernel-loading-with-problematic-lvm-swap-volume"></a>例 4 - 問題のある LVM スワップ ボリュームを使用したカーネルの読み込み
 
@@ -272,6 +272,6 @@ VM が実行中で、ディスク スワップにより VM がシャットダウ
 ## <a name="next-steps"></a>次のステップ
 項目ごとに詳しい情報を確認できます。
 
- [Azure シリアル コンソール]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)
+ [Azure シリアル コンソール]( ./serial-console-linux.md)
 
-[シングル ユーザー モード](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode)
+[シングル ユーザー モード](./serial-console-grub-single-user-mode.md)

@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 12/04/2019
+ms.topic: how-to
+ms.date: 07/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 64b440054795670b99a22e37dec7188f3e1cd74c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79807e8e0f798a73063576a00b8d0c32cdfe5a4b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78189992"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005346"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の b2clogin.com にリダイレクト URL を設定する
 
@@ -89,24 +89,42 @@ Azure AD B2C によって保護されている Azure API Management API を移�
 
 ## <a name="microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL)
 
-### <a name="validateauthority-property"></a>ValidateAuthority プロパティ
+### <a name="msalnet-validateauthority-property"></a>MSAL.NET の validateAuthority プロパティ
 
-[MSAL.NET][msal-dotnet] v2 以前を使用している場合、*b2clogin.com* へのリダイレクトを可能にするには、クライアント インスタンス化の **ValidateAuthority** プロパティを `false` に設定します。 この設定は、MSAL.NET v3 以降では必要ありません。
+[MSAL.NET][msal-dotnet] v2 以前を使用している場合、*b2clogin.com* へのリダイレクトを可能にするには、クライアント インスタンス化の **ValidateAuthority** プロパティを `false` に設定します。 MSAL.NET v3 以降では、この値を `false` に設定する必要はありません。
 
 ```csharp
 ConfidentialClientApplication client = new ConfidentialClientApplication(...); // Can also be PublicClientApplication
 client.ValidateAuthority = false; // MSAL.NET v2 and earlier **ONLY**
 ```
 
-[MSAL for JavaScript][msal-js] を使用している場合:
+### <a name="msal-for-javascript-validateauthority-property"></a>MSAL for JavaScript の validateAuthority プロパティ
+
+[MSAL for JavaScript][msal-js] v1.2.2 以降を使用している場合は、**validateAuthority** プロパティを `false` に設定します。
 
 ```JavaScript
+// MSAL.js v1.2.2 and earlier
 this.clientApplication = new UserAgentApplication(
   env.auth.clientId,
   env.auth.loginAuthority,
   this.authCallback.bind(this),
   {
-    validateAuthority: false
+    validateAuthority: false // Required in MSAL.js v1.2.2 and earlier **ONLY**
+  }
+);
+```
+
+MSAL.js 1.3.0 以降で `validateAuthority: true` (既定値) を設定した場合は、`knownAuthorities` を使用して有効なトークン発行者も指定する必要があります。
+
+```JavaScript
+// MSAL.js v1.3.0+
+this.clientApplication = new UserAgentApplication(
+  env.auth.clientId,
+  env.auth.loginAuthority,
+  this.authCallback.bind(this),
+  {
+    validateAuthority: true, // Supported in MSAL.js v1.3.0+
+    knownAuthorities: ['tenant-name.b2clogin.com'] // Required if validateAuthority: true
   }
 );
 ```

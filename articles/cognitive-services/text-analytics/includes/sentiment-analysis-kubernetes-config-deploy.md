@@ -95,7 +95,7 @@ ms.locfileid: "80877837"
     ```
 
 1. ファイルを保存して、テキスト エディターを閉じます。
-1. ターゲットとして `apply`sentiment.yaml*ファイルを指定して Kubernetes* コマンドを実行します。
+1. ターゲットとして *sentiment.yaml* ファイルを指定して Kubernetes `apply` コマンドを実行します。
 
     ```console
     kubectl apply -f sentiment.yaml

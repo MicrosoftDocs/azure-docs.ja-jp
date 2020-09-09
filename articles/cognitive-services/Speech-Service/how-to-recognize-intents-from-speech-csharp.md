@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: trbye
-ms.openlocfilehash: 41ebcb7b44ea88af06a30a611960fd8bb0ceddee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1138a970bf7c52182f13d0fd14d0178a2d0cfeba
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402215"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918793"
 ---
 # <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Speech SDK for C# を使用して音声の意図を認識する方法
 
@@ -51,14 +52,14 @@ LUIS は、次の 3 種類のキーを使用します。
 | キーの種類  | 目的                                               |
 | --------- | ----------------------------------------------------- |
 | Authoring | LUIS アプリをプログラムで作成および変更できる |
-| Starter   | テキストのみを使用して LUIS アプリケーションをテストできる   |
-| Endpoint  | 特定の LUIS アプリへのアクセスを承認する            |
+| スターター   | テキストのみを使用して LUIS アプリケーションをテストできる   |
+| エンドポイント  | 特定の LUIS アプリへのアクセスを承認する            |
 
 このガイドには、エンドポイント タイプのキーが必要です。 このガイドでは、[事前構築済みホーム オートメーション アプリの使用](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app)に関するクイックスタートに従って作成できるホーム オートメーション LUIS アプリのサンプルを使用します。 独自の LUIS アプリを作成した場合は、代わりにそれを使用することができます。
 
 LUIS アプリを作成すると、テキスト クエリを使用してアプリをテストできるようにスターター キーが自動的に生成されます。 このキーでは Speech Service との統合が有効にならないため、このガイドでこれを使用することはできません。 Azure ダッシュボードで LUIS リソースを作成して LUIS アプリに割り当ててください。 このガイドでは、無料のサブスクリプション階層を使用することができます。
 
-Azure ダッシュ ボードで LUIS のリソースを作成した後、[LUIS ポータル](https://www.luis.ai/home)にログインし、 **[My apps]\(マイ アプリ\)** ページで自分のアプリケーションを選択し、アプリの **[Manage]\(管理\)** ページに切り替えます。 最後に、サイド バーの **[Keys and endpoints]\(キーとエンドポイント\)** を選択します。
+Azure ダッシュ ボードで LUIS のリソースを作成した後、[LUIS ポータル](https://www.luis.ai/home)にログインし、 **[マイ アプリ]** ページで自分のアプリケーションを選択し、アプリの **[Manage]\(管理\)** ページに切り替えます。 最後に、サイド バーの **[Keys and endpoints]\(キーとエンドポイント\)** を選択します。
 
 ![LUIS のポータル キーとエンドポイントの設定](media/sdk/luis-keys-endpoints-page.png)
 

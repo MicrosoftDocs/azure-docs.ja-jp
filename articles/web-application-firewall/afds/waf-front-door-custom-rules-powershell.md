@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: victorh
-ms.openlocfilehash: 493ed1a31a23366a90b80d3ab510218c8dce0e9c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40f0195ced375da09891eb577bd81f36b2f37cba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74186647"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005550"
 ---
 # <a name="configure-a-web-application-firewall-policy-using-azure-powershell"></a>Azure PowerShell を使用して Web アプリケーション ファイアウォール ポリシーを構成する
 
@@ -29,7 +29,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure PowerShell には、Azure リソースの管理に [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) モデルを使う一連のコマンドレットが用意されています。 
 
-[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) をローカル コンピューターにインストールして、すべての PowerShell セッションで使用することができます。 リンク先のページの手順に従って Azure の資格情報でサインインし、Az PowerShell モジュールをインストールします。
+[Azure PowerShell](https://docs.microsoft.com/powershell/azure/) をローカル コンピューターにインストールして、すべての PowerShell セッションで使用することができます。 リンク先のページの手順に従って Azure の資格情報でサインインし、Az PowerShell モジュールをインストールします。
 
 #### <a name="sign-in-to-azure"></a>Azure へのサインイン
 

@@ -1,22 +1,22 @@
 ---
 title: Azure Import/Export ジョブの状態の確認 - v1 | Microsoft Docs
-description: Import/Export ジョブの実行時に作成されたログ ファイルを使用して、Import/Export ジョブの状態を確認する方法について説明します。
+description: インポート ジョブまたはエクスポート ジョブによって作成されたログ ファイルを使用してジョブの状態を確認する方法について説明します。
 author: twooley
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/26/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 33e6ecca0eb4ca05b1f6bf53cdb3bd4ac8c8d8a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c9093af25e621b3ab9a60d9894f0a875340fda45
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75978438"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88525671"
 ---
 # <a name="reviewing-azure-importexport-job-status-with-copy-log-files"></a>コピー ログ ファイルによる Azure Import/Export ジョブの状態の確認
-Microsoft Azure Import/Export サービスは、インポートまたはエクスポート ジョブに関連付けられたドライブを処理する場合、Blob のインポートまたはエクスポートを行うストレージ アカウントにコピー ログ ファイルを書き込みます。 ログ ファイルには、インポートまたはエクスポートされた各ファイルの状態の詳細が含まれます。 各コピー ログ ファイルへの URL は、完了したジョブの状態をクエリした際に返されます。詳細は「[Get Job](https://docs.microsoft.com/rest/api/storageimportexport/Jobs/Get)」をご覧ください。  
+Microsoft Azure Import/Export サービスは、インポート ジョブまたはエクスポート ジョブに関連付けられたドライブを処理する場合に、BLOB のインポートまたはエクスポートに使用されたストレージ アカウントにコピー ログ ファイルを書き込みます。 ログ ファイルには、インポートまたはエクスポートされた各ファイルの状態の詳細が含まれます。 完了したジョブの状態を問い合わせると、サービスによって各コピー ログ ファイルの URL が返されます。 詳細については、[ジョブの取得](https://docs.microsoft.com/rest/api/storageimportexport/Jobs/Get)に関するページを参照してください。  
 
 ## <a name="example-urls"></a>URL の例
 
@@ -33,5 +33,4 @@ Microsoft Azure Import/Export サービスは、インポートまたはエク�
  * [Azure Import/Export ツールの設定](storage-import-export-tool-setup-v1.md)   
  * [インポート ジョブ用のハード ドライブを準備する](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
  * [インポート ジョブの修復](../storage-import-export-tool-repairing-an-import-job-v1.md)   
- * [エクスポート ジョブの修復](../storage-import-export-tool-repairing-an-export-job-v1.md)   
- * [Azure Import/Export ツールのトラブルシューティング](storage-import-export-tool-troubleshooting-v1.md)
+ * [エクスポート ジョブの修復](../storage-import-export-tool-repairing-an-export-job-v1.md)

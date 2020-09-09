@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/25/2019
-ms.openlocfilehash: 16c7af4d66bd550eb4a286de7c86c436b1fe10e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03bd00ad6d0262aeea31b5d3e2c6dd1733090e32
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75922658"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082796"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>データ分析パイプラインを運用化する
 
@@ -51,11 +51,11 @@ Oozie では、パイプラインは "*アクション*"、"*ワークフロー*
 
 ### <a name="provision-azure-sql-database"></a>Azure SQL Database をプロビジョニングする
 
-1. Azure SQL Database を作成します。 [Azure portal での Azure SQL Database の作成](../sql-database/sql-database-single-database-get-started.md)に関するページを参照してください。
+1. Azure SQL Database を作成します。 [Azure portal での Azure SQL Database の作成](../azure-sql/database/single-database-create-quickstart.md)に関するページを参照してください。
 
-1. HDInsight クラスターが接続された Azure SQL Database にアクセスできるようにするには、Azure のサービスとリソースがサーバーにアクセスできるように Azure SQL Database ファイアウォール規則を構成します。 このオプションを Azure portal で有効にするには、**[サーバー ファイアウォールの設定]** を選択し、Azure SQL Database サーバーまたはデータベースについての **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** の下にある [**ON**] を選択します。 詳細については、「[IP ファイアウォール規則の作成および管理](../sql-database/sql-database-firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)」を参照してください。
+1. HDInsight クラスターが接続された Azure SQL Database にアクセスできるようにするには、Azure のサービスとリソースがサーバーにアクセスできるように Azure SQL Database ファイアウォール規則を構成します。 このオプションを Azure portal で有効にするには、**サーバー ファイアウォールの設定]** [ を選択し、Azure SQL Database についての ] **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する** の下にある **[ON]** を選択します。 詳細については、「[IP ファイアウォール規則の作成および管理](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)」を参照してください。
 
-1. [クエリ エディター](../sql-database/sql-database-single-database-get-started.md#query-the-database)を使用して次の SQL ステートメントを実行し、パイプラインの各実行から集計されたデータを格納する `dailyflights` テーブルを作成します。
+1. [クエリ エディター](../azure-sql/database/single-database-create-quickstart.md#query-the-database)を使用して次の SQL ステートメントを実行し、パイプラインの各実行から集計されたデータを格納する `dailyflights` テーブルを作成します。
 
     ```sql
     CREATE TABLE dailyflights
@@ -422,7 +422,9 @@ bash セッションから SCP を使って、Oozie ワークフロー (`workflo
 
 1. 状態が [SUCCEEDED]\(成功\) の場合、SQL Database テーブルにクエリを実行して、挿入された行を表示します。 Azure Portal で SQL Database のウィンドウに移動し、 **[ツール]** を選んで、 **[クエリ エディター]** を開きます。
 
-        SELECT * FROM dailyflights
+    ```sql
+    SELECT * FROM dailyflights
+    ```
 
 特定のテスト日に対してワークフローを実行できるようになったので、毎日実行するようにワークフローをスケジュールするコーディネーターでこのワークフローをラップできます。
 
@@ -520,7 +522,7 @@ bash セッションから SCP を使って、Oozie ワークフロー (`workflo
 
     空の `done-flag` 要素は、Oozie が指定された日時で入力データの存在をチェックするときに、Oozie がディレクトリまたはファイルの有無によってデータを利用できるかどうかを判断することを示します。 この例では、csv ファイルの存在です。 csv ファイルが存在する場合、Oozie はデータの準備が整っているものと見なし、ワークフロー インスタンスを開始してファイルを処理します。 csv ファイルが存在しない場合は、データの準備がまだできていないものと見なされ、ワークフローのその実行は待機状態になります。
 
-* ポイント 3:`data-in` 要素は、関連付けられているデータセットの `uri-template` の値を置き換えるときに標準時刻として使う特定のタイムスタンプを指定します。
+* ポイント 3: `data-in` 要素は、関連付けられているデータセットの `uri-template` の値を置き換えるときに標準時刻として使う特定のタイムスタンプを指定します。
 
     ```xml
     <data-in name="event_input1" dataset="ds_input1">

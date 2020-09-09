@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 04/16/2020
-ms.openlocfilehash: ba8f4591782a4e34fbde26d9669ef01f24450486
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/09/2020
+ms.openlocfilehash: de2579868ad72bdf4cf78c552e9553f289ecabd0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146410"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259059"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) での PostgreSQL 拡張機能
 
@@ -144,6 +144,6 @@ Azure Database for PostgreSQL で現在サポートされている標準的な P
 pg_stat_statements から得られるクエリの実行情報と、各 SQL ステートメントがログに記録されることによるサーバーのパフォーマンスへの影響との間には、トレードオフがあります。 pg_stat_statements 拡張機能を使用していない場合は、`pg_stat_statements.track` を `none` に設定することをお勧めします。 一部のサード パーティ監視サービスがクエリ パフォーマンスの分析情報を生成するために pg_stat_statements に依存することがあるため、そのようなケースに該当するかどうかを確認してください。
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink および postgres_fdw
-dblink および postgres_fdw を使用して、PostgreSQL サーバーから別の PostgreSQL サーバーに、または同じサーバー内の別のデータベースに接続できます。 受信側サーバーでは、ファイアウォールを経由した送信元サーバーからの接続を許可している必要があります。 これらの拡張機能を使用して Azure Database for PostgreSQL サーバーどうしを接続する場合、 **[Azure サービスへのアクセスを許可]** を [オン] に設定することで実現できます。 拡張機能を使用して同じサーバーにループバックする場合にも、この設定を [オン] にする必要があります。 **[Azure サービスへのアクセスを許可]** 設定は、Postgres サーバー向けの Azure portal ページ内の **[接続のセキュリティ]** にあります。 **[Azure サービスへのアクセスを許可]** を [オン] にすると、すべての Azure IP がホワイトリストに登録されます。
 
-現時点では、Azure Database for PostgreSQL からのアウトバウンド接続は、他の Azure Database for PostgreSQL サーバーへの接続を除き、サポートされていません。
+PostgreSQL サーバーから別の PostgreSQL サーバーへの接続、または同じサーバー内の別のデータベースへの接続には、dblink および postgres\_fdw を使用します。  受信側サーバーでは、ファイアウォールを経由した送信元サーバーからの接続を許可している必要があります。  Azure Database for PostgreSQL サーバーまたは Hyperscale (Citus) サーバー グループ間の接続にこれらの拡張機能を使用する場合、 **[Allow Azure services and resources to access this server group (or server)]\(Azure サービスおよびリソースにこのサーバー グループ (またはサーバー) へのアクセスを許可する\)** をオンに設定します。  拡張機能を使用して同じサーバーにループバックする場合にも、この設定を [オン] にする必要があります。
+**[Allow Azure services and resources to access this server group]\(Azure サービスおよびリソースにこのサーバー グループへのアクセスを許可する\)** の設定は、Hyperscale (Citus) サーバー グループの Azure portal ページの **[ネットワーク]** の下にあります。  現時点では、Azure Database for PostgreSQL Single サーバーと Hyperscale (Citus) からのアウトバウンド接続は、他の Azure Database for PostgreSQL サーバーと Hyperscale (Citus) サーバー グループに接続する場合を除き、サポートされていません。

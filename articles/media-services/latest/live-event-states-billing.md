@@ -3,28 +3,30 @@ title: Azure Media Services における LiveEvent の状態と課金 | Microsof
 description: このトピックでは、Azure Media Services における LiveEvent の状態と課金について、その概要を説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
-ms.date: 10/24/2019
-ms.author: juliako
-ms.openlocfilehash: e4eee3b9f3f97bf7cd7a7b61425ec5c9a3a198ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 1b058eefe22238b60c3482c55b5ae340f4e597f0
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76543077"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296738"
 ---
 # <a name="live-event-states-and-billing"></a>ライブ イベントの状態と課金
 
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
 Azure Media Services のライブ イベントでは、その状態が**実行中**に遷移するとすぐに課金が開始されます。 サービスを通過するビデオがない場合でも課金されます。 ライブ イベントの課金を停止するには、ライブ イベントを停止する必要があります。 ライブ文字起こしはライブ イベントと同じ方法で課金されます。
 
-[ライブ イベント](https://docs.microsoft.com/rest/api/media/liveevents)の **LiveEventEncodingType** を Standard または Premium1080p に設定した場合、入力フィードがなくなり、実行中の**ライブ出力**がなくなってから 12 時間後に、まだ**実行中**状態のライブ イベントがあれば、それらは Media Services によって自動的に停止されます。 ただし、ライブ イベントが**実行中**状態だった期間については課金されます。
+[ライブ イベント](/rest/api/media/liveevents)の **LiveEventEncodingType** を Standard または Premium1080p に設定した場合、入力フィードがなくなり、実行中の**ライブ出力**がなくなってから 12 時間後に、まだ**実行中**状態のライブ イベントがあれば、それらは Media Services によって自動的に停止されます。 ただし、ライブ イベントが**実行中**状態だった期間については課金されます。
 
 > [!NOTE]
 > パススルー ライブ イベントは自動的には停止しません。過剰な課金を防ぐためには、API で明示的に停止する必要があります。 

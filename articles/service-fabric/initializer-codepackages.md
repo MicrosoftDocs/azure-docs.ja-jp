@@ -5,12 +5,12 @@ author: shsha-msft
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: shsha
-ms.openlocfilehash: 8483e00f55d0dd49ba57db58b99b237ce0a169e5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 3be079b97c2660437344f88203fdda06cc6d6740
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427263"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258982"
 ---
 # <a name="initializer-codepackages"></a>初期化子 CodePackage
 
@@ -50,7 +50,7 @@ ServiceManifest で **Initializer** 属性を **true** に設定することに�
 > [!IMPORTANT]
 > 次の例では、[Service Fabric と Docker を使用した Windows コンテナー アプリケーション][containers-getting-started-link]の作成に精通していることを前提としています。
 >
-> この例では、mcr.microsoft.com/windows/nanoserver:1809 を参照します。 Windows Server コンテナーは、ホスト OS のすべてのバージョンで互換性はありません。 詳細については、「[Windows コンテナーのバージョンの互換性](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)」を参照してください。
+> この例では、mcr.microsoft.com/windows/nanoserver:1809 を参照します。 Windows Server コンテナーは、ホスト OS のすべてのバージョンで互換性はありません。 詳細については、「[Windows コンテナーのバージョンの互換性](/virtualization/windowscontainers/deploy-containers/version-compatibility)」を参照してください。
 
 次の ServiceManifest.xml は、前述の ServiceManifest のスニペットを基にビルドされています。 *InitCodePackage0*、*InitCodePackage1*、*WorkloadCodePackage* は、コンテナーを表す CodePackage です。 アクティブになると、*InitCodePackage0* が最初に実行されます。 これは、メッセージをファイルに記録して終了します。 次に、*InitCodePackage1* が実行されます。これもメッセージをファイルに記録して終了します。 最後に、*WorkloadCodePackage* が実行を開始します。 これもメッセージをファイルに記録し、ファイルの内容を **stdout** に出力して、永続的に ping を実行します。
 
@@ -151,4 +151,3 @@ Hi from WorkloadCodePackage.
 [application-model-link]: service-fabric-application-model.md
 [hosting-model-link]: service-fabric-hosting-model.md
 [setup-entry-point-link]: service-fabric-run-script-at-service-startup.md
-

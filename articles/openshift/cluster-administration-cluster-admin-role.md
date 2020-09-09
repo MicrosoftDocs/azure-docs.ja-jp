@@ -7,15 +7,15 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: ae9a421a165d6c8bda688819c5233ae5bb1a8562
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 38686ba35285159d7a27724b5402a6b6e2f3a696
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79139098"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815523"
 ---
 # <a name="azure-red-hat-openshift-customer-administrator-role"></a>Azure Red Hat OpenShift の顧客管理者ロール
-
+ 
 この記事の対象者は、Azure Red Hat OpenShift クラスターのクラスター管理者です。 管理者のアカウントには、すべてのユーザー作成プロジェクトに対する引き上げられたアクセス許可とアクセス権が与えられています。
 
 アカウントに customer-admin-cluster 認可ロールがバインドされていると、プロジェクトを自動的に管理できます。

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cac7e6feb632456b63b97ead057f9ecaf49322ea
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 1ad9cc3d6d07c8d744ec667e2fffb035848121b4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81729717"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85203250"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection 要求変換
 
@@ -38,7 +38,7 @@ ms.locfileid: "81729717"
 
 次の要求変換によって、**email** ClaimType が **otherMails** ClaimType に追加されます。
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateOtherMailsFromEmail" TransformationMethod="AddItemToStringCollection">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="item" />
@@ -70,7 +70,7 @@ ms.locfileid: "81729717"
 
 この要求変換を使用して、新しい stringCollection または既存の stringCollection に文字列値を追加します。 次の例では、定数の電子メール アドレス (admin@contoso.com) を **otherMails** 要求に追加します。
 
-```XML
+```xml
 <ClaimsTransformation Id="SetCompanyEmail" TransformationMethod="AddParameterToStringCollection">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="otherMails" TransformationClaimType="collection" />
@@ -104,7 +104,7 @@ ms.locfileid: "81729717"
 
 次の例では、**otherMails** 要求が読み取られ、最初の項目が **email** 要求に返されます。
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateEmailFromOtherMails" TransformationMethod="GetSingleItemFromStringCollection">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="otherMails" TransformationClaimType="collection" />
@@ -136,7 +136,7 @@ StringCollection 要求の種類に要素が含まれているかどうかをチ
 
 次の例では、`roles` stringCollection 要求の種類に **admin** の値が含まれているかどうかをチェックしています。
 
-```XML
+```xml
 <ClaimsTransformation Id="IsAdmin" TransformationMethod="StringCollectionContains">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim"/>
@@ -172,7 +172,7 @@ StringCollection 要求の種類に要求の値が含まれているかどうか
 
 次の例では、`roles` stringCollection 要求の種類に `role` の要求の値が含まれているかどうかをチェックしています。
 
-```XML
+```xml
 <ClaimsTransformation Id="HasRequiredRole" TransformationMethod="StringCollectionContainsClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="collection" />

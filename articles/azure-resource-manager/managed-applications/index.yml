@@ -10,12 +10,12 @@ metadata:
   author: tfitzmac
   ms.author: tomfitz
   ms.date: 01/02/2020
-  ms.openlocfilehash: 60f7d4b9c9bd9057e0869b3efe1843eeb8d873f8
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 15cd46ba2758fd1a56f7d19791713eae72bac1d2
+  ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "75648380"
+  ms.lasthandoff: 07/07/2020
+  ms.locfileid: "86057655"
 landingContent:
 - title: Managed Applications について
   linkLists:
@@ -36,7 +36,7 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: アプリケーション定義の発行
-      url: publish-managed-app-definition-quickstart.md
+      url: ./publish-service-catalog-app.md
     - text: サービス カタログ アプリのデプロイ
       url: deploy-service-catalog-quickstart.md
   - linkListType: tutorial

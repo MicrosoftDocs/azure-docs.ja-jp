@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: a21828413b8d8750827fafa077002863439f8643
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 9e5361c1082424a76699affee653b4b9fc798116
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82568692"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84339759"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge"></a>Azure portal を使用して Azure Stack Edge の帯域幅のスケジュールを管理する  
 

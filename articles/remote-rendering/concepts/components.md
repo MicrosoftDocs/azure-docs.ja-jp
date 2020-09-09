@@ -1,22 +1,23 @@
 ---
-title: Components
+title: コンポーネント
 description: Azure Remote Rendering のスコープ内のコンポーネントの定義
 author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 42efc1395fee28a3854420f15c2ad08b301cc1f7
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d957da572bfdd3119dda506ac8f5bb42064d7758
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758743"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020305"
 ---
-# <a name="components"></a>Components
+# <a name="components"></a>コンポーネント
 
 Azure Remote Rendering では、[エンティティ コンポーネント システム](https://en.wikipedia.org/wiki/Entity_component_system)のパターンが使用されます。 [エンティティ](entities.md)は、オブジェクトの位置と階層構造を表し、コンポーネントで動作が実装されます。
 
-最も頻繁に使用されるコンポーネントの種類は、[メッシュ コンポーネント](meshes.md)であり、これはメッシュをレンダリング パイプラインに追加します。 同様に、[ライト コンポーネント](../overview/features/lights.md)を使用してライティングを追加し、[カット プレーン コンポーネント](../overview/features/cut-planes.md)を使用してオープン メッシュを切り取ります。
+最も頻繁に使用されるコンポーネントの種類は [:::no-loc text="mesh components":::](meshes.md) であり、これにより、メッシュがレンダリング パイプラインに追加されます。 同様に、[ライト コンポーネント](../overview/features/lights.md)を使用してライティングを追加し、[カット プレーン コンポーネント](../overview/features/cut-planes.md)を使用してオープン メッシュを切り取ります。
 
 これらのコンポーネントはすべて、関連付けられているエンティティの変換 (位置、回転、スケール) を参照ポイントとして使用します。
 

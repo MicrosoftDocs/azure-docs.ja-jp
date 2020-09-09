@@ -3,12 +3,12 @@ title: 既存の実行可能ファイルを Azure Service Fabric にデプロイ
 description: 既存のアプリケーションを Service Fabric クラスターにデプロイできるようにゲスト実行可能ファイルとしてパッケージ化する方法について説明します。
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: c6c6bc0369593c177b74261da1fd8c15dd73fcb3
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 72fde75e16341164106bb952d0bb66b83be744e1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520481"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259256"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>既存の実行可能ファイルのパッケージ化と Service Fabric へのデプロイ
 
@@ -76,7 +76,7 @@ Yeoman により、インストールおよびアンインストール スクリ
 
 ### <a name="create-the-package-directory-structure"></a>パッケージ ディレクトリ構造を作成する
 
-まず、「[Azure Service Fabric アプリのパッケージ化](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps)」の説明に従ってディレクトリ構造を作成します。
+まず、「[Azure Service Fabric アプリのパッケージ化](./service-fabric-package-apps.md)」の説明に従ってディレクトリ構造を作成します。
 
 ### <a name="add-the-applications-code-and-configuration-files"></a>アプリケーションのコードと構成ファイルを追加する
 

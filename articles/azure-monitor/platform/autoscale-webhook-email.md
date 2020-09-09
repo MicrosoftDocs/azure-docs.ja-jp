@@ -4,12 +4,12 @@ description: Azure Monitor で自動スケール操作を使用して Web URL �
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: autoscale
-ms.openlocfilehash: c82b170bb3801bdc701ed84230db57f5691523ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3b1f13fd1ce8bedcbe58385d4cee321f1d1405df
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77120691"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505521"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Azure Monitor で自動スケール操作を使用して電子メールと webhook アラート通知を送信する
 この記事では、Azure で自動スケール操作に基づいて特定の Web URL を呼び出すことや電子メールを送信することができるようにトリガーを設定する方法について説明します。  
@@ -29,7 +29,7 @@ Azure portal から Cloud Services とサーバー ファーム (App Services) �
 
 ## <a name="virtual-machine-scale-sets"></a>仮想マシン スケール セット
 Resource Manager で作成された比較的新しい仮想マシン (仮想マシン スケール セット) の場合、REST API、Resource Manager テンプレート、PowerShell、CLI を使用してこれを構成できます。 ポータルのインターフェイスはまだ使用できません。
-REST API または Resource Manager テンプレートを使用する場合は、次のオプションを使用して [autoscalesettings](https://docs.microsoft.com/azure/templates/microsoft.insights/2015-04-01/autoscalesettings) に通知要素を追加してください。
+REST API または Resource Manager テンプレートを使用する場合は、次のオプションを使用して [autoscalesettings](/azure/templates/microsoft.insights/2015-04-01/autoscalesettings) に通知要素を追加してください。
 
 ```
 "notifications": [
@@ -117,4 +117,3 @@ webhook はトークンベースの認証を利用して認証できます。ク
 | oldCapacity |はい |自動スケールによってスケール操作が実行された時点の (以前の) インスタンス数。 |
 | newCapacity |はい |自動スケールによってリソースがスケールされた後の新しいインスタンス数。 |
 | properties |いいえ |省略可能。 <Key, Value> ペアのセット (例: Dictionary <String, String>)。 properties フィールドは省略可能です。 カスタム ユーザー インターフェイスまたはロジック アプリ ベースのワークフローでは、ペイロードを使用して渡すことのできるキーと値を入力できます。 Webhook URI 自体を (クエリ パラメーターとして) 使用して、カスタム プロパティを送信 Webhook 呼び出しに戻すこともできます。 |
-

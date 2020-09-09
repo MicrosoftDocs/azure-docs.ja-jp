@@ -2,13 +2,14 @@
 title: データの変更 - LUIS
 description: Language Understanding (LUIS) での予測前にデータを変更する方法について説明します。
 ms.topic: conceptual
-ms.date: 02/11/2020
-ms.openlocfilehash: b3b36351a64a4e1a0bd13d5785a4e0609a80901d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/06/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c675ac246f397b5949c870ad91ab936bbd92c7ef
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80292078"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934669"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>予測前または予測中に発話データに変更を加える
 LUIS では、予測前または予測中に発話を操作する方法が用意されています。 これらには、[スペルの修正](luis-tutorial-bing-spellcheck.md)や、事前構築済み [datetimeV2](luis-reference-prebuilt-datetimev2.md) でのタイム ゾーンの問題の修正が含まれます。
@@ -75,42 +76,27 @@ LUIS で使用される Bing スペル チェック API は、スペル チェ�
 ## <a name="change-time-zone-of-prebuilt-datetimev2-entity"></a>事前構築済み datetimeV2 エンティティのタイム ゾーンの変更
 LUIS アプリで事前構築済み [datetimeV2](luis-reference-prebuilt-datetimev2.md) エンティティを使用している場合、予測の応答で datetime 値が返されることがあります。 要求のタイム ゾーンを使用して、返すべき正しい datetime が決定されます。 要求元がボットであったり、LUIS の前段階の集約化された他のアプリケーションであったりする場合は、LUIS で使用するタイム ゾーンを修正します。
 
-### <a name="endpoint-querystring-parameter"></a>エンドポイントのクエリ文字列パラメーター
-タイム ゾーンは、[ パラメーターを使用してユーザーのタイム ゾーンを](https://go.microsoft.com/fwlink/?linkid=2092356)エンドポイント`timezoneOffset`に追加することで修正します。 時刻を変更するためは、`timezoneOffset` の値は正または負の数値 (分単位) である必要があります。
+### <a name="v3-prediction-api-to-alter-timezone"></a>タイムゾーンを変更する V3 予測 API
 
-|Param|値|
-|--|--|
-|`timezoneOffset`|正または負の数値 (分単位)|
+V3 では、`datetimeReference` によってタイムゾーン オフセットが決定されます。 [V3 予測](luis-migration-api-v3.md#v3-post-body)の詳細についてご確認ください。
 
-### <a name="daylight-savings-example"></a>夏時間の例
-返される事前構築済み datetimeV2 を夏時間用に調整する必要がある場合は、`timezoneOffset`エンドポイント[ クエリで、正負の値 (分単位) を含む ](https://go.microsoft.com/fwlink/?linkid=2092356) クエリ文字列パラメーターを使用する必要があります。
+### <a name="v2-prediction-api-to-alter-timezone"></a>タイムゾーンを変更する V2 予測 API
+タイムゾーンは、API バージョンに基づく `timezoneOffset` パラメーターを使用して、ユーザーのタイムゾーンをエンドポイントに追加することで修正されます。 時刻を変更するには、パラメーターの値は正または負の数値 (分単位) である必要があります。
 
-#### <a name="v2-prediction-endpoint-request"></a>[V2 予測エンドポイントの要求](#tab/V2)
+#### <a name="v2-prediction-daylight-savings-example"></a>V2 予測の夏時間の例
+返される事前構築済み datetimeV2 を夏時間用に調整する必要がある場合は、[エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356) クエリで、正負の値 (分単位) を含むクエリ文字列パラメーターを使用する必要があります。
 
 60 分を追加する場合は、次の手順を実行します。
 
-`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?**timezoneOffset=60**&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
+`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?timezoneOffset=60&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
 
 60 分を削除する場合は、次の手順を実行します。
 
-`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?**timezoneOffset=-60**&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
+`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?timezoneOffset=-60&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
 
-#### <a name="v3-prediction-endpoint-request"></a>[V3 予測エンドポイントの要求](#tab/V3)
+#### <a name="v2-prediction-c-code-determines-correct-value-of-parameter"></a>V2 予測の C# コードによってパラメーターの正しい値を決定する
 
-60 分を追加する場合は、次の手順を実行します。
-
-`https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/{appId}/slots/production/predict?query=Turn the lights on?**timezoneOffset=60**&spellCheck={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
-
-60 分を削除する場合は、次の手順を実行します。
-
-`https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/{appId}/slots/production/predict?query=Turn the lights on?**timezoneOffset=-60**&spellCheck={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
-
-[V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
-
-* * *
-
-## <a name="c-code-determines-correct-value-of-timezoneoffset"></a>C# コードによって timezoneOffset の正しい値を決定する
-次の C# コードでは、[TimeZoneInfo](https://docs.microsoft.com/dotnet/api/system.timezoneinfo) クラスの [FindSystemTimeZoneById](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid#examples) メソッドを使用して、システム時刻に基づいて正しい `timezoneOffset` を決定します。
+次の C# コードでは、[TimeZoneInfo](https://docs.microsoft.com/dotnet/api/system.timezoneinfo) クラスの [FindSystemTimeZoneById](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid#examples) メソッドを使用して、システム時刻に基づいて正しいオフセット値を決定します。
 
 ```csharp
 // Get CST zone id
@@ -122,8 +108,8 @@ DateTime utcDatetime = DateTime.UtcNow;
 // Get Central Standard Time value of Now
 DateTime cstDatetime = TimeZoneInfo.ConvertTimeFromUtc(utcDatetime, targetZone);
 
-// Find timezoneOffset
-int timezoneOffset = (int)((cstDatetime - utcDatetime).TotalMinutes);
+// Find timezoneOffset/datetimeReference
+int offset = (int)((cstDatetime - utcDatetime).TotalMinutes);
 ```
 
 ## <a name="next-steps"></a>次のステップ

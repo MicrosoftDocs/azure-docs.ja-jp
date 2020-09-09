@@ -5,12 +5,13 @@ author: amanbha
 ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: b05da78091260297d94062c06cba100d01ce7e2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3cea6213b2c6f2797d46f865afe1e13cbf4aaff6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229267"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016701"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>アクターのライフ サイクル、自動ガベージ コレクション、および手動による削除
 アクターは、いずれかのメソッドが最初に呼び出された時点でアクティブ化されます。 一定期間 (値は構成可能) 使用されていない場合、アクターは非アクティブ化されます (アクター ランタイムでガベージ コレクションが発生します)。 アクターとその状態はいつでも手動で削除できます。
@@ -112,7 +113,7 @@ public class Program
 * [アクター イベント](service-fabric-reliable-actors-events.md)
 * [アクターの再入](service-fabric-reliable-actors-reentrancy.md)
 * [アクターの診断とパフォーマンスの監視](service-fabric-reliable-actors-diagnostics.md)
-* [Actor API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Actor API リファレンス ドキュメント](/previous-versions/azure/dn971626(v=azure.100))
 * [C# コード サンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java コード サンプル](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

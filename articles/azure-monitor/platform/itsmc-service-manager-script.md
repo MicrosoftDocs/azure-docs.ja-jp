@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
-ms.openlocfilehash: decb674c2b55b93a81169c540ee04713bdf2799e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46c219a82d45129ed0856d22d88be819938e5240
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80054851"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325306"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>自動スクリプトを使用した Service Manager Web アプリの作成
 
-次のスクリプトを使用して、Service Manager インスタンスの Web アプリを作成します。 Service Manager 接続の詳細については、[Service Manager Web アプリ](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)に関する記事をご覧ください
+次のスクリプトを使用して、Service Manager インスタンスの Web アプリを作成します。 Service Manager 接続の詳細については、[Service Manager Web アプリ](./itsmc-connections.md#create-and-deploy-service-manager-web-app-service)に関する記事をご覧ください
 
 次の必要な情報を提供することにより、スクリプトを実行します。
 
@@ -314,6 +314,9 @@ Write-Host "URI:"  $azureSite
 if(!$err)
 {
     Write-Host "ServiceBus Namespace:"  $serviceName  
-}```
-## Next steps
-[Configure the Hybrid connection](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection).
+}
+```
+
+## <a name="next-steps"></a>次のステップ
+[ハイブリッド接続の構成](./itsmc-connections.md#configure-the-hybrid-connection)。
+

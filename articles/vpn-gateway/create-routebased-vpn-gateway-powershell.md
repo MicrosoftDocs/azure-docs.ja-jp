@@ -1,18 +1,18 @@
 ---
 title: Azure VPN Gateway:ルートベースのゲートウェイを作成する:PowerShell
-description: PowerShell を使用して、ルートベースの VPN Gateway をすばやく作成します
+description: PowerShell を使用して、オンプレミス ネットワークへの VPN 接続のため、または仮想ネットワークに接続するために、ルートベースの Azure VPN ゲートウェイをすばやく作成します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
-ms.date: 02/10/2020
+ms.topic: how-to
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8a4bb9d2ac7b8124fa9b1e00f3ecceda4f4a4cdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b6ab5dcbd38925afbd98381e427426d27110a53
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77152960"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393515"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-powershell"></a>PowerShell を使用してルートベースの VPN ゲートウェイを作成します
 

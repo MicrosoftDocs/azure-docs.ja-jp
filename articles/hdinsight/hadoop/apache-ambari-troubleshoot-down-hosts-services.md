@@ -33,7 +33,7 @@ $>telnet headnodehost 8440
 ... No route to host
 ```
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決策
 
 通常、アクティブなヘッドノードを再起動すると、この問題が軽減されます。 されない場合は、HDInsight サポート チームにお問い合わせください。
 

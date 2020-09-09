@@ -1,6 +1,6 @@
 ---
 title: Azure CDN の現在の POP IP リストの取得 | Microsoft Docs
-description: 現在の POP リストを取得する方法について学習します。
+description: REST API を使用して、POP サーバーを取得する方法について説明します。 POP サーバーは、Azure Content Delivery Network エンドポイントに関連付けられている配信元サーバーに対して要求を行います。
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: a58fd7c6f50cd46ac3c34cd7e5bd329c0007e5f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13d4587a80cbbe66e18eb1bec8f3154221ac62b5
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260192"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192555"
 ---
 # <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>Azure CDN の現在の POP IP リストの取得
 
@@ -39,7 +39,7 @@ Microsoft のバックエンド IP アドレス空間と Azure のインフラ�
 * Microsoft の IPv4 バックエンド IP 空間からの Azure CDN: 147.243.0.0/16
 * Microsoft の IPv6 バックエンド IP 空間からの Azure CDN: 2a01:111:2050::/44
 
-Microsoft サービスに対する IP 範囲とサービス タグについては、[こちら](https://www.microsoft.com/download/details.aspx?id=56519)で見つけることができます。
+Microsoft の Azure CDN でサービス タグを使用するには、Azure Front Door タグを使用してください。 Microsoft サービスに対する IP 範囲とサービス タグについては、[こちら](https://www.microsoft.com/download/details.aspx?id=56519)で見つけることができます。
 
 
 ## <a name="typical-use-case"></a>一般的なユース ケース

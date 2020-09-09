@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 3ba620d66b84e6724751b2024059e8ecd66888cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6e5012d64f7370c4d81c24324522824bc88584d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231667"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255117"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management のアクセス制限ポリシー
 
@@ -76,7 +76,7 @@ ms.locfileid: "79231667"
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound、outbound
 
@@ -136,7 +136,7 @@ ms.locfileid: "79231667"
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound
 
@@ -149,7 +149,7 @@ ms.locfileid: "79231667"
 
 `rate-limit-by-key` ポリシーは、指定期間あたりの呼び出しレートを指定数に制限することで、キーごとに API 使用量の急増を防ぎます。 キーには任意の文字列値を設定でき、通常はポリシー式を使用して指定します。 必要に応じて増分条件を追加し、制限に対してカウントする要求を指定することもできます。 このポリシーがトリガーされると、呼び出し元は `429 Too Many Requests` 応答状態コードを受け取ります。
 
-このポリシーの詳細と例については、「[Azure API Management を使用した高度な要求スロットル](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/)」を参照してください。
+このポリシーの詳細と例については、「[Azure API Management を使用した高度な要求スロットル](./api-management-sample-flexible-throttling.md)」を参照してください。
 
 > [!CAUTION]
 > スロットリングのアーキテクチャは分散型の性質のため、レートの制限は完全に正確ではありません。 許可される要求の構成された数と実際の数の差異は、要求のボリュームとレート、バックエンドの待ち時間、その他の要因によって異なります。
@@ -200,7 +200,7 @@ ms.locfileid: "79231667"
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound
 
@@ -247,7 +247,7 @@ ms.locfileid: "79231667"
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound
 -   **ポリシー スコープ:** すべてのスコープ
@@ -304,7 +304,7 @@ ms.locfileid: "79231667"
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound
 -   **ポリシー スコープ:** 製品
@@ -316,7 +316,7 @@ ms.locfileid: "79231667"
 
 `quota-by-key` ポリシーは、更新可能な呼び出しまたは有効期間中の呼び出しのボリュームと帯域幅クォータの両方またはそのどちらかをキーに基づいて適用します。 キーには任意の文字列値を設定でき、通常はポリシー式を使用して指定します。 必要に応じて増分条件を追加し、クォータに対してカウントする要求を指定することもできます。 複数のポリシーによって同じキー値が増分される場合は、要求ごとに 1 回だけ増分されます。 この呼び出し制限に達すると、呼び出し元は `403 Forbidden` 応答状態コードを受信します。
 
-このポリシーの詳細と例については、「[Azure API Management を使用した高度な要求スロットル](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/)」を参照してください。
+このポリシーの詳細と例については、「[Azure API Management を使用した高度な要求スロットル](./api-management-sample-flexible-throttling.md)」を参照してください。
 
 ### <a name="policy-statement"></a>ポリシー ステートメント
 
@@ -365,7 +365,7 @@ ms.locfileid: "79231667"
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound
 -   **ポリシー スコープ:** すべてのスコープ
@@ -534,7 +534,7 @@ ms.locfileid: "79231667"
 
 ### <a name="usage"></a>使用法
 
-このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
 
 -   **ポリシー セクション:** inbound
 -   **ポリシー スコープ:** すべてのスコープ
@@ -545,5 +545,5 @@ ms.locfileid: "79231667"
 
 -   [API Management のポリシー](api-management-howto-policies.md)
 -   [API を変換する](transform-api.md)
--   ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](api-management-policy-reference.md)
+-   ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](./api-management-policies.md)
 -   [ポリシーのサンプル](policy-samples.md)

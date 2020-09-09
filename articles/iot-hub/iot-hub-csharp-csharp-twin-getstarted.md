@@ -9,21 +9,19 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: 620e0213733d278a28ec1bcad4b031f5764ccda9
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.custom: mqtt, devx-track-csharp
+ms.openlocfilehash: 267a69486dc91ef95c0de704346eeb1d1780ef48
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81733131"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013760"
 ---
 # <a name="get-started-with-device-twins-net"></a>デバイス ツインの使用 (.NET)
 
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
 このチュートリアルでは、次の .NET コンソール アプリを作成します。
-
-* **CreateDeviceIdentity**。 このアプリでは、デバイス ID および関連するセキュリティ キーを作成し、シミュレートされたデバイス アプリに接続します。
 
 * **AddTagsAndQuery**。 このバックエンド アプリでは、タグを追加し、デバイス ツインのクエリを行います。
 
@@ -73,7 +71,7 @@ ms.locfileid: "81733131"
 
    この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet パッケージへの参照とその依存関係が追加されます。
 
-1. `using`Program.cs**ファイルの先頭に次の** ステートメントを追加します。
+1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
 
     ```csharp  
     using Microsoft.Azure.Devices;
@@ -151,7 +149,7 @@ ms.locfileid: "81733131"
 
    この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT device SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet パッケージへの参照とその依存関係が追加されます。
 
-1. `using`Program.cs**ファイルの先頭に次の** ステートメントを追加します。
+1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
 
     ```csharp  
     using Microsoft.Azure.Devices.Client;

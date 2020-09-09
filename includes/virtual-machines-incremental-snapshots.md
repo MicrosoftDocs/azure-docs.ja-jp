@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 09/15/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f30518c3bfc9876cbddaf8295ff9e8b667a70200
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f0832672cc848495f3d95d308071e0a8359ae4f1
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74014551"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374922"
 ---
 ## <a name="overview"></a>概要
-Azure Storage には、BLOB のスナップショットを作成する機能があります。 スナップショットは、特定の時点における BLOB の状態をキャプチャします。 この記事では、スナップショットを使って仮想マシン ディスクのバックアップを保存するシナリオについて説明します。 この手法は、Azure Backup と Recovery Service を使用せず、仮想マシン ディスク用に独自のバックアップ方法を構築する必要がある場合にご利用ください。
+Azure Storage には、BLOB のスナップショットを作成する機能があります。 スナップショットは、特定の時点における BLOB の状態をキャプチャします。 この記事では、スナップショットを使って仮想マシン ディスクのバックアップを保存するシナリオについて説明します。 この手法は、Azure Backup と Recovery Service を使用せず、仮想マシン ディスク用に独自のバックアップ方法を構築する必要がある場合にご利用ください。 ビジネス ワークロードまたはミッション クリティカルなワークロードを実行している仮想マシンの場合、バックアップ戦略の一環として [Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction) を使用することが推奨されます。  
 
 Azure Storage には、Azure 仮想マシン ディスクがページ BLOB として格納されます。 この記事のテーマは仮想マシン ディスクのバックアップ方法であるため、スナップショットという言葉は、ページ BLOB のコンテキストにおける意味合いを指しています。 スナップショットの詳細については、「 [BLOB のスナップショットの作成](https://docs.microsoft.com/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob)」を参照してください。
 
@@ -57,7 +57,8 @@ Incremental Snapshot Copy を使用すると、以下の差分をストレージ
 * BLOB が 2016 年 1 月 1 日以降に作成されている。
 * 2 つのスナップショット間で [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) または [Copy Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) により BLOB が上書きされていない。
 
-**注**: この機能は、Premium と Standard の Azure ページ BLOB に対して利用できます。
+>[!NOTE]
+>この機能は、Premium と Standard の Azure ページ BLOB に対して利用できます。
 
 スナップショットを使用した独自のバックアップ方法を利用している場合、スナップショットを 2 つのストレージ アカウント間でコピーすると、ひどく時間がかかるうえに記憶域が大量に消費されます。 バックアップ ページ BLOB には、連続するスナップショットの差分だけを書き込むことができます。そうすれば、バックアップ ストレージ アカウントにスナップショット全体をコピーする必要はありません。 そうすることでコピーにかかる時間とバックアップで消費される記憶域を大幅に減らすことができます。
 

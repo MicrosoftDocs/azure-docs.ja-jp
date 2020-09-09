@@ -3,16 +3,16 @@ title: Azure Cosmos DB と Active Directory を使用した証明書ベースの
 description: 証明書ベースの認証で Azure Cosmos DB のキーにアクセスするように Azure AD ID を構成する方法について説明します。
 author: voellm
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: 085280a8064e4d12ac63939ada7cdb296d47dc70
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: ea8d4180a6e820e72f5ca0ce7e7acaf13348ae67
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365774"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262499"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Azure AD ID で Azure Cosmos DB アカウントのキーにアクセスするための証明書ベースの認証
 
@@ -32,7 +32,7 @@ ms.locfileid: "80365774"
 
 1. **[Azure Active Directory]** ウィンドウを開き、 **[アプリの登録]** ウィンドウに移動し、 **[新規登録]** を選択します。 
 
-   ![Active Directory での新しいアプリケーションの登録](./media/certificate-based-authentication/new-app-registration.png)
+   :::image type="content" source="./media/certificate-based-authentication/new-app-registration.png" alt-text="Active Directory での新しいアプリケーションの登録":::
 
 1. **[アプリケーションを登録する]** フォームに次の詳細を入力します。  
 
@@ -40,13 +40,13 @@ ms.locfileid: "80365774"
    * **[サポートされているアカウントの種類]** – **[Accounts in this organizational directory only (Default Directory)]\(この組織のディレクトリ内のアカウントのみ (既定のディレクトリ))** を選択して、現在のディレクトリ内のリソースがこのアプリケーションにアクセスできるようにします。 
    * **[リダイレクト URL]** – アプリケーションの種類として **[Web]** を選択し、そのアプリケーションがホストされている URL を指定します。任意の URL を指定できます。 この例では、`https://sampleApp.com` などのテスト URL を指定できます。アプリが存在しなくてもかまいません。
 
-   ![サンプル Web アプリケーションの登録](./media/certificate-based-authentication/register-sample-web-app.png)
+   :::image type="content" source="./media/certificate-based-authentication/register-sample-web-app.png" alt-text="サンプル Web アプリケーションの登録":::
 
 1. フォームに入力したら **[登録]** を選択します。
 
 1. アプリが登録されたら、 **[Application(client) ID] (アプリケーション (クライアント) ID)** と **[オブジェクト ID]** を書き留めておきます。これらの詳細は、次の手順で使用します。 
 
-   ![アプリケーションおよびオブジェクト ID を取得する](./media/certificate-based-authentication/get-app-object-ids.png)
+   :::image type="content" source="./media/certificate-based-authentication/get-app-object-ids.png" alt-text="アプリケーションおよびオブジェクト ID を取得する":::
 
 ## <a name="install-the-azuread-module"></a>AzureAD モジュールをインストールする
 
@@ -99,7 +99,7 @@ New-AzureADApplicationKeyCredential -ObjectId $application.ObjectId -CustomKeyId
 
 上のコマンドでは、次のスクリーンショットのような出力が表示されます。
 
-![証明書ベースの資格情報の作成での出力](./media/certificate-based-authentication/certificate-based-credential-output.png)
+:::image type="content" source="./media/certificate-based-authentication/certificate-based-credential-output.png" alt-text="証明書ベースの資格情報の作成での出力":::
 
 ## <a name="configure-your-azure-cosmos-account-to-use-the-new-identity"></a>新しい ID を使用するように Azure Cosmos アカウントを構成する
 
@@ -109,7 +109,7 @@ New-AzureADApplicationKeyCredential -ObjectId $application.ObjectId -CustomKeyId
 
 1. **[追加]** および **[ロールの割り当ての追加]** を選択します。 次のスクリーンショットに示すように、 **[共同作成者]** ロールを使用して、前の手順で作成した sampleApp を追加します。
 
-   ![新しい ID を使用するように Azure Cosmos アカウントを構成する](./media/certificate-based-authentication/configure-cosmos-account-with-identify.png)
+   :::image type="content" source="./media/certificate-based-authentication/configure-cosmos-account-with-identify.png" alt-text="新しい ID を使用するように Azure Cosmos アカウントを構成する":::
 
 1. フォームに入力したら **[保存]** を選択します。
 
@@ -150,7 +150,7 @@ Azure portal から、証明書ベースの資格情報を Azure AD 内のクラ
 
 前のコマンドでは、Azure Cosmos アカウントのプライマリおよびセカンダリ マスター キーが表示されます。 キー取得要求が成功し、そのイベントが "sampleApp" アプリケーションによって開始されたことを検証するには、Azure Cosmos アカウントのアクティビティ ログを表示できます。
 
-![Azure AD でのキー取得の呼び出しを検証する](./media/certificate-based-authentication/activity-log-validate-results.png)
+:::image type="content" source="./media/certificate-based-authentication/activity-log-validate-results.png" alt-text="Azure AD でのキー取得の呼び出しを検証する":::
 
 ## <a name="access-the-keys-from-a-c-application"></a>C# アプリケーションからキーにアクセスする 
 
@@ -238,7 +238,7 @@ namespace TodoListDaemonWithCert
 
 次のスクリーンショットに示すように、このスクリプトではプライマリおよびセカンダリ マスター キーが出力されます。
 
-![csharp アプリケーションの出力](./media/certificate-based-authentication/csharp-application-output.png)
+:::image type="content" source="./media/certificate-based-authentication/csharp-application-output.png" alt-text="csharp アプリケーションの出力":::
 
 前のセクションと同様に、キー取得要求イベントが "sampleApp" アプリケーションによって開始されたことを検証するには、Azure Cosmos アカウントのアクティビティ ログを表示できます。 
 

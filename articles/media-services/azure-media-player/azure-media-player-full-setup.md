@@ -6,12 +6,13 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
-ms.openlocfilehash: d4c2dc58ca341db7ba17dbaf6a5ce7c009983379
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-javascript
+ms.openlocfilehash: d7e6d3c1554f70ea14e097ff2fe6df47987b5927
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81725900"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423050"
 ---
 # <a name="azure-media-player-full-setup"></a>Azure Media Player のフル セットアップ #
 
@@ -23,11 +24,14 @@ Azure Media Player は簡単にセットアップできます。 Azure Media Ser
 Azure Media Player では、CDN ホスト バージョンからスクリプトにアクセスできます。 `<head>` の代わりに本体終了タグ `<body>` の前に JavaScript を配置するように推奨されることが多くなりましたが、Azure Media Player には 'HTML5 Shiv' が含まれており、古い IE バージョンでビデオ タグが有効な要素と見なされるようにするには、これを先頭に配置する必要があります。
 
 > [!NOTE]
-> [Modernizr](http://modernizr.com/) などの HTML5 shiv を既に使用している場合は、Azure Media Player JavaScript をどこにでも含めることができます。 ただし、Modernizr のご使用のバージョンに、ビデオ用の shiv が含まれていることを確認してください。
+> [Modernizr](https://modernizr.com/) などの HTML5 shiv を既に使用している場合は、Azure Media Player JavaScript をどこにでも含めることができます。 ただし、Modernizr のご使用のバージョンに、ビデオ用の shiv が含まれていることを確認してください。
 
 ### <a name="cdn-version"></a>CDN バージョン ###
+
+```html
     <link href="//amp.azure.net/libs/amp/latest/skins/amp-default/azuremediaplayer.min.css" rel="stylesheet">
     <script src= "//amp.azure.net/libs/amp/latest/azuremediaplayer.min.js"></script>
+```
 
 > [!IMPORTANT]
 > `latest` バージョンは、必要に応じて変更されることがあるため、運用環境では使用**しない**でください。 `latest` を Azure Media Player のバージョンに置き換えます。 たとえば、`latest` を `2.1.1` に置き換えます。 Azure Media Player のバージョンは、[こちら](azure-media-player-changelog.md)から照会できます。

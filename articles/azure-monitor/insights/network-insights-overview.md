@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/07/2019
-ms.openlocfilehash: 0f5b2fbd13cb9658e255fde727e115df748aaed9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ccc5578944dc6eea9a62360045272896d78e2fac
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77654870"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128677"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>Azure Monitor for Networks (プレビュー)
 Azure Monitor for Network では、デプロイされたすべてのネットワーク リソースの正常性とメトリックを構成なしで包括的に把握できます。 高度な検索機能を使用すると、リソースの依存関係を特定するのに役立ちます。たとえば、ホストされている Web サイト名を検索するだけで、Web サイトをホストしているリソースを特定できるというシナリオが可能になります。
@@ -48,7 +48,7 @@ Azure Monitor for Networks の **[概要]** ページでは、ネットワーク
 右側の **[アラート]** グリッドには、すべてのサブスクリプションで選択されたリソースに対して生成されたすべてのアラートのビューが表示されます。 アラート数をクリックすると、アラートの詳細に関するページに移動します。
 
 ## <a name="dependency-view"></a>[依存関係] ビュー
-**[依存関係]** ビューは、リソースがどのように構成されているかを視覚化するのに役立ちます。 現時点では、[依存関係] ビューは Application Gateway に対してのみサポートされています。 [依存関係] ビューは、[メトリック] グリッド ビューで Application Gateway のリソース名をクリックするとアクセスできます。
+**[依存関係]** ビューは、リソースがどのように構成されているかを視覚化するのに役立ちます。 現在、[依存関係] ビューは Application Gateway、Virtual WAN、Load Balancer に対してサポートされるようになっています。 たとえば、Application Gateway の場合、[依存関係] ビューにアクセスするには、[メトリック] グリッド ビューで Application Gateway のリソース名をクリックします。 これは、Virtual WAN および Load Balancer にも適用されます。 
 
 ![[Application Gateway] ビュー](media/network-insights-overview/application-gateway.png)
 
@@ -70,4 +70,4 @@ Application Gateway の **[依存関係]** ビューは、フロントエンド 
 
 ## <a name="next-steps"></a>次のステップ 
 
-- ネットワーク監視の詳細については、「[Azure Network Watcher とは](/azure/network-watcher/network-watcher-monitoring-overview)」をご覧ください。
+- ネットワーク監視の詳細については、「[Azure Network Watcher とは](../../network-watcher/network-watcher-monitoring-overview.md)」をご覧ください。

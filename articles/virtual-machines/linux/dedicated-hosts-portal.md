@@ -3,16 +3,16 @@ title: Azure portal を使用して Azure 専用ホストにデプロイする
 description: Azure portal を使用して専用ホストに VM をデプロイします。
 author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 03/10/2020
 ms.author: cynthn
-ms.openlocfilehash: 195a19ef881f235ad8e42f23b53da9e667ef88d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 19bd7960c4a6a02566d86d51ff7e21f4e570c34d
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79086762"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373642"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>ポータルを使用して専用ホストに VM をデプロイする
 
@@ -46,7 +46,7 @@ VM がデプロイされるまでに数分かかります。
 
 - VM サイズは、専用ホストと同じサイズ ファミリである必要があります。 たとえば、専用のホストが DSv3 の場合、VM のサイズは Standard_D4s_v3 になる可能性がありますが、Standard_A4_v2 となる可能性はありません。 
 - VM は、専用ホストと同じリージョンに配置する必要があります。
-- VM は、近接通信配置グループの一部になることはありません。 専用のホストに移動する前に、近接通信配置グループから VM を削除してください。 詳細については、「[近接配置グループからの VM の移動](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group)」を参照してください
+- VM は、近接通信配置グループの一部になることはありません。 専用のホストに移動する前に、近接通信配置グループから VM を削除してください。 詳細については、「[近接配置グループからの VM の移動](../windows/proximity-placement-groups.md#move-an-existing-vm-out-of-a-proximity-placement-group)」を参照してください
 - VM は、可用性セット内に置くことはできません。
 - VM が可用性ゾーン内にある場合は、ホスト グループと同じ可用性ゾーンである必要があります。 VM とホスト グループの可用性ゾーンの設定が一致している必要があります。
 
@@ -67,6 +67,3 @@ VM がデプロイされるまでに数分かかります。
 - [こちら](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)には、リージョン内の回復性を最大にするためにゾーンと障害ドメインの両方を使用するサンプル テンプレートがあります。
 
 - [Azure CLI](dedicated-hosts-cli.md) を使用して専用ホストをデプロイすることもできます。
-
-
-

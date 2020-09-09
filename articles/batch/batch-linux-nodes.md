@@ -1,15 +1,15 @@
 ---
-title: 仮想マシン コンピューティング ノードでの Linux の実行 - Azure Batch | Microsoft Docs
+title: 仮想マシンのコンピューティング ノードで Linux を実行する
 description: Azure Batch の Linux 仮想マシンのプールで並列コンピューティング ワークロードを処理する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/01/2018
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 31e7a9558590ee3c6943e7a50c67c93f713908c7
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.custom: H1Hack27Feb2017, devx-track-python, devx-track-csharp
+ms.openlocfilehash: 6cd8a13d67c1ce169e6c9300f7ee017fd3a59d96
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993822"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146336"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Batch プールでの Linux コンピューティング ノードのプロビジョニング
 
@@ -29,7 +29,7 @@ Batch でコンピューティング ノードのプールを作成する場合�
 
 ### <a name="virtual-machine-image-reference"></a>仮想マシン イメージの参照
 
-Batch サービスでは、[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使って、仮想マシン構成にコンピューティング ノードを提供します。 [Azure Marketplace][vm_marketplace] でイメージを指定できます。または、事前に準備したカスタム イメージを指定できます。 カスタム イメージの詳細については、「[Shared Image Gallery を使用してプールを作成する](batch-sig-images.md)」を参照してください。
+Batch サービスでは、[仮想マシン スケール セット](../virtual-machine-scale-sets/overview.md)を使って、仮想マシン構成にコンピューティング ノードを提供します。 [Azure Marketplace][vm_marketplace] でイメージを指定できます。または、事前に準備したカスタム イメージを指定できます。 カスタム イメージの詳細については、「[Shared Image Gallery を使用してプールを作成する](batch-sig-images.md)」を参照してください。
 
 仮想マシン イメージの参照を構成する場合は、仮想マシン イメージのプロパティを指定します。 仮想マシン イメージの参照を作成する際は、次のプロパティが必要です。
 
@@ -273,7 +273,7 @@ tvm-1219235766_3-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50002
 tvm-1219235766_4-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50001
 ```
 
-ノードにユーザーを作成するときに、パスワードの代わりに、SSH 公開キーを指定できます。 Python SDK では、**ComputeNodeUser** の [ssh_public_key][py_computenodeuser] パラメーターを使います。 .NET では、[ComputeNodeUser][net_computenodeuser].[SshPublicKey][net_ssh_key] プロパティを使います。
+ノードにユーザーを作成するときに、パスワードの代わりに、SSH 公開キーを指定できます。 Python SDK では、[ComputeNodeUser][py_computenodeuser] の **ssh_public_key** パラメーターを使います。 .NET では、[ComputeNodeUser][net_computenodeuser].[SshPublicKey][net_ssh_key] プロパティを使います。
 
 ## <a name="pricing"></a>価格
 Azure Batch は Azure Cloud Services と Azure Virtual Machines テクノロジに基づいて構築されています。 Batch サービス自体は、無料で提供されています。そのため、Batch ソリューションによって使用されたコンピューティング リソース (およびそれに付随する関連コスト) に対してのみ課金されます。 **Cloud Services 構成**を選択した場合は、[Cloud Services の料金][cloud_services_pricing]体系に基づいて課金されます。 **仮想マシンの構成**を選択した場合は、[Virtual Machines の料金][vm_pricing]体系に基づいて課金されます。
@@ -282,31 +282,31 @@ Azure Batch は Azure Cloud Services と Azure Virtual Machines テクノロジ�
 
 ## <a name="next-steps"></a>次のステップ
 
-GitHub の [azure-batch-samples][github_samples_py] リポジトリにある [Python コード サンプル][github_samples]には、プール、ジョブ、タスクの作成などの一般的な Batch 操作の実行方法を示すスクリプトが含まれています。 Python サンプルに付属する [README][github_py_readme] には、必要なパッケージのインストール方法の詳細が記載されています。
+GitHub の [azure-batch-samples][github_samples] リポジトリにある [Python コード サンプル][github_samples_py]には、プール、ジョブ、タスクの作成などの一般的な Batch 操作の実行方法を示すスクリプトが含まれています。 Python サンプルに付属する [README][github_py_readme] には、必要なパッケージのインストール方法の詳細が記載されています。
 
-[api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx
-[api_net_mgmt]: https://msdn.microsoft.com/library/azure/mt463120.aspx
-[api_rest]: https://msdn.microsoft.com/library/azure/dn820158.aspx
+[api_net]: /dotnet/api/microsoft.azure.batch
+[api_net_mgmt]: /dotnet/api/overview/azure/batch
+[api_rest]: /rest/api/batchservice/
 [cloud_services_pricing]: https://azure.microsoft.com/pricing/details/cloud-services/
 [github_py_readme]: https://github.com/Azure/azure-batch-samples/blob/master/Python/Batch/README.md
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [github_samples_py]: https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch
 [github_samples_pyclient]: https://github.com/Azure/azure-batch-samples/blob/master/Python/Batch/article_samples/python_tutorial_client.py
 [portal]: https://portal.azure.com
-[net_cloudpool]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx
-[net_computenodeuser]: /dotnet/api/microsoft.azure.batch.computenodeuser?view=azure-dotnet
-[net_imagereference]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.imagereference.aspx
-[net_list_supported_images]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages
-[net_pool_ops]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.aspx
-[net_ssh_key]: /dotnet/api/microsoft.azure.batch.computenodeuser.sshpublickey?view=azure-dotnet#Microsoft_Azure_Batch_ComputeNodeUser_SshPublicKey
+[net_cloudpool]: /dotnet/api/microsoft.azure.batch.cloudpool
+[net_computenodeuser]: /dotnet/api/microsoft.azure.batch.computenodeuser
+[net_imagereference]: /dotnet/api/microsoft.azure.batch.imagereference
+[net_list_supported_images]: /dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages
+[net_pool_ops]: /dotnet/api/microsoft.azure.batch.pooloperations
+[net_ssh_key]: /dotnet/api/microsoft.azure.batch.computenodeuser.sshpublickey#Microsoft_Azure_Batch_ComputeNodeUser_SshPublicKey
 [nuget_batch_net]: https://www.nuget.org/packages/Microsoft.Azure.Batch/
-[rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
+[rest_add_pool]: /rest/api/batchservice/pool/add
 [py_account_ops]: http://azure-sdk-for-python.readthedocs.org/en/dev/ref/azure.batch.operations.html#azure.batch.operations.AccountOperations
 [py_azure_sdk]: https://pypi.python.org/pypi/azure
 [py_batch_docs]: https://azure.github.io/azure-sdk-for-python/ref/Batch.html
 [py_batch_package]: https://pypi.python.org/pypi/azure-batch
 [py_computenodeuser]: /python/api/azure-batch/azure.batch.models.computenodeuser
 [py_imagereference]: /python/api/azure-mgmt-batch/azure.mgmt.batch.models.imagereference
-[py_list_supported_images]: https://docs.microsoft.com/python/api/azure-batch/azure.batch.operations.AccountOperations?view=azure-python
+[py_list_supported_images]: /python/api/azure-batch/azure.batch.operations.AccountOperations
 [vm_marketplace]: https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images&page=1
 [vm_pricing]: https://azure.microsoft.com/pricing/details/virtual-machines/

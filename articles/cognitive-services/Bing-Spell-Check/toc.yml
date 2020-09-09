@@ -12,7 +12,7 @@
     - name: REST API
       expanded: true
       items:
-        - name: 'C# の使用'
+        - name: C# の使用
           href: quickstarts/csharp.md
         - name: Java の使用
           href: quickstarts/java.md
@@ -26,7 +26,7 @@
           href: quickstarts/ruby.md
     - name: SDK
       items:
-        - name: 'C# の使用'
+        - name: C# の使用
           href: sdk-quickstart-spell-check.md
 - name: チュートリアル
   items:
@@ -81,7 +81,7 @@
     - name: スタック オーバーフロー
       href: 'https://stackoverflow.com/questions/tagged/bing-api'
     - name: Subscription key
-      href: 'https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api'
+      href: 'https://azure.microsoft.com/free/cognitive-services'
     - name: 試してみる
       href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'
     - name: UserVoice

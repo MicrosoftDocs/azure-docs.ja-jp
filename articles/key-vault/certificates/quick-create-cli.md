@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Azure Key Vault から証明書の設定と取得を行う
+title: クイック スタート:Azure Key Vault 証明書の設定と表示 - Azure CLI
 description: Azure CLI を使用して Azure Key Vault との間で証明書の設定と取得を行う方法を紹介したクイックスタート
 services: key-vault
 author: msmbaldwin
@@ -8,15 +8,15 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
-ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurecli
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d8107d26405423da6bb5d85ab79b83edce95d179
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a63944dfb9a22f30451793d367650f03b8aa2c1f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419616"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87483867"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Key Vault から証明書の設定と取得を行う
 

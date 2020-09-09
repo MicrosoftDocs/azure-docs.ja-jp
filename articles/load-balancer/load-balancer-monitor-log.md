@@ -7,18 +7,18 @@ documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 7563eb4d22048021886925f6864e3616bed83a75
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 42ec5a661bd7b42ba5de5bfa99b3898291cc60fa
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858769"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935604"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>パブリック Basic ロード バランサーの Azure Monitor ログ
 
@@ -29,7 +29,7 @@ Azure の各種ログを使用して、Basic Load Balancer の管理やトラブ
 * **正常性プローブ ログ:** 正常性プローブによって検出された問題 (バックエンド プールの中で、正常性プローブの障害が原因でロード バランサーから要求を受信していないインスタンスの数など) は、このログで確認できます。 このログは、正常性プローブの状態に変化があったときに書き込まれます。
 
 > [!IMPORTANT]
-> Azure Monitor ログは、現在、パブリック Basic ロード バランサーに対してのみ機能します。 ログは、Resource Manager デプロイ モデルでデプロイされたリソースについてのみ使用できます。 クラシック デプロイ モデルのリソースには使用できません。 これらのデプロイ モデルの詳細については、[Resource Manager デプロイとクラシック デプロイ](../azure-resource-manager/management/deployment-models.md)に関する記事をご覧ください。
+> **正常性プローブのイベント ログは現在機能しておらず、[Azure Load Balancer に関する既知の問題](whats-new.md#known-issues)に記載されています。** ログは、Resource Manager デプロイ モデルでデプロイされたリソースについてのみ使用できます。 クラシック デプロイ モデルのリソースには使用できません。 これらのデプロイ モデルの詳細については、[Resource Manager デプロイとクラシック デプロイ](../azure-resource-manager/management/deployment-models.md)に関する記事をご覧ください。
 
 ## <a name="enable-logging"></a>ログの有効化
 
@@ -40,7 +40,7 @@ Azure の各種ログを使用して、Basic Load Balancer の管理やトラブ
 1. ポータルで、 **[リソース グループ]** をクリックします。
 2. ロード バランサーがある **\<resource-group-name>** を選択します。
 3. ロード バランサーを選択します。
-4. **[監視]**  >  **[診断設定]** を選択します。
+4. **[アクティビティ ログ]**  >  **[診断設定]** を選択します。
 5. **[診断設定]** ウィンドウの **[診断設定]** で、 **[+ Add diagnostic setting]\(+ 診断設定の追加\)** を選択します。
 6. **[診断設定]** 作成ウィンドウで、 **[名前]** フィールドに「**myLBDiagnostics**」と入力します。
 7. **[診断設定]** には、3 つのオプションがあります。  1 つ、2 つ、または 3 つすべてを選択し、それぞれをご自身の要件に合わせて構成することができます。

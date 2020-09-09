@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
-ms.openlocfilehash: e2f65f1c52dc7dfb2e4e4bf66f5c7e82f4b802b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ccc7df5bfac327fabf05f210764dbe10658b5015
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74792885"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520717"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Azure Logic Apps のスキーマの更新 - 2016 年 6 月 1 日
 
@@ -29,7 +29,7 @@ Azure Logic Apps の[更新されたバージョンのスキーマ](https://sche
 
 ## <a name="scopes"></a>スコープ
 
-このスキーマにはスコープが含まれており、アクションをまとめてグループ化したり、入れ子にできます。 たとえば、1 つの条件に別の条件を含めることができます。 [スコープの構文](../logic-apps/logic-apps-loops-and-scopes.md)の詳細を確認するか、以下のコードで基本的なスコープの例を確認してください。
+このスキーマにはスコープが含まれており、アクションをまとめてグループ化したり、入れ子にできます。 たとえば、1 つの条件に別の条件を含めることができます。 [スコープの構文](./logic-apps-control-flow-loops.md)の詳細を確認するか、以下のコードで基本的なスコープの例を確認してください。
 
 ```json
 {
@@ -55,7 +55,7 @@ Azure Logic Apps の[更新されたバージョンのスキーマ](https://sche
 
 ## <a name="conditions-and-loops-changes"></a>条件とループに関する変更
 
-以前のバージョンのスキーマでは、条件とループはパラメーターとして単一のアクションに関連付けられていました。 このスキーマではその制限が廃止され、条件とループはアクションのタイプとして利用できるようになりました。 [ループおよびスコープ](../logic-apps/logic-apps-loops-and-scopes.md)と、[条件](../logic-apps/logic-apps-control-flow-conditional-statement.md)の詳細を確認するか、条件アクションを示すこの基本的な例を確認してください。
+以前のバージョンのスキーマでは、条件とループはパラメーターとして単一のアクションに関連付けられていました。 このスキーマではその制限が廃止され、条件とループはアクションのタイプとして利用できるようになりました。 [ループおよびスコープ](./logic-apps-control-flow-loops.md)と、[条件](../logic-apps/logic-apps-control-flow-conditional-statement.md)の詳細を確認するか、条件アクションを示すこの基本的な例を確認してください。
 
 ```json
 {
@@ -131,7 +131,7 @@ Azure Logic Apps の[更新されたバージョンのスキーマ](https://sche
 
 #### <a name="foreach-loop-with-condition"></a>条件判定を伴う foreach ループ
 
-新しいスキーマでは、フィルター アクションを使用することで、項目ごとに 1 つの条件が設定された **For each** ループを使用するパターンをレプリケートすることができます。 ただし、変更はアップグレード時に自動的に行われます。 このような条件は、**For each** ループに先行して表示されるフィルター アクションに置き換えられます。つまり、このフィルター アクションによって、条件に一致したアイテムの配列のみが取得され、その配列が **For each** アクションに渡されます。 例については、[ループとスコープ](../logic-apps/logic-apps-loops-and-scopes.md)に関する記事を参照してください。
+新しいスキーマでは、フィルター アクションを使用することで、項目ごとに 1 つの条件が設定された **For each** ループを使用するパターンをレプリケートすることができます。 ただし、変更はアップグレード時に自動的に行われます。 このような条件は、**For each** ループに先行して表示されるフィルター アクションに置き換えられます。つまり、このフィルター アクションによって、条件に一致したアイテムの配列のみが取得され、その配列が **For each** アクションに渡されます。 例については、[ループとスコープ](./logic-apps-control-flow-loops.md)に関する記事を参照してください。
 
 ### <a name="resource-tags"></a>リソース タグ
 

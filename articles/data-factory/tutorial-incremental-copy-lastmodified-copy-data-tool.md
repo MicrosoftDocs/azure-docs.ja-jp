@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 3/18/2020
-ms.openlocfilehash: 3098ca0d3d5e41c298d3058ffa84fcf129648281
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 6/10/2020
+ms.openlocfilehash: 402214da75bffd278e12db94f089d64acd62221e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399483"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84730147"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>データのコピー ツールを使用し LastModifiedDate に基づいて新しいファイルおよび変更されたファイルを増分コピーする
 
@@ -150,7 +150,7 @@ ms.locfileid: "81399483"
 
 10. 左側の **[監視]** タブが自動的に選択されたことがわかります。 アプリケーションの **[監視]** タブに切り替えます。パイプラインの状態が表示されます。 **[最新の情報に更新]** を選択して、一覧を更新します。 **[パイプライン名]** の下にあるリンクを選択して、アクティビティの実行の詳細を表示するか、パイプラインを再実行します。
 
-    ![リストを最新の情報に更新してアクティビティの実行の詳細を表示する](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs1.png)
+    ![リストを最新の情報に更新してアクティビティの実行の詳細を表示する](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs-1.png)
 
 11. パイプラインにはアクティビティ (コピー アクティビティ) が 1 つしかないため、エントリが 1 つだけ表示されます。 コピー操作の詳細を確認するには、 **[ACTIVITY NAME]\(アクティビティ名\)** 列の **[詳細]** リンク (眼鏡アイコン) を選択します。 プロパティの詳細については、[コピー アクティビティの概要](copy-activity-overview.md)に関するページを参照してください。
 
@@ -165,8 +165,6 @@ ms.locfileid: "81399483"
     ![file1.txt を作成して source コンテナーにアップロードする](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3-1.png)
 
 13. **[パイプラインの実行]** ビューに戻るために、 **[すべてのパイプラインの実行]** を選択し、同じパイプラインが再び自動的にトリガーされるまで待ちます。  
-
-    ![[すべてのパイプライン実行] を選択する](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs4.png)
 
 14. 2 番目のパイプラインの実行が完了したら、前述と同じ手順に従って、アクティビティの実行の詳細を確認します。  
 

@@ -8,59 +8,51 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: a1e43cfc55611c432652055db2ac8411d835608b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ee0c659cf510eb0a438ae0c78a554c98dccffa89
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80396825"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144271"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Bing Spell Check を使用した単語のスペルミスの修正
 
-LUIS アプリと [Bing Spell Check API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) を統合すると、LUIS によって発話のスコアとエンティティが予測される前に、発話の単語のスペル ミスを修正できます。 
+LUIS アプリと [Bing Spell Check API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) を統合すると、LUIS によって発話のスコアとエンティティが予測される前に、発話の単語のスペル ミスを修正できます。
 
 [!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
 
-
-## <a name="create-first-key-for-bing-spell-check-v7"></a>最初の Bing Spell Check V7 キーの作成
-
-[最初の Bing Spell Check API v7 キー](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)は無料です。 
-
-![無料のキーの作成](./media/luis-tutorial-bing-spellcheck/free-key.png)
-
-<a name="create-subscription-key"></a>
-
 ## <a name="create-endpoint-key"></a>エンドポイント キーの作成
-無料のキーの期限が切れた場合は、エンドポイント キーを作成します。
 
-1. [Azure Portal](https://portal.azure.com) にログインします。 
+Azure portal で Bing Spell Check リソースを作成するには、次の手順に従います。
 
-2. 左上隅の **[Create a resource]\(リソースの作成\)** を選択します。
+1. [Azure Portal](https://portal.azure.com) にログインします。
+
+2. 左上隅の **[リソースの作成]** を選択します。
 
 3. 検索ボックスに「 `Bing Spell Check API V7`」と入力します。
 
     ![Bing Spell Check API V7 の検索](./media/luis-tutorial-bing-spellcheck/portal-search.png)
 
-4. サービスを選択します。 
+4. サービスを選択します。
 
-5. 右側に情報パネルが表示され、法的通知などの情報が示されます。 **[Create]\(作成\)** を選択して、サブスクリプション作成プロセスを開始します。 
+5. 右側に情報パネルが表示され、法的通知などの情報が示されます。 **[作成]** を選択して、サブスクリプション作成プロセスを開始します。
 
 6. 次のパネルで、サービス設定を入力します。 サービス作成プロセスが完了するまで待ちます。
 
     ![サービス設定の入力](./media/luis-tutorial-bing-spellcheck/subscription-settings.png)
 
-7. 左側のナビゲーションの **[Favorites]\(お気に入り\)** の下で、 **[All resources]\(すべてのリソース\)** を選択します。
+7. 左側のナビゲーションの **[お気に入り]** の下で、 **[すべてのリソース]** を選択します。
 
-8. 新しいサービスを選択します。 種類は **[Cognitive Services]** で、場所は **[global]\(グローバル\)** です。 
+8. 新しいサービスを選択します。 種類は **[Cognitive Services]** で、場所は **[グローバル]** です。
 
-9. メイン パネルで **[Keys]\(キー\)** を選択して、新しいキーを確認します。
+9. メイン パネルで **[キー]** を選択して、新しいキーを確認します。
 
     ![キーの取得](./media/luis-tutorial-bing-spellcheck/grab-keys.png)
 
-10. 最初のキーをコピーします。 必要なのは 2 つのキーのうち 1 つだけです。 
+10. 最初のキーをコピーします。 必要なのは 2 つのキーのうち 1 つだけです。
 
 <!--
 ## Using the key in LUIS test panel
@@ -76,7 +68,7 @@ There are two places in LUIS to use the key. The first is in the [test panel](lu
 ## <a name="send-misspelled-utterance-to-luis"></a>LUIS への発話のスペルミスの送信
 1. Web ブラウザーで、上記の文字列をコピーして、`region`、`appId`、`luisKey`、および `bingKey` をご自身の値に置き換えます。 エンドポイント リージョンが公開[リージョン](luis-reference-regions.md)と異なる場合は、必ずエンドポイント リージョンを使用します。
 
-2. 発話のスペルミスを追加します ("How far is the mountainn?" など)。 英語では、`mountain` が 1 つの `n` が正しいスペルです。 
+2. 発話のスペルミスを追加します ("How far is the mountainn?" など)。 英語では、`n` が 1 つの `mountain` が正しいスペルです。
 
 3. Enter キーを押して、クエリを LUIS に送信します。
 
@@ -96,15 +88,15 @@ There are two places in LUIS to use the key. The first is in the [test panel](lu
 
 ## <a name="ignore-spelling-mistakes"></a>スペル ミスの無視
 
-Bing Spell Check API v7 サービスを使用したくない場合は、正しいスペルと正しくないスペルを追加する必要があります。 
+Bing Spell Check API v7 サービスを使用したくない場合は、正しいスペルと正しくないスペルを追加する必要があります。
 
 次の 2 つの解決策があります。
 
 * LUIS が正しいスペルと入力ミスを学習できるように、さまざまなスペルを含んだ発話の例にラベルを付ける。 このラベル付けオプションは、スペル チェックを使用するよりも手間がかかります。
-* さまざまなバリエーションの単語を含んだ語句一覧を作成する。 この解決策では、発話の例に含まれる単語のバリエーションにラベルを付ける必要はありません。 
+* さまざまなバリエーションの単語を含んだ語句一覧を作成する。 この解決策では、発話の例に含まれる単語のバリエーションにラベルを付ける必要はありません。
 
 ## <a name="publishing-page"></a>ページの公開
-[publishing](luis-how-to-publish-app.md) ページには、 **[Enable Bing spell checker]\(Bing スペル チェックを有効にする\)** チェック ボックスがあります。 これは、キーを作成し、エンドポイント URL がどのように変わったかを解釈するうえで便利です。 発話ごとにスペルが修正されるようにするには、引き続き正しいエンドポイント パラメーターを使用する必要があります。 
+[公開](luis-how-to-publish-app.md)ページには、 **[Enable Bing spell checker]\(Bing スペル チェックを有効にする\)** チェック ボックスがあります。 これは、キーを作成し、エンドポイント URL がどのように変わったかを解釈するうえで便利です。 発話ごとにスペルが修正されるようにするには、引き続き正しいエンドポイント パラメーターを使用する必要があります。
 
 > [!div class="nextstepaction"]
 > [発話の例の詳細](luis-how-to-add-example-utterances.md)

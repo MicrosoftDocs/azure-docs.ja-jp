@@ -1,16 +1,14 @@
 ---
 title: Azure Functions でプロキシを操作する
 description: Azure Functions プロキシ の使用方法の概要
-author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.author: alkarche
-ms.openlocfilehash: 5e756258bb92d7def195959d909068e87e765c0f
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 3e08b9cf633162cc7015f47774b043cf58c115a0
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562068"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385876"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure Functions プロキシの操作
 
@@ -89,7 +87,7 @@ ms.locfileid: "82562068"
 
 ### <a name="reference-application-settings"></a><a name="use-appsettings"></a>アプリケーション設定を参照する
 
-[関数アプリに対して定義されているアプリケーション設定](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings)を参照することもできます。その場合は、設定名をパーセント記号 (%) で囲みます。
+[関数アプリに対して定義されているアプリケーション設定](./functions-how-to-use-azure-function-app-settings.md)を参照することもできます。その場合は、設定名をパーセント記号 (%) で囲みます。
 
 たとえば、 *https://%ORDER_PROCESSING_HOST%/api/orders* のバックエンド URL で、"%ORDER_PROCESSING_HOST%" は ORDER_PROCESSING_HOST 設定の値に置き換えられます。
 
@@ -110,7 +108,7 @@ ms.locfileid: "82562068"
 
 ## <a name="advanced-configuration"></a>詳細な構成
 
-構成するプロキシは、関数アプリ ディレクトリのルートにある *proxies.json* ファイルに格納されます。 このファイルを手動で編集し、Functions でサポートされているいずれかの[デプロイ方法](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment)を使用するときにアプリの一部としてデプロイできます。 
+構成するプロキシは、関数アプリ ディレクトリのルートにある *proxies.json* ファイルに格納されます。 このファイルを手動で編集し、Functions でサポートされているいずれかの[デプロイ方法](./functions-continuous-deployment.md)を使用するときにアプリの一部としてデプロイできます。 
 
 > [!TIP] 
 > いずれのデプロイ方法もまだ設定していない場合は、ポータルで *proxies.json* ファイルを編集することもできます。 目的の関数アプリに移動して **[プラットフォーム機能]** を選択し、 **[App Service エディター]** を選択します。 これにより、関数アプリのファイル構造全体が表示され、変更を加えることができます。
@@ -244,7 +242,7 @@ ms.locfileid: "82562068"
 > この例では、応答の本文が直接設定されているため、`backendUri` プロパティは必要ありません。 この例では、Azure Functions プロキシを使って API のモッキングを行う方法を説明しています。
 
 [Azure Portal]: https://portal.azure.com
-[HTTP トリガー]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook
+[HTTP トリガー]: ./functions-bindings-http-webhook.md
 [Modify the back-end request]: #modify-backend-request
 [Modify the response]: #modify-response
 [requestOverrides オブジェクトの定義]: #requestOverrides

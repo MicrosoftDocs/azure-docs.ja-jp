@@ -28,7 +28,7 @@ ms.locfileid: "75887225"
 
 ストレージ内に `/hbase/data/default/ThatTable` という名前のフォルダー BLOB がありませんでした。 WASB ドライバーで上記の BLOB ファイルの存在が検出され、親フォルダーが存在すると想定されたため `/hbase/data/default/ThatTable` という BLOB の作成が許可されなかったため、テーブルの作成は失敗します。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決策
 
 1. Apache Ambari UI から、アクティブな HMaster を再起動します。 これにより、2 つのスタンバイ HMaster の 1 つがアクティブになり、新しいアクティブな HMaster でメタデータ テーブルの情報が再読み込みされます。 これにより、HMaster UI に `already-deleted` テーブルが表示されなくなります。
 

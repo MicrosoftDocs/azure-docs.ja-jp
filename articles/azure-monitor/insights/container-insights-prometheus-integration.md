@@ -3,12 +3,12 @@ title: Azure Monitor for containers の Prometheus 統合を構成する | Micro
 description: この記事では、Kubernetes クラスターで Prometheus からメトリックをスクレーピングするために、Azure Monitor for containers エージェントを構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: fcf1a2e5d2cf11cd9d612506e1ec56a392309121
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f7a43f00ce160829cc8e6ed3b6272ab14aaace66
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186494"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800462"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>Azure Monitor for containers で Prometheus メトリックのスクレーピングを構成する
 
@@ -69,7 +69,7 @@ ConfigMaps はグローバル リストであり、エージェントに適用�
 * Azure Stack またはオンプレミス
 * Azure Red Hat OpenShift バージョン 4.x と Red Hat OpenShift バージョン 4.x
 
-1. テンプレート ConfigMap の yaml ファイルを[ダウンロード](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/Kubernetes/container-azm-ms-agentconfig.yaml)し、container-azm-ms-agentconfig.yaml として保存します。
+1. テンプレート ConfigMap の yaml ファイルを[ダウンロード](https://aka.ms/container-azm-ms-agentconfig)し、container-azm-ms-agentconfig.yaml として保存します。
 
    >[!NOTE]
    >Azure Red Hat OpenShift を使用する場合は、ConfigMap テンプレートがクラスターに既に存在しているため、この手順は必要ありません。
@@ -337,13 +337,14 @@ Azure Monitor for Containers では、Grafana ダッシュボードの Log Analy
 各メトリック サイズのインジェスト ボリューム (1 日あたりの GB) を取得して、高いかどうかを把握できるよう、次のクエリが用意されています。
 
 ```
-InsightsMetrics 
-| where Namespace == "prometheus"
+InsightsMetrics
+| where Namespace contains "prometheus"
 | where TimeGenerated > ago(24h)
 | summarize VolumeInGB = (sum(_BilledSize) / (1024 * 1024 * 1024)) by Name
 | order by VolumeInGB desc
 | render barchart
 ```
+
 出力では、次のような結果が示されます。
 
 ![データ インジェスト ボリュームのログ クエリの結果](./media/container-insights-prometheus-integration/log-query-example-usage-03.png)
@@ -351,7 +352,7 @@ InsightsMetrics
 1 か月間の各メトリック サイズ (GB 単位) を推定し、ワークスペースで受け取る取り込まれたデータの量が多いかどうかを把握するため、次のクエリが用意されています。
 
 ```
-InsightsMetrics 
+InsightsMetrics
 | where Namespace contains "prometheus"
 | where TimeGenerated > ago(24h)
 | summarize EstimatedGBPer30dayMonth = (sum(_BilledSize) / (1024 * 1024 * 1024)) * 30 by Name

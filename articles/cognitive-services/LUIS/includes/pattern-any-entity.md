@@ -4,18 +4,18 @@ description: インクルード ファイル
 services: cognitive-services
 author: diberry
 manager: nitinme
-ms.custom: include file
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.date: 02/14/2020
 ms.topic: include
 ms.author: diberry
-ms.openlocfilehash: 8aef4a5eeeec27bfb2ca3edf9ff6823b88431319
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8901f107ca2af609059670a0b31184080849d2b6
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591839"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "87375717"
 ---
 pattern.any エンティティは、エンティティの表現が原因で発話の残りの部分からエンティティの終わりを判別するのが難しい自由形式データを見つけるために使用できます。
 

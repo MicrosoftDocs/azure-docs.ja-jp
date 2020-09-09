@@ -8,7 +8,7 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.date: 11/08/2019
@@ -16,12 +16,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c06d81f2f3f6cee781889d05ae08a1fd125df52
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 179ad1e552899f8fa92b8191fe78223458f87104
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74025680"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84727553"
 ---
 # <a name="how-to-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>個別にライセンスを付与されたユーザーをライセンスのためにグループに移行する方法
 

@@ -5,14 +5,14 @@ author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/16/2020
-ms.openlocfilehash: 8bf887b8d86131e0b358056fc1744a8d144be3fc
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 88425e2c875b3cce7c63cd66fd034e5a7af56ec7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584099"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86117034"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>Azure portal を使用して Azure Database for PostgreSQL でのメトリックに対するアラートを設定する - Hyperscale (Citus)
 

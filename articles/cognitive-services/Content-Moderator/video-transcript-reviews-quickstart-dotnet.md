@@ -10,12 +10,13 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: b2d763454b86570b57a16fb9ae2107a2a2bcd23d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f2d0ddae8a9bd8054c740402b8beb3bb0bccfa9f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73744377"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919218"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>.NET を使用してビデオ トランスクリプト レビューを作成する
 
@@ -152,7 +153,7 @@ public static ContentModeratorClient NewClient()
 - **Status**。 値を "Unpublished" に設定します。 設定しない場合は既定で "Pending" になります。これはビデオ レビューが公開済みで、人間によるレビュー待ちであることを意味します。 ビデオ レビューが公開されると、ビデオ フレーム、トランスクリプト、トランスクリプトのモデレート結果を追加できなくなります。
 
 > [!NOTE]
-> **CreateVideoReviews** により IList\<string> が返されます。 これらの文字列には、それぞれビデオ レビューの ID が含まれています。 これらの ID は GUID であり、**ContentId** プロパティの値とは異なります。
+> **CreateVideoReviews** は IList\<string> を返します。 これらの文字列には、それぞれビデオ レビューの ID が含まれています。 これらの ID は GUID であり、**ContentId** プロパティの値とは異なります。
 
 名前空間 VideoReviews、クラス Program に次のメソッド定義を追加します。
 
@@ -234,8 +235,8 @@ static void AddTranscript(ContentModeratorClient client, string review_id, strin
 1. MIME の種類が含まれる文字列。"application/json" にしてください。 
 1. Content Moderator のチーム名。
 1. **CreateVideoReviews** によって返されるビデオ レビュー ID。
-1. IList\<TranscriptModerationBodyItem>。 **TranscriptModerationBodyItem** には次のプロパティがあります。
-1. **Terms**。 IList\<TranscriptModerationBodyItemTermsItem>。 **TranscriptModerationBodyItemTermsItem** には次のプロパティがあります。
+1. An IList\<TranscriptModerationBodyItem>。 **TranscriptModerationBodyItem** には次のプロパティがあります。
+1. **Terms**。 An IList\<TranscriptModerationBodyItemTermsItem>。 **TranscriptModerationBodyItemTermsItem** には次のプロパティがあります。
 1. **Index**。 用語のゼロベースのインデックスです。
 1. **Term**。 用語を含む文字列です。
 1. **Timestamp**。 用語が見つかったトランスクリプトの時間 (秒単位) を含む文字列です。

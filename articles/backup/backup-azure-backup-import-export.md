@@ -4,12 +4,12 @@ description: Azure Import/Export サービスを使用してネットワーク�
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 642787e17f347bf8233e50c65d26a1661b08fcfb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f3cf44a34babab79d135923db040630a1c8e3dfe
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183893"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892016"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure Backup でのオフライン バックアップのワークフロー
 
@@ -45,7 +45,7 @@ Azure Backup の次の機能またはワークロードでは、オフライン 
 ## <a name="prerequisites"></a>前提条件
 
   > [!NOTE]
-  > 次の前提条件およびワークフローは、[最新の Azure Recovery Services エージェント](https://aka.ms/azurebackup_agent)を使ったファイルとフォルダーのオフライン バックアップにのみ適用されます。 System Center DPM または Azure Backup Server を使ってワークロードのオフライン バックアップを実行する場合は、「[DPM と Azure Backup Server のオフライン バックアップのワークフロー](backup-azure-backup-server-import-export-.md)」をご覧ください。
+  > 次の前提条件およびワークフローは、[最新の Azure Recovery Services エージェント](https://aka.ms/azurebackup_agent)を使ったファイルとフォルダーのオフライン バックアップにのみ適用されます。 System Center DPM または Azure Backup Server を使ってワークロードのオフライン バックアップを実行する場合は、「[DPM と Azure Backup Server のオフライン バックアップのワークフロー](backup-azure-backup-server-import-export.md)」をご覧ください。
 
 オフライン バックアップ ワークフローを開始する前に、次の前提条件を完了します。
 
@@ -90,7 +90,7 @@ Azure Backup の次の機能またはワークロードでは、オフライン 
 
     * **ステージングの場所**:初回バックアップ コピーが書き込まれる一時的なストレージの場所。 ステージング場所には、ネットワーク共有またはローカル コンピューター上の場所を使用できます。 コピー用コンピューターとソース コンピューターが異なる場合は、ステージング場所の完全なネットワーク パスを指定します。
     * **Azure Resource Manager ストレージ アカウント**:Azure サブスクリプションでの Resource Manager タイプのストレージ アカウント (General Purpose v1 または General Purpose v2) の名前。
-    * **Azure ストレージ コンテナー**:Recovery Services コンテナーにコピーする前に、バックアップ データをインポートする先の Azure ストレージ アカウントのストレージ BLOB の名前。
+    * **Azure ストレージ コンテナー**:Recovery Services コンテナーにコピーする前に、バックアップ データをインポートする先の Azure ストレージ アカウントの Blob Storage コンテナーの名前。
     * **Azure サブスクリプション ID**:Azure ストレージ アカウントを作成する Azure サブスクリプションの ID。
     * **Azure インポート ジョブ名**:ディスクを使用して Azure に送信されたデータを、Azure Import/Export サービスと Azure Backup が追跡するときに使用する一意の名前。
   
@@ -136,7 +136,7 @@ Azure Backup の次の機能またはワークロードでは、オフライン 
     | パラメーター | 説明 |
     | --- | --- |
     | s:&lt;*ステージング場所のパス*&gt; |必須の入力。「オフライン バックアップの開始」セクションのワークフローで入力したステージング場所へのパスを指定します。 |
-    | p:&lt;*PublishSettingsFile へのパス*&gt; |省略可能。「オフライン バックアップの開始」セクションのワークフローで入力した Azure 発行設定ファイルへのパスを指定します。 |
+    | p:&lt;*PublishSettingsFile へのパス*&gt; |この省略可能な入力は、Azure 発行設定ファイルへのパスを指定するために使用されます。  |
 
     コマンドを実行すると、準備する必要があるドライブに対応する Azure インポート ジョブを選択するよう求められます。 指定されたステージング場所に関連付けられているインポート ジョブが 1 つのみの場合は、このようなページが表示されます。
 
@@ -148,7 +148,7 @@ Azure Backup の次の機能またはワークロードでは、オフライン 
 
     ![Azure サブスクリプションのサインイン](./media/backup-azure-backup-import-export/signindiskprep.png) <br/>
 
-    これにより、ディスクとバックアップ データのコピーの準備が開始されます。 指定したディスクにバックアップ データを格納するための領域が十分にない場合は、メッセージが表示されます。その場合は、追加のディスクを接続する必要があります。 <br/>
+    これにより、ディスクとバックアップ データのコピーの準備が開始されます。 指定したディスクにバックアップ データを格納するための領域が十分にない場合は、ツールによりメッセージが表示されます。その場合は、追加のディスクを接続する必要があります。 <br/>
 
     ツールが正常に実行されると、最後に、コマンド プロンプトで 3 つの情報が提供されます。
 

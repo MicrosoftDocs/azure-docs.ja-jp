@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: e00538d1112492c5b7f9fc0f91c86df6d3500701
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: c1b40cc8d52ffe5655401f7698790cdc05898331
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793839"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225545"
 ---
 # <a name="migrate-from-a-managed-image-to-a-shared-image-gallery-image"></a>マネージド イメージから Shared Image Gallery イメージに移行する
 
@@ -54,9 +54,9 @@ $gallery = Get-AzGallery `
 
 イメージ定義を作成する際は、正しい情報がすべて含まれていることを確認してください。 マネージド イメージは常に一般化されているため、`-OsState generalized` を設定する必要があります。 
 
-イメージ定義に指定できる値の詳細については、[イメージ定義](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions)に関するページを参照してください。
+イメージ定義に指定できる値の詳細については、[イメージ定義](./windows/shared-image-galleries.md#image-definitions)に関するページを参照してください。
 
-イメージの定義は、[New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) を使用して作成します。 この例では、イメージ定義は *myImageDefinition* という名前で、一般化された Windows OS 用です。 Linux OS を使用してイメージの定義を作成するには、`-OsType Linux` を使用します。 
+イメージの定義は、[New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) を使用して作成します。 この例では、イメージ定義は *myImageDefinition* という名前で、一般化された Windows OS 用です。 Linux OS を使用してイメージの定義を作成するには、`-OsType Linux` を使用します。 
 
 ```azurepowershell-interactive
 $imageDefinition = New-AzGalleryImageDefinition `
@@ -73,7 +73,7 @@ $imageDefinition = New-AzGalleryImageDefinition `
 
 ## <a name="get-the-managed-image"></a>マネージド イメージを取得する
 
-リソース グループで利用できるイメージは、[Get-AzImage](https://docs.microsoft.com/powershell/module/az.compute/get-azimage) を使用して一覧表示できます。 イメージの名前とそれが属しているリソース グループがわかったら、もう一度 `Get-AzImage` を使用してイメージ オブジェクトを取得し、後で使用できるよう変数に格納することができます。 この例では、*myImage* という名前のイメージを "myResourceGroup" リソース グループから取得し、変数 *$managedImage* に割り当てています。 
+リソース グループで利用できるイメージは、[Get-AzImage](/powershell/module/az.compute/get-azimage) を使用して一覧表示できます。 イメージの名前とそれが属しているリソース グループがわかったら、もう一度 `Get-AzImage` を使用してイメージ オブジェクトを取得し、後で使用できるよう変数に格納することができます。 この例では、*myImage* という名前のイメージを "myResourceGroup" リソース グループから取得し、変数 *$managedImage* に割り当てています。 
 
 ```azurepowershell-interactive
 $managedImage = Get-AzImage `
@@ -84,7 +84,7 @@ $managedImage = Get-AzImage `
 
 ## <a name="create-an-image-version"></a>イメージ バージョンを作成する
 
-イメージ バージョンは、[New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) を使用してマネージド イメージから作成します。 
+イメージ バージョンは、[New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion) を使用してマネージド イメージから作成します。 
 
 イメージ バージョンで許可されている文字は、数字とピリオドです。 数字は、32 ビット整数の範囲内になっている必要があります。 形式:*MajorVersion*.*MinorVersion*.*Patch*。
 
@@ -99,8 +99,8 @@ $job = $imageVersion = New-AzGalleryImageVersion `
    -GalleryImageDefinitionName $imageDefinition.Name `
    -GalleryImageVersionName '1.0.0' `
    -GalleryName $gallery.Name `
-   -ResourceGroupName $resourceGroup.ResourceGroupName `
-   -Location $resourceGroup.Location `
+   -ResourceGroupName $imageDefinition.ResourceGroupName `
+   -Location $imageDefinition.Location `
    -TargetRegion $targetRegions  `
    -Source $managedImage.Id.ToString() `
    -PublishingProfileEndOfLifeDate '2020-12-31' `
@@ -117,7 +117,7 @@ $job.State
 > [!NOTE]
 > 同じマネージド イメージを使用して別のイメージ バージョンを作成する前に、そのイメージ バージョンが構築とレプリケーションを完全に完了するまで待つ必要があります。 
 >
-> また、イメージ バージョンを作成するときに、`-StorageAccountType Premium_LRS` を追加してイメージを Premium ストレージに格納することも、`-StorageAccountType Standard_ZRS` を追加して[ゾーン冗長ストレージ](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)に格納することもできます。
+> また、イメージ バージョンを作成するときに、`-StorageAccountType Premium_LRS` を追加してイメージを Premium ストレージに格納することも、`-StorageAccountType Standard_ZRS` を追加して[ゾーン冗長ストレージ](../storage/common/storage-redundancy.md)に格納することもできます。
 >
 
 ## <a name="delete-the-managed-image"></a>マネージド イメージを削除する
@@ -134,3 +134,4 @@ Remove-AzImage `
 
 レプリケーションが完了したことを確認できたら、[一般化されたイメージ](vm-generalized-image-version-powershell.md)から VM を作成できます。
 
+購入プラン情報を提供する方法については、[イメージ作成時の Azure Marketplace 購入プラン情報の提供](marketplace-images.md)に関する記事を参照してください。

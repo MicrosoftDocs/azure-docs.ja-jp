@@ -4,15 +4,15 @@ description: この記事では、PowerShell を使用して Azure Application G
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 4/8/2019
+ms.topic: how-to
+ms.date: 06/09/2020
 ms.author: victorh
-ms.openlocfilehash: 481cbda1d35f7d630dabca00fd01677f542447c2
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: e35569a1dc5ce7c1cb2889ac3e2ca8f60f8ccd42
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312509"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808210"
 ---
 # <a name="configure-end-to-end-tls-by-using-application-gateway-with-powershell"></a>Application Gateway での PowerShell を使用したエンド ツー エンド TLS の構成
 
@@ -167,14 +167,16 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
    > [!NOTE]
    > 既定のプローブは、バックエンドの IP アドレスでの*既定の* TLS バインドから公開キーを取得し、取得した公開キー値をここで指定した公開キー値と比較します。 
    > 
-   > バックエンドでホスト ヘッダーと Server Name Indication (SNI) を使用している場合、取得した公開キーがトラフィックの送信先となる目的のサイトであるとは限りません。 確かでない場合は、バックエンド サーバーで https://127.0.0.1/ にアクセスして、*既定*の TLS バインドにどの証明書が使用されているかを確認します。 このセクションでその要求の公開キーを使用します。 HTTPS バインドでホスト ヘッダーと SNI を使用しており、バックエンド サーバーでの https://127.0.0.1/ に対する手動のブラウザー要求から応答と証明書を受信していない場合は、バックエンド サーバーで既定の TLS バインドを設定する必要があります。 これを行わないと、プローブは失敗し、バックエンドはホワイトリストに登録されません。
+   > バックエンドでホスト ヘッダーと Server Name Indication (SNI) を使用している場合、取得した公開キーがトラフィックの送信先となる目的のサイトであるとは限りません。 確かでない場合は、バックエンド サーバーで https://127.0.0.1/ にアクセスして、*既定*の TLS バインドにどの証明書が使用されているかを確認します。 このセクションでその要求の公開キーを使用します。 HTTPS バインドでホスト ヘッダーと SNI を使用しており、バックエンド サーバーでの https://127.0.0.1/ に対する手動のブラウザー要求から応答と証明書を受信していない場合は、バックエンド サーバーで既定の TLS バインドを設定する必要があります。 これを行わないと、プローブは失敗し、バックエンドは許可されません。
+   
+   Application Gateway の SNI の詳細については、「[Application Gateway での TLS 終了とエンド ツー エンド TLS の概要](ssl-overview.md)」を参照してください。
 
    ```powershell
    $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
    ```
 
    > [!NOTE]
-   > 前の手順で指定される証明書は、バックエンドに存在する .pfx 証明書の公開キーである必要があります。 バックエンド サーバーにインストールされている (ルート証明書ではない) 証明書を Claim, Evidence, and Reasoning (CER) 形式でエクスポートし、この手順で使用します。 この手順によって、アプリケーション ゲートウェイにバックエンドがホワイトリスト登録されます。
+   > 前の手順で指定される証明書は、バックエンドに存在する .pfx 証明書の公開キーである必要があります。 バックエンド サーバーにインストールされている (ルート証明書ではない) 証明書を Claim, Evidence, and Reasoning (CER) 形式でエクスポートし、この手順で使用します。 この手順によって、アプリケーション ゲートウェイにバックエンドが許可されます。
 
    Application Gateway v2 SKU を使用している場合は、認証証明書ではなく、信頼されたルート証明書を作成します。 詳細については、[Application Gateway でのエンド ツー エンド TLS の概要](ssl-overview.md#end-to-end-tls-with-the-v2-sku)に関するページを参照してください。
 

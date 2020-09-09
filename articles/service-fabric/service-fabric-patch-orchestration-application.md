@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: 5a5ffdf217483c60836f67213c20ff3afd9043d5
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 43b6f5d4367cfc641183a17fda89cf1381c22a6c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608917"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258594"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Windows オペレーティング システムへのパッチの適用
 
@@ -28,7 +28,7 @@ ms.locfileid: "82608917"
 > 2019 年 4 月 30 日の時点で、パッチ オーケストレーション アプリケーション バージョン 1.2.* はサポートされなくなりました。 必ず最新バージョンにアップグレードしてください。
 
 > [!NOTE]
-> [仮想マシン スケール セットでの OS イメージの自動アップグレード](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)の取得は、Azure でオペレーティング システムに修正プログラムが適用された状態を保つためのベスト プラクティスです。 仮想マシン スケール セット ベースの OS イメージの自動アップグレードでは、スケール セットに Silver 以上の耐久性が必要です。
+> [仮想マシン スケール セットでの OS イメージの自動アップグレード](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)の取得は、Azure でオペレーティング システムに修正プログラムが適用された状態を保つためのベスト プラクティスです。 仮想マシン スケール セット ベースの OS イメージの自動アップグレードでは、スケール セットに Silver 以上の耐久性が必要です。
 >
 
  パッチ オーケストレーション アプリケーション (POA) は、Azure Service Fabric Repair Manager サービスのラッパーであり、Azure 以外でホストされるクラスターに対して構成ベースの OS 修正プログラム スケジュールを有効にします。 POA は、Azure 以外でホストされるクラスターには必要ありませんが、更新ドメインによる修正プログラムのインストールのスケジュール設定は、ダウンタイムを発生させることなく Service Fabric クラスター ホストに修正プログラムを適用するために必要です。
@@ -82,9 +82,9 @@ POA を使用するには、クラスターで Repair Manager サービスを有
 ![Azure portal からの Repair Manager の有効化の画像](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
 
 ##### <a name="the-azure-resource-manager-deployment-model"></a>Azure Resource Manager デプロイ モデル
-[Azure Resource Manager デプロイ モデル](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)を使用して、新規および既存の Service Fabric クラスターで Repair Manager サービスを有効にすることもできます。 デプロイするクラスター用テンプレートを用意します。 サンプル テンプレートを使用することも、カスタムの Azure Resource Manager デプロイ モデル テンプレートを作成することもできます。 
+[Azure Resource Manager デプロイ モデル](./service-fabric-cluster-creation-via-arm.md)を使用して、新規および既存の Service Fabric クラスターで Repair Manager サービスを有効にすることもできます。 デプロイするクラスター用テンプレートを用意します。 サンプル テンプレートを使用することも、カスタムの Azure Resource Manager デプロイ モデル テンプレートを作成することもできます。 
 
-[Azure Resource Manager デプロイ モデル テンプレート](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)を使用して Repair Manager サービスを有効にするには、次のようにします。
+[Azure Resource Manager デプロイ モデル テンプレート](./service-fabric-cluster-creation-via-arm.md)を使用して Repair Manager サービスを有効にするには、次のようにします。
 
 1. *Microsoft.ServiceFabric/clusters* リソースに対して、`apiVersion` が *2017-07-01-preview* に設定されていることを確認します。 異なる場合は、`apiVersion` を *2017-07-01.txt-preview* 以降に更新する必要があります。
 
@@ -113,11 +113,11 @@ POA を使用するには、クラスターで Repair Manager サービスを有
 
 ### <a name="standalone-on-premises-clusters"></a>スタンドアロン オンプレミス クラスター
 
-新規または既存の Service Fabric クラスターで Repair Manager サービスを有効にする場合は、[スタンドアロン Windows クラスターの構成設定](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest)を使用できます。
+新規または既存の Service Fabric クラスターで Repair Manager サービスを有効にする場合は、[スタンドアロン Windows クラスターの構成設定](./service-fabric-cluster-manifest.md)を使用できます。
 
 Repair Manager サービスを有効にするには、次のようにします。
 
-1. 次のように、[一般的なクラスター構成](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest#general-cluster-configurations)の `apiVersion` が *04-2017* 以降に設定されていることを確認します。
+1. 次のように、[一般的なクラスター構成](./service-fabric-cluster-manifest.md#general-cluster-configurations)の `apiVersion` が *04-2017* 以降に設定されていることを確認します。
 
     ```json
     {
@@ -139,7 +139,7 @@ Repair Manager サービスを有効にするには、次のようにします�
     ],
     ```
 
-1. 更新されたクラスター マニフェストを使用して、[新しいクラスターを作成](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-for-windows-server)するか、[クラスター構成をアップグレード](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-windows-server)して、これらの変更でクラスター マニフェストを更新します。 
+1. 更新されたクラスター マニフェストを使用して、[新しいクラスターを作成](./service-fabric-cluster-creation-for-windows-server.md)するか、[クラスター構成をアップグレード](./service-fabric-cluster-upgrade-windows-server.md)して、これらの変更でクラスター マニフェストを更新します。 
 
    更新されたクラスター マニフェストを使用してクラスターが実行された後、クラスターで実行されている Repair Manager サービスを確認できます。 これは *fabric:/System/RepairManagerService* と呼ばれ、Service Fabric Explorer のシステム サービス セクションにあります。
 
@@ -160,7 +160,7 @@ Windows の自動更新では、複数のクラスター ノードが同時に�
 |MaxResultsToCache    |Long                              | キャッシュする必要がある Windows Update の結果の最大数。 <br><br>既定値は 3000 で、以下が前提となります。 <br> &nbsp;&nbsp;- ノード数が 20 である。 <br> &nbsp;&nbsp;- 月あたりのノードの更新数が 5 である。 <br> &nbsp;&nbsp;- 操作あたりの結果の数を 10 にできる。 <br> &nbsp;&nbsp;- 過去 3 か月の結果を格納する必要がある。 |
 |TaskApprovalPolicy   |列挙型 <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy は、コーディネーター サービスが、Service Fabric クラスター ノードに Windows Update をインストールする際に使用するポリシーを示しています。<br><br>使用できる値は、次のとおりです。 <br>*NodeWise*:Windows 更新プログラムは、一度に 1 つのノードにインストールされます。 <br> *UpgradeDomainWise*:Windows 更新プログラムは、一度に 1 つの更新ドメインにインストールされます (最大で、更新ドメインに属するすべてのノードに Windows 更新プログラムを適用できます)。<br><br> [FAQ](#frequently-asked-questions) に関するセクションを参照してください。これは、クラスターに最適なポリシーを決定するのに役立ちます。
 |LogsDiskQuotaInMB   |Long  <br> (既定値:*1024*)               | パッチ オーケストレーション アプリのログの最大サイズ (MB 単位)。このサイズまで、ノードでローカルに保存することができます。
-| WUQuery               | string<br>(既定値:*IsInstalled=0*)                | Windows 更新プログラムを取得するためのクエリ。 詳細については、[WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx) に関するページをご覧ください。
+| WUQuery               | string<br>(既定値:*IsInstalled=0*)                | Windows 更新プログラムを取得するためのクエリ。 詳細については、[WuQuery](/windows/win32/api/wuapi/nf-wuapi-iupdatesearcher-search) に関するページをご覧ください。
 | InstallWindowsOSOnlyUpdates | *Boolean* <br> (既定値: false)                 | このフラグを使用して、どの更新プログラムをダウンロードしてインストールするかを制御します。 次の値が許可されています <br>true - Windows オペレーティング システムの更新プログラムのみをインストールします。<br>false - マシンで使用可能なすべての更新プログラムをインストールします。          |
 | WUOperationTimeOutInMinutes | int <br>(既定値:*90*)                   | Windows Update 操作 (検索、ダウンロード、インストール) のタイムアウトを指定します。 指定したタイムアウト時間内に操作が完了しなかった場合は、操作が中止されます。       |
 | WURescheduleCount     | int <br> (既定値:*5*)                  | 操作が繰り返し失敗する場合に、サービスで Windows 更新プログラムの再スケジュールを行う最大回数。          |
@@ -174,7 +174,7 @@ Windows の自動更新では、複数のクラスター ノードが同時に�
 ## <a name="deploy-poa"></a>POA をデプロイする
 
 1. 前提条件となるすべての手順を実行してクラスターを準備します。
-1. 他の Service Fabric アプリと同様に POA をデプロイします。 PowerShell を使用してデプロイする場合は、「[PowerShell を使用してアプリケーションのデプロイと削除を実行する](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications)」を参照してください。
+1. 他の Service Fabric アプリと同様に POA をデプロイします。 PowerShell を使用してデプロイする場合は、「[PowerShell を使用してアプリケーションのデプロイと削除を実行する](./service-fabric-deploy-remove-applications.md)」を参照してください。
 1. デプロイ時にアプリケーションを構成するには、`ApplicationParameter` を `New-ServiceFabricApplication` コマンドレットに渡します。 利便性のために、アプリケーションと共に Deploy.ps1 スクリプトが用意されています。 このスクリプトを使用するには、次の手順に従います。
 
     - `Connect-ServiceFabricCluster` を使用して Service Fabric クラスターに接続します。
@@ -185,11 +185,11 @@ Windows の自動更新では、複数のクラスター ノードが同時に�
 
 ## <a name="upgrade-poa"></a>POA をアップグレードする
 
-PowerShell を使用して POA のバージョンをアップグレードするには、「[PowerShell を使用した Service Fabric アプリケーションのアップグレード](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-tutorial-powershell)」の手順に従います。
+PowerShell を使用して POA のバージョンをアップグレードするには、「[PowerShell を使用した Service Fabric アプリケーションのアップグレード](./service-fabric-application-upgrade-tutorial-powershell.md)」の手順に従います。
 
 ## <a name="remove-poa"></a>POA を削除する
 
-アプリケーションを削除するには、「[PowerShell を使用してアプリケーションのデプロイと削除を実行する](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications)」の手順に従います。
+アプリケーションを削除するには、「[PowerShell を使用してアプリケーションのデプロイと削除を実行する](./service-fabric-deploy-remove-applications.md)」の手順に従います。
 
 参考までに、アプリケーションと共に Undeploy.ps1 スクリプトを提供しています。 このスクリプトを使用するには、次の手順に従います。
 
@@ -240,7 +240,7 @@ JSON のフィールドについては、次の表で説明します。
 OperationResult | 0 - 成功<br> 1 - 成功 (エラーあり)<br> 2 - 失敗<br> 3 - 中止<br> 4 - タイムアウトにより中止 | 操作全体 (通常は 1 つまたは複数の更新プログラムのインストールを含む) の結果を示します。
 ResultCode | OperationResult と同じ | このフィールドでは、個々の更新プログラムのインストール操作の結果が示されます。
 OperationType | 1 - インストール<br> 0 - 検索とダウンロード| 既定では、インストールが、結果に表示される唯一の OperationType です。
-WindowsUpdateQuery | 既定値は "IsInstalled=0" | 更新プログラムの検索に使用された Windows Update クエリ。 詳細については、[WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx) に関するページを参照してください。
+WindowsUpdateQuery | 既定値は "IsInstalled=0" | 更新プログラムの検索に使用された Windows Update クエリ。 詳細については、[WuQuery](/windows/win32/api/wuapi/nf-wuapi-iupdatesearcher-search) に関するページを参照してください。
 RebootRequired | true - 再起動が必要<br> false - 再起動は不要 | 更新プログラムのインストールを完了するのに再起動が必要だったかどうかを示します。
 OperationStartTime | DateTime | 操作 (ダウンロード/インストール) が開始した時刻を示します。
 OperationTime | DateTime | 操作 (ダウンロード/インストール) が完了した時刻を示します。
@@ -258,7 +258,7 @@ Windows Update の結果を照会するには、クラスターにサインイ�
 
 ヒットする必要があるエンドポイントは、*http://&lt;SERVERURL&gt;:&lt;REVERSEPROXYPORT&gt;/PatchOrchestrationApplication/CoordinatorService/v1/GetWindowsUpdateResults* です。
 
-クラスターでリバース プロキシを有効にするには、「[Azure Service Fabric のリバース プロキシ](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy)」の手順に従います。 
+クラスターでリバース プロキシを有効にするには、「[Azure Service Fabric のリバース プロキシ](./service-fabric-reverseproxy.md)」の手順に従います。 
 
 > 
 > [!WARNING]
@@ -271,17 +271,17 @@ Windows Update の結果を照会するには、クラスターにサインイ�
 > [!NOTE]
 > 以下に示されている自己診断の機能向上の多くを得るには、POA バージョン 1.4.0 以降がインストールされている必要があります。
 
-ノード エージェント NTService では、ノードに更新プログラムをインストールするために[修復タスク](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtask?view=azure-dotnet)を作成します。 その後、各タスクは、タスク承認ポリシーに従って、コーディネーター サービスによって準備されます。 最後に、準備されたタスクは Repair Manager によって承認されますが、クラスターが異常な状態にある場合は、どのタスクも承認されません。 
+ノード エージェント NTService では、ノードに更新プログラムをインストールするために[修復タスク](/dotnet/api/system.fabric.repair.repairtask?view=azure-dotnet)を作成します。 その後、各タスクは、タスク承認ポリシーに従って、コーディネーター サービスによって準備されます。 最後に、準備されたタスクは Repair Manager によって承認されますが、クラスターが異常な状態にある場合は、どのタスクも承認されません。 
 
 ノードでの更新プログラムの進行について理解できるように、段階的に見ていきましょう。
 
 1. すべてのノード上で実行されている NodeAgentNTService では、スケジュールされた時刻に使用可能な Windows 更新プログラムを検索します。 更新プログラムが使用可能な場合、それらをノード上にダウンロードします。
 
-1. 更新プログラムがダウンロードされた後、ノード エージェント NTService では *POS___\<unique_id>* の名前で、ノードの対応する修復タスクを作成します。 これらの修復タスクは、[Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) コマンドレットを使用するか、ノードの詳細セクションで SFX を使用して表示できます。 修復タスクが作成された後、すぐに[*要求済み*状態](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet)に移ります。
+1. 更新プログラムがダウンロードされた後、ノード エージェント NTService では *POS___\<unique_id>* の名前で、ノードの対応する修復タスクを作成します。 これらの修復タスクは、[Get-ServiceFabricRepairTask](/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) コマンドレットを使用するか、ノードの詳細セクションで SFX を使用して表示できます。 修復タスクが作成された後、すぐに[*要求済み*状態](/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet)に移ります。
 
 1. コーディネーター サービスでは、定期的に*要求済み*状態の修復タスクを検索し、TaskApprovalPolicy に基づいてそれらを*準備中*状態に更新します。 TaskApprovalPolicy が NodeWise になるように構成されている場合、現在、*準備中*、*承認済み*、*実行中*、または*復元中*の状態になっている他の修復タスクがない場合にのみ、ノードに対応した修復タスクが準備されます。 
 
-   同様に、UpgradeWise TaskApprovalPolicy の場合は、同じ更新ドメインに属しているノードに対してのみ、上記の状態でタスクが存在します。 修復タスクが*準備中*状態に移された後、対応する Service Fabric ノードが、*再起動*の意図で[無効](https://docs.microsoft.com/powershell/module/servicefabric/disable-servicefabricnode?view=azureservicefabricps)になります。
+   同様に、UpgradeWise TaskApprovalPolicy の場合は、同じ更新ドメインに属しているノードに対してのみ、上記の状態でタスクが存在します。 修復タスクが*準備中*状態に移された後、対応する Service Fabric ノードが、*再起動*の意図で[無効](/powershell/module/servicefabric/disable-servicefabricnode?view=azureservicefabricps)になります。
 
    POA バージョン 1.4.0 以降では、CoordinatorService の ClusterPatchingStatus プロパティを使用してイベントをポストし、修正プログラムが適用されているノードを表示します。 次の画像に示すように、更新プログラムは _poanode_0 にインストールされます。
 
@@ -300,7 +300,7 @@ Windows Update の結果を照会するには、クラスターにサインイ�
 
    [![Windows Update 操作の状態の画像](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
 
-   PowerShell を使用して詳細を取得することもできます。 これを行うには、クラスターに接続し、[Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) を使用して修復タスクの状態を取り込みます。 
+   PowerShell を使用して詳細を取得することもできます。 これを行うには、クラスターに接続し、[Get-ServiceFabricRepairTask](/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) を使用して修復タスクの状態を取り込みます。 
    
    次の例では、"POS__poanode_2_125f2969-933c-4774-85d1-ebdf85e79f15" タスクは *DownloadComplete* 状態にあります。 これは、更新プログラムが *poanode_2* ノードにダウンロードされており、タスクが*実行中*状態に移ったときにインストールが試みられることを意味します。
 
@@ -334,7 +334,7 @@ Windows Update の結果を照会するには、クラスターにサインイ�
 
 パッチ オーケストレーション アプリケーションのログは、Service Fabric のランタイム ログの一部として収集されます。
 
-ログは、任意の診断ツールまたはパイプラインを使用してキャプチャできます。 POA では次の固定プロバイダー ID を使用して、[イベント ソース](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventsource?view=netframework-4.5.1)を介してイベントをログに記録します。
+ログは、任意の診断ツールまたはパイプラインを使用してキャプチャできます。 POA では次の固定プロバイダー ID を使用して、[イベント ソース](/dotnet/api/system.diagnostics.tracing.eventsource?view=netframework-4.5.1)を介してイベントをログに記録します。
 
 - e39b723c-590c-4090-abb0-11e3e6616346
 - fc0028ff-bfdc-499f-80dc-ed922c52c5e9
@@ -379,7 +379,7 @@ A:クラスターに異常がある間は、POA によって更新プログラ�
 
 **Q:クラスターの "NodeWise" または "UpgradeDomainWise" として TaskApprovalPolicy を設定する必要はありますか?**
 
-A:"UpgradeDomainWise" 設定では、更新ドメインに属するすべてのノードに並列して修正プログラムを適用することで、クラスター全体の修復を高速化します。 このプロセス中は、更新ドメイン全体に属するノードを使用できません ([*無効*状態](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled)になっている)。
+A:"UpgradeDomainWise" 設定では、更新ドメインに属するすべてのノードに並列して修正プログラムを適用することで、クラスター全体の修復を高速化します。 このプロセス中は、更新ドメイン全体に属するノードを使用できません ([*無効*状態](/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled)になっている)。
 
 これに対して、"NodeWise" 設定では、一度に 1 つのノードのみに修正プログラムが適用されます。これは、クラスター全体の修正プログラムの適用に時間がかかる可能性があることを意味します。 ただし、修正プログラムの適用プロセス中に利用不可 (*無効*状態) になるのは、最大でも 1 つのノードのみです。
 
@@ -405,9 +405,9 @@ A:クラスター全体に修正プログラムを適用するために必要な
     - "NodeWise" の場合: 最大 20 時間。
     - "UpgradeDomainWise" の場合: 最大 5 時間。
 
-- クラスターの負荷。 修正プログラムの適用操作ごとに、クラスター内の他の利用可能なノードに顧客のワークロードを再配置する必要があります。 修正プログラムが適用されているノードは、この間は[*無効化中*状態](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabling)になります。 クラスターがピーク時の負荷に近い状態で実行されている場合、無効化プロセスには時間がかかります。 そのため、このような負荷状態では、修正プログラムの適用プロセス全体が遅く見えることがあります。
+- クラスターの負荷。 修正プログラムの適用操作ごとに、クラスター内の他の利用可能なノードに顧客のワークロードを再配置する必要があります。 修正プログラムが適用されているノードは、この間は[*無効化中*状態](/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabling)になります。 クラスターがピーク時の負荷に近い状態で実行されている場合、無効化プロセスには時間がかかります。 そのため、このような負荷状態では、修正プログラムの適用プロセス全体が遅く見えることがあります。
 
-- 修正プログラムの適用中に発生したクラスターの正常性エラー。 [クラスターの正常性](https://docs.microsoft.com/azure/service-fabric/service-fabric-health-introduction)が[低下](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet#System_Fabric_Health_HealthState_Error)した場合、修正プログラムの適用プロセスは中断されます。 この問題により、クラスター全体に修正プログラムを適用するために必要な全体的な時間が増えます。
+- 修正プログラムの適用中に発生したクラスターの正常性エラー。 [クラスターの正常性](./service-fabric-health-introduction.md)が[低下](/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet#System_Fabric_Health_HealthState_Error)した場合、修正プログラムの適用プロセスは中断されます。 この問題により、クラスター全体に修正プログラムを適用するために必要な全体的な時間が増えます。
 
 **Q:Windows Update の結果で一部の更新プログラムが REST API 経由で取得されたと表示されますが、マシンの Windows Update 履歴に表示されないのはなぜですか?**
 
@@ -415,11 +415,11 @@ A:一部の製品の更新プログラムは、独自の更新プログラムま
 
 **Q:POA を使用して、自分の開発クラスター (1 ノード クラスター) に修正プログラムを適用できますか?**
 
-A:いいえ、POA を使用して 1 ノード クラスターに修正プログラムを適用することはできません。 [Service Fabric システム サービス](https://docs.microsoft.com/azure/service-fabric/service-fabric-technical-overview#system-services)またはその他の顧客アプリでダウンタイムが発生するため、この制限は設計によるものです。 したがって、修復ジョブへの修正プログラムの適用が Repair Manager によって承認されることはありません。
+A:いいえ、POA を使用して 1 ノード クラスターに修正プログラムを適用することはできません。 [Service Fabric システム サービス](./service-fabric-technical-overview.md#system-services)またはその他の顧客アプリでダウンタイムが発生するため、この制限は設計によるものです。 したがって、修復ジョブへの修正プログラムの適用が Repair Manager によって承認されることはありません。
 
 **Q:Linux 上のクラスター ノードに修正プログラムを適用するにはどうすればよいですか?**
 
-A:Linux での更新プログラムのオーケストレーションの詳細については、「[Azure 仮想マシン スケール セットによる OS イメージの自動アップグレード](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)」を参照してください。
+A:Linux での更新プログラムのオーケストレーションの詳細については、「[Azure 仮想マシン スケール セットによる OS イメージの自動アップグレード](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)」を参照してください。
 
 **Q:更新サイクルにこれほど時間がかかるのはなぜですか?**
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 02e13ce81ed2f11c0bb69015a4864c4a1ad55593
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81427367"
 ---
 # <a name="monitor-and-manage-certificate-creation"></a>証明書作成の監視と管理
@@ -414,9 +414,9 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 |要素名|必須|Type|Version|説明|
 |------------------|--------------|----------|-------------|-----------------|
-|x5c|はい|array|\<導入バージョン>|base 64 文字列配列としての X509 証明書チェーン。|
+|x5c|はい|array|\<introducing version>|base 64 文字列配列としての X509 証明書チェーン。|
 
-### <a name="response"></a>Response
+### <a name="response"></a>[応答]
 
 ```
 StatusCode: 201, ReasonPhrase: 'Created'

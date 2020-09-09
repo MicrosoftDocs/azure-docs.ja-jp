@@ -6,15 +6,15 @@ ms.author: avverma
 ms.topic: troubleshooting
 ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
-ms.date: 11/16/2017
+ms.date: 06/25/2020
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 2ef50704d96cc51881594c778d1a4b109a1eae82
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: b5e786a64d7d9606a3a99a3f1b3f8c67c9869cd1
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125147"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830684"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>仮想マシン スケール セットの自動スケールに関するトラブルシューティング
 **問題** – Azure Resource Manager で仮想マシン スケール セットを使って自動スケール インフラストラクチャを作成しました。このとき、 https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale のようなテンプレートをデプロイしました。定義したスケール規則は正常に機能しましたが、仮想マシンの負荷をいくら増やしても、自動スケールが実行されません。
@@ -23,7 +23,7 @@ ms.locfileid: "83125147"
 次のような点を検討します。
 
 * 各 VM の vCPU 数はいくつですか。すべての vCPU を読み込んでいますか。
-  上の例の Azure クイックスタート テンプレートには do_work.php スクリプトが含まれ、1 つの vCPU が読み込まれます。 Standard_A1 や D1 などの単一 vCPU の VM よりも大きいサイズの VM を使用する場合は、この負荷を複数回読み込む必要があります。 VM の vCPU 数を確認する方法については、「[Azure の Windows 仮想マシンのサイズ](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
+  上の例の Azure クイックスタート テンプレートには do_work.php スクリプトが含まれ、1 つの vCPU が読み込まれます。 Standard_A1 や D1 などの単一 vCPU の VM よりも大きいサイズの VM を使用する場合は、この負荷を複数回読み込む必要があります。 VM の vCPU 数を確認する方法については、「[Azure の Windows 仮想マシンのサイズ](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 * 仮想マシン スケール セット内の VM 数はいくつですか。VM ごとに設定を行っていませんか。
   
     自動スケール規則で定義された時間内に、スケール セット内の**すべての** VM における平均 CPU 使用率がしきい値を超えた場合にのみ、スケールアウト イベントが発生します。
@@ -46,7 +46,7 @@ ms.locfileid: "83125147"
     Azure Resource Explorer は Azure Resource Manager リソースの状態を表示できるため、トラブルシューティングには欠かせません。 サブスクリプションをクリックし、トラブルシューティングを行うリソース グループを表示します。 Compute リソース プロバイダーの下で、作成した仮想マシン スケール セットを探し、インスタンス ビューでデプロイの状態を確認します。 また、仮想マシン スケール セット内の VM のインスタンス ビューも確認します。 次に Microsoft.Insights リソース プロバイダーに移動し、自動スケール規則が適切かどうかを確認します。
 * 診断拡張機能が動作し、パフォーマンス データを出力していますか。
   
-    **更新:** Azure 自動スケールはベースのメトリックのパイプラインを使用するように強化されており、診断拡張機能のインストールは必須ではなくなりました。 つまり、新しいパイプラインを使用する自動スケール アプリケーションを作成する場合、この後のいくつかの段落の説明はもう適用されません。 ホスト パイプラインを使用するように変換された Azure テンプレートの例は、 https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale にあります。 
+    **更新:** Azure の自動スケーリングはホストベースのメトリック パイプラインを使用するように強化されており、診断拡張機能のインストールは必須ではなくなりました。 つまり、新しいパイプラインを使用する自動スケール アプリケーションを作成する場合、この後のいくつかの段落の説明はもう適用されません。 ホスト パイプラインを使用するように変換された Azure テンプレートの例は、 https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale にあります。 
   
     次の理由により、自動スケールにはホストベースのメトリックを使用することをお勧めします。
   
@@ -73,7 +73,7 @@ ms.locfileid: "83125147"
     データがない場合、VM で実行されている診断拡張機能に問題があることがわかります。 データが存在する場合は、スケール規則と Insights サービスのどちらかに問題があることがわかります。 [Azure の状態](https://azure.microsoft.com/status/)を確認してください。
     
     これまでの手順を終えても、自動スケールに関する問題が解決しない場合は、次のリソースをご利用ください。 
-    * [MSDN](https://social.msdn.microsoft.com/forums/azure/home?forum=WAVirtualMachinesforWindows) または [Stack Overflow](https://stackoverflow.com/questions/tagged/azure) のフォーラムを閲覧する。 
+    * [Microsoft Q&A 質問ページ](/answers/topics/azure-virtual-machines.html)または [Stack overflow](https://stackoverflow.com/questions/tagged/azure) でフォーラムを読む 
     * サポートに問い合わせる。 テンプレートと、パフォーマンス データのビューを共有できるように準備しておいてください。
 
 [audit]: ./media/virtual-machine-scale-sets-troubleshoot/image3.png

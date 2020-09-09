@@ -1,31 +1,31 @@
 ---
-title: Azure portal を使用して、データ アクセスのための RBAC ロールを割り当てる
+title: Azure portal を使用してデータ アクセスのための Azure ロールを割り当てる
 titleSuffix: Azure Storage
-description: Azure portal を使用して、ロールベースのアクセス制御 (RBAC) により Azure Active Directory セキュリティ プリンシパルにアクセス許可を割り当てる方法について説明します。 Azure Storage では、Azure AD を使用した認証用の組み込みとカスタムの RBAC ロールがサポートされています。
+description: Azure portal を使用して、ロールベースのアクセス制御 (RBAC) により Azure Active Directory セキュリティ プリンシパルにアクセス許可を割り当てる方法について説明します。 Azure Storage では、Azure AD を使用した認証用の組み込みロールと Azure カスタム ロールがサポートされています。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/31/2020
+ms.date: 07/16/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: d224bd9e9e7b1f8fc9eb45d85e78811d8642fc78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 21120239c44dbdd812dfb3d3208990db4372ec29
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80519557"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828015"
 ---
-# <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Azure portal を使用して、BLOB およびキュー データへのアクセスのための RBAC ロールを割り当てる
+# <a name="use-the-azure-portal-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる
 
-Azure Active Directory (Azure AD) では、[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) を通じて、セキュリティで保護されたリソースへのアクセス権が承認されます。 BLOB またはキュー データへのアクセスに使用される一般的なアクセス許可セットを含む一連の組み込み RBAC ロールは、Azure Storage によって定義されます。
+Azure Active Directory (Azure AD) では、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) を通じて、セキュリティで保護されたリソースへのアクセス権が承認されます。 BLOB またはキュー データへのアクセスに使用される一般的なアクセス許可セットを含む一連の Azure 組み込みロールは、Azure Storage によって定義されます。
 
-RBAC ロールが Azure AD セキュリティ プリンシパルに割り当てられると、Azure によりそのセキュリティ プリンシパルのリソースへのアクセス権が付与されます。 アクセスのスコープは、サブスクリプション、リソース グループ、ストレージ アカウント、あるいは個別のコンテナーまたはキューのレベルで指定できます。 Azure AD セキュリティ プリンシパルは、Azure リソースのユーザー、グループ、アプリケーション サービス プリンシパル、または[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) の場合があります。
+Azure ロールが Azure AD セキュリティ プリンシパルに割り当てられると、Azure によりそのセキュリティ プリンシパルのリソースへのアクセス権が付与されます。 アクセスのスコープは、サブスクリプション、リソース グループ、ストレージ アカウント、あるいは個別のコンテナーまたはキューのレベルで指定できます。 Azure AD セキュリティ プリンシパルは、Azure リソースのユーザー、グループ、アプリケーション サービス プリンシパル、または[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) の場合があります。
 
-この記事では、Azure portal を使用して RBAC ロールを割り当てる方法を説明します。 Azure portal には、RBAC ロールの割り当てとストレージ リソースへのアクセスを管理するためのシンプルなインターフェイスがあります。 また、Azure コマンドライン ツールまたは Azure Storage 管理 API を使用して、BLOB とキューのリソースに RBAC ロールを割り当てることもできます。 ストレージ リソースの RBAC ロールに関する詳細については、「[Azure Active Directory を利用して Azure BLOB およびキューへのアクセスを認証する](storage-auth-aad.md)」を参照してください。
+この記事では、Azure portal を使用して Azure ロールを割り当てる方法を説明します。 Azure portal には、Azure ロールの割り当てとストレージ リソースへのアクセスを管理するためのシンプルなインターフェイスがあります。 また、Azure コマンドライン ツールまたは Azure Storage 管理 API を使用して、BLOB とキューのリソースに Azure ロールを割り当てることもできます。 ストレージ リソースの Azure ロールに関する詳細については、[Azure Active Directory を利用して BLOB およびキューへのアクセスを認証する](storage-auth-aad.md)方法に関するページを参照してください。
 
-## <a name="rbac-roles-for-blobs-and-queues"></a>BLOB とキューの RBAC ロール
+## <a name="azure-roles-for-blobs-and-queues"></a>BLOB とキューの Azure ロール
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
@@ -33,22 +33,22 @@ RBAC ロールが Azure AD セキュリティ プリンシパルに割り当て�
 
 [!INCLUDE [storage-auth-resource-scope-include](../../../includes/storage-auth-resource-scope-include.md)]
 
-## <a name="assign-rbac-roles-using-the-azure-portal"></a>Azure portal を使用した RBAC ロールの割り当て
+## <a name="assign-azure-roles-using-the-azure-portal"></a>Azure portal を使用して Azure ロールを割り当てる
 
 ロールの割り当ての適切なスコープを決定したら、Azure portal でそのリソースに移動します。 リソースの **[アクセス制御 (IAM)]** 設定を表示し、次の指示に従ってロールの割り当てを管理します。
 
-1. Azure AD セキュリティ プリンシパルにアクセス権を付与するために、適切な Azure Storage の RBAC ロールを割り当てます。
+1. Azure AD セキュリティ プリンシパルにアクセス権を付与するために、適切な Azure Storage の Azure ロールを割り当てます。
 
 1. Azure Resource Manager の[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロールを、Azure AD 資格情報を使用して Azure portal でコンテナーまたはキューにアクセスする必要があるユーザーに割り当てます。 
 
 以降のセクションで、これらの手順のそれぞれについて詳しく説明します。
 
 > [!NOTE]
-> Azure Storage アカウントの所有者であっても、データへのアクセス許可が自動的に割り当てられるわけではありません。 Azure Storage の RBAC ロールを自分自身に明示的に割り当てる必要があります。 これは、サブスクリプション、リソース グループ、ストレージ アカウント、あるいはコンテナーまたはキューのレベルで割り当てることができます。
+> Azure Storage アカウントの所有者であっても、データへのアクセス許可が自動的に割り当てられるわけではありません。 Azure Storage の Azure ロールを自分自身に明示的に割り当てる必要があります。 これは、サブスクリプション、リソース グループ、ストレージ アカウント、あるいはコンテナーまたはキューのレベルで割り当てることができます。
 >
 > ストレージ アカウントで階層型名前空間が有効になっている場合、コンテナーまたはキューに対してスコープが指定されたロールを割り当てることはできません。
 
-### <a name="assign-a-built-in-rbac-role"></a>組み込み RBAC ロールを割り当てる
+### <a name="assign-an-azure-built-in-role"></a>Azure 組み込みロールの割り当て
 
 セキュリティ プリンシパルにロールを割り当てる前に、付与するアクセス許可のスコープを必ず検討してください。 適切なスコープの決定については、「[リソースのスコープを決定する](#determine-resource-scope)」セクションを参照してください。
 
@@ -64,7 +64,7 @@ RBAC ロールが Azure AD セキュリティ プリンシパルに割り当て�
 1. **[ロールの割り当ての追加]** ボタンをクリックして新しいロールを追加します。
 1. **[ロールの割り当ての追加]** ウィンドウで、割り当てる Azure Storage ロールを選択します。 次に、そのロールの割り当て先となるセキュリティ プリンシパルを検索して見つけます。
 
-    ![RBAC ロールの割り当て方法を示すスクリーンショット](media/storage-auth-aad-rbac-portal/add-rbac-role.png)
+    ![Azure ロールの割り当て方法を示すスクリーンショット](media/storage-auth-aad-rbac-portal/add-rbac-role.png)
 
 1. **[保存]** をクリックします。 ロールの割り当て先となった ID が、そのロールに一覧表示されます。 たとえば次の図は、今追加されたユーザーに、*sample-container* という名前のコンテナーのデータに対する読み取りアクセス許可があることを示しています。
 
@@ -79,7 +79,7 @@ RBAC ロールが Azure AD セキュリティ プリンシパルに割り当て�
 
 ただし、Mary が Azure portal で BLOB を表示する場合、**ストレージ BLOB データ共同作成者**ロール自体は、BLOB を表示するためにポータル内でその BLOB に移動するための十分なアクセス許可を提供しません。 ポータル内で移動し、そこに表示されているその他のリソースを確認するには、Azure AD の追加のアクセス許可が必要です。
 
-ユーザーが Azure portal で BLOB にアクセスできる必要がある場合は、それらのユーザーに、ストレージ アカウント以上のレベルで追加の RBAC ロール、[閲覧者](../../role-based-access-control/built-in-roles.md#reader) ロールを割り当てます。 **閲覧者**ロールは Azure Resource Manager のロールであり、ユーザーにストレージ アカウントのリソースの表示を許可しますが、変更は許可しません。 これは Azure Storage 内のデータに読み取りアクセス許可を提供しませんが、アカウント管理リソースに対してのみです。
+ユーザーが Azure portal で BLOB にアクセス可能でなくてはならない場合は、それらのユーザーに、ストレージ アカウント以上のレベルで追加の Azure ロールとなる[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロールを割り当てます。 **閲覧者**ロールは Azure Resource Manager のロールであり、ユーザーにストレージ アカウントのリソースの表示を許可しますが、変更は許可しません。 これは Azure Storage 内のデータに読み取りアクセス許可を提供しませんが、アカウント管理リソースに対してのみです。
 
 ユーザーが Azure portal から BLOB にアクセスできるように**閲覧者**ロールを割り当てるには、次の手順に従います。 この例では、割り当てのスコープはストレージ アカウントに指定されています。
 
@@ -97,9 +97,9 @@ RBAC ロールが Azure AD セキュリティ プリンシパルに割り当て�
 
 ## <a name="next-steps"></a>次のステップ
 
-- ストレージ リソースの RBAC ロールに関する詳細については、「[Azure Active Directory を利用して Azure BLOB およびキューへのアクセスを認証する](storage-auth-aad.md)」を参照してください。 
-- RBAC の詳細については、「[ロールベースのアクセス制御 (RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。
-- Azure PowerShell、Azure CLI、または REST API で RBAC ロールを割り当てて管理する方法については、次の記事を参照してください。
+- ストレージ リソースの Azure ロールに関する詳細については、[Azure Active Directory を利用して BLOB およびキューへのアクセスを認証する](storage-auth-aad.md)方法に関するページを参照してください。 
+- RBAC の詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。
+- Azure PowerShell、Azure CLI、または REST API で Azure ロールを割り当てて管理する方法については、次の記事を参照してください。
     - [Azure PowerShell を使用してロールベースのアクセス制御 (RBAC) を管理する](../../role-based-access-control/role-assignments-powershell.md)
     - [Azure CLI を使用してロールベースのアクセス制御 (RBAC) を管理する](../../role-based-access-control/role-assignments-cli.md)
     - [REST API を使用してロールベースのアクセス制御 (RBAC) を管理する](../../role-based-access-control/role-assignments-rest.md)

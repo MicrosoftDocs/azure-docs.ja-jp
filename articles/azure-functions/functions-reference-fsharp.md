@@ -3,15 +3,15 @@ title: Azure Functions F# 開発者向けリファレンス
 description: F# スクリプトを使用して Azure Functions を開発する方法について説明します。
 author: sylvanc
 ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: 669701f91ab28a4eb734b0346be6515dc44e8685
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f9b7b92fd21e12f1d86c5d5878e48c6ec6b0e748
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234943"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088021"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F# 開発者向けリファレンス
 
@@ -90,7 +90,7 @@ let Run(input: string, item: byref<Item>) =
 ```
 
 ## <a name="logging"></a>ログ記録
-出力を F# の[ストリーミング ログ](../app-service/troubleshoot-diagnostic-logs.md)に記録するには、関数が [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) 型の引数を受け取る必要があります。 一貫性のために、この引数は `log`という名前にすることをお勧めします。 次に例を示します。
+出力を F# の[ストリーミング ログ](../app-service/troubleshoot-diagnostic-logs.md)に記録するには、関数が [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) 型の引数を受け取る必要があります。 一貫性のために、この引数は `log`という名前にすることをお勧めします。 次に例を示します。
 
 ```fsharp
 let Run(blob: string, output: byref<string>, log: ILogger) =
@@ -141,7 +141,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 * `System.Net.Http`
 * `System.Threading.Tasks`
 * `Microsoft.Azure.WebJobs`
-* [https://login.microsoftonline.com/consumers/](`Microsoft.Azure.WebJobs.Host`)
+* `Microsoft.Azure.WebJobs.Host`
 
 ## <a name="referencing-external-assemblies"></a>外部アセンブリの参照
 同様に、フレームワーク アセンブリ参照を、`#r "AssemblyName"` ディレクティブと共に追加できます。
@@ -169,7 +169,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 * `Microsoft.Azure.WebJobs.Host`
 * `Microsoft.Azure.WebJobs.Extensions`
 * `System.Web.Http`
-* [https://login.microsoftonline.com/consumers/](`System.Net.Http.Formatting`)
+* `System.Net.Http.Formatting`
 
 さらに、次のアセンブリは特別扱いされ、simplename によって参照される場合があります (例: `#r "AssemblyName"`)。
 
@@ -177,7 +177,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 * `Microsoft.WindowsAzure.Storage`
 * `Microsoft.ServiceBus`
 * `Microsoft.AspNet.WebHooks.Receivers`
-* [https://login.microsoftonline.com/consumers/](`Microsoft.AspNEt.WebHooks.Common`)
+* `Microsoft.AspNEt.WebHooks.Common`
 
 プライベート アセンブリを参照する必要がある場合は、アセンブリ ファイルを関数に関連する `bin` フォルダーにアップロードし、ファイル名 (例: `#r "MyAssembly.dll"`) を使用して参照できます。 関数フォルダーにファイルをアップロードする方法については、パッケージ管理の次のセクションを参照してください。
 
@@ -293,4 +293,3 @@ let mylog(log: ILogger, text: string) =
 * [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
 * [Azure Functions のテスト](functions-test-a-function.md)
 * [Azure Functions のスケーリング方法](functions-scale.md)
-

@@ -9,13 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/09/2019
+ms.custom: devx-track-java
 ms.author: erhopf
-ms.openlocfilehash: e1d4fa1d13b5993c2d502b80ff0efe52578a48c0
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 5d7189e334316ab4d2e28bd5209112f05fc4d98c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74980440"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375271"
 ---
 [!INCLUDE [jre](./jre.md)]
 

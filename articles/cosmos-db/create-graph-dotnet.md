@@ -8,12 +8,13 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 02/21/2020
 ms.author: lbosq
-ms.openlocfilehash: bf453587b354b5db3f3ef1a80f974bcb8f8f4e14
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: f781018fc5fc832be92de34c3ef220517ad28d75
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81730013"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020424"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>クイック スタート:Azure Cosmos DB Gremlin API アカウントを使用して .NET Framework アプリケーションまたは Core アプリケーションを構築する
 
@@ -109,7 +110,7 @@ GitHub から Gremlin API アプリの複製を作成し、接続文字列を設
 
    **Gremlin エンドポイント** - この値は、Gremlin.Net ライブラリを使用してグラフ アカウントに接続する場合に使用されます。
 
-    ![エンドポイントのコピー](./media/create-graph-dotnet/endpoint.png)
+    :::image type="content" source="./media/create-graph-dotnet/endpoint.png" alt-text="エンドポイントをコピーする":::
 
    このサンプルを実行するには、 **[Gremlin エンドポイント]** の値をコピーして最後のポート番号を削除します。つまり、URI は `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com` になります。 エンドポイントの値は `testgraphacct.gremlin.cosmosdb.azure.com` のようになります
 
@@ -146,7 +147,7 @@ Ctrl + F5 キーを押してアプリケーションを実行します。 アプ
 
     グラフは拡大または縮小できます。また、グラフ表示領域の拡大、頂点の追加、表示画面上での頂点の移動が可能です。
 
-    ![Azure Portal のデータ エクスプローラーでのグラフ表示](./media/create-graph-dotnet/graph-explorer.png)
+    :::image type="content" source="./media/create-graph-dotnet/graph-explorer.png" alt-text="Azure portal のデータ エクスプローラーでのグラフ表示":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 

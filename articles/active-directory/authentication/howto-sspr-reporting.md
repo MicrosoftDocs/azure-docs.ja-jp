@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 348082ad96a5efa4d8f866c3675044edf7b6f8a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9c8557457e3a1dc7d0ed1e50da3070360b1fd76f
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80652155"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717729"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Azure AD のパスワード管理に関するレポート オプション
 
@@ -51,9 +51,9 @@ Azure Portal エクスペリエンスでは、パスワード リセットおよ
 6. ウィンドウ上部の **[フィルター]** メニューから **[サービス]** ドロップダウン リストを選択し、サービスの種類を **[Self-service Password Management ]\(セルフサービスのパスワード管理\)** に変更します。
 7. 必要な場合は、関心のある特定の **[アクティビティ]** を選択して、リストをさらにフィルター処理します。
 
-### <a name="converged-registration-preview"></a>集中型登録 (プレビュー)
+### <a name="combined-registration"></a>統合された登録
 
-集中型登録のパブリック プレビューに参加している場合、監査ログのユーザー アクティビティに関する情報は **[セキュリティ** > **認証方法]** の下にあります。
+[統合された登録](./concept-registration-mfa-sspr-combined.md)を有効にしている場合、監査ログのユーザー アクティビティに関する情報は **[セキュリティ** > **認証方法]** の下にあります。
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Azure Portal でのレポートの列の説明
 
@@ -179,7 +179,7 @@ Azure Portal エクスペリエンスでは、パスワード リセットおよ
 * [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ](howto-sspr-authenticationdata.md)
 * [ユーザーが使用できる認証方法](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR のポリシー オプション](concept-sspr-policy.md)
-* [パスワード ライトバックの概要とその必要性](howto-sspr-writeback.md)
+* [パスワード ライトバックの概要とその必要性](./tutorial-enable-sspr-writeback.md)
 * [SSPR のすべてのオプションとその意味](concept-sspr-howitworks.md)
 * [不具合が発生していると思われるSSPR のトラブルシューティング方法](active-directory-passwords-troubleshoot.md)
 * [質問したい内容に関する説明がどこにもない。](active-directory-passwords-faq.md)

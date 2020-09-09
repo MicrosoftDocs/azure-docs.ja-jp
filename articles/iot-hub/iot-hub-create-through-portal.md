@@ -7,12 +7,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: robinsh
-ms.openlocfilehash: c43c142b22709d42416b2dd14dfc78812970916a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- 'Role: Cloud Development'
+ms.openlocfilehash: 8f7555129f5f514d1954ac56cf87872a85ca91d0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79237395"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326734"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Azure Portal を使用して IoT Hub を作成する
 

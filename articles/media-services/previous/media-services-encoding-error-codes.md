@@ -14,16 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 5c038f0be31acea52c2ef07d43f0dbaf3434a371
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e56dbe1d1236a567ed6f59acfcca325a6c9ee7e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "64709532"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269031"
 ---
 # <a name="encoding-error-codes"></a>エラー コードのエンコード
 
-次の表は、エンコード タスクの実行中にエラーが発生した場合に返される可能性があるエラー コードの一覧です。  .NET コードのエラーの詳細を取得するには、 [ErrorDetails](https://msdn.microsoft.com/library/microsoft.windowsazure.mediaservices.client.errordetail.aspx) クラスを使用します。 REST コードのエラーの詳細を取得するには、 [ErrorDetails](https://msdn.microsoft.com/library/jj853026.aspx) REST API を使用します。
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
+次の表は、エンコード タスクの実行中にエラーが発生した場合に返される可能性があるエラー コードの一覧です。  .NET コードのエラーの詳細を取得するには、 [ErrorDetails](/previous-versions/azure/jj126075(v=azure.100)) クラスを使用します。 REST コードのエラーの詳細を取得するには、 [ErrorDetails](/rest/api/media/operations/errordetail) REST API を使用します。
 
 | ErrorDetail.Code | 考えられる原因 |
 | --- | --- |

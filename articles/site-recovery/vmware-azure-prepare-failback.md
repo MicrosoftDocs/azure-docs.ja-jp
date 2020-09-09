@@ -4,11 +4,11 @@ description: Azure Site Recovery を使用してフェールオーバー後に V
 ms.topic: conceptual
 ms.date: 12/24/2019
 ms.openlocfilehash: 5a330f8cba31640d0116ca3d5ccab352ce5b3509
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228919"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847745"
 ---
 # <a name="prepare-for-reprotection-and-failback-of-vmware-vms"></a>VMware VM の再保護とフェールバックの準備をする
 

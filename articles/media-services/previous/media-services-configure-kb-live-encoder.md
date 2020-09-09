@@ -14,14 +14,17 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: babb5a10818c8108bae34402962fd2503dbecbdc
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: ab73b22e927ad1bbcc8a07173e1548157de03cdd
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641679"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258097"
 ---
-# <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>Haivision KB エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する  
+# <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>Haivision KB エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [Haivision](media-services-configure-kb-live-encoder.md)
 > * [Wirecast](media-services-configure-wirecast-live-encoder.md)

@@ -5,16 +5,14 @@ author: HiteshMadan
 manager: rajarv
 ms.author: himad
 ms.reviewer: spelluru
-ms.date: 10/03/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: d7fdc5074f3c92eea4f236a9b1f7c823b930f391
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 64b8956c47cbdbf31bb8253dac0c1e1f12833bf7
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72991856"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171773"
 ---
 # <a name="advanced-filtering"></a>高度なフィルター処理
 Event Grid では、json ペイロードの任意のプロパティに対してフィルターを指定できます。 これらのフィルターは一連の `AND` 条件としてモデル化されており、外側の各条件には省略可能な内側の `OR` 条件があります。 `AND` 条件ごとに、次の値を指定します。

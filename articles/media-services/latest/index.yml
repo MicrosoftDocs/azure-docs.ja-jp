@@ -9,15 +9,15 @@ metadata:
   ms.subservice: 
   ms.topic: landing-page
   ms.collection: collection
-  author: Juliako
-  ms.author: juliako
+  author: IngridAtMicrosoft
+  ms.author: inhenkel
   ms.date: 21/16/2020
-  ms.openlocfilehash: 1cd7e2a4cb4e86e6acfc0ec3d3909bc887a6f943
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 8168dccb5a6eba0836b273cf7fbd9800c64925ec
+  ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "79472120"
+  ms.lasthandoff: 09/01/2020
+  ms.locfileid: "89269167"
 landingContent:
 - title: Media Services について
   linkLists:
@@ -46,9 +46,9 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: アカウントを作成する
-      url: create-account-cli-how-to.md
+      url: ./create-account-howto.md
     - text: API へのアクセス
-      url: access-api-cli-how-to.md
+      url: ./access-api-howto.md
   - linkListType: download
     links:
     - text: .NET SDK のサンプル
@@ -62,7 +62,7 @@ landingContent:
     - text: Azure CLI
       url: https://aka.ms/ams-v3-cli-ref
     - text: REST
-      url: https://docs.microsoft.com/rest/api/media/
+      url: /rest/api/media/
     - text: .NET
       url: https://aka.ms/ams-v3-dotnet-ref
     - text: Java

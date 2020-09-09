@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: d3bd1156de4aed7d1ea5c530605697f2dc80d63c
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: ab11060924c29dbddc965aa94064d0091a7b348e
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80476981"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639853"
 ---
 # <a name="high-availability-ports-overview"></a>高可用性ポートの概要
 
@@ -87,20 +87,17 @@ HA ポート機能は、すべてのグローバル Azure リージョンで使�
 
 ### <a name="an-internal-load-balancer-with-ha-ports-and-a-public-load-balancer-on-the-same-back-end-instance"></a>同じバックエンド インスタンス上で HA ポートとパブリック ロード バランサーを使用する内部ロード バランサー
 
-バックエンド リソース用の *1 つの*パブリック Standard Load Balancer リソースと、HA ポートを使用する単一の内部 Standard Load Balancer を構成できます。
-
->[!NOTE]
->この機能は現在、Azure Resource Manager テンプレート経由で使用できますが、Azure Portal 経由では使用できません。
+バックエンド リソース用の "*1 つ*" のパブリック Standard Load Balancer リソースと、HA ポートを使用する単一の Standard Load Balancer を構成できます。
 
 ## <a name="limitations"></a>制限事項
 
 - HA ポートの負荷分散規則は、内部 Standard Load Balancer でのみ使用できます。
-- 同じバックエンド ipconfigurations を指す HA ポートの負荷分散規則と非 HA ポートの負荷分散規則の組み合わせはサポートされていません。
+- 同じバックエンド ipconfiguration を指す HA ポートの負荷分散規則と非 HA ポートの負荷分散規則の組み合わせは、両方で Floating IP が有効になっている場合を除き、1 つのフロントエンド IP 構成ではサポート**されていません**。
 - 既存の IP フラグメントは、HA ポートの負荷分散規則によって、最初のパケットと同じ宛先に転送されます。  UDP または TCP パケットの IP フラグメントはサポートされていません。
 - フロー対称 (主に NVA シナリオの場合) がバックエンド インスタンスと 1 つの NIC (および 1 つの IP 構成) でサポートされるのは、上の図に示すように使用し、HA ポート負荷分散規則が使用されている場合のみです。 これは他のシナリオでは提供されません。 つまり、2 つ以上のロード バランサー リソースと個別の規則を使用した場合、それぞれ独立した意思決定が行われるため調整することはできません。 [ネットワーク仮想アプライアンス](#nva)の説明と図をご覧ください。 複数の NIC を使用しているか、またはパブリック ロード バランサーおよび内部ロード バランサーの間に NVA を配置している場合は、フロー対称を使用できません。  イングレス フローをアプライアンスの IP にソース NAT して、応答が同じ NVA に到着できるようにすることによって、これを回避できる場合があります。  ただし、1 つの NIC を使用し、上の図に示す参照アーキテクチャを使用することを強くお勧めします。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-- [内部 Standard Load Balancer で HA ポートを構成する](load-balancer-configure-ha-ports.md)
+- [ポータル](tutorial-load-balancer-standard-internal-portal.md#create-a-load-balancer-rule)、[PowerShell](load-balancer-get-started-ilb-arm-ps.md#create-the-configuration-rules-probe-and-load-balancer)、[CLI](load-balancer-get-started-ilb-arm-cli.md#create-the-load-balancer-rule)、または[テンプレート](load-balancer-get-started-ilb-arm-template.md)を利用し、ILB の HA ポートを構成する方法について説明します。
 - [Standard Load Balancer の詳細を確認する](load-balancer-standard-overview.md)

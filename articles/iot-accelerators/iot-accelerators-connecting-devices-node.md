@@ -8,13 +8,13 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: dobett
-ms.custom: mqtt
-ms.openlocfilehash: 76692c7d923e261d1e3beefa0e2ea76b94282a46
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.custom: mqtt, devx-track-javascript
+ms.openlocfilehash: ab697778e00def1e23a3124b14458f1acb994041
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81683988"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423356"
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>お使いのデバイスをリモート監視ソリューション アクセラレータに接続する (Node.js)
 

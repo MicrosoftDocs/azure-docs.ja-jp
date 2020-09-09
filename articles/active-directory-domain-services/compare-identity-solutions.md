@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 03/30/2020
+ms.date: 06/08/2020
 ms.author: iainfou
-ms.openlocfilehash: 5925e3374634dd4db4bdc6855949dc3880d8de7c
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 1ed1305939f4f8a9de62de85a2f09c323a2636b1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655526"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489590"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>自己管理型の Active Directory Domain Services、Azure Active Directory、およびマネージド Azure Active Directory Domain Services の比較
 
@@ -31,21 +31,25 @@ Active Directory ベースのこの 3 つの ID ソリューションは、共�
     * Azure AD の詳細については、「[Azure Active Directory とは][whatis-azuread]」を参照してください。
 * **Azure Active Directory Domain Services (Azure AD DS)** - 完全に互換性のある従来の AD DS 機能のサブセット (ドメイン参加、グループ ポリシー、LDAP、Kerberos 認証、NTLM 認証など) を使用してマネージド ドメイン サービスが提供されます。
     * Azure AD DS は Azure AD と統合され、それ自体でオンプレミスの AD DS 環境と同期することができます。 この機能により、ID の一元管理のユース ケースを、リフト アンド シフト戦略の一部として Azure で実行される従来の Web アプリケーションに拡張することができます。
+    * Azure AD およびオンプレミスとの同期の詳細については、[マネージド ドメイン内でのオブジェクトと資格情報の同期のしくみ][synchronization]に関するページを参照してください。
 
 この概要記事では、組織のニーズに応じて、これらの ID ソリューションを連携させる場合と個別に使用する場合を比較対比します。
 
-使用を開始するには、[Azure portal を使用して Azure AD DS マネージド ドメインを作成][tutorial-create]します。
+> [!div class="nextstepaction"]
+> [使用を開始するには、Azure portal を使用して Azure AD DS マネージド ドメインを作成します][tutorial-create]
 
 ## <a name="azure-ad-ds-and-self-managed-ad-ds"></a>Azure AD DS と自己管理型 AD DS
 
 Kerberos や NTLM などの従来の認証メカニズムにアクセスする必要があるアプリケーションおよびサービスを使用している場合、クラウドで Active Directory Domain Services を提供するには、次の 2 つの方法があります。
 
-* "*マネージド*" ドメイン: Azure Active Directory Domain Services (Azure AD DS) を使用して作成します。 Microsoft が、必要なリソースの作成と管理を行います。
+* "*マネージド ドメイン*"。Azure Active Directory Domain Services (Azure AD DS) を使用して作成します。 Microsoft が、必要なリソースの作成と管理を行います。
 * "*自己管理型*" ドメイン: 仮想マシン (VM)、Windows Server ゲスト OS、Active Directory Domain Services (Azure AD DS) などの従来のリソースを使用して、作成および構成します。 管理者が引き続き、これらのリソースを管理します。
 
 Azure AD DS では、管理者に代わって Microsoft がコア サービス コンポーネントを "*マネージド*" ドメイン エクスペリエンスとしてデプロイし、管理します。 管理者は、VM、Windows Server OS、ドメイン コントローラー (DC) などのコンポーネント用 AD DS インフラストラクチャのデプロイ、管理、修正プログラムの適用、セキュリティ保護は行いません。
 
-Azure AD DS では、機能のより小さいサブセットが従来の自己管理型 AD DS 環境に提供され、設計と管理の複雑さの一部が軽減されます。 たとえば、フォレスト、ドメイン、サイト、レプリケート リンクの設計と保守はありません。 アプリケーションおよびサービスがクラウドで実行され、Kerberos や NTLM などの従来の認証メカニズムにアクセスする必要がある場合、Azure AD DS では、管理オーバーヘッドを最小限に抑えたマネージド ドメイン エクスペリエンスが提供されます。
+Azure AD DS では、機能のより小さいサブセットが従来の自己管理型 AD DS 環境に提供され、設計と管理の複雑さの一部が軽減されます。 たとえば、設計および保守すべき AD フォレスト、ドメイン、サイト、レプリケート リンクはありません。 それでも [Azure AD DS とオンプレミス環境の間にフォレストの信頼を作成する][create-forest-trust]ことができます。
+
+アプリケーションおよびサービスがクラウドで実行され、Kerberos や NTLM などの従来の認証メカニズムにアクセスする必要がある場合、Azure AD DS では、管理オーバーヘッドを最小限に抑えたマネージド ドメイン エクスペリエンスが提供されます。 詳細については、[Azure AD DS でのユーザー アカウント、パスワード、および管理の概念][administration-concepts]に関するページを参照してください。
 
 自己管理型 AD DS 環境をデプロイして実行する場合、関連するすべてのインフラストラクチャとディレクトリ コンポーネントを保守する必要があります。 自己管理型 AD DS 環境では、追加の保守オーバーヘッドが発生しますが、スキーマの拡張やフォレストの信頼の作成などの追加タスクを実行できます。
 
@@ -94,7 +98,7 @@ Azure AD に参加しているデバイスには、次のような利点があ�
 
 | **デバイスの種類**                                        | **デバイス プラットフォーム**             | **メカニズム**          |
 |:----------------------------------------------------------| -------------------------------- | ---------------------- |
-| 個人用デバイス                                          | Windows 10、iOS、Android、Mac OS | Azure AD 登録済み    |
+| 個人用デバイス                                          | Windows 10、iOS、Android、macOS | Azure AD 登録済み    |
 | オンプレミスの AD DS に参加していない組織所有デバイス | Windows 10                       | Azure AD 参加済み        |
 | オンプレミスの AD DS に参加している組織所有デバイス  | Windows 10                       | ハイブリッド Azure AD 参加済み |
 
@@ -115,6 +119,8 @@ Azure AD DS に参加しているデバイスでは、アプリケーション�
 
 Azure AD DS の使用を開始するには、[Microsoft Azure portal を使用して Azure AD DS マネージド ドメインを作成][tutorial-create]します。
 
+また、[Azure AD DS でのユーザー アカウント、パスワード、および管理の概念][administration-concepts]および[マネージド ドメインでのオブジェクトと資格情報の同期のしくみ][synchronization]についても学習できます。
+
 <!-- INTERNAL LINKS -->
 [manage-dns]: manage-dns.md
 [deploy-kcd]: deploy-kcd.md
@@ -124,3 +130,6 @@ Azure AD DS の使用を開始するには、[Microsoft Azure portal を使用�
 [tutorial-create]: tutorial-create-instance.md
 [whatis-azuread]: ../active-directory/fundamentals/active-directory-whatis.md
 [overview-adds]: /windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview
+[create-forest-trust]: tutorial-create-forest-trust.md
+[administration-concepts]: administration-concepts.md
+[synchronization]: synchronization.md

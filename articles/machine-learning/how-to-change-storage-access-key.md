@@ -6,16 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
+ms.custom: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 03/06/2020
-ms.openlocfilehash: f1541c177cea2d223a5e7df576d95fab7eafb310
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/19/2020
+ms.openlocfilehash: c6b8f9d7f99d49f65a45d0e09623ef2f0e1217f2
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80296935"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387066"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>ストレージ アカウント キーの再生成
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -23,6 +24,9 @@ ms.locfileid: "80296935"
 Azure Machine Learning で使用される Azure ストレージ アカウントのアクセス キーを変更する方法について説明します。 Azure Machine Learning では、ストレージ アカウントを使用してデータまたはトレーニング済みモデルを保存できます。
 
 セキュリティ上の理由から、Azure ストレージ アカウントのアクセス キーを変更することが必要になる場合があります。 アクセス キーを再生成した場合は、その新しいキーを使用するように Azure Machine Learning を更新する必要があります。 Azure Machine Learning では、ストレージ アカウントはモデル ストレージ用に使用される場合とデータストアとして使用される場合の両方があります。
+
+> [!IMPORTANT]
+> データストアに登録された資格情報は、ワークスペースに関連付けられている Azure キー コンテナーに保存されます。 キー コンテナーで[論理的な削除](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview)を有効にしている場合は、必ずこの記事に従って資格情報を更新してください。 データストアの登録を解除し、同じ名前で再登録すると失敗します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -85,7 +89,7 @@ for name, ds in datastores.items():
 
 1. キーを再生成します。 アクセス キーを再生成する方法の詳細については、「[ストレージ アカウント アクセス キーを管理する](../storage/common/storage-account-keys-manage.md)」を参照してください。 新しいキーを保存します。
 
-1. 新しいキーを使用するようにワークスペースを更新するには、次の手順に従います。
+1. Azure Machine Learning ワークスペースによって新しいキーは自動的に同期され、1 時間後に使用が開始されます。 ワークスペースを強制的に新しいキーとすぐに同期するには、次の手順を実行します。
 
     1. ご利用のワークスペースが含まれる Azure サブスクリプションにサインインするには、次の Azure CLI コマンドを使用します。
 
@@ -105,27 +109,35 @@ for name, ds in datastores.items():
 
         このコマンドにより、ワークスペースで使用する Azure ストレージ アカウントの新しいキーが自動的に同期されます。
 
-1. そのストレージ アカウントを使用するデータストアを再登録するには、「[更新する必要があるもの](#whattoupdate)」セクションでの値とステップ 1 でのキーを次のコードで使用します。
-
-    ```python
-    # Re-register the blob container
-    ds_blob = Datastore.register_azure_blob_container(workspace=ws,
+1. SDK または [Azure Machine Learning Studio](https://ml.azure.com) を使用して、ストレージ アカウントを使用するデータストアを再登録することができます。
+    1. **Python SDK を介してデータストアを再登録する**には、「[更新する必要があるもの](#whattoupdate)」セクションの値とステップ 1 でのキーを次のコードで使用します。 
+    
+        このコードでは `overwrite=True` が指定されているため、既存の登録が上書きされて、新しいキーを使用するように更新されます。
+    
+        ```python
+        # Re-register the blob container
+        ds_blob = Datastore.register_azure_blob_container(workspace=ws,
+                                                  datastore_name='your datastore name',
+                                                  container_name='your container name',
+                                                  account_name='your storage account name',
+                                                  account_key='new storage account key',
+                                                  overwrite=True)
+        # Re-register file shares
+        ds_file = Datastore.register_azure_file_share(workspace=ws,
                                               datastore_name='your datastore name',
-                                              container_name='your container name',
+                                              file_share_name='your container name',
                                               account_name='your storage account name',
                                               account_key='new storage account key',
                                               overwrite=True)
-    # Re-register file shares
-    ds_file = Datastore.register_azure_file_share(workspace=ws,
-                                          datastore_name='your datastore name',
-                                          file_share_name='your container name',
-                                          account_name='your storage account name',
-                                          account_key='new storage account key',
-                                          overwrite=True)
+        
+        ```
     
-    ```
-
-    このコードでは `overwrite=True` が指定されているため、既存の登録が上書きされて、新しいキーを使用するように更新されます。
+    1. **Studio を使用してデータ ストアを再登録する**には、Studio の左側のペインから **[データストア]** を選択します。 
+        1. 更新するデータストアを選択します。
+        1. 左上にある **[資格情報の更新]** ボタンを選択します。 
+        1. ステップ 1 の新しいアクセス キーを使用してフォームに入力し、 **[保存]** をクリックします。
+        
+            **既定のデータストア**の資格情報を更新する場合は、このステップを完了し、ステップ 2b を繰り返して、新しいキーをワークスペースの既定のデータストアと再同期します。 
 
 ## <a name="next-steps"></a>次のステップ
 

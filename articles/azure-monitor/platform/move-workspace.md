@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: ca9bb3853698b831fe87f48de346183e4bcd0976
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: d3937eaa5017ed66641d886ecd45e812f7070b83
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731714"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566286"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Log Analytics ワークスペースを別のサブスクリプションまたはリソース グループに移動する
 
@@ -38,6 +38,11 @@ ms.locfileid: "82731714"
 - 勤務時間外に VM を起動/停止する
 - Azure Security Center
 
+>[!IMPORTANT]
+> **Azure Sentinel のお客様:**
+> - Azure Sentinel がワークスペースにデプロイされた後に、そのワークスペースを他のリソース グループやサブスクリプションに移動することは、**現在はサポートされていません**。 
+>
+>   ワークスペースを既に移動している場合は、 **[Analytics]** の下のアクティブなルールをすべて無効にし、5 分後に再び有効にします。 これは、ほとんどの場合に効果的です。ただし、繰り返しますが、サポートされておらず、ご自身の責任で行ってください。
 
 ### <a name="delete-solutions-in-azure-portal"></a>Azure portal でソリューションを削除する
 Azure portal を使用してソリューションを削除するには、次の手順を実行してください。

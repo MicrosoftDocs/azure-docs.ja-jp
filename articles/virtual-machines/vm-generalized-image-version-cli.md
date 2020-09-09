@@ -8,16 +8,17 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
-ms.openlocfilehash: 5e59872a4da0136232652008a2980601428eeab6
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 090b041c605c2328add8b46a97b6f151bae268c6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793899"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501084"
 ---
 # <a name="create-a-vm-from-a-generalized-image-version-using-the-cli"></a>CLI を使用して、一般化されたイメージ バージョンから VM を作成する
 
-Shared Image Gallery に格納されている[一般化されたイメージ バージョン](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images)から VM を作成します。 特殊化されたイメージから VM を作成する場合は、[特殊化されたイメージからの VM の作成](vm-specialized-image-version-powershell.md)に関するページをご覧ください。 
+Shared Image Gallery に格納されている[一般化されたイメージ バージョン](./linux/shared-image-galleries.md#generalized-and-specialized-images)から VM を作成します。 特殊化されたイメージから VM を作成する場合は、[特殊化されたイメージからの VM の作成](vm-specialized-image-version-powershell.md)に関するページをご覧ください。 
 
 
 ## <a name="get-the-image-id"></a>イメージ ID を取得する

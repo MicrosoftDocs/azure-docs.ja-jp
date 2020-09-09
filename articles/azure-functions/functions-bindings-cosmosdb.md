@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.author: cshoe
 ms.topic: reference
 ms.date: 11/21/2017
-ms.custom: seodec18
-ms.openlocfilehash: e30b256d9fa43402c3b2c444aa1a0e0dc16cfdcf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp, seodec18
+ms.openlocfilehash: 8ae7613eea4b952c079be90b05e615087ea80a32
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235183"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214158"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Functions 1.x の Azure Cosmos DB バインド
 
@@ -1477,7 +1477,7 @@ JavaScript コードを次に示します。
 
 | バインド | リファレンス |
 |---|---|
-| Cosmos DB | [CosmosDB のエラー コード](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb) |
+| Cosmos DB | [CosmosDB のエラー コード](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) |
 
 ## <a name="next-steps"></a>次のステップ
 

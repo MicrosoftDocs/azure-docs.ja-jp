@@ -11,13 +11,13 @@ metadata:
   author: mtillman
   ms.author: mtillman
   manager: daveba
-  ms.date: 05/19/2020
-  ms.openlocfilehash: 4e1b18e1037b37deba3e037f3e896bf1536f4fd7
-  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.date: 05/29/2020
+  ms.openlocfilehash: 13e69e5f45244be79d06b0014d32e5c8192c777c
+  ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/19/2020
-  ms.locfileid: "83591915"
+  ms.lasthandoff: 07/07/2020
+  ms.locfileid: "86038074"
 highlightedContent:
   items:
   - title: Azure AD とは
@@ -42,15 +42,15 @@ conceptualContent:
   items:
   - title: アプリケーション管理
     links:
-    - url: ./manage-apps/what-is-single-sign-on.md
-      itemType: concept
-      text: シングル サインオン (SSO) とは
-    - url: ./manage-apps/user-provisioning.md
-      itemType: tutorial
-      text: 自動ユーザー プロビジョニング
-    - url: ./manage-apps/application-proxy.md
-      itemType: concept
-      text: オンプレミス アプリ用のアプリケーション プロキシ
+    - url: ./manage-apps/what-is-application-management.md
+      itemType: overview
+      text: アプリケーション管理とは
+    - url: ./manage-apps/view-applications-portal.md
+      itemType: quickstart
+      text: ID 管理にテナントを使用しているアプリを表示する
+    - url: ./manage-apps/add-application-portal-setup-sso.md
+      itemType: quickstart
+      text: SAML ベースの SSO を設定する
     footerLink:
       url: ./manage-apps/index.yml
       text: 詳細情報
@@ -109,20 +109,6 @@ conceptualContent:
       text: 場所に基づく条件
     footerLink:
       url: ./conditional-access/index.yml
-      text: 詳細情報
-  - title: 開発者
-    links:
-    - url: ./develop/v2-overview.md
-      itemType: overview
-      text: Microsoft ID プラットフォームについて
-    - url: ./develop/v2-oauth2-auth-code-flow.md
-      itemType: concept
-      text: OAuth 2.0 コード フロー付与
-    - url: ./develop/quickstart-register-app.md
-      itemType: quickstart
-      text: Microsoft ID プラットフォームにアプリを登録する
-    footerLink:
-      url: ./develop/index.yml
       text: 詳細情報
   - title: デバイス管理
     links:
@@ -235,6 +221,20 @@ conceptualContent:
       text: マネージド ID をサポートするサービス
     footerLink:
       url: ./managed-identities-azure-resources/index.yml
+      text: 詳細情報
+  - title: Microsoft ID プラットフォーム
+    links:
+    - url: ./develop/v2-overview.md
+      itemType: overview
+      text: Microsoft ID プラットフォームについて
+    - url: ./develop/v2-oauth2-auth-code-flow.md
+      itemType: concept
+      text: OAuth 2.0 コード フロー付与
+    - url: ./develop/quickstart-register-app.md
+      itemType: quickstart
+      text: Microsoft ID プラットフォームにアプリを登録する
+    footerLink:
+      url: ./develop/index.yml
       text: 詳細情報
   - title: Privileged Identity Management (PIM)
     links:

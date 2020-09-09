@@ -3,24 +3,24 @@ title: Azure AD アプリケーション プロキシを使用したオンプレ
 description: Azure AD と統合しているオンプレミスのアプリケーションにAzure AD アプリケーション プロキシでサインインできない場合の一般的な問題のトラブルシューティング
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91a00e243032fd9702e8b549c75363f1a3e1c87f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 29aa4eb0bc40f0b2b960c49cf7b17dc62d92b0ab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74232335"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367718"
 ---
 # <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用してオンプレミスのアプリケーションにサインインできない
 
@@ -36,7 +36,7 @@ ms.locfileid: "74232335"
 
 ## <a name="im-having-a-connectivity-problem-my-application"></a>アプリケーションで接続に関する問題が発生する
   次のドキュメントは、このカテゴリ内の最も一般的な問題のいくつかを解決するために役立ちます。
-  * [アプリケーションに対してどのポートを開くかがわからない](application-proxy-connectivity-ports-how-to.md)
+  * [アプリケーションに対してどのポートを開くかがわからない](application-proxy-add-on-premises-application.md)
   * [アプリケーションのコネクタ グループで動作しているコネクタがないため問題が発生した](application-proxy-connectivity-no-working-connector.md)
 
 ## <a name="im-having-a-problem-configuring-the-azure-ad-application-proxy-in-the-admin-portal"></a>管理ポータルで Azure AD アプリケーション プロキシを構成するときに問題が発生する

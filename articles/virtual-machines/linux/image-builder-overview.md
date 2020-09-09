@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: 4cacc96975d6a366e2d353580d22c9818b19a321
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 6465049666793039aa6cd8d72372c8e850ae4310
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792056"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502352"
 ---
-# <a name="preview-azure-image-builder-overview"></a>プレビュー:Azure Image Builder の概要
+# <a name="preview-azure-image-builder-overview-in-linux"></a>プレビュー:Linux での Azure Image Builder の概要
 
 [!INCLUDE [virtual-machines-image-builder-overview](../../../includes/virtual-machines-image-builder-overview.md)]

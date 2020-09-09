@@ -5,16 +5,16 @@ services: azure-portal
 keywords: ''
 author: mgblythe
 ms.author: mblythe
-ms.date: 04/06/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 5aa1a677836be3f05269539d52abf7bd8704833d
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 3c34fd198164d7e3ae0851749cf51809df31ca19
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80757078"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522948"
 ---
 # <a name="azure-portal-how-to-video-series"></a>Azure portal の使い方に関するビデオ シリーズ
 
@@ -22,18 +22,18 @@ Azure portal のハウツー ビデオ シリーズでは、Azure portal で Azu
 
 ## <a name="featured-video"></a>注目のビデオ
 
-この注目のビデオでは、Azure Advisor のコストに関する推奨事項を使用して Azure でコストを削減する方法を示しています。
+この注目のビデオでは、Azure Static Web Apps をデプロイする方法について説明します。
 
-> [!VIDEO https://www.youtube.com/embed/ky2WS3KWuYs]
+> [!VIDEO https://www.youtube.com/embed/H2MPsgujpNk]
 
-[Azure Advisor でコストに関する推奨事項を使用する方法](https://www.youtube.com/watch?v=ky2WS3KWuYs)
+[Azure Static Web Apps をデプロイする方法](https://www.youtube.com/watch?v=H2MPsgujpNk)
 
 見逃したかもしれない以下の最近のビデオを確認してください。
 
-|   |   |   |
+| [Azure Functions を監視する方法](https://www.youtube.com/watch?v=eVDZz8h0s00)  | [BLOB のバージョン管理を使用する方法](https://www.youtube.com/watch?v=b2oyxbSbLPA)  | [Azure Private Link を使用してストレージ アカウントに接続する](https://www.youtube.com/watch?v=m7e9h1gedWQ)  |
 | ------| ------ | ------ |
-| [![Azure Monitor ブックの使用に関する YouTube ビデオの画像](https://i.ytimg.com/vi/Z5xRyy3HB8U/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAf2gcTSuNBP-DczGeEB7rQLKc4UQ)](http://www.youtube.com/watch?v=Z5xRyy3HB8U) | [![Azure portal でのリソース リスト ビューのフィルター処理に関する YouTube ビデオの画像](https://i.ytimg.com/vi/L3I-xOZKWcg/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBUZwS_xaZIkYNakpHFvFIiD8i-Tw)](http://www.youtube.com/watch?v=L3I-xOZKWcg) | [![ダッシュボードの自動更新の使用に関する YouTube ビデオの画像](https://i.ytimg.com/vi/tVoDXygZzWM/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAiBhmM0tZo_eV_u_JClkx3SXaWFw)](http://www.youtube.com/watch?v=tVoDXygZzWM) |
-| [Azure Monitor ブックの使用](https://www.youtube.com/watch?v=Z5xRyy3HB8U) | [Azure portal でのリソース リスト ビューのフィルター処理](https://www.youtube.com/watch?v=L3I-xOZKWcg) | [ダッシュボードの自動更新の使用](https://www.youtube.com/watch?v=tVoDXygZzWM) |
+| [![Azure Functions を監視する方法に関する YouTube ビデオのイメージ](https://i.ytimg.com/vi/eVDZz8h0s00/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAf2gcTSuNBP-DczGeEB7rQLKc4UQ)](http://www.youtube.com/watch?v=eVDZz8h0s00) | [![BLOB のバージョン管理の方法に関する YouTube ビデオのイメージ](https://i.ytimg.com/vi/m7e9h1gedWQ/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBUZwS_xaZIkYNakpHFvFIiD8i-Tw)](http://www.youtube.com/watch?v=m7e9h1gedWQ) | [![Azure Private Link を使用したストレージ アカウントへの接続に関する YouTube ビデオのイメージ](https://i.ytimg.com/vi/vM7yDwHSc_o/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAiBhmM0tZo_eV_u_JClkx3SXaWFw)](https://www.youtube.com/watch?v=vM7yDwHSc_o) |
+
 
 ## <a name="video-playlist"></a>ビデオのプレイリスト
 

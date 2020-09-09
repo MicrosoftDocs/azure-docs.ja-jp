@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mjbrown
-ms.openlocfilehash: 8a0ef4c5abcd4c4137a878adf6a7fff9e80c2764
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: a0c8b984801a0db2af648b0711d95de34bc9386f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273513"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85114811"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Azure Cosmos DB のセキュリティ - 概要
 
@@ -25,7 +25,7 @@ ms.locfileid: "81273513"
 
 データのセキュリティは、顧客自身とデータベース プロバイダーの共同責任です。 顧客として選択したデータベース プロバイダーによって、引き受ける責任の範囲は変化する可能性があります。 オンプレミス ソリューションを選択した場合、エンドポイントの保護からハードウェアの物理的なセキュリティに至るまでのすべてを顧客自身が提供する必要がありますが、これは簡単な仕事ではありません。 Azure Cosmos DB などの PaaS クラウド データベース プロバイダーを選択した場合、顧客が関与する範囲は大幅に縮小されます。 マイクロソフトの「[Shared Responsibilities for Cloud Computing (クラウドコンピューティングの共同責任)](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)」ホワイト ペーパーから借用した次の図は、Azure Cosmos DB のような PaaS プロバイダーを使用すると、顧客の責任がどのように減少するかを示しています。
 
-![顧客とデータベース プロバイダーの責任](./media/database-security/nosql-database-security-responsibilities.png)
+:::image type="content" source="./media/database-security/nosql-database-security-responsibilities.png" alt-text="顧客とデータベース プロバイダーの責任":::
 
 上の図は高度なクラウドのセキュリティ コンポーネントを示していますが、具体的には、どのような項目をデータベース ソリューションのために考慮する必要があるでしょうか。 また、ソリューションを相互に比較するにはどうすればよいでしょうか。
 
@@ -79,7 +79,7 @@ ms.locfileid: "81273513"
 |強力なパスワードを持つ管理者アカウント|今でもこの要件について言及する必要があることは信じ難いことですが、一部の競合他社とは異なり、Azure Cosmos DB では、パスワードを持たない管理アカウントは存在できません。<br><br> TLS と HMAC のシークレット ベースの認証によるセキュリティは、既定で組み込まれています。|
 |セキュリティとデータ保護の認証| 最新の認定の一覧については、全体的な [Azure コンプライアンス サイト](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings)のほか、すべての認定を含む最新の [Azure コンプライアンス ドキュメント](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) (Cosmos を検索) を参照してください。 より焦点を絞った記事については、2018 年 4 月 25 日の投稿「Azure #CosmosDB:Secure, private, compliant」(Azure #CosmosDB: セキュリティ保護、プライベート、準拠) を確認してください。これには、SOCS 1/2 Type 2、HITRUST、PCI DSS Level 1、ISO 27001、HIPAA、FedRAMP High のほか多数が含まれています。
 
-次のスクリーン ショットは、監査ログとアクティビティ ログを使用して自分のアカウントを監視する方法を示しています。![Azure Cosmos DB のアクティビティ ログ](./media/database-security/nosql-database-security-application-logging.png)
+次のスクリーン ショットは、監査ログとアクティビティ ログを使用して自分のアカウントを監視する方法を示しています。:::image type="content" source="./media/database-security/nosql-database-security-application-logging.png" alt-text="Azure Cosmos DB のアクティビティ ログ":::
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -87,4 +87,4 @@ ms.locfileid: "81273513"
 
 監査ログの詳細については、[Azure Cosmos DB の診断ログ](logging.md)に関するページを参照してください。
 
-Microsoft の認定の詳細については、[Azure Security Center](https://azure.microsoft.com/support/trust-center/)に関するページを参照してください。
+Microsoft の認定の詳細については、[Azure Trust Center](https://azure.microsoft.com/support/trust-center/) に関するページを参照してください。

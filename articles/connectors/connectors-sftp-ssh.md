@@ -6,18 +6,28 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 04/13/2020
+ms.date: 07/20/2020
 tags: connectors
-ms.openlocfilehash: d7fafdd5830ec2825771d4d611a5f4bd5d87260a
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: f3de582ff69dbd57aa4692fd5c3901602569cf9e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393632"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286616"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SSH と Azure Logic Apps を使用して SFTP ファイルの監視、作成、および管理を行う
 
-[Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/) プロトコルを使用して[セキュア ファイル転送プロトコル (SFTP)](https://www.ssh.com/ssh/sftp/) サーバー上のファイルを監視、作成、送信、および受信するタスクを自動化するために、Azure Logic Apps と SFTP-SSH コネクタを使用して、統合ワークフローの構築と自動化を行えます。 SFTP は、任意の信頼性の高いデータ ストリームを通して、ファイル アクセス、ファイル転送、およびファイル管理を提供するネットワーク プロトコルです。 次に、自動化できるタスクの例をいくつか示します。
+[Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/) プロトコルを使用して[セキュア ファイル転送プロトコル (SFTP)](https://www.ssh.com/ssh/sftp/) サーバー上のファイルを監視、作成、送信、および受信するタスクを自動化するために、Azure Logic Apps と SFTP-SSH コネクタを使用して、統合ワークフローの構築と自動化を行えます。 SFTP は、任意の信頼性の高いデータ ストリームを通して、ファイル アクセス、ファイル転送、およびファイル管理を提供するネットワーク プロトコルです。
+
+> [!NOTE]
+> SFTP-SSH コネクタでは現在、次の SFTP サーバーはサポートされていません。
+> 
+> * IBM DataPower
+> * MessageWay
+> * OpenText Secure MFT
+> * OpenText GXS
+
+次に、自動化できるタスクの例をいくつか示します。
 
 * ファイルの追加または変更を監視します。
 * ファイルの取得、作成、コピー、名前変更、更新、一覧、および削除を行います。
@@ -34,7 +44,7 @@ SFTP-SSH コネクタと SFTP コネクタの違いについては、このト�
 * [チャンク](../logic-apps/logic-apps-handle-large-messages.md)をサポートする SFTP-SSH アクションでは 1 GB までのファイルを処理できますが、チャンクをサポートしない SFTP-SSH アクションでは 50 MB までのファイルを処理できます。 既定のチャンク サイズは 15 MB ですが、このサイズは、ネットワーク待機時間、サーバーの応答時間などの要因に応じて、5 MB から段階的に増やして最大 50 MB まで動的に変更できます。
 
   > [!NOTE]
-  > [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリの場合、このコネクタの ISE のラベルが付いたバージョンでは、代わりに [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)が使用されます。
+  > [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリの場合、このコネクタの ISE のラベルが付いたバージョンでは、代わりに [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)を使用するためにチャンクが必要です。
 
   代わりに使用する[一定のチャンク サイズを指定する](#change-chunk-size)と、このアダプティブ動作をオーバーライドできます。 このサイズの範囲は 5 MB から 50 MB です。 たとえば、45 MB のファイルと、そのファイル サイズを待機時間なしでサポートするネットワークがあるとします。 アダプティブ チャンクは、1 回の呼び出しではなく複数回の呼び出しになります。 呼び出しの回数を減らすために、50 MB のチャンク サイズを設定してみることができます。 別のシナリオで、たとえば 15 MB のチャンクを使用しているときに、ロジック アプリがタイムアウトする場合は、サイズを 5 MB に減らしてみることができます。
 
@@ -42,7 +52,7 @@ SFTP-SSH コネクタと SFTP コネクタの違いについては、このト�
 
   | アクション | チャンクのサポート | チャンク サイズのオーバーライドのサポート |
   |--------|------------------|-----------------------------|
-  | **ファイルのコピー** | いいえ | 適用なし |
+  | **ファイルのコピー** | いいえ | 利用不可 |
   | **ファイルを作成する** | はい | はい |
   | **フォルダーの作成** | 適用なし | 適用なし |
   | **ファイルの削除** | 適用なし | 適用なし |
@@ -245,11 +255,12 @@ SFTP サーバーにファイルを作成するには、SFTP-SSH の **[ファ�
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-コネクタの Swagger ファイルに記述される、トリガー、アクション、制限などのこのコネクタの技術的詳細については、[コネクタの参照ページ](https://docs.microsoft.com/connectors/sftpwithssh/)を参照してください。
+コネクタの Swagger ファイルに記述される、トリガー、アクション、制限などのこのコネクタの技術的詳細については、[コネクタの参照ページ](/connectors/sftpwithssh/)を参照してください。
 
 > [!NOTE]
-> [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリの場合、このコネクタの ISE のラベルが付いたバージョンでは、代わりに [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)が使用されます。
+> [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリの場合、このコネクタの ISE のラベルが付いたバージョンでは、代わりに [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)を使用するためにチャンクが必要です。
 
 ## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。
+

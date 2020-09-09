@@ -9,14 +9,15 @@ manager: craigg
 ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: synapse-analytics
 ms.topic: article
+ms.subservice: sql-dw
 ms.date: 01/21/2020
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 6f2af826473bfd13f8100796a540d41cbedbb037
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 71219abaf6493d6dce03f05ad0e61fb71bff1745
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631577"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207721"
 ---
 # <a name="upgrade-your-sql-pool-to-gen2"></a>SQL プールを Gen2 にアップグレードする
 

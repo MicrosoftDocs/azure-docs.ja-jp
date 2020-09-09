@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 66f80c79219090c27da37dfc1d9149df5604961f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b2509539551b3991690e6d0313e069ae015eb892
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68841390"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052405"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>IBM zD&T v1 の Application Developers Controlled Distribution (ADCD) を設定する
 
@@ -72,11 +72,11 @@ ADCD メディアへのアクセスが必要です。 以下の手順は、IBM �
 
 2. **[SSH]** タブを選択し、ssh コマンドをクリップボードにコピーします。
 
-3. 資格情報と任意の [SSH クライアント](/azure/virtual-machines/linux/use-remote-desktop)を使用して VM にログオンします。 このデモでは、Windows コマンド プロンプトに bash シェルを追加する Windows 10 用の Linux 拡張機能を使用します。 PuTTY はうまく機能します。
+3. 資格情報と任意の [SSH クライアント](../../../linux/use-remote-desktop.md)を使用して VM にログオンします。 このデモでは、Windows コマンド プロンプトに bash シェルを追加する Windows 10 用の Linux 拡張機能を使用します。 PuTTY はうまく機能します。
 
 4. ログオンしたら、IBM パッケージをアップロードするディレクトリを作成します。 Linux では大文字と小文字が区別されることに注意してください。 たとえば、このデモでは、パッケージは次の場所にアップロードされることを前提としています。
 
-        /home/MyUserID/ZDT/adcd/nov2017/volumes
+    `/home/MyUserID/ZDT/adcd/nov2017/volumes`
 
 5. [WinSCP](https://winscp.net/eng/index.php) などの SSH クライアントを使用して、ファイルをアップロードします。 SCP は SSH の一部であるため、SSH で使用されるポート 22 が使用されます。 ローカル コンピューターが Windows でない場合は、SSH セッションで [scp コマンド](http://man7.org/linux/man-pages/man1/scp.1.html)を入力できます。
 
@@ -89,8 +89,8 @@ ADCD メディアへのアクセスが必要です。 以下の手順は、IBM �
 
 8. アップロードが完了したら、ボリューム ディレクトリに移動し、すべての **gz** ボリュームを圧縮解除します。
 
-    ```
-        gunzip \*.gz
+    ```console
+    gunzip \*.gz
     ```
     
 ![圧縮解除された gz ボリュームを示すファイル エクスプローラー](media/01-gunzip.png)
@@ -100,9 +100,9 @@ ADCD メディアへのアクセスが必要です。 以下の手順は、IBM �
 次の手順では、アップロードされたパッケージを使用するように zD&T を構成します。 zD&T 内のイメージ ストレージ プロセスによって、イメージをマウントして使用できます。 SSH または FTP を使用できます。
 
 1. **zDTServer** を起動します。 これを行うには、ルート レベルにいる必要があります。 次の 2 つのコマンドを順に入力します。
-    ```
-        sudo su -
-        /opt/ibm/zDT/bin/startServer
+    ```console
+    sudo su -
+    /opt/ibm/zDT/bin/startServer
     ```
 2. コマンドの URL 出力をメモし、その URL を使用して Web サーバーにアクセスします。 それは次のようになります。
      > https://(VM 名または IP アドレス):9443/ZDTMC/index.html
@@ -188,9 +188,9 @@ ADCD メディアへのアクセスが必要です。 以下の手順は、IBM �
 
 ## <a name="learn-more"></a>詳細情報
 
-- [メインフレームの移行: 通説と事実](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
-- [Azure 上の IBM DB2 pureScale](https://docs.microsoft.com/azure/virtual-machines/linux/ibm-db2-purescale-azure)
-- [トラブルシューティング](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
+- [メインフレームの移行: 通説と事実](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
+- [Azure 上の IBM DB2 pureScale](../../../linux/ibm-db2-purescale-azure.md)
+- [トラブルシューティング](../../../troubleshooting/index.yml)
 - [メインフレームから Azure への移行の解明](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/29/2019
 ms.author: apimpm
-ms.openlocfilehash: 7f87389016286c9f1b91abc77155be9e94005371
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 043a3d0b63dfc74f587b58b3c2ac42f1a084cc4a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335867"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250313"
 ---
 # <a name="manage-protocols-and-ciphers-in-azure-api-management"></a>Azure API Management でプロトコルと暗号を管理する
 
@@ -42,5 +42,5 @@ Azure API Management では、3DES 暗号と同様にクライアントとバッ
 
 ## <a name="next-steps"></a>次のステップ
 
-* [TLS (トランスポート層セキュリティ)](https://docs.microsoft.com/dotnet/framework/network-programming/tls)の詳細を参照してください。
+* [TLS (トランスポート層セキュリティ)](/dotnet/framework/network-programming/tls)の詳細を参照してください。
 * API Management についてのその他の [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=api-management) をご覧ください。

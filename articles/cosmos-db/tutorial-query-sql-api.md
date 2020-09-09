@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:Azure Cosmos DB で SQL を使用してクエリを実行する方法
-description: チュートリアル:Azure Cosmos DB に対する SQL クエリを Query Playground を使用して実行する方法について説明します
+description: チュートリアル:Azure Cosmos DB に対する SQL クエリをクエリ プレイグラウンドを使用して実行する方法について説明します
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 7e83ed0f9e635ed24b7e6115eeaaa9057d422c69
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2a6033ef1d2b7dda04b1510d42fa49141e0b79b4
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74870073"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135999"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>チュートリアル:SQL API を使って Azure Cosmos DB に対するクエリを実行する
 
@@ -56,6 +56,7 @@ Azure Cosmos DB [SQL API](documentdb-introduction.md) では SQL を使用した
   "isRegistered": false
 }
 ```
+
 ## <a name="where-can-i-run-sql-queries"></a>SQL クエリを実行できるところ
 
 クエリを実行するには、Azure Portal のデータ エクスプローラーを使用するか、[REST API および SDK](sql-api-sdk-dotnet.md) で行います。既存のサンプル データ セットに対してクエリを実行する [Query Playground](https://www.documentdb.com/sql/demo) を使用することもできます。
@@ -65,17 +66,19 @@ SQL クエリについて詳しくは、次を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルでは、Azure Cosmos DB アカウントとコレクションがあると仮定しています。 どちらもない場合には、 [5 分でできるクイックスタート](create-cosmosdb-resources-portal.md)を完了してください。
+このチュートリアルでは、Azure Cosmos DB アカウントとコレクションがあると仮定しています。 これらのリソースがない場合は、 [5 分でできるクイックスタート](create-cosmosdb-resources-portal.md)を完了してください。
 
 ## <a name="example-query-1"></a>サンプル クエリ 1
 
-上記の家族に関するサンプル ドキュメントに対して、次の SQL クエリは ID フィールドが `WakefieldFamily` と一致するドキュメントを返します。 `SELECT *` ステートメントであるため、クエリの出力は完全な JSON ドキュメントになります。
+上の家族に関するサンプル ドキュメントに対して、次の SQL クエリは ID フィールドが `WakefieldFamily` と一致するドキュメントを返します。 `SELECT *` ステートメントであるため、クエリの出力は完全な JSON ドキュメントになります。
 
 **クエリ**
 
+```sql
     SELECT * 
     FROM Families f 
     WHERE f.id = "WakefieldFamily"
+```
 
 **結果**
 
@@ -110,23 +113,34 @@ SQL クエリについて詳しくは、次を参照してください。
 
 ## <a name="example-query-2"></a>サンプル クエリ 2
 
-次のクエリでは、ID が `WakefieldFamily` と一致する家族の子供の名前がすべて学年順に返されます。
+次のクエリでは、ID が `WakefieldFamily` と一致する家族の子供の名前がすべて返されます。
 
 **クエリ**
 
+```sql
     SELECT c.givenName 
     FROM Families f 
     JOIN c IN f.children 
     WHERE f.id = 'WakefieldFamily'
+```
 
 **結果**
 
-[ { "givenName":"Jesse" }, { "givenName":"Lisa" } ]
+```
+[
+    {
+        "givenName": "Jesse"
+    },
+    {
+        "givenName": "Lisa"
+    }
+]
+```
 
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、次の手順を行いました。
+このチュートリアルでは、次の作業を行いました。
 
 > [!div class="checklist"]
 > * SQL を使用してクエリを実行する方法を学習しました。  

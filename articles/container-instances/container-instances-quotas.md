@@ -2,19 +2,21 @@
 title: サービスのクォータと利用可能なリージョン
 description: Azure Container Instances サービスのクォータ、制限、リージョンでの利用可能性。
 ms.topic: article
-ms.date: 03/01/2019
-ms.openlocfilehash: b3e7f2f67d806bd2fca74f58d446b0de9a4b8f44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/22/2020
+ms.openlocfilehash: eaaa8e0b2d72aaea546a1bc351da40932c1deb14
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77117890"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384832"
 ---
 # <a name="quotas-and-limits-for-azure-container-instances"></a>Azure Container Instances のクォータと制限
 
 すべての Azure サービスには、リソースと機能に対する特定の既定の制限とクォータが含まれます。 この記事では、Azure Container Instances の既定のクォータと制限について説明します。
 
 Azure Container Instances のコンピューティング、メモリ、およびストレージ リソースの可用性は、リージョンとオペレーティング システムによって異なります。 詳細については、[Azure Container Instances のリソースの可用性](container-instances-region-availability.md)に関するページを参照してください。
+
+[List Usage](/rest/api/container-instances/location/listusage) API を使用して、サブスクリプションのリージョンの現在のクォータ使用率を確認します。
 
 ## <a name="service-quotas-and-limits"></a>サービスのクォータと制限
 

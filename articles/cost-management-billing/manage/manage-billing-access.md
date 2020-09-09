@@ -1,20 +1,21 @@
 ---
 title: Azure 課金情報へのアクセスの管理
-description: チームのメンバーが Azure 課金情報にアクセスできるようにする方法について説明します。
+description: Azure 課金情報へのアクセス権をチームのメンバーに付与する方法について説明します。
 author: vikramdesai01
 ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 02/12/2020
+ms.subservice: billing
+ms.topic: how-to
+ms.date: 08/20/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: e7a6f105c6c8292e8e95b388d60dd95c3548dbb5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f42c185046e6ce78edd234923da1a3390ed08608
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79237668"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690852"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Asure の課金情報へのアクセスの管理
 
@@ -105,7 +106,7 @@ Azure portal では自分のアカウントの課金情報へのアクセス権�
 ## <a name="next-steps"></a>次のステップ
 
 - 所有者または共同作成者など他のロールのユーザーは、課金状況だけではなく、Azure サービスにもアクセスできます。 これらのロールの管理については、「[RBAC と Azure portal を使用してアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
-- ロールの詳細については、「[Azure リソースの組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
+- ロールの詳細については、[Azure の組み込みロール](../../role-based-access-control/built-in-roles.md)に関するページを参照してください。
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 

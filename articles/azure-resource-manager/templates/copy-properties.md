@@ -3,12 +3,12 @@ title: プロパティの複数のインスタンスを定義する
 description: Azure Resource Manager テンプレートで copy 操作を使用して、リソースのプロパティを作成する際に複数回反復処理する方法について説明します。
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: 9fde2ecf14bc5b29bb31ffa78e067b780438578a
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 61122b01889da832a73f729833ab0af676904d54
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583415"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678462"
 ---
 # <a name="property-iteration-in-arm-templates"></a>ARM テンプレートでのプロパティの反復処理
 
@@ -55,7 +55,7 @@ count は負の数値にすることはできません。 Azure CLI、PowerShell
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "numberOfDataDisks": {

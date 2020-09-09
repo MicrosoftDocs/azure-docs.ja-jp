@@ -1,6 +1,6 @@
 ---
 title: Azure API Management のサブスクリプション | Microsoft Docs
-description: Azure API Management のサブスクリプションの概念について説明します。
+description: Azure API Management のサブスクリプションの概念について説明します。 コンシューマーは、Azure API Management のサブスクリプションを使用して API にアクセスします。
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 9144af131e1427d0b3226655c871921ac1d91665
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1ab8990d0e5c389e0454c23a31989a71b0cd9a2
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70073424"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843778"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Azure API Management のサブスクリプション
 
@@ -33,7 +33,7 @@ API にアクセスするためのサブスクリプション キーを取得す
 > API Management では、API へのアクセスをセキュリティで保護するための他のメカニズムもサポートしています。たとえば、以下があります。
 > - [OAuth2.0](api-management-howto-protect-backend-with-aad.md)
 > - [クライアント証明書](api-management-howto-mutual-certificates-for-clients.md)
-> - [IP ホワイトリスト登録](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies#RestrictCallerIPs)
+> - [IP ホワイトリスト登録](./api-management-access-restriction-policies.md#RestrictCallerIPs)
 
 ## <a name="scope-of-subscriptions"></a>サブスクリプションの範囲
 
@@ -41,7 +41,7 @@ API にアクセスするためのサブスクリプション キーを取得す
 
 ### <a name="subscriptions-for-a-product"></a>製品のサブスクリプション
 
-従来、API Management のサブスクリプションは、常に 1 つの [API 製品](api-management-terminology.md)の範囲に関連付けられていました。 開発者は、開発者ポータルで製品の一覧を確認していました。 その後、使用する製品のサブスクリプション要求を送信します。 サブスクリプション要求が (自動的にまたは API の公開元によって) 承認されると、開発者はそのキーを使用して製品内のすべての API にアクセスできます。現時点では、製品をスコープとするサブスクリプションは、開発者ポータルのユーザー プロファイルセクションにのみ表示されます。 
+従来、API Management のサブスクリプションは、常に 1 つの [API 製品](api-management-terminology.md)の範囲に関連付けられていました。 開発者は、開発者ポータルで製品の一覧を確認していました。 その後、使用する製品のサブスクリプション要求を送信します。 サブスクリプション要求が (自動的にまたは API の公開元によって) 承認されると、開発者はそのキーを使用して製品内のすべての API にアクセスできます。 現時点では、製品をスコープとするサブスクリプションは、開発者ポータルのユーザー プロファイル セクションにのみ表示されます。 
 
 ![製品のサブスクリプション](./media/api-management-subscriptions/product-subscription.png)
 
@@ -59,7 +59,7 @@ API Management の[従量課金](https://aka.ms/apimconsumptionblog)レベルの
 
     ![柔軟なサブスクリプション](./media/api-management-subscriptions/flexible-subscription.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 API Management の詳細情報:
 
 + API Management の他の[概念](api-management-terminology.md)を確認します。

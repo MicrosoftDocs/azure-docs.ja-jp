@@ -4,12 +4,12 @@ description: Service Fabric での Azure のマネージド ID の使用につ�
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: a26f188ed2f5e18bdf775cd1fb21001495ffdc89
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 786d9b4b577f4a686367a103542ae4f8fa5453da
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81461448"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257636"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric"></a>Service Fabric での Azure のマネージド ID の使用
 
@@ -24,7 +24,7 @@ ms.locfileid: "81461448"
 
 Azure のマネージド ID は、以下に示すいくつかの重要な概念に基づいています。
 
-- **クライアント ID** - Azure AD によって生成される一意識別子で、初期プロビジョニングの間にアプリケーションおよびサービス プリンシパルと結び付けられます ([アプリケーション ID](/azure/active-directory/develop/developer-glossary#application-id-client-id) も参照)。
+- **クライアント ID** - Azure AD によって生成される一意識別子で、初期プロビジョニングの間にアプリケーションおよびサービス プリンシパルと結び付けられます ([アプリケーション ID](../active-directory/develop/developer-glossary.md#application-id-client-id) も参照)。
 
 - **プリンシパル ID** - マネージド ID に対するサービス プリンシパル オブジェクトのオブジェクト ID であり、Azure リソースへのロールベースのアクセス権を付与するために使用されます。
 
@@ -35,7 +35,7 @@ Azure のマネージド ID は、以下に示すいくつかの重要な概念�
 - **システム割り当てマネージド ID** は、Azure サービス インスタンス上で直接有効にされます。  システム割り当て ID のライフサイクルは、その ID が有効にされた Azure サービス インスタンスに固有です。
 - **ユーザー割り当てマネージド ID** は、スタンドアロン Azure リソースとして作成されます。 ID は、1 つ以上の Azure サービス インスタンスに割り当てることができ、それらのインスタンスのライフサイクルとは別に管理されます。
 
-マネージド ID の種類の違いについて詳しくは、「[Azure リソースのマネージド ID のしくみ](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)」を参照してください。
+マネージド ID の種類の違いをより詳しく理解するには、[Azure リソースのマネージド ID のしくみ](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)に関するページを参照してください。
 
 ## <a name="supported-scenarios-for-service-fabric-applications"></a>Service Fabric アプリケーションのサポート シナリオ
 

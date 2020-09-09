@@ -1,14 +1,14 @@
 ---
 title: ISO 27001 ASE/SQL ワークロード ブループリント サンプルをデプロイする
 description: ブループリント アーティファクト パラメーターの詳細を含む ISO 27001 App Service Environment/SQL Database ワークロード ブループリント サンプルのデプロイ手順。
-ms.date: 01/13/2020
+ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 6b8f3b753f1dd8cfbc247a77f2004e3c4d3423bb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 74f2670b79d1968755e376d1f5a75bbb76e6e6c3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75922577"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072887"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>ISO 27001 App Service Environment/SQL Database ワークロード ブループリント サンプルをデプロイする
 

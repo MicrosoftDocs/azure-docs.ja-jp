@@ -9,12 +9,12 @@ ms.date: 12/11/2017
 ms.author: msangapu
 ms.reviewer: cephalin
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 327b48052e0134ae97f0a97f0a43f36e75f2e003
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: cc87438d785b7c45506c638ee80e10ae4021674f
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80058770"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962751"
 ---
 # <a name="create-a-scheduled-backup-for-an-app-service-app-using-cli"></a>CLI を使用して App Service アプリのスケジュールされたバックアップを作成する
 
@@ -50,6 +50,6 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
 その他の App Service の CLI サンプル スクリプトは、[Azure App Service のドキュメント](../samples-cli.md)のページにあります。

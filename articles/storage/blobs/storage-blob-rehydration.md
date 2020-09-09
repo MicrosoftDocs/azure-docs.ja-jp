@@ -1,6 +1,6 @@
 ---
 title: アーカイブ層から BLOB データをリハイドレートする
-description: データにアクセスできるように、アーカイブ ストレージから BLOB をリハイドレートします。
+description: BLOB データにアクセスできるように、アーカイブ ストレージから BLOB をリハイドレートします。 アーカイブ済み BLOB をオンライン層にコピーします。
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 82ea4ad23e3207f5641ade196f69595cd1e7b323
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a416c22c5b8e09104b20a17bc5042302fa56d8ba
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684089"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035146"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>アーカイブ層から BLOB データをリハイドレートする
 
@@ -34,6 +34,9 @@ BLOB はアーカイブ アクセス層に含まれていますが、オフラ�
 アーカイブ BLOB をリハイドレートしたくない場合は、[[BLOB のコピー]](https://docs.microsoft.com/rest/api/storageservices/copy-blob) 操作の実行を選択できます。 オンラインのホット層またはクール層で、使用する新しい BLOB が作成されている間、元の BLOB はアーカイブ内で未変更のままとなります。 [BLOB のコピー] 操作では、オプションの *x-ms-rehydrate-priority* プロパティを Standard または High に設定して、BLOB コピーを作成する優先順位を指定することもできます。
 
 アーカイブからの BLOB のコピーは、選択されたリハイドレートの優先度によっては数時間かかることがあります。 **[BLOB のコピー]** 操作では、バックグラウンドでアーカイブ ソース BLOB が読み取られ、選択された移動先の層に新しいオンライン BLOB が作成されます。 BLOB を一覧表示すると新しい BLOB が表示される場合がありますが、ソース アーカイブ BLOB からの読み取りが完了し、データが新しいオンライン コピー先 BLOB に書き込まれるまでは、データを使用することができません。 新しい BLOB は独立したコピーであり、変更や削除を行ってもソース アーカイブ BLOB には影響しません。
+
+> [!IMPORTANT]
+> コピー先でコピーが正常に完了するまでは、コピー元 BLOB を削除しないでください。 コピー元 BLOB が削除された場合、コピー先 BLOB はコピーを完了できず、空になります。 *x-ms-copy-status* を確認して、コピー操作の状態を確認することができます。
 
 アーカイブ BLOB は、同じストレージ アカウント内のオンラインの移動先の層にのみコピーできます。 アーカイブ BLOB を別のアーカイブ BLOB にコピーすることはサポートされていません。 次の表は CopyBlob の機能をまとめたものです。
 
@@ -91,10 +94,10 @@ $storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountN
 $ctx = $storageAccount.Context
 
 #Select the blob from a container
-$blobs = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $context
+$blob = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $ctx
 
 #Change the blob’s access tier to Hot using Standard priority rehydrate
-$blob.ICloudBlob.SetStandardBlobTier("Hot", “Standard”)
+$blob.ICloudBlob.SetStandardBlobTier("Hot", "Standard")
 ```
 ---
 

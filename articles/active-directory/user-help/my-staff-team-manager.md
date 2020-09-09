@@ -14,10 +14,10 @@ ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
 ms.openlocfilehash: d692302df1f5c03a7dce60858b31e0ca66de4c80
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83744537"
 ---
 # <a name="delegate-user-management-with-my-staff-preview"></a>マイ スタッフでユーザーの管理を委任する (プレビュー)

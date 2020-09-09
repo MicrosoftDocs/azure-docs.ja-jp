@@ -1,14 +1,14 @@
 ---
 title: チュートリアル:カスタム ポリシー定義の作成
 description: このチュートリアルでは、Azure リソースに対してカスタム ビジネス ルールを適用するための Azure Policy のカスタム ポリシー定義を作成します。
-ms.date: 11/25/2019
+ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: 7a1eb8abcfbf7513b4620f66c0a7fdbd288f8705
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5eee969257f5cf640ce82fbda9877974207c87af
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82190709"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044619"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>チュートリアル:カスタム ポリシー定義の作成
 
@@ -53,7 +53,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 Azure リソースのプロパティを判別する方法はたくさんあります。 このチュートリアルでは、それぞれについて見ていきます。
 
 - VS Code 用 Azure Policy 拡張機能
-- Resource Manager テンプレート
+- Azure Resource Manager テンプレート (ARM テンプレート)
   - 既存のリソースのエクスポート
   - 作成エクスペリエンス
   - クイック スタート テンプレート (GitHub)
@@ -64,9 +64,9 @@ Azure リソースのプロパティを判別する方法はたくさんあり�
 
 [VS Code 拡張機能](../how-to/extension-for-vscode.md#search-for-and-view-resources)を使用すると、環境内のリソースを参照し、各リソースの Resource Manager プロパティを表示できます。
 
-### <a name="resource-manager-templates"></a>Resource Manager テンプレート
+### <a name="arm-templates"></a>ARM テンプレート
 
-管理しようとしているプロパティを含む [Resource Manager テンプレート](../../../azure-resource-manager/templates/template-tutorial-create-encrypted-storage-accounts.md)を確認する方法はいくつかあります。
+管理しようとしているプロパティを含む [Resource Manager テンプレート](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md)を確認する方法はいくつかあります。
 
 #### <a name="existing-resource-in-the-portal"></a>ポータルにおける既存のリソース
 
@@ -144,12 +144,11 @@ Azure リソースのプロパティを判別する方法はたくさんあり�
 
 #### <a name="quickstart-templates-on-github"></a>GitHub 上のクイック スタート テンプレート
 
-GitHub 上の [Azure クイック スタート テンプレート](https://github.com/Azure/azure-quickstart-templates)には、さまざまなリソース用に構築された数百もの Resource Manager テンプレートがあります。 これらのテンプレートは、探しているリソースのプロパティを見つけるのに役立ちます。 探しているプロパティであるように見えて、別のものを制御しているプロパティである場合もあります。
+GitHub 上の [Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates)には、さまざまなリソース用に構築された数百もの ARM テンプレートがあります。 これらのテンプレートは、探しているリソースのプロパティを見つけるのに役立ちます。 探しているプロパティであるように見えて、別のものを制御しているプロパティである場合もあります。
 
 #### <a name="resource-reference-docs"></a>リソースのリファレンス ドキュメント
 
-**supportsHttpsTrafficOnly** が適切なプロパティであるかどうかを検証するには、Resource Manager テンプレート リファレンスで、ストレージ プロバイダーの[ストレージ アカウント リソース](/azure/templates/microsoft.storage/2018-07-01/storageaccounts)について確認します。
-プロパティ オブジェクトには、有効なパラメーターのリストがあります。 [[StorageAccountPropertiesCreateParameters-object]](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) リンクを選択すると、許容されるプロパティの表が表示されます。 **supportsHttpsTrafficOnly** が存在し、その説明は探しているものと一致していてビジネス要件を満たします。
+**supportsHttpsTrafficOnly** が適切なプロパティであるかどうかを検証するには、ARM テンプレート リファレンスで、ストレージ プロバイダーの[ストレージ アカウント リソース](/azure/templates/microsoft.storage/2018-07-01/storageaccounts)について確認します。 プロパティ オブジェクトには、有効なパラメーターのリストがあります。 [[StorageAccountPropertiesCreateParameters-object]](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) リンクを選択すると、許容されるプロパティの表が表示されます。 **supportsHttpsTrafficOnly** が存在し、その説明は探しているものと一致していてビジネス要件を満たします。
 
 ### <a name="azure-resource-explorer"></a>Azure Resource Explorer
 
@@ -171,6 +170,9 @@ Azure リソースのエイリアスを判別する方法はいくつかあり�
 ### <a name="get-aliases-in-vs-code-extension"></a>VS Code 拡張機能でエイリアスを取得する
 
 VS Code 拡張機能の Azure Policy 拡張機能を使用すると、リソースを簡単に参照し、[エイリアスを検出](../how-to/extension-for-vscode.md#discover-aliases-for-resource-properties)できます。
+
+> [!NOTE]
+> VS Code 拡張機能では、Resource Manager モードのプロパティのみが公開され、[リソースプロバイダー モード](../concepts/definition-structure.md#mode)のプロパティは表示されません。
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -216,7 +218,7 @@ az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' |
 Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
-これらの結果は、Resource Manager テンプレートや Azure Resource Explorer を使用した場合と似ています。 しかし、Azure Resource Graph の結果には、_エイリアス_ 配列を _プロジェクションする_ ことで、"[エイリアス](../concepts/definition-structure.md#aliases)" の詳細を含めることもできます。
+これらの結果は、ARM テンプレートや Azure Resource Explorer を使用した場合と似ています。 しかし、Azure Resource Graph の結果には、_エイリアス_ 配列を _プロジェクションする_ ことで、"[エイリアス](../concepts/definition-structure.md#aliases)" の詳細を含めることもできます。
 
 ```kusto
 Resources

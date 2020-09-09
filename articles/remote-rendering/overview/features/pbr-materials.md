@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 64553506f75451c50a87932904f00a7275ea9286
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: e4ee6abe7481fef4d56c980da80e319624975384
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80678913"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021315"
 ---
 # <a name="pbr-materials"></a>PBR 素材
 
@@ -26,20 +26,20 @@ PBR は、**P**hysically **B**ased **R**endering (物理ベース レンダリ�
 
 これらのプロパティは、すべての素材に共通です。
 
-* **albedoColor:** この色には、*albedoMap* や "*頂点カラー*" など、他の色が乗算されます。 素材に対して "*透明度*" が有効になっている場合、アルファ チャネルを使用して不透明度が調整されます。`1` は完全に不透明、`0` は完全に透明を意味します。 既定値は白です。
+* **albedoColor:** この色には、*albedoMap* や " *:::no-loc text="vertex "::: カラー*" など、その他の色が乗算されます。 素材に対して*透明度*が有効な場合、アルファ チャネルを使用して不透明度が調整されます。ここで、`1` は完全に不透明、`0` は完全に透明を意味します。 既定値は白です。
 
   > [!NOTE]
   > まったく汚れのないガラスのように、PBR 素材が完全に透明な場合でも、環境が反射されます。 太陽のような明るいスポットは、反射でもやはり見えます。 これは、[色素材](color-materials.md)とは異なります。
 
-* **albedoMap:** ピクセル単位のアルベド値に対する [2D テクスチャ](../../concepts/textures.md)。
+* **albedoMap:** ピクセル単位の albedo 値の [2D テクスチャ](../../concepts/textures.md)。
 
-* **alphaClipEnabled** と **alphaClipThreshold:** *alphaClipEnabled* が true の場合、アルベドのアルファ値が *alphaClipThreshold* より小さいすべてのピクセルは描画されません。 アルファ クリッピングは、透明度を有効にしなくても使用でき、レンダリングがはるかに高速になります。 ただし、アルファ クリッピングされた素材は、完全に不透明な素材と比べると、レンダリングは遅くなります。 既定では、アルファ クリッピングは無効になっています。
+* **alphaClipEnabled** と **alphaClipThreshold:** *alphaClipEnabled* が true の場合、albedo アルファ値が *alphaClipThreshold* よりも小さいすべてのピクセルは描画されません。 アルファ クリッピングは、透明度を有効にしなくても使用でき、レンダリングがはるかに高速になります。 ただし、アルファ クリッピングされた素材は、完全に不透明な素材と比べると、レンダリングは遅くなります。 既定では、アルファ クリッピングは無効になっています。
 
 * **textureCoordinateScale** と **textureCoordinateOffset:** スケールが UV テクスチャ座標に乗算され、オフセットが追加されます。 テクスチャの伸縮とシフトに使用できます。 既定のスケールは (1, 1) で、オフセットは (0, 0) です。
 
-* **useVertexColor:** メッシュに頂点カラーが含まれていて、このオプションが有効になっている場合は、メッシュの頂点カラーが *albedoColor* と *albedoMap* に乗算されます。 既定では、頂点カラーは無効になっています。
+* **useVertexColor:** メッシュに :::no-loc text="vertex"::: カラーが含まれていて、このオプションが有効になっている場合は、メッシュの :::no-loc text="vertex"::: カラーが *albedoColor* と *albedoMap* に乗算されます。 既定では *useVertexColor* は無効になっています。
 
-* **isDoubleSided:** 両面に対する表示が true に設定されている場合、この素材が表示されている三角形は、カメラが背面を見ている場合でもレンダリングされます。 PBR 素材の場合、照明も背面に対して適切に計算されます。 既定では、このオプションは無効になっています。 「[片面レンダリング](single-sided-rendering.md)」も参照してください。
+* **isDoubleSided:** 両面に対する表示が true に設定されている場合、この素材が表示されている三角形は、カメラが背面を見ている場合でもレンダリングされます。 PBR 素材の場合、照明も背面に対して適切に計算されます。 既定では、このオプションは無効になっています。 「[:::no-loc text="Single-sided"::: レンダリング](single-sided-rendering.md)」も参照してください。
 
 ## <a name="pbr-material-properties"></a>PBR 素材のプロパティ
 

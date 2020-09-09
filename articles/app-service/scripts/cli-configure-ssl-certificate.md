@@ -7,12 +7,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
 ms.custom: mvc, seodec18
-ms.openlocfilehash: d1775f3af390bb71b6895dc6d43c5ae574371aef
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 18dc50302b4a77d8e3e7683306e2aa4d07ef5fe8
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537663"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962368"
 ---
 # <a name="bind-a-custom-tlsssl-certificate-to-an-app-service-app-using-cli"></a>CLI を使用してカスタム TLS/SSL 証明書を App Service アプリにバインドする
 
@@ -48,6 +48,6 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
 その他の App Service の CLI サンプル スクリプトは、[Azure App Service のドキュメント](../samples-cli.md)のページにあります。

@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: tyao
-ms.openlocfilehash: 077f127648688b25d45b433fa2bc94ee011b3f2d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f41dc688996b2431060a3cde209ca1ed4a21fe8c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336114"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005618"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>Azure Front Door 用の Web アプリケーション ファイアウォールで IP 制限規則を構成する
 
@@ -40,7 +40,7 @@ Azure Front Door プロファイルを作成するには、「[クイック ス�
    |サブスクリプション     |サブスクリプションを選択します。|
    |Resource group     |フロント ドアがあるリソース グループを選択します。|
    |ポリシー名     |ポリシーの名前を入力します|
-   |ポリシーの状態     |Enabled|
+   |[ポリシーの状態]     |Enabled|
 
    **[Next: Policy settings]/(次へ: ポリシー設定/)** を選択します
 
@@ -87,7 +87,7 @@ Azure Front Door プロファイルを作成するには、「[クイック ス�
 IP 制限ポリシーの構成を始める前に、ご自分の CLI 環境をセットアップして、Azure Front Door プロファイルを作成します。
 
 #### <a name="set-up-the-azure-cli-environment"></a>Azure CLI 環境をセットアップする
-1. [Azure CLI](/cli/azure/install-azure-cli) をインストールするか、Azure Cloud Shell を使用します。 Azure Cloud Shell は、Azure Portal 内で直接実行できる無料の Bash シェルです。 Azure CLI が事前にインストールされており、アカウントで使用できるように構成されています。 続く CLI コマンドで **[試してみる]** ボタンを選択し、次に、開いた Cloud Shell セッションでご自分の Azure アカウントにサインインします。 セッションが開始されたら、`az extension add --name front-door` を入力して Azure Front Door 拡張機能を追加します。
+1. [Azure CLI](/cli/azure/install-azure-cli) をインストールするか、Azure Cloud Shell を使用します。 Azure Cloud Shell は、Azure Portal 内で直接実行できる無料の Bash シェルです。 Azure CLI が事前にインストールされており、アカウントで使用できるように構成されています。 続く CLI コマンドで **[使ってみる]** ボタンを選択し、次に、開いた Cloud Shell セッションでご自分の Azure アカウントにサインインします。 セッションが開始されたら、`az extension add --name front-door` を入力して Azure Front Door 拡張機能を追加します。
  2. Bash でローカルに CLI を使用している場合は、`az login` を使って Azure にサインインします。
 
 #### <a name="create-an-azure-front-door-profile"></a>Azure Front Door プロファイルを作成する
@@ -168,7 +168,7 @@ IP 制限ポリシーの構成を始める前に、PowerShell 環境をセット
 #### <a name="set-up-your-powershell-environment"></a>PowerShell 環境をセットアップする
 Azure PowerShell には、Azure リソースを管理するために [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) モデルを使用する一連のコマンドレットが用意されています。
 
-[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) をローカル コンピューターにインストールして、すべての PowerShell セッションで使用することができます。 ページの手順に従い、Azure の資格情報を使用して PowerShell にサインインし、次に Az モジュールをインストールします。
+[Azure PowerShell](https://docs.microsoft.com/powershell/azure/) をローカル コンピューターにインストールして、すべての PowerShell セッションで使用することができます。 ページの手順に従い、Azure の資格情報を使用して PowerShell にサインインし、次に Az モジュールをインストールします。
 
 1. 次のコマンドを使用して Azure に接続し、次に対話型ダイアログを使用してサインインします。
     ```

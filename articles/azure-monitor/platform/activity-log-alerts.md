@@ -4,12 +4,12 @@ description: アクティビティ ログで特定のイベントが発生した
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 1a932aba55ec9bd5d92c60338a3c1fc4bb481c1b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ed73678e0df1e068782c2a094846132be58cfe2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137707"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516126"
 ---
 # <a name="alerts-on-activity-log"></a>アクティビティ ログ アラート
 
@@ -25,11 +25,11 @@ ms.locfileid: "82137707"
 * Azure サブスクリプションでリソースに特定の操作が発生した場合。多くの場合、特定のリソース グループまたはリソースを対象とします。 たとえば、myProductionResourceGroup 内の仮想マシンが削除されたときに通知を受け取ることができます。 また、サブスクリプション内のユーザーに新しい役割が割り当てられた場合に通知を受け取ることもできます。
 * サービス正常性イベントが発生した場合。 サービス正常性イベントには、サブスクリプション内のリソースに適用されるインシデント イベントとメンテナンス イベントの通知が含まれます。
 
-アクティビティ ログに対してアラート ルールを作成する状況を簡単にたとえるとすれば、[Azure portal のアクティビティ ログ](activity-log-view.md#azure-portal)でイベントを探索したりフィルター処理したりするのに似ています。 Azure Monitor のアクティビティ ログでは、必要なイベントを検索またはフィルター処理した後、 **[アクティビティ ログ アラートの追加]** ボタンを使用することでアラートを作成できます。
+アクティビティ ログに対してアラート ルールを作成する状況を簡単にたとえるとすれば、[Azure portal のアクティビティ ログ](./activity-log.md#view-the-activity-log)でイベントを探索したりフィルター処理したりするのに似ています。 Azure Monitor のアクティビティ ログでは、必要なイベントを検索またはフィルター処理した後、 **[アクティビティ ログ アラートの追加]** ボタンを使用することでアラートを作成できます。
 
 いずれの場合でも、アクティビティ ログ アラートでは、アラートが作成されたサブスクリプション内のイベントのみが監視されます。
 
-JSON オブジェクトの任意の最上位プロパティに基づいて、アクティビティ ログ イベントのアクティビティ ログ アラートを構成できます。 詳細については、[アクティビティ ログのカテゴリ](activity-log-view.md#categories-in-the-activity-log)に関するページを参照してください サービス正常性イベントについて詳しくは、[サービス通知のアクティビティ ログ アラートの受け取り](alerts-activity-log-service-notifications.md)に関する記事をご覧ください。 
+JSON オブジェクトの任意の最上位プロパティに基づいて、アクティビティ ログ イベントのアクティビティ ログ アラートを構成できます。 詳細については、[アクティビティ ログのカテゴリ](./activity-log.md#view-the-activity-log)に関するページを参照してください サービス正常性イベントについて詳しくは、[サービス通知のアクティビティ ログ アラートの受け取り](../../service-health/alerts-activity-log-service-notifications-portal.md)に関する記事をご覧ください。 
 
 アクティビティ ログ アラートには、次のような一般的なオプションがいくつか用意されています。
 
@@ -61,4 +61,4 @@ JSON オブジェクトの任意の最上位プロパティに基づいて、ア
 - [アラートの概要](alerts-overview.md)について把握します。
 - [アクティビティ ログ アラートの作成と変更](alerts-activity-log.md)について学習します。
 - [アクティビティ ログ アラート webhook スキーマ](activity-log-alerts-webhook.md)を確認します。
-- [サービス正常性の通知](service-notifications.md)について学習します。
+- [サービス正常性の通知](../../service-health/service-notifications.md)について学習します。

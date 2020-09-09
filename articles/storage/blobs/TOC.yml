@@ -105,18 +105,30 @@
           href: ../common/storage-samples-python.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: JavaScript
           href: ../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: その他の言語
+          href: ../common/storage-samples.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Azure PowerShell
           href: storage-samples-blobs-powershell.md
         - name: Azure CLI
           href: storage-samples-blobs-cli.md
-        - name: Azure Policy の組み込み
-          displayName: 'samples, policies, definitions'
-          href: ../common/policy-samples.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: 概念
       items:
         - name: ストレージ アカウント
           href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Security
+        - name: 承認
+          items:
+            - name: データ操作の承認
+              href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              items:
+                - name: Azure AD による承認
+                  href: ../common/storage-auth-aad.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 共有キーによる承認
+                  href: /rest/api/storageservices/authorize-with-shared-key
+                - name: Shared Access Signature (SAS) によるアクセスの委任
+                  href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: 管理操作の承認
+              href: ../common/authorization-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: セキュリティ
           items:
             - name: セキュリティに関する推奨事項
               href: security-recommendations.md
@@ -129,19 +141,6 @@
                   href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 要求でのカスタマー指定のキー
                   href: ../common/encryption-customer-provided-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: データ操作の承認
-              href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-              items:
-                - name: Azure AD による承認
-                  href: ../common/storage-auth-aad.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 共有キーによる承認
-                  href: /rest/api/storageservices/authorize-with-shared-key
-                - name: Shared Access Signature (SAS) によるアクセスの委任
-                  href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: BLOB への匿名アクセス
-                  href: storage-manage-access-to-resources.md
-            - name: 管理操作の承認
-              href: ../common/authorization-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: 不変 BLOB
               href: storage-blob-immutable-storage.md
             - name: 高度な脅威保護
@@ -158,8 +157,10 @@
           items:
             - name: バージョン管理
               href: versioning-overview.md
-            - name: 論理的な削除
-              href: soft-delete-overview.md
+            - name: BLOB の論理的な削除
+              href: soft-delete-blob-overview.md
+            - name: コンテナーの論理的な削除
+              href: soft-delete-container-overview.md
             - name: スナップショット
               href: snapshots-overview.md
             - name: Change Feed
@@ -190,6 +191,18 @@
               href: storage-blob-reserved-capacity.md
             - name: コストの計画と管理
               href: ../common/storage-plan-manage-costs.md
+            - name: スケーラビリティとパフォーマンスのターゲット
+              items:
+                - name: BLOB ストレージ
+                  href: scalability-targets.md
+                - name: Standard Storage アカウント
+                  href: ../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Premium ブロック BLOB ストレージ アカウント
+                  href: scalability-targets-premium-block-blobs.md
+                - name: Premium ページ BLOB ストレージ アカウント
+                  href: scalability-targets-premium-page-blobs.md
+                - name: ストレージ リソース プロバイダー
+                  href: ../common/scalability-targets-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: コンカレンシー
           href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: BLOB データを検索して理解する
@@ -268,6 +281,8 @@
           href: storage-blob-pageblob-overview.md
         - name: 静的な Web サイト
           href: storage-blob-static-website.md
+        - name: NFS 3.0 プロトコルのサポート
+          href: network-file-system-protocol-support.md
     - name: 方法
       items:
         - name: ストレージ アカウントの作成と管理
@@ -297,56 +312,66 @@
               href: storage-blob-properties-metadata.md
             - name: BLOB のコピー (.NET)
               href: storage-blob-copy.md
+        - name: BLOB データへのアクセスの承認
+          items:
+            - name: ユーザーの承認オプション
+              items:
+                - name: ポータル
+                  href: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: PowerShell
+                  href: ../common/authorize-active-directory-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Azure CLI
+                  href: ../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: RBAC を使用したアクセス権の管理
+              items:
+                - name: ポータル
+                  href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: PowerShell
+                  href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Azure CLI
+                  href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Azure AD を使用した認証と承認
+              items:
+                - name: マネージド ID を使用した承認
+                  href: ../common/storage-auth-aad-msi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: アプリケーションからの承認
+                  href: ../common/storage-auth-aad-app.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: 共有キーによる承認
+              items:
+                - name: アカウント キーの表示と管理
+                  href: ../common/storage-account-keys-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 接続文字列の構成
+                  href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Azure Storage REST API の使用
+                  href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 共有キーによる承認の防止
+                  href: ../common/shared-key-authorization-prevent.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Shared Access Signature (SAS) によるアクセスの委任
+              items:
+                - name: ユーザーの委任 SAS の作成
+                  items:
+                    - name: PowerShell
+                      href: storage-blob-user-delegation-sas-create-powershell.md
+                    - name: Azure CLI
+                      href: storage-blob-user-delegation-sas-create-cli.md
+                    - name: .NET
+                      href: storage-blob-user-delegation-sas-create-dotnet.md
+                - name: サービス SAS の作成 (.NET)
+                  href: storage-blob-service-sas-create-dotnet.md
+                - name: アカウント SAS の作成 (.NET)
+                  href: ../common/storage-account-sas-create-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 保存されているアクセス ポリシーの定義
+                  href: ../common/storage-stored-access-policy-define-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: BLOB データへの匿名読み取りアクセスを管理する
+              items:
+                - name: コンテナーと BLOB 用の匿名読み取りアクセスを構成する
+                  href: anonymous-read-access-configure.md
+                - name: BLOB データへの匿名読み取りアクセスを禁止する
+                  href: anonymous-read-access-prevent.md
+                - name: パブリック コンテナーと BLOB に匿名でアクセスする (.NET)
+                  href: anonymous-read-access-client.md
         - name: BLOB データのセキュリティ保護
           items:
-            - name: BLOB データへのアクセスの承認
-              items:
-                - name: ユーザーの承認オプション
-                  items:
-                    - name: ポータル
-                      href: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: PowerShell
-                      href: ../common/authorize-active-directory-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Azure CLI
-                      href: ../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: RBAC を使用したアクセス権の管理
-                  items:
-                    - name: ポータル
-                      href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: PowerShell
-                      href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Azure CLI
-                      href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Azure AD を使用した認証と承認
-                  items:
-                    - name: マネージド ID を使用した承認
-                      href: ../common/storage-auth-aad-msi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: アプリケーションからの承認
-                      href: ../common/storage-auth-aad-app.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 共有キーによる承認
-                  items:
-                    - name: アカウント キーの表示と管理
-                      href: ../common/storage-account-keys-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: 接続文字列の構成
-                      href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Azure Storage REST API の使用
-                      href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Shared Access Signature (SAS) によるアクセスの委任
-                  items:
-                    - name: ユーザーの委任 SAS の作成
-                      items:
-                        - name: PowerShell
-                          href: storage-blob-user-delegation-sas-create-powershell.md
-                        - name: Azure CLI
-                          href: storage-blob-user-delegation-sas-create-cli.md
-                        - name: .NET
-                          href: storage-blob-user-delegation-sas-create-dotnet.md
-                    - name: サービス SAS の作成 (.NET)
-                      href: storage-blob-service-sas-create-dotnet.md
-                    - name: アカウント SAS の作成 (.NET)
-                      href: ../common/storage-account-sas-create-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: 保存されているアクセス ポリシーの定義
-                      href: ../common/storage-stored-access-policy-define-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Azure Storage の暗号化の管理
               items:
                 - name: BLOB が暗号化されているかどうかの確認
@@ -365,6 +390,10 @@
                           href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 要求での暗号化キーの指定
                   href: storage-blob-customer-provided-key.md
+                - name: 暗号化範囲の管理
+                  href: encryption-scope-manage.md
+                - name: ストレージ アカウントのインフラストラクチャの暗号化を有効にする
+                  href: ../common/infrastructure-encryption-enable.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: クライアント側の暗号化の構成
               items:
                 - name: .NET
@@ -379,8 +408,12 @@
                   href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: ファイアウォールと仮想ネットワークの構成
                   href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: トランスポート層セキュリティの有効化
-                  href: ../common/storage-security-tls.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: トランスポート層セキュリティ (TLS) を管理する
+                  items:
+                    - name: 受信要求に TLS の最小バージョンを適用する
+                      href: ../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                    - name: クライアント アプリケーションの TLS バージョンを構成する
+                      href: ../common/transport-layer-security-configure-client-version.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: 不変ポリシーの設定と管理
               href: storage-blob-immutability-policies-manage.md
         - name: データの冗長性を管理する
@@ -393,8 +426,10 @@
           items:
             - name: BLOB のバージョン管理を有効にする
               href: versioning-enable.md
-            - name: 論理的な削除を有効にする
-              href: soft-delete-enable.md
+            - name: BLOB の論理的な削除の有効化
+              href: soft-delete-blob-enable.md
+            - name: コンテナーの論理的な削除を有効にする
+              href: soft-delete-container-enable.md
             - name: スナップショットの作成 (.NET)
               href: snapshots-manage-dotnet.md
             - name: 変更フィード ログの処理
@@ -441,12 +476,12 @@
                   href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Azure Data Factory
               href: ../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Linux 上でファイル システムとして BLOB ストレージをマウントする
+            - name: NFS を使用してストレージをマウントする
+              href: network-file-system-protocol-support-how-to.md
+            - name: blobfuse を使用して Linux からストレージをマウントする
               href: storage-how-to-mount-container-linux.md
             - name: データ移動ライブラリを使用してデータを転送する
               href: ../common/storage-use-data-movement-library.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Storage の移行に関する FAQ
-              href: ../common/storage-migration-faq.md
         - name: BLOB を使用した開発
           items:
             - name: C++
@@ -457,76 +492,20 @@
               items:
                 - name: Spring Boot Starter を使用する
                   href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-storage
-            - name: Xamarin
-              href: storage-xamarin-blob-storage.md
         - name: リージョン間で移動する
           href: ../common/storage-account-move.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 監視 (クラシック)
           items:
             - name: Azure portal での監視 (クラシック)
               href: ../common/storage-monitor-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: トラブルシューティングのチュートリアル (クラシック)
-              href: ../common/storage-e2e-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: トラブルシューティング
           items:
             - name: 待機時間に関する問題
               href: ../common/troubleshoot-latency-storage-analytics-logs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: リファレンス
       items:
-        - name: スケーラビリティとパフォーマンスのターゲット
-          items:
-            - name: BLOB ストレージ
-              href: scalability-targets.md
-            - name: Standard Storage アカウント
-              href: ../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Premium ブロック BLOB ストレージ アカウント
-              href: scalability-targets-premium-block-blobs.md
-            - name: Premium ページ BLOB ストレージ アカウント
-              href: scalability-targets-premium-page-blobs.md
-            - name: ストレージ リソース プロバイダー
-              href: ../common/scalability-targets-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Azure PowerShell
-          href: /powershell/module/az.storage
-        - name: Azure CLI
-          href: /cli/azure/storage
-        - name: .NET
-          items:
-            - name: BLOB (バージョン 12.x)
-              href: /dotnet/api/azure.storage.blobs
-            - name: データ移動
-              href: /dotnet/api/microsoft.azure.storage.datamovement
-            - name: ストレージ リソース プロバイダー
-              href: /dotnet/api/overview/azure/storage/management
-        - name: Java
-          items:
-            - name: BLOB (バージョン 12.x)
-              href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html'
-            - name: BLOB (バージョン 8.x)
-              href: /java/api/com.microsoft.azure.storage.blob
-            - name: ストレージ リソース プロバイダー
-              href: /java/api/overview/azure/storage/management
-        - name: JavaScript (バージョン 12.x)
-          href: /javascript/api/@azure/storage-blob/
-        - name: Python (バージョン 12.x)
-          href: /python/api/azure-storage-blob/
-        - name: REST
-          items:
-            - name: BLOB、キュー、テーブル、ファイル
-              href: /rest/api/storageservices
-            - name: ストレージ リソース プロバイダー
-              href: /rest/api/storagerp
-            - name: インポート/エクスポート
-              href: /rest/api/storageimportexport
-        - name: C++
-          href: 'https://azure.github.io/azure-storage-cpp'
-        - name: Ruby
-          href: 'https://azure.github.io/azure-storage-ruby'
-        - name: PHP
-          href: 'https://azure.github.io/azure-storage-php/'
-        - name: iOS
-          href: 'https://azure.github.io/azure-storage-ios/'
-        - name: Android
-          href: 'https://azure.github.io/azure-storage-android'
+        - name: Azure Blob Storage リファレンス
+          href: ../blobs/reference.md
         - name: AzCopy v10
           items:
             - name: azcopy
@@ -551,6 +530,10 @@
               href: ../common/storage-ref-azcopy-jobs-resume.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: azcopy jobs show
               href: ../common/storage-ref-azcopy-jobs-show.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: azcopy load
+              href: ../common/storage-ref-azcopy-load.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: azcopy load clfs
+              href: ../common/storage-ref-azcopy-load-avere-cloud-file-system.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: azcopy list
               href: ../common/storage-ref-azcopy-list.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: azcopy login
@@ -568,6 +551,9 @@
           href: /azure/templates/microsoft.storage/allversions
         - name: データの監視
           href: ../common/monitor-storage-reference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Azure Policy の組み込み
+          displayName: 'samples, policies, definitions'
+          href: ../common/policy-reference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: リソース
       items:
         - name: Azure の更新情報
@@ -582,14 +568,22 @@
               href: 'https://github.com/microsoft/AzureStorageExplorer/releases'
             - name: ストレージ エクスプローラーのトラブルシューティング
               href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Storage Explorer のセキュリティ
+              href: ../common/storage-explorer-security.md
+            - name: Storage Explorer BLOB のバージョン管理
+              href: ../common/storage-explorer-blob-versioning.md
+            - name: Storage Explorer のサポート ポリシーとライフサイクル
+              href: ../common/storage-explorer-support-policy-lifecycle.md
             - name: ストレージ エクスプローラーのアクセシビリティ
               href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Azure Storage フォーラム
+        - name: Microsoft Q&A の Azure Storage
           href: 'https://docs.microsoft.com/answers/topics/azure-blob-storage.html'
         - name: Stack Overflow の Azure Storage
           href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
-        - name: Blob Storage の価格
+        - name: ブロック BLOB の価格
           href: 'https://azure.microsoft.com/pricing/details/storage/blobs/'
+        - name: ページ BLOB の価格
+          href: 'https://azure.microsoft.com/pricing/details/storage/page-blobs/'
         - name: Azure 料金計算ツール
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: ビデオ
@@ -674,7 +668,7 @@
           href: data-lake-storage-best-practices.md
         - name: クエリの高速化
           href: data-lake-storage-query-acceleration.md
-        - name: Architecture
+        - name: アーキテクチャ
           items:
             - name: Hadoop 用 Azure BLOB ファイル システム ドライバー
               href: data-lake-storage-abfs-driver.md
@@ -682,12 +676,15 @@
               href: data-lake-storage-introduction-abfs-uri.md
             - name: 階層型名前空間について
               href: data-lake-storage-namespace.md
-        - name: Security
+        - name: セキュリティ
           items:
             - name: セキュリティに関する推奨事項
               href: security-recommendations.md
             - name: アクセスの制御 (ディレクトリとファイル)
               href: data-lake-storage-access-control.md
+            - name: Azure Policy によるセキュリティ制御
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./security-controls-policy.md
         - name: 互換性
           items:
             - name: マルチプロトコル アクセス
@@ -716,12 +713,8 @@
                   href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: 方法
       items:
-        - name: 作成
-          items:
-            - name: ストレージ アカウントを作成する (汎用 v2)
-              href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: ストレージ アカウントを作成する (ブロック BLOB)
-              href: storage-blob-create-account-block-blob.md
+        - name: ストレージ アカウントの作成
+          href: create-data-lake-storage-account.md
         - name: 移行
           items:
             - name: Data Lake Storage Gen1 から移行する
@@ -746,6 +739,8 @@
               href: data-lake-storage-explorer.md
             - name: Hadoop ファイル システム CLI
               href: data-lake-storage-use-hdfs-data-lake-storage.md
+            - name: ACL を再帰的に設定する
+              href: recursive-access-control-lists.md
         - name: クエリ
           items:
             - name: クエリの高速化によるデータのフィルター処理
@@ -754,14 +749,14 @@
           items:
             - name: AzCopy
               items:
-                - name: はじめに
+                - name: 作業開始
                   href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Data Lake Storage の使用
                   href: ../common/storage-use-azcopy-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 構成、最適化、トラブルシューティング
                   href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Azure Data Factory
-              href: ../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              href: ../../data-factory/connector-azure-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: DistCp ツールを使用してデータを転送する
               href: data-lake-storage-use-distcp.md
             - name: データ移動ライブラリを使用してデータを転送する
@@ -831,6 +826,9 @@
         - name: Resource Manager テンプレート
           displayName: ARM
           href: /azure/templates/microsoft.storage/allversions
+        - name: Azure Policy の組み込み
+          displayName: 'samples, policies, definitions'
+          href: ../common/policy-reference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: リソース
       items:
         - name: 既知の問題
@@ -851,10 +849,16 @@
               href: 'https://github.com/microsoft/AzureStorageExplorer/releases'
             - name: ストレージ エクスプローラーのトラブルシューティング
               href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Storage Explorer のセキュリティ
+              href: ../common/storage-explorer-security.md
+            - name: Storage Explorer BLOB のバージョン管理
+              href: ../common/storage-explorer-blob-versioning.md
+            - name: Storage Explorer のサポート ポリシーとライフサイクル
+              href: ../common/storage-explorer-support-policy-lifecycle.md
             - name: ストレージ エクスプローラーのアクセシビリティ
               href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Microsoft Q&A 質問ページ
-          href: 'https://docs.microsoft.com/answers/products/topics/azure-blob-storage.html'
+          href: 'https://docs.microsoft.com/answers/topics/azure-blob-storage.html'
         - name: Stack Overflow の Azure Storage
           href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
         - name: 価格

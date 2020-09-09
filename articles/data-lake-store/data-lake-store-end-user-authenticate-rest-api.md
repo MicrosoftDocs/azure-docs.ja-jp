@@ -3,15 +3,15 @@ title: エンドユーザー認証 - REST と Data Lake Storage Gen1 - Azure
 description: REST API と Azure Active Directory を使用した Azure Data Lake Storage Gen1 でエンドユーザー認証を行う方法について説明します
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: ac06c9ef355eeba489d2006c435a48b7efcfd7f0
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 84e85e6e817972b8ec0bee0e8b441b3585d2d9dd
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688079"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984853"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>REST API を使用した Azure Data Lake Storage Gen1 でのエンドユーザー認証
 > [!div class="op_single_selector"]
@@ -41,23 +41,25 @@ ms.locfileid: "82688079"
 
 1. アプリケーションでユーザーを次の URL にリダイレクトします。
 
-        https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<APPLICATION-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
+    `https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<APPLICATION-ID>&response_type=code&redirect_uri=<REDIRECT-URI>`
 
    > [!NOTE]
-   > \<REDIRECT-URI> は、URL で使用できるようにエンコードする必要があります。 そのため、 https://localhost では `https%3A%2F%2Flocalhost` を使用します)
+   > \<REDIRECT-URI> は、URL で使用するにはエンコードする必要があります。 そのため、 https://localhost では `https%3A%2F%2Flocalhost` を使用します)
 
     このチュートリアルでは、上記 URL のプレースホルダーの値を置換し、Web ブラウザーのアドレス バーに貼り付けることができます。 ユーザーは、Azure ログインを使用して認証するためにリダイレクトされます。 正常にログインすると、ブラウザーのアドレス バーに応答が表示されます。 応答は次の形式になります。
 
-        http://localhost/?code=<AUTHORIZATION-CODE>&session_state=<GUID>
+    `http://localhost/?code=<AUTHORIZATION-CODE>&session_state=<GUID>`
 
 2. 応答から承認コードをキャプチャします。 このチュートリアルでは、Web ブラウザーのアドレス バーから承認コードをコピーして、次のスニペットで示すように POST 要求でトークン エンドポイントに渡すことができます。
 
-        curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token \
-        -F redirect_uri=<REDIRECT-URI> \
-        -F grant_type=authorization_code \
-        -F resource=https://management.core.windows.net/ \
-        -F client_id=<APPLICATION-ID> \
-        -F code=<AUTHORIZATION-CODE>
+    ```console
+    curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token \
+    -F redirect_uri=<REDIRECT-URI> \
+    -F grant_type=authorization_code \
+    -F resource=https://management.core.windows.net/ \
+    -F client_id=<APPLICATION-ID> \
+    -F code=<AUTHORIZATION-CODE>
+    ```
 
    > [!NOTE]
    > この場合、\<REDIRECT-URI> をエンコードする必要はありません。
@@ -66,15 +68,19 @@ ms.locfileid: "82688079"
 
 3. 応答はアクセス トークン (例: `"access_token": "<ACCESS_TOKEN>"`) および更新トークン (例: `"refresh_token": "<REFRESH_TOKEN>"`) を含む JSON オブジェクトです。 アプリケーションでは、Azure Data Lake Storage Gen1 にアクセスするときにアクセス トークンを使用し、アクセス トークンの有効期限が切れたときに別のアクセス トークンを取得するために更新トークンを使用します。
 
-        {"token_type":"Bearer","scope":"user_impersonation","expires_in":"3599","expires_on":"1461865782","not_before":    "1461861882","resource":"https://management.core.windows.net/","access_token":"<REDACTED>","refresh_token":"<REDACTED>","id_token":"<REDACTED>"}
+    ```json
+    {"token_type":"Bearer","scope":"user_impersonation","expires_in":"3599","expires_on":"1461865782","not_before":    "1461861882","resource":"https://management.core.windows.net/","access_token":"<REDACTED>","refresh_token":"<REDACTED>","id_token":"<REDACTED>"}
+    ```
 
 4. アクセス トークンの有効期限が切れたときは、次のスニペットで示すように更新トークンを使用して新しいアクセス トークンを要求できます。
 
-        curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
-             -F grant_type=refresh_token \
-             -F resource=https://management.core.windows.net/ \
-             -F client_id=<APPLICATION-ID> \
-             -F refresh_token=<REFRESH-TOKEN>
+    ```console
+    curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
+         -F grant_type=refresh_token \
+         -F resource=https://management.core.windows.net/ \
+         -F client_id=<APPLICATION-ID> \
+         -F refresh_token=<REFRESH-TOKEN>
+    ```
 
 対話型ユーザー認証の詳細については、 [承認コード付与フロー](https://msdn.microsoft.com/library/azure/dn645542.aspx)に関するページを参照してください。
 

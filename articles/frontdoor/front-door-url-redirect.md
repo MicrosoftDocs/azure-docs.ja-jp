@@ -3,20 +3,20 @@ title: Azure Front Door - URL のリダイレクト | Microsoft Docs
 description: この記事では、構成されている場合に、Azure Front Door がそれらのルートの URL リダイレクトをサポートする仕組みについて説明します。
 services: front-door
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2019
-ms.author: sharadag
-ms.openlocfilehash: 5e3e44c4aee84fe9e2e21174a1d65fdf26b765a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: duau
+ms.openlocfilehash: 41cb2343cb86d2ec756bb0a2fb690b7df886024f
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295478"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399040"
 ---
 # <a name="url-redirect"></a>URL リダイレクト
 Azure Front Door を使用して、トラフィックをリダイレクトできます。 トラフィックを複数のレベル (プロトコル、ホスト名、パス、クエリ文字列) でリダイレクトできます。また、リダイレクトはパスに基づくため、すべての機能を個々のマイクロサービスに対して構成できます。 これにより、アプリケーションの構成が簡単になり、リソースの使用が最適化され、グローバルなリダイレクトやパスに基づくリダイレクトなどの新しいリダイレクト シナリオがサポートされるようになります。
@@ -46,7 +46,7 @@ Azure Front Door を使用して、トラフィックをリダイレクトでき
 リダイレクトの一環として、URL のパス セグメントを置換する必要がある場合、このフィールドに新しいパスの値を設定できます。 そうしない場合、リダイレクトの一環として、パスの値を保持することを選択できます。 したがって、このフィールドを使用すると、`https://www.contoso.com/\*` に送信されるすべての要求を `https://www.contoso.com/redirected-site` にリダイレクトできます。
 
 ## <a name="query-string-parameters"></a>クエリ文字列パラメーター
-リダイレクトされる URL のクエリ文字列パラメーターを置き換えることもできます。 着信要求 URL の既存のクエリ文字列を置換するには、このフィールドを [置換] に設定して適切な値を設定します。 そうしない場合、このフィールドを [保持] に設定することによって、元のクエリ文字列のセットを保持することができます。 例えば、このフィールドを使用すると、`https://www.contoso.com/foo/bar`* に送信されるすべてのトラフィックを `https://www.contoso.com/foo/bar?&utm_referrer=https%3A%2F%2Fwww.bing.com%2F`* にリダイレクトできます。 
+リダイレクトされる URL のクエリ文字列パラメーターを置き換えることもできます。 着信要求 URL の既存のクエリ文字列を置換するには、このフィールドを [置換] に設定して適切な値を設定します。 そうしない場合、このフィールドを [保持] に設定することによって、元のクエリ文字列のセットを保持することができます。 例えば、このフィールドを使用すると、`https://www.contoso.com/foo/bar` に送信されるすべてのトラフィックを `https://www.contoso.com/foo/bar?&utm_referrer=https%3A%2F%2Fwww.bing.com%2F` にリダイレクトできます。 
 
 ## <a name="destination-fragment"></a>宛先フラグメント
 宛先フラグメントは URL の '#' より後の部分のことで、通常はブラウザーがページの特定のセクションに移動するために使用します。 このフィールドを設定して、リダイレクト URL にフラグメントを追加できます。

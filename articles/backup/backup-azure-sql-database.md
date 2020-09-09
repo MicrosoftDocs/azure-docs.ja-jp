@@ -3,19 +3,19 @@ title: Azure への SQL Server データベースのバックアップ
 description: この記事では、SQL Server を Azure に バックアップする方法について説明します。 また、SQL Server の復旧についても説明します。
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 537257733d7693598fd8007da6ce12c28fbeb02a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8cdafe215d9271151d8dacee114d40108e907bd
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79408762"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892441"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Azure VM での SQL Server Backup について
 
 [Azure Backup](backup-overview.md) からは、Azure VM で実行されている SQL Server をバックアップする、ストリームベースの特別なソリューションがあります。 このソリューションは、ゼロインフラストラクチャ バックアップ、長期間保存、中央管理といった Azure Backup の長所と足並みをそろえるものです。 さらに、SQL Server だけには次の長所があります。
 
 1. 完全、差分、ログという全種類のバックアップに対応するワークロード対応バックアップ
-2. 15 分の RPO (回復ポイントの目標) と頻繁に行うログのバックアップ
+2. 15 分間の RPO (回復ポイントの目標) と頻繁に行われるログのバックアップ
 3. 特定の時点に復旧 (1 秒まで)
 4. 個々のデータベース レベルのバックアップと復旧
 
@@ -27,20 +27,20 @@ ms.locfileid: "79408762"
 
 * SQL Server VM (保護対象で、その中のデータベースに対してクエリを実行するもの) を指定すると、Azure Backup サービスにより、`AzureBackupWindowsWorkload` 拡張機能という名前のワークロード バックアップ拡張機能が VM 上にインストールされます。
 * この拡張機能は、コーディネーターと SQL プラグインで構成されています。 コーディネーターは、バックアップの構成、バックアップ、復元など、さまざまな操作のワークフローのトリガーを処理し、プラグインは実際のデータ フローを処理します。
-* この VM 上のデータベースを検出できるようにするために、Azure Backup により、アカウント `NT SERVICE\AzureWLBackupPluginSvc` が作成されます。 このアカウントはバックアップと復元に使用され、SQL sysadmin アクセス許可を必要とします。 `NT SERVICE\AzureWLBackupPluginSvc` アカウントは[仮想サービス アカウント](https://docs.microsoft.com/windows/security/identity-protection/access-control/service-accounts#virtual-accounts)であるため、パスワードの管理は不要です。 Azure Backup では、データベースの検出と照会に `NT AUTHORITY\SYSTEM` アカウントが利用されます。そのため、このアカウントは SQL 上でパブリック ログインである必要があります。 SQL Server VM を Azure Marketplace から作成しなかった場合、エラー **UserErrorSQLNoSysadminMembership** が発生する可能性があります。 これが発生した場合、[こちらの手順に従ってください](#set-vm-permissions)。
+* この VM 上のデータベースを検出できるようにするために、Azure Backup により、アカウント `NT SERVICE\AzureWLBackupPluginSvc` が作成されます。 このアカウントはバックアップと復元に使用され、SQL sysadmin アクセス許可を必要とします。 `NT SERVICE\AzureWLBackupPluginSvc` アカウントは[仮想サービス アカウント](/windows/security/identity-protection/access-control/service-accounts#virtual-accounts)であるため、パスワードの管理は不要です。 Azure Backup では、データベースの検出と照会に `NT AUTHORITY\SYSTEM` アカウントが使用されます。そのため、このアカウントは SQL 上でパブリック ログインである必要があります。 SQL Server VM を Azure Marketplace から作成しなかった場合、エラー **UserErrorSQLNoSysadminMembership** が発生する可能性があります。 これが発生した場合、[こちらの手順に従ってください](#set-vm-permissions)。
 * 選択したデータベースに対して保護の構成をトリガーすると、バックアップ サービスにより、コーディネーターに対してバックアップ スケジュールとその他のポリシーの詳細が設定されます。これにより、拡張機能が VM 内にローカルにキャッシュされます。
 * スケジュールされた時刻になると、コーディネーターがプラグインと通信し、VDI を使用して SQL サーバーからバックアップ データのストリーム配信を開始します。  
-* プラグインは Recovery Services コンテナーに直接データを送信するため、ステージングの場所は必要ありません。 データは Azure Backup サービスによって暗号化され、ストレージ アカウント内に格納されます。
+* プラグインは Recovery Services コンテナーに直接データを送信するため、ステージングの場所が必要ありません。 データは Azure Backup サービスによって暗号化され、ストレージ アカウント内に格納されます。
 * データ転送が完了すると、コーディネーターはバックアップ サービスを使用してコミットを確認します。
 
   ![SQL のバックアップ アーキテクチャ](./media/backup-azure-sql-database/backup-sql-overview.png)
 
 ## <a name="before-you-start"></a>開始する前に
 
-開始する前に、以下を確認します。
+開始する前に、次の要件を確認します。
 
-1. Azure で SQL Server インスタンスを稼働させていることを確認する。 マーケットプレースで [SQL Server インスタンスをすばやく作成](../virtual-machines/windows/sql/quickstart-sql-vm-create-portal.md)できます。
-2. [機能の考慮事項](sql-support-matrix.md#feature-consideration-and-limitations)と[シナリオのサポート](sql-support-matrix.md#scenario-support)を確認する。
+1. Azure で SQL Server インスタンスを稼働させていることを確認する。 マーケットプレースで [SQL Server インスタンスをすばやく作成](../azure-sql/virtual-machines/windows/sql-vm-create-portal-quickstart.md)できます。
+2. [機能に関する考慮事項](sql-support-matrix.md#feature-considerations-and-limitations)と[シナリオのサポート](sql-support-matrix.md#scenario-support)を確認する。
 3. このシナリオに関する[一般的な質問を確認](faq-backup-sql-server.md)する。
 
 ## <a name="set-vm-permissions"></a>VM のアクセス許可を設定する
@@ -51,7 +51,7 @@ ms.locfileid: "79408762"
 * 仮想マシン上のデータベースを検出するために、NT SERVICE\AzureWLBackupPluginSvc アカウントが作成されます。 このアカウントはバックアップと復元に使用され、SQL sysadmin アクセス許可を必要とします。
 * VM 上で実行されているデータベースを検出します。Azure Backup は NT AUTHORITY\SYSTEM アカウントを使用します。 このアカウントは SQL でのパブリック サインインである必要があります。
 
-Azure Marketplace で SQL Server VM を作成しなかった場合、または SQL 2008 および 2008 R2 を使用している場合、**UserErrorSQLNoSysadminMembership** エラーが発生する可能性があります。
+Azure Marketplace で SQL Server VM を作成しなかった場合、または SQL 2008 または 2008 R2 を使用している場合、**UserErrorSQLNoSysadminMembership** エラーが発生する可能性があります。
 
 Windows 2008 R2 で **SQL 2008** および **2008 R2** を実行している場合にアクセス許可を付与するには、[こちら](#give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2)を参照してください。
 

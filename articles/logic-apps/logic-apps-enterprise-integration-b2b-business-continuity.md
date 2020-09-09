@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/10/2017
-ms.openlocfilehash: 09b77862ad3379efeb8b3063a9d6c60b062ca2d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3b618513965298889fb656750419dedd79729f7f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76905122"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536472"
 ---
 # <a name="set-up-cross-region-disaster-recovery-for-integration-accounts-in-azure-logic-apps"></a>Azure Logic Apps での統合アカウントの複数のリージョンにわたるディザスター リカバリーを設定する
 
@@ -60,7 +60,7 @@ Logic Apps 統合アカウントのビジネス継続性は、X12、AS2、EDIFAC
 
 障害イベント時に、プライマリ リージョンでビジネス継続性を確保できない場合は、セカンダリ リージョンにトラフィックをダイレクトします。 セカンダリ リージョンは、パートナーと合意した RPO/RTO を満たすため、迅速にビジネスに必要な機能を復旧するのに役立ちます。 また、リージョン間でフェールオーバーするための労力を最小限に抑えます。 
 
-プライマリ リージョンからセカンダリ リージョンに制御番号をコピーする際に、待ち時間が予想されます。 障害イベント時に、重複して生成された制御番号をパートナーに送信することを回避するには、[PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0)を使用してセカンダリ リージョン契約で制御番号を増やすことをお勧めします。
+プライマリ リージョンからセカンダリ リージョンに制御番号をコピーする際に、待ち時間が予想されます。 障害イベント時に、重複して生成された制御番号をパートナーに送信することを回避するには、[PowerShell コマンドレット](/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0)を使用してセカンダリ リージョン契約で制御番号を増やすことをお勧めします。
 
 ## <a name="fall-back-to-a-primary-region-post-disaster-event"></a>障害イベント後のプライマリ リージョンへの復帰
 
@@ -68,7 +68,7 @@ Logic Apps 統合アカウントのビジネス継続性は、X12、AS2、EDIFAC
 
 1. セカンダリ リージョンでパートナーからのメッセージの受け入れを停止します。  
 
-2. [PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0)を使用して、すべてのプライマリ リージョン契約について、生成される制御番号を増やします。  
+2. [PowerShell コマンドレット](/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0)を使用して、すべてのプライマリ リージョン契約について、生成される制御番号を増やします。  
 
 3. セカンダリ リージョンからプライマリ リージョンにトラフィックをダイレクトします。
 
@@ -241,4 +241,3 @@ AS2 プロトコルを使用するドキュメントのビジネス継続性は�
 ## <a name="next-steps"></a>次のステップ
 
 [Azure Monitor ログで B2B メッセージを監視する](../logic-apps/monitor-b2b-messages-log-analytics.md)
-

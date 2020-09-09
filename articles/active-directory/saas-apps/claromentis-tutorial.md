@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Claromentis の統合 | Microsoft Docs
 description: Azure Active Directory と Claromentis の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 7980e0c5-e4d8-4678-afa2-7ec219432114
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/04/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c6eaf23950f83592a33709574be464f4499f0ab
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: dba77045f8aef1799717c6f6af91046b3ca6119e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74823034"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520313"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-claromentis"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Claromentis の統合
 
@@ -91,10 +86,10 @@ Claromentis で Azure AD SSO を構成してテストするには、次の構成
 
     **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
 
-    | | |
-    |-|-|
-    | `https://<customer_site_url>/login`|
-    | `https://<customer_site_url>/login?no_auto=0`|
+    ```https
+    https://<customer_site_url>/login
+    https://<customer_site_url>/login?no_auto=0
+    ```
 
     > [!NOTE]
     > これらは実際の値ではありません。 これらの値は、実際の識別子、応答 URL、およびサインオン URL に更新します。実際の値については、このチュートリアルの後の方で説明します。

@@ -3,21 +3,22 @@ title: Azure CLI のサンプル
 description: Azure CLI のサンプル
 author: cynthn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 76803f8c3a703071eb733c5cfde65482ffd07f40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: ecc195017b99da576cba9944613c76bea3c31abf
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78970092"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498720"
 ---
 # <a name="azure-cli-samples-for-linux-virtual-machines"></a>Linux 仮想マシン用の Azure CLI サンプル
 
 次の表には、Azure CLI を使用して構築された Bash スクリプトへのリンクが含まれています。
 
-| | |
+| スクリプト | 説明 |
 |---|---|
 |**仮想マシンの作成**||
 | [仮想マシンの作成](./../scripts/virtual-machines-linux-cli-sample-create-vm-quick-create.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 最小の構成で Linux 仮想マシンを作成します。 |

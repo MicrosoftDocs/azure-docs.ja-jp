@@ -4,16 +4,16 @@ description: Azure 専用ホストを使用して仮想マシンをデプロイ�
 author: cynthn
 ms.service: virtual-machines
 ms.topic: article
-ms.date: 01/09/2020
+ms.date: 07/28/2020
 ms.author: cynthn
-ms.openlocfilehash: c19b3410e106aaf5fed53aba45d06eac6dd9d601
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 97e65528a7f049c213ec077c83da1b7672469d90
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78970727"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87388171"
 ---
-# <a name="azure-dedicated-hosts"></a>Azure 専用ホスト
+# <a name="azure-dedicated-hosts-for-virtual-machines"></a>仮想マシン用 Azure 専用ホスト
 
 Azure 専用ホストは、1 つの Azure サブスクリプションに対して専用の物理サーバーを提供するサービスであり、1 つ以上の仮想マシンをホストできます。 専用ホストは、データ センターで使用されるものと同じ物理サーバーであり、リソースとして提供されます。 リージョン、可用性ゾーン、障害ドメイン内に専用ホストをプロビジョニングできます。 次に、プロビジョニングされたホストに VM を直接配置し、ニーズに最も合った構成にすることができます。
 

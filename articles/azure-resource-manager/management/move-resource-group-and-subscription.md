@@ -2,13 +2,14 @@
 title: リソースを新しいサブスクリプションまたはリソース グループに移動する
 description: Azure Resource Manager を使用して、リソースを新しいリソース グループまたはサブスクリプションに移動します。
 ms.topic: conceptual
-ms.date: 03/02/2020
-ms.openlocfilehash: ffb5f8be81d3628084d127db404ab994d4d5b938
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.date: 07/15/2020
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e5b3e27110d5bd7941aad0209681d13f45fa66fa
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631495"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498873"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>リソースを新しいリソース グループまたはサブスクリプションに移動する
 
@@ -17,6 +18,8 @@ ms.locfileid: "80631495"
 移動操作の間は、ソース グループとターゲット グループの両方がロックされます。 これらのリソース グループに対する書き込み操作および削除操作は、移動が完了するまでブロックされます。 このロックはリソース グループでリソースを追加、更新、削除できなくなることを意味します。 リソースが停止されるわけではありません。 たとえば、SQL Server とそのデータベースを新しいリソース グループに移動する場合、そのデータベースを使用するアプリケーションにダウンタイムは発生しません。 これまでどおり、データベースの読み取りと書き込みを行うことができます。 ロックは最大 4 時間継続できますが、ほとんどの移動は、はるかに短い時間で完了します。
 
 リソースを移動しても、新しいリソース グループまたはサブスクリプションに移動されるだけです。 リソースの場所は変わりません。
+
+Azure Stack Hub を使用している場合は、グループ間でリソースを移動できません。
 
 ## <a name="checklist-before-moving-resources"></a>リソースの移動前のチェック リスト
 
@@ -53,7 +56,7 @@ ms.locfileid: "80631495"
 
    移動元と移動先のサブスクリプションのテナント ID が同じでない場合、次の方法でテナント ID を調整する必要があります。
 
-   * [Azure サブスクリプションの所有権を別のアカウントに譲渡する](../../billing/billing-subscription-transfer.md)
+   * [Azure サブスクリプションの所有権を別のアカウントに譲渡する](../../cost-management-billing/manage/billing-subscription-transfer.md)
    * [Azure サブスクリプションを Azure Active Directory に関連付けるまたは追加する方法](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
 1. 移動するリソースのリソース プロバイダーについて、移動先のサブスクリプションに登録する必要があります。 登録しないと、 **リソースの種類についてサブスクリプションへの登録が行われていない**ことを示すエラーが発生します。 このエラーは、リソースを新しいサブスクリプションに移動するが、そのサブスクリプションがそのリソースの種類で使用されたことがない場合に発生する可能性があります。

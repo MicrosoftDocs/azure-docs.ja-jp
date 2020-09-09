@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: vs-azure
 ms.date: 01/22/2018
-ms.openlocfilehash: eb9c21bf1972304da688586da9ccabe5063fa112
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f3c6364226288ffb6796664e89d0b7c2cc4dadf6
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75438971"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543148"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>チュートリアル: データ ファクトリを Visual Studio で作成する
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -128,7 +128,7 @@ Azure Storage のリンクされたサービスは、接続情報を提供する
     > [!IMPORTANT]
     > HDInsight クラスターは、JSON (linkedServiceName) で指定した BLOB ストレージに**既定のコンテナー**を作成します。 クラスターを削除しても、HDInsight はこのコンテナーを削除しません。 この動作は仕様です。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (timeToLive) がある場合を除き、スライスが処理されるたびに HDInsight クラスターが作成されます。 クラスターは、処理が終了すると自動的に削除されます。
     > 
-    > 処理されるスライスが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、`adf<yourdatafactoryname>-<linkedservicename>-datetimestamp` 形式になります。 Azure BLOB ストレージ内のコンテナーを削除するには、 [Microsoft ストレージ エクスプローラー](https://storageexplorer.com/) などのツールを使用します。
+    > 処理されるスライスが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、`adf<yourdatafactoryname>-<linkedservicename>-datetimestamp` 形式になります。 Azure Blob Storage 内のコンテナーを削除するには、 [Microsoft Azure Storage Explorer](https://storageexplorer.com/) などのツールを使用します。
 
     JSON のプロパティの詳細については、[コンピューティングのリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)に関する記事を参照してください。 
 4. **HDInsightOnDemandLinkedService1.json** ファイルを保存します。
@@ -412,7 +412,7 @@ Azure ポータルを使用して、このチュートリアルで作成した�
 -  Data Factory は、上記の JSON で **Linux ベース** の HDInsight クラスターを自動的に作成します。 詳細については、 [オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) に関するセクションを参照してください。
 - HDInsight クラスターは、JSON (linkedServiceName) で指定した BLOB ストレージに**既定のコンテナー**を作成します。 クラスターを削除しても、HDInsight はこのコンテナーを削除しません。 この動作は仕様です。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (timeToLive) がある場合を除き、スライスが処理されるたびに HDInsight クラスターが作成されます。 クラスターは、処理が終了すると自動的に削除されます。
     
-    処理されるスライスが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、`adf**yourdatafactoryname**-**linkedservicename**-datetimestamp` 形式になります。 Azure BLOB ストレージ内のコンテナーを削除するには、 [Microsoft ストレージ エクスプローラー](https://storageexplorer.com/) などのツールを使用します。
+    処理されるスライスが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、`adf**yourdatafactoryname**-**linkedservicename**-datetimestamp` 形式になります。 Azure Blob Storage 内のコンテナーを削除するには、 [Microsoft Azure Storage Explorer](https://storageexplorer.com/) などのツールを使用します。
 - 現在、スケジュールは出力データセットによって開始されるため、アクティビティが出力を生成しない場合でも、出力データセットを作成する必要があります。 アクティビティが入力を受け取らない場合は、入力データセットの作成を省略できます。 
 - このチュートリアルでは、Azure Data Factory を使用してデータをコピーする方法は説明しません。 Azure Data Factory を使用してデータをコピーする方法のチュートリアルについては、[Blob Storage から SQL Database へのデータのコピーのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関するページを参照してください。
 
@@ -472,7 +472,7 @@ Azure Storage のリンクされたサービスに関して次のような JSON 
         "AzureSqlLinkedService1": [
             {
                 "name": "$.properties.typeProperties.connectionString",
-                "value":  "Server=tcp:<Azure sql server name>.database.windows.net,1433;Database=<Azure Sql database>;User ID=<user name>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
+                "value":  "Server=tcp:<logical SQL server name>.database.windows.net,1433;Database=<Azure Sql database>;User ID=<user name>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
             }
         ]
     }

@@ -4,15 +4,15 @@ description: この記事では、Internet Analyzer リソースを使用して�
 services: internet-analyzer
 author: mattcalder
 ms.service: internet-analyzer
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 6a781e767393f35a1ec22f195ba787e3018d8d1e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6ca71bce726f16eeacc96e10eb654bb3e21c5924
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76713082"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84744087"
 ---
 # <a name="measure-custom-endpoints-to-evaluate-in-your-internet-analyzer-tests"></a>Internet Analyzer テストで評価するカスタム エンドポイントを測定する 
 
@@ -31,7 +31,7 @@ Internet Analyzer リソースを設定し、[カスタム エンドポイント
 
 1. [ここ](https://fpc.msedge.net/apc/trans.gif)から透明な 1 ピクセルのテスト画像をダウンロードします。 この 1 ピクセルの画像は、クライアントの JavaScript がパフォーマンスを測定するためにフェッチする資産です。
 2. お使いのカスタム Web アプリケーションで、パブリックにアクセス可能なパスにテスト画像を配置します。 パスは HTTPS 経由で機能する必要があります。 
-3. テスト作成時に、カスタム エンド ポイントの完全な URL (例: https://contoso.com/test/trans.gif) をカスタム エンドポイントのフィールドにコピーします。
+3. テスト作成時に、カスタム エンド ポイントの完全な URL (例: `https://contoso.com/test/trans.gif`) をカスタム エンドポイントのフィールドにコピーします。
 
 ## <a name="next-steps"></a>次のステップ
 

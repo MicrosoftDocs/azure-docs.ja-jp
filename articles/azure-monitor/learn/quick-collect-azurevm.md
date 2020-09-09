@@ -7,16 +7,16 @@ author: bwren
 ms.author: bwren
 ms.date: 08/19/2019
 ms.custom: mvc, sec-javascript-october2019
-ms.openlocfilehash: 2e63b2ca0ee7246009068e6a2875795a14aeddb3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 91a4e2f6a770282e9d031c31fdf1af15f0cd00bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215170"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067549"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Azure Monitor を使用して Azure 仮想マシンからデータを収集する
 
-[Azure Monitor](../overview.md) は、詳細な分析と相関のために、Azure 仮想マシンから Log Analytics ワークスペースに直接データを収集できます。 [Windows](../../virtual-machines/extensions/oms-windows.md) および [Linux](../../virtual-machines/extensions/oms-linux.md) 用の Log Analytics VM 拡張機能をインストールすることにより、Azure Monitor で Azure VM のデータを収集することができます。 このクイックスタートでは、VM 拡張機能を使用して、いくつかの簡単な手順で、Azure Linux または Windows VM を構成し、データを収集する方法を示します。  
+[Azure Monitor](../overview.md) を使用して、Azure 仮想マシンから Log Analytics ワークスペースに直接データを収集し、詳細な分析と相関を行うことができます。 [Windows](../../virtual-machines/extensions/oms-windows.md) および [Linux](../../virtual-machines/extensions/oms-linux.md) 用の Log Analytics VM 拡張機能をインストールすることにより、Azure Monitor で Azure VM のデータを収集することができます。 このクイックスタートでは、VM 拡張機能を使用して、いくつかの簡単な手順で、Azure Linux または Windows VM を構成し、データを収集する方法を示します。  
  
 このクイック スタートでは、既存の Azure Virtual Machines があることを前提とします。 ない場合は、VM のクイック スタートに従って、[Windows VM を作成](../../virtual-machines/windows/quick-create-portal.md)するか、[Linux VM を作成](../../virtual-machines/linux/quick-create-cli.md)できます。
 
@@ -141,4 +141,4 @@ Azure Monitor は、Windows イベント ログまたは Linux Syslog からイ�
 データの表示および分析方法を学習する場合は、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Log Analytics でのデータの表示と分析](../../azure-monitor/learn/tutorial-viewdata.md)
+> [Log Analytics でのデータの表示と分析](../log-query/get-started-portal.md)

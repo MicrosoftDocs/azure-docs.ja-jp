@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 63715f668438519131eba5bfff7aa38fc73267d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 144db6a5ceaf56a35d3ce11dd54e1dfb4c97d7e3
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61094661"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264115"
 ---
-# <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Media Services SDK for .NET の再試行ロジック  
+# <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Media Services SDK for .NET の再試行ロジック
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Microsoft Azure サービスの使用中に、一時的な障害が発生することがあります。 一時的な障害が発生しても、多くの場合は、何度か再試行すれば操作に成功します。 Media Services SDK for .NET には、例外とエラーに関連する一時的な障害を処理するための再試行ロジックが実装されています。そのような例外とエラーは、Web 要求、クエリの実行、変更の保存、ストレージ操作によって発生します。  既定では、Media Services SDK for .NET はアプリケーションに例外を再びスローする前に、再試行を 4 回実行します。 アプリケーションのコードは、この例外を正しく処理する必要があります。  
 
@@ -50,7 +52,7 @@ Microsoft Azure サービスの使用中に、一時的な障害が発生する�
 | IOException |いいえ |はい |いいえ |いいえ |
 
 ### <a name="webexception-status-codes"></a><a name="WebExceptionStatus"></a> WebException 状態コード
-次の表では、再試行ロジックが実装される WebException エラー コードを示します。 [WebExceptionStatus](https://msdn.microsoft.com/library/system.net.webexceptionstatus.aspx) の列挙型は、状態コードを定義します。  
+次の表では、再試行ロジックが実装される WebException エラー コードを示します。 [WebExceptionStatus](/dotnet/api/system.net.webexceptionstatus?view=netcore-3.1) の列挙型は、状態コードを定義します。  
 
 | Status | Web Request | ストレージ | クエリ | SaveChanges |
 | --- | --- | --- | --- | --- |
@@ -88,4 +90,3 @@ Media Services SDK for .NET 再試行ロジックの実際の実装を確認す�
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

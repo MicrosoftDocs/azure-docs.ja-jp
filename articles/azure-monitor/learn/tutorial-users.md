@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2017
 ms.custom: mvc
-ms.openlocfilehash: cc6c7fc94e940732ba180c83344eabf29597d849
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ce9bf6fe6d130cf8511db2b2351c0de01b753d81
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77670357"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318404"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Azure Application Insights を使用して顧客がアプリケーションをどのように使用しているかを理解する
 
@@ -36,9 +36,9 @@ Azure Application Insights は、ユーザーがアプリケーションとど�
     - ASP.NET および Web の開発
     - Azure の開発
 - [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger) をダウンロードしてインストールします。
-- .NET アプリケーションを Azure にデプロイし、[Application Insights SDK の有効化](../../azure-monitor/app/asp-net.md)を実行します。 
-- [アプリケーションからのテレメトリの送信](../../azure-monitor/app/usage-overview.md#send-telemetry-from-your-app)を実行して、カスタム イベント/ページ ビューに追加します。
-- [ユーザー コンテキスト](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context)を送信して、一定期間にユーザーが何をしているかを追跡し、使用状況機能をフルに活用します。
+- .NET アプリケーションを Azure にデプロイし、[Application Insights SDK の有効化](../app/asp-net.md)を実行します。 
+- [アプリケーションからのテレメトリの送信](../app/usage-overview.md#send-telemetry-from-your-app)を実行して、カスタム イベント/ページ ビューに追加します。
+- [ユーザー コンテキスト](../app/usage-send-user-context.md)を送信して、一定期間にユーザーが何をしているかを追跡し、使用状況機能をフルに活用します。
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインします。
@@ -102,16 +102,16 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 
 1. メニューの **[ファネル]** を選択し、 **[新規]** をクリックします。 
 
-    ![](media/tutorial-users/funnelsnew.png)
+    ![新しいファネルを作成する方法を示すスクリーンショット。](media/tutorial-users/funnelsnew.png)
 
 2. **[Funnel Name]\(ファネル名\)** を入力します。
 3. 各手順のアクションを選択して、少なくとも 2 つの手順があるファネルを作成します。  アクションの一覧は、Application Insights によって収集された使用状況データから作成されます。
 
-    ![](media/tutorial-users/funnelsedit.png)
+    ![新しいファネルでステップを作成する方法を示すスクリーンショット。](media/tutorial-users/funnelsedit.png)
 
 4. **[保存]** をクリックしてファネルを保存し、その結果を表示します。  ファネルの右側のウィンドウには、最初のアクティビティの前と最後のアクティビティの後に発生した最も一般的なイベントが表示され、特定のシーケンスを中心とするユーザーの傾向を理解するために役立ちます。
 
-    ![](media/tutorial-users/funnelsright.png)
+    ![新しく作成したファネルのイベントの結果を示すスクリーンショット。](media/tutorial-users/funnelsright.png)
 
 
 ## <a name="learn-which-customers-return"></a>どの顧客が再来しているかを知る
@@ -120,11 +120,11 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 1. メニューの **[保持]** を選択します。
 2. 既定では、分析された情報には、何らかのアクションを実行した後、何らかのアクションを実行するために再来したユーザーが含まれます。  このフィルターを、たとえば購入の完了後に再来したユーザーのみを含めるように変更できます。
 
-    ![](media/tutorial-users/retentionquery.png)
+    ![保持フィルターを設定する方法を示すスクリーンショット。](media/tutorial-users/retentionquery.png)
 
 3. 条件と一致する再来ユーザーが、グラフの形で期間別に表示されます。  一般的なパターンでは、時間の経過と共に再来ユーザーは緩やかに減少します。  ある期間から次の期間への急激な低下には、重要な意味がある場合があります。 
 
-    ![](media/tutorial-users/retentiongraph.png)
+    ![保持フィルターに対して設定された条件に一致するユーザーのグラフを示すスクリーンショット。](media/tutorial-users/retentiongraph.png)
 
 ## <a name="analyze-user-navigation"></a>ユーザーの移動を分析する
 **ユーザー フロー**は、ユーザーがサイトのページと機能をどのように移動しているかを視覚化します。  これにより、ユーザーがどの特定のページから移動することが多いか、アプリケーションをどのように終了することが多いか、繰り返し実行される何らかのアクションがあるかどうかといった疑問の回答を得ることができます。
@@ -133,15 +133,15 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 2.  **[新規]** をクリックして新しいユーザー フローを作成した後、 **[編集]** をクリックしてその詳細を編集します。
 3.  **[時間の範囲]** を [7 日間] に増やした後、最初のイベントを選択します。  フローは、そのイベントで開始したユーザー セッションを追跡します。
 
-    ![](media/tutorial-users/flowsedit.png)
+    ![新しいユーザー フローを作成する方法を示すスクリーンショット。](media/tutorial-users/flowsedit.png)
 
 4.  ユーザー フローが表示され、複数のユーザー パスとそれらのセッション数を確認できます。  青い線は、ユーザーが現在のアクションの後で実行したアクションを示します。  赤い線は、ユーザー セッションの終了を示します。
 
-    ![](media/tutorial-users/flows.png)
+    ![ユーザー フローのユーザー パスとセッション数の表示を示すスクリーンショット。](media/tutorial-users/flows.png)
 
 5.  フローからイベントを削除するには、アクションの角にある **[x]** クリックした後、 **[グラフの作成]** をクリックします。  グラフは、そのイベントが削除されたインスタンスを使用して再描画されます。  **[編集]** をクリックして、そのイベントが **[除外されたイベント]** に追加されていることを確認します。
 
-    ![](media/tutorial-users/flowsexclude.png)
+    ![ユーザー フローの除外されたイベントの一覧を示すスクリーンショット。](media/tutorial-users/flowsexclude.png)
 
 ## <a name="consolidate-usage-data"></a>使用状況データを統合する
 **Workbooks** は、データの視覚化、Analytics のクエリ、およびテキストをインタラクティブなドキュメントに統合します。  Workbooks を使用して、一般的な使用状況情報のグループ化、特定のインシデントからの情報の統合、またはアプリケーションの使用状況に関するレポートのチームへの返送を実行できます。
@@ -150,12 +150,12 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 2.  **[新規]** をクリックして新しいブックを作成します。
 3.  前日のすべての使用状況データを棒グラフとして表示するクエリがすでに用意されています。  このクエリを使用するか、手動で編集するか、 **[サンプル クエリ]** をクリックして他の便利なクエリを選択できます。
 
-    ![](media/tutorial-users/samplequeries.png)
+    ![使用できるサンプル クエリの一覧を示すスクリーンショット。](media/tutorial-users/samplequeries.png)
 
 4.  **[編集の完了]** をクリックします。
 5.  ブックの上部にあるテキストを編集するには、上部ペインの **[編集]** をクリックします。  これはマークダウンを使用してフォーマットされます。
 
-    ![](media/tutorial-users/markdown.png)
+    ![ブックの上部にあるテキストを編集する方法を示すスクリーンショット。](media/tutorial-users/markdown.png)
 
 6.  **[ユーザーの追加]** をクリックして、ユーザー情報をグラフを追加します。  必要に応じてグラフの詳細を編集した後、 **[編集の完了]** をクリックして保存します。
 
@@ -164,4 +164,5 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 ここでは、ユーザーを分析する方法を学習しました。次のチュートリアルに進んで、この情報をアプリケーションに関するその他の有用なデータと組み合わせるカスタム ダッシュ ボードの作成方法を学習してください。
 
 > [!div class="nextstepaction"]
-> [カスタム ダッシュボードを作成する](../../azure-monitor/learn/tutorial-app-dashboards.md)
+> [カスタム ダッシュボードを作成する](./tutorial-app-dashboards.md)
+

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 0654bce86cf5fb0b5bd117e444721e95f137dd47
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: f716af1d50eb8a24d8ab70f784cba31f65795cb7
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82652690"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165908"
 ---
 # <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>ユニバーサル Windows プラットフォームを MSAL.NET と使用する場合の考慮事項
 ユニバーサル Windows プラットフォーム (UWP) を MSAL.NET と使用するアプリケーションの開発者は、この記事で紹介する概念を考慮する必要があります。
@@ -56,7 +56,7 @@ We can't connect to the service you need right now. Check your network connectio
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\authhost.exe\EnablePrivateNetwork = 00000001
 ```
 
-詳細については、[Web 認証ブローカー - Fiddler](https://docs.microsoft.com/windows/uwp/security/web-authentication-broker#fiddler) に関するページを参照してください。
+詳細については、[Web 認証ブローカー - Fiddler](/windows/uwp/security/web-authentication-broker#fiddler) に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 詳細については、以下の例を参照してください。

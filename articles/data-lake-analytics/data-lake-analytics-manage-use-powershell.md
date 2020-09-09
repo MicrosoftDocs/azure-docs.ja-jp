@@ -3,18 +3,16 @@ title: Azure PowerShell を使用する Azure Data Lake Analytics の管理
 description: この記事では、Azure PowerShell を使用して、Azure Data Lake Analytics のアカウント、データ ソース、ユーザー、およびジョブを管理する方法について説明します。
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: matt1883
-ms.author: mahi
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: ad14d53c-fed4-478d-ab4b-6d2e14ff2097
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/29/2018
-ms.openlocfilehash: 4273828c9c2bdb75fcbc1de45da55c5a03dd615f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 70a251db6c08f353f9c50512c41551e7a909a059
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "66156435"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125651"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Azure PowerShell を使用する Azure Data Lake Analytics の管理
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]

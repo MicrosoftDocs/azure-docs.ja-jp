@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory と Qlik Sense Enterprise の統合 | Microsoft Docs
 description: Azure Active Directory と Qlik Sense Enterprise の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 8c27e340-2b25-47b6-bf1f-438be4c14f93
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/03/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec9349d8ed330a00a64922a44f99910f9eeeb0df
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5344354c05547d6d2a5e2762c70a97cc4222c464
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79136450"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552358"
 ---
 # <a name="tutorial-integrate-qlik-sense-enterprise-with-azure-active-directory"></a>チュートリアル:Qlik Sense Enterprise と Azure Active Directory の統合
 
@@ -87,11 +83,10 @@ Qlik Sense Enterprise で Azure AD SSO を構成してテストするには、�
 
     b. **[識別子]** ボックスに、次のいずれかのパターンで URL を入力します。
 
-    | |
-    |--|
-    | `https://<Fully Qualified Domain Name>.qlikpoc.com`|
-    | `https://<Fully Qualified Domain Name>.qliksense.com`|
-    | |
+    ```http
+    https://<Fully Qualified Domain Name>.qlikpoc.com
+    https://<Fully Qualified Domain Name>.qliksense.com
+    ```
 
     c. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
 

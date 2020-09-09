@@ -3,15 +3,15 @@ title: Azure Cosmos DB Capacity Planner を使用してコストを見積もる
 description: Azure Cosmos DB Capacity Planner を使用すると、ワークロードに必要なスループット (RU/秒) とコストを見積もることができます。 この記事では、新しいバージョンの Capacity Planner を使用して、必要なスループットとコストを見積もる方法について説明します。
 author: deborahc
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: dech
-ms.openlocfilehash: f10ace47f774e31b586f7736f5fb8e5dfea0c948
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6a30535ac3aaa90dc3553f6901a83ab300546fb5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68707456"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261853"
 ---
 # <a name="estimate-rus-using-the-azure-cosmos-db-capacity-planner"></a>Azure Cosmos DB Capacity Planner を使用して RU/秒を見積もる
 
@@ -41,7 +41,7 @@ Capacity Planner は、2 つのモードで使用できます。
 
 必要な詳細を入力したら、 **[計算]** を選択します。 **[コストの見積もり]** タブに、ストレージとプロビジョニング済みスループットの合計コストが表示されます。 このタブの **[詳細の表示]** リンクを展開すると、読み取り要求と書き込み要求に必要なスループットの内訳が表示されます。 フィールドの値を変更するたびに、 **[計算]** を選択して見積もりコストを再計算してください。 
 
-![Capacity Planner の基本モード](./media/estimate-ru-with-capacity-planner/basic-mode.png)
+:::image type="content" source="./media/estimate-ru-with-capacity-planner/basic-mode.png" alt-text="Capacity Planner の基本モード":::
 
 ## <a name="estimate-provisioned-throughput-and-cost-using-advanced-mode"></a>詳細モードを使用してプロビジョニング済みスループットとコストを見積もる
 
@@ -62,7 +62,7 @@ Capacity Planner は、2 つのモードで使用できます。
 
 また、 **[Save Estimate]\(見積もりの保存\)** ボタンを使用して、現在の見積もりを含む CSV ファイルをダウンロードすることもできます。 
 
-![Capacity Planner の詳細モード](./media/estimate-ru-with-capacity-planner/advanced-mode.png)
+:::image type="content" source="./media/estimate-ru-with-capacity-planner/advanced-mode.png" alt-text="Capacity Planner の詳細モード":::
 
 Azure Cosmos DB Capacity Planner に表示される価格は、スループットとストレージの公開価格料金に基づいた見積もりです。 すべての価格は米ドルで表示されます。 リージョン別のすべての料金を確認するには、[Azure Cosmos DB の価格のページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照してください。  
 

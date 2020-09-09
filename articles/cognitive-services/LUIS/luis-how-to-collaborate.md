@@ -8,19 +8,19 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 913a2b26f67773d9fafbc0a8430d121fbabb97cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1f534b801ec3a71e891bf654628f9e49fc04b0d
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80053458"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055632"
 ---
 # <a name="add-contributors-to-your-app"></a>アプリに共同作成者を追加する
 
-アプリの所有者は、アプリに共同作成者を追加できます。 これらの共同作業者は、アプリのモデル作成、トレーニング、および発行が可能です。 
+アプリの所有者は、アプリに共同作成者を追加できます。 これらの共同作業者は、アプリのモデル作成、トレーニング、および発行が可能です。
 
 [!INCLUDE [Manage collaborators and contributors based on migrated or not-migrated apps](./includes/manage-contributor-collaborator-migration.md)]
 
@@ -39,7 +39,7 @@ LUIS オーサリング エクスペリエンスが LUIS ポータルの **[管�
 
     ![Azure AD の共同作成者ロールにユーザーのメール アドレスを追加する](./media/luis-how-to-collaborate/add-role-assignment-for-contributor.png)
 
-    ユーザーのメール アドレスが見つかったら、アカウントを選択し、 **[保存]** を選択します。 
+    ユーザーのメール アドレスが見つかったら、アカウントを選択し、 **[保存]** を選択します。
 
     このロールの割り当てで問題が発生した場合は、[Azure のロールの割り当て](../../role-based-access-control/role-assignments-portal.md)と [Azure のアクセス制御のトラブルシューティング](../../role-based-access-control/troubleshooting.md#problems-with-azure-role-assignments)に関する記事を参照してください。
 
@@ -60,7 +60,7 @@ LUIS オーサリング エクスペリエンスが LUIS ポータルの **[管�
     ![コラボレーターのメール アドレスを追加する](./media/luis-how-to-collaborate/add-collaborator-pop-up.png)
 
 
-### <a name="users-with-multiple-emails"></a>複数のメール アドレスを持つユーザー 
+### <a name="users-with-multiple-emails"></a>複数のメール アドレスを持つユーザー
 
 LUIS アプリに共同作成者/コラボレーターを追加する場合は、正確なメール アドレスを指定します。 Azure Active Directory (Azure AD) では、1 人のユーザーが複数のメール アカウントのいずれでも使用できますが、LUIS では、共同作成者/コラボレーターを追加するときに指定したメール アドレスを使用してサインインする必要があります。
 
@@ -68,7 +68,7 @@ LUIS アプリに共同作成者/コラボレーターを追加する場合は�
 
 ### <a name="azure-active-directory-resources"></a>Azure Active Directory リソース
 
-組織で [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) (Azure AD) を使用する場合、Language Understanding (LUIS) には、ユーザーが LUIS を使用するときのユーザー アクセスに関する情報に対するアクセス許可が必要です。 LUIS に必要なリソースはごくわずかです。 
+組織で [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) (Azure AD) を使用する場合、Language Understanding (LUIS) には、ユーザーが LUIS を使用するときのユーザー アクセスに関する情報に対するアクセス許可が必要です。 LUIS に必要なリソースはごくわずかです。
 
 以下に関する管理者の同意など、管理者の同意があるか、管理者の同意が不要のアカウントでサインアップしようとしたときに、詳細な説明が表示されます。
 
@@ -78,25 +78,25 @@ LUIS アプリに共同作成者/コラボレーターを追加する場合は�
 
 ### <a name="azure-active-directory-tenant-user"></a>Azure Active Directory テナント ユーザー
 
-LUIS では、Azure Active Directory (Azure AD) の標準的な同意フローが使用されます。 
+LUIS では、Azure Active Directory (Azure AD) の標準的な同意フローが使用されます。
 
-テナント管理者は、Azure AD で LUIS を使用するためのアクセス許可を必要とするユーザーと直接的に協力する必要があります。 
+テナント管理者は、Azure AD で LUIS を使用するためのアクセス許可を必要とするユーザーと直接的に協力する必要があります。
 
-* まず、ユーザーが LUIS にサインインすると、管理者の承認を必要とするポップアップ ダイアログ ボックスが表示されます。 ユーザーは、続行する前にテナント管理者に問い合わせます。 
+* まず、ユーザーが LUIS にサインインすると、管理者の承認を必要とするポップアップ ダイアログ ボックスが表示されます。 ユーザーは、続行する前にテナント管理者に問い合わせます。
 * 次に、テナント管理者が LUIS にサインインすると、同意フロー ポップアップ ダイアログが表示されます。 これは、管理者がユーザーにアクセス許可を与えるために必要なダイアログです。 管理者がアクセス許可を承認すると、ユーザーは LUIS の使用を続行できます。 テナント管理者は、次のスクリーンショットに示すように、LUIS にサインインしなくても LUIS のための[同意](https://account.activedirectory.windowsazure.com/r#/applications)にアクセスできます。 この一覧はフィルター処理されて、名前 `LUIS` を含む項目になっていることに注目してください。
 
 ![アプリ Web サイトによる Azure Active Directory のアクセス許可](./media/luis-how-to-collaborate/tenant-permissions.png)
 
 テナント管理者が、特定のユーザーのみに LUIS を使わせたい場合は、いくつかの可能性のあるソリューションがあります。
 * "管理者の同意" を付与します (Azure AD のすべてのユーザーに同意する) が、エンタープライズ アプリケーションのプロパティの下の [ユーザーの割り当てが必要ですか] を [はい] に設定し、最後に目的のユーザーのみをアプリケーションに割り当て/追加します。 この方法では、管理者はアプリに "管理者の同意" を与えますが、それにアクセスできるユーザーを制御できます。
-* 2 つ目の解決策は、[Azure AD の ID を使用して Microsoft Graph で管理 API にアクセス](https://docs.microsoft.com/graph/azuread-identity-access-management-concept-overview)し、特定のユーザーそれぞれに同意することです。 
+* 2 つ目の解決策は、[Azure AD の ID を使用して Microsoft Graph で管理 API にアクセス](https://docs.microsoft.com/graph/azuread-identity-access-management-concept-overview)し、特定のユーザーそれぞれに同意することです。
 
-Azure Active Directory ユーザーと同意の詳細を確認します。 
+Azure Active Directory ユーザーと同意の詳細を確認します。
 * [ご利用のアプリを特定のユーザー セットに制限する](../../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md)
 
 ## <a name="next-steps"></a>次のステップ
 
 * [バージョンを使用](luis-how-to-manage-versions.md)してアプリのライフ サイクルを制御する方法を確認します。
-* [オーサリング リソース](luis-concept-keys.md#authoring-key)やそのリソースの[共同作成者](luis-concept-keys.md#contributions-from-other-authors)などの概念を理解します。
+* [オーサリング リソース](luis-how-to-azure-subscription.md#authoring-key)やそのリソースの[共同作成者](luis-how-to-azure-subscription.md#contributions-from-other-authors)などの概念を理解します。
 * オーサリング リソースとランタイム リソースの[作成方法](luis-how-to-azure-subscription.md)を確認します
-* 新しい[オーサリング リソース](luis-migration-authoring.md)に移行します 
+* 新しい[オーサリング リソース](luis-migration-authoring.md)に移行します

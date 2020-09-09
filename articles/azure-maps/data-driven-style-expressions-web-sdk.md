@@ -1,6 +1,6 @@
 ---
 title: Azure Maps Web SDK でのデータ ドリブンのスタイルの式 | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps Web SDK でデータ ドリブンのスタイルの式を使用する方法について説明します。
+description: データドリブンのスタイルの式について説明します。 Azure Maps Web SDK でこれらの式を使用し、マップ内のスタイルを調整する方法を確認してください。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 4/4/2019
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.custom: codepen
-ms.openlocfilehash: d6009a655adcc26ebef31588eff2332a05f3a001
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: c8de7148e91f8fafa4a2b1f8a661964a77ead215
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804726"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009139"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>データ ドリブンのスタイルの式 (Web SDK)
 
@@ -779,7 +779,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
         textField: [
             'number-format', 
             ['get', 'revenue'], 
-            { ‘currency’: 'USD' }
+            { ‘currency': 'USD' }
         ],
 
         offset: [0, 0.75]
@@ -928,4 +928,4 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 > [PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"] 
-> [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions?view=azure-iot-typescript-latest) 
+> [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions?view=azure-iot-typescript-latest)

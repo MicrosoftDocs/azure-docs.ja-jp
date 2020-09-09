@@ -1,23 +1,14 @@
 ---
 title: チュートリアル:Azure Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する
 description: チュートリアル:Azure Event Grid は、Azure Storage での BLOB アップロードをトリガーできます。 これを使って、Azure Storage にアップロードされたイメージ ファイルを、サイズ変更や他の改善のために Azure Functions などの他のサービスに送信することができます。
-services: event-grid, functions
-author: spelluru
-manager: jpconnoc
-editor: ''
-ms.service: event-grid
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/01/2020
-ms.author: spelluru
-ms.custom: mvc
-ms.openlocfilehash: 1d1da88d1e7eaf06ebf71da999ef8fb25c7cf066
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 07/07/2020
+ms.openlocfilehash: 19dfffdcee0fb95ae867b1b26fa51e702658445d
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81482194"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "86105797"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>チュートリアル:Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する
 
@@ -62,7 +53,11 @@ Cloud Shell を使用していない場合は、先に `az login` でサイン�
 
 以前サブスクリプションに Event Grid リソース プロバイダーを登録していない場合は、それが登録されるようにします。
 
-```azurecli-interactive
+```bash
+az provider register --namespace Microsoft.EventGrid
+```
+
+```powershell
 az provider register --namespace Microsoft.EventGrid
 ```
 
@@ -72,17 +67,43 @@ Azure Functions には、一般的なストレージ アカウントが必要で
 
 1. 前のチュートリアルで作成したリソース グループの名前を保持する変数を設定します。
 
-    ```azurecli-interactive
+    ```bash
     resourceGroupName="myResourceGroup"
     ```
-2. Azure 関数が必要とする新しいストレージ アカウントの名前の変数を設定します。
-    ```azurecli-interactive
+
+    ```powershell
+    $resourceGroupName="myResourceGroup"
+    ```
+
+1. リソースを作成する場所を保持する変数を設定します。 
+
+    ```bash
+    location="eastus"
+    ```
+
+    ```powershell
+    $location="eastus"
+    ```
+
+1. Azure 関数が必要とする新しいストレージ アカウントの名前の変数を設定します。
+
+    ```bash
     functionstorage="<name of the storage account to be used by the function>"
     ```
-3. Azure 関数用のストレージ アカウントを作成します。
 
-    ```azurecli-interactive
-    az storage account create --name $functionstorage --location southeastasia \
+    ```powershell
+    $functionstorage="<name of the storage account to be used by the function>"
+    ```
+
+1. Azure 関数用のストレージ アカウントを作成します。
+
+    ```bash
+    az storage account create --name $functionstorage --location $location \
+    --resource-group $resourceGroupName --sku Standard_LRS --kind StorageV2
+    ```
+
+    ```powershell
+    az storage account create --name $functionstorage --location $location `
     --resource-group $resourceGroupName --sku Standard_LRS --kind StorageV2
     ```
 
@@ -94,14 +115,25 @@ Azure Functions には、一般的なストレージ アカウントが必要で
 
 1. 作成する関数アプリの名前を指定します。
 
-    ```azurecli-interactive
+    ```bash
     functionapp="<name of the function app>"
     ```
-2. Azure 関数を作成します。
 
-    ```azurecli-interactive
+    ```powershell
+    $functionapp="<name of the function app>"
+    ```
+
+1. Azure 関数を作成します。
+
+    ```bash
     az functionapp create --name $functionapp --storage-account $functionstorage \
-      --resource-group $resourceGroupName --consumption-plan-location southeastasia \
+      --resource-group $resourceGroupName --consumption-plan-location $location \
+      --functions-version 2
+    ```
+
+    ```powershell
+    az functionapp create --name $functionapp --storage-account $functionstorage `
+      --resource-group $resourceGroupName --consumption-plan-location $location `
       --functions-version 2
     ```
 
@@ -113,8 +145,7 @@ Azure Functions には、一般的なストレージ アカウントが必要で
 
 # <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
 
-```azurecli-interactive
-blobStorageAccount="<name of the Blob storage account you created in the previous tutorial>"
+```bash
 storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName \
   --name $blobStorageAccount --query connectionString --output tsv)
 
@@ -123,11 +154,18 @@ az functionapp config appsettings set --name $functionapp --resource-group $reso
   THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2
 ```
 
+```powershell
+$storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName `
+  --name $blobStorageAccount --query connectionString --output tsv)
+
+az functionapp config appsettings set --name $functionapp --resource-group $resourceGroupName `
+  --settings AzureWebJobsStorage=$storageConnectionString THUMBNAIL_CONTAINER_NAME=thumbnails `
+  THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2
+```
+
 # <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
-```azurecli-interactive
-blobStorageAccount="<name of the Blob storage account you created in the previous tutorial>"
-
+```bash
 blobStorageAccountKey=$(az storage account keys list -g $resourceGroupName \
   -n $blobStorageAccount --query [0].value --output tsv)
 
@@ -138,6 +176,20 @@ az functionapp config appsettings set --name $functionapp --resource-group $reso
   --settings FUNCTIONS_EXTENSION_VERSION=~2 BLOB_CONTAINER_NAME=thumbnails \
   AZURE_STORAGE_ACCOUNT_NAME=$blobStorageAccount \
   AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey \
+  AZURE_STORAGE_CONNECTION_STRING=$storageConnectionString
+```
+
+```powershell
+$blobStorageAccountKey=$(az storage account keys list -g $resourceGroupName `
+  -n $blobStorageAccount --query [0].value --output tsv)
+
+$storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName `
+  --name $blobStorageAccount --query connectionString --output tsv)
+
+az functionapp config appsettings set --name $functionapp --resource-group $resourceGroupName `
+  --settings FUNCTIONS_EXTENSION_VERSION=~2 BLOB_CONTAINER_NAME=thumbnails `
+  AZURE_STORAGE_ACCOUNT_NAME=$blobStorageAccount `
+  AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey `
   AZURE_STORAGE_CONNECTION_STRING=$storageConnectionString
 ```
 
@@ -153,9 +205,15 @@ az functionapp config appsettings set --name $functionapp --resource-group $reso
 
 C# のサイズ変更関数のサンプルは、[GitHub](https://github.com/Azure-Samples/function-image-upload-resize) で入手できます。 [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) コマンドを使って、このコード プロジェクトを関数アプリにデプロイします。
 
-```azurecli-interactive
+```bash
 az functionapp deployment source config --name $functionapp --resource-group $resourceGroupName \
   --branch master --manual-integration \
+  --repo-url https://github.com/Azure-Samples/function-image-upload-resize
+```
+
+```powershell
+az functionapp deployment source config --name $functionapp --resource-group $resourceGroupName `
+  --branch master --manual-integration `
   --repo-url https://github.com/Azure-Samples/function-image-upload-resize
 ```
 
@@ -163,11 +221,18 @@ az functionapp deployment source config --name $functionapp --resource-group $re
 
 Node.js のサイズ変更関数のサンプルは、[GitHub](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10) で入手できます。 [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) コマンドを使って、この Functions コード プロジェクトを関数アプリにデプロイします。
 
-```azurecli-interactive
+```bash
 az functionapp deployment source config --name $functionapp \
   --resource-group $resourceGroupName --branch master --manual-integration \
   --repo-url https://github.com/Azure-Samples/storage-blob-resize-function-node-v10
 ```
+
+```powershell
+az functionapp deployment source config --name $functionapp `
+  --resource-group $resourceGroupName --branch master --manual-integration `
+  --repo-url https://github.com/Azure-Samples/storage-blob-resize-function-node-v10
+```
+
 ---
 
 イメージのサイズ変更関数は、Event Grid サービスからその関数に送信される HTTP 要求によってトリガーされます。 Event Grid には、イベントのサブスクリプションを作成して関数の URL でこれらの通知を取得することを指示します。 このチュートリアルでは、BLOB によって作成されたイベントをサブスクライブします。
@@ -192,15 +257,15 @@ Event Grid の通知から関数に渡されるデータには、BLOB の URL �
 
 イベント サブスクリプションは、どのプロバイダー生成イベントを特定のエンドポイントに送信するかを示します。 この場合、エンドポイントは関数によって公開されます。 Azure Portal で関数に通知を送信するイベント サブスクリプションを作成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com) の左側のメニューで **[すべてのサービス]** を選択し、 **[Function App]** を選択します。
+1. [Azure portal](https://portal.azure.com) のページの上部で `Function App` を検索して選択し、先ほど作成した関数アプリを選択します。 **[関数]** を選択し、**Thumbnail** 関数を選択します。
 
-    ![Azure portal で [Function App] に移動する](./media/resize-images-on-storage-blob-upload-event/portal-find-functions.png)
+    :::image type="content" source="media/resize-images-on-storage-blob-upload-event/choose-thumbnail-function.png" alt-text="ポータルで Thumbnail 関数を選択する":::
 
-2. 目的の関数アプリを展開して、**Thumbnail** 関数を選択し、 **[Event Grid サブスクリプションの追加]** を選択します。
+1.  **[統合]** を選択し、 **[イベント グリッド トリガー]** を選択して、 **[Event Grid サブスクリプションの作成]** を選択します。
 
-    ![Azure portal で [Event Grid サブスクリプションの追加] に移動する](./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png)
+    :::image type="content" source="./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png" alt-text="Azure portal で [Event Grid サブスクリプションの追加] に移動する" :::
 
-3. 次の表で指定されているようにイベント サブスクリプションを設定します。
+1. 次の表で指定されているようにイベント サブスクリプションを設定します。
     
     ![Azure Portal で関数からイベント サブスクリプションを作成する](./media/resize-images-on-storage-blob-upload-event/event-subscription-create.png)
 
@@ -211,17 +276,18 @@ Event Grid の通知から関数に渡されるデータには、BLOB の URL �
     | **サブスクリプション** | お使いの Azure サブスクリプション | 既定では、現在の Azure サブスクリプションが選択されています。 |
     | **リソース グループ** | myResourceGroup | **[既存のものを使用]** を選び、このチュートリアルで使っているリソース グループを選びます。 |
     | **リソース** | お使いの BLOB ストレージ アカウント | 作成した Blob Storage アカウントを選びます。 |
+    | **[システム トピック名]** | imagestoragesystopic | システム トピックの名前を指定します。 システム トピックについては、[システム トピックの概要](system-topics.md)に関するページを参照してください。 |    
     | **イベントの種類** | Blob created (作成された BLOB) | **[Blob created]\(作成された BLOB\)** 以外のすべての種類をオフにします。 `Microsoft.Storage.BlobCreated` のイベントの種類のみが関数に渡されます。 |
     | **[エンドポイントの種類]** | 自動生成 | **Azure Function** としてあらかじめ定義されています。 |
     | **エンドポイント** | 自動生成 | 関数の名前です。 この場合は、**Thumbnail** です。 |
 
-4. **[フィルター]** タブに切り替えて、次のアクションを実行します。
+1. **[フィルター]** タブに切り替えて、次のアクションを実行します。
     1. **[サブジェクト フィルタリングを有効にする]** オプションを選択します。
-    2. **[次で始まるサブジェクト]** には、「 **/blobServices/default/containers/images/blobs/** 」と入力します。
+    1. **[次で始まるサブジェクト]** には、「 **/blobServices/default/containers/images/blobs/** 」と入力します。
 
         ![イベント サブスクリプションのフィルターを指定する](./media/resize-images-on-storage-blob-upload-event/event-subscription-filter.png)
 
-5. **[作成]** を選択して、イベント サブスクリプションを追加します。 これにより、BLOB が `images` コンテナーに追加されたときに `Thumbnail` 関数をトリガーするイベント サブスクリプションが作成されます。 この関数により、イメージはサイズが変更されて、`thumbnails` コンテナーに追加されます。
+1. **[作成]** を選択して、イベント サブスクリプションを追加します。 これにより、BLOB が `images` コンテナーに追加されたときに `Thumbnail` 関数をトリガーするイベント サブスクリプションが作成されます。 この関数により、イメージはサイズが変更されて、`thumbnails` コンテナーに追加されます。
 
 バックエンド サービスの構成が済んだので、サンプル Web アプリでイメージ サイズ変更の機能をテストします。
 

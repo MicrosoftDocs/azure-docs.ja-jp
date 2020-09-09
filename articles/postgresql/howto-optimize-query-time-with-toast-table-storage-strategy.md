@@ -4,14 +4,14 @@ description: この記事では、Azure Database for PostgreSQL - Single Server 
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: ac1dc43a2b89bc1cc748947ec08e6ada87edbfcb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3f1fa0affb821b00d4f5529841533e854e634377
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65066970"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116184"
 ---
 # <a name="optimize-query-time-with-the-toast-table-storage-strategy"></a>TOAST テーブル ストレージ戦略を使用してクエリ時間を最適化する 
 この記事では、TOAST (The Oversized-Attribute Storage Technique) テーブル ストレージ戦略を使用して、クエリ時間を最適化する方法について説明します。

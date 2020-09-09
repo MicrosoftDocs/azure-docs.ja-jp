@@ -7,55 +7,85 @@ author: NatiNimni
 ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/08/2020
-ms.openlocfilehash: cb17fe24339ad618229b3456ece15c206f79bdb7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 08/01/2020
+ms.custom: references_regions
+ms.openlocfilehash: 2dc7458dd905ff84455927c81b4ea93765d4f5cb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76899951"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928821"
 ---
-# <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Azure Key Vault 内のユーザーが管理するキーを使用した Azure Cognitive Search でのコンテンツの保存時の暗号化
+# <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Azure Cognitive Search のデータ暗号化のためにカスタマー マネージド キーを構成する
 
-既定では、Azure Cognitive Search は[サービス マネージドのキー](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#data-encryption-models)を使用してインデックス付きコンテンツを保存時に暗号化します。 Azure Key Vault 内で作成して管理するキーを使用すると、既定の暗号化を追加の暗号化レイヤーで補完することができます。 この記事では、その手順について説明します。
+Azure Cognitive Search では、インデックス付きコンテンツの保存時に、[サービス マネージド キー](../security/fundamentals/encryption-atrest.md#azure-encryption-at-rest-components)を使用して自動的に暗号化します。 保護を強化する必要がある場合は、Azure Key Vault 内で作成して管理するキーを使用して、既定の暗号化を追加の暗号化レイヤーで補完できます。 この記事では、CMK 暗号化を設定する手順について説明します。
 
-サーバー側暗号化は、[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) との統合によってサポートされます。 独自の暗号化キーを作成してキー コンテナーに格納したり、Azure Key Vault の API を使って暗号化キーを生成したりすることができます。 Azure Key Vault を使用してキー使用法を監査することもできます。 
+CMK 暗号化は、[Azure Key Vault](../key-vault/general/overview.md) に依存しています。 独自の暗号化キーを作成してキー コンテナーに格納したり、Azure Key Vault の API を使って暗号化キーを生成したりすることができます。 [ログを有効にする](../key-vault/general/logging.md)場合は、Azure Key Vault を使用してキーの使用状況を監査することもできます。  
 
-ユーザーが管理するキーを使用した暗号化は、検索サービス レベルではなく、それらのオブジェクトの作成時にインデックス レベルまたはシノニム マップ レベルで構成されます。 既存のコンテンツを暗号化することはできません。 
+カスタマー マネージド キーを使用した暗号化は、検索サービス レベル自体で指定されるのではなく、それらのオブジェクトの作成時に個々のインデックスまたはシノニム マップに適用されます。 暗号化できるのは新しいオブジェクトだけです。 既存のコンテンツを暗号化することはできません。
 
-キーは、同じ Key Vault に配置する必要はありません。 1つの検索サービスで、暗号化された複数のインデックスや、独自のカスタマー マネージドの暗号化キーで暗号化されてそれぞれ異なる Key Vault に格納されている複数のシノニム マップをホストすることができます。  また、カスタマー マネージドのキーを使用して暗号化されていない同じサービス内に、インデックスとシノニム マップを置くこともできます。 
+すべてのキーを同じキー コンテナーに置く必要はありません。 独自のカスタマー マネージド暗号化キーで暗号化されて異なるキー コンテナーに格納されている、複数の暗号化されたインデックスやシノニム マップを、1 つの検索サービスでホストすることができます。 また、カスタマー マネージドのキーを使用して暗号化されていない同じサービス内に、インデックスとシノニム マップを置くこともできます。 
 
-> [!IMPORTANT] 
-> この機能は、[REST API バージョン 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) および [.NET SDK バージョン 8.0-preview](search-dotnet-sdk-migration-version-9.md)で利用できます。 現在 Azure portal では、カスタマー マネージドの暗号化キーの構成はサポートしていません。 検索サービスは、2019年1月以降に作成することが必要で、無料 (共有) サービスにはできません。
+## <a name="double-encryption"></a>二重暗号化
+
+2020 年 8 月 1 日以降に作成され、特定のリージョン内にあるサービスの場合、CMK 暗号化のスコープには、現在以下のリージョンで使用できる[完全な二重暗号化](search-security-overview.md#double-encryption)を実現する一時ディスクが含まれています。 
+
++ 米国西部 2
++ 米国東部
++ 米国中南部
++ US Gov バージニア州
++ US Gov アリゾナ
+
+異なるリージョンを使用しているか、8 月 1 日より前に作成されたサービスを使用している場合、CMK 暗号化はデータ ディスクのみに限定されていて、サービスによって使用される一時ディスクは除かれています。
 
 ## <a name="prerequisites"></a>前提条件
 
-この例では、次のサービスを使用します。 
+この例では、以下のサービスが使用されます。 
 
-+ [Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 
++ [Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 
 
-+ [Azure Key Vault リソースを作成](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault)するか、サブスクリプションから既存のコンテナーを見つけます。
++ [Azure Key Vault リソースを作成する](../key-vault/secrets/quick-create-portal.md#create-a-vault)か、Azure Cognitive Search と同じサブスクリプション内で既存のコンテナーを見つけます。 この機能には同じサブスクリプション要件があります。
 
-+ [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) または [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) を構成タスクに使用します。
++ [Azure PowerShell](/powershell/azure/) または [Azure CLI](/cli/azure/install-azure-cli) を構成タスクに使用します。
 
-+ [Postman](search-get-started-postman.md)、[Azure PowerShell](search-create-index-rest-api.md) および [Azure Cognitive Search SDK](https://aka.ms/search-sdk-preview) を使用して REST API を呼び出せます。 現時点では、カスタマー マネージドの暗号化はポータルでサポートされていません。
++ [Postman](search-get-started-postman.md)、[Azure PowerShell](./search-get-started-powershell.md)、および [.NET SDK プレビュー](https://aka.ms/search-sdk-preview)を使用して、暗号化キー パラメーターを含むインデックスおよびシノニム マップを作成する REST API を呼び出すことができます。 現在のところ、ポータルでは、インデックスまたはシノニム マップへのキーの追加はサポートされていません。
 
 >[!Note]
-> カスタマー マネージドのキー フィーチャーを使用した暗号化の性質上、Aｚure Key vault キーが削除されている場合には、Azure Cognitive Search はデータを取得できません。 Key Vault キーを誤って削除しデータが損失することを防ぐため、使用前に Key Vault の「論理的な削除」および「消去データ保護」を**必ず**有効にしてください。 詳細については、[Azure Key Vault の論理的な削除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)に関する記事を参照してください。   
+> カスタマー マネージド キーを使用する暗号化の性質上、Azure Key Vault キーが削除されている場合は、Azure Cognitive Search でデータを取得できません。 Key Vault キーの誤った削除によるデータ損失を防ぐため、キー コンテナーで論理的な削除と消去保護を有効にする必要があります。 論理的な削除は既定で有効になっているため、この機能を意図的に無効にした場合にのみ問題が発生します。 消去保護は既定では有効になりませんが、Azure Cognitive Search の CMK 暗号化には必須です。 詳細については、[論理的な削除](../key-vault/general/soft-delete-overview.md)と[消去保護](../key-vault/general/soft-delete-overview.md#purge-protection)の概要に関するページを参照してください。
 
 ## <a name="1---enable-key-recovery"></a>1 - キーの回復の有効化
 
-Azure Key Vault リソースを作成したら、次に示す PowerShell コマンドまたは Azure CLI コマンドを実行して、選択したキー コンテナーで**論理的な削除**と**消去保護**を有効にします。   
+キー コンテナーでは、**論理的な削除**と**消去保護**が有効になっている必要があります。 これらの機能は、ポータルまたは下記の PowerShell または Azure CLI コマンドを使用して設定することができます。
 
-```powershell
-$resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "<vault_name>").ResourceId
+### <a name="using-powershell"></a>PowerShell の使用
 
-$resource.Properties | Add-Member -MemberType NoteProperty -Name "enableSoftDelete" -Value 'true'
+1. `Connect-AzAccount` を実行して Azure の資格情報を設定します。
 
-$resource.Properties | Add-Member -MemberType NoteProperty -Name "enablePurgeProtection" -Value 'true'
+1. 次のコマンドを実行してキー コンテナーに接続し、`<vault_name>` を有効な名前に置き換えます。
 
-Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
-```
+   ```powershell
+   $resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "<vault_name>").ResourceId
+   ```
+
+1. Azure Key Vault は、論理的な削除が有効な状態で作成されます。 これがコンテナーで無効になっている場合は、次のコマンドを実行します。
+
+   ```powershell
+   $resource.Properties | Add-Member -MemberType NoteProperty -Name "enableSoftDelete" -Value 'true'
+   ```
+
+1. 消去保護を有効にします。
+
+   ```powershell
+   $resource.Properties | Add-Member -MemberType NoteProperty -Name "enablePurgeProtection" -Value 'true'
+   ```
+
+1. 更新内容を保存します。
+
+   ```powershell
+   Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
+   ```
+
+### <a name="using-azure-cli"></a>Azure CLI の使用
 
 ```azurecli-interactive
 az keyvault update -n <vault_name> -g <resource_group> --enable-soft-delete --enable-purge-protection
@@ -65,7 +95,7 @@ az keyvault update -n <vault_name> -g <resource_group> --enable-soft-delete --en
 
 既存のキーを使用して Azure Cognitive Search コンテンツを暗号化する場合は、この手順をスキップしてください。
 
-1. [Azure portal にサインイン](https://portal.azure.com)して、キー コンテナー ダッシュボードに移動します。
+1. [Azure portal にサインイン](https://portal.azure.com)して、キー コンテナーの概要ページを開きます。
 
 1. 左側のナビゲーション ウィンドウで **[キー]** 設定を選択し、 **[+ 生成/インポート]** をクリックします。
 
@@ -87,9 +117,9 @@ Azure Cognitive Search では、ID を割り当てるための 2 つの方法 (�
 
 可能であれば、マネージド ID を使用してください。 これが検索サービスに ID を割り当てる最も簡単な方法であり、ほとんどのシナリオに対応します。 インデックスとシノニム マップに対して複数のキーを使用する場合や、ID ベースの認証に適合しない分散アーキテクチャ内にソリューションがある場合は、この記事の最後で説明する高度な方法である、[外部で管理される Azure Active Directory のアプローチ](#aad-app)を使用してください。
 
- 通常、マネージド ID を使用すると、コードに資格情報を格納することなく、検索サービスで Azure Key Vault に対する認証を行うことができます。 この種類のマネージド ID のライフサイクルは、検索サービスのライフサイクルに関連付けられます。そのため、割り当てることのできるマネージド ID は 1 つだけです。 [マネージド ID の詳細を参照してください](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
+ 通常、マネージド ID を使用すると、コードに資格情報を格納することなく、検索サービスで Azure Key Vault に対する認証を行うことができます。 この種類のマネージド ID のライフサイクルは、検索サービスのライフサイクルに関連付けられます。そのため、割り当てることのできるマネージド ID は 1 つだけです。 [マネージド ID の詳細を参照してください](../active-directory/managed-identities-azure-resources/overview.md)。
 
-1. マネージド ID を作成するには、[Azure portal にサインイン](https://portal.azure.com)して検索サービスのダッシュボードを開きます。 
+1. [Azure portal にサインイン](https://portal.azure.com)して、検索サービスの概要ページを開きます。 
 
 1. 左側のナビゲーション ウィンドウにある **[ID]** をクリックして、その状態を **[オン]** に変更し、 **[保存]** をクリックします。
 
@@ -99,7 +129,7 @@ Azure Cognitive Search では、ID を割り当てるための 2 つの方法 (�
 
 検索サービスで Key Vault キーを使用できるようにするには、検索サービスに特定のアクセス許可を付与する必要があります。
 
-アクセス許可はいつでも取り消すことができます。 取り消すと、そのキー コンテナーを使用する検索サービスのインデックスまたはシノニム マップを使用できなくなります。 キー コンテナーのアクセス許可を後から復元すると、インデックス/シノニム マップへのアクセスが復元されます。 詳細については、「[キー コンテナーへのアクセスをセキュリティで保護する](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)」を参照してください。
+アクセス許可はいつでも取り消すことができます。 取り消すと、そのキー コンテナーを使用する検索サービスのインデックスまたはシノニム マップを使用できなくなります。 キー コンテナーのアクセス許可を後から復元すると、インデックス/シノニム マップへのアクセスが復元されます。 詳細については、「[キー コンテナーへのアクセスをセキュリティで保護する](../key-vault/general/secure-your-key-vault.md)」を参照してください。
 
 1. [Azure portal にサインイン](https://portal.azure.com)して、キー コンテナーの概要ページを開きます。 
 
@@ -113,13 +143,17 @@ Azure Cognitive Search では、ID を割り当てるための 2 つの方法 (�
 
 1. **[キーのアクセス許可]** をクリックし、 *[取得]* 、 *[キーの折り返しを解除]* 、および *[キーを折り返す]* を選択します。 *[Azure Data Lake Storage または Azure Storage]* テンプレートを使用すると、必要なアクセス許可をすぐに選択できます。
 
-   Azure Cognitive Search には次の[アクセス許可](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-operations)を付与する必要があります。
+   Azure Cognitive Search には次の[アクセス許可](../key-vault/keys/about-keys.md#key-operations)を付与する必要があります。
 
    * *取得* - 検索サービスでは、キー コンテナー内のユーザーのキーの公開部分を取得できます。
    * *キーを折り返す* - 検索サービスでは、ユーザーのキーを使用して内部の暗号化キーを保護できます。
    * *キーの折り返しを解除* - 検索サービスでは、ユーザーのキーを使用して内部の暗号化キーの折り返しを解除できます。
 
    ![Key Vault アクセス ポリシー キーのアクセス許可を選択する](./media/search-manage-encryption-keys/select-key-vault-access-policy-key-permissions.png "Key Vault アクセス ポリシー キーのアクセス許可を選択する")
+
+1. **[シークレットのアクセス許可]** で、 *[取得]* を選択します。
+
+1. **[証明書のアクセス許可]** で。 *[取得]* を選択します。
 
 1. **[OK]** 、 **[保存]** の順にクリックしてアクセス ポリシーの変更を保存します。
 
@@ -128,11 +162,9 @@ Azure Cognitive Search では、ID を割り当てるための 2 つの方法 (�
 
 ## <a name="5---encrypt-content"></a>5 - コンテンツの暗号化
 
-Azure portal を使用して、ユーザーが管理するキーで暗号化されたインデックスまたはシノニム マップを作成することはできません。 このようなインデックスまたはシノニム マップを作成するには、Azure Cognitive Search REST API を使用します。
+インデックスまたはシノニム マップにカスタマー マネージド キーを追加するには、[Search REST API](/rest/api/searchservice/) または SDK を使用する必要があります。 ポータルでは、シノニム マップや暗号化プロパティが公開されません。 有効な API を使用すると、インデックスとシノニム マップの両方で最上位の **encryptionKey** プロパティがサポートされます。 
 
-インデックスとシノニム マップの両方では、キーを指定するために使用する新しい最上位の **encryptionKey** プロパティがサポートされます。 
-
-Key Vault キーの **Key Vault の URI**、**キー名**、および**キー バージョン**を使用して、**encryptionKey** 定義を作成できます。
+キー コンテナーのキーの**キー コンテナー URI**、**キー名**、および**キー バージョン**を使用して、以下のように **encryptionKey** 定義を作成します。
 
 ```json
 {
@@ -162,7 +194,7 @@ Key Vault キーの **Key Vault の URI**、**キー名**、および**キー �
 ```
 
 ## <a name="example-index-encryption"></a>例:インデックスの暗号化
-REST API を使用した新しいインデックスの作成方法の詳細については、「[インデックスの作成 (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index)」を参照してください。ここに示す例における唯一の違いは、インデックス定義の一部として暗号化キーの詳細が指定されている点です。 
+REST API を使用した新しいインデックスの作成方法の詳細については、「[インデックスの作成 (Azure Cognitive Search REST API)](/rest/api/searchservice/create-index)」を参照してください。ここに示す例における唯一の違いは、インデックス定義の一部として暗号化キーの詳細が指定されている点です。 
 
 ```json
 {
@@ -190,7 +222,7 @@ REST API を使用した新しいインデックスの作成方法の詳細に�
 
 ## <a name="example-synonym-map-encryption"></a>例:シノニム マップの暗号化
 
-REST API を使用した新しいシノニム マップの作成方法の詳細については、[シノニム マップを作成する (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map) 方法に関する記事を参照してください。ここに示す例における唯一の違いは、シノニム マップ定義の一部として暗号化キーの詳細が指定されている点です。 
+REST API を使用した新しいシノニム マップの作成方法の詳細については、[シノニム マップを作成する (Azure Cognitive Search REST API)](/rest/api/searchservice/create-synonym-map) 方法に関する記事を参照してください。ここに示す例における唯一の違いは、シノニム マップ定義の一部として暗号化キーの詳細が指定されている点です。 
 
 ```json
 {   
@@ -222,18 +254,31 @@ REST API を使用した新しいシノニム マップの作成方法の詳細�
 このようなトポロジに対応するために、Azure Cognitive Search では、Azure Active Directory (AAD) アプリケーションを使用した検索サービスとキー コンテナー間の認証がサポートされます。    
 ポータルで AAD アプリケーションを作成するには、次の手順を実行します。
 
-1. [Azure Active Directory アプリケーションを作成します](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)。
+1. [Azure Active Directory アプリケーションを作成します](../active-directory/develop/howto-create-service-principal-portal.md)。
 
-1. [アプリケーション ID と認証キーを取得](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)します。これらは、暗号化されたインデックスの作成に必要です。 指定する必要のある値は、**アプリケーション ID** と**認証キー**です。
+1. [アプリケーション ID と認証キーを取得](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)します。これらは、暗号化されたインデックスの作成に必要です。 指定する必要のある値は、**アプリケーション ID** と**認証キー**です。
 
 >[!Important]
 > マネージド ID ではなく AAD アプリケーションを認証に使用することを決定する際は、AAD アプリケーションを管理する権限が Azure Cognitive Search にはなく、AAD アプリケーションの管理 (アプリケーションの認証キーの定期的なローテーションなど) はユーザーが行う必要があるという事実を考慮してください。
 > AAD アプリケーションまたはその認証キーを変更する場合は、以前のアプリケーションまたはその認証キーを削除する**前**、およびそれらへのキー コンテナー アクセスを取り消す前に、アプリケーションを使用する Azure Cognitive Search のインデックスまたはシノニム マップを、新しいアプリケーション ID/キーを使用するように更新する必要があります。
-> そうしないと、インデックスまたはシノニム マップが使用できない状態になり、キー アクセスが失われた場合にコンテンツを暗号化解除できません。   
+> そうしないと、インデックスまたはシノニム マップが使用できない状態になり、キー アクセスが失われた場合にコンテンツを暗号化解除できません。
+
+## <a name="work-with-encrypted-content"></a>暗号化されたコンテンツを使用する
+
+CMK 暗号化を使用すると、暗号化/暗号化解除の処理が増えるため、インデックス作成とクエリの両方で待ち時間があることに気付きます。 Azure Cognitive Search では、暗号化アクティビティはログに記録されませんが、キー コンテナーのログを通してキーへのアクセスを監視できます。 キー コンテナーの設定の一環として[ログを有効](../key-vault/general/logging.md)にすることをお勧めします。
+
+時間の経過と共に、キーのローテーションが発生すると予想されます。 キーのローテーションのたびに、次の手順に従うことが重要です。
+
+1. [インデックスやシノニム マップ](search-security-get-encryption-keys.md)によって使用されるキーを確認します。
+1. [キー コンテナー内に新しいキーを作成します](../key-vault/keys/quick-create-portal.md)が、元のキーは使用可能なままにしておきます。
+1. インデックスまたはシノニム マップの [encryptionKey プロパティを更新](/rest/api/searchservice/update-index)して新しい値を使用します。 別の値を使用するように更新できるのは、当初このプロパティを使用して作成されたオブジェクトだけです。
+1. キー コンテナーで以前のキーを無効にするか削除します。 キー アクセスを監視して、新しいキーが使用されていることを確認します。
+
+パフォーマンス上の理由で、検索サービスでは、キーが最大で数時間キャッシュされます。 新しいキーを指定せずにキーを無効にした、または削除した場合、キャッシュの有効期限が切れるまで、クエリは一時的に機能し続けます。 ただし、検索サービスでコンテンツの暗号化解除ができなくなると、次のメッセージが表示されます。"アクセスが禁止されています。 使用されたクエリ キーが失効している可能性があります - もう一度お試しください。" 
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure セキュリティ アーキテクチャを使い慣れていない場合は、[Azure のセキュリティのドキュメント](https://docs.microsoft.com/azure/security/)を確認してください。具体的には次の記事です。
+Azure セキュリティ アーキテクチャを使い慣れていない場合は、[Azure のセキュリティのドキュメント](../security/index.yml)を確認してください。具体的には次の記事です。
 
 > [!div class="nextstepaction"]
-> [保存時のデータ暗号化](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+> [保存時のデータ暗号化](../security/fundamentals/encryption-atrest.md)

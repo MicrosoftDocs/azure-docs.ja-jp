@@ -6,18 +6,18 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: snehaa
-ms.openlocfilehash: 317b6e8aa799b7982e9897c6a504d6092491c7ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c354c1c9dfacfcb6bf84f1140b58deca60c1874e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74196363"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109843"
 ---
 # <a name="scale-migration-of-vms"></a>VM の移行をスケーリングする 
 
 この記事では、多数の 仮想マシン (VM) を移行するための、スクリプトの使用方法について説明します。 移行をスケーリングするには、[Azure Site Recovery](../site-recovery/site-recovery-overview.md) を使用します。 
 
-Site Recovery スクリプトは、GitHub の [Azure PowerShell サンプル](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) リポジトリからダウンロードできます。 スクリプトは、VMware、AWS、GCP の VM と物理サーバーを Azure のマネージド ディスクに移行するために使用できます。 また、VM を物理サーバーとして移行する場合は、これらのスクリプトを使用して Hyper-V VM を移行することもできます。 Azure Site Recovery PowerShell を使用したスクリプトは、[こちら](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell)に記載されています。
+Site Recovery スクリプトは、GitHub の [Azure PowerShell サンプル](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) リポジトリからダウンロードできます。 スクリプトは、VMware、AWS、GCP の VM と物理サーバーを Azure のマネージド ディスクに移行するために使用できます。 また、VM を物理サーバーとして移行する場合は、これらのスクリプトを使用して Hyper-V VM を移行することもできます。 Azure Site Recovery PowerShell を使用したスクリプトは、[こちら](../site-recovery/vmware-azure-disaster-recovery-powershell.md)に記載されています。
 
 ## <a name="current-limitations"></a>現在の制限
 - ターゲット VM のプライマリ NIC に対してのみ、静的 IP アドレスの指定がサポートされています
@@ -69,4 +69,4 @@ CSV の準備ができたら、次の手順を実行してオンプレミス VM 
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Site Recovery を使用してサーバーを Azure に移行する方法について[詳しく知る](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure)
+Azure Site Recovery を使用してサーバーを Azure に移行する方法について[詳しく知る](../site-recovery/migrate-tutorial-on-premises-azure.md)

@@ -1,22 +1,14 @@
 ---
 title: Azure Service Bus メッセージングの概要 | Microsoft Docs
 description: この記事では、フル マネージド エンタープライズ統合メッセージ ブローカーである Azure Service Bus の概要を簡単に説明します。
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
 ms.topic: overview
-ms.date: 11/04/2019
-ms.custom: mvc
-ms.author: aschhab
-ms.openlocfilehash: 49a54491c36ef29209d1a53094cc5baf57057557
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 06/23/2020
+ms.openlocfilehash: 478dd0debb5117e76cf8d0ab6599dcf363c12ab3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215590"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501476"
 ---
 # <a name="what-is-azure-service-bus"></a>Azure Service Bus とは
 
@@ -100,7 +92,7 @@ Service Bus は配信不能キュー (DLQ) をサポートしています。 DLQ
 ### <a name="security-protocols"></a>セキュリティ プロトコル
 <a name="sas-rbac-and-managed-identities-for-azure-resources"></a>
 
-Service Bus は、[Shared Access Signatures](service-bus-sas.md) (SAS)、[ロールベースのアクセス制御](authenticate-application.md) (RBAC)、および [Azure リソースのマネージド ID](service-bus-managed-service-identity.md) などのセキュリティ プロトコルをサポートしています。
+Service Bus では、[Shared Access Signatures](service-bus-sas.md) (SAS)、[Azure ロールベースのアクセス制御 (Azure RBAC)](authenticate-application.md)、[Azure リソースのマネージド ID](service-bus-managed-service-identity.md) などのセキュリティ プロトコルがサポートされています。
 
 ### <a name="geo-disaster-recovery"></a>geo ディザスター リカバリー
 

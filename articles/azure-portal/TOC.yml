@@ -8,6 +8,17 @@
       href: azure-portal-quickstart-center.md
     - name: サポートされているブラウザーとデバイス
       href: azure-portal-supported-browsers-devices.md
+- name: クイックスタート
+  items:
+    - name: ポータルで VM を作成する
+      href: ../virtual-machines/windows/quick-create-portal.md?toc=/azure/azure-portal/toc.json&bc=/azure/azure-portal/breadcrumb/toc.json
+    - name: ダッシュボードを作成する
+      items:
+        - name: Azure PowerShell
+          href: quickstart-portal-dashboard-powershell.md
+        - name: ARM テンプレート
+          displayName: Resource Manager
+          href: quick-create-template.md
 - name: 概念
   items:
     - name: ロールベースのアクセス制御を使用したダッシュボードの共有
@@ -16,28 +27,24 @@
       href: azure-portal-dashboards-create-programmatically.md
 - name: 操作方法ガイド
   items:
-    - name: Azure portal の基本設定を設定する
+    - name: Azure portal の設定を管理する
       href: set-preferences.md
-    - name: すべてのユーザーの非アクティブ タイムアウト設定を設定する
-      href: admin-timeout.md
-    - name: ハイコントラストの有効化またはテーマの変更
-      href: azure-portal-change-theme-high-contrast.md
     - name: お気に入りの追加、削除、並べ替え
       href: azure-portal-add-remove-sort-favorites.md
-    - name: Azure ダッシュボードの作成と共有
-      href: azure-portal-dashboards.md
-    - name: カスタムのマークダウン タイルを使用する
-      href: azure-portal-markdown-tile.md
-    - name: ユーザー設定のエクスポートまたは削除
-      href: azure-portal-export-delete-settings.md
+    - name: Azure ダッシュボードを作成する
+      items:
+        - name: Azure ダッシュボードの作成と共有
+          href: azure-portal-dashboards.md
+        - name: カスタムのマークダウン タイルを使用する
+          href: azure-portal-markdown-tile.md
     - name: Azure portal の使い方に関するビデオ シリーズ
       href: azure-portal-video-series.md
     - name: サポート リクエストの作成と管理
       items:
         - name: Azure サポート要求を作成する
           href: supportability/how-to-create-azure-support-request.md
-        - name: サポート リクエストのファイルのアップロード
-          href: supportability/how-to-use-file-uploader.md
+        - name: Azure サポート リクエストを管理する
+          href: supportability/how-to-manage-azure-support-request.md
         - name: クォータの増加を要求
           items:
             - name: コンピューティング vCPU の上限を引き上げる
@@ -70,6 +77,8 @@
       href: azure-portal-safelist-urls.md
     - name: Azure ダッシュボードの構造
       href: azure-portal-dashboards-structure.md
+    - name: Azure CLI
+      href: /cli/azure/ext/portal/portal
 - name: リソース
   items:
     - name: Azure のロードマップ
@@ -80,7 +89,7 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-management-portal'
     - name: Azure のビデオ
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=azure-portal&sort=newest'

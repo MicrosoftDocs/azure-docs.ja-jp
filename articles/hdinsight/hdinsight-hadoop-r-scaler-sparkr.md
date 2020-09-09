@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/26/2019
-ms.openlocfilehash: 5989692aeb59c7394299b4cb2474b244818895b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 28a97edcbe84ae63a3d3d0cad2b9275c672f5664
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75500077"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082277"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>HDInsight で ScaleR と SparkR を組み合わせる
 

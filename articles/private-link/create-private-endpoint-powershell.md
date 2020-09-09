@@ -4,20 +4,20 @@ description: Azure Private Link について学習する
 services: private-link
 author: malopMSFT
 ms.service: private-link
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 8af33e95c92cf51bdabe3325bd9249b4662b7d28
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 0c6fc36be101679cea3a770f311005f63c3f0d66
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583756"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737378"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Azure PowerShell を使用してプライベート エンドポイントを作成する
 プライベート エンドポイントは、Azure におけるプライベート リンクの基本的な構成要素です。 これによって、仮想マシン (VM) などの Azure リソースが Private Link リソースと非公開で通信できるようになります。 
 
-このクイック スタートでは、Azure PowerShell を使用して、Azure 仮想ネットワーク上の VM と、Azure プライベート エンドポイントを含む SQL Database サーバーを作成する方法を説明します。 その後、VM から SQL Database サーバーに安全にアクセスできます。
+このクイック スタートでは、Azure PowerShell を使用して、Azure 仮想ネットワーク上の VM と、Azure プライベート エンドポイントを含む論理 SQL サーバーを作成する方法を説明します。 その後、VM から SQL Database に安全にアクセスできます。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -98,9 +98,9 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 1      Long Running... AzureLongRun... Running       True            localhost            New-AzVM
 ```
 
-## <a name="create-a-sql-database-server"></a>SQL Database サーバーを作成する 
+## <a name="create-a-logical-sql-server"></a>論理 SQL サーバーの作成 
 
-New-AzSqlServer コマンドを使用して SQL Database サーバーを作成します。 SQL Database サーバーの名前は Azure 全体で一意である必要があるため、角かっこ内のプレースホルダーの値を独自の一意の値に置き換えることを忘れないでください。
+New-AzSqlServer コマンドを使用して論理 SQL サーバーを作成します。 サーバーの名前は Azure 全体で一意である必要があるため、角かっこ内のプレースホルダーの値を独自の一意の値に必ず置き換えてください。
 
 ```azurepowershell-interactive
 $adminSqlLogin = "SqlAdmin"
@@ -120,7 +120,7 @@ New-AzSqlDatabase  -ResourceGroupName "myResourceGroup" `
 
 ## <a name="create-a-private-endpoint"></a>プライベート エンドポイントを作成する
 
-[New-AzPrivateLinkServiceConnection](/powershell/module/az.network/New-AzPrivateLinkServiceConnection) を使用した仮想ネットワーク内の SQL Database サーバーのプライベート エンドポイント: 
+[New-AzPrivateLinkServiceConnection](/powershell/module/az.network/New-AzPrivateLinkServiceConnection) を使用した仮想ネットワーク内のサーバーのプライベート エンドポイント: 
 
 ```azurepowershell
 
@@ -142,7 +142,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName "myResourceGroup" `
 ``` 
 
 ## <a name="configure-the-private-dns-zone"></a>プライベート DNS ゾーンを構成する 
-SQL Database サーバー ドメイン用のプライベート DNS ゾーンを作成し、仮想ネットワークに対する関連付けリンクを作成します。 
+SQL Database ドメイン用のプライベート DNS ゾーンを作成し、Virtual Network に対する関連付けリンクを作成します。また、プライベート エンドポイントをプライベート DNS ゾーンに関連付けるために、DNS ゾーン グループを作成します。
 
 ```azurepowershell
 
@@ -153,19 +153,11 @@ $link  = New-AzPrivateDnsVirtualNetworkLink -ResourceGroupName "myResourceGroup"
   -ZoneName "privatelink.database.windows.net"`
   -Name "mylink" `
   -VirtualNetworkId $virtualNetwork.Id  
- 
-$networkInterface = Get-AzResource -ResourceId $privateEndpoint.NetworkInterfaces[0].Id -ApiVersion "2019-04-01" 
- 
-foreach ($ipconfig in $networkInterface.properties.ipConfigurations) { 
-foreach ($fqdn in $ipconfig.properties.privateLinkConnectionProperties.fqdns) { 
-Write-Host "$($ipconfig.properties.privateIPAddress) $($fqdn)"  
-$recordName = $fqdn.split('.',2)[0] 
-$dnsZone = $fqdn.split('.',2)[1] 
-New-AzPrivateDnsRecordSet -Name $recordName -RecordType A -ZoneName "privatelink.database.windows.net"  `
--ResourceGroupName "myResourceGroup" -Ttl 600 `
--PrivateDnsRecords (New-AzPrivateDnsRecordConfig -IPv4Address $ipconfig.properties.privateIPAddress)  
-} 
-} 
+
+$config = New-AzPrivateDnsZoneConfig -Name "privatelink.database.windows.net" -PrivateDnsZoneId $zone.ResourceId
+
+$privateDnsZoneGroup = New-AzPrivateDnsZoneGroup -ResourceGroupName "myResourceGroup" `
+ -PrivateEndpointName "myPrivateEndpoint" -name "MyZoneGroup" -PrivateDnsZoneConfig $config
 ``` 
   
 ## <a name="connect-to-a-vm-from-the-internet"></a>インターネットから VM に接続する
@@ -195,7 +187,7 @@ mstsc /v:<publicIpAddress>
 3. **[OK]** を選択します。 
 4. 証明書の警告を受け取ることがあります。 この場合は、 **[はい]** または **[続行]** を選択します。 
 
-## <a name="access-sql-database-server-privately-from-the-vm"></a>VM から SQL Database サーバーにプライベートにアクセスする
+## <a name="access-sql-database-privately-from-the-vm"></a>VM から SQL Database にプライベートにアクセスする
 
 1. myVM のリモート デスクトップで、PowerShell を開きます。
 2. 「`nslookup myserver.database.windows.net`」と入力します。 `myserver` は必ず SQL サーバー名に置き換えてください。
@@ -211,7 +203,7 @@ mstsc /v:<publicIpAddress>
     Aliases:   myserver.database.windows.net
     ```
     
-3. SQL Server Management Studio をインストールします。
+3. [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15) をインストールします。
 4. **[サーバーに接続]** で、次の情報を入力または選択します。
 
     | 設定 | 値 |
@@ -228,7 +220,7 @@ mstsc /v:<publicIpAddress>
 8. *myVM* へのリモート デスクトップ接続を閉じます。 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする 
-プライベート エンドポイント、SQL Database サーバー、VM を使いおわったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループとそのすべてのリソースを削除します。
+プライベート エンドポイント、SQL Database、VM を使いおわったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループとそのすべてのリソースを削除します。
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force

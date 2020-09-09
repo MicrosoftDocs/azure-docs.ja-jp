@@ -1,18 +1,18 @@
 ---
 title: Azure BLOB ストレージによるリード管理 - Microsoft コマーシャル マーケットプレース
 description: Azure BLOB を使用して Microsoft AppSource および Azure Marketplace のリードを構成する方法について説明します。
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 05/01/2020
-ms.author: dsindona
-ms.openlocfilehash: 076edc62a467701eaf0de23f280cdaf2abd945de
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: e6ad75178bdc8ce7db18555508e2b819f08352f0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792719"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121913"
 ---
 # <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>Azure BLOB ストレージを使用し、コマーシャル マーケットプレースの潜在顧客を管理する
 
@@ -33,11 +33,11 @@ ms.locfileid: "82792719"
 3. Azure portal 上で、次の手順を使用してストレージ アカウントを作成します。  
     1. 左側のメニュー バーにある **[+ リソースの作成]** を選択します。  **[新規]** ウィンドウ (ブレード) が、右側に表示されます。
     2. **[新規]** ウィンドウで **[ストレージ]** を選択します。  **[おすすめ]** 一覧が右側に表示されます。
-    3. **[ストレージ アカウント]** を選択して、アカウントの作成を開始します。  「[ストレージ アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)」の記事にある手順に従ってください。
+    3. **[ストレージ アカウント]** を選択して、アカウントの作成を開始します。  「[ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)」の記事にある手順に従ってください。
 
     ![Azure ストレージ アカウントを作成する手順](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-create.png)
 
-    ストレージ アカウントについて詳しくは、[クイック スタートのチュートリアル](https://docs.microsoft.com/azure/storage/)に関するページをご覧ください。  ストレージの価格について詳しくは、[ストレージの価格](https://azure.microsoft.com/pricing/details/storage/)に関する記事をご覧ください。
+    ストレージ アカウントの詳細については、こちらの[クイックスタート](../../storage/blobs/storage-quickstart-blobs-portal.md)を参照してください。  ストレージの価格について詳しくは、[ストレージの価格](https://azure.microsoft.com/pricing/details/storage/)に関する記事をご覧ください。
 
 4. ストレージ アカウントがプロビジョニングされるまで待機します。通常は数分かかる処理です。  その後、 **[リソースをすべて表示する]** を選択するか、または Azure portal の左側のナビゲーション メニューバーから **[すべてのリソース]** を選択して、Azure portal の **[ホーム]** ページからお使いのストレージ アカウントへアクセスします。
 
@@ -74,9 +74,9 @@ ms.locfileid: "82792719"
 発行ポータル内でオファーのリード管理情報を構成する準備ができたら、次の手順に従います。
 
 1. オファーの **[オファーのセットアップ]** ページに移動します。
-2. [リード管理] セクションで **[接続]** を選択します。
+2. **[潜在顧客]** セクションで、 **[接続]** を選択します。
 
-    ![オファーの接続](./media/commercial-marketplace-lead-management-instructions-azure-blob/connect-offer.png)
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-blob/customer-leads.png" alt-text="[潜在顧客]":::
 
 3. [接続の詳細] ポップアップ ウィンドウで、[リードのターゲット] として **[Azure Blob]** を選択します。
 

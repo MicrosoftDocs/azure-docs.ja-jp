@@ -7,19 +7,19 @@ author: winthrop28
 ms.service: web-application-firewall
 ms.date: 02/01/2020
 ms.author: victorh
-ms.openlocfilehash: fff4fb5707c07098fd7fac261a36909224365cdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10a90a7f94633fac52086953697eb90a98d9509d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060261"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143836"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Azure Web アプリケーション ファイアウォール (WAF) ポリシーの概要
 
 Web アプリケーション ファイアウォール ポリシーには、すべての WAF 設定と構成が含まれています。 これには、除外、カスタム ルール、マネージド ルールなどがあります。 これらのポリシーは、アプリケーション ゲートウェイ (グローバル)、リスナー (サイトごと)、またはパスベースのルール (URI ごと) に関連付けられ、有効になります。
 
 > [!NOTE]
-> サイトごとの Azure Web アプリケーション ファイアウォール (WAF) と URI ごとのポリシーは、パブリック プレビュー段階です。
+> Azure Web アプリケーション ファイアウォール (WAF) と URI ごとのポリシーは、パブリック プレビュー段階です。
 > 
 > このパブリック プレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することは避けてください。 特定の機能はサポート対象ではなく、機能が制限されることがあるか、Azure の場所によっては利用できない場合があります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 

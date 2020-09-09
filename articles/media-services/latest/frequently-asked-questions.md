@@ -3,26 +3,34 @@ title: Azure Media Services v3 のよく寄せられる質問 | Microsoft Docs
 description: この記事では、Azure Media Services v3 についてよく寄せられる質問に対する回答を提供します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/07/2020
-ms.author: juliako
-ms.openlocfilehash: 713acbd098255af2869d7a462c9990f3d7e10bf1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: d34b5aaaa12a3d296f92e0d7be34ae76931d8506
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81309185"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268487"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 のよく寄せられる質問
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 この記事では、Azure Media Services v3 についてよく寄せられる質問に対する回答を提供します。
 
 ## <a name="general"></a>全般
+
+### <a name="what-are-the-azure-portal-limitations-for-media-services-v3"></a>Media Services v3 に関する Azure portal の制限事項とは何ですか。
+
+[Azure portal](https://portal.azure.com/) を使用し、v3 のライブ イベントを管理し、v3 の資産を表示し、API へのアクセスに関する情報を取得し、コンテンツを暗号化できます。 <br/>他のすべての管理タスク (変換とジョブの管理や v3 コンテンツの分析など) には、[REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、あるいはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
+
+ビデオが以前に Media Services v3 API を使用して Media Services アカウントにアップロードされていた場合、またはコンテンツがライブ出力に基づいて生成された場合、Azure portal に **[エンコード]** 、 **[分析]** 、または **[暗号化]** ボタンは表示されません。 これらのタスクを実行するには、Media Services v3 API シリーズを使用してください。  
 
 ### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Azure Media Services リソースに対してアクションを実行できる Azure のロールは何ですか。 
 
@@ -40,7 +48,7 @@ Media Services v3 または Video Indexer によってトリガーされる音�
 
 ### <a name="what-is-the-recommended-method-to-process-videos"></a>推奨される動画の処理方法は?
 
-[Transform](https://docs.microsoft.com/rest/api/media/transforms) を使用して、ビデオのエンコードや分析を行うための一般的なタスクを構成できます。 各 Transform は、ビデオまたはオーディオ ファイルを処理するためのレシピ､すなわちタスクのワークフローの記述です｡ [ジョブ](https://docs.microsoft.com/rest/api/media/jobs)は、特定の入力ビデオまたはオーディオ コンテンツに Transform を適用する Media Services への実際の要求です。 Transform を作成後､Media Services API または公開されている任意の SDK を使用してジョブを送信できます｡ 詳しくは、「[Transform と Job](transforms-jobs-concept.md)」をご覧ください。
+[Transform](/rest/api/media/transforms) を使用して、ビデオのエンコードや分析を行うための一般的なタスクを構成できます。 各 Transform は、ビデオまたはオーディオ ファイルを処理するためのレシピ､すなわちタスクのワークフローの記述です｡ [ジョブ](/rest/api/media/jobs)は、特定の入力ビデオまたはオーディオ コンテンツに Transform を適用する Media Services への実際の要求です。 Transform を作成後､Media Services API または公開されている任意の SDK を使用してジョブを送信できます｡ 詳しくは、「[Transform と Job](transforms-jobs-concept.md)」をご覧ください。
 
 ### <a name="i-uploaded-encoded-and-published-a-video-why-wont-the-video-play-when-i-try-to-stream-it"></a>ビデオをアップロード、エンコード、および公開しました。 ストリーミングしようとしたときにビデオが再生されないのはなぜですか?
 
@@ -153,9 +161,9 @@ ASP.NET のプレーヤー アプリケーションはベスト プラクティ�
 
 * Media Services v3 で [ライブ イベント](live-events-outputs-concept.md)を管理します。 
 * v3 [アセット](assets-concept.md)を表示します (管理ではありません)。 
-* [API のアクセスに関する情報を取得](access-api-portal.md)します。 
+* [API のアクセスに関する情報を取得](./access-api-howto.md)します。 
 
-他のすべての管理タスク ([変換とジョブ](transforms-jobs-concept.md)や[コンテンツ保護](content-protection-overview.md)など) については、[REST API](https://docs.microsoft.com/rest/api/media/)、[Azure CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
+他のすべての管理タスク ([変換とジョブ](transforms-jobs-concept.md)や[コンテンツ保護](content-protection-overview.md)など) については、[REST API](/rest/api/media/)、[Azure CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>v3 には AssetFile の概念はありますか?
 
@@ -165,7 +173,7 @@ Storage SDK の依存関係から Media Services を切り離すために、`Ass
 
 ### <a name="where-did-client-side-storage-encryption-go"></a>クライアント側でのストレージ暗号化は利用できなくなったのですか?
 
-現在、サーバー側のストレージ暗号化 (既定でオン) の使用が推奨されるようになりました。 詳細については、「[保存データ向け Azure Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)」をご覧ください。
+現在、サーバー側のストレージ暗号化 (既定でオン) の使用が推奨されるようになりました。 詳細については、「[保存データ向け Azure Storage Service Encryption](../../storage/common/storage-service-encryption.md)」をご覧ください。
 
 ## <a name="offline-streaming"></a>オフライン ストリーミング
 

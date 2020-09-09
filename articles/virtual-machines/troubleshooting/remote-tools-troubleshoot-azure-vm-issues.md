@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
-ms.openlocfilehash: d29b2b7c2b9194f20afe4c74d117847f0e343b12
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 5abb509f1753c65554bd74ababe9acca4103c15a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422603"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509088"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>リモート ツールを使用して Azure VM の問題をトラブルシューティングする
 
@@ -31,7 +31,7 @@ Azure 仮想マシン (VM) に関する問題をトラブルシューティン�
 
 ## <a name="remote-cmd"></a>リモート CMD
 
-[PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec) をダウンロードします。 次のコマンドを実行して、VM に接続します。
+[PsExec](/sysinternals/downloads/psexec) をダウンロードします。 次のコマンドを実行して、VM に接続します。
 
 ```cmd
 psexec \\<computer>-u user -s cmd
@@ -251,9 +251,7 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 ## <a name="next-steps"></a>次のステップ
 
-- Enter-PSSession コマンドレットの詳細については、[Enter-PSSession](https://technet.microsoft.com/library/hh849707.aspx) を参照してください。
-- クラシック デプロイ モデルを使用した Windows のカスタム スクリプト拡張機能の詳細については、「[Windows でのカスタムのスクリプト拡張機能](../extensions/custom-script-classic.md)」を参照してください。
+- Enter-PSSession コマンドレットの詳細については、[Enter-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession?view=powershell-5.1) を参照してください。
+- クラシック デプロイ モデルを使用した Windows のカスタム スクリプト拡張機能の詳細については、「[Windows でのカスタムのスクリプト拡張機能](../extensions/custom-script-windows.md)」を参照してください。
 - PsExec は、[PSTools スイート](https://download.sysinternals.com/files/PSTools.zip)の一部です。
-- PSTools スイートの詳細については、[PSTools](https://docs.microsoft.com/sysinternals/downloads/pstools) に関するページを参照してください。
-
-
+- PSTools スイートの詳細については、[PSTools](/sysinternals/downloads/pstools) に関するページを参照してください。

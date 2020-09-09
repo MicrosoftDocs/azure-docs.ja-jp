@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 08/27/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e41bf003af7d0926aab04ffed86bf6ec5031c4f7
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 19b2b4aecedbaa66c258b9076c517b02034a46fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586411"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85200989"
 ---
 # <a name="manageability-and-monitoring-with-synapse-sql-pool"></a>Synapse SQL プールでの管理容易性と監視
 

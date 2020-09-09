@@ -1,7 +1,7 @@
 ---
 title: シンプル エンティティ型 - LUIS
 titleSuffix: Azure Cognitive Services
-description: シンプル エンティティでは、機械学習されたコンテキストからの単一の概念が記述されています。 シンプル エンティティを使用して結果を改善するときは、フレーズ リストを追加します。
+description: シンプル エンティティでは、機械学習のコンテキストからの単一の概念が記述されています。 シンプル エンティティを使用して結果を改善するときは、フレーズ リストを追加します。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: 8b92aa6057c81ec9442372c5b85918cb92196d61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1b5754be3c9941101a53f332841ace93caf9acdd
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74894753"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684558"
 ---
 # <a name="simple-entity"></a>シンプル エンティティ
 

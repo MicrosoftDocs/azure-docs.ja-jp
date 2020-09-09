@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 07/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9550684ad154f28a02ee347fd0a79c1ec286beb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db61a3f9034908043695bc7db3a16551bf4659c3
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74382199"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024079"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection - セキュリティの概要
 
@@ -56,7 +56,7 @@ Azure portal の [[セキュリティの概要]](https://aka.ms/IdentityProtecti
 
 ### <a name="legacy-authentication"></a>レガシ認証
 
-[レガシ認証] タイルには、組織内のレガシ認証の先週の数が表示されます。 レガシ認証プロトコルは、MFA などの最新のセキュリティ方式をサポートしていません。 レガシ認証を防ぐには、条件付きアクセス ポリシーを適用できます。 [レガシ認証] タイルをクリックすると、[ID セキュリティ スコア] にリダイレクトされます。
+[レガシ認証] タイルには、組織内の過去 1 週間の、リスクがあるレガシ認証の数が表示されます。 レガシ認証プロトコルは、MFA などの最新のセキュリティ方式をサポートしていません。 レガシ認証を防ぐには、条件付きアクセス ポリシーを適用できます。 [レガシ認証] タイルをクリックすると、[ID セキュリティ スコア] にリダイレクトされます。
 
 ### <a name="identity-secure-score"></a>ID セキュリティ スコア
 

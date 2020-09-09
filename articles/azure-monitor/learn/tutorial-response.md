@@ -8,10 +8,10 @@ ms.author: bwren
 ms.date: 10/05/2018
 ms.custom: mvc
 ms.openlocfilehash: 8af1acb67961de105e5bf5900d7b10c437cb30d8
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "83835871"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Azure Monitor のアラートを使用してイベントに応答する

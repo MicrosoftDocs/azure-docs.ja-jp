@@ -2,14 +2,16 @@
 title: 概念 - Azure Kubernetes Service (AKS) におけるセキュリティ
 description: Azure Kubernetes Service (AKS) におけるセキュリティ (マスターとノードの通信、ネットワーク ポリシー、Kubernetes シークレットなど) について説明します。
 services: container-service
+author: mlearned
 ms.topic: conceptual
-ms.date: 03/01/2019
-ms.openlocfilehash: 1960d18396f47b3dbdd51a50ec4241be5ebe4ff1
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 07/01/2020
+ms.author: mlearned
+ms.openlocfilehash: e5f137808bb5e4c6876206bca7950117edb85aab
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82206631"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005671"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションとクラスターに対するセキュリティの概念
 
@@ -17,17 +19,24 @@ Azure Kubernetes Service (AKS) でアプリケーション ワークロードを
 
 この記事では、AKS 内でアプリケーションをセキュリティで保護する主要な概念について説明します。
 
-- [マスター コンポーネントのセキュリティ](#master-security)
-- [ノードのセキュリティ](#node-security)
-- [クラスターのアップグレード](#cluster-upgrades)
-- [ネットワークのセキュリティ](#network-security)
-- [Kubernetes シークレット](#kubernetes-secrets)
+- [Azure Kubernetes Service (AKS) でのアプリケーションとクラスターに対するセキュリティの概念](#security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks)
+  - [マスターのセキュリティ](#master-security)
+  - [ノードのセキュリティ](#node-security)
+    - [コンピューティングの分離](#compute-isolation)
+  - [クラスターのアップグレード](#cluster-upgrades)
+    - [切断およびドレイン](#cordon-and-drain)
+  - [ネットワークのセキュリティ](#network-security)
+    - [Azure ネットワーク セキュリティ グループ](#azure-network-security-groups)
+  - [Kubernetes シークレット](#kubernetes-secrets)
+  - [次の手順](#next-steps)
 
 ## <a name="master-security"></a>マスターのセキュリティ
 
 AKS では、Kubernetes マスター コンポーネントは、Microsoft で提供されているマネージド サービスの一部です。 各 AKS クラスターには、API サーバーやスケジューラなどを提供する独自シングル テナントの専用 Kubernetes マスターがあります。このマスターの管理と保守は、Microsoft によって行われます。
 
-既定では、Kubernetes API サーバーは、パブリック IP アドレスと完全修飾ドメイン名 (FQDN) を使用します。 API サーバーへのアクセスは、Kubernetes のロールベースのアクセス制御と Azure Active Directory を使って制御できます。 詳細については、[Azure AD と AKS の統合][aks-aad]に関するページを参照してください。
+既定では、Kubernetes API サーバーは、パブリック IP アドレスと完全修飾ドメイン名 (FQDN) を使用します。 [許可された IP 範囲][authorized-ip-ranges]を使用して、API サーバー エンドポイントへのアクセスを制限できます。 また、フル [プライベート クラスター][private-clusters]を作成して、API サーバーから仮想ネットワークへのアクセスを制限することもできます。
+
+API サーバーへのアクセスは、Kubernetes のロールベースのアクセス制御 (RBAC) と Azure Active Directory を使って制御できます。 詳細については、[Azure AD と AKS の統合][aks-aad]に関するページを参照してください。
 
 ## <a name="node-security"></a>ノードのセキュリティ
 
@@ -41,7 +50,14 @@ Windows Server ノードでは、Windows Update が自動的に実行された�
 
 ストレージを提供するために、ノードは Azure Managed Disks を使用します。 ほとんどの VM ノードのサイズでは、これらは高パフォーマンスの SSD によってサポートされる Premium ディスクです。 マネージド ディスクに格納されたデータは、Azure プラットフォームへの保存時に自動的に暗号化されます。 冗長性を高めるためには、これらのディスクも Azure データ センター内で安全にレプリケートされます。
 
-現在、AKS またはその他の場所にある Kubernetes 環境は、悪意のあるマルチテナント使用に対して完全に安全ではありません。 ノードに対して *Pod Security Policy* やより高度なロール ベースのアクセス制御 (RBAC) などの追加のセキュリティ機能を使用すると、セキュリティ上の弱点を悪用されにくくなります。 ただし、悪意のあるマルチテナント ワークロードの実行に対して真のセキュリティを実現するために信頼できる唯一のセキュリティ レベルはハイパーバイザーです。 Kubernetes 用のセキュリティ ドメインは、個々のノードではなく、クラスター全体になります。 この種の悪意のあるマルチテナント ワークロードでは、物理的に分離されたクラスターを使用する必要があります。 ワークロードを分離する方法については、「[AKS でのクラスターの分離に関するベスト プラクティス][cluster-isolation]」を参照してください。
+現在、AKS またはその他の場所にある Kubernetes 環境は、悪意のあるマルチテナント使用に対して完全に安全ではありません。 ノードに対して *Pod Security Policy* やより高度なロールベースのアクセス制御 (RBAC) などの追加のセキュリティ機能を使用すると、セキュリティ上の弱点を悪用されにくくなります。 ただし、悪意のあるマルチテナント ワークロードの実行に対して真のセキュリティを実現するために信頼できる唯一のセキュリティ レベルはハイパーバイザーです。 Kubernetes 用のセキュリティ ドメインは、個々のノードではなく、クラスター全体になります。 この種の悪意のあるマルチテナント ワークロードでは、物理的に分離されたクラスターを使用する必要があります。 ワークロードを分離する方法については、「[AKS でのクラスターの分離に関するベスト プラクティス][cluster-isolation]」を参照してください。
+
+### <a name="compute-isolation"></a>コンピューティングの分離
+
+ 特定のワークロードでは、コンプライアンスや規制上の要件により、他の顧客のワークロードからの高いレベルの分離が必要になる場合があります。 これらのワークロードの場合、Azure は、AKS クラスター内のエージェント ノードとして使用できる[分離された仮想マシン](../virtual-machines/isolation.md)を提供します。 これらの分離された仮想マシンは、特定のハードウェアの種類に分離され、単一顧客専用です。 
+
+ これらの分離された仮想マシンを AKS クラスターで使用するには、AKS クラスターを作成するとき、またはノード プールを追加するときに、 **[ノード サイズ]** として[こちら](../virtual-machines/isolation.md)に示されている分離された仮想マシンのサイズのいずれかを選択します。
+
 
 ## <a name="cluster-upgrades"></a>クラスターのアップグレード
 
@@ -66,11 +82,19 @@ Windows Server ノードでは、Windows Update が自動的に実行された�
 
 仮想ネットワークでのトラフィックのフローをフィルター処理するため、Azure はネットワーク セキュリティ グループ規則を使用します。 これらの規則は、リソースへのアクセスを許可または拒否する発信元と宛先の IP 範囲、ポート、およびプロトコルを定義します。 Kubernetes API サーバーへの TLS トラフィックを許可する、既定の規則が作成されます。 ロード バランサー、ポート マッピング、またはイングレス ルートでサービスを作成すると、AKS が自動的に、トラフィックが適切にフローするようにネットワーク セキュリティ グループを変更します。
 
+AKS クラスターに独自のサブネットを指定し、トラフィックのフローを変更する場合は、AKS によって管理されるサブネットレベルのネットワーク セキュリティ グループを変更しないでください。 ロード バランサーへのアクセス、コントロール プレーンとの通信、[エグレス][aks-limit-egress-traffic]など、クラスターの管理に必要なトラフィックが妨げられない限り、サブネットレベルのネットワーク セキュリティ グループをさらに作成してトラフィックのフローを変更することができます。
+
+### <a name="kubernetes-network-policy"></a>Kubernetes ネットワーク ポリシー
+
+クラスター内のポッド間のネットワーク トラフィックを制限するために、AKS では、[Kubernetes ネットワーク ポリシー][network-policy]のサポートを提供しています。 ネットワーク ポリシーを使用すると、名前空間とラベル セレクターに基づいて、クラスター内の特定のネットワーク パスを許可するか拒否するかを選択できます。
+
 ## <a name="kubernetes-secrets"></a>Kubernetes シークレット
 
 Kubernetes *シークレット*は、アクセス資格情報やキーなどの機密データをポッドに挿入するために使用します。 まず Kubernetes API を使用してシークレットを作成します。 ポッドまたはデプロイを定義するとき、特定のシークレットを要求できます。 シークレットは、シークレットを必要とするポッドがスケジュールされているノードのみに提供されます。シークレットは *tmpfs* に格納され、ディスクには書き込まれません。 シークレットを必要とする最後のポッドがノードから削除されると、シークレットはノードの tmpfs から削除されます。 シークレットは、指定した名前空間内に格納され、同じ名前空間内のポッドによってのみアクセスできます。
 
 シークレットを使用すると、ポッドやサービスの YAML マニフェストに定義されている機密情報が減少します。 代わりに、YAML マニフェストの一部として Kubernetes API サーバーに格納されたシークレットを要求します。 この方法により、シークレットへのアクセス権が特定のポッドにのみ提供されます。 注意: 生のシークレット マニフェスト ファイルには、base64 形式の機密データが含まれています (詳細については、[公式ドキュメント][secret-risks]を参照してください)。 そのため、このファイルは機密情報として扱ってください。また、絶対にソース管理にはコミットしないでください。
+
+Kubernetes シークレットは、分散型キー値ストアである etcd に格納されます。 etcd ストアは AKS によって完全に管理されており、[データは Azure プラットフォーム内での保存時に暗号化されます][encryption-atrest]。 
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -90,17 +114,22 @@ Kubernetes と AKS の中心概念の追加情報については、次の記事�
 [kured]: https://github.com/weaveworks/kured
 [kubernetes-network-policies]: https://kubernetes.io/docs/concepts/services-networking/network-policies/
 [secret-risks]: https://kubernetes.io/docs/concepts/configuration/secret/#risks
+[encryption-atrest]: ../security/fundamentals/encryption-atrest.md
 
 <!-- LINKS - Internal -->
 [aks-daemonsets]: concepts-clusters-workloads.md#daemonsets
 [aks-upgrade-cluster]: upgrade-cluster.md
-[aks-aad]: azure-ad-integration.md
+[aks-aad]: ./azure-ad-integration-cli.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md
 [aks-concepts-identity]: concepts-identity.md
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
+[aks-limit-egress-traffic]: limit-egress-traffic.md
 [cluster-isolation]: operator-best-practices-cluster-isolation.md
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [developer-best-practices-pod-security]:developer-best-practices-pod-security.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
+[authorized-ip-ranges]: api-server-authorized-ip-ranges.md
+[private-clusters]: private-clusters.md
+[network-policy]: use-network-policies.md

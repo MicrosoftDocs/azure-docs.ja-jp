@@ -7,18 +7,18 @@ author: rayluo
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 11/13/2019
 ms.author: rayluo
 ms.reviewer: nacanuma
-ms.custom: aaddev
-ms.openlocfilehash: 9c6edd0b3cfd6620f04553f9f6dfe89f1c7b7024
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: aaddev, devx-track-python
+ms.openlocfilehash: 7aaf59377949101ba8dd5c9454b89229e925e859
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536201"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846192"
 ---
 # <a name="custom-token-cache-serialization-in-msal-for-python"></a>MSAL for Python でのカスタム トークン キャッシュのシリアル化
 

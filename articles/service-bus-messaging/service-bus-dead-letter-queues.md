@@ -1,25 +1,15 @@
 ---
 title: Service Bus の配信不能キュー | Microsoft Docs
 description: Service Bus の配信不能キューについて説明します。 Service Bus キューおよびトピック サブスクリプションでは、配信不能キューと呼ばれるセカンダリ サブキューが提供されます。
-services: service-bus-messaging
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: 68b2aa38-dba7-491a-9c26-0289bc15d397
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/23/2020
-ms.author: aschhab
-ms.openlocfilehash: 9c1a0cb92fbaf98d25799ffb5a85e666e7c05f8c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.custom: fasttrack-edit, devx-track-csharp
+ms.openlocfilehash: 5f7fb65a2a1a6d6529177cd20a85a6d845c119d4
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158905"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021682"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Service Bus の配信不能キューの概要
 
@@ -50,14 +40,13 @@ Service Bus には、メッセージがメッセージング エンジン自体�
 
 アプリケーションは `DeadLetterReason` プロパティに対して独自のコードを定義できますが、システムでは以下の値が設定されます。
 
-| 条件 | DeadLetterReason | DeadLetterErrorDescription |
-| --- | --- | --- |
-| Always (常に) |HeaderSizeExceeded |このストリームのサイズ クォータを超えています。 |
-| !TopicDescription.<br />EnableFilteringMessagesBeforePublishing and SubscriptionDescription.<br />EnableDeadLetteringOnFilterEvaluationExceptions |exception.GetType().Name |exception.Message |
-| EnableDeadLetteringOnMessageExpiration |TTLExpiredException |メッセージの有効期限が切れているため、配信不能です。 |
-| SubscriptionDescription.RequiresSession |Session ID is null. (セッション ID は Null です。) |セッションが有効なエンティティではセッション ID が Null のメッセージは許可されません。 |
-| !dead letter queue | MaxTransferHopCountExceeded | キュー間で転送するときに許容される最大ホップ数。 値は 4 に設定されています。 |
-| Application での明示的な配信不能処理 |アプリケーションで指定 |アプリケーションで指定 |
+| DeadLetterReason | DeadLetterErrorDescription |
+| --- | --- |
+|HeaderSizeExceeded |このストリームのサイズ クォータを超えています。 |
+|TTLExpiredException |メッセージの有効期限が切れているため、配信不能です。 詳細については、「[TimeToLive の超過](#exceeding-timetolive)」セクションを参照してください。 |
+|Session ID is null. (セッション ID は Null です。) |セッションが有効なエンティティではセッション ID が Null のメッセージは許可されません。 |
+|MaxTransferHopCountExceeded | キュー間で転送するときに許容される最大ホップ数。 値は 4 に設定されています。 |
+| MaxDeliveryCountExceededExceptionMessage | 最大数の配信試行後、メッセージを使用できませんでした。 詳細については、「[MaxDeliveryCount の超過](#exceeding-maxdeliverycount)」セクションを参照してください。 |
 
 ## <a name="exceeding-maxdeliverycount"></a>MaxDeliveryCount の超過
 
@@ -69,7 +58,7 @@ Service Bus には、メッセージがメッセージング エンジン自体�
 
 [QueueDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription) または [SubscriptionDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) プロパティが **true** に設定されている場合 (既定値は **false**)、期限が切れるメッセージはすべて DLQ に移動され、`TTLExpiredException` 理由コードが示されます。
 
-メイン キューまたはサブスクリプションに対してプルを実行しているアクティブな受信者が少なくとも 1 つある場合は、期限切れメッセージは単に消去され、DLQ に移動されるだけです (この動作は仕様によるものです)。
+メイン キューまたはサブスクリプションに対してプルを実行しているアクティブな受信者が少なくとも 1 つある場合は、期限切れメッセージは単に消去され、DLQ に移動されるだけです。また、[遅延メッセージ](./message-deferral.md)は有効期限が切れた後に消去されず、配信不能キューに移動されません。 これらの動作は仕様によるものです。
 
 ## <a name="errors-while-processing-subscription-rules"></a>サブスクリプション ルールの処理中のエラー
 

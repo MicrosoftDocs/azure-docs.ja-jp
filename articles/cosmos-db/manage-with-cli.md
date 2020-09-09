@@ -3,15 +3,15 @@ title: Azure CLI を使用した Azure Cosmos DB リソースの管理
 description: Azure CLI を使用し、Azure Cosmos DB のアカウント、データベース、コンテナーを作成します。
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 04/13/2020
+ms.topic: how-to
+ms.date: 07/29/2020
 ms.author: mjbrown
-ms.openlocfilehash: 3f86468bcafe3d7ce78827aba761bb4e1bf920fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ae29039702a6f73a33f73afc366532077aa4b71
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273632"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432832"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Azure CLI を使用した Azure Cosmos リソースの管理
 
@@ -19,18 +19,33 @@ ms.locfileid: "81273632"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+CLI をローカルにインストールして使用することを選択した場合、このトピックでは、Azure CLI のバージョン 2.9.1 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
-## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントを作成する
+## <a name="azure-cosmos-accounts"></a>Azure Cosmos アカウント
+
+以下のセクションでは、Azure Cosmos アカウントの管理方法について説明します。
+
+* [Azure Cosmos アカウントを作成する](#create-an-azure-cosmos-db-account)
+* [リージョンの追加または削除](#add-or-remove-regions)
+* [複数リージョンの書き込みを有効にする](#enable-multiple-write-regions)
+* [リージョンのフェールオーバーの優先度を設定する](#set-failover-priority)
+* [自動フェールオーバーを有効にする](#enable-automatic-failover)
+* [手動フェールオーバーをトリガーする](#trigger-manual-failover)
+* [アカウント キーを一覧表示する](#list-account-keys)
+* [読み取り専用のアカウント キーを一覧表示する](#list-read-only-account-keys)
+* [接続文字列の一覧表示](#list-connection-strings)
+* [アカウント キーを再生成する](#regenerate-account-key)
+
+### <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントを作成する
 
 Azure Cosmos DB アカウントを SQL API で、米国西部 2 と米国東部 2 リージョンのセッション整合性で作成します。
 
 > [!IMPORTANT]
-> Azure Cosmos アカウント名は、31 文字未満の小文字である必要があります。
+> Azure Cosmos アカウント名は、44 文字未満の小文字である必要があります。
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
-accountName='mycosmosaccount' #needs to be lower case and less than 31 characters
+accountName='mycosmosaccount' #needs to be lower case and less than 44 characters
 
 az cosmosdb create \
     -n $accountName \
@@ -40,7 +55,7 @@ az cosmosdb create \
     --locations regionName='East US 2' failoverPriority=1 isZoneRedundant=False
 ```
 
-## <a name="add-or-remove-regions"></a>リージョンを追加または削除する
+### <a name="add-or-remove-regions"></a>リージョンを追加または削除する
 
 リージョンが 2 つある Azure Cosmos アカウントの作成、リージョンの追加、リージョンの削除を行います。
 
@@ -51,7 +66,7 @@ az cosmosdb create \
 
 ```azurecli-interactive
 resourceGroupName='myResourceGroup'
-accountName='mycosmosaccount' # must be lower case and <31 characters
+accountName='mycosmosaccount'
 
 # Create an account with 2 regions
 az cosmosdb create --name $accountName --resource-group $resourceGroupName \
@@ -70,7 +85,7 @@ az cosmosdb update --name $accountName --resource-group $resourceGroupName \
     --locations regionName="East US 2" failoverPriority=1 isZoneRedundant=False
 ```
 
-## <a name="enable-multiple-write-regions"></a>複数の書き込みリージョンを有効にする
+### <a name="enable-multiple-write-regions"></a>複数の書き込みリージョンを有効にする
 
 Cosmos アカウントのマルチマスターを有効にします
 
@@ -85,7 +100,7 @@ accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o
 az cosmosdb update --ids $accountId --enable-multiple-write-locations true
 ```
 
-## <a name="set-failover-priority"></a>フェールオーバー優先度を設定する
+### <a name="set-failover-priority"></a>フェールオーバー優先度を設定する
 
 Azure Cosmos アカウントに、自動フェールオーバーのフェールオーバー優先度を設定します
 
@@ -99,10 +114,10 @@ accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o
 
 # Make South Central US the next region to fail over to instead of East US 2
 az cosmosdb failover-priority-change --ids $accountId \
-    --failover-policies 'West US 2'=0 'South Central US'=1 'East US 2'=2
+    --failover-policies 'West US 2=0' 'South Central US=1' 'East US 2=2'
 ```
 
-## <a name="enable-automatic-failover"></a>自動フェールオーバーを有効にする
+### <a name="enable-automatic-failover"></a>自動フェールオーバーを有効にする
 
 ```azurecli-interactive
 # Enable automatic failover on an existing account
@@ -115,13 +130,13 @@ accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o
 az cosmosdb update --ids $accountId --enable-automatic-failover true
 ```
 
-## <a name="trigger-manual-failover"></a>手動フェールオーバーをトリガーする
+### <a name="trigger-manual-failover"></a>手動フェールオーバーをトリガーする
 
 > [!CAUTION]
 > リージョンの優先度を = 0 に変更すると、Azure Cosmos アカウントの手動フェールオーバーがトリガーされます。 他の優先度を変更しても、フェールオーバーはトリガーされません。
 
 ```azurecli-interactive
-# Assume region order is initially 'West US 2'=0 'East US 2'=1 'South Central US'=2 for account
+# Assume region order is initially 'West US 2=0' 'East US 2=1' 'South Central US=2' for account
 resourceGroupName='myResourceGroup'
 accountName='mycosmosaccount'
 
@@ -130,10 +145,10 @@ accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o
 
 # Trigger a manual failover to promote East US 2 as new write region
 az cosmosdb failover-priority-change --ids $accountId \
-    --failover-policies 'East US 2'=0 'South Central US'=1 'West US 2'=2
+    --failover-policies 'East US 2=0' 'South Central US=1' 'West US 2=2'
 ```
 
-## <a name="list-all-account-keys"></a><a id="list-account-keys"></a> すべてのアカウント キーを一覧表示する
+### <a name="list-all-account-keys"></a><a id="list-account-keys"></a> すべてのアカウント キーを一覧表示する
 
 Cosmos アカウントのすべてのキーを取得します。
 
@@ -147,7 +162,7 @@ az cosmosdb keys list \
    -g $resourceGroupName
 ```
 
-## <a name="list-read-only-account-keys"></a>読み取り専用のアカウント キーを一覧表示する
+### <a name="list-read-only-account-keys"></a>読み取り専用のアカウント キーを一覧表示する
 
 Cosmos アカウントの読み取り専用キーを取得します。
 
@@ -162,7 +177,7 @@ az cosmosdb keys list \
     --type read-only-keys
 ```
 
-## <a name="list-connection-strings"></a>接続文字列の一覧表示
+### <a name="list-connection-strings"></a>接続文字列の一覧表示
 
 Cosmos アカウントの接続文字列を取得します。
 
@@ -177,7 +192,7 @@ az cosmosdb keys list \
     --type connection-strings
 ```
 
-## <a name="regenerate-account-key"></a>アカウント キーの再生成
+### <a name="regenerate-account-key"></a>アカウント キーの再生成
 
 Cosmos アカウントの新しいキーを再生成します。
 
@@ -190,7 +205,16 @@ az cosmosdb keys regenerate \
     --key-kind secondary
 ```
 
-## <a name="create-a-database"></a>データベースを作成する
+## <a name="azure-cosmos-db-database"></a>Azure Cosmos DB データベース
+
+以下のセクションでは、Azure Cosmos DB データベースの管理方法について説明します。
+
+* [データベースの作成](#create-a-database)
+* [共有スループットのデータベースを作成する](#create-a-database-with-shared-throughput)
+* [データベースのスループットを変更する](#change-database-throughput)
+* [データベースのロックを管理する](#manage-lock-on-a-database)
+
+### <a name="create-a-database"></a>データベースを作成する
 
 Cosmos データベースを作成します。
 
@@ -205,7 +229,7 @@ az cosmosdb sql database create \
     -n $databaseName
 ```
 
-## <a name="create-a-database-with-shared-throughput"></a>共有スループットのデータベースを作成する
+### <a name="create-a-database-with-shared-throughput"></a>共有スループットのデータベースを作成する
 
 共有スループットの Cosmos データベースを作成します。
 
@@ -222,7 +246,7 @@ az cosmosdb sql database create \
     --throughput $throughput
 ```
 
-## <a name="change-the-throughput-of-a-database"></a>データベースのスループットを変更する
+### <a name="change-database-throughput"></a>データベースのスループットを変更する
 
 Cosmos データベースのスループットを秒あたり 1000 RU 増やします。
 
@@ -248,7 +272,49 @@ az cosmosdb sql database throughput update \
     --throughput $newRU
 ```
 
-## <a name="create-a-container"></a>コンテナーを作成する
+### <a name="manage-lock-on-a-database"></a>データベースのロックを管理する
+
+データベースに削除ロックを設定します。 これを有効にする方法の詳細については、「[Cosmos SDK からの変更の防止](role-based-access-control.md#prevent-sdk-changes)」を参照してください。
+
+```azurecli-interactive
+resourceGroupName='myResourceGroup'
+accountName='my-cosmos-account'
+databaseName='myDatabase'
+
+lockType='CanNotDelete' # CanNotDelete or ReadOnly
+databaseParent="databaseAccounts/$accountName"
+databaseLockName="$databaseName-Lock"
+
+# Create a delete lock on database
+az lock create --name $databaseLockName \
+    --resource-group $resourceGroupName \
+    --resource-type Microsoft.DocumentDB/sqlDatabases \
+    --lock-type $lockType \
+    --parent $databaseParent \
+    --resource $databaseName
+
+# Delete lock on database
+lockid=$(az lock show --name $databaseLockName \
+        --resource-group $resourceGroupName \
+        --resource-type Microsoft.DocumentDB/sqlDatabases \
+        --resource $databaseName \
+        --parent $databaseParent \
+        --output tsv --query id)
+az lock delete --ids $lockid
+```
+
+## <a name="azure-cosmos-db-container"></a>Azure Cosmos DB コンテナー
+
+以下のセクションでは、Azure Cosmos DB コンテナーの管理方法について説明します。
+
+* [コンテナーの作成](#create-a-container)
+* [自動スケーリングを使用してコンテナーを作成する](#create-a-container-with-autoscale)
+* [TTL が有効なコンテナーを作成する](#create-a-container-with-ttl)
+* [カスタム インデックス ポリシーを持つコンテナーの作成](#create-a-container-with-a-custom-index-policy)
+* [コンテナーのスループットを変更する](#change-container-throughput)
+* [コンテナーのロックを管理する](#manage-lock-on-a-container)
+
+### <a name="create-a-container"></a>コンテナーを作成する
 
 既定のインデックス ポリシー、パーティション キー、および 400 の秒あたりの RU を使用して Cosmos コンテナーを作成します。
 
@@ -267,7 +333,26 @@ az cosmosdb sql container create \
     -p $partitionKey --throughput $throughput
 ```
 
-## <a name="create-a-container-with-ttl"></a>TTL を使用したコンテナーを作成する
+### <a name="create-a-container-with-autoscale"></a>自動スケーリングを使用してコンテナーを作成する
+
+既定のインデックス ポリシー、パーティション キー、および 4000 自動スケーリング RU/秒を使用して Cosmos コンテナーを作成します。
+
+```azurecli-interactive
+# Create a SQL API container
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+containerName='container1'
+partitionKey='/myPartitionKey'
+maxThroughput=4000
+
+az cosmosdb sql container create \
+    -a $accountName -g $resourceGroupName \
+    -d $databaseName -n $containerName \
+    -p $partitionKey --max-throughput $maxThroughput
+```
+
+### <a name="create-a-container-with-ttl"></a>TTL を使用したコンテナーを作成する
 
 TTL が有効になっている Cosmos コンテナーを作成します。
 
@@ -286,7 +371,7 @@ az cosmosdb sql container update \
     --ttl=86400
 ```
 
-## <a name="create-a-container-with-a-custom-index-policy"></a>カスタム インデックス ポリシーを持つコンテナーを作成する
+### <a name="create-a-container-with-a-custom-index-policy"></a>カスタム インデックス ポリシーを持つコンテナーを作成する
 
 カスタム インデックス ポリシー、空間インデックス、複合インデックス、パーティション キーを持ち、RU が秒あたり 400 の Cosmos コンテナーを作成します。
 
@@ -338,7 +423,7 @@ az cosmosdb sql container create \
 rm -f "idxpolicy-$uniqueId.json"
 ```
 
-## <a name="change-the-throughput-of-a-container"></a>コンテナーのスループットの変更
+### <a name="change-container-throughput"></a>コンテナーのスループットを変更する
 
 Cosmos コンテナーのスループットを秒あたり 1000 RU 増やします。
 
@@ -364,6 +449,39 @@ az cosmosdb sql container throughput update \
     -d $databaseName \
     -n $containerName \
     --throughput $newRU
+```
+
+### <a name="manage-lock-on-a-container"></a>コンテナーのロックを管理する
+
+コンテナーに削除ロックを設定します。 これを有効にする方法の詳細については、「[Cosmos SDK からの変更の防止](role-based-access-control.md#prevent-sdk-changes)」を参照してください。
+
+```azurecli-interactive
+resourceGroupName='myResourceGroup'
+accountName='my-cosmos-account'
+databaseName='myDatabase'
+containerName='myContainer'
+
+lockType='CanNotDelete' # CanNotDelete or ReadOnly
+databaseParent="databaseAccounts/$accountName"
+containerParent="databaseAccounts/$accountName/sqlDatabases/$databaseName"
+containerLockName="$containerName-Lock"
+
+# Create a delete lock on container
+az lock create --name $containerLockName \
+    --resource-group $resourceGroupName \
+    --resource-type Microsoft.DocumentDB/containers \
+    --lock-type $lockType \
+    --parent $containerParent \
+    --resource $containerName
+
+# Delete lock on container
+lockid=$(az lock show --name $containerLockName \
+        --resource-group $resourceGroupName \
+        --resource-type Microsoft.DocumentDB/containers \
+        --resource-name $containerName \
+        --parent $containerParent \
+        --output tsv --query id)
+az lock delete --ids $lockid
 ```
 
 ## <a name="next-steps"></a>次のステップ

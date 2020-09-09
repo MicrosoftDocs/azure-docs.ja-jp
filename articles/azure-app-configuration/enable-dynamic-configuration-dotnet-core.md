@@ -11,19 +11,20 @@ ms.assetid: ''
 ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
+ms.custom: devx-track-csharp
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: abarora
-ms.openlocfilehash: afecc84748ae8ce85c07e3b482bd9b596bdca251
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: aebe7772c673162d60f35d6a81725ba1452d16a8
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75433673"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207080"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>チュートリアル:.NET Core アプリで動的な構成を使用する
 
-App Configuration .NET Core クライアント ライブラリでは、アプリケーションを再起動させることなく必要に応じて構成設定のセットを更新できます。 これは、最初に構成プロバイダーのオプションから `IConfigurationRefresher` のインスタンスを取得した後、コード内の任意の場所でそのインスタンスの `Refresh` を呼び出すことによって実装できます。
+App Configuration .NET Core クライアント ライブラリでは、アプリケーションを再起動させることなく必要に応じて構成設定のセットを更新できます。 これは、最初に構成プロバイダーのオプションから `IConfigurationRefresher` のインスタンスを取得した後、コード内の任意の場所でそのインスタンスの `TryRefreshAsync` を呼び出すことによって実装できます。
 
 設定の更新を維持しながら、構成ストアの呼び出しが多くなりすぎないようにするため、キャッシュが各設定に使用されます。 設定のキャッシュされた値の有効期限が切れるまで、構成ストアの値が変更された場合でも、更新操作で値は更新されません。 各要求の既定の有効期間は 30 秒ですが、必要な場合はオーバーライドできます。
 
@@ -45,7 +46,7 @@ App Configuration .NET Core クライアント ライブラリでは、アプリ
 
 ## <a name="reload-data-from-app-configuration"></a>App Configuration からデータを再度読み込む
 
-*Program.cs* を開いてファイルを更新します。`System.Threading.Tasks` 名前空間の参照を追加し、`AddAzureAppConfiguration` メソッドに更新の構成を指定し、`Refresh` メソッドを使用して手動更新をトリガーするようにします。
+*Program.cs* を開いてファイルを更新します。`System.Threading.Tasks` 名前空間の参照を追加し、`AddAzureAppConfiguration` メソッドに更新の構成を指定し、`TryRefreshAsync` メソッドを使用して手動更新をトリガーするようにします。
 
 ```csharp
 using System;
@@ -84,14 +85,14 @@ class Program
         // Wait for the user to press Enter
         Console.ReadLine();
 
-        await _refresher.Refresh();
+        await _refresher.TryRefreshAsync();
         Console.WriteLine(_configuration["TestApp:Settings:Message"] ?? "Hello world!");
     }
 }
 }
 ```
 
-更新操作がトリガーされたときに、構成データを App Configuration ストアで更新するために使用する設定を指定するには、`ConfigureRefresh` メソッドを使います。 `AddAzureAppConfiguration` メソッドに提供されたオプションで `GetRefresher` メソッドを呼び出すことによって `IConfigurationRefresher` のインスタンスを取得でき、このインスタンスの `Refresh` メソッドを使ってコード内の任意の場所で更新操作をトリガーできます。
+更新操作がトリガーされたときに、構成データを App Configuration ストアで更新するために使用する設定を指定するには、`ConfigureRefresh` メソッドを使います。 `AddAzureAppConfiguration` メソッドに提供されたオプションで `GetRefresher` メソッドを呼び出すことによって `IConfigurationRefresher` のインスタンスを取得でき、このインスタンスの `TryRefreshAsync` メソッドを使ってコード内の任意の場所で更新操作をトリガーできます。
     
 > [!NOTE]
 > 構成設定の既定のキャッシュ有効期限は 30 秒ですが、`ConfigureRefresh` メソッドへの引数として渡されるオプション初期化子で `SetCacheExpiration` メソッドを呼び出すことにより、オーバーライドできます。
@@ -100,23 +101,33 @@ class Program
 
 1. **ConnectionString** という名前の環境変数に、App Configuration ストアへのアクセス キーを設定します。 Windows コマンド プロンプトを使用する場合は、次のコマンドを実行してコマンド プロンプトを再起動し、変更が反映されるようにします。
 
-        setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```console
+     setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```
 
     Windows PowerShell を使用する場合は、次のコマンドを実行します。
 
-        $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```powershell
+     $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```
 
     macOS または Linux を使用する場合は、次のコマンドを実行します。
 
-        export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```console
+     export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```
 
 1. 次のコマンドを実行して、コンソール アプリをビルドします。
 
-        dotnet build
+    ```console
+     dotnet build
+    ```
 
 1. ビルドが正常に完了したら、次のコマンドを実行して、アプリをローカルで実行します。
 
-        dotnet run
+    ```console
+     dotnet run
+    ```
 
     ![クイック スタートのアプリ (ローカルで起動)](./media/quickstarts/dotnet-core-app-run.png)
 

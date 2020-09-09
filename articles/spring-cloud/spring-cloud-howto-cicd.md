@@ -6,12 +6,13 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: brendm
-ms.openlocfilehash: f329fb5472c5a2eab6f22a2e81b19d90e7045330
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: d31be45f5cf608b7dfd727741de68544574d7f8a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278509"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496459"
 ---
 # <a name="cicd-for-azure-spring-cloud"></a>Azure Spring Cloud の CI/CD
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Sentinel に Cisco データを接続する | Microsoft Docs
-description: Azure Sentinel に Cisco データを接続する方法について説明します。
+description: Cisco ASA アプライアンスを Azure Sentinel に接続して、ダッシュボードの表示、カスタム アラートの作成、および調査の改善を行う方法を説明します。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 264dab4fabc890ffe03d911f8ee3c08ef51375d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8a64dd3e47384ba2bf7579f8052177252634622
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588401"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85566047"
 ---
 # <a name="connect-cisco-asa-to-azure-sentinel"></a>Cisco ASA を Azure Sentinel に接続する
 

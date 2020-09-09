@@ -1,20 +1,20 @@
 ---
-title: Start/Stop VMs ソリューションからログのクエリを実行する方法
-description: この記事では、Azure Monitor から Start/Stop VMs ソリューションによって生成されたログ データのクエリを実行する方法について説明します。
+title: Azure Automation の Start/Stop VMs during off-hours からログを照会する
+description: この記事では、Azure Monitor を使用して、Start/Stop VMs during off-hours によって生成されたログ データのクエリを実行する方法について説明します。
 services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 472f3762ca18f71ba95053576daf025d8477fee9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: de013b6ccd924f50ffe12fcba1285b121eece5f7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81604736"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827558"
 ---
-# <a name="how-to-query-logs-from-startstop-vms-solution"></a>Start/Stop VMs ソリューションからログのクエリを実行する方法
+# <a name="query-logs-from-startstop-vms-during-off-hours"></a>Start/Stop VMs during off-hours からログを照会する
 
-Azure Automation により、ジョブ ログとジョブ ストリームの 2 種類のレコードが Log Analytics のリンクされたワークスペースに転送されます。 このデータは、Azure Monitor で[クエリ](../azure-monitor/log-query/log-query-overview.md)用に使用できます。
+Azure Automation により、ジョブ ログとジョブ ストリームの 2 種類のレコードが Log Analytics のリンクされたワークスペースに転送されます。 この記事では、Azure Monitor 内で[クエリ](../azure-monitor/log-query/log-query-overview.md)に使用できるデータを確認します。
 
 ## <a name="job-logs"></a>ジョブ ログ
 
@@ -60,7 +60,7 @@ Azure Automation により、ジョブ ログとジョブ ストリームの 2 �
 
 ## <a name="sample-log-searches"></a>サンプル ログ検索
 
-以下の表は、このソリューションによって収集されたジョブ レコードを探すログ検索の例です。
+以下の表は、Start/Stop VMs during off-hours によって収集されたジョブ レコードを探すログ検索の例です。
 
 |クエリ | 説明|
 |----------|----------|
@@ -71,4 +71,6 @@ Azure Automation により、ジョブ ログとジョブ ストリームの 2 �
 
 ## <a name="next-steps"></a>次のステップ
 
-**Start/Stop VMs during off-hours** ソリューションには、事前に定義された一連のアラートは含まれていません。 Azure Monitor を使用した「[ログ アラートの作成](../azure-monitor/platform/alerts-log.md)」をレビューして、ジョブ失敗アラートを作成し、DevOps や運用プロセスおよび手順をサポートする方法について学習してください。
+* 機能を設定するには、「[Start/Stop VMs during off-hours を構成する](automation-solution-vm-management-config.md)」を参照してください。
+* 機能のデプロイ中のログ アラートについては、[Azure Monitor を使用したログ アラートの作成](../azure-monitor/platform/alerts-log.md)に関する記事を参照してください。
+* 機能のエラーを解決するには、「[Start/Stop VMs during off-hours の問題のトラブルシューティング](troubleshoot/start-stop-vm.md)」を参照してください。

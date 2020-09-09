@@ -2,14 +2,14 @@
 title: Durable Functions での外部イベントの処理 - Azure
 description: Azure Functions の Durable Functions 拡張機能で外部イベントを処理する方法について説明します。
 ms.topic: conceptual
-ms.date: 11/02/2019
+ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 0877161f8d668141c8efb7c06b10643bf209341f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3cd04c93d508bd06c4ddd2e05074084202b9fc60
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76262964"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014941"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Durable Functions での外部イベントの処理 (Azure Functions)
 
@@ -20,7 +20,7 @@ ms.locfileid: "76262964"
 
 ## <a name="wait-for-events"></a>イベントを待つ
 
-[オーケストレーション トリガー バインド](durable-functions-bindings.md#orchestration-trigger)の `WaitForExternalEvent` (.NET) および `waitForExternalEvent` (JavaScript) メソッドを使うと、オーケストレーター関数では外部イベントを非同期に待機してリッスンできるようになります。 リスニング オーケストレーター関数は、受信するイベントの "*名前*" と "*データのシェイプ*" を宣言します。
+[オーケストレーション トリガー バインド](durable-functions-bindings.md#orchestration-trigger)の [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) (.NET)、`waitForExternalEvent` (JavaScript)、および `wait_for_external_event` (Python) メソッドを使うと、オーケストレーター関数では外部イベントを非同期に待機してリッスンできるようになります。 リスニング オーケストレーター関数は、受信するイベントの "*名前*" と "*データのシェイプ*" を宣言します。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -57,6 +57,22 @@ module.exports = df.orchestrator(function*(context) {
         // approval denied - send a notification
     }
 });
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    approved = context.wait_for_external_event('Approval')
+    if approved:
+        # approval granted - do the approved action
+    else:
+        # approval denied - send a notification
+
+main = df.Orchestrator.create(orchestrator_function)
 ```
 
 ---
@@ -116,6 +132,28 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    event1 = context.wait_for_external_event('Event1')
+    event2 = context.wait_for_external_event('Event2')
+    event3 = context.wait_for_external_event('Event3')
+
+    winner = context.task_any([event1, event2, event3])
+    if winner == event1:
+        # ...
+    elif winner == event2:
+        # ...
+    elif winner == event3:
+        # ...
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
 ---
 
 前の例では、複数のイベントの "*いずれか*" をリッスンします。 "*すべて*" のイベントを待つこともできます。
@@ -164,16 +202,42 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    application_id = context.get_input()
+    
+    gate1 = context.wait_for_external_event('CityPlanningApproval')
+    gate2 = context.wait_for_external_event('FireDeptApproval')
+    gate3 = context.wait_for_external_event('BuildingDeptApproval')
+
+    yield context.task_all([gate1, gate2, gate3])
+    yield context.call_activity('IssueBuildingPermit', application_id)
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
 ---
 
 `WaitForExternalEvent` では、入力を無期限に待機します。  関数アプリは、待機中に安全にアンロードすることができます。 これは、このオーケストレーション インスタンスのイベントが到着すると、自動的に起動され、すぐにそのイベントを処理します。
 
 > [!NOTE]
-> 関数アプリで従量課金プランを使用する場合、オーケストレーター関数が `WaitForExternalEvent` (.NET) または `waitForExternalEvent` (JavaScript) からのタスクを待っている間は、待ち時間がどんなに長くなっても課金されません。
+> 関数アプリで従量課金プランを使用する場合、オーケストレーター関数が `WaitForExternalEvent` (.NET)、`waitForExternalEvent` (JavaScript)、 または `wait_for_external_event` (Python) からのタスクを待っている間は、待ち時間がどんなに長くなっても課金されません。
 
 ## <a name="send-events"></a>送信イベント
 
-[オーケストレーション クライアント バインド](durable-functions-bindings.md#orchestration-client)の `RaiseEventAsync` (.NET) または `raiseEvent` (JavaScript) メソッドからは、`WaitForExternalEvent` (.NET) または `waitForExternalEvent` (JavaScript) で待機するイベントが送信されます。  `RaiseEventAsync` メソッドでは、*eventName* と *eventData* がパラメーターとして使用されます。 イベント データは、JSON でシリアル化できる必要があります。
+外部のイベントは、[RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) (.NET) メソッドまたは `raiseEventAsync` (JavaScript) メソッドを使用してオーケストレーションに送信できます。 これらのメソッドは、[オーケストレーション クライアント](durable-functions-bindings.md#orchestration-client) バインディングによって公開されています。 組み込みの [raise event HTTP API](durable-functions-http-api.md#raise-event) を使用して、外部のイベントをオーケストレーションに送信することもできます。
+
+生成されたイベントには、*instance ID*、*eventName*、*eventData* パラメーターとして含まれます。 オーケストレーター関数は、`WaitForExternalEvent` (.NET) API または `waitForExternalEvent` (JavaScript) API を使用してそれらのイベントを処理します。 イベントが処理されるためには、送信側と受信側の両方で、*eventName* が一致している必要があります。 また、イベント データは、JSON でシリアル化できる必要があります。
+
+内部的には、"raise event" のメカニズムが、待機オーケストレーター関数によって取得されるメッセージをエンキューします。 指定した "*イベント名*" でインスタンスが待機していない場合、イベント メッセージがインメモリ キューに追加されます。 オーケストレーション インスタンスが後でその "*イベント名*" のリッスンを開始した場合、キューにイベント メッセージがあるかどうかを確認します。
+
+> [!NOTE]
+> 指定した "*インスタンス ID*" のオーケストレーション インスタンスが存在しない場合、イベント メッセージは破棄されます。
 
 次の例は、キューによってトリガーされる関数で、"承認" イベントをオーケストレーター関数インスタンスに送信します。 オーケストレーション インスタンス ID は、キュー メッセージの本文から取得されます。
 
@@ -203,12 +267,36 @@ module.exports = async function(context, instanceId) {
 };
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(instance_id:str, starter: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+    await client.raise_event(instance_id, 'Approval', True)
+```
+
 ---
 
-内部的には、`RaiseEventAsync` (.NET) または `raiseEvent` (JavaScript) は、待機オーケストレーター関数によって取得されるメッセージをエンキューします。 指定した "*イベント名*" でインスタンスが待機していない場合、イベント メッセージがインメモリ キューに追加されます。 オーケストレーション インスタンスが後でその "*イベント名*" のリッスンを開始した場合、キューにイベント メッセージがあるかどうかを確認します。
+内部的には、`RaiseEventAsync` (.NET)、`raiseEvent` (JavaScript)、または `raise_event` (Python) は、待機オーケストレーター関数によって取得されるメッセージをエンキューします。 指定した "*イベント名*" でインスタンスが待機していない場合、イベント メッセージがインメモリ キューに追加されます。 オーケストレーション インスタンスが後でその "*イベント名*" のリッスンを開始した場合、キューにイベント メッセージがあるかどうかを確認します。
 
 > [!NOTE]
 > 指定した "*インスタンス ID*" のオーケストレーション インスタンスが存在しない場合、イベント メッセージは破棄されます。
+
+### <a name="http"></a>HTTP
+
+次に示したのは、オーケストレーション インスタンスに "Approval" イベントを発生させる HTTP 要求の例です。 
+
+```http
+POST /runtime/webhooks/durabletask/instances/MyInstanceId/raiseEvent/Approval&code=XXX
+Content-Type: application/json
+
+"true"
+```
+
+このケースでは、インスタンス ID が *MyInstanceId* としてハードコーディングされています。
 
 ## <a name="next-steps"></a>次のステップ
 

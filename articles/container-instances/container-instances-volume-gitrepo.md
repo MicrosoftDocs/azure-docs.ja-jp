@@ -3,12 +3,12 @@ title: gitRepo ボリュームをコンテナー グループにマウントす�
 description: gitRepo ボリュームをマウントし、Git リポジトリのクローンをコンテナー インスタンスに作成する方法について説明します。
 ms.topic: article
 ms.date: 06/15/2018
-ms.openlocfilehash: 405cacd7a1649f95640a8dabf476729e101d03f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5f361b0bbd4a02f754e47c8321a664af05036601
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252085"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260712"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Azure Container Instances に gitRepo ボリュームをマウントする
 
@@ -112,7 +112,7 @@ Azure Container Instances にその他の種類のボリュームをマウント
 <!-- LINKS - External -->
 [aci-helloworld]: https://github.com/Azure-Samples/aci-helloworld
 [pat-github]: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
-[pat-repos]: https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate
+[pat-repos]: /azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create

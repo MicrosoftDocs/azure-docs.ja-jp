@@ -1,6 +1,6 @@
 ---
 title: Azure Data Box Disk にデータをコピーするチュートリアル | Microsoft Docs
-description: このチュートリアルでは、Azure Data Box Disk にデータをコピーする方法について説明します。
+description: このチュートリアルでは、ホスト コンピューターから Azure Data Box Disk にデータをコピーし、データ整合性を確認するためのチェックサムを生成する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 93a7181a3b720a3b313bb75855b2564c4cd33bc1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: d33f53ef3d6ea0ef6a3040a82ec17b3089075949
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79214328"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927115"
 ---
 ::: zone target="docs"
 
@@ -103,7 +103,7 @@ ms.locfileid: "79214328"
     |パラメーター/オプション  |説明 |
     |--------------------|------------|
     |source            | コピー元ディレクトリのパスを指定します。        |
-    |宛先       | コピー先ディレクトリのパスを指定します。        |
+    |到着地       | コピー先ディレクトリのパスを指定します。        |
     |/E                  | サブディレクトリをコピーします (空のディレクトリを含む)。 |
     |/MT[:N]             | スレッド数 N のマルチスレッド コピーを作成します。N は 1 から 128 の整数です。 <br>N の既定値は 8 です。        |
     |/R: \<N>             | 失敗したコピーの再試行回数を指定します。 N の既定値は 1,000,000 です (再試行回数 100 万回)。        |
@@ -111,7 +111,7 @@ ms.locfileid: "79214328"
     |/NFL                | ファイル名をログに記録しないように指定します。        |
     |/NDL                | ディレクトリ名をログに記録しないように指定します。        |
     |/FFT                | FAT ファイル時間 (2 秒の精度) を想定します。        |
-    |/Log:\<ログ ファイル>     | 状態出力をログ ファイルに書き込みます (既存のログ ファイルを上書きします)。         |
+    |/Log:\<Log File>     | 状態出力をログ ファイルに書き込みます (既存のログ ファイルを上書きします)。         |
 
     複数のディスクを並列に使用しながら、各ディスクで複数のジョブを実行することができます。
 
@@ -273,7 +273,7 @@ ms.locfileid: "79214328"
 
 データのコピーに分割コピー ツールを使用しなかった場合は、お客様のデータを検証する必要があります。 データを確認するには、次の手順を実行します。
 
-1. ドライブの *DataBoxDiskImport* フォルダーで、チェックサムの検証のために `DataBoxDiskValidation.cmd` を実行します。
+1. ドライブの *DataBoxDiskImport* フォルダーで、チェックサムの検証のために `DataBoxDiskValidation.cmd` を実行します。 これは Windows 環境でのみ使用できます。 Linux ユーザーは、ディスクにコピーされたソース データが[前提条件](https://docs.microsoft.com/azure/databox/data-box-disk-limits)を満たしていることを検証する必要があります。
     
     ![Data Box Disk 検証ツールの出力](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 

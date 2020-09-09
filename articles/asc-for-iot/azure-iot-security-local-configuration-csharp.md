@@ -10,17 +10,18 @@ editor: ''
 ms.assetid: 2cf6a49b-5d35-491f-abc3-63ec24eb4bc2
 ms.subservice: asc-for-iot
 ms.devlang: na
+ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: adf0d72763e0cb1892d64c68a6dce05abbf6f582
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: eab7764ede300ca355ec6193312279c5726f8a01
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81311674"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212403"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>ローカル構成ファイル (C# エージェント) について
 
@@ -64,7 +65,7 @@ Windows の場合:
 
 ### <a name="generalconfig-example"></a>General.config の例
 
-```XML
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <General>
   <add key="agentId" value="da00006c-dae9-4273-9abc-bcb7b7b4a987" />
@@ -98,7 +99,7 @@ Windows の場合:
 
 ### <a name="authenticationconfig-example"></a>Authentication.config の例
 
-```XML
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <Authentication>
   <add key="moduleName" value="azureiotsecurity"/>
@@ -122,7 +123,7 @@ Windows の場合:
 
 ### <a name="securityiotinterfaceconfig-example"></a>SecurityIotInterface.config の例
 
-```XML
+```xml
 <ExternalInterface>
   <add key="facadeType"  value="Microsoft.Azure.Security.IoT.Agent.Common.SecurityIoTHubInterface, Security.Common" />
   <add key="transportType" value="Amqp"/>

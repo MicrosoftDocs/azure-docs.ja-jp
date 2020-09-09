@@ -1,19 +1,14 @@
 ---
 title: クイック スタート:カスタム イベントを Azure 関数に送信する - Event Grid
 description: クイック スタート:Azure Event Grid と Azure CLI (または Azure portal) を使用して、トピックを発行したり、そのイベントをサブスクライブしたりします。 エンドポイントに Azure 関数を使用します。
-services: event-grid
-keywords: ''
-author: banisadr
-ms.author: babanisa
-ms.date: 11/15/2019
+ms.date: 07/07/2020
 ms.topic: quickstart
-ms.service: event-grid
-ms.openlocfilehash: 5e38571cf84537fd722093b96cd277743e8ce80c
-ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+ms.openlocfilehash: 26ddfd1aeb61d3786edcdfca1acf5e293e4145ae
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80292165"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115096"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>クイック スタート:Event Grid を使用して Azure 関数にカスタム イベントをルーティングする
 

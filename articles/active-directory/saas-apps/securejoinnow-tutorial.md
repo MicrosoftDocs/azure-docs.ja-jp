@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory と SecureW2 JoinNow Connector の統合 | Microsoft Docs
 description: Azure Active Directory と SecureW2 JoinNow Connector の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2445b3af-f827-40de-9097-6f5c933d0f53
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dbb21bcea978f566082e5edb8831ac044c95fd6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e6c4cb506d4a218a22a5dd5e92fe09466e0cb0f8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68880115"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543169"
 ---
 # <a name="tutorial-integrate-securew2-joinnow-connector-with-azure-active-directory"></a>チュートリアル:SecureW2 JoinNow Connector と Azure Active Directory の統合
 

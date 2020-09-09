@@ -12,17 +12,17 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b899e1d651f41c9c1e1e54af1b5ec19162dfc28d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b4de8a5e96466ea324475030df1f00eb6bb5cf1a
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81380058"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118289"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-application"></a>チュートリアル:Android アプリケーションからユーザーをサインインさせて、Microsoft Graph を呼び出す 
 
 >[!NOTE]
->このチュートリアルでは、Android 用の MSAL を使用する方法の簡単な例を示します。 わかりやすくするため、このチュートリアルでは単一アカウント モードのみを使用します。 また、リポジトリを表示し、[構成済みのサンプル アプリ](https://github.com/Azure-Samples/ms-identity-android-java/)を複製して、さらに複雑なシナリオを調べることもできます。 サンプル アプリ、構成、および登録について詳しくは、[クイックスタート](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-android)をご覧ください。 
+>このチュートリアルでは、Android 用の MSAL を使用する方法の簡単な例を示します。 わかりやすくするため、このチュートリアルでは単一アカウント モードのみを使用します。 また、リポジトリを表示し、[構成済みのサンプル アプリ](https://github.com/Azure-Samples/ms-identity-android-java/)を複製して、さらに複雑なシナリオを調べることもできます。 サンプル アプリ、構成、および登録について詳しくは、[クイックスタート](./quickstart-v2-android.md)をご覧ください。 
 
 このチュートリアルでは、Android 用の Microsoft Authentication Library を使用して、Android アプリを Microsoft ID プラットフォームと統合する方法について説明します。 ユーザーをサインインおよびサインアウトさせる方法、Microsoft Graph API を呼び出すためのアクセス トークンを取得する方法、および Graph API への要求を行う方法を学習します。 
 
@@ -117,7 +117,7 @@ Android アプリケーションがまだない場合は、次の手順に従っ
    ```
     
    >[!NOTE]
-   >このチュートリアルでは、単一アカウント モードでアプリを構成する方法についてのみ説明します。 [単一アカウント モードと複数アカウント モードの比較](https://docs.microsoft.com/azure/active-directory/develop/single-multi-account)および[アプリの構成](https://docs.microsoft.com/azure/active-directory/develop/msal-configuration)の詳細については、ドキュメントを参照してください
+   >このチュートリアルでは、単一アカウント モードでアプリを構成する方法についてのみ説明します。 [単一アカウント モードと複数アカウント モードの比較](./single-multi-account.md)および[アプリの構成](./msal-configuration.md)の詳細については、ドキュメントを参照してください
    
 4. **app** > **src** > **main** > **AndroidManifest.xml** で、以下の `BrowserTabActivity` アクティビティをアプリケーション本文に追加します。 このエントリにより、Microsoft は認証の完了後にアプリケーションにコールバックできます。
 
@@ -582,4 +582,4 @@ private void performOperationOnSignOut() {
 
 ## <a name="get-help"></a>ヘルプの参照
 
-このチュートリアルまたは Microsoft ID プラットフォームで問題が発生した場合は、[ヘルプとサポート](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options)に関する記事をご覧ください。
+このチュートリアルまたは Microsoft ID プラットフォームで問題が発生した場合は、[ヘルプとサポート](./developer-support-help-options.md)に関する記事をご覧ください。

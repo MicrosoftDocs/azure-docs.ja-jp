@@ -7,22 +7,22 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 4ff6972e2f7ea219a1c8c8dbabbf9fe12a8fa59e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/17/2020
+ms.openlocfilehash: 63a1f8e30be2983c0df93ff5a7229460f8f39214
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369466"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936046"
 ---
 # <a name="image-analysis-cognitive-skill"></a>画像分析の認知スキル
 
-**画像分析**スキルは､イメージの内容に基づいて豊富な一群のビジュアル フィーチャーを抽出します｡ たとえば､イメージからキャプションを生成したり､タグを生成したり､セレブリティやランドマークを特定したりできます｡ このスキルでは、[Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) Cognitive Services によって提供される機械学習モデルが使用されます。 
+**画像分析**スキルは､イメージの内容に基づいて豊富な一群のビジュアル フィーチャーを抽出します｡ たとえば､イメージからキャプションを生成したり､タグを生成したり､セレブリティやランドマークを特定したりできます｡ このスキルでは、[Computer Vision](../cognitive-services/computer-vision/home.md) Cognitive Services によって提供される機械学習モデルが使用されます。 
 
 > [!NOTE]
 > 少量 (20 件未満のトランザクション) であれば Azure Cognitive Search で無料で実行できますが、ワークロードが大きい場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure Cognitive Search のドキュメント解析段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
 >
-> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Cognitive Search の価格](https://go.microsoft.com/fwlink/?linkid=2042400)に関するページで説明されています。
+> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Cognitive Search の価格](https://azure.microsoft.com/pricing/details/search/)に関するページで説明されています。
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -34,15 +34,15 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 
 | パラメーター名     | 説明 |
 |--------------------|-------------|
-| defaultLanguageCode   |  結果を返す言語を示す文字列｡ サービスは､指定された言語で認識結果を返します｡ このプロパティが指定されていない場合の既定値は "en" です。 <br/><br/>サポートされている言語は以下の通りです｡ <br/>*en* - 英語 (既定) <br/> *es* - スペイン語 <br/> *ja* - 日本語 <br/> *pt* - ポルトガル語 <br/> *zh* - 簡体中国語|
-| visualFeatures |  結果として返すビジュアル フィーチャー型を示す文字列の並び｡ 有効なビジュアル フィーチャー型には以下があります｡  <ul><li>*adult* - 画像が事実上のポルノ (裸や性行為を表している)、または不快 (極端な暴力や流血を表している) かどうかを検出します｡ 性的な暗示を含むコンテンツ (わいせつコンテンツ) も検出されます。</li><li>*brands* - おおよその場所など、画像内のさまざまなブランドを検出します。 *brands* ビジュアル フィーチャーは、英語でのみ使用可能です。</li><li> *categories* - Cognitive Services の[Computer Vision のドキュメント](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)に定義されている分類に従ったイメージ コンテンツの分類です。 </li><li>*description* - サポートされる言語の完全な文章を使用して画像のコンテンツを説明します。</li><li>*faces* - 顔の有無を検出します｡ 存在する場合は､座標、性別､および年齢を生成します｡</li><li> *objects* - おおよその場所など、画像内のさまざまなオブジェクトを検出します。 *objects* ビジュアル フィーチャーは、英語でのみ使用可能です。</li><li> *tags* - イメージのコンテンツに関係する単語の詳細な一覧のタグです｡</li></ul> ビジュアル フィーチャー名は大文字と小文字が区別されます｡ *color* と *imageType* のビジュアル機能は非推奨になりましたが、この機能には[カスタム スキル](https://go.microsoft.com/fwlink/?linkid=2121117)を使用してアクセスできます。|
-| details   | 結果として返すドメイン固有の詳細を示す文字列の並び. 有効なビジュアル フィーチャー型には以下があります｡ <ul><li>*celebrities* - イメージ内でセレブリティが検出された場合に、そのセレブリティを特定します｡</li><li>*landmarks* - イメージ内でランドマークが検出された場合に、そのランドマークを特定します｡ </li></ul> |
+| `defaultLanguageCode` |  結果を返す言語を示す文字列｡ サービスは､指定された言語で認識結果を返します｡ このプロパティが指定されていない場合の既定値は "en" です。 <br/><br/>サポートされている言語は以下の通りです｡ <br/>*en* - 英語 (既定) <br/> *es* - スペイン語 <br/> *ja* - 日本語 <br/> *pt* - ポルトガル語 <br/> *zh* - 簡体中国語|
+| `visualFeatures` |    結果として返すビジュアル フィーチャー型を示す文字列の並び｡ 有効なビジュアル フィーチャー型には以下があります｡  <ul><li>*adult* - 画像が事実上のポルノ (裸や性行為を表している)、または不快 (極端な暴力や流血を表している) かどうかを検出します｡ 性的な暗示を含むコンテンツ (わいせつコンテンツ) も検出されます。</li><li>*brands* - おおよその場所など、画像内のさまざまなブランドを検出します。 *brands* ビジュアル フィーチャーは、英語でのみ使用可能です。</li><li> *categories* - Cognitive Services の[Computer Vision のドキュメント](../cognitive-services/computer-vision/category-taxonomy.md)に定義されている分類に従ったイメージ コンテンツの分類です。 </li><li>*description* - サポートされる言語の完全な文章を使用して画像のコンテンツを説明します。</li><li>*faces* - 顔の有無を検出します｡ 存在する場合は､座標、性別､および年齢を生成します｡</li><li>  *objects* - おおよその場所など、画像内のさまざまなオブジェクトを検出します。 *objects* ビジュアル フィーチャーは、英語でのみ使用可能です。</li><li> *tags* - イメージのコンテンツに関係する単語の詳細な一覧のタグです｡</li></ul> ビジュアル フィーチャー名は大文字と小文字が区別されます｡ *color* と *imageType* のビジュアル機能は非推奨になりましたが、この機能には[カスタム スキル](./cognitive-search-custom-skill-interface.md)を使用してアクセスできます。|
+| `details` | 結果として返すドメイン固有の詳細を示す文字列の並び. 有効なビジュアル フィーチャー型には以下があります｡ <ul><li>*celebrities* - イメージ内でセレブリティが検出された場合に、そのセレブリティを特定します｡</li><li>*landmarks* - イメージ内でランドマークが検出された場合に、そのランドマークを特定します｡ </li></ul> |
 
 ## <a name="skill-inputs"></a>スキルの入力
 
 | 入力名      | 説明                                          |
 |---------------|------------------------------------------------------|
-| image         | 複合型｡ 現在は "/document/normalized_images" フィールドでのみ機能し､ ```imageAction``` が ```none``` 以外の値に設定されている場合に､Azure BLOB インデクサーによって生成されます。 詳しくは､[サンプル](#sample-output) をご覧ください｡|
+| `image`         | 複合型｡ 現在は "/document/normalized_images" フィールドでのみ機能し､ ```imageAction``` が ```none``` 以外の値に設定されている場合に､Azure BLOB インデクサーによって生成されます。 詳しくは､[サンプル](#sample-output) をご覧ください｡|
 
 
 
@@ -514,13 +514,13 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 
 | エラー コード | 説明 |
 |------------|-------------|
-| NotSupportedLanguage | 指定された言語はサポートされていません｡ |
-| InvalidImageUrl | イメージの URL の形式が不適切か､アクセスできません｡|
-| InvalidImageFormat | 入力データが有効なイメージではありません｡ |
-| InvalidImageSize | 入力イメージが大きすぎます。 |
-| NotSupportedVisualFeature  | 指定されたフィーチャーの型が有効ではありません｡ |
-| NotSupportedImage | サポートされていないイメージ､たとえば､子供のポルノ イメージです｡ |
-| InvalidDetails | サポートされていないドメイン固有のモデルです｡ |
+| `NotSupportedLanguage` | 指定された言語はサポートされていません｡ |
+| `InvalidImageUrl` | イメージの URL の形式が不適切か､アクセスできません｡|
+| `InvalidImageFormat` | 入力データが有効なイメージではありません｡ |
+| `InvalidImageSize` | 入力イメージが大きすぎます。 |
+| `NotSupportedVisualFeature`  | 指定されたフィーチャーの型が有効ではありません｡ |
+| `NotSupportedImage` | サポートされていないイメージ､たとえば､子供のポルノ イメージです｡ |
+| `InvalidDetails` | サポートされていないドメイン固有のモデルです｡ |
 
 `"One or more skills are invalid. Details: Error in skill #<num>: Outputs are not supported by skill: Landmarks"` のようなエラーが表示された場合は、パスを確認してください。 セレブリティとランドマークはどちらも `detail` の下のプロパティです。
 
@@ -542,4 +542,4 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 
 + [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
-+ [インデクサーの作成 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [インデクサーの作成 (REST)](/rest/api/searchservice/create-indexer)

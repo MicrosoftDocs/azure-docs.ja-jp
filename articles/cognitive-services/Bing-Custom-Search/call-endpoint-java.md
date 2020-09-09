@@ -8,26 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/08/2020
+ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 02c86e5a4c1a04b98ebba73653980e8e5e00f645
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 069f3b95d76d8321ce0b1bba4ae61f35d0f14a57
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80238892"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326785"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-java"></a>クイック スタート:Java を使用して Bing Custom Search エンドポイントを呼び出す
 
-このクイック スタートでは、Bing Custom Search インスタンスに検索結果を要求します。 このアプリケーションは Java で記述されていますが、Bing Custom Search API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingCustomSearchv7.java) で入手できます。
+このクイックスタートでは、Bing Custom Search インスタンスに検索結果を要求する方法を説明します。 このアプリケーションは Java で記述されていますが、Bing Custom Search API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingCustomSearchv7.java) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-- Bing Custom Search インスタンス。 「[クイック スタート:初めての Bing Custom Search インスタンスを作成する](quick-start.md)」で詳細を確認する。
+- Bing Custom Search インスタンス。 詳細については、「[クイック スタート: 最初の Bing Custom Search インスタンスの作成](quick-start.md)」を参照してください。
 
-- 最新の [Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html)  
+- 最新の [Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
 
-- [Gson ライブラリ](https://github.com/google/gson)
+- [Gson ライブラリ](https://github.com/google/gson)。
 
 [!INCLUDE [cognitive-services-bing-custom-search-prerequisites](../../../includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
@@ -50,7 +51,7 @@ ms.locfileid: "80238892"
     import com.google.gson.JsonParser;
     ```
 
-2. `CustomSrchJava` という名前のクラスを作成し、サブスクリプション キー、カスタム検索エンドポイント、および検索インスタンスのカスタム構成 ID のための変数を作成します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
+2. `CustomSrchJava` という名前のクラスを作成し、サブスクリプション キー、カスタム検索エンドポイント、および検索インスタンスのカスタム構成 ID の変数を作成します。 次のコードのグローバル エンドポイントを使用するか、Azure portal に表示される、対象のリソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用することができます。
     ```java
     public class CustomSrchJava {
         static String host = "https://api.cognitive.microsoft.com";
@@ -63,8 +64,8 @@ ms.locfileid: "80238892"
 
 3. Bing Custom Search インスタンスからの応答を格納するために、`SearchResults` という名前の別のクラスを作成します。
 
-    ```csharp
-    class SearchResults{
+    ```java
+    class SearchResults {
         HashMap<String, String> relevantHeaders;
         String jsonResponse;
         SearchResults(HashMap<String, String> headers, String json) {
@@ -120,7 +121,7 @@ ms.locfileid: "80238892"
         }
     ```
 
-3. アプリケーションの main メソッドで、検索語を指定して `SearchWeb()` を呼び出します。 
+3. JSON の応答を出力します。
 
     ```java
     System.out.println("\nJSON Response:\n");

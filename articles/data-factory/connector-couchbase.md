@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
 ms.openlocfilehash: d78d533bc4a863a0a70b1dbb47bdfa85d539884f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417438"
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Couchbase からデータをコピーする (プレビュー)

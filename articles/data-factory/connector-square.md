@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/01/2019
-ms.openlocfilehash: ac968271685c66c8fab8d7723d994a446f49e85f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 08/03/2020
+ms.openlocfilehash: 2bfe9115f38c79618924379837dda8014ee31ed5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81410309"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529366"
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Square からデータをコピーする (プレビュー)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -33,7 +33,6 @@ ms.locfileid: "81410309"
 
 - [サポートされるソース/シンク マトリックス](copy-activity-overview.md)での[コピー アクティビティ](copy-activity-overview.md)
 - [Lookup アクティビティ](control-flow-lookup-activity.md)
-
 
 Square から、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
@@ -52,13 +51,23 @@ Square のリンクされたサービスでは、次のプロパティがサポ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**Square** | はい |
+| connectionProperties | Square への接続方法を定義するプロパティのグループ。 | はい |
+| ***`connectionProperties` の下:*** | | |
 | host | Square インスタンスの URL。 (例: mystore.mysquare.com)  | はい |
 | clientId | Square アプリケーションに関連付けられているクライアント ID。  | はい |
 | clientSecret | Square アプリケーションに関連付けられているクライアント シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
-| redirectUri | Square アプリケーションのダッシュボードで割り当てられるリダイレクト URL。 (例: http:\//localhost:2500)  | はい |
+| accessToken | Square から取得したアクセス トークン。 認証されたユーザーに明示的なアクセス許可を要求することによって、Square アカウントへの制限付きアクセスを許可します。 OAuth アクセス トークンは、発行されてから 30 日後に有効期限が切れますが、更新トークンには有効期限がありません。 アクセス トークンは、更新トークンによって更新できます。<br>このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。  | はい |
+| refreshToken | Square から取得した更新トークン。 現在のアクセス トークンの有効期限が切れたときに、新たに取得するために使用されます。<br>このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は、true です。  | いいえ |
-| useHostVerification | TLS 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は、true です。  | いいえ |
+| useHostVerification | TLS 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうか指定します。 既定値は、true です。  | いいえ |
 | usePeerVerification | TLS 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は、true です。  | いいえ |
+
+Square では、**個人用**と **OAuth** という 2 種類のアクセス トークンがサポートされます。
+
+- 個人用アクセス トークンを使用すると、自分の Square アカウントのリソースに Connect API で無制限にアクセスできます。
+- OAuth アクセス トークンを使用すると、任意の Square アカウントに対して、Connect API を使用した認証済みのスコープ指定アクセスを取得できます。 これは、アカウント所有者の代わりにアプリが他の Square アカウント内のリソースにアクセスするときに使用します。 また、OAuth アクセス トークンを使用して、自分の Square アカウントのリソースにアクセスすることもできます。
+
+Data Factory では、個人用アクセス トークンによる認証には `accessToken` のみが必要ですが、OAuth による認証には `accessToken` と `refreshToken` が必要になります。 アクセス トークンの取得方法については、[こちら](https://developer.squareup.com/docs/build-basics/access-tokens)を参照してください。
 
 **例:**
 
@@ -68,13 +77,25 @@ Square のリンクされたサービスでは、次のプロパティがサポ�
     "properties": {
         "type": "Square",
         "typeProperties": {
-            "host" : "mystore.mysquare.com",
-            "clientId" : "<clientId>",
-            "clientSecret": {
-                 "type": "SecureString",
-                 "value": "<clientSecret>"
-            },
-            "redirectUri" : "http://localhost:2500"
+            "connectionProperties": {
+                "host": "<e.g. mystore.mysquare.com>", 
+                "clientId": "<client ID>", 
+                "clientSecrect": {
+                    "type": "SecureString",
+                    "value": "<clientSecret>"
+                }, 
+                "accessToken": {
+                    "type": "SecureString",
+                    "value": "<access token>"
+                }, 
+                "refreshToken": {
+                    "type": "SecureString",
+                    "value": "<refresh token>"
+                }, 
+                "useEncryptedEndpoints": true, 
+                "useHostVerification": true, 
+                "usePeerVerification": true 
+            }
         }
     }
 }

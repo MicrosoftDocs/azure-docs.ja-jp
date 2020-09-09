@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 1904ed9707859f0d00bca3b6e3aef90d1346cea5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2f8718b108ca5af0034d4d70c10422d6ac73e892
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78331504"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260851"
 ---
-# <a name="create-a-media-services-account-using-the-azure-portal"></a>Azure portal を使用して Media Services アカウントを作成する
+# <a name="create-a-media-services-account-using-the-azure-portal"></a>Azure Portal を使用して Media Services アカウントを作成する
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 
 Azure Portal には、Azure Media Services (AMS) アカウントをすばやく作成する方法が用意されています。 アカウントを使用して Media Services にアクセスすると、Azure でメディア コンテンツを保存、暗号化、エンコード、管理、およびストリーミングすることができます。 Media Services アカウントを作成するときは、同時に関連付けられたストレージ アカウントも作成します (または既存のストレージ アカウントを使用します)。 メディア サービス アカウントを削除しても、関連付けられたストレージ アカウントにある BLOB は削除されません。
 
-プライマリ ストレージ アカウントとして、汎用 v1 または汎用 v2 を使用できます。 現在、Azure portal では v1 のみを選択できますが、API または PowerShell を使用してアカウントを作成するときに v2 を追加できます。 ストレージの種類の詳細については、「[Azure ストレージ アカウントについて](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)」を参照してください。
-
 Media Services アカウントおよび関連するすべてのストレージ アカウントは、同じ Azure サブスクリプションに存在する必要があります。 待ち時間やデータ エグレス コストが増加することを回避するために、ストレージ アカウントを Media Services アカウントと同じ場所で使用することを強くお勧めします。
 
-この記事では、Azure portal を使用して Media Services アカウントを作成する方法について説明します。
+この記事では、Azure Portal を使用して Media Services アカウントを作成する方法について説明します。
 
 > [!NOTE]
 > 異なるリージョンにおける Azure Media Services 機能の可用性については、[データ センター全体における AMS 機能の可用性](scenarios-and-availability.md#availability)に関するセクションを参照してください。
@@ -79,4 +79,3 @@ AMS アカウントの管理 (たとえば、プログラムによる AMS API �
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

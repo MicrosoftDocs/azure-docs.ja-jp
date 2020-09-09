@@ -8,13 +8,14 @@ ms.author: mhopkins
 ms.date: 08/06/2019
 ms.service: storage
 ms.subservice: common
-ms.topic: conceptual
-ms.openlocfilehash: 1495ed55c24a0f94b911d60d1db0f32940ea134a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 8fa1e258b07ab98040cbbc5217be789e0bb1b783
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79137060"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020135"
 ---
 # <a name="get-storage-account-type-and-sku-name-with-net"></a>.NET を使用してストレージ アカウントの種類と SKU 名を取得する
 

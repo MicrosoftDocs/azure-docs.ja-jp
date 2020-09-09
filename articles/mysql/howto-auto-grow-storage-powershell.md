@@ -4,14 +4,15 @@ description: この記事では、PowerShell を使用して Azure Database for 
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 4/28/2020
-ms.openlocfilehash: c8a19fe338af14f97e0eb191d7b57e840c71e400
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d355e7557ff38c52872a89941025d33d01bd92d8
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612726"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503312"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mysql-server-using-powershell"></a>PowerShell を使用した Azure Database for MySQL サーバーのストレージの自動拡張
 

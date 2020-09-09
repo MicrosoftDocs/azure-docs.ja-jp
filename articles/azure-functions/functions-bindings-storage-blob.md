@@ -5,16 +5,16 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 6950f1dd81ef2c70f2c45fb4c547ed7676067790
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eead2d6ae2860bf06f1b878c1bb1692d74c06df6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235087"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055973"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>Azure Functions における Azure Blob Storage のバインドの概要
 
-Azure Functions は[トリガーとバインド](./functions-triggers-bindings.md)を使用して [Azure Storage](https://docs.microsoft.com/azure/storage/) と統合されます。 Blob Storage との統合により、BLOB データの変更に対応し、値の読み取りと書き込も行う関数を作成することができます。
+Azure Functions は[トリガーとバインド](./functions-triggers-bindings.md)を使用して [Azure Storage](../storage/index.yml) と統合されます。 Blob Storage との統合により、BLOB データの変更に対応し、値の読み取りと書き込も行う関数を作成することができます。
 
 | アクション | 種類 |
 |---------|---------|

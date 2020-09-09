@@ -5,20 +5,20 @@ author: abhishekram
 ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: abhisram
-ms.openlocfilehash: e6e9fb66368461e0d3ebdd2709f4ced0e796bea5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a38a11d9cf062cd0a45890d43afe9b2530b2b7bb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236655"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258470"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Reliable Actors の診断とパフォーマンス監視
-Reliable Actors ランタイムは、[EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) イベントおよび[パフォーマンス カウンター](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)を出力します。 これらは、ランタイムがどのように動作するかを示し、トラブルシューティングとパフォーマンス監視に役立ちます。
+Reliable Actors ランタイムは、[EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) イベントおよび[パフォーマンス カウンター](/dotnet/api/system.diagnostics.performancecounter?view=dotnet-plat-ext-3.1)を出力します。 これらは、ランタイムがどのように動作するかを示し、トラブルシューティングとパフォーマンス監視に役立ちます。
 
 ## <a name="eventsource-events"></a>EventSource イベント
 Reliable Actors ランタイムの EventSource プロバイダー名は "Microsoft-ServiceFabric-Actors" です。 このイベント ソースのイベントは、アクター アプリケーションが [Visual Studio でデバッグ](service-fabric-debugging-your-application.md)されているときに、[[診断イベント](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio)] ウィンドウに表示されます。
 
-EventSource イベントの収集または表示に役立つツールとテクノロジの例には、[PerfView](https://www.microsoft.com/download/details.aspx?id=28567)、[Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md)、[セマンティック ログ記録](https://msdn.microsoft.com/library/dn774980.aspx)、[Microsoft TraceEvent ライブラリ](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent)があります。
+EventSource イベントの収集または表示に役立つツールとテクノロジの例には、[PerfView](https://www.microsoft.com/download/details.aspx?id=28567)、[Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md)、[セマンティック ログ記録](/previous-versions/msp-n-p/dn774980(v=pandp.10))、[Microsoft TraceEvent ライブラリ](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent)があります。
 
 ### <a name="keywords"></a>Keywords
 Reliable Actors EventSource に属しているすべてのイベントは、1 つまたは複数のキーワードに関連付けられます。 これにより、収集されたイベントをフィルター処理できます。 次のキーワードのビットが定義されています。
@@ -40,7 +40,7 @@ Reliable Actors ランタイムは、次のパフォーマンス カウンター
 
 上記の各カテゴリには、1 つまたは複数のカウンターがあります。
 
-パフォーマンス カウンター データの収集と表示には、Windows オペレーティング システムで既定で使用できる [Windows パフォーマンス モニター](https://technet.microsoft.com/library/cc749249.aspx) アプリケーションを使用できます。 [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) があります。
+パフォーマンス カウンター データの収集と表示には、Windows オペレーティング システムで既定で使用できる [Windows パフォーマンス モニター](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc749249(v=ws.11)) アプリケーションを使用できます。 [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) があります。
 
 ### <a name="performance-counter-instance-names"></a>パフォーマンス カウンター インスタンス名
 多数のアクター サービスまたはアクター サービス パーティションを持つクラスターには、多数のアクター パフォーマンス カウンター インスタンスが含まれます。 パフォーマンス カウンター インスタンス名は、パフォーマンス カウンター インスタンスが関連付けられている特定の [パーティション](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors) とアクター メソッド (該当する場合) を識別するのに役立ちます。
@@ -50,7 +50,7 @@ Reliable Actors ランタイムは、次のパフォーマンス カウンター
 
 `ServiceFabricPartitionID_ActorsRuntimeInternalID`
 
-*ServiceFabricPartitionID* は、パフォーマンス カウンター インスタンスが関連付けられている Service Fabric パーティション ID の文字列表現です。 パーティション ID は GUID で、その文字列表現は、書式指定子 "D" を持つ [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) メソッドを使用して生成されます。
+*ServiceFabricPartitionID* は、パフォーマンス カウンター インスタンスが関連付けられている Service Fabric パーティション ID の文字列表現です。 パーティション ID は GUID で、その文字列表現は、書式指定子 "D" を持つ [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) メソッドを使用して生成されます。
 
 *ActorRuntimeInternalID* は、内部使用のために Fabric アクター ランタイムによって生成される 64 ビット整数の文字列表現です。 これは、その一意性を確保し、他のパフォーマンス カウンター インスタンス名と競合しないようにするために、パフォーマンス カウンター インスタンス名に含まれます。 パフォーマンス カウンター インスタンス名のこの部分を解釈しようとしないでください。
 
@@ -69,7 +69,7 @@ Reliable Actors ランタイムは、次のパフォーマンス カウンター
 
 *ActorsRuntimeMethodId* は、内部使用のために Fabric アクター ランタイムによって生成される 32 ビット整数の文字列表現です。 これは、その一意性を確保し、他のパフォーマンス カウンター インスタンス名と競合しないようにするために、パフォーマンス カウンター インスタンス名に含まれます。 パフォーマンス カウンター インスタンス名のこの部分を解釈しようとしないでください。
 
-*ServiceFabricPartitionID* は、パフォーマンス カウンター インスタンスが関連付けられている Service Fabric パーティション ID の文字列表現です。 パーティション ID は GUID で、その文字列表現は、書式指定子 "D" を持つ [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) メソッドを使用して生成されます。
+*ServiceFabricPartitionID* は、パフォーマンス カウンター インスタンスが関連付けられている Service Fabric パーティション ID の文字列表現です。 パーティション ID は GUID で、その文字列表現は、書式指定子 "D" を持つ [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) メソッドを使用して生成されます。
 
 *ActorRuntimeInternalID* は、内部使用のために Fabric アクター ランタイムによって生成される 64 ビット整数の文字列表現です。 これは、その一意性を確保し、他のパフォーマンス カウンター インスタンス名と競合しないようにするために、パフォーマンス カウンター インスタンス名に含まれます。 パフォーマンス カウンター インスタンス名のこの部分を解釈しようとしないでください。
 
@@ -161,6 +161,6 @@ Reliable Actors ランタイムは、アクターのアクティブ化と非ア�
 
 ## <a name="next-steps"></a>次のステップ
 * [Reliable Actors の Service Fabric プラットフォームの使用方法](service-fabric-reliable-actors-platform.md)
-* [Actor API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Actor API リファレンス ドキュメント](/previous-versions/azure/dn971626(v=azure.100))
 * [コード サンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [PerfView での EventSource プロバイダー](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)
+* [PerfView での EventSource プロバイダー](/archive/blogs/vancem/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource)

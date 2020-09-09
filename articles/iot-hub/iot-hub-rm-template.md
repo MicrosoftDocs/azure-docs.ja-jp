@@ -9,12 +9,13 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 02e814a9da320d688fe57edf3a3fe0640b8f5a47
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: dcec1e40e9095c27abb1470e3739f65035a96834
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75976732"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007181"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Azure Resource Manager テンプレートを使用した IoT ハブの作成 (.NET)
 

@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と BenSelect の統合 | Microsoft Docs
 description: Azure Active Directory と BenSelect の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: ffa17478-3ea1-4356-a289-545b5b9a4494
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a027a4038d806b7c19dc45ea5b6da74acb802b2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 98740153def94742a8bbba1ee6f4f022b614ecfa
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74893129"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88537109"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-benselect"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と BenSelect の統合
 

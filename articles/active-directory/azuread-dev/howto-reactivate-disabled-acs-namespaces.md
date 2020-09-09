@@ -7,18 +7,18 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/21/2019
 ms.author: ryanwi
 ms.reviewer: jlu
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: ff0ce05b13fea8409475e3415c5d810d7c79769a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7bb572e9e22519491290e54417f5ca350d6c0b5c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154867"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85383719"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>方法:無効化された Access Control Service 名前空間を再アクティブ化する
 

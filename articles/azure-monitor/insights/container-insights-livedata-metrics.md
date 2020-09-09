@@ -3,41 +3,39 @@ title: Azure Monitor for containers でメトリックをリアルタイムで�
 description: この記事では、Azure Monitor for containers でメトリックを kubectl を使用せずにリアルタイムで表示する方法について説明します。
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 4604635c985057ec0b7f49a0d1cca7111dfc8eec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: references_regions
+ms.openlocfilehash: 81d7210778fd6b5d75fb4b4fa8e066d2e015174f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79216580"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85338020"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>メトリックをリアルタイムで表示する方法
 
-Azure Monitor for containers のライブ データ (プレビュー) 機能を使用すると、クラスター内のノードとポッドの状態に関するメトリックをリアルタイムで視覚化することができます。 `kubectl top nodes`、`kubectl get pods –all-namespaces`、`kubectl get nodes` コマンドへの直接アクセスがエミュレートされ、この分析情報に含まれるパフォーマンス グラフのデータの呼び出し、解析、視覚化が行われます。 
+Azure Monitor for containers のライブ データ (プレビュー) 機能を使用すると、クラスター内のノードとポッドの状態に関するメトリックをリアルタイムで視覚化することができます。 `kubectl top nodes`、`kubectl get pods –all-namespaces`、`kubectl get nodes` コマンドへの直接アクセスがエミュレートされ、この分析情報に含まれるパフォーマンス グラフのデータの呼び出し、解析、視覚化が行われます。
 
-この記事では、この機能の使用方法について詳しく説明します。  
-
->[!NOTE]
->[プライベート クラスター](https://azure.microsoft.com/updates/aks-private-cluster/)として有効にされた AKS クラスターは、この機能でサポートされていません。 この機能では、ブラウザーからプロキシ サーバーを介した Kubernetes API への直接アクセスを利用します。 このプロキシから Kubernetes API をブロックするようにネットワーク セキュリティを有効にすると、このトラフィックはブロックされます。 
+この記事では、この機能の使用方法について詳しく説明します。
 
 >[!NOTE]
->この機能は、Azure 中国を含む、すべての Azure リージョンで利用できます。 現在、Azure 米国政府機関では利用できません。
+>[プライベート クラスター](https://azure.microsoft.com/updates/aks-private-cluster/)として有効にされた AKS クラスターは、この機能でサポートされていません。 この機能では、ブラウザーからプロキシ サーバーを介した Kubernetes API への直接アクセスを利用します。 このプロキシから Kubernetes API をブロックするようにネットワーク セキュリティを有効にすると、このトラフィックはブロックされます。
 
 ライブ データ (プレビュー) 機能の設定またはトラブルシューティングについては、[セットアップ ガイド](container-insights-livedata-setup.md)を参照してください。
 
-## <a name="how-it-works"></a>機能 
+## <a name="how-it-works"></a>機能
 
-Live Data (プレビュー) 機能は、Kubernetes API に直接アクセスします。認証モデルの詳細については、[こちら](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)を参照してください。 
+Live Data (プレビュー) 機能は、Kubernetes API に直接アクセスします。認証モデルの詳細については、[こちら](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)を参照してください。
 
-この機能は、メトリック エンドポイント (`/api/v1/nodes`、`/apis/metrics.k8s.io/v1beta1/nodes`、`/api/v1/pods` など) に対してポーリング操作を実行します。これは、既定では 5 秒ごとに実行されます。 このデータはブラウザーにキャッシュされ、Azure Monitor for containers で **[ライブに移動 (プレビュー)]** を選択すると **[クラスター]** タブに表示される 4 つのパフォーマンス グラフにグラフ化されます。 後続の各ポーリングは、5 分間のローリング視覚化ウィンドウにグラフ化されます。 
+この機能は、メトリック エンドポイント (`/api/v1/nodes`、`/apis/metrics.k8s.io/v1beta1/nodes`、`/api/v1/pods` など) に対してポーリング操作を実行します。これは、既定では 5 秒ごとに実行されます。 このデータはブラウザーにキャッシュされ、Azure Monitor for containers で **[ライブに移動 (プレビュー)]** を選択すると **[クラスター]** タブに表示される 4 つのパフォーマンス グラフにグラフ化されます。 後続の各ポーリングは、5 分間のローリング視覚化ウィンドウにグラフ化されます。
 
 ![クラスター ビューでの [ライブに移動] オプション](./media/container-insights-livedata-metrics/cluster-view-go-live-example-01.png)
 
-ポーリング間隔は、 **[間隔の設定]** ドロップダウンから構成できます。1 秒、5 秒、15 秒、および 30 秒ごとの新しいデータのポーリングを設定できます。 
+ポーリング間隔は、 **[間隔の設定]** ドロップダウンから構成できます。1 秒、5 秒、15 秒、および 30 秒ごとの新しいデータのポーリングを設定できます。
 
 ![[ライブに移動] ドロップダウン ポーリング間隔](./media/container-insights-livedata-metrics/cluster-view-polling-interval-dropdown.png)
 
 >[!IMPORTANT]
->短時間で問題のトラブルシューティングを行う場合は、ポーリング間隔を 1 秒に設定することをお勧めします。 これらの要求は、クラスターの Kubernetes API の可用性とスロットリングに影響を与える可能性があります。 その後、より長いポーリング間隔へと再構成します。 
+>短時間で問題のトラブルシューティングを行う場合は、ポーリング間隔を 1 秒に設定することをお勧めします。 これらの要求は、クラスターの Kubernetes API の可用性とスロットリングに影響を与える可能性があります。 その後、より長いポーリング間隔へと再構成します。
 
 >[!IMPORTANT]
 >この機能の操作中、データが永続的に保存されることはありません。 このセッション中にキャプチャされたすべての情報は、ブラウザーを閉じるか、またはこの機能から移動すると、すぐに削除されます。 データは、5 分間のウィンドウ内に表示するために残されています。5 分を経過したメトリックはすべて完全に削除されます。
@@ -46,9 +44,9 @@ Live Data (プレビュー) 機能は、Kubernetes API に直接アクセスし�
 
 ## <a name="metrics-captured"></a>キャプチャされるメトリック
 
-### <a name="node-cpu-utilization---node-memory-utilization-"></a>ノードの CPU 使用率 (%) / ノードのメモリ使用率 (%) 
+### <a name="node-cpu-utilization---node-memory-utilization-"></a>ノードの CPU 使用率 (%) / ノードのメモリ使用率 (%)
 
-これら 2 つのパフォーマンス グラフは、`kubectl top nodes` を呼び出し、**CPU%** および **MEMORY%** 列の結果をそれぞれのグラフにキャプチャすることと同等として位置づけられます。 
+これら 2 つのパフォーマンス グラフは、`kubectl top nodes` を呼び出し、**CPU%** および **MEMORY%** 列の結果をそれぞれのグラフにキャプチャすることと同等として位置づけられます。
 
 ![Kubectl top nodes の例の結果](./media/container-insights-livedata-metrics/kubectl-top-nodes-example.png)
 
@@ -80,7 +78,7 @@ Live Data (プレビュー) 機能は、Kubernetes API に直接アクセスし�
 ![ノードのポッド数のグラフ](./media/container-insights-livedata-metrics/cluster-view-node-pod-count.png)
 
 >[!NOTE]
->`kubectl` によって解釈される状態の名前は、グラフ内で正確に一致しない場合があります。 
+>`kubectl` によって解釈される状態の名前は、グラフ内で正確に一致しない場合があります。
 
 ## <a name="next-steps"></a>次のステップ
 

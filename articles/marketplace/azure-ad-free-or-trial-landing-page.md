@@ -1,0 +1,106 @@
+---
+title: コマーシャル マーケットプレースで無料または試用版 SaaS オファーのランディング ページを構築する
+description: 無料または試用版 SaaS オファーのランディング ページを構築する方法について説明します。
+author: mingshen-ms
+ms.author: mingshen
+ms.reviewer: dannyevers
+ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
+ms.topic: how-to
+ms.date: 08/06/2020
+ms.openlocfilehash: 96e23c22568229ec5f5ba2365747e261b7e471ad
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921386"
+---
+# <a name="build-the-landing-page-for-your-free-or-trial-saas-offer-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースで無料または試用版 SaaS オファーのランディング ページを構築する
+
+この記事では、Microsoft コマーシャル マーケットプレースで販売される無料または試用版 SaaS アプリのランディング ページを構築するプロセスについて説明します。
+
+## <a name="overview"></a>概要
+
+ランディング ページは、サービスとしてのソフトウェア (SaaS) オファーのための "ロビー" と考えることができます。 顧客がアプリを取得することを選択すると、その SaaS アプリケーションへのサブスクリプションをアクティブ化して構成するために、コマーシャル マーケットプレースはその顧客をランディング ページに移動します。 サービスとしてのソフトウェア (SaaS) オファーを作成した場合は、パートナー センターで、[Microsoft 経由で販売する](partner-center-portal/create-new-saas-offer.md)かどうかを選択できます。 Microsoft コマーシャル マーケットプレースでオファーを一覧表示するだけで、Microsoft 経由で販売しない場合は、潜在顧客がそのオファーをどのように操作できるかを指定できます。 **[今すぐ入手 (無料)]** または **[無料試用版]** 一覧オプションを有効にする場合は、ユーザーが無料サブスクリプションまたは無料試用版にアクセスするために移動できるランディング ページの URL を指定する必要があります。
+
+ランディング ページの目的は、単純に、無料試用版または無料サブスクリプションをアクティブ化できるようにユーザーを受け付けることです。 Azure Active Directory (Azure AD) と Microsoft Graph を使用して、ユーザーのシングル サインオン (SSO) を有効にしたり、無料試用版または無料サブスクリプションをアクティブ化するために使用できるユーザーに関する重要な詳細 (名前、メール アドレス、組織など) を取得したりします。
+
+サブスクリプションをアクティブ化するために必要な情報は限られており、Azure AD と Microsoft Graph によって提供されるため、基本的な同意を超える内容を必要とする情報を要求する必要はありません。 アプリケーションに関する追加の同意を必要とするユーザーの詳細が必要な場合、これらの情報は、サブスクリプションのアクティブ化が完了した後に要求する必要があります。 これにより、ユーザーによる円滑なサブスクリプションのアクティブ化が可能になり、破棄されるリスクが軽減されます。
+
+ランディング ページには通常、次の情報と行動喚起が含まれています。
+
+- 無料試用版または無料サブスクリプションの名前と詳細を指定します。 たとえば、試用版の使用制限または期間を指定します。
+- ユーザーのアカウントの詳細 (姓名、組織、電子メールを含む) を指定します。
+- ユーザーに別のアカウントの詳細を確認するか、または置き換えるよう求めます。
+- ユーザーをアクティブ化の後の次のステップに案内します。 たとえば、ウェルカム メールを受信したり、サブスクリプションを管理したり、サポートを受けたり、ドキュメントを参照したりします。
+
+この記事の以降のセクションでは、ランディング ページを構築するプロセスについて説明します。
+
+1. ランディング ページでの [Azure AD アプリ登録を作成](#create-an-azure-ad-app-registration)します。
+2. アプリの[開始点としてコード サンプルを使用](#use-a-code-sample-as-a-starting-point)します。
+3. 要求と共に送信された、ログオン後に Azure AD から受信された [ID トークンにエンコードされている要求から情報を読み取り](#read-information-from-claims-encoded-in-the-id-token)ます。
+4. [Microsoft Graph API を使用](#use-the-microsoft-graph-api)して、必要に応じて追加情報を収集します。
+
+## <a name="create-an-azure-ad-app-registration"></a>Azure AD アプリの登録を作成する
+
+コマーシャル マーケットプレースは、Azure AD と完全に統合されています。 ユーザーはマーケットプレースに到達し、[Azure AD アカウントまたは Microsoft アカウント (MSA)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology) で認証されます。 一覧表示のみのオファーから無料試用版サブスクリプションを取得した後、ユーザーはコマーシャル マーケットプレースからランディング ページの URL に移動して、SaaS アプリケーションへのサブスクリプションをアクティブ化して管理します。 ユーザーが Azure AD SSO でアプリケーションにサインインできるようにする必要があります。 (ランディング ページの URL は、そのオファーの [[技術的な構成] ページ](partner-center-portal/offer-creation-checklist.md#technical-configuration-page)で指定されます)。
+
+ID を使用するための最初の手順として、ランディング ページが Azure AD アプリケーションとして登録されていることを確認します。 アプリケーションを登録すると、Azure AD を使用してユーザーを認証したり、ユーザー リソースへのアクセスを要求したりできるようになります。 これは、アプリケーションの定義と見なすことができます。これにより、サービスは、アプリの設定に基づいてアプリにトークンを発行する方法を認識できるようになります。
+
+### <a name="register-a-new-application-using-the-azure-portal"></a>Azure portal を使用して新しいアプリケーションを登録します
+
+作業を開始するには、[新しいアプリケーションの登録](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)に関するページの手順に従います。 他の会社のユーザーがこのアプリにアクセスできるようにするには、アプリケーションを使用できるユーザーを指定するよう求められたときに、**任意の組織のディレクトリ (任意の Azure AD ディレクトリ - マルチテナント) 内のアカウントと個人用の Microsoft アカウント (Skype や Xbox など)** を選択する必要があります。
+
+Microsoft Graph API にクエリを実行する予定がある場合は、[Web API にアクセスするように新しいアプリケーションを構成](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis)します。 このアプリケーションの API のアクセス許可を選択する場合、ユーザーに関する基本情報を収集してオンボード プロセスがスムーズかつ自動的に実行されるようにするには **User.Read** の既定値で十分です。 **[needs admin consent] (管理者の同意が必要)** というラベルが付いた API のアクセス許可を要求すると、管理者以外のすべてのユーザーがランディング ページにアクセスできなくなるため、この要求はしないでください。
+
+オンボードまたはプロビジョニング プロセスの一部として管理者特権のアクセス許可が必要な場合は、マーケットプレースから送信されたすべてのユーザーが最初にランディング ページを操作できるように、Azure AD の[増分同意](https://aka.ms/incremental-consent)機能を使用することを検討してください。
+
+## <a name="use-a-code-sample-as-a-starting-point"></a>開始点としてコード サンプルを使用する
+
+Microsoft は、Azure AD ログインが有効になった単純な Web サイトを実装するいくつかのサンプル アプリを提供してきました。 アプリケーションが Azure AD に登録されると、 **[クイック スタート]** ブレードには、一般的なアプリケーションの種類と開発スタックの一覧が表示されます (図 1)。 環境に適合するものを選択し、ダウンロードと設定の手順に従ってください。
+
+"***図 1:Azure portal の [クイック スタート] ブレード***
+
+:::image type="content" source="./media/azure-ad-saas/azure-ad-quickstart-blade.png" alt-text="Azure portal の [クイック スタート] ブレードを示しています。":::
+
+コードをダウンロードし、開発環境を設定したら、前の手順で記録したアプリケーション ID、テナント ID、クライアント シークレットが反映されるようにアプリの構成設定を変更します。 実際の手順は使用しているサンプルによって異なることに注意してください。
+
+## <a name="read-information-from-claims-encoded-in-the-id-token"></a>ID トークンにエンコードされている要求から情報を読み取る
+
+[OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/v2-protocols-oidc) フローの一部として、Azure AD は、ユーザーがランディング ページに送信されると [ID トークン](https://docs.microsoft.com/azure/active-directory/develop/id-tokens)を要求に追加します。 このトークンには、アクティブ化プロセスで役立つ可能性のある複数の基本情報が含まれています。これには、次の表に示す情報が含まれます。
+
+| 値 | 説明 |
+| ------------ | ------------- |
+| aud | このトークンの対象ユーザー。 この場合は、アプリケーション ID に一致し、検証されている必要があります。 |
+| preferred_username | アクセスしているユーザーのプライマリ ユーザー名。 これはメール アドレス、電話番号、またはその他の識別子である場合があります。 |
+| email | ユーザーのメール アドレス。 このフィールドは空である可能性があることに注意してください。 |
+| name | トークンのサブジェクトを識別する、人間が判読できる値。 この場合は、ユーザーの名前になります。 |
+| oid | アプリケーションにまたがるユーザーを一意に識別する、Microsoft ID システム内の識別子。 Microsoft Graph は、この値を特定のユーザー アカウントの ID プロパティとして返します。 |
+| tid | ユーザーが属している Azure AD テナントを表す識別子。 MSA ID の場合、これは常に `9188040d-6c67-4c5b-b112-36a304b66dad` になります。 詳細については、次のセクション「Microsoft Graph API を使用する」の注意事項を参照してください。 |
+| sub | この特定のアプリケーション内のユーザーを一意に識別する識別子。 |
+|||
+
+## <a name="use-the-microsoft-graph-api"></a>Microsoft Graph API を使用する
+
+ID トークンにはユーザーを識別するための基本情報が含まれていますが、アクティブ化プロセスでオンボード プロセスを完了するには追加の詳細 (ユーザーの会社など) が必要になる可能性があります。 ユーザーにこれらの詳細を強制的に再入力させないようにするには、[Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api) を使用してこれらの情報を要求します。 標準の **User.Read** アクセス許可には、既定では次の情報が含まれます。
+
+| 値 | 説明 |
+| ------------ | ------------- |
+| displayName | ユーザーのアドレス帳に表示される名前。 |
+| givenName | ユーザーの名。 |
+| jobTitle | ユーザーの役職。 |
+| mail | ユーザーの SMTP アドレス。 |
+| MobilePhone | ユーザーの携帯電話番号 (代表)。 |
+| preferredLanguage | ユーザーの優先する言語の ISO 639-1 コード。 |
+| surname | ユーザーの姓。 |
+|||
+
+要求に含めるために、ユーザーの会社の名前やユーザーの所在地 (国) などの追加のプロパティを選択できます。 詳細については、[ユーザー リソースの種類のプロパティ](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0#properties)に関するページを参照してください。
+
+Azure AD に登録されているほとんどのアプリは、会社の Azure AD テナントからユーザーの情報を読み取るための委任されたアクセス許可を付与します。 それらの情報を取得するための Microsoft Graph への要求にはすべて、認証としてのアクセス トークンを指定する必要があります。 アクセス トークンを生成するための具体的な手順は、使用しているテクノロジ スタックによって異なりますが、サンプル コードには例が含まれています。 詳細については、「[ユーザーの代わりにアクセスを取得](https://docs.microsoft.com/graph/auth-v2-user)」を参照してください。
+
+> [!NOTE]
+> MSA テナント (テナント ID は `9188040d-6c67-4c5b-b112-36a304b66dad`) のアカウントでは、ID トークンで既に収集されている内容より詳細な情報は返されません。 そのため、これらのアカウントでは Graph API へのこの呼び出しをスキップできます。
+
+## <a name="next-steps"></a>次のステップ
+- [コマーシャル マーケットプレースで SaaS オファーを作成する](./partner-center-portal/create-new-saas-offer.md)

@@ -4,12 +4,12 @@ description: Visual Studio 2019 を使用して Azure Service Fabric で Windows
 ms.topic: article
 ms.date: 02/14/2019
 ms.author: mikhegn
-ms.openlocfilehash: 2a00a352d09562ffe46dc8e6e63a5d4963ac3a3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e6e7785278b182cebb21115a70f35ade52303c3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127621"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247253"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2019"></a>方法:Visual Studio 2019 を使用して Azure Service Fabric で Windows コンテナーをデバッグする
 
@@ -17,9 +17,9 @@ Visual Studio 2019 では、Service Fabric サービスとしてコンテナー�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Windows 10 では、このクイックスタートに従って [Windows コンテナーを実行するように Windows 10 を構成](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10)します。
-* Windows Server 2016 では、このクイックスタートに従って [Windows コンテナーを実行するように Windows 2016 を構成](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server)します。
-* 「[Windows で開発環境を準備する](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started)」に従って、ローカルの Service Fabric 環境を設定します。
+* Windows 10 では、このクイックスタートに従って [Windows コンテナーを実行するように Windows 10 を構成](/virtualization/windowscontainers/quick-start/quick-start-windows-10)します。
+* Windows Server 2016 では、このクイックスタートに従って [Windows コンテナーを実行するように Windows 2016 を構成](/virtualization/windowscontainers/quick-start/quick-start-windows-server)します。
+* 「[Windows で開発環境を準備する](./service-fabric-get-started.md)」に従って、ローカルの Service Fabric 環境を設定します。
 
 ## <a name="configure-your-developer-environment-to-debug-containers"></a>コンテナーをデバッグするように開発者環境を構成する
 
@@ -38,7 +38,7 @@ Visual Studio 2019 では、Service Fabric サービスとしてコンテナー�
       > `-CreateOneNodeCluster` を使用して、1 ノード クラスターを設定することができます。 既定では、ローカルの 5 ノード クラスターが作成されます。
       >
 
-      Service Fabric の DNS サービスの詳細については、「[Azure Service Fabric の DNS サービス](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice)」を参照してください。 コンテナーで実行されているサービスから Service Fabric リバース プロキシを使用する方法の詳細については、[コンテナーで実行されているサービスに対するリバース プロキシの特別な処理](service-fabric-reverseproxy.md#special-handling-for-services-running-in-containers)に関する記事をご覧ください。
+      Service Fabric の DNS サービスの詳細については、「[Azure Service Fabric の DNS サービス](./service-fabric-dnsservice.md)」を参照してください。 コンテナーで実行されているサービスから Service Fabric リバース プロキシを使用する方法の詳細については、[コンテナーで実行されているサービスに対するリバース プロキシの特別な処理](service-fabric-reverseproxy.md#special-handling-for-services-running-in-containers)に関する記事をご覧ください。
 
 ### <a name="known-limitations-when-debugging-containers-in-service-fabric"></a>Service Fabric でコンテナーをデバッグする場合の既知の制限事項
 

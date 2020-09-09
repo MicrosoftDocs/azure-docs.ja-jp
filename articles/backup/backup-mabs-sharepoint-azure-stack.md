@@ -2,13 +2,13 @@
 title: Azure Stack 上の SharePoint ファームのバックアップ
 description: Azure Backup Server を使用して、Azure Stack 上の SharePoint データをバックアップおよび復元します。 この記事では、目的のデータを Azure に保存できるように SharePoint ファームを構成するための情報を提供します。 ディスクまたは Azure から保護対象の SharePoint データを復元できます。
 ms.topic: conceptual
-ms.date: 06/08/2018
-ms.openlocfilehash: d080605022cadf121fa6be99c9758fe9c0d878ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/07/2020
+ms.openlocfilehash: bd94b24479631f9fbbe4070529d76fe6442faae2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78673030"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538787"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>Azure Stack 上の SharePoint ファームのバックアップ
 
@@ -20,133 +20,122 @@ MABS 用 Azure Backup は、次のシナリオをサポートします。
 
 | ワークロード | Version | SharePoint のデプロイ | 保護と回復 |
 | --- | --- | --- | --- |
-| SharePoint |SharePoint 2016、SharePoint 2013、SharePoint 2010 |Azure Stack 仮想マシンとしてデプロイされた SharePoint <br> -------------- <br> SQL AlwaysOn | SharePoint ファームの保護の回復オプション: ディスク回復ポイントからのファーム、データベース、およびファイルまたはリスト項目の回復。  Azure の回復ポイントからのファームとデータベースの回復。 |
+| SharePoint |SharePoint 2016、SharePoint 2013、SharePoint 2010 |Azure Stack 仮想マシンとしてデプロイされた SharePoint <br> -------------- <br> SQL AlwaysOn | SharePoint ファームの保護の回復オプション: ディスク復旧ポイントからのファーム、データベース、およびファイルまたはリスト項目の回復。  Azure の回復ポイントからのファームとデータベースの回復。 |
 
 ## <a name="before-you-start"></a>開始する前に
 
 SharePoint ファームを Azure にバックアップする前に、確認する必要がある点がいくつかあります。
 
-### <a name="prerequisites"></a>前提条件
-
-作業を進める前に、ワークロードを保護するために、[Azure Backup Server がインストールされていて、準備が完了している](backup-mabs-install-azure-stack.md)ことを確認します。
-
-### <a name="protection-agent"></a>保護エージェント
-
-Azure Backup エージェントを、SharePoint を実行するサーバー、SQL Server を実行するサーバー、および SharePoint ファームを構成するその他のすべてのサーバーにインストールする必要があります。 保護エージェントのセットアップ方法の詳細については、「[保護エージェントの設定](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019)」をご覧ください。  唯一の例外は、1 台の Web フロント エンド (WFE) サーバーにだけエージェントをインストールすることです。 Azure Backup Server が保護のエントリ ポイントとして使用するためにエージェントをインストールする必要がある WFE サーバーは 1 台だけです。
-
-### <a name="sharepoint-farm"></a>SharePoint ファーム
-
-MABS フォルダーが存在するボリュームには、ファーム内の 1,000 万項目ごとに 2 GB 以上の容量が必要です。 この容量はカタログ生成のために必要です。 MABS が特定の項目 (サイト コレクション、サイト、リスト、ドキュメント ライブラリ、フォルダー、個々のドキュメント、リスト項目) を回復できるよう、カタログ生成では各コンテンツ データベースに含まれる URL のリストが作成されます。 MABS 管理者コンソールの**回復**タスク領域の [回復可能な項目] ウィンドウで、URL の一覧を確認できます。
-
-### <a name="sql-server"></a>SQL Server
-
-Azure Backup Server は、LocalSystem アカウントとして実行されます。 SQL Server データベースをバックアップする場合、MABS はそのアカウントに SQL Server を実行しているサーバーに対する sysadmin 権限を必要とします。 バックアップする前に、SQL Server を実行しているサーバーで NT AUTHORITY\SYSTEM を *sysadmin* に設定します。
-
-SharePoint ファームの SQL Server データベースが SQL Server エイリアスで構成されている場合は、MABS によって保護されるフロント エンド Web サーバーに SQL Server クライアント コンポーネントをインストールします。
-
 ### <a name="whats-not-supported"></a>サポートされていないもの
 
 * SharePoint ファームを保護する MABS では、検索インデックスまたはアプリケーション サービス データベースは保護されません。 これらのデータベースの保護は別に構成する必要があります。
+
 * MABS では、スケールアウト ファイル サーバー (SOFS) 共有でホストされている SharePoint SQL Server データベースのバックアップはサポートしていません。
 
-## <a name="configure-sharepoint-protection"></a>SharePoint の保護の構成
+### <a name="prerequisites"></a>前提条件
 
-MABS を使用して SharePoint を保護する前に、**ConfigureSharePoint.exe** を使用して SharePoint VSS ライター サービス (WSS ライター サービス) を構成する必要があります。
+先に進む前に、Microsoft Azure Backup を使用してワークロードを保護する上で必要なすべての [前提条件](backup-azure-dpm-introduction.md#prerequisites-and-limitations) が満たされていることを確認します。 前提条件を満たすための作業として、バックアップ コンテナーの作成、コンテナー資格情報のダウンロード、Azure Backup エージェントのインストール、コンテナーへの Azure Backup Server の登録などがあります。
 
-**ConfigureSharePoint.exe** は、フロント エンド Web サーバー上の [MABS のインストール パス]\bin フォルダーにあります。 このツールは、保護エージェントに SharePoint ファームに対する資格情報を提供します。 1 つの WFE サーバーでこのツールを実行します。 複数の WFE サーバーがある場合は、保護グループを構成するときに 1 つだけ選択します。
+追加の前提条件と制限事項:
 
-### <a name="to-configure-the-sharepoint-vss-writer-service"></a>SharePoint VSS ライター サービスを構成するには
+* 既定では、SharePoint を保護すると、すべてのコンテンツ データベース (および SharePoint_Config と SharePoint_AdminContent* データベース) が保護されます。 検索インデックス、テンプレートまたはアプリケーション サービス データベース、ユーザー プロファイル サービスなどのカスタマイズを追加する場合は、これらを個別に保護するように構成する必要があります。 この種の機能やカスタマイズ ファイルを含むすべてのフォルダーに対して保護が有効になっていることを確認してください。
 
-1. WFE サーバーのコマンド プロンプトで、[MABS のインストール場所]\bin\ に移動します。
-2. ConfigureSharePoint -EnableSharePointProtection を入力します。
-3. ファーム管理者の資格情報を入力します。 このアカウントは、WFE サーバーのローカル管理者グループのメンバーである必要があります。 ファーム管理者がローカル管理者ではない場合は、WFE サーバーで次の権限を付与します。
-   * DPM フォルダー (%Program Files%\Microsoft Azure Backup\DPM) に対するフル コントロールを WSS_Admin_WPG グループに付与します。
-   * DPM レジストリ キー (HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager) に対する読み取りアクセスを WSS_Admin_WPG グループに付与します。
+* SharePoint データベースを SQL Server データ ソースとして保護することはできません。 ファームのバックアップから個々のデータベースを回復することができます。
 
-> [!NOTE]
-> SharePoint ファーム管理者の資格情報に変更がある場合は必ず、ConfigureSharePoint.exe を再実行する必要があります。
->
->
+* MABS が**ローカル システム**として実行されている状態で、SQL Server データベースをバックアップする場合は、SQL Server のアカウントに対する sysadmin 特権が必要になることに注意してください。 バックアップする SQL Server NT AUTHORITY\SYSTEM を **sysadmin** に設定してください。
 
-## <a name="back-up-a-sharepoint-farm-by-using-mabs"></a>MABS を使用した SharePoint ファームのバックアップ
+* MABS フォルダーが存在するボリュームには、ファーム内の 1,000 万項目ごとに 2 GB 以上の容量が必要です。 この容量はカタログ生成のために必要です。 MABS を使用して特定の項目 (サイト コレクション、サイト、リスト、ドキュメント ライブラリ、フォルダー、個々のドキュメント、およびリスト項目) の回復を実行できるようにするために、カタログ生成では各コンテンツ データベース内に含まれる URL のリストが作成されます。 MABS 管理者コンソールの回復タスク領域の [回復可能な項目] ウィンドウで、URL の一覧を確認できます。
 
-前述のように MABS と SharePoint ファームを構成した後は、MABS で SharePoint を保護できます。
+* SharePoint ファームで、SQL Server 別名を使用して構成されている SQL Server データベースがある場合は、MABS で保護するフロントエンド Web サーバーに SQL Server クライアント コンポーネントをインストールしてください。
 
-### <a name="to-protect-a-sharepoint-farm"></a>SharePoint ファームを保護するには
+* アプリケーション ストアの項目の保護は、SharePoint 2013 ではサポートされていません。
 
-1. MABS 管理者コンソールの **[保護]** タブで **[新規]** をクリックします。
-    ![新しい [保護] タブ](./media/backup-azure-backup-sharepoint/dpm-new-protection-tab.png)
-2. **新しい保護グループの作成**ウィザードの **[保護グループの種類の選択]** ページで **[サーバー]** を選択し、 **[次へ]** をクリックします。
+* MABS では、リモート FILESTREAM の保護はサポートしていません。 FILESTREAM はデータベースの一部でなければなりません。
 
-    ![保護グループの種類の選択](./media/backup-azure-backup-sharepoint/select-protection-group-type.png)
-3. **[グループ メンバーの選択]** 画面で、保護する SharePoint サーバーのチェック ボックスをオンにして、 **[次へ]** をクリックします。
+## <a name="configure-backup"></a>バックアップの構成
 
-    ![グループ メンバーの選択](./media/backup-azure-backup-sharepoint/select-group-members2.png)
+SharePoint ファームをバックアップするには、ConfigureSharePoint.exe を使用して SharePoint の保護を構成し、MABS で保護グループを作成します。
 
-   > [!NOTE]
-   > 保護エージェントがインストールされていると、ウィザードにサーバーが表示されます。 MABS ではその構造も示されます。 ConfigureSharePoint.exe を実行したので、MABS は SharePoint VSS ライター サービスおよびその対応する SQL Server Database と通信し、SharePoint ファームの構造、関連するコンテンツ データベース、および対応する項目を認識します。
-   >
-   >
-4. **[データの保護方法の選択]** ページで、**保護グループ**の名前を入力し、適切な "*保護方法*" を選択します。 **[次へ]** をクリックします。
+1. **ConfigureSharePoint.exe** を実行します。このツールは、SharePoint VSS ライター サービス \(WSS\) を構成し、保護エージェントに SharePoint ファームの資格情報を提供します。 保護エージェントを展開すると、ConfigureSharePoint.exe ファイルがフロントエンド Web サーバー上の `<MABS Installation Path\>\bin` フォルダーに配置されます。  複数の WFE サーバーがある場合でも、インストールする必要があるのはそれらのサーバーのいずれかのみになります。 次のように実行します。
 
-    ![データ保護方法の選択](./media/backup-azure-backup-sharepoint/select-data-protection-method1.png)
+    * WFE サーバーで、コマンド プロンプトを使用して `\<MABS installation location\>\\bin\\` に移動し、`ConfigureSharePoint \[\-EnableSharePointProtection\] \[\-EnableSPSearchProtection\] \[\-ResolveAllSQLAliases\] \[\-SetTempPath <path>\]` を実行します。それぞれ以下の内容を表します。
 
-   > [!NOTE]
-   > ディスク保護方法は、短い目標復旧時間の達成に役立ちます。
-   >
-   >
-5. **[短期的な目標値の指定]** ページで、適切な**リテンション期間**を選択し、バックアップを行うタイミングを指定します。
+        * **EnableSharePointProtection** では、SharePoint ファームの保護を有効にして、VSS ライターを有効にし、DCOM アプリケーション WssCmdletsWrapper の ID を登録して、このオプションで資格情報を入力するユーザーとして実行するようにします。 このアカウントは、ファーム管理者であり、フロントエンド Web サーバーのローカル管理者でもある必要があります。
 
-    ![短期的な目標の指定](./media/backup-azure-backup-sharepoint/specify-short-term-goals2.png)
+        * **EnableSPSearchProtection** では、フロントエンド Web サーバーで HKLM\\Software\\Microsoft\\ Microsoft Data Protection Manager\\Agent\\2.0\\ にあるレジストリ キー SharePointSearchEnumerationEnabled を使用して、WSS 3.0 SP Search の保護を有効にし、DCOM アプリケーション WssCmdletsWrapper の ID を登録して、このオプションで資格情報を入力するユーザーとして実行するようにします。 このアカウントは、ファーム管理者であり、フロントエンド Web サーバーのローカル管理者でもある必要があります。
 
-   > [!NOTE]
-   > 回復が最も頻繁に必要になるのは作成されてから 5 日間未満のデータなので、この例では、ディスクへの保有期間として 5 日を選択し、業務時間外にバックアップが行われるようにします。
-   >
-   >
-6. 保護グループに割り当てられているストレージ プール ディスクの容量を確認し、 **[次へ]** をクリックします。
-7. すべての保護グループについて、MABS はレプリカを格納および管理するためのディスク領域を割り当てます。 この時点で、MABS は選択されたデータのコピーを作成する必要があります。 レプリカを作成する方法とタイミングを選択し、 **[次へ]** をクリックします。
+        * **ResolveAllSQLAliases** は、SharePoint VSS ライターが報告するエイリアスをすべて表示し、対応する SQL Server に対してそれらを解決します。 また、解決されたインスタンス名も表示します。 サーバーがミラー化されている場合は、そのサーバーも表示します。 SQL Server に対して解決されていないすべてのエイリアスを報告します。
 
-    ![レプリカ作成方法の選択](./media/backup-azure-backup-sharepoint/choose-replica-creation-method.png)
+        * **SetTempPath** は、指定されたパスに環境変数 TEMP と TMP を設定します。 サイズの大きなサイト コレクション、サイト、リスト、または項目が回復中であり、ファーム管理者の一時フォルダーで空き容量が不足している場合、項目レベルの回復が失敗します。 このオプションにより、一時ファイルのフォルダー パスを、回復しているサイト コレクションまたはサイトを保存するために十分なボリュームへと変更できます。
 
-   > [!NOTE]
-   > ネットワーク トラフィックが影響を受けないように、業務時間外の時刻を選択します。
-   >
-   >
-8. MABS はレプリカに対して整合性チェックを実行することにより、データの整合性を保証します。 次の 2 つのオプションを使用できます。 整合性チェックを実行するスケジュールを定義することも、レプリカが不整合になった場合に必ず DPM に自動的にレプリカの整合性チェックを実行させることもできます。 適切なオプションを選択し、 **[次へ]** をクリックします。
+    * ファーム管理者の資格情報を入力します。 このアカウントは、WFE サーバーのローカル管理者グループのメンバーである必要があります。 ファーム管理者がローカル管理者ではない場合は、WFE サーバーで次の権限を付与します。
 
-    ![整合性チェック](./media/backup-azure-backup-sharepoint/consistency-check.png)
-9. **[オンライン保護するデータの指定]** ページで、保護する SharePoint ファームを選択し、 **[次へ]** をクリックします。
+        * MABS フォルダー (`%Program Files%\Data Protection Manager\DPM\`) に対するフル コントロールを **WSS_Admin_WPG** グループに付与します。
 
-    ![DPM の SharePoint 保護 1](./media/backup-azure-backup-sharepoint/select-online-protection1.png)
-10. **[オンライン バックアップ スケジュールの指定]** ページで、適切なスケジュールを選択して、 **[次へ]** をクリックします。
+        * MABS レジストリ キー (`HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager`) に対する読み取りアクセスを **WSS_Admin_WPG** グループに付与します。
 
-    ![Online_backup_schedule](./media/backup-azure-backup-sharepoint/specify-online-backup-schedule.png)
+        ConfigureSharePoint.exe を実行した後で、SharePoint ファーム管理者の資格情報に変更がある場合は、これを再実行する必要があります。
 
-    > [!NOTE]
-    > MABS によって、使用可能な最新のディスク バックアップ ポイントから最大で 2 つの日次バックアップが Azure に提供されます。 Azure Backup では、 [Azure Backup ネットワーク調整](backup-windows-with-mars-agent.md#enable-network-throttling)を使用することで、ピーク時間帯とピーク外の時間帯のバックアップに使用できる WAN 帯域幅の量を制御することもできます。
-    >
-    >
-11. 選択したバックアップ スケジュールに応じて、 **[オンライン保持ポリシーの指定]** ページで、日、週、月、年単位のバックアップ ポイントの保持ポリシーを選択します。
+1. 保護グループを作成するには、MABS コンソールで、 **[保護]**  >  **[アクション]**  >  **[保護グループの作成]** の順にクリックし、**新しい保護グループの作成**ウィザードを開きます。
 
-    ![Online_retention_policy](./media/backup-azure-backup-sharepoint/specify-online-retention.png)
+1. **[保護グループの種類の選択]** で **[サーバー]** を選択します。
 
-    > [!NOTE]
-    > MABS が使用する祖父 - 父 - 子の保有方式では、異なるバックアップ ポイントに対して異なるリテンション期間ポリシーを選択できます。
-    >
-    >
-12. ディスクと同様に、Azure でも最初の参照ポイント レプリカを作成する必要があります。 Azure に対する初期バックアップ コピーの適切な作成オプションを選択して、 **[次へ]** をクリックします。
+1. **[グループ メンバーの選択]** で、WFE ロールを保持しているサーバーを展開します。 複数の WFE サーバーがある場合は、ConfigureSharePoint.exe をインストールしたサーバーを選択します。
 
-    ![Online_replica](./media/backup-azure-backup-sharepoint/online-replication.png)
-13. **[概要]** ページで選択した設定を確認し、 **[グループの作成]** をクリックします。 保護グループが作成されると、成功メッセージが表示されます。
+    SharePoint サーバーを展開すると、MABS は VSS を照会して MABS で保護できるデータを確認します。  SharePoint データベースがリモートである場合、MABS はそれに接続します。 SharePoint データ ソースが表示されない場合は、VSS ライターが SharePoint サーバーといずれかのリモート SQL Server で実行されていることを確認し、SharePoint サーバーとリモート SQL Server の両方で MABS エージェントがインストールされていることを確認します。 さらに、SharePoint データベースが SQL Server データベースとして他の場所で保護されていないことを確認してください。
 
-    ![まとめ](./media/backup-azure-backup-sharepoint/summary.png)
+1. **[データの保護方法の選択]** で、短期と長期のバックアップの処理方法を指定します。 短\-期バックアップは常にディスクへのバックアップが優先されますが、Azure Backup を使用してディスクから Azure クラウドにバックアップするオプションもあります \((短期または長\-期)\)。
+
+1. **[短期的な目標の選択]** で、ディスク上の短期記憶域へのバックアップ方法を指定します。   **[保有期間の範囲]** で、ディスクにデータを保持する期間を指定します。 **[同期の頻度]** で、ディスクへの増分バックアップを実行する頻度を指定します。 バックアップ間隔を設定しない場合は、[回復ポイントの直前] を有効にし、各回復ポイントがスケジュールされる直前に MABS が高速完全バックアップを実行するように指定できます。
+
+1. [ディスク割り当ての確認] ページで、保護グループに割り当てられる記憶域プールのディスク領域を確認します。
+
+    **[合計データ サイズ]** は、バックアップするデータのサイズです。 **[Disk space to be provisioned on MABS]\(MABS にプロビジョニングするディスク領域\)** は、MABS が保護グループに推奨する領域です。 MABS では、設定に基づいて理想的なバックアップ ボリュームが選択されます。 ただし、 **[Disk allocation details]\(ディスク割り当ての詳細\)** でバックアップ ボリュームの選択を編集できます。 ワークロードの場合、ドロップダウン メニューで、優先ストレージを選択します。 編集すると、 **[利用できるディスク ストレージ]** ウィンドウの **[ストレージの合計]** と **[空きストレージ]** の値が変わります。 過小にプロビジョニングされた領域とは、今後もスムーズなバックアップを確実に行うためにボリュームに追加することを MABS から提案されるストレージの量です。
+
+1. **[レプリカの作成方法の選択]** で、最初の全データのレプリケーションを処理する方法を選択します。  ネットワーク経由でのレプリケーションを選択する場合は、ピーク時以外の時間帯を選択することをお勧めします。 データが大量にある場合や、ネットワークの状態が最適でない場合は、リムーバブル メディアを使用してオフラインでデータをレプリケートすることを検討してください。
+
+1. **[整合性チェック オプションの選択]** で、整合性チェックを自動化する方法を選択します。 レプリカ データに不整合が生じた場合にのみ、またはスケジュールに従ってチェックを実行することができます。 自動整合性チェックを構成しない場合は、MABS コンソールの **[保護]** 領域で保護グループを右クリックし、 **[整合性チェックの実行]** を選択すると、いつでも手動のチェックを実行できます。
+
+1. Azure Backup でクラウドにバックアップすることを選択した場合は、 **[オンライン保護するデータの指定]** ページで、Azure にバックアップするワークロードが選択されていることを確認します。
+
+1. **[オンライン バックアップ スケジュールの指定]** で、Azure への増分バックアップを行う頻度を指定します。 毎日、毎週、毎月、毎年というタイミングでバックアップをスケジュールできます。また、実行する日時を選択できます。 バックアップは、最大 1 日に 2 回実行できます。 バックアップが実行されるたびに、Azure で MABS ディスクに保存されているバックアップ データのコピーからデータの回復ポイントが作成されます。
+
+1. **[オンライン保持ポリシーの指定]** では、毎日、毎週、毎月、毎年のバックアップから作成される回復ポイントを Azure に保持する方法を指定できます。
+
+1. **[オンライン レプリケーションの選択]** で、最初の全データのレプリケーションを実行する方法を指定します。 ネットワーク経由でのレプリケーションまたはオフライン バックアップ (オフライン シード処理) を実行できます。 オフライン バックアップは、Azure Import 機能を使用します。 詳細については、[こちら](./backup-azure-backup-import-export.md)を参照してください。
+
+1. **[概要]** ページで、設定を確認します。 **[グループの作成]** をクリックすると、データの初期レプリケーションが実行されます。 終了すると、 **[状態]** ページに保護グループの状態が **[OK]** と表示されます。 保護グループの設定に沿ってバックアップが実行されます。
+
+## <a name="monitoring"></a>監視
+
+保護グループが作成されると、初期レプリケーションが行われ、MABS は SharePoint データのバックアップと同期を開始します。 MABS は最初の同期とそれ以降のバックアップを監視します。  SharePoint データは、次のいくつかの方法で監視できます。
+
+* アラートを発行し通知を構成することで、既定の MABS の監視を使用して、プロアクティブな監視向けの通知を設定できます。 インスタンス化された回復の重大、警告、情報の各アラートおよび状態の通知を電子メールで送信できます。
+
+* Operations Manager を使用すると、アラートを一元的に発行できます。
+
+### <a name="set-up-monitoring-notifications"></a>監視通知の設定
+
+1. MABS 管理者コンソールで、 **[監視]**  >  **[アクション]**  >  **[オプション]** の順にクリックします。
+
+2. **[SMTP サーバー]** をクリックして、通知の送信元のサーバー名、ポート、電子メール アドレスを入力します。 アドレスは有効である必要があります。
+
+3. **[認証済み SMTP サーバー]** で、ユーザー名とパスワードを入力します。 ユーザー名とパスワードは、前の手順で "差出人" アドレスが入力されたユーザーのドメイン アカウント名にする必要があります。 そうでない場合、通知は配信できません。
+
+4. SMTP サーバーの設定をテストするには、 **[テスト電子メールの送信]** をクリックし、MABS がテスト メッセージを送信する先の電子メール アドレスを入力し、 **[OK]** をクリックします。 **[オプション]**  >  **[通知]** をクリックし、受信者に通知するアラートの種類を選択します。 **[受信者]** に、MABS から通知のコピーを送信する各宛先の電子メール アドレスを入力します。
+
+### <a name="publish-operations-manager-alerts"></a>Operations Manager アラートの発行
+
+1. MABS 管理者コンソールで、 **[監視]**  >  **[アクション]**  >  **[オプション]**  >  **[アラートの発行]**  >  **[アクティブなアラートの発行]** の順にクリックします
+
+2. **[アラートの発行]** を有効にすると、ユーザーの操作が必要となる既存のすべての MABS アラートは、**MABS アラート** イベント ログに発行されます。 MABS サーバーにインストールされている Operations Manager エージェントがこれらのアラートを Operations Manager に発行し、新しいアラートが生成されるたびにコンソールの更新を続けます。
 
 ## <a name="restore-a-sharepoint-item-from-disk-by-using-mabs"></a>MABS を使用したディスクからの SharePoint アイテムの復元
 
 次の例では、 *Recovering SharePoint item* が誤って削除され、回復する必要があります。
 ![MABS の SharePoint 保護 4](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection5.png)
 
-1. **DPM 管理者コンソール**を開きます。 DPM によって保護されているすべての SharePoint ファームが、 **[保護]** タブに表示されます。
+1. **MABS 管理者コンソール**を開きます。 MABS によって保護されているすべての SharePoint ファームが、 **[保護]** タブに表示されます。
 
     ![MABS の SharePoint 保護 3](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection4.png)
 2. アイテムの回復を始めるには、 **[回復]** タブを選択します。
@@ -203,7 +192,7 @@ MABS を使用して SharePoint を保護する前に、**ConfigureSharePoint.ex
     >
     >
 
-## <a name="restore-a-sharepoint-database-from-azure-by-using-dpm"></a>DPM を使用した Azure からの SharePoint データベースの復元
+## <a name="restore-a-sharepoint-database-from-azure-by-using-mabs"></a>MABS を使用した Azure からの SharePoint データベースの復元
 
 1. SharePoint コンテンツ データベースを回復するには、さまざまな回復ポイントを参照して (前述したように)、復元する回復ポイントを選択します。
 
@@ -211,7 +200,7 @@ MABS を使用して SharePoint を保護する前に、**ConfigureSharePoint.ex
 2. SharePoint の回復ポイントをダブルクリックして、使用可能な SharePoint カタログ情報を表示します。
 
    > [!NOTE]
-   > SharePoint ファームは Azure では長期リテンション期間用に保護されているので、MABS には使用可能なカタログ情報 (メタデータ) がありません。 その結果、特定時点の SharePoint コンテンツ データベースを回復する必要があるときは常に、SharePoint ファームを再カタログ化する必要があります。
+   > SharePoint ファームは Azure では長期保有期間用に保護されているので、MABS サーバーには使用可能なカタログ情報 (メタデータ) がありません。 その結果、特定時点の SharePoint コンテンツ データベースを回復する必要があるときは常に、SharePoint ファームを再カタログ化する必要があります。
    >
    >
 3. **[再カタログ化]** をクリックします。
@@ -230,15 +219,45 @@ MABS を使用して SharePoint を保護する前に、**ConfigureSharePoint.ex
     ![MABS の SharePoint 保護 13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. この時点で、この記事で前述した回復手順に従ってディスクから SharePoint コンテンツ データベースを回復します。
 
-## <a name="faqs"></a>FAQ
+## <a name="switching-the-front-end-web-server"></a>フロントエンド Web サーバーの切り替え
 
-Q: SharePoint が SQL AlwaysOn を使用して構成されている場合 (ディスクでの保護)、SharePoint アイテムを元の場所に回復できますか?<br>
-A: はい、元の SharePoint サイトにアイテムを回復できます。
+複数のフロントエンド Web サーバーがあり、MABS でファームの保護に使用するサーバーを切り替えたい場合は、次の手順に従ってください。
 
-Q: SharePoint が SQL AlwaysOn を使用して構成されている場合、SharePoint データベースを元の場所に回復できますか?<br>
-A: SharePoint データベースは SQL AlwaysOn で構成されているので、可用性グループを削除しない限り、変更することはできません。 結果として、MABS は元の場所にデータベースを復元できません。 SQL Server データベースを別の SQL Server インスタンスに回復することはできます。
+次の手順では、2 台のフロントエンド Web サーバー (*Server1* と *Server2*) によるサーバー ファームの例を使用します。 MABS は *Server1* を使用してファームを保護します。 ファームから *Server1* を削除できるように、MABS が使用するフロントエンド Web サーバーを *Server2* に変更する必要があります。
+
+> [!NOTE]
+> ファームの保護のために MABS が使用するフロントエンド Web サーバーが使用できない場合、次の手順の 4 から開始してフロントエンド Web サーバーを変更してください。
+
+### <a name="to-change-the-front-end-web-server-that-mabs-uses-to-protect-the-farm"></a>ファームの保護のために MABS が使用するフロント エンド Web サーバーを変更するには
+
+1. コマンド プロンプトで次のコマンドを実行して、*Server1* の SharePoint VSS ライター サービスを停止します。
+
+    ```CMD
+    stsadm -o unregisterwsswriter
+    ```
+
+1. *Server1* でレジストリ エディターを開き、次のキーに移動します。
+
+   **HKLM\System\CCS\Services\VSS\VssAccessControl**
+
+1. VssAccessControl サブキーに表示されるすべての値を確認します。 いずれかのエントリに 0 の値データが含まれ、関連するアカウントの資格情報で別の VSS ライターが実行されている場合は、値データを 1 に変更してください。
+
+1. *Server2* に保護エージェントをインストールします。
+
+   > [!WARNING]
+   > 両方のサーバーが同じドメインにある場合にのみ、Web フロントエンド サーバーを切り替えることができます。
+
+1. *Server2* のコマンド プロンプトで、ディレクトリを `_MABS installation location_\bin\` に変更し、**ConfigureSharepoint** を実行します。 ConfigureSharePoint の詳細については、「[バックアップの構成](#configure-backup)」を参照してください。
+
+1. サーバー ファームが属している保護グループを選択し、 **[保護グループの変更]** をクリックします。
+
+1. グループの変更ウィザードの **[グループ メンバーの選択]** ページで *Server2* を展開し、サーバー ファームを選択して、ウィザードを完了します。
+
+   整合性チェックが開始します。
+
+1. 手順 6 を実行した場合は、保護グループからボリュームを削除できるようになります。
 
 ## <a name="next-steps"></a>次のステップ
 
-[ファイルとアプリケーションのバックアップ](backup-mabs-files-applications-azure-stack.md)に関する記事をご覧ください。
-[Azure Stack での SQL Server のバックアップ](backup-mabs-sql-azure-stack.md)に関する記事をご覧ください。
+* [ファイルとアプリケーションのバックアップ](backup-mabs-files-applications-azure-stack.md)に関する記事をご覧ください。
+* [Azure Stack での SQL Server のバックアップ](backup-mabs-sql-azure-stack.md)に関する記事をご覧ください。

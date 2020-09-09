@@ -1,5 +1,5 @@
 ---
-title: 内部 Basic Load Balancer を作成する - Azure CLI
+title: 内部ロード バランサーの作成 - Azure CLI
 titleSuffix: Azure Load Balancer
 description: この記事では、Azure CLI を使用して内部ロード バランサーを作成する方法について説明します
 services: load-balancer
@@ -7,18 +7,18 @@ documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
-ms.custom: seodec18
+ms.topic: how-to
+ms.custom: seodec18, devx-track-azurecli
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/27/2018
+ms.date: 07/02/2020
 ms.author: allensu
-ms.openlocfilehash: 51df1936e5d8725b2243e7c0084973370139c540
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9a1587efc07cf852fe9389cc9bf39e693373ef89
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79457013"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502326"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Azure CLI を使用して VM の負荷を分散する内部ロード バランサーを作成する
 
@@ -52,7 +52,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
     --subnet-name mySubnet
 ```
 
-## <a name="create-basic-load-balancer"></a>Basic Load Balancer を作成する
+## <a name="create-standard-load-balancer"></a>Standard Load Balancer を作成する
 
 このセクションでは、ロード バランサーの以下のコンポーネントを作成および構成する方法について説明します。
   - ロード バランサーの着信ネットワーク トラフィックを受け取るフロントエンド IP 構成。
@@ -62,12 +62,15 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ### <a name="create-the-load-balancer"></a>ロード バランサーを作成する
 
-[az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) を使用して、**myLoadBalancer** という名前の内部ロード バランサーを作成します。これには、**myFrontEnd** という名前のフロントエンド IP 構成と、プライベート IP アドレス **10.0.0.7 に関連付けられている **myBackEndPool** という名前のバックエンド プールを含めます。
+[az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) を使用して、**myLoadBalancer** という名前の内部ロード バランサーを作成します。これには、**myFrontEnd** という名前のフロントエンド IP 構成と、プライベート IP アドレス **10.0.0.7** に関連付けられている **myBackEndPool** という名前のバックエンド プールを含めます。 
+
+Basic Load Balancer を作成するには、`--sku basic` を使用します。 Microsoft では、運用環境のワークロードに Standard SKU をお勧めします。
 
 ```azurecli-interactive
   az network lb create \
     --resource-group myResourceGroupILB \
     --name myLoadBalancer \
+    --sku standard \
     --frontend-ip-name myFrontEnd \
     --private-ip-address 10.0.0.7 \
     --backend-pool-name myBackEndPool \
@@ -85,7 +88,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
     --lb-name myLoadBalancer \
     --name myHealthProbe \
     --protocol tcp \
-    --port 80   
+    --port 80
 ```
 
 ### <a name="create-the-load-balancer-rule"></a>ロード バランサー規則を作成する
@@ -103,6 +106,12 @@ CLI をローカルにインストールして使用する場合、このチュ�
     --frontend-ip-name myFrontEnd \
     --backend-pool-name myBackEndPool \
     --probe-name myHealthProbe  
+```
+
+また、Standard Load Balancer を使用する以下の構成を使用して、[HA ポート](load-balancer-ha-ports-overview.md)のロード バランサー規則を作成することもできます。
+
+```azurecli-interactive
+az network lb rule create --resource-group myResourceGroupILB --lb-name myLoadBalancer --name haportsrule --protocol all --frontend-port 0 --backend-port 0 --frontend-ip-name myFrontEnd --backend-address-pool-name myBackEndPool
 ```
 
 ## <a name="create-servers-for-the-backend-address-pool"></a>バックエンド アドレス プール用のサーバーを作成する

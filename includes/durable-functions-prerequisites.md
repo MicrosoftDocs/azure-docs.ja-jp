@@ -16,11 +16,11 @@ ms.locfileid: "77562066"
 # <a name="c"></a>[C#](#tab/csharp)
 
 * [クイックスタートの記事を完了していること](../articles/azure-functions/durable/durable-functions-create-first-csharp.md)
-* [GitHub からサンプル プロジェクトをクローンまたはダウンロードしていること](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/precompiled)
+* [GitHub からサンプル プロジェクトを複製またはダウンロードしていること](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/precompiled)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 * [クイックスタートの記事を完了していること](../articles/azure-functions/durable/quickstart-js-vscode.md)
-* [GitHub からサンプル プロジェクトをクローンまたはダウンロードしていること](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/javascript)
+* [GitHub からサンプル プロジェクトを複製またはダウンロードしていること](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/javascript)
 
 ---

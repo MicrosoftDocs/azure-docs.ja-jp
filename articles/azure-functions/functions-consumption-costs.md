@@ -3,12 +3,12 @@ title: Azure Functions での従量課金プランのコストの見積もり
 description: Azure の従量課金プランで関数アプリを実行するときに発生する可能性があるコストをより正確に見積もる方法について説明します。
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 0e3177d7c65eb1624441427f123e6f95095bdbbd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33c892bd7904d2921039a4b2afb9c775d6a4926a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76963990"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207772"
 ---
 # <a name="estimating-consumption-plan-costs"></a>従量課金プランのコストの見積もり
 
@@ -37,6 +37,8 @@ Durable Functions も従量課金プランで実行できます。 Durable Funct
 > [!NOTE]
 > CPU 使用率は実行コストでは直接考慮されませんが、関数の実行時間に影響する場合は、コストに影響を与える可能性があります。
 
+HTTP によってトリガーされる関数の場合、関数コードの実行が開始される前にエラーが発生した場合、実行に対して課金されることはありません。 これは、API キーの検証または App Service の認証/承認機能が原因のプラットフォームからの 401 応答は、実行コストに対してカウントされないことを意味します。 同様に、5xx 状態コードの応答が要求を処理する関数よりも前のプラットフォームで発生した場合は、カウントされません。 関数コードによってエラーが発生しなかった場合でも、関数コードの実行が開始された後にプラットフォームによって生成される 5xx 応答は、引き続き実行としてカウントされます。
+
 ## <a name="other-related-costs"></a>その他の関連コスト
 
 プランでの関数実行の全体的なコストを見積もるときは、Functions のランタイムでは他の複数の Azure サービスが使用されており、各サービスが個別に課金されることに注意してください。 関数アプリの価格を計算する場合、他の Azure サービスと統合するトリガーとバインドでは、その追加サービスを作成して支払う必要があります。 
@@ -61,7 +63,7 @@ Durable Functions も従量課金プランで実行できます。 Durable Funct
 
 ## <a name="view-execution-data"></a>実行データを表示する
 
-[請求書](/azure/billing/billing-download-azure-invoice)では、 **[Total Executions - Functions]\(合計実行数 - Functions\)** および **[Execution Time - Functions]\(実行時間 - Functions\)** のコスト関連データと、実際に請求されたコストを見ることができます。 ただし、この請求データは過去の請求期間の月次集計です。 
+[請求書](../cost-management-billing/understand/download-azure-invoice.md)では、 **[Total Executions - Functions]\(合計実行数 - Functions\)** および **[Execution Time - Functions]\(実行時間 - Functions\)** のコスト関連データと、実際に請求されたコストを見ることができます。 ただし、この請求データは過去の請求期間の月次集計です。 
 
 関数のコストへの影響をより深く理解するには、Azure Monitor を使用することで、関数アプリによって現在生成されているコスト関連メトリックを表示できます。 このデータを取得するには、[Azure portal] の [Azure Monitor メトリックス エクスプローラー](../azure-monitor/platform/metrics-getting-started.md)または REST API を使用できます。
 

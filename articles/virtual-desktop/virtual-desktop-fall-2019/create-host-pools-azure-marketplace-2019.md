@@ -1,24 +1,22 @@
 ---
-title: Windows Virtual Desktop のホスト プール Azure Marketplace - Azure
-description: Azure Marketplace を使用して Windows Virtual Desktop のホスト プールを作成する方法。
-services: virtual-desktop
+title: Windows Virtual Desktop (クラシック) のホスト プール Azure Marketplace - Azure
+description: Azure Marketplace を使用して Windows Virtual Desktop (クラシック) のホスト プールを作成する方法。
 author: Heidilohr
-ms.service: virtual-desktop
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 741bd94b290560bdc850cbf7bc24ec57104d8a66
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 04184a658ae1efd03afd3e920818eb5317bc7553
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82613858"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008595"
 ---
-# <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>チュートリアル:Azure Marketplace を使用してホスト プールを作成する
+# <a name="tutorial-create-a-host-pool-in-windows-virtual-desktop-classic"></a>チュートリアル:Windows Virtual Desktop (クラシック) でホスト プールを作成する
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースを対象としています。 Spring 2020 更新プログラムで導入された Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../create-host-pools-azure-marketplace.md)を参照してください。
+>この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../create-host-pools-azure-marketplace.md)を参照してください。
 
 このチュートリアルでは、Microsoft Azure Marketplace オファリングを使用して Windows Virtual Desktop テナント内にホスト プールを作成する方法を説明します。
 
@@ -154,7 +152,7 @@ Azure Marketplace でプールの作成が完了したら、さらに多くの�
 
 現在サポートされているクライアントは次のとおりです。
 
-* [Windows 7 および Windows 10 用のリモート デスクトップ クライアント](../connect-windows-7-and-10.md)
+* [Windows 7 および Windows 10 用のリモート デスクトップ クライアント](connect-windows-7-10-2019.md)
 * [Windows Virtual Desktop Web クライアント](connect-web-2019.md)
 
 ## <a name="next-steps"></a>次のステップ
@@ -162,4 +160,4 @@ Azure Marketplace でプールの作成が完了したら、さらに多くの�
 ホスト プールを作成し、そのデスクトップにアクセスするユーザーを割り当てました。 RemoteApp プログラムを使用して、ホスト プールを設定できます。 Windows Virtual Desktop でアプリを管理する方法について詳しくは、次のチュートリアルをご覧ください。
 
 > [!div class="nextstepaction"]
-> [アプリ グループの管理に関するチュートリアル](../manage-app-groups.md)
+> [アプリ グループの管理に関するチュートリアル](manage-app-groups-2019.md)

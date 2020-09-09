@@ -1,20 +1,22 @@
 ---
-title: コマーシャル マーケットプレースで利用可能な地域と通貨のサポート | Azure Marketplace
-description: コマーシャル マーケットプレースで利用可能な地域
-author: qianw211
+title: Microsoft コマーシャル マーケットプレースの利用可能な地域と通貨のサポート
+description: コマーシャル マーケットプレースの利用可能な地域とトランザクションの通貨のサポート
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 01/29/2020
-ms.author: dsindona
-ms.openlocfilehash: 83906e6270ed41c2ea8f489c5a5312d32a565a29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: reference
+author: keferna
+ms.author: keferna
+ms.date: 07/29/2020
+ms.openlocfilehash: 2ff8d962479188ddf324dc5ff75d22eac4fed3d6
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687583"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826771"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>コマーシャル マーケットプレースで利用可能な地域と通貨のサポート
+
+## <a name="supported-geographic-locations"></a>サポートされている地理的な場所
 
 コマーシャル マーケットプレース オファリングは、顧客の請求先住所で定義されている 141 の地域で購入でき、トランザクションは 17 の通貨で行うことができます。 次の表は、サポートされている地理的な場所、その [ISO 3166 の 2 桁のアルファ コード](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)、割り当てられている通貨の一覧です。
 
@@ -43,9 +45,9 @@ ms.locfileid: "81687583"
 | ブラジル                              | BR        | BRL\*        |
 | ブルネイ                              | BN        | USD          |
 | ブルガリア                            | BG        | EUR          |
-| カメルーン                            | CM        | USD          |
-| カナダ                              | CA        | CAD          |
 | カーボベルデ                          | CV        | USD          |
+| カメルーン                            | CM        | USD          |
+| Canada                              | CA        | CAD          |
 | ケイマン諸島                      | KY        | USD          |
 | チリ                               | CL        | USD          |
 | 中国\**                            | CN        | 該当なし          |
@@ -110,8 +112,8 @@ ms.locfileid: "81687583"
 | ナミビア                             | NA        | USD          |
 | ネパール                               | NP        | USD          |
 | オランダ                         | NL        | EUR          |
-| ニカラグア                           | NI        | USD          |
 | ニュージーランド                         | NZ        | NZD          |
+| ニカラグア                           | NI        | USD          |
 | ナイジェリア                             | NG        | USD          |
 | ノルウェー                              | NO        | NOK          |
 | オマーン                                | OM        | USD          |
@@ -148,15 +150,15 @@ ms.locfileid: "81687583"
 | チュニジア                             | TN        | USD          |
 | トルコ                              | TR        | USD          |
 | トルクメニスタン                        | TM        | USD          |
-| バチカン市国 (教皇庁)             | VA        | EUR          |
-| 米領バージン諸島 | VI        | USD          |
 | ウガンダ                              | UG        | USD          |
 | ウクライナ                             | UA        | USD          |
 | アラブ首長国連邦                | AE        | USD          |
 | イギリス                      | GB        | GBP          |
-| 米国                       | US        | USD          |
+| United States                       | US        | USD          |
+| 米国バージン諸島                 | VI        | USD          |
 | ウルグアイ                             | UY        | USD          |
 | ウズベキスタン                          | UZ        | USD          |
+| バチカン市国 (教皇庁)             | VA        | EUR          |
 | ベネズエラ                           | VE        | USD          |
 | ベトナム                             | VN        | USD          |
 | イエメン                               | YE        | USD          |
@@ -167,3 +169,37 @@ ms.locfileid: "81687583"
 \* ブラジルでご利用のお客様の場合、クラウド ソリューション プロバイダー (CSP) 経由のマーケットプレースでは USD が使用されます。
 
 \** Free および BYOL VM イメージのみ。
+
+## <a name="how-we-convert-currency"></a>通貨の換算方法
+
+すべての種類の有料オファーについて、価格を米国ドルで入力するか、現地通貨で価格をアップロードするかを選択できます。 米国ドルで入力された価格は、ページが保存されるときに自動的に、現地通貨に変換されます。 パートナー センターで使用される料金は、毎日更新されます。 価格をエクスポートして、換算後の相当額を確認できます。
+
+発行前に価格を調整するには、価格スプレッドシートをエクスポートして変更し、変更を含むスプレッドシートをアップロードするだけです。
+
+> [!NOTE]
+> プランの市場の価格は、発行した後では変更できません。 発行前に価格が正しいことを確かめるために、価格スプレッドシートをエクスポートして各市場の価格を確認してください。
+
+オファーの価格は、常に現地通貨で顧客に表示されます。 パートナー センターで選択した価格は、パートナー センターに価格を保存したときの為替レートに従って、顧客の現地通貨に換算されます。 オンライン ストアで顧客に表示される価格は、オファーを再発行しない限り変更されません。
+
+Microsoft では、顧客からは顧客の現地通貨で支払いを受け取り、皆様には皆様の現地通貨で支払います。 Microsoft では、購入日の為替レートを使用して、顧客の現地通貨を皆様の現地通貨に換算します。
+
+> [!NOTE]
+> Microsoft では、Microsoft Treasury 為替レートを使用してオファー価格を換算します。
+
+## <a name="retrieving-currency-information-by-api"></a>API による通貨情報の取得
+
+個々の料金 (それらが設定された方法によっては、保存された日の換算レートに影響を受けた可能性もあります) は、API を使用して取得できますが、通貨情報は取得できません。
+
+特定種類のオファーの価格を入力する方法の詳細については、以下の記事を参照してください。
+
+- [Azure アプリケーション オファーを作成する](partner-center-portal/create-new-azure-apps-offer.md)
+- [Azure コンテナー オファーを作成する](partner-center-portal/create-azure-container-offer.md)
+- [Azure 仮想マシン オファーを作成する](partner-center-portal/azure-vm-create-offer.md)
+- [コンサルティング サービス オファーの作成](partner-center-portal/create-consulting-service-offer.md)
+- [Dynamics 365 for Customer Engagement & PowerApps オファーの作成](partner-center-portal/create-new-customer-engagement-offer.md)
+- [Dynamics 365 for Operations オファーの作成](partner-center-portal/create-new-operations-offer.md)
+- [Dynamics 365 Business Central オファーの作成](partner-center-portal/create-new-business-central-offer.md)
+- [IoT Edge モジュール プランの作成](partner-center-portal/azure-iot-edge-module-creation.md)
+- [管理サービス オファーの作成](partner-center-portal/create-new-managed-service-offer.md)
+- [Power BI アプリを作成する](partner-center-portal/create-power-bi-app-offer.md)
+- [SaaS オファーを作成する](partner-center-portal/create-new-saas-offer.md)

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: travisw
-ms.openlocfilehash: 8b187e058299f8aa8b762231c0ed1e708e5ad9d1
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 84c9f61783d2fea425b83c214deede295c4ed581
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80658417"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374748"
 ---
 1. Android Studio を起動し、**ウェルカム** ウィンドウの **[Start a new Android Studio project]\(新しい Android Studio プロジェクトを開始する\)** を選択します。
 
@@ -27,7 +27,7 @@ Android Studio が新しい Android プロジェクトを準備するまでし�
 
 [!INCLUDE [License notice](cognitive-services-speech-service-license-notice.md)]
 
-Cognitive Services Speech SDK の最新バージョンは 1.11.0 です。
+Cognitive Services Speech SDK の最新バージョンは 1.13.0 です。
 
 Android 用 Speech SDK は、必要なライブラリと必要な Android アクセス許可を含む [AAR (Android ライブラリ)](https://developer.android.com/studio/projects/android-library) としてパッケージ化されます。
 Maven リポジトリ (https:\//csspeechstorage.blob.core.windows.net/maven/) でホストされています。
@@ -42,7 +42,7 @@ Speech SDK を使用するためにプロジェクトを設定します。 Andro
 
    ![[Library dependency]\(ライブラリ依存関係\) のスクリーンショット](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. 表示されたウィンドウで、Android 用 Speech SDK の名前とバージョンを入力します (*com.microsoft.cognitiveservices.speech:client-sdk:1.11.0*)。 **[OK]** をクリックします。
+1. 表示されたウィンドウで、Android 用 Speech SDK の名前とバージョンを入力します (*com.microsoft.cognitiveservices.speech:client-sdk:1.13.0*)。 **[OK]** をクリックします。
    次に示すように、依存関係の一覧に Speech SDK が追加されます。
 
    ![Speech SDK が含まれた依存関係の一覧のスクリーンショット](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-08-dependency-added-1.0.0.png)

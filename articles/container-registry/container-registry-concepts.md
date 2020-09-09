@@ -2,13 +2,13 @@
 title: リポジトリとイメージについて
 description: Azure のコンテナー レジストリ、リポジトリ、およびコンテナー イメージの主要な概念について紹介します。
 ms.topic: article
-ms.date: 09/10/2019
-ms.openlocfilehash: ea6e2577d3eee91626dd613617a0b79e4ff3d6a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/16/2020
+ms.openlocfilehash: f3a3e2a00b4fb35f9e9dd1415d5c197aef0d39b0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225803"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85390450"
 ---
 # <a name="about-registries-repositories-and-images"></a>レジストリ、リポジトリ、イメージについて
 
@@ -24,13 +24,11 @@ Docker コンテナー イメージに加え、Azure Container Registry では�
 
 Azure Container Registry 内の成果物のアドレスには、次の要素が含まれています。 
 
-`[loginUrl]/[namespace]/[artifact:][tag]`
+`[loginUrl]/[repository:][tag]`
 
 * **loginUrl** - レジストリ ホストの完全修飾名。 Azure Container Registry のレジストリ ホストは、*myregistry*.azurecr.io (すべて小文字) の形式です。 Docker またはその他のクライアント ツールを使用して Azure Container Registry との間で成果物をプルまたはプッシュするには、loginUrl を指定する必要があります。 
-* **namespace** - 関連イメージまたは成果物 (ワークグループやアプリなど) の、スラッシュで区切られた論理グループ
-* **artifact** - 特定のイメージまたは成果物のリポジトリの名前
-* **tag** - リポジトリに格納されているイメージまたは成果物の特定バージョン
-
+* **repository** - 1 つまたは複数の関連するイメージまたは成果物の論理グループの名前。たとえば、アプリケーションまたはベース オペレーティング システムのイメージです。 *名前空間*パスを含めることができます。 
+* **tag** - リポジトリに格納されているイメージまたは成果物の特定バージョンの識別子。
 
 たとえば、Azure Container Registry のイメージの完全名は次ようになります。
 
@@ -40,20 +38,24 @@ Azure Container Registry 内の成果物のアドレスには、次の要素が�
 
 ## <a name="repository-name"></a>リポジトリ名です
 
-コンテナー レジストリでは、名前が同じでタグが異なるコンテナー イメージまたはその他の成果物のコレクションである "*リポジトリ*" を管理します。 たとえば、次の 3 つのイメージは "acr-helloworld" リポジトリ内にあります。
+"*リポジトリ*" は、名前が同じでタグが異なるコンテナー イメージまたはその他の成果物のコレクションです。 たとえば、次の 3 つのイメージは "acr-helloworld" リポジトリ内にあります。
 
 
 - *acr-helloworld:latest*
 - *acr-helloworld:v1*
 - *acr-helloworld:v2*
 
-リポジトリ名には、[名前空間](container-registry-best-practices.md#repository-namespaces)を含めることもできます。 名前空間を使用すると、スラッシュで区切られたリポジトリ名を使用してイメージをグループ化できます。次に示すのはその例です。
+リポジトリ名には、[名前空間](container-registry-best-practices.md#repository-namespaces)を含めることもできます。 名前空間を使用すると、スラッシュ区切りの名前を使用して、組織内の関連するリポジトリと成果物の所有権を識別できます。 ただし、レジストリでは、階層としてではなく、すべてのリポジトリが個別に管理されます。 次に例を示します。
 
 - *marketing/campaign10-18/web:v2*
 - *marketing/campaign10-18/api:v3*
 - *marketing/campaign10-18/email-sender:v2*
 - *product-returns/web-submission:20180604*
 - *product-returns/legacy-integrator:20180715*
+
+リポジトリ名には、小文字の英数字、ピリオド、ダッシュ、アンダースコア、およびスラッシュのみを含めることができます。 
+
+リポジトリの完全な名前付け規則については、[Open Container Initiative Distribution Specification](https://github.com/docker/distribution/blob/master/docs/spec/api.md#overview) (オープン コンテナー イニシアチブの配布仕様) を参照してください。
 
 ## <a name="image"></a>Image
 
@@ -63,9 +65,11 @@ Azure Container Registry 内の成果物のアドレスには、次の要素が�
 
 イメージまたはその他の成果物の "*タグ*" は、そのバージョンを指定します。 リポジトリ内の 1 つの成果物に、1 つまたは多数のタグを割り当てることができ、"タグを割り当てない" ことも可能です。 つまり、イメージからすべてのタグを削除しながら、イメージのデータ (そのレイヤー) はレジストリに引き続き残しておくことができます。
 
-リポジトリ (またはリポジトリと名前空間) とタグの組み合わせで、イメージの名前が定義されます。 プッシュ操作またはプル操作で名前を指定することにより、イメージをプッシュおよびプルできます。
+リポジトリ (またはリポジトリと名前空間) とタグの組み合わせで、イメージの名前が定義されます。 プッシュ操作またはプル操作で名前を指定することにより、イメージをプッシュおよびプルできます。 Docker コマンドにタグが指定されていない場合、既定ではタグ `latest` が使用されます。
 
 コンテナー イメージにタグを付ける方法は、コンテナー イメージを開発またはデプロイするシナリオによって決まります。 たとえば、基本イメージを維持する場合は安定したタグ、イメージをデプロイする場合は一意のタグが推奨されます。 詳細については、「[コンテナー イメージのタグ付けとバージョン管理に関する推奨事項](container-registry-image-tag-version.md)」を参照してください。
+
+タグの名前付け規則については、[Docker のドキュメント](https://docs.docker.com/engine/reference/commandline/tag/)を参照してください。
 
 ### <a name="layer"></a>レイヤー
 

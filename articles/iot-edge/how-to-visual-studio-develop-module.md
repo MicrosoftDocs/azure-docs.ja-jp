@@ -9,10 +9,10 @@ ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.openlocfilehash: 9722c7dec3a066d8f776424cb599be0d463416d9
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80384859"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio 2019 を使用して Azure IoT Edge 用のモジュールを開発してデバッグする
@@ -98,7 +98,7 @@ Visual Studio の Azure IoT Edge プロジェクト テンプレートでは、A
 
    ![新しいプロジェクトの作成](./media/how-to-visual-studio-develop-csharp-module/create-new.png)
 
-1. **[IoT Edge アプリケーションとモジュールの追加]\(Add IoT Edge Application and Module\)** ウィンドウで、 **[C# Module]\(C# モジュール\)** または **[C Module]\(C モジュール\)** を選択し、モジュール名とモジュール イメージ リポジトリを指定します。 Visual Studio により、モジュール名には自動的に **localhost:5000/<対象のモジュール名\>** が設定されます。 独自のレジストリ情報に置き換えます。 テスト用に Docker のローカル レジストリを使用する場合、**localhost** で問題ありません。 Azure Container Registry を使用する場合、お使いのレジストリの設定のログイン サーバーを使用します。 ログイン サーバーは **_\<レジストリ名\>_ .azurecr.io** のようになります。 この文字列の **localhost:5000** 部分だけを置き換えて、最終的な結果が **\<*レジストリ名*\>.azurecr.io/ _\<対象のモジュール名\>_** になるようにします。 既定のモジュール名は **IotEdgeModule1** です。
+1. **[IoT Edge アプリケーションとモジュールの追加]\(Add IoT Edge Application and Module\)** ウィンドウで、 **[C# Module]\(C# モジュール\)** または **[C Module]\(C モジュール\)** を選択し、モジュール名とモジュール イメージ リポジトリを指定します。 Visual Studio により、モジュール名には自動的に **localhost:5000/<対象のモジュール名\>** が設定されます。 独自のレジストリ情報に置き換えます。 テスト用に Docker のローカル レジストリを使用する場合、**localhost** で問題ありません。 Azure Container Registry を使用する場合、お使いのレジストリの設定のログイン サーバーを使用します。 ログイン サーバーは **_\<registry name\>_ .azurecr.io** のようになります。 この文字列の **localhost:5000** 部分だけを置き換えて、最終的な結果が **\<*registry name*\>.azurecr.io/ _\<your module name\>_** になるようにします。 既定のモジュール名は **IotEdgeModule1** です。
 
    ![アプリケーションとモジュールの追加](./media/how-to-visual-studio-develop-csharp-module/add-application-and-module.png)
 
@@ -218,7 +218,7 @@ C# モジュールの場合、**IotEdgeModule1** プロジェクトは .NET Core
 
 1. **ソリューション エクスプローラー**で **AzureIoTEdgeApp1** を右クリックし、 **[Build and Push IoT Edge Modules]\(IoT Edge モジュールをビルドしてプッシュする\)** を選択して、各モジュールの Docker イメージをビルドしてプッシュします。
 
-## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
+## <a name="deploy-the-solution"></a>ソリューションのデプロイ
 
 IoT Edge デバイスの設定に使用したクイック スタートの記事では、Azure portal を使用してモジュールをデプロイしました。 Visual Studio の Cloud Explorer を使用してモジュールをデプロイすることもできます。 実際のシナリオに合わせて既に配置マニフェスト (`deployment.json` ファイル) の準備が完了しているため、デプロイを受け取るデバイスを選択するだけで済みます。
 

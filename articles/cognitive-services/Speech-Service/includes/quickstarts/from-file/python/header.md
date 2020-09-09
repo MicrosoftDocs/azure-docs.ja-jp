@@ -9,11 +9,11 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: f3fa4c3e194d05edce973bdeddd0e75de5cdfd4e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 85a5e69c1fe1707e29d2de5f62e9d4b3c2161472
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75927912"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544336"
 ---
-すぐに使用できるようにするには、GitHub ですべての <a href="https://aka.ms/speech/github-python">Speech SDK Python サンプル</a>を表示またはダウンロードします。 それ以外の場合は、始めましょう。
+GitHub で、すべての <a href="https://aka.ms/speech/github-python">Speech SDK Python サンプル</a>を表示またはダウンロードします。 

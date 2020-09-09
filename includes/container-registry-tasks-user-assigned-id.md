@@ -17,7 +17,7 @@ ms.locfileid: "82195266"
 ---
 ### <a name="create-a-user-assigned-identity"></a>ユーザー割り当て ID を作成する
 
-*az identity create* コマンドを使って、サブスクリプションに [myACRTasksId][az-identity-create] という名前の ID を作成します。 前にコンテナー レジストリを作成するために使ったものと同じリソース グループ、または別のリソース グループを使用できます。
+[az identity create][az-identity-create] コマンドを使って、サブスクリプションに *myACRTasksId* という名前の ID を作成します。 前にコンテナー レジストリを作成するために使ったものと同じリソース グループ、または別のリソース グループを使用できます。
 
 ```azurecli
 az identity create \

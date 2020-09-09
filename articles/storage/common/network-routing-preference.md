@@ -5,17 +5,17 @@ description: Azure ストレージ アカウントに対してネットワーク
 services: storage
 author: santoshc
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/12/2020
 ms.author: santoshc
 ms.reviewer: tamram
 ms.subservice: common
-ms.openlocfilehash: bdb33ebfb1ca37772a5b0db96acdbddd422578af
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 5b4a1b1f27dff059090d78e24a6a0eca0bbbf01f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595241"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514200"
 ---
 # <a name="configure-network-routing-preference-for-azure-storage-preview"></a>Azure Storage に対してネットワークのルーティング優先設定を構成する (プレビュー)
 

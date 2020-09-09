@@ -7,15 +7,15 @@ manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 53e8586486d9a9ebf870de350d5607f58977c0f5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c0121c42c5d498aa79109c874981b9de0f8f4b7c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81426331"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588876"
 ---
 # <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>Logic Apps を使用して Key Vault シークレットの状態変更に関するメールを受け取る
 
@@ -28,6 +28,7 @@ Azure Key Vault/Azure Event Grid 統合の概要については、「[Azure Even
 - Azure Logic Apps がサポートするメール プロバイダー (Office 365 Outlook など) のメール アカウント。 このメール アカウントは、イベント通知の送信に使われます。 サポートされている Logic App コネクタの完全な一覧については、「[コネクタの概要](/connectors)」をご覧ください
 - Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 - ご自身の Azure サブスクリプションのキー コンテナー。 新しいキー コンテナーをすばやく作成するには、[Azure CLI を使用した Azure Key Vault からのシークレットの設定と取得](../secrets/quick-create-cli.md)に関するページの手順に従います。
+- リソース プロバイダーとして登録済みの Event Grid。[リソース プロバイダーの登録](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)に関するページを参照してください
 
 ## <a name="create-a-logic-app-via-event-grid"></a>Event Grid を使用してロジック アプリを作成する
 
@@ -35,12 +36,12 @@ Azure Key Vault/Azure Event Grid 統合の概要については、「[Azure Even
 
 Azure Event Grid サブスクリプションを作成するには、次の手順に従います。
 
-1. Azure portal で、キー コンテナーに移動し、 **[イベント] > [はじめに]** を選択して **[Logic Apps]** をクリックします
+1. Azure portal で、キー コンテナーに移動し、**[イベント] > [はじめに]** を選択して **[Logic Apps]** をクリックします
 
     
     ![Key Vault - [イベント] ページ](../media/eventgrid-logicapps-kvsubs.png)
 
-1. **Logic Apps デザイナー**で接続を検証し、 **[続行]** をクリックします。 
+1. **Logic Apps デザイナー**で接続を検証し、**[続行]** をクリックします。 
  
     ![Logic Apps デザイナー - 接続](../media/eventgrid-logicappdesigner1.png)
 
@@ -58,29 +59,29 @@ Azure Event Grid サブスクリプションを作成するには、次の手順
    ![Logic Apps デザイナー - メールの追加](../media/eventgrid-logicappdesigner3.png)
 
 1. メール テンプレートを作成します。
-    - **To:** 通知メールを受信するメール アドレスを入力します。 このチュートリアルでは、テスト用にアクセスできるメール アカウントを使います。
-    - **[件名]** と **[本文]** :メールのテキストを記述します。 イベント データに基づく動的なコンテンツを含めるには、選択ツールから JSON プロパティを選びます。 イベントのデータを取得するには、`@{triggerBody()?['Data']}` を使用します。
+    - **To:** 通知メールを受信するメール アドレスを入力します。 このチュートリアルでは、テストの目的でアクセスできる電子メール アカウントを使用します。
+    - **[件名]** と **[本文]**: メールのテキストを記述します。 イベント データに基づく動的なコンテンツを挿入するには、セレクター ツールから JSON プロパティを選択します。 イベントのデータを取得するには、`@{triggerBody()?['Data']}` を使用します。
 
     メール テンプレートは次の例のようになります。
 
     ![Logic Apps デザイナー - メールの追加](../media/eventgrid-logicappdesigner4.png)
 
 8. **[名前を付けて保存]** をクリックします。
-9. 新しいロジック アプリの **[名前]** を入力し、 **[作成]** をクリックします。
+9. 新しいロジック アプリの **[名前]** を入力し、**[作成]** をクリックします。
     
     ![Logic Apps デザイナー - メールの追加](../media/eventgrid-logicappdesigner5.png)
 
 ## <a name="test-and-verify"></a>テストして検証する
 
-1.  Azure portal でキー コンテナーにアクセスし、 **[イベント] > [イベント サブスクリプション]** を選択します。  新しいサブスクリプションが作成されたことを確認します。
+1.  Azure portal でキー コンテナーにアクセスし、**[イベント] > [イベント サブスクリプション]** を選択します。  新しいサブスクリプションが作成されたことを確認します。
     
     ![Logic Apps デザイナー - メールの追加](../media/eventgrid-logicapps-kvnewsubs.png)
 
-1.  キー コンテナーにアクセスして **[シークレット]** を選択し、 **[Generate/Import]\(生成/インポート\)** を選択します。 テスト用に新しいシークレットを作成し、キーに名前を付け、残りのパラメーターは既定の設定のままにします。
+1.  キー コンテナーにアクセスして **[シークレット]** を選択し、**[Generate/Import]\(生成/インポート\)** を選択します。 テスト用に新しいシークレットを作成し、キーに名前を付け、残りのパラメーターは既定の設定のままにします。
 
     ![キー コンテナー - シークレットの作成](../media/eventgrid-logicapps-kv-create-secret.png)
 
-1. **[シークレットの作成]** 画面で、任意の名前と任意の値を指定し、 **[作成]** を選択します。
+1. **[シークレットの作成]** 画面で、任意の名前と任意の値を指定し、**[作成]** を選択します。
 
 シークレットが作成されると、構成したアドレスでメールを受信します。
 

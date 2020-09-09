@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/17/2018
+ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 21c551721815847eea4cb1435298ea6f7bf37966
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a1e097692eade956446b46782bca5ecf3a17de75
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231163"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800264"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Azure の Red Hat Enterprise Linux に Pacemaker をセットアップする
 
@@ -120,12 +120,16 @@ ms.locfileid: "79231163"
    </code></pre>
 
    > [!IMPORTANT]
-   > Azure Fence Agent を更新する必要があり、カスタム ロールを使用している場合は、カスタム ロールを更新してアクション **powerOff** を含めるようにします。 詳細については、「[フェンス エージェントのカスタム ロールを作成する](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker#1-create-a-custom-role-for-the-fence-agent)」を参照してください。  
+   > Azure Fence Agent を更新する必要があり、カスタム ロールを使用している場合は、カスタム ロールを更新してアクション **powerOff** を含めるようにします。 詳細については、「[フェンス エージェントのカスタム ロールを作成する](#1-create-a-custom-role-for-the-fence-agent)」を参照してください。  
 
 1. **[A]** ホスト名解決を設定します
 
    DNS サーバーを使用するか、すべてのノードの /etc/hosts を変更します。 この例では、/etc/hosts ファイルを使用する方法を示しています。
-   次のコマンドの IP アドレスとホスト名を置き換えます。 /etc/hosts を使用する利点は、単一障害点になる可能性もある DNS からクラスターを独立させられることです。
+   次のコマンドの IP アドレスとホスト名を置き換えます。  
+
+   >[!IMPORTANT]
+   > クラスター構成でホスト名を使用する場合は、信頼できるホスト名解決が不可欠です。 名前が使用できず、クラスターのフェールオーバーの遅延につながる可能性がある場合、クラスター通信は失敗します。
+   > /etc/hosts を使用する利点は、単一障害点になる可能性もある DNS からクラスターを独立させられることです。  
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
@@ -196,6 +200,11 @@ ms.locfileid: "79231163"
    <pre><code>sudo pcs quorum expected-votes 2
    </code></pre>
 
+1. **[1]** 同時フェンス アクションを許可します
+
+   <pre><code>sudo pcs property set concurrent-fencing=true
+   </code></pre>
+
 ## <a name="create-stonith-device"></a>STONITH デバイスの作成
 
 STONITH デバイスは、サービス プリンシパルを使用して Microsoft Azure を承認します。 サービス プリンシパルを作成するには、次に手順に従います。
@@ -215,27 +224,32 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** フェンス エージェントのカスタム ロールを作成する
 
-既定では、サービス プリンシパルには、Azure のリソースにアクセスする権限はありません。 クラスターのすべての仮想マシンを開始および停止 (電源オフ) する権限を、サービス プリンシパルに付与する必要があります。 まだカスタム ロールを作成していない場合は、[PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) または [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) を使って作成してください
+既定では、サービス プリンシパルには、Azure のリソースにアクセスする権限はありません。 クラスターのすべての仮想マシンを開始および停止 (電源オフ) する権限を、サービス プリンシパルに付与する必要があります。 まだカスタム ロールを作成していない場合は、[PowerShell](../../../role-based-access-control/role-assignments-powershell.md) または [Azure CLI](../../../role-based-access-control/role-assignments-cli.md) を使って作成してください
 
 入力ファイルには次の内容を使用します。 実際のサブスクリプションに合わせて内容を調整する必要があります。つまり、c276fc76-9cd4-44c9-99a7-4fd71546436e and e91d47c4-76f3-4271-a796-21b4ecfe3624 は、ご利用のサブスクリプションの ID に置き換えます。 ご利用のサブスクリプションが 1 つしかない場合は、AssignableScopes の 2 つ目のエントリは削除してください。
 
 ```json
 {
-  "Name": "Linux Fence Agent Role",
-  "Id": null,
-  "IsCustom": true,
-  "Description": "Allows to power-off and start virtual machines",
-  "Actions": [
-    "Microsoft.Compute/*/read",
-    "Microsoft.Compute/virtualMachines/powerOff/action",
-    "Microsoft.Compute/virtualMachines/start/action"
-  ],
-  "NotActions": [
-  ],
-  "AssignableScopes": [
-    "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
-    "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
-  ]
+    "properties": {
+        "roleName": "Linux Fence Agent Role",
+        "description": "Allows to power-off and start virtual machines",
+        "assignableScopes": [
+            "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
+            "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.Compute/*/read",
+                    "Microsoft.Compute/virtualMachines/powerOff/action",
+                    "Microsoft.Compute/virtualMachines/start/action"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
 }
 ```
 
@@ -267,12 +281,21 @@ sudo pcs property set stonith-timeout=900
 > [!NOTE]
 > 'pcmk_host_map' のオプションは、RHEL ホスト名と Azure ノード名が同一でない場合のみ、このコマンドで必要です。 このコマンドの太字のセクションを参照してください。
 
-<pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> power_timeout=240 pcmk_reboot_timeout=900</code></pre>
+<pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> \
+power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
+op monitor interval=3600
+</code></pre>
+
+> [!IMPORTANT]
+> 監視およびフェンス操作は逆シリアル化されます。 その結果、長時間実行されている監視操作と同時フェンス イベントがある場合、既に実行されている監視操作により、クラスターのフェールオーバーに遅延は発生しません。  
 
 ### <a name="1-enable-the-use-of-a-stonith-device"></a>**[1]** STONITH デバイスの使用を有効にします
 
 <pre><code>sudo pcs property set stonith-enabled=true
 </code></pre>
+
+> [!TIP]
+>Azure Fence Agent では、[標準 ILB を使用した VM 用のパブリック エンドポイント接続](./high-availability-guide-standard-load-balancer-outbound-connections.md)に関する記事で説明されているように、使用可能なソリューションと共に、パブリック エンドポイントへの送信接続が必要です。  
 
 ## <a name="next-steps"></a>次のステップ
 

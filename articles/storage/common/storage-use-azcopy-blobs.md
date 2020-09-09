@@ -3,17 +3,17 @@ title: AzCopy v10 を使用して Azure Blob Storage をコピー先またはコ
 description: この記事には、コンテナーの作成、ファイルのコピー、ローカル ファイル システムとコンテナー間のディレクトリの同期に役立つ一連の AzCopy サンプル コマンドが含まれています。
 author: normesta
 ms.service: storage
-ms.topic: conceptual
-ms.date: 04/10/2020
+ms.topic: how-to
+ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: b676c2647fbf7c93d271e1d7f68653452125e39b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4bf3974cd561626c280dc65aa5fc78d0c9a159b
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137197"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056501"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>AzCopy と Blob Storage でデータを転送する
 
@@ -111,7 +111,7 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 
 ### <a name="upload-specific-files"></a>特定のファイルをアップロードする
 
-完全なファイル名を指定することも、ワイルドカード文字 (*) を使用して名前の一部を使用することもできます。
+完全なファイル名、ワイルドカード文字 (*) を使用した部分的な名前、または日付と時刻を使用して、特定のファイルをアップロードすることができます。
 
 #### <a name="specify-multiple-complete-file-names"></a>複数の完全なファイル名を指定する
 
@@ -140,6 +140,18 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 `--exclude-pattern` オプションを使用してファイルを除外することもできます。 詳細については、「[azcopy copy](storage-ref-azcopy-copy.md)」リファレンス ドキュメントを参照してください。
 
 `--include-pattern` オプションと `--exclude-pattern` オプションは、パスではなくファイル名にのみ適用されます。  ディレクトリ ツリーに存在するテキスト ファイルをすべてコピーする場合は、`–recursive` オプションを使用してディレクトリ ツリー全体を取得し、次に `–include-pattern` を使用して `*.txt` を指定し、すべてのテキスト ファイルを取得します。
+
+#### <a name="upload-files-that-were-modified-after-a-date-and-time"></a>ある日時の後に変更されたファイルをアップロードする 
+
+[azcopy copy](storage-ref-azcopy-copy.md) コマンドを `--include-after` オプションと共に使用します。 日付と時刻を ISO-8601 形式で指定します (例: `2020-08-19T15:04:00Z`)。 
+
+|    |     |
+|--------|-----------|
+| **構文** | `azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>'  --include-after <Date-Time-in-ISO-8601-format>` |
+| **例** | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory'  --include-after '2020-08-19T15:04:00Z'` |
+| **例** (階層型名前空間) | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory'   --include-after '2020-08-19T15:04:00Z'` |
+
+詳細なリファレンスについては、[azcopy copy](storage-ref-azcopy-copy.md) に関するリファレンス ドキュメントを参照してください。
 
 ## <a name="download-files"></a>ファイルのダウンロード
 
@@ -202,7 +214,7 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 
 ### <a name="download-specific-files"></a>特定のファイルをダウンロードする
 
-完全なファイル名を指定することも、ワイルドカード文字 (*) を使用して名前の一部を使用することもできます。
+完全なファイル名、ワイルドカード文字 (*) を使用した部分的な名前、または日付と時刻を使用して、特定のファイルをダウンロードすることができます。 
 
 #### <a name="specify-multiple-complete-file-names"></a>複数の完全なファイル名を指定する
 
@@ -232,6 +244,18 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 
 `--include-pattern` オプションと `--exclude-pattern` オプションは、パスではなくファイル名にのみ適用されます。  ディレクトリ ツリーに存在するテキスト ファイルをすべてコピーする場合は、`–recursive` オプションを使用してディレクトリ ツリー全体を取得し、次に `–include-pattern` を使用して `*.txt` を指定し、すべてのテキスト ファイルを取得します。
 
+#### <a name="download-files-that-were-modified-after-a-date-and-time"></a>ある日時の後に変更されたファイルをダウンロードする 
+
+[azcopy copy](storage-ref-azcopy-copy.md) コマンドを `--include-after` オプションと共に使用します。 日付と時刻を ISO-8601 形式で指定します (例: `2020-08-19T15:04:00Z`)。 
+
+|    |     |
+|--------|-----------|
+| **構文** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>/*' '<local-directory-path>' --include-after <Date-Time-in-ISO-8601-format>` |
+| **例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/*' 'C:\myDirectory'  --include-after '2020-08-19T15:04:00Z'` |
+| **例** (階層型名前空間) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory/*' 'C:\myDirectory'  --include-after '2020-08-19T15:04:00Z'` |
+
+詳細なリファレンスについては、[azcopy copy](storage-ref-azcopy-copy.md) に関するリファレンス ドキュメントを参照してください。
+
 ## <a name="copy-blobs-between-storage-accounts"></a>ストレージ アカウント間で BLOB をコピーする
 
 AzCopy を使用し、BLOB を他のストレージ アカウントにコピーできます。 コピー操作は同期しているため、コマンドが返されると、それはすべてのファイルがコピーされていることを示します。 
@@ -241,7 +265,7 @@ AzCopy では、[サーバー間](https://docs.microsoft.com/rest/api/storageser
 > [!NOTE]
 > 現在のリリースでは、このシナリオに以下の制限があります。
 >
-> - 各ソース URL の末尾に SAS トークンを追加する必要があります。 Azure Active Directory (AD) を使用して認証資格情報を提供する場合、SAS トークンを省略できるのは宛先 URL だけです。
+> - 各ソース URL の末尾に SAS トークンを追加する必要があります。 Azure Active Directory (AD) を使用して認証資格情報を提供する場合、SAS トークンを省略できるのは宛先 URL だけです。 宛先アカウントに適切なロールが設定されていることを確認します。 「[オプション 1: Azure Active Directory を使用する](storage-use-azcopy-v10.md?toc=/azure/storage/blobs/toc.json#option-1-use-azure-active-directory)」を参照してください。
 >-  Premium ブロック BLOB ストレージ アカウントでは、アクセス層はサポートされません。 `s2s-preserve-access-tier` を `false` に設定することで (例: `--s2s-preserve-access-tier=false`)、コピー操作から BLOB のアクセス層を除外します。
 
 このセクションには、次の例が含まれています。
@@ -259,7 +283,7 @@ AzCopy では、[サーバー間](https://docs.microsoft.com/rest/api/storageser
 >
 > |シナリオ|フラグ|
 > |---|---|
-> |追加 BLOB またはページ BLOB としてファイルをコピーします。|**--blob-type**=\[BlockBlob\|PageBlob\|AppendBlob\]|
+> |ブロック、ページ、または追加 BLOB として BLOB をコピーします。|**--blob-type**=\[BlockBlob\|PageBlob\|AppendBlob\]|
 > |特定のアクセス層 (アーカイブ層など) にコピーします。|**--block-blob-tier**=\[None\|Hot\|Cool\|Archive\]|
 > |自動的にファイルを圧縮解除します。|**--decompress**=\[gzip\|deflate\]|
 > 

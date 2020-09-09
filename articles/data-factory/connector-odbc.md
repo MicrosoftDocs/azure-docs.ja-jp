@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory を使用して ODBC ソースからデータをコピーする
-description: Azure Data Factory パイプラインでコピー アクティビティを使用して、ODBC ソースからサポートされているシンク データ ストアへデータをコピーする方法について説明します。
+title: Azure Data Factory を使用して ODBC データ ストアをコピー元またはコピー先としてデータをコピーする
+description: Azure Data Factory パイプラインでコピー アクティビティを使用して、ODBC データ ストアをコピー元またはコピー先としてデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 04/22/2020
 ms.author: jingwang
-ms.openlocfilehash: da5c53f8953960c382070be658add2877fff3f8c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: c92428666f0766f78475be16416027cdc6e71f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81416895"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85506533"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Azure Data Factory を使用して ODBC データ ストアをコピー元またはコピー先としてデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -35,7 +35,7 @@ ms.locfileid: "81416895"
 
 ODBC ソースのデータをサポートされる任意のシンク データ ストアにコピーしたり、サポートされる任意のソース データ ストアのデータを ODBC シンクにコピーしたりできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
-具体的には、この ODBC コネクタは、**基本**または**匿名**認証を使用して、**任意の ODBC 対応データ ストア**をコピー元またはコピー先とするデータのコピーをサポートします。 **64 ビットの ODBC ドライバー**が必要です。
+具体的には、この ODBC コネクタは、**基本**または**匿名**認証を使用して、**任意の ODBC 対応データ ストア**をコピー元またはコピー先とするデータのコピーをサポートします。 **64 ビットの ODBC ドライバー**が必要です。 ODBC シンクの場合、ADF は ODBC バージョン 2.0 標準をサポートします。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -236,48 +236,9 @@ ODBC 対応データ ストアにデータをコピーするには、コピー �
 ]
 ```
 
-## <a name="sap-hana-sink"></a>SAP HANA シンク
-
->[!NOTE]
->SAP HANA データ ストアからデータをコピーするには、ネイティブ [SAP HANA コネクタ](connector-sap-hana.md)を参照してください。 SAP HANA にデータをコピーするには、ODBC コネクタを使用するためのこの手順に従ってください。 SAP HANA コネクタと ODBC コネクタ用のリンクされたサービスは種類が異なるため、再利用することはできないことに注意してください。
->
-
-汎用 ODBC コネクタを使用して、SAP HANA データベースにデータをコピーできます。
-
-セルフホステッド統合ラインタイムを、データ ストアへのアクセス権付きでコンピューターに設定します。 統合ランタイムは、SAP HANA 用の ODBC ドライバーを使用してデータ ストアに接続します。 そのため、ドライバーが同じコンピューターにまだインストールされていない場合は、インストールしてください。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。
-
-Data Factory ソリューションで SAP HANA シンクを使用する前に、「[接続の問題のトラブルシューティング](#troubleshoot-connectivity-issues)」セクションの手順を使用して、Integration Runtime がデータ ストアに接続できるかどうかを確認します。
-
-次の例に示すように、SAP HANA データ ストアを Azure Data Factory にリンクする、ODBC のリンクされたサービスを作成します。
-
-```json
-{
-    "name": "SAPHANAViaODBCLinkedService",
-    "properties": {
-        "type": "Odbc",
-        "typeProperties": {
-            "connectionString": "Driver={HDBODBC};servernode=<HANA server>.clouddatahub-int.net:30015",
-            "authenticationType": "Basic",
-            "userName": "<username>",
-            "password": {
-                "type": "SecureString",
-                "value": "<password>"
-            }
-        },
-        "connectVia": {
-            "referenceName": "<name of Integration Runtime>",
-            "type": "IntegrationRuntimeReference"
-        }
-    }
-}
-```
-
-コピー操作で ODBC データ ストアをソース/シンク データ ストアとして使用する方法の詳細については、記事を最初からお読みください。
-
 ## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
 プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
-
 
 ## <a name="troubleshoot-connectivity-issues"></a>接続の問題のトラブルシューティング
 

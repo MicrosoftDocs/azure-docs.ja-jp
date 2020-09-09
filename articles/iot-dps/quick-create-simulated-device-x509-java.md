@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
-ms.custom: mvc
-ms.openlocfilehash: 5122726cbda2145d190e3dbeb10a3c5b4ae65947
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-java
+ms.openlocfilehash: f16ace3e54db4d30f89da7335f00153191a7e226
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82588451"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326751"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>クイック スタート:IoT Hub Device Provisioning Service 対応の Java デバイス SDK を使用して、シミュレートされた X.509 デバイスを作成してプロビジョニングする
 

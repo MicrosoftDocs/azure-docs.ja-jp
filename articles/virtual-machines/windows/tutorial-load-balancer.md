@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 12/03/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0ece182765be2ee3b18334569799769e251d1af4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b93c8d48313dc41928400efdddf14e88c8a7e6c2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100347"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508122"
 ---
 # <a name="tutorial-load-balance-windows-virtual-machines-in-azure-to-create-a-highly-available-application-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Azure 内で Windows 仮想マシンの負荷分散を行って高可用性アプリケーションを作成する
 負荷分散では、着信要求を複数の仮想マシンに分散させることで高可用性を提供します。 このチュートリアルでは、トラフィックを分散し高可用性を提供する、Azure Load Balancer のさまざまなコンポーネントについて説明します。 学習内容は次のとおりです。
@@ -43,7 +43,7 @@ Azure Cloud Shell は無料のインタラクティブ シェルです。この�
 Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) に移動して、別のブラウザー タブで Cloud Shell を起動することもできます。 **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell に貼り付けてから、Enter キーを押して実行します。
 
 ## <a name="create-azure-load-balancer"></a>Azure Load Balancer を作成する
-このセクションでは、ロード バランサーの各コンポーネントを作成および設定する方法について説明します。 ロード バランサーを作成する前に、[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) を使用してリソース グループを作成します。 次の例では、*myResourceGroupLoadBalancer* という名前のリソース グループを場所 *EastUS* に作成します。
+このセクションでは、ロード バランサーの各コンポーネントを作成および設定する方法について説明します。 ロード バランサーを作成する前に、[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用してリソース グループを作成します。 次の例では、*myResourceGroupLoadBalancer* という名前のリソース グループを場所 *EastUS* に作成します。
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -52,7 +52,7 @@ New-AzResourceGroup `
 ```
 
 ### <a name="create-a-public-ip-address"></a>パブリック IP アドレスの作成
-インターネット上のアプリにアクセスするには、ロード バランサーのパブリック IP アドレスが必要です。 [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) を使用してパブリック IP アドレスを作成します。 次の例では、*myPublicIP* という名前のパブリック IP アドレスを *myResourceGroupLoadBalancer* リソース グループに作成します。
+インターネット上のアプリにアクセスするには、ロード バランサーのパブリック IP アドレスが必要です。 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用してパブリック IP アドレスを作成します。 次の例では、*myPublicIP* という名前のパブリック IP アドレスを *myResourceGroupLoadBalancer* リソース グループに作成します。
 
 ```azurepowershell-interactive
 $publicIP = New-AzPublicIpAddress `
@@ -63,7 +63,7 @@ $publicIP = New-AzPublicIpAddress `
 ```
 
 ### <a name="create-a-load-balancer"></a>ロード バランサーの作成
-[New-AzLoadBalancerFrontendIpConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig) を使用して、フロントエンド IP プールを作成します。 次の例では、*myFrontEndPool* という名前のフロントエンド IP プールを作成し、*myPublicIP* アドレスをアタッチします。 
+[New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) を使用して、フロントエンド IP プールを作成します。 次の例では、*myFrontEndPool* という名前のフロントエンド IP プールを作成し、*myPublicIP* アドレスをアタッチします。 
 
 ```azurepowershell-interactive
 $frontendIP = New-AzLoadBalancerFrontendIpConfig `
@@ -71,14 +71,14 @@ $frontendIP = New-AzLoadBalancerFrontendIpConfig `
   -PublicIpAddress $publicIP
 ```
 
-[New-AzLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) を使用して、バックエンド アドレス プールを作成します。 残りの手順では、VM をこのバックエンド プールにアタッチします。 次の例では、*myBackEndPool* という名前のバックエンド アドレス プールを作成します。
+[New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) を使用して、バックエンド アドレス プールを作成します。 残りの手順では、VM をこのバックエンド プールにアタッチします。 次の例では、*myBackEndPool* という名前のバックエンド アドレス プールを作成します。
 
 ```azurepowershell-interactive
 $backendPool = New-AzLoadBalancerBackendAddressPoolConfig `
   -Name "myBackEndPool"
 ```
 
-次に、[New-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer) を使用して、ロード バランサーを作成します。 次の例では、前の手順で作成したフロントエンドとバックエンドの IP プールを使用して *myLoadBalancer* という名前のロード バランサーを作成します。
+次に、[New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) を使用して、ロード バランサーを作成します。 次の例では、前の手順で作成したフロントエンドとバックエンドの IP プールを使用して *myLoadBalancer* という名前のロード バランサーを作成します。
 
 ```azurepowershell-interactive
 $lb = New-AzLoadBalancer `
@@ -94,7 +94,7 @@ $lb = New-AzLoadBalancer `
 
 次の例では、TCP プローブを作成します。 よりきめ細やかな正常性チェックを行う場合は、カスタムの HTTP プローブを作成することもできます。 カスタム HTTP プローブを使用する場合は、*healthcheck.aspx* などの正常性チェック ページを作成する必要があります。 対象となるホストをロード バランサーのローテーションに維持するには、プローブが **HTTP 200 OK** 応答を返す必要があります。
 
-TCP 正常性プローブを作成するには、[Add-AzLoadBalancerProbeConfig](https://docs.microsoft.com/powershell/module/az.network/add-azloadbalancerprobeconfig) を使用します。 次の例では、*TCP* ポート *80* で各 VM を監視する *myHealthProbe* という名前の正常性プローブを作成します。
+TCP 正常性プローブを作成するには、[Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig) を使用します。 次の例では、*TCP* ポート *80* で各 VM を監視する *myHealthProbe* という名前の正常性プローブを作成します。
 
 ```azurepowershell-interactive
 Add-AzLoadBalancerProbeConfig `
@@ -106,7 +106,7 @@ Add-AzLoadBalancerProbeConfig `
   -ProbeCount 2
 ```
 
-正常性プローブを適用するには、[Set-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/set-azloadbalancer) を使用して、ロード バランサーを更新します。
+正常性プローブを適用するには、[Set-AzLoadBalancer](/powershell/module/az.network/set-azloadbalancer) を使用して、ロード バランサーを更新します。
 
 ```azurepowershell-interactive
 Set-AzLoadBalancer -LoadBalancer $lb
@@ -115,7 +115,7 @@ Set-AzLoadBalancer -LoadBalancer $lb
 ### <a name="create-a-load-balancer-rule"></a>ロード バランサー規則の作成
 ロード バランサー規則の目的は、一連の VM に対するトラフィックの分散方法を定義することです。 着信トラフィック用のフロントエンド IP 構成と、トラフィックを受信するためのバックエンド IP プールを、必要な発信元ポートと宛先ポートと共に定義します。 正常な VM のみでトラフィックを受信するには、使用する正常性プローブの定義も行います。
 
-[Add-AzLoadBalancerRuleConfig](https://docs.microsoft.com/powershell/module/az.network/add-azloadbalancerruleconfig) を使用して、ロード バランサー規則を作成します。 次の例では、*myLoadBalancerRule* という名前のロード バランサー規則を作成し、*TCP* ポート *80* でトラフィックを負荷分散します。
+[Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig) を使用して、ロード バランサー規則を作成します。 次の例では、*myLoadBalancerRule* という名前のロード バランサー規則を作成し、*TCP* ポート *80* でトラフィックを負荷分散します。
 
 ```azurepowershell-interactive
 $probe = Get-AzLoadBalancerProbeConfig -LoadBalancer $lb -Name "myHealthProbe"
@@ -131,7 +131,7 @@ Add-AzLoadBalancerRuleConfig `
   -Probe $probe
 ```
 
-[Set-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/set-azloadbalancer) を使用して、ロード バランサーを更新します。
+[Set-AzLoadBalancer](/powershell/module/az.network/set-azloadbalancer) を使用して、ロード バランサーを更新します。
 
 ```azurepowershell-interactive
 Set-AzLoadBalancer -LoadBalancer $lb
@@ -141,7 +141,7 @@ Set-AzLoadBalancer -LoadBalancer $lb
 一部の VM をデプロイしてバランサーをテストする前に、関連する仮想ネットワーク リソースを作成します。 仮想ネットワークの詳細については、[Azure 仮想ネットワークの管理](tutorial-virtual-network.md)に関するチュートリアルを参照してください。
 
 ### <a name="create-network-resources"></a>ネットワーク リソースを作成する
-[New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) を使用して仮想ネットワークを作成します。 次の例では、*mySubnet* と共に *myVnet* という名前の仮想ネットワークを作成します。
+[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) を使用して仮想ネットワークを作成します。 次の例では、*mySubnet* と共に *myVnet* という名前の仮想ネットワークを作成します。
 
 ```azurepowershell-interactive
 # Create subnet config
@@ -158,7 +158,7 @@ $vnet = New-AzVirtualNetwork `
   -Subnet $subnetConfig
 ```
 
-仮想 NIC は、[New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) を使用して作成します。 以下の例では、3 つの仮想 NIC を作成します (以降の手順では、アプリ用に作成する VM ごとに仮想 NIC を 1 つ)。 いつでも追加の仮想 NIC と VM を作成してロード バランサーに追加することができます。
+仮想 NIC は、[New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) を使用して作成します。 以下の例では、3 つの仮想 NIC を作成します (以降の手順では、アプリ用に作成する VM ごとに仮想 NIC を 1 つ)。 いつでも追加の仮想 NIC と VM を作成してロード バランサーに追加することができます。
 
 ```azurepowershell-interactive
 for ($i=1; $i -le 3; $i++)
@@ -176,7 +176,7 @@ for ($i=1; $i -le 3; $i++)
 ## <a name="create-virtual-machines"></a>仮想マシンを作成する
 アプリの高可用性を高めるには、可用性セットに VM を配置します。
 
-可用性セットを作成するには、[New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset) を使用します。 次の例では、*myAvailabilitySet* という名前の可用性セットを作成します。
+可用性セットを作成するには、[New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) を使用します。 次の例では、*myAvailabilitySet* という名前の可用性セットを作成します。
 
 ```azurepowershell-interactive
 $availabilitySet = New-AzAvailabilitySet `
@@ -188,13 +188,13 @@ $availabilitySet = New-AzAvailabilitySet `
   -PlatformUpdateDomainCount 2
 ```
 
-次のように、[Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) を使用して VM の管理者のユーザー名とパスワードを設定します。
+次のように、[Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) を使用して VM の管理者のユーザー名とパスワードを設定します。
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) を使用して VM を作成できるようになりました。 次の例では、3 つの VM と必要な仮想ネットワーク コンポーネントがまだ存在しない場合にそれらを作成します。
+[New-AzVM](/powershell/module/az.compute/new-azvm) を使用して VM を作成できるようになりました。 次の例では、3 つの VM と必要な仮想ネットワーク コンポーネントがまだ存在しない場合にそれらを作成します。
 
 ```azurepowershell-interactive
 for ($i=1; $i -le 3; $i++)
@@ -219,7 +219,7 @@ for ($i=1; $i -le 3; $i++)
 ### <a name="install-iis-with-custom-script-extension"></a>カスタム スクリプト拡張機能を使用して IIS をインストールする
 [Windows 仮想マシンをカスタマイズする方法](tutorial-automate-vm-deployment.md)に関する先行のチュートリアルで、Windows のカスタム スクリプト拡張機能を使用して VM のカスタマイズを自動化する方法が説明されています。 同じアプローチを使用して、VM に IIS をインストールして構成することができます。
 
-[Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) を使用して、カスタム スクリプト拡張機能をインストールします。 この拡張機能によって `powershell Add-WindowsFeature Web-Server` が実行され、IIS Web サーバーがインストールされます。次に、VM のホスト名を表示するように *Default.htm* ページが更新されます。
+[Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) を使用して、カスタム スクリプト拡張機能をインストールします。 この拡張機能によって `powershell Add-WindowsFeature Web-Server` が実行され、IIS Web サーバーがインストールされます。次に、VM のホスト名を表示するように *Default.htm* ページが更新されます。
 
 ```azurepowershell-interactive
 for ($i=1; $i -le 3; $i++)
@@ -237,7 +237,7 @@ for ($i=1; $i -le 3; $i++)
 ```
 
 ## <a name="test-load-balancer"></a>ロード バランサーをテストする
-ロード バランサーのパブリック IP アドレスを取得するには、[Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) を使用します。 次の例では、先ほど作成した *myPublicIP* の IP アドレスを取得しています。
+ロード バランサーのパブリック IP アドレスを取得するには、[Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) を使用します。 次の例では、先ほど作成した *myPublicIP* の IP アドレスを取得しています。
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress `
@@ -256,7 +256,7 @@ Get-AzPublicIPAddress `
 アプリを実行している VM には、OS の更新プログラムをインストールするなどメンテナンスが必要になることもあります。 また、アプリのトラフィックが増大すれば、それに対処するために、新たに VM を追加しなければなりません。 このセクションでは、ロード バランサーから VM を除外したりロード バランサーに対して VM を追加したりする方法について説明します。
 
 ### <a name="remove-a-vm-from-the-load-balancer"></a>ロード バランサーから VM を除外する
-[Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkinterface) を使用してネットワーク インターフェイス カードを取得した後、仮想 NIC の *LoadBalancerBackendAddressPools* プロパティを *$null* に設定します。 最後に、仮想 NIC を更新します。
+[Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) を使用してネットワーク インターフェイス カードを取得した後、仮想 NIC の *LoadBalancerBackendAddressPools* プロパティを *$null* に設定します。 最後に、仮想 NIC を更新します。
 
 ```azurepowershell-interactive
 $nic = Get-AzNetworkInterface `
@@ -269,7 +269,7 @@ Set-AzNetworkInterface -NetworkInterface $nic
 アプリを実行している残りの 2 つの VM の間で、ロード バランサーがトラフィックを負荷分散していることを確認するには、Web ブラウザーを強制的に最新の情報に更新します。 これで VM に対して、OS 更新プログラムのインストールや VM の再起動などのメンテナンスを行うことができます。
 
 ### <a name="add-a-vm-to-the-load-balancer"></a>ロード バランサーに VM を追加する
-VM のメンテナンスを実施した後、またはキャパシティの拡張が必要な場合は、[Get-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/get-azloadbalancer) を使用して、仮想 NIC の *LoadBalancerBackendAddressPools* プロパティを *BackendAddressPool* に設定します。
+VM のメンテナンスを実施した後、またはキャパシティの拡張が必要な場合は、[Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer) を使用して、仮想 NIC の *LoadBalancerBackendAddressPools* プロパティを *BackendAddressPool* に設定します。
 
 ロード バランサーを取得します。
 

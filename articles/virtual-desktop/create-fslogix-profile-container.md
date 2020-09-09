@@ -1,21 +1,19 @@
 ---
 title: FSLogix プロファイル コンテナー NetApp Windows Virtual Desktop - Azure
 description: Windows Virtual Desktop で Azure NetApp Files を使用して FSLogix プロファイル コンテナーを作成する方法。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
-ms.topic: conceptual
-ms.date: 04/13/2020
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 294a59ed94344ecf590eb9b34f991deaaa10db69
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 6a9f2c62d8e7f17f6ea8377982c79fef3dfbb97c
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607386"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002817"
 ---
-# <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Azure NetApp Files を使用してホスト プール用の FSLogix プロファイル コンテナーを作成する
+# <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>Azure NetApp Files および AD DS を使用してプロファイル コンテナーを作成する
 
 [Windows Virtual Desktop サービス](overview.md)のユーザー プロファイル ソリューションには、FSLogix プロファイル コンテナーを使用することをお勧めします。 FSLogix プロファイル コンテナーは、Windows Virtual Desktop のような非永続型のリモート コンピューティング環境でプロファイルのローミングを行うことを目的として設計されており、1 つのコンテナーにユーザー プロファイル全体が格納されます。 サインイン時には、このコンテナーが、ローカルでサポートされている仮想ハード ディスク (VHD) と Hyper-V 仮想ハード ディスク (VHDX) を使用してコンピューティング環境に動的に接続されます。 これらの高度なフィルタードライバー技術により、ユーザー プロファイルは即座に利用可能になり、ローカルのユーザー プロファイルとまったく同じようにシステムに表示されます。 FSLogix プロファイル コンテナーの詳細については、「[FSLogix プロファイル コンテナーと Azure のファイル](fslogix-containers-azure-files.md)」を参照してください。
 
@@ -53,7 +51,8 @@ FSLogix プロファイル コンテナーは、使いやすい Azure のネイ�
 
 4. Azure Cloud Shell を使用するのが初めての場合には、Azure NetApp Files および Windows Virtual Desktop を保持しているのと同じサブスクリプションにストレージ アカウントを作成してください。
 
-   ![ウィンドウ下部の [ストレージの作成] ボタンが赤色で強調表示されているストレージ アカウント ウィンドウ。](media/create-storage-button.png)
+   > [!div class="mx-imgBorder"]
+   > ![ウィンドウ下部の [ストレージの作成] ボタンが赤色で強調表示されているストレージ アカウント ウィンドウ。](media/create-storage-button.png)
 
 5. Azure Cloud Shell が読み込まれたら、次の 2 つのコマンドレットを実行します。
 
@@ -67,7 +66,8 @@ FSLogix プロファイル コンテナーは、使いやすい Azure のネイ�
 
 6. ウィンドウ左側にある **[すべてのサービス]** を選択します。 メニュー上部に表示された検索ボックスに、「**Azure NetApp Files**」と入力します。
 
-   ![[すべてのサービス] の検索ボックスに「Azure NetApp Files」と入力した状態のスクリーンショット。 検索結果に Azure NetApp Files のリソースが表示されています。](media/azure-netapp-files-search-box.png)
+   > [!div class="mx-imgBorder"]
+   > ![[すべてのサービス] の検索ボックスに「Azure NetApp Files」と入力した状態のスクリーンショット。 検索結果に Azure NetApp Files のリソースが表示されています。](media/azure-netapp-files-search-box.png)
 
 
 7. 検索結果で **[Azure NetApp Files]** を選択し、 **[作成]** を選択します。
@@ -87,7 +87,7 @@ FSLogix プロファイル コンテナーは、使いやすい Azure のネイ�
 
 ## <a name="create-a-capacity-pool"></a>容量プールの作成
 
-次に、容量プールを作成します。 
+次に、容量プールを作成します。
 
 1. Azure NetApp Files のメニューを開いて、新しく作成したアカウントを選択します。
 2. アカウント メニューで、[ストレージ サービス] の下にある **[容量プール]** を選択します。
@@ -108,7 +108,8 @@ FSLogix プロファイル コンテナーは、使いやすい Azure のネイ�
 
 1. ページ左側にあるメニューで **[Active Directory 接続]** を選択してから、 **[参加]** を選択して、 **[Active Directory に参加します]** ページを開きます。
 
-   ![Active Directory 接続への参加メニューのスクリーンショット。](media/active-directory-connections-menu.png)
+   > [!div class="mx-imgBorder"]
+   > ![Active Directory 接続への参加メニューのスクリーンショット。](media/active-directory-connections-menu.png)
 
 2. **[Active Directory に参加します]** ページで次の値を入力して、接続に参加します。
 
@@ -132,7 +133,7 @@ FSLogix プロファイル コンテナーは、使いやすい Azure のネイ�
     - **[仮想ネットワーク]** では、ボックスの一覧から、ドメイン コントローラーに接続されている既存の仮想ネットワークを選択します。
     - **[サブネット]** では **[新規作成]** を選択します。 このサブネットは、Azure NetApp Files に委任されることに留意してください。
 
-3.  **プロトコル\>\>** を選択して プロトコル タブを開き、ボリュームのアクセス パラメーターを構成します。
+3.  **[Next:プロトコル\>\>]** を選択して [プロトコル] タブを開き、ボリュームのアクセス パラメーターを構成します。
 
 ## <a name="configure-volume-access-parameters"></a>ボリュームのアクセス パラメーターの構成
 
@@ -148,7 +149,8 @@ FSLogix プロファイル コンテナーは、使いやすい Azure のネイ�
 
 6.  マウント パスを確認するために、 **[リソースに移動]** を選択し、[概要] タブでこのパスを調べます。
 
-    ![赤矢印がマウント パスを示している [概要] 画面のスクリーンショット。](media/overview-mount-path.png)
+    > [!div class="mx-imgBorder"]
+    > ![赤矢印がマウント パスを示している [概要] 画面のスクリーンショット。](media/overview-mount-path.png)
 
 ## <a name="configure-fslogix-on-session-host-virtual-machines-vms"></a>セッション ホスト仮想マシン (VM) 上での FSLogix の構成
 
@@ -218,7 +220,8 @@ FSLogix プロファイル コンテナーは、使いやすい Azure のネイ�
 
 4. **[Azure NetApp Files]** を開き、Azure NetApp Files アカウントを選択してから **[ボリューム]** を選択します。 [ボリューム] メニューが表示されたら、該当するボリュームを選択します。
 
-   ![Azure portal 内で前に設定した NetApp アカウントを示す、[ボリューム] ボタンが選択された状態のスクリーンショット。](media/netapp-account.png)
+   > [!div class="mx-imgBorder"]
+   > ![Azure portal 内で前に設定した NetApp アカウントを示す、[ボリューム] ボタンが選択された状態のスクリーンショット。](media/netapp-account.png)
 
 5. **[概要]** タブに移動して、FSLogix プロファイル コンテナーにより領域が消費されていることを確認します。
 
@@ -226,8 +229,11 @@ FSLogix プロファイル コンテナーは、使いやすい Azure のネイ�
 
    このフォルダー内に、次の例のようなプロファイル VHD (または VHDX) があるはずです。
 
-   ![マウント パスにあるフォルダーの内容のスクリーンショット。 内部には "Profile_ssbb" という名前の VHD ファイルが 1 つ存在しています。](media/mount-path-folder.png)
+   > [!div class="mx-imgBorder"]
+   > ![マウント パスにあるフォルダーの内容のスクリーンショット。 内部には "Profile_ssbb" という名前の VHD ファイルが 1 つ存在しています。](media/mount-path-folder.png)
 
 ## <a name="next-steps"></a>次のステップ
 
 FSLogix プロファイル コンテナーを使用すると、ユーザー プロファイル共有を設定できます。 新しいコンテナーを使用してユーザー プロファイル共有を作成する方法については、「[ファイル共有を使用してホスト プール用のプロファイル コンテナーを作成する](create-host-pools-user-profile.md)」を参照してください。
+
+このほか、Azure Files のファイル共有を作成し、そこに FSLogix プロファイルを格納することもできます。 詳細については、「[ドメイン コントローラーを使用して Azure Files のファイル共有を作成する](create-file-share.md)」を参照してください。

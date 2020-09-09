@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: fc0af331dc6cb604847be9173c836e0b46ca40ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1bdec284ccdfca9e13ca227fe1109afe28da14b0
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195181"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851385"
 ---
 # <a name="azure-storage-overview-in-hdinsight"></a>HDInsight での Azure Storage の概要
 
@@ -31,11 +31,11 @@ Azure Storage は、堅牢な汎用ストレージ ソリューションであ�
 
 HDInsight では、それぞれのコンピューティング ノードにローカルに割り当てられている分散ファイル システムにアクセスします。 このファイル システムには、完全修飾 URI を使用してアクセスできます。次に例を示します。
 
-    hdfs://<namenodehost>/<path>
+`hdfs://<namenodehost>/<path>`
 
 HDInsight を介して、Azure Storage 内のデータにアクセスすることもできます。 構文は次のとおりです。
 
-    wasb://<containername>@<accountname>.blob.core.windows.net/<path>
+`wasb://<containername>@<accountname>.blob.core.windows.net/<path>`
 
 HDInsight クラスターで Azure Storage アカウントを使用するときには、次の原則を考慮してください。
 

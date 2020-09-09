@@ -12,12 +12,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 0e2247e94b20846f19c2ed26c96a5dc53972e770
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: df873e49e1bc581a32bcb4e4b40b2b24db98cee5
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80883815"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120815"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>クイック スタート:テナントを設定する
 
@@ -34,7 +34,7 @@ Azure AD テナントはそれぞれ異なり、その他の Azure AD とは分�
 * 職場や学校のアカウント (Azure AD アカウント) または Microsoft アカウント (outlook.com や live.com など)
 * ソーシャル アカウントとローカル アカウント (Azure AD B2C)
 
-このクイック スタートは、ビルドするアプリの種類に応じて 2 つのシナリオに分けられています。 また、ID の種類を対象とするヘルプが必要な場合は、[Microsoft ID プラットフォームについて](about-microsoft-identity-platform.md)を確認してください
+このクイック スタートは、ビルドするアプリの種類に応じて 2 つのシナリオに分けられています。
 
 ## <a name="work-and-school-accounts-or-personal-microsoft-accounts"></a>職場や学校のアカウント、または個人用 Microsoft アカウント
 
@@ -72,5 +72,5 @@ Azure AD テナントがない場合、または開発用の新しいテナン�
 ## <a name="next-steps"></a>次のステップ
 
 * [アプリを登録](quickstart-register-app.md)し、Microsoft ID プラットフォームと統合します。 
-* [認証の基本](authentication-scenarios.md)について説明します。
-* サブスクリプションと Azure AD テナントの関係について詳しくは、[Azure サブスクリプションを Azure Active Directory に関連付ける方法](../fundamentals/active-directory-how-subscriptions-associated-directory.md)に関するページを参照してください。
+* [認証の基本](./authentication-vs-authorization.md)について説明します。
+* サブスクリプションと Azure AD テナントの関係について詳しくは、「[Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する](../fundamentals/active-directory-how-subscriptions-associated-directory.md)」を参照してください。

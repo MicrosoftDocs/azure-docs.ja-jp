@@ -6,18 +6,18 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
-ms.openlocfilehash: e5595620a2f888b06ad5b35d2e8a008f23861463
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 41e090b9e1d4c091bd3972afd296c5751e6b8c58
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81725896"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082717"
 ---
 # <a name="feature-list"></a>機能一覧 #
 テスト済みの機能とサポートされていない機能の一覧を次に示します。
 
-|                                         | テスト済み | 一部テスト済み | テストされていない | サポートされていない | 注                                                                                                                |
-|:----------------------------------------|--------|------------------|----------|-------------|:---------------------------------------------------------------------------------------------------------------------|
+| 特徴量 | テスト済み | 一部テスト済み | テストされていない | サポートされていない | 注 |
+| ------- | ------ | ---------------- | -------- | ----------- | ----- |
 | 再生                                |        |                  |          |             |                                                                                                                      |
 | 基本的なオンデマンド再生                | X      |                  |          |             | Azure Media Services からのストリームのみをサポート                                                                      |
 | 基本的なライブ再生                     | X      |                  |          |             | Azure Media Services からのストリームのみをサポート                                                                      |

@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Screencast-O-Matic の統合 | Microsoft Docs
 description: Azure Active Directory と Screencast-O-Matic の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 525ad47d-5488-40e2-aeaf-ae6183745682
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/15/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc887e95b6fa6f8b17fbbb3dbaae5105385a07fa
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e56684c30d243e0b7848355234fef896ccd220ce
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74132146"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543297"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-screencast-o-matic"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Screencast-O-Matic の統合
 

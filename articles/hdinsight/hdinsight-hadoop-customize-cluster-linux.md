@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: f78157fc0873787ce13ed4e9e62ebfd3d3271d5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 383c64c585f05869e1d01b5c99693fcf560cdedc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192078"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006673"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>スクリプト アクションを使用して Azure HDInsight クラスターをカスタマイズする
 
@@ -110,10 +110,12 @@ Azure HDInsight には、クラスターをカスタマイズするためにカ�
 
 クラスターにスクリプトを適用すると、クラスターの状態は**実行中**から**承認済み**に変わります。 その後、**HDInsight 構成**に変化し、最後に、正常なスクリプトは**実行中**に戻ります。 スクリプトの状態はスクリプト アクションの履歴に記録されます。 この情報は、スクリプトが成功したか失敗したかを示します。 たとえば、`Get-AzHDInsightScriptActionHistory` PowerShell コマンドレットでは、スクリプトの状態が示されます。 次のテキストのような情報が返されます。
 
-    ScriptExecutionId : 635918532516474303
-    StartTime         : 8/14/2017 7:40:55 PM
-    EndTime           : 8/14/2017 7:41:05 PM
-    Status            : Succeeded
+```output
+ScriptExecutionId : 635918532516474303
+StartTime         : 8/14/2017 7:40:55 PM
+EndTime           : 8/14/2017 7:41:05 PM
+Status            : Succeeded
+```
 
 > [!IMPORTANT]  
 > クラスターが作成された後で、クラスターのユーザー、管理者、パスワードを変更した場合、このクラスターに対してスクリプト アクションを実行すると失敗する可能性があります。 worker ノードを対象とする保存済みスクリプト アクションがある場合、クラスターのサイズを変更すると、スクリプトは失敗する可能性があります。
@@ -193,7 +195,7 @@ HDInsight は、HDInsight クラスターで次のコンポーネントをイン
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>クラスターの作成時に Azure PowerShell からスクリプト アクションを使用する
 
-このセクションでは、[Add-AzHDInsightScriptAction](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightscriptaction) コマンドレットを使用して、クラスターのカスタマイズを行うスクリプトを呼び出します。 始める前に、Azure PowerShell をインストールして構成します。 これらの PowerShell コマンドを使用するには、[Az モジュール](https://docs.microsoft.com/powershell/azure/overview)が必要です。
+このセクションでは、[Add-AzHDInsightScriptAction](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightscriptaction) コマンドレットを使用して、クラスターのカスタマイズを行うスクリプトを呼び出します。 始める前に、Azure PowerShell をインストールして構成します。 これらの PowerShell コマンドを使用するには、[Az モジュール](https://docs.microsoft.com/powershell/azure/)が必要です。
 
 次のスクリプトでは、PowerShell を使用してクラスターを作成するときに、スクリプト アクションを適用する方法を示します。
 
@@ -239,18 +241,20 @@ HDInsight .NET SDK では、.NET アプリケーションから HDInsight を簡
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-azure-powershell"></a>実行中のクラスターに Azure PowerShell からスクリプト アクションを適用する
 
-これらの PowerShell コマンドを使用するには、[Az モジュール](https://docs.microsoft.com/powershell/azure/overview)が必要です。 次の例では、実行中のクラスターにスクリプト アクションを適用する方法を示します。
+これらの PowerShell コマンドを使用するには、[Az モジュール](https://docs.microsoft.com/powershell/azure/)が必要です。 次の例では、実行中のクラスターにスクリプト アクションを適用する方法を示します。
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/use-script-action/use-script-action.ps1?range=105-117)]
 
 操作が完了すると、次のようなテキストが表示されます。
 
-    OperationState  : Succeeded
-    ErrorMessage    :
-    Name            : Giraph
-    Uri             : https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh
-    Parameters      :
-    NodeTypes       : {HeadNode, WorkerNode}
+```output
+OperationState  : Succeeded
+ErrorMessage    :
+Name            : Giraph
+Uri             : https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh
+Parameters      :
+NodeTypes       : {HeadNode, WorkerNode}
+```
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-the-azure-cli"></a>実行中のクラスターに Azure CLI からスクリプト アクションを適用する
 

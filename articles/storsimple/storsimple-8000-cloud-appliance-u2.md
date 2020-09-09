@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 01ce952ea774ba852c83d0d6aa3fe38d5dfd677e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 219e2b77a0f6f30307c43f006fcdd3828d3c8fbf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232243"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021377"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Azure での StorSimple Cloud Appliance のデプロイと管理 (Update 3 以降)
 
@@ -84,7 +84,7 @@ StorSimple Cloud Appliance と StorSimple 物理デバイスの主な相違点�
 * クラウド アプライアンス用に、[Azure の仮想ネットワークを構成](../virtual-network/manage-virtual-network.md#create-a-virtual-network)します。 Premium Storage を使用している場合は、Premium Storage をサポートする Azure リージョンに仮想ネットワークを作成する必要があります。 Premium Storage リージョンとは、[リージョン別の Azure サービスの一覧](https://azure.microsoft.com/regions/services/)の "Disk Storage" 行に該当しているリージョンです。
 * 独自の DNS サーバー名を指定する代わりに、Azure に用意されている既定の DNS サーバーを使用することをお勧めします。 DNS サーバー名が有効でない場合または DNS サーバーが IP アドレスを正しく解決できない場合、クラウド アプライアンスの作成は失敗します。
 * ポイント対サイトおよびサイト間を必要に応じて選ぶことができますが、必須ではありません。 必要に応じてこれらのオプションを構成することで、より高度なシナリオを実現することができます。
-* クラウド アプライアンスによって公開されたボリュームを使用できる [Azure Virtual Machines](../virtual-machines/virtual-machines-windows-quick-create-portal.md) (ホスト サーバー) を仮想ネットワークに作成できます。 これらのサーバーは次の要件を満たしている必要があります。
+* クラウド アプライアンスによって公開されたボリュームを使用できる [Azure Virtual Machines](../virtual-machines/windows/quick-create-portal.md) (ホスト サーバー) を仮想ネットワークに作成できます。 これらのサーバーは次の要件を満たしている必要があります。
 
   * Windows または Linux の VM が実行され、iSCSI イニシエーター ソフトウェアがインストールされていること。
   * クラウド アプライアンスと同じ仮想ネットワークで実行されていること。

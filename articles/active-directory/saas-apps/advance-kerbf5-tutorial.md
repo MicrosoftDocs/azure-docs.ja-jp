@@ -1,29 +1,24 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と F5 の統合 | Microsoft Docs
+title: チュートリアル:Azure Active Directory シングル サインオンと F5 の統合 | Microsoft Docs
 description: Azure Active Directory と F5 の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9c5fb47a-1c5d-437a-b4c1-dbf739eaf5e3
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 984fd0c7946a50922315269c87e08b1c35b74348
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2e0e727e73fa1eff21a4b2e481738be49306676a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74074753"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542983"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と F5 の統合
+# <a name="tutorial-azure-active-directory-ad-single-sign-on-sso-integration-with-f5"></a>チュートリアル:Azure Active Directory (AD) シングル サインオン (SSO) と F5 の統合
 
 このチュートリアルでは、F5 と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と F5 を統合すると、次のことができます。
 
@@ -281,7 +276,7 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
 1. 既定の SAML 属性の完全な一覧を次に示します。 GivenName は、次の文字列を使用して表されます。
 `session.saml.last.attr.name.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
 
-| | |
+| Session | 属性 |
 | -- | -- |
 | eb46b6b6.session.saml.last.assertionID | `<TENANT ID>` |
 | eb46b6b6.session.saml.last.assertionIssueInstant  | `<ID>` |

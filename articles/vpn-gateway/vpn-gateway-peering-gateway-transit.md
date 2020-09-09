@@ -1,20 +1,20 @@
 ---
 title: 仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成する
-description: 仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成します。
+description: 仮想ネットワーク ピアリングのゲートウェイ転送を構成して、接続目的で 2 つの Azure 仮想ネットワークを 1 つにシームレスに接続します。
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: yushwang
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: c243c6ded4057c9e4ac63345f300f3b3b690b363
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: b5649c804cb21a221ca287711380c91846f55306
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798938"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031696"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成する
 

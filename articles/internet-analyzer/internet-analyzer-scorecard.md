@@ -4,15 +4,15 @@ description: Azure Internet Analyzer に関する FAQ。
 services: internet-analyzer
 author: mattcalder
 ms.service: internet-analyzer
-ms.topic: guide
+ms.topic: how-to
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: a05c704f62d93bdc110d8a5943dd266ca22eb5f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5ed8621fbfd1528bfffeaa986fa9c2e17c19f82b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73510300"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84744036"
 ---
 # <a name="interpreting-your-scorecard"></a>スコアカードの解釈
 

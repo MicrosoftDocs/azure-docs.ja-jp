@@ -1,6 +1,6 @@
 ---
-title: Azure RBAC と REST API を使用してロールの割り当てを一覧表示する
-description: Azure ロールベースのアクセス制御 (RBAC) と REST API を使用して、ユーザー、グループ、サービス プリンシパル、およびマネージド ID のアクセスを決定する方法について説明します。
+title: REST API を使用して Azure でのロールの割り当てを一覧表示する - Azure RBAC
+description: REST API と Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、ユーザー、グループ、サービス プリンシパル、またはマネージド ID がアクセスできるリソースを決定する方法について説明します。
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -11,18 +11,18 @@ ms.service: role-based-access-control
 ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 03/19/2020
+ms.topic: how-to
+ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a494e7fd4c9fb79faa6a1d8cb2c3c871796ccdc5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 634e1111c9374a1749e7dbb0666740ce2833a688
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062152"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84790978"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-the-rest-api"></a>Azure RBAC と REST API を使用してロールの割り当てを一覧表示する
+# <a name="list-azure-role-assignments-using-the-rest-api"></a>REST API を使用して Azure でのロールの割り当てを一覧表示する
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]この記事では、REST API を使用してロールの割り当てを一覧表示する方法を説明します。
 
@@ -31,7 +31,7 @@ ms.locfileid: "80062152"
 
 ## <a name="list-role-assignments"></a>ロールの割り当ての一覧表示
 
-RBAC でアクセス権を一覧表示するには、ロールの割り当てを一覧表示します。 ロールの割り当てを一覧表示するには、いずれかの[ロールの割り当て - 一覧表示](/rest/api/authorization/roleassignments/list) REST API を使用します。 結果を絞り込むには、スコープと任意のフィルターを指定します。
+Azure RBAC でアクセス権を一覧表示するには、ロールの割り当てを一覧表示します。 ロールの割り当てを一覧表示するには、いずれかの[ロールの割り当て - 一覧表示](/rest/api/authorization/roleassignments/list) REST API を使用します。 結果を絞り込むには、スコープと任意のフィルターを指定します。
 
 1. 次の要求から開始します。
 
@@ -61,7 +61,36 @@ RBAC でアクセス権を一覧表示するには、ロールの割り当てを
     > | `$filter=atScope()+and+assignedTo('{objectId}')` | 指定したユーザーまたはサービス プリンシパルを対象に、指定したスコープでロールの割り当てを一覧表示します。 |
     > | `$filter=principalId+eq+'{objectId}'` | 指定したユーザー、グループ、またはサービス プリンシパルを対象にロールの割り当てを一覧表示します。 |
 
+次の要求は、サブスクリプション スコープで指定されたユーザーのすべてのロールの割り当てを一覧表示します。
+
+```http
+GET https://management.azure.com/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()+and+assignedTo('{objectId1}')
+```
+
+出力例を次に示します。
+
+```json
+{
+    "value": [
+        {
+            "properties": {
+                "roleDefinitionId": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions/2a2b9908-6ea1-4ae2-8e65-a410df84e7d1",
+                "principalId": "{objectId1}",
+                "scope": "/subscriptions/{subscriptionId1}",
+                "createdOn": "2019-01-15T21:08:45.4904312Z",
+                "updatedOn": "2019-01-15T21:08:45.4904312Z",
+                "createdBy": "{createdByObjectId1}",
+                "updatedBy": "{updatedByObjectId1}"
+            },
+            "id": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId1}",
+            "type": "Microsoft.Authorization/roleAssignments",
+            "name": "{roleAssignmentId1}"
+        }
+    ]
+}
+```
+
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure RBAC と REST API を使用してロールの割り当てを追加または削除する](role-assignments-rest.md)
+- [REST API を使用して Azure のロールの割り当てを追加または削除する](role-assignments-rest.md)
 - [Azure REST API リファレンス](/rest/api/azure/)

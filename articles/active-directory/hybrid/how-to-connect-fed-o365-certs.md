@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89de1495dc6bb411d5d43986177f11abb016cf15
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: f0c8134cdb72f8bff74fa68dff81fc9d6f1f5ccc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82200889"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830453"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Office 365 および Azure Active Directory 用のフェデレーション証明書の更新
 ## <a name="overview"></a>概要
@@ -62,7 +62,9 @@ Azure AD は、フェデレーション メタデータを監視し、その結�
 ### <a name="step-1-check-the-autocertificaterollover-state"></a>手順 1:AutoCertificateRollover の状態を確認する
 AD FS サーバーで PowerShell を開きます。 AutoCertificateRollover の値が True に設定されていることを確認します。
 
-    Get-Adfsproperties
+```azurepowershell-interactive
+Get-Adfsproperties
+```
 
 ![AutoCertificateRollover](./media/how-to-connect-fed-o365-certs/autocertrollover.png)
 
@@ -78,16 +80,22 @@ AD FS Server で MSOnline PowerShell プロンプトを開き、Azure AD に接�
 > 
 >
 
-    Install-Module MSOnline
+```azurepowershell-interactive
+Install-Module MSOnline
+```
 
 MSOnline PowerShell-Module を使用して Azure AD に接続します。
 
-    Import-Module MSOnline
-    Connect-MsolService
+```azurepowershell-interactive
+Import-Module MSOnline
+Connect-MsolService
+```
 
 AD FS と Azure AD との間の信頼関係のプロパティで証明書が構成されていることを特定のドメインを指定して確認します。
 
-    Get-MsolFederationProperty -DomainName <domain.name> | FL Source, TokenSigningCertificate
+```azurepowershell-interactive
+Get-MsolFederationProperty -DomainName <domain.name> | FL Source, TokenSigningCertificate
+```
 
 ![Get-MsolFederationProperty](./media/how-to-connect-fed-o365-certs/certsync.png)
 

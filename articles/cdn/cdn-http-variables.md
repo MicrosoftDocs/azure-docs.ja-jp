@@ -1,6 +1,6 @@
 ---
 title: Azure CDN ルール エンジンの HTTP 変数 | Microsoft Docs
-description: HTTP 変数を使用すると、HTTP 要求と応答のメタデータを取得できます。
+description: 一部のルール エンジン機能に関して、HTTP 要求および応答メタデータを取得できる HTTP 変数について説明します。 要求と応答を変更するにはメタデータを使用します。
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
-ms.openlocfilehash: b9ced5d4a81effcd73e0243d09bb83ed0fe7667c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a2d9fc98ba6f514afbd88e543a859a69e0fc6c6b
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253698"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192672"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN ルール エンジンの HTTP 変数
 HTTP 変数は、HTTP 要求と応答のメタデータを取得するための手段を提供します。 このメタデータを使用して、要求または応答を動的に変更できます。 HTTP 変数の使用は、次のルール エンジンの機能に限定されています。
 
-- [Cache-Key Rewrite (キャッシュキー書き換え)](cdn-verizon-premium-rules-engine-reference-features.md#cache-key-rewrite)
-- [Modify Client Request Header (クライアント要求ヘッダーの修正)](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-request-header)
-- [Modify Client Response Header (クライアント応答ヘッダーの修正)](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-response-header)
-- [URL Redirect (URL リダイレクト)](cdn-verizon-premium-rules-engine-reference-features.md#url-redirect)
-- [URL Rewrite (URL 書き換え)](cdn-verizon-premium-rules-engine-reference-features.md#url-rewrite)
+- [Cache-Key Rewrite (キャッシュキー書き換え)](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Rewrite.htm)
+- [Modify Client Request Header (クライアント要求ヘッダーの修正)](https://docs.vdms.com/cdn/Content/HRE/F/Modify-Client-Request-Header.htm)
+- [Modify Client Response Header (クライアント応答ヘッダーの修正)](https://docs.vdms.com/cdn/Content/HRE/F/Modify-Client-Response-Header.htm)
+- [URL Redirect (URL リダイレクト)](https://docs.vdms.com/cdn/Content/HRE/F/URL-Redirect.htm)
+- [URL Rewrite (URL 書き換え)](https://docs.vdms.com/cdn/Content/HRE/F/URL-Rewrite.htm)
 
 ## <a name="definitions"></a>定義
 次の表で、サポートされている HTTP 変数について説明します。 GEO メタデータ (たとえば、郵便番号) が特定の要求に利用できない場合は、空白の値が返されます。
@@ -40,7 +40,7 @@ HTTP 変数は、HTTP 要求と応答のメタデータを取得するための�
 | 市区町村 (要求者) | %{geo_city} | 要求者の市区町村を示します。 | Los Angeles |
 | 大陸 (要求者) | %{geo_continent} | 要求者の大陸を省略形で示します。 <br />有効な値は次のとおりです。 <br />AF:アフリカ<br />AS:アジア<br />EU:ヨーロッパ<br />NA:北米<br />OC:オセアニア<br />SA:南アメリカ<br /><br />**非推奨:** %{virt_dst_continent}。 <br />%{geo_continent} を優先して、この変数は非推奨となりました。 <br />この非推奨の変数を使用するルールは今後も正常に機能しますが、更新して新しい変数を使用する必要があります。| 該当なし |
 | Cookie 値 | %{cookie_Cookie} | Cookie という語で識別される Cookie キーに対応する値を返します。 | 使用例: <br />%{cookie__utma}<br /><br />値の例:<br />111662281.2.10.1222100123 |
-| 国 (要求者) | %{geo_country} | 国コードによって配信元の要求者の国を示します。 <br />**非推奨:** %{virt_dst_country}。 <br /><br />%{geo_country} を優先して、この変数は非推奨となりました。 この非推奨の変数を使用するルールは今後も正常に機能しますが、更新して新しい変数を使用する必要があります。 | US |
+| 国および地域 (要求者) | %{geo_country} | 国および地域コードによって配信元の要求者の国および地域を示します。 <br />**非推奨:** %{virt_dst_country}。 <br /><br />%{geo_country} を優先して、この変数は非推奨となりました。 この非推奨の変数を使用するルールは今後も正常に機能しますが、更新して新しい変数を使用する必要があります。 | US |
 | 指定の市場地域 (要求者) | %{geo_dma_code} |要求者のメディア市場をその地域コードによって示します。 <br /><br />このフィールドは、米国から送信される要求のみに適用されます。| 745 |
 | HTTP 要求メソッド | %{request_method} | HTTP 要求メソッドを示します。 | GET |
 | HTTP 状態コード | %{status} | 応答の HTTP 状態コードを示します。 | 200 |
@@ -187,7 +187,7 @@ https:\//www.mydomain.com/mobile/marketing/proposal.htm
 
 次の表で、この構文の動作方法を示します。
 
-| 構文例 | 結果 | |
+| 構文例 | 結果 | 説明 |
 | ------------- | ------- | --- |
 | %{request_uri#/800001}/customerorigin | /customerorigin/myorigin/marketing/product.html?language=en-US | 変数がパターンで始まっているため、置き換えられました。 |
 | %{request_uri%html}htm | /800001/myorigin/marketing/product.html?language=en-US | 変数がパターンで終わっていないため、変更はありませんでした。|

@@ -190,7 +190,7 @@
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: ラーニング パス
-      href: 'https://azure.microsoft.com/documentation/learning-paths/cloud-services/'
+      href: /learn/paths/azure-fundamentals/
     - name: Microsoft Q&A 質問ページ
       href: 'https://docs.microsoft.com/answers/topics/azure-cloud-services.html'
     - name: 価格

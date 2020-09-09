@@ -2,25 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と SCC LifeCycle の統合 | Microsoft Docs'
 description: Azure Active Directory と SCC LifeCycle の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9748bf38-ffc3-4d51-a1ae-207ce57104fa
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 83974a57fe080e76dee26781abaddf2b0b884839
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e2e2d3329db2474e331f13ad2c3fd9a74bd5b7b5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67091487"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547878"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scc-lifecycle"></a>チュートリアル: Azure Active Directory と SCC LifeCycle の統合
 
@@ -109,10 +105,8 @@ SCC LifeCycle で Azure AD シングル サインオンを構成するには、�
 
     b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。
     
-    | |
-    |--|
-    | `https://bs1.scc.com/<entity>`|
-    | `https://lifecycle.scc.com/<entity>`|
+    - `https://bs1.scc.com/<entity>`
+    - `https://lifecycle.scc.com/<entity>`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[SCC LifeCycle クライアント サポート チーム](mailto:lifecycle.support@scc.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

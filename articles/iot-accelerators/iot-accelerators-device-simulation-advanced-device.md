@@ -12,12 +12,13 @@ ms.custom:
 - mvc
 - amqp
 - mqtt
-ms.openlocfilehash: c568dddcbbf57ebd6ed5906bb83af01a84dafa41
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+- devx-track-javascript
+ms.openlocfilehash: b424ea01d8283963c49d899a97120c9132d862f8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81683824"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422540"
 ---
 # <a name="create-an-advanced-device-model"></a>高度なデバイス モデルを作成する
 
@@ -37,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure サブスクリプションの資格情報を使用してサインインするように求められる場合があります。
 
-次に、**Azure での IoT デバイス シミュレーションのデプロイと実行**に関するクイック スタートでデプロイしたデバイス シミュレーションのタイルの [[起動]](quickstart-device-simulation-deploy.md) をクリックします。
+次に、[Azure での IoT デバイス シミュレーションのデプロイと実行](quickstart-device-simulation-deploy.md)に関するクイック スタートでデプロイしたデバイス シミュレーションのタイルの **[起動]** をクリックします。
 
 ## <a name="device-models"></a>デバイス モデル
 
@@ -59,7 +60,7 @@ JSON のデバイス定義ファイルと一連の JavaScript ファイルを使
 各デバイス定義ファイルには、次の情報を含む、シミュレートされたデバイス モデルの詳細が含まれています。
 
 * デバイス モデル名: 文字列。
-* プロトコル: AMQP | MQTT | HTTP。
+* プロトコル:AMQP | MQTT | HTTP。
 * デバイスの初期状態。
 * デバイス状態の更新頻度。
 * デバイス状態を更新するために使用する JavaScript ファイル。
@@ -166,7 +167,7 @@ IoT デバイスは、さまざまなプロトコルを使用して接続でき�
 * バイナリ - base64 を使用してシリアル化
 * Text
 * Boolean
-* 整数
+* Integer
 * Double
 * DateTime
 

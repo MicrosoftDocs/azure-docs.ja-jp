@@ -7,16 +7,17 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 02/11/2019
+ms.topic: how-to
+ms.date: 07/30/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c5ef550af0c7e19531ea19093ea937880f7dcf14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c7f0ead3a2f93d7f390106b8e7471d58b709023
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78185643"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87481565"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でパスワードの複雑さの要件を構成する
 
@@ -40,7 +41,7 @@ Azure Active Directory B2C (Azure AD B2C) では、アカウントの作成時�
 1. [Azure portal](https://portal.azure.com) にサインインします。
 2. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 3. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
-4. **[ユーザー フロー (ポリシー)]** を選択します。
+4. **[ユーザー フロー]** を選択します。
 2. ユーザー フローを選択し、 **[プロパティ]** をクリックします。
 3. **[パスワードの複雑さ]** で、このユーザー フローのパスワードの複雑さを **[シンプル]** 、 **[強]** 、 **[カスタム]** のいずれかに変更します。
 

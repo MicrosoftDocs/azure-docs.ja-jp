@@ -4,20 +4,20 @@ description: App Service の一般的なシナリオをピックアップした 
 tags: azure-service-management
 ms.assetid: 53e6a15a-370a-48df-8618-c6737e26acec
 ms.topic: sample
-ms.date: 12/12/2017
+ms.date: 07/07/2020
 ms.custom: mvc
-ms.openlocfilehash: 499bf25f06030ae9fc5c1f8381ef4cd6ff6873dc
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: beab87618b97da4e61b0525c0c5a6bdd134fb7f8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535623"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "86169444"
 ---
 # <a name="cli-samples-for-azure-app-service"></a>Azure App Service の CLI サンプル
 
 次の表には、Azure CLI を使用して構築された Bash スクリプトへのリンクが含まれています。
 
-| | |
+| スクリプト | 説明 |
 |-|-|
 |**アプリの作成**||
 | [アプリを作成し、FTP を使用してファイルをデプロイする](./scripts/cli-deploy-ftp.md?toc=%2fcli%2fazure%2ftoc.json)| App Service アプリを作成し、FTP を使用してファイルをデプロイします。 |
@@ -25,7 +25,8 @@ ms.locfileid: "81535623"
 | [GitHub からの継続的なデプロイでアプリを作成する](./scripts/cli-continuous-deployment-github.md?toc=%2fcli%2fazure%2ftoc.json)| App Service アプリを作成し、所有する GitHub リポジトリから継続的に発行します。 |
 | [アプリを作成してローカル Git リポジトリからコードをデプロイする](./scripts/cli-deploy-local-git.md?toc=%2fcli%2fazure%2ftoc.json) | App Service アプリを作成し、ローカル Git リポジトリからのコードのプッシュを構成します。 |
 | [アプリを作成してステージング環境にコードをデプロイする](./scripts/cli-deploy-staging-environment.md?toc=%2fcli%2fazure%2ftoc.json) | コードの変更をステージングするためのデプロイ スロットを備える App Service アプリを作成します。 |
-| [Docker コンテナーに ASP.NET Core アプリを作成する](./scripts/cli-linux-docker-aspnetcore.md?toc=%2fcli%2fazure%2ftoc.json)| Linux 上で App Service アプリを作成し、Docker Hub から Docker イメージを読み込みます。 |
+| [Docker コンテナーに ASP.NET Core アプリを作成する](./scripts/cli-linux-docker-aspnetcore.md?toc=%2fcli%2fazure%2ftoc.json) | Linux 上で App Service アプリを作成し、Docker Hub から Docker イメージを読み込みます。 |
+| [アプリを作成してプライベート エンドポイントで公開する](./scripts/cli-deploy-privateendpoint.md?toc=%2fcli%2fazure%2ftoc.json) | App Service アプリとプライベート エンドポイントを作成します |
 |**アプリケーションの構成**||
 | [アプリにカスタム ドメインをマップする](./scripts/cli-configure-custom-domain.md?toc=%2fcli%2fazure%2ftoc.json)| App Service アプリを作成し、カスタム ドメイン名をマップします。 |
 | [カスタム TLS/SSL 証明書をアプリにバインドする](./scripts/cli-configure-ssl-certificate.md?toc=%2fcli%2fazure%2ftoc.json)| App Service アプリを作成し、カスタム ドメイン名の TLS/SSL 証明書をバインドします。 |
@@ -35,7 +36,7 @@ ms.locfileid: "81535623"
 |**アプリの保護**||
 | [Azure Application Gateway との統合](./scripts/cli-integrate-app-service-with-application-gateway.md?toc=%2fcli%2fazure%2ftoc.json) | App Service アプリを作成し、サービス エンドポイントとアクセス制限を使用して Application Gateway と統合します。 |
 |**アプリのリソースへの接続**||
-| [アプリを SQL Database に接続する](./scripts/cli-connect-to-sql.md?toc=%2fcli%2fazure%2ftoc.json)| App Service アプリと SQL データベースを作成し、データベース接続文字列をアプリ設定に追加します。 |
+| [アプリを SQL Database に接続する](./scripts/cli-connect-to-sql.md?toc=%2fcli%2fazure%2ftoc.json)| App Service アプリと Azure SQL Database のデータベースを作成し、データベース接続文字列をアプリ設定に追加します。 |
 | [アプリをストレージ アカウントに接続する](./scripts/cli-connect-to-storage.md?toc=%2fcli%2fazure%2ftoc.json)| App Service アプリとストレージ アカウントを作成し、ストレージ接続文字列をアプリ設定に追加します。 |
 | [Azure Cache for Redis にアプリを接続する](./scripts/cli-connect-to-redis.md?toc=%2fcli%2fazure%2ftoc.json) | App Service アプリと Azure Cache for Redis を作成し、Redis の接続の詳細をアプリ設定に追加します。 |
 | [Cosmos DB にアプリを接続する](./scripts/cli-connect-to-documentdb.md?toc=%2fcli%2fazure%2ftoc.json) | App Service アプリと Cosmos DB を作成し、Cosmos DB の接続の詳細をアプリ設定に追加します。 |

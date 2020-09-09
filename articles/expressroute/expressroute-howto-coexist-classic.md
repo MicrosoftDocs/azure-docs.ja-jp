@@ -3,17 +3,17 @@ title: 'ExpressRoute と S2S VPN の共存する接続の構成: クラシック
 description: この記事では、クラシック デプロイ モデルにおいて、共存できる ExpressRoute 接続とサイト間 VPN 接続を構成する手順について説明します。
 documentationcenter: na
 services: expressroute
-author: charwen
+author: duongau
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2019
-ms.author: charwen
-ms.openlocfilehash: aba07e0a1dd8e7b1db8677907672d919ef034057
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: duau
+ms.openlocfilehash: 4291e0df9f3a99cb45d4f96d4a316f9bb29a9c79
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233763"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396150"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>ExpressRoute 接続とサイト間接続の共存の構成 (クラシック)
 > [!div class="op_single_selector"]
@@ -84,7 +84,7 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
 ## <a name="to-create-a-new-virtual-network-and-coexisting-connections"></a><a name="new"></a>新しい仮想ネットワークおよび共存する接続を作成するには
 この手順では、VNet を作成し、共存するサイト間接続と ExpressRoute 接続を作成します。
 
-1. Azure PowerShell コマンドレットの最新版をインストールする必要があります。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview) 」を参照してください。 この構成に使用するコマンドレットは、使い慣れたコマンドレットとは少し異なる場合があることにご注意ください。 必ず、これらの手順で指定されているコマンドレットを使用してください。 
+1. Azure PowerShell コマンドレットの最新版をインストールする必要があります。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/) 」を参照してください。 この構成に使用するコマンドレットは、使い慣れたコマンドレットとは少し異なる場合があることにご注意ください。 必ず、これらの手順で指定されているコマンドレットを使用してください。 
 2. 仮想ネットワークのスキーマを作成します。 構成スキーマの詳細については、「 [Azure Virtual Network の構成スキーマ](https://msdn.microsoft.com/library/azure/jj157100.aspx)」を参照してください。
    
     スキーマを作成する場合は、次の値を使用していることを確認します。
@@ -92,65 +92,77 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
    * 仮想ネットワークのゲートウェイ サブネットは /27 またはこれより短いプレフィックス (/26 や /25 など) にする必要があります。
    * ゲートウェイ接続の種類は "Dedicated" です。
      
-             <VirtualNetworkSite name="MyAzureVNET" Location="Central US">
-               <AddressSpace>
-                 <AddressPrefix>10.17.159.192/26</AddressPrefix>
-               </AddressSpace>
-               <Subnets>
-                 <Subnet name="Subnet-1">
-                   <AddressPrefix>10.17.159.192/27</AddressPrefix>
-                 </Subnet>
-                 <Subnet name="GatewaySubnet">
-                   <AddressPrefix>10.17.159.224/27</AddressPrefix>
-                 </Subnet>
-               </Subnets>
-               <Gateway>
-                 <ConnectionsToLocalNetwork>
-                   <LocalNetworkSiteRef name="MyLocalNetwork">
-                     <Connection type="Dedicated" />
-                   </LocalNetworkSiteRef>
-                 </ConnectionsToLocalNetwork>
-               </Gateway>
-             </VirtualNetworkSite>
+    ```xml
+    <VirtualNetworkSite name="MyAzureVNET" Location="Central US">
+      <AddressSpace>
+        <AddressPrefix>10.17.159.192/26</AddressPrefix>
+      </AddressSpace>
+      <Subnets>
+        <Subnet name="Subnet-1">
+          <AddressPrefix>10.17.159.192/27</AddressPrefix>
+        </Subnet>
+        <Subnet name="GatewaySubnet">
+          <AddressPrefix>10.17.159.224/27</AddressPrefix>
+          /Subnet>
+      </Subnets>
+      <Gateway>
+        <ConnectionsToLocalNetwork>
+          <LocalNetworkSiteRef name="MyLocalNetwork">
+            <Connection type="Dedicated" />
+          </LocalNetworkSiteRef>
+        </ConnectionsToLocalNetwork>
+      </Gateway>
+    </VirtualNetworkSite>
+    ```
 3. xml スキーマ ファイルを作成して構成したら、ファイルをアップロードします。 これにより、仮想ネットワークが作成されます。
    
     次のコマンドレットを使用してファイルをアップロードし、値を自身の値に置き換えます。
    
-        Set-AzureVNetConfig -ConfigurationPath 'C:\NetworkConfig.xml'
+    ```azurepowershell
+    Set-AzureVNetConfig -ConfigurationPath 'C:\NetworkConfig.xml'
+    ```
 4. <a name="gw"></a>ExpressRoute ゲートウェイを作成します。 GatewaySKU を *Standard*、*HighPerformance*、または *UltraPerformance* に指定し、GatewayType を *DynamicRouting* に指定します。
    
     次のサンプルを使用して、自身の値に置き換えます。
-   
-        New-AzureVNetGateway -VNetName MyAzureVNET -GatewayType DynamicRouting -GatewaySKU HighPerformance
+
+    ```azurepowershell
+    New-AzureVNetGateway -VNetName MyAzureVNET -GatewayType DynamicRouting -GatewaySKU HighPerformance
+    ```
 5. ExpressRoute ゲートウェイを ExpressRoute 回線にリンクします。 この手順が完了すると、オンプレミスのネットワークと Azure 間の接続が ExpressRoute 経由で確立されます。
    
-        New-AzureDedicatedCircuitLink -ServiceKey <service-key> -VNetName MyAzureVNET
+    ```azurepowershell
+    New-AzureDedicatedCircuitLink -ServiceKey <service-key> -VNetName MyAzureVNET
+    ```
 6. <a name="vpngw"></a>次に、サイト間 VPN ゲートウェイを作成します。 GatewaySKU を *Standard*、*HighPerformance*、または *UltraPerformance* にし、GatewayType を *DynamicRouting* にする必要があります。
    
-        New-AzureVirtualNetworkGateway -VNetName MyAzureVNET -GatewayName S2SVPN -GatewayType DynamicRouting -GatewaySKU  HighPerformance
+    ```azurepowershell
+    New-AzureVirtualNetworkGateway -VNetName MyAzureVNET -GatewayName S2SVPN -GatewayType DynamicRouting -GatewaySKU  HighPerformance
+    ```
    
     ゲートウェイ ID とパブリック IP を含む仮想ネットワーク ゲートウェイ設定を取得するには、`Get-AzureVirtualNetworkGateway` コマンドレットを使用します。
    
-        Get-AzureVirtualNetworkGateway
+    ```azurepowershell
+    Get-AzureVirtualNetworkGateway
    
-        GatewayId            : 348ae011-ffa9-4add-b530-7cb30010565e
-        GatewayName          : S2SVPN
-        LastEventData        :
-        GatewayType          : DynamicRouting
-        LastEventTimeStamp   : 5/29/2015 4:41:41 PM
-        LastEventMessage     : Successfully created a gateway for the following virtual network: GNSDesMoines
-        LastEventID          : 23002
-        State                : Provisioned
-        VIPAddress           : 104.43.x.y
-        DefaultSite          :
-        GatewaySKU           : HighPerformance
-        Location             :
-        VnetId               : 979aabcf-e47f-4136-ab9b-b4780c1e1bd5
-        SubnetId             :
-        EnableBgp            : False
-        OperationDescription : Get-AzureVirtualNetworkGateway
-        OperationId          : 42773656-85e1-a6b6-8705-35473f1e6f6a
-        OperationStatus      : Succeeded
+    GatewayId            : 348ae011-ffa9-4add-b530-7cb30010565e
+    GatewayName          : S2SVPN
+    LastEventData        :
+    GatewayType          : DynamicRouting
+    LastEventTimeStamp   : 5/29/2015 4:41:41 PM
+    LastEventMessage     : Successfully created a gateway for the following virtual network: GNSDesMoines
+    LastEventID          : 23002
+    State                : Provisioned
+    VIPAddress           : 104.43.x.y
+    DefaultSite          :
+    GatewaySKU           : HighPerformance
+    Location             :
+    VnetId               : 979aabcf-e47f-4136-ab9b-b4780c1e1bd5
+    SubnetId             :
+    EnableBgp            : False
+    OperationDescription : Get-AzureVirtualNetworkGateway
+    OperationId          : 42773656-85e1-a6b6-8705-35473f1e6f6a
+    OperationStatus      : Succeeded
+    ```
 7. ローカル サイト VPN ゲートウェイのエンティティを作成します。 このコマンドは、オンプレミスの VPN ゲートウェイを構成しません。 代わりに、パブリック IP やオンプレミスのアドレス空間などのローカル ゲートウェイ設定を指定できるため、Azure VPN ゲートウェイがこれに接続できます。
    
    > [!IMPORTANT]
@@ -160,7 +172,9 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
    
     次のサンプルを使用して、自身の値に置き換えます。
    
-        New-AzureLocalNetworkGateway -GatewayName MyLocalNetwork -IpAddress <MyLocalGatewayIp> -AddressSpace <MyLocalNetworkAddress>
+    ```azurepowershell
+    New-AzureLocalNetworkGateway -GatewayName MyLocalNetwork -IpAddress <MyLocalGatewayIp> -AddressSpace <MyLocalNetworkAddress>
+    ```
    
    > [!NOTE]
    > ローカル ネットワークに複数のルートがある場合は、それらすべてを配列として渡すことができます。  $MyLocalNetworkAddress = @("10.1.2.0/24","10.1.3.0/24","10.2.1.0/24")  
@@ -169,15 +183,17 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
 
     ゲートウェイ ID とパブリック IP を含む仮想ネットワーク ゲートウェイ設定を取得するには、`Get-AzureVirtualNetworkGateway` コマンドレットを使用します。 次の例を参照してください。
 
-        Get-AzureLocalNetworkGateway
+    ```azurepowershell
+    Get-AzureLocalNetworkGateway
 
-        GatewayId            : 532cb428-8c8c-4596-9a4f-7ae3a9fcd01b
-        GatewayName          : MyLocalNetwork
-        IpAddress            : 23.39.x.y
-        AddressSpace         : {10.1.2.0/24}
-        OperationDescription : Get-AzureLocalNetworkGateway
-        OperationId          : ddc4bfae-502c-adc7-bd7d-1efbc00b3fe5
-        OperationStatus      : Succeeded
+    GatewayId            : 532cb428-8c8c-4596-9a4f-7ae3a9fcd01b
+    GatewayName          : MyLocalNetwork
+    IpAddress            : 23.39.x.y
+    AddressSpace         : {10.1.2.0/24}
+    OperationDescription : Get-AzureLocalNetworkGateway
+    OperationId          : ddc4bfae-502c-adc7-bd7d-1efbc00b3fe5
+    OperationStatus      : Succeeded
+    ```
 
 
 1. ローカルの VPN デバイスを構成して新しいゲートウェイに接続します。 VPN デバイスを構成するときに、手順 6 で取得した情報を使用します。 VPN デバイス構成の詳細については、「 [VPN デバイスの構成](../vpn-gateway/vpn-gateway-about-vpn-devices.md)」を参照してください。
@@ -185,7 +201,9 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
    
     この例では、connectedEntityId がローカル ゲートウェイ ID です。これは、`Get-AzureLocalNetworkGateway` を実行すると見つけることができます。 `Get-AzureVirtualNetworkGateway` コマンドレットを使用すると、virtualNetworkGatewayId を見つけることができます。 この手順の後に、ローカル ネットワークと Azure 間の接続がサイト間 VPN 接続経由で確立されます。
 
-        New-AzureVirtualNetworkGatewayConnection -connectedEntityId <local-network-gateway-id> -gatewayConnectionName Azure2Local -gatewayConnectionType IPsec -sharedKey abc123 -virtualNetworkGatewayId <azure-s2s-vpn-gateway-id>
+    ```azurepowershell
+    New-AzureVirtualNetworkGatewayConnection -connectedEntityId <local-network-gateway-id> -gatewayConnectionName Azure2Local -gatewayConnectionType IPsec -sharedKey abc123 -virtualNetworkGatewayId <azure-s2s-vpn-gateway-id>
+    ```
 
 ## <a name="to-configure-coexisting-connections-for-an-already-existing-vnet"></a><a name="add"></a>既存の VNet で共存する接続を構成するには
 既存の仮想ネットワークがある場合は、ゲートウェイ サブネットのサイズを確認します。 ゲートウェイ サブネットが /28 または /29 の場合、まず仮想ネットワーク ゲートウェイを削除してから、ゲートウェイ サブネットのサイズを増やしてください。 このセクションの手順で、その方法を説明します。
@@ -197,13 +215,17 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
 > 
 > 
 
-1. Azure リソース マネージャー PowerShell コマンドレットの最新版をインストールする必要があります。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview) 」を参照してください。 この構成に使用するコマンドレットは、使い慣れたコマンドレットとは少し異なる場合があることにご注意ください。 必ず、これらの手順で指定されているコマンドレットを使用してください。 
+1. Azure リソース マネージャー PowerShell コマンドレットの最新版をインストールする必要があります。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/) 」を参照してください。 この構成に使用するコマンドレットは、使い慣れたコマンドレットとは少し異なる場合があることにご注意ください。 必ず、これらの手順で指定されているコマンドレットを使用してください。 
 2. 既存の ExpressRoute またはサイト間 VPN ゲートウェイを削除します。 次のコマンドレットを使用して、自身の値に置き換えます。
    
-        Remove-AzureVNetGateway –VnetName MyAzureVNET
+    ```azurepowershell
+    Remove-AzureVNetGateway –VnetName MyAzureVNET
+    ```
 3. 仮想ネットワークのスキーマをエクスポートします。 次の PowerShell コマンドレットを使用して、自身の値に置き換えます。
    
-        Get-AzureVNetConfig –ExportToFile "C:\NetworkConfig.xml"
+    ```azurepowershell
+    Get-AzureVNetConfig –ExportToFile "C:\NetworkConfig.xml"
+    ```
 4. ゲートウェイ サブネットが /27 またはこれより短いプレフィックス (/26 や /25 など) になるように、ネットワーク構成ファイルのスキーマを編集します。 次の例を参照してください。 
    
    > [!NOTE]
@@ -211,18 +233,22 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
    > 
    > 
    
-          <Subnet name="GatewaySubnet">
-            <AddressPrefix>10.17.159.224/27</AddressPrefix>
-          </Subnet>
+    ```xml
+    <Subnet name="GatewaySubnet">
+      <AddressPrefix>10.17.159.224/27</AddressPrefix>
+    </Subnet>
+    ```
 5. 以前のゲートウェイがサイト間 VPN であった場合は、接続の種類を **Dedicated**に変更する必要もあります。
    
-                 <Gateway>
-                  <ConnectionsToLocalNetwork>
-                    <LocalNetworkSiteRef name="MyLocalNetwork">
-                      <Connection type="Dedicated" />
-                    </LocalNetworkSiteRef>
-                  </ConnectionsToLocalNetwork>
-                </Gateway>
+    ```xml
+    <Gateway>
+      <ConnectionsToLocalNetwork>
+        <LocalNetworkSiteRef name="MyLocalNetwork">
+          <Connection type="Dedicated" />
+        </LocalNetworkSiteRef>
+      </ConnectionsToLocalNetwork>
+    </Gateway>
+    ```
 6. この時点では、VNet にゲートウェイがありません。 新しいゲートウェイを作成し、接続を完了するには、前述の [手順 4、ExpressRoute ゲートウェイの作成手順](#gw)に進みます。
 
 ## <a name="next-steps"></a>次のステップ

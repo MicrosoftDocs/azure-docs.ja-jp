@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 7f0f18e523368e85d9cea0206e98bb7b1a0e6165
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0c2f840333f066afaa22883fb0f5d67072a5c822
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81419376"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504867"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>クイック スタート:.NET SDK を使用してデータ ファクトリとパイプラインを作成する
 
@@ -47,9 +47,9 @@ ms.locfileid: "81419376"
 
 「*方法: リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する*」の各セクションの手順に従って、以下のタスクを実行します。
 
-1. 「[Azure Active Directory アプリケーションを作成する](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)」で、このチュートリアルで作成している .NET アプリケーションを表すアプリケーションを作成します。 サインオン URL については、この記事に示されているようにダミーの URL (`https://contoso.org/exampleapp`) を指定できます。
-2. 「[サインインするための値を取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)」で、**アプリケーション ID** と**テナント ID** を取得し、それらの値をメモしておいてください。このチュートリアルで後ほど使用します。 
-3. 「[証明書とシークレット](../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets)」で、**認証キー**を取得し、その値をメモしておいてください。このチュートリアルで後ほど使用します。
+1. 「[Azure Active Directory アプリケーションを作成する](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)」で、このチュートリアルで作成している .NET アプリケーションを表すアプリケーションを作成します。 サインオン URL については、この記事に示されているようにダミーの URL (`https://contoso.org/exampleapp`) を指定できます。
+2. 「[サインインするための値を取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)」で、**アプリケーション ID** と**テナント ID** を取得し、それらの値をメモしておいてください。このチュートリアルで後ほど使用します。 
+3. 「[証明書とシークレット](../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in)」で、**認証キー**を取得し、その値をメモしておいてください。このチュートリアルで後ほど使用します。
 4. 「[アプリケーションをロールに割り当てる](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)」で、アプリケーションがサブスクリプションにデータ ファクトリを作成できるように、サブスクリプション レベルでアプリケーションを**共同作成者**ロールに割り当てます。
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio プロジェクトを作成する

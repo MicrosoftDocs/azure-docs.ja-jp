@@ -4,15 +4,15 @@ description: この記事では、進行中のセッションを選択し、そ�
 services: bastion
 author: charwen
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/21/2020
 ms.author: charwen
-ms.openlocfilehash: 617ec30fc9b97e89b6ccd0de6255d65da94d7b63
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 5974ebe7960eec1ca3bb8610f66061395fea64d6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780443"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84744104"
 ---
 # <a name="session-monitoring-and-management-for-azure-bastion"></a>Azure Bastion のセッションの監視と管理
 

@@ -3,15 +3,15 @@ title: REST API を使用して Linux VM を作成する
 description: マネージド ディスクと SSH 認証を使用する Linux 仮想マシンを Azure REST API を使用して Azure 内に作成する方法を説明します。
 author: cynthn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 1594c030839cccdd48c4b032c6ad92f746f78e26
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6e5195f43991f4d40af57c1ab4b87aaca475b64
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78970273"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373404"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>SSH 認証を使用する Linux 仮想マシンを REST API で作成する
 
@@ -46,7 +46,7 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 | 要求ヘッダー   | 説明 |
 |------------------|-----------------|
 | *Content-Type:*  | 必須。 `application/json` を設定します。 |
-| *Authorization:* | 必須。 有効な `Bearer` [アクセス トークン](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)を設定します。 |
+| *Authorization:* | 必須。 有効な `Bearer` [アクセス トークン](/rest/api/azure/#authorization-code-grant-interactive-clients)を設定します。 |
 
 REST API 要求の操作の概要については、「[Components of a REST API request/response](/rest/api/azure/#components-of-a-rest-api-requestresponse)」(REST API 要求/応答のコンポーネント) を参照してください。
 
@@ -122,7 +122,7 @@ REST API 要求の操作の概要については、「[Components of a REST API 
 
 ## <a name="sending-the-request"></a>要求の送信
 
-この HTTP 要求を送信するために任意のクライアントを使用することができます。 また、 **[試してみる]** ボタンをクリックして、[ブラウザー内ツール](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate)を使用することもできます。
+この HTTP 要求を送信するために任意のクライアントを使用することができます。 また、 **[試してみる]** ボタンをクリックして、[ブラウザー内ツール](/rest/api/compute/virtualmachines/createorupdate)を使用することもできます。
 
 ### <a name="responses"></a>Responses
 
@@ -151,4 +151,4 @@ Azure REST API や他の管理ツール (Azure CLI や Azure PowerShell など) 
 - [Azure Compute プロバイダー REST API](/rest/api/compute/)
 - [Azure Rest API の開始](/rest/api/azure/)
 - [Azure CLI](/cli/azure/)
-- [Azure PowerShell モジュール](/powershell/azure/overview)
+- [Azure PowerShell モジュール](/powershell/azure/)

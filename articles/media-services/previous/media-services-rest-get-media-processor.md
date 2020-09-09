@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 3d7b3922c9bb7eb79cd6436ba1b265714678fcc8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ba625aa048360a4c201b91b4a5a4a7ca4dd6277b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76774906"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269507"
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>方法: メディア プロセッサ インスタンスを取得する
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [.NET](media-services-get-media-processor.md)
 > * [REST](media-services-rest-get-media-processor.md)
@@ -52,33 +55,37 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
 
 要求:
 
-    GET https://media.windows.net/api/MediaProcessors()?$filter=Name%20eq%20'Media%20Encoder%20Standard' HTTP/1.1
-    DataServiceVersion: 1.0;NetFx
-    MaxDataServiceVersion: 3.0;NetFx
-    Accept: application/json
-    Accept-Charset: UTF-8
-    User-Agent: Microsoft ADO.NET Data Services
-    Authorization: Bearer <token>
-    x-ms-version: 2.19
-    Host: media.windows.net
+```console
+GET https://media.windows.net/api/MediaProcessors()?$filter=Name%20eq%20'Media%20Encoder%20Standard' HTTP/1.1
+DataServiceVersion: 1.0;NetFx
+MaxDataServiceVersion: 3.0;NetFx
+Accept: application/json
+Accept-Charset: UTF-8
+User-Agent: Microsoft ADO.NET Data Services
+Authorization: Bearer <token>
+x-ms-version: 2.19
+Host: media.windows.net
+```
 
 応答:
 
-    . . .
+```console
+. . .
 
-    {  
-       "odata.metadata":"https://media.windows.net/api/$metadata#MediaProcessors",
-       "value":[  
-          {  
-             "Id":"nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56",
-             "Description":"Media Encoder Standard",
-             "Name":"Media Encoder Standard",
-             "Sku":"",
-             "Vendor":"Microsoft",
-             "Version":"1.1"
-          }
-       ]
-    }
+{  
+   "odata.metadata":"https://media.windows.net/api/$metadata#MediaProcessors",
+   "value":[  
+      {  
+         "Id":"nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56",
+         "Description":"Media Encoder Standard",
+         "Name":"Media Encoder Standard",
+         "Sku":"",
+         "Vendor":"Microsoft",
+         "Version":"1.1"
+      }
+   ]
+}
+```
 
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス

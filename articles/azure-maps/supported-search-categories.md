@@ -1,6 +1,6 @@
 ---
 title: 検索カテゴリ | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps でサポートされているカテゴリについて説明します。
+description: Azure Maps で、どのような検索カテゴリがサポートされているかについて説明します。 サポートされているすべてのカテゴリ コードと、それぞれが表す目的地の種類を調べます。
 author: sataneja
 ms.author: sataneja
 ms.date: 05/14/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 9dbcae6e3947576a7d2bc204c2a3a6fb2e95953d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9e910c38000fc4dbc454b68b752925df9145837
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76988290"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037679"
 ---
 # <a name="azure-maps-supported-categories"></a>Azure Maps でサポートされているカテゴリ
 
@@ -24,7 +24,7 @@ ms.locfileid: "76988290"
 | **カテゴリ コード** | **コードに一致するカテゴリ** |
 | --- | --- |
 | ACCESS\_GATEWAY | エアライン アクセス、防犯ゲート、駅へのアクセス、アクセス ゲートウェイ |
-| ADMINISTRATIVE\_DIVISION | 都道府県、4 次行政区分、1 次行政区分、過去の 3 次行政区分、4 次行政区分の所在地、2 次行政区分の所在地、依存政治的実体、人口集中場所、3 次行政区分の所在地、人口集中場所、2 次行政区分、1 次行政区分の所在地、行政区分、人口集中地域、歴史的な地域、歴史地区、過去の人口集中場所、イスラエルの入植、過去の 4 次行政区分、5 次行政区分、過去の 1 次行政区分、3 次行政区分、過去の政治的実体、過去の行政区分、政治的実体の政府の所在地、過去の 2 次行政区分、政治的実体の首都 |
+| ADMINISTRATIVE\_DIVISION | 都道府県、4 次行政区分、1 次行政区分、過去の 3 次行政区分、4 次行政区分の所在地、2 次行政区分の所在地、依存政治的実体、人口集中場所、3 次行政区分の所在地、人口集中場所、2 次行政区分、1 次行政区分の所在地、行政区分、人口集中地域、歴史的な地域、歴史地区、過去の人口集中場所、イスラエルの入植、過去の 4 次行政区分、5 次行政区分、過去の 1 次行政区分、3 次行政区分、過去の政治的実体、過去の行政区分、政治的実体の政府の所在地、過去の 2 次行政区分、政治的実体の首都/主要都市 |
 | ADVENTURE\_SPORTS\_VENUE | adventure sports venue |
 | AGRICULTURE | 園芸、一次生産者、農業、農場、農村、農場、家産、牧草地、共有地、水産養殖施設、農場、出漁区域、酪農場、フィールド |
 | AIRPORT | 私的機関、軍事機関、ヘリポート、閉鎖、中規模空港、大規模空港、小規模空港、飛行場、水上飛行機基地、公的機関、気球ポート、空港 |

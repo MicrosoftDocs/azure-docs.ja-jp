@@ -3,12 +3,12 @@ title: お使いの Azure および Red Hat OpenShift v4 クラスターの監�
 description: この記事では、Azure Monitor for containers でお使いの Azure Red Hat OpenShift および Red Hat OpenShift バージョン 4 クラスターの監視を停止する方法について説明します。
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 768c4db8d72778b555a4f343cf2e23b8fa861991
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf61457b9c8cff40eb3fee2c93c7184fbaae6db5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82196964"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091149"
 ---
 # <a name="how-to-stop-monitoring-your-azure-and-red-hat-openshift-v4-cluster"></a>お使いの Azure および Red Hat OpenShift v4 クラスターの監視を停止する方法
 
@@ -49,4 +49,4 @@ ms.locfileid: "82196964"
 
 ## <a name="next-steps"></a>次のステップ
 
-クラスターを監視するためだけに作成した Log Analytics ワークスペースが不要になった場合は、それを手動で削除する必要があります。 ワークスペースを削除する方法の詳細については、[Azure Log Analytics ワークスペースの削除](../../log-analytics/log-analytics-manage-del-workspace.md)に関するページを参照してください。
+クラスターを監視するためだけに作成した Log Analytics ワークスペースが不要になった場合は、それを手動で削除する必要があります。 ワークスペースを削除する方法の詳細については、[Azure Log Analytics ワークスペースの削除](../platform/delete-workspace.md)に関するページを参照してください。

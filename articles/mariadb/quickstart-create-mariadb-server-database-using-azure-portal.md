@@ -7,14 +7,14 @@ ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/19/2020
-ms.openlocfilehash: 698220a7f81dc5fb9d70d2aa65e96dfa199af444
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e5801f46745b3fda28af19c11e323b9497ebe98a
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80063838"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185249"
 ---
-# <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>Azure portal を使用した Azure Database for MariaDB サーバーの作成
+# <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>クイック スタート:Azure portal を使用した Azure Database for MariaDB サーバーの作成
 
 Azure Database for MariaDB は、高可用性 MariaDB データベースをクラウドで実行、管理、スケーリングするためのマネージド サービスです。 このクイック スタートでは、Azure portal を使用して 5 分程度で Azure Database for MariaDB サーバーを作成する方法について説明します。  
 

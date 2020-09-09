@@ -4,12 +4,12 @@ description: Azure Site Recovery サービスを使用して、別の Azure リ�
 ms.topic: quickstart
 ms.date: 03/27/2020
 ms.custom: mvc
-ms.openlocfilehash: e26c2a1f24a88dc979f4ec68de65afc618740c00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8681ccaac30402927005e5e8802d7da2bddc2c5c
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371849"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135708"
 ---
 # <a name="quickstart-set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>クイック スタート:Azure VM のセカンダリ Azure リージョンへのディザスター リカバリーの設定
 
@@ -22,7 +22,7 @@ ms.locfileid: "80371849"
 このチュートリアルを完了するには、Azure サブスクリプションと VM が必要です。
 
 - Azure アカウントとアクティブなサブスクリプションをお持ちでない場合は、[無料でアカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)できます。
-- 1 GB 以上の RAM を搭載した VM をお勧めします。 VM を作成する方法の[詳細](/azure/virtual-machines/windows/quick-create-portal)をご覧ください。
+- 1 GB 以上の RAM を搭載した VM をお勧めします。 VM を作成する方法の[詳細](../virtual-machines/windows/quick-create-portal.md)をご覧ください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 

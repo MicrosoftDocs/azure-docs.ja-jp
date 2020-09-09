@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 65aa83731be97b59a36a5baf60ea308690a0dcf8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 306d3a14d759ac73e78626a4c2ec6abc69d3df85
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297741"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515024"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>StorSimple デバイス マネージャー サービスを使用してストレージ アカウント資格情報を管理する
 

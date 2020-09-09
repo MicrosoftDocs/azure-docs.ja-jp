@@ -1,18 +1,18 @@
 ---
 title: Azure IoT Edge モジュールの技術アセットの準備 - Azure Marketplace
 description: Azure Marketplace に発行する前に、モノのインターネット (IoT) Edge モジュールの技術アセットが満たす必要のある技術的要件と構成要件について説明します。
-author: anbene
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/03/2020
-ms.openlocfilehash: fc35602b55e79f3351da0def800d2a2b2698e250
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: dec0711c4763983e520d247fd8b775b1810e0479
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856734"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324643"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>IoT Edge モジュールの技術アセットの準備
 
@@ -22,8 +22,8 @@ ms.locfileid: "82856734"
 
 IoT Edge モジュールは、IoT Edge デバイスで実行する Docker 互換コンテナーです。
 
-- IoT Edge モジュールの詳細については、[Azure IoT Edge モジュールを理解する](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules)を参照してください。
-- IoT Edge モジュールの開発を開始するには、[独自の IoT Edge モジュールを開発する](https://docs.microsoft.com/azure/iot-edge/module-development)を参照してください。
+- IoT Edge モジュールの詳細については、[Azure IoT Edge モジュールを理解する](../../iot-edge/iot-edge-modules.md)を参照してください。
+- IoT Edge モジュールの開発を開始するには、[独自の IoT Edge モジュールを開発する](../../iot-edge/module-development.md)を参照してください。
 
 ## <a name="technical-requirements"></a>技術的な要件
 
@@ -35,7 +35,7 @@ IoT Edge モジュールは、次のプラットフォーム オプションの�
 
 #### <a name="tier-1-platforms-supported-by-iot-edge"></a>IoT Edge によってサポートされるレベル 1 プラットフォーム
 
-IoT Edge でサポートされているすべてのレベル 1 プラットフォーム ([Azure IoT Edge サポート](https://docs.microsoft.com/azure/iot-edge/support)に記録されているもの) をサポートしなくてはなりません。 より良いカスタマー エクスペリエンスを提供するため、このオプションをお勧めします。 この基準を満たすモジュールが紹介されます。 このプラットフォーム オプションを使用するモジュールは、以下のことが必要です。
+IoT Edge でサポートされているすべてのレベル 1 プラットフォーム ([Azure IoT Edge サポート](../../iot-edge/support.md)に記録されているもの) をサポートしなくてはなりません。 より良いカスタマー エクスペリエンスを提供するため、このオプションをお勧めします。 この基準を満たすモジュールが紹介されます。 このプラットフォーム オプションを使用するモジュールは、以下のことが必要です。
 
 - [GitHub Manifest-tool](https://github.com/estesp/manifest-tool) でビルドされたマニフェスト タグである最新のタグとバージョン タグ (1.0.1 など) を指定します。
 
@@ -43,7 +43,7 @@ IoT Edge でサポートされているすべてのレベル 1 プラットフ�
 
 #### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>IoT Edge によってサポートされるレベル 1 プラットフォームのサブセット
 
-お使いになっているモジュールは、IoT Edge でサポートされているレベル 1 のプラットフォーム ([Azure IoT Edge サポート](https://docs.microsoft.com/azure/iot-edge/support)に記録されているもの) のサブセットを少なくとも 1 つサポートする必要があります。 このプラットフォーム オプションを使用するモジュールは、以下のことが必要です。
+お使いになっているモジュールは、IoT Edge でサポートされているレベル 1 のプラットフォーム ([Azure IoT Edge サポート](../../iot-edge/support.md)に記録されているもの) のサブセットを少なくとも 1 つサポートする必要があります。 このプラットフォーム オプションを使用するモジュールは、以下のことが必要です。
 
 - 複数のプラットフォームがサポートされている場合は、GitHub の [manifest-tool](https://github.com/estesp/manifest-tool) でビルドされたマニフェスト タグである最新のタグとバージョン タグ (1.0.1 など) を指定します。 マニフェスト タグは、1 つのプラットフォームのみがサポートされている場合は省略できます。
 - [パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace)でオファーの一覧タブを使用し、「**有用なリンク**」セクションのリンクを [Azure IoT Edge 認定デバイス カタログ](https://catalog.azureiotsolutions.com/)から少なくとも 1 つの IoT Edge デバイスに追加します。
@@ -139,8 +139,8 @@ IoT Module SDK は、実行中のモジュール インスタンスの数に関�
 
 ## <a name="host-module-in-azure-container-registry"></a>Azure Container Registry でモジュールをホストする
 
-IoT Edge モジュールを Azure Marketplace にアップロードするには、まず、これを [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) (ACR) でホストする必要があります。 モジュールには、マニフェスト タグによって参照されるイメージ タグなど、発行するすべてのタグを含める必要があります。 詳細については、「[Azure コンテナー レジストリを作成してコンテナー イメージをプッシュする](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-acr)」チュートリアルを参照してください。
+IoT Edge モジュールを Azure Marketplace にアップロードするには、まず、これを [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) (ACR) でホストする必要があります。 モジュールには、マニフェスト タグによって参照されるイメージ タグなど、発行するすべてのタグを含める必要があります。 詳細については、「[Azure コンテナー レジストリを作成してコンテナー イメージをプッシュする](../../container-instances/container-instances-tutorial-prepare-acr.md)」チュートリアルを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [IoT Edge モジュール プランの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation)
+- [IoT Edge モジュール プランの作成](azure-iot-edge-module-creation.md)

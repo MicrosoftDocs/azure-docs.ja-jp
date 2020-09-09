@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: pepogors
 ms.openlocfilehash: 5efdbd17db20e69ace33b379ddbb99b2c4a20e69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229291"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84701168"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>複数コンテナーのアプリケーション マニフェストとサービス マニフェストの例
 複数コンテナーの Service Fabric アプリケーションのアプリケーションとサービス マニフェストの例を次に示します。 これらの例の目的は、利用できる設定とその使用方法を示すことです。 これらのアプリケーションとサービス マニフェストは、[Windows Server 2016 コンテナー サンプル](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows) のマニフェストに基づいています。

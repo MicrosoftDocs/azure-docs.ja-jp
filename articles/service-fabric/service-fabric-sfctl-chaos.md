@@ -1,16 +1,16 @@
 ---
 title: Azure Service Fabric CLI - sfctl chaos
-description: Azure Service Fabric のコマンド ライン インターフェイスである sfctl について説明します。 chaos を管理するためのコマンドの一覧が含まれています。
+description: Azure Service Fabric のコマンド ライン インターフェイス、sfctl について説明します。 chaos を管理するためのコマンドの一覧が含まれています。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 6668446363361fbc6d24afc3d11a36a0b786667d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f59eb3296c27e64eb6a4644b2f455e3704381f49
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76906166"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260831"
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
 chaos テスト サービスの開始、停止、レポートを実行します。
@@ -21,7 +21,7 @@ chaos テスト サービスの開始、停止、レポートを実行します�
 | [schedule](service-fabric-sfctl-chaos-schedule.md) | chaos のスケジュールを取得および設定します。 |
 ## <a name="commands"></a>コマンド
 
-|command|説明|
+|コマンド|説明|
 | --- | --- |
 | events | 継続トークンまたは時間範囲に基づいて Chaos イベントの次のセグメントを取得します。 |
 | get | Chaos の状態を取得します。 |
@@ -83,7 +83,7 @@ Chaos が実行中かどうかを示す Chaos の状態、Chaos の実行に使�
 
 |引数|説明|
 | --- | --- |
-| --app-type-health-policy-map | 特定のアプリケーションの種類の異常なアプリケーションの最大割合の JSON でエンコードされた一覧。 各エントリは、キーとしてアプリケーションの種類名を指定し、値として指定したアプリケーションの種類のアプリケーションを評価するために使用される MaxPercentUnhealthyApplications を表す整数を指定します。 <br><br> 特定のアプリケーションの種類の異常なアプリケーションの最大の割合でマップを定義します。 各エントリは、キーとしてアプリケーションの種類名を指定し、値として指定したアプリケーションの種類のアプリケーションを評価するために使用される MaxPercentUnhealthyApplications を表す整数を指定します。 アプリケーションの種類の正常性ポリシー マップをクラスターの正常性評価時に使用して、特別なアプリケーションの種類を記述できます。 マップに含まれるアプリケーションの種類は、クラスターの正常性ポリシーで定義されているグローバルな MaxPercentUnhealthyApplications ではなく、マップで指定されている割合に対して評価されます。 マップで指定されているアプリケーションの種類のアプリケーションは、アプリケーションのグローバル プールに対してカウントされません。 たとえば、ある種類の一部のアプリケーションがクリティカルである場合、クラスター管理者はそのアプリケーションの種類のエントリをマップに追加し、値 0% を割り当てることができます (つまり、すべてのエラーは許容されません)。 他のすべてのアプリケーションは、20% に設定された MaxPercentUnhealthyApplications で評価して、多数のアプリケーション インスタンスのうち一部の障害を許容できます。 アプリケーションの種類の正常性ポリシー マップは、HealthManager/EnableApplicationTypeHealthEvaluation の構成エントリを使うアプリケーションの種類の正常性評価がクラスター マニフェストで有効になっている場合にのみ使われます。 |
+| --app-type-health-policy-map | 特定のアプリケーションの種類の異常なアプリケーションの最大割合の JSON でエンコードされたディクショナリ (キーと値) エントリ配列。 各ディクショナリ エントリは、キーとしてアプリケーションの種類名を指定し、指定したアプリケーションの種類のアプリケーションを評価するために使用される MaxPercentUnhealthyApplications を表す値の整数を指定します。 <br><br> 特定のアプリケーションの種類の異常なアプリケーションの最大の割合でマップを定義します。 アプリケーションの種類の正常性ポリシー マップをクラスターの正常性評価時に使用して、個別のアプリケーションの種類を記述できます。 マップに含まれるアプリケーションの種類は、クラスターの正常性ポリシーで定義されているグローバルな MaxPercentUnhealthyApplications ではなく、マップで指定されている割合に対して評価されます。 マップで指定されているアプリケーションの種類のアプリケーションは、アプリケーションのグローバル プールに対してカウントされません。 たとえば、ある種類の一部のアプリケーションがクリティカルである場合、クラスター管理者はそのアプリケーションの種類のエントリをマップに追加し、値 0% を割り当てることができます (すべてのエラーは許容されません)。 他のすべてのアプリケーションは、20% に設定された MaxPercentUnhealthyApplications で評価して、多数のアプリケーション インスタンスのうち一部の障害を許容できます。 アプリケーションの種類の正常性ポリシー マップは、HealthManager/EnableApplicationTypeHealthEvaluation の構成エントリを使うアプリケーションの種類の正常性評価がクラスター マニフェストで有効になっている場合にのみ使われます。 <br><br> JSON でエンコードされた文字列の例: [{\"key\": \"fabric:/Voting\", \"value\":\"0\"}] |
 | --chaos-target-filter | 2 つの文字列型キーを持つ JSON エンコードのディクショナリ。 2 つのキーは、NodeTypeInclusionList と ApplicationInclusionList です。 どちらのキーの値も、文字列のリストです。 chaos_target_filter では、対象を絞った Chaos 障害のためのすべてのフィルターが定義されています (たとえば、特定のノードの種類だけを障害にする、または特定のアプリケーションだけを障害にする)。 <br><br> chaos_target_filter が使われない場合、Chaos はすべてのクラスター エンティティを障害にします。 chaos_target_filter が使われた場合、Chaos は chaos_target_filter の指定を満たすエンティティのみを障害にします。 NodeTypeInclusionList と ApplicationInclusionList では、和集合セマンティクスのみが可能です。 NodeTypeInclusionList と ApplicationInclusionList の積集合を指定することはできません。 たとえば、"アプリケーションが特定のノードの種類上にある場合のみ障害を発生させる" と指定することはできません。 エンティティが NodeTypeInclusionList または ApplicationInclusionList のどちらかに含まれている時点で、ChaosTargetFilter を使用してエンティティを除外することはできません。 applicationX が ApplicationInclusionList に含まれていない場合でも、そのアプリケーションが NodeTypeInclusionList に含まれている nodeTypeY のノード上にあるという理由で、何らかの混乱の反復処理中にそのアプリケーションで障害が発生する可能性があります。 NodeTypeInclusionList と ApplicationInclusionList の両方が空の場合は、ArgumentException がスローされます。 すべての種類の障害 (ノードの再起動、コード パッケージの再起動、レプリカの削除、レプリカの再起動、プライマリの移動、およびセカンダリの移動) は、指定されたノードの種類のノードで有効になります。 ノードの種類 (たとえば NodeTypeX) が NodeTypeInclusionList に含まれていない場合、ノード レベルの障害 (ノードの再起動など) が NodeTypeX のノードで有効になることはありませんが、ApplicationInclusionList 内のアプリケーションが NodeTypeX のノードに存在する場合、コード パッケージ障害とレプリカ障害が NodeTypeX のノードで有効になる可能性があります。 この一覧には最大 100 種のノードの種類を含めることができ、この数を増やすには、MaxNumberOfNodeTypesInChaosEntityFilter 構成をアップグレードする必要があります。 指定されたアプリケーションのサービスに属すすべてのレプリカは、混乱によって誘発されるレプリカ障害 (レプリカの再起動、レプリカの削除、プライマリの移動、およびセカンダリの移動) を受け入れます。 コード パッケージがこれらのアプリケーションのレプリカをホストしている場合のみ、混乱は、コード パッケージを再起動できます。 アプリケーションがこの一覧に含まれていない場合でも、NodeTypeInclusionList に含まれるノードの種類のノード上にアプリケーションが存在する場合は、混乱の反復処理によって障害が発生する可能性があります。 ただし、applicationX が配置制約によって nodeTypeY に関連付けられているときに、applicationX が ApplicationInclusionList になく、nodeTypeY が NodeTypeInclusionList にない場合、applicationX で障害が発生することはありません。 この一覧には最大 1,000 個のアプリケーションの名前を含めることができ、この数を増やすには、MaxNumberOfApplicationsInChaosEntityFilter 構成をアップグレードする必要があります。 |
 | --context | (文字列, 文字列) 型のキーと値のペアの JSON エンコード マップ。 マップを使用して、混乱の実行に関する情報を記録できます。 このようなペアが 100 を超えることはできませんし、各文字列 (キーまたは値) の最大は 4095 文字です。 このマップは、オプションで特定の実行に関するコンテキストを格納するために、混乱実行を開始するユーザーによって設定されます。 |
 | --disable-move-replica-faults | move primary と move secondary の障害を無効にします。 |
@@ -131,4 +131,4 @@ Chaos が新しい障害を実行するのを停止します。 転送中の障�
 
 ## <a name="next-steps"></a>次のステップ
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。
-- [サンプル スクリプト](/azure/service-fabric/scripts/sfctl-upgrade-application)を使用して、Service Fabric CLI の使用方法を学習します。
+- [サンプル スクリプト](./scripts/sfctl-upgrade-application.md)を使用して、Service Fabric CLI の使用方法を学習します。

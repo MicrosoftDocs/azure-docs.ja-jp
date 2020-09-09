@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 8d7fa8b8119ddf1769b36bcb55831047d6242470
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 85fa79cdfc7036be5b0ab20e49986a1d075152c5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215210"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254658"
 ---
 # <a name="about-api-management"></a>API Management について
 
@@ -102,7 +102,7 @@ API Management サービス インスタンスの基礎となるのは API で�
 ## <a name="policies"></a><a name="policies"> </a> ポリシー
 ポリシーは、Azure Portal がその構成を通じて API の動作を変更できる、API Management の強力な機能の 1 つです。 API の要求または応答に対して順に実行される一連のステートメントが集まってポリシーが形成されます。 代表的なステートメントとしては、XML 形式から JSON 形式への変換や、(開発者からの呼び出しの回数を制限する) 呼び出しレート制限が挙げられ、他にも数多くのポリシーが利用できます。
 
-ポリシーの式は、ポリシーで特に指定されていない限り、任意の API Management ポリシーで属性値またはテキスト値として使用できます。 [制御フロー](/azure/api-management/api-management-advanced-policies#choose) ポリシーや[変数の設定](/azure/api-management/api-management-advanced-policies#set-variable)ポリシーなど、一部のポリシーはポリシーの式に基づいています。 詳細については、「[詳細なポリシー](/azure/api-management/api-management-advanced-policies#AdvancedPolicies)」と「[ポリシーの式](/azure/api-management/api-management-policy-expressions)」をご覧ください。
+ポリシーの式は、ポリシーで特に指定されていない限り、任意の API Management ポリシーで属性値またはテキスト値として使用できます。 [制御フロー](./api-management-advanced-policies.md#choose) ポリシーや[変数の設定](./api-management-advanced-policies.md#set-variable)ポリシーなど、一部のポリシーはポリシーの式に基づいています。 詳細については、「[詳細なポリシー](./api-management-advanced-policies.md#AdvancedPolicies)」と「[ポリシーの式](./api-management-policy-expressions.md)」をご覧ください。
 
 
 API Management の全ポリシー一覧については、「 [Policy reference (ポリシー リファレンス)][Policy reference]」をご覧ください。 ポリシーの使用と構成の詳細については、「 [API Management policies (API Management のポリシー)][API Management policies]」を参照してください。 レート制限ポリシーとクォータ ポリシーを持った成果物の作成に関するチュートリアルについては、「 [Azure API Management で成果物を作成して詳細設定を行う方法][How create and configure advanced product settings]」をご覧ください。
@@ -135,17 +135,13 @@ API Management の詳細については、Microsoft Ignite 2017 カンファレ�
 [Policies]: #policies
 [Developer portal]: #developer-portal
 
-[How to create APIs]: api-management-howto-create-apis.md
-[How to add operations to an API]: api-management-howto-add-operations.md
+[How to create APIs]: ./import-and-publish.md
+[How to add operations to an API]: ./mock-api-responses.md
 [How to create and publish a product]: api-management-howto-add-products.md
 [How to create and use groups]: api-management-howto-create-groups.md
 [How to associate groups with developers]: api-management-howto-create-groups.md#associate-group-developer
 [How create and configure advanced product settings]: transform-api.md
 [How to create or invite developers]: api-management-howto-create-or-invite-developers.md
-[Policy reference]: api-management-policy-reference.md
+[Policy reference]: ./api-management-policies.md
 [API Management policies]: api-management-howto-policies.md
 [Create an API Management service instance]: get-started-create-service-instance.md
-
-
-
-

@@ -7,10 +7,10 @@ ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: efe4c07a6231e0b2c95b049db056a4e5d055db98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77152994"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Azure App Service へのローカル Git デプロイ
@@ -45,7 +45,7 @@ Kudu App Service ビルド サーバーを使用してアプリのローカル G
 
 ### <a name="get-the-deployment-url"></a>デプロイ URL を取得する
 
-既存のアプリのローカル Git デプロイを有効にするための URL を取得するには、Cloud Shell で [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) を実行します。 \<app-name> と \< group-name> を、ご自分のアプリの名前とその Azure リソース グループの名前に置き換えます。
+既存のアプリのローカル Git デプロイを有効にするための URL を取得するには、Cloud Shell で [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) を実行します。 \<app-name> と \<group-name> を、アプリの名前とその Azure リソース グループの名前に置き換えます。
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app-name> --resource-group <group-name>
@@ -74,7 +74,7 @@ az webapp deployment list-publishing-credentials --name <app-name> --resource-gr
 
 ### <a name="deploy-the-web-app"></a>Web アプリのデプロイ
 
-1. ローカル ターミナル ウィンドウを開き、ご利用のローカル Git リポジトリに Azure リモートを追加します。 次のコマンドでは、\<url>を、前の手順で取得したユーザー固有のデプロイ URL またはアプリ固有のデプロイ URL に置き換えます。
+1. ローカル ターミナル ウィンドウを開き、ご利用のローカル Git リポジトリに Azure リモートを追加します。 次のコマンドでは、\<url> を、前の手順で取得したユーザー固有のデプロイ URL またはアプリ固有のデプロイ URL に置き換えます。
    
    ```bash
    git remote add azure <url>
@@ -145,7 +145,7 @@ Azure Pipelines (プレビュー) を使用してアプリのローカル Git �
 
 Git を使用して Azure の App Service アプリに発行すると、次の一般的なエラーが表示される場合があります。
 
-|Message|原因|解像度
+|Message|原因|解決方法
 ---|---|---|
 |`Unable to access '[siteURL]': Failed to connect to [scmAddress]`|アプリが稼働していません。|Azure portal でアプリを起動します。 Web アプリが停止しているとき、Git デプロイは利用できません。|
 |`Couldn't resolve host 'hostname'`|'azure' リモートのアドレス情報が正しくありません。|`git remote -v` コマンドを使用して、すべてのリモートおよび関連付けられている URL を一覧表示します。 "azure" リモートの URL が正しいことを確認します。 必要に応じて、このリモートを削除し、正しい URL を使用して再作成します。|

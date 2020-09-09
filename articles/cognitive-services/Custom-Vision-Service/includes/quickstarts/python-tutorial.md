@@ -2,15 +2,15 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 04/14/2020
-ms.openlocfilehash: d20258e90c819c5d1f6b90be3303878c405e1f2d
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.date: 08/17/2020
+ms.openlocfilehash: 1bf0ecbc996fe853a6ca1d0ed5a749c798383146
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83806178"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508592"
 ---
-この記事では、Custom Vision SDK と Python を使用して画像分類モデルを構築する基本的な方法について説明します。 作成後は、タグの追加、画像のアップロード、プロジェクトのトレーニング、プロジェクトの公開された予測エンドポイント URL の取得、エンドポイントを使用したプログラミングによる画像のテストを行うことができます。 この例は、独自の Python アプリケーションを構築するためのテンプレートとしてご利用ください。 分類モデルの構築と使用のプロセスをコード "_なし_" で行う場合は、[ブラウザー ベースのガイダンス](../../getting-started-build-a-classifier.md)を参照してください。
+この記事では、Custom Vision クライアント ライブラリと Python を使用して画像分類モデルを構築する基本的な方法について説明します。 作成後は、タグの追加、画像のアップロード、プロジェクトのトレーニング、プロジェクトの公開された予測エンドポイント URL の取得、エンドポイントを使用したプログラミングによる画像のテストを行うことができます。 この例は、独自の Python アプリケーションを構築するためのテンプレートとしてご利用ください。 分類モデルの構築と使用のプロセスをコード "_なし_" で行う場合は、[ブラウザー ベースのガイダンス](../../getting-started-build-a-classifier.md)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -18,9 +18,9 @@ ms.locfileid: "83806178"
 - [pip](https://pip.pypa.io/en/stable/installing/) ツール
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="install-the-custom-vision-sdk"></a>Custom Vision SDK をインストールする
+## <a name="install-the-custom-vision-client-library"></a>Custom Vision クライアント ライブラリをインストールする
 
-Custom Vision Service SDK for Python をインストールするには、PowerShell で次のコマンドを実行します。
+Python 用 Custom Vision Service クライアント ライブラリをインストールするには、PowerShell で次のコマンドを実行します。
 
 ```powershell
 pip install azure-cognitiveservices-vision-customvision
@@ -42,7 +42,7 @@ pip install azure-cognitiveservices-vision-customvision
 
 ```Python
 from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
-from azure.cognitiveservices.vision.customvision.training.models import ImageFileCreateEntry
+from azure.cognitiveservices.vision.customvision.training.models import ImageFileCreateBatch, ImageFileCreateEntry
 from msrest.authentication import ApiKeyCredentials
 
 ENDPOINT = "<your API endpoint>"
@@ -96,7 +96,7 @@ for image_num in range(1, 11):
     with open(base_image_url + "images/Japanese Cherry/" + file_name, "rb") as image_contents:
         image_list.append(ImageFileCreateEntry(name=file_name, contents=image_contents.read(), tag_ids=[cherry_tag.id]))
 
-upload_result = trainer.create_images_from_files(project.id, images=image_list)
+upload_result = trainer.create_images_from_files(project.id, ImageFileCreateBatch(images=image_list))
 if not upload_result.is_batch_successful:
     print("Image batch upload failed.")
     for image in upload_result.images:

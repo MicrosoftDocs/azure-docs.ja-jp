@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: a155a3ab9f050b2611229724af92bedbb154cd64
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 61a47e06bde2182b3b09d341edb7d7e0ca13bacb
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81408964"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "86497618"
 ---
-<Token>**適用対象:** ![はい](../media/applies-to/yes.png)Azure Data Factory ![はい](../media/applies-to/yes.png)Azure Synapse Analytics (プレビュー) </Token>
+<Token>**適用対象:** ![はい](../media/applies-to/yes.png)Azure Data Factory ![はい](../media/applies-to/yes.png)Azure Synapse Analytics (プレビュー) </Token> 
 

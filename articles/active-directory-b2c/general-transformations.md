@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: afdf2f531ede30d868123d89cac94fcfae070384
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 52831a1907d5ca8d13b0477c909d0d0358873973
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78188547"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85202222"
 ---
 # <a name="general-claims-transformations"></a>一般要求変換
 
@@ -35,7 +35,7 @@ ms.locfileid: "78188547"
 
 この要求変換を使用して、文字列または数値の要求から別の要求に値をコピーします。 次の例では、externalEmail 要求の値を電子メール要求にコピーします。
 
-```XML
+```xml
 <ClaimsTransformation Id="CopyEmailAddress" TransformationMethod="CopyClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="externalEmail" TransformationClaimType="inputClaim"/>
@@ -64,7 +64,7 @@ ms.locfileid: "78188547"
 
 この要求変換を使用して、要求が存在するかどうか、または何らかの値が含まれているかどうかをチェックします。 戻り値はブール値であり、それによって、要求が存在するかどうかが示されます。 次の例では、電子メール アドレスが存在するかどうかを確認します。
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckIfEmailPresent" TransformationMethod="DoesClaimExist">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="inputClaim" />
@@ -93,7 +93,7 @@ salt と secret を使用して、提供されたプレーン テキストをハ
 | InputParameter | randomizerSecret | string | 既存の Azure AD B2C **ポリシー キー**をポイントします。 新しいポリシー キーを作成するには:Azure AD B2C テナントの **[管理]** で、 **[Identity Experience Framework]** を選択します。 **[ポリシー キー]** を選択して、テナント内で使用できるキーを確認します。 **[追加]** を選択します。 **[オプション]** には **[手動]** を選択します。 名前を指定します (プレフィックス *B2C_1A_* が自動的に追加される場合があります)。 **[シークレット]** テキスト ボックスに、使用するシークレットを入力します (1234567890 など)。 **[キー使用法]** には **[署名]** を選択します。 **［作成］** を選択します |
 | OutputClaim | hash | string | この要求変換が呼び出された後に生成される ClaimType。 `plaintext` inputClaim で構成されている要求。 |
 
-```XML
+```xml
 <ClaimsTransformation Id="HashPasswordWithEmail" TransformationMethod="Hash">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="password" TransformationClaimType="plaintext" />

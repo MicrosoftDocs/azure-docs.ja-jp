@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
-ms.openlocfilehash: a005b6cec811b8a584123dc4c8abab77766961e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 217be627f81406f671118d5290cd5f67f52c01d2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234331"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112114"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリでのコンピューター グループ
 Azure Monitor では、コンピューター グループを使用して、[ログ クエリ](../log-query/log-query-overview.md)の範囲を特定のコンピューターのセットに限定することができます。  それぞれのグループには、自分で定義したクエリを使用するか、さまざまなソースからグループをインポートすることでコンピューターを追加します。  そのグループをログ クエリに含めると、対応するグループ内のコンピューターと一致するレコードに検索結果が限定されます。
@@ -21,7 +21,7 @@ Azure Monitor では、コンピューター グループを使用して、[ロ�
 ## <a name="creating-a-computer-group"></a>コンピューター グループの作成
 Azure Monitor のコンピューター グループは、以下の表に示した方法のいずれかで作成できます。  それぞれの方法について、以降のセクションで詳しく説明します。 
 
-| 方法 | 説明 |
+| Method | 説明 |
 |:--- |:--- |
 | Log query |コンピューターの一覧を返すログ クエリを作成します。 |
 | Log Search API |ログ クエリの結果に基づいてプログラムからコンピューター グループを作成するには、Log Search API を使用します。 |
@@ -34,7 +34,9 @@ Azure Monitor のコンピューター グループは、以下の表に示し�
 
 コンピューター グループにはどのクエリでも使用できますが、クエリは `distinct Computer` を使用して明確な一連のコンピューターを返す必要があります。  コンピューター グループに使用できる一般的なクエリの例を次に示します。
 
-    Heartbeat | where Computer contains "srv" | distinct Computer
+```kusto
+Heartbeat | where Computer contains "srv" | distinct Computer
+```
 
 Azure Portal でログ検索からコンピューター グループを作成するには、次の手順に従います。
 
@@ -48,7 +50,7 @@ Azure Portal でログ検索からコンピューター グループを作成す
 
 | プロパティ | 説明 |
 |:---|:---|
-| Name   | ポータルに表示するクエリの名前。 |
+| 名前   | ポータルに表示するクエリの名前。 |
 | 関数のエイリアス | クエリ内でコンピューター グループを識別するのに使用される一意のエイリアス。 |
 | カテゴリ       | ポータル内でクエリを整理するためのカテゴリ。 |
 
@@ -94,26 +96,28 @@ Configuration Manager のコレクションをインポートするには、[Azu
 ## <a name="using-a-computer-group-in-a-log-query"></a>ログ クエリでのコンピューター グループの使用
 ログ クエリから作成されたコンピューター グループをクエリで使用するには、そのエイリアスを関数として扱います。通常は、次の構文を使用します。
 
-  `Table | where Computer in (ComputerGroup)`
+```kusto
+Table | where Computer in (ComputerGroup)`
+```
 
 たとえば、以下を使用して、mycomputergroup という名前のコンピューター グループ内のコンピューターのみを対象とした UpdateSummary レコードを返すことができます。
- 
-  `UpdateSummary | where Computer in (mycomputergroup)`
 
+```kusto
+UpdateSummary | where Computer in (mycomputergroup)`
+```
 
 インポートされたコンピュータ グループとそれらに含まれるコンピューターは、**ComputerGroup** テーブルに格納されます。  たとえば、次のクエリは、Active Directory の Domain Computers グループにコンピューターの一覧を返します。 
 
-  `ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer`
+```kusto
+ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer
+```
 
 次のクエリは、Domain Computers 内のコンピューターの UpdateSummary レコードのみを返します。
 
-  ```
-  let ADComputers = ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer;
+```kusto
+let ADComputers = ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer;
   UpdateSummary | where Computer in (ADComputers)
-  ```
-
-
-
+```
 
 ## <a name="computer-group-records"></a>コンピューター グループのレコード
 Active Directory または WSUS から作成されたコンピューター グループでは、そのメンバーシップごとのレコードが Log Analytics ワークスペースに作成されます。  これらは **ComputerGroup** タイプのレコードとして、次の表に示すプロパティを持ちます。  ログ クエリに基づくコンピューター グループにはレコードが作成されません。
@@ -127,7 +131,7 @@ Active Directory または WSUS から作成されたコンピューター グ�
 | `GroupFullName` |ソースとソース名を含んだグループの完全パス。 |
 | `GroupSource` |グループの収集元となったソース。 <br><br>ActiveDirectory<br>WSUS<br>WSUSClientTargeting |
 | `GroupSourceName` |グループの収集元となったソースの名前。  Active Directory の場合はドメイン名になります。 |
-| `ManagementGroupName` |SCOM エージェントの管理グループの名前。  その他のエージェントの場合、これは AOI-\<workspace ID\> です。 |
+| `ManagementGroupName` |SCOM エージェントの管理グループの名前。  その他のエージェントの場合、これは AOI-\<workspace ID\> です |
 | `TimeGenerated` |コンピューター グループが作成または更新された日時。 |
 
 ## <a name="next-steps"></a>次のステップ

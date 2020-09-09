@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: 787edf662aa3a34e167db61b0a89dfc5c2944219
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d00a6b7753a61bb2527a56231b2fe054736f1b0
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75412403"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008578"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-template"></a>テンプレートを使用して Azure Cache for Redis を作成する
 
@@ -26,7 +26,7 @@ ms.locfileid: "75412403"
 完成したテンプレートについては、[Azure Cache for Redis テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json)のページを参照してください。
 
 > [!NOTE]
-> 新しい [Premium レベル](cache-premium-tier-intro.md) の Resource Manager テンプレートを利用できます。 
+> 新しい [Premium レベル](cache-overview.md#service-tiers) の Resource Manager テンプレートを利用できます。 
 > 
 > * [クラスタリングを使用する Premium Azure Cache for Redis の作成](https://azure.microsoft.com/resources/templates/201-redis-premium-cluster-diagnostics/)
 > * [データの永続化を使用する Premium Azure Cache for Redis の作成](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
@@ -52,76 +52,91 @@ Azure リソース マネージャーを使用して、テンプレートのデ�
 ### <a name="rediscachelocation"></a>redisCacheLocation
 Azure Cache for Redis の場所です。 最適なパフォーマンスのために、アプリケーションとキャッシュで同じ場所を使用することをお勧めします。
 
-    "redisCacheLocation": {
-      "type": "string"
-    }
+```json
+  "redisCacheLocation": {
+    "type": "string"
+  }
+```
 
 ### <a name="existingdiagnosticsstorageaccountname"></a>existingDiagnosticsStorageAccountName
 診断用に使用する既存のストレージ アカウントの名前。 
 
-    "existingDiagnosticsStorageAccountName": {
-      "type": "string"
-    }
+```json
+  "existingDiagnosticsStorageAccountName": {
+    "type": "string"
+  }
+```
 
 ### <a name="enablenonsslport"></a>enableNonSslPort
 非 SSL ポート経由のアクセスを許可するかどうかを示すブール値です。
 
-    "enableNonSslPort": {
-      "type": "bool"
-    }
+```json
+  "enableNonSslPort": {
+    "type": "bool"
+  }
+```
 
 ### <a name="diagnosticsstatus"></a>diagnosticsStatus
 診断が有効かどうかを示す値です。 ON または OFF を使用します。
 
-    "diagnosticsStatus": {
-      "type": "string",
-      "defaultValue": "ON",
-      "allowedValues": [
-            "ON",
-            "OFF"
-        ]
-    }
+```json
+  "diagnosticsStatus": {
+    "type": "string",
+    "defaultValue": "ON",
+    "allowedValues": [
+          "ON",
+          "OFF"
+      ]
+  }
+```
 
 ## <a name="resources-to-deploy"></a>デプロイ対象のリソース
 ### <a name="azure-cache-for-redis"></a>Azure Cache for Redis
 Azure Cache for Redis を作成します。
 
-    {
-      "apiVersion": "2015-08-01",
-      "name": "[parameters('redisCacheName')]",
-      "type": "Microsoft.Cache/Redis",
-      "location": "[parameters('redisCacheLocation')]",
-      "properties": {
-        "enableNonSslPort": "[parameters('enableNonSslPort')]",
-        "sku": {
-          "capacity": "[parameters('redisCacheCapacity')]",
-          "family": "[parameters('redisCacheFamily')]",
-          "name": "[parameters('redisCacheSKU')]"
+```json
+  {
+    "apiVersion": "2015-08-01",
+    "name": "[parameters('redisCacheName')]",
+    "type": "Microsoft.Cache/Redis",
+    "location": "[parameters('redisCacheLocation')]",
+    "properties": {
+      "enableNonSslPort": "[parameters('enableNonSslPort')]",
+      "sku": {
+        "capacity": "[parameters('redisCacheCapacity')]",
+        "family": "[parameters('redisCacheFamily')]",
+        "name": "[parameters('redisCacheSKU')]"
+      }
+    },
+    "resources": [
+      {
+        "apiVersion": "2017-05-01-preview",
+        "type": "Microsoft.Cache/redis/providers/diagnosticsettings",
+        "name": "[concat(parameters('redisCacheName'), '/Microsoft.Insights/service')]",
+        "location": "[parameters('redisCacheLocation')]",
+        "dependsOn": [
+          "[concat('Microsoft.Cache/Redis/', parameters('redisCacheName'))]"
+        ],
+        "properties": {
+          "status": "[parameters('diagnosticsStatus')]",
+          "storageAccountName": "[parameters('existingDiagnosticsStorageAccountName')]"
         }
-      },
-      "resources": [
-        {
-          "apiVersion": "2017-05-01-preview",
-          "type": "Microsoft.Cache/redis/providers/diagnosticsettings",
-          "name": "[concat(parameters('redisCacheName'), '/Microsoft.Insights/service')]",
-          "location": "[parameters('redisCacheLocation')]",
-          "dependsOn": [
-            "[concat('Microsoft.Cache/Redis/', parameters('redisCacheName'))]"
-          ],
-          "properties": {
-            "status": "[parameters('diagnosticsStatus')]",
-            "storageAccountName": "[parameters('existingDiagnosticsStorageAccountName')]"
-          }
-        }
-      ]
-    }
+      }
+    ]
+  }
+```
 
 ## <a name="commands-to-run-deployment"></a>デプロイを実行するコマンド
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell
 
+```azurepowershell
     New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -ResourceGroupName ExampleDeployGroup -redisCacheName ExampleCache
+```
 
 ### <a name="azure-cli"></a>Azure CLI
+
+```azurecli
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -g ExampleDeployGroup
+```

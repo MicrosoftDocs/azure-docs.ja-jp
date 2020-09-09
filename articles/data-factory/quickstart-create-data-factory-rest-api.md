@@ -13,12 +13,12 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 06/10/2019
 ms.author: jingwang
-ms.openlocfilehash: b50217a3a8aeda03996183bf1dc82a0be1f485ae
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 357026bbe17650464716282608bc316c5d4b055e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81419104"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514875"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>クイック スタート:REST API を使用して Azure データ ファクトリとパイプラインを作成する
 
@@ -42,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * **Azure Storage アカウント**。 BLOB ストレージを、**ソース**と**シンク**のデータ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md)」を参照してください。
 * Blob Storage に **BLOB コンテナー**を作成し、コンテナーに入力**フォルダー**を作成して、フォルダーにいくつかのファイルをアップロードします。 [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) などのツールを使用して、Azure Blob Storage への接続、BLOB コンテナーの作成、入力ファイルのアップロード、出力ファイルの検証を行うことができます。
 * **Azure PowerShell**をインストールします。 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-Az-ps)に関するページに記載されている手順に従います。 このクイックスタートでは、PowerShell を使用して、REST API 呼び出しを実行します。
-* [この手順](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)に従って、**Azure Active Directory にアプリケーションを作成します**。 **アプリケーション ID**、**clientSecrets**、**テナント ID** の値をメモしておいてください。後の手順で使用します。 アプリケーションを "**共同作成者**" ロールに割り当てます。
+* [この手順](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)に従って、**Azure Active Directory にアプリケーションを作成します**。 **アプリケーション ID**、**clientSecrets**、**テナント ID** の値をメモしておいてください。後の手順で使用します。 アプリケーションを "**共同作成者**" ロールに割り当てます。
 
 ## <a name="set-global-variables"></a>グローバル変数の設定
 

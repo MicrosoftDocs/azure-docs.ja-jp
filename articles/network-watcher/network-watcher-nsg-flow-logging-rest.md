@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 7cc47414dc985f6fc2fff3c57d809f307b142e30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 936501674fcf1d428de936174575440edad71de2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76840929"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738517"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>REST API を使用したネットワーク セキュリティ グループ のフローのログの構成
 

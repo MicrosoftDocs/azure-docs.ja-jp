@@ -11,12 +11,12 @@ metadata:
   author: dnblankedelman
   ms.author: dnb
   ms.date: 02/18/2020
-  ms.openlocfilehash: 18857c11887ef6934485602d0fcb7aaf2220721e
-  ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-  ms.translationtype: HT
+  ms.openlocfilehash: e5c1ef5e84f0170927d7fcac65b594d44ed33b93
+  ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+  ms.translationtype: 
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/28/2020
-  ms.locfileid: "82185083"
+  ms.lasthandoff: 07/01/2020
+  ms.locfileid: "85833436"
 highlightedContent:
   items:
   - title: SRE の概要:SRE とは (1/3)
@@ -43,11 +43,13 @@ productDirectory:
       text: 信頼性を高めるための展開プラクティス
     - url: https://myignite.techcommunity.microsoft.com/sessions/83001
       text: '拡張の準備: 容量計画とスケーリング'
-  - title: SRE オンライン コースの概要
+  - title: SRE のオンライン コース
     imageSrc: ./media/index/learn.svg
     links:
     - url: https://docs.microsoft.com/learn/modules/intro-to-site-reliability-engineering/
-      text: 無料のオンライン コースで SRE の基礎を学ぶ
+      text: サイト信頼性エンジニアリングの概要
+    - url: https://docs.microsoft.com/learn/paths/improve-reliability-modern-operations/
+      text: 最新の運用方法による信頼性の向上
   - title: SRE のリソース
     imageSrc: ./media/index/reference.svg
     links:
@@ -55,6 +57,8 @@ productDirectory:
       text: 書籍
     - url: resources/events.md
       text: events
+    - url: articles/code.md
+      text: 'よくあるご質問: SRE とコーディング'
     - url: articles/devops.md
       text: 'よくあるご質問: SRE と DevOps'
     - url: resources/links.md
@@ -63,7 +67,7 @@ conceptualContent:
   title: Azure での SRE
   summary: SRE のドキュメント
   items:
-  - title: Architecture
+  - title: アーキテクチャ
     links:
     - url: https://docs.microsoft.com/azure/architecture/framework/
       itemType: reference

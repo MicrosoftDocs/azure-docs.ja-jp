@@ -3,12 +3,12 @@ title: リソースを監視する Azure アクティビティ ログの表示
 description: アクティビティ ログを使用してユーザーの操作やエラーを確認します。 Azure portal、PowerShell、Azure CLI、REST を表示します。
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 9511090099894fad6708843f106570ed029f0c1a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b02865e4487a187d1296b2971918aa101d711b5b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75474417"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827063"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>リソースのアクションを監視するアクティビティ ログの表示
 
@@ -191,7 +191,7 @@ Resource Graph を使用すると、リソースの変更履歴を確認でき�
 ## <a name="next-steps"></a>次のステップ
 
 * Azure アクティビティ ログは、サブスクリプション内のアクションに関してさらに洞察を得るために、Power BI で使用できます。 [Power BI などでの Azure アクティビティ ログの表示と分析](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)に関する記事をご覧ください。
-* セキュリティ ポリシーを設定する方法については、「[Azure のロールベースのアクセス制御](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+* セキュリティ ポリシーを設定する方法については、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) に関する記事を参照してください。
 * インフラストラクチャ レイヤーからアプリケーションのデプロイまで、アプリケーションに対する変更の詳細については、[Azure Monitor でのアプリケーション変更分析の使用](../../azure-monitor/app/change-analysis.md)に関するページをご覧ください。
 * デプロイ操作を表示するコマンドについては、[デプロイ操作の表示](../templates/deployment-history.md)に関するページをご覧ください。
 * すべてのユーザーのリソースに対する削除を回避する方法については、「 [Azure Resource Manager によるリソースのロック](lock-resources.md)」をご覧ください。

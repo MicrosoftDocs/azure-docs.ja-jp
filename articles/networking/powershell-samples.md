@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell のサンプル - ネットワーク
-description: Azure PowerShell のサンプル
+description: 多層アプリケーション用に仮想ネットワークを作成するサンプルを含む、ネットワーク用の Azure PowerShell のサンプルについて説明します。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/24/2017
 ms.author: gwallace
-ms.openlocfilehash: ca6ac145db0536d3cf7e5bcc72a58d72101ab12a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa3304cbabb183368f0e47415e64120854f43535
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459119"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282077"
 ---
 # <a name="azure-powershell-samples-for-networking"></a>ネットワークに関する Azure PowerShell のサンプル
 
 次の表には、Azure PowerShell を使って構築されたスクリプトへのリンクが含まれています。
 
-| | |
+| スクリプト | 説明 |
 |-|-|
 |**Azure リソースの間の接続**||
 | [多層アプリケーション用の仮想ネットワークの作成](./scripts/virtual-network-powershell-sample-multi-tier-application.md?toc=%2fazure%2fnetworking%2ftoc.json) | フロントエンド サブネットとバックエンド サブネットを含む仮想ネットワークを作成します。 フロントエンド サブネットへのトラフィックは HTTP に制限され、バックエンド サブネットへのトラフィックは SQL、ポート 1433 に制限されます。 |

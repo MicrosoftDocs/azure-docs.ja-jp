@@ -2,25 +2,21 @@
 title: チュートリアル:Soloinsight-CloudGate SSO を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory を構成して、ユーザー アカウントを Soloinsight-CloudGate SSO に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: 07558ceb-d406-40e7-90b8-1b40fdc829e7
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/14/2019
 ms.author: Zhchia
-ms.openlocfilehash: 6ab90a6aea262d5c7067f9f41b9ddfc090b7371d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 32fd40ec4827c2995d156b0e238b48ff8cc24e65
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77063197"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545116"
 ---
 # <a name="tutorial-configure-soloinsight-cloudgate-sso-for-automatic-user-provisioning"></a>チュートリアル:Soloinsight-CloudGate SSO を構成し、自動ユーザー プロビジョニングに対応させる
 

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 384b79037bb30656934c5e4b596dac2b776593b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 81eb0e60befc544a6c3bee8f04e901b6a5e472bc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75754118"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560818"
 ---
 # <a name="shaper-cognitive-skill"></a>Shaper コグニティブ スキル
 
@@ -251,5 +251,5 @@ Microsoft.Skills.Util.ShaperSkill
 + [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
 + [複合型を使用する方法](search-howto-complex-data-types.md)
-+ [ナレッジ ストア (プレビュー)](knowledge-store-concept-intro.md)
++ [ナレッジ ストア](knowledge-store-concept-intro.md)
 + [REST でナレッジ ストアを作成する](knowledge-store-create-rest.md)

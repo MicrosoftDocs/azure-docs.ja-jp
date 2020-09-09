@@ -5,14 +5,15 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 4/13/2020
-ms.openlocfilehash: 87db1a2af0bfdc854c909ef4221a3d97f9bf10d5
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: a662fe9300d78591cc7ae1fcff67f9b3f93ab8c8
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270674"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501220"
 ---
 # <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>Azure CLI を使用して低速クエリ ログを構成してアクセスする
 Azure CLI (Azure のコマンドライン ユーティリティ) を使用して Azure Database for MySQL の低速クエリ ログをダウンロードできます。

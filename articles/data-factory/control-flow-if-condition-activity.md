@@ -11,17 +11,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9b491c4f0cc99395c44d989bf19fa2a7b03da696
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9f65ffc9ef24b18ce0f18571c1f3fc91e7ca7fdf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417163"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85414608"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Azure Data Factory の If Condition アクティビティ
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-If Condition アクティビティは、プログラミング言語における if ステートメントと同じ働きを持ちます。 条件が `true` に評価されたときの一連のアクティビティと `false` に評価されたときの一連のアクティビティが評価されます。 
+If Condition アクティビティは、プログラミング言語における if ステートメントと同じ働きを持ちます。 条件が `true` に評価されたときの一連のアクティビティと `false` に評価されたときの一連のアクティビティが実行されます。 
 
 ## <a name="syntax"></a>構文
 

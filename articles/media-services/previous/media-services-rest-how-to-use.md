@@ -15,19 +15,21 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 597839f633ed2b925b86c5f859a0fb2d3b64dd59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 84e94a431efdc84ff6896de416bd222120784899
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76773655"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264285"
 ---
-# <a name="media-services-operations-rest-api-overview"></a>Media Services Operations REST API の概要 
+# <a name="media-services-operations-rest-api-overview"></a>Media Services Operations REST API の概要
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 
-**Media Services Operations REST** API は、Media Services アカウントで、ジョブ、アセット、ライブ チャネル、およびその他のリソースを作成するときに使用されます。 詳細については、[Media Services Operations REST API リファレンス](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)を参照してください。
+**Media Services Operations REST** API は、Media Services アカウントで、ジョブ、アセット、ライブ チャネル、およびその他のリソースを作成するときに使用されます。 詳細については、[Media Services Operations REST API リファレンス](/rest/api/media/operations/azure-media-services-rest-api-reference)を参照してください。
 
 Media Services は、JSON または atom+pub XML 形式を受け入れる REST API を提供します。 Media Services REST API には、Media Services に接続するときに各クライアントが送信する必要がある特定の HTTP ヘッダーと、省略可能な一連のヘッダーが必要です。 次のセクションでは、要求を作成したり Media Services から応答を受信したりするときに使用できるヘッダーと HTTP 動詞について説明します。
 
@@ -39,21 +41,23 @@ REST を使用するときには、次の考慮事項が適用されます。
 
 * パブリック REST v2 では、クエリ結果が 1000 件に制限されているため、エンティティを照会するときには、一度に返されるエンティティが 1000 個に制限されます。 [この .NET の例](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities)と[この REST API の例](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)に示すように、**Skip** および **Take** (.NET)/**top** (REST) を使用する必要があります。 
 * JSON を使用し、要求で **__metadata** キーワードの使用を指定した場合 (リンクされたオブジェクトを参照する場合など)、**Accept** ヘッダーを [JSON Verbose 形式](https://www.odata.org/documentation/odata-version-3-0/json-verbose-format/)に設定する必要があります (次の例を参照)。 verbose に設定していない場合、Odata は要求内の **__metadata** プロパティを認識しません。  
-  
-        POST https://media.windows.net/API/Jobs HTTP/1.1
-        Content-Type: application/json;odata=verbose
-        Accept: application/json;odata=verbose
-        DataServiceVersion: 3.0
-        MaxDataServiceVersion: 3.0
-        x-ms-version: 2.19
-        Authorization: Bearer <ENCODED JWT TOKEN> 
-        Host: media.windows.net
-  
-        {
-            "Name" : "NewTestJob", 
-            "InputMediaAssets" : 
-                [{"__metadata" : {"uri" : "https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3Aba5356eb-30ff-4dc6-9e5a-41e4223540e7')"}}]
-        . . . 
+
+    ```console
+    POST https://media.windows.net/API/Jobs HTTP/1.1
+    Content-Type: application/json;odata=verbose
+    Accept: application/json;odata=verbose
+    DataServiceVersion: 3.0
+    MaxDataServiceVersion: 3.0
+    x-ms-version: 2.19
+    Authorization: Bearer <ENCODED JWT TOKEN> 
+    Host: media.windows.net
+
+    {
+        "Name" : "NewTestJob", 
+        "InputMediaAssets" : 
+            [{"__metadata" : {"uri" : "https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3Aba5356eb-30ff-4dc6-9e5a-41e4223540e7')"}}]
+    . . . 
+   ```
 
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>Media Services でサポートされている標準の HTTP 要求ヘッダー
 Media Services に対して行うそれぞれの呼び出しについて、要求に含める必要がある必須のヘッダーのセットと、含める可能性がある省略可能なヘッダーのセットがあります。 以下の表に、必須ヘッダーの一覧を示します。
@@ -128,4 +132,3 @@ Media Services REST API で Azure AD 認証を使用する方法については�
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

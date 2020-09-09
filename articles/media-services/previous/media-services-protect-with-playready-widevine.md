@@ -14,17 +14,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 79c24eb078cc3de764ecc1c814e5b8772777eab6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a55151ec70c27f18c9503235519d4dd2fcf5b64e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78199497"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259661"
 ---
 # <a name="use-playready-andor-widevine-dynamic-common-encryption"></a>PlayReady および Widevine に動的な Common Encryption を使用する
 
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。   > Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。   > Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 >   
 
 ## <a name="overview"></a>概要
@@ -41,7 +44,7 @@ Media Services は、PlayReady および Widevine DRM のライセンスを配�
 
 詳細については、[Axinom](media-services-axinom-integration.md) および [castLabs](media-services-castlabs-integration.md) との統合を参照してください。
 
-Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。 コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (オープンまたはトークン制限) を指定できます。 トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。 Media Services では、[単純 Web トークン](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2) (SWT) 形式と [JSON Web トークン](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) (JWT) 形式のトークンがサポートされます。 
+Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。 コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (オープンまたはトークン制限) を指定できます。 トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。 Media Services では、[単純 Web トークン](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_2) (SWT) 形式と [JSON Web トークン](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_3) (JWT) 形式のトークンがサポートされます。 
 
 詳細については、「[コンテンツ キー承認ポリシーの構成](media-services-protect-with-aes128.md#configure_key_auth_policy)」を参照してください。
 
@@ -620,6 +623,5 @@ namespace DynamicEncryptionWithDRM
 
 * [CENC とマルチ DRM およびアクセス制御の使用](media-services-cenc-with-multidrm-access-control.md)
 * [Media Services による Widevine パッケージの構成](https://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)
-* [Azure Media Services 用 Java クライアント SDK の概要](https://docs.microsoft.com/azure/media-services/media-services-java-how-to-use)
+* [Azure Media Services 用 Java クライアント SDK の概要](./media-services-java-how-to-use.md)
 * Media Services 用の最新の PHP SDK をダウンロードするには、[Packagist リポジトリ](https://packagist.org/packages/microsoft/windowsazure#v0.5.7)でバージョン 0.5.7 の Microsoft/WindowsAzure パッケージを検索してください。 
-

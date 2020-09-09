@@ -4,15 +4,15 @@ description: この記事では、Azure Bastion を使用して、Windows を実
 services: bastion
 author: cherylmc
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/24/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6ec60dc313c8a4374637adf38ea0e5a7d4ed964b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79eb09a005f62846fc2f7e3e7b493d5e366edabc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77597348"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84744325"
 ---
 # <a name="connect-to-a-windows-virtual-machine-using-azure-bastion"></a>Azure Bastion を使用して Windows 仮想マシンに接続する
 

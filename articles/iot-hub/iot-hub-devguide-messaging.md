@@ -8,12 +8,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: f56332fa7f53c729ffaa28ea375f043d1b4a3678
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- 'Role: Cloud Development'
+ms.openlocfilehash: e0466aa3497edf5f271c01944438c033bba152f4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60626249"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327669"
 ---
 # <a name="send-device-to-cloud-and-cloud-to-device-messages-with-iot-hub"></a>IoT Hub で device-to-cloud および cloud-to-device メッセージを送信する
 

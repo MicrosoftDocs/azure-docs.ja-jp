@@ -4,16 +4,16 @@ description: Azure Database for PostgreSQL (単一サーバー) での認証に 
 author: lfittl
 ms.author: lufittl
 ms.service: postgresql
-ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 91435c2c5ca825793988e002c1ab9f6caacf2b17
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.topic: how-to
+ms.date: 07/23/2020
+ms.openlocfilehash: 178c339f6f47569160a9a748794678c610f35734
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652552"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171639"
 ---
-# <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>PostgreSQL での認証に Azure Active Directory を使用する
+# <a name="use-azure-active-directory-for-authentication-with-postgresql"></a>PostgreSQL での認証に Azure Active Directory を使用する
 
 この記事では、Azure Database for PostgreSQL を使用して Azure Active Directory アクセスを構成する方法と、Azure AD トークンを使用して接続する方法について説明します。
 
@@ -54,21 +54,19 @@ Azure AD 統合は、psql などの一般的な PostgreSQL ツールと連携す
 
 ユーザー/アプリケーションで Azure AD を使用して認証を行う必要がある手順を次に示します。
 
+### <a name="prerequisites"></a>前提条件
+
+Azure Cloud Shell、Azure VM、またはお使いのローカル コンピューター上で、次の手順を実行できます。 [Azure CLI がインストールされている](/cli/azure/install-azure-cli)ことを確認します。
+
 ### <a name="step-1-authenticate-with-azure-ad"></a>手順 1:Azure AD による認証
 
-[Azure CLI がインストールされている](/cli/azure/install-azure-cli)ことを確認します。
+最初に、Azure CLI ツールを使用して Azure AD による認証を行います。 この手順は、Azure Cloud Shell では必要ありません。
 
-Azure CLI ツールを呼び出して、Azure AD で認証します。 ご自分の Azure AD ユーザー ID とパスワードを指定する必要があります。
-
-```azurecli-interactive
+```
 az login
 ```
 
-このコマンドを実行すると、ブラウザー ウィンドウが起動して Azure AD 認証ページが表示されます。
-
-> [!NOTE]
-> Azure Cloud Shell を使用してこれらの手順を実行することもできます。
-> Azure Cloud Shell で Azure AD アクセス トークンを取得する場合は、明示的に `az login` を呼び出して、(別のウィンドウでコードを使用して) もう一度サインインする必要があることに注意してください。 サインイン後、`get-access-token` コマンドは正常に動作します。
+コマンドを実行すると、ブラウザー ウィンドウが起動されて、Azure AD 認証ページが表示されます。 ご自分の Azure AD ユーザー ID とパスワードを指定する必要があります。
 
 ### <a name="step-2-retrieve-azure-ad-access-token"></a>手順 2:Azure AD アクセス トークンを取得する
 
@@ -117,8 +115,12 @@ az account get-access-token --resource-type oss-rdbms
 
 Windows の例:
 
-```shell
+```cmd
 set PGPASSWORD=<copy/pasted TOKEN value from step 2>
+```
+
+```PowerShell
+$env:PGPASSWORD='<copy/pasted TOKEN value from step 2>'
 ```
 
 Linux/macOS の例:
@@ -132,6 +134,15 @@ export PGPASSWORD=<copy/pasted TOKEN value from step 2>
 ```shell
 psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgres sslmode=require"
 ```
+
+接続時の重要な考慮事項:
+
+* `user@tenant.onmicrosoft.com` は、接続に使用しようとしている Azure AD ユーザーまたはグループの名前です。
+* Azure AD ユーザー/グループ名の後には常にサーバー名を追加してください (`@mydb` など)。
+* Azure AD ユーザーまたはグループ名の正確なスペルを使用するようにしてください。
+* Azure AD ユーザーおよびグループ名は大文字と小文字が区別されます。
+* グループとして接続する場合は、グループ名のみ (`GroupName@mydb` など) を使用します。
+* 名前にスペースが含まれている場合は、各スペースの前に `\` を使用してそれをエスケープします。
 
 これで、Azure AD 認証を使用して PostgreSQL サーバーに対して認証されました。
 

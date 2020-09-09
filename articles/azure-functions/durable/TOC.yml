@@ -13,12 +13,18 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: '持続的な関数の作成 - C#'
+    - name: 持続的な関数の作成 - C#
       href: durable-functions-create-first-csharp.md
       displayName: 'get started, chaining'
     - name: 持続的な関数の作成 - JavaScript
       displayName: 'get started, chaining'
       href: quickstart-js-vscode.md
+    - name: 持続的な関数の作成 - Python
+      displayName: 'get started, chaining'
+      href: quickstart-python-vscode.md
+    - name: 持続的な関数の作成 - PowerShell
+      displayName: 'get started, chaining'
+      href: quickstart-powershell-vscode.md
 - name: チュートリアル
   items:
     - name: 関数チェーン
@@ -76,7 +82,7 @@
 - name: リファレンス
   items:
     - name: host.json 設定
-      href: 'durable-functions-bindings.md#host-json'
+      href: durable-functions-bindings.md#host-json
     - name: バインド
       href: durable-functions-bindings.md
     - name: HTTP API
@@ -132,7 +138,7 @@
     - name: ビデオ
       href: 'https://www.youtube.com/c/AzureFunctions'
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-functions.html'
+      href: /answers/topics/azure-functions.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-functions'
     - name: Twitter

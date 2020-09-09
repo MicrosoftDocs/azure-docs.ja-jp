@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: 29ad5ca6c9058b88a539c7a3bb8ace4d9a65083a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a89acb73ea5c78c9f82758e0a322fb9001698c24
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235351"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004336"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Azure Cache for Redis でデータをインポートまたはエクスポートする
 Import/Export は Azure Cache for Redis のデータ管理操作です。Azure Cache for Redis データベース (RDB) のスナップショットを Premium キャッシュと Azure Storage アカウント内の BLOB の間でインポートとエクスポートを行うことで、データを Azure Cache for Redis にインポートしたり、Azure Cache for Redis からエクスポートしたりすることができます。
@@ -24,7 +24,7 @@ Import/Export により、異なる Azure Cache for Redis インスタンス間�
 この記事では Azure Cache for Redis でデータをインポートまたはエクスポートする方法を説明し、よく寄せられる質問に回答します。
 
 > [!IMPORTANT]
-> インポート/エクスポートは、 [Premium レベル](cache-premium-tier-intro.md) のキャッシュでのみ使用できます。
+> Import/Export は、[Premium レベル](cache-overview.md#service-tiers)のキャッシュでのみ使用できます。
 >
 >
 
@@ -142,7 +142,9 @@ Import/Export では、Azure Cache for Redis へのデータの取り込みと A
 ### <a name="i-received-a-timeout-error-during-my-importexport-operation-what-does-it-mean"></a>Import/Export 操作中にタイムアウト エラーが発生しました。 これはどういうことですか?
 **[データのインポート]** ブレードまたは **[データのエクスポート]** ブレードに操作を開始しないまま留まっている時間が 15 分を超えると、次の例のようなエラー メッセージのエラーが発生します。
 
-    The request to import data into cache 'contoso55' failed with status 'error' and error 'One of the SAS URIs provided could not be used for the following reason: The SAS token end time (se) must be at least 1 hour from now and the start time (st), if given, must be at least 15 minutes in the past.
+```output
+The request to import data into cache 'contoso55' failed with status 'error' and error 'One of the SAS URIs provided could not be used for the following reason: The SAS token end time (se) must be at least 1 hour from now and the start time (st), if given, must be at least 15 minutes in the past.
+```
 
 これを解決するには、インポート操作またはエクスポート操作を 15 分以内に開始してください。
 
@@ -150,6 +152,6 @@ Import/Export では、Azure Cache for Redis へのデータの取り込みと A
 Export は、ページ BLOB として格納されている RDB ファイルでのみ機能します。 それ以外のタイプの BLOB は、ホット層とクール層の BLOB ストレージ アカウントも含め、現時点ではサポートされていません。 詳細については、「[Azure ストレージ アカウントの概要](../storage/common/storage-account-overview.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-Premium キャッシュ機能をさらに使用する方法を学習します。
+Azure Cache for Redis 機能について詳しく確認します。
 
-* [Azure Cache for Redis Premium レベルの概要](cache-premium-tier-intro.md)
+* [Azure Cache for Redis サービス レベル](cache-overview.md#service-tiers)

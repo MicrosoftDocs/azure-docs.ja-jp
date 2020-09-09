@@ -5,15 +5,15 @@ author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: a55515be478781a2f2448924c209a3348ae462c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ead175cbcaa9467cb5263ad95100facdda096991
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133306"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337808"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure Stream Analytics のクエリのトラブルシューティング
 
@@ -28,9 +28,9 @@ ms.locfileid: "82133306"
     - Azure portal の **[クエリ]** タブで **[テスト]** を選択します。 ダウンロードしたサンプル データを使用して[クエリをテスト](stream-analytics-test-query.md)します。 すべてのエラーを調査し、修正を試みます。   
     - また、Visual Studio の Azure Stream Analytics ツール、または [Visual Studio Code](visual-studio-code-local-run-live-input.md) を使用して、[クエリをローカルでテスト](stream-analytics-live-data-local-testing.md)することもできます。 
 
-2.  Visual Studio の Azure Stream Analytics ツールで、[ジョブ ダイアグラムを使用して段階を追ってローカルでクエリをデバッグ](debug-locally-using-job-diagram.md)します。 ジョブ ダイアグラムには、入力ソース (イベント ハブ、IoT Hub など) のデータが複数のクエリ手順を介して最終的に出力シンクまでどのように流れるかが示されます。 各クエリ ステップは、WITH ステートメントを使用してスクリプトに定義された一時的結果セットにマップされます。 各中間結果セット内のデータとメトリックを表示して、問題の原因を見つけることができます。
+2.  Visual Studio Code の Azure Stream Analytics ツールで、[ジョブ ダイアグラムを使用して段階を追ってローカルでクエリをデバッグ](debug-locally-using-job-diagram-vs-code.md)します。 ジョブ ダイアグラムには、入力ソース (イベント ハブ、IoT Hub など) のデータが複数のクエリ手順を介して最終的に出力シンクまでどのように流れるかが示されます。 各クエリ ステップは、WITH ステートメントを使用してスクリプトに定義された一時的結果セットにマップされます。 各中間結果セット内のデータとメトリックを表示して、問題の原因を見つけることができます。
 
-    ![ジョブ ダイアグラムのプレビュー結果](./media/debug-locally-using-job-diagram/preview-result.png)
+    ![ジョブ ダイアグラムのプレビュー結果](./media/debug-locally-using-job-diagram-vs-code/preview-result.png)
 
 3.  [**Timestamp By**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) を使用する場合は、イベントのタイムスタンプが[ジョブの開始時刻](stream-analytics-out-of-order-and-late-events.md)より後であることを確認します。
 
@@ -43,7 +43,7 @@ ms.locfileid: "82133306"
 
 5.  イベント順序ポリシーが期待どおりに構成されていることを確認します。 **[設定]** に移動し、[ **[イベント順序]** ](stream-analytics-out-of-order-and-late-events.md) を選択します。 このポリシーは、 **[テスト]** ボタンを使用してクエリをテストする場合には適用 "*されません*"。 この結果が、ブラウザーでテストする場合と、運用環境でジョブを実行する場合の相違点の 1 つです。 
 
-6. アクティビティとリソース ログを使用したデバッグ: 
+6. アクティビティとリソース ログを使用したデバッグ:
     - [アクティビティ ログ](../azure-resource-manager/resource-group-audit.md)を使用してフィルター処理を行い、エラーを特定してデバッグします。
     - [ジョブのリソース ログ](stream-analytics-job-diagnostic-logs.md)を使用してエラーを特定し、デバッグします。
 
@@ -103,7 +103,7 @@ Azure Stream Analytics ジョブの次のサンプル クエリには、1 つの
 
 ## <a name="get-help"></a>ヘルプの参照
 
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
+詳細については、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

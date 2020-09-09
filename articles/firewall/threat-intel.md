@@ -5,20 +5,21 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 05/12/2020
 ms.author: victorh
-ms.openlocfilehash: c291dbe9c1eb37e68174a2353e296a376c7d0896
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e51cc8905a7b4a88bb7f7dabaf24bb30159ff86c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74168679"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655069"
 ---
 # <a name="azure-firewall-threat-intelligence-based-filtering"></a>Azure Firewall の脅威インテリジェンスベースのフィルター処理
 
-ファイアウォール用に脅威インテリジェンスベースのフィルター処理を有効にして、既知の悪意のある IP アドレスやドメインとの間のトラフィックの警告と拒否を行うことができます。 この IP アドレスとドメインのソースは、Microsoft の脅威インテリジェンス フィードです。 [インテリジェント セキュリティ グラフ](https://www.microsoft.com/en-us/security/operations/intelligence)は、Microsoft の脅威インテリジェンスを動作させる機能です。Azure Security Center を含む複数のサービスによって使用されます。
+ファイアウォール用に脅威インテリジェンスベースのフィルター処理を有効にして、既知の悪意のある IP アドレスやドメインとの間のトラフィックの警告と拒否を行うことができます。 この IP アドレスとドメインのソースは、Microsoft の脅威インテリジェンス フィードです。 [インテリジェント セキュリティ グラフ](https://www.microsoft.com/security/operations/intelligence)は、Microsoft の脅威インテリジェンスを動作させる機能です。Azure Security Center を含む複数のサービスによって使用されます。<br>
+<br>
 
-![ファイアウォールの脅威インテリジェンス](media/threat-intel/firewall-threat.png)
+:::image type="content" source="media/threat-intel/firewall-threat.png" alt-text="ファイアウォールの脅威インテリジェンス" border="false":::
 
 脅威インテリジェンスベースのフィルター処理が有効になっている場合は、NAT ルール、ネットワーク ルール、またはアプリケーション ルールの前に、関連付けられているルールが処理されます。
 
@@ -26,7 +27,7 @@ ms.locfileid: "74168679"
 
 既定では、脅威インテリジェンスベースのフィルター処理は、アラート モードで有効になっています。 この機能の無効化やモードの変更は、ポータルのインターフェイスがお住まいの地域で使用可能になるまで実行できません。
 
-![脅威インテリジェンス ベースのフィルタリング ポータルのインターフェイス](media/threat-intel/threat-intel-ui.png)
+:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="脅威インテリジェンス ベースのフィルタリング ポータルのインターフェイス":::
 
 ## <a name="logs"></a>ログ
 

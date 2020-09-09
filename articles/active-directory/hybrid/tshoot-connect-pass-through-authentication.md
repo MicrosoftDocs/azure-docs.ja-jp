@@ -11,24 +11,24 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 4/15/2019
+ms.topic: troubleshooting
+ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae83cea866367fa6a6596caa683d0287bea96c29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99ebac32193f764059bea2a30b6ddbce879938a6
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60456181"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89275925"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Azure Active Directory パススルー認証のトラブルシューティング
 
 この記事は、Azure AD パススルー認証に関する一般的な問題のトラブルシューティング情報を見つける助けとなります。
 
 >[!IMPORTANT]
->パススルー認証でユーザーのサインインの問題が発生している場合、フォールバックするためのクラウド専用グローバル管理者アカウントを用意せずに機能を無効にしたり、パススルー認証エージェントをアンインストールしたりしないでください。 クラウド専用のグローバル管理者アカウントを追加する手順については、[こちら](../active-directory-users-create-azure-portal.md)をご覧ください。 これを実行することは欠かせない手順で、テナントからロックアウトされないようになります。
+>パススルー認証でユーザーのサインインの問題が発生している場合、フォールバックするためのクラウド専用グローバル管理者アカウントを用意せずに機能を無効にしたり、パススルー認証エージェントをアンインストールしたりしないでください。 クラウド専用のグローバル管理者アカウントを追加する手順については、[こちら](../fundamentals/add-users-azure-active-directory.md)をご覧ください。 これを実行することは欠かせない手順で、テナントからロックアウトされないようになります。
 
 ## <a name="general-issues"></a>一般的な問題
 
@@ -44,7 +44,7 @@ ms.locfileid: "60456181"
 
 ユーザーがパススルー認証を使用してサインインできない場合、Azure AD のサインイン画面に、次のようなユーザー向けエラーの 1 つが表示されることがあります。 
 
-|エラー|説明|解像度
+|エラー|説明|解決方法
 | --- | --- | ---
 |AADSTS80001|Unable to connect to Active Directory (Active Directory に接続できません)|エージェント サーバーが、パスワードを検証する必要のあるユーザーと同じ AD フォレストのメンバーであり、Active Directory に接続できることを確認します。  
 |AADSTS8002|A timeout occurred connecting to Active Directory (Active Directory への接続中にタイムアウトが発生しました)|Active Directory が使用可能で、エージェントからの要求に応答していることを確認します。
@@ -52,15 +52,40 @@ ms.locfileid: "60456181"
 |AADSTS80005|Validation encountered unpredictable WebException (検証で予測外の WebException が発生しました)|一時的なエラーです。 要求をやり直してください。 引き続きエラーが発生する場合は、Microsoft サポートに連絡してください。
 |AADSTS80007|An error occurred communicating with Active Directory (Active Directory との通信中にエラーが発生しました)|Check the agent logs for more information and verify that Active Directory is operating as expected. (エージェント ログで詳細を確認し、Active Directory が期待通りに動作していることを確認してください。)
 
+### <a name="users-get-invalid-usernamepassword-error"></a>ユーザーが無効なユーザー名またはパスワードのエラーを取得する 
+
+これは、ユーザーのオンプレミスの UserPrincipalName (UPN) がユーザーのクラウドの UPN と異なる場合に発生する可能性があります。
+
+これが問題であることを確認するには、まずパススルー認証エージェントが正常に機能していることをテストします。
+
+
+1. テスト アカウントを作成します。  
+2. エージェント マシンに PowerShell モジュールをインポートします。
+ 
+ ```powershell
+ Import-Module "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\PassthroughAuthPSModule\PassthroughAuthPSModule.psd1"
+ ```
+3. Invoke PowerShell コマンドを実行します。 
+
+ ```powershell
+ Invoke-PassthroughAuthOnPremLogonTroubleshooter 
+ ``` 
+4. 資格情報の入力を求められたら、(https://login.microsoftonline.com) ) へのサインインに使用するものと同じユーザー名とパスワードを入力します。
+
+同じユーザー名またはパスワードのエラーが発生した場合、パススルー認証エージェントは正常に動作していて、オンプレミスの UPN がルーティング不可能であることが問題の可能性があることを意味しています。 詳細については、「[代替ログイン ID を構成する]( /windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More)」を参照してください。
+
+> [!IMPORTANT]
+> Azure AD Connect サーバーが ([Azure AD Connect の前提条件](./how-to-connect-install-prerequisites.md#installation-prerequisites)に記載されている要件である) ドメイン参加済みでない場合は、無効なユーザー名/パスワードの問題が発生します。
+
 ### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Azure Active Directory 管理センターでのサインイン失敗の理由 (Premium ライセンスが必要)
 
 テナントに Azure AD Premium ライセンスが関連付けられている場合は、[Azure Active Directory 管理センター](https://aad.portal.azure.com/)で[サインイン アクティビティ レポート](../reports-monitoring/concept-sign-ins.md)を参照することもできます。
 
 ![Azure Active Directory 管理センター - サインイン レポート](./media/tshoot-connect-pass-through-authentication/pta4.png)
 
-[Azure Active Directory 管理センター](https://aad.portal.azure.com/)で **[Azure Active Directory]** -> **[サインイン]** に移動し、特定のユーザーのサインイン アクティビティをクリックします。 **[サインインのエラー コード]** フィールドを探します。 次の表を使用して、そのフィールドの値を、失敗の理由と解決策にマップします。
+[Azure Active Directory 管理センター](https://aad.portal.azure.com/)で **[Azure Active Directory]**  ->  **[サインイン]** に移動し、特定のユーザーのサインイン アクティビティをクリックします。 **[サインインのエラー コード]** フィールドを探します。 次の表を使用して、そのフィールドの値を、失敗の理由と解決策にマップします。
 
-|サインイン エラー コード|サインインが失敗した理由|解像度
+|サインイン エラー コード|サインインが失敗した理由|解決方法
 | --- | --- | ---
 | 50144 | ユーザーの Active Directory パスワードの有効期限が切れています。 | オンプレミスの Active Directory でユーザーのパスワードをリセットします。
 | 80001 | 利用できる認証エージェントがありません。 | 認証エージェントをインストールして登録します。
@@ -73,7 +98,7 @@ ms.locfileid: "60456181"
 | 80011 | 認証エージェントは復号化キーを取得できません。 | 一貫して問題を再現できる場合は、新しい認証エージェントをインストールして登録します。 また、現在のものはアンインストールします。
 
 >[!IMPORTANT]
->パススルー認証エージェントでは、[Win32 LogonUser API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx) を呼び出して、Active Directory に対してユーザー名とパスワードを検証することで Azure AD ユーザーを認証します。 その結果、ワークステーションのログオン アクセスを制限するよう Active Directory の "ログオン先" を設定した場合は、"ログオン先" のサーバーの一覧に、パススルー認証エージェントをホストするサーバーも追加する必要があります。 これに失敗すると、Azure AD へのサインインからユーザーがブロックされます。
+>パススルー認証エージェントでは、[Win32 LogonUser API](/windows/win32/api/winbase/nf-winbase-logonusera) を呼び出して、Active Directory に対してユーザー名とパスワードを検証することで Azure AD ユーザーを認証します。 その結果、ワークステーションのログオン アクセスを制限するよう Active Directory の "ログオン先" を設定した場合は、"ログオン先" のサーバーの一覧に、パススルー認証エージェントをホストするサーバーも追加する必要があります。 これに失敗すると、Azure AD へのサインインからユーザーがブロックされます。
 
 ## <a name="authentication-agent-installation-issues"></a>認証エージェントのインストールに関する問題
 

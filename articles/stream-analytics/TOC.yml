@@ -1,4 +1,4 @@
-- name: Stream Analytics のドキュメント
+- name: Azure Stream Analytics のドキュメント
   href: index.yml
 - name: 概要
   items:
@@ -13,7 +13,10 @@
       items:
         - name: Azure portal
           href: stream-analytics-quick-create-portal.md
+        - name: Azure CLI
+          href: quick-create-azure-cli.md
         - name: ARM テンプレート
+          displayName: Resource Manager
           href: quick-create-azure-resource-manager.md
         - name: PowerShell
           href: stream-analytics-quick-create-powershell.md
@@ -29,7 +32,7 @@
       href: stream-analytics-with-azure-functions.md
     - name: 3 - Azure Pipelines での CI/CD によるデプロイ
       href: stream-analytics-tools-visual-studio-cicd-vsts.md
-    - name: '4 - C# UDF の実行'
+    - name: 4 - C# UDF の実行
       href: stream-analytics-edge-csharp-udf.md
     - name: 5 - カスタム .NET 逆シリアライザーの作成
       href: custom-deserializer.md
@@ -37,9 +40,6 @@
   items:
     - name: コード サンプル
       href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: ストリーミング分析テクノロジの選択
@@ -48,6 +48,13 @@
       href: feature-comparison.md
     - name: ローカルでの開発
       href: develop-locally.md
+    - name: セキュリティ
+      items:
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
     - name: ジョブの入力の種類
       items:
         - name: 入力の概要
@@ -63,12 +70,34 @@
         - name: 出力の概要
           href: stream-analytics-define-outputs.md
           displayName: 'adls, sql, blob, event hubs, power bi, table, service bus, cosmos, functions'
-        - name: Cosmos DB に出力する
-          href: stream-analytics-documentdb-output.md
-        - name: Azure SQL DB に出力する
+        - name: Azure Data Lake Storage Gen 1
+          href: azure-data-lake-storage-gen1-output.md
+        - name: Azure SQL データベース
+          href: sql-database-output.md
+        - name: SQL データベースのパフォーマンス
           href: stream-analytics-sql-output-perf.md
+        - name: Azure Synapse Analytics
+          href: azure-synapse-analytics-output.md
+        - name: Blob Storage と Azure Data Lake Gen 2
+          href: blob-storage-azure-data-lake-gen2-output.md
         - name: BLOB のカスタム パス パターン
           href: stream-analytics-custom-path-patterns-blob-storage-output.md
+        - name: Event Hubs
+          href: event-hubs-output.md
+        - name: Power BI
+          href: power-bi-output.md
+        - name: Table ストレージ
+          href: table-storage-output.md
+        - name: Service Bus キュー
+          href: service-bus-queues-output.md
+        - name: Service Bus トピック
+          href: service-bus-topics-output.md
+        - name: Azure Cosmos DB
+          href: azure-cosmos-db-output.md
+        - name: Cosmos DB の最適化
+          href: stream-analytics-documentdb-output.md
+        - name: Azure Functions
+          href: azure-functions-output.md
     - name: 関数を使用したクエリの拡張
       items:
         - name: 関数の概要
@@ -77,10 +106,12 @@
           href: stream-analytics-javascript-user-defined-functions.md
         - name: JavaScript UDA
           href: stream-analytics-javascript-user-defined-aggregates.md
-        - name: 'C# UDF'
+        - name: C# UDF
           href: stream-analytics-edge-csharp-udf-methods.md
         - name: Machine Learning UDF
           href: machine-learning-udf.md
+        - name: UDF のデバッグ
+          href: debug-user-defined-functions.md
     - name: Stream Analytics のジョブを最適化する
       items:
         - name: ストリーミング ユニットの理解と調整
@@ -110,10 +141,12 @@
       href: stream-analytics-concepts-checkpoint-replay.md
     - name: エラー ポリシー
       href: stream-analytics-output-error-policy.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: 管理する
       items:
+        - name: ジョブの自動スケーリング
+          href: stream-analytics-autoscale.md
         - name: 資格情報の更新
           href: stream-analytics-login-credentials-inputs-outputs.md
         - name: イベント順序ポリシーを構成する
@@ -150,6 +183,8 @@
               displayName: 'managed identity, identities, authenticate'
         - name: データを暗号化する
           href: data-protection.md
+        - name: geo 冗長
+          href: geo-redundancy.md
     - name: ソリューションを構築する
       items:
         - name: Twitter センチメントの分析
@@ -158,6 +193,8 @@
           href: stream-analytics-real-time-fraud-detection.md
         - name: IoT Edge でのジョブの実行
           href: stream-analytics-edge.md
+        - name: Azure Stack でのジョブの実行
+          href: on-azure-stack.md
         - name: 料金所のセンサー データの分析
           href: stream-analytics-build-an-iot-solution-using-stream-analytics.md
         - name: 高頻度取引
@@ -221,6 +258,8 @@
           href: visual-studio-code-local-run.md
         - name: ライブ データを使用してローカルでテストする
           href: visual-studio-code-local-run-live-input.md
+        - name: ジョブ ダイアグラムを使用してクエリをデバッグする
+          href: debug-locally-using-job-diagram-vs-code.md
         - name: CI/CD パイプラインの設定
           href: setup-cicd-vs-code.md
         - name: ジョブの探索
@@ -611,6 +650,11 @@
       href: /rest/api/streamanalytics
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.streamanalytics/allversions
+    - name: Azure CLI
+      href: /cli/azure/ext/stream-analytics/stream-analytics
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Stream Analytics プレビュー

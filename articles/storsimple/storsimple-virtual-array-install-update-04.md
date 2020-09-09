@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/07/2017
 ms.author: alkohli
-ms.openlocfilehash: b67fcb82bdcc94d7faeceedb7420a869e6578cad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f68abf6315c1ca344f90dec55bf8cdc813e58823
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61436394"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513695"
 ---
 # <a name="install-update-04-on-your-storsimple-virtual-array"></a>StorSimple Virtual Array への Update 0.4 のインストール
 

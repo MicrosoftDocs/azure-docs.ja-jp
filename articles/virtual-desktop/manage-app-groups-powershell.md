@@ -1,27 +1,22 @@
 ---
 title: Windows Virtual Desktop のアプリ グループを管理する PowerShell - Azure
 description: PowerShell を使用して Windows Virtual Desktop アプリ グループを管理する方法。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 531c7a819bf83edff2756fe1e62859bcb8fef459
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: a6f24dea00a174aa0276a9b30add0854c3694056
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614220"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008646"
 ---
 # <a name="manage-app-groups-using-powershell"></a>PowerShell を使用してアプリ グループを管理する
 
 >[!IMPORTANT]
->このコンテンツは、Spring 2020 更新プログラムと Azure Resource Manager Windows Virtual Desktop オブジェクトの組み合わせを対象としています。 Azure Resource Manager オブジェクトのない Windows Virtual Desktop Fall 2019 リリースを使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/manage-app-groups-2019.md)を参照してください。
->
-> Windows Virtual Desktop Spring 2020 更新プログラムは現在、パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することは推奨されません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+>このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを使用しない Windows Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/manage-app-groups-2019.md)を参照してください。
 
 Windows Virtual Desktop の新しいホスト プール向けに作成される既定のアプリ グループには、完全なデスクトップも公開されています。 加えて、ホスト プールには RemoteApp アプリケーション グループ (複数可) を作成することができます。 このチュートリアルに沿って作業すれば、RemoteApp アプリ グループを作成して、独自の **[スタート]** メニュー アプリを公開することができます。
 
@@ -54,43 +49,43 @@ PowerShell を使用して RemoteApp グループを作成するには:
 3. 次のコマンドレットを実行して、ホスト プールの仮想マシン イメージにある **[スタート]** メニュー アプリの一覧を取得します。 **FilePath**、**IconPath**、**IconIndex** など、公開したいアプリケーションの重要な情報の値を書き留めます。
 
    ```powershell
-   Get-AzWvdStartMenuItem -ApplicationGroupName <appgroupname> -ResourceGroupName <resourcegroupname> | Format-List | more 
+   Get-AzWvdStartMenuItem -ApplicationGroupName <appgroupname> -ResourceGroupName <resourcegroupname> | Format-List | more
    ```
 
    出力には、すべての [スタート] メニュー項目が次のような形式で表示されます。
 
    ```powershell
    AppAlias            : access
-   CommandLineArgument : 
-   FilePath            : C:\Program Files\Microsoft Office\root\Office16\MSACCESS.EXE 
-   FriendlyName        : 
-   IconIndex           : 0 
-   IconPath            : C:\Program Files\Microsoft Office\Root\VFS\Windows\Installer\{90160000-000F-0000-1000-0000000FF1CE}\accicons.exe 
-   Id                  : /subscriptions/resourcegroups/providers/Microsoft.DesktopVirtualization/applicationgroups/startmenuitems/Access 
-   Name                : 0301RAG/Access 
+   CommandLineArgument :
+   FilePath            : C:\Program Files\Microsoft Office\root\Office16\MSACCESS.EXE
+   FriendlyName        :
+   IconIndex           : 0
+   IconPath            : C:\Program Files\Microsoft Office\Root\VFS\Windows\Installer\{90160000-000F-0000-1000-0000000FF1CE}\accicons.exe
+   Id                  : /subscriptions/resourcegroups/providers/Microsoft.DesktopVirtualization/applicationgroups/startmenuitems/Access
+   Name                : 0301RAG/Access
    Type                : Microsoft.DesktopVirtualization/applicationgroups/startmenuitems
-   
-   AppAlias            : charactermap 
-   CommandLineArgument : 
-   FilePath            : C:\windows\system32\charmap.exe 
-   FriendlyName        : 
-   IconIndex           : 0 
-   IconPath            : C:\windows\system32\charmap.exe 
-   Id                  : /subscriptions/resourcegroups/providers/Microsoft.DesktopVirtualization/applicationgroups/startmenuitems/Character Map 
-   Name                : 0301RAG/Character Map 
-   Type                : Microsoft.DesktopVirtualization/applicationgroups/startmenuitems 
+
+   AppAlias            : charactermap
+   CommandLineArgument :
+   FilePath            : C:\windows\system32\charmap.exe
+   FriendlyName        :
+   IconIndex           : 0
+   IconPath            : C:\windows\system32\charmap.exe
+   Id                  : /subscriptions/resourcegroups/providers/Microsoft.DesktopVirtualization/applicationgroups/startmenuitems/Character Map
+   Name                : 0301RAG/Character Map
+   Type                : Microsoft.DesktopVirtualization/applicationgroups/startmenuitems
    ```
-   
+
 4. 次のコマンドレットを実行して、`AppAlias` に基づくアプリケーションをインストールします。 `AppAlias` は、手順 3. の出力を実行すると利用できるようになります。
 
    ```powershell
-   New-AzWvdApplication -AppAlias <appalias> -GroupName <appgroupname> -Name <remoteappname> -ResourceGroupName <resourcegroupname> -CommandLineSetting <DoNotAllow|Allow|Require> 
+   New-AzWvdApplication -AppAlias <appalias> -GroupName <appgroupname> -Name <remoteappname> -ResourceGroupName <resourcegroupname> -CommandLineSetting <DoNotAllow|Allow|Require>
    ```
 
 5. (省略可) 次のコマンドレットを実行して、手順 1. で作成したアプリケーション グループに新しい RemoteApp プログラムを発行します。
 
    ```powershell
-   New-AzWvdApplication -GroupName <appgroupname> -Name <remoteappname> -ResourceGroupName <resourcegroupname> -Filepath <filepath> -IconPath <iconpath> -IconIndex <iconindex> -CommandLineSetting <DoNotAllow|Allow|Require> 
+   New-AzWvdApplication -GroupName <appgroupname> -Name <remoteappname> -ResourceGroupName <resourcegroupname> -Filepath <filepath> -IconPath <iconpath> -IconIndex <iconindex> -CommandLineSetting <DoNotAllow|Allow|Require>
    ```
 
 6. アプリが公開されたことを確認するために、次のコマンドレットを実行します。

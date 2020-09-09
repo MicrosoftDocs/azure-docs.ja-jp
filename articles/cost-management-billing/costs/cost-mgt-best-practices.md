@@ -3,17 +3,18 @@ title: Azure Cost Management でクラウド投資を最適化する
 description: この記事は、クラウドへの投資から最大限の価値を得て、コストを削減し、コストのかかる部分を評価するのに役立ちます。
 author: bandersmsft
 ms.author: banders
-ms.date: 05/04/2020
+ms.date: 05/27/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 759c69544c083e95cbd5198eecf9f7bb0e882aa8
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 729150188e918d4964f8abe729c66032d8e6c9c0
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791614"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689152"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Azure Cost Management を使用してクラウドへの投資を最適化する方法
 
@@ -131,14 +132,39 @@ Azure Migrate は、オンプレミス データセンターでの組織の現�
 
 時間の経過と共に組織のコストがどのように変化するかを常に把握します。 次の手法を使用して、支出を正しく理解して管理します。
 
-### <a name="organize-and-tag-your-resources"></a>リソースを整理してタグを付ける
+### <a name="organize-resources-to-maximize-cost-insights-and-accountability"></a>リソースを整理してコストの分析情報とアカウンタビリティを最大化する
 
-コストを考慮してリソースを整理します。 サブスクリプションとリソース グループを作成する際に、関連コストの担当チームについて考えます。 組織を考慮してレポートしていることを確認します。 サブスクリプションとリソース グループでは、組織全体の支出を整理して属性付けるために適切なバケットが提供されます。 タグはコストを属性付ける優れた方法です。 タグをフィルターとして使用できます。 データを分析してコストを調べる際に、このタグを使用してグループ化できます。 Enterprise Agreement のお客様は、部門を作成し、そこにサブスクリプションを配置することもできます。 Azure でのコストベースの整理は、組織内の担当者にチームの支出削減に対して責任を持たせるのに役立ちます。
+Azure の課金とリソースの階層に対して、十分に計画された組織構造を使用すると、クラウド インフラストラクチャを作成する過程で生じるコストを確実に把握し、管理することができます。 使用できる組織ツールとその活用方法への理解を深めるために、[エンティティ階層のセットアップ](https://www.youtube.com/watch?v=n3TLRaYJ1NY)に関するビデオをご覧ください。 他の動画を視聴するには、[Cost Management の YouTube チャンネル](https://www.youtube.com/c/AzureCostManagement)にアクセスしてください。
 
-スケーラブルなリソースへのタグ付けを組織内で遵守させるために利用できるツールについては、ビデオ「[Azure Cost Management でタグのポリシーを確認する方法](https://www.youtube.com/watch?v=nHQYcYGKuyw)」をご覧ください。 他の動画を視聴するには、[Cost Management の YouTube チャンネル](https://www.youtube.com/c/AzureCostManagement)にアクセスしてください。
+>[!VIDEO https://www.youtube.com/embed/n3TLRaYJ1NY]
+
+ニーズを満たした階層を評価、作成する際は、次の点を自問してください。
+
+"*自分が利用できる課金階層はどれか、また自分にはどのスコープが使用できるか*"
+
+Azure のプランの種類を調べて、自分の組織に合った課金方法を特定します。 Azure の各課金方法で使用できるスコープについては、「[スコープを理解して使用する](understand-work-scopes.md)」を参照してください。
+
+"*複数のチームが存在する場合、サブスクリプションとリソース グループはどのように整理すべきか*"
+
+サブスクリプションまたはリソース グループをチームごとに作成するのが一般的なプラクティスです。 コストが区別しやすくなり、またチームのアカウンタビリティも維持しやすくなります。 ただし、コストはサブスクリプションまたはリソース グループに関連付けられます。
+
+既にチームのサブスクリプションが複数ある場合は、それらのサブスクリプションを管理グループにまとめ、コストをまとめて分析することを検討してください。 管理グループ、サブスクリプション、リソース グループは、いずれも Azure RBAC 階層の一部になっています。 それらをひとまとめにして、チームでのアクセスの制御に使用してください。
+
+リソースは、特に複数のチームやワークロードによって共有されているとき、複数のスコープにまたがる場合があります。 タグを使用してリソースを識別することを検討してください。 タグについては、次のセクションで詳しく説明します。
+
+*開発環境や運用環境はあるか*
+
+開発環境には、低価格の利点を活かすために Dev/Test サブスクリプションの作成を検討してください。 複数のチームまたは複数の Azure スコープにワークロードがまたがる場合は、タグを使用してそれらを識別することを検討します。
+
+### <a name="tag-shared-resources"></a>共有リソースにタグを付ける
+
+複数のチームや複数の Azure スコープにまたがるコストを把握するうえで、タグは効果的な手段です。 たとえば、メール サーバーなどのリソースは、多くのチームによって使用されることが考えられます。 メール サーバーなどの共有リソースは、共有リソース専用のサブスクリプションに置くか、既存のサブスクリプションに置くことができます。 既存のサブスクリプションに配置した場合、サブスクリプションの所有者にとって、そのコストが毎月、自分たちのチームに課されるのは喜ばしいことではありません。 この例では、タグを使用することで、共有されているリソースを識別することができます。
+
+同様に、Web アプリまたは環境 (テスト環境、運用環境など) で使用されているリソースが、別々のチームによって所有されている複数のサブスクリプションにまたがることもあるでしょう。 ワークロードのコスト全体を把握しやすくするためには、使用されているリソースにタグを付けます。 タグが適切に適用されていれば、コスト分析で、それらのタグをフィルターとして適用することで傾向を把握しやすくなります。
+
+リソースにタグを付けるよう計画した後、リソースへのタグ付けを強制する Azure Policy を構成することができます。 スケーラブルなリソースへのタグ付けを遵守させるために利用できるツールについては、「[Azure Cost Management を使用してタグ ポリシーを確認する方法](https://www.youtube.com/watch?v=nHQYcYGKuyw)」のビデオをご覧ください。 他の動画を視聴するには、[Cost Management の YouTube チャンネル](https://www.youtube.com/c/AzureCostManagement)にアクセスしてください。
 
 >[!VIDEO https://www.youtube.com/embed/nHQYcYGKuyw]
-
 
 ### <a name="use-cost-analysis"></a>コスト分析を使用する
 

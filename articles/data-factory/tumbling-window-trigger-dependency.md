@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/29/2019
-ms.openlocfilehash: 39ea8dda0fd823d3061b2cb29e1c548f99281c82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b417e7c4589f3a4214400a877812d196a63349b
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418798"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82870040"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>タンブリング ウィンドウ トリガーの依存関係の作成
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -24,6 +24,10 @@ ms.locfileid: "81418798"
 この記事では、タンブリング ウィンドウ トリガーの依存関係を作成する手順について説明します。 タンブリング ウィンドウ トリガーに関する全般な情報については、[タンブリング ウィンドウ トリガーを作成する方法](how-to-create-tumbling-window-trigger.md)に関するページを参照してください。
 
 依存関係チェーンを構築し、データ ファクトリ内の別のトリガーの実行が成功した後でのみトリガーが実行されるようにするには、この高度な機能を使用して、タンブリング ウィンドウの依存関係を作成します。
+
+タンブリング ウィンドウ トリガーを使用して Azure Data Factory 内に依存パイプラインを作成する方法のデモについては、次のビデオをご覧ください。
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Create-dependent-pipelines-in-your-Azure-Data-Factory/player]
 
 ## <a name="create-a-dependency-in-the-data-factory-ui"></a>Data Factory UI で依存関係を作成する
 
@@ -82,11 +86,14 @@ ms.locfileid: "81418798"
 | size | 依存関係のタンブリング ウィンドウのサイズ。 正の timespan 値を指定します。 このプロパティは省略可能です。 | Timespan<br/>(hh:mm:ss) | いいえ  |
 
 > [!NOTE]
-> タンブリング ウィンドウ トリガーは、最大 2 つの他のトリガーに依存することができます。
+> タンブリング ウィンドウ トリガーは、最大 5 つの他のトリガーに依存することができます。
 
 ## <a name="tumbling-window-self-dependency-properties"></a>タンブリング ウィンドウの自己依存関係プロパティ
 
-前のウィンドウが正常に完了するまではトリガーが次のウィンドウに進まないシナリオでは、自己依存関係を構築します。 前の時間内のそれ自体の以前の実行が成功したことに依存する自己依存トリガーには、次のプロパティがあります。
+前のウィンドウが正常に完了するまではトリガーが次のウィンドウに進んではならないシナリオでは、自己依存関係を構築します。 前の時間内にそれ自体の以前の実行が成功したことに依存する自己依存トリガーには、次のコードで示されているプロパティがあります。
+
+> [!NOTE]
+> トリガーされるパイプラインが、前にトリガーされたウィンドウでのパイプラインの出力に依存している場合は、タンブリング ウィンドウ トリガーの自己依存関係のみを使用することをお勧めします。 並列トリガーの実行を制限するには、最大トリガー コンカレンシーを設定します。
 
 ```json
 {
@@ -147,10 +154,6 @@ ms.locfileid: "81418798"
 ジョブの出力ストリームにずれがない日次ジョブ:
 
 ![自己依存関係の例](media/tumbling-window-trigger-dependency/tumbling-window-dependency06.png "自己依存関係の例")
-
-タンブリング ウィンドウ トリガーを使用して Azure Data Factory 内に依存パイプラインを作成する方法のデモについては、次のビデオをご覧ください。
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Create-dependent-pipelines-in-your-Azure-Data-Factory/player]
 
 ## <a name="monitor-dependencies"></a>依存関係を監視する
 

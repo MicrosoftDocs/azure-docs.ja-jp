@@ -5,27 +5,24 @@ description: トレーニングでデータセットを使用する方法につ�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
 ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 03/09/2020
-ms.openlocfilehash: 401383f2d483836bf725051810d78167869f7b22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/31/2020
+ms.topic: conceptual
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: b20612756050ae2e9d39f59d049b8c097e3b8010
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79237015"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651218"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Azure Machine Learning でデータセットを使用してトレーニングする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-この記事では、接続文字列やデータ パスを気にせずに、リモート実験トレーニングの実行時に [Azure Machine Learning データセット](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py)を使用する 2 つの方法について説明します。
-
-- オプション 1: 構造化データがある場合、TabularDataset を作成し、トレーニング スクリプトで直接それを使用します。
-
-- オプション 2:非構造化データがある場合、FileDataset を作成し、トレーニングのためにリモート コンピューティングにファイルをマウントまたはダウンロードします。
+この記事では、トレーニング実験で [Azure Machine Learning データセット](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py)を使用する方法について説明します。  接続文字列やデータ パスを気にすることなく、ローカルまたはリモートのコンピューティング先でデータセットを使用することができます。
 
 Azure Machine Learning データセットにより、[ScriptRun](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py)、[Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)、[HyperDrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py)、[Azure Machine Learning パイプライン](how-to-create-your-first-pipeline.md)などの Azure Machine Learning トレーニング製品とのシームレスな統合が提供されます。
 
@@ -42,26 +39,14 @@ Azure Machine Learning データセットにより、[ScriptRun](https://docs.mi
 > [!Note]
 > 一部の Dataset クラスは、[azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) パッケージに依存しています。 Linux ユーザーの場合、これらのクラスは次のディストリビューションでのみサポートされています。Red Hat Enterprise Linux、Ubuntu、Fedora、および CentOS。
 
-## <a name="option-1-use-datasets-directly-in-training-scripts"></a>オプション 1: トレーニング スクリプトでデータセットを直接使用する
+## <a name="access-and-explore-input-datasets"></a>入力データセットへのアクセスと探索
 
-この例では、[TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) を作成し、それをトレーニング用の `estimator` オブジェクトへの直接入力として使用します。 
+ワークスペースの実験のトレーニング スクリプトから既存の TabularDataset にアクセスし、そのデータセットを pandas データフレームに読み込んで、ローカル環境でさらに調べることができます。
 
-### <a name="create-a-tabulardataset"></a>TabularDataset を作成する
+次のコードでは、[`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py) クラスの [`get_context()`]() メソッドを使用して、トレーニング スクリプトの既存の入力 TabularDataset (`titanic`) にアクセスします。 次に、トレーニングの前にデータをさらに調べて準備するために、[`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) メソッドを使用して、そのデータセットを pandas データフレームに読み込みます。
 
-次のコードでは、Web URL から未登録の TabularDataset を作成します。 データストアのローカル ファイルまたはローカル パスからデータセットを作成することもできます。 [データセットを作成する方法](https://aka.ms/azureml/howto/createdatasets)の詳細をご覧ください。
-
-```Python
-from azureml.core.dataset import Dataset
-
-web_path ='https://dprepdata.blob.core.windows.net/demo/Titanic.csv'
-titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path)
-```
-
-### <a name="access-the-input-dataset-in-your-training-script"></a>トレーニング スクリプトで入力データセットにアクセスする
-
-TabularDataset オブジェクトを使用すると、使い慣れたデータ準備とトレーニングのライブラリを操作できるように、pandas または spark DataFrame にデータを読み込むことができます。 この機能を利用するには、トレーニング構成で TabularDataset を入力として渡し、それをスクリプトで取得します。
-
-これを行うには、トレーニング スクリプト内の [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py) オブジェクトを使用して入力データセットにアクセスし、[`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) メソッドを使用します。 
+> [!Note]
+> 元のデータ ソースに NaN、空の文字列、または空白の値が含まれている場合、to_pandas_dataframe() を使用すると、それらの値は *Null* 値として置き換えられます。 
 
 ```Python
 %%writefile $script_folder/train_titanic.py
@@ -71,9 +56,31 @@ from azureml.core import Dataset, Run
 run = Run.get_context()
 # get the input dataset by name
 dataset = run.input_datasets['titanic']
+
 # load the TabularDataset to pandas DataFrame
 df = dataset.to_pandas_dataframe()
 ```
+
+準備されたデータをイン メモリの pandas データ フレームから新しいデータセットに読み込む必要がある場合は、そのデータを parquet などのローカル ファイルに書き込み、そのファイルから新しいデータセットを作成します。 データストアのローカル ファイルまたはローカル パスからデータセットを作成することもできます。 [データセットを作成する方法](how-to-create-register-datasets.md)の詳細をご覧ください。
+
+## <a name="use-datasets-directly-in-training-scripts"></a>トレーニング スクリプトでデータセットを直接使用する
+
+データセットとしてまだ登録されていない構造化データがある場合は、TabularDataset を作成し、それをローカルまたはリモートの実験用のトレーニング スクリプトで直接使用します。
+
+この例では、登録されていない [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) を作成し、それをトレーニング用の `estimator` オブジェクトへの直接入力として使用します。 この TabularDataset をワークスペースの他の実験で再利用する場合は、[データセットをワークスペースに登録する方法](how-to-create-register-datasets.md#register-datasets)に関する記事を参照してください。
+
+### <a name="create-a-tabulardataset"></a>TabularDataset を作成する
+
+次のコードでは、Web URL から未登録の TabularDataset を作成します。  
+
+```Python
+from azureml.core.dataset import Dataset
+
+web_path ='https://dprepdata.blob.core.windows.net/demo/Titanic.csv'
+titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path)
+```
+
+TabularDataset オブジェクトを使用すると、TabularDataset のデータを pandas または Spark DataFrame に読み込むことができるため、お使いのノートブックを離れることなく、使い慣れたデータ準備とトレーニングのライブラリを操作することができます。 この機能を利用するには、「[入力データセットへのアクセスと探索](#access-and-explore-input-datasets)」を参照してください。
 
 ### <a name="configure-the-estimator"></a>エスティメーターを構成する
 
@@ -83,7 +90,7 @@ df = dataset.to_pandas_dataframe()
 
 * 使用するスクリプトのスクリプト ディレクトリ。 このディレクトリ内のすべてのファイルは、実行のためにクラスター ノード内にアップロードされます。
 * トレーニング スクリプト *train_titanic.py*。
-* トレーニングの入力データセット `titanic`。 `as_named_input()` は、トレーニング スクリプトで割り当てられた名前によって入力データセットを参照できるようにするために必要です。 
+* トレーニングの入力データセット `titanic_ds`。 `as_named_input()` は、トレーニング スクリプトで割り当てられた名前 `titanic` によって入力データセットを参照できるようにするために必要です。 
 * 実験のコンピューティング先。
 * 実験の環境定義。
 
@@ -100,38 +107,15 @@ experiment_run = experiment.submit(est)
 experiment_run.wait_for_completion(show_output=True)
 ```
 
+## <a name="mount-files-to-remote-compute-targets"></a>リモート コンピューティング先にファイルをマウントする
 
-## <a name="option-2--mount-files-to-a-remote-compute-target"></a>オプション 2:リモート コンピューティング先にファイルをマウントする
+非構造化データがある場合は、[FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py) を作成し、データ ファイルをマウントまたはダウンロードして、トレーニング用にリモート コンピューティング先でそれを使用できるようにします。 リモート トレーニング実験用に[マウントまたはダウンロード](#mount-vs-download)を使用する状況について説明します。 
 
-データ ファイルをトレーニング用のコンピューティング先で使用できるようにする場合は、[FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) を使用して、それによって参照されているファイルをマウントまたはダウンロードします。
-
-### <a name="mount-vs-download"></a>マウントとダウンロード
-
-任意の形式のファイルをダウンロードしたりマウントしたりすることは、Azure BLOB ストレージ、Azure Files、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure SQL Database、および Azure Database for PostgreSQL から作成されたデータセットに対してサポートされています。 
-
-データセットをマウントする場合は、データセットによって参照されているファイルをディレクトリ (マウント ポイント) に接続し、コンピューティング先で使用できるようにします。 Azure Machine Learning コンピューティング、仮想マシン、HDInsight など、Linux ベースのコンピューティングでは、マウントがサポートされています。 データセットをダウンロードするとき、データセットによって参照されるすべてのファイルが、コンピューティング先にダウンロードされます。 すべてのコンピューティングの種類でダウンロードがサポートされています。 
-
-データセットによって参照されるファイルのすべてがスクリプトで処理され、コンピューティング ディスクが完全なデータセットに収まる場合は、ダウンロードによって、ストレージ サービスからのデータ ストリーミングのオーバーヘッドを回避することをお勧めします。 データ サイズがコンピューティング ディスクのサイズを超えると、ダウンロードできません。 このシナリオでは、処理時にスクリプトで使用されるデータ ファイルのみが読み込まれるため、マウントすることをお勧めします。
-
-次のコードを実行すると、`dataset` が `mounted_path` の一時ディレクトリにマウントされます
-
-```python
-import tempfile
-mounted_path = tempfile.mkdtemp()
-
-# mount dataset onto the mounted_path of a Linux-based compute
-mount_context = dataset.mount(mounted_path)
-
-mount_context.start()
-
-import os
-print(os.listdir(mounted_path))
-print (mounted_path)
-```
+次の例では、FileDataset を作成し、データセットをトレーニング用の推定器の引数として渡すことによって、それをコンピューティング先にマウントします。 
 
 ### <a name="create-a-filedataset"></a>FileDataset を作成する
 
-次の例では、未登録の FileDataset を Web URL から作成します。 他のソースから[データセットを作成する方法](https://aka.ms/azureml/howto/createdatasets)の詳細を参照してください。
+次の例では、未登録の FileDataset を Web URL から作成します。 他のソースから[データセットを作成する方法](how-to-create-register-datasets.md)の詳細を参照してください。
 
 ```Python
 from azureml.core.dataset import Dataset
@@ -147,9 +131,9 @@ mnist_ds = Dataset.File.from_files(path = web_paths)
 
 ### <a name="configure-the-estimator"></a>エスティメーターを構成する
 
-エスティメーターで `inputs` パラメーターを使用してデータセットを渡すほか、`script_params` を使用してデータセットを渡し、引数を使用してトレーニング スクリプト内でデータ パス (マウント ポイント) を取得することもできます。 こうすると、azureml-sdk とは無関係にトレーニング スクリプトを保持できます。 つまり、任意のクラウド プラットフォームで、ローカル デバッグとリモート トレーニングに、同じトレーニング スクリプトを使用できるようになります。
+マウント時に引数としてデータセットを渡すことをお勧めします。 エスティメーターで `inputs` パラメーターを使用してデータセットを渡すほか、`script_params` を使用してデータセットを渡し、引数を使用してトレーニング スクリプト内でデータ パス (マウント ポイント) を取得することもできます。 これにより、任意のクラウド プラットフォームで、ローカル デバッグとリモート トレーニングに、同じトレーニング スクリプトを使用できるようになります。
 
-scikit-learn 実験の実行の送信には、[SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) エスティメーター オブジェクトが使用されます。 SKlearn エスティメーターによるトレーニングの詳細については[こちら](how-to-train-scikit-learn.md)を参照してください。
+scikit-learn 実験の実行の送信には、[SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) エスティメーター オブジェクトが使用されます。 実行を送信すると、`mnist` データセットによって参照されるデータ ファイルがコンピューティング先にマウントされます。 SKlearn エスティメーターによるトレーニングの詳細については[こちら](how-to-train-scikit-learn.md)を参照してください。
 
 ```Python
 from azureml.train.sklearn import SKLearn
@@ -173,7 +157,7 @@ run.wait_for_completion(show_output=True)
 
 ### <a name="retrieve-the-data-in-your-training-script"></a>トレーニング スクリプトでデータを取得する
 
-実行を送信すると、`mnist` データセットによって参照されるデータ ファイルがコンピューティング先にマウントされます。 次のコードは、スクリプトでデータを取得する方法を示しています。
+次のコードは、スクリプトでデータを取得する方法を示しています。
 
 ```Python
 %%writefile $script_folder/train_mnist.py
@@ -207,14 +191,72 @@ y_train = load_data(y_train_path, True).reshape(-1)
 y_test = load_data(y_test, True).reshape(-1)
 ```
 
+## <a name="mount-vs-download"></a>マウントまたはダウンロード
+
+任意の形式のファイルをダウンロードしたりマウントしたりすることは、Azure BLOB ストレージ、Azure Files、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure SQL Database、および Azure Database for PostgreSQL から作成されたデータセットに対してサポートされています。 
+
+データセットを**マウント**する場合は、データセットによって参照されているファイルをディレクトリ (マウント ポイント) に接続し、コンピューティング先で使用できるようにします。 Azure Machine Learning コンピューティング、仮想マシン、HDInsight など、Linux ベースのコンピューティングでは、マウントがサポートされています。 
+
+データセットを**ダウンロード**するとき、データセットによって参照されるすべてのファイルが、コンピューティング先にダウンロードされます。 すべてのコンピューティングの種類でダウンロードがサポートされています。 
+
+データセットによって参照されるファイルのすべてがスクリプトで処理され、コンピューティング ディスクが完全なデータセットに収まる場合は、ダウンロードによって、ストレージ サービスからのデータ ストリーミングのオーバーヘッドを回避することをお勧めします。 データ サイズがコンピューティング ディスクのサイズを超えると、ダウンロードできません。 このシナリオでは、処理時にスクリプトで使用されるデータ ファイルのみが読み込まれるため、マウントすることをお勧めします。
+
+次のコードを実行すると、`dataset` が `mounted_path` の一時ディレクトリにマウントされます
+
+```python
+import tempfile
+mounted_path = tempfile.mkdtemp()
+
+# mount dataset onto the mounted_path of a Linux-based compute
+mount_context = dataset.mount(mounted_path)
+
+mount_context.start()
+
+import os
+print(os.listdir(mounted_path))
+print (mounted_path)
+```
+
+## <a name="access-datasets-in-your-script"></a>スクリプトでデータセットにアクセスする
+
+登録されたデータセットは、Azure Machine Learning コンピューティングなどのコンピューティング クラスター上で、ローカルまたはリモートでアクセスできます。 実験で登録済みデータセットにアクセスするには、次のコードを使用して、ワークスペースと登録済みデータセットに名前でアクセスします。 既定では、`Dataset` クラスの [`get_by_name()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) メソッドからは、ワークスペースに登録されているデータセットの最新バージョンが返されます。
+
+```Python
+%%writefile $script_folder/train.py
+
+from azureml.core import Dataset, Run
+
+run = Run.get_context()
+workspace = run.experiment.workspace
+
+dataset_name = 'titanic_ds'
+
+# Get a dataset by name
+titanic_ds = Dataset.get_by_name(workspace=workspace, name=dataset_name)
+
+# Load a TabularDataset into pandas DataFrame
+df = titanic_ds.to_pandas_dataframe()
+```
+
+## <a name="accessing-source-code-during-training"></a>トレーニング中のソース コードへのアクセス
+
+Azure BLOB ストレージは、スループット速度が Azure ファイル共有よりも高く、並列で開始される多数のジョブに対応します。 このため、ソース コード ファイルの転送については、BLOB ストレージを使用するように実行を構成することをお勧めします。
+
+次のコード例では、実行構成で、ソース コード転送に使用する BLOB データストアを指定します。
+
+```python 
+# workspaceblobstore is the default blob storage
+run_config.source_directory_data_store = "workspaceblobstore" 
+```
+
 ## <a name="notebook-examples"></a>ノートブックの例
 
 [データセット ノートブック](https://aka.ms/dataset-tutorial)では、この記事の概念を示し、さらに詳しく説明します。
 
 ## <a name="next-steps"></a>次のステップ
 
-* TabularDatasets を使用して[機械学習モデルを自動的にトレーニングする](how-to-auto-train-remote.md)
+* TabularDatasets を使用して[機械学習モデルを自動的にトレーニングする](how-to-auto-train-remote.md)。
 
-* FileDatasets を使用して[画像分類モデルをトレーニングする](https://aka.ms/filedataset-samplenotebook)
+* FileDatasets を使用して[画像分類モデルをトレーニングする](https://aka.ms/filedataset-samplenotebook)。
 
-* [パイプラインを使用してデータセットをトレーニングする](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)
+* [パイプラインを使用してデータセットをトレーニングする](how-to-create-your-first-pipeline.md)。

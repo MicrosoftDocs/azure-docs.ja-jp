@@ -10,12 +10,13 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: longl
-ms.openlocfilehash: da9ad5576d146c007e45124668875e9681860ce6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: da34c2aa8a178a99f325bef8beb4a7e7685b3cbc
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76938826"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88931473"
 ---
 # <a name="specify-a-face-recognition-model"></a>顔認識モデルを指定する
 
@@ -23,7 +24,14 @@ ms.locfileid: "76938826"
 
 Face サービスでは、機械学習モデルを使用して、画像内の人間の顔に対して操作を実行します。 お客様からのフィードバックや研究の進展に基づいてモデル精度の改善を続けており、これらの改善をモデルの更新として提供します。 開発者には、使用する顔認識モデルのバージョンを指定する選択肢があり、ユースケースに最も適したモデルを選択できます。
 
-新しいユーザーは、最新のモデルを使用することをお勧めします。 以下、モデルの競合を回避しながら、さまざまな顔の操作でそれを指定する方法について説明します。 上級ユーザーであり、最新モデルに切り替えるべきかどうかわからない場合は、[さまざまなモデルを評価する](#evaluate-different-models)のセクションに進み、新しいモデルを評価したり、現在のデータ セットを使用して結果を比較したりしてください。
+Azure Face サービスには、3 つの認識モデルが用意されています。 _recognition_01_ モデル (2017 年公開) および _recognition_02_ モデル (2019 年公開) で作成された FaceList または **PersonGroup** を使用している顧客に下位互換性を保証するために、これらのモデルも引き続きサポートされています。 **FaceList** または **PersonGroup** は常に、その作成時に指定された認識モデルを使用します。新しい顔がリストに追加されると、その顔はこのモデルに関連付けられます。 これは作成後に変更することはできません。また、対応する認識モデルを、対応する **FaceList** または **PersonGroup** と一緒に使用する必要があります。
+
+都合のよいときに新しい認識モデルに移行することはできますが、選択した認識モデルを使用して、新しい FaceList と PersonGroup を作成する必要があります。
+
+_recognition_03_ モデル (2020 年公開) は、現在使用できる最も正確なモデルです。 新しいお客様の場合は、このモデルを使用することをお勧めします。 _recognition_03_ では、類似性比較と人物照合比較の両方の精度が向上します。 各モデルは他のモデルとは独立して動作します。1 つのモデルに対して設定された信頼度しきい値は、他の認識モデルで比較することを目的としたものではありません。
+
+以下、モデルの競合を回避しながら、さまざまな顔の操作で選択されたモデルを指定する方法について説明します。 上級ユーザーであり、最新モデルに切り替えるべきかどうかを判断したい場合は、「[さまざまなモデルを評価する](#evaluate-different-models)」セクションに進み、新しいモデルを評価したり、現在のデータ セットを使用して結果を比較したりしてください。
+
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,20 +47,20 @@ AI による顔の検出と識別の概念を理解している必要があり�
 認識モデルは顔の特徴の抽出時に使用されるので、検出操作を実行するときにモデルのバージョンを指定できます。
 
 [Face - Detect] API を使用するときは、`recognitionModel` パラメーターを使用してモデルのバージョンを割り当てます。 使用できる値は次のとおりです。
+* recognition_01
+* recognition_02
+* recognition_03
 
-* `recognition_01`
-* `recognition_02`
 
 必要に応じて、_returnRecognitionModel_ パラメーター (既定値は **false**) を指定し、_recognitionModel_ が応答で返されるかどうかを指定できます。 したがって、[Face - Detect] REST API の要求 URL は次のようになります。
 
 `https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel]&subscription-key=<Subscription key>`
 
-クライアント ライブラリを使用している場合、バージョンを表す文字列を渡すことによって `recognitionModel` の値を割り当てることができます。
-未割り当てのままにした場合は、既定のモデル バージョン (_recognition_01_) が使用されます。 .NET クライアント ライブラリの次のコード例を参照してください。
+クライアント ライブラリを使用している場合、バージョンを表す文字列を渡すことによって `recognitionModel` の値を割り当てることができます。 未割り当てのままにした場合は、既定のモデル バージョン `recognition_01` が使用されます。 .NET クライアント ライブラリの次のコード例を参照してください。
 
 ```csharp
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
-var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recognitionModel: "recognition_02", returnRecognitionModel: true);
+var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recognitionModel: "recognition_01", returnRecognitionModel: true);
 ```
 
 ## <a name="identify-faces-with-specified-model"></a>指定されたモデルで顔を識別する
@@ -77,29 +85,30 @@ await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", 
 
 ## <a name="find-similar-faces-with-specified-model"></a>指定されたモデルで似た顔を検索する
 
-類似検索のための認識モデルも指定できます。 [FaceList - Create API] または [LargeFaceList - Create] で顔のリストを作成するときに、`recognitionModel` でモデルのバージョンを割り当てることができます。 このパラメーターを指定しない場合、元の `recognition_01` モデルが使用されます。 顔リストは常に、その作成時に指定された認識モデルを使用します。新しい顔がリストに追加されると、その顔はこのモデルに関連付けられます。これは作成後に変更できません。 顔リストに設定されているモデルを調べるには、_returnRecognitionModel_ パラメーターを **true** に設定して [FaceList - Get] API を使用します。
+類似検索のための認識モデルも指定できます。 [FaceList - Create] または [LargeFaceList - Create] で顔のリストを作成するときに、`recognitionModel` でモデルのバージョンを割り当てることができます。 このパラメーターを指定しない場合、既定では `recognition_01` モデルが使用されます。 顔リストは常に、その作成時に指定された認識モデルを使用します。新しい顔がリストに追加されると、その顔はこのモデルに関連付けられます。これは作成後に変更できません。 顔リストに設定されているモデルを調べるには、_returnRecognitionModel_ パラメーターを **true** に設定して [FaceList - Get] API を使用します。
 
 .NET クライアント ライブラリの次のコード例を参照してください。
 
 ```csharp
-await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_02");
+await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_03");
 ```
 
-このコードは、特徴抽出のための _recognition_02_ モデルを使用して、`My face collection` という名前の顔リストを作成します。 新しく検出された顔に似た顔をこの顔リストから検索するときは、その顔が _recognition_02_ モデルを使用して検出 ([Face - Detect]) 済みである必要があります。 前のセクションと同様に、モデルは一貫している必要があります。
+このコードは、特徴抽出のための _recognition_03_ モデルを使用して、`My face collection` という名前の顔リストを作成します。 新しく検出された顔に似た顔をこの顔リストから検索するときは、その顔が _recognition_03_ モデルを使用して検出 ([Face - Detect]) 済みである必要があります。 前のセクションと同様に、モデルは一貫している必要があります。
 
 [Face - Find Similar] API に変更はありません。検出でモデルのバージョンを指定するだけです。
 
 ## <a name="verify-faces-with-specified-model"></a>指定されたモデルで顔を検証する
 
-[Face - Verify] API は、2 つの顔が同じ人のものかどうかチェックします。 認識モデルについては Verify API での変更はありませんが、互いに比較できるのは同じモデルで検出された顔だけです。 したがって、2 つの顔がどちらも `recognition_01` または `recognition_02` を使用して検出されている必要があります。
+[Face - Verify] API は、2 つの顔が同じ人のものかどうかチェックします。 認識モデルについては Verify API での変更はありませんが、互いに比較できるのは同じモデルで検出された顔だけです。
 
 ## <a name="evaluate-different-models"></a>さまざまなモデルを評価する
 
-特定のデータに対して _recognition_01_ モデルと _recognition_02_ モデルのパフォーマンスを比較したい場合、次の手順を実行する必要があります。
+独自のデータに対してさまざまな認識モデルのパフォーマンスを比較したい場合は、次の手順を実行する必要があります。
+1. _recognition_01_、_recognition_02_、_recognition_03_ をそれぞれ使用して、3 つの PersonGroup を作成します。
+1. 画像データを使用して顔を検出し、これらの 3 つの **PersonGroup** 内の **Person** に登録します。 
+1. PersonGroup - Train API を使用して PersonGroup をトレーニングします。
+1. 3 つすべての **PersonGroup** に対して Face - Identify でテストを実行し、結果を比較します。
 
-1. 2 つの **PersonGroup** を作成し、それぞれ _recognition_01_ と _recognition_02_ を指定します。
-1. 画像データを使用して顔を検出し、これら 2 つの **PersonGroup** の **Person** にそれらの顔を登録し、[PersonGroup - Train] API でトレーニング プロセスをトリガーします。
-1. 両方の **PersonGroup** に対して [Face - Identify] でテストを実行し、結果を比較します。
 
 信頼度しきい値 (顔を識別するために要求されるモデルの信頼度を決定する 0 ～ 1 の値) をいつも指定する場合、モデルごとに異なるしきい値を使用することが必要な場合があります。 あるモデルのしきい値を別のモデルと共有することは想定されておらず、共有しても同じ結果が得られるとは限りません。
 

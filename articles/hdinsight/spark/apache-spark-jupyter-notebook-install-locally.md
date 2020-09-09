@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
-ms.custom: hdinsightactive,seoapr2020
+ms.topic: how-to
+ms.custom: hdinsightactive,seoapr2020, devx-track-python
 ms.date: 04/23/2020
-ms.openlocfilehash: b2394c580b871105fee84d63c478c3c490b56a0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 96b2e7deff464f00ced4457a514ac833a90bd42d
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191925"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873893"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Jupyter Notebook をコンピューターにインストールして HDInsight の Apache Spark に接続する
 

@@ -4,18 +4,18 @@ summary: Azure SQL Edge は、IoT およびエッジのデプロイ向けに最�
 metadata:
   title: Azure SQL Edge (プレビュー) のドキュメント
   meta.description: Learn how to use Azure SQL Edge (Preview).
-  services: sql-database-edge
-  ms.service: sql-database-edge
+  services: sql-edge
+  ms.service: sql-edge
   ms.topic: landing-page
   author: stevestein
   ms.author: sstein
   ms.date: 05/19/2020
-  ms.openlocfilehash: a2e26d4bfbec3a139987e2a7a0fe21c429c740a5
-  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.openlocfilehash: 97595cd74fa5a584d5d1943ed88ac617fc742569
+  ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/19/2020
-  ms.locfileid: "83593139"
+  ms.lasthandoff: 05/31/2020
+  ms.locfileid: "84233194"
 landingContent:
 - title: SQL Edge
   linkLists:

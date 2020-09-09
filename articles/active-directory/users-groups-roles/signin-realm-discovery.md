@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: overview
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1f27c7b91a78da8944c23fd353d3b6791b3e015
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 4c8222cdcd21e10864c256007aff45fb83ed6afd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582563"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84731411"
 ---
 # <a name="home-realm-discovery-for-azure-active-directory-sign-in-pages"></a>Azure Active Directory サインイン ページのホーム領域検出
 

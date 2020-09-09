@@ -7,12 +7,13 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: ralphe
-ms.openlocfilehash: 92fc7aeec87015a9ddbe4e52f870334582e28c14
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.custom: devx-track-csharp
+ms.openlocfilehash: dff5c7c7018945bb93ce492ee3205f3567dff1d7
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80671145"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88925899"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -201,7 +202,7 @@ ms.locfileid: "80671145"
 
 1. 同じファイル内の文字列 `YourSubscriptionKey` を Cognitive Speech のサブスクリプション キーに置き換えます。
 
-1. 文字列 `YourServiceRegion` を、サブスクリプションに関連付けられた[リージョン](~/articles/cognitive-services/Speech-Service/regions.md) (たとえば、無料試用版サブスクリプションでは `westus`) に置き換えます。
+1. 文字列 `YourServiceRegion` を、自分のサブスクリプションに関連付けられている[リージョン](~/articles/cognitive-services/Speech-Service/regions.md)に置き換えます。
 
 1. メニュー バーから **[ファイル]**  >  **[すべて保存]** を選択します。
 

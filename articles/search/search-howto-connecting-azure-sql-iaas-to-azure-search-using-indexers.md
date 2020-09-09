@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 1ab2b7860e8a75da5f8acef2fc4fa54d4b73a30d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/12/2020
+ms.openlocfilehash: ec1e74c6a029ab0f8defc3ae783c9e974f387289
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80256965"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922975"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Azure VM で Azure Cognitive Search インデクサーから SQL Server への接続を構成する
 
@@ -52,8 +52,8 @@ Azure Cognitive Search には、パブリック インターネット接続経�
 ## <a name="configure-sql-server-connectivity-in-the-vm"></a>VM で SQL Server への接続を構成する
 Azure Cognitive Search に必要な、暗号化された接続を設定した後は、Azure VM 上の SQL Server に固有の追加の構成手順があります。 その構成手順をまだ実行していない場合は、以下のいずれかの記事を参照して構成を実行します。
 
-* **Resource Manager** VM の場合は、「 [Connect to a SQL Server Virtual Machine on Azure using Resource Manager](../virtual-machines/windows/sql/virtual-machines-windows-sql-connect.md)」(Resource Manager を使用した Azure での SQL Server 仮想マシンへの接続) をご覧ください。 
-* **クラシック** VM の場合は、「 [Connect to a SQL Server Virtual Machine on Azure Classic](../virtual-machines/windows/classic/sql-connect.md)」(Azure クラシックでの SQL Server 仮想マシンへの接続) をご覧ください。
+* **Resource Manager** VM の場合は、「 [Connect to a SQL Server Virtual Machine on Azure using Resource Manager](../azure-sql/virtual-machines/windows/ways-to-connect-to-sql.md)」(Resource Manager を使用した Azure での SQL Server 仮想マシンへの接続) をご覧ください。 
+* **クラシック** VM の場合は、「 [Connect to a SQL Server Virtual Machine on Azure Classic](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-connect)」(Azure クラシックでの SQL Server 仮想マシンへの接続) をご覧ください。
 
 特に、各記事の、インターネット経由での接続に関するセクションを確認してください。
 
@@ -68,16 +68,16 @@ Azure Cognitive Search に必要な、暗号化された接続を設定した後
 > 
 
 * **リソース マネージャー** VM の場合は、「 [How to create NSGs for ARM deployments](../virtual-network/tutorial-filter-network-traffic.md)」(ARM デプロイメントの NSG を作成する方法) をご覧ください。 
-* **クラシック** VM の場合は、「 [How to create NSGs for Classic deployments](../virtual-network/virtual-networks-create-nsg-classic-ps.md)」(クラシック デプロイメントの NSG を作成する方法) をご覧ください。
+* **クラシック** VM の場合は、「 [How to create NSGs for Classic deployments](/previous-versions/azure/virtual-network/virtual-networks-create-nsg-classic-ps)」(クラシック デプロイメントの NSG を作成する方法) をご覧ください。
 
 IP アドレスの指定ではいくつかの課題が生じる可能性がありますが、問題点と考えられる回避策を理解していれば簡単に解決できます。 以降のセクションでは、ACL 内の IP アドレスに関する問題に対処するための推奨事項を説明します。
 
 #### <a name="restrict-access-to-the-azure-cognitive-search"></a>Azure Cognitive Search へのアクセスを制限する
-SQL Azure VM をすべての接続要求に開放するのではなく、ACL で Search サービスの IP アドレスと `AzureCognitiveSearch` [サービス タグ](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags)の IP アドレス範囲へのアクセスを制限することを強くお勧めします。
+SQL Azure VM をすべての接続要求に開放するのではなく、ACL で Search サービスの IP アドレスと `AzureCognitiveSearch` [サービス タグ](../virtual-network/service-tags-overview.md#available-service-tags)の IP アドレス範囲へのアクセスを制限することを強くお勧めします。
 
 IP アドレスは、Search サービスの FQDN (`<your-search-service-name>.search.windows.net` など) に ping を実行することで確認できます。
 
-`AzureCognitiveSearch` [サービス タグ](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags)の IP アドレス範囲を確認するには、[ダウンロード可能な JSON ファイル](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)または [Service Tag Discovery API](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview) を使用します。 IP アドレス範囲は毎週更新されます。
+`AzureCognitiveSearch` [サービス タグ](../virtual-network/service-tags-overview.md#available-service-tags)の IP アドレス範囲を確認するには、[ダウンロード可能な JSON ファイル](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)または [Service Tag Discovery API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) を使用します。 IP アドレス範囲は毎週更新されます。
 
 #### <a name="managing-ip-address-fluctuations"></a>IP アドレスの変動の管理
 Search サービスに検索ユニットが 1 つ (1 つのレプリカと 1 つのパーティション) しかない場合は、日常的なサービスの再起動で IP アドレスが変更され、Search サービスの IP アドレスを含む既存の ACL が無効になることがあります。
@@ -93,4 +93,3 @@ Azure portal を使用してインデクサーを作成する場合は、作成�
 
 ## <a name="next-steps"></a>次のステップ
 これで構成が完了し、Azure VM 上 の SQL Server を Azure Cognitive Search インデクサーのデータ ソースとして指定できるようになりました。 詳細については、[インデクサーを使用した Azure Cognitive Search への Azure SQL Database の接続](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)に関する記事をご覧ください。
-

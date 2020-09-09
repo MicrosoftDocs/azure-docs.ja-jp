@@ -12,12 +12,12 @@ metadata:
   author: dlepow
   ms.author: danlep
   ms.date: 11/08/2019
-  ms.openlocfilehash: f73794898f00d78c5253c19f985f8ff531ae3c11
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 53c66bd6dc7e9be548533650d9d3ee7540e1e5c3
+  ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "74895522"
+  ms.lasthandoff: 07/11/2020
+  ms.locfileid: "86260044"
 landingContent:
 - title: Azure Container Registry について
   linkLists:
@@ -35,6 +35,8 @@ landingContent:
       url: container-registry-get-started-azure-cli.md
     - text: コンテナー レジストリの作成 - ポータル
       url: container-registry-get-started-portal.md
+    - text: コンテナー レジストリの作成 - Resource Manager テンプレート
+      url: container-registry-get-started-geo-replication-template.md
     - text: Docker を使用したイメージのプッシュとプル
       url: container-registry-get-started-docker-cli.md
   - linkListType: concept
@@ -44,7 +46,7 @@ landingContent:
   - linkListType: learn
     links:
     - text: Azure Container Registry を使用してコンテナー イメージをビルドして格納する
-      url: https://docs.microsoft.com/learn/modules/build-and-store-container-images/
+      url: /learn/modules/build-and-store-container-images/
   - linkListType: video
     links:
     - text: Azure Container Registry のビデオ

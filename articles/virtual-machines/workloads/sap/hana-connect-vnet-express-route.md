@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f7ac8e69c4e149fdd0f365e19f7a0282a547af43
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8c7e8d4875a8bf3f53ac536ae95ac7499a74d45c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77617198"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082156"
 ---
 # <a name="connect-a-virtual-network-to-hana-large-instances"></a>HANA Large Instances に仮想ネットワークを接続する
 
@@ -96,7 +96,7 @@ New-AzVirtualNetworkGatewayConnection -Name $myConnectionName `
 ```
 
 > [!NOTE]
-> コマンド New-AzVirtualNetworkGatewayConnection の最後のパラメーター **ExpressRouteGatewayBypass** は、ExpressRoute Fast Path を有効にする新しいパラメーターです。 これは、HANA L インスタンス ユニットと Azure VM の間のネットワーク待ち時間を短縮する機能です。 この機能は 2019 年 5 月に追加されました。 詳細については、「[SAP HANA (L インスタンス) のネットワーク アーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)」の記事を確認してください。 このコマンドを実行する前に、最新バージョンの PowerShell コマンドレットを実行していることを確認してください。
+> コマンド New-AzVirtualNetworkGatewayConnection の最後のパラメーター **ExpressRouteGatewayBypass** は、ExpressRoute Fast Path を有効にする新しいパラメーターです。 これは、HANA L インスタンス ユニットと Azure VM の間のネットワーク待ち時間を短縮する機能です。 この機能は 2019 年 5 月に追加されました。 詳細については、「[SAP HANA (L インスタンス) のネットワーク アーキテクチャ](./hana-network-architecture.md)」の記事を確認してください。 このコマンドを実行する前に、最新バージョンの PowerShell コマンドレットを実行していることを確認してください。
 
 サブスクリプションに関連付けられた複数の ExpressRoute 回線にゲートウェイを接続するには、この手順を複数回実行しなければならないことがあります。 たとえば、通常は同じ仮想ネットワーク ゲートウェイを、仮想ネットワークとオンプレミス ネットワークとを接続する ExpressRoute 回線に接続します。
 
@@ -139,7 +139,7 @@ ExpressRoute Fast Path 機能を有効にするために、上に表示されて
 - オンプレミスのルートを HANA L インスタンスにアドバタイズするために使用できる ASN (自律システム番号) には制限があります。 オンプレミスでは、65000 – 65020 または 65515 の範囲のプライベート ASN を持つルートをアドバタイズできません。 
 - オンプレミスの直接アクセスを HANA L インスタンスに接続するシナリオの場合は、Azure に接続する回線の料金を計算する必要があります。 価格については、[Global Reach アドオン](https://azure.microsoft.com/pricing/details/expressroute/)の価格を確認してください。
 
-デプロイに適用するシナリオのどちらかまたは両方を取得するには、「[HANA large Instances のサポート リクエストを開く](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal#open-a-support-request-for-hana-large-instances)」で説明されているように Azure でサポート メッセージを開きます。
+デプロイに適用するシナリオのどちらかまたは両方を取得するには、「[HANA large Instances のサポート リクエストを開く](./hana-li-portal.md#open-a-support-request-for-hana-large-instances)」で説明されているように Azure でサポート メッセージを開きます。
 
 必要なデータ、および Microsoft がそのリクエストをルーティングしたり対処したりできるようにするために使用する必要のあるキーワードは次のとおりです。
 

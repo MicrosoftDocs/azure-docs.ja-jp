@@ -7,18 +7,18 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: 9aa19dfa0626ff0726911815addbb03945ee36f1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a12fe837bfd9606d07c7be71851880d2cebb9d61
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82144861"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055483"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>ASP.NET Core Web アプリケーションの監視を開始する
 
 Azure Application Insights を使うと、Web アプリケーションの可用性、パフォーマンス、利用状況を簡単に監視できます。 アプリケーションのエラーを、ユーザーからの報告を待つことなく、迅速に特定して診断することもできます。 
 
-このクイック スタートでは、既存の ASP.NET Core Web アプリケーションに Application Insights SDK を追加する方法を説明します。 Visual Studio を使用せずに Application Insights を構成する方法については、こちらの[記事](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)を参照してください。
+このクイック スタートでは、既存の ASP.NET Core Web アプリケーションに Application Insights SDK を追加する方法を説明します。 Visual Studio を使用せずに Application Insights を構成する方法については、こちらの[記事](../app/asp-net-core.md)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,7 +30,7 @@ Azure Application Insights を使うと、Web アプリケーションの可用�
 - [.NET Core 2.0 SDK のインストール](https://dotnet.microsoft.com/download)
 - Azure サブスクリプションと既存の .NET Core Web アプリケーションが必要です。
 
-ASP.NET Core Web アプリケーションがない場合は、ステップ バイ ステップ ガイドを使用して [ASP.NET Core アプリを作成し、Application Insights を追加](../../azure-monitor/app/asp-net-core.md)してください。
+ASP.NET Core Web アプリケーションがない場合は、ステップ バイ ステップ ガイドを使用して [ASP.NET Core アプリを作成し、Application Insights を追加](../app/asp-net-core.md)してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
@@ -45,7 +45,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 1. **[リソースの作成]**  >  **[開発者ツール]**  >  **[Application Insights]** の順に選択します。
 
    > [!NOTE]
-   >Application Insights リソースを初めて作成する場合は、「[Application Insights リソースの作成](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)」のドキュメントにアクセスして詳細を確認できます。
+   >Application Insights リソースを初めて作成する場合は、「[Application Insights リソースの作成](../app/create-new-resource.md)」のドキュメントにアクセスして詳細を確認できます。
 
     構成ボックスが表示されたら、次の表を使用して入力フィールドに入力します。
 
@@ -96,7 +96,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
    ![正常性の概要のタイムライン グラフ](./media/dotnetcore-quick-start/7kpidashboards.png)
 
-5. 左側の **[メトリック]** をクリックします。 メトリックス エクスプローラーを使用して、ご利用のソースの正常性と使用率を調べます。 **[Add new chart (新しいグラフを追加)]** をクリックして追加のカスタム ビューを作成したり、 **[編集]** を選択して既存のグラフの種類、高さ、カラー パレット、グループ化、およびメトリックを変更したりできます。 たとえば、メトリックのドロップダウンの [ブラウザーのページ読み込み時間] を選択し、集計から [平均] を選択することで、ブラウザーの平均ページ読み込み時間を表示するグラフを作成できます。 Azure メトリックス エクスプローラーの詳細については、「[Azure メトリックス エクスプローラーの概要](../../azure-monitor/platform/metrics-getting-started.md)」を参照してください。
+5. 左側の **[メトリック]** をクリックします。 メトリックス エクスプローラーを使用して、ご利用のソースの正常性と使用率を調べます。 **[Add new chart (新しいグラフを追加)]** をクリックして追加のカスタム ビューを作成したり、 **[編集]** を選択して既存のグラフの種類、高さ、カラー パレット、グループ化、およびメトリックを変更したりできます。 たとえば、メトリックのドロップダウンの [ブラウザーのページ読み込み時間] を選択し、集計から [平均] を選択することで、ブラウザーの平均ページ読み込み時間を表示するグラフを作成できます。 Azure メトリックス エクスプローラーの詳細については、「[Azure メトリックス エクスプローラーの概要](../platform/metrics-getting-started.md)」を参照してください。
 
      ![[メトリック] タブ: ブラウザーの平均ページ読み込み時間のグラフ](./media/dotnetcore-quick-start/8metrics.png)
 
@@ -112,4 +112,5 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [実行時の例外の特定と診断](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-runtime-exceptions)
+> [実行時の例外の特定と診断](./tutorial-runtime-exceptions.md)
+

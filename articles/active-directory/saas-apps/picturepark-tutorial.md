@@ -2,25 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Picturepark の統合 | Microsoft Docs'
 description: Azure Active Directory と Picturepark の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 31c21cd4-9c00-4cad-9538-a13996dc872f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 08c5bd8da0dda74156b2d44c8106ed345ef749dd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bb12b666315f6d30df64b33b6a87d6ce831fd225
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73177008"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553852"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>チュートリアル: Azure Active Directory と Picturepark の統合
 
@@ -109,12 +105,11 @@ Picturepark で Azure AD シングル サインオンを構成するには、次
 
     b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。
 
-    |  |
-    |--|
-    | `https://<companyname>.current-picturepark.com`|
-    | `https://<companyname>.picturepark.com`|
-    | `https://<companyname>.next-picturepark.com`|
-    | |
+    ```http
+        https://<companyname>.current-picturepark.com
+        https://<companyname>.picturepark.com
+        https://<companyname>.next-picturepark.com
+    ```
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Picturepark クライアント サポート チーム](https://picturepark.com/company/picturepark-customer-support)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

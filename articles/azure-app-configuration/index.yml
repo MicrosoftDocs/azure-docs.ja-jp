@@ -9,12 +9,12 @@ metadata:
   ms.service: azure-app-configuration
   ms.topic: landing-page
   ms.date: 02/03/2020
-  ms.openlocfilehash: 29baead8dbb41b004a9ace8576029c9bd8af3290
-  ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+  ms.openlocfilehash: 598fb9fa8c780219de13af668f0a1c35cba9b40c
+  ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/05/2020
-  ms.locfileid: "82790781"
+  ms.lasthandoff: 09/03/2020
+  ms.locfileid: "89421596"
 landingContent:
 - title: Azure App Configuration について
   linkLists:
@@ -34,6 +34,8 @@ landingContent:
       url: https://channel9.msdn.com/Events/dotnetConf/NET-Conf-2019/B210
     - text: Cloud Native Show の Azure App Configuration
       url: https://www.youtube.com/watch?v=DJqmA5PcfzE
+    - text: 新機能のロールアウト
+      url: https://channel9.msdn.com/Shows/Azure-Friday/How-Azure-App-Configuration-helps-developers-roll-out-new-features?ocid=AID747781&wt.mc_id=azfr-c9-scottha&wt.mc_id=CFID0553
   - linkListType: whats-new
     links:
     - text: Microsoft のお知らせをフォローする
@@ -124,14 +126,14 @@ landingContent:
     links:
     - text: Azure CLI
       url: https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest
+    - text: PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.appconfiguration/
+    - text: Terraform
+      url: https://www.terraform.io/docs/providers/azurerm/r/app_configuration.html
     - text: .NET Core プロバイダー
       url: https://go.microsoft.com/fwlink/?linkid=2074664
-    - text: .NET Framework ビルダー
-      url: https://go.microsoft.com/fwlink/?linkid=2074663
-    - text: Azure SDK for .Net
-      url: https://go.microsoft.com/fwlink/?linkid=2092056
     - text: Spring Boot プロバイダー
-      url: https://go.microsoft.com/fwlink/?linkid=2074659
+      url: https://github.com/microsoft/spring-cloud-azure/tree/master/
     - text: Azure SDK for Java
       url: https://go.microsoft.com/fwlink/?linkid=2098196
     - text: Azure SDK for Python

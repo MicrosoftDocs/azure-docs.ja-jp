@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
-ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020
+ms.topic: how-to
+ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020,devx-track-java
 ms.date: 04/27/2020
-ms.openlocfilehash: 471d07f4aa5abe7552ff33e767e8783239dd1989
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: b928ea8b0d05b9e1eac3c9429ec4c0ce8f88bb22
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203881"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322875"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Java での Apache Storm トポロジの作成
 
@@ -593,7 +593,7 @@ notepad resources\log4j2.xml
 Log4j 2 のログ記録の構成の詳細については、[https://logging.apache.org/log4j/2.x/manual/configuration.html](https://logging.apache.org/log4j/2.x/manual/configuration.html) を参照してください。
 
 > [!NOTE]  
-> Storm バージョン 0.10.0 以降では Log4j 2.x が使用されます。 以前のバージョンの Storm では Log4j 1.x が使用されていました。これには、ログの構成に別の形式が使用されていました。 古い構成については、[https://wiki.apache.org/logging-log4j/Log4jXmlFormat](https://wiki.apache.org/logging-log4j/Log4jXmlFormat)を参照してください。
+> Storm バージョン 0.10.0 以降では Log4j 2.x が使用されます。 以前のバージョンの Storm では Log4j 1.x が使用されていました。これには、ログの構成に別の形式が使用されていました。 古い構成については、[https://cwiki.apache.org/confluence/display/LOGGINGLOG4J/Log4jXmlFormat](https://cwiki.apache.org/confluence/display/LOGGINGLOG4J/Log4jXmlFormat)を参照してください。
 
 ## <a name="test-the-topology-locally"></a>ローカルでのトポロジのテスト
 
@@ -605,13 +605,15 @@ mvn compile exec:java -Dstorm.topology=com.microsoft.example.WordCountTopology
 
 実行中、スタートアップ情報が表示されます。 次のテキストは、ワード カウントの出力例を示しています。
 
-    17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word snow
-    17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word white
-    17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 112 for word seven
-    17:33:27 [Thread-16-count] INFO  com.microsoft.example.WordCount - Emitting a count of 195 for word the
-    17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 113 for word and
-    17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word dwarfs
-    17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word snow
+```output
+17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word snow
+17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word white
+17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 112 for word seven
+17:33:27 [Thread-16-count] INFO  com.microsoft.example.WordCount - Emitting a count of 195 for word the
+17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 113 for word and
+17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word dwarfs
+17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word snow
+```
 
 この例のログは、単語 and が 113 回出力されたことを示しています。 トポロジが実行されている限り、カウントは増え続けます。 この増加は、スパウトで同じセンテンスが出力され続けるためです。
 

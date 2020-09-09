@@ -1,29 +1,19 @@
 ---
 title: キャプチャを有効化したイベント ハブの作成 - Azure Event Hubs | Microsoft Docs
 description: Azure Resource Manager テンプレートを使用して、1 つのイベント ハブを含んだ Azure Event Hubs 名前空間を作成して Capture を有効にします
-services: event-hubs
-documentationcenter: .net
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.assetid: 8bdda6a2-5ff1-45e3-b696-c553768f1090
-ms.service: event-hubs
-ms.devlang: tbd
 ms.topic: conceptual
-ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 02/12/2020
-ms.author: shvija
-ms.openlocfilehash: 0b20c73ed0590f3afc19db43b4b55dd3ff6bde8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 1ba98bb47d53e3f95a1f212c5dc9459f983a30c2
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79453872"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079763"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>イベント ハブを含む名前空間を作成し、テンプレートを使用してキャプチャを有効にします
 
-この記事では、Azure Resource Manager テンプレートを使用し、1 つのイベント ハブ インスタンスを含んだ [Event Hubs](event-hubs-what-is-event-hubs.md) 名前空間を作成して、イベント ハブの [Capture 機能](event-hubs-capture-overview.md)を有効にする方法について説明します。 記事では、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法を説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
+この記事では、Azure Resource Manager テンプレートを使用し、1 つのイベント ハブ インスタンスを含んだ [Event Hubs](./event-hubs-about.md) 名前空間を作成して、イベント ハブの [Capture 機能](event-hubs-capture-overview.md)を有効にする方法について説明します。 記事では、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法を説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
 この記事では、選択した保存先に応じて Azure Storage Blob または Azure Data Lake Store にキャプチャされるイベントの指定方法についても取り上げます。
 
@@ -429,7 +419,7 @@ az group deployment create \<my-resource-group\> \<my-deployment-name\> --templa
 
 Event Hubs の詳細については、次のリンク先を参照してください:
 
-* [Event Hubs の概要](event-hubs-what-is-event-hubs.md)
+* [Event Hubs の概要](./event-hubs-about.md)
 * [イベント ハブの作成](event-hubs-create.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)
 

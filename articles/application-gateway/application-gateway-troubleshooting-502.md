@@ -4,18 +4,18 @@ description: Application Gateway のサーバー エラーをトラブルシュ�
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: a48ed39af243296bcb76cb61f1fe64e4e95ab7e7
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 1b0abe998540c4fcc0a9b83f6d1175e18a560871
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801741"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808154"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Application Gateway での無効なゲートウェイによるエラーのトラブルシューティング
-<p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=66c070b6-1c47-4c7f-b928-317a8c8b452f" target='_blank'>開始</a></span><span class="has-padding-small">仮想エージェントを利用して <b> 自動化診断を実行し、問題を短時間で解決します。</b></span><span class="has-padding-small"><a href="https://privacy.microsoft.com/privacystatement" target='_blank'><div align="right"><sub>プライバシーに関する声明</sub></div></a></span></p>
+
 Azure Application Gateway の使用時に表示される無効なゲートウェイ (502) エラーをトラブルシューティングする方法について説明します。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -111,7 +111,7 @@ DhcpOptions            : {
 | 名前 |プローブの名前。 この名前は、バックエンドの HTTP 設定でプローブを参照するために使用されます。 |
 | Protocol |プローブを送信するために使用するプロトコル。 プローブでは、バックエンドの HTTP 設定で定義されているプロトコルを使用します |
 | Host |プローブを送信するホスト名。 アプリケーション ゲートウェイでマルチサイトを構成する場合にのみ適用可能です。 これは VM ホスト名とは異なります。 |
-| Path |プローブの相対パス。 パスは、先頭が '/' である必要があります。 プローブは、\<protocol\>://\<host\>:\<port\>\<path\> に送信されます。 |
+| Path |プローブの相対パス。 パスは、先頭が '/' である必要があります。 プローブは \<protocol\>://\<host\>:\<port\>\<path\> に送信されます |
 | Interval |プローブの間隔 (秒)。 2 つの連続するプローブの時間間隔。 |
 | タイムアウト |プローブのタイムアウト (秒)。 このタイムアウト期間内に正常な応答が受信されなかった場合は、プローブが「失敗」とマークされます。 |
 | 異常のしきい値 |プローブの再試行回数。 プローブの連続失敗回数が異常のしきい値に達すると、バックエンド サーバーは「ダウン」とマークされます。 |

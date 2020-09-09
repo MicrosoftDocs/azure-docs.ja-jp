@@ -2,18 +2,16 @@
 title: Azure Data Lake Analytics のディザスター リカバリーのガイダンス
 description: Azure Data Lake Analytics アカウントのディザスター リカバリーを計画する方法について説明します。
 services: data-lake-analytics
-author: MikeRys
-ms.author: mrys
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/03/2019
-ms.openlocfilehash: f9b22e6b806f76189134ec63c83d48f48bf95587
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ab39ca8e71376fed681c049d338096ff992fed99
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73889761"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132570"
 ---
 # <a name="disaster-recovery-guidance-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics のディザスター リカバリーのガイダンス
 

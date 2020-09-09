@@ -8,12 +8,13 @@ ms.author: rgarcia
 ms.date: 02/22/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f4359db1deda2295a66bcb97cf374d0fe9bc3ef7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: da941aa8b616fffeb2e283480c2a1e2f9cf7a093
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74270127"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003118"
 ---
 # <a name="logging-and-diagnostics-in-azure-spatial-anchors"></a>Azure Spatial Anchors でのログ記録と診断
 

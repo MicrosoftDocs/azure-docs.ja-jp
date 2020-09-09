@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c5643b0ce9d93c28372b30e6fc114816cafbce6
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: df25278d37e518e99bc315a315e017b98c7f4e58
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690463"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049385"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>条件付きアクセスのレポート専用モードとは
 
@@ -30,7 +30,7 @@ ms.locfileid: "82690463"
 - Azure Monitor サブスクリプションをお持ちのお客様は、条件付きアクセスに関する分析情報のブックを使用して、条件付きアクセス ポリシーの影響を監視できます。
 
 > [!WARNING]
-> レポート専用モードになっているポリシーで準拠しているデバイスが要求されている場合には、デバイスの準拠が強制されていなくても、ポリシーの評価中に Mac、iOS、および Android のユーザーに対してデバイス証明書の選択が求められる場合があります。 これらのプロンプトの表示は、デバイスが準拠状態になるまで繰り返される場合があります。 サインイン時にエンド ユーザーにプロンプトが表示されないようにするには、デバイス プラットフォームである Mac、iOS、および Android を、デバイスの準拠状態を確認するレポート専用ポリシーから除外します。
+> レポート専用モードになっているポリシーで準拠しているデバイスが要求されている場合には、デバイスの準拠が強制されていなくても、ポリシーの評価中に Mac、iOS、および Android のユーザーに対してデバイス証明書の選択が求められる場合があります。 これらのプロンプトの表示は、デバイスが準拠状態になるまで繰り返される場合があります。 サインイン時にエンド ユーザーにプロンプトが表示されないようにするには、デバイス プラットフォームである Mac、iOS、および Android を、デバイスの準拠状態を確認するレポート専用ポリシーから除外します。 "ユーザー アクション" を範囲とする CA ポリシーにはレポート専用モードは適用されないことに注意してください。
 
 ![Azure AD の [サインイン] のレポート専用タブ](./media/concept-conditional-access-report-only/report-only-detail-in-sign-in-log.png)
 
@@ -51,4 +51,4 @@ ms.locfileid: "82690463"
  
 ## <a name="next-steps"></a>次のステップ
 
-[条件付きアクセス ポリシーに対するレポート専用モードの構成](howto-conditional-access-report-only.md)
+[条件付きアクセス ポリシーに対するレポート専用モードの構成](howto-conditional-access-insights-reporting.md)

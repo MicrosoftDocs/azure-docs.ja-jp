@@ -4,23 +4,27 @@ description: この記事では、リダイレクトを使用して Azure Databa
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
-ms.date: 03/16/2020
-ms.openlocfilehash: f987d5d9640c3bfef61320df379a68eae2f4712b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.date: 6/8/2020
+ms.openlocfilehash: be660101a28d5ef289de1b25f8f7d33fbe9f617b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246337"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107820"
 ---
 # <a name="connect-to-azure-database-for-mysql-with-redirection"></a>リダイレクトを使用して Azure Database for MySQL に接続する
 
 このトピックでは、リダイレクト モードで Azure Database for MySQL サーバーにアプリケーションを接続する方法について説明します。 リダイレクトは、アプリケーションをバックエンド サーバー ノードに直接接続できるようにすることで、クライアント アプリケーションと MySQL サーバー間のネットワーク待機時間を短縮することを目的としています。
 
 ## <a name="before-you-begin"></a>開始する前に
-[Azure portal](https://portal.azure.com) にサインインします。 エンジン バージョン 5.6、5.7、または 8.0 を使用して、Azure Database for MySQL サーバーを作成します。 詳細については、[Azure Portal を使用した Azure Database for MySQL サーバーの作成方法](quickstart-create-mysql-server-database-using-azure-portal.md)に関するページ、または[Azure CLI を使用した Azure Database for MySQL サーバーの作成方法](quickstart-create-mysql-server-database-using-azure-cli.md)に関するページをご覧ください。
+[Azure portal](https://portal.azure.com) にサインインします。 エンジン バージョン 5.6、5.7、または 8.0 を使用して、Azure Database for MySQL サーバーを作成します。 
 
-リダイレクトは現在、Azure Database for MySQL サーバーで **SSL が有効になっている**場合のみサポートされます。 SSL の構成方法の詳細については、[Azure Database for MySQL での SSL の使用](howto-configure-ssl.md#step-3--enforcing-ssl-connections-in-azure)に関する記事を参照してください。
+詳細については、[Azure portal](quickstart-create-mysql-server-database-using-azure-portal.md) または [Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md) を使用した Azure Database for MySQL サーバーの作成を参照してください。
+
+## <a name="enable-redirection"></a>リダイレクトを有効化する
+
+Azure Database for MySQL サーバーで、リダイレクト モードでの接続を許可するように `redirect_enabled` パラメーターを `ON` に構成します。 このサーバー パラメーターを更新するには、[Azure portal](howto-server-parameters.md) または [Azure CLI](howto-configure-server-parameters-using-cli.md) を使用します。
 
 ## <a name="php"></a>PHP
 
@@ -43,8 +47,8 @@ mysqlnd_azure 拡張機能は、PECL を通じて PHP アプリケーション�
 |**mysqlnd_azure.enableRedirect の値**| **動作**|
 |----------------------------------------|-------------|
 |`off` または `0`|リダイレクトは使用されません。 |
-|`on` または `1`|- Azure Database for MySQL サーバーで SSL が有効になっていない場合、接続は行われません。 次のエラーが返されます。 *"mysqlnd_azure.enableRedirect is on, but SSL option is not set in connection string.Redirection is only possible with SSL." (mysqlnd_azure.enableRedirect はオンですが、接続文字列に SSL オプションが設定されていません。リダイレクトは SSL でのみ可能です。)*<br>- MySQL サーバーで SSL が有効になっていても、そのサーバーでリダイレクトがサポートされていない場合、最初の接続は中止され、次のエラーが返されます。 *"Connection aborted because redirection is not enabled on the MySQL server or the network package doesn't meet redirection protocol. (リダイレクトが MySQL サーバーで有効になっていないか、ネットワーク パッケージがリダイレクト プロトコルを満たしていないため、接続が中止されました。)"*<br>- MySQL サーバーでリダイレクトがサポートされているが、リダイレクトされた接続が何らかの理由で失敗した場合は、最初のプロキシ接続も中止します。 リダイレクトされた接続のエラーを返します。|
-|`preferred` または `2`<br> (既定値)|- mysqlnd_azure は、可能な場合にリダイレクトを使用します。<br>- 接続で SSL が使用されていない場合、サーバーがリダイレクトをサポートしていない場合、またはプロキシ接続が有効であるにもかかわらず、リダイレクトされた接続が致命的ではない理由によって接続に失敗した場合、最初のプロキシ接続にフォールバックします。|
+|`on` または `1`|- ドライバー側で接続に SSL を使用しない場合、接続は行われません。 次のエラーが返されます。 *"mysqlnd_azure.enableRedirect is on, but SSL option is not set in connection string.Redirection is only possible with SSL." (mysqlnd_azure.enableRedirect はオンですが、接続文字列に SSL オプションが設定されていません。リダイレクトは SSL でのみ可能です。)*<br>- ドライバー側で SSL が使用されていても、そのサーバーでリダイレクトがサポートされていない場合、最初の接続は中止され、次のエラーが返されます。 *"Connection aborted because redirection is not enabled on the MySQL server or the network package doesn't meet redirection protocol. (リダイレクトが MySQL サーバーで有効になっていないか、ネットワーク パッケージがリダイレクト プロトコルを満たしていないため、接続が中止されました。)"*<br>- MySQL サーバーでリダイレクトがサポートされているが、リダイレクトされた接続が何らかの理由で失敗した場合は、最初のプロキシ接続も中止します。 リダイレクトされた接続のエラーを返します。|
+|`preferred` または `2`<br> (既定値)|- mysqlnd_azure は、可能な場合にリダイレクトを使用します。<br>- ドライバー側で接続に SSL が使用されていない場合、サーバーがリダイレクトをサポートしていない場合、またはプロキシ接続が有効であるにもかかわらず、リダイレクトされた接続が致命的ではない理由によって接続に失敗した場合は、最初のプロキシ接続にフォールバックします。|
 
 このドキュメントの以降のセクションでは、PECL を使用して `mysqlnd_azure` 拡張機能をインストールし、このパラメーターの値を設定する方法について説明します。
 
@@ -54,7 +58,7 @@ mysqlnd_azure 拡張機能は、PECL を通じて PHP アプリケーション�
 - PHP バージョン 7.2.15 以降および 7.3.2 以降
 - PHP PEAR 
 - php-mysql
-- SSL が有効になっている Azure Database for MySQL サーバー
+- Azure Database for MySQL サーバー
 
 1. [PECL](https://pecl.php.net/package/mysqlnd_azure) を使用して、[mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) をインストールします。 バージョン 1.1.0 以降を使用することをお勧めします。
 
@@ -92,7 +96,7 @@ mysqlnd_azure 拡張機能は、PECL を通じて PHP アプリケーション�
 #### <a name="prerequisites"></a>前提条件 
 - PHP バージョン 7.2.15 以降および 7.3.2 以降
 - php-mysql
-- SSL が有効になっている Azure Database for MySQL サーバー
+- Azure Database for MySQL サーバー
 
 1. 次のコマンドを実行して、x64 と x86 のどちらのバージョンの PHP を実行しているかを確認します。
 

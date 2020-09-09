@@ -7,12 +7,13 @@ ms.service: dns
 ms.topic: sample
 ms.date: 09/20/2019
 ms.author: rohink
-ms.openlocfilehash: b1db9ffb895470dd9224dc020eb82b0bbf6560c1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 1b0f08132ace5de7108702b61e89517fd28b4673
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76939301"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494912"
 ---
 # <a name="azure-cli-script-example-create-a-dns-zone-and-record"></a>Azure CLI スクリプトの例: DNS ゾーンとレコードの作成
 

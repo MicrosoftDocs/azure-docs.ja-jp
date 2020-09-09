@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 02/25/2020
+ms.date: 06/04/2020
 ms.author: jingwang
-ms.openlocfilehash: f7a70454e395f5f9d39266e0777749e1fcbef68e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 39f2dad088f3f3eb4a99aa17c1bdde5fe2a2f79c
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81419359"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84655836"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>クイック スタート:Azure Data Factory UI を使用してデータ ファクトリを作成する
 
@@ -26,10 +26,10 @@ ms.locfileid: "81419359"
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-このクイックスタートでは、Azure Data Factory UI を使用してデータ ファクトリを作成および監視する方法について説明します。 このデータ ファクトリに作成したパイプラインは、データを Azure Blob Storage 内のあるフォルダーから別のフォルダーに "*コピー*" します。 Azure Data Factory を使用してデータを "*変換*" する方法のチュートリアルについては、[Spark を使用したデータ変換のチュートリアル](tutorial-transform-data-spark-portal.md)を参照してください。
+このクイックスタートでは、Azure Data Factory UI を使用してデータ ファクトリを作成および監視する方法について説明します。 このデータ ファクトリに作成したパイプラインは、データを Azure Blob Storage 内のあるフォルダーから別のフォルダーに "*コピー*" します。 Azure Data Factory を使用してデータを "*変換*" するには、[マッピング データ フロー](concepts-data-flow-overview.md)に関するページと[ラングリング データ フロー (プレビュー)](wrangling-data-flow-overview.md) に関するページを参照してください。
 
 > [!NOTE]
-> Azure Data Factory を初めて使用する場合は、このクイック スタートを実行する前に、「[Azure Data Factory の概要](data-factory-introduction.md)」を参照してください。 
+> Azure Data Factory を初めて使用する場合は、このクイック スタートを実行する前に、「[Azure Data Factory の概要](introduction.md)」を参照してください。 
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
@@ -40,10 +40,8 @@ ms.locfileid: "81419359"
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
 1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
-1. [Azure ポータル](https://portal.azure.com)にアクセスします。 
-1. Azure portal メニューから **[リソースの作成]** を選択します。
-   
-   ![Azure portal メニューから [リソースの作成] を選択する](./media/doc-common-process/create-a-resource.png)
+1. [Azure Portal](https://portal.azure.com)にアクセスします。 
+1. Azure Portal メニューから **[リソースの作成]** を選択します。
 1. **[分析]** を選択してから、 **[Data Factory]** を選択します。 
    
    ![[新規] ウィンドウでの [Data Factory] の選択](./media/doc-common-process/new-azure-data-factory-menu.png)
@@ -80,8 +78,12 @@ ms.locfileid: "81419359"
 ## <a name="create-a-linked-service"></a>リンクされたサービスを作成する
 この手順では、Azure Storage アカウントをデータ ファクトリにリンクするためのリンクされたサービスを作成します。 リンクされたサービスは、Data Factory サービスが実行時に接続するために使用する接続情報を持っています。
 
-1. **[接続]** を選択し、ツール バーの **[新規]** を選択します ( **[接続]** ボタンは、 **[Factory Resources]\(ファクトリ リソース\)** の下の左側の列の下部にあります)。 
+1. 左ペインから [[管理] タブ](https://docs.microsoft.com/azure/data-factory/author-management-hub)を開きます。
 
+1. [リンクされたサービス] ページの **[+ 新規]** を選択して、リンクされたサービスを新規作成します。
+
+   ![新規のリンクされたサービス](./media/doc-common-process/new-linked-service.png)
+   
 1. **[New Linked Service]\(新しいリンクされたサービス\)** ページで **[Azure Blob Storage]** を選択し、 **[続行]** を選択します。 
 
 1. [New Linked Service (Azure Blob Storage)]\(新しいリンクされたサービス (Azure Blob Storage)\) ページで、次の手順を行います。 
@@ -143,12 +145,13 @@ ms.locfileid: "81419359"
     f. **[OK]** を選択します。   
 
     ![OutputDataset のプロパティを設定する](./media/quickstart-create-data-factory-portal/set-properties-for-outputdataset.png)
+
 ## <a name="create-a-pipeline"></a>パイプラインを作成する 
 この手順では、入力データセットと出力データセットを使用するコピー アクティビティを持つパイプラインを作成および検証します。 コピー アクティビティにより、入力データセットの設定で指定されたファイルから、出力データセットの設定で指定されたファイルにデータがコピーされます。 入力データセットで、ファイル名を指定せず、フォルダーのみを指定すると、コピー アクティビティはソース フォルダーのすべてのファイルをターゲットにコピーします。 
 
 1. **+** (正符号) ボタンを選択し、 **[パイプライン]** を選択します。 
 
-1. **[全般]** タブで、 **[名前]** に「**CopyPipeline**」と指定します。 
+1. [全般] パネルの **[プロパティ]** 下で、 **[名前]** に **CopyPipeline** を指定します。 次に、右上隅にある [プロパティ] アイコンをクリックしてパネルを折りたたみます。
 
 1. **[アクティビティ]** ツールボックスで **[Move & Transform]\(移動と変換\)** を展開します。 **[アクティビティ]** ツールボックスからパイプライン デザイナー画面に **[データのコピー]** アクティビティをドラッグします。 **[アクティビティ]** ツールボックスで、アクティビティを検索することもできます。 **[名前]** に「**CopyFromBlobToBlob**」と指定します。
    ![[データのコピー] アクティビティを作成する](./media/quickstart-create-data-factory-portal/copy-activity.png)

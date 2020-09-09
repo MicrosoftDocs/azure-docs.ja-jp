@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
-ms.openlocfilehash: 99e04c95156e40eed8c2b9aa88a2bee6f39e90c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3106e5a640ed66828558078e6986979ad7195450
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81392889"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386217"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure Monitor で Azure AD B2C を監視する
 
@@ -25,8 +25,8 @@ Azure Monitor を使用して、Azure Active Directory B2C (Azure AD B2C) のサ
 ログ イベントは次の場所にルーティングできます。
 
 * Azure [ストレージ アカウント](../storage/blobs/storage-blobs-introduction.md)。
+* [Log Analytics ワークスペース](../azure-monitor/platform/resource-logs-collect-workspace.md) (データの分析、ダッシュボードの作成、特定のイベントに対するアラートの作成を行う)。
 * Azure [イベント ハブ](../event-hubs/event-hubs-about.md) (Splunk および Sumo Logic のインスタンスと統合できます)。
-* [Log Analytics ワークスペース](../azure-monitor/platform/resource-logs-collect-workspace.md) (データの分析、ダッシュボードの作成、特定のイベントに対するアラートのため)。
 
 ![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)
 
@@ -89,7 +89,7 @@ Azure Resource Manager テンプレートとパラメーター ファイルを�
 
 次に、前に記録した値を使用して、パラメーター ファイルを更新します。 次の JSON スニペットでは、Azure Resource Manager テンプレートのパラメーター ファイルの例を示します。 `authorizations.value.roleDefinitionId` には、"*共同作成者ロール*" に対する[組み込みロール](../role-based-access-control/built-in-roles.md)の値 `b24988ac-6180-42a0-ab88-20f7382dd24c` を使用します。
 
-```JSON
+```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",

@@ -6,16 +6,16 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 08/29/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 12f91633834ee98582eaad886b48eb8619378265
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a3c0d7924fb550761d050c9c404b1065c7d3cf72
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81411669"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85211495"
 ---
 # <a name="design-decisions-and-coding-techniques-for-a-synapse-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の Synapse SQL プールの設計上の決定とコーディング技法 
  この記事では、Azure Synapse の SQL プールに関する主要な設計上の決定、レコメンデーション、およびコーディング技法をより深く理解するために、追加のリソースについて説明します。

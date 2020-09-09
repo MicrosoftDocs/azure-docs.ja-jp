@@ -1,6 +1,6 @@
 ---
 title: Azure Data Box の配線方法 | Microsoft Docs
-description: Azure Data Box にケーブルを配線するさまざまな方法について説明します。
+description: MGMT ポートまたは DATA ポートを使用して、データ転送のために Azure Data Box にケーブルを接続するさまざまな方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 10/24/2018
 ms.author: alkohli
-ms.openlocfilehash: ffabd917eff1c545bba734ab1621b947ee8d9ae9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1a1ce22cd700368d630d70912ea266d16fd772bf
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77920639"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925211"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Azure Data Box の配線方法
 

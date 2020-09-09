@@ -1,0 +1,76 @@
+---
+title: チュートリアル:ストレージ アカウント内のデータの分析を開始する
+description: このチュートリアルでは、ストレージ アカウントにあるデータを分析する方法について説明します。
+services: synapse-analytics
+author: saveenr
+ms.author: saveenr
+manager: julieMSFT
+ms.reviewer: jrasnick
+ms.service: synapse-analytics
+ms.topic: tutorial
+ms.date: 07/20/2020
+ms.openlocfilehash: 836e56884659c60c129eba0bb5505eddd9981283
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87093907"
+---
+# <a name="analyze-data-in-a-storage-account"></a>ストレージ アカウント内のデータを分析する
+
+このチュートリアルでは、ストレージ アカウントにあるデータを分析する方法について説明します。
+
+## <a name="overview"></a>概要
+
+ここまでは、データがワークスペース内のデータベースに存在するシナリオについて説明してきました。 次に、ストレージ アカウント内のファイルを操作する方法について説明します。 このシナリオでは、ワークスペースの作成時に指定したワークスペースとコンテナーのプライマリ ストレージ アカウントを使用します。
+
+* ストレージ アカウントの名前: **contosolake**
+* ストレージ アカウント内のコンテナーの名前: **users**
+
+### <a name="create-csv-and-parquet-files-in-your-storage-account"></a>ストレージ アカウントに CSV および Parquet ファイルを作成する
+
+ノートブック内の次のコードを実行します。 ストレージ アカウントに CSV ファイルと parquet ファイルが作成されます。
+
+```py
+%%pyspark
+df = spark.sql("SELECT * FROM nyctaxi.passengercountstats")
+df = df.repartition(1) # This ensure we'll get a single file during write()
+df.write.mode("overwrite").csv("/NYCTaxi/PassengerCountStats.csv")
+df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
+```
+
+### <a name="analyze-data-in-a-storage-account"></a>ストレージ アカウント内のデータを分析する
+
+1. Synapse Studio の **[データ]** ハブに移動し、 **[Linked]\(リンク済み\)** を選択します。
+1. **[ストレージ アカウント]**  >  **[myworkspace (プライマリ - contosolake)]** に移動します。
+1. **[users (プライマリ)]** を選択します。 **NYCTaxi** フォルダーが表示されます。 その中に、**PassengerCountStats.csv** と **PassengerCountStats.parquet** という 2 つのフォルダーが表示されます。
+1. **PassengerCountStats.parquet** フォルダーを開きます。 内部に、`part-00000-2638e00c-0790-496b-a523-578da9a15019-c000.snappy.parquet` のような名前の parquet ファイルがあります。
+1. **.parquet** を右クリックし、 **[新しいノートブック]** を選択します。 次のようなセルを含んだノートブックが作成されます。
+
+    ```py
+    %%pyspark
+    data_path = spark.read.load('abfss://users@contosolake.dfs.core.windows.net/NYCTaxi/PassengerCountStats.parquet/part-00000-1f251a58-d8ac-4972-9215-8d528d490690-c000.snappy.parquet', format='parquet')
+    data_path.show(100)
+    ```
+
+1. セルを実行します。
+1. Parquet ファイル内を右クリックして、 **[New SQL script]\(新しい SQL スクリプト\)**  >  **[SELECT TOP 100 rows]\(上位 100 行の選択\)** を選択します。 次のような SQL スクリプトが作成されます。
+
+    ```sql
+    SELECT TOP 100 *
+    FROM OPENROWSET(
+        BULK 'https://contosolake.dfs.core.windows.net/users/NYCTaxi/PassengerCountStats.parquet/part-00000-1f251a58-d8ac-4972-9215-8d528d490690-c000.snappy.parquet',
+        FORMAT='PARQUET'
+    ) AS [r];
+    ```
+
+     このスクリプトでは、 **[アタッチ先]** フィールドが **[SQL on-demand]\(SQL オンデマンド\)** に設定されます。
+
+1. スクリプトを実行します。
+
+
+
+## <a name="next-steps"></a>次のステップ
+
+> [!div class="nextstepaction"]
+> [パイプラインを使用してアクティビティを調整する](get-started-pipelines.md)

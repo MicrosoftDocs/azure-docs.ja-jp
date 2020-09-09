@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5af9e34baf6115e801fbfe35e6e3895e48b360e7
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 0c4bef25a0be12c0335a82345ec998274f1faa67
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80881725"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058398"
 ---
 # <a name="scenario-a-web-app-that-calls-web-apis"></a>シナリオ:Web API を呼び出す Web アプリ
 
@@ -49,7 +49,7 @@ Web API を呼び出す Web アプリは、機密クライアント アプリケ
 
 このシナリオの開発には、次の特定のタスクが含まれます。
 
-- [アプリケーションの登録](scenario-web-app-call-api-app-registration.md)中に、Azure AD と共有する応答 URI、シークレット、または証明書を指定する必要があります。 複数の場所にアプリをデプロイする場合は、場所ごとにこの情報を入力します。
+- [アプリケーションの登録](scenario-web-app-call-api-app-registration.md)中に、Azure AD と共有する応答 URI、シークレット、または証明書を指定する必要があります。 複数の場所にアプリをデプロイする場合は、場所ごとに応答 URI を入力します。
 - [アプリケーションの構成](scenario-web-app-call-api-app-configuration.md)で、アプリケーションの登録時に Azure AD と共有されたクライアント資格情報を提供する必要があります。
 
 ## <a name="next-steps"></a>次のステップ

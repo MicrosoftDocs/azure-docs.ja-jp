@@ -8,15 +8,15 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
-ms.custom: mvc
-ms.openlocfilehash: aaa1a4423363255536db7d53a1f8f8fa9ba686ff
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: mvc, devx-track-java
+ms.openlocfilehash: 8acc8b1e32304705b4221fe5570f7445720eafed
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76961189"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87307915"
 ---
-# <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>クイック スタート:対称キーを使用してシミュレートされたデバイスをプロビジョニングする
+# <a name="quickstart-provision-a-simulated-device-to-iot-hub-with-symmetric-keys"></a>クイック スタート:対称キーを使用してシミュレートされたデバイスを IoT Hub にプロビジョニングする
 
 このクイック スタートでは、Windows 開発マシン上でデバイス シミュレーターを作成して実行する方法について説明します。 ここでは、Device Provisioning Service (DPS) インスタンスとの認証と IoT ハブへの割り当てに対称キーを使用するように、このシミュレートされたデバイスを構成します。 [Java 用 Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdk-java) のサンプル コードを使用して、プロビジョニングを開始するデバイスのブート シーケンスをシミュレートします。 デバイスは、DPS サービス インスタンスへの個々の登録に基づいて認識され、IoT ハブに割り当てられます。
 

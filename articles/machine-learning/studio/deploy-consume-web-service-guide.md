@@ -1,25 +1,24 @@
 ---
-title: デプロイと使用
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio (classic):デプロイと使用 - Azure
 description: Azure Machine Learning Studio (クラシック) を使用して、機械学習ワークフローおよびモデルを Web サービスとしてデプロイできます。 次に、リアルタイムまたはバッチ モードで予測を行うために、インターネット経由で機械学習モデルをアプリケーションから呼び出すのに、これらの Web サービスを使用できます。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 29852eb0920f7bb32464d91e0be65c7dcb03325c
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 57856f449a4eb4ac53cda698e82569adeca8cade
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82627961"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429238"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio (クラシック) Web サービス: デプロイと使用
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 Azure Machine Learning Studio (クラシック) を使用して、機械学習ワークフローおよびモデルを Web サービスとしてデプロイできます。 次に、リアルタイムまたはバッチ モードで予測を行うために、インターネット経由で機械学習モデルをアプリケーションから呼び出すのに、これらの Web サービスを使用できます。 RESTfull であるため、Web サービスは、さまざまなプログラミング言語やプラットフォーム (.NET、Java など)、およびアプリケーション (Excel など) から呼び出すことができます。
 
@@ -55,7 +54,9 @@ Web サービス用の Azure Machine Learning Studio (クラシック) リソー
 
 予測実験をエクスポートするには、こちらの [サンプル コード](https://github.com/ritwik20/AzureML-WebServices)を使用します。 コードから実行可能ファイルを作成したら、次のように入力します。
 
-    C:\<folder>\GetWSD <experiment-url> <workspace-auth-token>
+```azurepowershell
+C:\<folder>\GetWSD <experiment-url> <workspace-auth-token>
+```
 
 アプリケーションを実行すると、Web サービスの JSON テンプレートが作成されます。 テンプレートを使用して Web サービスをデプロイするには、次の情報を追加する必要があります。
 
@@ -70,13 +71,15 @@ Web サービス用の Azure Machine Learning Studio (クラシック) リソー
 
 次に例を示します。
 
-    "StorageAccount": {
-            "name": "YourStorageAccountName",
-            "key": "YourStorageAccountKey"
-    },
-    "CommitmentPlan": {
-        "id": "subscriptions/YouSubscriptionID/resourceGroups/YourResourceGroupID/providers/Microsoft.MachineLearning/commitmentPlans/YourPlanName"
-    }
+```json
+"StorageAccount": {
+        "name": "YourStorageAccountName",
+        "key": "YourStorageAccountKey"
+},
+"CommitmentPlan": {
+    "id": "subscriptions/YouSubscriptionID/resourceGroups/YourResourceGroupID/providers/Microsoft.MachineLearning/commitmentPlans/YourPlanName"
+}
+```
 
 詳細については、次の記事とサンプル コードをご覧ください:
 

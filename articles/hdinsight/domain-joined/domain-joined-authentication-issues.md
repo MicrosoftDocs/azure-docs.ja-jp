@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
-ms.date: 11/08/2019
-ms.openlocfilehash: 26eec9cdd327ceb51e72deb1d6f40d585ce368fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 08/24/2020
+ms.openlocfilehash: 6473b6b69ba45138c30e4f2c8a7f1ba1a7f2ae7e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75896137"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816849"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Azure HDInsight での認証の問題
 
@@ -82,7 +82,7 @@ Azure AD テナントの社内管理者は、ADFS の管理対象ユーザーの
 
 ---
 
-## <a name="invalid_grant-or-unauthorized_client-50053"></a>invalid_grant または unauthorized_client、50053
+## <a name="invalid_grant-or-unauthorized_client-50053-2"></a>invalid_grant または unauthorized_client、50053 (#2)
 
 ### <a name="issue"></a>問題
 
@@ -208,7 +208,7 @@ kinit が `Preauthentication` エラーで失敗します。
 
 * Azure Data Lake Storage Gen1 の場合は、ブラウザー キャッシュを消去し、もう一度 Ambari にログインします。
 
-* Azure Data Lake Storage Gen2 の場合は、ユーザーがログインしようとしているユーザーの `/usr/lib/hdinsight-common/scripts/RegisterKerbWithOauth.sh <upn>` を実行します。
+* Azure Data Lake Storage Gen2 の場合は、ユーザーがログインしようとしているユーザーの `/usr/lib/hdinsight-common/scripts/RegisterKerbTicketAndOAuth.sh <upn>` を実行します。
 
 ---
 

@@ -13,19 +13,19 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/03/2019
+ms.date: 08/24/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1de9c07c99666ed4011214bd9b426eac8f494991
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 5a356e96b82e6fbe855d0b474dcb6b1f59c98333
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82978180"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855214"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>Azure での Windows Server フェールオーバー クラスタリングとファイル共有による SAP ASCS/SCS インスタンスのマルチ SID 高可用性
 
-> ![Windows][Logo_Windows] Windows
+> ![Windows OS][Logo_Windows] Windows
 >
 
 [Azure 内部ロード バランサー][load-balancer-multivip-overview]を使用して、複数の仮想 IP アドレスを管理できます。 
@@ -42,10 +42,10 @@ SAP がデプロイされている場合は、内部ロード バランサーを
 >
 >1 つの WSFC クラスターにおける SAP ASCS/SCS インスタンスの最大数は、Azure 内部ロード バランサーあたりのプライベート フロントエンド IP の最大数と等しくなります。
 >
-> このドキュメントで紹介されている構成を [Azure Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview) で使用することはまだサポートされていません
+> このドキュメントで紹介されている構成を [Azure Availability Zones](../../../availability-zones/az-overview.md) で使用することはまだサポートされていません
 > 
 
-ロード バランサーの制限の詳細については、[ネットワークの制限:Azure Resource Manager][networking-limits-azure-resource-manager]。 Azure Load Balancer の Basic SKU の代わりに、[Azure Standard Load Balancer SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) を使用することも検討してください。
+ロード バランサーの制限の詳細については、[ネットワークの制限:Azure Resource Manager][networking-limits-azure-resource-manager]。 Azure Load Balancer の Basic SKU の代わりに、[Azure Standard Load Balancer SKU](../../../load-balancer/load-balancer-standard-availability-zones.md) を使用することも検討してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -61,6 +61,7 @@ _**図 1:** 2 つのクラスターにデプロイされた SAP ASCS/SCS イン�
 > * 異なる SAP SID に属する別の SAP Global Hosts ファイル共有は、同じ SOFS クラスターを共有する必要があります。
 > * 各データベース管理システム (DBMS) SID には、独自の専用 WSFC クラスターが必要です。
 > * 1 つの SAP システム SID に属する SAP アプリケーション サーバーは、独自の専用 VM を持っている必要があります。
+> * エンキュー レプリケーション サーバー 1 とエンキュー レプリケーション サーバー 2 を同じクラスター上に配置することは、サポートされていません。  
 
 ## <a name="sap-ascsscs-multi-sid-architecture-with-file-share"></a>ファイル共有を使用した SAP ASCS/SCS マルチ SID アーキテクチャ
 
@@ -70,7 +71,7 @@ _**図 1:** 2 つのクラスターにデプロイされた SAP ASCS/SCS イン�
 
 _**図 2:** 2 つのクラスターの SAP マルチ SID 構成_
 
-追加の **SAP \<SID2>** システムのインストールは、1 つの \< SID> システムのインストールと同じです。 ASCS/SCS クラスターとファイル共有 SOFS クラスターでは、さらに 2 つの準備手順が必要です。
+追加の **SAP \<SID2>** システムのインストールは、1 つの \<SID> システムのインストールと同じです。 ASCS/SCS クラスターとファイル共有 SOFS クラスターでは、さらに 2 つの準備手順が必要です。
 
 ## <a name="prepare-the-infrastructure-for-an-sap-multi-sid-scenario"></a>SAP マルチ SID シナリオのインフラストラクチャを準備する
 
@@ -100,7 +101,7 @@ _**図 3:** マルチ SID の SOFS は SAP グローバル ホスト名と同じ
 >第 2 の**SAP \<SID2>** システムには、同じ Volume1 と同じ **\<SAPGlobalHost>** ネットワーク名を使います。
 >さまざまな SAP システムの共有名として **SAPMNT** を既に設定してあるので、 **\<SAPGlobalHost>** ネットワーク名を再利用するには、同じ **Volume1** を使う必要があります。
 >
->\<SID2> グローバル ホストのファイル パスは、C:\ClusterStorage\\**Volume1**\usr\sap\<SID2>\SYS\. です
+>\<SID2> グローバル ホストのファイル パスは、C:\ClusterStorage\\**Volume1**\usr\sap\<SID2>\SYS\. です。
 >
 
 \<SID2> システムの場合は、SAP グローバル ホスト ..\SYS\.. フォルダーを SOFS クラスターに準備する必要があります。

@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Azure Notebooks プレビューのドキュメント
-summary: Azure Notebooks プレビューは、インストールせずにクラウド上で Jupyter ノートブックを作成、実行するための無料でホストされているサービスです。 Jupyter (旧称 IPython) はオープン ソース プロジェクトで、マークダウン テキスト、実行可能コード (Python、R、F#)、永続的なデータ、グラフィックス、視覚化を組み合わせて、ノートブックと呼ばれる 1 つの共有可能なキャンバスに簡単にまとめることができます。
+summary: Azure Notebooks のパブリック プレビュー サイトは 2020 年 10 月 9 日に廃止され、Visual Studio、Azure、GitHub の統合サービスで置き換えられます。 お客様のオプションと Microsoft のその他のノートブック エクスペリエンスについて、https://notebooks.azure.com/Content/alternatives.html をご覧ください。
 metadata:
   title: Azure Notebooks プレビューのドキュメント
-  description: ホストされている Azure Notebooks プレビュー サービスを使用して Jupyter ノートブックを作成、実行、共有する方法について説明します。
+  description: ホストされている Azure Notebooks プレビュー サービスを使用して Jupyter Notebook を作成、実行、共有する方法について説明します。
   ms.service: azure-notebooks
   ms.topic: landing-page
-  author: jasonwhowell
-  ms.author: jasonh
-  ms.date: 12/26/2019
-  ms.openlocfilehash: 5044e3d679827982af7259511777f7119188b00b
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  author: JoshuaPartlow
+  ms.author: joshuapa
+  ms.date: 06/17/2020
+  ms.openlocfilehash: cdc98d01a4fae5e4b09af001ec65dd7a29c34c0f
+  ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "75659119"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88640278"
 landingContent:
 - title: Azure Notebooks について
   linkLists:
@@ -28,7 +28,7 @@ landingContent:
       url: azure-notebooks-samples.md
   - linkListType: get-started
     links:
-    - text: Azure ノートブックにアクセスする
+    - text: Azure Notebooks ファイルへのアクセス
       url: https://notebooks.azure.com/
 - title: Azure Notebooks の概要
   linkLists:
@@ -38,20 +38,22 @@ landingContent:
       url: /learn/modules/analyze-climate-data-with-azure-notebooks/
   - linkListType: tutorial
     links:
-    - text: Python を使用して Jupyter ノートブックを作成し、実行する
+    - text: Python を使用して Jupyter Notebook を作成し、実行する
       url: tutorial-create-run-jupyter-notebook.md
   - linkListType: quickstart
     links:
     - text: サインインとユーザー ID の設定
       url: quickstart-sign-in-azure-notebooks.md
-    - text: ノートブックの作成と共有
+    - text: Notebook の作成と共有
       url: quickstart-create-share-jupyter-notebook.md
-    - text: ノートブックの複製
+    - text: Notebook の複製
       url: quickstart-clone-jupyter-notebook.md
-    - text: ローカルの Jupyter ノートブックの移行
+    - text: ローカルの Jupyter Notebook の移行
       url: quickstart-migrate-local-jupyter-notebook.md
     - text: カスタム環境でのプロジェクトの作成
       url: quickstart-create-jupyter-notebook-project-environment.md
+    - text: プロジェクトをエクスポートする
+      url: quickstart-export-jupyter-notebook-project.md
 - title: Azure Notebooks の主なタスク
   linkLists:
   - linkListType: how-to-guide
@@ -62,7 +64,7 @@ landingContent:
       url: work-with-project-data-files.md
     - text: プロジェクトの作成と複製
       url: create-clone-jupyter-notebooks.md
-    - text: ノートブックでクラウド データにアクセスする
+    - text: Notebook でクラウド データにアクセスする
       url: access-data-resources-jupyter-notebooks.md
-    - text: ノートブックのパッケージのインストール
+    - text: Notebook のパッケージのインストール
       url: install-packages-jupyter-notebook.md

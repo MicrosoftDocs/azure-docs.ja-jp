@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 11e16453cc2a6044c4b153bd1556d85545ff9625
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee3808684ab2548999d71fe0d31fa9a160cd9347
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086625"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200054"
 ---
 # <a name="security-recommendations-for-queue-storage"></a>Queue storage のセキュリティに関する推奨事項
 
@@ -30,7 +30,6 @@ Azure Security Center では、Azure リソースのセキュリティの状態�
 | 推奨 | 説明 | Security Center |
 |-|----|--|
 | Azure Resource Manager デプロイ モデルを使用する | 重要なセキュリティ強化のために、Azure Resource Manager デプロイ モデルを使用して新しいストレージ アカウントを作成します。これには、優れたアクセス制御 (RBAC) と監査、Resource Manager ベースのデプロイとガバナンス、マネージド ID へのアクセス、シークレットのための Azure Key Vault へのアクセス、Azure Storage データおよびリソースにアクセスするための Azure AD に基づく認証と承認などが含まれます。 可能であれば、クラシック デプロイ モデルを使用する既存のストレージ アカウントを移行して、Azure Resource Manager を使用するようにします。 Azure Resource Manager の詳細については、「[Azure Resource Manager の概要](/azure/azure-resource-manager/resource-group-overview)」を参照してください。 | - |
-| すべてのストレージ アカウントで **[安全な転送が必須]** オプションを有効にする | **[安全な転送が必須]** オプションを有効にすると、ストレージ アカウントに対して行われるすべての要求が、セキュリティで保護された接続を経由して実行される必要があります。 HTTP 経由で行われた要求はすべて失敗します。 詳細については、「[Azure Storage で安全な転送が必要](../common/storage-require-secure-transfer.md)」を参照してください。 | [はい](../../security-center/security-center-sql-service-recommendations.md) |
 | すべてのストレージ アカウントについて Advanced Threat Protection を有効にする | Advanced Threat Protection for Azure Storage では、ストレージ アカウントに対する通常と異なる潜在的に有害なアクセスの試行すなわちストレージ アカウントの悪用を検出するセキュリティ インテリジェンス レイヤーが追加されます。 アクティビティに異常が発生すると、Azure Security Center でセキュリティ アラートがトリガーされます。さらに、これらのアラートは、不審なアクティビティの詳細と、脅威の調査や修復の方法に関する推奨事項と共に、サブスクリプション管理者にメールで送信されます。 詳細については、[Advanced Threat Protection for Azure Storage](../common/storage-advanced-threat-protection.md)に関するページを参照してください。 | [はい](../../security-center/security-center-sql-service-recommendations.md) |
 | Shared Access Signature (SAS) トークンを HTTPS 接続のみに制限する | クライアントが SAS トークンを使用してキュー データにアクセスするときに HTTPS を要求することで、盗聴のリスクを最小限に抑えることができます。 詳細については、「[Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](../common/storage-sas-overview.md)」を参照してください。 | - |
 
@@ -50,8 +49,10 @@ Azure Security Center では、Azure リソースのセキュリティの状態�
 
 | 推奨 | 説明 | Security Center |
 |-|----|--|
-| ファイアウォール規則を有効にする | ストレージ アカウントへのアクセスを、Azure 仮想ネットワーク (VNet) 内の指定した IP アドレス、IP 範囲、またはサブネットのリストから発信された要求に制限するように、ファイアウォール規則を構成します。 ファイアウォール規則の構成の詳細については、「[Azure File Sync のプロキシとファイアウォールの設定](../files/storage-sync-files-firewall-and-proxy.md)」を参照してください。 | - |
-| 信頼された Microsoft サービスによるストレージ アカウントへのアクセスを許可する | ストレージ アカウントのファイアウォール規則を有効にすると、Azure 仮想ネットワーク (VNet) 内で動作しているサービス、または許可されたパブリック IP アドレスから送信された要求でない限り、データに対して受信した要求は既定でブロックされます。 ブロックされる要求には、他の Azure サービスからの要求、Azure portal からの要求、ログおよびメトリック サービスからの要求などが含まれます。 例外を追加して、信頼された Microsoft サービスがストレージ アカウントにアクセスできるようにすることによって、他の Azure サービスからの要求を許可できます。 信頼された Microsoft サービスの例外の追加の詳細については、「[Azure File Sync のプロキシとファイアウォールの設定](../files/storage-sync-files-firewall-and-proxy.md)」を参照してください。| - |
+| ストレージ アカウントに必要な最小バージョンのトランスポート層セキュリティ (TLS) を構成します。  | Azure Storage アカウントに対して TLS の最小バージョンを構成することによって、クライアントで、より安全なバージョンの TLS を使用してそのアカウントに対して要求を行うことを義務付けます。 詳細については、「[ストレージ アカウントに必要な最小バージョンのトランスポート層セキュリティ (TLS) を構成する](../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)」を参照してください。| - |
+| すべてのストレージ アカウントで **[安全な転送が必須]** オプションを有効にする | **[安全な転送が必須]** オプションを有効にすると、ストレージ アカウントに対して行われるすべての要求が、セキュリティで保護された接続を経由して実行される必要があります。 HTTP 経由で行われた要求はすべて失敗します。 詳細については、「[Azure Storage で安全な転送が必要](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)」を参照してください。 | [はい](../../security-center/security-center-sql-service-recommendations.md) |
+| ファイアウォール規則を有効にする | ストレージ アカウントへのアクセスを、Azure 仮想ネットワーク (VNet) 内の指定した IP アドレス、IP 範囲、またはサブネットのリストから発信された要求に制限するように、ファイアウォール規則を構成します。 ファイアウォール規則の構成の詳細については、「[Azure Storage ファイアウォールおよび仮想ネットワークを構成する](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)」を参照してください。 | - |
+| 信頼された Microsoft サービスによるストレージ アカウントへのアクセスを許可する | ストレージ アカウントのファイアウォール規則を有効にすると、Azure 仮想ネットワーク (VNet) 内で動作しているサービス、または許可されたパブリック IP アドレスから送信された要求でない限り、データに対して受信した要求は既定でブロックされます。 ブロックされる要求には、他の Azure サービスからの要求、Azure portal からの要求、ログおよびメトリック サービスからの要求などが含まれます。 例外を追加して、信頼された Microsoft サービスがストレージ アカウントにアクセスできるようにすることによって、他の Azure サービスからの要求を許可できます。 信頼された Microsoft サービスの例外の追加の詳細については、「[Azure Storage ファイアウォールおよび仮想ネットワークを構成する](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)」を参照してください。| - |
 | プライベート エンドポイントを使用する | プライベート エンドポイントによって、Azure 仮想ネットワーク (VNet) からストレージ アカウントにプライベート IP アドレスが割り当てられます。 これにより、VNet とストレージ アカウントの間のすべてのトラフィックがプライベート リンクで保護されます。 プライベート エンドポイントの詳細については、「[Azure プライベート エンドポイントを使用して非公開でストレージ アカウントに接続する](../../private-link/create-private-endpoint-storage-portal.md)」を参照してください。 | - |
 | VNet サービス タグを使用する | サービス タグは、指定された Azure サービスからの IP アドレス プレフィックスのグループを表します。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。 Azure Storage でサポートされるサービス タグの詳細については、[Azure サービス タグの概要](../../virtual-network/service-tags-overview.md)に関する記事を参照してください。 サービス タグを使用してアウトバウンド ネットワーク ルールを作成する方法を示すチュートリアルについては、[PaaS リソースへのアクセスの制限](../../virtual-network/tutorial-restrict-network-access-to-resources.md)に関するページを参照してください。 | - |
 | 特定のネットワークへのネットワーク アクセスを制限する | アクセスを必要とするクライアントをホストしているネットワークへのネットワーク アクセスを制限すると、リソースがネットワーク攻撃にさらされる危険性が軽減されます。 | [はい](../../security-center/security-center-sql-service-recommendations.md) |

@@ -14,17 +14,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: a29381bded4bb2562227bd5f23ccb59bb5add028
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 24e4bf9940de0f7b0e851bdfdbd2d788757034e0
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67059210"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267736"
 ---
-# <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Azure webhook を使用して .NET で Media Services ジョブ通知を監視する 
+# <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Azure webhook を使用して .NET で Media Services ジョブ通知を監視する
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 
 ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。 Azure Webhook または [Azure Queue Storage](media-services-dotnet-check-job-progress-with-queues.md) を使用することで、Media Services ジョブ通知を監視することができます。 この記事では、Webhook を使用する方法を説明します。
 
@@ -354,25 +357,27 @@ internal sealed class NotificationMessage
 
 webhook がトリガーされると、上記の例により次の出力が生成されますが、ご自身の値は異なる場合があります。
 
-    C# HTTP trigger function processed a request. RequestUri=https://juliako001-functions.azurewebsites.net/api/Notification_Webhook_Function?code=9376d69kygoy49oft81nel8frty5cme8hb9xsjslxjhalwhfrqd79awz8ic4ieku74dvkdfgvi
-    Request Body = 
-    {
-      "MessageVersion": "1.1",
-      "ETag": "b8977308f48858a8f224708bc963e1a09ff917ce730316b4e7ae9137f78f3b20",
-      "EventType": 4,
-      "TimeStamp": "2017-02-16T03:59:53.3041122Z",
-      "Properties": {
-        "JobId": "nb:jid:UUID:badd996c-8d7c-4ae0-9bc1-bd7f1902dbdd",
-        "TaskId": "nb:tid:UUID:80e26fb9-ee04-4739-abd8-2555dc24639f",
-        "NewState": "Finished",
-        "OldState": "Processing",
-        "AccountName": "mediapkeewmg5c3peq",
-        "AccountId": "301912b0-659e-47e0-9bc4-6973f2be3424",
-        "NotificationEndPointId": "nb:nepid:UUID:cb5d707b-4db8-45fe-a558-19f8d3306093"
-      }
-    }
-    
-    URL to the manifest for client streaming using HLS protocol: http://mediapkeewmg5c3peq.streaming.mediaservices.windows.net/0ac98077-2b58-4db7-a8da-789a13ac6167/BigBuckBunny.ism/manifest(format=m3u8-aapl)
+```output
+C# HTTP trigger function processed a request. RequestUri=https://juliako001-functions.azurewebsites.net/api/otification_Webhook_Function?code=9376d69kygoy49oft81nel8frty5cme8hb9xsjslxjhalwhfrqd79awz8ic4ieku74dvkdfgvi
+Request Body = 
+{
+  "MessageVersion": "1.1",
+  "ETag": "b8977308f48858a8f224708bc963e1a09ff917ce730316b4e7ae9137f78f3b20",
+  "EventType": 4,
+  "TimeStamp": "2017-02-16T03:59:53.3041122Z",
+  "Properties": {
+    "JobId": "nb:jid:UUID:badd996c-8d7c-4ae0-9bc1-bd7f1902dbdd",
+    "TaskId": "nb:tid:UUID:80e26fb9-ee04-4739-abd8-2555dc24639f",
+    "NewState": "Finished",
+    "OldState": "Processing",
+    "AccountName": "mediapkeewmg5c3peq",
+    "AccountId": "301912b0-659e-47e0-9bc4-6973f2be3424",
+    "NotificationEndPointId": "nb:nepid:UUID:cb5d707b-4db8-45fe-a558-19f8d3306093"
+  }
+}
+
+URL to the manifest for client streaming using HLS protocol: http://mediapkeewmg5c3peq.streaming.mediaservices.windows.net/0ac98077-2b58-4db7-a8da-789a13ac6167/BigBuckBunny.ism/manifest(format=m3u8-aapl)
+```
 
 ## <a name="add-a-webhook-to-your-encoding-task"></a>エンコード タスクへの webhook の追加
 

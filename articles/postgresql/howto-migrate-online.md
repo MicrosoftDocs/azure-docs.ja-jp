@@ -4,14 +4,14 @@ description: この記事では、Azure Database Migration Service を使用し�
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 93cd390889c023adf1c30a8470e1c2298598439e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0b7c6392fbd795a078e9ec8f61281d95cf6363bc
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65067508"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112393"
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-postgresql---single-server"></a>最小限のダウンタイムでの Azure Database for PostgreSQL - Single Server への移行
 [Azure Database Migration Service](https://aka.ms/get-dms) (DMS) に新たに導入された**継続的同期機能**を使用すると、最小限のダウンタイムで PostgreSQL を Azure Database for PostgreSQL に移行できます。 この機能で、アプリケーションによって発生するダウンタイムの長さが短くなります。

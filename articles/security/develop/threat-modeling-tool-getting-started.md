@@ -1,6 +1,6 @@
 ---
 title: 概要 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
-description: ここでは、Threat Modeling Tool の動作を中心にして、より深い概要を説明します。
+description: Threat Modeling Tool の使用を開始する方法について説明します。 ダイアグラムを作成し、脅威を特定し、脅威を軽減し、各軽減策を検証します。
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
-ms.openlocfilehash: 1454826095bcced9b20935405c0befd5a1ed1ddd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3b8467a5983ae9d8928d14987bcee9d2aef094aa
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68728269"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539902"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Threat Modeling Tool の概要
 
 Microsoft Threat Modeling Tool 2018 は、無料で **[クリックしてダウンロードできる](https://aka.ms/threatmodelingtool)** ツールとして 2018 年 9 月に GA としてリリースされました。 配布のしくみが変わり、ユーザーがツールを開くたびに、最新の改善とバグの修正をプッシュできるようになりました。そのため、保守と使用が簡単になりました。
 この記事では、Microsoft SDL 脅威モデリング アプローチの基本的なプロセスについて説明します。また、ツールを使用して、セキュリティ プロセスのバックボーンとして優れた脅威モデルを作成する方法について説明します。
 
-この記事は、SDL の脅威モデリング アプローチの既存の知識に基づいています。 短時間で復習するには、「 **[Web アプリケーションの脅威モデル](https://msdn.microsoft.com/library/ms978516.aspx)** 」と、2006 年に公開されたアーカイブ版の MSDN 記事「 **[Uncover Security Flaws Using the STRIDE Approach](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** 」(STRIDE アプローチを使用してセキュリティ上の欠陥を見つける) を参照してください。
+この記事は、SDL の脅威モデリング アプローチの既存の知識に基づいています。 短時間で復習するには、「**[Web アプリケーションの脅威モデル](https://msdn.microsoft.com/library/ms978516.aspx)**」と、2006 年に公開されたアーカイブ版の MSDN 記事「**[Uncover Security Flaws Using the STRIDE Approach](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)**」(STRIDE アプローチを使用してセキュリティ上の欠陥を見つける) を参照してください。
 
 簡単にまとめると、このアプローチにはダイアグラムの作成、脅威の特定、脅威の軽減、各軽減策の検証が含まれます。 このプロセスをまとめた図を次に示します。
 
@@ -68,26 +68,26 @@ Threat Modeling Tool チームはツールの機能と操作性を改善する�
 
 3 人は 1 つ目の脅威モデルの開発プロセスを実行しています。
 
-> 高橋: 佐藤さん、脅威モデル ダイアグラムを編集しているところなのだが、詳細な部分が正しいことを確認したい。 確認を手伝ってもらえないだろうか。
-> 佐藤: はい。 見せてください。
+> 高橋:佐藤さん、脅威モデル ダイアグラムを編集しているところなのだが、詳細な部分が正しいことを確認したい。 確認を手伝ってもらえないだろうか。
+> 佐藤:そして、 見せてください。
 > 高橋さんがツールを開き、画面を佐藤さんと共有します。
 
 ![基本的な脅威モデル](./media/threat-modeling-tool-feature-overview/basictmt.png)
 
-> 佐藤: 単純に見えますが、簡単に説明していただけますか。
-> 高橋: もちろんだ。 内訳を説明する。
+> 佐藤:単純に見えますが、簡単に説明していただけますか。
+> 高橋:もちろんです。 内訳を説明する。
 > - 人間のユーザーは外部エンティティ (四角形) で描画されている
 > - ユーザーはコマンドを会社の Web サーバー (丸) に送信する
 > - Web サーバーはデータベースに問い合わせる (2 本の並列の線)
 
 高橋さんが佐藤さんに表示しているものは DFD です。DFDは **[Data Flow Diagram](https://en.wikipedia.org/wiki/Data_flow_diagram)** (データ フロー ダイアグラム) の短縮形です。 ユーザーは Threat Modeling Tool を使用して、異なるエンティティが管理されている場所を示す信頼の境界 (赤の点線) を指定できます。 たとえば、IT 管理者は、認証目的で Active Directory システムを必要としているため、Active Directory は管理の範囲外です。
 
-> 佐藤: 適切な内容だと思います。 脅威はどうですか。
-> 高橋: 説明しよう。
+> 佐藤:適切な内容だと思います。 脅威はどうですか。
+> 高橋:説明しよう。
 
 ## <a name="analyzing-threats"></a>脅威の分析
 
-高橋さんがアイコン メニュー項目から分析ビュー (ファイルと虫眼鏡のアイコン) をクリックすると、既定のテンプレートに基づいて Threat Modeling Tool が検出し、生成した脅威の一覧が表示されます。このテンプレートでは、 **[STRIDE (スプーフィング、改ざん、情報漏えい、否認、サービス拒否、特権の昇格)](https://en.wikipedia.org/wiki/STRIDE_(security))** という SDL アプローチを使用しています。 STRIDE は、予測可能な特定の組み合わせ脅威をソフトウェアが受け、脅威はこれら 6 つのカテゴリを使用して検出できる、という考えです。
+高橋さんがアイコン メニュー項目から分析ビュー (ファイルと虫眼鏡のアイコン) をクリックすると、既定のテンプレートに基づいて Threat Modeling Tool が検出し、生成した脅威の一覧が表示されます。このテンプレートでは、**[STRIDE (スプーフィング、改ざん、情報漏えい、否認、サービス拒否、特権の昇格)](https://en.wikipedia.org/wiki/STRIDE_(security))** という SDL アプローチを使用しています。 STRIDE は、予測可能な特定の組み合わせ脅威をソフトウェアが受け、脅威はこれら 6 つのカテゴリを使用して検出できる、という考えです。
 
 このアプローチは、自宅を守るために、アラーム システムを追加したり、泥棒を追いかける前に、個々のドアと窓にロックのしくみを確実に持たせることに似ています。
 

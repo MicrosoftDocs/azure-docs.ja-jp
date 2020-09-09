@@ -7,13 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/19/2020
+ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 8124afef1aa12dbf3ec51e10597cb1567fc85551
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 2b3d4993406f150b2983d4d820f7d070b5de1e96
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80289893"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375589"
 ---
 このクイックスタートでは、Bing Video Search の Java 用のクライアント ライブラリを使用してニュースを検索する方法を説明します。 Bing Video Search の REST API はほとんどのプログラミング言語に対応していますが、このクライアント ライブラリを使用すると、サービスをお使いのアプリケーションに簡単に統合することができます。 このサンプルのソース コードは [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingVideoSearch) にあり、追加の注釈と機能があります。
 

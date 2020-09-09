@@ -1,40 +1,41 @@
 ---
-title: Azure Application Insights SDK におけるフィルター処理および前処理 | Microsoft Docs
+title: Application Insights SDK におけるフィルター処理および前処理 | Microsoft Docs
 description: テレメトリが Application Insights ポータルに送信される前に、SDK でフィルター処理またはデータへのプロパティの追加を行うためのテレメトリ プロセッサおよびテレメトリ初期化子を記述します。
 ms.topic: conceptual
 ms.date: 11/23/2016
-ms.openlocfilehash: 8b81849726ad546a24ce1bb56a139b384eb54c42
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: c42b3a79e1c816e92c71e41a738bbb116a39aee1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81405372"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936556"
 ---
-# <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK におけるテレメトリのフィルター処理および前処理
+# <a name="filter-and-preprocess-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK におけるフィルター処理および前処理
 
 Application Insights SDK のプラグインを作成および構成して、Application Insights サービスに送信される前のテレメトリのエンリッチと処理の方法をカスタマイズできます。
 
 * [サンプリング](sampling.md) は、統計に影響を与えることなくテレメトリの量を削減します。 関連するデータ ポイントが一緒に保持されるので、問題の診断時にそれらのデータ ポイント間を移動することができます。 ポータルでは、サンプリングを補正するために合計数が乗算されます。
-* テレメトリ プロセッサを使ったフィルター処理により、サーバーに送信される前のテレメトリから、不要な情報を SDK で取り除くことができます。 たとえば、ロボットからの要求を除外することでテレメトリの量を削減することができます。 フィルター処理は、トラフィックを削減するうえでは、サンプリングよりも基本的な方法です。 フィルター処理を使用すると、送信する内容をより細かく制御することができます。ただし、統計に影響を及ぼすことになるので注意が必要です (たとえば、すべての成功した要求を除外する場合など)。
+* テレメトリ プロセッサを使ったフィルター処理により、サーバーに送信される前のテレメトリから、不要な情報を SDK で取り除くことができます。 たとえば、ロボットからの要求を除外することでテレメトリの量を削減することができます。 フィルター処理は、トラフィックを削減するうえでは、サンプリングよりも基本的な方法です。 送信内容をより細かく制御できますが、統計に影響します。 たとえば、すべての成功した要求をフィルターで除外することができます。
 * アプリから送信されるテレメトリ (標準モジュールからのテレメトリも含む) に対し、[テレメトリ初期化子でプロパティを追加したりプロパティに変更を加えたり](#add-properties)することができます。 たとえば、算出値や、ポータルでデータをフィルター処理するのに使用できるバージョン番号を追加することが可能です。
-* [SDK API](../../azure-monitor/app/api-custom-events-metrics.md) は、カスタム イベントとメトリックの送信に使用します。
+* [SDK API](./api-custom-events-metrics.md) は、カスタム イベントとメトリックの送信に使用します。
 
 開始する前に次の操作を実行してください。
 
-* アプリケーションに適した SDK をインストールします。[ASP.NET](asp-net.md)、[ASP.NET Core](asp-net-core.md)、[Non HTTP/Worker for .NET/.NET Core](worker-service.md)、または [JavaScript](javascript.md)
+* アプリケーションに適した SDK をインストールします。[ASP.NET](asp-net.md)、[ASP.NET Core](asp-net-core.md)、[Non HTTP/Worker for .NET/.NET Core](worker-service.md)、または [JavaScript](javascript.md)。
 
 <a name="filtering"></a>
 
 ## <a name="filtering"></a>Filtering
 
-この手法では、テレメトリ ストリームに含める内容またはテレメトリ ストリームから除外する内容を直接制御できます。 フィルター処理を使用すると、Application Insights への送信対象からテレメトリ項目を除外することができます。 フィルター処理はサンプリングと組み合わせて使用することも別々に使用することもできます。
+この手法では、テレメトリ ストリームに含める内容またはテレメトリ ストリームから除外する内容を直接制御できます。 フィルター処理を使用すると、Application Insights への送信対象からテレメトリ項目を除外することができます。 フィルター処理は、サンプリングと組み合わせて使用することも、個別に使用することもできます。
 
-テレメトリのフィルター処理を行うには、テレメトリ プロセッサを記述し、それを `TelemetryConfiguration` に登録します。 どのテレメトリもこのプロセッサを通過します。テレメトリをストリームから除外するように選択することも、チェーン内の次のプロセッサに与えることもできます。 これには、HTTP 要求コレクターや依存関係コレクターなどの標準的なモジュールのテレメトリに加えて、自身で追跡したテレメトリも含まれます。 たとえば、ロボットからの要求や成功した依存関係の呼び出しについてのテレメトリをフィルターで除外できます。
+テレメトリのフィルター処理を行うには、テレメトリ プロセッサを記述し、それを `TelemetryConfiguration` に登録します。 すべてのテレメトリはプロセッサを経由します。 ストリームから削除するか、チェーン内の次のプロセッサに渡すかを選択できます。 HTTP 要求コレクターや依存関係コレクターなどの標準的なモジュールのテレメトリに加えて、自身で追跡したテレメトリも含まれます。 たとえば、ロボットからの要求や成功した依存関係の呼び出しについてのテレメトリをフィルターで除外できます。
 
 > [!WARNING]
 > プロセッサを使用して SDK から送信されるテレメトリをフィルター処理すると、ポータルに表示される統計にゆがみが生じ、関連項目を追跡するのが困難になる可能性があります。
 >
-> 代わりに、 [サンプリング](../../azure-monitor/app/sampling.md)の使用を検討します。
+> 代わりに、 [サンプリング](./sampling.md)の使用を検討します。
 >
 >
 
@@ -42,7 +43,7 @@ Application Insights SDK のプラグインを作成および構成して、Appl
 
 1. フィルターを作成するには、`ITelemetryProcessor` を実装します。
 
-    テレメトリ プロセッサが処理のチェーンを構築することに注意してください。 テレメトリ プロセッサをインスタンス化するときは、チェーン内の次のプロセッサへの参照が与えられます。 テレメトリ データ ポイントが Process メソッドに渡されると、作業が実行され、そのチェーンの次のテレメトリ プロセッサが呼び出されます (呼び出されないこともあります)。
+    テレメトリ プロセッサによって処理のチェーンが構築されます。 テレメトリ プロセッサをインスタンス化するときは、チェーン内の次のプロセッサへの参照が与えられます。 テレメトリ データ ポイントが process メソッドに渡されると、作業が実行され、そのチェーンの次のテレメトリ プロセッサが呼び出されます (呼び出されないこともあります)。
 
     ```csharp
     using Microsoft.ApplicationInsights.Channel;
@@ -79,7 +80,9 @@ Application Insights SDK のプラグインを作成および構成して、Appl
 
 2. プロセッサを追加します。
 
-**ASP.NET アプリ**: 次のスニペットを ApplicationInsights.config に挿入します。
+ASP.NET **アプリ**
+
+次のスニペットを ApplicationInsights.config に挿入します。
 
 ```xml
 <TelemetryProcessors>
@@ -96,7 +99,7 @@ Application Insights SDK のプラグインを作成および構成して、Appl
 > .config ファイル内の型名とプロパティ名をコード内のクラスおよびプロパティ名と慎重に照合してください。 存在しない型またはプロパティが .config ファイルによって参照されていると、SDK は何も通知せずにテレメトリの送信に失敗する場合があります。
 >
 
-**あるいは** 、コード内でフィルターを初期化することもできます。 適切な初期化クラス (たとえば `Global.asax.cs` の AppStart) で、プロセッサをチェーンに挿入します。
+または、コード内でフィルターを初期化することもできます。 適切な初期化クラス (たとえば `Global.asax.cs` の AppStart) で、プロセッサをチェーンに挿入します。
 
 ```csharp
 var builder = TelemetryConfiguration.Active.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
@@ -108,14 +111,14 @@ builder.Use((next) => new AnotherProcessor(next));
 builder.Build();
 ```
 
-この時点より後に作成された TelemetryClients はプロセッサを使用します。
+この時点より後に作成されたテレメトリ クライアントではプロセッサが使用されます。
 
-**ASP.NET Core またはワーカー サービス アプリ**
+ASP.NET **Core または Worker サービス アプリ**
 
 > [!NOTE]
-> ASP.NET Core アプリケーションの場合または Microsoft.ApplicationInsights.WorkerService SDK を使用する場合、`ApplicationInsights.config` または `TelemetryConfiguration.Active` を使用したプロセッサの追加は無効です。
+> `ApplicationInsights.config` または `TelemetryConfiguration.Active` を使用してプロセッサを追加することは、ASP.NET Core アプリケーションの場合、または Microsoft.ApplicationInsights.WorkerService SDK を使用している場合は無効です。
 
-[ASP.NET Core](asp-net-core.md#adding-telemetry-processors) または [WorkerService](worker-service.md#adding-telemetry-processors) を使用して作成されたアプリの場合、新しい `TelemetryProcessor` の追加は、`IServiceCollection` の `AddApplicationInsightsTelemetryProcessor` 拡張メソッドを使用して行います (以下の例を参照)。 このメソッドは、`Startup.cs` クラスの `ConfigureServices` メソッドの中で呼び出されます。
+[ASP.NET Core](asp-net-core.md#adding-telemetry-processors) または [WorkerService](worker-service.md#adding-telemetry-processors) を使用して作成されたアプリの場合、新しいテレメトリ プロセッサを追加するには、次に示すように、`IServiceCollection` に対して `AddApplicationInsightsTelemetryProcessor` 拡張メソッドを使用します。 このメソッドは、`Startup.cs` クラスの `ConfigureServices` メソッドの中で呼び出されます。
 
 ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -168,10 +171,10 @@ public void Process(ITelemetry item)
 
 #### <a name="filter-out-fast-remote-dependency-calls"></a>リモートの依存関係の高速呼び出しを除外する
 
-低速な呼び出しの診断のみを実行する場合は、高速呼び出しを除外します。
+低速な呼び出しのみの診断を実行する場合は、高速呼び出しを除外します。
 
 > [!NOTE]
-> これによって、ポータルに表示される統計にゆがみが生じます。
+> このフィルター処理によって、ポータルに表示される統計にゆがみが生じます。
 >
 >
 
@@ -198,7 +201,7 @@ public void Process(ITelemetry item)
 
 **ITelemetryInitializer を使用したフィルター処理**
 
-1. テレメトリ初期化子のコールバック関数を作成します。 コールバック関数は、パラメーターとして `ITelemetryItem` を受け取ります。これは、処理されるイベントを指します。 このコールバックから `false` が返されると、テレメトリ項目がフィルターで除外されます。  
+1. テレメトリ初期化子のコールバック関数を作成します。 コールバック関数は、パラメーターとして `ITelemetryItem` を受け取ります。これは、処理されるイベントを指します。 このコールバックから `false` が返されると、テレメトリ項目がフィルターで除外されます。
 
    ```JS
    var filteringFunction = (envelope) => {
@@ -218,12 +221,11 @@ public void Process(ITelemetry item)
 
 ## <a name="addmodify-properties-itelemetryinitializer"></a>プロパティの追加/変更:ITelemetryInitializer
 
-
 テレメトリを追加情報でエンリッチしたり、標準のテレメトリ モジュールによって設定されたテレメトリのプロパティをオーバーライドしたりするには、テレメトリ初期化子を使用します。
 
 たとえば、Web 向けの Application Insights パッケージでは HTTP 要求に関するテレメトリが収集されます。 既定では、応答コードが 400 以上の要求はすべて失敗としてフラグが設定されます。 これに対して 400 を成功として処理する場合は、"成功" プロパティを設定するテレメトリ初期化子を指定できます。
 
-テレメトリ初期化子を指定すると、Track*() メソッドのいずれかが呼び出されるたびに、テレメトリ初期化子も呼び出されます。 これには、標準のテレメトリ モジュールによって呼び出される `Track()` メソッドも含まれます。 通常、これらのモジュールでは、初期化子によって既に設定されているプロパティは設定されません。 テレメトリ初期化子は、テレメトリ プロセッサを呼び出す前に呼び出されます。 そのため、初期化子によって実行されたエンリッチメントはすべて、プロセッサから参照することができます。
+テレメトリ初期化子を指定すると、Track*() メソッドのいずれかが呼び出されるたびに、テレメトリ初期化子も呼び出されます。 これには、標準のテレメトリ モジュールによって呼び出される `Track()` メソッドも含まれます。 規約により、これらのモジュールでは、初期化子によって既に設定されているプロパティは設定されません。 テレメトリ初期化子は、テレメトリ プロセッサを呼び出す前に呼び出されます。 そのため、初期化子によって実行されたエンリッチメントはすべて、プロセッサから参照することができます。
 
 **初期化子を定義する**
 
@@ -266,7 +268,7 @@ namespace MvcWebRole.Telemetry
 }
 ```
 
-**ASP.NET アプリ: 初期化子を読み込む**
+ASP.NET **アプリ:初期化子を読み込む**
 
 ApplicationInsights.config で:
 
@@ -280,7 +282,7 @@ ApplicationInsights.config で:
 </ApplicationInsights>
 ```
 
-*または、* Global.aspx.cs などのコード内で初期化子をインスタンス化することもできます。
+または、Global.aspx.cs などのコード内で初期化子をインスタンス化することもできます。
 
 ```csharp
 protected void Application_Start()
@@ -290,14 +292,14 @@ protected void Application_Start()
 }
 ```
 
-[このトピックのその他のサンプルについては、こちらをご覧ください。](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole)
+詳細については、[このサンプル](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole)を参照してください。
 
-**ASP.NET Core またはワーカー サービス アプリ: 初期化子を読み込む**
+ASP.NET **Core または Worker サービス アプリ:初期化子を読み込む**
 
 > [!NOTE]
-> ASP.NET Core アプリケーションの場合または Microsoft.ApplicationInsights.WorkerService SDK を使用する場合、`ApplicationInsights.config` または `TelemetryConfiguration.Active` を使用した初期化子の追加は無効です。
+> `ApplicationInsights.config` または `TelemetryConfiguration.Active` を使用して初期化子を追加することは、ASP.NET Core アプリケーションの場合、または Microsoft.ApplicationInsights.WorkerService SDK を使用している場合は無効です。
 
-[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) または [WorkerService](worker-service.md#adding-telemetryinitializers) を使用して作成されたアプリの場合、新しい `TelemetryInitializer` の追加は、それを依存関係挿入コンテナーに追加することによって行います (以下の例を参照)。 これは、`Startup.ConfigureServices` メソッドで実行します。
+[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) または [WorkerService](worker-service.md#adding-telemetryinitializers) を使用して作成されたアプリの場合、次に示すように、新しいテレメトリ初期化子を追加するには、依存関係挿入コンテナーに追加します。 これは、`Startup.ConfigureServices` メソッドで実行します。
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -351,20 +353,20 @@ protected void Application_Start()
 </script>
 ```
 
-telemetryItem で使用できる非カスタム プロパティの概要については、[Application Insights エクスポート データ モデル](../../azure-monitor/app/export-data-model.md)に関するページを参照してください。
+telemetryItem で使用できる非カスタム プロパティの概要については、[Application Insights エクスポート データ モデル](./export-data-model.md)に関するページを参照してください。
 
-初期化子はいくつでも追加でき、また追加した順序で呼び出されます。
+任意の数の初期化子を追加できます。 これらは、追加された順序で呼び出されます。
 
 ### <a name="opencensus-python-telemetry-processors"></a>OpenCensus Python テレメトリ プロセッサ
 
-OpenCensus Python のテレメトリ プロセッサは、エクスポート前にテレメトリを処理するために呼び出される単なるコールバック関数です。 コールバック関数は、パラメーターとして [エンベロープ](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/protocol.py#L86) データ型を受け入れる必要があります。 テレメトリをエクスポートから除外するには、コールバック関数が `False` を返すようにします。 エンベロープの Azure Monitor データ型のスキーマについては、[こちら](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/protocol.py)を参照してください。
+OpenCensus Python のテレメトリ プロセッサは、エクスポート前にテレメトリを処理するために呼び出される単なるコールバック関数です。 コールバック関数は、パラメーターとして [エンベロープ](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/protocol.py#L86) データ型を受け入れる必要があります。 テレメトリをエクスポートから除外するには、コールバック関数が `False` を返すようにします。 エンベロープの Azure Monitor データ型のスキーマについては、[GitHub](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/protocol.py) を参照してください。
 
 > [!NOTE]
-> `cloud_RoleName` は、`tags` フィールドの `ai.cloud.role` 属性を変更することで変更できます。
+> `cloud_RoleName` を変更するには、`tags` フィールドの `ai.cloud.role` 属性を変更します。
 
 ```python
 def callback_function(envelope):
-    envelope.tags['ai.cloud.role'] = 'new_role_name.py'
+    envelope.tags['ai.cloud.role'] = 'new_role_name'
 ```
 
 ```python
@@ -462,11 +464,11 @@ def main():
 if __name__ == "__main__":
     main()
 ```
-プロセッサはいくつでも追加でき、また追加した順序で呼び出されます。 1 つのプロセッサが例外をスローしても、それ以降のプロセッサは影響を受けません。
+必要な数だけプロセッサを追加できます。 これらは、追加された順序で呼び出されます。 1 つのプロセッサから例外がスローされた場合、次のプロセッサには影響しません。
 
 ### <a name="example-telemetryinitializers"></a>TelemetryInitializers の例
 
-#### <a name="add-custom-property"></a>カスタム プロパティを追加する
+#### <a name="add-a-custom-property"></a>カスタム プロパティを追加する
 
 次のサンプル初期化子は、追跡されたすべてのテレメトリにカスタム プロパティを追加します。
 
@@ -481,9 +483,9 @@ public void Initialize(ITelemetry item)
 }
 ```
 
-#### <a name="add-cloud-role-name"></a>クラウド ロール名を追加する
+#### <a name="add-a-cloud-role-name"></a>クラウド ロール名を追加する
 
-次のサンプル初期化子は、追跡されたすべてのテレメトリにクラウド ロール名を設定します。
+次のサンプル初期化子によって、追跡されたすべてのテレメトリにクラウド ロール名が設定されます。
 
 ```csharp
 public void Initialize(ITelemetry telemetry)
@@ -497,7 +499,7 @@ public void Initialize(ITelemetry telemetry)
 
 #### <a name="add-information-from-httpcontext"></a>HttpContext から情報を追加する
 
-次のサンプル初期化子では、[`HttpContext`](https://docs.microsoft.com/aspnet/core/fundamentals/http-context?view=aspnetcore-3.1) からデータが読み取られ、`RequestTelemetry` インスタンスに追加されます。 `IHttpContextAccessor` は、コンストラクターの依存関係のインジェクションを通じて自動的に提供されます。
+次のサンプル初期化子では、[`HttpContext`](/aspnet/core/fundamentals/http-context?view=aspnetcore-3.1) からデータが読み取られ、`RequestTelemetry` インスタンスに追加されます。 `IHttpContextAccessor` は、コンストラクターの依存関係のインジェクションを通じて自動的に提供されます。
 
 ```csharp
 public class HttpContextRequestTelemetryInitializer : ITelemetryInitializer
@@ -527,22 +529,22 @@ public class HttpContextRequestTelemetryInitializer : ITelemetryInitializer
 
 テレメトリ プロセッサとテレメトリ初期化子は何が違うのでしょうか。
 
-* 共通する機能もあり、どちらもテレメトリのプロパティを追加したり変更したりする目的で使用できます。ただし、その目的であれば、初期化子の使用が推奨されます。
-* TelemetryInitializer は常に TelemetryProcessor の前に実行します。
-* TelemetryInitializers は、複数回呼び出すことができます。 慣例的に、既に設定されているプロパティは設定の対象外となります。
-* TelemetryProcessor を使用すると、テレメトリ項目を完全に置換または破棄できます。
-* 登録されている TelemetryInitializers はすべて、テレメトリ項目ごとに呼び出されることが保証されます。 テレメトリ プロセッサの場合、SDK で呼び出しが保証されるのは、最初のテレメトリ プロセッサのみです。 その他のプロセッサが呼び出されるかどうかは、先行するテレメトリ プロセッサによって決まります。
-* 追加のプロパティでテレメトリをエンリッチしたり、既存のプロパティをオーバーライドしたりするには、TelemetryInitializers を使用します。 テレメトリから不要な情報を取り除くには、TelemetryProcessor を使用します。
+* それらを使って実行できることにはいくつかの重複があります。 どちらもテレメトリのプロパティを追加または変更するために使用できますが、その用途には初期化子を使用することをお勧めします。
+* テレメトリ初期化子は、常にテレメトリ プロセッサの前に実行されます。
+* テレメトリ初期化子は、複数回呼び出すことができます。 規約により、既に設定されているプロパティは設定されません。
+* テレメトリ プロセッサを使用すると、テレメトリ項目を完全に置換または破棄できます。
+* 登録されているテレメトリ初期化子はすべて、テレメトリ項目ごとに呼び出されることが保証されます。 テレメトリ プロセッサの場合、SDK で呼び出しが保証されるのは、最初のテレメトリ プロセッサのみです。 その他のプロセッサが呼び出されるかどうかは、先行するテレメトリ プロセッサによって決まります。
+* 追加のプロパティでテレメトリをエンリッチしたり、既存のプロパティをオーバーライドしたりするには、TelemetryInitializers を使用します。 テレメトリ プロセッサを使用してテレメトリを除外します。
 
-## <a name="troubleshooting-applicationinsightsconfig"></a>ApplicationInsights.config のトラブルシューティング
+## <a name="troubleshoot-applicationinsightsconfig"></a>ApplicationInsights.config のトラブルシューティング
 
 * 完全修飾された型名とアセンブリ名が正しいことを確認します。
 * applicationinsights.config ファイルが出力ディレクトリ内に存在し、最近の変更がすべて含まれていることを確認します。
 
 ## <a name="reference-docs"></a>リファレンス ドキュメント
 
-* [API の概要](../../azure-monitor/app/api-custom-events-metrics.md)
-* [ASP.NET リファレンス](https://msdn.microsoft.com/library/dn817570.aspx)
+* [API の概要](./api-custom-events-metrics.md)
+* [ASP.NET リファレンス](/previous-versions/azure/dn817570(v=azure.100))
 
 ## <a name="sdk-code"></a>SDK コード
 
@@ -551,6 +553,7 @@ public class HttpContextRequestTelemetryInitializer : ITelemetryInitializer
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
 
 ## <a name="next-steps"></a><a name="next"></a>次のステップ
-* [イベントおよびログを検索する](../../azure-monitor/app/diagnostic-search.md)
-* [サンプリング](../../azure-monitor/app/sampling.md)
-* [トラブルシューティング](../../azure-monitor/app/troubleshoot-faq.md)
+* [イベントおよびログを検索する](./diagnostic-search.md)
+* [サンプリング](./sampling.md)
+* [トラブルシューティング](../faq.md)
+

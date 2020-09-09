@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: a638184d5232de916ebd25360147301a93309dd9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229943"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84702296"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Cosmos DB との間でのデータの移動
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]

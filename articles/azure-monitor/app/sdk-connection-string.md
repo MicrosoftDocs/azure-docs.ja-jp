@@ -5,13 +5,14 @@ ms.topic: conceptual
 author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
+ms.custom: devx-track-javascript, devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: 25eda0ae2b0d873fe9850e5b886489a5f2590e69
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 944257c93e00dca77507f26db15f7bf45fbb387e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80410610"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936420"
 ---
 # <a name="connection-strings"></a>Connection strings
 
@@ -31,12 +32,12 @@ ms.locfileid: "80410610"
 
 - ファイアウォールの例外またはプロキシのリダイレクト 
 
-    イントラネット Web サーバーの監視が必要な場合、以前のソリューションでは、お使いの構成に個々のサービスエンド ポイントを追加するようにお客様に求めていました。 詳細については、[このページ](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#can-i-monitor-an-intranet-web-server)を参照してください。 
+    イントラネット Web サーバーの監視が必要な場合、以前のソリューションでは、お使いの構成に個々のサービスエンド ポイントを追加するようにお客様に求めていました。 詳細については、[このページ](../faq.md#can-i-monitor-an-intranet-web-server)を参照してください。 
     接続文字列により、この作業の設定が 1 つですみ、より優れた代替方法が提供されます。 プレフィックスとサフィックスを修正するだけで、すべてのエンドポイントを適切なサービスに自動的に設定してリダイレクトすることができます。 
 
 - ソブリン クラウド環境またはハイブリッド クラウド環境
 
-    ユーザーは、定義された [Azure Government リージョン](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)にデータを送信できます。
+    ユーザーは、定義された [Azure Government リージョン](../../azure-government/compare-azure-government-global-azure.md#application-insights)にデータを送信できます。
     接続文字列を使用すると、イントラネット サーバーまたはハイブリッド クラウド設定のエンドポイント設定を定義できます。 
 
 ## <a name="getting-started"></a>作業の開始
@@ -64,10 +65,10 @@ ms.locfileid: "80410610"
 - `EndpointSuffix` (例: applicationinsights.azure.cn) エンドポイント サフィックスを設定すると、接続先の Azure クラウドが SDK に指示されます。 SDK により、個々のサービスに対してエンドポイントの残りの部分がアセンブルされます。
 - 明示的なエンドポイント。
   どのサービスも、接続文字列内で明示的にオーバーライドできます。
-   - `IngestionEndpoint` (例: https://dc.applicationinsights.azure.com)
-   - `LiveEndpoint` (例: https://live.applicationinsights.azure.com)
-   - `ProfilerEndpoint` (例: https://profiler.applicationinsights.azure.com)
-   - `SnapshotEndpoint` (例: https://snapshot.applicationinsights.azure.com)
+   - `IngestionEndpoint` (例: `https://dc.applicationinsights.azure.com`)
+   - `LiveEndpoint` (例: `https://live.applicationinsights.azure.com`)
+   - `ProfilerEndpoint` (例: `https://profiler.applicationinsights.azure.com`)
+   - `SnapshotEndpoint` (例: `https://snapshot.applicationinsights.azure.com`)
 
 #### <a name="endpoint-schema"></a>エンドポイント スキーマ
 
@@ -106,10 +107,10 @@ ms.locfileid: "80410610"
 - 認証方式の既定値は "ikey" です 
 - インストルメンテーション キー:00000000-0000-0000-0000-000000000000
 - リージョン サービスの URI は、[SDK の既定値 ](https://github.com/microsoft/ApplicationInsights-dotnet/blob/e50d569cebf485e72e98f4a08a0bc0e30cdf42bc/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/Endpoints/Constants.cs#L6)に基づき、パブリック グローバル Azure に接続されます。
-   - インジェスト: https://dc.services.visualstudio.com/
-   - Live Metrics: https://rt.services.visualstudio.com/
-   - Profiler: https://agent.azureserviceprofiler.net/
-   - デバッガー: https://agent.azureserviceprofiler.net/  
+   - インジェスト: `https://dc.services.visualstudio.com/`
+   - Live Metrics: `https://rt.services.visualstudio.com/`
+   - Profiler: `https://agent.azureserviceprofiler.net/`
+   - デバッガー: `https://agent.azureserviceprofiler.net/`
 
 
 
@@ -122,10 +123,10 @@ ms.locfileid: "80410610"
 - 認証方式の既定値は "ikey" です 
 - インストルメンテーション キー:00000000-0000-0000-0000-000000000000
 - リージョン サービスの URI は、指定されたエンドポイント サフィックスに基づきます。 
-   - インジェスト: https://dc.ai.contoso.com
-   - Live Metrics: https://live.ai.contoso.com
-   - Profiler: https://profiler.ai.contoso.com 
-   - デバッガー: https://snapshot.ai.contoso.com   
+   - インジェスト: `https://dc.ai.contoso.com`
+   - Live Metrics: `https://live.ai.contoso.com`
+   - Profiler: `https://profiler.ai.contoso.com`
+   - デバッガー: `https://snapshot.ai.contoso.com`  
 
 
 
@@ -138,10 +139,10 @@ ms.locfileid: "80410610"
 - 認証方式の既定値は "ikey" です 
 - インストルメンテーション キー:00000000-0000-0000-0000-000000000000
 - リージョン サービスの URI は、明示的なオーバーライド値に基づきます。 
-   - インジェスト: https:\//custom.com:111/
-   - ライブ メトリック: https:\//custom.com:222/
-   - プロファイラー: https:\//custom.com:333/ 
-   - デバッガー: https:\//custom.com:444/   
+   - インジェスト: `https://custom.com:111/`
+   - Live Metrics: `https://custom.com:222/`
+   - Profiler: `https://custom.com:333/`
+   - デバッガー: `https://custom.com:444/`  
 
 
 ## <a name="how-to-set-a-connection-string"></a>接続文字列を追加する方法
@@ -149,7 +150,7 @@ ms.locfileid: "80410610"
 接続文字列は、次の SDK バージョンでサポートされています。
 - .NET および .NET Core v2.12.0
 - Java v2.5.1 および Java 3.0
-- Javascript v2.3.0
+- JavaScript v2.3.0
 - NodeJS v1.5.0
 - Python v1.0.0
 
@@ -165,7 +166,7 @@ ms.locfileid: "80410610"
 
 TelemetryConfiguration.ConnectionString: https://github.com/microsoft/ApplicationInsights-dotnet/blob/add45ceed35a817dc7202ec07d3df1672d1f610d/BASE/src/Microsoft.ApplicationInsights/Extensibility/TelemetryConfiguration.cs#L271-L274
 
-.Net の明示的な設定:
+.NET の明示的な設定:
 ```csharp
 var configuration = new TelemetryConfiguration
 {
@@ -173,7 +174,7 @@ var configuration = new TelemetryConfiguration
 };
 ```
 
-.Net 構成ファイル:
+.NET 構成ファイル:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -182,6 +183,14 @@ var configuration = new TelemetryConfiguration
 </ApplicationInsights>
 ```
 
+NetCore の明示的な設定:
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    var options = new ApplicationInsightsServiceOptions { ConnectionString = "InstrumentationKey=00000000-0000-0000-0000-000000000000;" };
+    services.AddApplicationInsightsTelemetry(options: options);
+}
+```
 
 NetCore config.json: 
 
@@ -212,7 +221,7 @@ ApplicationInsights.xml
 
 # <a name="javascript"></a>[JavaScript](#tab/js)
 
-重要:Javascript では、環境変数の使用はサポートされていません。
+重要:JavaScript では、環境変数の使用はサポートされていません。
 
 スニペットの使用:
 
@@ -266,14 +275,15 @@ tracer = Tracer(exporter=AzureExporter(connection_string='InstrumentationKey=000
 
 実行時に開始する:
 
-* [Azure VM と Azure 仮想マシン スケール セットの IIS でホストされたアプリ](../../azure-monitor/app/azure-vm-vmss-apps.md)
-* [IIS サーバー](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Azure Web Apps](../../azure-monitor/app/azure-web-apps.md)
+* [Azure VM と Azure 仮想マシン スケール セットの IIS でホストされたアプリ](./azure-vm-vmss-apps.md)
+* [IIS サーバー](./monitor-performance-live-website-now.md)
+* [Azure Web Apps](./azure-web-apps.md)
 
 開発時に開始する:
 
-* [ASP.NET](../../azure-monitor/app/asp-net.md)
-* [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
-* [Java](../../azure-monitor/app/java-get-started.md)
-* [Node.js](../../azure-monitor/app/nodejs.md)
-* [Python](../../azure-monitor/app/opencensus-python.md)
+* [ASP.NET](./asp-net.md)
+* [ASP.NET Core](./asp-net-core.md)
+* [Java](./java-get-started.md)
+* [Node.js](./nodejs.md)
+* [Python](./opencensus-python.md)
+

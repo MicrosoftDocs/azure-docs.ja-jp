@@ -11,15 +11,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: b-juche
-ms.openlocfilehash: b21db3e842898e8ce11b560714888b946373300e
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: d76af4901103b0eed8cd1cffac744f8fb41d9689
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616429"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85483501"
 ---
 # <a name="set-up-a-capacity-pool"></a>容量プールを設定する
 

@@ -5,16 +5,16 @@ author: haroldwongms
 manager: joraio
 ms.service: virtual-machines-linux
 ms.subservice: workloads
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/15/2019
 ms.author: haroldw
-ms.openlocfilehash: d7d251370aefdfadc0b77a67f6dad1be2dcb9e9a
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: a7524ea80906f9df5f63af9e7d672bbef500b0d9
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81759434"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373336"
 ---
 # <a name="deploy-okd-in-azure"></a>Azure で OKD をデプロイする
 
@@ -119,7 +119,7 @@ Resource Manager テンプレートを使用してデプロイするには、パ
 
 
 > [!NOTE] 
-> 次のコマンドには、Azure CLI 2.0.8 以降が必要です。 CLI のバージョンは、`az --version` コマンドを使用して確認できます。 CLI のバージョンを更新するには、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)」を参照してください。
+> 次のコマンドには、Azure CLI 2.0.8 以降が必要です。 CLI のバージョンは、`az --version` コマンドを使用して確認できます。 CLI のバージョンを更新するには、「[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)」を参照してください。
 
 次の例では、OKD クラスターとすべての関連リソースを openshiftrg という名前のリソース グループに myOpenShiftCluster のデプロイ名でデプロイします。 このテンプレートは、azuredeploy.parameters.json ファイルという名前のローカル パラメーター ファイルを使用しているときに、GitHub リポジトリから直接参照されます。
 

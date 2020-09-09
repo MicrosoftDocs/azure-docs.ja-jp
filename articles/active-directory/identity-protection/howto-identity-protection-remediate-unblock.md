@@ -4,19 +4,19 @@ description: アクティブなリスク検出をクローズすためのオプ�
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: conceptual
-ms.date: 11/21/2019
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 350e7b37d36be70cea345db52cdfb639b2f1c1a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 06335798addadcd8591625e25ed2eafe8469ae48
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74382112"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84463962"
 ---
 # <a name="remediate-risks-and-unblock-users"></a>リスクを修復してユーザーをブロック解除する
 

@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: weixu
-ms.openlocfilehash: b8b874888d3a46a855c3d76d520d390725c40898
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a425c75dfd57f0d5f9c98b73d8b351972b70703a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735404"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918657"
 ---
 # <a name="real-time-conversation-transcription-preview"></a>リアルタイムでの会話の文字起こし (プレビュー)
 
@@ -37,7 +38,7 @@ Speech Device SDK には、8 チャネルを使用したリアルタイム オ�
 
 ## <a name="prerequisites"></a>前提条件
 
-Speech Service のサブスクリプション。 お持ちでない場合は、[Speech の試用版サブスクリプション](https://azure.microsoft.com/try/cognitive-services/)を入手できます。
+Speech Service のサブスクリプション。 [無料の Azure アカウント](https://azure.microsoft.com/free/cognitive-services/)をお持ちでない場合は、作成することができます。
 
 ## <a name="create-voice-signatures"></a>声紋を作成する
 
@@ -108,7 +109,7 @@ class Program
 
 サンプル コードの特徴を次に示します。
 
-- `Conversation` を使用して作成された会議の識別子を使用して `SpeechConfig` オブジェクトから `Guid.NewGuid()` オブジェクトを作成する
+- `Guid.NewGuid()` を使用して作成された会議の識別子を使用して `SpeechConfig` オブジェクトから `Conversation` オブジェクトを作成する
 - `ConversationTranscriber` オブジェクトを作成し、`JoinConversationAsync()` を使用して会話に参加して文字起こしを開始する
 - 関心のあるイベントを登録する
 - Conversation オブジェクトを使用して、参加者を会話に追加または削除する
@@ -140,7 +141,7 @@ public class MyConversationTranscriber
             using (var conversation = await Conversation.CreateConversationAsync(config, meetingId).ConfigureAwait(false))
             {
                 // Create a conversation transcriber using audio stream input
-                using (var conversationTranscriber = new ConversationTranscriber    (audioInput))
+                using (var conversationTranscriber = new ConversationTranscriber(audioInput))
                 {
                     await conversationTranscriber.JoinConversationAsync(conversation);
 

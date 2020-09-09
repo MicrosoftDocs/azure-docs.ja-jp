@@ -3,12 +3,12 @@ title: コンテナー インスタンスのエントリポイントをオーバ
 description: Azure コンテナー インスタンスのデプロイ時にコンテナー イメージのエントリポイントをオーバーライドするためのコマンド ラインを設定する
 ms.topic: article
 ms.date: 04/15/2019
-ms.openlocfilehash: d9554603f78a07fa44af51d8f39a91e1b3c39f70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 23221de3dc91c37c2e6fb96489539d3954efcd87
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225823"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169631"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>コンテナー インスタンスにコマンド ラインを設定して既定のコマンド ライン操作をオーバーライドする
 
@@ -54,8 +54,8 @@ ms.locfileid: "79225823"
 
 |    |  Azure CLI   | ポータル | Template | 
 | ---- | ---- | --- | --- |
-| 単一のコマンド | `--command-line "python myscript.py arg1 arg2"` | **[Command override]\(コマンドのオーバーライド\)** : `python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
-| 複数のコマンド | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**[Command override]\(コマンドのオーバーライド\)** : `/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
+| **単一のコマンド** | `--command-line "python myscript.py arg1 arg2"` | **[Command override]\(コマンドのオーバーライド\)** : `python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
+| **複数のコマンド** | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**[Command override]\(コマンドのオーバーライド\)** : `/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
 
 ## <a name="azure-cli-example"></a>Azure CLI の例
 

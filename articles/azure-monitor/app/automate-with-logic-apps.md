@@ -3,12 +3,12 @@ title: Logic Apps を使用して Azure Application Insights プロセスを自�
 description: Application Insights コネクタをお使いのロジック アプリに追加することで、反復可能なプロセスを迅速に自動化する方法を説明します。
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.openlocfilehash: 4a0944e661932d86fac75f78c4faf5be751806c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d023d774c130a9db513fbcf9452b05fa030a967a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473168"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323198"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Logic Apps を使って Application Insights のプロセスを自動化する
 
@@ -19,7 +19,7 @@ ms.locfileid: "79473168"
 
 この統合によって、一行のコードも記述せずに、膨大な数のプロセスを自動化できます。 Application Insights コネクタを使ってロジック アプリを作成し、どの Application Insights プロセスでも迅速に自動化できます。 
 
-また、その他のアクションを追加することもできます。 Azure App Service の Logic Apps 機能により、多数のアクションが利用可能になります。 たとえば、ロジック アプリを使用して、自動的に電子メール通知を送信したり、Azure DevOps のバグを作成したりできます。 また、多数の[テンプレート](https://docs.microsoft.com/azure/logic-apps/logic-apps-use-logic-app-templates)の 1 つを使って、ロジック アプリの作成プロセスをスピードアップすることもできます。 
+また、その他のアクションを追加することもできます。 Azure App Service の Logic Apps 機能により、多数のアクションが利用可能になります。 たとえば、ロジック アプリを使用して、自動的に電子メール通知を送信したり、Azure DevOps のバグを作成したりできます。 また、多数の[テンプレート](../../logic-apps/logic-apps-create-logic-apps-from-templates.md)の 1 つを使って、ロジック アプリの作成プロセスをスピードアップすることもできます。 
 
 ## <a name="create-a-logic-app-for-application-insights"></a>Application Insights のロジック アプリの作成
 
@@ -130,14 +130,10 @@ ms.locfileid: "79473168"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Analytics クエリ](../../azure-monitor/log-query/get-started-queries.md)の作成についての詳細を見る
-- [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps) の詳細を見る
+- [Analytics クエリ](../log-query/get-started-queries.md)の作成についての詳細を見る
+- [Logic Apps](../../logic-apps/logic-apps-overview.md) の詳細を見る
 
 
 
 <!--Link references-->
-
-
-
-
 

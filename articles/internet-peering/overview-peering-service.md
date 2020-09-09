@@ -3,17 +3,17 @@ title: インターネット ピアリングとPeering Service
 titleSuffix: Azure
 description: インターネット ピアリングとPeering Service
 services: internet-peering
-author: prmitiki
+author: derekolo
 ms.service: internet-peering
 ms.topic: overview
-ms.date: 11/27/2019
-ms.author: prmitiki
-ms.openlocfilehash: 6c1205fcacd3d7228f1aecf1e603b66d9e1fcee5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 5/22/2020
+ms.author: derekol
+ms.openlocfilehash: 3ffef24d459a2864ffd3f2271e6bca9e4bc638cc
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75772809"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849384"
 ---
 # <a name="internet-peering-vs-peering-service"></a>インターネット ピアリングとPeering Service
 
@@ -38,13 +38,13 @@ Microsoft Cloud に接続するときに最も大切なのは、ユーザー サ
 
 **Peering Service を利用する利点:**
 * Microsoft クラウド サービスへのインターネットを介した最善のパブリック ルーティングによるパフォーマンスと信頼性の最適化。
-* 優先 SP を選択して Microsoft Cloud に接続する機能。
+* 優先サービス プロバイダーを選択して Microsoft Cloud に接続する機能。
 * トラフィックの分析情報 (待ち時間レポート、プレフィックス監視など)。
 * Microsoft Cloud からの最適なネットワーク ホップ (AS ホップ)。
 * ルートの分析と統計。Border Gateway Protocol ([BGP](https://en.wikipedia.org/wiki/Border_Gateway_Protocol)) ルーティングの異常 (漏えい、ハイジャックの検出) やルーティング不全に関するイベントを取得できます。
 
 ## <a name="peering-service-partnership-requirements"></a>Peering Service パートナーシップの要件
-* 最寄りの拠点で Microsoft Cloud に接続できること。 ユーザー トラフィックは、パートナー サービス プロバイダーによって、ユーザーに最も近い Microsoft エッジにルーティングされます。 同様に、ユーザーに向かうトラフィックについても、Microsoft が (BGP タグを使用して) ユーザーに最も近いエッジ拠点にトラフィックをルーティングし、SP がそのトラフィックをユーザーに配信することになります。
+* 最寄りの拠点で Microsoft Cloud に接続できること。 ユーザー トラフィックは、パートナー サービス プロバイダーによって、ユーザーに最も近い Microsoft エッジにルーティングされます。 同様に、ユーザーに向かうトラフィックについても、Microsoft が (BGP タグを使用して) ユーザーに最も近いエッジの場所にトラフィックをルーティングし、サービス プロバイダーがそのトラフィックをユーザーに配信することになります。
 * パートナーは、Microsoft Global Network との間で高可用性、高スループット、geo 冗長の接続を確保できます。
 * パートナーは、要件を満たしていれば、その既存のピアリングを利用して Peering Service をサポートできます。
 

@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 837018e3-03e6-4f9c-a23e-4b63d5707a64
 ms.service: azure-cdn
 ms.devlang: multiple
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mazha
-ms.openlocfilehash: 491f413f9bf189b1a46d04042fd7223a47af1f24
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: bded48b59d10e47a9bbf476583fed78b5b97431d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929130"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887428"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>トークン認証による Azure CDN 資産の保護
 
@@ -33,7 +33,7 @@ ms.locfileid: "82929130"
 
 トークン認証では、要求元に関するエンコードされた情報を含むトークン値を要求に求めることで、その要求が、信頼済みサイトによって生成されていることを確認します。 コンテンツが要求元に提供されるのは、そのエンコードされた情報が要件を満たす場合だけです。それ以外の場合、要求は拒否されます。 要件を設定するには、以下のパラメーターを 1 つ以上使用します。
 
-- 国: [国番号](/previous-versions/azure/mt761717(v=azure.100))によって指定された国/地域から送信される要求を許可または拒否します。
+- 国/地域: [国/地域コード](/previous-versions/azure/mt761717(v=azure.100))によって指定された国/地域から送信される要求を許可または拒否します。
 - URL:指定した資産またはパスと一致する要求のみを許可します。
 - [Host]\(ホスト\):要求ヘッダーで、指定したホストを使用する要求を許可または拒否します。
 - 参照元: 指定した参照元からの要求を許可または拒否します。
@@ -120,11 +120,11 @@ ms.locfileid: "82929130"
       > </tr>
       > <tr>
       >    <td><b>ec_country_allow</b></td> 
-      >    <td>1 つまたは複数の指定された国/地域から発信される要求のみを許可します。 その他のすべての国/地域から送信される要求は拒否されます。 各国の 2 文字の [ISO 3166 国コード](/previous-versions/azure/mt761717(v=azure.100))を使用し、それぞれをコンマで区切ります。スペースを追加しないでください。 たとえば、米国とフランスからのアクセスのみを許可する場合は、「`US,FR`」と入力します。</td>
+      >    <td>1 つまたは複数の指定された国/地域から発信される要求のみを許可します。 その他のすべての国/地域から送信される要求は拒否されます。 各国/地域の 2 文字の [ISO 3166 国/地域コード](/previous-versions/azure/mt761717(v=azure.100))を使用し、それぞれをコンマで区切ります。スペースを追加しないでください。 たとえば、米国とフランスからのアクセスのみを許可する場合は、「`US,FR`」と入力します。</td>
       > </tr>
       > <tr>
       >    <td><b>ec_country_deny</b></td> 
-      >    <td>1 つまたは複数の指定された国/地域から発信される要求のみを拒否します。 その他のすべての国/地域から送信される要求は許可されます。 実装は、<b>ec_country_allow</b> パラメーターと同じです。 国コードが <b>ec_country_allow</b> と <b>ec_country_deny</b> の両方のパラメーターに存在する場合、<b>ec_country_allow</b> パラメーターが優先されます。</td>
+      >    <td>1 つまたは複数の指定された国/地域から発信される要求のみを拒否します。 その他のすべての国/地域から送信される要求は許可されます。 実装は、<b>ec_country_allow</b> パラメーターと同じです。 国/地域コードが <b>ec_country_allow</b> と <b>ec_country_deny</b> の両方のパラメーターに存在する場合、<b>ec_country_allow</b> パラメーターが優先されます。</td>
       > </tr>
       > <tr>
       >    <td><b>ec_ref_allow</b></td>
@@ -173,17 +173,17 @@ ms.locfileid: "82929130"
 3. **[HTTP Large]\(HTTP ラージ\)** で **[ルール エンジン]** を選択します。 ルール エンジンを使用して、機能を適用するパスを定義したり、トークン認証機能や、追加のトークン認証関連機能を有効にしたりします。 詳細については、[ルール エンジンのリファレンス](cdn-rules-engine-reference.md)を参照してください。
 
    1. 既存のルールを選択するか、新しいルールを作成して、トークン認証を適用する資産またはパスを定義します。 
-   2. ルールでトークン認証を有効にするには、 **[機能]** リストから **[[Token Auth]\(トークン認証\)](cdn-verizon-premium-rules-engine-reference-features.md#token-auth)** を選択し、 **[有効]** を選択します。 ルールを更新する場合は **[更新]** を、ルールを作成する場合は **[追加]** を選択します。
+   2. ルールでトークン認証を有効にするには、 **[機能]** リストから **[[Token Auth]\(トークン認証\)](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth.htm)** を選択し、 **[有効]** を選択します。 ルールを更新する場合は **[更新]** を、ルールを作成する場合は **[追加]** を選択します。
         
       ![CDN ルール エンジンのトークン認証を有効にする例](./media/cdn-token-auth/cdn-rules-engine-enable2.png)
 
 4. ルール エンジンで、追加のトークン認証関連機能を有効にすることもできます。 次の機能のいずれかを有効にするには、 **[機能]** リストからその機能を選択し、 **[有効]** を選択します。
     
-   - **[トークン認証拒否コード](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-denial-code)** :要求が拒否されたときにユーザーに返される応答の種類を決定します。 トークン ベースの認証ページの **[Custom Denial Handling]\(カスタム拒否の処理\)** セクションで設定された応答コードは、ここで設定されたルールでオーバーライドされます。
+   - **[トークン認証拒否コード](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Denial-Code.htm)** :要求が拒否されたときにユーザーに返される応答の種類を決定します。 トークン ベースの認証ページの **[Custom Denial Handling]\(カスタム拒否の処理\)** セクションで設定された応答コードは、ここで設定されたルールでオーバーライドされます。
 
-   - **[トークン認証の URL 大文字と小文字の無視](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-ignore-url-case)** :トークンの検証に使用される URL で大文字と小文字が区別されるかどうかを決定します。
+   - **[トークン認証の URL 大文字と小文字の無視](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Ignore-URL-Case.htm)** :トークンの検証に使用される URL で大文字と小文字が区別されるかどうかを決定します。
 
-   - **[トークン認証パラメーター](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-parameter)** :要求された URL に表示されるトークン認証クエリ文字列パラメーターの名前を変更します。 
+   - **[トークン認証パラメーター](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Parameter.htm)** :要求された URL に表示されるトークン認証クエリ文字列パラメーターの名前を変更します。 
         
      ![CDN ルール エンジンのトークン認証設定の例](./media/cdn-token-auth/cdn-rules-engine2.png)
 
@@ -195,7 +195,7 @@ ms.locfileid: "82929130"
    - PHP
    - Perl
    - Java
-   - Python 
+   - Python    
 
 ## <a name="azure-cdn-features-and-provider-pricing"></a>Azure CDN の機能とプロバイダーの価格
 

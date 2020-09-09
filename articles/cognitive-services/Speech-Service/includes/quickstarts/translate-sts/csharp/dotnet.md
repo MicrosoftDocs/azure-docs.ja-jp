@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: erhopf
-ms.openlocfilehash: cee0f5c1cdb71f182399356cc7e1dce8d738fd4e
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: be20a6e4b6c89bf9d371cdc8620441f066249b94
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80671347"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226504"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -116,7 +116,7 @@ ms.locfileid: "80671347"
 
 1. 同じファイル内で、文字列 `YourSubscriptionKey` をサブスクリプション キーに置き換えます。
 
-1. 文字列 `YourServiceRegion` を、サブスクリプションに関連付けられた[リージョン](~/articles/cognitive-services/Speech-Service/regions.md) (たとえば、無料試用版サブスクリプションでは `westus`) に置き換えます。
+1. 文字列 `YourServiceRegion` を、自分のサブスクリプションに関連付けられている[リージョン](~/articles/cognitive-services/Speech-Service/regions.md)に置き換えます。
 
 1. メニュー バーから **[ファイル]**  >  **[すべて保存]** を選択します。
 

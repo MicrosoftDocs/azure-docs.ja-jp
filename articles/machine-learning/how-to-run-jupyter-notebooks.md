@@ -9,13 +9,14 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 04/21/2020
-ms.openlocfilehash: 96e37afd8bf7d59eef4a4c0c831f535faa36d34d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.custom: how-to
+ms.date: 06/27/2020
+ms.openlocfilehash: 861fcabbfca07cb342fda42ea2425fa290a1598e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681446"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386454"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>ワークスペースで Jupyter ノートブックを実行する方法
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -51,10 +52,12 @@ Azure Machine Learning ワークスペースで、新しい Jupyter ノートブ
 1. ファイル ディレクトリを選択します。
 1. **［作成］** を選択します
 
-> [!TIP]
-> テキスト ファイルを作成することもできます。  ファイルの種類として **[テキスト]** を選択し、拡張子を名前に追加します (たとえば、myfile.py、myfile.txt)。  
+テキスト ファイルを作成することもできます。  ファイルの種類として **[テキスト]** を選択し、拡張子を名前に追加します (たとえば、myfile.py、myfile.txt)。  
 
 [Notebooks]\(ノートブック\) ページの上部にあるツールを使用して、ノートブックを含むフォルダーとファイルをアップロードすることもできます。  ノートブックとほとんどのテキスト ファイルの種類はプレビュー セクションに表示されます。  他のほとんどのファイルの種類ではプレビューを使用できません。
+
+> [!IMPORTANT]
+> ノートブックやスクリプトの内容によっては、Azure の組織なしでセッションからデータを読み取ったり、データにアクセスしたりできる可能性があります。  信頼できるソースのファイル以外は読み込まないでください。 詳細については、[ソース コードのベスト プラクティス](concept-secure-code-best-practice.md#azure-ml-studio-notebooks)に関する記事をご覧ください。
 
 ### <a name="clone-samples"></a>サンプルを複製する
 
@@ -95,15 +98,37 @@ Azure Machine Learning ワークスペースで、新しい Jupyter ノートブ
 
 ノートブックを編集するには、ワークスペースの **[User files]\(ユーザー ファイル\)** セクションにあるノートブックを開きます。 編集するセルをクリックします。 
 
-コンピューティング インスタンスの実行が実行中の場合、任意の Python ノートブックで [Intellisense](https://code.visualstudio.com/docs/editor/intellisense) によるコード補完を使用することもできます。
+ノートブックは、コンピューティング インスタンスに接続することなく編集できます。  ノートブックのセルを実行する場合は、コンピューティング インスタンスを選択または作成します。  停止したコンピューティング インスタンスを選択した場合は、最初のセルを実行すると自動的に開始されます。
+
+コンピューティング インスタンスの実行中に、任意の Python ノートブックで [Intellisense](https://code.visualstudio.com/docs/editor/intellisense) によるコード補完を使用することもできます。
 
 Notebook ツールバーから Jupyter または JupyterLab を起動することもできます。  Azure Machine Learning では、Jupyter または JupyterLab からの更新プログラムの提供やバグの修正は行われません。これは、Microsoft サポートの範囲に含まれないオープン ソース製品であるためです。
+
+### <a name="use-intellisense"></a>IntelliSense を使用する
+
+[IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) は、次のような多くの機能を備えたコード補完支援機能です: メンバーの一覧表示、パラメーター ヒント、クイック ヒント、入力候補。 これらの機能を使うと、数回のキーストロークだけで使用するコードの詳細を確認したり、入力するパラメーターを追跡したり、プロパティやメソッドの呼び出しを追加したりできます。  
+
+コードを入力するときは、Ctrl + Space キーを使用して IntelliSense をトリガーします。
+
+### <a name="save-and-checkpoint-a-notebook"></a>ノートブックを保存およびチェックポイントする
+
+ *ipynb* ファイルを作成すると、Azure Machine Learning によってチェックポイント ファイルが作成されます。
+
+ノートブック ツール バーでメニューを選択し、 **[ファイル] &gt; [Save and checkpoint]\(保存とチェックポイント\)** の順に選択して、手動でノートブックを保存します。そうすると、ノートブックに関連付けられたチェックポイント ファイルが追加されます。
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="ノートブック ツール バーの保存ツールのスクリーンショット":::
+
+すべてのノートブックは 30 秒ごとに自動保存されます。 自動保存では、チェックポイント ファイルではなく、最初の *ipynb* ファイルのみが更新されます。
+ 
+ノートブックのメニューで **[チェックポイント]** を選択して、名前付きチェックポイントを作成し、保存されているチェックポイントにノートブックを戻すことができます。
+
 
 ### <a name="useful-keyboard-shortcuts"></a>便利なキーボード ショートカット
 
 |[キーボード]  |アクション  |
 |---------|---------|
 |Shift + Enter     |  セルを実行する       |
+|Ctrl + Space | IntelliSense をアクティブにする |
 |Ctrl + M (Windows)     |  ノートブックのタブ トラップを有効または無効にします。       |
 |Ctrl + Shift + M (Mac と Linux)     |    ノートブックのタブ トラップを有効または無効にします。     |
 |Tab (タブ トラップが有効な場合) | '\t' 文字 (インデント) を追加します
@@ -160,11 +185,20 @@ Notebook ツールバーを使用すると、ノートブックを実行する�
 Notebook によって、接続されたコンピューティング インスタンスにインストールされているすべての Jupyter カーネルが自動的に検出されます。  コンピューティング インスタンスにカーネルを追加するには:
 
 1. Notebook ツールバーの [ **[Open terminal]\(ターミナルを開く\)** ](#terminal) を選択します。
-1. ターミナル ウィンドウを使用して、新しい環境を作成します。
+1. ターミナル ウィンドウを使用して、新しい環境を作成します。  たとえば、次のコードでは `newenv` が作成されます。
+    ```shell
+    conda create --name newenv
+    ```
 1. 環境をアクティブにします。  `newenv` を作成した後の例を次に示します。
 
     ```shell
-    source activate newenv
+    conda activate newenv
+    ```
+1. pip と ipykernel パッケージを新しい環境にインストールし、その conda 環境用のカーネルを作成します
+
+    ```shell
+    conda install pip
+    conda install ipykernel
     python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
     ```
 

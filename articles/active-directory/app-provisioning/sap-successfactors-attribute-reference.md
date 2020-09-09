@@ -3,35 +3,36 @@ title: SAP SuccessFactors 属性のリファレンス
 description: SuccessFactors-HR ドリブン プロビジョニングによってサポートされる SuccessFactors の属性について説明します。
 services: active-directory
 author: cmmdesai
-manager: CelesteDG
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.topic: article
+ms.topic: reference
 ms.workload: identity
-ms.date: 12/06/2019
+ms.date: 08/05/2020
 ms.author: chmutali
 ms.reviewer: celested
-ms.openlocfilehash: cdd6abf5d10a529aa4c529d0364b2ba9f1df72e3
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: ef2da377c7720cfb7b431d1ce0fed56656a2b8c7
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593186"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808509"
 ---
 # <a name="sap-successfactors-attribute-reference"></a>SAP SuccessFactors 属性のリファレンス
 
 この記事では、次の情報を取り上げます。
 
-- [サポートされている SuccessFactors エンティティと属性](#supported-successfactors-entities-and-attributes)
+- [SuccessFactors のエンティティと属性](#supported-successfactors-entities-and-attributes)
 - [既定の属性マッピング](#default-attribute-mapping)
 
 ## <a name="supported-successfactors-entities-and-attributes"></a>サポートされている SuccessFactors エンティティと属性
 
-以下の表は、次の 2 つのプロビジョニング アプリによってサポートされる SuccessFactors 属性の一覧を示しています。
+以下の表は、次の 2 つのプロビジョニング アプリに既定で含まれる SuccessFactors の属性の一覧を示しています。
 
 - [Active Directory ユーザー プロビジョニングに対する SuccessFactors](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
 - [Azure AD ユーザー プロビジョニングに対する SuccessFactors](../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md)
 
+その他の属性用にスキーマを拡張するには、[SAP SuccessFactors の統合のリファレンス](./sap-successfactors-integration-reference.md#retrieving-additional-attributes)を参照してください。 
 
 | \# | SuccessFactors エンティティ                  | SuccessFactors 属性     | 操作の種類 |
 |----|----------------------------------------|------------------------------|----------------|

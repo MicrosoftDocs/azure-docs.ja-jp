@@ -2,19 +2,20 @@
 title: Azure Functions ウォームアップ トリガー
 description: Azure Functions でウォームアップ トリガーを使用する方法について説明します。
 documentationcenter: na
-author: alexkarcher-msft
+author: craigshoemaker
 manager: gwallace
 keywords: Azure Functions, 関数, イベント処理, ウォームアップ, コールド スタート, Premium, 動的コンピューティング, サーバーレス アーキテクチャ
 ms.service: azure-functions
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 11/08/2019
-ms.author: alkarche
-ms.openlocfilehash: 013001eebeec232cc60e31f1a850aeab4fd6c905
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.author: cshoe
+ms.openlocfilehash: f5523c513cc0bdd08c43bdbed5046bf662f1a3e5
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982243"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206582"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions のウォームアップ トリガー
 

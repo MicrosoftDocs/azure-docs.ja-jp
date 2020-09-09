@@ -5,12 +5,12 @@ author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
-ms.openlocfilehash: c518985b360fa3264bd5ac1e3fe76d61b2810b9b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 77cb6a693c5a73d0498b0acf9bc4ad8cc9f8f32f
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77594211"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774004"
 ---
 # <a name="consul"></a>Consul
 
@@ -93,6 +93,7 @@ Consul は、次のシナリオに適しており、推奨されています。
 
 さらに、Consul の機能とアーキテクチャについても詳しく調べることができます。
 
+- [Consul の概要チュートリアル][consul-getting-started]
 - [Consul の機能][consul-features]
 - [Consul アーキテクチャ][consul-architecture]
 - [Consul - 接続のしくみ][consul-how-connect-works]
@@ -104,6 +105,7 @@ Consul は、次のシナリオに適しており、推奨されています。
 [consul-sidecar]: https://www.consul.io/docs/connect/proxies.html
 [consul-how-connect-works]: https://www.consul.io/docs/connect/connect-internals.html
 [consul-principles]: https://www.consul.io/
+[consul-getting-started]:https://learn.hashicorp.com/consul?track=gs-consul-service-mesh#gs-consul-service-mesh
 
 [envoy-proxy]: https://www.envoyproxy.io/
 [grafana]: https://grafana.com/

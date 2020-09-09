@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: cabd3f7693c6b6b86bf0324bdafdfe1377d1ece8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c6f0f48df32db0beb9c0a57982d9bc87b26538d8
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228799"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135139"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>VMware VM および物理サーバーのセカンダリ サイトへのディザスター リカバリーのサポート マトリックス
 
@@ -131,5 +131,5 @@ RDM | はい
 
 [InMage Scout ユーザー ガイド](https://aka.ms/asr-scout-user-guide) をダウンロードする
 
-- [VMM クラウドの Hyper-V VM をセカンダリ サイトにレプリケートする](tutorial-vmm-to-vmm.md)
-- [VMware VM と物理サーバーをセカンダリ サイトにレプリケートする](tutorial-vmware-to-vmware.md)
+- [VMM クラウドの Hyper-V VM をセカンダリ サイトにレプリケートする](./hyper-v-vmm-disaster-recovery.md)
+- [VMware VM と物理サーバーをセカンダリ サイトにレプリケートする](./vmware-physical-secondary-disaster-recovery.md)

@@ -4,12 +4,13 @@ description: リンク済みテンプレートをデプロイする方法につ�
 ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 177a994450b6ffe5489a8c95c3b484521fd9b77b
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 63383f810b6f5643bad9feb86360745cd2f9b000
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80672915"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501135"
 ---
 # <a name="tutorial-deploy-a-linked-template"></a>チュートリアル:リンク済みテンプレートをデプロイする
 

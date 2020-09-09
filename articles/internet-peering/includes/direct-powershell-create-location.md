@@ -28,7 +28,7 @@ Get-AzPeeringLocation -Kind Direct
 * PeeringDBFacilityLink
 * BandwidthOffers
 
-[PeeringDB](https://wwww.peeringdb.com) を参照して、そこが目的のピアリング ファシリティであることを検証します。
+[PeeringDB](https://www.peeringdb.com) を参照して、そこが目的のピアリング ファシリティであることを検証します。
 
 この例では、ピアリングの場所として Seattle を使用し、Direct ピアリングを作成する方法を示します。
 

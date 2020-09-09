@@ -8,19 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: cf12b279cf7bcb20aa655646ce34fb9df2bda016
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: seodec2018, devx-track-csharp
+ms.openlocfilehash: 2760e6a46801871a25ecbe23a2400211ae312650
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76167667"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921700"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>クイック スタート:Bing Web Search REST API と C# を使用して Web を検索する
 
-このクイック スタートを使用すると、Bing Web Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。 この C# アプリケーションは、API に検索要求を送信してその応答を表示します。 このアプリケーションは C# で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
+このクイックスタートを使用して、Bing Web Search API を初めて呼び出してみましょう。 この C# アプリケーションは、API に検索要求を送信して、JSON 応答を表示します。 このアプリケーションは C# で記述されていますが、この API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
+
+このクイックスタートのサンプル プログラムでは、.NET Core クラスのみを使用します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -29,8 +31,6 @@ ms.locfileid: "76167667"
 * Windows: [Visual Studio 2017 以降](https://www.visualstudio.com/downloads/)
 * Linux/macOS:[モノラル](https://www.mono-project.com/)  
 * サブスクリプション キー
-
-このサンプル プログラムは、.NET Core クラスのみを使用します。
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
@@ -62,7 +62,13 @@ namespace BingSearchApisQuickstart
 
 ## <a name="define-variables"></a>変数の定義
 
-先に進む前に、いくつかの変数を設定する必要があります。  `uriBase` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。 `uriBase` が有効であることを確認し、`accessKey` の値を Azure アカウントの有効なサブスクリプション キーに置き換えます。 `searchTerm` の値を置き換えると、検索クエリを自由にカスタマイズすることができます。 前述のように、忘れずにこのコードを `Program` クラスに追加してください。
+先に進む前に、いくつかの変数を設定する必要があります。 このコードを、前のセクションで作成した `Program` クラスに追加します。 
+
+1. `uriBase` 値には、次のコードのグローバル エンドポイントを使用するか、Azure portal に表示される、お使いのリソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。 
+
+2. `uriBase` が有効であることを確認し、`accessKey` の値を Azure アカウントのサブスクリプション キーに置き換えます。 
+
+3. 必要に応じて、`searchTerm` の値を置き換えて、検索クエリをカスタマイズすることができます。 
 
 ```csharp
 // Enter a valid subscription key.
@@ -80,7 +86,7 @@ const string searchTerm = "Microsoft Cognitive Services";
 
 `Main()` メソッドは必須であり、プログラムの起動時に最初に呼び出されるメソッドです。 このアプリケーションでは、main メソッドが `accessKey` の検証、要求の実行、および応答の出力を行います。
 
-`main()` は次のいくつかのセクションで作成されるメソッドに依存していることに注意してください。
+`main()` メソッドは、次のセクションで作成するメソッドに依存します。
 
 ```csharp
 static void Main()
@@ -109,7 +115,7 @@ static void Main()
 
 ## <a name="create-a-struct-for-search-results"></a>検索結果のための構造体の作成
 
-この構造体は、検索結果と、関連するヘッダーを返します。 結果オブジェクトを作成するために、Bing Web Search API への要求を行うときに呼び出されます。
+検索結果と、関連するヘッダーを返す構造体を作成します。 結果オブジェクトを作成するために、Bing Web Search API への要求を行うときに呼び出されます。
 
 ```csharp
 // Returns search results with headers.
@@ -158,7 +164,7 @@ static SearchResult BingWebSearch(string searchQuery)
 
 ## <a name="format-the-response"></a>応答の書式設定
 
-このメソッドは、主にインデントと改行の追加によって、JSON 応答を書式設定します。
+このメソッドでは、主にインデントと改行の追加によって、JSON 応答を書式設定します。
 
 ```csharp
 /// <summary>
@@ -235,9 +241,9 @@ static string JsonPrettyPrint(string json)
 
 ## <a name="put-it-all-together"></a>すべてをまとめた配置
 
-最後の手順で、コードを実行します。 作成したコードをサンプル コードと比較したい場合は、[GitHub で利用できるサンプル コード](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingWebSearchv7.cs)を参照してください。
+最後の手順で、コードを実行します。 作成したコードをサンプル コードと比較したい場合は、[GitHub のサンプル コード](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingWebSearchv7.cs)を参照してください。
 
-## <a name="sample-response"></a>応答のサンプル
+## <a name="example-json-response"></a>JSON の応答例
 
 Bing Web Search API からの応答は、JSON として返されます。 このサンプル応答は、1 つの結果だけを表示するように切り詰められています。  
 
@@ -366,6 +372,6 @@ Bing Web Search API からの応答は、JSON として返されます。 この
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Bing Web 検索単一ページ アプリのチュートリアル](../tutorial-bing-web-search-single-page-app.md)
+> [Bing Web Search API 単一ページ アプリのチュートリアル](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

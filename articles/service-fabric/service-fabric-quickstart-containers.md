@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 07/10/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 477d47fabc59c5718c449418f225d6a38838b270
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 934b679813323fe144f935811eb613ab68b561db
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75466269"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089619"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>クイック スタート: Service Fabric に Windows コンテナーをデプロイする
 
@@ -86,7 +86,7 @@ Microsoft は、異なるバージョンの Windows Server 上に構築された
 
 次のサンプル スクリプトでは、X.509 証明書で保護される 5 つのノードの Service Fabric クラスターを作成します。 コマンドで自己署名証明書を作成し、それを新しい Key Vault にアップロードします。 証明書はローカル ディレクトリにもコピーされます。 このスクリプトを使用したクラスターの作成の詳細については、「[Service Fabric クラスターの作成](scripts/service-fabric-powershell-create-secure-cluster-cert.md)」を参照してください。
 
-必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールします。
+必要に応じて、[Azure PowerShell ガイド](/powershell/azure/)の手順に従って Azure PowerShell をインストールします。
 
 次のスクリプトを実行する前に、PowerShell で `Connect-AzAccount` を実行して Azure との接続を作成します。
 
@@ -148,7 +148,7 @@ Thumbprint                                Subject
 
 ## <a name="clean-up"></a>クリーンアップ
 
-クラスターの実行中は、料金が継続的に発生します。 [クラスターの削除](service-fabric-cluster-delete.md)を検討してください。
+クラスターの実行中は、料金が継続的に発生します。 [クラスターの削除](./service-fabric-tutorial-delete-cluster.md)を検討してください。
 
 ## <a name="next-steps"></a>次のステップ
 

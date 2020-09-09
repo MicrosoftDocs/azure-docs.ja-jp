@@ -5,16 +5,16 @@ author: haroldwongms
 manager: mdotson
 ms.service: virtual-machines-linux
 ms.subservice: workloads
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: c338e9a6a793d1c2d0557d70242996175d5a85ed
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 989c67d0d1b1cd8257da089ec9c31f247228018e
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81759458"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367947"
 ---
 # <a name="openshift-in-azure"></a>Azure の OpenShift
 
@@ -30,7 +30,7 @@ OpenShift には、コンテナーのオーケストレーションと管理の�
 
 ## <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
-Microsoft Azure Red Hat OpenShift は Azure で実行される OpenShift のフル マネージド オファリングです。 このサービスは、Microsoft と Red Hat によって共同で管理され、サポートされています。 詳細については、[Azure Red Hat OpenShift Service](https://docs.microsoft.com/azure/openshift/) ドキュメントをご覧ください。
+Microsoft Azure Red Hat OpenShift は Azure で実行される OpenShift のフル マネージド オファリングです。 このサービスは、Microsoft と Red Hat によって共同で管理され、サポートされています。 詳細については、[Azure Red Hat OpenShift Service](../../openshift/index.yml) ドキュメントをご覧ください。
 
 ## <a name="openshift-container-platform"></a>OpenShift Container Platform
 

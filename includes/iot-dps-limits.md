@@ -1,15 +1,15 @@
 ---
 author: rothja
-ms.service: cost-management-billing
+ms.service: iot-dps
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 2b8d60da507aa1eb312d1a8505f756ff337085ff
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: bbe928084a758335e5fa3b0531726c77a6d599b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77592428"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85838826"
 ---
 次の表は、Azure IoT Hub Device Provisioning Service のリソースに適用される制限の一覧です。
 

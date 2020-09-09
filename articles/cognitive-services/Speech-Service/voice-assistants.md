@@ -10,41 +10,42 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 9219c9a72ce9e1cfba3504b0b8e16ade77f8a5e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 18a9de8a2eaa2364e89e831db8dab5cbbb061c10
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79369898"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299247"
 ---
 # <a name="what-is-a-voice-assistant"></a>音声アシスタントとは
 
 音声サービスを使用した音声アシスタントにより、開発者は、そのアプリケーションとエクスペリエンスのための自然で人間のような会話型インターフェイスを作成できます。
 
-音声アシスタント サービスは、(1) Bot Framework の Direct Line Speech チャネルまたは (2) 統合カスタム コマンド (プレビュー) サービスを使用してタスクを遂行するアシスタントの実装とデバイスとの間に、高速で信頼性の高い対話を実現します。
-
-アプリケーションは、Speech SDK (Software Development Kit) を使用して音声アシスタント サービスに接続します。
-
-   ![音声アシスタントのオーケストレーション サービス フローの概念図](media/voice-assistants/overview.png "音声アシスタントのフロー")
+音声アシスタント サービスを使用すると、(1) ボットに音声機能を追加するための [Direct Line Speech](direct-line-speech.md) (Azure Bot Service 経由) または (2) 音声コマンド実行シナリオのためのカスタム コマンドのいずれかを使用するアシスタント実装とデバイスとの間で、高速で信頼性の高い対話を実現できます。
 
 ## <a name="choosing-an-assistant-solution"></a>アシスタント ソリューションを選択する
 
-音声アシスタントを作成する際に最初に行うことは、その要件を明らかにすることです。 音声サービスには、アシスタントの対話を精巧に作り上げるためのさまざまな補完的ソリューションが用意されています。 Bot Framework の [Direct Line Speech](direct-line-speech.md) チャンネルの柔軟性と多機能性が求められるケースであれ、単純なシナリオ向けに[カスタム コマンド (プレビュー)](custom-commands.md) の簡潔さが求められるケースであれ、適切なツールを選ぶことがその第一歩となります。
+音声アシスタントを作成する際に最初に行うことは、その要件を明らかにすることです。 音声サービスには、アシスタントの対話を精巧に作り上げるためのさまざまな補完的ソリューションが用意されています。 音声入力および音声出力機能を、Azure Bot Service を使用して構築された柔軟で使いやすいボットに [Direct Line Speech](direct-line-speech.md) チャネルを使用して追加できます。または、[カスタム コマンド](custom-commands.md) アプリが簡単に作成できることを利用して、単純な音声コマンド処理シナリオを実現できます。
 
 | 目的 | 候補となるソリューション | 例 |
 |-------------------|------------------|----------------|
-|堅牢なスキルの連携と完全なデプロイ制御を使用した制約のない会話 | Bot Framework の [Direct Line Speech](direct-line-speech.md) チャンネル | <ul><li>"I need to go to Seattle"</li><li>"What kind of pizza can I order?"</li></ul>
-|作成とホスティングが簡素化されたコマンド アンド コントロールまたはタスク指向の会話 | [カスタム コマンド (プレビュー)](custom-commands.md) | <ul><li>"Turn on the overhead light"</li><li>"Make it 5 degrees warmer"</ul>
+|堅牢なスキルの連携と完全なデプロイ制御を使用した制約のない会話 | [Direct Line Speech](direct-line-speech.md) チャネルを使用する Azure Bot Service ボット | <ul><li>"I need to go to Seattle"</li><li>"What kind of pizza can I order?"</li></ul>
+|作成とホスティングが簡素化された音声コマンド処理またはシンプルなタスク指向の会話 | [カスタム コマンド](custom-commands.md) | <ul><li>"Turn on the overhead light"</li><li>"Make it 5 degrees warmer"</li><li>その他のサンプルを[こちらで入手できます](https://speech.microsoft.com/customcommands)</li></ul>
 
 アシスタントで扱う処理がまだ決まっていない場合には、既定の最適な選択肢として [Direct Line Speech](direct-line-speech.md) をお勧めします。 [仮想アシスタント ソリューションとエンタープライズ テンプレート](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview)や [QnA Maker サービス](https://docs.microsoft.com/azure/cognitive-services/QnAMaker/Overview/overview)を使用して、一般的なパターンを作成したり既存のナレッジ ソースを使用したりするなど、豊富なツール群と作成支援機能が統合されています。
 
-[カスタム コマンド (プレビュー)](custom-commands.md) は、作成とホスティングに関して、自然言語によるコマンド アンド コントロールのシナリオに特化した効率的なエクスペリエンスが特徴です。
+[カスタム コマンド](custom-commands.md)を使用すると、音声優先の対話操作を行うために最適化された、リッチな音声コマンド処理アプリを簡単に構築できます。 これにより、統一された作成エクスペリエンス、自動ホスティング モデル、比較的低い複雑性が実現し、音声コマンドのシナリオに最適なソリューションの構築に専念できるようになります。
 
    ![アシスタント ソリューションの比較](media/voice-assistants/assistant-solution-comparison.png "アシスタント ソリューションの比較")
 
+
+## <a name="reference-architecture-for-building-a-voice-assistant-using-the-speech-sdk"></a>Speech SDK を使用して音声アシスタントを構築するための参照アーキテクチャ
+
+   ![音声アシスタントのオーケストレーション サービス フローの概念図](media/voice-assistants/overview.png "音声アシスタントのフロー")
+
 ## <a name="core-features"></a>コア機能
 
-アシスタントの対話を作成する手段として [Direct Line Speech](direct-line-speech.md) と[カスタム コマンド (プレビュー)](custom-commands.md) のどちらを選んだとしても、その豊富なカスタマイズ機能を使用して、ブランド、製品、パーソナリティに合わせてアシスタントをカスタマイズできます。
+アシスタントの対話を作成する手段として [Direct Line Speech](direct-line-speech.md) と[カスタム コマンド](custom-commands.md)のどちらを選んだとしても、その豊富なカスタマイズ機能を使用して、ブランド、製品、パーソナリティに合わせてアシスタントをカスタマイズできます。
 
 | カテゴリ | 特徴 |
 |----------|----------|
@@ -56,38 +57,31 @@ ms.locfileid: "79369898"
 
 10 分もかからずにコードを実行できるように設計されたクイック スタートが用意されています。 以下の表は、音声アシスタントのクイックスタートの一覧を言語別に整理して示しています。
 
-| クイック スタート | プラットフォーム | API リファレンス |
-|------------|----------|---------------|
-| C#、UWP | Windows | [[参照]](https://aka.ms/csspeech/csharpref) |
-| Java | Windows、macOS、Linux | [[参照]](https://aka.ms/csspeech/javaref) |
-| Java | Android | [[参照]](https://aka.ms/csspeech/javaref) |
+* [クイック スタート: Direct Line Speech を使用してカスタム音声アシスタントを作成する](quickstarts/voice-assistants.md)
+* [クイック スタート: カスタム コマンドを使用して音声コマンド処理アプリを構築する](quickstart-custom-commands-application.md)
 
-## <a name="sample-code"></a>サンプル コード
+## <a name="sample-code-and-tutorials"></a>サンプル コードとチュートリアル
 
 音声アシスタントを作成するためのサンプル コードは GitHub から入手できます。 これらのサンプルは、いくつかの一般的なプログラミング言語でアシスタントに接続するためのクライアント アプリケーションに対応しています。
 
-* [音声アシスタントのサンプル (SDK)](https://aka.ms/csspeech/samples)
-* [チュートリアル:Speech SDK を使用してアシスタントを音声対応にする (C#)](tutorial-voice-enable-your-bot-speech-sdk.md)
-
-## <a name="tutorial"></a>チュートリアル
-
-[Speech SDK および Direct Line Speech チャネルを使用して、アシスタントを音声対応にする](tutorial-voice-enable-your-bot-speech-sdk.md)方法についてのチュートリアルです。
+* [GitHub 上の音声アシスタントのサンプル](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant)
+* [チュートリアル:C# Speech SDK で、Azure Bot Service を使用して構築したアシスタントを音声対応にする](tutorial-voice-enable-your-bot-speech-sdk.md)
+* [チュートリアル:単純な音声コマンドを使用してカスタム コマンド アプリケーションを作成する](how-to-custom-commands-create-application-with-simple-commands.md)
 
 ## <a name="customization"></a>カスタマイズ
 
-音声サービスを使用して構築された音声アシスタントでは、[音声変換](speech-to-text.md)、[テキスト読み上げ](text-to-speech.md)、および[カスタム キーワードの選択](speech-devices-sdk-create-kws.md)に利用できるさまざまなカスタム オプションを使用できます。
+Azure Speech Services を使用して構築された音声アシスタントでは、すべてのカスタム オプションを使用できます。
+
+* [カスタム音声](how-to-custom-speech.md)
+* [Custom Voice](how-to-custom-voice.md)
+* [カスタム キーワード](custom-keyword-overview.md)
 
 > [!NOTE]
-> カスタマイズのオプションは、言語やロケールによって異なります ([サポートされる言語](supported-languages.md)に関するページを参照してください)。
-
-## <a name="reference-docs"></a>リファレンス ドキュメント
-
-* [Speech SDK](speech-sdk-reference.md)
-* [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
+> カスタマイズのオプションは、言語やロケールによって異なります ([サポートされる言語](language-support.md)に関するページを参照してください)。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Speech サービスのサブスクリプション キーを無料で取得する](get-started.md)
-* [Speech SDK を取得する](speech-sdk.md)
-* [カスタム コマンド (プレビュー) について詳しく学習する](custom-commands.md)
+* [カスタム コマンドについて詳しく学習する](custom-commands.md)
 * [Direct Line Speech について詳しく学習する](direct-line-speech.md)
+* [Speech SDK を取得する](speech-sdk.md)

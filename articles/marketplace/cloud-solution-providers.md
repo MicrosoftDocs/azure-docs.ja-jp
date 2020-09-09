@@ -1,24 +1,24 @@
 ---
-title: クラウド ソリューション プロバイダー | Azure Marketplace
-description: 発行元は、Microsoft クラウド ソリューション プロバイダー (CSP) パートナー チャネルを通して各自のオファーを販売できるようになりました。
-author: dsindona
+title: クラウド ソリューション プロバイダー - Microsoft コマーシャル マーケットプレース
+description: コマーシャル マーケットプレース内の Microsoft クラウド ソリューション プロバイダー (CSP) プログラムのパートナー チャネルを通じてオファーを販売する方法を説明します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 04/16/2020
-ms.author: dsindona
-ms.openlocfilehash: b962610c585df288a9cb3297ed8e09c8abc5ac0a
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.topic: article
+author: keferna
+ms.author: keferna
+ms.date: 07/14/2020
+ms.openlocfilehash: 51f4c9a5748896eff9e9f3ae9719b2e7e7cdd4e7
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160649"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607492"
 ---
-# <a name="cloud-solution-providers"></a>クラウド ソリューション プロバイダー
+# <a name="cloud-solution-provider-program"></a>クラウド ソリューション プロバイダー プログラム
 
-[Microsoft の Web ネットショップ](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)経由でのオファーの一般提供に加え、クラウド ソリューション プロバイダー (CSP) プログラムのパートナーが対応している数百万人の Microsoft の正規のお客様にソフトウェア オファーを提供できます。
+この記事では、クラウド ソリューション プロバイダー (CSP) プログラムから提供できるよう、オファーを構成する方法について説明します。 オファーを[コマーシャル マーケットプレースのオンライン ストア](comparing-appsource-azure-marketplace.md)で公開するだけでなく、CSP プログラムを通じて販売することにより、このプログラムを利用している数百万の Microsoft の正規のお客様にオファーを提供できます。
 
-発行元は、新規または既存のオファーについて、オプトインごとに CSP プログラムで利用できるようにオファーを構成します。これにより、パートナーによる製品の販売とお客様向けのバンドル ソリューションの作成が可能になります。
+新規または既存のオファーを CSP プログラムで提供できるよう、オプトイン方式で構成できます。これにより、CSP パートナーは、貴社の製品を販売したり、顧客向けのバンドル ソリューションを作成したりできるようになります。
 
 発行元は、エンド ユーザーへの Break-Fix サポートと、CSP プログラムのパートナーまたは顧客、あるいはその両方がサポートを得るために連絡するための仕組みを提供する責任があります。 ユーザー ドキュメント、トレーニング、サービスの正常性/停止通知 (該当する場合) を CSP プログラムのパートナーに提供して、CSP プログラムのパートナーが顧客からのレベル 1 のサポートを処理する体制を整えることができるようにすることをお勧めします。  
 
@@ -30,31 +30,31 @@ ms.locfileid: "82160649"
 - マネージド アプリケーション
 
 > [!NOTE]
-> コンテナーとライセンス持ち込み (BYOL) VM SKU は、既定では、CSP プログラムのパートナーによる販売対象として選択されています。
+> コンテナーとライセンス持ち込み (BYOL) VM プランは、既定では、CSP プログラムのパートナーによる販売対象として選択されています。
 
-## <a name="how-to-configure-an-offering"></a>オファリングの構成方法
+## <a name="how-to-configure-an-offer"></a>オファーの構成方法
 
-CSP プログラムのオプトイン設定は、パートナー センターまたは Cloud パートナー ポータルのオファーの作成エクスペリエンスで構成されます。 [発行元エクスペリエンスの変更に関する詳細](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293)。
+パートナー センターでオファーを作成するときに、CSP プログラムのオプトイン設定を構成します。 [発行元エクスペリエンスの変更に関する詳細](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293)。
 
 ### <a name="partner-center-opt-in"></a>パートナー センターのオプトイン
 
-パートナー センターでは、CSP リセラーの対象モジュールの下にオプトイン エクスペリエンスがあります。
+オプトイン エクスペリエンスは、CSP リセラーの対象ユーザー モジュールの下にあります。
 
 ![CSP リセラーの対象](media/marketplace-publishers-guide/csp-reseller-audience.png)
 
-CSP リセラーの対象モジュールでは、次の 3 つのオプションから選択できます。
+次の 3 つのオプションから選択できます。
 
-- オプション 1: CSP プログラムの任意のパートナー
-- オプション 2: 選択した CSP プログラムの特定のパートナー
-- オプション 3: CSP プログラムでパートナーはいません
+1. CSP プログラムの任意のパートナー。
+2. 選択した CSP プログラムの特定のパートナー。
+3. CSP プログラムでパートナーはいません。
 
-#### <a name="option-one-any-partner-in-the-csp-program"></a>オプション 1: CSP プログラムの任意のパートナー
+#### <a name="option-1-any-partner-in-the-csp-program"></a>オプション 1: CSP プログラムの任意のパートナー
 
 ![CSP プログラムの任意のパートナー](media/marketplace-publishers-guide/csp-reseller-option-one.png)
 
  このオプションを選択すると、自分のオファーを CSP プログラムのすべてのパートナーが顧客に再販できるようになります。
 
-#### <a name="option-two-specific-partners-in-the-csp-program-i-select"></a>オプション 2: 選択した CSP プログラムの特定のパートナー
+#### <a name="option-2-specific-partners-in-the-csp-program-i-select"></a>オプション 2:選択した CSP プログラムの特定のパートナー
 
 ![選択した CSP プログラムの特定のパートナー](media/marketplace-publishers-guide/csp-reseller-option-two.png)
 
@@ -66,7 +66,7 @@ CSP リセラーの対象モジュールでは、次の 3 つのオプション�
 
 **国**、**コンピテンシー**、**スキル** などの検索フィルターを適用できます。
 
-![パートナー検索に対する国、コンピテンシー、スキルのフィルター](media/marketplace-publishers-guide/csp-add-resellers.png)
+![パートナー検索に対する国/地域、コンピテンシー、スキルのフィルター](media/marketplace-publishers-guide/csp-add-resellers.png)
 
 パートナーの一覧を選択したら、 **[追加]** を選択します。
 
@@ -87,17 +87,11 @@ CSP リセラーの対象モジュールでは、次の 3 つのオプション�
 
 承認されたパートナーの一覧が既に作成されているオファーがあり、別のオファーで同じ一覧を使用する場合は、**インポート/エクスポート**を使用します。 CSP の一覧があるオファーに移動し、 **[CSP のエクスポート]** を選択します。 機能によって作成された .csv ファイルを、別のオファーにインポートできます。
 
-#### <a name="option-three-no-partners-in-the-csp-program"></a>オプション 3: CSP プログラムでパートナーはいません
+#### <a name="option-3-no-partners-in-the-csp-program"></a>オプション 3:CSP プログラムでパートナーはいません
 
 ![CSP プログラムでパートナーはいません](media/marketplace-publishers-guide/csp-reseller-option-three.png)
 
 このオプションを選択すると、そのオファーは CSP プログラムからオプトアウトされます。 この選択はいつでも変更できます。
-
-### <a name="cloud-partner-portal-opt-in"></a>Cloud パートナー ポータルのオプトイン
-
-Cloud パートナー ポータルでは、オプトインは [Marketplace] タブまたは [Storefront]\(ネットショップ\) タブで設定します。CSP プログラムの特定のパートナーを選択する機能は、パートナー センターでのみ利用できます。
-
-![CPP での CSP オプトイン エクスペリエンス](media/marketplace-publishers-guide/csp-opt-in.png)
 
 ## <a name="deauthorize-partners-in-the-csp-program"></a>CSP プログラムのパートナーの承認を取り消す
 
@@ -105,7 +99,7 @@ CSP プログラムのパートナーを承認し、そのパートナーが既�
 
 CSP プログラムのパートナーが製品を顧客に販売していない場合に、オファーを発行した後で CSP を削除するには、次の手順のようにします。
 
-1. [サポート リクエスト ページ](https://partner.microsoft.com/support/v2/?stage=1)に移動します。 最初のいくつかのドロップダウン メニューは、自動的に入力されます。
+1. [サポート リクエスト ページ](https://aka.ms/marketplacepublishersupport)に移動します。 最初のいくつかのドロップダウン メニューは、自動的に入力されます。
 
    > [!NOTE]
    > この事前設定されたドロップダウン メニューの選択は変更しないでください。
@@ -116,9 +110,6 @@ CSP プログラムのパートナーが製品を顧客に販売していない�
 5. **[次へ]** を選択して**問題の詳細ページ**に移動し、問題の詳細を入力します。
 6. 問題のタイトルを "**Deauthorize CSP**" (CSP の承認を取り消す) とし、残りの必要なセクションを入力します。
 
-
-
-
 ## <a name="navigate-between-options"></a>オプション間の移動
 
 3 つの CSP リセラー オプションの間を移動するには、このセクションを使用します。
@@ -127,7 +118,7 @@ CSP プログラムのパートナーが製品を顧客に販売していない�
 
 現在のオファーが**オプション 1: CSP プログラムの任意のパートナー**であり、他の 2 つのオプションのいずれかに移動する場合は、次の手順に従ってリクエストを作成します。
 
-1. [サポート リクエスト ページ](https://partner.microsoft.com/support/v2/?stage=1)に移動します。 最初のいくつかのドロップダウン メニューは、自動的に入力されます。
+1. [サポート リクエスト ページ](https://aka.ms/marketplacepublishersupport)に移動します。 最初のいくつかのドロップダウン メニューは、自動的に入力されます。
 
    > [!NOTE]
    > この事前設定されたドロップダウン メニューの選択は変更しないでください。
@@ -145,7 +136,7 @@ CSP プログラムのパートナーが製品を顧客に販売していない�
 
 現在のオファーが**オプション 2: 選択した CSP プログラムの特定のパートナー**で、移動先が**オプション 1: CSP プログラムの任意のパートナー**である場合は、次の手順を使用してリクエストを作成します。
 
-1. [サポート リクエスト ページ](https://partner.microsoft.com/support/v2/?stage=1)に移動します。 最初のいくつかのドロップダウン メニューは、自動的に入力されます。
+1. [サポート リクエスト ページ](https://aka.ms/marketplacepublishersupport)に移動します。 最初のいくつかのドロップダウン メニューは、自動的に入力されます。
 
    > [!NOTE]
    > この事前設定されたドロップダウン メニューの選択は変更しないでください。
@@ -158,7 +149,7 @@ CSP プログラムのパートナーが製品を顧客に販売していない�
 
  現在のオファーが**オプション 2: 選択した CSP プログラムの特定のパートナー**で、移動先が**オプション 3: CSP プログラムでパートナーはいません**である場合は、以前に承認した CSP プログラムのパートナーが最終顧客にオファーを再販していない場合にのみ、そのオプションに移動できます。 次の手順を使用してリクエストを作成してください。
 
-1. [サポート リクエスト ページ](https://partner.microsoft.com/support/v2/?stage=1)に移動します。 最初のいくつかのドロップダウン メニューは、自動的に入力されます。
+1. [サポート リクエスト ページ](https://aka.ms/marketplacepublishersupport)に移動します。 最初のいくつかのドロップダウン メニューは、自動的に入力されます。
 
    > [!NOTE]
    > この事前設定されたドロップダウン メニューの選択は変更しないでください。
@@ -175,7 +166,7 @@ CSP プログラムのパートナーが製品を顧客に販売していない�
 
 ## <a name="sharing-sales-and-support-materials-with-partners-in-the-csp-program"></a>販売とサポートの資料を CSP プログラムのパートナーと共有する
 
-クラウド ソリューション プロバイダー プログラムのパートナーがあなたのオファリングを最も効果的に表現し、あなたの組織と連携できるようにするには、リセラーが使用できる販売およびサポートの資料を送信する必要があります。 これらのリソースは、マーケットプレースのネットショップの顧客には公開されません。
+クラウド ソリューション プロバイダー プログラムのパートナーがあなたのオファーを最も効果的に表現し、あなたの組織と連携できるようにするには、リセラーが使用できる販売およびサポートの資料を送信する必要があります。 これらのリソースは、マーケットプレースのオンライン ストアの顧客には公開されません。
 
 ### <a name="partner-center-csp-channel"></a>パートナー センターの CSP チャネル
 
@@ -183,15 +174,9 @@ CSP プログラムのパートナーが製品を顧客に販売していない�
 
 ![パートナー センターでの CSP 関連情報](media/marketplace-publishers-guide/pc-csp-channel.png)
 
-### <a name="cloud-partner-portal-csp-channel"></a>Cloud パートナー ポータルの CSP チャネル
-
-Cloud パートナー ポータルで CSP チャネルにオプトインしている場合、発行元は、関連するマーケティング資料がホストされている URL と、チャネルの連絡先情報を、CSP チャネルに入力する必要があります。
-
-![Cloud パートナー ポータルでの CSP 関連情報](media/marketplace-publishers-guide/cpp-csp-information.png)
-
 ## <a name="next-steps"></a>次のステップ
 
-「[Azure Marketplace と AppSource の公開ガイド](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)」を参照してください。
+「[Azure Marketplace と AppSource の公開ガイド](marketplace-publishers-guide.md)」を参照してください。
 
 マーケットプレース GTM サービスの詳細については、「[Go-to-Market サービス](https://partner.microsoft.com/reach-customers/gtm)」を参照してください。
 

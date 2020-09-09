@@ -3,13 +3,14 @@ author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
+ms.custom: devx-track-java
 ms.author: erhopf
-ms.openlocfilehash: 93a37f6ab7d9b916368d469d660ac8ac38399b52
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: e9cedbe90518ba32d752b0fa9d5afb37042a9eea
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586744"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375454"
 ---
 [!INCLUDE [Prerequisites](prerequisites-java.md)]
 

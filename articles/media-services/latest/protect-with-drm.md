@@ -4,28 +4,30 @@ titleSuffix: Azure Media Services
 description: Microsoft PlayReady、Google Widevine、または Apple FairPlay のライセンスで暗号化されたストリームを、DRM 動的暗号化とライセンス販売サービスを使用して配信する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 05/25/2019
-ms.author: juliako
+ms.topic: tutorial
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 14ba5f270138db22a76fd697b264046e22577427
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: abaa82d6f5f33a3dc29db50ae6d029dacd3f7c13
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79086736"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289360"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>チュートリアル:DRM 動的暗号化とライセンス配信サービスの使用
 
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
 > [!NOTE]
-> このチュートリアルでは [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) の例を使用していますが、全体的な手順は [REST API](https://docs.microsoft.com/rest/api/media/liveevents)、[CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)、またはその他のサポートされている [SDK](media-services-apis-overview.md#sdks) と同じです。
+> このチュートリアルでは [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) の例を使用していますが、全体的な手順は [REST API](/rest/api/media/liveevents)、[CLI](/cli/azure/ams/live-event?view=azure-cli-latest)、またはその他のサポートされている [SDK](media-services-apis-overview.md#sdks) と同じです。
 
 Microsoft PlayReady、Google Widevine、または Apple FairPlay ライセンスを使用して暗号化したストリームを、Azure Media Services を使用して配信できます。 詳細については、「[動的暗号化によるコンテンツ保護](content-protection-overview.md)」を参照してください。
 
@@ -55,8 +57,8 @@ Media Services にも、PlayReady、Widevine、FairPlay の DRM ライセンス�
 * 「[コンテンツ保護の概要](content-protection-overview.md)」の記事を確認します。
 * 「[アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計](design-multi-drm-system-with-access-control.md)」を確認してください。
 * Visual Studio Code または Visual Studio をインストールします。
-* [このクイックスタート](create-account-cli-quickstart.md)の説明に従って、新しい Azure Media Services アカウントを作成します。
-* [API へのアクセス](access-api-cli-how-to.md)に関するページに従って、Media Services API を使用するために必要な資格情報を入手します。
+* [このクイックスタート](./create-account-howto.md)の説明に従って、新しい Azure Media Services アカウントを作成します。
+* [API へのアクセス](./access-api-howto.md)に関するページに従って、Media Services API を使用するために必要な資格情報を入手します。
 * アプリの構成ファイル (appsettings.json) に適切な値を設定します。
 
 ## <a name="download-code"></a>コードをダウンロードする
@@ -144,7 +146,7 @@ Media Services にも、PlayReady、Widevine、FairPlay の DRM ライセンス�
 
 ## <a name="get-a-test-token"></a>テスト トークンを取得する
 
-このチュートリアルでは、トークン制限があるコンテンツ キー ポリシーを指定します。 トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。 Media Services では、このサンプルで構成する [JWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) 形式のトークンがサポートされています。
+このチュートリアルでは、トークン制限があるコンテンツ キー ポリシーを指定します。 トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。 Media Services では、このサンプルで構成する [JWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_3) 形式のトークンがサポートされています。
 
 ContentKeyIdentifierClaim は ContentKeyPolicy で使用されます。つまり、キー配信サービスに提示されるトークンに ContentKey の識別子が含まれている必要があります。 このサンプルでは、ストリーミング ロケーターの作成時にコンテンツ キーを指定していません。システムによってランダムなコンテンツ キーが自動的に作成されます。 テスト トークンを生成するには、ContentKeyIdentifierClaim 要求に含める ContentKeyId を取得する必要があります。
 
@@ -152,7 +154,7 @@ ContentKeyIdentifierClaim は ContentKeyPolicy で使用されます。つまり
 
 ## <a name="build-a-streaming-url"></a>ストリーミング URL を作成する
 
-[StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) が作成されたので、ストリーミング URL を取得できます。 URL を作成するには、[StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) のホスト名と**ストリーミング ロケーター**のパスを連結する必要があります。 このサンプルでは、*既定の***ストリーミング エンドポイント**を使っています。 最初に Media Service アカウントを作成したとき、この*既定の***ストリーミング エンドポイント**は停止状態になっているので、**Start** を呼び出す必要があります。
+[StreamingLocator](/rest/api/media/streaminglocators) が作成されたので、ストリーミング URL を取得できます。 URL を作成するには、[StreamingEndpoint](/rest/api/media/streamingendpoints) のホスト名と**ストリーミング ロケーター**のパスを連結する必要があります。 このサンプルでは、*既定の* **ストリーミング エンドポイント**を使っています。 最初に Media Service アカウントを作成したとき、この*既定の* **ストリーミング エンドポイント**は停止状態になっているので、**Start** を呼び出す必要があります。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#GetMPEGStreamingUrl)]
 
@@ -164,7 +166,7 @@ ContentKeyIdentifierClaim は ContentKeyPolicy で使用されます。つまり
 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>Media Services アカウント内のリソースをクリーンアップする
 
-一般には、再利用を計画しているオブジェクト以外をクリーンアップします (通常、Transform、StreamingLocator などを再利用します)。 実験後にお使いのアカウントをクリーン アップする場合は、再利用する予定のないリソースを削除します。 たとえば、次のコードでジョブを削除します。
+一般には、再利用を計画しているオブジェクト以外をクリーンアップします (通常、Transform、StreamingLocator などを再利用します)。 実験後にお使いのアカウントをクリーン アップする場合は、再利用する予定のないリソースを削除します。 たとえば、ジョブ、作成された資産、コンテンツ キー ポリシーは、次のコードで削除します。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#CleanUp)]
 

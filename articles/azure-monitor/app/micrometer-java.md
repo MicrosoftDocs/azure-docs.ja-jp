@@ -3,14 +3,15 @@ title: Azure Application Insights Java SDK で Micrometer を使用する方法
 description: Application Insights Spring Boot アプリケーションと非 Spring Boot アプリケーションで Micrometer を使用するステップ バイ ステップ ガイドです。
 ms.topic: conceptual
 author: lgayhardt
+ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: dd04087db32f0bbfa75dafa7e12c355e5ab7b515
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2fbdf4e267e0f9a479a89d6f31e72f09d9e11bb0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670068"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322569"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Azure Application Insights Java SDK で Micrometer を使用する方法
 Micrometer のアプリケーション監視では、JVM ベースのアプリケーション コードのメトリックが測定され、好みの監視システムにデータをエクスポートできます。 この記事では、Spring Boot アプリケーションと非 Spring Boot アプリケーションの両方に対して Application Insights で Micrometer を使用する方法を説明します。
@@ -20,7 +21,7 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
 * [Application Insights spring-boot-starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter) 2.5.0 以降
 * Micrometer Azure Registry 1.1.0 以降
 * [Micrometer Spring Legacy](https://micrometer.io/docs/ref/spring/1.5) 1.1.0 以降 (これは、Spring フレームワーク内の自動構成コードをバックポートします)。
-* [Application Insights リソース](../../azure-monitor/app/create-new-resource.md )
+* [Application Insights リソース](./create-new-resource.md)
 
 手順
 
@@ -58,7 +59,7 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
 
 * Application Insights Spring-boot-starter 2.1.2 以降
 * Azure-spring-boot-metrics-starters 2.0.7 以降
-* [Application Insights リソース](../../azure-monitor/app/create-new-resource.md )
+* [Application Insights リソース](./create-new-resource.md)
 
 手順:
 
@@ -117,7 +118,7 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
 
 * Application Insights Web Auto 2.5.0 以降
 * Micrometer Azure Registry 1.1.0 以降
-* [Application Insights リソース](../../azure-monitor/app/create-new-resource.md )
+* [Application Insights リソース](./create-new-resource.md)
 
 手順:
 
@@ -271,4 +272,5 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
 ## <a name="next-steps"></a>次のステップ
 
 * Micrometer の詳細については、公式の [Micrometer ドキュメント](https://micrometer.io/docs)を参照してください。
-* Azure での Spring については、公式の [Azure の Spring ドキュメント](https://docs.microsoft.com/java/azure/spring-framework/?view=azure-java-stable)を参照してください。
+* Azure での Spring については、公式の [Azure の Spring ドキュメント](/java/azure/spring-framework/?view=azure-java-stable)を参照してください。
+

@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 09/29/2018
 ms.author: tomfitz
-ms.openlocfilehash: baee83e08505ddabb4680b5bbb4101479010ea47
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 47c88e08e5d2eac09fbcd5b60a8ccd73b46c9616
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75649715"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063784"
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft.Compute.CredentialsCombo UI 要素
 
@@ -20,15 +20,15 @@ Windows と Linux のパスワードと SSH 公開キーの検証が組み込ま
 
 Windows ユーザーの場合、ユーザーには次のような画面が表示されます。
 
-![Microsoft.Compute.CredentialsCombo Windows](./media/managed-application-elements/microsoft.compute.credentialscombo-windows.png)
+![Microsoft.Compute.CredentialsCombo Windows](./media/managed-application-elements/microsoft-compute-credentialscombo-windows.png)
 
 Linux でパスワードが選択されている場合、ユーザーには次のような画面が表示されます。
 
-![Microsoft.Compute.CredentialsCombo Linux パスワード](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-password.png)
+![Microsoft.Compute.CredentialsCombo Linux パスワード](./media/managed-application-elements/microsoft-compute-credentialscombo-linux-password.png)
 
 Linux で SSH パブリック キーが選択されている場合、ユーザーには次のような画面が表示されます。
 
-![Microsoft.Compute.CredentialsCombo Linux キー](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-key.png)
+![Microsoft.Compute.CredentialsCombo Linux キー](./media/managed-application-elements/microsoft-compute-credentialscombo-linux-key.png)
 
 ## <a name="schema"></a>スキーマ
 

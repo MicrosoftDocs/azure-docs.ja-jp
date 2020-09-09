@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 06412a1f08f1f242a3f3bd9be17b795ee09fcf9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a8172b63039d2d247f30fca4099254cb8fca068e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75649635"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073394"
 ---
 # <a name="microsoftstoragemultistorageaccountcombo-ui-element"></a>Microsoft.Storage.MultiStorageAccountCombo UI 要素
 
@@ -18,7 +18,7 @@ ms.locfileid: "75649635"
 
 ## <a name="ui-sample"></a>UI サンプル
 
-![Microsoft.Storage.MultiStorageAccountCombo](./media/managed-application-elements/microsoft.storage.multistorageaccountcombo.png)
+![Microsoft.Storage.MultiStorageAccountCombo](./media/managed-application-elements/microsoft-storage-multistorageaccountcombo.png)
 
 ## <a name="schema"></a>スキーマ
 

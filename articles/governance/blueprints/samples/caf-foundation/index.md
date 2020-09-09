@@ -3,12 +3,12 @@ title: CAF の基本ブループリント サンプルの概要
 description: Cloud Adoption Framework for Azure (CAF) 基盤ブループリント サンプルの概要とアーキテクチャ。
 ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 3291fdc299652d2b22bff89f5b1dadbdc064e561
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: b8bd0015d5f95fc61806197ca21fdaeeb3452700
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901298"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852346"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Microsoft Cloud Adoption Framework for Azure 基盤ブループリント サンプルの概要
 
@@ -35,7 +35,7 @@ CAF 基盤ブループリント サンプルは、クラウド資産を管理す
   - Azure Storage アカウントのセキュリティで保護された転送の暗号化を要求する
   - リソースを種類ごとに拒否する (デプロイ時に選択)  
 - イニシアティブ
-  - Azure Security Center での監視を有効にする (89 ポリシー)
+  - Azure Security Center での監視を有効にする (100 を超えるポリシー定義)
 
 これらの要素はすべて、「[Azure アーキテクチャ センター - 参照アーキテクチャ](/azure/architecture/reference-architectures/)」で公開されている実証済みのプラクティスに従っています。
 

@@ -9,18 +9,19 @@ ms.topic: how-to
 ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c2d1e8b4975be0657983192df00cc434da00a6f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 8b6f5f302465d075b7a0bcb0e6b12c75b1379bb5
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228371"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069836"
 ---
 # <a name="create-an-azure-storage-account"></a>Azure Storage アカウントの作成
 
 Azure ストレージ アカウントには、すべての Azure Storage データ オブジェクト (BLOB、ファイル、キュー、テーブル、およびディスク) が含まれます。 ストレージ アカウントでは、世界中のどこからでも HTTP または HTTPS 経由でアクセスできる Azure Storage データ用の一意の名前空間が提供されます。 Azure ストレージ アカウント内のデータは、持続性があり、高可用性で、セキュリティ保護されており、非常にスケーラブルです。
 
-このハウツー記事では、[Azure portal](https://portal.azure.com/)、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)、[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)、または [Azure Resource Manager テンプレート](../../azure-resource-manager/management/overview.md)を使ってストレージ アカウントを作成する方法を説明します。  
+このハウツー記事では、[Azure portal](https://portal.azure.com/)、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/)、[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)、または [Azure Resource Manager テンプレート](../../azure-resource-manager/management/overview.md)を使ってストレージ アカウントを作成する方法を説明します。  
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -75,7 +76,7 @@ Azure CLI はローカルにインストールして使用することもでき�
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-[Azure portal](https://portal.azure.com) にサインインする
+[Azure portal](https://portal.azure.com) にサインインします。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -152,8 +153,8 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
 |ゾーン冗長ストレージ (ZRS)     |Standard_ZRS         |
 |geo 冗長ストレージ (GRS)     |Standard_GRS         |
 |読み取りアクセス geo 冗長ストレージ (GRS)     |Standard_RAGRS         |
-|geo ゾーン冗長ストレージ (GZRS) (プレビュー)    |Standard_GZRS         |
-|読み取りアクセス geo ゾーン冗長ストレージ (RA-GZRS) (プレビュー)    |Standard_RAGZRS         |
+|geo ゾーン冗長ストレージ (GZRS)    |Standard_GZRS         |
+|読み取りアクセス geo ゾーン冗長ストレージ (RA-GZRS)    |Standard_RAGZRS         |
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -195,8 +196,8 @@ az storage account create \
 |ゾーン冗長ストレージ (ZRS)     |Standard_ZRS         |
 |geo 冗長ストレージ (GRS)     |Standard_GRS         |
 |読み取りアクセス geo 冗長ストレージ (GRS)     |Standard_RAGRS         |
-|geo ゾーン冗長ストレージ (GZRS) (プレビュー)    |Standard_GZRS         |
-|読み取りアクセス geo ゾーン冗長ストレージ (RA-GZRS) (プレビュー)    |Standard_RAGZRS         |
+|geo ゾーン冗長ストレージ (GZRS)    |Standard_GZRS         |
+|読み取りアクセス geo ゾーン冗長ストレージ (RA-GZRS)    |Standard_RAGZRS         |
 
 # <a name="template"></a>[テンプレート](#tab/template)
 
@@ -220,7 +221,7 @@ az group deployment create --resource-group $resourceGroupName --template-file "
 ```
 
 > [!NOTE]
-> このテンプレートは、例としてのみ機能します。 このテンプレートの一部として構成されていないストレージ アカウント設定は多数あります。 たとえば、[Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) を使用する場合、`isHnsEnabledad` オブジェクトの `StorageAccountPropertiesCreateParameters` プロパティを `true` に設定して、このテンプレートを変更します。 
+> このテンプレートは、例としてのみ機能します。 このテンプレートの一部として構成されていないストレージ アカウント設定は多数あります。 たとえば、[Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) を使用する場合、`StorageAccountPropertiesCreateParameters` オブジェクトの `isHnsEnabledad` プロパティを `true` に設定して、このテンプレートを変更します。 
 
 このテンプレートの変更方法または新しいテンプレートの作成方法については、以下を参照してください。
 

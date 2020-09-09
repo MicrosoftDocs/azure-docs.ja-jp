@@ -3,12 +3,13 @@ title: ServiceNow で Azure サービス正常性アラートを送信する
 description: ServiceNow インスタンスに送られたサービス正常性イベントについて、個人用に設定された通知を取得します。
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 3daae05aabff571010d043cf5602847e95ea29f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 68175dc17c1601eab097b94d4eefaa2706731f5c
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77654105"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432534"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>ServiceNow で webhook を使用して Azure サービス正常性アラートを構成する
 
@@ -140,13 +141,14 @@ ms.locfileid: "77654105"
      ![ServiceNow の [Base API Path]\(ベース API パス\)](./media/webhook-alerts/servicenow-base-api-path.png)
 
 1.  完全統合 URL は次のようになります。
-        
-         https://<yourInstanceName>.service-now.com/<baseApiPath>?apiKey=<secret>
 
+    ```http
+    https://<yourInstanceName>.service-now.com/<baseApiPath>?apiKey=<secret>
+    ```
 
 ## <a name="create-an-alert-using-servicenow-in-the-azure-portal"></a>ServiceNow を使用して Azure Portal でアラートを作成する
 ### <a name="for-a-new-action-group"></a>新しいアクション グループの場合:
-1. [この記事](../azure-monitor/platform/alerts-activity-log-service-notifications.md)の手順 1. ～ 8. に従って、新しいアクション グループでアラートを作成します。
+1. [この記事](./alerts-activity-log-service-notifications-portal.md)の手順 1. ～ 8. に従って、新しいアクション グループでアラートを作成します。
 
 1. **[アクション]** の一覧で以下を定義します。
 
@@ -194,5 +196,5 @@ ms.locfileid: "77654105"
 ## <a name="next-steps"></a>次のステップ
 - [既存の問題管理システム用の webhook 通知を構成する](service-health-alert-webhook-guide.md)方法について学習します。
 - [アクティビティ ログ アラート webhook スキーマ](../azure-monitor/platform/activity-log-alerts-webhook.md)を確認します。 
-- [サービス正常性の通知](../azure-monitor/platform/service-notifications.md)について学習します。
+- [サービス正常性の通知](./service-notifications.md)について学習します。
 - [アクション グループ](../azure-monitor/platform/action-groups.md)について学習します。

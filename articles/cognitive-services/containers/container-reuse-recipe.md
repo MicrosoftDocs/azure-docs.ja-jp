@@ -50,7 +50,7 @@ ms.locfileid: "80875080"
 
 この例では次のとおりです。
 
-* `{BILLING_ENDPOINT}` を使用して、課金エンドポイント (ホストの環境キーの `ENV`) を設定します。
+* `ENV` を使用して、課金エンドポイント (ホストの環境キーの `{BILLING_ENDPOINT}`) を設定します。
 * ENV を使用して、課金 API キー (ホストの環境キーの `{ENDPOINT_KEY}`) を設定します。
 
 ### <a name="reuse-recipe-store-billing-settings-with-container"></a>レシピの再利用: 課金設定をコンテナーに保存する
@@ -72,7 +72,7 @@ ENV EULA=accept
 
 * `COPY` を使用して、ホストのファイル システムの Language Understanding (LUIS) モデル ファイルをコピーします。
 * LUIS コンテナーは複数のモデルをサポートしています。 すべてのモデルが同じフォルダーに格納されている場合は、常に 1 つの `COPY` ステートメントが必要です。
-* モデル入力ディレクトリの相対的な親から docker ファイルを実行します。 次の例では、`docker build` の相対的な親から `docker run` および `/input` コマンドを実行します。 `/input` コマンドの最初の `COPY` は、ホスト コンピューターのディレクトリです。 2 つ目の `/input` はコンテナーのディレクトリです。
+* モデル入力ディレクトリの相対的な親から docker ファイルを実行します。 次の例では、`/input` の相対的な親から `docker build` および `docker run` コマンドを実行します。 `COPY` コマンドの最初の `/input` は、ホスト コンピューターのディレクトリです。 2 つ目の `/input` はコンテナーのディレクトリです。
 
 ```Dockerfile
 FROM <container-registry>/<cognitive-service-container-name>:<tag>

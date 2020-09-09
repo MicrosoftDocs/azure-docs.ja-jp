@@ -12,17 +12,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/30/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dc6993586063c9c99a287c51d799b44f921768d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 23bcb63b6b499e72cb43089659e513d276bd8306
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60245292"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358975"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>既存の ADSync データベースを使用して Azure AD Connect をインストールする
 Azure AD Connect には、データを格納する SQL Server データベースが必要です。 Azure AD Connect と共にインストールされる既定の SQL Server 2012 Express LocalDB を使用するか、所有している完全バージョンの SQL を使用することができます。 以前は、Azure AD Connect をインストールしたときに、ADSync という新しいデータベースが常に作成されました。 Azure AD Connect バージョン 1.1.613.0 (以降) では、既存の ADSync データベースを指定して、Azure AD Connect をインストールするオプションがあります。
@@ -71,24 +71,20 @@ Azure AD Connect には、データを格納する SQL Server データベース
    ![ようこそ](./media/how-to-connect-install-existing-database/db4.png)           
 
 1. **[Azure AD に接続]** 画面で、Azure AD ディレクトリのグローバル管理者の資格情報を指定する必要があります。 既定の onmicrosoft.com ドメインでアカウントを使用することをお勧めします。 このアカウントは、Azure AD のサービス アカウントを作成するためにのみ使用され、ウィザードが完了した後は使用されません。
-   ![接続](./media/how-to-connect-install-existing-database/db5.png)
+   ![のインスタンスに接続するときには、](./media/how-to-connect-install-existing-database/db5.png)
  
 1. **[ディレクトリの接続]** 画面では、ディレクトリ同期に構成されている既存の AD フォレストは、赤色の×アイコンで表示されます。 オンプレミスの AD フォレストの変更を同期するには、AD DS アカウントが必要です。 Azure AD Connect ウィザードでは、ADSync データベースに格納されている AD DS アカウントの資格情報を取得できません。これは、資格情報が暗号化され、復号には前の Azure AD Connect サーバーが必要なためです。 **[資格情報の変更]** をクリックして、AD フォレストの AD DS アカウントを指定します。
    ![Directories](./media/how-to-connect-install-existing-database/db6.png)
  
- 
 1. ポップアップ ダイアログで、(i) エンタープライズ管理者の資格情報を指定して Azure AD Connect に AD DS アカウントの作成を任せるか、(ii) AD DS アカウントを自分で作成してその資格情報を Azure AD Connect に提供することができます。 オプションを選択し、必要な資格情報を指定したら、 **[OK]** をクリックしてポップアップ ダイアログを閉じます。
    ![ようこそ](./media/how-to-connect-install-existing-database/db7.png)
  
- 
 1. 資格情報を入力すると、赤色の×アイコンは緑色のチェック アイコンで置き換えられます。 **[次へ]** をクリックします。
    ![ようこそ](./media/how-to-connect-install-existing-database/db8.png)
  
- 
 1. **[構成の準備完了]** 画面で、 **[インストール]** をクリックします。
    ![ようこそ](./media/how-to-connect-install-existing-database/db9.png)
  
- 
 1. インストールが完了すると、Azure AD Connect サーバーがステージング モードで自動的に有効になります。 ステージング モードを無効にする前に、予期しない変更に備えてサーバー構成と保留中のエクスポートを確認することをお勧めします。 
 
 ## <a name="post-installation-tasks"></a>インストール後のタスク

@@ -2,13 +2,13 @@
 title: GPU 対応コンテナー インスタンスをデプロイする
 description: GPU リソースを使用してコンピューティング集中型コンテナー アプリを実行するために、Azure コンテナー インスタンスをデプロイする方法について説明します。
 ms.topic: article
-ms.date: 02/19/2020
-ms.openlocfilehash: 0f1d21c62be5d7ae099faa2c6fcc440829bb451f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/22/2020
+ms.openlocfilehash: 19240560baa0cebdb6777d7b63d8c91832b12e1a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77525289"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387093"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU リソースを使用するコンテナー インスタンスをデプロイする
 
@@ -33,9 +33,6 @@ ms.locfileid: "77525289"
 
 ## <a name="about-gpu-resources"></a>GPU リソースについて
 
-> [!IMPORTANT]
-> GPU リソースは、要求時にのみ使用できます。 GPU リソースへのアクセスを要求するには、[Azure サポート要求][azure-support]を送信してください。
-
 ### <a name="count-and-sku"></a>カウントと SKU
 
 コンテナー インスタンスで GPU を使用するには、次の情報を使って *GPU リソース*を指定します。
@@ -53,6 +50,9 @@ ms.locfileid: "77525289"
 
 GPU リソースをデプロイするときに、ワークロードに適した CPU とメモリ リソースを設定します。上記の表は最大値を表しています。 これらの値は、現在、GPU リソースのないコンテナー グループで使用可能な CPU とメモリ リソースよりも大きくなっています。  
 
+> [!IMPORTANT]
+> GPU リソースの既定の[サブスクリプション制限](container-instances-quotas.md) (クォータ) は、SKU によって異なります。 P100 SKU と V100 SKU の既定の CPU 制限は、最初は 0 に設定されています。 使用可能なリージョンでの引き上げを要求するには、[Azure サポート リクエスト][azure-support]を送信してください。
+
 ### <a name="things-to-know"></a>注意事項
 
 * **デプロイ時**- GPU リソースを含むコンテナー グループの作成には、最大で **8 - 10 分**かかります。 これは、Azure で GPU VM をプロビジョニングして構成するための追加時間によるものです。 
@@ -63,7 +63,7 @@ GPU リソースをデプロイするときに、ワークロードに適した 
 
 * **CUDA ドライバー** - GPU リソースがあるコンテナー インスタンスは、NVIDIA CUDA ドライバーとコンテナーのランタイムを使用して事前にプロビジョニングされているため、CUDA ワークロード用に開発されたコンテナー イメージを使用できます。
 
-  現時点では、CUDA 9.0 がサポートされています。 たとえば、次の基本イメージを Docker ファイルで使用できます。
+  現時点では、CUDA 9.0 のみがサポートされています。 たとえば、次の基本イメージを Docker ファイルで使用できます。
   * [nvidia/cuda:9.0-base-ubuntu16.04](https://hub.docker.com/r/nvidia/cuda/)
   * [tensorflow/tensorflow: 1.12.0-gpu-py3](https://hub.docker.com/r/tensorflow/tensorflow)
     
@@ -73,7 +73,7 @@ GPU リソースを追加するには、[YAML ファイル](container-instances-
 
 ```YAML
 additional_properties: {}
-apiVersion: '2018-10-01'
+apiVersion: '2019-12-01'
 name: gpucontainergroup
 properties:
   containers:
@@ -139,7 +139,7 @@ GPU リソースでコンテナー グループをデプロイするには、[Re
       {
         "name": "[parameters('containerGroupName')]",
         "type": "Microsoft.ContainerInstance/containerGroups",
-        "apiVersion": "2018-10-01",
+        "apiVersion": "2019-12-01",
         "location": "[resourceGroup().location]",
         "properties": {
             "containers": [
@@ -168,10 +168,10 @@ GPU リソースでコンテナー グループをデプロイするには、[Re
 }
 ```
 
-[az group deployment create][az-group-deployment-create] コマンドで、テンプレートをデプロイします。 GPU リソースをサポートしているリージョン (*eastus* など) で作成されたリソース グループの名前を指定する必要があります。
+[az deployment group create][az-deployment-group-create] コマンドを使用してテンプレートをデプロイします。 GPU リソースをサポートしているリージョン (*eastus* など) で作成されたリソース グループの名前を指定する必要があります。
 
 ```azurecli-interactive
-az group deployment create --resource-group myResourceGroup --template-file gpudeploy.json
+az deployment group create --resource-group myResourceGroup --template-file gpudeploy.json
 ```
 
 デプロイが完了するまで、数分間かかります。 その後、コンテナーが起動し、TensorFlow ジョブが実行されます。 [az container logs][az-container-logs] コマンドを実行して、ログの出力を表示します。
@@ -225,7 +225,7 @@ az container delete --resource-group myResourceGroup --name gpucontainergrouprm 
 ## <a name="next-steps"></a>次のステップ
 
 * [YAML ファイル](container-instances-multi-container-yaml.md)または [Resource Manager テンプレート](container-instances-multi-container-group.md)を使用したコンテナー グループのデプロイについて学習します。
-* Azure での [GPU 最適化済み VM サイズ](../virtual-machines/linux/sizes-gpu.md)について学習します。
+* Azure での [GPU 最適化済み VM サイズ](../virtual-machines/sizes-gpu.md)について学習します。
 
 
 <!-- IMAGES -->
@@ -240,4 +240,4 @@ az container delete --resource-group myResourceGroup --name gpucontainergrouprm 
 [az-container-show]: /cli/azure/container#az-container-show
 [az-container-logs]: /cli/azure/container#az-container-logs
 [az-container-show]: /cli/azure/container#az-container-show
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create

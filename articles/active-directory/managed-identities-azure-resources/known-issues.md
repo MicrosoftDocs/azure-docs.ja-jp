@@ -3,7 +3,7 @@ title: マネージド ID に関する FAQ と既知の問題 - Azure AD
 description: Azure リソースのマネージド ID に関する既知の問題。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.assetid: 2097381a-a7ec-4e3b-b4ff-5d2fb17403b6
@@ -13,16 +13,16 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 12/12/2017
-ms.author: markvi
+ms.date: 08/06/2020
+ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 84b68e5aecca11fb72f8cacc7e16701eebd0ae1a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4bcd36a1ce38d4d9eb6a0faec470f7427852894b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197323"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260222"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID に関する FAQ と既知の問題
 
@@ -33,13 +33,34 @@ ms.locfileid: "83197323"
 > [!NOTE]
 > Azure リソースのマネージド ID は、以前のマネージドサービス ID (MSI) の新しい名前です。
 
+
+### <a name="how-can-you-find-resources-that-have-a-managed-identity"></a>マネージド ID を持つリソースを見つけるにはどうすればいいですか?
+
+次の Azure CLI コマンドを使用して、システム割り当てマネージド ID を持つリソースの一覧を検索できます。 
+
+`az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  principalId:identity.principalId}" --output table`
+
+
+
+
+### <a name="do-managed-identities-have-a-backing-app-object"></a>マネージド ID にバッキング アプリ オブジェクトはありますか?
+
+いいえ。 マネージド ID と Azure AD アプリ登録は、ディレクトリ内で同じものではありません。 
+
+アプリの登録には、次の 2 つのコンポーネントがあります。アプリケーション オブジェクトとサービス プリンシパル オブジェクト。 Azure リソースのマネージド ID にあるのは、これらのコンポーネントのうち、次の 1 つだけです:サービス プリンシパル オブジェクト。 
+
+マネージド ID では、アプリケーション オブジェクトがディレクトリにありません。これは、MS グラフに対するアプリのアクセス許可を付与するために一般的に使用されるものです。 代わりに、マネージド ID に対する MS グラフのアクセス許可をサービス プリンシパルに直接付与する必要があります。  
+
 ### <a name="does-managed-identities-for-azure-resources-work-with-azure-cloud-services"></a>Azure リソースのマネージド ID は Azure Cloud Services で動作しますか?
 
 いいえ、Azure Cloud Services で Azure リソースのマネージド ID をサポートする予定はありません。
 
-### <a name="does-managed-identities-for-azure-resources-work-with-the-active-directory-authentication-library-adal-or-the-microsoft-authentication-library-msal"></a>Azure リソースのマネージド ID は Active Directory Authentication Library (ADAL) または Microsoft Authentication Library (MSAL) で動作しますか?
+### <a name="what-is-the-credential-associated-with-a-managed-identity-how-long-is-it-valid-and-how-often-is-it-rotated"></a>マネージド ID に関連付けられる資格情報は何ですか? その有効期間とローテーションの頻度は?
 
-いいえ、Azure リソースのマネージド ID は、ADAL または MSAL とまだ統合されていません。 REST エンドポイントを使用して Azure リソースのマネージド ID のトークンを取得する方法については、「[Azure VM 上で Azure リソースのマネージド ID を使用してアクセス トークンを取得する方法](how-to-use-vm-token.md)」を参照してください。
+> [!NOTE]
+> マネージド ID の認証方法は、内部的な実装の詳細であり、予告なく変更されます。
+
+マネージド ID には、証明書ベースの認証が使用されます。 各マネージド ID の資格情報は有効期限が 90 日で、45 日後にローテーションされます。
 
 ### <a name="what-is-the-security-boundary-of-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID のセキュリティ境界は何ですか?
 
@@ -51,31 +72,11 @@ ID のセキュリティ境界は、ID のアタッチ先リソースです。 �
 - システム割り当てマネージド ID が有効でなく、ユーザー割り当てマネージド ID が 1 つのみの場合、IMDS はその単一のユーザー割り当てマネージド ID を規定値とします。 
 - システム割り当てマネージド ID が有効でなく、複数のユーザー割り当てマネージド ID が存在する場合、要求内でのマネージド ID の指定が必要です。
 
-### <a name="should-i-use-the-managed-identities-for-azure-resources-imds-endpoint-or-the-vm-extension-endpoint"></a>Azure リソース IMDS エンドポイントまたは VM 拡張エンドポイントのどちらのマネージド ID を使用すべきですか?
 
-VM で Azure リソースのマネージド ID を使用する場合、IMDS エンドポイントを使用することをお勧めします。 Azure Instance Metadata Service は、Azure Resource Manager を使用して作成されたすべての IaaS VM にアクセスできる REST エンドポイントです。 
-
-Azure リソースのマネージド ID を IMDS 上で使用する場合、次のような利点があります:
-- すべての Azure IaaS でサポートされているオペレーティング システムは、IMDS 上で Azure リソースのマネージド ID を使用できます。
-- Azure リソースのマネージド ID を有効にするために、VM に拡張機能をインストールする必要はなくなりました。 
-- Azure リソースのマネージド ID によって使用される証明書は、VM に存在しなくなりました。
-- IMDS エンドポイントは、既知のルーティング不可能な IP アドレスです。VM 内でのみ使用できます。
-- 1000 個のユーザー割り当てマネージド ID を単一の VM に割り当てられます。 
-
-Azure リソース VM 拡張のマネージド ID は引き続き使用可能です。ただし、それに対して新しい機能は開発されません。 IMDS エンドポイントを使用するように切り替えることをお勧めします。 
-
-VM 拡張エンドポイントを使用する場合のいくつかの制限事項を次に示します。
-- Linux ディストリビューションのサポートが次に制限されます。CoreOS Stable、CentOS 7.1、Red Hat 7.2、Ubuntu 15.04、Ubuntu 16.04
-- VM に割り当てられるユーザー割り当てマネージド ID は32 個のみです。
-
-
-注:Azure リソース VM 拡張機能のマネージド ID は、2019 年 1 月にサポート対象外になります。 
-
-Azure Instance Metadata Service の詳細については、[IMDS のドキュメント](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)を参照してください
 
 ### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>サブスクリプションを別のディレクトリに移動する場合、マネージド ID は自動的に再作成されますか?
 
-いいえ。 サブスクリプションを別のディレクトリに移動する場合、お客様が手動でそれらを再作成し、再度 Azure RBAC ロールの割り当てを許可する必要があります。
+いいえ。 サブスクリプションを別のディレクトリに移動する場合、お客様が手動でそれらを再作成し、再度 Azure ロールの割り当てを許可する必要があります。
 - システム割り当てマネージドID の場合、無効にしてから最有効化します。 
 - ユーザー割り当てマネージド ID の場合、削除、再作成の後、必要なリソース (例： 仮想マシン) へ再度添付します。
 
@@ -85,19 +86,10 @@ Azure Instance Metadata Service の詳細については、[IMDS のドキュメ
 
 ### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>リソースのマネージド ID に必要な Azure RBAC アクセス許可は何ですか? 
 
-- システム割り当てマネージド ID:リソースに対する書き込みアクセス許可が必要です。 たとえば、仮想マシンには Microsoft.Compute/virtualMachines/write が必要です。 このアクションは、[Virtual Machine Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) などのリソース固有の組み込みロールに含まれています。
-- ユーザー割り当てマネージド ID:リソースに対する書き込みアクセス許可が必要です。 たとえば、仮想マシンには Microsoft.Compute/virtualMachines/write が必要です。 さらにマネージド ID に対する [Managed Identity Operator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) ロールの割り当て。
+- システム割り当てマネージド ID:リソースに対する書き込みアクセス許可が必要です。 たとえば、仮想マシンには Microsoft.Compute/virtualMachines/write が必要です。 このアクションは、[Virtual Machine Contributor](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) などのリソース固有の組み込みロールに含まれています。
+- ユーザー割り当てマネージド ID:リソースに対する書き込みアクセス許可が必要です。 たとえば、仮想マシンには Microsoft.Compute/virtualMachines/write が必要です。 さらにマネージド ID に対する [Managed Identity Operator](../../role-based-access-control/built-in-roles.md#managed-identity-operator) ロールの割り当て。
 
-### <a name="how-do-you-restart-the-managed-identities-for-azure-resources-extension"></a>Azure リソース拡張機能のマネージド ID を再起動するにはどうすればよいですか?
-Windows と特定のバージョンの Linux で拡張機能が停止した場合は、次のコマンドレットを使用して手動で再起動できます。
 
-```powershell
-Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <location> -Publisher Microsoft.ManagedIdentity -VMName <vm name> -ResourceGroupName <resource group name> -ForceRerun <Any string different from any last value used>
-```
-
-各値の説明: 
-- Windows の拡張機能の名前と種類:ManagedIdentityExtensionForWindows
-- Linux の拡張機能の名前と種類:ManagedIdentityExtensionForLinux
 
 ## <a name="known-issues"></a>既知の問題
 
@@ -133,12 +125,7 @@ VM が開始されると、次のコマンドを使用してタグを削除で�
 az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ```
 
-### <a name="vm-extension-provisioning-fails"></a>VM 拡張機能のプロビジョニングが失敗する
 
-VM 拡張機能のプロビジョニングは、DNS 検索エラーが原因で失敗することがあります。 VM を再起動して、もう一度やり直してください。
- 
-> [!NOTE]
-> VM 拡張機能は、2019 年 1 月には非推奨となる予定です。 IMDS エンドポイントを使用するように移行することをお勧めします。
 
 ### <a name="transferring-a-subscription-between-azure-ad-directories"></a>Azure AD ディレクトリ間のサブスクリプションの転送
 
@@ -149,6 +136,8 @@ VM 拡張機能のプロビジョニングは、DNS 検索エラーが原因で�
  - システム割り当てマネージドID の場合、無効にしてから最有効化します。 
  - ユーザー割り当てマネージド ID の場合、削除、再作成の後、必要なリソース (例： 仮想マシン) へ再度添付します。
 
+詳細については、「[Azure サブスクリプションを別の Azure AD ディレクトリに移転する (プレビュー)](../../role-based-access-control/transfer-subscription.md)」を参照してください。
+
 ### <a name="moving-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>ユーザー割り当てマネージド ID の異なるリソース グループ/サブスクリプションへの移動
 
-ユーザー割り当てマネージド ID を異なるリソース グループに移動すると、ID の破損が発生します。 結果として、その ID を使用するリソース (VM など) はトークンを要求できなくなります。 
+ユーザー割り当てマネージド ID の異なるリソース グループへの移動はサポートされていません。

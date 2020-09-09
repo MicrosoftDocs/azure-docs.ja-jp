@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 79f85261115dbddcb0b04cd2863a90912de2ab87
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: d2b74af723e3ba8b1d71e9f481bf96d009540a52
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474905"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962096"
 ---
 # <a name="app-service-networking-features"></a>App Service のネットワーク機能
 
@@ -36,7 +36,7 @@ Azure App Service は分散システムです。 受信した HTTP/HTTPS 要求�
 
 どのようなユース ケースでも、問題解決の手段はいくつか存在します。  時として、使用に適した機能はユース ケース以外の理由から決まるものです。 以下の受信のユース ケースでは、App Service のネットワーク機能を使用して、アプリで受信するトラフィックの制御についての問題を解決する方法の案を示します。 
  
-| 受信のユース ケース | 機能 |
+| 受信のユース ケース | 特徴量 |
 |---------------------|-------------------|
 | アプリの IP ベース SSL のニーズをサポートする | アプリに割り当てられたアドレス |
 | アプリ専用の非共有受信アドレス | アプリに割り当てられたアドレス |
@@ -49,7 +49,7 @@ Azure App Service は分散システムです。 受信した HTTP/HTTPS 要求�
 
 以下の送信のユース ケースでは、App Service のネットワーク機能を使用して、アプリの送信アクセスに関するニーズを解決する方法の案を示します。 
 
-| 送信のユース ケース | 機能 |
+| 送信のユース ケース | 特徴量 |
 |---------------------|-------------------|
 | 同一リージョン内にある Azure Virtual Network のリソースにアクセスする | VNet 統合 </br> ASE |
 | 異なるリージョン内にある Azure Virtual Network のリソースにアクセスする | ゲートウェイが必要な VNet 統合 </br> ASE と VNet ピアリング |
@@ -223,12 +223,12 @@ ASE があれば、専用のアプリを隔離したまま最適にホストで�
 別個のフロントエンド アプリで VNet 統合を使用し、サブネットで API アプリからサービス エンドポイントを使用することで、複数のフロントエンド アプリで同じ API アプリを使用できます。  
 
 <!--Links-->
-[appassignedaddress]: https://docs.microsoft.com/azure/app-service/configure-ssl-certificate
-[iprestrictions]: https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions
-[serviceendpoints]: https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions
-[hybridconn]: https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections
-[vnetintegrationp2s]: https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet
-[vnetintegration]: https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet
-[networkinfo]: https://docs.microsoft.com/azure/app-service/environment/network-info
-[appgwserviceendpoints]: https://docs.microsoft.com/azure/app-service/networking/app-gateway-with-service-endpoints
-[privateendpoints]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint
+[appassignedaddress]: ./configure-ssl-certificate.md
+[iprestrictions]: ./app-service-ip-restrictions.md
+[serviceendpoints]: ./app-service-ip-restrictions.md
+[hybridconn]: ./app-service-hybrid-connections.md
+[vnetintegrationp2s]: ./web-sites-integrate-with-vnet.md
+[vnetintegration]: ./web-sites-integrate-with-vnet.md
+[networkinfo]: ./environment/network-info.md
+[appgwserviceendpoints]: ./networking/app-gateway-with-service-endpoints.md
+[privateendpoints]: ./networking/private-endpoint.md

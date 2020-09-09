@@ -3,20 +3,20 @@ title: Azure Application Insights から Power BI にエクスポートする | 
 description: Power BI で Analytics クエリを表示できます。
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 0e17ca6e07ec76f0a7a1cb04f7aa13619fb9970c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 51a553452643fc979846ab4604762f11c5b7ff68
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663999"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324371"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Application Insights のデータを Power BI に入力する
-[Power BI](https://www.powerbi.com/) は、データを分析し、洞察を共有できる一連のビジネス ツールです。 あらゆるデバイスで機能豊富なダッシュボードを利用できます。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) の Analytics クエリなど、さまざまなソースのデータを組み合わせることができます。
+[Power BI](https://www.powerbi.com/) は、データを分析し、洞察を共有できる一連のビジネス ツールです。 あらゆるデバイスで機能豊富なダッシュボードを利用できます。 [Azure Application Insights](./app-insights-overview.md) の Analytics クエリなど、さまざまなソースのデータを組み合わせることができます。
 
 Application Insights のデータを Power BI にエクスポートする場合、3 つの方法があります。
 
 * [**Analytics クエリのエクスポート**](#export-analytics-queries)。 可能であればこの方法の使用をお勧めします。 必要なクエリを作成し、Power BI にエクスポートします。 このクエリは、他のデータと共にダッシュボードに配置できます。
-* [**連続エクスポートと Azure Stream Analytics**](../../azure-monitor/app/export-stream-analytics.md)。 この方法は、データを長期間保存する必要がある場合に便利です。 長期にわたるデータ保有要件がない場合は、Analytics クエリのエクスポートの方法を使用します。 連続エクスポートと Stream Analytics では、多くの設定作業と追加のストレージ オーバーヘッドが必要になります。
+* [**連続エクスポートと Azure Stream Analytics**](./export-stream-analytics.md)。 この方法は、データを長期間保存する必要がある場合に便利です。 長期にわたるデータ保有要件がない場合は、Analytics クエリのエクスポートの方法を使用します。 連続エクスポートと Stream Analytics では、多くの設定作業と追加のストレージ オーバーヘッドが必要になります。
 * **Power BI アダプター**。 グラフ セットが事前定義されていますが、他のソースの独自のクエリを追加できます。
 
 > [!NOTE]
@@ -31,7 +31,7 @@ Application Insights のクエリをインポートするには、Power BI の�
 [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/) をインストールします。
 
 ### <a name="export-an-analytics-query"></a>Analytics クエリのエクスポート
-1. [Analytics を開き、クエリを作成](../../azure-monitor/log-query/get-started-portal.md)します。
+1. [Analytics を開き、クエリを作成](../log-query/get-started-portal.md)します。
 2. 満足のいく結果が得られるまで、クエリをテストして改善します。 エクスポートする前に、クエリが Analytics で正しく実行されることを確認します。
 3. **[エクスポート]** メニューの **[Power BI (M)]** を選択します。 テキスト ファイルを保存します。
    
@@ -56,7 +56,7 @@ Application Insights のクエリをインポートするには、Power BI の�
 8. レポートを周期的に手動で更新するか、オプション ページで更新のスケジュールを設定します。
 
 ### <a name="export-a-funnel"></a>フィルターをエクスポートする
-1. [フィルターを作成します](../../azure-monitor/app/usage-funnels.md)。
+1. [フィルターを作成します](./usage-funnels.md)。
 2. **[Power BI]** を選択します。
 
    ![Power BI ボタンのスクリーンショット](./media/export-power-bi/button.png)
@@ -112,7 +112,7 @@ Analytics クエリから取得するデータセットを小さくすると要�
  ```
 
 ## <a name="about-sampling"></a>サンプリングについて
-お使いのアプリケーションで送信されるデータの量によっては、ご自身のテレメトリの一部のみを送信するアダプティブ サンプリング機能を使用できます。 これは、SDK または取り込みでサンプリングを手動で設定した場合にも当てはまります。 [サンプリングの詳細についてはこちらを参照してください](../../azure-monitor/app/sampling.md)。
+お使いのアプリケーションで送信されるデータの量によっては、ご自身のテレメトリの一部のみを送信するアダプティブ サンプリング機能を使用できます。 これは、SDK または取り込みでサンプリングを手動で設定した場合にも当てはまります。 [サンプリングの詳細についてはこちらを参照してください](./sampling.md)。
 
 ## <a name="power-bi-adapter-deprecated"></a>Power BI アダプター (非推奨)
 この方法では、テレメトリの完全なダッシュボードが作成されます。 初期データ セットが事前定義されていますが、さらに多くのデータを追加できます。
@@ -146,5 +146,5 @@ Application Insights のグラフを他のソースのグラフや Analytics ク
 
 ## <a name="next-steps"></a>次のステップ
 * [Power BI - 詳細](https://www.powerbi.com/learning/)
-* [Analytics のチュートリアル](../../azure-monitor/log-query/get-started-portal.md)
+* [Analytics のチュートリアル](../log-query/get-started-portal.md)
 

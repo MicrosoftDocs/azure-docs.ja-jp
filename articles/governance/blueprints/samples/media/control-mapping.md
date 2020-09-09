@@ -1,14 +1,14 @@
 ---
 title: メディア ブループリント サンプル コントロール
 description: メディア ブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy にマップされています。
-ms.date: 02/24/2020
+ms.date: 08/13/2020
 ms.topic: sample
-ms.openlocfilehash: bdc4ef65c6d61a9d4217d7873bb29bd787842e71
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4101b9030425c22b8806870d467581521870d639
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78201739"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208462"
 ---
 # <a name="control-mapping-of-the-media-blueprint-sample"></a>メディア ブループリント サンプルのコントロール マッピング
 
@@ -236,7 +236,7 @@ ms.locfileid: "78201739"
 ここではメディア ブループリント サンプルのコントロール マッピングを確認しました。 次に、概要と、このサンプルをデプロイする方法を確認するには、次の記事を参照してください。
 
 > [!div class="next step action"]
-> [メディア ブループリント - 概要](./control-mapping.md)
+> [メディア ブループリント - コントロール マッピング](./control-mapping.md)
 > [メディア ブループリント - デプロイ手順](./deploy.md)
 
 ブループリントとその使用方法に関するその他の記事:

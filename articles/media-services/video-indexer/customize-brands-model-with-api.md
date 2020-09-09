@@ -9,13 +9,13 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2020
-ms.author: anzaman
-ms.openlocfilehash: 79c3a7934e9152a4908f895c20ee6fbdc0f360cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: kumud
+ms.openlocfilehash: 5fc565ecc1b501f52e934784695594dcfef2a83a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80127992"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047279"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Video Indexer API を使用してブランド モデルをカスタマイズする
 

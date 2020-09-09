@@ -1,5 +1,5 @@
 ---
-title: データ型の定義
+title: Synapse SQL でのテーブルのデータ型
 description: Synapse SQL におけるテーブルのデータ型の定義に関するレコメンデーション。
 services: synapse-analytics
 author: filippopovic
@@ -11,18 +11,18 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 312c58a7df09ebe3e0bdf0749f902199723a331b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a92d73941aac045534b6708c4b92d741c39ff781
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426763"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494969"
 ---
 # <a name="table-data-types-in-synapse-sql"></a>Synapse SQL でのテーブルのデータ型
 
 Synapse SQL におけるテーブルのデータ型の定義に関するレコメンデーション。 
 
-## <a name="what-are-the-data-types"></a>データ型とは
+## <a name="data-types"></a>データ型
 
 Synapse SQL では、最も一般的に使用されるデータ型をサポートしています。 サポートされるデータ型の一覧については、CREATE TABLE ステートメントの[データ型](/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes)を参照してください。 
 

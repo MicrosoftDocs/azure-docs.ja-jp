@@ -5,17 +5,17 @@ description: デザイナーを使用し、モデルをトレーニングして�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 02/24/2020
-ms.custom: Ignite2019, designer
-ms.openlocfilehash: 5079953994b74378a54a316c288c77d13c3af782
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.topic: conceptual
+ms.custom: how-to, designer
+ms.openlocfilehash: 61465210c9ad476c6d8d2987330498aa0efa39d4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653681"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319611"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナーを使用してバッチ予測を実行する (プレビュー)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -34,6 +34,8 @@ SDK を使用してバッチ スコアリング サービスを設定する方�
 ## <a name="prerequisites"></a>前提条件
 
 このガイドは、既にトレーニング パイプラインがあることを前提としています。 デザイナーのガイド付き概要については、[デザイナーのチュートリアルのパート 1](tutorial-designer-automobile-price-train-score.md) を完了してください。 
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 ## <a name="create-a-batch-inference-pipeline"></a>バッチ推論パイプラインを作成する
 

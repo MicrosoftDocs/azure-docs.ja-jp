@@ -3,13 +3,14 @@ title: Visual Studio Code を使用して Azure Functions を Azure Storage に�
 description: Visual Studio Code プロジェクトに出力バインディングを追加して Azure Functions を Azure Storage キューに接続する方法を説明します。
 ms.date: 02/07/2020
 ms.topic: quickstart
+ms.custom: devx-track-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: c32f98fc1b3de98592f8e7ceb43c17aa8a9049f7
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: ee10adea181c187bd630b5d334e4768545f4f6c8
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673452"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845376"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Visual Studio Code を使用して Azure Functions を Azure Storage に接続する
 
@@ -28,7 +29,7 @@ ms.locfileid: "80673452"
 * [Azure Storage Explorer](https://storageexplorer.com/) をインストールする。 Storage Explorer は、出力バインドによって生成されるキュー メッセージの調査に使用するツールです。 Storage Explorer は、macOS、Windows、Linux ベースのオペレーティング システムでサポートされます。
 
 ::: zone pivot="programming-language-csharp"
-* [.NET Core CLI ツール](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)をインストールします。
+* [.NET Core CLI ツール](/dotnet/core/tools/?tabs=netcore2x)をインストールします。
 ::: zone-end
 
 * [Visual Studio Code のクイックスタートのパート 1](functions-create-first-function-vs-code.md) の手順を完了する。 
@@ -56,7 +57,7 @@ Queue storage の出力バインドを使用しているため、このプロジ
 
 プロジェクトは、[拡張機能バンドル](functions-bindings-register.md#extension-bundles)を使用するように構成されています。これにより、事前定義された一連の拡張機能パッケージが自動的にインストールされます。 
 
-拡張機能バンドルは、プロジェクトのルートにある host.json ファイルで次のように有効になっています。
+拡張機能バンドルの使用は、プロジェクトのルートにある host.json ファイルで次のように有効になっています。
 
 :::code language="json" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/host.json":::
 
@@ -67,7 +68,7 @@ Queue storage の出力バインドを使用しているため、このプロジ
 HTTP トリガーとタイマー トリガーを除き、バインドは拡張機能パッケージとして実装されます。 ターミナル ウィンドウで次の [dotnet add package](/dotnet/core/tools/dotnet-add-package) コマンドを実行して、Storage 拡張機能パッケージをプロジェクトに追加します。
 
 ```bash
-dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
+dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage
 ```
 
 ::: zone-end
@@ -200,7 +201,7 @@ Functions では、各種のバインドで、`direction`、`type`、および�
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-Azure の*リソース*とは、Function App、関数、ストレージ アカウントなどのことを指します。 これらは*リソース グループ*に分類されており、グループを削除することでグループ内のすべてのものを削除できます。
+Azure では、"*リソース*" とは、関数アプリ、関数、ストレージ アカウントなどのことを指します。 これらは "*リソース グループ*" に分類されており、グループを削除することでグループ内のすべてのものを削除できます。
 
 これらのクイックスタートを完了するためにリソースを作成しました。 これらのリソースには、[アカウントの状態](https://azure.microsoft.com/account/)と[サービスの価格](https://azure.microsoft.com/pricing/)に応じて課金される場合があります。 リソースの必要がなくなった場合にそれらを削除する方法を、次に示します。
 

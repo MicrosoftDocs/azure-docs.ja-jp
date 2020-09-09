@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 06/24/2019
 ms.author: aahi
 ms.openlocfilehash: d5ed36700e2aea623fb259816e5baddff5215361
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "70381762"
 ---
 <!-- > [!NOTE]

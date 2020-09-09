@@ -1,23 +1,24 @@
 ---
 title: 画像からテキストを抽出する
 titleSuffix: Azure Cognitive Search
-description: Azure コグニティブ検索パイプラインで、画像内のテキストやその他の情報を処理し、抽出します。
+description: Azure Cognitive Search パイプラインで、画像内のテキストやその他の情報を処理し、抽出します。
 manager: nitinme
 author: LuisCabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 98054060210f55803d6e2811e1f494fd3ff00e48
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 56ec893de159f4c8a90c5a229ccf7669856fb066
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76838260"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020220"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>AI エンリッチメントのシナリオで画像の情報を処理し、抽出する方法
 
-Azure コグニティブ検索では、画像や画像ファイルを操作するための複数の機能を利用できます。 ドキュメント クラッキングを行う際には、*imageAction* パラメーターを使用して、英数字が含まれている写真や絵からテキストを抽出することができます (停止標識から「止まれ」の文字を抽出するなど)。 また、画像のテキスト表現を生成することもできます (たんぽぽの写真から、「たんぽぽ」や「黄色」といいたテキストを生成するなど)。 さらに、画像に関するメタデータを抽出することもできます (サイズなど)。
+Azure Cognitive Search では、画像や画像ファイルを操作するための複数の機能を利用できます。 ドキュメント クラッキングを行う際には、*imageAction* パラメーターを使用して、英数字が含まれている写真や絵からテキストを抽出することができます (停止標識から「止まれ」の文字を抽出するなど)。 また、画像のテキスト表現を生成することもできます (たんぽぽの写真から、「たんぽぽ」や「黄色」といいたテキストを生成するなど)。 さらに、画像に関するメタデータを抽出することもできます (サイズなど)。
 
 この記事では、画像の処理について詳しく説明すると共に、AI エンリッチメント パイプラインでの画像の操作方法について、ガイダンスを提供します。
 
@@ -42,7 +43,7 @@ Azure コグニティブ検索では、画像や画像ファイルを操作す�
 
 正規化された画像の最大幅と最大高さの既定値 (2000 ピクセル) は、 [OCR スキル](cognitive-search-skill-ocr.md)と[画像分析スキル](cognitive-search-skill-image-analysis.md)でサポートされる最大サイズに基づいています。 [OCR のスキル](cognitive-search-skill-ocr.md)では、英語以外の言語の場合は最大の幅と高さ 4200、英語の場合は 10000 がサポートされます。  上限を引き上げると、スキルセットの定義とドキュメントの言語によっては、大きな画像で処理が失敗する可能性があります。 
 
-ImageAction は、[インデクサー定義](https://docs.microsoft.com/rest/api/searchservice/create-indexer)で次のように指定します。
+ImageAction は、[インデクサー定義](/rest/api/searchservice/create-indexer)で次のように指定します。
 
 ```json
 {
@@ -214,7 +215,7 @@ OCR ステップは正規化された画像に対して実行されるため、�
 ```
 
 ## <a name="see-also"></a>参照
-+ [インデクサーの作成 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [インデクサーの作成 (REST)](/rest/api/searchservice/create-indexer)
 + [画像分析スキル](cognitive-search-skill-image-analysis.md)
 + [OCR スキル](cognitive-search-skill-ocr.md)
 + [テキスト マージ スキル](cognitive-search-skill-textmerger.md)

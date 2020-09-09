@@ -6,26 +6,26 @@ author: cweining
 ms.author: cweining
 ms.date: 11/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7c5dfe6ed08df01f78346c76fd5a35e7d64ab520
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f514dd7b54ac091535aeab43a8a7d2a645b50a09
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671581"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87315837"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Application Insights Profiler を使用して、Azure 仮想マシンまたは仮想マシン スケール セットで実行されている Web アプリをプロファイルする
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Azure Application Insights Profiler を次のサービスにデプロイすることもできます。
-* [Azure App Service](../../azure-monitor/app/profiler.md?toc=/azure/azure-monitor/toc.json)
+* [Azure App Service](./profiler.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 * [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
-* [Azure Service Fabric](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Service Fabric](?toc=%2fazure%2fazure-monitor%2ftoc.json)
 
 ## <a name="deploy-profiler-on-a-virtual-machine-or-a-virtual-machine-scale-set"></a>仮想マシンまたは仮想マシン スケール セットに Profiler をデプロイする
 この記事では、Azure 仮想マシン (VM) または Azure 仮想マシン スケール セットで Application Insights Profiler を実行する方法を説明します。 Profiler は、VM 用の Azure Diagnostics 拡張機能と共にインストールされます。 Profiler を実行するように拡張機能を構成し、Application Insights SDK をお使いのアプリケーションにビルドします。
 
-1. Application Insights SDK を [ASP.NET アプリケーション](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net)に追加します。
+1. Application Insights SDK を [ASP.NET アプリケーション](./asp-net.md)に追加します。
 
    要求のプロファイルを表示するには、要求テレメトリを Application Insights に送信する必要があります。
 
@@ -67,12 +67,12 @@ Azure Application Insights Profiler を次のサービスにデプロイする�
 
 1. [IIS](https://www.microsoft.com/web/downloads/platform.aspx) 経由で目的のアプリケーションが実行されている場合は、`IIS Http Tracing` Windows 機能を有効にします。
 
-   a. この環境に対するリモート アクセスを確立し、[[Windows 機能の追加]]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) ウィンドウ使用するか、 (管理者として) PowerShell で次のコマンドを実行します。  
+   a. この環境に対するリモート アクセスを確立し、[[Windows 機能の追加]](/iis/configuration/system.webserver/tracing/) ウィンドウ使用するか、 (管理者として) PowerShell で次のコマンドを実行します。  
 
     ```powershell
     Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All
     ```  
-   b. リモート アクセスの確立に問題がある場合は、[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使用して次のコマンドを実行できます。  
+   b. リモート アクセスの確立に問題がある場合は、[Azure CLI](/cli/azure/get-started-with-azure-cli) を使用して次のコマンドを実行できます。  
 
     ```powershell
     az vm run-command invoke -g MyResourceGroupName -n MyVirtualMachineName --command-id RunPowerShellScript --scripts "Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All"
@@ -117,3 +117,4 @@ portal から Application Insights Profiler シンクを設定する方法はま
 [resourceexplorerput]: ./media/profiler-vm/resource-explorer-put.png
 [resourceexplorersinksconfig]: ./media/profiler-vm/resource-explorer-sinks-config.png
 [wadextension]: ./media/profiler-vm/wad-extension.png
+

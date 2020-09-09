@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 44ce56238140de90145f69e966c94be8572c7749
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: seo-lt-2019, azure-synapse, devx-track-azurepowershell
+ms.openlocfilehash: 9adc994ef9ac3f43f593da010b35ada4a83e424e
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81252304"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078962"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-with-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Synapse SQL プールのコンピューティングを一時停止、再開する
 

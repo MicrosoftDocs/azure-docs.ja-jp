@@ -1,17 +1,17 @@
 ---
 title: Azure Data Lake Storage Gen1 と Blob Storage の比較
-description: Azure Data Lake Storage Gen1 と Azure Blob Storage の違いの概要を示します。
+description: ビッグ データ処理の重要な側面に関する Azure Data Lake Storage Gen1 と Azure Blob Storage の違いについて説明します。
 author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 3565af1f3e0a002cf3852faef9c2853ff88d46e9
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 6662beec47d663f92e453f52d190e41518108b0d
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691720"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191494"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Azure Data Lake Storage Gen1 と Azure Blob Storage の比較
 
@@ -19,8 +19,8 @@ ms.locfileid: "82691720"
 
 この記事の表には、ビッグ データ処理の重要な側面に沿った Azure Data Lake Storage Gen1 と Azure Blob Storage の違いがまとめられています。 Azure BLOB ストレージは、さまざまなストレージ シナリオ向けに設計されたスケーラブルな汎用オブジェクト ストアです。 Azure Data Lake Storage Gen1 は、ビッグ データ分析ワークロードに最適化されたハイパースケール リポジトリです。
 
-|  | Azure Data Lake Storage Gen1 | Azure Blob Storage |
-| --- | --- | --- |
+| カテゴリ | Azure Data Lake Storage Gen1 | Azure Blob Storage |
+| -------- | ---------------------------- | ------------------ |
 | 目的 |ビッグ データ分析ワークロードに最適化されたストレージ |さまざまなストレージ シナリオ (ビッグ データ分析を含む) のための汎用オブジェクト ストア |
 | 例 |バッチ、対話型、ストリーミング分析、および機械学習データ (ログ ファイル、IoT データ、クリック ストリーム、大規模なデータセットなど) |あらゆる種類のテキストまたはバイナリ データ (アプリケーション バックエンド、バックアップ データ、ストリーミング用のメディア ストレージ、汎用データなど)。 さらに、分析ワークロードに対するフル サポート。バッチ、対話型、ストリーミング分析、および機械学習データ (ログ ファイル、IoT データ、クリック ストリーム、大規模なデータセットなど) |
 | 主要概念 |Data Lake Storage Gen1 アカウントにはフォルダーが含まれ、フォルダーにはファイルとして保存されたデータが含まれます。 |ストレージ アカウントにはコンテナーが含まれ、コンテナーには BLOB の形でデータが含まれます。 |
@@ -33,7 +33,7 @@ ms.locfileid: "82691720"
 | データ操作 - 承認 |POSIX アクセス制御リスト (ACL)。  Azure Active Directory ID に基づく ACL は、ファイルおよびフォルダー レベルで設定できます。 |アカウントレベルの承認には、[アカウント アクセス キー](../storage/common/storage-account-keys-manage.md)を使用します<br>アカウント、コンテナー、または BLOB の承認には、[Shared Access Signature キー](../storage/common/storage-dotnet-shared-access-signature-part-1.md)を使用します |
 | データ操作 - 監査 |使用可能。 詳細については、 [こちら](data-lake-store-diagnostic-logs.md) をご覧ください。 |利用可能 |
 | 保存データの暗号化 |<ul><li>透過的、サーバー側</li> <ul><li>サービスによって管理されるキーを使用</li><li>ユーザーによって Azure KeyVault で管理されるキーを使用</li></ul></ul> |<ul><li>透過的、サーバー側</li> <ul><li>サービスによって管理されるキーを使用</li><li>ユーザーによって Azure KeyVault で管理されるキーを使用 (プレビュー)</li></ul><li>クライアント側暗号化</li></ul> |
-| 管理操作 (アカウントの作成など) |[ロールベースのアクセス制御](../role-based-access-control/overview.md) (RBAC) |[ロールベースのアクセス制御](../role-based-access-control/overview.md) (RBAC) |
+| 管理操作 (アカウントの作成など) |アカウント管理のための [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) |アカウント管理のための [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) |
 | Developer SDK |.NET、Java、Python、Node.js |.NET、Java、Python、Node.js、C++、Ruby、PHP、Go、Android、iOS |
 | 分析ワークロードのパフォーマンス |並列分析ワークロードに最適化されたパフォーマンス。 高スループットおよび高 IOPS。 |並列分析ワークロードに最適化されたパフォーマンス。 |
 | サイズ制限 |アカウント サイズ、ファイル サイズ、ファイル数に制限はありません。 |特定の制限事項については、[Standard ストレージ アカウントのスケーラビリティ ターゲット](../storage/common/scalability-targets-standard-account.md)に関する記事と「[BLOB ストレージのスケーラビリティとパフォーマンス ターゲット](../storage/blobs/scalability-targets.md)」を参照してください。 より大きなアカウント制限については [Azure サポート](https://azure.microsoft.com/support/faq/)への問い合わせで入手可能 |
@@ -41,5 +41,3 @@ ms.locfileid: "82691720"
 | サービスの状態 |一般公開 |一般公開 |
 | リージョン別の提供状況 |詳細については、 [こちら](https://azure.microsoft.com/regions/#services) |すべての Azure リージョンで使用可能 |
 | Price |詳細については、 [価格](https://azure.microsoft.com/pricing/details/data-lake-store/) |詳細については、 [価格](https://azure.microsoft.com/pricing/details/storage/) |
-
-

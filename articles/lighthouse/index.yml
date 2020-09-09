@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure Lighthouse ドキュメント
-summary: Azure Lighthouse では、サービス プロバイダーが高度な自動化、スケーラビリティ、統制機能を利用し、すべての顧客を対象に Azure リソースを管理できます。
+summary: Azure Lighthouse により、クロステナントおよびマルチテナントの管理が実現し、リソースやテナント間での自動化やスケーラビリティの向上と統制機能の強化が可能になります。
 metadata:
   title: Azure Lighthouse ドキュメント
   description: Azure Lighthouse では、サービス プロバイダーが高度な自動化、スケーラビリティ、統制機能を利用し、すべての顧客を対象に Azure リソースを管理できます。
@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: JnHs
   ms.author: jenhayes
-  ms.date: 04/14/2020
-  ms.openlocfilehash: e62db32a20c4124f64e7c77d626099905a960815
-  ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+  ms.date: 07/20/2020
+  ms.openlocfilehash: 40352965db20c12e589f52f76869032d1f5f1b10
+  ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/27/2020
-  ms.locfileid: "83871802"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88659876"
 landingContent:
 - title: Azure Lighthouse について
   linkLists:
@@ -33,7 +33,7 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Azure の委任されたリソース管理に顧客をオンボードする
+    - text: Azure Lighthouse への顧客のオンボード
       url: ./how-to/onboard-customer.md
   - linkListType: concept
     links:
@@ -71,15 +71,17 @@ landingContent:
       url: ./how-to/view-manage-customers.md
     - text: サービス プロバイダーを表示し、管理する
       url: ./how-to/view-manage-service-providers.md
-- title: Azure サービスの操作
+- title: 大規模な Azure サービスの操作
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Azure Monitor ログの大規模な使用
+    - text: Azure Sentinel ワークスペースの管理
+      url: ./how-to/manage-sentinel-workspaces.md
+    - text: Azure Monitor ログを使用する
       url: ./how-to/monitor-at-scale.md
     - text: 委任変更の監視
-      url: ./how-to/monitor-at-scale.md
-    - text: Azure Policy を大規模にデプロイする
+      url: ./how-to/monitor-delegation-changes.md
+    - text: Azure Policy をデプロイする
       url: ./how-to/policy-at-scale.md
     - text: 修復できるポリシーをデプロイする
       url: ./how-to/deploy-policy-remediation.md
@@ -112,6 +114,6 @@ landingContent:
   - linkListType: get-started
     links:
     - text: Azure Lighthouse 用の Microsoft Q&A
-      url: https://docs.microsoft.com/answers/topics/azure-lighthouse.html
+      url: /answers/topics/azure-lighthouse.html
     - text: 製品機能のリクエスト
       url: https://feedback.azure.com/forums/922753

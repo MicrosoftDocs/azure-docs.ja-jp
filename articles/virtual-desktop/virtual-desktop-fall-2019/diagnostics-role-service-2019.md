@@ -1,31 +1,29 @@
 ---
-title: Windows Virtual Desktop の診断の問題 - Azure
-description: Windows Virtual Desktop の診断機能を使用して問題を診断する方法。
-services: virtual-desktop
+title: Windows Virtual Desktop (クラシック) の診断の問題 - Azure
+description: Windows Virtual Desktop (クラシック) の診断機能を使用して問題を診断する方法。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 05/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e529144198d0c635e74955e98d47dd46ac4fb733
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 7e652f04b42b132e7c1307503b1764dda7b2036b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614184"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009343"
 ---
-# <a name="identify-and-diagnose-issues"></a>問題の特定と診断
+# <a name="identify-and-diagnose-issues-in-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) での問題の特定と診断
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースに適用されます。 Spring 2020 更新プログラムで導入された Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../diagnostics-role-service.md)を参照してください。
+>この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../diagnostics-role-service.md)を参照してください。
 
 Windows Virtual Desktop では、管理者が単一のインターフェイスを使用して問題を特定できる診断機能が提供されます。 Windows Virtual Desktop ロールでは、ユーザーがシステムとやり取りするたびに診断アクティビティがログに記録されます。 各ログには、トランザクションに関連する Windows Virtual Desktop ロール、エラー メッセージ、テナント情報、ユーザー情報などの関連情報が含まれています。 診断アクティビティは、エンドユーザーのアクションと管理者のアクションの両方によって作成され、3 つの主要バケットに分類できます。
 
 * フィード サブスクリプション アクティビティ: エンドユーザーが Microsoft リモート デスクトップ アプリケーションを通じてフィードに接続しようとするたびに、これらのアクティビティがトリガーされます。
 * 接続アクティビティ: エンドユーザーが Microsoft リモート デスクトップ アプリケーションを通じてデスクトップまたは RemoteApp に接続しようとするたびに、これらのアクティビティがトリガーされます。
 * 管理アクティビティ: 管理者がホスト プールの作成、アプリ グループへのユーザーの割り当て、ロール割り当ての作成などの管理操作をシステムに対して実行するたびに、これらのアクティビティがトリガーされます。
-  
+
 診断ロール サービス自体が Windows Virtual Desktop の一部であるため、Windows Virtual Desktop に到達しない接続は診断結果に表示されません。 Windows Virtual Desktop 接続の問題は、エンドユーザーにネットワーク接続の問題が発生しているときに発生する可能性があります。
 
 まず、PowerShell セッション内で使用する [Windows Virtual Desktop PowerShell モジュールをダウンロードしてインポート](/powershell/windows-virtual-desktop/overview/)します (まだ行っていない場合)。 その後、次のコマンドレットを実行して、ご自分のアカウントにサインインします。
@@ -39,7 +37,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 Windows Virtual Desktop 診断では、1 つの PowerShell コマンドレットだけが使用されますが、問題を絞り込んで特定するために多くの省略可能なパラメーターが含まれています。 以下のセクションでは、問題を診断するために実行できるコマンドレットの一覧を示します。 ほとんどのフィルターは一緒に適用できます。 `<tenantName>` などの角かっこで囲まれた値は、自分の状況に適用される値で置き換える必要があります。
 
 >[!IMPORTANT]
->診断機能は、シングルユーザーのトラブルシューティング用です。 PowerShell を使用するすべてのクエリには、 *-UserName* または *-ActivityID*パラメーターのいずれかが含まれている必要があります。 監視機能については、Log Analytics を使用します。 診断データをワークスペースに送信する方法の詳細については、「[診断機能に Log Analytics を使用する](diagnostics-log-analytics-2019.md)」を参照してください。 
+>診断機能は、シングルユーザーのトラブルシューティング用です。 PowerShell を使用するすべてのクエリには、 *-UserName* または *-ActivityID*パラメーターのいずれかが含まれている必要があります。 監視機能については、Log Analytics を使用します。 診断データをワークスペースに送信する方法の詳細については、「[診断機能に Log Analytics を使用する](diagnostics-log-analytics-2019.md)」を参照してください。
 
 ### <a name="filter-diagnostic-activities-by-user"></a>ユーザーによって診断アクティビティをフィルター処理する
 
@@ -139,6 +137,7 @@ Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityGuid> 
 
 |数値コード|エラー コード|推奨されている解決方法|
 |---|---|---|
+|1322|ConnectionFailedNoMappingOfSIDinAD|ユーザーは Azure Active Directory のメンバーではありません。 [Active Directory 管理センター](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center)の手順に従って追加してください。|
 |3|UnauthorizedAccess|管理用の PowerShell コマンドレットを実行しようとしたユーザーにそれを行うためのアクセス許可がないか、ユーザー名に入力ミスがありました。|
 |1000|TenantNotFound|入力したテナント名が既存のどのテナントとも一致しません。 テナント名に入力ミスがないことを確認し、もう一度やり直してください。|
 |1006|TenantCannotBeRemovedHasSessionHostPools|オブジェクトが含まれているテナントは削除できません。 最初にセッション ホスト プールを削除してから、もう一度やり直してください。|
@@ -160,6 +159,7 @@ Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityGuid> 
 
 |数値コード|エラー コード|推奨されている解決方法|
 |---|---|---|
+|-2147467259|ConnectionFailedAdErrorNoSuchMember|ユーザーは Active Directory のメンバーではありません。 [Active Directory 管理センター](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center)の手順に従って追加してください。|
 |-2147467259|ConnectionFailedAdTrustedRelationshipFailure|セッション ホストは、Active Directory に正しく参加していません。|
 |-2146233088|ConnectionFailedUserHasValidSessionButRdshIsUnhealthy|セッション ホストが使用できないため、接続が失敗しました。 セッション ホストの正常性を確認してください。|
 |-2146233088|ConnectionFailedClientDisconnect|このエラーが頻繁に発生する場合は、ユーザーのコンピューターがネットワークに接続されていることを確認してください。|
@@ -170,6 +170,7 @@ Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityGuid> 
 |8|ConnectionBroken|クライアントとゲートウェイまたはサーバーとの間の接続が削除されました。 予期せず発生した場合を除き、アクションは不要です。|
 |14|UnexpectedNetworkDisconnect|ネットワークへの接続が削除されました。 ユーザーにもう一度接続するよう依頼してください。|
 |24|ReverseConnectFailed|ホスト仮想マシンには、RD ゲートウェイへの直接の見通し線がありません。 ゲートウェイ IP アドレスを解決できることを確認してください。|
+|1322|ConnectionFailedNoMappingOfSIDinAD|ユーザーは Active Directory のメンバーではありません。 [Active Directory 管理センター](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center)の手順に従って追加してください。|
 
 ## <a name="next-steps"></a>次のステップ
 

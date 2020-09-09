@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 0a799c83-fde5-4f3f-af0e-67535d1882b6
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 82a6cdb6c9a39a0d196049a7ba662681ea06b36a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 340b910319cabe3379bdb1bad1c09bc71c17f072
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "62116868"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85507536"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-shares-on-the-storsimple-virtual-array"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple Virtual Array で共有を管理する
 

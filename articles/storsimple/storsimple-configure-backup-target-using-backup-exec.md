@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
-ms.openlocfilehash: 4dcda65384190050e11f1bf9b15c706b0e38c6b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 397dac67ea94db22829080a65dfae857bb3706dd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75561645"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036932"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>Backup Exec を使用したバックアップ ターゲットとしての StorSimple
 
@@ -448,7 +448,7 @@ StorSimple クラウド スナップショットは、StorSimple デバイスに
 
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>クラウド スナップショットを開始または削除する方法
 
-1. [Azure PowerShell をインストールします](/powershell/azure/overview)。
+1. [Azure PowerShell をインストールします](/powershell/azure/)。
 2. [Manage-CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) PowerShell スクリプトをダウンロードして設定します。
 3. スクリプトを実行するサーバーで PowerShell を管理者として実行します。 スクリプトによって行われる変更を確認するには、`-WhatIf $true` を指定してスクリプトを実行してください。 検証が完了したら、`-WhatIf $false` を渡します。 次のコマンドを実行します。
    ```powershell

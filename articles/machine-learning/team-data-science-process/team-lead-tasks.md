@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d099d7c233c3f4b5e65bfdb7d4b875a0e4098499
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75864283"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>Team Data Science Process チームでのチーム リーダーのタスク
@@ -77,7 +77,7 @@ TDSP は、予測分析ソリューションとインテリジェント アプ�
 - 複数のデータ サイエンス チームが存在しない小規模なデータ サイエンス グループ。 
 - 複数のデータ サイエンス チームが存在し、グループ レベルのスプリントの計画などのアクティビティでチーム間のコラボレーションを最適化することを求めている大規模なデータ サイエンス グループ。 
 
-チームで 1 つのグループ プロジェクトの下にチーム固有のリポジトリを作成することを選択した場合、チーム リーダーは、 *\<チーム名>Template* や *\<チーム名>Utilities* のような名前のリポジトリを作成する必要があります。 次に例を示します。*TeamATemplate* および *TeamAUtilities*。 
+チームで 1 つのグループ プロジェクトの下にチーム固有のリポジトリを作成することを選択した場合、チーム リーダーは、 *\<TeamName>Template* や *\<TeamName>Utilities* のような名前のリポジトリを作成する必要があります。 次に例を示します。*TeamATemplate* および *TeamAUtilities*。 
 
 どのような場合でも、チーム リーダーは、設定および複製するテンプレート リポジトリとユーティリティ リポジトリを、チーム メンバーに知らせる必要があります。 プロジェクト リーダーは、個別のプロジェクトまたは 1 つのプロジェクトのどちらであるかにかかわらず、[データ サイエンス チームのプロジェクト リーダーのタスク](project-lead-tasks.md)に関する記事に従って、プロジェクト リポジトリを作成する必要があります。 
 
@@ -85,7 +85,7 @@ TDSP は、予測分析ソリューションとインテリジェント アプ�
 
 チーム用に別のプロジェクトを作成するには:
 
-1. Web ブラウザーで、グループの Azure DevOps 組織のホームページ (URL: *https:\//\<サーバー名>/\<組織名>* ) に移動し、 **[新しいプロジェクト]** を選択します。 
+1. Web ブラウザーで、グループの Azure DevOps 組織のホームページ (URL: *https:\//\<server name>/\<organization name>* ) に移動し、 **[新しいプロジェクト]** を選択します。 
    
    ![[新しいプロジェクト] を選択する](./media/team-lead-tasks/team-leads-2-create-new-team.png)
    
@@ -95,7 +95,7 @@ TDSP は、予測分析ソリューションとインテリジェント アプ�
    
    ![Create project](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
    
-チーム プロジェクトの **[概要]** ページが開きます。ページの URL は、*https:\//\<サーバー名>/\<組織名>/\<チーム名>* です。
+チーム プロジェクトの **[概要]** ページが開きます。ページの URL は *https:\//\<server name>/\<organization name>/\<team name>* です。
 
 ### <a name="rename-the-myteam-default-repository-to-teamutilities"></a>MyTeam の既定のリポジトリの名前を TeamUtilities に変更する
 
@@ -140,7 +140,7 @@ TDSP は、予測分析ソリューションとインテリジェント アプ�
    
    ![[インポート] を選択する](./media/team-lead-tasks/import-repo.png)
    
-1. **[Git リポジトリをインポートする]** ダイアログで、 **[ソースの種類]** として **[Git]** を選択し、 **[クローン URL]** にグループ共通テンプレート リポジトリの URL を入力します。 URL は、*https:\//\<サーバー名>/\<組織名>/_git/\<リポジトリ名>* です。 たとえば、*https:\//dev.azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate* のようになります。 
+1. **[Git リポジトリをインポートする]** ダイアログで、 **[ソースの種類]** として **[Git]** を選択し、 **[クローン URL]** にグループ共通テンプレート リポジトリの URL を入力します。 URL は *https:\//\<server name>/\<organization name>/_git/\<repository name>* です。 たとえば、*https:\//dev.azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate* のようになります。 
    
 1. **[インポート]** を選択します。 グループ テンプレート リポジトリの内容が、チーム テンプレート リポジトリにインポートされます。 
    

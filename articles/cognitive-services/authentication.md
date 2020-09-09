@@ -9,27 +9,26 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: erhopf
-ms.openlocfilehash: d36961a12162a587def76b1ffeb2109f9ed63f4d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 4fab0be90e6941d1a6b8f137ae574223b0d7a9d1
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587682"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232748"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Azure Cognitive Services に対する要求の認証
 
 Azure Cognitive Service に対する各要求には、認証ヘッダーが含まれている必要があります。 このヘッダーを使用して、サブスクリプション キーまたはアクセス トークンを渡します。これは、サービスまたはサービスのグループについてお客様のサブスクリプションを検証するために使用されます。 この記事では、要求を認証するための 3 つの方法と、そのそれぞれの要件について学習します。
 
-* [単一サービスのサブスクリプション キーによる認証](#authenticate-with-a-single-service-subscription-key)
-* [マルチサービスのサブスクリプション キーによる認証](#authenticate-with-a-multi-service-subscription-key)
-* [トークンによる認証](#authenticate-with-an-authentication-token)
-* [Azure Cognitive Services に対する要求の認証](#authenticate-with-azure-active-directory)
+* [単一サービス](#authenticate-with-a-single-service-subscription-key)または[マルチ サービス](#authenticate-with-a-multi-service-subscription-key)のサブスクリプション キーによる認証
+* [トークン](#authenticate-with-an-authentication-token)による認証
+* [Azure Active Directory (AAD)](#authenticate-with-azure-active-directory) による認証
 
 ## <a name="prerequisites"></a>前提条件
 
 要求を実行する前に、Azure アカウントと Azure Cognitive Services サブスクリプションが必要です。 既にアカウントをお持ちの場合は、次のセクションまでスキップして進んでください。 アカウントをお持ちでない場合は、数分で設定を行えるガイドをご覧ください。[Azure の Cognitive Services アカウントの作成](cognitive-services-apis-create-account.md)に関するページを参照してください。
 
-アカウントを作成した後、または[無料試用版](https://azure.microsoft.com/try/cognitive-services/my-apis)を有効にした後、[Azure portal](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) からサブスクリプション キーを取得できます。
+[アカウントの作成](https://azure.microsoft.com/free/cognitive-services/)後に、[Azure portal](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) からサブスクリプション キーを取得できます。
 
 ## <a name="authentication-headers"></a>認証ヘッダー
 
@@ -82,14 +81,21 @@ Translator サービスと共にマルチサービスのサブスクリプショ
 
 マルチサービス認証は、以下のリージョンでサポートされています。
 
-| | | |
-|-|-|-|
-| `australiaeast` | `brazilsouth` | `canadacentral` |
-| `centralindia` | `eastasia` | `eastus` |
-| `japaneast` | `northeurope` | `southcentralus` |
-| `southeastasia` | `uksouth` | `westcentralus` |
-| `westeurope` | `westus` | `westus2` |
-
+- `australiaeast`
+- `brazilsouth`
+- `canadacentral`
+- `centralindia`
+- `eastasia`
+- `eastus`
+- `japaneast`
+- `northeurope`
+- `southcentralus`
+- `southeastasia`
+- `uksouth`
+- `westcentralus`
+- `westeurope`
+- `westus`
+- `westus2`
 
 ### <a name="sample-requests"></a>サンプルの要求
 
@@ -142,13 +148,21 @@ curl -v -X POST \
 
 以下のマルチサービスのリージョンで、トークンの交換がサポートされています。
 
-| | | |
-|-|-|-|
-| `australiaeast` | `brazilsouth` | `canadacentral` |
-| `centralindia` | `eastasia` | `eastus` |
-| `japaneast` | `northeurope` | `southcentralus` |
-| `southeastasia` | `uksouth` | `westcentralus` |
-| `westeurope` | `westus` | `westus2` |
+- `australiaeast`
+- `brazilsouth`
+- `canadacentral`
+- `centralindia`
+- `eastasia`
+- `eastus`
+- `japaneast`
+- `northeurope`
+- `southcentralus`
+- `southeastasia`
+- `uksouth`
+- `westcentralus`
+- `westeurope`
+- `westus`
+- `westus2`
 
 認証トークンを取得したら、各要求内でそれを `Authorization` ヘッダーとして渡す必要があります。 これは、Translator サービスの呼び出しの例です。
 

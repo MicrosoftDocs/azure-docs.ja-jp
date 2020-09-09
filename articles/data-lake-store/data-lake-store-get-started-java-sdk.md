@@ -3,15 +3,16 @@ title: Java SDK - Data Lake Storage Gen1 に対するファイルシステム操
 description: Azure Data Lake Storage Gen1 用の Java SDK を使用して、Data Lake Storage Gen1 に対して、フォルダーの作成、データ ファイルのアップロードとダウンロードなどのファイルシステム操作を実行します。
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
+ms.custom: devx-track-java
 ms.author: twooley
-ms.openlocfilehash: 6f97443e4bcf6689f0bf49917774f662d5462566
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: a2c55a2d3277bbb6c3cf72f5ea703780d2a5e9bd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691773"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318846"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>Java SDK を使用した Azure Data Lake Storage Gen1 に対するファイルシステム操作
 > [!div class="op_single_selector"]
@@ -39,33 +40,37 @@ Azure Data Lake Storage Gen1 Java SDK を使用して、フォルダーの作成
 
 2. Maven の **pom.xml** ファイルに次の依存関係を追加します。 **\</project>** タグの前に次のスニペットを追加します。
    
-        <dependencies>
-          <dependency>
-            <groupId>com.microsoft.azure</groupId>
-            <artifactId>azure-data-lake-store-sdk</artifactId>
-            <version>2.1.5</version>
-          </dependency>
-          <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-nop</artifactId>
-            <version>1.7.21</version>
-          </dependency>
-        </dependencies>
+    ```xml
+    <dependencies>
+        <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>azure-data-lake-store-sdk</artifactId>
+        <version>2.1.5</version>
+        </dependency>
+        <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-nop</artifactId>
+        <version>1.7.21</version>
+        </dependency>
+    </dependencies>
+    ```
    
     最初の依存関係では、maven リポジトリから Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`) を使用します。 2 番目の依存関係では、このアプリケーションで使用するログ記録フレームワーク (`slf4j-nop`) を指定します。 Data Lake Storage Gen1 SDK では、[SLF4J](https://www.slf4j.org/) ログ ファサードを使用します。それを使用すると、Log4j、Java ログ、Logback などの多数の一般的なログ記録フレームの中から選択することも、ログを記録しないようにすることもできます。 この例ではログを無効にするため、**slf4j-nop** バインドを使用します。 アプリケーションで他のログ オプションを使用する場合は、[こちら](https://www.slf4j.org/manual.html#projectDep)をご覧ください。
 
 3. アプリケーションに次の import ステートメントを追加します。
 
-        import com.microsoft.azure.datalake.store.ADLException;
-        import com.microsoft.azure.datalake.store.ADLStoreClient;
-        import com.microsoft.azure.datalake.store.DirectoryEntry;
-        import com.microsoft.azure.datalake.store.IfExists;
-        import com.microsoft.azure.datalake.store.oauth2.AccessTokenProvider;
-        import com.microsoft.azure.datalake.store.oauth2.ClientCredsTokenProvider;
+    ```java
+    import com.microsoft.azure.datalake.store.ADLException;
+    import com.microsoft.azure.datalake.store.ADLStoreClient;
+    import com.microsoft.azure.datalake.store.DirectoryEntry;
+    import com.microsoft.azure.datalake.store.IfExists;
+    import com.microsoft.azure.datalake.store.oauth2.AccessTokenProvider;
+    import com.microsoft.azure.datalake.store.oauth2.ClientCredsTokenProvider;
 
-        import java.io.*;
-        import java.util.Arrays;
-        import java.util.List;
+    import java.io.*;
+    import java.util.Arrays;
+    import java.util.List;
+    ```
 
 ## <a name="authentication"></a>認証
 
@@ -75,8 +80,10 @@ Azure Data Lake Storage Gen1 Java SDK を使用して、フォルダーの作成
 ## <a name="create-a-data-lake-storage-gen1-client"></a>Data Lake Storage Gen1 クライアントの作成
 [ADLStoreClient](https://azure.github.io/azure-data-lake-store-java/javadoc/) オブジェクトを作成するには、Data Lake Storage Gen1 アカウント名と、Data Lake Storage Gen1 による認証時に生成したトークン プロバイダーを指定する必要があります (「[認証](#authentication)」セクションを参照)。 Data Lake Storage Gen1 アカウント名は、完全修飾ドメイン名である必要があります。 たとえば、**FILL-IN-HERE** を **mydatalakestoragegen1.azuredatalakestore.net** などに置き換えます。
 
-    private static String accountFQDN = "FILL-IN-HERE";  // full account FQDN, not just the account name
-    ADLStoreClient client = ADLStoreClient.createClient(accountFQDN, provider);
+```java
+private static String accountFQDN = "FILL-IN-HERE";  // full account FQDN, not just the account name
+ADLStoreClient client = ADLStoreClient.createClient(accountFQDN, provider);
+```
 
 次のセクションのコード スニペットには、一般的なファイルシステム操作の例が含まれています。 他の操作については、**ADLStoreClient** オブジェクトの完全な [Data Lake Storage Gen1 Java SDK API ドキュメント](https://azure.github.io/azure-data-lake-store-java/javadoc/)で確認できます。
 
@@ -84,33 +91,39 @@ Azure Data Lake Storage Gen1 Java SDK を使用して、フォルダーの作成
 
 次のスニペットを使用して、指定した Data Lake Storage Gen1 アカウントのルートにディレクトリ構造を作成します。
 
-    // create directory
-    client.createDirectory("/a/b/w");
-    System.out.println("Directory created.");
+```java
+// create directory
+client.createDirectory("/a/b/w");
+System.out.println("Directory created.");
+```
 
 ## <a name="create-a-file"></a>ファイルを作成する
 
 次のスニペットを使用して、ディレクトリ構造にファイル (c.txt) を作成し、いくつかのデータをそのファイルに書き込みます。
 
-    // create file and write some content
-    String filename = "/a/b/c.txt";
-    OutputStream stream = client.createFile(filename, IfExists.OVERWRITE  );
-    PrintStream out = new PrintStream(stream);
-    for (int i = 1; i <= 10; i++) {
-        out.println("This is line #" + i);
-        out.format("This is the same line (%d), but using formatted output. %n", i);
-    }
-    out.close();
-    System.out.println("File created.");
+```java
+// create file and write some content
+String filename = "/a/b/c.txt";
+OutputStream stream = client.createFile(filename, IfExists.OVERWRITE  );
+PrintStream out = new PrintStream(stream);
+for (int i = 1; i <= 10; i++) {
+    out.println("This is line #" + i);
+    out.format("This is the same line (%d), but using formatted output. %n", i);
+}
+out.close();
+System.out.println("File created.");
+```
 
 バイト配列を使用してファイル (d.txt) を作成することもできます。
 
-    // create file using byte arrays
-    stream = client.createFile("/a/b/d.txt", IfExists.OVERWRITE);
-    byte[] buf = getSampleContent();
-    stream.write(buf);
-    stream.close();
-    System.out.println("File created using byte array.");
+```java
+// create file using byte arrays
+stream = client.createFile("/a/b/d.txt", IfExists.OVERWRITE);
+byte[] buf = getSampleContent();
+stream.write(buf);
+stream.close();
+System.out.println("File created using byte array.");
+```
 
 前のスニペットで使用されている `getSampleContent` 関数の定義は、[GitHub](https://azure.microsoft.com/documentation/samples/data-lake-store-java-upload-download-get-started/) でサンプルの一部として入手できます。 
 
@@ -118,11 +131,13 @@ Azure Data Lake Storage Gen1 Java SDK を使用して、フォルダーの作成
 
 次のスニペットを使用して、既存のファイルに内容を追加します。
 
-    // append to file
-    stream = client.getAppendStream(filename);
-    stream.write(getSampleContent());
-    stream.close();
-    System.out.println("File appended.");
+```java
+// append to file
+stream = client.getAppendStream(filename);
+stream.write(getSampleContent());
+stream.close();
+System.out.println("File appended.");
+```
 
 前のスニペットで使用されている `getSampleContent` 関数の定義は、[GitHub](https://azure.microsoft.com/documentation/samples/data-lake-store-java-upload-download-get-started/) でサンプルの一部として入手できます。
 
@@ -130,62 +145,74 @@ Azure Data Lake Storage Gen1 Java SDK を使用して、フォルダーの作成
 
 次のスニペットを使用して、Data Lake Storage Gen1 アカウントのファイルから内容を読み取ります。
 
-    // Read File
-    InputStream in = client.getReadStream(filename);
-    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-    String line;
-    while ( (line = reader.readLine()) != null) {
-        System.out.println(line);
-    }
-    reader.close();
-    System.out.println();
-    System.out.println("File contents read.");
+```java
+// Read File
+InputStream in = client.getReadStream(filename);
+BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+String line;
+while ( (line = reader.readLine()) != null) {
+    System.out.println(line);
+}
+reader.close();
+System.out.println();
+System.out.println("File contents read.");
+```
 
 ## <a name="concatenate-files"></a>ファイルを連結する
 
 次のスニペットを使用して、Data Lake Storage Gen1 アカウントの 2 つのファイルを連結します。 成功した場合、既存の 2 つのファイルは連結されたファイルで置き換えられます。
 
-    // concatenate the two files into one
-    List<String> fileList = Arrays.asList("/a/b/c.txt", "/a/b/d.txt");
-    client.concatenateFiles("/a/b/f.txt", fileList);
-    System.out.println("Two files concatenated into a new file.");
+```java
+// concatenate the two files into one
+List<String> fileList = Arrays.asList("/a/b/c.txt", "/a/b/d.txt");
+client.concatenateFiles("/a/b/f.txt", fileList);
+System.out.println("Two files concatenated into a new file.");
+```
 
 ## <a name="rename-a-file"></a>ファイル名を変更する
 
 次のスニペットを使用して、Data Lake Storage Gen1 アカウントのファイルの名前を変更します。
 
-    //rename the file
-    client.rename("/a/b/f.txt", "/a/b/g.txt");
-    System.out.println("New file renamed.");
+```java
+//rename the file
+client.rename("/a/b/f.txt", "/a/b/g.txt");
+System.out.println("New file renamed.");
+```
 
 ## <a name="get-metadata-for-a-file"></a>ファイルのメタデータを取得する
 
 次のスニペットを使用して、Data Lake Storage Gen1 アカウントのファイルのメタデータを取得します。
 
-    // get file metadata
-    DirectoryEntry ent = client.getDirectoryEntry(filename);
-    printDirectoryInfo(ent);
-    System.out.println("File metadata retrieved.");
+```java
+// get file metadata
+DirectoryEntry ent = client.getDirectoryEntry(filename);
+printDirectoryInfo(ent);
+System.out.println("File metadata retrieved.");
+```
 
 ## <a name="set-permissions-on-a-file"></a>ファイルに対するアクセス許可を設定する
 
 次のスニペットを使用して、前のセクションで作成したファイルに対するアクセス許可を設定します。
 
-    // set file permission
-    client.setPermission(filename, "744");
-    System.out.println("File permission set.");
+```java
+// set file permission
+client.setPermission(filename, "744");
+System.out.println("File permission set.");
+```
 
 ## <a name="list-directory-contents"></a>ディレクトリの内容を一覧表示する
 
 次のスニペットを使用して、ディレクトリの内容を再帰的に一覧表示します。
 
-    // list directory contents
-    List<DirectoryEntry> list = client.enumerateDirectory("/a/b", 2000);
-    System.out.println("Directory listing for directory /a/b:");
-    for (DirectoryEntry entry : list) {
-        printDirectoryInfo(entry);
-    }
-    System.out.println("Directory contents listed.");
+```java
+// list directory contents
+List<DirectoryEntry> list = client.enumerateDirectory("/a/b", 2000);
+System.out.println("Directory listing for directory /a/b:");
+for (DirectoryEntry entry : list) {
+    printDirectoryInfo(entry);
+}
+System.out.println("Directory contents listed.");
+```
 
 前のスニペットで使用されている `printDirectoryInfo` 関数の定義は、[GitHub](https://azure.microsoft.com/documentation/samples/data-lake-store-java-upload-download-get-started/) でサンプルの一部として入手できます。
 
@@ -193,10 +220,12 @@ Azure Data Lake Storage Gen1 Java SDK を使用して、フォルダーの作成
 
 次のスニペットを使用して、Data Lake Storage Gen1 アカウントの指定したファイルとフォルダーを再帰的に削除します。
 
-    // delete directory along with all the subdirectories and files in it
-    client.deleteRecursive("/a");
-    System.out.println("All files and folders deleted recursively");
-    promptEnterKey();
+```java
+// delete directory along with all the subdirectories and files in it
+client.deleteRecursive("/a");
+System.out.println("All files and folders deleted recursively");
+promptEnterKey();
+```
 
 ## <a name="build-and-run-the-application"></a>アプリケーションの構築と実行
 1. IDE 内から実行するには、 **[実行]** ボタンを見つけてクリックします。 Maven から実行するには、[exec:exec](https://www.mojohaus.org/exec-maven-plugin/exec-mojo.html) を使用します。

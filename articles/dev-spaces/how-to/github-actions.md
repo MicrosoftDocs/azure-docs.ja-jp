@@ -3,19 +3,20 @@ title: GitHub のアクションと Azure Kubernetes Service (プレビュー)
 services: azure-dev-spaces
 ms.date: 04/03/2020
 ms.topic: conceptual
-description: GitHub アクションと Azure Dev Spaces を使用して、Azure Kubernetes Service で直接  Pull request\(プル要求\) からの変更を確認およびテストする
+description: GitHub アクションと Azure Dev Spaces を使用して、Azure Kubernetes Service で直接プル要求からの変更を確認およびテストする
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, GitHub アクション, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: a83da0ef3958748831eb0eeda1aa5e91efa7ef2e
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 5e3417f16791b71d53a0eec9263532219c779440
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637940"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212512"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub のアクションと Azure Kubernetes Service (プレビュー)
 
-Azure Dev Spaces は、 Pull request\(プル要求\) がリポジトリのメイン ブランチに結合される前に、 Pull request\(プル要求\) からの変更を AKS で直接テストできる GitHub Actions を使用してワークフローを提供します。 実行中のアプリケーションを用意して Pull request\(プル要求\) の変更を確認することで、開発者とチーム メンバーの両方の信頼度を高めることができます。 この実行中のアプリケーションは、製品マネージャーやデザイナーなどのチーム メンバーが、開発の初期段階の間にレビュー プロセスの一部となることにも貢献できます。
+Azure Dev Spaces は、プル要求がリポジトリのメイン ブランチに結合される前に、プル要求からの変更を AKS で直接テストできる GitHub Actions を使用してワークフローを提供します。 実行中のアプリケーションを用意してプル要求の変更を確認することで、開発者とチーム メンバーの両方の信頼度を高めることができます。 この実行中のアプリケーションは、製品マネージャーやデザイナーなどのチーム メンバーが、開発の初期段階の間にレビュー プロセスの一部となることにも貢献できます。
 
 このガイドでは、以下の方法について説明します。
 
@@ -146,13 +147,13 @@ git commit -m "Removing hard coded imageUrl from /bikes/:id route"
 git push origin bike-images
 ```
 
-プッシュが完了したら、GitHub でフォークされたリポジトリに移動し、*bike-images* ブランチと比較される基本ブランチとして、フォークされたリポジトリの *master* ブランチを使用して Pull request\(プル要求\) を作成します。
+プッシュが完了したら、GitHub でフォークされたリポジトリに移動し、*bike-images* ブランチと比較される基本ブランチとして、フォークされたリポジトリの *master* ブランチを使用してプル要求を作成します。
 
-Pull request\(プル要求\) が開かれたら、 *[アクション]* タブに移動します。新しいアクションが開始され、*Bikes* サービスを構築中であることを確認します。
+プル要求が開かれたら、 *[アクション]* タブに移動します。新しいアクションが開始され、*Bikes* サービスを構築中であることを確認します。
 
 ## <a name="view-the-child-space-with-your-changes"></a>変更を含む子空間を表示する
 
-アクションが完了すると、Pull request\(プル要求\) に含まれる変更に基づいて、新しい子空間への URL を含むコメントが表示されます。
+アクションが完了すると、プル要求に含まれる変更に基づいて、新しい子空間への URL を含むコメントが表示されます。
 
 > [!div class="mx-imgBorder"]
 > ![GitHub アクションの Url](../media/github-actions/github-action-url.png)
@@ -169,10 +170,10 @@ az group delete --name MyResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Dev Spaces を使用して複数のコンテナーにまたがるより複雑なアプリケーションを開発する方法と、別の空間で別のバージョンまたは分岐を使用して作業することによって共同開発を簡略化する方法について学習します。
+Azure Dev Spaces のしくみの詳細について確認します。
 
 > [!div class="nextstepaction"]
-> [Azure Dev Spaces でのチーム開発][team-quickstart]
+> [Azure Dev Spaces のしくみ](../how-dev-spaces-works.md)
 
 [azure-cli-installed]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
@@ -189,4 +190,3 @@ Azure Dev Spaces を使用して複数のコンテナーにまたがるより複
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [sp-acr]: ../../container-registry/container-registry-auth-service-principal.md
 [sp-aks]: ../../aks/kubernetes-service-principal.md
-[team-quickstart]: ../quickstart-team-development.md

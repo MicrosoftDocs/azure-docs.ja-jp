@@ -8,15 +8,15 @@ ms.author: roastala
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
-ms.topic: conceptual
 ms.date: 12/27/2019
-ms.custom: seodec18
-ms.openlocfilehash: 10ea0002b2e99c4675f56e48a638f3c1cb87e6c0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.topic: conceptual
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 1753373b360a78918682b5f6102dcc896e2d90c3
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399005"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652640"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning のための開発環境を構成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -57,9 +57,9 @@ Azure Machine Learning ワークスペース。 ワークスペースを作成�
 
 Azure Machine Learning の[コンピューティング インスタンス (プレビュー) ](concept-compute-instance.md)は、セキュリティで保護された、クラウドベースの Azure ワークステーションであり、データ サイエンティスト向けに Jupyter Notebook サーバー、JupyterLab、完全に準備された ML 環境を提供します。
 
-コンピューティング インスタンスでインストールまたは構成するものはありません。  Azure Machine Learning ワークスペース内から、いつでも作成できます。 名前を指定し、Azure VM の種類を指定するだけです。 今すぐお試しいただくには、「[チュートリアル:環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を完了することです。
+コンピューティング インスタンスでインストールまたは構成するものはありません。  Azure Machine Learning ワークスペース内から、いつでも作成できます。 名前を指定し、Azure VM の種類を指定するだけです。 今すぐお試しいただくには、「[チュートリアル:環境とワークスペースの設定に関するチュートリアル](tutorial-1st-experiment-sdk-setup.md)を参照)。
 
-[コンピューティング インスタンス](concept-compute-instance.md)の詳細を参照してください。
+パッケージのインストール方法など、コンピューティング インスタンスの詳細については、[コンピューティング インスタンス](concept-compute-instance.md)に関する記事を参照してください。
 
 コンピューティング料金の発生を停止するには、[コンピューティング インスタンス](tutorial-1st-experiment-sdk-train.md#clean-up-resources)を停止します。
 
@@ -145,7 +145,7 @@ DSVM を開発環境として使用するには
     次のコマンドを実行して環境を作成します。
 
     ```bash
-    conda create -n myenv python=3.6.5
+    conda create -n myenv python=3.7.7
     ```
 
     次に、その環境をアクティブにします。
@@ -154,7 +154,7 @@ DSVM を開発環境として使用するには
     conda activate myenv
     ```
 
-    この例では Python 3.6.5 を使用して環境を作成していますが、任意の特定のサブバージョンも選択できます。 特定のメジャー バージョンでは、SDK との互換性が保証されません (3.5+ を推奨)。エラーが発生する場合は、現在の Anaconda 環境で異なるバージョンまたはサブバージョンを試してみることをお勧めします。 コンポーネントとパッケージがダウンロードされて環境が作成されるまでに数分かかります。
+    この例では Python 3.7.7 を使用して環境を作成していますが、任意の特定のサブバージョンも選択できます。 特定のメジャー バージョンでは、SDK との互換性が保証されません (3.5+ を推奨)。エラーが発生する場合は、現在の Anaconda 環境で異なるバージョンまたはサブバージョンを試してみることをお勧めします。 コンポーネントとパッケージがダウンロードされて環境が作成されるまでに数分かかります。
 
 1. 新しく作成した環境で次のコマンドを実行し、環境固有の IPython カーネルを有効にします。 このようにしておくと、Anaconda 環境内で Jupyter Notebook を操作する際の、必要なカーネルとパッケージのインポート動作を確実にすることができます。
 
@@ -189,7 +189,7 @@ DSVM を開発環境として使用するには
 
 1. 機械学習の実験に必要な他のパッケージをインストールします。
 
-    次のコマンドのどちらかを使用します。その際、 *\<new package>* の部分を、インストールするパッケージに置き換えてください。 `conda install` からパッケージをインストールするには、そのパッケージが現在のチャネルの一部である必要があります (Anaconda クラウドに新しいチャネルを追加できます)。
+    次のコマンドのどちらかを使用します。その場合、 *\<new package>* の部分を、インストールするパッケージに置き換えてください。 `conda install` からパッケージをインストールするには、そのパッケージが現在のチャネルの一部である必要があります (Anaconda クラウドに新しいチャネルを追加できます)。
 
     ```bash
     conda install <new package>
@@ -215,7 +215,7 @@ Jupyter Notebook 環境内でこれらのコンポーネントを有効にする
     conda activate myenv
     ```
 
-1. サンプル ノートブックのセットに対して [GitHub リポジトリ](https://aka.ms/aml-notebooks)を複製します。
+1. サンプル ノートブックのセットに対して [GitHub リポジトリ](https://github.com/Azure/MachineLearningNotebooks)を複製します。
 
     ```bash
     git clone https://github.com/Azure/MachineLearningNotebooks.git
@@ -329,7 +329,7 @@ Azure Databricks が Azure Machine Learning と連携する仕組み:
 
 インストールが成功した場合、インポートされたライブラリは次のどちらかのような外観になります。
 
-自動化された機械学習機能を **_持たない_** Databricks 用 SDK ![Databricks 用 Azure Machine Learning SDK](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
+自動化された機械学習機能を**_持たない_** Databricks 用 SDK ![Databricks 用 Azure Machine Learning SDK](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
 自動化された機械学習機能を**持つ** Databricks 用 SDK ![自動化された機械学習機能が Databricks にインストールされた SDK](./media/how-to-configure-environment/automlonadb.png)
 

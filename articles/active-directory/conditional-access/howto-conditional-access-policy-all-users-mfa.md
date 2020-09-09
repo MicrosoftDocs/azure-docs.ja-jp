@@ -4,19 +4,19 @@ description: カスタムの条件付きアクセス ポリシーを作成して
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 04/02/2020
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60d0ad0a1c0a1b4d13ce4d386df22406a8ab8e51
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a45ce7bee04716612431effe77315d739f328dba
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617627"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049300"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>条件付きアクセス:すべてのユーザーに対して MFA を必須にする
 
@@ -53,7 +53,7 @@ Microsoft の ID セキュリティ責任者、Alex Weinert は彼のブログ�
    1. **[Done]** を選択します。
 1. **[Cloud apps or actions]\(クラウド アプリまたはアクション\)**  >  **[Include]\(含める\)** で、 **[すべてのクラウド アプリ]** を選択します。
    1. **[除外]** で、多要素認証を必要としないアプリケーションを選択します。
-1. **[条件]**  >  **[クライアント アプリ (プレビュー)]** で、 **[構成する]** を **[はい]** に設定し、 **[完了]** を選択します。
+1. **[条件]**  >  **[クライアント アプリ (プレビュー)]** の **[このポリシーを適用するクライアント アプリを選択します]** で、すべてを既定値が選択された状態のままにして、 **[完了]** を選択します。
 1. **[アクセス制御]**  >  **[許可]** で、 **[アクセス権の付与]** 、 **[Require multi-factor authentication]\(多要素認証を要求する\)** の順に選択し、 **[Select]\(選択する\)** を選択します。
 1. 設定を確認し、 **[Enable policy]\(ポリシーの有効化\)** を **[オン]** に設定します。
 1. **[作成]** を選択して、ポリシーを作成および有効化します。
@@ -76,6 +76,6 @@ Microsoft の ID セキュリティ責任者、Alex Weinert は彼のブログ�
 
 [Conditional Access common policies](concept-conditional-access-policy-common.md) (条件付きアクセスの一般的なポリシー)
 
-[条件付きアクセスのレポート専用モードを使用した影響を判断する](howto-conditional-access-report-only.md)
+[条件付きアクセスのレポート専用モードを使用した影響を判断する](howto-conditional-access-insights-reporting.md)
 
 [Simulate sign in behavior using the Conditional Access What If tool](troubleshoot-conditional-access-what-if.md) (条件付きアクセスの What If ツールを使用したサインイン動作のシミュレート)

@@ -8,18 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 11dc0d4f80e14c293fde4e84b5e97d39fe594629
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 6a78c2ae4145a65739d5db56a70dca498d7d6a82
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80238952"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406488"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-nodejs"></a>クイック スタート:Bing Autosuggest REST API と Node.js によって検索クエリの候補を表示する
 
-このクイック スタートでは、Bing Autosuggest API を呼び出して JSON 応答を取得するための基礎を学ぶことができます。 このシンプルな Node.js アプリケーションは、検索クエリの一部を API に送信して検索の候補を返します。 このアプリケーションは JavaScript で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このサンプルのソース コードは、[GitHub 上で](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingAutosuggestv7.js)入手できます。
+このクイックスタートでは、Bing Autosuggest API を呼び出して JSON 応答を読み取る方法について説明します。 このシンプルな Node.js アプリケーションは、検索クエリの一部を API に送信して検索の候補を返します。 このアプリケーションは JavaScript で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このサンプルのソース コードは、[GitHub 上で](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingAutosuggestv7.js)入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,7 +38,7 @@ ms.locfileid: "80238952"
     let https = require ('https');
     ```
 
-2. API エンドポイントのホストとパスの変数、サブスクリプション キー、[市場コード](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)、および検索用語に対応する変数を作成します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
+2. API エンドポイントのホストとパスの変数、サブスクリプション キー、[市場コード](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)、および検索用語に対応する変数を作成します。 次のコードのグローバル エンドポイントか、Azure portal に表示される、対象のリソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用します。
 
     ```javascript
     // Replace the subscriptionKey string value with your valid subscription key.
@@ -74,19 +75,20 @@ ms.locfileid: "80238952"
     }
     ```
 
-    1. 同じ関数の中で、要求ライブラリを使用してクエリを API に送信します。 `response_handler` は次のセクションで定義します。
+ 1. 同じ関数の中で、要求ライブラリを使用してクエリを API に送信します。 `response_handler` は次のセクションで定義します。
     
-        ```javascript
+    ```javascript
         //...
         let req = https.request(request_params, response_handler);
         req.end();
         ```
 
-## <a name="create-a-search-handler"></a>検索ハンドラーを作成する
+## Create a search handler
 
-1. HTTP 呼び出し `response` をパラメーターとして受け取る `response_handler` という名前の関数を定義します。 この関数内で次の手順を実行します。
+1. Define a function named `response_handler` that takes an HTTP call, `response`, as a parameter. 
+Do the following steps within this function:
     
-    1. JSON 応答の本文を含む変数を定義します。  
+    1. Define a variable to contain the body of the JSON response.  
 
         ```javascript
         let response_handler = function (response) {
@@ -94,7 +96,7 @@ ms.locfileid: "80238952"
         };
         ```
 
-    2. **data** フラグが呼び出されたときに応答の本文を格納する
+    2. Store the body of the response when the `data` flag is called
         
         ```javascript
         response.on ('data', function (d) {
@@ -102,7 +104,7 @@ ms.locfileid: "80238952"
         });
         ```
 
-    3. **end** フラグがシグナル化されると、`JSON.parse()` および `JSON.stringify()` を使用して応答を出力します。
+    3. When an `end` flag is signaled, use `JSON.parse()` and `JSON.stringify()` to print the response.
     
         ```javascript
         response.on ('end', function () {
@@ -115,11 +117,11 @@ ms.locfileid: "80238952"
         });
         ```
 
-2. `get_suggestions()` を呼び出して、Bing Autosuggest API へ要求を送信します。
+2. Call `get_suggestions()` to send the request to the Bing Autosuggest API.
 
-## <a name="example-json-response"></a>JSON の応答例
+## Example JSON response
 
-成功した応答は、次の例に示すように JSON で返されます。 
+A successful response is returned in JSON, as shown in the following example: 
 
 ```json
 {

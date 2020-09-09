@@ -6,14 +6,14 @@ ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/10/2019
-ms.openlocfilehash: fb3484d013314897ea2e9157b642d8f2b85dcd60
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: acd51fc54e0655af6bfc6c05d2e99be2f26f942b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437644"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080161"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Azure HDInsight で Enterprise セキュリティ パッケージ クラスターを作成および構成する
 
@@ -357,7 +357,7 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
         | Destination port range | 636 |
         | Protocol | Any |
         | アクション | Allow |
-        | Priority | \<望ましい値> |
+        | Priority | \<Desired number> |
         | 名前 | Port_LDAP_636 |
 
     ![[受信セキュリティ規則の追加] ダイアログ ボックス](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)

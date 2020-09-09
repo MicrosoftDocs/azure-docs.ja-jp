@@ -8,26 +8,26 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 12/18/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 385d2c3b88bc2e4d653dae2dc9670cb9e9388faf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e499b27124ed5723fb19fecbe4091f17364aea5a
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75371838"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533990"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net"></a>.NET を使用してコンテナーまたは BLOB 用のユーザー委任 SAS を作成する
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-この記事では、Azure Active Directory (Azure AD) 資格情報を使用して .NET 用 Azure Storage クライアント ライブラリを使用するコンテナーまたは Blob 用のユーザー委任 SAS を作成する方法について説明します。
+この記事では、Azure Active Directory (Azure AD) 資格情報を使用して バージョン 12 の .NET 用 Azure Storage クライアント ライブラリを使用するコンテナーまたは BLOB のユーザー委任 SAS を作成する方法について説明します。
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
-## <a name="assign-rbac-roles-for-access-to-data"></a>RBAC ロールを割り当ててデータにアクセスする
+## <a name="assign-azure-roles-for-access-to-data"></a>データにアクセスするための Azure ロールを割り当る
 
-Azure AD セキュリティ プリンシパルが Blob データにアクセスしようとする場合、そのセキュリティ プリンシパルはリソースへのアクセス許可を保持している必要があります。 セキュリティ プリンシパルが Azure 内のマネージド ID であるか、開発環境でコードを実行している Azure AD ユーザー アカウントであるかにかかわらず、Azure Storage での Blob データへのアクセスを許可する RBAC ロールをセキュリティ プリンシパルに割り当てる必要があります。 RBAC 経由でのアクセス許可の割り当てについては、「[Azure Active Directory を使用して Azure Blob およびキューへのアクセスを承認します](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)」にある「**アクセス権に RBAC ロールを割り当てる**」というタイトルのセクションを参照してください。
+Azure AD セキュリティ プリンシパルが Blob データにアクセスしようとする場合、そのセキュリティ プリンシパルはリソースへのアクセス許可を保持している必要があります。 セキュリティ プリンシパルが Azure 内のマネージド ID であるか、開発環境でコードを実行している Azure AD ユーザー アカウントであるかにかかわらず、Azure Storage での BLOB データへのアクセスを許可する Azure ロールをセキュリティ プリンシパルに割り当てる必要があります。 RBAC 経由でのアクセス許可の割り当てについては、「[Azure Active Directory を使用して Azure BLOB およびキューへのアクセスを承認する](../common/storage-auth-aad.md#assign-azure-roles-for-access-rights)」の「**アクセス権に Azure ロールを割り当てる**」というタイトルのセクションを参照してください。
 
 [!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
 

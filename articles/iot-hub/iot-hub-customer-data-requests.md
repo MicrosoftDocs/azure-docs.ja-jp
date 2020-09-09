@@ -7,14 +7,14 @@ ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: a05fbf6e1908f88014cd8da99fafb875de033f45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0bb7b91cd31761b801ad469b8ce556b29e09fd3a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79499319"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074708"
 ---
-# <a name="summary-of-customer-data-request-features"></a>顧客データ要求機能の概要
+# <a name="customer-data-request-features-for-azure-iot-hub-devices"></a>Azure IoT Hub デバイスの顧客データ要求機能
 
 Azure IoT Hub は、企業のお客様を対象とする REST API ベースのクラウド サービスであり、百万単位のデバイスとパーティション分割された Azure サービスの間で、セキュリティで保護された双方向の通信を有効にします。
 

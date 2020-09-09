@@ -2,25 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Kintone の統合 | Microsoft Docs'
 description: Azure Active Directory と Kintone の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c2b947dc-e1a8-4f5f-b40e-2c5180648e4f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 6786b44aca9ceed3cec5daf0f858a51e2dd12833
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2e831fd561b7c8dcf78e9203ec6d38c60c22a5bf
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74227576"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88535341"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kintone"></a>チュートリアル: Azure Active Directory と Kintone の統合
 
@@ -109,10 +105,10 @@ Kintone で Azure AD シングル サインオンを構成するには、次の�
 
     b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。
     
-    | |
-    |--|
-    | `https://<companyname>.cybozu.com` |
-    | `https://<companyname>.kintone.com` |
+    ```http
+    https://<companyname>.cybozu.com
+    https://<companyname>.kintone.com
+    ```
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Kintone クライアント サポート チーム](https://www.kintone.com/contact/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

@@ -11,13 +11,14 @@ ms.topic: quickstart
 ms.custom:
 - mvc
 - mqtt
+- 'Role: Cloud Development'
 ms.date: 03/04/2020
-ms.openlocfilehash: 560ab582102cc92689093bb0e36acf2fcbc5a30a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1b3b8382c81015e3278954dd0443ba44520e2e3b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81771005"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87315141"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>クイック スタート:IoT ハブに接続されたデバイスを制御する (.NET)
 

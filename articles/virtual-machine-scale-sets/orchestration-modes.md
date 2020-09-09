@@ -9,14 +9,17 @@ ms.subservice: management
 ms.date: 10/23/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: cbe080b4c2b6e73ae15fd186589bd43535bfc13d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: eb7d4d8a6f1c1ee55601cdd839e330147e60bcc7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198405"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011075"
 ---
-# <a name="orchestration-mode-preview"></a>オーケストレーション モード (プレビュー)
+# <a name="orchestration-modes-preview"></a>オーケストレーション モード (プレビュー)
+
+> [!CAUTION]
+> このパブリック プレビューに参加したすべてのユーザーに感謝します。 弊社のコミュニティから貴重なフィードバックを収集できました。 このプレビューは、フィードバックを統合するために、新しい参加者に対しては**クローズ**されました。 このスペースは新しい情報で更新されます。
 
 仮想マシン スケール セットは、プラットフォームによって管理される仮想マシンの論理グループを提供します。 スケール セットを使用して、仮想マシン構成モデルを作成し、CPU またはメモリの負荷に基づいて追加のインスタンスを自動的に追加または削除し、最新の OS バージョンに自動的にアップグレードします。 従来、スケール セットでは、スケール セットの作成時に提供された VM 構成モデルを使用して仮想マシンを作成できます。スケール セットで管理できるのは、構成モデルに基づいて暗黙的に作成された仮想マシンのみです。
 
@@ -39,7 +42,7 @@ ms.locfileid: "83198405"
 
 ## <a name="orchestration-modes"></a>オーケストレーション モード
 
-|                             | “orchestrationMode”: “VM” (VirtualMachine) | “orchestrationMode”: “ScaleSetVM” (VirtualMachineScaleSetVM) |
+| 特徴量                     | "orchestrationMode":“VM” (VirtualMachine) | “orchestrationMode”: “ScaleSetVM” (VirtualMachineScaleSetVM) |
 |-----------------------------|--------------------------------------------|--------------------------------------------------------------|
 | VM 構成モデル      | なし                                       | 必須 |
 | スケール セットへの新しい VM の追加  | VM は、VM が作成されるときにスケール セットに明示的に追加されます。 | VM は、VM 構成モデル、インスタンス数、自動スケーリング規則に基づいて暗黙的に作成され、スケール セットに追加されます | |
@@ -49,16 +52,16 @@ ms.locfileid: "83198405"
 | 障害ドメイン               | 障害ドメインを定義できます。 リージョン サポートに基づく場合は 2 つまたは 3 つ、可用性ゾーンの場合は 5 つです。 | 1 から 5 までの障害ドメインを定義できます |
 | 更新ドメイン              | 更新ドメインは自動的に障害ドメインにマップされます | 更新ドメインは自動的に障害ドメインにマップされます |
 | 可用性ゾーン          | 1 つの可用性ゾーンのリージョンのデプロイまたは VM をサポートします | リージョンのデプロイまたは複数の可用性ゾーンをサポートします。ゾーン バランス戦略を定義できます |
-| Autoscale                   | サポートされていません                              | サポートされています |
-| OS のアップグレード                  | サポートされていません                              | サポートされています |
-| モデルの更新               | サポートされていません                              | サポートされています |
+| Autoscale                   | サポートなし                              | サポート |
+| OS のアップグレード                  | サポートなし                              | サポート |
+| モデルの更新               | サポートなし                              | サポート |
 | インスタンス制御            | 完全な VM 制御。 VM は、すべての Azure VM 管理機能 (Azure Policy、Azure Backup、Azure Site Recovery など) をサポートする完全修飾 URI を持ちます | VM は、スケール セットの依存リソースです。 インスタンスを管理する際は、スケール セットを通じてのみアクセスできます。 |
 | インスタンス モデル              | Microsoft.Compute/VirtualMachines モデル定義。 | Microsoft.Compute/VirtualMachineScaleSets/VirtualMachines モデル定義。 |
 | 容量                    | 空のスケール セットを作成できます。最大 200 台の VM をスケール セットに追加できます | インスタンス数が 0 から 1,000 個のスケール セットを定義できます |
 | 詳細ビュー                        | サポートされています                                  | サポートされています |
-| 1 つの配置グループ == false | サポートされていません                          | サポートされています |
+| 1 つの配置グループ == false | サポートされていません                          | サポート |
 
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、[可用性オプションの概要](availability.md)に関するページを参照してください。
+詳細については、[可用性オプションの概要](../virtual-machines/availability.md?toc=%2fazure%2fvirtual-machine-scale-sets%2ftoc.json)に関するページを参照してください。

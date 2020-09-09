@@ -4,16 +4,16 @@ description: 要求テレメトリ用の Application Insights データ モデ�
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: d8a28063bf6780c3cace4ead81e289779b95eb9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a352f4ce3528d395599a91b53031c74b0873152
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671904"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320563"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>要求テレメトリ:Application Insights データ モデル
 
-要求テレメトリ項目 ([Application Insights](../../azure-monitor/app/app-insights-overview.md)) は、アプリケーションに対する外部要求によってトリガーされた実行の論理シーケンスを表します。 すべての要求の実行は、一意の `ID` と、すべての実行パラメーターが含まれる `url` によって識別されます。 要求は、論理的な `name` によってグループ化でき、要求の `source` が定義されます。 コードの実行は、`success` または `fail`という結果になる可能性があり、特定の `duration` を持っています。 成功した実行と失敗した実行は、どちらも `resultCode` によってさらにグループ化することができます。 要求テレメトリの開始時刻は、エンベロープ レベルで定義されます。
+要求テレメトリ項目 ([Application Insights](./app-insights-overview.md)) は、アプリケーションに対する外部要求によってトリガーされた実行の論理シーケンスを表します。 すべての要求の実行は、一意の `ID` と、すべての実行パラメーターが含まれる `url` によって識別されます。 要求は、論理的な `name` によってグループ化でき、要求の `source` が定義されます。 コードの実行は、`success` または `fail`という結果になる可能性があり、特定の `duration` を持っています。 成功した実行と失敗した実行は、どちらも `resultCode` によってさらにグループ化することができます。 要求テレメトリの開始時刻は、エンベロープ レベルで定義されます。
 
 要求テレメトリは、カスタムの `properties` と `measurements` を使用する標準的な機能拡張モデルをサポートします。
 
@@ -21,13 +21,13 @@ ms.locfileid: "77671904"
 
 要求の名前は、要求を処理するために使用されたコード パスを表します。 小さなカーディナリティの値を使用すると、要求をより適切にグループ化できます。 HTTP 要求では、これは、実際の `id` 値ではなく、`GET /values/{id}`のような HTTP メソッドとURL パス テンプレートを表します。
 
-Application Insights Web SDK は、要求の名前の大文字小文字を "そのまま" 送信します。 UI では大文字と小文字を区別してグループ化されるため、`GET /Home/Index` と `GET /home/INDEX` は別々にカウントされます (多くの場合、これらは同じコントローラーとアクションの実行に至ります)。 区別する理由は、URL では一般的に[大文字と小文字が区別](https://www.w3.org/TR/WD-html40-970708/htmlweb.html)されるためです。 大文字で入力した URL で `404` が発生するかどうかを確認できます。 ASP.NET Web SDK による要求名のコレクションについては、[ブログの投稿](https://apmtips.com/blog/2015/02/23/request-name-and-url/)で詳細を確認できます。
+Application Insights Web SDK は、要求の名前の大文字小文字を "そのまま" 送信します。 UI では大文字と小文字を区別してグループ化されるため、`GET /Home/Index` と `GET /home/INDEX` は別々にカウントされます (多くの場合、これらは同じコントローラーとアクションの実行に至ります)。 区別する理由は、URL では一般的に[大文字と小文字が区別](https://www.w3.org/TR/WD-html40-970708/htmlweb.html)されるためです。 大文字で入力した URL で `404` が発生するかどうかを確認できます。 ASP.NET Web SDK による要求名のコレクションについては、[ブログの投稿](https://apmtips.com/posts/2015-02-23-request-name-and-url/)で詳細を確認できます。
 
 最大長:1024 文字
 
 ## <a name="id"></a>id
 
-要求呼び出しインスタンスの識別子。 要求とその他のテレメトリ項目を相関付けるために使用されます。 ID はグローバルに一意である必要があります。 詳細については、[相関付け](../../azure-monitor/app/correlation.md)に関するページを参照してください。
+要求呼び出しインスタンスの識別子。 要求とその他のテレメトリ項目を相関付けるために使用されます。 ID はグローバルに一意である必要があります。 詳細については、[相関付け](./correlation.md)に関するページを参照してください。
 
 最大長:128 文字
 
@@ -39,7 +39,7 @@ Application Insights Web SDK は、要求の名前の大文字小文字を "そ�
 
 ## <a name="source"></a>source
 
-要求のソース。 例: 呼び出し元のインストルメンテーション キーや呼び出し元の IP アドレス。 詳細については、[相関付け](../../azure-monitor/app/correlation.md)に関するページを参照してください。
+要求のソース。 例: 呼び出し元のインストルメンテーション キーや呼び出し元の IP アドレス。 詳細については、[相関付け](./correlation.md)に関するページを参照してください。
 
 最大長:1024 文字
 
@@ -61,7 +61,7 @@ Web アプリケーションでは、応答コードが `400` 未満または `4
 
 コンテンツを一部受け入れる `206` が、要求全体のエラーを示していることがあります。 たとえば、Application Insights のエンドポイントがテレメトリ項目のバッチを 1 つの要求として受信している場合です。 バッチ内の一部の項目が正常に処理されなかった場合、`206` が返されます。 `206` の割合の上昇は、調査する必要がある問題の存在を示唆しています。 同様のロジックが `207` マルチステータスにも適用され、複数の応答コードの中で、最も悪いステータスが "成功" である場合があります。
 
-要求の結果コードと状態コードの詳細については、[ブログの投稿](https://apmtips.com/blog/2016/12/03/request-success-and-response-code/)で確認できます。
+要求の結果コードと状態コードの詳細については、[ブログの投稿](https://apmtips.com/posts/2016-12-03-request-success-and-response-code/)で確認できます。
 
 ## <a name="custom-properties"></a>カスタム プロパティ
 
@@ -73,7 +73,8 @@ Web アプリケーションでは、応答コードが `400` 未満または `4
 
 ## <a name="next-steps"></a>次のステップ
 
-- [カスタム要求テレメトリを記述します](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)。
+- [カスタム要求テレメトリを記述します](./api-custom-events-metrics.md#trackrequest)。
 - Application Insights の型とデータ モデルについては、[データ モデル](data-model.md)に関するページを参照してください。
-- Application Insights で [ASP.NET Core を構成する](../../azure-monitor/app/asp-net.md)方法を確認します。
-- Application Insights でサポートされている[プラットフォーム](../../azure-monitor/app/platforms.md)を確認します。
+- Application Insights で [ASP.NET Core を構成する](./asp-net.md)方法を確認します。
+- Application Insights でサポートされている[プラットフォーム](./platforms.md)を確認します。
+

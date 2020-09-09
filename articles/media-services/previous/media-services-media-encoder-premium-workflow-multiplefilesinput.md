@@ -15,14 +15,18 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: xpouyat
 ms.reviewer: anilmur;juliako
-ms.openlocfilehash: 27bdf82d4515678e28eadf07fe325860fe5df063
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 36a1a198f4bd2279a9d9b8b9700b1ddd038a0900
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227015"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89256657"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Premium Encoder での複数の入力ファイルとコンポーネント プロパティの使用
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 ## <a name="overview"></a>概要
 **メディア エンコーダー プレミアム ワークフロー** メディア プロセッサを使用してタスクを送信するときに、コンポーネント プロパティのカスタマイズ、クリップ リスト XML コンテンツの指定、または複数の入力ファイルの送信が必要になる場合があります。 いくつかの例を次に示します。
 
@@ -366,7 +370,7 @@ AAC エンコーダーを設定し、オーディオ形式の変換/プリセッ
 
 出力ファイルの名前を設定する必要があります。 **ファイル出力** コンポーネントをクリックし、ファイルの式を編集します。
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_withoverlay.mp4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_withoverlay.mp4`
 
 !["ファイル出力名"](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture17_filenameoutput.png)
 

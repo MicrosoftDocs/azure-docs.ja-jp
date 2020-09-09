@@ -1,34 +1,37 @@
 ---
 title: ML 実験の MLflow Tracking
 titleSuffix: Azure Machine Learning
-description: Databricks クラスター、ローカル環境、または VM 環境に作成された ML モデルのメトリックと成果物をログに記録するように、Azure Machine Learning で MLflow を設定します。
+description: Azure Machine Learning を使用して MLflow を設定し、ML モデルからのメトリックと成果物をログに記録し、Web サービスとして ML モデルをデプロイします。
 services: machine-learning
 author: rastala
 ms.author: roastala
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
+ms.date: 06/04/2020
 ms.topic: conceptual
-ms.date: 02/03/2020
-ms.custom: seodec18
-ms.openlocfilehash: 95567a177635dc7d7ed03404487e62c76db8bdac
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: a0241864a5eafe8783aea463197f86ff949ea9ed
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779119"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853383"
 ---
-# <a name="track-models-metrics-with-mlflow-and-azure-machine-learning-preview"></a>MLflow と Azure Machine Learning を使用してモデルのメトリックを追跡する (プレビュー)
+# <a name="track-model-metrics-and-deploy-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>MLflow と Azure Machine Learning を使用してモデル メトリックを追跡し、ML モデルをデプロイする (プレビュー)
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-この記事では、MLflow の追跡 URI とログ API (まとめて [MLflow Tracking](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api) と呼ばれる) を有効にして、MLflow の実験と Azure Machine Learning を接続する方法について説明します。 そうすることにより、[Azure Machine Learning ワークスペース](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workspaces)で実験のメトリックと成果物を追跡してログに記録することができます。 実験に MLflow Tracking を既に使用している場合、トレーニングのメトリックとモデルを保存するための一元化された安全でスケーラブルな場所がワークスペースに用意されています。
+この記事では、MLflow の追跡 URI とログ API (まとめて [MLflow Tracking](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api) と呼ばれる) を有効にして、MLflow の実験と Azure Machine Learning を接続する方法について説明します。  これを実行することで、以下のことが可能になります。
 
-<!--
-+ Deploy your MLflow experiments as an Azure Machine Learning web service. By deploying as a web service, you can apply the Azure Machine Learning monitoring and data drift detection functionalities to your production models. 
--->
++ [Azure Machine Learning ワークスペース](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workspaces)で、実験のメトリックと成果物を追跡してログに記録します。 実験に MLflow Tracking を既に使用している場合、トレーニングのメトリックとモデルを保存するための一元化された安全でスケーラブルな場所がワークスペースに用意されています。
+
++ MLflow の実験を Azure Machine Learning Web サービスとしてデプロイします。 Web サービスとしてデプロイすることで、Azure Machine Learning の監視機能とデータ誤差検出機能を実稼働モデルに適用できます。 
 
 [MLflow](https://www.mlflow.org) は、機械学習の実験のライフ サイクルを管理するためのオープンソース ライブラリです。 MLFlow Tracking は MLflow のコンポーネントです。これは、実験の環境がローカル コンピューター、リモートのコンピューティング先、仮想マシン、Azure Databricks クラスターのいずれであるかにかかわらず、トレーニング実行のメトリックとモデル成果物をログに記録し、追跡します。 
+
+>[!NOTE]
+> オープン ソース ライブラリである MLflow は頻繁に変更されます。 そのため、Azure Machine Learning と MLflow の統合によって利用できるようになる機能はプレビューとして見なす必要があり、Microsoft は完全にサポートしていません。
 
 次の図は、MLflow Tracking を使用して、実験の実行メトリックを追跡し、Azure Machine Learning ワークスペース内にモデル成果物を保存する例を示しています。
 
@@ -44,7 +47,7 @@ ms.locfileid: "83779119"
  MLflow Tracking は、メトリックのログ機能と成果物の保存機能を提供します。他の方法では、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) を使用している場合にのみこれらの機能を利用できます。
 
 
-| | MLflow&nbsp;Tracking <!--& Deployment--> | Azure Machine Learning Python SDK |  Azure Machine Learning CLI | Azure Machine Learning Studio|
+| 機能 | MLflow&nbsp;Tracking & Deployment | Azure Machine Learning Python SDK |  Azure Machine Learning CLI | Azure Machine Learning Studio|
 |---|---|---|---|---|
 | ワークスペースの管理 |   | ✓ | ✓ | ✓ |
 | データ ストアの使用  |   | ✓ | ✓ | |
@@ -52,11 +55,10 @@ ms.locfileid: "83779119"
 | 成果物のアップロード | ✓ | ✓ |   | |
 | メトリックを表示する     | ✓ | ✓ | ✓ | ✓ |
 | コンピューティングの管理   |   | ✓ | ✓ | ✓ |
+| モデルをデプロイする    | ✓ | ✓ | ✓ | ✓ |
+|モデル パフォーマンスを監視する||✓|  |   |
+| データの誤差を検出する |   | ✓ |   | ✓ |
 
-<!--| Deploy models    | ✓ | ✓ | ✓ | ✓ |
-|Monitor model performance||✓|  |   |
-| Detect data drift |   | ✓ |   | ✓ |
--->
 ## <a name="prerequisites"></a>前提条件
 
 * [MLflow をインストール](https://mlflow.org/docs/latest/quickstart.html)します。
@@ -72,9 +74,6 @@ Jupyter Notebook またはコード エディターでローカルで実行さ�
 ```shell
 pip install azureml-mlflow
 ```
-
->[!NOTE]
->azureml.contrib 名前空間は、サービスの改善に伴って頻繁に変更されます。 そのため、この名前空間内のものはすべて Microsoft によって完全にサポートされているものではなく、プレビューとして見なされる必要があります。
 
 MLflow の追跡 URI にアクセスし、ワークスペースを構成するには、`mlflow` および [`Workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) クラスをインポートします。
 
@@ -229,17 +228,17 @@ run.get_metrics()
 ws.get_details()
 ```
 
-<!-- ## Deploy MLflow models as a web service
+## <a name="deploy-mlflow-models-as-a-web-service"></a>MLflow モデルを Web サービスとしてデプロイする
 
-Deploying your MLflow experiments as an Azure Machine Learning web service allows you to leverage the Azure Machine Learning model management and data drift detection capabilities and apply them to your production models.
+MLflow の実験を Azure Machine Learning Web サービスとしてデプロイすると、Azure Machine Learning のモデル管理機能とデータ誤差検出機能を活用し、それらを実稼働モデルに適用することができます。
 
-The following diagram demonstrates that with the MLflow deploy API you can deploy your existing MLflow models as an Azure Machine Learning web service, despite their frameworks--PyTorch, Tensorflow, scikit-learn, ONNX, etc., and manage your production models in your workspace.
+次の図は、MLflow デプロイ API を使用して、フレームワーク (PyTorch、Tensorflow、scikit-learn、ONNX など) にかかわらず既存の MLflow モデルを Azure Machine Learning Web サービスとしてデプロイでき、ワークスペース内で実稼働モデルを管理できることを示しています。
 
-![mlflow with azure machine learning diagram](./media/how-to-use-mlflow/mlflow-diagram-deploy.png)
+![Azure Machine Learning での MLflow](./media/how-to-use-mlflow/mlflow-diagram-deploy.png)
 
-### Log your model
+### <a name="log-your-model"></a>モデルをログに記録する
 
-Before you can deploy, be sure that your model is saved so you can reference it and its path location for deployment. In your training script, there should be code similar to the following [mlflow.sklearn.log_model()](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html) method, that saves your model to the specified outputs directory. 
+デプロイする前に、モデルとそのデプロイ用のパスの場所を参照できるように、必ずモデルを保存します。 トレーニング スクリプトには、指定された出力ディレクトリにモデルを保存する、次の [mlflow.sklearn.log_model()](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html) メソッドと同様のコードがあるはずです。 
 
 ```python
 # change sklearn to pytorch, tensorflow, etc. based on your experiment's framework 
@@ -249,11 +248,11 @@ import mlflow.sklearn
 mlflow.sklearn.log_model(regression_model, model_save_path)
 ```
 >[!NOTE]
-> Include the `conda_env` parameter to pass a dictionary representation of the dependencies and environment this model should be run in.
+> `conda_env` パラメーターを含めて、このモデルを実行すべき依存関係と環境のディクショナリ表現を渡します。
 
-### Retrieve model from previous run
+### <a name="retrieve-model-from-previous-run"></a>前回の実行からモデルを取得する
 
-To retrieve the run, you need the run ID and the path in run history of where the model was saved. 
+実行を取得するには、実行 ID と、モデルが保存された場所の実行履歴のパスが必要です。 
 
 ```python
 # gets the list of runs for your experiment as an array
@@ -266,15 +265,15 @@ runid = runs[0].id
 model_save_path = 'model'
 ```
 
-### Deploy the model
+### <a name="deploy-the-model"></a>モデルをデプロイする
 
-Use the Azure Machine Learning SDK to deploy the model as a web service.
+Azure Machine Learning SDK を使用し、モデルを Web サービスとしてデプロイします。
 
-First, specify the deployment configuration. Azure Container Instance (ACI) is a suitable choice for a quick dev-test deployment, while Azure Kubernetes Service (AKS) is suitable for scalable production deployments.
+最初にデプロイ構成を指定します。 Azure Container Instance (ACI) は、迅速な開発テストのデプロイに適した選択肢です。一方、Azure Kubernetes Service (AKS) は、スケーラブルな実稼働のデプロイに適しています。
 
-#### Deploy to ACI
+#### <a name="deploy-to-aci"></a>ACI にデプロイする
 
-Set up your deployment configuration with the [deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) method. You can also add tags and descriptions to help keep track of your web service.
+[deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) メソッドを使用してデプロイ構成を設定します。 また、Web サービスの追跡に役立つタグや説明を追加することもできます。
 
 ```python
 from azureml.core.webservice import AciWebservice, Webservice
@@ -287,7 +286,7 @@ aci_config = AciWebservice.deploy_configuration(cpu_cores=1,
                                                 location='eastus2')
 ```
 
-Then, register and deploy the model by using the Azure Machine Learning SDK [deploy](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) method. 
+次に、Azure Machine Learning SDK [deploy](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) メソッドを利用してモデルを登録し、デプロイします。 
 
 ```python
 (webservice,model) = mlflow.azureml.deploy( model_uri='runs:/{}/{}'.format(run.id, model_path),
@@ -299,9 +298,9 @@ Then, register and deploy the model by using the Azure Machine Learning SDK [dep
 
 webservice.wait_for_deployment(show_output=True)
 ```
-#### Deploy to AKS
+#### <a name="deploy-to-aks"></a>AKS にデプロイする
 
-To deploy to AKS, first create an AKS cluster. Create an AKS cluster using the [ComputeTarget.create()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py#create-workspace--name--provisioning-configuration-) method. It may take 20-25 minutes to create a new cluster.
+AKS にデプロイするには、まず AKS クラスターを作成します。 [ComputeTarget.create()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py#create-workspace--name--provisioning-configuration-) メソッドを使用して、AKS クラスターを作成します。 新しいクラスターの作成には 20 分から 25 分かかる場合があります。
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
@@ -321,7 +320,7 @@ aks_target.wait_for_completion(show_output = True)
 print(aks_target.provisioning_state)
 print(aks_target.provisioning_errors)
 ```
-Set up your deployment configuration with the [deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) method. You can also add tags and descriptions to help keep track of your web service.
+[deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) メソッドを使用してデプロイ構成を設定します。 また、Web サービスの追跡に役立つタグや説明を追加することもできます。
 
 ```python
 from azureml.core.webservice import Webservice, AksWebservice
@@ -346,25 +345,23 @@ from azureml.core.webservice import AksWebservice, Webservice
 webservice.wait_for_deployment()
 ```
 
-The service deployment can take several minutes.
+サービスのデプロイには数分かかることがあります。
 
-## Clean up resources
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-If you don't plan to use the logged metrics and artifacts in your workspace, the ability to delete them individually is currently unavailable. Instead, delete the resource group that contains the storage account and workspace, so you don't incur any charges:
+ログに記録されたメトリックと成果物をワークスペースで使用する予定がない場合、現時点では、それらを個別に削除する機能は提供されていません。 代わりに、ストレージ アカウントとワークスペースを含むリソース グループを削除すれば、課金は発生しません。
 
-1. In the Azure portal, select **Resource groups** on the far left.
+1. Azure Portal で、左端にある **[リソース グループ]** を選択します。
 
-   ![Delete in the Azure portal](./media/how-to-use-mlflow/delete-resources.png)
+   ![Azure portal で削除する](./media/how-to-use-mlflow/delete-resources.png)
 
-1. From the list, select the resource group you created.
+1. 作成したリソース グループを一覧から選択します。
 
-1. Select **Delete resource group**.
+1. **[リソース グループの削除]** を選択します。
 
-1. Enter the resource group name. Then select **Delete**.
+1. リソース グループ名を入力します。 次に、 **[削除]** を選択します。
 
- -->
-
- ## <a name="example-notebooks"></a>サンプルの Notebook
+## <a name="example-notebooks"></a>サンプルの Notebook
 
 [Azure ML ノートブックでの MLflow](https://aka.ms/azureml-mlflow-examples) は、この記事で提示した概念を示し、さらに詳しく説明します。
 

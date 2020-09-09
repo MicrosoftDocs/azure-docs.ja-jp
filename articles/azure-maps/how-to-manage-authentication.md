@@ -1,19 +1,20 @@
 ---
-title: 認証の管理 | Microsoft Azure Maps
-description: Azure portal を使用して、Microsoft Azure Maps での認証を管理します。
-author: philmea
-ms.author: philmea
-ms.date: 01/29/2020
+title: 認証を管理する
+titleSuffix: Azure Maps
+description: Azure Maps 認証について理解を深めます。 どの方法がどのシナリオで最適に機能するかを確認します。 ポータルを使用して認証設定を表示する方法について説明します。
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: dfe73971f29ea362fdd0ddd654e705b622ab1866
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8fc27ea4de7e81f1279f68d2e4a1a7fde1fcf41f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335538"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037339"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Azure Maps での認証の管理
 
@@ -25,97 +26,65 @@ Azure Maps アカウントの作成後、主キーと 2 次キーが生成され
 
 認証の詳細は、Azure portal で確認できます。 Azure portal の自分のアカウントで、 **[設定]** メニューの **[認証]** を選択します。
 
-![認証の詳細](./media/how-to-manage-authentication/how-to-view-auth.png)
+> [!div class="mx-imgBorder"]
+> ![認証の詳細](./media/how-to-manage-authentication/how-to-view-auth.png)
 
+## <a name="discover-category-and-scenario"></a>カテゴリとシナリオを調べる
 
-## <a name="register-and-configure-an-azure-ad-app"></a>Azure AD アプリを登録して構成する
+アプリケーションのニーズに応じて、アプリケーションをセキュリティで保護するための特定の方法があります。 Azure AD では、さまざまな認証フローをサポートするためのカテゴリが定義されています。 アプリケーションがどのカテゴリに適合するかについては、「[アプリケーションのカテゴリ](https://docs.microsoft.com/azure/active-directory/develop/authentication-flows-app-scenarios#application-categories)」を参照してください。
 
-1. Azure portal の Azure サービスの一覧で、 **[Azure Active Directory]**  >  **[アプリの登録]**  >  **[新規登録]** の順に選択します。  
+> [!NOTE]
+> 共有キー認証を使用する場合でも、カテゴリとシナリオを理解することは、アプリケーションをセキュリティで保護するのに役立ちます。
 
-    ![アプリの登録](./media/how-to-manage-authentication/app-registration.png)
+## <a name="determine-authentication-and-authorization"></a>認証と認可を判断する
 
-1. アプリを既に登録している場合は、次の手順に進みます。 アプリを登録していない場合は、 **[名前]** を入力し、 **[Support account type] (サポートされているアカウントの種類)** を選択して、 **[登録]** を選択します。  
+次の表に、Azure Maps での一般的な認証と認可のシナリオの概要を示します。 表では、それぞれのシナリオによって提供される保護の種類を比較しています。
 
-    ![アプリの登録の詳細](./media/how-to-manage-authentication/app-create.png)
+> [!IMPORTANT]
+> Microsoft では、運用アプリケーション用に Azure Active Directory (Azure AD) およびロールベースのアクセス制御 (RBAC) を実装することをお勧めします。
 
-1. 委任された API アクセス許可を Azure Maps に割り当てるには、アプリケーションに移動します。 次に、 **[アプリの登録]** で、 **[API のアクセス許可]**  >  **[アクセス許可の追加]** の順に選択します。 **[所属する組織で使用している API]** で、「**Azure Maps**」を検索して選択します。
+| シナリオ                                                                                    | 認証 | 承認 | 開発の作業量 | 運用の作業量 |
+| ------------------------------------------------------------------------------------------- | -------------- | ------------- | ------------------ | ------------------ |
+| [信頼済みデーモンまたは非対話型クライアント アプリケーション](./how-to-secure-daemon-app.md)        | 共有キー     | 該当なし           | Medium             | 高               |
+| [信頼済みデーモンまたは非対話型クライアント アプリケーション](./how-to-secure-daemon-app.md)        | Azure AD       | 高          | 低                | Medium             |
+| [対話型のシングル サインオンを使用する Web シングル ページ アプリケーション](./how-to-secure-spa-users.md) | Azure AD       | 高          | Medium             | Medium             |
+| [非対話型サインオンを使用する Web シングル ページ アプリケーション](./how-to-secure-spa-app.md)      | Azure AD       | 高          | Medium             | Medium             |
+| [対話型シングル サインオンを使用する Web アプリケーション](./how-to-secure-webapp-users.md)          | Azure AD       | 高          | 高               | Medium             |
+| [IoT デバイスまたは入力の制約付きデバイス](./how-to-secure-device-code.md)                     | Azure AD       | 高          | Medium             | Medium             |
 
-    ![アプリの API アクセス許可の追加](./media/how-to-manage-authentication/app-permissions.png)
+各シナリオの詳細な構成情報については、表のリンクを参照してください。
 
-1. **[Access Azure Maps] (Azure Maps へのアクセス)** の横にあるチェック ボックスをオンにしてから、 **[アクセス許可の追加]** を選択します。
+## <a name="view-role-definitions"></a>ロール定義を表示する
 
-    ![アプリの API アクセス許可の選択](./media/how-to-manage-authentication/select-app-permissions.png)
+Azure Maps に使用できる Azure ロールを表示するには、 **[アクセス制御 (IAM)]** に移動します。 **[ロール]** を選択してから、「*Azure Maps*」で始まるロールを検索します。 これらの Azure Maps ロールが、アクセス権を付与できるロールです。
 
-1. 使用する認証方法に応じて、次のいずれかの手順を実行します。 
+> [!div class="mx-imgBorder"]
+> ![使用可能なロールの表示](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
-    * お使いのアプリケーション上で Azure Maps Web SDK によるユーザートークン認証を使用する場合は、`oauth2AllowImplicitFlow` を有効にします。 これを有効にするには、アプリ登録の **[マニフェスト]** セクションで `oauth2AllowImplicitFlow` を [true] に設定します。 
-    
-       ![アプリ マニフェスト](./media/how-to-manage-authentication/app-manifest.png)
-
-    * お使いのアプリケーション上でサーバー認証またはアプリケーション認証を使用する場合は、アプリの登録ページで、 **[証明書とシークレット]** に移動します。 次に、公開キー証明書をアップロードするか、 **[新しいクライアント シークレット]** を選択してパスワードを作成します。 
-    
-       ![クライアント シークレットの作成](./media/how-to-manage-authentication/app-keys.png)
-
-        パスワードを作成する場合は、 **[追加]** を選択した後に、パスワードをコピーして安全に保管します。 Azure AD からトークンを取得するには、このパスワードを使用します。
-
-       ![クライアント シークレットの追加](./media/how-to-manage-authentication/add-key.png)
-
-
-## <a name="grant-role-based-access-control-to-azure-maps"></a>ロールベースのアクセス制御を Azure Maps に付与する
-
-Azure AD テナントに Azure Maps アカウントを関連付けると、アクセス制御を許可できます。 *ロールベースのアクセス制御* (RBAC) を付与するには、1 つまたは複数の Azure Maps アクセス制御ロールにユーザー、グループ、またはアプリケーションを割り当てます。 
-
-1. **[Azure Maps アカウント]** にアクセスします。 **[アクセス制御 (IAM)]**  >  **[ロールの割り当て]** の順に選択します。
-
-    ![RBAC の付与](./media/how-to-manage-authentication/how-to-grant-rbac.png)
-
-1. **[ロールの割り当て]** タブの **[ロール]** で、 **[Azure Maps データ閲覧者 (プレビュー)]** を選択します。 **[アクセスの割り当て先]** で **[Azure AD user, group, or service principal]\(Azure AD のユーザー、グループ、またはサービス プリンシパル\)** を選択します。 ユーザーまたはアプリケーションを選択します。 次に、 **[保存]** を選択します。
-
-    ![ロールの割り当ての追加](./media/how-to-manage-authentication/add-role-assignment.png)
-
-## <a name="view-available-azure-maps-rbac-roles"></a>使用可能な Azure Maps RBAC ロールを表示する
-
-Azure Maps に使用できる RBAC ロールを表示するには、 **[アクセス制御 (IAM)]** に移動します。 **[ロール]** を選択してから、「*Azure Maps*」で始まるロールを検索します。 これらの Azure Maps ロールが、アクセス権を付与できるロールです。
-
-![使用可能なロールの表示](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
-
-
-## <a name="view-azure-maps-rbac"></a>Azure Maps RBAC を表示する
-
-RBAC は詳細なアクセス制御を提供します。
+## <a name="view-role-assignments"></a>ロールの割り当てを表示する
 
 Azure Maps の RBAC が付与されているユーザーやアプリを表示するには、 **[アクセス制御 (IAM)]** に移動します。 そこで、 **[ロールの割り当て]** を選択してから、「**Azure Maps**」でフィルター処理します。
 
-![RBAC が付与されているユーザーやアプリの表示](./media/how-to-manage-authentication/how-to-view-amrbac.png)
-
+> [!div class="mx-imgBorder"]
+> ![RBAC が付与されているユーザーやアプリの表示](./media/how-to-manage-authentication/how-to-view-amrbac.png)
 
 ## <a name="request-tokens-for-azure-maps"></a>Azure Maps のトークンを要求する
 
-アプリを登録して Azure Maps と関連付けると、アクセス トークンを要求することができます。
+Azure AD トークン エンドポイントからトークンを要求します。 Azure AD 要求で、次の詳細を使用します。
 
-お使いのアプリケーション上で Azure Maps Web SDK によるユーザートークン認証を使用する場合は、Azure Maps クライアント ID と Azure AD アプリ ID を使って HTML ページを構成する必要があります。
+| Azure 環境      | Azure AD トークン エンドポイント             | Azure リソース ID              |
+| ---------------------- | ----------------------------------- | ------------------------------ |
+| Azure パブリック クラウド     | `https://login.microsoftonline.com` | `https://atlas.microsoft.com/` |
+| Azure Government クラウド | `https://login.microsoftonline.us`  | `https://atlas.microsoft.com/` |
 
-お使いのアプリケーション上でサーバー認証またはアプリケーション認証を使用する場合は、Azure AD トークン エンドポイント `https://login.microsoftonline.com` からトークンを要求します。 要求では、次の詳細を使用します。 
-
-* Azure リソース ID `https://atlas.microsoft.com/`
-* Azure Maps クライアント ID
-* Azure AD アプリ ID
-* Azure AD アプリの登録パスワードまたは証明書
-
-| Azure 環境   | Azure AD トークン エンドポイント | Azure リソース ID |
-| --------------------|-------------------------|-------------------|
-| Azure パブリック クラウド        | `https://login.microsoftonline.com` | `https://atlas.microsoft.com/` |
-| Azure Government クラウド   | `https://login.microsoftonline.us`  | `https://atlas.microsoft.com/` | 
-
-Azure AD からユーザーやサービス プリンシパルのアクセス トークンを要求する方法の詳細については、「[Azure AD の認証シナリオ](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)」をご覧ください。
-
+Azure AD からユーザーやサービス プリンシパルのアクセス トークンを要求する方法の詳細については、[Azure AD の認証シナリオ](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)に関するページを参照し、[シナリオ](./how-to-manage-authentication.md#determine-authentication-and-authorization)の表から特定のシナリオを確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 詳細については、[Azure AD と Azure Maps Web SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control) に関する記事をご覧ください。
 
 Azure Maps アカウントにおける API 使用状況メトリックを確認します。
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [使用状況メトリックを表示する](how-to-view-api-usage.md)
 
 Azure AD と Azure Maps を統合する方法を示すサンプルを確認します。

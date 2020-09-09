@@ -4,19 +4,19 @@ description: Azure AD の条件付きアクセスに関する分析情報とレ�
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/01/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c4feeca1cbe7eb88aace811829e4d9c2db5f38e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 678c32703501c4d0b66321cfc3518631ffa28c0c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83641597"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253275"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>条件付きアクセスに関する分析情報とレポート
 
@@ -98,6 +98,23 @@ Azure AD ログを Azure Monitor ログと統合していない場合は、ブ�
 また、ダッシュボードの下部でサインインを検索して、特定のユーザーのサインインを調査することもできます。 左側のクエリでは、頻度が最も高いユーザーが表示されます。 ユーザーを選択すると、クエリがフィルター処理されて右側に表示されます。  
 
 ## <a name="troubleshooting"></a>トラブルシューティング
+
+### <a name="why-are-queries-failing-due-to-a-permissions-error"></a>アクセス許可エラーに起因してクエリに失敗するのはなぜですか。
+
+ブックにアクセスするには、適切な Azure AD アクセス許可と Log Analytics ワークスペース アクセス許可が必要です。 サンプルのログ分析クエリを実行し、適切なワークスペース アクセス許可が与えられているかどうかをテストするには:
+
+1. **Azure portal** にサインインします。
+1. **[Azure Active Directory]** 、 **[ログ]** の順に移動します。
+1. クエリ ボックスに「`SigninLogs`」と入力し、 **[実行]** を選択します。
+1. クエリから何の結果も返されない場合、ワークスペースに正しく構成されていない可能性があります。 
+
+![クエリ失敗の問題解決](./media/howto-conditional-access-insights-reporting/query-troubleshoot-sign-in-logs.png)
+
+Azure AD サインイン ログを Log Analytics ワークスペースにストリーミングする方法の詳細については、「[Azure AD ログを Azure Monitor ログと統合する](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)」を参照してください。
+
+### <a name="why-is-the-conditional-access-policies-parameter-is-empty"></a>条件付きアクセス ポリシー パラメーターが空であるのはなぜですか。
+
+ポリシーの一覧は、最も新しいサインイン イベントに対して評価されたポリシーを調べることで生成されます。 テナントに新しいサインインがないとき、場合によっては、条件付きアクセス ポリシーの一覧がブックに読み込まれるまで数分待つ必要があります。 これは Log Analytics を構成した直後にありえることです。あるいは、テナントに最近、サインイン アクティビティがない場合、もっと時間がかかることがあります。
 
 ### <a name="why-is-the-workbook-taking-a-long-time-to-load"></a>ブックの読み込みに長い時間がかかるのはなぜですか。  
 

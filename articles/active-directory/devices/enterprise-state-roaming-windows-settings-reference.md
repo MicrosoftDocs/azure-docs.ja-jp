@@ -4,19 +4,19 @@ description: ESR 対応の Windows 10 でローミングまたはバックアッ
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: troubleshooting
+ms.topic: reference
 ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a7abc402f1fc2e449e7aac5effdb01b6b941100
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6048ee9237640799b7bec37083e607fc74ffb8e4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78672622"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85252969"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 ローミング設定リファレンス
 

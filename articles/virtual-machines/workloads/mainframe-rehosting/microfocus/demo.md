@@ -6,18 +6,18 @@ ms.author: sread
 ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: db9d6bab2f383102434512aa63d7566cff1f579b
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 7fb72b9a7d0d655f99d1e5cf194f7c6f26976a37
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411066"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508051"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Azure で Micro Focus Enterprise Developer 4.0 用の Micro Focus CICS BankDemo を設定する
 
 Micro Focus Enterprise Server 4.0 と Enterprise Developer 4.0 を Azure 上で設定する際には、IBM z/OS ワークロードのデプロイをテストできます。 この記事では、CICS BankDemo (Enterprise Developer に付属しているサンプル アプリケーション) の設定方法について説明します。
 
-CICS とは、Customer Information Control System (顧客情報管理システム) の略です。これは、多くのオンライン メインフレーム アプリケーションで使用されているトランザクション プラットフォームです。 BankDemo アプリケーションは、Enterprise Server と Enterprise Developer の動作を学習したり、グリーンスクリーンターミナルを備えた実際のアプリケーションの管理方法やデプロイ方法を学習するのに最適です。
+CICS とは、Customer Information Control System (顧客情報管理システム) の略です。これは、多くのオンライン メインフレーム アプリケーションで使用されているトランザクション プラットフォームです。 BankDemo アプリケーションは、Enterprise Server と Enterprise Developer の動作を学習したり、グリーンスクリーン端末を備えた実際のアプリケーションの管理方法やデプロイ方法を学習するのに最適です。
 
 > [!NOTE]
 > 近日対応予定:Azure VM での [Micro Focus Enterprise Server 5.0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110) のセットアップの手順。
@@ -273,7 +273,7 @@ BankDemo アプリケーションにアクセスする TN3270 セッション用
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure の Docker コンテナーで Enterprise Server を実行する](run-enterprise-server-container.md)
-- [メインフレーム移行 - Portal](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
-- [Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
-- [トラブルシューティング](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
+- [メインフレーム移行 - Portal](/archive/blogs/azurecat/mainframe-migration-to-azure-portal)
+- [Virtual Machines](../../../linux/overview.md)
+- [トラブルシューティング](../../../troubleshooting/index.yml)
 - [メインフレームから Azure への移行の解明](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)

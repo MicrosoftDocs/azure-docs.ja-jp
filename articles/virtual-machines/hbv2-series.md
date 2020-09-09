@@ -1,18 +1,19 @@
 ---
 title: HBv2 シリーズ - Azure Virtual Machines
 description: HBv2 シリーズ VM の仕様。
-services: virtual-machines
 author: vermagit
 ms.service: virtual-machines
-ms.topic: article
-ms.date: 02/03/2020
+ms.subservice: sizes
+ms.topic: conceptual
+ms.date: 08/06/2020
 ms.author: amverma
-ms.openlocfilehash: eea649610ca53ccbb98b5ca361555280dcd3dafe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: jushiman
+ms.openlocfilehash: b7655f4cb13e80d6262c3d4871c1ab69f4a6a051
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78164799"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905469"
 ---
 # <a name="hbv2-series"></a>HBv2 シリーズ
 
@@ -42,4 +43,7 @@ Premium Storage: サポートされています
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure コンピューティング ユニット (ACU)](acu.md) を確認することで、Azure SKU 全体の処理性能を比較できます。
+- [VM の構成](./workloads/hpc/configure.md)、[InfiniBand の有効化](./workloads/hpc/enable-infiniband.md)、[MPI の設定](./workloads/hpc/setup-mpi.md)、[HPC ワークロード](./workloads/hpc/overview.md)での Azure 用の HPC アプリケーションの最適化について学習します。
+- [Azure Compute Tech Community のブログ](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)で、最新の発表および HPC の例と結果について参照します。
+- HPC ワークロードの実行をアーキテクチャの面から見た概要については、「[Azure でのハイ パフォーマンス コンピューティング (HPC)](/azure/architecture/topics/high-performance-computing/)」をご覧ください。
+- [Azure コンピューティング ユニット (ACU)](acu.md) を確認することで、Azure SKU 全体の処理性能を比較できます。

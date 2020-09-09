@@ -3,12 +3,12 @@ title: システム状態とベア メタル回復保護
 description: Azure Backup Server を使用して、システム状態をバックアップし、ベア メタル回復 (BMR) 保護を実現します。
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: bab55ca607e0641ea0cc597de686f3abbb387598
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c5096158ca0e76ca03577347d8dd3e1419a33ca0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192367"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538702"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-by-using-azure-backup-server"></a>Azure Backup Server を使用してシステム状態をバックアップし、ベア メタルに復元する
 
@@ -98,12 +98,12 @@ Backup Server は、Windows Server バックアップを呼び出し、その BM
 ## <a name="before-you-begin"></a>開始する前に
 
 1. **Azure Backup Server をデプロイ**します。 Backup Server が正しくデプロイされていることを確認します。 詳細については、次を参照してください。
-    * [Azure Backup Server のシステム要件](https://docs.microsoft.com/system-center/dpm/install-dpm#setup-prerequisites)
+    * [Azure Backup Server のシステム要件](/system-center/dpm/install-dpm#setup-prerequisites)
     * [Backup Server の保護マトリックス](backup-mabs-protection-matrix.md)
 
-1. **記憶域をセットアップ**します。 Azure では、ディスク、テープ、およびクラウドにバックアップ データを格納できます。 詳細については、[データ記憶域の準備](https://docs.microsoft.com/system-center/dpm/plan-long-and-short-term-data-storage)に関するページを参照してください。
+1. **記憶域をセットアップ**します。 Azure では、ディスク、テープ、およびクラウドにバックアップ データを格納できます。 詳細については、[データ記憶域の準備](/system-center/dpm/plan-long-and-short-term-data-storage)に関するページを参照してください。
 
-1. **保護エージェントをセットアップ**します。 バックアップを作成するコンピューターに保護エージェントをインストールします。 詳細については、[DPM 保護エージェントのデプロイ](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent)に関するページを参照してください。
+1. **保護エージェントをセットアップ**します。 バックアップを作成するコンピューターに保護エージェントをインストールします。 詳細については、[DPM 保護エージェントのデプロイ](/system-center/dpm/deploy-dpm-protection-agent)に関するページを参照してください。
 
 ## <a name="back-up-system-state-and-bare-metal"></a>システム状態とベア メタルのバックアップ
 
@@ -115,7 +115,7 @@ Backup Server は、Windows Server バックアップを呼び出し、その BM
 
 1. **[グループ メンバーの選択]** ページで、コンピューターを展開して、**BMR** または**システム状態**のいずれかを選択します。
 
-    別のグループで同じコンピューターの BMR とシステム状態の両方を保護することはできません。 また、BMR を選択した場合、システム状態は自動的に有効になります。 詳細については、[保護グループのデプロイ](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups)に関するページを参照してください。
+    別のグループで同じコンピューターの BMR とシステム状態の両方を保護することはできません。 また、BMR を選択した場合、システム状態は自動的に有効になります。 詳細については、[保護グループのデプロイ](/system-center/dpm/create-dpm-protection-groups)に関するページを参照してください。
 
 1. **[データの保護方法の選択]** ページで、短期バックアップと長期バックアップを処理する方法を選択します。
 

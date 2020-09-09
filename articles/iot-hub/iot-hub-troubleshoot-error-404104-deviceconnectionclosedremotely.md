@@ -10,10 +10,10 @@ ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: mqtt
 ms.openlocfilehash: c8cb91aa0c7ce1610320d4107db282d3c34407ba
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81758731"
 ---
 # <a name="404104-deviceconnectionclosedremotely"></a>404104 DeviceConnectionClosedRemotely

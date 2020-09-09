@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/08/2018
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: e683d17422321b780a1c01b3011292f2e2c631cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 30bbd06e36ed1e03caa391165a8abc275f1899a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67181222"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102788"
 ---
 ボリューム コンテナーを削除するには、次の操作が必要です。
  - ボリューム コンテナー内のボリュームを削除します。 ボリューム コンテナーにボリュームが関連付けられている場合は、先にそれらのボリュームをオフラインにします。 「 [ボリュームをオフラインにする](../articles/storsimple/storsimple-8000-manage-volumes-u2.md#take-a-volume-offline)」の手順に従ってください。 ボリュームがオフラインになったら、それらを削除できます。 
@@ -36,6 +36,6 @@ ms.locfileid: "67181222"
 
 削除されたボリューム コンテナーを反映するようにボリューム コンテナーの一覧が更新されます。
 
-![](./media/storsimple-8000-delete-volume-container/deletevolumecontainer5.png)
+![ボリューム コンテナー ページのスクリーンショット。 ボリューム コンテナーの表形式の一覧に、削除されたコンテナーが含まれなくなりました。](./media/storsimple-8000-delete-volume-container/deletevolumecontainer5.png)
 
 

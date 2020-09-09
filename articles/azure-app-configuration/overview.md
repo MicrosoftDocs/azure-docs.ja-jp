@@ -1,17 +1,17 @@
 ---
 title: 'Azure App Configuration とは '
-description: Azure App Configuration サービスの概要。
+description: Azure App Configuration サービスの概要をお読みください。 App Configuration を使用する理由と、その使用方法について説明します。
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: overview
 ms.date: 02/19/2020
-ms.openlocfilehash: 1f1cec68813d33e7fa19a414a30adfc9a41df91f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f38b8de37e84cd8a65c5a5caadf8d3b6b71ce455
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77523477"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587074"
 ---
 # <a name="what-is-azure-app-configuration"></a>Azure App Configuration とは 
 
@@ -53,12 +53,12 @@ App Configuration ストアを自分のアプリケーションに追加する�
 
 | プログラミング言語とフレームワーク | 接続する方法 |
 |---|---|
-| .NET Core と ASP.NET Core | .NET Core 用 App Configuration プロバイダー |
+| .NET Core および ASP.NET Core | .NET Core 用 App Configuration プロバイダー |
 | .NET Framework および ASP.NET | .NET 用 App Configuration ビルダー |
 | Java Spring | Spring Cloud 用 App Configuration クライアント |
 | その他 | App Configuration の REST API |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [ASP.NET Core のクイック スタート](./quickstart-aspnet-core-app.md)
 * [.NET Core のクイック スタート](./quickstart-dotnet-core-app.md)

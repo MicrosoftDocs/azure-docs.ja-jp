@@ -3,25 +3,25 @@ title: Microsoft Azure での Oracle ソリューション | Microsoft Docs
 description: Oracle のアプリケーションおよびソリューションを Microsoft Azure にデプロイするためのオプション (全面的に Azure インフラストラクチャ上で実行する、クラウド間接続と Oracle Cloud Infrastructure (OCI) を使用するなど) について学びます。
 services: virtual-machines-linux
 documentationcenter: ''
-author: BorisB2015
+author: rgardler
 tags: azure-resource-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/16/2020
-ms.author: borisb
-ms.openlocfilehash: c737189650d571fb62a770707e84ed15c5a37a57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/05/2020
+ms.author: rogardle
+ms.openlocfilehash: 6a516fc75880e3b6a5bc5b5907e8d968dce2ae31
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81870503"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507864"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure での Oracle アプリケーションおよびソリューションの概要
 
-この記事では、Azure インフラストラクチャを使用して Oracle ソリューションを実行するための機能を紹介します。 Azure Marketplace で入手可能な [Oracle VM イメージ](oracle-vm-solutions.md)や、[Azure と Oracle Cloud Infrastructure (OCI) を相互接続する](oracle-oci-overview.md)機能の詳しい紹介も参照してください。
+この記事では、Azure インフラストラクチャを使用して Oracle ソリューションを実行するための機能を紹介します。 Azure Marketplace で入手可能な [WebLogic Server Azure アプリケーション](oracle-weblogic.md)、[Oracle VM イメージ](oracle-vm-solutions.md)や、[Azure と Oracle Cloud Infrastructure (OCI) を相互接続する](oracle-oci-overview.md)機能の詳しい紹介も参照してください。
 
 ## <a name="oracle-databases-on-azure-infrastructure"></a>Azure インフラストラクチャ上の Oracle データベース
 
@@ -29,33 +29,39 @@ Azure Marketplace で入手可能な Oracle Linux イメージの Oracle Databas
 
 * Oracle Database 12.1、12.2、および 18.3 Enterprise Edition 
 
-* Oracle Database 12.1、12.2、および 18.3 Standard Edition 
+* Oracle Database 12.1、12.2、および 18.3 Standard Edition
+
+* Oracle データベース 19.3
 
 また、Azure で利用可能な Oracle Linux 以外のイメージに Oracle Database を設定したり、Azure で一から作成したカスタム イメージに基づいてソリューションを作成したり、オンプレミス環境からカスタム イメージをアップロードしたりすることも選択できます。
 
 必要に応じて、複数の接続ディスクを構成し、Oracle Automated Storage Management (ASM) をインストールすることでデータベースのパフォーマンスを向上させます。
 
+## <a name="weblogic-server-with-azure-service-integrations"></a>WebLogic Server と Azure サービス統合
+
+クラウドへの移行を促進するために、さまざまな WebLogic Server Azure アプリケーションから選択します。  データベース、Azure App Gateway、Azure Active Directory など、いくつかの事前構成済みの Azure サービス統合を利用できます。
+
 ## <a name="applications-on-oracle-linux-and-weblogic-server"></a>Oracle Linux および WebLogic Server 上のアプリケーション
 
-サポートされている Oracle オペレーティング システム上で、Azure 内のエンタープライズ アプリケーションを実行します。 次のイメージは Azure Marketplace で入手できます。
+サポートされている Oracle Linux イメージで、Azure のエンタープライズ アプリケーションを実行します。 次の仮想マシン イメージは Azure Marketplace で入手できます。
 
 * Oracle WebLogic Server 12.1.2
 
-* UEK Enterprise Kernel (UEK) 6.8、6.9、6.10、7.3、7.4、7.5、および 7.6 での Oracle Linux 
+* Unbreakable Enterprise Kernel (UEK) 6.8、6.9、6.10、7.3 から 7.7、8.0、8.1.を搭載した Oracle Linux 
 
 ## <a name="high-availability-and-disaster-recovery-options"></a>高可用性とディザスター リカバリーのオプション
 
 * Azure インフラストラクチャ上で、[Availability Zones](../../../availability-zones/az-overview.md) と組み合わせて [Oracle Data Guard](https://docs.oracle.com/cd/B19306_01/server.102/b14239/concepts.htm#g1049956)、[FSFO を持つ Active Data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html)、[シャーディング](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html)、または [GoldenGate](https://www.oracle.com/middleware/technologies/goldengate.html) を構成し、リージョン内の高可用性を実現します。 また、可用性とディザスター リカバリーを強化するために、これらの構成を複数の Azure リージョンにわたって設定することもできます。
 
-* [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md) を使用して、Azure 内の Oracle Linux VM と、オンプレミスまたは物理サーバーのディザスター リカバリーを調整および管理します。 
+* [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md) を使用して、Azure 内の Oracle Linux VM と、物理サーバーのディザスター リカバリーを調整および管理します。 
 
-* [Azure VMWare Solution](https://docs.microsoft.com/azure/vmware-cloudsimple/oracle-real-application-clusters/) または [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/) を使用して、Oracle Real Application Clusters (RAC) を Azure で有効にします。
+* [Azure VMware Solution](../../../vmware-cloudsimple/oracle-real-application-clusters.md) または [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/) を使用して、Oracle Real Application Clusters (RAC) を Azure で有効にします。
 
 ## <a name="backup-oracle-workloads"></a>Oracle ワークロードのバックアップ
 
-* [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) を使用して Oracle VM をバックアップします。
+* [Azure Backup](../../../backup/backup-overview.md) を使用して Oracle VM をバックアップします。
 
-* Oracle RMAN を使用して Oracle Database をバックアップし、必要に応じて、[Azure Blob Fuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux) を使用して、[冗長性の高い Azure Blob Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-redundancy)をマウントし、回復性を高めるために RMAN バックアップをそれに書き込みます。
+* Oracle RMAN を使用して Oracle Database をバックアップし、必要に応じて、[Azure Blob Fuse](../../../storage/blobs/storage-how-to-mount-container-linux.md) を使用して、[冗長性の高い Azure Blob Storage アカウント](../../../storage/common/storage-redundancy.md)をマウントし、回復性を高めるために RMAN バックアップをそれに書き込みます。
 
 ## <a name="integration-of-azure-with-oci"></a>Azure と OCI の統合
 
@@ -68,8 +74,7 @@ Oracle Cloud Infrastructure (OCI) のバックエンド データベースに接
 
 Terraform テンプレートを使用して Azure インフラストラクチャを設定し、Oracle アプリケーションをインストールします。 
 
-> [!IMPORTANT]
-> Azure または Oracle Cloud 相互接続ソリューションを 2020 年 5 月までに使用する場合、Oracle はこれらのアプリケーションを Azure で実行することを認定します。
+Oracle は、Azure/Oracle Cloud 相互接続ソリューションを介して Oracle データベースに接続するときに、これらのアプリケーションを Azure で実行することを認定しています。
 
 * E-Business Suite
 * JD Edwards EnterpriseOne
@@ -81,7 +86,7 @@ Terraform テンプレートを使用して Azure インフラストラクチャ
 
 ### <a name="set-up-oracle-databases-in-oci"></a>OCI で Oracle データベースをセットアップする
 
-Oracle Database Cloud Services (Autonomous Database、RAC、Exadata、DBaaS、Single Node) を、Azure で実行されている Oracle アプリケーションと組み合わせて使用します。 [OCI データベース オプション](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm)の詳細を見る。 
+Oracle Database Cloud Services (Autonomous Database、RAC、Exadata、DBaaS、Single Node) を、Azure で実行されている Oracle ソフトウェアと組み合わせて使用します。 [OCI データベース オプション](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm)の詳細を見る。 
  
 
 ## <a name="licensing"></a>ライセンス
@@ -89,6 +94,8 @@ Oracle Database Cloud Services (Autonomous Database、RAC、Exadata、DBaaS、Si
 Azure での Oracle アプリケーションのデプロイは、「ライセンス持ち込み」モデルに基づいています。 つまり、Oracle ソフトウェアを使用するライセンスが適切に供与されていて、Oracle と現在サポート契約を結んでいることを前提としています。 Oracle では、オンプレミスから Azure へのライセンス モビリティを保証しています。 Oracle-Azure [FAQ](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html) を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
+
+* [WebLogic Server Azure アプリケーション](oracle-weblogic.md)と、それらがサポートする Azure サービス統合について詳しく学びます。
 
 * Azure インフラストラクチャへの [Oracle VM イメージ](oracle-vm-solutions.md)のデプロイについて詳しく学びます。
 

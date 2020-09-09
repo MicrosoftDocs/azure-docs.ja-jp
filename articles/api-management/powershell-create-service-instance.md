@@ -12,14 +12,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/15/2017
 ms.author: apimpm
-ms.openlocfilehash: 7cd4810059199ddfc88261e27bc910331abe096d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f42a68d066898869574cb6ccf5099ccdd451e5fe
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "66730627"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506929"
 ---
-# <a name="create-a-new-azure-api-management-service-instance"></a>Azure API Management サービスの新しいインスタンスの作成
+# <a name="create-a-new-azure-api-management-service-instance-by-using-powershell"></a>PowerShell を使用して新しい Azure API Management サービス インスタンスを作成する
 
 API Management (APIM) が組織にもたらす利点は、外部、パートナー、社内の開発者に API を公開することによって、社内のデータやサービスの可能性を広げられることです。 API Management は、開発者の取り組み、ビジネス インサイト、分析、セキュリティ、保護を通じて API プログラムの価値を高め、企業にコア コンピテンシーをもたらします。 APIM を使用すると、任意の場所でホストされている既存のバックエンド サービスの最新の API ゲートウェイを作成し、管理できます。 詳細については、[概要](api-management-key-concepts.md)に関するトピックを参照してください。
 

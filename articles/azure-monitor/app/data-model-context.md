@@ -4,12 +4,12 @@ description: Application Insights Telemetry のコンテキスト データ モ�
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 8a2e3296643b13a54c4fceb11f044a2808cf2877
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 25ff7d92da5ea0a6aba84aad1cfc98e5295e151e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671865"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322671"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>テレメトリ コンテキスト:Application Insights データ モデル
 
@@ -39,14 +39,14 @@ ms.locfileid: "77671865"
 
 ## <a name="operation-id"></a>操作 ID
 
-ルート操作を表す一意の識別子。 この識別子を使用すると、複数のコンポーネントでテレメトリをグループ化できます。 詳細については、「[テレメトリの相関付け](../../azure-monitor/app/correlation.md)」を参照してください。 操作 ID は、要求またはページ ビューのいずれかによって作成されます。 その他のすべてのテレメトリは、含まれている要求またはページ ビューの値でこのフィールドを設定します。 
+ルート操作を表す一意の識別子。 この識別子を使用すると、複数のコンポーネントでテレメトリをグループ化できます。 詳細については、「[テレメトリの相関付け](./correlation.md)」を参照してください。 操作 ID は、要求またはページ ビューのいずれかによって作成されます。 その他のすべてのテレメトリは、含まれている要求またはページ ビューの値でこのフィールドを設定します。 
 
 最大長:128
 
 
 ## <a name="parent-operation-id"></a>親操作 ID
 
-テレメトリ項目の直接の親の一意の識別子。 詳細については、「[テレメトリの相関付け](../../azure-monitor/app/correlation.md)」を参照してください。
+テレメトリ項目の直接の親の一意の識別子。 詳細については、「[テレメトリの相関付け](./correlation.md)」を参照してください。
 
 最大長:128
 
@@ -76,7 +76,7 @@ ms.locfileid: "77671865"
 
 匿名ユーザー ID。アプリケーションのエンド ユーザーを表します。 サービスからテレメトリが送信されるときのユーザー コンテキストは、サービスで操作を開始したユーザーに関するものです。
 
-[サンプリング](../../azure-monitor/app/sampling.md)は、収集されたテレメトリの量を最小限に抑える方技術の 1 つです。 サンプリング アルゴリズムは、相関関係を持つテレメトリをすべて対象として、またはすべてを対象外としてサンプリングを試行します。 匿名ユーザー ID は、サンプリング スコアの生成に使用されます。 このため、匿名ユーザー ID は、十分にランダムな値である必要があります。 
+[サンプリング](./sampling.md)は、収集されたテレメトリの量を最小限に抑える方技術の 1 つです。 サンプリング アルゴリズムは、相関関係を持つテレメトリをすべて対象として、またはすべてを対象外としてサンプリングを試行します。 匿名ユーザー ID は、サンプリング スコアの生成に使用されます。 このため、匿名ユーザー ID は、十分にランダムな値である必要があります。 
 
 ユーザー名を格納するために匿名ユーザー ID を使用すると、フィールドの不正使用になります。 認証されたユーザー ID を使用します。
 
@@ -127,6 +127,7 @@ SDK バージョン。 情報については、[こちらの記事](https://gith
 
 ## <a name="next-steps"></a>次のステップ
 
-- [テレメトリの拡張とフィルター処理](../../azure-monitor/app/api-filtering-sampling.md)を行う方法を確認します。
+- [テレメトリの拡張とフィルター処理](./api-filtering-sampling.md)を行う方法を確認します。
 - Application Insights の型とデータ モデルについては、[データ モデル](data-model.md)に関するページを参照してください。
-- 標準的なコンテキスト プロパティ コレクションの[構成](../../azure-monitor/app/configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet)を確認します。
+- 標準的なコンテキスト プロパティ コレクションの[構成](./configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet)を確認します。
+

@@ -1,6 +1,6 @@
 ---
-title: Azure Synapse Analytics でリンクされたサービスをプロビジョニングしてセキュリティで保護する
-description: マネージド Vnet を使用してリンクされたサービスをプロビジョニングしてセキュリティで保護する方法について説明します
+title: リンクされたサービスをセキュリティで保護する
+description: マネージド VNet を使用して、リンクされたサービスをプロビジョニングしてセキュリティで保護する方法について説明します
 services: synapse-analytics
 author: acomet
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 435c3fd6b1e6444fa3a31c68b4d74c2553d2e634
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1ce127dbfd9984b3fb18e518701cbbd3a87f5988
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427239"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387245"
 ---
-# <a name="securing-a-linked-service-with-private-links"></a>Private Links を使用したリンクされたサービスのセキュリティ保護 
+# <a name="secure-a-linked-service-with-private-links"></a>Private Link を使用してリンクされたサービスをセキュリティで保護する 
 
 この記事では、プライベート エンドポイントを使用して Synapse 内のリンクされたサービスをセキュリティで保護する方法について説明します。
 
@@ -52,7 +52,7 @@ Azure Synapse Analytics で、リンクされたサービスとは、他のサ�
 1. **[作成]**
 1. 数秒待った後で、作成されたプライベート リンクに承認が必要であることが示されます。
 
-## <a name="approval-of-a-private-link"></a>プライベート リンクの承認
+## <a name="private-link-approval"></a>プライベート リンクの承認
 1. 上で作成したプライベート エンドポイントを選択します。 ストレージ アカウント レベルでプライベート エンドポイントを承認するためのハイパーリンクが表示されます。 "*別の方法としては、Azure portal ストレージ アカウントに直接アクセスし、 **[プライベート エンドポイント接続]** ブレードにアクセスします。* "
 1. Studio で作成したプライベート エンドポイントを選択し、 **[承認]** を選択します。
 1. 説明を追加して、 **[はい]** をクリックします。

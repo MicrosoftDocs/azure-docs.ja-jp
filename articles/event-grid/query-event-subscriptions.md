@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid サブスクリプションのクエリを実行する
 description: この記事では、Azure サブスクリプション内の Event Grid サブスクリプションの一覧を表示する方法を説明します。 サブスクリプションの種類に基づいて、異なるパラメーターを指定します。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.author: spelluru
-ms.openlocfilehash: 2da4ba5946f16092c1d0918aec8dc3109b5fd4a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/07/2020
+ms.openlocfilehash: 3d700f543bc5e3c7add2a346c10acf975e1c2462
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76721542"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120451"
 ---
 # <a name="query-event-grid-subscriptions"></a>Event Grid サブスクリプションのクエリを実行する 
 

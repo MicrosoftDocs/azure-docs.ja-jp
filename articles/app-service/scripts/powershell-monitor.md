@@ -5,19 +5,19 @@ tags: azure-service-management
 ms.assetid: 5805d7cd-9e56-4eba-bd85-75b013690ff5
 ms.topic: sample
 ms.date: 03/20/2017
-ms.custom: mvc
-ms.openlocfilehash: c9b3ab6f8115f68ead478c0de21e4661d3ca032c
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 8a3af13060d932b1a39a85bbc631732f8f859dfb
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437926"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070277"
 ---
 # <a name="monitor-a-web-appwith-web-server-logs"></a>Web サーバー ログによる Web アプリの監視
 
 このシナリオでは、リソース グループ、App Service プラン、Web アプリを作成し、Web アプリを構成して Web サーバー ログを有効にします。 次に、ログ ファイルをダウンロードして確認します。
 
-必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールし、`Connect-AzAccount` を実行して、Azure との接続を作成します。
+必要に応じて、[Azure PowerShell ガイド](/powershell/azure/)の手順に従って Azure PowerShell をインストールし、`Connect-AzAccount` を実行して、Azure との接続を作成します。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -46,6 +46,6 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
+Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。
 
 その他の Azure App Service Web Apps 用 Azure PowerShell サンプル スクリプトは、[Azure PowerShell サンプル](../samples-powershell.md)のページにあります。

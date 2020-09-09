@@ -3,15 +3,15 @@ title: サービス間認証 - Data Lake Storage Gen1 - Azure
 description: Azure Active Directory を使用して Azure Data Lake Storage Gen1 に対するサービス間認証を行う方法について説明します。
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 74ad40eb7f7483bb010cf8eb002776893c50a256
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 03a32b37f5ca29c6a0dd6b810b4e097379c6c32e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688196"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515145"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Azure Active Directory を使用した Azure Data Lake Storage Gen1 に対するサービス間認証
 > [!div class="op_single_selector"]
@@ -43,9 +43,9 @@ Azure Active Directory を使用して Azure Data Lake Storage Gen1 でのサー
 ## <a name="step-2-get-application-id-authentication-key-and-tenant-id"></a>手順 2:アプリケーション ID、認証キー、テナント ID を取得する
 プログラムによってログインするときは、アプリケーションの ID が必要です。 アプリケーションがその独自の資格情報で動作する場合は、さらに認証キーが必要となります。
 
-* アプリケーションのアプリケーション ID と認証キー (クライアント シークレットとも呼ばれる) を取得する方法については、「[アプリケーション ID と認証キーを取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)」を参照してください。
+* アプリケーションのアプリケーション ID と認証キー (クライアント シークレットとも呼ばれる) を取得する方法については、「[アプリケーション ID と認証キーを取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)」を参照してください。
 
-* テナント ID を取得する方法については、「[テナント ID を取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)」を参照してください。
+* テナント ID を取得する方法については、「[テナント ID を取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)」を参照してください。
 
 ## <a name="step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder"></a>手順 3:Azure AD アプリケーションを Azure Data Lake Storage Gen1 アカウントのファイルまたはフォルダーに割り当てる
 

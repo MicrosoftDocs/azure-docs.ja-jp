@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory と PageDNA の統合 | Microsoft Docs
 description: Azure Active Directory と PageDNA の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c8765864-45f4-48c2-9d86-986a4aa431e4
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c7f8c8efcad0a07a3d3a56925866b10d94f82ed
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 543085eaea993f6e464a501ffc93befd7589a009
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68227480"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554134"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>チュートリアル:Azure Active Directory と PageDNA の統合
 
@@ -110,21 +105,19 @@ PageDNA で Azure AD シングル サインオンを構成するには、次の�
 
     1. **[サインオン URL]** ボックスに、以下のいずれかの形式で URL を入力します。
 
-        ||
-        |--|
-        | `https://stores.pagedna.com/<your site>` |
-        | `https://<your domain>` |
-        | `https://<your domain>/<your site>` |
-        | `https://www.nationsprint.com/<your site>` |
-        | |
+        ```https
+        https://stores.pagedna.com/<your site>
+        https://<your domain>
+        https://<your domain>/<your site>
+        https://www.nationsprint.com/<your site>
+        ```
 
     1. **[識別子 (エンティティ ID)]** ボックスに、以下のいずれかの形式で URL を入力します。
 
-        ||
-        |--|
-        | `https://stores.pagedna.com/<your site>/saml2ep.cgi` |
-        | `https://www.nationsprint.com/<your site>/saml2ep.cgi` |
-        | |
+        ```https
+        https://stores.pagedna.com/<your site>/saml2ep.cgi
+        https://www.nationsprint.com/<your site>/saml2ep.cgi
+        ```
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[PageDNA サポート チーム](mailto:success@pagedna.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** ウィンドウに示されているパターンを参照することもできます。
@@ -163,7 +156,7 @@ PageDNA 側でシングル サインオンを構成するには、ダウンロ�
 
     1. **[名前]** ボックスに「**BrittaSimon**」と入力します。
   
-    1. **[ユーザー名]** ボックスに、「**BrittaSimon\@\<yourcompanydomain>.\<extension>** 」と入力します。 たとえば、「**BrittaSimon\@contoso.com**」です。
+    1. **[ユーザー名]** ボックスに「**BrittaSimon\@\<yourcompanydomain>.\<extension>** 」と入力します。 たとえば、「**BrittaSimon\@contoso.com**」です。
 
     1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
 

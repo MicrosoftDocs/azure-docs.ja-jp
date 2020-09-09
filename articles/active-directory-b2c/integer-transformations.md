@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ece25e95bbbe9f1a1fa591c29ea9ffda0fefd369
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 066a6489e6244369453ec5d9f21d5e1e83fcd6c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78187680"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201752"
 ---
 # <a name="integer-claims-transformations"></a>整数要求変換
 
@@ -35,7 +35,7 @@ long データ型を string データ型に変換します。
 
 この例では、値の型が long の `numericUserId` 要求は、値の型が string の `UserId` 要求に変換されます。
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateUserId" TransformationMethod="ConvertNumberToStringClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="numericUserId" TransformationClaimType="inputClaim" />

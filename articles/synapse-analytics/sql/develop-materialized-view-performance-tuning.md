@@ -6,16 +6,16 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 30ca03633b9b0788235439204a3c1926fe6b6a6b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: d476bef6faa19defad1d2e1ef1a90f7e5d83def5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427063"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495694"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>具体化されたビューを使用したパフォーマンス チューニング
 
@@ -40,7 +40,7 @@ SQL プールでは、標準ビューと具体化されたビューの両方が�
 |追加のストレージ                   | いいえ                                           | はい
 |構文                          | CREATE VIEW                                  | CREATE MATERIALIZED VIEW AS SELECT
 
-## <a name="benefits-of-using-materialized-views"></a>具体化されたビューを使用する利点
+## <a name="benefits-of-materialized-views"></a>具体化されたビューの利点
 
 具体化されたビューが適切に設計されていると、次のような利点が得られます。
 
@@ -153,7 +153,7 @@ GROUP BY A, C
 
 ## <a name="example"></a>例
 
-この例では、店舗よりもカタログで多くのお金を費やす顧客を検索する、TPCDS に似たクエリを使用しています。 さらに、得意客とその出身国も特定します。   このクエリには、SUM() と GROUP BY を含んだ 3 つのサブ SELECT ステートメントの UNION から上位 100 レコードを選択する操作が含まれています。
+この例では、店舗よりもカタログで多くのお金を費やす顧客を検索する、TPCDS に似たクエリを使用しています。 さらに、得意客とその出身国および地域も特定します。   このクエリには、SUM() と GROUP BY を含んだ 3 つのサブ SELECT ステートメントの UNION から上位 100 レコードを選択する操作が含まれています。
 
 ```sql
 WITH year_total AS (

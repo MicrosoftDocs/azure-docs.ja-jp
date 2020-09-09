@@ -8,12 +8,13 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: 9356ab0aec375a046a8f200838df296b2cf74bce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 8c594ba01ea6fe9fb1c3cee2ed415496132d1abc
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984982"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018435"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET API: ダウンロードおよびリリース ノート
 
@@ -39,40 +40,40 @@ ms.locfileid: "80984982"
 
 ## <a name="release-notes"></a>リリース ノート
 
-### <a name="212"></a><a name="2.1.2"/>2.1.2
+### <a name="212"></a><a name="2.1.2"></a>2.1.2
 
 * バグの修正
 
-### <a name="210"></a><a name="2.1.0"/>2.1.0
+### <a name="210"></a><a name="2.1.0"></a>2.1.0
 
 * バグの修正
 
-### <a name="200"></a><a name="2.0.0"/>2.0.0
+### <a name="200"></a><a name="2.0.0"></a>2.0.0
 
 * マルチリージョンの書き込みがサポートされるようになりました。
 * Microsoft.Azure.DocumentDB、Microsoft.OData.Core、Microsoft.OData.Edm、Microsoft.Spatial に関する NuGet パッケージの依存関係が修正されました。
 
-### <a name="113"></a><a name="1.1.3"/>1.1.3
+### <a name="113"></a><a name="1.1.3"></a>1.1.3
 
 * Microsoft.Azure.Storage.Common と Microsoft.Azure.DocumentDB の NuGet パッケージの依存関係が修正されました。
 * JsonConvert.DefaultSettings が構成されたときに、テーブルのシリアル化のバグ修正があります。
 
-### <a name="111"></a><a name="1.1.1"/>1.1.1
+### <a name="111"></a><a name="1.1.1"></a>1.1.1
 
 * 直接モードで無効な ETAG の検証が追加されました。
 * ゲートウェイ モードで LINQ クエリ バグが修正されました。
 * 同期 API が SynchronizationContext によってスレッド プールで実行されるようになりました。
 
-### <a name="110"></a><a name="1.1.0"/>1.1.0
+### <a name="110"></a><a name="1.1.0"></a>1.1.0
 
 * TableQueryMaxItemCount、TableQueryEnableScan、TableQueryMaxDegreeOfParallelism、および TableQueryContinuationTokenLimitInKb を TableRequestOptions に追加
 * バグの修正
 
-### <a name="100"></a><a name="1.0.0"/>1.0.0
+### <a name="100"></a><a name="1.0.0"></a>1.0.0
 
 * 一般公開リリース
 
-### <a name="090-preview"></a><a name="0.1.0-preview"/>0.9.0 - プレビュー
+### <a name="090-preview"></a><a name="0.1.0-preview"></a>0.9.0 - プレビュー
 
 * 初期プレビュー リリース
 
@@ -82,10 +83,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 `Microsoft.Azure.CosmosDB.Table` ライブラリは現在 .NET Framework でのみ利用可能で、メンテナンス モードにあり、間もなく非推奨となる予定です。 新機能および最適化は、.NET Standard ライブラリの [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) にのみ追加されます。そのため、[Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) にアップグレードすることをお勧めします。
 
-[WindowsAzure.Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) プレビュー パッケージは非推奨となりました。 WindowsAzure.Storage PremiumTable SDK は、2018 年 11 月 15 日に提供終了されます。その時点で提供終了された SDK への要求は許可されなくなります。 
-
-提供終了になった SDK を使用した Azure Cosmos DB への要求は、サービスによって拒否されます。
-<br/>
+[WindowsAzure.Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) プレビュー パッケージは非推奨となりました。 WindowsAzure.Storage PremiumTable SDK は、2018 年 11 月 15 日に提供終了されます。その時点で提供終了された SDK への要求は許可されなくなります。
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
@@ -122,6 +120,6 @@ Microsoft.Azure.CosmosDB.Table NuGet パッケージの使用を試している�
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 Azure Cosmos DB Table API の詳細については、「[Introduction to Azure Cosmos DB Table API (Azure Cosmos DB Table API の概要)](table-introduction.md)」を参照してください。 

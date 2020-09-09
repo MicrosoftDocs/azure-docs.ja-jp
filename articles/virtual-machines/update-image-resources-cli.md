@@ -9,12 +9,13 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 4126b7e0b48b455d9e5fcf65d6707f7e04de13ef
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 6fcd7ba0e3582a614acab46bffd5f76e5baa982f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793995"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496357"
 ---
 # <a name="list-update-and-delete-image-resources"></a>イメージ リソースの一覧表示、更新、削除 
 

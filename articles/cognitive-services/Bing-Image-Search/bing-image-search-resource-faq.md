@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 6841e573446103466e2719797da9e4161b70b5a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d919640431ce014d34372812d9c07bb84d750b2
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "68881690"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184057"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>Bing Image Search API についてよく寄せられる質問 (FAQ)
 
@@ -25,7 +25,7 @@ Azure 上の Microsoft Cognitive Services の Bing Image Search API に関連す
 
 次のヘッダーは、Bing Image Search API からの応答に含まれる可能性があります。
 
-| `Attribute`         | `Description` |
+| 属性           | 説明   |
 | ------------------- | ------------- |
 | `X-MSEdge-ClientID` |Bing がユーザーに割り当てた一意の ID |
 | `BingAPIs-Market`   |要求を満たすために使用された市場 |
@@ -39,15 +39,18 @@ Azure 上の Microsoft Cognitive Services の Bing Image Search API に関連す
 
 CORS プロキシをインストールして[チュートリアル アプリ](tutorial-bing-image-search-single-page-app.md)が省略可能なクライアント ヘッダーにアクセスできるようにするのは簡単です。 まず、[Node.js をインストールします](https://nodejs.org/en/download/) (まだインストールしていない場合)。 その後、コマンド プロンプトで次のコマンドを入力します。
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-次に、HTML ファイル内の Bing Image Search API エンドポイントを次のように変更します。
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+次に、HTML ファイル内の Bing Image Search API エンドポイントを次のように変更します。\
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 最後に、次のコマンドを使用して、CORS プロキシを開始します。
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 チュートリアル アプリを使用している間はコマンド ウィンドウを開いたままにしておいてください。ウィンドウを閉じるとプロキシが停止します。 検索結果の下の展開可能な HTTP ヘッダー セクションに、`X-MSEdge-ClientID` ヘッダー (など) が表示され、各要求で同じであることを確認できます。
 
@@ -63,6 +66,6 @@ API キーはサーバー側スクリプトでのみ必要なので、このア�
 
 不足している機能について質問がある場合は、 [ユーザーの声 Web サイト](https://cognitive.uservoice.com/forums/555907-bing-search)で、要求またはそれに対する投票をご検討ください。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
  [Stack Overflow: Cognitive Services](https://stackoverflow.com/questions/tagged/bing-api)

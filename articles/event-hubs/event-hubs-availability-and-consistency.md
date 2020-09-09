@@ -1,24 +1,15 @@
 ---
 title: 可用性と一貫性 - Azure Event Hubs | Microsoft Docs
 description: パーティションを使用して Azure Event Hubs で最大限の可用性と一貫性を実現する方法
-services: event-hubs
-documentationcenter: na
-author: ShubhaVijayasarathy
-editor: ''
-ms.assetid: 8f3637a1-bbd7-481e-be49-b3adf9510ba1
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/27/2020
-ms.author: shvija
-ms.openlocfilehash: 0546adb6131479a8f5d2e7e31819483200586839
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.date: 06/23/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 774332b8f2d5c336f1a22d717516ae35a62b341f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397330"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000636"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Event Hubs における可用性と一貫性
 
@@ -151,5 +142,5 @@ await producer.SendAsync(data);
 ## <a name="next-steps"></a>次のステップ
 Event Hubs の詳細については、次のリンク先を参照してください:
 
-* [Event Hubs サービスの概要](event-hubs-what-is-event-hubs.md)
+* [Event Hubs サービスの概要](./event-hubs-about.md)
 * [イベント ハブの作成](event-hubs-create.md)

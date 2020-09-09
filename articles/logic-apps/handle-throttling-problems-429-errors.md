@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: fbfd52065bc0522668488492de2181f252f86a4e
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 495847d31682aff64fed3c81b1d5d68cf67dfd38
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272680"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086441"
 ---
 # <a name="handle-throttling-problems-429---too-many-requests-errors-in-azure-logic-apps"></a>Azure Logic Apps で調整の問題 (429 - "要求が多すぎます" エラー) を処理する
 
@@ -77,7 +77,7 @@ Azure Logic Apps サービスには、独自の[スループット制限](../log
 
 ## <a name="connector-throttling"></a>コネクタの調整
 
-各コネクタには、独自の調整制限があります。これについては、コネクタのテクニカル リファレンス ページを参照してください。 たとえば、[Azure Service Bus コネクタ](https://docs.microsoft.com/connectors/servicebus/)には、1 分あたり最大 6,000 回の呼び出しを許可する調整制限がありますが、SQL Server コネクタには、[操作の種類に基づいて変化する調整制限](https://docs.microsoft.com/connectors/sql/)があります。
+各コネクタには、独自の調整制限があります。これについては、コネクタのテクニカル リファレンス ページを参照してください。 たとえば、[Azure Service Bus コネクタ](/connectors/servicebus/)には、1 分あたり最大 6,000 回の呼び出しを許可する調整制限がありますが、SQL Server コネクタには、[操作の種類に基づいて変化する調整制限](/connectors/sql/)があります。
 
 HTTP などの一部のトリガーとアクションには、[再試行ポリシーの制限](../logic-apps/logic-apps-limits-and-config.md#retry-policy-limits)に基づいてカスタマイズして例外処理を実装することができる ["再試行ポリシー"](../logic-apps/logic-apps-exception-handling.md#retry-policies) があります。 このポリシーを使用すると、元の要求が失敗するかタイムアウトして 408、429、または 5xx 応答の結果になったときに、トリガーまたはアクションで要求を再試行するかどうかと、その頻度を指定できます。 そのため、調整が開始され、429 エラーが返された場合、Logic Apps は、サポートされていれば再試行ポリシーに従います。
 

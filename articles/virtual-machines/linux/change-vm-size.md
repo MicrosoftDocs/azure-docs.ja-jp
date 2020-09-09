@@ -3,15 +3,15 @@ title: Azure CLI を使用して Linux VM のサイズを変更する方法
 description: スケールアップまたは VM のサイズを変更することで Linux 仮想マシンをスケールアップまたはスケールダウンする方法。
 author: DavidCBerry13
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/10/2017
 ms.author: daberry
-ms.openlocfilehash: cf2716ce5d24aa86e32f6f521134590c671d5011
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a93b1dcfe803fdead0d741553c45894f1675372b
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120982"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372265"
 ---
 # <a name="resize-a-linux-virtual-machine-using-azure-cli"></a>Azure CLI を使用して Linux 仮想マシンのサイズを変更する 
 
@@ -50,5 +50,5 @@ VM のサイズを変更するには、[Azure CLI ](/cli/azure/install-az-cli2) 
 
 <!-- links -->
 [boot-diagnostics]: https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/
-[scale-set]: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md 
+[scale-set]: ../../virtual-machine-scale-sets/tutorial-autoscale-cli.md 
 [vm-sizes]:sizes.md

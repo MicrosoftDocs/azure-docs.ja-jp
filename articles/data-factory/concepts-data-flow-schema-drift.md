@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
-ms.openlocfilehash: 6e361d23860ce8f40abba5c246242cf345bb974c
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 5b7fe9cf6c751bfb96dff8aa911172ae91a17653
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606115"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84886627"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>マッピング データ フローのスキーマの誤差
 
@@ -37,7 +37,7 @@ Azure Data Factory は、実行ごとに変わる柔軟なスキーマをネイ�
 
 ## <a name="schema-drift-in-source"></a>ソースのスキーマの誤差
 
-ソース定義からデータフローに進む列が、ソース プロジェクション内に存在しない場合は、"誤差" として定義されます。 ソース変換にある [プロジェクション] タブから、ご自身のソース プロジェクションを表示できます。 ご自身のソースに対するデータセットを選択すると、ADF によって自動的にデータセットからスキーマが取得され、そのデータセット スキーマ定義からプロジェクトが作成されます。
+ソース定義からデータフローに進む列が、ソース プロジェクション内に存在しない場合は、"誤差" として定義されます。 ソース変換にある [プロジェクション] タブから、ご自身のソース プロジェクションを表示できます。 ご自身のソースに対するデータセットを選択すると、ADF によって自動的にデータセットからスキーマが取得され、そのデータセット スキーマ定義からプロジェクションが作成されます。
 
 ソース変換では、スキーマの誤差は、データセット スキーマが定義されていない列の読み取りと定義されます。 スキーマの誤差を有効にするには、ソース変換で **[Allow schema drift]\(スキーマの誤差を許可する\)** をオンにします。
 

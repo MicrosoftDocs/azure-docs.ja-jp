@@ -8,12 +8,12 @@ ms.author: jehollan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: e300bf9c9aa0acf0bed6426eb73f690f9a38bd74
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2fae7d2526e6c95efe83ca8fa742a6d92457b897
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75980422"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520751"
 ---
 # <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Azure Logic Apps と Azure Functions を使用して Customer Insights ストリーミング ダッシュボードを作成する
 
@@ -22,7 +22,7 @@ Azure には、インフラストラクチャを気にすることなく、ク�
 このソリューションに向けて、サーバーレス アプリ用の主要な Azure コンポーネントである[Azure Functions](https://azure.microsoft.com/services/functions/) と [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) を使用します。
 Azure Logic Apps では、サーバーレス コンポーネント間でオーケストレーションを作成したり、200 を超えるサービスや API に接続したりできるように、クラウド内のサーバーレス ワークフロー エンジンが提供されます。 Azure Functions は、クラウド内でサーバーレス コンピューティングを実現します。 このソリューションでは、定義済みのキーワードに基づいてカスタマーのツイートにフラグを設定するために、Azure Functions を使用します。
 
-このシナリオでは、カスタマーからのフィードバックを検出するとトリガーされるロジック アプリを作成します。 カスタマー フィードバックへの応答に役立つコネクタには、Outlook.com、Office 365、Survey Monkey、Twitter、[Web フォームからの HTTP 要求](https://blogs.msdn.microsoft.com/logicapps/2017/01/30/calling-a-logic-app-from-an-html-form/)などがあります。 作成するワークフローは、Twitter のハッシュタグを監視します。
+このシナリオでは、カスタマーからのフィードバックを検出するとトリガーされるロジック アプリを作成します。 カスタマー フィードバックへの応答に役立つコネクタには、Outlook.com、Office 365、Survey Monkey、Twitter、[Web フォームからの HTTP 要求](/archive/blogs/logicapps/calling-a-logic-app-from-an-html-form)などがあります。 作成するワークフローは、Twitter のハッシュタグを監視します。
 
 [Visual Studio でソリューション全体をビルド](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)し、[Azure Resource Manager テンプレートを使用してソリューションをデプロイ](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)することができます。 このソリューションの作成方法に関するビデオ チュートリアルについては、[こちらの Channel 9 ビデオ](https://aka.ms/logicappsdemo)をご覧ください。 
 
@@ -67,7 +67,7 @@ Azure Logic Apps では、サーバーレス コンポーネント間でオー�
 
 ## <a name="process-data-with-azure-functions"></a>Azure Functions でのデータ処理
 
-関数を作成する前に、Azure サブスクリプションで関数アプリを作成します。 また、ロジック アプリで関数を直接呼び出すには、関数が HTTP トリガー バインディングを持つ必要があります。たとえば、**HttpTrigger** テンプレートを使用します。 詳しくは、[Azure Portal で最初の関数アプリと関数を作成する方法](../azure-functions/functions-create-first-azure-function-azure-portal.md)に関するページを参照してください。
+関数を作成する前に、Azure サブスクリプションで関数アプリを作成します。 また、ロジック アプリで関数を直接呼び出すには、関数が HTTP トリガー バインディングを持つ必要があります。たとえば、**HttpTrigger** テンプレートを使用します。 詳しくは、[Azure Portal で最初の関数アプリと関数を作成する方法](../azure-functions/functions-create-first-azure-function.md)に関するページを参照してください。
 
 このシナリオでは、Azure 関数の要求本文としてツイート テキストを使用します。 関数コードで、ツイート テキストがキーワードまたはフレーズを含むかどうかを判定するロジックを定義します。 シナリオに応じて、単純または複雑な関数を作成します。
 関数の最後で、データと共にロジック アプリへの応答を返します。データには、たとえば `containsKeyword` のような単純なブール値や複合オブジェクトを使用します。

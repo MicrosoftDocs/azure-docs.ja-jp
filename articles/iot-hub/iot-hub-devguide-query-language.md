@@ -7,12 +7,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
-ms.openlocfilehash: bcc53322ac6942b52853be561bc3441e23fbf53b
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b4e7d8c5c518e4ba4a2a9116898be2bba7df0b06
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632927"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022447"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>デバイス ツイン、モジュール ツイン、ジョブ、メッセージ ルーティングの IoT Hub クエリ言語
 

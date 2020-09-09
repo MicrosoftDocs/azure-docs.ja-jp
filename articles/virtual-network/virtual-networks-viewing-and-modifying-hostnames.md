@@ -8,17 +8,17 @@ manager: dcscontentpm
 ms.assetid: c668cd8e-4e43-4d05-acc3-db64fa78d828
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 09c911838d34a083de8450145ce849fc966eb0e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3f8c35604af9780fb4299bbd7bfd87c3d93ac537
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459153"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84702841"
 ---
 # <a name="viewing-and-modifying-hostnames"></a>ホスト名の表示と変更
 ロール インスタンスをホスト名で参照できるようにするには、各ロールのサービス構成ファイルでホスト名の値を設定する必要があります。 そのためには、使用するホスト名を **Role** 要素の **vmName** 属性に追加します。 **vmName** 属性の値は、各ロール インスタンスのホスト名に対するベースとして使用されます。 たとえば、**vmName** が *webrole* であり、そのロールに 3 つのインスタンスがある場合、インスタンスのホスト名は *webrole0*、*webrole1*、*webrole2* になります。 仮想マシンのホスト名は仮想マシン名に基づいて設定されるため、構成ファイルで仮想マシンのホスト名を指定する必要はありません。 Microsoft Azure サービスの構成の詳細については、「 [Azure Service Configuration Schema (.cscfg File) (Azure サービス構成スキーマ (.cscfg ファイル))](https://msdn.microsoft.com/library/azure/ee758710.aspx)
@@ -41,11 +41,11 @@ REST クライアントから次の手順を実行します。
 
 1. Azure ポータルに接続するためのクライアント証明書があることを確認します。 クライアント証明書を取得するには、「[How to: Download and Import Publish Settings and Subscription Information (方法: 発行の設定とサブスクリプション情報をダウンロードしてインポートする)](https://msdn.microsoft.com/library/dn385850.aspx)」の手順に従ってください。 
 2. x-ms-version という名前のヘッダー エントリの値を 2013-11-01 に設定します。
-3. 次の形式で要求を送信します: https:\//management.core.windows.net/\<サブスクリプション ID\>/services/hostedservices/\<サービス名\>?embed-detail=true
+3. 次の形式で要求を送信します: https:\//management.core.windows.net/\<subscrition-id\>/services/hostedservices/\<service-name\>?embed-detail=true
 4. 各 **RoleInstance** 要素の **HostName** 要素を検索します。
 
 > [!WARNING]
-> **InternalDnsSuffix** 要素を調べて、リモート デスクトップ セッションのコマンド プロンプトから ipconfig /all を実行して (Windows)、または SSH ターミナルから cat /etc/resolv.conf を実行して (Linux)、REST 呼び出しの応答からクラウド サービスの内部ドメイン サフィックスを表示することもできます。
+> **InternalDnsSuffix** 要素を調べて、リモート デスクトップ セッションのコマンド プロンプトから ipconfig /all を実行して (Windows)、または SSH 端末から cat /etc/resolv.conf を実行して (Linux)、REST 呼び出しの応答からクラウド サービスの内部ドメイン サフィックスを表示することもできます。
 > 
 > 
 

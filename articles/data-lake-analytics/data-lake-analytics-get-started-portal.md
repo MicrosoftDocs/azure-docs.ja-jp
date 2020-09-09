@@ -2,18 +2,16 @@
 title: Azure Data Lake Analytics の作成とクエリ - Azure portal
 description: Azure portal を使って Azure Data Lake Analytics アカウントを作成し、U-SQL ジョブを送信します。
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: b1584d16-e0d2-4019-ad1f-f04be8c5b430
 ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: 46da3750e4d0ac78c5fd9df91ae37670e541302d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8f0a5697a128deb75537f3d48a3830dc7ba9df9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71315757"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132536"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-the-azure-portal"></a>Azure portal で Azure Data Lake Analytics の使用を開始する
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -44,7 +42,7 @@ ms.locfileid: "71315757"
 
 次のテキストは、非常に単純な U-SQL スクリプトです。 このスクリプトが実行するのは、スクリプト内に小さなデータセットを定義し、そのデータセットを `/data.csv` という名前のファイルとして既定の Data Lake Storage Gen1 アカウントに書き出すことだけです。
 
-```
+```usql
 @a  = 
     SELECT * FROM 
         (VALUES

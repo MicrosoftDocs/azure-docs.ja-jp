@@ -4,15 +4,15 @@ description: アプリケーション ゲートウェイ リスナーに関連�
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 8/15/2018
 ms.author: victorh
-ms.openlocfilehash: 4c0c0ab84e60335f58ac075459b95cfabb9135ac
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: de57a58f7c891009d2e0cc43b351c2cad42a2766
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81311956"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807888"
 ---
 # <a name="renew-application-gateway-certificates"></a>Application Gateway の証明書を更新する
 

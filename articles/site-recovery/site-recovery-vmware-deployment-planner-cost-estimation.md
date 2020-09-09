@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/29/2019
 ms.author: mayg
-ms.openlocfilehash: 27678fff1c0322f9755e7726026c73934810d5d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d7ee72b5f6441f2b3b3ea9a7eaa41a3e1b650745
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73953339"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528963"
 ---
 # <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>VMware Deployment Planner のコスト見積もりを確認する 
 
@@ -150,16 +150,16 @@ eastus、eastus2、westus、centralus、northcentralus、southcentralus、northe
 ## <a name="supported-currencies"></a>サポートされる通貨
 Azure Site Recovery Deployment Planner は、次のいずれかの通貨でコスト レポートを生成できます。
 
-|Currency|名前||Currency|名前||Currency|名前|
+|Currency|名前|Currency|名前|Currency|名前|
 |---|---|---|---|---|---|---|---|
-|ARS|アルゼンチン ペソ ($)||AUD|オーストラリア ドル ($)||BRL|ブラジル レアル (R$)|
-|CAD|カナダ ドル ($)||CHF|スイス フラン (chf)||DKK|デンマーク クローネ (kr)|
-|EUR|ユーロ (€)||GBP|イギリス ポンド (£)||HKD|香港ドル (HK$)|
-|IDR|インドネシア ルピア (Rp)||INR|インド ルピー (₹)||JPY|日本円 (¥)|
-|KRW|韓国ウォン (₩)||MXN|メキシコ ペソ (MX$)||MYR|マレーシア リンギ (RM$)|
-|NOK|ノルウェー クローネ (kr)||NZD|ニュージーランド ドル ($)||RUB|ロシア ルーブル (руб)|
-|SAR|サウジ リアル (SR)||SEK|スウェーデン クローナ (kr)||TWD|台湾ドル (NT$)|
-|TRY|トルコ リラ (TL)||USD| 米ドル ($)||ZAR|南アフリカ ランド (R)|
+|ARS|アルゼンチン ペソ ($)|AUD|オーストラリア ドル ($)|BRL|ブラジル レアル (R$)|
+|CAD|カナダ ドル ($)|CHF|スイス フラン (chf)|DKK|デンマーク クローネ (kr)|
+|EUR|ユーロ (€)|GBP|イギリス ポンド (£)|HKD|香港ドル (HK$)|
+|IDR|インドネシア ルピア (Rp)|INR|インド ルピー (₹)|JPY|日本円 (¥)|
+|KRW|韓国ウォン (₩)|MXN|メキシコ ペソ (MX$)|MYR|マレーシア リンギ (RM$)|
+|NOK|ノルウェー クローネ (kr)|NZD|ニュージーランド ドル ($)|RUB|ロシア ルーブル (руб)|
+|SAR|サウジ リアル (SR)|SEK|スウェーデン クローナ (kr)|TWD|台湾ドル (NT$)|
+|TRY|トルコ リラ (TL)|USD| 米ドル ($)|ZAR|南アフリカ ランド (R)|
 
 ## <a name="next-steps"></a>次のステップ
-[Azure Site Recovery を使用して VMware から Azure に VM](https://docs.microsoft.com/azure/site-recovery/tutorial-vmware-to-azure) をレプリケートして保護する方法について詳しく調べてみましょう。
+[Azure Site Recovery を使用して VMware から Azure に VM](./vmware-azure-tutorial.md) をレプリケートして保護する方法について詳しく調べてみましょう。

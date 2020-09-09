@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: e055f2d7b98df9357ecdee5e044305e35935682e
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: d8c6b79dca97de3dd46eb9c677f2c94191f276b0
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81791652"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89304042"
 ---
 関数トリガーを使用して、イベント ハブのイベント ストリームに送信されたイベントに応答します。 トリガーを設定するには、基になるイベント ハブへの読み取りアクセスが必要です。 関数がトリガーされると、その関数に渡されるメッセージが文字列として型指定されます。
 
@@ -285,6 +285,10 @@ def main(event: func.EventHubEvent):
     logging.info('  EnqueuedTimeUtc =', event.enqueued_time)
     logging.info('  SequenceNumber =', event.sequence_number)
     logging.info('  Offset =', event.offset)
+
+    # Metadata
+    for key in event.metadata:
+        logging.info(f'Metadata: {key} = ', event.metadata[key])
 ```
 
 # <a name="java"></a>[Java](#tab/java)
@@ -353,9 +357,9 @@ Java [関数ランタイム ライブラリ](https://docs.microsoft.com/java/api
 |**direction** | 該当なし | `in` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
 |**name** | 該当なし | 関数コード内のイベント項目を表す変数の名前。 |
 |**path** |**EventHubName** | Functions 1.x のみ。 イベント ハブの名前。 イベント ハブの名前は接続文字列にも存在し、その値が実行時にこのプロパティをオーバーライドします。 |
-|**eventHubName** |**EventHubName** | Functions 2.x 以降。 イベント ハブの名前。 イベント ハブの名前は接続文字列にも存在し、その値が実行時にこのプロパティをオーバーライドします。 アプリ設定 %eventHubName% で参照できます |
+|**eventHubName** |**EventHubName** | Functions 2.x 以降。 イベント ハブの名前。 イベント ハブの名前は接続文字列にも存在し、その値が実行時にこのプロパティをオーバーライドします。 [アプリ設定](../articles/azure-functions/functions-bindings-expressions-patterns.md#binding-expressions---app-settings) `%eventHubName%` を介して参照できます |
 |**consumerGroup** |**ConsumerGroup** | ハブのイベントのサブスクライブに使用される[コンシューマー グループ](../articles/event-hubs/event-hubs-features.md#event-consumers)を設定する、省略可能なプロパティ。 省略した場合は、`$Default` コンシューマー グループが使用されます。 |
-|**cardinality** | 該当なし | JavaScript 用。 バッチ処理を有効にするには `many` に設定します。  省略するか、`one` に設定した場合、1 つのメッセージが関数に渡されます。 |
+|**cardinality** | 該当なし | すべての C# 以外の言語で使用されます。 バッチ処理を有効にするには `many` に設定します。  省略するか、`one` に設定した場合、1 つのメッセージが関数に渡されます。<br><br>C# では、トリガーにこの型の配列がある場合は常に、このプロパティが自動的に割り当てられます。|
 |**connection** |**Connection** | イベント ハブの名前空間への接続文字列が含まれたアプリ設定の名前。 この接続文字列をコピーするには、イベント ハブ自体ではなく、"[名前空間](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace)" の **[接続情報]** をクリックします。 この接続文字列には、トリガーをアクティブにするために少なくとも読み取りアクセス許可が必要です。|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]

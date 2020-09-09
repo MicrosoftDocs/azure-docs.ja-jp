@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: c414087270558e21340e50114c0563ff7e50064c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 15c3f3994b9d519a4144fa2c2e1418e92cdbd6ae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282309"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012408"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Azure Data Science Virtual Machine 上の機械学習ツールとデータ サイエンス ツール
 Azure Data Science Virtual Machine (DSVM) には、Python、R、Julia などの一般的な言語で使用できる、機械学習のための豊富な一連のツールやライブラリが備わっています。
@@ -26,7 +26,7 @@ Azure Data Science Virtual Machine (DSVM) には、Python、R、Julia などの�
 
 [Azure Machine Learning SDK for Python の詳細についてはこちら ](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml) を参照してください。
 
-|    |           |
+| カテゴリ | 値 |
 | ------------- | ------------- |
 | 紹介   |   Azure Machine Learning は、機械学習モデルの開発とデプロイに使用できるクラウド サービスです。 Python SDK を使用して、モデルの構築、トレーニング、スケール調整、および管理を行うときにそれらのモデルを追跡できます。 モデルをコンテナーとしてデプロイし、それをクラウド、オンプレミス、または Azure IoT Edge で実行します。   |
 | サポートされているエディション     | Windows (Conda 環境:AzureML)、Linux (Conda 環境: py36)    |
@@ -38,7 +38,7 @@ Azure Data Science Virtual Machine (DSVM) には、Python、R、Julia などの�
 
 ## <a name="h2o"></a>H2O
 
-|    |           |
+| カテゴリ | 値 |
 | ------------- | ------------- |
 | 紹介   | インメモリ、分散型、高速で、かつスケーラブルな機械学習をサポートするオープンソースの AI プラットフォームです。  |
 | サポートされているバージョン      | Linux   |
@@ -52,7 +52,7 @@ DSVM には、DSVM 用の Anaconda Python ディストリビューションの�
 
 ## <a name="lightgbm"></a>LightGBM
 
-|    |           |
+| カテゴリ | 値 |
 | ------------- | ------------- |
 | 紹介   | ディシジョン ツリー アルゴリズムに基づく、高速な、分散型、高パフォーマンスの勾配ブースティング (GBDT、GBRT、GBM、または MART) フレームワークです。 これは、ランク付け、分類、その他の多くの機械学習タスクに使用されます。    |
 | サポートされているバージョン      | Windows、Linux    |
@@ -62,7 +62,7 @@ DSVM には、DSVM 用の Anaconda Python ディストリビューションの�
 | 関連するツール      | MXNet、XgBoost  |
 
 ## <a name="rattle"></a>Rattle
-|    |           |
+| カテゴリ | 値 |
 | ------------- | ------------- |
 | 紹介   |   R を使用したデータ マイニングのためのグラフィカル ユーザー インターフェイス。   |
 | サポートされているエディション     | Windows、Linux     |
@@ -72,7 +72,7 @@ DSVM には、DSVM 用の Anaconda Python ディストリビューションの�
 | 関連するツール      |LightGBM、Weka、XGBoost   |
 
 ## <a name="vowpal-wabbit"></a>Vowpal Wabbit
-|    |           |
+| カテゴリ | 値 |
 | ------------- | ------------- |
 | 紹介   |   高速でオープンソースの、コア以外の学習システム ライブラリ    |
 | サポートされているエディション     | Windows、Linux     |
@@ -84,7 +84,7 @@ DSVM には、DSVM 用の Anaconda Python ディストリビューションの�
 
 
 ## <a name="weka"></a>Weka
-|    |           |
+| カテゴリ | 値 |
 | ------------- | ------------- |
 | 紹介   |  データ マイニング タスクのための機械学習アルゴリズムのコレクション。 これらのアルゴリズムは、データ セットに直接適用するか、または独自の Java コードから呼び出すことができます。 Weka には、データの前処理、分類、回帰、クラスタリング、アソシエーション ルール、および視覚化のためのツールが含まれています。 |
 | サポートされているエディション     | Windows、Linux     |
@@ -94,7 +94,7 @@ DSVM には、DSVM 用の Anaconda Python ディストリビューションの�
 | 関連するツール      |LightGBM、Rattle、XGBoost   |
 
 ## <a name="xgboost"></a>XGBoost 
-|    |           |
+| カテゴリ | 値 |
 | ------------- | ------------- |
 | 紹介   |   Python、R、Java、Scala、C++ など用の、高速で、可搬性があり、分散型の勾配ブースティング (GBDT、GBRT、または GBM) ライブラリ。 これは 1 台のコンピューター、Apache Hadoop、Spark 上で実行されます。    |
 | サポートされているエディション     | Windows、Linux     |
@@ -105,7 +105,7 @@ DSVM には、DSVM 用の Anaconda Python ディストリビューションの�
 | 関連するツール      | LightGBM、MXNet   |
 
 ## <a name="apache-drill"></a>Apache Drill
-|    |           |
+| カテゴリ | 値 |
 | ------------- | ------------- |
 | 紹介   | ビッグ データに対するオープン ソースの SQL クエリ エンジン    |
 | サポートされている DSVM バージョン      | Windows 2019、Linux  |

@@ -1,5 +1,5 @@
 ---
-title: MySQL Workbench を使用して接続する - Azure Database for MariaDB
+title: クイック スタート:MySQL Workbench による接続 - Azure Database for MariaDB
 description: このクイック スタートでは、MySQL Workbench を使用して、Azure Database for MariaDB に接続し、データを照会するための手順を紹介します。
 author: ajlam
 ms.author: andrela
@@ -7,14 +7,14 @@ ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/18/2020
-ms.openlocfilehash: 4bb1a71c5d8a58e6d94007554c72019001d395db
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 90247f093096728ac250f36fa7cb0d5d88a597d9
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79529002"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121886"
 ---
-# <a name="azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MariaDB: MySQL Workbench を使用した接続とデータの照会
+# <a name="quickstart-azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>クイック スタート:Azure Database for MariaDB: MySQL Workbench を使った接続とデータの照会
 
 このクイック スタートでは、MySQL Workbench を使用して Azure Database for MariaDB インスタンスに接続する方法を紹介します。 
 
@@ -33,13 +33,13 @@ ms.locfileid: "79529002"
 
 Azure Database for MariaDB インスタンスに接続するために必要な接続情報を取得します。 完全修飾サーバー名とサインイン資格情報が必要です。
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
-2. Azure portal の左側のメニューで、 **[すべてのリソース]** を選択します。 作成したサーバーを検索します (**mydemoserver** など)。
+2. Azure portal の左側のメニューで、**[すべてのリソース]** を選択します。 作成したサーバーを検索します (**mydemoserver** など)。
 
 3. サーバー名を選択します。
 
-4. サーバーの **[概要]** ページで、 **[サーバー名]** と **[サーバー管理者ログイン名]** の値を書き留めます。 パスワードを忘れた場合も、このページでパスワードをリセットすることができます。
+4. サーバーの **[概要]** ページで、**[サーバー名]** と **[サーバー管理者ログイン名]** の値を書き留めます。 パスワードを忘れた場合も、このページでパスワードをリセットすることができます。
 
    ![Azure Database for MariaDB のサーバー名とサーバー管理者ログイン名](./media/connect-workbench/1_server-overview-name-login.png)
 
@@ -58,11 +58,11 @@ MySQL Workbench を使用して Azure Database for MariaDB サーバーに接続
    | hostname | *サーバー名* | Azure Database for MariaDB インスタンスを作成するときに使用したサーバー名の値を指定します。 この例におけるサーバーは、**mydemoserver.mariadb.database.azure.com** です。 例で示されているように、完全修飾ドメイン名 (\*.mariadb.database.azure.com) を使用します。 サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。  |
    | Port | **3306** | Azure Database for MariaDB に接続するときは、常にポート 3306 を使用します。 |
    | ユーザー名 |  *サーバー管理者ログイン名* | Azure Database for MariaDB インスタンスを作成するときに使用したサーバー管理者のログイン ユーザー名を入力します。 この例のユーザー名は **myadmin\@mydemoserver** です。 サーバー管理者のログイン名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 形式は *username\@servername* です。
-   | Password | *<お使いのパスワード>* | パスワードを保存するには、 **[Store in Vault]\(コンテナーに保存\)** を選択します。 |
+   | Password | *<お使いのパスワード>* | パスワードを保存するには、**[Store in Vault]\(コンテナーに保存\)** を選択します。 |
 
    ![新しい接続の設定](./media/connect-workbench/2-setup-new-connection.png)
 
-3. すべてのパラメーターが正しく構成されていることを確認するために、 **[Test Connection]\(接続のテスト\)** を選択します。 
+3. すべてのパラメーターが正しく構成されていることを確認するために、**[Test Connection]\(接続のテスト\)** を選択します。 
 
 4. **[OK]** を選択して接続を保存します。 
 
@@ -108,7 +108,7 @@ MySQL Workbench を使用して Azure Database for MariaDB サーバーに接続
     
     ![サンプル SQL コードを実行するための MySQL Workbench の SQL タブを選択](media/connect-workbench/3-workbench-sql-tab.png)
 
-2. サンプル SQL コードを実行するには、 **[SQL File]\(SQL ファイル\)** タブのツールバーにある稲妻アイコンをクリックします。
+2. サンプル SQL コードを実行するには、**[SQL File]\(SQL ファイル\)** タブのツールバーにある稲妻アイコンをクリックします。
 3. ページ中央の **[結果グリッド]** セクションの 3 つのタブに結果が表示されていることに注目してください。 
 4. ページの下部にある **[Output]\(出力\)** リストに注目してください。 各コマンドの状態が表示されています。 
 

@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: 0f5f01c757bf651beddaa76fc3eb8046b21b31eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9163071237041d7c8510a644c573e3763434bb0c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75979389"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060665"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>Azure Logic Apps でロジック アプリ ワークフロー定義の JSON を作成、編集、拡張する
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) で自動ワークフローを使用してエンタープライズ統合ソリューションを作成する場合、基になるロジック アプリ定義では、[ワークフロー定義言語 (WDL) スキーマ](../logic-apps/logic-apps-workflow-definition-language.md)と共に単純な宣言型の JavaScript Object Notation (JSON) を記述と検証に使用します。 これらの形式を使用することで、コードに関する詳しい知識がなくても、ロジック アプリ定義を理解しやすくなります。
 ロジック アプリの作成とデプロイを自動化するときには、[Azure Resource Manager テンプレート](../azure-resource-manager/templates/overview.md)に [Azure リソース](../azure-resource-manager/management/overview.md)としてロジック アプリ定義を含めることができます。
-ロジック アプリを作成、管理、デプロイするときは、[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp)、[Azure CLI](../azure-resource-manager/templates/deploy-cli.md)、または [Azure Logic Apps REST API](https://docs.microsoft.com/rest/api/logic/) を使用できます。
+ロジック アプリを作成、管理、デプロイするときは、[Azure PowerShell](/powershell/module/az.logicapp)、[Azure CLI](../azure-resource-manager/templates/deploy-cli.md)、または [Azure Logic Apps REST API](/rest/api/logic/) を使用できます。
 
 JSON でロジック アプリ定義を操作するには、Azure Portal または Visual Studio で作業するときにコード ビュー エディターを開くか、任意のエディターに定義をコピーします。
 ロジック アプリを初めて使用する場合は、[初めてのロジック アプリを作成する方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事をご覧ください。

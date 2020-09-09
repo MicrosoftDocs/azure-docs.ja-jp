@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) のストレージ、データの暗
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 843b775f7761af7cd40140c9bf34768d63eb5a50
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 722fe393ad7637be20360463a4c3b6234224a036
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80877900"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653972"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) のストレージとバックアップに関するベスト プラクティス
 
@@ -88,7 +88,7 @@ AKS ノードは Azure VM として実行されます。 さまざまな種類�
 
 ## <a name="secure-and-back-up-your-data"></a>データをセキュリティで保護してバックアップする
 
-**ベスト プラクティス ガイダンス** - Velero や Azure Site Recovery など、ご利用のストレージの種類に適したツールを使って、データをバックアップします。 それらのバックアップの整合性とセキュリティを確認します。
+**ベスト プラクティス ガイダンス** - Velero や Azure Backup など、ご利用のストレージの種類に適したツールを使って、データをバックアップします。 それらのバックアップの整合性とセキュリティを確認します。
 
 アプリケーションでディスク上またはファイル内に保持されているデータを格納して使用する場合、定期的にそのデータのバックアップまたはスナップショットを作成する必要があります。 Azure ディスクでは、組み込みのスナップショット テクノロジを使用できます。 スナップショット操作を実行する前に、ディスクにフラッシュ書き込みを行うアプリケーションを探すことが必要な場合もあります。 [Velero][velero] では、追加のクラスター リソースおよび構成と共に永続ボリュームをバックアップできます。 [アプリケーションから状態を削除][remove-state]できない場合は、永続ボリュームからデータをバックアップし、復元操作を定期的にテストしてデータの整合性と必要なプロセスを確認します。
 
@@ -104,12 +104,12 @@ AKS ノードは Azure VM として実行されます。 さまざまな種類�
 
 <!-- LINKS - Internal -->
 [aks-concepts-storage]: concepts-storage.md
-[vm-sizes]: ../virtual-machines/linux/sizes.md
+[vm-sizes]: ../virtual-machines/sizes.md
 [dynamic-disks]: azure-disks-dynamic-pv.md
 [dynamic-files]: azure-files-dynamic-pv.md
 [reclaim-policy]: concepts-storage.md#storage-classes
 [aks-concepts-storage-pvcs]: concepts-storage.md#persistent-volume-claims
 [aks-concepts-storage-classes]: concepts-storage.md#storage-classes
-[managed-disks]: ../virtual-machines/linux/managed-disks-overview.md
+[managed-disks]: ../virtual-machines/managed-disks-overview.md
 [best-practices-multi-region]: operator-best-practices-multi-region.md
 [remove-state]: operator-best-practices-multi-region.md#remove-service-state-from-inside-containers

@@ -3,19 +3,20 @@ title: 予測エンドポイントを使用してプログラムで分類器を�
 titleSuffix: Azure Cognitive Services
 description: API を使用して、Custom Vision Service の分類器によるイメージのテストをプログラムから行う方法を説明します。
 services: cognitive-services
-author: anrothMSFT
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.author: anroth
-ms.openlocfilehash: 88aaa3d54ea44a15f7900aba093bf28c70c19695
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: pafarley
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7f1939536e033d2cf964dd2f4ee562e4ee20061b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82129870"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934754"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Prediction API でモデルを使用する
 
@@ -119,13 +120,13 @@ Prediction API にイメージを送信するには、まず予測のイテレ�
 
 ```json
 {
-    "Id":"7796df8e-acbc-45fc-90b4-1b0c81b73639",
-    "Project":"8622c779-471c-4b6e-842c-67a11deffd7b",
-    "Iteration":"59ec199d-f3fb-443a-b708-4bca79e1b7f7",
-    "Created":"2019-03-20T16:47:31.322Z",
-    "Predictions":[
-        {"TagId":"d9cb3fa5-1ff3-4e98-8d47-2ef42d7fb373","TagName":"cat", "Probability":1.0},
-        {"TagId":"9a8d63fb-b6ed-4462-bcff-77ff72084d99","TagName":"dog", "Probability":0.1087869}
+    "id":"7796df8e-acbc-45fc-90b4-1b0c81b73639",
+    "project":"8622c779-471c-4b6e-842c-67a11deffd7b",
+    "iteration":"59ec199d-f3fb-443a-b708-4bca79e1b7f7",
+    "created":"2019-03-20T16:47:31.322Z",
+    "predictions":[
+        {"tagId":"d9cb3fa5-1ff3-4e98-8d47-2ef42d7fb373","tagName":"cat", "probability":1.0},
+        {"tagId":"9a8d63fb-b6ed-4462-bcff-77ff72084d99","tagName":"dog", "probability":0.1087869}
     ]
 }
 ```

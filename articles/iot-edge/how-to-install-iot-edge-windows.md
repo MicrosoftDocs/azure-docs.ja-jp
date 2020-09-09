@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: kgremban
-ms.openlocfilehash: 61b382f1c286209a12d0be39a81e6817806d3251
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: ba3e8b9d7649d56d1639f7f608d85a2da04ff74a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81113456"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465560"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Windows に Azure IoT Edge ランタイムをインストールする
 
@@ -42,7 +42,7 @@ IoT Edge の最新バージョンの内容については、[Azure IoT Edge リ�
 Windows 用の IoT Edge には Windows バージョン 1809、ビルド 17763 が必要です。これは、最新の [Windows の長期サポートのビルド](https://docs.microsoft.com/windows/release-information/)です。 Windows SKU のサポートについては、運用シナリオまたは開発およびテストのシナリオのどちらに対して準備しているかに基づいて、サポート対象を確認してください。
 
 * **運用**: 運用シナリオ向けに現在サポートされているオペレーティング システムに関する最新の情報については、「[Azure IoT Edge のサポートされるシステム](support.md#operating-systems)」を参照してください。
-* **開発とテスト**:開発およびテストのシナリオでは、コンテナー機能をサポートする任意のバージョンの Windows 10 または Windows Server 2019 に、Azure IoT Edge と Windows コンテナーをインストールできます。
+* **開発とテスト**:開発およびテストのシナリオでは、コンテナー機能がサポートされる Windows ビルド 17763 のあらゆる SKU (Pro、Enterprise、Server など) に、Azure IoT Edge と Windows コンテナーをインストールできます。
 
 IoT Core デバイスには、IoT Edge ランタイムをサポートするための IoT Core Windows コンテナー オプション機能が含まれている必要があります。 [リモート PowerShell セッション](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell)で次のコマンドを使用して、お使いのデバイスで Windows コンテナーがサポートされていることを確認します。
 
@@ -193,17 +193,21 @@ Get-Service iotedge
 . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-最も一般的な構成およびネットワーク エラーの自動チェックを実行します。
+[トラブルシューティング ツール](troubleshoot.md#run-the-check-command)を実行して、最も一般的な構成とネットワークのエラーを確認します。
 
 ```powershell
 iotedge check
 ```
 
-実行中のモジュールを一覧表示します。 新規インストール後、実行されているモジュールは **edgeAgent** だけです。 初めて [IoT Edge モジュールをデプロイ](how-to-deploy-modules-portal.md)した後、別のシステム モジュール **edgeHub** もデバイスで起動します。
+最初のモジュールをデバイス上の IoT Edge にデプロイするまで、 **$edgeHub** システム モジュールはデバイスに展開されません。 その結果、自動チェックからは `Edge Hub can bind to ports on host` 接続チェックのエラーが返されます。 このエラーは、モジュールをデバイスに展開した後に発生した場合でなければ、無視できます。
+
+最後に、実行中のモジュールを一覧表示します。
 
 ```powershell
 iotedge list
 ```
+
+新規インストール後、実行されているモジュールは **edgeAgent** だけです。 初めて [IoT Edge モジュールをデプロイ](how-to-deploy-modules-portal.md)した後、別のシステム モジュール **edgeHub** もデバイスで起動します。
 
 ## <a name="manage-module-containers"></a>モジュール コンテナーを管理する
 

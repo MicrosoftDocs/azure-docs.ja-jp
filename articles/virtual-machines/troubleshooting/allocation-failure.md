@@ -12,12 +12,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: daberry
-ms.openlocfilehash: fdbf07fa51adf8151e80d230734ebe53d36b5390
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 3766c31add02799c62bca7e9063e723e0a5b498e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124790"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509360"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Azure で VM を作成、再起動、またはサイズ変更するときの割り当てエラーのトラブルシューティング
 
@@ -79,7 +79,7 @@ Dv1、DSv1、Av1、D15v2、DS15v2 などの以前の VM シリーズまたはサ
 
 割り当て要求が大きい (500 コアを超える) 場合は、次のセクションのガイダンスを参照して、要求をより小規模なデプロイに分割してください。
 
-[VM を再デプロイ](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/redeploy-to-new-node-windows)してみてください。 VM を再デプロイすると、そのリージョン内の新しいクラスターに VM が割り当てられます。
+[VM を再デプロイ](./redeploy-to-new-node-windows.md)してみてください。 VM を再デプロイすると、そのリージョン内の新しいクラスターに VM が割り当てられます。
 
 ## <a name="allocation-failures-for-older-vm-sizes-av1-dv1-dsv1-d15v2-ds15v2-etc"></a>以前の VM サイズ (Av1、Dv1、DSv1、D15v2、DS15v2 など) での割り当ての失敗
 
@@ -94,7 +94,7 @@ Dv1、DSv1、Av1、D15v2、DS15v2 などの以前の VM シリーズまたはサ
 
 ## <a name="allocation-failures-for-large-deployments-more-than-500-cores"></a>大規模なデプロイ (500 個を超えるコア) での割り当ての失敗
 
-要求された VM サイズのインスタンスの数を減らして、デプロイ操作を再試行します。 さらに、より大規模なデプロイの場合は、[Azure の仮想マシン スケール セット](https://docs.microsoft.com/azure/virtual-machine-scale-sets/)を評価できます。 要求または定義済みのスケジュールに応じて VM インスタンスの数を自動的に増減でき、デプロイを複数のクラスターに分散できるため割り当てが成功する可能性が高くなります。 
+要求された VM サイズのインスタンスの数を減らして、デプロイ操作を再試行します。 さらに、より大規模なデプロイの場合は、[Azure の仮想マシン スケール セット](../../virtual-machine-scale-sets/index.yml)を評価できます。 要求または定義済みのスケジュールに応じて VM インスタンスの数を自動的に増減でき、デプロイを複数のクラスターに分散できるため割り当てが成功する可能性が高くなります。 
 
 ## <a name="background-information"></a>背景情報
 ### <a name="how-allocation-works"></a>割り当てのしくみ
@@ -105,5 +105,3 @@ Azure データセンターのサーバーは、クラスターにパーティ�
 割り当て要求がクラスターに固定されている場合、利用可能なリソース プールが小さくなるため、空きリソースを見つけられない可能性が高くなります。 さらに、割り当て要求がクラスターに固定されていて、そのクラスターでは要求されたリソースの種類がサポートされていない場合、クラスターに空きリソースがあっても、要求は失敗します。 次の図 3 は、唯一の候補であるクラスターに空きリソースがないため、固定された割り当てがエラーになる場合を示しています。 図 4 は、唯一の候補であるクラスターに空きリソースがあるものの、要求された VM サイズをサポートしていないため、固定された割り当てがエラーになる場合を示しています。
 
 ![Pinned Allocation Failure](./media/virtual-machines-common-allocation-failure/Allocation2.png)
-
-

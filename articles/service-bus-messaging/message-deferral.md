@@ -1,24 +1,15 @@
 ---
 title: Azure Service Bus - メッセージ遅延
 description: この記事では、Azure Service Bus メッセージの配信を遅延する方法について説明します。 メッセージは、キューまたはサブスクリプションに留まり、確保されます。
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 5e32c461902c1e340c6cece22669a59847e660cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 7c9ec55de24c97df3530d80deef55ed87be84077
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77538398"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511281"
 ---
 # <a name="message-deferral"></a>メッセージ遅延
 
@@ -29,6 +20,9 @@ ms.locfileid: "77538398"
 簡単でわかりやすい例としては、一致する注文書が店舗からフルフィルメント システムに入力される前に、外部の支払いプロバイダーからの支払い通知がシステムに表示される注文処理シーケンスが挙げられます。 このケースでは、関連する注文が届くまで、支払い通知の処理がフルフィルメント システムによって遅延される場合があります。 異なる送信元からのメッセージによってワークフローが進行する集合シナリオでは、リアルタイムの実行順序は正しいのに、結果を反映するメッセージが到着する順序は正しくない場合があります。
 
 つまり遅延は、処理の延期が必要なメッセージをメッセージ ストアに確実に保持しながら、到着した順序から処理できる順序に並べ直すのに役立ちます。
+
+> [!NOTE]
+> 遅延メッセージは、[有効期限が切れた後](./service-bus-dead-letter-queues.md#exceeding-timetolive)に、配信不能キューに自動的に移動されません。 この動作は仕様によるものです。
 
 ## <a name="message-deferral-apis"></a>メッセージ遅延 API
 

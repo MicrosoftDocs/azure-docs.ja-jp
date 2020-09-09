@@ -14,14 +14,17 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
-ms.openlocfilehash: 68f42aa13288c2416257f3ba6c0b6072c1572977
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e7e63225df4e337a93912bf1e1c17eb61a6cc9e0
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162992"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258607"
 ---
-# <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Azure Media Services のアクセス制御を使用したコンテンツ保護システムの設計 
+# <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Azure Media Services のアクセス制御を使用したコンテンツ保護システムの設計
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 ## <a name="overview"></a>概要
 
@@ -227,15 +230,17 @@ ASP.NET MVC プレーヤー アプリ用に Azure AD をセットアップする
 Azure AD に関する情報:
 
 * 開発者向けの情報については、「[開発者のための Azure Active Directory](../../active-directory/azuread-dev/v1-overview.md)」をご覧ください。
-* 管理者向けの情報については、「[Azure AD ディレクトリの管理](../../active-directory/fundamentals/active-directory-administer.md)」をご覧ください。
+* 管理者向けの情報については、「[Azure AD ディレクトリの管理](../../active-directory/fundamentals/active-directory-whatis.md)」をご覧ください。
 
 ### <a name="some-issues-in-implementation"></a>実装での問題
 実装の問題については、以下のトラブルシューティング情報を参考にしてください。
 
 * 発行者 URL は "/" で終わっている必要があります。 対象ユーザーは、プレーヤー アプリケーション クライアント ID である必要があります。 また、発行者 URL の末尾に "/" を追加します。
 
-        <add key="ida:audience" value="[Application Client ID GUID]" />
-        <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/" />
+    ```xml
+    <add key="ida:audience" value="[Application Client ID GUID]" />
+    <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/" />
+    ```
 
     [JWT デコーダー](http://jwt.calebb.net/)では、JWT の **aud** と **iss** が次のように表示されます。
 
@@ -247,11 +252,15 @@ Azure AD に関する情報:
 
 * 動的 CENC 保護を設定するときは、正しい発行者を使う必要があります。
 
-        <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/"/>
+    ```xml
+    <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/"/>
+    ```
 
     次のように指定すると動作しません。
 
-        <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
+    ```xml
+    <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
+    ```
 
     GUID は Azure AD テナント ID です。 GUID は、Azure Portal の **[エンドポイント]** ポップアップ メニューで確認できます。
 
@@ -261,7 +270,9 @@ Azure AD に関する情報:
 
 * 制限要件を作成するときに、適切な TokenType を設定します。
 
-        objTokenRestrictionTemplate.TokenType = TokenType.JWT;
+    ```csharp
+    objTokenRestrictionTemplate.TokenType = TokenType.JWT;
+    ```
 
     SWT (ACS) に加えて JWT (Azure AD) のサポートを追加するので、既定の TokenType は TokenType.JWT です。 SWT/ACS を使う場合は、トークンを TokenType.SWT に設定する必要があります。
 
@@ -288,7 +299,7 @@ ASP.NET のプレーヤー アプリケーションはベスト プラクティ�
 
 Azure AD は、業界標準を使い、それ自体と Azure AD を使うアプリケーションの間の信頼を確立します。 具体的には、Azure AD は公開キーと秘密キーのペアで構成される署名キーを使用します。 Azure AD がユーザーに関する情報を含むセキュリティ トークンを作成するとき、このトークンは、アプリケーションに送信される前に、秘密キーで Azure AD によって署名されます。 トークンが有効であり、Azure AD から発行されたことを確認するには、アプリケーションでトークンの署名を検証する必要があります。 アプリケーションは、テナントのフェデレーション メタデータ ドキュメントに含まれる Azure AD によって公開された公開キーを使います。 この公開キーとその派生元である署名キーは、Azure AD のすべてのテナントに対して同じものが使われます。
 
-Azure AD でのキーのロールオーバーに関して詳しくは、[Azure AD での署名キー ロールオーバーに関する重要な情報](../../active-directory/active-directory-signing-key-rollover.md)のページをご覧ください。
+Azure AD でのキーのロールオーバーに関して詳しくは、[Azure AD での署名キー ロールオーバーに関する重要な情報](../../active-directory/develop/active-directory-signing-key-rollover.md)のページをご覧ください。
 
 [公開/秘密キーのペア](https://login.microsoftonline.com/common/discovery/keys/)は次のように使われます。
 
@@ -321,7 +332,7 @@ Web アプリが API アプリを呼び出す場合の認証フローは次の�
 * Azure AD がアプリケーションを認証し、Web API の呼び出しに使う JWT アクセス トークンを返します。
 * Web アプリケーションは、返された JWT アクセス トークンを HTTPS 経由で使って、Web API への要求の "Authorization" ヘッダーに、"Bearer" を指定した JWT 文字列を追加します。 その後、Web API は JWT を検証します。 検証が正常に行われると、目的のリソースが返されます。
 
-このアプリケーション ID フローでは、Web API は Web アプリケーションがユーザーを認証済みであることを信頼します。 そのため、このパターンは信頼されたサブシステムと呼ばれます。 [承認フローの図](https://docs.microsoft.com/azure/active-directory/active-directory-protocols-oauth-code)では、承認コード付与フローがどのように動作するかが説明されています。
+このアプリケーション ID フローでは、Web API は Web アプリケーションがユーザーを認証済みであることを信頼します。 そのため、このパターンは信頼されたサブシステムと呼ばれます。 [承認フローの図](../../active-directory/azuread-dev/v1-protocols-oauth-code.md)では、承認コード付与フローがどのように動作するかが説明されています。
 
 トークン制限のあるライセンス取得は、同じ信頼されたサブシステムのパターンに従います。 Media Services のライセンス配信サービスは、Web API リソース、つまり Web アプリケーションがアクセスする必要のある "バックエンド リソース" です。 それでは、アクセス トークンはどこにあるのでしょうか。
 

@@ -1,21 +1,21 @@
 ---
-title: Azure Migrate Server Assessment を使用して評価を作成する |Microsoft Docs
-description: Azure Migrate Server Assessment ツールを使用して評価を作成する方法について説明します
+title: Azure Migrate Server Assessment を使用して Azure VM の評価を作成する | Microsoft Docs
+description: Azure Migrate Server Assessment ツールを使用して Azure VM の評価を作成する方法について説明します
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/15/2019
 ms.author: raynew
-ms.openlocfilehash: cffde2a677650387dffd19733e082ff7002ccb55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ec95cde1f023b4d034c2fae9cc5a54744ccdc9a7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68228978"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549800"
 ---
-# <a name="create-an-assessment"></a>評価を作成する
+# <a name="create-an-azure-vm-assessment"></a>Azure VM の評価を作成する
 
-この記事では、Azure Migrate:Server Assessment を使用して作成する方法について説明します。
+この記事では、オンプレミスの VMware VM または Hyper-V VM に対する Azure VM の評価を、Azure Migrate: Server Assessment を使用して作成する方法について説明します。
 
 [Azure Migrate](migrate-services-overview.md) は、Azure への移行に役立ちます。 Azure Migrate には、オンプレミス インフラストラクチャ、アプリケーション、およびデータの検出、評価、および Azure への移行を追跡するための一元的なハブが用意されています。 このハブには、評価および移行のための Azure ツールのほか、サードパーティの独立系ソフトウェア ベンダー (ISV) のオファリングが用意されています。 
 
@@ -26,8 +26,8 @@ ms.locfileid: "68228978"
 - 評価を作成するには、[VMware](how-to-set-up-appliance-vmware.md) または [Hyper-V](how-to-set-up-appliance-hyper-v.md) 用の Azure Migrate アプライアンスを設定する必要があります。 アプライアンスでオンプレミスのマシンが検出されて、メタデータとパフォーマンス データが Azure Migrate: Server Assessment を使用して作成する方法について説明します。 [詳細については、こちらを参照してください](migrate-appliance.md)。
 
 
-## <a name="assessment-overview"></a>評価の概要
-Azure Migrate:Server Assessment を使用して作成する方法について説明します。
+## <a name="azure-vm-assessment-overview"></a>Azure VM の評価の概要
+Azure Migrate: Server Assessment を使用して Azure VM の評価を作成するために使用できるサイズ設定基準には、次の 2 種類があります。Server Assessment を使用して作成する方法について説明します。
 
 **評価** | **詳細** | **データ**
 --- | --- | ---
@@ -45,31 +45,35 @@ Azure Migrate:Server Assessment を使用して作成する方法について説
 
     ![アクセス](./media/how-to-create-assessment/assess.png)
 
-2. **[サーバーの評価]** で、評価の名前を指定します。
-3. **[すべて表示]** をクリックして、評価のプロパティを確認します。
+3. **[サーバーの評価]** で、評価の種類として [Azure VM] を選択し、検出ソースを選択し、評価名を指定します。
+
+    ![評価の基本](./media/how-to-create-assessment/assess-servers-azurevm.png)
+
+4. **[すべて表示]** をクリックして、評価のプロパティを確認します。
 
     ![評価のプロパティ](./media/how-to-create-assessment//view-all.png)
 
-3. **[グループを選択または作成します]** で **[新規作成]** を選択し、グループ名を指定します。 グループで、評価のために 1 つ以上の VM をまとめます。
-4. **[グループにマシンを追加します]** で、グループに追加する VM を選択します。
-5. **[評価を作成します]** をクリックして、グループを作成し、評価を実行します。
+5. **[次へ]** をクリックして**評価するマシンを選択**します。 **[グループを選択または作成します]** で **[新規作成]** を選択し、グループ名を指定します。 グループで、評価のために 1 つ以上の VM をまとめます。
+6. **[グループにマシンを追加します]** で、グループに追加する VM を選択します。
+7. **[次へ]** をクリックして **[評価の確認と作成]** を選択し、評価の詳細を確認します。
+8. **[評価を作成します]** をクリックして、グループを作成し、評価を実行します。
 
     ![評価を作成する](./media/how-to-create-assessment//assessment-create.png)
 
-6. 評価が作成されたら、それを表示します ( **[サーバー]**  >  **[Azure Migrate: Server Assessment]**  >  **[評価]** )。
-7. **[評価のエクスポート]** をクリックし、Excel ファイルとしてダウンロードします。
+9. 評価が作成されたら、それを表示します ( **[サーバー]**  >  **[Azure Migrate: Server Assessment]**  >  **[評価]** )。
+10. **[評価のエクスポート]** をクリックし、Excel ファイルとしてダウンロードします。
 
 
 
-## <a name="review-an-assessment"></a>評価を確認する
+## <a name="review-an-azure-vm-assessment"></a>Azure VM の評価を確認する
 
-評価には以下が記述されています。
+Azure VM の評価で評される内容は次のとおりです。
 
 - **Azure 対応性**: VM が Azure への移行に適しているかどうか。
 - **月間コスト見積もり**: Azure で VM を実行するためのコンピューティングとストレージの月間推定コスト。
 - **月間ストレージ コスト見積もり**: 移行後のディスク ストレージの推定コスト。
 
-### <a name="view-an-assessment"></a>評価を表示する
+### <a name="view-an-azure-vm-assessment"></a>Azure VM の評価を表示する
 
 1. **[移行の目標]**  >   **[サーバー]** で、 **[評価]** を **[Azure Migrate: Server Assessment]** でクリックします。
 2. **[評価]** で、評価をクリックして開きます。
@@ -85,7 +89,7 @@ Azure Migrate:Server Assessment を使用して作成する方法について説
     - **[Azure に未対応]** : 問題と推奨される修復方法が示されます。
     - **[Readiness 不明]** : データの可用性の問題により、Azure Migrate が対応性を評価できない場合に使用されます。
 
-2. **[Azure 対応性]** の状態をクリックします。 VM 対応性の詳細を表示し、ドリルダウンして、コンピューティング、ストレージ、ネットワークの設定など、VM の詳細を表示できます。
+3. **[Azure 対応性]** の状態をクリックします。 VM 対応性の詳細を表示し、ドリルダウンして、コンピューティング、ストレージ、ネットワークの設定など、VM の詳細を表示できます。
 
 
 

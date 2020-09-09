@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: b0a46dcf8fe298494a53713f122b1bda8ce07e5e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c884ce839523706e67e4278f43e237e1a2b0580
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73954587"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496969"
 ---
 # <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>セカンダリ オンプレミス サイトへの VMware または物理サーバーのレプリケーションのためのアーキテクチャ
 
@@ -31,15 +31,31 @@ ms.locfileid: "73954587"
 **VMware ESX/ESXi と vCenter サーバー** |  VM は、ESX/ESXi ホストでホストされます。 ホストは vCenter サーバーで管理されます。 | VMware VM をレプリケートするには、VMware インフラストラクチャが必要です。
 **VM/物理サーバー** |  VMware VM にインストールされた統合エージェントと、レプリケートする物理サーバー。 | エージェントはすべてのコンポーネント間の通信プロバイダーとして機能します。
 
+## <a name="set-up-outbound-network-connectivity"></a>発信ネットワーク接続を設定する
+
+Site Recovery を期待どおりに動作させるためには、環境でレプリケートが可能になるように、発信ネットワーク接続を変更する必要があります。
+
+> [!NOTE]
+> Site Recovery では、ネットワーク接続を制御するための認証プロキシの使用をサポートしていません。
+
+### <a name="outbound-connectivity-for-urls"></a>URL に対する送信接続
+
+アウトバウンド接続を制御するために URL ベースのファイアウォール プロキシを使用している場合、以下の URL へのアクセスを許可してください。
+
+| **名前**                  | **商用**                               | **政府**                                 | **説明** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| ストレージ                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | ソース リージョンのキャッシュ ストレージ アカウントに、VM からデータが書き込まれるよう許可します。 |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Site Recovery サービス URL に対する承認と認証を提供します。 |
+| レプリケーション               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | VM と Site Recovery サービスの通信を許可します。 |
+| Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | VM による Site Recovery の監視および診断データの書き込みを許可します。 |
+
 ## <a name="replication-process"></a>レプリケーション プロセス
 
 1. 各サイトでコンポーネント サーバー (構成、プロセス、マスター ターゲット) をセットアップし、レプリケートするマシンに統合エージェントをインストールします。
 2. 初期レプリケーションの後、各マシン上のエージェントによって、差分レプリケーションの変更がプロセス サーバーに送信されます。
 3. プロセス サーバーは、このデータを最適化して、セカンダリ サイト上のマスター ターゲット サーバーに転送します。 構成サーバーでは、レプリケーション プロセスを管理します。
 
-**図 6:VMware から VMware へのレプリケーション**
-
-![VMware から VMware](./media/site-recovery-components/vmware-to-vmware.png)
+![セカンダリ データセンターへの VMware VM と物理サーバーのレプリケーションを示す図](./media/site-recovery-components/vmware-to-vmware.png)
 
 
 

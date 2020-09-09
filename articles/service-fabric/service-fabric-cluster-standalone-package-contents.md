@@ -5,12 +5,12 @@ author: maburlik
 ms.topic: conceptual
 ms.date: 8/10/2017
 ms.author: maburlik
-ms.openlocfilehash: 1bb73fa69717f067139067f127a0d50af4878d6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb9a52510788a275bdeea67cd5c1fdd2e894738d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75451845"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261024"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>Windows Server 用の Service Fabric スタンドアロン パッケージの内容
 [ダウンロードした](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric スタンドアロン パッケージには、次のファイルが含まれています。
@@ -37,11 +37,11 @@ ms.locfileid: "75451845"
 | --- | --- |
 | ClusterConfig.Unsecure.DevCluster.json |クラスター構成サンプル ファイル。3 つのノードと 1 つのマシン (または仮想マシン) を持つ、セキュリティで保護されていない開発クラスターの設定 (クラスター内の各ノードの情報を含む) が含まれています。 |
 | ClusterConfig.Unsecure.MultiMachine.json |クラスター構成サンプル ファイル。複数のマシン (または仮想マシン) を持つ、セキュリティで保護されていないクラスターの設定 (クラスター内の各マシンの情報を含む) が含まれています。 |
-| ClusterConfig.Windows.DevCluster.json |クラスター構成サンプル ファイル。3 つのノードと 1 つのマシン (または仮想マシン) を持つ、セキュリティ保護された開発クラスターのすべての設定 (クラスターの各ノードの情報を含む) が含まれています。 クラスターは [Windows ID](https://msdn.microsoft.com/library/ff649396.aspx) を使用して保護されます。 |
-| ClusterConfig.Windows.MultiMachine.json |クラスター構成サンプル ファイル。複数のマシン (または仮想マシン) を持つ、Windows セキュリティを使用するセキュリティ保護されたクラスターのすべての設定 (セキュリティ保護されたクラスター内の各マシンの情報を含む) が含まれています。 クラスターは [Windows ID](https://msdn.microsoft.com/library/ff649396.aspx) を使用して保護されます。 |
+| ClusterConfig.Windows.DevCluster.json |クラスター構成サンプル ファイル。3 つのノードと 1 つのマシン (または仮想マシン) を持つ、セキュリティ保護された開発クラスターのすべての設定 (クラスターの各ノードの情報を含む) が含まれています。 クラスターは [Windows ID](/previous-versions/msp-n-p/ff649396(v=pandp.10)) を使用して保護されます。 |
+| ClusterConfig.Windows.MultiMachine.json |クラスター構成サンプル ファイル。複数のマシン (または仮想マシン) を持つ、Windows セキュリティを使用するセキュリティ保護されたクラスターのすべての設定 (セキュリティ保護されたクラスター内の各マシンの情報を含む) が含まれています。 クラスターは [Windows ID](/previous-versions/msp-n-p/ff649396(v=pandp.10)) を使用して保護されます。 |
 | ClusterConfig.x509.DevCluster.json |クラスター構成サンプル ファイル。3 つのノードと 1 つのマシン (または仮想マシン) を持つ、セキュリティ保護された開発クラスターのすべての設定 (クラスターの各ノードの情報を含む) が含まれています。 クラスターは x509 証明書を使用して保護されます。 |
 | ClusterConfig.x509.MultiMachine.json |クラスター構成サンプル ファイル。複数のマシン (仮想マシン) を持つ、セキュリティ保護されたクラスターのすべての設定 (セキュリティ保護されたクラスター内の各ノードの情報を含む) が含まれています。 クラスターは x509 証明書を使用して保護されます。 |
-| ClusterConfig.gMSA.Windows.MultiMachine.json |クラスター構成サンプル ファイル。複数のマシン (仮想マシン) を持つ、セキュリティ保護されたクラスターのすべての設定 (セキュリティ保護されたクラスター内の各ノードの情報を含む) が含まれています。 クラスターは、[グループ管理サービス アカウント](https://technet.microsoft.com/library/jj128431(v=ws.11).aspx)を使用して保護されます。 |
+| ClusterConfig.gMSA.Windows.MultiMachine.json |クラスター構成サンプル ファイル。複数のマシン (仮想マシン) を持つ、セキュリティ保護されたクラスターのすべての設定 (セキュリティ保護されたクラスター内の各ノードの情報を含む) が含まれています。 クラスターは、[グループ管理サービス アカウント](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj128431(v=ws.11))を使用して保護されます。 |
 
 ## <a name="cluster-configuration-samples"></a>クラスター構成の例
 クラスター構成テンプレートの最新バージョンは次の GitHub ページにあります。[スタンドアロン クラスター構成のサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)

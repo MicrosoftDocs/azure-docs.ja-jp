@@ -1,14 +1,14 @@
 ---
 title: パターン:ポリシー定義の効果
 description: この Azure Policy パターンでは、ポリシー定義のさまざまな効果を使用する方法の例を示します。
-ms.date: 01/31/2020
+ms.date: 06/29/2020
 ms.topic: sample
-ms.openlocfilehash: 1a9aec50bd328b76271d54f7830c75e0848d3cde
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c7e7689aa837a2dba0992112df3cd36ac9affe6
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372628"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "85565729"
 ---
 # <a name="azure-policy-pattern-effects"></a>Azure Policy パターン: 効果
 

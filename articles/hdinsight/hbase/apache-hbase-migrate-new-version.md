@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: d7fb7b6b409a4e24be97ee61fc7ba1f0c0a93202
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 23843743b58db91d457b509fa38243f110b76b41
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792634"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079549"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Apache HBase クラスターを新しいバージョンに移行する
 

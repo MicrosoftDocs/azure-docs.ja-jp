@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory と SmartFile の統合 | Microsoft Docs
 description: Azure Active Directory と SmartFile の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 25610bd7-8943-4e04-8cbb-5e90ff3c054d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10a7ff36fbfee3917478b11329f3591b5ce8d076
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 49e2ccee92d893a5a74520b286cf416035311f7c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73161127"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88527579"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartfile"></a>チュートリアル:Azure Active Directory と SmartFile の統合
 
@@ -41,6 +36,9 @@ SmartFile と Azure AD の統合を構成するには、次のものが必要で
 
 * Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
 * SmartFile でのシングル サインオンが有効なサブスクリプション
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 

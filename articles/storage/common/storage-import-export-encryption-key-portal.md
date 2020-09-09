@@ -5,15 +5,15 @@ services: storage
 author: alkohli
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/12/2020
+ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: ddcb47bfe8ba2b77efd8ff0aed52f1412107f0c5
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: d0a1826dafd1e6ce6202dc4f29417a1ce100e54f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81456500"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195247"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Azure Key Vault でカスタマー マネージド キーを Import/Export サービスのために使用する
 
@@ -90,9 +90,8 @@ Import/Export サービス用のカスタマー マネージド キーの構成�
 
 **[暗号化]** ブレードで、ご自分のカスタマー マネージド キーに対してキー コンテナーとキーが選択されていることを確認できます。
 
-## <a name="disable-keys"></a>キーを無効にする
-
-インポート/エクスポート ジョブのどの段階でも、Microsoft マネージド キーを無効にして、カスタマー マネージド キーに移動することは可能です。 ただし、カスタマー マネージド キーは、作成後に無効にすることはできません。
+> [!IMPORTANT]
+> インポート/エクスポート ジョブのどの段階でも、Microsoft マネージド キーを無効にして、カスタマー マネージド キーに移動することは可能です。 ただし、カスタマー マネージド キーは、作成後に無効にすることはできません。
 
 ## <a name="troubleshoot-customer-managed-key-errors"></a>カスタマー マネージド キーのエラーをトラブルシューティングする
 
@@ -100,10 +99,10 @@ Import/Export サービス用のカスタマー マネージド キーの構成�
 
 | エラー コード     |詳細     | 回復可能かどうか    |
 |----------------|------------|-----------------|
-| CmkErrorAccessRevoked | カスタマー マネージド キーを適用しましたが、キーへのアクセスが現在失効しています。 詳細については、[キー アクセスを有効にする方法](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy)に関する記事を参照してください。                                                      | 回復可能。次のことを確認してください。 <ol><li>キー コンテナーのアクセス ポリシーに引き続き MSI が含まれている。</li><li>アクセス ポリシーで、Get、Wrap、Unwrap へのアクセス許可が指定されている。</li><li>キー コンテナーがファイアウォールの内側の VNet にある場合は、 **[信頼された Microsoft サービスを許可]** が有効になっているかどうかを確認します。</li></ol>                                                                                            |
-| CmkErrorDisabled      | カスタマー マネージド キーを適用しましたが、キーが無効になっています。 詳細については、[キーを有効にする方法](https://docs.microsoft.com/rest/api/keyvault/vaults/createorupdate)に関する記事を参照してください。                                                                             | 回復可能 (キー バージョンを有効にした場合)。     |
-| CmkErrorNotFound      | カスタマー マネージド キーを適用しましたが、キーが見つかりません。 <br>キーが削除され、保有期間後に消去した場合は、キーを回復することはできません。 キーをバックアップした場合は、キーを復元してこの問題を解決することができます。 | 回復不可。キーは削除されており、保有期間後に消去されています。 <br>回復可能 (顧客がキーをバックアップして復元している場合のみ)。  |
-| CmkErrorVaultNotFound | カスタマー マネージド キーを適用しましたが、キーに関連付けられているキー コンテナーが見つかりません。<br>キー コンテナーを削除した場合、カスタマー マネージド キーを回復することはできません。  キー コンテナーを別のテナントに移行した場合は、「[サブスクリプション移行後のキー コンテナー テナント ID の変更](https://docs.microsoft.com/azure/key-vault/key-vault-subscription-move-fix)」を参照してください。 |   回復不可 (顧客がキー コンテナーを削除した場合)。<br> 回復可能。キー コンテナーでテナントの移行が行われた場合は、次のいずれかの処理を行います。 <ol><li>キー コンテナーを古いテナントに戻します。</li><li>Identity = None を設定してから、Identity = SystemAssigned に戻します。これにより、ID が削除されてから再作成されます。</li></ol>|
+| CmkErrorAccessRevoked | カスタマー マネージド キーへのアクセスが取り消されています。                                                       | 回復可能。次のことを確認してください。 <ol><li>キー コンテナーのアクセス ポリシーに引き続き MSI が含まれている。</li><li>アクセス ポリシーで Get、Wrap、および Unwrap のアクセス許可が有効になっている。</li><li>キー コンテナーがファイアウォールの内側の VNet にある場合は、 **[信頼された Microsoft サービスを許可]** が有効になっているかどうかを確認する。</li><li>ジョブ リソースの MSI が API を使用して `None` にリセットされたかどうかを確認する。<br>「はい」の場合は、値を `Identity = SystemAssigned` に戻します。 これにより、ジョブ リソースの ID が再作成されます。<br>新しい ID が作成されたら、キー コンテナーのアクセス ポリシーで新しい ID に対して `Get`、`Wrap`、`Unwrap` のアクセス許可を有効にします。</li></ol>                                                                                            |
+| CmkErrorKeyDisabled      | カスタマー マネージド キーが無効になっています。                                         | 回復可能 (キー バージョンを有効にした場合)。     |
+| CmkErrorKeyNotFound      | カスタマー マネージド キーが見つかりません。 | 回復可能。キーが削除されているが、まだ消去期間内であれば、[Undo Key vault key removal](https://docs.microsoft.com/powershell/module/az.keyvault/undo-azkeyvaultkeyremoval) (キー コンテナーのキーの削除を元に戻す) を使用します。<br>または <ol><li>回復可能 (顧客がキーをバックアップして復元している場合)。</li><li>回復不可能 (それ以外の場合)。</li></ol>
+| CmkErrorVaultNotFound |カスタマー マネージド キーのキー コンテナーが見つかりません。 |   キー コンテナーが削除されている場合は、以下のとおりです。<ol><li>回復可能。消去保護期間内であれば、「[キー コンテナーの復旧](https://docs.microsoft.com/azure/key-vault/general/soft-delete-powershell#recovering-a-key-vault)」にある手順を利用します。</li><li>回復不可能。消去保護期間を超えている場合。</li></ol><br>または、キー コンテナーが別のテナントに移行された場合は、回復可能。次のいずれかの手順を使って回復できます。<ol><li>キー コンテナーを古いテナントに戻します。</li><li>`Identity = None` を設定し、値を `Identity = SystemAssigned` に戻します。 これにより、ID が削除され、新しい ID の作成後に再登録されます。 キー コンテナーのアクセス ポリシーで新しい ID の `Get`、`Wrap`、`Unwrap` アクセス許可を有効にします。</li></ol>|
 
 ## <a name="next-steps"></a>次のステップ
 

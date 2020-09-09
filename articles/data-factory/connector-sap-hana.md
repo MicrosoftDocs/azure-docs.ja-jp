@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/17/2020
-ms.openlocfilehash: 74462b68bea38e4d84219adeedb7c3bb0893bbb4
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/22/2020
+ms.openlocfilehash: 92cc94170a01aceaa3e6bd058f4ae6628db04f18
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417232"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529587"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Azure Data Factory を使用して SAP HANA からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -27,7 +27,7 @@ ms.locfileid: "81417232"
 この記事では、Azure Data Factory のコピー アクティビティを使用して、SAP HANA データベースからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 >[!TIP]
->SAP データ統合シナリオにおける ADF の全体的なサポートについては、[「Azure Data Factory を使用した SAP データの統合」ホワイトペーパー](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)の詳細手順、比較、およびガイダンスを参照してください。
+>SAP データ統合シナリオにおける ADF の全体的なサポートについては、各 SAP コネクタの詳細な情報、比較、およびガイダンスが含まれる、[Azure Data Factory を使用した SAP データの統合に関するホワイトペーパー](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -46,7 +46,7 @@ SAP HANA データベースから、サポートされている任意のシン�
 - SAP HANA ソースからの並列コピー。 詳細については、「[SAP HANA からの並列コピー](#parallel-copy-from-sap-hana)」セクションを参照してください。
 
 > [!TIP]
-> データを SAP HANA データ ストア**に**コピーするには、汎用 ODBC コネクタを使用します。 詳細については、「[SAP HANA シンク](connector-odbc.md#sap-hana-sink)」を参照してください。 SAP HANA コネクタと ODBC コネクタ用のリンクされたサービスは種類が異なるため、再利用することはできないことに注意してください。
+> データを SAP HANA データ ストア**に**コピーするには、汎用 ODBC コネクタを使用します。 詳細については、「[SAP HANA シンク](#sap-hana-sink)」セクションを参照してください。 SAP HANA コネクタと ODBC コネクタ用のリンクされたサービスは種類が異なるため、再利用することはできないことに注意してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -298,6 +298,34 @@ SAP HANA からデータをコピーするとき、次の SAP HANAのデータ�
 | VARCHAR            | String                         |
 | timestamp          | DateTime                       |
 | VARBINARY          | Byte[]                         |
+
+## <a name="sap-hana-sink"></a>SAP HANA シンク
+
+現時点では、SAP HANA コネクタはシンクとしてサポートされていませんが、SAP HANA ドライバーで汎用 ODBC コネクタを使用して SAP HANA にデータを書き込むことができます。 
+
+[前提条件](#prerequisites)に従って、セルフホステッド Integration Runtime を設定し、まず SAP HANA ODBC ドライバーをインストールします。 次の例に示すように、SAP HANA データストアに接続するための ODBC のリンクされたサービスを作成し、データセットを作成し、それに応じた ODBC 型でアクティビティ シンクをコピーします。 詳細については [ODBC コネクタ](connector-odbc.md)に関する記事をご覧ください。
+
+```json
+{
+    "name": "SAPHANAViaODBCLinkedService",
+    "properties": {
+        "type": "Odbc",
+        "typeProperties": {
+            "connectionString": "Driver={HDBODBC};servernode=<HANA server>.clouddatahub-int.net:30015",
+            "authenticationType": "Basic",
+            "userName": "<username>",
+            "password": {
+                "type": "SecureString",
+                "value": "<password>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
 
 ## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 

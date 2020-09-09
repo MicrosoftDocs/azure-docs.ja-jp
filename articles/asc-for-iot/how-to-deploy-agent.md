@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: c3b514c79be87cd136375b4853226426965f4185
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 82103da3f2547baab62d0d95cf9a6084ef099cba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81311218"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033769"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>IoT デバイスにセキュリティ エージェントを選択してデプロイする
 
@@ -44,19 +44,18 @@ C ベースのセキュリティ エージェントはメモリ占有領域が�
 
 |     | C ベースのセキュリティ エージェント | C# ベースのセキュリティ エージェント |
 | --- | ----------- | --------- |
-| オープンソース | [GitHub](https://aka.ms/iot-security-github-cs) の [MIT ライセンス](https://en.wikipedia.org/wiki/MIT_License)で使用可能 | [GitHub](https://aka.ms/iot-security-github-c) の [MIT ライセンス](https://en.wikipedia.org/wiki/MIT_License)で使用可能 |
-| 開発言語    | C | C# |
-| Windows プラットフォームのサポート | いいえ | はい |
-| Windows の前提条件 | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
-| Linux プラットフォームのサポート | はい、x64 と x86 | はい、x64 のみ |
-| Linux の前提条件 | libunwind8、libcurl3、uuid ランタイム、auditd audispd プラグイン | libunwind8、libcurl3、uuid ランタイム、auditd、audispd プラグイン、sudo、netstat、iptables |
-| ディスクの占有領域 | 10.5 MB | 90 MB |
-| メモリ占有領域 (平均) | 5.5 MB | 33 MB |
-| IoT Hub に対する[認証](concept-security-agent-authentication-methods.md) | はい | はい |
-| セキュリティ データ[収集](how-to-agent-configuration.md#supported-security-events) | はい | はい |
-| イベントの集計 | はい | はい |
-| [セキュリティ モジュール ツイン](concept-security-module.md)によるリモート構成 | はい | はい |
-|
+| **オープンソース** | [GitHub](https://aka.ms/iot-security-github-c) の [MIT ライセンス](https://en.wikipedia.org/wiki/MIT_License)で使用可能 | [GitHub](https://aka.ms/iot-security-github-cs) の [MIT ライセンス](https://en.wikipedia.org/wiki/MIT_License)で使用可能 |
+| **開発言語**    | C | C# |
+| **Windows プラットフォームのサポート** | いいえ | はい |
+| **Windows の前提条件** | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
+| **Linux プラットフォームのサポート** | はい、x64 と x86 | はい、x64 のみ |
+| **Linux の前提条件** | libunwind8、libcurl3、uuid ランタイム、auditd audispd プラグイン | libunwind8、libcurl3、uuid ランタイム、auditd、audispd プラグイン、sudo、netstat、iptables |
+| **ディスクの占有領域** | 10.5 MB | 90 MB |
+| **メモリ占有領域 (平均)** | 5.5 MB | 33 MB |
+| **IoT Hub に対する[認証](concept-security-agent-authentication-methods.md)** | はい | はい |
+| **セキュリティ データの[収集](how-to-agent-configuration.md#supported-security-events)** | はい | はい |
+| **イベントの集計** | はい | はい |
+| **[セキュリティ モジュール ツイン](concept-security-module.md)によるリモート構成** | はい | はい |
 
 ## <a name="security-agent-installation-guidelines"></a>セキュリティ エージェントのインストール ガイドライン
 

@@ -11,15 +11,15 @@ ms.service: media-services
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/04/2017
 ms.author: juliako
-ms.openlocfilehash: dc0482fbcbb1c9d1618ec18e1f48b03f686a6573
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6beaee98e78e79c48270801f5696e4e487b0a2c3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74892583"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84883718"
 ---
 # <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>Azure Media Services での Azure CDN キャッシュ ポリシーの管理
 Azure Media Services では、HTTP ベースのアダプティブ ストリーミングとプログレッシブ ダウンロードが提供されます。 HTTP ベースのストリーミングは、プロキシと CDN レイヤーにおけるキャッシュだけでなくクライアント側のキャッシュの利点もあり、高い拡張性を備えています。 ストリーミング エンドポイントは、一般的なストリーミング機能と、HTTP キャッシュ ヘッダーの構成も提供します。 ストリーミング エンドポイントは、HTTP Cache-Control: max-age および Expires ヘッダーを設定します。 HTTP キャッシュ ヘッダーの詳細については、 [W3.org](https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html)を参照してください。

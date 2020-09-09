@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/23/2020
 ms.author: JenCook
-ms.openlocfilehash: 49824b324df044ae2883ab6844dd321be27cbcbf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 476b93400b69063590c12ed38037c0bf6c6d1714
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82150357"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281074"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Confidential Computing VM をデプロイする
 
@@ -84,7 +84,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
    * **[認証の種類]** : Linux VM を作成する場合は、 **[SSH 公開キー]** を選択します。 
 
         > [!NOTE]
-         > 認証には、SSH 公開キーまたはパスワードを使用する選択肢があります。 安全性が高いのは SSH です。 SSH キーを生成する方法の手順については、[Azure の Linux VM と Mac for Linux VM に SSH キーを作成する方法](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys)に関するページを参照してください。
+        > 認証には、SSH 公開キーまたはパスワードを使用する選択肢があります。 安全性が高いのは SSH です。 SSH キーを生成する方法の手順については、[Azure の Linux VM と Mac for Linux VM に SSH キーを作成する方法](../virtual-machines/linux/mac-create-ssh-keys.md)に関するページを参照してください。
 
     * **[ユーザー名]** : VM の管理者名を入力します。
 
@@ -127,8 +127,7 @@ ssh azureadmin@40.55.55.555
 
 ご利用の VM のパブリック IP アドレスは、Azure portal から、仮想マシンの [概要] セクションにアクセスして確認できます。
 
-[!div class="mx-imgBorder"]
-![Azure portal での IP アドレス](media/quick-create-portal/public-ip-virtual-machine.png)
+:::image type="content" source="media/quick-create-portal/public-ip-virtual-machine.png" alt-text="Azure portal での IP アドレス":::
 
 Windows を使用していて BASH シェルがない場合は PuTTY などの SSH クライアントをインストールします。
 

@@ -3,13 +3,13 @@ title: Azure Kubernetes Service (AKS) 用のサービス プリンシパル
 description: Azure Kubernetes Service (AKS) のクラスター用の Azure Active Directory サービス プリンシパルを作成して管理する
 services: container-service
 ms.topic: conceptual
-ms.date: 04/02/2020
-ms.openlocfilehash: 2c792eb4dc060e3f5d7fa2d8f2176bdd51538c43
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.date: 06/16/2020
+ms.openlocfilehash: 7f62c7dc7aacf9be4a59498aa5c556e9991ad578
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392735"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85298550"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのサービス プリンシパル
 
@@ -89,6 +89,9 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
 
 リソースの `--scope` には、 */subscriptions/\<guid\>/resourceGroups/myResourceGroup* や */subscriptions/\<guid\>/resourceGroups/myResourceGroupVnet/providers/Microsoft.Network/virtualNetworks/myVnet* など、完全なリソース ID を指定する必要があります。
 
+> [!NOTE]
+> ノード リソース グループから共同作成者ロールの割り当てを削除した場合、以下の操作が失敗する可能性があります。  
+
 以降の各セクションでは、一般的に必要となる委任について詳しく取り上げます。
 
 ### <a name="azure-container-registry"></a>Azure Container Registry
@@ -106,6 +109,9 @@ Azure Container Registry (ACR) をコンテナーのイメージ ストアとし
   - *Microsoft.Network/publicIPAddresses/join/action*
   - *Microsoft.Network/publicIPAddresses/read*
   - *Microsoft.Network/publicIPAddresses/write*
+  - [Kubernet クラスター上のカスタム ルート テーブル](configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet)を使用する場合は、次の追加のアクセス許可を追加します。
+    - *Microsoft.Network/routeTables/write*
+    - *Microsoft.Network/routeTables/read*
 - または、仮想ネットワーク内のサブネットに[ネットワーク共同作成者][rbac-network-contributor]の組み込みロールを割り当てます。
 
 ### <a name="storage"></a>ストレージ

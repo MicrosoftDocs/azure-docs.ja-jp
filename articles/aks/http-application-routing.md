@@ -4,14 +4,14 @@ description: HTTP アプリケーション ルーティング アドオンを使
 services: container-service
 author: lachie83
 ms.topic: article
-ms.date: 08/06/2019
+ms.date: 07/20/2020
 ms.author: laevenso
-ms.openlocfilehash: 6ffc9daaf1b87fc9fb6ebbb0f2787f07282afe5e
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 08835bda959fb4fe261e86e4d519ab85bd2a4625
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632400"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495150"
 ---
 # <a name="http-application-routing"></a>HTTP アプリケーション ルーティング
 
@@ -20,7 +20,7 @@ HTTP アプリケーション ルーティング ソリューションを使用�
 アドオンを有効にすると、サブスクリプション内に DNS ゾーンが作成されます。 DNS のコストの詳細については、[DNS の価格][dns-pricing]に関するページを参照してください。
 
 > [!CAUTION]
-> HTTP アプリケーションのルーティング アドオンは、ユーザーがすばやくイングレス コントローラーを作成し、アプリケーションにアクセスできるように設計されています。 このアドオンを運用環境で使用することはお勧めできません。 複数のレプリカと TLS のサポートを含む運用環境対応のイングレス デプロイについては、[HTTPS イングレス コントローラーの作成](https://docs.microsoft.com/azure/aks/ingress-tls)に関するページを参照してください。
+> HTTP アプリケーションのルーティング アドオンは、ユーザーがすばやくイングレス コントローラーを作成し、アプリケーションにアクセスできるように設計されています。 このアドオンは、現在、運用環境で使用できるように設計されていないため、運用環境で使用することはお勧めできません。 複数のレプリカと TLS のサポートを含む運用環境対応のイングレス デプロイについては、[HTTPS イングレス コントローラーの作成](./ingress-tls.md)に関するページを参照してください。
 
 ## <a name="http-routing-solution-overview"></a>HTTP のルーティング ソリューションの概要
 
@@ -46,16 +46,17 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --enable-addo
 az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addons http_application_routing
 ```
 
-クラスターのデプロイまたは更新が完了したら、[az aks show][az-aks-show] コマンドを使用して DNS ゾーン名を取得します。 この名前は、アプリケーションを AKS クラスターにデプロイするのに必要です。
+クラスターのデプロイまたは更新が完了したら、[az aks show][az-aks-show] コマンドを使用して DNS ゾーン名を取得します。
 
 ```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName -o table
 ```
 
-結果
+この名前は、アプリケーションを AKS クラスターにデプロイするのに必要であり、次の出力例に示されています。
 
+```console
 9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io
-
+```
 
 ## <a name="deploy-http-routing-portal"></a>HTTP ルーティングをデプロイする:ポータル
 
@@ -66,6 +67,22 @@ HTTP アプリケーション ルーティング アドオンは、AKS クラス
 クラスターがデプロイされたら、自動的に作成された AKS リソース グループに移動して、DNS ゾーンを選択します。 DNS ゾーンの名前を書き留めます。 この名前は、アプリケーションを AKS クラスターにデプロイするのに必要です。
 
 ![DNS ゾーン名を取得する](media/http-routing/dns.png)
+
+## <a name="connect-to-your-aks-cluster"></a>ご利用の AKS クラスターに接続する
+
+お使いのローカル コンピューターから Kubernetes クラスターに接続するには、[kubectl][kubectl] (Kubernetes コマンドライン クライアント) を使用します。
+
+Azure Cloud Shell を使用している場合、`kubectl` は既にインストールされています。 [az aks install-cli][] コマンドを使用してローカルにインストールすることもできます。
+
+```azurecli
+az aks install-cli
+```
+
+Kubernetes クラスターに接続するように `kubectl` を構成するには、[az aks get-credentials][] コマンドを使用します。 次の例では、*MyResourceGroup* の *MyAKSCluster* という名前の AKS クラスターの資格情報を取得します。
+
+```azurecli
+az aks get-credentials --resource-group MyResourceGroup --name MyAKSCluster
+```
 
 ## <a name="use-http-routing"></a>HTTP ルーティングを使用する
 
@@ -78,59 +95,54 @@ annotations:
 
 **samples-http-application-routing.yaml** という名前のファイルを作成し、次の YAML にコピーします。 43 行目の `<CLUSTER_SPECIFIC_DNS_ZONE>` を、この記事の前の手順で収集した DNS ゾーン名で更新します。
 
-
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: party-clippy
+  name: aks-helloworld  
 spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aks-helloworld
   template:
     metadata:
       labels:
-        app: party-clippy
+        app: aks-helloworld
     spec:
       containers:
-      - image: r.j3ss.co/party-clippy
-        name: party-clippy
-        resources:
-          requests:
-            cpu: 100m
-            memory: 128Mi
-          limits:
-            cpu: 250m
-            memory: 256Mi
-        tty: true
-        command: ["party-clippy"]
+      - name: aks-helloworld
+        image: neilpeterson/aks-helloworld:v1
         ports:
-        - containerPort: 8080
+        - containerPort: 80
+        env:
+        - name: TITLE
+          value: "Welcome to Azure Kubernetes Service (AKS)"
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: party-clippy
+  name: aks-helloworld  
 spec:
+  type: ClusterIP
   ports:
   - port: 80
-    protocol: TCP
-    targetPort: 8080
   selector:
-    app: party-clippy
-  type: ClusterIP
+    app: aks-helloworld
 ---
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: party-clippy
+  name: aks-helloworld
   annotations:
     kubernetes.io/ingress.class: addon-http-application-routing
 spec:
   rules:
-  - host: party-clippy.<CLUSTER_SPECIFIC_DNS_ZONE>
+  - host: aks-helloworld.<CLUSTER_SPECIFIC_DNS_ZONE>
     http:
       paths:
       - backend:
-          serviceName: party-clippy
+          serviceName: aks-helloworld
           servicePort: 80
         path: /
 ```
@@ -138,35 +150,20 @@ spec:
 [kubectl apply][kubectl-apply] コマンドを使用してリソースを作成します。
 
 ```bash
-$ kubectl apply -f samples-http-application-routing.yaml
-
-deployment "party-clippy" created
-service "party-clippy" created
-ingress "party-clippy" created
+kubectl apply -f samples-http-application-routing.yaml
 ```
 
-cURL またはブラウザーを使用して、samples-http-application-routing.yaml ファイルのホスト セクションで指定されたホスト名に移動します。 アプリケーションにインターネットからアクセスできるようになるまで、最大で 1 分かかる場合があります。
+次の例は、作成されたリソースを示しています。
 
 ```bash
-$ curl party-clippy.471756a6-e744-4aa0-aa01-89c4d162a7a7.canadaeast.aksapp.io
+$ kubectl apply -f samples-http-application-routing.yaml
 
- _________________________________
-/ It looks like you're building a \
-\ microservice.                   /
- ---------------------------------
- \
-  \
-     __
-    /  \
-    |  |
-    @  @
-    |  |
-    || |/
-    || ||
-    |\_/|
-    \___/
-
+deployment.apps/aks-helloworld created
+service/aks-helloworld created
+ingress.networking.k8s.io/aks-helloworld created
 ```
+
+Web ブラウザーで *aks-helloworld.\<CLUSTER_SPECIFIC_DNS_ZONE\>* (たとえば、*aks-helloworld.9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io*) を開き、デモ アプリケーションが表示されることを確認します。 アプリケーションが表示されるまでに数分かかることがあります。
 
 ## <a name="remove-http-routing"></a>HTTP ルーティングを削除する
 
@@ -213,8 +210,8 @@ kubectl delete configmaps addon-http-application-routing-nginx-configuration --n
 ```
 $ kubectl logs -f deploy/addon-http-application-routing-external-dns -n kube-system
 
-time="2018-04-26T20:36:19Z" level=info msg="Updating A record named 'party-clippy' to '52.242.28.189' for Azure DNS zone '471756a6-e744-4aa0-aa01-89c4d162a7a7.canadaeast.aksapp.io'."
-time="2018-04-26T20:36:21Z" level=info msg="Updating TXT record named 'party-clippy' to '"heritage=external-dns,external-dns/owner=default"' for Azure DNS zone '471756a6-e744-4aa0-aa01-89c4d162a7a7.canadaeast.aksapp.io'."
+time="2018-04-26T20:36:19Z" level=info msg="Updating A record named 'aks-helloworld' to '52.242.28.189' for Azure DNS zone '471756a6-e744-4aa0-aa01-89c4d162a7a7.canadaeast.aksapp.io'."
+time="2018-04-26T20:36:21Z" level=info msg="Updating TXT record named 'aks-helloworld' to '"heritage=external-dns,external-dns/owner=default"' for Azure DNS zone '471756a6-e744-4aa0-aa01-89c4d162a7a7.canadaeast.aksapp.io'."
 ```
 
 これらのレコードは、Azure Portal の DNS ゾーン リソースにも表示されます。
@@ -253,23 +250,29 @@ I0426 20:30:13.649800       9 stat_collector.go:34] changing prometheus collecto
 I0426 20:30:13.662191       9 leaderelection.go:184] successfully acquired lease kube-system/ingress-controller-leader-addon-http-application-routing
 I0426 20:30:13.662292       9 status.go:196] new leader elected: addon-http-application-routing-nginx-ingress-controller-5cxntd6
 I0426 20:30:13.763362       9 controller.go:179] ingress backend successfully reloaded...
-I0426 21:51:55.249327       9 event.go:218] Event(v1.ObjectReference{Kind:"Ingress", Namespace:"default", Name:"party-clippy", UID:"092c9599-499c-11e8-a5e1-0a58ac1f0ef2", APIVersion:"extensions", ResourceVersion:"7346", FieldPath:""}): type: 'Normal' reason: 'CREATE' Ingress default/party-clippy
-W0426 21:51:57.908771       9 controller.go:775] service default/party-clippy does not have any active endpoints
+I0426 21:51:55.249327       9 event.go:218] Event(v1.ObjectReference{Kind:"Ingress", Namespace:"default", Name:"aks-helloworld", UID:"092c9599-499c-11e8-a5e1-0a58ac1f0ef2", APIVersion:"extensions", ResourceVersion:"7346", FieldPath:""}): type: 'Normal' reason: 'CREATE' Ingress default/aks-helloworld
+W0426 21:51:57.908771       9 controller.go:775] service default/aks-helloworld does not have any active endpoints
 I0426 21:51:57.908951       9 controller.go:170] backend reload required
 I0426 21:51:58.042932       9 controller.go:179] ingress backend successfully reloaded...
-167.220.24.46 - [167.220.24.46] - - [26/Apr/2018:21:53:20 +0000] "GET / HTTP/1.1" 200 234 "" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)" 197 0.001 [default-party-clippy-80] 10.244.0.13:8080 234 0.004 200
+167.220.24.46 - [167.220.24.46] - - [26/Apr/2018:21:53:20 +0000] "GET / HTTP/1.1" 200 234 "" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)" 197 0.001 [default-aks-helloworld-80] 10.244.0.13:8080 234 0.004 200
 ```
 
 ## <a name="clean-up"></a>クリーンアップ
 
-この記事で作成された関連する Kubernetes オブジェクトを削除します。
+`kubectl delete` を使用して、この記事で作成された関連する Kubernetes オブジェクトを削除します。
+
+```bash
+kubectl delete -f samples-http-application-routing.yaml
+```
+
+出力例は、Kubernetes オブジェクトが削除されたことを示しています。
 
 ```bash
 $ kubectl delete -f samples-http-application-routing.yaml
 
-deployment "party-clippy" deleted
-service "party-clippy" deleted
-ingress "party-clippy" deleted
+deployment "aks-helloworld" deleted
+service "aks-helloworld" deleted
+ingress "aks-helloworld" deleted
 ```
 
 ## <a name="next-steps"></a>次のステップ
@@ -281,11 +284,13 @@ ingress "party-clippy" deleted
 [az-aks-show]: /cli/azure/aks?view=azure-cli-latest#az-aks-show
 [ingress-https]: ./ingress-tls.md
 [az-aks-enable-addons]: /cli/azure/aks#az-aks-enable-addons
-
+[az aks install-cli]: /cli/azure/aks#az-aks-install-cli
+[az aks get-credentials]: /cli/azure/aks#az-aks-get-credentials
 
 <!-- LINKS - external -->
 [dns-pricing]: https://azure.microsoft.com/pricing/details/dns/
 [external-dns]: https://github.com/kubernetes-incubator/external-dns
+[kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete

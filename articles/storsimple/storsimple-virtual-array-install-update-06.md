@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2017
 ms.author: alkohli
-ms.openlocfilehash: 5f0be5d8378cd1640d3052f2e56c8161e2c0b203
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02b85cb90948f35cb6f6c855cfbe81fd58301de0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "62116893"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513580"
 ---
 # <a name="install-update-06-on-your-storsimple-virtual-array"></a>StorSimple Virtual Array に Update 0.6 をインストール
 
@@ -30,6 +30,7 @@ ms.locfileid: "62116893"
 更新プログラムを適用する前に、最初にホストで、次にデバイスで、ボリュームまたは共有をオフラインにすることをお勧めします。 これにより、データ破損の可能性を最小限に抑えられます。 ボリュームまたは共有をオフラインにしたら、デバイスの手動バックアップも作成する必要があります。
 
 > [!IMPORTANT]
+>
 > - Update 0.6 は、デバイス上ではソフトウェア バージョン **10.0.10293.0** になります。 この更新プログラムの新機能については、[Update 0.6 のリリース ノート](storsimple-virtual-array-update-06-release-notes.md)に関するページをご覧ください。
 >
 > - Update 0.2 以降を実行している場合は、Azure Portal から更新プログラムをインストールすることをお勧めします。 Update 0.1 または GA ソフトウェア バージョンを実行している場合は、ローカル Web UI で修正プログラムを使用する方法で、Update 0.6 をインストールする必要があります。

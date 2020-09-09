@@ -30,7 +30,7 @@ LISTSTATUS failed with error 0x83090aa2 (Forbidden. ACL verification failed. Eit
 
 ユーザーによってファイル/フォルダーのサービス プリンシパル (SP) のアクセス許可が取り消されている可能性があります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 1. SP に、パスに沿って走査するための 'x' アクセス許可があることを確認します。 詳細については、「 [アクセス許可](https://hdinsight.github.io/ClusterCRUD/ADLS/adls-create-permission-setup.html)」を参照してください。 Data Lake ストレージ アカウント内のファイルまたはフォルダーへのアクセスを確認するための dfs コマンドの例:
 
@@ -99,7 +99,7 @@ Token Refresh failed - Received invalid http response: 500
     Error: java.lang.IllegalArgumentException: Token Refresh failed - Received invalid http response: 500, text = Response{protocol=http/1.1, code=500, message=Internal Server Error, url=http://clustername.hmssomerandomstringc.cx.internal.cloudapp.net:909/api/oauthtoken}
     ```
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 次の PowerShell スクリプトを使用して、新しい証明書を作成するか、既存の証明書を割り当てます。
 

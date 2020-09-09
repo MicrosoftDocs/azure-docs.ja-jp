@@ -1,17 +1,18 @@
 ---
-title: チュートリアル - Azure Spring Cloud で分散トレースを使用する
-description: このチュートリアルでは、Azure Application Insights を通じて Spring Cloud の分散トレースを使用する方法について説明します
+title: Azure Spring Cloud で分散トレースを使用する
+description: Azure Application Insights を通じて Spring Cloud の分散トレースを使用する方法について説明します
 author: bmitchell287
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
-ms.openlocfilehash: 0815aa084462d1b829d64cd7c5d6fa7cebf534fc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-java
+ms.openlocfilehash: 1ff76c38031ac367bf81f6d152642a4d9a209bb7
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78273208"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294001"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Azure Spring Cloud で分散トレースを使用する
 
@@ -27,7 +28,7 @@ Azure Spring Cloud の分散トレース ツールを使用すると、複雑な
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、既にプロビジョニングされ、実行されている Azure Spring Cloud サービスが必要です。 Azure Spring Cloud サービスをプロビジョニングし、実行するには、[Azure CLI を使用したアプリのデプロイのクイックスタート](spring-cloud-quickstart-launch-app-cli.md)を完了してください。
+ここで説明する手順の実行には、既にプロビジョニングされ、運用されている Azure Spring Cloud サービスが必要です。 Azure Spring Cloud サービスをプロビジョニングし、実行するには、[Azure CLI を使用したアプリのデプロイのクイックスタート](spring-cloud-quickstart.md)を完了してください。
     
 ## <a name="add-dependencies"></a>依存関係を追加する
 
@@ -102,7 +103,4 @@ Application Insights では、アプリケーション マップと検索機能�
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure Spring Cloud で分散トレースを有効にして理解する方法を学習しました。 アプリケーションを Azure Cosmos DB データベースにバインドする方法について学習するには、次のチュートリアルに進んでください。
-
-> [!div class="nextstepaction"]
-> [Azure Cosmos DB データベースにバインドする方法を確認する](spring-cloud-tutorial-bind-cosmos.md)
+この記事では、Azure Spring Cloud で分散トレースを有効にして理解する方法を学習しました。 サービスをアプリケーションにバインドする方法については、[Azure Cosmos DB データベースを Azure Spring Cloud アプリケーションにバインドする方法](spring-cloud-tutorial-bind-cosmos.md)に関する記事を参照してください。

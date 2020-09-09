@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 02/19/2020
+ms.topic: how-to
+ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b7d8fbddc86c0d05d7b0d4ce46cb06c5fc92a2cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db81f8b60cf4883223f6fc084c19c8da1d07bc9a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78188121"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388104"
 ---
 # <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して Microsoft アカウントでのサインインを設定する
 
@@ -33,13 +33,13 @@ ms.locfileid: "78188121"
 
 Microsoft アカウントを使用したユーザーのサインインを有効にするには、Azure AD テナント内でアプリケーションを登録する必要があります。 Azure AD テナントは、Azure AD B2C テナントと同じものではありません。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. ご利用の Azure AD テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターをクリックして、ご利用の Azure AD テナントを含むディレクトリを選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択し、 **[アプリの登録]** を検索して選択します。
 1. **[新規登録]** を選択します。
 1. アプリケーションの **[名前]** を入力します。 たとえば、 *MSAapp1* です。
-1. **[サポートされているアカウントの種類]** で、 **[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント (Skype、Xbox、Outlook.com など)]** を選択します。
-1. **[リダイレクト URI (省略可能)]** で、 **[Web]** を選択し、テキスト ボックスに「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 `your-tenant-name` を Azure AD B2C テナント名に置き換えます。
+1. **[サポートされているアカウントの種類]** で、 **[Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)]\(任意の組織ディレクトリ内のアカウント (任意の Azure AD ディレクトリ - マルチテナント) と、個人用の Microsoft アカウント (Skype、Xbox など)\)** を選択します。
+1. **[リダイレクト URI (省略可能)]** で、 **[Web]** を選択し、テキスト ボックスに「`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/oauth2/authresp`」と入力します。 `<tenant-name>` を Azure AD B2C テナント名に置き換えます。
 1. **[登録]** を選択します
 1. アプリケーションの [概要] ページに表示されている **[アプリケーション (クライアント) ID]** を記録します。 これは、後のセクションでクレーム プロバイダーを構成するときに必要です。
 1. **[証明書とシークレット]** を選択します。
@@ -51,7 +51,7 @@ Microsoft アカウントを使用したユーザーのサインインを有効�
 
 Azure AD から `family_name` および `given_name` 要求を取得する場合は、ご利用のアプリケーションに対して省略可能な要求を Azure portal UI またはアプリケーション マニフェストで構成できます。 詳細については、[Azure AD アプリに省略可能な要求を提供する方法](../active-directory/develop/active-directory-optional-claims.md)に関するページを参照してください。
 
-1. [Azure portal](https://portal.azure.com) にサインインする **Azure Active Directory** を検索して選択します。
+1. [Azure portal](https://portal.azure.com) にサインインします。 **Azure Active Directory** を検索して選択します。
 1. **[管理]** セクションで、 **[アプリの登録]** を選択します。
 1. 省略可能な要求を構成するアプリケーションを一覧から選択します。
 1. **[管理]** セクションで、 **[トークンの構成 (プレビュー)]** を選択します。
@@ -64,7 +64,7 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 
 これで、Azure AD テナント内にアプリケーションが作成されたので、そのアプリケーションのクライアント シークレットを Azure AD B2C テナント内に格納する必要があります。
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用のテナントが含まれるディレクトリを選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 1. [概要] ページで、 **[Identity Experience Framework]** を選択します。
@@ -160,7 +160,7 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 1. *TrustFrameworkExtensions.xml* ファイルで、作成したユーザー体験内に `Order="1"` を含む **OrchestrationStep** 要素を見つけます。
 1. **ClaimsProviderSelects** の下に、次の要素を追加します。 **TargetClaimsExchangeId** の値を適切な値 (`MicrosoftAccountExchange` など) に設定します。
 
-    ```XML
+    ```xml
     <ClaimsProviderSelection TargetClaimsExchangeId="MicrosoftAccountExchange" />
     ```
 
@@ -208,7 +208,7 @@ Azure AD B2C との通信は、B2C テナントで登録したアプリケーシ
       "exp": 1562365200,
       "nbf": 1562361600,
       "ver": "1.0",
-      "iss": "https://your-b2c-tenant.b2clogin.com/10000000-0000-0000-0000-000000000000/v2.0/",
+      "iss": "https://<tenant-name>.b2clogin.com/10000000-0000-0000-0000-000000000000/v2.0/",
       "sub": "20000000-0000-0000-0000-000000000000",
       "aud": "30000000-0000-0000-0000-000000000000",
       "acr": "b2c_1a_signupsigninmsa",

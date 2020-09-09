@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: eeb279892f987ed1f26ced97ab267e8140ccb20e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6a3a5211864c4cbadc03bbc77bfef2204f6c2ccf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75614062"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244805"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-azure-monitor-logs"></a>チュートリアル:Azure Monitor ログを使用して Service Fabric で Windows コンテナーを監視する
 
@@ -37,7 +37,7 @@ ms.locfileid: "75614062"
 このチュートリアルの第 1 部で[提供されたテンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-OMS-UnSecure)を使用した場合、汎用の Service Fabric Azure Resource Manager テンプレートに次の追加を行う必要があります。 Azure Monitor ログを使用したコンテナーの監視を設定するために独自のクラスターを用意した場合:
 
 * Resource Manager テンプレートに次の変更を加えます。
-* PowerShell を使用してデプロイし、[テンプレートをデプロイ](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)してクラスターをアップグレードします。 Azure Resource Manager はリソースが存在することを認識しているので、アップグレードとして展開されます。
+* PowerShell を使用してデプロイし、[テンプレートをデプロイ](./service-fabric-cluster-creation-via-arm.md)してクラスターをアップグレードします。 Azure Resource Manager はリソースが存在することを認識しているので、アップグレードとして展開されます。
 
 ### <a name="adding-azure-monitor-logs-to-your-cluster-template"></a>クラスター テンプレートに Azure Monitor ログを追加する
 
@@ -233,6 +233,6 @@ Log Analytics ワークスペースに移動します。ここでは、ソリュ
 コンテナー化されたアプリケーションの監視を設定したので、以下を試してみましょう。
 
 * 上記と同様の手順で、Linux クラスター用に Azure Monitor ログを設定する。 [このテンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeType-Secure-OMS)を参照して、Resource Manager テンプレートを変更してみましょう。
-* Azure Monitor ログを構成して、検出と診断に役立つ[自動アラート](../log-analytics/log-analytics-alerts.md)を設定する。
+* Azure Monitor ログを構成して、検出と診断に役立つ[自動アラート](../azure-monitor/platform/alerts-overview.md)を設定する。
 * Service Fabric の[推奨されるパフォーマンス カウンター](service-fabric-diagnostics-event-generation-perf.md)の一覧を参照して、実際のクラスターに合わせて構成する。
-* Azure Monitor ログの一部として提供されている[ログ検索とクエリ](../log-analytics/log-analytics-log-searches.md)機能をよく理解します。
+* Azure Monitor ログの一部として提供されている[ログ検索とクエリ](../azure-monitor/log-query/log-query-overview.md)機能をよく理解します。

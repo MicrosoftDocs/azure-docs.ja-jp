@@ -3,15 +3,15 @@ title: Azure Service Fabric の ReliableConcurrentQueue
 description: ReliableConcurrentQueue は、並列エンキューと並列デキューが利用できる高スループットのキューです。
 ms.topic: conceptual
 ms.date: 5/1/2017
-ms.openlocfilehash: a7115db8259fde0e87e53557ecef730f8e82d2fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 423ef3d1898176d7c25c596ad186a9c000108aa4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75462724"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257452"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Azure Service Fabric の ReliableConcurrentQueue の概要
-Reliable Concurrent Queue は、エンキュー操作とデキュー操作に関して高いコンカレンシーを備えた、非同期、トランザクショナル、レプリケートを特徴とするキューです。 [Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx) の特徴である厳密な FIFO の順序付けを緩和し、ベストエフォートの順序付けを利用できるようにすることで、高いスループットと短い待ち時間が得られるように設計されています。
+Reliable Concurrent Queue は、エンキュー操作とデキュー操作に関して高いコンカレンシーを備えた、非同期、トランザクショナル、レプリケートを特徴とするキューです。 [Reliable Queue](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1) の特徴である厳密な FIFO の順序付けを緩和し、ベストエフォートの順序付けを利用できるようにすることで、高いスループットと短い待ち時間が得られるように設計されています。
 
 ## <a name="apis"></a>API
 
@@ -21,11 +21,11 @@ Reliable Concurrent Queue は、エンキュー操作とデキュー操作に関
 | bool TryDequeue(out T result)  | Task< ConditionalValue < T > > TryDequeueAsync(ITransaction tx)  |
 | int Count()                    | long Count()                                                     |
 
-## <a name="comparison-with-reliable-queue"></a>[Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx) との比較
+## <a name="comparison-with-reliable-queue"></a>[Reliable Queue](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1) との比較
 
-Reliable Concurrent Queue は、[Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx) の代替手段として提供されています。 このキューは FIFO の厳密な順序付けが必要ないケースで使用してください。FIFO の順序を確実に守るためには、そのトレードオフとして、コンカレンシーは放棄しなければなりません。  [Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx) では、エンキューとデキューを許可するトランザクションを一度に 1 つまでとし、FIFO の順序付けを強制的に適用するためにロックが使用されます。 これに対し、Reliable Concurrent Queue では、順序付けの制約が緩和され、任意の数の同時トランザクションが交互に、そのエンキュー操作とデキュー操作を実行できます。 Reliable Concurrent Queue では、ベストエフォートでの順序付けは備わっていますが、2 つの値の相対的順序は保証されません。
+Reliable Concurrent Queue は、[Reliable Queue](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1) の代替手段として提供されています。 このキューは FIFO の厳密な順序付けが必要ないケースで使用してください。FIFO の順序を確実に守るためには、そのトレードオフとして、コンカレンシーは放棄しなければなりません。  [Reliable Queue](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1) では、エンキューとデキューを許可するトランザクションを一度に 1 つまでとし、FIFO の順序付けを強制的に適用するためにロックが使用されます。 これに対し、Reliable Concurrent Queue では、順序付けの制約が緩和され、任意の数の同時トランザクションが交互に、そのエンキュー操作とデキュー操作を実行できます。 Reliable Concurrent Queue では、ベストエフォートでの順序付けは備わっていますが、2 つの値の相対的順序は保証されません。
 
-エンキュー/デキューを実行する同時トランザクションが複数存在するときは必ず、[Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx) よりも Reliable Concurrent Queue の方がスループットは高く、待ち時間は短くなります。
+エンキュー/デキューを実行する同時トランザクションが複数存在するときは必ず、[Reliable Queue](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1) よりも Reliable Concurrent Queue の方がスループットは高く、待ち時間は短くなります。
 
 ReliableConcurrentQueue の使用例として、[メッセージ キュー](https://en.wikipedia.org/wiki/Message_queue)のシナリオが挙げられます。 このシナリオでは、メッセージ プロデューサーが、何らかの要素を作成してキューに追加し、メッセージ コンシューマーがキューからメッセージを取り出して処理します。 同時トランザクションを使用して複数のプロデューサーと複数のコンシューマーが別々に動作し、そのキューを処理することが可能です。
 
@@ -338,6 +338,6 @@ using (var txn = this.StateManager.CreateTransaction())
 * [Reliable Services の通知](service-fabric-reliable-services-notifications.md)
 * [Reliable Services のバックアップと復元 (ディザスター リカバリー)](service-fabric-reliable-services-backup-restore.md)
 * [Reliable State Manager の構成](service-fabric-reliable-services-configuration.md)
-* [Service Fabric Web API サービスの概要](service-fabric-reliable-services-communication-webapi.md)
-* [Reliable Services プログラミング モデルの詳細な使用方法](service-fabric-reliable-services-advanced-usage.md)
-* [Reliable Collection の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+* [Service Fabric Web API サービスの概要](./service-fabric-reliable-services-communication-aspnetcore.md)
+* [Reliable Services プログラミング モデルの詳細な使用方法](./service-fabric-reliable-services-lifecycle.md)
+* [Reliable Collection の開発者向けリファレンス](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)

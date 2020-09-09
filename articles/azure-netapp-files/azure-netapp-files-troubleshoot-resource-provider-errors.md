@@ -12,15 +12,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 10/18/2019
 ms.author: b-juche
-ms.openlocfilehash: 62e67d4965444df0e731b4387808ed3b89e4673a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 870caffe2bd286c2eec3390915bc5e64e0103a07
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72597207"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85483467"
 ---
 # <a name="troubleshoot-azure-netapp-files-resource-provider-errors"></a>Azure NetApp Files のリソース プロバイダー エラーのトラブルシューティング 
 

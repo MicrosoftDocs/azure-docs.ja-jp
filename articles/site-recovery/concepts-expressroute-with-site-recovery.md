@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: e4525bdc6165e8e736db5f539c764d25250cb248
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46db5f7d3e5d3844fb297e512d8d701e6da79de9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229171"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654312"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute と Azure Site Recovery
 
@@ -50,7 +50,7 @@ Site Recovery は、パブリック エンドポイント経由で、ターゲ�
 
 ## <a name="azure-to-azure-replication-with-expressroute"></a>ExpressRoute を使用した Azure から Azure へのレプリケーション
 
-Azure Site Recovery によって、[Azure 仮想マシン](azure-to-azure-architecture.md)のディザスター リカバリーが可能になります。 Azure 仮想マシンが [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md) を使用するかどうかに応じて、レプリケーション データは、Azure Storage アカウントまたはターゲット Azure リージョンのレプリカ マネージド ディスクに送信されます。 レプリケーションのエンドポイントはパブリックですが、Azure VM のレプリケーション トラフィックは、ソース仮想ネットワークがどの Azure リージョンに存在するかに関わらず、既定ではインターネットを経由しません。 0\.0.0.0/0 アドレス プレフィックスの Azure の既定のシステム ルートを [カスタム ルート](../virtual-network/virtual-networks-udr-overview.md#custom-routes)でオーバーライドし、VM トラフィックをオンプレミス ネットワーク仮想アプライアンス (NVA) に転送することもできますが、この構成は Site Recovery レプリケーションにはお勧めしません。 カスタム ルートを使用している場合、レプリケーション トラフィックが Azure 境界から外に出ないように、"ストレージ" 用の仮想ネットワーク内に[仮想ネットワーク サービス エンドポイントを作成する](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage)ことをお勧めします。
+Azure Site Recovery によって、[Azure 仮想マシン](azure-to-azure-architecture.md)のディザスター リカバリーが可能になります。 Azure 仮想マシンが [Azure Managed Disks](../virtual-machines/managed-disks-overview.md) を使用するかどうかに応じて、レプリケーション データは、Azure Storage アカウントまたはターゲット Azure リージョンのレプリカ マネージド ディスクに送信されます。 レプリケーションのエンドポイントはパブリックですが、Azure VM のレプリケーション トラフィックは、ソース仮想ネットワークがどの Azure リージョンに存在するかに関わらず、既定ではインターネットを経由しません。 0\.0.0.0/0 アドレス プレフィックスの Azure の既定のシステム ルートを [カスタム ルート](../virtual-network/virtual-networks-udr-overview.md#custom-routes)でオーバーライドし、VM トラフィックをオンプレミス ネットワーク仮想アプライアンス (NVA) に転送することもできますが、この構成は Site Recovery レプリケーションにはお勧めしません。 カスタム ルートを使用している場合、レプリケーション トラフィックが Azure 境界から外に出ないように、"ストレージ" 用の仮想ネットワーク内に[仮想ネットワーク サービス エンドポイントを作成する](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage)ことをお勧めします。
 
 Azure VM のディザスター リカバリーの場合、既定では、レプリケーションのために ExpressRoute は必要ありません。 仮想マシンがターゲットの Azure リージョンにフェールオーバーされたら、[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md#privatepeering)を使ってそれらのマシンにアクセスできます。 データ転送の料金は、Azure リージョン間でのデータ レプリケーションのモードに関係なく適用されることに注意してください。
 

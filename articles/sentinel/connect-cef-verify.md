@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 6b91e36ee09aa855c119add2c0eb268cf8b97393
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6892f4ebb250290a0faad546fd000530baf4479
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731832"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038173"
 ---
 # <a name="step-3-validate-connectivity"></a>手順 3:接続の検証
 
@@ -54,21 +54,23 @@ ms.locfileid: "81731832"
 
 1. このファイルに次のテキストが含まれていることを確認します。
 
-        <source>
-            type syslog
-            port 25226
-            bind 127.0.0.1
-            protocol_type tcp
-            tag oms.security
-            format /(?<time>(?:\w+ +){2,3}(?:\d+:){2}\d+|\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.[\w\-\:\+]{3,12}):?\s*(?:(?<host>[^: ]+) ?:?)?\s*(?<ident>.*CEF.+?(?=0\|)|%ASA[0-9\-]{8,10})\s*:?(?<message>0\|.*|.*)/
-            <parse>
-                message_format auto
-            </parse>
-        </source>
+    ```console
+    <source>
+        type syslog
+        port 25226
+        bind 127.0.0.1
+        protocol_type tcp
+        tag oms.security
+        format /(?<time>(?:\w+ +){2,3}(?:\d+:){2}\d+|\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.[\w\-\:\+]{3,12}):?\s*(?:(?<host>[^: ]+) ?:?)?\s*(?<ident>.*CEF.+?(?=0\|)|%ASA[0-9\-]{8,10})\s*:?(?<message>0\|.*|.*)/
+        <parse>
+            message_format auto
+        </parse>
+    </source>
 
-        <filter oms.security.**>
-            type filter_syslog_security
-        </filter>
+    <filter oms.security.**>
+        type filter_syslog_security
+    </filter>
+    ```
 
 1. マシンのセキュリティにネットワーク トラフィックをブロックするような改良 (ホスト ファイアウォールなど) がなされているかどうかを確認します。
 
@@ -76,17 +78,21 @@ ms.locfileid: "81731832"
 
     - 構成ファイル: `/etc/rsyslog.d/security-config-omsagent.conf`
 
-            :rawmsg, regex, "CEF\|ASA" ~
-            *.* @@127.0.0.1:25226
-
+        ```console
+        :rawmsg, regex, "CEF"|"ASA"
+        *.* @@127.0.0.1:25226
+        ```
+  
 1. syslog デーモンがデータをポート 514 で受信していることを確認します。
 
 1. 必要な接続が確立されていることを確認します。データの受信には TCP 514 が、また syslog デーモンと Log Analytics エージェントとの間の内部通信には TCP 25226 が使用されます。
 
 1. MOCK データを localhost のポート 514 に送信します。 このデータは、Azure Sentinel ワークスペースから次のクエリを実行することによって観察できます。
 
-        CommonSecurityLog
-        | where DeviceProduct == "MOCK"
+    ```console
+    CommonSecurityLog
+    | where DeviceProduct == "MOCK"
+    ```
 
 # <a name="syslog-ng-daemon"></a>[syslog-ng デーモン](#tab/syslogng)
 
@@ -96,21 +102,23 @@ ms.locfileid: "81731832"
 
 1. このファイルに次のテキストが含まれていることを確認します。
 
-        <source>
-            type syslog
-            port 25226
-            bind 127.0.0.1
-            protocol_type tcp
-            tag oms.security
-            format /(?<time>(?:\w+ +){2,3}(?:\d+:){2}\d+|\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.[\w\-\:\+]{3,12}):?\s*(?:(?<host>[^: ]+) ?:?)?\s*(?<ident>.*CEF.+?(?=0\|)|%ASA[0-9\-]{8,10})\s*:?(?<message>0\|.*|.*)/
-            <parse>
-                message_format auto
-            </parse>
-        </source>
+    ```console
+    <source>
+        type syslog
+        port 25226
+        bind 127.0.0.1
+        protocol_type tcp
+        tag oms.security
+        format /(?<time>(?:\w+ +){2,3}(?:\d+:){2}\d+|\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.[\w\-\:\+]{3,12}):?\s*(?:(?<host>[^: ]+) ?:?)?\s*(?<ident>.*CEF.+?(?=0\|)|%ASA[0-9\-]{8,10})\s*:?(?<message>0\|.*|.*)/
+        <parse>
+            message_format auto
+        </parse>
+    </source>
 
-        <filter oms.security.**>
-            type filter_syslog_security
-        </filter>
+    <filter oms.security.**>
+        type filter_syslog_security
+    </filter>
+    ```
 
 1. マシンのセキュリティにネットワーク トラフィックをブロックするような改良 (ホスト ファイアウォールなど) がなされているかどうかを確認します。
 
@@ -118,9 +126,11 @@ ms.locfileid: "81731832"
 
     - 構成ファイル: `/etc/syslog-ng/conf.d/security-config-omsagent.conf`
 
-            filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
-            destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
-            log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
+        ```console
+        filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
+        destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
+        log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
+        ```
 
 1. syslog デーモンがデータをポート 514 で受信していることを確認します。
 
@@ -128,9 +138,10 @@ ms.locfileid: "81731832"
 
 1. MOCK データを localhost のポート 514 に送信します。 このデータは、Azure Sentinel ワークスペースから次のクエリを実行することによって観察できます。
 
-        CommonSecurityLog
-        | where DeviceProduct == "MOCK"
-
+    ```console
+    CommonSecurityLog
+    | where DeviceProduct == "MOCK"
+    ```
 ---
 
 ## <a name="next-steps"></a>次のステップ

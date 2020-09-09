@@ -2,23 +2,23 @@
 title: 'Azure ExpressRoute: 回線とピアリング'
 description: このページでは、ExpressRoute 回線とルーティング ドメイン/ピアリングの概要を示します。
 services: expressroute
-author: mialdrid
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
-ms.author: mialdrid
-ms.openlocfilehash: c68ffd019937f902567c3deda8d879448dc082da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: duau
+ms.openlocfilehash: 2e8173277d15ffbe85d38d8f0df842602d03342b
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236355"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397646"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute 回線とピアリング
 
 ExpressRoute 回線は、オンプレミスのインフラストラクチャを接続プロバイダー経由で Microsoft に接続します。 この記事では、ExpressRoute 回線とルーティング ドメイン/ピアリングについて理解できます。 下の図は、お客様の WAN と Microsoft の接続を論理的に表現したものです。
 
-![](./media/expressroute-circuit-peerings/expressroute-basic.png)
+![ExpressRoute 回線がオンプレミスのインフラストラクチャを接続プロバイダー経由でどのように Microsoft に接続するかを示す図。](./media/expressroute-circuit-peerings/expressroute-basic.png)
 
 > [!IMPORTANT]
 > Azure パブリック ピアリングは非推奨となり、新しい ExpressRoute 回線には使用できません。 新しい回線では、Microsoft ピアリングおよびプライベート ピアリングをサポートします。  
@@ -42,7 +42,7 @@ ExpressRoute 回線は物理エンティティにはマップされません。 
 
 ExpressRoute 回線には、複数のルーティング ドメイン/ピアリングが関連付けられます。Azure パブリック、Azure プライベート、および Microsoft です。 各ピアリングは、高可用性のために、ルーターのペアにまったく同様に (アクティブ/アクティブまたは負荷分散構成で) 構成されます。 Azure サービスは *Azure パブリック*および *Azure プライベート*として分類され、IP アドレス指定スキームを表します。
 
-![](./media/expressroute-circuit-peerings/expressroute-peerings.png)
+![Azure パブリック、Azure プライベート、および Microsoft ピアリングが ExpressRoute 回線でどのように構成されているかを示す図。](./media/expressroute-circuit-peerings/expressroute-peerings.png)
 
 ### <a name="azure-private-peering"></a><a name="privatepeering"></a>Azure プライベート ピアリング
 

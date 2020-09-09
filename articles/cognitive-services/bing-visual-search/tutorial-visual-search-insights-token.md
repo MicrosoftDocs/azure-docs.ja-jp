@@ -10,12 +10,13 @@ ms.subservice: bing-visual-search
 ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: aahi
-ms.openlocfilehash: ad24a8a194a11c3fd5f7f77ea8c52197d5438edc
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c03800696897dc6cbb4cd793879e734366829b7d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477909"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88925115"
 ---
 # <a name="tutorial-find-similar-images-from-previous-searches-using-an-image-insights-token"></a>チュートリアル:画像の分析情報トークンを使用して以前の検索から似た画像を見つける
 
@@ -129,8 +130,8 @@ if (visualSearchResults.Tags.Count > 0)
 
 完全なアプリケーションでは、次の URL が返されます。
 
-|ActionType  |URL  | |
-|---------|---------|---------|
+|ActionType  |URL  |
+|---------|---------|
 |MoreSizes -> WebSearchUrl     |         |
 |VisualSearch -> WebSearchUrl     |         |
 |ImageById -> WebSearchUrl    |         |

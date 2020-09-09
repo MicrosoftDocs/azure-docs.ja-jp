@@ -2,24 +2,25 @@
 title: 仮想ファイル システムをプールにマウントする
 description: 仮想ファイル システムを Batch プールにマウントする方法について説明します。
 ms.topic: how-to
+ms.custom: devx-track-csharp
 ms.date: 08/13/2019
-ms.openlocfilehash: 4e51e8a1f11d670515893a83398a0c6d7c6e9a46
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: df03275fdeea88df1a2f2b6e2cda55021497cdf7
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816031"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145486"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>仮想ファイル システムを Batch プールにマウントする
 
 Azure Batch は、Batch プール内の Windows または Linux 計算ノードへのクラウド ストレージまたは外部ファイル システムのマウントをサポートするようになりました。 計算ノードがプールに参加すると、仮想ファイル システムがマウントされ、そのノードのローカル ドライブとして扱われます。 Azure Files、Azure Blob Storage、ネットワーク ファイル システム (NFS) ([Avere vFXT キャッシュ](../avere-vfxt/avere-vfxt-overview.md)を含む)、Common Internet File System (CIFS) などのファイル システムをマウントできます。
 
-この記事では、[Batch Management Library for .NET](https://docs.microsoft.com/dotnet/api/overview/azure/batch?view=azure-dotnet) を使用して、計算ノードのプールに仮想ファイル システムをマウントする方法について説明します。
+この記事では、[Batch Management Library for .NET](/dotnet/api/overview/azure/batch) を使用して、計算ノードのプールに仮想ファイル システムをマウントする方法について説明します。
 
 > [!NOTE]
 > 仮想ファイル システムのマウントは、2019-08-19 以降に作成された Batch プールでサポートされています。 2019-08-19 より前に作成された Batch プールでは、この機能はサポートされていません。
 > 
-> 計算ノードにファイル システムをマウントする API は、[Batch .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch?view=azure-dotnet) ライブラリに含まれています。
+> 計算ノードにファイル システムをマウントする API は、[Batch .NET](/dotnet/api/microsoft.azure.batch) ライブラリに含まれています。
 
 ## <a name="benefits-of-mounting-on-a-pool"></a>プールにマウントする利点
 
@@ -77,7 +78,7 @@ new PoolAddParameter
 
 ### <a name="azure-blob-file-system"></a>Azure Blob ファイル システム
 
-もう 1 つの選択肢は、[blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md) を介して Azure Blob ストレージを使用することです。 BLOB ファイル システムをマウントするには、ストレージ アカウントに `AccountKey` または `SasKey` が必要です。 これらのキーを取得する方法の詳細については、[ストレージ アカウント アクセス キーの管理](../storage/common/storage-account-keys-manage.md)または[共有アクセス署名 (SAS) の使用](../storage/common/storage-dotnet-shared-access-signature-part-1.md)に関するページを参照してください。 blobfuse の使用方法の詳細については、[blobfuse のトラブルシューティングの FAQ](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ) ページを参照してください。 blobfuse でマウントされたディレクトリへの既定のアクセスを取得するには、**Administrator** としてタスクを実行します。 blobfuse によってディレクトリはユーザー空間にマウントされ、プールの作成時にルートとしてマウントされます。 Linux では、すべての **Administrator** タスクがルートになります。 FUSE モジュールのすべてのオプションについては、[FUSE のリファレンス ページ](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html)で説明されています。
+もう 1 つの選択肢は、[blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md) を介して Azure Blob ストレージを使用することです。 BLOB ファイル システムをマウントするには、ストレージ アカウントに `AccountKey` または `SasKey` が必要です。 これらのキーを取得する方法の詳細については、[ストレージ アカウント アクセス キーの管理](../storage/common/storage-account-keys-manage.md)または[共有アクセス署名 (SAS) の使用](../storage/common/storage-sas-overview.md)に関するページを参照してください。 blobfuse の使用方法の詳細については、[blobfuse のトラブルシューティングの FAQ](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ) ページを参照してください。 blobfuse でマウントされたディレクトリへの既定のアクセスを取得するには、**Administrator** としてタスクを実行します。 blobfuse によってディレクトリはユーザー空間にマウントされ、プールの作成時にルートとしてマウントされます。 Linux では、すべての **Administrator** タスクがルートになります。 FUSE モジュールのすべてのオプションについては、[FUSE のリファレンス ページ](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html)で説明されています。
 
 現在の blobfuse の問題と解決策を確認するには、トラブルシューティング ガイドだけでなく、GitHub の blobfuse リポジトリの問題も役立ちます。 詳細については、[blobfuse の問題](https://github.com/Azure/azure-storage-fuse/issues)のページを参照してください。
 
@@ -128,7 +129,7 @@ new PoolAddParameter
 
 ### <a name="common-internet-file-system"></a>共通インターネット ファイル システム
 
-共通ネットワーク ファイル システム (CIFS) をプール ノードにマウントして、Azure Batch ノードが従来のファイル システムに簡単にアクセスできるようにすることもできます。 CIFS は、ネットワーク サーバーのファイルとサービスを要求するためのオープンなクロスプラットフォーム メカニズムを提供するファイル共有プロトコルです。 CIFS は、インターネットおよびイントラネット ファイル共有のための Microsoft のサーバー メッセージ ブロック (SMB) プロトコルの拡張バージョンに基づいており、Windows ノードに外部ファイル システムをマウントするために使用されます。 SMB の詳細については、[ファイル サーバーと SMB](https://docs.microsoft.com/windows-server/storage/file-server/file-server-smb-overview) に関するページを参照してください。
+共通ネットワーク ファイル システム (CIFS) をプール ノードにマウントして、Azure Batch ノードが従来のファイル システムに簡単にアクセスできるようにすることもできます。 CIFS は、ネットワーク サーバーのファイルとサービスを要求するためのオープンなクロスプラットフォーム メカニズムを提供するファイル共有プロトコルです。 CIFS は、インターネットおよびイントラネット ファイル共有のための Microsoft のサーバー メッセージ ブロック (SMB) プロトコルの拡張バージョンに基づいており、Windows ノードに外部ファイル システムをマウントするために使用されます。 SMB の詳細については、[ファイル サーバーと SMB](/windows-server/storage/file-server/file-server-smb-overview) に関するページを参照してください。
 
 ```csharp
 new PoolAddParameter
@@ -153,7 +154,7 @@ new PoolAddParameter
 
 ## <a name="diagnose-mount-errors"></a>マウント エラーの診断
 
-マウント構成が失敗した場合、プール内の計算ノードは失敗し、ノードの状態は使用不可になります。 マウント構成エラーを診断するには、[`ComputeNodeError`](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) プロパティでエラーの詳細を調べます。
+マウント構成が失敗した場合、プール内の計算ノードは失敗し、ノードの状態は使用不可になります。 マウント構成エラーを診断するには、[`ComputeNodeError`](/rest/api/batchservice/computenode/get#computenodeerror) プロパティでエラーの詳細を調べます。
 
 デバッグのためにログ ファイルを取得するには、[OutputFiles](batch-task-output-files.md) を使用して `*.log` ファイルをアップロードします。 `*.log` ファイルには、`AZ_BATCH_NODE_MOUNTS_DIR` の場所にあるファイル システムのマウントに関する情報が含まれています。 マウント ログ ファイルの形式は、マウントごとに `<type>-<mountDirOrDrive>.log` となります。 たとえば、`test` というマウント ディレクトリの `cifs` マウントでは、`cifs-test.log` という名前のマウント ログ ファイルが作成されます。
 
@@ -179,5 +180,5 @@ new PoolAddParameter
 
 - [Windows](../storage/files/storage-how-to-use-files-windows.md) または [Linux](../storage/files/storage-how-to-use-files-linux.md) で Azure Files 共有をマウントする方法の詳細について説明します。
 - [blobfuse](https://github.com/Azure/azure-storage-fuse) 仮想ファイル システムの使用とマウントについて説明します。
-- NFS とそのアプリケーションの詳細については、「[ネットワーク ファイル システムの概要](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview)」を参照してください。
-- CIFS の詳細については、「[Microsoft SMB プロトコルと CIFS プロトコルの概要](https://docs.microsoft.com/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)」を参照してください。
+- NFS とそのアプリケーションの詳細については、「[ネットワーク ファイル システムの概要](/windows-server/storage/nfs/nfs-overview)」を参照してください。
+- CIFS の詳細については、「[Microsoft SMB プロトコルと CIFS プロトコルの概要](/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)」を参照してください。

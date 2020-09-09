@@ -1,6 +1,6 @@
 ---
 title: Azure CDN を使用した大きなファイルのダウンロードの最適化
-description: この記事では、大きなファイルのダウンロードを最適化する方法について説明します。
+description: Azure Content Delivery Network で大きなファイルのダウンロードを最適化する方法について説明します。 この記事にはいくつかのシナリオが含まれます。
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
-ms.openlocfilehash: 28b3c4faf62bcd9f9495810927ece03e2dadc1fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6258baf37d00d35da3b7c95519caabdfcaa34b2a
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260532"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192637"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Azure CDN を使用した大きなファイルのダウンロードの最適化
 
@@ -107,11 +107,10 @@ CDN は受信したチャンクをすべてキャッシュします。 ファイ
 ### <a name="caching"></a>キャッシュ
 大きなファイルの最適化で使用する既定のキャッシュの有効期限は、一般的な Web 配信のものと異なります。 HTTP 応答コードに基づいて、正のキャッシュと負のキャッシュを区別します。 配信元サーバーが応答の cache-control または expires ヘッダーで有効期限を指定している場合、CDN はその値を優先させます。 配信元で指定されず、ファイルがこの最適化の種類のファイルの種類とサイズの条件と一致する場合、CDN は大きいファイルの最適化に既定値を使います。 それ以外の場合は、CDN は一般的な Web 配信用の既定値を使います。
 
-
-|    | 一般 Web | 大きなファイルの最適化 
+| キャッシュ  | 一般 Web | 大きなファイルの最適化 
 --- | --- | --- 
-キャッシュ: 正の値 <br> HTTP 200、203、300、 <br> 301、302、410 | 7 日 |1 日  
-キャッシュ: 負の値 <br> HTTP 204、305、404、 <br> 405 | なし | 1 秒 
+キャッシュ:Positive <br> HTTP 200、203、300、 <br> 301、302、410 | 7 日 |1 日  
+キャッシュ:Negative <br> HTTP 204、305、404、 <br> 405 | なし | 1 秒 
 
 ### <a name="deal-with-origin-failure"></a>配信元のエラーの処理
 

@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: シングルページ Bing Video Search アプリを構築する'
+title: チュートリアル:シングルページ Bing Video Search アプリを構築する
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、シングルページ Web アプリケーションで Bing Video Search API を使用する方法を説明します。
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.subservice: bing-video-search
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: aahi
-ms.openlocfilehash: fb989825ed27cc83c14c36e6394e37ae2db2c12a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.custom: devx-track-javascript
+ms.openlocfilehash: c3515d6dc7556995c990180330212bffb1445ad2
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76988262"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406233"
 ---
-# <a name="tutorial-single-page-video-search-app"></a>チュートリアル: 単一ページ Video Search アプリ
+# <a name="tutorial-single-page-video-search-app"></a>チュートリアル:シングルページ Video Search アプリ
 Bing Video Search API を使うと、Web を検索して、検索クエリに関連するビデオの結果を取得できます。 このチュートリアルでは、Bing Search API を使用して検索結果をページに表示する単一ページの Web アプリケーションを構築します。 このアプリケーションには、HTML、CSS、JavaScript のコンポーネントが含まれます。
 
 <!-- Remove until it can be replaced with a sanitized version.
@@ -393,15 +394,18 @@ Bing Search API からの応答には、`X-MSEdge-ClientID` ヘッダーが含�
 
 CORS プロキシをインストールして、チュートリアル アプリがクライアント ID ヘッダーにアクセスできるようにするのは簡単です。 まず、[Node.js をインストールします](https://nodejs.org/en/download/) (まだインストールしていない場合)。 さらに、コマンド ウィンドウで次のコマンドを発行します。
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-次に、HTML ファイル内の Bing Web Search エンドポイントを次のように変更します。
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+次に、HTML ファイル内の Bing Web Search エンドポイントを次のように変更します。\
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 最後に、次のコマンドを使用して、CORS プロキシを開始します。
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 チュートリアル アプリを使用している間はコマンド ウィンドウを開いたままにしておいてください。ウィンドウを閉じるとプロキシが停止します。 検索結果の下の展開可能な HTTP ヘッダー セクションに、`X-MSEdge-ClientID` ヘッダー (など) が表示され、各要求で同じであることを確認できます。
 

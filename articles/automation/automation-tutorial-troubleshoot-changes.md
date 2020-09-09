@@ -1,28 +1,28 @@
 ---
-title: Azure 仮想マシンの変更に関する問題を解決する | Microsoft Docs
-description: 変更履歴を使用して、Azure 仮想マシンの変更に関する問題を解決します。
+title: Azure Automation での Azure VM に対する変更に関するトラブルシューティング | Microsoft Docs
+description: この記事では、Azure VM に対する変更をトラブルシューティングする方法について説明します。
 services: automation
 ms.subservice: change-inventory-management
-keywords: 変更, 追跡, オートメーション
+keywords: 変更, 追跡, Change Tracking, インベントリ, Automation
 ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 89f5e00c75b6b85c9a14de02504136907cde62b5
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 63fe36a51b69648039c3a16be4267fc0c72e8a58
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81604689"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185808"
 ---
-# <a name="troubleshoot-changes-in-your-environment"></a>環境の変更に関する問題を解決する
+# <a name="troubleshoot-changes-on-an-azure-vm"></a>Azure VM に対する変更のトラブルシューティング
 
-このチュートリアルでは、Azure 仮想マシンの変更に関する問題を解決する方法について説明します。 Change Tracking を有効にして、コンピューター上のソフトウェア、ファイル、Linux デーモン、Windows サービス、Windows レジストリ キーの変更を追跡することができます。
+このチュートリアルでは、Azure 仮想マシンの変更に関する問題を解決する方法について説明します。 Change Tracking とインベントリを有効にして、コンピューター上のソフトウェア、ファイル、Linux デーモン、Windows サービス、Windows レジストリ キーの変更を追跡することができます。
 このような構成の変更を識別することで、環境全体の運用上の問題を特定できるようになります。
 
 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-> * 変更履歴とインベントリのために VM をオンボードする
+> * VM の Change Tracking とインベントリを有効にする
 > * 停止したサービスの変更ログを検索する
 > * 変更の追跡を構成する
 > * アクティビティ ログの接続を有効にする
@@ -35,41 +35,44 @@ ms.locfileid: "81604689"
 このチュートリアルを完了するには、次のものが必要です。
 
 * Azure サブスクリプション。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
-* 監視およびアクションの Runbook と監視タスクを保持する、[Automation アカウント](automation-offering-get-started.md)。
-* オンボードする[仮想マシン](../virtual-machines/windows/quick-create-portal.md)。
+* 監視およびアクションの Runbook と監視タスクを保持する [Automation アカウント](./index.yml)。
+* 機能に対して有効にする[仮想マシン](../virtual-machines/windows/quick-create-portal.md)。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
 Azure Portal ( https://portal.azure.com ) にサインインします。
 
-## <a name="enable-change-tracking-and-inventory"></a>変更履歴とインベントリを有効にする
+## <a name="enable-change-tracking-and-inventory"></a>Change Tracking と Inventory の有効化
 
-このチュートリアルでは、まず VM の Change Tracking と Inventory を有効にする必要があります。 VM の別の Automation ソリューションで有効にした場合、この手順は不要です。
+このチュートリアルでは、まず Change Tracking とインベントリを有効にする必要があります。 既に機能を有効にしてある場合は、この手順は不要です。
 
-1. 左側のメニューで **[仮想マシン]** を選択し、一覧から VM を選択します。
-1. 左側のメニューで、 **[操作]** の **[インベントリ]** を選択します。 [インベントリ] ページが開きます。
+>[!NOTE]
+>フィールドが淡色表示されている場合は、その VM で別の Automation 機能が有効になっているため、同じワークスペースと Automation アカウントを使用する必要があります。
 
-![変更の有効化](./media/automation-tutorial-troubleshoot-changes/enableinventory.png)
+1. **[仮想マシン]** を選択し、一覧から VM を選択します。
+2. 左側のメニューで、 **[操作]** の **[インベントリ]** を選択します。 [インベントリ] ページが開きます。
 
-使用する場所、Log Analytics ワークスペース、Automation アカウントを構成し、 **[有効にする]** をクリックします。 フィールドが淡色表示されている場合は、その VM で別の Automation ソリューションが有効になっているため、同じワークスペースと Automation アカウントを使用する必要があることを示します。
+    ![変更の有効化](./media/automation-tutorial-troubleshoot-changes/enableinventory.png)
 
-[Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) ワークスペースは、インベントリのような機能およびサービスによって生成されるデータを収集するために使用されます。
-ワークスペースには、複数のソースからのデータを確認および分析する場所が 1 つ用意されています。
+3. [Log Analytics](../azure-monitor/log-query/log-query-overview.md) ワークスペースを選択します。 このワークスペースは、Change Tracking やインベントリなどの機能によって生成されるデータを収集します。 ワークスペースには、複数のソースからのデータを確認および分析する場所が 1 つ用意されています。
 
-オンボーディングの過程で、Windows 用の Log Analytics エージェントと Hybrid Runbook Worker と共に VM がプロビジョニングされます。
-このエージェントは VM との通信に使用され、インストールされているソフトウェアに関する情報を取得します。
+    [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-ソリューションを有効にするには最大 15 分かかります。 この処理中はブラウザーのウィンドウは閉じないでください。
-ソリューションが有効になると、VM にインストールされているソフトウェアと変更に関する情報が Azure Monitor ログに送られます。
+4. 使用する Automation アカウントを選択します。
+
+5. 展開する場所を構成します。
+
+5. **[有効化]** をクリックして、VM の機能を展開します。 
+
+セットアップの過程で、Windows 用の Log Analytics エージェントと [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) と共に VM がプロビジョニングされます。 Change Tracking およびインベントリの有効化には、最大で 15 分かかることがあります。 この処理中はブラウザーのウィンドウは閉じないでください。
+
+機能が有効になると、VM にインストールされているソフトウェアと変更に関する情報が Azure Monitor ログに送られます。
 データの分析に使用できるようになるまでに、30 分から 6 時間かかる場合があります。
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+## <a name="use-change-tracking-and-inventory-in-azure-monitor-logs"></a>Azure Monitor ログで Change Tracking とインベントリを使用する
 
-## <a name="using-change-tracking-in-azure-monitor-logs"></a>Azure Monitor ログで Change Tracking を使用する
+Change Tracking とインベントリによってログ データが生成され、Azure Monitor ログに送信されます。 クエリを実行してログを検索するには、[Change tracking]\(変更履歴\) ページの上部にある **[Log Analytics]** ウィンドウを選択します。 変更履歴データは、`ConfigurationChange` 型に格納されます。
 
-変更の追跡は、Azure Monitor ログに送信されるログ データを生成します。
-クエリを実行してログを検索するには、[Change tracking]\(変更履歴\) ページの上部にある **[Log Analytics]** ウィンドウを選択します。
-変更履歴データは、`ConfigurationChange` 型に格納されます。
 次のサンプル Log Analytics クエリは、停止しているすべての Windows サービスを返します。
 
 ```loganalytics
@@ -79,16 +82,12 @@ ConfigurationChange
 
 Azure Monitor ログでのログ ファイルの実行と検索については、[Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md)に関するページを参照してください。
 
-## <a name="configure-change-tracking"></a>変更履歴を構成する
+## <a name="configure-change-tracking"></a>変更の追跡を構成する
 
-変更履歴を使用すると、VM の構成の変更を追跡できます。 次にレジストリ キーとファイルの追跡を構成する手順について説明します。
-
-収集および追跡するファイルとレジストリ キーを選択するには、[Change tracking]\(変更追跡\) ページの上部にある **[設定の編集]** を選択します。
+変更の追跡では、VM の [Change Tracking] ページの上部にある **[設定の編集]** を使用して、収集および追跡するファイルとレジストリ キーを選択します。 [ワークスペースの構成] ページで、追跡する Windows レジストリ キー、Windows ファイル、または Linux ファイルを追加できます。
 
 > [!NOTE]
-> インベントリと変更履歴で同じ収集設定を使用し、ワークスペース レベルの構成を設定します。
-
-[ワークスペースの構成] ページでは、次の 3 つのセクションで説明するように、追跡する Windows レジストリ キー、Windows ファイル、または Linux ファイルを追加します。
+> Change Tracking とインベントリでは同じ収集設定が使用され、設定はワークスペース レベルで構成されます。
 
 ### <a name="add-a-windows-registry-key"></a>Windows レジストリ キーを追加する
 
@@ -96,12 +95,12 @@ Azure Monitor ログでのログ ファイルの実行と検索については�
 
 1. [変更履歴用の Windows レジストリを追加する] ページで、追跡するキーの情報を入力し、 **[保存]** をクリックします。
 
-|プロパティ  |説明  |
-|---------|---------|
-|Enabled     | 設定が適用されるかどうかを決定します。        |
-|Item Name     | 追跡するファイルのフレンドリ名。        |
-|グループ     | ファイルを論理的にグループ化するためのグループ名。        |
-|Windows レジストリ キー   | ファイル確認のためのパス。その例を次に示します。"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
+    |プロパティ  |説明  |
+    |---------|---------|
+    |Enabled     | 設定が適用されるかどうかを決定します。        |
+    |Item Name     | 追跡するファイルのフレンドリ名。        |
+    |グループ     | ファイルを論理的にグループ化するためのグループ名。        |
+    |Windows レジストリ キー   | ファイル確認のためのパス。その例を次に示します。"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
 
 ### <a name="add-a-windows-file"></a>Windows ファイルを追加する
 
@@ -109,14 +108,14 @@ Azure Monitor ログでのログ ファイルの実行と検索については�
 
 1. [変更履歴用の Windows ファイルを追加する] ページで、追跡するファイルまたはディレクトリの情報を入力し、 **[保存]** をクリックします。
 
-|プロパティ  |説明  |
-|---------|---------|
-|Enabled     | 設定が適用されるかどうかを決定します。        |
-|Item Name     | 追跡するファイルのフレンドリ名。        |
-|グループ     | ファイルを論理的にグループ化するためのグループ名。        |
-|パスの入力     | ファイル確認のためのパス (例: "c:\temp\\\*.txt")。<br>"%winDir%\System32\\\*.*" などの環境変数も使用できます。         |
-|再帰     | 追跡する項目を検索するときに、再帰を使用するかどうかを決定します。        |
-|すべての設定のファイル コンテンツをアップロードする| 追跡した変更についてファイル コンテンツのアップロードをオンまたはオフにします。 使用できるオプションは **True** または **False** です。|
+    |プロパティ  |説明  |
+    |---------|---------|
+    |Enabled     | 設定が適用されるかどうかを決定します。        |
+    |Item Name     | 追跡するファイルのフレンドリ名。        |
+    |グループ     | ファイルを論理的にグループ化するためのグループ名。        |
+    |パスの入力     | ファイル確認のためのパス (例: "c:\temp\\\*.txt")。<br>"%winDir%\System32\\\*.*" などの環境変数も使用できます。         |
+    |再帰     | 追跡する項目を検索するときに、再帰を使用するかどうかを決定します。        |
+    |すべての設定のファイル コンテンツをアップロードする| 追跡した変更についてファイル コンテンツのアップロードをオンまたはオフにします。 使用できるオプションは **True** または **False** です。|
 
 ### <a name="add-a-linux-file"></a>Linux ファイルを追加する
 
@@ -124,98 +123,111 @@ Azure Monitor ログでのログ ファイルの実行と検索については�
 
 1. [変更履歴用の Linux ファイルを追加する] ページで、追跡するファイルまたはディレクトリの情報を入力し、 **[保存]** をクリックします。
 
-|プロパティ  |説明  |
-|---------|---------|
-|Enabled     | 設定が適用されるかどうかを決定します。        |
-|Item Name     | 追跡するファイルのフレンドリ名。        |
-|グループ     | ファイルを論理的にグループ化するためのグループ名。        |
-|パスの入力     | ファイル確認のためのパス (例: "/etc/*.conf")。       |
-|パスの種類     | 追跡する項目の種類。"ファイル" または "ディレクトリ" を指定できます。        |
-|再帰     | 追跡する項目を検索するときに、再帰を使用するかどうかを決定します。        |
-|sudo の使用     | この設定により、項目を確認するときに、sudo を使用するかどうかが決まります。         |
-|リンク     | この設定により、ディレクトリを走査するときの、シンボリック リンクの処理方法が決まります。<br> **無視** - シンボリック リンクを無視し、参照先のファイル/ディレクトリを含めません。<br>**フォロー** - 再帰中、シンボリック リンクをフォローします。参照先のファイル/ディレクトリも含めます。<br>**管理** - シンボリック リンクをフォローします。また、返された内容の処理を変更することができます。      |
-|すべての設定のファイル コンテンツをアップロードする| 追跡した変更についてファイル コンテンツのアップロードをオンまたはオフにします。 使用できるオプションは True または False。|
+    |プロパティ  |説明  |
+    |---------|---------|
+    |Enabled     | 設定が適用されるかどうかを決定します。        |
+    |Item Name     | 追跡するファイルのフレンドリ名。        |
+    |グループ     | ファイルを論理的にグループ化するためのグループ名。        |
+    |パスの入力     | ファイル確認のためのパス (例: "/etc/*.conf")。       |
+    |パスの種類     | 追跡する項目の種類。"ファイル" または "ディレクトリ" を指定できます。        |
+    |再帰     | 追跡する項目を検索するときに、再帰を使用するかどうかを決定します。        |
+    |sudo の使用     | この設定により、項目を確認するときに、sudo を使用するかどうかが決まります。         |
+    |リンク     | この設定により、ディレクトリを走査するときの、シンボリック リンクの処理方法が決まります。<br> **無視** - シンボリック リンクを無視し、参照先のファイル/ディレクトリを含めません。<br>**フォロー** - 再帰中、シンボリック リンクをフォローします。参照先のファイル/ディレクトリも含めます。<br>**管理** - シンボリック リンクをフォローします。また、返された内容の処理を変更することができます。      |
+    |すべての設定のファイル コンテンツをアップロードする| 追跡した変更についてファイル コンテンツのアップロードをオンまたはオフにします。 使用できるオプションは True または False。|
 
    > [!NOTE]
-   > **[管理] リンク** オプションはお勧めしません。 ファイルのコンテンツの取得はサポートされていません。
+   > **[リンク]** プロパティの **[管理]** 値は推奨されません。 ファイルのコンテンツの取得はサポートされていません。
 
 ## <a name="enable-activity-log-connection"></a>アクティビティ ログの接続を有効にする
 
-VM の [Change tracking]\(変更履歴\) ページから **[アクティビティ ログ接続の管理]** を選択します。 このタスクで、[Azure アクティビティ ログ] ページが開きます。 **[接続]** をクリックして、Change Tracking を VM の Azure アクティビティ ログに接続します。
+1. VM の [Change tracking]\(変更履歴\) ページから **[アクティビティ ログ接続の管理]** を選択します。 
 
-この設定を有効にして、VM の [概要] ページに移動し、 **[停止]** を選択して VM を停止します。 メッセージが表示されたら、 **[はい]** を選択して VM を停止します。 割り当てが解除されたら、 **[スタート]** を選択して VM を再起動します。
+2. [Azure アクティビティ ログ] ページで、 **[接続]** をクリックして、Change Tracking とインベントリを VM の Azure アクティビティ ログに接続します。
 
-VM の起動時と停止時には、イベントがアクティビティ ログに記録されます。 [Change tracking]\(変更履歴\) ページに戻ります。 ページの下部にある **[イベント]** タブを選択します。 しばらくすると、グラフと表にイベントが表示されます。 前の手順と同様に、各イベントを選択してイベントの詳細情報を表示することができます。
+3. VM の [概要] ページに移動し、 **[停止]** を選択して VM を停止します。 
 
-![ポータルで変更の詳細を表示する](./media/automation-tutorial-troubleshoot-changes/viewevents.png)
+4. メッセージが表示されたら、 **[はい]** を選択して VM を停止します。 
+
+5. VM の割り当てが解除されたら、 **[開始]** を選択して VM を再起動します。 VM を停止して起動すると、アクティビティ ログにイベントが記録されます。 
 
 ## <a name="view-changes"></a>変更を表示する
 
-Change Tracking と Inventory ソリューションが有効になると、[Change tracking]\(変更履歴\) ページで結果を表示できます。
+1. [Change Tracking] ページに戻り、ページの下部にある **[イベント]** タブを選択します。 
 
-VM 内から **[操作]** の **[変更履歴]** を選択します。
+2. しばらくすると、グラフと表に変更追跡イベントが表示されます。 グラフには、時間の経過とともに発生した変更が表示されます。 上部の折れ線グラフには、Azure アクティビティ ログ イベントが表示されます。 棒グラフの各行は、さまざまな追跡可能な変更の種類を表します。 具体的には、Linux デーモン、ファイル、Windows レジストリ キー、ソフトウェア、および Windows サービスです。 [変更] タブには、表示されている変更の詳細情報が、最新のものから順に示されます。
 
-![VM に加えられた変更の一覧を表示するスクリーン ショット](./media/automation-tutorial-troubleshoot-changes/change-tracking-list.png)
+    ![ポータルでのイベントの表示](./media/automation-tutorial-troubleshoot-changes/viewevents.png)
 
-グラフには、時間の経過とともに発生した変更が表示されます。
-アクティビティ ログ接続を追加すると、上部の折れ線グラフに Azure アクティビティ ログ イベントが表示されます。
-棒グラフの各行は、さまざまな追跡可能な変更の種類を表します。
-具体的には、Linux デーモン、ファイル、Windows レジストリ キー、ソフトウェア、および Windows サービスです。
-[変更] タブには、変更が発生した時刻の降順 (最新のものから順に) で、変更の詳細が図示されます。
-**[イベント]** タブの表には、接続されたアクティビティ ログ イベントとそれに対応する詳細が最新の情報から表示されます。
+3. サービスとソフトウェアの変更を含め、システムに複数の変更があったことがわかります。 ページ上部にあるフィルターを使用し、 **[型の変更]** または期間を指定して結果を絞り込むことができます。
 
-結果を見ると、サービスとソフトウェアの変更を含め、システムに複数の変更があったことがわかります。 ページ上部にあるフィルターを使用し、 **[型の変更]** または期間を指定して結果を絞り込むことができます。
+    ![VM に加えられた変更の一覧](./media/automation-tutorial-troubleshoot-changes/change-tracking-list.png)
 
-**WindowsServices** の変更を選択します。 [変更の詳細] ページが開いて、変更の詳細と変更前の値および変更後の値が表示されます。 この例では、Software Protection サービスが停止されました。
+4. **WindowsServices** の変更を選択します。 [変更の詳細] ページが開いて、変更の詳細と変更前の値および変更後の値が表示されます。 この例では、Software Protection サービスが停止されました。
 
-![ポータルで変更の詳細を表示する](./media/automation-tutorial-troubleshoot-changes/change-details.png)
+    ![ポータルで変更の詳細を表示する](./media/automation-tutorial-troubleshoot-changes/change-details.png)
 
 ## <a name="configure-alerts"></a>アラートを構成する
 
-Azure portal に変更を表示することは有益ですが、サービスの停止などの変化が発生したときにアラートを受信できると、もっと便利です。
+Azure portal に変更を表示することは有益ですが、サービスの停止などの変化が発生したときにアラートを受信できると、もっと便利です。 停止したサービスのアラートを追加してみましょう。 
 
-サービス停止アラートを追加するには、Azure portal で **[監視]** に移動します。 **[共有サービス]** で、 **[アラート]** を選択し、 **[+ 新しいアラート ルール]** をクリックします。
+1. Azure portal で **[監視]** に移動します。 
 
-**[選択]** をクリックしてリソースを選択します。 [リソースの選択] ページで、 **[リソースの種類でフィルター]** ボックスの一覧から **[Log Analytics]** を選択します。 Log Analytics ワークスペースを選択し、 **[完了]** をクリックします。
+2. **[共有サービス]** で **[アラート]** を選択し、 **[+ 新しいアラート ルール]** をクリックします。
 
-![リソースの選択](./media/automation-tutorial-troubleshoot-changes/select-a-resource.png)
+3. **[選択]** をクリックしてリソースを選択します。 
 
-**[条件の追加]** をクリックし、[シグナル ロジックの構成] ページの表から **[カスタム ログ検索]** を選択します。 [検索クエリ] ボックスに次のクエリを入力します。
+4. [リソースの選択] ページで、 **[リソースの種類でフィルター]** ボックスの一覧から **[Log Analytics]** を選択します。 
 
-```loganalytics
-ConfigurationChange | where ConfigChangeType == "WindowsServices" and SvcName == "W3SVC" and SvcState == "Stopped" | summarize by Computer
-```
+5. Log Analytics ワークスペースを選択し、 **[完了]** を選択します。
 
-このクエリは、指定した時間帯に W3SVC サービスが停止したコンピューターを返します。
+    ![リソースの選択](./media/automation-tutorial-troubleshoot-changes/select-a-resource.png)
 
-**[アラート ロジック]** の **[しきい値]** に「**0**」を入力します。 完了したら、 **[完了]** をクリックします。
+6. **[条件の追加]** をクリックします。
 
-![シグナル ロジックの構成](./media/automation-tutorial-troubleshoot-changes/configure-signal-logic.png)
+7. [シグナル ロジックの構成] の表で、 **[カスタム ログ検索]** を選択します。 
 
-**[アクション グループ]** の **[新規作成]** を選択します。 アクション グループとは、複数のアラートで使用できるアクションのグループです。 アクションには、電子メール通知、Runbook、webhook などがありますが、これらに限定されるわけではありません。 アクション グループの詳細については、[アクション グループの作成および管理](../azure-monitor/platform/action-groups.md)に関するページを参照してください。
+8. [検索クエリ] テキスト ボックスに次のクエリを入力します。
 
-**[アラートの詳細]** で、アラートの名前と説明を入力します。 **[重大度]** を、 **[情報 (重大度 2)]** 、 **[警告 (重大度 1)]** または **[重大 (重大度 0)]** に設定します。
+    ```loganalytics
+    ConfigurationChange | where ConfigChangeType == "WindowsServices" and SvcName == "W3SVC" and SvcState == "Stopped" | summarize by Computer
+    ```
 
-**[アクション グループ名]** ボックスに、アラートの名前と短い名前を入力します。 短い名前は、通知がこのグループを使用して送信されるときに長い名前の代わりに使用されます。
+    このクエリは、指定した時間帯に W3SVC サービスが停止したコンピューターを返します。
 
-**[アクション]** に、 **[電子メール管理者]** などのアクションの名前を入力します。 **[アクションの種類]** で、 **[電子メール/SMS/プッシュ/音声]** を選びます。 **[詳細]** で、 **[詳細の編集]** を選択します。
+9. **[アラート ロジック]** の **[しきい値]** に「**0**」を入力します。 完了したら、 **[完了]** をクリックします。
 
-![アクション グループの追加](./media/automation-tutorial-troubleshoot-changes/add-action-group.png)
+    ![シグナル ロジックの構成](./media/automation-tutorial-troubleshoot-changes/configure-signal-logic.png)
 
-[電子メール/SMS/プッシュ/音声] ペインで、名前を入力します。 **[電子メール]** チェック ボックスをオンにして、有効な電子メール アドレスを入力します。 このペインで **[OK]** をクリックし、[アクション グループの追加] ページで **[OK]** をクリックします。
+10. **[アクション グループ]** の **[新規作成]** を選択します。 アクション グループとは、複数のアラートで使用できるアクションのグループです。 アクションには、電子メール通知、Runbook、webhook などがありますが、これらに限定されるわけではありません。 アクション グループの詳細については、[アクション グループの作成および管理](../azure-monitor/platform/action-groups.md)に関するページを参照してください。
 
-アラート電子メールの件名をカスタマイズするには、 **[ルールの作成]** の **[アクションをカスタマイズする]** で、 **[電子メールの件名]** を選択します。 完了したら、 **[アラート ルールの作成]** を選択します。 このアラートにより、更新プログラムの展開が成功したことと、その更新プログラムの展開の実行対象となったコンピューターが通知されます。
+11. **[アラートの詳細]** で、アラートの名前と説明を入力します。 
 
-次の図は、W3SVC サービスが停止したときに受信する電子メールの例です。
+12. **[重大度]** を、 **[情報 (重大度 2)]** 、 **[警告 (重大度 1)]** または **[重大 (重大度 0)]** に設定します。
 
-![email](./media/automation-tutorial-troubleshoot-changes/email.png)
+13. **[アクション グループ名]** ボックスに、アラートの名前と短い名前を入力します。 短い名前は、通知がこのグループを使用して送信されるときに長い名前の代わりに使用されます。
+
+14. **[アクション]** に、 **[電子メール管理者]** などのアクションの名前を入力します。 
+
+15. **[アクションの種類]** として、 **[Email/SMS/Push/Voice]\(メール、SMS、プッシュ、音声\)** を選択します。 
+
+16. **[詳細]** では、 **[詳細を編集する]** を選択します。
+
+    ![アクション グループの追加](./media/automation-tutorial-troubleshoot-changes/add-action-group.png)
+
+17. [Email/SMS/Push/Voice]\(電子メール、SMS、プッシュ、音声\) ペインに名前を入力し、 **[電子メール]** チェック ボックスをオンにして、有効なメール アドレスを入力します。 完了したら、このペインで **[OK]** をクリックし、[アクション グループの追加] ページで **[OK]** をクリックします。
+
+18. アラート メールの件名をカスタマイズするには **[アクションをカスタマイズする]** を選択します。 
+
+19. **[ルールの作成]** で、 **[電子メールの件名]** 、 **[アラート ルールの作成]** の順に選択します。 このアラートにより、更新プログラムの展開が成功したことと、その更新プログラムの展開の実行対象となったコンピューターが通知されます。 次の図は、W3SVC サービスが停止したときに受信する電子メールの例です。
+
+    ![email](./media/automation-tutorial-troubleshoot-changes/email.png)
 
 ## <a name="next-steps"></a>次のステップ
 
 このチュートリアルで学習した内容は次のとおりです。
 
 > [!div class="checklist"]
-> * 変更履歴とインベントリのために VM をオンボードする
+> * VM の Change Tracking とインベントリを有効にする
 > * 停止したサービスの変更ログを検索する
 > * 変更の追跡を構成する
 > * アクティビティ ログの接続を有効にする
@@ -223,8 +235,7 @@ ConfigurationChange | where ConfigChangeType == "WindowsServices" and SvcName ==
 > * 変更を表示する
 > * アラートを構成する
 
-さらに詳しく学ぶには、変更履歴とインベントリ ソリューションの概要に進んでください。
+さらに詳しく学ぶには、Change Tracking およびインベントリ機能の概要に進んでください。
 
 > [!div class="nextstepaction"]
-> [変更管理とインベントリ ソリューション](automation-change-tracking.md)
-
+> [Change Tracking とインベントリの概要](./change-tracking.md)

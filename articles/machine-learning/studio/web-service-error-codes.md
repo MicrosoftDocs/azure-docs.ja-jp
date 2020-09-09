@@ -1,6 +1,5 @@
 ---
-title: REST API のエラー コード
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio (classic):REST API のエラー コード - Azure
 description: Azure Machine Learning Web サービスに対する操作では、これらのエラー コードが返されることがあります。
 keywords: ''
 services: machine-learning
@@ -12,17 +11,18 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: a47550771180411277d21f7acf47ad0a28b6fb9e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 461249fc5482f8851c7184b45fe1146c21f2da83
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209521"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432068"
 ---
 # <a name="azure-machine-learning-studio-classic-rest-api-error-codes"></a>Azure Machine Learning Studio (クラシック) REST API のエラー コード
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
- 
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+
+
 Azure Machine Learning Studio (クラシック) の Web サービスの操作で、次のエラー コードが返されることがあります。
  
 ## <a name="badargument-http-status-code-400"></a>BadArgument (HTTP 状態コード 400)
@@ -53,7 +53,7 @@ Azure Machine Learning Studio (クラシック) の Web サービスの操作で
 | InvalidBlobExtension | Blob の参照: {0} のファイル拡張子が無効か、見つかりません。 この出力の種類でサポートされているファイル拡張子は "{1}" です。 |
 | InvalidInputNames | 要求で指定されたサービスの入力名が無効です: {0}。 入力データを正しいサービスの入力にマップしてから、やり直してください。 |
 | InvalidOutputOverrideName | 出力のオーバーライドの名前が無効です: {0}。 サービスには、この名前の出力ノードがありません。 オーバーライドする正しい出力ノード名を渡してください (大文字と小文字が区別されます)。 |
-| InvalidQueryParameter | クエリ パラメーター '{0}' が無効です。 [https://github.com/mysqljs/mysql/]({1}) |
+| InvalidQueryParameter | クエリ パラメーター '{0}' が無効です。 {1} |
 | MissingInputBlobInformation | Azure Storage BLOB の情報が不足しています。 有効な接続文字列と相対パスまたは URI を指定してから、やり直してください。 |
 | MissingJobId | ジョブ ID が指定されていません。 初めてジョブを送信すると、ジョブ ID が返されます。 ジョブ ID が正しいことを確認してから、やり直してください。 |
 | MissingKeys | キーが指定されていないか、プライマリ キーとセカンダリ キーのいずれかが指定されていません。 |

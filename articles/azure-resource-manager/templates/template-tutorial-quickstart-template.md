@@ -5,12 +5,13 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 4b82e02ecc009e587b89d1fd151fd13f75a4bcf8
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 90d5c2688d20b62a4a5fda78eb67ed01777bc28c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80408504"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496884"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>チュートリアル:Azure クイックスタート テンプレートを使用する
 

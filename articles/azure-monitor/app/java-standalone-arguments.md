@@ -3,12 +3,13 @@ title: 任意の環境で実行されている Java アプリケーションを�
 description: アプリをインストルメント化することなく、Java スタンドアロン エージェントを使用して、任意の環境で実行されている Java アプリケーションのアプリケーション パフォーマンスを監視します。 分散トレースとアプリケーション マップです。
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 527f1eaf04be7b5e8c89c12912a06d2f5d50321f
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.custom: devx-track-java
+ms.openlocfilehash: b1a23c01fdf8a0145c26b709f36709a7b710103f
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82508039"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374305"
 ---
 # <a name="configuring-jvm-args-java-standalone-agent-for-azure-monitor-application-insights"></a>Azure Monitor Application Insights の JVM 引数の Java スタンドアロン エージェントを構成する
 
@@ -16,7 +17,7 @@ ms.locfileid: "82508039"
 
 ## <a name="azure-environments"></a>Azure 環境
 
-[App Services](https://docs.microsoft.com/azure/app-service/configure-language-java#set-java-runtime-options) を構成します。
+[App Services](../../app-service/configure-language-java.md#set-java-runtime-options) を構成します。
 
 ## <a name="spring-boot"></a>Spring Boot
 

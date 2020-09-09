@@ -2,20 +2,20 @@
 title: Azure Monitor for containers を使用して Kubernetes クラスターの正常性を監視する | Microsoft Docs
 description: この記事では、Azure Monitor for containers を使用して、AKS クラスターと非 AKS クラスターの正常性を表示および分析する方法について説明します。
 ms.topic: conceptual
-ms.date: 12/01/2019
-ms.openlocfilehash: f50ef13efca78bbb5285b99759b8111dc1915ad0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/18/2020
+ms.openlocfilehash: 94fdb6388134eae326ed5a8e46fbd3d13f8da2d5
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76843992"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649576"
 ---
 # <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>Azure Monitor for containers を使用して Kubernetes クラスターの正常性を把握する
 
 Azure Monitor for containers を使用すると、マネージド インフラストラクチャ コンポーネントと、Azure Monitor for containers でサポートされている任意の Kubernetes クラスターで実行されているすべてのノードの正常性状態が監視されて報告されます。 このエクスペリエンスは、[マルチクラスター ビュー](container-insights-analyze.md#multi-cluster-view-from-azure-monitor)で計算および報告されたクラスターの正常性状態にはとどまりません。クラスター内の 1 つ以上のノードがリソースの制約を受けているかどうか、またはノードまたはポッドが使用できないことがクラスター内の実行中のアプリケーションに影響を与える可能性があるかどうかを、キュレートされたメトリックに基づいて把握することができるようになりました。
 
 >[!NOTE]
->現時点で、正常性機能はパブリック プレビュー段階です。
+>正常性機能は、2020 年 6 月末にプライベート プレビューに移行する予定です。 詳細については、次の [Azure の更新に関するお知らせ](https://azure.microsoft.com/updates/ci-health-limited-preview/)に関するページを参照してください。
 >
 
 Azure Monitor for containers を有効にする方法については、[Azure Monitor for containers のオンボード](container-insights-onboard.md)に関する記事を参照してください。
@@ -23,7 +23,7 @@ Azure Monitor for containers を有効にする方法については、[Azure Mo
 >[!NOTE]
 >AKS エンジン クラスターをサポートするには、次の条件が満たされていることを確認してください。
 >- 最新バージョンの [HELM クライアント](https://helm.sh/docs/using_helm/)を使用している。
->- コンテナー化されたエージェントのバージョンが *microsoft/oms:ciprod11012019* である。 エージェントをアップグレードするには、[Kubernetes クラスターでのエージェントのアップグレード](container-insights-manage-agent.md#upgrade-agent-on-monitored-kubernetes-cluster)に関するページを参照してください。
+>- コンテナー化されたエージェントのバージョンが *microsoft/oms:ciprod11012019* である。 エージェントをアップグレードするには、[Kubernetes クラスターでのエージェントのアップグレード](container-insights-manage-agent.md#how-to-upgrade-the-azure-monitor-for-containers-agent)に関するページを参照してください。
 >
 
 ## <a name="overview"></a>概要

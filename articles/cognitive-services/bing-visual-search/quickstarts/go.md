@@ -8,29 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 836012c11d16810172c27fb948e1185f99f7de83
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a0fb6bc96441fe36713d931e561c6d1e272b7819
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75446640"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872603"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-go"></a>クイック スタート:Bing Visual Search REST API と Go を使用して画像に関する分析情報を取得する
 
-このクイック スタートでは、Go プログラミング言語を使用して Bing Visual Search API を呼び出し、結果を表示します。 POST 要求で画像を API エンドポイントにアップロードします。 結果には、アップロードされた画像に類似した画像に関する URL と説明情報が含まれます。
+このクイックスタートを使用して、Go プログラミング言語で Bing Visual Search API を呼び出してみましょう。 POST 要求で画像を API エンドポイントにアップロードします。 結果には、アップロードされた画像に類似した画像に関する URL と説明情報が含まれます。
 
 ## <a name="prerequisites"></a>前提条件
 
 * [Go バイナリ](https://golang.org/dl/)をインストールします。
-* 結果の表示には、go-spew ディープ プリティ プリンターを使用します。 go-spew は、`$ go get -u https://github.com/davecgh/go-spew` コマンドを使用してインストールできます。
+* 結果を表示するために使用する go-spew ディープ プリティ プリンターをインストールします。 go-spew をインストールするには、`$ go get -u https://github.com/davecgh/go-spew` コマンドを使用します。
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="project-and-libraries"></a>プロジェクトとライブラリ
 
-お使いの IDE またはエディターで Go プロジェクトを作成します。 次に、要求のための `net/http`、応答を読み取るための `ioutil`、結果の JSON テキストを処理するための `encoding/json` をインポートします。 `go-spew` ライブラリは JSON の結果を解析するために使用されます。
+お使いの IDE またはエディターで Go プロジェクトを作成します。 次に、要求のための `net/http`、応答を読み取るための `ioutil`、結果の JSON テキストを処理するための `encoding/json` をインポートします。 `go-spew` ライブラリを使用して、JSON の結果を解析します。
 
 ```go
 package main
@@ -109,7 +109,12 @@ type BingAnswer struct {
 
 ## <a name="main-function-and-variables"></a>main 関数と変数  
 
-次のコードは main 関数を宣言し、必要な変数を割り当てます。 エンドポイントが正しいことを確認し、`token` の値を Azure アカウントの有効なサブスクリプション キーに置き換えます。 `batchNumber` は Post データの前後の境界に必要な GUID です。 `fileName` 変数は、POST の画像ファイルを識別します。 `endpoint` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。
+次のコードは main 関数を宣言し、必要な変数を割り当てます。 
+
+1. エンドポイントが正しいことを確認し、`token` の値を Azure アカウントの有効なサブスクリプション キーに置き換えます。 
+2. `batchNumber` には、POST データの前後の境界に必要な GUID を割り当てます。 
+3. `fileName` には、POST に使用する画像ファイルを割り当てます。 
+4. `endpoint` には、次のコードのグローバル エンドポイントを使用するか、Azure portal に表示される、対象のリソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用することができます。
 
 ```go
 func main() {
@@ -159,7 +164,12 @@ func main() {
 
 ## <a name="boundaries-of-post-body"></a>POST 本文の境界
 
-Visual Search エンドポイントへの POST 要求には、POST データを囲む前後の境界が必要です。 先頭の境界には、バッチ番号、コンテンツ タイプ ID `Content-Disposition: form-data; name="image"; filename=`、および POST する画像のファイル名が含まれます。 末尾の境界は、単にバッチ番号です。 これらの関数は `main` ブロックに含まれていません。
+Visual Search エンドポイントへの POST 要求には、POST データを囲む前後の境界が必要です。 これらの関数は `main()` ブロックに含まれていません。
+
+先頭の境界には、バッチ番号、コンテンツ タイプ ID `Content-Disposition: form-data; name="image"; filename=`、および POST する画像のファイル名が含まれます。 
+
+末尾の境界には、バッチ番号のみが含まれます。 
+
 
 ```go
 func BuildFormDataStart(batNum string, fileName string) string{
@@ -178,7 +188,7 @@ func BuildFormDataEnd(batNum string) string{
 ```
 ## <a name="add-image-bytes-to-post-body"></a>POST 本文に画像バイトを追加する
 
-このコード セグメントでは、画像データを含む POST 要求を作成します。
+次のコードでは、画像データを含む POST 要求を作成します。
 
 ```go
 func createRequestBody(fileName string, batchNumber string) (*bytes.Buffer, string) {

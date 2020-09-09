@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 05/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 3e5e1df77b8bc701bf330d98f264db26a01ea748
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4be9944a53aaf0c697d55ff567dee7f2fbb3ed85
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75614759"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038088"
 ---
 # <a name="open-an-application-port-in-the-azure-load-balancer"></a>Azure ロード バランサーのアプリケーション ポートを開く
 
@@ -48,6 +48,6 @@ Azure で実行する Service Fabric アプリケーションは、Azure ロー�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
+Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。
 
 その他の Azure Service Fabric 用 PowerShell サンプルは、[Azure PowerShell サンプル](../service-fabric-powershell-samples.md)のページにあります。

@@ -10,12 +10,13 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
-ms.openlocfilehash: 7070cb3bcd1b519828a750cf4ba6caf7ecb34bbb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 231f30f5532d0934ba41e591aa821d56b11d5856
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76169872"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928005"
 ---
 # <a name="get-face-detection-data"></a>顔検出データの取得
 
@@ -145,7 +146,6 @@ foreach (var face in faces)
 このガイドでは、顔検出のさまざまな機能を使用する方法について説明しました。 次は詳細なチュートリアルに従って、お使いのアプリにこれらの機能を統合します。
 
 - [チュートリアル:画像内の顔データを表示する WPF アプリを作成する](../Tutorials/FaceAPIinCSharpTutorial.md)
-- [チュートリアル:画像内の顔を検出してフレームに収める Android アプリを作成する](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)
 
 ## <a name="related-topics"></a>関連トピック
 

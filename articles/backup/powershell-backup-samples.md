@@ -4,18 +4,20 @@ description: この記事では、データをバックアップおよび復元�
 ms.topic: sample
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: ebe89a22639e94d8c2ef0e8e5354176f6d04ad8d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 592cb2016cd86a1a7075fca6dc04ea7ccc673ffc
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101520"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756029"
 ---
 # <a name="azure-backup-powershell-samples"></a>Azure Backup PowerShell のサンプル
 
 次の表は、データをバックアップおよび復元するために Azure Backup を使用する PowerShell スクリプトのサンプルへのリンクを示しています。
 
-| |                                                              |
+| スクリプト | 説明 |
 |---|---|
 | [暗号化された仮想マシンを Azure にバックアップする](./scripts/backup-powershell-sample-backup-encrypted-vm.md) | 暗号化された仮想マシンのすべてのデータをバックアップします。|
 | [登録済みストレージ アカウントを見つける](./scripts/backup-powershell-script-find-recovery-services-vault.md) | ストレージ アカウントが登録されている Recovery Services コンテナーを見つけます |
+| [ストレージ アカウント内のファイル共有に対して論理的な削除を無効にする](./scripts/disable-soft-delete-for-file-shares.md) | ストレージ アカウント内のファイル共有に対して論理的な削除を無効にします|
+| [誤って削除されたファイル共有の削除を取り消す](./scripts/backup-powershell-script-undelete-file-share.md) | 誤って削除されたファイル共有の削除を取り消します |

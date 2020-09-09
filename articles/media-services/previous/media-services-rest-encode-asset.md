@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 6854400f2152a5952a7b24dbd860d7ad4bfc943d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2e7be89b3319445a69d5b91990e9888cccd484a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76774913"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268623"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Media Encoder Standard を使用して資産をエンコードする方法
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-encode-with-media-encoder-standard.md)
 > * [REST](media-services-rest-encode-asset.md)
@@ -33,7 +36,7 @@ ms.locfileid: "76774913"
 
 インターネット経由でデジタル ビデオを配信するには、メディアを圧縮する必要があります。 デジタル ビデオ ファイルはサイズがとても大きく、インターネット経由で配信したり、顧客のデバイスでうまく表示したりできない可能性があります。 エンコードはビデオやオーディオを圧縮するプロセスです。圧縮することでメディア コンテンツが見やすくなります。
 
-エンコード ジョブは Azure Media Services で最も一般的な処理の 1 つです。 エンコード ジョブを作成することで、メディア ファイルをあるエンコードから別のエンコードに変換できるようになります。 エンコードするときは、Media Services の組み込みエンコーダー (Media Encoder Standard) を使用できます。 さらに、Media Services パートナーで提供されるエンコーダーを使用することもできます。 サード パーティのエンコーダーは Azure Marketplace から入手できます。 エンコーディング タスクの詳細を指定するには、エンコーダー用に定義されたプリセット文字列を使用するか、プリセット構成ファイルを使用します。 使用できるプリセットの種類を確認する場合は、「[Task Presets for Media Encoder Standard (Media Encoder Standard のタスク プリセット)](https://msdn.microsoft.com/library/mt269960)」を参照してください。
+エンコード ジョブは Azure Media Services で最も一般的な処理の 1 つです。 エンコード ジョブを作成することで、メディア ファイルをあるエンコードから別のエンコードに変換できるようになります。 エンコードするときは、Media Services の組み込みエンコーダー (Media Encoder Standard) を使用できます。 さらに、Media Services パートナーで提供されるエンコーダーを使用することもできます。 サード パーティのエンコーダーは Azure Marketplace から入手できます。 エンコーディング タスクの詳細を指定するには、エンコーダー用に定義されたプリセット文字列を使用するか、プリセット構成ファイルを使用します。 使用できるプリセットの種類を確認する場合は、「[Task Presets for Media Encoder Standard (Media Encoder Standard のタスク プリセット)](./media-services-mes-presets-overview.md)」を参照してください。
 
 各ジョブは実行する処理の種類に応じて 1 つまたは複数のタスクを持つことができます。 REST API を使って、2 つの方法のいずれかでジョブおよびジョブに関連するタスクを作成できます。
 
@@ -65,32 +68,38 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
 >
 >
 
-次の例では、1 つのタスクが設定されたジョブを作成して公開し、特定の解像度と質でビデオをエンコードする方法について説明します。 Media Encoder Standard でエンコードするときは、 [こちら](https://msdn.microsoft.com/library/mt269960)で指定されているタスク構成のプリセットを使用できます。
+次の例では、1 つのタスクが設定されたジョブを作成して公開し、特定の解像度と質でビデオをエンコードする方法について説明します。 Media Encoder Standard でエンコードするときは、 [こちら](./media-services-mes-presets-overview.md)で指定されているタスク構成のプリセットを使用できます。
 
 要求:
 
-    POST https://media.windows.net/API/Jobs HTTP/1.1
-    Content-Type: application/json;odata=verbose
-    Accept: application/json;odata=verbose
-    DataServiceVersion: 3.0
-    MaxDataServiceVersion: 3.0
-    x-ms-version: 2.19
-        Authorization: Bearer <ENCODED JWT TOKEN> 
-        x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
-        Host: media.windows.net
+```console
+POST https://media.windows.net/API/Jobs HTTP/1.1
+Content-Type: application/json;odata=verbose
+Accept: application/json;odata=verbose
+DataServiceVersion: 3.0
+MaxDataServiceVersion: 3.0
+x-ms-version: 2.19
+    Authorization: Bearer <ENCODED JWT TOKEN> 
+    x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
+    Host: media.windows.net
 
-    {"Name" : "NewTestJob", "InputMediaAssets" : [{"__metadata" : {"uri" : "https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3Aaab7f15b-3136-4ddf-9962-e9ecb28fb9d2')"}}],  "Tasks" : [{"Configuration" : "Adaptive Streaming", "MediaProcessorId" : "nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56",  "TaskBody" : "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset>JobOutputAsset(0)</outputAsset></taskBody>"}]}
+{"Name" : "NewTestJob", "InputMediaAssets" : [{"__metadata" : {"uri" : "https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3Aaab7f15b-3136-4ddf-9962-e9ecb28fb9d2')"}}],  "Tasks" : [{"Configuration" : "Adaptive Streaming", "MediaProcessorId" : "nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56",  "TaskBody" : "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset>JobOutputAsset(0)</outputAsset></taskBody>"}]}
+```
 
 応答:
 
-    HTTP/1.1 201 Created
+```console
+HTTP/1.1 201 Created
 
-    . . .
+. . .
+```
 
 ### <a name="set-the-output-assets-name"></a>出力アセットの名前を設定します。
 次の例では、assetName 属性を設定する方法を示します。
 
-    { "TaskBody" : "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset assetName=\"CustomOutputAssetName\">JobOutputAsset(0)</outputAsset></taskBody>"}
+```console
+{ "TaskBody" : "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset assetName=\"CustomOutputAssetName\">JobOutputAsset(0)</outputAsset></taskBody>"}`
+```
 
 ## <a name="considerations"></a>考慮事項
 * TaskBody プロパティでは、リテラル XML を使用して、タスクが使用する資産の入力または出力数を定義する必要があります。 タスクの記事には、XML のための XML スキーマ定義が含まれます。
@@ -111,38 +120,39 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
 >
 >
 
-    POST https://media.windows.net/api/Jobs HTTP/1.1
-    Content-Type: application/json;odata=verbose
-    Accept: application/json;odata=verbose
-    DataServiceVersion: 3.0
-    MaxDataServiceVersion: 3.0
-    x-ms-version: 2.19
-    Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
+```console
+POST https://media.windows.net/api/Jobs HTTP/1.1
+Content-Type: application/json;odata=verbose
+Accept: application/json;odata=verbose
+DataServiceVersion: 3.0
+MaxDataServiceVersion: 3.0
+x-ms-version: 2.19
+Authorization: Bearer <ENCODED JWT TOKEN> 
+x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
 
-    {  
-       "Name":"NewTestJob",
-       "InputMediaAssets":[  
-          {  
-             "__metadata":{  
-                "uri":"https://testrest.cloudapp.net/api/Assets('nb%3Acid%3AUUID%3A910ffdc1-2e25-4b17-8a42-61ffd4b8914c')"
-             }
-          }
-       ],
-       "Tasks":[  
-          {  
-             "Configuration":"H264 Adaptive Bitrate MP4 Set 720p",
-             "MediaProcessorId":"nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56",
-             "TaskBody":"<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset>JobOutputAsset(0)</outputAsset></taskBody>"
-          },
-          {  
-             "Configuration":"H264 Smooth Streaming 720p",
-             "MediaProcessorId":"nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56",
-             "TaskBody":"<?xml version=\"1.0\" encoding=\"utf-16\"?><taskBody><inputAsset>JobOutputAsset(0)</inputAsset><outputAsset>JobOutputAsset(1)</outputAsset></taskBody>"
-          }
-       ]
-    }
-
+{  
+   "Name":"NewTestJob",
+   "InputMediaAssets":[  
+      {  
+         "__metadata":{  
+            "uri":"https://testrest.cloudapp.net/api/Assets('nb%3Acid%3AUUID%3A910ffdc1-2e25-4b17-8a42-61ffd4b8914c')"
+         }
+      }
+   ],
+   "Tasks":[  
+      {  
+         "Configuration":"H264 Adaptive Bitrate MP4 Set 720p",
+         "MediaProcessorId":"nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56",
+         "TaskBody":"<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset>JobOutputAsset(0)</outputAsset></taskBody>"
+      },
+      {  
+         "Configuration":"H264 Smooth Streaming 720p",
+         "MediaProcessorId":"nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56",
+         "TaskBody":"<?xml version=\"1.0\" encoding=\"utf-16\"?><taskBody><inputAsset>JobOutputAsset(0)</inputAsset><outputAsset>JobOutputAsset(1)</outputAsset></taskBody>"
+      }
+   ]
+}
+```
 
 ### <a name="considerations"></a>考慮事項
 タスクのチェーンを有効にするには、
@@ -153,62 +163,63 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
 ## <a name="use-odata-batch-processing"></a>OData バッチ処理の使用
 次の例では、OData バッチ処理を使用して、ジョブとタスクを作成する方法を示します。 バッチ処理の詳細については、 [Open Data Protocol (OData) のバッチ処理](https://www.odata.org/documentation/odata-version-3-0/batch-processing/)に関するページを参照してください。
 
-    POST https://media.windows.net/api/$batch HTTP/1.1
-    DataServiceVersion: 1.0;NetFx
-    MaxDataServiceVersion: 3.0;NetFx
-    Content-Type: multipart/mixed; boundary=batch_a01a5ec4-ba0f-4536-84b5-66c5a5a6d34e
-    Accept: multipart/mixed
-    Accept-Charset: UTF-8
-    Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.19
-    x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
-    Host: media.windows.net
+```console
+POST https://media.windows.net/api/$batch HTTP/1.1
+DataServiceVersion: 1.0;NetFx
+MaxDataServiceVersion: 3.0;NetFx
+Content-Type: multipart/mixed; boundary=batch_a01a5ec4-ba0f-4536-84b5-66c5a5a6d34e
+Accept: multipart/mixed
+Accept-Charset: UTF-8
+Authorization: Bearer <ENCODED JWT TOKEN> 
+x-ms-version: 2.19
+x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
+Host: media.windows.net
 
 
-    --batch_a01a5ec4-ba0f-4536-84b5-66c5a5a6d34e
-    Content-Type: multipart/mixed; boundary=changeset_122fb0a4-cd80-4958-820f-346309967e4d
+--batch_a01a5ec4-ba0f-4536-84b5-66c5a5a6d34e
+Content-Type: multipart/mixed; boundary=changeset_122fb0a4-cd80-4958-820f-346309967e4d
 
-    --changeset_122fb0a4-cd80-4958-820f-346309967e4d
-    Content-Type: application/http
-    Content-Transfer-Encoding: binary
+--changeset_122fb0a4-cd80-4958-820f-346309967e4d
+Content-Type: application/http
+Content-Transfer-Encoding: binary
 
-    POST https://media.windows.net/api/Jobs HTTP/1.1
-    Content-ID: 1
-    Content-Type: application/json
-    Accept: application/json
-    DataServiceVersion: 3.0
-    MaxDataServiceVersion: 3.0
-    Accept-Charset: UTF-8
-    Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.19
-    x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
+POST https://media.windows.net/api/Jobs HTTP/1.1
+Content-ID: 1
+Content-Type: application/json
+Accept: application/json
+DataServiceVersion: 3.0
+MaxDataServiceVersion: 3.0
+Accept-Charset: UTF-8
+Authorization: Bearer <ENCODED JWT TOKEN> 
+x-ms-version: 2.19
+x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
 
-    {"Name" : "NewTestJob", "InputMediaAssets@odata.bind":["https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3A2a22445d-1500-80c6-4b34-f1e5190d33c6')"]}
+{"Name" : "NewTestJob", "InputMediaAssets@odata.bind":["https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3A2a22445d-1500-80c6-4b34-f1e5190d33c6')"]}
 
-    --changeset_122fb0a4-cd80-4958-820f-346309967e4d
-    Content-Type: application/http
-    Content-Transfer-Encoding: binary
+--changeset_122fb0a4-cd80-4958-820f-346309967e4d
+Content-Type: application/http
+Content-Transfer-Encoding: binary
 
-    POST https://media.windows.net/api/$1/Tasks HTTP/1.1
-    Content-ID: 2
-    Content-Type: application/json;odata=verbose
-    Accept: application/json;odata=verbose
-    DataServiceVersion: 3.0
-    MaxDataServiceVersion: 3.0
-    Accept-Charset: UTF-8
-    Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.19
-    x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
+POST https://media.windows.net/api/$1/Tasks HTTP/1.1
+Content-ID: 2
+Content-Type: application/json;odata=verbose
+Accept: application/json;odata=verbose
+DataServiceVersion: 3.0
+MaxDataServiceVersion: 3.0
+Accept-Charset: UTF-8
+Authorization: Bearer <ENCODED JWT TOKEN> 
+x-ms-version: 2.19
+x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
 
-    {  
-       "Configuration":"H264 Adaptive Bitrate MP4 Set 720p",
-       "MediaProcessorId":"nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56",
-       "TaskBody":"<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset assetName=\"Custom output name\">JobOutputAsset(0)</outputAsset></taskBody>"
-    }
+{  
+   "Configuration":"H264 Adaptive Bitrate MP4 Set 720p",
+   "MediaProcessorId":"nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56",
+   "TaskBody":"<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset assetName=\"Custom output name\">JobOutputAsset(0)</outputAsset></taskBody>"
+}
 
-    --changeset_122fb0a4-cd80-4958-820f-346309967e4d--
-    --batch_a01a5ec4-ba0f-4536-84b5-66c5a5a6d34e--
-
+--changeset_122fb0a4-cd80-4958-820f-346309967e4d--
+--batch_a01a5ec4-ba0f-4536-84b5-66c5a5a6d34e--
+```
 
 
 ## <a name="create-a-job-by-using-a-jobtemplate"></a>JobTemplate を使用したジョブの作成
@@ -216,18 +227,19 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
 
 次の例では、TaskTemplate をインラインで定義して JobTemplate を作成しています。 この TaskTemplate では、Media Encoder Standard を MediaProcessor として、アセット ファイルをエンコードしています。 ただし、他の MediaProcessors を使用してもかまいません。
 
-    POST https://media.windows.net/API/JobTemplates HTTP/1.1
-    Content-Type: application/json;odata=verbose
-    Accept: application/json;odata=verbose
-    DataServiceVersion: 3.0
-    MaxDataServiceVersion: 3.0
-    x-ms-version: 2.19
-    Authorization: Bearer <ENCODED JWT TOKEN> 
-    Host: media.windows.net
+```console
+POST https://media.windows.net/API/JobTemplates HTTP/1.1
+Content-Type: application/json;odata=verbose
+Accept: application/json;odata=verbose
+DataServiceVersion: 3.0
+MaxDataServiceVersion: 3.0
+x-ms-version: 2.19
+Authorization: Bearer <ENCODED JWT TOKEN> 
+Host: media.windows.net
 
 
-    {"Name" : "NewJobTemplate25", "JobTemplateBody" : "<?xml version=\"1.0\" encoding=\"utf-8\"?><jobTemplate><taskBody taskTemplateId=\"nb:ttid:UUID:071370A3-E63E-4E81-A099-AD66BCAC3789\"><inputAsset>JobInputAsset(0)</inputAsset><outputAsset>JobOutputAsset(0)</outputAsset></taskBody></jobTemplate>", "TaskTemplates" : [{"Id" : "nb:ttid:UUID:071370A3-E63E-4E81-A099-AD66BCAC3789", "Configuration" : "H264 Smooth Streaming 720p", "MediaProcessorId" : "nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56", "Name" : "SampleTaskTemplate2", "NumberofInputAssets" : 1, "NumberofOutputAssets" : 1}] }
-
+{"Name" : "NewJobTemplate25", "JobTemplateBody" : "<?xml version=\"1.0\" encoding=\"utf-8\"?><jobTemplate><taskBody taskTemplateId=\"nb:ttid:UUID:071370A3-E63E-4E81-A099-AD66BCAC3789\"><inputAsset>JobInputAsset(0)</inputAsset><outputAsset>JobOutputAsset(0)</outputAsset></taskBody></jobTemplate>", "TaskTemplates" : [{"Id" : "nb:ttid:UUID:071370A3-E63E-4E81-A099-AD66BCAC3789", "Configuration" : "H264 Smooth Streaming 720p", "MediaProcessorId" : "nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56", "Name" : "SampleTaskTemplate2", "NumberofInputAssets" : 1, "NumberofOutputAssets" : 1}] }
+```
 
 > [!NOTE]
 > GUID 識別子は、他の Media Services エンティティとは異なり、TaskTemplate ごとに新たに定義し、要求本文の taskTemplateId と Id プロパティに設定する必要があります。 コンテンツ ID スキームについては、「Azure Media Services エンティティの識別」で説明されているスキームに従ってください。 また、JobTemplates を更新することはできません。 最新の変更内容を基に新たに作成する必要があります。
@@ -236,31 +248,35 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
 
 成功した場合、次の応答が返されます。
 
-    HTTP/1.1 201 Created
+```console
+HTTP/1.1 201 Created
 
-    . . .
-
+. . .
+```
 
 次の例では、JobTemplate ID を参照するジョブを作成する方法を示します。
 
-    POST https://media.windows.net/API/Jobs HTTP/1.1
-    Content-Type: application/json;odata=verbose
-    Accept: application/json;odata=verbose
-    DataServiceVersion: 3.0
-    MaxDataServiceVersion: 3.0
-    x-ms-version: 2.19
-    Authorization: Bearer <ENCODED JWT TOKEN> 
-    Host: media.windows.net
+```console
+POST https://media.windows.net/API/Jobs HTTP/1.1
+Content-Type: application/json;odata=verbose
+Accept: application/json;odata=verbose
+DataServiceVersion: 3.0
+MaxDataServiceVersion: 3.0
+x-ms-version: 2.19
+Authorization: Bearer <ENCODED JWT TOKEN> 
+Host: media.windows.net
 
 
-    {"Name" : "NewTestJob", "InputMediaAssets" : [{"__metadata" : {"uri" : "https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3A3f1fe4a2-68f5-4190-9557-cd45beccef92')"}}], "TemplateId" : "nb:jtid:UUID:15e6e5e6-ac85-084e-9dc2-db3645fbf0aa"}
-
+{"Name" : "NewTestJob", "InputMediaAssets" : [{"__metadata" : {"uri" : "https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3A3f1fe4a2-68f5-4190-9557-cd45beccef92')"}}], "TemplateId" : "nb:jtid:UUID:15e6e5e6-ac85-084e-9dc2-db3645fbf0aa"}
+```
 
 成功した場合、次の応答が返されます。
 
-    HTTP/1.1 201 Created
+```console
+HTTP/1.1 201 Created
 
-    . . .
+. . .
+```
 
 
 ## <a name="advanced-encoding-features-to-explore"></a>高度なエンコーディング機能の詳細

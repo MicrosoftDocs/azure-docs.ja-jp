@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: ed2638cfe4ab7e849e428729ccd17ffdeb6314af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ff4781109b2572d5555ec0a03c65359ef5a89d8d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086353"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482515"
 ---
 # <a name="development-best-practices-for-synapse-sql"></a>Synapse SQL 向けの開発に関するベスト プラクティス
 この記事では、独自のデータ ウェアハウス ソリューションを開発するにあたってのガイダンスとベスト プラクティスについて説明します。 
@@ -150,11 +150,11 @@ SQL オンデマンドを使用すると、Azure ストレージ アカウント
 
 多くの場合、データはパーティションに編成されます。 特定のフォルダーやファイルに対してクエリを実行するよう、SQL オンデマンドに指示することができます。 これにより、クエリが読み取って処理する必要があるファイルの数とデータの量が削減されます。 
 
-その結果、パフォーマンスが向上します。 詳細については、[filename](develop-storage-files-overview.md#filename-function) 関数、[filepath](develop-storage-files-overview.md#filepath-function) 関数、および、[特定のファイルに対してクエリを実行する](query-specific-files.md)方法の例を参照してください。
+その結果、パフォーマンスが向上します。 詳細については、[filename](query-data-storage.md#filename-function) 関数、[filepath](query-data-storage.md#filepath-function) 関数、および、[特定のファイルに対してクエリを実行する](query-specific-files.md)方法の例を参照してください。
 
 ストレージ内のデータがパーティション分割されていない場合は、これらの関数を使用してファイルを対象とするクエリを最適化できるよう、データのパーティション分割を検討してください。
 
-SQL オンデマンドから、[パーティション分割された Spark テーブルに対してクエリを実行](develop-storage-files-spark-tables.md)すると、必要なファイルのみが自動的にクエリの対象となります。
+SQL オンデマンドから、[パーティション分割された Apache Spark for Azure Synapse 外部テーブルに対してクエリを実行](develop-storage-files-spark-tables.md)すると、必要なファイルだけが自動的にクエリの対象となります。
 
 ### <a name="use-cetas-to-enhance-query-performance-and-joins"></a>CETAS を使用してクエリのパフォーマンスと結合を強化する
 
@@ -166,7 +166,7 @@ CETAS によって Parquet ファイルが生成されると、最初のクエ�
 
 ### <a name="next-steps"></a>次のステップ
 
-この記事に記載されていない情報が必要な場合は、このページの左側にある "Search for docs" を使用して、SQL プールのすべてのドキュメントを検索してください。  [SQL プール フォーラム](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse)は、他のユーザーや SQL プールの製品グループに質問を投稿できる場所です。  
+この記事に記載されていない情報が必要な場合は、このページの左側にある "Search for docs" を使用して、SQL プールのすべてのドキュメントを検索してください。  [SQL プールの Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)では、他のユーザーや SQL プール製品グループへの質問を投稿できます。  
 
 Microsoft では、このフォーラムを積極的に監視し、お客様からの質問に他のユーザーや Microsoft のスタッフが回答しているかどうかを確認しています。  Stack Overflow で質問したい方のために、[Azure SQL プール Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-sqldw)も用意しています。
  

@@ -3,23 +3,21 @@ title: クイック スタート:Azure Blob Storage ライブラリ v12 - .NET
 description: このクイックスタートでは、.NET 用 Azure Blob Storage クライアント ライブラリ バージョン 12 を使用して、BLOB (オブジェクト) ストレージ内にコンテナーと BLOB を作成する方法について説明します。 次に、ローカル コンピューターに BLOB をダウンロードする方法と、コンテナー内のすべての BLOB を一覧表示する方法について説明します。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/05/2019
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 5cfb0430bc94d347afd75bc01170a71a7ad53565
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: devx-track-csharp
+ms.openlocfilehash: fa37db7a5c63f7a5e8a84d98afbb81e007904974
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215410"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001435"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>クイック スタート:.NET 用 Azure Blob Storage クライアント ライブラリ v12
 
 .NET 用 Azure Blob Storage クライアント ライブラリ v12 を使用してみましょう。 Azure Blob Storage は、Microsoft のクラウド用オブジェクト ストレージ ソリューションです。 手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。 Blob Storage は、テキスト データやバイナリ データなどの大量の非構造化データを格納するために最適化されています。
-
-> [!NOTE]
-> 以前の SDK バージョンを使ってみるには、「[クイックスタート: .NET 用 Azure Blob Storage クライアント ライブラリ](storage-quickstart-blobs-dotnet-legacy.md)」を参照してください。
 
 .NET 用 Azure Blob Storage クライアント ライブラリ v12 を使用すると、以下のことができます。
 
@@ -29,7 +27,12 @@ ms.locfileid: "79215410"
 * ローカル コンピューターに BLOB をダウンロードする
 * コンテナーを削除する
 
-[API のリファレンスのドキュメント](/dotnet/api/azure.storage.blobs) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs) | [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs) | [サンプル](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+その他のリソース:
+
+* [API リファレンス ドキュメント](/dotnet/api/azure.storage.blobs)
+* [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)
+* [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)
+* [サンプル](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -228,9 +231,9 @@ await foreach (BlobItem blobItem in containerClient.GetBlobsAsync())
 
 ```csharp
 // Download the blob to a local file
-// Append the string "DOWNLOAD" before the .txt extension 
+// Append the string "DOWNLOADED" before the .txt extension 
 // so you can compare the files in the data directory
-string downloadFilePath = localFilePath.Replace(".txt", "DOWNLOAD.txt");
+string downloadFilePath = localFilePath.Replace(".txt", "DOWNLOADED.txt");
 
 Console.WriteLine("\nDownloading blob to\n\t{0}\n", downloadFilePath);
 

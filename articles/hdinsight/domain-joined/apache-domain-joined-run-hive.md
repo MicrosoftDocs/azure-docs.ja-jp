@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 90d7da9c8ddd8c9c595f2209dcc34e2f595acfd2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71c1306d1516d8af3fb16c0ba353ab8144de2562
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78196928"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202592"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用して HDInsight 上に Hive ポリシーを構成する
 
@@ -121,7 +121,9 @@ hiveruser1 と hiveuser2 を作成する方法については、「[ESP の HDIn
 
 1. **[定義]** タブを選択します。コマンド テキストを次に示します。
 
-       SELECT * FROM "HIVE"."default"."hivesampletable"
+    ```sql
+    SELECT * FROM "HIVE"."default"."hivesampletable"`
+    ```
 
    定義した Ranger ポリシーにより、hiveuser1 にはすべての列に対する select 権限があります。  そのため、このクエリは hiveuser1 の資格情報では機能しますが、hiveuser2 の資格情報では機能しません。
 
@@ -136,15 +138,21 @@ hiveruser1 と hiveuser2 を作成する方法については、「[ESP の HDIn
 1. Excel で新しいシートを追加します。
 2. 最後の手順に従ってデータをインポートします。  ここで行う唯一の変更は、hiveuser1 ではなく hiveuser2 の資格情報を使用することです。 hiveuser2 には 2 つの列を表示する権限しかないため、インポートは失敗します。 次のエラーが表示されます。
 
-        [Microsoft][HiveODBC] (35) Error from Hive: error code: '40000' error message: 'Error while compiling statement: FAILED: HiveAccessControlException Permission denied: user [hiveuser2] does not have [SELECT] privilege on [default/hivesampletable/clientid,country ...]'.
-        
+    ```output
+    [Microsoft][HiveODBC] (35) Error from Hive: error code: '40000' error message: 'Error while compiling statement: FAILED: HiveAccessControlException Permission denied: user [hiveuser2] does not have [SELECT] privilege on [default/hivesampletable/clientid,country ...]'.
+    ```
+
 3. 同じ手順に従ってデータをインポートします。 今回は、hiveuser2 の資格情報を使用し、次の select ステートメント
 
-        SELECT * FROM "HIVE"."default"."hivesampletable"
+    ```sql
+    SELECT * FROM "HIVE"."default"."hivesampletable"
+    ```
 
     を次のように変更します。
 
-        SELECT clientid, devicemake FROM "HIVE"."default"."hivesampletable"
+    ```sql
+    SELECT clientid, devicemake FROM "HIVE"."default"."hivesampletable"
+    ```
 
     完了すると、インポートされた 2 列のデータが表示されます。
 

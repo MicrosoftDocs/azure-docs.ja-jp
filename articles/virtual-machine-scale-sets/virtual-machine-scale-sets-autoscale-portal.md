@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: ea9d243e46aace9030c25222217ac3ad09a31c38
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ac42fe3265163a5a967524fe11063803c9ca91d3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124943"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080592"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Azure Portal で仮想マシン スケール セットを自動的にスケーリングする
 スケール セットを作成するときに、実行する VM インスタンスの数を定義します。 アプリケーションの需要の変化に応じて、VM インスタンスの数を自動的に増減することができます。 自動スケールにより、顧客のニーズに対応したり、アプリのライフサイクル全体でアプリケーション パフォーマンスの変化に対応したりできます。
@@ -48,8 +48,8 @@ ms.locfileid: "83124943"
     | *時間グレインの統計* | 各時間グレインで収集したメトリックを分析のために集計する方法を定義します。                             | Average        |
     | *[オペレーター]*             | しきい値に対してメトリック データを比較するために使用する演算子。                                                     | より大きい   |
     | *しきい値*            | 自動スケール ルールがアクションをトリガーするパーセンテージ。                                                 | 70             |
-    | *Duration*             | メトリックとしきい値を比較する前に監視する時間。                                   | 10 分     |
-    | *操作*            | ルールが適用されたときにスケール セットをスケールアップするかスケールダウンするかと、その差分を定義します                        | パーセントを増やす量 |
+    | *Duration*             | メトリックとしきい値を比較する前に監視する時間。 クール ダウン期間は含まれません。                                   | 10 分     |
+    | *操作*            | ルールが適用されたときにスケール セットのスケールアップまたはスケールダウンを実行するどうか、およびその増分値を定義します。                        | パーセントを増やす量 |
     | *インスタンス数*       | ルールがトリガーされたときに VM インスタンスのパーセンテージを変更する必要があります。                                            | 20             |
     | *クール ダウン (分)*  | 自動スケール アクションを有効にする時間を稼ぐため、ルールを再度適用する前に待機する時間。 | 5 分      |
 
@@ -123,6 +123,6 @@ VM インスタンスの数と状態を確認するには、スケール セッ�
 ## <a name="next-steps"></a>次のステップ
 この記事では、自動スケール ルールを使用して、水平方向にスケーリングし、スケール セット内の VM インスタンスの "*数*" を増減する方法について説明しました。 垂直方向にスケーリングして、VM インスタンスの "*サイズ*" を増減することもできます。 詳細については、[仮想マシン スケール セットでの垂直方向の自動スケール](virtual-machine-scale-sets-vertical-scale-reprovision.md)に関するページを参照してください。
 
-VM インスタンスの管理方法については、[Azure PowerShell を使用した仮想マシン スケール セットの管理](virtual-machine-scale-sets-windows-manage.md)に関するページを参照してください。
+VM インスタンスの管理方法については、[Azure PowerShell を使用した仮想マシン スケール セットの管理](./virtual-machine-scale-sets-manage-powershell.md)に関するページを参照してください。
 
-自動スケール ルールをトリガーするときにアラートを生成する方法について詳しくは、「[Azure Monitor で自動スケール操作を使用して電子メールと webhook アラート通知を送信する](../azure-monitor/platform/autoscale-webhook-email.md)」をご覧ください。 [Azure Monitor で監査ログを使用して電子メールと webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)こともできます。
+自動スケール ルールをトリガーするときにアラートを生成する方法について詳しくは、「[Azure Monitor で自動スケール操作を使用して電子メールと webhook アラート通知を送信する](../azure-monitor/platform/autoscale-webhook-email.md)」をご覧ください。 [Azure Monitor で監査ログを使用して電子メールと webhook アラート通知を送信する](../azure-monitor/platform/alerts-log-webhook.md)こともできます。

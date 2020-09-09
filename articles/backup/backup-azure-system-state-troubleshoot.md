@@ -4,12 +4,12 @@ description: この記事では、オンプレミスの Windows Server のシス
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: 28647b72334d592692c5fe1b031735330d1a0509
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56593176e705176b87cf955eb116909c1912e723
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78969573"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824272"
 ---
 # <a name="troubleshoot-system-state-backup"></a>システム状態のバックアップをトラブルシューティングする
 
@@ -17,14 +17,14 @@ ms.locfileid: "78969573"
 
 ## <a name="basic-troubleshooting"></a>基本的なトラブルシューティング
 
-システム状態のバックアップのトラブルシューティングを開始する前に、以下の検証を実行することをお勧めします。
+システム状態のバックアップのトラブルシューティングを開始する前に、以下の検証ステップを実行することをお勧めします。
 
 - [Microsoft Azure Recovery Services (MARS) エージェントが最新であることを確認する](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
-- [MARS エージェントと Azure の間にネットワーク接続が存在することを確認する](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
+- [MARS エージェントと Azure の間にネットワーク接続が存在することを確認する](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - Microsoft Azure Recovery Services が (サービス コンソールで) 実行されていることを確認します。 必要に応じて、再起動して操作をやり直します
-- [スクラッチ フォルダーの場所に 5 から 10% の空きボリューム領域があることを確認する](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#whats-the-minimum-size-requirement-for-the-cache-folder)
-- [別のプロセスまたはウイルス対策ソフトウェアによって Azure Backup が妨げられているかどうかを確認する](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)
-- [スケジュールされたバックアップが失敗したが、手動バックアップは機能する](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#backups-dont-run-according-to-schedule)
+- [スクラッチ フォルダーの場所に 5 から 10% の空きボリューム領域があることを確認する](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
+- [別のプロセスまたはウイルス対策ソフトウェアによって Azure Backup が妨げられているかどうかを確認する](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)
+- [スケジュールされたバックアップが失敗したが、手動バックアップは機能する](./backup-azure-mars-troubleshoot.md#backups-dont-run-according-to-schedule)
 - OS に最新の更新プログラムが適用されていることを確認する
 - [サポートされていない属性を持つサポートされていないドライブとファイルはバックアップから除外されることを確認する](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup)
 - 保護されているシステム上の**システム クロック**が適切なタイム ゾーンに構成されていることを確認します <br>
@@ -33,7 +33,7 @@ ms.locfileid: "78969573"
   - エージェントがサーバーからアンインストールされていることと、ポータルから削除されていることを確認します。 <br>
   - 最初にサーバーの登録に使用したのと同じパスフレーズを使用します <br>
 - これがオフライン バックアップの場合は、ソース コンピューターとコピー用コンピューターの両方に Azure PowerShell バージョン 3.7.0 がインストールされていることを確認します
-- [Azure 仮想マシン (VM) 上で Backup エージェントが実行されている場合の考慮事項](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-backup-agent-running-on-an-azure-virtual-machine)
+- [Azure 仮想マシン (VM) 上で Backup エージェントが実行されている場合の考慮事項](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-backup-agent-running-on-an-azure-virtual-machine)
 
 ### <a name="limitation"></a>制限事項
 
@@ -77,12 +77,12 @@ PowerShell を使用して Windows Server バックアップをインストー�
 3. サーバー プールからサーバーを選択し、 **[次へ]** をクリックします。 サーバーの役割で、既定の選択のままにし、 **[次へ]** をクリックします。
 4. **[機能]** タブで **[Windows Server バックアップ]** を選択し、 **[次へ]** をクリックします。
 
-    ![features](./media/backup-azure-system-state-troubleshoot/features.png)
+    ![[機能の選択] ウィンドウ](./media/backup-azure-system-state-troubleshoot/features.png)
 
 5. **[確認]** タブで、 **[インストール]** をクリックして、インストール プロセスを開始します。
 6. **[結果]** タブに、Windows Server バックアップ機能が Windows Server に正常にインストールされていることが示されます。
 
-    ![結果](./media/backup-azure-system-state-troubleshoot/results.jpg)
+    ![インストールの結果](./media/backup-azure-system-state-troubleshoot/results.jpg)
 
 ### <a name="system-volume-information-permission"></a>システム ボリューム情報のアクセス許可
 
@@ -90,7 +90,7 @@ PowerShell を使用して Windows Server バックアップをインストー�
 
 ### <a name="dependent-services"></a>依存サービス
 
-以下のサービスが実行状態にあることを確認します。
+次のサービスが実行中の状態であることを確認します。
 
 **サービス名** | **スタートアップの種類**
 --- | ---
@@ -137,7 +137,7 @@ Windows Server バックアップの状態を検証するには、以下の手�
 
 | 症状 | 解像度
 | -- | --
-| - MARS エージェントが次のエラー メッセージで失敗する:システム ファイルが格納されているボリュームのディスク領域の不足により、シャドウ コピーのボリュームを拡大できなかったため、バックアップに失敗しました <br/><br/> - volsnap システム イベント ログに次のエラー/警告ログが存在する:"There was insufficient disk space on volume C: to grow the shadow copy storage for shadow copies of C: due to this failure all shadow copies of volume C: are at risk of being deleted" (C: のシャドウ コピー用のシャドウ コピー ストレージを拡大するための十分なディスク領域がボリューム C: 上に存在しません。このエラーのせいで、ボリューム C: のすべてのシャドウコピーが削除される恐れがあります) | - 強調表示されているボリュームの領域を解放して、バックアップの進行中にシャドウ コピー コピーを拡大するための十分な領域が存在するようにします <br/><br/> - シャドウ コピーの領域の構成中に、シャドウ コピー用に使用される領域の量を制限できます。 詳細については、こちらの[記事](https://docs.microsoft.com/windows-server/administration/windows-commands/vssadmin-resize-shadowstorage)を参照してください
+| - MARS エージェントが次のエラー メッセージで失敗する:システム ファイルが格納されているボリュームのディスク領域の不足により、シャドウ コピーのボリュームを拡大できなかったため、バックアップに失敗しました <br/><br/> - volsnap システム イベント ログに次のエラー/警告ログが存在する:"There was insufficient disk space on volume C: to grow the shadow copy storage for shadow copies of C: due to this failure all shadow copies of volume C: are at risk of being deleted" (C: のシャドウ コピー用のシャドウ コピー ストレージを拡大するための十分なディスク領域がボリューム C: 上に存在しません。このエラーのせいで、ボリューム C: のすべてのシャドウコピーが削除される恐れがあります) | - 強調表示されているボリュームの領域を解放して、バックアップの進行中にシャドウ コピー コピーを拡大するための十分な領域が存在するようにします <br/><br/> - シャドウ コピーの領域の構成中に、シャドウ コピー用に使用される領域の量を制限できます。 詳細については、こちらの[記事](/windows-server/administration/windows-commands/vssadmin-resize-shadowstorage)を参照してください
 
 ### <a name="efi-partition-locked"></a>EFI パーティションがロックされている
 

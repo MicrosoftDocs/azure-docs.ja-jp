@@ -1,6 +1,6 @@
 ---
 title: Storage Explorer を使用して Azure Blob Storage リソースを管理する | Microsoft Docs
-description: Storage Explorer を使用して Azure BLOB コンテナーと BLOB を管理する
+description: Storage Explorer を使用して Azure Blob Storage リソースを管理します。 BLOB コンテナーの作成、BLOB コンテナーの内容の表示、BLOB コンテナーの削除やコピーなどを行います。
 services: storage
 documentationcenter: na
 author: cawaMS
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2019
 ms.author: cawa
-ms.openlocfilehash: 56c20c995a95058b5039b7268c7b7b1426e900fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 07652f2ac88475664f30e8189204b5649f966d16
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79224983"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033616"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Storage Explorer を使用して Azure Blob Storage リソースを管理する
 
@@ -41,7 +41,7 @@ BLOB ストレージを使用すると、データを一般に公開すること
 
 次の手順では、Storage Explorer 内に BLOB コンテナーを作成する方法を説明します。
 
-1. ストレージ エクスプローラーを開きます。
+1. Storage Explorer を開きます。
 2. 左側のウィンドウで、BLOB コンテナーを作成するストレージ アカウントを展開します。
 3. **[BLOB コンテナー]** を右クリックし、コンテキスト メニューの **[BLOB コンテナーの作成]** を選択します。
 
@@ -59,7 +59,7 @@ BLOB コンテナーには、BLOB とフォルダーが含まれます (フォ�
 
 次の手順では、Storage Explorer 内で BLOB コンテナーの内容を表示する方法を説明します。
 
-1. ストレージ エクスプローラーを開きます。
+1. Storage Explorer を開きます。
 2. 左側のウィンドウで、表示する BLOB コンテナーが含まれているストレージ アカウントを展開します。
 3. ストレージ アカウントの **[BLOB コンテナー]** を展開します。
 4. 表示する BLOB コンテナーを右クリックし、コンテキスト メニューの **[BLOB コンテナー エディターを開く]** を選択します。
@@ -72,11 +72,11 @@ BLOB コンテナーには、BLOB とフォルダーが含まれます (フォ�
 
 ## <a name="delete-a-blob-container"></a>BLOB コンテナーを削除する
 
-BLOB コンテナーは、必要に応じて、簡単に作成および削除できます (個々の BLOB を削除する方法については、「[BLOB コンテナー内の BLOB を管理する](#managing-blobs-in-a-blob-container)」セクションをご覧ください)。
+BLOB コンテナーは、必要に応じて、簡単に作成および削除できます  (個々の BLOB を削除する方法については、「[BLOB コンテナー内の BLOB を管理する](#managing-blobs-in-a-blob-container)」セクションをご覧ください)。
 
 次の手順では、Storage Explorer 内の BLOB コンテナーを削除する方法を説明します。
 
-1. ストレージ エクスプローラーを開きます。
+1. Storage Explorer を開きます。
 2. 左側のウィンドウで、表示する BLOB コンテナーが含まれているストレージ アカウントを展開します。
 3. ストレージ アカウントの **[BLOB コンテナー]** を展開します。
 4. 削除する BLOB コンテナーを右クリックし、コンテキスト メニューの **[削除]** を選択します。
@@ -89,11 +89,11 @@ BLOB コンテナーは、必要に応じて、簡単に作成および削除で
 
 ## <a name="copy-a-blob-container"></a>BLOB コンテナーをコピーする
 
-Storage Explorer を使用すると、BLOB コンテナーをクリップボードにコピーし、その BLOB コンテナーを別のストレージ アカウントに貼り付けることができます (個々の BLOB をコピーする方法については、「[BLOB コンテナー内の BLOB を管理する](#managing-blobs-in-a-blob-container)」セクションをご覧ください)。
+Storage Explorer を使用すると、BLOB コンテナーをクリップボードにコピーし、その BLOB コンテナーを別のストレージ アカウントに貼り付けることができます  (個々の BLOB をコピーする方法については、「[BLOB コンテナー内の BLOB を管理する](#managing-blobs-in-a-blob-container)」セクションをご覧ください)。
 
 次の手順では、あるストレージ アカウントから別のストレージ アカウントに BLOB コンテナーをコピーする方法を説明します。
 
-1. ストレージ エクスプローラーを開きます。
+1. Storage Explorer を開きます。
 2. 左側のウィンドウで、コピーする BLOB コンテナーが含まれているストレージ アカウントを展開します。
 3. ストレージ アカウントの **[BLOB コンテナー]** を展開します。
 4. コピーする BLOB コンテナーを右クリックし、コンテキスト メニューの **[Copy Blob Container (BLOB コンテナーのコピー)]** を選択します。
@@ -110,7 +110,7 @@ Storage Explorer を使用すると、BLOB コンテナーをクリップボー�
 
 次の手順では、BLOB コンテナーの SAS を作成する方法を説明します。
 
-1. ストレージ エクスプローラーを開きます。
+1. Storage Explorer を開きます。
 2. 左側のウィンドウで、SAS を取得する BLOB コンテナーが含まれているストレージ アカウントを展開します。
 3. ストレージ アカウントの **[BLOB コンテナー]** を展開します。
 4. 目的の BLOB コンテナーを右クリックし、コンテキスト メニューの **[Get Shared Access Signature (Shared Access Signature の取得)]** を選択します。
@@ -130,7 +130,7 @@ Storage Explorer を使用すると、BLOB コンテナーをクリップボー�
 
 次の手順では、BLOB コンテナーのアクセス ポリシーを管理 (追加と削除) する方法を説明します。
 
-1. ストレージ エクスプローラーを開きます。
+1. Storage Explorer を開きます。
 2. 左側のウィンドウで、アクセス ポリシーを管理する BLOB コンテナーが含まれているストレージ アカウントを展開します。
 3. ストレージ アカウントの **[BLOB コンテナー]** を展開します。
 4. 目的の BLOB コンテナーを選択し、コンテキスト メニューの **[Manage Access Policies (アクセス ポリシーの管理)]** を選択します。
@@ -142,7 +142,7 @@ Storage Explorer を使用すると、BLOB コンテナーをクリップボー�
 6. アクセス ポリシーの管理タスクに応じて、以下の手順に従います。
 
    * **新しいアクセス ポリシーを追加する** - **[追加]** を選択します。 生成後、 **[アクセス ポリシー]** ダイアログには、新しく追加されたアクセス ポリシー (既定の設定) が表示されます。
-   * **アクセス ポリシーを編集する** - 必要な編集を行い、 **[保存]** を選択します。
+   * **アクセス ポリシーを編集する** - 必要な編集を行い、**[保存]** を選択します。
    * **アクセス ポリシーを削除する** - 削除するアクセス ポリシーの横にある **[削除]** を選択します。
 
 ## <a name="set-the-public-access-level-for-a-blob-container"></a>BLOB コンテナーのパブリック アクセス レベルを設定する
@@ -151,7 +151,7 @@ Storage Explorer を使用すると、BLOB コンテナーをクリップボー�
 
 次の手順は、BLOB コンテナーのパブリック アクセス レベルを指定する方法を説明します。
 
-1. ストレージ エクスプローラーを開きます。
+1. Storage Explorer を開きます。
 2. 左側のウィンドウで、アクセス ポリシーを管理する BLOB コンテナーが含まれているストレージ アカウントを展開します。
 3. ストレージ アカウントの **[BLOB コンテナー]** を展開します。
 4. 目的の BLOB コンテナーを選択し、コンテキスト メニューの **[Set Public Access Level (パブリック アクセス レベルの設定)]** を選択します。
@@ -168,7 +168,7 @@ BLOB コンテナーを作成したら、その BLOB コンテナーに BLOB を
 
 次の手順では、BLOB コンテナー内の BLOB (およびフォルダー) を管理する方法を説明します。
 
-1. ストレージ エクスプローラーを開きます。
+1. Storage Explorer を開きます。
 2. 左側のウィンドウで、管理する BLOB コンテナーが含まれているストレージ アカウントを展開します。
 3. ストレージ アカウントの **[BLOB コンテナー]** を展開します。
 4. 表示する BLOB コンテナーをダブルクリックします。
@@ -183,7 +183,7 @@ BLOB コンテナーを作成したら、その BLOB コンテナーに BLOB を
      1. メイン ウィンドウのツール バーで **[アップロード]** を選択し、ドロップダウン メニューで **[Upload Files (ファイルのアップロード)]** を選択します。
 
         ![Upload files menu][15]
-     2. **[Upload Files (ファイルのアップロード)]** ダイアログで、 **[ファイル]** ボックスの右側にある省略記号 ( **[...]** ) ボタンをクリックし、アップロードするファイルを選択します。
+     2. **[Upload Files (ファイルのアップロード)]** ダイアログで、**[ファイル]** ボックスの右側にある省略記号 (**[...]**) ボタンをクリックし、アップロードするファイルを選択します。
 
         ![Upload files options][16]
      3. **[BLOB の種類]** に種類を指定します。 詳細については、「[コンテナーを作成する](storage/blobs/storage-quickstart-blobs-dotnet.md#create-a-container)」を参照してください。
@@ -194,7 +194,7 @@ BLOB コンテナーを作成したら、その BLOB コンテナーに BLOB を
      1. メイン ウィンドウのツール バーで **[アップロード]** を選択し、ドロップダウン メニューで **[Upload Folder (フォルダーのアップロード)]** を選択します。
 
         ![Upload folder menu][17]
-     2. **[Upload Folder (フォルダーのアップロード)]** ダイアログで、 **[フォルダー]** ボックスの右側にある省略記号 ( **[...]** ) ボタンをクリックし、アップロードする内容を含むフォルダーを選択します。
+     2. **[Upload Folder (フォルダーのアップロード)]** ダイアログで、**[フォルダー]** ボックスの右側にある省略記号 (**[...]**) ボタンをクリックし、アップロードする内容を含むフォルダーを選択します。
 
         ![Upload folder options][18]
      3. **[BLOB の種類]** に種類を指定します。 詳細については、「[コンテナーを作成する](storage/blobs/storage-quickstart-blobs-dotnet.md#create-a-container)」を参照してください。
@@ -223,7 +223,7 @@ BLOB コンテナーを作成したら、その BLOB コンテナーに BLOB を
      2. メイン ウィンドウのツール バーで、 **[削除]** を選択します。
      3. 確認のダイアログで **[はい]** を選択します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [最新の Storage Explorer のリリース ノートとビデオ](https://www.storageexplorer.com)を確認します。
 * [Azure BLOB、テーブル、キュー、ファイルを使ってアプリケーションを作成する](https://azure.microsoft.com/documentation/services/storage/)方法について学習します。

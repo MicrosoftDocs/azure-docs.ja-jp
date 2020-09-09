@@ -10,12 +10,12 @@ ms.workload: cloud-services
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: memccror
-ms.openlocfilehash: e3f0fd88eb302dac208f43d0622ae28b31dcddc2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d4f869c8b4ae6e90cfe64a2bf3d13839d72727be
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77157509"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84015302"
 ---
 # <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>Azure Cloud Services に影響を与える Azure サービスの中断が発生した場合の対処方法
 Microsoft では、必要なときにサービスがいつでも使用できるように取り組んでいますが、 やむを得ない事情により、計画されていないサービス中断が発生することがあります。
@@ -47,7 +47,7 @@ Azure には、可用性の高いアプリケーションをサポートする�
 アプリケーションのデータ ソースによっては、アプリケーションのデータ ソースの復旧手順を確認することが必要になる場合があります。
 
 * Azure Storage データ ソースの場合は、[Azure Storage の冗長性](../storage/common/storage-redundancy.md)に関するセクションを参照して、アプリケーション用に選択した冗長モデルに応じて使用できるオプションについて確認してください。
-* SQL Database ソースの場合は、「[概要: SQL Database を使用したクラウド ビジネス継続性とデータベース ディザスター リカバリー](../sql-database/sql-database-business-continuity.md)」を参照して、アプリケーション用に選択したレプリケーション モデルに応じて使用できるオプションについて確認してください。
+* SQL Database ソースの場合は、「[概要: SQL Database を使用したクラウド ビジネス継続性とデータベース ディザスター リカバリー](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md)」を参照して、アプリケーション用に選択したレプリケーション モデルに応じて使用できるオプションについて確認してください。
 
 
 ## <a name="option-3-wait-for-recovery"></a>オプション 3: 復旧を待つ

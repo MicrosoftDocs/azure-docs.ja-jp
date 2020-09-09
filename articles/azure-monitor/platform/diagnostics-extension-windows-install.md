@@ -7,43 +7,69 @@ ms.subservice: diagnostic-extension
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
-ms.openlocfilehash: dd18fd484ac456f0c38cd6d9b73a2395a08ad5d0
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: ac087a7ba241534c08c4e5737973861727ab01ca
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82883109"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069580"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Windows Azure Diagnostics 拡張機能 (WAD) のインストールと構成
-Azure Diagnostics 拡張機能は Azure Monitor のエージェントで、ゲスト オペレーティング システムと Azure 仮想マシンと他のコンピューティング リソースのワークロードから監視データを収集します。 この記事では、Windows 診断拡張機能のインストールと構成の詳細と、Azure ストレージ アカウントでデータを保存する方法について説明します。
+[Azure Diagnostics 拡張機能](diagnostics-extension-overview.md)は Azure Monitor のエージェントで、ゲスト オペレーティング システムと Azure 仮想マシンと他のコンピューティング リソースのワークロードから監視データを収集します。 この記事では、Windows 診断拡張機能のインストールと構成の詳細と、Azure ストレージ アカウントでデータを保存する方法について説明します。
 
 診断拡張機能は、Azure では[仮想マシン拡張機能](../../virtual-machines/extensions/overview.md)として実装されているため、Resource Manager テンプレート、PowerShell、および CLI を使用した場合と同じインストール オプションがサポートされています。 仮想マシン拡張機能のインストールと保守の詳細については、[Windows 用の仮想マシン拡張機能と機能](../../virtual-machines/extensions/features-windows.md)に関する記事を参照してください。
+
+## <a name="overview"></a>概要
+Windows Azure の診断拡張機能を構成するときに、指定したすべてのデータが送信されるストレージ アカウントを指定する必要があります。 必要に応じて、1 つ以上の "*データ シンク*" を追加して、別の場所にデータを送信することもできます。
+
+- Azure Monitor シンク - ゲスト パフォーマンス データを Azure Monitor メトリックに送信します。
+- イベント ハブ シンク - Azure の外部に転送するために、ゲスト パフォーマンスおよびログ データを Azure Event Hubs に送信します。 このシンクは、Azure portal では構成できません。
+
 
 ## <a name="install-with-azure-portal"></a>Azure portal を使用してインストールする
 Azure portal で、個々の仮想マシンに診断拡張機能をインストールし、構成することができます。構成を直接操作するのではなく、インターフェイスが用意されています。 診断拡張機能を有効にすると、最も一般的なパフォーマンス カウンターとイベントを備えた既定の構成が自動的に使用されます。 特定の要件に応じて、この既定構成を変更できます。
 
 > [!NOTE]
-> Azure Event Hubs へのデータ送信など、Azure portal を使用して構成できない診断拡張機能の設定があります。 このような設定には、他のいずれかの構成方法を使用する必要があります。
+> 次に、診断拡張機能の最も一般的な設定について説明します。 すべての構成オプションの詳細については、「[Windows Diagnostics 拡張機能のスキーマ](diagnostics-extension-schema-windows.md)」をご覧ください。
 
 1. Azure portal で仮想マシンのメニューを開きます。
+
 2. VM メニューの **[監視]** セクションで、 **[診断設定]** をクリックします。
+
 3. 診断拡張機能がまだ有効になっていない場合は、 **[ゲスト レベルの監視を有効にする]** をクリックします。
-4. VM のリソース グループの名前に基づいた名前を持つ VM 用の新しい Azure Storage アカウントが作成されます。 **[エージェント]** タブを選択して、VM を別のストレージ アカウントに接続できます。
 
-![診断設定](media/diagnostics-extension-windows-install/diagnostic-settings.png)
+   ![監視を有効にする](media/diagnostics-extension-windows-install/enable-monitoring.png)
 
+4. VM のリソース グループの名前に基づいた名前を持つ VM 用の新しい Azure Storage アカウントが作成され、既定のゲスト パフォーマンス カウンターおよびログのセットが選択されます。
 
-診断拡張機能を有効にすると、既定の構成を変更できます。 次の表は、さまざまなタブで変更できるオプションを説明したものです。 一部のオプションには、より詳細な構成を指定できる**カスタム** コマンドがあります。さまざまな設定の詳細については、「[Windows 診断拡張機能のスキーマ](diagnostics-extension-schema-windows.md)」を参照してください。
+   ![診断設定](media/diagnostics-extension-windows-install/diagnostic-settings.png)
 
-| タブ | 説明 |
-|:---|:---|
-| 概要 | 現在の構成と、他のタブへのリンクが表示されます。 |
-| パフォーマンス カウンター | 収集するパフォーマンス カウンターとそれぞれのサンプル レートを選択します。  |
-| ログ | 収集するログ データを選択します。 これには、Windows イベント ログ、IIS ログ、.NET アプリケーション ログ、ETW イベントが含まれます。  |
-| クラッシュ ダンプ | さまざまなプロセスのクラッシュ ダンプを有効にします。 |
-| シンク | Azure Storage に加えて、データ シンクから宛先にデータを送信できるようにします。<br>Azure Monitor - パフォーマンス データを Azure Monitor メトリックに送信します。<br>Application Insights - データを Application Insights アプリケーションに送信します。 |
-| エージェント | エージェントの次の構成を変更します。<br>- ストレージ アカウントを変更します。<br>- エージェントに使用するローカル ディスクの最大数を指定します。<br>- エージェント自体の正常性のログを構成します。|
+5. **[パフォーマンス カウンター]** タブで、この仮想マシンから収集するゲスト メトリックを選択します。 詳細な選択を行うには、 **[カスタム]** 設定を使用します。
 
+   ![パフォーマンス カウンター](media/diagnostics-extension-windows-install/performance-counters.png)
+
+6. **[ログ]** タブで、仮想マシンから収集するログを選択します。 ログはストレージまたはイベント ハブに送信できますが、Azure Monitor には送信できません。 [Log Analytics エージェント](log-analytics-agent.md)を使用して、Azure Monitor にゲスト ログを収集します。
+
+   ![ログ](media/diagnostics-extension-windows-install/logs.png)
+
+7. **[クラッシュ ダンプ]** タブで、クラッシュ後にメモリ ダンプを収集するプロセスを指定します。 データは、診断設定用にストレージ アカウントに書き込まれ、必要に応じて BLOB コンテナーを指定できます。
+
+   ![クラッシュ ダンプ](media/diagnostics-extension-windows-install/crash-dumps.png)
+
+8. **[シンク]** タブで、Azure Storage 以外の場所にデータを送信するかどうかを指定します。 **[Azure Monitor]** を選択した場合、ゲスト パフォーマンス データは、Azure Monitor メトリックに送信されます。 Azure portal を使用してイベント ハブ シンクを構成することはできません。
+
+   ![シンク](media/diagnostics-extension-windows-install/sinks.png)
+   
+   仮想マシン用に構成されたシステム割り当て ID を有効にしていない場合、Azure Monitor シンクで構成を保存したときに、下の警告が表示されることがあります。 バナーをクリックして、システム割り当て ID を有効にします。
+   
+   ![マネージド エンティティ](media/diagnostics-extension-windows-install/managed-entity.png)
+
+9. **エージェント**では、ストレージ アカウントを変更し、ディスク クォータを設定し、診断インフラストラクチャ ログを収集するかどうかを指定できます。  
+
+   ![エージェント](media/diagnostics-extension-windows-install/agent.png)
+
+10. **[保存]** をクリックして構成を保存します。 
 
 > [!NOTE]
 > 診断拡張機能の構成は、JSON と XML のどちらの形式にすることもできますが、Azure portal で実行される構成は常に JSON 形式で保存されます。 別の構成方法で XML を使用していて、Azure portal で構成を変更した場合、設定は JSON に変更されます。
@@ -52,7 +78,7 @@ Azure portal で、個々の仮想マシンに診断拡張機能をインスト�
 Azure Resource Manager テンプレートを使用した診断拡張機能のデプロイについては、「[Windows VM と Azure Resource Manager テンプレートで監視と診断を利用する](../../virtual-machines/extensions/diagnostics-template.md)」を参照してください。 
 
 ## <a name="azure-cli-deployment"></a>Azure CLI でのデプロイ
-次の例のように、Azure CLI を使用して、[az vm extension set](https://docs.microsoft.com/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-set) を使用して Azure Diagnostics 拡張機能を既存の仮想マシンにデプロイできます。 
+次の例のように、Azure CLI を使用して、[az vm extension set](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-set) を使用して Azure Diagnostics 拡張機能を既存の仮想マシンにデプロイできます。 
 
 ```azurecli
 az vm extension set \
@@ -73,6 +99,7 @@ az vm extension set \
     "storageAccountEndPoint": "https://mystorageaccount.blob.core.windows.net"
 }
 ```
+
 パブリック設定は、構成スキーマの [Public 要素](diagnostics-extension-schema-windows.md#publicconfig-element)で定義されます。 診断インフラストラクチャのログ、1 つのパフォーマンス カウンター、および 1 つのイベント ログの収集を有効にするパブリック設定ファイルの最小限の例を次に示します。 パブリック設定の詳細については、[構成例](diagnostics-extension-schema-windows.md#publicconfig-element)に関する記事を参照してください。
 
 ```JSON
@@ -107,7 +134,7 @@ az vm extension set \
 
 
 ## <a name="powershell-deployment"></a>PowerShell でのデプロイ
-次の例のように、PowerShell を使用し、[Set-AzVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) を使用して、Azure Diagnostics 拡張機能を既存の仮想マシンにデプロイできます。 
+次の例のように、PowerShell を使用し、[Set-AzVMDiagnosticsExtension](/powershell/module/servicemanagement/azure.service/set-azurevmdiagnosticsextension) を使用して、Azure Diagnostics 拡張機能を既存の仮想マシンにデプロイできます。 
 
 ```powershell
 Set-AzVMDiagnosticsExtension -ResourceGroupName "myvmresourcegroup" `
@@ -180,8 +207,8 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName "myvmresourcegroup" `
 ストレージへの転送後にデータを表示するには、いくつかのツールを利用できます。 次に例を示します。
 
 * Visual Studio のサーバー エクスプローラー - Azure Tools for Microsoft Visual Studio がインストールされている場合、サーバー エクスプローラーの Azure Storage ノードを使用して、Azure ストレージ アカウントの読み取り専用の BLOB およびテーブル データを表示できます。 データは、ローカルのストレージ エミュレーター アカウントから表示できます。また、Azure 用に作成したストレージ アカウントから表示することもできます。 詳細については、「[サーバー エクスプローラーを使用したストレージ リソースの参照と管理](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage)」を参照してください。
-* [Microsoft Azure ストレージ エクスプローラー](../../vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、OSX、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。
+* [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、OSX、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。
 * [Azure Management Studio](https://www.cerebrata.com/products/azure-management-studio/introduction) に含まれている Azure Diagnostics Manager では、Azure で実行されているアプリケーションによって収集された診断データの表示、ダウンロード、管理を行うことができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Azure Event Hubs への監視データの転送の詳細については、[Windows Azure Diagnostics 拡張機能から Event Hubs へのデータ送信](diagnostics-extension-stream-event-hubs.md)に関する記事を参照してください。

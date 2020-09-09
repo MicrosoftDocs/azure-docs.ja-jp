@@ -6,17 +6,18 @@ manager: gwallace
 ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: e1bc7c8a6f97d6dc6bb1d6cb54825425244b2158
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 49a0e48977393aeab7ff93b79e28acc55a87b51a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78944881"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504621"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Linux VM に MongoDB をインストールして構成する方法
 
@@ -214,5 +215,4 @@ az group deployment show \
 
 テンプレートを使った作成の詳細については、「[Azure リソース マネージャーの概要](../../azure-resource-manager/management/overview.md)」をご覧ください。
 
-Azure Resource Manager テンプレートは、カスタム スクリプト拡張機能を使って、スクリプトをダウンロードして VM で実行します。 詳しくは、「[Azure カスタム スクリプト拡張機能と Linux 仮想マシンの使用](extensions-customscript.md)」をご覧ください。
-
+Azure Resource Manager テンプレートは、カスタム スクリプト拡張機能を使って、スクリプトをダウンロードして VM で実行します。 詳しくは、「[Azure カスタム スクリプト拡張機能と Linux 仮想マシンの使用](../extensions/custom-script-linux.md)」をご覧ください。

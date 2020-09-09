@@ -1,24 +1,24 @@
 ---
 title: 仮想マシンへのパブリック IP アドレスの関連付け
 titlesuffix: Azure Virtual Network
-description: 仮想マシンにパブリック IP アドレスを関連付ける方法について説明します。
+description: Azure portal または Azure CLI を使用して仮想マシン (VM) にパブリック IP アドレスを関連付ける方法について説明します。
 services: virtual-network
 documentationcenter: ''
 author: asudbring
 ms.service: virtual-network
 ms.subservice: ip-services
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
-ms.openlocfilehash: 2170a4d5f66cf6d1f699ae943f2a80b1b8127e39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b5fc9e4118d98905138b7f205f61d85a96b60b0
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146579"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035469"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>仮想マシンへのパブリック IP アドレスの関連付け
 

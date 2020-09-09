@@ -1,23 +1,14 @@
 ---
 title: Azure Service Bus のネットワーク セキュリティ
 description: この記事では、サービス タグ、IP ファイアウォール規則、サービス エンドポイント、プライベート エンドポイントなどのネットワークセキュリティ機能について説明します。
-services: service-bus-messaging
-documentationcenter: .net
-author: axisc
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/13/2020
-ms.author: aschhab
-ms.openlocfilehash: 95f8c2a3b47b59bab7df909be43dacdb1f9c58f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 731300179ce9a0ff72169cdad5c7c039749b20f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79475989"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341129"
 ---
 # <a name="network-security-for-azure-service-bus"></a>Azure Service Bus のネットワーク セキュリティ 
 この記事では、Azure Service Bus で次のセキュリティ機能を使用する方法について説明します。 
@@ -37,6 +28,9 @@ ms.locfileid: "79475989"
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **ServiceBus** | Premium サービス レベルを使用する Azure Service Bus トラフィック。 | 送信 | はい | はい |
 
+
+> [!NOTE]
+> サービス タグは、**Premium** 名前空間に対してのみ使用できます。 **Standard** 名前空間を使用している場合は、`nslookup <host name for the namespace>` コマンドを実行したときに表示される IP アドレスを使用します。 (例: `nslookup contosons.servicebus.windows.net`)。 
 
 ## <a name="ip-firewall"></a>IP ファイアウォール 
 既定では、要求が有効な認証と承認を受けている限り、Service Bus 名前空間にはインターネットからアクセスできます。 これは IP ファイアウォールを使用して、さらに [CIDR (クラスレス ドメイン間ルーティング)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 表記の一連の IPv4 アドレスまたは IPv4 アドレス範囲のみに制限できます。
@@ -88,7 +82,7 @@ Azure Private Link サービスを使用すると、自分の仮想ネットワ�
 > [!NOTE]
 > この機能は、Azure Service Bus の **Premium** レベルでサポートされています。 Premium レベルの詳細については、「[Service Bus の Premium および Standard メッセージング レベル](service-bus-premium-messaging.md)」の記事を参照してください。
 >
-> 現在、この機能は**プレビュー**段階にあります。 
+> 現在、この機能は**プレビュー段階**にあります。 
 
 
 詳細については、[Service Bus の名前空間のプライベート エンドポイントを構成する方法](private-link-service.md)に関する記事を参照してください。

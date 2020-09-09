@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 12990238455046d837b175318225bb4f3d317706
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3709511fa8da0a40f4faf4ab2dac9505d69003ab
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82185049"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118513"
 ---
 # <a name="tutorial-utilize-the-resource-manager-template-reference"></a>チュートリアル:Resource Manager テンプレート リファレンスを利用する
 
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-* Visual Studio Code と Resource Manager ツール拡張機能。 [Visual Studio Code を使って ARM テンプレートを作成する方法](use-vs-code-to-create-template.md)に関するページを参照してください。
+* Visual Studio Code と Resource Manager ツール拡張機能。 「[クイック スタート:Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
 
 ## <a name="open-a-quickstart-template"></a>クイック スタート テンプレートを開く
 
@@ -75,7 +75,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="find-the-template-reference"></a>テンプレート リファレンスの検索
 
-1. [Azure テンプレート リファレンス](https://docs.microsoft.com/azure/templates/)を参照します。
+1. [Azure テンプレート リファレンス](/azure/templates/)を参照します。
 1. **[タイトルでフィルター処理します]** ボックスに「**ストレージ アカウント**」と入力し、 **[リファレンス] > [ストレージ]** の 1 つ目の **[ストレージ アカウント]** を選択します。
 
     ![Resource Manager テンプレート参照ストレージ アカウント](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts.png)

@@ -3,17 +3,14 @@ title: Azure Data Lake Analytics で利用でき、閲覧できる診断ログ
 description: Azure Data Lake Analytics の診断ログの設定方法およびアクセス方法の解釈
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: jasonwhowell
-ms.author: jasonh
-ms.assetid: cf5633d4-bc43-444e-90fc-f90fbd0b7935
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/12/2018
-ms.openlocfilehash: 7fd88383e909ebd6be64c22721b813946e37179e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c8c24134c4694a9a2df36ac278452a532a5125ad
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60616505"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132604"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics の診断ログへのアクセス
 
@@ -60,32 +57,34 @@ ms.locfileid: "60616505"
 
 2. これらのコンテナー内で、ログは次のファイル構造の下に格納されます。
 
-        resourceId=/
-          SUBSCRIPTIONS/
-            <<SUBSCRIPTION_ID>>/
-              RESOURCEGROUPS/
-                <<RESOURCE_GRP_NAME>>/
-                  PROVIDERS/
-                    MICROSOFT.DATALAKEANALYTICS/
-                      ACCOUNTS/
-                        <DATA_LAKE_ANALYTICS_NAME>>/
-                          y=####/
-                            m=##/
-                              d=##/
-                                h=##/
-                                  m=00/
-                                    PT1H.json
+   ```text
+   resourceId=/
+     SUBSCRIPTIONS/
+       <<SUBSCRIPTION_ID>>/
+         RESOURCEGROUPS/
+           <<RESOURCE_GRP_NAME>>/
+             PROVIDERS/
+               MICROSOFT.DATALAKEANALYTICS/
+                 ACCOUNTS/
+                   <DATA_LAKE_ANALYTICS_NAME>>/
+                     y=####/
+                       m=##/
+                         d=##/
+                           h=##/
+                             m=00/
+                               PT1H.json
+   ```
 
    > [!NOTE]
    > パスのエントリの `##` の部分には、ログを作成した年、月、日、時間の情報が入ります。 Data Lake Analytics では、ログのファイルを 1 時間に 1 つ作成します。このため、`m=` の値は常に `00` となります。
 
     たとえば、監査ログへの完全パスは以下のようになります。
 
-        https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=04/m=00/PT1H.json
+    `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
 
     同様に、要求ログへの完全パスは以下のようになります。
 
-        https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=14/m=00/PT1H.json
+    `https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
 
 ## <a name="log-structure"></a>ログの構造
 
@@ -95,33 +94,35 @@ ms.locfileid: "60616505"
 
 JSON 形式の要求ログのエントリの例を次に示します。 各 BLOB には、ログ オブジェクトの配列を含む、 **レコード** と呼ばれるルート オブジェクトが 1 つあります。
 
+```json
+{
+"records":
+  [
+    . . . .
+    ,
     {
-    "records":
-      [        
-        . . . .
-        ,
-        {
-             "time": "2016-07-07T21:02:53.456Z",
-             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/<data_lake_analytics_account_name>",
-             "category": "Requests",
-             "operationName": "GetAggregatedJobHistory",
-             "resultType": "200",
-             "callerIpAddress": "::ffff:1.1.1.1",
-             "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
-             "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
-             "properties": {
-                 "HttpMethod":"POST",
-                 "Path":"/JobAggregatedHistory",
-                 "RequestContentLength":122,
-                 "ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8",
-                 "StartTime":"2016-07-07T21:02:52.472Z",
-                 "EndTime":"2016-07-07T21:02:53.456Z"
-                 }
-        }
-        ,
-        . . . .
-      ]
+         "time": "2016-07-07T21:02:53.456Z",
+         "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/<data_lake_analytics_account_name>",
+         "category": "Requests",
+         "operationName": "GetAggregatedJobHistory",
+         "resultType": "200",
+         "callerIpAddress": "::ffff:1.1.1.1",
+         "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
+         "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
+         "properties": {
+             "HttpMethod":"POST",
+             "Path":"/JobAggregatedHistory",
+             "RequestContentLength":122,
+             "ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8",
+             "StartTime":"2016-07-07T21:02:52.472Z",
+             "EndTime":"2016-07-07T21:02:53.456Z"
+             }
     }
+    ,
+    . . . .
+  ]
+}
+```
 
 #### <a name="request-log-schema"></a>要求ログのスキーマ
 
@@ -152,28 +153,26 @@ JSON 形式の要求ログのエントリの例を次に示します。 各 BLOB
 
 JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB には、ログ オブジェクトの配列を含む、 **レコード** と呼ばれるルート オブジェクトが 1 つあります。
 
+```json
+{
+"records":
+  [
     {
-    "records":
-      [        
-        . . . .
-        ,
-        {
-             "time": "2016-07-28T19:15:16.245Z",
-             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/<data_lake_ANALYTICS_account_name>",
-             "category": "Audit",
-             "operationName": "JobSubmitted",
-             "identity": "user@somewhere.com",
-             "properties": {
-                 "JobId":"D74B928F-5194-4E6C-971F-C27026C290E6",
-                 "JobName": "New Job",
-                 "JobRuntimeName": "default",
-                 "SubmitTime": "7/28/2016 7:14:57 PM"
-                 }
-        }
-        ,
-        . . . .
-      ]
+         "time": "2016-07-28T19:15:16.245Z",
+         "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/<data_lake_ANALYTICS_account_name>",
+         "category": "Audit",
+         "operationName": "JobSubmitted",
+         "identity": "user@somewhere.com",
+         "properties": {
+             "JobId":"D74B928F-5194-4E6C-971F-C27026C290E6",
+             "JobName": "New Job",
+             "JobRuntimeName": "default",
+             "SubmitTime": "7/28/2016 7:14:57 PM"
+             }
     }
+  ]
+}
+```
 
 #### <a name="audit-log-schema"></a>監査ログのスキーマ
 
@@ -213,4 +212,5 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
 Azure Data Lake Analytics では、ログ データの処理と分析方法に関するサンプルを提供しています。 [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample) でサンプルを見つけることができます。
 
 ## <a name="next-steps"></a>次のステップ
-* [Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
+
+[Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)

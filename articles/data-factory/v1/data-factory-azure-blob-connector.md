@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: eab332f102b9e39981e2d8ed6e84f73fada87a1a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c7f91285b393734bce83785dde62fd573e94ac0f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236595"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254516"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -31,7 +31,7 @@ ms.locfileid: "79236595"
 この記事では、Azure Data Factory のコピー アクティビティを使って、Azure Blob Storage との間でデータをコピーする方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
 
 ## <a name="overview"></a>概要
-サポートされる任意のソース データ ストアのデータを、Azure Blob Storage にコピーしたり、Azure Blob Storage のデータを、サポートされる任意のシンク データ ストアにコピーしたりできます。 次の表は、コピー アクティビティによってコピー元またはシンクとしてサポートされているデータ ストアの一覧です。 たとえば、SQL Server データベースまたは Azure SQL データベース**から** Azure Blob Storage **に**データを移動できます。 また、Azure Blob Storage **から** Azure SQL Data Warehouse または Azure Cosmos DB コレクション**に**データをコピーできます。
+サポートされる任意のソース データ ストアのデータを、Azure Blob Storage にコピーしたり、Azure Blob Storage のデータを、サポートされる任意のシンク データ ストアにコピーしたりできます。 次の表は、コピー アクティビティによってコピー元またはシンクとしてサポートされているデータ ストアの一覧です。 たとえば、SQL Server データベースまたは Azure SQL Database のデータベース**から** Azure Blob Storage **に**データを移動できます。 また、Azure Blob Storage **から** Azure SQL Data Warehouse または Azure Cosmos DB コレクション**に**データをコピーできます。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -59,8 +59,8 @@ ms.locfileid: "79236595"
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
 1. **Data Factory**を作成します。 データ ファクトリには、1 つまたは複数のパイプラインを設定できます。
-2. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。 たとえば、Azure Blob Storage から Azure SQL データベースにデータをコピーする場合、リンクされたサービスを 2 つ作成して、Azure ストレージ アカウントと Azure SQL データベースをデータ ファクトリにリンクします。 Azure Blob Storage に固有のリンクされたサービスのプロパティについては、「[リンクされたサービスのプロパティ](#linked-service-properties)」セクションを参照してください。
-2. コピー操作用の入力データと出力データを表す**データセット**を作成します。 最後の手順で説明されている例では、データセットを作成して入力データを含む BLOB コンテナーとフォルダーを指定します。 また、もう 1 つのデータセットを作成して、Blob Storage からコピーされたデータを保持する Azure SQL データベースの SQL テーブルを指定します。 Azure Blob Storage に固有のデータセットのプロパティについては、「[データセットのプロパティ](#dataset-properties)」セクションを参照してください。
+2. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。 たとえば、Azure Blob Storage から Azure SQL Database にデータをコピーする場合、リンクされたサービスを 2 つ作成して、Azure ストレージ アカウントと Azure SQL Database をデータ ファクトリにリンクします。 Azure Blob Storage に固有のリンクされたサービスのプロパティについては、「[リンクされたサービスのプロパティ](#linked-service-properties)」セクションを参照してください。
+2. コピー操作用の入力データと出力データを表す**データセット**を作成します。 最後の手順で説明されている例では、データセットを作成して入力データを含む BLOB コンテナーとフォルダーを指定します。 また、もう 1 つのデータセットを作成して、Blob Storage からコピーされたデータを保持する Azure SQL Database の SQL テーブルを指定します。 Azure Blob Storage に固有のデータセットのプロパティについては、「[データセットのプロパティ](#dataset-properties)」セクションを参照してください。
 3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 前に説明した例では、コピー アクティビティのソースとして BlobSource を、シンクとして SqlSink を使います。 同様に、Azure SQL Database から Azure Blob Storage にコピーする場合は、SqlSource と BlobSink をコピー アクティビティで使います。 Azure Blob Storage に固有のコピー アクティビティのプロパティについては、「[コピー アクティビティのプロパティ](#copy-activity-properties)」セクションを参照してください。 ソースまたはシンクとしてデータ ストアを使う方法について詳しくは、前のセクションのデータ ストアのリンクをクリックしてください。
 
 ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  Azure Blob Storage との間でデータをコピーするときに使用する Data Factory エンティティの JSON 定義のサンプルについては、この記事の「[JSON の使用例](#json-examples-for-copying-data-to-and-from-blob-storage  )」を参照してください。
@@ -548,7 +548,7 @@ Azure Data Factory では、2 種類の Azure Storage のリンクされたサ�
 ```
 **Azure SQL の出力データセット:**
 
-このサンプルは Azure SQL データベースの「MyTable」というテーブルにデータをコピーします。 BLOB CSV ファイルに含まれることが予想される列数で Azure SQL データベースにテーブルを作成します。 新しい行は 1 時間ごとにテーブルに追加されます。
+このサンプルは Azure SQL Database の "MyTable" というテーブルにデータをコピーします。 BLOB CSV ファイルに含まれることが予想される列数で SQL データベースにテーブルを作成します。 新しい行は 1 時間ごとにテーブルに追加されます。
 
 ```json
 {

@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-author: trevorbye
-ms.author: trbye
-ms.reviewer: trbye
-ms.date: 02/10/2020
-ms.openlocfilehash: c8f259d2d4df46470a042c3f65ac1b8e1f66b1dd
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.author: sgilley
+author: sdgilley
+ms.date: 08/25/2020
+ms.custom: devx-track-python
+ms.openlocfilehash: fb380e4b71ba68daf694ab725c41be64f066805e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546063"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854923"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>チュートリアル:最初の ML モデルをトレーニングする
 
@@ -43,21 +43,24 @@ ms.locfileid: "80546063"
 
 1. [パート 1](tutorial-1st-experiment-sdk-setup.md#open) に示すように、フォルダー内の **tutorial-1st-experiment-sdk-train.ipynb** を開きます。
 
-
-> [!Warning]
-> Jupyter インターフェイスで "*新しい*" ノートブックを作成**しないでください**。 ノートブック *tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb* には、このチュートリアルに**必要なすべてのコードとデータ**が含まれています。
+Jupyter インターフェイスで "*新しい*" ノートブックを作成**しないでください**。 ノートブック *tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb* には、このチュートリアルに**必要なすべてのコードとデータ**が含まれています。
 
 ## <a name="connect-workspace-and-create-experiment"></a>ワークスペースを接続し、実験を作成する
 
-> [!Important]
-> 以降この記事には、ノートブックと同じ内容が記載されています。  
->
-> コードを実行しながら読み進めたい方は、ここで Jupyter Notebook に切り替えてください。 
-> ノートブックで単一のコード セルを実行するには、そのコード セルをクリックして **Shift + Enter** キーを押します。 または、上部のツール バーから **[すべて実行]** を選択して、ノートブック全体を実行します。
+<!-- nbstart https://raw.githubusercontent.com/Azure/MachineLearningNotebooks/master/tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb -->
 
-`Workspace` クラスをインポートし、`from_config().` 関数を使用して `config.json` ファイルから自分のサブスクリプション情報を読み込みます。これにより、既定で現在のディレクトリ内の JSON ファイルが検索されますが、`from_config(path="your/file/path")` を使用して、path パラメーターを指定してファイルを指すこともできます。 クラウド ノートブック サーバーでは、ファイルは自動的にルート ディレクトリに配置されます。
+> [!TIP]
+> _tutorial-1st-experiment-sdk-train.ipynb_ の内容。 コードを実行しながら読み進めたい方は、ここで Jupyter Notebook に切り替えてください。 ノートブックで単一のコード セルを実行するには、そのコード セルをクリックして **Shift + Enter** キーを押します。 または、上部のツール バーから **[すべて実行]** を選択して、ノートブック全体を実行します。
 
-次のコードで追加の認証が求められる場合は、単にリンクをブラウザーに貼り付け、認証トークンを入力します。
+
+`Workspace` クラスをインポートし、`from_config().` 関数を使用して `config.json` ファイルから自分のサブスクリプション情報を読み込みます。これにより、既定で現在のディレクトリ内の JSON ファイルが検索されますが、`from_config(path="your/file/path")` を使用して、path パラメーターを指定してファイルを指すこともできます。 このノートブックを自分のワークスペース内のクラウド ノートブック サーバーで実行している場合、ファイルは自動的にルート ディレクトリに配置されます。
+
+次のコードで追加の認証が求められる場合は、単にリンクをブラウザーに貼り付け、認証トークンを入力します。 さらに、ユーザーに複数のテナントが関連付けられている場合は、次の行を追加する必要があります。
+```
+from azureml.core.authentication import InteractiveLoginAuthentication
+interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
+Additional details on authentication can be found here: https://aka.ms/aml-notebook-auth 
+```
 
 ```python
 from azureml.core import Workspace
@@ -105,16 +108,16 @@ alphas = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
 for alpha in alphas:
     run = experiment.start_logging()
     run.log("alpha_value", alpha)
-
+    
     model = Ridge(alpha=alpha)
     model.fit(X=X_train, y=y_train)
     y_pred = model.predict(X=X_test)
     rmse = math.sqrt(mean_squared_error(y_true=y_test, y_pred=y_pred))
     run.log("rmse", rmse)
-
+    
     model_name = "model_alpha_" + str(alpha) + ".pkl"
     filename = "outputs/" + model_name
-
+    
     joblib.dump(value=model, filename=filename)
     run.upload_file(name=model_name, path_or_stream=filename)
     run.complete()
@@ -137,7 +140,7 @@ experiment
 
 ## <a name="view-training-results-in-studio"></a>Studio でトレーニング結果を表示する
 
-**Azure Machine Learning Studio へのリンク**に従うと、メインの実験ページに移動します。 ここには、実験の個別の実行がすべて表示されます。 カスタムでログに記録された値 (この場合、`alpha_value` と `rmse`) は、各実行のフィールドになるほか、実験ページの上部にあるグラフとタイルで使用可能になります。 ログに記録されたメトリックをグラフまたはタイルに追加するには、その上にマウス ポインターを移動し、編集ボタンをクリックして、カスタムでログに記録されたメトリックを見つけます。
+**Azure Machine Learning Studio へのリンク**に従うと、メインの実験ページに移動します。 ここには、実験の個別の実行がすべて表示されます。 カスタムでログに記録された値 (この場合、`alpha_value` と `rmse`) は、各実行のフィールドになるほか、グラフで使用可能になります。 ログに記録されたメトリックで新しいグラフをプロットするには、[グラフの追加] をクリックし、プロットしたいメトリックを選択します。
 
 数百件および数千件を超える個別の実行を伴う大きな規模でモデルをトレーニングする場合、自分がトレーニングしたすべてのモデル (具体的には、それらがどのようにトレーニングされたか、そして時間の経過と共に一意のメトリックがどのように変化したか) をこのページで簡単に確認できます。
 
@@ -162,7 +165,7 @@ for run in experiment.get_runs():
     # each logged metric becomes a key in this returned dict
     run_rmse = run_metrics["rmse"]
     run_id = run_details["runId"]
-
+    
     if minimum_rmse is None:
         minimum_rmse = run_rmse
         minimum_rmse_runid = run_id
@@ -172,13 +175,15 @@ for run in experiment.get_runs():
             minimum_rmse_runid = run_id
 
 print("Best run_id: " + minimum_rmse_runid)
-print("Best run_id rmse: " + str(minimum_rmse))
+print("Best run_id rmse: " + str(minimum_rmse))    
+```
+```output
+Best run_id: 864f5ce7-6729-405d-b457-83250da99c80
+Best run_id rmse: 57.234760283951765
 ```
 
-    Best run_id: 864f5ce7-6729-405d-b457-83250da99c80
-    Best run_id rmse: 57.234760283951765
-
 実験オブジェクトと共に `Run` コンストラクターを使用して個々の実行を取得するには、最適な実行の ID を使用します。 次に、`get_file_names()` を呼び出して、この実行からダウンロード可能なすべてのファイルを表示します。 この場合、トレーニング中に実行ごとにファイルを 1 つだけアップロードしました。
+
 
 ```python
 from azureml.core import Run
@@ -186,13 +191,17 @@ best_run = Run(experiment=experiment, run_id=minimum_rmse_runid)
 print(best_run.get_file_names())
 ```
 
-    ['model_alpha_0.1.pkl']
+```output
+['model_alpha_0.1.pkl']
+```
 
 実行オブジェクトに対して `download()` を呼び出し、ダウンロードするモデル ファイル名を指定します。 この関数の既定のダウンロード先は、現在のディレクトリです。
+
 
 ```python
 best_run.download_file(name="model_alpha_0.1.pkl")
 ```
+<!-- nbend -->
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

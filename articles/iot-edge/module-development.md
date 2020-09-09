@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 96bd6b461a5374b5f5bc578c5f58dbcd09cd7087
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233287"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84699296"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>独自の IoT Edge モジュールを開発する
 

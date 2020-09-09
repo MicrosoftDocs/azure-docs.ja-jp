@@ -5,13 +5,14 @@ ms.subservice: speech-service
 ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
+ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 54b5e3f0ed2fd10fa04305fdefbec725143f62c5
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 70dc07fcbfc740ce0ec6b7a841221e3b0af5f7d6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81422288"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88925975"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -70,6 +71,8 @@ Speech SDK では、既定で認識される言語が en-us です。ソース�
 > この値を見つける方法については、「[意図認識用の LUIS アプリを作成する](#create-a-luis-app-for-intent-recognition)」を参照してください。
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=33-35)]
+
+この例では、`AddIntent()` 関数を使用して、個別に意図を追加します。 モデルのすべての意図を追加する場合は、`AddAllIntents(model)` を使用し、モデルを渡します。 
 
 ## <a name="recognize-an-intent"></a>意図を認識する
 

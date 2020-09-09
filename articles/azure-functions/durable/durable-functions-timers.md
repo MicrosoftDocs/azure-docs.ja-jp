@@ -2,18 +2,18 @@
 title: Durable Functions のタイマー - Azure
 description: Azure Functions の Durable Functions 拡張機能で持続的タイマーを実装する方法について説明します。
 ms.topic: conceptual
-ms.date: 11/03/2019
+ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 0565cc149a36baf31d8516fffcf48b194c465760
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0226e5141b100aa3fcf89dd1a5cade8f3cd6cf1c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76261485"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056227"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Durable Functions のタイマー (Azure Functions)
 
-[Durable Functions](durable-functions-overview.md) には、遅延を実装したり、非同期アクションでタイムアウトを設定したりできるように、オーケストレーター関数で使用する "*持続的タイマー*" が用意されています。 持続的タイマーは、`Thread.Sleep` および `Task.Delay` (C#)、または `setTimeout()` および `setInterval()` (JavaScript) の代わりに、オーケストレーター関数で使用されます。
+[Durable Functions](durable-functions-overview.md) には、遅延を実装したり、非同期アクションでタイムアウトを設定したりできるように、オーケストレーター関数で使用する "*持続的タイマー*" が用意されています。 持続的タイマーは、`Thread.Sleep` および `Task.Delay` (C#)、または `setTimeout()` および `setInterval()` (JavaScript)、または `time.sleep()` (Python) の代わりに、オーケストレーター関数で使用されます。
 
 [オーケストレーション トリガー バインド](durable-functions-bindings.md#orchestration-trigger)の `CreateTimer` (.NET) メソッドまたは `createTimer` (JavaScript) メソッドを呼び出すことによって、持続的タイマーを作成します。 メソッドは、指定した日時に完了するタスクを返します。
 
@@ -62,7 +62,21 @@ module.exports = df.orchestrator(function*(context) {
     }
 });
 ```
+# <a name="python"></a>[Python](#tab/python)
 
+```python
+import azure.functions as func
+import azure.durable_functions as df
+from datetime import datetime, timedelta
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    for i in range(0, 9):
+        deadline = context.current_utc_datetime + timedelta(days=1)
+        yield context.create_timer(deadline)
+        yield context.call_activity("SendBillingEvent")
+
+main = df.Orchestrator.create(orchestrator_function)
+```
 ---
 
 > [!WARNING]
@@ -130,6 +144,28 @@ module.exports = df.orchestrator(function*(context) {
         return false;
     }
 });
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+from datetime import datetime, timedelta
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    deadline = context.current_utc_datetime + timedelta(seconds=30)
+    activity_task = context.call_activity("GetQuote")
+    timeout_task = context.create_timer(deadline)
+
+    winner = yield context.task_any([activity_task, timeout_task])
+    if winner == activity_task:
+        timeout_task.cancel()
+        return True
+    elif winner == timeout_task:
+        return False
+
+main = df.Orchestrator.create(orchestrator_function)
 ```
 
 ---

@@ -3,8 +3,8 @@ title: Azure Linux VM での Oracle Golden Gate の実装 | Microsoft Docs
 description: Oracle Golden Gate をすばやく起動し、Azure 環境で実行します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: BorisB2015
-manager: gwallace
+author: rgardler
+manager: ''
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: borisb
-ms.openlocfilehash: ae6bfb0ab0208d0f778476c9f0959b0c0f1d6471
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.author: rogardle
+ms.openlocfilehash: 5ed99fd6a16743846033313fcf13702f69f3e728
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81683730"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088361"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Azure Linux VM での Oracle Golden Gate の実装 
 
@@ -27,7 +27,7 @@ Azure CLI は、コマンドラインやスクリプトで Azure リソースを
 
 このドキュメントでは、Azure VM で Oracle Golden Gate を作成、インストール、および構成する方法を、順を追って説明します。 このチュートリアルでは、1 つのリージョンの可用性セットに 2 つの仮想マシンを設定します。 同じチュートリアルを使用して、1 つの Azure リージョン内の異なる複数の Availability Zones の VM、または 2 つの異なるリージョン内の VM セットアップに、OracleGolden Gate をセットアップすることもできます。
 
-開始する前に、Azure CLI がインストールされていることを確認してください。 詳細については、[Azure CLI インストール ガイド](https://docs.microsoft.com/cli/azure/install-azure-cli)を参照してください。
+開始する前に、Azure CLI がインストールされていることを確認してください。 詳細については、[Azure CLI インストール ガイド](/cli/azure/install-azure-cli)を参照してください。
 
 ## <a name="prepare-the-environment"></a>環境の準備
 
@@ -68,7 +68,7 @@ az group create --name myResourceGroup --location westus
 
 ### <a name="create-an-availability-set"></a>可用性セットの作成
 
-次の手順は省略可能ですが、実施することをお勧めします。 詳細については、[Azure 可用性セットのガイド](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)に関する記事をご覧ください。
+次の手順は省略可能ですが、実施することをお勧めします。 詳細については、[Azure 可用性セットのガイド](../../windows/infrastructure-example.md)に関する記事をご覧ください。
 
 ```azurecli
 az vm availability-set create \

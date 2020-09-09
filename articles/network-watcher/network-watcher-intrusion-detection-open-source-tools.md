@@ -8,17 +8,17 @@ author: damendo
 ms.assetid: 0f043f08-19e1-4125-98b0-3e335ba69681
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 1bd823d94552d1e920b367b6576b0e3bb74aefb2
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 6a7b4d8c3d2e2b33d8e2a9936670992b1c922b6a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474915"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737361"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Network Watcher とオープン ソース ツールを使用したネットワーク不正侵入検出の実行
 

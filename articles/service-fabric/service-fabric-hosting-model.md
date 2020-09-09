@@ -5,12 +5,13 @@ author: harahma
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: harahma
-ms.openlocfilehash: 82bc5068be651b05eb24efa3b05e46c1e7c1e24d
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2e14995b92e99e1a9695f81fb71bcab6dd62303a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115033"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011669"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Azure Service Fabric ホスティング モデル
 この記事では、Azure Service Fabric によって提供されるアプリケーション ホスティング モデルの概要、および**共有プロセス** モデルと**排他的プロセス** モデルとの相違点について説明します。 デプロイされたアプリケーションが Service Fabric ノード上でどのように表示されるかについて、またこのサービスのレプリカ (またはインスタンス) とサービス ホスト プロセスとの間の関係について説明します。
@@ -171,7 +172,7 @@ Service Fabric は、[ゲスト実行可能ファイル][a2]と[コンテナー]
 
 ### <a name="reliable-services-and-actor-forking-subprocesses"></a>Reliable Services および Reliable Actor によるサブプロセスのフォーク
 
-Service Fabric では、Reliable Services とそれに続く Reliable Actor によるサブプロセスのフォークはサポートされていません。 これがサポートされない理由は、サブプロセスを登録するために [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) を使用することができないこと、およびキャンセル トークンが登録済みのプロセスにのみ送信されることにあります。その結果、親プロセスがキャンセル トークンを受け取った後にサブプロセスが終了しない場合、アップグレードの失敗など、あらゆる種類の問題が発生します。
+Service Fabric では、Reliable Services とそれに続く Reliable Actor によるサブプロセスのフォークはサポートされていません。 これがサポートされない理由は、サブプロセスを登録するために [CodePackageActivationContext](/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) を使用することができないこと、およびキャンセル トークンが登録済みのプロセスにのみ送信されることにあります。その結果、親プロセスがキャンセル トークンを受け取った後にサブプロセスが終了しない場合、アップグレードの失敗など、あらゆる種類の問題が発生します。
 
 ## <a name="next-steps"></a>次のステップ
 [アプリケーションをパッケージ化][a4]して展開できるようにします。
@@ -193,16 +194,16 @@ Service Fabric では、Reliable Services とそれに続く Reliable Actor に�
 [a4]: service-fabric-package-apps.md
 [a5]: service-fabric-deploy-remove-applications.md
 
-[r1]: https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-createservice
+[r1]: /rest/api/servicefabric/sfclient-api-createservice
 
-[c1]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync
-[c2]: https://docs.microsoft.com/dotnet/api/system.fabric.description.statelessservicedescription.instancecount
+[c1]: /dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync
+[c2]: /dotnet/api/system.fabric.description.statelessservicedescription.instancecount
 
-[p1]: https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice
-[p2]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricservicedescription
-[p3]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedservicePackage
-[p4]: https://docs.microsoft.com/powershell/module/servicefabric/send-servicefabricdeployedservicepackagehealthreport
-[p5]: https://docs.microsoft.com/powershell/module/servicefabric/restart-servicefabricdeployedcodepackage
-[p6]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedservicetype
-[p7]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedreplica
-[p8]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedcodepackage
+[p1]: /powershell/module/servicefabric/new-servicefabricservice
+[p2]: /powershell/module/servicefabric/get-servicefabricservicedescription
+[p3]: /powershell/module/servicefabric/get-servicefabricdeployedservicepackage
+[p4]: /powershell/module/servicefabric/send-servicefabricdeployedservicepackagehealthreport
+[p5]: /powershell/module/servicefabric/restart-servicefabricdeployedcodepackage
+[p6]: /powershell/module/servicefabric/get-servicefabricdeployedservicetype
+[p7]: /powershell/module/servicefabric/get-servicefabricdeployedreplica
+[p8]: /powershell/module/servicefabric/get-servicefabricdeployedcodepackage

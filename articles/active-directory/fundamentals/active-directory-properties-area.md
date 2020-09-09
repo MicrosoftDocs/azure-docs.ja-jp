@@ -2,23 +2,23 @@
 title: 組織のプライバシー情報の追加 - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory Properties エリアに組織のプライバシー情報を追加する方法について説明します。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/17/2018
 ms.author: ajburnle
 ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 343671c1d9ee82950a9822648f9831588da7e9f8
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: f47ae9b087615a77f6bd4d3f14f1b0052037cba6
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80876186"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321975"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Azure Active Directory を使用して組織のプライバシー情報を追加する
 この記事では、テナント管理者が Azure portal を使用して、組織の Azure Active Directory (Azure AD) テナントにプライバシー関連の情報を追加する方法について説明します。
@@ -32,15 +32,15 @@ ms.locfileid: "80876186"
 
 ### <a name="to-access-the-properties-area-and-add-your-privacy-information"></a>[Properties] エリアにアクセスしてプライバシー情報を追加するには
 
-1.    グローバル管理者として Azure Portal に サインインします。
+1. グローバル管理者として Azure Portal に サインインします。
 
-2.    左側のナビゲーション バーで **Azure Active Directory** を選択して､**Properties** を選択します｡
+2. 左側のナビゲーション バーで **Azure Active Directory** を選択して､**Properties** を選択します｡
 
     **Properties** エリアが表示されます｡
 
     ![Azure AD Properties エリア - プライバシー情報を強調表示した状態](media/active-directory-properties-area/properties-area.png)
 
-3.    従業員のプライバシー情報を追加します｡
+3. 従業員のプライバシー情報を追加します｡
 
     - **技術部連絡先｡** 社内の技術的なサポートを受けるさいの連絡先の電子メール アドレスを入力します｡
     
@@ -53,8 +53,8 @@ ms.locfileid: "80876186"
 
         ![B2B Collaboration Review Permissions ボックスとメッセージ](media/active-directory-properties-area/active-directory-no-privacy-statement-or-contact.png)
 
-4.    **[保存]** を選択します。
+4. **[保存]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
-- [Azure Active Directory B2B コラボレーションの招待の利用](../b2b/redemption-experience.md)
+- [Azure Active Directory B2B コラボレーションの招待の利用](../external-identities/redemption-experience.md)
 - [Azure Active Directory でユーザーのプロファイル情報を追加または変更する](active-directory-users-profile-azure-portal.md)

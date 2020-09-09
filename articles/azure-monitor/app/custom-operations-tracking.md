@@ -2,14 +2,15 @@
 title: Azure Application Insights .NET SDK でカスタム操作を追跡する
 description: Azure Application Insights .NET SDK でカスタム操作を追跡する
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 316c1b7ea32f661b009bfee7a89cb7e5ed082f3b
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 42a5318325f9961483465357403089755feb130d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690859"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933309"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Application Insights .NET SDK でカスタム操作を追跡する
 
@@ -206,7 +207,7 @@ public async Task Process(BrokeredMessage message)
 [Azure Storage キュー](../../storage/queues/storage-dotnet-how-to-use-queues.md)の操作を追跡し、プロデューサー、コンシューマー、Azure Storage 間でテレメトリを相互に関連付ける例を次に示します。 
 
 Storage キューには HTTP API があります。 キューに対するすべての呼び出しは、Application Insights の HTTP 要求の依存関係コレクターによって追跡されます。
-ASP.NET および ASP.NET Core アプリケーションでは既定で構成されます。他の種類のアプリケーションでの構成については、[コンソール アプリケーションに関するドキュメント](../../azure-monitor/app/console.md)を参照してください。
+ASP.NET および ASP.NET Core アプリケーションでは既定で構成されます。他の種類のアプリケーションでの構成については、[コンソール アプリケーションに関するドキュメント](./console.md)を参照してください。
 
 Application Insights の操作 ID を Storage の要求 ID に関連付けることもできます。 Storage の要求クライアントとサーバーの要求 ID の設定および取得方法については、「[Azure Storage の監視、診断、およびトラブルシューティング](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#end-to-end-tracing)」を参照してください。
 
@@ -346,7 +347,7 @@ public async Task Process(MessagePayload message)
 
 ### <a name="dependency-types"></a>依存関係の種類
 
-Application Insights では、依存関係の種類を使用して UI エクスペリエンスがカスタマイズされます。 キューの場合、[トランザクションの診断エクスペリエンス](/azure/azure-monitor/app/transaction-diagnostics)を向上させる次の種類の `DependencyTelemetry` が認識されます。
+Application Insights では、依存関係の種類を使用して UI エクスペリエンスがカスタマイズされます。 キューの場合、[トランザクションの診断エクスペリエンス](./transaction-diagnostics.md)を向上させる次の種類の `DependencyTelemetry` が認識されます。
 - Azure Storage キューの `Azure queue`
 - Azure Event Hubs の`Azure Event Hubs`
 - Azure Service Bus の `Azure Service Bus`
@@ -425,7 +426,7 @@ public async Task RunMyTaskAsync()
 
 操作を破棄すると操作が停止されるため、`StopOperation` を呼び出す代わりに実行することもできます。
 
-*警告*: 場合によっては、未処理の例外で `finally` が[呼び出されなくなる](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally)ことがあるため、操作が追跡されない可能性があります。
+*警告*: 場合によっては、未処理の例外で `finally` が[呼び出されなくなる](/dotnet/csharp/language-reference/keywords/try-finally)ことがあるため、操作が追跡されない可能性があります。
 
 ### <a name="parallel-operations-processing-and-tracking"></a>並列操作の処理と追跡
 
@@ -478,8 +479,9 @@ public async Task RunAllTasks()
 ## <a name="next-steps"></a>次のステップ
 
 - Application Insights における[テレメトリの相関付け](correlation.md)について基本的な知識を身に付けます。
-- 相関データで[トランザクションの診断エクスペリエンス](../../azure-monitor/app/transaction-diagnostics.md)と[アプリケーション マップ](../../azure-monitor/app/app-map.md)がどのように機能するかを確認します。
-- Application Insights の型とデータ モデルについては、[データ モデル](../../azure-monitor/app/data-model.md)に関するページを参照してください。
-- カスタムの[イベントとメトリック](../../azure-monitor/app/api-custom-events-metrics.md)を Application Insights にレポートします。
+- 相関データで[トランザクションの診断エクスペリエンス](./transaction-diagnostics.md)と[アプリケーション マップ](./app-map.md)がどのように機能するかを確認します。
+- Application Insights の型とデータ モデルについては、[データ モデル](./data-model.md)に関するページを参照してください。
+- カスタムの[イベントとメトリック](./api-custom-events-metrics.md)を Application Insights にレポートします。
 - コンテキスト プロパティ コレクションの標準的な[構成](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet)を確認します。
 - テレメトリを相互に関連付ける方法を [System.Diagnostics.Activity ユーザー ガイド](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)で確認します。
+

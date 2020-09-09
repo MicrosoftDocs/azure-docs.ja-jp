@@ -11,18 +11,18 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.custom: has-adal-ref
-ms.openlocfilehash: e03616bf0d02f7ce063c027912cba4ab4e8f8d3f
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.custom: has-adal-ref, devx-track-csharp
+ms.openlocfilehash: a812704c42a4da5ddf89fe6c5ba0c9a684047f75
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611468"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919490"
 ---
-# <a name="get-started-with-azure-cdn-development"></a>Azure CDN 開発の概要
+# <a name="get-started-with-the-azure-cdn-library-for-net"></a>.NET 向け Azure CDN ライブラリの概要
 > [!div class="op_single_selector"]
 > * [Node.js](cdn-app-dev-node.md)
 > * [.NET](cdn-app-dev-net.md)
@@ -271,7 +271,7 @@ private static void CreateCdnEndpoint(CdnManagementClient cdn)
 ```
 
 > [!NOTE]
-> 上の例では、ホスト名 *を持つ*Contoso`www.contoso.com` という名前のオリジンをエンドポイントに割り当てています。  オリジンのホスト名を指すようにこれを変更する必要があります。
+> 上の例では、ホスト名 `www.contoso.com` を持つ *Contoso* という名前のオリジンをエンドポイントに割り当てています。  オリジンのホスト名を指すようにこれを変更する必要があります。
 >
 >
 
@@ -292,7 +292,7 @@ private static void PromptPurgeCdnEndpoint(CdnManagementClient cdn)
 ```
 
 > [!NOTE]
-> 上記の例の文字列 `/*` は、エンドポイント パスのルートにあるものをすべて消去することを示します。  これは、Azure Portal の "消去" ダイアログで **[すべて消去]** を選択するのと同じです。 `CreateCdnProfile` メソッドでは、**というコードを使用して**Azure CDN from Verizon`Sku = new Sku(SkuName.StandardVerizon)` としてプロファイルを作成しているため、このコードは動作します。  ただし、**Azure CDN from Akamai** プロファイルでは **[すべて消去]** がサポートされません。このチュートリアルで使用するプロファイルが Akamai プロファイルであった場合は、消去する特定のパスを含める必要があります。
+> 上記の例の文字列 `/*` は、エンドポイント パスのルートにあるものをすべて消去することを示します。  これは、Azure Portal の "消去" ダイアログで **[すべて消去]** を選択するのと同じです。 `CreateCdnProfile` メソッドでは、`Sku = new Sku(SkuName.StandardVerizon)` というコードを使用して **Azure CDN from Verizon** としてプロファイルを作成しているため、このコードは動作します。  ただし、**Azure CDN from Akamai** プロファイルでは **[すべて消去]** がサポートされません。このチュートリアルで使用するプロファイルが Akamai プロファイルであった場合は、消去する特定のパスを含める必要があります。
 >
 >
 

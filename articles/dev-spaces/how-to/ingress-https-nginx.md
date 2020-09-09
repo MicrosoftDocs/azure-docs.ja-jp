@@ -5,12 +5,13 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Azure Dev Spaces をカスタム NGINX イングレス コントローラーを使用するように構成し、そのイングレス コントローラーを使用して HTTPS を構成する方法を説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: 0fe9fec263b72ac06839b58fdc5b0142a724718c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 199b077f20f396919d26b69d3fea422a8d9b4358
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80155449"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212487"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>カスタム NGINX イングレス コントローラーの使用と HTTPS の構成
 
@@ -20,7 +21,7 @@ ms.locfileid: "80155449"
 
 * Azure サブスクリプション。 アカウントがない場合は、[無料アカウントを作成する][azure-account-create]ことができます。
 * [Azure CLI がインストールされていること][az-cli]。
-* [Azure Dev Spaces が有効になっている Azure Kubernetes Service (AKS) クラスター][qs-cli]。
+* Azure Dev Spaces が有効になっている Azure Kubernetes Service (AKS) クラスター。
 * [kubectl][kubectl] がインストールされていること。
 * [Helm 3 がインストールされていること][helm-installed]。
 * [DNS ゾーン][dns-zone]を持つ[カスタム ドメイン][custom-domain]。  この記事では、カスタム ドメインと DNS ゾーンが AKS クラスターと同じリソース グループに含まれていることを前提としていますが、別のリソース グループにあるカスタム ドメインと DNS ゾーンを使用することもできます。
@@ -316,10 +317,10 @@ azds up
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Dev Spaces を使用して複数のコンテナーにまたがるより複雑なアプリケーションを開発する方法と、別の空間で別のバージョンまたは分岐を使用して作業することによって共同開発を簡略化する方法について学習します。
+Azure Dev Spaces のしくみの詳細について確認します。
 
 > [!div class="nextstepaction"]
-> [Azure Dev Spaces でのチーム開発][team-development-qs]
+> [Azure Dev Spaces のしくみ](../how-dev-spaces-works.md)
 
 
 [az-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
@@ -327,9 +328,6 @@ Azure Dev Spaces を使用して複数のコンテナーにまたがるより複
 [az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/a?view=azure-cli-latest#az-network-dns-record-set-a-add-record
 [custom-domain]: ../../app-service/manage-custom-dns-buy-domain.md#buy-the-domain
 [dns-zone]: ../../dns/dns-getstarted-cli.md
-[qs-cli]: ../quickstart-cli.md
-[team-development-qs]: ../quickstart-team-development.md
-
 [azds-yaml]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/azds.yaml
 [azure-account-create]: https://azure.microsoft.com/free
 [cert-manager]: https://cert-manager.io/

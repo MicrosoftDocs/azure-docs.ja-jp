@@ -12,12 +12,12 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 3b529c8112683281148751091ee93dd12ae73b4a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: dbe05f264b0fca6c1a5e8e7d944d94a6bed55392
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741937"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798025"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>My Apps ポータルからアクセス レビューを実行する
 
@@ -28,7 +28,7 @@ ms.locfileid: "83741937"
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->このコンテンツは、**マイ アプリ**のユーザーを対象としています。 管理者の方は、「[アプリケーション管理のドキュメント](https://docs.microsoft.com/azure/active-directory/manage-apps)」で、クラウドベースのアプリの設定と管理の方法を詳しくご覧いただけます。
+>このコンテンツは、**マイ アプリ**のユーザーを対象としています。 管理者の方は、「[アプリケーション管理のドキュメント](../manage-apps/index.yml)」で、クラウドベースのアプリの設定と管理の方法を詳しくご覧いただけます。
 
 ## <a name="manage-access-reviews"></a>アクセス レビューを管理する
 
@@ -58,7 +58,7 @@ ms.locfileid: "83741937"
     ![[レビューの開始] ページ、レビューの詳細を表示](media/my-apps-portal/my-apps-portal-perform-access-reviews-page.png)
 
     >[!Note]
-    >管理者であり、グループまたはアプリへの組織のアクセスをレビューできる場合は、別のページが表示されます。 組織のグループまたはアプリのレビューの詳細については、[Azure AD アクセス レビューでのグループまたはアプリケーションへのアクセスのレビュー](https://docs.microsoft.com/azure/active-directory/governance/perform-access-review)に関するページを参照してください。
+    >管理者であり、グループまたはアプリへの組織のアクセスをレビューできる場合は、別のページが表示されます。 組織のグループまたはアプリのレビューの詳細については、[Azure AD アクセス レビューでのグループまたはアプリケーションへのアクセスのレビュー](../governance/perform-access-review.md)に関するページを参照してください。
 
 6. **[はい]** を選択してアクセスを維持するか、 **[いいえ]** を選択してアクセスを削除します。
 

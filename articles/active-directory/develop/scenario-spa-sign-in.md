@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 7e809def048c95b6688a13ac99783615eb045d11
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 53a84bd970d564411ec9a56b54159e5a96717a6e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80885191"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84558759"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>シングルページ アプリケーション：サインインとサインアウト
 
@@ -45,17 +45,29 @@ ms.locfileid: "80885191"
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
-const loginRequest = {
-    scopes: ["https://graph.microsoft.com/User.ReadWrite"]
+
+const config = {
+    auth: {
+        clientId: 'your_app_id',
+        redirectUri: "your_app_redirect_uri", //defaults to application start page
+        postLogoutRedirectUri: "your_app_logout_redirect_uri"
+    }
 }
 
-userAgentApplication.loginPopup(loginRequest).then(function (loginResponse) {
-    //login success
-    let idToken = loginResponse.idToken;
-}).catch(function (error) {
-    //login failure
-    console.log(error);
-});
+const loginRequest = {
+    scopes: ["User.ReadWrite"]
+}
+
+const myMsal = new userAgentApplication(config);
+
+myMsal.loginPopup(loginRequest)
+    .then(function (loginResponse) {
+        //login success
+        let idToken = loginResponse.idToken;
+    }).catch(function (error) {
+        //login failure
+        console.log(error);
+    });
 ```
 
 # <a name="angular"></a>[Angular](#tab/angular)
@@ -103,7 +115,7 @@ export class AppRoutingModule { }
             }
         }, {
             popUp: true,
-            consentScopes: ["https://graph.microsoft.com/User.ReadWrite"]
+            consentScopes: ["User.ReadWrite"]
         })
     ]
 })
@@ -117,17 +129,28 @@ export class AppRoutingModule { }
 リダイレクトメソッドは、メインアプリから離れるため、Promise　を返しません。 返されたトークンを処理し、これにアクセスするには、リダイレクト メソッドを呼び出す前に成功とエラーのコールバックを登録する必要があります。
 
 ```javascript
+
+const config = {
+    auth: {
+        clientId: 'your_app_id',
+        redirectUri: "your_app_redirect_uri", //defaults to application start page
+        postLogoutRedirectUri: "your_app_logout_redirect_uri"
+    }
+}
+
+const loginRequest = {
+    scopes: ["User.ReadWrite"]
+}
+
+const myMsal = new userAgentApplication(config);
+
 function authCallback(error, response) {
     //handle redirect response
 }
 
-userAgentApplication.handleRedirectCallback(authCallback);
+myMsal.handleRedirectCallback(authCallback);
 
-const loginRequest = {
-    scopes: ["https://graph.microsoft.com/User.ReadWrite"]
-}
-
-userAgentApplication.loginRedirect(loginRequest);
+myMsal.loginRedirect(loginRequest);
 ```
 
 # <a name="angular"></a>[Angular](#tab/angular)
@@ -156,9 +179,9 @@ const config = {
     }
 }
 
-const userAgentApplication = new UserAgentApplication(config);
-userAgentApplication.logout();
+const myMsal = new UserAgentApplication(config);
 
+myMsal.logout();
 ```
 
 # <a name="angular"></a>[Angular](#tab/angular)

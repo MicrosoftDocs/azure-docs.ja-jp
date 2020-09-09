@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: reference
-ms.openlocfilehash: 9bb8818d2bb91c14eafc272774e0b633c51e58e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe684d15e2ce9b8d302db4eb6bd31dd1416abf21
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617890"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196539"
 ---
 # <a name="network-requirements"></a>ネットワークの要件
 
@@ -20,7 +20,7 @@ Azure Remote Rendering での優れたユーザー エクスペリエンスを�
 
 正確なネットワーク要件は、リモート シーン グラフに対する変更の数と頻度およびレンダリングされるビューの複雑さなど、特定のユース ケースによって異なりますが、可能な限り優れたエクスペリエンスを確保するためのガイドラインがいくつかあります。
 
-* インターネット接続では、Azure Remote Rendering のシングル ユーザーセッションで一貫して少なくとも **50 Mbps のダウンストリーム**および **10 Mbps のアップストリーム**をサポートする必要があります。これは、ネットワーク上のトラフィックが競合していないことを想定した場合です。 エクスペリエンスを向上させるには、より高いレートをお勧めします。 同じネットワーク上のユーザーの増加に応じて、これらの要件はスケールアップします。
+* インターネット接続では、Azure Remote Rendering のシングル ユーザー セッションで一貫して少なくとも **40 Mbps のダウンストリーム**および **5 Mbps のアップストリーム**をサポートする必要があります。これは、ネットワーク上に競合するトラフィックが存在しないことを想定した場合です。 エクスペリエンスを向上させるには、より高いレートをお勧めします。 同じネットワーク上のユーザーの増加に応じて、これらの要件はスケールアップします。
 * **5 GHz の Wi-Fi 帯域**を使用すると、通常は 2.4 GHz の Wi-Fi 帯域よりも優れた結果が得られますが、両方とも機能するはずです。
 * 近くに他の Wi-Fi ネットワークがある場合は、これらの他のネットワークで使われている Wi-Fi チャネルは使用しないようにしてください。 [WifiInfoView](https://www.nirsoft.net/utils/wifi_information_view.html) などのネットワーク スキャン ツールを使用することで、Wi-Fi ネットワークで使用されるチャネルでトラフィックが競合していないかどうかを確認できます。
 * 厳密に、電力線 LAN 転送や **Wi-Fi リピーターの使用は避けてください**。

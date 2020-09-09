@@ -6,16 +6,16 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,seodec18
-ms.date: 12/09/2019
-ms.openlocfilehash: 9ef54707f7fac3dd1328e29f6d05f62c1dee2561
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive,seodec18,seoapr2020
+ms.date: 05/14/2020
+ms.openlocfilehash: 36c04480c46cea904b072c659c5c2642a28e1f27
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78194905"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647577"
 ---
-# <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用する HDInsight Hadoop クラスターで Apache Oozie を実行する
+# <a name="run-apache-oozie-in-azure-hdinsight-clusters-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用する Azure HDInsight クラスターで Apache Oozie を実行する
 
 Apache Oozie は Apache Hadoop ジョブを管理するワークフローおよび調整システムです。 Oozie は Hadoop スタックと統合されており、次のジョブをサポートしています。
 
@@ -230,7 +230,7 @@ Oozie ワークフローの定義は、Apache Hadoop プロセス定義言語 (h
    hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
    ```
 
-   - プライマリ クラスター記憶域として Azure Data Lake Storage Gen1 がある場合は、`nameNode` プロパティに `adl://home` URI を使用します。 Azure Blob Storage を使用している場合は、これを `wasb://home` に変更します。 Azure Data Lake Storage Gen2 を使用している場合は、これを `abfs://home` に変更します。
+   - プライマリ クラスター記憶域として Azure Data Lake Storage Gen1 がある場合は、`nameNode` プロパティに `adl://home` URI を使用します。 Azure Blob Storage を使用している場合は、`wasb://home` に変更します。 Azure Data Lake Storage Gen2 を使用している場合は、`abfs://home` に変更します。
    - `domainuser` をドメインのユーザー名に置き換えます。  
    - `ClusterShortName` をクラスターの短い名前に置き換えます。 たとえば、クラスター名が https:// *[example link]* sechadoopcontoso.azurehdisnight.net である場合、`clustershortname` はクラスターの最初の 6 文字である **sechad** です。  
    - `jdbcurlvalue` を Hive 構成の JDBC URL に置き換えます。 たとえば、jdbc:hive2://headnodehost:10001/;transportMode=http とします。

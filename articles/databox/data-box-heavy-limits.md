@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 08/28/2019
 ms.author: alkohli
 ms.openlocfilehash: 76e543a5bec749db55eb77649d2f6e0526f2cb1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229815"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84705561"
 ---
 # <a name="azure-data-box-heavy-limits"></a>Azure Data Box Heavy の制限
 

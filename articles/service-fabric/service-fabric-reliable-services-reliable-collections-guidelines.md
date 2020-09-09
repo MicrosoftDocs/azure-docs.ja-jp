@@ -3,12 +3,12 @@ title: Reliable Collection のガイドライン
 description: Azure Service Fabric アプリケーションで Service Fabric Reliable Collection を使用するためのガイドラインと推奨事項。
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: db37067069b2a9eb08009eb6bb373f6fce1cafa9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 63e6de436bdaceed7f1d2a78e8385dd14bfc0ed6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81398538"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260925"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Azure Service Fabric の Reliable Collections のガイドラインと推奨事項
 このセクションでは、Reliable State Manager および Reliable Collection を使用するためのガイドラインを提供します。 目標は、ユーザーがよくある問題を回避できるようにすることです。
@@ -39,7 +39,8 @@ ms.locfileid: "81398538"
 * セカンダリの読み取り操作では、クォーラムのコミットをしていないバージョンを読み取ることがあります。
   つまり、1 つのセカンダリから読み取られるデータのバージョンが、誤って進められる可能性があります。
   プライマリからの読み取りは常に安定しており、誤って進められることはありません。
-* アプリケーションによってリライアブル コレクションに保持されるデータのセキュリティ/プライバシーは、ユーザーの判断事項であり、ストレージ管理によって提供される保護の対象となります。 つまり、オペレーティング システムのディスク暗号化を使用して、保存データを保護できます。  
+* アプリケーションによってリライアブル コレクションに保持されるデータのセキュリティ/プライバシーは、ユーザーの判断事項であり、ストレージ管理によって提供される保護の対象となります。 つまり、オペレーティング システムのディスク暗号化を使用して、保存データを保護できます。
+* `ReliableDictionary` 列挙型では、キー順に並べ替えられたデータ構造が使用されます。 列挙型を効率的なものにするために、コミットは一時ハッシュテーブルに追加された後、並べ替えられたメインのデータ構造のポスト チェックポイントに移動します。 キーの存在について検証チェックが行われる場合、追加/更新/削除には、O(1) の最良の場合のランタイム、および O (log n) の最悪の場合のランタイムがあります。 取得は、最新のコミットから読み取るか、古いコミットから読み取るかに応じて、O (1) または O (log n) のいずれかになります。
 
 ## <a name="volatile-reliable-collections"></a>揮発性の Reliable Collection
 揮発性の Reliable Collection を使用する場合は、次の点を考慮してください。
@@ -63,4 +64,4 @@ ms.locfileid: "81398538"
   * [Reliable State Manager の構成](service-fabric-reliable-services-configuration.md)
 * その他
   * [Reliable Services の概要](service-fabric-reliable-services-quick-start.md)
-  * [Reliable Collection の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  * [Reliable Collection の開発者向けリファレンス](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)

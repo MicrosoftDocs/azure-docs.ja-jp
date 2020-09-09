@@ -4,46 +4,43 @@ description: この R プログラミング チュートリアルは、R での 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 1dcda3efe3872100100d6e85b68a36359b7eab84
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: b4f3733806eb810cff7722e6432bb274b6d46a37
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209504"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854823"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>R での Azure Machine Learning Studio (classic) の使用を開始する
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+
 
 <!-- Stephen F Elston, Ph.D. -->
-このチュートリアルは、R プログラミング言語を使用した Azure Machine Learning Studio (クラシック) の拡張を開始するのに役立ちます。 この R プログラミング チュートリアルに従って作業することで、Studio (クラシック) 内で R コードを作成、テスト、実行することができます。 チュートリアルでは、Studio (クラシック) で R 言語を使用し、包括的な予測ソリューションを作成します。  
+このチュートリアルでは、ML Studio (classic) を使用して R コードを作成、テスト、実行する方法について説明します。 最終的には、予測ソリューションが完成します。  
 
-Azure Machine Learning Studio (クラシック) には、多くの強力なマシン ラーニング モジュールとデータ操作モジュールが含まれています。 強力な R 言語は、分析の共通言語という特徴があります。 幸いにも Studio (クラシック) の分析とデータ操作は、R を使用して拡張できます。この組み合わせにより、R の柔軟性と深い分析を活用して、Studio (クラシック) のデプロイのスケーラビリティを容易に高めることができます。
+> [!div class="checklist"]
+> * データのクリーニングと変換のためのコードを作成します。
+> * データセット内のいくつかの変数間の相関関係を分析します。
+> * 牛乳生産用の季節性時系列予測モデルを作成します。
 
-### <a name="forecasting-and-the-dataset"></a>予測とデータ セット
 
-予測は、広く採用されている非常に役に立つ分析方法です。 その用途は、一般的に季節商品の販売予測や最適な在庫レベルの決定から、マクロ経済変数の予測にまでわたります。 予測は通常、時系列モデルで行われます。
+Azure Machine Learning Studio (クラシック) には、多くの強力なマシン ラーニング モジュールとデータ操作モジュールが含まれています。 また、R プログラミング言語を組み合わせて使用することにより、R の柔軟性と深い分析を活用して、Studio (classic) のデプロイメントがスケーラブルかつ容易になります。
 
-時系列データの値には、時間インデックスがあります。 時間インデックスは、1 か月ごとや 1 分ごとなど規則的な場合と、不規則な場合があります。 時系列モデルは、時系列データに基づいています。 R プログラミング言語には、時系列データ向けの柔軟なフレームワークと広範な分析機能が備わっています。
+予測は、広く採用されている非常に役に立つ分析方法です。 その用途は、一般的に季節商品の販売予測や最適な在庫レベルの決定から、マクロ経済変数の予測にまでわたります。 予測は通常、時系列モデルで行われます。 時系列データの値には、時間インデックスがあります。 時間インデックスは、1 か月ごとや 1 分ごとなど規則的な場合と、不規則な場合があります。 時系列モデルは、時系列データに基づいています。 R プログラミング言語には、時系列データ向けの柔軟なフレームワークと広範な分析機能が備わっています。
 
-このガイドでは、カリフォルニアでの酪農生産と価格データを扱います。 このデータには、いくつかの酪農製品の生産、乳脂の価格、ベンチマーク商品に関する月単位の情報が含まれます。
+## <a name="get-the-data"></a>データを取得する
+
+このチュートリアルでは、カリフォルニアの酪農生産と価格のデータを使用します。これには、複数の乳製品の生産、乳脂肪の価格、ベンチマーク商品に関する月単位の情報が含まれます。
 
 この記事で使用するデータと R スクリプトは、[MachineLearningSamples-Notebooks/studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples) からダウンロードできます。 ファイル `cadairydata.csv` のデータは、ウィスコンシン大学 ([https://dairymarkets.com](https://dairymarkets.com)) から入手可能な情報から独自に合成されました。
 
-### <a name="organization"></a>Organization
 
-Azure Machine Learning Studio (クラシック) 環境で R コードを作成、テストし、分析とデータ操作を実行する方法を学習する際は、いくつかの手順に従って進行します。  
-
-* 最初に、Azure Machine Learning Studio (クラシック) 環境で R 言語を使用する基本を学習します。
-* 次に、Azure Machine Learning Studio (クラシック) 環境におけるデータ I/O、R コード、グラフィックスのさまざまな側面の検討に進みます。
-* その後、データ クリーニングと変換用のコードを作成し、予測ソリューションの最初の部分を構築します。
-* 用意されたデータを使用し、データセットのいくつかの変数間における相関関係を分析します。
-* 最終的に、牛乳生産の季節的な時系列予測モデルを作成します。
 
 ## <a name="interact-with-r-language-in-machine-learning-studio-classic"></a><a id="mlstudio"></a>Machine Learning Studio (クラシック) での R 言語の操作
 
@@ -89,7 +86,7 @@ R コード実行中に Machine Learning Studio (クラシック) でエラー�
 
 たとえば、未定義変数 y を持つ次の R コードを [R スクリプトの実行][execute-r-script]モジュールで実行した場合:
 
-```R
+```r
 x <- 1.0
 z <- x + y
 ```
@@ -102,13 +99,15 @@ z <- x + y
 
 この場合、output.log で R のエラー メッセージを見る必要がありそうです。 [[R スクリプトの実行]][execute-r-script] を選択して、右側の**プロパティ ウィンドウ**にある **[出力ログの表示]** 項目を選択します。 新しいブラウザー ウィンドウが開き、次のことがわかります。
 
-    [Critical]     Error: Error 0063: The following error occurred during evaluation of R script:
-    ---------- Start of error message from R ----------
-    object 'y' not found
+```output
+[Critical]     Error: Error 0063: The following error occurred during evaluation of R script:
+---------- Start of error message from R ----------
+object 'y' not found
 
 
-    object 'y' not found
-    ----------- End of error message from R -----------
+object 'y' not found
+----------- End of error message from R -----------
+```
 
 このエラー メッセージに意外性はなく、明確に問題を特定しています。
 
@@ -118,7 +117,7 @@ R のオブジェクトの値を調べるために、これらの値を output.l
 
 Studio には、350 を超える R 言語パッケージがプレインストールされています。 [R スクリプトの実行][execute-r-script]モジュールで次のコードを使用し、プレインストールされているパッケージの一覧を取得できます。
 
-```R
+```r
 data.set <- data.frame(installed.packages())
 maml.mapOutputPort("data.set")
 ```
@@ -143,7 +142,7 @@ RStudio の使用に関する追加情報が、以下の「[RStudio ドキュメ
 
 このセクションの完全なコードは、[MachineLearningSamples-Notebooks/studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples) にあります。
 
-### <a name="load-and-check-data-in-machine-learning-studio-classic"></a>Machine Learning Studio (クラシック) でのデータの読み込みとチェック
+### <a name="load-and-check-data"></a>データの読み込みとチェック 
 
 #### <a name="load-the-dataset"></a><a id="loading"></a>データセットの読み込み
 
@@ -189,7 +188,7 @@ RStudio の使用に関する追加情報が、以下の「[RStudio ドキュメ
 
 単純な最初の R スクリプトを作成し、Azure Machine Learning Studio (クラシック) で実験を行いましょう。 次のスクリプトを、RStudio で作成し、テストしました。  
 
-```R
+```r
 ## Only one of the following two lines should be used
 ## If running in Machine Learning Studio (classic), use the first line with maml.mapInputPort()
 ## If in RStudio, use the second line with read.csv()
@@ -216,7 +215,7 @@ maml.mapOutputPort('cadairydata')
 
 スクリプト バンドル入力により、zip ファイルの内容を [R スクリプトの実行][execute-r-script]モジュールに渡すことができます。 次のコマンドのいずれかを使用すると、zip ファイルの内容を R コードに読み込むことができます。
 
-```R
+```r
 source("src/yourfile.R") # Reads a zipped R script
 load("src/yourData.rdata") # Reads a zipped R data file
 ```
@@ -226,9 +225,9 @@ load("src/yourData.rdata") # Reads a zipped R data file
 
 データセットの読み込みについては、既に「[データセットの読み込み](#loading)」で説明しました。 前のセクションで示した R スクリプトを作成してテストした後は、次の作業を行います。
 
-1. R スクリプトを .R ファイルに保存します。 このスクリプト ファイルの名前を "simpleplot.R" にします。 内容は次のとおりです。
+1. R スクリプトを .R ファイルに保存します。 このスクリプト ファイルの名前を "simpleplot.R" にします。 ファイルの内容は次のとおりです。
 
-   ```R
+   ```r
    ## Only one of the following two lines should be used
    ## If running in Machine Learning Studio (classic), use the first line with maml.mapInputPort()
    ## If in RStudio, use the second line with read.csv()
@@ -263,44 +262,48 @@ load("src/yourData.rdata") # Reads a zipped R data file
 
 データセット 1 入力を使用して、データの方形テーブルを R コードに渡すことができます。 このシンプルなスクリプトでは、 `maml.mapInputPort(1)` 関数がデータをポート 1 から読み込みます。 これらのデータは、コード内のデータ フレーム変数名に割り当てられます。 このシンプルなスクリプトでは、最初のコード行が割り当てを実行します。
 
-```R
+```r
 cadairydata <- maml.mapInputPort(1)
 ```
 
 **[実行]** ボタンを選択して、実験を実行します。 実行が完了したら、[[R スクリプトの実行]][execute-r-script] モジュールを選択し、プロパティ ウィンドウの **[出力ログの表示]** を選択します。 ブラウザーで新しいページが開き、output.log ファイルの内容が表示されます。 下へスクロールすると、次のことがわかります。
 
-    [ModuleOutput] InputDataStructure
-    [ModuleOutput]
-    [ModuleOutput] {
-    [ModuleOutput]  "InputName":Dataset1
-    [ModuleOutput]  "Rows":228
-    [ModuleOutput]  "Cols":9
-    [ModuleOutput]  "ColumnTypes":System.Int32,3,System.Double,5,System.String,1
-    [ModuleOutput] }
+```output
+[ModuleOutput] InputDataStructure
+[ModuleOutput]
+[ModuleOutput] {
+[ModuleOutput]  "InputName":Dataset1
+[ModuleOutput]  "Rows":228
+[ModuleOutput]  "Cols":9
+[ModuleOutput]  "ColumnTypes":System.Int32,3,System.Double,5,System.String,1
+[ModuleOutput] }
+```
 
 さらに下にスクロールすると、次のように列に関する詳細情報が表示されます。
 
-    [ModuleOutput] [1] "Loading variable port1..."
-    [ModuleOutput]
-    [ModuleOutput] 'data.frame':    228 obs. of  9 variables:
-    [ModuleOutput]
-    [ModuleOutput]  $ Column 0         : int  1 2 3 4 5 6 7 8 9 10 ...
-    [ModuleOutput]
-    [ModuleOutput]  $ Year.Month       : num  1995 1995 1995 1995 1995 ...
-    [ModuleOutput]
-    [ModuleOutput]  $ Month.Number     : int  1 2 3 4 5 6 7 8 9 10 ...
-    [ModuleOutput]
-    [ModuleOutput]  $ Year             : int  1995 1995 1995 1995 1995 1995 1995 1995 1995 1995 ...
-    [ModuleOutput]
-    [ModuleOutput]  $ Month            : chr  "Jan" "Feb" "Mar" "Apr" ...
-    [ModuleOutput]
-    [ModuleOutput]  $ Cotagecheese.Prod: num  4.37 3.69 4.54 4.28 4.47 ...
-    [ModuleOutput]
-    [ModuleOutput]  $ Icecream.Prod    : num  51.6 56.1 68.5 65.7 73.7 ...
-    [ModuleOutput]
-    [ModuleOutput]  $ Milk.Prod        : num  2.11 1.93 2.16 2.13 2.23 ...
-    [ModuleOutput]
-    [ModuleOutput]  $ N.CA.Fat.Price   : num  0.98 0.892 0.892 0.897 0.897 ...
+```output
+[ModuleOutput] [1] "Loading variable port1..."
+[ModuleOutput]
+[ModuleOutput] 'data.frame':    228 obs. of  9 variables:
+[ModuleOutput]
+[ModuleOutput]  $ Column 0         : int  1 2 3 4 5 6 7 8 9 10 ...
+[ModuleOutput]
+[ModuleOutput]  $ Year.Month       : num  1995 1995 1995 1995 1995 ...
+[ModuleOutput]
+[ModuleOutput]  $ Month.Number     : int  1 2 3 4 5 6 7 8 9 10 ...
+[ModuleOutput]
+[ModuleOutput]  $ Year             : int  1995 1995 1995 1995 1995 1995 1995 1995 1995 1995 ...
+[ModuleOutput]
+[ModuleOutput]  $ Month            : chr  "Jan" "Feb" "Mar" "Apr" ...
+[ModuleOutput]
+[ModuleOutput]  $ Cotagecheese.Prod: num  4.37 3.69 4.54 4.28 4.47 ...
+[ModuleOutput]
+[ModuleOutput]  $ Icecream.Prod    : num  51.6 56.1 68.5 65.7 73.7 ...
+[ModuleOutput]
+[ModuleOutput]  $ Milk.Prod        : num  2.11 1.93 2.16 2.13 2.23 ...
+[ModuleOutput]
+[ModuleOutput]  $ N.CA.Fat.Price   : num  0.98 0.892 0.892 0.897 0.897 ...
+```
 
 これらの結果はほとんど予想どおりであり、228 個の記録と 9 個の列が含まれています。 列の名前、R データの型、各列のサンプルが表示されています。
 
@@ -317,7 +320,7 @@ cadairydata <- maml.mapInputPort(1)
 
 `maml.mapOutputPort()` 関数を使用し、結果データセット 1 ポートを通じて、R データフレームの内容を方形テーブルとして出力できます。 このシンプルな R スクリプトでは、この処理は次の行で実行されます。
 
-```
+```r
 maml.mapOutputPort('cadairydata')
 ```
 
@@ -374,7 +377,7 @@ R は動的に型を変更できる言語なので、必要に応じてデータ
 
 散布図マトリックスを作成した行を削除し、"Month" 列を因子に変換する行を追加しました。 この実験では、R コードを切り取り、[R スクリプトの実行][execute-r-script]モジュールのコード ウィンドウに貼り付けます。 また、zip ファイルを更新し、それを Azure Machine Learning Studio (クラシック) にアップロードすることもできますが、いくつかの手順が必要になります。  
 
-```R
+```r
 ## Only one of the following two lines should be used
 ## If running in Machine Learning Studio (classic), use the first line with maml.mapInputPort()
 ## If in RStudio, use the second line with read.csv()
@@ -390,31 +393,33 @@ maml.mapOutputPort('cadairydata')
 
 このコードを実行して、R スクリプトの出力ログを確認してください。 ログの関連するデータを図 9 に示します。
 
-    [ModuleOutput] [1] "Loading variable port1..."
-    [ModuleOutput] 
-    [ModuleOutput] 'data.frame':    228 obs. of  9 variables:
-    [ModuleOutput] 
-    [ModuleOutput]  $ Column 0         : int  1 2 3 4 5 6 7 8 9 10 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Year.Month       : num  1995 1995 1995 1995 1995 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Month.Number     : int  1 2 3 4 5 6 7 8 9 10 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Year             : int  1995 1995 1995 1995 1995 1995 1995 1995 1995 1995 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Month            : Factor w/ 14 levels "Apr","April",..: 6 5 9 1 11 8 7 3 14 13 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Cotagecheese.Prod: num  4.37 3.69 4.54 4.28 4.47 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Icecream.Prod    : num  51.6 56.1 68.5 65.7 73.7 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Milk.Prod        : num  2.11 1.93 2.16 2.13 2.23 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ N.CA.Fat.Price   : num  0.98 0.892 0.892 0.897 0.897 ...
-    [ModuleOutput] 
-    [ModuleOutput] [1] "Saving variable  cadairydata  ..."
-    [ModuleOutput] 
-    [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
+```output
+[ModuleOutput] [1] "Loading variable port1..."
+[ModuleOutput] 
+[ModuleOutput] 'data.frame':    228 obs. of  9 variables:
+[ModuleOutput] 
+[ModuleOutput]  $ Column 0         : int  1 2 3 4 5 6 7 8 9 10 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Year.Month       : num  1995 1995 1995 1995 1995 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Month.Number     : int  1 2 3 4 5 6 7 8 9 10 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Year             : int  1995 1995 1995 1995 1995 1995 1995 1995 1995 1995 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Month            : Factor w/ 14 levels "Apr","April",..: 6 5 9 1 11 8 7 3 14 13 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Cotagecheese.Prod: num  4.37 3.69 4.54 4.28 4.47 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Icecream.Prod    : num  51.6 56.1 68.5 65.7 73.7 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Milk.Prod        : num  2.11 1.93 2.16 2.13 2.23 ...
+[ModuleOutput] 
+[ModuleOutput]  $ N.CA.Fat.Price   : num  0.98 0.892 0.892 0.897 0.897 ...
+[ModuleOutput] 
+[ModuleOutput] [1] "Saving variable  cadairydata  ..."
+[ModuleOutput] 
+[ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
+```
 
 *図 9: 因子変数を持つデータフレームのサマリー*
 
@@ -422,38 +427,40 @@ maml.mapOutputPort('cadairydata')
 
 問題は、"Month" 列が体系的にコード化されなかったことです。 月が "April" と呼ばれる場合もあれば、"Apr" と省略される場合もあります。この問題は、文字列を 3 文字にカットすることで解決できます。 コード行は、次のようになります。
 
-```R
+```r
 ## Ensure the coding is consistent and convert column to a factor
 cadairydata$Month <- as.factor(substr(cadairydata$Month, 1, 3))
 ```
 
 実験を再実行し、出力ログを確認します。 出力例を図 10 に示します。  
 
-    [ModuleOutput] [1] "Loading variable port1..."
-    [ModuleOutput] 
-    [ModuleOutput] 'data.frame':    228 obs. of  9 variables:
-    [ModuleOutput] 
-    [ModuleOutput]  $ Column 0         : int  1 2 3 4 5 6 7 8 9 10 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Year.Month       : num  1995 1995 1995 1995 1995 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Month.Number     : int  1 2 3 4 5 6 7 8 9 10 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Year             : int  1995 1995 1995 1995 1995 1995 1995 1995 1995 1995 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Month            : Factor w/ 12 levels "Apr","Aug","Dec",..: 5 4 8 1 9 7 6 2 12 11 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Cotagecheese.Prod: num  4.37 3.69 4.54 4.28 4.47 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Icecream.Prod    : num  51.6 56.1 68.5 65.7 73.7 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Milk.Prod        : num  2.11 1.93 2.16 2.13 2.23 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ N.CA.Fat.Price   : num  0.98 0.892 0.892 0.897 0.897 ...
-    [ModuleOutput] 
-    [ModuleOutput] [1] "Saving variable  cadairydata  ..."
-    [ModuleOutput] 
-    [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
+```output
+[ModuleOutput] [1] "Loading variable port1..."
+[ModuleOutput] 
+[ModuleOutput] 'data.frame':    228 obs. of  9 variables:
+[ModuleOutput] 
+[ModuleOutput]  $ Column 0         : int  1 2 3 4 5 6 7 8 9 10 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Year.Month       : num  1995 1995 1995 1995 1995 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Month.Number     : int  1 2 3 4 5 6 7 8 9 10 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Year             : int  1995 1995 1995 1995 1995 1995 1995 1995 1995 1995 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Month            : Factor w/ 12 levels "Apr","Aug","Dec",..: 5 4 8 1 9 7 6 2 12 11 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Cotagecheese.Prod: num  4.37 3.69 4.54 4.28 4.47 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Icecream.Prod    : num  51.6 56.1 68.5 65.7 73.7 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Milk.Prod        : num  2.11 1.93 2.16 2.13 2.23 ...
+[ModuleOutput] 
+[ModuleOutput]  $ N.CA.Fat.Price   : num  0.98 0.892 0.892 0.897 0.897 ...
+[ModuleOutput] 
+[ModuleOutput] [1] "Saving variable  cadairydata  ..."
+[ModuleOutput] 
+[ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
+```
 
 *図 10: 正しい数の因子レベルを持つデータフレームのサマリー*
 
@@ -470,34 +477,36 @@ R データフレームは、強力なフィルター処理機能をサポート
 
 次の行を、[R スクリプトの実行][execute-r-script]モジュールの R コードに追加します。
 
-```R
+```r
 # Remove two columns we do not need
 cadairydata <- cadairydata[, c(-1, -2)]
 ```
 
 実験でこのコードを実行し、出力ログの結果を確認します。 これらの結果を、図 11 に示します。
 
-    [ModuleOutput] [1] "Loading variable port1..."
-    [ModuleOutput] 
-    [ModuleOutput] 'data.frame':    228 obs. of  7 variables:
-    [ModuleOutput] 
-    [ModuleOutput]  $ Month.Number     : int  1 2 3 4 5 6 7 8 9 10 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Year             : int  1995 1995 1995 1995 1995 1995 1995 1995 1995 1995 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Month            : Factor w/ 12 levels "Apr","Aug","Dec",..: 5 4 8 1 9 7 6 2 12 11 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Cotagecheese.Prod: num  4.37 3.69 4.54 4.28 4.47 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Icecream.Prod    : num  51.6 56.1 68.5 65.7 73.7 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Milk.Prod        : num  2.11 1.93 2.16 2.13 2.23 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ N.CA.Fat.Price   : num  0.98 0.892 0.892 0.897 0.897 ...
-    [ModuleOutput] 
-    [ModuleOutput] [1] "Saving variable  cadairydata  ..."
-    [ModuleOutput] 
-    [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
+```output
+[ModuleOutput] [1] "Loading variable port1..."
+[ModuleOutput] 
+[ModuleOutput] 'data.frame':    228 obs. of  7 variables:
+[ModuleOutput] 
+[ModuleOutput]  $ Month.Number     : int  1 2 3 4 5 6 7 8 9 10 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Year             : int  1995 1995 1995 1995 1995 1995 1995 1995 1995 1995 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Month            : Factor w/ 12 levels "Apr","Aug","Dec",..: 5 4 8 1 9 7 6 2 12 11 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Cotagecheese.Prod: num  4.37 3.69 4.54 4.28 4.47 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Icecream.Prod    : num  51.6 56.1 68.5 65.7 73.7 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Milk.Prod        : num  2.11 1.93 2.16 2.13 2.23 ...
+[ModuleOutput] 
+[ModuleOutput]  $ N.CA.Fat.Price   : num  0.98 0.892 0.892 0.897 0.897 ...
+[ModuleOutput] 
+[ModuleOutput] [1] "Saving variable  cadairydata  ..."
+[ModuleOutput] 
+[ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
+```
 
 *図 11: 2 つの列を除去したデータフレームのサマリー*
 
@@ -509,7 +518,7 @@ cadairydata <- cadairydata[, c(-1, -2)]
 
 コードの編成を支援するために、最初のサンプル関数 `num.month()`を作成します。 この関数を適用し、データフレームに新しい列を作成します。 新しいコードは、次のとおりです。
 
-```R
+```r
 ## Create a new column with the month count
 ## Function to find the number of months from the first
 ## month of the time series
@@ -527,29 +536,31 @@ cadairydata$Month.Count <- num.month(cadairydata$Year, cadairydata$Month.Number)
 
 更新した実験を実行し、出力ログで結果を確認します。 これらの結果を図 12 に示します。
 
-    [ModuleOutput] [1] "Loading variable port1..."
-    [ModuleOutput] 
-    [ModuleOutput] 'data.frame':    228 obs. of  8 variables:
-    [ModuleOutput] 
-    [ModuleOutput]  $ Month.Number     : int  1 2 3 4 5 6 7 8 9 10 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Year             : int  1995 1995 1995 1995 1995 1995 1995 1995 1995 1995 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Month            : Factor w/ 12 levels "Apr","Aug","Dec",..: 5 4 8 1 9 7 6 2 12 11 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Cotagecheese.Prod: num  4.37 3.69 4.54 4.28 4.47 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Icecream.Prod    : num  51.6 56.1 68.5 65.7 73.7 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Milk.Prod        : num  2.11 1.93 2.16 2.13 2.23 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ N.CA.Fat.Price   : num  0.98 0.892 0.892 0.897 0.897 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Month.Count      : num  0 1 2 3 4 5 6 7 8 9 ...
-    [ModuleOutput] 
-    [ModuleOutput] [1] "Saving variable  cadairydata  ..."
-    [ModuleOutput] 
-    [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
+```output
+[ModuleOutput] [1] "Loading variable port1..."
+[ModuleOutput] 
+[ModuleOutput] 'data.frame':    228 obs. of  8 variables:
+[ModuleOutput] 
+[ModuleOutput]  $ Month.Number     : int  1 2 3 4 5 6 7 8 9 10 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Year             : int  1995 1995 1995 1995 1995 1995 1995 1995 1995 1995 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Month            : Factor w/ 12 levels "Apr","Aug","Dec",..: 5 4 8 1 9 7 6 2 12 11 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Cotagecheese.Prod: num  4.37 3.69 4.54 4.28 4.47 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Icecream.Prod    : num  51.6 56.1 68.5 65.7 73.7 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Milk.Prod        : num  2.11 1.93 2.16 2.13 2.23 ...
+[ModuleOutput] 
+[ModuleOutput]  $ N.CA.Fat.Price   : num  0.98 0.892 0.892 0.897 0.897 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Month.Count      : num  0 1 2 3 4 5 6 7 8 9 ...
+[ModuleOutput] 
+[ModuleOutput] [1] "Saving variable  cadairydata  ..."
+[ModuleOutput] 
+[ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
+```
 
 *図 12: 列を追加したデータフレームのサマリー*
 
@@ -565,7 +576,7 @@ cadairydata$Month.Count <- num.month(cadairydata$Year, cadairydata$Month.Number)
 
 次のコードで、新しい関数 `log.transform()`を定義し、それを数値を含む行に適用します。 R の `Map()` 関数は、データフレームの選択した列に `log.transform()` 関数を適用するために使用されます。 `Map()` は `apply()` と類似していますが、関数に対して複数の引数リストを使用できます。 乗数のリストは、 `log.transform()` 関数に第二の引数を提供することに注意してください。 `na.omit()` 関数は、データフレームに不足している値か、未定義の値がないことを確認するクリーンアップの一部として使用されます。
 
-```R
+```r
 log.transform <- function(invec, multiplier = 1) {
   ## Function for the transformation, which is the log
   ## of the input value times a multiplier
@@ -611,29 +622,31 @@ cadairydata <- na.omit(cadairydata)
 
 実験内でこの R コードを実行し、output.log ファイルに出力された内容を調べます。 図 13 に示すように、ログで変換後の 4 列の値を確認できます。
 
-    [ModuleOutput] [1] "Loading variable port1..."
-    [ModuleOutput] 
-    [ModuleOutput] 'data.frame':    228 obs. of  8 variables:
-    [ModuleOutput] 
-    [ModuleOutput]  $ Month.Number     : int  1 2 3 4 5 6 7 8 9 10 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Year             : int  1995 1995 1995 1995 1995 1995 1995 1995 1995 1995 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Month            : Factor w/ 12 levels "Apr","Aug","Dec",..: 5 4 8 1 9 7 6 2 12 11 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Cotagecheese.Prod: num  1.47 1.31 1.51 1.45 1.5 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Icecream.Prod    : num  5.82 5.9 6.1 6.06 6.17 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Milk.Prod        : num  7.66 7.57 7.68 7.66 7.71 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ N.CA.Fat.Price   : num  6.89 6.79 6.79 6.8 6.8 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Month.Count      : num  0 1 2 3 4 5 6 7 8 9 ...
-    [ModuleOutput] 
-    [ModuleOutput] [1] "Saving variable  cadairydata  ..."
-    [ModuleOutput] 
-    [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
+```output
+[ModuleOutput] [1] "Loading variable port1..."
+[ModuleOutput] 
+[ModuleOutput] 'data.frame':    228 obs. of  8 variables:
+[ModuleOutput] 
+[ModuleOutput]  $ Month.Number     : int  1 2 3 4 5 6 7 8 9 10 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Year             : int  1995 1995 1995 1995 1995 1995 1995 1995 1995 1995 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Month            : Factor w/ 12 levels "Apr","Aug","Dec",..: 5 4 8 1 9 7 6 2 12 11 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Cotagecheese.Prod: num  1.47 1.31 1.51 1.45 1.5 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Icecream.Prod    : num  5.82 5.9 6.1 6.06 6.17 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Milk.Prod        : num  7.66 7.57 7.68 7.66 7.71 ...
+[ModuleOutput] 
+[ModuleOutput]  $ N.CA.Fat.Price   : num  6.89 6.79 6.79 6.8 6.8 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Month.Count      : num  0 1 2 3 4 5 6 7 8 9 ...
+[ModuleOutput] 
+[ModuleOutput] [1] "Saving variable  cadairydata  ..."
+[ModuleOutput] 
+[ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
+```
 
 *図 13: データフレームの変換された値のサマリー*
 
@@ -663,7 +676,7 @@ cadairydata <- na.omit(cadairydata)
 
 最初の手順として、データフレームを読み込み、期待する結果が得られることを確認しましょう。 次のコードで、ジョブを実行します。
 
-```R
+```r
 # Comment the following if using RStudio
 cadairydata <- maml.mapInputPort(1)
 str(cadairydata) # Check the results
@@ -671,25 +684,27 @@ str(cadairydata) # Check the results
 
 では、実験を実行します。 新しい R スクリプト図形のログは、図 14 のようになります。
 
-    [ModuleOutput] [1] "Loading variable port1..."
-    [ModuleOutput] 
-    [ModuleOutput] 'data.frame':    228 obs. of  8 variables:
-    [ModuleOutput] 
-    [ModuleOutput]  $ Month.Number     : int  1 2 3 4 5 6 7 8 9 10 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Year             : int  1995 1995 1995 1995 1995 1995 1995 1995 1995 1995 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Month            : Factor w/ 12 levels "Apr","Aug","Dec",..: 5 4 8 1 9 7 6 2 12 11 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Cotagecheese.Prod: num  1.47 1.31 1.51 1.45 1.5 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Icecream.Prod    : num  5.82 5.9 6.1 6.06 6.17 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Milk.Prod        : num  7.66 7.57 7.68 7.66 7.71 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ N.CA.Fat.Price   : num  6.89 6.79 6.79 6.8 6.8 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Month.Count      : num  0 1 2 3 4 5 6 7 8 9 ...
+```output
+[ModuleOutput] [1] "Loading variable port1..."
+[ModuleOutput] 
+[ModuleOutput] 'data.frame':    228 obs. of  8 variables:
+[ModuleOutput] 
+[ModuleOutput]  $ Month.Number     : int  1 2 3 4 5 6 7 8 9 10 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Year             : int  1995 1995 1995 1995 1995 1995 1995 1995 1995 1995 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Month            : Factor w/ 12 levels "Apr","Aug","Dec",..: 5 4 8 1 9 7 6 2 12 11 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Cotagecheese.Prod: num  1.47 1.31 1.51 1.45 1.5 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Icecream.Prod    : num  5.82 5.9 6.1 6.06 6.17 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Milk.Prod        : num  7.66 7.57 7.68 7.66 7.71 ...
+[ModuleOutput] 
+[ModuleOutput]  $ N.CA.Fat.Price   : num  6.89 6.79 6.79 6.8 6.8 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Month.Count      : num  0 1 2 3 4 5 6 7 8 9 ...
+```
 
 *図 14: R スクリプトの実行モジュールにおけるデータフレームのサマリー*
 
@@ -699,7 +714,7 @@ str(cadairydata) # Check the results
 
 時系列オブジェクトをデータフレームに追加する必要があります。 現在のコードを、次の POSIXct クラスの新しい列を追加するコードに置き換えます。
 
-```R
+```r
 # Comment the following if using RStudio
 cadairydata <- maml.mapInputPort(1)
 
@@ -712,27 +727,29 @@ str(cadairydata) # Check the results
 
 ここでログを確認します。 図 15 のように表示されます。
 
-    [ModuleOutput] [1] "Loading variable port1..."
-    [ModuleOutput] 
-    [ModuleOutput] 'data.frame':    228 obs. of  9 variables:
-    [ModuleOutput] 
-    [ModuleOutput]  $ Month.Number     : int  1 2 3 4 5 6 7 8 9 10 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Year             : int  1995 1995 1995 1995 1995 1995 1995 1995 1995 1995 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Month            : Factor w/ 12 levels "Apr","Aug","Dec",..: 5 4 8 1 9 7 6 2 12 11 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Cotagecheese.Prod: num  1.47 1.31 1.51 1.45 1.5 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Icecream.Prod    : num  5.82 5.9 6.1 6.06 6.17 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Milk.Prod        : num  7.66 7.57 7.68 7.66 7.71 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ N.CA.Fat.Price   : num  6.89 6.79 6.79 6.8 6.8 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Month.Count      : num  0 1 2 3 4 5 6 7 8 9 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Time             : POSIXct, format: "1995-01-01" "1995-02-01" ...
+```output
+[ModuleOutput] [1] "Loading variable port1..."
+[ModuleOutput] 
+[ModuleOutput] 'data.frame':    228 obs. of  9 variables:
+[ModuleOutput] 
+[ModuleOutput]  $ Month.Number     : int  1 2 3 4 5 6 7 8 9 10 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Year             : int  1995 1995 1995 1995 1995 1995 1995 1995 1995 1995 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Month            : Factor w/ 12 levels "Apr","Aug","Dec",..: 5 4 8 1 9 7 6 2 12 11 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Cotagecheese.Prod: num  1.47 1.31 1.51 1.45 1.5 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Icecream.Prod    : num  5.82 5.9 6.1 6.06 6.17 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Milk.Prod        : num  7.66 7.57 7.68 7.66 7.71 ...
+[ModuleOutput] 
+[ModuleOutput]  $ N.CA.Fat.Price   : num  6.89 6.79 6.79 6.8 6.8 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Month.Count      : num  0 1 2 3 4 5 6 7 8 9 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Time             : POSIXct, format: "1995-01-01" "1995-02-01" ...
+```
 
 *図 15: 時系列オブジェクトを含むデータフレームのサマリー*
 
@@ -742,7 +759,7 @@ str(cadairydata) # Check the results
 
 データセットのいくつかの変数を調べてみましょう。 散布図マトリックスは、概要表示を作成するのによい方法です。 以前の R コードの `str()` 関数を、次の行で置き換えます。
 
-```R
+```r
 pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = cadairydata, main = "Pairwise Scatterplots of dairy time series")
 ```
 
@@ -760,7 +777,7 @@ pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = c
 
 次に示す `ts.detrend()` 関数は、これらの操作を両方行います。 次の 2 つのコード行は、データの傾向除去を行い、値を標準化します。
 
-```R
+```r
 ts.detrend <- function(ts, Time, min.length = 3){
   ## Function to de-trend and standardize a time series
 
@@ -823,7 +840,7 @@ pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = d
 
 R ccf オブジェクトとしての相関関係を計算するコードは、次のとおりです。
 
-```R
+```r
 ## A function to compute pairwise correlations from a
 ## list of time series value vectors
 pair.cor <- function(pair.ind, ts.list, lag.max = 1, plot = FALSE){
@@ -841,57 +858,59 @@ cadairycorrelations
 
 このコードを実行すると、図 18 に示すログが生成されます。
 
-    [ModuleOutput] Loading objects:
-    [ModuleOutput]   port1
-    [ModuleOutput] [1] "Loading variable port1..."
-    [ModuleOutput] [[1]]
-    [ModuleOutput] 
-    [ModuleOutput] 
-    [ModuleOutput] Autocorrelations of series 'X', by lag
-    [ModuleOutput] 
-    [ModuleOutput] 
-    [ModuleOutput]    -1     0     1 
-    [ModuleOutput] 0.148 0.358 0.317 
-    [ModuleOutput] 
-    [ModuleOutput] 
-    [ModuleOutput] [[2]]
-    [ModuleOutput] 
-    [ModuleOutput] 
-    [ModuleOutput] Autocorrelations of series 'X', by lag
-    [ModuleOutput] 
-    [ModuleOutput] 
-    [ModuleOutput]     -1      0      1 
-    [ModuleOutput] -0.395 -0.186 -0.238 
-    [ModuleOutput] 
-    [ModuleOutput] 
-    [ModuleOutput] [[3]]
-    [ModuleOutput] 
-    [ModuleOutput] 
-    [ModuleOutput] Autocorrelations of series 'X', by lag
-    [ModuleOutput] 
-    [ModuleOutput] 
-    [ModuleOutput]     -1      0      1 
-    [ModuleOutput] -0.059 -0.089 -0.127 
-    [ModuleOutput] 
-    [ModuleOutput] 
-    [ModuleOutput] [[4]]
-    [ModuleOutput] 
-    [ModuleOutput] 
-    [ModuleOutput] Autocorrelations of series 'X', by lag
-    [ModuleOutput] 
-    [ModuleOutput] 
-    [ModuleOutput]    -1     0     1 
-    [ModuleOutput] 0.140 0.294 0.293 
-    [ModuleOutput] 
-    [ModuleOutput] 
-    [ModuleOutput] [[5]]
-    [ModuleOutput] 
-    [ModuleOutput] 
-    [ModuleOutput] Autocorrelations of series 'X', by lag
-    [ModuleOutput] 
-    [ModuleOutput] 
-    [ModuleOutput]     -1      0      1 
-    [ModuleOutput] -0.002 -0.074 -0.124 
+```output
+[ModuleOutput] Loading objects:
+[ModuleOutput]   port1
+[ModuleOutput] [1] "Loading variable port1..."
+[ModuleOutput] [[1]]
+[ModuleOutput] 
+[ModuleOutput] 
+[ModuleOutput] Autocorrelations of series 'X', by lag
+[ModuleOutput] 
+[ModuleOutput] 
+[ModuleOutput]    -1     0     1 
+[ModuleOutput] 0.148 0.358 0.317 
+[ModuleOutput] 
+[ModuleOutput] 
+[ModuleOutput] [[2]]
+[ModuleOutput] 
+[ModuleOutput] 
+[ModuleOutput] Autocorrelations of series 'X', by lag
+[ModuleOutput] 
+[ModuleOutput] 
+[ModuleOutput]     -1      0      1 
+[ModuleOutput] -0.395 -0.186 -0.238 
+[ModuleOutput] 
+[ModuleOutput] 
+[ModuleOutput] [[3]]
+[ModuleOutput] 
+[ModuleOutput] 
+[ModuleOutput] Autocorrelations of series 'X', by lag
+[ModuleOutput] 
+[ModuleOutput] 
+[ModuleOutput]     -1      0      1 
+[ModuleOutput] -0.059 -0.089 -0.127 
+[ModuleOutput] 
+[ModuleOutput] 
+[ModuleOutput] [[4]]
+[ModuleOutput] 
+[ModuleOutput] 
+[ModuleOutput] Autocorrelations of series 'X', by lag
+[ModuleOutput] 
+[ModuleOutput] 
+[ModuleOutput]    -1     0     1 
+[ModuleOutput] 0.140 0.294 0.293 
+[ModuleOutput] 
+[ModuleOutput] 
+[ModuleOutput] [[5]]
+[ModuleOutput] 
+[ModuleOutput] 
+[ModuleOutput] Autocorrelations of series 'X', by lag
+[ModuleOutput] 
+[ModuleOutput] 
+[ModuleOutput]     -1      0      1 
+[ModuleOutput] -0.002 -0.074 -0.124 
+```
 
 *図 18: ペアワイズ相関関係分析による ccf オブジェクトのリスト*
 
@@ -902,7 +921,7 @@ cadairycorrelations
 
 次のコードは、それ自体がリストである ccf オブジェクトのリストから時間差値を抽出します。
 
-```R
+```r
 df.correlations <- data.frame(do.call(rbind, lapply(cadairycorrelations, '[[', 1)))
 
 c.names <- c("correlation pair", "-1 lag", "0 lag", "+1 lag")
@@ -958,7 +977,7 @@ outframe
 
 完了した相関関係分析と同様に、POSIXct 時系列オブジェクトを含む列を追加する必要があります。 これを実行するのが、次のコードです。
 
-```R
+```r
 # If running in Machine Learning Studio (classic), uncomment the first line with maml.mapInputPort()
 cadairydata <- maml.mapInputPort(1)
 
@@ -971,27 +990,29 @@ str(cadairydata)
 
 このコードを実行し、ログを確認します。 結果が、図 21 のように表示されます。
 
-    [ModuleOutput] [1] "Loading variable port1..."
-    [ModuleOutput] 
-    [ModuleOutput] 'data.frame':    228 obs. of  9 variables:
-    [ModuleOutput] 
-    [ModuleOutput]  $ Month.Number     : int  1 2 3 4 5 6 7 8 9 10 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Year             : int  1995 1995 1995 1995 1995 1995 1995 1995 1995 1995 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Month            : Factor w/ 12 levels "Apr","Aug","Dec",..: 5 4 8 1 9 7 6 2 12 11 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Cotagecheese.Prod: num  1.47 1.31 1.51 1.45 1.5 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Icecream.Prod    : num  5.82 5.9 6.1 6.06 6.17 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Milk.Prod        : num  7.66 7.57 7.68 7.66 7.71 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ N.CA.Fat.Price   : num  6.89 6.79 6.79 6.8 6.8 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Month.Count      : num  0 1 2 3 4 5 6 7 8 9 ...
-    [ModuleOutput] 
-    [ModuleOutput]  $ Time             : POSIXct, format: "1995-01-01" "1995-02-01" ...
+```output
+[ModuleOutput] [1] "Loading variable port1..."
+[ModuleOutput] 
+[ModuleOutput] 'data.frame':    228 obs. of  9 variables:
+[ModuleOutput] 
+[ModuleOutput]  $ Month.Number     : int  1 2 3 4 5 6 7 8 9 10 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Year             : int  1995 1995 1995 1995 1995 1995 1995 1995 1995 1995 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Month            : Factor w/ 12 levels "Apr","Aug","Dec",..: 5 4 8 1 9 7 6 2 12 11 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Cotagecheese.Prod: num  1.47 1.31 1.51 1.45 1.5 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Icecream.Prod    : num  5.82 5.9 6.1 6.06 6.17 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Milk.Prod        : num  7.66 7.57 7.68 7.66 7.71 ...
+[ModuleOutput] 
+[ModuleOutput]  $ N.CA.Fat.Price   : num  6.89 6.79 6.79 6.8 6.8 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Month.Count      : num  0 1 2 3 4 5 6 7 8 9 ...
+[ModuleOutput] 
+[ModuleOutput]  $ Time             : POSIXct, format: "1995-01-01" "1995-02-01" ...
+```
 
 *図 21: データフレームのサマリー*
 
@@ -1001,7 +1022,7 @@ str(cadairydata)
 
 構築されたデータフレームを使用して、トレーニング データセットを作成する必要があります。 このデータはテスト データセットであり、2013 年の 12 か月を除くすべての記録が含まれます。 次のコードはデータフレームをサブセット化し、酪農生産のプロットと価格変数を作成します。 次に、4 つの生産のプロットと価格変数を作成します。 匿名関数を使用してプロット用の引数を定義し、 `Map()`を使用して他の 2 つの引数のリストを順に処理します。 ここで、for ループが適切に機能すると考えるのは正しいことです。 ただし、R は関数型言語なので、ここでは関数型のアプローチを示します。
 
-```R
+```r
 cadairytrain <- cadairydata[1:216, ]
 
 Ylabs  <- list("Log CA Cotage Cheese Production, 1000s lb",
@@ -1032,69 +1053,73 @@ Map(function(y, Ylabs){plot(cadairytrain$Time, y, xlab = "Time", ylab = Ylabs, t
 
 最初の試みとして、最大指数 3 で多項式回帰を試します。 実際には、この種類のモデルには過剰適合の危険があります。 したがって、高次項を避けるのが最善です。 `I()` 関数では、コンテンツの変換が禁止されているため (つまり、コンテンツが "そのまま" 解釈されているため)、回帰方程式内で文字どおりに解釈された関数を記述できます。
 
-```R
+```r
 milk.lm <- lm(Milk.Prod ~ Time + I(Month.Count^2) + I(Month.Count^3), data = cadairytrain)
 summary(milk.lm)
 ```
 
 これにより、次の内容が生成されます。
 
-    ##
-    ## Call:
-    ## lm(formula = Milk.Prod ~ Time + I(Month.Count^2) + I(Month.Count^3),
-    ##     data = cadairytrain)
-    ##
-    ## Residuals:
-    ##      Min       1Q   Median       3Q      Max
-    ## -0.12667 -0.02730  0.00236  0.02943  0.10586
-    ##
-    ## Coefficients:
-    ##                   Estimate Std. Error t value Pr(>|t|)
-    ## (Intercept)       6.33e+00   1.45e-01   43.60   <2e-16 ***
-    ## Time              1.63e-09   1.72e-10    9.47   <2e-16 ***
-    ## I(Month.Count^2) -1.71e-06   4.89e-06   -0.35    0.726
-    ## I(Month.Count^3) -3.24e-08   1.49e-08   -2.17    0.031 *  
-    ## ---
-    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-    ##
-    ## Residual standard error: 0.0418 on 212 degrees of freedom
-    ## Multiple R-squared:  0.941,    Adjusted R-squared:  0.94
-    ## F-statistic: 1.12e+03 on 3 and 212 DF,  p-value: <2e-16
+```output
+##
+## Call:
+## lm(formula = Milk.Prod ~ Time + I(Month.Count^2) + I(Month.Count^3),
+##     data = cadairytrain)
+##
+## Residuals:
+##      Min       1Q   Median       3Q      Max
+## -0.12667 -0.02730  0.00236  0.02943  0.10586
+##
+## Coefficients:
+##                   Estimate Std. Error t value Pr(>|t|)
+## (Intercept)       6.33e+00   1.45e-01   43.60   <2e-16 ***
+## Time              1.63e-09   1.72e-10    9.47   <2e-16 ***
+## I(Month.Count^2) -1.71e-06   4.89e-06   -0.35    0.726
+## I(Month.Count^3) -3.24e-08   1.49e-08   -2.17    0.031 *  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+##
+## Residual standard error: 0.0418 on 212 degrees of freedom
+## Multiple R-squared:  0.941,    Adjusted R-squared:  0.94
+## F-statistic: 1.12e+03 on 3 and 212 DF,  p-value: <2e-16
+```
 
 この出力の P 値 (`Pr(>|t|)`) から、2 次の項が有意でない場合があることがわかります。 `update()` 関数を使用し、2 次の項を除去してモデルを変更します。
 
-```R
+```r
 milk.lm <- update(milk.lm, . ~ . - I(Month.Count^2))
 summary(milk.lm)
 ```
 
 これにより、次の内容が生成されます。
 
-    ##
-    ## Call:
-    ## lm(formula = Milk.Prod ~ Time + I(Month.Count^3), data = cadairytrain)
-    ##
-    ## Residuals:
-    ##      Min       1Q   Median       3Q      Max
-    ## -0.12597 -0.02659  0.00185  0.02963  0.10696
-    ##
-    ## Coefficients:
-    ##                   Estimate Std. Error t value Pr(>|t|)
-    ## (Intercept)       6.38e+00   4.07e-02   156.6   <2e-16 ***
-    ## Time              1.57e-09   4.32e-11    36.3   <2e-16 ***
-    ## I(Month.Count^3) -3.76e-08   2.50e-09   -15.1   <2e-16 ***
-    ## ---
-    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-    ##
-    ## Residual standard error: 0.0417 on 213 degrees of freedom
-    ## Multiple R-squared:  0.941,  Adjusted R-squared:  0.94
-    ## F-statistic: 1.69e+03 on 2 and 213 DF,  p-value: <2e-16
+```output
+##
+## Call:
+## lm(formula = Milk.Prod ~ Time + I(Month.Count^3), data = cadairytrain)
+##
+## Residuals:
+##      Min       1Q   Median       3Q      Max
+## -0.12597 -0.02659  0.00185  0.02963  0.10696
+##
+## Coefficients:
+##                   Estimate Std. Error t value Pr(>|t|)
+## (Intercept)       6.38e+00   4.07e-02   156.6   <2e-16 ***
+## Time              1.57e-09   4.32e-11    36.3   <2e-16 ***
+## I(Month.Count^3) -3.76e-08   2.50e-09   -15.1   <2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+##
+## Residual standard error: 0.0417 on 213 degrees of freedom
+## Multiple R-squared:  0.941,  Adjusted R-squared:  0.94
+## F-statistic: 1.69e+03 on 2 and 213 DF,  p-value: <2e-16
+```
 
 うまくいっているようです。 すべての項が有意です。 ただし、値 2e-16 は既定値であり、あまり深刻に考える必要はありません。  
 
 サニティ テストとして、傾向曲線を示すカリフォルニア酪農生産データの時系列プロットを作成しましょう。 モデルとプロットを作成するために、Azure Machine Learning Studio (クラシック) の [R スクリプトの実行][execute-r-script]モデル (RStudio ではない) に、次のコードを追加しました。 図 23 に、結果が示されます。
 
-```R
+```r
 milk.lm <- lm(Milk.Prod ~ Time + I(Month.Count^3), data = cadairytrain)
 
 plot(cadairytrain$Time, cadairytrain$Milk.Prod, xlab = "Time", ylab = "Log CA Milk Production 1000s lb", type = "l")
@@ -1111,52 +1136,54 @@ lines(cadairytrain$Time, predict(milk.lm, cadairytrain), lty = 2, col = 2)
 
 傾向モデルの作成を続行し、季節的影響を含める必要があります。 線形モデルのダミー変数として 1 年の中の月を使用し、月ごとの影響を取得します。 因子変数をモデルに導入する際に、切片を計算してはならないことに注意してください。 そうしないと、数式が互いに矛盾する条件を含んだ状態になり、R は必要な因子の 1 つを除去し、切片項を保持します。
 
-満足のいく傾向モデルがあるため、 `update()` 関数を使用して、新しい項を既存のモデルに追加できます。 update 式の -1 は、切片項を除去します。 しばらく、RStudio での処理が続きます。
+満足のいく傾向モデルがあるため、`update()` 関数を使用して、新しい項を既存のモデルに追加できます。 update 式の -1 は、切片項を除去します。 しばらく、RStudio での処理が続きます。
 
-```R
+```r
 milk.lm2 <- update(milk.lm, . ~ . + Month - 1)
 summary(milk.lm2)
 ```
 
 これにより、次の内容が生成されます。
 
-    ##
-    ## Call:
-    ## lm(formula = Milk.Prod ~ Time + I(Month.Count^3) + Month - 1,
-    ##     data = cadairytrain)
-    ##
-    ## Residuals:
-    ##      Min       1Q   Median       3Q      Max
-    ## -0.06879 -0.01693  0.00346  0.01543  0.08726
-    ##
-    ## Coefficients:
-    ##                   Estimate Std. Error t value Pr(>|t|)
-    ## Time              1.57e-09   2.72e-11    57.7   <2e-16 ***
-    ## I(Month.Count^3) -3.74e-08   1.57e-09   -23.8   <2e-16 ***
-    ## MonthApr          6.40e+00   2.63e-02   243.3   <2e-16 ***
-    ## MonthAug          6.38e+00   2.63e-02   242.2   <2e-16 ***
-    ## MonthDec          6.38e+00   2.64e-02   241.9   <2e-16 ***
-    ## MonthFeb          6.31e+00   2.63e-02   240.1   <2e-16 ***
-    ## MonthJan          6.39e+00   2.63e-02   243.1   <2e-16 ***
-    ## MonthJul          6.39e+00   2.63e-02   242.6   <2e-16 ***
-    ## MonthJun          6.38e+00   2.63e-02   242.4   <2e-16 ***
-    ## MonthMar          6.42e+00   2.63e-02   244.2   <2e-16 ***
-    ## MonthMay          6.43e+00   2.63e-02   244.3   <2e-16 ***
-    ## MonthNov          6.34e+00   2.63e-02   240.6   <2e-16 ***
-    ## MonthOct          6.37e+00   2.63e-02   241.8   <2e-16 ***
-    ## MonthSep          6.34e+00   2.63e-02   240.6   <2e-16 ***
-    ## ---
-    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-    ##
-    ## Residual standard error: 0.0263 on 202 degrees of freedom
-    ## Multiple R-squared:     1,    Adjusted R-squared:     1
-    ## F-statistic: 1.42e+06 on 14 and 202 DF,  p-value: <2e-16
+```output
+##
+## Call:
+## lm(formula = Milk.Prod ~ Time + I(Month.Count^3) + Month - 1,
+##     data = cadairytrain)
+##
+## Residuals:
+##      Min       1Q   Median       3Q      Max
+## -0.06879 -0.01693  0.00346  0.01543  0.08726
+##
+## Coefficients:
+##                   Estimate Std. Error t value Pr(>|t|)
+## Time              1.57e-09   2.72e-11    57.7   <2e-16 ***
+## I(Month.Count^3) -3.74e-08   1.57e-09   -23.8   <2e-16 ***
+## MonthApr          6.40e+00   2.63e-02   243.3   <2e-16 ***
+## MonthAug          6.38e+00   2.63e-02   242.2   <2e-16 ***
+## MonthDec          6.38e+00   2.64e-02   241.9   <2e-16 ***
+## MonthFeb          6.31e+00   2.63e-02   240.1   <2e-16 ***
+## MonthJan          6.39e+00   2.63e-02   243.1   <2e-16 ***
+## MonthJul          6.39e+00   2.63e-02   242.6   <2e-16 ***
+## MonthJun          6.38e+00   2.63e-02   242.4   <2e-16 ***
+## MonthMar          6.42e+00   2.63e-02   244.2   <2e-16 ***
+## MonthMay          6.43e+00   2.63e-02   244.3   <2e-16 ***
+## MonthNov          6.34e+00   2.63e-02   240.6   <2e-16 ***
+## MonthOct          6.37e+00   2.63e-02   241.8   <2e-16 ***
+## MonthSep          6.34e+00   2.63e-02   240.6   <2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+##
+## Residual standard error: 0.0263 on 202 degrees of freedom
+## Multiple R-squared:     1,    Adjusted R-squared:     1
+## F-statistic: 1.42e+06 on 14 and 202 DF,  p-value: <2e-16
+```
 
 モデルに切片項がなく、12 個の有意な月因子があることがわかります。 まさにこれが、希望していたものです。
 
 別のカリフォルニア酪農生産データの時系列プロットを作成し、季節モデルがうまく機能することを確認します。 モデルとプロットを作成するために、Azure Machine Learning Studio (クラシック) の [R スクリプトの実行][execute-r-script]に次のコードを追加しました。
 
-```R
+```r
 milk.lm2 <- lm(Milk.Prod ~ Time + I(Month.Count^3) + Month - 1, data = cadairytrain)
 
 plot(cadairytrain$Time, cadairytrain$Milk.Prod, xlab = "Time", ylab = "Log CA Milk Production 1000s lb", type = "l")
@@ -1173,7 +1200,7 @@ lines(cadairytrain$Time, predict(milk.lm2, cadairytrain), lty = 2, col = 2)
 
 このモデルに対するもう 1 つのチェックとして、残差を調べましょう。 次のコードは、2 つのモデルから予測値を計算し、季節モデルの残差を計算して、トレーニング データのこれらの残差をプロットします。
 
-```R
+```r
 ## Compute predictions from our models
 predict1  <- predict(milk.lm, cadairydata)
 predict2  <- predict(milk.lm2, cadairydata)
@@ -1195,7 +1222,7 @@ plot(cadairytrain$Time, residuals[1:216], xlab = "Time", ylab ="Residuals of Sea
 
 また、 `plot.lm()` を使用して、一連の診断プロットを生成することもできます。
 
-```R
+```r
 ## Show the diagnostic plots for the model
 plot(milk.lm2, ask = FALSE)
 ```
@@ -1220,7 +1247,7 @@ plot(milk.lm2, ask = FALSE)
 
 時系列モデルのパフォーマンスを測定するために、さまざまな指標が使用されます。 この場合、二乗平均平方根 (RMS ) 誤差を使用します。 次の関数は、2 つの時系列間の RMS 誤差を計算します。  
 
-```R
+```r
 RMS.error <- function(series1, series2, is.log = TRUE, min.length = 2){
   ## Function to compute the RMS error or difference between two
   ## series or vectors
@@ -1270,7 +1297,7 @@ predict2  <- predict(milk.lm2, cadairydata)
 
 RMS 誤差を測定する関数を準備したので、ビルドを行い、RMS 誤差を含むデータフレームを出力しましょう。 傾向モデルのみの項、および季節因子を持つ完全なモデルの項を含めます。 次のコードは、これまで構築した 2 つの線形モデルを使用して、ジョブを実行します。
 
-```R
+```r
 ## Compute the RMS error in a dataframe
 ## Include the row names in the first column so they will
 ## appear in the output of the Execute R Script
@@ -1311,7 +1338,7 @@ RStudio はドキュメントが非常に整っているため、 ここでは�
 この R プログラミングのチュートリアルでは、Azure Machine Learning Studio (クラシック) で、R 言語を使用するために必要な基本事項について説明します。 R に精通していない場合、CRAN に 2 つの入門書が用意されています。
 
 * Emmanuel Paradis による『[R for Beginners](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf)』は入門書として適しています。  
-* 『[An Introduction to R](https://cran.r-project.org/doc/manuals/R-intro.html)』(W. N. Venables  他による ) では、もう少し詳しく説明されています。
+* 『[An Introduction to R](https://cran.r-project.org/doc/manuals/R-intro.html)』(W. Venables ほか) では、もう少し詳しく説明されています。
 
 R の使用を開始するのに役立つ書籍は、多数存在します。 役に立つものをいくつか紹介します。
 
@@ -1328,7 +1355,8 @@ Paul Cowpertwait と Andrew Metcalfe による書籍『**Introductory Time Serie
 役に立つインターネット リソースをいくつか紹介します。
 
 * DataCamp ではブラウザーで学べる R についてのビデオ レッスンとコーディングの練習を提供しています。 最新の R のテクニックとパッケージに関する対話型チュートリアルがあります。 無料の[対話型 R チュートリアル](https://www.datacamp.com/courses/introduction-to-r)をご利用ください。
-* Programiz が提供している「[Learn R Programming, The Definitive Guide (R プログラミング完全ガイド)](https://www.programiz.com/r-programming)」。
+* DataMentor が提供している「[Learn R Programming, The Definitive Guide](https://www.datamentor.io/r-programming/)」
+* [R CODER](https://r-coder.com/)。 詳細な R のチュートリアルと初心者向けの無料の R のコース。
 * クラークソン大学の Kelly Black による手軽な「[R Tutorial (R チュートリアル)](https://www.cyclismo.org/tutorial/R/)」。
 * 「[Top R language resources to improve your data skills (データ スキルを向上させる R 言語の主要なリソース)](https://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html)」には、60 を超える R のリソースが掲載されています。
 

@@ -3,7 +3,7 @@ title: アクセス レビューを使用したゲスト アクセスの管理 -
 description: Azure Active Directory アクセス レビューを使用し、ゲスト ユーザーをグループのメンバーとして、またはアプリケーションに割り当てられたユーザーとして管理します。
 services: active-directory
 documentationcenter: ''
-author: msaburnley
+author: barclayn
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -12,21 +12,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 12/13/2018
-ms.author: ajburnle
+ms.date: 07/22/2020
+ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bf2f9503ae704110786a1e73aec3da18c17e4ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 77c560ffd01fe6d0b93e18b963574136c086fdc4
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75932421"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783197"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Azure AD のアクセス レビューによるゲスト アクセスの管理
 
 
-Azure Active Directory (Azure AD) では、組織の境界を越えたコラボレーションを [Azure AD B2B 機能](../b2b/what-is-b2b.md)で簡単に実現できます。 [管理者](../b2b/add-users-administrator.md)または[それ以外のユーザー](../b2b/what-is-b2b.md)が他のテナントからゲスト ユーザーを招待できます。 Microsoft アカウントなどのソーシャル ID も、この機能の対象となります。
+Azure Active Directory (Azure AD) では、組織の境界を越えたコラボレーションを [Azure AD B2B 機能](../external-identities/what-is-b2b.md)で簡単に実現できます。 [管理者](../external-identities/add-users-administrator.md)または[それ以外のユーザー](../external-identities/what-is-b2b.md)が他のテナントからゲスト ユーザーを招待できます。 Microsoft アカウントなどのソーシャル ID も、この機能の対象となります。
 
 ゲスト ユーザーに適切なアクセス権を確保することも簡単にできます。 ゲスト自身または意思決定者に対し、アクセス レビューに参加してゲストのアクセス権を再確認 (証明) するよう求めることができます。 レビュー担当者は、Azure AD からの提案に基づいて、各ユーザーの継続的なアクセスのニーズを評価することができます。 アクセス レビューが完了したら、変更を加え、不要になったアクセス権をゲストから削除することができます。
 
@@ -120,10 +120,3 @@ Azure Active Directory (Azure AD) では、組織の境界を越えたコラボ�
 ## <a name="next-steps"></a>次のステップ
 
 [グループまたはアプリケーションのアクセス レビューを作成する](create-access-review.md)
-
-
-
-
-
-
-

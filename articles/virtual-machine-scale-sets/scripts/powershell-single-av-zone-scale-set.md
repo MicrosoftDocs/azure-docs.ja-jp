@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 04/05/2018
 ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: 222b45e455f42264a5324f138c55b822d9d8e7a1
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.custom: mimckitt, devx-track-azurepowershell
+ms.openlocfilehash: dc76798ff97aa49d358b639557255b41872bab4f
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698609"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070906"
 ---
 # <a name="create-a-single-zone-virtual-machine-scale-set-with-powershell"></a>PowerShell を使用して単一ゾーン仮想マシン スケール セットを作成する
 このスクリプトでは、単一可用性ゾーンで Windows Server 2016 を実行する仮想マシン スケール セットを作成します。 スクリプトを実行すると、RDP 経由で仮想マシンにアクセスできるようになります。
@@ -47,5 +47,5 @@ Remove-AzResourceGroup -Name myResourceGroup
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | リソース グループと、それに含まれているすべてのリソースを削除します。 |
 
 ## <a name="next-steps"></a>次のステップ
-Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
+Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。
 

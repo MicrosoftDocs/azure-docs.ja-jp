@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 7c2c14a937b4ef55d0e5f71e7b20214428ecd68c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e04da10d71eed3706b87fc728a13927aeae82826
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158199"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84660129"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Azure Databricks を使用したカスタム分析で Azure IoT Central を拡張する
 
@@ -231,4 +231,4 @@ IoT Central テレメトリを分析および視覚化するための Python コ
 * *継続的データ エクスポート*を使用してテレメトリをストリーム配信します。
 * Azure Databricks 環境を作成してテレメトリ データを分析およびプロットします。
 
-カスタム分析の作成方法がわかったところで、次は[アプリケーションの管理](howto-administer.md)方法の習得に進むことをお勧めします。
+カスタム分析を作成する方法がわかったので、次は [Azure IoT Central データを Power BI ダッシュボードに視覚化する](howto-connect-powerbi.md)方法を学習することをお勧めします。

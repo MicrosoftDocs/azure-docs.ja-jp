@@ -5,16 +5,16 @@ services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 10/09/2019
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7b438f2b966dc43d41b91a138b39193d230d5546
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ec2516010768eded939b0ffa44c197f102c7766b
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75779690"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401199"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>既存の VPN ゲートウェイ接続を使用してサイト間接続を VNet に追加する
 
@@ -43,15 +43,15 @@ ms.locfileid: "75779690"
 * VNet の仮想ネットワーク ゲートウェイがルートベースである。 VPN ゲートウェイがポリシーベースの場合は、仮想ネットワーク ゲートウェイを削除して、ルートベースとして新しい VPN ゲートウェイを作成する必要があります。
 * この VNet が接続する VNet のアドレスの範囲のいずれも重複していないこと。
 * 互換性のある VPN デバイスがあり、デバイスを構成できる人員がいる。 「 [VPN デバイスについて](vpn-gateway-about-vpn-devices.md)」を参照してください。 VPN デバイスの構成に詳しくない場合や、オンプレミス ネットワーク構成の IP アドレス範囲を把握していない場合は、詳細な情報を把握している担当者と協力して作業を行ってください。
-* VPN デバイスの外部接続用パブリック IP アドレスがある。 この IP アドレスを NAT の内側に割り当てることはできません。
+* VPN デバイスの外部接続用パブリック IP アドレスがある。
 
 ## <a name="part-1---configure-a-connection"></a><a name="part1"></a>パート 1 - 接続の構成
 1. ブラウザーから [Azure Portal](https://portal.azure.com) に移動します。必要であれば Azure アカウントでサインインします。
 2. **[すべてのリソース]** をクリックして、リソースの一覧から **[仮想ネットワーク ゲートウェイ]** を見つけます。
-3. **[仮想ネットワーク ゲートウェイ]** ページで、 **[接続]** をクリックします。
+3. **[仮想ネットワーク ゲートウェイ]** ページで、**[接続]** をクリックします。
    
     ![[接続] ページ](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/connectionsblade.png "[接続] ページ")<br>
-4. **[接続]** ページで、 **[追加]** をクリックします。
+4. **[接続]** ページで、**[追加]** をクリックします。
    
     ![接続の追加ボタン](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addbutton.png "接続の追加ボタン")<br>
 5. **[接続追加]** ページで、次のフィールドを入力します。
@@ -59,10 +59,10 @@ ms.locfileid: "75779690"
    * **[名前]:** 作成している接続先のサイトに付ける名前です。
    * **[接続の種類]** : **[サイト対サイト (IPsec)]** を選択します。
      
-     ![[接続追加] ページ](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "[接続の追加] ページ")<br>
+     ![[接続の追加] ページ](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "[接続の追加] ページ")<br>
 
 ## <a name="part-2---add-a-local-network-gateway"></a><a name="part2"></a>パート 2 - ローカル ネットワーク ゲートウェイの追加
-1. **[ローカル ネットワーク ゲートウェイ]** の ***[ローカル ネットワーク ゲートウェイを選択する]*** をクリックします。 **[ローカル ネットワーク ゲートウェイの選択]** ページが開きます。
+1. **[ローカル ネットワーク ゲートウェイ] の ** ***[ローカル ネットワーク ゲートウェイを選択する]*** をクリックします。 **[ローカル ネットワーク ゲートウェイの選択]** ページが開きます。
    
     ![ローカル ネットワーク ゲートウェイの選択](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/chooselng.png "ローカル ネットワーク ゲートウェイの選択")<br>
 2. **[新規作成]** をクリックして **[ローカル ネットワーク ゲートウェイの作成]** ページを開きます。

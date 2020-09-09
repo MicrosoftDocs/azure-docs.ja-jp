@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 9c4b133ae74438def30f4fcd9e49a5ca5e6f9cd4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb8afffa341889ff5465b913dd193c2d43fb8409
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61463567"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89261939"
 ---
 # <a name="h264-single-bitrate-4k-audio-51"></a>H264 Single Bitrate 4K Audio 5.1
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 `Media Encoder Standard` は、エンコード ジョブの作成時に使用できる一連のエンコード プリセットを定義します。 `preset name`を使用して、メディア ファイルをエンコードする形式を指定することも、 (UTF-8 または UTF-16 エンコードを使用して) 独自の JSON または XML ベースのプリセットを作成することもできます。 その後、カスタム プリセットをエンコーダーに渡します。 この `Media Encoder Standard` エンコーダーでサポートされているすべてのプリセット名の一覧については、[Media Encoder Standard 用のタスク プリセット](media-services-mes-presets-overview.md)に関する記事を参照してください。  
   
  このトピックでは、`H264 Single Bitrate 4K Audio 5.1` (XML 形式と JSON 形式) を示します。  
@@ -29,7 +32,7 @@ ms.locfileid: "61463567"
  このプリセットにより、ビットレートが 18,000 kbps の単一の MP4 ファイルと、AAC 5.1 オーディオが生成されます。 このプリセットのプロファイル、ビットレート、サンプリング レートなどの詳細については、下に定義されている XML または JSON を確認してください。 各要素の意味と各要素に有効な値の説明については、「[Media Encoder Standard スキーマ](media-services-mes-schema.md)」を参照してください。  
   
 > [!NOTE]
->  4K エンコードでは Premium という予約ユニットの種類を取得する必要があります。 詳細については、「 [Encoding の規模の設定方法](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units)」を参照してください。  
+>  4K エンコードでは Premium という予約ユニットの種類を取得する必要があります。 詳細については、「 [Encoding の規模の設定方法](./media-services-scale-media-processing-overview.md)」を参照してください。  
   
  XML  
   

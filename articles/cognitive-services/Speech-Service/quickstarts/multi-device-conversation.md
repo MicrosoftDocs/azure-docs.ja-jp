@@ -8,15 +8,16 @@ manager: cpoulain
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 01/16/2020
+ms.date: 06/25/2020
 ms.author: ralphe
 zone_pivot_groups: programming-languages-set-nine
-ms.openlocfilehash: 7276b790b3fdb56308c6af9a047a7c290c01b253
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e71c6959ca62fb19ed74ba4fa679f4edfb710725
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76268020"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88925898"
 ---
 # <a name="quickstart-multi-device-conversation"></a>クイック スタート:マルチデバイスの会話
 

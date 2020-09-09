@@ -8,14 +8,15 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 09558a8d1e4e2dc68cefd2c870f54e008d10b97b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: d60a6f9032a39ab4889ce0db154739c5cb3b540b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77083548"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070498"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>テーブルとキューのカスタマーマネージド キーがサポートされるアカウントを作成する
 
@@ -39,7 +40,7 @@ Queue storage または Table storage でアカウント暗号化キーを使用
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-PowerShell を使用して登録を行うには、[Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) コマンドを呼び出します。
+PowerShell を使用して登録を行うには、[Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) コマンドを呼び出します。
 
 ```powershell
 Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
@@ -237,7 +238,7 @@ $account.Encryption.Services.Table
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-ストレージ アカウント内のサービスでアカウント暗号化キーが使用されていることを確認するには、[az storage account](/cli/azure/storage/account#az-storage-account-show) コマンドを呼び出します。 このコマンドによって、ストレージ アカウントのプロパティとその値のセットが返されます。 暗号化プロパティ内で各サービスの `keyType` フィールドを探し、`Account` に設定されていることを確認します。
+ストレージ アカウント内のサービスでアカウント暗号化キーが使用されていることを確認するには、[az storage account show](/cli/azure/storage/account#az-storage-account-show) コマンドを呼び出します。 このコマンドによって、ストレージ アカウントのプロパティとその値のセットが返されます。 暗号化プロパティ内で各サービスの `keyType` フィールドを探し、`Account` に設定されていることを確認します。
 
 ```azurecli
 az storage account show /

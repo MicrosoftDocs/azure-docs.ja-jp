@@ -1,6 +1,6 @@
 ---
-title: Azure Sentinel に Windows ファイアウォール データを接続する | Microsoft Docs
-description: Azure Sentinel に Windows ファイアウォール データを接続する方法について説明します。
+title: Azure Sentinel に Windows Defender ファイアウォール データを接続する | Microsoft Docs
+description: Azure Sentinel で Windows ファイアウォール コネクタを有効にすると、Log Analytics エージェントがインストールされている Windows マシンからファイアウォール イベントを簡単にストリーミングできます。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -10,52 +10,78 @@ ms.assetid: 0e41f896-8521-49b8-a244-71c78d469bc3
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 08/05/2020
 ms.author: yelevin
-ms.openlocfilehash: 5d2f68261143c3fc5bbcda0b739af17251eeee63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b2cf984e629d6b86beef9292dac819b554f49749
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588061"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850697"
 ---
-# <a name="connect-windows-firewall"></a>Windows ファイアウォールの接続
+# <a name="connect-windows-defender-firewall-with-advanced-security-to-azure-sentinel"></a>セキュリティが強化された Windows Defender ファイアウォールを Azure Sentinel に接続する
 
+[セキュリティが強化された Windows Defender ファイアウォール](https://docs.microsoft.com/windows/security/threat-protection/windows-firewall/windows-firewall-with-advanced-security) コネクタを使用すると、Azure Sentinel でワークスペース内の任意の Windows コンピューターから、セキュリティが強化された Windows Defender ファイアウォールのログを簡単に取り込むことができます。 この接続により、ブック内の Windows ファイアウォール イベントを表示して分析したり、これをカスタム アラートの作成に使用したり、セキュリティ調査に役立てたりしながら、組織のネットワークについての分析情報を手に入れ、セキュリティ運用機能を向上させることができます。 
 
-
-Windows ファイアウォールのログが Azure Sentinel ワークスペースに接続されている場合、Windows ファイアウォール コネクタを使用すると、それらのログを簡単に接続できます。 この接続により、ダッシュボードを表示し、カスタム アラートを作成し、調査を改善することができます。 これにより、組織のネットワークに関するより詳しい分析情報が得られ、セキュリティ運用機能が向上します。 ソリューションは、Log Analytics エージェントがインストールされている Windows マシンから Windows ファイアウォール イベントを収集します。 
-
+ソリューションは、Log Analytics エージェントがインストールされている Windows マシンから Windows ファイアウォール イベントを収集します。 
 
 > [!NOTE]
 > - データは、Azure Sentinel を実行しているワークスペースの地理的な場所に格納されます。
+>
 > - Azure Sentinel と Azure Security Center が同じワークスペースに収集される場合、このコネクタを介して Windows ファイアウォールソリューションを有効にする必要はありません。 この設定を有効にすると、重複したデータは発生しません。 
+
+## <a name="prerequisites"></a>前提条件
+
+- 監視するマシンが接続されているワークスペースの読み取りと書き込み権限を持っている必要があります。
+
+- **Azure Sentinel** ロールに加えて、そのワークスペースの SecurityInsights ソリューションで **Log Analytics 共同作成者**ロールに割り当てられている必要があります。 [詳細情報](../role-based-access-control/built-in-roles.md#log-analytics-contributor)
 
 ## <a name="enable-the-connector"></a>コネクタを有効にする 
 
-1. Azure Sentinel ポータルで **[データ コネクタ]** を選択し、次に **[Windows ファイアウォール]** タイルをクリックします。 
-1.  Windows マシンが Azure にある場合は、次の手順を実行します。
-    1. **[Install agent on Azure Windows virtual machine]\(Azure Windows 仮想マシンにエージェントをインストールする\)** をクリックします。
-    1. **[仮想マシン]** 一覧で、Azure Sentinel にストリーミングする Windows マシンを選択します。 これが Windows VM であることを確認します。
-    1. 開いているその VM のウィンドウで、 **[接続]** をクリックします。  
-    1. **[Windows firewall connector]\(Windows ファイアウォール コネクタ\)** ウィンドウで **[Enable]\(有効にする\)** をクリックします。 
+1. Azure Sentinel ポータルのナビゲーション メニューから **[Data connectors]\(データ コネクタ\)** を選択します。
 
-2. Windows マシンが Azure VM ではない場合は、次の手順を実行します。
-    1. **[Install agent on non-Azure machines]\(非 Azure マシンにエージェントをインストールする\)** をクリックします。
-    1. **[ダイレクト エージェント]** ウィンドウで、 **[Download Windows agent (64 bit)]\(Windows エージェントのダウンロード (64 ビット)\)** または **[Download Windows agent (32 bit)]\(Windows エージェントのダウンロード (32 ビット)\)** を選択します。
-    1. お使いの Windows マシンにエージェントをインストールします。 **ワークスペース ID**、**主キー**、**2 次キー**をコピーし、インストール中に入力を要求されたらこれらを使用します。
+1. コネクタ ギャラリーから **[Windows ファイアウォール]** を選択し、 **[Open connector page]\(コネクタ ページを開く\)** をクリックしします。
 
-4. ストリーミングするデータの種類を選択します。
-5. **[Install solution]\(ソリューションのインストール\)** をクリックします。
-6. Log Analytics で Windows ファイアウォールに関連するスキーマを使用するために、**SecurityEvent** を検索します。
+### <a name="instructions-tab"></a>[手順] タブ
+
+- **Windows マシンが Azure にある場合は、次の手順を実行します。**
+
+    1. **[Install agent on Azure Windows Virtual Machine]\(Azure Windows Virtual Machine にエージェントをインストールする\)** をクリックします。
+
+    1. 表示される **[Download & install agent for Azure Windows Virtual machines]\(Azure Windows Virtual Machine 用のエージェントをダウンロードしてインストールする\) >** リンクをクリックします。
+
+    1. **[仮想マシン]** 一覧で、Azure Sentinel にストリーミングする Windows マシンを選択します。 ([OS] 列フィルターで **Windows** を選択して、Windows VM のみが表示されるようにすることができます)。
+
+    1. 開いているその VM のウィンドウで、 **[接続]** をクリックします。
+
+    1. **[仮想マシン]** ウィンドウに戻り、接続する他のすべての VM に対して前の 2 つの手順を繰り返します。 完了したら、 **[Windows ファイアウォール]** ウィンドウに戻ります。
+
+- **Windows マシンが Azure VM ではない場合は、次の手順を実行します。**
+
+    1. **[Azure 以外の Windows マシンにエージェントをインストールする]** を選択します。
+
+    1. 表示される **[Download & install agent for non-Azure Windows machines]\(Azure 以外の Windows Machine 用のエージェントをダウンロードしてインストールする\) >** リンクをクリックします。
+
+    1. **[エージェント管理]** ウィンドウで、必要に応じて **[Download Windows Agent (64 bit)]\(Windows エージェントのダウンロード (64 ビット)\)** または **[Download Windows Agent (32 bit)]\(Windows エージェントのダウンロード (32 ビット)\)** のいずれかを選択します。
+
+    1. **[ワークスペース ID]** 、 **[主キー]** 、および **[セカンダリ キー]** 文字列をテキスト ファイルにコピーします。 そのファイルとダウンロードしたインストール ファイルを Windows マシンにコピーします。 インストール ファイルを実行し、メッセージが表示されたら、インストール時にテキスト ファイルに ID とキー文字列を入力します。
+
+    1. **[Windows ファイアウォール]** ウィンドウに戻ります。
+
+1. **[Install solution]\(ソリューションのインストール\)** をクリックします。
+
+### <a name="next-steps-tab"></a>[次のステップ] タブ
+
+- Windows ファイアウォールのログ データに関する分析情報を得るには、**Windows ファイアウォール** データ コネクタにバンドルされている使用可能な推奨ブックとクエリ サンプルを参照してください。
+
+- **[ログ]** で Windows ファイアウォールのデータのクエリを実行するには、クエリ ウィンドウで「**WindowsFirewall**」と入力します。
 
 ## <a name="validate-connectivity"></a>接続の検証
-
-ログが Log Analytics に表示され始めるまで、20 分以上かかる場合があります。 
-
-
+ 
+Windows ファイアウォールのログはローカル ログ ファイルが容量に達した場合にのみ Azure Sentinel に送信されるため、ログを既定のサイズである 4096 KB のままにすると、多くの場合、コレクションの待機時間が長くなります。 ログ ファイルのサイズを小さくすることで、待機時間を短縮できます。 [Windows ファイアウォール ログを構成する](https://docs.microsoft.com/windows/security/threat-protection/windows-firewall/configure-the-windows-firewall-log)手順を参照してください。 ログ サイズに最小値 (1 KB) を定義することで収集の待機時間を実質的に解消することができますが、これはローカル コンピューターのパフォーマンスに悪影響を及ぼす可能性があることに注意してください。 
 
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Windows ファイアウォールを Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。

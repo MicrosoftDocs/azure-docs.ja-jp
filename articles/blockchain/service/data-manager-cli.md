@@ -2,14 +2,14 @@
 title: Azure CLI を使用してブロックチェーン データ マネージャーを構成する - Azure Blockchain Service
 description: Azure CLI を使用して、Azure Blockchain Service 用のブロックチェーン データ マネージャーを作成および管理します。
 ms.date: 03/30/2020
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: e490803fabeed7d6234bd6984acbfb9f5270e0c0
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: f067f4413f6ad8541cd36a7581f9243bed4e195f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81254412"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023740"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>Azure CLI を使用してブロックチェーン データ マネージャーを構成する
 
@@ -25,7 +25,7 @@ ms.locfileid: "81254412"
 
 ## <a name="prerequisites"></a>前提条件
 
-* 最新の [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) をインストールし、`az login` を使用してサインインします。
+* 最新の [Azure CLI](/cli/azure/install-azure-cli) をインストールし、`az login` を使用してサインインします。
 * 「[Quickstart: Visual Studio Code を使用して Azure Blockchain Service コンソーシアム ネットワークに接続する](connect-vscode.md)」を完了してください。 Blockchain Data Manager を使用する場合は、Azure Blockchain Service *Standard* レベルが推奨されます。
 * [Event Grid トピック](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)を作成する
 * [Azure Event Grid のイベント ハンドラー](../../event-grid/event-handlers.md)について学習する
@@ -36,11 +36,11 @@ Azure Cloud Shell は無料のインタラクティブ シェルです。この�
 
 Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 [https://shell.azure.com/bash](https://shell.azure.com/bash) に移動して、別のブラウザー タブで Cloud Shell を起動することもできます。 **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell に貼り付けてから、Enter キーを押して実行します。
 
-CLI をローカルにインストールして使用する場合、このクイックスタートでは、Azure CLI バージョン 2.0.51 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
+CLI をローカルにインストールして使用する場合、このクイックスタートでは、Azure CLI バージョン 2.0.51 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[az group create](https://docs.microsoft.com/cli/azure/group) コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+[az group create](/cli/azure/group) コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive
 az group create --name myRG --location eastus
@@ -133,7 +133,7 @@ az resource create \
 
 ### <a name="input-examples"></a>入力の例
 
-\<ブロックチェーン メンバー\>に接続されている*米国東部*リージョン内に入力リソースを作成する構成 JSON の例。
+\<Blockchain member\> に接続されている*米国東部*リージョン内に入力リソースを作成する構成 JSON の例。
 
 ``` json
 {
@@ -151,7 +151,7 @@ az resource create \
 |---------|-------------|
 | location | 入力リソースの作成先のリージョン。 |
 | inputType | Azure Blockchain Service のメンバーの台帳の種類。 現時点では、**Ethereum** がサポートされています。 |
-| resourceId | 入力接続先のトランザクション ノード。 \<Subscription ID\>、\<Resource group\>、および \<Blockchain member\> を、トランザクション ノード リソースの値で置き換えます。 入力は、Azure Blockchain Service メンバーの既定のトランザクション ノードに接続します。 |
+| resourceId | 入力接続先のトランザクション ノード。 \<Subscription ID\>、\<Resource group\>、\<Blockchain member\> をトランザクション ノード リソースの値に置き換えます。 入力は、Azure Blockchain Service メンバーの既定のトランザクション ノードに接続します。 |
 
 構成用の JSON 文字列を使用して、*mywatcher* 用に *myInput* という名前の入力を作成します。
 
@@ -205,7 +205,7 @@ az resource create \
 
 ### <a name="output-examples"></a>出力の例
 
-\<event grid topic\> という名前のイベント グリッド トピックに接続される出力リソースを*米国東部*リージョン内に作成する構成 JSON の例。
+\<event grid topic\> という名前の Event Grid トピックに接続されている*米国東部*リージョン内に出力リソースを作成する構成 JSON の例。
 
 ``` json
 {
@@ -223,7 +223,7 @@ az resource create \
 |---------|-------------|
 | location | 出力リソースの作成先のリージョン。 |
 | outputType | 出力の種類。 現時点では **EventGrid** がサポートされています。 |
-| resourceId | 出力の接続先となるリソース。 \<Subscription ID\>、\<Resource group\>、および \<Blockchain member\> を、イベント グリッド リソースの値で置き換えます。 |
+| resourceId | 出力の接続先となるリソース。 \<Subscription ID\>、\<Resource group\>、\<Blockchain member\> を Event Grid リソースの値に置き換えます。 |
 
 JSON 構成文字列を使用して、イベント グリッド トピックに接続する *mywatcher* 用に、*myoutput* という名前の出力を作成します。
 
@@ -348,7 +348,7 @@ az resource invoke-action \
 | パラメーター | 説明 |
 |-----------|-------------|
 | action | **start** を使用してウォッチャーを実行します。 |
-| ids | ウォッチャーのリソース ID。 \<Subscription ID\>、\<Resource group\>、および \<Watcher name\> を、ウォッチャー リソースの値で置き換えます。|
+| ids | ウォッチャーのリソース ID。 \<Subscription ID\>、\<Resource group\>、\<Watcher name\> をウォッチャー リソースの値に置き換えます。|
 
 ### <a name="start-instance-example"></a>インスタンス開始の例
 
@@ -373,7 +373,7 @@ az resource invoke-action \
 | パラメーター | 説明 |
 |-----------|-------------|
 | action | **stop** を使用してウォッチャーを停止します。 |
-| ids | ウォッチャーの名前。 \<Subscription ID\>、\<Resource group\>、および \<Watcher name\> を、ウォッチャー リソースの値で置き換えます。 |
+| ids | ウォッチャーの名前。 \<Subscription ID\>、\<Resource group\>、\<Watcher name\> をウォッチャー リソースの値に置き換えます。 |
 
 ### <a name="stop-watcher-example"></a>ウォッチャー停止の例
 

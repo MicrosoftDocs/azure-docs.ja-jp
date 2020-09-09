@@ -7,32 +7,41 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 6961b7bd94c9b3fe70365055851c488efa2cbeca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2ef7095d186902425adb5065c470325be1283023
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79480013"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475738"
 ---
-# <a name="azure-monitor-logs-connector-for-logic-apps-and-flow"></a>Logic Apps および Flow 用の Azure Monitor Logs コネクタ
-[Azure Logic Apps](/azure/logic-apps/) と [Power Automate](https://ms.flow.microsoft.com) を使用すると、各種サービス用の何百ものアクションを使用して自動化されたワークフローを作成できます。 Azure Monitor Logs コネクタを使用すると、Azure Monitor 内の Log Analytics ワークスペースまたは Application Insights アプリケーションからデータを取得するワークフローを作成できます。 この記事では、コネクタに含まれるアクションについて説明し、このデータを使用してワークフローを作成するためのチュートリアルを提供します。
+# <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>Logic Apps および Power Automate の Azure Monitor Logs コネクタ
+[Azure Logic Apps](../../logic-apps/index.yml) と [Power Automate](https://flow.microsoft.com) を使用すると、各種サービス用の何百ものアクションを使用して自動化されたワークフローを作成できます。 Azure Monitor Logs コネクタを使用すると、Azure Monitor 内の Log Analytics ワークスペースまたは Application Insights アプリケーションからデータを取得するワークフローを作成できます。 この記事では、コネクタに含まれるアクションについて説明し、このデータを使用してワークフローを作成するためのチュートリアルを提供します。
 
 たとえば、ロジック アプリを作成して、Office 365 からの電子メール通知の Azure Monitor ログ データを使用したり、Azure DevOps でバグを作成したり、Slack メッセージを投稿したりできます。  簡単なスケジュールまたは接続されたサービスのアクション (メールやツイートを受信したときなど) からワークフローをトリガーできます。 
+
+## <a name="connector-limits"></a>コネクタの制限
+Azure Monitor Logs コネクタには次の制限があります。
+* 最大データ サイズ:16 MB
+* クエリ応答の最大サイズ 100 MB
+* レコードの最大数:500,000
+* クエリの最大タイムアウト 110 秒。
+
+使用するデータとクエリのサイズによっては、コネクタがその上限に達し、エラーが発生することがあります。 このような問題は、実行頻度を増やし、照会するデータを減らすようにトリガーの繰り返しを調整することで回避できます。 返すレコードと列が少なくなるようにデータを集計するクエリを使用できます。
 
 ## <a name="actions"></a>Actions
 次の表では、Azure Monitor Logs コネクタに含まれるアクションについて説明します。 両方とも、Log Analytics ワークスペースまたは Application Insights アプリケーションに対してログ クエリを実行できます。 違いは、データが返される方法です。
 
 > [!NOTE]
-> Azure Monitor Logs コネクタは、[Azure Log Analytics コネクタ](https://docs.microsoft.com/connectors/azureloganalytics/)および [Azure Application Insights コネクタ](https://docs.microsoft.com/connectors/applicationinsights/)に置き換わるものです。 このコネクタはその他のものと同じ機能を提供し、Log Analytics ワークスペースまたは Application Insights アプリケーションに対してクエリを実行する場合に推奨される方法です。
+> Azure Monitor Logs コネクタは、[Azure Log Analytics コネクタ](/connectors/azureloganalytics/)および [Azure Application Insights コネクタ](/connectors/applicationinsights/)に置き換わるものです。 このコネクタはその他のものと同じ機能を提供し、Log Analytics ワークスペースまたは Application Insights アプリケーションに対してクエリを実行する場合に推奨される方法です。
 
 
 | アクション | 説明 |
 |:---|:---|
-| [クエリの実行と結果の一覧表示](https://docs.microsoft.com/connectors/azuremonitorlogs/#run-query-and-list-results) | 各行を独自のオブジェクトとして返します。 このアクションは、残りのワークフローで各行を個別に操作する場合に使用します。 アクションの後には、通常、[For each アクティビティ](../../logic-apps/logic-apps-control-flow-loops.md#foreach-loop)が続きます。 |
-| [クエリの実行と結果の視覚化](https://docs.microsoft.com/connectors/azuremonitorlogs/#run-query-and-visualize-results) | 結果セット内のすべての行を 1 つの書式設定されたオブジェクトとして返します。 このアクションは、結果をメールで送信するなど、残りのワークフローで結果セットをまとめて使用する場合に使用します。  |
+| [クエリの実行と結果の一覧表示](/connectors/azuremonitorlogs/#run-query-and-list-results) | 各行を独自のオブジェクトとして返します。 このアクションは、残りのワークフローで各行を個別に操作する場合に使用します。 アクションの後には、通常、[For each アクティビティ](../../logic-apps/logic-apps-control-flow-loops.md#foreach-loop)が続きます。 |
+| [クエリの実行と結果の視覚化](/connectors/azuremonitorlogs/#run-query-and-visualize-results) | 結果セット内のすべての行を 1 つの書式設定されたオブジェクトとして返します。 このアクションは、結果をメールで送信するなど、残りのワークフローで結果セットをまとめて使用する場合に使用します。  |
 
 ## <a name="walkthroughs"></a>チュートリアル
-次のチュートリアルでは、Azure Logic Apps での Azure Monitor コネクタの使用方法について説明します。 これらの同じ例を Power Automate で実行できます。唯一の違いは、初期ワークフローの作成と完了時の実行方法です。 ワークフローおよびアクションの構成は、どちらも同じです。 作業を開始する場合は、「[Power Automate でテンプレートからフローを作成する](https://docs.microsoft.com/power-automate/get-started-logic-template)」を参照してください。
+次のチュートリアルでは、Azure Logic Apps での Azure Monitor コネクタの使用方法について説明します。 これらの同じ例を Power Automate で実行できます。唯一の違いは、初期ワークフローの作成と完了時の実行方法です。 ワークフローおよびアクションの構成は、どちらも同じです。 作業を開始する場合は、「[Power Automate でテンプレートからフローを作成する](/power-automate/get-started-logic-template)」を参照してください。
 
 
 ### <a name="create-a-logic-app"></a>ロジック アプリの作成
@@ -116,6 +125,5 @@ Event
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Monitor のログ クエリ](../log-query/log-query-overview.md)についての詳細を見る。
-- [Logic Apps](/azure/logic-apps/) についての詳細を見る
-- [Microsoft Flow](https://ms.flow.microsoft.com)についての詳細を見る
-
+- [Logic Apps](../../logic-apps/index.yml) についての詳細を見る
+- [Power Automate](https://flow.microsoft.com) についての詳細を見る。

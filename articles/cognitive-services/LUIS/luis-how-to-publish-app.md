@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
-ms.date: 05/07/2020
+ms.topic: how-to
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: b342c4319064bd00681c914585e541ab0bc3e17e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: e9c8b607b1dc3f7f67ee1fdad353d15023318947
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585659"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84340693"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>アクティブでトレーニング済みのアプリをステージング エンドポイントまたは運用環境エンドポイントに発行する
 
@@ -57,7 +57,7 @@ ms.locfileid: "83585659"
 スロットを選択したら、次のように発行の設定を構成します。
 
 * センチメント分析
-* スペル修正 - v2 予測エンドポイントのみ
+* [スペル修正](luis-tutorial-bing-spellcheck.md) - v2 予測エンドポイントのみ
 * 音声認識の準備
 
 発行後、これらの設定は **[管理]** セクションの **[Publish settings]\(発行の設定\)** ページで確認できます。 発行ごとに設定を変更できます。 発行を取り消すと、発行中に加えた変更も取り消されます。
@@ -78,7 +78,7 @@ Text Analytics キーを指定する必要はなく、Azure アカウントに�
 
 センチメント データは 1 と 0 の間のスコアで、1 に近いほどポジティブなセンチメントを示し、0 に近いほどネガティブな感情を示します。 `positive`、`neutral`、`negative` のセンチメント ラベルは、サポートされているカルチャによって異なります。 現時点では、センチメント ラベルがサポートされているのは英語のみです。
 
-感情分析での JSON エンドポイントの応答の詳細については、「[Sentiment analysis](luis-concept-data-extraction.md#sentiment-analysis)」(感情分析) をご覧ください。
+感情分析での JSON エンドポイントの応答の詳細については、「[Sentiment analysis](luis-reference-prebuilt-sentiment.md)」(感情分析) をご覧ください。
 
 ## <a name="spelling-correction"></a>スペル修正
 

@@ -17,12 +17,12 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0822bdd886a9a29f2cdb6843d3dc4404d7360f32
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: f4253fe52346890eaa993a18e8e9bc9b270bffd7
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261025"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229856"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure Monitor の Azure AD アクティビティ ログ
 
@@ -126,7 +126,7 @@ Azure Active Directory (Azure AD) のアクティビティ ログを複数のエ
 
 
 
-Azure Monitor ログの管理に関連するコストをレビューするには、[Azure Monitor ログでデータ ボリュームと保有期間を制御してコストを管理する方法](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-cost-storage)に関する記事をご覧ください。
+Azure Monitor ログの管理に関連するコストをレビューするには、[Azure Monitor ログでデータ ボリュームと保有期間を制御してコストを管理する方法](../../azure-monitor/platform/manage-cost-storage.md)に関する記事をご覧ください。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -180,13 +180,13 @@ Azure Monitor ログの管理に関連するコストをレビューするには
 
 **Q:現時点ではどの SIEM ツールがサポートされてますか。** 
 
-**A**: **A**: 現在、Azure Monitor は [Splunk](tutorial-integrate-activity-logs-with-splunk.md)、IBM QRadar、[Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory)、[ArcSight](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-arcsight)、LogRhythm、および Logz.io でサポートされています。 コネクタのしくみの詳細については、「[外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md)」を参照してください。
+**A**: **A**: 現在、Azure Monitor は [Splunk](./howto-integrate-activity-logs-with-splunk.md)、IBM QRadar、[Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory)、[ArcSight](./howto-integrate-activity-logs-with-arcsight.md)、LogRhythm、および Logz.io でサポートされています。 コネクタのしくみの詳細については、「[外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md)」を参照してください。
 
 ---
 
 **Q:Azure AD アクティビティ ログを Splunk インスタンスと統合する方法を教えてください。**
 
-**A**: 最初に [Azure AD アクティビティ ログをイベント ハブにルーティング](quickstart-azure-monitor-stream-logs-to-event-hub.md)してから、[アクティビティ ログを Splunk と統合する](tutorial-integrate-activity-logs-with-splunk.md)手順に従ってください。
+**A**: 最初に [Azure AD アクティビティ ログをイベント ハブにルーティング](./tutorial-azure-monitor-stream-logs-to-event-hub.md)してから、[アクティビティ ログを Splunk と統合する](./howto-integrate-activity-logs-with-splunk.md)手順に従ってください。
 
 ---
 
@@ -198,7 +198,7 @@ Azure Monitor ログの管理に関連するコストをレビューするには
 
 **Q:外部の SIEM ツールを使用せずにイベント ハブからデータにアクセスできますか。** 
 
-**A**: はい。 カスタム アプリケーションからログにアクセスするには、[Event Hubs API](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md) を使用します。 
+**A**: はい。 カスタム アプリケーションからログにアクセスするには、[Event Hubs API](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) を使用します。 
 
 ---
 
@@ -206,5 +206,5 @@ Azure Monitor ログの管理に関連するコストをレビューするには
 ## <a name="next-steps"></a>次のステップ
 
 * [アクティビティ ログをストレージ アカウントにアーカイブする](quickstart-azure-monitor-route-logs-to-storage-account.md)
-* [アクティビティ ログをイベント ハブにルーティングする](quickstart-azure-monitor-stream-logs-to-event-hub.md)
+* [アクティビティ ログをイベント ハブにルーティングする](./tutorial-azure-monitor-stream-logs-to-event-hub.md)
 * [アクティビティ ログと Azure Monitor の統合](howto-integrate-activity-logs-with-log-analytics.md)

@@ -7,18 +7,18 @@ author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 3b4362e4c5e69efddfbc99ef0f98ad3c5966165c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a8486ec87b5198231a33b1dab382ba457c8c8066
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450878"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478129"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>方法:iOS/macOS のブラウザーと WebView のカスタマイズ
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7c4f3ec2727d06528eab788a2a24a6190fe26533
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b5438132f32117e0ec48a6f985c3b9d2045a9da2
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606145"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649688"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure における SAP HANA インフラストラクチャの構成と運用
 このドキュメントは、Azure インフラストラクチャの構成と Azure のネイティブ仮想マシン (VM) にデプロイされている SAP HANA システムの運用に関するガイダンスを提供します。 また、ドキュメントには、M128 の VM SKU 向けの SAP HANA スケールアウトの構成情報が含まれます。 このドキュメントは、以下の内容を含む標準の SAP ドキュメントを代替するものではありません。
@@ -32,20 +32,20 @@ ms.locfileid: "81606145"
 ## <a name="prerequisites"></a>前提条件
 このガイドを使用するには、次の Azure コンポーネントに関する基本的な知識が必要です。
 
-- [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
-- [Azure ネットワーキングおよび仮想ネットワーク](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
-- [Azure ストレージ](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks)
+- [Azure Virtual Machines](../../linux/tutorial-manage-vm.md)
+- [Azure ネットワーキングおよび仮想ネットワーク](../../linux/tutorial-virtual-network.md)
+- [Azure ストレージ](../../linux/tutorial-manage-disks.md)
 
-Azure 上の SAP NetWeaver や他の SAP コンポーネントについて詳しくは、[Azure のドキュメント](https://docs.microsoft.com/azure/) に関するページの [Azure 上の SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) に関するセクションをご覧ください。
+Azure 上の SAP NetWeaver や他の SAP コンポーネントについて詳しくは、[Azure のドキュメント](../../../index.yml) に関するページの [Azure 上の SAP](./get-started.md) に関するセクションをご覧ください。
 
 ## <a name="basic-setup-considerations"></a>基本設定の考慮事項
 次のセクションでは、Azure VM に SAP HANA システムをデプロイする際の基本的なセットアップの考慮事項について説明します。
 
 ### <a name="connect-into-azure-virtual-machines"></a>Azure 仮想マシンに接続する
-[Azure 仮想マシンの計画ガイド](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)のページで説明しているように、Azure VM に接続するには 2 つの基本的な方法があります。
+[Azure 仮想マシンの計画ガイド](./planning-guide.md)のページで説明しているように、Azure VM に接続するには 2 つの基本的な方法があります。
 
 - ジャンプ VM または SAP HANA を実行する VM 上で、インターネットとパブリック エンドポイントを介して接続します。
-- [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal) または Azure [ExpressRoute](https://azure.microsoft.com/services/expressroute/) 経由で接続します。
+- [VPN](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) または Azure [ExpressRoute](https://azure.microsoft.com/services/expressroute/) 経由で接続します。
 
 VPN または ExpressRoute 経由でのサイト対サイト接続は運用環境シナリオでは必須です。 このタイプの接続は、SAP ソフトウェアが使用されている場合に運用環境シナリオにフィードする非運用環境シナリオでも必要です。 次の図に、サイト間接続の例を示します。
 
@@ -64,7 +64,7 @@ VPN または ExpressRoute 経由でのサイト対サイト接続は運用環�
 - Azure PowerShell コマンドレット
 - Azure CLI
 
-[SAP Cloud platform](https://cal.sap.com/) を使って Azure VM サービスに完全にインストールされた SAP HANA プラットフォームをデプロイすることもできます。 インストール プロセスについては、「[Azure に SAP S/4HANA または BW/4HANA をデプロイする](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h)」をご覧いただくか、[こちら](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)でリリースされている自動化スクリプトを参照してください。
+[SAP Cloud platform](https://cal.sap.com/) を使って Azure VM サービスに完全にインストールされた SAP HANA プラットフォームをデプロイすることもできます。 インストール プロセスについては、「[Azure に SAP S/4HANA または BW/4HANA をデプロイする](./cal-s4h.md)」をご覧いただくか、[こちら](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)でリリースされている自動化スクリプトを参照してください。
 
 >[!IMPORTANT]
 > M208xx_v2 VM を使用するには、Azure VM イメージ ギャラリーから Linux イメージを選択するときに注意する必要があります。 詳細については、[メモリ最適化された仮想マシンのサイズ](../../mv2-series.md)に関する記事をお読みください。
@@ -79,11 +79,11 @@ Azure の SAP HANA に使用するストレージ構成とストレージの種�
 VPN または ExpressRoute を介して Azure に対するサイト対サイト接続がある場合は、最低 1 つの Azure 仮想ネットワークが仮想ゲートウェイ経由で VPN または ExpressRoute 回線に接続されている必要があります。 シンプルなデプロイでは、Virtual Gateway は、SAP HANA インスタンスもホストしている Azure 仮想ネットワーク (VNet) のサブネットにデプロイできます。 SAP HANA をインストールするには、Azure 仮想ネットワーク内に 2 つのサブネットを追加作成します。 1 つのサブネットは、SAP HANA インスタンスを実行する VM をホストします。 もう 1 つのサブネットは、ジャンプボックスまたは管理 VM を実行し、SAP HANA Studio、他の管理ソフトウェア、またはお使いのアプリケーション ソフトウェアをホストします。
 
 > [!IMPORTANT]
-> 機能やパフォーマンス上の理由から、SAP アプリケーションと、SAP NetWeaver、Hybris、または S/4HANA ベースの SAP システムの DBMS レイヤー間の通信パスで [Azure ネットワーク仮想アプライアンス](https://azure.microsoft.com/solutions/network-appliances/) を構成することはサポートされていません。 SAP アプリケーション レイヤーと DBMS レイヤー間の通信は直接的な通信である必要があります。 Azure ASG および NSG の規則で直接通信が許可されている限り、この制限に[これらの ASG および NSG の規則](https://docs.microsoft.com/azure/virtual-network/security-overview)は含まれません。 NVA がサポートされないその他のシナリオが、Linux Pacemaker クラスター ノードを表す Azure VM と SBD デバイス間の通信パス内にあります (「[SUSE Linux Enterprise Server for SAP Applications 上の Azure VM での SAP NetWeaver の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)」を参照)。 また、Azure VM と Windows Server SOFS セットアップ間の通信パス内にもあります (「[Azure のファイル共有を使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share)」を参照)。 通信パスに NVA があると、2 つの通信パートナー間のネットワーク待ち時間が倍増し、SAP アプリケーション レイヤーと DBMS レイヤー間のクリティカル パスのスループットが制限される場合があります。 顧客に見られる一部のシナリオでは、Linux Pacemaker クラスター ノード間の通信で NVA を通じて SBD デバイスと通信する必要がある場合、NVA が原因で Pacemaker Linux クラスターが失敗することがあります。  
+> 機能やパフォーマンス上の理由から、SAP アプリケーションと、SAP NetWeaver、Hybris、または S/4HANA ベースの SAP システムの DBMS レイヤー間の通信パスで [Azure ネットワーク仮想アプライアンス](https://azure.microsoft.com/solutions/network-appliances/) を構成することはサポートされていません。 SAP アプリケーション レイヤーと DBMS レイヤー間の通信は直接的な通信である必要があります。 Azure ASG および NSG の規則で直接通信が許可されている限り、この制限に[これらの ASG および NSG の規則](../../../virtual-network/security-overview.md)は含まれません。 NVA がサポートされないその他のシナリオが、Linux Pacemaker クラスター ノードを表す Azure VM と SBD デバイス間の通信パス内にあります (「[SUSE Linux Enterprise Server for SAP Applications 上の Azure VM での SAP NetWeaver の高可用性](./high-availability-guide-suse.md)」を参照)。 また、Azure VM と Windows Server SOFS セットアップ間の通信パス内にもあります (「[Azure のファイル共有を使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する](./sap-high-availability-guide-wsfc-file-share.md)」を参照)。 通信パスに NVA があると、2 つの通信パートナー間のネットワーク待ち時間が倍増し、SAP アプリケーション レイヤーと DBMS レイヤー間のクリティカル パスのスループットが制限される場合があります。 顧客に見られる一部のシナリオでは、Linux Pacemaker クラスター ノード間の通信で NVA を通じて SBD デバイスと通信する必要がある場合、NVA が原因で Pacemaker Linux クラスターが失敗することがあります。  
 > 
 
 > [!IMPORTANT]
-> サポートされて**いない**もう 1 つの設計は、SAP アプリケーション レイヤーと DBMS レイヤーを、相互に[ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)されていない異なる Azure 仮想ネットワークに分離することです。 異なる Azure 仮想ネットワークを使用するのではなく、Azure 仮想ネットワーク内のサブネットを使用して、SAP アプリケーション レイヤーと DBMS レイヤーを分離することをお勧めします。 推奨事項に従わず、代わりに 2 つのレイヤーを異なる仮想ネットワークに分離する場合は、2 つの仮想ネットワークを[ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)する必要があります。 2 つの[ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)された Azure 仮想ネットワーク間のネットワーク トラフィックは転送コストの影響を受ける点に注意してください。 SAP アプリケーション レイヤーと DBMS レイヤー間で交換されるデータが膨大でテラバイト規模であり、SAP アプリケーション レイヤーと DBMS レイヤーが 2 つのピアリングされた Azure 仮想ネットワーク間で分離されている場合、相当のコストが蓄積される可能性があります。 
+> サポートされて**いない**もう 1 つの設計は、SAP アプリケーション レイヤーと DBMS レイヤーを、相互に[ピアリング](../../../virtual-network/virtual-network-peering-overview.md)されていない異なる Azure 仮想ネットワークに分離することです。 異なる Azure 仮想ネットワークを使用するのではなく、Azure 仮想ネットワーク内のサブネットを使用して、SAP アプリケーション レイヤーと DBMS レイヤーを分離することをお勧めします。 推奨事項に従わず、代わりに 2 つのレイヤーを異なる仮想ネットワークに分離する場合は、2 つの仮想ネットワークを[ピアリング](../../../virtual-network/virtual-network-peering-overview.md)する必要があります。 2 つの[ピアリング](../../../virtual-network/virtual-network-peering-overview.md)された Azure 仮想ネットワーク間のネットワーク トラフィックは転送コストの影響を受ける点に注意してください。 SAP アプリケーション レイヤーと DBMS レイヤー間で交換されるデータが膨大でテラバイト規模であり、SAP アプリケーション レイヤーと DBMS レイヤーが 2 つのピアリングされた Azure 仮想ネットワーク間で分離されている場合、相当のコストが蓄積される可能性があります。 
 
 SAP HANA を実行するために VM をインストールするとき、VM には以下が必要です。
 
@@ -91,24 +91,24 @@ SAP HANA を実行するために VM をインストールするとき、VM に�
 - 両方の仮想 NIC に対してデプロイされる静的プライベート IP アドレス。
 
 > [!NOTE]
-> Azure を使用して個々の vNIC に静的 IP アドレスを割り当てる必要があります。 ゲスト OS 内の静的 IP アドレスを vNIC に割り当てないでください。 Azure Backup Service のような一部の Azure サービスは、少なくともプライマリ vNIC が、静的 IP アドレスではなく、DHCP に設定されていることに依存します。 「[Azure 仮想マシンのバックアップのトラブルシューティング](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#networking)」というドキュメントも参照してください。 複数の静的 IP アドレスを VM に割り当てる必要がある場合は、複数の vNIC を VM に割り当てる必要があります。
+> Azure を使用して個々の vNIC に静的 IP アドレスを割り当てる必要があります。 ゲスト OS 内の静的 IP アドレスを vNIC に割り当てないでください。 Azure Backup Service のような一部の Azure サービスは、少なくともプライマリ vNIC が、静的 IP アドレスではなく、DHCP に設定されていることに依存します。 「[Azure 仮想マシンのバックアップのトラブルシューティング](../../../backup/backup-azure-vms-troubleshoot.md#networking)」というドキュメントも参照してください。 複数の静的 IP アドレスを VM に割り当てる必要がある場合は、複数の vNIC を VM に割り当てる必要があります。
 >
 >
 
 ただし、永続的なデプロイの場合は、Azure に仮想データセンター ネットワークを作成する必要があります。 このアーキテクチャでは、オンプレミスを別個の Azure VNet に接続する Azure VNet Gateway を切り離すことが推奨されています。 この別個の VNet では、オンプレミスまたはイントラネットのどちらかに流れるすべてのトラフィックがホストされます。 この手法によって、この別個のハブの VNet で Azure の仮想データセンターに流入するトラフィックの監査とログ記録を行うソフトウェアをデプロイすることが可能になります。 そこで、Azure のデプロイに送受信されるトラフィックに関連するすべてのソフトウェアと構成をホストする VNet を 1 つ配置します。
 
-「[Azure 仮想データセンター:ネットワークの観点](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter)」および「[Azure 仮想データセンターとエンタープライズ コントロール プレーン](https://docs.microsoft.com/azure/architecture/vdc/)」の記事に、仮想データセンターの手法と関連する Azure VNet 設計に関する詳細な情報が示されています。
+「[Azure 仮想データセンター:ネットワークの観点](/azure/architecture/vdc/networking-virtual-datacenter)」および「[Azure 仮想データセンターとエンタープライズ コントロール プレーン](/azure/architecture/vdc/)」の記事に、仮想データセンターの手法と関連する Azure VNet 設計に関する詳細な情報が示されています。
 
 
 >[!NOTE]
->[Azure VNet ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)を使用してハブの VNet とスポークの VNet 間を流れるトラフィックによって、追加の[コスト](https://azure.microsoft.com/pricing/details/virtual-network/)という課題が生じます。 これらのコストを基に、VNet ピアリングをバイパスするために、状況に応じて厳格なハブ/スポークのネットワーク設計の実行と、 'スポーク' に接続する複数の [Azure ExpressRoute ゲートウェイ](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways)の実行の間に、妥協点を見出すことを検討する必要があります。 ただし、Azure ExpressRoute ゲートウェイも、追加の[コスト](https://azure.microsoft.com/pricing/details/vpn-gateway/)を発生させます。 また、ネットワーク トラフィックのログ記録、監査、および監視に使用するサードパーティ製のソフトウェアでも、追加のコストが発生する場合があります。 一方の側で生じる VNet ピアリングを通じたデータ交換のコストと、追加の Azure ExpressRoute ゲートウェイおよび追加のソフトウェア ライセンスによって生じるコストに応じて、VNet の代わりにサブネットを分離単位として使用して、1 つの VNet 内でマイクロセグメント化するという判断も可能です。
+>[Azure VNet ピアリング](../../../virtual-network/virtual-network-peering-overview.md)を使用してハブの VNet とスポークの VNet 間を流れるトラフィックによって、追加の[コスト](https://azure.microsoft.com/pricing/details/virtual-network/)という課題が生じます。 これらのコストを基に、VNet ピアリングをバイパスするために、状況に応じて厳格なハブ/スポークのネットワーク設計の実行と、 'スポーク' に接続する複数の [Azure ExpressRoute ゲートウェイ](../../../expressroute/expressroute-about-virtual-network-gateways.md)の実行の間に、妥協点を見出すことを検討する必要があります。 ただし、Azure ExpressRoute ゲートウェイも、追加の[コスト](https://azure.microsoft.com/pricing/details/vpn-gateway/)を発生させます。 また、ネットワーク トラフィックのログ記録、監査、および監視に使用するサードパーティ製のソフトウェアでも、追加のコストが発生する場合があります。 一方の側で生じる VNet ピアリングを通じたデータ交換のコストと、追加の Azure ExpressRoute ゲートウェイおよび追加のソフトウェア ライセンスによって生じるコストに応じて、VNet の代わりにサブネットを分離単位として使用して、1 つの VNet 内でマイクロセグメント化するという判断も可能です。
 
 
-IP アドレスを割り当てるさまざまな方法の概要については、「[Azure における IP アドレスの種類と割り当て方法](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)」をご覧ください。 
+IP アドレスを割り当てるさまざまな方法の概要については、「[Azure における IP アドレスの種類と割り当て方法](../../../virtual-network/public-ip-addresses.md)」をご覧ください。 
 
 SAP HANA を実行している VM では、割り当てられた静的 IP アドレスを使用する必要があります。 これは、HANA の一部の構成属性が IP アドレスを参照するためです。
 
-[Azure ネットワーク セキュリティ グループ (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) を使用して、SAP HANA インスタンスまたはジャンプボックスにルーティングされたトラフィックの送信先を示します。 NSG および今後は[アプリケーションのセキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview#application-security-groups)も、SAP HANA サブネットと管理サブネットに関連付けられます。
+[Azure ネットワーク セキュリティ グループ (NSG)](../../../virtual-network/virtual-network-vnet-plan-design-arm.md) を使用して、SAP HANA インスタンスまたはジャンプボックスにルーティングされたトラフィックの送信先を示します。 NSG および今後は[アプリケーションのセキュリティ グループ](../../../virtual-network/security-overview.md#application-security-groups)も、SAP HANA サブネットと管理サブネットに関連付けられます。
 
 次の図は、ハブとスポークの VNet アーキテクチャに続く SAP HANA の大まかな展開スキーマの概要です。
 
@@ -119,7 +119,7 @@ SAP HANA を実行している VM では、割り当てられた静的 IP アド
 ![サイト対サイト接続を使用しない SAP HANA のデプロイ スキーマの概要](media/hana-vm-operations/hana-simple-networking-dmz.png)
  
 
-「[高可用性のネットワーク仮想アプライアンスをデプロイする](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha)」の記事に、Azure NVA を使用して、ハブとスポークの VNet アーキテクチャを利用せずに、インターネットからのアクセスを制御および監視する方法に関する別の説明があります。
+「[高可用性のネットワーク仮想アプライアンスをデプロイする](/azure/architecture/reference-architectures/dmz/nva-ha)」の記事に、Azure NVA を使用して、ハブとスポークの VNet アーキテクチャを利用せずに、インターネットからのアクセスを制御および監視する方法に関する別の説明があります。
 
 
 ## <a name="configuring-azure-infrastructure-for-sap-hana-scale-out"></a>SAP HANA スケールアウト用に Azure インフラストラクチャを構成する
@@ -140,7 +140,7 @@ Azure VM にスケールアウト構成をデプロイするための最小 OS �
 SAP HANA スケールアウトの VM ノードの基本構成は、次のようになります。
 
 - **/hana/shared** には、Azure NetApp Files を通じて提供されるネイティブ NFS サービスを使用します。 
-- その他のディスク ボリュームはすべて、異なるノード間では共有されず、NFS に基づきません。 非共有の **/hana/data** および **/hana/log** を使用したスケールアウト HANA インストールのインストール構成と手順については、このドキュメントで後述します。 使用できる HANA 認定ストレージについては、記事「[SAP HANA Azure 仮想マシンのストレージ構成](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)」を確認してください。
+- その他のディスク ボリュームはすべて、異なるノード間では共有されず、NFS に基づきません。 非共有の **/hana/data** および **/hana/log** を使用したスケールアウト HANA インストールのインストール構成と手順については、このドキュメントで後述します。 使用できる HANA 認定ストレージについては、記事「[SAP HANA Azure 仮想マシンのストレージ構成](./hana-vm-operations-storage.md)」を確認してください。
 
 
 ボリュームまたはディスクのサイズを設定するときに、ワーカー ノードの数によって決まる必要なサイズについて、[SAP HANA TDI ストレージ要件](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)に関するドキュメントを確認する必要があります。 このドキュメントには、ボリュームの必要な容量を把握するために適用する必要がある数式が記載されています。
@@ -177,7 +177,7 @@ Azure VM インフラストラクチャがデプロイされ、他のすべて�
 - global.ini のパラメーターの最後の変更後、SAP HANA インスタンスを再起動します
 - その他のワーカー ノードを追加します。 <https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.00/en-US/0d9fe701e2214e98ad4f8721f6558c34.html> も参照してください。 インストール中またはローカル hdblcm などの使用後に、SAP HANA インターノード通信の内部ネットワークを指定します。 詳細なドキュメントについては、[SAP ノートの #2183363](https://launchpad.support.sap.com/#/notes/2183363) も参照してください。 
 
-SUSE Linux 上のスタンバイ ノードで SAP HANA スケールアウト システムを設定する方法の詳細については、「[SUSE Linux Enterprise Server 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)」に詳しく記載されています。 Red Hat 向けの同等のドキュメントについては、記事「[Red Hat Enterprise Linux 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)」を参照してください。 
+SUSE Linux 上のスタンバイ ノードで SAP HANA スケールアウト システムを設定する方法の詳細については、「[SUSE Linux Enterprise Server 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする](./sap-hana-scale-out-standby-netapp-files-suse.md)」に詳しく記載されています。 Red Hat 向けの同等のドキュメントについては、記事「[Red Hat Enterprise Linux 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする](./sap-hana-scale-out-standby-netapp-files-rhel.md)」を参照してください。 
 
 
 ## <a name="sap-hana-dynamic-tiering-20-for-azure-virtual-machines"></a>Azure Virtual Machines 用の SAP HANA Dynamic Tiering 2.0
@@ -211,7 +211,7 @@ Azure IaaS では、専用の VM でのみ DT 2.0 がサポートされます。
 - M64-32ms 
 - E32sv3 
 
-VM の種類の説明については、[こちら](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)を参照してください。
+VM の種類の説明については、[こちら](../../sizes-memory.md)を参照してください。
 
 コストを節約するために "ウォーム" データをオフロードするというのが、DT 2.0 の基本的な考え方の場合、対応する VM のサイズを使用するのが妥当です。 可能な組み合わせに関する厳密な規則はありません。 特定の顧客のワークロードによって異なります。
 
@@ -232,7 +232,7 @@ SAP HANA 認定の M シリーズ VM とサポート対象の DT 2.0 VM (M64-32m
 
 専用の VM 上に DT 2.0 をインストールするには、DT 2.0 VM と、最小 10 Gb の SAP HANA VM の間にネットワーク スループットが必要です。 そのため、同じ Azure Vnet 内にすべての VM を配置し、Azure 高速ネットワークを有効にすることが必須です。
 
-Azure 高速ネットワークの詳細については、[こちら](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)を参照してください。
+Azure 高速ネットワークの詳細については、[こちら](../../../virtual-network/create-vm-accelerated-networking-cli.md)を参照してください。
 
 ### <a name="vm-storage-for-sap-hana-dt-20"></a>SAP HANA DT 2.0 用の VM ストレージ
 
@@ -243,9 +243,9 @@ DT 2.0 のベスト プラクティス ガイダンスに従い、ディスク I
 
 DT 2.0 VM に複数の Azure ディスクをアタッチし、OS レベルでソフトウェア RAID (ストライピング) を作成して、VM あたりのディスク スループットの上限に達するようにする必要があります。 この点に関しては、単一の Azure ディスクで VM の上限に達するスループットを提供することはできません。 DT 2.0 を実行するには、Azure Premium Storage が必須です。 
 
-- 利用可能な Azure ディスクの種類の詳細については、[こちら](../../windows/disks-types.md)を参照してください。
-- mdadm でのソフトウェア RAID の作成の詳細については、[こちら](https://docs.microsoft.com/azure/virtual-machines/linux/configure-raid)を参照してください。
-- 最大スループットのストライプ ボリュームを作成するための LVM の構成の詳細については、[こちら](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm)を参照してください。
+- 利用可能な Azure ディスクの種類の詳細については、[こちら](../../disks-types.md)を参照してください。
+- mdadm でのソフトウェア RAID の作成の詳細については、[こちら](../../linux/configure-raid.md)を参照してください。
+- 最大スループットのストライプ ボリュームを作成するための LVM の構成の詳細については、[こちら](../../linux/configure-lvm.md)を参照してください。
 
 サイズの要件に応じて、VM の最大スループットに達するようにするためのさまざまなオプションがあります。 ここでは、VM スループットの上限に達するように DT 2.0 VM の種類ごとに可能なデータ ボリューム ディスク構成を示します。 E32sv3 VM は、より小規模なワークロードのエントリ レベルと見なす必要があります。 十分な速度でないことがわかった場合、VM のサイズを M64-32ms に変更する必要がある可能性があります。
 M64-32ms VM のメモリは多いため、IO 読み込みでは、特に読み取り集中型のワークロードの上限に達しない場合があります。 そのため、顧客固有のワークロードによっては、ストライプ セット内の少ないディスクで十分な場合があります。 しかし、安全策として、最大スループットを保証するために次のディスク構成が選択されています。
@@ -259,7 +259,7 @@ M64-32ms VM のメモリは多いため、IO 読み込みでは、特に読み�
 
 特に読み取り負荷の高いワークロードの場合、IO パフォーマンスを高め、データベース ソフトウェアのデータ ボリュームに関する推奨事項に従って、Azure ホスト キャッシュの "読み取り専用" を有効にすることができます。 一方、トランザクション ログの場合は、Azure ホスト ディスク キャッシュを "なし" にする必要があります。 
 
-ログ ボリュームのサイズについては、データ サイズの 15% のヒューリスティックを開始点とすることをお勧めします。 ログ ボリュームの作成は、コストとスループットの要件に応じて、さまざまな Azure ディスクの種類を使用して行うことができます。 ログ ボリュームの場合、高い I/O スループットが必要です。  VM の種類として M64-32ms を使用している場合は、[書き込みアクセラレータ](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)を有効にすることが必須です。 Azure 書き込みアクセラレータにより、トランザクション ログに最適なディスク書き込み待ち時間が提供されます (M シリーズでのみ利用可能)。 VM の種類ごとのディスクの最大数など、考慮すべきいくつかの項目があります。 書き込みアクセラレータの詳細については、[こちら](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)を参照してください。
+ログ ボリュームのサイズについては、データ サイズの 15% のヒューリスティックを開始点とすることをお勧めします。 ログ ボリュームの作成は、コストとスループットの要件に応じて、さまざまな Azure ディスクの種類を使用して行うことができます。 ログ ボリュームの場合、高い I/O スループットが必要です。  VM の種類として M64-32ms を使用している場合は、[書き込みアクセラレータ](../../how-to-enable-write-accelerator.md)を有効にすることが必須です。 Azure 書き込みアクセラレータにより、トランザクション ログに最適なディスク書き込み待ち時間が提供されます (M シリーズでのみ利用可能)。 VM の種類ごとのディスクの最大数など、考慮すべきいくつかの項目があります。 書き込みアクセラレータの詳細については、[こちら](../../how-to-enable-write-accelerator.md)を参照してください。
 
 
 ログ ボリュームのサイズ変更に関するいくつかの例を次に示します。
@@ -290,9 +290,9 @@ SAP HANA のスケール アウトの場合と同様に、SAP HANA VM と DT 2.0
 ### <a name="back-up-and-restore-operations-on-azure-vms"></a>Azure VM でのバックアップおよび復元操作
 次のドキュメントで、SAP HANA デプロイをバックアップおよび復元する方法を説明しています。
 
-- [SAP HANA のバックアップの概要](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
-- [SAP HANA のファイルレベルのバックアップ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level)
-- [SAP HANA のストレージ スナップショットのベンチマーク](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-storage-snapshots)
+- [SAP HANA のバックアップの概要](./sap-hana-backup-guide.md)
+- [SAP HANA のファイルレベルのバックアップ](./sap-hana-backup-file-level.md)
+- [SAP HANA のストレージ スナップショットのベンチマーク](./sap-hana-backup-guide.md)
 
 
 ### <a name="start-and-restart-vms-that-contain-sap-hana"></a>SAP HANA を含む VM の起動および再起動
@@ -318,11 +318,10 @@ SUSE Linux Enterprise Server または Red Hat を実行している場合は、
 
 ## <a name="next-steps"></a>次の手順
 一覧表示されている記事について理解を深めます
-- [SAP HANA Azure 仮想マシンのストレージ構成](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
-- [SUSE Linux Enterprise Server 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
-- [Red Hat Enterprise Linux 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
-- [SUSE Linux Enterprise Server 上の Azure VM での SAP HANA の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability)
-- [Red Hat Enterprise Linux 上の Azure VM での SAP HANA の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel)
+- [SAP HANA Azure 仮想マシンのストレージ構成](./hana-vm-operations-storage.md)
+- [SUSE Linux Enterprise Server 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする](./sap-hana-scale-out-standby-netapp-files-suse.md)
+- [Red Hat Enterprise Linux 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする](./sap-hana-scale-out-standby-netapp-files-rhel.md)
+- [SUSE Linux Enterprise Server 上の Azure VM での SAP HANA の高可用性](./sap-hana-high-availability.md)
+- [Red Hat Enterprise Linux 上の Azure VM での SAP HANA の高可用性](./sap-hana-high-availability-rhel.md)
 
  
-

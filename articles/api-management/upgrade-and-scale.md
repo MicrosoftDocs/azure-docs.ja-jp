@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 6edb639cacc48e8b59c458bcf0ac9c9c5e07b030
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 93c686fb2688a7a8ae71d8156e6e5c7915d6c604
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203568"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205758"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Azure API Management インスタンスのアップグレードとスケーリングを行う  
 
@@ -84,3 +84,4 @@ Developer レベルへのスケールダウンまたは Developer レベルか�
 
 - [複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法](api-management-howto-deploy-multi-region.md)
 - [Azure API Management サービス インスタンスを自動的にスケーリングする方法](api-management-howto-autoscale.md)
+- [クラウドの支出を最適化して節約する](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

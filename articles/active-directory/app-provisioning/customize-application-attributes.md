@@ -2,20 +2,20 @@
 title: Azure AD 属性マッピングのカスタマイズ | Microsoft Docs
 description: Azure Active Directory における SaaS アプリの属性マッピングとは何かと、この属性マッピングをビジネス ニーズに合わせて変更する方法について説明します。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/03/2019
-ms.author: mimart
-ms.openlocfilehash: 9697bc2abd147a501466ba134f96512fe15173c0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.author: kenwith
+ms.openlocfilehash: 5040fca85857cd131731d67c543c08fb1114ccee
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83639049"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235226"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ
 
@@ -108,7 +108,7 @@ ServiceNow、Box、G Suite などいくつかのアプリケーションでは�
 - Salesforce
 - ServiceNow
 - Workday
-- Azure Active Directory ([Azure AD Graph API の既定の属性](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity)とカスタム ディレクトリ拡張機能がサポートされる)
+- Azure Active Directory ([Azure AD Graph API の既定の属性](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity)とカスタム ディレクトリ拡張機能がサポートされる)
 - [SCIM 2.0](https://tools.ietf.org/html/rfc7643) をサポートするアプリ ([コア スキーマ](https://tools.ietf.org/html/rfc7643)に定義された属性を追加する必要がある)
 
 > [!NOTE]

@@ -2,20 +2,20 @@
 title: Azure Application Insights - 依存関係の自動収集 | Microsoft Docs
 description: Application Insights では、依存関係が自動的に収集されて視覚化されます。
 ms.topic: reference
-author: nikmd23
-ms.author: nimolnar
-ms.date: 04/29/2019
-ms.reviewer: mbullwin
-ms.openlocfilehash: eaafe19f5112b433d50a34aa551aa84d196726a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-dotnet
+author: mrbullwinkle
+ms.author: mbullwin
+ms.date: 05/06/2020
+ms.openlocfilehash: ca1c63f042bd06c19f232c2ff8170d23741e73f2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665818"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936437"
 ---
 # <a name="dependency-auto-collection"></a>依存関係の自動収集
 
-以下に示したのは、アプリケーションのコードに別途変更を加えなくても、現時点で依存関係として自動的に検出することができる依存関係呼び出しの一覧です。 これらの依存関係は、Application Insights の [[アプリケーション マップ]](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) ビューと [[トランザクション診断]](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics) ビューで視覚化されます。 必要な依存関係が以下の一覧にない場合でも、[TrackDependency 呼び出し](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency)を使えば手動で追跡することができます。
+以下に示したのは、アプリケーションのコードに別途変更を加えなくても、現時点で依存関係として自動的に検出することができる依存関係呼び出しの一覧です。 これらの依存関係は、Application Insights の [[アプリケーション マップ]](./app-map.md) ビューと [[トランザクション診断]](./transaction-diagnostics.md) ビューで視覚化されます。 必要な依存関係が以下の一覧にない場合でも、[TrackDependency 呼び出し](./api-custom-events-metrics.md#trackdependency)を使えば手動で追跡することができます。
 
 ## <a name="net"></a>.NET
 
@@ -28,10 +28,15 @@ ms.locfileid: "77665818"
 | <b> 通信ライブラリ</b> |
 | [HttpClient](https://www.microsoft.com/net/) | 4.5 以降、.NET Core 1.1 以降 |
 | [SqlClient](https://www.nuget.org/packages/System.Data.SqlClient) | .NET Core 1.0 以降、NuGet 4.3.0 |
+| [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient/1.1.2)| 1.1.0 - 最新の安定版リリース (下記の「注」を参照)。
 | [EventHubs Client SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | 1.1.0 |
 | [ServiceBus Client SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) | 3.0.0 |
 | <b>ストレージ クライアント</b>|  |
 | ADO.NET | 4.5 以降 |
+
+> [!NOTE]
+> 以前のバージョンの Microsoft.Data.SqlClient には、[既知の問題](https://github.com/microsoft/ApplicationInsights-dotnet/issues/1347)があります。 この問題を軽減するには、1.1.0 以降を使用することをお勧めします。 Entity Framework Core には、Microsoft.Data.SqlClient の最新の安定版リリースが必ずしも付属しているとは限らないので、この問題を回避するには、1.1.0 以降を使用していることを確認することをお勧めします。   
+
 
 ## <a name="java"></a>Java
 | アプリケーション サーバー | バージョン |
@@ -58,7 +63,7 @@ ms.locfileid: "77665818"
 
 > [!NOTE]
 > *リアクティブ プログラミング サポートを除く。
-> <br>†[JVM エージェント](https://docs.microsoft.com/azure/application-insights/app-insights-java-agent#install-the-application-insights-agent-for-java)のインストールが必要。
+> <br>†[JVM エージェント](./java-agent.md#install-the-application-insights-agent-for-java)のインストールが必要。
 
 ## <a name="nodejs"></a>Node.js
 
@@ -84,9 +89,10 @@ ms.locfileid: "77665818"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [.NET](../../azure-monitor/app/asp-net-dependencies.md) のカスタム依存関係追跡を設定します。
-- [Java](../../azure-monitor/app/java-agent.md) のカスタム依存関係追跡を設定します。
-- [OpenCensus Python](../../azure-monitor/app/opencensus-python-dependency.md) のカスタム依存関係追跡を設定します。
-- [カスタム依存関係テレメトリを記述します](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)。
-- Application Insights の型とデータ モデルについては、[データ モデル](../../azure-monitor/app/data-model.md)に関するページを参照してください。
-- Application Insights でサポートされている[プラットフォーム](../../azure-monitor/app/platforms.md)を確認します。
+- [.NET](./asp-net-dependencies.md) のカスタム依存関係追跡を設定します。
+- [Java](./java-agent.md) のカスタム依存関係追跡を設定します。
+- [OpenCensus Python](./opencensus-python-dependency.md) のカスタム依存関係追跡を設定します。
+- [カスタム依存関係テレメトリを記述します](./api-custom-events-metrics.md#trackdependency)。
+- Application Insights の型とデータ モデルについては、[データ モデル](./data-model.md)に関するページを参照してください。
+- Application Insights でサポートされている[プラットフォーム](./platforms.md)を確認します。
+

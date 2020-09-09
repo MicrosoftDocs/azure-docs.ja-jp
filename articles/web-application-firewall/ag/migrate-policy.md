@@ -7,16 +7,16 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 04/16/2020
 ms.author: ant
-ms.openlocfilehash: fb3b922b753b9696aa26ea189597589ecc5772db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eccd6b33353e071a66225279f1f1c150d4bdaafc
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536626"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143852"
 ---
 # <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>Azure PowerShell を使用して Web アプリケーションのファイアウォール ポリシーを移行する
 
-このスクリプトを使用すると、WAF 構成またはカスタム ルールのみの WAF ポリシーを完全な WAF ポリシーに簡単に移行できます。 ポータルに *migrate to WAF policy*\(WAF ポリシーに移行してください\) という警告が表示される場合や、ユーザーが Geomatch カスタム ルール、サイトごとおよび URI ごとの WAF ポリシー、ボット軽減策ルールセットなどの WAF の新しいパブリック プレビュー機能が利用したい場合があります。 これらの機能のいずれかを使用するには、お使いのアプリケーション ゲートウェイに関連付けられた完全な WAF ポリシーが必要です。 
+このスクリプトを使用すると、WAF 構成またはカスタム ルールのみの WAF ポリシーを完全な WAF ポリシーに簡単に移行できます。 ポータルに *migrate to WAF policy*\(WAF ポリシーに移行してください\) という警告が表示される場合や、ユーザーが Geomatch カスタム ルール (プレビュー)、サイトごとおよび URI ごとの WAF ポリシー (プレビュー)、ボット軽減策ルールセット (プレビュー) などの WAF の新しい機能を利用したい場合があります。 これらの機能のいずれかを使用するには、お使いのアプリケーション ゲートウェイに関連付けられた完全な WAF ポリシーが必要です。 
 
 新しい WAF ポリシーの作成の詳細については、「[Application Gateway 用の Web アプリケーション ファイアウォール ポリシーの作成](create-waf-policy-ag.md)」を参照してください。 移行の詳細については、[WAF ポリシーへの移行](create-waf-policy-ag.md#migrate-to-waf-policy)に関する記事を参照してください。
 

@@ -1,6 +1,6 @@
 ---
 title: マップにバブル レイヤーを追加する | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps Web SDK を使用して、マップにバブル レイヤーを追加する方法について学習します。
+description: マップ上のポイントを固定サイズの円としてレンダリングする方法について説明します。 この目的で Azure Maps Web SDK を使用してバブル レイヤーを追加し、カスタマイズする方法を参照してください。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen
-ms.openlocfilehash: 7ae11734eb804715f3eb1b5edcb02fc328dafec8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: 47ee9e67c6885829e3cb0082aea63367da4aa626
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77208558"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006181"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>マップにバブル レイヤーを追加する
 

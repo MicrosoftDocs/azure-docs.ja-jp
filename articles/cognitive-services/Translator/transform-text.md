@@ -10,12 +10,13 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
-ms.openlocfilehash: ba8cf9a25a12ecc261845477c4e32a86f585906e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 16f639a2a263aee286cec8bb0827fa506b50e3df
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592204"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921122"
 ---
 # <a name="how-to-use-the-transformtext-method"></a>TransformText メソッドの使用方法
 

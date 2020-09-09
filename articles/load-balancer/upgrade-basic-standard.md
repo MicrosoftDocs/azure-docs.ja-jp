@@ -4,15 +4,15 @@ description: この記事では、Basic SKU から Standard SKU に Azure Public
 services: load-balancer
 author: irenehua
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: f1c85c98b9ea0dcaa6498622a0667bffba080401
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 66c56ae6730043022a0d8bf3c94f7c6ce14d9852
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858395"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809347"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Azure Public Load Balancer をアップグレードする
 [Azure Standard Load Balancer](load-balancer-overview.md) では、豊富な機能とゾーンの冗長性による高可用性が提供されます。 Load Balancer SKU の詳細については、[比較表](https://docs.microsoft.com/azure/load-balancer/skus#skus)を参照してください。

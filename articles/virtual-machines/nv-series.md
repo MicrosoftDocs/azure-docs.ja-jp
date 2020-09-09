@@ -1,18 +1,18 @@
 ---
 title: NV シリーズ - Azure Virtual Machines
 description: NV シリーズ VM の仕様。
-services: virtual-machines
-author: vikancha
+author: vikancha-MSFT
 ms.service: virtual-machines
-ms.topic: article
+ms.subservice: sizes
+ms.topic: conceptual
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: 7fd9fff87564b790915acf01373c078c2012371e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: jushiman
+ms.openlocfilehash: 6dd912313176eecce1973849875234149700c5e6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78273865"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284780"
 ---
 # <a name="nv-series"></a>NV シリーズ
 

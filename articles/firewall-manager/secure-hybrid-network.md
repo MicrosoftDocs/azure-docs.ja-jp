@@ -1,26 +1,24 @@
 ---
-title: チュートリアル:Azure Firewall Manager プレビューを使用してハブ仮想ネットワークをセキュリティで保護する
+title: チュートリアル:Azure Firewall Manager を使用してハブ仮想ネットワークをセキュリティで保護する
 description: このチュートリアルでは、Azure portal を使用して Azure Firewall Manager で仮想ネットワークにセキュリティを確保する方法について説明します。
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 02/18/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: cdd416bdb833e4784334a6847d724a7375e2ef8d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3d4d1e65c2200aee178abefb46d3e330acbd3108
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77459955"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563634"
 ---
-# <a name="tutorial-secure-your-hub-virtual-network-using-azure-firewall-manager-preview"></a>チュートリアル:Azure Firewall Manager プレビューを使用してハブ仮想ネットワークをセキュリティで保護する 
-
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
+# <a name="tutorial-secure-your-hub-virtual-network-using-azure-firewall-manager"></a>チュートリアル:Azure Firewall Manager を使用してハブ仮想ネットワークをセキュリティで保護する
 
 オンプレミス ネットワークを Azure 仮想ネットワークに接続してハイブリッド ネットワークを作成する場合、ご利用の Azure ネットワーク リソースへのアクセスを制御する機能が、全体的なセキュリティ プランの中で重要な役割を果たします。
 
-Azure Firewall Manager プレビューを使用して、ハブ仮想ネットワークを作成し、プライベート IP アドレス、Azure PaaS、およびインターネットに宛てたハイブリッド ネットワーク トラフィックをセキュリティで保護することができます。 Azure Firewall Manager を使用すれば、許可するネットワーク トラフィックと拒否するネットワーク トラフィックを定義するポリシーを使って、ハイブリッド ネットワークにおけるネットワーク アクセスを制御できます。
+Azure Firewall Manager を使用して、ハブ仮想ネットワークを作成し、プライベート IP アドレス、Azure PaaS、インターネットに宛てたハイブリッド ネットワーク トラフィックをセキュリティで保護することができます。 Azure Firewall Manager を使用すれば、許可するネットワーク トラフィックと拒否するネットワーク トラフィックを定義するポリシーを使って、ハイブリッド ネットワークにおけるネットワーク アクセスを制御できます。
 
 Firewall Manager では、セキュリティ保護付き仮想ハブ アーキテクチャもサポートされます。 セキュリティ保護付き仮想ハブとハブ仮想ネットワーク アーキテクチャの種類の比較については、「[Azure Firewall Manager のアーキテクチャ オプション](vhubs-and-vnets.md)」を参照してください。
 
@@ -444,4 +442,4 @@ SpoketoHub ピアリング上で **[転送されたトラフィックを許可�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [チュートリアル:Azure Firewall Manager プレビューを使用して仮想 WAN をセキュリティで保護する](secure-cloud-network.md)
+> [チュートリアル:Azure Firewall Manager を使用した仮想 WAN のセキュリティ保護](secure-cloud-network.md)

@@ -1,18 +1,18 @@
 ---
-title: ファイルとフォルダーのバックアップに関する一般的な質問
+title: Microsoft Azure Recovery Services (MARS) エージェント – FAQ
 description: Azure Backup を使用したファイルとフォルダーのバックアップに関する一般的な質問に対応します。
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 6e9f265672ff15e40444a46a3e440e73a0051a5b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: e50e424f1a9f044aa1ed8e95c1bce002d134bffe
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81254752"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874624"
 ---
-# <a name="common-questions-about-backing-up-files-and-folders"></a>ファイルとフォルダーのバックアップに関する一般的な質問
+# <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>よく寄せられる質問 - Microsoft Azure Recovery Services (MARS) エージェント
 
-この記事では、[Azure Backup](backup-overview.md) サービスにある Microsoft Azure Recovery Services (MARS) エージェントを使ったファイルとフォルダーのバックアップに関する一般的な質問への回答を示します。
+この記事では、[Azure Backup](backup-overview.md) サービスにある Microsoft Azure Recovery Services (MARS) エージェントを使ったデータのバックアップに関する一般的な質問への回答を示します。
 
 ## <a name="configure-backups"></a>バックアップを構成する
 
@@ -20,9 +20,19 @@ ms.locfileid: "81254752"
 
 Windows Server マシン、System Center DPM、および Microsoft Azure Backup サーバーをバックアップするときに使用される最新の MARS エージェントは、[ダウンロード](https://aka.ms/azurebackup_agent)のページから入手できます。
 
+### <a name="where-can-i-download-the-vault-credentials-file"></a>コンテナー資格情報ファイルはどこでダウンロードできますか。
+
+Azure portal で、お使いのコンテナーの **[プロパティ]** に移動します。 **[Backup の資格情報]** で、 **[既に最新の Recovery Services エージェントを使用しています]** チェック ボックスをオンにします。 **[ダウンロード]** を選択します。
+
+![資格情報のダウンロード](./media/backup-azure-file-folder-backup-faq/download-credentials.png)
+
 ### <a name="how-long-are-vault-credentials-valid"></a>コンテナー資格情報の有効期間はどのくらいですか。
 
 コンテナー資格情報は 10 日後に有効期限が切れます。 資格情報ファイルが期限切れになったら、Azure portal から再度ファイルをダウンロードしてください。
+
+### <a name="what-characters-are-allowed-for-the-passphrase"></a>パスフレーズに許可されるのは、どのような文字ですか。
+
+パスフレーズでは、ASCII 文字セットで [ASCII 値が 127 以下](https://docs.microsoft.com/office/vba/language/reference/user-interface-help/character-set-0127)の文字を使用する必要があります。
 
 ### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>どのようなドライブからファイルとフォルダーをバックアップできますか。
 
@@ -74,11 +84,11 @@ Windows マシンの名前を変更すると、現在構成されているすべ
 
 ### <a name="what-is-the-maximum-file-path-length-for-backup"></a>バックアップするファイル パスの最大長はいくつですか。
 
-MARS エージェントは NTFS に依存しており、[Windows API](/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths) によって制限されているファイルパス長の仕様を利用します。 保護するファイルが許可された値よりも長くなる場合は、親フォルダーまたはディスク ドライブをバックアップします。  
+MARS エージェントは NTFS に依存しており、[Windows API](/windows/win32/FileIO/naming-a-file#fully-qualified-vs-relative-paths) によって制限されているファイルパス長の仕様を利用します。 保護するファイルが許可された値よりも長くなる場合は、親フォルダーまたはディスク ドライブをバックアップします。  
 
 ### <a name="what-characters-are-allowed-in-file-paths"></a>ファイル パスに許可されるのは、どのような文字ですか。
 
-MARS エージェントは NTFS に依存しており、ファイルの名前/パスには[サポートされている文字](/windows/desktop/FileIO/naming-a-file#naming-conventions)を許可します。
+MARS エージェントは NTFS に依存しており、ファイルの名前/パスには[サポートされている文字](/windows/win32/FileIO/naming-a-file#naming-conventions)を許可します。
 
 ### <a name="the-warning-azure-backups-have-not-been-configured-for-this-server-appears"></a>"このサーバーに対して Azure Backups が構成されていない" ことを示す警告が表示されます。
 
@@ -159,32 +169,37 @@ MARS エージェントは NTFS に依存しており、ファイルの名前/�
 
 ### <a name="manage"></a>管理する
 
-**パスフレーズを忘れた場合、復旧できますか?**
+#### <a name="can-i-recover-if-i-forgot-my-passphrase"></a>パスフレーズを忘れた場合、復旧できますか?
+
 Azure Backup エージェントでは、バックアップしたデータを復元中に暗号化を解除するには、パスフレーズ (登録時に指定したもの) が必要です。 忘れたパスフレーズを処理するためのオプションを理解するには、以下のシナリオを確認してください。
 
 | 元のコンピューター <br> " *(バックアップが作成されているソース マシン)* " | Passphrase | 利用可能なオプション |
 | --- | --- | --- |
-| 利用可能 |忘れた |バックアップが作成されている元のコンピューターが利用可能であり、同じ Recovery Services コンテナーにまだ登録されている場合は、次の[手順](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#re-generate-passphrase)に従って、パスフレーズを再生成することができます。  |
-| 忘れた |忘れた |データを復旧できないか、データを利用できません。 |
+| 利用可能 |忘れた |バックアップが作成されている元のコンピューターが利用可能であり、同じ Recovery Services コンテナーにまだ登録されている場合は、次の[手順](./backup-azure-manage-mars.md#re-generate-passphrase)に従って、パスフレーズを再生成することができます。  |
+| 忘れた |忘れた |データを復旧できないか、データを利用できません |
 
 次の条件を考慮してください。
 
-* エージェントをアンインストールして、元の同じコンピューターに再登録する場合は、次のようになります。
+* エージェントをアンインストールして、元の同じマシンに再登録する場合は、次のようになります。
   * "*同じパスフレーズ*" を使用すると、バックアップしたデータを復元することができます。
   * "*異なるパスフレーズ*" を使用すると、バックアップしたデータを復元することができません。
-* "*別のコンピューター*" にエージェントをインストールする場合は、次のようになります。
-  * "*同じパスフレーズ*" (元のコンピューターで使用していたもの) を使用すると、バックアップしたデータを復元することができます。
+* "*別のマシン*" にエージェントをインストールする場合は、次のようになります。
+  * "*同じパスフレーズ*" (元のマシンで使用していたもの) を使用すると、バックアップしたデータを復元することができます。
   * "*異なるパスフレーズ*" を使用すると、バックアップしたデータを復元することができません。
 * 元のコンピューターが破損して、MARS コンソールからパスフレーズを再生成することができないものの、MARS エージェントによって使用される元のスクラッチ フォルダーを復元したり、アクセスしたりすることができる場合は、パスワードを忘れた場合に復元することができる可能性があります。 さらにヘルプが必要な場合は、カスタマー サポートにお問い合わせください。
 
-**バックアップが作成されている元のコンピューターを紛失した場合、復旧するにはどうすればよいですか?**
+#### <a name="how-do-i-recover-if-i-lost-my-original-machine-where-backups-were-taken"></a>バックアップが作成されている元のコンピューターを紛失した場合、復旧するにはどうすればよいですか?
 
 元のコンピューターと同じパスフレーズ (登録時に指定したもの) がある場合は、バックアップされたデータを別のコンピューターに復元できます。 復元オプションを理解するには、以下のシナリオを確認してください。
 
 | 元のコンピューター | Passphrase | 利用可能なオプション |
 | --- | --- | --- |
-| 紛失 |利用可能 |元のコンピューターの登録時に指定したものと同じパスフレーズを持つ別のコンピューターに、MARS エージェントをインストールして登録することができます。 **[復旧オプション]**  >  **[別の場所]** を選択して、復元を実行します。 詳細については、[こちらの記事](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine)を参照してください。
-| 忘れた |忘れた |データを復旧できないか、データを利用できません。 |
+| 紛失 |利用可能 |元のコンピューターの登録時に指定したものと同じパスフレーズを持つ別のコンピューターに、MARS エージェントをインストールして登録することができます。 **[復旧オプション]**  >  **[別の場所]** を選択して、復元を実行します。 詳細については、[こちらの記事](./backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)を参照してください。
+| 忘れた |忘れた |データを復旧できないか、データを利用できません |
+
+### <a name="my-backup-jobs-have-been-failing-or-not-running-for-a-long-time-im-past-the-retention-period-can-i-still-restore"></a>バックアップジョブが失敗したか、長時間実行されていません。 保有期間を過ぎています。 引き続き復元できますか?
+
+安全性対策として、Azure Backup では、保有期間が過ぎていても、最後の回復ポイントが保持されます。 バックアップが再開され、新しい回復ポイントが使用できるようになると、指定した保有期間に従って古い回復ポイントが削除されます。
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>進行中の復元ジョブをキャンセルした場合、どうなりますか。
 

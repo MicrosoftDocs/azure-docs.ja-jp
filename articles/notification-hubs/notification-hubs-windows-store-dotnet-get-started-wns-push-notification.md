@@ -10,17 +10,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: 'mvc, ms.custom: devx-track-csharp'
 ms.date: 12/05/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 12/04/2019
-ms.openlocfilehash: f78f24ee68545b386169e29a5a52ccc572849ad7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 07a0581cd7fe2e7a9c13f860c862e34da3cfd1ca
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80127055"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998290"
 ---
 # <a name="tutorial-send-notifications-to-universal-windows-platform-apps-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム アプリに通知を送信する
 
@@ -43,7 +43,7 @@ ms.locfileid: "80127055"
 
 - **Azure サブスクリプション**。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 - Microsoft Visual Studio 2017 以降。 このチュートリアルの例では、[Visual Studio 2019](https://www.visualstudio.com/products) を使用します。
-- [UWP アプリ開発ツールがインストールされている](https://msdn.microsoft.com/windows/uwp/get-started/get-set-up)
+- [UWP アプリ開発ツールがインストールされている](/windows/uwp/get-started/get-set-up)
 - アクティブな Windows ストア アカウント
 - **[アプリやその他の送信者からの通知を取得する ]** 設定が有効になっていること。 
     - お使いのコンピューターの **[設定]** ウィンドウを起動します。
@@ -191,6 +191,6 @@ notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md)
 <!-- URLs. -->
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
-[toast catalog]: https://msdn.microsoft.com/library/windows/apps/hh761494.aspx
-[tile catalog]: https://msdn.microsoft.com/library/windows/apps/hh761491.aspx
-[badge overview]: https://msdn.microsoft.com/library/windows/apps/hh779719.aspx
+[toast catalog]: /previous-versions/windows/apps/hh761494(v=win.10)
+[tile catalog]: /previous-versions/windows/apps/hh761491(v=win.10)
+[badge overview]: /previous-versions/windows/apps/hh779719(v=win.10)

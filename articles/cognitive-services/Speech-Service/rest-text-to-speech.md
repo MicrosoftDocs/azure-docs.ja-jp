@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 77bba9433052c00df671caf73198ff75356b1c9a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6fafb668ecc2ae36dbe5a6bbc3d1e1d501545b50
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81400171"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056807"
 ---
 # <a name="text-to-speech-rest-api"></a>Text to Speech REST API
 
@@ -178,18 +178,18 @@ Authorization: Bearer [Base64 access_token]
 
 以下に示したのは、それぞれの要求の `X-Microsoft-OutputFormat` ヘッダーで送信することができるオーディオ形式の一覧です。 それぞれビットレートとエンコードの種類が含まれています。 Speech Service では、24 kHz、16 kHz、および 8 kHz のオーディオ出力がサポートされます。
 
-|||
-|-|-|
-| `raw-16khz-16bit-mono-pcm` | `raw-8khz-8bit-mono-mulaw` |
-| `riff-8khz-8bit-mono-alaw` | `riff-8khz-8bit-mono-mulaw` |
-| `riff-16khz-16bit-mono-pcm` | `audio-16khz-128kbitrate-mono-mp3` |
-| `audio-16khz-64kbitrate-mono-mp3` | `audio-16khz-32kbitrate-mono-mp3` |
-| `raw-24khz-16bit-mono-pcm` | `riff-24khz-16bit-mono-pcm` |
-| `audio-24khz-160kbitrate-mono-mp3` | `audio-24khz-96kbitrate-mono-mp3` |
-| `audio-24khz-48kbitrate-mono-mp3` | |
+```output
+raw-16khz-16bit-mono-pcm            raw-8khz-8bit-mono-mulaw
+riff-8khz-8bit-mono-alaw            riff-8khz-8bit-mono-mulaw
+riff-16khz-16bit-mono-pcm           audio-16khz-128kbitrate-mono-mp3
+audio-16khz-64kbitrate-mono-mp3     audio-16khz-32kbitrate-mono-mp3
+raw-24khz-16bit-mono-pcm            riff-24khz-16bit-mono-pcm
+audio-24khz-160kbitrate-mono-mp3    audio-24khz-96kbitrate-mono-mp3
+audio-24khz-48kbitrate-mono-mp3     ogg-24khz-16bit-mono-opus
+```
 
 > [!NOTE]
-> 選択した音声と出力形式のビット レートが異なる場合、オーディオは必要に応じて再サンプリングされます。 ただし、24 kHz の音声では、`audio-16khz-16kbps-mono-siren` や `riff-16khz-16kbps-mono-siren` の出力形式はサポートされていません。
+> 選択した音声と出力形式のビット レートが異なる場合、オーディオは必要に応じて再サンプリングされます。 ogg-24khz-16bit-mono-opus は [OPUS コーデック](https://opus-codec.org/downloads/)でデコードできます
 
 ### <a name="request-body"></a>要求本文
 
@@ -241,6 +241,6 @@ HTTP ステータスが `200 OK` の場合、応答の本文には要求され�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Speech 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services)
+- [無料の Azure アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)してください
 - [長い形式の音声の非同期合成](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
 - [カスタム音声の概要](how-to-custom-voice.md)

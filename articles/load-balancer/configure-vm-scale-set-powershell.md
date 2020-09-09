@@ -4,18 +4,18 @@ description: 既存の Azure Load Balancer で仮想マシン スケール セ�
 author: asudbring
 ms.author: allensu
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/26/2020
-ms.openlocfilehash: 0db09083a2197ce72e6d6eed2381b0308239586e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 919883025075ca38bcef6c23ac744528e7bd5502
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349988"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510064"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-azure-powershell"></a>Azure PowerShell を使用して、既存の Azure Load Balancer で仮想マシン スケール セットを構成する
 
-この記事では、既存の Azure Load Balancer で仮想マシン スケール セットを構成する方法について説明します。 
+この記事では、既存の Azure Load Balancer で仮想マシン スケール セットを構成する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -23,7 +23,7 @@ ms.locfileid: "80349988"
 - 仮想マシン スケール セットがデプロイされるサブスクリプション内の、既存の標準 SKU ロード バランサー。
 - 仮想マシン スケール セット用の Azure Virtual Network。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -64,7 +64,7 @@ New-AzVmss -ResourceGroupName $rsg -Location $loc -VMScaleSetName $vms -VirtualN
 - サブネットの名前 **mySubnet**
 - リソース グループの名前 **myResourceGroup**
 
-```azureppowershell-interactive
+```azurepowershell-interactive
 
 $rsg = "myResourceGroup"
 $loc = "East US 2"
@@ -87,4 +87,3 @@ New-AzVmss -ResourceGroupName $rsg -Location $loc -VMScaleSetName $vms -VirtualN
 
 - [Azure Load Balancer の概要](load-balancer-overview.md)
 - [仮想マシン スケール セットとは](../virtual-machine-scale-sets/overview.md)
-                                

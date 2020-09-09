@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 04/24/2019
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: bb5950360734bc46923ef18424e3ad1ce275ad7a
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: 601a501114d754dc82991a3c19b977c0c63c5bc0
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82652670"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165738"
 ---
 # <a name="considerations-for-using-xamarin-android-with-msalnet"></a>MSAL.NET と共に Xamarin Android を使用する際の考慮事項
 この記事では、Xamarin Android を Microsoft Authentication Library for .NET (MSAL.NET) と共に使用する際の考慮事項について説明します。
@@ -92,7 +92,7 @@ protected override void OnActivityResult(int requestCode,
 
 `android:host=` 値を、Azure portal で登録したパッケージ名に置き換えます。 `android:path=` 値を、Azure portal で登録したキー ハッシュに置き換えます。 署名ハッシュは、URL エンコードであっては "*なりません*"。 署名ハッシュの先頭にスラッシュ (`/`) があることを確認します。
 
-または、*AndroidManifest.xml* を手動で編集するのではなく、[コード でアクティビティを作成](https://docs.microsoft.com/xamarin/android/platform/android-manifest#the-basics)します。 コードでアクティビティを作成するには、まず、`Activity` 属性と `IntentFilter` 属性を含むクラスを作成します。 
+または、*AndroidManifest.xml* を手動で編集するのではなく、[コード でアクティビティを作成](/xamarin/android/platform/android-manifest#the-basics)します。 コードでアクティビティを作成するには、まず、`Activity` 属性と `IntentFilter` 属性を含むクラスを作成します。 
 
 XML ファイルの値を表すクラスの例を次に示します。
 
@@ -145,7 +145,7 @@ var authResult = AcquireTokenInteractive(scopes)
 
 ### <a name="error-the-name-authenticationcontinuationhelper-doesnt-exist-in-the-current-context"></a>エラー:現在のコンテキストに AuthenticationContinuationHelper という名前が存在しません
 
-現在のコンテキストに `AuthenticationContinuationHelper` が存在しないことを示すエラーが発生した場合は、Visual Studio による Android.csproj* ファイルの更新が間違っている可能性があります。 *\<HintPath>* ファイル パスに、*monoandroid90* ではなく *netstandard13* が間違って含まれている場合があります。
+現在のコンテキストに `AuthenticationContinuationHelper` が存在しないことを示すエラーが発生した場合は、Visual Studio による Android.csproj* ファイルの更新が間違っている可能性があります。 場合によっては、 *\<HintPath>* ファイルパスに、*monoandroid90* の代わりに誤って *netstandard13* が含まれていることがあります。
 
 この例には、正しいファイル パスが含まれています。
 

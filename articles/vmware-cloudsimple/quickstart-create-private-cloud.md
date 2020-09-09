@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a2fe7daf1476f19f6a6eea83174342fa1273fe14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 487308aca3231650aee3fac5ae127006649e19b9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81867978"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073909"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>クイックスタート - プライベート クラウドの環境を構成する
 
@@ -148,7 +148,7 @@ VLAN/サブネットが作成されます。  この VLAN ID を使って、プ�
 
 ## <a name="connect-your-environment-to-an-azure-virtual-network"></a>環境を Azure 仮想ネットワークに接続する
 
-CloudSimple では、プライベート クラウドに対する ExpressRoute 回線が提供されます。 Azure 上の仮想ネットワークを ExpressRoute 回線に接続できます。 接続の設定の詳細については、「[Azure Virtual Network Connection using ExpressRoute](https://docs.microsoft.com/azure/vmware-cloudsimple/cloudsimple-azure-network-connection)」 (ExpressRoute を使用した Azure 仮想ネットワークの接続) をご覧ください。
+CloudSimple では、プライベート クラウドに対する ExpressRoute 回線が提供されます。 Azure 上の仮想ネットワークを ExpressRoute 回線に接続できます。 接続の設定の詳細については、「[Azure Virtual Network Connection using ExpressRoute](./cloudsimple-azure-network-connection.md)」 (ExpressRoute を使用した Azure 仮想ネットワークの接続) をご覧ください。
 
 ## <a name="sign-in-to-vcenter"></a>vCenter にサインインする
 

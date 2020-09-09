@@ -8,13 +8,14 @@ ms.author: heidist
 ms.devlang: java
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 02/25/2020
-ms.openlocfilehash: 0b07e934625b09e7f6249dc00865465147f6f0ba
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 06/23/2020
+ms.custom: devx-track-java
+ms.openlocfilehash: e9a2ff5d46557ddf8f5f62b456e8a3d54bf90c55
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77624011"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290347"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>クイック スタート:REST API を使用して Java で Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -22,7 +23,7 @@ ms.locfileid: "77624011"
 > * [C#](search-get-started-dotnet.md)
 > * [Java](search-get-started-java.md)
 > * [ポータル](search-get-started-portal.md)
-> * [PowerShell](search-create-index-rest-api.md)
+> * [PowerShell](./search-get-started-powershell.md)
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
@@ -154,7 +155,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         SearchServiceAdminKey=<YOUR-ADMIN-KEY>
         SearchServiceQueryKey=<YOUR-QUERY-KEY>
         IndexName=hotels-quickstart
-        ApiVersion=2019-05-06
+        ApiVersion=2020-06-30
     ```
 
 ### <a name="add-the-main-method"></a>main メソッドを追加する
@@ -372,7 +373,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. プロジェクトの構造が次のようになっていることを確認します。
 
-    ![プロジェクトのディレクトリ構造](media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png)
+    ![プロジェクトのディレクトリ構造とクラス](media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png)
 
 1. **[Maven]** ツール ウィンドウを開き、次の Maven 目標を実行します: `verify exec:java`
 ![Maven 目標 verify exec:java を実行する](media/search-get-started-java/java-quickstart-execute-maven-goal.png)

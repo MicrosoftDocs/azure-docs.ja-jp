@@ -1,6 +1,6 @@
 ### YamlMime:Landing
-title: Ink Recognizer API のドキュメント
-summary: Ink Recognizer API を使用してデジタル インク認識をアプリとサービスに取り入れる方法について説明します。 この API は、機械学習を使用して、任意のコンテキストで手書きの図形を認識するクラウドベースのサービスです。
+title: Ink Recognizer API のドキュメント (廃止)
+summary: Ink Recognizer API は、2020 年 8 月 26 日にプレビューを終了しました。 既存の Ink Recognizer リソースがある場合は、2021 年 1 月 31 日にサービスが完全に廃止されるまで、引き続き使用できます。 Ink Recognizer API を使用してデジタル インク認識をアプリとサービスに取り入れる方法について説明します。 この API は、機械学習を使用して、任意のコンテキストで手書きの図形を認識するクラウドベースのサービスです。
 metadata:
   title: Ink Recognizer API - チュートリアル、クイックスタート、API リファレンス
   titleSuffix: Azure Cognitive Services
@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/23/2019
   ms.author: aahi
-  ms.openlocfilehash: f7e273639e5a5efd5e52517d9729bb7ba8908604
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: e0886171d074863009dd83163599c888db10e187
+  ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "79415679"
+  ms.lasthandoff: 09/03/2020
+  ms.locfileid: "89419590"
 landingContent:
 - title: Ink Recognizer API について
   linkLists:

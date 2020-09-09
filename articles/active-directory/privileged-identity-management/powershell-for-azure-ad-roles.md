@@ -9,19 +9,19 @@ editor: ''
 ms.service: active-directory
 ms.subservice: pim
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/28/2020
+ms.date: 05/11/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99a6c0153105627e272d05af5514a030577431f7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6792fdc405d539a662c8dc20c04b2891fd036704
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233994"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421911"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management の Azure AD ロールのための PowerShell
 
@@ -36,14 +36,18 @@ ms.locfileid: "82233994"
 
 1. Azure AD Preview モジュールをインストールします。
 
-        Install-module AzureADPreview
+    ```powershell
+    Install-module AzureADPreview
+    ```
 
 1. 続行する前に、必要なロールのアクセス許可があることを確認してください。 ロールの割り当てやロール設定の更新などの管理タスクを実行しようとしている場合は、全体管理者ロールまたは特権ロール管理者ロールのどちらかを持っていることを確認してください。 自分自身の割り当てをアクティブ化するだけの場合は、既定のユーザー アクセス許可を超えるアクセス許可は必要ありません。
 
 1. Azure AD に接続します。
 
-        $AzureAdCred = Get-Credential  
-        Connect-AzureAD -Credential $AzureAdCred
+    ```powershell
+    $AzureAdCred = Get-Credential  
+    Connect-AzureAD -Credential $AzureAdCred
+    ```
 
 1. Azure AD 組織のテナント ID を検索するには、 **[Azure Active Directory]**  >  **[プロパティ]**  >  **[ディレクトリ ID]** に移動します。 [コマンドレット] セクションで resourceId を指定する必要がある場合は、常にこの ID を使用します。
 
@@ -58,7 +62,9 @@ ms.locfileid: "82233994"
 
 この roleDefinitionId は Azure AD 組織に固有のものであり、ロール管理 API によって返される roleDefinitionId とは異なります。
 
-    Get-AzureADMSPrivilegedRoleDefinition -ProviderId aadRoles -ResourceId 926d99e7-117c-4a6a-8031-0cc481e9da26
+```powershell
+Get-AzureADMSPrivilegedRoleDefinition -ProviderId aadRoles -ResourceId 926d99e7-117c-4a6a-8031-0cc481e9da26
+```
 
 結果:
 
@@ -68,15 +74,21 @@ ms.locfileid: "82233994"
 
 Azure AD 組織内のすべてのロールの割り当てを取得するには、次のコマンドレットを使用します。
 
-    Get-AzureADMSPrivilegedRoleAssignment -ProviderId "aadRoles" -ResourceId "926d99e7-117c-4a6a-8031-0cc481e9da26"
+```powershell
+Get-AzureADMSPrivilegedRoleAssignment -ProviderId "aadRoles" -ResourceId "926d99e7-117c-4a6a-8031-0cc481e9da26"
+```
 
 特定のユーザーに対するすべてのロールの割り当てを取得するには、次のコマンドレットを使用します。 この一覧は、Azure AD ポータルでは [自分のロール] とも呼ばれています。 ここでの唯一の違いは、サブジェクト ID にフィルターを追加したことです。 このコンテキストでのサブジェクト ID は、ユーザー ID またはグループ ID です。
 
-    Get-AzureADMSPrivilegedRoleAssignment -ProviderId "aadRoles" -ResourceId "926d99e7-117c-4a6a-8031-0cc481e9da26" -Filter "subjectId eq 'f7d1887c-7777-4ba3-ba3d-974488524a9d'" 
+```powershell
+Get-AzureADMSPrivilegedRoleAssignment -ProviderId "aadRoles" -ResourceId "926d99e7-117c-4a6a-8031-0cc481e9da26" -Filter "subjectId eq 'f7d1887c-7777-4ba3-ba3d-974488524a9d'" 
+```
 
 特定のロールに対するすべてのロールの割り当てを取得するには、次のコマンドレットを使用します。 ここでの roleDefinitionId は、前のコマンドレットによって返される ID です。
 
-    Get-AzureADMSPrivilegedRoleAssignment -ProviderId "aadRoles" -ResourceId "926d99e7-117c-4a6a-8031-0cc481e9da26" -Filter "roleDefinitionId eq '0bb54a22-a3df-4592-9dc7-9e1418f0f61c'"
+```powershell
+Get-AzureADMSPrivilegedRoleAssignment -ProviderId "aadRoles" -ResourceId "926d99e7-117c-4a6a-8031-0cc481e9da26" -Filter "roleDefinitionId eq '0bb54a22-a3df-4592-9dc7-9e1418f0f61c'"
+```
 
 コマンドレットを実行すると、次に示すロールの割り当てオブジェクトの一覧が表示されます。 サブジェクト ID は、ロールが割り当てられているユーザーのユーザー ID です。 割り当ての状態は、アクティブまたは有資格のどちらかになります。 ユーザーがアクティブで、LinkedEligibleRoleAssignmentId フィールドに ID がある場合は、ロールが現在アクティブ化されていることを意味します。
 
@@ -88,14 +100,18 @@ Azure AD 組織内のすべてのロールの割り当てを取得するには�
 
 資格のある割り当てを作成するには、次のコマンドレットを使用します。
 
-    Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId 'aadRoles' -ResourceId '926d99e7-117c-4a6a-8031-0cc481e9da26' -RoleDefinitionId 'ff690580-d1c6-42b1-8272-c029ded94dec' -SubjectId 'f7d1887c-7777-4ba3-ba3d-974488524a9d' -Type 'adminAdd' -AssignmentState 'Eligible' -schedule $schedule -reason "dsasdsas" 
+```powershell
+Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId 'aadRoles' -ResourceId '926d99e7-117c-4a6a-8031-0cc481e9da26' -RoleDefinitionId 'ff690580-d1c6-42b1-8272-c029ded94dec' -SubjectId 'f7d1887c-7777-4ba3-ba3d-974488524a9d' -Type 'adminAdd' -AssignmentState 'Eligible' -schedule $schedule -reason "dsasdsas" 
+```
 
 スケジュールは、割り当ての開始時刻と終了時刻を定義するオブジェクトで、次の例のように作成できます。
 
-    $schedule = New-Object Microsoft.Open.MSGraph.Model.AzureADMSPrivilegedSchedule
-    $schedule.Type = "Once"
-    $schedule.StartDateTime = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
-    $schedule.endDateTime = "2020-07-25T20:49:11.770Z"
+```powershell
+$schedule = New-Object Microsoft.Open.MSGraph.Model.AzureADMSPrivilegedSchedule
+$schedule.Type = "Once"
+$schedule.StartDateTime = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+$schedule.endDateTime = "2020-07-25T20:49:11.770Z"
+```
 > [!Note]
 > endDateTime の値が null に設定されている場合、永続的な割り当てを示します。
 
@@ -103,7 +119,9 @@ Azure AD 組織内のすべてのロールの割り当てを取得するには�
 
 資格のある割り当てをアクティブ化するには、次のコマンドレットを使用します。
 
-    Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId 'aadRoles' -ResourceId '926d99e7-117c-4a6a-8031-0cc481e9da26' -RoleDefinitionId 'f55a9a68-f424-41b7-8bee-cee6a442d418' -SubjectId 'f7d1887c-7777-4ba3-ba3d-974488524a9d' -Type 'UserAdd' -AssignmentState 'Active' -schedule $schedule -reason "dsasdsas" 
+```powershell
+Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId 'aadRoles' -ResourceId '926d99e7-117c-4a6a-8031-0cc481e9da26' -RoleDefinitionId 'f55a9a68-f424-41b7-8bee-cee6a442d418' -SubjectId 'f7d1887c-7777-4ba3-ba3d-974488524a9d' -Type 'UserAdd' -AssignmentState 'Active' -schedule $schedule -reason "dsasdsas"
+``` 
 
 このコマンドレットは、ロールの割り当てを作成するためのコマンドレットとほぼ同じです。 コマンドレット間の主な違いは、-Type パラメーターがアクティブ化の場合には "adminAdd" ではなく "userAdd" であることです。 もう 1 つの違いは、-AssignmentState パラメーターが "Eligible" ではなく "Active" であることです。
 
@@ -116,21 +134,26 @@ Azure AD 組織内のすべてのロールの割り当てを取得するには�
 
 Azure AD 組織内のすべてのロール設定を取得するには、次のコマンドレットを使用します。
 
-    Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "ResourceId eq '926d99e7-117c-4a6a-8031-0cc481e9da26'" 
+```powershell
+Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "ResourceId eq '926d99e7-117c-4a6a-8031-0cc481e9da26'" 
+```
 
 この設定には、4 つの主要なオブジェクトがあります。 PIM によって現在使用されているのは、これらのオブジェクトのうち 3 つだけです。 UserMemberSettings はアクティブ化の設定、AdminEligibleSettings は有資格な割り当ての割り当て設定、AdminmemberSettings はアクティブな割り当ての割り当て設定です。
 
-[![](media/powershell-for-azure-ad-roles/get-update-role-settings-result.png "Get and update role settings")](media/powershell-for-azure-ad-roles/get-update-role-settings-result.png#lightbox)
+[![ロール設定を取得して更新します。](media/powershell-for-azure-ad-roles/get-update-role-settings-result.png)](media/powershell-for-azure-ad-roles/get-update-role-settings-result.png#lightbox)
 
-ロールの設定を更新するには、まず、次のように設定オブジェクトを定義する必要があります。
+ロールの設定を更新するには、特定のロールの既存の設定オブジェクトを取得し、それに変更を加える必要があります。
 
-    $setting = New-Object Microsoft.Open.MSGraph.Model.AzureADMSPrivilegedRuleSetting 
-    $setting.RuleIdentifier = "JustificationRule"
-    $setting.Setting = "{'required':false}"
+```powershell
+$setting = Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "roleDefinitionId eq 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'"
+$setting.UserMemberSetting.justificationRule = '{"required":false}'
+```
 
 その後、次に示すように、特定のロールのオブジェクトのいずれかに設定を適用できます。 ここでの ID は、リスト ロール設定コマンドレットの結果から取得できるロール設定 ID です。
 
-    Set-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Id 'ff518d09-47f5-45a9-bb32-71916d9aeadf' -ResourceId '3f5887ed-dd6e-4821-8bde-c813ec508cf9' -RoleDefinitionId '2387ced3-4e95-4c36-a915-73d803f93702' -UserMemberSettings $setting 
+```powershell
+Set-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Id 'ff518d09-47f5-45a9-bb32-71916d9aeadf' -ResourceId '3f5887ed-dd6e-4821-8bde-c813ec508cf9' -RoleDefinitionId '2387ced3-4e95-4c36-a915-73d803f93702' -UserMemberSettings $setting 
+```
 
 ## <a name="next-steps"></a>次のステップ
 

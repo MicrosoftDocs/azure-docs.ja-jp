@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 8580bafd4d68ef6567b09fefcaa01c682ae2cafe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0218c24637b9b49972e93b8dd53e5970c9ab89d5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74968792"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260902"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>コンテンツ キー承認ポリシーを構成する
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 
 ## <a name="overview"></a>概要
@@ -57,7 +60,7 @@ Media Services では、キーを要求するユーザーを承認する複数�
 ### <a name="token-restriction"></a>トークン制限
 トークン制限ポリシーを選択するには、 **[トークン]** ボタンを選択します。
 
-トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。 Media Services では、[単純 Web トークン](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2) (SWT) 形式と JSON Web トークン (JWT) 形式のトークンがサポートされます。 詳細については、「[JWT authentication](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)」(JWT 認証) を参照してください。
+トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。 Media Services では、[単純 Web トークン](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_2) (SWT) 形式と JSON Web トークン (JWT) 形式のトークンがサポートされます。 詳細については、「[JWT authentication](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)」(JWT 認証) を参照してください。
 
 Media Services は STS を提供しません。 トークンを発行するカスタム STS を作成できます。 STS は、トークン、トークンの制限の構成で指定した、指定されたキーと問題要求で署名を作成するように構成する必要があります。 Media Services のキー配信サービスは、トークンが有効で、トークン内の要求がコンテンツ キー向けに構成された要求と一致する場合、暗号化キーをクライアントに返します。
 
@@ -66,17 +69,19 @@ Media Services は STS を提供しません。 トークンを発行するカ�
 ### <a name="playready"></a>PlayReady
 PlayReady を使用してコンテンツを保護する場合、承認ポリシーの指定の 1 つとして、PlayReady ライセンス テンプレートを定義する XML 文字列を指定する必要があります。 既定では、次のポリシーが設定されます。
 
-    <PlayReadyLicenseResponseTemplate xmlns:i="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1">
-          <LicenseTemplates>
-            <PlayReadyLicenseTemplate><AllowTestDevices>true</AllowTestDevices>
-              <ContentKey i:type="ContentEncryptionKeyFromHeader" />
-              <LicenseType>Nonpersistent</LicenseType>
-              <PlayRight>
-                <AllowPassingVideoContentToUnknownOutput>Allowed</AllowPassingVideoContentToUnknownOutput>
-              </PlayRight>
-            </PlayReadyLicenseTemplate>
-          </LicenseTemplates>
-        </PlayReadyLicenseResponseTemplate>
+```xml
+<PlayReadyLicenseResponseTemplate xmlns:i="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1">
+  <LicenseTemplates>
+    <PlayReadyLicenseTemplate><AllowTestDevices>true</AllowTestDevices>
+      <ContentKey i:type="ContentEncryptionKeyFromHeader" />
+      <LicenseType>Nonpersistent</LicenseType>
+      <PlayRight>
+        <AllowPassingVideoContentToUnknownOutput>Allowed</AllowPassingVideoContentToUnknownOutput>
+      </PlayRight>
+    </PlayReadyLicenseTemplate>
+  </LicenseTemplates>
+</PlayReadyLicenseResponseTemplate>
+```
 
 **[ポリシー xml のインポート]** ボタンを選択し、「[Media Services PlayReady ライセンス テンプレートの概要](media-services-playready-license-template-overview.md)」で定義されている XML スキーマに準拠した別の XML を指定できます。
 
@@ -92,4 +97,3 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
 
 [open_policy]: ./media/media-services-portal-configure-content-key-auth-policy/media-services-protect-content-with-open-restriction.png
 [token_policy]: ./media/media-services-key-authorization-policy/media-services-protect-content-with-token-restriction.png
-

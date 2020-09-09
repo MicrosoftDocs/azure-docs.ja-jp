@@ -1,18 +1,18 @@
 ---
 title: SaaS Fulfillment API に関する FAQ - Microsoft コマーシャル マーケットプレース
 description: Azure ユーザーが SaaS オファーにサブスクライブできるようにするための Microsoft コマーシャル マーケットプレースの統合要件をいくつか説明します。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 1a1ba6f393eba257fcbe2757b8b4bced00bef8fe
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 4c5d8b438764fa9aa3838b2225c63d412afc519b
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792906"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606805"
 ---
 # <a name="common-questions-about-saas-fulfillment-apis"></a>SaaS Fulfillment API についてよく寄せられる質問
 
@@ -46,7 +46,7 @@ Azure ユーザーがランディング ページにリダイレクトされる�
 
 ![ユーザーのサブスクリプション フロー](media/saas-metering-service-integration-flow-a.png)
 
-SaaS オファーのライフサイクルでトランザクション シナリオを処理するための API コントラクトの詳細については、[SaaS Fulfillment API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) に関するページを参照してください。
+SaaS オファーのライフサイクルでトランザクション シナリオを処理するための API コントラクトの詳細については、[SaaS Fulfillment API](pc-saas-fulfillment-api-v2.md) に関するページを参照してください。
 
 ### <a name="how-do-you-know-the-saas-offer-to-which-the-user-subscribes-in-azure"></a>ユーザーが Azure でサブスクライブする SaaS オファーはどのように確認しますか?
 
@@ -63,13 +63,13 @@ SaaS オファーのライフサイクルでトランザクション シナリ�
 >[!Note]
 >特定の変換パスをサポートしない場合、ダウングレードをブロックできます。
 
-次のシーケンスは、Azure ユーザーが SaaS エクスペリエンスでプランを変更する場合のフローを取り込んだものです。
+次のシーケンスは、Azure の顧客が SaaS エクスペリエンスのプランを変更する場合のフローを示しています。
 
 ![ユーザーのプラン変更フロー](media/saas-metering-service-integration-flow-b.png)
 
-次のシーケンスは、Azure ユーザーが Microsoft のネットショップでプランを変更する場合のフローを取り込んだものです。
+次のシーケンスは、Azure の顧客が Microsoft のオンライン ストアのプランを変更する場合のフローを示しています。
 
-![ユーザーのネットショップでのプラン変更フロー](media/saas-metering-service-integration-flow-c.png)
+![顧客のオンライン ストアのプラン変更のフロー](media/saas-metering-service-integration-flow-c.png)
 
 ### <a name="how-can-the-azure-user-unsubscribe-from-the-plan-associated-with-azure-subscription"></a>Azure ユーザーは、Azure サブスクリプションに関連するプランからどのように登録を解除できますか?
 
@@ -79,9 +79,9 @@ Azure ユーザーは、購入した SaaS オファーから、SaaS エクスペ
 
 ![ユーザーが SaaS エクスペリエンスで登録を解除する](media/saas-metering-service-integration-flow-d.png)
 
-次のシーケンスは、Azure ユーザーが Microsoft のネットショップで登録を解除する場合のフローを取り込んだものです。
+次のシーケンスは、Azure ユーザーが Microsoft のオンライン ストアで登録を解除する場合のフローを示しています。
 
-![ユーザーが Microsoft のネットショップで登録を解除する](media/saas-metering-service-integration-flow-e.png)
+![顧客が Microsoft のオンライン ストアで登録を解除する](media/saas-metering-service-integration-flow-e.png)
 
 ## <a name="next-steps"></a>次のステップ
 

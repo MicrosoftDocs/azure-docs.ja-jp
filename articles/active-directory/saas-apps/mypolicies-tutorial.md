@@ -2,25 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と myPolicies の統合 | Microsoft Docs'
 description: Azure Active Directory と myPolicies の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: bf79e858-1dfb-4ab3-a6df-74b2d5a878d2
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 373840827dd74ffa1c4ed191f10203bd69c7f6c1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c69276f726323c0d621648b604b5ac417b18e597
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73160405"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552540"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mypolicies"></a>チュートリアル: Azure Active Directory と myPolicies の統合
 

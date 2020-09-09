@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f23520bd724d2f7ed5a9422a0541e717c800dee2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6c062b907f1e8a8e0541db0d69c6e24901f3145f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201025"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268555"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>チュートリアル:ハイブリッド Azure Active Directory 参加済みデバイスを手動で構成する
 
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) のデバイス管理を使用すると、お�
 
 このチュートリアルでは、次の事項を熟知していることを前提としています。
 
-* [Azure Active Directory のデバイス管理の概要](../device-management-introduction.md)
+* [Azure Active Directory のデバイス管理の概要](./overview.md)
 * [ハイブリッド Azure Active Directory 参加の実装の計画](hybrid-azuread-join-plan.md)
 * [デバイスのハイブリッド Azure AD 参加を制御する](hybrid-azuread-join-control.md)
 
@@ -59,6 +59,9 @@ Azure AD にコンピューターを登録するため、組織ネットワー�
 * `https://login.microsoftonline.com`
 * `https://device.login.microsoftonline.com`
 * 組織の STS (フェデレーション ドメインの場合)。これはユーザーのローカル イントラネット設定に含まれています。
+
+> [!WARNING]
+> データ損失防止や Azure AD テナントの制限などのシナリオで SSL トラフィックを傍受するプロキシ サーバーを組織で使用している場合は、'https://device.login.microsoftonline.com ' へのトラフィックが TLS の中断と検査から除外されていることを確認してください。 'https://device.login.microsoftonline.com ' を除外しないと、クライアント証明書の認証に干渉し、デバイス登録とデバイスベースの条件付きアクセスに問題が発生する可能性があります。
 
 組織でシームレス SSO の使用を計画している場合は、組織内のコンピューターから次の URL に到達できる必要があります。 これもユーザーのローカル イントラネット ゾーンに追加する必要があります。
 
@@ -91,7 +94,7 @@ Windows 10 1803 以降では、フェデレーション ドメイン内のデバ
 
 デバイスでは、登録中に Azure AD テナント情報を検出するために、サービス接続ポイント (SCP) オブジェクトを使用します。 オンプレミスの Active Directory インスタンスでは、ハイブリッド Azure AD 参加済みデバイスの SCP オブジェクトが、コンピューターのフォレストの構成名前付けコンテキストのパーティションに存在する必要があります。 各フォレストには、構成名前付けコンテキストが 1 つだけあります。 複数フォレストの Active Directory 構成では、ドメイン参加済みコンピューターが含まれているすべてのフォレストにサービス接続ポイントが存在している必要があります。
 
-フォレストの構成名前付けコンテキストを取得するには、[**Get-ADRootDSE**](https://technet.microsoft.com/library/ee617246.aspx) コマンドレットを使用することができます。  
+フォレストの構成名前付けコンテキストを取得するには、[**Get-ADRootDSE**](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee617246(v=technet.10)) コマンドレットを使用することができます。  
 
 Active Directory ドメイン名が *fabrikam.com* であるフォレストの場合、構成名前付けコンテキストは次のようになります。
 
@@ -164,7 +167,7 @@ Windows Server 2008 以前のバージョンが実行されているドメイン
 
 上記のスクリプトの `$verifiedDomain = "contoso.com"` はプレースホルダーです。 これを、Azure AD の検証済みドメイン名のいずれかに置き換えます。 これを使用するには、ドメインを所有しておく必要があります。
 
-検証済みドメイン名の詳細については、「[Azure Active Directory へのカスタム ドメイン名の追加](../active-directory-domains-add-azure-portal.md)」を参照してください。
+検証済みドメイン名の詳細については、「[Azure Active Directory へのカスタム ドメイン名の追加](../fundamentals/add-custom-domain.md)」を参照してください。
 
 確認済みの会社のドメインの一覧を取得するには、[Get-AzureADDomain](/powershell/module/Azuread/Get-AzureADDomain?view=azureadps-2.0) コマンドレットを使用できます。
 
@@ -200,7 +203,7 @@ AD FS を使用している場合は、次の WS-Trust エンドポイントを�
 
 * `http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid`
 
-既に ImmutableID 要求 (たとえば、代替ログイン ID) を発行している場合は、コンピューターに対応する要求を 1 つ提供する必要があります。
+既に ImmutableID 要求 (たとえば、ImmutableID のソース値として `mS-DS-ConsistencyGuid` または別の属性を使用して) を発行している場合は、コンピューターに対応する要求を 1 つ提供する必要があります。
 
 * `http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`
 
@@ -323,13 +326,13 @@ AD FS を使用している場合は、次の WS-Trust エンドポイントを�
 
 上記の要求にある `<verified-domain-name>` はプレースホルダーです。 これを、Azure AD の検証済みドメイン名のいずれかに置き換えます。 たとえば、 `Value = "http://contoso.com/adfs/services/trust/"`を使用します。
 
-検証済みドメイン名の詳細については、「[Azure Active Directory へのカスタム ドメイン名の追加](../active-directory-domains-add-azure-portal.md)」を参照してください。  
+検証済みドメイン名の詳細については、「[Azure Active Directory へのカスタム ドメイン名の追加](../fundamentals/add-custom-domain.md)」を参照してください。  
 
 確認済みの会社のドメインの一覧を取得するには、[Get-msoldomain](/powershell/module/msonline/get-msoldomain?view=azureadps-1.0) コマンドレットを使用できます。
 
 ![会社のドメインの一覧](./media/hybrid-azuread-join-manual/01.png)
 
-### <a name="issue-immutableid-for-the-computer-when-one-for-users-exists-for-example-an-alternate-login-id-is-set"></a>ユーザーに対する ImmutableID が存在する (たとえば、代替ログイン ID が設定されている) 場合にコンピューターの ImmutableID を発行する
+### <a name="issue-immutableid-for-the-computer-when-one-for-users-exists-for-example-using-ms-ds-consistencyguid-as-the-source-for-immutableid"></a>ユーザーの ImmutableID が存在する場合は、コンピューターの ImmutableID を発行します (たとえば、mS-DS-ConsistencyGuid を ImmutableID のソースとして使用します)
 
 `http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID` 要求には、コンピューターに有効な値が含まれている必要があります。 AD FS では、次のような発行変換規則を作成することができます。
 
@@ -549,16 +552,71 @@ AD FS では、この認証方法をパスする発行変換規則を追加す�
 
 ## <a name="verify-joined-devices"></a>参加済みデバイスの確認
 
-[Azure Active Directory PowerShell モジュール](/powershell/azure/install-msonlinev1?view=azureadps-2.0)の [Get-MsolDevice](/powershell/msonline/v1/get-msoldevice) コマンドレットを使用して、組織内の正常に参加しているデバイスを確認できます。
+デバイスの状態を特定して確認するには、次の 3 つの方法があります。
 
-このコマンドレットの出力は、Azure AD への登録と参加が行われているデバイスを表示します。 すべてのデバイスを取得するには、 **-All** パラメーターを使用し、その後で **deviceTrustType** プロパティを使用してフィルター処理します。 ドメイン参加済みデバイスの値は、**Domain Joined** となります。
+### <a name="locally-on-the-device"></a>デバイス上でローカルに
+
+1. Windows PowerShell を開きます。
+2. 「`dsregcmd /status`」と入力します。
+3. **AzureAdJoined** と **DomainJoined** の両方が **YES** に設定されていることを確認します。
+4. **DeviceId** を使用すると、Azure portal または PowerShell のいずれかで、サービスの状態を比較できます。
+
+### <a name="using-the-azure-portal"></a>Azure ポータルの使用
+
+1. [直接リンク](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)を使用して、デバイス ページに移動します。
+2. デバイスを特定する方法については、[Azure portal を使用してデバイス ID を管理する方法](https://docs.microsoft.com/azure/active-directory/devices/device-management-azure-portal#locate-devices)に関するページをご覧ください。
+3. **[登録済み]** 列に **[保留中]** と表示されている場合、Hybrid Azure AD Join は完了していません。 フェデレーション環境では、登録に失敗し、デバイスを同期するように AAD Connect が構成されている場合にのみ、この問題が発生する可能性があります。
+4. **[登録済み]** 列に**日付/時刻**が含まれている場合、Hybrid Azure AD Join は完了しています。
+
+### <a name="using-powershell"></a>PowerShell の使用
+
+**[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)** を使用して、Azure テナントのデバイス登録状態を確認します。 このコマンドレットは、[Azure Active Directory PowerShell モジュール](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-2.0)内にあります。
+
+**Get-MSolDevice** コマンドレットを使用してサービスの詳細を確認する場合:
+
+- Windows クライアントの ID と一致する**デバイス ID** を備えたオブジェクトが存在する必要があります。
+- **DeviceTrustType** の値は **[ドメイン参加済み]** です。 この設定は、Azure AD ポータルの **[デバイス]** ページの **[ハイブリッド Azure AD 参加済み]** 状態に相当します。
+- 条件付きアクセスで使用されるデバイスの場合、**Enabled** の値は **True**、**DeviceTrustLevel** の値は **Managed** です。
+
+1. Windows PowerShell を管理者として開きます。
+2. 「`Connect-MsolService`」と入力して Azure テナントに接続します。
+
+#### <a name="count-all-hybrid-azure-ad-joined-devices-excluding-pending-state"></a>すべての Hybrid Azure AD 参加済みデバイスをカウントする ( **[保留中]** 状態を除く)
+
+```azurepowershell
+(Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
+```
+
+#### <a name="count-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>**[保留中]** 状態を含むすべての Hybrid Azure AD 参加済みデバイスをカウントする
+
+```azurepowershell
+(Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
+```
+
+#### <a name="list-all-hybrid-azure-ad-joined-devices"></a>すべての Hybrid Azure AD 参加済みデバイスを一覧表示する
+
+```azurepowershell
+Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
+```
+
+#### <a name="list-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>**[保留中]** 状態を含むすべての Hybrid Azure AD 参加済みデバイスを一覧表示する
+
+```azurepowershell
+Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
+```
+
+#### <a name="list-details-of-a-single-device"></a>1 つのデバイスの詳細情報を表示するには、次のようにします。
+
+1. 「`get-msoldevice -deviceId <deviceId>`」と入力します (これは、デバイスでローカルに取得された **DeviceId** です)。
+2. **[有効]** が **[True]** に設定されていることを確認します。
 
 ## <a name="troubleshoot-your-implementation"></a>実装のトラブルシューティング
 
-ドメイン参加済み Windows デバイスのハイブリッド Azure AD 参加を行うときに問題が発生した場合は、以下を参照してください。
+ドメイン参加済み Windows デバイスの Hybrid Azure AD Join を行うときに問題が発生した場合は、以下を参照してください。
 
-* [最新の Windows デバイスのハイブリッド Azure AD 参加のトラブルシューティング](troubleshoot-hybrid-join-windows-current.md)
-* [ダウンレベルの Windows デバイスのハイブリッド Azure AD 参加のトラブルシューティング](troubleshoot-hybrid-join-windows-legacy.md)
+- [dsregcmd コマンドを使用したデバイスのトラブルシューティング](./troubleshoot-device-dsregcmd.md)
+- [ハイブリッド Azure Active Directory 参加済みデバイスのトラブルシューティング](troubleshoot-hybrid-join-windows-current.md)
+- [ハイブリッド Azure Active Directory 参加済みダウンレベル デバイスのトラブルシューティング](troubleshoot-hybrid-join-windows-legacy.md)
 
 ## <a name="next-steps"></a>次のステップ
 

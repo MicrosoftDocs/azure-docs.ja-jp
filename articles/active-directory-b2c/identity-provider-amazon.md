@@ -7,30 +7,29 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 08/08/2019
+ms.topic: how-to
+ms.date: 04/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d4538c1d15aeae624f5d73e9985448bda2fd8f1b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1a771cb13fcfa76449500ad71c67dcf7c446fa4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78188462"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388444"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Amazon アカウントでのサインアップおよびサインインを設定する
 
-## <a name="create-an-amazon-application"></a>Amazon アプリケーションを作成する
+## <a name="create-an-app-in-the-amazon-developer-console"></a>Amazon 開発者コンソールでアプリを作成する
 
-Azure Active Directory B2C (Azure AD B2C) で [ID プロバイダー](authorization-code-flow.md)として Amazon アカウントを使用するには、テナントにそれを表すアプリケーションを作成する必要があります。 まだ Amazon アカウントを持っていない場合は、[https://www.amazon.com/](https://www.amazon.com/) でサインアップできます。
+Azure Active Directory B2C (Azure AD B2C) でフェデレーション ID プロバイダーとして Amazon アカウントを使用するには、「[Amazon Developer Services and Technologies](https://developer.amazon.com)」でアプリケーションを作成する必要があります。 まだ Amazon アカウントを持っていない場合は、[https://www.amazon.com/](https://www.amazon.com/) でサインアップできます。
 
-1. Amazon アカウントの資格情報で [Amazon Developer Center](https://login.amazon.com/) にサインインします。
-1. まだ行っていない場合は、 **[Sign Up (サインアップ)]** をクリックして、開発者登録手順に従い、ポリシーを受け入れます。
-1. **[Register new application (新しいアプリケーションの登録)]** を選択します。
-1. **[Name (名前)]** 、 **[Description (説明)]** 、および **[Privacy Notice URL (プライバシーに関する声明の URL)]** を入力して、 **[Save (保存)]** をクリックします。 プライバシーに関する声明は、プライバシー情報をユーザーに提供するページです。
-1. **[Web Settings (Web 設定)]** セクションで、 **[Client ID (クライアント ID)]** の値をコピーします。 **[Show Secret (シークレットの表示)]** を選択して、クライアント シークレットを取得しコピーします。 テナントで ID プロバイダーとして Amazon アカウントを構成するには、この両方が必要です。 **[Client Secret]** は、重要なセキュリティ資格情報です。
-1. **[Web Settings (Web 設定)]** セクションで、 **[Edit (編集)]** を選択し、`https://your-tenant-name.b2clogin.com`[Allowed JavaScript Origins (許可される JavaScript の配信元)] **で「** 」を入力し、`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`[Allowed Return URLs (許可されるリターン URL)] **で「** 」を入力します。 `your-tenant-name` をテナントの名前に置き換えます。 テナントが Azure AD B2C に大文字で定義されている場合でも、テナント名を入力するときに、すべての小文字を使用する必要があります。
-1. **[保存]** をクリックします。
+> [!NOTE]  
+> 以下の**手順 8** で次の URL を使用します。`your-tenant-name` はご利用のテナントの名前に置き換えてください。 テナント名を入力するときに、テナントが Azure AD B2C に大文字で定義されている場合でも、すべてに小文字を使用します。
+> - **[許可されたオリジン]** には、「`https://your-tenant-name.b2clogin.com`」を入力します 
+> - **[Allowed Return URLs]\(許可された戻り先 URL\)** には、「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」を入力します
+
+[!INCLUDE [identity-provider-amazon-idp-register.md](../../includes/identity-provider-amazon-idp-register.md)]
 
 ## <a name="configure-an-amazon-account-as-an-identity-provider"></a>ID プロバイダーとして Amazon アカウントを構成する
 

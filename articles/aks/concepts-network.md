@@ -2,14 +2,14 @@
 title: 概念 - Azure Kubernetes サービス (AKS) におけるネットワーク
 description: Azure Kubernetes Service (AKS) におけるネットワークについて説明します。kubenet と Azure CNI ネットワーク、イングレス コントローラー、ロード バランサー、静的 IP アドレスの説明が含まれます。
 ms.topic: conceptual
-ms.date: 02/28/2019
+ms.date: 06/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 51773a46b77cb1e9a89b9c85a5f62c4a6b7af3be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: edb195fae2e05a1f746c10482576f7e0b1bff7c9
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146057"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88243906"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションに対するネットワークの概念
 
@@ -73,6 +73,8 @@ AKS では、次の 2 つのネットワーク モデルのいずれかを使用
 
 Azure CNI を使用して、すべてのポッドでサブネットから IP アドレスを取得します。ポッドには直接アクセスできます。 これらの IP アドレスは、ネットワーク空間全体で一意である必要があり、事前に計画する必要があります。 各ノードには、サポートされるポッドの最大数に対する構成パラメーターがあります。 ノードごとにそれと同じ数の IP アドレスが、そのノードに対して事前に予約されます。 この方法では詳細な計画が必要であり、そうでない場合、IP アドレスが不足するか、アプリケーション需要の拡大に伴い、より大きなサブネットでのクラスターの再構築が必要になる可能性があります。
 
+kubenet とは異なり、同じ仮想ネットワーク内のエンドポイントへのトラフィックは、ノードのプライマリ IP に NAT 処理されません。 仮想ネットワーク内のトラフィックの発信元アドレスは、ポッド IP です。 仮想ネットワークの外部にあるトラフィックは、ノードのプライマリ IP に引き続き NAT 処理されます。
+
 ノードでは [Azure Container Networking Interface (CNI)][cni-networking] Kubernetes プラグインが使用されます。
 
 ![各ブリッジが 1 つの Azure VNet に接続している 2 つのノードを示す図][advanced-networking-diagram]
@@ -105,7 +107,7 @@ kubenet と Azure CNI には、次のような動作の違いが存在します�
 | ロード バランサー サービス、App Gateway、またはイングレス コントローラーを使用して、Kubernetes サービスを公開する | サポートされています | サポートされています |
 | 既定の Azure DNS およびプライベート ゾーン                                                          | サポートされています | サポートされています |
 
-DNS については、kubernet と Azure CNI のどちらのプラグインでも、CoreDNS (AKS で実行されるデーモン セット) によって DNS が提供されます。 Kubernetes の CoreDNS の詳細については、[DNS サービスのカスタマイズ](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)に関するページを参照してください。 CoreDNS は、既定では、不明なドメインをノードの DNS サーバー (つまり、AKS クラスターがデプロイされている Azure Virtual Network の DNS 機能) に転送するように構成されています。 そのため、Azure DNS およびプライベート ゾーンは、AKS で実行されるポッドに対して機能します。
+DNS については、kubernet と Azure CNI のどちらのプラグインでも、CoreDNS (AKS で実行されるデプロイ) によって、その独自の自動スケーリングで DNS が提供されます。 Kubernetes の CoreDNS の詳細については、[DNS サービスのカスタマイズ](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)に関するページを参照してください。 CoreDNS は、既定では、不明なドメインをノードの DNS サーバー (つまり、AKS クラスターがデプロイされている Azure Virtual Network の DNS 機能) に転送するように構成されています。 そのため、Azure DNS およびプライベート ゾーンは、AKS で実行されるポッドに対して機能します。
 
 ### <a name="support-scope-between-network-models"></a>ネットワーク モデル間のサポート範囲
 
@@ -128,6 +130,8 @@ LoadBalancer 型のサービスを作成すると、基になる Azure ロード
 ![AKS クラスターでのイングレス トラフィック フローを示す図][aks-ingress]
 
 AKS では、NGINX などを使用してイングレス リソースを作成するか、AKS の HTTP アプリケーションのルーティング機能を使用できます。 AKS クラスターで HTTP アプリケーションのルーティングを有効にすると、Azure プラットフォームがイングレス コントローラーと*External-DNS* コントローラーを作成します。 新しいイングレス リソースが Kubernetes に作成されると、必要な DNS A レコードがクラスター固有のDNS ゾーンに作成されます。 詳細については、「[HTTP アプリケーション ルーティング][aks-http-routing]」を参照してください。
+
+Application Gateway イングレス コントローラー (AGIC) アドオンを使用すると、AKS のお客様は、Azure のネイティブ Application Gateway レベル 7 ロード バランサーを活用してクラウド ソフトウェアをインターネットに公開できます。 AGIC では、ホストされている Kubernetes クラスターを監視し、Application Gateway を継続的に更新して、選択されたサービスがインターネットに公開されるようにします。 AKS 用の AGIC アドオンの詳細については、「[Application Gateway イングレス コントローラーとは][agic-overview]」を参照してください。
 
 イングレスのもう 1 つの一般的な機能は、SSL/TLS 終端です。 HTTPS 経由でアクセスされる大規模な Web アプリケーションでは、アプリケーション自体の中ではなく、イングレス リソースによって TLS 終端を処理できます。 TLS 証明書の自動生成と構成を提供することで、Let's Encrypt などのプロバイダーを使用するイングレス リソースを構成できます。 Let's Encrypt を使用した NGINX イングレス コントローラーの構成の詳細については、[イングレスと TLS][aks-ingress-tls] に関する記事を参照してください。
 
@@ -172,7 +176,7 @@ Kubernetes と AKS の中心概念の追加情報については、次の記事�
 
 <!-- LINKS - Internal -->
 [aks-http-routing]: http-application-routing.md
-[aks-ingress-tls]: ingress.md
+[aks-ingress-tls]: ./ingress-tls.md
 [aks-configure-kubenet-networking]: configure-kubenet.md
 [aks-configure-advanced-networking]: configure-azure-cni.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md
@@ -180,6 +184,7 @@ Kubernetes と AKS の中心概念の追加情報については、次の記事�
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-identity]: concepts-identity.md
+[agic-overview]: ../application-gateway/ingress-controller-overview.md
 [use-network-policies]: use-network-policies.md
 [operator-best-practices-network]: operator-best-practices-network.md
 [support-policies]: support-policies.md

@@ -3,24 +3,24 @@ title: Azure PowerShell を使用してユーザー割り当てマネージド I
 description: Azure PowerShell を使用して、ユーザー割り当てマネージド ID を作成、一覧表示、削除する手順を説明します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c512a867685b4480c7b31ac582e2cee069ee2447
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1211245786bbb734e0338be1b79030f5f9552793
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74547403"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266376"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-azure-powershell"></a>Azure PowerShell を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除する
 
@@ -34,7 +34,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で管理�
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure リソースのマネージド ID の基本点な事柄については、[概要](overview.md)に関するセクションを参照してください。 **[システム割り当てマネージド ID とユーザー割り当てマネージド ID の違い](overview.md#how-does-the-managed-identities-for-azure-resources-work)を必ず確認してください**。
+- Azure リソースのマネージド ID の基本点な事柄については、[概要](overview.md)に関するセクションを参照してください。 **[システム割り当てマネージド ID とユーザー割り当てマネージド ID の違い](overview.md#managed-identity-types)を必ず確認してください**。
 - まだ Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
 - [最新バージョンの Azure PowerShell](/powershell/azure/install-az-ps) をインストールします (まだインストールしていない場合)。
 - PowerShell をローカルで実行している場合は、次の操作を行う必要もあります。 
@@ -45,7 +45,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で管理�
 
 ## <a name="create-a-user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID を作成する
 
-ユーザー割り当てマネージド ID を作成するには、お使いのアカウントに[マネージド ID 共同作成者](/azure/role-based-access-control/built-in-roles#managed-identity-contributor)ロールの割り当てが必要です。
+ユーザー割り当てマネージド ID を作成するには、お使いのアカウントに[マネージド ID 共同作成者](../../role-based-access-control/built-in-roles.md#managed-identity-contributor)ロールの割り当てが必要です。
 
 ユーザー割り当てマネージド ID を作成するには、`New-AzUserAssignedIdentity` コマンドを使用します。 `ResourceGroupName` パラメーターにはユーザー割り当てマネージド ID を作成するリソース グループを指定し、`-Name` パラメーターにはその名前を指定します。 `<RESOURCE GROUP>` および `<USER ASSIGNED IDENTITY NAME>` パラメーターの値は、実際の値に置き換えます。
 
@@ -56,7 +56,7 @@ New-AzUserAssignedIdentity -ResourceGroupName <RESOURCEGROUP> -Name <USER ASSIGN
 ```
 ## <a name="list-user-assigned-managed-identities"></a>ユーザー割り当てマネージド ID を一覧表示する
 
-ユーザー割り当てマネージド ID の一覧表示/読み取りには、お使いのアカウントに[マネージド ID オペレーター](/azure/role-based-access-control/built-in-roles#managed-identity-operator)ロールまたは[マネージド ID 共同作成者](/azure/role-based-access-control/built-in-roles#managed-identity-contributor)ロールの割り当てが必要です。
+ユーザー割り当てマネージド ID の一覧表示/読み取りには、お使いのアカウントに[マネージド ID オペレーター](../../role-based-access-control/built-in-roles.md#managed-identity-operator)ロールまたは[マネージド ID 共同作成者](../../role-based-access-control/built-in-roles.md#managed-identity-contributor)ロールの割り当てが必要です。
 
 ユーザー割り当てマネージド ID を一覧表示するには、[Get-AzUserAssigned] コマンドを使います。  `-ResourceGroupName` パラメーターでは、ユーザー割り当てマネージド ID を作成したリソース グループを指定します。 `<RESOURCE GROUP>` は実際の値に置き換えます。
 
@@ -69,7 +69,7 @@ Get-AzUserAssignedIdentity -ResourceGroupName <RESOURCE GROUP>
 
 ## <a name="delete-a-user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID を削除する
 
-ユーザー割り当てマネージド ID を削除するには、お使いのアカウントに[マネージド ID 共同作成者](/azure/role-based-access-control/built-in-roles#managed-identity-contributor)ロールの割り当てが必要です。
+ユーザー割り当てマネージド ID を削除するには、お使いのアカウントに[マネージド ID 共同作成者](../../role-based-access-control/built-in-roles.md#managed-identity-contributor)ロールの割り当てが必要です。
 
 ユーザー割り当てマネージド ID を削除するには、`Remove-AzUserAssignedIdentity` コマンドを使用します。  `-ResourceGroupName` パラメーターではユーザー割り当て ID を作成したリソース グループを指定し、`-Name` パラメーターではその名前を指定します。 `<RESOURCE GROUP>` および `<USER ASSIGNED IDENTITY NAME>` パラメーターの値は、実際の値に置き換えます。
 

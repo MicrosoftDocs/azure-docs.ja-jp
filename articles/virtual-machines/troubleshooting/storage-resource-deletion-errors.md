@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 50ab4b0f1e676ffcba0ce69ab6aa957e4c77ab88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f145dcf8d476009d81056b3f4f970460209a5bc
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71058163"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649739"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>ストレージ リソースの削除エラーのトラブルシューティング
 
@@ -28,7 +28,7 @@ ms.locfileid: "71058163"
 > 
 > **# 個の BLOB (# 個の BLOB のうち) を削除できませんでした:<br>BlobName.vhd:There is currently a lease on the blob and no lease ID was specified in the request. (現在、BLOB にリースがありますが、リクエストでリース ID が指定されていませんでした。)**
 
-Azure VM で使用される VHD は .vhd ファイルです。Azure では Standard または Premium Storage アカウントでページ BLOB としてこれらを格納します。 Azure ディスクについて詳しくは、「[マネージド ディスクの概要](../linux/managed-disks-overview.md)」をご覧ください。
+Azure VM で使用される VHD は .vhd ファイルです。Azure では Standard または Premium Storage アカウントでページ BLOB としてこれらを格納します。 Azure ディスクについて詳しくは、「[マネージド ディスクの概要](../managed-disks-overview.md)」をご覧ください。
 
 Azure では、破損を防ぐため、VM に接続されているディスクは削除できません。 また、VM に接続されているページ BLOB があるコンテナーおよびストレージ アカウントも削除できません。 
 

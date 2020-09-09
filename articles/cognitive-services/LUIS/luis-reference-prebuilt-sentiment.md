@@ -9,18 +9,19 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 10/22/2019
+ms.date: 07/01/2020
 ms.author: diberry
-ms.openlocfilehash: dee07859da97f76d9a2db3ccbb71ae74d8ff4846
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d15170e3785d8978b9cb21eae3b94b002f9172e
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78270420"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85857174"
 ---
 # <a name="sentiment-analysis"></a>センチメント分析
 センチメント分析が構成されている場合、LUIS の json 応答には、センチメント分析が含まれます。 センチメント分析の詳細については、[Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) のドキュメントを参照してください。
 
+LUIS では Text Analytics V2 を使用します。 
 
 ## <a name="resolution-for-sentiment"></a>センチメントの解決
 

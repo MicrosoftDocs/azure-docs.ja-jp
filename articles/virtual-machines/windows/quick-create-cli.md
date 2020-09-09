@@ -7,13 +7,13 @@ ms.topic: quickstart
 ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: c6f1663924f338b6b17c760afe64527f563f5bc2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: bcfbcc4f78e14edc40abccf4a697b00bc7a3f014
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82098018"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496187"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>クイック スタート:Azure CLI で Windows 仮想マシンを作成する
 
@@ -39,7 +39,7 @@ az group create --name myResourceGroup --location eastus
 
 [az vm create](/cli/azure/vm) を使用して VM を作成します。 次の例では、*myVM* という名前の VM を作成します。 この例では、管理ユーザーの名前に *azureuser* を使用します。 
 
-[Azure VM のパスワード要件](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
+[Azure VM のパスワード要件](./faq.md#what-are-the-password-requirements-when-creating-a-vm
 )を満たしているパスワードを指定する必要があります。 以下の例を実行すると、コマンド ラインでパスワードを入力するように求められます。 `--admin-password` パラメーターを追加して、パスワードの値を指定することもできます。 後で VM に接続するときに、このユーザー名とパスワードが使用されます。
 
 ```azurecli-interactive

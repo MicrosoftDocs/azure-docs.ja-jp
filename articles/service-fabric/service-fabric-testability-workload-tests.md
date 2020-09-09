@@ -5,12 +5,13 @@ author: anmolah
 ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: d3d9f6478336c59adb875bf21438d5ffa457b1d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c193ef00d56b2d2fc7ad806cc795dcbe360db548
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75645992"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022107"
 ---
 # <a name="simulate-failures-during-service-workloads"></a>サービス ワークロード中のエラーのシミュレーション
 Azure Service Fabric の Testability シナリオにより、開発者は個別のエラーの対応に追われることがなくなります。 ただし、クライアント ワークロードやエラーの明示的な割り込みが必要になるシナリオも存在します。 サービスはクライアント ワークロードとエラーの割り込みにより、エラーが発生した際に何らかのアクションを確実に実行します。 Testability が提供する高度な制御により、ワークロードの実行においてこれらが発生する可能性がある正確なポイントを特定できます。 このアプリケーションのさまざまな状態で発生するエラーがバグを発見し、品質の向上につながります。

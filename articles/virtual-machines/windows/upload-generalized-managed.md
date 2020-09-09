@@ -4,15 +4,15 @@ description: 汎用化した VHD を Azure にアップロードし、それを�
 author: cynthn
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: cynthn
-ms.openlocfilehash: b0947d1cc4e53763c0f31444b8f3d27ba45b19a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9d5add1349650663b226023b9f46868f242ac4f9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82096411"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87265213"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>汎用化した VHD をアップロードして Azure で新しい VM を作成する
 
@@ -23,14 +23,14 @@ ms.locfileid: "82096411"
 ## <a name="before-you-begin"></a>開始する前に
 
 - VHD を Azure にアップロードする前に、「[Prepare a Windows VHD or VHDX to upload to Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」(Azure にアップロードする Windows VHD または VHDX を準備する) に従う必要があります。
-- [Managed Disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks) への移行を開始する前に、「[Plan for the migration to Managed Disks (Managed Disks への移行の計画)](managed-disks-overview.md)」をご確認ください。
+- [Managed Disks](managed-disks-overview.md) への移行を開始する前に、「[Plan for the migration to Managed Disks (Managed Disks への移行の計画)](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks)」をご確認ください。
 
  
 ## <a name="generalize-the-source-vm-by-using-sysprep"></a>Sysprep を使用してソース VM を一般化する
 
-まだ実行していない場合、VHD を Azure にアップロードする前に VM を Sysprep で一般化する必要があります。 特に重要な点は、Sysprep がすべての個人アカウント情報を削除して、マシンをイメージとして使用できるように準備することです。 Sysprep の詳細については、[Sysprep の概要](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)に関するページを参照してください。
+まだ実行していない場合、VHD を Azure にアップロードする前に VM を Sysprep で一般化する必要があります。 特に重要な点は、Sysprep がすべての個人アカウント情報を削除して、マシンをイメージとして使用できるように準備することです。 Sysprep の詳細については、[Sysprep の概要](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)に関するページを参照してください。
 
-コンピューター上で実行されるサーバー ロールが Sysprep でサポートされていることを確認します。 詳しくは、「 [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)」 (サーバー ロールに対する Sysprep サポート) をご覧ください。
+コンピューター上で実行されるサーバー ロールが Sysprep でサポートされていることを確認します。 詳しくは、「 [Sysprep Support for Server Roles](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)」 (サーバー ロールに対する Sysprep サポート) をご覧ください。
 
 > [!IMPORTANT]
 > 初めて VHD を Azure にアップロードする前に Sysprep を実行する予定の場合は、[VM の準備](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ができていることを確認してください。 
@@ -53,7 +53,7 @@ VHD をマネージド ディスクに直接アップロードできるように
 
 
 
-VHD がマネージド ディスクにアップロードされたら、[Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk) を使用し、マネージド ディスクを取得する必要があります。
+VHD がマネージド ディスクにアップロードされたら、[Get-AzDisk](/powershell/module/az.compute/get-azdisk) を使用し、マネージド ディスクを取得する必要があります。
 
 ```azurepowershell-interactive
 $disk = Get-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'myDiskName'
@@ -113,4 +113,3 @@ New-AzVm `
 ## <a name="next-steps"></a>次のステップ
 
 新しい仮想マシンにサインインします。 詳しくは、「[Windows が実行されている Azure 仮想マシンに接続してログオンする方法](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。 
-

@@ -5,15 +5,15 @@ author: billmath
 ms.author: billmath
 manager: daveba
 ms.date: 12/02/2019
-ms.topic: article
+ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: e41be4b76245f2567015eb0ede317830120ee61a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34796a435536a48100b7434ed5267802cd2d549f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75549487"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226949"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>クラウド プロビジョニングのトラブルシューティング
 
@@ -55,9 +55,7 @@ ms.locfileid: "75549487"
 
 ### <a name="verify-the-port"></a>ポートを確認する
 
-Azure によってポート 443 がリッスンされていて、エージェントとこのポートとの通信が可能であることを確認するには、次のツールを使用します。
-
-https://aadap-portcheck.connectorporttest.msappproxy.net/ 
+Azure がポート 443 でリッスンしていて、お使いのエージェントがそれと通信できることを確認します。 
 
 このテストでは、エージェントがポート 443 を介して Azure と通信できることを確認します。 ブラウザーを開き、エージェントがインストールされているサーバーから前の URL に移動します。
 
@@ -122,7 +120,7 @@ https://aadap-portcheck.connectorporttest.msappproxy.net/
 
 この問題は、通常、ローカルの PowerShell 実行ポリシーのせいで、エージェントで PowerShell 登録スクリプトを実行できないことが原因で発生します。
 
-この問題を解決するには、サーバー上の PowerShell 実行ポリシーを変更します。 マシンとユーザーのポリシーを *Undefined* または *RemoteSigned* に設定する必要があります。 *Unrestricted* として設定されている場合、このエラーが表示されます。 詳細については、[PowerShell 実行ポリシー](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)に関する記事を参照してください。 
+この問題を解決するには、サーバー上の PowerShell 実行ポリシーを変更します。 マシンとユーザーのポリシーを *Undefined* または *RemoteSigned* に設定する必要があります。 *Unrestricted* として設定されている場合、このエラーが表示されます。 詳細については、[PowerShell 実行ポリシー](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)に関する記事を参照してください。 
 
 ### <a name="log-files"></a>ログ ファイル
 
@@ -197,7 +195,7 @@ Azure portal では、プロビジョニング ログを使用して、オブジ
 
   ![プロビジョニングを再開する](media/how-to-troubleshoot/quarantine3.png)
 
-- Microsoft Graph を使用して、[プロビジョニング ジョブを再起動します](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)。 再起動する対象は完全に制御できます。 次のものをクリアすることを選択できます。
+- Microsoft Graph を使用して、[プロビジョニング ジョブを再起動します](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)。 再起動する対象は完全に制御できます。 次のものをクリアすることを選択できます。
   - エスクロー。検疫状態を発生させるエスクロー カウンターを再起動します。
   - 検疫。アプリケーションを検疫から削除します。
   - ウォーターマーク。 
@@ -210,6 +208,3 @@ Azure portal では、プロビジョニング ログを使用して、オブジ
 
 - [プロビジョニングとは](what-is-provisioning.md)
 - [Azure AD Connect クラウド プロビジョニングとは](what-is-cloud-provisioning.md)
-
-
-

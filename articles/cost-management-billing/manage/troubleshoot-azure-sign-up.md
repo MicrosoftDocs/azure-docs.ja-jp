@@ -6,94 +6,142 @@ author: v-miegge
 manager: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 02/12/2020
+ms.subservice: billing
+ms.topic: troubleshooting
+ms.date: 08/20/2020
 ms.author: v-miegge
-ms.openlocfilehash: 7bcf3197ae218c469983200814cecf551dc42a6b
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: 86f9f92810cff241f816dadfc6e1e8ca120f1f4a
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82133179"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88686651"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Azure portal または Azure アカウント センターで新しいアカウントをサインアップするときの問題をトラブルシューティングする
 
-Microsoft Azure portal または Azure アカウント センターで新しいアカウントにサインアップしようとすると、問題が発生する場合があります。 問題のトラブルシューティングを行う前に、まず次のことを確認してください。
-
-- Azure アカウント プロファイルに指定した情報 (連絡先のメール アドレス、住所、電話番号など) が正しいこと。
-- クレジット カード情報が正しいこと。
-- 同じ情報を持つ既存の Microsoft アカウントをがないこと。
+Microsoft Azure portal または Azure アカウント センターで新しいアカウントにサインアップしようとすると、問題が発生する場合があります。 この短いガイドでは、サインアップ プロセスの手順と、各ステップでの一般的な問題について説明します。
 
 > [!NOTE]
 > 既にアカウントがあって、サインインの問題をトラブルシューティングするためのガイダンスをお探しの場合は、「[Azure サブスクリプションのサインインに関する問題のトラブルシューティング](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue)」を参照してください。
 
-## <a name="resolutions"></a>解決策
+## <a name="before-you-begin"></a>開始する前に
 
-エラーを解決するには、Azure へのサインアップを試みたときに発生した問題を選択してください。
+サインアップを始める前に、次の項目を確認します。
 
-### <a name="error-we-cannot-proceed-with-sign-up-due-to-an-issue-with-your-account-please-contact-billing-support"></a>エラー:"*アカウントに問題が発生したため、サインアップを続行できません。課金サポートにお問い合わせください。* "
+- Azure アカウント プロファイルの情報 (連絡先のメール アドレス、住所、電話番号など) が正しいこと。
+- クレジット カード情報が正しいこと。
+- 同じ情報を持つ既存の Microsoft アカウントをがないこと。
 
-この問題を解決するには、次の手順に従ってください。
+## <a name="guided-walkthrough-of-azure-sign-up"></a>Azure サインアップのガイド付きチュートリアル
 
-1. アカウント管理者の資格情報を使用して、アカウント管理者として [Azure アカウント センター](https://account.azure.com/Profile)にログインします。
+Azure のサインアップ エクスペリエンスは、次の 4 つのセクションで構成されています。
 
-2. **[詳細の編集]** を選択します。
+- 自分の情報
+- 電話による本人確認
+- カードによる本人確認
+- 契約
 
-3. すべてのアドレス フィールドが完成し、有効になっていることを確認します。
+このチュートリアルでは、Azure アカウントにサインアップするための正しい情報の例を示します。 各セクションでは、一般的な問題とその解決方法も含まれます。
 
-4. Azure サブスクリプションにサインアップするときに、クレジット カード登録の請求先住所が銀行のレコードと一致していることを確認します。
+## <a name="about-you"></a>自分の情報
 
-それでもエラー メッセージが表示される場合は、別のブラウザーを使用してサインアップを試してください。
+![自分の情報](./media/troubleshoot-azure-sign-up/1.png)
+ 
+### <a name="common-issues-and-solutions"></a>一般的な問題と解決方法
 
-### <a name="progress-bar-hangs-in-identity-verification-by-card-section"></a>*[カードによる本人確認]* セクションで進行状況バーが停止する。
+#### <a name="you-see-the-message-we-cannot-proceed-with-sign-up-due-to-an-issue-with-your-account-please-contact-billing-support"></a>次のようなメッセージが表示される: "アカウントに問題が発生したため、サインアップを続行できません。 課金サポートにお問い合わせください"
 
-カードによる本人確認を完了するには、ブラウザーでサードパーティの Cookie を許可する必要があります。
+このエラーを解決するには、次の手順のようにします。
 
-![カードによる本人確認](./media/troubleshoot-azure-sign-up/identify-verification-by-card.png)
+1.  アカウント管理者の資格情報を使用して、アカウント管理者として [Azure アカウント センター](https://account.azure.com/Profile)にログインします。
+1.  **[詳細の編集]** を選択します。
+1.  すべてのアドレス フィールドが完成し、有効になっていることを確認します。
+1.  Azure サブスクリプションにサインアップするときに、クレジット カード登録の請求先住所が銀行の登録情報と一致していることを確認します。
 
-次の手順に従って、ブラウザーの Cookie の設定を更新します。
+それでもメッセージが表示される場合は、別のブラウザーを使用してサインアップを試してください。
 
-1. Chrome を使用している場合は、 **[設定]**  >  **[詳細設定を表示]**  >  **[プライバシー]**  >  **[コンテンツの設定]** の順に選択し、 **[サードバーティの Cookie とサイト データをブロックする]** をオフにします。
+InPrivate ブラウズはどうですか。
 
-2. Microsoft Edge を使用している場合は、 **[設定]**  >  **[詳細設定を表示]**  >  **[Cookie]**  >  **[Cookie をブロックしない]** の順に選択します。
-
-3. Azure のサインアップ ページを更新し、問題が解決したかどうかを確認します。
-
-4. 更新しても問題が解決しなかった場合は、ブラウザーを終了して再起動した後、やり直してください。
-
-### <a name="credit-card-form-doesnt-support-my-billing-address"></a>請求先住所がクレジット カード フォームでサポートされていない
-
-請求先住所は、 **[自分の情報]** セクションで選択した国である必要があります。 正しい国を選択していることを確認してください。
-
-### <a name="no-text-messages-or-calls-during-sign-up-account-verification"></a>サインアップ アカウントの検証中に、テキスト メッセージの送信がなく、電話もかかってこない
-
-通常、このプロセスにさほど時間はかかりませんが、確認コードが配信されるまでに、最大で 4 分かかる場合があります。 確認のために入力した電話番号は、アカウントの連絡先の電話番号としては保存されません。
-
-いくつかの追加のヒントを以下に示します。
-
-- 電話確認処理に VoiP (ボイス オーバー IP) の電話番号を使用することはできません。
-- ドロップダウン メニューで選択した国番号を含め、入力する電話番号を再確認してください。
-- テキスト メッセージ (SMS) を受信しない電話の場合は、 **[電話で確認コードを受け取る]** をオプションを試してください。
-- お使いの電話で米国の電話番号からの電話または SMS メッセージを受信できることを確認してください。
-
-テキスト メッセージを受信するか、電話がかかってきたら、テキスト ボックスに受け取ったコードを入力してください。
-
-### <a name="credit-card-declined-or-not-accepted"></a>クレジット カードが拒否されます
-
-バーチャルまたはプリペイド式のクレジット カードやデビット カードは、Azure サブスクリプションの支払い方法として認められていません。 カードが拒否される他の原因を確認するには、[Azure へのサインアップ時にデビット カードまたはクレジット カードが拒否される問題](https://support.microsoft.com/help/4042960)に関するページを参照してください。
-
-### <a name="free-trial-is-not-available"></a>無料試用版は使用できません
+#### <a name="free-trial-is-not-available"></a>無料試用版が利用できない
 
 過去に Azure サブスクリプションを使用していませんか。 Azure 使用条件契約書では、Azure を初めて使用するユーザーのみが Azure 無料試用版をアクティブ化できるという制限を設けています。 他の種類の Azure サブスクリプションを持っている場合も、無料試用版をアクティブ化することはできません。 [従量課金制サブスクリプション](https://azure.microsoft.com/offers/ms-azr-0003p/)へのサインアップを検討してください。
 
+#### <a name="you-see-the-message-you-are-not-eligible-for-an-azure-subscription"></a>次のようなメッセージが表示される: "Azure サブスクリプションの資格がありません"
+
+この問題を解決するには、次の項目が当てはまるかどうかを再確認してください。
+
+- Azure アカウント プロファイルに指定した情報 (連絡先のメール アドレス、住所、電話番号など) が正しいこと。
+- クレジット カード情報が正しいこと。
+- 同じ情報を使用する既存の Microsoft アカウントがないこと。
+
+#### <a name="you-see-the-message-your-current-account-type-is-not-supported"></a>次のようなメッセージが表示される: "現在のアカウントの種類はサポートされていません"
+
+この問題は、[アンマネージドの Azure AD ディレクトリ](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-self-service-signup)にアカウントが登録されているために、組織の Azure AD ディレクトリにはアカウントが存在しない場合に発生します。
+この問題を解決するには、別のアカウントを使用して Azure アカウントにサインアップするか、アンマネージド AD ディレクトリの引き継ぎを行ってください。 詳細については、「[Azure Active Directory の非管理対象ディレクトリを管理者として引き継ぐ](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover)」を参照してください。
+
+## <a name="identity-verification-by-phone"></a>電話による本人確認
+
+![電話による本人確認](./media/troubleshoot-azure-sign-up/2.png)
+ 
+テキスト メッセージを受信するか、電話がかかってきたら、テキスト ボックスに受け取ったコードを入力してください。
+
+### <a name="common-issues-and-solutions"></a>一般的な問題と解決方法
+
+#### <a name="no-verification-text-message-or-phone-call"></a>確認のためのテキスト メッセージまたは電話がない
+
+通常、サインアップ確認プロセスにさほど時間はかかりませんが、確認コードが配信されるまでに、最大で 4 分かかる場合があります。
+
+いくつかの追加のヒントを以下に示します。
+
+- 要件を満たしている限り、任意の電話番号を確認に使用できます。 確認のために入力した電話番号は、アカウントの連絡先の電話番号としては保存されません。
+  - 電話確認処理に VoiP (ボイス オーバー IP) の電話番号を使用することはできません。
+  - お使いの電話で米国の電話番号からの電話または SMS メッセージを受信できることを確認してください。
+- ドロップダウン メニューで選択した国番号を含め、入力する電話番号を再確認してください。
+- テキスト メッセージ (SMS) を受信しない電話の場合は、 **[電話で確認コードを受け取る]** をオプションを試してください。
+
+## <a name="identity-verification-by-card"></a>カードによる本人確認
+
+![カードによる本人確認](./media/troubleshoot-azure-sign-up/3.png)
+ 
+### <a name="common-issues-and-solutions"></a>一般的な問題と解決方法
+
+#### <a name="credit-card-declined-or-not-accepted"></a>クレジット カードが拒否されます
+
+バーチャルまたはプリペイド式のクレジット カードやデビット カードは、Azure サブスクリプションの支払い方法として認められていません。 カードが拒否される他の原因を確認するには、「[Azure へのサインアップ時にカードが拒否される問題のトラブルシューティング](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)」を参照してください。
+
+#### <a name="credit-card-form-doesnt-support-my-billing-address"></a>請求先住所がクレジット カード フォームでサポートされていない
+
+請求先住所は、 **[自分の情報]** セクションで選択した国である必要があります。 正しい国を選択したことを確認します。
+
+#### <a name="progress-bar-hangs-in-identity-verification-by-card-section"></a>カードによる本人確認セクションで進行状況バーが停止する
+
+カードによる本人確認を完了するには、ブラウザーでサードパーティの Cookie を許可する必要があります。
+
+次の手順に従って、ブラウザーの Cookie の設定を更新します。
+
+1. Cookie の設定を更新します。
+   - **Chrome** を使用している場合:
+     - **[設定]**  >  **[詳細設定を表示]**  >  **[プライバシー]**  >  **[コンテンツの設定]** を選択します。 **[サードバーティの Cookie とサイト データをブロックする]** をオフにします。
+
+   - **Microsoft Edge** を使用している場合:
+     - **[設定]**  >  **[詳細設定を表示]**  >  **[Cookie]**  >  **[Cookie をブロックしない]** を選択します。
+
+1. Azure のサインアップ ページを更新し、問題が解決したかどうかを確認します。
+1. 更新しても問題が解決しなかった場合は、ブラウザーを終了して再起動した後、やり直してください。
+
 ### <a name="i-saw-a-charge-on-my-free-trial-account"></a>無料試用版アカウントに料金が表示されている
 
-サインアップ後にお客様のクレジット カード アカウントに少額の承認保留が表示されることがあります。 これは 3 日から 5 日以内に削除されます。 コストの管理についての不安がある場合は、[予想外のコストを防ぐ](getting-started.md)方法に関する記事をご覧ください。
+サインアップ後にお客様のクレジット カード アカウントに少額の承認保留が一時的に表示されることがあります。 この保留は 3 日から 5 日以内に削除されます。 コストの管理についての不安がある場合は、[予想外のコストを防ぐ](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started)方法に関する記事をご覧ください。
+
+## <a name="agreement"></a>契約
+
+契約を完了します。
+
+## <a name="other-issues"></a>その他の問題
 
 ### <a name="cant-activate-azure-benefit-plan-like-msdn-bizspark-bizsparkplus-or-mpn"></a>MSDN、BizSpark、BizSparkPlus、MPN などの Azure 特典プランをアクティブ化できません
 
-サインイン資格情報が正しいことを確認したうえで、 特典プログラムを使用する資格があることを確認します。
-
+サインイン資格情報が正しいことを確認します。 次に、特典プログラムを使用する資格があることを確認します。
 - MSDN
   - [MSDN アカウント ページ](https://msdn.microsoft.com/subscriptions/manage/default.aspx)で資格の状態を確認します。
   - 状態を確認できない場合は、[MSDN サブスクリプション カスタマー サービス センター](https://msdn.microsoft.com/library/aa493452.aspx)にお問い合わせください。
@@ -104,37 +152,24 @@ Microsoft Azure portal または Azure アカウント センターで新しい�
   - [MPN ポータル](https://mspartner.microsoft.com/Pages/Locale.aspx)にサインインし、資格の状態を確認します。 該当する [クラウド プラットフォーム コンピテンシー](https://mspartner.microsoft.com/pages/membership/cloud-platform-competency.aspx)をお持ちの場合、追加特典の資格を与えられることがあります。
   - 状態を確認できない場合は、[MPN サポート](https://mspartner.microsoft.com/Pages/Support/Premium/contact-support.aspx)にお問い合わせください。
 
+
 ### <a name="cant-activate-new-azure-in-open-subscription"></a>新しい Azure イン オープン プラン サブスクリプションをアクティブ化できません
 
 Azure イン オープン プランのサブスクリプションを作成するには、少なくとも 1 つの Azure イン オープン プラン トークンが関連付けられている、有効なオンライン サービスのライセンス認証 (OSA) キーが必要です。 OSA キーを持っていない場合は、[Microsoft Pinpoint](https://pinpoint.microsoft.com/) に記載されている Microsoft パートナーにお問い合わせください。
-
-### <a name="error-you-are-not-eligible-for-an-azure-subscription"></a>エラー:"*Azure サブスクリプションの資格がありません*"
-
-この問題を解決するには、次の項目が当てはまるかどうかを再確認してください。
-
-- Azure アカウント プロファイルに指定した情報 (連絡先のメール アドレス、住所、電話番号など) が正しいこと。
-- クレジット カード情報が正しいこと。
-- 同じ情報を使用する既存の Microsoft アカウントがないこと。
-
-### <a name="error-your-current-account-type-is-not-supported"></a>エラー:"*現在のアカウントの種類はサポートされていません*"
-
-この問題は、[アンマネージドの Azure AD ディレクトリ](../../active-directory/users-groups-roles/directory-self-service-signup.md)にアカウントが登録されているために、組織の Azure AD ディレクトリにはアカウントが存在しない場合に発生します。
-
-この問題を解決するには、別のアカウントを使用して Azure アカウントにサインアップするか、アンマネージド AD ディレクトリの引き継ぎを行ってください。 詳細については、「[Azure Active Directory の非管理対象ディレクトリを管理者として引き継ぐ](../../active-directory/users-groups-roles/domains-admin-takeover.md)」を参照してください。
 
 ## <a name="additional-help-resources"></a>その他のヘルプ リソース
 
 Azure の請求とサブスクリプションに関するその他のトラブルシューティング記事
 
-- [拒否されたカード](troubleshoot-declined-card.md)
-- [サブスクリプションのサインインの問題](troubleshoot-sign-in-issue.md)
-- [サブスクリプションが見つからない](no-subscriptions-found.md)
-- [Enterprise コスト ビューが無効になっている](enterprise-mgmt-grp-troubleshoot-cost-view.md)
+- [拒否されたカード](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)
+- [サブスクリプションのサインインの問題](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue)
+- [サブスクリプションが見つからない](https://docs.microsoft.com/azure/cost-management-billing/manage/no-subscriptions-found)
+- [Enterprise コスト ビューが無効になっている](https://docs.microsoft.com/azure/cost-management-billing/manage/enterprise-mgmt-grp-troubleshoot-cost-view)
 
 ## <a name="contact-us-for-help"></a>お問い合わせ
 
 ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="find-out-more-about-azure-cost-management"></a>Azure Cost Management の詳細を探す
 
-- [Azure の課金に関するドキュメント](../../billing/index.md)
+- [Azure Cost Management および Billing のドキュメント](https://docs.microsoft.com/azure/cost-management-billing)

@@ -7,12 +7,13 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 36aa0a4a87e439c128c5247b6850100a7f2e826e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 33a40e7a0e7e3be4433b3cbd4ba7a8e09a84e689
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595571"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428065"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>Azure Static Web Apps (プレビュー) のアプリケーション設定を構成する
 
@@ -33,7 +34,7 @@ ms.locfileid: "83595571"
 ## <a name="prerequisites"></a>前提条件
 
 - Azure Static Web Apps アプリケーション
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
 
 ## <a name="types-of-application-settings"></a>アプリケーション設定の種類
 
@@ -107,7 +108,9 @@ Azure portal には、アプリケーション設定を作成、更新、およ�
 
 1. **[名前]** と **[値]** を入力します。
 
-1. **[OK]**
+1. **[OK]** をクリックします。
+
+1. **[保存]** をクリックします。
 
 ### <a name="using-the-azure-cli"></a>Azure CLI の使用
 
@@ -156,7 +159,7 @@ Azure CLI コマンドには、アップロードを実行するために、ア�
 
 アプリケーション設定は、Azure CLI を使用して表示できます。
 
-1. ターミナルまたはコマンド ラインから、次のコマンドを実行します。 `<YOUR_SUBSCRIPTION_ID>`、`<YOUR_RESOURCE_GROUP_NAME>`、`<YOUR_STATIC_SITE_NAME>` のプレースホルダーは必ず、実際の値に置き換えてください。
+- ターミナルまたはコマンド ラインから、次のコマンドを実行します。 `<YOUR_SUBSCRIPTION_ID>`、`<YOUR_RESOURCE_GROUP_NAME>`、`<YOUR_STATIC_SITE_NAME>` のプレースホルダーは必ず、実際の値に置き換えてください。
 
    ```bash
    az rest --method post --uri "/subscriptions/<YOUR_SUBSCRIPTION_ID>/resourceGroups/<YOUR_RESOURCE_GROUP_NAME>/providers/Microsoft.Web/staticSites/<YOUR_STATIC_SITE_NAME>/listFunctionAppSettings?api-version=2019-12-01-preview"

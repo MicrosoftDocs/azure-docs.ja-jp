@@ -4,15 +4,15 @@ description: Azure Content Delivery Network (CDN) を使用して、Azure Storag
 author: normesta
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: normesta
 ms.date: 04/07/2020
-ms.openlocfilehash: 4516e9f48174a0f1f5201c46cf114badf13d99d6
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 02b7e02c33161db33420e2efe1ef4b70a138d127
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878819"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465220"
 ---
 # <a name="integrate-a-static-website-with-azure-cdn"></a>静的な Web サイトを Azure CDN と統合する
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Synapse Link for Azure Cosmos DB にはどのような利点があり、いつ使用するか
 description: Azure Synapse Link for Azure Cosmos DB について説明します。 Synapse Link により、Azure Synapse Analytics を使用して、Azure Cosmos DB のオペレーショナル データに対するほぼリアルタイムの分析 (HTAP) を実行できます。
-author: srchi
-ms.author: srchi
+author: Rodrigossz
+ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 714d587cc047887685f7f7c7f4f5a2bbc2310aa2
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f200fe96478e15e938899d294ecd5491d6a03206
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596391"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814392"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Synapse Link for Azure Cosmos DB (プレビュー) とは
 
@@ -25,7 +25,7 @@ Azure Synapse Link では、完全に分離された列ストアである [Azure
 
 次の図では、Azure Synapse Link と Azure Cosmos DB および Azure Synapse Analytics との統合を示します。 
 
-![Azure Synapse Analytics と Azure Cosmos DB の統合のアーキテクチャ図](./media/synapse-link/synapse-analytics-cosmos-db-architecture.png)
+:::image type="content" source="./media/synapse-link/synapse-analytics-cosmos-db-architecture.png" alt-text="Azure Synapse Analytics と Azure Cosmos DB の統合のアーキテクチャ図" border="false":::
 
 ## <a name="benefits"></a><a id="synapse-link-benefits"></a> 利点
 
@@ -35,11 +35,11 @@ Azure Synapse Link では、完全に分離された列ストアである [Azure
 
 ### <a name="reduced-complexity-with-no-etl-jobs-to-manage"></a>管理する ETL ジョブがないことによる複雑さの軽減
 
-Azure Synapse Link では、Azure Synapse Analytics を使用して Azure Cosmos DB 分析ストアに直接アクセスすることができ、複雑なデータ移動がありません。 ETL や変更フィードがないので、オペレーショナル データに対して行われたすべての更新は、ほぼリアルタイムで分析ストアに表示されます。 追加のデータ変換を行うことなく、Synapse Analytics から分析ストアに対して大規模な分析を実行できます。
+Azure Synapse Link では、Azure Synapse Analytics を使用して Azure Cosmos DB 分析ストアに直接アクセスすることができ、複雑なデータ移動がありません。 ETL や変更フィード ジョブがないので、オペレーショナル データに対して行われたすべての更新は、ほぼリアルタイムで分析ストアに表示されます。 追加のデータ変換を行うことなく、Synapse Analytics から分析ストアに対して大規模な分析を実行できます。
 
 ### <a name="near-real-time-insights-into-your-operational-data"></a>オペレーショナル データに関するほぼリアルタイムの分析情報
 
-Azure Synapse Link を使用すると、オペレーショナル データに関する豊富な分析情報を、ほぼリアルタイムで取得できます。 ETL ベースのシステムでは、多くのレイヤーでオペレーショナル データの抽出、変換、読み込みを行うため、オペレーショナル データを分析するための待機時間が長くなる傾向があります。 Azure Cosmos DB 分析ストアと Azure Synapse Analytics のネイティブな統合により、オペレーショナル データをほぼリアルタイムで分析でき、新しいビジネス シナリオが可能になります。 
+Azure Synapse Link を使用すると、オペレーショナル データに関する豊富な分析情報を、ほぼリアルタイムで取得できます。 ETL ベースのシステムでは、多くのレイヤーでオペレーショナル データを抽出、変換、読み込む必要があるため、オペレーショナル データを分析するための待機時間が長くなる傾向があります。 Azure Cosmos DB 分析ストアと Azure Synapse Analytics のネイティブな統合により、オペレーショナル データをほぼリアルタイムで分析でき、新しいビジネス シナリオが可能になります。 
 
 
 ### <a name="no-impact-on-operational-workloads"></a>運用ワークロードへの影響がない
@@ -75,7 +75,7 @@ Azure Cosmos DB 分析ストアは、Azure Cosmos DB 内のオペレーショナ
 
 ### <a name="integration-with-azure-synapse-analytics"></a><a id="synapse-link-integration"></a>Azure Synapse Analytics との統合
 
-Synapse Link では、Azure Synapse Analytics から Azure Cosmos DB コンテナーに直接接続し、別のコネクタを使用せずに分析ストアにアクセスできるようになりました。 Azure Synapse Analytics では、現在、[Synapse Apache Spark](../synapse-analytics/spark/apache-spark-concepts.md) および [Synapse SQL サーバーレス](../synapse-analytics/sql/on-demand-workspace-overview.md)との Synapse Link がサポートされています。
+Synapse Link では、Azure Synapse Analytics から Azure Cosmos DB コンテナーに直接接続し、別のコネクタを使用せずに分析ストアにアクセスできるようになりました。 Azure Synapse Analytics では、現在、[Synapse Apache Spark](../synapse-analytics/spark/apache-spark-concepts.md) および [Synapse SQL サーバーレス](../synapse-analytics/sql/on-demand-workspace-overview.md)との Synapse Link をサポートしています。
 
 Azure Synapse Analytics でサポートされているさまざまな分析ランタイム間の相互運用機能により、Azure Cosmos DB 分析ストアからデータを同時にクエリできます。 オペレーショナル データを分析するために、追加のデータ変換は必要ありません。 次のものを使用して、分析ストアのデータのクエリと分析を行うことができます。
 
@@ -99,7 +99,7 @@ Azure Synapse Analytics でサポートされているさまざまな分析ラ�
 
 * 手動の ETL プロセスを使用せずに、Azure Cosmos DB コンテナーに対する SQL テーブルまたは Spark テーブルを作成することで、コンシューマーがデータにアクセスできるようにしたいと考えているデータ エンジニア。
 
-Azure Cosmos DB の Azure Synapse Analytics ランタイムによるサポートの詳細については、[Cosmos DB に対する Azure Synapse Analytics のサポート]()に関するページを参照してください。
+Azure Cosmos DB の Azure Synapse Analytics ランタイムによるサポートの詳細については、[Cosmos DB に対する Azure Synapse Analytics のサポート](../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md)に関するページを参照してください。
 
 ## <a name="when-to-use-azure-synapse-link-for-azure-cosmos-db"></a>どのようなときに Azure Synapse Link for Azure Cosmos DB を使用するか
 
@@ -122,13 +122,15 @@ Synapse Link は、次の場合にお勧めします。
 
 * 現時点では、分析ストアは (新規と既存のどちらの Azure Cosmos DB アカウントでも) 新しいコンテナーに対してのみ有効にすることができます。
 
+* プレビューでは、Synapse Link が有効になっているデータベース アカウントでは、コンテナーのバックアップと復元はサポートされていません。 バックアップと復元の機能を必要とする運用環境のワークロードがある場合、それらのデータベース アカウントでは Synapse Link を有効にしないことをお勧めします。 
+
 * Synapse SQL サーバーレスでの Azure Cosmos DB 分析ストアへのアクセスは、現在限定的なプレビューの段階にあります。 アクセスを要求するには、[Azure Cosmos DB チーム](mailto:cosmosdbsynapselink@microsoft.com)にメールでご連絡ください。
 
-* プロビジョニングされた Synapse SQL での Azure Cosmos DB 分析ストアへのアクセスは、現在使用できません。 
+* プロビジョニングされた Synapse SQL での Azure Cosmos DB 分析ストアへのアクセスは、現在使用できません。
 
 ## <a name="pricing"></a>価格
 
-Azure Synapse Link の課金モデルは、Azure Cosmos DB 分析ストアと Synapse ランタイムを使用して発生するコストに変換されます。 詳細については、[Azure Cosmos DB 分析ストアの価格](analytical-store-introduction.md#analytical-store-pricing)に関するページおよび「[Azure Synapse Analytics の価格]()」をご覧ください。
+Azure Synapse Link の課金モデルには、Azure Cosmos DB 分析ストアと Synapse ランタイムを使用して発生するコストが含まれます。 詳細については、[Azure Cosmos DB 分析ストアの価格](analytical-store-introduction.md#analytical-store-pricing)に関するページおよび「[Azure Synapse Analytics の価格](https://azure.microsoft.com/pricing/details/synapse-analytics/)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -136,9 +138,9 @@ Azure Synapse Link の課金モデルは、Azure Cosmos DB 分析ストアと Sy
 
 * [Azure Cosmos DB 分析ストアの概要](analytical-store-introduction.md)
 
-* [Azure Synapse Link for Azure Cosmos DB の概要](configure-synapse-link.md) 
+* [Azure Synapse Link for Azure Cosmos DB の概要](configure-synapse-link.md)
  
-* [Azure Synapse Analytics ランタイムでサポートされている機能]()
+* [Azure Synapse Analytics ランタイムでサポートされている機能](../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md)
 
 * [Azure Synapse Link for Azure Cosmos DB についてよく寄せられる質問](synapse-link-frequently-asked-questions.md)
 

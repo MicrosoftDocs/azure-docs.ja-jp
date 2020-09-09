@@ -1,25 +1,20 @@
 ---
 title: Azure VM のサイズ - ストレージ | Microsoft Docs
 description: Azure の仮想マシンで使用できるさまざまなストレージ最適化済みのサイズを一覧表示します。 このシリーズのストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を一覧表示します。
-services: virtual-machines
+ms.subservice: sizes
 documentationcenter: ''
 author: sasha-melamed
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
 ms.service: virtual-machines
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
-ms.author: jonbeck
-ms.openlocfilehash: 5a611dc288fc18a14f6000689f9f9b49d4b3feb8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: jushiman
+ms.openlocfilehash: 5af7b3373993dce1939ecd7534140e58db688579
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77913338"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835580"
 ---
 # <a name="storage-optimized-virtual-machine-sizes"></a>ストレージ最適化済み仮想マシンのサイズ
 
@@ -41,3 +36,5 @@ ms.locfileid: "77913338"
 [Azure コンピューティング ユニット (ACU)](acu.md) を確認することで、Azure SKU 全体の処理性能を比較できます。
 
 [Windows](windows/storage-performance.md) または [Linux](linux/storage-performance.md) 用の Lsv2 シリーズの仮想マシンでパフォーマンスを最適化する方法について説明します。
+
+Azure での VM の名前付け方法の詳細については、「[Azure 仮想マシンのサイズの名前付け規則](./vm-naming-conventions.md)」を参照してください。

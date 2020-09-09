@@ -1,27 +1,22 @@
 ---
 title: Windows Virtual Desktop の PowerShell モジュール - Azure
 description: Windows Virtual Desktop 用の PowerShell モジュールをインストールして設定する方法について説明します。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6741c034351099f544c20749eb7c7a39e7932181
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 11742b00b62437b3acd6fa804a668cf83c2860f6
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195127"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007260"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>Windows Virtual Desktop 用 PowerShell モジュールを設定する
 
 >[!IMPORTANT]
->このコンテンツは、Spring 2020 更新プログラムと Azure Resource Manager Windows Virtual Desktop オブジェクトの組み合わせを対象としています。
->
-> Windows Virtual Desktop Spring 2020 更新プログラムは現在、パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+>このコンテンツは、Azure Resource Manager との統合で Windows Virtual Desktop に適用されます。
 
 Windows Virtual Desktop PowerShell モジュールは、Azure PowerShell モジュールに統合されています。 この記事では、Windows Virtual Desktop のコマンドレットを実行できるように PowerShell モジュールを設定する方法について説明します。
 
@@ -63,7 +58,13 @@ Youradminupn subscriptionname AzureADTenantID AzureCloud
 サインイン後に既定のサブスクリプションを変更する場合は、次のコマンドレットを実行します。
 
 ```powershell
-Select-AzSubscription -SubscriptionName <preferredsubscriptionname>
+Select-AzSubscription -Subscription <preferredsubscriptionname>
+```
+
+次のように、Out-GridView コマンドレットを使用して、一覧から 1 つを選択することもできます。
+
+```powershell
+Get-AzSubscription | Out-GridView -PassThru | Select-AzSubscription
 ```
 
 使用する新しいサブスクリプションを選択する場合は、後で実行するコマンドレットで、そのサブスクリプションの ID を指定する必要はありません。 たとえば、次のコマンドレットは、サブスクリプション ID を必要とせずに、特定のセッション ホストを取得します。

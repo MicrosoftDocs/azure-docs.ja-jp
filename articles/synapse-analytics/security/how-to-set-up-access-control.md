@@ -5,16 +5,16 @@ services: synapse-analytics
 author: matt1883
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: d02cd12552b3664dd7acaae0142fc939ee57f5f6
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6b1fe78ac00b57d7627a64970e84ae8b717ae5c3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591983"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501918"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Synapse ワークスペース (プレビュー) のセキュリティ保護
 
@@ -82,7 +82,7 @@ Azure portal で、Synapse ワークスペースを作成します。
   - **WS1\_SparkAdmins** に Synapse Spark 管理者を割り当てます
   - **WS1\_SQLAdmins** に Synapse SQL 管理者を割り当てます
 
-## <a name="step-4-configuring-data-lake-storage-gen2-for-use-by-synapse-workspace"></a>手順 4:Synapse ワークスペースで使用するための Data Lake Storage Gen2 の構成
+## <a name="step-4-configure-data-lake-storage-gen2-for-use-by-synapse-workspace"></a>手順 4:Synapse ワークスペースで使用するための Data Lake Storage Gen2 を構成する
 
 Synapse ワークスペースでは、パイプラインを実行してシステム タスクを実行できるように、STG1 と CNT1 にアクセスする必要があります。
 
@@ -100,7 +100,7 @@ Synapse ワークスペースでは、パイプラインを実行してシステ
 - **[設定]** で、 **[SQL Active Directory 管理者]** をクリックします
 - **[管理者の設定]** をクリックし、WS1\_SQLAdmins を選択します
 
-## <a name="step-6-maintaining-access-control"></a>手順 6:アクセス制御の保守
+## <a name="step-6-maintain-access-control"></a>手順 6:アクセス制御を維持する
 
 構成が完了しました。
 
@@ -112,7 +112,7 @@ Synapse ワークスペースでは、パイプラインを実行してシステ
 
 各ロールのユーザーは、次の手順を実行する必要があります。
 
-|   | 手順 | ワークスペース管理者 | Spark 管理者 | SQL 管理者 |
+| Number | 手順 | ワークスペース管理者 | Spark 管理者 | SQL 管理者 |
 | --- | --- | --- | --- | --- |
 | 1 | Parquet ファイルを CNT1 にアップロードする | YES | YES | YES |
 | 2 | 必要に応じて SQL を使用して Parquet ファイルを読み取る | YES | NO | YES |
@@ -130,7 +130,7 @@ Synapse ワークスペースでは、パイプラインを実行してシステ
 
 ## <a name="step-8-network-security"></a>手順 8:ネットワークのセキュリティ
 
-ワークスペース ファイアウォール、仮想ネットワーク、および [Private Link](../../sql-database/sql-database-private-endpoint-overview.md) を構成します。
+ワークスペース ファイアウォール、仮想ネットワーク、および [Private Link](../../azure-sql/database/private-endpoint-overview.md) を構成します。
 
 ## <a name="step-9-completion"></a>手順 9:Completion
 

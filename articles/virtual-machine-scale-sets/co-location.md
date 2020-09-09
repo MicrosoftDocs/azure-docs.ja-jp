@@ -10,10 +10,10 @@ ms.date: 05/14/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: a5c3418ce30e41d5d6a664086a5ec0c0ba62f7a2
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83195776"
 ---
 # <a name="co-location"></a>コロケーション

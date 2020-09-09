@@ -2,23 +2,23 @@
 title: アクティビティ レポートを使用して AD FS アプリを Azure Active Directory に移行する | Microsoft Docs
 description: Active Directory フェデレーション サービス (AD FS) のアプリケーション アクティビティ レポートを使用すると、AD FS から Azure Active Directory (Azure AD) にアプリケーションをすばやく移行できます。 AD FS 用のこの移行ツールでは、Azure AD との互換性を識別して、移行に関するガイダンスを得られます。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 01/14/2019
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 333e440fdd5f5062dda45fb12a83543c63e66c04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 59502e01a96b603067bd80b92bcf49136f8cef4e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75978029"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85339166"
 ---
 # <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>AD FS アプリケーション アクティビティ レポート (プレビュー) を使用してアプリケーションを Azure AD に移行する
 
@@ -36,8 +36,9 @@ AD FS アプリケーション アクティビティ データは、グローバ
 
 * アプリケーションにアクセスするには、自分の組織で現在 AD FS が使用されている必要があります。
 * 自分の Azure AD テナントで Azure AD Connect Health が有効になっている必要があります。
+* Azure AD Connect Health for AD FS エージェントがインストールされている必要があります。
    * [Azure AD Connect Health の詳細を確認する](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs)
-   * [Azure AD Connect Health の設定を開始する](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install)
+   * [Azure AD Connect Health のセットアップと AD FS エージェントのインストールを開始する](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install)
 
 ## <a name="discover-ad-fs-applications-that-can-be-migrated"></a>移行可能な AD FS アプリケーションを検出する 
 

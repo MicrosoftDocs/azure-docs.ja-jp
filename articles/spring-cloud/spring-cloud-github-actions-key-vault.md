@@ -6,12 +6,13 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/20/2019
-ms.openlocfilehash: 78cd5945e394219be0551bbe97afef07f18b61f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-java
+ms.openlocfilehash: 433cd9e7b8cfe69ce5008366db884659cccbc149
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78945468"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076012"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>GitHub Actions で Key Vault を使用して Azure Spring Cloud を認証する
 キー コンテナーは、キーを安全に格納できる場所です。 エンタープライズ ユーザーは、管理対象のスコープ内にある CI/CD 環境の資格情報を保存する必要があります。 キー コンテナー内の資格情報を取得するキーは、リソース スコープに制限する必要があります。  これは、Azure スコープ全体ではなく、キー コンテナー スコープに対してのみアクセスできます。 これは、建物内のすべてのドアを開くことができるマスター キーではなく、頑丈な箱のみを開くことができるキーのようなものです。 キーを別のキーで取得する方法であり、CICD ワークフローで役立ちます。 
@@ -73,7 +74,7 @@ az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTIO
     "managementEndpointUrl": "https://management.core.windows.net/"
 }
 ```
-JSON 文字列全体をコピーします。  **[Key Vault]** ダッシュボードに戻ります。 **[シークレット]** メニューを開き、 **[生成]/[インポート]** ボタンをクリックします。 `AZURE-CRENDENTIALS-FOR-SPRING` などのシークレット名を入力します。 JSON の資格情報文字列を **[値]** 入力ボックスに貼り付けます。 値の入力ボックスは、複数行のテキスト領域ではなく、1 行のテキスト フィールドであることがわかります。  ここには、完全な JSON 文字列を貼り付けることができます。
+JSON 文字列全体をコピーします。  **[Key Vault]** ダッシュボードに戻ります。 **[シークレット]** メニューを開き、 **[生成]/[インポート]** ボタンをクリックします。 `AZURE-CREDENTIALS-FOR-SPRING` などのシークレット名を入力します。 JSON の資格情報文字列を **[値]** 入力ボックスに貼り付けます。 値の入力ボックスは、複数行のテキスト領域ではなく、1 行のテキスト フィールドであることがわかります。  ここには、完全な JSON 文字列を貼り付けることができます。
 
  ![完全なスコープの資格情報](./media/github-actions/key-vault3.png)
 
@@ -92,7 +93,7 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}           # Strong box key you generated in the first step
     - uses: Azure/get-keyvault-secrets@v1.0
       with:
-        keyvault: "zlhe-test"
+        keyvault: "<Your Key Vault Name>"
         secrets: "AZURE-CREDENTIALS-FOR-SPRING"           # Master key to open all doors in the building
       id: keyvaultaction
     - uses: azure/login@v1

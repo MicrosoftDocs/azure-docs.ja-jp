@@ -5,19 +5,19 @@ services: virtual-machines-linux
 author: laurenhughes
 ms.service: virtual-machines-linux
 ms-subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
-ms.openlocfilehash: 7a0d5e29097bc9a672e142fcffb0ebe879fe2475
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: cd9e539e01e8e11d866186552ab3b8dde7e03f91
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81757688"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654771"
 ---
-# <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Lsv2 シリーズの仮想マシン上でパフォーマンスを最適化する
+# <a name="optimize-performance-on-the-lsv2-series-linux-virtual-machines"></a>Lsv2 シリーズ Linux 仮想マシン上でパフォーマンスを最適化する
 
 Lsv2 シリーズの仮想マシンは、幅広いアプリケーションや業界において、ローカル ストレージに高い I/O とスループットを必要とするさまざまなワークロードをサポートしています。  Lsv2 シリーズは、Cassandra、MongoDB、Cloudera、Redis などのビッグ データ、SQL、NoSQL データベース、データ ウェアハウス、大規模トランザクション データベースに最適です。
 
@@ -83,7 +83,7 @@ Lsv2 VM にある 1.92 TB NVMe ディスク上のローカル ストレージは
 - ハードウェアの問題が原因で VM が異常な状態になっており、別のノードに復旧させる必要がある。
 - 保守作業のために VM を別のホストに割り当て直す必要がある少数の計画メンテナンス サービス業務。
 
-データをローカル ストレージにバックアップする際のオプションの詳細については、「[Azure IaaS ディスクのバックアップとディザスター リカバリー](backup-and-disaster-recovery-for-azure-iaas-disks.md)」を参照してください。
+データをローカル ストレージにバックアップする際のオプションの詳細については、「[Azure IaaS ディスクのバックアップとディザスター リカバリー](../backup-and-disaster-recovery-for-azure-iaas-disks.md)」を参照してください。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -110,4 +110,4 @@ Lsv2 VM にある 1.92 TB NVMe ディスク上のローカル ストレージは
    
 ## <a name="next-steps"></a>次のステップ
 
-* Azure 上で[ストレージのパフォーマンスを高めるために最適化されたすべての VM](sizes-storage.md) の仕様を確認してください。
+* Azure 上で[ストレージのパフォーマンスを高めるために最適化されたすべての VM](../sizes-storage.md) の仕様を確認してください。

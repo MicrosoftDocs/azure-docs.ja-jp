@@ -5,14 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/14/2020
-ms.openlocfilehash: 85b7093df99127b690c51e8f2f28d18e3f5f3c95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: cb1c2d8daa74d1224ad07ef7a2fb5a74f4773338
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75981637"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000313"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>HDInsight 上の Apache Storm で Azure Event Hubs からのイベントを処理する (C#)
 

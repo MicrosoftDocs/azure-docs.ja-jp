@@ -1,14 +1,14 @@
 ---
 title: カナダ連邦 PBMM ブループリント サンプルをデプロイする
 description: ブループリント アーティファクト パラメーターの詳細を含む Canada Federal PBMM ブループリント サンプルのデプロイ手順です。
-ms.date: 05/08/2020
+ms.date: 07/31/2020
 ms.topic: sample
-ms.openlocfilehash: f9234b3ff44d3536380e19cb685ca4e3bbd9b0a5
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 0b7e0467fbc43ea83a0aa4ff40e9b0be4c69b41e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005690"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500114"
 ---
 # <a name="deploy-the-canada-federal-pbmm-blueprint-samples"></a>Canada Federal PBMM ブループリント サンプルをデプロイする
 
@@ -98,7 +98,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |\[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ |ポリシー割り当て |省略可能:スコープに追加するため、サポートされている Windows OS を持つ VM イメージの一覧 |空の配列 (`[]`) を使用して、オプションのパラメーターがないことを示すことができます。 |
 |\[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ |ポリシー割り当て |Windows VM 用の Log Analytics ワークスペース |詳細については、「[Azure ポータルで Log Analytics ワークスペースを作成する](../../../../azure-monitor/learn/quick-create-workspace.md)」を参照してください。 |
 |\[プレビュー\]:Canada Federal PBMM コントロールを監査し、監査要件をサポートする特定の VM 拡張機能をデプロイする |ポリシー割り当て |VM で構成する必要がある Log Analytics ワークスペース ID |これは、VM で構成する必要がある Log Analytics ワークスペース ID (GUID) です。 |
-|\[プレビュー\]:Canada Federal PBMM コントロールを監査し、監査要件をサポートする特定の VM 拡張機能をデプロイする |ポリシー割り当て |診断ログを有効にする必要のあるリソースの種類の一覧 |診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は、[Azure Monitor 診断ログのスキーマ](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)に関するページで確認できます。 |
+|\[プレビュー\]:Canada Federal PBMM コントロールを監査し、監査要件をサポートする特定の VM 拡張機能をデプロイする |ポリシー割り当て |診断ログを有効にする必要のあるリソースの種類の一覧 |診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は、[Azure Monitor 診断ログのスキーマ](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)に関するページで確認できます。 |
 |\[プレビュー\]:Canada Federal PBMM コントロールを監査し、監査要件をサポートする特定の VM 拡張機能をデプロイする |ポリシー割り当て |管理者グループ |グループ。 例: `Administrator; myUser1; myUser2` |
 |\[プレビュー\]:Canada Federal PBMM コントロールを監査し、監査要件をサポートする特定の VM 拡張機能をデプロイする |ポリシー割り当て |Windows VM Administrators グループに含める必要があるユーザーの一覧 |ローカルの Administrators グループに含める必要があるメンバーのセミコロン区切りリスト。 例: `Administrator; myUser1; myUser2` |
 |ストレージ アカウントに対する Advanced Threat Protection のデプロイ |ポリシー割り当て |結果 |ポリシーの効果の詳細については、「[Azure Policy の効果について](../../../policy/concepts/effects.md)」を参照してください。 |

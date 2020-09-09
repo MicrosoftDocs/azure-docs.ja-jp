@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 105a3996753a1d1c2d71846cc8bad574e4498acf
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 7e6afd40266d280ae872d24b1828b6feadbee17e
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478610"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007915"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Azure Cache for Redis のベスト プラクティス 
 次のベスト プラクティスに従うことにより、Azure Cache for Redis インスタンスを使用するときのパフォーマンスとコスト効率を最大限にできます。
@@ -38,6 +38,8 @@ ms.locfileid: "80478610"
  * **コストの高い操作を避けます** - 一部の Redis 操作 ([KEYS コマンド](https://redis.io/commands/keys)など) は、"*非常に*" コストが高く、避ける必要があります。  詳細については、[実行時間の長いコマンド](cache-troubleshoot-server.md#long-running-commands)に関連したいくつかの考慮事項を参照してください。
 
  * **TLS 暗号化を使用します** - Azure Cache for Redis の既定では、TLS で暗号化された通信が必要です。  現在、TLS バージョン 1.0、1.1、および 1.2 がサポートされています。  ただし、TLS 1.0 と 1.1 は業界全体で非推奨になる予定であるため、可能であれば TLS 1.2 を使用してください。  お使いのクライアント ライブラリまたはツールで TLS がサポートされていない場合は、[Azure portal](cache-configure.md#access-ports) または[管理 API](https://docs.microsoft.com/rest/api/redis/redis/update) を使用して、暗号化されていない接続を有効にすることができます。  暗号化された接続ができない場合は、キャッシュとクライアント アプリケーションを仮想ネットワークに配置することをお勧めします。  仮想ネットワーク キャッシュ シナリオで使用されるポートの詳細については、こちらの[表](cache-how-to-premium-vnet.md#outbound-port-requirements)を参照してください。
+ 
+ * **アイドル タイムアウト** - 現時点では、Azure Redis の接続のアイドル タイムアウトは 10 分間であるため、これは 10 分未満に設定する必要があります。
  
 ## <a name="memory-management"></a>メモリ管理
 Redis サーバー インスタンス内でのメモリ使用量に関連したいくつかの考慮すべき事項があります。  いくつかの例を次に示します。
@@ -71,20 +73,20 @@ Redis サーバー インスタンス内でのメモリ使用量に関連した�
  * テストに使用するクライアント VM は、Redis Cache インスタンスと**同じリージョン内**にある必要があります。
  * **Dv2 VM シリーズ**はハードウェアが強力であり、最良の結果が得られるため、クライアントにはこれらを使用することをお勧めします。
  * 使用するクライアント VM が、テストするキャッシュと **少なくとも同等のコンピューティングと帯域幅*を持っていることを確認してください。 
- * Windows を使用している場合は、クライアント コンピューターで **VRSS を有効** にしてください。  [詳細についてはこちらをご覧ください](https://technet.microsoft.com/library/dn383582(v=ws.11).aspx)。  PowerShell のサンプル スクリプト:
+ * Windows を使用している場合は、クライアント コンピューターで **VRSS を有効** にしてください。  [詳細についてはこちらをご覧ください](https://technet.microsoft.com/library/dn383582(v=ws.11).aspx)。  Powershell スクリプトの例:
      >PowerShell -ExecutionPolicy Unrestricted Enable-NetAdapterRSS -Name (    Get-NetAdapter).Name 
      
  * **Premium レベルの Redis インスタンスを使用することを検討してください**。  これらのキャッシュ サイズでは、Redis インスタンスは CPU およびネットワークの両方が優れたハードウェアで実行されるため、ネットワーク待ち時間とスループットが改善します。
  
      > [!NOTE]
-     > 参照用として、当社で観測したパフォーマンス結果を[こちらに公開](cache-faq.md#azure-cache-for-redis-performance)しています。   また、SSL/TLS では幾分かのオーバーヘッドが追加されるため、トランスポートの暗号化を使用している場合は、待ち時間とスループット、またはそのいずれかが異なる可能性があることに注意してください。
+     > 参照用として、当社で観測したパフォーマンス結果を[こちらに公開](cache-planning-faq.md#azure-cache-for-redis-performance)しています。   また、SSL/TLS では幾分かのオーバーヘッドが追加されるため、トランスポートの暗号化を使用している場合は、待ち時間とスループット、またはそのいずれかが異なる可能性があることに注意してください。
  
 ### <a name="redis-benchmark-examples"></a>Redis ベンチマークの例
 **テスト前のセットアップ**:以下に一覧表示されている待ち時間とスループットのテスト コマンドに必要なデータでキャッシュ インスタンスを準備します。
-> redis-benchmark.exe -h yourcache.redis.cache.windows.net -a yourAccesskey -t SET -n 10 -d 1024 
+> redis-benchmark -h yourcache.redis.cache.windows.net -a yourAccesskey -t SET -n 10 -d 1024 
 
 **待機時間をテストするには**:1K のペイロードを使用して GET 要求をテストします。
-> redis-benchmark.exe -h yourcache.redis.cache.windows.net -a yourAccesskey -t GET -d 1024 -P 50 -c 4
+> redis-benchmark -h yourcache.redis.cache.windows.net -a yourAccesskey -t GET -d 1024 -P 50 -c 4
 
 **スループットをテストするには:** 1K のペイロードを使用してパイプラインされた GET 要求。
-> redis-benchmark.exe -h yourcache.redis.cache.windows.net -a yourAccesskey -t  GET -n 1000000 -d 1024 -P 50  -c 50
+> redis-benchmark -h yourcache.redis.cache.windows.net -a yourAccesskey -t  GET -n 1000000 -d 1024 -P 50  -c 50

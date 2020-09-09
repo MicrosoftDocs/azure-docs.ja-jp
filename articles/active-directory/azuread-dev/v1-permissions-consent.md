@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jesakowi
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 08def16f53cb0f544513c39a85f26e97c3606a42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c600e1fddc0089a508ff0cfebbbb3476f3a90008
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154476"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117619"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Azure Active Directory v1.0 エンドポイントでのアクセス許可と同意
 
@@ -33,8 +33,8 @@ Azure Active Directory (Azure AD) では、OAuth フローと OpenID Connect (OI
 
 Azure AD では、次の 2 種類のアクセス許可が定義されています。
 
-* **委任されたアクセス許可** - サインインしているユーザーが存在するアプリで使用されます。 これらのアプリでは、ユーザーまたは管理者がアプリから要求されたアクセス許可に同意すると、API の呼び出し時にサインイン ユーザーとして動作するためのアクセス許可がアプリに委任されます。 API によっては、ユーザーが API に直接同意することができない場合があり、代わりに ["管理者の同意" が必要](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)になります。
-* **アプリケーションのアクセス許可** - サインインしているユーザーが存在しない状態で実行されるアプリ (バックグラウンド サービスまたはデーモンとして実行されるアプリなど) で使用されます。 通常、アプリケーションのアクセス許可は非常に強力であり、ユーザー境界を越えるデータや管理者に限定されたデータへのアクセスを許可するため、これらのアクセス許可には[管理者だけが同意](/azure/active-directory/develop/active-directory-v2-scopes#requesting-consent-for-an-entire-tenant)できます。 リソース アプリケーション (つまり、アクセス許可を発行する API) の所有者として定義されているユーザーも、自分が所有している API に対するアプリケーション アクセス許可を付与することができます。
+* **委任されたアクセス許可** - サインインしているユーザーが存在するアプリで使用されます。 これらのアプリでは、ユーザーまたは管理者がアプリから要求されたアクセス許可に同意すると、API の呼び出し時にサインイン ユーザーとして動作するためのアクセス許可がアプリに委任されます。 API によっては、ユーザーが API に直接同意することができない場合があり、代わりに ["管理者の同意" が必要](../develop/howto-convert-app-to-be-multi-tenant.md)になります。
+* **アプリケーションのアクセス許可** - サインインしているユーザーが存在しない状態で実行されるアプリ (バックグラウンド サービスまたはデーモンとして実行されるアプリなど) で使用されます。 通常、アプリケーションのアクセス許可は非常に強力であり、ユーザー境界を越えるデータや管理者に限定されたデータへのアクセスを許可するため、これらのアクセス許可には[管理者だけが同意](../develop/v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)できます。 リソース アプリケーション (つまり、アクセス許可を発行する API) の所有者として定義されているユーザーも、自分が所有している API に対するアプリケーション アクセス許可を付与することができます。
 
 有効なアクセス許可は、アプリが API に要求を行うときに付与されるアクセス許可です。 
 
@@ -75,12 +75,12 @@ Azure AD のアプリケーションでは、必要なリソースや API への
 * **静的なユーザーの同意** - アプリが対話する必要があるリソースを指定すると、[OAuth 2.0 認可フロー](v1-protocols-oauth-code.md#request-an-authorization-code)で自動的に発生します。 静的なユーザーの同意シナリオでは、Azure portal のアプリの構成で、アプリに必要なすべてのアクセス許可が既に指定されている必要があります。 ユーザー (または、必要に応じて管理者) がこのアプリに同意していなかった場合、Azure AD によって、現時点でユーザーに同意を求めるメッセージが表示されます。 
 
     API の静的セットへのアクセスを要求する Azure AD アプリの登録の詳細をご覧ください。
-* **動的なユーザーの同意** - v2 Azure AD アプリ モデルの機能です。 このシナリオでは、アプリは、[v2 アプリの OAuth 2.0 認可フロー](/azure/active-directory/develop/active-directory-v2-scopes#requesting-individual-user-consent)で必要な一連のアクセス許可を要求します。 ユーザーがまだ同意していなかった場合、現時点で同意を求められます。 動的な同意の詳細については、[こちら](/azure/active-directory/develop/active-directory-v2-compare#incremental-and-dynamic-consent)をご覧ください。
+* **動的なユーザーの同意** - v2 Azure AD アプリ モデルの機能です。 このシナリオでは、アプリは、[v2 アプリの OAuth 2.0 認可フロー](../develop/v2-permissions-and-consent.md#requesting-individual-user-consent)で必要な一連のアクセス許可を要求します。 ユーザーがまだ同意していなかった場合、現時点で同意を求められます。 動的な同意の詳細については、[こちら](./azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)をご覧ください。
 
     > [!IMPORTANT]
     > 動的な同意は便利な場合もありますが、管理者の同意を必要とするアクセス許可の場合、管理者の同意エクスペリエンスで同意する時点でこれらのアクセス許可を把握できないため、大きな問題が生じます。 管理者特権のアクセス許可が必要な場合、またはアプリが動的な同意を使用する場合は、Azure portal で (管理者の同意が必要なアクセス許可のサブセットだけでなく) すべてのアクセス許可を登録する必要があります。 これにより、テナント管理者が、すべてのユーザーを代表して同意できます。
   
-* **管理者の同意** - 特定の高い権限のアクセス許可がアプリに必要な場合に必要となります。 管理者の同意により、管理者は、組織の高い権限が必要なデータにアプリやユーザーがアクセスすることを承認する前に制御を強化できます。 管理者の同意を付与する方法の詳細については、[こちら](/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)をご覧ください。
+* **管理者の同意** - 特定の高い権限のアクセス許可がアプリに必要な場合に必要となります。 管理者の同意により、管理者は、組織の高い権限が必要なデータにアプリやユーザーがアクセスすることを承認する前に制御を強化できます。 管理者の同意を付与する方法の詳細については、[こちら](../develop/v2-permissions-and-consent.md#using-the-admin-consent-endpoint)をご覧ください。
 
 ## <a name="best-practices"></a>ベスト プラクティス
 

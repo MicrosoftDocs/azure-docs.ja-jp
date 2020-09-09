@@ -5,17 +5,23 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/15/2019
-ms.openlocfilehash: a50ba39777e6a9d3d609e584c0c7d872f2a65f35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/31/2020
+ms.openlocfilehash: 1ea6d09609d1b7b3f7ba7297a040447d1fc24756
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283720"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684383"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms"></a>VM 用 Azure Monitor を使用してパフォーマンスをグラフ化する方法
 
 VM 用 Azure Monitor には、仮想マシンがどの程度効果的に実行されているかを判定するのに役立ついくつかの主要業績評価指標 (KPI) を対象とする一連のパフォーマンス グラフが含まれています。 グラフには一定期間にわたるリソース使用率が表示されるので、ボトルネックまたは異常を識別することができます。あるいは、各マシンを一覧表示するパースペクティブに切り替えて、選択したメトリックに基づくリソース使用率を表示することもできます。 パフォーマンスを扱うときに考慮すべき要素は数多くありますが、Azure Monitor for VMs では、プロセッサ、メモリ、ネットワーク アダプター、およびディスクの使用率に関連するオペレーティング システムの主要業績評価指標を監視します。 パフォーマンスによって正常性の監視機能が補完されます。さらに、システム コンポーネントに障害がある可能性を示す問題を明らかにしたり、効率化のためのチューニングや最適化をサポートしたり、容量計画をサポートしたりするのにパフォーマンスは役立ちます。  
+
+## <a name="limitations"></a>制限事項
+Azure Monitor for VMs によるパフォーマンス コレクションの制限事項を次に示します。
+
+- Red Hat Linux (RHEL) 6 を実行する仮想マシンでは、**使用可能なメモリ**をご利用いただけません。 このメトリックは、[カーネル バージョン 3.14](http://www.man7.org/linux/man-pages/man1/free.1.html) で導入された **MemAvailable** から計算されます。
+- メトリックは、EXT ファイルシステム ファミリ (EXT2、EXT3、EXT4) を使用して、Linux 仮想マシン上のデータ ディスクに対してのみ使用できます。
 
 ## <a name="multi-vm-perspective-from-azure-monitor"></a>Azure Monitor からのマルチ VM のパースペクティブ
 

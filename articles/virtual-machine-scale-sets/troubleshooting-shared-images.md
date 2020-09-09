@@ -11,10 +11,10 @@ ms.date: 04/25/2019
 ms.reviewer: cynthn
 ms.custom: akjosh
 ms.openlocfilehash: dd79d923689a95f0c9a25efcb1377db253247baf
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83700863"
 ---
 # <a name="troubleshoot-shared-image-galleries"></a>共有イメージ ギャラリーのトラブルシューティングを行う

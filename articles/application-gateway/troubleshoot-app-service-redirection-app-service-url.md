@@ -5,15 +5,15 @@ description: この記事では、Azure Application Gateway を Azure App Servic
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 961ed17bcef19b445c2546a557725bb6bd8653cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2af52d1e7c211ccc0b5c18ed1ecda66d46d80786
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80293538"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84806490"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Application Gateway での App Service に関する問題のトラブルシューティング
 

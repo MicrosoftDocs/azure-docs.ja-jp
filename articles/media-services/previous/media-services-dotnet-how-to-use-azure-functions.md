@@ -14,14 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 618acae10b874eb5ebd5b6da7fe081368528dbd8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 90cd9605a166a00412ed77caf3727ffb3ad3e1fd
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227067"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262119"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Media Services を使用する Azure 関数の開発
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 この記事では、Media Services を使用した Azure Functions の作成方法について説明しています。 この記事で定義されている Azure Function は、新しい MP4 ファイルの **input** という名前付きストレージ アカウント コンテナーを監視します。 ストレージ コンテナーにファイルを削除すると、BLOB トリガーは関数を実行します。 Azure 関数について確認するには、**Azure 関数**のセクションで[概要](../../azure-functions/functions-overview.md)およびその他のトピックを参照してください。
 
@@ -338,7 +341,7 @@ public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, s
 4. **[アップロード]** をクリックして、アップロードする .mp4 ファイルを参照します。
 
 >[!NOTE]
-> 従量課金プランで BLOB トリガーを使用していると、関数アプリがアイドル状態になったあと、新しい BLOB の処理が最大で 10 分遅延する場合があります。 関数アプリが実行されると、BLOB は直ちに処理されます。 詳しくは、「[BLOB ストレージ トリガーとバインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob)」をご覧ください。
+> 従量課金プランで BLOB トリガーを使用していると、関数アプリがアイドル状態になったあと、新しい BLOB の処理が最大で 10 分遅延する場合があります。 関数アプリが実行されると、BLOB は直ちに処理されます。 詳しくは、「[BLOB ストレージ トリガーとバインド](../../azure-functions/functions-bindings-storage-blob.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -350,4 +353,3 @@ public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, s
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

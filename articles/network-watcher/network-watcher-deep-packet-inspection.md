@@ -7,17 +7,17 @@ author: damendo
 ms.assetid: 7b907d00-9c35-40f5-a61e-beb7b782276f
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 7d32043ca73e9cf810b3eab5e65cb4b42b599d18
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a4debda712636e577639b84845dda6b9b4228a1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77152926"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84725057"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>Azure Network Watcher を使用したパケット インスペクション
 

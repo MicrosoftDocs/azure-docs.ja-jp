@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f08107874598a68fb5ce2a1a8a98b6a81d7b94d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d22d0da692516c89f6dd5ca7377ec83d7c430280
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81756781"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85203437"
 ---
 # <a name="string-claims-transformations"></a>文字列要求変換
 
@@ -41,7 +41,7 @@ ms.locfileid: "81756781"
 
 この要求変換を使用して、2 つの ClaimTypes が同じ値を持っていることを確認できます。 そうでない場合は、エラー メッセージがスローされます。 次の例では、**strongAuthenticationEmailAddress** ClaimType が **email** ClaimType と等しいことを確認します。 そうでない場合は、エラー メッセージがスローされます。
 
-```XML
+```xml
 <ClaimsTransformation Id="AssertEmailAndStrongAuthenticationEmailAddressAreEqual" TransformationMethod="AssertStringClaimsAreEqual">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="strongAuthenticationEmailAddress" TransformationClaimType="inputClaim1" />
@@ -55,7 +55,7 @@ ms.locfileid: "81756781"
 
 
 **login-NonInteractive** 検証技術プロファイルは、**AssertEmailAndStrongAuthenticationEmailAddressAreEqual** 要求変換を呼び出します。
-```XML
+```xml
 <TechnicalProfile Id="login-NonInteractive">
   ...
   <OutputClaimsTransformations>
@@ -66,7 +66,7 @@ ms.locfileid: "81756781"
 
 セルフアサート技術プロファイルによって **login-NonInteractive** 検証技術プロファイルが呼び出されます。
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
   <Metadata>
     <Item Key="UserMessageIfClaimsTransformationStringsAreNotEqual">Custom error message the email addresses you provided are not the same.</Item>
@@ -98,7 +98,7 @@ ms.locfileid: "81756781"
 
 この要求変換を使用して、任意の文字列 ClaimType を小文字または大文字に変更します。
 
-```XML
+```xml
 <ClaimsTransformation Id="ChangeToLower" TransformationMethod="ChangeCase">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="inputClaim1" />
@@ -132,7 +132,7 @@ ms.locfileid: "81756781"
 
 この要求変換を使用して、文字列 ClaimType 値を設定します。
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateTermsOfService" TransformationMethod="CreateStringClaim">
   <InputParameters>
     <InputParameter Id="value" DataType="string" Value="Contoso terms of service..." />
@@ -164,7 +164,7 @@ ms.locfileid: "81756781"
 
 この要求変換を使用して、要求が別の要求と等しいかどうかをチェックします。 たとえば、以下の要求変換は **email** 要求の値が **Verified.Email** 要求と等しいかどうかをチェックします。
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckEmail" TransformationMethod="CompareClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="Email" TransformationClaimType="inputClaim1" />
@@ -205,7 +205,7 @@ ms.locfileid: "81756781"
 
 この要求変換を使用して、要求が、指定した値と等しいかどうかをチェックできます。 たとえば、以下の要求変換は **termsOfUseConsentVersion** 要求の値が `v1` と等しいかどうかをチェックします。
 
-```XML
+```xml
 <ClaimsTransformation Id="IsTermsOfUseConsentRequiredForVersion" TransformationMethod="CompareClaimToValue">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="termsOfUseConsentVersion" TransformationClaimType="inputClaim1" />
@@ -246,7 +246,7 @@ ms.locfileid: "81756781"
 
 次の例はグローバルな一意の ID を生成します。 この要求変換を使用してランダムな UPN (ユーザー プリンシパル名) を作成します。
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateRandomUPNUserName" TransformationMethod="CreateRandomString">
   <InputParameters>
     <InputParameter Id="randomGeneratorType" DataType="string" Value="GUID" />
@@ -265,7 +265,7 @@ ms.locfileid: "81756781"
 
 次の例では、0 ~ 1000 の範囲の整数のランダムな値を生成します。 値は OTP_{ランダム値} に書式設定されます。
 
-```XML
+```xml
 <ClaimsTransformation Id="SetRandomNumber" TransformationMethod="CreateRandomString">
   <InputParameters>
     <InputParameter Id="randomGeneratorType" DataType="string" Value="INTEGER" />
@@ -302,7 +302,7 @@ ms.locfileid: "81756781"
 
 この要求変換を使用して 1 つのパラメーター {0} を持つ任意の文字列の書式を設定します。 次の例では、**userPrincipalName** を作成します。 `Facebook-OAUTH` などのすべてのソーシャル ID プロバイダーの技術プロファイルは、**CreateUserPrincipalName** を呼び出して **userPrincipalName** を生成します。
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateUserPrincipalName" TransformationMethod="FormatStringClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="upnUserName" TransformationClaimType="inputClaim" />
@@ -338,7 +338,7 @@ ms.locfileid: "81756781"
 
 この要求変換を使用して 2 つのパラメーター {0} および {1} を持つ任意の文字列の書式を設定します。 次の例では、指定した形式で **displayName** を作成します。
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateDisplayNameFromFirstNameAndLastName" TransformationMethod="FormatStringMultipleClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="givenName" TransformationClaimType="inputClaim1" />
@@ -385,7 +385,7 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 
 英語 (既定値) とスペイン語のローカライズされた文字列を定義します。
 
-```XML
+```xml
 <Localization Enabled="true">
   <SupportedLanguages DefaultLanguage="en" MergeBehavior="Append">
     <SupportedLanguage>en</SupportedLanguage>
@@ -413,7 +413,7 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 
 要求変換では、`StringId` *email_subject* の値を使用して要求の種類 *subject* の値が設定されます。
 
-```XML
+```xml
 <ClaimsTransformation Id="GetLocalizedStringsForEmail" TransformationMethod="GetLocalizedStringsTransformation">
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="subject" TransformationClaimType="email_subject" />
@@ -444,7 +444,7 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 
 次の例では、エラーのキーに基づいて、エラー メッセージの説明を検索します。 **responseMsg** 要求には、エンド ユーザーに提示する、または証明書利用者に送信するエラー メッセージのコレクションが含まれています。
 
-```XML
+```xml
 <ClaimType Id="responseMsg">
   <DisplayName>Error message: </DisplayName>
   <DataType>string</DataType>
@@ -458,7 +458,7 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 ```
 要求変換では、項目のテキストを検索し、その値を返します。 制限が `<LocalizedCollection>` を使用してローカライズされている場合、要求変換はローカライズされた値を返します。
 
-```XML
+```xml
 <ClaimsTransformation Id="GetResponseMsgMappedToResponseCode" TransformationMethod="GetMappedValueFromLocalizedCollection">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="responseCode" TransformationClaimType="mapFromClaim" />
@@ -489,7 +489,7 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 
 次の例では、inpuParameters コレクションの 1 つからドメイン名を検索します。 要求変換では、識別子内のドメイン名を検索し、その値 (アプリケーション ID) を返します。
 
-```XML
+```xml
  <ClaimsTransformation Id="DomainToClientId" TransformationMethod="LookupValue">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="domainName" TransformationClaimType="inputParameterId" />
@@ -516,7 +516,7 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
     - **test.com**: c7026f88-4299-4cdb-965d-3f166464b8a9
     - **errorOnFailedLookup**: false
 - 出力要求:
-    - **outputClaim**:  c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **outputClaim**:    c7026f88-4299-4cdb-965d-3f166464b8a9
 
 `errorOnFailedLookup` 入力パラメーターが `true` に設定されると、**LookupValue** 要求変換は常に、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって呼び出される[検証技術プロファイル](validation-technical-profile.md) (つまり [DisplayConrtol](display-controls.md)) から実行されます。 ユーザーに表示されるエラー メッセージは、セルフアサート技術プロファイルの `LookupNotFound` メタデータによって制御されます。
 
@@ -524,7 +524,7 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 
 次の例では、inpuParameters コレクションの 1 つからドメイン名を検索します。 要求変換では、識別子内のドメイン名を検索し、その値 (アプリケーション ID) を返します。つまり、エラー メッセージが生成されます。
 
-```XML
+```xml
  <ClaimsTransformation Id="DomainToClientId" TransformationMethod="LookupValue">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="domainName" TransformationClaimType="inputParameterId" />
@@ -564,7 +564,7 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 
 この要求変換を使用して、不要なデータを要求プロパティ バッグから削除し、セッション Cookie のサイズを縮小します。 次の例では、`TermsOfService` 要求の種類の値を削除します。
 
-```XML
+```xml
 <ClaimsTransformation Id="SetTOSToNull" TransformationMethod="NullClaim">
   <OutputClaims>
   <OutputClaim ClaimTypeReferenceId="TermsOfService" TransformationClaimType="claim_to_null" />
@@ -588,7 +588,7 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 
 この要求変換は、ユーザーの @ 記号の後のドメイン名を解析するために使用します。 次の要求変換は、**email** 要求からドメイン名を解析する方法を示しています。
 
-```XML
+```xml
 <ClaimsTransformation Id="SetDomainName" TransformationMethod="ParseDomain">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="emailAddress" />
@@ -624,7 +624,7 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 
 電話番号の正規表現パターンに基づいて、指定された電話番号が有効かどうかをチェックします。
 
-```XML
+```xml
 <ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="SetClaimsIfRegexMatch">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phone" TransformationClaimType="claimToMatch" />
@@ -653,7 +653,7 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 
 指定された電子メール アドレスが有効かどうかを確認し、電子メールの別名を返します。
 
-```XML
+```xml
 <ClaimsTransformation Id="GetAliasFromEmail" TransformationMethod="SetClaimsIfRegexMatch">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="claimToMatch" />
@@ -699,7 +699,7 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 
 この要求変換を使用して、要求が、指定した値と等しいかどうかをチェックできます。 たとえば、以下の要求変換は **termsOfUseConsentVersion** 要求の値が `v1` と等しいかどうかをチェックします。 等しい場合、値を `v2` に変更します。
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckTheTOS" TransformationMethod="SetClaimsIfStringsAreEqual">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="termsOfUseConsentVersion" TransformationClaimType="inputClaim" />
@@ -746,7 +746,7 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 
 たとえば、以下の要求変換は **ageGroup** 要求の値が `Minor` と等しいかどうかをチェックします。 等しい場合は、値を `B2C_V1_90001` に返します。
 
-```XML
+```xml
 <ClaimsTransformation Id="SetIsMinor" TransformationMethod="SetClaimsIfStringsMatch">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="ageGroup" TransformationClaimType="claimToMatch" />
@@ -789,7 +789,7 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 
 この要求変換は、文字列要求の種類に substring が含まれているかどうかをチェックする場合に使用します。 次の例では、`roles` 文字列要求の種類に **admin** の値が含まれているかどうかをチェックしています。
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckIsAdmin" TransformationMethod="StringContains">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim"/>
@@ -825,10 +825,10 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 | InputParameter | length | INT | substring の文字数。 |
 | OutputClaim | outputClaim | boolean | このインスタンスの startIndex から始まる長さの substring と等価な文字列。startIndex がこのインスタンスの長さと等しく、length がゼロの場合は空になります。 |
 
-たとえば、電話番号の国のプレフィックスを取得します。
+たとえば、電話番号の国または地域のプレフィックスを取得します。
 
 
-```XML
+```xml
 <ClaimsTransformation Id="GetPhonePrefix" TransformationMethod="StringSubstring">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="inputClaim" />
@@ -866,7 +866,7 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 たとえば、電話番号の `-` 文字が削除されて正規化されます
 
 
-```XML
+```xml
 <ClaimsTransformation Id="NormalizePhoneNumber" TransformationMethod="StringReplace">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="inputClaim" />
@@ -902,7 +902,7 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 
 次の例では、ユーザー ロールの文字列コレクションが取得され、それがコンマ区切り文字列に変換されています。 このメソッドを使用して、Azure AD ユーザー アカウントに文字列コレクションを格納することができます。 後でディレクトリからアカウントを読み取るときに、`StringSplit` を使用してコンマ区切り文字列を文字列コレクションに戻します。
 
-```XML
+```xml
 <ClaimsTransformation Id="ConvertRolesStringCollectionToCommaDelimiterString" TransformationMethod="StringJoin">
   <InputClaims>
    <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim" />
@@ -938,7 +938,7 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 
 次の例では、ユーザー ロールのコンマ区切り文字列が取得され、それが文字列コレクションに変換されています。
 
-```XML
+```xml
 <ClaimsTransformation Id="ConvertRolesToStringCollection" TransformationMethod="StringSplit">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="rolesCommaDelimiter" TransformationClaimType="inputClaim" />

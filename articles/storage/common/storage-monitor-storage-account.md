@@ -1,6 +1,6 @@
 ---
 title: Azure portal での Azure Storage アカウントの監視方法 | Microsoft Docs
-description: Azure ポータルを使用して Azure でストレージ アカウントを監視する方法について説明します。
+description: Azure portal と Azure Storage Analytics を使用して、Azure でストレージ アカウントを監視する方法について説明します。
 author: normesta
 ms.service: storage
 ms.topic: conceptual
@@ -8,12 +8,13 @@ ms.date: 01/09/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 43955950b2fc0544b149c67e3f8df7ca905fafed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: monitoring
+ms.openlocfilehash: 4c78938e2f70342822a4009ed9195196ca486fe0
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232335"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034670"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Azure ポータルでのストレージ アカウントの監視
 
@@ -140,7 +141,7 @@ BLOB、テーブル、およびキューごとに、読み取り要求、書き�
     ![Azure Portal でログを構成する。](./media/storage-monitor-storage-account/enable-diagnostics.png)
 1. **[保存]** をクリックします。
 
-診断ログは、ストレージ アカウントの *$logs* という名前の BLOB コンテナーに保存されます。 ログ データを表示するには、[Microsoft Storage Explorer](https://storageexplorer.com) などのストレージ エクスプローラーを使用するか、プログラムによってストレージ クライアント ライブラリまたは PowerShell を使用します。
+診断ログは、ストレージ アカウントの *$logs* という名前の BLOB コンテナーに保存されます。 ログ データを表示するには、[Microsoft Azure Storage Explorer](https://storageexplorer.com) などのストレージ エクスプローラーを使用するか、プログラムによってストレージ クライアント ライブラリまたは PowerShell を使用します。
 
 $Logs コンテナーへのアクセスについては、[ストレージ分析ログ](storage-analytics-logging.md)に関するページを参照してください。
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
-ms.openlocfilehash: b471fbb62862cd48ebbb239d65b563aa109ef629
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: e6dfc0eb704b0b35ab4e181076d8f97fd3e8c9d7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435479"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080753"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>PowerShell を使用した Azure Security Center へのオンボードの自動化
 
@@ -45,54 +45,55 @@ PowerShell を使用して Azure Security Center にオンボードすると、A
 
 Security Center のコマンドレットを実行する前に、これらの手順を実行する必要があります。
 
-1.  PowerShell を管理者として実行します。
-2.  PowerShell で次のコマンドを実行します。
+1. PowerShell を管理者として実行します。
+
+1. PowerShell で次のコマンドを実行します。
       
-        Set-ExecutionPolicy -ExecutionPolicy AllSigned
-        Install-Module -Name Az.Security -Force
+    ```Set-ExecutionPolicy -ExecutionPolicy AllSigned```
+
+    ```Install-Module -Name Az.Security -Force```
 
 ## <a name="onboard-security-center-using-powershell"></a>PowerShell を使用したセキュリティ センターへのオンボード
 
-1.  Security Center のリソース プロバイダーに次のようにサブスクリプションを登録します。
+1. Security Center のリソース プロバイダーに次のようにサブスクリプションを登録します。
 
-        Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
-        Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security' 
+    ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
 
-2.  省略可能:サブスクリプションのカバレッジ レベル (価格レベル) を設定します (定義されない場合、価格レベルは無料に設定されます)。
+    ```Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security'```
 
-        Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
-        Set-AzSecurityPricing -Name "default" -PricingTier "Standard"
+1. 省略可能:サブスクリプションのカバレッジ レベル (価格レベル) を設定します (定義されない場合、価格レベルは無料に設定されます)。
 
-3.  エージェントのレポート先の Log Analytics ワークスペースを構成します。 サブスクリプションの VM のレポート先になる、事前に作成済みの Log Analytics ワークスペースが必要です。 同じワークスペースをレポート先にする複数のサブスクリプションを定義できます。 定義されていない場合、既定のワークスペースが使用されます。
+    ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
 
-        Set-AzSecurityWorkspaceSetting -Name "default" -Scope
-        "/subscriptions/d07c0080-170c-4c24-861d-9c817742786c" -WorkspaceId"/subscriptions/d07c0080-170c-4c24-861d-9c817742786c/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"
+    ```Set-AzSecurityPricing -Name "default" -PricingTier "Standard"```
 
-4.  Azure VM 上での Log Analytics エージェントの自動プロビジョニング インストール:
+1. エージェントのレポート先の Log Analytics ワークスペースを構成します。 サブスクリプションの VM のレポート先になる、事前に作成済みの Log Analytics ワークスペースが必要です。 同じワークスペースをレポート先にする複数のサブスクリプションを定義できます。 定義されていない場合、既定のワークスペースが使用されます。
+
+    ```Set-AzSecurityWorkspaceSetting -Name "default" -Scope "/subscriptions/d07c0080-170c-4c24-861d-9c817742786c" -WorkspaceId"/subscriptions/d07c0080-170c-4c24-861d-9c817742786c/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"```
+
+1. Azure VM 上での Log Analytics エージェントの自動プロビジョニング インストール:
     
-        Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
+    ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
     
-        Set-AzSecurityAutoProvisioningSetting -Name "default" -EnableAutoProvision
+    ```Set-AzSecurityAutoProvisioningSetting -Name "default" -EnableAutoProvision```
 
     > [!NOTE]
     > Azure 仮想マシンが Azure Security Center によって必ず自動的に保護されるように、自動プロビジョニングを有効にすることをお勧めします。
     >
 
-5.  省略可能:オンボードするサブスクリプションのセキュリティ連絡先の詳細を定義することを強くお勧めします。その連絡先は Security Center により生成されるアラートと通知の受信者として使用されます。
+1. 省略可能:オンボードするサブスクリプションのセキュリティ連絡先の詳細を定義することを強くお勧めします。その連絡先は Security Center により生成されるアラートと通知の受信者として使用されます。
 
-        Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -Phone "2142754038" -AlertAdmin -NotifyOnAlert 
+    ```Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -Phone "2142754038" -AlertAdmin -NotifyOnAlert```
 
-6.  既定の Security Center ポリシーのイニシアティブを割り当てます。
+1. 既定の Security Center ポリシーのイニシアティブを割り当てます。
 
-        Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
-        $Policy = Get-AzPolicySetDefinition | where {$_.Properties.displayName -EQ '[Preview]: Enable Monitoring in Azure Security Center'}
-        New-AzPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'
+    ```Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'```
 
-これで PowerShell により Azure Security Center の使用を開始できました。
+    ```$Policy = Get-AzPolicySetDefinition | where {$_.Properties.displayName -EQ 'Enable Monitoring in Azure Security Center'} New-AzPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'```
+
+PowerShell を使用した Azure Security Center のオンボードが正常に行われました。
 
 自動化スクリプトでこれらの PowerShell コマンドレットを使用して、サブスクリプションとリソースをプログラムで繰り返し処理できるようになりました。 これにより、時間が節約され、人的ミスの可能性が減ります。 これは参照用の[サンプル スクリプト](https://github.com/Microsoft/Azure-Security-Center/blob/master/quickstarts/ASC-Samples.ps1)として使用できます。
-
-
 
 
 
@@ -100,7 +101,7 @@ Security Center のコマンドレットを実行する前に、これらの手�
 ## <a name="see-also"></a>関連項目
 PowerShell を使用して Security Center へのオンボードを自動化する方法の詳細については、次の記事を参照してください。
 
-* [Az.Security](https://docs.microsoft.com/powershell/module/az.security)。
+* [Az.Security](https://docs.microsoft.com/powershell/module/az.security)
 
 Security Center の詳細については、次の記事を参照してください。
 

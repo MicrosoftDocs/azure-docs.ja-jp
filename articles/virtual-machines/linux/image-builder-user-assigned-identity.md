@@ -7,18 +7,18 @@ ms.date: 05/02/2019
 ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
-ms.openlocfilehash: d8e897d2736202f1fb6c5cb8a6497c5c886acef8
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 79349f9da45a623581c40276c8e69d490c1dd253
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792430"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085556"
 ---
 # <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>イメージを作成し、ユーザー割り当てマネージド ID を使用して Azure Storage 内のファイルにアクセスする 
 
 Azure Image Builder では、スクリプトの使用、または GitHub や Azure Storage などの複数の場所からのファイルのコピーがサポートされています。これらを使うには、それらが Azure Image Builder に外部からアクセスできる必要がありますが、SAS トークンを使って Azure Storage BLOB を保護できます。
 
-この記事では、Azure VM Image Builder を使ってカスタマイズされたイメージを作成する方法を示します。ここで、サービスにより、イメージをカスタマイズするために[ユーザー割り当てマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) を使って Azure Storage 内のファイルにアクセスされるので、ファイルをパブリック アクセス可能にしたり、SAS トークンを設定したりする必要がありません。
+この記事では、Azure VM Image Builder を使ってカスタマイズされたイメージを作成する方法を示します。ここで、サービスにより、イメージをカスタマイズするために[ユーザー割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) を使って Azure Storage 内のファイルにアクセスされるので、ファイルをパブリック アクセス可能にしたり、SAS トークンを設定したりする必要がありません。
 
 次の例では、2 つのリソース グループを作成します。1 つはカスタム イメージ用に使われ、もう 1 つはスクリプト ファイルを含む Azure ストレージ アカウントをホストします。 これは、ビルド成果物またはイメージ ファイルが Image Builder の外部の別のストレージ アカウントに存在することがある、現実のシナリオをシミュレートするものです。 ユーザー割り当て ID を作成した後、それにスクリプト ファイルに対する読み取りアクセス許可を付与しますが、そのファイルへのパブリック アクセスは設定しません。 その後、シェル カスタマイザーを使ってそのスクリプトをストレージ アカウントからダウンロードし、実行します。
 
@@ -42,9 +42,11 @@ az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachine
 
 登録を確認します。
 
+
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
-
+az provider show -n Microsoft.KeyVault | grep registrationState
+az provider show -n Microsoft.Compute | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
@@ -52,7 +54,8 @@ az provider show -n Microsoft.Storage | grep registrationState
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
-
+az provider register -n Microsoft.Compute
+az provider register -n Microsoft.KeyVault
 az provider register -n Microsoft.Storage
 ```
 
@@ -90,6 +93,37 @@ az group create -n $imageResourceGroup -l $location
 az group create -n $strResourceGroup -l $location
 ```
 
+ユーザー割り当て ID を作成し、リソース グループにアクセス許可を設定します。
+
+Image Builder は、指定された[ユーザー ID](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) を使用して、リソース グループにイメージを挿入します。 この例では、イメージの配布を実行するためのきめ細かなアクションを含む Azure ロール定義を作成します。 このロール定義はその後、ユーザー ID に割り当てられます。
+
+```console
+# create user assigned identity for image builder to access the storage account where the script is located
+idenityName=aibBuiUserId$(date +'%s')
+az identity create -g $imageResourceGroup -n $idenityName
+
+# get identity id
+imgBuilderCliId=$(az identity show -g $imageResourceGroup -n $idenityName | grep "clientId" | cut -c16- | tr -d '",')
+
+# get the user identity URI, needed for the template
+imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$idenityName
+
+# download preconfigured role definition example
+curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
+
+# update the definition
+sed -i -e "s/<subscriptionID>/$subscriptionID/g" aibRoleImageCreation.json
+sed -i -e "s/<rgName>/$imageResourceGroup/g" aibRoleImageCreation.json
+
+# create role definitions
+az role definition create --role-definition ./aibRoleImageCreation.json
+
+# grant role definition to the user assigned identity
+az role assignment create \
+    --assignee $imgBuilderCliId \
+    --role "Azure Image Builder Service Image Creation Role" \
+    --scope /subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup
+```
 
 ストレージを作成し、GitHub からサンプル スクリプトをコピーします。
 
@@ -116,35 +150,16 @@ az storage blob copy start \
     --source-uri https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript.sh
 ```
 
-
-
-イメージ リソース グループにリソースを作成するためのアクセス許可を Image Builder に付与します。 `--assignee` 値は、Image Builder サービスのアプリ登録 ID です。 
+イメージ リソース グループにリソースを作成するためのアクセス許可を Image Builder に付与します。 `--assignee` の値はユーザー ID です。
 
 ```azurecli-interactive
-az role assignment create \
-    --assignee cf32a0cc-373c-47c9-9156-0db11f6a6dfc \
-    --role Contributor \
-    --scope /subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup
-```
-
-
-## <a name="create-user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID を作成する
-
-ID を作成し、スクリプト ストレージ アカウントに対するアクセス許可を割り当てます。 詳しくは、「[ユーザー割り当てマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity)」をご覧ください。
-
-```azurecli-interactive
-# Create the user assigned identity 
-identityName=aibBuiUserId$(date +'%s')
-az identity create -g $imageResourceGroup -n $identityName
-# assign the identity permissions to the storage account, so it can read the script blob
-imgBuilderCliId=$(az identity show -g $imageResourceGroup -n $identityName | grep "clientId" | cut -c16- | tr -d '",')
 az role assignment create \
     --assignee $imgBuilderCliId \
     --role "Storage Blob Data Reader" \
     --scope /subscriptions/$subscriptionID/resourceGroups/$strResourceGroup/providers/Microsoft.Storage/storageAccounts/$scriptStorageAcc/blobServices/default/containers/$scriptStorageAccContainer 
-# create the user identity URI
-imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$identityName
 ```
+
+
 
 
 ## <a name="modify-the-example"></a>例を変更する
@@ -223,6 +238,13 @@ SSH 接続が確立されるとすぐに、イメージが当日のメッセー�
 終わったら、必要のないリソースを削除できます。
 
 ```azurecli-interactive
+
+az role definition delete --name "$imageRoleDefName"
+```azurecli-interactive
+az role assignment delete \
+    --assignee $imgBuilderCliId \
+    --role "$imageRoleDefName" \
+    --scope /subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup
 az identity delete --ids $imgBuilderId
 az resource delete \
     --resource-group $imageResourceGroup \

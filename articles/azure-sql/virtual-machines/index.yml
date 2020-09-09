@@ -12,12 +12,12 @@ metadata:
   ms.author: mathoma
   ms.reviewer: carlrab
   ms.date: 05/27/2020
-  ms.openlocfilehash: a02a76e3d0080e731643ff82162aafdf3b783423
-  ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+  ms.openlocfilehash: 2a7690f4587f9f113bed35e3a30b294b7bd8b5d4
+  ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/27/2020
-  ms.locfileid: "84023774"
+  ms.lasthandoff: 08/19/2020
+  ms.locfileid: "88587907"
 landingContent:
 - title: Azure VM 上の SQL Server
   linkLists:
@@ -29,6 +29,10 @@ landingContent:
       url: windows/sql-vm-create-powershell-quickstart.md
     - text: Linux SQL VM の作成 (ポータル)
       url: linux/sql-vm-create-portal-quickstart.md
+  - linkListType: video
+    links:
+    - text: Azure VM 上の SQL Server の概要
+      url: https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/SQL-Server-on-Azure-VM-Overview-4-of-61
   - linkListType: overview
     links:
     - text: 新機能
@@ -93,20 +97,32 @@ landingContent:
       url: linux/rhel-high-availability-stonith-tutorial.md
     - text: 可用性グループ リスナー (RHEL)
       url: linux/rhel-high-availability-listener-tutorial.md
-- title: リファレンス
+- title: Azure SQL について学習する
   linkLists:
   - linkListType: learn
     links:
+    - text: 初心者向け Azure SQL
+      url: https://aka.ms/azuresql4beginners
+    - text: Azure SQL の基礎
+      url: https://docs.microsoft.com/learn/paths/azure-sql-fundamentals/
+    - text: Azure SQL のハンズオン ラボ
+      url: https://aka.ms/asqlworkshop
+    - text: Azure SQL の短期集中講座
+      url: https://aka.ms/azuresqlbootcamp
     - text: 学習用 SQL リソース
       url: /sql/sql-server/educational-sql-resources
+- title: リファレンス
+  linkLists:
   - linkListType: deploy
     links:
+    - text: Azure portal
+      url: windows/sql-vm-create-portal-quickstart.md
     - text: Azure CLI のサンプル
-      url: /sql/ssms/download-sql-server-management-studio-ssms
+      url: /cli/azure/sql/vm
     - text: PowerShell のサンプル
-      url: /sql/ssms/download-sql-server-management-studio-ssms
+      url: windows/sql-vm-create-powershell-quickstart.md
     - text: Resource Manager テンプレートのサンプル
-      url: /sql/ssms/download-sql-server-management-studio-ssms
+      url: windows/create-sql-vm-resource-manager-template.md
   - linkListType: download
     links:
     - text: SQL Server Management Studio (SSMS)

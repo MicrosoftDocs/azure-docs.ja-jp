@@ -5,26 +5,26 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: fd34595d5ea942602efc920904ff326fc203c088
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 005725acf7270ff87ac9418f27941bdb205ae986
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81380690"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059432"
 ---
-# <a name="understand-data-retention-in-azure-time-series-insights"></a>Azure Time Series Insights のデータ保有について
+# <a name="understand-data-retention-in-azure-time-series-insights-gen1"></a>Azure Time Series Insights Gen1 のデータ保有の概要
 
 この記事では、Azure Time Series Insights 環境のデータ保有に影響する 2 つの主要な設定について説明します。
 
 ## <a name="video"></a>ビデオ
 
-### <a name="the-following-video-summarizes-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>次の動画は、Time Series Insights データの保有と、そのための計画方法をまとめたものです。</br>
+### <a name="the-following-video-summarizes-azure-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>次の動画は、Azure Time Series Insights のデータ保有と、そのための計画方法をまとめたものです。</br>
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
@@ -36,15 +36,15 @@ ms.locfileid: "81380690"
 - **[Pause ingress]\(イングレスを一時停止\)**
 
 > [!NOTE]
-> 既定では、新しい環境を作成するとき、**古いデータを消去する**ようにリテンション期間が設定されます。 Azure portal で、必要に応じて、作成後にこの設定を切り替えることができます。Time Series Insights 環境の **[構成]** ページを利用してください。
-> * リテンション期間ポリシーを構成する方法については、「[Time Series Insights のリテンション期間の構成](time-series-insights-how-to-configure-retention.md)」を参照してください。
+> 既定では、新しい環境を作成するとき、**古いデータを消去する**ようにリテンション期間が設定されます。 Azure portal で、必要に応じて、作成後にこの設定を切り替えることができます。Azure Time Series Insights 環境の **[構成]** ページを利用してください。
+> * リテンション期間ポリシーを構成する方法については、「[Azure Time Series Insights のリテンション期間の構成](time-series-insights-how-to-configure-retention.md)」を参照してください。
 
 両方のデータ保有ポリシーの詳細について、以下で詳しく説明します。
 
 ## <a name="purge-old-data"></a>古いデータを消去
 
 - **[古いデータを消去]** は、Azure Time Series Insights 環境の既定の設定です。  
-- ユーザーが使用する Time Series Insights 環境に "*最も新しいデータ*" が常に表示されるようにする場合は、 **[古いデータを消去]** を選択します。
+- ユーザーが使用する Azure Time Series Insights 環境に "*最も新しいデータ*" が常に表示されるようにする場合は、 **[古いデータを消去]** を選択します。
 - **[古いデータを消去]** 設定では、環境の上限に到達したとき (保有期間、サイズ、カウントのいずれかが上限に達した時点で)、データが*消去*されます。 リテンション期間は既定で 30 日間に設定されます。
 - 取り込まれた日が最も古いデータが先に消去されます ("先入れ先出し" 手法)。
 
@@ -69,7 +69,7 @@ ms.locfileid: "81380690"
 - これはデータ損失防止に役立ちますが、イングレスの一時停止がイベント ソースのリテンション期間より長引いた場合、最も新しいデータが失われる可能性があります。
 - ただし、環境の最大容量に到達すると、次のような追加のアクションが行われるまでデータ イングレスが一時停止となります。
 
-   - 「[Time Series Insights 環境をスケーリングする方法](time-series-insights-how-to-scale-your-environment.md)」で説明されているように環境の最大容量を増やしてスケール ユニットをさらに追加する。
+   - 「[Azure Time Series Insights 環境をスケーリングする方法](time-series-insights-how-to-scale-your-environment.md)」に説明されているように環境の最大容量を増やしてスケール ユニットを追加する。
    - データ保有期間に到達し、データが消去され、環境が最大容量より下に引き下げられる。
 
 ### <a name="example-three"></a>例 3
@@ -86,16 +86,16 @@ ms.locfileid: "81380690"
 > [!IMPORTANT]
 > イングレスの一時停止を回避するために、通知を出すアラートを設定してください。 Azure イベント ソースの場合、既定のリテンション期間は 1 日のため、データが失われることがあります。 イングレスが一時停止すると、追加の措置を取らない限り、最も新しいデータが失われる可能性があります。 データ損失を回避するには、容量を増やすか、**古いデータを消去する**動作に切り替える必要があります。
 
-関連する Event Hubs で **メッセージのリテンション期間**プロパティを調整することで、Time Series Insights でイングレスの一時停止が発生したときのデータ損失を最小限に抑えることができます。
+関連する Event Hubs で **メッセージのリテンション期間**プロパティを調整することで、Azure Time Series Insights でイングレスの一時停止が発生したときのデータ損失を最小限に抑えることができます。
 
 [![イベント ハブのメッセージのリテンション期間。](media/time-series-insights-concepts-retention/event-hub-retention.png)](media/time-series-insights-concepts-retention/event-hub-retention.png#lightbox)
 
-Time Series Insights では、イベント ソースでプロパティが構成されていない場合 (`timeStampPropertyName`)、イベント ハブに到着したときのタイムスタンプに X 軸が設定されます。 `timeStampPropertyName` が何か別のものに設定されている場合、イベントの解析時に、データ パケットで構成済みの `timeStampPropertyName` が環境により検索されます。
+Azure Time Series Insights では、イベント ソースでプロパティが構成されていない場合 (`timeStampPropertyName`)、イベント ハブに到着したときのタイムスタンプに X 軸が設定されます。 `timeStampPropertyName` が何か別のものに設定されている場合、イベントの解析時に、データ パケットで構成済みの `timeStampPropertyName` が環境により検索されます。
 
-環境を拡張して、容量を増やすか、リテンション期間を延ばす必要がある場合、「[Time Series Insights 環境をスケーリングする方法](time-series-insights-how-to-scale-your-environment.md)」をご覧ください。
+環境を拡張して、容量を増やすか、リテンション期間を延ばす必要がある場合は、「[Azure Time Series Insights 環境をスケーリングする方法](time-series-insights-how-to-scale-your-environment.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-- データ保有設定を構成または変更する方法については、「[Time Series Insights のリテンション期間の構成](time-series-insights-how-to-configure-retention.md)」を参照してください。
+- データ保有の設定を構成または変更する方法については、[Azure Time Series Insights のリテンション期間の構成](time-series-insights-how-to-configure-retention.md)に関するページを参照してください。
 
 - [Azure Time Series Insights 内での待機時間の軽減](time-series-insights-environment-mitigate-latency.md)について確認します。

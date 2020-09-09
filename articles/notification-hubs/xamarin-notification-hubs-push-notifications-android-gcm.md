@@ -12,17 +12,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-csharp
 ms.date: 08/01/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 08/01/2019
-ms.openlocfilehash: 0e4354fa7466efcf27f430bbce7edb30bb9a304c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ce47d2ae65a4ea9e6878381ce58d62cb6c998599
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72387664"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998205"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinandroid-apps-using-notification-hubs"></a>チュートリアル:Notification Hubs を使用して Xamarin.Android アプリにプッシュ通知を送信する
 
@@ -60,7 +60,7 @@ ms.locfileid: "72387664"
 2. Google Firebase Console からメモした**サーバー キー**を入力します。
 3. ツールバーの **[保存]** を選択します。
 
-    ![](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
+    ![Google G C M F C M オプションが強調表示され、赤線で囲まれた、Azure portal の通知ハブのスクリーンショット。](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
 
 通知ハブが FCM と連動するように構成されました。接続文字列により、アプリが通知を受信すると共に、プッシュ通知を送信するように登録されます。
 
@@ -248,7 +248,7 @@ ms.locfileid: "72387664"
     public class MyFirebaseMessagingService : FirebaseMessagingService
     ```
 
-18. 次のコードを `MyFirebaseMessagingService.cs` に追加して、受信したメッセージを処理します。 
+18. 次のコードを `MyFirebaseMessagingService` クラス内に追加して、受信したメッセージを処理します。 
 
     ```csharp
         const string TAG = "MyFirebaseMsgService";
@@ -292,7 +292,7 @@ ms.locfileid: "72387664"
         }
     ```
 
-19. 次のメソッドを MyFirebaseMessagingService クラスに追加して、FCM 登録トークンを受信し、それを Notification Hubs インスタンス (ハブ) に送信します。 
+19. 次のメソッドを MyFirebaseMessagingService クラス (前の手順で追加されたコードのすぐ下) に追加して、FCM 登録トークンを受信し、それを Notification Hubs インスタンス (ハブ) に送信します。 
 
     ```csharp
         public override void OnNewToken(string token)
@@ -359,12 +359,12 @@ ms.locfileid: "72387664"
 [Live SDK for Windows]: https://go.microsoft.com/fwlink/p/?LinkId=262253
 [Get started with Mobile Services]: /develop/mobile/tutorials/get-started-xamarin-android/#create-new-service
 [JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
-[Visual Studio と Xamarin]: https://docs.microsoft.com/visualstudio/install/install-visual-studio
+[Visual Studio と Xamarin]: /visualstudio/install/install-visual-studio
 [Visual Studio for Mac]: https://www.visualstudio.com/vs/visual-studio-mac/
 [Azure Portal]: https://portal.azure.com/
 [wns object]: https://go.microsoft.com/fwlink/p/?LinkId=260591
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-To for Android]: https://msdn.microsoft.com/library/dn282661.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[Notification Hubs How-To for Android]: /previous-versions/azure/dn282661(v=azure.100)
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 [GitHub]: https://github.com/Azure/azure-notificationhubs-android

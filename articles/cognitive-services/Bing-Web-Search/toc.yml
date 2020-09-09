@@ -11,7 +11,7 @@
   items:
     - name: REST API
       items:
-        - name: 'C#'
+        - name: C#
           href: quickstarts/csharp.md
         - name: Go
           href: quickstarts/go.md
@@ -88,7 +88,7 @@
 - name: リソース
   items:
     - name: API キーを取得する
-      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api'
+      href: 'https://azure.microsoft.com/free/cognitive-services'
     - name: Bing Web Search エンドポイント
       href: web-search-endpoints.md
     - name: 価格

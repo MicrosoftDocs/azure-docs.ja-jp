@@ -3,17 +3,19 @@ title: Azure Database Migration Service のドキュメント
 summary: Azure Database Migration Service を使用すると、複数のデータベース ソースから Azure データ プラットフォームに、ダウンタイムを最小限に抑えながらシームレスに移行できます。 このサービスでは、Data Migration Assistant を使用して評価レポートを生成します。評価レポートには、移行を実行する前に必要な変更について推奨される手順が記載されています。 移行プロセスを開始する準備ができたら、Azure Database Migration Service によって、必要な手順がすべて実行されます。
 metadata:
   description: Azure Database Migration Service を使用して、ダウンタイムを最小限に抑えながら、複数のデータベース ソースから Azure データ プラットフォームへのシームレスな移行を実現する方法について説明します。
+  keywords: azure database migration services, dms service, azure data migration, data migration service, database migration service
   author: HJToland3
   ms.author: jtoland
   ms.date: 12/19/2019
   ms.service: dms
   ms.topic: landing-page
-  ms.openlocfilehash: 9a37c850426cab0d940ab546084c1c64811ccb64
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.custom: seo-azure-migrate
+  ms.openlocfilehash: 05780a5628f920b8fb4f0c73794046f23e895c58
+  ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "78164561"
+  ms.lasthandoff: 08/31/2020
+  ms.locfileid: "89182243"
 landingContent:
 - title: Azure Database Migration Service について
   linkLists:
@@ -89,6 +91,8 @@ landingContent:
       url: tutorial-postgresql-azure-postgresql-online.md
     - text: RDS PostgreSQL を Azure DB for PostgreSQL に移行する
       url: tutorial-rds-postgresql-server-azure-db-for-postgresql-online.md
+    - text: ポータルを使用してオンラインで Azure DB for PostgreSQL インスタンスの間で移行する
+      url: tutorial-azure-postgresql-to-azure-postgresql-online-portal.md
     - text: Azure DB for MySQL に移行する - オンライン
       url: tutorial-mysql-azure-mysql-online.md
     - text: RDS MySQL を Azure DB for MySQL に移行する - オンライン

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 63db1810cbdd2133bc0577530325351997b31f30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f1e861bf9c6cc2a485ac9f153a0c932ec2e6fbb2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70139261"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85318911"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory - サンプル
 > [!NOTE]
@@ -48,7 +48,7 @@ GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレ
 
 | Template | 説明 |
 | --- | --- |
-| [Azure Blob Storage から Azure SQL Database にコピーする](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |このテンプレートをデプロイすると、指定した Azure Blob Storage から Azure SQL データベースにデータをコピーするパイプラインを持つ Azure データ ファクトリが作成されます。 |
+| [Azure Blob Storage から Azure SQL Database にコピーする](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |このテンプレートをデプロイすると、指定した Azure の BLOB ストレージから Azure SQL Database にデータをコピーするパイプラインを持つ Azure データ ファクトリが作成されます |
 | [Salesforce から Azure Blob Storage にコピーする](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |このテンプレートをデプロイすると、指定した Salesforce アカウントから Azure Blob Storage にデータをコピーするパイプラインを持つ Azure データ ファクトリが作成されます。 |
 | [Azure HDInsight クラスターで Hive スクリプトを実行してデータを変換する](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-hive-transformation) |このテンプレートをデプロイすると、Azure HDInsight Hadoop クラスター上でサンプル Hive スクリプトを実行することによりデータ変換を行うパイプラインを持つ Azure データ ファクトリが作成されます。 |
 
@@ -62,7 +62,7 @@ GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレ
 3. **[サンプル パイプライン]** ブレードで、デプロイする**サンプル**をクリックします。
 
     ![サンプル パイプライン ブレード](./media/data-factory-samples/SampleTile.png)
-4. このサンプルの構成設定を指定します。 たとえば、Azure ストレージ アカウント名とアカウント キー、Azure SQL サーバーの名前、データベース、ユーザー ID、パスワードなどです。
+4. このサンプルの構成設定を指定します。 たとえば、Azure ストレージ アカウント名とアカウント キー、論理 SQL サーバーの名前、データベース、ユーザー ID、パスワードなどです。
 
     ![サンプル ブレード](./media/data-factory-samples/SampleBlade.png)
 5. 構成設定の指定が完了したら **[作成]** をクリックして、サンプルのパイプラインと、そのパイプラインで使用するリンクされたサービスとテーブルを作成またはデプロイします。
@@ -80,7 +80,7 @@ GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレ
 
 * Visual Studio 2013 または Visual Studio 2015
 * Azure SDK for Visual Studio 2013 または Visual Studio 2015 をダウンロードします。 [Azure ダウンロード ページ](https://azure.microsoft.com/downloads/)に移動し、 **.NET** セクションの **[VS 2013]** または **[VS 2015]** をクリックします。
-* Visual Studio 用の最新の Azure Data Factory プラグイン ([VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) または [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)) をダウンロードします。 Visual Studio 2013 をお使いの場合は、メニューで **[ツール]**  ->  **[拡張機能と更新プログラム]**  ->  **[オンライン]**  ->  **[Visual Studio ギャラリー]**  ->  **[Microsoft Azure Data Factory Tools for Visual Studio]**  ->  **[更新]** の順にクリックして、プラグインを更新することもできます。
+* Visual Studio 用の最新の Azure Data Factory プラグイン ([VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) または [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)) をダウンロードします。 Visual Studio 2013 を使用している場合は、次の手順を実行してプラグインを更新することもできます。メニューで **[ツール]**  ->  **[拡張機能と更新プログラム]**  ->  **[オンライン]**  ->  **[Visual Studio ギャラリー]**  ->  **[Microsoft Azure Data Factory Tools for Visual Studio]**  ->  **[更新]** の順にクリックします。
 
 ### <a name="use-data-factory-templates"></a>Data Factory テンプレートの使用
 1. メニューの **[ファイル]** をクリックし、 **[新規作成]** をポイントして、 **[プロジェクト]** をクリックします。
@@ -104,7 +104,7 @@ GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレ
    4. データ ファクトリの **リソース グループ** を選択します。
    5. **リージョン**として **[米国西部]** 、 **[米国東部]** 、または **[北ヨーロッパ]** を選択します。
    6. **[次へ]** をクリックします。
-6. **[Configure data stores]** (データ ストアの構成) ページで、既存の **Azure SQL データベース** と **Azure ストレージ アカウント**を指定するか、データベースかストレージを作成して、[次へ] をクリックします。
+6. **[Configure data stores] (データ ストアの構成)** ページで、既存の **Azure SQL Database のデータベース**と **Azure ストレージ アカウント**を指定するか、データベースまたはストレージを作成して、[次へ] をクリックします。
 7. **[コンピューティングの構成]** ページで、既定値を選択し、 **[次へ]** をクリックします。
 8. **[概要]** ページで、すべての設定を確認し、 **[次へ]** をクリックします。
 9. **[Deployment Status]** (デプロイ ステータス) ページで、デプロイが完了するまで待ってから **[完了]** をクリックします。

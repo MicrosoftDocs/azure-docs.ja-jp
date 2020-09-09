@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 35ac39109bfcb4dc63b738c947d2ad8caf8ac0a6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 704c56745ad89e9ed2f79e8a863f1d0bc9845bf9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77021289"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001827"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>チュートリアル:患者の継続的なモニタリング アプリ テンプレートのデプロイとウォークスルー
 
@@ -85,7 +85,10 @@ ms.locfileid: "77021289"
 >[!div class="mx-imgBorder"] 
 >![Smart Vitals Patch デバイス テンプレート](media/smart-vitals-device-template.png)
 
-**[デバイス グループ]** タブをクリックすると、これらのデバイス テンプレートに対して自動的にデバイス グループが作成されていることも確認できます。
+### <a name="device-groups"></a>デバイス グループ 
+デバイス グループを使用すると、一連のデバイスを論理的にグループ化して、それらに対してクエリや操作を一括で実行できます。 
+
+[デバイス グループ] タブをクリックすると、アプリケーションのデバイス テンプレートごとに既定のデバイス グループが作成されていることがわかります。 "Provision devices (デバイスのプロビジョニング)" および "Devices with outdated firmware (古いファームウェアがインストールされたデバイス)" という 2 つの追加のサンプル デバイス グループが作成されていることもわかります。 これらのサンプル デバイス グループを入力として使用して、いくつかの[ジョブ](#jobs)を実行します。
 
 ### <a name="rules"></a>ルール
 
@@ -100,6 +103,13 @@ ms.locfileid: "77021289"
 >[!div class="mx-imgBorder"] 
 >![Brace temperature high (関節支持帯の温度が高い) ルール](media/brace-temp-rule.png):
 
+### <a name="jobs"></a>ジョブ
+
+ジョブを使用すると、[デバイス グループ](#device-groups)を入力として使用して、一連のデバイスに対して一括操作を実行できます。 デバイスのライフサイクルのある時点でソリューション オペレーターが実行する必要があると思われる 2 つのサンプル ジョブをアプリケーション テンプレートに適用しました。
+* **Update knee brace firmware (膝関節支持帯のファームウェアを更新する)** : このジョブでは、"Devices with outdated firmware (古いファームウェアがインストールされたデバイス)" デバイス グループのデバイスを検出し、関節支持帯の最新ファームウェア バージョンに更新するコマンドを実行します。 このサンプル ジョブは、デバイスに、"更新" コマンドを受信してクラウドからファームウェア ファイルを直接フェッチする機能が備わっていることを前提としています。  
+
+* **Re-provision devices (デバイスを再プロビジョニングする)** : 最近病院に返されてきた一連のデバイスを、次の患者のために再プロビジョニングする必要がある場合は、このジョブを実行してデバイスを一括でプロビジョニングすることができます。 この場合は、"Provision devices (デバイスのプロビジョニング)" と呼ばれるデバイス グループからすべてのデバイスを取得し、"再プロビジョニング" コマンドを実行します。 
+
 ### <a name="devices"></a>デバイス
 
 **[デバイス]** タブをクリックし、**Smart Knee Brace** のインスタンスを選択します。 選択した特定のデバイスに関する情報を調べることができるビューが 3 つあることを確認できます。 これらのビューは、デバイスのデバイス テンプレートを作成するときに作成されて公開されます。つまり、これらは接続またはシミュレートするすべてのデバイスで一貫しています。
@@ -112,6 +122,10 @@ ms.locfileid: "77021289"
 
 >[!div class="mx-imgBorder"] 
 >![膝関節支持帯のビュー](media/knee-brace-dashboard.png)
+
+### <a name="data-export"></a>データのエクスポート
+
+データのエクスポートを使用すると、IoT Central のデバイス データを、[Azure API for FHIR](concept-continuous-patient-monitoring-architecture.md#export-to-azure-api-for-fhir) などの他の Azure サービスに継続的にエクスポートできます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

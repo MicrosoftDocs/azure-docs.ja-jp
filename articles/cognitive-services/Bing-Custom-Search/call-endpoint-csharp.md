@@ -8,36 +8,43 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 7ea8b272871e681bd9caacf8cf1a84eb91d8849d
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.custom: devx-track-csharp
+ms.openlocfilehash: eae9565db5fd88a38343423422cfcc92a3fac33f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80238905"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936811"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>クイック スタート:C# を使用して Bing Custom Search エンドポイントを呼び出す 
 
-このクイック スタートでは、Bing Custom Search インスタンスに検索結果を要求します。 このアプリケーションは C# で記述されていますが、Bing Custom Search API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingCustomSearchv7.cs) にあります。
+このクイックスタートでは、Bing Custom Search インスタンスに検索結果を要求する方法を学習します。 このアプリケーションは C# で記述されていますが、Bing Custom Search API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingCustomSearchv7.cs) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-- Bing Custom Search インスタンス。 「[クイック スタート:初めての Bing Custom Search インスタンスを作成する](quick-start.md)」で詳細を確認する。
-- Microsoft [.NET Core](https://www.microsoft.com/net/download/core)
-- [[Visual Studio 2019 以降]](https://www.visualstudio.com/downloads/) の任意のエディション
+- Bing Custom Search インスタンス。 詳細については、「[クイック スタート: 最初の Bing Custom Search インスタンスの作成](quick-start.md)」を参照してください。
+- [Microsoft .NET Core](https://www.microsoft.com/net/download/core)。
+- [Visual Studio 2019 以降](https://www.visualstudio.com/downloads/)の任意のエディション。
 - Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
-- [Bing Custom Search](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) の NuGet パッケージ 
-    - Visual Studio の**ソリューション エクスプローラー**でプロジェクトを右クリックし、メニューから **[NuGet パッケージの管理]** を選択します。 `Microsoft.Azure.CognitiveServices.Search.CustomSearch` パッケージをインストールします。 NuGet Custom Search パッケージをインストールすると、次のアセンブリもインストールされます。
-        - Microsoft.Rest.ClientRuntime
-        - Microsoft.Rest.ClientRuntime.Azure
-        - Newtonsoft.Json
+- [Bing Custom Search](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/2.0.0) の NuGet パッケージ 
+
+   Visual Studio にこのパッケージをインストールするには: 
+     1. **ソリューション エクスプローラー**で目的のプロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。 
+     2. *Microsoft.Azure.CognitiveServices.Search.CustomSearch* を検索して選択し、このパッケージをインストールします。
+
+   Bing Custom Search NuGet パッケージをインストールすると、次のパッケージも Visual Studio によってインストールされます。
+     - **Microsoft.Rest.ClientRuntime**
+     - **Microsoft.Rest.ClientRuntime.Azure**
+     - **Newtonsoft.Json**
+
 
 [!INCLUDE [cognitive-services-bing-custom-search-prerequisites](../../../includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>アプリケーションを作成して初期化する
 
-1. Visual Studio で、新しい C# コンソール アプリケーションを作成します。 次のパッケージをプロジェクトに追加します。
+1. Visual Studio で、新しい C# コンソール アプリケーションを作成します。 次に、次のパッケージを目的のプロジェクトに追加します。
 
     ```csharp
     using System;
@@ -70,7 +77,7 @@ ms.locfileid: "80238905"
     }
     ```
 
-3. プロジェクトのメイン メソッドで、Bing Custom Search API のサブスクリプション キー、検索インスタンスのカスタム構成 ID、検索語句に使用する各変数を作成します。
+3. プロジェクトのメイン メソッドで、Bing Custom Search API のサブスクリプション キー、検索インスタンスのカスタム構成 ID、検索語句に使用する次の各変数を作成します。
 
     ```csharp
     var subscriptionKey = "YOUR-SUBSCRIPTION-KEY";
@@ -78,7 +85,7 @@ ms.locfileid: "80238905"
     var searchTerm = args.Length > 0 ? args[0]:"microsoft";
     ```
 
-4. 検索語句を `q=` クエリ パラメーターに、また検索インスタンスのカスタム構成 ID を `customconfig=` に追加して要求 URL を作成します。 パラメーターの区切りには、`&` 文字を使用します。 `url` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。
+4. 検索語句を `q=` クエリ パラメーターに追加し、検索インスタンスのカスタム構成 ID を `customconfig=` パラメーターに追加して、要求 URL を作成します。 パラメーターの区切りには、アンパサンド (`&`) を使用します。 `url` 変数値には、次のコードのグローバル エンドポイントを使用するか、Azure portal に表示される、対象のリソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用することができます。
 
     ```csharp
     var url = "https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?" +
@@ -102,9 +109,9 @@ ms.locfileid: "80238905"
     var responseContent = httpResponseMessage.Content.ReadAsStringAsync().Result;
     BingCustomSearchResponse response = JsonConvert.DeserializeObject<BingCustomSearchResponse>(responseContent);
     ```
-   ## <a name="process-and-view-the-results"></a>結果の処理と表示
+## <a name="process-and-view-the-results"></a>結果の処理と表示
 
-3. 応答オブジェクトを反復処理して、それぞれの検索結果についての情報 (名前、URL、Web ページが最後にクロールされた日付など) を表示します。
+- 応答オブジェクトを反復処理して、それぞれの検索結果についての情報 (名前、URL、Web ページが最後にクロールされた日付など) を表示します。
 
     ```csharp
     for(int i = 0; i < response.webPages.value.Length; i++) {                

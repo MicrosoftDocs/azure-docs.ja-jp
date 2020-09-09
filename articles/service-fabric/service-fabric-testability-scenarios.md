@@ -5,12 +5,13 @@ author: motanv
 ms.topic: conceptual
 ms.date: 10/1/2019
 ms.author: motanv
-ms.openlocfilehash: 206b02024ad052a12e87cfdf1773815027e8aec4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 17f0af8c041042ddceccc1f8701e44ab8522840f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75465538"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022124"
 ---
 # <a name="testability-scenarios"></a>Testability のシナリオ
 クラウド インフラストラクチャのような大規模な分散システムは、本質的に信頼性の低いものです。 Azure Service Fabric を使用すると、開発者は信頼性の低いインフラストラクチャ上で実行できるサービスのコードを記述できます。 高品質なサービスのコードを記述するには、開発者はこのような信頼性の低いインフラストラクチャを誘発してサービスの安定性をテストできる必要があります。
@@ -124,7 +125,7 @@ class Test
 
 PowerShell
 
-Service Fabric Powershell モジュールでは、2 とおりの方法で混乱シナリオを開始できます。 `Invoke-ServiceFabricChaosTestScenario` はクライアントベースであり、テストの途中でクライアント コンピューターがシャットダウンされた場合、それ以上のエラーは発生しません。 また、コンピューターのシャットダウン時にテストの実行を維持するための一連のコマンドがあります。 `Start-ServiceFabricChaos` では、FaultAnalysisService という名称の、信頼性の高いステートフル サービスが使用され、TimeToRun が起動するまでエラーが引き続き表示されます。 `Stop-ServiceFabricChaos` を使用し、シナリオを手動で停止できます。また、`Get-ServiceFabricChaosReport` でレポートが取得されます。 詳細については、「[Azure Service Fabric Powershell リファレンス](https://docs.microsoft.com/powershell/module/servicefabric/?view=azureservicefabricps)」と「[Service Fabric クラスターでの制御された混乱の誘発](service-fabric-controlled-chaos.md)」を参照してください。
+Service Fabric Powershell モジュールでは、2 とおりの方法で混乱シナリオを開始できます。 `Invoke-ServiceFabricChaosTestScenario` はクライアントベースであり、テストの途中でクライアント コンピューターがシャットダウンされた場合、それ以上のエラーは発生しません。 また、コンピューターのシャットダウン時にテストの実行を維持するための一連のコマンドがあります。 `Start-ServiceFabricChaos` では、FaultAnalysisService という名称の、信頼性の高いステートフル サービスが使用され、TimeToRun が起動するまでエラーが引き続き表示されます。 `Stop-ServiceFabricChaos` を使用し、シナリオを手動で停止できます。また、`Get-ServiceFabricChaosReport` でレポートが取得されます。 詳細については、「[Azure Service Fabric Powershell リファレンス](/powershell/module/servicefabric/?view=azureservicefabricps)」と「[Service Fabric クラスターでの制御された混乱の誘発](service-fabric-controlled-chaos.md)」を参照してください。
 
 ```powershell
 $connection = "localhost:19000"

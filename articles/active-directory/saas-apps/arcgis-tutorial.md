@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と ArcGIS Online の統合 | Microsoft Docs'
 description: Azure Active Directory と ArcGIS Online の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: a9e132a4-29e7-48bf-beb9-4148e617c8a9
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74cf0c1e055570df7702465df79dcdfbd8ea9e9f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 28e15cb7e0b519932eeee3a6a6445449affe2f35
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74232087"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551372"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>チュートリアル: Azure Active Directory と ArcGIS Online の統合
 
@@ -41,6 +36,9 @@ Azure AD と ArcGIS Online の統合を構成するには、次の項目が必�
 
 * Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
 * ArcGIS Online でのシングル サインオンが有効なサブスクリプション
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -133,7 +131,7 @@ ArcGIS Online で Azure AD のシングル サインオンを構成するには�
 
 3. **[セキュリティ]** をクリックします。
 
-    ![セキュリティ](./media/arcgis-tutorial/ic784743.png "Security")
+    ![Security](./media/arcgis-tutorial/ic784743.png "セキュリティ")
 
 4. **[Enterprise Logins] [エンタープライズ ログイン]** で、 **[SET IDENTITY PROVIDER] \(ID プロバイダーの設定)** をクリックします。
 

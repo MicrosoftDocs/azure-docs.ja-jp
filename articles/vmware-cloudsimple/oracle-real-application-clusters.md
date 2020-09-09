@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f657e18d7185d6b3c63ac8f1424da9d36d4189e9
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 2cc2f954f4255c00b7c3549ab5d33d71b240fb70
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793042"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507673"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Oracle RAC をインストールするために CloudSimple プライベート クラウドを最適化する
 
@@ -169,7 +169,7 @@ SQL > alter database add logfile thread 2 ('+ORCLRAC_REDO1','+ORCLRAC_REDO2') si
 
 vSAN ポリシーは、VM ディスクに格納されているデータの許容障害数とディスク ストライピングを定義します。  作成されたストレージ ポリシーは、VM の作成中に VM ディスクに適用される必要があります。
 
-1. プライベート クラウドの [vSphere クライアントにサインイン](https://docs.microsoft.com/azure/vmware-cloudsimple/vcenter-access)します。
+1. プライベート クラウドの [vSphere クライアントにサインイン](./vcenter-access.md)します。
 2. 上部のメニューから、 **[Policies and Profiles]\(ポリシーとプロファイル\)** を選択します。
 3. 左側のメニューで、 **[VM Storage Policies]\(VM ストレージ ポリシー\)** を選択し、 **[Create a VM storage Policy]\(VM ストレージ ポリシーの作成\)** を選択します。
 4. ポリシー用にわかりやすい名前を入力し、 **[NEXT]\(次へ\)** をクリックします。

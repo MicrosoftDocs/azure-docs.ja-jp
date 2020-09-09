@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2df092d49f2dfe9153b52be677e8ee6314dd9b60
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: bf9e00e8acba241f1445977dcc53724b9981039f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982974"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068684"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>Azure のファイル共有を使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する
 
@@ -70,10 +70,10 @@ SAP によって、共有ディスクをクラスター化する方法に代わ�
 
 * SAP セントラル サービス (独自のファイル構造、およびメッセージとエンキュー プロセスを含む) が、SAP グローバル ホスト ファイルから分離されます。
 * SAP セントラル サービスが、SAP ASCS/SCS インスタンスで実行されます。
-* SAP ASCS/SCS インスタンスがクラスター化され、\<ASCS/SCS 仮想ホスト名\> 仮想ホスト名を使ってアクセスできます。
-* SAP グローバル ファイルは SMB ファイル共有に配置され、\<SAP グローバル ホスト\> ホスト名\\\\&lt;SAP グローバル ホスト&gt;\sapmnt\\&lt;SID&gt;\SYS\. を使ってアクセスされます。
+* SAP ASCS/SCS インスタンスがクラスター化され、\<ASCS/SCS virtual host name\> 仮想ホスト名を使ってアクセスできます。
+* SAP グローバル ファイルは SMB ファイル共有に配置され、\<SAP global host\> ホスト名 \\\\&lt;SAP グローバル ホスト&gt;\sapmnt\\&lt;SID&gt;\SYS\. を使ってアクセスされます。
 * SAP ASCS/SCS インスタンスは、両方のクラスター ノード上のローカル ディスクにインストールされます。
-* \<ASCS/SCS 仮想ホスト名\> ネットワーク名は、&lt;SAP グローバル ホスト&gt; とは異なります。
+* \<ASCS/SCS virtual host name\> ネットワーク名は、&lt;SAP グローバル ホスト&gt;とは異なります。
 
 ![図 2:SMB ファイル共有を使う SAP ASCS/SCS HA のアーキテクチャ][sap-ha-guide-figure-8004]
 
@@ -114,7 +114,7 @@ _**図 4:** SAP グローバル ホスト ファイルの保護に使われる�
 記憶域スペース ダイレクトを選択する場合は、次のユースケースを検討してください。
 
 - 記憶域スペース ダイレクト クラスターを構築するために使用する仮想マシンは、Azure 可用性セットにデプロイする必要があります。
-- 記憶域スペース ダイレクト クラスターのディザスター リカバリーには、[Azure Site Recovery Services](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#replicated-machines---storage) を使用できます。
+- 記憶域スペース ダイレクト クラスターのディザスター リカバリーには、[Azure Site Recovery Services](../../../site-recovery/azure-to-azure-support-matrix.md#replicated-machines---storage) を使用できます。
 - 記憶域スペース ダイレクト クラスターを異なる Azure Availability Zones に拡張することはサポートされていません。
 
 ### <a name="sap-prerequisites-for-scale-out-file-shares-in-azure"></a>Azure でのスケールアウト ファイル共有に対する SAP の前提条件
@@ -137,11 +137,11 @@ _**図 4:** SAP グローバル ホスト ファイルの保護に使われる�
 * 記憶域スペース ダイレクトのディスク同期に必要な VM 間の高いネットワーク パフォーマンスを得るには、少なくとも "高" ネットワーク帯域幅の VM タイプを使う必要があります。
     詳しくは、[DSv2 シリーズ][dv2-series]および [DS シリーズ][ds-series]の仕様をご覧ください。
 * 記憶域プールに未割り当ての容量を若干確保しておくことをお勧めします。 記憶域プールに未割り当て容量を残しておくと、ドライブで障害が発生した場合に "その場で" 修復するためのボリューム領域が用意されます。 これにより、データの安全性とパフォーマンスが向上します。  詳しくは、「[ボリュームのサイズの選択][choosing-the-size-of-volumes-s2d]」をご覧ください。
-* スケールアウト ファイル共有のネットワーク名 (\<SAP グローバル ホスト\> など) に対して、Azure 内部ロード バランサーを構成する必要はありません。 これは、SAP ASCS/SCS インスタンスの \<ASCS/SCS 仮想ホスト名\> または DBMS に対して行われます。 スケールアウト ファイル共有は、すべてのクラスター ノード間に負荷をスケールアウトします。 \<SAP グローバル ホスト\> は、すべてのクラスター ノードのローカル IP アドレスを使います。
+* スケールアウト ファイル共有のネットワーク名 (\<SAP global host\> など) に対して、Azure 内部ロード バランサーを構成する必要はありません。 これは、SAP ASCS/SCS インスタンスの \<ASCS/SCS virtual host name\> または DBMS に対して行われます。 スケールアウト ファイル共有は、すべてのクラスター ノード間に負荷をスケールアウトします。 \<SAP global host\> は、すべてのクラスター ノードのローカル IP アドレスを使います。
 
 
 > [!IMPORTANT]
-> \<SAP グローバル ホスト\> を指し示している SAPMNT ファイル共有の名前を変更することはできません。 SAP は、共有名 "sapmnt" のみをサポートします。
+> \<SAP global host\> を指し示している SAPMNT ファイル共有の名前を変更することはできません。 SAP は、共有名 "sapmnt" のみをサポートします。
 >
 > 詳しくは、「[SAP Note 2492395 - Can the share name sapmnt be changed?][2492395]」 (SAP Note 2492395 - 共有名 sapmnt を変更できますか) をご覧ください。
 

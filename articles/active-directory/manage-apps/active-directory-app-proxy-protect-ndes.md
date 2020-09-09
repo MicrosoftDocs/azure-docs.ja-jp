@@ -3,22 +3,22 @@ title: NDES サーバー上の AD アプリケーション プロキシとの統
 titleSuffix: Azure Active Directory
 description: NDES サーバーを保護するための Azure Active Directory アプリケーション プロキシのデプロイに関するガイダンス。
 services: active-directory
-author: CelesteDG
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/17/2020
-ms.author: baselden
+ms.author: kenwith
 ms.reviewer: mimart
-ms.openlocfilehash: 4ccd8834671725ace72497391090f81eb197ad6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a385a339122197b7055ef6f54b8e37edea8eae4a
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77032233"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078939"
 ---
 # <a name="integrate-with-azure-ad-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>ネットワーク デバイス登録サービス (NDES) サーバー上の Azure AD アプリケーション プロキシとの統合
 
@@ -89,11 +89,11 @@ Azure AD アプリケーション プロキシは Azure 上に構築されてい
 
 1. **HTTP エラー 403 - アクセス不可**の応答が表示されるはずです。
 
-1. (Microsoft Intune 経由で) 提供された NDES URL をデバイスに変更します。この変更は、Microsoft エンドポイント構成センターまたは Intune クラウドで行うことができます。
+1. デバイスに (Microsoft Intune 経由で) 提供された NDES URL を変更します。 この変更は、Microsoft Endpoint Configuration Manager または Microsoft Endpoint Manager 管理センターのいずれかで行うことができます。
 
-   * 構成センターの場合は、証明書登録ポイント (CRP) に進み、URL を調整します。 この URL は、デバイスが呼び出して、資格情報の要求を行う URL です。
-   * Intune クラウドのみ (Intune スタンドアロンとも呼ばれる) の場合は、SCEP ポリシーを編集するか新規に作成し、新しい URL を追加します。
+   * Configuration Manager の場合は、証明書登録ポイントに移動して、URL を調整します。 この URL は、デバイスが呼び出して、資格情報の要求を行う URL です。
+   * Intune スタンドアロンの場合は、SCEP ポリシーを編集するか新規に作成し、新しい URL を追加します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 NDES と統合された Azure AD アプリケーション プロキシを使用して、ユーザーがアクセスできるようにアプリケーションを発行します。 詳しくは、[Azure AD アプリケーション プロキシを使用したアプリケーションの発行](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application)に関する記事をご覧ください。

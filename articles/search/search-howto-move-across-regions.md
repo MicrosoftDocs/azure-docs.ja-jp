@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 03/24/2020
-ms.openlocfilehash: 00f16d11f7a9cd276772eda5e91d6e117ada8c9f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71846b8e26efb3853705fabff78831e746727191
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246304"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926951"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>Azure Cognitive Search サービスを別の Azure リージョンに移動する
 
@@ -69,11 +69,11 @@ In this article, you'll learn how to:
 
 - Ensure that the services and features that your account uses are supported in the target region.
 
-- For preview features, ensure that your subscription is whitelisted for the target region. For more information about preview features, see [knowledge stores](https://docs.microsoft.com/azure/search/knowledge-store-concept-intro), [incremental enrichment](https://docs.microsoft.com/azure/search/cognitive-search-incremental-indexing-conceptual), and [private endpoint](https://docs.microsoft.com/azure/search/service-create-private-endpoint).
+- For preview features, ensure that your subscription is whitelisted for the target region. For more information about preview features, see [knowledge stores](./knowledge-store-concept-intro.md), [incremental enrichment](./cognitive-search-incremental-indexing-conceptual.md), and [private endpoint](./service-create-private-endpoint.md).
 
 ## Assessment and planning
 
-When you move your search service to the new region, you will need to [move your data to the new storage service](https://docs.microsoft.com/azure/storage/common/storage-account-move?tabs=azure-portal#configure-the-new-storage-account) and then rebuild your indexes, skillsets and knowledge stores. You should record current settings and copy json files to make the rebuilding of your service easier and faster.
+When you move your search service to the new region, you will need to [move your data to the new storage service](../storage/common/storage-account-move.md?tabs=azure-portal#configure-the-new-storage-account) and then rebuild your indexes, skillsets and knowledge stores. You should record current settings and copy json files to make the rebuilding of your service easier and faster.
 
 ## Moving your search service's resources
 
@@ -167,7 +167,7 @@ To obtain region location codes, see [Azure Locations](https://azure.microsoft.c
 
 To verify the move, open the new resource group and your services will be listed with the new region.
 
-To move your data from your source region to the target region, please see this article's guidelines for [moving your data to the new storage account](https://docs.microsoft.com/azure/storage/common/storage-account-move?tabs=azure-portal#move-data-to-the-new-storage-account).
+To move your data from your source region to the target region, please see this article's guidelines for [moving your data to the new storage account](../storage/common/storage-account-move.md?tabs=azure-portal#move-data-to-the-new-storage-account).
 
 ## Clean up resources in your original region
 
@@ -175,8 +175,8 @@ To commit the changes and complete the move of your service account, delete the 
 
 ## Next steps
 
-[Create an index](https://docs.microsoft.com/azure/search/search-get-started-portal)
+[Create an index](./search-get-started-portal.md)
 
-[Create a skillset](https://docs.microsoft.com/azure/search/cognitive-search-quickstart-blob)
+[Create a skillset](./cognitive-search-quickstart-blob.md)
 
-[Create a knowledge store](https://docs.microsoft.com/azure/search/knowledge-store-create-portal) -->
+[Create a knowledge store](./knowledge-store-create-portal.md) -->

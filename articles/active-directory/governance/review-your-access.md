@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 04/30/2020
+ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0de10534cb00c66ad914b2c64ac2547b0e3fe03b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 33d946c47a17bb537c7644937547ad479b4637e5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611097"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85077935"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Azure AD アクセス レビューでグループまたはアプリケーションに対する自分のアクセスをレビューする
 
@@ -97,7 +97,7 @@ ms.locfileid: "82611097"
     > [!NOTE]
     > **[アクセス レビュー]** タイルが表示されない場合は、その組織に対して実施するアクセス レビューがないので、現時点で必要な対応はありません。
 
-3. **[試してみる]** をクリックします。 これはページ上部のバナーにあります。クリックすると新しいマイ アクセス エクスペリエンスに移ります。
+3. **[使ってみる]** をクリックします。 これはページ上部のバナーにあります。クリックすると新しいマイ アクセス エクスペリエンスに移ります。
 
     ![プレビュー期間中に表示される、新しいエクスペリエンスが利用可能であることを示すバナーと、アプリとグループに対して保留中になっているアクセス レビューの一覧](./media/review-your-access/banner-your-access.png)
 

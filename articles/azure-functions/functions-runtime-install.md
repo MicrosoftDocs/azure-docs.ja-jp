@@ -5,12 +5,12 @@ author: apwestgarth
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: 7ad748aa9a5b45af10121648a668344548484cf7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73b9533fa00c783e1cfb85270198f5c00c66afd5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74226738"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540385"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>Azure Functions ランタイム プレビュー 2 をインストールする
 
@@ -71,7 +71,7 @@ Azure Functions ランタイムのインストールを完了するには、構�
 
     ![Azure Functions ランタイム プレビュー構成ツール][7]
 
-1. **[データベース]** タブをクリックし、[データベース マスター キー](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine)の指定など、SQL Server インスタンスの接続の詳細を入力して、 **[適用]** をクリックします。  SQL Server インスタンスへの接続性は、Azure Functions ランタイムでランタイムをサポートするデータベースを作成するために必要です。
+1. **[データベース]** タブをクリックし、[データベース マスター キー](/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine)の指定など、SQL Server インスタンスの接続の詳細を入力して、 **[適用]** をクリックします。  SQL Server インスタンスへの接続性は、Azure Functions ランタイムでランタイムをサポートするデータベースを作成するために必要です。
 
     ![Azure Functions ランタイム プレビュー データベース構成][8]
 

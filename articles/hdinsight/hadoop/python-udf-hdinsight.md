@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/15/2019
-ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 201bb40e5024442587f5508886da7e844f35be40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: H1Hack27Feb2017,hdinsightactive, devx-track-python
+ms.openlocfilehash: 2f02e579f7679180cecfd8a48736b3af307ba371
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74148395"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874760"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>HDInsight 上の Apache Hive と Apache Pig で Python ユーザー定義関数 (UDF) を使用する
 
@@ -150,11 +150,13 @@ while True:
 
 3. 最後の行を入力すると、ジョブが開始されます。 ジョブが完了すると、次の例のような出力が返されます。
 
-        100041    RIM 9650    d476f3687700442549a83fac4560c51c
-        100041    RIM 9650    d476f3687700442549a83fac4560c51c
-        100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
-        100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
-        100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
+    ```output
+    100041    RIM 9650    d476f3687700442549a83fac4560c51c
+    100041    RIM 9650    d476f3687700442549a83fac4560c51c
+    100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
+    100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
+    100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
+    ```
 
 4. Beeline を終了するには、次のコマンドを入力します。
 
@@ -281,11 +283,13 @@ Get-AzHDInsightJobOutput `
 
 **Hive** ジョブの出力は、次の例のようになります。
 
-    100041    RIM 9650    d476f3687700442549a83fac4560c51c
-    100041    RIM 9650    d476f3687700442549a83fac4560c51c
-    100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
-    100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
-    100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
+```output
+100041    RIM 9650    d476f3687700442549a83fac4560c51c
+100041    RIM 9650    d476f3687700442549a83fac4560c51c
+100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
+100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
+100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
+```
 
 ## <a name="apache-pig-udf"></a><a name="pigpython"></a>Apache Pig UDF
 
@@ -399,11 +403,13 @@ Pig に返された時点のデータは、`@outputSchema` ステートメント
 
 3. 次の行を入力すると、ジョブが開始されます。 ジョブが完了すると、次のデータのような出力が返されます。
 
-        ((2012-02-03,20:11:56,SampleClass5,[TRACE],verbose detail for id 990982084))
-        ((2012-02-03,20:11:56,SampleClass7,[TRACE],verbose detail for id 1560323914))
-        ((2012-02-03,20:11:56,SampleClass8,[DEBUG],detail for id 2083681507))
-        ((2012-02-03,20:11:56,SampleClass3,[TRACE],verbose detail for id 1718828806))
-        ((2012-02-03,20:11:56,SampleClass3,[INFO],everything normal for id 530537821))
+    ```output
+    ((2012-02-03,20:11:56,SampleClass5,[TRACE],verbose detail for id 990982084))
+    ((2012-02-03,20:11:56,SampleClass7,[TRACE],verbose detail for id 1560323914))
+    ((2012-02-03,20:11:56,SampleClass8,[DEBUG],detail for id 2083681507))
+    ((2012-02-03,20:11:56,SampleClass3,[TRACE],verbose detail for id 1718828806))
+    ((2012-02-03,20:11:56,SampleClass3,[INFO],everything normal for id 530537821))
+    ```
 
 4. `quit` を使って Grunt シェルを終了し、次のコマンドを使ってローカル ファイル システムで pigudf.py ファイルを編集します。
 
@@ -549,11 +555,13 @@ Get-AzHDInsightJobOutput `
 
 **Pig** ジョブの出力は、次のデータのように表示されます。
 
-    ((2012-02-03,20:11:56,SampleClass5,[TRACE],verbose detail for id 990982084))
-    ((2012-02-03,20:11:56,SampleClass7,[TRACE],verbose detail for id 1560323914))
-    ((2012-02-03,20:11:56,SampleClass8,[DEBUG],detail for id 2083681507))
-    ((2012-02-03,20:11:56,SampleClass3,[TRACE],verbose detail for id 1718828806))
-    ((2012-02-03,20:11:56,SampleClass3,[INFO],everything normal for id 530537821))
+```output
+((2012-02-03,20:11:56,SampleClass5,[TRACE],verbose detail for id 990982084))
+((2012-02-03,20:11:56,SampleClass7,[TRACE],verbose detail for id 1560323914))
+((2012-02-03,20:11:56,SampleClass8,[DEBUG],detail for id 2083681507))
+((2012-02-03,20:11:56,SampleClass3,[TRACE],verbose detail for id 1718828806))
+((2012-02-03,20:11:56,SampleClass3,[INFO],everything normal for id 530537821))
+```
 
 ## <a name="troubleshooting"></a><a name="troubleshooting"></a>トラブルシューティング
 
@@ -561,7 +569,9 @@ Get-AzHDInsightJobOutput `
 
 Hive ジョブを実行しているときに、次のテキストようなエラーが発生する場合があります。
 
-    Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An error occurred while reading or writing to your custom script. It may have crashed with an error.
+```output
+Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An error occurred while reading or writing to your custom script. It may have crashed with an error.
+```
 
 この問題は、Python ファイルの行末が原因で発生する場合があります。 多くの Windows 版エディターでは行末に既定でCRLF が使用されていますが、Linux アプリケーションでは通常、行末は LF であることを前提としています。
 

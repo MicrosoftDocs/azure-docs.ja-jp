@@ -3,12 +3,12 @@ title: 'クイックスタート: アプリの作成 - LUIS'
 description: このクイックスタートでは、照明やアプライアンスの電源をオンにしたりオフにしたりする用途を想定し、事前構築済みのドメイン `HomeAutomation` を使用した LUIS アプリを作成する方法について説明します。 この事前構築済みのドメインによって、意図、エンティティ、発話例が得られます。 完成すると、クラウド内で LUIS エンドポイントが実行されるようになります。
 ms.topic: quickstart
 ms.date: 05/05/2020
-ms.openlocfilehash: 186a60a7fd8315d68718ceedd3b5cadb4d3645e8
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: cefa9d5995f876ef3f07cc32324e747125e9cbf7
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589150"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701278"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>クイック スタート:事前構築済みの Home Automation アプリを使用する
 
@@ -42,7 +42,8 @@ ms.locfileid: "83589150"
 1. **HomeAutomation** を検索します。
 1. [HomeAutomation] カードで、 **[Add domain]** を選択します。
 
-    ![[Prebuilt domains] を選択し、[HomeAutomation] を検索します。 [HomeAutomation] カードで、[Add domain] を選択します。](media/luis-quickstart-new-app/home-automation.png)
+    > [!div class="mx-imgBorder"]
+    > ![[事前構築済みのドメイン] を選択し、"HomeAutomation" を検索します。 HomeAutomation カードで [ドメインの追加] を選択します。](media/luis-quickstart-new-app/home-automation.png)
 
     ドメインが正常に追加されると、事前構築済みドメインのボックスに、 **[Remove domain]\(ドメインの削除\)** ボタンが表示されます。
 
@@ -50,7 +51,8 @@ ms.locfileid: "83589150"
 
 1. HomeAutomation ドメインの意図を確認するには、 **[Intents]** を選択します。 事前構築済みドメインの意図には発話例があります。
 
-    ![HomeAutomation の意図の一覧のスクリーンショット](media/luis-quickstart-new-app/home-automation-intents.png "HomeAutomation の意図の一覧のスクリーンショット")
+    > [!div class="mx-imgBorder"]
+    > ![HomeAutomation の意図の一覧のスクリーンショット](media/luis-quickstart-new-app/home-automation-intents.png "HomeAutomation の意図の一覧のスクリーンショット")
 
     > [!NOTE]
     > **[None]\(なし\)** は、すべての LUIS アプリに用意されている意図です。 これは自分のアプリの機能に対応しない発話を処理する目的で使用されます。
@@ -114,25 +116,25 @@ ms.locfileid: "83589150"
             "topIntent": "HomeAutomation.TurnOff",
             "intents": {
                 "HomeAutomation.TurnOff": {
-                    "score": 0.984315455
+                    "score": 0.969448864
                 },
                 "HomeAutomation.QueryState": {
-                    "score": 0.009912962
-                },
-                "HomeAutomation.TurnDown": {
-                    "score": 0.00626645749
+                    "score": 0.0122336326
                 },
                 "HomeAutomation.TurnUp": {
-                    "score": 0.00572059769
+                    "score": 0.006547436
+                },
+                "HomeAutomation.TurnDown": {
+                    "score": 0.0050634006
                 },
                 "HomeAutomation.SetDevice": {
-                    "score": 0.00379381469
+                    "score": 0.004951761
                 },
                 "HomeAutomation.TurnOn": {
-                    "score": 0.00366983772
+                    "score": 0.00312553928
                 },
                 "None": {
-                    "score": 0.000623856
+                    "score": 0.000552945654
                 }
             },
             "entities": {
@@ -156,7 +158,7 @@ ms.locfileid: "83589150"
                             "text": "living room",
                             "startIndex": 13,
                             "length": 11,
-                            "score": 0.907323956,
+                            "score": 0.902181149,
                             "modelTypeId": 1,
                             "modelType": "Entity Extractor",
                             "recognitionSources": [

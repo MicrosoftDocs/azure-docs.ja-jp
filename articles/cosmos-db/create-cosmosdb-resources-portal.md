@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 01/05/2020
-ms.openlocfilehash: 79deb2f33a11e8ccb6f059bde7590b7cc0fe20c0
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.date: 08/19/2020
+ms.openlocfilehash: 821b2a36a40f828edf37ff1c2f3eab58b10b4162
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521127"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607581"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Cosmos のアカウント、データベース、コンテナー、および項目を作成する
 
@@ -42,7 +42,7 @@ Azure サブスクリプションまたは Azure Cosmos DB の無料試用版ア
 
 [Azure portal](https://portal.azure.com/) に移動して、Azure Cosmos DB アカウントを作成します。 **[Azure Cosmos DB]** を検索して、選択します。
 
-   ![Azure Portal の [データベース] ウィンドウ](./media/create-cosmosdb-resources-portal/find-nosql-cosmosdb-marketplace.png)
+   :::image type="content" source="./media/create-cosmosdb-resources-portal/find-nosql-cosmosdb-marketplace.png" alt-text="Azure portal の [データベース] ウィンドウ":::
 
 1. **[追加]** を選択します。
 1. **[Azure Cosmos DB アカウントの作成]** ページで、新しい Azure Cosmos アカウントの基本的な設定を入力します。 
@@ -53,25 +53,34 @@ Azure サブスクリプションまたは Azure Cosmos DB の無料試用版ア
     |リソース グループ|リソース グループ名|リソース グループを選択するか、 **[新規作成]** を選択し、新しいリソース グループの一意の名前を入力します。 |
     |アカウント名|一意の名前|自分の Azure Cosmos アカウントを識別するための名前を入力します。 指定した名前に *documents.azure.com* が付加されて URI が作成されるので、一意の名前を使用してください。<br><br>名前に含めることができるのは、英小文字、数字、ハイフン (-) のみです。 長さは 3 文字から 31 文字でなければなりません。|
     |API|作成するアカウントの種類。|ドキュメント データベースを作成し、SQL 構文を使用してクエリを実行するには、 **[コア (SQL)]** を選択します。 <br><br>API によって、作成するアカウントの種類が決まります。 Azure Cosmos DB には、5 種類の API が用意されています。ドキュメント データ用のコア (SQL) と MongoDB、グラフ データ用の Gremlin、Azure Table、Cassandra です。 現在は、API ごとに別のアカウントを作成する必要があります。 <br><br>[SQL API について詳しくは、こちらをご覧ください](introduction.md)。|
+    |容量モード|プロビジョニング スループットまたはサーバーレス|[プロビジョニング スループット](set-throughput.md) モードでアカウントを作成するには、 **[Provisioned throughput]\(プロビジョニング スループット\)** を選択します。 [サーバーレス](serverless.md) モードでアカウントを作成するには、 **[サーバーレス]** を選択します。<br><br>**注**:[サーバーレス] は現在、Core (SQL) API アカウントのみで使用できます。|
     |Apply Free Tier Discount (Free レベルの割引の適用)|[適用] または [適用しない]|Azure Cosmos DB Free レベルのアカウントでは、最初の 400 RU/秒と 5 GB のストレージを無料でご利用いただけます。 [Free レベル](https://azure.microsoft.com/pricing/details/cosmos-db/)の詳細を確認してください。|
     |場所|ユーザーに最も近いリージョン|Azure Cosmos DB アカウントをホストする地理的な場所を選択します。 データに最も高速にアクセスできるよう、お客様のユーザーに最も近い場所を使用します。|
     |アカウントの種類|[運用] または [Non-Production]\(非運用\)|アカウントが運用ワークロードに使用される場合は、 **[運用]** を選択します。 アカウントが非運用環境 (開発、テスト、QA、ステージングなど) に使用される場合は、 **[Non-Production]\(非運用\)** を選択します。 これは、ポータルでの操作を調整する Azure リソース タグの設定ですが、基になる Azure Cosmos DB アカウントには影響しません。 この値は、いつでも変更できます。|
-
+    |geo 冗長性|有効化または無効化|リージョンをペア リージョンとペアリングすることによる、アカウントでのグローバル配信を有効または無効にします。 アカウントには、後でさらにリージョンを追加できます。|
+    |マルチリージョン書き込み|有効化または無効化|マルチリージョン書き込み機能を使用すると、世界中のデータベースとコンテナーで、プロビジョニングされたスループットを利用できます。|
+    |可用性ゾーン|有効化または無効化|Availability Zones は、アプリケーションの可用性と回復性をさらに向上させるのに役立ちます。|
 
 > [!NOTE]
 > Azure サブスクリプションにつき所有できる Free レベルの Azure Cosmos DB アカウントは 1 つまでです。また、アカウントの作成時にオプトインする必要があります。 Free レベルの割引を適用するオプションが表示されない場合は、サブスクリプション内の別のアカウントが Free レベルで既に有効になっていることを意味します。
+
+> [!NOTE]
+> **[Capacity mode]\(容量モード\)** として **[サーバーレス]** を選択した場合、以下のオプションは利用できません。
+> - Apply Free Tier Discount (Free レベルの割引の適用)
+> - geo 冗長
+> - マルチリージョン ライター
    
-   ![Azure Cosmos DB の新しいアカウント ページ](./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail.png)
+   :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail.png" alt-text="Azure Cosmos DB の新しいアカウント ページ":::
 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。 **[ネットワーク]** セクションと **[タグ]** セクションはスキップできます。
 
 1. アカウントの設定を確認し、 **[作成]** を選択します。 アカウントの作成には数分かかります。 ポータル ページに "**デプロイが完了しました**" と表示されるまで待ちます。 
 
-    ![Azure Portal の [通知] ウィンドウ](./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-deployment-successful.png)
+    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-deployment-successful.png" alt-text="Azure portal の [通知] ペイン":::
 
 1. **[リソースに移動]** を選択し、Azure Cosmos DB アカウント ページに移動します。 
 
-    ![Azure Cosmos DB アカウント ページ](./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-quickstart-pane.png)
+    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-quickstart-pane.png" alt-text="Azure Cosmos DB アカウント ページ":::
 
 <a id="create-container-database"></a>
 ## <a name="add-a-database-and-a-container"></a>データベースとコンテナーを追加する 
@@ -82,14 +91,14 @@ Azure portal のデータ エクスプローラーを使用してデータベー
     
     **[コンテナーの追加]** ウィンドウを表示するために、右へスクロールする必要がある場合があります。
     
-    ![Azure portal の [データ エクスプローラー] の [コンテナーの追加] ウィンドウ](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
+    :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png" alt-text="Azure portal の [データ エクスプローラー] の [コンテナーの追加] ウィンドウ":::
     
 1.  **[コンテナーの追加]** ウィンドウで、新しいコンテナーの設定を入力します。
     
     |設定|推奨値|説明
     |---|---|---|
     |**データベース ID**|ToDoList|新しいデータベースの名前として *ToDoList* を入力します。 データベース名は 1 文字以上 255 文字以内にする必要があります。`/, \\, #, ?` は使えず、末尾にスペースを入れることもできません。 **[Provision database throughput]\(データベース スループットをプロビジョニングする\)** オプションをオンにすると、データベースにプロビジョニングされたスループットをデータベース内のすべてのコンテナーにわたって共有できます。 このオプションは、コストの削減にも役立ちます。 |
-    |**スループット**|400|スループットを 400 要求ユニット/秒 (RU/秒) のままにします。 待ち時間を短縮する場合、後でスループットをスケールアップできます。| 
+    |**スループット**|400|スループットを 400 要求ユニット/秒 (RU/秒) のままにします。 待ち時間を短縮する場合、後でスループットをスケールアップできます。<br><br>**注**:サーバーレス アカウントで新しいコンテナーを作成する場合、この設定は使用できません。| 
     |**コンテナー ID**|アイテム|新しいコンテナーの名前として「*項目*」と入力します。 コンテナー ID には、データベース名と同じ文字要件があります。|
     |**パーティション キー**| /category| この記事で説明するサンプルでは、 */category* をパーティション キーとして使用します。|
 
@@ -104,7 +113,7 @@ Azure portal のデータ エクスプローラーを使用してデータベー
 
 1. **[データ エクスプローラー]** で、 **[ToDoList]** データベースを展開し、 **[アイテム]** コンテナーを展開します。 次に、 **[項目]** を選択し、 **[新しい項目]** を選択します。 
    
-   ![Azure Portal のデータ エクスプローラーで新しいドキュメントを作成する](./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png)
+   :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png" alt-text="Azure portal のデータ エクスプローラーで新しいドキュメントを作成する":::
    
 1. **[ドキュメント]** ウィンドウの右側でドキュメントに次の構造を追加します。
 
@@ -120,7 +129,7 @@ Azure portal のデータ エクスプローラーを使用してデータベー
 
 1. **[保存]** を選択します。
    
-   ![json データをコピーし、Azure portal のデータ エクスプローラーで [保存] を選択する](./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png)
+   :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png" alt-text="json データをコピーし、Azure portal のデータ エクスプローラーで [保存] を選択する":::
    
 1. **[新しいドキュメント]** をもう一度選択し、一意の `id` に加え、必要なその他のプロパティと値を指定したもう 1 つのドキュメントを作成して保存します。 Azure Cosmos DB では、データにスキーマが課されないため、ご自分のドキュメントは任意の構造にすることができます。
 

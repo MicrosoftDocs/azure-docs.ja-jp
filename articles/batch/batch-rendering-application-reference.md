@@ -5,16 +5,16 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 21ae6e0a190875e3e541eb858ec38658ce191ee6
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: ace3fe7aee6b9ffc7226448b455bcfea1f931458
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726504"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964874"
 ---
 # <a name="rendering-applications"></a>アプリケーションをレンダリングする
 
-レンダリング アプリケーションは、Batch の ジョブとタスクの作成で使用されます。 タスクのコマンド ライン プロパティが適切なコマンド ラインとパラメーターを指定します。  ジョブのタスクを作成する最も簡単な方法は、[この記事](https://docs.microsoft.com/azure/batch/batch-rendering-using#using-batch-explorer)で説明するように Batch Explorer のテンプレートを使用する方法です。  テンプレートは必要に応じて表示および変更されたバージョンを作成できます。
+レンダリング アプリケーションは、Batch の ジョブとタスクの作成で使用されます。 タスクのコマンド ライン プロパティが適切なコマンド ラインとパラメーターを指定します。  ジョブのタスクを作成する最も簡単な方法は、[この記事](./batch-rendering-using.md#using-batch-explorer)で説明するように Batch Explorer のテンプレートを使用する方法です。  テンプレートは必要に応じて表示および変更されたバージョンを作成できます。
 
 この記事は各レンダリング アプリケーションを実行するための簡単な説明を提供します。
 

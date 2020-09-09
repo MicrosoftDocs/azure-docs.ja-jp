@@ -2,13 +2,13 @@
 title: 無効なテンプレート エラー
 description: Azure Resource Manager テンプレートのデプロイ時の無効なテンプレート エラーを解決する方法について説明します。
 ms.topic: troubleshooting
-ms.date: 03/08/2018
-ms.openlocfilehash: 65cd69d67933d117b51f37b587b276aec2bd635a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/22/2020
+ms.openlocfilehash: 3e68d4634d0092d05222348ca0db0116422faec3
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76154059"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373812"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>無効なテンプレートのエラーを解決する
 
@@ -29,7 +29,7 @@ Message=<varies>
 
 このエラーは、さまざまな種類のエラーが原因となって発生する場合があります。 通常、テンプレートの構文や構造にエラーがあります。
 
-<a id="syntax-error" />
+<a id="syntax-error"></a>
 
 ## <a name="solution-1---syntax-error"></a>解決策 1 - 構文エラー
 
@@ -48,9 +48,9 @@ Message=Deployment template validation failed
 
 一致する構文を指定しないと、テンプレートによって、意図したものとは異なる値が生成されます。
 
-この種類のエラーが発生したら、式の構文を慎重に確認してください。 [Visual Studio](create-visual-studio-deployment-project.md) や [Visual Studio Code](use-vs-code-to-create-template.md) など、構文エラーの指摘が可能な JSON エディターの使用を検討してください。
+この種類のエラーが発生したら、式の構文を慎重に確認してください。 [Visual Studio](create-visual-studio-deployment-project.md) や [Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md) など、構文エラーの指摘が可能な JSON エディターの使用を検討してください。
 
-<a id="incorrect-segment-lengths" />
+<a id="incorrect-segment-lengths"></a>
 
 ## <a name="solution-2---incorrect-segment-lengths"></a>解決策 2 - セグメントの長さが不適切
 
@@ -111,7 +111,7 @@ for type {resource-type} has incorrect segment lengths.
 }
 ```
 
-<a id="parameter-not-valid" />
+<a id="parameter-not-valid"></a>
 
 ## <a name="solution-3---parameter-is-not-valid"></a>解決策 3 - パラメーターが無効
 
@@ -126,13 +126,13 @@ part of the allowed values
 
 テンプレートで許可された値を十分に確認し、デプロイの際はその値を用いてください。 許可されているパラメーター値の詳細については、「[Azure Resource Manager テンプレートの parameters セクション](template-syntax.md#parameters)」をご覧ください。
 
-<a id="too-many-resource-groups" />
+<a id="too-many-resource-groups"></a>
 
 ## <a name="solution-4---too-many-target-resource-groups"></a>解決策 4 - ターゲット リソース グループが多すぎる
 
-1 つのデプロイに 5 つを超えるターゲット リソース グループを指定すると、このエラーが発生します。 デプロイ内のリソース グループの数を統合するか、一部のテンプレートを別個のデプロイとしてデプロイすることを検討してください。 詳細については、「[複数のサブスクリプションまたはリソース グループに Azure リソースをデプロイする](cross-resource-group-deployment.md)」を参照してください。
+以前のデプロイでは、ターゲット リソース グループが 1 回のデプロイにつき 5 つに制限されていたため、このエラーが表示されることがあります。 この制限は、2020 年 5 月に 800 リソース グループに増やされました。 詳細については、「[複数のサブスクリプションまたはリソース グループに Azure リソースをデプロイする](cross-scope-deployment.md)」を参照してください。
 
-<a id="circular-dependency" />
+<a id="circular-dependency"></a>
 
 ## <a name="solution-5---circular-dependency-detected"></a>解決策 5 - 循環依存関係が検出された
 

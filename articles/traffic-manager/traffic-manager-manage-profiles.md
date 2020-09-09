@@ -3,21 +3,21 @@ title: Azure Traffic Manager プロファイルの管理 | Microsoft Docs
 description: この記事は、Azure Traffic Manager プロファイルの作成、無効化、有効化、削除に役立ちます。
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 manager: twooley
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
-ms.author: rohink
-ms.openlocfilehash: adfe7d117d2329832a5b5e9e782a9029a682ff3b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: duau
+ms.openlocfilehash: 7bb5559f21289a40b6c75a3481680ab5b2c1c269
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76938605"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89392886"
 ---
 # <a name="manage-an-azure-traffic-manager-profile"></a>Azure Traffic Manager プロファイルの管理
 

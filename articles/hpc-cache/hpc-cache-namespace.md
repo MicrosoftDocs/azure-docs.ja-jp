@@ -1,17 +1,17 @@
 ---
-title: Azure HPC キャッシュを作成する
-description: Azure HPC Cache インスタンスを作成する方法
+title: Azure HPC Cache の集約された名前空間を使用する
+description: Azure HPC Cache の仮想名前空間を計画する方法
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/30/2019
-ms.author: rohogue
-ms.openlocfilehash: aaa939051a1aeafdb0650119772fc7214506aa8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: v-erkel
+ms.openlocfilehash: c16d2f9e9c94603361d9a096f33d559105f2d28d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73582188"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497031"
 ---
 # <a name="plan-the-aggregated-namespace"></a>集約された名前空間を計画する
 
@@ -29,14 +29,14 @@ Azure HPC Cache を使用すると、バックエンド ストレージ シス�
 
 テンプレート データはデータセンターに格納され、このジョブに必要な情報は次のサブディレクトリに格納されています。
 
-    /goldline/templates/acme2017/sku798
-    /goldline/templates/acme2017/sku980 
+* */goldline/templates/acme2017/sku798*
+* */goldline/templates/acme2017/sku980*
 
 データセンターのストレージ システムは、次のエクスポートを公開します。
 
-    /
-    /goldline
-    /goldline/templates
+* */*
+* */goldline*
+* */goldline/templates*
 
 分析の対象となるデータは、[CLFSLoad ユーティリティ](hpc-cache-ingest.md#pre-load-data-in-blob-storage-with-clfsload)を使用して、"sourcecollection" という名前の Azure Blob Storage コンテナーにコピーされています。
 
@@ -52,10 +52,10 @@ Azure HPC Cache を使用すると、バックエンド ストレージ シス�
 
 NFS ソース パスは同じエクスポートのサブディレクトリであるため、同じストレージ ターゲットから複数の名前空間パスを定義する必要があります。
 
-| ストレージ ターゲットのホスト名  | NFS エクスポートのパス      | サブディレクトリのパス | 名前空間のパス    |
-|--------------------------|----------------------|-------------------|-------------------|
-| *<IP アドレスまたはホスト名>* | /goldline/templates  | acme2017/sku798   | /templates/sku798 |
-| *<IP アドレスまたはホスト名>* | /goldline/templates  | acme2017/sku980   | /templates/sku980 |
+| ストレージ ターゲットのホスト名  | NFS エクスポートのパス     | サブディレクトリのパス | 名前空間のパス    |
+|--------------------------|---------------------|-------------------|-------------------|
+| *<IP アドレスまたはホスト名>* | /goldline/templates | acme2017/sku798   | /templates/sku798 |
+| *<IP アドレスまたはホスト名>* | /goldline/templates | acme2017/sku980   | /templates/sku980 |
 
 クライアント アプリケーションでキャッシュをマウントして、集約された名前空間のファイル パス (``/source``、``/templates/sku798``、``/templates/sku980``) に容易にアクセスできます。
 

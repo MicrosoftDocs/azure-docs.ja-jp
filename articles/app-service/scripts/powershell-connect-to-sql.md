@@ -5,25 +5,25 @@ tags: azure-service-management
 ms.assetid: 055440a9-fff1-49b2-b964-9c95b364e533
 ms.topic: sample
 ms.date: 03/20/2017
-ms.custom: mvc
-ms.openlocfilehash: bb5fc8bcc99a4439276f53325c029635143c86c5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 3b355a830703b51264d2f4b819d5be7f2627b4e2
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74685399"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077791"
 ---
-# <a name="connect-an-app-service-app-to-a-sql-database"></a>SQL データベースへの App Service アプリの接続
+# <a name="connect-an-app-service-app-to-sql-database"></a>App Service アプリを SQL Database に接続する
 
-このシナリオでは、Azure SQL データベースと App Service アプリの作成方法について説明します。 作成後、アプリの設定を使用して SQL データベースをアプリにリンクします。
+このシナリオでは、Azure SQL Database のデータベースと App Service アプリの作成方法について説明します。 作成後、アプリの設定を使用してデータベースをアプリにリンクします。
 
-必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールし、`Connect-AzAccount` を実行して、Azure との接続を作成します。
+必要に応じて、[Azure PowerShell ガイド](/powershell/azure/)の手順に従って Azure PowerShell をインストールし、`Connect-AzAccount` を実行して、Azure との接続を作成します。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-[!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/connect-to-sql/connect-to-sql.ps1?highlight=13 "Connect an app to a SQL database")]
+[!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/connect-to-sql/connect-to-sql.ps1?highlight=13 "Connect an app to SQL Database")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 
@@ -37,18 +37,18 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | Notes |
+| コマンド | Notes |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | App Service プランを作成します。 |
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | App Service アプリを作成します。 |
-| [New-AzSQLServer](/powershell/module/az.sql/new-azsqlserver) | SQL Database サーバーを作成します。 |
-| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | SQL Database サーバーのファイアウォール規則を作成します。 |
+| [New-AzSQLServer](/powershell/module/az.sql/new-azsqlserver) | サーバーを作成します。 |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | サーバーレベルのファイアウォール規則を作成します。 |
 | [New-AzSQLDatabase](/powershell/module/az.sql/new-azsqldatabase) | データベースまたはエラスティック データベースを作成します。 |
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | App Service アプリの構成を変更します。 |
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
+Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。
 
 その他の Azure App Service 用 Azure PowerShell サンプル スクリプトは、[Azure PowerShell サンプル](../samples-powershell.md)のページにあります。

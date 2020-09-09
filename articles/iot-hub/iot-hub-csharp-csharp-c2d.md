@@ -7,17 +7,20 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
-ms.date: 04/03/2019
+ms.date: 07/07/2020
 ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 41c29e55f04f9edf06ba375ad4539e5fb3f82c18
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+- devx-track-csharp
+ms.openlocfilehash: cf108e0e7036894e045028ec3fce8c2af6b9ce4f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81733417"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008338"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>デバイスに IoT Hub でクラウドからメッセージを送信する (.NET)
 
@@ -59,7 +62,7 @@ cloud-to-device メッセージの詳細については、[IoT Hub における 
 
 このセクションでは、「[デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-dotnet.md)」で作成したデバイス アプリを変更し、cloud-to-device メッセージを IoT ハブから受信するようにします。
 
-1. Visual Studio の **SimulatedDevice** プロジェクトで、次のメソッドを **Program** クラスに追加します。
+1. Visual Studio の **SimulatedDevice** プロジェクトで、次のメソッドを **SimulatedDevice** クラスに追加します。
 
    ```csharp
     private static async void ReceiveC2dAsync()
@@ -104,7 +107,7 @@ cloud-to-device メッセージの詳細については、[IoT Hub における 
 
 ## <a name="send-a-cloud-to-device-message"></a>C2D メッセージを送信する
 
-次に、デバイスからクラウドへのメッセージを、デバイス アプリに送信する .NET コンソール アプリを作成します。
+このセクションでは、クラウドからデバイスへのメッセージを、シミュレートされたデバイス アプリに送信する .NET コンソール アプリを作成します。
 
 1. 現在の Visual Studio ソリューションで、**ファイル** > **新規** > 、**プロジェクト** の順に選択します。 **[新しいプロジェクトの作成]** で、 **[コンソール アプリ (.NET Framework)]** を選択してから、 **[次へ]** を選択します。
 
@@ -112,37 +115,36 @@ cloud-to-device メッセージの詳細については、[IoT Hub における 
 
    ![Visual Studio で新しいプロジェクトを構成する](./media/iot-hub-csharp-csharp-c2d/sendcloudtodevice-project-configure.png)
 
-1. ソリューション エクスプローラーで、新しいソリューションを右クリックし、 **[NuGet パッケージの管理]** を選択します。
+1. ソリューション エクスプローラーで、新しいプロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
 
 1. **[NuGet パッケージの管理]** ウィンドウで **[参照]** を選択し、**Microsoft.Azure.Devices** を検索して選択します。 **[インストール]** を選択します。
 
    この手順により [Azure IoT サービス SDK NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Devices/)がダウンロードされ、インストールされ、パッケージへの参照が追加されます。
 
-1. `using`Program.cs**ファイルの先頭に次の** ステートメントを追加します。
+1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
 
    ``` csharp
    using Microsoft.Azure.Devices;
    ```
 
-1. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値を、先ほど「[IoT ハブ接続文字列を取得する](#get-the-iot-hub-connection-string)」でコピーしておいた IoT Hub 接続文字列に置き換えます。
+1. **Program** クラスに次のフィールドを追加します。 `{iot hub connection string}` プレースホルダーの値を、先ほど「[IoT ハブ接続文字列を取得する](#get-the-iot-hub-connection-string)」で書き留めた IoT Hub 接続文字列に置き換えます。 `{device id}` プレースホルダー値は、[デバイスから IoT Hub へのテレメトリ送信](quickstart-send-telemetry-dotnet.md)に関するクイックスタートで追加したデバイスのデバイス ID で置き換えてください。
 
    ``` csharp
    static ServiceClient serviceClient;
    static string connectionString = "{iot hub connection string}";
+   static string targetDevice = "{device id}";
    ```
 
-1. **Program** クラスに次のメソッドを追加します。 [デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-dotnet.md)に関するページでデバイスを定義するときに使用した名前にデバイス名を設定します。
+1. メッセージをデバイスに送信するために、次のメソッドを **Program** クラスに追加します。
 
    ``` csharp
    private async static Task SendCloudToDeviceMessageAsync()
    {
         var commandMessage = new
          Message(Encoding.ASCII.GetBytes("Cloud to device message."));
-        await serviceClient.SendAsync("myFirstDevice", commandMessage);
+        await serviceClient.SendAsync(targetDevice, commandMessage);
    }
    ```
-
-   このメソッドは、クラウドからデバイスへの新しいメッセージを ID `myFirstDevice`を持つデバイスに送信します。 [デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-dotnet.md)に関するページで使用したパラメーターに変更を加えた場合にのみ、このパラメーターを変更します。
 
 1. 最後に、 **Main** メソッドに次の行を追加します。
 
@@ -158,9 +160,9 @@ cloud-to-device メッセージの詳細については、[IoT Hub における 
 
 1. ソリューション エクスプローラーで、ソリューションを右クリックし、 **[スタートアップ プロジェクトの設定]** を選択します。
 
-1. **[共通プロパティ]**  >  の **[スタートアップ プロジェクト]** で、 **[マルチ スタートアップ プロジェクト]** を選択してから、**ReadDeviceToCloudMessages**、**SimulatedDevice**、**SendCloudToDevice** の **[開始]** アクションを選択します。 **[OK]** を選択して変更を保存します。
+1. **[共通プロパティ]**  >  **[スタートアップ プロジェクト]** で **[マルチ スタートアップ プロジェクト]** を選択してから、**SimulatedDevice** および **SendCloudToDevice** の **[開始]** アクションを選択します。 **[OK]** を選択して変更を保存します。
 
-1. **F5**キーを押します。 3 つのすべてのアプリケーションが開始されます。 **[SendCloudToDevice]** ウィンドウを選択して **Enter** キーを押します。 デバイス アプリによってメッセージが受信されていることがわかります。
+1. **F5**キーを押します。 両方のアプリケーションが開始されます。 **[SendCloudToDevice]** ウィンドウを選択して **Enter** キーを押します。 デバイス アプリによってメッセージが受信されていることがわかります。
 
    ![アプリによるメッセージの受信](./media/iot-hub-csharp-csharp-c2d/sendc2d1.png)
 
@@ -207,7 +209,7 @@ cloud-to-device メッセージの詳細については、[IoT Hub における 
    commandMessage.Ack = DeliveryAcknowledgement.Full;
    ```
 
-1. **F5**キーを押してアプリを実行します。 3 つすべてのアプリケーションが開始されていることが確認できます。 **[SendCloudToDevice]** ウィンドウを選択して **Enter** キーを押します。 デバイス アプリがメッセージを受信し、その数秒後に、**SendCloudToDevice** アプリケーションがフィードバック メッセージを受信します。
+1. **F5**キーを押してアプリを実行します。 両方のアプリケーションが開始されていることが確認できます。 **[SendCloudToDevice]** ウィンドウを選択して **Enter** キーを押します。 デバイス アプリがメッセージを受信し、その数秒後に、**SendCloudToDevice** アプリケーションがフィードバック メッセージを受信します。
 
    ![アプリによるメッセージの受信](./media/iot-hub-csharp-csharp-c2d/sendc2d2.png)
 

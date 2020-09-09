@@ -6,49 +6,83 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 09/25/2019
+ms.topic: reference
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 40d21d3390396e0cb7e44d4e19598f9b0b691087
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 67949c31c710d88a05e1e110860fe703caf66d04
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78185622"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87481327"
 ---
 # <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー フロー バージョン
 
-Azure Active Directory B2C (Azure AD B2C) のユーザー フローは、ユーザー ID エクスペリエンスを完全に記述する共通の[ポリシー](user-flow-overview.md)を設定するために役立ちます。 このようなエクスペリエンスには、サインアップ、サインイン、パスワード リセット、プロファイル編集が含まれます。 Azure AD B2C では、推奨されるユーザー フローとプレビュー ユーザー フローの両方のコレクションから選択できます。
+Azure Active Directory B2C (Azure AD B2C) のユーザー フローは、ユーザー ID エクスペリエンスを完全に記述する共通の[ポリシー](user-flow-overview.md)を設定するために役立ちます。 このようなエクスペリエンスには、サインアップ、サインイン、パスワード リセット、プロファイル編集が含まれます。 次の表は、Azure AD B2C で使用できるユーザー フローを示しています。
 
-新しいユーザー フローが新しいバージョンとして追加されます。 ユーザー フローが安定してから使用することをお勧めします。 ユーザー フローは、完全にテストされた場合に**推奨**とマークされます。 ユーザー フローは、推奨とマークされるまでプレビューで検討されます。 運用アプリケーションには推奨されるユーザー フローを使用してください。ただし、新しい機能を使用できるようになったときにテストする場合は、他のバージョンから選択します。 以前のバージョンの推奨されるユーザー フローは使用しないでください。
+> [!IMPORTANT]
+> ユーザー フローのバージョンを参照する方法が変更されました。 これまでは、V1 (実稼働可能) バージョンと V1.1 および V2 (プレビュー) バージョンが提供されていました。 今後は、ユーザー フローが 2 つのバージョンに統合されます。
+>
+>- **推奨**ユーザー フローは、ユーザー フローの新しいプレビュー バージョンです。 これらは徹底的にテストされ、レガシ **V2** と **v1.1** バージョンのすべての機能が組み合わさっています。 今後は、この新しい推奨ユーザー フローが保守および更新されます。 これらの新しい推奨ユーザー フローに移動すると、新機能がリリースされる度にアクセスできるようになります。
+>- **標準**ユーザー フロー (以前の **V1**) は、一般提供されており、実稼働可能なユーザー フローです。 ユーザー フローがミッション クリティカルで、非常に安定したバージョンに依存している場合、これらのバージョンは保守および更新されないことを理解した上で、標準ユーザー フローを使用し続けることができます。
+>
+>すべてのレガシ プレビュー ユーザー フロー (v1.1 および V2) は、**2021 年 8 月 1 日**までに非推奨となる予定です。 可能な限り、最新の機能と更新プログラムをいつでも利用できるように、できるだけ早く[新しい**推奨**バージョンに切り替える](#how-to-switch-to-a-new-recommended-user-flow)ことを強くお勧めします。 *これらの変更は、Azure パブリック クラウドにのみ適用されます。その他の環境では、[レガシ ユーザー フローのバージョンの管理](user-flow-versions-legacy.md)が引き続き使用されます。*
 
->[!IMPORTANT]
-> ユーザー フローが**推奨**として識別されない限り、それは*プレビュー*と見なされます。 運用アプリケーションには、推奨されるユーザー フローのみを使用してください。
+## <a name="recommended-user-flows"></a>推奨ユーザー フロー
 
-## <a name="v1"></a>V1
+推奨ユーザー フローは、レガシ V2 および v1.1 の機能に新機能を組み合わせたプレビュー バージョンです。 今後は、推奨ユーザー フローが保守および更新されます。
 
-| ユーザー フロー | 推奨 | 説明 |
+| ユーザー フロー | 説明 |
+| --------- | ----------- |
+| パスワードのリセット (プレビュー) | ユーザーが電子メールを確認してから新しいパスワードを選択できるようにします。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[多要素認証](custom-policy-multi-factor-authentication.md)</li><li>トークンの互換性の設定</li><li>[年齢制限](basic-age-gating.md)</li><li>[パスワードの複雑さの要件](user-flow-password-complexity.md)</li></ul> |
+| プロファイルの編集 (プレビュー) | ユーザーがユーザー属性を構成することを許可します。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[トークンの有効期間](tokens-overview.md)</li><li>トークンの互換性の設定</li><li>セッションの動作</li></ul> |
+| サインイン (プレビュー) | ユーザーが自分のアカウントにサインインできるようにします。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[多要素認証](custom-policy-multi-factor-authentication.md)</li><li>[トークンの有効期間](tokens-overview.md)</li><li>トークンの互換性の設定</li><li>セッションの動作</li><li>[年齢制限](basic-age-gating.md)</li><li>サインイン ページのカスタマイズ</li></ul> |
+| サインアップ (プレビュー) | ユーザーがアカウントを作成できるようにします。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[多要素認証](custom-policy-multi-factor-authentication.md)</li><li>[トークンの有効期間](tokens-overview.md)</li><li>トークンの互換性の設定</li><li>セッションの動作</li><li>[年齢制限](basic-age-gating.md)</li><li>[パスワードの複雑さの要件](user-flow-password-complexity.md)</li></ul> |
+| サインアップとサインイン (プレビュー) | ユーザーがアカウントを作成したり、アカウントにサインインしたりすることができるようにします。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[多要素認証](custom-policy-multi-factor-authentication.md)</li><li>[年齢制限](basic-age-gating.md)</li><li>[パスワードの複雑さの要件](user-flow-password-complexity.md)</li></ul> |
+
+## <a name="standard-user-flows"></a>標準ユーザー フロー
+
+標準ユーザー フロー (以前は V1 と呼ばれていました) は、一般提供されており、実稼働可能なユーザー フローです。 標準ユーザー フローは今後更新されません。
+
+| ユーザー フロー | 説明 |
 | --------- | ----------- | ----------- |
-| パスワードのリセット | はい | ユーザーが電子メールを確認してから新しいパスワードを選択できるようにします。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[多要素認証](custom-policy-multi-factor-authentication.md)</li><li>トークンの互換性の設定</li><li>[パスワードの複雑さの要件](user-flow-password-complexity.md)</li></ul> |
-| プロファイル編集 | はい | ユーザーがユーザー属性を構成することを許可します。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[トークンの有効期間](tokens-overview.md)</li><li>トークンの互換性の設定</li><li>セッションの動作</li></ul> |
-| ROPC を使用したサインイン | いいえ | ローカル アカウントを持つユーザーがネイティブ アプリケーションで直接ログインできるようにします (ブラウザーは必要ありません)。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[トークンの有効期間](tokens-overview.md)</li><li>トークンの互換性の設定</li></ul> |
-| サインイン | いいえ | ユーザーが自分のアカウントにサインインできるようにします。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[多要素認証](custom-policy-multi-factor-authentication.md)</li><li>[トークンの有効期間](tokens-overview.md)</li><li>トークンの互換性の設定</li><li>セッションの動作</li><li>サインインのブロック</li><li>パスワードの強制的なリセット</li><li>サインインしたままにする (KMSI)</ul><br>このユーザー フローではユーザー インターフェイスをカスタマイズできません。 |
-| サインアップ | いいえ | ユーザーがアカウントを作成できるようにします。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[多要素認証](custom-policy-multi-factor-authentication.md)</li><li>[トークンの有効期間](tokens-overview.md)</li><li>トークンの互換性の設定</li><li>セッションの動作</li><li>[パスワードの複雑さの要件](user-flow-password-complexity.md)</li></ul> |
-| サインアップとサインイン | はい | ユーザーがアカウントを作成したり、アカウントにサインインしたりすることができるようにします。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[多要素認証](custom-policy-multi-factor-authentication.md)</li><li>[トークンの有効期間](tokens-overview.md)</li><li>トークンの互換性の設定</li><li>セッションの動作</li><li>[パスワードの複雑さの要件](user-flow-password-complexity.md)</li></ul>|
+| パスワードのリセット | ユーザーが電子メールを確認してから新しいパスワードを選択できるようにします。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[多要素認証](custom-policy-multi-factor-authentication.md)</li><li>トークンの互換性の設定</li><li>[パスワードの複雑さの要件](user-flow-password-complexity.md)</li></ul> |
+| プロファイル編集 | ユーザーがユーザー属性を構成することを許可します。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[トークンの有効期間](tokens-overview.md)</li><li>トークンの互換性の設定</li><li>セッションの動作</li></ul> |
+| サインイン | ユーザーが自分のアカウントにサインインできるようにします。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[多要素認証](custom-policy-multi-factor-authentication.md)</li><li>[トークンの有効期間](tokens-overview.md)</li><li>トークンの互換性の設定</li><li>セッションの動作</li><li>サインインのブロック</li><li>パスワードの強制的なリセット</li><li>サインインしたままにする (KMSI)</ul><br>このユーザー フローではユーザー インターフェイスをカスタマイズできません。 |
+| サインアップ | ユーザーがアカウントを作成できるようにします。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[多要素認証](custom-policy-multi-factor-authentication.md)</li><li>[トークンの有効期間](tokens-overview.md)</li><li>トークンの互換性の設定</li><li>セッションの動作</li><li>[パスワードの複雑さの要件](user-flow-password-complexity.md)</li></ul> |
+| サインアップとサインイン | ユーザーがアカウントを作成したり、アカウントにサインインしたりすることができるようにします。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[多要素認証](custom-policy-multi-factor-authentication.md)</li><li>[トークンの有効期間](tokens-overview.md)</li><li>トークンの互換性の設定</li><li>セッションの動作</li><li>[パスワードの複雑さの要件](user-flow-password-complexity.md)</li></ul>|
 
-## <a name="v11"></a>V1.1
 
-| ユーザー フロー | 推奨 | 説明 |
-| --------- | ----------- | ----------- |
-| パスワードのリセット v1.1 | いいえ | ユーザーが電子メールを確認した後に新しいパスワードを選択できるようにします (新しいページ レイアウトを使用できます)。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[多要素認証](custom-policy-multi-factor-authentication.md)</li><li>トークンの互換性の設定</li><li>[パスワードの複雑さの要件](user-flow-password-complexity.md)</li></ul> |
+## <a name="how-to-switch-to-a-new-recommended-user-flow"></a>新しい推奨ユーザー フローに切り替える方法
 
-## <a name="v2"></a>V2
+レガシ バージョンのユーザー フローから新しい**推奨**プレビュー バージョンに切り替えるには、次の手順を実行します。
 
-| ユーザー フロー | 推奨 | 説明 |
-| --------- | ----------- | ----------- |
-| パスワードのリセット v2 | いいえ | ユーザーが電子メールを確認してから新しいパスワードを選択できるようにします。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[多要素認証](custom-policy-multi-factor-authentication.md)</li><li>トークンの互換性の設定</li><li>[年齢制限](basic-age-gating.md)</li><li>[パスワードの複雑さの要件](user-flow-password-complexity.md)</li></ul> |
-| プロファイル編集 v2 | はい | ユーザーがユーザー属性を構成することを許可します。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[トークンの有効期間](tokens-overview.md)</li><li>トークンの互換性の設定</li><li>セッションの動作</li></ul> |
-| サインイン v2 | いいえ | ユーザーが自分のアカウントにサインインできるようにします。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[多要素認証](custom-policy-multi-factor-authentication.md)</li><li>[トークンの有効期間](tokens-overview.md)</li><li>トークンの互換性の設定</li><li>セッションの動作</li><li>[年齢制限](basic-age-gating.md)</li><li>サインイン ページのカスタマイズ</li></ul> |
-| サインアップ v2 | いいえ | ユーザーがアカウントを作成できるようにします。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[多要素認証](custom-policy-multi-factor-authentication.md)</li><li>[トークンの有効期間](tokens-overview.md)</li><li>トークンの互換性の設定</li><li>セッションの動作</li><li>[年齢制限](basic-age-gating.md)</li><li>[パスワードの複雑さの要件](user-flow-password-complexity.md)</li></ul> |
-| サインアップとサインイン v2 | いいえ | ユーザーがアカウントを作成したり、アカウントにサインインしたりすることができるようにします。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[多要素認証](custom-policy-multi-factor-authentication.md)</li><li>[年齢制限](basic-age-gating.md)</li><li>[パスワードの複雑さの要件](user-flow-password-complexity.md)</li></ul> |
+1. 「[チュートリアル:Azure Active Directory B2C 内にユーザー フローを作成する](tutorial-create-user-flows.md)」の手順に従って、新しいユーザー フロー ポリシーを作成します。 ユーザー フローの作成時に、**推奨**バージョンを選択します。
+
+3. レガシ ポリシーで構成したものと同じ設定を使用して、新しいユーザー フローを構成します。
+
+4. アプリケーションのサインイン URL を、新しく作成したポリシーに更新します。
+
+5. ユーザー フローをテストし、動作していることを確認したら、次の手順に従ってレガシ ユーザー フローを削除します。
+   1. Azure AD B2C テナントの概要メニューで、 **[ユーザー フロー]** を選択します。
+   2. 削除するユーザー フローを見つけます。
+   3. 最後の列で、コンテキスト メニュー ( **...** ) を選択し、 **[削除]** を選択します。
+
+## <a name="frequently-asked-questions"></a>よく寄せられる質問
+
+### <a name="can-i-still-create-legacy-v2-and-v11-user-flows"></a>レガシ V2 と v1.1 ユーザー フローは今後も作成できますか?
+
+レガシ V2 と v1.1 のバージョンに基づいて新しいユーザー フローを作成することはできませんが、現在使用しているレガシ V2 と v1.1 ユーザー フローは引き続き、読み取り、更新、および削除できます。
+
+### <a name="is-there-any-reason-to-continue-using-legacy-v2-and-v11-user-flows"></a>レガシ V2 と v1.1 ユーザー フローを引き続き使用する理由はありますか?
+
+特にはありません。 新しい**推奨**プレビュー バージョンには、レガシ V2 と v1.1 バージョンと同じ機能が含まれています。 削除された内容はなく、実際には追加機能が含まれています。
+
+### <a name="if-i-dont-switch-from-legacy-v2-and-v11-policies-how-will-it-impact-my-application"></a>レガシ V2 と V1.1 ポリシーから切り替えないと、アプリケーションにどのような影響がありますか?
+
+レガシ V2 または V1.1 ユーザー フローを使用している場合、アプリケーションはこのバージョン管理の変更の影響を受けません。 ただし、今後新しい機能やポリシーの変更にアクセスできるようにするには、新しい**推奨**バージョンに切り替える必要があります。
+
+### <a name="will-microsoft-still-support-my-legacy-v2-or-v11-user-flow-policy"></a>Microsoft では、現在使用しているレガシ V2 または v1.1 のユーザー フロー ポリシーは引き続きサポートされますか?
+
+ユーザー フローのレガシ V2 と 1.1 バージョンは、引き続き完全にサポートされます。

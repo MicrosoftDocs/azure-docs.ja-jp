@@ -1,24 +1,24 @@
 ---
 title: Linux での Azure Files に関する問題のトラブルシューティング | Microsoft Docs
-description: Linux での Azure Files に関する問題のトラブルシューティング
+description: Linux での Azure Files に関する問題のトラブルシューティング。 Linux クライアントから接続する場合の Azure Files に関連する一般的な問題と、考えられる解決方法を参照してください。
 author: jeffpatt24
 ms.service: storage
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 95e220102cba290664a32cb6bbebef881ae4ffde
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a01d9e90e87d1c23b9aefc5f2d9ba3ba84d0f59f
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80159491"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904923"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Linux での Azure Files に関する問題のトラブルシューティング
 
 この記事では、Linux クライアントから接続するときに生じる、Azure File に関係する一般的な問題を示します。 これらの問題の考えられる原因と解決策についても説明します。 
 
-この記事のトラブルシューティングの手順のほかに、[AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089) を使用して、Linux クライアントが前提条件を適切に満たしていることを確認できます。 AzFileDiagnostics では、この記事で説明しているほとんどの症状が自動的に検出されます。 最適なパフォーマンスが得られる環境をセットアップするために役立ちます。 この情報は、[Azure ファイル共有のトラブルシューティング ツール](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)で入手することもできます。 トラブルシューティング ツールには、Azure Files 共有の接続、マッピング、およびマウントに関する問題の解決に役立つ手順が用意されています。
+この記事のトラブルシューティングの手順のほかに、[AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Linux) を使用して、Linux クライアントが前提条件を適切に満たしていることを確認できます。 AzFileDiagnostics では、この記事で説明しているほとんどの症状が自動的に検出されます。 最適なパフォーマンスが得られる環境をセットアップするために役立ちます。 この情報は、[Azure ファイル共有のトラブルシューティング ツール](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)で入手することもできます。 トラブルシューティング ツールには、Azure Files 共有の接続、マッピング、およびマウントに関する問題の解決に役立つ手順が用意されています。
 
 ## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Azure ファイル共有を接続またはマウントできない
 
@@ -30,12 +30,12 @@ ms.locfileid: "80159491"
 
 |   | SMB 2.1 <br>(同じ Azure リージョン内の VM 上のマウント) | SMB 3.0 <br>(オンプレミスおよびクロスリージョンからのマウント) |
 | --- | :---: | :---: |
-| Ubuntu Server | 14.04+ | 16.04+ |
-| RHEL | 7+ | 7.5+ |
-| CentOS | 7+ |  7.5+ |
-| Debian | 8+ |   |
-| openSUSE | 13.2+ | 42.3 以降 |
-| SUSE Linux Enterprise Server | 12 | 12 SP3+ |
+| **Ubuntu Server** | 14.04+ | 16.04+ |
+| **RHEL** | 7+ | 7.5+ |
+| **CentOS** | 7+ |  7.5+ |
+| **Debian** | 8+ |   |
+| **openSUSE** | 13.2+ | 42.3 以降 |
+| **SUSE Linux Enterprise Server** | 12 | 12 SP3+ |
 
 - CIFS ユーティリティ (cifs-utils) がクライアントにインストールされていません。
 - SMB/CIFS の最小バージョン 2.1 がクライアントにインストールされていません。
@@ -84,9 +84,9 @@ Linux では、次のようなエラー メッセージが表示されます。
 
 ### <a name="cause"></a>原因
 
-ファイルで許容される、同時に開くことのできるハンドルの上限に達しました。
+ファイルまたはディレクトリで許容される、同時に開くことのできるハンドルの上限に達しました。
 
-開くことができるハンドルのクォータは、1 つのファイルにつき 2,000 個です。 開いているハンドルが 2,000 個になると、クォータに達したことを伝えるエラー メッセージが表示されます。
+開くことができるハンドルのクォータは、1 つのファイルまたはディレクトリにつき 2,000 個です。 開いているハンドルが 2,000 個になると、クォータに達したことを伝えるエラー メッセージが表示されます。
 
 ### <a name="solution"></a>解決策
 

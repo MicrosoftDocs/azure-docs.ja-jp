@@ -7,16 +7,17 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 04/04/2020
+ms.topic: how-to
+ms.date: 07/30/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 37ddf57057b736cd76a74276e5593a865e7df8cc
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 8c0b6ba4045e1e92d395752f106258d3c0709108
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80666863"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486735"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 内のユーザー インターフェイスをカスタマイズする
 
@@ -187,7 +188,7 @@ Azure AD B2C で会社のブランドを構成する際は、次の点に注意�
 
 1. Azure portal の左側のメニューで、 **[Azure AD B2C]** を選択します。
 1. **[ポリシー]** で **[ユーザー フロー (ポリシー)]** を選択します。
-1. 会社のブランド化を有効にするユーザー フローを選択します。 会社のブランドは、*サインイン v1* および *プロファイル編集 v1* のユーザー フロー タイプでは**サポートされていません**。
+1. 会社のブランド化を有効にするユーザー フローを選択します。 会社のブランド化は、標準の "*サインイン*" および標準の "*プロファイル編集*" ユーザー フローの種類では**サポートされていません**。
 1. **[カスタマイズ]** で、 **[ページ レイアウト]** を選択して、ブランド化するレイアウトを選択します。 たとえば、 **[統合されたサインアップまたはサインイン ページ]** を選択します。
 1. **[ページ レイアウト バージョン (プレビュー)]** では、バージョン **1.2.0** 以上を選択します。
 1. **[保存]** を選択します。
@@ -213,19 +214,19 @@ Azure AD B2C で会社のブランドを構成する際は、次の点に注意�
 
 ## <a name="localize-content"></a>コンテンツのローカライズ
 
-Azure AD B2C テナントで [[言語のカスタマイズ]](user-flow-language-customization.md) を有効にすることで HTML コンテンツをローカライズします。 この機能を有効にすると、Azure AD B2C で OpenID Connect パラメーター `ui-locales` をエンドポイントに転送できるようになります。 コンテンツ サーバーではこのパラメーターを使用し、言語固有の HTML ページを提供できます。
+Azure AD B2C テナントで [[言語のカスタマイズ]](user-flow-language-customization.md) を有効にすることで HTML コンテンツをローカライズします。 この機能を有効にすると、Azure AD B2C で OpenID Connect パラメーター `ui_locales` をエンドポイントに転送できるようになります。 コンテンツ サーバーではこのパラメーターを使用し、言語固有の HTML ページを提供できます。
 
 使用されているロケールに基づき、さまざまな場所からコンテンツを取得できます。 CORS 対応エンドポイントでは、特定の言語のコンテンツをホストするようにフォルダー構造を設定します。 ワイルドカード値 `{Culture:RFC5646}` を使うと、適切な言語が呼び出されます。
 
 たとえば、カスタム ページ URI は次のようになります。
 
-```HTTP
+```http
 https://contoso.blob.core.windows.net/{Culture:RFC5646}/myHTML/unified.html
 ```
 
 コンテンツを以下から取得すれば、フランス語でページを読み込むことができます。
 
-```HTTP
+```http
 https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 ```
 

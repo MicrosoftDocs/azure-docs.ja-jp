@@ -4,19 +4,19 @@ description: Language Understanding (LUIS) アプリでユーザーの発話か�
 ms.topic: reference
 ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: 1665f1ef8a868b011e9e4de8562aeda9edef5ce2
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a0139cf5ef424288c41c436fb63313494404f841
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585574"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684535"
 ---
 # <a name="pattern-syntax"></a>パターンの構文
 
 パターンの構文は、発話のテンプレートです。 テンプレートには、一致させるワードとエンティティのほか、無視するワードや[句読点](luis-reference-application-settings.md#punctuation-normalization)が含まれている必要があります。 正規表現では**ありません**。
 
 > [!CAUTION]
-> パターンに含まれるのは、サブエンティティではなく、機械学習エンティティの親のみです。
+> パターンには、機械学習エンティティの親のみが含まれ、サブエンティティは含まれません。
 
 パターン内のエンティティは中かっこ (`{}`) で囲まれます。 パターンにはエンティティ、およびロール付きのエンティティを含めることができます。 [pattern.any](luis-concept-entity-types.md#patternany-entity) はパターンにおいてのみ使用されるエンティティです。
 

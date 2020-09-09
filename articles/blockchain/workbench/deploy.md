@@ -1,15 +1,16 @@
 ---
 title: Azure Blockchain Workbench Preview のデプロイ
 description: Azure Blockchain Workbench Preview のデプロイ方法
-ms.date: 01/08/2020
-ms.topic: article
-ms.reviewer: brendal
-ms.openlocfilehash: 141bb8825e47eb2309f9f551990a2976e8f4e209
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/16/2020
+ms.topic: how-to
+ms.reviewer: ravastra
+ms.custom: references_regions
+ms.openlocfilehash: b46a35b45a51d0cc76942c4ca142c4c7792a28b4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78943201"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077013"
 ---
 # <a name="deploy-azure-blockchain-workbench-preview"></a>Azure Blockchain Workbench Preview のデプロイ
 
@@ -28,7 +29,7 @@ Blockchain Workbench を使用すると、ブロックチェーン台帳を、�
 * Event Grid
 * Azure Key Vault
 * Service Bus
-* SQL Database (Standard S0) + SQL 論理サーバー
+* SQL Database (Standard S0)
 * Azure Storage アカウント (Standard LRS)
 * 仮想マシン スケール セット (容量 1)
 * Virtual Network リソース グループ (ロード バランサー、ネットワーク セキュリティ グループ、パブリック IP アドレス、仮想ネットワークを含む)
@@ -45,13 +46,13 @@ Blockchain Workbench のコストは、基礎となる Azure サービスのコ�
 Azure Blockchain Workbench では、Azure AD 構成とアプリケーション登録が必要です。 デプロイの前に Azure AD を[手動で構成](#azure-ad-configuration)するか、デプロイ後にスクリプトを実行するかを選択できます。 Blockchain Workbench を再デプロイしている場合は、「[Azure AD 構成](#azure-ad-configuration)」を参照して Azure AD 構成を確認します。
 
 > [!IMPORTANT]
-> Workbench は、Azure AD アプリケーションを登録するために使用しているテナントと同じテナントに展開する必要はありません。 Workbench は、リソースを展開するための十分なアクセス許可があるテナントに展開する必要があります。 Azure AD テナントについて詳しくは、「[Azure Active Directory テナントを取得する方法](../../active-directory/develop/quickstart-create-new-tenant.md)」および「[Azure Active Directory とアプリケーションの統合](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)」をご覧ください。
+> Workbench は、Azure AD アプリケーションを登録するために使用しているテナントと同じテナントに展開する必要はありません。 Workbench は、リソースを展開するための十分なアクセス許可があるテナントに展開する必要があります。 Azure AD テナントについて詳しくは、「[Azure Active Directory テナントを取得する方法](../../active-directory/develop/quickstart-create-new-tenant.md)」および「[Azure Active Directory とアプリケーションの統合](../../active-directory/develop/quickstart-register-app.md)」をご覧ください。
 
 ## <a name="deploy-blockchain-workbench"></a>Blockchain Workbench を展開する
 
 前提条件の手順が完了すると、Blockchain Workbench を展開できる状態になります。 次のセクションでは、フレームワークを展開する方法の概要を説明します。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 右上隅でお使いのアカウントを選び、Azure Blockchain Workbench を展開する Azure AD テナントに切り替えます。
 1. Azure Portal の左上隅にある **[リソースの作成]** を選択します。
 1. **[ブロックチェーン]**  >  **[Azure Blockchain Workbench (プレビュー)]** の順に選択します。
@@ -66,10 +67,10 @@ Azure Blockchain Workbench では、Azure AD 構成とアプリケーション�
     | Password | このパスワードは、VM に接続するために使われます。 |
     | SSH | **ssh-rsa** で始まる単一行形式の RSA 公開キー、または複数行の PEM 形式を使います。 SSH キーは、Linux と OS X では `ssh-keygen` を使って、Windows では PuTTYGen を使って、生成できます。 SSH キーについて詳しくは、「[Azure 上の Windows で SSH キーを使用する方法](../../virtual-machines/linux/ssh-from-windows.md)」をご覧ください。 |
     | Database and Blockchain password (データベースとブロックチェーンのパスワード) | 展開の一部として作成されるデータベースにアクセスするために使うパスワードを指定します。 このパスワードは、次の 4 つの要件のうちの 3 つを満たし、12 文字から 72 文字までの長さで指定する必要があります。1 つの小文字、1 つの大文字、1 つの数字、番号記号 (#)、パーセント (%)、コンマ (,)、アスタリスク (*)、逆引用符 (\`)、二重引用符 (")、単一引用符 (')、ダッシュ (-)、セミコロン (;) 以外の 1 つの特殊文字。 |
-    | Deployment region (展開するリージョン) | Blockchain Workbench リソースを展開する場所を指定します。 最善の可用性を得るには、 **[場所]** 設定と一致させる必要があります。 |
+    | Deployment region (展開するリージョン) | Blockchain Workbench リソースを展開する場所を指定します。 最高の可用性を得るには、これを **[リージョン]** 場所設定と一致させる必要があります。 すべてのリージョンがプレビュー期間に利用できるわけではありません。 一部のリージョンでは、機能が利用できない場合があります。 Azure Blockchain Data Manager は、次の Azure リージョンで利用できます: 米国東部と西ヨーロッパ) で運営される基本的な Web サイトの 2 つのインスタンス。|
     | サブスクリプション | 展開に使う Azure サブスクリプションを指定します。 |
     | リソース グループ | **[新規作成]** を選び、一意のリソース グループ名を指定して、新しいリソース グループを作成します。 |
-    | Location | フレームワークを展開するリージョンを指定します。 |
+    | 場所 | フレームワークを展開するリージョンを指定します。 |
 
 1. **[OK]** を選んで、基本設定の構成セクションを完了します。
 
@@ -84,7 +85,7 @@ Azure Blockchain Workbench では、Azure AD 構成とアプリケーション�
     | 設定 | 説明  |
     |---------|--------------|
     | Azure Blockchain Service pricing tier (Azure Blockchain Service の価格レベル) | Blockchain Workbench に使用される Azure Blockchain Service のレベル **[Basic]** または **[Standard]** を選択します。 |
-    | Azure Active Directory の設定 | **[後で追加]** を選択します。</br>注意: [Azure AD の事前構成](#azure-ad-configuration)を選択した場合、または再デプロイしている場合は、 *[今すぐ追加]* を選択します。 |
+    | Azure Active Directory の設定 | **[後で追加]** を選択します。</br>注:[Azure AD の事前構成](#azure-ad-configuration)を選択した場合、または再デプロイしている場合は、 *[今すぐ追加]* を選択します。 |
     | VM の選択 | お使いのブロックチェーン ネットワークに推奨されるストレージ パフォーマンスと VM サイズを選択します。 Azure Free レベルなどサービス制限のあるサブスクリプションを使用している場合は、より小さい VM サイズ (*Standard DS1 v2* など) を選択してください。 |
 
     **[既存のものを使用]** の場合:
@@ -103,10 +104,10 @@ Azure Blockchain Workbench では、Azure AD 構成とアプリケーション�
      | 設定 | 説明  |
      |---------|--------------|
      | Ethereum RPC エンドポイント | 既存の PoA ブロックチェーン ネットワークの RPC エンドポイントを提供します。 エンドポイントは https:// または http:// で始まり、ポート番号で終わります。 たとえば、`http<s>://<network-url>:<port>` のように指定します。 |
-     | Azure Active Directory の設定 | **[後で追加]** を選択します。</br>注意: [Azure AD の事前構成](#azure-ad-configuration)を選択した場合、または再デプロイしている場合は、 *[今すぐ追加]* を選択します。 |
+     | Azure Active Directory の設定 | **[後で追加]** を選択します。</br>注:[Azure AD の事前構成](#azure-ad-configuration)を選択した場合、または再デプロイしている場合は、 *[今すぐ追加]* を選択します。 |
      | VM の選択 | お使いのブロックチェーン ネットワークに推奨されるストレージ パフォーマンスと VM サイズを選択します。 Azure Free レベルなどサービス制限のあるサブスクリプションを使用している場合は、より小さい VM サイズ (*Standard DS1 v2* など) を選択してください。 |
 
-1. **[OK]** をクリックして [詳細設定] を完了します。
+1. **[確認と作成]** を選択して [詳細設定] を完了します。
 
 1. サマリーで、パラメーターが正しいことを確認します。
 
@@ -123,11 +124,11 @@ Azure Blockchain Workbench では、Azure AD 構成とアプリケーション�
 
 Blockchain Workbench の展開が完了すると、新しいリソース グループには Blockchain Workbench のリソースが格納されています。 Blockchain Workbench サービスには、Web URL を使ってアクセスします。 次の手順では、展開済みのフレームワークの Web URL を取得する方法を示します。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左側のナビゲーション ウィンドウで、 **[リソース グループ]** を選択します。
 1. Blockchain Workbench の展開時に指定したリソース グループ名を選びます。
 1. **[種類]** 列見出しを選択して、種類のアルファベット順に一覧を並べ替えます。
-1. **[App Service]** の種類で 2 つのリソースがあります。 "-api" サフィックスが "**付いていない**" リソースの種類 *[App Service]* を選びます。
+1. **[App Service]** の種類で 2 つのリソースがあります。 "-api" サフィックスが "*付いていない*" リソースの種類 **[App Service]** を選びます。
 
     ![App Service のリスト](media/deploy/resource-group-list.png)
 
@@ -177,8 +178,7 @@ Azure Blockchain Workbench のデプロイが完了しました。 デプロイ�
 
 Blockchain Workbench の展開には、Azure AD アプリケーションの登録が必要です。 アプリを登録するには Azure Active Directory (Azure AD) テナントが必要です。 既存のテナントを使うか、新しいテナントを作成することができます。 既存の Azure AD テナントを使う場合は、Azure AD テナントにアプリケーションを登録し、Graph API のアクセス許可を付与し、Azure AD テナント内でゲストのアクセスを許可するための十分なアクセス許可が必要です。 既存の Azure AD テナントに十分なアクセス許可がない場合は、新しいテナントを作成します。
 
-
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 右上隅でお使いのアカウントを選び、目的の Azure AD テナントに切り替えます。 テナントは、Azure Blockchain Workbench を展開するサブスクリプションのサブスクリプション管理者のテナントでなければならず、アプリケーションを登録するための十分なアクセス許可が必要です。
 1. 左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** サービスを選びます。 **[アプリの登録]**  >  **[新しい登録]** の順に選びます。
 
@@ -194,11 +194,9 @@ Blockchain Workbench の展開には、Azure AD アプリケーションの登�
 
 次に、Azure AD 内のアプリケーション ロールを使って Blockchain Workbench 管理者を指定するように、マニフェストを変更する必要があります。  アプリケーション マニフェストについて詳しくは、「[Azure Active Directory アプリケーション マニフェスト](../../active-directory/develop/reference-app-manifest.md)」をご覧ください。
 
-
 1. マニフェストには GUID が必要です。 PowerShell コマンド `[guid]::NewGuid()` または `New-GUID` コマンドレットを使用して GUID を生成できます。 GUID ジェネレーター Web サイトを使用することもできます。
 1. 登録したアプリケーションについて、 **[管理]** セクションで **[マニフェスト]** を選びます。
-1. 次に、マニフェストの **appRoles** セクションを更新します。 `"appRoles": []` を、示されている JSON に置き換えます。 忘れずに、**id** フィールドの値を、生成した GUID に置き換えてください。 
-
+1. 次に、マニフェストの **appRoles** セクションを更新します。 `"appRoles": []` を、示されている JSON に置き換えます。 忘れずに、`id` フィールドの値を、生成した GUID に置き換えてください。
     ![マニフェストの編集](media/deploy/edit-manifest.png)
 
     ``` json
@@ -262,7 +260,7 @@ API アプリケーションは、ディレクトリにアクセスするため�
 
 ### <a name="get-tenant-domain-name"></a>テナントのドメイン名を取得する
 
-アプリケーションを登録する Active Directory テナントのドメイン名を収集して保存します。 
+アプリケーションを登録する Active Directory テナントのドメイン名を収集して保存します。
 
 左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** サービスを選びます。 **[カスタム ドメイン名]** を選択します。 ドメイン名をコピーして保存します。
 
@@ -280,7 +278,7 @@ API アプリケーションは、ディレクトリにアクセスするため�
 
 Azure Blockchain Workbench をデプロイした後は、デプロイした Blockchain Workbench Web URL について Azure Active Directory (Azure AD) クライアント アプリケーションの**応答 URL** を構成する必要があります。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. Azure AD クライアント アプリケーションを登録したテナントにいることを確認します。
 1. 左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** サービスを選びます。 **[アプリの登録]** を選択します。
 1. 前提条件セクションで登録した Azure AD クライアント アプリケーションを選びます。
@@ -299,7 +297,7 @@ Azure Blockchain Workbench をデプロイした後は、デプロイした Bloc
 
 デプロイが不要になった場合は、Blockchain Workbench リソース グループを削除してデプロイを削除できます。
 
-1. Azure Portal で、左側のナビゲーション ウィンドウの **[リソース グループ]** に移動し、削除するリソース グループを選択します。 
+1. Azure Portal で、左側のナビゲーション ウィンドウの **[リソース グループ]** に移動し、削除するリソース グループを選択します。
 1. **[リソース グループの削除]** を選択します。 リソース グループ名を入力して削除を確認し、 **[削除]** を選択します。
 
     ![リソース グループの削除](media/deploy/delete-resource-group.png)

@@ -7,18 +7,18 @@ author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 05/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 777d11a129f02d1a2f5c796dea0af438ca81ba8c
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: e26f2ed498b8bfcf6b1518ea34815efb75a8eabe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735625"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392456"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Azure でのロールの割り当てを追加する
 
@@ -68,7 +68,7 @@ objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output ts
 
 Azure RBAC でアクセス権を付与するには、ロールの割り当てを追加します。
 
-### <a name="resource-group-without-parameters"></a>リソース グループ (パラメーターなし)
+### <a name="resource-group-scope-without-parameters"></a>リソース グループのスコープ (パラメーターなし)
 
 次のテンプレートは、ロールの割り当てを追加する基本的な方法を示したものです。 一部の値は、テンプレート内で指定されます。 以下のテンプレートでは次のことを示します。
 
@@ -111,7 +111,7 @@ az group deployment create --resource-group ExampleGroup --template-file rbac-te
 
 ![リソース グループをスコープとするロールの割り当て](./media/role-assignments-template/role-assignment-template.png)
 
-### <a name="resource-group-or-subscription"></a>リソース グループまたはサブスクリプション
+### <a name="resource-group-or-subscription-scope"></a>リソース グループまたはサブスクリプションのスコープ
 
 前述のテンプレートは、それほど柔軟性が高いものではありません。 次のテンプレートでは、パラメーターを使用して、異なるスコープで使用できます。 以下のテンプレートでは次のことを示します。
 
@@ -195,7 +195,7 @@ New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $
 az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
-### <a name="resource"></a>リソース
+### <a name="resource-scope"></a>リソースのスコープ
 
 リソース レベルでロールの割り当てを追加する必要がある場合は、ロールの割り当ての形式が異なります。 ロールを割り当てるリソースのリソース プロバイダーの名前空間とリソースの種類を指定します。 ロールの割り当ての名前にリソースの名前も含めます。
 
@@ -358,6 +358,15 @@ az group deployment create --resource-group ExampleGroup2 --template-file rbac-t
 次に示すのは、テンプレートをデプロイした後で、新しいマネージド ID サービス プリンシパルに共同作成者ロールを割り当てる場合の例です。
 
 ![新しいマネージド ID サービス プリンシパルに対するロールの割り当て](./media/role-assignments-template/role-assignment-template-msi.png)
+
+## <a name="remove-a-role-assignment"></a>ロールの割り当てを削除する
+
+Azure RBAC で Azure リソースへのアクセス権を削除するには、ロールの割り当てを削除します。 テンプレートを使用してロールの割り当てを削除する方法はありません。 ロールの割り当てを削除するには、次のような他のツールを使用する必要があります。
+
+- [Azure Portal](role-assignments-portal.md#remove-a-role-assignment)
+- [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)
+- [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
+- [REST API](role-assignments-rest.md#remove-a-role-assignment)
 
 ## <a name="next-steps"></a>次のステップ
 

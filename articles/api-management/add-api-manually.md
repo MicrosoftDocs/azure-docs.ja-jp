@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 644e29c3b5e37cd95280cfd2261e644b20bbda98
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6b8b7c0dbdce160a19b5bb5ecb67bf2fb0a204ee
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82203269"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295264"
 ---
 # <a name="add-an-api-manually"></a>手動による API の追加
 
@@ -45,7 +45,7 @@ ms.locfileid: "82203269"
 この時点では、バックエンド API の操作にマッピングされる API Management の操作はありません。 API Management ではなくバックエンドを介して公開される操作を呼び出すと、**404** が返されます。
 
 >[!NOTE] 
-> 既定では、追加する API がバックエンド サービスに接続されていても、ホワイトリストに登録するまでは APIM ではいかなる操作も公開されません。 バックエンド サービスの操作をホワイトリストに登録するには、バックエンドの操作にマッピングされる APIM の操作を作成します。
+> 既定では、追加する API がバックエンド サービスに接続されていても、許可されるまでは APIM ではいかなる操作も公開されません。 バックエンド サービスの操作を許可するには、バックエンドの操作にマッピングされる APIM の操作を作成します。
 
 ## <a name="add-and-test-an-operation"></a>操作の追加とテスト
 

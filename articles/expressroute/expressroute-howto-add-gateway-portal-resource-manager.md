@@ -2,18 +2,18 @@
 title: 'Azure ExpressRoute: VNet へのゲートウェイの追加: ポータル'
 description: この記事では、Azure portal を使用して、ExpressRoute の作成済みの Resource Manager VNet に仮想ネットワーク ゲートウェイを追加する方法を説明します。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/06/2018
-ms.author: cherylmc
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 87b656f0ef999b3b15a89476f5cba4c4fcfc2b1e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 06f7e5d28017ee618adfeeec52c6f1226e1ae82c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231271"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396358"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Azure Portal を使用して ExpressRoute の仮想ネットワーク ゲートウェイを構成する
 > [!div class="op_single_selector"]

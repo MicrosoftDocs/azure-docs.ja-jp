@@ -13,4 +13,4 @@ ms.locfileid: "67181501"
 ---
 ## <a name="get-the-sample-images"></a>サンプル画像を取得する
 
-この例では、GitHub の [Cognitive Services Node.js SDK Samples](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples/customvision/images) リポジトリの **Samples/customvision/images** ディレクトリにある画像を使用します。 このリポジトリをお使いの開発環境にクローンまたはダウンロードしてください。
+この例では、GitHub の [Cognitive Services Node.js SDK Samples](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples/customvision/images) リポジトリの **Samples/customvision/images** ディレクトリにある画像を使用します。 このリポジトリをお使いの開発環境に複製またはダウンロードしてください。

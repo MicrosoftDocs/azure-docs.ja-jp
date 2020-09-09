@@ -8,12 +8,12 @@ ms.topic: conceptual
 description: カスタム NuGet フィードを使用して、Azure Dev Space 内の NuGet パッケージにアクセスし、使用します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, コンテナー
 manager: gwallace
-ms.openlocfilehash: 39984a3b3a1be64a497fb8088559ccfcdee4f1c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 77c7b733b12d9b352f9a806cadc0f900b9283ef3
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74325728"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229279"
 ---
 # <a name="use-a-custom-nuget-feed-with-azure-dev-spaces"></a>Azure Dev Spaces にカスタム NuGet フィードを使用する
 
@@ -21,7 +21,7 @@ NuGet フィードは、パッケージ ソースをプロジェクトに取り�
 
 ## <a name="set-up-a-nuget-feed"></a>NuGet フィードのセットアップ
 
-`PackageReference` ノード下の `*.csproj` ファイルで、依存関係の[パッケージ参照](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files)を追加します。 次に例を示します。
+`PackageReference` ノード下の `*.csproj` ファイルで、依存関係の[パッケージ参照](/nuget/consume-packages/package-references-in-project-files)を追加します。 次に例を示します。
 
 ```xml
 <ItemGroup>
@@ -31,7 +31,7 @@ NuGet フィードは、パッケージ ソースをプロジェクトに取り�
 </ItemGroup>
 ```
 
-プロジェクト フォルダー内に [NuGet.Config](https://docs.microsoft.com/nuget/reference/nuget-config-file) ファイルを作成し、NuGet フィードに対する `packageSources` および `packageSourceCredentials` セクションを設定します。 `packageSources` セクションにはフィード URL が含まれ、これは AKS クラスターからアクセスが可能である必要があります。 `packageSourceCredentials` は、フィードにアクセスするための資格情報です。 次に例を示します。
+プロジェクト フォルダー内に [NuGet.Config](/nuget/reference/nuget-config-file) ファイルを作成し、NuGet フィードに対する `packageSources` および `packageSourceCredentials` セクションを設定します。 `packageSources` セクションにはフィード URL が含まれ、これは AKS クラスターからアクセスが可能である必要があります。 `packageSourceCredentials` は、フィードにアクセスするための資格情報です。 次に例を示します。
 
 ```xml
 <packageSources>
@@ -71,4 +71,4 @@ Visual Studio Code または Visual Studio で次に `azds up` を実行また�
 
 ## <a name="next-steps"></a>次のステップ
 
-[NuGet とそのしくみ](https://docs.microsoft.com/nuget/what-is-nuget)について学びます。
+[NuGet とそのしくみ](/nuget/what-is-nuget)について学びます。

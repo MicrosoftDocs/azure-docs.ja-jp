@@ -5,19 +5,19 @@ author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 1/8/2019
-ms.openlocfilehash: 684116f92544e61a892b3653f8539f9f8f03e0c9
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 8a1b38b9f673669adb0b5fcf67d9d560c24d5c2a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584089"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825958"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) でユーザーを作成する
 
 > [!NOTE]
-> "ユーザー" という用語は、Hyperscale (Citus) サーバー グループ内のユーザーを指します。 Azure サブスクリプションのユーザーとその特権について確認する場合は、[Azure ロール ベース アクセス制御 (RBAC) に関する記事](../role-based-access-control/built-in-roles.md)を参照するか、または[ロールのカスタマイズ方法](../role-based-access-control/custom-roles.md)について確認してください。
+> "ユーザー" という用語は、Hyperscale (Citus) サーバー グループ内のユーザーを指します。 代わりに Azure サブスクリプションのユーザーとその特権について学習するには、[Azure ロールベースのアクセス制御 (Azure RBAC) に関する記事](../role-based-access-control/built-in-roles.md)にアクセスするか、または[ロールのカスタマイズ方法](../role-based-access-control/custom-roles.md)を確認してください。
 
 ## <a name="the-server-admin-account"></a>サーバー管理者アカウント
 
@@ -66,16 +66,11 @@ Hyperscale はマネージド PaaS サービスであるため、Microsoft だ�
 GRANT SELECT ON mytable TO db_user;
 ```
 
-Hyperscale (Citus) で、単一テーブルの GRANT ステートメントがクラスター全体に伝達され、すべてのワーカー ノードに適用されます。 ただし、システム全体 (スキーマ内のすべてのテーブルなど) の GRANT の場合は、すべての日付ノード上で実行する必要があります。  ヘルパー関数 `run_command_on_workers()` を使用します。
+Hyperscale (Citus) で、単一テーブルの GRANT ステートメントがクラスター全体に伝達され、すべてのワーカー ノードに適用されます。 また、システム全体の (たとえば、スキーマ内のすべてのテーブルに対する) GRANT も伝達されます。
 
 ```sql
--- applies to the coordinator node
+-- applies to the coordinator node and propagates to workers
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;
-
--- make it apply to workers as well
-SELECT run_command_on_workers(
-  'GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;'
-);
 ```
 
 ## <a name="how-to-delete-a-user-role-or-change-their-password"></a>ユーザー ロールの削除またはパスワードの変更方法

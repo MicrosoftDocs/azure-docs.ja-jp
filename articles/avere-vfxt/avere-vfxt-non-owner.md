@@ -3,15 +3,15 @@ title: Avere vFXT の非所有者の回避策 - Azure
 description: サブスクリプション所有者のアクセス許可を持たないユーザーが Avere vFXT for Azure をデプロイできるようにする回避策
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: 1b411fe465a67f8ea5421ac0dc93348b4e92e8ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0d9b1060ee35af6cbc2e1b95b0f7813072c52d2e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76153277"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85505377"
 ---
 # <a name="authorize-non-owners-to-deploy-avere-vfxt"></a>Avere vFXT のデプロイを所有者以外に承認する
 

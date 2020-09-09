@@ -4,15 +4,15 @@ description: Azure の Analysis Services サーバーがオンプレミスのデ
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 648646b6f973762245c344cd2629a874a219b170
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ee332eb7dea86e07c2d8f9b75a0e152dc7482a41
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76310154"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87438834"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>オンプレミス データ ゲートウェイを使用してオンプレミスのデータ ソースに接続する
 
@@ -28,11 +28,11 @@ Azure Analysis Services の場合、ゲートウェイの初回のセットア�
 
 - **ゲートウェイ リソースを Azure 内に作成する**: この手順では、Azure にゲートウェイ リソースを作成します。
 
-- **サーバーをゲートウェイ リソースに接続する**: ゲートウェイ リソースを用意したら、それとサーバーの接続を開始できます。 複数のサーバーとその他のリソースを接続できます。ただし、同じリージョンにあることが条件です。
+- **サーバーにゲートウェイ リソースを接続する**: ゲートウェイ リソースを用意したら、それとサーバーの接続を開始できます。 複数のサーバーとその他のリソースを接続できます。ただし、同じリージョンにあることが条件です。
 
 
 
-## <a name="how-it-works"></a><a name="how-it-works"> </a>動作のしくみ
+## <a name="how-it-works"></a>しくみ
 組織のコンピューターにインストールしたゲートウェイは、Windows サービス **オンプレミスのデータ ゲートウェイ**として実行されます。 このローカル サービスは、Azure Service Bus を通して Gateway Cloud Service に登録されます。 次に、Azure サブスクリプション用のオンプレミス データ ゲートウェイ リソースを作成します。 Azure Analysis Services サーバーは、Azure ゲートウェイ リソースに接続されます。 サーバー上のモデルが、クエリや処理を行うためにオンプレミスのデータ ソースに接続する必要がある場合、クエリとデータ フローは、ゲートウェイ リソース、Azure Service Bus、ローカルのオンプレミスのデータ ゲートウェイ サービスを経由してデータ ソースに接続します。 
 
 ![しくみ](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
@@ -50,9 +50,13 @@ Azure Analysis Services の場合、ゲートウェイの初回のセットア�
 
 Azure Analysis Services 環境にインストールする場合、重要なのは「[オンプレミスのデータ ゲートウェイをインストールして構成する](analysis-services-gateway-install.md)」に説明されている手順に従うことです。 この記事は Azure Analysis Services に固有のものです。 Azure でオンプレミス データ ゲートウェイ リソースをセットアップし、Azure Analysis Services サーバーをリソースに接続するために必要な追加の手順が含まれます。
 
+## <a name="connecting-to-a-gateway-resource-in-a-different-subscription"></a>別のサブスクリプションのゲートウェイ リソースに接続する
+
+お使いのサーバーと同じサブスクリプションで Azure ゲートウェイ リソースを作成することをお勧めします。 ただし、別のサブスクリプションのゲートウェイ リソースに接続するようにサーバーを構成できます。 ポータルで既存のサーバー設定を構成したり、新しいサーバーを作成したりするときは、別のサブスクリプションのゲートウェイ リソースに接続できませんが、PowerShell を利用して構成できます。 詳細については、[サーバーにゲートウェイ リソースを接続する](analysis-services-gateway-install.md#connect-gateway-resource-to-server)方法に関するページを参照してください。
+
 ## <a name="ports-and-communication-settings"></a>ポートと通信の設定
 
-ゲートウェイは、Azure Service Bus への送信接続を作成します。 通信を行う送信ポートは、TCP 443 (既定)、5671、5672、9350 ～ 9354 です。  ゲートウェイでは受信ポートは必要ありません。
+ゲートウェイは、Azure Service Bus への送信接続を作成します。 通信を行う送信ポートは、TCP 443 (既定)、5671、5672、9350 ～ 9354 の送信ポート上で通信します。  ゲートウェイでは受信ポートは必要ありません。
 
 ファイアウォール内のデータ領域用に IP アドレスを含めることが必要な場合があります。 [Microsoft Azure データセンターの IP リスト](https://www.microsoft.com/download/details.aspx?id=56519)をダウンロードできます。 このリストは毎週更新されます。 Azure データセンターの IP リストには、IP アドレスが CIDR 表記法で記載されています。 詳細については、[クラスのないドメイン間ルーティング ](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)に関するページを参照してください。
 
@@ -71,9 +75,9 @@ Azure Analysis Services 環境にインストールする場合、重要なの�
 | login.microsoftonline.com |443 |HTTPS |
 | *. msftncsi.com |443 |Power BI サービスによってゲートウェイにアクセスできない場合、インターネット接続のテストに使用されます。 |
 | *.microsoftonline-p.com |443 |構成によっては認証に使用されます。 |
-| dc.services.visualstudio.com  |443 |テレメトリを収集するために AppInsights によって使用されます。 |
+| dc.services.visualstudio.com    |443 |テレメトリを収集するために AppInsights によって使用されます。 |
 
-### <a name="forcing-https-communication-with-azure-service-bus"></a><a name="force-https"></a>Azure Service Bus との HTTPS 通信の強制
+### <a name="forcing-https-communication-with-azure-service-bus"></a>Azure Service Bus との HTTPS 通信の強制
 
 ダイレクト TCP ではなく HTTPS を使用して Azure Service Bus と通信するようにゲートウェイに強制できます。ただし、これを行うと、パフォーマンスが大幅に低下します。 *Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config* ファイルの値を `AutoDetect` から `Https` に変更することで、このファイルを変更できます。 このファイルは、通常は *C:\Program Files\On-premises data gateway* に配置されます。
 

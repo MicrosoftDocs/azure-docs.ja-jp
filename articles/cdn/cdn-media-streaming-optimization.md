@@ -1,6 +1,6 @@
 ---
 title: Azure CDN によるメディア ストリーミングの最適化
-description: スムーズな配信のためのメディア ファイルのストリーミングの最適化
+description: 部分的キャッシュ共有やキャッシュ フィル待機時間など、Azure Content Delivery Network のメディア ストリーミングを最適化するためのオプションについて説明します。
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
-ms.openlocfilehash: 2931dffaaab2d06b2c06f03770a66d78d6466787
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c3ab722f182e32cf2f3aca6bb2f3d5a9598264af
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260481"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192608"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>Azure CDN によるメディア ストリーミングの最適化 
  
@@ -82,12 +82,11 @@ ms.locfileid: "81260481"
 **Azure CDN Standard from Akamai** では、資産がストリーミング マニフェストまたはフラグメントであることを検出すると、一般的な Web 配信とは異なるキャッシュの有効期限を使用します。 (以下の表の詳細な一覧を参照)。通常の処理と同様に、配信元から送信される cache-control または Expires ヘッダーが優先されます。 資産がメディア資産でない場合は、一般的な Web 配信の有効期限を使用してキャッシュされます。
 
 多くのユーザーが、まだ存在していないフラグメントを要求する場合の配信元のオフロードには、負の短いキャッシュ時間が便利です。 例として、瞬間的に配信元からパケットが利用できなくなることのあるライブ ストリームが挙げられます。 通常、ビデオ コンテンツは変更されないため、キャッシュ間隔を長くしても配信元からの要求をオフロードできます。
- 
 
-|   | 一般的な Web 配信 | 一般的なメディア ストリーミング | ビデオ オン デマンド メディア ストリーミング  
---- | --- | --- | ---
-キャッシュ:Positive <br> HTTP 200、203、300、 <br> 301、302、410 | 7 日 |365 日 | 365 日   
-キャッシュ:Negative <br> HTTP 204、305、404、 <br> 405 | なし | 1 秒 | 1 秒
+| キャッシュ  | 一般的な Web 配信 | 一般的なメディア ストリーミング | ビデオ オン デマンド メディア ストリーミング  
+|--- | --- | --- | ---
+| キャッシュ:Positive <br> HTTP 200、203、300、 <br> 301、302、410 | 7 日 |365 日 | 365 日   
+| キャッシュ:Negative <br> HTTP 204、305、404、 <br> 405 | なし | 1 秒 | 1 秒
  
 ### <a name="deal-with-origin-failure"></a>配信元のエラーの処理  
 

@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 622950c394d59d8ba504901f5bb0eea6bc04707f
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: f8dfeb8a38e07d94671691bb797d26a32973c910
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160717"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042481"
 ---
 # <a name="conditional-access-conditions"></a>条件付きアクセス:条件
 
 管理者は条件付きアクセスポリシー内で、リスク、デバイス プラットフォーム、場所などの条件からのシグナルを利用して、ポリシーの決定を強化できます。 
 
-![条件付きアクセス ポリシーを定義し、条件を指定する](./media/concept-conditional-access-conditions/conditional-access-conditions.png)
+[ ![条件付きアクセス ポリシーを定義し、条件を指定する](./media/concept-conditional-access-conditions/conditional-access-conditions.png)](./media/concept-conditional-access-conditions/conditional-access-conditions.png#lightbox)
 
 複数の条件を組み合わせて、きめ細かで具体的な条件付きアクセス ポリシーを作成することができます。
 
@@ -31,6 +31,10 @@ ms.locfileid: "82160717"
 ## <a name="sign-in-risk"></a>サインイン リスク
 
 [Identity Protection](../identity-protection/overview-identity-protection.md) にアクセスできるお客様の場合、条件付きアクセス ポリシーの一部としてサインイン リスクを評価できます。 サインイン リスクは、特定の認証要求が ID 所有者によって承認されていない可能性があることを表します。 サインイン リスクの詳細については、「[リスクとは](../identity-protection/concept-identity-protection-risks.md#sign-in-risk)」と「[方法:リスク ポリシーを構成して有効にする](../identity-protection/howto-identity-protection-configure-risk-policies.md)」を参照してください。
+
+## <a name="user-risk"></a>ユーザー リスク 
+
+[Identity Protection](../identity-protection/overview-identity-protection.md) にアクセスできるお客様の場合、条件付きアクセス ポリシーの一部としてユーザー リスクを評価できます。 ユーザー リスクは、特定の ID またはアカウントに対する侵害の確率を表します。 ユーザー リスクの詳細については、「[リスクとは](../identity-protection/concept-identity-protection-risks.md#user-risk)」および「[方法: リスク ポリシーを構成して有効にする](../identity-protection/howto-identity-protection-configure-risk-policies.md)」を参照してください。
 
 ## <a name="device-platforms"></a>デバイス プラットフォーム
 
@@ -44,9 +48,6 @@ Azure AD 条件付きアクセスは、次のデバイス プラットフォー�
 - Windows
 - macOS
 
-> [!WARNING]
-> Microsoft は、条件付きアクセス ポリシーと macOS 10.15.4 ベースのデバイスに関する問題を認識しています。 詳細については、ブログ記事「[Known Issue:Conditional access unexpectedly blocking macOS 10.15.4 native mail client/other apps](https://techcommunity.microsoft.com/t5/intune-customer-success/known-issue-conditional-access-unexpectedly-blocking-macos-10-15/ba-p/1322283)」 (既知の問題: 条件付きアクセスにより macOS 10.15.4 ネイティブ メール クライアントまたはその他のアプリが予期せずにブロックされる) を参照してください。
-
 **他のクライアント**条件を使用してレガシ認証をブロックする場合は、デバイスのプラットフォーム条件も設定できます。
 
 ## <a name="locations"></a>場所
@@ -59,18 +60,28 @@ Azure AD 条件付きアクセスは、次のデバイス プラットフォー�
 
 場所に関する詳細については、「[Azure Active Directory 条件付きアクセスの場所の条件の概要](location-condition.md)」の記事を参照してください。
 
-## <a name="client-apps-preview"></a>クライアント アプリ (プレビュー)
+## <a name="client-apps"></a>クライアント アプリ
 
-条件付きアクセス ポリシーは、既定では、ブラウザー ベースのアプリケーションと、最新の認証プロトコルを利用するアプリケーションに適用されます。 これらのアプリケーションに加えて、管理者は、Exchange ActiveSync クライアントと、レガシ プロトコルを利用する他のクライアントを含めることを選択できます。
+既定では、新しく作成されたすべての条件付きアクセス ポリシーは、クライアント アプリの条件が構成されていない場合でも、すべてのクライアント アプリの種類に適用されます。 
 
-- Browser
-   - これには、SAML、WS-Federation、OpenID Connect、OAuth 機密クライアントとして登録されているサービスなどのプロトコルを使用する Web ベースのアプリケーションが含まれます。
-- モバイル アプリとデスクトップ クライアント
-   - 先進認証クライアント
-      - このオプションには、Office デスクトップや Phone アプリケーションなどのアプリケーションが含まれます。
+> [!NOTE]
+> クライアント アプリの条件の動作は、2020 年 8 月に更新されました。 既存の条件付きアクセス ポリシーがある場合、それらは変更されません。 ただし、既存のポリシーをクリックすると、構成の切り替えが削除されており、ポリシーが適用されるクライアント アプリが選択されます。
+
+> [!IMPORTANT]
+> レガシ認証クライアントからのサインインでは MFA はサポートされず、デバイスの状態情報は Azure AD に渡されないため、条件付きアクセス許可制御によってブロックされます (MFA または準拠デバイスを求められるなど)。 レガシ認証を使用する必要があるアカウントがある場合は、それらのアカウントをポリシーから除外するか、先進認証クライアントにのみ適用するようにポリシーを構成する必要があります。
+
+**[構成]** は切り替え可能で、 **[はい]** に設定されている場合は、選択されている項目に適用され、 **[いいえ]** に設定されている場合は、レガシ認証クライアントと先進認証クライアントを含むすべてのクライアント アプリに適用されます。 この切り替えは、2020 年 8 月より前に作成されたポリシーには表示されません。
+
+- 先進認証クライアント
+   - Browser
+      - これには、SAML、WS-Federation、OpenID Connect、OAuth 機密クライアントとして登録されているサービスなどのプロトコルを使用する Web ベースのアプリケーションが含まれます。
+   - モバイル アプリとデスクトップ クライアント
+      -  このオプションには、Office デスクトップや Phone アプリケーションなどのアプリケーションが含まれます。
+- レガシ認証クライアント
    - Exchange ActiveSync クライアント
-      - 既定では、これには Exchange ActiveSync (EAS) プロトコルのすべての使用が含まれます。 **[サポートされているプラットフォームにのみポリシーを適用する]** を選択すると、iOS、Android、Windows などのサポートされているプラットフォームに限定されます。
+      - これには Exchange ActiveSync (EAS) プロトコルのすべての使用が含まれます。
       - ポリシーによって Exchange ActiveSync の使用がブロックされると、影響を受けるユーザーには 1 通の検疫電子メールが送信されます。 この電子メールには、ブロックされた理由に関する情報が記載され、可能な場合は修復の手順が含められます。
+      - 管理者は、条件付きアクセス MS Graph API を使用して、サポートされているプラットフォーム (iOS、Android、Windows など) にのみポリシーを適用できます。
    - その他のクライアント
       - このオプションには、最新の認証をサポートしていない基本またはレガシ認証プロトコルを使用するクライアントが含まれます。
          - 認証済み SMTP - 電子メール メッセージを送信するために POP および IMAP クライアントで使用されます。
@@ -115,21 +126,17 @@ Windows 7、iOS、Android、および macOS では、Azure AD によって、デ
 
 Chrome ブラウザーにこの拡張機能を自動的に展開するには、次のレジストリ キーを作成します。
 
-|    |    |
-| --- | --- |
-| Path | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| 名前 | 1 |
-| Type | REG_SZ (文字列) |
-| Data | ppnbnpeolgkicgegkbkbjmhlideopiji;https\://clients2.google.com/service/update2/crx |
+- パス HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist
+- 名前 1
+- 型 REG_SZ (文字列)
+- データ ppnbnpeolgkicgegkbkbjmhlideopiji;https\://clients2.google.com/service/update2/crx
 
 **Windows 8.1 および 7** で Chrome をサポートするには、次のレジストリ キーを作成してください。
 
-|    |    |
-| --- | --- |
-| Path | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| 名前 | 1 |
-| Type | REG_SZ (文字列) |
-| Data | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
+- パス HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls
+- 名前 1
+- 型 REG_SZ (文字列)
+- データ {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}}
 
 これらのブラウザーはデバイス認証をサポートしており、デバイスを識別してポリシーで検証することができます。 ブラウザーがプライベート モードで実行している場合、デバイス チェックは失敗します。
 

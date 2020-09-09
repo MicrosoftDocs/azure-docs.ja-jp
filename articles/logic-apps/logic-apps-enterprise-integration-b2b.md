@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: b576fc99e2f203bb3d690a8135ee76cee26b3de8
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 2fd96777a5fe74d44aeed5f6de82e54b2663a024
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792362"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090384"
 ---
 # <a name="receive-and-confirm--b2b-as2-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack を使用して B2B AS2 メッセージを受信して確認する
 
@@ -35,7 +35,7 @@ ms.locfileid: "82792362"
 
   ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」と[クイックスタートの初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
 
-* Azure サブスクリプションに関連付けられ、ロジック アプリにリンクされている[統合アカウント](../logic-apps/logic-apps-enterprise-integration-accounts.md)。 使用するロジックアプリと統合アカウントは両方とも同じ場所または同じ Azure リージョンに存在する必要があります。
+* Azure サブスクリプションに関連付けられ、ロジック アプリにリンクされている[統合アカウント](./logic-apps-enterprise-integration-create-integration-account.md)。 使用するロジックアプリと統合アカウントは両方とも同じ場所または同じ Azure リージョンに存在する必要があります。
 
 * 統合アカウントで、パートナーの [AS2 契約および X12 契約](logic-apps-enterprise-integration-agreements.md)と共に既に定義されている 2 つ以上の[取引先](../logic-apps/logic-apps-enterprise-integration-partners.md)。
 

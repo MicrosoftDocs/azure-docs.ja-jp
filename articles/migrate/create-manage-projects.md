@@ -2,13 +2,13 @@
 title: Azure Migrate プロジェクトの作成と管理
 description: Azure Migrate でプロジェクトを検索、作成、管理、および削除します。
 ms.topic: how-to
-ms.date: 04/19/2020
-ms.openlocfilehash: f5079ed979d98f2c6f0c654c860c6f176f366497
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/23/2020
+ms.openlocfilehash: d60868f9d0d4c60291cfd92a9e8d11fd3f9a42b9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81676392"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071803"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Azure Migrate プロジェクトの作成と管理
 
@@ -65,7 +65,6 @@ Azure Migrate プロジェクトが既にあり、追加のプロジェクトを
     - リソースの種類は **Microsoft.Migrate/migrateprojects** です。
     - リソース グループが Azure Migrate プロジェクトだけで使用されている場合は、リソース グループ全体を削除できます。
 
-
 以下の点に注意してください。
 
 - 削除すると、プロジェクトと、検出されたマシンに関するメタデータの両方が削除されます。
@@ -73,6 +72,7 @@ Azure Migrate プロジェクトが既にあり、追加のプロジェクトを
 - Azure Log Analytics ワークスペースで依存関係の解析を使用している場合:
     - Log Analytics ワークスペースを Server Assessment ツールに関連付けている場合、ワークスペースは自動的には削除されません。 同じ Log Analytics ワークスペースが、複数のシナリオで使用されている可能性があります。
     - Log Analytics ワークスペースを削除する場合は、手動で行います。
+- プロジェクトの削除は元に戻すことができません。 削除されたオブジェクトは回復できません。
 
 ### <a name="delete-a-workspace-manually"></a>ワークスペースを手動で削除する
 
@@ -83,7 +83,7 @@ Azure Migrate プロジェクトが既にあり、追加のプロジェクトを
        
     - 既に Azure Migrate プロジェクトを削除した場合は、Azure portal の左側のウィンドウの **[リソース グループ]** を選択して、ワークスペースを見つけます。
        
-2. [こちらの手順に従って](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace)、ワークスペースを削除します。
+2. [こちらの手順に従って](../azure-monitor/platform/delete-workspace.md)、ワークスペースを削除します。
 
 ## <a name="next-steps"></a>次のステップ
 

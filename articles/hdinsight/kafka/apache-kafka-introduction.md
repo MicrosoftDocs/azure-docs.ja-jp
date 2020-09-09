@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive
 ms.date: 02/25/2020
-ms.openlocfilehash: 92f56f3b405470bc8ae0e9ebab2450ddc31b3c6a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8c22ff3cc79d326da09c44167519adbea48b5643
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77672176"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651337"
 ---
 # <a name="what-is-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight での Apache Kafka の概要
 
@@ -27,7 +27,7 @@ ms.locfileid: "77672176"
 
 * Kafka のバッキング ストアとして Azure Managed Disks を使用します。 Managed Disks は、Kafka ブローカーあたり最大 16 TB を提供できます。 HDInsight 上の Kafka を使用したマネージド ディスクの構成の詳細については、[HDInsight 上の Apache Kafka のスケーラビリティの向上](apache-kafka-scalability.md)に関するページを参照してください。
 
-    マネージド ディスクについて詳しくは、「[Azure Managed Disks の概要](../../virtual-machines/windows/managed-disks-overview.md)」をご覧ください。
+    マネージド ディスクについて詳しくは、「[Azure Managed Disks の概要](../../virtual-machines/managed-disks-overview.md)」をご覧ください。
 
 * Kafka はラックの 1 次元ビューで設計されています。 Azure は、更新ドメイン (UD) と障害ドメイン (FD) の 2 次元にラックを分割します。 Microsoft は、複数の UD と FD の間で Kafka のパーティションとレプリカを再調整するツールを提供しています。
 

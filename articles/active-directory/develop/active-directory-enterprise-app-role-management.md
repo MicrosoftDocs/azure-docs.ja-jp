@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 8db27819b7eef6cdf05ea3f6645ae930ebc4ef58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 85c406fc561424d7b02d39dfd58dc3c8fe34aab2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884751"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116089"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>方法:エンタープライズ アプリケーション用の SAML トークン内に発行されるロール要求を構成する
 
@@ -265,7 +265,7 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
 
 ## <a name="next-steps"></a>次のステップ
 
-追加の手順については、[アプリのマニュアル](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)を参照してください。
+追加の手順については、[アプリのマニュアル](../saas-apps/tutorial-list.md)を参照してください。
 
 <!--Image references-->
 <!--Image references-->

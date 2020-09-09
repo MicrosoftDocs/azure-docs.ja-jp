@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/28/2019
-ms.openlocfilehash: ceaed0800df01bf2c44fee13d98b01b6e726200d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/05/2020
+ms.openlocfilehash: 98caca31e172f54c3e37f33c5a463790d9d27032
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77662486"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325986"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Azure Monitor で SQL Server 正常性チェック ソリューションを使用して SQL 環境を最適化する
 
@@ -34,8 +34,8 @@ SQL 正常性チェック ソリューションを使用して、サーバー環
 ## <a name="prerequisites"></a>前提条件
 
 * SQL 正常性チェック ソリューションを使用するには、Microsoft Monitoring Agent (MMA) がインストールされている各コンピューターに、サポートされているバージョンの .NET Framework 4.6.2 がインストールされている必要があります。  MMA エージェントは、System Center 2016 (Operations Manager および Operations Manager 2012 R2) と Azure Monitor に使用されます。  
-* このソリューションは、SQL Server バージョン 2012、2014、2016 をサポートしています。
-* Azure Portal で Azure Marketplace から SQL 正常性チェック ソリューションを追加する Log Analytics ワークスペース。  ソリューションをインストールするには、Azure サブスクリプションの管理者か共同作業者である必要があります。
+* ソリューションでは、SQL Server バージョン 2012、2014、2016、2017、2019 がサポートされています。
+* Azure Portal で Azure Marketplace から SQL 正常性チェック ソリューションを追加する Log Analytics ワークスペース。 ソリューションをインストールするには、Azure サブスクリプションの管理者か共同作業者である必要があります。
 
   > [!NOTE]
   > ソリューションを追加した後、AdvisorAssessment.exe ファイルがエージェントを含むサーバーに追加されます。 構成データが読み取られ、処理のためにクラウドの Azure Monitor に送信されます。 受信したデータにロジックが適用され、クラウド サービスによってそのデータが記録されます。
@@ -44,9 +44,9 @@ SQL 正常性チェック ソリューションを使用して、サーバー環
 
 SQL Server サーバーに対して正常性チェックを実行するには、サポートされている次のいずれかの方法を使用して、これらのサーバーにエージェントおよび Azure Monitor への接続を設定する必要があります。
 
-1. サーバーが System Center 2016 (Operations Manager または Operations Manager 2012 R2) でまだ監視されていない場合は、[Microsoft Monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md) をインストールします。
+1. サーバーが System Center 2016 (Operations Manager または Operations Manager 2012 R2) でまだ監視されていない場合は、[Microsoft Monitoring Agent (MMA)](../platform/agent-windows.md) をインストールします。
 2. System Center 2016 (Operations Manager または Operations Manager 2012 R2) で監視され、かつ管理グループが Azure Monitor と統合されていない場合は、サーバーを Log Analytics とマルチホームにすることにより、データを収集してサービスに転送しながら、引き続き Operations Manager によって監視されるようにすることができます。  
-3. それ以外の場合、Operations Manager 管理グループがサービスと統合されている場合は、ワークスペースでソリューションを有効にした後に、[エージェントが管理するコンピューターの追加](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor)に関するセクションの手順に従って、サービスによるデータ収集用にドメイン コントローラーを追加する必要があります。  
+3. それ以外の場合、Operations Manager 管理グループがサービスと統合されている場合は、ワークスペースでソリューションを有効にした後に、[エージェントが管理するコンピューターの追加](../platform/om-agents.md#connecting-operations-manager-to-azure-monitor)に関するセクションの手順に従って、サービスによるデータ収集用にドメイン コントローラーを追加する必要があります。  
 
 Operations Manager 管理グループに報告する SQL Server 上のエージェントは、データを収集し、割り当てられている管理サーバーに転送します。その後、そのデータは管理サーバーから直接 Azure Monitor に送信されます。  データは Operations Manager データベースに書き込まれません。  
 
@@ -258,3 +258,4 @@ SQLAssessmentRecommendation
 
 ## <a name="next-steps"></a>次のステップ
 * [ログ クエリ](../log-query/log-query-overview.md)で、詳細な SQL 正常性チェック データと推奨事項を分析する方法を学習します。
+

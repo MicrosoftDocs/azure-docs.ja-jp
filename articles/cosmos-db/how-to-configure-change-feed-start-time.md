@@ -3,15 +3,16 @@ title: 変更フィード プロセッサの開始時刻の構成方法 - Azure 
 description: 特定の日時から読み取りを開始するよう変更フィード プロセッサを構成する方法を説明します
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/13/2019
 ms.author: maquaran
-ms.openlocfilehash: 600556a06d3f58c4d2ec79a49fdee5e8e04d4036
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: dcd92421a7ef4e2314d27a7724be01336c26c9eb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77586276"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018197"
 ---
 # <a name="how-to-configure-the-change-feed-processor-start-time"></a>変更フィード プロセッサの開始時刻の構成方法
 

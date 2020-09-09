@@ -1,19 +1,15 @@
 ---
 title: Shared Access Signature を使用して Azure Event Hubs へのアクセスを認証する
 description: この記事では、Shared Access Signature を使用して Event Hubs リソースへのアクセスを認証する方法を示します。
-services: event-hubs
-ms.service: event-hubs
-documentationcenter: ''
-author: spelluru
 ms.topic: conceptual
-ms.date: 11/26/2019
-ms.author: spelluru
-ms.openlocfilehash: cde5992355d274410bb43b1e3e60fbba1afe4e44
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.date: 06/23/2020
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: bf1f42020237c0907ec7656735adfa46a21370f9
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81676350"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008320"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Shared Access Signature (SAS) を使用して Event Hubs リソースへのアクセスを認証する
 Shared Access Signature (SAS) を使用すると、共有アクセス署名を持つクライアントに付与するアクセス許可の種類をきめ細かく制御することができます。 SAS で設定できる制御をいくつかを以下に示します。 

@@ -1,6 +1,6 @@
 ---
 title: マップにシンボル レイヤーを追加する | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps Web SDK において、シンボル レイヤーを使用してシンボルをカスタマイズし、マップ上に追加する方法について学習します。
+description: テキストやアイコンなど、カスタマイズしたシンボルをマップに追加する方法について説明します。 この目的で Azure Maps Web SDK のデータ ソースとシンボル レイヤーを使用する方法について説明します。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen
-ms.openlocfilehash: b8d131dcc798fb2fe1d4bb650cd5b0a68903381b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: d705a43da2b2db37c6601f5865ad6e569688b2a7
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77209700"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010193"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>マップにシンボル レイヤーを追加する
 

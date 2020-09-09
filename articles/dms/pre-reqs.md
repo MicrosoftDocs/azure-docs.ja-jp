@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: 89cb63630e3dbe953ed3f4fd8796d01ba0d36067
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d87052ecfe85fa35c41c8b306bb48551fd06be9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651493"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322836"
 ---
 # <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>Azure Database Migration Service を使用するための前提条件の概要
 
@@ -28,7 +28,7 @@ Azure Database Migration Service の使用に関連する前提条件は、以�
 
 サポートされているすべての移行シナリオで共通の、Azure Database Migration Service の前提条件は、次のとおりです。
 
-* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure Virtual Network を作成します。これにより、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続が提供されます。
+* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure 仮想ネットワークを作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。
 * 仮想ネットワークのネットワーク セキュリティ グループ (NSG) の規則によって、443、53、9354、445、12000 の通信ポートが確実にブロックされないようにします。 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)に関する記事を参照してください。
 * ソース データベースの前でファイアウォール アプライアンスを使用する場合は、Azure Database Migration Service が移行のためにソース データベースにアクセスできるように、ファイアウォール規則を追加することが必要な場合があります。
 * [データベース エンジン アクセスのために Windows ファイアウォール](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)を構成します。
@@ -113,21 +113,21 @@ Azure Database Migration Service の使用に関連する前提条件は、以�
 
 Azure Database Migration Service を使用して SQL Server から Azure SQL Database への移行を実行する場合は、すべての移行シナリオに共通する前提条件の他に、次の追加の前提条件にも対応してください。
 
-* Azure SQL データベース インスタンスを作成します。作成する場合は「[Azure Portal で Azure SQL データベースを作成する](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)」の手順に従います。
+* Azure SQL Database インスタンスを作成します。詳細な手順については、[Azure portal で Azure SQL Database にデータベースを作成する](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)方法のページを参照してください。
 * [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 以降をダウンロードしてインストールします。
 * Azure Database Migration Service がソースの SQL Server にアクセスできるように Windows ファイアウォールを開きます。既定では TCP ポート 1433 が使用されます。
 * 動的ポートを使用して複数の名前付き SQL Server インスタンスを実行している場合は、SQL Browser サービスを有効にし、ファイアウォール経由の UDP ポート 1434 へのアクセスを許可することをお勧めします。これにより、Azure Database Migration Service はソース サーバー上の名前付きインスタンスに接続できるようになります。
-* Azure SQL Database サーバーのサーバー レベルの[ファイアウォール規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)を作成して、Azure Database Migration Service がターゲット データベースにアクセスできるようにします。 Azure Database Migration Service に使用する仮想ネットワークのサブネット範囲を指定します。
+* SQL Database 用のサーバー レベルの[ファイアウォール規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)を作成して、Azure Database Migration Service がターゲット データベースにアクセスできるようにします。 Azure Database Migration Service に使用する仮想ネットワークのサブネット範囲を指定します。
 * ソースの SQL Server インスタンスへの接続に使用される資格情報に、[CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) アクセス許可を含めます。
-* ターゲットの Azure SQL データベース インスタンスへの接続に使用される資格情報に、ターゲットの Azure SQL データベースに対する CONTROL DATABASE アクセス許可を含めます。
+* ターゲット データベースへの接続に使用される資格情報に、ターゲット データベースに対する CONTROL DATABASE アクセス許可を含めます。
 
    > [!NOTE]
    > Azure Database Migration Service を使用して SQL Server から Azure SQL Database への移行を行うために必要な前提条件の完全な一覧については、チュートリアルの「[SQL Server を Azure SQL Database に移行する](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql)」を参照してください。
    >
 
-## <a name="prerequisites-for-migrating-sql-server-to-an-azure-sql-database-managed-instance"></a>SQL Server から Azure SQL Database Managed Instance への移行の前提条件
+## <a name="prerequisites-for-migrating-sql-server-to-azure-sql-managed-instance"></a>SQL Server から Azure SQL Managed Instance への移行の前提条件
 
-* Azure SQL Database マネージド インスタンスを作成します。手順の詳細については、[Azure portal で Azure SQL Database マネージド インスタンスを作成する方法](https://aka.ms/sqldbmi)に関する記事を参照してください。
+* SQL マネージド インスタンスを作成します。手順の詳細については、[Azure portal で Azure SQL マネージド インスタンスを作成する方法](https://aka.ms/sqldbmi)に関する記事を参照してください。
 * Azure Database Migration Service の IP アドレスまたはサブネット範囲でポート 445 の SMB トラフィックを許可するようにファイアウォールを開きます。
 * Azure Database Migration Service がソースの SQL Server にアクセスできるように Windows ファイアウォールを開きます。既定では TCP ポート 1433 が使用されます。
 * 動的ポートを使用して複数の名前付き SQL Server インスタンスを実行している場合は、SQL Browser サービスを有効にし、ファイアウォール経由の UDP ポート 1434 へのアクセスを許可することをお勧めします。これにより、Azure Database Migration Service はソース サーバー上の名前付きインスタンスに接続できるようになります。
@@ -138,7 +138,7 @@ Azure Database Migration Service を使用して SQL Server から Azure SQL Dat
 * Blob コンテナーを作成し、「[ストレージ エクスプローラー (プレビュー) を使用した Azure Blob Storage リソースの管理](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container)」の記事に記載されている手順を使用して、その SAS URI を取得します。 SAS URI を作成するときには、必ず、[ポリシー] ウィンドウですべての権限 (読み取り、書き込み、削除、一覧表示) を選択してください。
 
    > [!NOTE]
-   > Azure Database Migration Service を使用して SQL Server から Azure SQL Database Managed Instance への移行を行うために必要な前提条件の完全な一覧については、チュートリアルの「[SQL Server を Azure SQL Database Managed Instance に移行する](https://aka.ms/migratetomiusingdms)」を参照してください。
+   > Azure Database Migration Service を使用して SQL Server から SQL Database Managed Instance への移行を行うために必要な前提条件の完全な一覧については、チュートリアルの[SQL Server の SQL Managed Instance への移行](https://aka.ms/migratetomiusingdms)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -6,17 +6,17 @@ author: ronortloff
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: bcac6af9efd18ef8abeea7d82961fd8f2fe70ba3
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 05173790d8efe05851d39121ecfa15186ccb6d3c
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633748"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212957"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>クイック スタート:T-SQL を使用してワークロード分類子を作成する
 

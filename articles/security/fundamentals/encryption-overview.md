@@ -1,26 +1,20 @@
 ---
 title: Azure の暗号化の概要 | Microsoft Docs
-description: Azure でのさまざまな暗号化オプションの詳細について
+description: Azure での暗号化オプションについて説明します。 保存データの暗号化、転送中のデータの暗号化、Azure Key Vault を使用したキー管理についての情報をご確認ください。
 services: security
-documentationcenter: na
-author: Barclayn
-manager: barbkess
-editor: TomShinder
+author: msmbaldwin
 ms.assetid: ''
 ms.service: security
 ms.subservice: security-fundamentals
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/20/2018
+ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: ce78ade4df3c5bcea9e4e44750c430065cbfc5b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5189270a7b9de9ff5a222ad76ce46254ae5d2ee3
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81454647"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542961"
 ---
 # <a name="azure-encryption-overview"></a>Azure の暗号化の概要
 
@@ -28,7 +22,7 @@ ms.locfileid: "81454647"
 
 ## <a name="encryption-of-data-at-rest"></a>保存データの暗号化
 
-保存データには、物理メディア上の永続的ストレージに存在する、あらゆるデジタル形式の情報が含まれます。 これには、磁気メディアまたは光学メディア上のファイル、アーカイブされたデータ、データのバックアップなどが含まれます。 Microsoft Azure では、さまざまなニーズに応えるために、ファイル、ディスク、BLOB、テーブル ストレージなど、多様なデータ ストレージ ソリューションをご用意しています。 Microsoft は、[Azure SQL Database](../../sql-database/sql-database-technical-overview.md)、[Azure Cosmos DB](../../data-factory/introduction.md)、Azure Data Lake を保護する暗号化の機能も提供しています。
+保存データには、物理メディア上の永続的ストレージに存在する、あらゆるデジタル形式の情報が含まれます。 これには、磁気メディアまたは光学メディア上のファイル、アーカイブされたデータ、データのバックアップなどが含まれます。 Microsoft Azure では、さまざまなニーズに応えるために、ファイル、ディスク、BLOB、テーブル ストレージなど、多様なデータ ストレージ ソリューションをご用意しています。 Microsoft は、[Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md)、[Azure Cosmos DB](../../data-factory/introduction.md)、Azure Data Lake を保護する暗号化の機能も提供しています。
 
 保存されているデータの暗号化は、サービスとしてのソフトウェア (SaaS)、サービスとしてのプラットフォーム (PaaS)、サービスとしてのインフラストラクチャ (IaaS) の各クラウド モデルのサービスで使用できます。 この記事では、Azure の暗号化オプションを使用する際に役立つリソースを提供し、その概要について説明します。
 
@@ -79,17 +73,17 @@ Azure BLOB のクライアント側暗号化は、さまざまな方法で実行
 
 Key Vault でクライアント側暗号化を使用すると、Azure Storage クライアント SDK によって生成される 1 回限りの対称コンテンツ暗号化キー (CEK) を使用してデータが暗号化されます。 CEK は、対称キーまたは非対称キーのいずれかのペアであるキー暗号化キー (KEK) を使用して暗号化されます。 CEK はローカルで管理するか、Key Vault で格納できます。 その後、暗号化されたデータは Azure Storage にアップロードされます。
 
-Key Vault のクライアント側暗号化の詳細について確認し、手順に従って作業を開始するには、「[チュートリアル: Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化](../../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md)」をご覧ください。
+Key Vault のクライアント側暗号化の詳細について確認し、手順に従って作業を開始するには、[チュートリアル: Key Vault を使用した Azure Storage 内の BLOB の暗号化と復号化](../../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md)に関する記事をご覧ください。
 
 最後に、Java 用の Azure Storage Client Library を使用して、Azure Storage にデータをアップロードする前にクライアント側暗号化を実行したり、データをクライアントにダウンロードするときに暗号化を解除したりすることもできます。 また、このライブラリは [Key Vault](https://azure.microsoft.com/services/key-vault/) との統合にも役立ち、ストレージ アカウント キーの管理に利用できます。
 
 ### <a name="encryption-of-data-at-rest-with-azure-sql-database"></a>Azure SQL Database を使用した保存データの暗号化
 
-[Azure SQL Database](../../sql-database/sql-database-technical-overview.md) は、リレーショナル データ、JSON、空間、XML などの構造をサポートする、Azure における汎用リレーショナル データベース サービスです。 SQL Database では、Transparent Data Encryption (TDE) の機能を使用したサーバー側暗号化と、Always Encrypted 機能を使用したクライアント側暗号化の両方がサポートされています。
+[Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md) は、リレーショナル データ、JSON、空間、XML などの構造をサポートする、Azure における汎用リレーショナル データベース サービスです。 SQL Database では、Transparent Data Encryption (TDE) の機能を使用したサーバー側暗号化と、Always Encrypted 機能を使用したクライアント側暗号化の両方がサポートされています。
 
 #### <a name="transparent-data-encryption"></a>透過的なデータ暗号化
 
-[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) は、[SQL Server](https://www.microsoft.com/sql-server/sql-server-2016)、[Azure SQL Database](../../sql-database/sql-database-technical-overview.md)、[Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) のデータ ファイルをリアルタイムで暗号化するために使用されます。その際、復旧時の可用性のためにデータベースのブート レコードに格納されるデータベース暗号化キー (DEK) が使用されます。
+[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) は、[SQL Server](https://www.microsoft.com/sql-server/sql-server-2016)、[Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md)、[Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) のデータ ファイルをリアルタイムで暗号化するために使用されます。その際、復旧時の可用性のためにデータベースのブート レコードに格納されるデータベース暗号化キー (DEK) が使用されます。
 
 TDE は、AES と Triple Data Encryption Standard (3DES) の暗号化アルゴリズムを使用して、データとログ ファイルを保護します。 データベース ファイルの暗号化は、ページ レベルで実行されます。 暗号化されたデータベース内のページは、ディスクに書き込まれる前に暗号化され、メモリに読み込まれるときに暗号化が解除されます。 現在、新しく作成された Azure SQL データベースでは、TDE は既定で有効になっています。
 
@@ -117,9 +111,13 @@ CLE には、対称キーまたは非対称キーのいずれかを、証明書�
 
 Azure では、データの機密性を維持しながらデータを別の場所に移動するメカニズムを多数ご用意しています。
 
-### <a name="tlsssl-encryption-in-azure"></a>Azure での TLS または SSL 暗号化
+### <a name="data-link-layer-encryption-in-azure"></a>Azure のデータリンク層の暗号化
 
-Microsoft では、クラウド サービスとユーザーとの間でデータをやりとりする際に、[トランスポート層セキュリティ](https://en.wikipedia.org/wiki/Transport_Layer_Security) (TLS) プロトコルを使用してデータを保護します。 Microsoft のデータ センターは、Azure サービスに接続するクライアント システムとの TLS 接続をネゴシエートします。 TLS には、強力な認証、メッセージの機密性、整合性 (メッセージの改ざん、傍受、偽造の検出が有効)、相互運用性、アルゴリズムの柔軟性、デプロイと使用のしやすさといったメリットがあります。
+Azure のお客様のトラフィックが、Microsoft (または Microsoft の代理) によって制御されない物理的境界の外で、データセンター間を移動するときは常に、基礎となるネットワーク ハードウェアから [IEEE 802.1AE MAC Security Standards](https://1.ieee802.org/security/802-1ae/) (別名 MACsec) を使用したデータリンク層の暗号化が適用されます。 パケットは送信前にデバイス上で暗号化され、復号され、物理的な "中間者" 攻撃、スヌーピング攻撃、盗聴攻撃を防ぎます。 このテクノロジはネットワーク ハードウェア自体に統合されているため、測定可能なリンクの待機時間を増やすことなく、ネットワーク ハードウェア上でライン レート暗号化を提供します。 この MACsec 暗号化は、リージョン内またはリージョン間を移動するすべての Azure トラフィックに対して、既定でオンになります。お客様側で必要な操作はありません。 
+
+### <a name="tls-encryption-in-azure"></a>Azure の TLS 暗号化
+
+Microsoft を利用する顧客は、クラウド サービスと顧客の間をデータが移動するとき、[トランスポート層セキュリティ](https://en.wikipedia.org/wiki/Transport_Layer_Security) (TLS) プロトコルを使用してデータを保護できます。 Microsoft のデータ センターは、Azure サービスに接続するクライアント システムとの TLS 接続をネゴシエートします。 TLS には、強力な認証、メッセージの機密性、整合性 (メッセージの改ざん、傍受、偽造の検出が有効)、相互運用性、アルゴリズムの柔軟性、デプロイと使用のしやすさといったメリットがあります。
 
 [Perfect Forward Secrecy](https://en.wikipedia.org/wiki/Forward_secrecy) (PFS) は、顧客のクライアント システムと Microsoft クラウド サービスとの間の接続を一意のキーで保護します。 接続には RSA ベースの 2,048 ビット長の暗号化キーも使用します。 この組み合わせにより、転送中のデータの傍受やデータへのアクセスを困難にしています。
 
@@ -141,7 +139,7 @@ SMB 暗号化をサーバーの一部または全体でオンにすると、既�
 
 ## <a name="in-transit-encryption-in-vms"></a>VM での転送中の暗号化
 
-Windows を実行している VM との間でやり取りされる転送中データは、接続の特性に応じてさまざまな方法で暗号化されます。
+Windows を実行している VM との間でやり取りされる転送中データは、接続の特性に応じてさまざまな方法で暗号化できます。
 
 ### <a name="rdp-sessions"></a>RDP セッション
 
@@ -171,7 +169,7 @@ Azure Portal を使用して、証明書認証または PowerShell を使用し�
 
 Azure 仮想ネットワークへのポイント対サイト VPN 接続に関して詳しくは、以下をご覧ください。
 
-[証明書認証を使用した仮想ネットワークへのポイント対サイト接続の構成: Azure Portal](../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md) 
+[証明書認証を使用した仮想ネットワークへのポイント対サイト接続の構成: Azure portal](../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md) 
 
 [証明書認証を使用した仮想ネットワークへのポイント対サイト接続の構成: PowerShell](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 

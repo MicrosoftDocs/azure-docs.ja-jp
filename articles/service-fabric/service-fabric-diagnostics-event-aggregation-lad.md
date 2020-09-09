@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 2/25/2019
 ms.author: srrengar
-ms.openlocfilehash: fdb78498d33416ef21b2e2b0f498e7afa6a58d99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 453258bb5768a2faa8f4e42cce86d02125283026
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75609963"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259190"
 ---
 # <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Linux Azure Diagnostics を使用したイベントの集計と収集
 > [!div class="op_single_selector"]
@@ -21,7 +21,7 @@ ms.locfileid: "75609963"
 
 Azure Service Fabric クラスターを実行している場合、1 か所ですべてのノードのログを収集することをお勧めします。 1 か所でログを収集すると、クラスター内の問題と、そのクラスターで実行されているアプリケーションやサービスで発生する問題の分析と解決に役立ちます。
 
-ログをアップロードして収集する方法として、Linux Azure Diagnostics (LAD) 拡張機能を使用できます。この機能を使用すると、ログが Azure Storage にアップロードされますが、Azure Application Insights や Event Hubs にログを送信することもできます。 また、外部プロセスを使用してストレージからイベントを読み取り、[Azure Monitor ログ](../log-analytics/log-analytics-service-fabric.md)などの分析プラットフォーム製品や別のログ解析ソリューションに配置することもできます。
+ログをアップロードして収集する方法として、Linux Azure Diagnostics (LAD) 拡張機能を使用できます。この機能を使用すると、ログが Azure Storage にアップロードされますが、Azure Application Insights や Event Hubs にログを送信することもできます。 また、外部プロセスを使用してストレージからイベントを読み取り、[Azure Monitor ログ](./service-fabric-diagnostics-oms-setup.md)などの分析プラットフォーム製品や別のログ解析ソリューションに配置することもできます。
 
 ## <a name="log-and-event-sources"></a>ログとイベントのソース
 
@@ -43,5 +43,5 @@ Service Fabric では、操作イベントやランタイム イベントなど�
 
 ## <a name="next-steps"></a>次のステップ
 
-1. 問題をトラブルシューティングするときに調査する必要があるイベントの詳細については、[LTTng のドキュメント](https://lttng.org/docs)と [LAD の使用](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux)に関するページを参照してください。
+1. 問題をトラブルシューティングするときに調査する必要があるイベントの詳細については、[LTTng のドキュメント](https://lttng.org/docs)と [LAD の使用](../virtual-machines/extensions/diagnostics-linux.md)に関するページを参照してください。
 2. メトリックの収集、クラスターにデプロイされた Containers の監視、ログの視覚化に役立つように [Log Analytics エージェントを設定](service-fabric-diagnostics-event-analysis-oms.md)します。 

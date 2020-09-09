@@ -1,6 +1,6 @@
 ---
 title: Azure Sentinel に Barracuda データを接続する | Microsoft Docs
-description: Azure Sentinel に Barracuda データを接続する方法について説明します。
+description: Barracuda Web アプリケーション ファイアウォール (WAF) コネクタを使用して Barracuda ログを Azure Sentinel に接続する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 4e87bb57e6bdfea6307a166383da9dea187eea4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f28243be6b4f998e8bdea0ce02da3ceedde23e02
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588486"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559112"
 ---
 # <a name="connect-your-barracuda-appliance"></a>Barracuda アプライアンスの接続 
 

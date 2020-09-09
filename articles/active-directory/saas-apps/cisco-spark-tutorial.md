@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Cisco Webex の統合 | Microsoft Docs
 description: Azure Active Directory と Cisco Webex の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: c47894b1-f5df-4755-845d-f12f4c602dc4
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01fe4d06d5f73eacee1d1cdaf1963232b84daf05
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4fd6b46353cdeb4493c1a767c92e75d602e52843
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77046786"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88528896"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Cisco Webex の統合
 

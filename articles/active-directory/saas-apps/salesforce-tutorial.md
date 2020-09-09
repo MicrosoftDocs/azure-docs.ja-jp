@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Salesforce の統合 | Microsoft Docs
 description: Azure Active Directory と Salesforce の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d2d7d420-dc91-41b8-a6b3-59579e043b35
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/17/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a875cee7e6796a2c865bde4a62f2f0463eb12130
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7228f4fbf348b8112654ece91aa5e9e831ac1201
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78967726"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543569"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Salesforce の統合
 
@@ -93,8 +89,14 @@ Salesforce で Azure AD SSO を構成してテストするには、次の構成�
     エンタープライズ アカウント: `https://<subdomain>.my.salesforce.com`
 
     開発者アカウント: `https://<subdomain>-dev-ed.my.salesforce.com`
+    
+    b. **[応答 URL]** ボックスに、次のパターンを使用して値を入力します。
 
-    b. **[識別子]** ボックスに、次の形式で値を入力します。
+    エンタープライズ アカウント: `https://<subdomain>.my.salesforce.com`
+
+    開発者アカウント: `https://<subdomain>-dev-ed.my.salesforce.com`
+
+    c. **[識別子]** ボックスに、次の形式で値を入力します。
 
     エンタープライズ アカウント: `https://<subdomain>.my.salesforce.com`
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d05c2b03a0c498144f37c9b6205053120a596b09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f687901601ba517a50710610d4c827524b8ec565
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74924099"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85320983"
 ---
 # <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティからのストアド プロシージャの呼び出し
 > [!NOTE]
@@ -29,7 +29,7 @@ ms.locfileid: "74924099"
 次の例は、Data Factory パイプライン (コピー アクティビティ) から SQL Server データベースのストアド プロシージャを呼び出す方法を示しています。  
 
 ## <a name="output-dataset-json"></a>出力データセット JSON
-出力データセットの JSON で、**type** を **SqlServerTable** に設定します。 Azure SQL データベースで使用するには、**AzureSqlTable** に設定します。 **tableName** プロパティの値は、ストアド プロシージャの最初のパラメーターの名前と一致する必要があります。  
+出力データセットの JSON で、**type** を **SqlServerTable** に設定します。 Azure SQL Database で使用するには、**AzureSqlTable** に設定します。 **tableName** プロパティの値は、ストアド プロシージャの最初のパラメーターの名前と一致する必要があります。  
 
 ```json
 {

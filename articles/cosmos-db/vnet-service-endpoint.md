@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: c1c5bdd1d210a1933699cad52dbf123b50048e01
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: d264ead87e7fa638830bf25fdb07983b164334b7
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421324"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698667"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>仮想ネットワーク (VNet) から Azure Cosmos DB にアクセスする
 
@@ -23,6 +23,10 @@ Azure Cosmos アカウントは、仮想ネットワーク (VNet) の特定の�
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 仮想ネットワークからのアクセスを構成する場合についてよく寄せられる質問を次に示します。
+
+### <a name="are-notebooks-and-mongo-shell-currently-compatible-with-virtual-network-enabled-accounts"></a>Notebook と Mongo シェルは、現在、Virtual Network が有効になっているアカウントと互換性がありますか。
+
+現在、[Cosmos DB Data Explorer での Mongo シェル統合](https://devblogs.microsoft.com/cosmosdb/preview-native-mongo-shell/)と [Jupyter Notebook サービス](https://docs.microsoft.com/azure/cosmos-db/cosmosdb-jupyter-notebooks)は、VNET アクセスではサポートされていません。 これは現在開発が進められています。
 
 ### <a name="can-i-specify-both-virtual-network-service-endpoint-and-ip-access-control-policy-on-an-azure-cosmos-account"></a>Azure Cosmos アカウントに対して仮想ネットワーク サービス エンドポイントと IP アクセス制御ポリシーの両方を指定できますか。 
 

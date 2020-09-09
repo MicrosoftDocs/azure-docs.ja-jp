@@ -4,14 +4,15 @@ description: この記事では、Azure CLI を使用して Azure Database for M
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: f5572611b99245fd62b4e0a9d73e6ed728e42f5b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: c1e7db129b29cfa1109b3c79bd8590a99779e361
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530650"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503091"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for MariaDB サーバーの再起動
 このトピックでは、Azure Database for MariaDB サーバーを再起動する方法について説明します。 メンテナンス上の理由でサーバーの再起動が必要な場合があります。これを行うと、サーバーが操作を実行しているときに短時間の停止が発生します。

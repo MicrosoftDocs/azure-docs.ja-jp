@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: srrengar
-ms.openlocfilehash: 40dd930aa21e3056d5ecc908359215d6874ed8ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd952449cb088a383f0b9241fb7856522fbeeb10
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75464743"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257663"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Azure Monitor ログを使用したイベントの分析と視覚化
  Azure Monitor ログでは、クラウド内でホストされているアプリケーションとサービスからテレメトリが収集および分析され、それらの可用性とパフォーマンスを最大限に高めるために役立つ分析ツールが提供されます。 この記事では、Azure Monitor ログでクエリを実行して分析情報を取得し、クラスター内の処理をトラブルシューティングする方法について説明します。 次のような一般的な質問に対応します。
@@ -34,7 +34,7 @@ Azure Monitor ログによってデータが受信されたら、Azure に用意
 
 [Azure Portal](https://portal.azure.com) で、Service Fabric Analytics ソリューションを作成したリソース グループに移動します。
 
-リソースの [**ServiceFabric\<nameOfOMSWorkspace\>** ] を選択します。
+リソース **ServiceFabric\<nameOfOMSWorkspace\>** を選択します。
 
 `Summary` に、有効なソリューションごとのグラフ形式のタイルが表示されます (Service Fabric のタイルも含まれています)。 **[Service Fabric]** グラフをクリックして、Service Fabric Analytics ソリューションを継続します。
 
@@ -104,6 +104,6 @@ Kusto クエリ言語は優れています。 実行可能なもう 1 つの重�
 
 * インフラストラクチャの監視、つまりパフォーマンス カウンターを有効にするために、[Log Analytics エージェントの追加](service-fabric-diagnostics-oms-agent.md)に関するページにアクセスしてください。 エージェントによって、パフォーマンス カウンターが収集され、既存のワークスペースに追加されます。
 * オンプレミス クラスター向けに、Azure Monitor ログでは、データを Azure Monitor ログに送信するために使用できるゲートウェイ (HTTP 転送プロキシ) を提供されています。 詳細については、「[インターネットにアクセスできないコンピューターを Log Analytics ゲートウェイを使って Azure Monitor ログに接続する](../azure-monitor/platform/gateway.md)」を参照してください。
-* 検出と診断に役立つ[自動アラート](../log-analytics/log-analytics-alerts.md)を構成します。
-* Azure Monitor ログの一部として提供されている[ログ検索とクエリ](../log-analytics/log-analytics-log-searches.md)機能をよく理解します。
-* Azure Monitor ログとそれが提供するサービスの詳しい概要について、[Azure Monitor ログとは何か](../operations-management-suite/operations-management-suite-overview.md)に関するページで確認します。
+* 検出と診断に役立つ[自動アラート](../azure-monitor/platform/alerts-overview.md)を構成します。
+* Azure Monitor ログの一部として提供されている[ログ検索とクエリ](../azure-monitor/log-query/log-query-overview.md)機能をよく理解します。
+* Azure Monitor ログとそれが提供するサービスの詳しい概要について、[Azure Monitor ログとは何か](../azure-monitor/overview.md)に関するページで確認します。

@@ -9,23 +9,23 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: b14fed07c9bd9b5fcb6a5489719481902351fc0d
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: e3e524df2e98229698a86a721b7312a4d054ff70
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654877"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040046"
 ---
-# <a name="password-and-account-lockout-policies-on-managed-domains"></a>マネージド ドメインに関するパスワードとアカウントのロックアウト ポリシー
+# <a name="password-and-account-lockout-policies-on-active-directory-domain-services-managed-domains"></a>Active Directory Domain Services マネージド ドメインのパスワードとアカウントのロックアウト ポリシー
 
 Azure Active Directory Domain Services (Azure AD DS) でユーザーのセキュリティを管理するには、アカウント ロックアウトの設定や、パスワードの最小文字数、パスワードの複雑さなどを制御する細かい設定が可能なパスワード ポリシーを定義します。 既定の細かいパスワード ポリシーは、Azure AD DS マネージド ドメイン内のすべてのユーザーに対して作成され、適用されます。 きめ細かく制御し、特定のビジネスまたはコンプライアンスのニーズに対応するために、追加のポリシーを作成し、特定のユーザー グループに適用することができます。
 
 この記事では、Active Directory 管理センターを使用して Azure AD DS に細かい設定が可能なパスワード ポリシーを作成し、構成する方法について説明します。
 
 > [!NOTE]
-> パスワード ポリシーは、Resource Manager デプロイ モデルを使用して作成された Azure AD DS マネージド ドメインに対してのみ使用できます。 クラシックを使用して作成された古いマネージド ドメインの場合は、[クラシック仮想ネットワーク モデルから Resource Manager に移行][migrate-from-classic]します。
+> パスワード ポリシーは、Resource Manager デプロイ モデルを使用して作成されたマネージド ドメインに対してのみ使用できます。 クラシックを使用して作成された古いマネージド ドメインの場合は、[クラシック仮想ネットワーク モデルから Resource Manager に移行][migrate-from-classic]します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -36,28 +36,28 @@ Azure Active Directory Domain Services (Azure AD DS) でユーザーのセキュ
 * ご利用のサブスクリプションに関連付けられた Azure Active Directory テナント (オンプレミス ディレクトリまたはクラウド専用ディレクトリと同期されていること)。
   * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
 * Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services のマネージド ドメイン。
-  * 必要に応じて、[Azure Active Directory Domain Services インスタンスを作成して構成する][create-azure-ad-ds-instance]チュートリアルを完了します。
-  * Azure AD DS インスタンスは、Resource Manager デプロイ モデルを使用して作成されている必要があります。 必要であれば、[クラシック仮想ネットワーク モデルから Resource Manager に移行します][migrate-from-classic]。
-* Azure AD DS マネージド ドメインに参加している Windows Server 管理 VM。
+  * 必要に応じて、[Azure Active Directory Domain Services マネージド ドメインを作成して構成する][create-azure-ad-ds-instance]チュートリアルを完了します。
+  * マネージド ドメインは、Resource Manager デプロイ モデルを使用して作成されている必要があります。 必要であれば、[クラシック仮想ネットワーク モデルから Resource Manager に移行します][migrate-from-classic]。
+* マネージド ドメインに参加している Windows Server 管理 VM。
   * 必要に応じて、[管理 VM を作成する][tutorial-create-management-vm]チュートリアルを完了します。
 * Azure AD テナントの *Azure AD DC administrators* グループのメンバーであるユーザー アカウント。
 
 ## <a name="default-password-policy-settings"></a>規定のパスワード ポリシー設定
 
-細かい設定が可能なパスワード ポリシー (FGPP) を使用すると、パスワードおよびアカウント ロックアウトのポリシーに対して、ドメイン内の異なるユーザーに特定の制限を適用できます。 たとえば、特権アカウントをセキュリティで保護するには、通常の権限のないアカウントよりも厳しいアカウント ロックアウト設定を適用します。 Azure AD DS マネージド ドメイン内に複数の FGPP を作成し、適用するユーザーの優先順位を指定できます。
+細かい設定が可能なパスワード ポリシー (FGPP) を使用すると、パスワードおよびアカウント ロックアウトのポリシーに対して、ドメイン内の異なるユーザーに特定の制限を適用できます。 たとえば、特権アカウントをセキュリティで保護するには、通常の権限のないアカウントよりも厳しいアカウント ロックアウト設定を適用します。 マネージド ドメイン内に複数の FGPP を作成し、適用するユーザーの優先順位を指定できます。
 
 パスワード ポリシーと Active Directory 管理センターの使用方法の詳細については、次の記事を参照してください。
 
 * [細かい設定が可能なパスワード ポリシーの概要](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770394(v=ws.10))
 * [AD 管理センターを使用して細かい設定が可能なパスワード ポリシーを構成する](/windows-server/identity/ad-ds/get-started/adac/introduction-to-active-directory-administrative-center-enhancements--level-100-#fine_grained_pswd_policy_mgmt)
 
-ポリシーは、Azure AD DS マネージド ドメイン内のグループの関連付けを通じて配布されます。すべての変更が、次回のユーザーのサインイン時に適用されます。 ポリシーを変更しても、既にロックアウトされているユーザー アカウントのロックが解除されることはありません。
+ポリシーは、マネージド ドメイン内のグループの関連付けを通じて配布されます。すべての変更が、次回のユーザーのサインイン時に適用されます。 ポリシーを変更しても、既にロックアウトされているユーザー アカウントのロックが解除されることはありません。
 
 パスワード ポリシーの動作は、適用されるユーザー アカウントの作成方法によって若干異なります。 Azure AD DS でユーザー アカウントを作成するには、次の 2 つの方法があります。
 
 * ユーザー アカウントは Azure AD から同期できます。 これには、Azure で直接作成されたクラウド専用のユーザー アカウントと、Azure AD Connect を使用してオンプレミスの AD DS 環境から同期されたハイブリッド ユーザー アカウントが含まれます。
     * ほぼすべての Azure AD DS のユーザー アカウントは、Azure AD からの同期プロセスを通じて作成されています。
-* ユーザー アカウントは Azure AD DS マネージド ドメインに手動で作成することができ、Azure AD には存在しません。
+* ユーザー アカウントはマネージド ドメインに手動で作成することができ、Azure AD には存在しません。
 
 すべてのユーザー アカウントは、その作成方法に関わらず、Azure AD DS の既定のパスワード ポリシーによって次のアカウント ロックアウト ポリシーが適用されています。
 
@@ -72,7 +72,7 @@ Azure Active Directory Domain Services (Azure AD DS) でユーザーのセキュ
 
 90 日以上のパスワードの有効期間が指定されている Azure AD パスワードポリシーがある場合、パスワードの有効期間は Azure AD DS の既定のポリシーに適用されます。 Azure AD DS で異なるパスワードの有効期間を定義するには、カスタム パスワード ポリシーを構成します。 Azure AD またはオンプレミスの AD DS 環境で構成されているパスワードの有効期間が Azure AD DS パスワード ポリシーより短い場合は注意してください。 このシナリオでは、Azure AD またはオンプレミスの AD DS 環境でユーザー パスワードを変更するように求められる前に、パスワードの有効期限が Azure AD DS で切れる可能性があります。
 
-Azure AD DS マネージド ドメインで手動で作成されたユーザー アカウントの場合、次のパスワード設定も既定のポリシーから追加で適用されます。 ユーザーは Azure AD DS で直接パスワードを更新することはできないため、これらの設定は Azure AD から同期したユーザー アカウントには適用されません。
+マネージド ドメインで手動で作成されたユーザー アカウントの場合、次のパスワード設定も既定のポリシーから追加で適用されます。 ユーザーは Azure AD DS で直接パスワードを更新することはできないため、これらの設定は Azure AD から同期したユーザー アカウントには適用されません。
 
 * **パスワードの最小文字数:** 7
 * **複雑さの要件を満たす必要があるパスワード**
@@ -83,19 +83,19 @@ Azure AD DS マネージド ドメインで手動で作成されたユーザー 
 
 Azure でアプリケーションを構築して実行するときに、カスタムのパスワード ポリシーを構成することができます。 たとえば、異なるアカウント ロックアウト ポリシー設定を設定するポリシーを作成できます。
 
-カスタムのパスワード ポリシーは、Azure AD DS マネージド ドメイン内のグループに適用されます。 この構成によって、事実上、既定のポリシーがオーバーライドされます。
+カスタムのパスワード ポリシーは、マネージド ドメイン内のグループに適用されます。 この構成によって、事実上、既定のポリシーがオーバーライドされます。
 
-カスタムのパスワード ポリシーを作成するには、ドメインに参加している VM から Active Directory 管理ツールを使用します。 Active Directory 管理センターを使用すると、Azure AD DS マネージド ドメイン (OU を含む) 内のリソースを表示、編集、および作成できます。
+カスタムのパスワード ポリシーを作成するには、ドメインに参加している VM から Active Directory 管理ツールを使用します。 Active Directory 管理センターを使用すると、マネージド ドメイン (OU を含む) 内のリソースを表示、編集、および作成できます。
 
 > [!NOTE]
-> Azure AD DS マネージド ドメインでカスタムのパスワード ポリシーを作成するには、*AAD DC 管理者*グループのメンバーであるユーザー アカウントにサインインする必要があります。
+> マネージド ドメインでカスタムのパスワード ポリシーを作成するには、*AAD DC 管理者*グループのメンバーであるユーザー アカウントにサインインする必要があります。
 
 1. スタート画面で **[管理ツール]** を選択します。 [管理 VM を作成する][tutorial-create-management-vm]ためのチュートリアルでインストールされた使用可能な管理ツールの一覧が表示されます。
 1. OU を作成して管理するには、管理ツールの一覧から **[Active Directory 管理センター]** を選択します。
-1. 左側のウィンドウで、Azure AD DS マネージド ドメイン (*aaddscontoso.com* など) を選択します。
-1. **[System]/(システム/)** コンテナーを開き、 **[Password Settings Container]/(パスワード設定コンテナ―/)** を開きます。
+1. 左側のペインで、マネージド ドメイン (例: *aaddscontoso.com*) を選択します。
+1. **[System]/(システム/)** コンテナーを開き、 **[Password Settings Container]\(パスワード設定コンテナ―\)** を開きます。
 
-    Azure AD DS 管理対象ドメインの組み込みのパスワード ポリシーが表示されます。 この組み込みのポリシーは変更できません。 代わりに、既定のポリシーを上書きするカスタムのパスワード ポリシーを作成します。
+    マネージド ドメインの組み込みのパスワード ポリシーが表示されます。 この組み込みのポリシーは変更できません。 代わりに、既定のポリシーを上書きするカスタムのパスワード ポリシーを作成します。
 
     ![Active Directory 管理センターからパスワード ポリシーを作成する](./media/password-policy/create-password-policy-adac.png)
 
@@ -107,7 +107,7 @@ Azure でアプリケーションを構築して実行するときに、カス�
 
 1. 必要に応じて、他のパスワード ポリシー設定を編集します。 次の重要な点に注意してください。
 
-    * パスワードの複雑さ、年齢、有効期限などの設定は、Azure AD DS マネージド ドメインで手動で作成したユーザーに対してのみ適用されます。
+    * パスワードの複雑さ、年齢、有効期限などの設定は、マネージド ドメインで手動で作成したユーザーに対してのみ適用されます。
     * アカウント ロックアウトの設定はすべてのユーザーに適用されますが、マネージド ドメイン内でのみ有効になり、Azure AD 自体では有効になりません。
 
     ![カスタムの細かい設定が可能なパスワード ポリシーを作成する](./media/password-policy/custom-fgpp.png)

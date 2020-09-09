@@ -8,13 +8,14 @@ ms.author: kgremban
 ms.date: 4/14/2020
 ms.topic: conceptual
 ms.service: iot-edge
+ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: a7bb2cc23374110d447ec7526ada75f7e36a966e
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: ebc4f25496588eeaffbfe89e110bad57dbbc848e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726164"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501561"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Azure CLI を使用した大規模な IoT Edge モジュールの展開と監視
 

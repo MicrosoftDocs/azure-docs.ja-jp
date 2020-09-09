@@ -1,21 +1,24 @@
 ---
 title: テンプレートを使用してジョブをエンドツーエンドで実行する
 description: CLI コマンドのみで、プールの作成、入力データのアップロード、ジョブと関連するタスクの作成、結果の出力データのダウンロードを行うことができます。
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/07/2018
-ms.custom: seodec18
-ms.openlocfilehash: 634a0b66379d8c94988d5f974baffe475af94c2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: e9b4930dee1b28bb4ec71690cbfcef88e0365b9e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117354"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494929"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Azure Batch CLI テンプレートとファイル転送を使用する
 
-Azure CLI に対して Azure Batch 拡張機能を使用すると、コードを記述せずに Batch ジョブを実行できます。
+Azure CLI に対して Batch 拡張機能を使用すると、コードを記述せずに Batch ジョブを実行できます。
 
 Azure CLI で JSON テンプレート ファイルを作成および使用して、Batch のプール、ジョブ、タスクを作成します。 CLI 拡張機能コマンドを使用して、Batch アカウントに関連付けられたストレージ アカウントにジョブ入力ファイルを簡単にアップロードし、ジョブ出力ファイルを簡単にダウンロードします。
+
+> [!NOTE]
+> JSON ファイルは、[Azure Resource Manager テンプレート](../azure-resource-manager/templates/template-syntax.md)と同じ機能をサポートするわけではありません。 これらは、未加工の REST 要求本文のように書式設定されることを意図しています。 CLI 拡張機能では既存のコマンドが変更されることはありませんが、Azure Resource Manager テンプレートの一部の機能を追加する、同様のテンプレート オプションがあります。 [Windows、Mac、Linux 向けの Azure Batch CLI 拡張機能](https://github.com/Azure/azure-batch-cli-extensions)に関するページを参照してください。
 
 ## <a name="overview"></a>概要
 

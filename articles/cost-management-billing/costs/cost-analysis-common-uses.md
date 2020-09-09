@@ -3,20 +3,70 @@ title: Azure Cost Management での一般的なコスト分析の使用
 description: この記事では、Azure Cost Management で一般的なコスト分析タスクの結果を取得する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 04/10/2020
-ms.topic: conceptual
+ms.date: 07/24/2020
+ms.topic: how-to
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 2e0e222e636f694328835e20fda97deca1d9986a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: c03bf5e52ae7f6b259c7b744e6033d760af23dd0
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261502"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88683676"
 ---
 # <a name="common-cost-analysis-uses"></a>一般的なコスト分析の使用
 
 多くの場合、Azure Cost Management のユーザーは、他の多くのユーザーが持つ疑問に対する答えを必要としています。 この記事では、Cost Management での一般的なコスト分析タスクの結果を取得する手順について説明します。
+
+## <a name="view-forecasted-costs"></a>予測コストを表示する
+
+予測コストは、面グラフと積み上げ縦棒ビューのコスト分析領域に表示されます。 予測は、リソースの使用履歴に基づいています。 リソースの使用に対する変更は、予測コストに影響します。
+
+Azure portal で、スコープの [コスト分析] に移動します。 次に例を示します。 **[コストの管理と請求]**  >  **[コスト管理]**  >  **[コスト分析]** 。
+
+既定のビューでは、最上位のグラフに、実績/償却コストと予測コストのセクションがあります。 グラフの純色は、実際の/償却コストを示しています。 影付きの色は、予測コストを示します。
+
+[![予測コスト](./media/cost-analysis-common-uses/enrollment-forecast.png)](./media/cost-analysis-common-uses/enrollment-forecast.png#lightbox)
+
+## <a name="view-forecasted-costs-grouped-by-service"></a>サービス別にグループ化された予測コストを表示する
+
+既定のビューには、サービスによってグループ化された予測コストが表示されません。そのため、グループを選択して追加する必要があります。
+
+Azure portal で、スコープの [コスト分析] に移動します。 次に例を示します。 **[コストの管理と請求]**  >  **[コスト管理]**  >  **[コスト分析]** 。
+
+**[グループ化]**  >  **[サービス名]** を選択します。
+
+ビューには、各サービスのコストがグループ化されて表示されます。 予測コストは、サービスごとに計算されません。 これは、すべてのサービスの **[合計]** に対して推定されています。
+
+[![グループ化された予測コスト](./media/cost-analysis-common-uses/forecast-group-by-service.png)](./media/cost-analysis-common-uses/forecast-group-by-service.png#lightbox)
+
+## <a name="view-forecasted-costs-for-a-service"></a>サービスの予測コストを表示する
+
+1 つのサービスに限定された予測コストを表示できます。 たとえば、仮想マシンだけの予測コストを表示することができます。
+
+1. Azure portal で、スコープの [コスト分析] に移動します。 次に例を示します。 **[コストの管理と請求]**  >  **[コスト管理]**  >  **[コスト分析]** 。
+1. **[フィルターの追加]** を選択し **[サービス名]** を選択します。
+1. **選択**の一覧で、サービスを選択します。 たとえば、 **[仮想マシン]** を選択します。
+
+選択に対する実際のコストと予想コストを確認します。
+
+ビューにさらに多くのカスタマイズを追加できます。
+
+1. **[メーター]** の2 番目のフィルターを追加し、選択したサービス名の下で個々の種類のメーターをフィルター処理するための値を選択します。
+1. **[リソース]** でグループ化して、コストを発生させる特定のリソースを確認します。 予測コストは、サービスごとに計算されません。 これは、すべてのリソースの **[合計]** に対して推定されています。
+
+[![サービスの予測コスト](./media/cost-analysis-common-uses/forecast-by-service.png)](./media/cost-analysis-common-uses/forecast-by-service.png#lightbox)
+
+## <a name="view-your-azure-and-aws-costs-together"></a>Azure と AWS のコストをまとめて表示する  
+
+Azure と AWS のコストをまとめて表示するには、Azure で管理グループのスコープを使用します。
+
+1. 管理グループを作成するか、既存のものを選択します。
+1. 既存の必要な Azure サブスクリプションを管理グループに割り当てます。
+1. コネクタのリンクされたアカウントに "*同じ*" 管理グループを割り当てます。
+1. コスト分析に移動して、 **[累積コスト]** を選択します
+1. **[グループ化]**  -  **[プロバイダー]** を選択します。
 
 ## <a name="view-cost-breakdown-by-azure-service"></a>Azure サービス別のコストの内訳を表示する
 
@@ -37,7 +87,6 @@ Azure portal で請求書の詳細を表示するには、分析する請求書�
 請求書の詳細を表示すると、予期しないコストがかかるサービスを特定することや、[コスト分析] のリソースに直接関連付けられているリソースを確認することができます。 たとえば、Virtual Machines サービスの料金を分析する場合は、 **[累積コスト]** ビューに移動します。 次に、細分性を **[Daily]\(日単位\)** に設定し、 **[Service name: Virtual machines]\(サービス名: 仮想マシン\)** で料金をフィルター処理し、 **[リソース]** で料金をグループ化します。
 
 [![仮想マシンの累積コストを示す例](./media/cost-analysis-common-uses/virtual-machines.png)](./media/cost-analysis-common-uses/virtual-machines.png#lightbox)
-
 
 ## <a name="view-cost-breakdown-by-azure-resource"></a>Azure リソース別のコストの内訳を表示する
 

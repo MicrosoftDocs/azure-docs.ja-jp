@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 08/21/2020
 ms.author: tamram
-ms.reviewer: cbrooks
-ms.openlocfilehash: 724c250b56107cb68da387bdd531602e8d239e1c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: ozgun
+ms.openlocfilehash: e037607d1f86e6df4d3f5b12e29ba8fde447ebc9
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127541"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757933"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection for Azure Storage を構成する
 
@@ -23,28 +23,30 @@ Advanced Threat Protection for Azure Storage では、ストレージ アカウ�
 
 セキュリティ アラートは、アクティビティで異常が発生したときにトリガーされます。 これらのセキュリティ アラートは [Azure Security Center](https://azure.microsoft.com/services/security-center/) と統合されます。さらに、不審なアクティビティの詳細と、脅威の調査や修復方法に関する推奨事項と共に、サブスクリプション管理者にメールで送信されます。
 
-このサービスでは、脅威の検出のために、BLOB ストレージに対する読み取り要求、書き込み要求、削除要求のリソース ログが取り込まれます。 Advanced Threat Protection からのアラートを調査するために、Storage Analytics Logging を使用して関連するストレージのアクティビティを確認することができます。 詳細については、「[Azure portal でのストレージ アカウントの監視](storage-monitor-storage-account.md#configure-logging)」の「**ログの構成**」を参照してください。
+このサービスでは、脅威の検出のために、Blob Storage と Azure Files (プレビュー) に対する読み取り要求、書き込み要求、削除要求のリソース ログが取り込まれます。 Advanced Threat Protection からのアラートを調査するために、Storage Analytics Logging を使用して関連するストレージのアクティビティを確認することができます。 詳細については、「[Azure portal でのストレージ アカウントの監視](storage-monitor-storage-account.md#configure-logging)」の「**ログの構成**」を参照してください。
 
 ## <a name="availability"></a>可用性
 
-Advanced Threat Protection for Azure Storage は、現時点では [BLOB ストレージ](https://azure.microsoft.com/services/storage/blobs/)でのみ使用できます。 高度な脅威保護をサポートするアカウントの種類には、汎用 v2、ブロック BLOB、BLOB ストレージ アカウントなどがあります。 Advanced Threat Protection は、すべてのパブリック クラウドと米国政府のクラウドで利用できますが、他のソブリン クラウドや Azure Government クラウドのリージョンでは使用できません。
+現在、Azure Storage に対する Advanced Threat Protection は、Blob Storage、Azure Files (プレビュー)、および Azure Data Lake Storage Gen2 (プレビュー) で利用できます。 高度な脅威保護をサポートするアカウントの種類には、汎用 v2、ブロック BLOB、BLOB ストレージ アカウントなどがあります。 Advanced Threat Protection は、すべてのパブリック クラウドと米国政府のクラウドで利用できますが、他のソブリン クラウドや Azure Government クラウドのリージョンでは使用できません。
+
+Data Lake Storage 用に階層型名前空間が有効になっているアカウントでは、Azure Blob Storage API と Data Lake Storage API の両方を使用するトランザクションがサポートされます。 Azure ファイル共有では、SMB 経由のトランザクションがサポートされます。
 
 30 日間の無料試用など、価格の詳細については、[Azure Security Center の価格ページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
 
+次の一覧では、Azure Storage の脅威に対する高度な防御機能の可用性をまとめています。
+
+- リリース状態:
+  - [Blob Storage](https://azure.microsoft.com/services/storage/blobs/) (一般提供)
+  - [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (プレビューでは SMB と REST のトランザクションがサポートされています)
+  - Azure Data Lake Storage Gen2 (プレビュー)
+- クラウド:<br>
+    ✔ 商用クラウド<br>
+    ✔ US Gov<br>
+    ✘ China Gov、その他の Gov
 
 ## <a name="set-up-advanced-threat-protection"></a>Advanced Threat Protection の設定
 
 Advanced Threat Protection は、次のセクションで説明するいくつかの方法で構成することができます。
-
-### <a name="portal"></a>[ポータル](#tab/azure-portal)
-
-1. [Azure ポータル](https://portal.azure.com/)を開きます。
-1. ご利用の Azure Storage アカウントに移動します。 **[設定]** で **[高度なセキュリティ]** を選択します。
-1. 高度なセキュリティの構成ページで、 **[設定]** リンクを選択します。
-1. **[高度なセキュリティ]** を **[オン]** に設定します。
-1. **[保存]** をクリックして、新しいポリシーまたは更新されたポリシーを保存します。
-
-    ![Azure Storage Advanced Threat Protection をオンにする](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
 ### <a name="azure-security-center"></a>[Azure Security Center](#tab/azure-security-center)
 
@@ -61,6 +63,16 @@ Azure Security Center で Standard レベルにサブスクライブすると、
 
     ![Security Center で ATP を有効にする](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
 1. **[保存]** をクリックします。
+
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+1. [Azure ポータル](https://portal.azure.com/)を開きます。
+1. ご利用の Azure Storage アカウントに移動します。 **[設定]** で **[高度なセキュリティ]** を選択します。
+1. 高度なセキュリティの構成ページで、 **[設定]** リンクを選択します。
+1. **[高度なセキュリティ]** を **[オン]** に設定します。
+1. **[保存]** をクリックして、新しいポリシーまたは更新されたポリシーを保存します。
+
+    ![Azure Storage Advanced Threat Protection をオンにする](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
 ### <a name="template"></a>[テンプレート](#tab/template)
 

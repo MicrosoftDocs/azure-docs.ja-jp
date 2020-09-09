@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/05/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 80c961c1aa4da199fa87b97bc8e0a37e60c2235f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f7134d0e8087d17e78a13c958298006e321bd192
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74903108"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84346379"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>カスタム IPsec/IKE ポリシーはすべての Azure VPN Gateway SKU でサポートされていますか。
 カスタム IPsec/IKE ポリシーは、Basic SKU を除くすべての Azure SKU でサポートされています。
@@ -104,7 +104,7 @@ SA の有効期間は、ローカルの指定のみとなります。一致し�
 いいえ。 IPsec/IKE ポリシーは、Azure VPN ゲートウェイを介した VNet 間接続と S2S VPN 接続でのみ機能します。
 
 ### <a name="how-do-i-create-connections-with-ikev1-or-ikev2-protocol-type"></a>プロトコルの種類 IKEv1 または IKEv2 で接続を作成するにはどうすればよいですか?
-IKEv1 接続は、Basic SKU を除く、VPN の種類が RouteBased のすべての SKU で作成できます。 接続の作成時に、接続プロトコルの種類として IKEv1 または IKEv2 を指定できます。 接続プロトコルの種類を指定しない場合は、IKEv2 が既定のオプションとして使用されます (該当する場合)。 詳細については、[PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection?)のドキュメントを参照してください。 SKU の種類と IKEv1 または IKEv2 のサポートについては、[ポリシーベースの VPN デバイスへのゲートウェイの接続](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)に関するページを参照してください。
+IKEv1 接続は、Basic SKU、Standard SKU、およびその他の[レガシ SKU](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-skus-legacy#gwsku) を除く、VPN の種類が RouteBased のすべての SKU で作成できます。 接続の作成時に、接続プロトコルの種類として IKEv1 または IKEv2 を指定できます。 接続プロトコルの種類を指定しない場合は、IKEv2 が既定のオプションとして使用されます (該当する場合)。 詳細については、[PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection?)のドキュメントを参照してください。 SKU の種類と IKEv1 または IKEv2 のサポートについては、[ポリシーベースの VPN デバイスへのゲートウェイの接続](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)に関するページを参照してください。
 
 ### <a name="is-transit-between-between-ikev1-and-ikev2-connections-allowed"></a>IKEv1 と IKEv2 の接続間での転送は許可されていますか?
 はい。 IKEv1 と IKEv2 の接続間での転送はサポートされています。

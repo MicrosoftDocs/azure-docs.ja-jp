@@ -1,0 +1,56 @@
+- name: Azure Education Hub のドキュメント
+  href: ./index.yml
+- name: 概要
+  items:
+    - name: Education Hub とは
+      href: about-education-hub.md
+- name: クイックスタート
+  items:
+    - name: Education Hub にアクセスする
+      href: access-education-hub.md
+    - name: Education Hub を使ってみる
+      href: get-started-education-hub.md
+    - name: コースを設定して、クラスルームを作成する
+      href: set-up-course-classroom.md
+- name: 操作方法ガイド
+  items:
+    - name: 教育機関の許可を管理する
+      href: hub-overview-page.md
+    - name: 割り当てを作成してクレジットを割り当てる
+      href: create-assignment-allocate-credit.md
+- name: サポート
+  items:
+    - name: サービス デスク
+      href: educator-service-desk.md
+- name: Azure Dev Tools for Teaching
+  items:
+    - name: 概要
+      items:
+        - name: Azure Dev Tools for Teaching とは
+          href: azure-dev-tools-teaching/about-program.md
+        - name: Microsoft Azure for Students
+          href: azure-dev-tools-teaching/azure-students-program.md
+        - name: Microsoft Azure for Students Starter
+          href: azure-dev-tools-teaching/azure-students-starter-program.md
+    - name: クイックスタート
+      items:
+        - name: サブスクリプションを登録または更新する
+          href: azure-dev-tools-teaching/enroll-renew-subscription.md
+        - name: アクセスの設定
+          href: azure-dev-tools-teaching/set-up-access.md
+    - name: 操作方法ガイド
+      items:
+        - name: 学生を管理する方法
+          href: azure-dev-tools-teaching/manage-students.md
+        - name: ソフトウェアをダウンロードする方法
+          href: azure-dev-tools-teaching/download-software.md
+    - name: トラブルシューティング
+      items:
+        - name: ログイン エラー
+          href: azure-dev-tools-teaching/troubleshoot-login.md
+- name: リソース
+  items:
+    - name: よく寄せられる質問
+      href: azure-dev-tools-teaching/program-faq.md
+    - name: サポート
+      href: azure-dev-tools-teaching/program-support.md

@@ -4,19 +4,19 @@ description: Azure Active Directory Identity Protection でリスク ポリシ�
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: conceptual
-ms.date: 01/06/2020
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ffa08f7ebf013d42d6da0589ce0f1ccc97289de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54a6c455f3702433398035a2eb6398c39b609ce9
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75707007"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337451"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>方法:リスク ポリシーを構成して有効にする
 
@@ -55,7 +55,7 @@ Identity Protection で構成済みのセキュリティで保護された[ネ�
 
 1. [Azure Portal](https://portal.azure.com) に移動します。
 1. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[Identity Protection]**  >  **[概要]** を参照します。
-1. **[ユーザー リスク ポリシーの構成]** を選択します。
+1. **[ユーザー リスク ポリシー]** を選択します。
    1. **[割り当て]** で:
       1. **[ユーザー]** - **[すべてのユーザー]** を選択します。ロールアウトを制限する場合は **[個人と グループの選択]** を選択します。
          1. 必要に応じて、ポリシーからユーザーを除外できます。
@@ -64,7 +64,7 @@ Identity Protection で構成済みのセキュリティで保護された[ネ�
       1. **[アクセス]** - Microsoft で推奨しているのは、 **[アクセスを許可]** と **[パスワードの変更を必須とする]** です。
    1. **[ポリシーの適用]**  -  **[オン]**
    1. **[保存]** - この操作を行うと、 **[概要]** ページに戻ります。
-1. **[サインイン リスク ポリシーの構成]** を選択します。
+1. **[サインインのリスク ポリシー]** を選択します。
    1. **[割り当て]** で:
       1. **[ユーザー]** - **[すべてのユーザー]** を選択します。ロールアウトを制限する場合は **[個人と グループの選択]** を選択します。
          1. 必要に応じて、ポリシーからユーザーを除外できます。

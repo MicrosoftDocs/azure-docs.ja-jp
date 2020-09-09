@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: cd787881957d78f179107e46b2650de4618c7724
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e1cfa13a3fd568ab2f1253c015880c57f99ce7e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282326"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012487"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine でサポートされているデータ プラットフォーム
 
@@ -25,13 +25,13 @@ DSVM でサポートされているデータ プラットフォーム ツール�
 
 ## <a name="sql-server-developer-edition"></a>SQL Server Developer エディション
 
-| | |
+| カテゴリ | 値 |
 | ------------- | ------------- |
 | 紹介   | ローカルのリレーショナル データベース インスタンス      |
 | サポートされている DSVM エディション      | Windows 2016: SQL Server 2017、Windows 2019: SQL Server 2019      |
-| 標準的な使用      | 比較的小さなデータセットを使用したローカルでの迅速開発 <br/> In-Database R の実行   |
-| サンプルへのリンク      |    New York City データセットの小さなサンプルが、次の SQL データベースに読み込まれます。<br/>  `nyctaxi` <br/> Microsoft Machine Learning Server およびデータベース内の分析を示す Jupyter サンプルは次の場所にあります。<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`  |
-| DSVM 上の関連ツール       | SQL Server Management Studio <br/> ODBC および JDBC ドライバー<br/> pyodbc、RODBC<br />Apache Drill      |
+| 標準的な使用      | <ul><li>比較的小さなデータセットを使用したローカルでの迅速開発</li><li>In-Database R の実行</li></ul> |
+| サンプルへのリンク      | <ul><li>New York City データセットの小さなサンプルが、次の SQL データベースに読み込まれます。<br/>  `nyctaxi`</li><li>Microsoft Machine Learning Server およびデータベース内の分析を示す Jupyter サンプルは次の場所にあります。<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`</li></ul> |
+| DSVM 上の関連ツール       | <ul><li>SQL Server Management Studio</li><li>ODBC および JDBC ドライバー</li><li>pyodbc、RODBC</li><li>Apache Drill</li></ul> |
 
 > [!NOTE]
 > SQL Server Developer エディションは、開発およびテスト目的でのみ使用できます。 実稼働環境で実行するには、ライセンスまたはいずれかの SQL Server VM が必要です。
@@ -41,10 +41,12 @@ DSVM でサポートされているデータ プラットフォーム ツール�
 
 データベース サーバーは既に事前構成されており、SQL Server に関連する Windows サービス (`SQL Server (MSSQLSERVER)` など) は自動的に実行されるように設定されています。 手動で行う唯一の手順は、Microsoft Machine Learning Server を使用してデータベース内分析を有効にすることです。 SQL Server Management Studio (SSMS) で 1 回限りの操作として次のコマンドを実行することで、分析を行うことができます。 マシン管理者としてログインし、SSMS で新しいクエリを開き、選択したデータベースが `master` であることを確認した後、このコマンドを実行します。
 
-        CREATE LOGIN [%COMPUTERNAME%\SQLRUserGroup] FROM WINDOWS 
+```sql
+CREATE LOGIN [%COMPUTERNAME%\SQLRUserGroup] FROM WINDOWS 
+```
 
-        (Replace %COMPUTERNAME% with your VM name.)
-       
+(%COMPUTERNAME% を自分の VM 名に置き換えます。)
+
 SQL Server Management Studio を実行するには、プログラムの一覧から "SQL Server Management Studio" を探すか、または Windows Search を使用してこれを探して実行します。 資格情報の入力を求められたら、 **[Windows 認証]** を選択し、 **[SQL Server 名]** フィールドにはマシン名または ```localhost``` を使用します。
 
 ### <a name="how-to-use-and-run-it"></a>使用と実行方法
@@ -60,13 +62,13 @@ SQL Server Management Studio を実行するには、プログラムの一覧か
 
 ## <a name="apache-spark-2x-standalone"></a>Apache Spark 2.x (スタンドアロン)
 
-| | |
+| カテゴリ | 値 |
 | ------------- | ------------- |
 | 紹介   | 広く普及した Apache Spark プラットフォームのスタンドアロン (シングル ノード インプロセス) インスタンス、高速で大規模なデータ処理および機械学習のためのシステム     |
 | サポートされている DSVM エディション      | Linux     |
-| 標準的な使用      | * 小さなデータセットを使用してローカルで Spark/PySpark アプリケーションを迅速に開発し、後で Azure HDInsight などの大規模 Spark クラスターにデプロイする<br/> * Microsoft Machine Learning Server Spark コンテキストをテストする <br />* SparkML または Microsoft のオープン ソース [MMLSpark](https://github.com/Azure/mmlspark) ライブラリを使用して ML アプリケーションを構築する |
-| サンプルへのリンク      |    Jupyter サンプル: <br />&nbsp;&nbsp;* ~/notebooks/SparkML/pySpark <br /> &nbsp;&nbsp;* ~/notebooks/MMLSpark <br /> Microsoft Machine Learning Server (Spark コンテキスト): /dsvm/samples/MRS/MRSSparkContextSample.R |
-| DSVM 上の関連ツール       | PySpark、Scala<br/>Jupyter (Spark/PySpark カーネル)<br/>Microsoft Machine Learning Server、SparkR、Sparklyr <br />Apache Drill      |
+| 標準的な使用      | <ul><li>小さなデータセットを使用してローカルで Spark/PySpark アプリケーションを迅速に開発し、後で Azure HDInsight などの大規模 Spark クラスターにデプロイする</li><li>Microsoft Machine Learning Server Spark コンテキストをテストする</li><li>SparkML または Microsoft のオープン ソース [MMLSpark](https://github.com/Azure/mmlspark) ライブラリを使用して ML アプリケーションを構築する</li></ul> |
+| サンプルへのリンク      |    Jupyter サンプル:<ul><li>~/notebooks/SparkML/pySpark</li><li>~/notebooks/MMLSpark</li></ul><p>Microsoft Machine Learning Server (Spark コンテキスト): /dsvm/samples/MRS/MRSSparkContextSample.R</p> |
+| DSVM 上の関連ツール       | <ul><li>PySpark、Scala</li><li>Jupyter (Spark/PySpark カーネル)</li><li>Microsoft Machine Learning Server、SparkR、Sparklyr</li><li>Apache Drill</li></ul> |
 
 ### <a name="how-to-use-it"></a>使用方法
 コマンド ラインで Spark ジョブを送信するには、 `spark-submit` または `pyspark` コマンドを実行します。 Spark カーネルで新しいノートブックを作成することによって、Jupyter ノートブックを作成することもできます。
@@ -76,13 +78,15 @@ DSVM で使用可能な SparkR、Sparklyr、Microsoft Machine Learning Server �
 ### <a name="setup"></a>セットアップ
 Ubuntu Linux DSVM エディション上の Microsoft Machine Learning Server で Spark コンテキストで実行する前に、1 回限りのセットアップ手順を実行して、単一ノードのローカル Hadoop (HDFS と Yarn) インスタンスを有効にする必要があります。 Hadoop サービスはインストールされていますが、既定では DSVM で無効になっています。 これらを有効にするには、最初に次のコマンドを root 権限で実行します。
 
-    echo -e 'y\n' | ssh-keygen -t rsa -P '' -f ~hadoop/.ssh/id_rsa
-    cat ~hadoop/.ssh/id_rsa.pub >> ~hadoop/.ssh/authorized_keys
-    chmod 0600 ~hadoop/.ssh/authorized_keys
-    chown hadoop:hadoop ~hadoop/.ssh/id_rsa
-    chown hadoop:hadoop ~hadoop/.ssh/id_rsa.pub
-    chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
-    systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
+```bash
+echo -e 'y\n' | ssh-keygen -t rsa -P '' -f ~hadoop/.ssh/id_rsa
+cat ~hadoop/.ssh/id_rsa.pub >> ~hadoop/.ssh/authorized_keys
+chmod 0600 ~hadoop/.ssh/authorized_keys
+chown hadoop:hadoop ~hadoop/.ssh/id_rsa
+chown hadoop:hadoop ~hadoop/.ssh/id_rsa.pub
+chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
+systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
+```
 
 Hadoop 関連サービスが不要になった場合は、```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` を実行してそれらを停止することができます。
 

@@ -5,7 +5,6 @@
     - name: 仮想マシン スケール セットとは
       href: overview.md
 - name: クイックスタート
-  expanded: true
   items:
     - name: Azure Portal で作成する
       href: quick-create-portal.md
@@ -21,6 +20,7 @@
         - name: Windows スケール セット
           displayName: 'ARM, resource manager'
           href: quick-create-template-windows.md
+  expanded: true
 - name: チュートリアル
   items:
     - name: 1 - スケール セットの作成/管理
@@ -93,116 +93,121 @@
           href: ./scripts/powershell-single-av-zone-scale-set.md
         - name: ゾーン冗長スケール セットを作成する
           href: ./scripts/powershell-sample-zone-redundant-scale-set.md
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: Azure Resource Manager
       href: ../azure-resource-manager/management/overview.md
       maintainContext: true
     - name: リージョン
-      href: ../virtual-machines/windows/regions.md
+      href: ../virtual-machines/regions.md
     - name: 可用性とパフォーマンス
-      maintainContext: true
       items:
         - name: 可用性
-          href: availability.md
+          href: ../virtual-machines/availability.md?toc=%2fazure%2fvirtual-machine-scale-sets%2ftoc.json
         - name: コロケーション
           href: co-location.md
         - name: ネットワーク パフォーマンス
           href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fazure%2fvirtual-machine-scale-sets%2fwindows%2ftoc.json
         - name: スケール セット内の障害ドメインを管理する
           href: virtual-machine-scale-sets-manage-fault-domains.md
+      maintainContext: true
     - name: イメージ
       href: shared-image-galleries.md
     - name: VM の種類とサイズ
-      href: ../virtual-machines/windows/sizes.md
-      maintainContext: true
+      href: ../virtual-machines/sizes.md
       items:
         - name: 汎用
-          href: ../virtual-machines/windows/sizes-general.md
+          href: ../virtual-machines/sizes-general.md
           maintainContext: true
           items:
             - name: 負荷の急増に対応できる B シリーズ
-              href: ../virtual-machines/windows/b-series-burstable.md
+              href: ../virtual-machines/sizes-b-series-burstable.md
               maintainContext: true
         - name: コンピューティング最適化
-          href: ../virtual-machines/windows/sizes-compute.md
+          href: ../virtual-machines/sizes-compute.md
           maintainContext: true
         - name: メモリ最適化
-          href: ../virtual-machines/windows/sizes-memory.md
+          href: ../virtual-machines/sizes-memory.md
           maintainContext: true
           items:
             - name: 制約付き vCPU
-              href: ../virtual-machines/windows/constrained-vcpu.md
+              href: ../virtual-machines/constrained-vcpu.md
               maintainContext: true
         - name: ストレージ最適化
-          href: ../virtual-machines/windows/sizes-storage.md
+          href: ../virtual-machines/sizes-storage.md
           maintainContext: true
         - name: GPU 最適化
-          href: ../virtual-machines/windows/sizes-gpu.md
+          href: ../virtual-machines/sizes-gpu.md
           maintainContext: true
           items:
             - name: NVIDIA GPU ドライバーの設定
               href: ../virtual-machines/windows/n-series-driver-setup.md
               maintainContext: true
         - name: ハイ パフォーマンス コンピューティング
-          href: ../virtual-machines/windows/sizes-hpc.md
+          href: ../virtual-machines/sizes-hpc.md
+          maintainContext: true
+        - name: 一時ディスクを使用しない Azure VM
+          href: ../virtual-machines/azure-vms-no-temp-disk.md
+          maintainContext: true
+        - name: Azure VM のサイズの名前付け規則
+          href: ../virtual-machines/vm-naming-conventions.md
           maintainContext: true
         - name: Azure コンピューティング ユニット (ACU)
-          href: ../virtual-machines/windows/acu.md
+          href: ../virtual-machines/acu.md
           maintainContext: true
         - name: ベンチマーク スコア
           href: ../virtual-machines/windows/compute-benchmark-scores.md
           maintainContext: true
+      maintainContext: true
     - name: 動作保証済み Linux ディストリビューション
       href: ../virtual-machines/linux/endorsed-distros.md
       maintainContext: true
     - name: メンテナンスと更新
-      href: ../virtual-machines/windows/maintenance-and-updates.md
+      href: ../virtual-machines/maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
       maintainContext: true
     - name: オーケストレーション モード
       href: orchestration-modes.md
     - name: Disk Storage
       items:
         - name: Managed Disks
-          href: ../virtual-machines/windows/managed-disks-overview.md
+          href: ../virtual-machines/managed-disks-overview.md
           maintainContext: true
         - name: ディスクの種類の選択
-          href: ../virtual-machines/windows/disks-types.md
+          href: ../virtual-machines/disks-types.md
           maintainContext: true
         - name: 暗号化
           href: ../virtual-machines/windows/disk-encryption.md?toc=%2fazure%2fvirtual-machine-scale-sets%2ftoc.json
           maintainContext: true
         - name: Premium Storage のパフォーマンス
-          href: ../virtual-machines/windows/premium-storage-performance.md
+          href: ../virtual-machines/premium-storage-performance.md
           maintainContext: true
         - name: エフェメラル OS ディスク
-          href: ephemeral-os-disks.md
+          href: ../virtual-machines/ephemeral-os-disks.md
         - name: ディスクのスケーラビリティ ターゲット
           href: ../virtual-machines/windows/disk-scalability-targets.md
           maintainContext: true
         - name: ディスクのバックアップとディザスター リカバリー
-          href: ../virtual-machines/windows/backup-and-disaster-recovery-for-azure-iaas-disks.md
+          href: ../virtual-machines/backup-and-disaster-recovery-for-azure-iaas-disks.md
           maintainContext: true
     - name: ネットワーク
-      href: ../virtual-machines/windows/network-overview.md
+      href: ../virtual-machines/network-overview.md
       maintainContext: true
     - name: インフラストラクチャの自動化
-      href: ../virtual-machines/windows/infrastructure-automation.md
+      href: ../virtual-machines/infrastructure-automation.md
       maintainContext: true
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティとポリシー
-          href: ../virtual-machines/windows/security-policy.md
+          href: ../virtual-machines/security-policy.md
         - name: Azure Disk Encryption
           href: disk-encryption-overview.md
+        - name: Azure セキュリティ ベースライン
+          href: security-baseline.md
         - name: 組み込みのセキュリティ制御
           href: virtual-machine-scale-sets-security-controls.md
       maintainContext: true
     - name: 監視
-      href: ../virtual-machines/windows/monitor.md
+      href: ../azure-monitor/insights/monitor-vm-azure.md
       maintainContext: true
     - name: デプロイに関する考慮事項
       items:
@@ -370,24 +375,25 @@
     - name: Ansible の使用
       items:
         - name: スケール セットを作成および管理する
-          href: /azure/ansible/ansible-create-configure-vmss
+          href: /azure/developer/ansible/vm-scale-set-configure
           maintainContext: true
         - name: スケール セットへのアプリのデプロイ
-          href: /azure/ansible/ansible-deploy-app-vmss
+          href: /azure/developer/ansible/vm-scale-set-deploy-app
           maintainContext: true
         - name: スケール セットの自動スケーリングを行う
-          href: /azure/ansible/ansible-auto-scale-vmss
+          href: /azure/developer/ansible/vm-scale-set-auto-scale
           maintainContext: true
 - name: リファレンス
   items:
     - name: Azure PowerShell
-      href: /powershell/azure/overview
-    - name: Azure CLI
-      href: ../virtual-machines/azure-cli-arm-commands.md
+      href: /powershell/azure/
     - name: REST
       href: /rest/api/virtualmachinescalesets/
     - name: Azure テンプレート
       href: /azure/templates/microsoft.compute/virtualmachinescalesets
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Azure のロードマップ

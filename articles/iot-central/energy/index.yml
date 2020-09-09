@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: f62c2249f6a29e8bda04c3056da5c9fcf639b85e
-  ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+  ms.openlocfilehash: bc856e9a6a20c262f49cb4c2a730d8ba5157530a
+  ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/22/2020
-  ms.locfileid: "82024576"
+  ms.lasthandoff: 07/28/2020
+  ms.locfileid: "87337060"
 landingContent:
 - title: エネルギー ソリューションを構築する
   linkLists:
@@ -38,13 +38,9 @@ landingContent:
     - text: デバイス テンプレートを設定する
       url: ../core/howto-set-up-template.md
     - text: デバイスの接続
-      url: ../core/tutorial-connect-device-nodejs.md
-    - text: IoT プラグ アンド プレイ (プレビュー) デバイスを接続する
-      url: ../core/tutorial-connect-pnp-device.md
+      url: ../core/tutorial-connect-device.md
   - linkListType: how-to-guide
     links:
-    - text: MX Chip IoT DevKit を準備して接続する
-      url: ../core/howto-connect-devkit.md
     - text: その他の IoT クラウドの接続
       url: ../core/howto-build-iotc-device-bridge.md
 - title: 接続を維持する

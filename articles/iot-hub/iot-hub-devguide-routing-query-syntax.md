@@ -7,12 +7,15 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: b76ef431e4c0ad63929378c1f48c6ab06776cb25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- 'Role: Cloud Development'
+- 'Role: Data Analytics'
+ms.openlocfilehash: 4ff61687f2fa045b51dfcb69488d1fbd87b65f75
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233203"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87336499"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT Hub メッセージ ルーティングのクエリ構文
 
@@ -56,9 +59,10 @@ IoT ハブでは、各種プロトコルにおける相互運用性を確保す�
 | contentEncoding | string | ユーザーはメッセージのエンコードの種類を指定します。 contentType が application/json に設定されている場合に使用できる値は、UTF-8、UTF-16、UTF-32 です。 |
 | iothub-connection-device-id | string | この値は IoT Hub によって設定され、デバイスの ID を示します。 クエリを実行するには、`$connectionDeviceId` を使用します。 |
 | iothub-enqueuedtime | string | この値は IoT Hub によって設定されます。この値によって、メッセージがエンキューされた実際の時刻が UTC で表されます。 クエリを実行するには、`enqueuedTime` を使用します。 |
-| iothub-interface-name | string | この値はユーザーによって設定され、テレメトリ メッセージを実装するデジタル ツイン インターフェイスの名前を表します。 クエリを実行するには、`$interfaceName` を使用します。 この機能は、[IoT プラグ アンド プレイ パブリック プレビュー](../iot-pnp/overview-iot-plug-and-play.md)の一部として提供されています。 |
+| dt-dataschema | string |  この値は、IoT Hub で、device-to-cloud メッセージに対して設定されます。 デバイス接続で設定されたデバイス モデル ID が含まれます。 この機能は、[IoT プラグ アンド プレイ パブリック プレビュー](../iot-pnp/overview-iot-plug-and-play.md)の一部として提供されています。 クエリを実行するには、`$dt-dataschema` を使用します。 |
+| dt-subject | string | device-to-cloud メッセージを送信しているコンポーネントの名前。 この機能は、[IoT プラグ アンド プレイ パブリック プレビュー](../iot-pnp/overview-iot-plug-and-play.md)の一部として提供されています。 クエリを実行するには、`$dt-subject` を使用します。 |
 
-[IoT Hub のメッセージ](iot-hub-devguide-messages-construct.md)に関するページで説明されているように、メッセージには他にもシステム プロパティがあります。 **contentType**、**contentEncoding**、**enqueuedTime** に加えて、**connectionDeviceId** と **connectionModuleId** に対してもクエリを実行できます。
+[IoT Hub のメッセージ](iot-hub-devguide-messages-construct.md)に関するページで説明されているように、メッセージには他にもシステム プロパティがあります。 前の表の上記のプロパティに加えて、**connectionDeviceId**、**connectionModuleId** のクエリを実行することもできます。
 
 ### <a name="application-properties"></a>Application properties
 

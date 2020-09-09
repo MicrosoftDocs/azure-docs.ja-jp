@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: 68b8bd187d58cd71778b8a922684cc3817a0715d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80398474"
 ---
 # <a name="azure-custom-resource-providers-overview"></a>Azure カスタム リソース プロバイダーの概要
@@ -43,7 +43,7 @@ Azure カスタム リソース プロバイダーは、Azure とエンドポイ
 
 カスタム リソース プロバイダーは、Azure とエンドポイントの間の契約の一覧です。 この契約では、Azure でエンドポイントとやりとりする方法について説明します。 リソース プロバイダーはプロキシのように動作し、指定した**エンドポイント**に対して要求と応答を転送します。 リソース プロバイダーは、2 種類の契約 ([**resourceTypes**](./custom-providers-resources-endpoint-how-to.md) と [**actions**](./custom-providers-action-endpoint-how-to.md)) を指定できます。 これらはエンドポイント定義によって有効にされます。 エンドポイント定義は、次の 3 つのフィールドで構成されます: **name**、**routingType**、**endpoint**。
 
-サンプルのエンドポイント: 
+サンプルのエンドポイント:
 
 ```JSON
 {
@@ -63,7 +63,7 @@ endpoint | *はい* | 要求をルーティングするエンドポイント。 
 
 **ResourceTypes** では、Azure に追加される新しいカスタム リソースについて説明します。 これらにより、基本の RESTful CRUD メソッドが公開されます。 [カスタム リソースの作成の詳細](./custom-providers-resources-endpoint-how-to.md)を確認してください。
 
-**resourceTypes** を含むサンプルのカスタム リソース プロバイダー: 
+**resourceTypes** を含むサンプルのカスタム リソース プロバイダー:
 
 ```JSON
 {
@@ -80,7 +80,7 @@ endpoint | *はい* | 要求をルーティングするエンドポイント。 
 }
 ```
 
-上記のサンプル用の Azure に追加される API: 
+上記のサンプル用の Azure に追加される API:
 
 HttpMethod | サンプル URI | 説明
 ---|---|---
@@ -93,7 +93,7 @@ GET | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>pro
 
 **Actions** では Azure に追加される新しいアクションについて説明します。 これらはリソース プロバイダーの上で公開するか、**resourceType** の下で入れ子にすることができます。 [カスタム アクションの作成の詳細](./custom-providers-action-endpoint-how-to.md)を確認してください。
 
-**actions** を含むサンプルのカスタム リソース プロバイダー: 
+**actions** を含むサンプルのカスタム リソース プロバイダー:
 
 ```JSON
 {
@@ -110,7 +110,7 @@ GET | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>pro
 }
 ```
 
-上記のサンプル用の Azure に追加される API: 
+上記のサンプル用の Azure に追加される API:
 
 HttpMethod | サンプル URI | 説明
 ---|---|---

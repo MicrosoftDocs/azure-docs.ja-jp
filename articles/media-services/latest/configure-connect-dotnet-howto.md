@@ -3,31 +3,33 @@ title: Azure Media Services v3 API に接続する - .NET
 description: この記事では、.NET を使用して Media Services v3 API に接続する方法を示します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/18/2019
-ms.author: juliako
-ms.custom: has-adal-ref
-ms.openlocfilehash: 6dc05f225e3585b83bd6a57ca47bd5adf97934ea
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.topic: how-to
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: has-adal-ref, devx-track-csharp
+ms.openlocfilehash: b9b72e8340722f8ddc97b3769ce22e607974a508
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201128"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297401"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Media Services v3 API に接続する - .NET
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 この記事では、サービス プリンシパルによるログイン方式を使用して Azure Media Services v3 .NET SDK に接続する方法を説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Media Services アカウントを作成する](create-account-cli-how-to.md) リソース グループ名と Media Services アカウント名を覚えておいてください
+- [Media Services アカウントを作成する](./create-account-howto.md) リソース グループ名と Media Services アカウント名を覚えておいてください
 - .NET の開発に使用するツールをインストールします。 この記事の手順では、[Visual Studio 2019 Community エディション](https://www.visualstudio.com/downloads/)を使用する方法を示します。 Visual Studio Code を使用できます。「[Working with C# (C# の使用)](https://code.visualstudio.com/docs/languages/csharp)」をご覧ください。 または、別のコード エディターを使用できます。
 
 > [!IMPORTANT]
@@ -39,7 +41,7 @@ ms.locfileid: "83201128"
 1. **[ファイル]** メニューから **[新規作成]**  >  **[プロジェクト]** をクリックします。 
 1. **.NET Core** コンソール アプリケーションを作成します。
 
-このトピックのサンプル アプリの対象は `netcoreapp2.0` です。 コードでは "async main" が使用されています。これは、C# 7.1 以降で利用できます。 詳しくは、こちらの[ブログ](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/)をご覧ください。
+このトピックのサンプル アプリの対象は `netcoreapp2.0` です。 コードでは "async main" が使用されています。これは、C# 7.1 以降で利用できます。 詳しくは、こちらの[ブログ](/archive/blogs/benwilli/async-main-is-available-but-hidden)をご覧ください。
 
 ## <a name="add-required-nuget-packages"></a>必要な NuGet パッケージを追加する
 
@@ -64,7 +66,7 @@ ms.locfileid: "83201128"
 
 ### <a name="set-values-in-appsettingsjson"></a>appsettings.json の値を設定する
 
-[API へのアクセス](access-api-cli-how-to.md)に関する記事の説明に従って、`az ams account sp create` コマンドを実行します。 コマンドで返される json を、"appsettings.json" にコピーする必要があります。
+[API へのアクセス](./access-api-howto.md)に関する記事の説明に従って、`az ams account sp create` コマンドを実行します。 コマンドで返される json を、"appsettings.json" にコピーする必要があります。
  
 ## <a name="add-configuration-file"></a>Add configuration file
 
@@ -243,5 +245,5 @@ namespace ConsoleApp1
 
 ## <a name="see-also"></a>関連項目
 
-* [.NET リファレンス](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
+* [.NET リファレンス](/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
 * コードの例について詳しくは、[.NET SDK サンプル](https://github.com/Azure-Samples/media-services-v3-dotnet) リポジトリをご覧ください。

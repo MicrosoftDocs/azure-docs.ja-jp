@@ -1,28 +1,24 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Workspot Control の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Workspot Control の統合 | Microsoft Docs
 description: Azure Active Directory と Workspot Control に対してシングル サインオンを構成する方法について学習します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3ea8e4e9-f61f-4f45-b635-b0e306eda3d1
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 086ec95531b01477be56d4b1a19d189f167a020f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bfbecc71638e6feaaf29809f09dda752dd29b2ae
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67086675"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88526552"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>チュートリアル: Azure Active Directory と Workspot Control の統合
+# <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>チュートリアル:Azure Active Directory と Workspot Control の統合
 
 このチュートリアルでは、Workspot Control と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Workspot Control を統合すると、次のことができます。
 
@@ -176,11 +172,11 @@ Workspot Control で Azure AD シングル サインオンを構成するには�
 
     1. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    1. **[ユーザー名]** フィールドに、**brittasimon@* yourcompanydomain.extension*** と入力します。 たとえば、「 **BrittaSimon@contoso.<i></i>com**」と入力します。
+    1. **[ユーザー名]** フィールドに、**brittasimon@* yourcompanydomain.extension** と入力します*。 たとえば、「 **BrittaSimon@contoso.<i></i>com**」と入力します。
 
     1. **[パスワードを表示]** チェック ボックスを選択します。 **[パスワード]** ボックスに表示された値を書き留めます。
 
-    1. **作成** を選択します。
+    1. **［作成］** を選択します
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

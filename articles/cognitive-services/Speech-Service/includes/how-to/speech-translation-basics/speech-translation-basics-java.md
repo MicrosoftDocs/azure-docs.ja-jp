@@ -3,13 +3,14 @@ author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/13/2020
+ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: 73e6e117428808aae39e361a3b119e9b2af1ac27
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: d04a13dae78057dfca52ed82bed278a8b132ded1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399628"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87374724"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -17,7 +18,7 @@ ms.locfileid: "81399628"
 
 ## <a name="install-the-speech-sdk"></a>Speech SDK のインストール
 
-何らかの操作を行うには、事前に Speech SDK をインストールしておく必要があります。 お使いのプラットフォームに応じて、Speech SDK の記事の「<a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">Speech SDK を取得する<span class="docon docon-navigate-external x-hidden-focus"></span></a>」セクションに記載されている手順に従ってください。
+何らかの操作を行うには、事前に Speech SDK をインストールしておく必要があります。 お使いのプラットフォームに応じて、記事「_Speech SDK について_」の「<a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">Speech SDK を取得する<span class="docon docon-navigate-external x-hidden-focus"></span></a>」セクションに記載されている手順に従ってください。
 
 ## <a name="import-dependencies"></a>依存関係のインポート
 
@@ -105,7 +106,7 @@ static void translateSpeech() {
 
 ## <a name="add-translation-language"></a>翻訳言語を追加する
 
-音声翻訳のもう 1 つの一般的なタスクは、対象の翻訳言語を指定することです。少なくとも 1 つが必要ですが、複数もサポートされています。 次のコード スニペットでは、フランス語とドイツ語の両方が翻訳言語ターゲットとなっています。
+音声翻訳のもう 1 つの一般的なタスクは、対象の翻訳言語を指定することです。少なくとも 1 つが必要ですが、複数もサポートされています。 次のコード スニペットでは、フランス語とドイツ語の両方が翻訳言語ターゲットとして設定されています。
 
 ```java
 static void translateSpeech() {
@@ -120,7 +121,7 @@ static void translateSpeech() {
 }
 ```
 
-[`addTargetLanguage`][addlang] を呼び出すたびに、新しい翻訳言語が指定されます。 つまり、音声がソース言語から認識される場合は、各ターゲット翻訳を結果の翻訳操作の一部として利用できます。
+[`addTargetLanguage`][addlang] を呼び出すたびに、新しいターゲット翻訳言語が指定されます。 つまり、音声がソース言語から認識される場合は、各ターゲット翻訳を結果の翻訳操作の一部として利用できます。
 
 ## <a name="initialize-a-translation-recognizer"></a>翻訳認識エンジンを初期化する
 

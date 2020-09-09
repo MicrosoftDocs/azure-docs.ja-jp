@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Coda の統合 | Microsoft Docs
 description: Azure Active Directory と Coda の間にシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: acaf2012-ef2e-4ce0-8467-ceece3bae50e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/23/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74da278dbbc0ac32407c345524e224ca5f7616da
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 718afec8b36a27bfd36e2a018b39f480144bf822
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77194685"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545354"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coda"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Coda の統合
 

@@ -9,12 +9,13 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fcad05749892e3a652e110a7e351450bffaca6f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 0e9f4602582a8c24f74d6603b732e7b91d97fa8d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72792980"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002693"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-3"></a>Azure Search .NET SDK バージョン 3 へのアップグレード
 
@@ -25,7 +26,7 @@ Indexer execution result errors no longer have status
 the data source API will no longer return in the response of any REST operation, the connection string specified by the user.
 --->
 
-バージョン 2.0-preview 以前の [Azure Search .NET SDK](https://aka.ms/search-sdk) を使用している場合、この記事を参考にして、バージョン 3 を使用するようにアプリケーションをアップグレードできます。
+バージョン 2.0-preview 以前の [Azure Search .NET SDK](/dotnet/api/overview/azure/search) を使用している場合、この記事を参考にして、バージョン 3 を使用するようにアプリケーションをアップグレードできます。
 
 例を含む SDK の一般的なチュートリアルについては、「 [.NET アプリケーションから Azure Search を使用する方法](search-howto-dotnet-sdk.md)」を参照してください。
 
@@ -41,7 +42,7 @@ Azure Search .NET SDK のバージョン 3 には、以前のバージョンか�
 ## <a name="whats-new-in-version-3"></a>バージョン 3 の新機能
 Azure Search .NET SDK のバージョン 3 は、Azure Search REST API の最新の一般公開バージョン (2016-09-01) を対象としています。 これにより、次のような Azure Search の多数の新機能を .NET アプリケーションから使用することが可能になります。
 
-* [カスタム アナライザー](https://aka.ms/customanalyzers)
+* [カスタム アナライザー](index-add-custom-analyzers.md)
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) と [Azure Table Storage](search-howto-indexing-azure-tables.md) のインデクサーのサポート
 * [フィールド マッピング](search-indexer-field-mappings.md)
 * インデックスの定義、インデクサー、およびデータ ソースの安全な同時更新を有効にする Etag のサポート
@@ -57,7 +58,9 @@ NuGet が新しいパッケージとその依存関係をダウンロードし�
 
 ビルドが失敗した場合は、次のようにビルド エラーが表示されます。
 
-    Program.cs(31,45,31,86): error CS0266: Cannot implicitly convert type 'Microsoft.Azure.Search.ISearchIndexClient' to 'Microsoft.Azure.Search.SearchIndexClient'. An explicit conversion exists (are you missing a cast?)
+```output
+Program.cs(31,45,31,86): error CS0266: Cannot implicitly convert type 'Microsoft.Azure.Search.ISearchIndexClient' to 'Microsoft.Azure.Search.SearchIndexClient'. An explicit conversion exists (are you missing a cast?)
+```
 
 次の手順として、このビルド エラーを修正します。 エラーの原因と修正方法については、「[バージョン 3 における重大な変更](#ListOfChanges)」をご覧ください。
 

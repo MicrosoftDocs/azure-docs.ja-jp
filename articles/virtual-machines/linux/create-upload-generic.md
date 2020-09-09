@@ -3,15 +3,15 @@ title: Linux VHD を作成してアップロードする
 description: Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。
 author: gbowerman
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: guybo
-ms.openlocfilehash: f700dec6486bad9e7024d7c908a70dd0ff2b342c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a80cc29f318cff8e5a4c665cd07ba1829d25d66d
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066759"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373387"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>動作保証外のディストリビューションに関する情報
 
@@ -24,17 +24,18 @@ Azure で実行されているすべてのディストリビューションに�
 
 [Linux on Azure 動作保証済みディストリビューション](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)のいずれかで始めることをお勧めします。 次の記事では、Azure でサポートされる以下のさまざまな動作保証済み Linux ディストリビューションを準備する方法について説明します。
 
-* **[CentOS ベースのディストリビューション](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[SLES と openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+- [CentOS ベースのディストリビューション](create-upload-centos.md)
+- [Debian Linux](debian-create-upload-vhd.md)
+- [Flatcar Container Linux](flatcar-create-upload-vhd.md)
+- [Oracle Linux](oracle-create-upload-vhd.md)
+- [Red Hat Enterprise Linux](redhat-create-upload-vhd.md)
+- [SLES と openSUSE](suse-create-upload-vhd.md)
+- [Ubuntu](create-upload-ubuntu.md)
 
 この記事では、Azure 上で Linux ディストリビューションを実行するための一般的なガイダンスについて、重点的に説明します。
 
 ## <a name="general-linux-installation-notes"></a>Linux のインストールに関する一般的な注記
-* Hyper-V 仮想ハード ディスク (VHDX) 形式は Azure ではサポートされていません。サポートされているのは *固定 VHD* のみです。  Hyper-V マネージャーまたは [Convert-VHD](https://docs.microsoft.com/powershell/module/hyper-v/convert-vhd) コマンドレットを使用して、ディスクを VHD 形式に変換できます。 VirtualBox を使用する場合は、ディスクの作成時に、既定 (動的に割り当てられるサイズ) ではなく、**固定サイズ**を選択します。
+* Hyper-V 仮想ハード ディスク (VHDX) 形式は Azure ではサポートされていません。サポートされているのは *固定 VHD* のみです。  Hyper-V マネージャーまたは [Convert-VHD](/powershell/module/hyper-v/convert-vhd) コマンドレットを使用して、ディスクを VHD 形式に変換できます。 VirtualBox を使用する場合は、ディスクの作成時に、既定 (動的に割り当てられるサイズ) ではなく、**固定サイズ**を選択します。
 * Azure では、Gen1 (BIOS ブート) および Gen2 (UEFI ブート) 仮想マシンがサポートされています。
 * VHD のサイズの上限は、1,023 GB です。
 * Linux システムをインストールする場合は、Logical Volume Manager (LVM) (多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。 標準パーティションを使用することにより、特に OS ディスクをトラブルシューティングのために別の同じ VM に接続する場合に、LVM 名と複製された VM の競合が回避されます。 [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) または [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) をデータ ディスク上で使用できます。
@@ -64,9 +65,9 @@ initrd または initramfs イメージの再構築のためのメカニズム�
 ### <a name="resizing-vhds"></a>VHD のサイズ変更
 Azure の VHD イメージは、1 MB に整列された仮想サイズが必要です。  通常、HYPER-V を使用して作成された VHD は正しく整列されています。  VHD が正しく整列されていない場合は、VHD からイメージを作成しようとすると、次のようなエラー メッセージが表示される場合があります。
 
-* The VHD http:\//\<mystorageaccount>.blob.core.windows.net/vhds/MyLinuxVM.vhd has an unsupported virtual size of 21475270656 bytes. (VHD http:<mystorageaccount>.blob.core.windows.net/vhds/MyLinuxVM.vhd にサポートされていない仮想サイズ 21475270656 バイトがあります。) The size must be a whole number (in MBs) (サイズは整数 (MB) である必要があります)。
+* VHD http:\//\<mystorageaccount>.blob.core.windows.net/vhds/MyLinuxVM.vhd の仮想サイズ (21475270656 バイト) がサポートされていません。 The size must be a whole number (in MBs) (サイズは整数 (MB) である必要があります)。
 
-この場合、HYPER-V マネージャー コンソールまたは [Resize-VHD](https://technet.microsoft.com/library/hh848535.aspx) PowerShell コマンドレットを使用して、VM のサイズを変更できます。  Windows 環境で実行していない場合は、`qemu-img` を使用して変換し (必要な場合)、VHD のサイズを変更することをお勧めします。
+この場合、HYPER-V マネージャー コンソールまたは [Resize-VHD](/powershell/module/hyper-v/resize-vhd?view=win10-ps) PowerShell コマンドレットを使用して、VM のサイズを変更できます。  Windows 環境で実行していない場合は、`qemu-img` を使用して変換し (必要な場合)、VHD のサイズを変更することをお勧めします。
 
 > [!NOTE]
 > qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないという[バグ](https://bugs.launchpad.net/qemu/+bug/1490611)があることがわかっています。 この問題は QEMU 2.6 で修正されています。 バージョン 2.2.0 以前またはバージョン 2.6 以降のいずれかの `qemu-img` を使用することをお勧めします。
@@ -189,4 +190,3 @@ Red Hat Enterprise Linux バージョン 6.0 ～ 6.3 のバリアントを実行
    > Virtualbox では、`waagent -force -deprovision` の実行後に次のエラーが表示される場合があります: `[Errno 5] Input/output error`。 このエラー メッセージは重要ではないため、無視してかまいません。
 
 * 仮想マシンをシャットダウンし、Azure に VHD をアップロードします。
-

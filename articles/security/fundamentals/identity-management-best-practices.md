@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: ffd9919092cdf2481767e58f10ba6525d56ca4a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b354fda4d23d13b8defed4381335ab147bbece5d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548452"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835903"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス
 
@@ -126,10 +126,10 @@ SSO を確立するためにユーザーやアプリケーションに共通の 
 セキュリティと生産性のバランスを取るためには、アクセスの制御に関する決定を行う前に、リソースへのアクセス方法を考慮する必要があります。 Azure AD の条件付きアクセスで、この要件に対処することができます。 条件付きアクセスを使用すると、クラウド アプリへのアクセスに関する条件に基づいて、アクセス制御の決定を自動的に行うことができます。
 
 **ベスト プラクティス**: 会社のリソースへのアクセスを管理および制御します。  
-**詳細**: グループ、場所、アプリケーションの機密性に基づいて SaaS アプリや Azure AD 接続アプリの Azure AD [条件付きアクセス](/azure/active-directory/active-directory-conditional-access-azure-portal)を構成します。
+**詳細**: グループ、場所、アプリケーションの機密性に基づいて SaaS アプリや Azure AD 接続アプリの共通の Azure AD [条件付きアクセス ポリシー](../../active-directory/conditional-access/concept-conditional-access-policy-common.md)を構成します。
 
 **ベスト プラクティス**: レガシ認証プロトコルをブロックします。
-**詳細**: 攻撃者は、毎日古いプロトコルの弱点を悪用しています (特にパスワード スプレー攻撃)。 条件付きアクセスを構成して、レガシ プロトコルをブロックします。 ビデオ「[Azure AD: Do’s and Don’ts (べしとべからず)](https://www.youtube.com/watch?v=wGk0J4z90GI)」で詳細をご覧ください。
+**詳細**: 攻撃者は、毎日古いプロトコルの弱点を悪用しています (特にパスワード スプレー攻撃)。 条件付きアクセスを構成して、[レガシ プロトコルをブロックします](../../active-directory/conditional-access/howto-conditional-access-policy-block-legacy.md)。
 
 ## <a name="plan-for-routine-security-improvements"></a>日常的なセキュリティ強化を計画する
 
@@ -167,7 +167,7 @@ ID セキュリティ スコアは、セキュリティ対策を客観的に測�
 * すべてのユーザーに Microsoft Authenticator 経由の MFA チャレンジを要求します
 * レガシ認証プロトコルを制限します。
 
-この方法はすべてのライセンス レベルで使用できますが、既存の条件付きアクセス ポリシーと併用することはできません。 詳細については Azure AD セキュリティの既定値を参照してください
+この方法はすべてのライセンス レベルで使用できますが、既存の条件付きアクセス ポリシーと併用することはできません。 詳細については、[Azure AD のセキュリティの既定値](/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)に関するページを参照してください
 
 **オプション 2**:[ユーザーの状態を変更することで Multi-Factor Authentication を有効にします](../../active-directory/authentication/howto-mfa-userstates.md)。   
 **利点**:2 段階認証を要求するための従来の方法です。 これは、[クラウド内の Azure Multi-Factor Authentication と Azure Multi-Factor Authentication Server](/azure/active-directory/authentication/concept-mfa-whichversion) の両方に対応します。 この方法を使用すると、ユーザーはサインインするたびに 2 段階認証を実行するよう求められ、条件付きアクセス ポリシーがオーバーライドされます。
@@ -175,11 +175,11 @@ ID セキュリティ スコアは、セキュリティ対策を客観的に測�
 Multi-factor Authentication を有効にする必要がある場合を判断するには、「[所属する組織に適しているのはどちらのバージョンの Azure MFA であるかを確認しましょう](/azure/active-directory/authentication/concept-mfa-whichversion)」をご覧ください。
 
 **オプション 3**:[条件付きアクセス ポリシーを使用して Multi-Factor Authentication を有効にします](/azure/active-directory/authentication/howto-mfa-getstarted)。
-**利点**:このオプションでは、[条件付きアクセス](/azure/active-directory/active-directory-conditional-access-azure-portal)を使用して特定の条件下で 2 段階認証を要求できます。 特定の条件としては、異なる場所、信頼されていないデバイス、または危険と見なされるアプリケーションからのユーザーのサインインを指定できます。 2 段階認証を要求する特定の条件を定義すると、要求のメッセージがユーザーに繰り返し表示されないようにすることができます。このようなメッセージは、不快なユーザー エクスペリエンスとなり得ます。
+**利点**:このオプションでは、[条件付きアクセス](../../active-directory/conditional-access/concept-conditional-access-policy-common.md)を使用して特定の条件下で 2 段階認証を要求できます。 特定の条件としては、異なる場所、信頼されていないデバイス、または危険と見なされるアプリケーションからのユーザーのサインインを指定できます。 2 段階認証を要求する特定の条件を定義すると、要求のメッセージがユーザーに繰り返し表示されないようにすることができます。このようなメッセージは、不快なユーザー エクスペリエンスとなり得ます。
 
 これは、ユーザーの 2 段階認証を有効にするうえで最も柔軟性の高い手段です。 条件付きアクセス ポリシーを有効にする方法は、クラウド内の Azure Multi-Factor Authentication に対してのみ機能します。これは Azure AD の Premium 機能です。 この方法の詳細については、「[クラウドベースの Azure Multi-Factor Authentication をデプロイする](/azure/active-directory/authentication/howto-mfa-getstarted)」を参照してください。
 
-**オプション 4**: [Azure AD Identity Protection](/azure/active-directory/authentication/tutorial-risk-based-sspr-mfa) のユーザーおよびサインインのリスクを評価し、条件付きアクセス ポリシーを使用して Multi-Factor Authentication を有効にします。   
+**オプション 4**: [リスクベースの条件付きアクセス ポリシー](../../active-directory/conditional-access/howto-conditional-access-policy-risk.md)を評価することによって、条件付きアクセス ポリシーを使用して Multi-Factor Authentication を有効にします。   
 **利点**:このオプションの利点は次のとおりです。
 
 * 組織の ID に影響する潜在的な脆弱性を検出します。
@@ -189,13 +189,13 @@ Multi-factor Authentication を有効にする必要がある場合を判断す�
 この方法では、Azure AD Identity Protection のリスク評価を使用して、すべてのクラウド アプリケーションのユーザーおよびサインインのリスクに基づいて 2 段階認証が要求されるかどうかを判断します。 この方法では、Azure Active Directory P2 ライセンスが必要です。 この方法の詳細については、「[Azure Active Directory Identity Protection](/azure/active-directory/identity-protection/overview)」を参照してください。
 
 > [!Note]
-> オプション 1 (ユーザーの状態を変更することで Multi-Factor Authentication を有効にする) は、条件付きアクセス ポリシーをオーバーライドします。 オプション 2 および 3 では条件付きアクセス ポリシーを使用するため、オプション 1 をそれらと共に使用することはできません。
+> オプション 2 (ユーザーの状態を変更することで Multi-Factor Authentication を有効にする) では、条件付きアクセス ポリシーをオーバーライドします。 オプション 3 および 4 では条件付きアクセス ポリシーを使用するため、オプション 2 をそれらと共に使用することはできません。
 
 2 段階認証などの新しい ID 保護レイヤーを追加しない組織は、資格情報盗用攻撃を受けやすくなります。 資格情報盗用攻撃はデータの侵害につながる可能性があります。
 
 ## <a name="use-role-based-access-control"></a>ロールベースのアクセス制御を使用する
 
-クラウド リソースに対するアクセスの管理は、クラウドを使用しているすべての組織にとって重要なことです。 [ロールベースのアクセス制御 (RBAC)](/azure/role-based-access-control/overview) は、Azure のリソースにアクセスできるユーザー、そのユーザーがそれらのリソースに対して実行できること、そのユーザーがアクセスできる領域を管理するのに役立ちます。
+クラウド リソースに対するアクセスの管理は、クラウドを使用しているすべての組織にとって重要なことです。 [Azure ロールベースのアクセス制御 (Azure RBAC)](/azure/role-based-access-control/overview) は、Azure リソースにアクセスできるユーザー、そのユーザーがそれらのリソースに対して実行できること、およびそのユーザーがアクセスできる領域を管理するのに役立ちます。
 
 Azure での特定の機能に対して責任を負うグループまたは個人のロールを指定すると、セキュリティ リスクをもたらすヒューマン エラーやオートメーション エラーにつながる可能性のある混乱を避けるのに役立ちます。 データ アクセスにセキュリティ ポリシーを適用する組織では、[必知事項](https://en.wikipedia.org/wiki/Need_to_know)と[最小権限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)のセキュリティ原則に基づいてアクセスを制限することが不可欠です。
 
@@ -204,7 +204,7 @@ Azure での特定の機能に対して責任を負うグループまたは個�
 [RBAC](/azure/role-based-access-control/overview) を使用して、特定のスコープ内のユーザー、グループ、アプリケーションにアクセス許可を割り当てることができます。 ロール割り当てのスコープには、サブスクリプション、リソース グループ、または単独のリソースを指定できます。
 
 **ベスト プラクティス**: チーム内で職務を分離し、職務を実行するために必要なアクセスのみをユーザーに許可します。 すべてのユーザーに Azure サブスクリプションまたはリソースで無制限のアクセス許可を付与するのではなく、特定のスコープで特定の操作のみを許可します。
-**詳細**: Azure の[組み込み RBAC ロール](/azure/role-based-access-control/built-in-roles)を使用して、ユーザーに権限を割り当てます。
+**詳細**: Azure で [Azure 組み込みロール](/azure/role-based-access-control/built-in-roles)を使用して、ユーザーに特権を割り当てます。
 
 > [!Note]
 > 個別のアクセス許可では、不要な複雑さと混乱が発生し、それが積み重なって、何かを壊してしまう心配なしでは修正するのが難しい "レガシ" 構成になります。 リソース固有のアクセス許可は使わないようにします。 代わりに、エンタープライズ全体のアクセス許可には管理グループを使用し、サブスクリプション内のアクセス許可にはリソース グループを使用します。 ユーザー固有のアクセス許可は使わないようにします。 代わりに、Azure AD でグループにアクセスを割り当てます。
@@ -216,7 +216,7 @@ Azure での特定の機能に対して責任を負うグループまたは個�
 * スコープが限られたチームには**セグメント管理グループ** (一般に、規制または他の組織的な境界のため)
 
 **ベスト プラクティス**: 直接的な運用責任を持つセキュリティ チームには、適切なアクセス許可を付与します。
-**詳細**: RBAC の組み込みロールで、適切なロールの割り当てを確認します。 組み込みロールが組織の特定のニーズを満たさない場合は、[Azure リソースに対するカスタム ロール](/azure/role-based-access-control/custom-roles)を作成することができます。 組み込みロールと同様、カスタム ロールは、ユーザー、グループ、サービス プリンシパルに対して、サブスクリプション、リソース グループ、リソースのスコープで割り当てることができます。
+**詳細**: RBAC の組み込みロールで、適切なロールの割り当てを確認します。 組み込みロールが組織の特定のニーズを満たさない場合は、[Azure カスタム ロール](/azure/role-based-access-control/custom-roles)を作成することができます。 組み込みロールと同様、カスタム ロールは、ユーザー、グループ、サービス プリンシパルに対して、サブスクリプション、リソース グループ、リソースのスコープで割り当てることができます。
 
 **ベスト プラクティス**:Azure Security Center へのアクセス権を、それを必要とするセキュリティ ロールに付与します。 Security Center では、セキュリティ チームはすばやくリスクを特定して修復できます。
 **詳細**: これらのニーズを持つセキュリティ チームを RBAC [セキュリティ管理者](/azure/role-based-access-control/built-in-roles#security-admin)に追加し、セキュリティ ポリシーを表示したり、セキュリティ状態を表示したり、セキュリティ ポリシーを編集したり、アラートと推奨事項を表示したり、アラートと推奨事項を無視したりできるようにします。 責任の範囲に応じて、ルート管理グループまたはセグメント管理グループを使用して、これを行うことができます。

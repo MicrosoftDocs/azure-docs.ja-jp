@@ -3,15 +3,16 @@ title: Bulk Executor library からAzure Cosmos DB .NET V3 SDK のBulkサポー�
 description: ご利用のアプリケーションを、Bulk Executorライブラリの使用から、Azure Cosmos DB SDK V3 のBulkサポートに移行する方法について説明します
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: maquaran
-ms.openlocfilehash: d63b34c118cd719f73abbd6711dcb3ef02a6fb28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 8f573a3e851fe428c66066e36a913d6580cabd51
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146303"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022481"
 ---
 # <a name="migrate-from-the-bulk-executor-library-to-the-bulk-support-in-azure-cosmos-db-net-v3-sdk"></a>Bulk Executor library からAzure Cosmos DB .NET V3 SDK のBulkサポートに移行する
 

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 220e73536a892e798139ca54913e09e097c22432
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7941748f7f917847e551b0cf5cd0a7bf926d31a9
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191942"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086978"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Azure Storage を使用する
 
@@ -158,7 +158,7 @@ BLOB を使用するには、まず、[Azure ストレージ アカウント](..
 
 ## <a name="use-additional-storage-accounts"></a>追加ストレージ アカウントの使用
 
-HDInsight クラスターを作成しているときに、そのクラスターに関連付ける Azure ストレージ アカウントを指定します。 また、作成プロセス時 またはクラスターが作成された後に、同じ Azure サブスクリプションか別の Azure サブスクリプションに属するストレージ アカウントをさらに追加することもできます。 ストレージ アカウントをさらに追加する手順については、[HDInsight クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関するページをご覧ください。
+HDInsight クラスターを作成しているときに、そのクラスターに関連付ける Azure ストレージ アカウントを指定します。 また、作成プロセス時またはクラスターが作成された後に、同じ Azure サブスクリプションか別の Azure サブスクリプションに属するストレージ アカウントをさらに追加することもできます。 ストレージ アカウントをさらに追加する手順については、[HDInsight クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関するページをご覧ください。
 
 > [!WARNING]  
 > HDInsight クラスター以外の場所で追加のストレージ アカウントを使用することはできません。

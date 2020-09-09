@@ -4,19 +4,19 @@ description: Enterprise State Roaming の管理設定
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: troubleshooting
+ms.topic: reference
 ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdffbc3a140bd13dcd6d352db8c192803d39b03e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ab24b3113f9dc69b8f3907037e228ba212a03106
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78672366"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85252935"
 ---
 # <a name="group-policy-and-mdm-settings"></a>グループ ポリシーと MDM の設定
 

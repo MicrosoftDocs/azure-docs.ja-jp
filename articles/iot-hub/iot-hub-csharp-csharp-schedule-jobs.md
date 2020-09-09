@@ -8,13 +8,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: 4c71a108d1967027465d127db50737119af3e2c1
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.custom: mqtt, devx-track-csharp
+ms.openlocfilehash: d99cc571394ad7a9c85fb7367c672f96a7302362
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81733364"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018503"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>ジョブのスケジュールとブロードキャスト (.NET)
 
@@ -32,9 +32,9 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
 
 これらの各機能の詳細については、次の記事をご覧ください。
 
-* デバイス ツインとプロパティ: [デバイス ツインの概要](iot-hub-csharp-csharp-twin-getstarted.md)に関する記事と[デバイス ツインのプロパティの使用方法に関するチュートリアル](tutorial-device-twins.md)
+* デバイス ツインとプロパティ: [デバイス ツインの概要](iot-hub-csharp-csharp-twin-getstarted.md)および[チュートリアル: デバイス ツインのプロパティの使用方法](tutorial-device-twins.md)
 
-* ダイレクト メソッド: [ダイレクト メソッドに関する IoT Hub 開発者ガイド](iot-hub-devguide-direct-methods.md)と[ダイレクト メソッドの使用に関するチュートリアル](quickstart-control-device-dotnet.md)
+* ダイレクト メソッド: [IoT Hub 開発者ガイド - ダイレクト メソッド](iot-hub-devguide-direct-methods.md)および[チュートリアル: ダイレクト メソッドの使用](quickstart-control-device-dotnet.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -84,7 +84,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
 
     この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT device SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet パッケージへの参照とその依存関係が追加されます。
 
-1. `using`Program.cs**ファイルの先頭に次の** ステートメントを追加します。
+1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
 
     ```csharp
     using Microsoft.Azure.Devices.Client;
@@ -175,11 +175,11 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
 
 1. ソリューション エクスプローラーで **[ScheduleJob]** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
 
-1. **[NuGet パッケージ マネージャー]** で **[参照]** を選択し、**Microsoft.Azure.Devices.Client** を検索して選択してから、 **[インストール]** を選択します。
+1. **[NuGet パッケージ マネージャー]** で **[参照]** を選択し、**Microsoft.Azure.Devices** を検索して選択してから、 **[インストール]** を選択します。
 
    この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet パッケージへの参照とその依存関係が追加されます。
 
-1. `using`Program.cs**ファイルの先頭に次の** ステートメントを追加します。
+1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
 
     ```csharp
     using Microsoft.Azure.Devices;
@@ -309,6 +309,6 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
 
 このチュートリアルでは、ジョブを使用して、デバイスへのダイレクト メソッドと、デバイス ツインのプロパティの更新をスケジュールしました。
 
-* IoT Hub およびリモートによるファームウェアのワイヤレス更新などの他のデバイス管理パターンを確認するには、「[チュートリアル: ファームウェアを更新する方法](tutorial-firmware-update.md)」を参照してください。
+* ファームウェアのリモートでのワイヤレス更新など、IoT Hub とデバイス管理パターンの作業を続けるには、[ファームウェア更新の実行方法に関するチュートリアル](tutorial-firmware-update.md)を参照してください。
 
 * Azure IoT Edge を使用したエッジ デバイスへの AI のデプロイについては、[IoT Edge の使用](../iot-edge/tutorial-simulate-device-linux.md)に関するページを参照してください。

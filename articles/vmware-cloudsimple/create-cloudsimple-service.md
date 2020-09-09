@@ -1,6 +1,6 @@
 ---
 title: Azure VMware Solution by CloudSimple - CloudSimple サービスの作成
-description: Azure portal で CloudSimple サービスを作成する方法について説明します
+description: Azure portal で CloudSimple サービスを作成する方法について説明します。 開始する前に、必要な構成を確認してください。
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/19/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8648f2c9cc0175050d4b7642f5235d47159ecfaf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a196e717dd6e02570e4bdf830a24ce342b47ece
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77024825"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140549"
 ---
 # <a name="create-the-azure-vmware-solution-by-cloudsimple-service"></a>Azure VMware Solution by CloudSimple サービスの作成
 
@@ -25,7 +25,7 @@ Azure VMware Solution by CloudSimple を開始するには、Azure portal で Az
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Azure portal](https://portal.azure.com) にサインインする
+[Azure portal](https://portal.azure.com) にサインインします。
 
 ## <a name="create-the-service"></a>サービスの作成
 
@@ -36,7 +36,7 @@ Azure VMware Solution by CloudSimple を開始するには、Azure portal で Az
 4. 新しいサービスを作成するには、**Add** (追加) をクリックします。
     ![CloudSimple サービスを追加する](media/create-cloudsimple-service-add.png)
 5. CloudSimple サービスを作成するサブスクリプションを選択します。
-6. サービスのリソース グループを選択します。 リソース グループを新規に追加するには、 **[Create New]** (新規作成) をクリックします。
+6. サービスのリソース グループを選択します。 リソース グループを新規に追加するには、**[Create New]** (新規作成) をクリックします。
 7. サービスを識別する名前を入力します。
 8. サービス ゲートウェイの CIDR を入力します。 オンプレミス サブネット、オンプレミス サブネット、Azure サブネット、計画上の CloudSimple サブネットのいずれとも重複しない /28 サブネットを指定します。 サービスを作成した後は、CIDR を変更できません。
 
@@ -45,7 +45,7 @@ Azure VMware Solution by CloudSimple を開始するには、Azure portal で Az
 
 サービスが作成され、サービスの一覧に追加されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [ノードをプロビジョニングする](create-nodes.md)方法を学習する
 * [プライベート クラウドを作成する](create-private-cloud.md)方法を確認する

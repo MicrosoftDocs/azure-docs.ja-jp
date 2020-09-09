@@ -1,17 +1,17 @@
 ---
-title: TLS - Azure Database for PostgreSQL - 単一サーバー
+title: SSL/TLS - Azure Database for PostgreSQL (単一サーバー)
 description: Azure Database for PostgreSQL - 単一サーバーの TLS 接続を構成する方法について説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/10/2020
-ms.openlocfilehash: d0482e5205b97b5c57c41e0ba98fb9ca819e5d5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/08/2020
+ms.openlocfilehash: 615e8c80d194bb37feac1c09af22d2aa5d4aa3fc
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82141743"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142709"
 ---
 # <a name="configure-tls-connectivity-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) で TLS 接続を構成する
 
@@ -51,7 +51,9 @@ az postgres server update --resource-group myresourcegroup --name mydemoserver -
 
 ## <a name="applications-that-require-certificate-verification-for-tls-connectivity"></a>TLS 接続で証明書検証を必要とするアプリケーション
 
-安全に接続するために、信頼された証明機関 (CA) 証明書ファイル (.cer) から生成されたローカルの証明書ファイルがアプリケーションに必要な場合があります。 Azure Database for PostgreSQL サーバーに接続するための証明書は、 https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem にあります。 証明書ファイルをダウンロードし、希望の場所に保存します。
+安全に接続するために、信頼された証明機関 (CA) 証明書ファイルから生成されたローカルの証明書ファイルがアプリケーションに必要な場合があります。 Azure Database for PostgreSQL サーバーに接続するための証明書は、 https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem にあります。 証明書ファイルをダウンロードし、希望の場所に保存します。 
+
+ソブリン クラウドにおけるサーバーの証明書については、[Azure Government](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)、[Azure China](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)、[Azure Germany](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt) の各リンクを参照してください。
 
 ### <a name="connect-using-psql"></a>psql を使用した接続
 
@@ -66,6 +68,33 @@ psql "sslmode=verify-full sslrootcert=BaltimoreCyberTrustRoot.crt host=mydemoser
 > [!TIP]
 > `sslrootcert` に渡された値が、保存済みの証明書のファイル パスと一致することを確認します。
 
+## <a name="tls-enforcement-in-azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL (単一サーバー) での TLS 適用
+
+Azure Database for PostgreSQL (単一サーバー) では、トランスポート層セキュリティ (TLS) を使用してデータベース サーバーに接続するクライアントの暗号化をサポートしています。 TLS は、データベース サーバーとクライアント アプリケーションとの間のセキュリティで保護されたネットワーク接続を確保する業界標準のプロトコルであり、コンプライアンス要件への準拠を可能にします。
+
+### <a name="tls-settings"></a>TLS の設定
+
+Azure Database for PostgreSQL (単一サーバー) には、クライアント接続に TLS バージョンを適用する機能が用意されています。 TLS バージョンを適用するには、 **[TLS の最小バージョン]** オプション設定を使用します。 このオプション設定には次の値を使用できます。
+
+|  TLS の最小設定             | サポートされているクライアント TLS バージョン                |
+|:---------------------------------|-------------------------------------:|
+| TLSEnforcementDisabled (既定値) | TLS は不要                      |
+| TLS1_0                           | Tls 1.0、TLS 1.1、TLS 1.2 以降 |
+| TLS1_1                           | TLS 1.1、TLS 1.2 以降          |
+| TLS1_2                           | TLS バージョン 1.2 以降           |
+
+
+たとえば、この最小 TLS バージョンを TLS 1.0 に設定すると、サーバーでは TLS 1.0、1.1、1.2 以上を使用するクライアントからの接続が許可されます。 また、これを 1.2 に設定すると、TLS 1.2+ を使用するクライアントからの接続だけが許可され、TLS 1.0 および TLS 1.1 を使用した接続はすべて拒否されます。
+
+> [!Note] 
+> 既定では、Azure Database for PostgreSQL では最小の TLS バージョン (設定 `TLSEnforcementDisabled`) は強制されません。
+>
+> 最小の TLS バージョンを強制すると、後で最小バージョンの強制を無効にすることはできません。
+
+Azure Database for PostgreSQL (単一サーバー) の TLS 設定を行う方法については、[TLS 設定の構成方法](howto-tls-configurations.md)に関するページを参照してください。
+
 ## <a name="next-steps"></a>次のステップ
 
 [Azure Database for PostgreSQL の接続ライブラリ](concepts-connection-libraries.md)に関する記事で、さまざまなアプリケーション接続オプションを確認します。
+
+- [TLS の構成](howto-tls-configurations.md)方法について

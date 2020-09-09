@@ -4,15 +4,15 @@ description: Azure Portal を使用してクラシックのポイント対サイ
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5d80cb2f2ed844126d1e9311151e6c53fcb11840
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f68631771b8f86d995108112b1243ab38bf826bc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225039"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84984792"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>証明書認証 (クラシック) を使用してポイント対サイト接続を構成する
 

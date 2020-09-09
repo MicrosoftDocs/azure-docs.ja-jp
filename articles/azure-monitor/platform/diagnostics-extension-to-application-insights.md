@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/19/2016
-ms.openlocfilehash: 80d971abd248ca8253a374b488c693ea9aa2ea3b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5af0eb20f9766369caa7351719b63b213c394e5d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77672329"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305807"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Cloud Services、Virtual Machines、または Service Fabric の診断データを Application Insights に送信する
 Cloud Services、Virtual Machines、Virtual Machine Scale Sets、および Service Fabric では、Azure Diagnostics 拡張機能を使用してデータを収集します。  Azure Diagnostics のデータは、Azure Storage のテーブルに送信されます。  ただし、Azure Diagnostics 拡張機能 1.5 以降を使用して、すべてのデータまたはデータのサブセットを他の場所にパイプすることもできます。
@@ -59,8 +59,8 @@ Application Insights のシンクの構成の例を以下に示します。
 - **シンク**の *name* 属性は、シンクを一意に識別する文字列値です。
 
 - **ApplicationInsights** 要素では、Azure Diagnostics データの送信先となる Application Insights リソースのインストルメンテーション キーを指定します。
-    - 既存の Application Insights リソースがない場合、リソースの作成方法とインストルメンテーション キーの取得方法の詳細については、「[新しい Application Insights リソースを作成する](../../azure-monitor/app/create-new-resource.md )」を参照してください。
-    - Azure SDK 2.8 以降でクラウド サービスを開発する場合、このインストルメンテーション キーが自動的に設定されます。 この値は、クラウド サービス プロジェクトをパッケージ化するときの **APPINSIGHTS_INSTRUMENTATIONKEY** サービス構成設定に基づきます。 [Cloud Services での Application Insights の使用](../../azure-monitor/app/cloudservices.md)に関するページを参照してください。
+    - 既存の Application Insights リソースがない場合、リソースの作成方法とインストルメンテーション キーの取得方法の詳細については、「[新しい Application Insights リソースを作成する](../app/create-new-resource.md)」を参照してください。
+    - Azure SDK 2.8 以降でクラウド サービスを開発する場合、このインストルメンテーション キーが自動的に設定されます。 この値は、クラウド サービス プロジェクトをパッケージ化するときの **APPINSIGHTS_INSTRUMENTATIONKEY** サービス構成設定に基づきます。 [Cloud Services での Application Insights の使用](../app/cloudservices.md)に関するページを参照してください。
 
 - **Channels** 要素には、1 つ以上の **Channel** 要素が含まれます。
     - *name* 属性は、そのチャンネルを一意に参照します。
@@ -213,7 +213,7 @@ Application Insights のシンクの構成の例を以下に示します。
 - **Azure Diagnostics の拡張機能によって収集される BLOB データは Application Insights に送信できません。** たとえば、*Directories* ノードの下で指定されたデータがこれに該当します。 クラッシュ ダンプの場合、実際のクラッシュ ダンプは Blob Storage に送信され、Application Insights にはクラッシュ ダンプが生成されたという通知のみが送信されます。
 
 ## <a name="next-steps"></a>次の手順
-* Application Insights で [Azure Diagnostics 情報を表示する](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices)方法について説明します。
+* Application Insights で [Azure Diagnostics 情報を表示する](../app/cloudservices.md)方法について説明します。
 * [PowerShell](../../cloud-services/cloud-services-diagnostics-powershell.md) を使用して、アプリケーションの Azure Diagnostics の拡張機能を有効にします。
 * [Visual Studio](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) を使用して、アプリケーションの Azure Diagnostics の拡張機能を有効にします。
 

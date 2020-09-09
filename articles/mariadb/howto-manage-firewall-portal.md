@@ -4,14 +4,14 @@ description: Azure portal を使用した Azure Database for MariaDB ファイ�
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 8be8e948595cfb93049c0d6c93f421e4902e771d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 464b13fe4aa727a4d3ca3ff074b8bb94544576a7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530667"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101224"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-portal"></a>Azure portal を使用した Azure Database for MariaDB ファイアウォール規則の作成と管理
 サーバーレベルのファイアウォール規則を使用して、指定した IP アドレスまたは IP アドレス範囲からの Azure Database for MariaDB サーバーへのアクセスを管理できます。

@@ -3,15 +3,15 @@ title: 構成エラー コード - Azure Stream Analytics
 description: 構成エラー コードに関する Azure Stream Analytics の問題のトラブルシューティングを行います。
 ms.author: mamccrea
 author: mamccrea
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.service: stream-analytics
-ms.openlocfilehash: 5aa15ae4a234a56a172a0166070c32be4f822910
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: de8eefd099f3691ae5e5eb5234ae8f76015dd68f
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650072"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041117"
 ---
 # <a name="azure-stream-analytics-configuration-error-codes"></a>Azure Stream Analytics の構成エラー コード
 

@@ -13,14 +13,14 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 11/17/2019
 ms.author: zhenlwa
-ms.custom: azure-functions
+ms.custom: devx-track-csharp, azure-functions
 ms.tgt_pltfrm: Azure Functions
-ms.openlocfilehash: ba70d5f186c1424b2019716ab7a87aeae85f8913
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e603aa8ba85fdd214c04de515f405bcf9028791e
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74187296"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207099"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-azure-functions-app"></a>チュートリアル:Azure Functions アプリで動的な構成を使用する
 
@@ -67,7 +67,7 @@ App Configuration .NET Standard 構成プロバイダーは、アプリケーシ
     }
     ```
 
-3. `Run` メソッドを更新し、Functions 呼び出しの最初に `Refresh` メソッドを使用して構成を更新するよう伝えます。 キャッシュの有効期間に達していなければ、何も実行されません。 ブロック化せずに構成を更新したい場合は、`await` オペレーターを削除してください。
+3. `Run` メソッドを更新し、Functions 呼び出しの最初に `TryRefreshAsync` メソッドを使用して構成を更新するよう伝えます。 キャッシュの有効期間に達していなければ、何も実行されません。 ブロック化せずに構成を更新したい場合は、`await` オペレーターを削除してください。
 
     ```csharp
     public static async Task<IActionResult> Run(
@@ -75,7 +75,7 @@ App Configuration .NET Standard 構成プロバイダーは、アプリケーシ
     {
         log.LogInformation("C# HTTP trigger function processed a request.");
 
-        await ConfigurationRefresher.Refresh();
+        await ConfigurationRefresher.TryRefreshAsync(); 
 
         string keyName = "TestApp:Settings:Message";
         string message = Configuration[keyName];
@@ -90,15 +90,21 @@ App Configuration .NET Standard 構成プロバイダーは、アプリケーシ
 
 1. **ConnectionString** という名前の環境変数に、アプリ構成ストアへのアクセス キーを設定します。 Windows コマンド プロンプトを使用する場合は、次のコマンドを実行してコマンド プロンプトを再起動し、変更が反映されるようにします。
 
-        setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```console
+    setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```
 
     Windows PowerShell を使用する場合は、次のコマンドを実行します。
 
-        $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```powershell
+    $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```
 
     macOS または Linux を使用する場合は、次のコマンドを実行します。
 
-        export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```console
+    export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```
 
 2. 関数をテストするには、F5 キーを押します。 メッセージが表示されたら、Visual Studio からの要求に同意し、**Azure Functions Core (CLI)** ツールをダウンロードしてインストールします。 また、ツールで HTTP 要求を処理できるように、ファイアウォールの例外を有効にすることが必要になる場合もあります。
 

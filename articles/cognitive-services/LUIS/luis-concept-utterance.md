@@ -2,17 +2,17 @@
 title: 発話の良い例 - LUIS
 description: 発話は、アプリが解釈する必要のあるユーザーからの入力です。 ユーザーが入力すると思われる語句を収集します。 同じことを意味しますが、異なる単語の長さと単語の配置で構成されている発話を含めるようにします。
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 184038ff2758fbe7c5834682c82c082ef6661234
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/19/2020
+ms.openlocfilehash: 6a17416183762893432841c27124ec6a0f8a289d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592867"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685272"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>LUIS アプリに対して良い発話を理解する
 
-**発話**は、アプリが解釈する必要のあるユーザーからの入力です。 そこから意図とエンティティを抽出するように LUIS をトレーニングするには、各意図に対してさまざまな異なる発話の例をキャプチャすることが重要です。 新しい発話についてのアクティブな学習、または継続的なトレーニング プロセスは、LUIS が提供する機械学習されたインテリジェンスに不可欠です。
+**発話**は、アプリが解釈する必要のあるユーザーからの入力です。 そこから意図とエンティティを抽出するように LUIS をトレーニングするには、各意図に対してさまざまな異なる発話の例をキャプチャすることが重要です。 新しい発話についてのアクティブな学習、または継続的なトレーニング プロセスは、LUIS が提供する機械学習インテリジェンスに不可欠です。
 
 ユーザーが入力すると思われる発話を収集します。 同じことを意味するが、さまざまな異なる方法で構成されている発話を含めます。
 
@@ -84,7 +84,7 @@ LUIS ポータルでバージョンを複製すると、バージョン設定は
 
 ### <a name="word-forms"></a>単語の形式
 
-**単語の形式**を正規化すると、語根以外に拡張された単語の違いは無視されます。 たとえば、単語 `run`、`running`、`runs` は動詞の時制に基づいて変化します。
+**単語の形式**を正規化すると、語根以外に拡張された単語の違いは無視されます。
 
 <a name="utterance-normalization-for-diacritics-and-punctuation"></a>
 

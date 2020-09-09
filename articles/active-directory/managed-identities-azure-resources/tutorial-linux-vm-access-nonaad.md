@@ -3,7 +3,7 @@ title: チュートリアル`:` マネージド ID を使用して Azure Key Vau
 description: Linux VM のシステム割り当てマネージド ID を使用して Azure Resource Manager にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: daveba
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdccabf701d4603b8c78f7e23ec1890171603273
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6756d66f176314ad5abd0c94f7bdf96c42a460a4
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74232184"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255311"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>チュートリアル:Linux VM のシステム割り当てマネージド ID を使用して Azure Key Vault にアクセスする 
 
@@ -66,7 +66,7 @@ Azure リソースのマネージド サービス ID を使用すると、Azure 
  
 ## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-retrieve-the-secret-from-the-key-vault"></a>VM の ID を使用してアクセス トークンを取得して、Key Vault からシークレットを取得する  
 
-これらの手順を完了するには、SSH クライアントが必要です。  Windows を使用している場合は、[Windows Subsystem for Linux](https://msdn.microsoft.com/commandline/wsl/about) で SSH クライアントを使用することができます。 SSH クライアント キーの構成について支援が必要な場合は、「[Azure 上の Windows で SSH キーを使用する方法](../../virtual-machines/linux/ssh-from-windows.md)」または「[Azure に Linux VM 用の SSH 公開キーと秘密キーのペアを作成して使用する方法](../../virtual-machines/linux/mac-create-ssh-keys.md)」をご覧ください。
+これらの手順を完了するには、SSH クライアントが必要です。  Windows を使用している場合は、[Windows Subsystem for Linux](/windows/wsl/about) で SSH クライアントを使用することができます。 SSH クライアント キーの構成について支援が必要な場合は、「[Azure 上の Windows で SSH キーを使用する方法](../../virtual-machines/linux/ssh-from-windows.md)」または「[Azure に Linux VM 用の SSH 公開キーと秘密キーのペアを作成して使用する方法](../../virtual-machines/linux/mac-create-ssh-keys.md)」をご覧ください。
  
 1. ポータルで Linux VM に移動し、 **[概要]** の **[接続]** をクリックします。 
 2. 任意の SSH クライアントを使用して、VM に**接続**します。 
@@ -110,8 +110,4 @@ Key Vault からシークレットを取得した後は、名前とパスワー�
 このチュートリアルでは、Linux VM のシステム割り当てマネージド ID を使用して Azure Key Vault にアクセスする方法について説明しました。  Azure Key Vault の詳細については、以下を参照してください。
 
 > [!div class="nextstepaction"]
->[Azure Key Vault](/azure/key-vault/key-vault-overview)
-
-
-
-
+>[Azure Key Vault](../../key-vault/general/overview.md)

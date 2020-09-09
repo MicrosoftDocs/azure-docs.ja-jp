@@ -1,21 +1,22 @@
 ---
 title: 共有キーによる承認を使用して REST API 操作を呼び出す
-titleSuffix: Azure Storage
+titleSuffix: Discover how to call Azure Storage REST API operations with Shared Key authorization. Get detailed information about each step of the sample operation.
 description: Azure Storage の REST API と共有キーによる承認を使用して、Blob Storage への要求を行います。
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/01/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozge
 ms.subservice: common
-ms.openlocfilehash: f5c6125b850062450516e7fc0b19c2e0d5d6f577
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f569fdac19c4f765828d24f4d6615fdd7bafef8a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77916066"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010904"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>共有キーによる承認を使用して REST API 操作を呼び出す
 
@@ -65,7 +66,7 @@ REST API への呼び出しは、クライアントが作成する要求およ�
 
 **要求メソッド**: GET。 この動詞は、要求オブジェクトのプロパティとして指定する HTTP メソッドです。 この動詞の他の値としては、呼び出す API に応じて HEAD、PUT、DELETE などがあります。
 
-**要求 URI**: `https://myaccount.blob.core.windows.net/?comp=list`。  この要求 URI は、BLOB ストレージ アカウント エンドポイント `http://myaccount.blob.core.windows.net` とリソース文字列 `/?comp=list` から作成されています。
+**要求 URI**: `https://myaccount.blob.core.windows.net/?comp=list`。  この要求 URI は、BLOB ストレージ アカウント エンドポイント `https://myaccount.blob.core.windows.net` とリソース文字列 `/?comp=list` から作成されています。
 
 [URI パラメーター](/rest/api/storageservices/List-Containers2#uri-parameters): ListContainers を呼び出すときに使うことができる追加のクエリ パラメーターがあります。 そのうちの 2 つは、呼び出しの *timeout* (タイムアウト、秒単位) と、フィルター処理に使われる *prefix* (プレフィックス) です。
 

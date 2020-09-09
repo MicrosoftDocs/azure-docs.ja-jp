@@ -3,26 +3,27 @@ title: Azure Media Services を使用してエンコードを実行する際に�
 description: このトピックでは、Azure Media Services を .NET SDK で使用してエンコードを実行する際にビデオをサブクリップする方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/09/2019
-ms.author: juliako
-ms.openlocfilehash: 3d584ee742aa93cdecf4b04d942afb2ed83a7357
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1725fab30ddb4d40e0bf5345683588c878658052
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67304781"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296568"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---net"></a>Media Services を使用してエンコードを実行する際にビデオをサブクリップする - .NET
 
-[ジョブ](https://docs.microsoft.com/rest/api/media/jobs)を使用してビデオをエンコードする際に、ビデオをトリミングまたはサブクリップすることができます。 この機能は、[BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) プリセットまたは [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) プリセットを使用して構築された[変換](https://docs.microsoft.com/rest/api/media/transforms)で動作します。
+[ジョブ](/rest/api/media/jobs)を使用してビデオをエンコードする際に、ビデオをトリミングまたはサブクリップすることができます。 この機能は、[BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) プリセットまたは [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) プリセットを使用して構築された[変換](/rest/api/media/transforms)で動作します。
 
 次の C# サンプルでは、エンコード ジョブを送信する際にアセット内のビデオをトリミングするジョブを作成します。 
 
@@ -30,7 +31,7 @@ ms.locfileid: "67304781"
 
 このトピックで説明する手順を完了するには以下を行う必要があります。
 
-- [Azure Media Services アカウントを作成します](create-account-cli-how-to.md)
+- [Azure Media Services アカウントを作成します](./create-account-howto.md)
 - 変換と入力アセットおよび出力アセットを作成します。 変換と入力アセットおよび出力アセットを作成する方法は、「[.NET を使用してビデオをアップロード、エンコード、ストリーム配信する](stream-files-tutorial-with-api.md)」チュートリアルでご覧いただけます。
 - [エンコードの概念](encoding-concept.md)に関するトピックを確認します。
 

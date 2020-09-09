@@ -5,17 +5,17 @@ description: HTTPS 対応リスナーにアタッチされているサーバー�
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 02/27/2020
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: victorh
-ms.openlocfilehash: ffda4b41497a9fd84db5fcee36202eb1c1dca2c0
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 4a872bc63be33ebed0a8ba9d89383cdfc9feef28
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457843"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386284"
 ---
-# <a name="configure-tls-termination-with-key-vault-certificates-by-using-azure-powershell"></a>Azure PowerShell で Key Vault 証明書を使用して TLS 終端を構成する
+# <a name="configure-tls-termination-with-key-vault-certificates-using-azure-powershell"></a>Azure PowerShell で Key Vault 証明書を使用して TLS 終端を構成する
 
 [Azure Key Vault](../key-vault/general/overview.md) はプラットフォームマネージド シークレット ストアです。シークレット、キー、TLS または SSL 証明書を保護するために使用できます。 Azure Application Gateway では、HTTPS 対応リスナーにアタッチされているサーバー証明書用の Key Vault との統合をサポートします。 このサポートは、Application Gateway v2 SKU に制限されます。
 
@@ -44,9 +44,11 @@ Select-AzSubscription -Subscription <your subscription>
 ```azurepowershell
 $rgname = "KeyVaultTest"
 $location = "East US"
-$kv = "TestKeyVaultAppGw"
+$kv = "<your key vault name>"
 $appgwName = "AppGwKVIntegration"
 ```
+> [!IMPORTANT]
+> キー コンテナーの名前は普遍的に一意である必要があります。
 
 ### <a name="create-a-resource-group-and-a-user-managed-identity"></a>リソース グループとユーザーマネージド ID を作成する
 
@@ -71,7 +73,7 @@ $certificate = Get-AzKeyVaultCertificate -VaultName $kv -Name "cert1"
 $secretId = $certificate.SecretId.Replace($certificate.Version, "")
 ```
 > [!NOTE]
-> TLS 終端が正しく機能するには、-EnableSoftDelete フラグを使用する必要があります。 [ポータルからの Key Vault の論理的な削除](../key-vault/general/overview-soft-delete.md#soft-delete-behavior)を構成している場合、保持期間は 90 日 (既定値) で維持する必要があります。 Application Gateway では、まだ異なる保有期間をサポートしていません。 
+> TLS 終端が正しく機能するには、-EnableSoftDelete フラグを使用する必要があります。 [ポータルからの Key Vault の論理的な削除](../key-vault/general/soft-delete-overview.md#soft-delete-behavior)を構成している場合、保持期間は 90 日 (既定値) で維持する必要があります。 Application Gateway では、まだ異なる保有期間をサポートしていません。 
 
 ### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 

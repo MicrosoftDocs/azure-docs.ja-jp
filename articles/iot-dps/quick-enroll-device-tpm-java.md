@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
-ms.custom: mvc
-ms.openlocfilehash: c199d5be4c103c80a6fcc126af70f48367909f64
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: mvc, devx-track-java
+ms.openlocfilehash: 44ed6d849a29b598784ee9341bf4c61ad491e0ae
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79290590"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325850"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>クイック スタート:Java Service SDK を使用して TPM デバイスを IoT Hub Device Provisioning Service に登録する
 

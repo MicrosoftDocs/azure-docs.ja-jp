@@ -2,14 +2,14 @@
 title: Azure Blockchain Workbench のトラブルシューティング
 description: Azure Blockchain Workbench プレビュー アプリケーションのトラブルシューティング方法。
 ms.date: 10/14/2019
-ms.topic: article
+ms.topic: troubleshooting
 ms.reviewer: brendal
-ms.openlocfilehash: ef4bce4dfba77aafa9b86c6877c153534b54636e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20c0f9bdd6f820a73b1ba6660de805268c0d8714
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74324299"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85212855"
 ---
 # <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Azure Blockchain Workbench プレビューのトラブルシューティング
 

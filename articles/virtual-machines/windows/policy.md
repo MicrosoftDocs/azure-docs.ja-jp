@@ -6,15 +6,15 @@ manager: vashan
 ms.service: virtual-machines-windows
 ms.subservice: security
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/02/2017
 ms.author: mimckitt
-ms.openlocfilehash: a0ff463bd7f77f8a4a138bf41698059102809215
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fb847a8935a438b4d2668733e87571aefdca26a1
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82098698"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288289"
 ---
 # <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a>Azure Resource Manager を使用して Windows VM にポリシーを適用する
 ポリシーを使用すると、さまざまな習慣や規則を企業全体に適用できます。 望ましい行動を強制することによって、組織の成功に貢献しつつ、リスクを軽減することができます。 この記事では、Azure Resource Manager ポリシーを使用して、組織の Virtual Machines の望ましい行動を定義する方法について説明します。

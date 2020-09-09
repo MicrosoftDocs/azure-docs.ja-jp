@@ -6,19 +6,19 @@ author: curtand
 ms.author: curtand
 manager: daveba
 ms.date: 04/16/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b35163387ed4ce71f7a2019835a1d9fdbff3051
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: cb119ef0ffd4da4dc524c9d3c0a88b94e2251142
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81532649"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423560"
 ---
 # <a name="download-a-list-of-users-in-azure-active-directory-portal"></a>Azure Active Directory ポータルでユーザーの一覧をダウンロードする
 
@@ -72,7 +72,7 @@ Azure AD 管理センターからユーザー一覧をダウンロードする�
 
 **[一括操作の結果]** ページでは、保留中の一括要求の状態を確認できます。
 
-[![](media/users-bulk-download/bulk-center.png "Check status in the Bulk Operations Results page")](media/users-bulk-download/bulk-center.png#lightbox)
+[![[一括操作の結果] ページで状態を確認します。](media/users-bulk-download/bulk-center.png)](media/users-bulk-download/bulk-center.png#lightbox)
 
 ## <a name="bulk-download-service-limits"></a>一括ダウンロード サービスの制限
 

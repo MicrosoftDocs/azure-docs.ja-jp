@@ -1,6 +1,6 @@
 ---
-title: Azure Automation Update Management での Linux Update エージェントに関する問題のトラブルシューティング
-description: Update Management ソリューションを使用して Linux Update エージェントの問題をトラブルシューティングして解決する方法について説明します。
+title: Azure Automation での Linux Update エージェントに関する問題のトラブルシューティング
+description: この記事では、Update Management で Linux Windows Update エージェントの問題を解決する方法について説明します。
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,40 +9,43 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: bba1c7e89a9c3bb1c9aa1567e36dd71a40f14636
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: f1351b29a0102a374b75d832687d66c3b5572c75
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81679073"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680858"
 ---
 # <a name="troubleshoot-linux-update-agent-issues"></a>Linux Update エージェントに関する問題のトラブルシューティング
 
-Update Management にマシンが準備完了 (正常) と表示されない理由は多数存在する可能性があります。 Update Management では、Hybrid Runbook Worker エージェントの正常性を検査して、背後にある問題を特定できます。 この記事では、Azure portal から Azure マシンを対象として、また、[オフラインのシナリオ](#troubleshoot-offline)で Azure 以外のマシンを対象としてトラブルシューティング ツールを実行する方法について説明します。 
+Update Management にマシンが準備完了 (正常) と表示されない理由は多数存在する可能性があります。 Linux Hybrid Runbook Worker エージェントの正常性を検査して、背後にある問題を特定できます。 マシンの 3 つの準備状態を次に示します。
 
-次の一覧は、マシンが取り得る 3 つの準備状態です。
-
-* 準備完了 - Hybrid Runbook Worker がデプロイされ、最後に表示されてからの経過時間が 1 時間未満である。
-* 切断 -  Hybrid Runbook Worker がデプロイされ、最後に表示されてからの経過時間が 1 時間以上である。
-* 未構成 - Hybrid Runbook Worker が見つからないか、オンボードが終了していない。
+* 準備完了: Hybrid Runbook Worker がデプロイされ、最後に表示されてからの経過時間が 1 時間未満である。
+* 切断状態の場合: Hybrid Runbook Worker がデプロイされ、最後に表示されてからの経過時間が 1 時間以上である。
+* 未構成:Hybrid Runbook Worker が見つからないか、デプロイが終了していない。
 
 > [!NOTE]
 > Azure portal に表示される内容とマシンの現在の状態の間で、わずかに遅延が発生する可能性があります。
 
+この記事では、Azure portal から Azure マシンを対象として、また、[オフラインのシナリオ](#troubleshoot-offline)で Azure 以外のマシンを対象としてトラブルシューティング ツールを実行する方法について説明します。 
+
+> [!NOTE]
+> このトラブルシューティング スクリプトでは現在、プロキシ サーバーが構成されている場合、プロキシ サーバー経由でトラフィックがルーティングされません。
+
 ## <a name="start-the-troubleshooter"></a>トラブルシューティングの開始
 
-Azure マシンの場合は、ポータルの **[Update Agent Readiness]\(Update エージェントの準備\)** 列にある **[トラブルシューティング]** リンクをクリックすると、[Troubleshoot Update Agent]\(Update エージェントのトラブルシューティング\) ページが起動します。 Azure 以外のマシンの場合は、リンクをクリックすると、この記事が表示されます。 Azure 以外のマシンをトラブルシューティングするには、オフラインの手順を参照してください。
+Azure マシンの場合は、ポータルの **[Update Agent Readiness]\(Update エージェントの準備\)** 列にある **[トラブルシューティング]** リンクを選択すると、[Troubleshoot Update Agent]\(Update エージェントのトラブルシューティング\) ページが起動します。 Azure 以外のマシンの場合は、リンクをクリックすると、この記事が表示されます。 Azure 以外のコンピューターのトラブルシューティングについては、「オフライン トラブルシューティング」セクションの手順を参照してください。
 
 ![VM リスト ページ](../media/update-agent-issues-linux/vm-list.png)
 
 > [!NOTE]
-> 検査を行うには VM が実行中である必要があります。 VM が実行されていない場合、 **[VM の開始]** ボタンが表示されます。
+> 検査を行うには VM が実行中である必要があります。 VM が実行されていない場合は、 **[Start the VM]\(VM を起動\)** が表示されます。
 
-[Troubleshoot Update Agent]\(Update エージェントのトラブルシューティング\) ページで **[チェックを実行]** をクリックすると、トラブルシューティング ツールが開始されます。 トラブルシューティング ツールは、[[実行コマンド]](../../virtual-machines/linux/run-command.md) を使用してマシンでスクリプトを実行し、依存関係を検証します。 トラブルシューティング ツールの実行が完了すると、チェック結果が返されます。
+[Troubleshoot Update Agent]\(Update エージェントのトラブルシューティング\) ページで **[チェックを実行]** を選択すると、トラブルシューティング ツールが開始します。 トラブルシューティング ツールは、[[実行コマンド]](../../virtual-machines/linux/run-command.md) を使用してマシンでスクリプトを実行し、依存関係を検証します。 トラブルシューティング ツールが終了すると、チェック結果が返されます。
 
 ![トラブルシューティング ページ](../media/update-agent-issues-linux/troubleshoot-page.png)
 
-完了すると、結果がウィンドウに返されます。 チェック セクションには、各チェックの対象が示されます。
+チェックが完了すると、結果がウィンドウに返されます。 チェック セクションには、各チェックの対象が示されます。
 
 ![Update エージェントのチェック ページ](../media/update-agent-issues-linux/update-agent-checks.png)
 
@@ -63,8 +66,7 @@ Azure マシンの場合は、ポータルの **[Update Agent Readiness]\(Update
 
 ### <a name="log-analytics-agent"></a>Log Analytics エージェント
 
-このチェックでは、Linux 用 Log Analytics エージェントがインストールされているかが確認されます。 インストールする方法については、「[Linux 用エージェントのインストール](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux
-)」をご覧ください。
+このチェックでは、Linux 用 Log Analytics エージェントがインストールされているかが確認されます。 インストールする方法については、「[Linux 用エージェントのインストール](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux)」をご覧ください。
 
 ### <a name="log-analytics-agent-status"></a>Log Analytics エージェントの状態
 
@@ -76,15 +78,18 @@ sudo /opt/microsoft/omsagent/bin/service_control restart
 
 ### <a name="multihoming"></a>マルチホーム
 
-このチェックでは、エージェントが複数のワークスペースに報告しているかどうかが判断されます。 Update Management では、マルチホームはサポートされていません。
+このチェックでは、エージェントが複数のワークスペースに報告しているかどうかが判断されます。 Update Management では、マルチホームがサポートされていません。
 
 ### <a name="hybrid-runbook-worker"></a>Hybrid Runbook Worker
 
-このチェックでは、Linux 用 Log Analytics エージェントに Hybrid Runbook Worker パッケージが含まれているかどうかが確認されます。 Update Management が動作するにはこのパッケージが必要です。
+このチェックでは、Linux 用 Log Analytics エージェントに Hybrid Runbook Worker パッケージが含まれているかどうかが確認されます。 Update Management が動作するにはこのパッケージが必要です。 詳細については、「[Linux 用 Log Analytics エージェントが実行されていない](hybrid-runbook-worker.md#oms-agent-not-running)」を参照してください。
+
+Update Management によって操作のエンドポイントから Hybrid Runbook Worker パッケージがダウンロードされます。 そのため、Hybrid Runbook Worker が実行されておらず、[操作のエンドポイント](#operations-endpoint)を確認できない場合、更新できないことがあります。
 
 ### <a name="hybrid-runbook-worker-status"></a>Hybrid Runbook Worker の状態
 
-このチェックでは、Hybrid Runbook Worker がマシンで実行されていることが確認されます。 Hybrid Runbook Worker が正しく実行されている場合は、次のプロセスが存在する必要があります。 詳しくは、[Log Analytics エージェント for Linux のトラブルシューティング](hybrid-runbook-worker.md#oms-agent-not-running)に関する記事をご覧ください。
+このチェックでは、Hybrid Runbook Worker がマシンで実行されていることが確認されます。 Hybrid Runbook Worker が正しく実行されている場合は、下の例のプロセスが存在する必要があります。
+
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
@@ -102,13 +107,13 @@ nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 
 このチェックでは、Hybrid Runbook Worker が Azure Automation および Log Analytics ワークスペースと正しく通信できるかどうかが確認されます。
 
-Hybrid Runbook Worker エージェントが登録エンドポイントと通信できるように、プロキシとファイアウォールが構成されている必要があります。 アドレスと開くポートの一覧については、「[Hybrid Worker 用のネットワーク計画](../automation-hybrid-runbook-worker.md#network-planning)」を参照してください
+Hybrid Runbook Worker エージェントが登録エンドポイントと通信できるように、プロキシとファイアウォールが構成されている必要があります。 アドレスと開くポートの一覧については、[ネットワーク計画](../automation-hybrid-runbook-worker.md#network-planning)に関する記事を参照してください。
 
 ### <a name="operations-endpoint"></a>操作エンドポイント
 
-このチェックでは、エージェントが Job Runtime Data Service と正しく通信できるかどうかを判別します。
+このチェックでは、Log Analytics エージェントが Job Runtime Data Service と正しく通信できるかどうかを判別します。
 
-Hybrid Runbook Worker エージェントが Job Runtime Data Service と通信できるように、プロキシとファイアウォールが構成されている必要があります。 アドレスと開くポートの一覧については、「[Hybrid Worker 用のネットワーク計画](../automation-hybrid-runbook-worker.md#network-planning)」を参照してください
+Hybrid Runbook Worker エージェントが Job Runtime Data Service と通信できるように、プロキシとファイアウォールが構成されている必要があります。 アドレスと開くポートの一覧については、[ネットワーク計画](../automation-hybrid-runbook-worker.md#network-planning)に関する記事を参照してください。
 
 ### <a name="log-analytics-endpoint-1"></a>Log Analytics エンドポイント 1
 
@@ -124,7 +129,7 @@ Hybrid Runbook Worker エージェントが Job Runtime Data Service と通信�
 
 ## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>オフライン トラブルシューティング
 
-スクリプトをローカルに実行することで、Hybrid Runbook Worker のトラブルシューティング ツールをオフラインで使用できます。 python スクリプト [update_mgmt_health_check.py](https://gallery.technet.microsoft.com/scriptcenter/Troubleshooting-utility-3bcbefe6) は、スクリプト センターにあります。 このスクリプトの出力例を次に示します。
+スクリプトをローカルに実行することで、Hybrid Runbook Worker のトラブルシューティング ツールをオフラインで使用できます。 Python スクリプト [update_mgmt_health_check.py](https://gallery.technet.microsoft.com/scriptcenter/Troubleshooting-utility-3bcbefe6) は、スクリプト センターにあります。 このスクリプトの出力例を次に示します。
 
 ```output
 Debug: Machine Information:   Static hostname: LinuxVM2
@@ -179,4 +184,4 @@ Passed: TCP test for {ods.systemcenteradvisor.com} (port 443) succeeded
 
 ## <a name="next-steps"></a>次のステップ
 
-Hybrid Runbook Worker のその他の問題をトラブルシューティングする方法については、「[Hybrid Runbook Worker のトラブルシューティング](hybrid-runbook-worker.md)」を参照してください。
+[Hybrid Runbook Worker の問題のトラブルシューティング](hybrid-runbook-worker.md)。

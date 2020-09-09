@@ -3,13 +3,14 @@ title: Azure Functions の PowerShell 開発者向けリファレンス
 description: PowerShell を使用して関数を開発する方法について説明します。
 author: eamonoreilly
 ms.topic: conceptual
+ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: 41f977e7e7c23c2f49fd656461b7a3920802997e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1da4154530f823d391aea779011a34a35edfd070
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234935"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071161"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions の PowerShell 開発者向けガイド
 
@@ -19,7 +20,7 @@ PowerShell Azure 関数 (関数) は、トリガーされた時点で実行さ�
 
 他の種類の関数と同様、PowerShell スクリプト関数も、`function.json` ファイルで定義されているすべての入力バインディングの名前に対応したパラメーターを受け入れます。 また、関数を開始したトリガーに関する追加情報を含む `TriggerMetadata` パラメーターも渡されます。
 
-この記事では、「[Azure Functions の開発者向けガイド](functions-reference.md)」を既に読んでいることを前提としています。 また、[Functions の PowerShell 向けクイックスタート](functions-create-first-function-powershell.md)で、初めての PowerShell 関数を作成しておく必要があります。
+この記事では、「[Azure Functions の開発者向けガイド](functions-reference.md)」を既に読んでいることを前提としています。 また、[Functions の PowerShell 向けクイックスタート](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)で、初めての PowerShell 関数を作成しておく必要があります。
 
 ## <a name="folder-structure"></a>フォルダー構造
 
@@ -374,25 +375,71 @@ param([string] $myBlob)
 
 PowerShell には、PowerShell プロファイルという概念があります。 PowerShell プロファイルに詳しくない場合は、「[About profiles (プロファイルについて)](/powershell/module/microsoft.powershell.core/about/about_profiles)」を参照してください。
 
-PowerShell 関数では、関数アプリの起動時にプロファイル スクリプトが実行されます。 関数アプリが起動するのは、最初にデプロイされたときとアイドル状態になった後です ([コールド スタート](#cold-start))。
+PowerShell 関数では、プロファイル スクリプトは、最初のデプロイ時とアイドル状態からの復帰 ([コールド スタート](#cold-start)) 後にアプリの PowerShell worker インスタンスごとに 1 回実行されます。 [PSWorkerInProcConcurrencyUpperBound](#concurrency) 値を設定してコンカレンシーを有効にすると、作成された実行空間ごとにプロファイルスクリプトが実行されます。
 
 Visual Studio Code や Azure Functions Core Tools などのツールを使用して関数アプリを作成すると、既定の `profile.ps1` が自動的に作成されます。 既定のプロファイルは [Core Tools GitHub リポジトリ](https://github.com/Azure/azure-functions-core-tools/blob/dev/src/Azure.Functions.Cli/StaticResources/profile.ps1)で保持されており、次の機能を備えています。
 
 * Azure に対する自動 MSI 認証。
 * 必要に応じて Azure PowerShell `AzureRM` PowerShell エイリアスを有効にする機能。
 
-## <a name="powershell-version"></a>PowerShell バージョン
+## <a name="powershell-versions"></a>PowerShell のバージョン
 
-次の表では、Functions Runtime のメジャー バージョンごとに使用される PowerShell バージョンを示しています。
+次の表は、Functions ランタイムのメジャー バージョンと、それに必要な .NET バージョンごとに使用可能な PowerShell バージョンを示しています。
 
-| Functions バージョン | PowerShell バージョン                             |
-|-------------------|------------------------------------------------|
-| 1.x               | Windows PowerShell 5.1 (ランタイムによりロック) |
-| 2.x               | PowerShell Core 6                              |
+| Functions バージョン | PowerShell バージョン                               | .NET バージョン  | 
+|-------------------|--------------------------------------------------|---------------|
+| 3.x (推奨) | PowerShell 7 (推奨)<br/>PowerShell Core 6 | .NET Core 3.1<br/>.NET Core 2.1 |
+| 2.x               | PowerShell Core 6                                | .NET Core 2.2 |
 
 現在のバージョンを確認するには、任意の関数から `$PSVersionTable` を出力します。
 
-## <a name="dependency-management"></a>依存関係の管理
+### <a name="running-local-on-a-specific-version"></a>特定のバージョンでのローカルな実行
+
+ローカルで実行する場合、Azure Functions ランタイムは既定で PowerShell Core 6 を使用します。 代わりに PowerShell 7 を使用してローカルで実行するには、プロジェクト ルートの local.setting.json ファイルの `Values` 配列に設定 `"FUNCTIONS_WORKER_RUNTIME_VERSION" : "~7"` を追加する必要があります。 PowerShell 7 でローカルに実行する場合、local.settings.json ファイルは次の例のようになります。 
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "powershell",
+    "FUNCTIONS_WORKER_RUNTIME_VERSION" : "~7"
+  }
+}
+```
+
+### <a name="changing-the-powershell-version"></a>PowerShell のバージョンの変更
+
+PowerShell Core 6 から PowerShell 7 にアップグレードできるようにするには、関数アプリがバージョン 3.x で実行されている必要があります。 これを行う方法については、「[現在のランタイム バージョンの表示と更新](set-runtime-version.md#view-and-update-the-current-runtime-version)」を参照してください。
+
+関数アプリで使用される PowerShell のバージョンを変更するには、次のステップに従います。 これは、Azure portal または PowerShell を使用して行うことができます。
+
+# <a name="portal"></a>[ポータル](#tab/portal)
+
+1. [Azure portal](https://portal.azure.com) で、関数アプリに移動します。
+
+1. **[設定]** で **[構成]** を選択します。 **[全般設定]** タブで、**PowerShell のバージョン**を探します。 
+
+    :::image type="content" source="media/functions-reference-powershell/change-powershell-version-portal.png" alt-text="関数アプリで使用される PowerShell のバージョンを選択する"::: 
+
+1. 目的の **PowerShell Core のバージョン**を選択し、 **[保存]** を選択します。 再起動の保留に関する警告が表示されたら、 **[続行]** を選択します。 関数アプリは、選択した PowerShell のバージョンで再起動します。 
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell のバージョンを変更するには、次のスクリプトを実行します。 
+
+```powershell
+Set-AzResource -ResourceId "/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<FUNCTION_APP>/config/web" -Properties @{  powerShellVersion  = '<VERSION>' } -Force -UsePatchSemantics
+
+```
+
+`<SUBSCRIPTION_ID>`、`<RESOURCE_GROUP>`、`<FUNCTION_APP>` を、Azure サブスクリプションの ID、リソース グループと関数アプリの名前にそれぞれ置き換えます。  `<VERSION>` を `~6` または `~7` のいずれかに置き換えます。 返されたハッシュ テーブルの `Properties` で `powerShellVersion` 設定の更新された値を確認できます。 
+
+---
+
+構成に変更が加えられると、関数アプリが再起動します。
+
+## <a name="dependency-management"></a>依存関係管理
 
 Functions では、依存関係の管理に [PowerShell ギャラリー](https://www.powershellgallery.com)を使用できます。 依存関係の管理を有効になっていると、.psd1 ファイルを使って、必要なモジュールが自動的にダウンロードされます。 この動作を有効にするには、次の例のように、[host.json ](functions-host-json.md) ファイルのルートで `managedDependency` プロパティを `true` に設定します。
 
@@ -416,7 +463,10 @@ Functions では、依存関係の管理に [PowerShell ギャラリー](https:/
 requirements.psd1 ファイルを更新すると、更新されたモジュールは、再起動後にインストールされます。
 
 > [!NOTE]
-> 管理対象の依存関係では、モジュールをダウンロードするときに、 www.powershellgallery.com にアクセスする必要があります。 ローカルで実行する場合は、必要なファイアウォール規則を追加して、ランタイムがこの URL にアクセスできることを確認してください。 
+> 管理対象の依存関係では、モジュールをダウンロードするときに、 www.powershellgallery.com にアクセスする必要があります。 ローカルで実行する場合は、必要なファイアウォール規則を追加して、ランタイムがこの URL にアクセスできることを確認してください。
+
+> [!NOTE]
+> 現在、管理対象の依存関係では、対話形式、または `Install-Module` を呼び出すときに `-AcceptLicense` スイッチを指定する方法でライセンスを受け入れるモジュールをサポートしていません。
 
 次のアプリケーション設定を使用して、管理対象の依存関係をダウンロードしてインストールする方法を変更できます。 アプリのアップグレードは `MDMaxBackgroundUpgradePeriod` 以内に開始され、アップグレード プロセスはほぼ `MDNewSnapshotCheckPeriod` 以内に完了します。
 
@@ -434,6 +484,7 @@ Functions では、`PSModulePath` に次の 2 つのパスが存在します。
 
 * 関数アプリのルートに存在する `Modules` フォルダー。
 * PowerShell 言語ワーカーによって制御される `Modules` フォルダーのパス。
+
 
 ### <a name="function-app-level-modules-folder"></a>関数アプリレベルの `Modules` フォルダー
 
@@ -501,17 +552,22 @@ Write-Host $env:WEBSITE_SITE_NAME
 * 多数の呼び出しを同時に処理しようとした場合。
 * 他の関数を呼び出す関数が同じ関数アプリ内にある場合。
 
-この動作を変更するには、次の環境変数を整数値に設定します。
+ワークロードの種類に応じて、いくつかのコンカレンシー モデルを調べることができます。
 
-```
-PSWorkerInProcConcurrencyUpperBound
-```
+* ```FUNCTIONS_WORKER_PROCESS_COUNT``` を増やします。 これにより、同じインスタンス内の複数のプロセスで関数の呼び出しを処理できますが、特定の CPU とメモリでオーバーヘッドが発生します。 一般に、I/O バインド関数は、このオーバーヘッドの影響を受けません。 CPU バインド関数の場合、影響が大きくなる可能性があります。
+
+* ```PSWorkerInProcConcurrencyUpperBound``` アプリの設定値を増やします。 これにより、同じプロセス内に複数の実行空間を作成できるため、CPU とメモリのオーバーヘッドが大幅に減少します。
 
 この環境変数は、関数アプリの[アプリ設定](functions-app-settings.md)で設定します。
 
+使い方によっては、Durable Functions によってスケーラビリティが大幅に向上する場合があります。 詳細については、[Durable Functions のアプリケーション パターン](/azure/azure-functions/durable/durable-functions-overview?tabs=powershell#application-patterns)に関する記事を参照してください。
+
+>[!NOTE]
+> "使用可能な実行空間がないため、要求がキューに置かれています" という警告が表示される場合がありますが、これはエラーではありません。 このメッセージは、要求がキューに登録されていて、前の要求が完了したときに処理されることを通知するものです。
+
 ### <a name="considerations-for-using-concurrency"></a>コンカレンシーの使用に関する注意点
 
-PowerShell は、既定では "_シングル スレッド_" のスクリプト言語です。 ただし、同じプロセス内で複数の PowerShell 実行空間を使用することで、コンカレンシーを追加できます。 作成される実行空間の量は、PSWorkerInProcConcurrencyUpperBound のアプリケーション設定と一致します。 スループットは、選択したプランで使用可能な CPU とメモリの量によって影響を受けます。
+PowerShell は、既定では "_シングル スレッド_" のスクリプト言語です。 ただし、同じプロセス内で複数の PowerShell 実行空間を使用することで、コンカレンシーを追加できます。 作成される実行空間の量は、```PSWorkerInProcConcurrencyUpperBound``` のアプリケーション設定と一致します。 スループットは、選択したプランで使用可能な CPU とメモリの量によって影響を受けます。
 
 開発者の入力の手間を軽減するために、Azure PowerShell では、"_プロセスレベル_" のコンテキストと状態が使用されています。 ただし、関数アプリでコンカレンシーを有効にし、状態の変更を伴うアクションを呼び出した場合は、最終的に競合状態に陥る可能性があります。 このような競合状態をデバッグするのは困難です。なぜなら、一方の呼び出しが特定の状態に依存しているのに、もう一方の呼び出しがその状態を変更したためです。
 
@@ -607,4 +663,4 @@ PowerShell 関数を使用するときは、以下のセクションに記載さ
 * [Azure Functions 開発者向けリファレンス](functions-reference.md)
 * [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
 
-[host.json]: functions-host-json.md
+[host.json のリファレンス]: functions-host-json.md

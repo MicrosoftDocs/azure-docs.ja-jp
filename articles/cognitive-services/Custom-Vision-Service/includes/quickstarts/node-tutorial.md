@@ -2,15 +2,16 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 04/14/2020
-ms.openlocfilehash: 0546645bc496f6e8918f937305ac6cad6a4428ed
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.date: 08/17/2020
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 2a8937debc38dab4b2d38b56d1c6a9c3edcbe2a7
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837863"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508575"
 ---
-この記事では、Custom Vision SDK と Node.js を使用して画像分類モデルを構築する基本的な方法について説明します。 作成後は、タグの追加、画像のアップロード、プロジェクトのトレーニング、プロジェクトの公開された予測エンドポイント URL の取得、エンドポイントを使用したプログラミングによる画像のテストを行うことができます。 この例は、独自の Node.js アプリケーションを構築するためのテンプレートとしてご利用ください。 分類モデルの構築と使用のプロセスをコード "_なし_" で行う場合は、[ブラウザー ベースのガイダンス](../../getting-started-build-a-classifier.md)を参照してください。
+この記事では、Custom Vision クライアント ライブラリと Node.js を使用して画像分類モデルを構築する基本的な方法について説明します。 作成後は、タグの追加、画像のアップロード、プロジェクトのトレーニング、プロジェクトの公開された予測エンドポイント URL の取得、エンドポイントを使用したプログラミングによる画像のテストを行うことができます。 この例は、独自の Node.js アプリケーションを構築するためのテンプレートとしてご利用ください。 分類モデルの構築と使用のプロセスをコード "_なし_" で行う場合は、[ブラウザー ベースのガイダンス](../../getting-started-build-a-classifier.md)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -18,9 +19,9 @@ ms.locfileid: "83837863"
 - [npm](https://www.npmjs.com/) がインストールされている。
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="install-the-custom-vision-sdk"></a>Custom Vision SDK をインストールする
+## <a name="install-the-custom-vision-client-library"></a>Custom Vision クライアント ライブラリをインストールする
 
-Custom Vision Service SDK for Node.js をインストールするには、PowerShell で次のコマンドを実行します。
+Node.js 用 Custom Vision Service クライアント ライブラリをインストールするには、PowerShell で次のコマンドを実行します。
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training
@@ -62,7 +63,7 @@ const trainer = new TrainingApi.TrainingAPIClient(credentials, endPoint);
 
 (async () => {
     console.log("Creating project...");
-    const sampleProject = await trainer.createProject("Sample Project")
+    const sampleProject = await trainer.createProject("Sample Project");
 ```
 
 ### <a name="create-tags-in-the-project"></a>プロジェクトにタグを作成する
@@ -70,8 +71,8 @@ const trainer = new TrainingApi.TrainingAPIClient(credentials, endPoint);
 プロジェクトに分類タグを作成するため、*sample.js* の末尾に次のコードを追加します。
 
 ```javascript
-const hemlockTag = await trainer.createTag(sampleProject.id, "Hemlock");
-const cherryTag = await trainer.createTag(sampleProject.id, "Japanese Cherry");
+    const hemlockTag = await trainer.createTag(sampleProject.id, "Hemlock");
+    const cherryTag = await trainer.createTag(sampleProject.id, "Japanese Cherry");
 ```
 
 ### <a name="upload-and-tag-images"></a>画像をアップロードし、タグ付けする
@@ -82,22 +83,22 @@ const cherryTag = await trainer.createTag(sampleProject.id, "Japanese Cherry");
 > 前に Cognitive Services Node.js SDK Samples プロジェクトをダウンロードした場所に応じて、*sampleDataRoot* を画像へのパスに変更する必要があります。
 
 ```javascript
-console.log("Adding images...");
-let fileUploadPromises = [];
-
-const hemlockDir = `${sampleDataRoot}/Hemlock`;
-const hemlockFiles = fs.readdirSync(hemlockDir);
-hemlockFiles.forEach(file => {
-    fileUploadPromises.push(trainer.createImagesFromData(sampleProject.id, fs.readFileSync(`${hemlockDir}/${file}`), { tagIds: [hemlockTag.id] }));
-});
-
-const cherryDir = `${sampleDataRoot}/Japanese Cherry`;
-const japaneseCherryFiles = fs.readdirSync(cherryDir);
-japaneseCherryFiles.forEach(file => {
-    fileUploadPromises.push(trainer.createImagesFromData(sampleProject.id, fs.readFileSync(`${cherryDir}/${file}`), { tagIds: [cherryTag.id] }));
-});
-
-await Promise.all(fileUploadPromises);
+    console.log("Adding images...");
+    let fileUploadPromises = [];
+    
+    const hemlockDir = `${sampleDataRoot}/Hemlock`;
+    const hemlockFiles = fs.readdirSync(hemlockDir);
+    hemlockFiles.forEach(file => {
+        fileUploadPromises.push(trainer.createImagesFromData(sampleProject.id, fs.readFileSync(`${hemlockDir}/${file}`), { tagIds: [hemlockTag.id] }));
+    });
+    
+    const cherryDir = `${sampleDataRoot}/Japanese Cherry`;
+    const japaneseCherryFiles = fs.readdirSync(cherryDir);
+    japaneseCherryFiles.forEach(file => {
+        fileUploadPromises.push(trainer.createImagesFromData(sampleProject.id, fs.readFileSync(`${cherryDir}/${file}`), { tagIds: [cherryTag.id] }));
+    });
+    
+    await Promise.all(fileUploadPromises);
 ```
 
 ### <a name="train-the-classifier-and-publish"></a>分類器をトレーニングしてする公開する
@@ -105,20 +106,20 @@ await Promise.all(fileUploadPromises);
 このコードにより、予測モデルの最初のイテレーションが作成され、そのイテレーションが予測エンドポイントに公開されます。 公開されたイテレーションに付けられた名前は、予測要求を送信するために使用できます。 イテレーションは、公開されるまで予測エンドポイントで利用できません。
 
 ```javascript
-console.log("Training...");
-let trainingIteration = await trainer.trainProject(sampleProject.id);
-
-// Wait for training to complete
-console.log("Training started...");
-while (trainingIteration.status == "Training") {
+    console.log("Training...");
+    let trainingIteration = await trainer.trainProject(sampleProject.id);
+    
+    // Wait for training to complete
+    console.log("Training started...");
+    while (trainingIteration.status == "Training") {
+        console.log("Training status: " + trainingIteration.status);
+        await setTimeoutPromise(1000, null);
+        trainingIteration = await trainer.getIteration(sampleProject.id, trainingIteration.id)
+    }
     console.log("Training status: " + trainingIteration.status);
-    await setTimeoutPromise(1000, null);
-    trainingIteration = await trainer.getIteration(sampleProject.id, trainingIteration.id)
-}
-console.log("Training status: " + trainingIteration.status);
-
-// Publish the iteration to the end point
-await trainer.publishIteration(sampleProject.id, trainingIteration.id, publishIterationName, predictionResourceId);
+    
+    // Publish the iteration to the end point
+    await trainer.publishIteration(sampleProject.id, trainingIteration.id, publishIterationName, predictionResourceId);
 ```
 
 ### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>予測エンドポイントで公開されたイテレーションを取得して使用する

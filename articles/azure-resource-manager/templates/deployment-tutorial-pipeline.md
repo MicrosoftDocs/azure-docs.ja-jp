@@ -1,15 +1,15 @@
 ---
 title: Azure Pipelines を使用した継続的インテグレーション
 description: Azure Resource Manager テンプレートを継続的にビルド、テスト、およびデプロイする方法について説明します。
-ms.date: 04/22/2020
+ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: dacbdbcbebbbd696c14745e055ed9f7bd7905b1d
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: c793c8bcbc01cbef99de13ef6dd2f6ce61a50773
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731936"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892679"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>チュートリアル:Azure Pipelines を使用した Azure Resource Manager テンプレートの継続的インテグレーション
 
@@ -39,8 +39,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * テンプレートのリポジトリの作成に使用する **GitHub アカウント**。 持っていない場合は、[無料で作成](https://github.com)できます。 GitHub リポジトリの使用に関する詳細については、[GitHub リポジトリの構築](/azure/devops/pipelines/repos/github)に関するページを参照してください。
 * **Git をインストールします**。 このチュートリアルの手順では、*Git Bash* または *Git Shell* を使用します。 手順については、[Git のインストールに関するページ]( https://www.atlassian.com/git/tutorials/install-git)を参照してください。
-* **Azure DevOps 組織**。 ない場合は、無料で作成できます。 [組織またはプロジェクト コレクションの作成]( https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops)に関するページを参照してください。
-* (省略可能) **Visual Studio Code と Resource Manager ツール拡張機能**。 「[Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](use-vs-code-to-create-template.md)」を参照してください。
+* **Azure DevOps 組織**。 ない場合は、無料で作成できます。 [組織またはプロジェクト コレクションの作成](/azure/devops/organizations/accounts/create-organization?view=azure-devops)に関するページを参照してください。
+* (省略可能) **Visual Studio Code と Resource Manager ツール拡張機能**。 「[クイック スタート:Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
 
 ## <a name="prepare-a-github-repository"></a>GitHub レポジトリを準備する
 
@@ -175,8 +175,8 @@ GitHub アカウントをお持ちでない場合は、[前提条件](#prerequis
     * **[場所]** :リソース グループの場所を選択します (**米国中部**など)。
     * **テンプレートの場所**: **[Linked artifact]\(リンクされた成果物\)** を選択します。この場合、タスクは接続されているリポジトリから直接テンプレート ファイルを探します。
     * **テンプレート**:「**CreateWebApp/azuredeploy.json**」と入力します。 フォルダー名とファイル名を変更した場合は、この値を変更する必要があります。
-    * **テンプレート パラメーター**: このフィールドは空のままにします。 **[テンプレート パラメーターのオーバーライド] にパラメーターの値を指定します。
-    * **overrideParameters**: 「 **-projectName [EnterAProjectName] -linkedTemplateUri [EnterTheLinkedTemplateURL]** 」と入力します。 プロジェクト名とリンク済みテンプレートの URL は、実際の値に置き換えてください。 リンク済みテンプレートの URL は、「[GitHub リポジトリを作成する](#create-a-github-repository)」の最後に書き留めた値です。
+    * **テンプレート パラメーター**: このフィールドは空のままにします。 **[テンプレート パラメーターのオーバーライド]** にパラメーターの値を指定します。
+    * **[テンプレート パラメーターのオーバーライド]** : 「 **-projectName [EnterAProjectName] -linkedTemplateUri [EnterTheLinkedTemplateURL]** 」と入力します。 プロジェクト名とリンク済みテンプレートの URL は、実際の値に置き換えてください。 リンク済みテンプレートの URL は、「[GitHub リポジトリを作成する](#create-a-github-repository)」の最後に書き留めた値です。 これは **https://raw.githubusercontent.com** で始まります。
     * **デプロイ モード**: **[増分]** を選択します。
     * **デプロイ名**: 「**DeployPipelineTemplate**」と入力します。 **[デプロイ名]** は、 **[Advanced]\(詳細\)** を選択すると表示されます。
 

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d5e33099d58c9cb4c110a78f2576d6eac83a7932
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b8ce3c795bc9ad212331ce1c1f413fe7fd6da909
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75351869"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246753"
 ---
 # <a name="tutorial-remove-azure-resources"></a>チュートリアル: Azure のリソースを削除する
 
@@ -62,4 +62,4 @@ Service Fabric Mesh アプリケーションを Azure に発行したら、次�
 * サービス間通信の別の例を確認するには、[投票アプリ サンプル](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/votingapp)を調べてください
 * Service Fabric リソース モデルの詳細については、[Service Fabric Mesh リソース モデル](service-fabric-mesh-service-fabric-resources.md)に関するページを参照してください。
 * Service Fabric Mesh の詳細については、[Service Fabric Mesh の概要](service-fabric-mesh-overview.md)に関するページを参照してください。
-* [Cloud Shell の概要を読む](https://docs.microsoft.com/azure/cloud-shell/overview)
+* [Cloud Shell の概要を読む](../cloud-shell/overview.md)

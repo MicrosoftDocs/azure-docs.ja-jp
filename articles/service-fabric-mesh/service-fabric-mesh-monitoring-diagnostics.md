@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 247a1de4d00668371337295616d31caf101f0cc5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e940f0cf0d1547b317cd9e7bd15ac5486d5e70b2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75498150"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248409"
 ---
 # <a name="monitoring-and-diagnostics"></a>監視と診断
 Azure Service Fabric Mesh は、仮想マシン、ストレージ、ネットワークを管理することなく開発者がマイクロサービス アプリケーションをデプロイできるフル マネージド サービスです。 Service Fabric Mesh の監視と診断は、主に次の 3 種類の診断データに分類されます。
@@ -58,7 +58,7 @@ Mesh 環境は、コンテナーのパフォーマンスを示す、いくつか
 | RestartCount | コンテナーの再起動の回数 | 該当なし |
 
 > [!NOTE]
-> ServiceStatus と ServiceReplicaStatus の値は、Service Fabric の [HealthState](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet) と同じです。 
+> ServiceStatus と ServiceReplicaStatus の値は、Service Fabric の [HealthState](/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet) と同じです。 
 
 各メトリックは、異なるディメンションで使用可能であるため、異なるレベルでの集計を表示できます。 ディメンションの現在の一覧は次のとおりです。
 
@@ -74,7 +74,7 @@ Mesh 環境は、コンテナーのパフォーマンスを示す、いくつか
 
 ### <a name="azure-monitor-cli"></a>Azure Monitor の CLI
 
-コマンドの完全な一覧が [Azure Monitor CLI のドキュメント](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)にありますが、いくつかの役立つ例を以下に示します 
+コマンドの完全な一覧が [Azure Monitor CLI のドキュメント](/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)にありますが、いくつかの役立つ例を以下に示します 
 
 それぞれの例で、リソース ID は次のパターンに従います
 
@@ -118,4 +118,4 @@ In addition to the metrics explorer, we also have a dashboard available out of t
 
 ## <a name="next-steps"></a>次のステップ
 * Service Fabric Mesh の詳細については、[Service Fabric Mesh の概要](service-fabric-mesh-overview.md)に関するページを参照してください。
-* Azure Monitor メトリック コマンドの詳細については、[Azure Monitor CLI のドキュメント](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)をご確認ください。
+* Azure Monitor メトリック コマンドの詳細については、[Azure Monitor CLI のドキュメント](/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)をご確認ください。

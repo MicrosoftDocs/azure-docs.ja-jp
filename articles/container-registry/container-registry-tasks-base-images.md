@@ -3,12 +3,12 @@ title: 基本イメージの更新 - タスク
 description: アプリケーション コンテナー イメージの基本イメージと、基本イメージの更新で Azure Container Registry タスクをトリガーする方法について説明します。
 ms.topic: article
 ms.date: 01/22/2019
-ms.openlocfilehash: 017c8f8a3a15896bd6e14a54136ba713e9f9c499
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 35933c4cdbbf2762f7a54bd945f8a8ffa55b9f21
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77617731"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85918503"
 ---
 # <a name="about-base-image-updates-for-acr-tasks"></a>ACR タスクの基本イメージの更新について
 
@@ -38,6 +38,13 @@ Dockerfile からのイメージ ビルドでは、ACR タスクによって、�
 * Microsoft Container Registry 内のパブリック リポジトリ
 
 `FROM` ステートメントで指定された基本イメージがこれらの場所のいずれかにある場合、基本イメージが更新された場合はこのイメージが常にリビルドされるように、ACR タスクによってフックが追加されます。
+
+## <a name="base-image-notifications"></a>基本イメージの通知
+
+基本イメージが更新されてから依存タスクがトリガーされるまでの時間は、基本イメージの場所によって異なります。
+
+* **Docker Hub または MCR のパブリック リポジトリからの基本イメージ** - パブリック リポジトリ内の基本イメージの場合は、ACR タスクにより、10 から 60 分のランダムな間隔でイメージの更新が確認されます。 依存タスクは、それに従って実行されます。
+* **Azure Container Registry からの基本イメージ** - Azure Container Registry 内の基本イメージの場合は、ACR タスクにより、基本イメージが更新されると直ちに実行がトリガーされます。 基本イメージは、タスクの実行場所と同じ ACR 内にあっても、任意のリージョンの異なる ACR 内にあってもかまいません。
 
 ## <a name="additional-considerations"></a>その他の注意点
 

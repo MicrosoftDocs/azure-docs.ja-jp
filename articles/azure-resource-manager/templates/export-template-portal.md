@@ -2,13 +2,13 @@
 title: Azure portal でテンプレートをエクスポートする
 description: Azure portal を使用して、サブスクリプション内のリソースから Azure Resource Manager テンプレートをエクスポートします。
 ms.topic: conceptual
-ms.date: 12/12/2019
-ms.openlocfilehash: 8cdba58a7a2ba998bac7fc0225ff957047cd69b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/29/2020
+ms.openlocfilehash: 0262517df11f0d91920fd7e44f96ff532ffbe63f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234011"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423237"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Azure portal のテンプレートへの単一および複数リソースのエクスポート
 
@@ -52,6 +52,8 @@ Resource Manager では、テンプレートにエクスポートするリソー
 テンプレートのエクスポート機能は、Azure Data Factory リソースのエクスポートをサポートしていません。 Data Factory リソースをエクスポートする方法については、「[Azure Data Factory のデータ ファクトリをコピーまたは複製する](https://aka.ms/exportTemplateViaAdf)」を参照してください。
 
 クラシック デプロイ モデルを使用して作成されたリソースをエクスポートするには、[Resource Manager デプロイ モデルに移行する](https://aka.ms/migrateclassicresourcetoarm)必要があります。
+
+テンプレートをエクスポートしたとき、リソースの種類がエクスポートされなかったという警告が表示された場合でも、そのリソースのプロパティを検出できます。 リソース プロパティを表示するためのさまざまなオプションに関する詳細について、「[リソースのプロパティ](view-resources.md)」についてを参照してください。 リソースの種類については、[Azure REST API](/rest/api/azure/) も参照できます。
 
 ## <a name="export-template-from-a-resource-group"></a>リソース グループからテンプレートをエクスポートする
 
@@ -121,5 +123,5 @@ Resource Manager では、テンプレートにエクスポートするリソー
 
 - [Azure CLI](../management/manage-resource-groups-cli.md#export-resource-groups-to-templates)、[Azure PowerShell](../management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)、または [REST API](/rest/api/resources/resourcegroups/exporttemplate) を使用してテンプレートをエクスポートする方法を学びます。
 - Resource Manager テンプレートの構文については、「[Azure Resource Manager テンプレートの構造と構文の詳細](template-syntax.md)」を参照してください。
-- テンプレートを開発する方法については、[ステップバイステップのチュートリアル](/azure/azure-resource-manager/)のページをご覧ください。
+- テンプレートを開発する方法については、[ステップバイステップのチュートリアル](../index.yml)のページをご覧ください。
 - Azure Resource Manager テンプレートのスキーマを表示するには、[テンプレート リファレンス](/azure/templates/)のページをご覧ください。

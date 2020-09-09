@@ -4,12 +4,12 @@ description: WebJobs SDK を使用して、Durable Function を WebJobs で実�
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ad498bdbc4e6dc9745c6ef45b3dc601ad36c0a62
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 826e475eb71563b52d687903aeac4ec936e267f6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82733415"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87093002"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Durable Functions を WebJobs として実行する方法
 
@@ -31,7 +31,7 @@ Durable Functions のチェーンのサンプルは、WebJobs SDK 2.x バージ�
 
 この記事の手順を完了するには、次のことが条件となります。
 
-* **Azure 開発**ワークロードと共に [Visual Studio 2019 をインストール](https://docs.microsoft.com/visualstudio/install/)します。
+* **Azure 開発**ワークロードと共に [Visual Studio 2019 をインストール](/visualstudio/install/)します。
 
   Visual Studio は既にあるものの、必要なワークロードがない場合は、 **[ツール]**  >  **[ツールと機能の取得]** の順に選択してワークロードを追加してください。
 

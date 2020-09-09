@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: 622c0cb8d58dddcdb13c7dc9412ada3f2e2d93e4
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: feee3a0d6de97ac6aaa1f9a92f20860f3f461ae3
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632982"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827233"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Azure portal を使用して Azure Resource Manager リソース グループを管理する
 
@@ -86,7 +86,7 @@ Resource Manager テンプレートを作成した後に、Azure portal を使�
 
 ロックすることで、組織内の他のユーザーが重要なリソース (Azure サブスクリプション、リソース グループ、リソースなど) を誤って削除または変更することを防ぎます。 
 
-1. 削除するリソース グループを開きます。  「[リソース グループを開く](#open-resource-groups)」を参照してください。
+1. ロックするリソース グループを開きます。  「[リソース グループを開く](#open-resource-groups)」を参照してください。
 2. 左側のウィンドウで、 **[ロック]** を選択します。
 3. ロックをリソース グループに追加するには、 **[追加]** を選択します。
 4. **[ロック名]** 、 **[ロックの種類]** 、 **[メモ]** を入力します。 ロックの種類には、 **[読み取り専用]** および **[削除]** が含まれます。
@@ -105,11 +105,11 @@ Resource Manager テンプレートを作成した後に、Azure portal を使�
 
 ## <a name="manage-access-to-resource-groups"></a>リソース グループへのアクセスを管理する
 
-[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) は、Azure に存在するリソースに対するアクセス権を管理するための手法です。 詳細については、「[RBAC と Azure portal を使用してアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) は、Azure のリソースへのアクセスを管理する方法です。 詳細については、「[RBAC と Azure portal を使用してアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 - Azure Resource Manager については、「[Azure Resource Manager の概要](overview.md)」を参照してください。
 - Resource Manager テンプレートの構文については、「[Azure Resource Manager テンプレートの構造と構文の詳細](../templates/template-syntax.md)」を参照してください。
-- テンプレートを開発する方法については、[ステップバイステップのチュートリアル](/azure/azure-resource-manager/)のページをご覧ください。
+- テンプレートを開発する方法については、[ステップバイステップのチュートリアル](../index.yml)のページをご覧ください。
 - Azure Resource Manager テンプレートのスキーマを表示するには、[テンプレート リファレンス](/azure/templates/)のページをご覧ください。

@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid イベントに対するイベント ハンドラーとしてのストレージ キュー
 description: Azure Event Grid イベントのイベント ハンドラーとして Azure ストレージ キューを使用する方法について説明します。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.author: spelluru
-ms.openlocfilehash: 9b767caa1041f865d8e15cd57796b186f7a4a6bb
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 07/07/2020
+ms.openlocfilehash: 502b44f276253be69362424c9de0fd516d20ad9a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596271"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105644"
 ---
 # <a name="storage-queue-as-an-event-handler-for-azure-event-grid-events"></a>Azure Event Grid イベントに対するイベント ハンドラーとしてのストレージ キュー
 イベント ハンドラーは、イベントの送信先となる場所です。 ハンドラーは、さらにいくつかのアクションを行ってイベントを処理します。 一部の Azure サービスは、イベントを処理するように自動的に構成されます。**Azure Queue storage** はその 1 つです。 
@@ -25,6 +21,121 @@ ms.locfileid: "83596271"
 |タイトル  |説明  |
 |---------|---------|
 | [クイック スタート: Azure CLI と Event Grid を使ってカスタム イベントを Azure Queue Storage にルーティングする](custom-event-to-queue-storage.md) | Queue Storage にカスタム イベントを送信する方法について説明します。 |
+
+## <a name="rest-examples-for-put"></a>REST の例 (PUT 用)
+
+### <a name="storage-queue-as-the-event-handler"></a>イベント ハンドラーとしてのストレージ キュー
+
+```json
+{
+    "properties": 
+    {
+        "destination": 
+        {
+            "endpointType": "StorageQueue",
+            "properties": 
+            {
+                "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>",
+                "queueName": "<QUEUE NAME>"
+            }
+        },
+        "eventDeliverySchema": "EventGridSchema"
+    }
+}
+```
+
+### <a name="storage-queue-as-the-event-handler---delivery-with-managed-identity"></a>イベント ハンドラーとしてのストレージ キュー - マネージド ID を使用した配信
+
+```json
+{
+    "properties": 
+    {
+        "deliveryWithResourceIdentity": 
+        {
+            "identity": 
+            {
+                "type": "SystemAssigned"
+            },
+            "destination": 
+            {
+                "endpointType": "StorageQueue",
+                "properties": 
+                {
+                    "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>",
+                    "queueName": "<QUEUE NAME>"
+                }
+            }
+        },
+        "eventDeliverySchema": "EventGridSchema"
+    }
+}
+```
+
+### <a name="storage-queue-as-a-deadletter-destination"></a>配信不能の宛先としてのストレージ キュー
+
+```json
+{
+    "name": "",
+    "properties": 
+    {
+        "destination": 
+        {
+            "endpointType": "StorageQueue",
+            "properties": 
+            {
+                "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<DESTINATION STORAGE>",
+                "queueName": "queue1"
+            }
+        },
+        "eventDeliverySchema": "EventGridSchema",
+        "deadLetterDestination": 
+        {
+            "endpointType": "StorageBlob",
+            "properties": 
+            {
+                "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<DEADLETTER STORAGE>",
+                "blobContainerName": "test"
+            }
+        }
+    }
+}
+```
+
+### <a name="storage-queue-as-a-deadletter-destination---managed-identity"></a>配信不能の宛先としてのストレージ キュー - マネージド ID
+
+```json
+{
+    "properties": 
+    {
+        "destination": 
+        {
+            "endpointType": "StorageQueue",
+            "properties": 
+            {
+                "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<DESTINATION STORAGE>",
+                "queueName": "queue1"
+            }
+        },
+        "eventDeliverySchema": "EventGridSchema",
+        "deadLetterWithResourceIdentity": 
+        {
+            "identity": 
+            {
+                "type": "SystemAssigned"
+            },
+            "deadLetterDestination": 
+            {
+                "endpointType": "StorageBlob",
+                "properties": 
+                {
+                    "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<DEADLETTER STORAGE>",
+                    "blobContainerName": "test"
+                }
+            }
+        }
+    }
+}
+```
 
 ## <a name="next-steps"></a>次のステップ
 サポートされているイベント ハンドラーの一覧については、「[イベント ハンドラー](event-handlers.md)」を参照してください。 

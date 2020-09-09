@@ -1,33 +1,23 @@
 ---
 title: Azure Service Bus のメッセージ セッション | Microsoft Docs
 description: この記事では、セッションを使用して、関連メッセージのバインドなしシーケンスの結合および順序指定処理を有効にする方法を説明します。
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 04/23/2020
-ms.author: aschhab
-ms.openlocfilehash: a4bc2dcfd1826623516a40be0aff7688d0b6168c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 05efc550e119186a2925c13d3fcfed11bec17251
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116691"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511298"
 ---
 # <a name="message-sessions"></a>メッセージ セッション
-Microsoft Azure Service Bus セッションでは、関連メッセージのバインドなしシーケンスの結合および順序指定処理が可能です。 セッションは、先入れ先出し (FIFO) および要求 - 応答のパターンで使用できます。 この記事では、Service Bus の使用時に、セッションを使用してこれらのパターンを実装する方法について説明します。 
-
-## <a name="first-in-first-out-fifo-pattern"></a>先入れ先出し (FIFO) パターン
-Service Bus で FIFO 処理を保証するには、セッションを使用します。 Service Bus では、メッセージ間の関係の性質に関する規範はなく、またメッセージのシーケンスの開始または終了位置を決定する特定のモデルは定義されていません。
+Microsoft Azure Service Bus セッションでは、関連メッセージのバインドなしシーケンスの結合および順序指定処理が可能です。 セッションは、**先入れ先出し (FIFO)** および**要求 - 応答**のパターンで使用できます。 この記事では、Service Bus の使用時に、セッションを使用してこれらのパターンを実装する方法について説明します。 
 
 > [!NOTE]
 > Service Bus の Basic レベルはセッションをサポートしていません。 Standard レベルと Premium レベルはセッションをサポートしています。 これらのレベルの違いについては、「[Service Bus の価格](https://azure.microsoft.com/pricing/details/service-bus/)」を参照してください。
+
+## <a name="first-in-first-out-fifo-pattern"></a>先入れ先出し (FIFO) パターン
+Service Bus で FIFO 処理を保証するには、セッションを使用します。 Service Bus では、メッセージ間の関係の性質に関する規範はなく、またメッセージのシーケンスの開始または終了位置を決定する特定のモデルは定義されていません。
 
 送信プロセスは、トピックまたはキューにメッセージを送信するときに、アプリケーションで定義されたセッションに固有の ID に、[SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid#Microsoft_Azure_ServiceBus_Message_SessionId) プロパティを設定することで、セッションを作成できます AMQP 1.0 プロトコル レベルでは、この値は *group-id* プロパティに相当します。
 
@@ -41,7 +31,7 @@ Service Bus のセッション機能では、C# や Java API の [MessageSession
 
 フラグは、ポータルの次のチェック ボックスを使用して設定します。
 
-![][2]
+![[Enable sessions]\(セッションを有効にする\) オプションが選択されて赤枠で囲まれている [キューの作成] ダイアログ ボックスのスクリーンショット。][2]
 
 > [!NOTE]
 > キューまたはサブスクリプションでセッションが有効になっている場合、クライアント アプリケーションでは通常のメッセージを送受信***できなくなります***。 すべてのメッセージは、(セッション ID を設定することで) セッションの一部として送信し、セッションを受信することで受信する必要があります。
@@ -52,7 +42,7 @@ Service Bus のセッション機能では、C# や Java API の [MessageSession
 
 セッションは、順序指定の送信を維持し保証しながら、インターリーブされたメッセージ ストリームの同時逆多重化を提供します。
 
-![][1]
+![セッション機能で順序指定の送信が維持される方法を示す図。][1]
 
 [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) の受信プロセスは、セッションを受け入れたクライアントによって作成されます。 クライアントは [QueueClient.AcceptMessageSession](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) (C# の場合は [QueueClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync)) を呼び出します。 リアクティブなコールバック モデルでは、セッション ハンドラーが登録されます。
 
@@ -80,7 +70,7 @@ Service Bus の観点からは、メッセージ セッションの状態は、S
 
 キューまたはサブスクリプションに存在するすべてのセッションは、Java API の **SessionBrowser** メソッドを使用して、.NET Framework クライアントでは [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient) および [SubscriptionClient](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient) の [GetMessageSessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions) を使って列挙できます。
 
-キューに保持されたセッション状態またはサブスクリプション数は、そのエンティティのストレージ クォータがいっぱいになるまで計算されます。 このため、セッションで、アプリケーションが終了したら、外部管理コストを回避するために、アプリケーションで保持された状態をクリーンアップすることを推奨します。
+キューに保持されたセッション状態またはサブスクリプション数は、そのエンティティのストレージ クォータがいっぱいになるまで計算されます。 このため、セッションで、アプリケーションが終了したら、外部管理コストを回避するために、アプリケーションで保持された状態をクリーンアップすることをを推奨します。
 
 ### <a name="impact-of-delivery-count"></a>配信数の影響
 

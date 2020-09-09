@@ -1,10 +1,10 @@
 ---
 title: 仮想ネットワーク用の Azure CLI サンプル
-description: 仮想ネットワーク用の Azure CLI サンプル。
+description: 多層アプリケーション用の仮想ネットワークの作成など、Azure CLI のタスクを完了するために使用できるさまざまなサンプル スクリプトについて説明します。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -15,18 +15,19 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 5ce10cf37b61b0269e6c8f2279b8814d9dc4a4f9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 539d11205ffead52d7f40526f2c712e8cf8b5cdd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78271218"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501442"
 ---
 # <a name="azure-cli-samples-for-virtual-network"></a>仮想ネットワーク用の Azure CLI サンプル
 
 次の表には、Azure CLI コマンドを使用する Bash スクリプトへのリンクが含まれています。
 
-| | |
+| スクリプト | 説明 |
 |----|----|
 | [多層アプリケーション用の仮想ネットワークの作成](./scripts/virtual-network-cli-sample-multi-tier-application.md) | フロントエンド サブネットとバックエンド サブネットを含む仮想ネットワークを作成します。 フロントエンド サブネットへのトラフィックは HTTP と SSH に制限され、バックエンド サブネットへのトラフィックは MySQL、ポート 3306 に制限されます。 |
 | [2 つの仮想ネットワークのピアリング](./scripts/virtual-network-cli-sample-peer-two-virtual-networks.md) | 同じリージョンに 2 つの仮想ネットワークを作成し、接続します。 |

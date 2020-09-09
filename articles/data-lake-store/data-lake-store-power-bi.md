@@ -1,17 +1,17 @@
 ---
 title: Azure Data Lake Storage Gen1 のデータを分析する - Power BI
-description: Power BI を使用して Azure Data Lake Storage Gen1 に格納されているデータを分析します。
+description: Power BI Desktop を使用して Azure Data Lake Storage Gen1 に格納されているデータを分析し、視覚化する方法を説明します。
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 952be68a1675732857969f875cd2b39c2feab674
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 282ac6f87d5ecff75e77b075ee1092f79b4923ad
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691655"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192854"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Power BI を使用して Azure Data Lake Storage Gen1 のデータを分析する
 この記事では、Power BI Desktop を使用して Azure Data Lake Storage Gen1 に格納されているデータを分析し、視覚化する方法を説明します。
@@ -81,10 +81,10 @@ ms.locfileid: "82691655"
         ![円グラフ](./media/data-lake-store-power-bi/pie-chart.png "グラフを作成します")
 16. これで、ページ レベル フィルターから特定の国または地域を選択し、選択した国または地域の各都市のドライバー数を確認できます。 たとえば、 **[視覚エフェクト]** タブの **[ページ レベル フィルター]** で、 **[ブラジル]** を選択します。
     
-    ![国を選択する](./media/data-lake-store-power-bi/select-country.png "国/リージョンの選択")
+    ![国または地域の選択](./media/data-lake-store-power-bi/select-country.png "国/リージョンの選択")
 17. 円グラフが自動的に更新され、ブラジルの各都市のドライバーが表示されます。
     
-    ![国のドライバー](./media/data-lake-store-power-bi/driver-per-country.png "国/地域ごとのドライバー")
+    ![国または地域のドライバー](./media/data-lake-store-power-bi/driver-per-country.png "国/地域ごとのドライバー")
 18. **[ファイル]** メニューの **[保存]** をクリックして、Power BI Desktop ファイルとして視覚エフェクトを保存します。
 
 ## <a name="publish-report-to-power-bi-service"></a>レポートを Power BI サービスに発行する

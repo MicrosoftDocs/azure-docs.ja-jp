@@ -8,42 +8,57 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/12/2019
-ms.openlocfilehash: 4b10a4c98abd6bec4074bf35764a9cbb85d5b157
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 08/18/2020
+ms.openlocfilehash: b2a356f8ee6c8e3d11548a3c7c17a868e4c057c4
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605980"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179183"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>マッピング データ フローでのシンク変換
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-データを変換した後、そのデータを変換先のデータセットにシンクできます。 各データ フローには少なくとも 1 つのシンク変換が必要ですが、変換フローを完了するために必要な数だけのシンクに書き込むことができます。 追加のシンクに書き込むには、新しい分岐と条件分割によって新しいストリームを作成します。
+データの変換を完了したら、シンク変換を利用してそれを変換先ストアに書き込みます。 各データ フローには少なくとも 1 つのシンク変換が必要ですが、変換フローを完了するために必要な数だけのシンクに書き込むことができます。 追加のシンクに書き込むには、新しい分岐と条件分割によって新しいストリームを作成します。
 
-各シンク変換は、厳密に 1 つの Data Factory データセットに関連付けられます。 データセットでは、データの形状と書き込みを行う場所が定義されます。
+各シンク変換は、厳密に 1 つの Azure Data Factory のデータセット オブジェクトまたはリンクされたサービスに関連付けられます。 シンク変換では、データの形状と書き込みを行う場所が決定されます。
 
-## <a name="supported-sink-connectors-in-mapping-data-flow"></a>マッピング データ フローでサポートされているシンク コネクタ
+## <a name="inline-datasets"></a>インライン データセット
 
-現在、シンク変換には次のデータセットを使用できます。
-    
-* [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) (JSON、Avro、テキスト、Parquet)
-* [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) (JSON、Avro、テキスト、Parquet)
-* [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) (JSON、Avro、テキスト、Parquet)
-* [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties)
-* [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties)
-* [Azure CosmosDB](connector-azure-cosmos-db.md#mapping-data-flow-properties)
+シンク変換を作成するとき、シンク情報をデータセット オブジェクト内で定義するのか、シンク変換内で定義するのか選択します。 ほとんどの形式はどちらか一方しかありません。 特定のコネクタの使用方法については、該当するコネクタ ドキュメントを参照してください。
 
-これらのコネクタに固有の設定は、 **[設定]** タブにあります。これらの設定に関する情報は、コネクタのドキュメントに記載されています。 
+形式がインラインとデータセット オブジェクトの両方でサポートされているとき、両方に利点があります。 データセット オブジェクトは、他のデータ フローと、コピーなどのアクティビティで活用できる再利用可能なエンティティです。 これらは特に、強化されたスキーマの使用時に役立ちます。 データセットは Spark を基盤とせず、シンク変換で特定の設定やスキーマ プロジェクションをオーバーライドしなければならない場合があります。
 
-Azure Data Factory は、[90 を超えるネイティブ コネクタ](connector-overview.md)にアクセスできます。 それらの他のソースにデータ フローからデータを書き込むには、データ フローの完了後に、コピー アクティビティを使用して、サポートされているステージング領域のいずれかからそのデータを読み込みます。
+インライン データセットは、柔軟なスキーマ、1 回限りのシンク インスタンス、またはパラメーター化されたシンクの使用時に推奨されます。 シンクが大きくパラメーター化されている場合、インライン データセットでは、"ダミー" オブジェクトを作成できません。 インライン データセットは Spark を基盤とし、そのプロパティはデータ フローにネイティブです。
+
+インライン データセットを使用するには、 **[シンクの種類]** セレクターで目的の形式を選択します。 シンク データセットを選択せず、接続先にするリンクされたサービスを選択します。
+
+![インライン データセット](media/data-flow/inline-selector.png "インライン データセット")
+
+##  <a name="supported-sink-types"></a><a name="supported-sinks"></a> サポートされているシンクの種類
+
+Mapping Data Flow は、抽出、読み込み、変換 (ELT) のアプローチに従い、すべて Azure に存在する "*ステージング*" データセットを操作します。 現在は、次のデータセットをソース変換で使用できます。
+
+| コネクタ | Format | データセット/インライン |
+| --------- | ------ | -------------- |
+| [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [区切りテキスト](format-delimited-text.md#mapping-data-flow-properties) <br> [差分 (プレビュー)](format-delta.md) <br> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br> ✓/- <br> ✓/- <br> -/✓ <br> ✓/- |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [区切りテキスト](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [区切りテキスト](format-delimited-text.md#mapping-data-flow-properties) <br> [差分 (プレビュー)](format-delta.md) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  <br> [Common Data Model (プレビュー)](format-common-data-model.md#sink-properties) | ✓/- <br> ✓/- <br> ✓/- <br> -/✓ <br> ✓/- <br> -/✓ |
+| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure CosmosDB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
+| [Snowflake](connector-snowflake.md) | | ✓/✓ |
+
+これらのコネクタに固有の設定は、 **[設定]** タブにあります。これらの設定に関する情報とデータ フロー スクリプトの例は、コネクタのドキュメントに記載されています。 
+
+Azure Data Factory は、[90 を超えるネイティブ コネクタ](connector-overview.md)にアクセスできます。 それらの他のソースにデータ フローからデータを書き込むには、コピー アクティビティを使用し、サポートされているシンクからそのデータを読み込みます。
 
 ## <a name="sink-settings"></a>シンクの設定
 
 シンクを追加したら、 **[シンク]** タブから構成を行います。ここでは、シンクを書き込むデータセットを選択して作成できます 以下の動画では、テキスト区切りのファイルの種類に対応するさまざまなシンク オプションについて説明します。
 
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tf7T]
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4tf7T]
 
 ![シンク設定](media/data-flow/sink-settings.png "シンクの設定")
 

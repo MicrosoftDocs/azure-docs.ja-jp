@@ -1,7 +1,7 @@
 ---
 title: SSIS パッケージを SQL マネージド インスタンスに移行する
 titleSuffix: Azure Database Migration Service
-description: Azure Database Migration Service または Data Migration Assistant を使用して、SQL Server Integration Services (SSIS) パッケージとプロジェクトを Azure SQL Database マネージド インスタンスに移行する方法について説明します。
+description: Azure Database Migration Service または Data Migration Assistant を使用して、SQL Server Integration Services (SSIS) パッケージとプロジェクトを Azure SQL Managed Instance に移行する方法について説明します。
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -12,22 +12,22 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 97a466ab033a42016c0d82465d1f98e2dcae8080
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 13fcda03f3ccd0c28e1dce594c46b8c0d9449054
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297173"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086570"
 ---
-# <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-database-managed-instance"></a>SQL Server Integration Services パッケージを Azure SQL Database マネージド インスタンスに移行する
-SQL Server Integration Services (SSIS) を使用していて、その SSIS プロジェクト/パッケージを、SQL Server によってホストされている配置元の SSISDB から、Azure SQL Database マネージド インスタンスによってホストされている配置先の SSISDB に移行する場合は、Azure Database Migration Service を使用できます。
+# <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-managed-instance"></a>SQL Server Integration Services パッケージを Azure SQL Managed Instance に移行する
+SQL Server Integration Services (SSIS) を使用していて、その SSIS プロジェクト/パッケージを、SQL Server によってホストされている配置元の SSISDB から、Azure SQL Managed Instance によってホストされている配置先の SSISDB に移行する場合は、Azure Database Migration Service を使用できます。
 
 使用する SSIS のバージョンが 2012 より前の場合、または SSIS 以外のパッケージ ストアの種類を使用する場合は、SSIS プロジェクト/パッケージを移行する前に、Integration Services プロジェクトの変換ウィザード (これも SSMS から起動できます) を使用して変換する必要があります。 詳細については、[プロジェクト デプロイ モデルへのプロジェクトの変換](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert)に関する記事を参照してください。
 
 > [!NOTE]
 > 現在、Azure Database Migration Service (DMS) は Azure SQL Database をターゲット移行先としてサポートしていません。 SSIS プロジェクト/パッケージを Azure SQL Database に再デプロイするには、記事「[SQL Server Integration Services パッケージを Azure SQL Database に再デプロイする](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)」を参照してください。
 
-この記事では、次のことについて説明します。
+この記事では、次の方法について説明します。
 > [!div class="checklist"]
 >
 > * 配置元の SSIS プロジェクト/パッケージを評価する。
@@ -37,19 +37,19 @@ SQL Server Integration Services (SSIS) を使用していて、その SSIS プ�
 
 これらの手順を完了するには、以下が必要です。
 
-* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure 仮想ネットワークを作成するには、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用してオンプレミスのソース サーバーとのサイト間接続を確立します。 詳細については、記事「[Azure Database Migration Service を使用して Azure SQL Database Managed Instance を移行するためのネットワーク トポロジ]( https://aka.ms/dmsnetworkformi)」を参照してください。 仮想ネットワークの作成方法の詳細については、[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。
+* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure 仮想ネットワークを作成するには、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用してオンプレミスのソース サーバーとのサイト間接続を確立します。 詳細については、[Azure Database Migration Service を使用して SQL Managed Instance を移行するためのネットワーク トポロジ]( https://aka.ms/dmsnetworkformi)に関する記事を参照してください。 仮想ネットワークの作成方法の詳細については、[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。
 * 仮想ネットワークのネットワーク セキュリティ グループの規則によって、Azure Database Migration Service への以下のインバウンド通信ポートが確実にブロックされないようにします。443、53、9354、445、12000。 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)に関する記事を参照してください。
 * [ソース データベース エンジンへのアクセスのために Windows ファイアウォール](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access?view=sql-server-2017)を構成すること。
 * Azure Database Migration Service がソースの SQL Server にアクセスできるように Windows ファイアウォールを開くこと。既定では TCP ポート 1433 が使用されます。
 * 動的ポートを使用して複数の名前付き SQL Server インスタンスを実行している場合は、SQL Browser サービスを有効にし、ファイアウォール経由の UDP ポート 1434 へのアクセスを許可することをお勧めします。これにより、Azure Database Migration Service はソース サーバー上の名前付きインスタンスに接続できるようになります。
 * ソース データベースの前でファイアウォール アプライアンスを使用する場合は、Azure Database Migration Service が移行のためにソース データベースにアクセスし、SMB ポート 445 経由でファイルにアクセスできるように、ファイアウォール規則を追加することが必要な場合があります。
-* SSISDB をホストする Azure SQL Database マネージド インスタンス。 作成する必要がある場合は、記事「[Azure SQL Database マネージド インスタンスの作成](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)」を参照してください。
+* SSISDB をホストする SQL Managed Instance。 作成する必要がある場合は、記事「[Azure SQL Managed Instance の作成](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)」を参照してください。
 * ソース SQL Server への接続と、ターゲットのマネージド インスタンスに使用するログインが、sysadmin サーバー ロールのメンバーであることを確認すること。
-* 配置先の SSISDB が Azure SQL Database マネージド インスタンスでホストされている場合は、Azure-SSIS Integration Runtime (IR) を含む Azure Data Factory (ADF) に SSIS がプロビジョニングされていることを確認すること (記事「[Azure Data Factory で Azure-SSIS 統合ランタイムを作成する](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)」に記載されています)。
+* 配置先の SSISDB が SQL Managed Instance でホストされている場合は、Azure-SSIS Integration Runtime (IR) を含む Azure Data Factory (ADF) に SSIS がプロビジョニングされていることを確認すること (記事「[Azure Data Factory で Azure-SSIS 統合ランタイムを作成する](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)」に記載されています)。
 
 ## <a name="assess-source-ssis-projectspackages"></a>配置元の SSIS プロジェクト/パッケージを評価する
 
-配置元の SSISDB の評価が Database Migration Assistant (DMA) にまだ統合されていない場合でも、ご利用の SSIS プロジェクト/パッケージは、Azure SQL Database マネージド インスタンス上でホストされている配置先の SSISDB に再デプロイされるときに評価/検証されます。
+配置元の SSISDB の評価が Database Migration Assistant (DMA) にまだ統合されていない場合でも、ご利用の SSIS プロジェクト/パッケージは、Azure SQL Managed Instance 上でホストされている配置先の SSISDB に再デプロイされるときに評価/検証されます。
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration リソース プロバイダーを登録する
 
@@ -81,11 +81,11 @@ SQL Server Integration Services (SSIS) を使用していて、その SSIS プ�
 
 5. 既存の仮想ネットワークを選択するか、新たに作成します。
 
-    この仮想ネットワークによって、Azure Database Migration Service に、ソース SQL Server とターゲット Azure SQL Database マネージド インスタンスへのアクセスが提供されます。
+    この仮想ネットワークによって、Azure Database Migration Service に、ソース SQL Server とターゲット Azure SQL Managed Instance へのアクセスが提供されます。
 
     Azure portal で仮想ネットワークを作成する方法の詳細については、[Azure portal を使用した仮想ネットワークの作成](https://aka.ms/DMSVnet)に関する記事を参照してください。
 
-    その他の詳細については、記事「[Azure Database Migration Service を使用して Azure SQL DB Managed Instance を移行するためのネットワーク トポロジ](https://aka.ms/dmsnetworkformi)」を参照してください。
+    その他の詳細については、記事「[Azure Database Migration Service を使用して Azure SQL Managed Instance を移行するためのネットワーク トポロジ](https://aka.ms/dmsnetworkformi)」を参照してください。
 
 6. 価格レベルを選択します。
 
@@ -107,7 +107,7 @@ SQL Server Integration Services (SSIS) を使用していて、その SSIS プ�
 
 3. **[+ 新しい移行プロジェクト]** を選択します。
 
-4. **[新しい移行プロジェクト]** 画面でプロジェクトの名前を指定し、 **[Source server type]\(ソース サーバーの種類\)** ボックスで **[SQL Server]** を選択した後、 **[ターゲット サーバーの種類]** ボックスで **[Azure SQL Database Managed Instance]** を選択し、 **[アクティビティの種類を選択します]** で **[SSIS パッケージ移行]** を選択します。
+4. **[新しい移行プロジェクト]** 画面でプロジェクトの名前を指定し、 **[Source server type]\(ソース サーバーの種類\)** ボックスで **[SQL Server]** を選択した後、 **[ターゲット サーバーの種類]** ボックスで **[Azure SQL Managed Instance]** を選択し、 **[アクティビティの種類を選択します]** で **[SSIS パッケージ移行]** を選択します。
 
    ![DMS のプロジェクトを作成する](media/how-to-migrate-ssis-packages-mi/dms-create-project2.png)
 

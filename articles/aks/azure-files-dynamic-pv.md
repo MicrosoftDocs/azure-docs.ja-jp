@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) で複数の同時実行ポッドで使用するための Azure Files を含む永続ボリュームを動的に作成する方法について説明します
 services: container-service
 ms.topic: article
-ms.date: 09/12/2019
-ms.openlocfilehash: 447df96240891e30570f0c7a8174674e1f404efc
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 07/01/2020
+ms.openlocfilehash: 0c11748c6faa0b94ff84dfc944e475116a2a1bd4
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83677900"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611400"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Azure Files を含む永続ボリュームを動的に作成して使用する
 
@@ -45,7 +45,7 @@ Azure Files 用の Kubernetes ストレージ クラスの詳細については�
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
-  name: azurefile
+  name: my-azurefile
 provisioner: kubernetes.io/azure-file
 mountOptions:
   - dir_mode=0777
@@ -74,11 +74,11 @@ kubectl apply -f azure-file-sc.yaml
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: azurefile
+  name: my-azurefile
 spec:
   accessModes:
     - ReadWriteMany
-  storageClassName: azurefile
+  storageClassName: my-azurefile
   resources:
     requests:
       storage: 5Gi
@@ -96,15 +96,15 @@ kubectl apply -f azure-file-pvc.yaml
 完了すると、ファイル共有が作成されます。 接続情報と資格情報を含む Kubernetes シークレットも作成されます。 [kubectl get][kubectl-get] コマンドを使用すると、PVC の状態を表示できます。
 
 ```console
-$ kubectl get pvc azurefile
+$ kubectl get pvc my-azurefile
 
-NAME        STATUS    VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
-azurefile   Bound     pvc-8436e62e-a0d9-11e5-8521-5a8664dc0477   5Gi        RWX            azurefile      5m
+NAME           STATUS    VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS      AGE
+my-azurefile   Bound     pvc-8436e62e-a0d9-11e5-8521-5a8664dc0477   5Gi        RWX            my-azurefile      5m
 ```
 
 ## <a name="use-the-persistent-volume"></a>永続ボリュームの使用
 
-次の YAML は、永続ボリューム要求 *azurefile* を使って、 */mnt/azure* パスに Azure ファイル共有をマウントするポッドを作成します。 Windows Server コンテナーの場合、 *'D:'* などの Windows パス規則を使用して *mountPath* を指定します。
+次の YAML では、永続ボリューム要求 *my-azurefile* を使って、 */mnt/azure* パスに Azure ファイル共有をマウントするポッドを作成します。 Windows Server コンテナーの場合、 *'D:'* などの Windows パス規則を使用して *mountPath* を指定します。
 
 `azure-pvc-files.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。 *claimName* が最後の手順で作成したPVC と一致していることを確認します。
 
@@ -130,7 +130,7 @@ spec:
   volumes:
     - name: volume
       persistentVolumeClaim:
-        claimName: azurefile
+        claimName: my-azurefile
 ```
 
 [kubectl apply][kubectl-apply] コマンドを使用してポッドを作成します。
@@ -157,7 +157,7 @@ Containers:
 Volumes:
   volume:
     Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
-    ClaimName:  azurefile
+    ClaimName:  my-azurefile
     ReadOnly:   false
 [...]
 ```
@@ -170,7 +170,7 @@ Kubernetes バージョン 1.13.0 以降の場合、*fileMode* と *dirMode* の
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
-  name: azurefile
+  name: my-azurefile
 provisioner: kubernetes.io/azure-file
 mountOptions:
   - dir_mode=0777
@@ -186,6 +186,8 @@ parameters:
 ## <a name="next-steps"></a>次のステップ
 
 関連するベスト プラクティスについては、[AKS のストレージとバックアップに関するベスト プラクティス][operator-best-practices-storage]に関する記事を参照してください。
+
+ストレージ クラス パラメーターについては、「[Dynamic Provision](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/docs/driver-parameters.md#dynamic-provision)」を参照してください。
 
 Azure Files を使用した Kubernetes 永続ボリュームについて、さらに詳しい情報を確認します。
 

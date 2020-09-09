@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Blink の統合 | Microsoft Docs
 description: Azure Active Directory と Blink の間にシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 6a7c17d6-addc-4df0-bb52-283f7790bca0
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/16/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c87fe6dce4fa35eaed4ab43d6dcbffeae32e27f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 089a4a2a8185251850d303fb9b7e9225c82c05f0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "69626064"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542719"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-blink"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Blink の統合
 
@@ -85,11 +80,10 @@ Blink に対する Azure AD SSO を構成してテストするには、次の構
 
     a. **[サインオン URL]** テキスト ボックスに、次のいずれかのパターンを使用して URL を入力します。
     
-    | | |
-    |-|-|
-    | `https://app.joinblink.com`|
-    | `https://<SUBDOMAIN>.joinblink.com`|
-    | | |
+    ```http
+    https://app.joinblink.com
+    https://<SUBDOMAIN>.joinblink.com
+    ```
 
     b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://api.joinblink.com/saml/o-<TENANTID>`
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 1126a85ed22ee17879767a93ca75dc76dd04b747
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: af7baf413c9054ef3e5bf527851ac06c113cdce7
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74132955"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131175"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Hyper-V VM のセカンダリ サイトへのディザスター リカバリーのサポート マトリックス
 
@@ -36,8 +36,8 @@ Windows Server 2016 |  Windows Server 2016 ホストと 2012 R2 ホストが混�
 
 **Windows のバージョン** | **Hyper-V (VMM あり)**
 --- | ---
-Windows Server 2016 | Windows Server 2016 の [Hyper-V でサポートされている](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Windows-guest-operating-systems-for-Hyper-V-on-Windows)任意のゲスト オペレーティング システム 
-Windows Server 2012 R2 | Windows Server 2012 R2 の [Hyper-V でサポートされている](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn792027%28v%3dws.11%29)任意のゲスト オペレーティング システム
+Windows Server 2016 | Windows Server 2016 の [Hyper-V でサポートされている](/windows-server/virtualization/hyper-v/Supported-Windows-guest-operating-systems-for-Hyper-V-on-Windows)任意のゲスト オペレーティング システム 
+Windows Server 2012 R2 | Windows Server 2012 R2 の [Hyper-V でサポートされている](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn792027%28v%3dws.11%29)任意のゲスト オペレーティング システム
 
 ## <a name="linux-machine-storage"></a>Linux マシンのストレージ
 
@@ -114,5 +114,4 @@ RDM | 該当なし
 
 ## <a name="next-steps"></a>次のステップ
 
-[VMM クラウドの Hyper-V VM をセカンダリ サイトにレプリケートする](tutorial-vmm-to-vmm.md)
-
+[VMM クラウドの Hyper-V VM をセカンダリ サイトにレプリケートする](./hyper-v-vmm-disaster-recovery.md)

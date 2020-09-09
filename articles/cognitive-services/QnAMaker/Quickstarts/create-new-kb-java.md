@@ -3,14 +3,14 @@ title: 'クイック スタート: ナレッジ ベースを作成する - REST 
 description: この Java REST ベースのクイック スタートでは、Cognitive Services API アカウントの Azure ダッシュボードに表示される QnA Maker ナレッジ ベースのサンプルをプログラムから作成する手順を紹介しています。
 ms.date: 12/16/2019
 ROBOTS: NOINDEX,NOFOLLOW
-ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: 90ab36389ceac2e8aad12332db433732525c62f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: RESTCURL2020FEB27, devx-track-java
+ms.topic: how-to
+ms.openlocfilehash: 2dcea06fa0cb61813330298c833be7eb21a63ae7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78851601"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325952"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>クイック スタート: Java を使用して QnA Maker でナレッジ ベースを作成する
 

@@ -1,5 +1,7 @@
 - name: サンプル モデル
   href: sample-model.md
+- name: Azure Remote Rendering Asset Tool
+  href: azure-remote-rendering-asset-tool.md
 - name: Unity ショーケース アプリケーション
   href: showcase-app.md
 - name: PowerShell スクリプトの例

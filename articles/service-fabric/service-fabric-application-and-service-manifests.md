@@ -3,12 +3,12 @@ title: Azure Service Fabric のアプリとサービスの記述
 description: マニフェストを使って Service Fabric のアプリケーションとサービスを記述する方法について説明します。
 ms.topic: conceptual
 ms.date: 8/12/2019
-ms.openlocfilehash: 6014ef6a9b6ec810aafd5e5be96223b8ed92d576
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fcf4c7611f0a6f52c28b234717b9244ac58ad2d4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75349973"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248222"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric のアプリケーション マニフェストとサービス マニフェスト
 この記事では、ApplicationManifest.xml ファイルと ServiceManifest.xml ファイルを使って、Service Fabric のアプリケーションとサービスの定義およびバージョン管理を行う方法について説明します。  詳細な例については、[アプリケーションとサービスのマニフェストの例](service-fabric-manifest-examples.md)を参照してください。  これらのマニフェスト ファイルの XML スキーマについては、「[ServiceFabricServiceModel.xsd スキーマ ドキュメント](service-fabric-service-model-schema.md)」をご覧ください。
@@ -157,7 +157,7 @@ For more information about other features supported by service manifests, refer 
 
 **Certificates** (前の例では設定されていません) では、[HTTPS エンドポイントのセットアップ](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service)または[アプリケーション マニフェストでのシークレットの暗号化](service-fabric-application-secret-management.md)に使われる証明書を宣言します。
 
-**配置の制約**は、サービスを実行する場所を定義するステートメントです。 これらのステートメントは、1 つまたは複数のノードのプロパティに対して選択した個々のサービスに接続されます。 詳細については、「[配置の制約とノードのプロパティの構文](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-cluster-description#placement-constraints-and-node-property-syntax)」を参照してください。
+**配置の制約**は、サービスを実行する場所を定義するステートメントです。 これらのステートメントは、1 つまたは複数のノードのプロパティに対して選択した個々のサービスに接続されます。 詳細については、「[配置の制約とノードのプロパティの構文](./service-fabric-cluster-resource-manager-cluster-description.md#placement-constraints-and-node-property-syntax)」を参照してください。
 
 **Policies** (前の例では設定されていません) では、サービスが Service Fabric ランタイムにアクセスできるかどうかなど、アプリケーション レベルで設定するログ コレクション、[既定の実行アカウント](service-fabric-application-runas-security.md)、[正常性](service-fabric-health-introduction.md#health-policies)、[セキュリティ アクセス](service-fabric-application-runas-security.md)の各ポリシーを記述します。
 
@@ -192,6 +192,3 @@ For more information about other features supported by application manifests, re
 [appmodel-diagram]: ./media/service-fabric-application-model/application-model.png
 [cluster-imagestore-apptypes]: ./media/service-fabric-application-model/cluster-imagestore-apptypes.png
 [cluster-application-instances]: media/service-fabric-application-model/cluster-application-instances.png
-
-
-

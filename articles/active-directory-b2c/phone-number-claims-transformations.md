@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 02/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bd26b2b475e293a1fda1b007289ba7c3eef35136
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e175a81efc1ab0950c1fda314efb206ff97a2b7f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78183935"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385384"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Azure AD B2C で電話番号要求変換を定義する
 
@@ -37,7 +37,7 @@ ms.locfileid: "78183935"
 
 この例では、値の型が `phoneNumber` のcellPhoneNumber 要求は、値の型が `string` の cellPhone 要求に変換されます。
 
-```XML
+```xml
 <ClaimsTransformation Id="PhoneNumberToString" TransformationMethod="ConvertPhoneNumberClaimToString">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="cellPhoneNumber" TransformationClaimType="phoneNumber" />
@@ -62,8 +62,8 @@ ms.locfileid: "78183935"
 
 | Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | phoneNumberString | string |  電話番号の文字列要求。 電話番号は国際対応形式で、先頭に "+" と国番号を使用する必要があります。 入力要求 `country` が指定された場合、電話番号は現地形式になります (国コードなし)。 |
-| InputClaim | country | string | [省略可能] ISO3166 形式での電話番号の国コードの文字列要求 (2 文字の ISO-3166 国コード)。 |
+| InputClaim | phoneNumberString | string |  電話番号の文字列要求。 電話番号は国際対応形式で、先頭に "+" と国/地域コードを使用する必要があります。 入力要求 `country` が指定された場合、電話番号は現地形式になります (国/地域コードなし)。 |
+| InputClaim | country | string | [省略可能] ISO3166 形式での電話番号の国/地域コードの文字列要求 (2 文字の ISO-3166 国/地域コード)。 |
 | OutputClaim | outputClaim | phoneNumber | この要求変換の結果。 |
 
 **ConvertStringToPhoneNumberClaim** 要求変換は、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)または[表示コントロール](display-controls.md)によって呼び出される[検証技術プロファイル](validation-technical-profile.md)から常に実行する必要があります。 **UserMessageIfClaimsTransformationInvalidPhoneNumber** セルフアサート技術プロファイル メタデータにより、ユーザーに表示されるエラー メッセージが制御されます。
@@ -72,7 +72,7 @@ ms.locfileid: "78183935"
 
 この要求変換を使用すると、指定された文字列要求が有効な電話番号であることが保証されます。 そうでない場合は、エラー メッセージがスローされます。 次の例では、**phoneString** ClaimType が実際に有効な電話番号であることを確認してから、標準の Azure AD B2C 形式で電話番号を返します。 そうでない場合は、エラー メッセージがスローされます。
 
-```XML
+```xml
 <ClaimsTransformation Id="ConvertStringToPhoneNumber" TransformationMethod="ConvertStringToPhoneNumberClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phoneString" TransformationClaimType="phoneNumberString" />
@@ -86,7 +86,7 @@ ms.locfileid: "78183935"
 
 この要求変換を含む検証技術プロファイルを呼び出すセルフアサート技術プロファイルで、エラー メッセージを定義できます。
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignup-Phone">
   <Metadata>
     <Item Key="UserMessageIfClaimsTransformationInvalidPhoneNumber">Custom error message if the phone number is not valid.</Item>
@@ -113,26 +113,26 @@ ms.locfileid: "78183935"
 
 ## <a name="getnationalnumberandcountrycodefromphonenumberstring"></a>GetNationalNumberAndCountryCodeFromPhoneNumberString
 
-これにより、入力要求から国番号と国内番号が抽出され、指定した電話番号が有効でない場合は、必要に応じて例外がスローされます。
+これにより、入力要求から国/地域コードと国内番号が抽出され、指定した電話番号が有効でない場合は、必要に応じて例外がスローされます。
 
 | Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | phoneNumber | string | 電話番号の文字列要求。 電話番号は国際対応形式で、先頭に "+" と国番号を使用する必要があります。 |
+| InputClaim | phoneNumber | string | 電話番号の文字列要求。 電話番号は国際対応形式で、先頭に "+" と国/地域コードを使用する必要があります。 |
 | InputParameter | throwExceptionOnFailure | boolean | [省略可能] 電話番号が有効でない場合に例外をスローするかどうかを示すパラメーター。 既定値は false です。 |
-| InputParameter | countryCodeType | string | [省略可能] 出力要求の国番号の種類を示すパラメーター。 使用できる値は、**CallingCode** (国の国際呼び出しコード。例: +1)、または **ISO3166** (2 文字の ISO-3166 国コード) です。 |
+| InputParameter | countryCodeType | string | [省略可能] 出力要求の国/地域コードの種類を示すパラメーター。 使用できる値は、**CallingCode** (国/地域の国際呼び出しコード。例: +1)、または **ISO3166** (2 文字の ISO-3166 国/地域コード) です。 |
 | OutputClaim | nationalNumber | string | 電話番号の国内番号に対する文字列要求。 |
-| OutputClaim | countryCode | string | 電話番号の国番号に対する文字列要求。 |
+| OutputClaim | countryCode | string | 電話番号の国/地域コードに対する文字列要求。 |
 
 
 **GetNationalNumberAndCountryCodeFromPhoneNumberString** 要求変換が、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)または[表示コントロール アクション](display-controls.md#display-control-actions)によって呼び出される[検証技術プロファイル](validation-technical-profile.md)から実行された場合、セルフアサート技術プロファイルの **UserMessageIfPhoneNumberParseFailure** メタデータによって、ユーザーに表示されるエラー メッセージが制御されます。
 
 ![エラー メッセージの実行パスの図](./media/phone-authentication/assert-execution.png)
 
-この要求変換を使用すると、完全な電話番号を国番号と国内番号に分割できます。 指定された電話番号が有効でない場合にエラー メッセージをスローするように選択できます。
+この要求変換を使用すると、完全な電話番号を国/地域コードと国内番号に分割できます。 指定された電話番号が有効でない場合にエラー メッセージをスローするように選択できます。
 
-次の例では、電話番号を国内番号と国番号に分割しようとしています。 電話番号が有効な場合、電話番号は国内番号によって上書きされます。 電話番号が有効でない場合、例外はスローされず、電話番号の元の値がそのまま使用されます。
+次の例では、電話番号を国内番号と国/地域コードに分割しようとしています。 電話番号が有効な場合、電話番号は国内番号によって上書きされます。 電話番号が有効でない場合、例外はスローされず、電話番号の元の値がそのまま使用されます。
 
-```XML
+```xml
 <ClaimsTransformation Id="GetNationalNumberAndCountryCodeFromPhoneNumberString" TransformationMethod="GetNationalNumberAndCountryCodeFromPhoneNumberString">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="phoneNumber" />
@@ -150,7 +150,7 @@ ms.locfileid: "78183935"
 
 この要求変換を含む検証技術プロファイルを呼び出すセルフアサート技術プロファイルで、エラー メッセージを定義できます。
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignup-Phone">
   <Metadata>
     <Item Key="UserMessageIfPhoneNumberParseFailure">Custom error message if the phone number is not valid.</Item>

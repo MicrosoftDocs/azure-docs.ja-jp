@@ -10,12 +10,12 @@ metadata:
   author: genlin
   ms.author: genli
   ms.date: 09/09/2019
-  ms.openlocfilehash: f19ce0f1e088d2360f4afb2925d2a5d67b4c0252
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 7367bc378cf2a271d69d78cd08c4d1252b11fd62
+  ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77920843"
+  ms.lasthandoff: 08/25/2020
+  ms.locfileid: "88816390"
 landingContent:
 - title: デプロイ エラーのトラブルシューティング
   linkLists:
@@ -24,39 +24,39 @@ landingContent:
     - text: Azure で VM を作成、再起動、またはサイズ変更するときの割り当てエラーのトラブルシューティング
       url: allocation-failure.md
     - text: Azure で新しい仮想マシンを作成するときのデプロイの問題のトラブルシューティング
-      url: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-deployment-new-vm
+      url: ./troubleshoot-deployment-new-vm-linux.md
     - text: 無効なテンプレートのエラーを解決する
       url: ../../azure-resource-manager/templates/error-invalid-template.md
     - text: SKU 利用不可エラーを解決する
-      url: https://docs.microsoft.com/azure/azure-resource-manager/templates/error-sku-not-available
+      url: ../../azure-resource-manager/templates/error-sku-not-available.md
 - title: VM デプロイ ガイダンス
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Azure 用の動作保証外のイメージを準備およびアップロードする
-      url: https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic
+      url: ../linux/create-upload-generic.md
     - text: Azure で一般化された VM のイメージを作成または複製する
-      url: https://docs.microsoft.com/azure/virtual-machines/linux/capture-image
+      url: ../linux/capture-image.md
 - title: VM に接続できない
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: ブート診断を使用して、Azure の Linux 仮想マシンをトラブルシューティングする方法
-      url: https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics
+      url: ./boot-diagnostics.md
     - text: Azure VM 上でローカルの Linux パスワードをリセットする方法
-      url: https://docs.microsoft.com/azure/virtual-machines/linux/reset-password
+      url: ./reset-password.md
     - text: PowerShell または CLI を使用してリモート アクセスをリセットし、リモート サーバーの問題に対処する
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-ssh-connection
+      url: ./troubleshoot-ssh-connection.md
     - text: SSH 接続の一般的な問題の診断および対処を行うための簡単な手順
-      url: https://azure.microsoft.com/documentation/articles/virtual-machines-troubleshoot-ssh-connections/
+      url: ./troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json
 - title: パスワードのリセット
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: VM アクセス拡張機能を使用して SSH キーまたはパスワードをリセットする
-      url: https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#ways-to-use-the-vmaccess-extension
+      url: ../extensions/vmaccess.md#ways-to-use-the-vmaccess-extension
     - text: オフライン メソッドを使用して Azure Linux VM のローカル パスワードをリセットする
-      url: https://docs.microsoft.com/en-us/azure/virtual-machines/troubleshooting/reset-password
+      url: ./reset-password.md
 - title: VM が起動しない
   linkLists:
   - linkListType: how-to-guide
@@ -64,9 +64,9 @@ landingContent:
     - text: 特定のカーネルの変更適用後に VM を起動したときの起動エラーを解決する
       url: https://support.microsoft.com/help/4091524/how-recovery-azure-linux-vm-from-kernel-related-boot-related-issues
     - text: シリアル コンソールを使用して GRUB にアクセスし、ブート構成モードを変更する
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode
+      url: ./serial-console-grub-single-user-mode.md
     - text: ブート診断を使用して、Azure の Linux 仮想マシンをトラブルシューティングする方法
-      url: https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics
+      url: ./boot-diagnostics.md
     - text: FSTAB エラーと軽減手順について
       url: https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors
 - title: VM を開始または停止できない
@@ -74,9 +74,9 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Azure での Windows 仮想マシンのデプロイに関する問題のトラブルシューティング
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/restart-resize-error-troubleshooting
+      url: ./restart-resize-error-troubleshooting.md
     - text: 割り当てエラーのトラブルシューティング (クラシック デプロイ モデル)
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/allocation-failure-classic
+      url: ./allocation-failure-classic.md
 - title: 予期しない VM の再起動
   linkLists:
   - linkListType: how-to-guide
@@ -88,52 +88,52 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: 仮想ディスクの FAQ
-      url: https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks
+      url: ../faq-for-disks.md
     - text: VM のサイズを変更するときの割り当てエラーのトラブルシューティング
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/allocation-failure
+      url: ./allocation-failure.md
     - text: VM の一時ドライブについて
-      url: https://docs.microsoft.com/azure/storage/storage-about-disks-and-vhds-linux#temporary-disk
+      url: ../managed-disks-overview.md#temporary-disk
     - text: Azure Managed Disks の概要
-      url: https://docs.microsoft.com/azure/virtual-machines/linux/managed-disks-overview
+      url: ../managed-disks-overview.md
     - text: Azure VM ディスクと Premium マネージド ディスクおよびアンマネージド ディスクについての FAQ
-      url: https://docs.microsoft.com/azure/virtual-machines/linux/convert-unmanaged-to-managed-disks
+      url: ../linux/convert-unmanaged-to-managed-disks.md
 - title: ディスクの暗号化の問題
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Linux VM での Azure Disk Encryption シナリオ
-      url: https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-linux
+      url: ../linux/disk-encryption-linux.md
     - text: ディスク暗号化の問題のトラブルシューティング
-      url: https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-troubleshooting
+      url: ../linux/disk-encryption-troubleshooting.md
     - text: Azure Disk Encryption に関する FAQ
-      url: https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-faq
+      url: ../linux/disk-encryption-faq.md
 - title: VM パフォーマンスの問題
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Azure VM のパフォーマンスに関する問題のトラブルシューティング
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-performance-virtual-machine-linux-windows
+      url: ./troubleshoot-performance-virtual-machine-linux-windows.md
     - text: Azure VM のパフォーマンス診断
-      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics
+      url: ./performance-diagnostics.md
 - title: VM 拡張機能の問題
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: 拡張機能の一般的なトラブルシューティングの手順
-      url: https://docs.microsoft.com/azure/virtual-machines/extensions/troubleshoot
+      url: ../extensions/troubleshoot.md
     - text: VM への拡張機能のインストール
-      url: https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux#installing-the-extension-in-your-vm
+      url: ../extensions/diagnostics-linux.md#installing-the-extension-in-your-vm
     - text: Windows でのカスタムのスクリプト拡張機能
-      url: https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/custom-script-windows#tips-and-tricks
+      url: ../extensions/custom-script-windows.md#tips-and-tricks
 - title: バックアップと復元
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Azure portal での Azure VM のバックアップのトラブルシューティング
-      url: https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot
+      url: ../../backup/backup-azure-vms-troubleshoot.md
     - text: Azure Backup Server のトラブルシューティング
-      url: https://docs.microsoft.com/azure/backup/backup-azure-mabs-troubleshoot
+      url: ../../backup/backup-azure-mabs-troubleshoot.md
     - text: Azure Backup の機能を確認する
-      url: https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup
+      url: ../../backup/backup-overview.md
     - text: Recovery Services コンテナーへの Azure Virtual Machines のバックアップ方法について
-      url: https://docs.microsoft.com/azure/backup/backup-azure-vms-first-look-arm
+      url: ../../backup/backup-azure-vms-first-look-arm.md

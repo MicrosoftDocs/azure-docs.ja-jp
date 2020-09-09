@@ -4,14 +4,15 @@ description: Azure Database for MySQL サーバーに対する予約割引の適
 author: kummanish
 ms.author: manishku
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: e47153b24234480ee52847f07e723c02fabb3113
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 4ef19b1fc8f0d503f1a35c60afd1faec2a548ca4
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509433"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88681993"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-mysql"></a>Azure Database for MySQL に対する予約割引の適用方法
 

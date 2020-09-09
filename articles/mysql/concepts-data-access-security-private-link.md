@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: c2cc4986542404281424286882c046dec39f5daf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6391b21faaf6cd2a61dbe84af50ae12e4289dff9
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79371292"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837291"
 ---
 # <a name="private-link-for-azure-database-for-mysql"></a>Azure Database for MySQL 用の Private Link
 
@@ -20,7 +20,7 @@ Private Link を使用すると、プライベート エンドポイントを経
 Private Link 機能をサポートしている PaaS サービスの一覧については、Private Link の[ドキュメント](https://docs.microsoft.com/azure/private-link/index)を参照してください。 プライベート エンドポイントは、特定の [VNet](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) およびサブネット内のプライベート IP アドレスです。
 
 > [!NOTE]
-> この機能は、Azure Database for MySQL が汎用およびメモリ最適化の価格レベルをサポートしているすべての Azure リージョンで使用できます。
+> プライベート リンク機能は、General Purpose または Memory Optimized のいずれかの価格レベルの Azure Database for MySQL サーバーにのみ使用可能です。 データベース サーバーがこれらの価格レベルのいずれであるかを確認します。
 
 ## <a name="data-exfiltration-prevention"></a>データの流出防止
 
@@ -32,7 +32,7 @@ Azure Database for MySQL におけるデータの流出とは、データベー�
 
 * VM のプライベート IP アドレスを使用する Azure Database for MySQL へのトラフィックのみを許可します。 詳細については、[サービス エンドポイント](concepts-data-access-and-security-vnet.md)と [VNet ファイアウォール規則](howto-manage-vnet-using-portal.md)に関する記事を参照してください。
 
-* Azure VM 上で、次のようにネットワーク セキュリティ グループ (NSG) とサービス タグを使用して、送信接続の範囲を絞り込みます。
+* Azure VM で、次のようにネットワーク セキュリティ グループ (NSG) とサービス タグを使用して、送信接続の範囲を絞り込みます
 
     * 米国西部にある Azure Database for MySQL への接続のみを許可するように、"*サービス タグ = SQL.WestUs*" のトラフィックを許可する NSG ルールを指定します
     * すべてのリージョンで Azure Database for MySQL に対する更新への接続を拒否するように、"*サービス タグ = SQL*" のトラフィックを拒否する NSG ルールを (高い優先度で) 指定します</br></br>
@@ -46,6 +46,10 @@ Private Link を使用することで、NSG のようなネットワーク ア�
 オンプレミスのマシンからパブリック エンドポイントに接続する場合、サーバーレベルのファイアウォール規則を使用して、ご自分の IP アドレスを IP ベースのファイアウォールに追加する必要があります。 このモデルは、開発またはテストのワークロード用に個々のコンピューターへのアクセスを許可する場合には適していますが、運用環境で管理するのは困難です。
 
 Private Link を使用すると、[Express Route](https://azure.microsoft.com/services/expressroute/) (ER)、プライベート ピアリング、または [VPN トンネル](https://docs.microsoft.com/azure/vpn-gateway/)を使用して、プライベート エンドポイントへのクロスプレミス アクセスを有効にすることができます。 その後、パブリック エンドポイント経由のすべてのアクセスを無効にして、IP ベースのファイアウォールを使用しないようにすることができます。
+
+> [!NOTE]
+> Azure Database for MySQL と VNet サブネットが異なるサブスクリプションに存在する場合があります。 このような場合は、次の構成を確認する必要があります。
+> - 両方のサブスクリプションに **Microsoft.DBforMySQL** リソース プロバイダーが登録されていることを確認してください。 詳細については、[resource-manager-registration][resource-manager-portal] に関するページをご覧ください
 
 ## <a name="configure-private-link-for-azure-database-for-mysql"></a>Azure Database for MySQL 用に Private Link を構成する
 
@@ -111,7 +115,7 @@ Private Link とファイアウォール規則を組み合わせて使用する�
 
 Azure Database for MySQL にアクセスする方法をプライベート エンドポイントのみに依存する場合、データベース サーバーで **[パブリック ネットワーク アクセスの拒否]** 構成を設定し、すべてのパブリック エンドポイント設定 (すなわち、[ファイアウォール規則](concepts-firewall-rules.md)や [VNet サービス エンドポイント](concepts-data-access-and-security-vnet.md)) を無効にできます。 
 
-この設定が *[はい]* に設定されている場合、Azure Database for MySQL にはプライベート エンドポイント経由の接続のみが許可されます。 この設定が *[いいえ]* に設定されている場合、ファイアウォール設定または VNet サービス エンドポイント設定に基づいてクライアントは Azure Database for MySQL に接続できます。 また、プライベート ネットワーク アクセスの値が設定されると、既存のファイアウォール規則や VNet サービス エンドポイント規則は追加も更新もできなくなります。
+この設定が *[はい]* に設定されている場合、Azure Database for MySQL にはプライベート エンドポイント経由の接続のみが許可されます。 この設定が *[いいえ]* に設定されている場合、ファイアウォール設定または VNet サービス エンドポイント設定に基づいてクライアントは Azure Database for MySQL に接続できます。 さらに、プライベート ネットワーク アクセスの値が設定されると、お客様は既存の 'ファイアウォール規則' や 'VNet サービス エンドポイント規則' の追加も更新もできなくなります。
 
 > [!Note]
 > この機能は、Azure Database for PostgreSQL 単一サーバーで "汎用" および "メモリ最適化" の価格レベルがサポートされているすべての Azure リージョンで利用できます。
@@ -129,3 +133,6 @@ Azure Database for MySQL のセキュリティ機能の詳細については、�
 * Azure Database for MySQL の仮想ネットワーク サービス エンドポイントを構成する方法については、[仮想ネットワークからのアクセスの構成](https://docs.microsoft.com/azure/mysql/concepts-data-access-and-security-vnet)に関する記事を参照してください。
 
 * Azure Database for MySQL 接続の概要については、「[Azure Database for MySQL の接続アーキテクチャ](https://docs.microsoft.com/azure/mysql/concepts-connectivity-architecture)」を参照してください
+
+<!-- Link references, to text, Within this same GitHub repo. -->
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

@@ -3,13 +3,13 @@ title: チュートリアル:PowerShell を使用して複数の Azure VM をバ
 description: このチュートリアルでは、Azure PowerShell を使用して、複数の Azure VM を Recovery Services コンテナーにバックアップする方法について詳しく説明します。
 ms.topic: tutorial
 ms.date: 03/05/2019
-ms.custom: mvc
-ms.openlocfilehash: 154238eae78ce44b9fc91058e58d9a11e254c0f9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 33090a0156d147fee5ab362b284ec503039617c4
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74171776"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181733"
 ---
 # <a name="back-up-azure-vms-with-powershell"></a>PowerShell を使用して Azure VM をバックアップする
 
@@ -48,7 +48,7 @@ ms.locfileid: "74171776"
 [Recovery Services コンテナー](backup-azure-recovery-services-vault-overview.md)は、Azure VM などの保護されたリソースのバックアップ データを格納する論理コンテナーです。 バックアップ ジョブを実行すると、Recovery Services コンテナー内に復旧ポイントが作成されます。 この復元ポイントのいずれかを使用して、データを特定の時点に復元できます。
 
 * このチュートリアルでは、バックアップする VM と同じリソース グループと場所にコンテナーを作成します。
-* Azure Backup では、バックアップされるデータのストレージを自動的に処理します。 既定では、コンテナーには [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy-grs.md) が使用されます。 geo 冗長ストレージでは、プライマリ リージョンから数百マイル離れたセカンダリ Azure リージョンに、バックアップされたデータが確実にレプリケートされます。
+* Azure Backup では、バックアップされるデータのストレージを自動的に処理します。 既定では、コンテナーには [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy.md) が使用されます。 geo 冗長ストレージでは、プライマリ リージョンから数百マイル離れたセカンダリ Azure リージョンに、バックアップされたデータが確実にレプリケートされます。
 
 次のようにコンテナーを作成します。
 

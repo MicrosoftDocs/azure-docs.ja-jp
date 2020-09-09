@@ -1,18 +1,18 @@
 ---
 title: チュートリアル:Azure portal でのクエリの管理
 description: このチュートリアルでは、Azure portal で Resource Graph クエリを作成し、新しいクエリを他のユーザーと共有します。
-ms.date: 05/20/2020
+ms.date: 06/29/2020
 ms.topic: tutorial
-ms.openlocfilehash: e63a92a4570a0713ed65e1090e4d77d25fb10f95
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f602a6ed26f467f2d3395bdf5e3346c83684b108
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83637762"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005173"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>チュートリアル:Azure portal で Azure Resource Graph クエリを作成して共有する
 
-Azure Resource Graph エクスプローラーを使うと、Azure portal で直接 Resource Graph クエリを保存できます。 クエリには次の 2 種類があります: "_プライベート_" と "_共有_"。 プライベート クエリは、自分の Azure portal の設定に保存されます。 一方、共有クエリは、ロールベースのアクセス制御 (RBAC) で管理し、リソース ロックで保護することができる Resource Manager リソースです。 どちらの種類のクエリも、保存時に暗号化されます。
+Azure Resource Graph エクスプローラーを使うと、Azure portal で直接 Resource Graph クエリを保存できます。 クエリには次の 2 種類があります: "_プライベート_" と "_共有_"。 プライベート クエリは、自分の Azure portal の設定に保存されます。 一方、共有クエリは、Azure ロールベースのアクセス制御 (Azure RBAC) による管理とリソース ロックによる保護が可能な Azure Resource Manager リソースです。 どちらの種類のクエリも、保存時に暗号化されます。
 
 お気に入りのクエリやよく使用するクエリを Azure portal に保存しておくと、探す時間を節約できます。 クエリを共有すると、一貫性と効率性というチームの目標を、繰り返しによって実現することができます。
 
@@ -44,8 +44,7 @@ Azure Resource Graph エクスプローラーを使うと、Azure portal で直�
 
    **[クエリの実行]** を選択すると、下のウィンドウにクエリの結果が表示されます。
 
-   このクエリについて詳しくは、[サンプル – 仮想マシンの数の取得 (OS の種類別)](../samples/starter.md#count-virtual-machines-by-os-type) に関する記事をご覧ください。
-
+   このクエリについて詳しくは、[サンプル – 仮想マシンの数の取得 (OS の種類別)](../samples/starter.md#count-os) に関する記事をご覧ください。
 
 1. **[保存]** または **[名前を付けて保存]** を選択します。 **[クエリの保存]** ウィンドウで、名前に「**Count VMs by OS**」と入力し、種類は **[プライベート クエリ]** のままにして、下部にある **[保存]** を選択します。 タブのタイトルが、 **[クエリ 1]** から **[Count VMs by OS]** に変わります。
 
@@ -61,7 +60,7 @@ Azure Resource Graph エクスプローラーを使うと、Azure portal で直�
 
 ## <a name="create-a-shared-query"></a>共有クエリを作成する
 
-プライベート クエリとは異なり、共有クエリは Resource Manager リソースです。 つまり、クエリをリソース グループに保存し、RBAC で管理および制御し、リソース ロックを使用して保護さえできることを意味します。 適切なアクセス許可を持つすべてのユーザーが、リソースとしてそれを参照し、使用することができます。
+プライベート クエリとは異なり、共有クエリは Resource Manager リソースです。 つまり、クエリをリソース グループに保存し、Azure RBAC で管理および制御し、リソース ロックを使用して保護さえできることを意味します。 適切なアクセス許可を持つすべてのユーザーが、リソースとしてそれを参照し、使用することができます。
 新しい共有クエリを作成するには、次の手順のようにします。
 
 1. ポータルのメニューから **[すべてのサービス]** を選択するか、すべてのページの上部にある Azure 検索ボックスを使用し、 **[Resource Graph エクスプローラー]** を探して選択します。
@@ -76,12 +75,11 @@ Azure Resource Graph エクスプローラーを使うと、Azure portal で直�
     
    **[クエリの実行]** を選択すると、下のウィンドウにクエリの結果が表示されます。
 
-   このクエリについて詳しくは、[サンプル – 仮想マシンの数の取得 (OS の種類別)](../samples/starter.md#count-virtual-machines-by-os-type) に関する記事をご覧ください。
+   このクエリについて詳しくは、[サンプル – 仮想マシンの数の取得 (OS の種類別)](../samples/starter.md#count-os) に関する記事をご覧ください。
 
 1. **[保存]** または **[名前を付けて保存]** を選択します。
 
-   
-   ![[保存] ボタンを使用して新しいクエリを保存する](../media/create-share-query/save-shared-query-buttons.png)
+   :::image type="content" source="../media/create-share-query/save-shared-query-buttons.png" alt-text="[保存] ボタンを使用して新しいクエリを保存する" border="false":::
 
 1. **[クエリの保存]** ウィンドウで、名前に「**Count VMs by OS**」と入力します。
 
@@ -91,7 +89,7 @@ Azure Resource Graph エクスプローラーを使うと、Azure portal で直�
 
 1. **[クエリの保存]** ウィンドウの下部にある **[保存]** を選択します。 タブのタイトルが、 **[クエリ 1]** から **[Count VMs by OS]** に変わります。 **resource-graph-queries** リソース グループを初めて使うときは、リソース グループが作成されるので、保存に予想以上の時間がかかります。
    
-   ![新しいクエリを共有クエリとして保存する](../media/create-share-query/save-shared-query-window.png)
+   :::image type="content" source="../media/create-share-query/save-shared-query-window.png" alt-text="新しいクエリを共有クエリとして保存する" border="false":::
 
    > [!NOTE] 
    > 既存のリソース グループの名前を指定して共有クエリをそこに保存する場合は、 **['resource-graph-queries' リソース グループに発行します]** チェック ボックスをオフにすることができます。 クエリに既定の名前のリソース グループを使用すると、共有クエリを探すのが容易になります。 また、そのリソース グループの目的もより明確になります。 ただし、既存のアクセス許可に基づくセキュリティ上の理由から、既存のリソース グループを選択することもあります。
@@ -100,7 +98,7 @@ Azure Resource Graph エクスプローラーを使うと、Azure portal で直�
 
 1. **[クエリを開く]** を選択します。 種類が **[共有クエリ]** に設定されていること、および **[サブスクリプション]** と **[リソース グループ]** の組み合わせが、クエリを保存した場所と一致していることを確認します。 保存した "**Count VMs by OS**" 項目が、 **[クエリ名]** の一覧に表示されるようになります。 保存したクエリのタイトル リンクを選択して、そのクエリの名前の新しいタブに読み込まれます。 共有クエリなので、タブのタイトルの横にアイコンが表示され、共有されていることが示されます。
 
-   ![アイコンの付いたクエリを表示する](../media/create-share-query/show-saved-shared-query.png)
+   :::image type="content" source="../media/create-share-query/show-saved-shared-query.png" alt-text="アイコンの付いたクエリを表示する" border="false":::
 
    > [!NOTE] 
    > 保存されているクエリを開き、タブにその名前が表示されている状態では、 **[保存]** ボタンにより、行った変更でクエリが更新されます。 新しいクエリを作成して保存するには、 **[名前を付けて保存]** を選択して、新しいクエリを保存したときと同じようにします。
@@ -136,6 +134,10 @@ Resources
 | where type == "microsoft.resourcegraph/queries"
 | project name, properties.timeModified, properties.query
 ```
+
+## <a name="run-a-shared-query"></a>共有クエリを実行する
+
+Resource Graph 共有クエリは、`{{shared-query-uri}}` 構文 (プレビュー) を使用して実行できます。 詳細については、[共有クエリの構文](../concepts/query-language.md#shared-query-syntax)に関するセクションを参照してください。
 
 ## <a name="delete-a-shared-query"></a>共有クエリを削除する
 

@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d233cba65d190178c500f78d4817e233ab46d780
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 1865d307e7b79e7e40b0e98f2dcfa2535b0313fd
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460072"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551709"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>チュートリアル:Azure 内の Linux 仮想マシンのファイルをバックアップおよび復元する
 
@@ -34,7 +34,7 @@ ms.locfileid: "81460072"
 
 Azure Backup サービスによってバックアップが開始されると、バックアップ拡張機能がトリガーされて特定時点のスナップショットが作成されます。 Azure Backup サービスには Linux の _VMSnapshotLinux_ 拡張機能が使用されます。 この拡張機能は、VM の初回バックアップ中、VM が実行されている場合にインストールされます。 VM が実行されていない場合、Backup サービスは基盤となるストレージのスナップショットを取ります (VM が停止している間はアプリケーション書き込みが行われないため)。
 
-既定では、Azure Backup は、Linux VM のファイル システム整合性バックアップを作成しますが、[事前スクリプトと事後スクリプト フレームワークを使用するアプリケーション整合性バックアップ](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)を作成するように構成することができます。 Azure Backup サービスがスナップショットを取ると、データはバックアップコンテナーに転送されます。 効率を最大に高めるために、前回のバックアップ以降に変更されたデータ ブロックが特定され、そのデータのみが転送されます。
+既定では、Azure Backup は、Linux VM のファイル システム整合性バックアップを作成しますが、[事前スクリプトと事後スクリプト フレームワークを使用するアプリケーション整合性バックアップ](../../backup/backup-azure-linux-app-consistent.md)を作成するように構成することができます。 Azure Backup サービスがスナップショットを取ると、データはバックアップコンテナーに転送されます。 効率を最大に高めるために、前回のバックアップ以降に変更されたデータ ブロックが特定され、そのデータのみが転送されます。
 
 データ転送が完了すると、スナップショットが削除され、回復ポイントが作成されます。
 
@@ -42,10 +42,10 @@ Azure Backup サービスによってバックアップが開始されると、�
 ## <a name="create-a-backup"></a>バックアップの作成
 Recovery Services コンテナーに対するバックアップを 1 日 1 回のスケジュールで作成します。
 
-1. [Azure portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 2. 左側のメニューから **[仮想マシン]** を選択します。 
 3. バックアップする VM を一覧から選択します。
-4. その VM のブレードの **[設定]** セクションで **[バックアップ]** をクリックします。 **[バックアップの有効化]** ブレードが開きます。
+4. その VM のブレードの **[操作]** セクションで **[バックアップ]** をクリックします。 **[バックアップの有効化]** ブレードが開きます。
 5. **[Recovery Services コンテナー]** の **[新規作成]** をクリックして、新しいコンテナーの名前を入力します。 仮想マシンと同じリソース グループで、仮想マシンと同じ場所に新しいコンテナーが作成されます。
 6. **[バックアップ ポリシー]** をクリックします。 この例では、既定値のまま **[OK]** をクリックします。
 7. **[バックアップの有効化]** ブレードの **[バックアップの有効化]** をクリックします。 これで、既定のスケジュールで毎日のバックアップが作成されます。
@@ -171,4 +171,3 @@ Recovery Services コンテナーに対するバックアップを 1 日 1 回�
 
 > [!div class="nextstepaction"]
 > [仮想マシンの管理](tutorial-govern-resources.md)
-

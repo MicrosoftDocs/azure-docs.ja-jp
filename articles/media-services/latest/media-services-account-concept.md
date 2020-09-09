@@ -3,22 +3,24 @@ title: Azure Media Services v3 アカウントの管理 | Microsoft Docs
 description: Azure でメディア コンテンツの管理、暗号化、エンコード、分析、およびストリーミングを開始するには、Media Services アカウントを作成する必要があります。 この記事では、Azure Media Services v3 アカウントを管理する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 07/08/2019
-ms.author: juliako
-ms.openlocfilehash: 08579f7ba952bb4ebcba1595508612affb852528
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 7c2cbaaf4866edc20f9745abe6759861db7834c3
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75980377"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291332"
 ---
 # <a name="manage-azure-media-services-v3-accounts"></a>Azure Media Services v3 アカウントの管理
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure でメディア コンテンツの管理、暗号化、エンコード、分析、およびストリーミングを開始するには、Media Services アカウントを作成する必要があります。 Media Services アカウントの作成では、Azure Storage アカウント リソースの名前を指定する必要があります。 指定されたストレージ アカウントは、Media Services アカウントに関連付けられます。 Media Services アカウントおよび関連するすべてのストレージ アカウントは、同じ Azure サブスクリプションに存在する必要があります。 詳細については、[ストレージ アカウント](storage-account-concept.md)に関するページを参照してください。
 
@@ -43,4 +45,4 @@ Media Services アカウントを新しいサブスクリプションに移動�
 
 ## <a name="next-steps"></a>次のステップ
 
-[アカウントの作成](create-account-cli-quickstart.md)
+[アカウントの作成](./create-account-howto.md)

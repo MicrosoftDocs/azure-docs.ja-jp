@@ -6,18 +6,18 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 0c1f279e49b938fb391223bec47d23326e34b2ea
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d25a3831897ff8ad2e7dfb0c69910fee246aec21
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595691"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85477687"
 ---
 # <a name="mark-your-app-as-publisher-verified-preview"></a>アプリを発行者確認済みとしてマークする (プレビュー)
 

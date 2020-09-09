@@ -8,17 +8,17 @@ author: KumudD
 manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: bb90858f7e87e31b8b6028a30a6000bbed4d3e4b
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 7ec33a70e96ac9aa989eb898ca450696c589ef1b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421094"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84702980"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli"></a>Azure 仮想ネットワーク内に IPv6 デュアル スタック アプリケーションをデプロイする - CLI
 

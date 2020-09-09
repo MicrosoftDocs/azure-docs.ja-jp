@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Autotask Endpoint Backup の統合 | Microsoft Docs'
 description: Azure Active Directory と Autotask Endpoint Backup の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9f55319e-895b-4130-8460-71713f25ed04
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/19/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c9bad99d0ce39fb5f179043278ca4785d726744
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 502717621fb9b228a818b67a09a699a2ac1713f7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73157788"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550216"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-endpoint-backup"></a>チュートリアル: Azure Active Directory と Autotask Endpoint Backup の統合
 
@@ -111,7 +106,7 @@ Autotask Endpoint Backup で Azure AD シングル サインオンを構成す�
     b. **[応答 URL]** ボックスに、`https://<subdomain>.backup.autotask.net/singlesignon/saml/SSO` のパターンを使用して URL を入力します
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Autotask Endpoint Backup クライアント サポート チーム](https://backup.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Autotask Endpoint Backup クライアント サポート チーム](https://backup.autotask.net/help/Content/0_HOME/_AutotaskCustomerSupport.htm)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -129,7 +124,7 @@ Autotask Endpoint Backup で Azure AD シングル サインオンを構成す�
 
 ### <a name="configure-autotask-endpoint-backup-single-sign-on"></a>Autotask Endpoint Backup のシングル サインオンの構成
 
-**Autotask Endpoint Backup** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Autotask Endpoint Backup サポート チーム](https://backup.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Autotask Endpoint Backup** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Autotask Endpoint Backup サポート チーム](https://backup.autotask.net/help/Content/0_HOME/_AutotaskCustomerSupport.htm)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -184,7 +179,7 @@ Autotask Endpoint Backup で Azure AD シングル サインオンを構成す�
 
 ### <a name="create-autotask-endpoint-backup-test-user"></a>Autotask Endpoint Backup のテスト ユーザーの作成
 
-このセクションでは、Autotask Endpoint Backup で Britta Simon というユーザーを作成します。  [Autotask Endpoint Backup サポート チーム](https://backup.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm)と連携し、Autotask Endpoint Backup プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Autotask Endpoint Backup で Britta Simon というユーザーを作成します。  [Autotask Endpoint Backup サポート チーム](https://backup.autotask.net/help/Content/0_HOME/_AutotaskCustomerSupport.htm)と連携し、Autotask Endpoint Backup プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

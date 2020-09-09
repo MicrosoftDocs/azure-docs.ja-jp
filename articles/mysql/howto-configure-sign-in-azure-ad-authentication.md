@@ -4,18 +4,21 @@ description: Azure Database for MySQL での認証に Azure Active Directory (Az
 author: lfittl-msft
 ms.author: lufittl
 ms.service: mysql
-ms.topic: conceptual
-ms.date: 01/22/2019
-ms.openlocfilehash: 1fa34deaa12400a164602d38b6b2d349a64850c6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.topic: how-to
+ms.date: 07/23/2020
+ms.openlocfilehash: 0418785fe558503b716ff1e798446fb64db998b1
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652241"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799840"
 ---
-# <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>MySQL での認証に Azure Active Directory を使用する
+# <a name="use-azure-active-directory-for-authentication-with-mysql"></a>MySQL での認証に Azure Active Directory を使用する
 
 この記事では、Azure Database for MySQL を使用して Azure Active Directory アクセスを構成する方法と、Azure AD トークンを使用して接続する方法について説明します。
+
+> [!IMPORTANT]
+> Azure Active Directory 認証は、MySQL 5.7 以降でのみ使用できます。
 
 ## <a name="setting-the-azure-ad-admin-user"></a>Azure AD 管理者ユーザーを設定する
 
@@ -54,21 +57,19 @@ Azure AD 統合は、mysql CLI などの一般的な MySQL ツールと連携す
 
 ユーザー/アプリケーションで Azure AD を使用して認証を行う必要がある手順を次に示します。
 
+### <a name="prerequisites"></a>前提条件
+
+Azure Cloud Shell、Azure VM、またはお使いのローカル コンピューター上で、次の手順を実行できます。 [Azure CLI がインストールされている](/cli/azure/install-azure-cli)ことを確認します。
+
 ### <a name="step-1-authenticate-with-azure-ad"></a>手順 1:Azure AD による認証
 
-[Azure CLI がインストールされている](/cli/azure/install-azure-cli)ことを確認します。
-
-Azure CLI ツールを呼び出して、Azure AD で認証します。 ご自分の Azure AD ユーザー ID とパスワードを指定する必要があります。
+最初に、Azure CLI ツールを使用して Azure AD による認証を行います。 この手順は、Azure Cloud Shell では必要ありません。
 
 ```
 az login
 ```
 
-このコマンドを実行すると、ブラウザー ウィンドウが起動して Azure AD 認証ページが表示されます。
-
-> [!NOTE]
-> Azure Cloud Shell を使用してこれらの手順を実行することもできます。
-> Azure Cloud Shell で Azure AD アクセス トークンを取得する場合は、明示的に `az login` を呼び出して、(別のウィンドウでコードを使用して) もう一度サインインする必要があることに注意してください。 サインイン後、`get-access-token` コマンドは正常に動作します。
+コマンドを実行すると、ブラウザー ウィンドウが起動されて、Azure AD 認証ページが表示されます。 ご自分の Azure AD ユーザー ID とパスワードを指定する必要があります。
 
 ### <a name="step-2-retrieve-azure-ad-access-token"></a>手順 2:Azure AD アクセス トークンを取得する
 
@@ -76,19 +77,19 @@ Azure CLI ツールを起動して、手順 1 で認証された Azure AD ユー
 
 例 (パブリック クラウドの場合):
 
-```shell
+```azurecli-interactive
 az account get-access-token --resource https://ossrdbms-aad.database.windows.net
 ```
 
 上記のリソース値は、示されているとおりに正確に指定する必要があります。 他のクラウドの場合、リソース値は次を使用して検索できます。
 
-```shell
+```azurecli-interactive
 az cloud show
 ```
 
 Azure CLI バージョン 2.0.71 以降では、すべてのクラウドに対して、次のより便利なバージョンでコマンドを指定できます。
 
-```shell
+```azurecli-interactive
 az account get-access-token --resource-type oss-rdbms
 ```
 
@@ -122,6 +123,15 @@ mysql -h mydb.mysql.database.azure.com \
   --enable-cleartext-plugin \ 
   --password=`az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken`
 ```
+
+接続時の重要な考慮事項:
+
+* `user@tenant.onmicrosoft.com` は、接続に使用しようとしている Azure AD ユーザーまたはグループの名前です
+* Azure AD ユーザー/グループ名の後には常にサーバー名を付加してください (`@mydb` など)
+* Azure AD ユーザーまたはグループ名の正確なスペルを使用するようにしてください
+* Azure AD ユーザーおよびグループの名前では、大文字と小文字が区別されます
+* グループとして接続する場合は、グループ名のみ (`GroupName@mydb` など) を使用します
+* 名前にスペースが含まれている場合は、各スペースの前に `\` を使用してエスケープします
 
 “enable-cleartext-plugin” 設定に注意してください。トークンがハッシュされずにサーバーに送信されるようにするには、他のクライアントと同様の構成を使用する必要があります。
 

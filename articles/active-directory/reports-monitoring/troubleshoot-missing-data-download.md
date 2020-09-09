@@ -9,7 +9,7 @@ editor: ''
 ms.assetid: ffce7eb1-99da-4ea7-9c4d-2322b755c8ce
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee07fdb6f8a4e69600297bdb16b6ad74793f10c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5003d7b644a0c75401a17ed6a37f31acd8180aa9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74007712"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608077"
 ---
 # <a name="i-cant-find-all-the-data-in-the-azure-active-directory-activity-logs-i-downloaded"></a>ダウンロードした Azure Active Directory アクティビティ ログにすべてのデータが表示されません。
 
@@ -36,7 +36,7 @@ ms.locfileid: "74007712"
 
 Azure portal でアクティビティ ログをダウンロードする場合は、新しい順に並べ替えられた最新の 250,000 件のレコードに制限されます。 
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決策
 
 [Azure AD Reporting API](concept-reporting-api.md) を利用すると、任意の時点のレコードを最大 100 万件取得できます。
 

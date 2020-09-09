@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 8c1c96fdb1f4f42c7592791881b855f74d411171
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cbdc81789fcd996774090f12523e7404c0aa0111
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70018282"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205849"
 ---
 # <a name="automatically-scale-an-azure-api-management-instance"></a>Azure API Management インスタンスを自動的にスケーリングする  
 
@@ -85,7 +85,7 @@ Azure API Management サービスの自動スケーリングを構成するに�
     | Threshold             | 80%               | 平均容量メトリックのしきい値。                                                                                                                                                                                                                                 |
     | 期間 (分) | 30                | 容量メトリックの平均値を算出するタイムスパンは使用パターンに固有です。 期間を長くすればするほど、反応は平滑化されます (断続的なスパイクがスケールアウトの決定にあまり影響しなくなります)。 ただし、スケールアウトのトリガーも遅れることになります。 |
     | *操作*              |                   |                                                                                                                                                                                                                                                                                 |
-    | Operation             | カウントを増やす量 |                                                                                                                                                                                                                                                                                 |
+    | 操作             | カウントを増やす量 |                                                                                                                                                                                                                                                                                 |
     | インスタンス数        | 1                 | Azure API Management インスタンスを 1 ユニットずつスケールアウトします。                                                                                                                                                                                                                          |
     | クールダウン (分)   | 60                | Azure API Management サービスのスケールアウトには少なくとも 20 分ほどかかります。ほとんどの場合、クールダウン期間を 60 分にすれば、多くのスケールアウトがトリガーされなくなります。                                                                                                  |
 
@@ -112,7 +112,7 @@ Azure API Management サービスの自動スケーリングを構成するに�
     | Threshold             | 35%               | スケールアウト規則と同様、この値は Azure API Management の使用状況パターンに大きく依存します。 |
     | 期間 (分) | 30                | スケールアウト規則に使用したものと同じ値です。                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
     | *操作*              |                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | Operation             | カウントを減らす量 | スケールアウト規則に使用したものの逆です。                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+    | 操作             | カウントを減らす量 | スケールアウト規則に使用したものの逆です。                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
     | インスタンス数        | 1                 | スケールアウト規則に使用したものと同じ値です。                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
     | クールダウン (分)   | 90                | スケールインはスケールアウトよりも控え目であることが望ましいため、クール ダウン期間を長くしてください。                                                                                                                                                                                                                                                                                                                                                                                                    |
 
@@ -131,4 +131,5 @@ Azure API Management サービスの自動スケーリングを構成するに�
 
 ## <a name="next-steps"></a>次のステップ
 
-+ [複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法](api-management-howto-deploy-multi-region.md)
+- [複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法](api-management-howto-deploy-multi-region.md)
+- [クラウドの支出を最適化して節約する](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

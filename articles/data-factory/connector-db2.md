@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/17/2020
+ms.date: 05/26/2020
 ms.author: jingwang
-ms.openlocfilehash: 2c2071e4b2a3daa528c7d01f64e38247b063e6f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c65ed7e5fa6bb1652791eee75d4caa4c9c5f1ca
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417413"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873633"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Azure Data Factory を使用して DB2 からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -36,7 +36,7 @@ ms.locfileid: "81417413"
 
 DB2 データベースのデータを、サポートされているシンク データ ストアにコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
-具体的には、この DB2 コネクタは、分散型リレーショナル データベース アーキテクチャ (DRDA) SQL アクセス マネージャー (SQLAM) バージョン 9、10、および 11 に対応した、次の IBM DB2 のプラットフォームとバージョンをサポートしています。
+具体的には、この DB2 コネクタでは、分散型リレーショナル データベース アーキテクチャ (DRDA) SQL アクセス マネージャー (SQLAM) バージョン 9、10、および 11 に対応した、次の IBM DB2 のプラットフォームとバージョンがサポートされています。  DDM/DRDA プロトコルが利用されます。
 
 * IBM DB2 for z/OS 12.1
 * IBM DB2 for z/OS 11.1
@@ -70,19 +70,70 @@ DB2 のリンクされたサービスでは、次のプロパティがサポー�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**Db2** | はい |
-| server |DB2 サーバーの名前です。 サーバー名に続けて、コロンで区切ってポート番号を指定できます (例: `server:port`)。 |はい |
+| connectionString | DB2 インスタンスに接続するために必要な情報を指定します。<br/> パスワードを Azure Key Vault に格納して、接続文字列から `password` 構成をプルすることもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 | はい |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
+
+接続文字列内の一般的なプロパティを次に示します。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| server |DB2 サーバーの名前です。 サーバー名に続けて、コロンで区切ってポート番号を指定できます (例: `server:port`)。<br>DB2 コネクタでは、DDM/DRDA プロトコルが利用されます。指定されていない場合、既定でポート 50000 が使用されます。 特定の DB2 データベースが使用するポートは、バージョンと設定によって異なる場合があります。たとえば、DB2 LUW の場合、既定のポートは 50000 です。AS400 の場合、既定のポートは 446 または448 (TLS が有効になっている場合) です。 ポートの一般的な構成方法については、[DB2 z/OS](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.qb.dbconn.doc/doc/t0008229.html)、[DB2 iSeries](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_74/ddp/rbal1ports.htm)、[DB2 LUW](https://www.ibm.com/support/knowledgecenter/en/SSEKCU_1.1.3.0/com.ibm.psc.doc/install/psc_t_install_typical_db2_port.html) の各ドキュメントをご覧ください。 |はい |
 | database |DB2 データベースの名前です。 |はい |
 | authenticationType |DB2 データベースへの接続に使用される認証の種類です。<br/>使用可能な値:**Basic**。 |はい |
 | username |DB2 データベースに接続するユーザー名を指定します。 |はい |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
-| packageCollection | データベースに対してクエリを実行するときに、必要なパッケージが ADF によって自動的に作成される場所を指定します。 | いいえ |
+| packageCollection | データベースに対してクエリを実行するときに、必要なパッケージが ADF によって自動的に作成される場所を指定します。 これが設定されていない場合、Data Factory では既定値として {username} が使用されます。 | いいえ |
 | certificateCommonName | Secure Sockets Layer (SSL) またはトランスポート層セキュリティ (TLS) 暗号化を使用する場合は、証明書共通名の値を入力する必要があります。 | いいえ |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 > [!TIP]
 > `The package corresponding to an SQL statement execution request was not found. SQLSTATE=51002 SQLCODE=-805` というエラー メッセージが表示された場合は、そのユーザーに必要なパッケージが作成されていません。 既定の場合、ADF では、DB2 への接続に使用したユーザーの名前が付けられたコレクションの下にパッケージを作成しようとします。 データベースに対してクエリを実行するときに、ADF によって必要なパッケージを作成する場所を示すパッケージ コレクション プロパティを指定してください。
 
 **例:**
+
+```json
+{
+    "name": "Db2LinkedService",
+    "properties": {
+        "type": "Db2",
+        "typeProperties": {
+            "connectionString": "server=<server:port>;database=<database>;authenticationType=Basic;username=<username>;password=<password>;packageCollection=<packagecollection>;certificateCommonName=<certname>;"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+**例: パスワードを Azure Key Vault に格納する**
+
+```json
+{
+    "name": "Db2LinkedService",
+    "properties": {
+        "type": "Db2",
+        "typeProperties": {
+            "connectionString": "server=<server:port>;database=<database>;authenticationType=Basic;username=<username>;packageCollection=<packagecollection>;certificateCommonName=<certname>;",
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+以下のペイロードで DB2 のリンクされたサービスを使用していた場合、引き続きそのままサポートされますが、今後は新しいものを使用することをお勧めします。
+
+**以前のペイロード:**
 
 ```json
 {

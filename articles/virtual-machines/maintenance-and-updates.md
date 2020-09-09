@@ -4,15 +4,15 @@ description: Azure で実行されている仮想マシンのメンテナンス�
 author: shants123
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
-ms.date: 11/18/2019
+ms.topic: conceptual
+ms.date: 05/22/2020
 ms.author: shants
-ms.openlocfilehash: eaf7616b3bd69828829342b4dca9247c009d3475
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5dcf4ad7acb3becd2ca04407bc8e5b3ac45701f1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226779"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501706"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Azure での仮想マシンのメンテナンス
 
@@ -21,7 +21,7 @@ Azure では、定期的にそのプラットフォームを更新して、仮�
 更新は、ホストされている VM にはほとんど影響しません。 更新が影響を及ぼす場合、Azure は影響が最小となる更新方法を選択します。
 
 - 更新で再起動を必要としない場合、VM は、ホストの更新中に一時停止されるか、または既に更新済みのホストにライブ移行されます。 
-- メンテナンスで再起動が必要な場合は、計画メンテナンスが通知されます。 Azure により、都合の良いときに自分でメンテナンスを開始できる時間枠も与えられます。 セルフ メンテナンスの時間枠は、そのメンテナンスが緊急でない限り、通常は 30 日間です。 Azure は、計画されたプラットフォーム メンテナンスで VM の再起動を必要とするケースの数を減らすためのテクノロジに投資しています。 計画メンテナンスを管理する方法については、Azure [CLI](maintenance-notifications-cli.md)、[PowerShell](maintenance-notifications-powershell.md)、または[ポータル](maintenance-notifications-portal.md)を使用した計画済みメンテナンスの通知の処理に関する記事を参照してください。
+- メンテナンスで再起動が必要な場合は、計画メンテナンスが通知されます。 Azure により、都合の良いときに自分でメンテナンスを開始できる時間枠も与えられます。 セルフ メンテナンスの時間枠は、そのメンテナンスが緊急でない限り、通常は 35 日間です。 Azure は、計画されたプラットフォーム メンテナンスで VM の再起動を必要とするケースの数を減らすためのテクノロジに投資しています。 計画メンテナンスを管理する方法については、Azure [CLI](maintenance-notifications-cli.md)、[PowerShell](maintenance-notifications-powershell.md)、または[ポータル](maintenance-notifications-portal.md)を使用した計画済みメンテナンスの通知の処理に関する記事を参照してください。
 
 このページでは、2 種類のメンテナンスが Azure でどのように実行されるかについて説明します。 計画外のイベント (停止) の詳細については、 [Windows 向けの VM の可用性の管理](./windows/manage-availability.md)に関する記事または [Linux](./linux/manage-availability.md) 向けの該当する記事をご覧ください。
 
@@ -37,11 +37,11 @@ VM 内で、[Linux](./linux/scheduled-events.md) または [Windows 向けの Sc
 
 メモリ保持メンテナンスは、Azure VM の 90% 以上で機能します。 G、M、N、および H シリーズでは機能しません。 Azure では、ライブ マイグレーション テクノロジの使用を拡大すると共に、一時停止期間を短縮するためにメモリ保持メンテナンス メカニズムの改善に取り組んでいます。  
 
-再起動を必要としないメンテナンス操作は、一度に 1 つの障害ドメインに適用されます。 それらは、警告の正常性シグナルを受信した場合、停止します。 
+再起動を必要としないメンテナンス操作は、一度に 1 つの障害ドメインに適用されます。 それらは、プラットフォーム監視ツールから警告の正常性シグナルを受信した場合、停止します。 
 
 こうした種類の更新が、一部のアプリケーションに影響を与える可能性があります。 VM を別のホストにライブ移行する場合、影響を受けやすい一部のワークロードでは、VM の一時停止に至るまでの数分間にわずかなパフォーマンスの低下が見られることがあります。 VM のメンテナンスに対する準備をして Azure のメンテナンスの影響を減らすには、そのようなアプリケーションに [Linux](./linux/scheduled-events.md) または [Windows 向けの Scheduled Events を使用](./windows/scheduled-events.md)してみてください。 
 
-また、再起動を必要としないメンテナンスの管理に役立つメンテナンス管理機能 (パブリック プレビュー段階) もあります。 [Azure Dedicated Host](./linux/dedicated-hosts.md) または[分離された VM](../security/fundamentals/isolation-choices.md) を使用している必要があります。 メンテナンス管理では、プラットフォーム更新をスキップし、35 日間のローリング期間内の都合のよいときに、それらの更新を適用することを選択できます。 詳細については、[メンテナンス管理と Azure CLI を使用した更新の制御](maintenance-control-cli.md)に関するページを参照してください。
+ゼロインパクトやリブートレスの更新を含むすべてのメンテナンス アクティビティをより詳細に制御するには、メンテナンス管理機能を使用できます。 [Azure Dedicated Host](./linux/dedicated-hosts.md) または[分離された VM](../security/fundamentals/isolation-choices.md) を使用している必要があります。 メンテナンス管理では、すべてのプラットフォーム更新をスキップし、35 日間のローリング期間内の都合のよいときに、それらの更新を適用することを選択できます。 詳細については、[メンテナンス管理と Azure CLI を使用した更新の制御](maintenance-control.md)に関するページを参照してください。
 
 
 ### <a name="live-migration"></a>ライブ マイグレーション
@@ -77,7 +77,7 @@ Azure Machine Learning アルゴリズムでハードウェア障害の発生が
 
 #### <a name="paired-regions"></a>ペアになっているリージョン
 
-各 Azure リージョンは、同じ地理的近傍内の別のリージョンとペアになっています。 それらは合わせて 1 つのリージョン ペアになります。 予定メンテナンス フェーズの間、Azure はリージョン ペアの一方のリージョンの VM だけを更新します。 たとえば、Azure は米国中北部の VM の更新中、同時に米国中南部の VM を更新することはありません。 ただし、北ヨーロッパなどのその他のリージョンは、米国東部と同時にメンテナンスされる可能性があります。 各リージョンに対して適切に VM を分散させるためには、リージョン ペアの動作を理解することが大切です。 詳細については、[Azure リージョン ペア](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)に関するページを参照してください。
+各 Azure リージョンは、同じ地理的近傍内の別のリージョンとペアになっています。 それらは合わせて 1 つのリージョン ペアになります。 予定メンテナンス フェーズの間、Azure はリージョン ペアの一方のリージョンの VM だけを更新します。 たとえば、Azure は米国中北部の VM の更新中、同時に米国中南部の VM を更新することはありません。 ただし、北ヨーロッパなどのその他のリージョンは、米国東部と同時にメンテナンスされる可能性があります。 各リージョンに対して適切に VM を分散させるためには、リージョン ペアの動作を理解することが大切です。 詳細については、[Azure リージョン ペア](../best-practices-availability-paired-regions.md)に関するページを参照してください。
 
 #### <a name="availability-sets-and-scale-sets"></a>可用性セットとスケール セット
 

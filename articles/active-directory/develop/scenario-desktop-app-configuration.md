@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
-ms.custom: aaddev
-ms.openlocfilehash: d07add7950da531330fe9f64629299cef9fad1ac
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.custom: aaddev, devx-track-python
+ms.openlocfilehash: 56d2e01d35f25ac469e808a805382463d2b23ceb
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734588"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121104"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Web API を呼び出すデスクトップ アプリ:コード構成
 
@@ -107,8 +107,8 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 MSAL.NET デスクトップ アプリケーションを構成する方法の詳細については、以下のとおりです。
 
-- `PublicClientApplicationBuilder` で使用可能なすべての修飾子の一覧については、リファレンス ドキュメント [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods) を参照してください。
-- `PublicClientApplicationOptions` に公開されているすべてのオプションの説明については、リファレンス ドキュメント内の [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions) を参照してください。
+- `PublicClientApplicationBuilder` で使用可能なすべての修飾子の一覧については、リファレンス ドキュメント [PublicClientApplicationBuilder](/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods) を参照してください。
+- `PublicClientApplicationOptions` に公開されているすべてのオプションの説明については、リファレンス ドキュメント内の [PublicClientApplicationOptions](/dotnet/api/microsoft.identity.client.publicclientapplicationoptions) を参照してください。
 
 ### <a name="complete-example-with-configuration-options"></a>構成オプションを使用した詳細な例
 

@@ -8,31 +8,32 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/12/2020
 ms.author: aahi
-ms.openlocfilehash: 62e975121c05bd4fde2438480f7042b0957a9c82
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 127834034cf1de00b61794c6cfd51a041a37a8c3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475599"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88925149"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>クイック スタート:C# で Bing Local Business Search API にクエリを送信する
 
-このクイック スタートを利用して、Azure Cognitive Service である Bing Local Business Search API への要求の送信を開始します。 このシンプルなアプリケーションは C# で記述されていますが、API は、HTTP 要求の発行と JSON の解析が可能な任意のプログラミング言語と互換性がある RESTful Web サービスです。
+このクイックスタートを利用して、Azure Cognitive Service である Bing Local Business Search API への要求を送信する方法について説明します。 このシンプルなアプリケーションは C# で記述されていますが、この API は、HTTP 要求の発行と JSON の解析が可能な任意のプログラミング言語と互換性がある RESTful Web サービスです。
 
-このサンプル アプリケーションでは、検索クエリ `hotel in Bellevue` に対する API からのローカルな応答データを取得します。
+このサンプル アプリケーションでは、検索クエリについて、API からのローカルな応答データを取得します。
 
 ## <a name="prerequisites"></a>前提条件
 
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
 * [Visual Studio 2019](https://www.visualstudio.com/downloads/) のいずれかのエディション。
 * Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
-
-[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Bing Search API を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)で十分です。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Bing Search リソースを作成"  target="_blank">Bing Search リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
 
 ## <a name="create-the-request"></a>要求を作成する 
 
-次のコードでは、`WebRequest` を作成し、アクセス キー ヘッダーを設定し、"restaurant in Bellevue" というクエリ文字列を追加します。  次に、要求を送信し、応答を文字列に割り当てて JSON テキストを格納します。
+次のコードでは、`WebRequest` を作成し、アクセス キー ヘッダーを設定し、*restaurant in Bellevue* というクエリ文字列を追加します。  次に、要求を送信し、応答を文字列に割り当てて JSON テキストを格納します。
 
 ```csharp
     // Replace the accessKey string value with your valid access key.
@@ -54,10 +55,10 @@ ms.locfileid: "80475599"
 
 ## <a name="run-the-complete-application"></a>完全なアプリケーションを実行する
 
-Bing Local Business Search API では、Bing 検索エンジンからのローカライズされた検索結果が返されます。
-1. Visual Studio (Community Edition で問題ありません) で新しいコンソール ソリューションを作成します。
+次のコードでは、Bing Local Business Search API を使用して、Bing 検索エンジンからローカライズされた検索結果を返します。 次の手順に従うことで、このコードを使用することができます。
+1. Visual Studio (Community Edition で十分です) で新しいコンソール ソリューションを作成します。
 2. Program.cs を以下のコードで置き換えます。
-3. accessKey 値を、ご利用のサブスクリプションで有効なアクセス キーに置き換えます。
+3. `accessKey` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
 ```csharp

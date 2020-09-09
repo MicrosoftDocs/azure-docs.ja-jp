@@ -4,16 +4,16 @@ description: この記事では、Windows VM 用の Microsoft Azure Disk Encrypt
 author: msmbaldwin
 ms.service: virtual-machines-windows
 ms.subservice: security
-ms.topic: article
+ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8bed34e816207c9f0bd0565abab6af4adbaeb7fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4650df71acb088fafc1280d31d9abfb398e06741
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82081644"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284491"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Windows VM 用の Azure Disk Encryption 
 
@@ -33,7 +33,7 @@ Azure Disk Encryption は、データを保護して、組織のセキュリテ�
 
 ### <a name="supported-vms"></a>サポート対象の VM
 
-Windows VM は、[さまざまなサイズ](sizes-general.md)で利用できます。 Azure Disk Encryption は、[Basic、A シリーズ VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/)、またはメモリが 2 GB 未満の仮想マシンでは利用できません。
+Windows VM は、[さまざまなサイズ](../sizes-general.md)で利用できます。 Azure Disk Encryption は、[Basic、A シリーズ VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/)、またはメモリが 2 GB 未満の仮想マシンでは利用できません。
 
 Azure Disk Encryption は、Premium Storage を使用した VM でも利用できます。
 
@@ -79,9 +79,9 @@ Azure Disk Encryption では、ディスク暗号化キーとシークレット�
 | --- | --- |
 | Azure Key Vault | Key Vault は、Federal Information Processing Standards (FIPS) に照らして検証されたハードウェア セキュリティ モジュールに基づく、暗号化キー管理サービスです。 これらの標準は、暗号化キーと機密性の高いシークレットを保護するために役立ちます。 詳細については、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) のドキュメントと「[Azure Disk Encryption 用のキー コンテナーの作成と構成](disk-encryption-key-vault.md)」をご覧ください。 |
 | Azure CLI | [Azure CLI](/cli/azure/install-azure-cli) は、コマンド ラインから Azure リソースを管理できるように最適化されています。|
-| BitLocker |[BitLocker](https://technet.microsoft.com/library/hh831713.aspx) は、Windows VM でディスク暗号化を有効にするために使用される、業界で認められた Windows ボリューム暗号化テクノロジです。 |
+| BitLocker |[BitLocker](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831713(v=ws.11)) は、Windows VM でディスク暗号化を有効にするために使用される、業界で認められた Windows ボリューム暗号化テクノロジです。 |
 | キー暗号化キー (KEK) | シークレットを保護またはラップするために使用できる非対称キー (RSA 2048) です。 ハードウェア セキュリティ モジュール (HSM) で保護されたキーまたはソフトウェアで保護されたキーを指定できます。 詳細については、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) のドキュメントと「[Azure Disk Encryption 用のキー コンテナーの作成と構成](disk-encryption-key-vault.md)」をご覧ください。 |
-| PowerShell コマンドレット | 詳しくは、[Azure PowerShell コマンドレット](/powershell/azure/overview)に関するページをご覧ください。 |
+| PowerShell コマンドレット | 詳しくは、[Azure PowerShell コマンドレット](/powershell/azure/)に関するページをご覧ください。 |
 
 
 ## <a name="next-steps"></a>次のステップ
@@ -92,5 +92,3 @@ Azure Disk Encryption では、ディスク暗号化キーとシークレット�
 - [Azure Disk Encryption の前提条件の CLI スクリプト](https://github.com/ejarvi/ade-cli-getting-started)
 - [Azure Disk Encryption の前提条件の PowerShell スクリプト](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
 - [Azure Disk Encryption 用のキー コンテナーの作成と構成](disk-encryption-key-vault.md)
-
-

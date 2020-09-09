@@ -10,17 +10,17 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/01/2019
-ms.openlocfilehash: b7079262dc7db4f4a00a9dc79193da1574c7153a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/09/2020
+ms.openlocfilehash: 77eedbfc65b54ce128e1adbd93375bc624ef38cd
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605852"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187619"
 ---
 # <a name="install-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>Azure SSIS 統合ランタイムの有料 (ライセンスあり) カスタム コンポーネントをインストールする
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 この記事では、Azure SSIS 統合ランタイムにおいて、Azure で実行される SQL Server Integration Services (SSIS) パッケージのための有料 (ライセンスあり) コンポーネントを ISV がどのようにして開発し、インストールできるかについて説明します。
 

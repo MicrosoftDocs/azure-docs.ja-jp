@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell のサンプル スクリプト - バックエンドをセキュリティで保護する | Microsoft Docs
-description: Azure PowerShell のサンプル スクリプト - バックエンドをセキュリティで保護する
+description: Azure PowerShell スクリプト サンプルを使用して、相互証明書認証でバックエンドをセキュリティで保護する方法について説明します。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: b9501cc88e5d83b5c5724b0fbb2f988a8ca1509e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: cb6b1cfcb6a8f482bdcbc9d6befc99197f024f4a
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70067549"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905637"
 ---
 # <a name="secure-back-end"></a>バックエンドをセキュリティで保護する
 
@@ -43,6 +43,6 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/azure/overview)を参照してください。
+Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。
 
 その他の Azure API Management 用 Azure PowerShell サンプルは、[PowerShell サンプル](../powershell-samples.md)のページにあります。

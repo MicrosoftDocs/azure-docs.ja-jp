@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: apimpm
-ms.openlocfilehash: dacf1329d35117c65bcc48a82ac27a767ebd2b3b
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 0894203be4867e305c8e15467a2a867b9bfdc727
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203185"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506810"
 ---
 # <a name="configure-a-custom-domain-name"></a>カスタム ドメイン名の構成
 
@@ -49,7 +49,7 @@ ms.locfileid: "82203185"
 
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name-for-your-self-hosted-gateway"></a>Azure portal を使用してセルフホステッド ゲートウェイのカスタム ドメイン名を設定する
 
-1. **[設定]** の下から **[ゲートウェイ]** を選択します。
+1. **[Deployment and infrastructure]\(デプロイとインフラストラクチャ\)** の下から **[ゲートウェイ]** を選択します。
 2. ドメイン名を構成するセルフホステッド ゲートウェイを選択します。
 3. **[設定]** の下で **[ホスト名]** を選択します。
 4. **[+ 追加]** を選択します。

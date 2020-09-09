@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: overview
 ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 8911c1099db36b7e4e6d568ea64ae4afa3cc826e
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: aa68b746ef5c22c97fcfdcca889bf71577c19479
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561068"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100762"
 ---
 # <a name="what-is-azure-data-box-gateway"></a>Azure Data Box Gateway とは
 
@@ -69,7 +69,7 @@ Data Box Gateway 仮想デバイスの仕様は次のとおりです。
 | 仮想プロセッサ (コア)   | 最低 4 |
 | メモリ  |8 GB 以上|
 | 可用性|単一ノード|
-| ディスク|OS ディスク: 250 GB <br> データ ディスク: 最小 2 TB、シン プロビジョニング、SSD を使用する必要があります|
+| ディスク|OS ディスク:250 GB <br> データ ディスク:最小 2 TB、シン プロビジョニング、SSD を使用する必要があります|
 | ネットワーク インターフェイス |1 つ以上の仮想ネットワーク インターフェイス|
 | ネイティブのファイル共有プロトコル|SMB および NFS  |
 | Security|デバイスとデータへのアクセスのロックを解除する認証 <br> AES 256 ビット暗号化を使用した移動中のデータの暗号化|
@@ -89,7 +89,7 @@ Data Box Gateway ソリューションは、Data Box Gateway リソース、Data
 
 Data Box Gateway 物理デバイス、Azure リソース、データ転送先のターゲット ストレージ アカウントは、すべて同じ地域にある必要はありません。
 
-- **リソースの使用可能性** - Azure Stack Edge リソースを使用できるすべてのリージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=databox)」を参照してください。 Data Box Gateway は、Azure Government クラウドにデプロイすることもできます。 詳細については、「[What is Azure Government? (Azure Government とは)](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)」を参照してください。
+- **リソースの使用可能性** - Azure Data Box Gateway リソースを使用できるすべてのリージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=databox)」をご覧ください。 Data Box Gateway は、Azure Government クラウドにデプロイすることもできます。 詳細については、「[What is Azure Government? (Azure Government とは)](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)」を参照してください。
 
 - **転送先ストレージ アカウント** - データを格納するストレージ アカウントは、すべての Azure 地域で利用できます。
 

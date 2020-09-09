@@ -1,5 +1,5 @@
 ---
-title: フィーチャー - LUIS
+title: 特徴を使用して LUIS の単語リストを強化する
 titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) を使用して、カテゴリやパターンがある意図およびエンティティの検出または予測を改善できるアプリ フィーチャーを追加します
 services: cognitive-services
@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
-ms.date: 05/06/2020
+ms.topic: how-to
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 12445ec5b14f4c274e471bf1b061a3b221664d20
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 25698fe2b05cbfb564e441e488bfa93221a9618a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592306"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075196"
 ---
 # <a name="use-features-to-boost-signal-of-word-list"></a>特徴を使用して単語リストのシグナルをブーストする
 
@@ -49,8 +49,23 @@ LUIS アプリにフィーチャーを追加して、その精度を向上させ
 <a name="delete-phrase-list"></a>
 <a name="deactivate-phrase-list"></a>
 
+
 > [!Note]
 > 語句一覧の削除や非アクティブ化は､ **[ML の特徴]** ページのコンテキスト ツールバーから行うことができます。
+
+## <a name="global-phrase-list-applies-to-entire-app"></a>アプリ全体に適用されるグローバル フレーズ リスト
+
+フレーズ リストは、目的の意図またはエンティティに適用する必要があります。ただし、フレーズ リストを**グローバル**な特徴としてアプリ全体に適用することが必要になる場合もあります。
+
+[ML Features]\(ML の特徴\) ページでフレーズ リストを選択し、上部のコンテキスト ツール バーの **[Make global]\(グローバル化する\)** を選択します。
+
+## <a name="model-as-a-feature"></a>特徴量としてのモデル
+
+エンティティは、[意図またはエンティティの特徴](luis-concept-feature.md)にすることができます。
+
+エンティティを特徴として意図に追加するには、[意図] ページから意図を選択し、コンテキスト ツール バーの上にある **[+ 特徴の追加]** を選択します。 一覧には、特徴として適用できるすべてのフレーズ リストとエンティティが含まれます。
+
+エンティティを特徴として別のエンティティに追加するには、[エンティティ パレット](label-entity-example-utterance.md#adding-entity-as-a-feature-from-the-entity-palette)を使用して、意図の詳細ページで特徴を追加するか、エンティティの詳細ページで[特徴を追加](luis-how-to-add-entities.md#add-a-feature-to-a-machine-learned-entity)することができます。
 
 ## <a name="next-steps"></a>次のステップ
 

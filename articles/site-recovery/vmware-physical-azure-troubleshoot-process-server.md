@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 812cd0293f9627b7438e9870d8985e71dae1d147
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4816b597d66aea3bbe7f834004f924b5108de939
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228819"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499757"
 ---
 # <a name="troubleshoot-the-process-server"></a>プロセス サーバーのトラブルシューティング
 
@@ -91,12 +91,12 @@ Microsoft Azure Recovery Services エージェント (obengine) 以外のすべ�
 
  初期や継続的に発生するレプリケーションの問題は、ソース マシンとプロセス サーバーの間、またはプロセス サーバーと Azure の間の接続に関する問題が原因であることが少なくありません。 これらの手順を次の図にまとめました。その後に、手順を行うための方法を記載しています。
 
-![接続とレプリケーションのトラブルシューティング](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-connectivity-replication.png)
+![接続性とレプリケーションのトラブルシューティング手順を示すフローチャート。](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-connectivity-replication.png)
 
 
 ## <a name="step-4-verify-time-sync-on-source-machine"></a>手順 4:ソース マシンの時刻同期の確認
 
-レプリケートされたマシンのシステム日時が同期していることを確認します。[詳細情報](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)
+レプリケートされたマシンのシステム日時が同期していることを確認します。[詳細情報](/windows-server/networking/windows-time-service/accurate-time)
 
 ## <a name="step-5-check-anti-virus-software-on-source-machine"></a>手順 5:ソース マシン上のウイルス対策ソフトウェアの確認
 
@@ -105,7 +105,7 @@ Microsoft Azure Recovery Services エージェント (obengine) 以外のすべ�
 ## <a name="step-6-check-connectivity-from-source-machine"></a>手順 6:ソース マシンからの接続の確認
 
 
-1. 必要であれば、[Telnet クライアント](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx)をソース マシン上にインストールします。 ping は使用しないでください。
+1. 必要であれば、[Telnet クライアント](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771275(v=ws.10))をソース マシン上にインストールします。 ping は使用しないでください。
 2. ソース マシンから、Telnet を使用して HTTPS ポート上のプロセス サーバーを ping します。 既定では、9443 がレプリケーション トラフィック用の HTTPS ポートです。
 
     `telnet <process server IP address> <port>`
@@ -170,7 +170,7 @@ telnet が成功してもプロセス サーバーに到達できないことが
   2. **[パフォーマンス]** タブ > **[リソース モニターを開く]** の順に選択します。
   3. **[リソース モニター]** ページで **[ネットワーク]** タブを選択します。 **[ネットワーク活動のプロセス]** で、cbengine.exe により大量のデータがアクティブに送信されているかどうかを確認します。
 
-       ![ネットワーク活動を処理中のボリューム](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
+       ![[ネットワーク活動のプロセス] に大きな容量の数値が表示されているスクリーンショット。](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
 
   Cbengine.exe により大量のデータが送信されていない場合は、次のセクションの手順を実行します。
 
@@ -179,7 +179,7 @@ telnet が成功してもプロセス サーバーに到達できないことが
 1. リソース モニターで、 **[cbengine.exe]** を選択します。
 2. **[TCP 接続]** の下で、プロセス サーバーから Azure Storage への接続があるかどうかを確認します。
 
-  ![cbengine.exe と Azure Blob Storage の URL 間の接続](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
+  ![cbengine.exe と Azure Blob Storage の URL との間の接続性を示すスクリーンショット。](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
 
 ### <a name="check-services"></a>サービスを確認する
 
@@ -246,7 +246,7 @@ telnet が成功してもプロセス サーバーに到達できないことが
 
 ## <a name="next-steps"></a>次のステップ
 
-さらにサポートが必要な場合は、[Azure Site Recovery フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)に質問を投稿してください。 
+さらにサポートが必要な場合は、[Azure Site Recovery に関する Microsoft Q&A 質問ページ](/answers/topics/azure-site-recovery.html)に質問を投稿してください。 
 
 [green]: ./media/vmware-physical-azure-troubleshoot-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-troubleshoot-process-server/yellow.png

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 02/26/2020
+ms.date: 07/27/2020
 ms.author: aahi
-ms.openlocfilehash: 0d4d32a413dd22c55f1b2f01dce3a3df81f5f729
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 8afceb19af0d177415d0b68b5d38f19d18835af5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77919670"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291764"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-for-ruby"></a>クイック スタート:Ruby 用 Text Analytics クライアント ライブラリを使用する
 
@@ -31,13 +31,13 @@ Text Analytics クライアント ライブラリを使って次のことを実�
 > [!NOTE]
 > このクイックスタートは、Text Analytics バージョン 2.1 だけに適用されます。 現在、Ruby 用 v3 クライアント ライブラリは使用できません。
 
-[リファレンスのドキュメント](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-ruby/tree/master/data/azure_cognitiveservices_textanalytics) | [パッケージ (RubyGems)](https://rubygems.org/gems/azure_cognitiveservices_textanalytics) | [コード サンプル](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
+[ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-ruby/tree/master/data/azure_cognitiveservices_textanalytics) | [パッケージ (RubyGems)](https://rubygems.org/gems/azure_cognitiveservices_textanalytics) | [サンプル](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
 
 <a name="HOLTop"></a>
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services)
 * 最新バージョンの [Ruby](https://www.ruby-lang.org/)
 * Azure サブスクリプションを入手したら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Text Analytics リソースを作成"  target="_blank">Text Analytics リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 
     * アプリケーションを Text Analytics API に接続するには、作成するリソースのキーとエンドポイントが必要です。 この作業は、このクイックスタートの中で後から行います。
@@ -83,7 +83,7 @@ Text Analytics クライアントでは、ご利用のキーを使用して Azur
 
 ## <a name="code-examples"></a>コード例
 
-これらのコード スニペットでは、Python 用 Text Analytics クライアント ライブラリを使用して次のことを実行する方法が示されています。
+これらのコード スニペットでは、Ruby 用 Text Analytics クライアント ライブラリを使用して次のことを実行する方法が示されています。
 
 * [クライアントを認証する](#authenticate-the-client)
 * [感情分析](#sentiment-analysis)

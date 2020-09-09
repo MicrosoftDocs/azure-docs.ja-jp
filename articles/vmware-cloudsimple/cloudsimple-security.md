@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6d86c90828c081a542fa5574493a46e8a2e44640
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7310c037511fdf1a7d6f3763fd61d292078ea83e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187479"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998896"
 ---
 # <a name="cloudsimple-security-overview"></a>CloudSimple のセキュリティの概要
 
@@ -29,7 +29,7 @@ Azure のインフラストラクチャ セキュリティでは、たとえば�
 
 ### <a name="datacenter-security"></a>データセンターのセキュリティ
 
-Microsoft には、Azure をサポートしている物理的な施設の設計、建設、および運営を一手に引き受けている部門があります。 このチームは、最先端の物理セキュリティの維持に注力しています。 物理セキュリティの詳細については、「[Azure の施設、建物、および物理上のセキュリティ](../security/azure-physical-security.md)」を参照してください。
+Microsoft には、Azure をサポートしている物理的な施設の設計、建設、および運営を一手に引き受けている部門があります。 このチームは、最先端の物理セキュリティの維持に注力しています。 物理セキュリティの詳細については、「[Azure の施設、建物、および物理上のセキュリティ](../security/fundamentals/physical-security.md)」を参照してください。
 
 ### <a name="equipment-location"></a>機器の場所
 

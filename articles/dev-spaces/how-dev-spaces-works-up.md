@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Azure Dev Spaces による Azure Kubernetes Service でのコード実行のプロセスについて説明します
 keywords: azds.yaml, Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 6851c04ac0b72db1bd13c991875c16b0beadc573
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9dbc1f0f21c2883e5caadbdae268a515eb94d145
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80241233"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208679"
 ---
 # <a name="how-running-your-code-with-azure-dev-spaces-works"></a>Azure Dev Spaces でのコード実行のしくみ
 
@@ -130,7 +130,7 @@ Helm チャートのインストール時には、Helm チャート内の値を�
 
 上記の例では、*install.set.replicaCount* プロパティは、開発スペースで実行するアプリケーションのインスタンス数をコントローラーに通知します。 シナリオによっては、この値を増やすことができますが、これはアプリケーションのポッドへのデバッガーのアタッチに影響を及ぼします。 詳細については、[トラブルシューティングの記事][troubleshooting]を参照してください。
 
-生成される Helm チャートでは、コンテナー イメージが *{{ .Values.image.repository }}:{{ .Values.image.tag }}* に設定されます。 `azds.yaml` ファイルでは、*install.set.image.tag* プロパティが既定で *$(tag)* として定義されます。これは、 *{{ .Values.image.tag }}* の値として使用されます。 この方法で *install.set.image.tag* プロパティを設定すると、Azure Dev Spaces の実行時に独自の方法でアプリケーションのコンテナー イメージにタグ付けできます。 この特定のケースでは、イメージは *\<image.repository の値>:$(tag)* としてタグ付けされます。 Dev Spaces が AKS クラスター内のコンテナーを認識して特定できるようにするには、 *$(tag)* 変数を *install.set.image.tag* の値として使用する必要があります。
+生成される Helm チャートでは、コンテナー イメージが *{{ .Values.image.repository }}:{{ .Values.image.tag }}* に設定されます。 `azds.yaml` ファイルでは、*install.set.image.tag* プロパティが既定で *$(tag)* として定義されます。これは、 *{{ .Values.image.tag }}* の値として使用されます。 この方法で *install.set.image.tag* プロパティを設定すると、Azure Dev Spaces の実行時に独自の方法でアプリケーションのコンテナー イメージにタグ付けできます。 この特定のケースでは、イメージに *\<value from image.repository>:$(tag)* というタグが付けられます。 Dev Spaces が AKS クラスター内のコンテナーを認識して特定できるようにするには、 *$(tag)* 変数を *install.set.image.tag* の値として使用する必要があります。
 
 上記の例では、`azds.yaml` によって *install.set.ingress.hosts* が定義されます。 *install.set.ingress.hosts* プロパティでは、パブリック エンドポイントのホスト名の形式が定義されます。 また、このプロパティでは *$(spacePrefix)* 、 *$(rootSpacePrefix)* 、および *$(hostSuffix)* を使用します。これらはコントローラーから提供される値です。
 
@@ -199,27 +199,14 @@ ingress:
 
 Azure Dev Spaces におけるネットワークおよび要求のルーティング方法について詳しくは、「[Azure Dev Spaces でルーティングがどのように機能するか][how-it-works-routing]」を参照してください。
 
-Azure Dev Spaces を使用した迅速な反復と開発の詳細については、[Dev Spaces への開発用コンピューターの接続のしくみ][how-it-works-connect]に関するページと「[Azure Dev Spaces でのコードのリモート デバッグのしくみ][how-it-works-remote-debugging]」を参照してください。
-
-Azure Dev Spaces を使用してプロジェクトの実行を開始するには、以下のクイックスタートを参照してください。
-
-* [Visual Studio Code と Java を使用した迅速な反復処理とデバッグ][quickstart-java]
-* [Visual Studio Code と .NET を使用した迅速な反復処理とデバッグ][quickstart-netcore]
-* [Visual Studio Code と Node.js を使用した迅速な反復処理とデバッグ][quickstart-node]
-* [Visual Studio と .NET Core を使用した迅速な反復処理とデバッグ][quickstart-vs]
-* [CLI を使用して Kubernetes 上でアプリケーションを開発する][quickstart-cli]
+Azure Dev Spaces を使用した迅速な反復と開発の詳細については、「[Local Process with Kubernetes のしくみ][how-it-works-local-process-kubernetes]」と「[Azure Dev Spaces でのコードのリモート デバッグのしくみ][how-it-works-remote-debugging]」を参照してください。
 
 
 [azds-yaml-section]: #how-running-your-code-is-configured
 [helm-upgrade]: https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
-[how-it-works-connect]: how-dev-spaces-works-connect.md
+[how-it-works-local-process-kubernetes]: /visualstudio/containers/overview-local-process-kubernetes
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md
-[quickstart-cli]: quickstart-cli.md
-[quickstart-java]: quickstart-java.md
-[quickstart-netcore]: quickstart-netcore.md
-[quickstart-node]: quickstart-nodejs.md
-[quickstart-vs]: quickstart-netcore-visualstudio.md
 [sync-section]: #file-synchronization
 [troubleshooting]: troubleshooting.md

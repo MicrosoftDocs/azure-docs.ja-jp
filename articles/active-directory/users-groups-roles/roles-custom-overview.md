@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: overview
 ms.date: 04/22/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae244d93d679199aaa0bd08891cd34d4ca3a2ddc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 915098130c7a8462bc0e009be04a61b5b0a7985d
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82085112"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795594"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Azure Active Directory でのカスタム管理者ロール (プレビュー)
 
@@ -34,7 +34,7 @@ Azure AD のロールベースのアクセス制御は Azure AD のパブリッ�
 
 ロール定義を作成したら、ロールの割り当てを作成することによって、ロールをユーザーに割り当てることができます。 ロールの割り当てにより、指定したスコープでロール定義に含まれるアクセス許可がユーザーに付与されます。 この 2 ステップのプロセスにより、1 つのロール定義を作成し、異なるスコープで何度もそれを割り当てることができます。 スコープでは、ロール メンバーがアクセスできる Azure AD リソースのセットを定義します。 最も一般的なスコープは、組織全体 (org-wide) のスコープです。 カスタム ロールは、組織全体のスコープで割り当てることができます。つまり、ロール メンバーには組織内のすべてのリソースに対してロールのアクセス許可が付与されます。 カスタム ロールは、オブジェクトのスコープで割り当てることもできます。 オブジェクト スコープの例は単一のアプリケーションです。 同じロールを、あるユーザーに対しては組織内のすべてのアプリケーションについて割り当て、別のユーザーに対しては Contoso Expense Reports アプリだけのスコープで割り当てる、といったことができます。  
 
-Azure AD の組み込みロールとカスタム ロールは、[Azure のロールベースのアクセス制御](../../role-based-access-control/overview.md)と同様の概念で動作します。 [これら 2 つのロールベースのアクセス制御システムの違い](../../role-based-access-control/rbac-and-directory-admin-roles.md)は、Azure RBAC では Azure Resource Management を使用して仮想マシンやストレージなどの Azure リソースへのアクセスが制御されるのに対し、Azure AD カスタム ロールでは Graph API を使用して Azure AD リソースへのアクセスが制御されることです。 どちらのシステムにも、ロールの定義とロールの割り当ての概念が利用されています。
+Azure AD の組み込みロールとカスタム ロールは、[Azure のロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) と同様の概念で動作します。 [これら 2 つのロールベースのアクセス制御システムの違い](../../role-based-access-control/rbac-and-directory-admin-roles.md)は、Azure RBAC では Azure Resource Management を使用して仮想マシンやストレージなどの Azure リソースへのアクセスが制御されるのに対し、Azure AD カスタム ロールでは Graph API を使用して Azure AD リソースへのアクセスが制御されることです。 どちらのシステムにも、ロールの定義とロールの割り当ての概念が利用されています。
 
 ### <a name="how-azure-ad-determines-if-a-user-has-access-to-a-resource"></a>ユーザーがリソースへのアクセス権を持っているどうかを Azure AD が特定する方法
 
@@ -46,7 +46,7 @@ Azure AD の組み込みロールとカスタム ロールは、[Azure のロー
 
 1. 状況に応じて、Azure AD は次のいずれかのアクションを実行します。
 
-    - ユーザーのアクセス トークン内の [wids 要求](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)に基づいて、ユーザーのロール メンバーシップを評価します。
+    - ユーザーのアクセス トークン内の [wids 要求](../develop/access-tokens.md)に基づいて、ユーザーのロール メンバーシップを評価します。
     - アクションが実行されるリソースに対して直接またはグループ メンバーシップを介してユーザーに適用されるすべてのロールの割り当てを取得します。
 
 1. Azure AD は、API 呼び出しでのアクションが、このリソースに対してユーザーが持っているロールに含まれるかどうかを判別します。

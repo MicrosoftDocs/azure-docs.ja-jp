@@ -1,18 +1,18 @@
 ---
 title: Azure Virtual WAN パートナー向けの自動化のガイドライン | Microsoft Docs
-description: パートナーは、この記事を参考にして、Azure Virtual WAN 自動化を設定できます。
+description: Azure Virtual WAN 用にオンプレミスの VPN または SD-WAN CPE (ブランチ デバイス) を接続して構成するための自動化環境を設定します。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7848dda09b39f446dd218b7ce1eb2a07664bcaa6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0029f3fbcf96036a247356042e4c39d59f86a224
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190412"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208352"
 ---
 # <a name="automation-guidelines-for-virtual-wan-partners"></a>Virtual WAN パートナー向けの自動化のガイドライン
 
@@ -54,7 +54,7 @@ Azure Virtual WAN と共に予想される顧客エクスペリエンスを理�
 
 ###  <a name="access-control"></a><a name="access"></a>アクセス制御
 
-お客様は、デバイスの UI で仮想 WAN の適切なアクセス制御を設定できる必要があります。 Azure サービス プリンシパルを使用することをお勧めします。 サービス プリンシパルに基づくアクセスは、ブランチ情報をアップロードするために適した認証をデバイス コント ローラーに提供します。 詳しくは、「[サービス プリンシパルの作成](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)」をご覧ください。 この機能は Azure Virtual WAN のオファリングには含まれませんが、Azure でアクセスを設定するときの一般的な手順を以下に示しておきます。この後、関連する詳細がデバイス管理ダッシュボードに入力されます
+お客様は、デバイスの UI で仮想 WAN の適切なアクセス制御を設定できる必要があります。 Azure サービス プリンシパルを使用することをお勧めします。 サービス プリンシパルに基づくアクセスは、ブランチ情報をアップロードするために適した認証をデバイス コント ローラーに提供します。 詳しくは、「[サービス プリンシパルの作成](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)」をご覧ください。 この機能は Azure Virtual WAN のオファリングには含まれませんが、Azure でアクセスを設定するときの一般的な手順を以下に示しておきます。この後、関連する詳細がデバイス管理ダッシュボードに入力されます
 
 * オンプレミスのデバイス コントローラー用の Azure Active Directory アプリケーションを作成します。
 * アプリケーション ID と認証キーを取得する

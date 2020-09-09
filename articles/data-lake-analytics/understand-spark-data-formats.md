@@ -1,19 +1,17 @@
 ---
 title: Azure Data Lake Analytics U-SQL 開発者向けの Apache Spark データ形式について説明します。
 description: この記事では、U-SQL 開発者が、U-SQL と Spark のデータ形式の違いを理解するのに役立つ Apache Spark の概念について説明します。
-author: guyhay
-ms.author: guyhay
 ms.reviewer: jasonh
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: understand-apache-spark-data-formats
 ms.date: 01/31/2019
-ms.openlocfilehash: 36f39503ca32f1ee4b422ae7b1cf9abf48716f07
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bff8c89dcdcbb7c319e04e5e7518985badf5a5ff
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73648168"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132315"
 ---
 # <a name="understand-differences-between-u-sql-and-spark-data-formats"></a>U-SQL と Spark のデータ形式の違いを理解する
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: af7d04bd74ada296b9f0e0f7c149c2a781cec579
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 72d00b70cf3568466715668aa441ee295614c740
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73496495"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935247"
 ---
 # <a name="add-full-text-search-to-azure-blob-data-using-azure-cognitive-search"></a>Azure Cognitive Search を使用して Azure BLOB データにフル テキスト検索を追加する
 
@@ -59,6 +59,11 @@ BLOB インデクサーでは、構成パラメーターが用意されている
 
 任意のコンテンツの種類を含む BLOB の並べ替えを容易にする一般的なシナリオは、各 BLOB でカスタム メタデータとシステム プロパティの両方のインデックスを作成することです。 そうすることで、検索サービス内のインデックスに格納されているドキュメントの種類に関係なく、すべての BLOB の情報のインデックスが作成されます。 新しいインデックスを使用すれば、すべての BLOB ストレージ コンテンツの並べ替え、フィルター処理、およびファセット処理を行うことができます。
 
+> [!NOTE]
+> BLOB インデックス タグは、BLOB ストレージ サービスによってネイティブにインデックスが付けられ、クエリのために公開されます。 対象の BLOB のキーと値の属性にインデックス作成とフィルタリングの機能が必要な場合は、メタデータの代わりに BLOB インデックス タグを利用する必要があります。
+>
+> BLOB インデックスの詳細については、「[BLOB インデックスを使用して Azure Blob Storage でデータを管理および検索する](../storage/blobs/storage-manage-find-blobs.md)」を参照してください。
+
 ### <a name="indexing-json-blobs"></a>JSON BLOB のインデックス作成
 インデクサーは、JSON を含む BLOB 内にある構造化コンテンツを抽出するように構成できます。 インデクサーは、JSON BLOB を読み取り、その構造化コンテンツを検索ドキュメントの適切なフィールドに解析できます。 インデクサーはまた、JSON オブジェクトの配列を含む BLOB を取得し、各要素を個別の検索ドキュメントにマップすることもできます。 解析モードを設定すると、インデクサーによって作成された JSON オブジェクトの種類に影響を与える場合があります。
 
@@ -70,5 +75,5 @@ BLOB インデクサーでは、構成パラメーターが用意されている
 
 ## <a name="next-steps"></a>次のステップ
 
-+ [Azure portal を使用して BLOB をアップロード、ダウンロード、および一覧表示する (Azure Blob Storage)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
-+ [BLOB インデクサーを設定する (Azure Cognitive Search)](search-howto-indexing-azure-blob-storage.md) 
++ [Azure portal を使用して BLOB をアップロード、ダウンロード、および一覧表示する (Azure Blob Storage)](../storage/blobs/storage-quickstart-blobs-portal.md)
++ [BLOB インデクサーを設定する (Azure Cognitive Search)](search-howto-indexing-azure-blob-storage.md)

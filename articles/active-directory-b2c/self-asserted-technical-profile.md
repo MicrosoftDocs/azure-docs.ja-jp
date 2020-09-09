@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2b29b8b0975639e5c5315a55e1382794d7662665
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 84e92cbac064106ca95277288eb773e311798930
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80332507"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85203454"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C のカスタム ポリシーでセルフ アサート技術プロファイルを定義します。
 
@@ -30,7 +30,7 @@ ms.locfileid: "80332507"
 
 次の例は、電子メールのサインアップ用のセルフ アサート技術プロファイルを示しています。
 
-```XML
+```xml
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
   <DisplayName>Email signup</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -40,7 +40,7 @@ ms.locfileid: "80332507"
 
 セルフアサート技術プロファイルでは、**InputClaims** と **InputClaimsTransformations** 要素を使用して、セルフアサート ページ (表示要求) に表示される要求の値を事前入力することができます。 たとえば、プロファイルの編集ポリシーでは、ユーザージャーニーはまず Azure AD B2C ディレクトリ サービスからユーザー プロファイルを読み取り、セルフ アサート技術プロファイルは、ユーザー プロファイルに格納されているユーザー データで入力要求を設定します。 これらの要求はユーザー プロファイルから収集され、後で既存のデータを編集できるユーザーに提示されます。
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
 ...
   <InputClaims>
@@ -71,7 +71,7 @@ ms.locfileid: "80332507"
 * 5 番目の表示要求では、電話番号を収集して検証する `phoneVerificationControl` 表示コントロールが参照されます。
 * その他の表示要求は、ユーザーからデータが収集される ClaimTypes です。
 
-```XML
+```xml
 <TechnicalProfile Id="Id">
   <DisplayClaims>
     <DisplayClaim DisplayControlReferenceId="emailVerificationControl" />
@@ -93,7 +93,7 @@ ms.locfileid: "80332507"
 
 基本ポリシー内に `age` 要求が**出力**要求として定義されている次の例を考えてみます。 セルフアサート技術プロファイルに表示要求を追加する前に、ユーザーからデータを収集するために、`age` 要求が画面に表示されます。
 
-```XML
+```xml
 <TechnicalProfile Id="id">
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="age" />
@@ -103,7 +103,7 @@ ms.locfileid: "80332507"
 
 その後、基本を継承するリーフ ポリシーで、**表示**要求として `officeNumber` が指定された場合:
 
-```XML
+```xml
 <TechnicalProfile Id="id">
   <DisplayClaims>
     <DisplayClaim ClaimTypeReferenceId="officeNumber" />
@@ -140,7 +140,7 @@ ms.locfileid: "80332507"
 
 次の例では、表示要求と出力要求の両方を使用するセルフアサート技術プロファイルの使用法を示します。
 
-```XML
+```xml
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
   <DisplayName>Email signup</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />

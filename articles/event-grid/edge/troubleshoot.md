@@ -5,16 +5,14 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/24/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: 95181d0eb23d5956b2c6af52c77f85714b107345
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 0196522618d4b61f615f7cc6faeacbe9a8c7c5b4
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73100155"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171348"
 ---
 # <a name="common-issues"></a>一般的な問題
 

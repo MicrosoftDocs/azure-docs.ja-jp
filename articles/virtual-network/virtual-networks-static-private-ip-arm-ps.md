@@ -9,19 +9,20 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: d5f18929-15e3-40a2-9ee3-8188bc248ed8
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/07/2019
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 1745ca176fac18b4903686cb556670531ee40a1a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ced76b73a8a08e6886cf0cef04c74a82d05c75dd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225095"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708129"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>PowerShell を使用して静的プライベート IP アドレスを持つ仮想マシンを作成する
 

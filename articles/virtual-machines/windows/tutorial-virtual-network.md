@@ -7,17 +7,17 @@ ms.subservice: networking
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 12/04/2018
+ms.date: 08/04/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: dff2acba63eaa2caabaddb0228424744be6ded16
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 84da38fe71446c54f17c4d4329c7294c5e5176d2
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101690"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800196"
 ---
-# <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用して Windows 仮想マシン用の Azure 仮想ネットワークを作成および管理する
+# <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Windows 仮想マシン用の Azure 仮想ネットワークを作成および管理する
 
 Azure 仮想マシンでは、内部と外部のネットワーク通信に Azure ネットワークが使用されます。 このチュートリアルでは、2 台の仮想マシンをデプロイし、それらの VM に使用する Azure ネットワークを構成する手順について説明します。 このチュートリアルの例では、これらの VM が、データベース バックエンドを持つ Web アプリケーションのホストになっていることを想定していますが、アプリケーションのデプロイは、このチュートリアルでは行いません。 このチュートリアルでは、以下の内容を学習します。
 
@@ -31,7 +31,7 @@ Azure 仮想マシンでは、内部と外部のネットワーク通信に Azur
 
 ## <a name="vm-networking-overview"></a>VM ネットワークの概要
 
-Azure 仮想ネットワークを使用すると、仮想マシン、インターネット、その他の Azure サービス (Azure SQL データベースなど) の間でセキュリティ保護されたネットワーク接続を実現できます。 仮想ネットワークは、サブネットと呼ばれる論理セグメントに分割することができます。 サブネットは、ネットワーク フローを制御する目的のほか、セキュリティ境界としても使用されます。 VM をデプロイするときは、通常、そこに仮想ネットワーク インターフェイスが含まれているので、それをサブネットに接続することになります。
+Azure 仮想ネットワークを使用すると、仮想マシン、インターネット、その他の Azure サービス (Azure SQL Database など) の間でセキュリティ保護されたネットワーク接続を実現できます。 仮想ネットワークは、サブネットと呼ばれる論理セグメントに分割することができます。 サブネットは、ネットワーク フローを制御する目的のほか、セキュリティ境界としても使用されます。 VM をデプロイするときは、通常、そこに仮想ネットワーク インターフェイスが含まれているので、それをサブネットに接続することになります。
 
 このチュートリアルを実行していく中で、次のようなリソースが作成されます。
 
@@ -59,13 +59,13 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 
 このチュートリアルでは、2 つのサブネットと共に単一の仮想ネットワークが作成されます。 Web アプリケーションのホストとなるフロントエンド サブネットと、データベース サーバーのホストとなるバックエンド サブネットです。
 
-仮想ネットワークを作成する前に、[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) を使用してリソース グループを作成します。 次の例では、*myRGNetwork* という名前のリソース グループを場所 *EastUS* に作成します。
+仮想ネットワークを作成する前に、[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用してリソース グループを作成します。 次の例では、*myRGNetwork* という名前のリソース グループを場所 *EastUS* に作成します。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName myRGNetwork -Location EastUS
 ```
 
-[New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) を使用して *myFrontendSubnet* という名前のサブネット構成を作成します。
+[New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) を使用して *myFrontendSubnet* という名前のサブネット構成を作成します。
 
 ```azurepowershell-interactive
 $frontendSubnet = New-AzVirtualNetworkSubnetConfig `
@@ -83,7 +83,7 @@ $backendSubnet = New-AzVirtualNetworkSubnetConfig `
 
 ## <a name="create-virtual-network"></a>Create virtual network
 
-[New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) を使用して、*myFrontendSubnet* と *myBackendSubnet* を使用する *myVNet* という名前の VNET を作成します。
+[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) を使用して、*myFrontendSubnet* と *myBackendSubnet* を使用する *myVNet* という名前の VNET を作成します。
 
 ```azurepowershell-interactive
 $vnet = New-AzVirtualNetwork `
@@ -102,7 +102,7 @@ Azure リソースにインターネットからアクセスするためには�
 
 割り当て方法を "静的" に設定することで、VM に割り当てた IP アドレスを確実に維持し、割り当てが解除された状態でも変更されないようにすることができます。 静的 IP アドレスを使用している場合、IP アドレス自体を指定することはできません。 それは、利用可能なアドレスのプールから割り当てられます。
 
-[New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) を使用して *myPublicIPAddress* という名前のパブリック IP アドレスを作成します。
+[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用して *myPublicIPAddress* という名前のパブリック IP アドレスを作成します。
 
 ```azurepowershell-interactive
 $pip = New-AzPublicIpAddress `
@@ -116,7 +116,7 @@ $pip = New-AzPublicIpAddress `
 
 ## <a name="create-a-front-end-vm"></a>フロントエンド VM の作成
 
-VM が仮想ネットワーク内で通信するには、仮想ネットワーク インターフェイス (NIC) が必要です。 [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) を使用して、NIC を作成します。
+VM が仮想ネットワーク内で通信するには、仮想ネットワーク インターフェイス (NIC) が必要です。 [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) を使用して、NIC を作成します。
 
 ```azurepowershell-interactive
 $frontendNic = New-AzNetworkInterface `
@@ -127,13 +127,13 @@ $frontendNic = New-AzNetworkInterface `
   -PublicIpAddressId $pip.Id
 ```
 
-[Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) を使用して、VM の管理者アカウントに必要なユーザー名とパスワードを設定します。 追加の手順でこれらの資格情報を使用して VM に接続します。
+[Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) を使用して、VM の管理者アカウントに必要なユーザー名とパスワードを設定します。 追加の手順でこれらの資格情報を使用して VM に接続します。
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) を使用して VM を作成します。
+[New-AzVM](/powershell/module/az.compute/new-azvm) を使用して VM を作成します。
 
 ```azurepowershell-interactive
 New-AzVM `
@@ -163,7 +163,7 @@ NSG ルールは、トラフィックが許可または拒否されるネット�
 
 ### <a name="create-network-security-groups"></a>ネットワーク セキュリティ グループの作成
 
-[New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) を使用して、*myFrontendVM* 上で受信 Web トラフィックを許可する *myFrontendNSGRule* という名前のインバウンド規則を作成します。
+[New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) を使用して、*myFrontendVM* 上で受信 Web トラフィックを許可する *myFrontendNSGRule* という名前のインバウンド規則を作成します。
 
 ```azurepowershell-interactive
 $nsgFrontendRule = New-AzNetworkSecurityRuleConfig `
@@ -193,7 +193,7 @@ $nsgBackendRule = New-AzNetworkSecurityRuleConfig `
   -Access Allow
 ```
 
-[New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) を使用して、*myFrontendNSG* という名前のネットワーク セキュリティ グループを追加します。
+[New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) を使用して、*myFrontendNSG* という名前のネットワーク セキュリティ グループを追加します。
 
 ```azurepowershell-interactive
 $nsgFrontend = New-AzNetworkSecurityGroup `

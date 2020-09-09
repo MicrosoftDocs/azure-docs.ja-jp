@@ -1,18 +1,19 @@
 ---
 title: Azure portal での請求先アカウントの表示
-description: Azure portal で請求先アカウントを表示する方法について説明します。
+description: Azure portal で課金アカウントを表示する方法について説明します。 Enterprise Agreement、Microsoft 顧客契約、Microsoft Partner Agreement のスコープ情報を参照してください。
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 4dab11afb2ddd910a4d6619d088031279ebf3172
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b18e08f93df143f9844fe774eee59452978d7437
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238008"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88686396"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Azure portal での課金アカウントとスコープ
 
@@ -22,9 +23,9 @@ Azure portal では、次の種類の課金アカウントがサポートされ�
 
 - **Microsoft Online Services Program**: Azure Web サイトから Azure にサインアップすると、Microsoft Online Services Program の課金アカウントが作成されます。 たとえば、[Azure 無料アカウント](https://azure.microsoft.com/offers/ms-azr-0044p/)または[従量課金制料金のアカウント](https://azure.microsoft.com/offers/ms-azr-0003p/)にサインアップした場合や、[Visual Studio サブスクライバー](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)としてサインアップした場合です。
 
-- **マイクロソフト エンタープライズ契約**:組織が Azure を使用するために [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) を締結すると、Enterprise Agreement の課金アカウントが作成されます。
+- **マイクロソフト エンタープライズ契約**:組織が Azure を使用するために [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) を締結すると、Enterprise Agreement の課金アカウントが作成されます。 マイクロソフトエンタープライズ契約には、最大 2000 個のサブスクリプションを含めることができます。
 
-- **Microsoft Customer Agreement**: 組織が Microsoft 担当者と連携して Microsoft Customer Agreement を締結すると、Microsoft Customer Agreement の課金アカウントが作成されます。 一部のリージョンでは、Azure Web サイトから[従量課金制料金のアカウント](https://azure.microsoft.com/offers/ms-azr-0003p/)または [Azure 無料アカウント](https://azure.microsoft.com/offers/ms-azr-0044p/)にサインアップしたお客様にも、Microsoft Customer Agreement の課金アカウントが作成される場合があります。 詳細については、「[Get started with your billing account for Microsoft Customer Agreement (Microsoft Customer Agreement の請求先アカウントの概要)](../understand/mca-overview.md)」をご覧ください。
+- **Microsoft Customer Agreement**: 組織が Microsoft 担当者と連携して Microsoft Customer Agreement を締結すると、Microsoft Customer Agreement の課金アカウントが作成されます。 一部のリージョンでは、Azure Web サイトから[従量課金制料金のアカウント](https://azure.microsoft.com/offers/ms-azr-0003p/)または [Azure 無料アカウント](https://azure.microsoft.com/offers/ms-azr-0044p/)にサインアップしたお客様にも、Microsoft Customer Agreement の課金アカウントが作成される場合があります。 Microsoft 顧客契約には、最大 20 のサブスクリプションを含めることができます。 詳細については、「[Get started with your billing account for Microsoft Customer Agreement (Microsoft Customer Agreement の請求先アカウントの概要)](../understand/mca-overview.md)」をご覧ください。
 
 - **Microsoft Partner Agreement**: Microsoft Partner Agreement の課金アカウントは、クラウド ソリューション プロバイダー (CSP) パートナーが新しいコマース エクスペリエンスで顧客を管理する目的で作成します。 パートナーが Azure portal で課金アカウントを管理するためには、[Azure プラン](https://docs.microsoft.com/partner-center/purchase-azure-plan)に少なくとも 1 件の顧客が必要です。 詳細については、[Microsoft Partner Agreement の課金アカウントの概要](../understand/mpa-overview.md)に関するページを参照してください。
 
@@ -35,7 +36,7 @@ Azure portal では、次の種類の課金アカウントがサポートされ�
 
 ### <a name="microsoft-online-services-program"></a>Microsoft Online Services Program
 
- ![MOSP の階層を示すスクリーンショット](./media/view-all-accounts/mosp-hierarchy.png)
+![MOSP の階層を示すスクリーンショット](./media/view-all-accounts/mosp-hierarchy.png)
 
 |Scope  |定義  |
 |---------|---------|

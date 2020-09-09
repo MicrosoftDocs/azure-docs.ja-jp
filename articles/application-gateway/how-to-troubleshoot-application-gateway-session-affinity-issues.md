@@ -5,15 +5,15 @@ description: この記事では、Azure Application Gateway のセッション �
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: f5f5c16f3d6aa1d7115e99cbae0dbd6cd926b25a
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 5acf4ac1ec75d5cec057e4b66e3c6cbd8a463271
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82202538"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808010"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Azure Application Gateway のセッション アフィニティに関する問題をトラブルシューティングする
 
@@ -95,7 +95,7 @@ Cookie ベースのアフィニティ設定を有効にしており、Internet E
 
 Internet Explorer や他のブラウザーが、短縮名 URL で Cookie を格納することも使用することもできないので、この問題が発生します。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 この問題を解決するには、FQDN を使用して Application Gateway にアクセスする必要があります。 たとえば、[http://website.com](https://website.com/) または [http://appgw.website.com](http://website.com/) を使用します。
 

@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 06/27/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f228da5afc5998d8fa59ce2d720cec4c9f955b67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 875c503a9959565d76d46902b5ecb386995ef1e5
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67479048"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144721"
 ---
 # <a name="adsync-service-account"></a>ADSync サービス アカウント
 Azure AD Connect は、Active Directory と Azure Active Directory の間の同期を調整するオンプレミス サービスをインストールします。  Microsoft Azure AD Sync 同期サービス (ADSync) は、オンプレミス環境内のサーバー上で実行されます。  サービスの資格情報は、高速インストールでは既定で設定されますが、組織のセキュリティ要件を満たすようにカスタマイズできます。  これらの資格情報は、オンプレミス フォレストまたは Azure Active Directory への接続には使用されません。
@@ -46,9 +46,9 @@ Microsoft では、仮想サービス アカウントか、スタンドアロン
 - 管理されたサービス アカウント - 管理者によってプロビジョニングされたスタンドアロンまたはグループの MSA を使用します
 - ドメイン アカウント - 管理者によってプロビジョニングされたドメイン サービス アカウントを使用します
 
-![](media/concept-adsync-service-account/adsync1.png)
+![[カスタマイズ] または [簡単設定を使う] オプションのボタンがある、[Azure AD Connect の簡単設定] ページのスクリーンショット。](media/concept-adsync-service-account/adsync1.png)
 
-![](media/concept-adsync-service-account/adsync2.png)
+![選択した既存の管理されたサービス アカウントを使用するためのオプションがある、Azure AD Connect の [必須コンポーネントのインストール] ページのスクリーンショット。](media/concept-adsync-service-account/adsync2.png)
 
 ## <a name="diagnosing-adsync-service-account-changes"></a>ADSync サービス アカウントの変更の診断
 インストール後に ADSync サービスの資格情報を変更すると、サービスの開始に失敗し、同期データベースへのアクセスが失われ、接続先ディレクトリ (Azure および AD DS) の認証は失敗します。  新しい ADSync サービス アカウントへのデータベース アクセスを許可するだけではこの問題から復旧できません。 元の資格情報が復元されるまで、同期は行われません。

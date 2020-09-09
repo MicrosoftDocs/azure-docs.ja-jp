@@ -25,9 +25,6 @@
       href: powershell-samples.md
     - name: マネージド アプリケーション ソリューション
       href: sample-projects.md
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: ビュー定義アーティファクト
@@ -46,6 +43,8 @@
           href: test-createuidefinition.md
         - name: Just-In-Time アクセスを要求する
           href: request-just-in-time-access.md
+        - name: 既存の仮想ネットワークを使用する
+          href: existing-vnet-integration.md
         - name: マネージド リソースの更新
           href: update-managed-resources.md
         - name: ポータルを使用したアプリケーション定義の発行
@@ -79,24 +78,46 @@
     - name: REST
       href: /rest/api/resources/
     - name: ユーザー インターフェイスの関数
-      href: create-uidefinition-functions.md
+      items:
+        - name: すべての関数
+          href: create-uidefinition-functions.md
+        - name: コレクション関数
+          href: create-ui-definition-collection-functions.md
+        - name: 変換関数
+          href: create-ui-definition-conversion-functions.md
+        - name: データ関数
+          href: create-ui-definition-date-functions.md
+        - name: 論理関数
+          href: create-ui-definition-logical-functions.md
+        - name: 算術関数
+          href: create-ui-definition-math-functions.md
+        - name: 関数の参照
+          href: create-ui-definition-referencing-functions.md
+        - name: 文字列関数
+          href: create-ui-definition-string-functions.md
     - name: ユーザー インターフェイスの要素
       href: create-uidefinition-elements.md
       items:
         - name: 共通
           items:
+            - name: CheckBox
+              href: microsoft-common-checkbox.md
             - name: DropDown
               href: microsoft-common-dropdown.md
+            - name: EditableGrid
+              href: microsoft-common-editablegrid.md
             - name: FileUpload
               href: microsoft-common-fileupload.md
             - name: InfoBox
               href: microsoft-common-infobox.md
-            - name: OptionsGroup
+            - name: OptionsGroup (ラジオ ボタン)
               href: microsoft-common-optionsgroup.md
             - name: PasswordBox
               href: microsoft-common-passwordbox.md
             - name: Section
               href: microsoft-common-section.md
+            - name: スライダー
+              href: microsoft-common-slider.md
             - name: TagsByResource
               href: microsoft-common-tagsbyresource.md
             - name: TextBlock
@@ -121,12 +142,21 @@
               href: microsoft-network-publicipaddresscombo.md
             - name: VirtualNetworkCombo
               href: microsoft-network-virtualnetworkcombo.md
+        - name: ソリューション
+          items:
+            - name: ArmApiControl
+              href: microsoft-solutions-armapicontrol.md
+            - name: ResourceSelector
+              href: microsoft-solutions-resourceselector.md
         - name: ストレージ
           items:
             - name: MultiStorageAccountCombo
               href: microsoft-storage-multistorageaccountcombo.md
             - name: StorageAccountSelector
               href: microsoft-storage-storageaccountselector.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Azure のロードマップ

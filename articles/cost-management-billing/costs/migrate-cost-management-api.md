@@ -3,16 +3,17 @@ title: EA から Microsoft 顧客契約の API に移行する - Azure
 description: この記事では、Microsoft Enterprise Agreement (EA) から Microsoft 顧客契約への移行とその結果について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: micflan
-ms.openlocfilehash: 397e0a21b1ba11b3bdd74c2030ff358c1ce159d8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 811b2cb7fd9a4f664e7a643f5a8e192a51416888
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77201035"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689101"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Enterprise Agreement から Microsoft 顧客契約 API に移行する
 

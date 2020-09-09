@@ -4,14 +4,14 @@ description: Azure portal から Azure Database for MySQL 用のプライベー�
 author: kummanish
 ms.author: manishku
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 4a4824a9f8340b12bca7e18562d723eb24e58b71
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 37c5a0fb1addf9f84c8a237b4d185d140553535e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79371921"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825975"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>ポータルを使用して Azure Database for MySQL 用のプライベート リンクを作成および管理する
 
@@ -20,7 +20,7 @@ ms.locfileid: "79371921"
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 > [!NOTE]
-> この機能は、Azure Database for MySQL で汎用およびメモリ最適化の価格レベルがサポートされているすべての Azure リージョンで使用できます。
+> プライベート リンク機能は、General Purpose またはメモリ最適化の価格レベルの Azure Database for MySQL サーバーにのみ使用可能です。 データベース サーバーがこれらの価格レベルのいずれであることを確実にします。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 [Azure portal](https://portal.azure.com) にサインインします。
@@ -74,7 +74,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     | Windows ライセンスを既にお持ちの場合 | 既定値 **[なし]** のままにします。 |
     |||
 
-1. **ディスク** を選択します。
+1. **[Next:ディスク]** を選択します。
 
 1. **[仮想マシンの作成 - Disk]** で、既定値のままにし、 **[Next: Networking]\(次へ : ネットワーク\)** を選択します。
 
@@ -122,6 +122,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 9. "検証に成功しました" というメッセージが表示されたら、 **[作成]** を選択します。 
 10. "検証に成功しました" というメッセージが表示されたら、[作成] を選択します。 
 
+> [!NOTE]
+> Azure Database for MySQL と VNet サブネットが異なるサブスクリプションに存在する場合があります。 このような場合は、次の構成を確認する必要があります。
+> - 両方のサブスクリプションに **Microsoft.DBforMySQL** リソース プロバイダーが登録されていることを確認してください。 詳細については、[resource-manager-registration][resource-manager-portal] に関するページをご覧ください
+
 ## <a name="create-a-private-endpoint"></a>プライベート エンドポイントの作成
 
 このセクションでは、MySQL サーバーを作成し、それにプライベート エンドポイントを追加します。 
@@ -144,7 +148,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |リージョン|**[西ヨーロッパ]** を選択します。|
     |||
 
-5. **リソース** を選択します。
+5. **[Next:リソース]** を選択します。
 6. **[プライベート エンドポイントの作成 - リソース]** で、次の情報を入力または選択します。
 
     | 設定 | 値 |
@@ -155,18 +159,21 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     | リソース |*[myServer]* を選択します。|
     |ターゲット サブリソース |*[mysqlServer]* を選択します|
     |||
-7. **構成** を選択します。
+7. **[Next:構成]** を選択します。
 8. **[Create a private endpoint - Configuration]/(プライベート エンドポイントの作成 - 構成/)** で次の情報を入力または選択します。
 
     | 設定 | 値 |
     | ------- | ----- |
     |**ネットワーク**| |
     | 仮想ネットワーク| *[MyVirtualNetwork]* を選択します。 |
-    | Subnet |  *[mySubnet]* を選択します。 |
+    | Subnet | *[mySubnet]* を選択します。 |
     |**プライベート DNS 統合**||
     |プライベート DNS ゾーンとの統合 |**[はい]** を選択します。 |
     |プライベート DNS ゾーン |*[(新規)privatelink.mysql.database.azure.com]* を選択します。 |
     |||
+
+    > [!Note] 
+    > サービスに事前に定義されているプライベート DNS ゾーンを使用するか、優先する DNS ゾーン名を指定します。 詳細については、「[Azure サービス DNS ゾーンの構成](../private-link/private-endpoint-dns.md)」を参照してください。
 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。 **[確認および作成]** ページが表示され、Azure によって構成が検証されます。 
 2. "**証に成功しました**" というメッセージが表示されたら、 **[作成]** を選択します。 
@@ -204,7 +211,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="access-the-mysql-server-privately-from-the-vm"></a>VM から MySQL サーバーにプライベートにアクセスする
 
-1.  *myVM* のリモート デスクトップで、PowerShell を開きます。
+1. *myVM* のリモート デスクトップで、PowerShell を開きます。
 
 2. 「 `nslookup  myServer.privatelink.mysql.database.azure.com`」と入力します。 
 
@@ -241,10 +248,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 プライベート エンドポイント、MySQL サーバー、VM を使い終えたら、リソース グループとそこに含まれるすべてのリソースを削除します。
 
-1. ポータルの上部にある**検索**ボックスに「 *myResourceGroup*」と入力し、検索結果から  *myResourceGroup* を選択します。
+1. ポータルの上部にある**検索**ボックスに「*myResourceGroup*」と入力し、検索結果から *myResourceGroup* を選択します。
 2. **[リソース グループの削除]** を選択します。
 3. **[TYPE THE RESOURCE GROUP NAME]\(リソース グループ名を入力してください\)** に「myResourceGroup」と入力し、 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 
 この記事では、仮想ネットワーク上の VM、Azure Database for MySQL、およびプライベート アクセス用のプライベート エンドポイントを作成しました。 インターネットから 1 台の VM に接続し、Private Link を使用して MySQL サーバーと安全に通信を行いました。 プライベート エンドポイントの詳細については、「[Azure プライベート エンドポイントとは](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)」を参照してください。
+
+<!-- Link references, to text, Within this same GitHub repo. -->
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

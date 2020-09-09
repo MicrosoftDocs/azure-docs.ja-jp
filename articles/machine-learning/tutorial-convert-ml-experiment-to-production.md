@@ -5,14 +5,16 @@ description: MLOpsPython コード テンプレートを使用して、機械学
 author: bjcmit
 ms.author: brysmith
 ms.service: machine-learning
+ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/30/2020
-ms.openlocfilehash: a0b66f233de9e1bfdc6d011b65489884a1049a12
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.custom: devx-track-python
+ms.openlocfilehash: 3a6ce5860704e6fd16b79fc253650dd45ec743e7
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559665"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852618"
 ---
 # <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>チュートリアル:ML 実験を運用 Python コードに変換する
 

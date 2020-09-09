@@ -3,22 +3,21 @@ title: Visual Studio Mobile Center での Real User Measurements - Azure Traffic
 description: Real User Measurements を Traffic Manager に送信するように、Visual Studio Mobile Center を使用して開発されたモバイル アプリケーションを設定します
 services: traffic-manager
 documentationcenter: traffic-manager
-author: rohinkoul
-manager: twooley
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/16/2018
-ms.author: rohink
-ms.custom: ''
-ms.openlocfilehash: 3106334e1fb3e3000cbd09e00e413b34a1b55e54
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: duau
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 2d31f51c7af37ed6729900c5851113d8d1e9b587
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76939182"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401335"
 ---
 # <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Visual Studio Mobile Center で Real User Measurements を Traffic Manager に送信する方法
 

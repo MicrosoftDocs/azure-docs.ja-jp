@@ -1,6 +1,6 @@
 ---
 title: BLOB のホット、クール、アーカイブ アクセス層 - Azure Storage
-description: Azure Storage アカウントのホット、クール、アーカイブ アクセス層。
+description: Azure Blob Storage のホット、クール、およびアーカイブ アクセス層について説明します。 階層制御がサポートされるストレージ アカウントを確認します。 ブロック BLOB ストレージ オプションを比較します。
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 03/23/2019
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: c803d489b70cda6910865f6096d21c2021c4ae3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a46597087a3eee03f7c5b8d1c9746f968ea1980d
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393695"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849728"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: ホット、クール、アーカイブ ストレージ層
 
@@ -59,9 +59,9 @@ BLOB ストレージと GPv2 アカウントからは、アカウント レベ�
 
 ## <a name="archive-access-tier"></a>アーカイブ アクセス層
 
-アーカイブ アクセス層では、ストレージ コストは最も低くなります。 しかし、ホット層やクール層と比べて、データ取得コストは高くなります。 アーカイブ層のデータの取得には数時間かかることがあります。 データは、少なくとも 180 日間、アーカイブ層に保持される必要があります。そうでない場合、早期削除料金の対象になります。
+アーカイブ アクセス層では、ストレージ コストは最も低くなります。 しかし、ホット層やクール層と比べて、データ取得コストは高くなります。 データは、少なくとも 180 日間、アーカイブ層に保持される必要があります。そうでない場合、早期削除料金の対象になります。 アーカイブ アクセス層のデータの取得には、リハイドレートの優先度によっては、数時間かかることがあります。 小さいオブジェクトの場合、優先度の高いリハイドレートは 1 時間未満でアーカイブからオブジェクトを取得できます。 「[アーカイブ層から BLOB データをリハイドレートする](storage-blob-rehydration.md)」で詳細を確認してください。
 
-BLOB がアーカイブ ストレージ内にある間、BLOB データはオフラインであり、読み取り、上書き、または変更を行うことはできません。 アーカイブ内の BLOB を読み取るかダウンロードするには、最初にそれをオンライン層にリハイドレートする必要があります。 アーカイブ ストレージ内の BLOB のスナップショットを作成することはできません。 ただし、BLOB メタデータはオンラインのままで使用でき、BLOB とそのプロパティの一覧を表示することができます。 アーカイブに保存された BLOB に対する有効な操作は、GetBlobProperties、GetBlobMetadata、ListBlobs、SetBlobTier、CopyBlob、および DeleteBlob のみです。 「[アーカイブ層から BLOB データをリハイドレートする](storage-blob-rehydration.md)」で詳細を確認してください。
+BLOB がアーカイブ ストレージ内にある間、BLOB データはオフラインであり、読み取り、上書き、または変更を行うことはできません。 アーカイブ内の BLOB を読み取るかダウンロードするには、最初にそれをオンライン層にリハイドレートする必要があります。 アーカイブ ストレージ内の BLOB のスナップショットを作成することはできません。 ただし、BLOB メタデータはオンラインのままで使用でき、BLOB、そのプロパティ、メタデータ、および BLOB インデックス タグを一覧表示できます。 アーカイブ中の BLOB メタデータの設定または変更は許可されていません。ただし、BLOB インデックス タグは設定および変更できます。 アーカイブにある BLOB に対する有効な操作は、GetBlobProperties、GetBlobMetadata、SetBlobTags、GetBlobTags、FindBlobsByTags、ListBlobs、SetBlobTier、CopyBlob、および DeleteBlob のみです。
 
 アーカイブ アクセス層の使用シナリオの例には、次のようなものがあります。
 
@@ -82,7 +82,7 @@ BLOB レベルの階層制御では、[Put Blob](/rest/api/storageservices/put-b
 BLOB 層が最後に変更された時間は、BLOB の**アクセス層変更時間**プロパティを介して公開されます。 ホット層またはクール層の BLOB を上書きするとき、作成時に新しい BLOB アクセス層を明示的に設定しない限り、新しく作成された BLOB では上書きされた BLOB の階層を引き継ぎます。 BLOB がアーカイブ層にあると、上書きできないため、このシナリオでは、同じ BLOB をアップロードすることは許可されません。 
 
 > [!NOTE]
-> アーカイブ ストレージと BLOB レベルの階層制御では、ブロック BLOB のみがサポートされます。 また、現時点では、スナップショットがあるブロック BLOB の層を変更することもできません。
+> アーカイブ ストレージと BLOB レベルの階層制御では、ブロック BLOB のみがサポートされます。
 
 ### <a name="blob-lifecycle-management"></a>BLOB のライフサイクル管理
 
@@ -133,7 +133,7 @@ BLOB をよりホットな層 (アーカイブからクール、アーカイブ�
 
 ## <a name="quickstart-scenarios"></a>クイックスタート シナリオ
 
-このセクションでは、Azure portal と powershell を使用して、次のシナリオについて説明します。
+このセクションでは、Azure portal と PowerShell を使用して、次のシナリオについて説明します。
 
 - GPv2 または BLOB ストレージ アカウントの既定のアクセス層を変更する方法。
 - GPv2 または BLOB ストレージ アカウントの BLOB のアクセス層を変更する方法。
@@ -155,7 +155,7 @@ BLOB をよりホットな層 (アーカイブからクール、アーカイブ�
 
 ![ストレージ アカウント層を変更する](media/storage-tiers/account-tier.png)
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 次の PowerShell スクリプトを使用すると、アカウント層を変更できます。 `$rgName` 変数は、ご自身のリソース グループ名で初期化する必要があります。 `$accountName` 変数は、ご自身のストレージ アカウント名で初期化する必要があります。 
 ```powershell
 #Initialize the following with your resource group and storage account names
@@ -185,7 +185,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 
 ![ストレージ アカウント層を変更する](media/storage-tiers/blob-access-tier.png)
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 次の PowerShell スクリプトを使用すると、BLOB 層を変更できます。 `$rgName` 変数は、ご自身のリソース グループ名で初期化する必要があります。 `$accountName` 変数は、ご自身のストレージ アカウント名で初期化する必要があります。 `$containerName` 変数は、ご自身のコンテナー名で初期化する必要があります。 `$blobName` 変数は、ご自身の BLOB 名で初期化する必要があります。 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
@@ -248,11 +248,11 @@ GPv1 アカウントと GPv2 アカウントとでは料金体系が異なりま
 
 ホット アクセス層内の BLOB の待ち時間は、GPv1、GPv2、BLOB ストレージ アカウントの BLOB と同じになります。 クール アクセス層内の BLOB の待ち時間は、GPv1、GPv2、BLOB ストレージ アカウントの BLOB と類似しています (ミリ秒)。 アーカイブ アクセス層の BLOB の待ち時間は、GPv1、GPv2、BLOB ストレージ アカウントのいずれにおいても数時間に及びます。
 
-クール アクセス層内の BLOB は、ホット アクセス層に格納された BLOB よりも可用性サービス レベル (SLA) が若干低くなります。 詳細については、「[Storage の SLA](https://azure.microsoft.com/support/legal/sla/storage/v1_2/)」を参照してください。
+クール アクセス層内の BLOB は、ホット アクセス層に格納された BLOB よりも可用性サービス レベル (SLA) が若干低くなります。 詳細については、「[Storage の SLA](https://azure.microsoft.com/support/legal/sla/storage/v1_5/)」を参照してください。
 
 **ホット、クール、アーカイブの各層間で操作は同じですか。**
 
-ホットとクールとの間では、すべての操作に 100% の一貫性があります。 GetBlobProperties、GetBlobMetadata、ListBlobs、SetBlobTier、および DeleteBlob を含む有効なアーカイブ操作はすべて、ホットとクールで 100% の一貫性があります。 アーカイブ層の BLOB データは、リハイドレートするまで読み取ったり変更したりできません。アーカイブ中は、BLOB メタデータの読み取り操作のみがサポートされます。
+ホットとクールとの間では、すべての操作に 100% の一貫性があります。 GetBlobProperties、GetBlobMetadata、SetBlobTags、GetBlobTags、FindBlobsByTags、ListBlobs、SetBlobTier、および DeleteBlob を含む有効なアーカイブ操作はすべて、ホットとクールで 100% 一致しています。 アーカイブ層の BLOB データは、リハイドレートするまで読み取ったり変更したりできません。アーカイブ中は、BLOB メタデータの読み取り操作のみがサポートされます。 ただし、アーカイブ中に BLOB インデックス タグの読み取り、設定、または変更を行うことはできます。
 
 **BLOB をアーカイブ層からホット層またはクール層にリハイドレートするとき、リハイドレートが完了したことは、どのようにしてわかるのですか。**
 

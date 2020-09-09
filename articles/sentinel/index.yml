@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: yelevin
   ms.author: yelevin
-  ms.date: 25/09/2019
-  ms.openlocfilehash: c52ed5413fbf1fe9f6a328b7160266892ab262a9
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 06/25/2020
+  ms.openlocfilehash: d4e86295020ab68c6769ac34d6259bd78cf9934e
+  ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77582264"
+  ms.lasthandoff: 06/25/2020
+  ms.locfileid: "85374561"
 landingContent:
 - title: Azure Sentinel について
   linkLists:
@@ -41,7 +41,7 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Azure AD の接続
+    - text: Azure Active Directory の接続
       url: connect-azure-active-directory.md
     - text: Azure Information Protection の接続
       url: connect-azure-information-protection.md

@@ -8,52 +8,48 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
-ms.date: 11/19/2019
+ms.topic: how-to
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 138b84a9b7f54782fd6254304a3fdcf4dba83182
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3aa7958ea4edf6cf3e3c1b170e2351f49f719983
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219133"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782842"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>バージョンを使用してステージング アプリまたは運用環境アプリに影響を与えることなく編集とテストを行う
 
-バージョンを使用して、さまざまなモデルを構築および公開できます。 モデルに変更を加える前に、現在のアクティブなモデルをアプリの別の[バージョン](luis-concept-version.md)に複製することをお勧めします。 
+バージョンを使用して、さまざまなモデルを構築および公開できます。 モデルに変更を加える前に、現在のアクティブなモデルをアプリの別の[バージョン](luis-concept-version.md)に複製することをお勧めします。
 
-バージョンを操作するには、 **[My Apps]\(マイ アプリ\)** ページで名前を選択してアプリを開き、上部のバーにある **[Manage]\(管理\)** を選択し、左側のナビゲーションで **[Versions]\(バージョン\)** を選択します。 
+アクティブなバージョンは、意図、エンティティ、特徴、およびパターンについて LUIS ポータル上の **[ビルド]** セクションで編集しているバージョンです。 オーサリング API を使用している場合、バージョン固有の REST API の呼び出しではルートにそのバージョンが含まれているため、アクティブなバージョンを設定する必要はありません。
 
-バージョンの一覧には、公開されているバージョン、公開されている場所、現在アクティブであるバージョンが表示されます。 
+バージョンを操作するには、 **[マイ アプリ]** ページで名前を選択してアプリを開き、上部のバーにある **[管理]** を選択し、左側のナビゲーションで **[バージョン]** を選択します。
 
-> [!div class="mx-imgBorder"]
-> [![[管理] セクションの [バージョン] ページ](./media/luis-how-to-manage-versions/versions-import.png "[管理] セクションの [バージョン] ページ")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
+バージョンの一覧には、公開されているバージョン、公開されている場所、現在アクティブであるバージョンが表示されます。
 
 ## <a name="clone-a-version"></a>バージョンを複製する
 
-1. 複製するバージョンを選択し、ツール バーから **[Clone]\(複製\)** を選択します。 
+1. 複製するバージョンを選択し、ツール バーから **[複製]** を選択します。
 
 2. **[Clone version]\(複製のバージョン\)** ダイアログ ボックスで、新しいバージョンの名前 ("0.2" など) を入力します。
 
    ![[Clone version]\(複製のバージョン\) ダイアログ ボックス](./media/luis-how-to-manage-versions/version-clone-version-dialog.png)
- 
+
      > [!NOTE]
      > バージョン ID は、文字、数字、または '.' のみで構成できます。文字数は 10 文字までです。
- 
+
    指定した名前の新しいバージョンが作成され、アクティブなバージョンとして設定されます。
 
 ## <a name="set-active-version"></a>アクティブなバージョンを設定する
 
-一覧からバージョンを選択し、ツール バーから **[Activate]\(アクティブ\)** を選択します。 
-
-> [!div class="mx-imgBorder"]
-> [![[管理] セクションの [バージョン] ページ、バージョン アクションの作成](./media/luis-how-to-manage-versions/versions-other.png "[管理] セクションの [バージョン] ページ、バージョン アクションの作成")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
+一覧からバージョンを選択し、ツール バーから **[アクティブにする]** を選択します。
 
 ## <a name="import-version"></a>バージョンをインポートする
 
 アプリケーションの `.json` または `.lu` バージョンをインポートできます。
 
-1. ツール バーの **[Import]\(インポート\)** を選択し、形式を選択します。 
+1. ツール バーの **[インポート]** を選択し、形式を選択します。
 
 2. **[Import new version]\(新しいバージョンのインポート\)** ポップアップ ウィンドウで、新しい 10 文字のバージョン名を入力します。 ファイルのバージョンが既にアプリに存在する場合は、バージョン ID のみを設定する必要があります。
 
@@ -69,7 +65,7 @@ ms.locfileid: "79219133"
 
 ## <a name="other-actions"></a>その他のアクション
 
-* バージョンを**削除**するには、一覧からバージョンを選択し、ツール バーから **[Delete]\(削除\)** を選択します。 **[OK]** を選択します。 
-* バージョンの**名前を変更**するには、一覧からバージョンを選択し、ツール バーから **[Rename]\(名前の変更\)** を選択します。 新しい名前を入力して **[Done]\(完了\)** を選択します。 
-* バージョンを**エクスポート**するには、一覧からバージョンを選択し、ツール バーから **[Export app]\(アプリのエクスポート\)** を選択します。 [このアプリを LUIS コンテナーで使用](luis-container-howto.md)するには、バックアップ用にエクスポートする JSON を選択し、 **[Export for container]\(コンテナー用にエクスポート\)** を選択します。  
+* バージョンを**削除**するには、一覧からバージョンを選択し、ツール バーから **[削除]** を選択します。 **[OK]** を選択します。
+* バージョンの**名前を変更**するには、一覧からバージョンを選択し、ツール バーから **[名前の変更]** を選択します。 新しい名前を入力して **[完了]** を選択します。
+* バージョンを**エクスポート**するには、一覧からバージョンを選択し、ツール バーから **[Export app]\(アプリのエクスポート\)** を選択します。 [このアプリを LUIS コンテナーで使用](luis-container-howto.md)するには、バックアップ用にエクスポートする、またはソース管理に保存する JSON または LU を選択し、 **[Export for container]\(コンテナー用にエクスポート\)** を選択します。
 

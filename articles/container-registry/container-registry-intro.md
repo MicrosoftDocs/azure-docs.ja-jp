@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 02/10/2020
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 1992a2a63d16a955d136459f5dbaece7df815c71
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6951dfe3eecc8764dda9788393a7348e9267cef8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77132030"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248868"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Azure のプライベート Docker コンテナー レジストリの概要
 
@@ -25,8 +25,8 @@ Docker とレジストリの概念について詳しくは、「[Docker overview
 
 Azure コンテナー レジストリからさまざまなデプロイ ターゲットにイメージをプルできます。
 
-* [Kubernetes](https://kubernetes.io/docs/)、[DC/OS](https://docs.mesosphere.com/)、[Docker Swarm](https://docs.docker.com/swarm/) など、ホストから成るクラスターにわたってコンテナー化されたアプリケーションを管理する**スケーラブルなオーケストレーション システム**。
-* [Azure Kubernetes Service (AKS)](../aks/index.yml) や  [App Service](../app-service/index.yml)､[Batch](../batch/index.yml)､[Service Fabric](/azure/service-fabric/) など､大規模なアプリケーション のビルドと実行をサポートしている **Azure サービス**｡
+* [Kubernetes](https://kubernetes.io/docs/)、[DC/OS](https://docs.mesosphere.com/)、[Docker Swarm](https://docs.docker.com/get-started/swarm-deploy/) など、ホストから成るクラスターにわたってコンテナー化されたアプリケーションを管理する**スケーラブルなオーケストレーション システム**。
+* [Azure Kubernetes Service (AKS)](../aks/index.yml) や  [App Service](../app-service/index.yml)､[Batch](../batch/index.yml)､[Service Fabric](../service-fabric/index.yml) など､大規模なアプリケーション のビルドと実行をサポートしている **Azure サービス**｡
 
 開発者は、コンテナー開発ワークフローの一環としてコンテナー レジストリにプッシュすることもできます。 たとえば、[Azure Pipelines](/azure/devops/pipelines/ecosystems/containers/acr-template) や [Jenkins](https://jenkins.io/) などの継続的インテグレーションと継続的配信ツールからコンテナー レジストリを対象にします。
 
@@ -36,7 +36,7 @@ Azure には、Azure コンテナー レジストリを管理するために、A
 
 ## <a name="key-features"></a>主要な機能
 
-* **レジストリ SKU** - Azure サブスクリプションに 1 つ以上のコンテナー レジストリを作成できます。 レジストリには、[Basic、Standard、Premium](container-registry-skus.md) の 3 つの SKU があり、それぞれ Webhook 統合、Azure Active Directory によるレジストリ認証、および削除機能がサポートされます。 デプロイと同じ Azure の場所にレジストリを作成することで、ネットワーク上の近い場所にローカルで保存されたコンテナー イメージを活用します。 高度なレプリケーションとコンテナー イメージの配布に対応するには、Premium レジストリの [geo レプリケーション](container-registry-geo-replication.md)機能を使用してください。 
+* **レジストリのサービス レベル** - Azure サブスクリプションに 1 つまたは複数のコンテナー レジストリを作成します。 レジストリは次の 3 つのレベルで利用できます。[Basic、Standard、Premium](container-registry-skus.md) の 3 つの SKU があり、それぞれ Webhook 統合、Azure Active Directory によるレジストリ認証、および削除機能がサポートされます。 デプロイと同じ Azure の場所にレジストリを作成することで、ネットワーク上の近い場所にローカルで保存されたコンテナー イメージを活用します。 高度なレプリケーションとコンテナー イメージの配布に対応するには、Premium レジストリの [geo レプリケーション](container-registry-geo-replication.md)機能を使用してください。 
 
 * **セキュリティとアクセス** - Azure CLI または標準の `docker login` コマンドを使用して、レジストリにログインします。 Azure Container Registry は、HTTPS でコンテナー イメージを転送し、TLS によるクライアント接続のセキュリティ保護をサポートします。 
 
@@ -45,7 +45,7 @@ Azure には、Azure コンテナー レジストリを管理するために、A
 
   コンテナー レジストリへの[アクセスを制御](container-registry-authentication.md)するには、Azure ID、Azure Active Directory でサポートされている[サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md)、または提供された管理者アカウントを使用します。 ロールベースのアクセス制御 (RBAC) を使用して、レジストリに対するきめ細かなアクセス許可をユーザーまたはシステムに割り当てます。
 
-  Premium SKU のセキュリティ機能には、イメージ タグに署名するための[コンテンツの信頼](container-registry-content-trust.md)や、レジストリへのアクセスを制限する[ファイアウォールと仮想ネットワーク (プレビュー)](container-registry-vnet.md) などがあります。 Azure Container Registry に必要に応じて Azure Security Center を統合すれば、イメージがレジストリにプッシュされるたびに、[イメージがスキャン](../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json)されます。
+  Premium サービス レベルのセキュリティ機能には、イメージ タグに署名するための[コンテンツの信頼](container-registry-content-trust.md)や、レジストリへのアクセスを制限する[ファイアウォールと仮想ネットワーク (プレビュー)](container-registry-vnet.md) などがあります。 Azure Container Registry に必要に応じて Azure Security Center を統合すれば、イメージがレジストリにプッシュされるたびに、[イメージがスキャン](../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json)されます。
 
 * **サポートされるイメージと成果物** - リポジトリにグループ化されます。各イメージは、Docker 互換コンテナーの読み取り専用のスナップショットです。 Azure コンテナー レジストリには、Windows と Linux の両方のイメージを含めることができます。 すべてのコンテナーのデプロイのイメージ名を制御できます。 イメージをリポジトリにプッシュしたり、イメージをリポジトリからプルしたりするには、標準の [Docker コマンド](https://docs.docker.com/engine/reference/commandline/)を使用します。 Azure Container Registry は、Docker コンテナー イメージに加えて、[Helm チャート](container-registry-helm-repos.md)のような[関連コンテンツの形式](container-registry-image-formats.md)および [Open Container Initiative (OCI) のイメージ形式の仕様](https://github.com/opencontainers/image-spec/blob/master/spec.md)に基づいて構築されたイメージを格納します。
 

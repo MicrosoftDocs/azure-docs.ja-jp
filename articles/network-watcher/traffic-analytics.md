@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: adba282a96f9d250569e090e186859c04e89ebda
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 8deb3d81895629e817aeb9dbc1eb6520e1fb7aad
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981547"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747525"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -196,7 +196,7 @@ New-AzStorageAccount `
 
     ![ストレージ アカウント、Log Analytics ワークスペース、Traffic Analytics の有効化の選択](./media/traffic-analytics/ta-customprocessinginterval.png)
 
-トラフィック分析を有効にするその他の NSG に対して前の手順を繰り返します。 フロー ログのデータはワークスペースに送信されるので、ワークスペースが存在するリージョンでのデータの保存が、お住まいの国の法律や規制で許可されていることを確認してください。 NSG ごとに異なる処理間隔を設定した場合、データは異なる間隔で収集されます。 次に例を示します。重大な VNET には 10 分、重要でない VNET には 1 時間の処理間隔を有効にするように選択できます。
+トラフィック分析を有効にするその他の NSG に対して前の手順を繰り返します。 フロー ログのデータはワークスペースに送信されるので、ワークスペースが存在するリージョンでのデータの保存が、お住まいの国/地域の法律や規制で許可されていることを確認してください。 NSG ごとに異なる処理間隔を設定した場合、データは異なる間隔で収集されます。 次に例を示します。重大な VNET には 10 分、重要でない VNET には 1 時間の処理間隔を有効にするように選択できます。
 
 また、Azure PowerShell で [Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) PowerShell コマンドレットを使用して、トラフィック分析を構成できます。 `Get-Module -ListAvailable Az` を実行して、インストールされているバージョンを見つけます。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。
 

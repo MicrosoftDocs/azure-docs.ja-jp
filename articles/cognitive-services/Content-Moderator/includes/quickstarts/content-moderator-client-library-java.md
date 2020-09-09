@@ -8,14 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: include
-ms.date: 01/27/2020
+ms.date: 08/17/2020
+ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: ffbb0e4bd2eec3299b4d5b2b38477edf611db1a2
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2fb18503600d48775c2d5cb981841f5ae627e7eb
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186507"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510111"
 ---
 Java 用 Content Moderator クライアント ライブラリの使用を開始します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。 Content Moderator は、テキスト、画像、ビデオのコンテンツに不快感を与える可能性がある内容、リスクのある内容、その他望ましくない可能性のある内容が含まれているかどうかを確認する Cognitive Services です。 このサービスでは、そのような内容が検出されると、それに応じたラベル (フラグ) がコンテンツに適用されます。 その後は、法的規制に準拠したり、ユーザーに意図されている環境を維持したりするために、フラグの設定されたコンテンツをアプリで処理することができます。
 
@@ -27,7 +28,7 @@ Java 用 Content Moderator クライアント ライブラリは、次の目的�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
 * 最新バージョンの [Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK)
 * [Gradle ビルド ツール](https://gradle.org/install/)、または別の依存関係マネージャー。
 
@@ -37,10 +38,9 @@ Java 用 Content Moderator クライアント ライブラリは、次の目的�
 
 Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、ローカル コンピューター上に Content Moderator 用のリソースを作成します。 次のこともできます。
 
-* 7 日間有効な[試用版のキー](https://azure.microsoft.com/try/cognitive-services/#decision)を無料で入手する。 サインアップ後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis/)でこれを入手できます。  
 * [Azure portal](https://portal.azure.com/) でご利用のリソースを表示する。
 
-試用版のサブスクリプションまたはリソースからキーを取得した後、`AZURE_CONTENTMODERATOR_KEY` という名前のキーの[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。
+リソースからキーを取得した後、`AZURE_CONTENTMODERATOR_KEY` という名前のキーの[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。
 
 ### <a name="create-a-new-gradle-project"></a>新しい Gradle プロジェクトを作成する
 

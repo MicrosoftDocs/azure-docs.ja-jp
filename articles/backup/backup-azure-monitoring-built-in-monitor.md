@@ -4,16 +4,16 @@ description: この記事では、Azure portal を使用した Azure Backup ワ�
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: de5a82f5ad1d8113b27c07484f2f08f4cf97c759
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2fae7cfdb8b316341e01d15b43811d3f0e7638ef
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294934"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827190"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup ワークロードの監視
 
-Azure Backup では、バックアップ要件とインフラストラクチャ トポロジ (オンプレミスと Azure) に基づく複数のバックアップ ソリューションを提供します。 すべてのバックアップ ユーザーまたは管理者は、すべてのソリューション全体で何が起こっているかを確認し、重要なシナリオで通知を受け取る必要があります。 この記事では、Azure Backup サービスによって提供される監視と通知の機能について説明します。
+Azure Backup では、バックアップ要件とインフラストラクチャ トポロジ (オンプレミスと Azure) に基づく複数のバックアップ ソリューションを提供します。 すべてのバックアップ ユーザーまたは管理者は、すべてのソリューション全体で何が起こっているかを確認し、重要なシナリオで通知を受け取ることができます。 この記事では、Azure Backup サービスによって提供される監視と通知の機能について説明します。
 
 ## <a name="backup-jobs-in-recovery-services-vault"></a>Recovery Services コンテナーでのバックアップ ジョブ
 
@@ -28,7 +28,7 @@ Azure Backup では、Azure Backup で保護されているワークロード用
 - Azure VM バックアップ
 - Azure ファイルのバックアップ
 - SQL や SAP HANA などの Azure ワークロードのバックアップ
-- Azure Backup エージェント (MAB)
+- Microsoft Azure Recovery Services (MARS) エージェント
 
 System Center Data Protection Manager (SC-DPM)、Microsoft Azure Backup Server (MABS) からのジョブは表示されません。
 
@@ -44,7 +44,7 @@ System Center Data Protection Manager (SC-DPM)、Microsoft Azure Backup Server (
 次のシナリオは、サービスによって警告可能シナリオとして定義されています。
 
 - バックアップ/復元エラー
-- Azure Backup エージェント (MAB) のバックアップの成功 (警告あり)
+- バックアップの成功 (Microsoft Azure Recovery Services (MARS) エージェントに対する警告を含む)
 - 保護の停止 (データの保持を含む)/保護の停止 (データの削除を含む)
 
 ### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>ここには、次の Azure Backup ソリューションからのアラートが表示されます。
@@ -52,7 +52,7 @@ System Center Data Protection Manager (SC-DPM)、Microsoft Azure Backup Server (
 - Azure VM バックアップ
 - Azure ファイルのバックアップ
 - SQL、SAP HANA などの Azure ワークロードのバックアップ
-- Azure Backup エージェント (MAB)
+- Microsoft Azure Recovery Services (MARS) エージェント
 
 > [!NOTE]
 > System Center Data Protection Manager (SC-DPM)、Microsoft Azure Backup Server (MABS) からのアラートは表示されません。
@@ -74,16 +74,16 @@ SQL や SAP HANA などの Azure ワークロード バックアップ ソリュ
 
 ### <a name="alert-types"></a>アラートの種類
 
-アラートは、その重要度に基づいて次の 3 つの種類に定義できます。
+アラートは、その重大度に基づいて次の 3 つの種類に定義できます。
 
-- **重要** : 原則として、バックアップまたは回復が失敗すると (スケジュールされたかユーザーがトリガーしたかを問わず)、アラートが生成されて重要アラートとして表示され、バックアップの削除といった破壊的な操作の原因となります。
-- **警告**:バックアップ操作が成功したもののいくつかの警告を伴う場合、これらは警告アラートとして表示されます。
+- **[高]** :原則として、バックアップまたは回復が失敗すると (スケジュールされたかユーザーがトリガーしたかを問わず)、アラートが生成されて重大アラートとして表示され、バックアップの削除といった破壊的な操作の原因となります。
+- **警告**:バックアップ操作が成功したもののいくつかの警告を伴う場合、これらは警告アラートとして表示されます。 警告アラートは現在、Azure Backup エージェントのバックアップにのみ使用できます。
 - **情報**:現時点では、Azure Backup サービスで情報アラートは生成されません。
 
 ## <a name="notification-for-backup-alerts"></a>バックアップ アラートの通知
 
 > [!NOTE]
-> 通知の構成は、Azure Portal を介してのみ実行できます。 PS/CLI/REST API/Azure Resource Manager テンプレートはサポートされていません。
+> 通知の構成は、Azure portal を介してのみ実行できます。 PS/CLI/REST API/Azure Resource Manager テンプレートはサポートされていません。
 
 アラートが生成されると、ユーザーは通知を受け取ります。 Azure Backup では、メール経由での組み込みの通知メカニズムを提供しています。 アラートの生成時に通知を受け取る個別のメール アドレスや配布リストを指定できます。 また、それぞれのアラートについて個別に通知を受け取るか、アラートをまとめて 1 時間ごとのダイジェストとして通知を受け取るかを選択することもできます。
 
@@ -95,12 +95,12 @@ SQL や SAP HANA などの Azure ワークロード バックアップ ソリュ
 
 > [!NOTE]
 >
-> - **保護の停止 (データの削除を含む)** などの破壊的な操作が実行されると、アラートが生成され、Recovery Service コンテナーに対して通知が構成されていない場合でも、サブスクリプションの所有者、管理者、共同管理者にメールが送信されます。
+> - 破壊的な操作 (**データを削除して保護を停止**など) が実行されると、アラートが生成され、Recovery Services コンテナー用に通知が構成されていない場合でも、サブスクリプションの所有者、管理者、共同管理者にメールが送信されます。
 > - 成功したジョブの通知を構成するには、[Log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace) を使用します。
 
 ## <a name="inactivating-alerts"></a>アラートの非アクティブ化
 
-アクティブなアラートを無効化または解決するには、非アクティブ化するアラートに対応するリスト アイテムをクリックできます。 これにより、アラートに関する詳細情報を表示する画面が開き、上部に [非アクティブ化] ボタンが表示されます。 このボタンをクリックすると、アラートの状態が "非アクティブ" に変わります。 また、アラートに対応するリスト アイテムを右クリックし、[非アクティブ化] を選択して、アラートを非アクティブにすることもできます。
+アクティブなアラートを無効化または解決するには、非アクティブ化するアラートに対応するリスト アイテムを選択できます。 これにより、アラートに関する詳細情報を表示する画面が開き、上部に **[非アクティブ化]** ボタンが表示されます。 このボタンをクリックすると、アラートの状態が**非アクティブ**に変わります。 また、アラートに対応するリスト アイテムを右クリックし、 **[非アクティブ化]** を選択して、アラートを非アクティブにすることもできます。
 
 ![RS コンテナーのアラートの非アクティブ化](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
 

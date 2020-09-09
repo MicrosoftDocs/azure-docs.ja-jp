@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: mqtt
 ms.openlocfilehash: 5c14e8cfcbf8df86b0f71d6b12025594d2e648c4
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81730103"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>複数デバイスでのジョブをスケジュール設定する

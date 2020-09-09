@@ -1,6 +1,6 @@
 ---
 title: 高可用性 - Azure の専用 HSM | Microsoft Docs
-description: Azure の専用 HSM の高可用性の例と基本的な考慮事項
+description: Azure の専用 HSM の高可用性の基本的な考慮事項について説明します。 この記事には例が含まれています。
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 536ef62acad900090924598edfa45450b2a8c951
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 8f8fa2f12825fe88218fe7033a1721cb49fc7335
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70882255"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189851"
 ---
 # <a name="azure-dedicated-hsm-high-availability"></a>Azure Dedicated HSM の高可用性
 

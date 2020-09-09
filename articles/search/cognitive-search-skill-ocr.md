@@ -7,20 +7,20 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: bdb510113a8d65ac04b54e77158f46d03cccd9de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/17/2020
+ms.openlocfilehash: 56e3c1e48df51cd24d70517ee23d47ef27d378d7
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72791925"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935332"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR 認知スキル
 
-**光学式文字認識 (OCR)** スキルでは、画像ファイルに印字された手書きテキストが認識されます。 このスキルでは、[Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) Cognitive Services によって提供される機械学習モデルが使用されます。 **OCR** スキルは、次の機能にマップします。
+**光学式文字認識 (OCR)** スキルでは、画像ファイルに印字された手書きテキストが認識されます。 このスキルでは、Cognitive Services の [Computer Vision](../cognitive-services/computer-vision/home.md) API [v3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) によって提供される機械学習モデルが使用されます。 **OCR** スキルは、次の機能にマップします。
 
-+ 英語以外の言語には ["OCR"](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-optical-character-recognition-api) API が使用されます。 
-+ 英語には、新しい ["Read"](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) API が使用されます。
++ 英語、スペイン語、ドイツ語、フランス語、イタリア語、ポルトガル語、およびオランダ語については、新しい["Read"](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) API が使用されます。
++ その他のすべての言語については、["OCR"](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-api) API が使用されます。
 
 **OCR** スキルはイメージファイルからテキストを抽出します｡ サポートされているファイル形式は以下の通りです｡
 
@@ -34,7 +34,7 @@ ms.locfileid: "72791925"
 > [!NOTE]
 > 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure Cognitive Search のドキュメント解析段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
 >
-> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Cognitive Search の価格](https://go.microsoft.com/fwlink/?linkid=2042400)に関するページで説明されています。
+> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Cognitive Search の価格](https://azure.microsoft.com/pricing/details/search/)に関するページで説明されています。
 
 
 ## <a name="skill-parameters"></a>スキルのパラメーター
@@ -43,9 +43,9 @@ ms.locfileid: "72791925"
 
 | パラメーター名     | 説明 |
 |--------------------|-------------|
-| detectOrientation | イメージの向きの自動検出を有効にします。 <br/> 有効な値: true / false｡|
-|defaultLanguageCode | <p>  入力テキストの言語コード。 以下の言語がサポートされています。 <br/> zh-Hans (簡体中国語) <br/> zh-Hant (繁体字中国語) <br/>cs (チェコ語) <br/>da (デンマーク語) <br/>nl (オランダ語) <br/>en (英語) <br/>fi (フィンランド語)  <br/>fr (フランス語) <br/>  de (ドイツ語) <br/>el (ギリシア語) <br/> hu (ハンガリー語) <br/> it (イタリア語) <br/>  ja (日本語) <br/> ko (韓国語) <br/> nb (ノルウェー語) <br/>   pl (ポーランド語) <br/> pt (ポルトガル語) <br/>  ru (ロシア語) <br/>  es (スペイン語) <br/>  sv (スウェーデン語) <br/>  tr (トルコ語) <br/> ar (アラビア語) <br/> ro (ルーマニア語) <br/> sr-Cyrl (セルビア語キリル文字) <br/> sr-Latn (セルビア語ローマ字) <br/>  sk (スロバキア語) <br/>  unk (不明) <br/><br/> 言語コードが指定されないか null の場合､言語は英語に設定されます。 言語が明示的に "unk" に設定されている場合、言語は自動検出されます。 </p> |
-|lineEnding | 検出された各行の間で使用される値。 指定できる値'Space'、'CarriageReturn'、'LineFeed'。  既定は 'Space' です |
+| `detectOrientation`   | イメージの向きの自動検出を有効にします。 <br/> 有効な値: true / false｡|
+| `defaultLanguageCode` | <p>   入力テキストの言語コード。 以下の言語がサポートされています。 <br/> zh-Hans (簡体中国語) <br/> zh-Hant (繁体字中国語) <br/>cs (チェコ語) <br/>da (デンマーク語) <br/>nl (オランダ語) <br/>en (英語) <br/>fi (フィンランド語)  <br/>fr (フランス語) <br/>  de (ドイツ語) <br/>el (ギリシア語) <br/> hu (ハンガリー語) <br/> it (イタリア語) <br/>  ja (日本語) <br/> ko (韓国語) <br/> nb (ノルウェー語) <br/>   pl (ポーランド語) <br/> pt (ポルトガル語) <br/>  ru (ロシア語) <br/>  es (スペイン語) <br/>  sv (スウェーデン語) <br/>  tr (トルコ語) <br/> ar (アラビア語) <br/> ro (ルーマニア語) <br/> sr-Cyrl (セルビア語キリル文字) <br/> sr-Latn (セルビア語ローマ字) <br/>  sk (スロバキア語) <br/>  unk (不明) <br/><br/> 言語コードが指定されないか null の場合､言語は英語に設定されます。 言語が明示的に "unk" に設定されている場合、言語は自動検出されます。 </p> |
+| `lineEnding` | 検出された各行の間で使用される値。 指定できる値"Space"、"CarriageReturn"、"LineFeed"。  既定は "Space" です。 |
 
 以前は、スキルで "印刷" テキストまたは "手書き" テキストを抽出するかどうかを指定する "textExtractionAlgorithm" というパラメーターがありました。  最新の Read API アルゴリズムはどちらのタイプのテキストも一度に抽出できるようになっているため、このパラメーターは非推奨となり、不要になりました。  スキル定義に既にこのパラメーターが含まれている場合、削除する必要はありませんが、今後は不使用となります。今後は、その設定に関係なく、両方のタイプのテキストが抽出されます。
 
@@ -53,14 +53,14 @@ ms.locfileid: "72791925"
 
 | 入力名      | 説明                                          |
 |---------------|------------------------------------------------------|
-| image         | 複合型｡ 現在は "/document/normalized_images" フィールドでのみ機能し､ ```imageAction``` が ```none``` 以外の値に設定されている場合に､Azure BLOB インデクサーによって生成されます。 詳しくは､[サンプル](#sample-output) をご覧ください｡|
+| `image`         | 複合型｡ 現在は "/document/normalized_images" フィールドでのみ機能し､ ```imageAction``` が ```none``` 以外の値に設定されている場合に､Azure BLOB インデクサーによって生成されます。 詳しくは､[サンプル](#sample-output) をご覧ください｡|
 
 
 ## <a name="skill-outputs"></a>スキルの出力
 | 出力名     | 説明                   |
 |---------------|-------------------------------|
-| text          | イメージから抽出されたプレーン テキスト｡   |
-| layoutText    | 抽出されたテキストと､そのテキストが検出された場所を記述した複合型。|
+| `text`            | イメージから抽出されたプレーン テキスト｡   |
+| `layoutText`    | 抽出されたテキストと､そのテキストが検出された場所を記述した複合型。|
 
 
 ## <a name="sample-definition"></a>定義例
@@ -172,18 +172,22 @@ Text Merger の一般的なユース ケースとしては､ドキュメント�
       "insertPostTag": " ",
       "inputs": [
         {
-          "name":"text", "source": "/document/content"
+          "name":"text",
+          "source": "/document/content"
         },
         {
-          "name": "itemsToInsert", "source": "/document/normalized_images/*/text"
+          "name": "itemsToInsert", 
+          "source": "/document/normalized_images/*/text"
         },
         {
-          "name":"offsets", "source": "/document/normalized_images/*/contentOffset"
+          "name":"offsets", 
+          "source": "/document/normalized_images/*/contentOffset"
         }
       ],
       "outputs": [
         {
-          "name": "mergedText", "targetName" : "merged_text"
+          "name": "mergedText", 
+          "targetName" : "merged_text"
         }
       ]
     }
@@ -208,4 +212,4 @@ Text Merger の一般的なユース ケースとしては､ドキュメント�
 + [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [TextMerger スキル](cognitive-search-skill-textmerger.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
-+ [インデクサーの作成 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [インデクサーの作成 (REST)](/rest/api/searchservice/create-indexer)

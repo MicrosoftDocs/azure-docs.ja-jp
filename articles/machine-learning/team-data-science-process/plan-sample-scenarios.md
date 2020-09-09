@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 48b51c40e5de8f10d9d1d16b02e2c70b045816b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d462f146f3f094602835d88e48815d5537c58665
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227207"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078784"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Azure Machine Learning での高度な分析のシナリオ
 この記事では、[Team Data Science Process (TDSP)](overview.md) で処理できる多様なデータ ソースとターゲット シナリオの例について概要を説明します。 TDSP は、チームが共同でインテリジェントなアプリケーションを構築するための体系的手法を提供します。 ここで示すシナリオでは、データ処理ワークフローで使用できるオプションを紹介します。このオプションは、データの特性、ソースの場所、および Azure でのターゲット リポジトリによって異なります。
@@ -194,9 +194,7 @@ SQL Server VM で SQL Server データベース全体をレプリケートする
 1. Azure HDInsight Hadoop クラスターを作成します。
 1. (省略可能) データの前処理とクリーニングを行います。
    
-   a.  IPython Notebook でデータの前処理とクリーニングを行い、Azure からデータにアクセスします。
-   
-       blobs.
+   a.  IPython Notebook でデータの前処理とクリーニングを行い、Azure BLOB からデータにアクセスします。
    
    b.  必要に応じて、クリーニングされたデータを表形式に変換します。
    

@@ -12,12 +12,13 @@ ms.date: 06/28/2017
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e16d0ed264f32746c11d89e88ea1e67f9383b773
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+- devx-track-java
+ms.openlocfilehash: 7f04483415253145cd485ccf870160e83a6e0e4b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81732515"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319118"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>IoT Hub を使用したクラウドからデバイスへのメッセージの送信 (Java)
 
@@ -125,7 +126,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
     ```
 
     > [!NOTE]
-    > **Maven 検索**を使用して、[iot-service-client](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22) の最新バージョンを確認できます。
+    > [Maven 検索](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)を使用して、**iot-service-client** の最新バージョンを確認できます。
 
 4. pom.xml ファイルを保存して閉じます。
 

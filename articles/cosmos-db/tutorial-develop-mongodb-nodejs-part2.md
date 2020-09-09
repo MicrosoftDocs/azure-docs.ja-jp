@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 693222f4c1abd9bda128d18dc4dd67703a245bc8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a796ae32033dbc09b1f5b888ded9ea5e1f4c457e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75441141"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523487"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>Azure Cosmos DB の MongoDB 用 API で Angular アプリを作成する - Node.js Express アプリを作成する
 
@@ -147,11 +147,11 @@ ms.locfileid: "75441141"
 
 7. 変更を加えたファイルをすべて保存します。 
 
-8. Visual Studio Code で **[デバッグ]** ボタン ![Visual Studio Code のデバッグ アイコン](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png) をクリックして歯車ボタン ![Visual Studio Code の歯車ボタン](./media/tutorial-develop-mongodb-nodejs-part2/gear-button.png) をクリックします。 Visual Studio Code で新しい launch.json ファイルが開きます。
+8. Visual Studio Code で、 **[デバッグ]** ボタン :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png"::: をクリックし、歯車ボタン :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/gear-button.png"::: をクリックします。 Visual Studio Code で新しい launch.json ファイルが開きます。 
 
 8. launch.json ファイルの 11 行目で `"${workspaceFolder}\\server"` を `"program": "${workspaceRoot}/src/server/index.js"` に変更して、ファイルを保存します。
 
-9. **[デバッグ開始]** ボタン (![Visual Studio Code のデバッグ アイコン](./media/tutorial-develop-mongodb-nodejs-part2/start-debugging-button.png)) をクリックしてアプリを実行します。
+9. アプリを実行するには、 **[デバッグの開始]** ボタン :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/start-debugging-button.png"::: をクリックします。
 
     エラーが発生することなくアプリが実行されれば成功です。
 
@@ -163,7 +163,7 @@ ms.locfileid: "75441141"
 
     この応答から、アプリが稼働していること、またローカルで実行されていることが確認できます。 
 
-    ![要求と応答を示す Postman の画面](./media/tutorial-develop-mongodb-nodejs-part2/azure-cosmos-db-postman.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part2/azure-cosmos-db-postman.png" alt-text="要求と応答を示す Postman の画面":::
 
 
 ## <a name="next-steps"></a>次のステップ

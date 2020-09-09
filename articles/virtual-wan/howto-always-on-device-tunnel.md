@@ -5,15 +5,15 @@ description: Virtual WAN に Always On VPN デバイス トンネルを構成す
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: conceptual
-ms.date: 03/13/2020
+ms.topic: how-to
+ms.date: 06/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: e3eea639eaa52c07e877476e9215144e916618d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7adeb9682336b19cc87d8c73a7f9ad8bda5e7828
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79504039"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564068"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel-for-virtual-wan"></a>Virtual WAN に Always On VPN デバイス トンネルを構成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "79504039"
 ポイント対サイト構成を作成し、仮想ハブの割り当てを編集する必要があります。 手順については、次のセクションを参照してください。
 
 * [P2S の構成を作成する](virtual-wan-point-to-site-portal.md#p2sconfig)
-* [ハブの割り当てを編集する](virtual-wan-point-to-site-portal.md#edit)
+* [P2S ゲートウェイを使用してハブを作成する](virtual-wan-point-to-site-portal.md#hub)
 
 ## <a name="configure-the-device-tunnel"></a>デバイス トンネルの構成
 

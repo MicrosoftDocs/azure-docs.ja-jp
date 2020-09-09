@@ -1,20 +1,23 @@
 ---
 title: Azure IoT Hub の正常性の監視 | Microsoft Docs
 description: Azure Monitor と Azure Resource Health を使用して IoT Hub を監視し、問題を迅速に診断します
-author: kgremban
-manager: philmea
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 11/11/2019
-ms.author: kgremban
-ms.custom: amqp
-ms.openlocfilehash: a1d74085090a3e20764d7b6fee84ffca52d5cb74
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.date: 04/21/2020
+ms.author: robinsh
+ms.custom:
+- amqp
+- 'Role: Cloud Development'
+- 'Role: Technical Support'
+- devx-track-csharp
+ms.openlocfilehash: c7b2055494d61ba348ae6226e6fc0ad9ce5775bb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81732442"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022141"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Azure IoT Hub の正常性を監視し、問題をすばやく診断する
 
@@ -32,8 +35,6 @@ IoT Hub には、IoT リソースの状態を把握するために利用でき�
 ## <a name="use-azure-monitor"></a>Azure Monitor の使用
 
 Azure Monitor は、Azure リソースの診断情報を提供します。これは、IoT Hub 内で実行される操作を監視できることを意味します。
-
-Azure Monitor の診断設定は、IoT Hub の操作の監視機能を置き換えます。 現在、操作の監視機能を使用している場合は、ワークフローを移行する必要があります。 詳細については、[操作の監視から診断設定への移行](iot-hub-migrate-to-diagnostics-settings.md)に関するページを参照してください。
 
 Azure Monitor が監視する特定のメトリックとイベントの詳細については、「[Azure Monitor のサポートされるメトリック](../azure-monitor/platform/metrics-supported.md)」と「[Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ](../azure-monitor/platform/diagnostic-logs-schema.md)」を参照してください。
 
@@ -121,11 +122,11 @@ C2D コマンド カテゴリでは、IoT Hub で発生し、かつクラウド�
 
 #### <a name="routes"></a>ルート
 
-メッセージ ルーティング カテゴリは、メッセージ ルート評価および IoT Hub によって認識されるエンドポイント正常性において発生するエラーを追跡します。 このカテゴリには、以下のようなイベントが含まれます。
+[メッセージ ルーティング](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c) カテゴリでは、メッセージ ルートの評価時に発生するエラーと、IoT Hub によって認識されるエンドポイントの正常性を追跡します。 このカテゴリには、以下のようなイベントが含まれます。
 
 * "未定義" に評価されるルール、
 * IoT Hub がエンドポイントをデッドとしてマークしている、または
-* エンドポイントから受信したすべてのエラー。 
+* エンドポイントから受信したすべてのエラー。
 
 このカテゴリには、メッセージ自体に関する具体的なエラー (デバイス調整エラーなど) は含まれません。このようなエラーは、"デバイス テレメトリ" カテゴリで報告されます。
 
@@ -134,17 +135,24 @@ C2D コマンド カテゴリでは、IoT Hub で発生し、かつクラウド�
     "records":
     [
         {
-            "time": "UTC timestamp",
-            "resourceId": "Resource Id",
-            "operationName": "endpointUnhealthy",
-            "category": "Routes",
-            "level": "Error",
-            "properties": "{\"deviceId\": \"<deviceId>\",\"endpointName\":\"<endpointName>\",\"messageId\":<messageId>,\"details\":\"<errorDetails>\",\"routeName\": \"<routeName>\"}",
-            "location": "Resource location"
+            "time":"2019-12-12T03:25:14Z",
+            "resourceId":"/SUBSCRIPTIONS/91R34780-3DEC-123A-BE2A-213B5500DFF0/RESOURCEGROUPS/ANON-TEST/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/ANONHUB1",
+            "operationName":"endpointUnhealthy",
+            "category":"Routes",
+            "level":"Error",
+            "resultType":"403004",
+            "resultDescription":"DeviceMaximumQueueDepthExceeded",
+            "properties":"{\"deviceId\":null,\"endpointName\":\"anon-sb-1\",\"messageId\":null,\"details\":\"DeviceMaximumQueueDepthExceeded\",\"routeName\":null,\"statusCode\":\"403\"}",
+            "location":"westus"
         }
     ]
 }
 ```
+
+以下にルーティング診断ログの詳細が記載されています。
+
+* [ルーティング診断ログのエラーコードの一覧](troubleshoot-message-routing.md#diagnostics-error-codes)
+* [ルーティング診断ログの operationNames の一覧](troubleshoot-message-routing.md#diagnostics-operation-names)
 
 #### <a name="device-telemetry"></a>デバイス テレメトリ
 
@@ -344,9 +352,9 @@ IoT Hub では、有効なトレース プロパティを含むメッセージ�
 
 ここで、IoT Hub のクロックがデバイスのクロックと同期していない可能性があり、経過時間を計算すると誤解を招く場合があるので、`durationMs` は計算されません。 `properties` セクションのタイムスタンプを使用するロジックを記述して、device-to-cloud 待機時間のスパイクをキャプチャすることをお勧めします。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **messageSize** | 整数 | device-to-cloud メッセージのサイズ (バイト単位) |
+| **messageSize** | Integer | device-to-cloud メッセージのサイズ (バイト単位) |
 | **deviceId** | ASCII の 7 ビットの英数字の文字列 | デバイスの ID |
 | **callerLocalTimeUtc** | UTC タイムスタンプ | デバイスのローカル クロックによって報告されたメッセージの作成時刻 |
 | **calleeLocalTimeUtc** | UTC タイムスタンプ | IoT Hub サービス側のクロックによって報告された、IoT Hub のゲートウェイへのメッセージの到着時刻 |
@@ -378,7 +386,7 @@ IoT Hub では、有効なトレース プロパティを含むメッセージ�
 
 `properties` セクションでは、このログにはメッセージのイングレスに関する追加情報が含まれています
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **isRoutingEnabled** | String | true または false。IoT Hub でメッセージのルーティングが有効になっているかどうかを示します |
 | **parentSpanId** | String | 親メッセージの [span-id](https://w3c.github.io/trace-context/#parent-id)。この場合は、D2C のメッセージ トレースです |
@@ -410,7 +418,7 @@ IoT Hub では、有効なトレース プロパティを含むメッセージ�
 
 `properties` セクションでは、このログにはメッセージのイングレスに関する追加情報が含まれています
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **endpointName** | String | ルーティング エンドポイントの名前 |
 | **endpointType** | String | ルーティング エンドポイントの種類 |
@@ -541,7 +549,7 @@ Azure IoT Hub では、リージョン レベルでの正常性が示されま�
 
 IoT Hub の正常性を確認するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. **[Service Health]\(サービス正常性\)**  >  **[リソース正常性]** に移動します。
 

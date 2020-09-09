@@ -7,12 +7,13 @@ ms.date: 12/10/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: d6ccd3cc61f9d8244874823be76496a4f4e1073c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: devx-track-python
+ms.openlocfilehash: 12c2652b4dcef46c5affde2c3fb9ef9288176eb9
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78199769"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852261"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>クイック スタート:Python 用 Azure Queue storage クライアント ライブラリ v12
 
@@ -28,7 +29,12 @@ Python 用 Azure Queue storage クライアント ライブラリ v12 を使用�
 * キューからメッセージを削除する
 * キューを削除する
 
-[API のリファレンスのドキュメント](https://docs.microsoft.com/python/api/azure-storage-queue/index) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue) | [パッケージ (Python Package Index)](https://pypi.org/project/azure-storage-queue/) | [サンプル](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+その他のリソース:
+
+* [API リファレンス ドキュメント](https://docs.microsoft.com/python/api/azure-storage-queue/index)
+* [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue)
+* [パッケージ (Python Package Index)](https://pypi.org/project/azure-storage-queue/)
+* [サンプル](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>前提条件
 

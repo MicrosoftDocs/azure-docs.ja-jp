@@ -16,12 +16,12 @@ ms.date: 05/31/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a08120b98c7a08bca50453df59df313b1645c5c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd1d03edad2e13d3460fb2e7a635bb198ac5c1bf
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80331259"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279620"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect ユーザーのサインイン オプション
 Azure Active Directory (Azure AD) Connect では、ユーザーは同じパスワードを使用して、クラウドとオンプレミス両方のリソースにサインインできます。 この記事では、Azure AD へのサインインに使用する ID を選択できるようにするために、各 ID モデルの主要な概念について説明します。
@@ -49,7 +49,7 @@ Azure AD は、次の認証方法をサポートします。
 
 Office 365、SaaS アプリケーション、およびその他の Azure AD ベースのリソースへのユーザー サインインのみを有効にするほとんどの組織では、既定のパスワード ハッシュの同期オプションをお勧めします。
  
-認証方法の選択の詳細については、「[Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する](../../security/fundamentals/choose-ad-authn.md)」を参照してください。
+認証方法の選択の詳細については、「[Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する](./choose-ad-authn.md)」を参照してください。
 
 ### <a name="password-hash-synchronization"></a>パスワード ハッシュの同期
 パスワード ハッシュの同期では、ユーザー パスワードのハッシュがオンプレミスの Active Directory から Azure AD に同期されます。 オンプレミスでパスワードが変更またはリセットされると、ユーザーが常にクラウドのリソースとオンプレミスのリソースに同じパスワードを使用できるように、新しいパスワード ハッシュが直ちに Azure AD に同期されます。 パスワードがクリア テキストの状態で Azure AD に送信されたり Azure AD に格納されたりすることはありません。 パスワード ハッシュの同期をパスワードの書き戻しと共に使用すると、Azure AD でセルフサービス パスワード リセットを有効にできます。
@@ -144,7 +144,7 @@ userPrincipalName 属性は、ユーザーが Azure AD と Office 365 にサイ�
 サインインには、既定の userPrincipalName 属性をそのまま使用することを強くお勧めします。 ただし、この属性がルーティング不可能で確認できない場合には、サインイン ID を保持する属性として、別の属性 (電子メールなど) を選択することができます。 これを代替 ID といいます。 代替 ID の属性値は、RFC822 標準に従う必要があります。 代替 ID は、サインイン ソリューションとして、パスワード SSO とフェデレーション SSO の両方で使用できます。
 
 > [!NOTE]
-> 代替 ID の使用は、すべての Office 365 ワークロードと互換性があるわけではありません。 詳しくは、「[Configuring Alternate Login ID (代替ログイン ID の構成)](https://technet.microsoft.com/library/dn659436.aspx)」をご覧ください。
+> 代替 ID の使用は、すべての Office 365 ワークロードと互換性があるわけではありません。 詳しくは、「[Configuring Alternate Login ID (代替ログイン ID の構成)](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)」をご覧ください。
 >
 >
 

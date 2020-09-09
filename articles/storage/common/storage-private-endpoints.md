@@ -5,17 +5,17 @@ description: 仮想ネットワークからストレージ アカウントへの
 services: storage
 author: santoshc
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: c51f2db698f30368c9d4090d3d571fa0c131178a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a216b9e430c10f42d48df01746e111355cf91b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299058"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513285"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Azure Storage のプライベート エンドポイントを使用する
 
@@ -82,8 +82,8 @@ geo 冗長ストレージ向けに構成されているストレージ アカウ
 | 名前                                                  | Type  | 値                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
-| ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<ストレージ サービスのパブリック エンドポイント\>                   |
-| \<ストレージ サービスのパブリック エンドポイント\>                   | A     | \<ストレージ サービスのパブリック IP アドレス\>                 |
+| ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<storage service public endpoint\>                   |
+| \<storage service public endpoint\>                   | A     | \<storage service public IP address\>                 |
 
 既に説明したように、ストレージ ファイアウォールを使用して、VNet の外部のクライアントによるパブリック エンドポイント経由のアクセスを拒否または制御することができます。
 
@@ -137,7 +137,7 @@ Azure Storage のプライベート エンドポイントに関する以下の�
 
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>プライベート エンドポイントがあるサブネットのネットワーク セキュリティ グループ規則
 
-現在、プライベート エンドポイントの[ネットワーク セキュリティ グループ](../../virtual-network/security-overview.md) (NSG) 規則とユーザー定義ルートを構成することはできません。 プライベート エンドポイントをホストするサブネットに適用される NSG 規則は、プライベート エンドポイントに適用されます。 この問題の限定的な回避策として、ソース サブネットでプライベート エンドポイントのアクセス規則を実装できます。ただし、この方法では、管理オーバーヘッドが高くなる可能性があります。
+現在、プライベート エンドポイントの[ネットワーク セキュリティ グループ](../../virtual-network/security-overview.md) (NSG) 規則とユーザー定義ルートを構成することはできません。 プライベート エンドポイントをホストするサブネットに適用された NSG 規則は、プライベート エンドポイント以外の他のエンドポイント (NIC など) にしか適用されません。 この問題の限定的な回避策として、ソース サブネットでプライベート エンドポイントのアクセス規則を実装できます。ただし、この方法では、管理オーバーヘッドが高くなる可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
 

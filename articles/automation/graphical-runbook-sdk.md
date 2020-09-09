@@ -1,24 +1,24 @@
 ---
-title: Azure Automation Grpahical Runbook SDK を使用する
-description: この記事では、Azure Automation Graphical Runbook SDK の使用方法について説明します。
+title: Azure Automation Grpahical Runbook SDK (プレビュー) を使用する
+description: この記事では、Azure Automation Graphical Runbook SDK (プレビュー) の使用方法について説明します。
 services: automation
 ms.subservice: process-automation
 ms.date: 07/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 886ce03b6e107d871879ff40bdc5de9ceb97c7c3
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 969e60cd08a65adb1dd731aa7c6c3f9872e288fd
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690735"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835038"
 ---
-# <a name="use-the-azure-automation-graphical-runbook-sdk"></a>Azure Automation Grpahical Runbook SDK を使用する
+# <a name="use-the-azure-automation-graphical-runbook-sdk-preview"></a>Azure Automation Grpahical Runbook SDK (プレビュー) を使用する
 
 [グラフィック Runbook](automation-graphical-authoring-intro.md) は、基礎となる Windows PowerShell または PowerShell Workflow コードの複雑さを管理するために役立ちます。 Microsoft Azure Automation Graphical Authoring SDK を使用すると、Azure Automation に使用できるグラフィック Runbook を作成および編集できます。 この記事では、コードからグラフィック Runbook を作成するための基本的な手順について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-`Orchestrator.GraphRunbook.Model.dll` パッケージをプロジェクトにインポートします。
+[SDK](https://www.microsoft.com/download/details.aspx?id=50734) をダウンロードして `Orchestrator.GraphRunbook.Model.dll` パッケージをインポートします。
 
 ## <a name="create-a-runbook-object-instance"></a>Runbook オブジェクトのインスタンスを作成する
 
@@ -141,4 +141,4 @@ var serialized = RunbookSerializer.Serialize(runbook);
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Automation のグラフィック Runbook の詳細については、「[Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)」を参照してください。
+詳細については、[Azure Automation でのグラフィカル Runbook の作成](automation-graphical-authoring-intro.md)に関する記事を参照してください。

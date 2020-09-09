@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:NAT ゲートウェイの作成 - Azure portal
+title: チュートリアル:NAT ゲートウェイの作成 - Azure portal
 titlesuffix: Azure Virtual Network NAT
 description: このクイックスタートでは、Azure portal を使用して NAT ゲートウェイを作成する方法について説明します。
 services: virtual-network
@@ -8,22 +8,23 @@ author: asudbring
 manager: KumudD
 Customer intent: I want to create a NAT gateway for outbound connectivity for my virtual network.
 ms.service: virtual-network
+ms.subservice: nat
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 1ff13d8ef0ca4c6cf499c3245d3ef14370283075
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5010dc08b695a0376ace5dde935c63caf0c39633
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80066382"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711410"
 ---
-# <a name="quickstart-create-a-nat-gateway-using-the-azure-portal"></a>クイック スタート:Azure portal を使用した NAT ゲートウェイの作成
+# <a name="tutorial-create-a-nat-gateway-using-the-azure-portal"></a>チュートリアル:Azure portal を使用した NAT ゲートウェイの作成
 
-このクイックスタートでは、Azure Virtual Network NAT サービスを使用する方法について説明します。 Azure 内の仮想マシンに送信接続を提供する NAT ゲートウェイを作成しましょう。 
+このチュートリアルでは、Azure Virtual Network NAT サービスを使用する方法について説明します。 Azure 内の仮想マシンに送信接続を提供する NAT ゲートウェイを作成しましょう。 
 
 これらの手順は、必要に応じて、ポータルではなく [Azure CLI](quickstart-create-nat-gateway-cli.md) や [Azure PowerShell](quickstart-create-nat-gateway-powershell.md) を使用するか、[ARM テンプレート](quickstart-create-nat-gateway-powershell.md)をデプロイすることで実行できます。
 
@@ -37,7 +38,7 @@ VM をデプロイして NAT ゲートウェイを使用する前に、リソー
 
 このセクションの手順では、各パラメーターを次のように置き換える必要があります。
 
-| パラメーター                   | Value                |
+| パラメーター                   | 値                |
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroupNAT |
 | **\<virtual-network-name>** | myVNet          |
@@ -92,7 +93,7 @@ VM をデプロイして NAT ゲートウェイを使用する前に、リソー
 
 2. **[パブリック IP アドレスの作成]** に次の情報を入力または選択します。
 
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
     | IP バージョン | **[IPv4]** を選択します。
     | SKU | **[Standard]** を選択します。

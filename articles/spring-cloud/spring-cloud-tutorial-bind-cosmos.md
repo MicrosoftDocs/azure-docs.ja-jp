@@ -1,17 +1,18 @@
 ---
-title: チュートリアル - Azure Cosmos DB を Azure Spring Cloud アプリケーションにバインドする
-description: このチュートリアルでは、Azure Cosmos DB を Azure Spring Cloud アプリケーションにバインドする方法について説明します
+title: Azure Cosmos DB を Azure Spring Cloud アプリケーションにバインドする
+description: Azure Cosmos DB を Azure Spring Cloud アプリケーションにバインドする方法について説明します
 author: bmitchell287
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
-ms.openlocfilehash: 1566b6ab59e858217adcf6818e1d62f851f37eb1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-java
+ms.openlocfilehash: 7fb1f88ab5eaf22047f5a696ec9cb021981cdd5e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76277561"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297180"
 ---
 # <a name="bind-an-azure-cosmos-db-database-to-your-azure-spring-cloud-application"></a>Azure Cosmos DB データベースを Azure Spring Cloud アプリケーションにバインドする
 
@@ -19,7 +20,7 @@ Spring Boot アプリケーションを手動で構成するのではなく、Az
 
 前提条件:
 
-* デプロイされた Azure Spring Cloud インスタンス。 [Azure CLI を使用したデプロイに関するクイックスタート](spring-cloud-quickstart-launch-app-cli.md)に従って作業を開始してください。
+* デプロイされた Azure Spring Cloud インスタンス。 [Azure CLI を使用したデプロイに関するクイックスタート](spring-cloud-quickstart.md)に従って作業を開始してください。
 * 共同作成者の最小アクセス許可レベルを持つ Azure Cosmos DB アカウント。
 
 ## <a name="bind-azure-cosmos-db"></a>Azure Cosmos DB をバインドする
@@ -105,7 +106,4 @@ Azure Cosmos DB では、5 種類の API でバインドがサポートされて
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure Spring Cloud アプリケーションを Azure Cosmos DB データベースにバインドする方法について学習しました。 アプリケーションを Azure Cache for Redis キャッシュにバインドする方法について学習するには、次のチュートリアルに進んでください。
-
-> [!div class="nextstepaction"]
-> [Azure Cache for Redis キャッシュにバインドする方法を確認する](spring-cloud-tutorial-bind-redis.md)
+この記事では、Azure Spring Cloud アプリケーションを Azure Cosmos DB データベースにバインドする方法について学習しました。 サービスをアプリケーションにバインドする方法については、[Azure Cache for Redis キャッシュへのバインド](spring-cloud-tutorial-bind-redis.md)に関するページを参照してください。

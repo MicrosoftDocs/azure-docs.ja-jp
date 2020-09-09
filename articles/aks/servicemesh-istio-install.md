@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/19/2020
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: d1d02cb42a86023e5c341daab678c39f22f75dda
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 5d47bb7f1f9c1ce39239d6f6ee5826a60ce1741a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80877696"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244169"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Istio をインストールして使用する
 
@@ -428,12 +428,12 @@ Application Insights と Istio を使用して AKS アプリケーションを�
 [istio-feature-sds]: https://istio.io/docs/tasks/traffic-management/ingress/secure-ingress-sds/
 [istio-feature-cni]: https://istio.io/docs/setup/additional-setup/cni/
 
-[install-wsl]: https://docs.microsoft.com/windows/wsl/install-win10
+[install-wsl]: /windows/wsl/install-win10
 
 [kubernetes-feature-sa-projected-volume]: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#service-account-token-volume-projection
 [kubernetes-crd]: https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions
 [kubernetes-secrets]: https://kubernetes.io/docs/concepts/configuration/secret/
-[kubernetes-node-selectors]: https://docs.microsoft.com/azure/aks/concepts-clusters-workloads#node-selectors
+[kubernetes-node-selectors]: ./concepts-clusters-workloads.md#node-selectors
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 [kubectl-port-forward]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#port-forward
@@ -444,7 +444,7 @@ Application Insights と Istio を使用して AKS アプリケーションを�
 [kiali]: https://www.kiali.io/
 [envoy]: https://www.envoyproxy.io/
 
-[app-insights]: https://docs.microsoft.com/azure/azure-monitor/app/kubernetes
+[app-insights]: ../azure-monitor/app/kubernetes.md
 
 <!-- LINKS - internal -->
 [aks-quickstart]: ./kubernetes-walkthrough.md

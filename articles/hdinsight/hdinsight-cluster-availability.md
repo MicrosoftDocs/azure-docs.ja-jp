@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/01/2020
-ms.openlocfilehash: 4b26128b794a6a667edc578f56ad0bc9fb8303a7
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 615e23dc388f36f5ae1cd7e0d846acc14ffa2236
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691150"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086417"
 ---
 # <a name="how-to-monitor-cluster-availability-with-apache-ambari-in-azure-hdinsight"></a>Azure HDInsight で Apache Ambari を使用してクラスターの可用性を監視する方法
 

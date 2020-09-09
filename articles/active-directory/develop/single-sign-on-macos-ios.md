@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 25389348476552298ddb947ccb59acb8b3d5bc57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80881250"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>方法:macOS と iOS で SSO を構成する

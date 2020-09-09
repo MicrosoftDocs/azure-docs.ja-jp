@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 752529454a5b6293d9cbfdf8378b46947aed5a0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b0ab1e2e43210ecd7a61b7dffcb12d2c7c5c1c46
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77564646"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536608"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Azure Time Series Insights とリモート監視の統合
 
@@ -244,7 +244,7 @@ Time Series Insights の統合を完了するには、更新されたマイク�
 
 上記の更新されたマイクロサービス用に `standard` デプロイの環境を構成します。
 
-1. コマンド ラインで `kubectl proxy` を実行します。 詳細については、[Kubernetes API へのアクセス](https://kubernetes.io/docs/tasks/access-kubernetes-api/http-proxy-access-api/#using-kubectl-to-start-a-proxy-server)に関するページを参照してください。
+1. コマンド ラインで `kubectl proxy` を実行します。 詳細については、[Kubernetes API へのアクセス](https://kubernetes.io/docs/reference/access-authn-authz/#using-kubectl-to-start-a-proxy-server)に関するページを参照してください。
 
 1. Kubernetes 管理コンソールを開きます。
 

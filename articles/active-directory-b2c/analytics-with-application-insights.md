@@ -6,17 +6,17 @@ services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 25e62e7c6865f91daa242a33a0f491f8015be41a
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 67ea7324419d86fa5b5c23a2f0aa5f8c057495d1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80672535"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385979"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Application Insights を使用した Azure Active Directory B2C でのユーザー動作の追跡
 
@@ -171,7 +171,7 @@ Application Insights と Azure AD B2C を併用している場合、唯一の要
 
 ```xml
 <!-- Track that we have received a sign in request -->
-<OrchestrationStep Order="1" Type="ClaimsExchange">
+<OrchestrationStep Order="2" Type="ClaimsExchange">
   <ClaimsExchanges>
     <ClaimsExchange Id="TrackSignInRequest" TechnicalProfileReferenceId="AppInsights-SignInRequest" />
   </ClaimsExchanges>
@@ -233,7 +233,7 @@ Application Insights と Azure AD B2C を併用している場合、唯一の要
 - **PartnerClaimType** は、Azure Insights で表示されるプロパティの名前です。 `{property:NAME}` の構文を使用します (`NAME` はイベントに追加されるプロパティです)。
 - **DefaultValue** では、任意の文字列値または要求リゾルバーが使用されます。
 
-```XML
+```xml
 <InputClaim ClaimTypeReferenceId="app_session" PartnerClaimType="{property:app_session}" DefaultValue="{OAUTH-KV:app_session}" />
 <InputClaim ClaimTypeReferenceId="loyalty_number" PartnerClaimType="{property:loyalty_number}" DefaultValue="{OAUTH-KV:loyalty_number}" />
 <InputClaim ClaimTypeReferenceId="language" PartnerClaimType="{property:language}" DefaultValue="{Culture:RFC5646}" />

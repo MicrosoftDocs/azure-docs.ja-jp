@@ -11,15 +11,15 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 3306647078c46a7c66b3d7b257b213c7a48e690d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df2b58e0067932edd9dfa21ee1a6fbb2a5c1fdf7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460428"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289760"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Azure CLI を使用してカスタム ディスクから Linux VM を作成する
 
@@ -39,11 +39,11 @@ ms.locfileid: "81460428"
 
 - Azure で使用するために準備された Linux 仮想マシン。 この記事の「[VM を準備する](#prepare-the-vm)」のセクションでは、SSH で VM に接続するために必要な Azure Linux エージェント (waagent) のインストールに関するディストリビューション固有の情報を見つける方法について説明します。
 - 既存の [Azure で動作保証済みの Linux ディストリビューション](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (または「[動作保証外のディストリビューションに関する情報](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください) から入手し VHD 形式の仮想ディスクにした VHD ファイル。 VM と VHD を作成するツールはいくつかあります。
-  - [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) または [KVM](https://www.linux-kvm.org/page/RunningKVM) をインストールして構成します。その際、イメージ形式として VHD を使用します。 必要に応じて、[ を使用して](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats)イメージを変換`qemu-img convert`できます。
-  - [Windows 10 上](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install)または [Windows Server 2012/2012 R2 上](https://technet.microsoft.com/library/hh846766.aspx)の Hyper-V を使用することもできます。
+  - [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) または [KVM](https://www.linux-kvm.org/page/RunningKVM) をインストールして構成します。その際、イメージ形式として VHD を使用します。 必要に応じて、`qemu-img convert` を使用して[イメージを変換](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats)できます。
+  - [Windows 10 上](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)または [Windows Server 2012/2012 R2 上](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))の Hyper-V を使用することもできます。
 
 > [!NOTE]
-> 新しい VHDX 形式は、Azure ではサポートされていません。 VM を作成するときに、形式として VHD を指定します。 必要に応じて、[qemu-img convert](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) または [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) PowerShell コマンドレットを使用して VHDX ディスクを VHD に変換できます。 Azure は動的 VHD のアップロードをサポートしていないため、このようなディスクは、アップロードの前に静的 VHD に変換する必要があります。 [Azure VHD Utilities for GO (GO 用の Azure VHD Utilities)](https://github.com/Microsoft/azure-vhd-utils-for-go) などのツールを使用すると、ダイナミック ディスクを Azure へのアップロード中に変換できます。
+> 新しい VHDX 形式は、Azure ではサポートされていません。 VM を作成するときに、形式として VHD を指定します。 必要に応じて、[qemu-img convert](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) または [Convert-VHD](/powershell/module/hyper-v/convert-vhd?view=win10-ps) PowerShell コマンドレットを使用して VHDX ディスクを VHD に変換できます。 Azure は動的 VHD のアップロードをサポートしていないため、このようなディスクは、アップロードの前に静的 VHD に変換する必要があります。 [Azure VHD Utilities for GO (GO 用の Azure VHD Utilities)](https://github.com/Microsoft/azure-vhd-utils-for-go) などのツールを使用すると、ダイナミック ディスクを Azure へのアップロード中に変換できます。
 > 
 > 
 
@@ -64,7 +64,7 @@ Azure は、さまざまな Linux ディストリビューションをサポー�
 * [Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [SLES と openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [その他: 動作保証外のディストリビューション](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [その他:動作保証外のディストリビューション](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 Azure で Linux イメージを準備する際のその他の一般的なヒントについては、[Linux のインストールに関する注記](create-upload-generic.md#general-linux-installation-notes)に関するページをご覧ください。
 
@@ -73,11 +73,11 @@ Azure で Linux イメージを準備する際のその他の一般的なヒン�
 > 
 > 
 
-## <a name="option-1-upload-a-vhd"></a>オプション 1: VHD をアップロードする
+## <a name="option-1-upload-a-vhd"></a>オプション 1: VHD のアップロード
 
 VHD をマネージド ディスクに直接アップロードできるようになりました。 手順については、「[Azure CLI を使用して Azure に VHD をアップロードする](disks-upload-vhd-to-managed-disk-cli.md)」を参照してください。
 
-## <a name="option-2-copy-an-existing-vm"></a>オプション 2: 既存の VM をコピーする
+## <a name="option-2-copy-an-existing-vm"></a>オプション 2:既存の VM をコピーする
 
 Azure でカスタマイズされた VM を作成してから OS ディスクをコピーし、それを新しい VM にアタッチして別のコピーを作成することもできます。 これはテストとしては有効ですが、複数の新しい VM のモデルとして既存の Azure VM を使用する場合は、代わりに*イメージ*を作成します。 既存の Azure VM からのイメージの作成の詳細については、「[CLI を使用した Azure VM のカスタム イメージの作成](tutorial-custom-images.md)」を参照してください。
 

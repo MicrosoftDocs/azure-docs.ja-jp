@@ -5,18 +5,18 @@ description: Azure Machine Learning の PyTorch 推定クラスを使用して�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.reviewer: peterlu
 ms.date: 08/01/2019
-ms.custom: seodec18
-ms.openlocfilehash: 136ee197271fc659497c169e27a6399c3940c19e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: 28a2d5c34da9f7996524d29a88c7969adf197b38
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75834855"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270650"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して PyTorch ディープ ラーニング モデルを大規模にトレーニングする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -124,6 +124,8 @@ except ComputeTargetException:
     compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
 ```
 
+[!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
+
 コンピューティング先の詳細については、[コンピューティング先の概要](concept-compute-target.md)に関する記事を参照してください。
 
 ## <a name="create-a-pytorch-estimator"></a>PyTorch エスティメーターを作成する
@@ -147,6 +149,9 @@ estimator = PyTorch(source_directory=project_folder,
                     use_gpu=True,
                     pip_packages=['pillow==5.4.1'])
 ```
+
+> [!WARNING]
+> Azure Machine Learning では、ソース ディレクトリ全体をコピーすることで、トレーニング スクリプトが実行されます。 アップロードしたくない機密データがある場合は、[.ignore ファイル](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots)を使用するか、ソース ディレクトリに含めないようにします。 代わりに、[データストア](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)を使用してデータにアクセスしてください。
 
 Python 環境のカスタマイズの詳細については、[トレーニングとデプロイのための環境の作成と管理](how-to-use-environments.md)に関するページを参照してください。
 
@@ -213,7 +218,7 @@ estimator= PyTorch(source_directory=project_folder,
                       node_count=2,
                       process_count_per_node=1,
                       distributed_training=MpiConfiguration(),
-                      framework_version='1.13',
+                      framework_version='1.4',
                       use_gpu=True)
 ```
 Horovod および依存関係にあるファイルが自動的にインストールされるので、次のようにトレーニング スクリプト `train.py` にインポートできます。

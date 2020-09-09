@@ -5,19 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: f00d93a639bacd1d0862fed7b6b003302bb2920e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 8/13/2020
+ms.openlocfilehash: cb785a6d988772ba160806621e44900d630b7e61
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82097661"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225718"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB の価格レベル
 
-Azure Database for MariaDB サーバーは、Basic、General Purpose、および Memory Optimized の 3 つの価格レベルのいずれかで作成できます。 価格レベルは、プロビジョニングできる仮想コアでのコンピューティング量、仮想コアあたりのメモリ、およびデータの格納に使用されるストレージ テクノロジによって区別されています。 リソースはすべて、MariaDB サーバー レベルでプロビジョニングされます。 1 つのサーバーには 1 つ以上のデータベースを含めることができます。
+Azure Database for MariaDB サーバーは、次の 3 つの価格レベルのいずれかで作成できます: Basic、汎用、メモリ最適化。 価格レベルは、プロビジョニングできる仮想コアでのコンピューティング量、仮想コアあたりのメモリ、およびデータの格納に使用されるストレージ テクノロジによって区別されています。 リソースはすべて、MariaDB サーバー レベルでプロビジョニングされます。 1 つのサーバーには 1 つ以上のデータベースを含めることができます。
 
-|    | **Basic** | **汎用** | **メモリ最適化** |
+| リソース | **Basic** | **汎用** | **メモリ最適化** |
 |:---|:----------|:--------------------|:---------------------|
 | コンピューティング世代 | Gen 5 |Gen 5 | Gen 5 |
 | 仮想コア | 1、2 | 2、4、8、16、32、64 |2、4、8、16、32 |
@@ -43,7 +43,7 @@ Azure Database for MariaDB サーバーは、Basic、General Purpose、および
 
 プロビジョニングするストレージは、使用している Azure Database for MariaDB サーバーで使用可能なストレージ容量です。 ストレージは、データベース ファイル、一時ファイル、トランザクション ログ、および MariaDB サーバー ログに使用されます。 プロビジョニングするストレージの合計容量によって、ご利用のサーバーで使用できる I/O 容量も決まります。
 
-|    | **Basic** | **汎用** | **メモリ最適化** |
+| ストレージの属性   | Basic | General Purpose | メモリ最適化 |
 |:---|:----------|:--------------------|:---------------------|
 | ストレージの種類 | 基本的なストレージ | 汎用のストレージ | 汎用のストレージ |
 | ストレージ サイズ | 5 GB ～ 1 TB | 5 GB ～ 4 TB | 5 GB ～ 4 TB |
@@ -58,6 +58,20 @@ Azure Database for MariaDB サーバーは、Basic、General Purpose、および
 Basic レベルでは、IOPS 保証は提供されません。 汎用およびメモリ最適化の価格レベルでは、IOPS は、プロビジョニング済みのストレージ サイズに合わせて 3 対 1 の比率でスケーリングされます。
 
 ご自身の I/O 使用量を監視するには、Azure Portal または Azure CLI コマンドを使用します。 監視すべき関連メトリックは、[容量の上限、ストレージの割合、ストレージの使用量、および IO の割合](concepts-monitoring.md)です。
+
+### <a name="large-storage-preview"></a>大容量のストレージ (プレビュー)
+
+汎用レベルおよびメモリ最適化レベルのストレージ制限の上限を引き上げています。 プレビューにオプトインされる新しく作成されたサーバーでは、最大 16 TB のストレージをプロビジョニングできます。 IOPS は、3:1 の比率で最大で 20,000 IOPS までスケーリングされます。 現在一般的に使用できるストレージと同様に、サーバーの作成後にさらにストレージ容量を追加でき、システムではワークロードのストレージ使用量に基づいて自動的にストレージを拡張できます。
+
+| ストレージの属性 | General Purpose | メモリ最適化 |
+|:-------------|:--------------------|:---------------------|
+| ストレージの種類 | Azure Premium Storage | Azure Premium Storage |
+| ストレージ サイズ | 32 GB ～ 16 TB| 32 ～ 16 TB |
+| ストレージの増分サイズ | 1 GB | 1 GB |
+| IOPS | 3 IOPS/GB<br/>最小 100 IOPS<br/>最大 20,000 IOPS| 3 IOPS/GB<br/>最小 100 IOPS<br/>最大 20,000 IOPS |
+
+> [!IMPORTANT]
+> 大容量ストレージは、現在、次のリージョンでパブリック プレビュー中です。米国東部、米国東部 2、米国中部、米国西部、米国中北部、米国中南部、北ヨーロッパ、西ヨーロッパ、英国南部、英国西部、東南アジア、東アジア、東日本、西日本、韓国中部、韓国南部、オーストラリア東部、オーストラリア東南部、米国西部 2、米国中西部。
 
 ### <a name="reaching-the-storage-limit"></a>容量の上限に到達
 
@@ -79,13 +93,11 @@ Basic レベルでは、IOPS 保証は提供されません。 汎用および�
 
 ## <a name="backup"></a>バックアップ
 
-サービスによって、サーバーのバックアップが自動的に取得されます。 7 日間から 35 日間までの保持期間を選択できます。 汎用サーバーとメモリ最適化サーバーでは、バックアップに geo 冗長ストレージを使用することを選択できます。 バックアップの詳細については[概念に関するアーティクル](concepts-backup.md) をご覧ください。
+Azure Database for MariaDB は、プロビジョニングされているサーバー ストレージの 100% までを追加コストなしでバックアップ ストレージとして利用できます。 この量を超えて使用するバックアップ ストレージは、月ごとに GB 単位で請求されます。 たとえば、サーバーを 250 GB のストレージでプロビジョニングする場合は、サーバーのバックアップに 250 GB の追加のストレージを追加料金なしで利用できます。 250 GB を超えるバックアップのストレージについては、[価格モデル](https://azure.microsoft.com/pricing/details/mariadb/)に従って請求されます。 バックアップ ストレージの使用状況に影響を与える要素を理解し、バックアップ ストレージのコストを監視および制御するには、[バックアップに関するドキュメント](concepts-backup.md)を参照してください。
 
 ## <a name="scale-resources"></a>リソースのスケール
 
 サーバーの作成後に、仮想コア数、価格レベル (Basic への変更、および Basic からの変更を除く)、ストレージ量、およびバックアップのリテンション期間を個別に変更できます。 バックアップ ストレージの種類は、サーバーの作成後に変更することはできません。 仮想コアの数は増やしたり減らしたりできます。 バックアップのリテンション期間は、7 日から 35 日の間でスケールアップまたはスケールダウンできます。 ストレージ サイズは増やすことのみ可能です。 ポータルまたは Azure CLI を使用して、リソースのスケーリングを実行できます。 
-
-<!--For an example of scaling by using Azure CLI, see [Monitor and scale an Azure Database for MariaDB server by using Azure CLI](scripts/sample-scale-server.md).-->
 
 仮想コア数または価格レベルを変更すると、新しいコンピューティング割り当てを使用して元のサーバーのコピーが作成されます。 新しいサーバーが実行されると、接続が新しいサーバーに切り替わります。 システムが新しいサーバーに切り替わるほんの短時間、新しい接続を確立できず、コミットされていないすべてのトランザクションがロールバックされます。 この時間の長さは変動しますが、ほとんどの場合 1 分未満です。
 
@@ -98,6 +110,3 @@ Basic レベルでは、IOPS 保証は提供されません。 汎用および�
 ## <a name="next-steps"></a>次のステップ
 - [サービスの制限事項](concepts-limits.md)を確認します。
 - [Azure portal で MariaDB サーバーを作成](quickstart-create-mariadb-server-database-using-azure-portal.md)する方法を確認します。
-
-<!--
-- Learn how to [monitor and scale an Azure Database for MariaDB server by using Azure CLI](scripts/sample-scale-server.md).-->

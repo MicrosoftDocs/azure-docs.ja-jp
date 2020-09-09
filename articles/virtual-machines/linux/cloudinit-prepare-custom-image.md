@@ -4,15 +4,15 @@ description: cloud-init でデプロイするために既存の Azure VM イメ�
 author: danis
 ms.service: virtual-machines-linux
 ms.subservice: imaging
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: danis
-ms.openlocfilehash: c41368b311708d5ead36d589cf9c320787e596ec
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 6785bb1f5ebde4f746dc8aa1ea9f586f406f8431
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792311"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373676"
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>cloud-init で使用するための既存の Linux Azure VM イメージの準備
 この記事では、cloud-init を使用するように既存の Azure 仮想マシンを再デプロイおよび準備する方法を示します。 生成されるイメージを使用して、新しい仮想マシンまたは仮想マシン スケール セットをデプロイできます。そのどちらも、デプロイ時に cloud-init によってさらにカスタマイズできます。  これらの cloud-init スクリプトは、Azure によってリソースがプロビジョニングされた後の最初の起動時に実行されます。 cloud-init が Azure およびサポートされている Linux ディストリビューションでネイティブに動作する方法の詳細については、[cloud-init の概要](using-cloud-init.md)に関するページをご覧ください
@@ -29,7 +29,7 @@ sudo yum install -y gdisk cloud-utils-growpart
 sudo yum install - y cloud-init 
 ```
 
-`cloud_init_modules` の `/etc/cloud/cloud.cfg` のセクションを更新して次のモジュールを含めます。
+`/etc/cloud/cloud.cfg` の `cloud_init_modules` のセクションを更新して次のモジュールを含めます。
 
 ```bash
 - disk_setup

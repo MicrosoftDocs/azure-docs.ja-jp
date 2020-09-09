@@ -3,18 +3,16 @@ title: Azure Data Lake Analytics で U-SQL カタログを使用する
 description: U-SQL カタログを使用して、コードとデータを共有する方法について説明します。 テーブル値関数を作成し、ビューを作成し、テーブルを作成し、それらにクエリを実行します。
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/09/2017
-ms.openlocfilehash: f3b9f14be4422373fb30f8c3d4909fd9c9546fdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ef1bff996589d09326e80b770953bd6b34966c5
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71672840"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132434"
 ---
 # <a name="get-started-with-the-u-sql-catalog-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics の U-SQL カタログを使用する
 
@@ -24,7 +22,7 @@ ms.locfileid: "71672840"
 
 次のスクリプトでは、既定のデータベースとスキーマで `Searchlog()` という TVF を作成します。
 
-```
+```usql
 DROP FUNCTION IF EXISTS Searchlog;
 
 CREATE FUNCTION Searchlog()
@@ -55,7 +53,7 @@ END;
 
 次のスクリプトは、前述のスクリプトで定義された TVF を使用する方法を示しています。
 
-```
+```usql
 @res =
     SELECT
         Region,
@@ -76,7 +74,7 @@ OUTPUT @res
 
 次のスクリプトでは、既定のデータベースとスキーマで `SearchlogView` というビューを作成します。
 
-```
+```usql
 DROP VIEW IF EXISTS SearchlogView;
 
 CREATE VIEW SearchlogView AS  
@@ -93,7 +91,7 @@ USING Extractors.Tsv();
 
 次のスクリプトは定義されたビューの使用方法を示しています。
 
-```
+```usql
 @res =
     SELECT
         Region,
@@ -113,7 +111,7 @@ OUTPUT @res
 
 次のスクリプトを使用して、1 つのデータベースと 2 つのテーブルを作成します。
 
-```
+```usql
 DROP DATABASE IF EXISTS SearchLogDb;
 CREATE DATABASE SearchLogDb;
 USE DATABASE SearchLogDb;
@@ -147,7 +145,7 @@ CREATE TABLE SearchLog2(
 
 テーブルから読み取る場合、前に使用した変換スクリプトは以下のように変更されます。
 
-```
+```usql
 @rs1 =
     SELECT
         Region,

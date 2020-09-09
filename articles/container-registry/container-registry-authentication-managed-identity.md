@@ -3,12 +3,12 @@ title: マネージド ID による認証
 description: ユーザー割り当てまたはシステム割り当て Azure マネージド ID を使用して、プライベート コンテナー レジストリ内のイメージへのアクセス権を付与します。
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 9b8bed78629d3a9739ec00772ad5c8216a04c122
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e5fd8ead989838c0ba74b42a9766bc63936379fa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74456497"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537903"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Azure マネージド ID を使用して Azure コンテナー レジストリに対して認証する 
 
@@ -79,6 +79,7 @@ ssh azureuser@publicIpAddress
 次のコマンドを実行して、VM に Docker をインストールします。
 
 ```bash
+sudo apt update
 sudo apt install docker.io -y
 ```
 
@@ -239,7 +240,7 @@ docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 > * ID に Azure コンテナー レジストリへのアクセス権を付与する
 > * マネージド ID を使用してレジストリにアクセスし、コンテナー イメージをプルする
 
-* 詳細については、「[Azure リソースの管理 ID について](/azure/active-directory/managed-identities-azure-resources/)」を参照してください。
+* 詳細については、「[Azure リソースの管理 ID について](../active-directory/managed-identities-azure-resources/index.yml)」を参照してください。
 
 
 <!-- LINKS - external -->

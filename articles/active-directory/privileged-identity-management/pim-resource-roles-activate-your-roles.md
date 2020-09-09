@@ -7,20 +7,20 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 07/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d35c81f7bb478d91bd207327ea37c80aa1778142
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f38ef7db114705392bd1d3dc6f9a4562a809e20
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74023149"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023877"
 ---
 # <a name="activate-my-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management で自分の Azure リソース ロールをアクティブ化する
 
@@ -42,13 +42,15 @@ Azure リソース ロールを引き受ける必要がある場合は、Privile
 
 1. **[Azure リソース ロール]** を選択して、適格な Azure リソース ロールの一覧を表示します。
 
-   ![[自分のロール - Azure リソース ロール] ページ](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png) 
+   ![[自分のロール - Azure リソース ロール] ページ](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png)
 
 1. **[Azure リソース ロール]** の一覧で、アクティブにするロールを見つけます。
 
     ![[Azure リソース ロール] - 自分の [資格のあるロール] の一覧](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate.png)
 
-1. **[アクティブ化]** を選択して、[アクティブ化] ウィンドウを開きます。
+1. **[アクティブ化]** を選択して、[アクティブ化] ページを開きます。
+
+     ![開いた [アクティブ化] ウィンドウと、スコープ、開始時刻、期間、理由](./media/pim-resource-roles-activate-your-roles/azure-role-eligible-activate.png)
 
 1. お使いのロールで多要素認証が必要な場合は、 **[続行する前に ID を確認してください]** をクリックします。 認証は、セッションごとに 1 回だけ行う必要があります。
 
@@ -72,27 +74,9 @@ Azure リソース ロールを引き受ける必要がある場合は、Privile
 
 1. **[アクティブ化]** を選びます。
 
-    承認が必要ないロールは、アクティブ化され、アクティブなロールの一覧に追加されます。 ロールを使用する場合は、次のセクションの手順に従います。
-
     アクティブ化に[承認が必要なロール](pim-resource-roles-approval-workflow.md)の場合は、ブラウザーの右上隅に通知が表示され、承認待ちになっていることが示されます。
 
     ![アクティブ化要求は承認通知待ち中](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-notification.png)
-
-## <a name="use-a-role-immediately-after-activation"></a>アクティブ化後すぐにロールを使用する
-
-アクティブ化の後の任意の遅延が発生した場合、Azure リソース ロールをすぐに使用するようにアクティブ化した後に、次の手順に従います。
-
-1. Azure AD Privileged Identity Management を開きます。
-
-1. **[自分のロール]** を選択して、適格な Azure AD ロールおよび Azure リソース ロールの一覧を表示します。
-
-1. **[Azure リソース ロール]** を選択します。
-
-1. **[アクティブなロール]** タブを選択します。
-
-1. ロールがアクティブになった場合、ポータルからサインアウトしてもう一度サインインします。
-
-    これでロールは使用可能になります。
 
 ## <a name="view-the-status-of-your-requests"></a>要求の状態を表示する
 
@@ -127,9 +111,6 @@ Azure リソース ロールを引き受ける必要がある場合は、Privile
 Privileged Identity Management でロールをアクティブ化しても、アクティブ化が、特権ロールを必要とするすべてのポータルに直ちには伝播されない可能性があります。 場合によっては、変更が伝達されても、ポータルにおける Web キャッシュが原因で、変更がすぐに有効にならないことがあります。 アクティブ化が遅延している場合は、次の手順を行ってください。
 
 1. Azure portal からサインアウトした後に、もう一度サインインします。
-
-    Azure リソース ロールをアクティブにすると、アクティブ化の各ステージが順次表示されます。 すべてのステージが完了すると、 **[サインアウト]** リンクが表示されます。 このリンクを使用してサインアウトできます。これにより、ほとんどの場合、アクティブ化の遅延は解決します。
-
 1. Privileged Identity Management で、自分がそのロールのメンバーとして一覧表示されていることを確認します。
 
 ## <a name="next-steps"></a>次のステップ

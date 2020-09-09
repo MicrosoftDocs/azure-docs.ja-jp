@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 053b052abf6f23c385dc7447639aa40b6c2c58a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f75c08f0a390e798435b70bbe2409ec4a9732214
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81680185"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717168"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>認証方法の使用状況と分析情報 (プレビュー)
 
@@ -98,6 +98,6 @@ ms.locfileid: "81680185"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [認証方法の使用状況レポート API を使用する](https://docs.microsoft.com/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
+- [認証方法の使用状況レポート API を使用する](/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
 - [組織の認証方法を選択する](concept-authentication-methods.md)
 - [統合された登録エクスペリエンス](concept-registration-mfa-sspr-combined.md)

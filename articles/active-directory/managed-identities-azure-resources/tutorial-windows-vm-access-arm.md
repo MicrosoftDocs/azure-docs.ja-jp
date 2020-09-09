@@ -3,7 +3,7 @@ title: チュートリアル`:` マネージド ID を使用して Azure Resourc
 description: Windows VM のシステム割り当てマネージド ID を使用して Azure Resource Manager にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: daveba
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4431031e5e96c71c6488b57cc570271d763bb764
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 646be410cceb214efad19757378c74f086e58578
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215370"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263069"
 ---
 # <a name="use-a-windows-vm-system-assigned-managed-identity-to-access-resource-manager"></a>Windows VM のシステム割り当てマネージド ID を使用して Resource Manager にアクセスする
 
@@ -51,7 +51,7 @@ Azure リソースのマネージド ID を使用すると、Azure AD 認証を�
 
 ## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-resource-manager"></a>VM のシステム割り当てマネージド ID を使用してアクセス トークンを取得し、それを使用して Azure Resource Manager を呼び出す 
 
-ここでは、**PowerShell** を使用する必要があります。  **PowerShell** をインストールしていない場合は、[ここ](https://docs.microsoft.com/powershell/azure/overview)からダウンロードします。 
+ここでは、**PowerShell** を使用する必要があります。  **PowerShell** をインストールしていない場合は、[ここ](/powershell/azure/)からダウンロードします。 
 
 1.  ポータルで **[Virtual Machines]** にナビゲートして Windows 仮想マシンに移動し、 **[概要]** の **[接続]** をクリックします。 
 2.  Windows VM を作成したときに追加した**ユーザー名**と**パスワード**を入力します。 
@@ -95,5 +95,4 @@ Azure リソースのマネージド ID を使用すると、Azure AD 認証を�
 このクイック スタートでは、システム割り当て ID を使用して Azure Resource Manager API にアクセスする方法について説明しました。  Azure Resource Manager の詳細については、以下を参照してください。
 
 > [!div class="nextstepaction"]
->[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)
-
+>[Azure Resource Manager](../../azure-resource-manager/management/overview.md)

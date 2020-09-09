@@ -1,20 +1,20 @@
 ---
 title: マップ上にトラフィックを表示する | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps Web SDK を使用して、マップ上にトラフィック データを表示する方法を示します。
-author: Philmea
-ms.author: philmea
+description: トラフィック データをマップに追加する方法について確認します。 フロー データについて学習し、Azure Maps Web SDK を使用して、インシデント データとフロー データをマップに追加する方法について確認します。
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen
-ms.openlocfilehash: 9c17c3cc22d478d81ed3c2b2ae9f61c173aad6cd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: 063fbd2ad4f2f5d427fd2cb39b8ce9b231eba374
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83123923"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036427"
 ---
 # <a name="show-traffic-on-the-map"></a>マップ上にトラフィックを表示する
 
@@ -40,7 +40,7 @@ map.setTraffic({
 
 <br/>
 
-<iframe height='500' scrolling='no' title='マップ上にトラフィックを表示する' src='//codepen.io/azuremaps/embed/WMLRPw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io/azuremaps/pen/WMLRPw/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>Show traffic on a map</a>」Pen を表示します。
+<iframe height='500' scrolling='no' title='マップ上にトラフィックを表示する' src='//codepen.io/azuremaps/embed/WMLRPw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/WMLRPw/'>Show traffic on a map</a>」Pen を表示します。
 </iframe>
 
 ## <a name="traffic-overlay-options"></a>トラフィック オーバーレイのオプション
@@ -50,7 +50,7 @@ map.setTraffic({
 <br/>
 
 <iframe height="700" style="width: 100%;" scrolling="no" title="トラフィック オーバーレイのオプション" src="//codepen.io/azuremaps/embed/RwbPqRY/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io/azuremaps/pen/RwbPqRY/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen の<a href='https://codepen.io'>トラフィック オーバーレイのオプション</a>を参照してください。
+<a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen の<a href='https://codepen.io/azuremaps/pen/RwbPqRY/'>トラフィック オーバーレイのオプション</a>を参照してください。
 </iframe>
 
 ## <a name="next-steps"></a>次のステップ

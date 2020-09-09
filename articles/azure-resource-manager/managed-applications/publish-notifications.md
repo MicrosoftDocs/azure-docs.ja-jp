@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: ilahat
 author: ilahat
 ms.date: 11/01/2019
-ms.openlocfilehash: ff058d7b51bd2e5efd80db69e5928d58fc5a7725
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3632a34678c7a0f0e6fa93e5ce8000b07bb413a6
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76715676"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054527"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>Azure Managed Applications と通知
 
@@ -61,7 +61,7 @@ Azure Managed Application の通知を使用することで、パブリッシャ
 
 ```
 ## <a name="add-azure-marketplace-managed-application-notifications"></a>Azure Marketplace マネージド アプリケーション通知の追加
-詳細については、「[Azure アプリケーション オファーを作成する](../../marketplace/cloud-partner-portal/azure-applications/cpp-create-offer.md)」を参照してください。
+詳細については、「[Azure アプリケーション オファーを作成する](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)」を参照してください。
 
 ![Azure portal での Azure Marketplace マネージド アプリケーション通知の追加](./media/publish-notifications/marketplace-notifications.png)
 ## <a name="event-triggers"></a>Event triggers (イベント トリガー)

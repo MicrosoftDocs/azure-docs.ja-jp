@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 03/04/2020
+ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 6847059de2a8685a56719f07a041a40456f2aa06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0e60ba0517fb3b9388045762853c651869cffb6a
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218533"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986459"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Text Analytics API のユーザー シナリオの例
 
@@ -29,7 +29,7 @@ Text Analytics API は、テキストに対する高度な自然言語処理を�
 
 ## <a name="analyze-recorded-inbound-customer-calls"></a>記録された受信カスタマー コールを分析する
 
-テキスト読み上げ、感情分析、およびキー フレーズ抽出を使用して、カスタマー サービスから分析情報を引き出します。 顧客の理解を深め、カスタマー サービスの傾向を明らかにし、顧客エンゲージメントを促進するために、結果を Power BI ダッシュボードまたはポータルに表示します。 API 要求をレポートのためにバッチとして送信するか、または介入のためにリアルタイムで送信します。 [GitHub 上](https://github.com/rlagh2/callcenteranalytics)のサンプル コードを参照してください。
+音声テキスト変換、感情分析、およびキー フレーズ抽出を使用して、カスタマー サービスの通話から分析情報を引き出します。 顧客の理解を深め、カスタマー サービスの傾向を明らかにし、顧客エンゲージメントを促進するために、結果を Power BI ダッシュボードまたはポータルに表示します。 API 要求をレポートのためにバッチとして送信するか、または介入のためにリアルタイムで送信します。 [GitHub 上](https://github.com/rlagh2/callcenteranalytics)のサンプル コードを参照してください。
 
 ![カスタマー サービスの問い合わせからの分析情報の取得をセンチメント分析を使用して自動化する方法を説明する画像](media/use-cases/azure-inbound.svg)
 
@@ -50,6 +50,13 @@ Text Analytics API は、テキストに対する高度な自然言語処理を�
 ドキュメントに含まれる個人情報や機密情報を識別するには、名前付きエンティティの認識を使用します。 そのデータを使用してドキュメントを分類または編集し、それらを安全に共有できるようにします。
 
 ![NER を使用して個人情報を検出したりドキュメントを分類、編集したりする方法を説明する画像](media/use-cases/sensitive-docs.jpg)
+
+## <a name="perform-opinion-mining"></a>意見マイニングを実行する
+
+アンケートでの商品やサービスの特定の特徴に関連した意見、カスタマー フィードバック、特徴に関する意見がテキストで保持されているかどうかをグループ化します。 これを使用すると、商品の発売や改良点、マーケティング活動を案内にしたり、商品やサービスのパフォーマンスを明確に示したりするのに役立ちます。 
+
+> [!div class="mx-imgBorder"] 
+> :::image type="content" source="media/use-cases/aspect-based-sentiment.png" alt-text="ホテルに関する意見の例。":::
 
 ## <a name="next-steps"></a>次のステップ
 

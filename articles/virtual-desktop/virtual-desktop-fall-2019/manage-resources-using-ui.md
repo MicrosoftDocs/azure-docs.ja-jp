@@ -1,24 +1,22 @@
 ---
 title: Azure Resource Manager テンプレートを使用して管理ツールをデプロイする - Azure
-description: Azure Resource Manager テンプレートを使用して Windows Virtual Desktop のリソースを管理するためのユーザー インターフェイス ツールをインストールする方法。
-services: virtual-desktop
+description: Azure Resource Manager テンプレートを使用して Windows Virtual Desktop (クラシック) のリソースを管理するためのユーザー インターフェイス ツールをインストールする方法。
 author: Heidilohr
-ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: abe9b060793983e42ab432924ca5d6d7f43d307d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: c261ea174f37de51a8fbd5b36aeb40c26d44e6a9
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614212"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691396"
 ---
-# <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して管理ツールをデプロイする
+# <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Windows Virtual Desktop (クラシック) 管理ツールをデプロイする
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースに適用されます。
+>この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。
 
 この記事の手順では、Azure Resource Manager テンプレートを使用して UI をデプロイする方法を説明します。
 
@@ -40,7 +38,7 @@ ms.locfileid: "82614212"
 
 - Azure Multi-Factor Authentication (MFA) が無効になっている
 - ご使用の Azure サブスクリプション内にリソースを作成するためのアクセス許可を持っている
-- Azure AD アプリケーションを作成するためのアクセス許可を持っている 次のステップに従い、あなたのユーザーが[「必要なアクセス許可」](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)の指示に従って必要なアクセス許可を保持しているかどうかを確認します。
+- Azure AD アプリケーションを作成するためのアクセス許可を持っている 次のステップに従い、あなたのユーザーが[「必要なアクセス許可」](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)の指示に従って必要なアクセス許可を保持しているかどうかを確認します。
 
 管理ツールをデプロイして構成した後は、管理 UI を起動し、すべてが動作することを確認することを推奨します。 管理 UI を起動するユーザーには、Windows Virtual Desktop テナントを表示/編集できるロールの割り当てが必要です。
 
@@ -52,7 +50,7 @@ ms.locfileid: "82614212"
 
 1. [GitHub の Azure RDS-Templates ページ](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy)に移動します。
 2. テンプレートを Azure にデプロイします。
-    - Enterprise サブスクリプションにデプロイする場合は、下へスクロールし、 **[Azure に配置する]** を選択します。 
+    - Enterprise サブスクリプションにデプロイする場合は、下へスクロールし、 **[Azure に配置する]** を選択します。
     - クラウド ソリューション プロバイダー サブスクリプションにデプロイする場合は、これらの手順に従って Azure にデプロイします。
         1. 下にスクロールし、 **[Deploy to Azure]\(Azure へのデプロイ\)** を右クリックしてから **[リンク先をコピー]** を選択します。
         2. メモ帳などのテキスト エディターを開き、そこにリンクを貼り付けます。
@@ -71,11 +69,13 @@ GitHub の Azure Resource Manager テンプレートが完成すると、Azure p
 
 管理ツールにサインインして使用する前に、管理ツールに関連付けられている新しい Azure AD アプリケーションに対して同意を与える必要があります。 同意を与えることで、管理ツールはツールに現在サインインしているユーザーに代わって Windows Virtual Desktop の管理呼び出しを行うことができるようになります。
 
-![UI 管理ツールに同意するときに提示されるアクセス許可を示すスクリーンショット。](../media/management-ui-delegated-permissions.png)
+> [!div class="mx-imgBorder"]
+> ![UI 管理ツールに同意するときに提示されるアクセス許可を示すスクリーンショット。](../media/management-ui-delegated-permissions.png)
 
 このツールへのサインインに使用できるユーザーを確認するには、[Azure Active Directory のユーザー設定ページ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)に移動し、 **[ユーザーはアプリが自身の代わりに会社のデータにアクセスすることを許可できます]** の値に注目します。
 
-![ユーザーがユーザー自身についてのみアプリケーションに与えることができるかどうかを示すスクリーンショット。](../media/management-ui-user-consent-allowed.png)
+> [!div class="mx-imgBorder"]
+> ![ユーザーがユーザー自身についてのみアプリケーションに同意を与えることができるかどうかを示すスクリーンショット。](../media/management-ui-user-consent-allowed.png)
 
 - この値が **[はい]** に設定されている場合、Azure Active Directory 内の任意のユーザー アカウントを使用してサインインし、そのユーザーについてのみ同意を与えることができます。 ただし、後で別のユーザーを使用して管理ツールにサインインした場合、同じ同意をもう一度実行する必要があります。
 - この値が **[いいえ]** に設定されている場合、Azure Active Directory のグローバル管理者としてサインインし、ディレクトリ内のすべてのユーザーについて管理者の同意を与える必要があります。 他のユーザーには、同意プロンプトが表示されません。
@@ -83,11 +83,12 @@ GitHub の Azure Resource Manager テンプレートが完成すると、Azure p
 
 同意を与えるために使用するユーザーを決めたら、これらの手順に従って、このツールに同意を与えます。
 
-1. ご使用の Azure リソースに移動し、テンプレート内で指定した名前の Azure App Services リソース (たとえば、Apr3UX) を選択し、それに関連付けられている URL (たとえば、<https://rdmimgmtweb-210520190304.azurewebsites.net>) に移動します。
+1. ご使用の Azure リソースに移動し、テンプレート内で指定した名前の Azure App Services リソース (たとえば、Apr3UX) を選択し、それに関連付けられている URL (たとえば、`https://rdmimgmtweb-210520190304.azurewebsites.net`) に移動します。
 2. 適切な Azure Active Directory ユーザー アカウントを使用してサインインします。
 3. グローバル管理者を使用して認証した場合、ここで **[組織の代理として同意する]** チェック ボックスをオンにできます。 **[同意する]** を選択して同意を与えます。
-   
-   ![ユーザーまたは管理者に表示される同意ページ全体を示すスクリーンショット。](../media/management-ui-consent-page.png)
+
+   > [!div class="mx-imgBorder"]
+   > ![ユーザーまたは管理者に表示される同意ページ全体を示すスクリーンショット。](../media/management-ui-consent-page.png)
 
 これで管理ツールに移動します。
 
@@ -101,7 +102,7 @@ GitHub の Azure Resource Manager テンプレートが完成すると、Azure p
 2. ご自分の Windows Virtual Desktop 資格情報を使用してサインインします。
 3. テナント グループを選択するよう求められたら、ドロップダウン リストから **[Default Tenant Group]\(既定のテナント グループ\)** を選択します。
 4. **[既定のテナント グループ]** を選択すると、ウィンドウの右側にメニューが表示されます。 このメニューの中から、テナント グループの名前を探して選択します。
-  
+
   > [!NOTE]
   > カスタムのテナント グループがある場合は、ドロップダウン リストから選択せずに、手動でその名前を入力します。
 

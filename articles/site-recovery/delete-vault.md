@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: rajanaki
-ms.openlocfilehash: 0e409ffdedbac822aedf48833f2dd85f8e04afa2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8237888d46e1f1ad48e678234cf1edce3558876a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75894977"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089585"
 ---
 # <a name="delete-a-site-recovery-services-vault"></a>Site Recovery Services コンテナーを削除する
 
@@ -64,12 +64,14 @@ ms.locfileid: "75894977"
 
 保護された項目がある場合でも、Site Recovery コンテナーを削除するには、次のコマンドを使用します。
 
-    Connect-AzAccount
+```azurepowershell
+Connect-AzAccount
 
-    Select-AzSubscription -SubscriptionName "XXXXX"
+Select-AzSubscription -SubscriptionName "XXXXX"
 
-    $vault = Get-AzRecoveryServicesVault -Name "vaultname"
+$vault = Get-AzRecoveryServicesVault -Name "vaultname"
 
-    Remove-AzRecoveryServicesVault -Vault $vault
+Remove-AzRecoveryServicesVault -Vault $vault
+```
 
-[Get-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvault) と [Remove-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault) の詳細をご覧ください。
+[Get-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/get-azrecoveryservicesvault) と [Remove-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault) の詳細をご覧ください。

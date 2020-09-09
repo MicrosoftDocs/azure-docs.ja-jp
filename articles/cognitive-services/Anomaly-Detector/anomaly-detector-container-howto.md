@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: aahi
-ms.openlocfilehash: 40906c97dc088687bbd960fecc91921a3eb888a6
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: ee742f09f3fcc1bd283efbc346fea6a040e53f48
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589977"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548533"
 ---
 # <a name="install-and-run-anomaly-detector-containers-preview"></a>Anomaly Detector コンテナー (プレビュー) のインストールと実行
 
@@ -28,7 +28,7 @@ Anomaly Detector には次のコンテナー機能があります。
 API の詳細情報については、以下を参照してください。
 * [Anomaly Detector API サービスの詳細情報](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,7 +37,7 @@ Anomaly Detector コンテナーを使用する前に、次の前提条件を満
 |必須|目的|
 |--|--|
 |Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では**、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
-|Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。| 
+|Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。|
 |Anomaly Detector リソース |これらのコンテナーを使用するためには、以下が必要です。<br><br>関連付けられている API キーとエンドポイント URI を取得するための Azure _Anomaly Detector_ リソース。 どちらの値も、Azure portal の **Anomaly Detector** の概要ページとキー ページで使用でき、コンテナーを開始するために必要です。<br><br>**{API_KEY}** : **[キー]** ページにある 2 つの利用可能なリソース キーのどちらか<br><br>**{ENDPOINT_URI}** : **[概要]** ページに提示されているエンドポイント|
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
@@ -106,7 +106,7 @@ ApiKey={API_KEY}
 * コンテナー イメージから Anomaly Detector コンテナーを実行します
 * 1 つの CPU コアと 4 ギガバイト (GB) のメモリを割り当てます
 * TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます
-* コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。 
+* コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。
 
 > [!IMPORTANT]
 > コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](#billing)」を参照してください。
@@ -115,11 +115,11 @@ ApiKey={API_KEY}
 
 公開されているポートを使って複数のコンテナーを実行する予定の場合、必ず各コンテナーを別のポートで実行してください。 たとえば、最初のコンテナーをポート 5000 上で、2 番目のコンテナーを 5001 上で実行します。
 
-`<container-registry>` および `<container-name>` を、使用しているコンテナーの値に置き換えます。 これらを同一のコンテナーにする必要はありません。 HOST 上で実行している Anomaly Detector コンテナーと LUIS コンテナーを一緒に使用したり、複数の Anomaly Detector コンテナーを実行したりできます。 
+`<container-registry>` および `<container-name>` を、使用しているコンテナーの値に置き換えます。 これらを同一のコンテナーにする必要はありません。 HOST 上で実行している Anomaly Detector コンテナーと LUIS コンテナーを一緒に使用したり、複数の Anomaly Detector コンテナーを実行したりできます。
 
-ポート 5000 上で最初のコンテナーを実行します。 
+ポート 5000 上で最初のコンテナーを実行します。
 
-```bash 
+```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
 <container-registry>/microsoft/<container-name> \
 Eula=accept \
@@ -130,7 +130,7 @@ ApiKey={API_KEY}
 ポート 5001 上で 2 番目のコンテナーを実行します。
 
 
-```bash 
+```bash
 docker run --rm -it -p 5000:5001 --memory 4g --cpus 1 \
 <container-registry>/microsoft/<container-name> \
 Eula=accept \
@@ -138,11 +138,11 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-後続の各コンテナーは、別のポート上になっている必要があります。 
+後続の各コンテナーは、別のポート上になっている必要があります。
 
 ## <a name="query-the-containers-prediction-endpoint"></a>コンテナーの予測エンドポイントに対するクエリの実行
 
-コンテナーには、REST ベースのクエリ予測エンドポイント API が用意されています。 
+コンテナーには、REST ベースのクエリ予測エンドポイント API が用意されています。
 
 コンテナーの API のホストとしては http://localhost:5000 を使用します。
 
@@ -162,7 +162,7 @@ ApiKey={API_KEY}
 
 ## <a name="billing"></a>課金
 
-Anomaly Detector コンテナーは、Azure アカウントの _Anomaly Detector_ リソースを使用して、Azure に課金情報を送信します。 
+Anomaly Detector コンテナーは、Azure アカウントの _Anomaly Detector_ リソースを使用して、Azure に課金情報を送信します。
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 

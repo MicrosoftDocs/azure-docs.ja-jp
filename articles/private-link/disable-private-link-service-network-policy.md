@@ -4,15 +4,15 @@ description: Azure Private Link のネットワーク ポリシーを無効に�
 services: private-link
 author: malopMSFT
 ms.service: private-link
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 4c6bd64d141341e0b7fa5641e04320a95d7951bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1062f126da8be6b37f6b52eee520425b3edcde16
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75453006"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84744342"
 ---
 # <a name="disable-network-policies-for-private-link-service-source-ip"></a>Private Link サービスのソース IP のネットワーク ポリシーを無効にする
 
@@ -24,13 +24,15 @@ ms.locfileid: "75453006"
 
 ## <a name="using-azure-powershell"></a>Azure PowerShell の使用
 ここでは、Azure PowerShell を使用して、サブネットのプライベート エンドポイント ポリシーを無効にする方法について説明します。
+コード内で、"default" を仮想サブネットの名前で置換します。
 
 ```azurepowershell
+$virtualSubnetName = "default"
 $virtualNetwork= Get-AzVirtualNetwork `
   -Name "myVirtualNetwork" ` 
-  -ResourceGroupName "myResourceGroup"  
+  -ResourceGroupName "myResourceGroup"
    
-($virtualNetwork | Select -ExpandProperty subnets | Where-Object  {$_.Name -eq 'default'} ).privateLinkServiceNetworkPolicies = "Disabled"  
+($virtualNetwork | Select -ExpandProperty subnets | Where-Object  {$_.Name -eq $virtualSubnetName} ).privateLinkServiceNetworkPolicies = "Disabled"  
  
 $virtualNetwork | Set-AzVirtualNetwork 
 ```

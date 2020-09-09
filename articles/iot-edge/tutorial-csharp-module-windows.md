@@ -5,18 +5,16 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 04/23/2019
+ms.date: 08/03/2020
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom:
-- mvc
-- amqp
-ms.openlocfilehash: b71db71ac61e0dcd65a2546b2164610e618dab18
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, amqp, devx-track-csharp
+ms.openlocfilehash: b904fcd03247f6e6ae01f51c5048c29826bb8e5a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81733508"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018469"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>チュートリアル:Windows デバイス用の C# IoT Edge モジュールを開発する
 
@@ -83,7 +81,7 @@ Azure IoT Edge Tools は、Visual Studio でサポートされているすべて
    | ----- | ----- |
    | テンプレートの選択 | **[C# モジュール]** を選択します。 |
    | モジュール プロジェクト名 | ご自身のモジュールに **CSharpModule** と名前を付けます。 |
-   | Docker イメージ リポジトリ | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、モジュール プロジェクト名の値から事前に入力されています。 **localhost:5000** を、Azure コンテナー レジストリのログイン サーバーの値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br> 最終的なイメージ リポジトリは、\<registry name\>.azurecr.io/csharpmodule のようになります。 |
+   | Docker イメージ リポジトリ | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、モジュール プロジェクト名の値から事前に入力されています。 **localhost:5000** を、Azure Container Registry の**ログイン サーバー**の値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br> 最終的なイメージ リポジトリは、\<registry name\>.azurecr.io/csharpmodule のようになります。 |
 
    ![ターゲット デバイス、モジュールの種類、コンテナー レジストリ用にプロジェクトを構成する](./media/tutorial-csharp-module-windows/add-application-and-module.png)
 
@@ -309,9 +307,11 @@ Azure IoT Edge Tools は、Visual Studio でサポートされているすべて
 
    ビルドおよびプッシュ コマンドでは、3 つの操作を開始します。 最初に、デプロイ テンプレートと他のソリューション ファイルの情報からビルドされた完全な配置マニフェストを保持する、**config** という新しいフォルダーをソリューション内に作成します。 次に、`docker build` を実行して、お使いのターゲット アーキテクチャ用の適切な Dockerfile に基づいてコンテナー イメージをビルドします。 そして、`docker push` を実行して、イメージ リポジトリをコンテナー レジストリにプッシュします。
 
+   このプロセスは、初回は数分間かかる可能性がありますが、次回これらのコマンドを実行するときは、それより速くなります。
+
 ## <a name="deploy-modules-to-device"></a>モジュールをデバイスにデプロイする
 
-IoT Edge デバイスにモジュール プロジェクトをデプロイするには、Visual Studio Cloud Explorer と Azure IoT Edge Tools 拡張機能を使用します。 シナリオ用の配置マニフェストである **deployment.json** ファイルは、config フォルダーに既に用意されています。 ここで行う必要があるのは、デプロイを受け取るデバイスの選択だけです。
+IoT Edge デバイスにモジュール プロジェクトをデプロイするには、Visual Studio Cloud Explorer と Azure IoT Edge Tools 拡張機能を使用します。 シナリオ用の配置マニフェストである **deployment.windows-amd64.json** ファイルは、config フォルダーに既に用意されています。 ここで行う必要があるのは、デプロイを受け取るデバイスの選択だけです。
 
 お使いの IoT Edge デバイスが稼働していることを確認します。
 
@@ -321,7 +321,7 @@ IoT Edge デバイスにモジュール プロジェクトをデプロイする�
 
 3. **[デプロイの作成]** を選択します。
 
-4. ファイル エクスプローラーで、ソリューションの config フォルダー内にある **deployment.windows-amd64** ファイルを選択します。
+4. ファイル エクスプローラーで、ソリューションの config フォルダー内にある **deployment.windows-amd64.json** ファイルを選択します。
 
 5. クラウド エクスプローラーを更新して、デプロイされたモジュールがデバイスの下に一覧表示されていることを確認します。
 

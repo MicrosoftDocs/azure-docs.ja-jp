@@ -5,14 +5,15 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurepowershel
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 4/28/2020
-ms.openlocfilehash: 871b1ba81f672459378b23705ad5b96213667a73
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 5571d5a937fc48030c38ebe78c86ef27d6727a67
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609070"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837280"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mysql-server-using-powershell"></a>PowerShell を使用して Azure Database for MySQL サーバーをバックアップおよび復元する方法
 
@@ -132,4 +133,4 @@ geo リストアを使用して新しいサーバーを作成すると、**Sku**
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [PowerShell を使用して Azure Database for MySQL サーバー パラメーターをカスタマイズする](howto-configure-server-parameters-using-powershell.md)
+> [PowerShell を使用して Azure Database for MySQL 接続文字列を生成する方法](howto-connection-string-powershell.md)

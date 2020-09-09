@@ -3,12 +3,12 @@ title: Java アプリケーションを任意の環境で監視する - Azure Mo
 description: アプリをインストルメント化することなく、任意の環境で実行されている Java アプリケーションのアプリケーション パフォーマンスを監視します。 分散トレースとアプリケーション マップです。
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 591cfad0f4719595835f212b9205354aad7cb9e8
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: e1442d1b1fb1bf8fbef82354b8aa1d2354640aa9
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82508073"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902084"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Azure Monitor Application Insights を監視する Java のコード不要のアプリケーション - パブリックプレビュー
 
@@ -24,19 +24,19 @@ Java のコード不要のアプリケーション監視は、シンプルさが
 
 **1.エージェントのダウンロード**
 
-[applicationinsights-agent-3.0.0-PREVIEW.4.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.4/applicationinsights-agent-3.0.0-PREVIEW.4.jar) をダウンロードします
+[applicationinsights-agent-3.0.0-PREVIEW.5.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.5/applicationinsights-agent-3.0.0-PREVIEW.5.jar) をダウンロードします。
 
 **2.JVM をエージェントにポイントする**
 
-アプリケーションの JVM 引数に `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.4.jar` を追加します
+アプリケーションの JVM 引数に `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.5.jar` を追加します
 
 一般的な JVM 引数には、`-Xmx512m` と `-XX:+UseG1GC` があります。 これらの引数の追加先がわかれば、これの追加先もわかります。
 
-アプリケーションの JVM 引数の構成に関する追加のヘルプについては、「[3.0 Preview: Tips for updating your JVM args](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-arguments)」 (3.0 プレビュー: JVM の引数の更新に関するヒント) を参照してください。
+アプリケーションの JVM 引数の構成に関する追加のヘルプについては、「[3.0 Preview: Tips for updating your JVM args](./java-standalone-arguments.md)」 (3.0 プレビュー: JVM の引数の更新に関するヒント) を参照してください。
 
 **3.エージェントを Application Insights リソースにポイントする**
 
-Application Insights リソースをまだ持っていない場合は、[リソース作成ガイド](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)の手順に従って、新しいリソースを作成できます。
+Application Insights リソースをまだ持っていない場合は、[リソース作成ガイド](./create-new-resource.md)の手順に従って、新しいリソースを作成できます。
 
 環境変数を設定して、エージェントを Application Insights リソースにポイントします。
 
@@ -44,7 +44,7 @@ Application Insights リソースをまだ持っていない場合は、[リソ�
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000-000000000000
 ```
 
-または、次の内容で、`ApplicationInsights.json` という名前の構成ファイルを作成し、`applicationinsights-agent-3.0.0-PREVIEW.4.jar` と同じディレクトリに配置します。
+または、次の内容で、`ApplicationInsights.json` という名前の構成ファイルを作成し、`applicationinsights-agent-3.0.0-PREVIEW.5.jar` と同じディレクトリに配置します。
 
 ```json
 {
@@ -80,7 +80,7 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000
 * HTTP Proxy
 * 自己診断
 
-詳細については、「[3.0 Public Preview: Configuration Options](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config)」 (3.0 パブリック プレビュー: 自動収集された要求、依存関係、ログ、およびメトリック) を参照してください。
+詳細については、「[3.0 Public Preview: Configuration Options](./java-standalone-config.md)」 (3.0 パブリック プレビュー: 自動収集された要求、依存関係、ログ、およびメトリック) を参照してください。
 
 ## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>自動収集された要求、依存関係、ログ、およびメトリック
 
@@ -126,7 +126,21 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000
 
 Micrometer、OpenTelemetry API、および一般的なログ記録フレームワークがサポートされています。 Application Insights Java 3.0 では、テレメトリが自動的にキャプチャされ、自動収集されたすべてのテレメトリと連動して、関連付けが行われます。
 
-このため、現時点では、Application Insights 3.0 を使用した SDK をリリースする予定はありません。
+### <a name="supported-custom-telemetry"></a>サポートされているカスタム テレメトリ
+
+次の表は、現在サポートされているカスタム テレメトリの種類を示しています。これを有効にすると、Java 3.0 エージェントを補完することができます。 要約すると、カスタム メトリックはマイクロメーターを通じてサポートされ、カスタムの例外とトレースはログ記録フレームワークを使用して有効にできます。また、カスタム テレメトリの種類は、[Application Insights Java 2.x SDK](#sending-custom-telemetry-using-application-insights-java-sdk-2x) を通じてサポートされます。 
+
+|                     | Micrometer | Log4j、logback、JUL | 2.x SDK |
+|---------------------|------------|---------------------|---------|
+| **[カスタム イベント]**   |            |                     |  Yes    |
+| **カスタム メトリック**  |  はい       |                     |  はい    |
+| **依存関係**    |            |                     |  Yes    |
+| **例外**      |            |  はい                |  はい    |
+| **ページ ビュー**      |            |                     |  Yes    |
+| **要求**        |            |                     |  Yes    |
+| **トレース**          |            |  はい                |  はい    |
+
+現時点では、Application Insights 3.0 を使用した SDK をリリースする予定はありません。
 
 Application Insights Java 3.0 では、Application Insights Java SDK 2.x に送信されるテレメトリを既にリッスンしています。 この機能は、既存の 2.x ユーザーのアップグレード ストーリーの重要な部分であり、OpenTelemetry API が GA になるまでの、カスタム テレメトリ サポートの重要なギャップを埋めるものです。
 

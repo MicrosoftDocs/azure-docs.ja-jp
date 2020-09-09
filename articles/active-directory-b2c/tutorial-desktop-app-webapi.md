@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 59670cda68f54e4c0b20b361f0688e6766acba61
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8ebfbeeb4533f21bc0fa10a5fee7b88ef069c262
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78183384"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298851"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用してデスクトップ アプリから Node.js Web API へのアクセスを許可する
 
@@ -51,17 +51,11 @@ ms.locfileid: "78183384"
 
 この前提条件のチュートリアルでは、*nativeapp1* という名前のネイティブ クライアント アプリケーションを登録しました。 次の手順では、前のセクションで *webapi1* に対して公開した API のスコープをそのネイティブ アプリケーションの登録に構成します。 これにより、デスクトップ アプリケーションが Azure AD B2C から Web API がそのリソースへの範囲指定がある検証されたアクセスを提供するのに使用できるアクセス トークンを取得できるようになります。 このチュートリアルでは、後でデスクトップ アプリケーションと Web API の両方のコード サンプルを構成して実行します。
 
-#### <a name="applications"></a>[アプリケーション](#tab/applications/)
+アプリケーションを Azure AD B2C テナントに登録するには、Microsoft の新しい統合**アプリの登録**エクスペリエンスかレガシ **アプリケーション (レガシ)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregtraining)。
 
-1. **[アプリケーション]** を選択し、*nativeapp1* を選択します。
-1. **[API アクセス]** を選択し、 **[追加]** を選択します。
-1. **[API の選択]** ドロップダウンで、*webapi1* を選択します。
-1. **[スコープの選択]** ボックスの一覧で、先ほど定義したスコープを選択します。 *demo.read* や *demo.write* などです。
-1. **[OK]** を選択します。
+#### <a name="app-registrations"></a>[アプリの登録](#tab/app-reg-ga/)
 
-#### <a name="app-registrations-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
-
-1. **[アプリの登録 (プレビュー)]** を選択し、API にアクセスできるようにするネイティブ クライアント アプリケーションを選択します。 たとえば、*nativeapp1* とします。
+1. **[アプリの登録]** を選択し、API にアクセスできるようにするネイティブ クライアント アプリケーションを選択します。 たとえば、*nativeapp1* とします。
 1. **[管理]** の下にある **[API のアクセス許可]** を選択します。
 1. **[構成されたアクセス許可]** の下で **[アクセス許可の追加]** を選択します。
 1. **[自分の API]** タブを選択します。
@@ -72,6 +66,14 @@ ms.locfileid: "78183384"
 1. 現在サインインしているお使いの管理者アカウントを選択するか、少なくとも*クラウド アプリケーション管理者* ロールが割り当てられているお使いの Azure AD B2C テナントのアカウントでサインインします。
 1. **[Accept]\(承認\)** を選択します。
 1. **[更新]** を選択し、両方のスコープの **[状態]** に、"... に付与されました" が表示されていることを確認します。 アクセス許可が反映されるまでに数分かかる場合があります。
+
+#### <a name="applications-legacy"></a>[アプリケーション (レガシ)](#tab/applications-legacy/)
+
+1. **[アプリケーション (レガシ)]** を選択し、*nativeapp1* を選択します。
+1. **[API アクセス]** を選択し、 **[追加]** を選択します。
+1. **[API の選択]** ドロップダウンで、*webapi1* を選択します。
+1. **[スコープの選択]** ボックスの一覧で、先ほど定義したスコープを選択します。 *demo.read* や *demo.write* などです。
+1. **[OK]** を選択します。
 
 * * *
 

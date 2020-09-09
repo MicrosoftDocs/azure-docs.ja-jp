@@ -5,27 +5,28 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: be0f0a48e2fd334e2000c8a4b8c2e0101b291cef
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e6b6cebfd146ffe23bdc21751f86c71d14ea875e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791869"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002251"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Azure Service Fabric の容量計画とスケーリング
 
-Azure Service Fabric クラスターの作成前、またはクラスターをホストするコンピューティング リソースをスケールする前に、容量についての計画を立てることが重要です。 容量の計画に関する詳細については、[Service Fabric クラスターの容量計画](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)に関するページを参照してください。 クラスター スケーラビリティのベスト プラクティスへの詳細な手引きについては、[Service Fabric のスケーラビリティに関する考慮事項](https://docs.microsoft.com/azure/architecture/reference-architectures/microservices/service-fabric#scalability-considerations)に関するページを参照してください。
+Azure Service Fabric クラスターの作成前、またはクラスターをホストするコンピューティング リソースをスケールする前に、容量についての計画を立てることが重要です。 容量の計画に関する詳細については、[Service Fabric クラスターの容量計画](./service-fabric-cluster-capacity.md)に関するページを参照してください。 クラスター スケーラビリティのベスト プラクティスへの詳細な手引きについては、[Service Fabric のスケーラビリティに関する考慮事項](/azure/architecture/reference-architectures/microservices/service-fabric#scalability-considerations)に関するページを参照してください。
 
 ノードの種類とクラスターの特性を考慮することに加えて、運用環境でのスケーリング操作が完了するまでに 1 時間以上かかることを考慮する必要があります。 この考慮事項は、追加する VM の数に関係なく当てはまります。
 
 ## <a name="autoscaling"></a>自動スケール
-スケーリング操作は、Azure Resource Manager テンプレートを介して実行する必要があります。これは、[リソース構成をコードとして]( https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)扱うことがベスト プラクティスであるためです。 
+スケーリング操作は、Azure Resource Manager テンプレートを介して実行する必要があります。これは、[リソース構成をコードとして](./service-fabric-best-practices-infrastructure-as-code.md)扱うことがベスト プラクティスであるためです。 
 
 仮想マシン スケール セットを介した自動スケーリングを使用すると、バージョン管理される Resource Manager テンプレートで、仮想マシン スケール セットのインスタンス数の定義が不正確になります。 不正確な定義により、今後のデプロイで意図しないスケーリング操作が発生するリスクが高まります。 一般的に、自動スケーリングは次の場合に使用してください。
 
 * 適切な容量が宣言されている Resource Manager テンプレートをデプロイしても、実際のユース ケースがサポートされない。
      
-   手動スケーリングに加えて、[Azure リソース グループのデプロイ プロジェクトを使用することで、Azure DevOps Services で継続的インテグレーションと配信パイプライン](https://docs.microsoft.com/azure/vs-azure-tools-resource-groups-ci-in-vsts)を構成できます。 このパイプラインは、通常、[Azure Monitor REST API](https://docs.microsoft.com/azure/azure-monitor/platform/rest-api-walkthrough) からクエリされる仮想マシンのパフォーマンス メトリックを使用するロジック アプリによってトリガーされます。 パイプラインでは、Resource Manager テンプレート用に最適化しながら、任意の必要なメトリックに基づいた効果的な自動スケーリングが行われます。
+   手動スケーリングに加えて、[Azure リソース グループのデプロイ プロジェクトを使用することで、Azure DevOps Services で継続的インテグレーションと配信パイプライン](../azure-resource-manager/templates/add-template-to-azure-pipelines.md)を構成できます。 このパイプラインは、通常、[Azure Monitor REST API](../azure-monitor/platform/rest-api-walkthrough.md) からクエリされる仮想マシンのパフォーマンス メトリックを使用するロジック アプリによってトリガーされます。 パイプラインでは、Resource Manager テンプレート用に最適化しながら、任意の必要なメトリックに基づいた効果的な自動スケーリングが行われます。
 * 一度に 1 つの仮想マシン スケール セット ノードのみを水平方向にスケールする必要がある。
    
    一度に 3 つ以上のノードをスケールアウトするには、[仮想マシン スケール セットを追加することで、Service Fabric クラスターをスケールアウトする](virtual-machine-scale-set-scale-node-type-scale-out.md)必要があります。 仮想マシン スケール セットを水平方向に、一度に 1 ノードずつスケールインおよびスケールアウトするのが最も安全です。
@@ -38,7 +39,7 @@ Azure Service Fabric クラスターの作成前、またはクラスターを�
 
 ## <a name="vertical-scaling-considerations"></a>垂直方向のスケーリングに関する考慮事項
 
-Azure Service Fabric で特定のノードの種類を[垂直方向にスケールする](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out)には、いくつかの手順が必要であり、考慮すべきことがあります。 次に例を示します。
+Azure Service Fabric で特定のノードの種類を[垂直方向にスケールする](./virtual-machine-scale-set-scale-node-type-scale-out.md)には、いくつかの手順が必要であり、考慮すべきことがあります。 次に例を示します。
 
 * クラスターは、スケーリングの前に正常になっている必要があります。 そうでない場合、クラスターがさらに不安定になってしまいます。
 * ステートフル サービスをホストするすべての Service Fabric クラスター ノードの種類は、持続性が Silver レベル以上であることが必要です。
@@ -48,7 +49,7 @@ Azure Service Fabric で特定のノードの種類を[垂直方向にスケー�
 
 仮想マシン スケール セットを垂直方向にスケールすることは、破壊的な操作です。 代わりに、必要な SKU を使用して新しいスケール セットを追加することでクラスターを水平方向にスケールします。 その後、サービスを目的の SKU に移行して、安全な垂直方向のスケーリング操作を完了します。 仮想マシン スケール セットのリソース SKU を変更することは、それによってホストが再イメージ化され、ローカルで永続化されていた状態がすべて削除されるため、破壊的な操作です。
 
-アプリケーションのサービスをホストする場所を決定するために、クラスターで Service Fabric の[ノード プロパティと配置の制約](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-cluster-description#node-properties-and-placement-constraints)が使用されます。 プライマリ ノードの種類を垂直方向にスケーリングする場合、`"nodeTypeRef"` に対して同一のプロパティ値を宣言します。 仮想マシン スケール セットの Service Fabric 拡張機能でこれらの値を見つけることができます。 
+アプリケーションのサービスをホストする場所を決定するために、クラスターで Service Fabric の[ノード プロパティと配置の制約](./service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)が使用されます。 プライマリ ノードの種類を垂直方向にスケーリングする場合、`"nodeTypeRef"` に対して同一のプロパティ値を宣言します。 仮想マシン スケール セットの Service Fabric 拡張機能でこれらの値を見つけることができます。 
 
 Resource Manager テンプレートの次のスニペットに、宣言するプロパティが示されています。 これは、スケールする対象となる、新たにプロビジョニングされたスケール セットと同じ値を持ち、クラスターの一時的なステートフル サービスとしてのみサポートされます。
 
@@ -68,13 +69,13 @@ Resource Manager テンプレートの次のスニペットに、宣言するプ
 1. 削除しようとしているノードを無効にする意図 `RemoveNode` を指定して、PowerShell から `Disable-ServiceFabricNode` を実行します。 最も数が多いノードの種類を削除します。 たとえば、6 個のノードを含むクラスターがある場合は、仮想マシン インスタンス "MyNodeType_5" を削除します。
 2. `Get-ServiceFabricNode` を実行し、ノードが無効に移行したことを確認します。 無効になっていない場合は、無効になるまで待ちます。 これはノードごとに数時間かかる場合があります。 ノードが無効に移行するまで作業を進めないでください。
 3. そのノードの種類で VM の数を 1 つ減らします。 これで 最上位の VM インスタンスが削除されます。
-4. 必要に応じて手順 1.～3. を繰り返します。ただし、プライマリ ノードの種類のインスタンス数を、信頼性レベルで保証されるよりも少ない数にスケールインしないでください。 推奨されるインスタンスの一覧については、「[Service Fabric クラスターの容量計画](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)」を参照してください。
+4. 必要に応じて手順 1.～3. を繰り返します。ただし、プライマリ ノードの種類のインスタンス数を、信頼性レベルで保証されるよりも少ない数にスケールインしないでください。 推奨されるインスタンスの一覧については、「[Service Fabric クラスターの容量計画](./service-fabric-cluster-capacity.md)」を参照してください。
 5. すべての VM が削除されると ("ダウン" と示されます)、fabric:/System/InfrastructureService/[ノード名] でエラー状態が示されます。 その後、クラスター リソースを更新してノードの種類を削除できます。 ARM テンプレート デプロイを使用するか、[Azure Resource Manager](https://resources.azure.com) によってクラスター リソースを編集することができます。 これにより、クラスターのアップグレードが開始され、エラー状態の fabric:/System/InfrastructureService/[ノードの種類] サービスが削除されます。
  6. その後、必要に応じて VMScaleSet を削除できますが、Service Fabric Explorer ビューではノードが "ダウン" と表示されます。 最後の手順は、`Remove-ServiceFabricNodeState` コマンドを使用してこれらをクリーンアップすることです。
 
 ## <a name="horizontal-scaling"></a>水平スケーリング
 
-[手動](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-in-out)または[プログラム](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-programmatic-scaling)で水平スケーリングを実行できます。
+[手動](./service-fabric-cluster-scale-in-out.md)または[プログラム](./service-fabric-cluster-programmatic-scaling.md)で水平スケーリングを実行できます。
 
 > [!NOTE]
 > 持続性が Silver または Gold であるノードの種類をスケールする場合、スケーリングは低速になります。
@@ -89,7 +90,7 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ```
 
-手動でスケールアウトするには、目的の[仮想マシン スケール セット](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile) リソースの SKU プロパティで容量を更新します。
+手動でスケールアウトするには、目的の[仮想マシン スケール セット](/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile) リソースの SKU プロパティで容量を更新します。
 
 ```json
 "sku": {
@@ -111,9 +112,9 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 1. 削除しようとしているノードを無効にする意図 `RemoveNode` を指定して、PowerShell から `Disable-ServiceFabricNode` を実行します。 最も数が多いノードの種類を削除します。 たとえば、6 個のノードを含むクラスターがある場合は、仮想マシン インスタンス "MyNodeType_5" を削除します。
 2. `Get-ServiceFabricNode` を実行し、ノードが無効に移行したことを確認します。 無効になっていない場合は、無効になるまで待ちます。 これはノードごとに数時間かかる場合があります。 ノードが無効に移行するまで作業を進めないでください。
 3. そのノードの種類で VM の数を 1 つ減らします。 これで 最上位の VM インスタンスが削除されます。
-4. 必要に応じて、手順 1 から 3 を繰り返して、必要な容量をプロビジョニングします。 プライマリのノードの種類のインスタンス数は、信頼性レベルの保証を下回るまでスケール インしないでください。 推奨されるインスタンスの一覧については、「[Service Fabric クラスターの容量計画](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)」を参照してください。
+4. 必要に応じて、手順 1 から 3 を繰り返して、必要な容量をプロビジョニングします。 プライマリのノードの種類のインスタンス数は、信頼性レベルの保証を下回るまでスケール インしないでください。 推奨されるインスタンスの一覧については、「[Service Fabric クラスターの容量計画](./service-fabric-cluster-capacity.md)」を参照してください。
 
-手動でスケールインするには、目的の[仮想マシン スケール セット](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile) リソースの SKU プロパティで容量を更新します。
+手動でスケールインするには、目的の[仮想マシン スケール セット](/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile) リソースの SKU プロパティで容量を更新します。
 
 ```json
 "sku": {
@@ -166,13 +167,13 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 ```
 
 > [!NOTE]
-> クラスターをスケール インすると、削除されたノード/VM のインスタンスが Service Fabric Explorer に異常状態で表示されます。 この動作の説明については、「[Service Fabric Explorer で確認できる動作](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-in-out#behaviors-you-may-observe-in-service-fabric-explorer)」をご覧ください。 次のようにすることができます。
-> * 適切なノード名で [Remove-ServiceFabricNodeState コマンド](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps)を呼び出します。
+> クラスターをスケール インすると、削除されたノード/VM のインスタンスが Service Fabric Explorer に異常状態で表示されます。 この動作の説明については、「[Service Fabric Explorer で確認できる動作](./service-fabric-cluster-scale-in-out.md#behaviors-you-may-observe-in-service-fabric-explorer)」をご覧ください。 次のようにすることができます。
+> * 適切なノード名で [Remove-ServiceFabricNodeState コマンド](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps)を呼び出します。
 > * クラスターに [Service Fabric 自動スケーリング ヘルパー アプリケーション](https://github.com/Azure/service-fabric-autoscale-helper/)をデプロイします。 このアプリケーションにより、スケールダウンされたノードが Service Fabric Explorer から確実にクリアされます。
 
 ## <a name="reliability-levels"></a>信頼性レベル
 
-[信頼性レベル](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)は、Service Fabric クラスター リソースのプロパティです。 ノードの種類ごとに異なる構成はできません。 これが、クラスターのシステム サービスのレプリケーション係数を制御しており、クラスター リソース レベルでの設定となっています。 
+[信頼性レベル](./service-fabric-cluster-capacity.md)は、Service Fabric クラスター リソースのプロパティです。 ノードの種類ごとに異なる構成はできません。 これが、クラスターのシステム サービスのレプリケーション係数を制御しており、クラスター リソース レベルでの設定となっています。 
 
 信頼性レベルによって、プライマリのノードの種類に必要な最小限のノード数が決まります。 信頼性レベルは、以下のプランから選ぶことができます。
 
@@ -183,7 +184,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 推奨される最小限の信頼性レベルは Silver です。
 
-信頼性レベルは、[Microsoft.ServiceFabric/clusters resource](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2018-02-01/clusters) のプロパティ セクションで、次のように設定されています。
+信頼性レベルは、[Microsoft.ServiceFabric/clusters resource](/azure/templates/microsoft.servicefabric/2018-02-01/clusters) のプロパティ セクションで、次のように設定されています。
 
 ```json
 "properties":{
@@ -196,9 +197,9 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 > [!WARNING]
 > Bronze の持続性で実行されているノード タイプには "_特権が与えられません_"。 ステートレス ワークロードに影響するインフラストラクチャ ジョブは停止または延期されません。これはワークロードに影響する可能性があります。 
 >
-> Bronze の持続性は、ステートレス ワークロードを実行するノードの種類に対してのみ使用します。 運用環境のワークロードについては、状態の一貫性を確保するために Silver 以上を実行します。 [容量計画に関するドキュメント](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)のガイダンスに基づいて、適切な信頼性を選択してください。
+> Bronze の持続性は、ステートレス ワークロードを実行するノードの種類に対してのみ使用します。 運用環境のワークロードについては、状態の一貫性を確保するために Silver 以上を実行します。 [容量計画に関するドキュメント](./service-fabric-cluster-capacity.md)のガイダンスに基づいて、適切な信頼性を選択してください。
 
-持続性レベルは 2 つのリソースで設定する必要があります。 1 つは、[仮想マシン スケール セット リソース](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile)の拡張機能プロファイルです。
+持続性レベルは 2 つのリソースで設定する必要があります。 1 つは、[仮想マシン スケール セット リソース](/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile)の拡張機能プロファイルです。
 
 ```json
 "extensionProfile": {
@@ -213,7 +214,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 }
 ```
 
-もう 1 つのリソースは、[Microsoft.ServiceFabric/clusters リソース](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2018-02-01/clusters)の `nodeTypes` の下です。 
+もう 1 つのリソースは、[Microsoft.ServiceFabric/clusters リソース](/azure/templates/microsoft.servicefabric/2018-02-01/clusters)の `nodeTypes` の下です。 
 
 ```json
 "nodeTypes": [

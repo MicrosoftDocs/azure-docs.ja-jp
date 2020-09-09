@@ -4,12 +4,12 @@ description: Azure Deployment Manager で多くのリージョンにわたって
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 424cd79a6c63200e1f101cf178b1fd2c9083161e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 27e8c9c0aa2ee86b490d266fc6ff76f263eee7ef
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76152529"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130224"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Azure Deployment Manager で安全なデプロイを実施できるようにする (パブリック プレビュー)
 
@@ -30,14 +30,14 @@ Deployment Manager を使用するには、次の 4 つのファイルを作成�
 
 その他のリソース:
 
-- [Azure Deployment Manager REST API リファレンス](https://docs.microsoft.com/rest/api/deploymentmanager/)
+- [Azure Deployment Manager REST API リファレンス](/rest/api/deploymentmanager/)
 - [チュートリアル:Resource Manager テンプレートで Azure Deployment Manager を使用する](./deployment-manager-tutorial.md)」の手順に従います。
 - [チュートリアル:Use health check in Azure Deployment Manager](./deployment-manager-tutorial-health-check.md)」 (チュートリアル: Azure Deployment Manager で正常性チェックを使用する) を参照してください。
 - [Azure Deployment Manager サンプル](https://github.com/Azure-Samples/adm-quickstart)。
 
 ## <a name="identity-and-access"></a>ID とアクセス
 
-Deployment Manager では、[ユーザー割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) がデプロイ操作を実行します。 デプロイの開始前にこの ID を作成します。 この ID には、サービスをデプロイしているサブスクリプションへのアクセス権と、デプロイを完了するための十分な特権が与えられている必要があります。 ロールを介して認められるアクションの詳細については、「[Azure リソースの組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
+Deployment Manager では、[ユーザー割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) がデプロイ操作を実行します。 デプロイの開始前にこの ID を作成します。 この ID には、サービスをデプロイしているサブスクリプションへのアクセス権と、デプロイを完了するための十分な特権が与えられている必要があります。 ロールを介して許可されるアクションの詳細については、「[Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
 
 ID は、ロールアウトと同じ場所に存在する必要があります。
 
@@ -300,7 +300,7 @@ ID オブジェクトは、デプロイ アクションを実行する[ユーザ
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "deployPackageUri": {

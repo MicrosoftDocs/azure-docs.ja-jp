@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory と Costpoint の統合 | Microsoft Docs
 description: Azure Active Directory と Costpoint の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: 9ecc5f58-4462-4ade-ab73-0a4f61027504
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01168540e27605db0d240c0774159a710b5d5254
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1db1589561968cf1e2974edcee2bfe1cccb4a327
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "71840066"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549249"
 ---
 # <a name="tutorial-integrate-costpoint-with-azure-active-directory"></a>チュートリアル:Costpoint と Azure Active Directory の統合
 

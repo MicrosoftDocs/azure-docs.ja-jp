@@ -1,17 +1,17 @@
 ---
 title: Azure Automation の接続を管理する
-description: Azure Automation の接続資産には、Runbook または DSC 構成から外部サービスまたはアプリケーションに接続するために必要な情報が含まれます。 この記事では、接続の詳細およびテキスト作成とグラフィカル作成の両方で接続を使用する方法について説明します。
+description: この記事では、外部サービスまたはアプリケーションへの Azure Automation 接続を管理する方法と、Runbook でこれらの接続を使用する方法について説明します。
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1a50c5d3d6e068054cfc8381b220d38471a7eb6c
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 39085aa7967ffeac3416b61f32146ac023b46dfe
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996571"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186658"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Azure Automation の接続を管理する
 
@@ -43,10 +43,10 @@ PowerShell を使用して Automation 接続を作成および管理するため
 
 |コマンドレット|説明|
 |---|---|
-|[Get-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationconnection?view=azps-3.7.0)|接続に関する情報を取得します。|
-|[New-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationconnection?view=azps-3.7.0)|新しい接続を作成します。|
-|[Remove-AzAutomationConnection](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationConnection?view=azps-3.7.0)|既存の接続を削除します。|
-|[Set-AzAutomationConnectionFieldValue](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationConnectionFieldValue?view=azps-3.7.0)|既存の接続の特定のフィールドの値を設定します。|
+|[Get-AzAutomationConnection](/powershell/module/az.automation/get-azautomationconnection?view=azps-3.7.0)|接続に関する情報を取得します。|
+|[New-AzAutomationConnection](/powershell/module/az.automation/new-azautomationconnection?view=azps-3.7.0)|新しい接続を作成します。|
+|[Remove-AzAutomationConnection](/powershell/module/Az.Automation/Remove-AzAutomationConnection?view=azps-3.7.0)|既存の接続を削除します。|
+|[Set-AzAutomationConnectionFieldValue](/powershell/module/Az.Automation/Set-AzAutomationConnectionFieldValue?view=azps-3.7.0)|既存の接続の特定のフィールドの値を設定します。|
 
 ## <a name="internal-cmdlets-to-access-connections"></a>接続にアクセスするための内部コマンドレット
 
@@ -141,7 +141,7 @@ Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.
 
 ![キャンバスに追加](media/automation-connections/connection-add-canvas.png)
 
-次の図は、グラフィカルな Runbook で接続オブジェクトを使用する例を示したものです。 この例では、`Get RunAs Connection` アクティビティ用の `Constant value` データ セットを使用し、認証に接続オブジェクトを使用します。 `ServicePrincipalCertificate` パラメーターは、オブジェクトを 1 つ受け取るので、ここでは[パイプライン リンク](automation-graphical-authoring-intro.md#links-and-workflow)を使用します。
+次の図は、グラフィカルな Runbook で接続オブジェクトを使用する例を示したものです。 この例では、`Get RunAs Connection` アクティビティ用の `Constant value` データ セットを使用し、認証に接続オブジェクトを使用します。 `ServicePrincipalCertificate` パラメーターは、オブジェクトを 1 つ受け取るので、ここでは[パイプライン リンク](automation-graphical-authoring-intro.md#use-links-for-workflow)を使用します。
 
 ![接続の取得](media/automation-connections/automation-get-connection-object.png)
 

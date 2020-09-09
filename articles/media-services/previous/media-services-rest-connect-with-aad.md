@@ -14,17 +14,19 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: a693eb374365670da3fe8c4b2bb8ce664a024217
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 958bfa605e0195b5f4fde2c0ff53a8ce567f50a5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295435"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89257145"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>Azure AD 認証を使用して REST で Media Services API にアクセスする
 
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 
 Azure Media Services で Azure AD Authentication を使用する場合は、次の 2 つの方法のいずれかで認証できます。
 
@@ -137,8 +139,10 @@ AD 接続パラメーターの値を web.config ファイルまたは app.config
 
     または、Postman ウィンドウの右側にある **[Bulk Edit]\(一括編集\)** リンクをクリックし、次のコードを貼り付けます。
 
-        Content-Type:application/x-www-form-urlencoded
-        Keep-Alive:true
+    ```javascript
+    Content-Type:application/x-www-form-urlencoded
+    Keep-Alive:true
+    ```
 
 6. **[Body]\(本文\)** タブをクリックします。
 7. "Key/Value"(キー/値) データ グリッドを使用して本文情報を入力します (クライアント ID とシークレット値を置き換えます)。 
@@ -147,10 +151,12 @@ AD 接続パラメーターの値を web.config ファイルまたは app.config
 
     または、Postman ウィンドウの右側にある **[Bulk Edit]\(一括編集\)** リンクをクリックし、次の本文を貼り付けます (クライアント ID とシークレット値を置き換えます)。
 
-        grant_type:client_credentials
-        client_id:{Your Client ID that you got from your Azure AD Application}
-        client_secret:{Your client secret that you got from your Azure AD Application's Keys}
-        resource:https://rest.media.azure.net
+    ```javascript
+    grant_type:client_credentials
+    client_id:{Your Client ID that you got from your Azure AD Application}
+    client_secret:{Your client secret that you got from your Azure AD Application's Keys}
+    resource:https://rest.media.azure.net
+    ```
 
 8. **[送信]** をクリックします。
 
@@ -180,11 +186,13 @@ AD 接続パラメーターの値を web.config ファイルまたは app.config
 5. Postman ウィンドウの右側にある **[Bulk Edit]\(一括編集\)** リンクをクリックします。
 6. 次のヘッダーを貼り付けます。
 
-        x-ms-version:2.19
-        Accept:application/json
-        Content-Type:application/json
-        DataServiceVersion:3.0
-        MaxDataServiceVersion:3.0
+    ```javascript
+    x-ms-version:2.19
+    Accept:application/json
+    Content-Type:application/json
+    DataServiceVersion:3.0
+    MaxDataServiceVersion:3.0
+    ```
 
 7. **[送信]** をクリックします。
 

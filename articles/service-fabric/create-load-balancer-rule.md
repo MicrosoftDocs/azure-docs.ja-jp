@@ -3,18 +3,18 @@ title: クラスターの Azure Load Balancer 規則の作成
 description: Azure Service Fabric クラスターのポートを開くように Azure Load Balancer を構成します。
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: f4599b2e0174381ab7df04aeeb33db7e3ee60f26
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 049afb88b5552c92294180069b54d49574a410fa
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77025386"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259044"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Service Fabric クラスターのポートを開く
 
 Azure Service Fabric クラスターにデプロイされたロード バランサーは、ノード上で動作するアプリにトラフィックを送信します。 別のポートを使用するようにアプリを変更する場合は、Azure Load Balancer でそのポートを公開 (または別のポートをルーティング) する必要があります。
 
-Service Fabric クラスターを Azure にデプロイすると、ロード バランサーが自動的に作成されます。 ロード バランサーがない場合は、[インターネットに接続するロード バランサーの構成](../load-balancer/load-balancer-get-started-internet-portal.md)に関するページを参照してください。
+Service Fabric クラスターを Azure にデプロイすると、ロード バランサーが自動的に作成されます。 ロード バランサーがない場合は、[インターネットに接続するロード バランサーの構成](../load-balancer/quickstart-load-balancer-standard-public-portal.md)に関するページを参照してください。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -25,7 +25,7 @@ Service Fabric アプリケーションの **ServiceManifest.xml** 構成ファ�
 
 ## <a name="create-a-load-balancer-rule"></a>ロード バランサー規則の作成
 
-ロード バランサー規則は、インターネットに接続するポートを開き、アプリケーションが使用する内部ノードのポートにトラフィックを転送します。 ロード バランサーがない場合は、[インターネットに接続するロード バランサーの構成](../load-balancer/load-balancer-get-started-internet-portal.md)に関するページを参照してください。
+ロード バランサー規則は、インターネットに接続するポートを開き、アプリケーションが使用する内部ノードのポートにトラフィックを転送します。 ロード バランサーがない場合は、[インターネットに接続するロード バランサーの構成](../load-balancer/quickstart-load-balancer-standard-public-portal.md)に関するページを参照してください。
 
 ロード バランサー規則を作成するには、次の情報を収集する必要があります。
 

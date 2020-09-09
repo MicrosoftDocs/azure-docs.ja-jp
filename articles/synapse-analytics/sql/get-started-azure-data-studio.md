@@ -1,5 +1,5 @@
 ---
-title: 'Azure Data Studio (プレビュー): Synapse SQL に接続してクエリを実行する'
+title: Azure Data Studio (プレビュー) を使用して Synapse SQL に接続する
 description: Azure Data Studio (プレビュー) を使用して Azure Synapse Analytics の Synapse SQL に接続し、クエリを実行します。
 services: synapse analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 561ea1a4f3577e037708c3b090188c59bd3c4aad
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 78807db19b413bb642e8dcf61e480d6d954b6178
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82187547"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059561"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>Azure Data Studio (プレビュー) を使用して Synapse SQL に接続する
 

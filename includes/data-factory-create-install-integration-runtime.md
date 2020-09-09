@@ -4,16 +4,16 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: e7717cdeec33a32f926cb5ef4c1f6d28c25f9d93
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 20397339c1675686f2a670dc60899bfd4bd4c3ba
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76989088"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050244"
 ---
 ## <a name="create-a-self-hosted-integration-runtime"></a>自己ホスト型統合ランタイムを作成する
 
-このセクションでは、セルフホステッド統合ランタイムを作成し、SQL Server データベースがあるオンプレミスのマシンに関連付けます。 セルフホステッド統合ランタイムは、マシンの SQL Server から Azure SQL データベースにデータをコピーするコンポーネントです。 
+このセクションでは、セルフホステッド統合ランタイムを作成し、SQL Server データベースがあるオンプレミスのマシンに関連付けます。 セルフホステッド統合ランタイムは、マシンの SQL Server から Azure SQL Database にデータをコピーするコンポーネントです。 
 
 1. 統合ランタイムの名前に使用する変数を作成します。 一意の名前を使用し、その名前をメモしておきます。 このチュートリアルの後の方で、それを使用します。 
 

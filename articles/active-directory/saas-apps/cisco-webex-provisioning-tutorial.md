@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory を使用して、自動ユーザー プロビジョニングを行うように Cisco Webex を構成する | Microsoft Docs
 description: Cisco Webex に対してユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除するように Azure Active Directory を設定する方法を説明します。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: 0075783c049e7f48645f768026dd9d5ec0ead821
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bdf2bf4102795d35df7eae658e3a24028da79b33
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77058518"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551304"
 ---
 # <a name="tutorial-configure-cisco-webex-for-automatic-user-provisioning"></a>チュートリアル:自動的にユーザーをプロビジョニングするための Cisco Webex の構成
 

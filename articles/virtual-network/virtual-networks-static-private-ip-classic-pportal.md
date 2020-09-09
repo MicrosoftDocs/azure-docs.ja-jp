@@ -8,19 +8,20 @@ manager: dcscontentpm
 tags: azure-service-management
 ms.assetid: b8ef8367-58b2-42df-9f26-3269980950b8
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0bc080ed41f32ae2af018e9316e67ab38c2d0650
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c5ae587438e2cc3c583307c3d6b41ec986193216
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81449903"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134766"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-portal"></a>Azure Portal を使用して仮想マシン (クラシック) のプライベート IP アドレスを構成する
 
@@ -68,7 +69,7 @@ ms.locfileid: "81449903"
 
 次の図に示すように、 **[IP アドレス]** で、 **[IP アドレスの割り当て]** の右側にある **[動的]** を選択し、 **[保存]** を選択したら、 **[はい]** を選択します。
    
-    ![Create VM in Azure portal](./media/virtual-networks-static-ip-classic-pportal/figure07.png)
+![Azure ポータルでの VM の作成](./media/virtual-networks-static-ip-classic-pportal/figure07.png)
 
 ## <a name="how-to-add-a-static-private-ip-address-to-an-existing-vm"></a>既存の VM に静的プライベート IP アドレスを追加する方法
 

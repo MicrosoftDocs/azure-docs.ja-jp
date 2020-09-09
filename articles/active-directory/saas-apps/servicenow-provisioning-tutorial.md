@@ -2,25 +2,21 @@
 title: チュートリアル:ServiceNow を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure AD から ServiceNow に対してユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: joflore
-ms.assetid: 4d6f06dd-a798-4c22-b84f-8a11f1b8592a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: e3d4ca6f8e67f069bffcd27563d7f32b55f6591e
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 218a3ad04d4f7366604784e06c558a9c568ad77e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780507"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88528065"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのために ServiceNow を構成する
 
@@ -54,12 +50,19 @@ ms.locfileid: "83780507"
 
 1. ServiceNow インスタンス名を指定します。 インスタンス名は、ServiceNow にアクセスするために使用する URL で確認できます。 次の例では、インスタンス名は dev35214 です。
 
-![ServiceNow インスタンス](media/servicenow-provisioning-tutorial/servicenow_instance.png)
+   ![ServiceNow インスタンス](media/servicenow-provisioning-tutorial/servicenow_instance.png)
 
-    
 2. ServiceNow で管理者の資格情報を取得します。 ServiceNow のユーザー プロファイルに移動し、ユーザーが管理者ロールを持っていることを確認します。 
 
-![ServiceNow 管理者ロール](media/servicenow-provisioning-tutorial/servicenow-admin-role.png)
+   ![ServiceNow 管理者ロール](media/servicenow-provisioning-tutorial/servicenow-admin-role.png)
+
+3. 以下の設定が ServiceNow で**無効**になっていることを確認します。
+
+   1. **[System Security] (システム セキュリティ)**  >  **[High security settings] (高セキュリティ設定)**  >  **[Require basic authentication for incoming SCHEMA requests] (受信 SCHEMA 要求で基本認証を要求する)** と選択します。
+   2. **[System Properties] (システム プロパティ)**  >  **[Web サービス]**  >  **[Require basic authorization for incoming SOAP requests] (受信 SOAP 要求で基本認証を要求する)** と選択します。
+     
+   > [!IMPORTANT]
+   > これらの設定が*有効*になっている場合、プロビジョニング エンジンは ServiceNow との通信に失敗します。
 
 ## <a name="step-3-add-servicenow-from-the-azure-ad-application-gallery"></a>手順 3. Azure AD アプリケーション ギャラリーから ServiceNow を追加する
 
@@ -134,7 +137,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 プロビジョニングを構成したら、次のリソースを使用してデプロイを監視します。
 
 1. [プロビジョニング ログ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
-2. [進行状況バー](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
+2. [進行状況バー](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
 3. プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)を参照してください。  
 
 ## <a name="troubleshooting-tips"></a>トラブルシューティングのヒント
@@ -142,6 +145,14 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 * **EntryJoiningPropertyValueIsMissing:** [属性マッピング](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)を確認して、一致する属性を特定します。 この値は、プロビジョニング対象のユーザーまたはグループに存在する必要があります。 
 * [ServiceNow SOAP API](https://docs.servicenow.com/bundle/newyork-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html) を確認して、要件や制限事項 (たとえば、ユーザーの国番号を指定するための形式) を理解してください。
 * プロビジョニング要求は、既定では https://{your-instance-name}.service-now.com/{table-name} に送信されます。 カスタム テナント URL が必要な場合は、[インスタンス名] フィールドに URL 全体を指定できます。
+* **ServiceNowInstanceInvalid** 
+  
+  `Details: Your ServiceNow instance name appears to be invalid.  Please provide a current ServiceNow administrative user name and          password along with the name of a valid ServiceNow instance.`                                                              
+
+   このエラーは、ServiceNow インスタンスとの通信の問題を示しています。 ダブルクリックして、以下の設定が ServiceNow で*無効*になっていることを確認します。
+   
+   1. **[System Security] (システム セキュリティ)**  >  **[High security settings] (高セキュリティ設定)**  >  **[Require basic authentication for incoming SCHEMA requests] (受信 SCHEMA 要求で基本認証を要求する)** と選択します。
+   2. **[System Properties] (システム プロパティ)**  >  **[Web サービス]**  >  **[Require basic authorization for incoming SOAP requests] (受信 SOAP 要求で基本認証を要求する)** と選択します。
 
 ## <a name="additional-resources"></a>その他のリソース
 

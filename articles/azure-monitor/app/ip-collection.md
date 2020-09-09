@@ -3,12 +3,13 @@ title: Azure Application Insights の IP アドレスの収集 | Microsoft Docs
 description: Azure Application Insights を使用して IP アドレスと位置情報を処理する方法について
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 969061ec89ddd0f13caa675bc324207c6c5d8843
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 28a7fa50a06dc8b80c7d8dd284cd88ebe4645da6
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77656519"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371653"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>位置情報と IP アドレスの処理
 
@@ -27,7 +28,7 @@ IP アドレスは、テレメトリ データの一部として Application Ins
 
 ## <a name="overriding-default-behavior"></a>既定の動作のオーバーライド
 
-既定の動作では個人データの収集が最小限に抑えられますが、IP アドレス データの収集と格納は引き続き柔軟に行うことができます。 IP アドレスなどの個人データを格納することを選択する前に、これが、適用される可能性があるコンプライアンス要件と地方条例に違反しないことを確認することを強くお勧めします。 Application Insights での個人データ処理の詳細については、[個人データのガイダンス](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt)に関するページをご覧ください。
+既定の動作では個人データの収集が最小限に抑えられますが、IP アドレス データの収集と格納は引き続き柔軟に行うことができます。 IP アドレスなどの個人データを格納することを選択する前に、これが、適用される可能性があるコンプライアンス要件と地方条例に違反しないことを確認することを強くお勧めします。 Application Insights での個人データ処理の詳細については、[個人データのガイダンス](../platform/personal-data-mgmt.md)に関するページをご覧ください。
 
 ## <a name="storing-ip-address-data"></a>IP アドレス データの格納
 
@@ -99,7 +100,7 @@ IP の収集と格納を有効にするには、Application Insights コンポ�
 
 ### <a name="rest-api"></a>Rest API
 
-同じ変更を行うための [Rest API](https://docs.microsoft.com/rest/api/azure/) ペイロードは次のとおりです。
+同じ変更を行うための [Rest API](/rest/api/azure/) ペイロードは次のとおりです。
 
 ```
 PATCH https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/microsoft.insights/components/<resource-name>?api-version=2018-05-01-preview HTTP/1.1
@@ -120,7 +121,7 @@ Content-Length: 54
 
 ## <a name="telemetry-initializer"></a>テレメトリ初期化子
 
-IP アドレスのすべてまたは一部を記録するために `DisableIpMasking` よりも柔軟な代替方法が必要な場合は、[テレメトリ初期化子](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer)を使用して、IP のすべてまたは一部をカスタム フィールドにコピーすることができます。 
+IP アドレスのすべてまたは一部を記録するために `DisableIpMasking` よりも柔軟な代替方法が必要な場合は、[テレメトリ初期化子](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)を使用して、IP のすべてまたは一部をカスタム フィールドにコピーすることができます。 
 
 ### <a name="aspnet--aspnet-core"></a>ASP.NET または ASP.NET Core
 
@@ -233,6 +234,6 @@ requests
 
 ## <a name="next-steps"></a>次の手順
 
-* Application Insights での[個人データ収集](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt)について、さらに学習します。
+* Application Insights での[個人データ収集](../platform/personal-data-mgmt.md)について、さらに学習します。
 
-* Application Insights の [IP アドレス収集](https://apmtips.com/blog/2016/07/05/client-ip-address/)のしくみについて、さらに学習します (これは、Microsoft のエンジニアの 1 人が書き込んだ外部の古いブログ投稿です。 IP アドレスが `0.0.0.0` として記録される現在の既定の動作より前のものですが、組み込みの `ClientIpHeaderTelemetryInitializer` のメカニズムについてより詳しく説明されています)。
+* Application Insights の [IP アドレス収集](https://apmtips.com/posts/2016-07-05-client-ip-address/)のしくみについて、さらに学習します (これは、Microsoft のエンジニアの 1 人が書き込んだ外部の古いブログ投稿です。 IP アドレスが `0.0.0.0` として記録される現在の既定の動作より前のものですが、組み込みの `ClientIpHeaderTelemetryInitializer` のメカニズムについてより詳しく説明されています)。

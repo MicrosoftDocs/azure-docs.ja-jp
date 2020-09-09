@@ -7,12 +7,12 @@ ms.topic: sample
 author: cjgronlund
 ms.author: cgronlun
 ms.date: 05/06/2020
-ms.openlocfilehash: a25f0ddeb35aaf880682780fd61bcbc3cedbad08
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: c24363caac1db8dd8ce21b690ef989b2beb97f2d
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930320"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506058"
 ---
 # <a name="example-jupyter-notebooks-show-how-to-enrich-data-with-open-datasets"></a>サンプル Jupyter Notebooks は、オープン データセットを使用してデータをエンリッチする方法を示します。 
 Azure オープン データセット用のサンプル Jupyter Notebooks は、オープン データセットを読み込んでデモ データのエンリッチメントのために使用する方法を示します。 データを処理するために手法として Apache Spark と Pandas の使用が含まれます。
@@ -43,3 +43,4 @@ Azure オープン データセット用のサンプル Jupyter Notebooks は、
 * [チュートリアル:自動機械学習とオープン データセットを使う回帰モデル](/azure/machine-learning/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context)
 * [オープン データセット用 Python SDK](/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py)
 * [Azure オープン データセット カタログ](https://azure.microsoft.com/services/open-datasets/catalog/)
+* [オープン データセットから Azure Machine Learning データセットを作成する](how-to-create-azure-machine-learning-dataset-from-open-dataset.md)

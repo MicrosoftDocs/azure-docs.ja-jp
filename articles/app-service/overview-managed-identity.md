@@ -3,27 +3,25 @@ title: マネージド ID
 description: マネージド ID が Azure App Service と Azure Functions でどのように機能するのか、およびマネージド ID を構成してバックエンド リソースのトークンを生成するにはどのようにするのかについて説明します。
 author: mattchenderson
 ms.topic: article
-ms.date: 04/14/2020
+ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 875d2bbebdfa95c6d180979399d876eb2afc01b4
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell
+ms.openlocfilehash: 98cec9fc30b4840a763358c0b3cd76659ff865d7
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392522"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070362"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service と Azure Functions でマネージド ID を使用する方法
 
+このトピックでは、App Service と Azure Functions アプリケーションでマネージド ID を作成し、それを使用して他のリソースにアクセスする方法を説明します。 
+
 > [!Important] 
-> アプリがサブスクリプションやテナント間で移行された場合、App Service と Azure Functions でのマネージド ID は想定されたとおりに動作しません。 アプリでは、機能を無効にしてから再度有効にすることで、新しい ID を取得する必要があります。 以下の「[ID の削除](#remove)」を参照してください。 また、ダウンストリーム リソースでは、新しい ID を使用するようにアクセス ポリシーを更新する必要があります。
+> ご自分のアプリがサブスクリプションやテナント間で移行されている場合、App Service と Azure Functions のマネージド ID は、予期どおりには動作しません。 アプリ用には、新規で ID を取得する必要があります。これには、この機能を無効にしてから再度有効にする必要があります。 以下の「[ID の削除](#remove)」を参照してください。 また、ダウンストリーム リソースでも新しい ID が使用されるように、アクセス ポリシーを更新する必要があります。
 
-このトピックでは、App Service と Azure Functions アプリケーションでマネージド ID を作成し、それを使用して他のリソースにアクセスする方法を説明します。 ご自分のアプリで Azure Active Directory (AAD) のマネージド ID を使用すると、Azure Key Vault など、Azure AD で保護されたその他のリソースに簡単にアクセスできます。 ID は Azure プラットフォームによって管理され、ユーザーがシークレットをプロビジョニングまたはローテーションする必要はありません。 Azure AD のマネージド ID について詳しくは、「[Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md)」をご覧ください。
-
-アプリケーションには 2 種類の ID を付与できます。
-
-- **システム割り当て ID** はアプリケーションに関連付けられているため、アプリが削除されると削除されます。 アプリは 1 つのシステム割り当て ID しか持つことはできません。
-- **ユーザー割り当て ID** は、アプリに割り当てることができるスタンドアロン Azure リソースです。 アプリは複数のユーザー割り当て ID を持つことができます。
+[!INCLUDE [app-service-managed-identities](../../includes/app-service-managed-identities.md)]
 
 ## <a name="add-a-system-assigned-identity"></a>システム割り当て ID を追加する
 
@@ -43,13 +41,18 @@ ms.locfileid: "81392522"
 
     ![App Service のマネージド ID](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
 
+
+> [!NOTE] 
+> Azure portal で Web アプリまたはスロット アプリのマネージド ID を検索するには、 **[エンタープライズアプリケーション]** の下にある **[ユーザー設定]** セクションを確認します。 通常、スロット名は `<app name>/slots/<slot name>` に似ています。
+
+
 ### <a name="using-the-azure-cli"></a>Azure CLI の使用
 
 Azure CLI を使用してマネージド ID を設定するには、既存のアプリケーションに対して `az webapp identity assign` コマンドを使用する必要があります。 このセクションの例を実行するためのオプションとして次の 3 つがあります。
 
 - Azure Portal から [Azure Cloud Shell](../cloud-shell/overview.md) を使用する。
 - 以下の各コード ブロックの右上隅にある [試してみる] ボタンを利用して、埋め込まれた Azure Cloud Shell を使用します。
-- ローカル CLI コンソールを使用する場合、[Azure CLI の最新バージョン (2.0.31 以降) をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)します。 
+- ローカル CLI コンソールを使用する場合、[Azure CLI の最新バージョン (2.0.31 以降) をインストール](/cli/azure/install-azure-cli)します。 
 
 次の手順では、CLI を使用して、Web アプリを作成し、ID を割り当てる方法について説明します。
 
@@ -77,28 +80,49 @@ Azure CLI を使用してマネージド ID を設定するには、既存のア
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-次の手順では、Azure PowerShell を使用して、Web アプリを作成し、ID を割り当てる方法について説明します。
+次の手順では、Azure PowerShell を使用して、アプリを作成し、ID を割り当てる方法について説明します。 Web アプリを作成する手順と、関数アプリを作成する手順は異なります。
 
-1. 必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールし、`Login-AzAccount` を実行して、Azure との接続を作成します。
+#### <a name="using-azure-powershell-for-a-web-app"></a>Web アプリに Azure PowerShell を使用する
+
+1. 必要に応じて、[Azure PowerShell ガイド](/powershell/azure/)の手順に従って Azure PowerShell をインストールし、`Login-AzAccount` を実行して、Azure との接続を作成します。
 
 2. Azure PowerShell を使用して Web アプリケーションを作成します。 App Service で Azure PowerShell を使用する方法の他の例については、[App Service の PowerShell のサンプル](../app-service/samples-powershell.md)に関するページを参照してください。
 
     ```azurepowershell-interactive
     # Create a resource group.
-    New-AzResourceGroup -Name myResourceGroup -Location $location
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
 
     # Create an App Service plan in Free tier.
-    New-AzAppServicePlan -Name $webappname -Location $location -ResourceGroupName myResourceGroup -Tier Free
+    New-AzAppServicePlan -Name $webappname -Location $location -ResourceGroupName $resourceGroupName -Tier Free
 
     # Create a web app.
-    New-AzWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName myResourceGroup
+    New-AzWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName $resourceGroupName
     ```
 
 3. `Set-AzWebApp -AssignIdentity` コマンドを実行してこのアプリケーションの ID を作成します。
 
     ```azurepowershell-interactive
-    Set-AzWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName myResourceGroup 
+    Set-AzWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName $resourceGroupName 
     ```
+
+#### <a name="using-azure-powershell-for-a-function-app"></a>関数アプリに Azure PowerShell を使用する
+
+1. 必要に応じて、[Azure PowerShell ガイド](/powershell/azure/)の手順に従って Azure PowerShell をインストールし、`Login-AzAccount` を実行して、Azure との接続を作成します。
+
+2. Azure PowerShell を使用して関数アプリを作成します。 Azure Functions で Azure PowerShell を使用する方法の他の例については、[Az.Functions リファレンス](/powershell/module/az.functions/?view=azps-4.1.0#functions)を参照してください。
+
+    ```azurepowershell-interactive
+    # Create a resource group.
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+    # Create a storage account.
+    New-AzStorageAccount -Name $storageAccountName -ResourceGroupName $resourceGroupName -SkuName $sku
+
+    # Create a function app with a system-assigned identity.
+    New-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupName -Location $location -StorageAccountName $storageAccountName -Runtime $runtime -IdentityType SystemAssigned
+    ```
+
+代わりに `Update-AzFunctionApp` を使用して、既存の関数アプリを更新することもできます。
 
 ### <a name="using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
 
@@ -153,6 +177,15 @@ Azure Resource Manager テンプレートを使って、Azure リソースのデ
 
 tenantId プロパティは、その ID が属する Azure AD テナントを示します。 principalId は、アプリケーションの新しい ID の一意識別子です。 Azure AD のサービス プリンシパル名は、お使いの App Service または Azure Functions のインスタンスに指定したものと同じです。
 
+テンプレートの後の段階でこれらのプロパティを参照する必要がある場合は、次の例のように、`'Full'` フラグを指定した [`reference()` テンプレート関数](../azure-resource-manager/templates/template-functions-resource.md#reference)を使用して行うことができます。
+
+```json
+{
+    "tenantId": "[reference(resourceId('Microsoft.Web/sites', variables('appName')), '2018-02-01', 'Full').identity.tenantId]",
+    "objectId": "[reference(resourceId('Microsoft.Web/sites', variables('appName')), '2018-02-01', 'Full').identity.principalId]",
+}
+```
+
 ## <a name="add-a-user-assigned-identity"></a>ユーザー割り当て ID を追加する
 
 ユーザー割り当て ID を持つアプリを作成するには、ID を作成してから、そのリソース ID をアプリ構成に追加する必要があります。
@@ -174,6 +207,35 @@ tenantId プロパティは、その ID が属する Azure AD テナントを示
 6. 先ほど作成した ID を検索して選択します。 **[追加]** をクリックします。
 
     ![App Service のマネージド ID](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
+
+### <a name="using-azure-powershell"></a>Azure PowerShell の使用
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+次の手順では、Azure PowerShell を使用して、アプリを作成し、ID を割り当てる方法について説明します。
+
+> [!NOTE]
+> 現在のバージョンの Azure App Service 用の Azure PowerShell コマンドレットでは、ユーザー割り当て ID はサポートされていません。 以下の手順は Azure Functions を対象としています。
+
+1. 必要に応じて、[Azure PowerShell ガイド](/powershell/azure/)の手順に従って Azure PowerShell をインストールし、`Login-AzAccount` を実行して、Azure との接続を作成します。
+
+2. Azure PowerShell を使用して関数アプリを作成します。 Azure Functions で Azure PowerShell を使用する方法の他の例については、[Az.Functions リファレンス](/powershell/module/az.functions/?view=azps-4.1.0#functions)を参照してください。 次のスクリプトでは、「[Azure PowerShell を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除する](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)」に従って個別にインストールする必要がある `New-AzUserAssignedIdentity` を活用しています。
+
+    ```azurepowershell-interactive
+    # Create a resource group.
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+    # Create a storage account.
+    New-AzStorageAccount -Name $storageAccountName -ResourceGroupName $resourceGroupName -SkuName $sku
+
+    # Create a user-assigned identity. This requires installation of the "Az.ManagedServiceIdentity" module.
+    $userAssignedIdentity = New-AzUserAssignedIdentity -Name $userAssignedIdentityName -ResourceGroupName $resourceGroupName
+
+    # Create a function app with a user-assigned identity.
+    New-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupName -Location $location -StorageAccountName $storageAccountName -Runtime $runtime -IdentityType UserAssigned -IdentityId $userAssignedIdentity.Id
+    ```
+
+代わりに `Update-AzFunctionApp` を使用して、既存の関数アプリを更新することもできます。
 
 ### <a name="using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
 
@@ -252,6 +314,9 @@ App Service と Azure Functions には、トークンを取得するための簡
 
 ### <a name="using-the-rest-protocol"></a>REST プロトコルの使用
 
+> [!NOTE]
+> "2017-09-01" の API バージョンを使用するこのプロトコルの古いバージョンでは、`X-IDENTITY-HEADER` の代わりに `secret` ヘッダーを使用し、ユーザー割り当てに `clientid` プロパティのみを許可していました。 また、タイムスタンプ形式で `expires_on` も返していました。 MSI_ENDPOINT は IDENTITY_ENDPOINT の別名として使用でき、MSI_SECRET は IDENTITY_HEADER の別名として使用できます。 このプロトコルのこのバージョンは、現在、Linux 従量課金ホスティング プランに必要です。
+
 マネージド ID を使用するアプリでは、2 つの環境変数を定義します。
 
 - IDENTITY_ENDPOINT - ローカル トークン サービスに対する URL。
@@ -262,7 +327,7 @@ App Service と Azure Functions には、トークンを取得するための簡
 > | パラメーター名    | 場所     | 説明                                                                                                                                                                                                                                                                                                                                |
 > |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | resource          | クエリ  | トークンを取得する必要のあるリソースの Azure AD リソース URI。 これは [Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)の 1 つか、その他のリソース URI になります。    |
-> | api-version       | クエリ  | 使うトークン API のバージョン。 "2019-08-01" 以降をお使いください。                                                                                                                                                                                                                                                                 |
+> | api-version       | クエリ  | 使うトークン API のバージョン。 "2019-08-01" 以降を使用してください (ただし、現在 "2017-09-01" のみが提供されている Linux 従量課金プランを使用している場合を除きます。上記の注を参照)。                                                                                                                                                                                                                                                                 |
 > | X-IDENTITY-HEADER | ヘッダー | IDENTITY_HEADER 環境変数の値。 このヘッダーは、サーバー側のリクエスト フォージェリ (SSRF) 攻撃を回避するために使用されます。                                                                                                                                                                                                    |
 > | client_id         | クエリ  | (省略可能) 使用するユーザー割り当て ID のクライアント ID。 `principal_id`、`mi_res_id`、または `object_id` を含む要求では使用できません。 すべての ID パラメーター (`client_id`、`principal_id`、`object_id`、および `mi_res_id`) を省略した場合、システム割り当て ID が使用されます。                                             |
 > | principal_id      | クエリ  | (省略可能) 使用するユーザー割り当て ID のプリンシパル ID。 `object_id` は代わりに使用する別名です。 client_id、mi_res_id、または object_id を含む要求では使用できません。 すべての ID パラメーター (`client_id`、`principal_id`、`object_id`、および `mi_res_id`) を省略した場合、システム割り当て ID が使用されます。 |
@@ -282,10 +347,7 @@ App Service と Azure Functions には、トークンを取得するための簡
 > | resource      | アクセス トークンの要求対象リソース。要求の `resource` クエリ文字列パラメーターと一致します。                                                                                                                               |
 > | token_type    | トークン タイプ値を指定します。 Azure AD でサポートされるのは FBearer のタイプのみです。 ベアラー トークンの詳細については、「[OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)」(OAuth 2.0 承認フレームワーク: ベアラー トークンの使用法 (RFC 6750)) をご覧ください。 |
 
-この応答は、[Azure AD のサービス間アクセス トークン要求に対する応答](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response)と同じです。
-
-> [!NOTE]
-> "2017-09-01" の API バージョンを使用するこのプロトコルの古いバージョンでは、`X-IDENTITY-HEADER` の代わりに `secret` ヘッダーを使用し、ユーザー割り当てに `clientid` プロパティのみを許可していました。 また、タイムスタンプ形式で `expires_on` も返していました。 MSI_ENDPOINT は IDENTITY_ENDPOINT の別名として使用でき、MSI_SECRET は IDENTITY_HEADER の別名として使用できます。
+この応答は、[Azure AD のサービス間アクセス トークン要求に対する応答](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response)と同じです。
 
 ### <a name="rest-protocol-examples"></a>REST プロトコルの例
 
@@ -378,7 +440,7 @@ $accessToken = $tokenResponse.access_token
 
 ### <a name="using-the-microsoftazureservicesappauthentication-library-for-net"></a><a name="asal"></a>.NET 用の Microsoft.Azure.Services.AppAuthentication ライブラリの使用
 
-.NET アプリケーションと Functions の場合、マネージド ID を使用する最も簡単な方法は、Microsoft.Azure.Services.AppAuthentication パッケージを利用することです。 このライブラリを使うと、Visual Studio、[Azure CLI](/cli/azure)、または Active Directory 統合認証のユーザー アカウントを使って、開発用コンピューターでローカルにコードをテストすることもできます。 このライブラリでのローカル開発オプションについて詳しくは、[Microsoft.Azure.Services.AppAuthentication のリファレンス]に関するページをご覧ください。 このセクションでは、コードでライブラリを使い始める方法を示します。
+.NET アプリケーションと Functions の場合、マネージド ID を使用する最も簡単な方法は、Microsoft.Azure.Services.AppAuthentication パッケージを利用することです。 このライブラリを使うと、Visual Studio、[Azure CLI](/cli/azure)、または Active Directory 統合認証のユーザー アカウントを使って、開発用コンピューターでローカルにコードをテストすることもできます。 クラウドでホストされている場合は、システムによって割り当てられた ID が既定で使用されますが、この動作は、ユーザー割り当て ID のクライアント ID を参照する接続文字列環境変数を使用してカスタマイズできます。 このライブラリでの開発オプションについて詳しくは、[Microsoft.Azure.Services.AppAuthentication の参照]に関する記事をご覧ください。 このセクションでは、コードでライブラリを使い始める方法を示します。
 
 1. [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) とその他の必要な NuGet パッケージに対する参照をアプリケーションに追加します。 下の例では [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) も使用されています。
 
@@ -394,7 +456,17 @@ $accessToken = $tokenResponse.access_token
     var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
     ```
 
-Microsoft.Azure.Services.AppAuthentication およびそれによって公開される操作について詳しくは、[Microsoft.Azure.Services.AppAuthentication のリファレンス]に関するページおよび「[App Service and KeyVault with MSI .NET sample](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)」(MSI .NET での App Service と KeyVault のサンプル) をご覧ください。
+ユーザー割り当てのマネージド ID を使用する場合は、`AzureServicesAuthConnectionString` アプリケーション設定を `RunAs=App;AppId=<clientId-guid>` に設定できます。 `<clientId-guid>` は、使用する ID のクライアント ID に置き換えます。 カスタム アプリケーション設定を使用し、その値を AzureServiceTokenProvider コンストラクターに渡すことで、このような接続文字列を複数定義できます。
+
+```csharp
+    var identityConnectionString1 = Environment.GetEnvironmentVariable("UA1_ConnectionString");
+    var azureServiceTokenProvider1 = new AzureServiceTokenProvider(identityConnectionString1);
+    
+    var identityConnectionString2 = Environment.GetEnvironmentVariable("UA2_ConnectionString");
+    var azureServiceTokenProvider2 = new AzureServiceTokenProvider(identityConnectionString2);
+```
+
+AzureServiceTokenProvider の構成とそれによって公開される操作の詳細については、[Microsoft.Azure.Services.AppAuthentication の参照]に関するページと [MSI .NET での App Service と KeyVault のサンプル](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)に関するページをご覧ください。
 
 ### <a name="using-the-azure-sdk-for-java"></a>Azure SDK for Java を使用する
 
@@ -426,7 +498,11 @@ Java のアプリケーションと関数の場合、マネージド ID を利�
 
 ## <a name="remove-an-identity"></a><a name="remove"></a>ID を削除する
 
-システム割り当て ID は、ポータル、PowerShell、または CLI を使用して、作成時と同じ方法で機能を無効にすることで、削除できます。 ユーザー割り当て ID は個別に削除することはできません。 すべての ID を削除するには、[ARM テンプレート](#using-an-azure-resource-manager-template)で、type を "None" に設定します。
+システム割り当て ID は、ポータル、PowerShell、または CLI を使用して、作成時と同じ方法で機能を無効にすることで、削除できます。 ユーザー割り当て ID は個別に削除することはできません。 すべての ID を削除するには、ID の種類を "None" に設定します。
+
+この方法でシステム割り当て ID を削除すると、それは Azure AD からも削除されます。 システム割り当て ID は、アプリ リソースが削除されると、Azure AD からも自動的に削除されます。
+
+[ARM テンプレート](#using-an-azure-resource-manager-template)のすべての ID を削除するには、次のようにします。
 
 ```json
 "identity": {
@@ -434,7 +510,12 @@ Java のアプリケーションと関数の場合、マネージド ID を利�
 }
 ```
 
-この方法でシステム割り当て ID を削除すると、それは Azure AD からも削除されます。 システム割り当て ID は、アプリ リソースが削除されると、Azure AD からも自動的に削除されます。
+Azure PowerShell のすべての ID を削除するには (Azure Functions のみ) 次のようにします。
+
+```azurepowershell-interactive
+# Update an existing function app to have IdentityType "None".
+Update-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupName -IdentityType None
+```
 
 > [!NOTE]
 > また、単純にローカル トークン サービスを無効にする、設定可能なアプリケーション設定 WEBSITE_DISABLE_MSI もあります。 ただし、ID はその場所に残り、ツールには引き続きマネージド ID が "オン" または "有効" と表示されます。 そのため、この設定の使用はお勧めしません。

@@ -8,12 +8,13 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
-ms.openlocfilehash: 1d38a3cac5525de6835bbb0f9873cbd0636d44a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: c981214c69653b3a4a687a861cb348f3587def7c
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869676"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078760"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>Windows VM 用の Azure Diagnostics 拡張機能
 
@@ -37,7 +38,7 @@ Azure Diagnostics 拡張機能では、ターゲットの仮想マシンがイ�
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 
-Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 前のセクションで詳しく説明した JSON スキーマを Azure Resource Manager テンプレートで使うと、Azure Resource Manager テンプレートのデプロイ時に Azure Diagnostics 拡張機能を実行できます。 「[Windows VM と Azure Resource Manager テンプレートで監視と診断を利用する](extensions-diagnostics-template.md)」を参照してください。
+Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 前のセクションで詳しく説明した JSON スキーマを Azure Resource Manager テンプレートで使うと、Azure Resource Manager テンプレートのデプロイ時に Azure Diagnostics 拡張機能を実行できます。 「[Windows VM と Azure Resource Manager テンプレートで監視と診断を利用する](../extensions/diagnostics-template.md)」を参照してください。
 
 ## <a name="azure-cli-deployment"></a>Azure CLI でのデプロイ
 
@@ -55,7 +56,7 @@ az vm extension set \
 
 ## <a name="powershell-deployment"></a>PowerShell でのデプロイ
 
-`Set-AzVMDiagnosticsExtension` コマンドを使用して、Azure Diagnostics 拡張機能を既存の仮想マシンに追加することができます。 また、「[PowerShell を使用して Windows を実行している仮想マシンで Azure Diagnostics を有効にする](ps-extensions-diagnostics.md)」も参照してください。
+`Set-AzVMDiagnosticsExtension` コマンドを使用して、Azure Diagnostics 拡張機能を既存の仮想マシンに追加することができます。 また、「[PowerShell を使用して Windows を実行している仮想マシンで Azure Diagnostics を有効にする](../extensions/diagnostics-windows.md)」も参照してください。
 
  
 

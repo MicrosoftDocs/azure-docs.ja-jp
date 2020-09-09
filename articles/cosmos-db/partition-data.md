@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 19e4c61ba930bb9b127e2401174bcea3fd240dce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 57417a80ea83005c01b6f2a17206d46e6c049719
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82234218"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85112780"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Azure Cosmos DB でのパーティション分割と水平スケーリング
 
@@ -40,7 +40,7 @@ Cosmos コンテナー内の物理パーティションの数は、以下によ�
 
 コンテナーの物理パーティションは、Azure portal の **[メトリック] ブレード**の **[ストレージ]** セクションで確認できます。
 
-[![物理パーティションの数の表示](./media/partition-data/view-partitions-zoomed-out.png)](./media/partition-data/view-partitions-zoomed-in.png#lightbox)
+:::image type="content" source="./media/partition-data/view-partitions-zoomed-out.png" alt-text="物理パーティションの数の表示" lightbox="./media/partition-data/view-partitions-zoomed-in.png" ::: 
 
 パーティション キーとして `/foodGroup` が選択されているこの例のコンテナーでは、3 つの四角形のそれぞれが物理パーティションを表しています。 この図では、**パーティション キー範囲**は物理パーティションと同じです。 選択されている物理パーティションには、3 つの論理パーティション (`Beef Products`、`Vegetable and Vegetable Products`、および `Soups, Sauces, and Gravies`) が含まれています。
 
@@ -54,7 +54,7 @@ Cosmos コンテナー内の物理パーティションの数は、以下によ�
 
 次の図は、グローバルに分散されている物理パーティションに論理パーティションがどのようにマップされているかを示しています。
 
-![Azure Cosmos DB パーティション分割を示す図](./media/partition-data/logical-partitions.png)
+:::image type="content" source="./media/partition-data/logical-partitions.png" alt-text="Azure Cosmos DB パーティション分割を示す図" border="false":::
 
 ## <a name="next-steps"></a>次のステップ
 

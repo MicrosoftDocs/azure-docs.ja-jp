@@ -2,17 +2,17 @@
 title: SSTP から OpenVPN または IKEv2 に移行する | Azure VPN Gateway
 description: この記事は、SSTP の 128 というコンカレント接続制限を克服する方法を理解するのに役立ちます。
 services: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: alzam
-ms.openlocfilehash: 5500d993a4bf3c664f14182d983f9abed8ebb08a
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 1531bca6c56c159b7535536fb31a577f0d7253ef
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398373"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064682"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>SSTP から OpenVPN プロトコルまたは IKEv2 に移行する
 

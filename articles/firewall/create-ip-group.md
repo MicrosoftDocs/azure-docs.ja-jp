@@ -4,20 +4,17 @@ description: IP グループを使用すると、Azure Firewall 規則の IP ア
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: conceptual
-ms.date: 02/18/2020
+ms.topic: how-to
+ms.date: 06/23/2020
 ms.author: victorh
-ms.openlocfilehash: 7e8b2350b9e85d07ce1c399ce4536703ec998cbc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c3ae62bf5b4f0b4796cac2e7079c8a09116d4895
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444856"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85602535"
 ---
-# <a name="create-ip-groups-preview"></a>IP グループを作成する (プレビュー)
-
-> [!IMPORTANT]
-> このパブリック プレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することは避けてください。 特定の機能はサポート対象ではなく、機能が制限されることがあるか、Azure の場所によっては利用できない場合があります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
+# <a name="create-ip-groups"></a>IP グループの作成
 
 IP グループを使用すると、Azure Firewall 規則の IP アドレスをグループ化して管理できます。 1 つの IP アドレス、複数の IP アドレス、または 1 つ以上の IP アドレス範囲を設定できます。
 
@@ -30,7 +27,7 @@ IP グループを使用すると、Azure Firewall 規則の IP アドレスを�
 5. リソース グループを選択するか、新しく作成します。
 6. IP グループの一意の名前を入力し、リージョンを選択します。
 
-6. **[次へ: IP アドレス]** を選択します。
+6. **Next:次へ: IP アドレス** を選択します。
 7. 1 つの IP アドレス、複数の IP アドレス、または IP アドレス範囲を入力します。
 
    IP アドレスを入力するには、2 つの方法があります。

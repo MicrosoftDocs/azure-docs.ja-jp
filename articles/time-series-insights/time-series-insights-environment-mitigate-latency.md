@@ -5,21 +5,21 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 01/21/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2812b535c7aef7987db7106bfa6b07e15a1b61c7
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 9fa47c81aede9de5d083f16f9e1705f687ad39a4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81263388"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046436"
 ---
-# <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Azure Time Series Insights で待機時間を削減するために調整を監視して緩和する
+# <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights-gen1"></a>Azure Time Series Insights Gen1 で待機時間を削減するために調整を監視して緩和する
 
 着信データの量が環境の構成を超えると、Azure Time Series Insights で待機時間や調整が発生する可能性があります。
 
@@ -27,14 +27,14 @@ ms.locfileid: "81263388"
 
 次の操作をしたときに待機時間と調整が発生する可能性が最も高くなります。
 
-- 割り当てられた受信レートを超えるかもしれない古いデータを含むイベント ソースを追加した (Time Series Insights はキャッチアップする必要があります)。
+- 割り当てられた受信レートを超えるかもしれない古いデータを含むイベント ソースを追加した (Azure Time Series Insights はキャッチアップする必要があります)。
 - 環境にイベント ソースを追加した結果、追加イベントによるスパイクが発生した (環境の容量を超えた可能性があります)。
-- 大量の履歴イベントをイベント ソースにプッシュした結果、ラグが発生した (Time Series Insights はキャッチアップする必要があります)。
+- 大量の履歴イベントをイベント ソースにプッシュした結果、ラグが発生した (Azure Time Series Insights はキャッチアップする必要があります)。
 - 参照データをテレメトリと結合した結果、イベントのサイズが大きくなった。 パケットの最大許容サイズは 32 KB です。32 KB を超えるデータ パケットは切り詰められます。
 
 ## <a name="video"></a>ビデオ
 
-### <a name="learn-about-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>Time Series Insights データのイングレス動作と、それを計画する方法を説明します。</br>
+### <a name="learn-about-azure-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>Azure Time Series Insights データのイングレス動作とそれを計画する方法の説明</br>
 
 > [!VIDEO https://www.youtube.com/embed/npeZLAd9lxo]
 
@@ -42,9 +42,9 @@ ms.locfileid: "81263388"
 
 アラートは、環境で発生する待機時間の問題の診断および緩和に役立ちます。
 
-1. Azure portal で、Time Series Insights 環境を選択します。 次に、 **[アラート]** を選択します。
+1. Azure portal で、Azure Time Series Insights 環境を選択します。 次に、 **[アラート]** を選択します。
 
-   [![Time Series Insights 環境にアラートを追加する](media/environment-mitigate-latency/mitigate-latency-add-alert.png)](media/environment-mitigate-latency/mitigate-latency-add-alert.png#lightbox)
+   [![Azure Time Series Insights 環境にアラートを追加する](media/environment-mitigate-latency/mitigate-latency-add-alert.png)](media/environment-mitigate-latency/mitigate-latency-add-alert.png#lightbox)
 
 1. **[+ 新しいアラート ルール]** を選択します。 **[ルールの作成]** パネルが表示されます。 **[条件]** の **[追加]** を選択します。
 
@@ -74,7 +74,7 @@ ms.locfileid: "81263388"
 
 ## <a name="throttling-and-ingress-management"></a>調整とイングレスの管理
 
-* 調整中、 *[Ingress Received Message Time Lag]\(受信メッセージの受信のタイム ラグ\)* の値が登録され、メッセージがイベント ソースに届く実際の時間から Time Series Insights 環境が何秒遅れているのかが通知されます (約 30 ～ 60 秒のインデックス作成時間を除きます)。  
+* 調整中、 *[Ingress Received Message Time Lag]\(受信メッセージの受信のタイム ラグ\)* の値が登録され、メッセージがイベント ソースに届く実際の時間から Azure Time Series Insights 環境が何秒遅れているのかが通知されます (約 30 ～ 60 秒のインデックス作成時間を除きます)。  
 
   *[Ingress Received Message Count Lag]\(受信メッセージの受信のカウント ラグ\)* にも値が含まれるはずです。その値で何通のメッセージが送れているのか判断できます。  遅れを取り戻す最も簡単な方法は、差を埋めるだけのサイズまで環境の容量を増やすことです。  
 
@@ -84,7 +84,7 @@ ms.locfileid: "81263388"
 
   たとえば、3 つの S1 ユニットをプロビジョニング済み (または 1 分間の受信容量あたり 2100 イベント) の場合、**保存済みイベントの受信**アラートを 2 時間に対して 1900 イベント以上に設定できます。 このしきい値を頻繁に超えてアラートがトリガーされる場合、プロビジョニング不足である可能性が高いです。  
 
-* 調整されている疑いがある場合、**受信メッセージの受信**をイベント ソースの送信メッセージと比較できます。  Event Hub への受信が**受信メッセージの受信**より大きい場合、Time Series Insights は調整されている可能性が高いです。
+* 調整されている疑いがある場合、**受信メッセージの受信**をイベント ソースの送信メッセージと比較できます。  Event Hub への受信が**受信メッセージの受信**より大きい場合、Azure Time Series Insights は調整されている可能性があります。
 
 ## <a name="improving-performance"></a>パフォーマンスの向上
 
@@ -94,6 +94,6 @@ ms.locfileid: "81263388"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Time Series Insights 環境の問題を診断して解決する](time-series-insights-diagnose-and-solve-problems.md)を確認します。
+- [Azure Time Series Insights 環境の問題を診断して解決する](time-series-insights-diagnose-and-solve-problems.md)方法を確認します。
 
-- [Time Series Insights 環境をスケーリングする方法](time-series-insights-how-to-scale-your-environment.md)を確認します。
+- [Azure Time Series Insights 環境をスケーリングする方法](time-series-insights-how-to-scale-your-environment.md)を確認します。

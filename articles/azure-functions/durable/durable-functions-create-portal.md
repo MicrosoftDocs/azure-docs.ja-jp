@@ -4,12 +4,12 @@ description: ポータル開発用に Azure Functions の Durable Functions 拡�
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 6416ae4aba8b045c6c4fb0fe6557bdcd1efb3a9b
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: b029fa246977dfe4210f6e8df242415f7e4103f1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83120152"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081918"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Azure portal を使用して Durable Functions を作成する
 
@@ -57,7 +57,7 @@ JavaScript Durable Functions を作成する場合、[`durable-functions` npm �
 4. `package.json` がアップロードされたら、Kudu リモート実行コンソールから `npm install` コマンドを実行します。
 
    ![Kudu の実行 (npm install)](./media/durable-functions-create-portal/kudu-npm-install.png)
-
+   
 ## <a name="create-an-orchestrator-function"></a>オーケストレーター関数を作成する
 
 1. 関数アプリで、左側のウィンドウから **[関数]** を選択し、上部のメニューから **[追加]** を選択します。 
@@ -81,7 +81,7 @@ JavaScript Durable Functions を作成する場合、[`durable-functions` npm �
 1. Postman や cURL などの HTTP ツールを使用して、コピーした URL に POST 要求を送信します。 次の例は、Durable Functions に POST 要求を送信する cURL コマンドです。
 
     ```bash
-    curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence
+    curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence --header "Content-Length: 0"
     ```
 
     この例では、`{your-function-app-name}` は対象の関数アプリの名前であるドメインです。 応答メッセージには、実行を監視および管理するために使用できる、一連の URI エンドポイントが含まれます。次の例のようになります。

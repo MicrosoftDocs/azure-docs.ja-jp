@@ -10,15 +10,15 @@ ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 2e97442d4104f52c1a76ba8cd1d81c99508bb242
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7d9d7ff9c9a54b74e3160b9de3df1f08a81e6531
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605182"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291084"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>リモート デスクトップをインストールして Azure の Linux VM に接続するように構成する
 Azure の Linux 仮想マシン (VM) は、通常、セキュリティで保護された shell (SSH) 接続を使用してコマンド ラインから管理します。 Linux にまだ慣れていない場合や、簡単にトラブルシューティングする場合などは、リモート デスクトップを使用する方が操作が簡単なことがあります。 この記事では、Resource Manager デプロイ モデルを使用して、Linux VM のデスクトップ環境 ([xfce](https://www.xfce.org)) とリモート デスクトップ ([xrdp](http://xrdp.org)) をインストールして構成する方法を詳しく説明します。
@@ -133,11 +133,10 @@ tail -f /var/log/syslog
 
 Red Hat Enterprise Linux SUSE など他の Linux ディストリビューションでは、サービスの再開方法や確認するログ ファイルの場所が異なる場合があります。
 
-リモート デスクトップ クライアントから応答がなく、システム ログにもイベントが表示されない場合は、リモート デスクトップ トラフィックが VM に到達できないことを示しています。 ネットワーク セキュリティ グループ ルールを確認し、ポート 3389 で TCP を許可するルールが設定されていることをご確認ください。 詳細については、[アプリケーションの接続の問題のトラブルシューティング](../windows/troubleshoot-app-connection.md)に関するページをご覧ください。
+リモート デスクトップ クライアントから応答がなく、システム ログにもイベントが表示されない場合は、リモート デスクトップ トラフィックが VM に到達できないことを示しています。 ネットワーク セキュリティ グループ ルールを確認し、ポート 3389 で TCP を許可するルールが設定されていることをご確認ください。 詳細については、[アプリケーションの接続の問題のトラブルシューティング](../troubleshooting/troubleshoot-app-connection.md)に関するページをご覧ください。
 
 
 ## <a name="next-steps"></a>次のステップ
 Linux VM で SSH キーを作成、使用する方法の詳細については、[Azure での Linux VM の SSH キーの作成](mac-create-ssh-keys.md)に関するページをご覧ください。
 
 Windows から SSH を使用する方法の詳細については、[Windows での SSH キーの使用方法](ssh-from-windows.md)に関するページをご覧ください。
-

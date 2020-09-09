@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
 ms.openlocfilehash: b27fe2abc50396b527e61487acf9797db59c1cce
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82627587"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>SSMS を使用して SQL Server エージェント ジョブを ADF に移行する
@@ -33,9 +33,9 @@ ms.locfileid: "82627587"
 
 |SQL Agent ジョブ オブジェクト  |ADF リソース  |Notes|
 |---------|---------|---------|
-|SQL Agent ジョブ|pipeline     |パイプラインの名前は、*Generated for \<job name>* (<ジョブ名> に対して生成) になります。 <br> <br> 組み込みのエージェントジョブには適用されません。 <li> SSIS サーバー メンテナンス ジョブ <li> syspolicy_purge_history <li> collection_set_* <li> mdw_purge_data_* <li> sysutility_*|
-|SSIS ジョブ ステップ|SSIS パッケージの実行アクティビティ|<li> アクティビティの名前は、\<ステップ名> になります。 <li> ジョブ ステップで使用されるプロキシ アカウントは、このアクティビティの Windows 認証として移行されます。 <li> ジョブ ステップで定義されている、 *[32 ビット ランタイムを使用する]* を除く *[実行オプション]* は、移行時に無視されます。 <li> ジョブ ステップで定義されている "*検証*" は、移行時に無視されます。|
-|schedule      |スケジュール トリガー        |スケジュール トリガーの名前は、*Generated for \<schedule name>* (<スケジュール名> に対して生成) になります。 <br> <br> SQL Agent ジョブ スケジュールの以下のオプションは、移行時に無視されます。 <li> 第 2 レベルの間隔。 <li> *[SQL Server エージェントの開始時に自動的に開始]* <li> *[CPU がアイドル状態になったときに開始]* <li> *[平日]* と *[土日]* <time zone> <br> SQL Agent ジョブ スケジュールが ADF スケジュール トリガーに移行された後の相違点は次のとおりです。 <li> ADF スケジュール トリガーの後続の実行が、先行してトリガーされた実行の実行状態に依存していません。 <li> ADF スケジュール トリガーの繰り返し構成は、SQL Agent ジョブの [一日のうちの頻度] とは異なります。|
+|SQL Agent ジョブ|pipeline     |パイプラインの名前は *Generated for \<job name>* になります。 <br> <br> 組み込みのエージェントジョブには適用されません。 <li> SSIS サーバー メンテナンス ジョブ <li> syspolicy_purge_history <li> collection_set_* <li> mdw_purge_data_* <li> sysutility_*|
+|SSIS ジョブ ステップ|SSIS パッケージの実行アクティビティ|<li> アクティビティの名前は \<step name> になります。 <li> ジョブ ステップで使用されるプロキシ アカウントは、このアクティビティの Windows 認証として移行されます。 <li> ジョブ ステップで定義されている、 *[32 ビット ランタイムを使用する]* を除く *[実行オプション]* は、移行時に無視されます。 <li> ジョブ ステップで定義されている "*検証*" は、移行時に無視されます。|
+|schedule      |スケジュール トリガー        |スケジュール トリガーの名前は *Generated for \<schedule name>* になります。 <br> <br> SQL Agent ジョブ スケジュールの以下のオプションは、移行時に無視されます。 <li> 第 2 レベルの間隔。 <li> *[SQL Server エージェントの開始時に自動的に開始]* <li> *[CPU がアイドル状態になったときに開始]* <li> *[平日]* と *[土日]* <time zone> <br> SQL Agent ジョブ スケジュールが ADF スケジュール トリガーに移行された後の相違点は次のとおりです。 <li> ADF スケジュール トリガーの後続の実行が、先行してトリガーされた実行の実行状態に依存していません。 <li> ADF スケジュール トリガーの繰り返し構成は、SQL Agent ジョブの [一日のうちの頻度] とは異なります。|
 
 - ローカル出力フォルダーに Azure Resource Manager (ARM) テンプレートを生成し、データ ファクトリに直接、または後ほど手動で配置します。 ADF Resource Manager テンプレートの詳細については、「[Microsoft.DataFactory リソースの種類](https://docs.microsoft.com/azure/templates/microsoft.datafactory/allversions)」を参照してください。
 

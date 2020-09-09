@@ -10,12 +10,12 @@ ms.workload: multiple
 ms.topic: sample
 ms.date: 03/19/2018
 ms.custom: sfrev
-ms.openlocfilehash: b3d922cb5a7cdf34e63731ab32f21c94d7b6bca0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5cc72423d7e901f82cdf7e40f5de72bd54e9cec1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76025004"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076171"
 ---
 # <a name="update-the-rdp-port-range-values"></a>RDP ポート範囲の値の更新
 
@@ -23,7 +23,7 @@ ms.locfileid: "76025004"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールします。
+必要に応じて、[Azure PowerShell ガイド](/powershell/azure/)の手順に従って Azure PowerShell をインストールします。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -40,6 +40,6 @@ ms.locfileid: "76025004"
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
+Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。
 
 その他の Azure Service Fabric 用 Azure PowerShell サンプルは、[Azure PowerShell サンプル](../service-fabric-powershell-samples.md)のページにあります。

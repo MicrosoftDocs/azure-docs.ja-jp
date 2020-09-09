@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 1/10/2020
-ms.openlocfilehash: 3dd2be9a9f618f19ae71de8b19115013896b10cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0b83049e154afc48334cc6deb576c700ed71d844
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195555"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118155"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>仮想ネットワークに参加するように Azure-SQL Server Integration Services (SSIS) 統合ランタイム (IR) を構成する
 
@@ -31,9 +31,9 @@ ms.locfileid: "82195555"
 
 ## <a name="prerequisites"></a>前提条件
 
-- **Azure-SSIS 統合ランタイム**:  Azure-SSIS 統合ランタイムがない場合は、開始する前に [Azure Data Factory で Azure-SSIS 統合ランタイムをプロビジョニング](tutorial-deploy-ssis-packages-azure.md)してください。
+- **Azure-SSIS 統合ランタイム**: Azure-SSIS 統合ランタイムがない場合は、開始する前に [Azure Data Factory で Azure-SSIS 統合ランタイムをプロビジョニング](tutorial-deploy-ssis-packages-azure.md)してください。
 
-- **ユーザーのアクセス許可**:  Azure-SSIS IR を作成するユーザーには、少なくとも Azure Data Factory リソースに対する[ロールを割り当てる](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-portal#list-role-assignments-for-a-user-at-a-scope)必要があります。次のオプションがあります。
+- **ユーザーのアクセス許可**: Azure-SSIS IR を作成するユーザーには、少なくとも Azure Data Factory リソースに対する[ロールを割り当てる](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-portal#list-role-assignments-for-a-user-at-a-scope)必要があります。次のオプションがあります。
 
     - 組み込みのネットワーク共同作成者ロールを使用します。 このロールには、必要なスコープよりずっと大きなスコープを持つ _Microsoft.Network/\*_ アクセス許可が備わっています。
     - 必要な _Microsoft.Network/virtualNetworks/\*/join/action_ アクセス許可のみを含むカスタム ロールを作成してください。 また、Azure-SSIS IR を Azure Resource Manager 仮想ネットワークに参加させるときに独自のパブリック IP アドレスを使用する場合は、_Microsoft.Network/publicIPAddresses/*/join/action_ アクセス許可もロールに含めてください。
@@ -86,7 +86,7 @@ Azure-SSIS IR を参加させる前に、Azure portal を使用して仮想ネ�
 
     - Azure-SSIS IR が使用するための利用可能なアドレス領域が選択したサブネットに十分にあることを確認してください。 IR ノード番号の 2 倍以上の使用可能な IP アドレスを残しておきます。 Azure は、各サブネット内で一部の IP アドレスを予約します。 これらのアドレスは使用できません。 サブネットの最初と最後の IP アドレスはプロトコル準拠用に予約され、3 つ以上のアドレスが Azure サービスに使用されます。 詳細については、「 [これらのサブネット内の IP アドレスの使用に関する制限はありますか](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
     - Azure-SSIS IR をデプロイするには、GatewaySubnet を選択しないでください。 これは仮想ネットワーク ゲートウェイ専用です。
-    - (SQL Database マネージド インスタンス、App Service など) 他の Azure サービスによって排他的に専有されているサブネットを使用しないでください。
+    - (SQL Database Managed Instance、App Service など) 他の Azure サービスによって排他的に専有されているサブネットを使用しないでください。
 
 1. 仮想ネットワークが含まれる Azure サブスクリプションに Azure Batch プロバイダーが登録されていることを確認します。 または、Azure Batch プロバイダーを登録します。 Azure Batch アカウントがサブスクリプションに既にある場合は、サブスクリプションは Azure Batch に登録されています。 (Data Factory ポータルで Azure-SSIS IR を作成した場合、Azure Batch プロバイダーが自動的に登録されます。)
 
@@ -137,9 +137,9 @@ Azure Resource Manager 仮想ネットワークまたは従来の仮想ネット
 
    1. **[種類]** で、仮想ネットワークの種類の (クラシックまたは Azure Resource Manager) を選択します。 クラシック仮想ネットワークは間もなく非推奨になるので、Azure Resource Manager 仮想ネットワークを選択することをお勧めします。
 
-   1. **[VNet 名]** で、仮想ネットワークの名前を選択します。 これは、SSISDB をホストするために仮想ネットワーク サービス エンドポイントを備えた Azure SQL Database サーバーまたはプライベート エンドポイントを備えたマネージド インスタンスに使用されているものと同じである必要があります。 または、オンプレミス ネットワークに接続されているものと同じである必要があります。 それ以外の場合は、Azure-SSIS IR に独自の静的パブリック IP アドレスを使用するための任意の仮想ネットワークを指定できます。
+   1. **[VNet 名]** で、仮想ネットワークの名前を選択します。 これは、SSISDB をホストするために仮想ネットワーク サービス エンドポイントを備えた SQL Database またはプライベート エンドポイントを備えた SQL Managed Instance に使用されているものと同じである必要があります。 または、オンプレミス ネットワークに接続されているものと同じである必要があります。 それ以外の場合は、Azure-SSIS IR に独自の静的パブリック IP アドレスを使用するための任意の仮想ネットワークを指定できます。
 
-   1. **[サブネット名]** で、お使いの仮想ネットワークのサブネットの名前を選択します。 これは、SSISDB をホストするために仮想ネットワーク サービス エンドポイントを備えた Azure SQL Database サーバーに使用されているものと同じである必要があります。 または、SSISDB をホストするためにプライベート エンドポイントを備えたマネージド インスタンスに使用されているものとは異なるサブネットである必要があります。 それ以外の場合は、Azure-SSIS IR に独自の静的パブリック IP アドレスを使用するための任意のサブネットを指定できます。
+   1. **[サブネット名]** で、お使いの仮想ネットワークのサブネットの名前を選択します。 これは、SSISDB をホストするために仮想ネットワーク サービス エンドポイントを備えた SQL Database に使用されているものと同じである必要があります。 または、SSISDB をホストするためにプライベート エンドポイントを備えた SQL Managed Instance に使用されているものとは異なるサブネットである必要があります。 それ以外の場合は、Azure-SSIS IR に独自の静的パブリック IP アドレスを使用するための任意のサブネットを指定できます。
 
    1. **[VNet Validation]\(VNet の検証\)** を選択します。 検証が成功した場合は、 **[続行]** を選択します。
 

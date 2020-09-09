@@ -4,12 +4,12 @@ description: Azure Application Insights を使用して Azure Cloud Services で
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.reviewer: harelbr
-ms.openlocfilehash: 997c5e063c4181a597520e60e2a7669401b9677d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1cdfc6dc3ac74997743512ee07f9293699e3ad10
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77669745"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87309292"
 ---
 # <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>Azure Diagnostics と Azure Application Insights の統合を使用して Azure Cloud Services での問題に関するアラートを設定する
 
@@ -111,7 +111,7 @@ Application Insights リソース内のナビゲーション メニューで **[
 
 自動検出の詳細を確認します。
 
-[失敗の異常](../../azure-monitor/app/proactive-failure-diagnostics.md)
-[メモリ リーク](../../azure-monitor/app/proactive-potential-memory-leak.md)
-[パフォーマンスの異常](../../azure-monitor/app/proactive-performance-diagnostics.md)
+[失敗の異常](./proactive-failure-diagnostics.md)
+[メモリ リーク](./proactive-potential-memory-leak.md)
+[パフォーマンスの異常](./proactive-performance-diagnostics.md)
 

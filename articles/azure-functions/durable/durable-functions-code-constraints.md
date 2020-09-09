@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4ed604302ca187ad4953e865d68dc73030a37c02
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 14e0b86f11c3eabf93e7d4f0ebf563e59c0c21e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77562141"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081867"
 ---
 # <a name="orchestrator-function-code-constraints"></a>オーケストレーター関数コードの制約
 
@@ -18,7 +18,7 @@ Durable Functions は、ステートフル アプリの構築を可能にする�
 
 ## <a name="orchestrator-code-constraints"></a>オーケストレーター コードの制約
 
-オーケストレーター関数では、[イベント ソーシング](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)を使用して信頼性の高い実行を確保し、ローカル変数の状態を維持します。 オーケストレーター コードの[再生動作](durable-functions-orchestrations.md#reliability)によって、オーケストレーター関数に記述できるコードの種類に制約が生まれます。 たとえば、オーケストレーター関数は*決定論的*である必要があります。オーケストレーター関数は複数回再生されますが、毎回同じ結果を出す必要があります。
+オーケストレーター関数では、[イベント ソーシング](/azure/architecture/patterns/event-sourcing)を使用して信頼性の高い実行を確保し、ローカル変数の状態を維持します。 オーケストレーター コードの[再生動作](durable-functions-orchestrations.md#reliability)によって、オーケストレーター関数に記述できるコードの種類に制約が生まれます。 たとえば、オーケストレーター関数は*決定論的*である必要があります。オーケストレーター関数は複数回再生されますが、毎回同じ結果を出す必要があります。
 
 ### <a name="using-deterministic-apis"></a>決定論的な API の使用
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2019
-ms.openlocfilehash: 8ff24d508eb35c4f2a04c7d024254fa6f1875da8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b9624313716081a039b12c73e54b9f7afc2a323
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77659285"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505314"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Azure Monitor ログ データを Power BI にインポートする
 
@@ -21,12 +21,12 @@ ms.locfileid: "77659285"
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="overview"></a>概要
-Azure Monitor の [Log Analytics ワークスペース](manage-access.md) から Power BI にデータをインポートするには、Azure Monitor の[ログ クエリ](../log-query/log-query-overview.md)に基づいて Power BI にデータベースを作成します。  クエリはデータセットが更新されるたびに実行されます。  それからデータセットのデータを使用した Power BI レポートを作成できます。  Power BI でデータセットを作成するには、Log Analytics から [Power Query (M) 言語](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification)にクエリをエクスポートします。  次にこのクエリを使用して Power BI Desktop でクエリを作成し、Power BI にデータセットとして発行します。  このプロセスの詳細を以下で説明します。
+Azure Monitor の [Log Analytics ワークスペース](manage-access.md) から Power BI にデータをインポートするには、Azure Monitor の[ログ クエリ](../log-query/log-query-overview.md)に基づいて Power BI にデータベースを作成します。  クエリはデータセットが更新されるたびに実行されます。  それからデータセットのデータを使用した Power BI レポートを作成できます。  Power BI でデータセットを作成するには、Log Analytics から [Power Query (M) 言語](/powerquery-m/power-query-m-language-specification)にクエリをエクスポートします。  次にこのクエリを使用して Power BI Desktop でクエリを作成し、Power BI にデータセットとして発行します。  このプロセスの詳細を以下で説明します。
 
 ![Power BI への Log Analytics](media/powerbi/overview.png)
 
 ## <a name="export-query"></a>クエリをエクスポートする
-まず、Power BI データセットに取り込むデータを返す[ログ クエリ](../log-query/log-query-overview.md)を作成します。  次にそのクエリを Power BI Desktop で使用できる [Power Query (M) 言語](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification)にエクスポートします。
+まず、Power BI データセットに取り込むデータを返す[ログ クエリ](../log-query/log-query-overview.md)を作成します。  次にそのクエリを Power BI Desktop で使用できる [Power Query (M) 言語](/powerquery-m/power-query-m-language-specification)にエクスポートします。
 
 1. データセットのデータを抽出するために [Log Analytics にログ クエリを作成します](../log-query/get-started-portal.md)。
 2. **[エクスポート]**  >  **[Power BI Query (M)]** の順に選択します。  これにより、**PowerBIQuery.txt** という名前のテキスト ファイルにクエリがエクスポートされます。 
@@ -53,7 +53,7 @@ Power BI Desktop は、Power BI に発行可能なデータセットおよび �
 ## <a name="publish-to-power-bi"></a>Power BI に発行する
 Power BI に発行すると、データセットとレポートが作成されます。  Power BI Desktop でレポートを作成すると、お使いのデータを使用したレポートが発行されます。  そうしない場合は、空のレポートが作成されます。  Power BI でレポートを変更したり、データセットに基づく新しいレポートを作成したりできます。
 
-1. お使いのデータに基づくレポートを作成します。  不慣れな場合には [Power BI Desktop のドキュメント](https://docs.microsoft.com/power-bi/desktop-report-view)を使用してください。  
+1. お使いのデータに基づくレポートを作成します。  不慣れな場合には [Power BI Desktop のドキュメント](/power-bi/desktop-report-view)を使用してください。  
 1. Power BI に送信する準備ができたら、 **[発行]** をクリックします。  
 1. メッセージが表示されたら、Power BI アカウント内で発行先を選択します。  特定の発行先がない限りは、 **[マイ ワークスペース]** を使用します。
 

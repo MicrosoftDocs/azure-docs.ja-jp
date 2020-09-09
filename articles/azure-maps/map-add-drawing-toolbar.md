@@ -1,19 +1,20 @@
 ---
 title: マップに描画ツール バーを追加する | Microsoft Azure Maps
 description: Azure Maps Web SDK を使用してマップに描画ツールバーを追加する方法
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 09/04/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: bebf1ddfbca3aec5a551193609381cf3510bc3ac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 141ae90805e81d7269a12dcf465389d6a9dcaf55
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334496"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286964"
 ---
 # <a name="add-a-drawing-tools-toolbar-to-a-map"></a>描画ツールのツールバーをマップに追加する
 

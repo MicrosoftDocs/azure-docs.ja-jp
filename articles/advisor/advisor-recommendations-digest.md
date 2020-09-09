@@ -4,12 +4,12 @@ description: アクティブな推奨事項の概要を定期的に取得しま�
 ms.topic: article
 ms.date: 03/16/2020
 ms.author: sagupt
-ms.openlocfilehash: 98f1bfd42a486e005cd1e777a83f5b615a7c8304
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e446fca11e029e28e44ada884efd071f3142514c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79503919"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518081"
 ---
 # <a name="configure-periodic-summary-for-recommendations"></a>推奨事項の定期的な概要を構成する
 
@@ -21,7 +21,7 @@ Advisor の**推奨事項ダイジェスト**では、異なるカテゴリに�
 **推奨事項ダイジェスト**の作成エクスペリエンスを使用すると、概要を構成できます。 構成には以下のパラメーターを選択できます。
 1. カテゴリ:コスト、高可用性、パフォーマンス、オペレーショナル エクセレンスなどの推奨事項カテゴリがあります。 この機能は、セキュリティの推奨事項ではまだ使用できません。
 2. ダイジェストの頻度: 概要通知の頻度を、週単位、隔週単位、月単位から指定できます。
-3. アクション グループ: 既存のアクション グループを選択するか、新しいアクション グループを作成できます。 アクション グループの詳細については、[アクション グループの作成と管理](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)に関する記事をご覧ください。
+3. アクション グループ: 既存のアクション グループを選択するか、新しいアクション グループを作成できます。 アクション グループの詳細については、[アクション グループの作成と管理](../azure-monitor/platform/action-groups.md)に関する記事をご覧ください。
 4. ダイジェストの言語
 5. 推奨事項ダイジェストの名前: ダイジェストを追跡および監視しやすいように、ユーザー フレンドリな文字列を使用できます。
 
@@ -44,7 +44,7 @@ Advisor の**推奨事項ダイジェスト**では、異なるカテゴリに�
 
    ![推奨事項ダイジェストの入力で条件を指定する](./media/digest-2.png)
 
-* **手順 5:** **[アクション グループ]** セクションで、ダイジェストの**アクション グループ**を選択します。 詳しくは、[アクション グループの作成と管理](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)に関する記事をご覧ください
+* **手順 5:** **[アクション グループ]** セクションで、ダイジェストの**アクション グループ**を選択します。 詳しくは、[アクション グループの作成と管理](../azure-monitor/platform/action-groups.md)に関する記事をご覧ください
 
    ![推奨事項ダイジェストの入力でアクション グループを指定する](./media/digest-3.png)
 
@@ -60,4 +60,4 @@ Advisor の推奨事項について詳しくは、以下を参照してくださ
 * [Advisor のパフォーマンスに関する推奨事項](advisor-performance-recommendations.md)
 * [Advisor のセキュリティに関する推奨事項](advisor-security-recommendations.md)
 * [Advisor の優れた運用の推奨事項](advisor-operational-excellence-recommendations.md)
-* [Advisor REST API](https://docs.microsoft.com/rest/api/advisor/)
+* [Advisor REST API](/rest/api/advisor/)

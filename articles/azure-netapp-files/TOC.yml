@@ -37,12 +37,14 @@
       items:
         - name: Azure NetApp Files を使用したソリューション アーキテクチャ
           href: azure-netapp-files-solution-architectures.md
-        - name: 特定のソリューション
+        - name: Azure NetApp Files 利用のメリット
           items:
             - name: Oracle Database での Azure NetApp Files 利用のメリット
               href: solutions-benefits-azure-netapp-files-oracle-database.md
             - name: 電子設計自動化に Azure NetApp Files を使用するメリット
               href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
+            - name: Windows Virtual Desktop での Azure NetApp Files 利用のメリット
+              href: solutions-windows-virtual-desktop.md
     - name: Azure NetApp Files についての FAQ
       href: azure-netapp-files-faqs.md
 - name: 操作方法ガイド
@@ -55,26 +57,36 @@
       href: azure-netapp-files-set-up-capacity-pool.md
     - name: サブネットを Azure NetApp Files に委任する
       href: azure-netapp-files-delegate-subnet.md
-    - name: Azure NetApp Files の SMB ボリュームを作成する
+    - name: NFS ボリュームの作成と管理
+      items:
+        - name: NFS ボリュームを作成する
+          href: azure-netapp-files-create-volumes.md
+        - name: NFSv 4.1 の既定のドメインを構成する
+          href: azure-netapp-files-configure-nfsv41-domain.md
+        - name: NFSv 4.1 の Kerberos 暗号化を構成する
+          href: configure-kerberos-encryption.md
+        - name: Azure NetApp Files 用に NFS クライアントを構成する
+          href: configure-nfs-clients.md
+        - name: NFS ボリュームのエクスポート ポリシーを構成する
+          href: azure-netapp-files-configure-export-policy.md
+    - name: SMB ボリュームを作成する
       href: azure-netapp-files-create-volumes-smb.md
-    - name: Azure NetApp Files の NFS ボリュームを作成する
-      href: azure-netapp-files-create-volumes.md
-    - name: Azure NetApp Files 用に NFSv4.1 の既定のドメインを構成する
-      href: azure-netapp-files-configure-nfsv41-domain.md
-    - name: NFS ボリュームのエクスポート ポリシーを構成する
-      href: azure-netapp-files-configure-export-policy.md
-    - name: ボリュームを管理する
-      href: azure-netapp-files-manage-volumes.md
+    - name: デュアルプロトコル ボリュームを作成する
+      href: create-volumes-dual-protocol.md
     - name: Windows または Linux 仮想マシンのボリュームをマウント/マウント解除する
       href: azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md
     - name: スナップショットを管理する
       href: azure-netapp-files-manage-snapshots.md
     - name: 容量プールまたはボリュームをサイズ変更する
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
+    - name: ボリュームのサービス レベルを動的に変更する
+      href: dynamic-change-volume-service-level.md
     - name: 開発
       items:
-        - name: REST
+        - name: REST API
           href: azure-netapp-files-develop-with-rest-api.md
+        - name: PowerShell を使用した REST API
+          href: develop-rest-api-powershell.md
         - name: Azure NetApp Files SDK および CLI ツール
           href: azure-netapp-files-sdk-cli.md
         - name: Azure NetApp Files のリソース プロバイダー エラーのトラブルシューティング

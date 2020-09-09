@@ -4,34 +4,34 @@ description: Azure 通知ハブ用に Microsoft プッシュ通知サービス�
 services: notification-hubs
 author: sethmanheim
 manager: femila
-editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 08/04/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 03/25/2019
-ms.openlocfilehash: 99f29e7910fe6070c6202f6a936173455f979732
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6784331dccd779390ace7dc632d54fe54aedc458
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80127340"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760993"
 ---
 # <a name="configure-microsoft-push-notification-service-mpns-settings-in-the-azure-portal"></a>Azure portal で Microsoft プッシュ通知サービス (MPNS) の設定を構成する
 
-この記事では、Azure portal を使用して Azure 通知ハブ用に Microsoft プッシュ通知サービス (MPNS) の設定を構成する方法について説明します。 
+この記事では、Azure portal を使用して Azure 通知ハブ用に Microsoft プッシュ通知サービス (MPNS) の設定を構成する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
-通知ハブを作成していない場合は、ここで作成します。 詳細については、「[Azure portal 内で Azure 通知ハブを作成する](create-notification-hub-portal.md)」を参照してください。 
+
+通知ハブを作成していない場合は、ここで作成します。 詳細については、「[Azure portal 内で Azure 通知ハブを作成する](create-notification-hub-portal.md)」を参照してください。
 
 ## <a name="configure-microsoft-push-notification-service-mpns"></a>Microsoft プッシュ通知サービス (MPNS) の構成
 
-次の手順は、通知ハブ用に Microsoft プッシュ通知サービス (MPNS) の設定を構成する手順を示しています。 
+次の手順は、通知ハブ用に Microsoft プッシュ通知サービス (MPNS) の設定を構成する方法を説明しています。
 
 1. Azure portal の **[通知ハブ]** ページで、左側のメニューの **[Windows Phone (MPNS)]** を選択します。
-1. 非認証プッシュ通知または認証済みプッシュ通知を有効にします。
+2. 非認証プッシュ通知または認証済みプッシュ通知を有効にします。
 
    a. 非認証プッシュ通知を有効にするには、 **[非認証プッシュを有効にする]**  >  **[保存]** の順に選択します。
 
@@ -45,5 +45,5 @@ ms.locfileid: "80127340"
       * **[Windows Phone(MPNS)]** ページで、 **[保存]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
-Azure Notification Hubs と Microsoft プッシュ通知サービス (MPNS) を使用して、Windows Phone デバイスにプッシュ通知を送信する詳細な手順については、「[Azure Notification Hubs を使用して Windows Phone アプリにプッシュ通知を送信する](notification-hubs-windows-mobile-push-notifications-mpns.md)」を参照してください。
 
+Azure Notification Hubs と Microsoft プッシュ通知サービス (MPNS) を使用して、Windows Phone デバイスに通知をプッシュする詳細な手順のチュートリアルについては、「[Notification Hubs を使用して Windows Phone アプリにプッシュ通知を送信する](notification-hubs-windows-mobile-push-notifications-mpns.md)」を参照してください。

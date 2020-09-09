@@ -10,12 +10,13 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: fe1b5b4171dc5e61c1c82abfd723d0b77a05a5b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ec101786f33aa6f2525d685993d6b6c891ab2e9a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76294339"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936318"
 ---
 # <a name="define-and-use-moderation-jobs-net"></a>モデレーション ジョブを定義して使用する (.NET)
 

@@ -1,26 +1,27 @@
 ---
-title: Azure Cosmos DB クエリ言語の STARTSWITH
+title: Azure Cosmos DB クエリ言語の StartsWith
 description: Azure Cosmos DB の SQL システム関数 STARTSWITH について説明します。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 05/20/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 9ed49c067946186f8b79f67bad0a460113eacb73
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c64efb92de00291e6381e30af24e76df2b38aee0
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78295710"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847116"
 ---
 # <a name="startswith-azure-cosmos-db"></a>STARTSWITH (Azure Cosmos DB)
+
  1 つ目の文字列式が 2 つ目の文字列で始まっているかどうかを示すブール値を返します。  
   
 ## <a name="syntax"></a>構文
   
 ```sql
-STARTSWITH(<str_expr1>, <str_expr2>)  
+STARTSWITH(<str_expr1>, <str_expr2> [, <bool_expr>])  
 ```  
   
 ## <a name="arguments"></a>引数
@@ -31,22 +32,30 @@ STARTSWITH(<str_expr1>, <str_expr2>)
 *str_expr2*  
    *str_expr1* の先頭と比較される文字列式です。
 
+*bool_expr* 大文字と小文字の区別を無視する場合のオプションの値です。 true に設定すると、STARTSWITH は大文字と小文字を区別せずに検索を実行します。 指定しない場合、この値は false になります。
+
 ## <a name="return-types"></a>戻り値の型
   
   ブール式を返します。  
   
 ## <a name="examples"></a>例
   
-  次の例は、文字列 "abc" が "b" および "a" で始まるかどうかを確認します。  
+次の例は、文字列 "abc" が "b" および "A" で始まるかどうかを確認します。  
   
 ```sql
-SELECT STARTSWITH("abc", "b") AS s1, STARTSWITH("abc", "a") AS s2  
+SELECT STARTSWITH("abc", "b", false) AS s1, STARTSWITH("abc", "A", false) AS s2, STARTSWITH("abc", "A", true) AS s3
 ```  
   
  結果セットは次のようになります。  
   
 ```json
-[{"s1": false, "s2": true}]  
+[
+    {
+        "s1": false,
+        "s2": false,
+        "s3": true
+    }
+]
 ```  
 
 ## <a name="remarks"></a>解説

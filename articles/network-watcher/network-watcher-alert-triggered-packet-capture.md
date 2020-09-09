@@ -8,17 +8,17 @@ author: damendo
 ms.assetid: 75e6e7c4-b3ba-4173-8815-b00d7d824e11
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: ea506e137d71fc3124a4f93f1e97750a08dd4284
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb5ae2408c15baee0f37acaacc780f4d198b1521
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76842939"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738058"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>パケット キャプチャを使用してアラートと Azure Functions によるプロアクティブなネットワーク監視を実行する
 

@@ -1,19 +1,20 @@
 ---
 title: チュートリアル:Azure Spring Cloud でアプリケーションをスケーリングする | Microsoft Docs
-description: このチュートリアルでは、Azure portal で Azure Spring Cloud を使用してアプリケーションをスケーリングする方法を学習します
+description: Azure portal で Azure Spring Cloud を使用してアプリケーションをスケーリングする方法について説明します
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.author: brendm
 author: bmitchell287
 ms.date: 10/06/2019
-ms.openlocfilehash: f08a3b5d0a03b0e898457bbb783dd5031c4b0f27
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-java
+ms.openlocfilehash: c3c660c5e301081ee82a12275b6e9125f0fc781b
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76277472"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289819"
 ---
-# <a name="scale-an-application-in-azure-spring-cloud"></a>Azure Spring Cloud でアプリケーションをスケーリングする
+# <a name="tutorial-scale-an-application-in-azure-spring-cloud"></a>チュートリアル:Azure Spring Cloud でアプリケーションをスケーリングする
 
 このチュートリアルでは、Azure portal で Azure Spring Cloud ダッシュボードを使用して、マイクロサービス アプリケーションをスケーリングする方法を示します。
 
@@ -23,10 +24,10 @@ ms.locfileid: "76277472"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、次のものが必要です。
+以下の手順に従うためには、次の要件を満たす必要があります。
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
-* デプロイされた Azure Spring Cloud サービス インスタンス。  [Azure CLI を使用したアプリのデプロイに関するクイックスタート](spring-cloud-quickstart-launch-app-cli.md)に従って作業を開始してください。
+* デプロイされた Azure Spring Cloud サービス インスタンス。  [Azure CLI を使用したアプリのデプロイに関するクイックスタート](spring-cloud-quickstart.md)に従って作業を開始してください。
 * サービス インスタンスで既に作成してある少なくとも 1 つのアプリケーション。
 
 ## <a name="navigate-to-the-scale-page-in-the-azure-portal"></a>Azure portal で [スケール] ページに移動する
@@ -59,9 +60,12 @@ ms.locfileid: "76277472"
 
 数秒後、行った変更が **[概要]** ページに表示され、詳細は **[アプリケーション インスタンス]** タブで確認できるようになります。スケーリングには、コードの変更や再デプロイは不要です。
 
+## <a name="upgrade-to-the-standard-tier"></a>Standard レベルにアップグレードする
+Basic レベルをご利用の場合で、かつ、少なくとも 1 つの[制限](spring-cloud-quotas.md)によって制約を受けている場合は、Standard レベルにアップグレードしてください。 そのためには、まず [Standard レベル] 列を選択し、 **[アップグレード]** ボタンをクリックして、[価格レベル] メニューに移動します。
+
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure Spring Cloud アプリケーションを手動でスケーリングする方法について学習しました。 アプリケーションを監視する方法については、次のチュートリアルに進みます。
+このチュートリアルでは、Azure Spring Cloud アプリケーションを手動でスケーリングする方法について学習しました。 アラートを設定してアプリケーションを監視する方法については、次のチュートリアルに進みます。
 
 > [!div class="nextstepaction"]
-> [アプリケーションを監視する方法を確認する](spring-cloud-tutorial-distributed-tracing.md)
+> [アラートを設定する方法](spring-cloud-tutorial-alerts-action-groups.md)

@@ -7,18 +7,18 @@ author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/07/2020
+ms.date: 07/01/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5048cefaae10cd55091dd72f0b73a3cf9d731a35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3370ea52c5bd189f929c0f81a0aa9b59cc77b97
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227715"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421384"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールを割り当てる
 
@@ -28,12 +28,12 @@ ms.locfileid: "79227715"
 
 ## <a name="determine-your-version-of-pim"></a>PIM のバージョンを判断する
 
-2019 年 11 月以降、Privileged Identity Management の Azure AD ロール部分は、Azure リソース ロールのエクスペリエンスと一致する新しいバージョンに更新されます。 これによって機能が追加され、[既存の API の変更](azure-ad-roles-features.md#api-changes)があります。 新しいバージョンのロールアウト中、この記事で実行する手順は、現在お使いになっている Privileged Identity Management のバージョンによって異なります。 このセクションの手順に従って、お使いになっている Privileged Identity Management のバージョンを確認してください。 Privileged Identity Management のバージョンを確認したら、この記事に記載されている手順のうち、そのバージョンに一致するものを選択することができます。
+2019 年 11 月以降、Privileged Identity Management の Azure AD ロール部分は、Azure リソース ロールのエクスペリエンスと一致する新しいバージョンに更新されます。 これによって機能が追加され、[既存の API の変更](azure-ad-roles-features.md#api-changes)が行われます。 新しいバージョンのロールアウト中、この記事で実行する手順は、現在お使いになっている Privileged Identity Management のバージョンによって異なります。 このセクションの手順に従って、お使いになっている Privileged Identity Management のバージョンを確認してください。 Privileged Identity Management のバージョンを確認したら、この記事に記載されている手順のうち、そのバージョンに一致するものを選択することができます。
 
 1. [特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)のロールであるユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
 1. **[Azure AD Privileged Identity Management]** を開きます。 概要ページの上部にバナーが表示されている場合は、この記事の **[新しいバージョン]** タブの指示に従ってください。 それ以外の場合は、 **[以前のバージョン]** タブの指示に従ってください。
 
-  [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
+  [![[Azure AD] > [Privileged Identity Management] を選択する](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 # <a name="new-version"></a>[新しいバージョン](#tab/new)
 
@@ -53,15 +53,13 @@ ms.locfileid: "79227715"
 
     ![Azure AD ロール](./media/pim-how-to-add-role-to-user/roles-list.png)
 
-1. **[メンバーの追加]** を選択して **[新しい割り当て]** ページを開きます。
+1. **[割り当ての追加]** を選択して、 **[割り当ての追加]** ページを開きます。
 
-1. **[ロールを選択]** を選択して [ロールを選択] ページを開きます。
+1. **[ロールを選択]** を選択して **[ロールを選択]** ページを開きます。
 
     ![[新しい割り当て] ウィンドウ](./media/pim-how-to-add-role-to-user/select-role.png)
 
-1. 割り当てるロールを選択し、 **[選択]** をクリックします。
-
-1. ロールに割り当てるメンバーを選択し、 **[選択]** を選択します。
+1. 割り当てるロールを選択し、ロールを割り当てるメンバーを選択してから、 **[次へ]** を選択します。
 
 1. **[メンバーシップ設定]** ウィンドウの **[割り当ての種類]** リストで、 **[対象]** または **[アクティブ]** を選択します。
 
@@ -69,15 +67,11 @@ ms.locfileid: "79227715"
 
     - **[アクティブ]** 割り当ての場合、ロールを使用するために何らかのアクションを実行することをメンバーに要求しません。 アクティブ割り当てされたメンバーは、ロールによって提供される特権を常に所有します。
 
-1. 割り当てを永続的 (永続的に対象または永続的に割り当て済み) にする必要がある場合は、 **[Permanently]\(永続的\)** チェック ボックスをオンにします。
-
-    ロールの設定によっては、チェック ボックスが表示されない場合や、変更できない場合があります。
-
-1. 特定の割り当て期間を指定するには、チェック ボックスの選択を解除して、開始または終了日時フィールドを変更します。 終わったら、 **[Done]\(完了\)** を選択します。
+1. 特定の割り当て期間を指定するには、開始日時と終了日時のボックスを追加します。 完了したら、 **[割り当て]** を選択して、新しいロールの割り当てを作成します。
 
     ![メンバー シップ設定 - 日付と時刻](./media/pim-how-to-add-role-to-user/start-and-end-dates.png)
 
-1. 新しいロールの割り当てを作成するには、 **[追加]** を選択します。 状態の通知が表示されます。
+1. ロールが割り当てられると、割り当て状態の通知が表示されます。
 
     ![新しい割り当て - 通知](./media/pim-how-to-add-role-to-user/assignment-notification.png)
 
@@ -129,7 +123,7 @@ ms.locfileid: "79227715"
 
 1. これで、そのユーザーがロールの対象となりました。ユーザーに、[Privileged Identity Management での自分の Azure AD ロールのアクティブ化](pim-how-to-activate-role.md)に関するページの手順に従ってロールをアクティブ化できることを知らせてください。
 
-    管理者候補は、アクティブ化時に Azure Multi-Factor Authentication (MFA) への登録が求められます。 ユーザーが MFA に登録できない場合、または Microsoft アカウント (@outlook.com など) を使用している場合は、すべてのロールでこのユーザーを永続化する必要があります。
+    臨時管理者は、アクティブ化時に Azure Multi-Factor Authentication への登録を求められます。 ユーザーが MFA に登録できない場合、または Microsoft アカウント (@outlook.com など) を使用している場合は、すべてのロールでこのユーザーを永続化する必要があります。
 
 ## <a name="make-a-role-assignment-permanent"></a>ロールの割り当てを永続化する
 

@@ -11,21 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dd1b4cf554e773f49a15ac5cedcbcc5b3e710b9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 53f99456449e778ff7c1fd3ab096e1afd3562c1e
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74380101"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948863"
 ---
-# <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>クイック スタート: クラウド アプリにアクセスする前に使用条件への同意を要求する
+# <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>クイック スタート:クラウド アプリにアクセスする前に利用規約への同意を要求する
 
 環境内の特定のクラウド アプリにアクセスする前に、使用条件 (ToU) を受け入れる形式でユーザーからの同意を得る場合があります。 Azure Active Directory (Azure AD) の条件付きアクセスでは、次のものが提供されます。
 
 - ToU を構成する簡単な方法
 - 条件付きアクセス ポリシーを介して使用条件に同意を要求するオプション  
 
-このクイック スタートでは、環境内で選択したクラウド アプリに対して ToU への同意を必要とする [Azure AD の条件付きアクセス ポリシー](../active-directory-conditional-access-azure-portal.md)を構成する方法について説明します。
+このクイック スタートでは、環境内で選択したクラウド アプリに対して ToU への同意を必要とする [Azure AD の条件付きアクセス ポリシー](./overview.md)を構成する方法について説明します。
 
 ![ポリシーの作成](./media/require-tou/5555.png)
 
@@ -105,7 +105,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[新規]** ページの **[名前]** ボックスに、「**Require TOU for Isabella**」と入力します。
 
-   ![Name](./media/require-tou/71.png)
+   ![名前](./media/require-tou/71.png)
 
 1. **[割り当て]** セクションで **[ユーザーとグループ]** をクリックします。
 
@@ -209,5 +209,4 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [特定のアプリに対して MFA を必要にする](app-based-mfa.md)
-> [セッションのリスクが検出されたときにアクセスをブロックする](app-sign-in-risk.md)
+> [特定のアプリで MFA を必須にする](../authentication/tutorial-enable-azure-mfa.md)

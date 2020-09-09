@@ -30,7 +30,7 @@ java.sql.SQLException: org.apache.hive.jdbc.ZooKeeperHiveClientException: Unable
 
 The Zeppelin Hive JDBC Interpreter is pointing to the wrong URL. (Zeppelin Hive JDBC インタープリターが間違った URL を指しています。)
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決策
 
 1. Hive コンポーネントの概要に移動し、"Hive JDBC Url" をクリップボードにコピーします。
 

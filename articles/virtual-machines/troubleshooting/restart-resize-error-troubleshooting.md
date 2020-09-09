@@ -13,12 +13,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a6532558107463311c4225b9855bc4cd3f19eed9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 85acd8e26ca10730638332047a37d281358d205f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75965624"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526556"
 ---
 # <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-windows-vm-in-azure"></a>Azure での既存の Windows VM の再起動またはサイズ変更に関するデプロイメントの問題のトラブルシューティング
 停止している Azure 仮想マシン (VM) を起動しようとしたとき、または既存の Azure VM のサイズを変更しようとしたときに発生する一般的なエラーは割り当てエラーです。 このエラーは、クラスターまたはリージョンに使用可能なリソースがないか、要求された VM サイズをサポートできない場合に発生します。
@@ -30,7 +30,7 @@ ms.locfileid: "75965624"
 
 [デプロイ操作の表示](../../azure-resource-manager/templates/deployment-history.md)
 
-[アクティビティ ログを表示して Azure リソースを管理する](../../resource-group-audit.md)
+[アクティビティ ログを表示して Azure リソースを管理する](../../azure-resource-manager/management/view-activity-logs.md)
 
 ## <a name="issue-error-when-starting-a-stopped-vm"></a>問題: 停止している VM の起動時のエラー
 停止している VM を起動しようとしたときに、割り当てエラーが発生します。
@@ -62,5 +62,4 @@ VM のサイズ変更要求は、クラウド サービスをホストしてい�
   3. サイズ変更した VM を選択して **[起動]** をクリックした後、停止している各 VM を起動します。
 
 ## <a name="next-steps"></a>次のステップ
-Azure で新しい Windows VM を作成するときに問題が発生する場合は、[Azure での新しい Windows 仮想マシンの作成に関するデプロイメントの問題のトラブルシューティング](../windows/troubleshoot-deployment-new-vm.md)に関する記事を参照してください。
-
+Azure で新しい Windows VM を作成するときに問題が発生する場合は、[Azure での新しい Windows 仮想マシンの作成に関するデプロイメントの問題のトラブルシューティング](./troubleshoot-deployment-new-vm-windows.md)に関する記事を参照してください。

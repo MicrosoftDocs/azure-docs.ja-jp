@@ -1,18 +1,18 @@
 ---
-title: パートナー センターの Microsoft コマーシャル マーケットプレース分析にあるダウンロード ダッシュボード
+title: パートナー センターの Microsoft コマーシャル マーケットプレース分析にあるダウンロード ダッシュボード - Azure Marketplace
 description: ご自身のマーケットプレース オファーのダウンロード要求にアクセスする方法について説明します。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 12/11/2019
-ms.openlocfilehash: 136a65e47327007d7a28c2777051be61f475323e
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.topic: article
+ms.date: 08/21/2020
+author: shganesh-dev
+ms.author: shganesh
+ms.openlocfilehash: f426b0466046b366655c183a9372b2468937565b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732720"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750285"
 ---
 # <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析のダウンロード ダッシュボード
 
@@ -27,7 +27,29 @@ ms.locfileid: "82732720"
 
 **[分析]** メニューの **[ダウンロード]** ダッシュボードには、1000 行を超える顧客または注文データが含まれるダウンロードの要求が表示されます。
 
-1000 行を超えるデータのダウンロードを要求するたびに、 **[ダウンロード]** ダッシュボードへのリンクを含むポップアップ通知と電子メールが届きます。 これらのデータのダウンロードは 30 日間可能であり、その後削除されます。
+1000 行を超えるデータのダウンロードを要求するたびに、 **[ダウンロード]** ダッシュボードへのリンクを含むポップアップ通知が届きます。 これらのデータのダウンロードは 30 日間可能であり、その後削除されます。
+
+## <a name="lifetime-export-of-commercial-marketplace-analytics-reports"></a>コマーシャル マーケットプレース分析レポートの有効期間エクスポート
+
+[ダウンロード] ページでは、エンド ユーザーが次の操作を実行できます。
+
+- コマーシャル マーケットプレース分析レポートの有効期間を csv および tsv 形式でエクスポートする。
+- 任意の日付範囲のコマーシャル マーケットプレース分析レポートをエクスポートする。
+- 6 または 12 か月間のコマーシャル マーケットプレース分析レポートをエクスポートする。
+
+分析レポートの有効期間エクスポート機能のサポート:
+
+| レポート | 有効期間エクスポート | 日付に基づく期間 |
+| - | - | - |
+| Orders | ![緑のチェック マーク](media/check-green-yes.png) | ![緑のチェック マーク](media/check-green-yes.png) |
+| 顧客 | ![緑のチェック マーク](media/check-green-yes.png) | ![緑のチェック マーク](media/check-green-yes.png) |
+| Marketplace の分析情報 | ![緑のチェック マーク](media/check-green-yes.png) | ![緑のチェック マーク](media/check-green-yes.png) |
+| 使用法 | ![黒の X マーク](media/check-black-no.png) | 最大 1 年間 |
+|
+
+ユーザーは [ダウンロード] セクションからレポートの非同期ダウンロードをスケジュールできます。
+
+[![[ダウンロード] セクションからレポートの非同期ダウンロードをスケジュールする](media/download-reports.png)](media/download-reports.png#lightbox)
 
 ## <a name="next-steps"></a>次のステップ
 

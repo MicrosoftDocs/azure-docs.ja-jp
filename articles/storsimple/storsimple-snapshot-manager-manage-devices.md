@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 966ecbe3-a7fa-4752-825f-6694dd949946
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/05/2017
 ms.author: twooley
-ms.openlocfilehash: a037ddc5a43b288349b17dc7d954991a2c634aa3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ab9f34995cea0dee39fa002f0472298a31b9a48e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228151"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513972"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>StorSimple Snapshot Manager を使用した StorSimple デバイスの接続と管理
 ## <a name="overview"></a>概要

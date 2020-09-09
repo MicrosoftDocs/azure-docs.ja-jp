@@ -5,12 +5,13 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 48350caef6bdaafda9aff7ac776d67b314aeaf8c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 614c8e5f76475c7e7af35db37334eb645ad553a3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75614402"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018605"
 ---
 # <a name="query-eventstore-apis-for-cluster-events"></a>クラスター イベントに対して EventStore API のクエリを実行する
 
@@ -110,7 +111,7 @@ Body:
 
 ## <a name="query-the-eventstore-programmatically"></a>プログラムによる EventStore のクエリ
 
-[Service Fabric クライアント ライブラリ](https://docs.microsoft.com/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library)を介して EventStore のクエリをプログラムで実行することもできます。
+[Service Fabric クライアント ライブラリ](/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library)を介して EventStore のクエリをプログラムで実行することもできます。
 
 Service Fabric クライアントを設定したら、次のように EventStore にアクセスしてイベントのクエリを実行できます: `sfhttpClient.EventStore.<request>`
 
@@ -200,4 +201,3 @@ var clstrEvents = sfhttpClient.EventsStore.GetClusterEventListAsync(
 *Chaos サービス:*
 
 クラスター レベルで公開されている Chaos サービスがいつ開始または停止されたかに関するイベントがあります。 Chaos サービスの最近の使用状況を確認するには、次のクエリを使用します: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ChaosStarted,ChaosStopped`
-

@@ -9,24 +9,24 @@ ms.subservice: autoscale
 ms.date: 04/26/2019
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: aa004cc3ad6c02937ae3c3c8bdb1d5ebd225f434
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 549f8fbc1e3acf435011f223faeb5b8240f0c55d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124807"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080422"
 ---
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>Linux スケール セット テンプレートのゲスト メトリックを使用した自動スケール
 
 VM とスケール セットから収集された Azure のメトリックの広範な種類が 2 つあります。ホスト メトリックとゲスト メトリック。 一般には、標準的な CPU、ディスク、ネットワーク メトリックを使用している場合、ホスト メトリックは適合します。 ただし、メトリックの選択の幅を大きくする必要がある場合は、ゲスト メトリックの方を使用すべきです。
 
-ホスト メトリックの場合は、ホスト VM によってメトリックが収集されるので、特別な設定は必要ありません。ゲスト メトリックの場合は、ゲスト VM に [Windows 版の Azure Diagnostics の拡張機能](../virtual-machines/windows/extensions-diagnostics-template.md)か、[Linux 版の Azure Diagnostics の拡張機能](../virtual-machines/linux/diagnostic-extension.md)をインストールする必要があります。 一般に、ホスト メトリックではなくゲスト メトリックを使用する理由の 1 つとして、ゲスト メトリックではホスト メトリックよりも多くのメトリックが提供される点が挙げられます。 たとえば、メモリ消費に関するメトリックは、ゲスト メトリックでしか利用できません。 サポートされているホスト メトリックについては[こちら](../azure-monitor/platform/metrics-supported.md)を、よく使用されるゲスト メトリックについては[こちら](../azure-monitor/platform/autoscale-common-metrics.md)をご覧ください。 この記事では、Linux スケール セットのゲストのメトリックに基づいた自動スケール規則を使用するよう、[実行可能な基本のスケール セットのテンプレート](virtual-machine-scale-sets-mvss-start.md)を編集する方法を説明します。
+ホスト メトリックの場合は、ホスト VM によってメトリックが収集されるので、特別な設定は必要ありません。ゲスト メトリックの場合は、ゲスト VM に [Windows 版の Azure Diagnostics の拡張機能](../virtual-machines/extensions/diagnostics-template.md)か、[Linux 版の Azure Diagnostics の拡張機能](../virtual-machines/extensions/diagnostics-linux.md)をインストールする必要があります。 一般に、ホスト メトリックではなくゲスト メトリックを使用する理由の 1 つとして、ゲスト メトリックではホスト メトリックよりも多くのメトリックが提供される点が挙げられます。 たとえば、メモリ消費に関するメトリックは、ゲスト メトリックでしか利用できません。 サポートされているホスト メトリックについては[こちら](../azure-monitor/platform/metrics-supported.md)を、よく使用されるゲスト メトリックについては[こちら](../azure-monitor/platform/autoscale-common-metrics.md)をご覧ください。 この記事では、Linux スケール セットのゲストのメトリックに基づいた自動スケール規則を使用するよう、[実行可能な基本のスケール セットのテンプレート](virtual-machine-scale-sets-mvss-start.md)を編集する方法を説明します。
 
 ## <a name="change-the-template-definition"></a>テンプレートの定義を変更する
 
 [前回のアーティクル](virtual-machine-scale-sets-mvss-start.md)では、基本的なスケール セット テンプレートを作成しました。 では、以前のテンプレートを使用して、Linux スケール セットをゲスト メトリック ベースの自動スケーリングに展開するテンプレートを作成します。
 
-まず、`storageAccountName` と `storageAccountSasToken` のパラメーターを追加します。 この診断エージェントが、メトリック データをこのストレージ アカウントの[テーブル](../cosmos-db/table-storage-how-to-use-dotnet.md)に格納します。 Linux 診断エージェント バージョン 3.0 の時点で、ストレージ アクセス キーの使用はサポートされなくなりました。 代わりに、[SAS トークン](../storage/common/storage-dotnet-shared-access-signature-part-1.md)を使用します。
+まず、`storageAccountName` と `storageAccountSasToken` のパラメーターを追加します。 この診断エージェントが、メトリック データをこのストレージ アカウントの[テーブル](../cosmos-db/tutorial-develop-table-dotnet.md)に格納します。 Linux 診断エージェント バージョン 3.0 の時点で、ストレージ アクセス キーの使用はサポートされなくなりました。 代わりに、[SAS トークン](../storage/common/storage-sas-overview.md)を使用します。
 
 ```diff
      },
@@ -42,7 +42,7 @@ VM とスケール セットから収集された Azure のメトリックの広
    },
 ```
 
-次に、診断の拡張機能を含めるようにスケール セット `extensionProfile` を変更します。 この構成では、メトリックの保存に使用するストレージ アカウントと SAS トークンに加え、メトリックを収集するスケール セットのリソース ID を指定します。 メトリックを集計する頻度 (ここでは 1 分ごと) と、追跡するメトリック (ここではメモリ使用率) を指定します。 この構成に関する詳細情報と、メモリ使用率以外のメトリックについては、[このドキュメント](../virtual-machines/linux/diagnostic-extension.md)を参照してください。
+次に、診断の拡張機能を含めるようにスケール セット `extensionProfile` を変更します。 この構成では、メトリックの保存に使用するストレージ アカウントと SAS トークンに加え、メトリックを収集するスケール セットのリソース ID を指定します。 メトリックを集計する頻度 (ここでは 1 分ごと) と、追跡するメトリック (ここではメモリ使用率) を指定します。 この構成に関する詳細情報と、メモリ使用率以外のメトリックについては、[このドキュメント](../virtual-machines/extensions/diagnostics-linux.md)を参照してください。
 
 ```diff
                  }

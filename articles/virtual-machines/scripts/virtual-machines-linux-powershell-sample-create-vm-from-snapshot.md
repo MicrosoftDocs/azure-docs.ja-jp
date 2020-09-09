@@ -1,5 +1,5 @@
 ---
-title: スナップショットから VM を作成する - PowerShell サンプル
+title: スナップショットから VM を作成する (Linux) - PowerShell サンプル
 description: Azure PowerShell のサンプル スクリプト - スナップショットから VM を作成します
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
-ms.custom: mvc
-ms.openlocfilehash: 21e31df7552dfe5e6368235173622695078626b9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 42c9903b783df4b3392b6aab3a69bbb66da90a75
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75463663"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078165"
 ---
-# <a name="create-a-virtual-machine-from-a-snapshot-with-powershell"></a>PowerShell でスナップショットから仮想マシンを作成する
+# <a name="create-a-virtual-machine-from-a-snapshot-with-powershell-linux"></a>PowerShell でスナップショットから仮想マシンを作成する (Linux)
 
 このスクリプトは、OS ディスクのスナップショットから仮想マシンを作成します。
 
@@ -48,18 +48,18 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 | command | メモ |
 |---|---|
-| [Get-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/get-azsnapshot) | スナップショット名を使用してスナップショットを取得します。 |
-| [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) | ディスク構成を作成します。 この構成は、ディスク作成プロセスで使用されます。 |
-| [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk) | マネージド ディスクを作成します。 |
-| [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig) | VM 構成を作成します。 この構成には、VM 名、オペレーティング システム、管理資格情報などの情報が含まれます。 この構成は、VM の作成時に使用されます。 |
-| [Set-AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk) | マネージド ディスクを OS ディスクとして仮想マシンに接続します。 |
-| [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) | パブリック IP アドレスを作成します。 |
-| [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) | ネットワーク インターフェイスを作成します。 |
-| [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) | 仮想マシンを作成します。 |
-|[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | リソース グループと、それに含まれているすべてのリソースを削除します。 |
+| [Get-AzSnapshot](/powershell/module/az.compute/get-azsnapshot) | スナップショット名を使用してスナップショットを取得します。 |
+| [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) | ディスク構成を作成します。 この構成は、ディスク作成プロセスで使用されます。 |
+| [New-AzDisk](/powershell/module/az.compute/new-azdisk) | マネージド ディスクを作成します。 |
+| [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) | VM 構成を作成します。 この構成には、VM 名、オペレーティング システム、管理資格情報などの情報が含まれます。 この構成は、VM の作成時に使用されます。 |
+| [Set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk) | マネージド ディスクを OS ディスクとして仮想マシンに接続します。 |
+| [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | パブリック IP アドレスを作成します。 |
+| [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) | ネットワーク インターフェイスを作成します。 |
+| [New-AzVM](/powershell/module/az.compute/new-azvm) | 仮想マシンを作成します。 |
+|[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | リソース グループと、それに含まれているすべてのリソースを削除します。 |
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
+Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。
 
 その他の仮想マシン用の PowerShell サンプル スクリプトは、[Azure Linux VM のドキュメント](../linux/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)にあります。

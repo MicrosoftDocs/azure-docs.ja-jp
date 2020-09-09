@@ -6,34 +6,28 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: 8a7ba3c3b9c19b2084b6892b55ac417da38ab047
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-java
+ms.openlocfilehash: 7d47311385848f96a12a50c1dcf8b8284869c71d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278888"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260358"
 ---
 # <a name="quotas-and-service-plans-for-azure-spring-cloud"></a>Azure Spring Cloud のクォータとサービス プラン
 
-すべての Azure サービスには、リソースと機能に対する既定の制限とクォータが設定されています。  プレビュー期間中は、Azure Spring Cloud で提供されるサービス プランは 1 つだけです。
+すべての Azure サービスには、リソースと機能に対する既定の制限とクォータが設定されています。   Azure Spring Cloud には、2 つの価格レベルがあります。Basic と Standard です。 この記事では、両方のレベルの制限について詳しく説明します。
 
-この記事では、現在のプレビュー期間中に提供されるサービス クォータについて詳しく説明します。
+## <a name="azure-spring-cloud-service-tiers-and-limits"></a>Azure Spring Cloud のサービス レベルと制限
 
-## <a name="azure-spring-cloud-service-tiers-and-quotas"></a>Azure Spring Cloud のサービス レベルとクォータ
-
-プレビュー期間中は、Azure Spring Cloud で提供されるサービス レベルは 1 つだけです。
-
-リソース | 金額
-------- | -------
-vCPU | サービス インスタンスごとに 4 つ
-メモリ | サービス インスタンスごとに 8 GB
-サブスクリプション 1 件、1 リージョンあたりの Azure Spring Cloud サービス インスタンスの数 | 10
-Azure Spring Cloud サービス インスタンスあたりのアプリ インスタンスの合計数 | 500
-Spring アプリケーションあたりのアプリ インスタンスの合計数 | 20
-永続ボリューム | 10 x 50 GB
-
-クォータに達すると、次のような 400 エラーを受け取ります: "Quota exceeds limit for subscription *your subscription* in region *region where your Azure Spring Cloud service is created* (クォータがサブスクリプション <サブスクリプション> のリージョン <Azure Spring Cloud サービスが作成されたリージョン> での制限を超えています)。
+| リソース | Basic | Standard
+------- | ------- | -------
+vCPU | サービス インスタンスごとに 1 つ | サービス インスタンスごとに 4 つ
+メモリ | サービス インスタンスごとに 2 GB | サービス インスタンスごとに 8 GB
+サブスクリプション 1 件、1 リージョンあたりの Azure Spring Cloud サービス インスタンスの数 | 10 | 10
+Azure Spring Cloud サービス インスタンスあたりのアプリ インスタンスの合計数 | 25 | 500
+永続ボリューム | 1 GB/アプリ x 10 個のアプリ | 50 GB/アプリ x 10 個のアプリ
 
 ## <a name="next-steps"></a>次のステップ
 
-特定の既定の制限とクォータを増やすことができます。 リソースを増やす必要がある場合は、[サポート リクエストを作成してください](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。
+一部の既定の制限は引き上げることができます。 設定を増やす必要がある場合は、[サポート リクエストを作成してください](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。

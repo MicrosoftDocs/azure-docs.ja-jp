@@ -5,12 +5,12 @@ author: dkkapur
 ms.author: dekapur
 ms.date: 10/1/2018
 ms.topic: overview
-ms.openlocfilehash: d6522d417556104a1ece703c725f3fbeab49d683
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b7061a178a3f5a9d126afab3fc1f9aa77d5cc050
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75458989"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927030"
 ---
 # <a name="what-is-service-fabric-mesh"></a>Service Fabric Mesh とは
 
@@ -42,7 +42,7 @@ Service Fabric Mesh では、以下が可能です。
 
 - インフラストラクチャを明示的にプロビジョニングして管理することなく、アプリケーションのデプロイと管理を行う。  Service Fabric Mesh では、基盤となるインフラストラクチャのプロビジョニング、アップグレード、パッチ適用、メンテナンスが自動で行われます。
 - アプリケーションを簡単にパッケージ化してデプロイできる統合されたツールを使用して、継続的インテグレーションを設定する。
-- Azure Resource Manager リソースのすべての機能を活用する。 これらの機能の例には、監査証跡と[ロールベースのアクセス制御](/azure/role-based-access-control/overview)が含まれます。 Azure で Service Fabric Mesh サービスにデプロイするすべてのリソースは Azure Resource Manager リソースです。 これらのリソースには、アプリケーション、サービス、シークレットなどが含まれます。
+- Azure Resource Manager リソースのすべての機能を活用する。 これらの機能の例には、監査証跡と [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) が含まれます。 Azure で Service Fabric Mesh サービスにデプロイするすべてのリソースは Azure Resource Manager リソースです。 これらのリソースには、アプリケーション、サービス、シークレットなどが含まれます。
 - [Azure portal](https://portal.azure.com)、Resource Manager テンプレート、または Azure CLI/PowerShell ライブラリを使用して、リソースのデプロイと管理を行う。
 - [Application Insights](/azure/application-insights/) (または好きなツール) を使用して操作の監視とアラートを設定し、プラットフォームから操作と診断のトレースを収集する。
 - [Application Insights](/azure/application-insights/) または好きなツールを使用して、アプリケーション モデルから出力されたアプリケーション診断情報にアクセスする。
@@ -50,14 +50,14 @@ Service Fabric Mesh では、以下が可能です。
 
 ## <a name="mission-critical-platform-capabilities"></a>ミッション クリティカルなプラットフォーム機能
 
-Service Fabric Mesh では、[Azure 可用性ゾーン](/azure/availability-zones/az-overview)/地政学的リージョンの境界にまたがる一連のクラスターが作成されます。 Service Fabric Mesh では、スケール、ハードウェア要件、持続性要件、セキュリティ ポリシーなどの一連の意図を使用してアプリケーションを説明します。  アプリケーションのデプロイ時、Service Fabric Mesh によって最適な実行場所が検出されます。
+Service Fabric Mesh では、[Azure 可用性ゾーン](../availability-zones/az-overview.md)/地政学的リージョンの境界にまたがる一連のクラスターが作成されます。 Service Fabric Mesh では、スケール、ハードウェア要件、持続性要件、セキュリティ ポリシーなどの一連の意図を使用してアプリケーションを説明します。  アプリケーションのデプロイ時、Service Fabric Mesh によって最適な実行場所が検出されます。
 
 Service Fabric Mesh では、以下が可能です。
 
 - 高可用性、スケールイン/スケールアウト、検出可能性、オーケストレーション、メッセージ ルーティング、信頼できるメッセージング、ダウンタイムのないアップグレード、セキュリティ/シークレット管理、ディザスター リカバリー、状態管理、構成管理、分散トランザクションを活用する。
 - アプリケーションの作成時に複数の中からアプリケーション モデルを選択する。
 - Swagger で生成された言語固有のバインドを使用して、REST エンドポイントを通じて公開されているプラットフォーム機能を使用する。
-- 地域の信頼性を高めるために、[可用性ゾーン](/azure/availability-zones/az-overview)と複数のリージョンをまたいでアプリケーションをデプロイする。
+- 地域の信頼性を高めるために、[可用性ゾーン](../availability-zones/az-overview.md)と複数のリージョンをまたいでアプリケーションをデプロイする。
 - Azure によって提供されるすべてのセキュリティ機能とコンプライアンス機能を使用する。
 
 ## <a name="next-steps"></a>次のステップ

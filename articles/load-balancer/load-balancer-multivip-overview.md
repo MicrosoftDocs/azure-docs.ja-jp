@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 0a54416a70a8561edfad5915944100e0ce686bbf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2192531aec7800314c6748740262f8746da0c4fc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75771259"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956374"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Azure Load Balancer の複数のフロントエンド
 
@@ -102,20 +102,31 @@ Azure Load Balancer は、使用する規則タイプに関係なく、フロン
 
 VM 上のインターフェイス名の一覧を取得するには、次のコマンドを入力します。
 
-    netsh interface show interface 
+```console
+netsh interface show interface 
+```
 
 VM NIC (Azure マネージド) には、次のコマンドを入力します。
 
-    netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled
-   (interfacename の部分をこのインターフェイスの名前に置き換えてください)
+```console
+netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled
+```
+
+(interfacename の部分をこのインターフェイスの名前に置き換えてください)
 
 追加した各ループバック インターフェイスに対して、次のコマンドを繰り返します。
 
-    netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled 
-   (interfacename の部分をこのループバック インターフェイスの名前に置き換えてください)
-     
-    netsh interface ipv4 set interface “interfacename” weakhostsend=enabled 
-   (interfacename の部分をこのループバック インターフェイスの名前に置き換えてください)
+```console
+netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled 
+```
+
+(interfacename の部分をこのループバック インターフェイスの名前に置き換えてください)
+
+```console
+netsh interface ipv4 set interface “interfacename” weakhostsend=enabled 
+```
+
+(interfacename の部分をこのループバック インターフェイスの名前に置き換えてください)
 
 > [!IMPORTANT]
 > ループバック インターフェイスの構成については、ゲスト OS 内で実行されます。 この構成は Azure で実行および管理されていません。 この構成なしでは、規則は機能しません。 正常性プローブの定義は、DSR フロントエンドを表すループバック インターフェイスではなく VM の DIP を使用します。 したがって、お使いのサービスでは、DSR フロントエンドを表すループバック インターフェイスで提供されているサービスの状態を反映する、DIP ポートのプローブ応答を提供する必要があります。
@@ -146,7 +157,7 @@ VM NIC (Azure マネージド) には、次のコマンドを入力します。
 
 この例では、宛先ポートが変わらないことに注意してください。 これは Floating IP のシナリオですが、Azure Load Balancer はバックエンドの宛先ポートを書き換える規則の定義もサポートし、フロントエンドの宛先ポートとは異なる規則にします。
 
-Floating IP 規則タイプは、いくつかのロード バランサーの構成パターンの基盤になります。 現在利用できる例の 1 つは、 [複数リスナーによる SQL AlwaysOn](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) の構成です。 他のシナリオについては、徐々に文書化します。
+Floating IP 規則タイプは、いくつかのロード バランサーの構成パターンの基盤になります。 現在利用できる例の 1 つは、 [複数リスナーによる SQL AlwaysOn](../azure-sql/virtual-machines/windows/availability-group-listener-powershell-configure.md) の構成です。 他のシナリオについては、徐々に文書化します。
 
 ## <a name="limitations"></a>制限事項
 

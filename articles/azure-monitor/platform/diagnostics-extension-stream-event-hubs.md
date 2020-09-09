@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
 ms.openlocfilehash: 979535b1f9a237f6975908178fb1e5ed819181b0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233467"
 ---
 # <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Windows Azure Diagnostics 拡張機能から Azure Event Hubs にデータを送信する
@@ -39,7 +39,7 @@ Azure Diagnostics では常に、ログとメトリックが Azure Storage ア�
 | プロパティ | 説明 |
 |:---|:---|
 | 名前 | シンクのわかりやすい名前。 シンクに送信するデータ ソースを指定するために構成で使用します。 |
-| url  | イベントハブの URL。形式は \<イベントハブの名前空間\>.servicebus.windows.net/\<イベント ハブ名\> です。          |
+| url  | \<event-hubs-namespace\>.servicebus.windows.net/\<event-hub-name\> の形式のイベント ハブの URL。          |
 | SharedAccessKeyName | イベント ハブに対する少なくとも**送信**権限を持つ共有アクセス ポリシーの名前。 |
 | SharedAccessKey     | イベント ハブに対する共有アクセス ポリシーのプライマリ キーまたはセカンダリ キー。 |
 

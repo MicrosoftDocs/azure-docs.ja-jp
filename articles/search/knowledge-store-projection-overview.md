@@ -1,24 +1,21 @@
 ---
-title: ナレッジ ストアでのプロジェクション (プレビュー)
+title: プロジェクションの概念
 titleSuffix: Azure Cognitive Search
-description: 全文検索以外のシナリオで使用するために、AI エンリッチメントのインデックス作成パイプラインからエンリッチされたデータをナレッジ ストアに保存して整形します。 ナレッジ ストアは現在、パブリック プレビューの段階です。
+description: 全文検索以外のシナリオで使用するために、AI エンリッチメントのインデックス作成パイプラインからエンリッチされたデータをナレッジ ストアに保存して整形します。
 manager: nitinme
 author: vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/08/2020
-ms.openlocfilehash: d264768bf27967d1a778400ae4e9e6f2e054d746
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/30/2020
+ms.openlocfilehash: 22db4f95bacd926208ac7edf3306cd136d81b00e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78942970"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565196"
 ---
-# <a name="projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Azure Cognitive Search のナレッジ ストアでのプロジェクション
-
-> [!IMPORTANT] 
-> ナレッジ ストアは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 プレビュー機能は [REST API バージョン 2019-05-06-Preview](search-api-preview.md) で提供しています。 現時点でポータルによるサポートは一部のみにとどまります。また、.NET SDK によるサポートはありません。
+# <a name="knowledge-store-projections-in-azure-cognitive-search"></a>Azure Cognitive Search のナレッジ ストアでの "プロジェクション"
 
 Azure Cognitive Search では、インデックス作成の一環として組み込みのコグニティブ スキルとカスタム スキルを使ってコンテンツをエンリッチすることができるようになっています。 エンリッチメントによって、イメージからの情報抽出、テキストからのセンチメント、キー フレーズ、エンティティの検出など、これまで存在しなかった新しい情報が作成されます。 また、エンリッチメントによって、区別されていないテキストに構造体が追加されます。 これらのすべてのプロセスの結果として、全文検索をより効果的にするドキュメントが作成されます。 多くの場合、エンリッチされたドキュメントは、ナレッジ マイニングなど、検索以外のシナリオに役立ちます。
 
